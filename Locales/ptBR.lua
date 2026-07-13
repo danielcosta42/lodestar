@@ -58,6 +58,7 @@ L.TM_TALK = "> Lodestar: alvo do guia"
 L.YARDS = "%d jd"
 L.DEST  = "Destino"
 L.IN_FLIGHT = "Em voo"
+L.PREREQ_NEEDED = "Pré-requisito: %s — faça isto antes."
 
 L.CLASS_TRAINER = "Treinador de classe"
 L.TRAINER_NONE  = "nenhum treinador de %s (%s) no índice."

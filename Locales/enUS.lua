@@ -64,6 +64,7 @@ L.TM_TALK = "> Lodestar: guide target"
 L.YARDS = "%d yd"
 L.DEST  = "Destination"
 L.IN_FLIGHT = "In flight"
+L.PREREQ_NEEDED = "Prerequisite: %s — do this first."
 
 -- Trainers & milestones
 L.CLASS_TRAINER   = "Class trainer"

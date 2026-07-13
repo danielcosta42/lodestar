@@ -32,6 +32,8 @@ ZoneData.lua
 Trainers.lua
 Parser.lua
 Guide.lua
+PrereqData.lua
+Prereq.lua
 SubZones.lua
 TransitData.lua
 FlightData.lua
