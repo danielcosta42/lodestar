@@ -93,40 +93,40 @@ step
   accept The Savage Guard - Arcanum of Focus##9210 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  kill Jin'do the Hexxer##11380 |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
-  kill Hakkari Shadowcaster##11338 |q 8195 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Hakkari Shadowcaster##11338 |q 8195 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |elite
 step
   note String 5 Channeler's Heads, then return the Collection of Troll Heads to Exzhal on Yojamba Isle.
   get A Collection of Heads |q 8201 |goto Stranglethorn Vale 15.26,15.5
 step
-  kill Hakkari Shadowcaster##11338 |q 8238 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Hakkari Shadowcaster##11338 |q 8238 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |elite
 step
-  kill Hakkari Shadowcaster##11338 |q 8239 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Hakkari Shadowcaster##11338 |q 8239 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |elite
 step
   note Zanza the Restless in Zul'Gurub wants an Arcanum of Protection.
   get The Savage Guard - Arcanum of Protection |q 9208 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1

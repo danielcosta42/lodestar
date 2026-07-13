@@ -28,10 +28,10 @@ step
   kill Ethereum Assassin##20452 |q 10970 |goto Netherstorm 56.71,38.2
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
+  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8 |elite
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1
+  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1 |elite
 step
   talk Rokgah Bloodgrip##21311
   turnin Thunderlord Clan Artifacts##10524 |goto Blade's Edge Mountains 52.8,58.96
@@ -70,7 +70,7 @@ step
   get Ethereum Secrets |q 10971 |goto Netherstorm 59.5,32.38
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
+  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61 |elite
 step
   talk Rokgah Bloodgrip##21311
   turnin Vision Guide##10525 |goto Blade's Edge Mountains 52.8,58.96
@@ -157,7 +157,7 @@ step
   accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  kill Hemathion##18692 |q 11025 |goto Blade's Edge Mountains 31.1,71.08
+  kill Abyssal Flamebringer##19973 |q 11025 |goto Blade's Edge Mountains 28.84,81.09
 step
   talk Image of Commander Ameer##22919
   turnin Stasis Chambers of the Mana-Tombs##10977 |goto Blade's Edge Mountains 52.85,14.99

@@ -193,22 +193,22 @@ step
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8061 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8061 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8070 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8070 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8071 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8071 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Priest
   note Bring Vek'nilash's Circlet, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'nilash##15275 |q 8592 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'nilash##15275 |q 8592 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring Ouro's Intact Hide, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -216,27 +216,27 @@ step
 step
   only Priest
   note Bring the Qiraji Bindings of Command, 2 Idols of Rebirth, 5 Silver Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8594 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8594 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring the Qiraji Bindings of Command, 2 Idols of Death, 5 Bronze Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8596 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8596 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring the the Husk of the Old God, 2 Idols of Death, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8603 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8603 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with 1 set of Devout Bracers to Deliana in Ironforge.
@@ -494,10 +494,10 @@ step
   kill Hive'Ashi Stinger##11698 |q 8310 |goto Silithus 48.5,41.14
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1
+  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
   note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  kill Kel'Thuzad##15990 |q 9251 |goto Naxxramas - Raid -1,-1
+  kill Kel'Thuzad##15990 |q 9251 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Dwarf Priest
   talk Branstock Khalder##837
@@ -627,11 +627,11 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Shoulderpads of Faith if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  kill Grobbulus##15931 |q 9114 |goto Naxxramas - Raid -1,-1
+  kill Grobbulus##15931 |q 9114 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Sandals of Faith if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  kill Gluth##15932 |q 9115 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9115 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Gloves of Faith if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
@@ -639,15 +639,15 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Belt of Faith if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  kill Gluth##15932 |q 9117 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9117 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Bindings of Faith if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  kill Gluth##15932 |q 9118 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9118 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Priest
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
-  kill Atiesh##16387 |q 9257
+  kill Atiesh##16387 |q 9257 |raid
 step
   only Human Priest
   talk Priestess Anetta##375
@@ -719,7 +719,7 @@ step
 step
   only Priest
   note Kill Morphaz in the sunken temple of Atal'Hakkar, and return his blood to Greta Mosshoof in Felwood. The entrance to the sunken temple can be found in the Swamp of Sorrows.
-  kill Morphaz##5719 |q 8257 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Morphaz##5719 |q 8257 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   only Priest
   get The All-Seeing Eye of Zuldazar |q 8052 |goto Stranglethorn Vale 15.34,16.12
@@ -828,7 +828,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1
+  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -837,7 +837,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1
+  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -857,7 +857,7 @@ step
 step
   only Priest
   note Return to Deliana in Ironforge with a set of Devout Sandals, Devout Skirt and Devout Mantle.
-  kill Maleki the Pallid##10438 |q 8955 |goto Stratholme - Dungeon -1,-1
+  kill Maleki the Pallid##10438 |q 8955 |goto Stratholme - Dungeon -1,-1 |elite
 step
   only Priest
   talk Deliana##16013
@@ -882,7 +882,7 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
+  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |elite
 step
   talk Bodley##16033
   turnin Components of Importance##8965
@@ -900,7 +900,7 @@ step
   accept The Right Piece of Lord Valthalak's Amulet##8989
 step
   note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the recombined Lord Valthalak's Amulet and the Brazier of Beckoning.
-  kill Mor Grayhoof##16080 |q 8989
+  kill Mor Grayhoof##16080 |q 8989 |elite
 step
   talk Bodley##16033
   turnin The Right Piece of Lord Valthalak's Amulet##8989
@@ -918,7 +918,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  kill Lord Valthalak##16042 |q 8995
+  kill Lord Valthalak##16042 |q 8995 |raid
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995

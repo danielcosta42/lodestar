@@ -195,11 +195,11 @@ step
 step
   only Warrior
   note Bring the Qiraji Bindings of Command, 2 Idols of Night, 5 Stone Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8544 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8544 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warrior
   note Bring the Qiraji Bindings of Command, 2 Idols of War, 5 Ivory Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8559 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8559 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warrior
   note Bring Ouro's Intact Hide, 2 Idols of Death, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -207,17 +207,17 @@ step
 step
   only Warrior
   note Bring Vek'nilash's Circlet, 2 Idols of the Sun, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'nilash##15275 |q 8561 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'nilash##15275 |q 8561 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warrior
   note Bring the the Carapace of the Old God, 2 Idols of War, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8562 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8562 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
-  kill The Prophet Skeram##15263 |q 8579 |goto Ahn'Qiraj - Raid -1,-1
+  kill The Prophet Skeram##15263 |q 8579 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring Vek'nilash's Circlet, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'nilash##15275 |q 8592 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'nilash##15275 |q 8592 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring Ouro's Intact Hide, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -225,33 +225,33 @@ step
 step
   only Priest
   note Bring the Qiraji Bindings of Command, 2 Idols of Rebirth, 5 Silver Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8594 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8594 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
-  kill The Prophet Skeram##15263 |q 8595 |goto Ahn'Qiraj - Raid -1,-1
+  kill The Prophet Skeram##15263 |q 8595 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring the Qiraji Bindings of Command, 2 Idols of Death, 5 Bronze Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8596 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8596 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Mage
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Life, 5 Gold Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8602 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8602 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   note Bring the the Husk of the Old God, 2 Idols of Death, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8603 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8603 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Mage
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Clay Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8621 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8621 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Mage
   note Bring the Carapace of the Old God, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8622 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8622 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Mage
   note Bring Vek'lor's Diadem, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'lor##15276 |q 8623 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'lor##15276 |q 8623 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Mage
   note Bring the Skin of the Great Sandworm, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -259,19 +259,19 @@ step
 step
   only Warlock
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Death, 5 Stone Scarabs and 5 Bronze Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8625 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8625 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Hunter
   note Bring the Qiraji Bindings of Command, 2 Idols of Life, 5 Stone Scarabs and 5 Bone Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8626 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8626 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Paladin
   note Bring the the Carapace of the Old God, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8627 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8627 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Paladin
   note Bring Vek'lor's Diadem, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'lor##15276 |q 8628 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'lor##15276 |q 8628 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Paladin
   note Bring the Skin of the Great Sandworm, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -279,7 +279,7 @@ step
 step
   only Paladin
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Life, 5 Crystal Scarabs and 5 Gold Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8630 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8630 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warlock
   note Bring Ouro's Intact Hide, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -287,27 +287,27 @@ step
 step
   only Warlock
   note Bring Vek'nilash's Circlet, 2 Idols of Night, 5 Bronze Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'nilash##15275 |q 8632 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'nilash##15275 |q 8632 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warlock
   note Bring the Husk of the Old God, 2 Idols of the Sun, 5 Gold Scarabs and 5 Clay Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8633 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8633 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warlock
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sun, 5 Silver Scarabs and 5 Crystal Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8634 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8634 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring the Qiraji Bindings of Command, 2 Idols of Strife, 5 Crystal Scarabs and 5 Bone Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8637 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8637 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring the the Carapace of the Old God, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8638 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8638 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring Vek'lor's Diadem, 2 Idols of the War, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'lor##15276 |q 8639 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'lor##15276 |q 8639 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring Ouro's Intact Hide, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -315,19 +315,19 @@ step
 step
   only Rogue
   note Bring the Qiraji Bindings of Command, 2 Idols of the Sun, 5 Silver Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8641 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8641 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Paladin
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Clay Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8655 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8655 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Hunter
   note Bring the the Carapace of the Old God, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8656 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8656 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Hunter
   note Bring Vek'lor's Diadem, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'lor##15276 |q 8657 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'lor##15276 |q 8657 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Hunter
   note Bring the Skin of the Great Sandworm, 2 Idols of the Sun, 5 Silver Scarabs and 5 Bone Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -335,19 +335,19 @@ step
 step
   only Hunter
   note Bring the Qiraji Bindings of Command, 2 Idols of War, 5 Crystal Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8659 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8659 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Night, 5 Clay Scarabs and 5 Ivory Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8660 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8660 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring the the Husk of the Old God, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8661 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8661 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring Vek'nilash's Circlet, 2 Idols of Death, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'nilash##15275 |q 8662 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'nilash##15275 |q 8662 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring the Skin of the Great Sandworm, 2 Idols of Rebirth, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -355,22 +355,22 @@ step
 step
   only Druid
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8664 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8664 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Silver Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8665 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8665 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   note Bring the the Husk of the Old God, 2 Idols of Rebirth, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8666 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8666 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   note Bring Vek'lor's Diadem, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'lor##15276 |q 8667 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'lor##15276 |q 8667 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   note Bring the Skin of the Great Sandworm, 2 Idols of War, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
   get Genesis Trousers |q 8668 |goto Ahn'Qiraj - Raid -1,-1
 step
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Strife, 5 Gold Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8669 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8669 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   note Arygos in the Temple of Ahn'Qiraj will create Elementium Infused Armaments for you should you bring him Imperial Qiraji Armaments and 3 Elementium Ore.
   get Imperial Qiraji Armaments |q 8789 |goto Ahn'Qiraj - Raid -1,-1

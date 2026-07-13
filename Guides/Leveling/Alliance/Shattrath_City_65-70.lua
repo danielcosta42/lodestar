@@ -98,7 +98,7 @@ step
   accept Crackin' Some Skulls##10009 |goto Shattrath City 77.26,34.85
 step
   note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
-  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4
+  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4 |elite
 step
   talk Wind Trader Lathrai##18484
   accept A Personal Favor##10112 |goto Shattrath City 72.22,30.75
@@ -119,7 +119,7 @@ step
   accept A Cure for Zahlia##10020 |goto Shattrath City 64.48,15.1
 step
   note Bring Stonegazer's Blood to Sha'nir in Shattrath City.
-  kill Stonegazer##18648 |q 10020 |goto Terokkar Forest 62.81,27.69
+  kill Stonegazer##18648 |q 10020 |goto Terokkar Forest 62.81,27.69 |elite
 step
   talk Seth##18653
   accept Rather Be Fishin'##10037 |goto Shattrath City 63.95,15.53
@@ -149,7 +149,7 @@ step
   accept Marks of Kil'jaeden##10325 |goto Shattrath City 30.73,34.62
 step
   note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
-  kill Mo'arg Engineer##16945 |q 10325 |goto Nagrand 20.0,49.34
+  kill Mo'arg Engineer##16945 |q 10325 |goto Nagrand 20.0,49.34 |elite
 step
   talk Adyen the Lightwarden##18537
   accept Marks of Sargeras##10653 |goto Shattrath City 30.73,34.62
@@ -326,7 +326,7 @@ step
   accept Harbinger of Doom##10882 |goto Shattrath City 53.99,44.75
 step
   note You have been tasked to go to Tempest Keep's Arcatraz satellite and slay Harbinger Skyriss. Return to A'dal at the Terrace of Light in Shattrath City after you have done so.
-  kill Harbinger Skyriss##20912 |q 10882
+  kill Harbinger Skyriss##20912 |q 10882 |elite
 step
   talk A'dal##18481
   accept Trial of the Naaru: Mercy##10884 |goto Shattrath City 53.99,44.75
@@ -409,7 +409,7 @@ step
   turnin A Cleansing Light##10420 |goto Shattrath City 23.97,29.73
 step
   note Use Socrethar's Teleportation's Stone at Invasion Point: Overlord, north of Forge Base: Oblivion to transport your party to Socrethar's Landing. Once there, use Voren'thal's Presence to defeat Socrethar.
-  kill Socrethar##20132 |q 10507 |goto Netherstorm 29.31,13.7
+  kill Socrethar##20132 |q 10507 |goto Netherstorm 29.31,13.7 |elite
 step
   talk Nitrin the Learned##19844
   turnin The Master's Grand Design?##10251 |goto Nagrand 51.82,56.84 |tip {turninat}Nagrand
@@ -475,7 +475,7 @@ step
   accept Trial of the Naaru: Magtheridon##10888 |goto Shattrath City 53.99,44.75
 step
   note A'dal in Shattrath City wants you to slay Magtheridon.
-  kill Magtheridon##17257 |q 10888 |goto Magtheridon's Lair - Raid -1,-1
+  kill Magtheridon##17257 |q 10888 |goto Magtheridon's Lair - Raid -1,-1 |raid
 step
   talk A'dal##18481
   turnin Trial of the Naaru: Magtheridon##10888 |goto Shattrath City 53.99,44.75

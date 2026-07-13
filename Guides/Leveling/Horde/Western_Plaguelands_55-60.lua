@@ -50,7 +50,7 @@ step
   accept Oculus Illusions##6569 |goto Western Plaguelands 50.79,77.85
 step
   note Travel to Blackrock Spire and collect 20 Black Dragonspawn Eyes. Return to Myranda the Hag when the task is complete.
-  kill Rage Talon Dragonspawn##9096 |q 6569 |goto Blackrock Spire - Dungeon -1,-1
+  kill Rage Talon Dragonspawn##9096 |q 6569 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Pamela Redpath##10926
   turnin Little Pamela##5142 |goto Eastern Plaguelands 36.45,90.8 |tip {turninat}Eastern Plaguelands
@@ -74,7 +74,7 @@ step
   accept The Lich, Ras Frostwhisper##5466 |goto Western Plaguelands 70.57,74.11
 step
   note Find Ras Frostwhisper in the Scholomance. When you have found him, use the Soulbound Keepsake on his undead visage. Should you succeed in reverting him to a mortal, strike him down and recover the Human Head of Ras Frostwhisper. Take the head back to Magistrate Marduke.
-  kill Ras Frostwhisper##10508 |q 5466 |goto Scholomance - Dungeon -1,-1
+  kill Ras Frostwhisper##10508 |q 5466 |goto Scholomance - Dungeon -1,-1 |elite
 step
   talk Artist Renfray##11936
   accept Of Love and Family##5848 |goto Western Plaguelands 65.77,75.37
@@ -95,7 +95,7 @@ step
   turnin Scarlet Subterfuge##5862 |goto Western Plaguelands 42.02,14.79
 step
   note Find Doctor Theolen Krastinov inside the Scholomance. Destroy him, then burn the Remains of Eva Sarkhoff and the Remains of Lucien Sarkhoff. Return to Eva Sarkhoff when the task is complete.
-  kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1
+  kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1 |elite
 step
   talk Tirion Fordring##1855
   turnin Of Love and Family##5848 |goto Eastern Plaguelands 7.62,43.64 |tip {turninat}Eastern Plaguelands
@@ -162,7 +162,7 @@ step
   accept Krastinov's Bag of Horrors##5515 |goto Western Plaguelands 70.22,73.71
 step
   note Locate Jandice Barov in the Scholomance and destroy her. From her corpse recover Krastinov's Bag of Horrors. Return the bag to Eva Sarkhoff.
-  kill Jandice Barov##10503 |q 5515 |goto Scholomance - Dungeon -1,-1
+  kill Jandice Barov##10503 |q 5515 |goto Scholomance - Dungeon -1,-1 |elite
 step
   talk Elder Meadowrun##15602
   turnin Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
@@ -207,7 +207,7 @@ step
   accept Kirtonos the Herald##5384 |goto Western Plaguelands 70.22,73.71
 step
   note Return to the Scholomance with the Blood of Innocents. Find the porch and place the Blood of Innocents in the brazier. Kirtonos will come to feast upon your soul.
-  kill Kirtonos the Herald##10506 |q 5384
+  kill Kirtonos the Herald##10506 |q 5384 |elite
 step
   talk Nara Wildmane##5770
   turnin Glyphed Oaken Branch##4987 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff

@@ -19,7 +19,7 @@ step
   accept Lost!##4492 |goto Un'Goro Crater 43.62,8.5
 step
   note Collect 7 Power Crystals of each color: red, blue, yellow, and green. Bring them to J.D. Collie at Marshal's Refuge.
-  kill Devilsaur##6498 |q 4284 |goto Un'Goro Crater 34.6,23.68
+  kill Devilsaur##6498 |q 4284 |goto Un'Goro Crater 34.6,23.68 |elite
 step
   talk Torwa Pathfinder##9619
   turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96

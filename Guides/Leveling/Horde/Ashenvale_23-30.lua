@@ -41,7 +41,7 @@ step
   collect Fathom Stone##177964 |q 6921 |goto Blackfathom Deeps - Dungeon -1,-1
 step
   note Kill Lorgus Jett in Blackfathom Deeps and then return to Je'neu Sancrea in Ashenvale.
-  kill Lorgus Jett##12902 |q 6565 |goto Blackfathom Deeps - Dungeon -1,-1
+  kill Lorgus Jett##12902 |q 6565 |goto Blackfathom Deeps - Dungeon -1,-1 |elite
 step
   note Take down 8 Thistlefur Avengers and 8 Thistlefur Shaman; most are located east of Zoram Strand in Thistlefur Village. Once completed, return to Karang Amakkar at Zoram'gar Outpost, Ashenvale.
   kill Thistlefur Avenger##3925 |q 216 |goto Ashenvale 36.64,36.96

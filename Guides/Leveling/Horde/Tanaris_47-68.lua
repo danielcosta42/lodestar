@@ -47,7 +47,7 @@ step
   accept Divino-matic Rod##2768 |goto Tanaris 52.46,28.51
 step
   note Bring the Divino-matic Rod to Chief Engineer Bilgewhizzle in Gadgetzan.
-  kill Sergeant Bly##7604 |q 2768 |goto Zul'Farrak - Dungeon -1,-1
+  kill Sergeant Bly##7604 |q 2768 |goto Zul'Farrak - Dungeon -1,-1 |elite
 step
   talk Trenton Lighthammer##7804
   accept A Good Head On Your Shoulders##2771 |goto Tanaris 51.41,28.75
@@ -77,7 +77,7 @@ step
   accept Troll Temper##3042 |goto Tanaris 51.41,28.75
 step
   note Bring 20 Vials of Troll Temper to Trenton Lighthammer in Gadgetzan.
-  kill Sandfury Shadowcaster##5648 |q 3042 |goto Zul'Farrak - Dungeon -1,-1
+  kill Sandfury Shadowcaster##5648 |q 3042 |goto Zul'Farrak - Dungeon -1,-1 |elite
 step
   talk Tran'rek##7876
   accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
@@ -134,13 +134,13 @@ step
   accept Nice Hat...##12513 |goto Tanaris 53.85,28.85
 step
   note Don Carlos has inadvertently challenged you to defeat his younger self in Old Hillsbrad. Afterwards, bring Don Carlos' Hat to him in Tanaris as proof.
-  kill Don Carlos##28132 |q 12513 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+  kill Don Carlos##28132 |q 12513 |goto Old Hillsbrad Foothills - Dungeon -1,-1 |elite
 step
   talk Don Carlos##28126
   accept Nice Hat...##12515 |goto Tanaris 53.85,28.85
 step
   note Don Carlos has inadvertently challenged you to defeat his younger self in Old Hillsbrad. Afterwards, bring Don Carlos' Hat to him in Tanaris as proof.
-  kill Don Carlos##28132 |q 12515 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+  kill Don Carlos##28132 |q 12515 |goto Old Hillsbrad Foothills - Dungeon -1,-1 |elite
 step
   talk Stoley##7881
   accept Stoley's Shipment##2873 |goto Tanaris 67.11,23.98
@@ -173,7 +173,7 @@ step
   accept Decoy!##8606 |goto Tanaris 65.24,18.58
 step
   note Narain Soothfancy in Tanaris wants you to travel to Winterspring and place the Bag of Gold at the drop off point documented by the booknappers.
-  kill Number Two##15554 |q 8606
+  kill Number Two##15554 |q 8606 |elite
 step
   note Take down 10 Wastewander Bandits and Thieves east of Gadgetzan, then report back to Chief Engineer Bilgewhizzle.
   kill Wastewander Bandit##5618 |q 1690 |goto Tanaris 63.41,29.78
@@ -209,7 +209,7 @@ step
   accept Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 64.2,51.42
 step
   note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  kill Kel'Thuzad##15990 |q 9251 |goto Naxxramas - Raid -1,-1
+  kill Kel'Thuzad##15990 |q 9251 |goto Naxxramas - Raid -1,-1 |raid
 step
   talk Steward of Time##20142
   accept To The Master's Lair##10279 |goto Tanaris 66.02,49.7
@@ -239,7 +239,7 @@ step
   accept The Vials of Eternity##10445 |goto Tanaris 61.05,56.95
 step
   note Soridormi at Caverns of Time wants you to retrieve Vashj's Vial Remnant from Lady Vashj at Coilfang Reservoir and Kael's Vial Remnant from Kael'thas Sunstrider at Tempest Keep.
-  kill Lady Vashj##21212 |q 10445 |goto Serpentshrine Cavern - Raid -1,-1
+  kill Lady Vashj##21212 |q 10445 |goto Serpentshrine Cavern - Raid -1,-1 |raid
 step
   talk Soridormi##19935
   accept Defender's Pledge##10460 |goto Tanaris 61.05,56.95
@@ -435,7 +435,7 @@ step
   accept The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36
 step
   note Bring the First and Second Mosh'aru Tablets to Yeh'kinya in Tanaris.
-  kill Theka the Martyr##7272 |q 3527 |goto Zul'Farrak - Dungeon -1,-1
+  kill Theka the Martyr##7272 |q 3527 |goto Zul'Farrak - Dungeon -1,-1 |elite
 step
   talk Narain Soothfancy##11811
   accept Stewvul, Ex-B.F.F.##8577 |goto Tanaris 65.24,18.58
@@ -503,13 +503,13 @@ step
 step
   only Priest
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
-  kill Atiesh##16387 |q 9257
+  kill Atiesh##16387 |q 9257 |raid
 step
   talk Anachronos##15192
   accept Atiesh, Greatstaff of the Guardian##9269 |goto Tanaris 64.2,51.42
 step
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
-  kill Atiesh##16387 |q 9269
+  kill Atiesh##16387 |q 9269 |raid
 step
   only Warlock
   talk Anachronos##15192
@@ -517,7 +517,7 @@ step
 step
   only Warlock
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
-  kill Atiesh##16387 |q 9270
+  kill Atiesh##16387 |q 9270 |raid
 step
   only Druid
   talk Anachronos##15192
@@ -525,7 +525,7 @@ step
 step
   only Druid
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
-  kill Atiesh##16387 |q 9271
+  kill Atiesh##16387 |q 9271 |raid
 step
   talk Andormu##20130
   turnin The Caverns of Time##10277 |goto Tanaris 58.43,54.28
@@ -651,7 +651,7 @@ step
   accept The Isle of Dread!##8585 |goto Tanaris 52.63,28.11
 step
   note Recover Lakmaeran's Carcass and 20 Chimaerok Tenderloins for Dirge Quikcleave in Tanaris.
-  kill Lord Lakmaeran##12803 |q 8585 |goto Feralas 29.34,72.63
+  kill Lord Lakmaeran##12803 |q 8585 |goto Feralas 29.34,72.63 |elite
 step
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
@@ -675,7 +675,7 @@ step
   accept Scrying Goggles? No Problem!##8578 |goto Tanaris 65.24,18.58
 step
   note Find Narain's Scrying Goggles and return them to Narain Soothfancy in Tanaris.
-  kill Molten Giant##11658 |q 8578 |goto Molten Core - Raid -1,-1
+  kill Molten Giant##11658 |q 8578 |goto Molten Core - Raid -1,-1 |elite
 step
   talk Zilzibin Drumlore##7010
   turnin Calm Before the Storm##4509 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
@@ -957,7 +957,7 @@ step
   accept The Final Tablets##4788 |goto Tanaris 66.89,24.03
 step
   note Bring the Fifth and Sixth Mosh'aru Tablets to Prospector Ironboot in Tanaris.
-  kill Smolderthorn Shadow Priest##9240 |q 4788 |goto Blackrock Spire - Dungeon -1,-1
+  kill Smolderthorn Shadow Priest##9240 |q 4788 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Narain Soothfancy##11811
   accept The Wrath of Neptulon##8729 |goto Tanaris 65.24,18.58

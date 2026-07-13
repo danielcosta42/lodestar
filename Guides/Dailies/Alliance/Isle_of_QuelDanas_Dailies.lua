@@ -94,10 +94,10 @@ step
   get Further Conversions |q 11525 |goto Isle of Quel'Danas 47.6,35.25
 step
   note Battlemage Arynna wants you to speak to Ayren Cloudbreaker when you're ready to fly over the Dead Scar. Once there, use the Arcane Charges to kill 2 Pit Overlords, 3 Eredar Sorcerers and 12 Wrath Enforcers.
-  kill Pit Overlord##25031 |q 11532 |goto Isle of Quel'Danas 53.28,71.0
+  kill Pit Overlord##25031 |q 11532 |goto Isle of Quel'Danas 53.28,71.0 |elite
 step
   note Battlemage Arynna wants you to speak to Ayren Cloudbreaker when you're ready to fly over the Dead Scar. Once there, use the Arcane Charges to kill 2 Pit Overlords, 3 Eredar Sorcerers and 12 Wrath Enforcers.
-  kill Pit Overlord##25031 |q 11533 |goto Isle of Quel'Danas 53.28,71.0
+  kill Pit Overlord##25031 |q 11533 |goto Isle of Quel'Danas 53.28,71.0 |elite
 step
   note Smith Hauthaa in Sun's Reach Armory wants you to kill Darkspine Myrmidon to the east and use their keys to steal three pieces of the ore from their chests.
   collect Darkspine Ore Chest##187264 |q 11535 |goto Isle of Quel'Danas 61.56,58.84
@@ -136,13 +136,13 @@ step
   get Know Your Ley Lines |q 11547 |goto Isle of Quel'Danas 48.51,44.42
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! With the essence in hand, my mages will be able to dismantle Agamath, ultimately collapsing the gateway and unlocking the way further into the sunwell.
-  kill Lady Vashj##21212 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1
+  kill Lady Vashj##21212 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1 |raid
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! Rohendor cannot withstand the combined force of our mages!
-  kill Lady Vashj##21212 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1
+  kill Lady Vashj##21212 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1 |raid
 step
   note Bring to me the essence of immortals ÔÇö found only on the most powerful beings of this world ÔÇö and Archonisus is sure to crumble!
-  kill Lady Vashj##21212 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1
+  kill Lady Vashj##21212 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1 |raid
 step
   talk Captain Theris Dawnhearth##24967
   turnin The Sanctum Wards##11496 |goto Isle of Quel'Danas 47.47,30.56

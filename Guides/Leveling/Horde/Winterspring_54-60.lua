@@ -43,7 +43,7 @@ step
   accept Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
   note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
-  kill Frostmaul Giant##7428 |q 969 |goto Winterspring 62.56,69.28
+  kill Frostmaul Giant##7428 |q 969 |goto Winterspring 62.56,69.28 |elite
 step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
@@ -76,7 +76,7 @@ step
   accept Snakestone of the Shadow Huntress##5306 |goto Winterspring 61.3,37.07
 step
   note Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.
-  kill Shadow Hunter Vosh'gajin##9236 |q 5306 |goto Blackrock Spire - Dungeon -1,-1
+  kill Shadow Hunter Vosh'gajin##9236 |q 5306 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Seril Scourgebane##11193
   accept Corruption##5307 |goto Winterspring 61.33,37.19

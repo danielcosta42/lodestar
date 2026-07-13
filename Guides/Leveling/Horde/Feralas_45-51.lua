@@ -83,13 +83,13 @@ step
   accept Pusillin and the Elder Azj'Tordin##7441 |goto Feralas 76.91,37.35
 step
   note Travel to Dire Maul and locate the Imp, Pusillin. Convince Pusillin to give you Azj'Tordin's Book of Incantations through any means necessary.
-  kill Pusillin##14354 |q 7441 |goto Dire Maul - Dungeon -1,-1
+  kill Pusillin##14354 |q 7441 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Talo Thornhoof##7776
   accept Lethtendris's Web##7489 |goto Feralas 76.18,43.83
 step
   note Bring Lethtendris's Web to Talo Thornhoof at Camp Mojache in Feralas.
-  kill Lethtendris##14327 |q 7489 |goto Dire Maul - Dungeon -1,-1
+  kill Lethtendris##14327 |q 7489 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Hadoken Swiftstrider##7875
   accept Zukk'ash Infestation##7730 |goto Feralas 74.91,42.46

@@ -92,7 +92,7 @@ step
   accept Undercutting the Competition##10165 |goto Terokkar Forest 39.37,58.48
 step
   note Nexus-Prince Haramad located outside of the Mana-Tombs wants you to kill Nexus-Prince Shaffar and bring Shaffar's Wrappings back to him.
-  kill Nexus-Prince Shaffar##18344 |q 10165 |goto Mana-Tombs - Dungeon -1,-1
+  kill Nexus-Prince Shaffar##18344 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |elite
 step
   talk Artificer Morphalius##19670
   accept Safety Is Job One##10216 |goto Terokkar Forest 39.42,58.51
@@ -217,16 +217,16 @@ step
   kill Ashkaz##18539 |q 9987 |goto Terokkar Forest 49.11,16.89
 step
   note Greatfather Aldrimus standing outside the Auchenai Crypts of Auchindoun has asked that you enter the Auchenai Crypts and destroy Exarch Maladaar.
-  kill Exarch Maladaar##18373 |q 10164 |goto Auchenai Crypts - Dungeon -1,-1
+  kill Exarch Maladaar##18373 |q 10164 |goto Auchenai Crypts - Dungeon -1,-1 |elite
 step
   note Kill Naphthal'ar and then return to Warden Treelos at the Cenarion Thicket in Terokkar Forest.
   kill Naphthal'ar##18438 |q 9951 |goto Terokkar Forest 43.54,22.07
 step
   note Artificer Morphalius wants you to kill 10 Ethereal Crypt Raiders, 5 Ethereal Sorcerers, 5 Nexus Stalkers and 5 Ethereal Spellbinders.
-  kill Ethereal Crypt Raider##18311 |q 10216 |goto Mana-Tombs - Dungeon -1,-1
+  kill Ethereal Crypt Raider##18311 |q 10216 |goto Mana-Tombs - Dungeon -1,-1 |elite
 step
   note Kill Darkweaver Syth in the Sethekk halls, then free Lakka from captivity. Return to Isfar outside the Sethekk Halls when you've completed the rescue.
-  kill Darkweaver Syth##18472 |q 10097 |goto Sethekk Halls - Dungeon -1,-1
+  kill Darkweaver Syth##18472 |q 10097 |goto Sethekk Halls - Dungeon -1,-1 |elite
 step
   note Advisor Faila asks that you kill 14 Shienor Talonites and 6 Shienor Sorcerers and then return to her in Stonebreaker Hold.
   kill Shienor Talonite##18449 |q 10868 |goto Terokkar Forest 50.89,19.63
@@ -378,7 +378,7 @@ step
   accept Terokkarantula##10921 |goto Terokkar Forest 49.71,76.19
 step
   note Vindicator Haylen wants you to kill the Terokkarantula and then return to him west of Netherweb Ridge.
-  kill Terokkarantula##20682 |q 10921 |goto Terokkar Forest 54.27,81.82
+  kill Terokkarantula##20682 |q 10921 |goto Terokkar Forest 54.27,81.82 |elite
 step
   talk Hazzik##23306
   turnin Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
@@ -432,7 +432,7 @@ step
   accept The Lexicon Demonica##10666 |goto Terokkar Forest 77.58,38.72
 step
   note Obtain the Lexicon Demonica from Grandmaster Vorpil and bring it to David Wayne at Wayne's Refuge.
-  kill Grandmaster Vorpil##18732 |q 10666 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Grandmaster Vorpil##18732 |q 10666 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Kill 10 Firewing Defenders, 10 Firewing Bloodwarders, and 10 Firewing Warlocks. Then report back to Sergeant Chawni at Stonebreaker Camp in Terokkar Forest.
   kill Firewing Defender##5355 |q 9997 |goto Terokkar Forest 71.62,36.54
@@ -482,7 +482,7 @@ step
   accept Veil Lithic: Preemptive Strike##10861 |goto Terokkar Forest 37.45,51.54
 step
   note Oakun wants you to take the Dread Relic to the Writhing Mound. Once there, kill Auchenai Death-Speakers and Auchenai Doomsayers to collect 20 Doom Skulls. Then find the Writhing Mound Summoning Circle and use the Dread Relic to summon and destroy Teribus the Cursed. Return to Oakun when the deed is done.
-  kill Teribus the Cursed##22441 |q 10923 |goto Terokkar Forest 46.86,70.47
+  kill Teribus the Cursed##22441 |q 10923 |goto Terokkar Forest 46.86,70.47 |elite
 step
   note Commander Ra'vaj at the Sha'tari Outpost in the Bone Wastes of Terokkar Forest wants you to slay 12 Auchenai Initiates and 5 Auchenai Doomsayers.
   kill Auchenai Initiate##21284 |q 10914 |goto Terokkar Forest 35.03,72.94
@@ -530,7 +530,7 @@ step
   accept Adversarial Blood##11885 |goto Terokkar Forest 64.23,66.97
 step
   note Find the Skull Piles in the middle of the summoning circles of Skettis. Summon and defeat each of the descendants by using 10 Time-Lost Scrolls at the Skull Pile. Return to Hazzik at Blackwind Landing.
-  kill Darkscreecher Akkarai##23161 |q 11885
+  kill Darkscreecher Akkarai##23161 |q 11885 |elite
 step
   note Shadowstalker Kaide wants you to kill 10 Bonechewer Devastators and 6 Bonechewer Backbreakers.
   kill Bonechewer Devastator##16772 |q 10008 |goto Terokkar Forest 66.09,55.0
@@ -557,13 +557,13 @@ step
   accept Underworld Loam##10667 |goto Terokkar Forest 77.58,38.72
 step
   note Get a Vial of Underworld Loam from Hydromancer Thespia and bring it to David Wayne at Wayne's Refuge.
-  kill Hydromancer Thespia##17797 |q 10667 |goto The Steamvault - Dungeon -1,-1
+  kill Hydromancer Thespia##17797 |q 10667 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   talk David Wayne##21465
   accept Tear of the Earthmother##10670 |goto Terokkar Forest 77.58,38.72
 step
   note Recover the Tear of the Earthmother from Warbringer O'mrogg and return it to David Wayne at Wayne's Refuge.
-  kill Warbringer O'mrogg##16809 |q 10670 |goto The Shattered Halls - Dungeon -1,-1
+  kill Warbringer O'mrogg##16809 |q 10670 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   note Sergeant Chawni wants you to use the Final Code Sheet to set off the Mana Bomb. Then report back to Tooki at Stonebreaker Hold in Terokkar Forest.
   kill Mana Bomb Kill Credit Trigger##21039 |q 10447 |goto Terokkar Forest 71.26,37.37
@@ -614,7 +614,7 @@ step
   accept Terokk's Downfall##11073 |goto Terokkar Forest 64.09,66.9
 step
   note Take the Time-Lost Offering prepared by Hazzik to the Skull Pile at the center of Skettis and summon and defeat Terokk. Return to Sky Commander Adaris when you've completed this task.
-  kill Terokk##21838 |q 11073
+  kill Terokk##21838 |q 11073 |elite
 step
   note Kirrik at the Refugee Caravan wants you to extinguish the four signal fires of Veil Shalas.
   collect Sapphire Signal Fire##185216 |q 10874 |goto Terokkar Forest 55.18,67.21

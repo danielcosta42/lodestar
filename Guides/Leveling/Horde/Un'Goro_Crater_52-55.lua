@@ -20,7 +20,7 @@ step
   accept Roll the Bones##3882 |goto Un'Goro Crater 43.5,7.42
 step
   note Bring 8 Dinosaur Bones to Spark Nilminer in Un'Goro Crater.
-  kill Stegodon##6501 |q 3882 |goto Un'Goro Crater 35.52,72.3
+  kill Stegodon##6501 |q 3882 |goto Un'Goro Crater 35.52,72.3 |elite
 step
   talk Hol'anyee Marshal##9271
   accept Alien Ecology##3883 |goto Un'Goro Crater 43.89,7.24
@@ -43,7 +43,7 @@ step
   talk Larion##9118
   accept Bloodpetal Zapper##4148 |goto Un'Goro Crater 45.54,8.72
 step
-  kill Devilsaur##6498 |q 4148 |goto Un'Goro Crater 34.6,23.68
+  kill Devilsaur##6498 |q 4148 |goto Un'Goro Crater 34.6,23.68 |elite
 step
   talk Karna Remtravel##9618
   accept Chasing A-Me 01##4243 |goto Un'Goro Crater 46.38,13.44
@@ -52,7 +52,7 @@ step
   accept Crystals of Power##4284 |goto Un'Goro Crater 41.92,2.7
 step
   note Collect 7 Power Crystals of each color: red, blue, yellow, and green. Bring them to J.D. Collie at Marshal's Refuge.
-  kill Devilsaur##6498 |q 4284 |goto Un'Goro Crater 34.6,23.68
+  kill Devilsaur##6498 |q 4284 |goto Un'Goro Crater 34.6,23.68 |elite
 step
   talk Spraggle Frock##9997
   accept Lost!##4492 |goto Un'Goro Crater 43.62,8.5
@@ -151,7 +151,7 @@ step
   kill Krakle's Thermometer##10541 |q 974 |goto Un'Goro Crater 49.71,48.53
 step
   note Travel to Fire Plume Ridge, south of Marshal's Refuge.
-  kill Blazerunner##9376 |q 3962 |goto Un'Goro Crater 49.41,49.33
+  kill Blazerunner##9376 |q 3962 |goto Un'Goro Crater 49.41,49.33 |elite
 step
   talk Krakle##10302
   turnin Finding the Source##974 |goto Un'Goro Crater 30.93,50.44

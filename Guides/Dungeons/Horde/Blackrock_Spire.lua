@@ -25,13 +25,13 @@ step
   accept Stonefort the Elder##8644 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Slay Halycon, pack mistress of the Bloodaxe worg.
-  kill Halycon##10220 |q 4724 |goto Blackrock Spire - Dungeon -1,-1
+  kill Halycon##10220 |q 4724 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   note Read Warosh's Scroll. Bring Warosh's Mojo to Warosh.
   kill Warosh##10799 |q 4867 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
-  kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1
+  kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Galamav the Marksman##9081
   turnin The Pack Mistress##4724 |goto Badlands 5.96,47.73

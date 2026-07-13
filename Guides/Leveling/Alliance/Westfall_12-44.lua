@@ -195,7 +195,7 @@ step
   accept The Defias Brotherhood##166 |goto Westfall 56.33,47.52
 step
   note Kill Edwin VanCleef and bring his head to Gryan Stoutmantle.
-  kill Edwin VanCleef##639 |q 166 |goto The Deadmines - Dungeon - The Deadmines -1,-1
+  kill Edwin VanCleef##639 |q 166 |goto The Deadmines - Dungeon - The Deadmines -1,-1 |elite
 step
   talk Scout Riell##820
   accept Red Silk Bandanas##214 |goto Westfall 56.67,47.35

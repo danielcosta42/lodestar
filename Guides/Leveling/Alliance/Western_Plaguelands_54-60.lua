@@ -139,7 +139,7 @@ step
   accept The Lich, Ras Frostwhisper##5466 |goto Western Plaguelands 70.57,74.11
 step
   note Find Ras Frostwhisper in the Scholomance. When you have found him, use the Soulbound Keepsake on his undead visage. Should you succeed in reverting him to a mortal, strike him down and recover the Human Head of Ras Frostwhisper. Take the head back to Magistrate Marduke.
-  kill Ras Frostwhisper##10508 |q 5466 |goto Scholomance - Dungeon -1,-1
+  kill Ras Frostwhisper##10508 |q 5466 |goto Scholomance - Dungeon -1,-1 |elite
 step
   talk Artist Renfray##11936
   accept Of Love and Family##5848 |goto Western Plaguelands 65.77,75.37
@@ -160,7 +160,7 @@ step
   turnin Scarlet Subterfuge##5862 |goto Western Plaguelands 42.02,14.79
 step
   note Find Doctor Theolen Krastinov inside the Scholomance. Destroy him, then burn the Remains of Eva Sarkhoff and the Remains of Lucien Sarkhoff. Return to Eva Sarkhoff when the task is complete.
-  kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1
+  kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1 |elite
 step
   turnin Better Late Than Never##5021 |goto Western Plaguelands 38.73,55.24
 step
@@ -263,7 +263,7 @@ step
   accept The Last Barov##5344 |goto Western Plaguelands 43.45,83.73
 step
   note Travel to the Bulwark - Horde territory - and assassinate Alexi Barov. Take his head and return to Weldon Barov.
-  kill Alexi Barov##11022 |q 5344 |goto Tirisfal Glades 83.06,71.6
+  kill Alexi Barov##11022 |q 5344 |goto Tirisfal Glades 83.06,71.6 |elite
 step
   talk Alchemist Arbington##11056
   accept The Key to Scholomance##5505 |goto Western Plaguelands 42.66,83.77
@@ -280,7 +280,7 @@ step
 step
   only Paladin
   note Bring the voodoo feathers to Ashlam Valorfist.
-  kill Gasher##5713 |q 8418 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Gasher##5713 |q 8418 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   talk Eva Sarkhoff##11216
   turnin Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
@@ -295,7 +295,7 @@ step
   accept Krastinov's Bag of Horrors##5515 |goto Western Plaguelands 70.22,73.71
 step
   note Locate Jandice Barov in the Scholomance and destroy her. From her corpse recover Krastinov's Bag of Horrors. Return the bag to Eva Sarkhoff.
-  kill Jandice Barov##10503 |q 5515 |goto Scholomance - Dungeon -1,-1
+  kill Jandice Barov##10503 |q 5515 |goto Scholomance - Dungeon -1,-1 |elite
 step
   talk Elder Meadowrun##15602
   turnin Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
@@ -376,7 +376,7 @@ step
   accept Kirtonos the Herald##5384 |goto Western Plaguelands 70.22,73.71
 step
   note Return to the Scholomance with the Blood of Innocents. Find the porch and place the Blood of Innocents in the brazier. Kirtonos will come to feast upon your soul.
-  kill Kirtonos the Herald##10506 |q 5384
+  kill Kirtonos the Herald##10506 |q 5384 |elite
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6023 |goto Western Plaguelands 51.92,28.06

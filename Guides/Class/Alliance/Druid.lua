@@ -119,7 +119,7 @@ step
 step
   only Druid
   note Find 3 Soran'ruk Fragments and 1 Large Soran'ruk Fragment and return them to Doan Karhan in the Barrens.
-  kill Twilight Acolyte##4809 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1
+  kill Twilight Acolyte##4809 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1 |elite
 step
   note Zardeth the Black Claw wants you to bring him a Tear of Tilloa from Darkshire and a Musquash Root from the Wetlands.
   collect Tear of Tilloa##321 |q 335 |goto Duskwood 78.35,35.95
@@ -150,27 +150,27 @@ step
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8059 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8059 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8076 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8076 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8077 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8077 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Druid
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Night, 5 Clay Scarabs and 5 Ivory Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8660 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8660 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring the the Husk of the Old God, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8661 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8661 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring Vek'nilash's Circlet, 2 Idols of Death, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'nilash##15275 |q 8662 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'nilash##15275 |q 8662 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring the Skin of the Great Sandworm, 2 Idols of Rebirth, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -178,19 +178,19 @@ step
 step
   only Druid
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8664 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8664 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring 1 Qiraji Regal Drape, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8694 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8694 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring 1 Qiraji Ceremonial Ring, 2 Jasper Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8702 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8702 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Bring 1 Qiraji Ornate Hilt, 2 Onyx Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8710 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8710 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Dreadmist Bracers to Deliana in Ironforge.
@@ -358,7 +358,7 @@ step
 step
   only Druid
   note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 4961
+  kill Demon of the Orb##6549 |q 4961 |elite
 step
   only Druid
   note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
@@ -368,10 +368,10 @@ step
   get Kezan's Taint |q 8107 |goto Stranglethorn Vale 15.34,16.12
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1
+  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
   note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  kill Kel'Thuzad##15990 |q 9251 |goto Naxxramas - Raid -1,-1
+  kill Kel'Thuzad##15990 |q 9251 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Gnome Druid
   talk Alamar Grimm##460
@@ -473,7 +473,7 @@ step
 step
   only Druid
   note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
-  kill Gasher##5713 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Gasher##5713 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   only Druid
   get Kezan's Taint |q 8108 |goto Stranglethorn Vale 15.34,16.12
@@ -495,11 +495,11 @@ step
 step
   only Druid
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Shoulderpads if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  kill Grobbulus##15931 |q 9106 |goto Naxxramas - Raid -1,-1
+  kill Grobbulus##15931 |q 9106 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Druid
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Sandals if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  kill Gluth##15932 |q 9107 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9107 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Druid
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Gloves if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
@@ -507,15 +507,15 @@ step
 step
   only Druid
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Belt if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  kill Gluth##15932 |q 9109 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9109 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Druid
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Bindings if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  kill Gluth##15932 |q 9110 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9110 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Druid
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
-  kill Atiesh##16387 |q 9271
+  kill Atiesh##16387 |q 9271 |raid
 step
   only Human Druid
   talk Drusilla La Salle##459
@@ -686,7 +686,7 @@ step
 step
   only Druid
   note Bring a Dreadmist Belt and a set of Dreadmist Wraps to Deliana in Ironforge.
-  kill Thuzadin Shadowcaster##10398 |q 8936 |goto Stratholme - Dungeon -1,-1
+  kill Thuzadin Shadowcaster##10398 |q 8936 |goto Stratholme - Dungeon -1,-1 |elite
 step
   only Druid
   talk Deliana##16013
@@ -732,7 +732,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1
+  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -741,7 +741,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1
+  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -761,7 +761,7 @@ step
 step
   only Druid
   note Return to Deliana in Ironforge with a set of Dreadmist Sandals, Dreadmist Leggings and Dreadmist Mantle.
-  kill Baroness Anastari##10436 |q 8958 |goto Stratholme - Dungeon -1,-1
+  kill Baroness Anastari##10436 |q 8958 |goto Stratholme - Dungeon -1,-1 |elite
 step
   only Druid
   talk Deliana##16013
@@ -786,7 +786,7 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
+  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |elite
 step
   talk Bodley##16033
   turnin Components of Importance##8965
@@ -804,7 +804,7 @@ step
   accept The Right Piece of Lord Valthalak's Amulet##8989
 step
   note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the recombined Lord Valthalak's Amulet and the Brazier of Beckoning.
-  kill Mor Grayhoof##16080 |q 8989
+  kill Mor Grayhoof##16080 |q 8989 |elite
 step
   talk Bodley##16033
   turnin The Right Piece of Lord Valthalak's Amulet##8989
@@ -822,7 +822,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  kill Lord Valthalak##16042 |q 8995
+  kill Lord Valthalak##16042 |q 8995 |raid
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995

@@ -13,10 +13,10 @@ step
   accept Into The Scarlet Monastery##1048 |goto Undercity 56.25,92.2
 step
   note Return Vorrel Sengutz's wedding ring to Monika Sengutz in Tarren Mill.
-  kill Nancy Vishas##3984 |q 1051 |goto Alterac Mountains 32.33,32.78
+  kill Nancy Vishas##3984 |q 1051 |goto Alterac Mountains 32.33,32.78 |elite
 step
   note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Varimathras in the Undercity.
-  kill High Inquisitor Whitemane##3977 |q 1048 |goto Scarlet Monastery - Dungeon -1,-1
+  kill High Inquisitor Whitemane##3977 |q 1048 |goto Scarlet Monastery - Dungeon -1,-1 |elite
 step
   talk Monika Sengutz##3982
   turnin Vorrel's Revenge##1051 |goto Hillsbrad Foothills 62.67,18.88

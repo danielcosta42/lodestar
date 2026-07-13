@@ -183,7 +183,7 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7
+  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |elite
 step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
@@ -198,7 +198,7 @@ step
   accept The Cipher of Damnation##10588 |goto Shadowmoon Valley 53.95,23.52
 step
   note Use the Cipher of Damnation at the Altar of Damnation to summon Cyrukh the Firelord.
-  kill Cyrukh the Firelord##21181 |q 10588
+  kill Cyrukh the Firelord##21181 |q 10588 |elite
 step
   talk Earthmender Torlok##21024
   turnin The Cipher of Damnation##10588 |goto Shadowmoon Valley 42.19,45.06
@@ -237,7 +237,7 @@ step
   accept Trial of the Naaru: Magtheridon##10888 |goto Shattrath City 53.99,44.75
 step
   note A'dal in Shattrath City wants you to slay Magtheridon.
-  kill Magtheridon##17257 |q 10888 |goto Magtheridon's Lair - Raid -1,-1
+  kill Magtheridon##17257 |q 10888 |goto Magtheridon's Lair - Raid -1,-1 |raid
 step
   talk A'dal##18481
   turnin Trial of the Naaru: Magtheridon##10888 |goto Shattrath City 53.99,44.75

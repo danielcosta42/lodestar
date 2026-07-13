@@ -60,18 +60,18 @@ step
   note Somewhere in the Slag Pit of the Cauldron you will find the Secret Plans: Fiery Flux that Overseer Maltorius stole. Find those plans and return them to Master Smith Burninate in the Searing Gorge.
   collect Secret Plans: Fiery Flux##179826 |q 7722 |goto Searing Gorge 40.45,35.74
 step
-  kill Azzere the Skyblade##5834 |q 6642 |goto The Barrens 44.83,64.1
+  kill Dark Iron Geologist##5839 |q 6642 |goto Searing Gorge 63.9,59.56
 step
-  kill Molten Destroyer##11659 |q 6643 |goto Molten Core - Raid -1,-1
+  kill Molten Destroyer##11659 |q 6643 |goto Molten Core - Raid -1,-1 |elite
 step
-  kill Molten Destroyer##11659 |q 6644 |goto Molten Core - Raid -1,-1
+  kill Molten Destroyer##11659 |q 6644 |goto Molten Core - Raid -1,-1 |elite
 step
   get Favor Amongst the Brotherhood, Core Leather |q 6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   kill Firegut Brute##7035 |q 6646 |goto Burning Steppes 81.46,43.38
 step
   note Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.
-  kill Golemagg the Incinerator##11988 |q 7604 |goto Molten Core - Raid -1,-1
+  kill Golemagg the Incinerator##11988 |q 7604 |goto Molten Core - Raid -1,-1 |raid
 step
   talk Taskmaster Scrange##14626
   turnin STOLEN: Smithing Tuyere and Lookout's Spyglass##7728 |goto Searing Gorge 38.97,27.51

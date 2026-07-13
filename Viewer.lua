@@ -264,6 +264,21 @@ local function build()
 	end)
 	frame.prereq:Hide()
 
+	-- Banner de GRUPO: passo atual tem inimigo elite/chefe -> recomenda grupo/raide
+	-- e oferece "Procurar grupo" (gancho pro PartyLens; fallback: buscador nativo).
+	frame.group = UI.Panel(frame.content, { color = { 0.16, 0.10, 0.04, 0.92 }, borderColor = C.amber })
+	local gstripe = UI.Rect(frame.group, "ARTWORK", C.amber)
+	gstripe:SetPoint("TOPLEFT"); gstripe:SetPoint("BOTTOMLEFT"); gstripe:SetWidth(3)
+	frame.groupText = frame.group:CreateFontString(nil, "OVERLAY")
+	UI.SetFont(frame.groupText, 11.5, { color = C.amber })
+	frame.groupText:SetPoint("TOPLEFT", 10, -8)
+	frame.groupText:SetPoint("RIGHT", frame.group, "RIGHT", -96, 0)
+	frame.groupText:SetJustifyH("LEFT"); frame.groupText:SetWordWrap(true)
+	frame.groupBtn = UI.Button(frame.group, ns.L.GROUP_FIND, 84, 20)
+	frame.groupBtn:SetPoint("RIGHT", -8, 0)
+	frame.groupBtn:SetScript("OnClick", function() ns:FindGroup(frame._groupRaid) end)
+	frame.group:Hide()
+
 	-- Prévia "a seguir" ---------------------------------------------------
 	frame.nextLabel = frame:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(frame.nextLabel, 10, { num = true, color = C.muted })
@@ -353,7 +368,15 @@ local function goalText(goal)
 		or C.active
 	local hex = ("%02x%02x%02x"):format(col[1] * 255, col[2] * 255, col[3] * 255)
 	local qty = goal.count and (goal.count .. " ") or ""
-	return ("|cff%s%s|r %s%s"):format(hex, verbLabel(goal.verb), qty, displayName(goal))
+	local base = ("|cff%s%s|r %s%s"):format(hex, verbLabel(goal.verb), qty, displayName(goal))
+	-- selo de dificuldade: elite (grupo) / chefe de mundo (raide)
+	if goal.elite or goal.raid then
+		local tc = goal.raid and C.factionH or C.amber
+		local th = ("%02x%02x%02x"):format(tc[1] * 255, tc[2] * 255, tc[3] * 255)
+		local lbl = goal.raid and ns.L.GROUP_TAG_RAID or ns.L.GROUP_TAG_ELITE
+		base = base .. ("  |cff%s[%s]|r"):format(th, lbl)
+	end
+	return base
 end
 
 --------------------------------------------------------------------------------
@@ -487,6 +510,29 @@ function V:Refresh()
 	if frame._prereqRoutePid and (not block or block.pid ~= frame._prereqRoutePid) then
 		if ns.Waypoint then ns.Waypoint:ClearCustom() end
 		frame._prereqRoutePid = nil
+	end
+
+	-- Banner de GRUPO: o passo atual tem um objetivo elite/chefe ainda não feito?
+	local needRaid, needGroup = false, false
+	if step then
+		for _, goal in ipairs(step.goals) do
+			if (goal.elite or goal.raid) and ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal) then
+				if goal.raid then needRaid = true else needGroup = true end
+			end
+		end
+	end
+	if needRaid or needGroup then
+		frame._groupRaid = needRaid
+		frame.groupText:SetText(needRaid and ns.L.GROUP_RAID or ns.L.GROUP_ELITE)
+		frame.group:ClearAllPoints()
+		frame.group:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
+		frame.group:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)
+		local gh = math.max(28, frame.groupText:GetStringHeight() + 16)
+		frame.group:SetHeight(gh)
+		frame.group:Show()
+		y = y + gh + 8
+	else
+		frame.group:Hide()
 	end
 
 	-- "Guard" de viagem: como chegar (voo/barco/portal) quando o alvo está fora da zona

@@ -106,7 +106,7 @@ step
   accept Archonisus, the Final Gate##11553 |goto Isle of Quel'Danas 50.14,28.24
 step
   note Nether-Stalker Mah'duun wants you to slay 4 Sisters of Torment. Return to him in Shattrath's Lower City once you have done so in order to collect the bounty.
-  kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
   get Discovering Your Roots |q 11520 |goto Isle of Quel'Danas 51.49,32.46
@@ -121,10 +121,10 @@ step
   get Further Conversions |q 11525 |goto Isle of Quel'Danas 47.6,35.25
 step
   note Battlemage Arynna wants you to speak to Ayren Cloudbreaker when you're ready to fly over the Dead Scar. Once there, use the Arcane Charges to kill 2 Pit Overlords, 3 Eredar Sorcerers and 12 Wrath Enforcers.
-  kill Pit Overlord##25031 |q 11532 |goto Isle of Quel'Danas 53.28,71.0
+  kill Pit Overlord##25031 |q 11532 |goto Isle of Quel'Danas 53.28,71.0 |elite
 step
   note Battlemage Arynna wants you to speak to Ayren Cloudbreaker when you're ready to fly over the Dead Scar. Once there, use the Arcane Charges to kill 2 Pit Overlords, 3 Eredar Sorcerers and 12 Wrath Enforcers.
-  kill Pit Overlord##25031 |q 11533 |goto Isle of Quel'Danas 53.28,71.0
+  kill Pit Overlord##25031 |q 11533 |goto Isle of Quel'Danas 53.28,71.0 |elite
 step
   note Smith Hauthaa in Sun's Reach Armory wants you to kill Darkspine Myrmidon to the east and use their keys to steal three pieces of the ore from their chests.
   collect Darkspine Ore Chest##187264 |q 11535 |goto Isle of Quel'Danas 61.56,58.84
@@ -163,13 +163,13 @@ step
   get Know Your Ley Lines |q 11547 |goto Isle of Quel'Danas 48.51,44.42
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! With the essence in hand, my mages will be able to dismantle Agamath, ultimately collapsing the gateway and unlocking the way further into the sunwell.
-  kill Lady Vashj##21212 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1
+  kill Lady Vashj##21212 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1 |raid
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! Rohendor cannot withstand the combined force of our mages!
-  kill Lady Vashj##21212 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1
+  kill Lady Vashj##21212 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1 |raid
 step
   note Bring to me the essence of immortals ÔÇö found only on the most powerful beings of this world ÔÇö and Archonisus is sure to crumble!
-  kill Lady Vashj##21212 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1
+  kill Lady Vashj##21212 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1 |raid
 step
   talk Exarch Larethor##24813
   turnin Crisis at the Sunwell##11481 |goto Isle of Quel'Danas 47.42,30.74
@@ -340,7 +340,7 @@ step
   accept Blast the Gateway##11516 |goto Hellfire Peninsula 58.18,17.58
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   note Magistrix Seyla at the Throne of Kil'jaeden wants you to kill 4 Emaciated Felbloods by using the Fel Siphon on them. You will need Demonic Blood from nearby Wrath Heralds to power the Fel Siphon.
   kill Emaciated Felblood##24955 |q 11515

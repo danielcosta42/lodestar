@@ -23,7 +23,7 @@ step
   accept Capture the Weapons##10627 |goto Shadowmoon Valley 29.79,31.26
 step
   note Grokom Deatheye at Shadowmoon Village wants you to bring him Mazakradon's Glaive and Morgroron's Glaive.
-  kill Makazradon##21501 |q 10627 |goto Shadowmoon Valley 22.68,35.3
+  kill Makazradon##21501 |q 10627 |goto Shadowmoon Valley 22.68,35.3 |elite
 step
   talk Researcher Tiorus##21770
   accept What Strange Creatures...##10660 |goto Shadowmoon Valley 30.07,28.26
@@ -92,7 +92,7 @@ step
   accept The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83
+  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |elite
 step
   talk Akama##21700
   accept Ruse of the Ashtongue##10946 |goto Shadowmoon Valley 58.11,48.18
@@ -134,7 +134,7 @@ step
   accept Divination: Gorefiend's Armor##10634 |goto Shadowmoon Valley 58.23,70.79
 step
   note The Ancient Shadowmoon Spirit at the Altar of Shadows in southeast Shadowmoon Valley wants you to recover Gorefiend's Armor.
-  kill Vhel'kur##21801 |q 10634 |goto Shadowmoon Valley 67.04,87.07
+  kill Vhel'kur##21801 |q 10634 |goto Shadowmoon Valley 67.04,87.07 |elite
 step
   talk Ancient Shadowmoon Spirit##21797
   accept Divination: Gorefiend's Cloak##10635 |goto Shadowmoon Valley 58.23,70.79
@@ -152,13 +152,13 @@ step
   accept Teron Gorefiend, I am...##10639 |goto Shadowmoon Valley 58.23,70.79
 step
   note The Ancient Shadowmoon Spirit has used you as a pawn! Now that you have collected the items he required, he has revealed himself to be Teron Gorefiend. To break free of his possession, you must do his bidding and slay Karsius the Ancient Watcher.
-  kill Karsius the Ancient Watcher##21877 |q 10639
+  kill Karsius the Ancient Watcher##21877 |q 10639 |elite
 step
   note Exarch Onaala wants you to go to the ruins of Karabor and slay Alandien, Theras, Netharel and Varedis. Use the Book of Fel Names when Varedis uses Metamorphosis to weaken him. Return to Exarch Onaala with the Book of Fel Names after you've completed this task.
-  kill Varedis##21178 |q 10651 |goto Shadowmoon Valley 72.16,53.67
+  kill Varedis##21178 |q 10651 |goto Shadowmoon Valley 72.16,53.67 |elite
 step
   note Larissa Sunstrike wants you to go to the ruins of Karabor and slay Alandien, Theras, Netharel and Varedis. Use the Book of Fel Names when Varedis uses Metamorphosis to weaken him. Return to Larissa Sunstrike with the Book of Fel Names after completing this task.
-  kill Varedis##21178 |q 10692 |goto Shadowmoon Valley 72.16,53.67
+  kill Varedis##21178 |q 10692 |goto Shadowmoon Valley 72.16,53.67 |elite
 step
   talk Ja'y Nosliw##22433
   accept Earning Your Wings...##11063 |goto Shadowmoon Valley 65.89,87.18
@@ -491,7 +491,7 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7
+  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |elite
 step
   talk Arcanist Thelis##21955
   turnin The Ashtongue Corruptors##10685 |goto Shadowmoon Valley 56.25,59.6
@@ -617,7 +617,7 @@ step
   accept Thwart the Dark Conclave##10808 |goto Shadowmoon Valley 35.42,42.15
 step
   note Slay the Dark Conclave Ritualists and use the Staff of Parshah to end the Dark Conclave's summoning ritual, then return to Parshah in the Magma Fields.
-  kill Summoned Old God##22137 |q 10808 |goto Shadowmoon Valley 40.36,61.21
+  kill Summoned Old God##22137 |q 10808 |goto Shadowmoon Valley 40.36,61.21 |elite
 step
   talk Neltharaku##21657
   turnin To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98

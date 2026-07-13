@@ -111,7 +111,7 @@ step
   kill Lord Vyletongue##12236 |q 7044 |goto Maraudon - Dungeon -1,-1
 step
   note Slay Princess Theradras and return to Keeper Marandis at Nijel's Point in Desolace.
-  kill Princess Theradras##12201 |q 7065 |goto Maraudon - Dungeon -1,-1
+  kill Princess Theradras##12201 |q 7065 |goto Maraudon - Dungeon -1,-1 |elite
 step
   note Destroy 8 Diseased Wolves, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
   kill Diseased Wolf##1817 |q 4984 |goto Western Plaguelands 47.28,44.91
@@ -123,7 +123,7 @@ step
   kill Whirling Invader##14455 |q 8284 |goto Silithus 28.49,26.89
 step
   note Bring Deathclasp's Pincer to Vish Kozus, Captain of the Guard.
-  kill Deathclasp##15196 |q 8283 |goto Silithus 45.07,92.31
+  kill Deathclasp##15196 |q 8283 |goto Silithus 45.07,92.31 |elite
 step
   note Travel to Silithus and search for a Reliquary of Purity within the ruins of Southwind Village. If you are able to find it, return with it to Rabine Saturna in Nighthaven, Moonglade.
   collect Dusty Reliquary##179565 |q 5527 |goto Silithus 63.23,55.35
@@ -141,7 +141,7 @@ step
   get Abyssal Contacts |q 8361 |goto Silithus 48.57,37.78
 step
   note Obtain the Twilight Battle Orders and bring them Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Tactical Task Briefing X in order to complete this quest.
-  kill Twilight Prophet##15308 |q 8498 |goto Silithus 22.82,68.66
+  kill Twilight Prophet##15308 |q 8498 |goto Silithus 22.82,68.66 |elite
 step
   note Kill 30 Hive'Ashi Stingers and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing XII in order to complete this quest.
   kill Hive'Ashi Stinger##11698 |q 8501 |goto Silithus 48.5,41.14
@@ -158,9 +158,9 @@ step
   note Slay 30 Hive'Zora Hive Sisters and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing V in order to complete this quest.
   kill Hive'Zora Hive Sister##11729 |q 8539 |goto Silithus 25.33,64.22
 step
-  kill The Prophet Skeram##15263 |q 8579 |goto Ahn'Qiraj - Raid -1,-1
+  kill The Prophet Skeram##15263 |q 8579 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
-  kill The Prophet Skeram##15263 |q 8595 |goto Ahn'Qiraj - Raid -1,-1
+  kill The Prophet Skeram##15263 |q 8595 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   note Slay 30 Hive'Zora Tunnelers and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing VII in order to complete this quest.
   kill Hive'Zora Tunneler##11726 |q 8687 |goto Silithus 23.17,64.15
@@ -205,10 +205,10 @@ step
   get Arms for the Field |q 8781
 step
   note Bring a Skin of Shadow, 3 Frayed Abomination Stitchings and 1 Twilight Cultist Robe to Aurel Goldleaf at Cenarion Hold in Silithus. You must also bring Logistics Task Briefing XI in order to complete this quest.
-  kill Risen Construct##10488 |q 8829 |goto Scholomance - Dungeon -1,-1
+  kill Risen Construct##10488 |q 8829 |goto Scholomance - Dungeon -1,-1 |elite
 step
   note Dirk Thunderwood at Cenarion Hold wants you to bring him Venoxis's Venom Sac and Kurinnaxx's Venom Sac.
-  kill High Priest Venoxis##14507 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill High Priest Venoxis##14507 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   note Aurel Goldleaf at Cenarion Hold in Silithus wants you to bring her 1 Abyssal Scepter. You must also be Honored with the Cenarion Circle.
   get A Humble Offering |q 9248 |goto Silithus 51.96,38.16
@@ -468,7 +468,7 @@ step
   get Shards of the Felvine |q 5526 |goto Moonglade 51.69,45.1
 step
   note Return the Head of the Broodlord Lashlayer to Baristolth of the Shifting Sands at Cenarion Hold in Silithus.
-  kill Broodlord Lashlayer##12017 |q 8288 |goto Blackwing Lair - Raid -1,-1
+  kill Broodlord Lashlayer##12017 |q 8288 |goto Blackwing Lair - Raid -1,-1 |raid
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to find his beloved Natalia. The information that you gathered points to Hive'Regal in the south as being the area in which you may find Mistress Natalia Mar'alith.
   kill Mistress Natalia Mar'alith##15215 |q 8306

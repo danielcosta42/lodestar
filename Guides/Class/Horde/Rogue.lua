@@ -138,15 +138,15 @@ step
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8063 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8063 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8072 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8072 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8073 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8073 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Rogue
   kill Irondeep Trogg##10987 |q 8249 |goto Alterac Valley - Battleground 51.14,6.98
@@ -156,15 +156,15 @@ step
 step
   only Rogue
   note Bring the Qiraji Bindings of Command, 2 Idols of Strife, 5 Crystal Scarabs and 5 Bone Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8637 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8637 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring the the Carapace of the Old God, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8638 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8638 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring Vek'lor's Diadem, 2 Idols of the War, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'lor##15276 |q 8639 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'lor##15276 |q 8639 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring Ouro's Intact Hide, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -172,19 +172,19 @@ step
 step
   only Rogue
   note Bring the Qiraji Bindings of Command, 2 Idols of the Sun, 5 Silver Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8641 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8641 |goto Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring 1 Qiraji Martial Drape, 2 Azure Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8693 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8693 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring 1 Qiraji Ceremonial Ring, 2 Onyx Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8701 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8701 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Bring 1 Qiraji Spiked Hilt, 2 Vermillion Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8709 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8709 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Shadowcraft Bracers to Mokvar in Orgrimmar.
@@ -414,7 +414,7 @@ step
   kill Hive'Ashi Stinger##11698 |q 8310 |goto Silithus 48.5,41.14
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1
+  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
   only Troll Rogue
   talk Rwag##3155
@@ -564,7 +564,7 @@ step
 step
   only Rogue
   note Return the Azure Key to Lord Jorach Ravenholdt.
-  kill Morphaz##5719 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Morphaz##5719 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   only Rogue
   get Zandalarian Shadow Talisman |q 8143 |goto Stranglethorn Vale 14.08,13.72
@@ -586,11 +586,11 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Pauldrons if you bring him the following: 1 Desecrated Pauldrons, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 50 gold pieces.
-  kill Grobbulus##15931 |q 9080 |goto Naxxramas - Raid -1,-1
+  kill Grobbulus##15931 |q 9080 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Sabatons if you bring him the following: 1 Desecrated Sabatons, 12 Wartorn Leather Scraps, 3 Cured Rugged Hides, 2 Nexus Crystals and 25 gold pieces.
-  kill Gluth##15932 |q 9081 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9081 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Gauntlets if you bring him the following: 1 Desecrated Gauntlets, 8 Wartorn Leather Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -598,11 +598,11 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Waistguard if you bring him the following: 1 Desecrated Waistguard, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 15 gold pieces.
-  kill Gluth##15932 |q 9083 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9083 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Bracers if you bring him the following: 1 Desecrated Bracers, 6 Wartorn Leather Scraps, 1 Arcanite Bar, 2 Cured Rugged Hides and 10 gold pieces.
-  kill Gluth##15932 |q 9084 |goto Naxxramas - Raid -1,-1
+  kill Gluth##15932 |q 9084 |goto Naxxramas - Raid -1,-1 |raid
 step
   only Rogue
   talk David Trias##2122
@@ -823,7 +823,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1
+  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -832,7 +832,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1
+  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -852,7 +852,7 @@ step
 step
   only Rogue
   note Return to Mokvar in Orgimmar with a set of Shadowcraft Boots, Shadowcraft Pants and Shadowcraft Spaulders.
-  kill Rattlegore##11622 |q 9020 |goto Scholomance - Dungeon -1,-1
+  kill Rattlegore##11622 |q 9020 |goto Scholomance - Dungeon -1,-1 |elite
 step
   only Rogue
   talk Mokvar##16012
@@ -877,7 +877,7 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
+  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |elite
 step
   talk Bodley##16033
   turnin Components of Importance##8965
@@ -895,7 +895,7 @@ step
   accept The Right Piece of Lord Valthalak's Amulet##8989
 step
   note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the recombined Lord Valthalak's Amulet and the Brazier of Beckoning.
-  kill Mor Grayhoof##16080 |q 8989
+  kill Mor Grayhoof##16080 |q 8989 |elite
 step
   talk Bodley##16033
   turnin The Right Piece of Lord Valthalak's Amulet##8989
@@ -913,7 +913,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  kill Lord Valthalak##16042 |q 8995
+  kill Lord Valthalak##16042 |q 8995 |raid
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995

@@ -19,7 +19,7 @@ step
   kill Burning Blade Fanatic##3197 |q 5726 |goto Durotar 52.5,9.36
 step
   note Search Orgrimmar for Ragefire Chasm, then kill 8 Ragefire Troggs and 8 Ragefire Shaman before returning to Rahauro in Thunder Bluff.
-  kill Ragefire Trogg##11318 |q 5723 |goto Ragefire Chasm - Dungeon -1,-1
+  kill Ragefire Trogg##11318 |q 5723 |goto Ragefire Chasm - Dungeon -1,-1 |elite
 step
   talk Thrall##4949
   turnin Hidden Enemies##5726 |goto Orgrimmar 31.73,37.82
@@ -46,7 +46,7 @@ step
   accept Hidden Enemies##5728 |goto Orgrimmar 31.73,37.82
 step
   note Kill Bazzalan and Jergosh the Invoker before returning to Thrall in Orgrimmar.
-  kill Bazzalan##11519 |q 5728 |goto Ragefire Chasm - Dungeon -1,-1
+  kill Bazzalan##11519 |q 5728 |goto Ragefire Chasm - Dungeon -1,-1 |elite
 step
   talk Thrall##4949
   turnin Hidden Enemies##5728 |goto Orgrimmar 31.73,37.82

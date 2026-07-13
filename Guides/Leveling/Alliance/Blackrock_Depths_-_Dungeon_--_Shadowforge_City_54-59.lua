@@ -20,7 +20,7 @@ step
   accept A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   note Return Marshal Windsor's Lost Information.
-  kill General Angerforge##9033 |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill General Angerforge##9033 |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   talk Kharan Mighthammer##9021
   accept Kharan's Tale##4342 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1

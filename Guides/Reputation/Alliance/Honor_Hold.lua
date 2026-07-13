@@ -73,10 +73,10 @@ step
   kill Quillfang Ravager##16934 |q 9385 |goto Hellfire Peninsula 22.66,66.55
 step
   note Bring Warchief Kargath's Fist to Force Commander Danath Trollbane in Honor Hold.
-  kill Warchief Kargath Bladefist##16808 |q 9492 |goto The Shattered Halls - Dungeon -1,-1
+  kill Warchief Kargath Bladefist##16808 |q 9492 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   note Field Commander Romus at Honor Hold wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
-  kill Shattered Hand Legionnaire##16700 |q 9493 |goto The Shattered Halls - Dungeon -1,-1
+  kill Shattered Hand Legionnaire##16700 |q 9493 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   note Magus Zabraxis at Honor Hold wants you to bring her a Fel Ember.
   get Fel Embers |q 9494 |goto Hellfire Peninsula 53.86,65.74
@@ -196,10 +196,10 @@ step
   kill Haal'eshi Windwalker##16966 |q 9417 |goto Hellfire Peninsula 26.34,76.47
 step
   note Collect 10 Fel Orc Blood Vials and return them to Gunny at Honor Hold in Hellfire Peninsula.
-  kill Laughing Skull Enforcer##17370 |q 9589 |goto The Blood Furnace - Dungeon -1,-1
+  kill Laughing Skull Enforcer##17370 |q 9589 |goto The Blood Furnace - Dungeon -1,-1 |elite
 step
   note Slay Arazzius the Cruel in the Pools of Aggonar and return to Force Commander Danath Trollbane in the keep of Honor Hold.
-  kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55
+  kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55 |elite
 step
   talk Corporal Ironridge##21133
   turnin Ill Omens##10483 |goto Hellfire Peninsula 70.96,63.37
@@ -265,7 +265,7 @@ step
   kill Gan'arg Sapper##18827 |q 10079 |goto Hellfire Peninsula 53.89,61.12
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Gunny at Honor Hold in Hellfire Peninsula.
-  kill Watchkeeper Gargolmar##17306 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1
+  kill Watchkeeper Gargolmar##17306 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1 |elite
 step
   note Bring 4 Fel Iron Bars, 2 Arcane Dust and 4 Motes of Fire to Dumphry at Honor Hold in Hellfire Peninsula.
   collect Heavy Fel Iron Chest##181800 |q 10763 |goto Terokkar Forest 39.25,55.95
@@ -394,7 +394,7 @@ step
   accept Mission: The Abyssal Shelf##10163 |goto Hellfire Peninsula 79.34,33.86
 step
   note Wing Commander Gryphongar at Shatter Point in Hellfire Peninsula has asked that you destroy 20 Gan'arg Peons, 5 Mo'arg Overseers and 5 Fel Cannons.
-  kill Gan'arg Peon##19398 |q 10163 |goto Hellfire Peninsula 72.94,17.37
+  kill Gan'arg Peon##19398 |q 10163 |goto Hellfire Peninsula 72.94,17.37 |elite
 step
   talk Force Commander Danath Trollbane##16819
   turnin Trollbane is Looking for You##10936 |goto Hellfire Peninsula 56.64,66.7
@@ -409,7 +409,7 @@ step
   accept Drill the Drillmaster##10937 |goto Hellfire Peninsula 56.64,66.7
 step
   note Force Commander Danath Trollbane has ordered you to kill Drillmaster Zurok with all due haste. Return to the force commander at Honor Hold in the Hellfire Peninsula once the drillmaster is dead.
-  kill Drillmaster Zurok##19312 |q 10937 |goto Hellfire Peninsula 48.07,56.17
+  kill Drillmaster Zurok##19312 |q 10937 |goto Hellfire Peninsula 48.07,56.17 |elite
 step
   talk Field Marshal Brock##20793
   turnin Go to the Front##10382 |goto Hellfire Peninsula 68.29,28.55

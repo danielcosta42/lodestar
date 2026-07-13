@@ -13,7 +13,7 @@ step
   accept Bring the Light##3636 |goto Stormwind City 39.59,27.19
 step
   note Archbishop Bendictus wants you to slay Amnennar the Coldbringer in Razorfen Downs.
-  kill Amnennar the Coldbringer##7358 |q 3636 |goto Razorfen Downs - Dungeon -1,-1
+  kill Amnennar the Coldbringer##7358 |q 3636 |goto Razorfen Downs - Dungeon -1,-1 |elite
 step
   talk Belnistrasz##8516
   turnin Scourge of the Downs##3523 |goto Razorfen Downs - Dungeon -1,-1

@@ -67,10 +67,10 @@ step
   get The Warp Rifts |q 10278 |goto Hellfire Peninsula 61.87,81.53
 step
   note Bring Warchief Kargath's Fist to Nazgrel in Thrallmar.
-  kill Warchief Kargath Bladefist##16808 |q 9495 |goto The Shattered Halls - Dungeon -1,-1
+  kill Warchief Kargath Bladefist##16808 |q 9495 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   note Shadow Hunter Ty'jin at Thrallmar wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
-  kill Shattered Hand Legionnaire##16700 |q 9496 |goto The Shattered Halls - Dungeon -1,-1
+  kill Shattered Hand Legionnaire##16700 |q 9496 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   talk Battlecryer Blackeye##18267
   turnin Hellfire Fortifications##10110 |goto Hellfire Peninsula 55.95,39.2
@@ -166,7 +166,7 @@ step
   get The Eyes of Grillok |q 10813 |goto Hellfire Peninsula 61.69,81.81
 step
   note Collect 10 Fel Orc Blood Vials and return them to Centurion Caza'rez at Thrallmar in Hellfire Peninsula.
-  kill Laughing Skull Enforcer##17370 |q 9590 |goto The Blood Furnace - Dungeon -1,-1
+  kill Laughing Skull Enforcer##17370 |q 9590 |goto The Blood Furnace - Dungeon -1,-1 |elite
 step
   talk Apothecary Zelana##21257
   turnin Apothecary Zelana##10449 |goto Hellfire Peninsula 66.17,41.95
@@ -328,7 +328,7 @@ step
   accept Disrupt Their Reinforcements##10208 |goto Hellfire Peninsula 65.89,43.59
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Caza'rez at Thrallmar in Hellfire Peninsula.
-  kill Watchkeeper Gargolmar##17306 |q 9572 |goto Hellfire Ramparts - Dungeon -1,-1
+  kill Watchkeeper Gargolmar##17306 |q 9572 |goto Hellfire Ramparts - Dungeon -1,-1 |elite
 step
   note Defeat enemies around Portal Xilus and Portal Kruul to gather Demonic Rune Stones.
   collect Portal Xilus##184290 |q 10208 |goto Hellfire Peninsula 70.83,45.47
@@ -370,7 +370,7 @@ step
   accept Mission: The Abyssal Shelf##10162 |goto Hellfire Peninsula 65.89,43.59
 step
   note Forward Commander To'arch at Reaver's Fall in Hellfire Peninsula has asked that you destroy 20 Gan'arg Peons, 5 Mo'arg Overseers and 5 Fel Cannons.
-  kill Gan'arg Peon##19398 |q 10162 |goto Hellfire Peninsula 72.94,17.37
+  kill Gan'arg Peon##19398 |q 10162 |goto Hellfire Peninsula 72.94,17.37 |elite
 step
   talk Forward Commander To'arch##19273
   turnin Mission: The Abyssal Shelf##10162 |goto Hellfire Peninsula 65.89,43.59
@@ -433,7 +433,7 @@ step
   accept Cruel's Intentions##10136 |goto Hellfire Peninsula 55.02,35.96
 step
   note Kill Arazzius the Cruel, then return to Nazgrel in Thrallmar.
-  kill Arazzius the Cruel##19191 |q 10136 |goto Hellfire Peninsula 43.82,31.55
+  kill Arazzius the Cruel##19191 |q 10136 |goto Hellfire Peninsula 43.82,31.55 |elite
 step
   talk Gorkan Bloodfist##16845
   turnin A Spirit Guide##9410 |goto Hellfire Peninsula 31.99,27.79

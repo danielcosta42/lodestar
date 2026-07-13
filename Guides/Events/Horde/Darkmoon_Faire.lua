@@ -145,7 +145,7 @@ step
 step
   get Mechanical Repair Kits |q 7897 |goto Mulgore 37.12,37.31
 step
-  kill Anvilrage Marshal##8898 |q 7898 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Anvilrage Marshal##8898 |q 7898 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   kill Moonstalker##2069 |q 7899 |goto Darkshore 42.66,66.05
 step
@@ -189,11 +189,11 @@ step
 step
   kill Rabid Blisterpaw##5427 |q 7941 |goto Tanaris 37.69,63.72
 step
-  kill Anvilrage Marshal##8898 |q 7942 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Anvilrage Marshal##8898 |q 7942 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   kill Plaguebat##8600 |q 7943 |goto Eastern Plaguelands 33.87,77.16
 step
-  kill Anvilrage Officer##8895 |q 7946 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Anvilrage Officer##8895 |q 7946 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   get 1200 Tickets - Amulet of the Darkmoon |q 7981 |goto Mulgore 37.31,37.73
 step

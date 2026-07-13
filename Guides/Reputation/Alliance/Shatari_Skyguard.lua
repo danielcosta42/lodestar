@@ -28,10 +28,10 @@ step
   accept Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.38,52.68
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
+  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8 |elite
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1
+  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1 |elite
 step
   note Severin wants you to venture into Skettis and retrieve 6 Shadow Dusts from the arakkoa that dwell there.
   kill Skettis Wing Guard##21644 |q 11004 |goto Terokkar Forest 69.85,79.32
@@ -79,7 +79,7 @@ step
   accept To Skettis!##11098 |goto Shattrath City 64.33,42.33
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
+  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61 |elite
 step
   note Obtain an Elixir of Shadows from Severin and use it to find and slay Talonpriest Ishaal, Talonpriest Skizzik and Talonpriest Zellek in Skettis. Return to Commander Adaris after completing this task.
   kill Talonpriest Ishaal##23066 |q 11005 |goto Terokkar Forest 69.0,78.54
@@ -174,13 +174,13 @@ step
   accept Adversarial Blood##11885 |goto Terokkar Forest 64.23,66.97
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  kill Hemathion##18692 |q 11025 |goto Blade's Edge Mountains 31.1,71.08
+  kill Abyssal Flamebringer##19973 |q 11025 |goto Blade's Edge Mountains 28.84,81.09
 step
   note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
   kill Wrangled Aether Ray##23343 |q 11065
 step
   note Find the Skull Piles in the middle of the summoning circles of Skettis. Summon and defeat each of the descendants by using 10 Time-Lost Scrolls at the Skull Pile. Return to Hazzik at Blackwind Landing.
-  kill Darkscreecher Akkarai##23161 |q 11885
+  kill Darkscreecher Akkarai##23161 |q 11885 |elite
 step
   talk Chu'a'lor##23233
   turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
@@ -216,13 +216,13 @@ step
   kill Wrangled Aether Ray##23343 |q 11066
 step
   note Take the Time-Lost Offering prepared by Hazzik to the Skull Pile at the center of Skettis and summon and defeat Terokk. Return to Sky Commander Adaris when you've completed this task.
-  kill Terokk##21838 |q 11073
+  kill Terokk##21838 |q 11073 |elite
 step
   note Collect Time-Lost Scrolls from the time-lost arakkoa in Skettis and bring them to a Skull Pile inside a summoning circle in Skettis. Summon and defeat the descendants of Terokk's adversaries and return to Hakkiz with Akkarai's Talon, Garokk's Spine, Vekkaz's Scale and Gezzarak's Claw.
   get Tokens of the Descendants |q 11074 |goto Terokkar Forest 64.23,66.97
 step
   note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  kill Rivendark##23061 |q 11078 |goto Blade's Edge Mountains 30.43,58.58
+  kill Rivendark##23061 |q 11078 |goto Blade's Edge Mountains 30.43,58.58 |elite
 step
   talk Torkus##23316
   turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64

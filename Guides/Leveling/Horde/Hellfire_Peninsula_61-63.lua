@@ -24,7 +24,7 @@ step
   accept The Blood is Life##9590 |goto Hellfire Peninsula 54.88,36.0
 step
   note Collect 10 Fel Orc Blood Vials and return them to Centurion Caza'rez at Thrallmar in Hellfire Peninsula.
-  kill Laughing Skull Enforcer##17370 |q 9590 |goto The Blood Furnace - Dungeon -1,-1
+  kill Laughing Skull Enforcer##17370 |q 9590 |goto The Blood Furnace - Dungeon -1,-1 |elite
 step
   talk Megzeg Nukklebust##21283
   accept I Work... For the Horde!##10086 |goto Hellfire Peninsula 55.18,38.79
@@ -51,7 +51,7 @@ step
   collect Drycap Mushroom##181680 |q 9442 |goto Hellfire Peninsula 33.77,65.08
 step
   note Shadow Hunter Ty'jin at Thrallmar wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
-  kill Shattered Hand Legionnaire##16700 |q 9496 |goto The Shattered Halls - Dungeon -1,-1
+  kill Shattered Hand Legionnaire##16700 |q 9496 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   talk Ranger Captain Venn'ren##16789
   turnin Falcon Watch##9498 |goto Hellfire Peninsula 28.49,60.24
@@ -145,7 +145,7 @@ step
   accept The Earthbinder##10349 |goto Hellfire Peninsula 15.62,52.04
 step
   note Slay 5 Raging Colossi and then return to Tola'thion at the Cenarion Post in Hellfire Peninsula.
-  kill Raging Colossus##19188 |q 10132 |goto Hellfire Peninsula 15.38,42.29
+  kill Raging Colossus##19188 |q 10132 |goto Hellfire Peninsula 15.38,42.29 |elite
 step
   note Kill 8 Thornfang Ravagers and 8 Thornfang Venomspitters, and then return to Mahuram Stouthoof at the Cenarion Post in Hellfire Peninsula.
   kill Thornfang Ravager##19349 |q 10159 |goto Hellfire Peninsula 10.25,51.54
@@ -316,7 +316,7 @@ step
   accept Natural Remedies##10351 |goto Hellfire Peninsula 15.96,51.57
 step
   note Use the Seed of Revitalization at the Earthbinder's Circle to heal the land around the crystal. Then, return to Earthbinder Galandria Nightbreeze at the Cenarion Post in Hellfire Peninsula with any information that you gain.
-  kill Goliathon##19305 |q 10351
+  kill Goliathon##19305 |q 10351 |elite
 step
   talk Legassi##19344
   turnin Ravager Egg Roundup##9349 |goto Hellfire Peninsula 49.24,74.84
@@ -586,7 +586,7 @@ step
   accept Weaken the Ramparts##9572 |goto Hellfire Peninsula 55.2,36.01
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Caza'rez at Thrallmar in Hellfire Peninsula.
-  kill Watchkeeper Gargolmar##17306 |q 9572 |goto Hellfire Ramparts - Dungeon -1,-1
+  kill Watchkeeper Gargolmar##17306 |q 9572 |goto Hellfire Ramparts - Dungeon -1,-1 |elite
 step
   talk Apothecary Antonivich##16588
   accept Report to Nazgrel##10875 |goto Hellfire Peninsula 52.28,36.46
@@ -622,7 +622,7 @@ step
   accept Mission: The Abyssal Shelf##10162 |goto Hellfire Peninsula 65.89,43.59
 step
   note Forward Commander To'arch at Reaver's Fall in Hellfire Peninsula has asked that you destroy 20 Gan'arg Peons, 5 Mo'arg Overseers and 5 Fel Cannons.
-  kill Gan'arg Peon##19398 |q 10162 |goto Hellfire Peninsula 72.94,17.37
+  kill Gan'arg Peon##19398 |q 10162 |goto Hellfire Peninsula 72.94,17.37 |elite
 step
   talk Forward Commander To'arch##19273
   turnin Mission: The Abyssal Shelf##10162 |goto Hellfire Peninsula 65.89,43.59
@@ -691,7 +691,7 @@ step
   accept Cruel's Intentions##10136 |goto Hellfire Peninsula 55.02,35.96
 step
   note Kill Arazzius the Cruel, then return to Nazgrel in Thrallmar.
-  kill Arazzius the Cruel##19191 |q 10136 |goto Hellfire Peninsula 43.82,31.55
+  kill Arazzius the Cruel##19191 |q 10136 |goto Hellfire Peninsula 43.82,31.55 |elite
 step
   talk Magister Bloodhawk##21175
   turnin The Agony and the Darkness##10389 |goto Hellfire Peninsula 55.13,36.03

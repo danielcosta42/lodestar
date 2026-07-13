@@ -22,7 +22,7 @@ step
   kill Plagued Hatchling##10678 |q 5529 |goto Scholomance - Dungeon -1,-1
 step
   note Find Doctor Theolen Krastinov inside the Scholomance. Destroy him, then burn the Remains of Eva Sarkhoff and the Remains of Lucien Sarkhoff. Return to Eva Sarkhoff when the task is complete.
-  kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1
+  kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1 |elite
 step
   talk Tinkee Steamboil##10267
   turnin Broodling Essence##4726 |goto Burning Steppes 65.24,24.0
@@ -85,7 +85,7 @@ step
   accept Dawn's Gambit##4771 |goto Eastern Plaguelands 81.47,59.66
 step
   note Place Dawn's Gambit in the Viewing Room of the Scholomance. Defeat Vectus, then return to Betina Bigglezink.
-  kill Vectus##10432 |q 4771 |goto Scholomance - Dungeon -1,-1
+  kill Vectus##10432 |q 4771 |goto Scholomance - Dungeon -1,-1 |elite
 step
   talk Betina Bigglezink##11035
   turnin Dawn's Gambit##4771 |goto Eastern Plaguelands 81.47,59.66

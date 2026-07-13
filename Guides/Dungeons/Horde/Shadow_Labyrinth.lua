@@ -19,10 +19,10 @@ step
   collect Soul Device##182940 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1
 step
   note Destroy Murmur and inform Spymistress Mehlisah Highcrown at the Terrace of Light in Shattrath City of the events that have transpired inside the Shadow Labyrinth.
-  kill Murmur##18708 |q 10095 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Murmur##18708 |q 10095 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   talk Spymistress Mehlisah Highcrown##18893
   turnin The Soul Devices##10091 |goto Shattrath City 50.24,45.36

@@ -244,7 +244,7 @@ step
   accept Zuluhed the Whacked##10866 |goto Shadowmoon Valley 69.86,61.44
 step
   note Kill Zuluhed the Whacked and recover Zuluhed's Key. Use Zuluhed's Key on Zuluhed's Chains to free Karynaku.
-  kill Zuluhed the Whacked##11980 |q 10866
+  kill Zuluhed the Whacked##11980 |q 10866 |elite
 step
   talk Oronok Torn-heart##21183
   turnin The Cipher of Damnation - Truth and History##10519 |goto Shadowmoon Valley 53.95,23.52
@@ -265,7 +265,7 @@ step
   accept Ally of the Netherwing##10870 |goto Shadowmoon Valley 69.86,61.44
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83
+  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |elite
 step
   talk Borak, Son of Oronok##21293
   turnin Borak, Son of Oronok##10546 |goto Shadowmoon Valley 47.56,57.18

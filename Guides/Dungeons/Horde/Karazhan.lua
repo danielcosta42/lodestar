@@ -61,7 +61,7 @@ step
   accept Entry Into Karazhan##9831 |goto Shattrath City 54.75,44.32
 step
   note Obtain Medivh's Journal and return to Kamsis at the Guardian's Library in Karazhan.
-  kill Shade of Aran##16524 |q 9640 |goto Karazhan - Raid -1,-1
+  kill Shade of Aran##16524 |q 9640 |goto Karazhan - Raid -1,-1 |raid
 step
   note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
   get Entry Into Karazhan |q 9831 |goto Shattrath City 54.75,44.32
@@ -124,7 +124,7 @@ step
   accept A Demonic Presence##9844 |goto Deadwind Pass 47.28,75.21
 step
   note Archmage Alturus wants you to destroy the Demonic Presence at the top of Karazhan.
-  kill Prince Malchezaar##15690 |q 9844 |goto Karazhan - Raid -1,-1
+  kill Prince Malchezaar##15690 |q 9844 |goto Karazhan - Raid -1,-1 |raid
 step
   talk Archmage Alturus##17613
   turnin A Demonic Presence##9844 |goto Deadwind Pass 47.28,75.21

@@ -268,7 +268,7 @@ step
   kill B'naar Control Console##20209 |q 10329
 step
   note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
-  kill Blackheart the Inciter##18667 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Blackheart the Inciter##18667 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Arcanist Thelis at the Sanctum of the Stars in Shadowmoon Valley.
   kill Eykenen##21709 |q 10685 |goto Shadowmoon Valley 51.18,52.82
@@ -319,7 +319,7 @@ step
   accept Varedis Must Be Stopped##10692 |goto Shadowmoon Valley 55.73,58.17
 step
   note Larissa Sunstrike wants you to go to the ruins of Karabor and slay Alandien, Theras, Netharel and Varedis. Use the Book of Fel Names when Varedis uses Metamorphosis to weaken him. Return to Larissa Sunstrike with the Book of Fel Names after completing this task.
-  kill Varedis##21178 |q 10692 |goto Shadowmoon Valley 72.16,53.67
+  kill Varedis##21178 |q 10692 |goto Shadowmoon Valley 72.16,53.67 |elite
 step
   talk Caledis Brightdawn##19840
   turnin Behind Enemy Lines##10652 |goto Netherstorm 48.24,86.6
@@ -403,7 +403,7 @@ step
   accept A Gift for Voren'thal##10508 |goto Netherstorm 32.0,64.07
 step
   note Spymaster Thalodien at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  kill Forgemaster Morug##20800 |q 10508 |goto Netherstorm 36.15,26.43
+  kill Forgemaster Morug##20800 |q 10508 |goto Netherstorm 36.15,26.43 |elite
 step
   talk Spymaster Thalodien##19468
   turnin A Gift for Voren'thal##10508 |goto Netherstorm 32.0,64.07
@@ -418,7 +418,7 @@ step
   accept Turning Point##10507 |goto Shattrath City 42.79,91.71
 step
   note Use Socrethar's Teleportation's Stone at Invasion Point: Overlord, north of Forge Base: Oblivion to transport your party to Socrethar's Landing. Once there, use Voren'thal's Presence to defeat Socrethar.
-  kill Socrethar##20132 |q 10507 |goto Netherstorm 29.31,13.7
+  kill Socrethar##20132 |q 10507 |goto Netherstorm 29.31,13.7 |elite
 step
   talk Voren'thal the Seer##18530
   turnin Turning Point##10507 |goto Shattrath City 42.79,91.71

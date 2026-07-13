@@ -137,7 +137,7 @@ step
   accept Vision of the Dead##10252 |goto Nagrand 51.82,56.84
 step
   note Nitrin at the Abandoned Armory in Nagrand wants you to bring him 1 Mountain Gronn Eyeball, 1 Flawless Greater Windroc Beak, and 1 Aged Clefthoof Blubber.
-  kill Mountain Gronn##19201 |q 10252 |goto Nagrand 27.22,42.14
+  kill Mountain Gronn##19201 |q 10252 |goto Nagrand 27.22,42.14 |elite
 step
   talk Rocket-Chief Fuselage##19570
   turnin A Strange Vision##11037 |goto Netherstorm 32.73,64.96 |tip {turninat}Netherstorm
@@ -239,7 +239,7 @@ step
   accept The Ring of Blood: Brokentoe##9962 |goto Nagrand 42.78,20.73
 step
   note Defeat Brokentoe. Should you win, speak with Wodin the Troll-Servant to collect your reward.
-  kill Brokentoe##18398 |q 9962
+  kill Brokentoe##18398 |q 9962 |elite
 step
   note Lantresor of the Blade at the Burning Blade Ruins in Nagrand wants you to drive 20 Kil'sorrow Banners through the bodies of Warmaul ogres at the Laughing Skull Ruins.
   kill Warmaul Ogre Credit Marker##18393 |q 9931 |goto Nagrand 45.79,22.42
@@ -362,7 +362,7 @@ step
   accept Levixus the Soul Caller##10253 |goto Nagrand 51.82,56.84
 step
   note Destroy Levixus and take the Book of the Dead from his possession.
-  kill Levixus##19847 |q 10253 |goto Terokkar Forest 39.63,71.27
+  kill Levixus##19847 |q 10253 |goto Terokkar Forest 39.63,71.27 |elite
 step
   note Hunt down 30 Ravenous Windrocs and then return to Fitz at the Nesingwary Safari in Nagrand.
   kill Ravenous Windroc##18220 |q 9855 |goto Nagrand 49.01,60.47
@@ -410,7 +410,7 @@ step
   kill Murkblood Scavenger##18207 |q 9865 |goto Nagrand 32.2,43.15
 step
   note Altruis the Sufferer in western Nagrand has asked that you kill 2 Felguard Legionnaires, 3 Mo'arg Engineers and 8 Gan'arg Tinkerers.
-  kill Felguard Legionnaire##17152 |q 9999 |goto Nagrand 21.39,42.9
+  kill Felguard Legionnaire##17152 |q 9999 |goto Nagrand 21.39,42.9 |elite
 step
   talk Saurfang the Younger##18229
   turnin Once Were Warriors##9865 |goto Nagrand 32.44,36.02
@@ -428,7 +428,7 @@ step
   accept Cho'war the Pillager##9946 |goto Nagrand 32.31,36.15
 step
   note Elder Yorley at the Mag'hari Procession in Nagrand has asked that you slay Cho'war the Pillager and retrieve the Head of Cho'war.
-  kill Cho'war the Pillager##18423 |q 9946 |goto Nagrand 26.03,13.94
+  kill Cho'war the Pillager##18423 |q 9946 |goto Nagrand 26.03,13.94 |elite
 step
   note Jorin Deadeye at Garadar in Nagrand has asked that you slay 25 Boulderfist Warriors and 25 Boulderfist Mages.
   kill Boulderfist Warrior##17136 |q 9907 |goto Nagrand 41.35,35.08
@@ -440,7 +440,7 @@ step
   accept The Ring of Blood: The Blue Brothers##9967 |goto Nagrand 42.78,20.73
 step
   note Defeat the Murkblood Twins that call themselves the Blue Brothers. Should you win, speak with Wodin the Troll-Servant to collect your reward.
-  kill Murkblood Twin##18399 |q 9967
+  kill Murkblood Twin##18399 |q 9967 |elite
 step
   talk Elementalist Lo'ap##18073
   turnin Agitated Spirits of Skysong##9804 |goto Nagrand 60.8,22.38
@@ -494,19 +494,19 @@ step
   accept Clefthoof Mastery##9851 |goto Nagrand 71.52,40.82
 step
   note Acquire the Horn of Banthar and return it to Hemet Nesingwary at the Nesingwary Safari in Nagrand.
-  kill Banthar##18259 |q 9851 |goto Nagrand 41.4,61.57
+  kill Banthar##18259 |q 9851 |goto Nagrand 41.4,61.57 |elite
 step
   talk Shado 'Fitz' Farstrider##18200
   accept Windroc Mastery##9856 |goto Nagrand 71.57,40.52
 step
   note Bring the Eye of Gutripper to Fitz at the Nesingwary Safari in Nagrand.
-  kill Gutripper##18257 |q 9856 |goto Nagrand 31.01,30.98
+  kill Gutripper##18257 |q 9856 |goto Nagrand 31.01,30.98 |elite
 step
   talk Harold Lane##18218
   accept Talbuk Mastery##9859 |goto Nagrand 71.38,40.62
 step
   note Obtain the Hoof of Bach'lor and return it to Harold Lane at the Nesingwary Safari in Nagrand.
-  kill Bach'lor##18258 |q 9859 |goto Nagrand 26.1,53.12
+  kill Bach'lor##18258 |q 9859 |goto Nagrand 26.1,53.12 |elite
 step
   note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to destroy the Large Hut, the Western Hut, the Southern Hut and the Eastern Hut at Windyreed Village.
   kill Windyreed Quest Credit (Big Hut)##18110 |q 9805 |goto Nagrand 72.43,50.25
@@ -524,13 +524,13 @@ step
   accept The Master Planner##10001 |goto Nagrand 27.34,43.09
 step
   note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
-  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33
+  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33 |elite
 step
   talk Altruis the Sufferer##18417
   accept The Book of Fel Names##10649 |goto Nagrand 27.34,43.09
 step
   note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
-  kill Blackheart the Inciter##18667 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Blackheart the Inciter##18667 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   talk Elder Yorley##18414
   turnin Cho'war the Pillager##9946 |goto Nagrand 32.31,36.15
@@ -542,7 +542,7 @@ step
   accept The Ring of Blood: Rokdar the Sundered Lord##9970 |goto Nagrand 42.78,20.73
 step
   note Defeat Rokdar the Sundered Lord. Should you win, speak with Wodin the Troll-Servant to collect your reward.
-  kill Rokdar the Sundered Lord##18400 |q 9970
+  kill Rokdar the Sundered Lord##18400 |q 9970 |elite
 step
   talk Elementalist Lo'ap##18073
   turnin Blessing of Incineratus##9805 |goto Nagrand 60.8,22.38
@@ -587,7 +587,7 @@ step
   accept The Ultimate Bloodsport##9852 |goto Nagrand 71.52,40.82
 step
   note Bring the Heart of Tusker to Hemet Nesingwary at Nesingwary's Safari in Nagrand.
-  kill Tusker##18290 |q 9852 |goto Nagrand 44.24,65.16
+  kill Tusker##18290 |q 9852 |goto Nagrand 44.24,65.16 |elite
 step
   note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to destroy Watoosun's Polluted Essence and 10 Lake Surgers.
   kill Watoosun's Polluted Essence##18145 |q 9810 |goto Nagrand 33.02,50.86
@@ -614,7 +614,7 @@ step
   accept The Ring of Blood: Skra'gath##9972 |goto Nagrand 42.78,20.73
 step
   note Defeat Skra'gath. Should you win, speak with Wodin the Troll-Servant to collect your reward.
-  kill Skra'gath##18401 |q 9972
+  kill Skra'gath##18401 |q 9972 |elite
 step
   talk Exarch Onaala##21860
   turnin Return to the Aldor##10650 |goto Shadowmoon Valley 61.2,29.23 |tip {turninat}Shadowmoon Valley
@@ -659,7 +659,7 @@ step
   accept The Ring of Blood: The Warmaul Champion##9973 |goto Nagrand 42.78,20.73
 step
   note Defeat the Warmaul Champion. Should you win, speak with Wodin the Troll-Servant to collect your reward.
-  kill Warmaul Champion##18402 |q 9973
+  kill Warmaul Champion##18402 |q 9973 |elite
 step
   talk Gordawg##18099
   turnin Gurok the Usurper##9853 |goto Nagrand 61.33,24.82
@@ -680,7 +680,7 @@ step
   accept The Ring of Blood: The Final Challenge##9977 |goto Nagrand 42.78,20.73
 step
   note Defeat Mogor, Hero of the Warmaul. Should you win, speak with Wodin the Troll-Servant to collect your reward.
-  kill Mogor##18069 |q 9977 |goto Nagrand 42.79,20.54
+  kill Mogor##18069 |q 9977 |goto Nagrand 42.79,20.54 |elite
 step
   talk Mother Kashur##18687
   turnin A Visit With The Ancestors##10085 |goto Nagrand 26.07,60.6

@@ -16,7 +16,7 @@ step
   talk Knot Thimblejack##14338
   accept Free Knot!##5525 |goto Dire Maul - Dungeon -1,-1
 step
-  kill Gordok Brute##11441 |q 5525 |goto Dire Maul - Dungeon -1,-1
+  kill Gordok Brute##11441 |q 5525 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Stomper Kreeg##14322
   accept The Gordok Taste Test##5528 |goto Dire Maul - Dungeon -1,-1
@@ -28,7 +28,7 @@ step
   accept Libram of Focus##7484 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring a Libram of Focus, 1 Pristine Black Diamond, 4 Large Brilliant Shards, and 2 Skin of Shadow to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Focus.
-  kill Gordok Brute##11441 |q 7484 |goto Dire Maul - Dungeon -1,-1
+  kill Gordok Brute##11441 |q 7484 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Captain Kromcrush##14325
   accept Unfinished Gordok Business##7703 |goto Dire Maul - Dungeon -1,-1
@@ -40,10 +40,10 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1
+  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   note You must destroy the guardians surrounding the 5 Pylons that power the Prison of Immol'thar. Once the Pylons have powered down, the force field surrounding Immol'thar will have dissipated.
-  kill Immol'thar##11496 |q 7461 |goto Dire Maul - Dungeon -1,-1
+  kill Immol'thar##11496 |q 7461 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Shen'dralar Ancient##14358
   turnin The Madness Within##7461 |goto Dire Maul - Dungeon -1,-1
@@ -73,7 +73,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1
+  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   turnin The Treasure of the Shen'dralar##7877 |goto Dire Maul - Dungeon -1,-1
 step

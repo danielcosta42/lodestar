@@ -70,7 +70,7 @@ step
   accept The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83
+  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |elite
 step
   talk Akama##21700
   turnin The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18
@@ -130,7 +130,7 @@ step
   accept Redemption of the Ashtongue##10957 |goto Black Temple - Raid -1,-1
 step
   note Help Akama wrest control back of his soul by defeating the Shade of Akama inside the Black Temple. Return to Seer Kanai when you've completed this task.
-  kill Shade of Akama##22841 |q 10957 |goto Black Temple - Raid -1,-1
+  kill Shade of Akama##22841 |q 10957 |goto Black Temple - Raid -1,-1 |raid
 step
   talk Seer Kanai##23158
   turnin Redemption of the Ashtongue##10957 |goto Black Temple - Raid -1,-1
@@ -139,7 +139,7 @@ step
   accept The Fall of the Betrayer##10959 |goto Black Temple - Raid -1,-1
 step
   note Seer Kanai wants you to defeat Illidan inside the Black Temple.
-  kill Illidan Stormrage##22917 |q 10959 |goto Black Temple - Raid -1,-1
+  kill Illidan Stormrage##22917 |q 10959 |goto Black Temple - Raid -1,-1 |raid
 step
   talk Seer Kanai##23158
   turnin The Fall of the Betrayer##10959 |goto Black Temple - Raid -1,-1

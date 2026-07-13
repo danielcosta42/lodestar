@@ -13,7 +13,7 @@ step
   accept Splitrock the Elder##8635 |goto Maraudon - Dungeon -1,-1
 step
   note Slay Princess Theradras and return to Selendra near Shadowprey Village in Desolace.
-  kill Princess Theradras##12201 |q 7064 |goto Maraudon - Dungeon -1,-1
+  kill Princess Theradras##12201 |q 7064 |goto Maraudon - Dungeon -1,-1 |elite
 step
   talk Selendra##13699
   turnin Corruption of Earth and Seed##7064 |goto Desolace 26.87,77.67

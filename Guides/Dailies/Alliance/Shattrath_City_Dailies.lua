@@ -127,7 +127,7 @@ step
   kill Dampscale Basilisk##18461 |q 10024 |goto Terokkar Forest 38.39,11.68
 step
   note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
-  kill Mo'arg Engineer##16945 |q 10325 |goto Nagrand 20.0,49.34
+  kill Mo'arg Engineer##16945 |q 10325 |goto Nagrand 20.0,49.34 |elite
 step
   note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Firewing Signets.
   kill Firewing Bloodwarder##1410 |q 10412 |goto Terokkar Forest 71.58,36.73
@@ -157,7 +157,7 @@ step
   get Wanted: Bladefist's Seal |q 11363 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun has tasked you with the deaths of 4 Shattered Hand Centurions. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Shattered Hand Centurion##17465 |q 11364 |goto The Shattered Halls - Dungeon -1,-1
+  kill Shattered Hand Centurion##17465 |q 11364 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to obtain The Heart of Quagmirran. Deliver it to him in Shattrath's Lower City to collect the reward.
   get Wanted: The Heart of Quagmirran |q 11368 |goto Shattrath City 75.13,36.65
@@ -169,7 +169,7 @@ step
   get Wanted: The Warlord's Treatise |q 11370 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun has asked you to slay 14 Coilfang Myrmidons. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Coilfang Myrmidon##17800 |q 11371 |goto The Steamvault - Dungeon -1,-1
+  kill Coilfang Myrmidon##17800 |q 11371 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to acquire The Headfeathers of Ikiss. Deliver them to him in Shattrath's Lower City to collect the reward.
   get Wanted: The Headfeathers of Ikiss |q 11372 |goto Shattrath City 75.13,36.65
@@ -181,10 +181,10 @@ step
   get Wanted: The Exarch's Soul Gem |q 11374 |goto Shattrath City 75.13,36.65
 step
   note Wind Trader Zhareem has asked you to obtain Murmur's Whisper. Deliver it to him in Shattrath's Lower City to collect the reward.
-  kill Murmur##18708 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Murmur##18708 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note The Rokk in Lower City has asked you to cook up some Kaliri Stew using his cooking pot. Return to him when it's done.
   get Revenge is Tasty |q 11377 |goto Shattrath City 61.75,15.55
@@ -208,22 +208,22 @@ step
   get Wanted: A Warp Splinter Clipping |q 11384 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun wants you to kill 6 Sunseeker Channelers. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Sunseeker Channeler##19505 |q 11385
+  kill Sunseeker Channeler##19505 |q 11385 |elite
 step
   note Wind Trader Zhareem has asked you to acquire Pathaleon's Projector. Deliver it to him in Shattrath's Lower City to collect the reward.
   get Wanted: Pathaleon's Projector |q 11386 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun wants you to destroy 5 Tempest-Forge Destroyers. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Tempest-Forge Destroyer##19735 |q 11387
+  kill Tempest-Forge Destroyer##19735 |q 11387 |elite
 step
   note Wind Trader Zhareem has asked you to obtain The Scroll of Skyriss. Deliver it to him in Shattrath's Lower City to collect the reward.
   get Wanted: The Scroll of Skyriss |q 11388 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun wants you to dismantle 5 Arcatraz Sentinels. Return to him in Shattrath's Lower City once that has been accomplished in order to collect the bounty.
-  kill Arcatraz Sentinel##20869 |q 11389
+  kill Arcatraz Sentinel##20869 |q 11389 |elite
 step
   note Nether-Stalker Mah'duun wants you to slay 4 Sisters of Torment. Return to him in Shattrath's Lower City once you have done so in order to collect the bounty.
-  kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   talk Arcanist Adyria##18596
   turnin Voren'thal's Visions##10024 |goto Shattrath City 54.98,22.54
@@ -398,9 +398,9 @@ step
 step
   kill Dampscale Basilisk##18461 |q 10025 |goto Terokkar Forest 38.39,11.68
 step
-  kill Mo'arg Engineer##16945 |q 10326 |goto Nagrand 20.0,49.34
+  kill Mo'arg Engineer##16945 |q 10326 |goto Nagrand 20.0,49.34 |elite
 step
-  kill Mo'arg Engineer##16945 |q 10327 |goto Nagrand 20.0,49.34
+  kill Mo'arg Engineer##16945 |q 10327 |goto Nagrand 20.0,49.34 |elite
 step
   kill Shienor Talonite##18449 |q 10918 |goto Terokkar Forest 50.89,19.63
 step
@@ -496,7 +496,7 @@ step
   accept Hard to Kill##11492 |goto Magisters' Terrace - Dungeon -1,-1
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   talk Exarch Larethor##24813
   turnin Hard to Kill##11492 |goto Isle of Quel'Danas 47.42,30.74

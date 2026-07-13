@@ -19,7 +19,7 @@ step
   collect The Map of Zul'Aman##186733 |q 11132 |goto Zul'Aman - Raid -1,-1
 step
   note Prigmon needs you to collect 10 Forest Troll Tusks from the trolls in Zul'Aman. Bring them to him at Budd's camp in the Ghostlands.
-  kill Amani'shi Axe Thrower##23542 |q 11164 |goto Zul'Aman - Raid -1,-1
+  kill Amani'shi Axe Thrower##23542 |q 11164 |goto Zul'Aman - Raid -1,-1 |elite
 step
   talk Budd Nedreck##23559
   turnin Promises, Promises...##11132 |goto Ghostlands 70.34,67.84
@@ -49,7 +49,7 @@ step
   accept Hex Lord? Hah!##11171 |goto Ghostlands 70.34,67.84
 step
   note Budd Nedreck in Hatchet Hills wants you to kill Hex Lord Malacrass in Zul'Aman.
-  kill Hex Lord Malacrass##24239 |q 11171 |goto Zul'Aman - Raid -1,-1
+  kill Hex Lord Malacrass##24239 |q 11171 |goto Zul'Aman - Raid -1,-1 |raid
 step
   talk Budd Nedreck##23559
   turnin Hex Lord? Hah!##11171 |goto Ghostlands 70.34,67.84

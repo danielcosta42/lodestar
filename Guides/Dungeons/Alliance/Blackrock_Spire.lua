@@ -25,7 +25,7 @@ step
   accept Stonefort the Elder##8644 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Travel to Blackrock Spire and destroy the source of the worg menace. As you left Helendis, he shouted a name: Halycon. It is what the orcs refer to in regards to the worg.
-  kill Halycon##10220 |q 4701 |goto Blackrock Spire - Dungeon -1,-1
+  kill Halycon##10220 |q 4701 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   note Find Bijou's Belongings and return them to her. Good luck!
   collect Bijou's Belongings##175334 |q 5001 |goto Blackrock Spire - Dungeon -1,-1
@@ -61,7 +61,7 @@ step
   accept General Drakkisath's Demise##5102 |goto Burning Steppes 84.74,69.02
 step
   note Travel to Blackrock Spire and destroy General Drakkisath. Return to Marshal Maxwell when the job is done.
-  kill General Drakkisath##10363 |q 5102 |goto Blackrock Spire - Dungeon -1,-1
+  kill General Drakkisath##10363 |q 5102 |goto Blackrock Spire - Dungeon -1,-1 |raid
 step
   talk Marshal Maxwell##9560
   turnin Message to Maxwell##5002 |goto Burning Steppes 84.74,69.02
@@ -73,7 +73,7 @@ step
   accept Maxwell's Mission##5081 |goto Burning Steppes 84.74,69.02
 step
   note Travel to Blackrock Spire and destroy War Master Voone, Highlord Omokk, and Overlord Wyrmthalak. Return to Marshal Maxwell when the job is done.
-  kill War Master Voone##9237 |q 5081 |goto Blackrock Spire - Dungeon -1,-1
+  kill War Master Voone##9237 |q 5081 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Marshal Maxwell##9560
   turnin Maxwell's Mission##5081 |goto Burning Steppes 84.74,69.02

@@ -53,7 +53,7 @@ step
   accept Bring Me A Shrubbery!##9715 |goto Zangarmarsh 19.54,50.04
 step
   note Collect 5 Sanguine Hibiscus and return them to Gzhun'tt at Sporeggar in Zangarmarsh.
-  kill Bog Giant##17723 |q 9715 |goto The Underbog - Dungeon -1,-1
+  kill Bog Giant##17723 |q 9715 |goto The Underbog - Dungeon -1,-1 |elite
 step
   talk T'shu##17857
   accept Oh, It's On!##9717 |goto Zangarmarsh 19.37,49.78
@@ -65,7 +65,7 @@ step
   accept Stalk the Stalker##9719 |goto Zangarmarsh 19.65,49.7
 step
   note Bring the Brain of the Black Stalker to Khn'nix at Sporeggar in Zangarmarsh.
-  kill The Black Stalker##17882 |q 9719 |goto The Underbog - Dungeon -1,-1
+  kill The Black Stalker##17882 |q 9719 |goto The Underbog - Dungeon -1,-1 |elite
 step
   talk Gzhun'tt##17856
   accept Now That We're Friends...##9726 |goto Zangarmarsh 19.54,50.04
@@ -158,7 +158,7 @@ step
   accept Preparing for War##9765 |goto Zangarmarsh 78.4,62.02
 step
   note Obtain Coilfang Armaments from naga at Coilfang Reservoir and return them to Ysiel Windsinger at the Cenarion Refuge in Zangarmarsh.
-  kill Coilfang Engineer##17721 |q 9765 |goto The Steamvault - Dungeon -1,-1
+  kill Coilfang Engineer##17721 |q 9765 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   talk Ysiel Windsinger##17841
   accept Warden Hamoot##9778 |goto Zangarmarsh 78.4,62.02
@@ -194,7 +194,7 @@ step
   kill Kataru##18080 |q 9747 |goto Zangarmarsh 85.29,90.93
 step
   note Locate and deal with Boglash, then return to Lethyn Moonfire at Cenarion Refuge.
-  kill Boglash##18281 |q 9895 |goto Zangarmarsh 82.07,71.39
+  kill Boglash##18281 |q 9895 |goto Zangarmarsh 82.07,71.39 |elite
 step
   note Windcaller Blackhoof wants you to speak to the ancients Ashyen and Keleth at Cenarion Refuge and obtain their blessings.
   kill Ashyen##17900 |q 9785 |goto Zangarmarsh 81.1,63.87
@@ -284,7 +284,7 @@ step
   kill Daggerfen Assassin##18116 |q 10118 |goto Zangarmarsh 25.82,22.82
 step
   note Watcher Jhang wants you to find and slay Warlord Kalithresh inside Coilfang Reservoir.
-  kill Warlord Kalithresh##17798 |q 9763 |goto The Steamvault - Dungeon -1,-1
+  kill Warlord Kalithresh##17798 |q 9763 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   note Kill Terrorclaw and return to Zurjaya at Zabra'jin.
   kill Terrorclaw##20477 |q 9904 |goto Zangarmarsh 22.31,45.78
@@ -380,7 +380,7 @@ step
   accept A Warm Welcome##9728 |goto Zangarmarsh 79.09,65.27
 step
   note Warden Hamoot at the Cenarion Refuge wants you to bring him 30 Naga Claws.
-  kill Rajis Fyashe##18044 |q 9728 |goto Zangarmarsh 65.15,40.91
+  kill Rajis Fyashe##18044 |q 9728 |goto Zangarmarsh 65.15,40.91 |elite
 step
   talk Ikeyen##17956
   accept A Damp, Dark Place##9788 |goto Zangarmarsh 80.4,64.16

@@ -59,13 +59,13 @@ step
   accept Maggoc's Treasure Chest##10996 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
+  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8 |elite
 step
   talk Mog'dorg the Wizened##22941
   accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1
+  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1 |elite
 step
   talk Timeon##21782
   accept Creating the Pendant##10567 |goto Blade's Edge Mountains 62.16,39.11
@@ -233,7 +233,7 @@ step
   accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
+  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61 |elite
 step
   talk Faradrella##22133
   turnin Culling the Wild##10753 |goto Blade's Edge Mountains 62.56,38.26
@@ -424,7 +424,7 @@ step
   accept The Hound-Master##10912 |goto Blade's Edge Mountains 63.52,65.29
 step
   note The Evergrove Druid has told you that the final thing you must do is to slay Baelmon the Hound-Master. Afterward, return to Evergrove in the Blade's Edge Mountains, and inform Wildlord Antelarion of your success.
-  kill Baelmon the Hound-Master##19747 |q 10912 |goto Blade's Edge Mountains 63.04,60.41
+  kill Baelmon the Hound-Master##19747 |q 10912 |goto Blade's Edge Mountains 63.04,60.41 |elite
 step
   note Leoroxx has challenged you to slay Dreadwing. Return to him at Mok'Nathal Village once you have managed to kill her.
   kill Dreadwing##21032 |q 10845 |goto Blade's Edge Mountains 65.37,78.13
@@ -508,7 +508,7 @@ step
   accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  kill Hemathion##18692 |q 11025 |goto Blade's Edge Mountains 31.1,71.08
+  kill Abyssal Flamebringer##19973 |q 11025 |goto Blade's Edge Mountains 28.84,81.09
 step
   talk Kronk##23253
   accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
@@ -576,7 +576,7 @@ step
   accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  kill Rivendark##23061 |q 11078 |goto Blade's Edge Mountains 30.43,58.58
+  kill Rivendark##23061 |q 11078 |goto Blade's Edge Mountains 30.43,58.58 |elite
 step
   talk Leoroxx##22004
   turnin Inform Leoroxx!##10865 |goto Blade's Edge Mountains 75.29,60.86

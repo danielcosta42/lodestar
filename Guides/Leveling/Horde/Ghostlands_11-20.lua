@@ -351,7 +351,7 @@ step
   accept The Traitor's Destruction##9167 |goto Ghostlands 55.07,48.83
 step
   note Slay Dar'Khan Drathir inside Deatholme and bring his head to Magister Kaendris at the Sanctum of the Sun in the Ghostlands.
-  kill Dar'Khan Drathir##16329 |q 9167 |goto Ghostlands 33.04,81.26
+  kill Dar'Khan Drathir##16329 |q 9167 |goto Ghostlands 33.04,81.26 |elite
 step
   talk Magister Idonis##16204
   accept Dar'Khan's Lieutenants##9170 |goto Ghostlands 54.87,48.55
@@ -428,7 +428,7 @@ step
   kill Nerubis Guard##16313 |q 9138 |goto Ghostlands 62.27,10.48
 step
   note Slay Anok'suten and return to Arcanist Vandril at Tranquillien in the Ghostlands.
-  kill Anok'suten##16357 |q 9315 |goto Ghostlands 59.65,13.28
+  kill Anok'suten##16357 |q 9315 |goto Ghostlands 59.65,13.28 |elite
 step
   only BloodElf
   talk Sathren Azuredawn##16191

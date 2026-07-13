@@ -132,7 +132,7 @@ step
   accept Adversarial Blood##11885 |goto Terokkar Forest 64.23,66.97
 step
   note Find the Skull Piles in the middle of the summoning circles of Skettis. Summon and defeat each of the descendants by using 10 Time-Lost Scrolls at the Skull Pile. Return to Hazzik at Blackwind Landing.
-  kill Darkscreecher Akkarai##23161 |q 11885
+  kill Darkscreecher Akkarai##23161 |q 11885 |elite
 step
   talk Hazzik##23306
   turnin Adversarial Blood##11885 |goto Terokkar Forest 64.23,66.97

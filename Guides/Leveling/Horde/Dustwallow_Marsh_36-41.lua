@@ -107,7 +107,7 @@ step
   accept Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
 step
   note Bring the Tiara of the Deep to Tabetha in Dustwallow Marsh.
-  kill Hydromancer Velratha##7795 |q 2846 |goto Zul'Farrak - Dungeon -1,-1
+  kill Hydromancer Velratha##7795 |q 2846 |goto Zul'Farrak - Dungeon -1,-1 |elite
 step
   only Druid
   talk Tabetha##6546
@@ -115,7 +115,7 @@ step
 step
   only Druid
   note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 4961
+  kill Demon of the Orb##6549 |q 4961 |elite
 step
   talk Apprentice Morlann##23600
   accept Direhorn Raiders##11156 |goto Dustwallow Marsh 46.1,57.43
@@ -296,7 +296,7 @@ step
 step
   only Warlock
   note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 1955
+  kill Demon of the Orb##6549 |q 1955 |elite
 step
   only Druid
   talk Tabetha##6546
@@ -400,7 +400,7 @@ step
 step
   only Warlock
   note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
-  kill Obsidian Sentinel##7023 |q 1956 |goto Uldaman - Dungeon -1,-1
+  kill Obsidian Sentinel##7023 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite
 step
   talk Tabetha##6546
   accept Justice Dispensed##11206 |goto Dustwallow Marsh 46.06,57.09

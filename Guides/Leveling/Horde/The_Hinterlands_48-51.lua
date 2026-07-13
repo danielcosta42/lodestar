@@ -17,7 +17,7 @@ step
   accept Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
 step
   note The Atal'ai Exile in The Hinterlands wants the Head of Jammal'an.
-  kill Jammal'an the Prophet##5710 |q 1446 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Jammal'an the Prophet##5710 |q 1446 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   talk Katoom the Angler##14740
   accept Snapjaws, Mon!##7815 |goto The Hinterlands 80.33,81.54

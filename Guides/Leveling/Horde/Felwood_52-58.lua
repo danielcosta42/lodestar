@@ -281,7 +281,7 @@ step
 step
   only Druid
   note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
-  kill Gasher##5713 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Gasher##5713 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   note Trull Failbane in Felwood wants you to hunt 10 Berserk Owlbeasts in Winterspring.
   kill Berserk Owlbeast##7454 |q 4721 |goto Winterspring 65.42,22.67

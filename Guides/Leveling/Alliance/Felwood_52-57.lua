@@ -275,7 +275,7 @@ step
 step
   only Druid
   note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
-  kill Gasher##5713 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Gasher##5713 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01

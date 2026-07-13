@@ -80,7 +80,7 @@ step
   accept Disharmony of Flame##3906 |goto Badlands 3.33,48.26
 step
   note Travel to the quarry in Blackrock Mountain and slay Overmaster Pyron. Return to Thunderheart when you have completed this assignment.
-  kill Overmaster Pyron##9026 |q 3906
+  kill Overmaster Pyron##9026 |q 3906 |elite
 step
   talk Hierophant Theodora Mulvadania##9079
   accept The Rise of the Machines##4061 |goto Badlands 3.02,47.81
@@ -119,7 +119,7 @@ step
   accept The Last Element##7201 |goto Badlands 2.9,47.76
 step
   note Travel to Blackrock Depths and recover 10 Essence of the Elements. Your first inclination is to search the golems and golem makers. You remember Vivian Lagrave also muttering something about elementals.
-  kill Scald##8281 |q 7201 |goto Searing Gorge 59.82,55.74
+  kill Warbringer Construct##8905 |q 7201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   talk Advisor Sarophas##17097
   accept Unclaimed Baggage##9439 |goto Badlands 6.0,48.06
@@ -128,13 +128,13 @@ step
   collect Empty Barrel##181628 |q 9439 |goto Badlands 41.1,29.25
 step
   note Travel to Blackrock Depths and slay General Angerforge! Return to Warlord Goretooth when the task is complete.
-  kill General Angerforge##9033 |q 4132 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill General Angerforge##9033 |q 4132 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
-  kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1
+  kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   note Slay Halycon, pack mistress of the Bloodaxe worg.
-  kill Halycon##10220 |q 4724 |goto Blackrock Spire - Dungeon -1,-1
+  kill Halycon##10220 |q 4724 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Theldurin the Lost##2785
   accept The Lost Fragments##692 |goto Badlands 51.39,76.87
@@ -266,7 +266,7 @@ step
   accept The Rise of the Machines##4062 |goto Badlands 3.02,47.81
 step
   note Enter Blackrock Depths and track down Lord Incendius. Slay him and return any source of information you may find to Thunderheart.
-  kill Lord Incendius##9017 |q 3907 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Lord Incendius##9017 |q 3907 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   talk Theldurin the Lost##2785
   turnin The Lost Fragments##692 |goto Badlands 51.39,76.87
@@ -319,7 +319,7 @@ step
   accept The Rise of the Machines##4063 |goto Badlands 25.95,44.87
 step
   note Find and slay Golem Lord Argelmach. Return his head to Lotwil. You will also need to collect 10 Intact Elemental Cores from the Ragereaver Golems and Warbringer Constructs protecting Argelmach. You know this because you are psychic.
-  kill Golem Lord Argelmach##8983 |q 4063 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Golem Lord Argelmach##8983 |q 4063 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   talk Commander Gor'shak##9020
   turnin Commander Gor'shak##3981 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {turninat}Blackrock Depths - Dungeon -- Shadowforge City

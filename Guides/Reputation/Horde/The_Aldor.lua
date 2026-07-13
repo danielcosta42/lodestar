@@ -58,13 +58,13 @@ step
   kill Dreadfang Lurker##18466 |q 10017 |goto Terokkar Forest 46.75,30.29
 step
   note Bring Stonegazer's Blood to Sha'nir in Shattrath City.
-  kill Stonegazer##18648 |q 10020 |goto Terokkar Forest 62.81,27.69
+  kill Stonegazer##18648 |q 10020 |goto Terokkar Forest 62.81,27.69 |elite
 step
   note Ishanah wants you to go to the Arakkoa outpost east of Shattrath City and use the Blessed Vial to cleanse the Eastern Altar, the Western Altar and the Northern Altar.
   collect Northern Altar##182563 |q 10021 |goto Terokkar Forest 50.66,16.56
 step
   note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
-  kill Mo'arg Engineer##16945 |q 10325 |goto Nagrand 20.0,49.34
+  kill Mo'arg Engineer##16945 |q 10325 |goto Nagrand 20.0,49.34 |elite
 step
   note Bring a Fel Armament to Ishanah in Shattrath City.
   kill Cyber-Rage Forgelord##16943 |q 10420 |goto Netherstorm 40.3,21.07
@@ -184,9 +184,9 @@ step
 step
   kill Dreadfang Lurker##18466 |q 10019 |goto Terokkar Forest 46.75,30.29
 step
-  kill Mo'arg Engineer##16945 |q 10326 |goto Nagrand 20.0,49.34
+  kill Mo'arg Engineer##16945 |q 10326 |goto Nagrand 20.0,49.34 |elite
 step
-  kill Mo'arg Engineer##16945 |q 10327 |goto Nagrand 20.0,49.34
+  kill Mo'arg Engineer##16945 |q 10327 |goto Nagrand 20.0,49.34 |elite
 step
   note Slay 8 Sunfury Magisters and 8 Sunfury Bloodwarders and return to Exarch Orelis at Area 52.
   kill Sunfury Magister##18855 |q 10241 |goto Netherstorm 25.07,68.25
@@ -283,7 +283,7 @@ step
   kill Eykenen##21709 |q 10574 |goto Shadowmoon Valley 51.18,52.82
 step
   note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
-  kill Blackheart the Inciter##18667 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Blackheart the Inciter##18667 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   talk Khadgar##18166
   turnin Allegiance to the Aldor##10551 |goto Shattrath City 54.75,44.32
@@ -355,7 +355,7 @@ step
   kill Sunfury Centurion##20140 |q 10328 |goto Netherstorm 59.3,66.49
 step
   note Exarch Onaala wants you to go to the ruins of Karabor and slay Alandien, Theras, Netharel and Varedis. Use the Book of Fel Names when Varedis uses Metamorphosis to weaken him. Return to Exarch Onaala with the Book of Fel Names after you've completed this task.
-  kill Varedis##21178 |q 10651 |goto Shadowmoon Valley 72.16,53.67
+  kill Varedis##21178 |q 10651 |goto Shadowmoon Valley 72.16,53.67 |elite
 step
   talk Anchorite Karja##19467
   turnin Shutting Down Manaforge Duro##10322 |goto Netherstorm 32.04,64.18
@@ -400,7 +400,7 @@ step
   accept Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43
+  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43 |elite
 step
   talk Anchorite Karja##19467
   turnin Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18

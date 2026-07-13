@@ -300,7 +300,7 @@ step
   accept Rite of Vision##771 |goto Mulgore 47.76,57.53
 step
   note Collect 2 Well Stones and 2 Ambercorn and bring them back to Zarlman Two-Moons in Bloodhoof Village.
-  kill Razorlash##12258 |q 771 |goto Maraudon - Dungeon -1,-1
+  kill Razorlash##12258 |q 771 |goto Maraudon - Dungeon -1,-1 |elite
 step
   talk Zarlman Two-Moons##3054
   turnin Rite of Vision##771 |goto Mulgore 47.76,57.53

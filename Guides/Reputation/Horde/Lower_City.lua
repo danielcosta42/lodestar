@@ -82,13 +82,13 @@ step
   kill Shienor Talonite##18449 |q 10917 |goto Terokkar Forest 50.89,19.63
 step
   note Kill Darkweaver Syth in the Sethekk halls, then free Lakka from captivity. Return to Isfar outside the Sethekk Halls when you've completed the rescue.
-  kill Darkweaver Syth##18472 |q 10097 |goto Sethekk Halls - Dungeon -1,-1
+  kill Darkweaver Syth##18472 |q 10097 |goto Sethekk Halls - Dungeon -1,-1 |elite
 step
   note Steal 5 Soul Devices and deliver them to Spymistress Mehlisah Highcrown at the Terrace of the Light in Shattrath City.
   collect Soul Device##182940 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1
 step
   note Destroy Murmur and inform Spymistress Mehlisah Highcrown at the Terrace of Light in Shattrath City of the events that have transpired inside the Shadow Labyrinth.
-  kill Murmur##18708 |q 10095 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Murmur##18708 |q 10095 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Use the Square of Imbued Netherweave while standing in Cenarion Refuge's moonwell to create a Sample of Primal Mooncloth. Bring the completed sample back to Nasmara Moonsong in Shattrath's Lower City.
   get Becoming a Mooncloth Tailor |q 10831 |goto Shattrath City 66.55,69.33
@@ -106,10 +106,10 @@ step
   get Wanted: The Exarch's Soul Gem |q 11374 |goto Shattrath City 75.13,36.65
 step
   note Wind Trader Zhareem has asked you to obtain Murmur's Whisper. Deliver it to him in Shattrath's Lower City to collect the reward.
-  kill Murmur##18708 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Murmur##18708 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   talk Rilak the Redeemed##22292
   turnin The Eyes of Skettis##10847 |goto Shattrath City 52.54,21.01

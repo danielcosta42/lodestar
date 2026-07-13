@@ -79,7 +79,7 @@ step
 step
   only Paladin
   note Bring Jin'rokh the Breaker Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8053 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8053 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -87,7 +87,7 @@ step
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8054 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8054 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -95,7 +95,7 @@ step
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8055 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8055 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Mage
   talk Maywiki of Zuldazar##14904
@@ -103,13 +103,13 @@ step
 step
   only Mage
   note Bring Maywiki of Zuldazar a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8056 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8056 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   talk Maywiki of Zuldazar##14904
   accept Paragons of Power: The Haruspex's Bracers##8057 |goto Stranglethorn Vale 15.3,16.02
 step
   note Bring Maywiki of Zuldazar a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8057 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8057 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -117,7 +117,7 @@ step
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8058 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8058 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Druid
   talk Al'tabim the All-Seeing##14903
@@ -125,7 +125,7 @@ step
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8059 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8059 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -133,7 +133,7 @@ step
 step
   only Warlock
   note Bring Al'tabim the All-Seeing Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8060 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8060 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -141,7 +141,7 @@ step
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8061 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8061 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -149,7 +149,7 @@ step
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8062 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8062 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -157,19 +157,19 @@ step
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8063 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8063 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   talk Maywiki of Zuldazar##14904
   accept Paragons of Power: The Haruspex's Belt##8064 |goto Stranglethorn Vale 15.3,16.02
 step
   note Bring Maywiki of Zuldazar a Primal Hakkari Sash. Maywiki of Zuldazar is located on Yojamba Isle, Stranglethorn Vale. You must also be Honored with Zandalar.
-  kill Jin'do the Hexxer##11380 |q 8064 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8064 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   talk Maywiki of Zuldazar##14904
   accept Paragons of Power: The Haruspex's Tunic##8065 |goto Stranglethorn Vale 15.3,16.02
 step
   note Bring Maywiki of Zuldazar a Primal Hakkari Tabard. Maywiki of Zuldazar is located on Yojamba Isle, Stranglethorn Vale. You must also be Revered with Zandalar.
-  kill Jin'do the Hexxer##11380 |q 8065 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8065 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -177,7 +177,7 @@ step
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8066 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8066 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -185,7 +185,7 @@ step
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8067 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8067 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -193,7 +193,7 @@ step
 step
   only Warlock
   note Bring Al'tabim the All-Seeing a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8068 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8068 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -201,7 +201,7 @@ step
 step
   only Warlock
   note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8069 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8069 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -209,7 +209,7 @@ step
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8070 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8070 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -217,7 +217,7 @@ step
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8071 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8071 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -225,7 +225,7 @@ step
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8072 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8072 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -233,7 +233,7 @@ step
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8073 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8073 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Mage
   talk Maywiki of Zuldazar##14904
@@ -241,7 +241,7 @@ step
 step
   only Mage
   note Bring Maywiki of Zuldazar a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8074 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8074 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Mage
   talk Maywiki of Zuldazar##14904
@@ -249,7 +249,7 @@ step
 step
   only Mage
   note Bring Maywiki of Zuldazar a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8075 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8075 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Druid
   talk Al'tabim the All-Seeing##14903
@@ -257,7 +257,7 @@ step
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8076 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8076 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Druid
   talk Al'tabim the All-Seeing##14903
@@ -265,7 +265,7 @@ step
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8077 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8077 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -273,7 +273,7 @@ step
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8078 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8078 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -281,7 +281,7 @@ step
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8079 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8079 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -1400,7 +1400,7 @@ step
   accept Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
 step
   note Hemet Nesingwary Jr. wants you to bring him the head of King Bangalash, the great white tiger.
-  kill King Bangalash##731 |q 208 |goto Stranglethorn Vale 38.21,35.58
+  kill King Bangalash##731 |q 208 |goto Stranglethorn Vale 38.21,35.58 |elite
 step
   talk Hemet Nesingwary Jr.##715
   turnin Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81

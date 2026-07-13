@@ -129,7 +129,7 @@ step
   kill Burning Blade Seer##13019 |q 5741 |goto Desolace 55.17,30.15
 step
   note Slay Princess Theradras and return to Keeper Marandis at Nijel's Point in Desolace.
-  kill Princess Theradras##12201 |q 7065 |goto Maraudon - Dungeon -1,-1
+  kill Princess Theradras##12201 |q 7065 |goto Maraudon - Dungeon -1,-1 |elite
 step
   talk Talendria##11715
   turnin Vyletongue Corruption##7041 |goto Desolace 68.5,8.88

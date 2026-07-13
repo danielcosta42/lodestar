@@ -140,7 +140,7 @@ step
 step
   only Rogue
   note Return the Azure Key to Lord Jorach Ravenholdt.
-  kill Morphaz##5719 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Morphaz##5719 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   only Warlock
   talk Archmage Xylem##8379
@@ -215,7 +215,7 @@ step
   accept Eye of the Emberseer##6821 |goto Azshara 79.28,73.7
 step
   note Bring the Eye of the Emberseer to Duke Hydraxis in Azshara.
-  kill Pyroguard Emberseer##9816 |q 6821 |goto Blackrock Spire - Dungeon -1,-1
+  kill Pyroguard Emberseer##9816 |q 6821 |goto Blackrock Spire - Dungeon -1,-1 |raid
 step
   talk Elder Skygleam##15600
   turnin Skygleam the Elder##8720 |goto Azshara 72.55,85.24
@@ -233,7 +233,7 @@ step
 step
   only Warlock
   note Retrieve the Arcane Shard from Morphaz and return to Archmage Xylem.
-  kill Morphaz##5719 |q 8253 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Morphaz##5719 |q 8253 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   only Priest
   talk Ogtinc##8405
@@ -249,7 +249,7 @@ step
 step
   only Hunter
   note Bring the Tooth of Morphaz to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
-  kill Morphaz##5719 |q 8232 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Morphaz##5719 |q 8232 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   only Priest
   talk Ogtinc##8405
@@ -257,7 +257,7 @@ step
 step
   only Priest
   note Kill Morphaz in the sunken temple of Atal'Hakkar, and return his blood to Greta Mosshoof in Felwood. The entrance to the sunken temple can be found in the Swamp of Sorrows.
-  kill Morphaz##5719 |q 8257 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Morphaz##5719 |q 8257 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   talk Kim'jael##8420
   turnin Kim'jael's "Missing" Equipment##5534 |goto Azshara 53.45,21.82
@@ -283,7 +283,7 @@ step
   turnin Destroy Morphaz##8253 |goto Azshara 29.25,40.21
 step
   note Kill 1 Fire Lord, 1 Molten Giant, 1 Ancient Core Hound and 1 Lava Surger, then return to Duke Hydraxis in Azshara.
-  kill Molten Giant##11658 |q 6822 |goto Molten Core - Raid -1,-1
+  kill Molten Giant##11658 |q 6822 |goto Molten Core - Raid -1,-1 |elite
 step
   only Hunter
   talk Ogtinc##8405
@@ -326,7 +326,7 @@ step
   accept Hands of the Enemy##6824 |goto Azshara 79.28,73.7
 step
   note Bring the Hands of Lucifron, Sulfuron, Gehennas and Shazzrah to Duke Hydraxis in Azshara.
-  kill Shazzrah##12264 |q 6824 |goto Molten Core - Raid -1,-1
+  kill Shazzrah##12264 |q 6824 |goto Molten Core - Raid -1,-1 |raid
 step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35

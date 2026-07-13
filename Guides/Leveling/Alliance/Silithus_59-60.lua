@@ -70,7 +70,7 @@ step
 step
   only Warrior
   note Bring 1 Qiraji Magisterial Ring, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8556 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8556 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warrior
   talk Keyl Swiftclaw##15500
@@ -78,7 +78,7 @@ step
 step
   only Warrior
   note Bring 1 Qiraji Martial Drape, 2 Onyx Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8557 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8557 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warrior
   talk Warden Haro##15499
@@ -86,7 +86,7 @@ step
 step
   only Warrior
   note Bring 1 Qiraji Spiked Hilt, 2 Alabaster Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8558 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8558 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   talk Keyl Swiftclaw##15500
@@ -94,7 +94,7 @@ step
 step
   only Priest
   note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Mage
   talk Keyl Swiftclaw##15500
@@ -102,7 +102,7 @@ step
 step
   only Mage
   note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Clay Scarabs and 5 Gold Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8690 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8690 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warlock
   talk Keyl Swiftclaw##15500
@@ -110,13 +110,13 @@ step
 step
   only Warlock
   note Bring 1 Qiraji Martial Drape, 2 Alabaster Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8691 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8691 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   talk Keyl Swiftclaw##15500
   accept Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
 step
   note Bring 1 Qiraji Regal Drape, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8692 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8692 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   talk Keyl Swiftclaw##15500
@@ -124,7 +124,7 @@ step
 step
   only Rogue
   note Bring 1 Qiraji Martial Drape, 2 Azure Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8693 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8693 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   talk Keyl Swiftclaw##15500
@@ -132,7 +132,7 @@ step
 step
   only Druid
   note Bring 1 Qiraji Regal Drape, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8694 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8694 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Paladin
   talk Keyl Swiftclaw##15500
@@ -140,7 +140,7 @@ step
 step
   only Paladin
   note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Hunter
   talk Keyl Swiftclaw##15500
@@ -148,7 +148,7 @@ step
 step
   only Hunter
   note Bring 1 Qiraji Regal Drape, 2 Lambent Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8696 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill General Rajaxx##15341 |q 8696 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   talk Windcaller Yessendra##15498
@@ -156,7 +156,7 @@ step
 step
   only Priest
   note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Mage
   talk Windcaller Yessendra##15498
@@ -164,7 +164,7 @@ step
 step
   only Mage
   note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8698 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8698 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warlock
   talk Windcaller Yessendra##15498
@@ -172,13 +172,13 @@ step
 step
   only Warlock
   note Bring 1 Qiraji Magisterial Ring, 2 Azure Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8699 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8699 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   talk Windcaller Yessendra##15498
   accept Band of Unending Life##8700 |goto Silithus 52.05,38.16
 step
   note Bring 1 Qiraji Magisterial Ring, 2 Alabaster Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8700 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8700 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   talk Windcaller Yessendra##15498
@@ -186,7 +186,7 @@ step
 step
   only Rogue
   note Bring 1 Qiraji Ceremonial Ring, 2 Onyx Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8701 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8701 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   talk Windcaller Yessendra##15498
@@ -194,7 +194,7 @@ step
 step
   only Druid
   note Bring 1 Qiraji Ceremonial Ring, 2 Jasper Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8702 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8702 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Paladin
   talk Windcaller Yessendra##15498
@@ -202,7 +202,7 @@ step
 step
   only Paladin
   note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Hunter
   talk Windcaller Yessendra##15498
@@ -210,7 +210,7 @@ step
 step
   only Hunter
   note Bring 1 Qiraji Ceremonial Ring, 2 Amber Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8704 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8704 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Priest
   talk Warden Haro##15499
@@ -218,7 +218,7 @@ step
 step
   only Priest
   note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Mage
   talk Warden Haro##15499
@@ -226,7 +226,7 @@ step
 step
   only Mage
   note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8706 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8706 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Warlock
   talk Warden Haro##15499
@@ -234,13 +234,13 @@ step
 step
   only Warlock
   note Bring 1 Qiraji Ornate Hilt, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8707 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8707 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   talk Warden Haro##15499
   accept Mace of Unending Life##8708 |goto Silithus 51.14,38.94
 step
   note Bring 1 Qiraji Ornate Hilt, 2 Jasper Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8708 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8708 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Rogue
   talk Warden Haro##15499
@@ -248,7 +248,7 @@ step
 step
   only Rogue
   note Bring 1 Qiraji Spiked Hilt, 2 Vermillion Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8709 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8709 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Druid
   talk Warden Haro##15499
@@ -256,7 +256,7 @@ step
 step
   only Druid
   note Bring 1 Qiraji Ornate Hilt, 2 Onyx Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8710 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8710 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Paladin
   talk Warden Haro##15499
@@ -264,7 +264,7 @@ step
 step
   only Paladin
   note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   only Hunter
   talk Warden Haro##15499
@@ -272,7 +272,7 @@ step
 step
   only Hunter
   note Bring 1 Qiraji Spiked Hilt, 2 Azure Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8712 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+  kill Ossirian the Unscarred##15339 |q 8712 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
 step
   talk Elder Bladesing##15599
   accept Bladesing the Elder##8719 |goto Silithus 48.96,37.66
@@ -293,7 +293,7 @@ step
   accept The Perfect Poison##9023 |goto Silithus 52.13,39.14
 step
   note Dirk Thunderwood at Cenarion Hold wants you to bring him Venoxis's Venom Sac and Kurinnaxx's Venom Sac.
-  kill High Priest Venoxis##14507 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill High Priest Venoxis##14507 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
 step
   talk Aurel Goldleaf##15282
   accept A Humble Offering##9248 |goto Silithus 51.96,38.16
@@ -523,7 +523,7 @@ step
   accept Only One May Rise##8288 |goto Silithus 49.45,36.45
 step
   note Return the Head of the Broodlord Lashlayer to Baristolth of the Shifting Sands at Cenarion Hold in Silithus.
-  kill Broodlord Lashlayer##12017 |q 8288 |goto Blackwing Lair - Raid -1,-1
+  kill Broodlord Lashlayer##12017 |q 8288 |goto Blackwing Lair - Raid -1,-1 |raid
 step
   talk Commander Mar'alith##15181
   accept Into The Maw of Madness##8306 |goto Silithus 49.2,34.18

@@ -112,7 +112,7 @@ step
   accept Easy Strider Living##2178 |goto Darkshore 37.69,40.66
 step
   note Bring back 5 Strider Meat to Alanndarian Nightsong in Auberdine.
-  kill Strider Clutchmother##2172 |q 2178 |goto Darkshore 34.82,87.31
+  kill Foreststrider Fledgling##2321 |q 2178 |goto Darkshore 42.93,42.64
 step
   talk Gwennyth Bly'Leggonde##10219
   accept Washed Ashore##3524 |goto Darkshore 36.62,45.59

@@ -75,7 +75,7 @@ step
   accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
 step
   note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
-  kill Archmage Allistarj##7666 |q 3627 |goto Blasted Lands 66.69,29.24
+  kill Archmage Allistarj##7666 |q 3627 |goto Blasted Lands 66.69,29.24 |elite
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -184,7 +184,7 @@ step
 step
   only Warrior
   note Bring the Voodoo Feathers from the trolls in the Sunken Temple to the Fallen Hero of the Horde.
-  kill Gasher##5713 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Gasher##5713 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   talk Katar##5593
   turnin Threat From the Sea##1422 |goto Swamp of Sorrows 83.76,80.41

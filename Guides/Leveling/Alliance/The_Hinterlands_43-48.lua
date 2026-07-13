@@ -62,7 +62,7 @@ step
   accept Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
 step
   note The Atal'ai Exile in The Hinterlands wants the Head of Jammal'an.
-  kill Jammal'an the Prophet##5710 |q 1446 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Jammal'an the Prophet##5710 |q 1446 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   note Ambassador Rualeth at Aerie Peak wants you to slay Witch Doctor Mai'jin and his pet spider Tcha'kaz.
   kill Witch Doctor Mai'jin##17235 |q 9470 |goto The Hinterlands 24.63,65.58

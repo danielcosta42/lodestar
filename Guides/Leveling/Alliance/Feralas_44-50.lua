@@ -14,7 +14,7 @@ step
   accept The Crone of the Kraul##1101 |goto Feralas 89.64,46.57
 step
   note Bring Razorflank's Medallion to Falfindel Waywarder in Thalanaar.
-  kill Charlga Razorflank##4421 |q 1101 |goto Razorfen Kraul - Dungeon -1,-1
+  kill Charlga Razorflank##4421 |q 1101 |goto Razorfen Kraul - Dungeon -1,-1 |elite
 step
   talk Caryssia Moonhunter##7870
   accept Tribal Leatherworking##5143 |goto Feralas 89.42,46.55
@@ -26,7 +26,7 @@ step
   accept Pusillin and the Elder Azj'Tordin##7441 |goto Feralas 76.91,37.35
 step
   note Travel to Dire Maul and locate the Imp, Pusillin. Convince Pusillin to give you Azj'Tordin's Book of Incantations through any means necessary.
-  kill Pusillin##14354 |q 7441 |goto Dire Maul - Dungeon -1,-1
+  kill Pusillin##14354 |q 7441 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Elder Grimtotem##15581
   accept Grimtotem the Elder##8679 |goto Feralas 76.72,37.9
@@ -107,7 +107,7 @@ step
   accept Lethtendris's Web##7488 |goto Feralas 30.38,46.17
 step
   note Bring Lethtendris' Web to Latronicus Moonspear at the Feathermoon Stronghold in Feralas.
-  kill Lethtendris##14327 |q 7488 |goto Dire Maul - Dungeon -1,-1
+  kill Lethtendris##14327 |q 7488 |goto Dire Maul - Dungeon -1,-1 |elite
 step
   talk Rockbiter##7765
   accept The Giant Guardian##2844 |goto Feralas 42.39,22.0

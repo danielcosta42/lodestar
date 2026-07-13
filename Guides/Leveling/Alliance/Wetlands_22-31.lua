@@ -151,7 +151,7 @@ step
   accept The Fury Runs Deep##378 |goto Wetlands 49.67,18.23
 step
   note Motley Garmason wants Kam Deepfury's head brought to him at Dun Modr.
-  kill Kam Deepfury##1666 |q 378 |goto The Stockade - Dungeon -1,-1
+  kill Kam Deepfury##1666 |q 378 |goto The Stockade - Dungeon -1,-1 |elite
 step
   talk Rhag Garmason##1075
   accept Plea To The Alliance##634 |goto Wetlands 49.9,18.24

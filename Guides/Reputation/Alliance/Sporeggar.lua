@@ -52,13 +52,13 @@ step
   collect Glowcap##182053 |q 9808 |goto Zangarmarsh 33.37,38.97
 step
   note Collect 5 Sanguine Hibiscus and return them to Gzhun'tt at Sporeggar in Zangarmarsh.
-  kill Bog Giant##17723 |q 9715 |goto The Underbog - Dungeon -1,-1
+  kill Bog Giant##17723 |q 9715 |goto The Underbog - Dungeon -1,-1 |elite
 step
   note Gather an Underspore Frond and return it to T'shu at Sporeggar in Zangarmarsh.
   collect The Underspore##182054 |q 9717 |goto The Underbog - Dungeon -1,-1
 step
   note Bring the Brain of the Black Stalker to Khn'nix at Sporeggar in Zangarmarsh.
-  kill The Black Stalker##17882 |q 9719 |goto The Underbog - Dungeon -1,-1
+  kill The Black Stalker##17882 |q 9719 |goto The Underbog - Dungeon -1,-1 |elite
 step
   talk Fahssn##17923
   turnin The Sporelings' Plight##9739 |goto Zangarmarsh 19.02,62.43
@@ -119,7 +119,7 @@ step
 step
   collect Glowcap##182053 |q 9809 |goto Zangarmarsh 33.37,38.97
 step
-  kill Bog Giant##17723 |q 9714 |goto The Underbog - Dungeon -1,-1
+  kill Bog Giant##17723 |q 9714 |goto The Underbog - Dungeon -1,-1 |elite
 step
   talk Fahssn##17923
   turnin More Spore Sacs##9742 |goto Zangarmarsh 19.02,62.43

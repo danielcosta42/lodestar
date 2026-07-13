@@ -80,7 +80,7 @@ step
   accept In Search of Farahlite##10290 |goto Netherstorm 44.08,36.05
 step
   note Gather 4 pieces of Raw Farahlite and return to Zuben Elgenubi at the Stormspire.
-  kill Farahlon Giant##18885 |q 10290 |goto Netherstorm 41.02,67.16
+  kill Farahlon Giant##18885 |q 10290 |goto Netherstorm 41.02,67.16 |elite
 step
   talk Zephyrion##20470
   accept Surveying the Ruins##10335 |goto Netherstorm 44.72,34.87
@@ -182,7 +182,7 @@ step
   accept Finding the Keymaster##10256 |goto Netherstorm 58.34,86.4
 step
   note Locate Apex and obtain Apex's Crystal Focus from him. Return to the Violet Tower and use Apex's Crystal Focus near Archmage Vargoth's Orb to discover who holds the key to breaking the tower's curse.
-  kill Image of Commander Sarannis##19938 |q 10256
+  kill Image of Commander Sarannis##19938 |q 10256 |elite
 step
   talk Custodian Dieworth##19488
   accept Capturing the Phylactery##10319 |goto Netherstorm 57.5,86.34
@@ -226,7 +226,7 @@ step
   accept It's a Fel Reaver, But with Heart##10309 |goto Netherstorm 26.82,76.98
 step
   note Recover the Heart of the Fel Reaver and deliver it to N. D. Meancamp at The Heap in the Netherstorm.
-  kill Scrapped Fel Reaver##20243 |q 10309 |goto Netherstorm 26.52,78.7
+  kill Scrapped Fel Reaver##20243 |q 10309 |goto Netherstorm 26.52,78.7 |elite
 step
   note Place the three Surveying Markers and then return to Zephyrion at the Stormspire in the Netherstorm.
   kill Surveying Marker One##20473 |q 10335 |goto Netherstorm 51.66,20.47
@@ -265,7 +265,7 @@ step
   accept Nightbane##9644 |goto Netherstorm 32.22,63.6
 step
   note Go to the Master's Terrace in Karazhan and use Kalynna's Urn to summon Nightbane. Retrieve the Faint Arcane Essence from Nightbane's corpse and bring it to Archmage Alturus.
-  kill Nightbane##17225 |q 9644 |goto Karazhan - Raid -1,-1
+  kill Nightbane##17225 |q 9644 |goto Karazhan - Raid -1,-1 |raid
 step
   talk Spymaster Thalodien##19468
   accept High Value Targets##10193 |goto Netherstorm 32.0,64.07
@@ -349,7 +349,7 @@ step
   accept Hitting the Motherlode##10293 |goto Netherstorm 44.08,36.05
 step
   note Zuben Elgenubi at the Stormspire wants you to obtain a Farahlite Core.
-  kill Cragskaar##20202 |q 10293 |goto Netherstorm 47.58,21.15
+  kill Cragskaar##20202 |q 10293 |goto Netherstorm 47.58,21.15 |elite
 step
   talk Aurine Moonblaze##20871
   accept Creatures of the Eco-Domes##10427 |goto Netherstorm 42.32,32.56
@@ -613,7 +613,7 @@ step
   accept Troublesome Distractions##10273 |goto Netherstorm 71.22,35.12
 step
   note Custodian Dieworth in Kirin'Var Village wants you to confront and defeat Naberius in the village's Chapel Yard.
-  kill Naberius##20483 |q 10320 |goto Netherstorm 62.69,78.85
+  kill Naberius##20483 |q 10320 |goto Netherstorm 62.69,78.85 |elite
 step
   talk Archmage Vargoth##19481
   turnin Capturing the Keystone##10257 |goto Netherstorm 58.34,86.4
@@ -724,7 +724,7 @@ step
   kill Ethereum Relay##20619 |q 10385 |goto Netherstorm 56.08,41.03
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to speak with Captain Saeed and then follow his army to Manaforge Ultris and kill Dimensius the All-Devouring!
-  kill Dimensius the All-Devouring##19554 |q 10439 |goto Netherstorm 62.41,40.88
+  kill Dimensius the All-Devouring##19554 |q 10439 |goto Netherstorm 62.41,40.88 |elite
 step
   talk Professor Dabiri##20907
   turnin Dimensius the All-Devouring##10439 |goto Netherstorm 60.11,31.72
@@ -748,7 +748,7 @@ step
   accept Securing the Celestial Ridge##10274 |goto Netherstorm 71.22,35.12
 step
   note Use the Challenge of the Blue Flight to provoke Veraku on the southern edge of the Celestial Ridge. Defeat him and return to Tyri and Jorad on the Celestial Ridge.
-  kill Veraku##18544 |q 10274
+  kill Veraku##18544 |q 10274 |elite
 step
   talk Mama Wheeler##19728
   turnin Help Mama Wheeler##10333 |goto Netherstorm 46.63,56.53
@@ -859,7 +859,7 @@ step
   accept Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43
+  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43 |elite
 step
   talk Image of Commander Ameer##20482
   turnin S-A-B-O-T-A-G-E##10405 |goto Netherstorm 56.82,38.7
@@ -922,7 +922,7 @@ step
   accept Nexus-King Salhadaar##10408 |goto Netherstorm 56.82,38.7
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to use the Protectorate Disruptor to bring down Salhadaar's force fields and then destroy Nexus-King Salhadaar.
-  kill Nexus-King Salhadaar##20454 |q 10408 |goto Netherstorm 53.62,42.36
+  kill Nexus-King Salhadaar##20454 |q 10408 |goto Netherstorm 53.62,42.36 |elite
 step
   talk Dealer Hazzin##20092
   turnin Triangulation Point One##10269 |goto Netherstorm 58.35,31.26
@@ -946,7 +946,7 @@ step
   accept You, Robot##10248 |goto Netherstorm 37.32,63.74
 step
   note Activate the Scrap Reaver X6000 Controller and test out its capabilities. Then give your feedback to Doctor Vomisa, Ph.T at the Proving Grounds in the Netherstorm. Deal with any problems that arise.
-  kill Negatron##19851 |q 10248
+  kill Negatron##19851 |q 10248 |elite
 step
   talk Wind Trader Tuluman##20112
   turnin Triangulation Point Two##10275 |goto Netherstorm 34.62,37.95
@@ -955,7 +955,7 @@ step
   accept Full Triangle##10276 |goto Netherstorm 34.62,37.95
 step
   note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
-  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53
+  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53 |elite
 step
   talk Image of Nexus-Prince Haramad##20084
   turnin Full Triangle##10276 |goto Netherstorm 45.87,35.96

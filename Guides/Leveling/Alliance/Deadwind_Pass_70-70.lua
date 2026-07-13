@@ -47,7 +47,7 @@ step
   kill Underground Well Credit Marker##18161 |q 9824 |goto Deadwind Pass 53.2,90.22
 step
   note Archmage Alturus wants you to destroy the Demonic Presence at the top of Karazhan.
-  kill Prince Malchezaar##15690 |q 9844 |goto Karazhan - Raid -1,-1
+  kill Prince Malchezaar##15690 |q 9844 |goto Karazhan - Raid -1,-1 |raid
 step
   talk Archmage Alturus##17613
   turnin Arcane Disturbances##9824 |goto Deadwind Pass 47.28,75.21

@@ -13,7 +13,7 @@ step
   accept Wanted: Sisters of Torment##11500 |goto Shattrath City 75.5,37.24
 step
   note Nether-Stalker Mah'duun wants you to slay 4 Sisters of Torment. Return to him in Shattrath's Lower City once you have done so in order to collect the bounty.
-  kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   talk Tyrith##24822
   turnin Magisters' Terrace##11488 |goto Magisters' Terrace - Dungeon -1,-1
@@ -34,7 +34,7 @@ step
   accept Hard to Kill##11492 |goto Magisters' Terrace - Dungeon -1,-1
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   talk Exarch Larethor##24813
   turnin Hard to Kill##11492 |goto Isle of Quel'Danas 47.42,30.74

@@ -175,10 +175,10 @@ step
   kill Voidspawn##17981 |q 9925 |goto Nagrand 37.52,70.28
 step
   note Nexus-Prince Haramad located outside of the Mana-Tombs wants you to kill Nexus-Prince Shaffar and bring Shaffar's Wrappings back to him.
-  kill Nexus-Prince Shaffar##18344 |q 10165 |goto Mana-Tombs - Dungeon -1,-1
+  kill Nexus-Prince Shaffar##18344 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |elite
 step
   note Artificer Morphalius wants you to kill 10 Ethereal Crypt Raiders, 5 Ethereal Sorcerers, 5 Nexus Stalkers and 5 Ethereal Spellbinders.
-  kill Ethereal Crypt Raider##18311 |q 10216 |goto Mana-Tombs - Dungeon -1,-1
+  kill Ethereal Crypt Raider##18311 |q 10216 |goto Mana-Tombs - Dungeon -1,-1 |elite
 step
   note Bring 10 Obsidian Warbeads to Gezhe at Aeris Landing in Nagrand.
   kill Boulderfist Crusher##17134 |q 9893 |goto Nagrand 74.47,64.02
@@ -199,7 +199,7 @@ step
   collect Teleporter Power Pack##184075 |q 10270 |goto Netherstorm 60.98,41.52
 step
   note Gather 4 pieces of Raw Farahlite and return to Zuben Elgenubi at the Stormspire.
-  kill Farahlon Giant##18885 |q 10290 |goto Netherstorm 41.02,67.16
+  kill Farahlon Giant##18885 |q 10290 |goto Netherstorm 41.02,67.16 |elite
 step
   note Kill 15 Sunfury Nethermancers and return to Nether-Stalker Oazul at Tuluman's Landing in the Netherstorm.
   kill Sunfury Nethermancer##20248 |q 10315 |goto Netherstorm 28.4,39.55
@@ -241,7 +241,7 @@ step
   get Wanted: Bladefist's Seal |q 11363 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun has tasked you with the deaths of 4 Shattered Hand Centurions. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Shattered Hand Centurion##17465 |q 11364 |goto The Shattered Halls - Dungeon -1,-1
+  kill Shattered Hand Centurion##17465 |q 11364 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to obtain The Heart of Quagmirran. Deliver it to him in Shattrath's Lower City to collect the reward.
   get Wanted: The Heart of Quagmirran |q 11368 |goto Shattrath City 75.13,36.65
@@ -253,7 +253,7 @@ step
   get Wanted: The Warlord's Treatise |q 11370 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun has asked you to slay 14 Coilfang Myrmidons. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Coilfang Myrmidon##17800 |q 11371 |goto The Steamvault - Dungeon -1,-1
+  kill Coilfang Myrmidon##17800 |q 11371 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to acquire The Headfeathers of Ikiss. Deliver them to him in Shattrath's Lower City to collect the reward.
   get Wanted: The Headfeathers of Ikiss |q 11372 |goto Shattrath City 75.13,36.65
@@ -265,10 +265,10 @@ step
   get Wanted: The Exarch's Soul Gem |q 11374 |goto Shattrath City 75.13,36.65
 step
   note Wind Trader Zhareem has asked you to obtain Murmur's Whisper. Deliver it to him in Shattrath's Lower City to collect the reward.
-  kill Murmur##18708 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Murmur##18708 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1
+  kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to obtain the Epoch Hunter's Head. Deliver it to him in Shattrath's Lower City to collect the reward.
   get Wanted: The Epoch Hunter's Head |q 11378 |goto Shattrath City 75.13,36.65
@@ -280,22 +280,22 @@ step
   get Wanted: A Warp Splinter Clipping |q 11384 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun wants you to kill 6 Sunseeker Channelers. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Sunseeker Channeler##19505 |q 11385
+  kill Sunseeker Channeler##19505 |q 11385 |elite
 step
   note Wind Trader Zhareem has asked you to acquire Pathaleon's Projector. Deliver it to him in Shattrath's Lower City to collect the reward.
   get Wanted: Pathaleon's Projector |q 11386 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun wants you to destroy 5 Tempest-Forge Destroyers. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Tempest-Forge Destroyer##19735 |q 11387
+  kill Tempest-Forge Destroyer##19735 |q 11387 |elite
 step
   note Wind Trader Zhareem has asked you to obtain The Scroll of Skyriss. Deliver it to him in Shattrath's Lower City to collect the reward.
   get Wanted: The Scroll of Skyriss |q 11388 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun wants you to dismantle 5 Arcatraz Sentinels. Return to him in Shattrath's Lower City once that has been accomplished in order to collect the bounty.
-  kill Arcatraz Sentinel##20869 |q 11389
+  kill Arcatraz Sentinel##20869 |q 11389 |elite
 step
   note Nether-Stalker Mah'duun wants you to slay 4 Sisters of Torment. Return to him in Shattrath's Lower City once you have done so in order to collect the bounty.
-  kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   talk Gezhe##18265
   turnin Stealing from Thieves##9882 |goto Nagrand 31.36,57.79
@@ -516,7 +516,7 @@ step
   kill Pentatharon##20215 |q 10265 |goto Netherstorm 42.46,72.75
 step
   note Zuben Elgenubi at the Stormspire wants you to obtain a Farahlite Core.
-  kill Cragskaar##20202 |q 10293 |goto Netherstorm 47.58,21.15
+  kill Cragskaar##20202 |q 10293 |goto Netherstorm 47.58,21.15 |elite
 step
   note Nether-Stalker Nauthis wants you to slay 12 Wrathbringers at Forge Base: Gehenna, north of the Stormspire.
   kill Wrathbringer##18858 |q 10856 |goto Netherstorm 40.45,20.01
@@ -618,7 +618,7 @@ step
   kill Ethereum Relay##20619 |q 10385 |goto Netherstorm 56.08,41.03
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to speak with Captain Saeed and then follow his army to Manaforge Ultris and kill Dimensius the All-Devouring!
-  kill Dimensius the All-Devouring##19554 |q 10439 |goto Netherstorm 62.41,40.88
+  kill Dimensius the All-Devouring##19554 |q 10439 |goto Netherstorm 62.41,40.88 |elite
 step
   get Ethereum Prisoner I.D. Catalogue |q 10972 |goto Netherstorm 59.5,32.38
 step
@@ -626,7 +626,7 @@ step
   kill Ethereal Scavenger##18309 |q 10973 |goto Mana-Tombs - Dungeon -1,-1
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   talk Nether-Stalker Khay'ji##19880
   turnin A Heap of Ethereals##10262 |goto Netherstorm 32.44,64.21
@@ -759,7 +759,7 @@ step
   kill Scythetooth Raptor##20634 |q 10436 |goto Netherstorm 46.05,12.29
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to use the Protectorate Disruptor to bring down Salhadaar's force fields and then destroy Nexus-King Salhadaar.
-  kill Nexus-King Salhadaar##20454 |q 10408 |goto Netherstorm 53.62,42.36
+  kill Nexus-King Salhadaar##20454 |q 10408 |goto Netherstorm 53.62,42.36 |elite
 step
   talk Gahruj##20066
   turnin Rightful Repossession##10267 |goto Netherstorm 46.67,56.95
@@ -803,7 +803,7 @@ step
   accept Full Triangle##10276 |goto Netherstorm 34.62,37.95
 step
   note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
-  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53
+  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53 |elite
 step
   talk Image of Nexus-Prince Haramad##20084
   turnin Full Triangle##10276 |goto Netherstorm 45.87,35.96

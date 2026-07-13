@@ -62,7 +62,7 @@ step
   accept Crime and Punishment##377 |goto Duskwood 71.92,47.79
 step
   note Councilman Millstipe of Darkshire wants you to bring him the hand of Dextren Ward.
-  kill Dextren Ward##1663 |q 377 |goto The Stockade - Dungeon -1,-1
+  kill Dextren Ward##1663 |q 377 |goto The Stockade - Dungeon -1,-1 |elite
 step
   talk Clerk Daltry##267
   accept The Carevin Family##1042 |goto Duskwood 72.54,46.87
@@ -194,7 +194,7 @@ step
   accept Mor'Ladim##228 |goto Duskwood 73.54,46.82
 step
   note Kill Mor'Ladim, then return his skull to Commander Althea Ebonlocke in Darkshire.
-  kill Mor'Ladim##522 |q 228 |goto Duskwood 16.67,37.35
+  kill Mor'Ladim##522 |q 228 |goto Duskwood 16.67,37.35 |elite
 step
   talk Madame Eva##265
   accept The Shadowy Search Continues##265 |goto Duskwood 75.79,45.32

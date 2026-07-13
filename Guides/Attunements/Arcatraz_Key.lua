@@ -81,7 +81,7 @@ step
   accept Full Triangle##10276 |goto Netherstorm 34.62,37.95
 step
   note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
-  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53
+  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53 |elite
 step
   talk Image of Nexus-Prince Haramad##20084
   turnin Full Triangle##10276 |goto Netherstorm 45.87,35.96

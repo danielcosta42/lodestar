@@ -38,7 +38,7 @@ step
   get Barbaric Battlements |q 2751 |goto Orgrimmar 79.24,22.4
 step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
-  kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1
+  kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   only Rogue
   talk Shenthul##3401

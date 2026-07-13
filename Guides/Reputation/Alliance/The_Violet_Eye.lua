@@ -169,7 +169,7 @@ step
   accept Eminence Among the Violet Eye##10728 |goto Deadwind Pass 47.24,74.99
 step
   note Obtain Medivh's Journal and return to Kamsis at the Guardian's Library in Karazhan.
-  kill Shade of Aran##16524 |q 9640 |goto Karazhan - Raid -1,-1
+  kill Shade of Aran##16524 |q 9640 |goto Karazhan - Raid -1,-1 |raid
 step
   note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
   get Entry Into Karazhan |q 9831 |goto Shattrath City 54.75,44.32
@@ -268,7 +268,7 @@ step
   accept Assessing the Situation##9840 |goto Deadwind Pass 47.28,75.21
 step
   note Go to the Master's Terrace in Karazhan and use Kalynna's Urn to summon Nightbane. Retrieve the Faint Arcane Essence from Nightbane's corpse and bring it to Archmage Alturus.
-  kill Nightbane##17225 |q 9644 |goto Karazhan - Raid -1,-1
+  kill Nightbane##17225 |q 9644 |goto Karazhan - Raid -1,-1 |raid
 step
   talk Archmage Alturus##17613
   turnin Nightbane##9644 |goto Deadwind Pass 47.28,75.21
@@ -289,7 +289,7 @@ step
   accept A Demonic Presence##9844 |goto Deadwind Pass 47.28,75.21
 step
   note Archmage Alturus wants you to destroy the Demonic Presence at the top of Karazhan.
-  kill Prince Malchezaar##15690 |q 9844 |goto Karazhan - Raid -1,-1
+  kill Prince Malchezaar##15690 |q 9844 |goto Karazhan - Raid -1,-1 |raid
 step
   talk Archmage Alturus##17613
   turnin A Demonic Presence##9844 |goto Deadwind Pass 47.28,75.21

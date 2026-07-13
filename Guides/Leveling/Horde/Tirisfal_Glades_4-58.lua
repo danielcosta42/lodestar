@@ -386,7 +386,7 @@ step
   accept The Last Barov##5342 |goto Tirisfal Glades 83.06,71.6
 step
   note Travel to Chillwind Camp - Alliance territory - and assassinate Weldon Barov. Take his head and return to Alexi Barov.
-  kill Weldon Barov##11023 |q 5342 |goto Western Plaguelands 43.45,83.73
+  kill Weldon Barov##11023 |q 5342 |goto Western Plaguelands 43.45,83.73 |elite
 step
   talk High Executor Derrington##10837
   accept The Key to Scholomance##5511 |goto Tirisfal Glades 83.13,68.94

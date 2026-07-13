@@ -71,7 +71,7 @@ step
   accept Clam Bait##6142 |goto Desolace 22.64,71.97
 step
   note Find 10 pieces of Soft-shelled Clam Meat and bring it back to Mai'Lahii at Shadowprey Village.
-  kill Deepstrider Giant##4686 |q 6142 |goto Desolace 66.26,32.79
+  kill Deepstrider Giant##4686 |q 6142 |goto Desolace 66.26,32.79 |elite
 step
   talk Drulzegar Skraghook##12340
   accept Other Fish to Fry##6143 |goto Desolace 23.32,72.87
@@ -134,7 +134,7 @@ step
   kill Burning Blade Seer##13019 |q 5741 |goto Desolace 55.17,30.15
 step
   note Slay Princess Theradras and return to Selendra near Shadowprey Village in Desolace.
-  kill Princess Theradras##12201 |q 7064 |goto Maraudon - Dungeon -1,-1
+  kill Princess Theradras##12201 |q 7064 |goto Maraudon - Dungeon -1,-1 |elite
 step
   note Slay 7 Slitherblade Myrmidon, 7 Slitherblade Naga, and 5 Slitherblade Sorceresses, and then talk to Drulzegar at Shadowprey in Desolace.
   kill Slitherblade Myrmidon##4714 |q 6143 |goto Desolace 32.18,14.81
@@ -293,7 +293,7 @@ step
   get Khan Hratha |q 1380 |goto Desolace 36.22,79.25
 step
   note Slay Lord Azrethoc and Jugkar Grim'rod and return to Takata Steelblade in Desolace.
-  kill Lord Azrethoc##5760 |q 1488 |goto Desolace 56.95,75.74
+  kill Lord Azrethoc##5760 |q 1488 |goto Desolace 56.95,75.74 |elite
 step
   talk Warug##5398
   turnin Khan Shaka##1375 |goto Desolace 74.97,68.16

@@ -25,7 +25,7 @@ step
   accept In the Name of the Light##1053 |goto Hillsbrad Foothills 51.47,58.35
 step
   note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Raleigh the Devout in Southshore.
-  kill High Inquisitor Whitemane##3977 |q 1053 |goto Scarlet Monastery - Dungeon -1,-1
+  kill High Inquisitor Whitemane##3977 |q 1053 |goto Scarlet Monastery - Dungeon -1,-1 |elite
 step
   talk Raleigh the Devout##3980
   turnin In the Name of the Light##1053 |goto Hillsbrad Foothills 51.47,58.35

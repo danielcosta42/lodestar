@@ -306,7 +306,7 @@ step
   accept Borak, Son of Oronok##10546 |goto Shadowmoon Valley 53.95,23.52
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43
+  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43 |elite
 step
   talk Anchorite Karja##19467
   turnin Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
@@ -423,7 +423,7 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7
+  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |elite
 step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
@@ -438,7 +438,7 @@ step
   accept The Cipher of Damnation##10588 |goto Shadowmoon Valley 53.95,23.52
 step
   note Use the Cipher of Damnation at the Altar of Damnation to summon Cyrukh the Firelord.
-  kill Cyrukh the Firelord##21181 |q 10588
+  kill Cyrukh the Firelord##21181 |q 10588 |elite
 step
   talk Earthmender Torlok##21024
   turnin The Cipher of Damnation##10588 |goto Shadowmoon Valley 42.19,45.06

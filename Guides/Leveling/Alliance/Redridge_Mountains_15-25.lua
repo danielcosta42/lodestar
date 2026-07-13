@@ -98,7 +98,7 @@ step
   accept What Comes Around...##386 |goto Redridge Mountains 26.26,46.58
 step
   note Bring the head of Targorr the Dread to Guard Berton in Lakeshire.
-  kill Targorr the Dread##1696 |q 386 |goto The Stockade - Dungeon -1,-1
+  kill Targorr the Dread##1696 |q 386 |goto The Stockade - Dungeon -1,-1 |elite
 step
   only Warrior
   talk Yorus Barleybrew##6166
@@ -208,7 +208,7 @@ step
   accept Tharil'zun##19 |goto Redridge Mountains 33.5,48.97
 step
   note Bring Tharil'zun's Head to Marshal Marris in Redridge.
-  kill Tharil'zun##486 |q 19 |goto Redridge Mountains 69.45,59.41
+  kill Tharil'zun##486 |q 19 |goto Redridge Mountains 69.45,59.41 |elite
 step
   talk Foreman Oslow##341
   accept The Everstill Bridge##89 |goto Redridge Mountains 32.14,48.64

@@ -88,7 +88,7 @@ step
 step
   only Mage
   note Bring the voodoo feathers to Bath'rah the Windwatcher.
-  kill Gasher##5713 |q 8413 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  kill Gasher##5713 |q 8413 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
 step
   only Rogue
   talk Fahrad##6707

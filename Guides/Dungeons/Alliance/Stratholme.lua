@@ -24,7 +24,7 @@ step
   collect Malor's Strongbox##176112 |q 5122 |goto Stratholme - Dungeon -1,-1
 step
   note Travel to Stratholme and find Archivist Galford of the Scarlet Crusade. Destroy him and burn down the Scarlet Archive.
-  kill Archivist Galford##10811 |q 5251 |goto Stratholme - Dungeon -1,-1
+  kill Archivist Galford##10811 |q 5251 |goto Stratholme - Dungeon -1,-1 |elite
 step
   talk Festival Flamekeeper##16788
   turnin A Light in Dark Places##9319

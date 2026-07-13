@@ -403,7 +403,7 @@ step
   accept Razormaw##9689 |goto Bloodmyst Isle 74.47,33.46
 step
   note Prince Toreth at Wyrmscar Island has asked that you slay Razormaw.
-  kill Razormaw##17592 |q 9689 |goto Bloodmyst Isle 73.8,29.6
+  kill Razormaw##17592 |q 9689 |goto Bloodmyst Isle 73.8,29.6 |elite
 step
   talk Captain Edward Hanes##17712
   turnin The Hopeless Ones...##9682 |goto Bloodmyst Isle 79.15,22.65
@@ -538,7 +538,7 @@ step
 step
   only Draenei
   note Vindicator Corin at Vindicator's Rest wants you to slay 8 Sunhawk Saboteurs and 8 Sunhawk Agents.
-  kill Sunhawk Agent##17610 |q 9761 |goto Bloodmyst Isle 17.23,54.56
+  kill Sunhawk Agent##17610 |q 9761 |goto Bloodmyst Isle 17.23,54.56 |elite
 step
   only Draenei
   talk Vindicator Corin##17986

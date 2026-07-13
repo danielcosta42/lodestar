@@ -20,7 +20,7 @@ step
   accept Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
 step
   note Slay the beast and bring back the Hypercapacitor Gizmo and Panther Cage Key to Wizlo Bearingshiner.
-  kill Enraged Panther##10992 |q 5151 |goto Thousand Needles 22.76,24.62
+  kill Enraged Panther##10992 |q 5151 |goto Thousand Needles 22.76,24.62 |elite
 step
   talk Pao'ka Swiftmountain##10427
   accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57

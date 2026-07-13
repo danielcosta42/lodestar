@@ -20,7 +20,7 @@ step
   accept Ribbly Screwspigot##4136 |goto Burning Steppes 66.06,21.95
 step
   note Bring Ribbly's Head to Yuka Screwspigot in the Burning Steppes.
-  kill Ribbly Screwspigot##9543 |q 4136 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Ribbly Screwspigot##9543 |q 4136 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   talk Maxwort Uberglint##9536
   accept Tablet of the Seven##4296 |goto Burning Steppes 65.15,23.91
@@ -80,7 +80,7 @@ step
   accept Overmaster Pyron##4262 |goto Burning Steppes 85.41,70.06
 step
   note Slay Overmaster Pyron and return to Jalinda Sprig.
-  kill Overmaster Pyron##9026 |q 4262
+  kill Overmaster Pyron##9026 |q 4262 |elite
 step
   talk Oralius##9177
   accept FIFTY! YEP!##4283 |goto Burning Steppes 84.56,68.68
@@ -146,13 +146,13 @@ step
   accept Felnok Steelspring##4808 |goto Burning Steppes 65.24,24.0
 step
   note Travel to Blackrock Spire and destroy War Master Voone, Highlord Omokk, and Overlord Wyrmthalak. Return to Marshal Maxwell when the job is done.
-  kill War Master Voone##9237 |q 5081 |goto Blackrock Spire - Dungeon -1,-1
+  kill War Master Voone##9237 |q 5081 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   note Travel to Blackrock Spire and destroy the source of the worg menace. As you left Helendis, he shouted a name: Halycon. It is what the orcs refer to in regards to the worg.
-  kill Halycon##10220 |q 4701 |goto Blackrock Spire - Dungeon -1,-1
+  kill Halycon##10220 |q 4701 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   note Travel to Blackrock Spire and destroy General Drakkisath. Return to Marshal Maxwell when the job is done.
-  kill General Drakkisath##10363 |q 5102 |goto Blackrock Spire - Dungeon -1,-1
+  kill General Drakkisath##10363 |q 5102 |goto Blackrock Spire - Dungeon -1,-1 |raid
 step
   talk Elder Rumblerock##15557
   turnin Rumblerock the Elder##8636 |goto Burning Steppes 83.13,47.37
@@ -242,7 +242,7 @@ step
   accept Leonid Barthalomew##5522 |goto Burning Steppes 65.24,24.0
 step
   note Find Lord Incendius in Blackrock Depths and destroy him!
-  kill Lord Incendius##9017 |q 4263 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Lord Incendius##9017 |q 4263 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   talk Leonid Barthalomew the Revered##11036
   turnin Leonid Barthalomew##5522 |goto Eastern Plaguelands 81.73,57.83 |tip {turninat}Eastern Plaguelands

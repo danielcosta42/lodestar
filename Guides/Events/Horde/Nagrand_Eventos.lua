@@ -85,7 +85,7 @@ step
   accept Buying Time##9999 |goto Nagrand 27.34,43.09
 step
   note Altruis the Sufferer in western Nagrand has asked that you kill 2 Felguard Legionnaires, 3 Mo'arg Engineers and 8 Gan'arg Tinkerers.
-  kill Felguard Legionnaire##17152 |q 9999 |goto Nagrand 21.39,42.9
+  kill Felguard Legionnaire##17152 |q 9999 |goto Nagrand 21.39,42.9 |elite
 step
   talk Kilrath##18273
   turnin Success!##9890 |goto Terokkar Forest 19.77,60.85
@@ -100,7 +100,7 @@ step
   accept The Master Planner##10001 |goto Nagrand 27.34,43.09
 step
   note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
-  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33
+  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33 |elite
 step
   talk Jorin Deadeye##18106
   turnin Because Kilrath is a Coward##9891 |goto Nagrand 55.56,37.62
@@ -133,7 +133,7 @@ step
   kill Boulderfist Warrior##17136 |q 9907 |goto Nagrand 41.35,35.08
 step
   note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
-  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4
+  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4 |elite
 step
   talk Jorin Deadeye##18106
   turnin An Audacious Advance##9907 |goto Nagrand 55.56,37.62
@@ -217,7 +217,7 @@ step
   accept Auchindoun...##10167 |goto Shattrath City 53.99,44.75
 step
   note Travel to the Auchenai Crypts in the Bone Wastes of Terokkar Forest and slay Exarch Maladaar to free the spirit of D'ore.
-  kill Exarch Maladaar##18373 |q 10167 |goto Auchenai Crypts - Dungeon -1,-1
+  kill Exarch Maladaar##18373 |q 10167 |goto Auchenai Crypts - Dungeon -1,-1 |elite
 step
   talk D'ore##19412
   turnin Auchindoun...##10167
@@ -226,7 +226,7 @@ step
   accept What the Soul Sees##10168
 step
   note Locate a Soul Mirror somewhere in the Auchenai Crypts and use it to call forth a Darkened Spirit from Ancient Orc Ancestors in Nagrand. Destroy 15 Darkened Spirits so that the ancestors may rest in peace.
-  kill Darkened Spirit##19480 |q 10168
+  kill Darkened Spirit##19480 |q 10168 |elite
 step
   talk Mother Kashur##18687
   turnin What the Soul Sees##10168 |goto Nagrand 26.07,60.6

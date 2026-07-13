@@ -181,7 +181,7 @@ step
   accept The Hero of the Day##8799 |goto Orgrimmar 53.33,66.49
 step
   note Locate and return the Stolen Treats to Kaymard Copperpinch in Orgrimmar. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains.
-  kill The Abominable Greench##13602 |q 6983 |goto Alterac Mountains 37.26,63.57
+  kill The Abominable Greench##13602 |q 6983 |goto Alterac Mountains 37.26,63.57 |elite
 step
   note Bring 1 Deeprock Salt and 5 gold coins to the Holly Preserver machine, upon which you will receive 5 Preserved Holly.
   kill Rock Elemental##92 |q 8799 |goto Badlands 40.97,77.75

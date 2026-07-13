@@ -136,6 +136,25 @@ function S:Show() build(); frame:Show() end
 function S:Toggle() build(); if frame:IsShown() then frame:Hide() else frame:Show() end end
 
 --------------------------------------------------------------------------------
+-- Gancho pro localizador de party (PartyLens, addon irmão da rede ChehulNet):
+-- passos de inimigo elite/chefe oferecem "Procurar grupo". Abre o buscador do
+-- PartyLens; standalone-safe — sem ele, tenta o buscador nativo e, por fim, avisa.
+function ns:FindGroup(isRaid)
+	local PL = _G.PartyLens
+	if PL and PL.Toggle then
+		pcall(function() PL:Toggle() end)
+		return true
+	end
+	-- fallback: buscador de grupo nativo (o nome da função varia por client)
+	for _, fn in ipairs({ "PVEFrame_ToggleFrame", "PVEFrame_ShowFrame", "ToggleLFGParentFrame" }) do
+		local f = _G[fn]
+		if type(f) == "function" then pcall(f); return true end
+	end
+	ns:Print(ns.L.GROUP_NO_FINDER)
+	return false
+end
+
+--------------------------------------------------------------------------------
 -- registra o receive na hora (a malha já carregou antes deste arquivo)
 do local M = mesh(); if M and M.Register then M:Register(PREFIX, onRecv) end end
 -- anuncia: change-driven a cada 12s + na hora ao trocar de guia

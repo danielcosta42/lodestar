@@ -315,10 +315,10 @@ step
   accept Avenge My Village##6548 |goto The Barrens 35.19,27.76
 step
   note Kill the leader of the Talon Den, Rynthariel the Keymaster.
-  kill Rynthariel the Keymaster##8518 |q 3514 |goto Stonetalon Mountains 29.71,16.91
+  kill Rynthariel the Keymaster##8518 |q 3514 |goto Stonetalon Mountains 29.71,16.91 |elite
 step
   note Ebru in the Wailing Caverns wants you to kill 7 Deviate Ravagers, 7 Deviate Vipers, 7 Deviate Shamblers and 7 Deviate Dreadfangs.
-  kill Deviate Ravager##3636 |q 1487 |goto Wailing Caverns - Dungeon -1,-1
+  kill Deviate Ravager##3636 |q 1487 |goto Wailing Caverns - Dungeon -1,-1 |elite
 step
   talk Tammra Windfield##11864
   turnin Kaya's Alive##6401 |goto Stonetalon Mountains 47.46,58.38 |tip {turninat}Stonetalon Mountains
@@ -358,7 +358,7 @@ step
 step
   only Druid
   note Find 3 Soran'ruk Fragments and 1 Large Soran'ruk Fragment and return them to Doan Karhan in the Barrens.
-  kill Twilight Acolyte##4809 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1
+  kill Twilight Acolyte##4809 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1 |elite
 step
   only Warrior
   talk Ruga Ragetotem##6394

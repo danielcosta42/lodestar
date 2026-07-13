@@ -89,7 +89,7 @@ step
   kill Syndicate Footpad##2240 |q 505 |goto Alterac Mountains 57.71,68.04
 step
   note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Raleigh the Devout in Southshore.
-  kill High Inquisitor Whitemane##3977 |q 1053 |goto Scarlet Monastery - Dungeon -1,-1
+  kill High Inquisitor Whitemane##3977 |q 1053 |goto Scarlet Monastery - Dungeon -1,-1 |elite
 step
   talk Magistrate Henry Maleb##2276
   turnin Noble Deaths##512 |goto Hillsbrad Foothills 48.14,59.11

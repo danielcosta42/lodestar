@@ -20,7 +20,7 @@ step
   accept The Blood is Life##9589 |goto Hellfire Peninsula 56.4,66.66
 step
   note Collect 10 Fel Orc Blood Vials and return them to Gunny at Honor Hold in Hellfire Peninsula.
-  kill Laughing Skull Enforcer##17370 |q 9589 |goto The Blood Furnace - Dungeon -1,-1
+  kill Laughing Skull Enforcer##17370 |q 9589 |goto The Blood Furnace - Dungeon -1,-1 |elite
 step
   talk Warp-Scryer Kryv##16839
   accept The Path of Glory##10047 |goto Hellfire Peninsula 56.69,66.52
@@ -92,7 +92,7 @@ step
   kill Terrorfiend##16951 |q 10399 |goto Hellfire Peninsula 40.05,32.89
 step
   note Slay Arazzius the Cruel in the Pools of Aggonar and return to Force Commander Danath Trollbane in the keep of Honor Hold.
-  kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55
+  kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55 |elite
 step
   talk Elsaana##17006
   accept An Ambitious Plan##9383 |goto Hellfire Peninsula 23.21,36.66
@@ -116,13 +116,13 @@ step
   accept The Rock Flayer Matriarch##9490 |goto Hellfire Peninsula 23.09,40.22
 step
   note Obtain Blacktalon's Claws from Blacktalon the Savage at the Great Fissure and bring it to Ikan at the Temple of Telhamat in Hellfire Peninsula.
-  kill Blacktalon the Savage##17057 |q 9490 |goto Hellfire Peninsula 33.37,65.08
+  kill Blacktalon the Savage##17057 |q 9490 |goto Hellfire Peninsula 33.37,65.08 |elite
 step
   talk Amaan the Wise##16796
   accept Helping the Cenarion Post##10443 |goto Hellfire Peninsula 23.42,36.54
 step
   note Field Commander Romus at Honor Hold wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
-  kill Shattered Hand Legionnaire##16700 |q 9493 |goto The Shattered Halls - Dungeon -1,-1
+  kill Shattered Hand Legionnaire##16700 |q 9493 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   talk Thiah Redmane##16991
   turnin Helping the Cenarion Post##10443 |goto Hellfire Peninsula 15.7,52.09
@@ -335,7 +335,7 @@ step
   kill Aggonis##17000 |q 9427
 step
   note Slay 5 Raging Colossi and then return to Tola'thion at the Cenarion Post in Hellfire Peninsula.
-  kill Raging Colossus##19188 |q 10132 |goto Hellfire Peninsula 15.38,42.29
+  kill Raging Colossus##19188 |q 10132 |goto Hellfire Peninsula 15.38,42.29 |elite
 step
   talk Tola'thion##19293
   turnin Colossal Menace##10132 |goto Hellfire Peninsula 15.62,52.04
@@ -359,7 +359,7 @@ step
   accept Natural Remedies##10351 |goto Hellfire Peninsula 15.96,51.57
 step
   note Use the Seed of Revitalization at the Earthbinder's Circle to heal the land around the crystal. Then, return to Earthbinder Galandria Nightbreeze at the Cenarion Post in Hellfire Peninsula with any information that you gain.
-  kill Goliathon##19305 |q 10351
+  kill Goliathon##19305 |q 10351 |elite
 step
   talk Naladu##19361
   turnin A Traitor Among Us##10367 |goto Hellfire Peninsula 16.27,65.09
@@ -401,7 +401,7 @@ step
   accept Weaken the Ramparts##9575 |goto Hellfire Peninsula 56.73,66.34
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Gunny at Honor Hold in Hellfire Peninsula.
-  kill Watchkeeper Gargolmar##17306 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1
+  kill Watchkeeper Gargolmar##17306 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1 |elite
 step
   talk Foreman Biggums##16837
   accept When This Mine's a-Rockin'##10079 |goto Hellfire Peninsula 52.02,62.57
@@ -605,7 +605,7 @@ step
   accept Mission: The Abyssal Shelf##10163 |goto Hellfire Peninsula 79.34,33.86
 step
   note Wing Commander Gryphongar at Shatter Point in Hellfire Peninsula has asked that you destroy 20 Gan'arg Peons, 5 Mo'arg Overseers and 5 Fel Cannons.
-  kill Gan'arg Peon##19398 |q 10163 |goto Hellfire Peninsula 72.94,17.37
+  kill Gan'arg Peon##19398 |q 10163 |goto Hellfire Peninsula 72.94,17.37 |elite
 step
   talk Amaan the Wise##16796
   turnin Sha'naar Relics##9430 |goto Hellfire Peninsula 23.42,36.54
@@ -647,7 +647,7 @@ step
   accept Drill the Drillmaster##10937 |goto Hellfire Peninsula 56.64,66.7
 step
   note Force Commander Danath Trollbane has ordered you to kill Drillmaster Zurok with all due haste. Return to the force commander at Honor Hold in the Hellfire Peninsula once the drillmaster is dead.
-  kill Drillmaster Zurok##19312 |q 10937 |goto Hellfire Peninsula 48.07,56.17
+  kill Drillmaster Zurok##19312 |q 10937 |goto Hellfire Peninsula 48.07,56.17 |elite
 step
   talk Field Marshal Brock##20793
   turnin Disruption - Forge Camp: Mageddon##10394 |goto Hellfire Peninsula 68.29,28.55

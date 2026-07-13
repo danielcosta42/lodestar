@@ -82,7 +82,7 @@ step
   accept Buying Time##9999 |goto Nagrand 27.34,43.09
 step
   note Altruis the Sufferer in western Nagrand has asked that you kill 2 Felguard Legionnaires, 3 Mo'arg Engineers and 8 Gan'arg Tinkerers.
-  kill Felguard Legionnaire##17152 |q 9999 |goto Nagrand 21.39,42.9
+  kill Felguard Legionnaire##17152 |q 9999 |goto Nagrand 21.39,42.9 |elite
 step
   talk Mo'mor the Breaker##18223
   turnin Mo'mor the Breaker##9920 |goto Nagrand 54.61,72.21
@@ -100,7 +100,7 @@ step
   kill Boulderfist Crusher##17134 |q 9921 |goto Nagrand 74.47,64.02
 step
   note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
-  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33
+  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33 |elite
 step
   talk Mo'mor the Breaker##18223
   turnin The Ruins of Burning Blade##9921 |goto Nagrand 54.61,72.21
@@ -130,7 +130,7 @@ step
   accept Crackin' Some Skulls##10009 |goto Shattrath City 77.26,34.85
 step
   note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
-  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4
+  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4 |elite
 step
   talk Lantresor of the Blade##18261
   turnin Diplomatic Measures##10108 |goto Nagrand 73.81,62.6

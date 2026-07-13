@@ -26,7 +26,7 @@ step
   accept The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
 step
   note Travel to the four Emerald Dream portals in Azeroth and collect a Fragment of the Nightmare's Corruption from each. Return to Keeper Remulos in the Moonglade when you have completed this task.
-  kill Emeraldon Boughguard##12474 |q 8735 |goto Ashenvale 94.94,39.0
+  kill Emeraldon Boughguard##12474 |q 8735 |goto Ashenvale 94.94,39.0 |elite
 step
   talk Layo Starstrike##13220
   turnin Wasteland##1124 |goto Silithus 81.87,18.93 |tip {turninat}Silithus

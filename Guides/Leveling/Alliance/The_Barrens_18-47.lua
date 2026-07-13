@@ -181,7 +181,7 @@ step
 step
   only Druid
   note Find 3 Soran'ruk Fragments and 1 Large Soran'ruk Fragment and return them to Doan Karhan in the Barrens.
-  kill Twilight Acolyte##4809 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1
+  kill Twilight Acolyte##4809 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1 |elite
 step
   talk Greta Mosshoof##10922
   turnin Cleansed Water Returns to Felwood##5159 |goto Felwood 51.21,82.11 |tip {turninat}Felwood
@@ -204,7 +204,7 @@ step
   kill Supervisor Lugwizzle##3445 |q 858 |goto The Barrens 56.27,8.58
 step
   note Ebru in the Wailing Caverns wants you to kill 7 Deviate Ravagers, 7 Deviate Vipers, 7 Deviate Shamblers and 7 Deviate Dreadfangs.
-  kill Deviate Ravager##3636 |q 1487 |goto Wailing Caverns - Dungeon -1,-1
+  kill Deviate Ravager##3636 |q 1487 |goto Wailing Caverns - Dungeon -1,-1 |elite
 step
   talk Tinkmaster Overspark##7944
   turnin Gnome Engineering##3634 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge

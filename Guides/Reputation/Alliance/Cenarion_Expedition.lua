@@ -103,7 +103,7 @@ step
   kill Kataru##18080 |q 9747 |goto Zangarmarsh 85.29,90.93
 step
   note Locate and deal with Boglash, then return to Lethyn Moonfire at Cenarion Refuge.
-  kill Boglash##18281 |q 9895 |goto Zangarmarsh 82.07,71.39
+  kill Boglash##18281 |q 9895 |goto Zangarmarsh 82.07,71.39 |elite
 step
   note Thiah Redmane, at the Cenarion Post in Hellfire Peninsula, has asked you to gather 6 Helboar Blood Samples from Hulking Helboars.
   kill Hulking Helboar##16880 |q 9372 |goto Hellfire Peninsula 24.6,54.71
@@ -112,7 +112,7 @@ step
   kill Darkcrest Taskmaster##18086 |q 9802 |goto Zangarmarsh 62.13,67.45
 step
   note Slay Rajis Fyashe at Serpent Lake and return to Warden Hamoot at the Cenarion Refuge in Zangarmarsh for a reward.
-  kill Rajis Fyashe##18044 |q 9817 |goto Zangarmarsh 65.15,40.91
+  kill Rajis Fyashe##18044 |q 9817 |goto Zangarmarsh 65.15,40.91 |elite
 step
   note Collect 4 Teromoth Samples and 4 Vicious Teromoth Samples. Then return to Earthbinder Tavgren just outside the Cenarion Thicket in Terokkar Forest.
   kill Teromoth##18468 |q 9968 |goto Terokkar Forest 45.14,29.39
@@ -121,13 +121,13 @@ step
   collect Strange Object##183789 |q 9971 |goto Terokkar Forest 45.1,21.77
 step
   note Slay 5 Raging Colossi and then return to Tola'thion at the Cenarion Post in Hellfire Peninsula.
-  kill Raging Colossus##19188 |q 10132 |goto Hellfire Peninsula 15.38,42.29
+  kill Raging Colossus##19188 |q 10132 |goto Hellfire Peninsula 15.38,42.29 |elite
 step
   note Kill 8 Thornfang Ravagers and 8 Thornfang Venomspitters, and then return to Mahuram Stouthoof at the Cenarion Post in Hellfire Peninsula.
   kill Thornfang Ravager##19349 |q 10159 |goto Hellfire Peninsula 10.25,51.54
 step
   note Slay Rajah Haghazed at the Lagoon and return to Warden Hamoot at the Cenarion Expedition in Zangarmarsh for a reward.
-  kill Rajah Haghazed##18046 |q 9730 |goto Zangarmarsh 65.1,68.67
+  kill Rajah Haghazed##18046 |q 9730 |goto Zangarmarsh 65.1,68.67 |elite
 step
   note Windcaller Blackhoof wants you to speak to the ancients Ashyen and Keleth at Cenarion Refuge and obtain their blessings.
   kill Ashyen##17900 |q 9785 |goto Zangarmarsh 81.1,63.87
@@ -154,7 +154,7 @@ step
   kill Mutated Farahlon Lasher##20983 |q 10426 |goto Netherstorm 41.01,32.56
 step
   note Watcher Jhang wants you to find and slay Warlord Kalithresh inside Coilfang Reservoir.
-  kill Warlord Kalithresh##17798 |q 9763 |goto The Steamvault - Dungeon -1,-1
+  kill Warlord Kalithresh##17798 |q 9763 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to obtain The Heart of Quagmirran. Deliver it to him in Shattrath's Lower City to collect the reward.
   get Wanted: The Heart of Quagmirran |q 11368 |goto Shattrath City 75.13,36.65
@@ -166,7 +166,7 @@ step
   get Wanted: The Warlord's Treatise |q 11370 |goto Shattrath City 75.13,36.65
 step
   note Nether-Stalker Mah'duun has asked you to slay 14 Coilfang Myrmidons. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
-  kill Coilfang Myrmidon##17800 |q 11371 |goto The Steamvault - Dungeon -1,-1
+  kill Coilfang Myrmidon##17800 |q 11371 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   talk Morthis Whisperwing##22832
   turnin Morthis Whisperwing##10955 |goto Zangarmarsh 80.18,65.15
@@ -364,7 +364,7 @@ step
   kill Dreadtusk##16992 |q 10255
 step
   note Warden Hamoot at the Cenarion Refuge wants you to bring him 30 Naga Claws.
-  kill Rajis Fyashe##18044 |q 9728 |goto Zangarmarsh 65.15,40.91
+  kill Rajis Fyashe##18044 |q 9728 |goto Zangarmarsh 65.15,40.91 |elite
 step
   kill Darkcrest Taskmaster##18086 |q 9784 |goto Zangarmarsh 62.13,67.45
 step
@@ -378,7 +378,7 @@ step
   get Creatures of the Eco-Domes |q 10427 |goto Netherstorm 43.82,38.26
 step
   note Obtain Coilfang Armaments from naga at Coilfang Reservoir and return them to Ysiel Windsinger at the Cenarion Refuge in Zangarmarsh.
-  kill Coilfang Engineer##17721 |q 9765 |goto The Steamvault - Dungeon -1,-1
+  kill Coilfang Engineer##17721 |q 9765 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   note Lauranna Thar'well wants you to go to the Botanica in Tempest Keep and retrieve the Botanist's Field Guide from High Botanist Freywinn. In addition she also wants you to bring her 5 Super Healing Potions, 5 Super Mana Potions and 5 Major Dreamless Sleep Potions.
   get Master of Potions |q 10897 |goto Zangarmarsh 80.32,64.17
@@ -471,7 +471,7 @@ step
   accept Coilfang Armaments##9766 |goto Zangarmarsh 78.4,62.02
 step
   note Use the Seed of Revitalization at the Earthbinder's Circle to heal the land around the crystal. Then, return to Earthbinder Galandria Nightbreeze at the Cenarion Post in Hellfire Peninsula with any information that you gain.
-  kill Goliathon##19305 |q 10351
+  kill Goliathon##19305 |q 10351 |elite
 step
   note Collect 10 pieces of Discarded Nutriment and then return to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
   collect Discarded Nutriment##182031 |q 9702 |goto Zangarmarsh 30.2,63.94
@@ -485,7 +485,7 @@ step
   note Aurine Moonblaze at the Stormspire wants you to bring her a Hulking Hydra Heart.
   kill Markaru##20775 |q 10429 |goto Netherstorm 44.56,28.42
 step
-  kill Coilfang Engineer##17721 |q 9766 |goto The Steamvault - Dungeon -1,-1
+  kill Coilfang Engineer##17721 |q 9766 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   talk Clintar Dreamwalker##22834
   turnin Waking the Sleeper##10964 |goto Moonglade 75.46,67.04
@@ -588,7 +588,7 @@ step
   kill Maxnar the Ashmaw##21389 |q 10748 |goto Blade's Edge Mountains 33.9,35.32
 step
   note Kill Doomcryer and report back to Wildlord Antelarion in Evergrove.
-  kill Doomcryer##19963 |q 10821
+  kill Doomcryer##19963 |q 10821 |elite
 step
   talk Morthis Whisperwing##22832
   turnin Return to Morthis Whisperwing##10978 |goto Zangarmarsh 80.18,65.15
@@ -690,7 +690,7 @@ step
   get The Final Code |q 10446 |goto Terokkar Forest 71.26,37.37
 step
   note The Evergrove Druid has told you that the final thing you must do is to slay Baelmon the Hound-Master. Afterward, return to Evergrove in the Blade's Edge Mountains, and inform Wildlord Antelarion of your success.
-  kill Baelmon the Hound-Master##19747 |q 10912 |goto Blade's Edge Mountains 63.04,60.41
+  kill Baelmon the Hound-Master##19747 |q 10912 |goto Blade's Edge Mountains 63.04,60.41 |elite
 step
   talk Watcher Elaira##22981
   turnin To Catch A Sparrowhawk##10987 |goto Nagrand 20.58,35.73
@@ -762,7 +762,7 @@ step
   accept Vanquish the Raven God##11001 |goto Zangarmarsh 80.18,65.15
 step
   note Slay the Raven God and return to Morthis Whisperwing at Cenarion Refuge.
-  kill Anzu##23035 |q 11001
+  kill Anzu##23035 |q 11001 |elite
 step
   talk Morthis Whisperwing##22832
   turnin Vanquish the Raven God##11001 |goto Zangarmarsh 80.18,65.15

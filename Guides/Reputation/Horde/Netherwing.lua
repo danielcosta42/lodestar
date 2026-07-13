@@ -115,7 +115,7 @@ step
   accept Zuluhed the Whacked##10866 |goto Shadowmoon Valley 69.86,61.44
 step
   note Kill Zuluhed the Whacked and recover Zuluhed's Key. Use Zuluhed's Key on Zuluhed's Chains to free Karynaku.
-  kill Zuluhed the Whacked##11980 |q 10866
+  kill Zuluhed the Whacked##11980 |q 10866 |elite
 step
   talk Karynaku##22112
   turnin Zuluhed the Whacked##10866 |goto Shadowmoon Valley 69.86,61.44
