@@ -7,6 +7,8 @@ ns.name = ADDON
 
 local GetAddOnMetadata = (C_AddOns and C_AddOns.GetAddOnMetadata) or GetAddOnMetadata
 ns.version = GetAddOnMetadata and GetAddOnMetadata(ADDON, "Version") or "dev"
+-- Em dev o token @project-version@ ainda não foi substituído pelo packager.
+if type(ns.version) ~= "string" or ns.version:find("@") then ns.version = "dev" end
 
 --------------------------------------------------------------------------------
 -- Log

@@ -12,21 +12,31 @@ local frame, tabs, pages, curTab
 --------------------------------------------------------------------------------
 -- linhas de opção
 --------------------------------------------------------------------------------
+-- Retorna (título, alturaDaDescrição). A descrição tem LARGURA FIXA + quebra de
+-- linha, então nunca invade o switch nem vaza pra fora do painel.
 local function labelPair(page, title, desc)
-	page._y = (page._y or 14) + 0
+	local y = page._y or 14
 	local t = page:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(t, 13, { color = UI.COL.active })
-	t:SetPoint("TOPLEFT", 22, -page._y)
+	t:SetPoint("TOPLEFT", 22, -y)
 	t:SetText(title)
-	local d = page:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(d, 11, { color = UI.COL.muted })
-	d:SetPoint("TOPLEFT", 22, -page._y - 17)
-	d:SetText(desc or "")
-	return t, d
+	local dh = 0
+	if desc and desc ~= "" then
+		local d = page:CreateFontString(nil, "OVERLAY")
+		UI.SetFont(d, 11, { color = UI.COL.muted })
+		d:SetPoint("TOPLEFT", 22, -y - 17)
+		d:SetWidth(W - 108)                          -- reserva a faixa do switch à direita
+		d:SetJustifyH("LEFT"); d:SetWordWrap(true)
+		d:SetText(desc)
+		-- altura por estimativa (independe do layout ter sido calculado ainda)
+		local perLine = math.max(1, math.floor((W - 108) / 7))
+		dh = math.max(1, math.ceil(#desc / perLine)) * 13
+	end
+	return t, dh
 end
 
 local function switchRow(page, title, desc, get, set, optin)
-	local t = labelPair(page, title, desc)
+	local t, dh = labelPair(page, title, desc)
 	if optin then   -- marca amarela "opt-in": desligado por padrão de propósito
 		local b = page:CreateFontString(nil, "OVERLAY")
 		UI.SetFont(b, 9.5, { num = true, color = UI.COL.amber })
@@ -36,7 +46,7 @@ local function switchRow(page, title, desc, get, set, optin)
 	local sw = UI.Switch(page, function(on) set(on) end)
 	sw:SetPoint("TOPRIGHT", -22, -page._y - 2)
 	sw:SetOn(get())
-	page._y = page._y + (desc ~= "" and 44 or 34)
+	page._y = page._y + (dh > 0 and (27 + dh) or 34)
 	return sw
 end
 
