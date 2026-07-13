@@ -20,17 +20,26 @@ step
   talk Earthmender Torlok##21024
   accept Enraged Spirits of Fire and Earth##10458 |goto Shadowmoon Valley 42.19,45.06
 step
+  note Earthmender Torlok at the Altar of Damnation in Shadowmoon Valley wants you to use the Totem of Spirits to capture 8 Earthen Souls and 8 Fiery Souls.
+  get Enraged Spirits of Fire and Earth |q 10458 |goto Shadowmoon Valley 42.19,45.06
+step
   talk Earthmender Torlok##21024
   turnin Enraged Spirits of Fire and Earth##10458 |goto Shadowmoon Valley 42.19,45.06
 step
   talk Earthmender Torlok##21024
   accept Enraged Spirits of Water##10480 |goto Shadowmoon Valley 42.19,45.06
 step
+  note Earthmender Torlok at the Altar of Damnation in Shadowmoon Valley wants you to use the Totem of Spirits to capture 5 Watery Souls.
+  get Enraged Spirits of Water |q 10480 |goto Shadowmoon Valley 42.19,45.06
+step
   talk Earthmender Torlok##21024
   turnin Enraged Spirits of Water##10480 |goto Shadowmoon Valley 42.19,45.06
 step
   talk Earthmender Torlok##21024
   accept Enraged Spirits of Air##10481 |goto Shadowmoon Valley 42.19,45.06
+step
+  note Earthmender Torlok at the Altar of Damnation in Shadowmoon Valley wants you to use the Totem of Spirits to capture 10 Airy Souls.
+  get Enraged Spirits of Air |q 10481 |goto Shadowmoon Valley 42.19,45.06
 step
   talk Earthmender Torlok##21024
   turnin Enraged Spirits of Air##10481 |goto Shadowmoon Valley 42.19,45.06
@@ -43,6 +52,9 @@ step
 step
   talk Oronok Torn-heart##21183
   accept I Was A Lot Of Things...##10514 |goto Shadowmoon Valley 53.95,23.52
+step
+  note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
+  get I Was A Lot Of Things... |q 10514 |goto Shadowmoon Valley 53.95,23.52
 step
   talk Oronok Torn-heart##21183
   turnin I Was A Lot Of Things...##10514 |goto Shadowmoon Valley 53.95,23.52
@@ -89,6 +101,15 @@ step
   talk Borak, Son of Oronok##21293
   accept Of Thistleheads and Eggs...##10547 |goto Shadowmoon Valley 47.56,57.18
 step
+  note Grom'tor, Son of Oronok at Coilskar Point in Shadowmoon Valley wants you to recover the First Fragment of the Cipher of Damnation.
+  get The Cipher of Damnation - Grom'tor's Charge |q 10522 |goto Shadowmoon Valley 44.62,23.66
+step
+  note Seek out and slay Painmistress Gabrissa at Illidari Point and return to the corpse of Ar'tor, Son of Oronok with the Crystalline Key.
+  get Demonic Crystal Prisons |q 10528 |goto Shadowmoon Valley 29.63,50.4
+step
+  note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
+  get Of Thistleheads and Eggs... |q 10547 |goto Shadowmoon Valley 47.56,57.18
+step
   talk Grom'tor, Son of Oronok##21291
   turnin The Cipher of Damnation - Grom'tor's Charge##10522 |goto Shadowmoon Valley 44.62,23.66
 step
@@ -107,6 +128,9 @@ step
   talk Tobias the Filth Gorger##21411
   accept The Bundle of Bloodthistle##10550 |goto Shattrath City 63.95,70.03
 step
+  note The Spirit of Ar'tor at Illidari Point in Shadowmoon Valley wants you to recover Lohn'goron, Bow of the Torn-heart from the demons of the area.
+  get Lohn'goron, Bow of the Torn-heart |q 10537 |goto Shadowmoon Valley 29.53,50.52
+step
   talk Oronok Torn-heart##21183
   turnin The Cipher of Damnation - The First Fragment Recovered##10523 |goto Shadowmoon Valley 53.95,23.52
 step
@@ -122,6 +146,12 @@ step
   talk Borak, Son of Oronok##21293
   accept To Catch A Thistlehead##10570 |goto Shadowmoon Valley 47.56,57.18
 step
+  note The Spirit of Ar'tor at Illidari Point in Shadowmoon Valley wants you to recover the Second Fragment of the Cipher of Damnation from Veneratus the Many.
+  get The Cipher of Damnation - Ar'tor's Charge |q 10540 |goto Shadowmoon Valley 29.53,50.52
+step
+  note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Stormrage Missive.
+  get To Catch A Thistlehead |q 10570 |goto Shadowmoon Valley 47.56,57.18
+step
   talk Spirit of Ar'tor##21318
   turnin The Cipher of Damnation - Ar'tor's Charge##10540 |goto Shadowmoon Valley 29.53,50.52
 step
@@ -133,6 +163,9 @@ step
 step
   talk Borak, Son of Oronok##21293
   accept The Shadowmoon Shuffle##10576 |goto Shadowmoon Valley 47.56,57.18
+step
+  note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover 6 pieces of Eclipsion Armor.
+  get The Shadowmoon Shuffle |q 10576 |goto Shadowmoon Valley 47.56,57.18
 step
   talk Oronok Torn-heart##21183
   turnin The Cipher of Damnation - The Second Fragment Recovered##10541 |goto Shadowmoon Valley 53.95,23.52
@@ -149,6 +182,9 @@ step
   talk Borak, Son of Oronok##21293
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
+  note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
+  get The Cipher of Damnation - Borak's Charge |q 10578 |goto Shadowmoon Valley 47.56,57.18
+step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
@@ -160,6 +196,9 @@ step
 step
   talk Oronok Torn-heart##21183
   accept The Cipher of Damnation##10588 |goto Shadowmoon Valley 53.95,23.52
+step
+  note Use the Cipher of Damnation at the Altar of Damnation to summon Cyrukh the Firelord.
+  kill Cyrukh the Firelord##21181 |q 10588
 step
   talk Earthmender Torlok##21024
   turnin The Cipher of Damnation##10588 |goto Shadowmoon Valley 42.19,45.06
@@ -178,6 +217,12 @@ step
 step
   talk A'dal##18481
   accept Trial of the Naaru: Tenacity##10886 |goto Shattrath City 53.99,44.75
+step
+  note A'dal in Shattrath City wants you to recover the Unused Axe of the Executioner from the Shattered Halls of Hellfire Citadel.
+  get Trial of the Naaru: Mercy |q 10884 |goto Shattrath City 53.99,44.75
+step
+  note A'dal in Shattrath City wants you to recover Kalithresh's Trident and Murmur's Essence.
+  get Trial of the Naaru: Strength |q 10885 |goto Shattrath City 53.99,44.75
 step
   talk A'dal##18481
   turnin Trial of the Naaru: Mercy##10884 |goto Shattrath City 53.99,44.75

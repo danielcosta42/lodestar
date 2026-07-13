@@ -30,6 +30,15 @@ step
   note Nickwinkle the Metro-Gnome wants you to slay 10 Crystal Flayers and then return to him at Toshley's Station in the Blade's Edge Mountains.
   kill Crystal Flayer##21189 |q 10608 |goto Blade's Edge Mountains 62.13,75.78
 step
+  note Recover the Salvaged Ethereum Prison Key for Commander Ameer at the Protectorate Watch Post in Netherstorm.
+  get A Mission of Mercy |q 10970 |goto Netherstorm 59.5,32.38
+step
+  note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Maggoc's Treasure Chest |q 10996 |goto Blade's Edge Mountains 55.49,44.86
+step
+  note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Even Gronn Have Standards |q 10997 |goto Blade's Edge Mountains 55.49,44.86
+step
   talk Tally Zapnabber##21460
   turnin Test Flight: The Zephyrium Capacitorium##10557 |goto Blade's Edge Mountains 60.28,68.39
 step
@@ -69,6 +78,12 @@ step
   talk Mog'dorg the Wizened##22941
   accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
+  note Commander Ameer at the Protectorate Watch Post in Netherstorm wants you to bring him an Ethereum Prisoner I.D. Tag.
+  get Ethereum Secrets |q 10971 |goto Netherstorm 59.5,32.38
+step
+  note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Grulloc Has Two Skulls |q 10995 |goto Blade's Edge Mountains 55.49,44.86
+step
   talk Tally Zapnabber##21460
   turnin Test Flight: The Singing Ridge##10710 |goto Blade's Edge Mountains 60.28,68.39
 step
@@ -99,6 +114,12 @@ step
   note Eliminate Draaca Longtail, the leader of the wyrmcultists in Wyrmskull Tunnel. Report back to Watcher Moonshade at the Wyrmskull Tunnel in the Blade's Edge Mountains once you have done so.
   kill Draaca Longtail##22396 |q 10893 |goto Blade's Edge Mountains 45.19,32.49
 step
+  note Commander Ameer at the Protectorate Watch Post in Netherstorm wants you to bring him 5 Ethereum Prison Keys.
+  get A Thousand Worlds |q 10973 |goto Netherstorm 59.5,32.38
+step
+  note You must retrieve Vim'gol's Vile Grimoire. Deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Grim(oire) Business |q 10998 |goto Blade's Edge Mountains 55.49,44.86
+step
   talk Tally Zapnabber##21460
   turnin Test Flight: Razaan's Landing##10711 |goto Blade's Edge Mountains 60.28,68.39
 step
@@ -123,6 +144,15 @@ step
   talk Mog'dorg the Wizened##22941
   accept Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
 step
+  note Speak with Rally Zapnabber to use the Zephyrium Capacitorium. While flying to Ruuan Weald, spin the Nether-weather Vane. Deliver the Spinning Nether-weather Vane to O'Mally Zapnabber in Ruuan Weald.
+  get Test Flight: Ruuan Weald |q 10712 |goto Blade's Edge Mountains 60.28,68.39
+step
+  note Use the Ethereum Key Tablet - Alpha to open Stasis Chamber Alpha at Bash'ir's Landing in Blade's Edge Mountains.
+  get Stasis Chambers of Bash'ir |q 10974 |goto Netherstorm 59.5,32.38
+step
+  note Retrieve Skulloc's Soul and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Into the Soulgrinder |q 11000 |goto Blade's Edge Mountains 55.49,44.86
+step
   talk O'Mally Zapnabber##22020
   turnin Test Flight: Ruuan Weald##10712 |goto Blade's Edge Mountains 62.65,40.38
 step
@@ -141,6 +171,9 @@ step
   talk Mog'dorg the Wizened##22941
   accept Ogre Heaven##11009 |goto Blade's Edge Mountains 55.49,44.86
 step
+  note The Image of Commander Ameer at Bash'ir's Landing in the Blade's Edge Mountains wants you to bring him a Mark of the Nexus-King.
+  get The Mark of the Nexus-King |q 10976 |goto Blade's Edge Mountains 52.85,14.99
+step
   talk Image of Commander Ameer##22919
   turnin The Mark of the Nexus-King##10976 |goto Blade's Edge Mountains 52.85,14.99
 step
@@ -152,6 +185,9 @@ step
 step
   talk Chu'a'lor##23233
   accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
+step
+  note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
+  get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
 step
   talk Image of Commander Ameer##22919
   turnin Stasis Chambers of the Mana-Tombs##10977 |goto Blade's Edge Mountains 52.85,14.99

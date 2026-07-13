@@ -15,6 +15,9 @@ step
   talk Eva Sarkhoff##11216
   accept Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
 step
+  note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
+  get Broodling Essence |q 4726 |goto Burning Steppes 65.24,24.0
+step
   note Kill 20 Plagued Hatchlings, then return to Betina Bigglezink at the Light's Hope Chapel.
   kill Plagued Hatchling##10678 |q 5529 |goto Scholomance - Dungeon -1,-1
 step
@@ -39,6 +42,9 @@ step
   talk Felnok Steelspring##10468
   accept Chillwind Horns##4809 |goto Winterspring 61.63,38.61
 step
+  note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
+  get Chillwind Horns |q 4809 |goto Winterspring 61.63,38.61
+step
   talk Felnok Steelspring##10468
   turnin Chillwind Horns##4809 |goto Winterspring 61.63,38.61
 step
@@ -56,6 +62,9 @@ step
 step
   talk Tinkee Steamboil##10267
   accept Egg Collection##4735 |goto Burning Steppes 65.24,24.0
+step
+  note Bring 8 Collected Dragon Eggs and the Collectronic Module to Tinkee Steamboil at Flame Crest in the Burning Steppes.
+  get Egg Collection |q 4735 |goto Burning Steppes 65.24,24.0
 step
   talk Tinkee Steamboil##10267
   turnin Egg Collection##4735 |goto Burning Steppes 65.24,24.0

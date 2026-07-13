@@ -117,6 +117,104 @@ step
   talk Gelvas Grimegate##14828
   accept 40 Tickets - Schematic: Steam Tonk Controller##9249 |goto Mulgore 37.31,37.73
 step
+  get Carnival Boots |q 7881 |goto Mulgore 36.16,35.18
+step
+  get Carnival Jerkins |q 7882 |goto Mulgore 36.16,35.18
+step
+  get The World's Largest Gnome! |q 7883 |goto Mulgore 36.16,35.18
+step
+  get Crocolisk Boy and the Bearded Murloc |q 7884 |goto Mulgore 36.16,35.18
+step
+  get Armor Kits |q 7885 |goto Mulgore 36.16,35.18
+step
+  get Coarse Weightstone |q 7889 |goto Mulgore 37.87,39.83
+step
+  get Heavy Grinding Stone |q 7890 |goto Mulgore 37.87,39.83
+step
+  get Green Iron Bracers |q 7891 |goto Mulgore 37.87,39.83
+step
+  get Big Black Mace |q 7892 |goto Mulgore 37.87,39.83
+step
+  get Rituals of Strength |q 7893 |goto Mulgore 37.87,39.83
+step
+  get Copper Modulator |q 7894 |goto Mulgore 37.12,37.31
+step
+  get Whirring Bronze Gizmo |q 7895 |goto Mulgore 37.12,37.31
+step
+  get Green Fireworks |q 7896 |goto Mulgore 37.12,37.31
+step
+  get Mechanical Repair Kits |q 7897 |goto Mulgore 37.12,37.31
+step
+  get Thorium Widget |q 7898 |goto Mulgore 37.12,37.31
+step
+  get Small Furry Paws |q 7899 |goto Mulgore 37.54,39.63
+step
+  get Torn Bear Pelts |q 7900 |goto Mulgore 37.54,39.63
+step
+  get Soft Bushy Tails |q 7901 |goto Mulgore 37.54,39.63
+step
+  get Vibrant Plumes |q 7902 |goto Mulgore 37.54,39.63
+step
+  get Evil Bat Eyes |q 7903 |goto Mulgore 37.54,39.63
+step
+  note Return the Beast Deck to the Darkmoon Faire when it comes to town.
+  get Darkmoon Beast Deck |q 7907
+step
+  note Return the Portals Deck to the Darkmoon Faire when it comes to town.
+  get Darkmoon Portals Deck |q 7927
+step
+  note Return the Warlords Deck to the Darkmoon Faire when it comes to town.
+  get Darkmoon Warlords Deck |q 7928
+step
+  note Return the Elementals Deck to the Darkmoon Faire when it comes to town.
+  get Darkmoon Elementals Deck |q 7929
+step
+  get 5 Tickets - Darkmoon Flower |q 7930 |goto Mulgore 37.31,37.73
+step
+  get 5 Tickets - Minor Darkmoon Prize |q 7931 |goto Mulgore 37.31,37.73
+step
+  get 12 Tickets - Lesser Darkmoon Prize |q 7932 |goto Mulgore 37.31,37.73
+step
+  get 40 Tickets - Greater Darkmoon Prize |q 7933 |goto Mulgore 37.31,37.73
+step
+  get 50 Tickets - Darkmoon Storage Box |q 7934 |goto Mulgore 37.31,37.73
+step
+  get 10 Tickets - Last Month's Mutton |q 7935 |goto Mulgore 37.31,37.73
+step
+  get 50 Tickets - Last Year's Mutton |q 7936 |goto Mulgore 37.31,37.73
+step
+  get More Dense Grinding Stones |q 7939 |goto Mulgore 36.16,35.18
+step
+  get 1200 Tickets - Orb of the Darkmoon |q 7940 |goto Mulgore 37.31,37.73
+step
+  get More Armor Kits |q 7941 |goto Mulgore 36.16,35.18
+step
+  get More Thorium Widgets |q 7942 |goto Mulgore 37.12,37.31
+step
+  get More Bat Eyes |q 7943 |goto Mulgore 37.54,39.63
+step
+  get Spawn of Jubjub |q 7946 |goto Elwynn Forest 43.34,70.28
+step
+  get 1200 Tickets - Amulet of the Darkmoon |q 7981 |goto Mulgore 37.31,37.73
+step
+  get Glowing Scorpid Blood |q 8222 |goto Mulgore 37.54,39.63
+step
+  get More Glowing Scorpid Blood |q 8223 |goto Mulgore 37.54,39.63
+step
+  get 40 Tickets - Schematic: Steam Tonk Controller |q 9249 |goto Mulgore 37.31,37.73
+step
+  note Return the Blessings Deck to the Darkmoon Faire when it comes to town.
+  get Darkmoon Blessings Deck |q 10938
+step
+  note Return the Storms Deck to the Darkmoon Faire when it comes to town.
+  get Darkmoon Storms Deck |q 10939
+step
+  note Return the Furies Deck to the Darkmoon Faire when it comes to town.
+  get Darkmoon Furies Deck |q 10940
+step
+  note Return the Lunacy Deck to the Darkmoon Faire when it comes to town.
+  get Darkmoon Lunacy Deck |q 10941
+step
   talk Chronos##14833
   turnin Carnival Boots##7881 |goto Mulgore 36.16,35.18
 step

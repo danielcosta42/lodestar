@@ -21,6 +21,9 @@ step
   talk Lieutenant Orrin##16478
   accept Investigate the Scourge of Stormwind##9260 |goto Stormwind City 63.79,75.47
 step
+  note Collect three Dim Necrotic Stones from the Scourge outside Stormwind and investigate the glowing runic circles nearby their encampment.
+  get Investigate the Scourge of Stormwind |q 9260 |goto Stormwind City 63.79,75.47
+step
   talk Innkeeper Allison##6740
   turnin Flexing for Nougat##8356 |goto Stormwind City 52.62,65.7
 step

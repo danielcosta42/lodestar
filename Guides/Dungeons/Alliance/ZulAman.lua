@@ -15,6 +15,12 @@ step
   talk Zungam##23897
   accept Playin' With Dolls##11195 |goto Zul'Aman - Raid -1,-1
 step
+  note Budd Nedreck in Hatchet Hills wants you to retrieve his map from High Priest Nalorakk's terrace in Zul'Aman.
+  get Promises, Promises... |q 11132 |goto Ghostlands 70.34,67.84
+step
+  note Prigmon needs you to collect 10 Forest Troll Tusks from the trolls in Zul'Aman. Bring them to him at Budd's camp in the Ghostlands.
+  get Tuskin' Raiders |q 11164 |goto Ghostlands 71.0,68.92
+step
   talk Budd Nedreck##23559
   turnin Promises, Promises...##11132 |goto Ghostlands 70.34,67.84
 step

@@ -36,6 +36,12 @@ step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
 step
+  note Find the Forsaken Courier and bring back her Sealed Folder to Quae near the Go'Shek Farm.
+  get Hints of a New Plague? |q 658 |goto Arathi Highlands 60.18,53.85
+step
+  note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
+  get Sunken Treasure |q 666 |goto Arathi Highlands 33.86,80.45
+step
   talk Quae##2712
   turnin Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
 step

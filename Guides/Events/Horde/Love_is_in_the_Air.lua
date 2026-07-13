@@ -18,6 +18,9 @@ step
   talk Deathguard Tor##16003
   accept Dearest Elenia,##8902 |goto Tirisfal Glades 60.66,59.48
 step
+  note Get a Guardian's Moldy Card and bring it to Fenstad Argyle in the Undercity.
+  get Dangerous Love |q 11558 |goto Undercity 66.67,44.72
+step
   talk Fenstad Argyle##16108
   turnin Dangerous Love##11558 |goto Undercity 66.67,44.72
 step
@@ -32,6 +35,9 @@ step
 step
   talk Fenstad Argyle##16108
   accept Dangerous Love##8904 |goto Undercity 66.67,44.72
+step
+  note Get a Guardian's Moldy Card and bring it to Fenstad Argyle in the Undercity.
+  get Dangerous Love |q 8904 |goto Undercity 66.67,44.72
 step
   talk Fenstad Argyle##16108
   turnin Dangerous Love##8904 |goto Undercity 66.67,44.72

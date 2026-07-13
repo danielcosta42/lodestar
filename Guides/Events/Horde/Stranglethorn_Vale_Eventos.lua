@@ -24,6 +24,9 @@ step
   talk Vinchaxa##15070
   accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
+  note Bring four Steel Breastplates and four Steel Plate Helms to Aturk the Anvil in Orgrimmar.
+  get The Old Ways |q 2756 |goto Orgrimmar 80.94,23.32
+step
   talk Krazek##773
   turnin Investigate the Camp##201 |goto Stranglethorn Vale 26.94,77.21
 step
@@ -83,6 +86,18 @@ step
 step
   talk Bengor##7643
   accept The Swamp Talker##2623 |goto Swamp of Sorrows 44.97,57.37
+step
+  note Bring forty Mithril Bars and forty Iron Bars to Galvan the Ancient in Stranglethorn.
+  get Smelt On, Smelt Off |q 2761 |goto Stranglethorn Vale 50.62,20.48
+step
+  note Bring forty Mithril Bars and five Truesilver Bars to Galvan the Ancient in Stranglethorn.
+  get The Great Silver Deceiver |q 2762 |goto Stranglethorn Vale 50.62,20.48
+step
+  note Bring forty Mithril Bars and four Citrines to Galvan the Ancient in Stranglethorn.
+  get The Art of the Imbue |q 2763 |goto Stranglethorn Vale 50.62,20.48
+step
+  note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
+  get The Swamp Talker |q 2623 |goto Swamp of Sorrows 44.97,57.37
 step
   talk Galvan the Ancient##7802
   turnin Smelt On, Smelt Off##2761 |goto Stranglethorn Vale 50.62,20.48
@@ -167,6 +182,9 @@ step
   talk Lord Arkkoroc##6134
   accept The Name of the Beast##3510 |goto Azshara 77.13,42.79
 step
+  note Slay Hetaera and bring back Hetaera's Bloodied Head, Hetaera's Beaten Head, and Hetaera's Bruised Head to Lord Arkkoroc.
+  get The Name of the Beast |q 3510 |goto Azshara 77.13,42.79
+step
   talk Lord Arkkoroc##6134
   turnin The Name of the Beast##3510 |goto Azshara 77.13,42.79
 step
@@ -178,6 +196,9 @@ step
 step
   talk Loramus Thalipedes##7783
   accept Azsharite##3602 |goto Azshara 60.82,66.35
+step
+  note Recover twenty Crystallized Azsharite from southern Azshara. You may use the Felhound to assist you in 'sniffing' out the location of cleverly hidden deposits.
+  get Azsharite |q 3602 |goto Azshara 60.82,66.35
 step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35

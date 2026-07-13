@@ -33,6 +33,9 @@ step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
 step
+  note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
+  get Sunken Treasure |q 666 |goto Arathi Highlands 33.86,80.45
+step
   talk Doctor Draxlegauge##2774
   turnin Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
 step

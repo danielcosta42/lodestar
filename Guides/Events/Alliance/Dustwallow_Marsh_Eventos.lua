@@ -21,6 +21,9 @@ step
   talk Doctor Gustaf VanHowzen##12939
   accept Triage##6624 |goto Dustwallow Marsh 67.76,48.97
 step
+  note Obtain the Defias Orders from Garn Mathers and bring them to Captain Wymor at Sentry Point.
+  get Defias in Dustwallow? |q 11137 |goto Dustwallow Marsh 59.67,41.08
+step
   talk Bishop DeLavey##4960
   turnin The Missing Diplomat##1274 |goto Stormwind City 78.28,25.38
 step
@@ -45,6 +48,9 @@ step
   talk Captain Wymor##5086
   accept Renn McGill##11138 |goto Dustwallow Marsh 59.67,41.08
 step
+  note Bring 4 containers of Thresher Oil to Babs Fizzletorque at the lighthouse near Theramore.
+  get Thresher Oil |q 11192 |goto Dustwallow Marsh 72.11,47.05
+step
   talk Jorgen##4959
   turnin The Missing Diplomat##1241 |goto Stormwind City 73.17,78.42
 step
@@ -62,6 +68,9 @@ step
 step
   talk Renn McGill##23569
   accept Secondhand Diving Gear##11139 |goto Dustwallow Marsh 63.74,17.04
+step
+  note Bring the Tool Kit and Damaged Diving Gear to Renn McGill in the Dustwallow Marsh.
+  get Secondhand Diving Gear |q 11139 |goto Dustwallow Marsh 63.74,17.04
 step
   talk Elling Trias##482
   turnin The Missing Diplomat##1242 |goto Stormwind City 59.91,64.18
@@ -81,6 +90,9 @@ step
   talk Renn McGill##23569
   accept Recover the Cargo!##11140 |goto Dustwallow Marsh 63.74,17.04
 step
+  note Bring 6 Salvaged Strongboxes to Renn McGill in Dustwallow Marsh.
+  get Recover the Cargo! |q 11140 |goto Dustwallow Marsh 63.74,17.04
+step
   talk Watcher Backus##840
   turnin The Missing Diplomat##1243 |goto Duskwood 74.83,44.22
 step
@@ -98,6 +110,12 @@ step
 step
   talk Nat Pagle##12919
   accept Nat's Bargain##11209 |goto Dustwallow Marsh 58.76,60.17
+step
+  note Find the Defias Docket and return it to Watcher Backus in Duskwood.
+  get The Missing Diplomat |q 1244 |goto Duskwood 74.83,44.22
+step
+  note Nat Pagle at Nat's Landing wants you to test his new fish bait.
+  kill Lurking Shark##23928 |q 11209
 step
   talk Watcher Backus##840
   turnin The Missing Diplomat##1244 |goto Duskwood 74.83,44.22

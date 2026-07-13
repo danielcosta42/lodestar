@@ -92,6 +92,51 @@ step
   talk Zanza the Restless##15042
   accept The Savage Guard - Arcanum of Focus##9210 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Presence of Might |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Syncretist's Sigil |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Death's Embrace |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Falcon's Call |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Vodouisant's Vigilant Embrace |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Presence of Sight |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Hoodoo Hex |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Prophetic Aura |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Bring me thise things and I will create a powerful enchantment for you!
+  get Animist's Caress |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  get Zulian, Razzashi, and Hakkari Coins |q 8195 |goto Stranglethorn Vale 14.5,15.83
+step
+  note String 5 Channeler's Heads, then return the Collection of Troll Heads to Exzhal on Yojamba Isle.
+  get A Collection of Heads |q 8201 |goto Stranglethorn Vale 15.26,15.5
+step
+  get Gurubashi, Vilebranch, and Witherbark Coins |q 8238 |goto Stranglethorn Vale 14.5,15.83
+step
+  get Sandfury, Skullsplitter, and Bloodscalp Coins |q 8239 |goto Stranglethorn Vale 14.5,15.83
+step
+  note Zanza the Restless in Zul'Gurub wants an Arcanum of Protection.
+  get The Savage Guard - Arcanum of Protection |q 9208 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Zanza the Restless in Zul'Gurub wants an Arcanum of Rapidity.
+  get The Savage Guard - Arcanum of Rapidity |q 9209 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
+  note Zanza the Restless in Zul'Gurub wants an Arcanum of Focus.
+  get The Savage Guard - Arcanum of Focus |q 9210 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+step
   only Warrior
   talk Jin'rokh the Breaker##14902
   turnin Strength of Mount Mugamba##8041 |goto Stranglethorn Vale 15.31,14.43
@@ -217,6 +262,32 @@ step
   accept The Maelstrom's Tendril##8146 |goto Stranglethorn Vale 14.08,13.72
 step
   only Warrior
+  get Strength of Mount Mugamba |q 8042 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  get The Heathen's Brand |q 8046 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Priest
+  get The Eye of Zuldazar |q 8050 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Warlock
+  get The Pebble of Kajaro |q 8102 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Druid
+  get Kezan's Taint |q 8107 |goto Stranglethorn Vale 15.34,16.12
+step
+  get Enchanted South Seas Kelp |q 8111 |goto Stranglethorn Vale 15.3,16.02
+step
+  only Mage
+  get Vision of Voodress |q 8117 |goto Stranglethorn Vale 15.3,16.02
+step
+  only Rogue
+  get Zandalarian Shadow Talisman |q 8142 |goto Stranglethorn Vale 14.08,13.72
+step
+  only Hunter
+  get The Maelstrom's Tendril |q 8146 |goto Stranglethorn Vale 14.08,13.72
+step
+  only Warrior
   talk Jin'rokh the Breaker##14902
   turnin Strength of Mount Mugamba##8042 |goto Stranglethorn Vale 15.31,14.43
 step
@@ -287,6 +358,32 @@ step
   accept The Maelstrom's Tendril##8147 |goto Stranglethorn Vale 14.08,13.72
 step
   only Warrior
+  get Strength of Mount Mugamba |q 8043 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  get The Heathen's Brand |q 8047 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Priest
+  get The Eye of Zuldazar |q 8051 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Warlock
+  get The Pebble of Kajaro |q 8103 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Druid
+  get Kezan's Taint |q 8108 |goto Stranglethorn Vale 15.34,16.12
+step
+  get Enchanted South Seas Kelp |q 8112 |goto Stranglethorn Vale 15.3,16.02
+step
+  only Mage
+  get Vision of Voodress |q 8118 |goto Stranglethorn Vale 15.3,16.02
+step
+  only Rogue
+  get Zandalarian Shadow Talisman |q 8143 |goto Stranglethorn Vale 14.08,13.72
+step
+  only Hunter
+  get The Maelstrom's Tendril |q 8147 |goto Stranglethorn Vale 14.08,13.72
+step
+  only Warrior
   talk Jin'rokh the Breaker##14902
   turnin Strength of Mount Mugamba##8043 |goto Stranglethorn Vale 15.31,14.43
 step
@@ -355,6 +452,32 @@ step
   only Hunter
   talk Falthir the Sightless##14905
   accept Maelstrom's Wrath##8148 |goto Stranglethorn Vale 14.08,13.72
+step
+  only Warrior
+  get The Rage of Mugamba |q 8044 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  get The Hero's Brand |q 8048 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Priest
+  get The All-Seeing Eye of Zuldazar |q 8052 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Warlock
+  get The Jewel of Kajaro |q 8104 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Druid
+  get Kezan's Unstoppable Taint |q 8109 |goto Stranglethorn Vale 15.34,16.12
+step
+  get Pristine Enchanted South Seas Kelp |q 8113 |goto Stranglethorn Vale 15.3,16.02
+step
+  only Mage
+  get The Unmarred Vision of Voodress |q 8119 |goto Stranglethorn Vale 15.3,16.02
+step
+  only Rogue
+  get Zandalarian Shadow Mastery Talisman |q 8144 |goto Stranglethorn Vale 14.08,13.72
+step
+  only Hunter
+  get Maelstrom's Wrath |q 8148 |goto Stranglethorn Vale 14.08,13.72
 step
   only Warrior
   talk Jin'rokh the Breaker##14902

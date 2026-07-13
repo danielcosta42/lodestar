@@ -204,8 +204,30 @@ step
   talk Lunar Festival Emissary##15892
   accept The Lunar Festival##8872 |goto Darnassus 32.14,13.12
 step
+  get Elune's Candle |q 8862 |goto Moonglade 53.65,35.26
+step
+  get Festival Dumplings |q 8863 |goto Moonglade 53.65,35.26
+step
+  get Festive Lunar Dresses |q 8864 |goto Moonglade 53.65,35.26
+step
+  get Festive Lunar Pant Suits |q 8865 |goto Moonglade 53.65,35.26
+step
+  get Small Rockets |q 8876 |goto Moonglade 53.79,35.32
+step
+  get Firework Launcher |q 8877 |goto Moonglade 53.79,35.32
+step
+  get Festive Recipes |q 8878 |goto Moonglade 53.79,35.32
+step
+  get Large Rockets |q 8879 |goto Moonglade 53.79,35.32
+step
+  get Cluster Rockets |q 8880 |goto Moonglade 53.79,35.32
+step
+  get Large Cluster Rockets |q 8881 |goto Moonglade 53.79,35.32
+step
+  get Cluster Launcher |q 8882 |goto Moonglade 53.79,35.32
+step
   note Launch 8 Lunar Fireworks and 2 Cluster Fireworks and return to a Lunar Festival Harbinger at any capital city.
-  kill Lunar Firework Credit Marker##15893 |q 8867 |goto Darnassus 31.75,12.39
+  get Lunar Fireworks |q 8867 |goto Darnassus 31.75,12.39
 step
   talk Valadar Starsong##15864
   turnin Elune's Candle##8862 |goto Moonglade 53.65,35.26

@@ -16,7 +16,10 @@ step
   accept Restless Activity##9825 |goto Deadwind Pass 47.28,75.21
 step
   note Use the Violet Scrying Crystal near underground sources of water in the Master's Cellar and return to Archmage Alturus outside of Karazhan.
-  kill Underground Well Credit Marker##18161 |q 9824 |goto Deadwind Pass 53.2,90.22
+  get Arcane Disturbances |q 9824 |goto Deadwind Pass 53.2,90.22
+step
+  note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
+  get Restless Activity |q 9825 |goto Deadwind Pass 47.28,75.21
 step
   talk Andormu##20130
   turnin To The Master's Lair##10279 |goto Tanaris 58.43,54.28
@@ -58,7 +61,10 @@ step
   accept Entry Into Karazhan##9831 |goto Shattrath City 54.75,44.32
 step
   note Travel to Durnholde Keep and set 5 incendiary charges at the barrels located inside each of the internment lodges using the Pack of Incendiary Bombs given to you by Erozion.
-  kill Hillsbrad Internment Lodge Quest Trigger##20155 |q 10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+  get Taretha's Diversion |q 10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+step
+  note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
+  get Entry Into Karazhan |q 9831 |goto Shattrath City 54.75,44.32
 step
   talk Thrall##17876
   turnin Taretha's Diversion##10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
@@ -73,7 +79,10 @@ step
   accept The Second and Third Fragments##9832 |goto Shattrath City 54.75,44.32
 step
   note When you are ready to proceed, let Thrall know. Follow Thrall out of Durnholde Keep and help him free Taretha and fulfill his destiny.
-  kill Thrall Quest Trigger##20156 |q 10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+  get Escape from Durnholde |q 10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+step
+  note Obtain the Second Key Fragment from an Arcane Container inside Coilfang Reservoir and the Third Key Fragment from an Arcane Container inside Tempest Keep. Return to Khadgar in Shattrath City after you've completed this task.
+  get The Second and Third Fragments |q 9832 |goto Shattrath City 54.75,44.32
 step
   talk Erozion##18723
   turnin Escape from Durnholde##10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1

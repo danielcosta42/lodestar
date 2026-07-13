@@ -30,6 +30,9 @@ step
   talk Yuula##23449
   accept Threat from Above##11096 |goto Shattrath City 64.33,42.33
 step
+  note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
+  get The Eyes of Skettis |q 10847 |goto Shattrath City 52.54,21.01
+step
   talk Exorcist Vaisha##24886
   turnin Spirits of Auchindoun##11506 |goto Terokkar Forest 49.9,46.67
 step

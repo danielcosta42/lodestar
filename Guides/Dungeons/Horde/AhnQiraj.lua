@@ -194,6 +194,191 @@ step
   accept Imperial Qiraji Regalia##8790 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Warrior
+  note Bring the Qiraji Bindings of Command, 2 Idols of Night, 5 Stone Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Conqueror's Spaulders |q 8544 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warrior
+  note Bring the Qiraji Bindings of Command, 2 Idols of War, 5 Ivory Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Conqueror's Greaves |q 8559 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warrior
+  note Bring Ouro's Intact Hide, 2 Idols of Death, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Conqueror's Legguards |q 8560 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warrior
+  note Bring Vek'nilash's Circlet, 2 Idols of the Sun, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Conqueror's Crown |q 8561 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warrior
+  note Bring the the Carapace of the Old God, 2 Idols of War, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Conqueror's Breastplate |q 8562 |goto Ahn'Qiraj - Raid -1,-1
+step
+  get Mortal Champions |q 8579 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Priest
+  note Bring Vek'nilash's Circlet, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Tiara of the Oracle |q 8592 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Priest
+  note Bring Ouro's Intact Hide, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Trousers of the Oracle |q 8593 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Priest
+  note Bring the Qiraji Bindings of Command, 2 Idols of Rebirth, 5 Silver Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Mantle of the Oracle |q 8594 |goto Ahn'Qiraj - Raid -1,-1
+step
+  get Mortal Champions |q 8595 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Priest
+  note Bring the Qiraji Bindings of Command, 2 Idols of Death, 5 Bronze Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Footwraps of the Oracle |q 8596 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Mage
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Life, 5 Gold Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Stormcaller's Pauldrons |q 8602 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Priest
+  note Bring the the Husk of the Old God, 2 Idols of Death, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Vestments of the Oracle |q 8603 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Mage
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Clay Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Stormcaller's Footguards |q 8621 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Mage
+  note Bring the Carapace of the Old God, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Stormcaller's Hauberk |q 8622 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Mage
+  note Bring Vek'lor's Diadem, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Stormcaller's Diadem |q 8623 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Mage
+  note Bring the Skin of the Great Sandworm, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Stormcaller's Leggings |q 8624 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warlock
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Death, 5 Stone Scarabs and 5 Bronze Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Enigma Shoulderpads |q 8625 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Hunter
+  note Bring the Qiraji Bindings of Command, 2 Idols of Life, 5 Stone Scarabs and 5 Bone Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Striker's Footguards |q 8626 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Paladin
+  note Bring the the Carapace of the Old God, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Avenger's Breastplate |q 8627 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Paladin
+  note Bring Vek'lor's Diadem, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Avenger's Crown |q 8628 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Paladin
+  note Bring the Skin of the Great Sandworm, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Avenger's Legguards |q 8629 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Paladin
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Life, 5 Crystal Scarabs and 5 Gold Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Avenger's Pauldrons |q 8630 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warlock
+  note Bring Ouro's Intact Hide, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Enigma Leggings |q 8631 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warlock
+  note Bring Vek'nilash's Circlet, 2 Idols of Night, 5 Bronze Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Enigma Circlet |q 8632 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warlock
+  note Bring the Husk of the Old God, 2 Idols of the Sun, 5 Gold Scarabs and 5 Clay Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Enigma Robes |q 8633 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warlock
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sun, 5 Silver Scarabs and 5 Crystal Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Enigma Boots |q 8634 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Rogue
+  note Bring the Qiraji Bindings of Command, 2 Idols of Strife, 5 Crystal Scarabs and 5 Bone Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Deathdealer's Boots |q 8637 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Rogue
+  note Bring the the Carapace of the Old God, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Deathdealer's Vest |q 8638 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Rogue
+  note Bring Vek'lor's Diadem, 2 Idols of the War, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Deathdealer's Helm |q 8639 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Rogue
+  note Bring Ouro's Intact Hide, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Deathdealer's Leggings |q 8640 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Rogue
+  note Bring the Qiraji Bindings of Command, 2 Idols of the Sun, 5 Silver Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Deathdealer's Spaulders |q 8641 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Paladin
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Clay Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Avenger's Greaves |q 8655 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Hunter
+  note Bring the the Carapace of the Old God, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Striker's Hauberk |q 8656 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Hunter
+  note Bring Vek'lor's Diadem, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Striker's Diadem |q 8657 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Hunter
+  note Bring the Skin of the Great Sandworm, 2 Idols of the Sun, 5 Silver Scarabs and 5 Bone Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Striker's Leggings |q 8658 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Hunter
+  note Bring the Qiraji Bindings of Command, 2 Idols of War, 5 Crystal Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Striker's Pauldrons |q 8659 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Druid
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Night, 5 Clay Scarabs and 5 Ivory Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Doomcaller's Footwraps |q 8660 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Druid
+  note Bring the the Husk of the Old God, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Doomcaller's Robes |q 8661 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Druid
+  note Bring Vek'nilash's Circlet, 2 Idols of Death, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Doomcaller's Circlet |q 8662 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Druid
+  note Bring the Skin of the Great Sandworm, 2 Idols of Rebirth, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Doomcaller's Trousers |q 8663 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Druid
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Doomcaller's Mantle |q 8664 |goto Ahn'Qiraj - Raid -1,-1
+step
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Silver Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  get Genesis Boots |q 8665 |goto Ahn'Qiraj - Raid -1,-1
+step
+  note Bring the the Husk of the Old God, 2 Idols of Rebirth, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  get Genesis Vest |q 8666 |goto Ahn'Qiraj - Raid -1,-1
+step
+  note Bring Vek'lor's Diadem, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Genesis Helm |q 8667 |goto Ahn'Qiraj - Raid -1,-1
+step
+  note Bring the Skin of the Great Sandworm, 2 Idols of War, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  get Genesis Trousers |q 8668 |goto Ahn'Qiraj - Raid -1,-1
+step
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Strife, 5 Gold Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  get Genesis Shoulderpads |q 8669 |goto Ahn'Qiraj - Raid -1,-1
+step
+  note Arygos in the Temple of Ahn'Qiraj will create Elementium Infused Armaments for you should you bring him Imperial Qiraji Armaments and 3 Elementium Ore.
+  get Imperial Qiraji Armaments |q 8789 |goto Ahn'Qiraj - Raid -1,-1
+step
+  note Merithra of the Dream in the Temple of Ahn'Qiraj will create Elementium Infused Armaments for you should you bring her Imperial Qiraji Regalia and 3 Elementium Ore.
+  get Imperial Qiraji Regalia |q 8790 |goto Ahn'Qiraj - Raid -1,-1
+step
+  only Warrior
   talk Andorgos##15502
   turnin Conqueror's Spaulders##8544 |goto Ahn'Qiraj - Raid -1,-1
 step

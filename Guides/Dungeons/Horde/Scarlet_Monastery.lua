@@ -12,6 +12,9 @@ step
   talk Varimathras##2425
   accept Into The Scarlet Monastery##1048 |goto Undercity 56.25,92.2
 step
+  note Return Vorrel Sengutz's wedding ring to Monika Sengutz in Tarren Mill.
+  get Vorrel's Revenge |q 1051 |goto Scarlet Monastery - Dungeon -1,-1
+step
   note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Varimathras in the Undercity.
   kill High Inquisitor Whitemane##3977 |q 1048 |goto Scarlet Monastery - Dungeon -1,-1
 step

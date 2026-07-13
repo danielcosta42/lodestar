@@ -36,8 +36,29 @@ step
   talk Fhwoor##17877
   accept Fhwoor Smash!##9729 |goto Zangarmarsh 19.79,50.83
 step
+  note Fahssn at the Spawning Glen wants you to collect 10 Mature Spore Sacs.
+  get The Sporelings' Plight |q 9739 |goto Zangarmarsh 19.02,62.43
+step
   note Kill 12 Bloodscale Slavedrivers and 6 Bloodscale Enchantresses, and then return to Gzhun'tt at Sporeggar in Zangarmarsh.
   kill Bloodscale Slavedriver##18089 |q 9726 |goto Zangarmarsh 26.54,40.93
+step
+  note Fahssn at the Spawning Glen in Zangarmarsh wants you to bring him 6 Bog Lord Tendrils.
+  get Natural Enemies |q 9743 |goto Zangarmarsh 19.02,62.43
+step
+  note Gshaff wants you to gather 6 Fertile Spores from the various Zangarmarsh Spore Bats and Marsh Walkers. Return to Ghsaff at Sporeggar when you've completed this task.
+  get Fertile Spores |q 9806 |goto Zangarmarsh 19.14,49.38
+step
+  note Bring 10 Glowcaps to Msshi'fn at Sporeggar in Zangarmarsh.
+  get Glowcap Mushrooms |q 9808 |goto Zangarmarsh 19.68,52.07
+step
+  note Collect 5 Sanguine Hibiscus and return them to Gzhun'tt at Sporeggar in Zangarmarsh.
+  get Bring Me A Shrubbery! |q 9715 |goto Zangarmarsh 19.54,50.04
+step
+  note Gather an Underspore Frond and return it to T'shu at Sporeggar in Zangarmarsh.
+  get Oh, It's On! |q 9717 |goto Zangarmarsh 19.37,49.78
+step
+  note Bring the Brain of the Black Stalker to Khn'nix at Sporeggar in Zangarmarsh.
+  get Stalk the Stalker |q 9719 |goto Zangarmarsh 19.65,49.7
 step
   talk Fahssn##17923
   turnin The Sporelings' Plight##9739 |goto Zangarmarsh 19.02,62.43
@@ -87,8 +108,18 @@ step
   talk Gzhun'tt##17856
   accept Bring Me Another Shrubbery!##9714 |goto Zangarmarsh 19.54,50.04
 step
+  get More Spore Sacs |q 9742 |goto Zangarmarsh 19.02,62.43
+step
   note Kill 12 Bloodscale Slavedrivers and 6 Bloodscale Enchantresses, and then return to Gzhun'tt at Sporeggar in Zangarmarsh.
   kill Bloodscale Slavedriver##18089 |q 9727 |goto Zangarmarsh 26.54,40.93
+step
+  get More Tendrils! |q 9744 |goto Zangarmarsh 19.02,62.43
+step
+  get More Fertile Spores |q 9807 |goto Zangarmarsh 19.14,49.38
+step
+  get More Glowcaps |q 9809 |goto Zangarmarsh 19.68,52.07
+step
+  get Bring Me Another Shrubbery! |q 9714 |goto Zangarmarsh 19.54,50.04
 step
   talk Fahssn##17923
   turnin More Spore Sacs##9742 |goto Zangarmarsh 19.02,62.43

@@ -27,8 +27,14 @@ step
   talk Altruis the Sufferer##18417
   accept Against All Odds##10669 |goto Nagrand 27.34,43.09
 step
+  note Altruis the sufferer wants you to obtain Freshly Drawn Blood from a Wrath Priestess at Forge Base: Gehenna in Netherstorm. Spill it on the ground and slay the Avatar of Sathal. Return to Altruis when you've completed this task.
+  kill Avatar of Sathal##21925 |q 10641
+step
   note Altruis the Sufferer wants you to slay Lothros at Illidari Point in Shadowmoon Valley.
   kill Lothros##21928 |q 10668 |goto Shadowmoon Valley 28.29,49.97
+step
+  note Altruis the Sufferer wants you to take the Imbued Silver Spear and use it at Portal Clearing near Marshlight Lake in Zangarmarsh to awake Xeleth. Return to Altruis after you've slain the demon.
+  kill Xeleth##21894 |q 10669
 step
   talk Kilrath##18273
   turnin The Impotent Leader##9888 |goto Terokkar Forest 19.77,60.85
@@ -93,6 +99,9 @@ step
   talk Altruis the Sufferer##18417
   accept The Master Planner##10001 |goto Nagrand 27.34,43.09
 step
+  note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
+  get The Master Planner |q 10001 |goto Nagrand 27.34,43.09
+step
   talk Jorin Deadeye##18106
   turnin Because Kilrath is a Coward##9891 |goto Nagrand 55.56,37.62
 step
@@ -122,6 +131,9 @@ step
 step
   note Jorin Deadeye at Garadar in Nagrand has asked that you slay 25 Boulderfist Warriors and 25 Boulderfist Mages.
   kill Boulderfist Warrior##17136 |q 9907 |goto Nagrand 41.35,35.08
+step
+  note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
+  get Crackin' Some Skulls |q 10009 |goto Shattrath City 77.26,34.85
 step
   talk Jorin Deadeye##18106
   turnin An Audacious Advance##9907 |goto Nagrand 55.56,37.62
@@ -159,6 +171,9 @@ step
   talk Greatmother Geyah##18141
   accept Material Components##10045 |goto Nagrand 56.7,34.31
 step
+  note Greatmother Geyah at Garadar in Nagrand has asked that you collect 1 Olemba Root, 1 Marshberry, 1 Telaari Frond and 1 Dragonspine.
+  get Material Components |q 10045 |goto Nagrand 56.7,34.31
+step
   talk Greatmother Geyah##18141
   turnin Material Components##10045 |goto Nagrand 56.7,34.31
 step
@@ -181,7 +196,7 @@ step
   accept A Visit With The Ancestors##10085 |goto Nagrand 26.07,60.6
 step
   note Mother Kashur at the Ancestral Grounds in Nagrand has asked that you Visit Sunspring Post, Visit Laughing Skull Ruins, Visit Garadar and Visit Bleeding Hollow Ruins.
-  kill Sunspring Post Credit Marker##18840 |q 10085 |goto Nagrand 32.2,42.99
+  get A Visit With The Ancestors |q 10085 |goto Nagrand 32.2,42.99
 step
   talk Mother Kashur##18687
   turnin A Visit With The Ancestors##10085 |goto Nagrand 26.07,60.6
@@ -209,6 +224,9 @@ step
 step
   talk D'ore##19412
   accept What the Soul Sees##10168
+step
+  note Locate a Soul Mirror somewhere in the Auchenai Crypts and use it to call forth a Darkened Spirit from Ancient Orc Ancestors in Nagrand. Destroy 15 Darkened Spirits so that the ancestors may rest in peace.
+  kill Darkened Spirit##19480 |q 10168
 step
   talk Mother Kashur##18687
   turnin What the Soul Sees##10168 |goto Nagrand 26.07,60.6

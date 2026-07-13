@@ -30,6 +30,12 @@ step
   talk Kerlonian Evershade##11218
   accept The Sleeper Has Awakened##5321 |goto Darkshore 44.4,76.43
 step
+  note Bring 5 Scaber Stalks and 1 Death Cap to Barithras Moonshade in Auberdine.
+  get Cave Mushrooms |q 947 |goto Darkshore 37.32,43.64
+step
+  note Escort Kerlonian Evershade to Liladris Moonriver at Maestra's Post in Ashenvale.
+  get The Sleeper Has Awakened |q 5321 |goto Darkshore 44.4,76.43
+step
   talk Asterion##3650
   turnin Bashal'Aran##954 |goto Darkshore 44.17,36.29
 step
@@ -80,6 +86,9 @@ step
 step
   talk Terenthis##3693
   accept A Lost Master##986 |goto Darkshore 39.37,43.48
+step
+  note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
+  get A Lost Master |q 986 |goto Darkshore 39.37,43.48
 step
   talk Terenthis##3693
   turnin A Lost Master##986 |goto Darkshore 39.37,43.48

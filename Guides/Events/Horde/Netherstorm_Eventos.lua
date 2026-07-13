@@ -27,6 +27,9 @@ step
   talk Captured Protectorate Vanguard##20763
   accept Escape from the Staging Grounds##10425 |goto Netherstorm 57.3,37.71
 step
+  note Spymaster Thalodien at Area 52 wants you to go to the outskirts of Manaforge B'naar and retrieve the B'naar Personnel Roster from Captain Arathyn.
+  get Manaforge B'naar |q 10189 |goto Netherstorm 32.0,64.07
+step
   note Commander Ameer wants you to kill 5 Ethereum Assassins, 5 Ethereum Shocktroopers, 2 Ethereum Researchers and Captain Zovax then activate Ethereum Transponder Zeta.
   kill Ethereum Assassin##20452 |q 10339 |goto Netherstorm 56.71,38.2
 step
@@ -72,6 +75,12 @@ step
   note Spymaster Thalodien at Area 52 wants you to go to Manaforge B'naar and slay 2 Sunfury Warp-Masters, 6 Sunfury Warp-Engineers and 8 Sunfury Geologists.
   kill Sunfury Warp-Master##18857 |q 10193 |goto Netherstorm 23.85,70.92
 step
+  note Obtain an Arklon Crystal Artifact and return it to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
+  get Consortium Crystal Collection |q 10265 |goto Netherstorm 32.44,64.21
+step
+  note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover the Ethereum Data Cell.
+  get Ethereum Data |q 10384 |goto Netherstorm 56.82,38.7
+step
   talk Spymaster Thalodien##19468
   turnin High Value Targets##10193 |goto Netherstorm 32.0,64.07
 step
@@ -99,6 +108,15 @@ step
   talk Image of Commander Ameer##20482
   accept Potential for Brain Damage = High##10385 |goto Netherstorm 56.82,38.7
 step
+  note Collect 10 Zaxxis Insignias and return them to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
+  get A Heap of Ethereals |q 10262 |goto Netherstorm 32.44,64.21
+step
+  note Return to Manaforge B'naar and obtain the B'naar Access Crystal from Overseer Theredis. Use it at the B'naar Control Console to shut it down, then report back to Spymaster Thalodien.
+  kill B'naar Control Console##20209 |q 10329
+step
+  note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover 15 pieces of Ethereum Relay Data.
+  get Potential for Brain Damage = High |q 10385 |goto Netherstorm 56.82,38.7
+step
   talk Nether-Stalker Khay'ji##19880
   turnin A Heap of Ethereals##10262 |goto Netherstorm 32.44,64.21
 step
@@ -119,6 +137,9 @@ step
 step
   note Kill Warp-Raider Nesaad and then return to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
   kill Warp-Raider Nesaad##19641 |q 10205 |goto Netherstorm 28.36,79.45
+step
+  note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover 1 Prepared Ethereum Wrapping.
+  get S-A-B-O-T-A-G-E |q 10405 |goto Netherstorm 56.82,38.7
 step
   talk Veronia##20162
   turnin Stealth Flight##10194 |goto Netherstorm 33.81,64.23
@@ -152,6 +173,12 @@ step
 step
   talk Gahruj##20066
   accept Rightful Repossession##10267 |goto Netherstorm 46.67,56.95
+step
+  note Obtain a set of Sunfury Arcanist Robes, one pair of Sunfury Researcher Gloves and a Sunfury Guardsman Medallion and bring them to Caledis Brightdawn at Manaforge Coruu in Netherstorm.
+  get A Convincing Disguise |q 10197 |goto Netherstorm 48.24,86.6
+step
+  note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
+  get Rightful Repossession |q 10267 |goto Netherstorm 46.67,56.95
 step
   talk Caledis Brightdawn##19840
   turnin A Convincing Disguise##10197 |goto Netherstorm 48.24,86.6

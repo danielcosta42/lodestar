@@ -46,7 +46,7 @@ step
   accept Taretha's Diversion##10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   note Travel to Durnholde Keep and set 5 incendiary charges at the barrels located inside each of the internment lodges using the Pack of Incendiary Bombs given to you by Erozion.
-  kill Hillsbrad Internment Lodge Quest Trigger##20155 |q 10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+  get Taretha's Diversion |q 10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   talk Thrall##17876
   turnin Taretha's Diversion##10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
@@ -55,7 +55,7 @@ step
   accept Escape from Durnholde##10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   note When you are ready to proceed, let Thrall know. Follow Thrall out of Durnholde Keep and help him free Taretha and fulfill his destiny.
-  kill Thrall Quest Trigger##20156 |q 10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+  get Escape from Durnholde |q 10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   talk Erozion##18723
   turnin Escape from Durnholde##10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1

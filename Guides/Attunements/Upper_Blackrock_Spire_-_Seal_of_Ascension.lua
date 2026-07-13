@@ -8,11 +8,17 @@ step
   talk Vaelan##10296
   accept Seal of Ascension##4742
 step
+  note Find the three gemstones of command: The Gemstone of Smolderthorn, Gemstone of Spirestone, and Gemstone of Bloodaxe. Return them, along with the Unadorned Seal of Ascension, to Vaelan.
+  get Seal of Ascension |q 4742
+step
   talk Vaelan##10296
   turnin Seal of Ascension##4742
 step
   talk Vaelan##10296
   accept Seal of Ascension##4743
+step
+  note Travel to the Wyrmbog in Dustwallow Marsh. Find the ancient drake, Emberstrife and beat him without mercy until his will is broken.
+  get Seal of Ascension |q 4743
 step
   talk Vaelan##10296
   turnin Seal of Ascension##4743

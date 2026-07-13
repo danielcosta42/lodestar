@@ -18,6 +18,9 @@ step
   talk Aldris Fourclouds##16001
   accept Dearest Colara,##8899 |goto Darnassus 41.95,42.34
 step
+  note Get a Guardian's Moldy Card and bring it to Fenstad Argyle in the Undercity.
+  get Dangerous Love |q 11558 |goto Undercity 66.67,44.72
+step
   talk Fenstad Argyle##16108
   turnin Dangerous Love##11558 |goto Undercity 66.67,44.72
 step
@@ -32,6 +35,9 @@ step
 step
   talk Aristan Mottar##16105
   accept Dangerous Love##8903 |goto Stormwind City 54.6,65.3
+step
+  note Get a Stormwind Guard's Card and return it to Aristan Mottar in Stormwind.
+  get Dangerous Love |q 8903 |goto Stormwind City 54.6,65.3
 step
   talk Aristan Mottar##16105
   turnin Dangerous Love##8903 |goto Stormwind City 54.6,65.3

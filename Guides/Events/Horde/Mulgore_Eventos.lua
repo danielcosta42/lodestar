@@ -14,6 +14,10 @@ step
   talk Mull Thunderhorn##2948
   accept Poison Water##748 |goto Mulgore 48.53,60.39
 step
+  only Tauren
+  note Bring 6 Prairie Wolf Paws and 4 Plainstrider Talons to Mull Thunderhorn in Bloodhoof.
+  get Poison Water |q 748 |goto Mulgore 48.53,60.39
+step
   only Tauren Hunter
   talk Yaw Sharpmane##3065
   turnin Taming the Beast##6061 |goto Mulgore 47.82,55.69
@@ -46,6 +50,10 @@ step
   talk Mull Thunderhorn##2948
   accept Thunderhorn Totem##756 |goto Mulgore 48.53,60.39
 step
+  only Tauren
+  note Bring 6 Stalker Claws and 6 Cougar Claws to Mull Thunderhorn.
+  get Thunderhorn Totem |q 756 |goto Mulgore 48.53,60.39
+step
   only Tauren Hunter
   talk Yaw Sharpmane##3065
   turnin Taming the Beast##6088 |goto Mulgore 47.82,55.69
@@ -65,6 +73,10 @@ step
   only Tauren
   talk Mull Thunderhorn##2948
   accept Wildmane Totem##759 |goto Mulgore 48.53,60.39
+step
+  only Tauren
+  note Bring 8 Prairie Alpha Teeth to Mull Thunderhorn in Bloodhoof Village.
+  get Wildmane Totem |q 759 |goto Mulgore 48.53,60.39
 step
   only Tauren
   talk Mull Thunderhorn##2948

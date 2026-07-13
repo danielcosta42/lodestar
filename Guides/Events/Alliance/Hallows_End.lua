@@ -24,6 +24,9 @@ step
   talk Masked Orphan Matron##23973
   accept The Headless Horseman##11220 |goto Durotar 52.57,41.2
 step
+  note Toss three Forsaken Stink Bombs into the heart of Southshore in Hillsbrad, and return to Darkcaller Yanka at the Wickerman Festival in Tirisfal Glade.
+  kill Southshore Stink Bomb Counter##15415 |q 1657
+step
   talk Darkcaller Yanka##15197
   turnin Stinking Up Southshore##1657 |goto Tirisfal Glades 55.58,69.9
 step

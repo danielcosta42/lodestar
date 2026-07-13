@@ -25,6 +25,9 @@ step
   note Grelin Whitebeard would like you to kill 14 Frostmane Troll Whelps.
   kill Frostmane Troll Whelp##706 |q 182 |goto Dun Morogh 27.16,79.96
 step
+  note Collect three Dim Necrotic Stones from the Scourge outside Ironforge and investigate the glowing runic circles nearby their encampment.
+  get Investigate the Scourge of Ironforge |q 9261 |goto Dun Morogh 52.98,35.03
+step
   only Dwarf Hunter
   talk Grif Wildheart##1231
   turnin Taming the Beast##6064 |goto Dun Morogh 45.81,53.04
@@ -47,6 +50,9 @@ step
 step
   talk Grelin Whitebeard##786
   accept The Stolen Journal##218 |goto Dun Morogh 25.08,75.71
+step
+  note Grelin Whitebeard wants you to kill Grik'nir the Cold, and retrieve his journal.
+  get The Stolen Journal |q 218 |goto Dun Morogh 25.08,75.71
 step
   only Dwarf Hunter
   talk Grif Wildheart##1231

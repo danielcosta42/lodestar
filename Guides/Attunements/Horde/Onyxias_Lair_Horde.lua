@@ -24,6 +24,9 @@ step
   talk Thrall##4949
   accept For The Horde!##4974 |goto Orgrimmar 31.73,37.82
 step
+  note Travel to Blackrock Spire and slay Warchief Rend Blackhand. Take his head and return to Orgrimmar.
+  get For The Horde! |q 4974 |goto Orgrimmar 31.73,37.82
+step
   talk Thrall##4949
   turnin For The Horde!##4974 |goto Orgrimmar 31.73,37.82
 step
@@ -48,6 +51,9 @@ step
   talk Myranda the Hag##11872
   accept Oculus Illusions##6569 |goto Western Plaguelands 50.79,77.85
 step
+  note Travel to Blackrock Spire and collect 20 Black Dragonspawn Eyes. Return to Myranda the Hag when the task is complete.
+  get Oculus Illusions |q 6569 |goto Western Plaguelands 50.79,77.85
+step
   talk Myranda the Hag##11872
   turnin Oculus Illusions##6569 |goto Western Plaguelands 50.79,77.85
 step
@@ -66,6 +72,15 @@ step
   talk Emberstrife##10321
   accept The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
 step
+  note You must find the blue dragonflight drake champion, Scryer, and slay him. Pry his skull from his corpse and return it to Emberstrife.
+  get The Test of Skulls, Scryer |q 6582 |goto Dustwallow Marsh 56.66,87.72
+step
+  note Destroy the drake champion of the Green Flight, Somnus. Take his skull and return it to Emberstrife.
+  get The Test of Skulls, Somnus |q 6583 |goto Dustwallow Marsh 56.66,87.72
+step
+  note Guarding the Caverns of Time in the Tanaris Desert is Chronalis, child of Nozdormu. Destroy him and return his skull to Emberstrife.
+  get The Test of Skulls, Chronalis |q 6584 |goto Dustwallow Marsh 56.66,87.72
+step
   talk Emberstrife##10321
   turnin The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
 step
@@ -78,6 +93,9 @@ step
   talk Emberstrife##10321
   accept The Test of Skulls, Axtroz##6585 |goto Dustwallow Marsh 56.66,87.72
 step
+  note Travel to Grim Batol and track down Axtroz, drake champion of the Red Flight. Destroy him and take his skull. Return the skull to Emberstrife.
+  get The Test of Skulls, Axtroz |q 6585 |goto Dustwallow Marsh 56.66,87.72
+step
   talk Emberstrife##10321
   turnin The Test of Skulls, Axtroz##6585 |goto Dustwallow Marsh 56.66,87.72
 step
@@ -89,6 +107,9 @@ step
 step
   talk Rokaro##10182
   accept Blood of the Black Dragon Champion##6602 |goto Feralas 46.39,18.24
+step
+  note Travel to Blackrock Spire and slay General Drakkisath. Gather his blood and return it to Rokaro.
+  get Blood of the Black Dragon Champion |q 6602 |goto Feralas 46.39,18.24
 step
   talk Rokaro##10182
   turnin Blood of the Black Dragon Champion##6602 |goto Feralas 46.39,18.24

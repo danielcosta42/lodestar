@@ -18,6 +18,14 @@ step
   talk Soridormi##19935
   accept Defender No More##11106 |goto Tanaris 61.05,56.95
 step
+  get Sage No More |q 11103 |goto Tanaris 61.05,56.95
+step
+  get Restorer No More |q 11104 |goto Tanaris 61.05,56.95
+step
+  get Champion No More |q 11105 |goto Tanaris 61.05,56.95
+step
+  get Defender No More |q 11106 |goto Tanaris 61.05,56.95
+step
   talk Soridormi##19935
   turnin Sage No More##11103 |goto Tanaris 61.05,56.95
 step

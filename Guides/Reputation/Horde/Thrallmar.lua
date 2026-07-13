@@ -34,13 +34,25 @@ step
   accept Pride of the Fel Horde##9496 |goto Hellfire Peninsula 55.05,36.32
 step
   note Capture the Overlook, the Stadium and Broken Hill, then return to Battlecryer Blackeye in Thrallmar.
-  kill The Overlook Capture Credit Marker##19028 |q 10110 |goto Hellfire Peninsula 39.94,48.39
+  get Hellfire Fortifications |q 10110 |goto Hellfire Peninsula 39.94,48.39
+step
+  note Bring 12 Bonechewer Blood Vials to Vurtok Axebreaker in Thrallmar.
+  get Bonechewer Blood |q 10450 |goto Hellfire Peninsula 55.13,36.39
+step
+  note Kill Worg Master Kruush and bring his head to Captain Darkhowl in Spinebreaker Post.
+  get Wanted: Worg Master Kruush |q 10809
 step
   note Foreman Razelcraz at the mines near Thrallmar wants you to kill 15 Marauding Crust Bursters. The worms have a tendency to attack suddenly from their tunnels below ground.
   kill Marauding Crust Burster##16857 |q 9342 |goto Hellfire Peninsula 47.92,63.19
 step
+  note Gather 12 Hellfire Spineleaf plants for a salve and return to Grelag at Spinebreaker Post.
+  get Preparing the Salve |q 9345 |goto Hellfire Peninsula 60.93,81.67
+step
   note Slay Grillok "Darkeye" and search his lair for the Bleeding Hollow Attack Plans.
   kill Grillok "Darkeye"##19457 |q 10059 |goto Hellfire Peninsula 66.66,71.5
+step
+  note Bring 8 pieces of Salvaged Metal and 8 pieces of Salvaged Wood to Megzeg Nukklebust in Thrallmar.
+  get I Work... For the Horde! |q 10086 |goto Hellfire Peninsula 55.18,38.79
 step
   note Kill 12 Gan'arg Sappers and return to Foreman Razelcraz.
   kill Gan'arg Sapper##18827 |q 10088 |goto Hellfire Peninsula 53.89,61.12
@@ -50,6 +62,12 @@ step
 step
   note Mordiba wants you to defeat 12 Unyielding Footmen, 8 Unyielding Knights, and 6 Unyielding Sorcerers at the Expedition Armory to the west of Spinebreaker Post.
   kill Unyielding Footman##16904 |q 10220 |goto Hellfire Peninsula 55.38,78.36
+step
+  note Use the Unstable Warp Rift Generator in the Warp Fields. Gather 3 Warp Nethers from Unstable Voidwalkers and return them to Ogath the Mad in Spinebreaker Post.
+  get The Warp Rifts |q 10278 |goto Hellfire Peninsula 61.87,81.53
+step
+  note Bring Warchief Kargath's Fist to Nazgrel in Thrallmar.
+  get The Will of the Warchief |q 9495 |goto Hellfire Peninsula 55.02,35.96
 step
   note Shadow Hunter Ty'jin at Thrallmar wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
   kill Shattered Hand Legionnaire##16700 |q 9496 |goto The Shattered Halls - Dungeon -1,-1
@@ -132,14 +150,23 @@ step
   note Use the Flaming Torch to burn the Eastern Alliance Cannon and the Western Alliance Cannon, and then return to Megzeg Nukklebust in Thrallmar.
   kill Invis Alliance Siege Engine - East##18849 |q 10087 |goto Hellfire Peninsula 60.82,51.86
 step
+  note Take the Unyielding Battle Horn from Lieutenant Commander Thalvos and bring it to Althen the Historian in Spinebreaker Post.
+  get The Battle Horn |q 10230 |goto Hellfire Peninsula 61.74,81.79
+step
+  note Go to Void Ridge and kill the creatures you find. Collect 40 Void Ridge Soul Shards and return them to Ogath the Mad in Spinebreaker Post.
+  get Void Ridge |q 10294 |goto Hellfire Peninsula 61.87,81.53
+step
   note Magister Bloodhawk wants you to kill 10 terrorfiends in the Pools of Aggonar.
   kill Terrorfiend##16951 |q 10389 |goto Hellfire Peninsula 40.05,32.89
 step
   note Kill Bleeding Hollow Peons for their torches, ignite them at Zeth'Gor's forge then throw the burning torches at Zeth'Gor Buildings.
-  kill Zeth'Gor Quest Credit Marker, Barracks##20813 |q 10792 |goto Hellfire Peninsula 69.48,76.49
+  get Zeth'Gor Must Burn! |q 10792 |goto Hellfire Peninsula 69.48,76.49
 step
   note Use Zezzak's Shard to capture an Eye of Grillok, then approach Zezzak's cauldron to extract it. After it is removed, return Zezzak's Shard to him.
-  kill Eye of Grillok Quest Credit Bunny##22177 |q 10813 |goto Hellfire Peninsula 61.69,81.81
+  get The Eyes of Grillok |q 10813 |goto Hellfire Peninsula 61.69,81.81
+step
+  note Collect 10 Fel Orc Blood Vials and return them to Centurion Caza'rez at Thrallmar in Hellfire Peninsula.
+  get The Blood is Life |q 9590 |goto Hellfire Peninsula 54.88,36.0
 step
   talk Apothecary Zelana##21257
   turnin Apothecary Zelana##10449 |goto Hellfire Peninsula 66.17,41.95
@@ -189,6 +216,18 @@ step
   talk Rohok##16583
   accept Rohok's Request##10757 |goto Hellfire Peninsula 53.13,38.16
 step
+  note Blow the Unyielding Battle Horn near the Alliance Banner. Kill Urtrak and then return to Althen the Historian at Spinebreaker Post.
+  kill Urtrak##19862 |q 10250
+step
+  note Kill Grillok Darkeye and bring Grillok's Eyepatch to Zezzak in Spinebreaker Post.
+  get Grillok "Darkeye" |q 10834 |goto Hellfire Peninsula 61.66,81.86
+step
+  note Kill Void Baron Galaxis and collect his soul shard. Take the shard to Ogath the Mad in Spinebreaker Post.
+  get From the Abyss |q 10295 |goto Hellfire Peninsula 61.87,81.53
+step
+  note Bring 4 Fel Iron Bars, 2 Arcane Dust and 4 Motes of Fire to Rohok at Thrallmar in Hellfire Peninsula.
+  get Rohok's Request |q 10757 |goto Hellfire Peninsula 53.13,38.16
+step
   talk Apothecary Albreck##21279
   turnin Spinebreaker Post##10242 |goto Hellfire Peninsula 61.14,81.77
 step
@@ -218,6 +257,12 @@ step
 step
   talk Rohok##16583
   accept Hotter than Hell##10758 |goto Hellfire Peninsula 53.13,38.16
+step
+  note Use Bleeding Hollow Blood at the Cursed Cauldron to make Boiled Blood. Bring 12 Boiled Blood to Apothecary Albreck at Spinebreaker Post.
+  get Boiling Blood |q 10538 |goto Hellfire Peninsula 61.14,81.77
+step
+  note Destroy a Fel Reaver in Hellfire Peninsula and plunge the Unfired Key Mold into its remains. Bring the Charred Key Mold to Rohok in Thrallmar.
+  get Hotter than Hell |q 10758 |goto Hellfire Peninsula 53.13,38.16
 step
   talk Nazgrel##3230
   turnin Report to Nazgrel##10291 |goto Hellfire Peninsula 55.02,35.96
@@ -264,6 +309,9 @@ step
   talk Apothecary Antonivich##16588
   accept The Demoniac Scryer##10838 |goto Hellfire Peninsula 52.28,36.46
 step
+  note Use the Demoniac Scryer in Hellfire Basin, wait for it to attune, and then take a reading.
+  get The Demoniac Scryer |q 10838 |goto Hellfire Peninsula 52.28,36.46
+step
   talk Forward Commander To'arch##19273
   turnin Forward Base: Reaver's Fall##10124 |goto Hellfire Peninsula 65.89,43.59
 step
@@ -278,6 +326,9 @@ step
 step
   talk Forward Commander To'arch##19273
   accept Disrupt Their Reinforcements##10208 |goto Hellfire Peninsula 65.89,43.59
+step
+  note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Caza'rez at Thrallmar in Hellfire Peninsula.
+  get Weaken the Ramparts |q 9572 |goto Hellfire Peninsula 55.2,36.01
 step
   note Defeat enemies around Portal Xilus and Portal Kruul to gather Demonic Rune Stones.
   collect Portal Xilus##184290 |q 10208 |goto Hellfire Peninsula 70.83,45.47
@@ -302,6 +353,9 @@ step
 step
   note Speak with Wing Commander Brack, bomb Gateway Murketh and Gateway Shaadraz and then return to Forward Commander To'arch at Reaver's Fall.
   kill Legion Transporter: Alpha##19291 |q 10129 |goto Hellfire Peninsula 78.0,47.24
+step
+  note Kill Force Commander Gorax, place the Challenge From the Horde upon his corpse, kill The Hand of Kargath, and then bring the Head of the Hand of Kargath to Nazgrel in Thrallmar.
+  get The Foot of the Citadel |q 10876 |goto Hellfire Peninsula 55.02,35.96
 step
   talk Forward Commander To'arch##19273
   turnin Mission: Gateways Murketh and Shaadraz##10129 |goto Hellfire Peninsula 65.89,43.59

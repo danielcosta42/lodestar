@@ -44,6 +44,9 @@ step
   talk Orphan Matron Nightingale##14450
   accept Children's Week##1468 |goto Stormwind City 47.35,38.19
 step
+  note Collect three Dim Necrotic Stones from the Scourge outside Stormwind and investigate the glowing runic circles nearby their encampment.
+  get Investigate the Scourge of Stormwind |q 9260 |goto Stormwind City 63.79,75.47
+step
   note Slay 15 Black Broodlings, 10 Black Dragonspawn, 4 Black Wyrmkin and 1 Black Drake. Return to Helendis Riverhorn when the task is complete.
   kill Black Broodling##7047 |q 4182 |goto Burning Steppes 89.47,35.54
 step
@@ -114,6 +117,10 @@ step
   talk Human Orphan##14305
   accept Spooky Lighthouse##1687 |goto Stormwind City 47.58,38.17
 step
+  only Rogue
+  note Steal the Defias Tower Key, break into the Defias Tower and uncover the contents of the Duskwood Chest. Take whatever information you find back to Mathias Shaw in Stormwind. Read Kearnen's Journal to gain insight about the tower.
+  get Klaven's Tower |q 2359 |goto Westfall 68.49,70.08
+step
   only Warrior
   talk Bartleby##6090
   turnin Bartleby the Drunk##1639 |goto Stormwind City 73.78,36.33
@@ -156,6 +163,9 @@ step
 step
   talk Magistrate Solomon##344
   accept The True Masters##4184 |goto Redridge Mountains 29.99,44.45
+step
+  note Kill Bazil Thredd and bring his head back to Warden Thelwater at the Stockade.
+  get The Stockade Riots |q 391 |goto Stormwind City 41.11,58.09
 step
   only Warrior
   talk Bartleby##6090
@@ -206,6 +216,9 @@ step
   talk Watcher Backus##840
   accept The Missing Diplomat##1244 |goto Duskwood 74.83,44.22
 step
+  note Find the Defias Docket and return it to Watcher Backus in Duskwood.
+  get The Missing Diplomat |q 1244 |goto Duskwood 74.83,44.22
+step
   talk Master Mathias Shaw##332
   turnin Shadow of the Past##393 |goto Stormwind City 75.78,59.84
 step
@@ -241,6 +254,9 @@ step
 step
   talk Tyrion##7766
   accept Items of Some Consequence##2746 |goto Stormwind City 69.21,14.4
+step
+  note Bring 3 Silk Cloth and 2 of Clara's Fresh Apples to Tyrion in Stormwind.
+  get Items of Some Consequence |q 2746 |goto Stormwind City 69.21,14.4
 step
   talk Dashel Stonefist##4961
   turnin The Missing Diplomat##1447 |goto Stormwind City 70.55,44.89

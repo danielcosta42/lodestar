@@ -21,6 +21,9 @@ step
   talk Lieutenant Lisande##16490
   accept Investigate the Scourge of Thunder Bluff##9264 |goto Thunder Bluff 31.08,71.38
 step
+  note Collect three Dim Necrotic Stones from the Scourge outside Thunder Bluff and investigate the glowing runic circles nearby their encampment.
+  get Investigate the Scourge of Thunder Bluff |q 9264 |goto Thunder Bluff 31.08,71.38
+step
   talk Horde Warbringer##15350
   turnin Call to Arms: Alterac Valley##11340 |goto Thunder Bluff 56.05,76.69
 step

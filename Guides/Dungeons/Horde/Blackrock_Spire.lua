@@ -27,6 +27,9 @@ step
   note Slay Halycon, pack mistress of the Bloodaxe worg.
   kill Halycon##10220 |q 4724 |goto Blackrock Spire - Dungeon -1,-1
 step
+  note Read Warosh's Scroll. Bring Warosh's Mojo to Warosh.
+  get Urok Doomhowl |q 4867 |goto Blackrock Spire - Dungeon -1,-1
+step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
   kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1
 step
@@ -50,6 +53,9 @@ step
 step
   talk Bijou##10257
   accept Bijou's Belongings##4982 |goto Blackrock Spire - Dungeon -1,-1
+step
+  note Find Bijou's Belongings and return them to her. You recall her mentioning that she stashed them on the bottom floor of the city.
+  get Bijou's Belongings |q 4982 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Bijou##10257
   turnin Bijou's Belongings##4982 |goto Blackrock Spire - Dungeon -1,-1

@@ -40,8 +40,14 @@ step
   talk Innkeeper Pala##6746
   accept Dancing for Marzipan##8360 |goto Thunder Bluff 45.81,64.71
 step
+  note Collect three Dim Necrotic Stones from the Scourge outside Thunder Bluff and investigate the glowing runic circles nearby their encampment.
+  get Investigate the Scourge of Thunder Bluff |q 9264 |goto Thunder Bluff 31.08,71.38
+step
   note Kill 15 Venture Co. Loggers, then return to Seereth Stonebreak on the border of Stonetalon and the Barrens.
   kill Venture Co. Logger##3989 |q 1062 |goto Stonetalon Mountains 66.4,52.26
+step
+  note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
+  get Alien Egg |q 4821 |goto Thousand Needles 44.64,50.29
 step
   only Tauren
   talk Dendrite Starblaze##11802
@@ -119,6 +125,9 @@ step
   talk Motega Firemane##10428
   accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
 step
+  note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
+  get Sacred Fire |q 5062 |goto Thousand Needles 21.54,32.35
+step
   only Tauren
   talk Turak Runetotem##3033
   turnin Back to Thunder Bluff##5932 |goto Thunder Bluff 76.48,27.22
@@ -139,6 +148,9 @@ step
   talk Magatha Grimtotem##4046
   accept Arikara##5088 |goto Thunder Bluff 69.85,30.91
 step
+  note Slay Arikara. Bring her remains and the Incendia powder to Motega Firemane in Whitereach Post as proof of your deed.
+  get Arikara |q 5088 |goto Thunder Bluff 69.85,30.91
+step
   only Tauren
   talk Turak Runetotem##3033
   turnin Body and Heart##6002 |goto Thunder Bluff 76.48,27.22
@@ -151,6 +163,9 @@ step
 step
   talk Apothecary Lydon##2216
   accept Blood of Innocents##1066 |goto Hillsbrad Foothills 61.44,19.06
+step
+  note Bring 5 Vials of Innocent Blood to Apothecary Lydon in Tarren Mill.
+  get Blood of Innocents |q 1066 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk Apothecary Lydon##2216
   turnin Blood of Innocents##1066 |goto Hillsbrad Foothills 61.44,19.06

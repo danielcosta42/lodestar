@@ -16,7 +16,10 @@ step
   accept Restless Activity##9825 |goto Deadwind Pass 47.28,75.21
 step
   note Use the Violet Scrying Crystal near underground sources of water in the Master's Cellar and return to Archmage Alturus outside of Karazhan.
-  kill Underground Well Credit Marker##18161 |q 9824 |goto Deadwind Pass 53.2,90.22
+  get Arcane Disturbances |q 9824 |goto Deadwind Pass 53.2,90.22
+step
+  note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
+  get Restless Activity |q 9825 |goto Deadwind Pass 47.28,75.21
 step
   talk Wravien##16813
   turnin Medivh's Journal##9630 |goto Karazhan - Raid -1,-1
@@ -57,6 +60,12 @@ step
   talk Khadgar##18166
   accept Entry Into Karazhan##9831 |goto Shattrath City 54.75,44.32
 step
+  note Obtain Medivh's Journal and return to Kamsis at the Guardian's Library in Karazhan.
+  get The Shade of Aran |q 9640 |goto Karazhan - Raid -1,-1
+step
+  note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
+  get Entry Into Karazhan |q 9831 |goto Shattrath City 54.75,44.32
+step
   talk Kamsis##16815
   turnin The Shade of Aran##9640 |goto Karazhan - Raid -1,-1
 step
@@ -68,6 +77,9 @@ step
 step
   talk Khadgar##18166
   accept The Second and Third Fragments##9832 |goto Shattrath City 54.75,44.32
+step
+  note Obtain the Second Key Fragment from an Arcane Container inside Coilfang Reservoir and the Third Key Fragment from an Arcane Container inside Tempest Keep. Return to Khadgar in Shattrath City after you've completed this task.
+  get The Second and Third Fragments |q 9832 |goto Shattrath City 54.75,44.32
 step
   talk Archmage Alturus##17613
   turnin The Master's Terrace##9645 |goto Deadwind Pass 47.28,75.21
@@ -101,6 +113,9 @@ step
 step
   talk Koren##16388
   accept Keanna's Log##9843 |goto Karazhan - Raid -1,-1
+step
+  note Search the Guest Chambers inside Karazhan for Keanna's Log and bring it to Archmage Alturus outside Karazhan.
+  get Keanna's Log |q 9843 |goto Karazhan - Raid -1,-1
 step
   talk Archmage Alturus##17613
   turnin Keanna's Log##9843 |goto Deadwind Pass 47.28,75.21

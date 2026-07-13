@@ -69,6 +69,9 @@ step
   talk Marshal Windsor##9023
   accept A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
+  note Return Marshal Windsor's Lost Information.
+  get A Shred of Hope |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
   talk Marshal Windsor##9023
   turnin A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
@@ -98,6 +101,9 @@ step
 step
   talk Haleh##10929
   accept Drakefire Amulet##6502 |goto Winterspring 54.55,51.2
+step
+  note You must retrieve the Blood of the Black Dragon Champion from General Drakkisath. Drakkisath can be found in his throne room behind the Halls of Ascension in Blackrock Spire.
+  get Drakefire Amulet |q 6502 |goto Winterspring 54.55,51.2
 step
   talk Haleh##10929
   turnin Drakefire Amulet##6502 |goto Winterspring 54.55,51.2

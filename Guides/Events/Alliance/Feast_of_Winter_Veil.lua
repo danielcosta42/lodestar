@@ -69,11 +69,22 @@ step
   talk Jesper##15310
   accept Hallow's End Treats for Jesper!##8311 |goto Stormwind City 47.63,35.32
 step
+  note Bring 5 Gingerbread Cookies and an Ice Cold Milk to Greatfather Winter in Ironforge.
+  get Treats for Greatfather Winter |q 7025 |goto Ironforge 33.2,65.41
+step
+  note Speak with the innkeepers of Orgrimmar, Undercity, and Thunder Bluff, as well as Kali Remik in Sen'jin Village. Perform the tricks they ask of you in exchange for the treats they offer.
+  get Hallow's End Treats for Spoops! |q 8312 |goto Orgrimmar 71.44,22.81
+step
   note Find Metzen the Reindeer. Use the notes provided to you for clues as to where he is being held.
   kill Metzen the Reindeer##15664 |q 8746 |goto Searing Gorge 68.75,34.23
 step
   note Find Metzen the Reindeer. Use the notes provided to you for clues as to where he is being held.
   kill Metzen the Reindeer##15664 |q 8762 |goto Searing Gorge 68.75,34.23
+step
+  get Gift Giving |q 8993 |goto Undercity 55.2,89.95
+step
+  note Speak with the innkeepers of Stormwind, Ironforge, and Darnassus, as well as Talvash del Kissel in Ironforge. Perform the tricks they ask of you in exchange for the treats they offer.
+  get Hallow's End Treats for Jesper! |q 8311 |goto Stormwind City 47.63,35.32
 step
   talk Strange Snowman##13636
   turnin Stolen Winter Veil Treats##6963 |goto Alterac Mountains 35.44,72.46
@@ -163,6 +174,15 @@ step
 step
   talk Wulmort Jinglepocket##13433
   accept The Hero of the Day##8763 |goto Ironforge 33.7,67.23
+step
+  note Locate and return the Stolen Treats to Kaymard Copperpinch in Orgrimmar. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains.
+  get You're a Mean One... |q 6983 |goto Alterac Mountains 35.44,72.46
+step
+  note Locate and return the Stolen Treats to Wulmort Jinglepocket in Ironforge. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains.
+  get You're a Mean One... |q 7043 |goto Alterac Mountains 35.44,72.46
+step
+  note Bring 1 Deeprock Salt and 5 gold coins to any Holly Preserver machine, upon which you will receive 5 Preserved Holly.
+  get The Hero of the Day |q 8763 |goto Ironforge 33.7,67.23
 step
   talk Kaymard Copperpinch##13418
   turnin You're a Mean One...##6983 |goto Orgrimmar 53.33,66.49

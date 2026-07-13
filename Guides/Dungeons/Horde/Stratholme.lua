@@ -25,6 +25,8 @@ step
   note Find and touch the bonfires located within Blackrock Spire, Dire Maul, Scholomance, and Stratholme, then return to the Festival Flamekeeper.
   collect Flame of Dire Maul##181346 |q 9319 |goto Dire Maul - Dungeon -1,-1
 step
+  get The Medallion of Faith |q 5122 |goto Stratholme - Dungeon -1,-1
+step
   note Travel to Stratholme and find Archivist Galford of the Scarlet Crusade. Destroy him and burn down the Scarlet Archive.
   kill Archivist Galford##10811 |q 5251 |goto Stratholme - Dungeon -1,-1
 step
@@ -72,6 +74,10 @@ step
   accept A Gesture of Commitment##9723 |goto Silvermoon City 92.05,38.81
 step
   only BloodElf Paladin
+  note Bring 40 Runecloth, 6 Arcanite Bars, 10 Sungrass, 5 Dark Runes, and 150 Gold to Lord Solanar Bloodwrath in Silvermoon City.
+  get A Gesture of Commitment |q 9723 |goto Silvermoon City 92.05,38.81
+step
+  only BloodElf Paladin
   talk Lord Solanar Bloodwrath##25223
   turnin A Gesture of Commitment##9723 |goto Silvermoon City 92.05,38.81
 step
@@ -92,12 +98,20 @@ step
   accept True Masters of the Light##9735 |goto Silvermoon City 92.05,38.81
 step
   only BloodElf Paladin
+  note Lord Solanar Bloodwrath in Silvermoon City wants you to bring him a vial of Tyr's Hand Holy Water.
+  get True Masters of the Light |q 9735 |goto Silvermoon City 92.05,38.81
+step
+  only BloodElf Paladin
   talk Lord Solanar Bloodwrath##25223
   turnin True Masters of the Light##9735 |goto Silvermoon City 92.05,38.81
 step
   only BloodElf Paladin
   talk Lord Solanar Bloodwrath##25223
   accept True Masters of the Light##9736 |goto Silvermoon City 92.05,38.81
+step
+  only BloodElf Paladin
+  note Lord Solanar Bloodwrath in Silvermoon City wants you to bring him 1 Arcane Catalyst, 1 Crepuscular Powder, 1 Azerothian Diamond, and 1 Pristine Black Diamond.
+  get True Masters of the Light |q 9736 |goto Silvermoon City 92.05,38.81
 step
   only BloodElf Paladin
   talk Lord Solanar Bloodwrath##25223
@@ -109,7 +123,7 @@ step
 step
   only BloodElf Paladin
   note Use the Extinguishing Mixture near the eternal flame in the Alonsus Chapel to remove the Light's protection. Be prepared to fight anyone who may attempt to defend the chapel.
-  kill [PH Invis Paladin Quest Credit##17915 |q 9737 |goto Stratholme - Dungeon -1,-1
+  get True Masters of the Light |q 9737 |goto Stratholme - Dungeon -1,-1
 step
   only BloodElf Paladin
   talk Lord Solanar Bloodwrath##25223

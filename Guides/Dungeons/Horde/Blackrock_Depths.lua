@@ -39,8 +39,29 @@ step
   talk Elder Morndeep##15549
   accept Morndeep the Elder##8619 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
+  get Rocknot's Ale |q 4295 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  note Travel to the quarry in Blackrock Mountain and slay Overmaster Pyron. Return to Thunderheart when you have completed this assignment.
+  kill Overmaster Pyron##9026 |q 3906
+step
   note Venture to Blackrock Depths and destroy the vile aggressors!
   kill Anvilrage Guardsman##8891 |q 4081 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  note Bring 4 Gromsblood, 10 Giant Silver Veins and Nagmara's Filled Vial to Mistress Nagmara in Blackrock Depths.
+  get The Love Potion |q 4201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  get Favor Amongst the Brotherhood, Dark Iron Ore |q 6642 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  get Favor Amongst the Brotherhood, Fiery Core |q 6643 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  get Favor Amongst the Brotherhood, Lava Core |q 6644 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  get Favor Amongst the Brotherhood, Core Leather |q 6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  get Favor Amongst the Brotherhood, Blood of the Mountain |q 6646 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  note Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.
+  get A Binding Contract |q 7604
 step
   talk Tapper Swindlekeg##24711
   turnin Brewfest!##11446 |goto Durotar 45.59,17.23
@@ -104,6 +125,9 @@ step
 step
   note Enter Blackrock Depths and track down Lord Incendius. Slay him and return any source of information you may find to Thunderheart.
   kill Lord Incendius##9017 |q 3907 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  note Escort your prisoner, Grark Lorkrub, through Burning Steppes and through Blackrock Mountain to the Searing Gorge.
+  get Precarious Predicament |q 4121 |goto Burning Steppes 40.2,34.24
 step
   talk Brewfest Spy##26719
   turnin Save Brewfest!##12318 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1

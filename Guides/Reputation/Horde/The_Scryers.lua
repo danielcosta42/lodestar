@@ -51,11 +51,41 @@ step
   talk Battlemage Vyara##22211
   accept Sunfury Signets##10824 |goto Shadowmoon Valley 56.29,58.8
 step
+  note Bring 8 Dampscale Basilisk Eyes to Arcanist Adyria in Shattrath City.
+  get Voren'thal's Visions |q 10024 |goto Shattrath City 54.98,22.54
+step
+  note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Firewing Signets.
+  get Firewing Signets |q 10412 |goto Shattrath City 45.2,81.44
+step
+  note Spymaster Thalodien at Area 52 wants you to go to the outskirts of Manaforge B'naar and retrieve the B'naar Personnel Roster from Captain Arathyn.
+  get Manaforge B'naar |q 10189 |goto Netherstorm 32.0,64.07
+step
+  note Voren'thal the Seer in Shattrath City wants you to obtain an Arcane Tome.
+  get Synthesis of Power |q 10416 |goto Shattrath City 42.79,91.71
+step
+  note Altruis the sufferer wants you to obtain Freshly Drawn Blood from a Wrath Priestess at Forge Base: Gehenna in Netherstorm. Spill it on the ground and slay the Avatar of Sathal. Return to Altruis when you've completed this task.
+  kill Avatar of Sathal##21925 |q 10641
+step
+  note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Sunfury Signets.
+  get Sunfury Signets |q 10656 |goto Shattrath City 45.2,81.44
+step
   note Altruis the Sufferer wants you to slay Lothros at Illidari Point in Shadowmoon Valley.
   kill Lothros##21928 |q 10668 |goto Shadowmoon Valley 28.29,49.97
 step
+  note Altruis the Sufferer wants you to take the Imbued Silver Spear and use it at Portal Clearing near Marshlight Lake in Zangarmarsh to awake Xeleth. Return to Altruis after you've slain the demon.
+  kill Xeleth##21894 |q 10669
+step
+  note Arcanist Thelis at the Sanctum of the Stars wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
+  get Tablets of Baa'ri |q 10683 |goto Shadowmoon Valley 56.25,59.6
+step
+  note Larissa Sunstrike at the Sanctum of the Stars wants you to obtain 8 Sunfury Glaives from the Demon Hunter Supplicants and Demon Hunter Initiates at the Ruins of Karabor, northeast of the Sanctum of the Stars.
+  get Karabor Training Grounds |q 10687 |goto Shadowmoon Valley 55.73,58.17
+step
   note Varen the Reclaimer wants you to go to the Ruins of Baa'ri and slay 3 Ashtongue Handlers, 4 Ashtongue Warriors and 6 Ashtongue Shaman.
   kill Ashtongue Handler##21803 |q 10807 |goto Shadowmoon Valley 57.71,36.86
+step
+  note Battlemage Vyara at the Sanctum of the Stars wants you to bring her 10 Sunfury Signets.
+  get Sunfury Signets |q 10824 |goto Shadowmoon Valley 56.29,58.8
 step
   talk Arcanist Adyria##18596
   turnin Voren'thal's Visions##10024 |goto Shattrath City 54.98,22.54
@@ -146,14 +176,33 @@ step
   talk Battlemage Vyara##22211
   accept More Sunfury Signets##10823 |goto Shadowmoon Valley 56.29,58.8
 step
+  get More Basilisk Eyes |q 10025 |goto Shattrath City 54.98,22.54
+step
   note Spymaster Thalodien at Area 52 wants you to go to Manaforge B'naar and slay 2 Sunfury Warp-Masters, 6 Sunfury Warp-Engineers and 8 Sunfury Geologists.
   kill Sunfury Warp-Master##18857 |q 10193 |goto Netherstorm 23.85,70.92
 step
+  get Single Firewing Signet |q 10414 |goto Shattrath City 45.2,81.44
+step
+  get More Firewing Signets |q 10415 |goto Shattrath City 45.2,81.44
+step
+  get Arcane Tomes |q 10419 |goto Shattrath City 42.79,91.71
+step
+  get More Sunfury Signets |q 10658 |goto Shattrath City 45.2,81.44
+step
+  get Single Sunfury Signet |q 10659 |goto Shattrath City 45.2,81.44
+step
+  note Arcanist Thelis at the Sanctum of the Stars wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
+  get Oronu the Elder |q 10684 |goto Shadowmoon Valley 56.25,59.6
+step
   note Larissa Sunstrike wants you to return to the Ruins of Karabor and find a way to unleash Azaloth on his captors.
-  kill Azaloth Credit Marker##21892 |q 10688 |goto Shadowmoon Valley 69.84,51.42
+  get A Necessary Distraction |q 10688 |goto Shadowmoon Valley 69.84,51.42
 step
   note Varen the Reclaimer wants you to slay 8 Shadowmoon Slayers, 8 Shadowmoon Chosen and 4 Shadowmoon Darkweavers.
   kill Shadowmoon Slayer##22082 |q 10817 |goto Shadowmoon Valley 69.23,38.7
+step
+  get Single Sunfury Signet |q 10822 |goto Shadowmoon Valley 56.29,58.8
+step
+  get More Sunfury Signets |q 10823 |goto Shadowmoon Valley 56.29,58.8
 step
   talk Arcanist Adyria##18596
   turnin More Basilisk Eyes##10025 |goto Shattrath City 54.98,22.54
@@ -215,6 +264,15 @@ step
   talk Larissa Sunstrike##21954
   accept Altruis##10689 |goto Shadowmoon Valley 55.73,58.17
 step
+  note Return to Manaforge B'naar and obtain the B'naar Access Crystal from Overseer Theredis. Use it at the B'naar Control Console to shut it down, then report back to Spymaster Thalodien.
+  kill B'naar Control Console##20209 |q 10329
+step
+  note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
+  get The Book of Fel Names |q 10649 |goto Nagrand 27.34,43.09
+step
+  note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Arcanist Thelis at the Sanctum of the Stars in Shadowmoon Valley.
+  get The Ashtongue Corruptors |q 10685 |goto Shadowmoon Valley 56.25,59.6
+step
   talk Khadgar##18166
   turnin Allegiance to the Scryers##10552 |goto Shattrath City 54.75,44.32
 step
@@ -272,6 +330,9 @@ step
   talk Caledis Brightdawn##19840
   accept A Convincing Disguise##10197 |goto Netherstorm 48.24,86.6
 step
+  note Obtain a set of Sunfury Arcanist Robes, one pair of Sunfury Researcher Gloves and a Sunfury Guardsman Medallion and bring them to Caledis Brightdawn at Manaforge Coruu in Netherstorm.
+  get A Convincing Disguise |q 10197 |goto Netherstorm 48.24,86.6
+step
   talk Caledis Brightdawn##19840
   turnin A Convincing Disguise##10197 |goto Netherstorm 48.24,86.6
 step
@@ -283,6 +344,9 @@ step
 step
   talk Caledis Brightdawn##19840
   accept Shutting Down Manaforge Coruu##10330 |goto Netherstorm 48.24,86.6
+step
+  note Obtain the Coruu Access Crystal from Overseer Seylanna. Use it at the Coruu Control Console to shut down the manaforge and return to Caledis Brightdawn.
+  kill Coruu Control Console##20417 |q 10330
 step
   talk Caledis Brightdawn##19840
   turnin Shutting Down Manaforge Coruu##10330 |goto Netherstorm 48.24,86.6
@@ -308,6 +372,9 @@ step
   talk Spymaster Thalodien##19468
   accept Shutting Down Manaforge Duro##10338 |goto Netherstorm 32.0,64.07
 step
+  note Return to Manaforge Duro and obtain the Duro Access Crystal from Overseer Athanel. Use it at the Duro Control Console to shut it down and report back to Spymaster Thalodien.
+  kill Duro Control Console##20418 |q 10338
+step
   talk Magister Theledorn##20920
   turnin A Defector##10202 |goto Netherstorm 26.19,41.57
 step
@@ -320,6 +387,12 @@ step
   talk Magister Theledorn##20920
   accept Damning Evidence##10432 |goto Netherstorm 26.19,41.57
 step
+  note Travel to Manaforge Ara and obtain the Ara Access Crystal from Overseer Azarad. Use it at the Manaforge Ara console to shut it down.
+  kill Ara Control Console##20440 |q 10365
+step
+  note Obtain 8 Orders from Kael'thas from demons at Manaforge Ara and bring them to Spymaster Thalodien in Area 52.
+  get Damning Evidence |q 10432 |goto Netherstorm 26.19,41.57
+step
   talk Spymaster Thalodien##19468
   turnin Shutting Down Manaforge Ara##10365 |goto Netherstorm 32.0,64.07
 step
@@ -328,6 +401,9 @@ step
 step
   talk Spymaster Thalodien##19468
   accept A Gift for Voren'thal##10508 |goto Netherstorm 32.0,64.07
+step
+  note Spymaster Thalodien at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
+  get A Gift for Voren'thal |q 10508 |goto Netherstorm 32.0,64.07
 step
   talk Spymaster Thalodien##19468
   turnin A Gift for Voren'thal##10508 |goto Netherstorm 32.0,64.07

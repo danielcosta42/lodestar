@@ -20,6 +20,10 @@ step
   talk Semid##17481
   accept Control##9595 |goto Azuremyst Isle 49.87,49.95
 step
+  only Warlock
+  note Kill Murlocs of the Silting Shore to summon a Quel'dorei Magewraith, then destroy it. Afterwards, speak with Bati at the Vault of Lights in the Exodar.
+  kill Quel'dorei Magewraith##17612 |q 9595
+step
   only Draenei Hunter
   talk Huntress Kella Nightbow##17614
   turnin Taming the Beast##9591 |goto Azuremyst Isle 24.18,54.35

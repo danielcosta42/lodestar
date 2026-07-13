@@ -24,6 +24,18 @@ step
   talk Chu'a'lor##23233
   accept A Special Thank You##11091 |goto Blade's Edge Mountains 28.76,57.36
 step
+  note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Maggoc's Treasure Chest |q 10996 |goto Blade's Edge Mountains 55.49,44.86
+step
+  note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Even Gronn Have Standards |q 10997 |goto Blade's Edge Mountains 55.49,44.86
+step
+  note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
+  get Banish the Demons |q 11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
+  kill Wrangled Aether Ray##23343 |q 11065
+step
   talk Mog'dorg the Wizened##22941
   turnin Mog'dorg the Wizened##10983 |goto Blade's Edge Mountains 55.49,44.86
 step
@@ -54,6 +66,17 @@ step
   talk Skyguard Khatie##23335
   accept Wrangle More Aether Rays!##11066 |goto Blade's Edge Mountains 27.95,51.45
 step
+  note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Grulloc Has Two Skulls |q 10995 |goto Blade's Edge Mountains 55.49,44.86
+step
+  note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
+  get Banish More Demons |q 11051 |goto Blade's Edge Mountains 28.9,57.92
+step
+  get A Crystalforged Darkrune |q 11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
+  kill Wrangled Aether Ray##23343 |q 11066
+step
   talk Mog'dorg the Wizened##22941
   turnin Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
@@ -72,6 +95,11 @@ step
   talk Gahk##23300
   accept Yous Have Da Darkrune?##11027 |goto Blade's Edge Mountains 28.48,58.08
 step
+  note You must retrieve Vim'gol's Vile Grimoire. Deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Grim(oire) Business |q 10998 |goto Blade's Edge Mountains 55.49,44.86
+step
+  get Yous Have Da Darkrune? |q 11027 |goto Blade's Edge Mountains 28.48,58.08
+step
   talk Mog'dorg the Wizened##22941
   turnin Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
 step
@@ -80,6 +108,9 @@ step
 step
   talk Mog'dorg the Wizened##22941
   accept Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
+step
+  note Retrieve Skulloc's Soul and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  get Into the Soulgrinder |q 11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   talk Mog'dorg the Wizened##22941
   turnin Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
@@ -99,6 +130,9 @@ step
   talk Chu'a'lor##23233
   accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
+  note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
+  get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
+step
   talk Chu'a'lor##23233
   turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
@@ -107,6 +141,9 @@ step
 step
   talk Chu'a'lor##23233
   accept An Apexis Relic##11058 |goto Blade's Edge Mountains 28.76,57.36
+step
+  note Torkus has asked you to obtain an Unstable Flask of the Beast for him. Return with it to him at Ogri'la atop the Blade's Edge Mountains.
+  get Our Boy Wants To Be A Skyguard Ranger |q 11030 |goto Blade's Edge Mountains 28.38,57.64
 step
   talk Torkus##23316
   turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
@@ -122,6 +159,9 @@ step
 step
   talk Chu'a'lor##23233
   accept The Relic's Emanation##11080 |goto Blade's Edge Mountains 28.76,57.36
+step
+  note Torkus has asked you to obtain an Unstable Flask of the Sorcerer for him. Return with it to him at Ogri'la atop the Blade's Edge Mountains.
+  get A Father's Duty |q 11061 |goto Blade's Edge Mountains 28.38,57.64
 step
   talk Torkus##23316
   turnin A Father's Duty##11061 |goto Blade's Edge Mountains 28.38,57.64
@@ -144,6 +184,18 @@ step
   talk Sky Sergeant Vanderlip##23120
   accept Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
 step
+  note Sky Sergeant Vanderlip has tasked you with the bombing of 15 Fel Cannonball Stacks. Return to her at the Skyguard Outpost atop the Blade's Edge Mountains once you have done so.
+  get Bombing Run |q 11010 |goto Blade's Edge Mountains 27.56,52.9
+step
+  note Chu'a'lor has asked you to obtain an Apexis Guardian's Head for him as proof. Return with it to him at Ogri'la atop the Blade's Edge Mountains once you have done so.
+  get Guardian of the Monument |q 11059 |goto Blade's Edge Mountains 28.76,57.36
+step
+  note Gahk has asked you to acquire a Fel Whip. Bring it to him at Ogri'la atop the Blade's Edge Mountains.
+  get A Fel Whip For Gahk |q 11079 |goto Blade's Edge Mountains 28.48,58.08
+step
+  note Sky Sergeant Vanderlip has tasked you with the bombing of 15 Fel Cannonball Stacks. Return to her at the Skyguard Outpost atop the Blade's Edge Mountains once you have done so.
+  get Bombing Run |q 11102 |goto Blade's Edge Mountains 27.56,52.9
+step
   talk Sky Sergeant Vanderlip##23120
   turnin Bombing Run##11010 |goto Blade's Edge Mountains 27.56,52.9
 step
@@ -158,6 +210,9 @@ step
 step
   talk Sky Sergeant Vanderlip##23120
   accept Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
+step
+  note Sky Sergeant Vanderlip has tasked you with the bombing of 15 Fel Cannonball Stacks. Return to her at the Skyguard Outpost atop the Blade's Edge Mountains once you have done so.
+  get Bomb Them Again! |q 11023 |goto Blade's Edge Mountains 27.56,52.9
 step
   talk Sky Sergeant Vanderlip##23120
   turnin Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9

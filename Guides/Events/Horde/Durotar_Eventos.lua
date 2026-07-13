@@ -42,6 +42,9 @@ step
   talk Apothecary Lydon##2216
   accept Undamaged Venom Sac##2934 |goto Hillsbrad Foothills 61.44,19.06
 step
+  note Bring an Undamaged Venom Sac to Apothecary Lydon in Tarren Mill.
+  get Undamaged Venom Sac |q 2934 |goto Hillsbrad Foothills 61.44,19.06
+step
   only Hunter
   talk Thotar##3171
   turnin Taming the Beast##6083 |goto Durotar 51.85,43.49

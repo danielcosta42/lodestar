@@ -20,11 +20,17 @@ step
   talk Nether-Stalker Khay'ji##19880
   accept Consortium Crystal Collection##10265 |goto Netherstorm 32.44,64.21
 step
+  note Obtain an Arklon Crystal Artifact and return it to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
+  get Consortium Crystal Collection |q 10265 |goto Netherstorm 32.44,64.21
+step
   talk Nether-Stalker Khay'ji##19880
   turnin Consortium Crystal Collection##10265 |goto Netherstorm 32.44,64.21
 step
   talk Nether-Stalker Khay'ji##19880
   accept A Heap of Ethereals##10262 |goto Netherstorm 32.44,64.21
+step
+  note Collect 10 Zaxxis Insignias and return them to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
+  get A Heap of Ethereals |q 10262 |goto Netherstorm 32.44,64.21
 step
   talk Nether-Stalker Khay'ji##19880
   turnin A Heap of Ethereals##10262 |goto Netherstorm 32.44,64.21
@@ -46,6 +52,9 @@ step
 step
   talk Gahruj##20066
   accept Rightful Repossession##10267 |goto Netherstorm 46.67,56.95
+step
+  note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
+  get Rightful Repossession |q 10267 |goto Netherstorm 46.67,56.95
 step
   talk Gahruj##20066
   turnin Rightful Repossession##10267 |goto Netherstorm 46.67,56.95
@@ -71,6 +80,9 @@ step
   talk Wind Trader Tuluman##20112
   accept Full Triangle##10276 |goto Netherstorm 34.62,37.95
 step
+  note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
+  get Full Triangle |q 10276 |goto Netherstorm 34.62,37.95
+step
   talk Image of Nexus-Prince Haramad##20084
   turnin Full Triangle##10276 |goto Netherstorm 45.87,35.96
 step
@@ -82,6 +94,9 @@ step
 step
   talk A'dal##18481
   accept How to Break Into the Arcatraz##10704 |goto Shattrath City 53.99,44.75
+step
+  note A'dal has tasked you with the recovery of the Top and Bottom Shards of the Arcatraz Key. Return them to him, and he will fashion them into the Key to the Arcatraz for you.
+  get How to Break Into the Arcatraz |q 10704 |goto Shattrath City 53.99,44.75
 step
   talk A'dal##18481
   turnin How to Break Into the Arcatraz##10704 |goto Shattrath City 53.99,44.75

@@ -108,11 +108,17 @@ step
   note Nether-Stalker Mah'duun wants you to slay 4 Sisters of Torment. Return to him in Shattrath's Lower City once you have done so in order to collect the bounty.
   kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1
 step
+  note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
+  get Discovering Your Roots |q 11520 |goto Isle of Quel'Danas 51.49,32.46
+step
+  note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
+  get Rediscovering Your Roots |q 11521 |goto Isle of Quel'Danas 51.49,32.46
+step
   note Vindicator Xayanna at the Shattered Sun Staging Area wants you to place the Attuned Crystal Cores inside 5 defeated Erratic Sentries to turn them into friendly units.
-  kill Converted Sentry Credit##24991 |q 11524 |goto Isle of Quel'Danas 47.6,35.25
+  get Erratic Behavior |q 11524 |goto Isle of Quel'Danas 47.6,35.25
 step
   note Vindicator Xayann at the Shattered Sun Staging Area wants you to place the Attuned Crystal Cores inside 5 defeated Erratic Sentries to turn them into friendly units.
-  kill Converted Sentry Credit##24991 |q 11525 |goto Isle of Quel'Danas 47.6,35.25
+  get Further Conversions |q 11525 |goto Isle of Quel'Danas 47.6,35.25
 step
   note Battlemage Arynna wants you to speak to Ayren Cloudbreaker when you're ready to fly over the Dead Scar. Once there, use the Arcane Charges to kill 2 Pit Overlords, 3 Eredar Sorcerers and 12 Wrath Enforcers.
   kill Pit Overlord##25031 |q 11532 |goto Isle of Quel'Danas 53.28,71.0
@@ -120,20 +126,50 @@ step
   note Battlemage Arynna wants you to speak to Ayren Cloudbreaker when you're ready to fly over the Dead Scar. Once there, use the Arcane Charges to kill 2 Pit Overlords, 3 Eredar Sorcerers and 12 Wrath Enforcers.
   kill Pit Overlord##25031 |q 11533 |goto Isle of Quel'Danas 53.28,71.0
 step
+  note Smith Hauthaa in Sun's Reach Armory wants you to kill Darkspine Myrmidon to the east and use their keys to steal three pieces of the ore from their chests.
+  get Making Ready |q 11535 |goto Isle of Quel'Danas 50.58,40.77
+step
+  note Smith Hauthaa in Sun's Reach Armory wants you to kill Darkspine Myrmidon to the east and use their keys to steal three pieces of the ore from their chests.
+  get Don't Stop Now.... |q 11536 |goto Isle of Quel'Danas 50.58,40.77
+step
+  note Harbinger Inuuro wants you to slay 6 Burning Legion Demons and the Emissary of Hate in Dawning Square. Use the Shattered Sun Banner to impale the Emissary of Hate's corpse.
+  get The Battle Must Go On |q 11537 |goto Isle of Quel'Danas 47.65,35.06
+step
+  note Harbinger Inuuro wants you to slay 6 Burning Legion Demons and the Emissary of Hate in Dawning Square or the Sun's Reach Armory. Use the Shattered Sun Banner to impale the Emissary of Hate's corpse.
+  get The Battle for the Sun's Reach Armory |q 11538 |goto Isle of Quel'Danas 47.65,35.06
+step
   note Magister Ilastar at Sun's Reach Armory wants you to slay 6 Dawnblade Summoners, 6 Dawnblade Blood Knights and 3 Dawnblade Marksmen.
   kill Dawnblade Summoner##24978 |q 11539 |goto Isle of Quel'Danas 42.85,36.45
 step
   note Magister Ilastar at Sun's Reach Armory wants you to slay 6 Dawnblade Summoners, 6 Dawnblade Blood Knights and 3 Dawnblade Marksmen.
   kill Dawnblade Summoner##24978 |q 11540 |goto Isle of Quel'Danas 42.85,36.45
 step
-  note Vindicator Kaalan at the Sun's Reach Armory wants you to speak to Ayren Cloudbreaker and fly over the Dawnblade reinforcement fleet. Use the Flaming Oil to set the ship sails on fire as you fly and once you land, slay 6 Dawnblade Reservists.
-  kill Sin'Loren Credit##25090 |q 11542 |goto Isle of Quel'Danas 52.66,14.79
+  note Captain Valindria wants you to free 10 Greengill Slaves. Return to her onboard the Silvermoon's Pride at Sun's Reach Harbor once you have done so.
+  get Disrupt the Greengill Coast |q 11541 |goto Isle of Quel'Danas 53.76,34.26
 step
   note Vindicator Kaalan at the Sun's Reach Armory wants you to speak to Ayren Cloudbreaker and fly over the Dawnblade reinforcement fleet. Use the Flaming Oil to set the ship sails on fire as you fly and once you land, slay 6 Dawnblade Reservists.
-  kill Sin'Loren Credit##25090 |q 11543 |goto Isle of Quel'Danas 52.66,14.79
+  get Intercept the Reinforcements |q 11542 |goto Isle of Quel'Danas 52.66,14.79
+step
+  note Vindicator Kaalan at the Sun's Reach Armory wants you to speak to Ayren Cloudbreaker and fly over the Dawnblade reinforcement fleet. Use the Flaming Oil to set the ship sails on fire as you fly and once you land, slay 6 Dawnblade Reservists.
+  get Keeping the Enemy at Bay |q 11543 |goto Isle of Quel'Danas 52.66,14.79
+step
+  note Smith Hauthaa needs you to produce 5 Cleansed Ata'mal Metal. Do so by breaking down Ata'mal Armaments on her anvil at the Sun's Reach Armory on the Isle of Quel'Danas.
+  get Ata'mal Armaments |q 11544 |goto Isle of Quel'Danas 50.58,40.77
+step
+  note Mar'nah at the Sun's Reach Harbor wants you to gather 5 Bloodberries from the bushes found on Quel'Danas.
+  get Open for Business |q 11546 |goto Isle of Quel'Danas 51.49,32.46
 step
   note Astromancer Darnarian in the Sun's Reach Sanctum wants you to use the Astromancer's Crystal at the Bloodcrystal, the Dawning Square portal, and the naga shrine at Greengill Coast.
-  kill Sunwell - Quest Bunny - Portal##25156 |q 11547 |goto Isle of Quel'Danas 48.51,44.42
+  get Know Your Ley Lines |q 11547 |goto Isle of Quel'Danas 48.51,44.42
+step
+  note Bring to me the essence of immortals, found only on the most powerful beings of this world! With the essence in hand, my mages will be able to dismantle Agamath, ultimately collapsing the gateway and unlocking the way further into the sunwell.
+  get Agamath, the First Gate |q 11551 |goto Isle of Quel'Danas 50.14,28.24
+step
+  note Bring to me the essence of immortals, found only on the most powerful beings of this world! Rohendor cannot withstand the combined force of our mages!
+  get Rohendor, the Second Gate |q 11552 |goto Isle of Quel'Danas 50.14,28.24
+step
+  note Bring to me the essence of immortals ÔÇö found only on the most powerful beings of this world ÔÇö and Archonisus is sure to crumble!
+  get Archonisus, the Final Gate |q 11553 |goto Isle of Quel'Danas 50.14,28.24
 step
   talk Exarch Larethor##24813
   turnin Crisis at the Sunwell##11481 |goto Isle of Quel'Danas 47.42,30.74
@@ -256,7 +292,19 @@ step
   accept The Multiphase Survey##11880 |goto Shattrath City 61.65,52.16
 step
   note Tyrith wants you to use the orb on the balcony in Magisters' Terrace.
-  kill Magisters' Terrace - Scryer Quest Bunny##25042 |q 11490 |goto Magisters' Terrace - Dungeon -1,-1
+  get The Scryer's Scryer |q 11490 |goto Magisters' Terrace - Dungeon -1,-1
+step
+  note Obtain 10 Smuggled Mana Cells and return them to Exarch Nasuun on the Terrace of Light in Shattrath City.
+  get Intercepting the Mana Cells |q 11513 |goto Shattrath City 49.08,42.48
+step
+  note Obtain 10 Smuggled Mana Cells and return them to Exarch Nasuun on the Terrace of Light in Shattrath City.
+  get Maintaining the Sunwell Portal |q 11514 |goto Shattrath City 49.08,42.48
+step
+  note Bring 8 Nether Residue to Emissary Mordin in Shattrath City.
+  get Gaining the Advantage |q 11875 |goto Shattrath City 62.82,35.58
+step
+  note Lord Torvos in Shattrath wants you to capture the Sunfury Attack Plans.
+  get Sunfury Attack Plans |q 11877 |goto Shattrath City 62.76,35.98
 step
   note Harbinger Haronem in Shattrath City wants you to use the Multiphase Spectrographic Goggles to take 6 Multiphase Readings.
   kill Multiphase Disturbance##25882 |q 11880 |goto Nagrand 36.5,67.99
@@ -291,6 +339,12 @@ step
   talk Magistrix Seyla##24937
   accept Blast the Gateway##11516 |goto Hellfire Peninsula 58.18,17.58
 step
+  note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
+  get Hard to Kill |q 11492 |goto Magisters' Terrace - Dungeon -1,-1
+step
+  note Magistrix Seyla at the Throne of Kil'jaeden wants you to kill 4 Emaciated Felbloods by using the Fel Siphon on them. You will need Demonic Blood from nearby Wrath Heralds to power the Fel Siphon.
+  kill Emaciated Felblood##24955 |q 11515
+step
   talk Exarch Larethor##24813
   turnin Hard to Kill##11492 |goto Isle of Quel'Danas 47.42,30.74
 step
@@ -302,6 +356,9 @@ step
 step
   talk Wind Trader Zhareem##24369
   accept Wanted: The Signet Ring of Prince Kael'thas##11499 |goto Shattrath City 75.13,36.65
+step
+  note Wind Trader Zhareem has asked you to obtain The Signet Ring of Prince Kael'thas. Deliver it to him in Shattrath's Lower City to collect the reward.
+  get Wanted: The Signet Ring of Prince Kael'thas |q 11499 |goto Shattrath City 75.13,36.65
 step
   talk Wind Trader Zhareem##24369
   turnin Wanted: The Signet Ring of Prince Kael'thas##11499 |goto Shattrath City 75.13,36.65

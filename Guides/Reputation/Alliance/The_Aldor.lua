@@ -54,14 +54,44 @@ step
   talk Harbinger Saronen##22214
   accept Marks of Sargeras##10826 |goto Shadowmoon Valley 62.27,29.78
 step
+  note Bring 8 Dreadfang Venom Sacs to Sha'nir in Shattrath City.
+  get Strained Supplies |q 10017 |goto Shattrath City 64.48,15.1
+step
+  note Bring Stonegazer's Blood to Sha'nir in Shattrath City.
+  get A Cure for Zahlia |q 10020 |goto Shattrath City 64.48,15.1
+step
   note Ishanah wants you to go to the Arakkoa outpost east of Shattrath City and use the Blessed Vial to cleanse the Eastern Altar, the Western Altar and the Northern Altar.
   collect Northern Altar##182563 |q 10021 |goto Terokkar Forest 50.66,16.56
+step
+  note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
+  get Marks of Kil'jaeden |q 10325 |goto Shattrath City 30.73,34.62
+step
+  note Bring a Fel Armament to Ishanah in Shattrath City.
+  get A Cleansing Light |q 10420 |goto Shattrath City 23.97,29.73
+step
+  note Anchorite Ceyla at the Altar of Sha'tar wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
+  get Tablets of Baa'ri |q 10568 |goto Shadowmoon Valley 62.58,28.38
+step
+  note Exarch Onaala at the Altar of Sha'tar wants you to obtain 8 Sunfury Glaives from Demon Hunter Supplicants and Demon Hunter Initiates at the Ruins of Karabor, southeast of the Altar of Sha'tar.
+  get Karabor Training Grounds |q 10587 |goto Shadowmoon Valley 61.2,29.23
 step
   note Vindicator Aluumen wants you to go to the Ruins of Baa'ri and slay 3 Ashtongue Handlers, 4 Ashtongue Warriors and 6 Ashtongue Shaman.
   kill Ashtongue Handler##21803 |q 10619 |goto Shadowmoon Valley 57.71,36.86
 step
+  note Altruis the sufferer wants you to obtain Freshly Drawn Blood from a Wrath Priestess at Forge Base: Gehenna in Netherstorm. Spill it on the ground and slay the Avatar of Sathal. Return to Altruis when you've completed this task.
+  kill Avatar of Sathal##21925 |q 10641
+step
+  note Bring 10 Marks of Sargeras to Adyen the Lightwarden in Shattrath City.
+  get Marks of Sargeras |q 10653 |goto Shattrath City 30.73,34.62
+step
   note Altruis the Sufferer wants you to slay Lothros at Illidari Point in Shadowmoon Valley.
   kill Lothros##21928 |q 10668 |goto Shadowmoon Valley 28.29,49.97
+step
+  note Altruis the Sufferer wants you to take the Imbued Silver Spear and use it at Portal Clearing near Marshlight Lake in Zangarmarsh to awake Xeleth. Return to Altruis after you've slain the demon.
+  kill Xeleth##21894 |q 10669
+step
+  note Bring 10 Marks of Sargeras to Harbinger Saronen in Shadowmoon Valley.
+  get Marks of Sargeras |q 10826 |goto Shadowmoon Valley 62.27,29.78
 step
   talk Sha'nir##18597
   turnin Strained Supplies##10017 |goto Shattrath City 64.48,15.1
@@ -152,14 +182,33 @@ step
   talk Harbinger Saronen##22214
   accept Single Mark of Sargeras##10828 |goto Shadowmoon Valley 62.27,29.78
 step
+  get More Venom Sacs |q 10019 |goto Shattrath City 64.48,15.1
+step
+  get More Marks of Kil'jaeden |q 10326 |goto Shattrath City 30.73,34.62
+step
+  get Single Mark of Kil'jaeden |q 10327 |goto Shattrath City 30.73,34.62
+step
   note Slay 8 Sunfury Magisters and 8 Sunfury Bloodwarders and return to Exarch Orelis at Area 52.
   kill Sunfury Magister##18855 |q 10241 |goto Netherstorm 25.07,68.25
 step
+  get Fel Armaments |q 10421 |goto Shattrath City 23.97,29.73
+step
+  note Anchorite Ceyla at the Altar of Sha'tar wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
+  get Oronu the Elder |q 10571 |goto Shadowmoon Valley 62.58,28.38
+step
   note Exarch Onaala wants you to return to the Ruins of Karabor and find a way to unleash Azaloth on his captors.
-  kill Azaloth Credit Marker##21892 |q 10637 |goto Shadowmoon Valley 69.84,51.42
+  get A Necessary Distraction |q 10637 |goto Shadowmoon Valley 69.84,51.42
+step
+  get More Marks of Sargeras |q 10654 |goto Shattrath City 30.73,34.62
+step
+  get Single Mark of Sargeras |q 10655 |goto Shattrath City 30.73,34.62
 step
   note Vindicator Aluumen wants you to slay 8 Shadowmoon Slayers, 8 Shadowmoon Chosen and 4 Shadowmoon Darkweavers.
   kill Shadowmoon Slayer##22082 |q 10816 |goto Shadowmoon Valley 69.23,38.7
+step
+  get More Marks of Sargeras |q 10827 |goto Shadowmoon Valley 62.27,29.78
+step
+  get Single Mark of Sargeras |q 10828 |goto Shadowmoon Valley 62.27,29.78
 step
   talk Sha'nir##18597
   turnin More Venom Sacs##10019 |goto Shattrath City 64.48,15.1
@@ -224,8 +273,17 @@ step
   talk Altruis the Sufferer##18417
   accept The Book of Fel Names##10649 |goto Nagrand 27.34,43.09
 step
+  note Return to Manaforge B'naar and obtain the B'naar Access Crystal from Overseer Theredis. Use it at the Manaforge B'naar console to shut it down and report back to Anchorite Karja.
+  kill B'naar Control Console##20209 |q 10299
+step
   note Exarch Orelis in Area 52 wants you to take the Warp-Attuned Orb to Manaforge B'naar and use it at the end of its four pipelines.
-  kill Northern Pipe Credit Marker##20333 |q 10313 |goto Netherstorm 25.68,60.26
+  get Measuring Warp Energies |q 10313 |goto Netherstorm 25.68,60.26
+step
+  note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Anchorite Ceyla at the Altar of Sha'tar in Shadowmoon Valley.
+  get The Ashtongue Corruptors |q 10574 |goto Shadowmoon Valley 62.58,28.38
+step
+  note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
+  get The Book of Fel Names |q 10649 |goto Nagrand 27.34,43.09
 step
   talk Khadgar##18166
   turnin Allegiance to the Aldor##10551 |goto Shattrath City 54.75,44.32
@@ -263,6 +321,9 @@ step
   note Travel to Manaforge Coruu and slay 8 Sunfury Arcanists and 5 Sunfury Researchers. Return to Exarch Orelis when you've completed this task.
   kill Sunfury Researcher##20136 |q 10246 |goto Netherstorm 53.02,83.05
 step
+  note Travel to Manaforge Coruu, east of Area 52, and obtain the Coruu Access Crystal from Overseer Seylanna. Use it at the Manaforge Coruu Console to shut it down and return to Anchorite Karja.
+  kill Coruu Control Console##20417 |q 10321
+step
   talk Ishanah##18538
   turnin Ishanah##10554 |goto Shattrath City 23.97,29.73
 step
@@ -287,6 +348,12 @@ step
   talk Exarch Onaala##21860
   accept Varedis Must Be Stopped##10651 |goto Shadowmoon Valley 61.2,29.23
 step
+  note Anchorite Karja wants you to go Manaforge Duro and obtain the Duro Access Crystal from Overseer Athanel. Use it at the Manaforge Duro Console to shut it down.
+  kill Duro Control Console##20418 |q 10322
+step
+  note Go to Manaforge Duro and retrieve the Sunfury Military Briefing and the Sunfury Arcane Briefing from the Sunfury units stationed there. Return to Exarch Orellis when you've completed this task.
+  get Sunfury Briefings |q 10328 |goto Netherstorm 32.07,64.18
+step
   note Exarch Onaala wants you to go to the ruins of Karabor and slay Alandien, Theras, Netharel and Varedis. Use the Book of Fel Names when Varedis uses Metamorphosis to weaken him. Return to Exarch Onaala with the Book of Fel Names after you've completed this task.
   kill Varedis##21178 |q 10651 |goto Shadowmoon Valley 72.16,53.67
 step
@@ -304,6 +371,9 @@ step
 step
   talk Exarch Orelis##19466
   accept Outside Assistance##10431 |goto Netherstorm 32.07,64.18
+step
+  note Travel to Manaforge Ara and obtain the Ara Access Crystal from Overseer Azarad. Use it at the Manaforge Ara console to shut it down.
+  kill Ara Control Console##20440 |q 10323
 step
   talk Anchorite Karja##19467
   turnin Shutting Down Manaforge Ara##10323 |goto Netherstorm 32.04,64.18
@@ -328,6 +398,9 @@ step
 step
   talk Anchorite Karja##19467
   accept Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
+step
+  note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
+  get Socrethar's Shadow |q 10407 |goto Netherstorm 32.04,64.18
 step
   talk Anchorite Karja##19467
   turnin Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18

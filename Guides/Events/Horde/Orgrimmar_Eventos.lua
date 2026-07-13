@@ -28,6 +28,15 @@ step
   talk Warlord Goretooth##9077
   accept Warlord's Command##4903 |goto Badlands 5.81,47.52
 step
+  note Collect three Dim Necrotic Stones from the Scourge outside Orgrimmar and investigate the glowing runic circles nearby their encampment.
+  get Investigate the Scourge of Orgrimmar |q 9263 |goto Orgrimmar 51.56,81.41
+step
+  note Bring a Lieutenant's Insignia to Thrall in Orgrimmar.
+  get Hidden Enemies |q 5726 |goto Orgrimmar 31.73,37.82
+step
+  note Bring two Patterned Bronze Bracers, two Bronze Greatswords, and two Sharp Claws to Orokk Omosh in Orgrimmar.
+  get Barbaric Battlements |q 2751 |goto Orgrimmar 79.24,22.4
+step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
   kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1
 step
@@ -71,6 +80,9 @@ step
   talk Warlord Goretooth##9077
   accept Eitrigg's Wisdom##4941 |goto Badlands 5.81,47.52
 step
+  note Bring four Bronze Battleaxes and four Bronze Warhammers to Orokk Omosh in Orgrimmar.
+  get On Iron Pauldrons |q 2752 |goto Orgrimmar 79.24,22.4
+step
   talk Thrall##4949
   turnin Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82
 step
@@ -95,6 +107,12 @@ step
   talk Thrall##4949
   accept For The Horde!##4974 |goto Orgrimmar 31.73,37.82
 step
+  note Bring four Green Iron Helms, four Green Iron Bracers, and two Green Iron Leggings to Orokk Omosh in Orgrimmar.
+  get Trampled Under Foot |q 2753 |goto Orgrimmar 79.24,22.4
+step
+  note Travel to Blackrock Spire and slay Warchief Rend Blackhand. Take his head and return to Orgrimmar.
+  get For The Horde! |q 4974 |goto Orgrimmar 31.73,37.82
+step
   talk Orokk Omosh##7790
   turnin Trampled Under Foot##2753 |goto Orgrimmar 79.24,22.4
 step
@@ -106,6 +124,9 @@ step
 step
   talk Thrall##4949
   accept What the Wind Carries##6566 |goto Orgrimmar 31.73,37.82
+step
+  note Bring two Solid Iron Mauls, two Silvered Bronze Boots, and two Silvered Bronze Gauntlets to Orokk Omosh in Orgrimmar.
+  get Horns of Frenzy |q 2754 |goto Orgrimmar 79.24,22.4
 step
   talk Orokk Omosh##7790
   turnin Horns of Frenzy##2754 |goto Orgrimmar 79.24,22.4

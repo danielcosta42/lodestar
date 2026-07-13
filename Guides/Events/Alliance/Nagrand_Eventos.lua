@@ -24,8 +24,17 @@ step
   talk Altruis the Sufferer##18417
   accept Against All Odds##10669 |goto Nagrand 27.34,43.09
 step
+  note Huntress Bintook at Telaar in Nagrand wants you to recover Boulderfist Plans.
+  get Do My Eyes Deceive Me |q 9917 |goto Nagrand 55.05,70.53
+step
+  note Altruis the sufferer wants you to obtain Freshly Drawn Blood from a Wrath Priestess at Forge Base: Gehenna in Netherstorm. Spill it on the ground and slay the Avatar of Sathal. Return to Altruis when you've completed this task.
+  kill Avatar of Sathal##21925 |q 10641
+step
   note Altruis the Sufferer wants you to slay Lothros at Illidari Point in Shadowmoon Valley.
   kill Lothros##21928 |q 10668 |goto Shadowmoon Valley 28.29,49.97
+step
+  note Altruis the Sufferer wants you to take the Imbued Silver Spear and use it at Portal Clearing near Marshlight Lake in Zangarmarsh to awake Xeleth. Return to Altruis after you've slain the demon.
+  kill Xeleth##21894 |q 10669
 step
   talk Huntress Bintook##18353
   turnin Do My Eyes Deceive Me##9917 |goto Nagrand 55.05,70.53
@@ -55,7 +64,7 @@ step
   accept Illidan's Pupil##10646 |goto Nagrand 27.34,43.09
 step
   note Huntress Bintook at Telaar in Nagrand wants you to speak to Lump. Return to Huntress Bintook when you have gathered the information that she requested.
-  kill Lump's Quest Credit##18354 |q 9918 |goto Nagrand 62.81,71.54
+  get Not On My Watch! |q 9918 |goto Nagrand 62.81,71.54
 step
   talk Huntress Bintook##18353
   turnin Not On My Watch!##9918 |goto Nagrand 55.05,70.53
@@ -90,6 +99,9 @@ step
   note Mo'mor the Breaker at Telaar in Nagrand wants you to kill 15 Boulderfist Crushers and 15 Boulderfist Mystics.
   kill Boulderfist Crusher##17134 |q 9921 |goto Nagrand 74.47,64.02
 step
+  note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
+  get The Master Planner |q 10001 |goto Nagrand 27.34,43.09
+step
   talk Mo'mor the Breaker##18223
   turnin The Ruins of Burning Blade##9921 |goto Nagrand 54.61,72.21
 step
@@ -116,6 +128,9 @@ step
 step
   talk Sal'salabim##18584
   accept Crackin' Some Skulls##10009 |goto Shattrath City 77.26,34.85
+step
+  note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
+  get Crackin' Some Skulls |q 10009 |goto Shattrath City 77.26,34.85
 step
   talk Lantresor of the Blade##18261
   turnin Diplomatic Measures##10108 |goto Nagrand 73.81,62.6

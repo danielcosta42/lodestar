@@ -37,8 +37,32 @@ step
   talk Deliana##16013
   accept An Earnest Proposition##8905 |goto Ironforge 43.53,52.64
 step
+  only Warlock
+  note Travel to the Warpwood Quarter of Dire Maul and slay the water elemental, Hydrospawn. Return to Lorekeeper Lydros in the Athenaeum with the Hydrospawn Essence.
+  get Arcane Refreshment |q 7463 |goto Dire Maul - Dungeon -1,-1
+step
+  note Bring 4 Bolts of Runecloth, 8 Rugged Leather, 2 Rune Threads, and Ogre Tannin to Knot Thimblejack. He is currently chained inside the Gordok wing of Dire Maul.
+  get The Gordok Ogre Suit |q 5518 |goto Dire Maul - Dungeon -1,-1
+step
+  get Free Knot! |q 5525 |goto Dire Maul - Dungeon -1,-1
+step
   note You must destroy the guardians surrounding the 5 Pylons that power the Prison of Immol'thar. Once the Pylons have powered down, the force field surrounding Immol'thar will have dissipated.
   kill Immol'thar##11496 |q 7461 |goto Dire Maul - Dungeon -1,-1
+step
+  note Bring a Libram of Rapidity, 1 Pristine Black Diamond, 2 Large Brilliant Shards, and 2 Blood of Heroes to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Rapidity.
+  get Libram of Rapidity |q 7483 |goto Dire Maul - Dungeon -1,-1
+step
+  note Bring a Libram of Focus, 1 Pristine Black Diamond, 4 Large Brilliant Shards, and 2 Skin of Shadow to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Focus.
+  get Libram of Focus |q 7484 |goto Dire Maul - Dungeon -1,-1
+step
+  note Bring a Libram of Protection, 1 Pristine Black Diamond, 2 Large Brilliant Shards, and 1 Frayed Abomination Stitching to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Protection.
+  get Libram of Protection |q 7485 |goto Dire Maul - Dungeon -1,-1
+step
+  note Find the Gauntlet of Gordok Might and return it to Captain Kromcrush in Dire Maul.
+  get Unfinished Gordok Business |q 7703 |goto Dire Maul - Dungeon -1,-1
+step
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Wildheart Bracers to Deliana in Ironforge.
+  get An Earnest Proposition |q 8905 |goto Ironforge 43.53,52.64
 step
   only Warlock
   talk Lorekeeper Lydros##14368
@@ -130,6 +154,10 @@ step
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
+  get The Gordok Ogre Suit |q 5519 |goto Dire Maul - Dungeon -1,-1
+step
+  get Free Knot! |q 7429 |goto Dire Maul - Dungeon -1,-1
+step
   talk Knot Thimblejack##14338
   turnin The Gordok Ogre Suit##5519 |goto Dire Maul - Dungeon -1,-1
 step
@@ -150,6 +178,12 @@ step
   talk Mux Manascrambler##16014
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  note You must get Onyxia to breathe fire on the Unfired Ancient Blade. Once this is done, pick up the now Heated Ancient Blade. Be warned, a Heated Ancient Blade will not remain heated forever - time is of the essence.
+  get The Forging of Quel'Serrar |q 7509 |goto Dire Maul - Dungeon -1,-1
+step
+  note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
+  get The Ectoplasmic Distiller |q 8921 |goto Tanaris 52.47,27.23
+step
   talk Lorekeeper Lydros##14368
   turnin The Forging of Quel'Serrar##7509 |goto Dire Maul - Dungeon -1,-1
 step
@@ -159,17 +193,26 @@ step
   talk Mux Manascrambler##16014
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
+  get Hunting for Ectoplasm |q 8924 |goto Tanaris 52.47,27.23
+step
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
+  get A Portable Power Source |q 8925 |goto Tanaris 52.47,27.23
+step
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
   talk Mux Manascrambler##16014
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
+step
+  note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
+  get A Shifty Merchant |q 8928 |goto Tanaris 52.47,27.23
 step
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
@@ -183,6 +226,9 @@ step
   talk Deliana##16013
   accept Just Compensation##8926 |goto Ironforge 43.53,52.64
 step
+  note Bring a Wildheart Belt and a set of Wildheart Gloves Deliana in Ironforge.
+  get Just Compensation |q 8926 |goto Ironforge 43.53,52.64
+step
   talk Deliana##16013
   turnin Just Compensation##8926 |goto Ironforge 43.53,52.64
 step
@@ -194,6 +240,9 @@ step
 step
   talk Anthion Harmon##16016
   accept Dead Man's Plea##8945 |goto Eastern Plaguelands 30.85,16.75
+step
+  note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
+  kill Ysida Harmon##16031 |q 8945
 step
   talk Ysida Harmon##16031
   turnin Dead Man's Plea##8945
@@ -207,6 +256,9 @@ step
   talk Anthion Harmon##16016
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
 step
+  note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
+  get Anthion's Strange Request |q 8947 |goto Eastern Plaguelands 30.85,16.75
+step
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
 step
@@ -219,17 +271,26 @@ step
   talk Falrin Treeshaper##16032
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
+  note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
+  get Falrin's Vendetta |q 8949 |goto Dire Maul - Dungeon -1,-1
+step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   talk Falrin Treeshaper##16032
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
+  note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
+  get The Instigator's Enchantment |q 8950 |goto Dire Maul - Dungeon -1,-1
+step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   talk Falrin Treeshaper##16032
   accept The Challenge##9015 |goto Dire Maul - Dungeon -1,-1
+step
+  note Travel to the Ring of the Law in Blackrock Depths and place the Banner of Provocation in its center as you are sentenced by High Justice Grimstone. Slay Theldren and his gladiators and return to Anthion Harmon in the Eastern Plaguelands with the first piece of Lord Valthalak's amulet.
+  get The Challenge |q 9015 |goto Dire Maul - Dungeon -1,-1
 step
   talk Anthion Harmon##16016
   turnin The Challenge##9015 |goto Eastern Plaguelands 30.85,16.75

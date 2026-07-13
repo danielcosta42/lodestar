@@ -14,6 +14,9 @@ step
   talk Skar'this the Heretic##22421
   accept The Cudgel of Kar'desh##10901 |goto The Slave Pens - Dungeon -1,-1
 step
+  note Skar'this the Heretic in the heroic Slave Pens of Coilfang Reservoir wants you to bring him the Earthen Signet and the Blazing Signet.
+  get The Cudgel of Kar'desh |q 10901 |goto The Slave Pens - Dungeon -1,-1
+step
   talk Skar'this the Heretic##22421
   turnin The Cudgel of Kar'desh##10901 |goto The Slave Pens - Dungeon -1,-1
 ]])

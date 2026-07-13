@@ -15,6 +15,9 @@ step
   talk Taskmaster Varkule Dragonbreath##23140
   accept Bow to the Highlord##11107 |goto Shadowmoon Valley 66.12,86.36
 step
+  note Mordenai at Netherwing Fields in Shadowmoon Valley wants you to feed 8 Mature Netherwing Drakes.
+  kill Netherwing Event Pinger##22131 |q 10804
+step
   talk Mordenai##22113
   turnin Kindness##10804 |goto Shadowmoon Valley 59.19,58.69
 step
@@ -72,6 +75,9 @@ step
   talk Wing Commander Ichman##13437
   accept Dragonmaw Race: Wing Commander Ichman##11069 |goto Alterac Valley - Battleground 48.36,84.56
 step
+  note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
+  get To Netherwing Ledge! |q 10837 |goto Shadowmoon Valley 61.31,59.98
+step
   talk Neltharaku##21657
   turnin To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98
 step
@@ -83,6 +89,9 @@ step
 step
   talk Wing Commander Mulverick##23346
   accept Dragonmaw Race: Wing Commander Mulverick##11070 |goto Shadowmoon Valley 65.17,84.88
+step
+  note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to free 5 Enslaved Netherwing Drakes.
+  get The Force of Neltharaku |q 10854 |goto Shadowmoon Valley 61.31,59.98
 step
   talk Neltharaku##21657
   turnin The Force of Neltharaku##10854 |goto Shadowmoon Valley 61.31,59.98
@@ -106,7 +115,7 @@ step
   accept Zuluhed the Whacked##10866 |goto Shadowmoon Valley 69.86,61.44
 step
   note Kill Zuluhed the Whacked and recover Zuluhed's Key. Use Zuluhed's Key on Zuluhed's Chains to free Karynaku.
-  collect Zuluhed's Chains##185156 |q 10866 |goto Shadowmoon Valley 69.84,61.29
+  kill Zuluhed the Whacked##11980 |q 10866
 step
   talk Karynaku##22112
   turnin Zuluhed the Whacked##10866 |goto Shadowmoon Valley 69.86,61.44
@@ -150,6 +159,18 @@ step
   talk Yarzill the Merc##23141
   accept Your Friend On The Inside##11019 |goto Shadowmoon Valley 66.0,86.47
 step
+  note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 30 Netherwing Crystals.
+  get Netherwing Crystals |q 11015 |goto Shadowmoon Valley 66.12,86.36
+step
+  note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 35 Nethermine Flayer Hides.
+  get Nethermine Flayer Hide |q 11016 |goto Shadowmoon Valley 66.12,86.36
+step
+  note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 40 Netherdust Pollen.
+  get Netherdust Pollen |q 11017 |goto Shadowmoon Valley 66.12,86.36
+step
+  note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 40 Nethercite Ore.
+  get Nethercite Ore |q 11018 |goto Shadowmoon Valley 66.12,86.36
+step
   note Slay 10 Overmine Flayers and Barash the Den Mother. Return to Overlord Mor'ghor at the Dragonmaw Base Camp should you succeed.
   kill Overmine Flayer##23264 |q 11041 |goto Shadowmoon Valley 72.59,85.62
 step
@@ -183,6 +204,15 @@ step
   talk Taskmaster Varkule Dragonbreath##23140
   accept Rise, Overseer!##11053 |goto Shadowmoon Valley 66.12,86.36
 step
+  note Yarzill the Merc at Dragonmaw Base Camp in Shadowmoon Valley wants you to use Yarzill's Mutton in conjunction with Fel Glands to poison 12 Dragonmaw Peon Camps.
+  get A Slow Death |q 11020 |goto Shadowmoon Valley 66.0,86.47
+step
+  note Yarzill the Merc at Dragonmaw Base Camp in Shadowmoon Valley wants you to recover 10 Netherwing Relics.
+  get The Not-So-Friendly Skies... |q 11035 |goto Shadowmoon Valley 66.0,86.47
+step
+  note Yarzill the Merc at Dragonmaw Base Camp in Shadowmoon Valley wants you to recover a Netherwing Egg.
+  get The Great Netherwing Egg Hunt |q 11049 |goto Shadowmoon Valley 66.0,86.47
+step
   talk Yarzill the Merc##23141
   turnin A Slow Death##11020 |goto Shadowmoon Valley 66.0,86.47
 step
@@ -206,6 +236,11 @@ step
 step
   talk Taskmaster Varkule Dragonbreath##23140
   accept Stand Tall, Captain!##11084 |goto Shadowmoon Valley 66.12,86.36
+step
+  get Accepting All Eggs |q 11050 |goto Shadowmoon Valley 66.0,86.47
+step
+  note Chief Overseer Mudlump at the Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 10 pieces of Knothide Leather and 1 Hardened Hide of Tyrantus.
+  get Overseeing and You: Making the Right Choices |q 11054 |goto Shadowmoon Valley 66.86,86.11
 step
   talk Yarzill the Merc##23141
   turnin Accepting All Eggs##11050 |goto Shadowmoon Valley 66.0,86.47
@@ -243,11 +278,17 @@ step
   note Chief Overseer Mudlump at the Dragonmaw Base Camp in Shadowmoon Valley wants you to discipline 20 lazy Dragonmaw Peons. You will also need to return your Booterang.
   kill Disobedient Dragonmaw Peon##23311 |q 11055 |goto Shadowmoon Valley 69.69,87.99
 step
+  note The Mistress of the Mines at the Netherwing Mines in Shadowmoon Valley wants you to recover 15 Nethermine Cargo crates.
+  get Picking Up The Pieces... |q 11076 |goto Shadowmoon Valley 65.43,90.13
+step
   note The Dragonmaw Foreman at the Netherwing Mines in Shadowmoon Valley wants you to kill 15 Nethermine Flayers and 5 Nethermine Ravagers.
   kill Nethermine Flayer##23169 |q 11077 |goto Shadowmoon Valley 71.49,83.28
 step
   note Ronag the Slave Driver in the Netherwing Mines of Shadowmoon Valley wants you to slay the Crazed Murkblood Foreman and 5 Crazed Murkblood Miners.
   kill Crazed Murkblood Foreman##23305 |q 11083 |goto Shadowmoon Valley 74.27,89.74
+step
+  note Illidari Lord Balthas at the Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 2 Felsteel Bars, 1 Adamantite Frame, 1 Khorium Power Core and 1 Flawless Arcane Essence.
+  get The Soul Cannon of Reth'hedron |q 11089 |goto Shadowmoon Valley 66.3,85.7
 step
   talk Chief Overseer Mudlump##23291
   turnin The Booterang: A Cure For The Common Worthless Peon##11055 |goto Shadowmoon Valley 66.86,86.11
@@ -284,6 +325,9 @@ step
 step
   talk Overlord Mor'ghor##23139
   accept Kill Them All!##11099 |goto Shadowmoon Valley 66.3,85.56
+step
+  note Find a Murkblood Overseer and interrogate him. Return to the Mistress of the Mines with the Murkblood information and the Hand of the Overseer.
+  get Seeker of Truth |q 11082 |goto Shadowmoon Valley 65.43,90.13
 step
   talk Mistress of the Mines##23149
   turnin Seeker of Truth##11082 |goto Shadowmoon Valley 65.43,90.13

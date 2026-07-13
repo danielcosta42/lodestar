@@ -18,6 +18,12 @@ step
   talk Nether-Stalker Mah'duun##24370
   accept Wanted: Rift Lords##11383 |goto Shattrath City 75.5,37.24
 step
+  note Wind Trader Zhareem has asked you to obtain the Epoch Hunter's Head. Deliver it to him in Shattrath's Lower City to collect the reward.
+  get Wanted: The Epoch Hunter's Head |q 11378 |goto Shattrath City 75.13,36.65
+step
+  note Wind Trader Zhareem has asked you to acquire Aeonus's Hourglass. Deliver it to him in Shattrath's Lower City to collect the reward.
+  get Wanted: Aeonus's Hourglass |q 11382 |goto Shattrath City 75.13,36.65
+step
   talk Andormu##20130
   turnin To The Master's Lair##10279 |goto Tanaris 58.43,54.28
 step
@@ -46,7 +52,7 @@ step
   accept Taretha's Diversion##10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   note Travel to Durnholde Keep and set 5 incendiary charges at the barrels located inside each of the internment lodges using the Pack of Incendiary Bombs given to you by Erozion.
-  kill Hillsbrad Internment Lodge Quest Trigger##20155 |q 10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+  get Taretha's Diversion |q 10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   talk Thrall##17876
   turnin Taretha's Diversion##10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
@@ -55,7 +61,7 @@ step
   accept Escape from Durnholde##10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   note When you are ready to proceed, let Thrall know. Follow Thrall out of Durnholde Keep and help him free Taretha and fulfill his destiny.
-  kill Thrall Quest Trigger##20156 |q 10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+  get Escape from Durnholde |q 10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   talk Erozion##18723
   turnin Escape from Durnholde##10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1

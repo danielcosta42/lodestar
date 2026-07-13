@@ -18,6 +18,9 @@ step
   talk Spraggle Frock##9997
   accept Lost!##4492 |goto Un'Goro Crater 43.62,8.5
 step
+  note Collect 7 Power Crystals of each color: red, blue, yellow, and green. Bring them to J.D. Collie at Marshal's Refuge.
+  get Crystals of Power |q 4284 |goto Un'Goro Crater 41.92,2.7
+step
   talk Torwa Pathfinder##9619
   turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96
 step
@@ -47,6 +50,12 @@ step
 step
   talk Ringo##9999
   accept A Little Help From My Friends##4491 |goto Un'Goro Crater 51.9,49.85
+step
+  note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.
+  get Bloodpetal Poison |q 9052 |goto Un'Goro Crater 71.64,75.96
+step
+  note Find a Mithril Casing and return to A-Me 01 in Un'Goro Crater.
+  get Chasing A-Me 01 |q 4244 |goto Un'Goro Crater 67.66,16.76
 step
   talk Torwa Pathfinder##9619
   turnin Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
