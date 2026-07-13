@@ -52,4 +52,10 @@ step
 step
   talk Sa'at##20201
   turnin The Black Morass##10296 |goto The Black Morass - Dungeon -1,-1
+step
+  talk Sa'at##20201
+  accept The Opening of the Dark Portal##10297 |goto The Black Morass - Dungeon -1,-1
+step
+  talk Sa'at##20201
+  turnin The Opening of the Dark Portal##10297 |goto The Black Morass - Dungeon -1,-1
 ]])

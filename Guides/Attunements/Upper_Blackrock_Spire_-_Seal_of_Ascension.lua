@@ -10,4 +10,10 @@ step
 step
   talk Vaelan##10296
   turnin Seal of Ascension##4742
+step
+  talk Vaelan##10296
+  accept Seal of Ascension##4743
+step
+  talk Vaelan##10296
+  turnin Seal of Ascension##4743
 ]])

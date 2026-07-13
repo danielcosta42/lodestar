@@ -68,21 +68,45 @@ step
   talk Thrall##17876
   accept Escape from Durnholde##10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
+  talk Khadgar##18166
+  accept The Second and Third Fragments##9832 |goto Shattrath City 54.75,44.32
+step
   note When you are ready to proceed, let Thrall know. Follow Thrall out of Durnholde Keep and help him free Taretha and fulfill his destiny.
   kill Thrall Quest Trigger##20156 |q 10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   talk Erozion##18723
   turnin Escape from Durnholde##10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
+  talk Khadgar##18166
+  turnin The Second and Third Fragments##9832 |goto Shattrath City 54.75,44.32
+step
   talk Erozion##18723
   accept Return to Andormu##10285 |goto Old Hillsbrad Foothills - Dungeon -1,-1
+step
+  talk Khadgar##18166
+  accept The Master's Touch##9836 |goto Shattrath City 54.75,44.32
 step
   talk Andormu##20130
   turnin Return to Andormu##10285 |goto Tanaris 58.43,54.28
 step
+  talk Medivh##15608
+  turnin The Master's Touch##9836 |goto The Black Morass - Dungeon -1,-1
+step
+  talk Medivh##15608
+  accept Return to Khadgar##9837 |goto The Black Morass - Dungeon -1,-1
+step
   talk Andormu##19932
   accept The Black Morass##10296 |goto Tanaris 57.62,59.01
 step
+  talk Khadgar##18166
+  turnin Return to Khadgar##9837 |goto Shattrath City 54.75,44.32
+step
   talk Sa'at##20201
   turnin The Black Morass##10296 |goto The Black Morass - Dungeon -1,-1
+step
+  talk Khadgar##18166
+  accept The Violet Eye##9838 |goto Shattrath City 54.75,44.32
+step
+  talk Archmage Alturus##17613
+  turnin The Violet Eye##9838 |goto Deadwind Pass 47.28,75.21
 ]])
