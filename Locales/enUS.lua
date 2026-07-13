@@ -63,6 +63,7 @@ L.TM_TALK = "> Lodestar: guide target"
 -- Waypoint / arrow
 L.YARDS = "%d yd"
 L.DEST  = "Destination"
+L.IN_FLIGHT = "In flight"
 
 -- Trainers & milestones
 L.CLASS_TRAINER   = "Class trainer"

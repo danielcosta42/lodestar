@@ -197,9 +197,52 @@ function WP:DrawContext()
 	return goal, plan ~= nil                                 -- há plano -> viajando (não desenha)
 end
 
+--------------------------------------------------------------------------------
+-- Em VIAGEM (voo/táxi): a direção não importa — mostra ETA (distância restante ÷
+-- velocidade real medida por delta de posição). Detecta via UnitOnTaxi.
+--------------------------------------------------------------------------------
+local taxi = { lastPW = nil, lastT = nil, speed = 0 }
+local function fmtETA(s)
+	s = math.max(0, math.floor(s + 0.5))
+	if s >= 60 then return ("~%dm%02ds"):format(math.floor(s / 60), s % 60) end
+	return ("~%ds"):format(s)
+end
+local function transitETA(goal)
+	local pmap = GetBestMap and GetBestMap("player")
+	local ppos = pmap and GetPlayerMapPos and GetPlayerMapPos(pmap, "player")
+	if not (ppos and GetWorldPos) then return nil end
+	local _, pw = GetWorldPos(pmap, ppos)
+	if not pw then return nil end
+	local now = GetTime and GetTime() or 0
+	if taxi.lastPW and taxi.lastT and now > taxi.lastT then
+		local dx, dy = pw.x - taxi.lastPW.x, pw.y - taxi.lastPW.y
+		local inst = math.sqrt(dx * dx + dy * dy) / (now - taxi.lastT)   -- jardas/seg
+		taxi.speed = (taxi.speed > 0) and (taxi.speed * 0.7 + inst * 0.3) or inst
+	end
+	taxi.lastPW, taxi.lastT = pw, now
+	local d = WP:DistanceTo(goal)
+	if d and taxi.speed > 1 then return d / taxi.speed end
+	return nil
+end
+local function showTransit(a, goal)
+	local C = UI.COL
+	a:Show(); a.tex:Show(); a.shadow:Show()
+	a.tex:SetRotation(0); a.shadow:SetRotation(0)          -- estático: em voo a direção não guia
+	a.tex:SetVertexColor(UI.unpackc(C.amber))
+	local eta = transitETA(goal)
+	a.dist:SetTextColor(UI.unpackc(C.amber))
+	a.dist:SetText(eta and fmtETA(eta) or "…")
+	a.name:SetTextColor(UI.unpackc(C.active))
+	local zone = goal.goto_ and goal.goto_.zone
+	a.name:SetText(ns.L.IN_FLIGHT .. (zone and (": " .. localizedZone(zone)) or ""))
+end
+
 local function updateArrow(goal)
 	local a = ensureArrow()
 	local C = UI.COL
+
+	if UnitOnTaxi and UnitOnTaxi("player") then showTransit(a, goal); return end
+	taxi.lastPW, taxi.lastT, taxi.speed = nil, nil, 0      -- fora do voo: reseta o tracking
 
 	-- Plano de viagem (quando fora da zona-alvo). Se o método tem um "hop" (cais/
 	-- portal/torre) e você JÁ está na zona dele, a seta passa a mirar o ponto exato.
@@ -290,6 +333,7 @@ ns:Every(0.1, function()
 	local goal = WP:PickTarget()
 	if not goal then if arrow then arrow:Hide() end return end
 	if not tomtomUID then updateArrow(goal) end
+	if UnitOnTaxi and UnitOnTaxi("player") then return end   -- em voo: não "chega" sobrevoando
 	local dist = WP:DistanceTo(goal)
 	if dist then
 		local radius = (goal.goto_.radius or 0) > 0 and goal.goto_.radius or 12
