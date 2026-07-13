@@ -65,6 +65,7 @@ L.YARDS = "%d yd"
 L.DEST  = "Destination"
 L.IN_FLIGHT = "In flight"
 L.PREREQ_NEEDED = "Prerequisite: %s — do this first."
+L.PREREQ_ROUTE  = "Route"
 
 -- Trainers & milestones
 L.CLASS_TRAINER   = "Class trainer"

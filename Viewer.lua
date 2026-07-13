@@ -253,6 +253,15 @@ local function build()
 	frame.prereqBtn:SetScript("OnClick", function()
 		if frame._prereqGuide then ns:LoadGuide(frame._prereqGuide) end
 	end)
+	-- "Rota": aponta a SETA pro NPC que dá o prereq (o "onde pegar")
+	frame.prereqRouteBtn = UI.Button(frame.prereq, ns.L.PREREQ_ROUTE, 52, 20)
+	frame.prereqRouteBtn:SetScript("OnClick", function()
+		local g = frame._prereqGiver
+		if g and ns.Waypoint then
+			ns.Waypoint:SetCustom(g[1], g[2], g[3], ns.L.PREREQ_NEEDED:format(frame._prereqQuest or "?"))
+			frame._prereqRoutePid = frame._prereqPid
+		end
+	end)
 	frame.prereq:Hide()
 
 	-- Prévia "a seguir" ---------------------------------------------------
@@ -435,16 +444,35 @@ function V:Refresh()
 	local w = frame.content:GetWidth()
 	if w <= 0 then w = (ns.db.viewer.width or 340) - 40 end
 
-	-- Banner de PRÉ-REQUISITO: prereq de outro guia (botão "Abrir" a aba) OU gate de
-	-- cadeia sem guia (só avisa "faça isto antes", sem botão).
+	-- Banner de PRÉ-REQUISITO: "Abrir" a aba do guia que ensina + "Rota" aponta a
+	-- seta pro NPC que dá o prereq (o "onde pegar"). Sem guia, só a Rota/aviso.
 	local block = ns.PrereqBlock and ns:PrereqBlock(step)
 	if block then
 		frame._prereqGuide = block.guide
-		frame.prereqText:SetText(ns.L.PREREQ_NEEDED:format(block.quest))
+		frame._prereqPid   = block.pid
+		frame._prereqQuest = block.quest
+		frame._prereqGiver = ns.questGiver and block.pid and ns.questGiver[block.pid]
+		local msg = ns.L.PREREQ_NEEDED:format(block.quest)
+		if frame._prereqGiver then msg = msg .. " · " .. frame._prereqGiver[1] end   -- + a zona
+		frame.prereqText:SetText(msg)
+
+		-- botões da direita p/ esquerda: Rota (onde pegar) e Abrir (guia)
+		local hasOpen, hasRoute = block.guide ~= nil, frame._prereqGiver ~= nil
+		local rpad = -8
+		if hasRoute then
+			frame.prereqRouteBtn:ClearAllPoints()
+			frame.prereqRouteBtn:SetPoint("RIGHT", frame.prereq, "RIGHT", rpad, 0)
+			frame.prereqRouteBtn:Show(); rpad = rpad - 56
+		else frame.prereqRouteBtn:Hide() end
+		if hasOpen then
+			frame.prereqBtn:ClearAllPoints()
+			frame.prereqBtn:SetPoint("RIGHT", frame.prereq, "RIGHT", rpad, 0)
+			frame.prereqBtn:Show(); rpad = rpad - 62
+		else frame.prereqBtn:Hide() end
+
 		frame.prereqText:ClearAllPoints()
 		frame.prereqText:SetPoint("TOPLEFT", 10, -8)
-		frame.prereqText:SetPoint("RIGHT", frame.prereq, "RIGHT", block.guide and -70 or -10, 0)
-		frame.prereqBtn:SetShown(block.guide ~= nil)
+		frame.prereqText:SetPoint("RIGHT", frame.prereq, "RIGHT", (hasOpen or hasRoute) and (rpad - 2) or -10, 0)
 		frame.prereq:ClearAllPoints()
 		frame.prereq:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
 		frame.prereq:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)
@@ -454,6 +482,11 @@ function V:Refresh()
 		y = y + ph + 8
 	else
 		frame.prereq:Hide()
+	end
+	-- limpa a rota-custom se o prereq sumiu ou trocou (ex.: jogador já pegou)
+	if frame._prereqRoutePid and (not block or block.pid ~= frame._prereqRoutePid) then
+		if ns.Waypoint then ns.Waypoint:ClearCustom() end
+		frame._prereqRoutePid = nil
 	end
 
 	-- "Guard" de viagem: como chegar (voo/barco/portal) quando o alvo está fora da zona

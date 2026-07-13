@@ -59,6 +59,7 @@ L.YARDS = "%d jd"
 L.DEST  = "Destino"
 L.IN_FLIGHT = "Em voo"
 L.PREREQ_NEEDED = "Pré-requisito: %s — faça isto antes."
+L.PREREQ_ROUTE  = "Rota"
 
 L.CLASS_TRAINER = "Treinador de classe"
 L.TRAINER_NONE  = "nenhum treinador de %s (%s) no índice."
