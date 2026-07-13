@@ -99,6 +99,8 @@ local function fillGeneral(p)
 		function() return ns.db.mobWarning end, function(v) ns.db.mobWarning = v end)
 	buttonRow(p, L.SET_LIBRARY, L.SET_LIBRARY_D,
 		L.SET_OPEN, function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
+	buttonRow(p, L.SET_RAIDS, L.SET_RAIDS_D,
+		L.SET_OPEN, function() if ns.Attunements then ns.Attunements:Toggle() end end)
 end
 
 local function fillAppearance(p)

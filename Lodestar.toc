@@ -45,6 +45,8 @@ Parser.lua
 Guide.lua
 PrereqData.lua
 Prereq.lua
+RaidAttuneData.lua
+Attunements.lua
 SubZones.lua
 TransitData.lua
 FlightData.lua

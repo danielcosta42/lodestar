@@ -202,6 +202,8 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.GuideMenu then ns.GuideMenu:Toggle() end
 	elseif cmd == "config" or cmd == "options" or cmd == "settings" then
 		if ns.Settings then ns.Settings:Toggle() end
+	elseif cmd == "raids" or cmd == "raid" or cmd == "attune" then
+		if ns.Attunements then ns.Attunements:Toggle() end
 	elseif cmd == "mark" then
 		ns.db.markTargets = not ns.db.markTargets
 		ns:Print(ns.L.MARK_TARGETS, ns.db.markTargets and ns.L.ON or ns.L.OFF)
