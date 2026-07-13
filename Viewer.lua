@@ -31,10 +31,9 @@ local function travelHint()
 	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
 	if not (tgt and tgt.goto_ and tgt.goto_.zone) then return nil end
 	local tz = tgt.goto_.zone
-	local pz = (GetZoneText and GetZoneText() or ""):lower()
-	if pz == "" or localizedZone(tz):lower() == pz then return nil end   -- já na zona
-	local plan = ns.TravelPlanner and ns.TravelPlanner:Plan(tz)
-	return plan or ns.L.OUT_OF_ZONE:format(localizedZone(tz))
+	local TP = ns.TravelPlanner
+	if not TP or TP:InZone(tz) then return nil end                       -- já na zona (via mapa)
+	return TP:Plan(tz) or ns.L.OUT_OF_ZONE:format(localizedZone(tz))
 end
 
 -- Nome de exibição: quests usam o nome localizado do client quando possível.

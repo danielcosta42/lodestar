@@ -185,13 +185,12 @@ ns.localizedZone = localizedZone
 function WP:DrawContext()
 	local goal = self:PickTarget()
 	if not (goal and goal.goto_ and goal.goto_.zone) then return goal, false end
-	local pz = (GetZoneText and GetZoneText() or ""):lower()
-	if pz == "" or localizedZone(goal.goto_.zone):lower() == pz then
+	local TP = ns.TravelPlanner
+	if not TP or TP:InZone(goal.goto_.zone) then
 		return goal, false                                  -- já na zona: caminho normal
 	end
-	local plan, hop
-	if ns.TravelPlanner then plan, hop = ns.TravelPlanner:Plan(goal.goto_.zone) end
-	if hop and hop.zone and localizedZone(hop.zone):lower() == pz then
+	local plan, hop = TP:Plan(goal.goto_.zone)
+	if hop and hop.zone and TP:InZone(hop.zone) then
 		return { verb = "goto_", _hop = true,               -- na zona do hub: aponta o ponto
 			goto_ = { zone = hop.zone, x = hop.x, y = hop.y } }, false
 	end
@@ -206,16 +205,14 @@ local function updateArrow(goal)
 	-- portal/torre) e você JÁ está na zona dele, a seta passa a mirar o ponto exato.
 	local plan
 	local tz0 = goal.goto_ and goal.goto_.zone
-	if tz0 and ns.TravelPlanner then
-		local pz0 = (GetZoneText and GetZoneText() or ""):lower()
-		if pz0 ~= "" and localizedZone(tz0):lower() ~= pz0 then
-			local hop
-			plan, hop = ns.TravelPlanner:Plan(tz0)
-			if hop and hop.zone and localizedZone(hop.zone):lower() == pz0 then
-				goal = { verb = "goto_", text = plan, _hop = true,
-					goto_ = { zone = hop.zone, x = hop.x, y = hop.y, radius = 8 } }
-				plan = nil    -- agora é navegação local precisa até o hub
-			end
+	local TP = ns.TravelPlanner
+	if tz0 and TP and not TP:InZone(tz0) then
+		local hop
+		plan, hop = TP:Plan(tz0)
+		if hop and hop.zone and TP:InZone(hop.zone) then
+			goal = { verb = "goto_", text = plan, _hop = true,
+				goto_ = { zone = hop.zone, x = hop.x, y = hop.y, radius = 8 } }
+			plan = nil    -- agora é navegação local precisa até o hub
 		end
 	end
 
@@ -242,8 +239,7 @@ local function updateArrow(goal)
 
 	-- Fora da zona-alvo? Modo GLOBAL: aponta pra zona, não finge apontar o objetivo.
 	local tzone = goal.goto_ and goal.goto_.zone
-	local pzone = (GetZoneText and GetZoneText() or ""):lower()
-	local outOfZone = tzone and pzone ~= "" and localizedZone(tzone):lower() ~= pzone
+	local outOfZone = tzone and ns.TravelPlanner and not ns.TravelPlanner:InZone(tzone)
 
 	a.dist:SetText(ns.L.YARDS:format(dist))
 	if goal._hop then

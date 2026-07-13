@@ -153,6 +153,17 @@ function TP:PlayerZoneEng()
 	return nil
 end
 
+-- Está na zona-alvo? Usa o MAPA, não GetZoneText — que em sub-zonas especiais
+-- (Ogri'la, Skettis, Netherwing Ledge...) retorna o nome da sub-zona e faria a
+-- viagem achar que você está "fora" da zona quando na verdade já chegou.
+function TP:InZone(targetEng)
+	if not targetEng then return true end
+	local cur = self:PlayerZoneEng()
+	if cur then return cur == targetEng end
+	local pz = (GetZoneText and GetZoneText() or ""):lower()          -- fallback localizado
+	return pz == "" or localizedZone(targetEng):lower() == pz
+end
+
 --------------------------------------------------------------------------------
 -- bindMap: nome-de-subzona (como GetBindLocation retorna) -> nome da zona-pai.
 -- Construído 1x via C_Map.GetAreaInfo sobre ns.subZoneToParent (dados Questie).
@@ -210,7 +221,8 @@ function TP:Plan(targetEng)
 	-- 2) VOCÊ está em Shattrath: portais da Terraça da Luz (mira o cluster da facção)
 	if inShat then
 		if cap then return ns.L.PORTAL_TO:format(localizedZone(cap)), T and T.terrace and T.terrace[fac] end
-		return nil  -- alvo em Outland: é só voar (Shattrath é central)
+		-- alvo em Outland sem portal: NÃO retorna nil — cai no ponto de voo (passo 7),
+		-- mirando o mestre de voo de Shattrath (Nutral). "É só voar" precisa dizer ONDE.
 	end
 
 	-- 3) Transporte de CLASSE (só compensa cruzando continente / destino remoto)
