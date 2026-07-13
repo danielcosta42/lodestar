@@ -1,0 +1,574 @@
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+local ADDON, ns = ...
+if not ns then return end
+ns:RegisterGuide("Leveling/Alliance/Blade's Edge Mountains (66-70)", {
+	faction = "Alliance",
+	author = "Lodestar Generator",
+	next = "Leveling/Alliance/Netherstorm (68-70)",
+}, [[
+step
+  note {fp}Amerun Leafshade
+  goto Blade's Edge Mountains 37.82,61.4 |tip {vendor}
+step
+  talk Sentinel Moonwhisper##22488
+  accept Killing the Crawlers##10927 |goto Blade's Edge Mountains 32.2,91.11
+step
+  talk Rina Moonspring##21066
+  accept The Encroaching Wilderness##10455 |goto Blade's Edge Mountains 36.21,67.13
+step
+  talk Commander Skyshadow##21158
+  accept The Bloodmaul Ogres##10502 |goto Blade's Edge Mountains 36.22,66.18
+step
+  talk Bronwyn Stouthammer##21197
+  accept Into the Draenethyst Mine##10510 |goto Blade's Edge Mountains 37.41,65.04
+step
+  talk Borgrim Stouthammer##21151
+  accept Strange Brew##10511 |goto Blade's Edge Mountains 37.4,64.66
+step
+  talk Daranelle##21469
+  accept Malaise##10555 |goto Blade's Edge Mountains 37.07,65.61
+step
+  note Rina Moonspring wishes you to slay 12 Grovestalker Lynxes with all due haste and then return to her at Sylvanaar in the Blade's Edge Mountains.
+  kill Grovestalker Lynx##21022 |q 10455 |goto Blade's Edge Mountains 39.17,71.16
+step
+  talk Kronk##23253
+  accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  talk Chu'a'lor##23233
+  accept The Trouble Below##11057 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Skyguard Khatie##23335
+  accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
+step
+  talk Chu'a'lor##23233
+  accept A Special Thank You##11091 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Sky Commander Keller##23334
+  accept Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.38,52.68
+step
+  talk Vindicator Vuuleen##21277
+  accept The Trappings of a Vindicator##10516 |goto Blade's Edge Mountains 44.01,51.83
+step
+  talk Mog'dorg the Wizened##22941
+  turnin The Trouble Below##11057 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Chort##22995
+  accept Mog'dorg the Wizened##10989 |goto Blade's Edge Mountains 55.43,45.22
+step
+  talk Mog'dorg the Wizened##22941
+  accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Mog'dorg the Wizened##22941
+  accept Maggoc's Treasure Chest##10996 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Mog'dorg the Wizened##22941
+  accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Timeon##21782
+  accept Creating the Pendant##10567 |goto Blade's Edge Mountains 62.16,39.11
+step
+  talk Tree Warden Chawn##22007
+  accept A Time for Negotiation...##10682 |goto Blade's Edge Mountains 61.98,39.48
+step
+  talk Faradrella##22133
+  accept Culling the Wild##10753 |goto Blade's Edge Mountains 62.56,38.26
+step
+  talk Mosswood the Ancient##22053
+  accept Little Embers##10770 |goto Blade's Edge Mountains 61.25,38.45
+step
+  talk Mosswood the Ancient##22053
+  accept From the Ashes##10771 |goto Blade's Edge Mountains 61.25,38.45
+step
+  talk Commander Haephus Stonewall##22149
+  accept A Date with Dorgok##10795 |goto Blade's Edge Mountains 61.99,37.98
+step
+  talk Lieutenant Fairweather##22150
+  accept Crush the Bloodmaul Camp!##10796 |goto Blade's Edge Mountains 61.99,37.94
+step
+  talk Commander Haephus Stonewall##22149
+  accept Pay the Baron a Visit##10798 |goto Blade's Edge Mountains 61.99,37.98
+step
+  talk O'Mally Zapnabber##22020
+  accept Mystery Mask##10812 |goto Blade's Edge Mountains 62.65,40.38
+step
+  talk Tree Warden Chawn##22007
+  accept Treebole Must Know##10829 |goto Blade's Edge Mountains 61.98,39.48
+step
+  talk Tree Warden Chawn##22007
+  accept Wyrmskull Watcher##10894 |goto Blade's Edge Mountains 61.98,39.48
+step
+  talk Wildlord Antelarion##22127
+  accept Death's Door##10910 |goto Blade's Edge Mountains 62.31,40.05
+step
+  note Kill 4 Felsworn Scalewing, 4 Felsworn Daggermaw, and 2 Fel Corrupters.
+  kill Felsworn Scalewing##21123 |q 10753 |goto Blade's Edge Mountains 71.85,32.76
+step
+  note Mosswood the Ancient wants you to journey to Skald and plant Ironroot Seeds in three different mounds of Fertile Volcanic Soil and then return to him in Ruuan Weald.
+  collect Fertile Volcanic Soil##185124 |q 10771 |goto Blade's Edge Mountains 71.66,22.35
+step
+  talk Watcher Moonshade##22386
+  turnin Wyrmskull Watcher##10894 |goto Blade's Edge Mountains 50.03,35.95
+step
+  talk Watcher Moonshade##22386
+  accept Longtail is the Lynchpin##10893 |goto Blade's Edge Mountains 50.03,35.95
+step
+  note Eliminate Draaca Longtail, the leader of the wyrmcultists in Wyrmskull Tunnel. Report back to Watcher Moonshade at the Wyrmskull Tunnel in the Blade's Edge Mountains once you have done so.
+  kill Draaca Longtail##22396 |q 10893 |goto Blade's Edge Mountains 45.19,32.49
+step
+  note Lieutenant Fairweather has tasked you with slaying 10 Bloodmaul Maulers and 5 Bloodmaul Warlocks. Afterward, return to her at Evergrove in the Blade's Edge Mountains.
+  kill Bloodmaul Mauler##19993 |q 10796 |goto Blade's Edge Mountains 56.13,28.75
+step
+  talk Treebole##22215
+  turnin Treebole Must Know##10829 |goto Blade's Edge Mountains 37.17,22.1
+step
+  talk Treebole##22215
+  accept Exorcising the Trees##10830 |goto Blade's Edge Mountains 37.17,22.1
+step
+  talk Image of Commander Ameer##22919
+  accept The Mark of the Nexus-King##10976 |goto Blade's Edge Mountains 52.85,14.99
+step
+  note Mosswood the Ancient wants you to kill 8 Scorch Imps and then return to him in Ruuan Weald.
+  kill Scorch Imp##21021 |q 10770 |goto Blade's Edge Mountains 71.77,21.14
+step
+  note Commander Haephus Stonewall has asked you to kill Dorgok at Bloodmaul Camp. Return to him at Evergrove in the Blade's Edge Mountains after you have done the deed.
+  kill Dorgok##20753 |q 10795 |goto Blade's Edge Mountains 55.14,24.04
+step
+  talk Evergrove Druid##22423
+  turnin Death's Door##10910 |goto Blade's Edge Mountains 63.52,65.29
+step
+  talk Nickwinkle the Metro-Gnome##21755
+  accept Crystal Clear##10608 |goto Blade's Edge Mountains 60.23,68.94
+step
+  talk Fizit "Doc" Clocktock##21110
+  accept What Came First, the Drake or the Egg?##10609 |goto Blade's Edge Mountains 60.98,68.11
+step
+  talk Evergrove Druid##22423
+  accept Harvesting the Fel Ammunition##10904 |goto Blade's Edge Mountains 63.52,65.29
+step
+  talk Bossi Pentapiston##21112
+  accept Parts for the Rocket-Chief##11040 |goto Blade's Edge Mountains 60.78,69.07
+step
+  talk Rip Pedalslam##21107
+  accept Building a Better Gryphon##11043 |goto Blade's Edge Mountains 61.15,70.44
+step
+  note Nickwinkle the Metro-Gnome wants you to slay 10 Crystal Flayers and then return to him at Toshley's Station in the Blade's Edge Mountains.
+  kill Crystal Flayer##21189 |q 10608 |goto Blade's Edge Mountains 62.13,75.78
+step
+  note Sentinel Moonwhisper at the tunnel between Zangarmarsh and Blade's Edge Mountains wants you to kill 6 Cavern Crawlers and report to Commander Skyshadow in Sylvanaar.
+  kill Cavern Crawler##22044 |q 10927 |goto Blade's Edge Mountains 51.45,87.88
+step
+  talk Commander Skyshadow##21158
+  turnin The Bloodmaul Ogres##10502 |goto Blade's Edge Mountains 36.22,66.18
+step
+  talk Bronwyn Stouthammer##21197
+  turnin Into the Draenethyst Mine##10510 |goto Blade's Edge Mountains 37.41,65.04
+step
+  talk Borgrim Stouthammer##21151
+  turnin Strange Brew##10511 |goto Blade's Edge Mountains 37.4,64.66
+step
+  talk Rocket-Chief Fuselage##19570
+  turnin Parts for the Rocket-Chief##11040 |goto Netherstorm 32.73,64.96 |tip {turninat}Netherstorm
+step
+  talk Commander Skyshadow##21158
+  turnin Killing the Crawlers##10927 |goto Blade's Edge Mountains 36.22,66.18
+step
+  turnin Malaise##10555 |goto Blade's Edge Mountains 34.44,77.71
+step
+  talk Rina Moonspring##21066
+  turnin The Encroaching Wilderness##10455 |goto Blade's Edge Mountains 36.21,67.13
+step
+  talk Rina Moonspring##21066
+  accept Marauding Wolves##10456 |goto Blade's Edge Mountains 36.21,67.13
+step
+  talk Commander Skyshadow##21158
+  accept The Bladespire Ogres##10504 |goto Blade's Edge Mountains 36.22,66.18
+step
+  talk Borgrim Stouthammer##21151
+  accept Getting the Bladespire Tanked##10512 |goto Blade's Edge Mountains 37.4,64.66
+step
+  talk Kronk##23253
+  turnin Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  talk Skyguard Khatie##23335
+  turnin Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
+step
+  talk Jho'nass##23428
+  turnin A Special Thank You##11091 |goto Blade's Edge Mountains 28.06,58.73
+step
+  talk Aether-tech Apprentice##23473
+  turnin Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.9,52.16
+step
+  talk Gahk##23300
+  accept A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  talk Sky Commander Keller##23334
+  accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
+step
+  talk Vindicator Vuuleen##21277
+  turnin The Trappings of a Vindicator##10516 |goto Blade's Edge Mountains 44.01,51.83
+step
+  talk Brunn Flamebeard##20510
+  turnin Building a Better Gryphon##11043 |goto Shadowmoon Valley 37.61,56.05 |tip {turninat}Shadowmoon Valley
+step
+  talk Vindicator Vuuleen##21277
+  accept Gorr'Dim, Your Time Has Come...##10517 |goto Blade's Edge Mountains 44.01,51.83
+step
+  note Vindicator Vuuleen has asked you to kill Gorr'Dim, leader of the Bladespire Hold ogres. Once you have done so, return to her at Bladespire Hold in the Blade's Edge Mountains.
+  kill Gorr'Dim##20732 |q 10517 |goto Blade's Edge Mountains 38.94,48.67
+step
+  talk Baron Sablemane##22103
+  turnin Pay the Baron a Visit##10798 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Mog'dorg the Wizened##10989 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Maggoc's Treasure Chest##10996 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Baron Sablemane##22103
+  accept Into the Churning Gulch##10799 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Mog'dorg the Wizened##22941
+  accept Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Faradrella##22133
+  turnin Culling the Wild##10753 |goto Blade's Edge Mountains 62.56,38.26
+step
+  talk Mosswood the Ancient##22053
+  turnin Little Embers##10770 |goto Blade's Edge Mountains 61.25,38.45
+step
+  talk Mosswood the Ancient##22053
+  turnin From the Ashes##10771 |goto Blade's Edge Mountains 61.25,38.45
+step
+  talk Commander Haephus Stonewall##22149
+  turnin A Date with Dorgok##10795 |goto Blade's Edge Mountains 61.99,37.98
+step
+  talk Lieutenant Fairweather##22150
+  turnin Crush the Bloodmaul Camp!##10796 |goto Blade's Edge Mountains 61.99,37.94
+step
+  talk Tree Warden Chawn##22007
+  turnin A Time for Negotiation...##10682 |goto Blade's Edge Mountains 61.98,39.48
+step
+  talk Wildlord Antelarion##22127
+  turnin Mystery Mask##10812 |goto Blade's Edge Mountains 62.31,40.05
+step
+  talk Timeon##21782
+  turnin Creating the Pendant##10567 |goto Blade's Edge Mountains 62.16,39.11
+step
+  talk Timeon##21782
+  accept Whispers of the Raven God##10607 |goto Blade's Edge Mountains 62.16,39.11
+step
+  talk Tree Warden Chawn##22007
+  accept ...and a Time for Action##10713 |goto Blade's Edge Mountains 61.98,39.48
+step
+  talk Samia Inkling##21983
+  accept Poaching from Poachers##10717 |goto Blade's Edge Mountains 61.94,39.45
+step
+  talk Wildlord Antelarion##22127
+  accept Felsworn Gas Mask##10819 |goto Blade's Edge Mountains 62.31,40.05
+step
+  note Venture out into the Ruuan Weald and slay 10 Wyrmcult Hewers, then return to Tree Warden Chawn at Evergrove in the Blade's Edge Mountains.
+  kill Wyrmcult Hewer##21810 |q 10713 |goto Blade's Edge Mountains 60.82,35.23
+step
+  talk Watcher Moonshade##22386
+  turnin Longtail is the Lynchpin##10893 |goto Blade's Edge Mountains 50.03,35.95
+step
+  talk Watcher Moonshade##22386
+  accept Meeting at the Blackwing Coven##10722 |goto Blade's Edge Mountains 50.03,35.95
+step
+  talk Treebole##22215
+  turnin Exorcising the Trees##10830 |goto Blade's Edge Mountains 37.17,22.1
+step
+  note Kill Grishna arakkoa to gain Understanding Ravenspeech for 2 minutes. While under the effects of the spell, you can find and receive the prophecy from the four shrines. Return when you have visited all four.
+  kill [DNDProphecy 1 Quest Credit##22798 |q 10607 |goto Blade's Edge Mountains 39.01,17.25
+step
+  talk Image of Commander Ameer##22919
+  turnin The Mark of the Nexus-King##10976 |goto Blade's Edge Mountains 52.85,14.99
+step
+  talk Image of Commander Ameer##22919
+  accept Stasis Chambers of the Mana-Tombs##10977 |goto Blade's Edge Mountains 52.85,14.99
+step
+  talk Evergrove Druid##22423
+  turnin Harvesting the Fel Ammunition##10904 |goto Blade's Edge Mountains 63.52,65.29
+step
+  talk Nickwinkle the Metro-Gnome##21755
+  turnin Crystal Clear##10608 |goto Blade's Edge Mountains 60.23,68.94
+step
+  talk Fizit "Doc" Clocktock##21110
+  turnin What Came First, the Drake or the Egg?##10609 |goto Blade's Edge Mountains 60.98,68.11
+step
+  talk Evergrove Druid##22423
+  accept Fire At Will!##10911 |goto Blade's Edge Mountains 63.52,65.29
+step
+  talk Commander Skyshadow##21158
+  turnin The Bladespire Ogres##10504 |goto Blade's Edge Mountains 36.22,66.18
+step
+  talk Borgrim Stouthammer##21151
+  turnin Getting the Bladespire Tanked##10512 |goto Blade's Edge Mountains 37.4,64.66
+step
+  talk Rina Moonspring##21066
+  turnin Marauding Wolves##10456 |goto Blade's Edge Mountains 36.21,67.13
+step
+  talk Rina Moonspring##21066
+  accept Protecting Our Own##10457 |goto Blade's Edge Mountains 36.21,67.13
+step
+  note Use Rina's Bough on 5 of the Grove Seedlings to summon forth defenses for the Living Grove. Then return to Rina Moonspring at Sylvanaar in the Blade's Edge Mountains.
+  collect Grove Seedling##184631 |q 10457 |goto Blade's Edge Mountains 38.57,71.16
+step
+  talk Gahk##23300
+  turnin A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  talk Sky Commander Keller##23334
+  turnin To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
+step
+  talk Vindicator Vuuleen##21277
+  turnin Gorr'Dim, Your Time Has Come...##10517 |goto Blade's Edge Mountains 44.01,51.83
+step
+  talk Vindicator Vuuleen##21277
+  accept Planting the Banner##10518 |goto Blade's Edge Mountains 44.01,51.83
+step
+  talk Baron Sablemane##22103
+  turnin Into the Churning Gulch##10799 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Baron Sablemane##22103
+  accept Goodnight, Gronn##10800 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Mog'dorg the Wizened##22941
+  accept Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
+step
+  turnin Felsworn Gas Mask##10819 |goto Blade's Edge Mountains 73.27,40.03
+step
+  talk Tree Warden Chawn##22007
+  turnin ...and a Time for Action##10713 |goto Blade's Edge Mountains 61.98,39.48
+step
+  talk Samia Inkling##21983
+  turnin Poaching from Poachers##10717 |goto Blade's Edge Mountains 61.94,39.45
+step
+  talk Tree Warden Chawn##22007
+  turnin Meeting at the Blackwing Coven##10722 |goto Blade's Edge Mountains 61.98,39.48
+step
+  talk Timeon##21782
+  turnin Whispers of the Raven God##10607 |goto Blade's Edge Mountains 62.16,39.11
+step
+  talk Samia Inkling##21983
+  accept Whelps of the Wyrmcult##10747 |goto Blade's Edge Mountains 61.94,39.45
+step
+  talk Tree Warden Chawn##22007
+  accept Maxnar Must Die!##10748 |goto Blade's Edge Mountains 61.98,39.48
+step
+  note On behalf of the Cenarion Expedition druids of Evergrove, and the indigenous life of the Ruuan Weald, Tree Warden Chawn has asked you to slay Maxnar the Ashmaw. Return to him at Evergrove in the Blade's Edge Mountains after you have done so.
+  kill Maxnar the Ashmaw##21389 |q 10748 |goto Blade's Edge Mountains 33.9,35.32
+step
+  talk Image of Commander Ameer##22919
+  turnin Stasis Chambers of the Mana-Tombs##10977 |goto Blade's Edge Mountains 52.85,14.99
+step
+  talk Image of Commander Ameer##22919
+  accept The Eye of Haramad##10982 |goto Blade's Edge Mountains 52.85,14.99
+step
+  talk Evergrove Druid##22423
+  turnin Fire At Will!##10911 |goto Blade's Edge Mountains 63.52,65.29
+step
+  talk Evergrove Druid##22423
+  accept The Hound-Master##10912 |goto Blade's Edge Mountains 63.52,65.29
+step
+  note The Evergrove Druid has told you that the final thing you must do is to slay Baelmon the Hound-Master. Afterward, return to Evergrove in the Blade's Edge Mountains, and inform Wildlord Antelarion of your success.
+  kill Baelmon the Hound-Master##19747 |q 10912 |goto Blade's Edge Mountains 63.04,60.41
+step
+  talk Commander Skyshadow##21158
+  turnin Planting the Banner##10518 |goto Blade's Edge Mountains 36.22,66.18
+step
+  talk Rina Moonspring##21066
+  turnin Protecting Our Own##10457 |goto Blade's Edge Mountains 36.21,67.13
+step
+  talk Rina Moonspring##21066
+  accept A Dire Situation##10506 |goto Blade's Edge Mountains 36.21,67.13
+step
+  talk Commander Skyshadow##21158
+  accept Where Did Those Darn Gnomes Go?##10580 |goto Blade's Edge Mountains 36.22,66.18
+step
+  talk Baron Sablemane##22103
+  turnin Goodnight, Gronn##10800 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Baron Sablemane##22103
+  accept It's a Trap!##10801 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Mog'dorg the Wizened##22941
+  accept Ogre Heaven##11009 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Wildlord Antelarion##22127
+  turnin The Hound-Master##10912 |goto Blade's Edge Mountains 62.31,40.05
+step
+  talk Commander Haephus Stonewall##22149
+  turnin It's a Trap!##10801 |goto Blade's Edge Mountains 61.99,37.98
+step
+  talk Samia Inkling##21983
+  turnin Whelps of the Wyrmcult##10747 |goto Blade's Edge Mountains 61.94,39.45
+step
+  talk Tree Warden Chawn##22007
+  turnin Maxnar Must Die!##10748 |goto Blade's Edge Mountains 61.98,39.48
+step
+  talk Commander Haephus Stonewall##22149
+  accept Gorgrom the Dragon-Eater##10802 |goto Blade's Edge Mountains 61.99,37.98
+step
+  talk Lieutenant Fairweather##22150
+  accept Slaughter at Boulder'mok##10803 |goto Blade's Edge Mountains 61.99,37.94
+step
+  note Slaughter 5 Boulder'mok Brutes and 3 Boulder'mok Shaman, and then return to Lieutenant Fairweather at Evergrove in the Blade's Edge Mountains.
+  kill Boulder'mok Brute##21046 |q 10803 |goto Blade's Edge Mountains 30.54,22.6
+step
+  talk Image of Commander Ameer##22919
+  turnin The Eye of Haramad##10982 |goto Blade's Edge Mountains 52.85,14.99
+step
+  talk R-3D0##21690
+  turnin Where Did Those Darn Gnomes Go?##10580 |goto Blade's Edge Mountains 55.11,72.79
+step
+  talk R-3D0##21690
+  accept Follow the Breadcrumbs##10581 |goto Blade's Edge Mountains 55.11,72.79
+step
+  note Rina Moonspring wants you to take her Diminution Powder and apply it to 5 of the Bloodmaul Dire Wolves, which can be found at Bloodmaul Outpost and in Bloodmaul Ravine. After doing so, return to her at Sylvanaar in the Blade's Edge Mountains.
+  kill Bloodmaul Dire Wolf Trigger##21176 |q 10506 |goto Blade's Edge Mountains 45.08,76.73
+step
+  talk Rina Moonspring##21066
+  turnin A Dire Situation##10506 |goto Blade's Edge Mountains 36.21,67.13
+step
+  talk Chu'a'lor##23233
+  turnin Ogre Heaven##11009 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Chu'a'lor##23233
+  accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Commander Haephus Stonewall##22149
+  turnin Gorgrom the Dragon-Eater##10802 |goto Blade's Edge Mountains 61.99,37.98
+step
+  talk Lieutenant Fairweather##22150
+  turnin Slaughter at Boulder'mok##10803 |goto Blade's Edge Mountains 61.99,37.94
+step
+  talk Commander Haephus Stonewall##22149
+  accept Baron Sablemane Has Requested Your Presence##10818 |goto Blade's Edge Mountains 61.99,37.98
+step
+  talk Toshley##21691
+  turnin Follow the Breadcrumbs##10581 |goto Blade's Edge Mountains 60.53,68.97
+step
+  talk Toshley##21691
+  accept Picking Up Some Power Converters##10584 |goto Blade's Edge Mountains 60.53,68.97
+step
+  talk Chu'a'lor##23233
+  turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Torkus##23316
+  accept Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  talk Baron Sablemane##22103
+  turnin Baron Sablemane Has Requested Your Presence##10818 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Baron Sablemane##22103
+  accept Massacre at Gruul's Lair##10805 |goto Blade's Edge Mountains 53.25,41.18
+step
+  note Baron Sablemane has tasked you and your friends with the deaths of 10 Bladespire Enforcers, 5 Bladespire Battlemages, 5 Bladespire Ravagers and their leader, Fingrom. When you have managed this feat, return to him at the Circle of Blood in the Blade's Edge Mountains.
+  kill Bladespire Enforcer##19997 |q 10805 |goto Blade's Edge Mountains 65.59,21.69
+step
+  talk Toshley##21691
+  turnin Picking Up Some Power Converters##10584 |goto Blade's Edge Mountains 60.53,68.97
+step
+  talk Dizzy Dina##21824
+  accept Ridgespine Menace##10620 |goto Blade's Edge Mountains 60.4,68.76
+step
+  talk Razak Ironsides##21118
+  accept Cutting Your Teeth##10632 |goto Blade's Edge Mountains 60.15,68.21
+step
+  talk Toshley##21691
+  accept Ride the Lightning##10657 |goto Blade's Edge Mountains 60.53,68.97
+step
+  note Dizzy Dina wants you to kill 10 Ridgespine Stalkers. After you have done so, return to her at Toshley's Station in the Blade's Edge Mountains.
+  kill Ridgespine Stalker##20714 |q 10620 |goto Blade's Edge Mountains 67.33,62.98
+step
+  talk Torkus##23316
+  turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  talk Torkus##23316
+  accept A Father's Duty##11061 |goto Blade's Edge Mountains 28.38,57.64
+step
+  talk Chu'a'lor##23233
+  accept The Skyguard Outpost##11062 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Baron Sablemane##22103
+  turnin Massacre at Gruul's Lair##10805 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Baron Sablemane##22103
+  accept Showdown##10806 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Razak Ironsides##21118
+  turnin Cutting Your Teeth##10632 |goto Blade's Edge Mountains 60.15,68.21
+step
+  talk Toshley##21691
+  turnin Ride the Lightning##10657 |goto Blade's Edge Mountains 60.53,68.97
+step
+  talk Dizzy Dina##21824
+  turnin Ridgespine Menace##10620 |goto Blade's Edge Mountains 60.4,68.76
+step
+  talk Dizzy Dina##21824
+  accept More than a Pound of Flesh##10671 |goto Blade's Edge Mountains 60.4,68.76
+step
+  talk Toshley##21691
+  accept Trapping the Light Fantastic##10674 |goto Blade's Edge Mountains 60.53,68.97
+step
+  talk Torkus##23316
+  turnin A Father's Duty##11061 |goto Blade's Edge Mountains 28.38,57.64
+step
+  talk Sky Commander Keller##23334
+  turnin The Skyguard Outpost##11062 |goto Blade's Edge Mountains 27.38,52.68
+step
+  talk Sky Sergeant Vanderlip##23120
+  accept Bombing Run##11010 |goto Blade's Edge Mountains 27.56,52.9
+step
+  talk Chu'a'lor##23233
+  accept Guardian of the Monument##11059 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Gahk##23300
+  accept A Fel Whip For Gahk##11079 |goto Blade's Edge Mountains 28.48,58.08
+step
+  talk Sky Sergeant Vanderlip##23120
+  accept Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
+step
+  talk Baron Sablemane##22103
+  turnin Showdown##10806 |goto Blade's Edge Mountains 53.25,41.18
+step
+  talk Toshley##21691
+  turnin Trapping the Light Fantastic##10674 |goto Blade's Edge Mountains 60.53,68.97
+step
+  talk Dizzy Dina##21824
+  turnin More than a Pound of Flesh##10671 |goto Blade's Edge Mountains 60.4,68.76
+step
+  talk Toshley##21691
+  accept Show Them Gnome Mercy!##10675 |goto Blade's Edge Mountains 60.53,68.97
+step
+  talk Toshley##21691
+  turnin Show Them Gnome Mercy!##10675 |goto Blade's Edge Mountains 60.53,68.97
+step
+  talk Sky Sergeant Vanderlip##23120
+  turnin Bombing Run##11010 |goto Blade's Edge Mountains 27.56,52.9
+step
+  talk Chu'a'lor##23233
+  turnin Guardian of the Monument##11059 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Gahk##23300
+  turnin A Fel Whip For Gahk##11079 |goto Blade's Edge Mountains 28.48,58.08
+step
+  talk Sky Sergeant Vanderlip##23120
+  turnin Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
+step
+  note {travel}Netherstorm
+  goto Netherstorm 31.36,66.15
+]])

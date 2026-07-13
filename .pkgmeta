@@ -1,0 +1,14 @@
+package-as: Lodestar
+
+enable-nolib-creation: no
+
+ignore:
+  - "**/*.png"          # WoW só carrega .tga/.blp; os .png são só fonte
+  - "Media/*.zip"       # zip de arte-fonte
+  - "Media/*.html"      # preview de HUD
+  - "tools"             # gerador Python + validador (dev only)
+  - "DSL.md"            # doc interna do formato de guia
+  - "PACKAGING.md"
+  - ".pkgmeta"
+  - ".gitignore"
+  - ".github"           # workflows de CI/deploy — não vão no pacote

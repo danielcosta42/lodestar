@@ -1,0 +1,30 @@
+name: Release
+
+# Publish to CurseForge (and create a GitHub release) whenever you push a
+# version tag, e.g.:  git tag v1.0.0 && git push origin v1.0.0
+on:
+  push:
+    tags:
+      - "**"
+
+permissions:
+  contents: write   # needed to create the GitHub release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history for the changelog)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Package and upload to CurseForge
+        uses: BigWigsMods/packager@v2
+        env:
+          # Set this in the repo: Settings → Secrets and variables → Actions → New repository secret
+          #   Name: CF_API_KEY   Value: <your CurseForge API token>
+          # The CurseForge project id (1608165) is read from ## X-Curse-Project-ID in Lodestar.toc.
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          # Provided automatically by GitHub — lets the packager attach the .zip to a GitHub release.
+          GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}

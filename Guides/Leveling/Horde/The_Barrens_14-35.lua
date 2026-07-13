@@ -1,0 +1,903 @@
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+local ADDON, ns = ...
+if not ns then return end
+ns:RegisterGuide("Leveling/Horde/The Barrens (14-35)", {
+	faction = "Horde",
+	author = "Lodestar Generator",
+	next = "Leveling/Horde/Stonetalon Mountains (19-29)",
+}, [[
+step
+  note {fp}Devrak
+  goto The Barrens 51.5,30.34 |tip {vendor}
+step
+  talk Brewmaster Drohn##3292
+  accept Chen's Empty Keg##821 |goto The Barrens 62.26,38.39
+step
+  talk Mebok Mizzyrix##3446
+  accept Raptor Horns##865 |goto The Barrens 62.37,37.62
+step
+  talk Mebok Mizzyrix##3446
+  accept Root Samples##866 |goto The Barrens 62.37,37.62
+step
+  talk Gazlowe##3391
+  accept Southsea Freebooters##887 |goto The Barrens 62.68,36.23
+step
+  talk Captain Thalo'thas Brightsun##3339
+  accept The Guns of Northwatch##891 |goto The Barrens 62.29,39.03
+step
+  talk Sputtervalve##3442
+  accept Samophlange##894 |goto The Barrens 62.98,37.22
+step
+  talk Wharfmaster Dizzywig##3453
+  accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
+step
+  talk Crane Operator Bigglefuzz##3665
+  accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
+step
+  talk Mebok Mizzyrix##3446
+  accept Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
+step
+  talk Sputtervalve##3442
+  accept Further Instructions##1095 |goto The Barrens 62.98,37.22
+step
+  talk Wharfmaster Dizzywig##3453
+  accept Parts for Kravel##1112 |goto The Barrens 63.35,38.45
+step
+  talk Gazlowe##3391
+  accept Goblin Sponsorship##1180 |goto The Barrens 62.68,36.23
+step
+  talk Mebok Mizzyrix##3446
+  accept Blueleaf Tubers##1221 |goto The Barrens 62.37,37.62
+step
+  talk Sputtervalve##3442
+  accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
+step
+  only Warrior
+  talk Klannoc Macleod##6236
+  accept The Affray##1719 |goto The Barrens 68.62,49.16
+step
+  only Druid
+  talk Menara Voidrender##6266
+  accept Components for the Enchanted Gold Bloodrobe##1796 |goto The Barrens 62.51,35.45
+step
+  only Druid
+  talk Menara Voidrender##6266
+  accept Fragments of the Orb of Orahil##1799 |goto The Barrens 62.51,35.45
+step
+  only Rogue
+  talk Wrenix the Wretched##7161
+  accept Plundering the Plunderers##2381 |goto The Barrens 63.07,36.32
+step
+  talk Tinkerwiz##3494
+  accept Goblin Engineering##3633 |goto The Barrens 62.67,36.31
+step
+  talk Tinkerwiz##3494
+  accept Gnome Engineering##3637 |goto The Barrens 62.67,36.31
+step
+  talk Sputtervalve##3442
+  accept Wenikee Boltbucket##3921 |goto The Barrens 62.98,37.22
+step
+  talk Liv Rizzlefix##8496
+  accept Zapper Fuel##4146 |goto The Barrens 62.45,38.73
+step
+  talk Liv Rizzlefix##8496
+  accept Volcanic Activity##4502 |goto The Barrens 62.45,38.73
+step
+  only Druid
+  talk Menara Voidrender##6266
+  accept Components for the Enchanted Gold Bloodrobe##4783 |goto The Barrens 62.51,35.45
+step
+  only Druid
+  talk Acolyte Wytula##6254
+  accept Shard of a Felhound##4962 |goto The Barrens 62.64,35.3
+step
+  only Druid
+  talk Acolyte Magaz##6252
+  accept Shard of an Infernal##4963 |goto The Barrens 62.56,35.23
+step
+  only Druid
+  talk Menara Voidrender##6266
+  accept The Completed Orb of Dar'Orahil##4964 |goto The Barrens 62.51,35.45
+step
+  only Druid
+  talk Menara Voidrender##6266
+  accept The Completed Orb of Noh'Orahil##4975 |goto The Barrens 62.51,35.45
+step
+  talk Islen Waterseer##5901
+  accept Cleansed Water Returns to Felwood##5159 |goto The Barrens 65.83,43.78
+step
+  only Druid
+  talk Babagaya Shadowcleft##461
+  accept An Imp's Request##8419 |goto The Barrens 62.44,35.45
+step
+  talk Elder Windtotem##15582
+  accept Windtotem the Elder##8680 |goto The Barrens 62.7,36.73
+step
+  note Kill 12 Southsea Brigands and 6 Southsea Cannoneers for Gazlowe in Ratchet.
+  kill Southsea Brigand##3381 |q 887 |goto The Barrens 63.83,46.24
+step
+  note Captain Thalo'thas Brightsun of Ratchet wants you to collect 10 Theramore Medals and slay Captain Fairmount, Cannoneer Whessan and Cannoneer Smythe.
+  kill Captain Fairmount##3393 |q 891 |goto The Barrens 61.85,54.65
+step
+  talk Nixx Sprocketspring##8126
+  turnin Goblin Engineering##3633 |goto Tanaris 52.48,27.33 |tip {turninat}Tanaris
+step
+  talk Sergra Darkthorn##3338
+  accept Plainstrider Menace##844 |goto The Barrens 52.23,31.01
+step
+  talk Apothecary Helbrim##3390
+  accept Fungal Spores##848 |goto The Barrens 51.44,30.15
+step
+  talk Regthar Deathgate##3389
+  accept Kolkar Leaders##850 |goto The Barrens 45.34,28.41
+step
+  talk Regthar Deathgate##3389
+  accept Centaur Bracers##855 |goto The Barrens 45.34,28.41
+step
+  talk Grub##3443
+  accept Dig Rat Stew##862 |goto The Barrens 55.31,31.79
+step
+  talk Darsok Swiftdagger##3449
+  accept Harpy Raiders##867 |goto The Barrens 51.62,30.9
+step
+  talk Korran##3428
+  accept Egg Hunt##868 |goto The Barrens 51.07,29.63
+step
+  talk Gazrog##3464
+  accept Raptor Thieves##869 |goto The Barrens 51.93,30.32
+step
+  talk Tonga Runetotem##3448
+  accept The Forgotten Pools##870 |goto The Barrens 52.26,31.93
+step
+  talk Thork##3429
+  accept Disrupt the Attacks##871 |goto The Barrens 51.5,30.87
+step
+  talk Mankrik##3432
+  accept Consumed by Hatred##899 |goto The Barrens 51.95,31.58
+step
+  talk Korran##3428
+  accept The Swarm Grows##1145 |goto The Barrens 51.07,29.63
+step
+  talk Korran##3428
+  accept Parts of the Swarm##1184 |goto The Barrens 51.07,29.63
+step
+  talk Regthar Deathgate##3389
+  accept The Kolkar of Desolace##1362 |goto The Barrens 45.34,28.41
+step
+  talk Nalpak##5767
+  accept Deviate Hides##1486 |goto The Barrens 45.99,35.66
+step
+  talk Ebru##5768
+  accept Deviate Eradication##1487 |goto The Barrens 46.01,35.74
+step
+  talk Apothecary Helbrim##3390
+  accept Wharfmaster Dizzywig##1492 |goto The Barrens 51.44,30.15
+step
+  only Warlock
+  talk Kil'hala##3484
+  accept Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
+step
+  talk Falla Sagewind##8418
+  accept In Nightmares##3369 |goto The Barrens 48.18,32.78
+step
+  talk Mankrik##3432
+  accept Lost in Battle##4921 |goto The Barrens 51.95,31.58
+step
+  only Tauren
+  talk Jahan Hawkwing##3483
+  accept A Bundle of Hides##6361 |goto The Barrens 51.21,29.05
+step
+  talk Zargh##3489
+  accept Meats to Orgrimmar##6365 |goto The Barrens 52.62,29.84
+step
+  talk Thork##3429
+  accept Report to Kadrak##6541 |goto The Barrens 51.5,30.87
+step
+  talk Elder Moonwarden##15597
+  accept Moonwarden the Elder##8717 |goto The Barrens 51.42,30.71
+step
+  note Of the Razormane tribe, kill 8 Water Seekers, 8 Thornweavers and 3 Hunters, and then return to Thork in the Crossroads.
+  kill Razormane Water Seeker##3267 |q 871 |goto The Barrens 55.03,26.65
+step
+  talk Kargal Battlescar##3337
+  accept Crossroads Conscription##842 |goto The Barrens 62.26,19.38
+step
+  only Warrior
+  talk Uzzek##5810
+  accept Path of Defense##1498 |goto The Barrens 61.38,21.12
+step
+  talk Wizzlecrank's Shredder##3439
+  accept Ignition##858 |goto The Barrens 56.52,7.45
+step
+  talk Kadrak##8582
+  turnin Report to Kadrak##6541 |goto The Barrens 48.12,5.42
+step
+  talk Larion##9118
+  turnin Zapper Fuel##4146 |goto Un'Goro Crater 45.54,8.72 |tip {turninat}Un'Goro Crater
+step
+  talk Wenikee Boltbucket##9316
+  turnin Wenikee Boltbucket##3921 |goto The Barrens 49.05,11.17
+step
+  turnin Samophlange##894 |goto The Barrens 52.4,11.65
+step
+  talk Kadrak##8582
+  accept Horde Presence##3514 |goto The Barrens 48.12,5.42
+step
+  talk Wenikee Boltbucket##9316
+  accept Nugget Slugs##3922 |goto The Barrens 49.05,11.17
+step
+  talk Kadrak##8582
+  accept The Warsong Reports##6543 |goto The Barrens 48.12,5.42
+step
+  talk Kelm Hargunth##14754
+  accept Outrider Basic Care Package##7866 |goto The Barrens 46.65,8.38
+step
+  talk Kelm Hargunth##14754
+  accept Outrider Standard Care Package##7867 |goto The Barrens 46.65,8.38
+step
+  talk Kelm Hargunth##14754
+  accept Outrider Advanced Care Package##7868 |goto The Barrens 46.65,8.38
+step
+  talk Seereth Stonebreak##4049
+  accept Goblin Invaders##1062 |goto The Barrens 35.26,27.88
+step
+  talk Makaba Flathoof##11857
+  accept Kaya's Alive##6401 |goto The Barrens 35.19,27.76
+step
+  talk Makaba Flathoof##11857
+  accept Avenge My Village##6548 |goto The Barrens 35.19,27.76
+step
+  note Kill the leader of the Talon Den, Rynthariel the Keymaster.
+  kill Rynthariel the Keymaster##8518 |q 3514 |goto Stonetalon Mountains 29.71,16.91
+step
+  note Ebru in the Wailing Caverns wants you to kill 7 Deviate Ravagers, 7 Deviate Vipers, 7 Deviate Shamblers and 7 Deviate Dreadfangs.
+  kill Deviate Ravager##3636 |q 1487 |goto Wailing Caverns - Dungeon -1,-1
+step
+  talk Tammra Windfield##11864
+  turnin Kaya's Alive##6401 |goto Stonetalon Mountains 47.46,58.38 |tip {turninat}Stonetalon Mountains
+step
+  only Druid
+  talk Tabetha##6546
+  turnin Fragments of the Orb of Orahil##1799 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
+step
+  talk Ziz Fizziks##4201
+  turnin Further Instructions##1095 |goto Stonetalon Mountains 58.99,62.6 |tip {turninat}Stonetalon Mountains
+step
+  talk Ziz Fizziks##4201
+  turnin Ziz Fizziks##1483 |goto Stonetalon Mountains 58.99,62.6 |tip {turninat}Stonetalon Mountains
+step
+  talk Felgur Twocuts##5395
+  turnin The Kolkar of Desolace##1362 |goto Desolace 56.19,59.57 |tip {turninat}Desolace
+step
+  only Druid
+  talk Impsy##14470
+  turnin An Imp's Request##8419 |goto Felwood 41.36,45.02 |tip {turninat}Felwood
+step
+  only Tauren
+  talk Kirge Sternhorn##3418
+  accept Journey to the Crossroads##854 |goto The Barrens 44.88,58.61
+step
+  talk Mangletooth##3430
+  accept Tribes at War##878 |goto The Barrens 44.55,59.26
+step
+  talk Tatternack Steelforge##3433
+  accept Weapons of Choice##893 |goto The Barrens 45.1,57.68
+step
+  talk Jorn Skyseer##3387
+  accept Melor Sends Word##1130 |goto The Barrens 44.86,59.14
+step
+  only Druid
+  talk Doan Karhan##6247
+  accept The Orb of Soran'ruk##1740 |goto The Barrens 49.31,57.21
+step
+  only Warrior
+  talk Ruga Ragetotem##6394
+  accept Trial at the Field of Giants##1824 |goto The Barrens 44.67,59.42
+step
+  talk Jorn Skyseer##3387
+  accept The Ashenvale Hunt##6382 |goto The Barrens 44.86,59.14
+step
+  talk Elder High Mountain##15588
+  accept High Mountain the Elder##8686 |goto The Barrens 45.09,57.92
+step
+  note Find Mankrik's wife and then return to him in the Crossroads.
+  kill Beaten Corpse##10668 |q 4921 |goto The Barrens 49.33,50.32
+step
+  note Kill 6 Bristleback Water Seekers, 12 Bristleback Thornweavers and 12 Bristleback Geomancers and return to Mangletooth at Camp Taurajo in the Barrens.
+  kill Bristleback Water Seeker##3260 |q 878 |goto The Barrens 46.82,54.17
+step
+  talk Wharfmaster Lozgil##4631
+  turnin Goblin Sponsorship##1180 |goto Stranglethorn Vale 26.35,73.56 |tip {turninat}Stranglethorn Vale
+step
+  talk Oglethorpe Obnoticus##7406
+  turnin Gnome Engineering##3637 |goto Stranglethorn Vale 28.36,76.35 |tip {turninat}Stranglethorn Vale
+step
+  talk Gann Stonespire##3341
+  accept Gann's Reclamation##843 |goto The Barrens 45.89,77.0
+step
+  talk Greta Mosshoof##10922
+  turnin Cleansed Water Returns to Felwood##5159 |goto Felwood 51.21,82.11 |tip {turninat}Felwood
+step
+  talk Kravel Koalbeard##4452
+  turnin Parts for Kravel##1112 |goto Thousand Needles 77.79,77.27 |tip {turninat}Thousand Needles
+step
+  talk Melor Stonehoof##3441
+  turnin Melor Sends Word##1130 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
+step
+  talk Feegly the Exiled##3421
+  accept The Tear of the Moons##857 |goto The Barrens 48.97,86.31
+step
+  note Kill 8 Grimtotem Ruffians and 6 Grimtotem Mercenaries, and then return to Makaba Flathoof near the southeastern edge of Stonetalon.
+  kill Grimtotem Ruffian##11910 |q 6548 |goto Stonetalon Mountains 82.43,86.44
+step
+  note Gann Stonespire wants you to kill 15 Bael'dun Excavators and 5 Bael'dun Foremen.
+  kill Bael'dun Excavator##3374 |q 843 |goto The Barrens 47.58,85.32
+step
+  talk Myriam Moonsinger##12866
+  accept A Host of Evil##6626 |goto The Barrens 49.01,94.94
+step
+  talk Wharfmaster Dizzywig##3453
+  turnin Miner's Fortune##896 |goto The Barrens 63.35,38.45
+step
+  only Druid
+  talk Menara Voidrender##6266
+  turnin Components for the Enchanted Gold Bloodrobe##1796 |goto The Barrens 62.51,35.45
+step
+  talk Liv Rizzlefix##8496
+  turnin Volcanic Activity##4502 |goto The Barrens 62.45,38.73
+step
+  talk Belgrom Rockmaul##4485
+  turnin Parts of the Swarm##1184 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
+step
+  talk Arch Druid Hamuul Runetotem##5769
+  turnin In Nightmares##3369 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
+step
+  talk Mebok Mizzyrix##3446
+  turnin Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
+step
+  only Druid
+  talk Menara Voidrender##6266
+  turnin Components for the Enchanted Gold Bloodrobe##4783 |goto The Barrens 62.51,35.45
+step
+  talk Brewmaster Drohn##3292
+  turnin Chen's Empty Keg##821 |goto The Barrens 62.26,38.39
+step
+  only Warrior
+  talk Klannoc Macleod##6236
+  turnin The Affray##1719 |goto The Barrens 68.62,49.16
+step
+  talk Crane Operator Bigglefuzz##3665
+  turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61
+step
+  talk Mebok Mizzyrix##3446
+  turnin Blueleaf Tubers##1221 |goto The Barrens 62.37,37.62
+step
+  only Rogue
+  talk Wrenix the Wretched##7161
+  turnin Plundering the Plunderers##2381 |goto The Barrens 63.07,36.32
+step
+  talk Wharfmaster Dizzywig##3453
+  turnin Wharfmaster Dizzywig##1492 |goto The Barrens 63.35,38.45
+step
+  talk Mebok Mizzyrix##3446
+  turnin Raptor Horns##865 |goto The Barrens 62.37,37.62
+step
+  talk Mebok Mizzyrix##3446
+  turnin Root Samples##866 |goto The Barrens 62.37,37.62
+step
+  only Druid
+  talk Menara Voidrender##6266
+  turnin Shard of a Felhound##4962 |goto The Barrens 62.51,35.45
+step
+  only Druid
+  talk Menara Voidrender##6266
+  turnin Shard of an Infernal##4963 |goto The Barrens 62.51,35.45
+step
+  only Druid
+  talk Menara Voidrender##6266
+  turnin The Completed Orb of Dar'Orahil##4964 |goto The Barrens 62.51,35.45
+step
+  talk Elder Windtotem##15582
+  turnin Windtotem the Elder##8680 |goto The Barrens 62.7,36.73
+step
+  only Druid
+  talk Menara Voidrender##6266
+  turnin The Completed Orb of Noh'Orahil##4975 |goto The Barrens 62.51,35.45
+step
+  talk Senani Thunderheart##12696
+  turnin The Ashenvale Hunt##6382 |goto Ashenvale 73.78,61.46 |tip {turninat}Ashenvale
+step
+  talk Gazlowe##3391
+  turnin Southsea Freebooters##887 |goto The Barrens 62.68,36.23
+step
+  talk Belgrom Rockmaul##4485
+  turnin The Swarm Grows##1145 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
+step
+  talk Captain Thalo'thas Brightsun##3339
+  turnin The Guns of Northwatch##891 |goto The Barrens 62.29,39.03
+step
+  talk Gazlowe##3391
+  accept The Missing Shipment##890 |goto The Barrens 62.68,36.23
+step
+  talk Mebok Mizzyrix##3446
+  accept Smart Drinks##1491 |goto The Barrens 62.37,37.62
+step
+  only Warrior
+  talk Klannoc Macleod##6236
+  accept The Windwatcher##1791 |goto The Barrens 68.62,49.16
+step
+  only Druid
+  talk Menara Voidrender##6266
+  accept Components for the Enchanted Gold Bloodrobe##4781 |goto The Barrens 62.51,35.45
+step
+  only Druid
+  talk Menara Voidrender##6266
+  accept Components for the Enchanted Gold Bloodrobe##4784 |goto The Barrens 62.51,35.45
+step
+  note Kill 15 Venture Co. Loggers, then return to Seereth Stonebreak on the border of Stonetalon and the Barrens.
+  kill Venture Co. Logger##3989 |q 1062 |goto Stonetalon Mountains 66.4,52.26
+step
+  talk Elder Moonwarden##15597
+  turnin Moonwarden the Elder##8717 |goto The Barrens 51.42,30.71
+step
+  talk Mankrik##3432
+  turnin Lost in Battle##4921 |goto The Barrens 51.95,31.58
+step
+  talk Sergra Darkthorn##3338
+  turnin Crossroads Conscription##842 |goto The Barrens 52.23,31.01
+step
+  talk Sergra Darkthorn##3338
+  turnin Plainstrider Menace##844 |goto The Barrens 52.23,31.01
+step
+  talk Apothecary Helbrim##3390
+  turnin Fungal Spores##848 |goto The Barrens 51.44,30.15
+step
+  talk Regthar Deathgate##3389
+  turnin Kolkar Leaders##850 |goto The Barrens 45.34,28.41
+step
+  only Tauren
+  talk Thork##3429
+  turnin Journey to the Crossroads##854 |goto The Barrens 51.5,30.87
+step
+  talk Regthar Deathgate##3389
+  turnin Centaur Bracers##855 |goto The Barrens 45.34,28.41
+step
+  talk Grub##3443
+  turnin Dig Rat Stew##862 |goto The Barrens 55.31,31.79
+step
+  talk Darsok Swiftdagger##3449
+  turnin Harpy Raiders##867 |goto The Barrens 51.62,30.9
+step
+  talk Korran##3428
+  turnin Egg Hunt##868 |goto The Barrens 51.07,29.63
+step
+  talk Gazrog##3464
+  turnin Raptor Thieves##869 |goto The Barrens 51.93,30.32
+step
+  talk Tonga Runetotem##3448
+  turnin The Forgotten Pools##870 |goto The Barrens 52.26,31.93
+step
+  talk Thork##3429
+  turnin Disrupt the Attacks##871 |goto The Barrens 51.5,30.87
+step
+  talk Mankrik##3432
+  turnin Consumed by Hatred##899 |goto The Barrens 51.95,31.58
+step
+  only Warlock
+  talk Kil'hala##3484
+  turnin Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
+step
+  talk Nalpak##5767
+  turnin Deviate Hides##1486 |goto The Barrens 45.99,35.66
+step
+  talk Ebru##5768
+  turnin Deviate Eradication##1487 |goto The Barrens 46.01,35.74
+step
+  only Tauren
+  talk Devrak##3615
+  turnin A Bundle of Hides##6361 |goto The Barrens 51.5,30.34
+step
+  talk Devrak##3615
+  turnin Meats to Orgrimmar##6365 |goto The Barrens 51.5,30.34
+step
+  talk Sergra Darkthorn##3338
+  accept The Zhevra##845 |goto The Barrens 52.23,31.01
+step
+  talk Regthar Deathgate##3389
+  accept Verog the Dervish##851 |goto The Barrens 45.34,28.41
+step
+  talk Apothecary Helbrim##3390
+  accept Apothecary Zamah##853 |goto The Barrens 51.44,30.15
+step
+  talk Thork##3429
+  accept The Disruption Ends##872 |goto The Barrens 51.5,30.87
+step
+  talk Darsok Swiftdagger##3449
+  accept Harpy Lieutenants##875 |goto The Barrens 51.62,30.9
+step
+  talk Tonga Runetotem##3448
+  accept The Stagnant Oasis##877 |goto The Barrens 52.26,31.93
+step
+  talk Gazrog##3464
+  accept Stolen Silver##3281 |goto The Barrens 51.93,30.32
+step
+  talk Thork##3429
+  accept Supplies for the Crossroads##5041 |goto The Barrens 51.5,30.87
+step
+  only Tauren
+  talk Devrak##3615
+  accept Ride to Thunder Bluff##6362 |goto The Barrens 51.5,30.34
+step
+  talk Devrak##3615
+  accept Ride to Orgrimmar##6384 |goto The Barrens 51.5,30.34
+step
+  only Warrior
+  talk Uzzek##5810
+  turnin Path of Defense##1498 |goto The Barrens 61.38,21.12
+step
+  only Warrior
+  talk Uzzek##5810
+  accept Thun'grim Firegaze##1502 |goto The Barrens 61.38,21.12
+step
+  note Kill 8 Razormane Geomancers, 8 Razormane Defenders, and Kreenig Snarlsnout.
+  kill Razormane Geomancer##3269 |q 872 |goto The Barrens 57.47,24.6
+step
+  talk Wizzlecrank's Shredder##3439
+  turnin Ignition##858 |goto The Barrens 56.52,7.45
+step
+  talk Wenikee Boltbucket##9316
+  turnin Nugget Slugs##3922 |goto The Barrens 49.05,11.17
+step
+  talk Kadrak##8582
+  turnin The Warsong Reports##6543 |goto The Barrens 48.12,5.42
+step
+  talk Kadrak##8582
+  turnin Horde Presence##3514 |goto The Barrens 48.12,5.42
+step
+  talk Kelm Hargunth##14754
+  turnin Outrider Basic Care Package##7866 |goto The Barrens 46.65,8.38
+step
+  talk Kelm Hargunth##14754
+  turnin Outrider Standard Care Package##7867 |goto The Barrens 46.65,8.38
+step
+  talk Kelm Hargunth##14754
+  turnin Outrider Advanced Care Package##7868 |goto The Barrens 46.65,8.38
+step
+  talk Wenikee Boltbucket##9316
+  accept Rilli Greasygob##3923 |goto The Barrens 49.05,11.17
+step
+  talk Seereth Stonebreak##4049
+  turnin Goblin Invaders##1062 |goto The Barrens 35.26,27.88
+step
+  talk Apothecary Zamah##3419
+  turnin Apothecary Zamah##853 |goto Thunder Bluff 22.81,20.89 |tip {turninat}Thunder Bluff
+step
+  talk Makaba Flathoof##11857
+  turnin Avenge My Village##6548 |goto The Barrens 35.19,27.76
+step
+  talk Seereth Stonebreak##4049
+  accept The Elder Crone##1063 |goto The Barrens 35.26,27.88
+step
+  talk Seereth Stonebreak##4049
+  accept Shredding Machines##1068 |goto The Barrens 35.26,27.88
+step
+  talk Makaba Flathoof##11857
+  accept Kill Grundig Darkcloud##6629 |goto The Barrens 35.19,27.76
+step
+  only Warrior
+  talk Ruga Ragetotem##6394
+  turnin Trial at the Field of Giants##1824 |goto The Barrens 44.67,59.42
+step
+  talk Mangletooth##3430
+  turnin Tribes at War##878 |goto The Barrens 44.55,59.26
+step
+  talk Tatternack Steelforge##3433
+  turnin Weapons of Choice##893 |goto The Barrens 45.1,57.68
+step
+  only Druid
+  talk Doan Karhan##6247
+  turnin The Orb of Soran'ruk##1740 |goto The Barrens 49.31,57.21
+step
+  only Tauren
+  talk Ahanu##8359
+  turnin Ride to Thunder Bluff##6362 |goto Thunder Bluff 45.77,55.84 |tip {turninat}Thunder Bluff
+step
+  talk Elder High Mountain##15588
+  turnin High Mountain the Elder##8686 |goto The Barrens 45.09,57.92
+step
+  talk Tatternack Steelforge##3433
+  accept A New Ore Sample##1153 |goto The Barrens 45.1,57.68
+step
+  only Warrior
+  talk Ruga Ragetotem##6394
+  accept Speak with Thun'grim##1825 |goto The Barrens 44.67,59.42
+step
+  talk Mangletooth##3430
+  accept Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
+step
+  talk Gann Stonespire##3341
+  turnin Gann's Reclamation##843 |goto The Barrens 45.89,77.0
+step
+  only Druid
+  talk Xizk Goodstitch##2670
+  turnin Components for the Enchanted Gold Bloodrobe##4781 |goto Stranglethorn Vale 28.71,76.89 |tip {turninat}Stranglethorn Vale
+step
+  talk Innkeeper Gryshka##6929
+  turnin Ride to Orgrimmar##6384 |goto Orgrimmar 54.1,68.41 |tip {turninat}Orgrimmar
+step
+  talk Gann Stonespire##3341
+  accept Revenge of Gann##846 |goto The Barrens 45.89,77.0
+step
+  talk Feegly the Exiled##3421
+  turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
+step
+  note Kill 8 Razorfen Battleguard, 8 Razorfen Thornweavers, and 8 Death's Head Cultists and return to Myriam Moonsinger near the entrance to Razorfen Downs.
+  kill Razorfen Battleguard##7873 |q 6626 |goto The Barrens 47.48,90.1
+step
+  note Kill Grundig Darkcloud and 6 Grimtotem Brutes, and return to Makaba Flathoof near the southeastern edge of Stonetalon.
+  kill Grundig Darkcloud##11858 |q 6629 |goto Stonetalon Mountains 73.65,86.12
+step
+  talk Myriam Moonsinger##12866
+  turnin A Host of Evil##6626 |goto The Barrens 49.01,94.94
+step
+  talk Magatha Grimtotem##4046
+  turnin The Elder Crone##1063 |goto Thunder Bluff 69.85,30.91 |tip {turninat}Thunder Bluff
+step
+  talk Wharfmaster Dizzywig##3453
+  turnin The Missing Shipment##890 |goto The Barrens 63.35,38.45
+step
+  only Druid
+  talk Menara Voidrender##6266
+  turnin Components for the Enchanted Gold Bloodrobe##4784 |goto The Barrens 62.51,35.45
+step
+  talk Mebok Mizzyrix##3446
+  turnin Smart Drinks##1491 |goto The Barrens 62.37,37.62
+step
+  only Warrior
+  talk Bath'rah the Windwatcher##6176
+  turnin The Windwatcher##1791 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
+step
+  talk Wharfmaster Dizzywig##3453
+  accept The Missing Shipment##892 |goto The Barrens 63.35,38.45
+step
+  only Druid
+  talk Menara Voidrender##6266
+  accept The Completed Robe##4786 |goto The Barrens 62.51,35.45
+step
+  note Kill the shredders XT:4 and XT:9, then return to Seereth Stonebreak at the border of the Stonetalon Mountains and the Barrens.
+  kill XT:4##4073 |q 1068 |goto Stonetalon Mountains 64.14,46.38
+step
+  note Return to Tonga at The Crossroads, after investigating the Stagnant Oasis.
+  collect Bubbling Fissure##3737 |q 877 |goto The Barrens 55.61,42.75
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  turnin Speak with Thun'grim##1825 |goto The Barrens 57.23,30.34
+step
+  talk Sergra Darkthorn##3338
+  turnin The Zhevra##845 |goto The Barrens 52.23,31.01
+step
+  talk Regthar Deathgate##3389
+  turnin Verog the Dervish##851 |goto The Barrens 45.34,28.41
+step
+  talk Thork##3429
+  turnin The Disruption Ends##872 |goto The Barrens 51.5,30.87
+step
+  talk Darsok Swiftdagger##3449
+  turnin Harpy Lieutenants##875 |goto The Barrens 51.62,30.9
+step
+  talk Tonga Runetotem##3448
+  turnin The Stagnant Oasis##877 |goto The Barrens 52.26,31.93
+step
+  talk Thork##3429
+  turnin Supplies for the Crossroads##5041 |goto The Barrens 51.5,30.87
+step
+  talk Gazrog##3464
+  turnin Stolen Silver##3281 |goto The Barrens 51.93,30.32
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  turnin Thun'grim Firegaze##1502 |goto The Barrens 57.23,30.34
+step
+  talk Regthar Deathgate##3389
+  accept Hezrul Bloodmark##852 |goto The Barrens 45.34,28.41
+step
+  talk Darsok Swiftdagger##3449
+  accept Serena Bloodfeather##876 |goto The Barrens 51.62,30.9
+step
+  talk Tonga Runetotem##3448
+  accept Altered Beings##880 |goto The Barrens 52.26,31.93
+step
+  talk Sergra Darkthorn##3338
+  accept Prowlers of the Barrens##903 |goto The Barrens 52.23,31.01
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  accept Forged Steel##1503 |goto The Barrens 57.23,30.34
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  accept Brutal Armor##1838 |goto The Barrens 57.23,30.34
+step
+  talk Rilli Greasygob##9317
+  turnin Rilli Greasygob##3923 |goto Orgrimmar 76.52,24.41 |tip {turninat}Orgrimmar
+step
+  talk Seereth Stonebreak##4049
+  turnin Shredding Machines##1068 |goto The Barrens 35.26,27.88
+step
+  talk Makaba Flathoof##11857
+  turnin Kill Grundig Darkcloud##6629 |goto The Barrens 35.19,27.76
+step
+  talk Tatternack Steelforge##3433
+  turnin A New Ore Sample##1153 |goto The Barrens 45.1,57.68
+step
+  talk Mangletooth##3430
+  turnin Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
+step
+  talk Mangletooth##3430
+  accept Betrayal from Within##879 |goto The Barrens 44.55,59.26
+step
+  talk Gann Stonespire##3341
+  turnin Revenge of Gann##846 |goto The Barrens 45.89,77.0
+step
+  talk Gann Stonespire##3341
+  accept Revenge of Gann##849 |goto The Barrens 45.89,77.0
+step
+  note Destroy the flying machine at Bael Modan and return to Gann Stonespire.
+  collect Bael Modan Flying Machine##3644 |q 849 |goto The Barrens 46.97,85.63
+step
+  talk Gazlowe##3391
+  turnin The Missing Shipment##892 |goto The Barrens 62.68,36.23
+step
+  only Druid
+  talk Menara Voidrender##6266
+  turnin The Completed Robe##4786 |goto The Barrens 62.51,35.45
+step
+  talk Gazlowe##3391
+  accept Stolen Booty##888 |goto The Barrens 62.68,36.23
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  turnin Brutal Armor##1838 |goto The Barrens 57.23,30.34
+step
+  talk Regthar Deathgate##3389
+  turnin Hezrul Bloodmark##852 |goto The Barrens 45.34,28.41
+step
+  talk Darsok Swiftdagger##3449
+  turnin Serena Bloodfeather##876 |goto The Barrens 51.62,30.9
+step
+  talk Tonga Runetotem##3448
+  turnin Altered Beings##880 |goto The Barrens 52.26,31.93
+step
+  talk Sergra Darkthorn##3338
+  turnin Prowlers of the Barrens##903 |goto The Barrens 52.23,31.01
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  turnin Forged Steel##1503 |goto The Barrens 57.23,30.34
+step
+  talk Sergra Darkthorn##3338
+  accept Echeyakee##881 |goto The Barrens 52.23,31.01
+step
+  talk Darsok Swiftdagger##3449
+  accept Letter to Jin'Zil##1060 |goto The Barrens 51.62,30.9
+step
+  talk Tonga Runetotem##3448
+  accept Hamuul Runetotem##1489 |goto The Barrens 52.26,31.93
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  accept Ula'elek and the Brutal Gauntlets##1839 |goto The Barrens 57.23,30.34
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  accept Orm Stonehoof and the Brutal Helm##1840 |goto The Barrens 57.23,30.34
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  accept Velora Nitely and the Brutal Legguards##1841 |goto The Barrens 57.23,30.34
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  accept Brutal Hauberk##1848 |goto The Barrens 57.23,30.34
+step
+  talk Tonga Runetotem##3448
+  accept Mura Runetotem##3301 |goto The Barrens 52.26,31.93
+step
+  talk Regthar Deathgate##3389
+  accept Counterattack!##4021 |goto The Barrens 45.34,28.41
+step
+  only Warrior
+  talk Orm Stonehoof##6410
+  turnin Orm Stonehoof and the Brutal Helm##1840 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
+step
+  talk Mangletooth##3430
+  turnin Betrayal from Within##879 |goto The Barrens 44.55,59.26
+step
+  talk Mangletooth##3430
+  accept Betrayal from Within##906 |goto The Barrens 44.55,59.26
+step
+  only Warrior
+  talk Ula'elek##6408
+  turnin Ula'elek and the Brutal Gauntlets##1839 |goto Durotar 56.31,74.33 |tip {turninat}Durotar
+step
+  talk Gann Stonespire##3341
+  turnin Revenge of Gann##849 |goto The Barrens 45.89,77.0
+step
+  talk Witch Doctor Jin'Zil##3995
+  turnin Letter to Jin'Zil##1060 |goto Stonetalon Mountains 74.54,97.94 |tip {turninat}Stonetalon Mountains
+step
+  only Warrior
+  talk Velora Nitely##6411
+  turnin Velora Nitely and the Brutal Legguards##1841 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
+step
+  talk Gazlowe##3391
+  turnin Stolen Booty##888 |goto The Barrens 62.68,36.23
+step
+  talk Arch Druid Hamuul Runetotem##5769
+  turnin Hamuul Runetotem##1489 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
+step
+  only Warrior
+  talk Thun'grim Firegaze##5878
+  turnin Brutal Hauberk##1848 |goto The Barrens 57.23,30.34
+step
+  talk Sergra Darkthorn##3338
+  turnin Echeyakee##881 |goto The Barrens 52.23,31.01
+step
+  talk Thork##3429
+  turnin Betrayal from Within##906 |goto The Barrens 51.5,30.87
+step
+  talk Regthar Deathgate##3389
+  turnin Counterattack!##4021 |goto The Barrens 45.34,28.41
+step
+  talk Mura Runetotem##8385
+  turnin Mura Runetotem##3301 |goto Silverpine Forest 42.91,41.99 |tip {turninat}Silverpine Forest
+step
+  talk Sergra Darkthorn##3338
+  accept The Angry Scytheclaws##905 |goto The Barrens 52.23,31.01
+step
+  note Kill Sunscale raptors and collect their feathers. Use the feathers on the 3 Scytheclaw nests. Return to Sergra Darkthorn in the Crossroads.
+  collect Blue Raptor Nest##6907 |q 905 |goto The Barrens 52.6,46.11
+step
+  talk Sergra Darkthorn##3338
+  turnin The Angry Scytheclaws##905 |goto The Barrens 52.23,31.01
+step
+  talk Sergra Darkthorn##3338
+  accept Jorn Skyseer##3261 |goto The Barrens 52.23,31.01
+step
+  talk Jorn Skyseer##3387
+  turnin Jorn Skyseer##3261 |goto The Barrens 44.86,59.14
+step
+  talk Jorn Skyseer##3387
+  accept Ishamuhale##882 |goto The Barrens 44.86,59.14
+step
+  talk Jorn Skyseer##3387
+  turnin Ishamuhale##882 |goto The Barrens 44.86,59.14
+step
+  talk Jorn Skyseer##3387
+  accept Enraged Thunder Lizards##907 |goto The Barrens 44.86,59.14
+step
+  talk Jorn Skyseer##3387
+  turnin Enraged Thunder Lizards##907 |goto The Barrens 44.86,59.14
+step
+  talk Jorn Skyseer##3387
+  accept Cry of the Thunderhawk##913 |goto The Barrens 44.86,59.14
+step
+  talk Jorn Skyseer##3387
+  turnin Cry of the Thunderhawk##913 |goto The Barrens 44.86,59.14
+step
+  talk Jorn Skyseer##3387
+  accept Mahren Skyseer##874 |goto The Barrens 44.86,59.14
+step
+  talk Mahren Skyseer##3388
+  turnin Mahren Skyseer##874 |goto The Barrens 65.84,43.86
+step
+  talk Mahren Skyseer##3388
+  accept Isha Awak##873 |goto The Barrens 65.84,43.86
+step
+  talk Mahren Skyseer##3388
+  turnin Isha Awak##873 |goto The Barrens 65.84,43.86
+step
+  note {travel}Stonetalon Mountains
+  goto Stonetalon Mountains 71.25,95.02
+]])

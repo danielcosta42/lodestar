@@ -1,0 +1,6 @@
+# Normalize text to LF (the CI/packager runs on Linux); mark binaries.
+* text=auto eol=lf
+*.tga binary
+*.png binary
+*.zip binary
+*.blp binary

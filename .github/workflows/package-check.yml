@@ -1,0 +1,22 @@
+name: Package check
+
+# Builds the addon package WITHOUT uploading — catches .toc/.pkgmeta packaging
+# errors on every push to main and on pull requests. No secrets required.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history for the changelog)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build package (dry run, no upload)
+        uses: BigWigsMods/packager@v2
+        with:
+          args: -d

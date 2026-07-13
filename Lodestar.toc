@@ -1,0 +1,69 @@
+## Interface: 20505
+## Title: |cff66ccffLodestar|r
+## Notes: Free 1-70 leveling guide — waypoints, quest automation, shareable report.
+## Notes-ptBR: Guia de leveling 1-70 livre — setas, automação de quest e boletim compartilhável.
+## Author: Lodestar
+## Version: 1.0.0
+## IconTexture: Interface\AddOns\Lodestar\lodestar-icones\logo-estrela-64
+## SavedVariables: LodestarDB
+## SavedVariablesPerCharacter: LodestarCharDB
+## OptionalDeps: TomTom
+## X-Curse-Project-ID: 1608165
+## X-Wago-ID:
+## X-License: MIT
+
+Core.lua
+UI.lua
+
+Locale.lua
+Locales\enUS.lua
+Locales\ptBR.lua
+Locales\deDE.lua
+Locales\esES.lua
+Locales\esMX.lua
+Locales\frFR.lua
+Locales\itIT.lua
+Locales\ruRU.lua
+Locales\koKR.lua
+Locales\zhCN.lua
+Locales\zhTW.lua
+
+ZoneData.lua
+Trainers.lua
+Parser.lua
+Guide.lua
+SubZones.lua
+TransitData.lua
+TravelPlanner.lua
+StepTracker.lua
+DungeonRuns.lua
+Waypoint.lua
+Viewer.lua
+QuestItem.lua
+Toast.lua
+WorldMapPin.lua
+GuideMap.lua
+FlightMap.lua
+Trail.lua
+Minimap.lua
+TargetMarker.lua
+Milestones.lua
+Vendor.lua
+GearAdvisor.lua
+RunTracker.lua
+ReportCard.lua
+XPHud.lua
+TalentBuilds.lua
+Talents.lua
+Coords.lua
+MobWarn.lua
+Deaths.lua
+Library.lua
+Settings.lua
+Share.lua
+Intro.lua
+Recorder.lua
+
+Guides\Sample.lua
+Guides\Leveling\Leveling.xml
+Guides\Special.xml

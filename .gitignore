@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Lodestar — only ship what the addon (and CurseForge) actually needs.
+# Dev tooling, build data, internal docs and art sources stay LOCAL.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Guide generator + validator + the large Questie data dumps (dev only)
+tools/
+
+# Internal documentation (not shipped)
+DSL.md
+PACKAGING.md
+
+# Art sources / previews — the shipped textures are the .tga files
+*.zip
+HUD-preview.html
+lodestar-glyphs/*.png
+lodestar-icones/*.png
+Media/*.zip
+Media/*.html
+
+# Packager output
+.release/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.bak
+*.tmp
+*.swp
+*~
