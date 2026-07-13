@@ -29,3 +29,6 @@ desktop.ini
 *.tmp
 *.swp
 *~
+
+# relatório de auditoria (local)
+AUDIT_REPORT.html
