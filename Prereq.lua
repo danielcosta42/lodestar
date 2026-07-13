@@ -19,8 +19,10 @@ local function inLog(id)
 	return false
 end
 
--- índice: qual guia (da facção do player) ENSINA cada quest de accept. Lazy: só
--- monta na 1ª necessidade (evita hitch no login); os guias já estão registrados.
+-- índice: quais guias (da facção do player) ENSINAM cada quest de accept. Guardamos
+-- TODOS os guias por quest (não só o 1º) porque a ordem de pairs() é indefinida: se
+-- uma quest é ensinada tanto no guia atual quanto em outro, precisamos saber que o
+-- atual a ensina p/ NÃO sugerir um detour indevido. Lazy: monta na 1ª necessidade.
 local questToGuide
 local function buildIndex()
 	questToGuide = {}
@@ -30,10 +32,29 @@ local function buildIndex()
 		if not f or f == pf then
 			for id in (g.body or ""):gmatch("accept%s+[^\r\n]-##(%d+)") do
 				id = tonumber(id)
-				if id and not questToGuide[id] then questToGuide[id] = key end
+				if id then
+					local lst = questToGuide[id]
+					if not lst then lst = {}; questToGuide[id] = lst end
+					local seenKey = false
+					for _, k in ipairs(lst) do if k == key then seenKey = true; break end end
+					if not seenKey then lst[#lst + 1] = key end
+				end
 			end
 		end
 	end
+end
+
+-- Guia que ensina `p` e é DIFERENTE do atual; nil se o atual já ensina `p`
+-- (nesse caso é prereq do próprio guia, sem detour) ou se ninguém ensina.
+local function otherGuideFor(p, curKey)
+	local lst = questToGuide[p]
+	if not lst then return nil end
+	local other
+	for _, k in ipairs(lst) do
+		if k == curKey then return nil end
+		if not other then other = k end
+	end
+	return other
 end
 -- Reindexa só quando um guia é IMPORTADO (novo conteúdo); troca de aba não mexe.
 function ns:PrereqReindex() questToGuide = nil end
@@ -49,8 +70,8 @@ local function deepestBlocking(qid, curKey, seen)
 			if not (isDone(p) or inLog(p)) then
 				local dq, dk = deepestBlocking(p, curKey, seen)   -- prereq do prereq primeiro
 				if dk then return dq, dk end
-				local gk = questToGuide[p]
-				if gk and gk ~= curKey then return p, gk end
+				local gk = otherGuideFor(p, curKey)
+				if gk then return p, gk end
 			end
 		end
 	end
