@@ -13,8 +13,14 @@ step
   talk Gaxim Rustfizzle##4077
   accept Covert Ops - Alpha##1079 |goto Stonetalon Mountains 59.52,67.15
 step
+  note Retrieve the Venture Co.'s Engineering Plans from the lumber mill in Windshear Crag.
+  get Covert Ops - Alpha |q 1079 |goto Stonetalon Mountains 59.52,67.15
+step
   talk Gaxim Rustfizzle##4077
   accept Covert Ops - Beta##1080 |goto Stonetalon Mountains 59.52,67.15
+step
+  note Retrieve the Venture Co. Letters from Windshear Mine at the east end of Windshear Crag.
+  get Covert Ops - Beta |q 1080 |goto Stonetalon Mountains 59.52,67.15
 step
   talk Kaela Shadowspear##4080
   accept On Guard in Stonetalon##1085 |goto Stonetalon Mountains 59.9,66.85
@@ -73,8 +79,14 @@ step
   talk Kaela Shadowspear##4080
   accept Enraged Spirits##1083 |goto Stonetalon Mountains 59.9,66.85
 step
+  note Bring 8 Smoldering Embers from any of the fire elementals in the Charred Vale to Kaela Shadowspear in Stonetalon.
+  get Enraged Spirits |q 1083 |goto Stonetalon Mountains 59.9,66.85
+step
   talk Kaela Shadowspear##4080
   accept Wounded Ancients##1084 |goto Stonetalon Mountains 59.9,66.85
+step
+  note Bring a piece of Corroded Shrapnel to Kaela Shadowspear in Stonetalon.
+  get Wounded Ancients |q 1084 |goto Stonetalon Mountains 59.9,66.85
 step
   talk Lomac Gearstrip##4081
   turnin An Old Colleague##1072 |goto Ironforge 72.08,51.88 |tip {turninat}Ironforge

@@ -13,8 +13,14 @@ step
   talk Elementalist Lo'ap##18073
   accept A Rare Bean##9800 |goto Nagrand 60.8,22.38
 step
+  note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to bring him 15 Digested Caracoli.
+  get A Rare Bean |q 9800 |goto Nagrand 60.8,22.38
+step
   talk Elementalist Lo'ap##18073
   accept Muck Diving##9815 |goto Nagrand 60.8,22.38
+step
+  note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to retrieve 5 Muck-ridden Cores.
+  get Muck Diving |q 9815 |goto Nagrand 60.8,22.38
 step
   talk Elementalist Untrag##18071
   accept The Underneath##9818 |goto Nagrand 60.66,22.65
@@ -25,17 +31,26 @@ step
   talk Gurgthock##18471
   accept The Ring of Blood: Brokentoe##9962 |goto Nagrand 42.78,20.73
 step
+  note Defeat Brokentoe. Should you win, speak with Wodin the Troll-Servant to collect your reward.
+  kill Brokentoe##18398 |q 9962
+step
   talk Altruis the Sufferer##18417
   accept Forge Camp: Annihilated##10011 |goto Nagrand 27.34,43.09
 step
   talk Altruis the Sufferer##18417
   accept Against the Legion##10641 |goto Nagrand 27.34,43.09
 step
+  note Altruis the sufferer wants you to obtain Freshly Drawn Blood from a Wrath Priestess at Forge Base: Gehenna in Netherstorm. Spill it on the ground and slay the Avatar of Sathal. Return to Altruis when you've completed this task.
+  kill Avatar of Sathal##21925 |q 10641
+step
   talk Altruis the Sufferer##18417
   accept Against the Illidari##10668 |goto Nagrand 27.34,43.09
 step
   talk Altruis the Sufferer##18417
   accept Against All Odds##10669 |goto Nagrand 27.34,43.09
+step
+  note Altruis the Sufferer wants you to take the Imbued Silver Spear and use it at Portal Clearing near Marshlight Lake in Zangarmarsh to awake Xeleth. Return to Altruis after you've slain the demon.
+  kill Xeleth##21894 |q 10669
 step
   note Elementalist Morgh at the Throne of the Elements in Nagrand wants you to slay 8 Murkblood Putrifiers.
   kill Murkblood Putrifier##18202 |q 9862 |goto Nagrand 32.22,44.97
@@ -49,14 +64,23 @@ step
   talk Gezhe##18265
   accept Stealing from Thieves##9882 |goto Nagrand 31.36,57.79
 step
+  note Obtain 10 Oshu'gun Crystal Fragments and bring them to Gezhe at Aeris Landing in Nagrand.
+  get Stealing from Thieves |q 9882 |goto Nagrand 31.36,57.79
+step
   talk Gezhe##18265
   accept Obsidian Warbeads##9893 |goto Nagrand 31.36,57.79
+step
+  note Bring 10 Obsidian Warbeads to Gezhe at Aeris Landing in Nagrand.
+  get Obsidian Warbeads |q 9893 |goto Nagrand 31.36,57.79
 step
   talk Zerid##18276
   accept Gava'xi##9900 |goto Nagrand 30.78,58.13
 step
   talk Shadrek##18333
   accept A Head Full of Ivory##9914 |goto Nagrand 31.77,56.78
+step
+  note Collect 3 Pair of Ivory Tusks and return them to Shadrek at Aeris Landing in Nagrand.
+  get A Head Full of Ivory |q 9914 |goto Nagrand 31.77,56.78
 step
   talk Zerid##18276
   accept Matters of Security##9925 |goto Nagrand 30.78,58.13
@@ -66,6 +90,9 @@ step
 step
   talk Nitrin the Learned##19844
   accept Vision of the Dead##10252 |goto Nagrand 51.82,56.84
+step
+  note Nitrin at the Abandoned Armory in Nagrand wants you to bring him 1 Mountain Gronn Eyeball, 1 Flawless Greater Windroc Beak, and 1 Aged Clefthoof Blubber.
+  get Vision of the Dead |q 10252 |goto Nagrand 51.82,56.84
 step
   talk Elementalist Ioki##18233
   accept The Throne of the Elements##9869 |goto Nagrand 55.52,68.78
@@ -85,8 +112,14 @@ step
   talk Huntress Bintook##18353
   accept Do My Eyes Deceive Me##9917 |goto Nagrand 55.05,70.53
 step
+  note Huntress Bintook at Telaar in Nagrand wants you to recover Boulderfist Plans.
+  get Do My Eyes Deceive Me |q 9917 |goto Nagrand 55.05,70.53
+step
   talk Huntress Kima##18416
   accept The Ravaged Caravan##9956 |goto Nagrand 54.24,72.27
+step
+  note Huntress Kima at Telaar in Nagrand wants you to recover 20 Telaar Supply Crates.
+  get The Ravaged Caravan |q 9956 |goto Nagrand 54.24,72.27
 step
   talk Huntress Kima##18416
   accept He Called Himself Altruis...##9982 |goto Nagrand 54.24,72.27
@@ -96,6 +129,9 @@ step
 step
   talk Warden Moi'bff Jill##18408
   accept Fierce Enemies##10476 |goto Nagrand 54.74,70.88
+step
+  note Warden Moi'bff Jill at Telaar wants you to obtain 10 Obsidian Warbeads from the various ogres that inhabit Nagrand.
+  get Fierce Enemies |q 10476 |goto Nagrand 54.74,70.88
 step
   talk Seer Jovar##23268
   accept A Mystifying Vision##11042 |goto Nagrand 55.4,68.69
@@ -109,6 +145,9 @@ step
   talk Wazat##19035
   accept I Must Have Them!##10109 |goto Nagrand 61.72,67.05
 step
+  note Wazat across from Clan Watch in southern Nagrand wants you to bring him 3 Air Elemental Gases.
+  get I Must Have Them! |q 10109 |goto Nagrand 61.72,67.05
+step
   talk Corki##18369
   accept HELP!##9923 |goto Nagrand 72.53,70.74
 step
@@ -120,6 +159,9 @@ step
 step
   talk Lantresor of the Blade##18261
   accept Armaments for Deception##9928 |goto Nagrand 73.81,62.6
+step
+  note Lantresor of the Blade at the Burning Blade Ruins in Nagrand wants you to collect 20 Kil'sorrow Armaments.
+  get Armaments for Deception |q 9928 |goto Nagrand 73.81,62.6
 step
   talk Lantresor of the Blade##18261
   accept Returning the Favor##9931 |goto Nagrand 73.81,62.6
@@ -171,6 +213,9 @@ step
 step
   talk Gurgthock##18471
   accept The Ring of Blood: The Blue Brothers##9967 |goto Nagrand 42.78,20.73
+step
+  note Defeat the Murkblood Twins that call themselves the Blue Brothers. Should you win, speak with Wodin the Troll-Servant to collect your reward.
+  kill Murkblood Twin##18399 |q 9967
 step
   note Lantresor of the Blade at the Burning Blade Ruins in Nagrand wants you to drive 20 Kil'sorrow Banners through the bodies of Warmaul ogres at the Laughing Skull Ruins.
   kill Warmaul Ogre Credit Marker##18393 |q 9931 |goto Nagrand 45.79,22.42
@@ -237,6 +282,9 @@ step
 step
   talk Nitrin the Learned##19844
   accept Levixus the Soul Caller##10253 |goto Nagrand 51.82,56.84
+step
+  note Destroy Levixus and take the Book of the Dead from his possession.
+  get Levixus the Soul Caller |q 10253 |goto Nagrand 51.82,56.84
 step
   talk Arechron##18183
   turnin Ortor My Old Friend...##9873 |goto Nagrand 55.48,68.7
@@ -334,11 +382,17 @@ step
   talk Gordawg##18099
   accept Eating Damnation##9821 |goto Nagrand 61.33,24.82
 step
+  note Gordawg at the Throne of the Elements in Nagrand has asked that you bring him 15 Enraged Crusher Cores.
+  get Eating Damnation |q 9821 |goto Nagrand 61.33,24.82
+step
   talk Wodin the Troll-Servant##22893
   turnin The Ring of Blood: The Blue Brothers##9967 |goto Nagrand 42.78,20.68
 step
   talk Gurgthock##18471
   accept The Ring of Blood: Rokdar the Sundered Lord##9970 |goto Nagrand 42.78,20.73
+step
+  note Defeat Rokdar the Sundered Lord. Should you win, speak with Wodin the Troll-Servant to collect your reward.
+  kill Rokdar the Sundered Lord##18400 |q 9970
 step
   note Arechron at Telaar has asked that you find and free Corki.
   kill Corki##20812 |q 9924 |goto Nagrand 39.25,27.42
@@ -354,6 +408,9 @@ step
 step
   talk Altruis the Sufferer##18417
   accept The Book of Fel Names##10649 |goto Nagrand 27.34,43.09
+step
+  note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
+  get The Book of Fel Names |q 10649 |goto Nagrand 27.34,43.09
 step
   note Altruis the Sufferer in western Nagrand has asked that you kill 2 Felguard Legionnaires, 3 Mo'arg Engineers and 8 Gan'arg Tinkerers.
   kill Felguard Legionnaire##17152 |q 9999 |goto Nagrand 21.39,42.9
@@ -400,11 +457,20 @@ step
   talk Hemet Nesingwary##18180
   accept Clefthoof Mastery##9851 |goto Nagrand 71.52,40.82
 step
+  note Acquire the Horn of Banthar and return it to Hemet Nesingwary at the Nesingwary Safari in Nagrand.
+  get Clefthoof Mastery |q 9851 |goto Nagrand 71.52,40.82
+step
   talk Shado 'Fitz' Farstrider##18200
   accept Windroc Mastery##9856 |goto Nagrand 71.57,40.52
 step
+  note Bring the Eye of Gutripper to Fitz at the Nesingwary Safari in Nagrand.
+  get Windroc Mastery |q 9856 |goto Nagrand 71.57,40.52
+step
   talk Harold Lane##18218
   accept Talbuk Mastery##9859 |goto Nagrand 71.38,40.62
+step
+  note Obtain the Hoof of Bach'lor and return it to Harold Lane at the Nesingwary Safari in Nagrand.
+  get Talbuk Mastery |q 9859 |goto Nagrand 71.38,40.62
 step
   note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to destroy the Large Hut, the Western Hut, the Southern Hut and the Eastern Hut at Windyreed Village.
   kill Windyreed Quest Credit (Big Hut)##18110 |q 9805 |goto Nagrand 72.43,50.25
@@ -421,11 +487,17 @@ step
   talk Gordawg##18099
   accept Shattering the Veil##9849 |goto Nagrand 61.33,24.82
 step
+  note Gordawg at the Throne of the Elements in Nagrand has asked that you slay 30 Minions of Gurok.
+  kill Minion of Gurok##18181 |q 9849
+step
   talk Wodin the Troll-Servant##22893
   turnin The Ring of Blood: Rokdar the Sundered Lord##9970 |goto Nagrand 42.78,20.68
 step
   talk Gurgthock##18471
   accept The Ring of Blood: Skra'gath##9972 |goto Nagrand 42.78,20.73
+step
+  note Defeat Skra'gath. Should you win, speak with Wodin the Troll-Servant to collect your reward.
+  kill Skra'gath##18401 |q 9972
 step
   talk Corki##18445
   turnin Corki's Ransom##9954 |goto Nagrand 29.54,26.06
@@ -444,6 +516,9 @@ step
 step
   talk Altruis the Sufferer##18417
   accept The Master Planner##10001 |goto Nagrand 27.34,43.09
+step
+  note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
+  get The Master Planner |q 10001 |goto Nagrand 27.34,43.09
 step
   talk Altruis the Sufferer##18417
   accept Return to the Aldor##10650 |goto Nagrand 27.34,43.09
@@ -481,6 +556,9 @@ step
   talk Hemet Nesingwary##18180
   accept The Ultimate Bloodsport##9852 |goto Nagrand 71.52,40.82
 step
+  note Bring the Heart of Tusker to Hemet Nesingwary at Nesingwary's Safari in Nagrand.
+  get The Ultimate Bloodsport |q 9852 |goto Nagrand 71.52,40.82
+step
   talk Exarch Onaala##21860
   turnin Return to the Aldor##10650 |goto Shadowmoon Valley 61.2,29.23 |tip {turninat}Shadowmoon Valley
 step
@@ -493,11 +571,17 @@ step
   talk Gordawg##18099
   accept Gurok the Usurper##9853 |goto Nagrand 61.33,24.82
 step
+  note Gordawg at the Throne of the Elements in Nagrand has asked that you destroy Gurok the Usurper and bring back Gurok's Earthen Head.
+  get Gurok the Usurper |q 9853 |goto Nagrand 61.33,24.82
+step
   talk Wodin the Troll-Servant##22893
   turnin The Ring of Blood: Skra'gath##9972 |goto Nagrand 42.78,20.68
 step
   talk Gurgthock##18471
   accept The Ring of Blood: The Warmaul Champion##9973 |goto Nagrand 42.78,20.73
+step
+  note Defeat the Warmaul Champion. Should you win, speak with Wodin the Troll-Servant to collect your reward.
+  kill Warmaul Champion##18402 |q 9973
 step
   talk Altruis the Sufferer##18417
   turnin The Master Planner##10001 |goto Nagrand 27.34,43.09

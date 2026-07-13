@@ -10,11 +10,17 @@ step
   talk Warosh##10799
   accept Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
 step
+  note Read Warosh's Scroll. Bring Warosh's Mojo to Warosh.
+  get Urok Doomhowl |q 4867 |goto Blackrock Spire - Dungeon -1,-1
+step
   talk Bijou##10257
   accept Bijou's Reconnaissance Report##4983 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Bijou##10257
   accept Bijou's Belongings##5001 |goto Blackrock Spire - Dungeon -1,-1
+step
+  note Find Bijou's Belongings and return them to her. Good luck!
+  get Bijou's Belongings |q 5001 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Awbee##10740
   accept The Matron Protectorate##5160 |goto Blackrock Spire - Dungeon -1,-1

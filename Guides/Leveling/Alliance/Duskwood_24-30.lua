@@ -25,8 +25,14 @@ step
   talk Chef Grual##272
   accept Seasoned Wolf Kabobs##90 |goto Duskwood 73.75,43.48
 step
+  note Gather 10 Lean Wolf Flanks and Stormwind Seasoning Herbs and return to Chef Grual in Darkshire.
+  get Seasoned Wolf Kabobs |q 90 |goto Duskwood 73.75,43.48
+step
   talk Madame Eva##265
   accept The Totem of Infliction##101 |goto Duskwood 75.79,45.32
+step
+  note Bring 10 Ghoul Fangs, 10 Skeleton Fingers and 5 Vials of Spider Venom to Madame Eva in Darkshire.
+  get The Totem of Infliction |q 101 |goto Duskwood 75.79,45.32
 step
   talk Lord Ello Ebonlocke##263
   accept Messenger to Darkshire##146 |goto Duskwood 71.93,46.42
@@ -46,17 +52,26 @@ step
   talk Viktori Prism'Antras##276
   accept Look To The Stars##174 |goto Duskwood 79.8,48.02
 step
+  note Viktori Prism'Antras of Darkshire wants you to bring him a bronze tube.
+  get Look To The Stars |q 174 |goto Duskwood 79.8,48.02
+step
   talk Sirra Von'Indi##268
   accept Morgan Ladimore##227 |goto Duskwood 72.62,47.62
 step
   talk Councilman Millstipe##270
   accept Crime and Punishment##377 |goto Duskwood 71.92,47.79
 step
+  note Councilman Millstipe of Darkshire wants you to bring him the hand of Dextren Ward.
+  get Crime and Punishment |q 377 |goto Duskwood 71.92,47.79
+step
   talk Clerk Daltry##267
   accept The Carevin Family##1042 |goto Duskwood 72.54,46.87
 step
   talk Watcher Backus##840
   accept The Missing Diplomat##1244 |goto Duskwood 74.83,44.22
+step
+  note Find the Defias Docket and return it to Watcher Backus in Duskwood.
+  get The Missing Diplomat |q 1244 |goto Duskwood 74.83,44.22
 step
   note Kill 6 Nightbane Shadow Weaver worgen for Calor in Darkshire.
   kill Nightbane Shadow Weaver##533 |q 173 |goto Duskwood 63.39,52.8
@@ -81,6 +96,9 @@ step
 step
   talk Sven Yorgen##311
   accept Morbent Fel##55 |goto Duskwood 7.78,34.07
+step
+  note Use Morbent's Bane on Morbent Fel, kill Morbent Fel, then return Morbent's Bane to Sven at his camp.
+  kill Weakened Morbent Fel##24782 |q 55
 step
   talk Sven Yorgen##311
   accept Sven's Revenge##95 |goto Duskwood 7.78,34.07
@@ -160,6 +178,9 @@ step
   talk Chef Grual##272
   accept Dusky Crab Cakes##93 |goto Duskwood 73.75,43.48
 step
+  note Gather 6 Gooey Spider Legs and bring them to Chef Grual in Darkshire.
+  get Dusky Crab Cakes |q 93 |goto Duskwood 73.75,43.48
+step
   talk Madame Eva##265
   accept Ghost Hair Thread##149 |goto Duskwood 75.79,45.32
 step
@@ -171,6 +192,9 @@ step
 step
   talk Commander Althea Ebonlocke##264
   accept Mor'Ladim##228 |goto Duskwood 73.54,46.82
+step
+  note Kill Mor'Ladim, then return his skull to Commander Althea Ebonlocke in Darkshire.
+  get Mor'Ladim |q 228 |goto Duskwood 73.54,46.82
 step
   talk Madame Eva##265
   accept The Shadowy Search Continues##265 |goto Duskwood 75.79,45.32
@@ -192,6 +216,9 @@ step
 step
   talk Blind Mary##302
   accept Look To The Stars##177 |goto Duskwood 81.99,59.09
+step
+  note Retrieve Blind Mary's Looking Glass from the Insane Ghoul and give it to Viktori in Darkshire.
+  get Look To The Stars |q 177 |goto Duskwood 81.99,59.09
 step
   note Look for signs of the Scythe of Elune then return to Jonathan Carevin in Darkshire.
   collect Mound of Dirt##19030 |q 1043 |goto Duskwood 73.53,79.14
@@ -257,6 +284,9 @@ step
   talk Viktori Prism'Antras##276
   accept Look To The Stars##181 |goto Duskwood 79.8,48.02
 step
+  note Locate Zzarc'Vul in the southern ogre mound in Duskwood and return his monocle to Viktori in Darkshire.
+  get Look To The Stars |q 181 |goto Duskwood 79.8,48.02
+step
   talk Calor##663
   accept Worgen in the Woods##222 |goto Duskwood 75.75,47.57
 step
@@ -314,8 +344,14 @@ step
   talk Commander Althea Ebonlocke##264
   accept The Legend of Stalvan##98 |goto Duskwood 73.54,46.82
 step
+  note Kill Stalvan Mistmantle and show Madame Eva his family ring.
+  get The Legend of Stalvan |q 98 |goto Duskwood 73.54,46.82
+step
   talk Tavernkeep Smitts##273
   accept Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49
+step
+  note Gather 8 Rot Blossoms and bring them to Tavernkeep Smitts in Darkshire.
+  get Gather Rot Blossoms |q 156 |goto Duskwood 73.78,44.49
 step
   talk Calor##663
   accept Worgen in the Woods##223 |goto Duskwood 75.75,47.57
@@ -370,11 +406,17 @@ step
   talk Abercrombie##289
   accept Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
 step
+  note Gather 7 Ghoul Ribs and bring them to Abercrombie at his shack.
+  get Ghoulish Effigy |q 133 |goto Duskwood 28.11,31.46
+step
   talk Abercrombie##289
   turnin Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
 step
   talk Abercrombie##289
   accept Ogre Thieves##134 |goto Duskwood 28.11,31.46
+step
+  note Return Abercrombie's Crate to Abercrombie.
+  get Ogre Thieves |q 134 |goto Duskwood 28.11,31.46
 step
   talk Abercrombie##289
   turnin Ogre Thieves##134 |goto Duskwood 28.11,31.46

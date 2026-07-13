@@ -25,6 +25,9 @@ step
   talk Jediga##8587
   accept Stealing Knowledge##3517 |goto Azshara 22.56,51.42
 step
+  note Find the Tablet of Beth'Amara, the Tablet of Jin'yael, the Tablet of Markri, and the Tablet of Sael'hai before returning to Jediga in Azshara.
+  get Stealing Knowledge |q 3517 |goto Azshara 22.56,51.42
+step
   note Kill 6 Haldarr Satyr, 2 Haldarr Tricksters, 2 Haldarr Felsworn and then return to Loh'atu on the border of Ashenvale.
   kill Haldarr Satyr##6125 |q 5536 |goto Azshara 20.4,61.79
 step
@@ -32,24 +35,47 @@ step
   talk Archmage Xylem##8379
   accept Encoded Fragments##8235 |goto Azshara 29.25,40.21
 step
+  only Rogue
+  note Bring 10 Encoded Fragments to Archmage Xylem in Azshara.
+  get Encoded Fragments |q 8235 |goto Azshara 29.25,40.21
+step
   only Warlock
   talk Archmage Xylem##8379
   accept Magic Dust##8251 |goto Azshara 29.25,40.21
 step
   only Warlock
+  note Bring 10 Glittering Dust to Archmage Xylem.
+  get Magic Dust |q 8251 |goto Azshara 29.25,40.21
+step
+  only Warlock
   talk Archmage Xylem##8379
   accept Warlord Krellian##9362 |goto Azshara 29.25,40.21
+step
+  only Warlock
+  note Retrieve the Prismatic Shell for Archmage Xylem. The Archmage resides in a tower atop the cliffs of Azshara.
+  get Warlord Krellian |q 9362 |goto Azshara 29.25,40.21
 step
   only Hunter
   talk Ogtinc##8405
   accept Courser Antlers##8153 |goto Azshara 42.4,42.62
 step
+  only Hunter
+  note Bring a pair of Perfect Courser Antlers to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast of the Ruins of Eldarath.
+  get Courser Antlers |q 8153 |goto Azshara 42.4,42.62
+step
   only Priest
   talk Ogtinc##8405
   accept Of Coursers We Know##8255 |goto Azshara 42.4,42.62
 step
+  only Priest
+  note Acquire 4 Healthy Courser Glands and bring them to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
+  get Of Coursers We Know |q 8255 |goto Azshara 42.4,42.62
+step
   talk Kim'jael##8420
   accept Kim'jael Indeed!##3601 |goto Azshara 53.45,21.82
+step
+  note Search the Thalassian Base Camp for Kim'jael's Compass, Scope, Stuffed Chicken and Wizzlegoober, then return them to him in Azshara.
+  get Kim'jael Indeed! |q 3601 |goto Azshara 53.45,21.82
 step
   talk Belgrom Rockmaul##4485
   turnin Betrayed##3507 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
@@ -59,6 +85,9 @@ step
 step
   talk Duke Hydraxis##13278
   accept Poisoned Water##6804 |goto Azshara 79.28,73.7
+step
+  note Use the Aspect of Neptulon on poisoned elementals of Eastern Plaguelands. Bring 12 Discordant Bracers and the Aspect of Neptulon to Duke Hydraxis in Azshara.
+  get Poisoned Water |q 6804 |goto Azshara 79.28,73.7
 step
   talk Duke Hydraxis##13278
   accept Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
@@ -109,9 +138,17 @@ step
   talk Archmage Xylem##8379
   accept The Azure Key##8236 |goto Azshara 29.25,40.21
 step
+  only Rogue
+  note Return the Azure Key to Lord Jorach Ravenholdt.
+  get The Azure Key |q 8236 |goto Azshara 29.25,40.21
+step
   only Warlock
   talk Archmage Xylem##8379
   accept The Siren's Coral##8252 |goto Azshara 29.25,40.21
+step
+  only Warlock
+  note Collect 6 Enchanted Coral and return them to Archmage Xylem.
+  get The Siren's Coral |q 8252 |goto Azshara 29.25,40.21
 step
   note Kill 15 Dust Stormers and 15 Desert Rumblers and then return to Duke Hydraxis in Azshara.
   kill Dust Stormer##11744 |q 6805 |goto Silithus 23.65,23.06
@@ -128,9 +165,17 @@ step
   talk Ogtinc##8405
   accept Wavethrashing##8231 |goto Azshara 42.4,42.62
 step
+  only Hunter
+  note Bring 6 Wavethrasher Scales to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
+  get Wavethrashing |q 8231 |goto Azshara 42.4,42.62
+step
   only Priest
   talk Ogtinc##8405
   accept The Ichor of Undeath##8256 |goto Azshara 42.4,42.62
+step
+  only Priest
+  note Acquire an Ichor of Undeath for Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
+  get The Ichor of Undeath |q 8256 |goto Azshara 42.4,42.62
 step
   talk Kim'jael##8420
   turnin Kim'jael Indeed!##3601 |goto Azshara 53.45,21.82
@@ -140,6 +185,9 @@ step
 step
   talk Kim'jael##8420
   accept Kim'jael's "Missing" Equipment##5534 |goto Azshara 53.45,21.82
+step
+  note Find Some Rune that the naga have in their possession in the Ruins of Eldarath and return it to Kim'jael in Azshara.
+  get Kim'jael's "Missing" Equipment |q 5534 |goto Azshara 53.45,21.82
 step
   talk Magatha Grimtotem##4046
   turnin Delivery to Magatha##3518 |goto Thunder Bluff 69.85,30.91 |tip {turninat}Thunder Bluff
@@ -166,6 +214,9 @@ step
   talk Duke Hydraxis##13278
   accept Eye of the Emberseer##6821 |goto Azshara 79.28,73.7
 step
+  note Bring the Eye of the Emberseer to Duke Hydraxis in Azshara.
+  get Eye of the Emberseer |q 6821 |goto Azshara 79.28,73.7
+step
   talk Elder Skygleam##15600
   turnin Skygleam the Elder##8720 |goto Azshara 72.55,85.24
 step
@@ -180,6 +231,10 @@ step
   talk Archmage Xylem##8379
   accept Destroy Morphaz##8253 |goto Azshara 29.25,40.21
 step
+  only Warlock
+  note Retrieve the Arcane Shard from Morphaz and return to Archmage Xylem.
+  get Destroy Morphaz |q 8253 |goto Azshara 29.25,40.21
+step
   only Priest
   talk Ogtinc##8405
   turnin The Ichor of Undeath##8256 |goto Azshara 42.4,42.62
@@ -192,9 +247,17 @@ step
   talk Ogtinc##8405
   accept The Green Drake##8232 |goto Azshara 42.4,42.62
 step
+  only Hunter
+  note Bring the Tooth of Morphaz to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
+  get The Green Drake |q 8232 |goto Azshara 42.4,42.62
+step
   only Priest
   talk Ogtinc##8405
   accept Blood of Morphaz##8257 |goto Azshara 42.4,42.62
+step
+  only Priest
+  note Kill Morphaz in the sunken temple of Atal'Hakkar, and return his blood to Greta Mosshoof in Felwood. The entrance to the sunken temple can be found in the Swamp of Sorrows.
+  get Blood of Morphaz |q 8257 |goto Azshara 42.4,42.62
 step
   talk Kim'jael##8420
   turnin Kim'jael's "Missing" Equipment##5534 |goto Azshara 53.45,21.82
@@ -232,6 +295,9 @@ step
   talk Lord Arkkoroc##6134
   accept The Name of the Beast##3510 |goto Azshara 77.13,42.79
 step
+  note Slay Hetaera and bring back Hetaera's Bloodied Head, Hetaera's Beaten Head, and Hetaera's Bruised Head to Lord Arkkoroc.
+  get The Name of the Beast |q 3510 |goto Azshara 77.13,42.79
+step
   talk Duke Hydraxis##13278
   turnin The Molten Core##6822 |goto Azshara 79.28,73.7
 step
@@ -250,11 +316,17 @@ step
   talk Loramus Thalipedes##7783
   accept Azsharite##3602 |goto Azshara 60.82,66.35
 step
+  note Recover twenty Crystallized Azsharite from southern Azshara. You may use the Felhound to assist you in 'sniffing' out the location of cleverly hidden deposits.
+  get Azsharite |q 3602 |goto Azshara 60.82,66.35
+step
   talk Duke Hydraxis##13278
   turnin Agent of Hydraxis##6823 |goto Azshara 79.28,73.7
 step
   talk Duke Hydraxis##13278
   accept Hands of the Enemy##6824 |goto Azshara 79.28,73.7
+step
+  note Bring the Hands of Lucifron, Sulfuron, Gehennas and Shazzrah to Duke Hydraxis in Azshara.
+  get Hands of the Enemy |q 6824 |goto Azshara 79.28,73.7
 step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35

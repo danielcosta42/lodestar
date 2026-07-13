@@ -13,17 +13,26 @@ step
   talk Marshal Redpath##2263
   accept Crushridge Bounty##500 |goto Hillsbrad Foothills 49.47,58.73
 step
+  note Gather 9 Dirty Knucklebones from Crushridge ogres in the Alterac Mountains. Bring them to Marshal Redpath in Southshore.
+  get Crushridge Bounty |q 500 |goto Hillsbrad Foothills 49.47,58.73
+step
   talk Magistrate Henry Maleb##2276
   accept Syndicate Assassins##505 |goto Hillsbrad Foothills 48.14,59.11
 step
   talk Magistrate Henry Maleb##2276
   accept Noble Deaths##512 |goto Hillsbrad Foothills 48.14,59.11
 step
+  note Bring 7 Alterac Signet Rings to Magistrate Maleb in Southshore.
+  get Noble Deaths |q 512 |goto Hillsbrad Foothills 48.14,59.11
+step
   talk Loremaster Dibbs##2277
   accept Letter to Stormpike##514 |goto Hillsbrad Foothills 50.57,57.09
 step
   talk Magistrate Henry Maleb##2276
   accept Baron's Demise##523 |goto Hillsbrad Foothills 48.14,59.11
+step
+  note Bring the Head of Baron Vardus to Magistrate Maleb in Southshore.
+  get Baron's Demise |q 523 |goto Hillsbrad Foothills 48.14,59.11
 step
   talk Lieutenant Farren Orinelle##2228
   accept Down the Coast##536 |goto Hillsbrad Foothills 51.46,58.39
@@ -34,17 +43,26 @@ step
   talk Loremaster Dibbs##2277
   accept Preserving Knowledge##540 |goto Hillsbrad Foothills 50.57,57.09
 step
+  note Bring 5 Recovered Tomes and the Worn Leather Book containing The Arm of Gri'lek to Loremaster Dibbs in Southshore.
+  get Preserving Knowledge |q 540 |goto Hillsbrad Foothills 50.57,57.09
+step
   talk Loremaster Dibbs##2277
   accept Stormpike's Deciphering##554 |goto Hillsbrad Foothills 50.57,57.09
 step
   talk Chef Jessen##2430
   accept Soothing Turtle Bisque##555 |goto Hillsbrad Foothills 51.89,58.68
 step
+  note Bring 10 pieces of Turtle Meat and some Soothing Spices to Chef Jessen in Southshore.
+  get Soothing Turtle Bisque |q 555 |goto Hillsbrad Foothills 51.89,58.68
+step
   talk Darren Malvew##2382
   accept Costly Menace##564 |goto Hillsbrad Foothills 52.42,55.96
 step
   talk Bartolo Ginsetti##2438
   accept Bartolo's Yeti Fur Cloak##565 |goto Hillsbrad Foothills 49.43,55.53
+step
+  note Bring Bartolo Ginsetti of Southshore a Bolt of Wool, a Hillman's Cloak, Fine Thread and 10 clumps of Yeti Fur.
+  get Bartolo's Yeti Fur Cloak |q 565 |goto Hillsbrad Foothills 49.43,55.53
 step
   talk Phin Odelic##2711
   accept Hints of a New Plague?##659 |goto Hillsbrad Foothills 50.35,59.05
@@ -54,6 +72,9 @@ step
 step
   talk Huraan##17218
   accept Missing Crystals##9435 |goto Hillsbrad Foothills 50.99,58.69
+step
+  note Retrieve the Shipment of Rare Crystals from the Forsaken and return it to Huraan in Southshore.
+  get Missing Crystals |q 9435 |goto Hillsbrad Foothills 50.99,58.69
 step
   note Kill 4 Argus Shadow Mages.
   kill Argus Shadow Mage##2318 |q 537 |goto Alterac Mountains 58.7,40.58
@@ -123,6 +144,9 @@ step
 step
   talk Lieutenant Farren Orinelle##2228
   accept Farren's Proof##559 |goto Hillsbrad Foothills 51.46,58.39
+step
+  note Collect 10 Murloc Heads from the murlocs on the Western Strand for Lieutenant Farren Orinelle in Southshore.
+  get Farren's Proof |q 559 |goto Hillsbrad Foothills 51.46,58.39
 step
   note Slay 10 Crushridge Warmongers, then return to Marshal Redpath in Southshore.
   kill Crushridge Warmonger##2287 |q 504 |goto Alterac Mountains 36.3,53.86

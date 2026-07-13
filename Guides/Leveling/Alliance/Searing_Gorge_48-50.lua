@@ -13,8 +13,14 @@ step
   talk Dying Archaeologist##8417
   accept Release Them##3372 |goto Searing Gorge 41.14,25.56
 step
+  note Find the Mysterious Artifact being guarded by the Twilight's Hammer Idolaters in the northwest quadrant of the Searing Gorge and bring it to the Altar of Suntara in the Slag Pit.
+  get Release Them |q 3372 |goto Searing Gorge 41.14,25.56
+step
   talk Master Smith Burninate##14624
   accept What the Flux?##7722 |goto Searing Gorge 38.8,28.51
+step
+  note Somewhere in the Slag Pit of the Cauldron you will find the Secret Plans: Fiery Flux that Overseer Maltorius stole. Find those plans and return them to Master Smith Burninate in the Searing Gorge.
+  get What the Flux? |q 7722 |goto Searing Gorge 38.8,28.51
 step
   talk Hansel Heavyhands##14627
   accept Curse These Fat Fingers##7723 |goto Searing Gorge 38.58,27.81
@@ -49,6 +55,9 @@ step
   talk Sarah Tanner##7868
   accept Elemental Leatherworking##5144 |goto Searing Gorge 63.56,75.97
 step
+  note Bring 2 Heart of Fire, 2 Globe of Water, 2 Core of Earth, and 2 Breath of Wind to Sarah Tanner in Searing Gorge.
+  get Elemental Leatherworking |q 5144 |goto Searing Gorge 63.56,75.97
+step
   talk Master Smith Burninate##14624
   turnin What the Flux?##7722 |goto Searing Gorge 38.8,28.51
 step
@@ -66,6 +75,9 @@ step
   talk Dying Archaeologist##8417
   accept Rise, Obsidion!##3566 |goto Searing Gorge 41.14,25.56
 step
+  note Slay Lathoric the Black and Obsidion, and return to Thorius in Ironforge with the Head of Lathoric the Black and the Heart of Obsidion.
+  get Rise, Obsidion! |q 3566 |goto Searing Gorge 41.14,25.56
+step
   note Kill the group of Shadow Silk Poachers that wander the Searing Gorge. Nilith has reason to believe that there are five of them that need to be exterminated. Return to Nilith in the Searing Gorge when this task is complete.
   kill Shadowsilk Poacher##8442 |q 3379 |goto Searing Gorge 59.62,25.26
 step
@@ -75,11 +87,17 @@ step
   talk Zamael Lunthistle##8436
   accept Prayer to Elune##3378 |goto Searing Gorge 29.57,26.29
 step
+  note Find the Prayer to Elune and take it to Astarii Starseeker in Darnassus.
+  get Prayer to Elune |q 3378 |goto Searing Gorge 29.57,26.29
+step
   talk Kalaran Windblade##8479
   turnin Divine Retribution##3441 |goto Searing Gorge 39.06,38.99
 step
   talk Kalaran Windblade##8479
   accept The Flawless Flame##3442 |goto Searing Gorge 39.06,38.99
+step
+  note Collect 4 Hearts of Flame and 4 globes of Golem Oil and return the items to Kalaran Windblade.
+  get The Flawless Flame |q 3442 |goto Searing Gorge 39.06,38.99
 step
   talk Nilith Lokrav##8439
   turnin Shadoweaver##3379 |goto Searing Gorge 40.99,74.95
@@ -105,6 +123,9 @@ step
   talk Kalaran Windblade##8479
   accept Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
 step
+  note Bring 8 Thorium Plated Daggers to Kalaran Windblade.
+  get Forging the Shaft |q 3443 |goto Searing Gorge 39.06,38.99
+step
   note Slay Trade Master Kovic and his minion Clunk. Retrieve the Trader's Satchel from his corpse and return it to Nilith.
   kill Trade Master Kovic##8444 |q 3385 |goto Searing Gorge 34.71,51.99
 step
@@ -122,6 +143,9 @@ step
 step
   talk Kalaran Windblade##8479
   accept The Flame's Casing##3452 |goto Searing Gorge 39.06,38.99
+step
+  note Find and return a Symbol of Ragnaros to Kalaran Windblade.
+  get The Flame's Casing |q 3452 |goto Searing Gorge 39.06,38.99
 step
   talk Kalaran Windblade##8479
   turnin The Flame's Casing##3452 |goto Searing Gorge 39.06,38.99

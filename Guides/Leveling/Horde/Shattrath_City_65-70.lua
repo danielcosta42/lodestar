@@ -13,11 +13,17 @@ step
   talk Arcanist Adyria##18596
   accept Voren'thal's Visions##10024 |goto Shattrath City 54.98,22.54
 step
+  note Bring 8 Dampscale Basilisk Eyes to Arcanist Adyria in Shattrath City.
+  get Voren'thal's Visions |q 10024 |goto Shattrath City 54.98,22.54
+step
   talk Oloraak##19045
   accept Can't Stay Away##10180 |goto Shattrath City 57.98,15.16
 step
   talk Rilak the Redeemed##22292
   accept The Eyes of Skettis##10847 |goto Shattrath City 52.54,21.01
+step
+  note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
+  get The Eyes of Skettis |q 10847 |goto Shattrath City 52.54,21.01
 step
   talk Rilak the Redeemed##22292
   accept Countdown to Doom##11028 |goto Shattrath City 52.54,21.01
@@ -25,8 +31,14 @@ step
   talk Lorokeem##19052
   accept Master of Elixirs##10902 |goto Shattrath City 45.59,21.49
 step
+  note Go to the Black Morass in the Caverns of Time and obtain 10 Essences of Infinity from Rift Lords and Rift Keepers. Bring these along with 5 Elixirs of Major Defense, 5 Elixirs of Mastery and 5 Elixirs of Major Agility to Lorokeem in Shattrath's Lower City.
+  get Master of Elixirs |q 10902 |goto Shattrath City 45.59,21.49
+step
   talk Vekax##22429
   accept The Outcast's Plight##10917 |goto Shattrath City 46.21,22.36
+step
+  note Bring 30 Arakkoa Feathers to Vekax in Shattrath's Lower City.
+  get The Outcast's Plight |q 10917 |goto Shattrath City 46.21,22.36
 step
   talk Vindicator Aeus##23270
   accept Assist Exarch Orelis##11038 |goto Shattrath City 47.24,26.26
@@ -36,6 +48,9 @@ step
 step
   talk Khadgar##18166
   accept Entry Into Karazhan##9831 |goto Shattrath City 54.75,44.32
+step
+  note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
+  get Entry Into Karazhan |q 9831 |goto Shattrath City 54.75,44.32
 step
   talk Khadgar##18166
   accept The Violet Eye##9838 |goto Shattrath City 54.75,44.32
@@ -51,6 +66,9 @@ step
 step
   talk A'dal##18481
   accept How to Break Into the Arcatraz##10704 |goto Shattrath City 53.99,44.75
+step
+  note A'dal has tasked you with the recovery of the Top and Bottom Shards of the Arcatraz Key. Return them to him, and he will fashion them into the Key to the Arcatraz for you.
+  get How to Break Into the Arcatraz |q 10704 |goto Shattrath City 53.99,44.75
 step
   talk Khadgar##18166
   accept The Tempest Key##10883 |goto Shattrath City 54.75,44.32
@@ -82,8 +100,14 @@ step
   talk Sal'salabim##18584
   accept Crackin' Some Skulls##10009 |goto Shattrath City 77.26,34.85
 step
+  note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
+  get Crackin' Some Skulls |q 10009 |goto Shattrath City 77.26,34.85
+step
   talk Wind Trader Lathrai##18484
   accept A Personal Favor##10112 |goto Shattrath City 72.22,30.75
+step
+  note Retrieve 5 of Lathrai's Stolen Goods. Return them to Wind Trader Lathrai near the World's End Tavern in the Lower City section of Shattrath City.
+  get A Personal Favor |q 10112 |goto Shattrath City 72.22,30.75
 step
   talk Apprentice Tasserel##23948
   accept Archmage Alturus##11216 |goto Shattrath City 75.28,33.46
@@ -91,11 +115,20 @@ step
   talk Sha'nir##18597
   accept Strained Supplies##10017 |goto Shattrath City 64.48,15.1
 step
+  note Bring 8 Dreadfang Venom Sacs to Sha'nir in Shattrath City.
+  get Strained Supplies |q 10017 |goto Shattrath City 64.48,15.1
+step
   talk Sha'nir##18597
   accept A Cure for Zahlia##10020 |goto Shattrath City 64.48,15.1
 step
+  note Bring Stonegazer's Blood to Sha'nir in Shattrath City.
+  get A Cure for Zahlia |q 10020 |goto Shattrath City 64.48,15.1
+step
   talk Seth##18653
   accept Rather Be Fishin'##10037 |goto Shattrath City 63.95,15.53
+step
+  note Bring 8 Pristine Shimmerscale Eels to Seth in Shattrath.
+  get Rather Be Fishin' |q 10037 |goto Shattrath City 63.95,15.53
 step
   talk Jorus##23462
   accept Jorus the Cobalt Netherwing Drake##11109 |goto Shattrath City 67.91,17.02
@@ -118,8 +151,14 @@ step
   talk Adyen the Lightwarden##18537
   accept Marks of Kil'jaeden##10325 |goto Shattrath City 30.73,34.62
 step
+  note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
+  get Marks of Kil'jaeden |q 10325 |goto Shattrath City 30.73,34.62
+step
   talk Adyen the Lightwarden##18537
   accept Marks of Sargeras##10653 |goto Shattrath City 30.73,34.62
+step
+  note Bring 10 Marks of Sargeras to Adyen the Lightwarden in Shattrath City.
+  get Marks of Sargeras |q 10653 |goto Shattrath City 30.73,34.62
 step
   talk Adyen the Lightwarden##18537
   accept Crisis at the Sunwell##11481 |goto Shattrath City 30.73,34.62
@@ -132,6 +171,9 @@ step
 step
   talk Ishanah##18538
   accept A Cleansing Light##10420 |goto Shattrath City 23.97,29.73
+step
+  note Bring a Fel Armament to Ishanah in Shattrath City.
+  get A Cleansing Light |q 10420 |goto Shattrath City 23.97,29.73
 step
   note Travel to the Auchenai Crypts in the Bone Wastes of Terokkar Forest and slay Exarch Maladaar to free the spirit of D'ore.
   kill Exarch Maladaar##18373 |q 10167 |goto Auchenai Crypts - Dungeon -1,-1
@@ -151,8 +193,14 @@ step
   talk Nasmara Moonsong##22208
   accept Becoming a Mooncloth Tailor##10831 |goto Shattrath City 66.55,69.33
 step
+  note Use the Square of Imbued Netherweave while standing in Cenarion Refuge's moonwell to create a Sample of Primal Mooncloth. Bring the completed sample back to Nasmara Moonsong in Shattrath's Lower City.
+  get Becoming a Mooncloth Tailor |q 10831 |goto Shattrath City 66.55,69.33
+step
   talk Gidge Spellweaver##22213
   accept Becoming a Spellfire Tailor##10832 |goto Shattrath City 66.82,68.75
+step
+  note Bring a sample of Nether-wraith Essence to Gidge Spellweaver in Shattrath's Lower City.
+  get Becoming a Spellfire Tailor |q 10832 |goto Shattrath City 66.82,68.75
 step
   talk Andrion Darkspinner##22212
   accept Becoming a Shadoweave Tailor##10833 |goto Shattrath City 66.81,68.13
@@ -193,11 +241,20 @@ step
   talk Magistrix Fyalenn##18531
   accept Firewing Signets##10412 |goto Shattrath City 45.2,81.44
 step
+  note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Firewing Signets.
+  get Firewing Signets |q 10412 |goto Shattrath City 45.2,81.44
+step
   talk Magistrix Fyalenn##18531
   accept Sunfury Signets##10656 |goto Shattrath City 45.2,81.44
 step
+  note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Sunfury Signets.
+  get Sunfury Signets |q 10656 |goto Shattrath City 45.2,81.44
+step
   talk Voren'thal the Seer##18530
   accept Synthesis of Power##10416 |goto Shattrath City 42.79,91.71
+step
+  note Voren'thal the Seer in Shattrath City wants you to obtain an Arcane Tome.
+  get Synthesis of Power |q 10416 |goto Shattrath City 42.79,91.71
 step
   talk Voren'thal the Seer##18530
   accept Turning Point##10507 |goto Shattrath City 42.79,91.71
@@ -262,17 +319,29 @@ step
   talk Khadgar##18166
   accept The Second and Third Fragments##9832 |goto Shattrath City 54.75,44.32
 step
+  note Obtain the Second Key Fragment from an Arcane Container inside Coilfang Reservoir and the Third Key Fragment from an Arcane Container inside Tempest Keep. Return to Khadgar in Shattrath City after you've completed this task.
+  get The Second and Third Fragments |q 9832 |goto Shattrath City 54.75,44.32
+step
   talk Khadgar##18166
   accept City of Light##10211 |goto Shattrath City 54.75,44.32
 step
   talk A'dal##18481
   accept Harbinger of Doom##10882 |goto Shattrath City 53.99,44.75
 step
+  note You have been tasked to go to Tempest Keep's Arcatraz satellite and slay Harbinger Skyriss. Return to A'dal at the Terrace of Light in Shattrath City after you have done so.
+  kill Harbinger Skyriss##20912 |q 10882
+step
   talk A'dal##18481
   accept Trial of the Naaru: Mercy##10884 |goto Shattrath City 53.99,44.75
 step
+  note A'dal in Shattrath City wants you to recover the Unused Axe of the Executioner from the Shattered Halls of Hellfire Citadel.
+  get Trial of the Naaru: Mercy |q 10884 |goto Shattrath City 53.99,44.75
+step
   talk A'dal##18481
   accept Trial of the Naaru: Strength##10885 |goto Shattrath City 53.99,44.75
+step
+  note A'dal in Shattrath City wants you to recover Kalithresh's Trident and Murmur's Essence.
+  get Trial of the Naaru: Strength |q 10885 |goto Shattrath City 53.99,44.75
 step
   talk A'dal##18481
   accept Trial of the Naaru: Tenacity##10886 |goto Shattrath City 53.99,44.75
@@ -293,6 +362,9 @@ step
 step
   talk Wind Trader Lathrai##18484
   accept Investigate Tuurem##9990 |goto Shattrath City 72.22,30.75
+step
+  note Find the Sealed Box and then deliver it to Earthbinder Tavgren just outside of the Cenarion Thicket in Terokkar Forest.
+  get Investigate Tuurem |q 9990 |goto Shattrath City 72.22,30.75
 step
   talk Sal'salabim##18584
   accept It's Just That Easy?##10010 |goto Shattrath City 77.26,34.85

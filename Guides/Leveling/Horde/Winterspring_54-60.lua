@@ -13,11 +13,17 @@ step
   talk Donova Snowden##9298
   accept The Videre Elixir##3909 |goto Winterspring 31.27,45.16
 step
+  note Seek out Gregan Brewspewer in northern Feralas. From him, learn how you may acquire the Videre Elixir, then return to Donova Snowden in Winterspring.
+  get The Videre Elixir |q 3909 |goto Winterspring 31.27,45.16
+step
   talk Donova Snowden##9298
   accept Falling to Corruption##5084 |goto Winterspring 31.27,45.16
 step
   talk Donova Snowden##9298
   accept Toxic Horrors##5086 |goto Winterspring 31.27,45.16
+step
+  note Collect 3 Toxic Horror Droplets for Donova Snowden in Winterspring.
+  get Toxic Horrors |q 5086 |goto Winterspring 31.27,45.16
 step
   talk Donova Snowden##9298
   accept Words of the High Chief##5128 |goto Winterspring 31.27,45.16
@@ -36,11 +42,20 @@ step
   talk Witch Doctor Mau'ari##10307
   accept Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
+  note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
+  get Luck Be With You |q 969 |goto Winterspring 61.92,38.3
+step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
 step
+  note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
+  get Are We There, Yeti? |q 3783 |goto Winterspring 60.88,37.62
+step
   talk Felnok Steelspring##10468
   accept Chillwind Horns##4809 |goto Winterspring 61.63,38.61
+step
+  note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
+  get Chillwind Horns |q 4809 |goto Winterspring 61.63,38.61
 step
   talk Storm Shadowhoof##10303
   accept Ursius of the Shardtooth##5054 |goto Winterspring 61.93,38.38
@@ -48,14 +63,26 @@ step
   talk Malyfous Darkhammer##10637
   accept Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
 step
+  note Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.
+  get Fiery Plate Gauntlets |q 5124 |goto Winterspring 60.99,38.78
+step
   talk Lilith the Lithe##11191
   accept Sweet Serenity##5305 |goto Winterspring 61.33,37.13
+step
+  note Travel to Stratholme and kill the Crimson Hammersmith. Recover the Crimson Hammersmith's Apron and return to Lilith.
+  get Sweet Serenity |q 5305 |goto Winterspring 61.33,37.13
 step
   talk Kilram##11192
   accept Snakestone of the Shadow Huntress##5306 |goto Winterspring 61.3,37.07
 step
+  note Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.
+  get Snakestone of the Shadow Huntress |q 5306 |goto Winterspring 61.3,37.07
+step
   talk Seril Scourgebane##11193
   accept Corruption##5307 |goto Winterspring 61.33,37.19
+step
+  note Find the Black Guard Swordsmith in Stratholme and destroy him. Recover the Insignia of the Black Guard and return to Seril Scourgebane.
+  get Corruption |q 5307 |goto Winterspring 61.33,37.19
 step
   talk Jessica Redpath##11629
   accept Sister Pamela##5601 |goto Winterspring 61.28,38.98
@@ -120,6 +147,9 @@ step
   talk Donova Snowden##9298
   accept Winterfall Runners##5087 |goto Winterspring 31.27,45.16
 step
+  note Find the Winterfall Runners and stop them from delivering their shipment to Winterfall Village.
+  get Winterfall Runners |q 5087 |goto Winterspring 31.27,45.16
+step
   talk Salfa##11556
   turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
 step
@@ -171,6 +201,9 @@ step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
 step
+  note Collect 2 Pristine Yeti Horns for Umi Rumplesnicker in Everlook.
+  get Are We There, Yeti? |q 977 |goto Winterspring 60.88,37.62
+step
   talk Felnok Steelspring##10468
   accept Return to Tinkee##4810 |goto Winterspring 61.63,38.61
 step
@@ -182,6 +215,9 @@ step
 step
   talk Lorax##10918
   accept The Demon Forge##5127 |goto Winterspring 63.79,73.76
+step
+  note Travel to Blackrock Spire and find Goraluk Anvilcrack. Slay him and then use the Blood Stained Pike upon his corpse. After his soul has been siphoned, the pike will be Soul Stained.
+  get The Demon Forge |q 5127 |goto Winterspring 63.79,73.76
 step
   talk Donova Snowden##9298
   turnin Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
@@ -212,6 +248,9 @@ step
 step
   talk Storm Shadowhoof##10303
   accept Shy-Rotam##5056 |goto Winterspring 61.93,38.38
+step
+  note Storm Shadowhoof at Everlook in Winterspring wants you to defeat Shy-Rotam.
+  kill Shy-Rotam##10737 |q 5056
 step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##5163 |goto Winterspring 60.88,37.62

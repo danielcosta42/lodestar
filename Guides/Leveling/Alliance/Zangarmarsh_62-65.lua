@@ -10,53 +10,11 @@ step
   note {fp}Munci
   goto Zangarmarsh 67.83,51.46 |tip {vendor}
 step
-  talk Lethyn Moonfire##17834
-  accept Watcher Leesa'oh##9697 |goto Zangarmarsh 78.53,63.15
-step
-  talk Ysiel Windsinger##17841
-  accept Disturbance at Umbrafen Lake##9716 |goto Zangarmarsh 78.4,62.02
-step
-  talk Ysiel Windsinger##17841
-  accept Warning the Cenarion Circle##9724 |goto Zangarmarsh 78.4,62.02
-step
-  talk Ikeyen##17956
-  accept The Umbrafen Tribe##9747 |goto Zangarmarsh 80.4,64.16
-step
-  talk Ysiel Windsinger##17841
-  accept Preparing for War##9765 |goto Zangarmarsh 78.4,62.02
-step
-  talk Ysiel Windsinger##17841
-  accept Warden Hamoot##9778 |goto Zangarmarsh 78.4,62.02
-step
-  talk Windcaller Blackhoof##18070
-  accept Blessings of the Ancients##9785 |goto Zangarmarsh 80.37,64.73
-step
-  talk Lauranna Thar'well##17909
-  accept Plants of Zangarmarsh##9802 |goto Zangarmarsh 80.32,64.17
-step
-  talk Ysiel Windsinger##17841
-  accept Failed Incursion##9876 |goto Zangarmarsh 78.4,62.02
-step
-  talk Lethyn Moonfire##17834
-  accept The Dying Balance##9895 |goto Zangarmarsh 78.53,63.15
-step
-  talk Lethyn Moonfire##17834
-  accept What's Wrong at Cenarion Thicket?##9957 |goto Zangarmarsh 78.53,63.15
-step
-  talk Lauranna Thar'well##17909
-  accept Master of Potions##10897 |goto Zangarmarsh 80.32,64.17
-step
-  note Locate and deal with Boglash, then return to Lethyn Moonfire at Cenarion Refuge.
-  kill Boglash##18281 |q 9895 |goto Zangarmarsh 82.07,71.39
-step
-  note Ikeyen at the Cenarion Refuge wants you to travel to Umbrafen Village and slay Kataru, 8 Umbrafen Seers, 6 Umbrafen Witchdoctors and 6 Umbrafen Oracles.
-  kill Kataru##18080 |q 9747 |goto Zangarmarsh 85.29,90.93
-step
-  note Windcaller Blackhoof wants you to speak to the ancients Ashyen and Keleth at Cenarion Refuge and obtain their blessings.
-  kill Ashyen##17900 |q 9785 |goto Zangarmarsh 81.1,63.87
-step
   talk K. Lee Smallfry##17634
   accept The Zapthrottle Mote Extractor!##9636 |goto Zangarmarsh 68.65,50.21
+step
+  note Bring 15 Steam Pump Parts to K. Lee Smallfry at Telredor in Zangarmarsh.
+  get The Zapthrottle Mote Extractor! |q 9636 |goto Zangarmarsh 68.65,50.21
 step
   talk Anchorite Ahuurn##18003
   accept The Orebor Harborage##9776 |goto Zangarmarsh 68.2,49.37
@@ -64,11 +22,17 @@ step
   talk Ruam##18007
   accept Fulgor Spores##9777 |goto Zangarmarsh 68.63,48.73
 step
+  note Bring 6 Fulgor Spores to Ruam at Telredor.
+  get Fulgor Spores |q 9777 |goto Zangarmarsh 68.63,48.73
+step
   talk Haalrun##18005
   accept Too Many Mouths to Feed##9781 |goto Zangarmarsh 67.81,47.91
 step
   talk Vindicator Idaar##18004
   accept The Dead Mire##9782 |goto Zangarmarsh 68.34,50.08
+step
+  note Bring a Dead Mire Soil Sample to Vindicator Idaar at Telredor.
+  get The Dead Mire |q 9782 |goto Zangarmarsh 68.34,50.08
 step
   talk Anchorite Ahuurn##18003
   accept The Boha'mu Ruins##9786 |goto Zangarmarsh 68.2,49.37
@@ -85,11 +49,74 @@ step
   talk Ruam##18007
   accept Withered Flesh##10355 |goto Zangarmarsh 68.63,48.73
 step
+  note Gather 5 Parched Hydra Samples and 5 Withered Bog Lord Samples and bring them to Ruam at Telredor.
+  get Withered Flesh |q 10355 |goto Zangarmarsh 68.63,48.73
+step
   note Prospector Conall at Telredor wants you to kill Sporewing.
   kill Sporewing##18280 |q 9901 |goto Zangarmarsh 78.01,45.41
 step
   note Kill 10 Marshfang Rippers and return to Noraani at Telredor.
   kill Marshfang Ripper##18130 |q 9791 |goto Zangarmarsh 78.0,49.38
+step
+  talk Lethyn Moonfire##17834
+  accept Watcher Leesa'oh##9697 |goto Zangarmarsh 78.53,63.15
+step
+  talk Ysiel Windsinger##17841
+  accept Disturbance at Umbrafen Lake##9716 |goto Zangarmarsh 78.4,62.02
+step
+  talk Ysiel Windsinger##17841
+  accept Warning the Cenarion Circle##9724 |goto Zangarmarsh 78.4,62.02
+step
+  talk Ikeyen##17956
+  accept The Umbrafen Tribe##9747 |goto Zangarmarsh 80.4,64.16
+step
+  talk Ysiel Windsinger##17841
+  accept Preparing for War##9765 |goto Zangarmarsh 78.4,62.02
+step
+  note Obtain Coilfang Armaments from naga at Coilfang Reservoir and return them to Ysiel Windsinger at the Cenarion Refuge in Zangarmarsh.
+  get Preparing for War |q 9765 |goto Zangarmarsh 78.4,62.02
+step
+  talk Ysiel Windsinger##17841
+  accept Warden Hamoot##9778 |goto Zangarmarsh 78.4,62.02
+step
+  talk Windcaller Blackhoof##18070
+  accept Blessings of the Ancients##9785 |goto Zangarmarsh 80.37,64.73
+step
+  talk Lauranna Thar'well##17909
+  accept Plants of Zangarmarsh##9802 |goto Zangarmarsh 80.32,64.17
+step
+  note Bring 10 Unidentified Plant Parts to Lauranna Thar'well at the Cenarion Refuge in Zangarmarsh.
+  get Plants of Zangarmarsh |q 9802 |goto Zangarmarsh 80.32,64.17
+step
+  talk Ysiel Windsinger##17841
+  accept Failed Incursion##9876 |goto Zangarmarsh 78.4,62.02
+step
+  talk Lethyn Moonfire##17834
+  accept The Dying Balance##9895 |goto Zangarmarsh 78.53,63.15
+step
+  talk Lethyn Moonfire##17834
+  accept What's Wrong at Cenarion Thicket?##9957 |goto Zangarmarsh 78.53,63.15
+step
+  talk Lauranna Thar'well##17909
+  accept Master of Potions##10897 |goto Zangarmarsh 80.32,64.17
+step
+  note Lauranna Thar'well wants you to go to the Botanica in Tempest Keep and retrieve the Botanist's Field Guide from High Botanist Freywinn. In addition she also wants you to bring her 5 Super Healing Potions, 5 Super Mana Potions and 5 Major Dreamless Sleep Potions.
+  get Master of Potions |q 10897 |goto Zangarmarsh 80.32,64.17
+step
+  talk Morthis Whisperwing##22832
+  accept Eternal Vigilance##11011 |goto Zangarmarsh 80.18,65.15
+step
+  note Ikeyen at the Cenarion Refuge wants you to travel to Umbrafen Village and slay Kataru, 8 Umbrafen Seers, 6 Umbrafen Witchdoctors and 6 Umbrafen Oracles.
+  kill Kataru##18080 |q 9747 |goto Zangarmarsh 85.29,90.93
+step
+  note Locate and deal with Boglash, then return to Lethyn Moonfire at Cenarion Refuge.
+  kill Boglash##18281 |q 9895 |goto Zangarmarsh 82.07,71.39
+step
+  note Kill 10 Mire Hydra and return to Haalrun at Telredor.
+  kill Mire Hydra##18213 |q 9781 |goto Zangarmarsh 71.26,65.92
+step
+  note Windcaller Blackhoof wants you to speak to the ancients Ashyen and Keleth at Cenarion Refuge and obtain their blessings.
+  kill Ashyen##17900 |q 9785 |goto Zangarmarsh 81.1,63.87
 step
   talk Watcher Jhang##17884
   turnin Failed Incursion##9876 |goto Zangarmarsh 52.29,35.98
@@ -115,17 +142,26 @@ step
   talk Puluu##18009
   accept Stinger Venom##9830 |goto Zangarmarsh 40.85,28.66
 step
+  note Bring 6 Marshlight Bleeder Venom to Puluu at the Orebor Harborage.
+  get Stinger Venom |q 9830 |goto Zangarmarsh 40.85,28.66
+step
   talk Puluu##18009
   accept Lines of Communication##9833 |goto Zangarmarsh 40.85,28.66
 step
   talk Maktu##18010
   accept Natural Armor##9834 |goto Zangarmarsh 41.61,27.28
 step
+  note Bring 8 Fenclaw Hides to Maktu at the Orebor Harborage.
+  get Natural Armor |q 9834 |goto Zangarmarsh 41.61,27.28
+step
   talk Ikuti##18008
   accept Ango'rosh Encroachment##9835 |goto Zangarmarsh 41.94,27.19
 step
   talk Timothy Daniels##18019
   accept Secrets of the Daggerfen##9848 |goto Zangarmarsh 41.21,28.67
+step
+  note Bring the Daggerfen Poison Manual and a Daggerfen Poison Vial to Timothy Daniels at the Orebor Harborage.
+  get Secrets of the Daggerfen |q 9848 |goto Zangarmarsh 41.21,28.67
 step
   talk Puluu##18009
   accept The Terror of Marshlight Lake##9902 |goto Zangarmarsh 40.85,28.66
@@ -154,11 +190,20 @@ step
   talk Gzhun'tt##17856
   accept Bring Me A Shrubbery!##9715 |goto Zangarmarsh 19.54,50.04
 step
+  note Collect 5 Sanguine Hibiscus and return them to Gzhun'tt at Sporeggar in Zangarmarsh.
+  get Bring Me A Shrubbery! |q 9715 |goto Zangarmarsh 19.54,50.04
+step
   talk T'shu##17857
   accept Oh, It's On!##9717 |goto Zangarmarsh 19.37,49.78
 step
+  note Gather an Underspore Frond and return it to T'shu at Sporeggar in Zangarmarsh.
+  get Oh, It's On! |q 9717 |goto Zangarmarsh 19.37,49.78
+step
   talk Khn'nix##17866
   accept Stalk the Stalker##9719 |goto Zangarmarsh 19.65,49.7
+step
+  note Bring the Brain of the Black Stalker to Khn'nix at Sporeggar in Zangarmarsh.
+  get Stalk the Stalker |q 9719 |goto Zangarmarsh 19.65,49.7
 step
   talk Gzhun'tt##17856
   accept Now That We're Friends...##9726 |goto Zangarmarsh 19.54,50.04
@@ -166,8 +211,14 @@ step
   talk Gshaff##17925
   accept Fertile Spores##9806 |goto Zangarmarsh 19.14,49.38
 step
+  note Gshaff wants you to gather 6 Fertile Spores from the various Zangarmarsh Spore Bats and Marsh Walkers. Return to Ghsaff at Sporeggar when you've completed this task.
+  get Fertile Spores |q 9806 |goto Zangarmarsh 19.14,49.38
+step
   talk Msshi'fn##17924
   accept Glowcap Mushrooms##9808 |goto Zangarmarsh 19.68,52.07
+step
+  note Bring 10 Glowcaps to Msshi'fn at Sporeggar in Zangarmarsh.
+  get Glowcap Mushrooms |q 9808 |goto Zangarmarsh 19.68,52.07
 step
   note Slay Terrorclaw and return to Puluu at the Orebor Harborage.
   kill Terrorclaw##20477 |q 9902 |goto Zangarmarsh 22.31,45.78
@@ -187,62 +238,20 @@ step
   talk Fahssn##17923
   accept The Sporelings' Plight##9739 |goto Zangarmarsh 19.02,62.43
 step
+  note Fahssn at the Spawning Glen wants you to collect 10 Mature Spore Sacs.
+  get The Sporelings' Plight |q 9739 |goto Zangarmarsh 19.02,62.43
+step
   talk Fahssn##17923
   accept Natural Enemies##9743 |goto Zangarmarsh 19.02,62.43
+step
+  note Fahssn at the Spawning Glen in Zangarmarsh wants you to bring him 6 Bog Lord Tendrils.
+  get Natural Enemies |q 9743 |goto Zangarmarsh 19.02,62.43
 step
   talk Fahssn##17923
   accept Sporeggar##9919 |goto Zangarmarsh 19.02,62.43
 step
   note Puluu at the Orebor Harborage wants you to kill 12 Marshfang Slicers.
   kill Marshfang Slicer##18131 |q 9833 |goto Zangarmarsh 33.06,58.28
-step
-  talk Lauranna Thar'well##17909
-  turnin Master of Potions##10897 |goto Zangarmarsh 80.32,64.17
-step
-  talk Ikeyen##17956
-  turnin The Umbrafen Tribe##9747 |goto Zangarmarsh 80.4,64.16
-step
-  talk Ysiel Windsinger##17841
-  turnin Preparing for War##9765 |goto Zangarmarsh 78.4,62.02
-step
-  talk Lethyn Moonfire##17834
-  turnin The Dying Balance##9895 |goto Zangarmarsh 78.53,63.15
-step
-  talk Warden Hamoot##17858
-  turnin Warden Hamoot##9778 |goto Zangarmarsh 79.09,65.27
-step
-  talk Windcaller Blackhoof##18070
-  turnin Blessings of the Ancients##9785 |goto Zangarmarsh 80.37,64.73
-step
-  talk Lauranna Thar'well##17909
-  turnin Plants of Zangarmarsh##9802 |goto Zangarmarsh 80.32,64.17
-step
-  talk Ysiel Windsinger##17841
-  turnin Disturbance at Umbrafen Lake##9716 |goto Zangarmarsh 78.4,62.02
-step
-  talk Ysiel Windsinger##17841
-  accept As the Crow Flies##9718 |goto Zangarmarsh 78.4,62.02
-step
-  talk Warden Hamoot##17858
-  accept A Warm Welcome##9728 |goto Zangarmarsh 79.09,65.27
-step
-  talk Ikeyen##17956
-  accept A Damp, Dark Place##9788 |goto Zangarmarsh 80.4,64.16
-step
-  talk Windcaller Blackhoof##18070
-  accept Safeguarding the Watchers##9894 |goto Zangarmarsh 80.37,64.73
-step
-  talk Lauranna Thar'well##17909
-  accept Saving the Sporeloks##10096 |goto Zangarmarsh 80.32,64.17
-step
-  note Kill Lord Klaq and return to Windcaller Blackhoof at the Cenarion Refuge.
-  kill Lord Klaq##18282 |q 9894 |goto Zangarmarsh 72.24,93.89
-step
-  note Kill 10 Mire Hydra and return to Haalrun at Telredor.
-  kill Mire Hydra##18213 |q 9781 |goto Zangarmarsh 71.26,65.92
-step
-  note Slay 10 Marsh Dredgers and 10 Marsh Lurkers, and then return to Lauranna Thar'well at the Cenarion Refuge in Zangarmarsh.
-  kill Marsh Dredger##18137 |q 10096 |goto Zangarmarsh 73.71,94.18
 step
   talk Andarl##18252
   turnin Concerns About Tuurem##10104 |goto Terokkar Forest 58.53,53.56 |tip {turninat}Terokkar Forest
@@ -268,9 +277,6 @@ step
   talk Noraani##18006
   turnin Menacing Marshfangs##9791 |goto Zangarmarsh 67.64,47.87
 step
-  talk Nahuud##18097
-  turnin A Message to Telaar##9792 |goto Nagrand 54.76,71.02 |tip {turninat}Nagrand
-step
   talk Andarl##18252
   turnin The Fate of Tuurem##9793 |goto Terokkar Forest 58.53,53.56 |tip {turninat}Terokkar Forest
 step
@@ -280,20 +286,89 @@ step
   talk Noraani##18006
   accept Umbrafen Eel Filets##9780 |goto Zangarmarsh 67.64,47.87
 step
+  note Noraani at Telredor wants you to bring her 8 Eel Filets.
+  get Umbrafen Eel Filets |q 9780 |goto Zangarmarsh 67.64,47.87
+step
   talk Vindicator Idaar##18004
   accept An Unnatural Drought##9783 |goto Zangarmarsh 68.34,50.08
 step
   talk Anchorite Ahuurn##18003
   accept Idols of the Feralfen##9787 |goto Zangarmarsh 68.2,49.37
 step
+  note Gather 6 Feralfen Idols and return them to Anchorite Ahuurn at Telredor.
+  get Idols of the Feralfen |q 9787 |goto Zangarmarsh 68.2,49.37
+step
   talk Haalrun##18005
   accept Diaphanous Wings##9790 |goto Zangarmarsh 67.81,47.91
+step
+  note Haalrun at Telredor wants you to bring him 8 Diaphanous Wings from any of the firefly species in Zangarmarsh.
+  get Diaphanous Wings |q 9790 |goto Zangarmarsh 67.81,47.91
 step
   talk Prospector Conall##18295
   accept Blacksting's Bane##9896 |goto Zangarmarsh 68.56,49.37
 step
+  note Bring Blacksting's Stinger to Prospector Conall at Telredor.
+  get Blacksting's Bane |q 9896 |goto Zangarmarsh 68.56,49.37
+step
   note Vindicator Idaar at Telredor wants you to kill 12 Withered Giants.
   kill Withered Giant##18124 |q 9783 |goto Zangarmarsh 82.43,41.36
+step
+  talk Morthis Whisperwing##22832
+  turnin Eternal Vigilance##11011 |goto Zangarmarsh 80.18,65.15
+step
+  talk Lauranna Thar'well##17909
+  turnin Master of Potions##10897 |goto Zangarmarsh 80.32,64.17
+step
+  talk Ikeyen##17956
+  turnin The Umbrafen Tribe##9747 |goto Zangarmarsh 80.4,64.16
+step
+  talk Ysiel Windsinger##17841
+  turnin Preparing for War##9765 |goto Zangarmarsh 78.4,62.02
+step
+  talk Lethyn Moonfire##17834
+  turnin The Dying Balance##9895 |goto Zangarmarsh 78.53,63.15
+step
+  talk Warden Hamoot##17858
+  turnin Warden Hamoot##9778 |goto Zangarmarsh 79.09,65.27
+step
+  talk Windcaller Blackhoof##18070
+  turnin Blessings of the Ancients##9785 |goto Zangarmarsh 80.37,64.73
+step
+  talk Nahuud##18097
+  turnin A Message to Telaar##9792 |goto Nagrand 54.76,71.02 |tip {turninat}Nagrand
+step
+  talk Lauranna Thar'well##17909
+  turnin Plants of Zangarmarsh##9802 |goto Zangarmarsh 80.32,64.17
+step
+  talk Ysiel Windsinger##17841
+  turnin Disturbance at Umbrafen Lake##9716 |goto Zangarmarsh 78.4,62.02
+step
+  talk Ysiel Windsinger##17841
+  accept As the Crow Flies##9718 |goto Zangarmarsh 78.4,62.02
+step
+  talk Warden Hamoot##17858
+  accept A Warm Welcome##9728 |goto Zangarmarsh 79.09,65.27
+step
+  note Warden Hamoot at the Cenarion Refuge wants you to bring him 30 Naga Claws.
+  get A Warm Welcome |q 9728 |goto Zangarmarsh 79.09,65.27
+step
+  talk Ikeyen##17956
+  accept A Damp, Dark Place##9788 |goto Zangarmarsh 80.4,64.16
+step
+  note Look for Ikeyen's Belongings inside a cave south of Umbrafen. Return them to Ikeyen at Cenarion Refuge in Zangarmarsh.
+  get A Damp, Dark Place |q 9788 |goto Zangarmarsh 80.4,64.16
+step
+  talk Windcaller Blackhoof##18070
+  accept Safeguarding the Watchers##9894 |goto Zangarmarsh 80.37,64.73
+step
+  talk Lauranna Thar'well##17909
+  accept Saving the Sporeloks##10096 |goto Zangarmarsh 80.32,64.17
+step
+  note Kill Lord Klaq and return to Windcaller Blackhoof at the Cenarion Refuge.
+  kill Lord Klaq##18282 |q 9894 |goto Zangarmarsh 72.24,93.89
+step
+  note Slay 10 Marsh Dredgers and 10 Marsh Lurkers, and then return to Lauranna Thar'well at the Cenarion Refuge in Zangarmarsh.
+  kill Marsh Dredger##18137 |q 10096 |goto Zangarmarsh 73.71,94.18
 step
   talk Watcher Jhang##17884
   turnin Lost in Action##9738 |goto Zangarmarsh 52.29,35.98
@@ -364,29 +439,8 @@ step
   talk Watcher Leesa'oh##17831
   accept A Question of Gluttony##9702 |goto Zangarmarsh 23.32,66.21
 step
-  talk Warden Hamoot##17858
-  turnin A Warm Welcome##9728 |goto Zangarmarsh 79.09,65.27
-step
-  talk Windcaller Blackhoof##18070
-  turnin Safeguarding the Watchers##9894 |goto Zangarmarsh 80.37,64.73
-step
-  talk Ikeyen##17956
-  turnin A Damp, Dark Place##9788 |goto Zangarmarsh 80.4,64.16
-step
-  talk Lauranna Thar'well##17909
-  turnin Saving the Sporeloks##10096 |goto Zangarmarsh 80.32,64.17
-step
-  talk Ysiel Windsinger##17841
-  turnin As the Crow Flies##9718 |goto Zangarmarsh 78.4,62.02
-step
-  talk Ysiel Windsinger##17841
-  accept Balance Must Be Preserved##9720 |goto Zangarmarsh 78.4,62.02
-step
-  talk Morthis Whisperwing##22832
-  accept Eternal Vigilance##11011 |goto Zangarmarsh 80.18,65.15
-step
-  note Ysiel Windsinger wants you to use the Ironvine Seeds on the Steam Pump Controls at Serpent Lake, Umbrafen Lake, Marshlight Lake and the Lagoon. Then return to her at the Cenarion Refuge in Zangarmarsh with any leftover seeds you have.
-  kill Umbrafen Steam Pump Credit Marker##17998 |q 9720 |goto Zangarmarsh 70.6,80.29
+  note Collect 10 pieces of Discarded Nutriment and then return to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
+  get A Question of Gluttony |q 9702 |goto Zangarmarsh 23.32,66.21
 step
   talk Prospector Conall##18295
   turnin Blacksting's Bane##9896 |goto Zangarmarsh 68.56,49.37
@@ -406,6 +460,30 @@ step
   talk Anchorite Ahuurn##18003
   accept Gathering the Reagents##9801 |goto Zangarmarsh 68.2,49.37
 step
+  note Anchorite Ahuurn at Telredor wants you to bring him 4 Spore Bat Eyes and 4 Fen Strider Tentacles.
+  get Gathering the Reagents |q 9801 |goto Zangarmarsh 68.2,49.37
+step
+  talk Warden Hamoot##17858
+  turnin A Warm Welcome##9728 |goto Zangarmarsh 79.09,65.27
+step
+  talk Windcaller Blackhoof##18070
+  turnin Safeguarding the Watchers##9894 |goto Zangarmarsh 80.37,64.73
+step
+  talk Ikeyen##17956
+  turnin A Damp, Dark Place##9788 |goto Zangarmarsh 80.4,64.16
+step
+  talk Lauranna Thar'well##17909
+  turnin Saving the Sporeloks##10096 |goto Zangarmarsh 80.32,64.17
+step
+  talk Ysiel Windsinger##17841
+  turnin As the Crow Flies##9718 |goto Zangarmarsh 78.4,62.02
+step
+  talk Ysiel Windsinger##17841
+  accept Balance Must Be Preserved##9720 |goto Zangarmarsh 78.4,62.02
+step
+  note Ysiel Windsinger wants you to use the Ironvine Seeds on the Steam Pump Controls at Serpent Lake, Umbrafen Lake, Marshlight Lake and the Lagoon. Then return to her at the Cenarion Refuge in Zangarmarsh with any leftover seeds you have.
+  kill Umbrafen Steam Pump Credit Marker##17998 |q 9720 |goto Zangarmarsh 70.6,80.29
+step
   note Locate and kill Mragesh, then return to Maktu at the Orebor Harborage.
   kill Mragesh##18286 |q 9905 |goto Zangarmarsh 42.23,41.42
 step
@@ -421,11 +499,8 @@ step
   talk Watcher Leesa'oh##17831
   accept Familiar Fungi##9708 |goto Zangarmarsh 23.32,66.21
 step
-  talk Morthis Whisperwing##22832
-  turnin Eternal Vigilance##11011 |goto Zangarmarsh 80.18,65.15
-step
-  talk Ysiel Windsinger##17841
-  turnin Balance Must Be Preserved##9720 |goto Zangarmarsh 78.4,62.02
+  note Collect 15 Mushroom Samples and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
+  get Familiar Fungi |q 9708 |goto Zangarmarsh 23.32,66.21
 step
   talk Anchorite Ahuurn##18003
   turnin Gathering the Reagents##9801 |goto Zangarmarsh 68.2,49.37
@@ -433,11 +508,20 @@ step
   talk Anchorite Ahuurn##18003
   accept Messenger to the Feralfen##9803 |goto Zangarmarsh 68.2,49.37
 step
+  note Drink Ahuurn's Elixir while standing in the Boha'mu Ruins. Speak to Elder Kuruti while you are in the form of an arakkoa.
+  get Messenger to the Feralfen |q 9803 |goto Zangarmarsh 68.2,49.37
+step
+  talk Ysiel Windsinger##17841
+  turnin Balance Must Be Preserved##9720 |goto Zangarmarsh 78.4,62.02
+step
   talk Watcher Leesa'oh##17831
   turnin Familiar Fungi##9708 |goto Zangarmarsh 23.32,66.21
 step
   talk Watcher Leesa'oh##17831
   accept Stealing Back the Mushrooms##9709 |goto Zangarmarsh 23.32,66.21
+step
+  note Collect 10 Boxes of Mushrooms and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
+  get Stealing Back the Mushrooms |q 9709 |goto Zangarmarsh 23.32,66.21
 step
   talk Anchorite Ahuurn##18003
   turnin Messenger to the Feralfen##9803 |goto Zangarmarsh 68.2,49.37

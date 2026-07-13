@@ -16,11 +16,17 @@ step
   talk Beetix Ficklespragg##15189
   accept Deadly Desert Venom##8277 |goto Silithus 51.61,38.63
 step
+  note Beetix Ficklespragg at Cenarion Hold in Silithus wants you to gather 8 Stonelash Scorpid Stingers and 8 Sand Skitterer Fangs. Return to her when you have completed the task.
+  get Deadly Desert Venom |q 8277 |goto Silithus 51.61,38.63
+step
   talk Windcaller Proudhorn##15191
   accept Securing the Supply Lines##8280 |goto Silithus 51.15,38.29
 step
   talk Geologist Larksbane##15183
   accept The Twilight Mystery##8284 |goto Silithus 49.67,37.46
+step
+  note Geologist Larksbane at Cenarion Hold in Silithus wants you to collect 8 Twilight Tablet Fragments.
+  get The Twilight Mystery |q 8284 |goto Silithus 49.67,37.46
 step
   talk Baristolth of the Shifting Sands##15180
   accept What Tomorrow Brings##8286 |goto Silithus 49.45,36.45
@@ -34,8 +40,14 @@ step
   talk Calandrath##15174
   accept Kitchen Assistance##8317 |goto Silithus 51.89,39.16
 step
+  note Calandrath at Cenarion Hold needs a batch of 10 Smoked Desert Dumplings.
+  get Kitchen Assistance |q 8317 |goto Silithus 51.89,39.16
+step
   talk Bor Wildmane##15306
   accept Secret Communication##8318 |goto Silithus 48.57,37.78
+step
+  note Bring 10 Encrypted Twilight Texts to Bor Wildmane in Cenarion Hold.
+  get Secret Communication |q 8318 |goto Silithus 48.57,37.78
 step
   talk Huum Wildmane##15270
   accept Twilight Geolords##8320 |goto Silithus 48.62,37.87
@@ -49,110 +61,218 @@ step
   talk Bor Wildmane##15306
   accept Abyssal Contacts##8361 |goto Silithus 48.57,37.78
 step
+  note Bor Wildmane at Cenarion Hold in Silithus wants you to destroy an Abyssal Templar and bring him an Abyssal Crest as proof of the deed.
+  get Abyssal Contacts |q 8361 |goto Silithus 48.57,37.78
+step
   only Warrior
   talk Windcaller Yessendra##15498
   accept Signet of Unyielding Strength##8556 |goto Silithus 52.05,38.16
+step
+  only Warrior
+  note Bring 1 Qiraji Magisterial Ring, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Signet of Unyielding Strength |q 8556 |goto Silithus 52.05,38.16
 step
   only Warrior
   talk Keyl Swiftclaw##15500
   accept Drape of Unyielding Strength##8557 |goto Silithus 51.76,39.54
 step
   only Warrior
+  note Bring 1 Qiraji Martial Drape, 2 Onyx Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Drape of Unyielding Strength |q 8557 |goto Silithus 51.76,39.54
+step
+  only Warrior
   talk Warden Haro##15499
   accept Sickle of Unyielding Strength##8558 |goto Silithus 51.14,38.94
+step
+  only Warrior
+  note Bring 1 Qiraji Spiked Hilt, 2 Alabaster Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Sickle of Unyielding Strength |q 8558 |goto Silithus 51.14,38.94
 step
   only Priest
   talk Keyl Swiftclaw##15500
   accept Shroud of Infinite Wisdom##8689 |goto Silithus 51.76,39.54
 step
+  only Priest
+  note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Shroud of Infinite Wisdom |q 8689 |goto Silithus 51.76,39.54
+step
   only Mage
   talk Keyl Swiftclaw##15500
   accept Cloak of the Gathering Storm##8690 |goto Silithus 51.76,39.54
+step
+  only Mage
+  note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Clay Scarabs and 5 Gold Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Cloak of the Gathering Storm |q 8690 |goto Silithus 51.76,39.54
 step
   only Warlock
   talk Keyl Swiftclaw##15500
   accept Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
 step
+  only Warlock
+  note Bring 1 Qiraji Martial Drape, 2 Alabaster Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Drape of Vaulted Secrets |q 8691 |goto Silithus 51.76,39.54
+step
   talk Keyl Swiftclaw##15500
   accept Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
+step
+  note Bring 1 Qiraji Regal Drape, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Cloak of Unending Life |q 8692 |goto Silithus 51.76,39.54
 step
   only Rogue
   talk Keyl Swiftclaw##15500
   accept Cloak of Veiled Shadows##8693 |goto Silithus 51.76,39.54
 step
+  only Rogue
+  note Bring 1 Qiraji Martial Drape, 2 Azure Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Cloak of Veiled Shadows |q 8693 |goto Silithus 51.76,39.54
+step
   only Druid
   talk Keyl Swiftclaw##15500
   accept Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
+step
+  only Druid
+  note Bring 1 Qiraji Regal Drape, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Shroud of Unspoken Names |q 8694 |goto Silithus 51.76,39.54
 step
   only Paladin
   talk Keyl Swiftclaw##15500
   accept Cape of Eternal Justice##8695 |goto Silithus 51.76,39.54
 step
+  only Paladin
+  note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Cape of Eternal Justice |q 8695 |goto Silithus 51.76,39.54
+step
   only Hunter
   talk Keyl Swiftclaw##15500
   accept Cloak of the Unseen Path##8696 |goto Silithus 51.76,39.54
+step
+  only Hunter
+  note Bring 1 Qiraji Regal Drape, 2 Lambent Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  get Cloak of the Unseen Path |q 8696 |goto Silithus 51.76,39.54
 step
   only Priest
   talk Windcaller Yessendra##15498
   accept Ring of Infinite Wisdom##8697 |goto Silithus 52.05,38.16
 step
+  only Priest
+  note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Ring of Infinite Wisdom |q 8697 |goto Silithus 52.05,38.16
+step
   only Mage
   talk Windcaller Yessendra##15498
   accept Ring of the Gathering Storm##8698 |goto Silithus 52.05,38.16
+step
+  only Mage
+  note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Ring of the Gathering Storm |q 8698 |goto Silithus 52.05,38.16
 step
   only Warlock
   talk Windcaller Yessendra##15498
   accept Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
 step
+  only Warlock
+  note Bring 1 Qiraji Magisterial Ring, 2 Azure Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Band of Vaulted Secrets |q 8699 |goto Silithus 52.05,38.16
+step
   talk Windcaller Yessendra##15498
   accept Band of Unending Life##8700 |goto Silithus 52.05,38.16
+step
+  note Bring 1 Qiraji Magisterial Ring, 2 Alabaster Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Band of Unending Life |q 8700 |goto Silithus 52.05,38.16
 step
   only Rogue
   talk Windcaller Yessendra##15498
   accept Band of Veiled Shadows##8701 |goto Silithus 52.05,38.16
 step
+  only Rogue
+  note Bring 1 Qiraji Ceremonial Ring, 2 Onyx Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Band of Veiled Shadows |q 8701 |goto Silithus 52.05,38.16
+step
   only Druid
   talk Windcaller Yessendra##15498
   accept Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
+step
+  only Druid
+  note Bring 1 Qiraji Ceremonial Ring, 2 Jasper Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Ring of Unspoken Names |q 8702 |goto Silithus 52.05,38.16
 step
   only Paladin
   talk Windcaller Yessendra##15498
   accept Ring of Eternal Justice##8703 |goto Silithus 52.05,38.16
 step
+  only Paladin
+  note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Ring of Eternal Justice |q 8703 |goto Silithus 52.05,38.16
+step
   only Hunter
   talk Windcaller Yessendra##15498
   accept Signet of the Unseen Path##8704 |goto Silithus 52.05,38.16
+step
+  only Hunter
+  note Bring 1 Qiraji Ceremonial Ring, 2 Amber Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  get Signet of the Unseen Path |q 8704 |goto Silithus 52.05,38.16
 step
   only Priest
   talk Warden Haro##15499
   accept Gavel of Infinite Wisdom##8705 |goto Silithus 51.14,38.94
 step
+  only Priest
+  note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Gavel of Infinite Wisdom |q 8705 |goto Silithus 51.14,38.94
+step
   only Mage
   talk Warden Haro##15499
   accept Hammer of the Gathering Storm##8706 |goto Silithus 51.14,38.94
+step
+  only Mage
+  note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Hammer of the Gathering Storm |q 8706 |goto Silithus 51.14,38.94
 step
   only Warlock
   talk Warden Haro##15499
   accept Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
 step
+  only Warlock
+  note Bring 1 Qiraji Ornate Hilt, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Blade of Vaulted Secrets |q 8707 |goto Silithus 51.14,38.94
+step
   talk Warden Haro##15499
   accept Mace of Unending Life##8708 |goto Silithus 51.14,38.94
+step
+  note Bring 1 Qiraji Ornate Hilt, 2 Jasper Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Mace of Unending Life |q 8708 |goto Silithus 51.14,38.94
 step
   only Rogue
   talk Warden Haro##15499
   accept Dagger of Veiled Shadows##8709 |goto Silithus 51.14,38.94
 step
+  only Rogue
+  note Bring 1 Qiraji Spiked Hilt, 2 Vermillion Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Dagger of Veiled Shadows |q 8709 |goto Silithus 51.14,38.94
+step
   only Druid
   talk Warden Haro##15499
   accept Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
+step
+  only Druid
+  note Bring 1 Qiraji Ornate Hilt, 2 Onyx Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Kris of Unspoken Names |q 8710 |goto Silithus 51.14,38.94
 step
   only Paladin
   talk Warden Haro##15499
   accept Blade of Eternal Justice##8711 |goto Silithus 51.14,38.94
 step
+  only Paladin
+  note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Blade of Eternal Justice |q 8711 |goto Silithus 51.14,38.94
+step
   only Hunter
   talk Warden Haro##15499
   accept Scythe of the Unseen Path##8712 |goto Silithus 51.14,38.94
+step
+  only Hunter
+  note Bring 1 Qiraji Spiked Hilt, 2 Azure Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  get Scythe of the Unseen Path |q 8712 |goto Silithus 51.14,38.94
 step
   talk Elder Bladesing##15599
   accept Bladesing the Elder##8719 |goto Silithus 48.96,37.66
@@ -172,8 +292,14 @@ step
   talk Dirk Thunderwood##16091
   accept The Perfect Poison##9023 |goto Silithus 52.13,39.14
 step
+  note Dirk Thunderwood at Cenarion Hold wants you to bring him Venoxis's Venom Sac and Kurinnaxx's Venom Sac.
+  get The Perfect Poison |q 9023 |goto Silithus 52.13,39.14
+step
   talk Aurel Goldleaf##15282
   accept A Humble Offering##9248 |goto Silithus 51.96,38.16
+step
+  note Aurel Goldleaf at Cenarion Hold in Silithus wants you to bring her 1 Abyssal Scepter. You must also be Honored with the Cenarion Circle.
+  get A Humble Offering |q 9248 |goto Silithus 51.96,38.16
 step
   talk Scout Bloodfist##17081
   accept Report to General Kirika##9416 |goto Silithus 48.95,36.69
@@ -211,6 +337,9 @@ step
   talk Highlord Demitrian##14347
   accept Thunderaan the Windseeker##7786 |goto Silithus 21.71,8.57
 step
+  note To free Thunderaan the Windseeker from his prison, you must present the right and left halves of the Bindings of the Windseeker, 10 bars of Elementium, and the Essence of the Firelord to Highlord Demitrian in Silithus.
+  get Thunderaan the Windseeker |q 7786 |goto Silithus 21.71,8.57
+step
   talk Elder Primestone##15570
   accept Primestone the Elder##8654 |goto Silithus 21.14,10.51
 step
@@ -219,6 +348,9 @@ step
 step
   talk Layo Starstrike##13220
   accept Hive in the Tower##1126 |goto Silithus 81.87,18.93
+step
+  note Scale the tower of Southwind Village and locate a means to stir the silithid hive into activity. Bring back anything unusual you may uncover when doing so to Layo Starstrike at the Valor's Rest graveyard of Silithus.
+  get Hive in the Tower |q 1126 |goto Silithus 81.87,18.93
 step
   talk Huum Wildmane##15270
   turnin Twilight Geolords##8320 |goto Silithus 48.62,37.87
@@ -378,6 +510,9 @@ step
   talk Beetix Ficklespragg##15189
   accept Noggle's Last Hope##8278 |goto Silithus 51.61,38.63
 step
+  note Beetix Ficklespragg at Cenarion Hold in Silithus wants you to gather 3 Stonelash Pincer Stingers, 3 Stonelash Flayer Stingers and 3 Rock Stalker Fangs.
+  get Noggle's Last Hope |q 8278 |goto Silithus 51.61,38.63
+step
   talk Windcaller Proudhorn##15191
   accept Stepping Up Security##8281 |goto Silithus 51.15,38.29
 step
@@ -387,29 +522,56 @@ step
   talk Baristolth of the Shifting Sands##15180
   accept Only One May Rise##8288 |goto Silithus 49.45,36.45
 step
+  note Return the Head of the Broodlord Lashlayer to Baristolth of the Shifting Sands at Cenarion Hold in Silithus.
+  get Only One May Rise |q 8288 |goto Silithus 49.45,36.45
+step
   talk Commander Mar'alith##15181
   accept Into The Maw of Madness##8306 |goto Silithus 49.2,34.18
+step
+  note Commander Mar'alith at Cenarion Hold in Silithus wants you to find his beloved Natalia. The information that you gathered points to Hive'Regal in the south as being the area in which you may find Mistress Natalia Mar'alith.
+  kill Mistress Natalia Mar'alith##15215 |q 8306
 step
   talk Huum Wildmane##15270
   accept Vyral the Vile##8321 |goto Silithus 48.62,37.87
 step
+  note Bring Vyral's Signet Ring to Huum Wildmane in Cenarion Hold.
+  get Vyral the Vile |q 8321 |goto Silithus 48.62,37.87
+step
   talk Aurel Goldleaf##15282
   accept Dukes of the Council##8332 |goto Silithus 51.96,38.16
+step
+  note Bring 1 Large Brilliant Shard and 3 Abyssal Crests to Aurel Goldleaf in Cenarion Hold.
+  get Dukes of the Council |q 8332 |goto Silithus 51.96,38.16
 step
   talk Aurel Goldleaf##15282
   accept Lords of the Council##8341 |goto Silithus 51.96,38.16
 step
+  note Bring 5 Large Brilliant Shards and 3 Abyssal Signets to Aurel Goldleaf in Cenarion Hold.
+  get Lords of the Council |q 8341 |goto Silithus 51.96,38.16
+step
   talk Vargus##15176
   accept Volunteer's Battlegear##8548 |goto Silithus 51.23,38.86
+step
+  note Bring 5 Cenarion Combat Badges, 3 Cenarion Logistics Badges and 7 Cenarion Tactical Badges to Vargus at Cenarion Hold in Silithus. You must also attain Friendly reputation with Cenarion Circle to be able to complete this quest.
+  get Volunteer's Battlegear |q 8548 |goto Silithus 51.23,38.86
 step
   talk Vargus##15176
   accept Veteran's Battlegear##8572 |goto Silithus 51.23,38.86
 step
+  note Bring 7 Cenarion Combat Badges, 4 Cenarion Logistics Badges and 4 Cenarion Tactical Badges to Vargus at Cenarion Hold in Silithus. You must also attain Honored reputation with Cenarion Circle to be able to complete this quest.
+  get Veteran's Battlegear |q 8572 |goto Silithus 51.23,38.86
+step
   talk Vargus##15176
   accept Champion's Battlegear##8573 |goto Silithus 51.23,38.86
 step
+  note Bring 15 Cenarion Combat Badges, 20 Cenarion Logistics Badges, 20 Cenarion Tactical Badges and 1 Mark of Cenarius to Vargus at Cenarion Hold in Silithus. You must also attain Exalted reputation with Cenarion Circle to be able to complete this quest.
+  get Champion's Battlegear |q 8573 |goto Silithus 51.23,38.86
+step
   talk Vargus##15176
   accept Stalwart's Battlegear##8574 |goto Silithus 51.23,38.86
+step
+  note Bring 15 Cenarion Combat Badges, 20 Cenarion Logistics Badges, 17 Cenarion Tactical Badges and 1 Mark of Remulos to Vargus at Cenarion Hold in Silithus. You must also attain Revered reputation with Cenarion Circle to be able to complete this quest.
+  get Stalwart's Battlegear |q 8574 |goto Silithus 51.23,38.86
 step
   note Windcaller Proudhorn at Cenarion Hold in Silithus wants you to slay 20 Dredge Crushers.
   kill Dredge Crusher##11741 |q 8281 |goto Silithus 37.84,53.47
@@ -423,11 +585,20 @@ step
   talk Hermit Ortell##15194
   accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
 step
+  note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
+  get The Twilight Lexicon |q 8279 |goto Silithus 67.19,69.76
+step
   talk Rutgar Glyphshaper##15170
   accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
+  get Glyph Chasing |q 8309 |goto Silithus 41.28,88.45
+step
   talk Frankal Stonebridge##15171
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
+step
+  note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
+  get Breaking the Code |q 8310 |goto Silithus 40.81,88.86
 step
   talk Jonathan the Revelator##15693
   turnin Treasure of the Timeless One##8745 |goto Silithus 25.94,90.96
@@ -483,8 +654,14 @@ step
   talk Noggle Ficklespragg##15190
   accept Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
 step
+  note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
+  get Noggle's Lost Satchel |q 8282 |goto Silithus 51.63,38.5
+step
   talk Baristolth of the Shifting Sands##15180
   accept The Path of the Righteous##8301 |goto Silithus 49.45,36.45
+step
+  note Collect 200 Silithid Carapace Fragments and return to Baristolth.
+  get The Path of the Righteous |q 8301 |goto Silithus 49.45,36.45
 step
   talk Aurel Goldleaf##15282
   accept Bor Wildmane##8349 |goto Silithus 51.96,38.16
@@ -500,6 +677,9 @@ step
 step
   talk Hermit Ortell##15194
   accept True Believers##8323 |goto Silithus 67.19,69.76
+step
+  note Hermit Ortell wants you to bring him 10 Encrypted Twilight Texts
+  get True Believers |q 8323 |goto Silithus 67.19,69.76
 step
   talk Rutgar Glyphshaper##15170
   turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
@@ -534,11 +714,20 @@ step
   talk Geologist Larksbane##15183
   accept The Calling##8315 |goto Silithus 49.67,37.46
 step
+  note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
+  get The Calling |q 8315 |goto Silithus 49.67,37.46
+step
   talk Bor Wildmane##15306
   accept Signet of the Dukes##8348 |goto Silithus 48.57,37.78
 step
+  note Bring the Abyssal Signet to Bor Wildmane in Cenarion Hold.
+  get Signet of the Dukes |q 8348 |goto Silithus 48.57,37.78
+step
   talk Bor Wildmane##15306
   accept Scepter of the Council##8352 |goto Silithus 48.57,37.78
+step
+  note Bring an Abyssal Scepter to Bor Wildmane in Cenarion Hold.
+  get Scepter of the Council |q 8352 |goto Silithus 48.57,37.78
 step
   talk Hermit Ortell##15194
   turnin True Believers##8323 |goto Silithus 67.19,69.76

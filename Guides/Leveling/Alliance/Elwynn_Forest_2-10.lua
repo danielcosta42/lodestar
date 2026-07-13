@@ -17,12 +17,12 @@ step
   talk Priestess Anetta##375
   accept In Favor of the Light##5623 |goto Elwynn Forest 49.81,39.49
 step
-  talk Innkeeper Farley##295
-  turnin Rest and Relaxation##2158 |goto Elwynn Forest 43.77,65.8
-step
   only Human Priest
   talk Priestess Josetta##377
   turnin In Favor of the Light##5623 |goto Elwynn Forest 43.28,65.72
+step
+  talk Innkeeper Farley##295
+  turnin Rest and Relaxation##2158 |goto Elwynn Forest 43.77,65.8
 step
   talk Remy "Two Times"##241
   accept A Fishy Peril##40 |goto Elwynn Forest 42.14,67.26
@@ -30,8 +30,14 @@ step
   talk Remy "Two Times"##241
   accept Gold Dust Exchange##47 |goto Elwynn Forest 42.14,67.26
 step
+  note Bring 10 Gold Dust to Remy "Two Times" in Goldshire. Gold Dust is gathered from Kobolds in Elwynn Forest.
+  get Gold Dust Exchange |q 47 |goto Elwynn Forest 42.14,67.26
+step
   talk William Pestle##253
   accept Kobold Candles##60 |goto Elwynn Forest 43.32,65.7
+step
+  note Bring 8 Large Candles to William Pestle in Goldshire.
+  get Kobold Candles |q 60 |goto Elwynn Forest 43.32,65.7
 step
   talk Marshal Dughan##240
   accept The Fargodeep Mine##62 |goto Elwynn Forest 42.11,65.93
@@ -44,6 +50,9 @@ step
 step
   talk Marshal Dughan##240
   accept Manhunt##147 |goto Elwynn Forest 42.11,65.93
+step
+  note Find and kill "the Collector" then return to Marshal Dughan with The Collector's Ring.
+  get Manhunt |q 147 |goto Elwynn Forest 42.11,65.93
 step
   talk Smith Argus##514
   accept Elmore's Task##1097 |goto Elwynn Forest 41.71,65.54
@@ -92,12 +101,11 @@ step
   talk Ma Stonefield##244
   accept Princess Must Die!##88 |goto Elwynn Forest 34.66,84.48
 step
+  note Kill Princess, grab her collar, then bring it back to Ma Stonefield at the Stonefield Farm.
+  get Princess Must Die! |q 88 |goto Elwynn Forest 34.66,84.48
+step
   talk Tommy Joe Stonefield##252
   accept Speak with Gramma##111 |goto Elwynn Forest 29.84,86.0
-step
-  only Human Rogue
-  talk Master Mathias Shaw##332
-  turnin Seek out SI: 7##2205 |goto Stormwind City 75.78,59.84 |tip {turninat}Stormwind City
 step
   talk Guard Thomas##261
   accept Deliver Thomas' Report##39 |goto Elwynn Forest 73.97,72.18
@@ -105,18 +113,35 @@ step
   talk Guard Thomas##261
   accept Bounty on Murlocs##46 |goto Elwynn Forest 73.97,72.18
 step
+  note Bring 8 Torn Murloc Fins to Guard Thomas at the east Elwynn bridge.
+  get Bounty on Murlocs |q 46 |goto Elwynn Forest 73.97,72.18
+step
   talk Guard Thomas##261
   accept Protect the Frontier##52 |goto Elwynn Forest 73.97,72.18
 step
+  only Human Rogue
+  talk Master Mathias Shaw##332
+  turnin Seek out SI: 7##2205 |goto Stormwind City 75.78,59.84 |tip {turninat}Stormwind City
+step
   talk Sara Timberlain##278
   accept Red Linen Goods##83 |goto Elwynn Forest 79.46,68.79
+step
+  note Bring 6 Red Linen Bandanas to Sara Timberlain at the Eastvale Logging Camp.
+  get Red Linen Goods |q 83 |goto Elwynn Forest 79.46,68.79
 step
   only Warrior
   talk Marshal Haggard##294
   accept Dead-tooth Jack##1667 |goto Elwynn Forest 84.61,69.38
 step
+  only Warrior
+  note Retrieve Haggard's Badge from Dead-tooth Jack's camp, and return to Marshal Haggard.
+  get Dead-tooth Jack |q 1667 |goto Elwynn Forest 84.61,69.38
+step
   talk Supervisor Raelen##10616
   accept A Bundle of Trouble##5545 |goto Elwynn Forest 81.38,66.11
+step
+  note Bring 8 Bundles of Wood to Raelen at the Eastvale Logging Camp.
+  get A Bundle of Trouble |q 5545 |goto Elwynn Forest 81.38,66.11
 step
   note Kill 8 Prowlers and 5 Young Forest Bears, and then return to Guard Thomas at the east Elwynn bridge.
   kill Prowler##118 |q 52 |goto Elwynn Forest 80.51,70.87
@@ -125,11 +150,11 @@ step
   talk High Priestess Laurena##376
   turnin Desperate Prayer##5635 |goto Stormwind City 38.58,26.06 |tip {turninat}Stormwind City
 step
-  talk Marshal McBride##197
-  turnin A Threat Within##783 |goto Elwynn Forest 48.92,41.61
-step
   talk Grimand Elmore##1416
   turnin Elmore's Task##1097 |goto Stormwind City 51.76,12.08 |tip {turninat}Stormwind City
+step
+  talk Marshal McBride##197
+  turnin A Threat Within##783 |goto Elwynn Forest 48.92,41.61
 step
   talk Gryan Stoutmantle##234
   turnin Report to Gryan Stoutmantle##109 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
@@ -142,6 +167,9 @@ step
 step
   talk Deputy Willem##823
   accept Brotherhood of Thieves##18 |goto Elwynn Forest 48.17,42.94
+step
+  note Bring 12 Red Burlap Bandanas to Deputy Willem outside the Northshire Abbey.
+  get Brotherhood of Thieves |q 18 |goto Elwynn Forest 48.17,42.94
 step
   talk Deputy Willem##823
   accept Eagan Peltskinner##5261 |goto Elwynn Forest 48.17,42.94
@@ -161,15 +189,15 @@ step
   talk Remy "Two Times"##241
   turnin Gold Dust Exchange##47 |goto Elwynn Forest 42.14,67.26
 step
+  only Human Priest
+  talk Priestess Josetta##377
+  turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
+step
   talk William Pestle##253
   turnin Kobold Candles##60 |goto Elwynn Forest 43.32,65.7
 step
   talk Marshal Dughan##240
   turnin The Fargodeep Mine##62 |goto Elwynn Forest 42.11,65.93
-step
-  only Human Priest
-  talk Priestess Josetta##377
-  turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
 step
   talk Marshal Dughan##240
   accept Further Concerns##35 |goto Elwynn Forest 42.11,65.93
@@ -183,11 +211,18 @@ step
   talk Marshal Dughan##240
   accept The Jasperlode Mine##76 |goto Elwynn Forest 42.11,65.93
 step
+  only Rogue
+  talk Keryn Sylvius##917
+  accept SI:7##2300 |goto Elwynn Forest 43.87,65.94
+step
   talk Billy Maclure##247
   turnin Lost Necklace##85 |goto Elwynn Forest 43.13,85.72
 step
   talk Billy Maclure##247
   accept Pie for Billy##86 |goto Elwynn Forest 43.13,85.72
+step
+  note Bring 4 Chunks of Boar Meat to Auntie Bernice Stonefield at the Stonefield's Farm.
+  get Pie for Billy |q 86 |goto Elwynn Forest 43.13,85.72
 step
   talk "Auntie" Bernice Stonefield##246
   turnin Pie for Billy##86 |goto Elwynn Forest 34.49,84.25
@@ -203,9 +238,6 @@ step
 step
   talk Gramma Stonefield##248
   accept Note to William##107 |goto Elwynn Forest 34.94,83.86
-step
-  talk Morgan Pestle##279
-  turnin Shipment to Stormwind##61 |goto Stormwind City 56.2,64.58 |tip {turninat}Stormwind City
 step
   talk Guard Thomas##261
   turnin Further Concerns##35 |goto Elwynn Forest 73.97,72.18
@@ -223,14 +255,18 @@ step
   talk Marshal Haggard##294
   turnin Dead-tooth Jack##1667 |goto Elwynn Forest 84.61,69.38
 step
+  talk Sara Timberlain##278
+  turnin Red Linen Goods##83 |goto Elwynn Forest 79.46,68.79
+step
   talk Supervisor Raelen##10616
   turnin A Bundle of Trouble##5545 |goto Elwynn Forest 81.38,66.11
 step
   talk Sara Timberlain##278
   turnin Cloth and Leather Armor##59 |goto Elwynn Forest 79.46,68.79
 step
-  talk Sara Timberlain##278
-  turnin Red Linen Goods##83 |goto Elwynn Forest 79.46,68.79
+  only Rogue
+  talk Renzik "The Shiv"##6946
+  turnin SI:7##2300 |goto Stormwind City 75.76,60.36 |tip {turninat}Stormwind City
 step
   talk Marshal McBride##197
   turnin Kobold Camp Cleanup##7 |goto Elwynn Forest 48.92,41.61
@@ -244,11 +280,17 @@ step
   talk Deputy Willem##823
   accept Bounty on Garrick Padfoot##6 |goto Elwynn Forest 48.17,42.94
 step
+  note Kill Garrick Padfoot and bring his head to Deputy Willem at Northshire Abbey.
+  get Bounty on Garrick Padfoot |q 6 |goto Elwynn Forest 48.17,42.94
+step
   talk Marshal McBride##197
   accept Investigate Echo Ridge##15 |goto Elwynn Forest 48.92,41.61
 step
   talk Eagan Peltskinner##196
   accept Wolves Across the Border##33 |goto Elwynn Forest 48.94,40.16
+step
+  note Bring 8 pieces of Tough Wolf Meat to Eagan Peltskinner outside Northshire Abbey.
+  get Wolves Across the Border |q 33 |goto Elwynn Forest 48.94,40.16
 step
   only Human Warrior
   talk Marshal McBride##197
@@ -283,8 +325,14 @@ step
   talk William Pestle##253
   turnin Note to William##107 |goto Elwynn Forest 43.32,65.7
 step
+  talk Morgan Pestle##279
+  turnin Shipment to Stormwind##61 |goto Stormwind City 56.2,64.58 |tip {turninat}Stormwind City
+step
   talk William Pestle##253
   accept Collecting Kelp##112 |goto Elwynn Forest 43.32,65.7
+step
+  note Bring 4 Crystal Kelp Fronds to William Pestle in Goldshire.
+  get Collecting Kelp |q 112 |goto Elwynn Forest 43.32,65.7
 step
   talk Marshal Dughan##240
   accept Westbrook Garrison Needs Help!##239 |goto Elwynn Forest 42.11,65.93
@@ -295,6 +343,9 @@ step
   talk Billy Maclure##247
   accept Goldtooth##87 |goto Elwynn Forest 43.13,85.72
 step
+  note Bring Bernice's Necklace to "Auntie" Bernice Stonefield at the Stonefield Farm.
+  get Goldtooth |q 87 |goto Elwynn Forest 43.13,85.72
+step
   talk "Auntie" Bernice Stonefield##246
   turnin Goldtooth##87 |goto Elwynn Forest 34.49,84.25
 step
@@ -303,6 +354,9 @@ step
 step
   talk Deputy Rainer##963
   accept Riverpaw Gnoll Bounty##11 |goto Elwynn Forest 24.23,74.45
+step
+  note Bring 8 Painted Gnoll Armbands to Deputy Rainer at the Barracks.
+  get Riverpaw Gnoll Bounty |q 11 |goto Elwynn Forest 24.23,74.45
 step
   turnin Find the Lost Guards##37 |goto Elwynn Forest 72.66,60.34
 step
@@ -371,6 +425,9 @@ step
 step
   talk Milly Osworth##9296
   accept Milly's Harvest##3904 |goto Elwynn Forest 50.69,39.35
+step
+  note Bring 8 crates of Milly's Harvest to Milly Osworth at Northshire Abbey.
+  get Milly's Harvest |q 3904 |goto Elwynn Forest 50.69,39.35
 step
   talk Marshal Dughan##240
   turnin Report to Goldshire##54 |goto Elwynn Forest 42.11,65.93

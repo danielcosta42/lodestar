@@ -13,11 +13,20 @@ step
   talk Williden Marshal##9270
   accept Expedition Salvation##3881 |goto Un'Goro Crater 43.95,7.14
 step
+  note Bring a Crate of Foodstuffs and Research Equipment to Williden Marshal in Un'Goro Crater.
+  get Expedition Salvation |q 3881 |goto Un'Goro Crater 43.95,7.14
+step
   talk Spark Nilminer##9272
   accept Roll the Bones##3882 |goto Un'Goro Crater 43.5,7.42
 step
+  note Bring 8 Dinosaur Bones to Spark Nilminer in Un'Goro Crater.
+  get Roll the Bones |q 3882 |goto Un'Goro Crater 43.5,7.42
+step
   talk Hol'anyee Marshal##9271
   accept Alien Ecology##3883 |goto Un'Goro Crater 43.89,7.24
+step
+  note Use the Scraping Vial to collect a Hive Wall Sample from one of the Gorishi hive hatcheries in Un'Goro Crater. Look for the chambers with the hanging larval spawns.
+  get Alien Ecology |q 3883 |goto Un'Goro Crater 43.89,7.24
 step
   talk Linken##8737
   accept It's a Secret to Everybody##3908 |goto Un'Goro Crater 44.66,8.1
@@ -31,8 +40,13 @@ step
   talk Muigin##9119
   accept Muigin and Larion##4141 |goto Un'Goro Crater 42.94,9.64
 step
+  note Collect 15 Bloodpetals and return to Muigin.
+  get Muigin and Larion |q 4141 |goto Un'Goro Crater 42.94,9.64
+step
   talk Muigin##9119
   accept Bloodpetal Sprouts##4144 |goto Un'Goro Crater 42.94,9.64
+step
+  get Bloodpetal Sprouts |q 4144 |goto Un'Goro Crater 42.94,9.64
 step
   talk Karna Remtravel##9618
   accept Chasing A-Me 01##4243 |goto Un'Goro Crater 46.38,13.44
@@ -40,17 +54,26 @@ step
   talk J.D. Collie##9117
   accept Crystals of Power##4284 |goto Un'Goro Crater 41.92,2.7
 step
+  note Collect 7 Power Crystals of each color: red, blue, yellow, and green. Bring them to J.D. Collie at Marshal's Refuge.
+  get Crystals of Power |q 4284 |goto Un'Goro Crater 41.92,2.7
+step
   talk Spraggle Frock##9997
   accept Lost!##4492 |goto Un'Goro Crater 43.62,8.5
 step
   talk Shizzle##9998
   accept Shizzle's Flyer##4503 |goto Un'Goro Crater 44.23,11.59
 step
+  note Collect 8 Webbed Diemetradon Scales and 8 Webbed Pterrordax Scales for Shizzle in Marshal's Refuge.
+  get Shizzle's Flyer |q 4503 |goto Un'Goro Crater 44.23,11.59
+step
   talk A-Me 01##9623
   turnin Chasing A-Me 01##4243 |goto Un'Goro Crater 67.66,16.76
 step
   talk A-Me 01##9623
   accept Chasing A-Me 01##4244 |goto Un'Goro Crater 67.66,16.76
+step
+  note Find a Mithril Casing and return to A-Me 01 in Un'Goro Crater.
+  get Chasing A-Me 01 |q 4244 |goto Un'Goro Crater 67.66,16.76
 step
   talk Ringo##9999
   turnin Lost!##4492 |goto Un'Goro Crater 51.9,49.85
@@ -67,11 +90,20 @@ step
   talk Torwa Pathfinder##9619
   accept The Apes of Un'Goro##4289 |goto Un'Goro Crater 71.64,75.96
 step
+  note Bring 2 Un'Goro Gorilla Pelts, 2 Un'Goro Stomper Pelts, and 2 Un'Goro Thunderer Pelts to Torwa Pathfinder at the entrance of Un'Goro Crater.
+  get The Apes of Un'Goro |q 4289 |goto Un'Goro Crater 71.64,75.96
+step
   talk Torwa Pathfinder##9619
   accept The Fare of Lar'korwi##4290 |goto Un'Goro Crater 71.64,75.96
 step
+  note Find the carcass of Lar'korwi's freshest kill and steal a Piece of Threshadon Carcass before returning to Torwa Pathfinder in Un'Goro Crater.
+  get The Fare of Lar'korwi |q 4290 |goto Un'Goro Crater 71.64,75.96
+step
   talk Torwa Pathfinder##9619
   accept Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
+step
+  note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.
+  get Bloodpetal Poison |q 9052 |goto Un'Goro Crater 71.64,75.96
 step
   talk J.D. Collie##9117
   turnin A Gnome's Assistance##3941 |goto Un'Goro Crater 41.92,2.7
@@ -142,8 +174,14 @@ step
   talk Torwa Pathfinder##9619
   accept The Scent of Lar'korwi##4291 |goto Un'Goro Crater 71.64,75.96
 step
+  note Bring 2 Ravasaur Pheromone Glands to Torwa Pathfinder near the entrance to Un'Goro Crater.
+  get The Scent of Lar'korwi |q 4291 |goto Un'Goro Crater 71.64,75.96
+step
   talk Torwa Pathfinder##9619
   accept The Mighty U'cha##4301 |goto Un'Goro Crater 71.64,75.96
+step
+  note Bring U'cha's Pelt to Torwa Pathfinder at the entrance of Un'Goro Crater.
+  get The Mighty U'cha |q 4301 |goto Un'Goro Crater 71.64,75.96
 step
   talk Torwa Pathfinder##9619
   accept Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
@@ -169,8 +207,14 @@ step
   talk Torwa Pathfinder##9619
   accept The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
 step
+  note Using the contents of Torwa's Pouch, summon Lar'korwi and defeat him. Then bring Lar'korwi's Head to Torwa Pathfinder near the entrance to Un'Goro Crater.
+  get The Bait for Lar'korwi |q 4292 |goto Un'Goro Crater 71.64,75.96
+step
   talk Torwa Pathfinder##9619
   accept A Better Ingredient##9053 |goto Un'Goro Crater 71.64,75.96
+step
+  note Retrieve a Putrid Vine from the guardian at the bottom of the Sunken Temple and return to Torwa Pathfinder.
+  get A Better Ingredient |q 9053 |goto Un'Goro Crater 71.64,75.96
 step
   talk Torwa Pathfinder##9619
   turnin The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96

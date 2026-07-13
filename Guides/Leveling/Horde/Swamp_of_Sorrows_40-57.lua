@@ -13,8 +13,14 @@ step
   talk Magtoor##1776
   accept Draenethyst Crystals##1389 |goto Swamp of Sorrows 25.98,31.4
 step
+  note Bring 6 Draenethyst crystals to Magtoor at The Harborage in the Swamp of Sorrows.
+  get Draenethyst Crystals |q 1389 |goto Swamp of Sorrows 25.98,31.4
+step
   talk Dar##5591
   accept Lack of Surplus##698 |goto Swamp of Sorrows 44.7,57.21
+step
+  note Bring 8 Unprepared Sawtooth Flanks to Tok'Kar in Swamp of Sorrows.
+  get Lack of Surplus |q 698 |goto Swamp of Sorrows 44.7,57.21
 step
   talk Helgrum the Swift##1442
   accept Neeka Bloodscar##1418 |goto Swamp of Sorrows 47.74,55.2
@@ -22,15 +28,36 @@ step
   talk Fel'zerul##1443
   accept Pool of Tears##1424 |goto Swamp of Sorrows 47.93,54.78
 step
+  note Fel'zerul in Stonard wants you to gather 10 Atal'ai Artifacts.
+  get Pool of Tears |q 1424 |goto Swamp of Sorrows 47.93,54.78
+step
   talk Dar##5591
   accept Fresh Meat##1430 |goto Swamp of Sorrows 44.7,57.21
+step
+  note Bring 10 Monstrous Crawler Legs to Dar in the Swamp of Sorrows.
+  get Fresh Meat |q 1430 |goto Swamp of Sorrows 44.7,57.21
 step
   talk Fel'zerul##1443
   accept The Temple of Atal'Hakkar##1445 |goto Swamp of Sorrows 47.93,54.78
 step
+  note Collect 20 Fetishes of Hakkar and bring them to Fel'Zerul in Stonard.
+  get The Temple of Atal'Hakkar |q 1445 |goto Swamp of Sorrows 47.93,54.78
+step
   only Mage
   talk Haromm##986
   accept Elemental Mastery##8410 |goto Swamp of Sorrows 48.19,57.94
+step
+  only Mage
+  note Collect a sample of air, fire, earth and water for Bath'rah the Windwatcher.
+  get Elemental Mastery |q 8410 |goto Swamp of Sorrows 48.19,57.94
+step
+  only Druid
+  talk Kartosh##988
+  accept An Imp's Request##8419 |goto Swamp of Sorrows 48.65,55.64
+step
+  only Druid
+  note Bring a piece of felcloth to Impsy in Felwood.
+  get An Imp's Request |q 8419 |goto Swamp of Sorrows 48.65,55.64
 step
   talk Cersei Dusksinger##17109
   accept Little Morsels##9440 |goto Swamp of Sorrows 47.81,54.95
@@ -46,6 +73,9 @@ step
 step
   talk Fallen Hero of the Horde##7572
   accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
+step
+  note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
+  get Uniting the Shattered Amulet |q 3627 |goto Swamp of Sorrows 34.29,66.14
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -64,6 +94,9 @@ step
   talk Tok'Kar##5592
   accept Lack of Surplus##699 |goto Swamp of Sorrows 81.32,80.97
 step
+  note Bring 6 Sawtooth Snapper Claws to Tok'Kar in the Swamp of Sorrows.
+  get Lack of Surplus |q 699 |goto Swamp of Sorrows 81.32,80.97
+step
   talk Neeka Bloodscar##5394
   turnin Neeka Bloodscar##1418 |goto Badlands 6.49,47.2 |tip {turninat}Badlands
 step
@@ -72,6 +105,10 @@ step
 step
   talk Cersei Dusksinger##17109
   turnin Little Morsels##9440 |goto Swamp of Sorrows 47.81,54.95
+step
+  only Druid
+  talk Impsy##14470
+  turnin An Imp's Request##8419 |goto Felwood 41.36,45.02 |tip {turninat}Felwood
 step
   talk Fel'zerul##1443
   turnin The Temple of Atal'Hakkar##1445 |goto Swamp of Sorrows 47.93,54.78
@@ -111,6 +148,9 @@ step
   talk Fallen Hero of the Horde##7572
   accept You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14
 step
+  note Destroy Razelikh the Defiler and return the Severed Horn of the Defiler to the Fallen Hero of the Horde. You will also need to return the Ward of the Defiler so that the Fallen Hero can destroy it, preventing it from ever falling into the wrong hands.
+  get You Are Rakh'likh, Demon |q 3628 |goto Swamp of Sorrows 34.29,66.14
+step
   only Warrior
   talk Fallen Hero of the Horde##7572
   accept War on the Shadowsworn##8424 |goto Swamp of Sorrows 34.29,66.14
@@ -142,6 +182,10 @@ step
   talk Fallen Hero of the Horde##7572
   accept Voodoo Feathers##8425 |goto Swamp of Sorrows 34.29,66.14
 step
+  only Warrior
+  note Bring the Voodoo Feathers from the trolls in the Sunken Temple to the Fallen Hero of the Horde.
+  get Voodoo Feathers |q 8425 |goto Swamp of Sorrows 34.29,66.14
+step
   talk Katar##5593
   turnin Threat From the Sea##1422 |goto Swamp of Sorrows 83.76,80.41
 step
@@ -156,6 +200,9 @@ step
 step
   talk Bengor##7643
   accept The Swamp Talker##2623 |goto Swamp of Sorrows 44.97,57.37
+step
+  note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
+  get The Swamp Talker |q 2623 |goto Swamp of Sorrows 44.97,57.37
 step
   only Warrior
   talk Fallen Hero of the Horde##7572

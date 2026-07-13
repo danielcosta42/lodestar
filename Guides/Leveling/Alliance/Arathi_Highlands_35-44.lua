@@ -31,6 +31,9 @@ step
   talk Apprentice Kryten##2788
   accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
 step
+  note Find 10 Witherbark Tusks, 4 Witherbark Medicine Pouches and a Shadow Hunter Knife for Apprentice Kryten at Refuge Pointe.
+  get Worth Its Weight in Gold |q 691 |goto Arathi Highlands 46.2,47.75
+step
   talk Samuel Hawke##15127
   accept Arathor Basic Care Package##8260 |goto Arathi Highlands 45.97,45.21
 step
@@ -45,6 +48,9 @@ step
 step
   talk Quae##2712
   accept Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
+step
+  note Find the Forsaken Courier and bring back her Sealed Folder to Quae near the Go'Shek Farm.
+  get Hints of a New Plague? |q 658 |goto Arathi Highlands 60.18,53.85
 step
   talk Zaruk##2787
   accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
@@ -64,8 +70,14 @@ step
   talk First Mate Nilzlix##2767
   accept Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
 step
+  note First Mate Nilzlix wants you to retrieve the Charts and Logs from the Maiden's Folly and the Spirit of Silverpine.
+  get Deep Sea Salvage |q 662 |goto Arathi Highlands 32.8,81.48
+step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
+step
+  note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
+  get Sunken Treasure |q 666 |goto Arathi Highlands 33.86,80.45
 step
   talk Samuel Hawke##15127
   turnin Arathor Basic Care Package##8260 |goto Arathi Highlands 45.97,45.21
@@ -82,8 +94,14 @@ step
   talk Captain Nials##2700
   accept Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
 step
+  note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
+  get Stromgarde Badges |q 682 |goto Arathi Highlands 45.83,47.56
+step
   talk Skuerto##2789
   accept Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
+step
+  note Find Trelane's Wand of Invocation and return it to Skuerto at Refuge Pointe.
+  get Wand over Fist |q 693 |goto Arathi Highlands 46.65,47.01
 step
   talk Quae##2712
   turnin Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
@@ -108,6 +126,9 @@ step
 step
   talk Skuerto##2789
   accept Trelane's Defenses##694 |goto Arathi Highlands 46.65,47.01
+step
+  note Find an Azure Agate and bring it to Apprentice Kryten at Refuge Pointe.
+  get Trelane's Defenses |q 694 |goto Arathi Highlands 46.65,47.01
 step
   talk Kinelory##2713
   turnin Hints of a New Plague?##657 |goto Arathi Highlands 60.24,53.92
@@ -141,6 +162,9 @@ step
 step
   talk Skuerto##2789
   accept Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
+step
+  note Find Trelane's Phylactery, Trelane's Orb, and Trelane's Ember Agate, and return them to Skuerto at Refuge Pointe.
+  get Attack on the Tower |q 696 |goto Arathi Highlands 46.65,47.01
 step
   talk Phin Odelic##2711
   turnin Hints of a New Plague?##661 |goto Hillsbrad Foothills 50.35,59.05 |tip {turninat}Hillsbrad Foothills

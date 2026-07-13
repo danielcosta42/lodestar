@@ -10,8 +10,13 @@ step
   talk Knot Thimblejack##14338
   accept The Gordok Ogre Suit##5518 |goto Dire Maul - Dungeon -1,-1
 step
+  note Bring 4 Bolts of Runecloth, 8 Rugged Leather, 2 Rune Threads, and Ogre Tannin to Knot Thimblejack. He is currently chained inside the Gordok wing of Dire Maul.
+  get The Gordok Ogre Suit |q 5518 |goto Dire Maul - Dungeon -1,-1
+step
   talk Knot Thimblejack##14338
   accept Free Knot!##5525 |goto Dire Maul - Dungeon -1,-1
+step
+  get Free Knot! |q 5525 |goto Dire Maul - Dungeon -1,-1
 step
   talk Stomper Kreeg##14322
   accept The Gordok Taste Test##5528 |goto Dire Maul - Dungeon -1,-1
@@ -22,11 +27,20 @@ step
   talk Lorekeeper Lydros##14368
   accept Libram of Focus##7484 |goto Dire Maul - Dungeon -1,-1
 step
+  note Bring a Libram of Focus, 1 Pristine Black Diamond, 4 Large Brilliant Shards, and 2 Skin of Shadow to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Focus.
+  get Libram of Focus |q 7484 |goto Dire Maul - Dungeon -1,-1
+step
   talk Captain Kromcrush##14325
   accept Unfinished Gordok Business##7703 |goto Dire Maul - Dungeon -1,-1
 step
+  note Find the Gauntlet of Gordok Might and return it to Captain Kromcrush in Dire Maul.
+  get Unfinished Gordok Business |q 7703 |goto Dire Maul - Dungeon -1,-1
+step
   talk Falrin Treeshaper##16032
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
+step
+  note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
+  get Falrin's Vendetta |q 8949 |goto Dire Maul - Dungeon -1,-1
 step
   note You must destroy the guardians surrounding the 5 Pylons that power the Prison of Immol'thar. Once the Pylons have powered down, the force field surrounding Immol'thar will have dissipated.
   kill Immol'thar##11496 |q 7461 |goto Dire Maul - Dungeon -1,-1
@@ -58,6 +72,9 @@ step
   talk Falrin Treeshaper##16032
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
+  note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
+  get The Instigator's Enchantment |q 8950 |goto Dire Maul - Dungeon -1,-1
+step
   turnin The Treasure of the Shen'dralar##7877 |goto Dire Maul - Dungeon -1,-1
 step
   talk Falrin Treeshaper##16032
@@ -65,6 +82,9 @@ step
 step
   talk Falrin Treeshaper##16032
   accept The Challenge##9015 |goto Dire Maul - Dungeon -1,-1
+step
+  note Travel to the Ring of the Law in Blackrock Depths and place the Banner of Provocation in its center as you are sentenced by High Justice Grimstone. Slay Theldren and his gladiators and return to Anthion Harmon in the Eastern Plaguelands with the first piece of Lord Valthalak's amulet.
+  get The Challenge |q 9015 |goto Dire Maul - Dungeon -1,-1
 step
   talk Anthion Harmon##16016
   turnin The Challenge##9015 |goto Eastern Plaguelands 30.85,16.75 |tip {turninat}Eastern Plaguelands

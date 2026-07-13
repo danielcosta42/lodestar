@@ -13,14 +13,23 @@ step
   talk Janice Felstone##10778
   accept Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
 step
+  note Locate the other half of the Good Luck Charm somewhere on the Felstone Farm in Western Plaguelands and reassemble it.
+  get Two Halves Become One |q 5051 |goto Western Plaguelands 38.4,54.05
+step
   talk Chromie##10667
   accept A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
+step
+  note Use the Temporal Displacer near one of Andorhal's silos and uncover Temporal Parasites.
+  kill Temporal Parasite##10717 |q 4971
 step
   talk Jeziba##10976
   accept Catalogue of the Wayward##5164 |goto Western Plaguelands 39.37,66.78
 step
   talk Chromie##10667
   accept The Battle of Darrowshire##5721 |goto Western Plaguelands 39.46,66.76
+step
+  note Place the Relic Bundle at the Darrowshire town square.
+  kill Joseph Redpath##10936 |q 5721
 step
   talk Mulgris Deepriver##10739
   accept The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
@@ -31,11 +40,17 @@ step
   talk Marlene Redpath##10927
   accept A Strange Historian##5153 |goto Western Plaguelands 49.17,78.57
 step
+  note Bring Joseph's Wedding Ring to Chromie.
+  get A Strange Historian |q 5153 |goto Western Plaguelands 49.17,78.57
+step
   talk Myranda the Hag##11872
   accept Scarlet Subterfuge##5862 |goto Western Plaguelands 50.79,77.85
 step
   talk Myranda the Hag##11872
   accept Oculus Illusions##6569 |goto Western Plaguelands 50.79,77.85
+step
+  note Travel to Blackrock Spire and collect 20 Black Dragonspawn Eyes. Return to Myranda the Hag when the task is complete.
+  get Oculus Illusions |q 6569 |goto Western Plaguelands 50.79,77.85
 step
   talk Pamela Redpath##10926
   turnin Little Pamela##5142 |goto Eastern Plaguelands 36.45,90.8 |tip {turninat}Eastern Plaguelands
@@ -49,14 +64,23 @@ step
   talk Argent Quartermaster Lightspark##10857
   accept Chromatic Mantle of the Dawn##5521 |goto Western Plaguelands 42.84,83.72
 step
+  note Bring 25 Argent Dawn Valor Tokens to Quartermaster Lightspark at Chillwind Camp, Western Plaguelands.
+  get Chromatic Mantle of the Dawn |q 5521 |goto Western Plaguelands 42.84,83.72
+step
   talk Eva Sarkhoff##11216
   accept Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
 step
   talk Magistrate Marduke##11286
   accept The Lich, Ras Frostwhisper##5466 |goto Western Plaguelands 70.57,74.11
 step
+  note Find Ras Frostwhisper in the Scholomance. When you have found him, use the Soulbound Keepsake on his undead visage. Should you succeed in reverting him to a mortal, strike him down and recover the Human Head of Ras Frostwhisper. Take the head back to Magistrate Marduke.
+  get The Lich, Ras Frostwhisper |q 5466 |goto Western Plaguelands 70.57,74.11
+step
   talk Artist Renfray##11936
   accept Of Love and Family##5848 |goto Western Plaguelands 65.77,75.37
+step
+  note Travel to Stratholme, in the northern part of the Plaguelands. It is in the Scarlet Bastion that you will find the painting 'Of Love and Family,' hidden behind another painting depicting the twin moons of our world.
+  get Of Love and Family |q 5848 |goto Western Plaguelands 65.77,75.37
 step
   talk Elder Moonstrike##15594
   accept Moonstrike the Elder##8714 |goto Western Plaguelands 69.18,73.45
@@ -98,8 +122,14 @@ step
   talk Chromie##10667
   accept Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
 step
+  note Locate 5 Andorhal Watches, found in lockboxes amongst the rubble of the city. Return with them to Chromie in the Andorhal Inn, Western Plaguelands.
+  get Counting Out Time |q 4972 |goto Western Plaguelands 39.46,66.76
+step
   talk Chromie##10667
   accept The Annals of Darrowshire##5154 |goto Western Plaguelands 39.46,66.76
+step
+  note Bring the Annals of Darrowshire to Chromie in Andorhal.
+  get The Annals of Darrowshire |q 5154 |goto Western Plaguelands 39.46,66.76
 step
   talk Mulgris Deepriver##10739
   turnin The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
@@ -130,6 +160,9 @@ step
 step
   talk Eva Sarkhoff##11216
   accept Krastinov's Bag of Horrors##5515 |goto Western Plaguelands 70.22,73.71
+step
+  note Locate Jandice Barov in the Scholomance and destroy her. From her corpse recover Krastinov's Bag of Horrors. Return the bag to Eva Sarkhoff.
+  get Krastinov's Bag of Horrors |q 5515 |goto Western Plaguelands 70.22,73.71
 step
   talk Elder Meadowrun##15602
   turnin Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
@@ -173,6 +206,9 @@ step
   talk Eva Sarkhoff##11216
   accept Kirtonos the Herald##5384 |goto Western Plaguelands 70.22,73.71
 step
+  note Return to the Scholomance with the Blood of Innocents. Find the porch and place the Blood of Innocents in the brazier. Kirtonos will come to feast upon your soul.
+  kill Kirtonos the Herald##10506 |q 5384
+step
   talk Nara Wildmane##5770
   turnin Glyphed Oaken Branch##4987 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
@@ -184,6 +220,9 @@ step
 step
   talk Magistrate Marduke##11286
   accept The Human, Ras Frostwhisper##5461 |goto Western Plaguelands 70.57,74.11
+step
+  note Travel to the Arathi Highlands, to the ruins of Stromgarde. Search Stromgarde for a Keepsake of Remembrance. If you find such an item, return with it to Magistrate Marduke.
+  get The Human, Ras Frostwhisper |q 5461 |goto Western Plaguelands 70.57,74.11
 step
   talk Magistrate Marduke##11286
   turnin The Human, Ras Frostwhisper##5461 |goto Western Plaguelands 70.57,74.11

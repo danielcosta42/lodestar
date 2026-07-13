@@ -16,6 +16,9 @@ step
   talk Atal'ai Exile##5598
   accept Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
 step
+  note The Atal'ai Exile in The Hinterlands wants the Head of Jammal'an.
+  get Jammal'an the Prophet |q 1446 |goto The Hinterlands 33.75,75.21
+step
   talk Katoom the Angler##14740
   accept Snapjaws, Mon!##7815 |goto The Hinterlands 80.33,81.54
 step
@@ -28,11 +31,20 @@ step
   talk Huntsman Markhor##14741
   accept Avenging the Fallen##7830 |goto The Hinterlands 79.16,79.53
 step
+  note Huntsman Markhor at Revantusk Village in the Hinterlands wants you to kill a Razorbeak Skylord and retrieve its Skylord Plume. Return to him once the task is complete.
+  get Avenging the Fallen |q 7830 |goto The Hinterlands 79.16,79.53
+step
   talk Smith Slagtree##14737
   accept Vilebranch Hooligans##7839 |goto The Hinterlands 77.23,80.13
 step
+  note Smith Slagtree at Revantusk Village in the Hinterlands wants you to find Slagtree's Lost Tools. Return to him once this task is complete.
+  get Vilebranch Hooligans |q 7839 |goto The Hinterlands 77.23,80.13
+step
   talk Lard##14731
   accept Lard Lost His Lunch##7840 |goto The Hinterlands 78.14,81.38
+step
+  note Lard at Revantusk Village in the Hinterlands wants you to find Lard's Lunch. Return to him when this task is complete.
+  get Lard Lost His Lunch |q 7840 |goto The Hinterlands 78.14,81.38
 step
   talk Otho Moji'ko##14738
   accept Message to the Wildhammer##7841 |goto The Hinterlands 79.38,79.08
@@ -46,8 +58,14 @@ step
   talk Huntsman Markhor##14741
   accept Separation Anxiety##7849 |goto The Hinterlands 79.16,79.53
 step
+  note Huntsman Markhor at Revantusk Village in the Hinterlands wants you to recover his twin brother's remains. Find and return Huntsman Malkhor's Skull and Huntsman Malkhor's Bones to Huntsman Markhor.
+  get Separation Anxiety |q 7849 |goto The Hinterlands 79.16,79.53
+step
   talk Primal Torntusk##14736
   accept Dark Vessels##7850 |goto The Hinterlands 78.2,81.18
+step
+  note Primal Torntusk at Revantusk Village in the Hinterlands wants you to recover 10 Vessels of Tainted Blood from Jintha'alor. Return to Primal Torntusk when this task is complete.
+  get Dark Vessels |q 7850 |goto The Hinterlands 78.2,81.18
 step
   note Katoom the Angler at Revantusk Village in the Hinterlands wants you to kill 15 Saltwater Snapjaw turtles. Return to him when you have completed this task.
   kill Saltwater Snapjaw##2505 |q 7815 |goto The Hinterlands 81.48,60.4
@@ -70,6 +88,9 @@ step
   talk Gilveradin Sunchaser##7801
   accept A Sticky Situation##77 |goto The Hinterlands 26.71,48.59
 step
+  note Recover 10 bottles of Hinterlands Honey Ripple from the crates located around the abandoned Horde base in Skulk Rock.
+  get A Sticky Situation |q 77 |goto The Hinterlands 26.71,48.59
+step
   note Otho Moji'ko at Revantusk Village in the Hinterlands wants you to slaughter 15 Highvale Outrunners, 15 Highvale Scouts, 15 Highvale Marksman and 15 Highvale Rangers. Return to him when this task is complete.
   kill Highvale Scout##2692 |q 7841 |goto The Hinterlands 32.18,48.91
 step
@@ -81,6 +102,9 @@ step
 step
   talk Elder Torntusk##14757
   accept Recover the Key!##7846 |goto The Hinterlands 59.69,77.84
+step
+  note Elder Torntusk at Jintha'alor wants you to kill Hitah'ya the Keeper to get the Shackle Key to his bindings. Return to Elder Torntusk when you have recovered the key.
+  get Recover the Key! |q 7846 |goto The Hinterlands 59.69,77.84
 step
   talk Lard##14731
   turnin Lard Lost His Lunch##7840 |goto The Hinterlands 78.14,81.38
@@ -115,8 +139,14 @@ step
   talk Katoom the Angler##14740
   accept Gammerita, Mon!##7816 |goto The Hinterlands 80.33,81.54
 step
+  note Katoom the Angler at Revantusk Village in the Hinterlands wants you to kill Gammerita and retrieve Katoom's Best Lure from her corpse.
+  get Gammerita, Mon! |q 7816 |goto The Hinterlands 80.33,81.54
+step
   talk Otho Moji'ko##14738
   accept Another Message to the Wildhammer##7842 |goto The Hinterlands 79.38,79.08
+step
+  note Otho Moji'ko at Revantusk Village in the Hinterlands wants you to bring him 10 Long Elegant Feathers from the gryphons that inhabit the Hinterlands. Return to him once this task is complete.
+  get Another Message to the Wildhammer |q 7842 |goto The Hinterlands 79.38,79.08
 step
   talk Elder Highpeak##15559
   turnin Highpeak the Elder##8643 |goto The Hinterlands 50.0,48.05

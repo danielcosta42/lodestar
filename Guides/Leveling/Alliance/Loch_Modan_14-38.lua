@@ -19,8 +19,14 @@ step
   talk Mountaineer Kadrell##1340
   accept Rat Catching##416 |goto Loch Modan 34.17,47.84
 step
+  note Bring 12 Tunnel Rat Ears to Mountaineer Kadrell in Thelsamar.
+  get Rat Catching |q 416 |goto Loch Modan 34.17,47.84
+step
   talk Vidra Hearthstove##1963
   accept Thelsamar Blood Sausages##418 |goto Loch Modan 34.83,49.28
+step
+  note Bring 3 pieces of Bear Meat, 3 Boar Intestines, and 3 Spider Ichor to Vidra Hearthstove in Thelsamar.
+  get Thelsamar Blood Sausages |q 418 |goto Loch Modan 34.83,49.28
 step
   talk Jern Hornhelm##1105
   accept Ironband's Excavation##436 |goto Loch Modan 37.24,47.38
@@ -38,8 +44,15 @@ step
   talk Bailor Stonehand##6241
   accept Bailor's Ore Shipment##1655 |goto Loch Modan 35.95,44.91
 step
+  only Paladin
+  note Bring Jordan's Ore Shipment to Bailor Stonehand in Loch Modan.
+  get Bailor's Ore Shipment |q 1655 |goto Loch Modan 35.95,44.91
+step
   talk Ghak Healtouch##1470
   accept Badlands Reagent Run##2500 |goto Loch Modan 37.07,49.38
+step
+  note Acquire the reagents Ghak Healtouch needs from the Badlands, then return to him in Thelsamar.
+  get Badlands Reagent Run |q 2500 |goto Loch Modan 37.07,49.38
 step
   talk Brock Stoneseeker##1681
   accept Honor Students##6387 |goto Loch Modan 37.02,47.81
@@ -56,11 +69,17 @@ step
   talk Magmar Fellhew##1345
   accept Gathering Idols##297 |goto Loch Modan 64.9,66.66
 step
+  note Bring Magmar Fellhew 8 Carved Stone Idols.
+  get Gathering Idols |q 297 |goto Loch Modan 64.9,66.66
+step
   talk Prospector Ironband##1344
   accept Excavation Progress Report##298 |goto Loch Modan 65.93,65.62
 step
   talk Prospector Ironband##1344
   accept Agmond's Fate##704 |goto Loch Modan 65.93,65.62
+step
+  note Bring 4 Carved Stone Urns to Prospector Ironband in Loch Modan.
+  get Agmond's Fate |q 704 |goto Loch Modan 65.93,65.62
 step
   talk Prospector Ironband##1344
   accept Find Agmond##738 |goto Loch Modan 65.93,65.62
@@ -71,11 +90,17 @@ step
   talk Marek Ironheart##1154
   accept Crocolisk Hunting##385 |goto Loch Modan 81.76,61.66
 step
+  note Get 5 pieces of Crocolisk Meat and 6 Crocolisk Skins for Marek Ironheart at the Farstrider Lodge.
+  get Crocolisk Hunting |q 385 |goto Loch Modan 81.76,61.66
+step
   note Kill 6 Mountain Buzzards and return to Daryl the Youngling in the Farstrider Lodge within 15 minutes.
   kill Mountain Buzzard##1194 |q 257 |goto Loch Modan 76.77,70.46
 step
   talk Bingles Blastenheimer##6577
   accept Bingles' Missing Supplies##2038 |goto Loch Modan 63.56,47.92
+step
+  note Find and return Bingles' supplies:
+  get Bingles' Missing Supplies |q 2038 |goto Loch Modan 63.56,47.92
 step
   note Magistrate Bluntnose of Thelsamar has hired you to kill 4 Mo'grosh Ogres, 4 Mo'grosh Brutes and 4 Mo'grosh Enforcers.
   kill Mo'grosh Ogre##1178 |q 255 |goto Loch Modan 69.33,25.54
@@ -89,6 +114,9 @@ step
   talk Chief Engineer Hinderweir VII##1093
   accept A Dark Threat Looms##278 |goto Loch Modan 46.05,13.61
 step
+  note Chief Engineer Hinderweir wants you to gather Lurker Venom, a Mo'grosh Crystal, and a Crocolisk Tear.
+  get A Dark Threat Looms |q 278 |goto Loch Modan 46.05,13.61
+step
   talk Mountaineer Rockgar##1342
   turnin Report to Mountaineer Rockgar##468 |goto Loch Modan 25.44,10.38
 step
@@ -97,6 +125,9 @@ step
 step
   talk Mountaineer Stormpike##1343
   accept Filthy Paws##307 |goto Loch Modan 24.76,18.4
+step
+  note Go to the Silver Stream Mine and collect 4 loads of Miners' Gear.
+  get Filthy Paws |q 307 |goto Loch Modan 24.76,18.4
 step
   talk Mountaineer Stormpike##1343
   accept Stormpike's Order##1338 |goto Loch Modan 24.76,18.4
@@ -107,6 +138,9 @@ step
   talk Captain Rugelfuss##1092
   accept The Trogg Threat##267 |goto Loch Modan 23.23,73.68
 step
+  note Bring 8 Trogg Stone Teeth to Captain Rugelfuss in the southern guard tower.
+  get The Trogg Threat |q 267 |goto Loch Modan 23.23,73.68
+step
   note Mountaineer Cobbleflint of the southern guard tower wants you to kill 10 Stonesplinter Troggs and 10 Stonesplinter Scouts.
   kill Stonesplinter Trogg##1161 |q 224 |goto Loch Modan 31.54,72.36
 step
@@ -115,6 +149,9 @@ step
 step
   talk Hammertoe Grez##2909
   accept Amulet of Secrets##722 |goto Loch Modan 37.28,85.78
+step
+  note Find Hammertoe's Amulet and return it to him in Uldaman.
+  get Amulet of Secrets |q 722 |goto Loch Modan 37.28,85.78
 step
   talk Mountaineer Kadrell##1340
   turnin Rat Catching##416 |goto Loch Modan 34.17,47.84
@@ -144,11 +181,17 @@ step
   talk Ghak Healtouch##1470
   accept Uldaman Reagent Run##17 |goto Loch Modan 37.07,49.38
 step
+  note Bring 12 Magenta Fungus Caps to Ghak Healtouch in Thelsamar.
+  get Uldaman Reagent Run |q 17 |goto Loch Modan 37.07,49.38
+step
   talk Jern Hornhelm##1105
   accept Report to Ironforge##301 |goto Loch Modan 37.24,47.38
 step
   talk Ghak Healtouch##1470
   accept Badlands Reagent Run II##2501 |goto Loch Modan 37.07,49.38
+step
+  note Use the empty thaumaturgy vessels on scorched guardian dragons found in the Badlands. Once you have them filled, bring them to Ghak Healtouch in Thelsamar.
+  get Badlands Reagent Run II |q 2501 |goto Loch Modan 37.07,49.38
 step
   talk Thorgrum Borrelson##1572
   accept Ride to Ironforge##6391 |goto Loch Modan 33.94,50.95
@@ -234,6 +277,9 @@ step
 step
   talk Vyrin Swiftwind##1156
   accept Vyrin's Revenge##271 |goto Loch Modan 81.73,64.14
+step
+  note Kill Ol' Sooty then show your handiwork to Daryl the Youngling at the Farstrider Lodge.
+  get Vyrin's Revenge |q 271 |goto Loch Modan 81.73,64.14
 step
   talk Prospector Ryedol##2910
   turnin Prospect of Faith##723 |goto Badlands 53.42,43.39 |tip {turninat}Badlands

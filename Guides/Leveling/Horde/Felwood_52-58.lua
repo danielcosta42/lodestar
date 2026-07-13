@@ -13,8 +13,14 @@ step
   talk Eridan Bluewind##9116
   accept Silver Heart##4084 |goto Felwood 51.35,81.51
 step
+  note Collect 11 Silvery Claws and 1 Irontree Heart for Eridan Bluewind in Felwood.
+  get Silver Heart |q 4084 |goto Felwood 51.35,81.51
+step
   talk Maybess Riverbreeze##9529
   accept Cleansing Felwood##4102 |goto Felwood 46.75,83.13
+step
+  note Bring 15 Blood Amber to Maybess Riverbreeze in Felwood.
+  get Cleansing Felwood |q 4102 |goto Felwood 46.75,83.13
 step
   talk Greta Mosshoof##10922
   accept Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
@@ -31,6 +37,9 @@ step
   talk Winna Hazzard##9996
   accept Well of Corruption##4505 |goto Felwood 34.21,52.34
 step
+  note Collect a sample of corrupted water from the Jadefire Satyrs' moonwell and bring it to Winna Hazzard at Bloodvenom Post.
+  get Well of Corruption |q 4505 |goto Felwood 34.21,52.34
+step
   talk Trull Failbane##10306
   accept Wild Guardians##4521 |goto Felwood 34.73,52.79
 step
@@ -42,6 +51,9 @@ step
 step
   talk Dreka'Sur##9620
   accept A Husband's Last Battle##6162 |goto Felwood 34.8,52.73
+step
+  note Kill Overlord Ror and return his claw to Dreka'Sur at Bloodvenom Post in Felwood.
+  get A Husband's Last Battle |q 6162 |goto Felwood 34.8,52.73
 step
   talk Elder Nightwind##15603
   accept Nightwind the Elder##8723 |goto Felwood 37.64,53.0
@@ -56,6 +68,10 @@ step
   talk Impsy##14470
   accept Hot and Itchy##8420 |goto Felwood 41.36,45.02
 step
+  only Druid
+  note Bring a piece of felcloth to Impsy in Felwood.
+  get Hot and Itchy |q 8420 |goto Felwood 41.36,45.02
+step
   note Trull Failbane in Felwood wants you to kill 15 Raging Owlbeasts and 15 Ragged Owlbeasts.
   kill Raging Owlbeast##7451 |q 4521 |goto Winterspring 58.73,31.69
 step
@@ -65,8 +81,14 @@ step
   talk Meilosh##11557
   accept Runecloth##6031 |goto Felwood 65.69,2.81
 step
+  note Bring 30 Runecloth to Meilosh in Timbermaw Hold.
+  get Runecloth |q 6031 |goto Felwood 65.69,2.81
+step
   talk Meilosh##11557
   accept Sacred Cloth##6032 |goto Felwood 65.69,2.81
+step
+  note Bring 2 Mooncloth to Meilosh in Timbermaw Hold.
+  get Sacred Cloth |q 6032 |goto Felwood 65.69,2.81
 step
   talk Nafien##15395
   accept Deadwood of the North##8461 |goto Felwood 64.77,8.13
@@ -76,6 +98,9 @@ step
 step
   talk Gorn One Eye##11555
   accept The Root of All Evil##8481 |goto Felwood 65.18,2.68
+step
+  note Plant the Demon Summoning Torch in the mouth of High Chief Winterfall's cave in the Winterfall furbolg village. Defeat the demon and retrieve the Essence of Xandivious for Gorn One Eye in Timbermaw Hold.
+  get The Root of All Evil |q 8481 |goto Felwood 65.18,2.68
 step
   talk Gorn One Eye##11555
   accept The Brokering of Peace##8485 |goto Felwood 65.18,2.68
@@ -104,8 +129,14 @@ step
   talk Eridan Bluewind##9116
   accept Aquementas##4005 |goto Felwood 51.35,81.51
 step
+  note Take the Book of Aquor, the Silvery Claws, and the Irontree Heart to Tanaris.
+  get Aquementas |q 4005 |goto Felwood 51.35,81.51
+step
   talk Greta Mosshoof##10922
   accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
+step
+  note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
+  get Collection of the Corrupt Water |q 5157 |goto Felwood 51.21,82.11
 step
   talk Jessir Moonbow##11019
   accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
@@ -116,17 +147,27 @@ step
   talk Maybess Riverbreeze##9529
   accept Salve via Hunting##5882 |goto Felwood 46.75,83.13
 step
+  get Salve via Hunting |q 5882 |goto Felwood 46.75,83.13
+step
   talk Maybess Riverbreeze##9529
   accept Salve via Mining##5883 |goto Felwood 46.75,83.13
+step
+  get Salve via Mining |q 5883 |goto Felwood 46.75,83.13
 step
   talk Maybess Riverbreeze##9529
   accept Salve via Gathering##5884 |goto Felwood 46.75,83.13
 step
+  get Salve via Gathering |q 5884 |goto Felwood 46.75,83.13
+step
   talk Maybess Riverbreeze##9529
   accept Salve via Skinning##5885 |goto Felwood 46.75,83.13
 step
+  get Salve via Skinning |q 5885 |goto Felwood 46.75,83.13
+step
   talk Maybess Riverbreeze##9529
   accept Salve via Disenchanting##5886 |goto Felwood 46.75,83.13
+step
+  get Salve via Disenchanting |q 5886 |goto Felwood 46.75,83.13
 step
   talk Grazle##11554
   accept Speak to Nafien##8462 |goto Felwood 50.93,85.01
@@ -162,6 +203,10 @@ step
   only Druid
   talk Impsy##14470
   accept The Wrong Stuff##8421 |goto Felwood 41.36,45.02
+step
+  only Druid
+  note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
+  get The Wrong Stuff |q 8421 |goto Felwood 41.36,45.02
 step
   note Kill Moora and Salia, and bring Shadow Lord Fel'dan's Head to Greta Mosshoof in Felwood.
   kill Moora##9861 |q 5242 |goto Felwood 38.81,46.87
@@ -233,6 +278,10 @@ step
   only Druid
   talk Impsy##14470
   accept Trolls of a Feather##8422 |goto Felwood 41.36,45.02
+step
+  only Druid
+  note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
+  get Trolls of a Feather |q 8422 |goto Felwood 41.36,45.02
 step
   note Trull Failbane in Felwood wants you to hunt 10 Berserk Owlbeasts in Winterspring.
   kill Berserk Owlbeast##7454 |q 4721 |goto Winterspring 65.42,22.67

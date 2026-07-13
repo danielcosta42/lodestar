@@ -19,6 +19,9 @@ step
   talk Wizlo Bearingshiner##10941
   accept Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
 step
+  note Slay the beast and bring back the Hypercapacitor Gizmo and Panther Cage Key to Wizlo Bearingshiner.
+  get Hypercapacitor Gizmo |q 5151 |goto Thousand Needles 21.43,32.55
+step
   talk Pao'ka Swiftmountain##10427
   accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
 step
@@ -28,11 +31,20 @@ step
   talk Rau Cliffrunner##4722
   accept The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
 step
+  note Retrieve the Cloven Hoof for Rau Cliffrunner at the Freewind Post.
+  get The Sacred Flame |q 1197 |goto Thousand Needles 46.14,51.71
+step
   talk Elu##10377
   accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
+  note Bring 10 Highperch Wyvern Eggs to Elu in Freewind Post.
+  get Wind Rider |q 4767 |goto Thousand Needles 44.93,48.92
+step
   talk Hagar Lightninghoof##10539
   accept Alien Egg##4821 |goto Thousand Needles 44.64,50.29
+step
+  note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
+  get Alien Egg |q 4821 |goto Thousand Needles 44.64,50.29
 step
   talk Cliffwatcher Longhorn##10537
   accept Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
@@ -42,6 +54,9 @@ step
 step
   talk Magistrix Elosai##17093
   accept A Different Approach##9431 |goto Thousand Needles 46.21,50.4
+step
+  note Gather 2 handfuls of Purifying Earth from Thundering Boulderkin and take them to Wizlo Bearingshiner at Whitereach Post.
+  get A Different Approach |q 9431 |goto Thousand Needles 46.21,50.4
 step
   talk Dorn Plainstalker##2986
   accept Test of Faith##1149 |goto Thousand Needles 53.95,41.49
@@ -55,14 +70,23 @@ step
   talk Fizzle Brassbolts##4454
   accept Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
 step
+  note Bring 6 Salty Scorpid Venoms to Fizzle Brassbolts in the Shimmering Flats.
+  get Salt Flat Venom |q 1104 |goto Thousand Needles 78.06,77.13
+step
   talk Wizzle Brassbolts##4453
   accept Hardened Shells##1105 |goto Thousand Needles 78.14,77.12
+step
+  note Bring 9 Hardened Tortoise Shells to Wizzle Brassbolts in the Shimmering Flats.
+  get Hardened Shells |q 1105 |goto Thousand Needles 78.14,77.12
 step
   talk Fizzle Brassbolts##4454
   accept Martek the Exiled##1106 |goto Thousand Needles 78.06,77.13
 step
   talk Kravel Koalbeard##4452
   accept Rocket Car Parts##1110 |goto Thousand Needles 77.79,77.27
+step
+  note Bring 30 Rocket Car Parts to Kravel Koalbeard in the Shimmering Flats.
+  get Rocket Car Parts |q 1110 |goto Thousand Needles 77.79,77.27
 step
   talk Kravel Koalbeard##4452
   accept Wharfmaster Dizzywig##1111 |goto Thousand Needles 77.79,77.27
@@ -85,6 +109,9 @@ step
   talk Pozzik##4630
   accept Load Lightening##1176 |goto Thousand Needles 80.18,75.88
 step
+  note Get 10 Hollow Vulture Bones for Pozzik in the Shimmering Flats.
+  get Load Lightening |q 1176 |goto Thousand Needles 80.18,75.88
+step
   talk Pozzik##4630
   accept The Eighteenth Pilot##1186 |goto Thousand Needles 80.18,75.88
 step
@@ -97,6 +124,9 @@ step
 step
   talk Wizzle Brassbolts##4453
   accept Gahz'rilla##2770 |goto Thousand Needles 78.14,77.12
+step
+  note Bring Gahz'rilla's Electrified Scale to Wizzle Brassbolts in the Shimmering Flats.
+  get Gahz'rilla |q 2770 |goto Thousand Needles 78.14,77.12
 step
   talk Kravel Koalbeard##4452
   accept Hemet Nesingwary Jr.##5762 |goto Thousand Needles 77.79,77.27
@@ -121,6 +151,9 @@ step
 step
   talk Wizlo Bearingshiner##10941
   accept A Dip in the Moonwell##9433 |goto Thousand Needles 21.43,32.55
+step
+  note Use the Robotron Control while standing near the Concealed Command Console hidden in a small cluster of bushes on the rim of the needle closest to Thalanaar to take command of a Robotron 3000. Pilot the robot to the western edge of Thousand Needles where the Alliance outpost of Thalanaar is located. Use the robot to collect a sample of the moonwell's water and return it to Wizlo Bearingshiner at Whitereach Post.
+  get A Dip in the Moonwell |q 9433 |goto Thousand Needles 21.43,32.55
 step
   talk Elu##10377
   turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
@@ -149,6 +182,9 @@ step
   talk Cliffwatcher Longhorn##10537
   accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
+  note Locate and retrieve the three Secret Notes in Darkcloud Pinnacle.
+  get Grimtotem Spying |q 5064 |goto Thousand Needles 45.67,50.74
+step
   talk Wharfmaster Dizzywig##3453
   turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
 step
@@ -157,6 +193,9 @@ step
 step
   talk Dorn Plainstalker##2986
   accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
+step
+  note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
+  get Test of Endurance |q 1150 |goto Thousand Needles 53.95,41.49
 step
   talk Moktar Krin##4483
   turnin The Swarm Grows##1147 |goto Thousand Needles 67.58,63.94
@@ -203,6 +242,9 @@ step
   talk Wizzle Brassbolts##4453
   accept Encrusted Tail Fins##1107 |goto Thousand Needles 78.14,77.12
 step
+  note Bring 10 Encrusted Tail Fins to Wizzle Brassbolts in the Shimmering Flats.
+  get Encrusted Tail Fins |q 1107 |goto Thousand Needles 78.14,77.12
+step
   talk Kravel Koalbeard##4452
   accept The Rumormonger##1115 |goto Thousand Needles 77.79,77.27
 step
@@ -215,9 +257,16 @@ step
   talk Razzeric##4706
   accept Razzeric's Tweaking##1187 |goto Thousand Needles 80.33,76.09
 step
+  note Retrieve the Seaforium Booster for Razzeric in the Shimmering Flats.
+  get Razzeric's Tweaking |q 1187 |goto Thousand Needles 80.33,76.09
+step
   only Warlock
   talk Magus Tirth##6548
   accept Rituals of Power##1951 |goto Thousand Needles 78.29,75.7
+step
+  only Warlock
+  note Bring the book Rituals of Power to Tabetha in Dustwallow Marsh.
+  get Rituals of Power |q 1951 |goto Thousand Needles 78.29,75.7
 step
   talk Motega Firemane##10428
   turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
@@ -227,6 +276,9 @@ step
 step
   talk Motega Firemane##10428
   accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
+step
+  note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
+  get Sacred Fire |q 5062 |goto Thousand Needles 21.54,32.35
 step
   talk Wizlo Bearingshiner##10941
   accept Testing the Tonic##9434 |goto Thousand Needles 21.43,32.55
@@ -258,6 +310,9 @@ step
 step
   talk Dorn Plainstalker##2986
   accept Test of Strength##1151 |goto Thousand Needles 53.95,41.49
+step
+  note Bring Fragments of Rok'Alim to Dorn Plainstalker in Thousand Needles.
+  get Test of Strength |q 1151 |goto Thousand Needles 53.95,41.49
 step
   talk Razzeric##4706
   turnin Razzeric's Tweaking##1187 |goto Thousand Needles 80.33,76.09

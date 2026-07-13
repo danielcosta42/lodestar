@@ -13,14 +13,23 @@ step
   talk Eridan Bluewind##9116
   accept Silver Heart##4084 |goto Felwood 51.35,81.51
 step
+  note Collect 11 Silvery Claws and 1 Irontree Heart for Eridan Bluewind in Felwood.
+  get Silver Heart |q 4084 |goto Felwood 51.35,81.51
+step
   talk Arathandris Silversky##9528
   accept Cleansing Felwood##4101 |goto Felwood 54.15,86.83
+step
+  note Bring 15 Blood Amber to Arathandris Silversky in Felwood.
+  get Cleansing Felwood |q 4101 |goto Felwood 54.15,86.83
 step
   talk Eridan Bluewind##9116
   accept The Corruption of the Jadefire##4421 |goto Felwood 51.35,81.51
 step
   talk Eridan Bluewind##9116
   accept Felbound Ancients##4441 |goto Felwood 51.35,81.51
+step
+  note Travel to Darnassus and use Eridan's Vial to collect a Vial of Blessed Water from the Temple of the Moon. Return to Eridan with the filled vial.
+  get Felbound Ancients |q 4441 |goto Felwood 51.35,81.51
 step
   talk Greta Mosshoof##10922
   accept Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
@@ -59,11 +68,21 @@ step
   talk Impsy##14470
   accept Hot and Itchy##8420 |goto Felwood 41.36,45.02
 step
+  only Druid
+  note Bring a piece of felcloth to Impsy in Felwood.
+  get Hot and Itchy |q 8420 |goto Felwood 41.36,45.02
+step
   talk Meilosh##11557
   accept Runecloth##6031 |goto Felwood 65.69,2.81
 step
+  note Bring 30 Runecloth to Meilosh in Timbermaw Hold.
+  get Runecloth |q 6031 |goto Felwood 65.69,2.81
+step
   talk Meilosh##11557
   accept Sacred Cloth##6032 |goto Felwood 65.69,2.81
+step
+  note Bring 2 Mooncloth to Meilosh in Timbermaw Hold.
+  get Sacred Cloth |q 6032 |goto Felwood 65.69,2.81
 step
   talk Nafien##15395
   accept Deadwood of the North##8461 |goto Felwood 64.77,8.13
@@ -73,6 +92,9 @@ step
 step
   talk Gorn One Eye##11555
   accept The Root of All Evil##8481 |goto Felwood 65.18,2.68
+step
+  note Plant the Demon Summoning Torch in the mouth of High Chief Winterfall's cave in the Winterfall furbolg village. Defeat the demon and retrieve the Essence of Xandivious for Gorn One Eye in Timbermaw Hold.
+  get The Root of All Evil |q 8481 |goto Felwood 65.18,2.68
 step
   talk Gorn One Eye##11555
   accept The Brokering of Peace##8484 |goto Felwood 65.18,2.68
@@ -107,20 +129,33 @@ step
   talk Eridan Bluewind##9116
   accept Aquementas##4005 |goto Felwood 51.35,81.51
 step
+  note Take the Book of Aquor, the Silvery Claws, and the Irontree Heart to Tanaris.
+  get Aquementas |q 4005 |goto Felwood 51.35,81.51
+step
   talk Arathandris Silversky##9528
   accept Salve via Hunting##4103 |goto Felwood 54.15,86.83
+step
+  get Salve via Hunting |q 4103 |goto Felwood 54.15,86.83
 step
   talk Arathandris Silversky##9528
   accept Salve via Mining##4104 |goto Felwood 54.15,86.83
 step
+  get Salve via Mining |q 4104 |goto Felwood 54.15,86.83
+step
   talk Arathandris Silversky##9528
   accept Salve via Gathering##4105 |goto Felwood 54.15,86.83
+step
+  get Salve via Gathering |q 4105 |goto Felwood 54.15,86.83
 step
   talk Arathandris Silversky##9528
   accept Salve via Skinning##4106 |goto Felwood 54.15,86.83
 step
+  get Salve via Skinning |q 4106 |goto Felwood 54.15,86.83
+step
   talk Arathandris Silversky##9528
   accept Salve via Disenchanting##4107 |goto Felwood 54.15,86.83
+step
+  get Salve via Disenchanting |q 4107 |goto Felwood 54.15,86.83
 step
   talk Eridan Bluewind##9116
   accept Purified!##4442 |goto Felwood 51.35,81.51
@@ -130,6 +165,9 @@ step
 step
   talk Greta Mosshoof##10922
   accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
+step
+  note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
+  get Collection of the Corrupt Water |q 5157 |goto Felwood 51.21,82.11
 step
   talk Jessir Moonbow##11019
   accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
@@ -159,6 +197,10 @@ step
   only Druid
   talk Impsy##14470
   accept The Wrong Stuff##8421 |goto Felwood 41.36,45.02
+step
+  only Druid
+  note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
+  get The Wrong Stuff |q 8421 |goto Felwood 41.36,45.02
 step
   note Eridan Bluewind in Felwood wants you to kill 8 Jadefire Hellcallers, 8 Jadefire Betrayers, 8 Jadefire Tricksters, and Xavaric. Return to Eridan when the task is completed.
   kill Jadefire Hellcaller##7111 |q 4906 |goto Felwood 41.21,21.0
@@ -230,6 +272,10 @@ step
   only Druid
   talk Impsy##14470
   accept Trolls of a Feather##8422 |goto Felwood 41.36,45.02
+step
+  only Druid
+  note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
+  get Trolls of a Feather |q 8422 |goto Felwood 41.36,45.02
 step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01

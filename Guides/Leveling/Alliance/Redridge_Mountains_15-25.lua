@@ -13,17 +13,32 @@ step
   talk Marshal Marris##382
   accept Blackrock Menace##20 |goto Redridge Mountains 33.5,48.97
 step
+  note Bring 10 Battleworn Axes to Marshal Marris in Lakeshire.
+  get Blackrock Menace |q 20 |goto Redridge Mountains 33.5,48.97
+step
   talk Martie Jainrose##342
   accept An Unwelcome Guest##34 |goto Redridge Mountains 21.86,46.33
+step
+  note Martie Jainrose of Lakeshire wants you to kill Bellygrub. Bring her his tusk as proof.
+  get An Unwelcome Guest |q 34 |goto Redridge Mountains 21.86,46.33
 step
   talk Bailiff Conacher##900
   accept Solomon's Law##91 |goto Redridge Mountains 29.72,44.26
 step
+  note Bring 10 Shadowhide Pendants to Bailiff Conacher in the Lakeshire Town Hall.
+  get Solomon's Law |q 91 |goto Redridge Mountains 29.72,44.26
+step
   talk Chef Breanna##343
   accept Redridge Goulash##92 |goto Redridge Mountains 22.68,43.84
 step
+  note Chef Breanna of Lakeshire wants five pieces of Tough Condor Meat, five Great Goretusk Snouts and five helpings of Crisp Spider Meat.
+  get Redridge Goulash |q 92 |goto Redridge Mountains 22.68,43.84
+step
   talk Barkeep Daniels##346
   accept Dry Times##116 |goto Redridge Mountains 26.48,43.96
+step
+  note Barkeep Daniels of Lakeshire needs a keg of Thunderbrew Lager, a cask of Merlot, a bottle of Moonshine and a skin of Sweet Rum.
+  get Dry Times |q 116 |goto Redridge Mountains 26.48,43.96
 step
   talk Verner Osgood##415
   accept The Price of Shoes##118 |goto Redridge Mountains 30.97,47.27
@@ -34,14 +49,23 @@ step
   talk Verner Osgood##415
   accept Underbelly Scales##122 |goto Redridge Mountains 30.97,47.27
 step
+  note Gather 6 Underbelly Whelp Scales from Black Dragon Whelps, and bring them to Verner Osgood in Redridge.
+  get Underbelly Scales |q 122 |goto Redridge Mountains 30.97,47.27
+step
   talk Verner Osgood##415
   accept A Baying of Gnolls##124 |goto Redridge Mountains 30.97,47.27
 step
   talk Foreman Oslow##341
   accept The Lost Tools##125 |goto Redridge Mountains 32.14,48.64
 step
+  note Foreman Oslow of Lakeshire wants you to retrieve his toolbox from the bottom of Lake Everstill.
+  get The Lost Tools |q 125 |goto Redridge Mountains 32.14,48.64
+step
   talk Dockmaster Baren##381
   accept Selling Fish##127 |goto Redridge Mountains 27.72,47.38
+step
+  note Bring 10 Spotted Sunfish to Dockmaster Baren in Lakeshire.
+  get Selling Fish |q 127 |goto Redridge Mountains 27.72,47.38
 step
   talk Guard Howe##903
   accept Blackrock Bounty##128 |goto Redridge Mountains 31.54,57.85
@@ -61,11 +85,20 @@ step
   talk Dockmaster Baren##381
   accept Murloc Poachers##150 |goto Redridge Mountains 27.72,47.38
 step
+  note Bring 8 Murloc Fins to Dockmaster Baren in Lakeshire.
+  get Murloc Poachers |q 150 |goto Redridge Mountains 27.72,47.38
+step
   talk Foreman Oslow##341
   accept Rethban Ore##347 |goto Redridge Mountains 32.14,48.64
 step
+  note Gather 5 loads of Rethban Ore and bring it to Brother Paxton in the Northshire Library.
+  get Rethban Ore |q 347 |goto Redridge Mountains 32.14,48.64
+step
   talk Guard Berton##859
   accept What Comes Around...##386 |goto Redridge Mountains 26.26,46.58
+step
+  note Bring the head of Targorr the Dread to Guard Berton in Lakeshire.
+  get What Comes Around... |q 386 |goto Redridge Mountains 26.26,46.58
 step
   only Warrior
   talk Yorus Barleybrew##6166
@@ -75,8 +108,15 @@ step
   talk Lucius##6966
   accept Alther's Mill##2282 |goto Redridge Mountains 28.06,52.04
 step
+  only Rogue
+  note Open Lucius's Lockbox, recover the Token of Thievery and return it to Lucius in Lakeshire.
+  get Alther's Mill |q 2282 |goto Redridge Mountains 28.06,52.04
+step
   talk Shawn##8965
   accept Hilary's Necklace##3741 |goto Redridge Mountains 29.32,53.64
+step
+  note Find Hilary's Necklace, and return it to Hilary in Lakeshire.
+  get Hilary's Necklace |q 3741 |goto Redridge Mountains 29.32,53.64
 step
   note Kill 15 Blackrock Champions and Guard Howe in Lakeshire will reward you.
   kill Blackrock Champion##435 |q 128 |goto Redridge Mountains 29.6,11.69
@@ -99,11 +139,11 @@ step
   talk Guard Berton##859
   turnin What Comes Around...##386 |goto Redridge Mountains 26.26,46.58
 step
-  talk Gryan Stoutmantle##234
-  turnin The Defias Brotherhood##132 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
-step
   talk Martie Jainrose##342
   turnin Visit the Herbalist##130 |goto Redridge Mountains 21.86,46.33
+step
+  talk Gryan Stoutmantle##234
+  turnin The Defias Brotherhood##132 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
 step
   talk Gryan Stoutmantle##234
   turnin Messenger to Westfall##143 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
@@ -167,14 +207,26 @@ step
   talk Marshal Marris##382
   accept Tharil'zun##19 |goto Redridge Mountains 33.5,48.97
 step
+  note Bring Tharil'zun's Head to Marshal Marris in Redridge.
+  get Tharil'zun |q 19 |goto Redridge Mountains 33.5,48.97
+step
   talk Foreman Oslow##341
   accept The Everstill Bridge##89 |goto Redridge Mountains 32.14,48.64
+step
+  note Bring 5 Iron Pikes and 5 Iron Rivets to Foreman Oslow in Lakeshire.
+  get The Everstill Bridge |q 89 |goto Redridge Mountains 32.14,48.64
 step
   talk Marshal Marris##382
   accept Shadow Magic##115 |goto Redridge Mountains 33.5,48.97
 step
+  note Bring 3 Midnight Orbs to Marshal Marris in Lakeshire.
+  get Shadow Magic |q 115 |goto Redridge Mountains 33.5,48.97
+step
   talk Verner Osgood##415
   accept Howling in the Hills##126 |goto Redridge Mountains 30.97,47.27
+step
+  note Bring Yowler's Paw to Verner Osgood in Lakeshire.
+  get Howling in the Hills |q 126 |goto Redridge Mountains 30.97,47.27
 step
   talk Martie Jainrose##342
   accept Delivering Daffodils##131 |goto Redridge Mountains 21.86,46.33

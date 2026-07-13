@@ -10,11 +10,20 @@ step
   talk Sigrun Ironhew##2860
   accept Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
 step
+  note Acquire a Black Drake's Heart for Sigrun Ironhew.
+  get Fiery Blaze Enchantments |q 706 |goto Badlands 53.8,43.3
+step
   talk Sigrun Ironhew##2860
   accept Mirages##718 |goto Badlands 53.8,43.3
 step
+  note Retrieve the Supply Crate for Sigrun Ironhew.
+  get Mirages |q 718 |goto Badlands 53.8,43.3
+step
   talk Prospector Ryedol##2910
   accept A Dwarf and His Tools##719 |goto Badlands 53.42,43.39
+step
+  note Find Ryedol's Lucky Pick and return it to Prospector Ryedol south of Hammertoe's Dig Site.
+  get A Dwarf and His Tools |q 719 |goto Badlands 53.42,43.39
 step
   talk Prospector Ryedol##2910
   accept A Sign of Hope##721 |goto Badlands 53.42,43.39
@@ -25,11 +34,20 @@ step
   talk Rigglefuzz##2817
   accept Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
 step
+  note Bring 4 Buzzard Wings to Rigglefuzz.
+  get Barbecued Buzzard Wings |q 703 |goto Badlands 42.39,52.93
+step
   talk Rigglefuzz##2817
   accept Pearl Diving##705 |goto Badlands 42.39,52.93
 step
+  note Bring 9 Blue Pearls to Rigglefuzz in the Badlands.
+  get Pearl Diving |q 705 |goto Badlands 42.39,52.93
+step
   talk Martek the Exiled##4618
   accept Indurium##1108 |goto Badlands 42.22,52.69
+step
+  note Bring 10 Indurium Flakes to Martek the Exiled in the Badlands.
+  get Indurium |q 1108 |goto Badlands 42.22,52.69
 step
   talk Rigglefuzz##2817
   accept Flash Bomb Recipe##1559 |goto Badlands 42.39,52.93
@@ -37,11 +55,20 @@ step
   talk Rigglefuzz##2817
   accept Power Stones##2418 |goto Badlands 42.39,52.93
 step
+  note Bring 8 Dentrium Power Stones and 8 An'Alleum Power Stones to Rigglefuzz in the Badlands.
+  get Power Stones |q 2418 |goto Badlands 42.39,52.93
+step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##710 |goto Badlands 25.95,44.87
 step
+  note Find 10 Small Stone Shards and bring them to Lotwil Veriatus in the Badlands.
+  get Study of the Elements: Rock |q 710 |goto Badlands 25.95,44.87
+step
   talk Lotwil Veriatus##2921
   accept Coolant Heads Prevail##713 |goto Badlands 25.95,44.87
+step
+  note Find Frost Oil and bring it to Lotwil Veriatus in Badlands.
+  get Coolant Heads Prevail |q 713 |goto Badlands 25.95,44.87
 step
   talk Jarkal Mossmeld##6868
   accept Translating the Journal##2338 |goto Badlands 2.42,46.06
@@ -52,8 +79,14 @@ step
   talk Theldurin the Lost##2785
   accept The Lost Fragments##692 |goto Badlands 51.39,76.87
 step
+  note Bring the Torn Scroll Fragment, the Crumpled Scroll Fragment and the Singed Scroll Fragment to Theldurin the Lost.
+  get The Lost Fragments |q 692 |goto Badlands 51.39,76.87
+step
   talk Theldurin the Lost##2785
   accept Solution to Doom##709 |goto Badlands 51.39,76.87
+step
+  note Bring the Tablet of Ryun'eh to Theldurin the Lost.
+  get Solution to Doom |q 709 |goto Badlands 51.39,76.87
 step
   talk Sigrun Ironhew##2860
   turnin Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
@@ -70,8 +103,14 @@ step
   talk Sigrun Ironhew##2860
   accept Scrounging##733 |goto Badlands 53.8,43.3
 step
+  note Get 7 pieces of Scrap Metal for Sigrun.
+  get Scrounging |q 733 |goto Badlands 53.8,43.3
+step
   talk Garek##2888
   accept Tremors of the Earth##732 |goto Badlands 61.94,54.26
+step
+  note Retrieve the Sign of the Earth for Garek.
+  get Tremors of the Earth |q 732 |goto Badlands 61.94,54.26
 step
   talk Rigglefuzz##2817
   turnin Pearl Diving##705 |goto Badlands 42.39,52.93
@@ -100,8 +139,14 @@ step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
+  note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
+  get Study of the Elements: Rock |q 711 |goto Badlands 25.95,44.87
+step
   talk Lotwil Veriatus##2921
   accept Gyro... What?##714 |goto Badlands 25.95,44.87
+step
+  note Bring a Gyrochronatom to Lotwil Veriatus in the Badlands.
+  get Gyro... What? |q 714 |goto Badlands 25.95,44.87
 step
   talk Jarkal Mossmeld##6868
   turnin Translating the Journal##2338 |goto Badlands 2.42,46.06
@@ -117,6 +162,9 @@ step
 step
   talk Theldurin the Lost##2785
   accept Summoning the Princess##656 |goto Badlands 51.39,76.87
+step
+  note Go to the Shards of Myzrael, summon her and defeat her.
+  get Summoning the Princess |q 656 |goto Badlands 51.39,76.87
 step
   talk Theldurin the Lost##2785
   accept To Ironforge for Yagyin's Digest##727 |goto Badlands 51.39,76.87
@@ -135,6 +183,9 @@ step
   talk Garek##2888
   accept Tremors of the Earth##717 |goto Badlands 61.94,54.26
 step
+  note Use the Sign of the Earth to activate the Pillars of Amethyst, Opal, and Diamond and obtain the Runestones.
+  get Tremors of the Earth |q 717 |goto Badlands 61.94,54.26
+step
   talk Lotwil Veriatus##2921
   turnin Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
@@ -144,8 +195,14 @@ step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
 step
+  note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
+  get Study of the Elements: Rock |q 712 |goto Badlands 25.95,44.87
+step
   talk Lucien Tosselwrench##2920
   accept Liquid Stone##715 |goto Badlands 25.82,44.24
+step
+  note Bring a Healing Potion and a Lesser Invisibility Potion to Lucien Tosselwrench in the Badlands.
+  get Liquid Stone |q 715 |goto Badlands 25.82,44.24
 step
   talk Garek##2888
   turnin Tremors of the Earth##717 |goto Badlands 61.94,54.26
@@ -158,6 +215,9 @@ step
 step
   talk Lucien Tosselwrench##2920
   accept Stone Is Better than Cloth##716 |goto Badlands 25.82,44.24
+step
+  note Bring some Patterned Bronze Bracers to Lucien Tosselwrench in the Badlands.
+  get Stone Is Better than Cloth |q 716 |goto Badlands 25.82,44.24
 step
   talk Lotwil Veriatus##2921
   accept This Is Going to Be Hard##734 |goto Badlands 25.95,44.87
@@ -176,6 +236,9 @@ step
 step
   talk Lotwil Veriatus##2921
   accept This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
+step
+  note Defeat the Fam'retor Guardian and bring Lotwil's Shackles of Elemental Binding back to Lotwil Veriatus.
+  get This Is Going to Be Hard |q 778 |goto Badlands 25.95,44.87
 step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##778 |goto Badlands 25.95,44.87

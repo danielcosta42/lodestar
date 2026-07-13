@@ -13,31 +13,49 @@ step
   talk Henchman Valik##2333
   accept Valik##535 |goto Alterac Mountains 57.17,69.51
 step
+  note Bring a mug of Southshore Stout to Valik in the Syndicate camp.
+  get Valik |q 535 |goto Alterac Mountains 57.17,69.51
+step
   only Warrior
   talk Bath'rah the Windwatcher##6176
   accept Cyclonian##1712 |goto Alterac Mountains 80.5,66.92
 step
+  only Warrior
+  note Bring the items on Bath'rah's Parchment to Bath'rah the Windwatcher in Alterac.
+  get Cyclonian |q 1712 |goto Alterac Mountains 80.5,66.92
+step
   only Mage
   talk Bath'rah the Windwatcher##6176
   accept Spirit Totem##8412 |goto Alterac Mountains 80.5,66.92
+step
+  only Mage
+  note Bring the pieces for the spirit totem to Bath'rah the Windwatcher.
+  get Spirit Totem |q 8412 |goto Alterac Mountains 80.5,66.92
 step
   only Rogue
   talk Lord Jorach Ravenholdt##6768
   accept Sealed Azure Bag##8234 |goto Alterac Mountains 86.02,78.88
 step
   only Rogue
+  note Retrieve the Sealed Azure Bag from the Timbermaw Shaman in Azshara. Then take the bag to Archmage Xylem, also found in Azshara.
+  get Sealed Azure Bag |q 8234 |goto Alterac Mountains 86.02,78.88
+step
+  only Rogue
   talk Fahrad##6707
   accept Junkboxes Needed##8249 |goto Alterac Mountains 84.45,80.32
+step
+  only Rogue
+  get Junkboxes Needed |q 8249 |goto Alterac Mountains 84.45,80.32
 step
   talk Gol'dir##2316
   accept Blackmoore's Legacy##506 |goto Alterac Mountains 59.96,43.74
 step
-  talk Elysa##2317
-  accept Taretha's Gift##508 |goto Alterac Mountains 39.3,14.31
-step
   only Rogue
   talk Archmage Xylem##8379
   turnin Sealed Azure Bag##8234 |goto Azshara 29.25,40.21 |tip {turninat}Azshara
+step
+  talk Elysa##2317
+  accept Taretha's Gift##508 |goto Alterac Mountains 39.3,14.31
 step
   talk Voggah Deathgrip##13817
   turnin The Battle for Alterac##7142 |goto Alterac Mountains 63.84,60.47
@@ -60,9 +78,17 @@ step
   talk Bath'rah the Windwatcher##6176
   accept The Summoning##1713 |goto Alterac Mountains 80.5,66.92
 step
+  only Warrior
+  note Bring the Whirlwind Heart to Bath'rah Windwatcher.
+  get The Summoning |q 1713 |goto Alterac Mountains 80.5,66.92
+step
   only Mage
   talk Bath'rah the Windwatcher##6176
   accept Da Voodoo##8413 |goto Alterac Mountains 80.5,66.92
+step
+  only Mage
+  note Bring the voodoo feathers to Bath'rah the Windwatcher.
+  get Da Voodoo |q 8413 |goto Alterac Mountains 80.5,66.92
 step
   only Rogue
   talk Fahrad##6707

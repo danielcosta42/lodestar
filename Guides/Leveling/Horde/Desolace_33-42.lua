@@ -13,6 +13,9 @@ step
   talk Felgur Twocuts##5395
   accept Khan Dez'hepah##1365 |goto Desolace 56.19,59.57
 step
+  note Bring Khan Dez'hepah's Head to Felgur Twocuts in Desolace.
+  get Khan Dez'hepah |q 1365 |goto Desolace 56.19,59.57
+step
   talk Gurda Wildmane##5412
   accept Magram Alliance##1367 |goto Desolace 56.29,59.68
 step
@@ -28,20 +31,38 @@ step
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1481 |goto Desolace 52.25,53.44
 step
+  note Bring a Shadowstalker Scalp to Maurin Bonesplitter in Desolace.
+  get The Corrupter |q 1481 |goto Desolace 52.25,53.44
+step
   talk Nataka Longhorn##11259
   accept Catch of the Day##5386 |goto Desolace 55.41,55.81
+step
+  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
+  get Catch of the Day |q 5386 |goto Desolace 55.41,55.81
 step
   talk Smeed Scrabblescrew##11596
   accept Kodo Roundup##5561 |goto Desolace 60.86,61.86
 step
+  note Bring five Tamed Kodos and the Kodo Kombobulator back to Smeed Scrabblescrew at Scrabblescrew's Camp.
+  kill Tamed Kodo##11627 |q 5561
+step
   talk Hornizz Brimbuzzle##6019
   accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
+step
+  note Bring 8 Ghost-o-plasms and the Crate of Ghost Magnets to Hornizz Brimbuzzle in Desolace.
+  get Ghost-o-plasm Round Up |q 6134 |goto Desolace 47.83,61.83
 step
   talk Cavindra##13697
   accept Legends of Maraudon##7044 |goto Desolace 32.1,63.96
 step
+  note Recover the two parts of the Scepter of Celebras: the Celebrian Rod and the Celebrian Diamond.
+  get Legends of Maraudon |q 7044 |goto Desolace 32.1,63.96
+step
   talk Taiga Wisemane##11624
   accept Hand of Iruxos##5381 |goto Desolace 25.82,68.21
+step
+  note Retrieve the Demon Box from Thunder Axe Fortress, and return it, along with the Demon Pick to Taiga Wisemane in Shadowprey Village.
+  get Hand of Iruxos |q 5381 |goto Desolace 25.82,68.21
 step
   talk Roon Wildmane##11877
   accept Hunting in Stranglethorn##5763 |goto Desolace 25.05,72.27
@@ -49,11 +70,17 @@ step
   talk Mai'Lahii##12031
   accept Clam Bait##6142 |goto Desolace 22.64,71.97
 step
+  note Find 10 pieces of Soft-shelled Clam Meat and bring it back to Mai'Lahii at Shadowprey Village.
+  get Clam Bait |q 6142 |goto Desolace 22.64,71.97
+step
   talk Drulzegar Skraghook##12340
   accept Other Fish to Fry##6143 |goto Desolace 23.32,72.87
 step
   talk Vark Battlescar##11823
   accept Vyletongue Corruption##7029 |goto Desolace 23.22,70.33
+step
+  note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
+  kill Noxxious Scion##13696 |q 7029
 step
   talk Selendra##13699
   accept Corruption of Earth and Seed##7064 |goto Desolace 26.87,77.67
@@ -64,8 +91,14 @@ step
   talk Uthek the Wise##5397
   accept Stealing Supplies##1370 |goto Desolace 36.22,79.25
 step
+  note Bring 6 bags of Crudely Dried Meat to Uthek the Wise in the Gelkis Village.
+  get Stealing Supplies |q 1370 |goto Desolace 36.22,79.25
+step
   talk Centaur Pariah##13717
   accept The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
+step
+  note Read the Pariah's Instructions. Afterwards, obtain the Amulet of Union from Maraudon and return it to the Centaur Pariah in southern Desolace.
+  get The Pariah's Instructions |q 7067 |goto Desolace 50.42,86.65
 step
   talk Warug##5398
   turnin Magram Alliance##1367 |goto Desolace 74.97,68.16
@@ -73,11 +106,20 @@ step
   talk Warug##5398
   accept Broken Tears##1369 |goto Desolace 74.97,68.16
 step
+  note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
+  get Broken Tears |q 1369 |goto Desolace 74.97,68.16
+step
   talk Bibbly F'utzbuckle##11438
   accept Bone Collector##5501 |goto Desolace 62.33,38.99
 step
+  note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
+  get Bone Collector |q 5501 |goto Desolace 62.33,38.99
+step
   talk Willow##13656
   accept Twisted Evils##7028 |goto Desolace 62.2,39.63
+step
+  note Collect 15 Theradric Crystal Carvings for Willow in Desolace.
+  get Twisted Evils |q 7028 |goto Desolace 62.2,39.63
 step
   note Slay 7 Hatefury Rogues, 7 Hatefury Felsworn, 7 Hatefury Betrayers, and 7 Hatefury Hellcallers, and return to Takata Steelblade in Desolace.
   kill Hatefury Rogue##4670 |q 1434 |goto Desolace 74.45,18.85
@@ -87,6 +129,9 @@ step
 step
   talk Azore Aldamort##11863
   accept Sceptre of Light##5741 |goto Desolace 38.88,27.16
+step
+  note Get the Sceptre of Light and then return it to Azore Aldamort at the tower in Ethel Rethor.
+  get Sceptre of Light |q 5741 |goto Desolace 38.88,27.16
 step
   note Slay Princess Theradras and return to Selendra near Shadowprey Village in Desolace.
   kill Princess Theradras##12201 |q 7064 |goto Maraudon - Dungeon -1,-1
@@ -115,11 +160,20 @@ step
   talk Felgur Twocuts##5395
   accept Centaur Bounty##1366 |goto Desolace 56.19,59.57
 step
+  note Bring 15 Centaur Ears to Felgur Twocuts in Desolace.
+  get Centaur Bounty |q 1366 |goto Desolace 56.19,59.57
+step
   talk Maurin Bonesplitter##4498
   accept The Burning of Spirits##1435 |goto Desolace 52.25,53.44
 step
+  note Return the Burning Gem and 15 Infused Burning Gems to Maurin Bonesplitter in Desolace.
+  get The Burning of Spirits |q 1435 |goto Desolace 52.25,53.44
+step
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1482 |goto Desolace 52.25,53.44
+step
+  note Bring an Oracle Crystal to Maurin Bonesplitter in Desolace.
+  get The Corrupter |q 1482 |goto Desolace 52.25,53.44
 step
   talk Hornizz Brimbuzzle##6019
   turnin Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
@@ -142,11 +196,17 @@ step
   talk Taiga Wisemane##11624
   accept Portals of the Legion##5581 |goto Desolace 25.82,68.21
 step
+  note Banish 6 Portals at Mannoroc Coven and return to Taiga Wisemane at Shadowprey Village.
+  kill Demon Portal Guardian##11937 |q 5581
+step
   talk Uthek the Wise##5397
   turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
 step
   talk Uthek the Wise##5397
   accept Ongeku##1373 |goto Desolace 36.22,79.25
+step
+  note Maintain your reputation with the Gelkis, and bring a Draenethyst Shard to Uthek the Wise in the Gelkis Village in Desolace.
+  get Ongeku |q 1373 |goto Desolace 36.22,79.25
 step
   talk Centaur Pariah##13717
   turnin The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
@@ -156,6 +216,9 @@ step
 step
   talk Warug##5398
   accept Gizmo for Warug##1371 |goto Desolace 74.97,68.16
+step
+  note Maintain your reputation with the Magram, and bring an Advanced Target Dummy to Warug in the Magram Village in Desolace.
+  get Gizmo for Warug |q 1371 |goto Desolace 74.97,68.16
 step
   talk Willow##13656
   turnin Twisted Evils##7028 |goto Desolace 62.2,39.63
@@ -168,6 +231,9 @@ step
 step
   talk Azore Aldamort##11863
   accept Book of the Ancients##6027 |goto Desolace 38.88,27.16
+step
+  note Get the Book of the Ancients and return it to Azore Aldamort at the tower in Ethel Rethor.
+  get Book of the Ancients |q 6027 |goto Desolace 38.88,27.16
 step
   talk Maurin Bonesplitter##4498
   turnin The Burning of Spirits##1435 |goto Desolace 52.25,53.44
@@ -196,11 +262,17 @@ step
   talk Uthek the Wise##5397
   accept Khan Jehn##1374 |goto Desolace 36.22,79.25
 step
+  note Bring the Khan Jehn's Head to Uthek the Wise in the Gelkis Village in Desolace.
+  get Khan Jehn |q 1374 |goto Desolace 36.22,79.25
+step
   talk Warug##5398
   turnin Gizmo for Warug##1371 |goto Desolace 74.97,68.16
 step
   talk Warug##5398
   accept Khan Shaka##1375 |goto Desolace 74.97,68.16
+step
+  note Maintain your reputation with the Magram, and bring the Head of Khan Shaka to Warug in the Magram Village in Desolace.
+  get Khan Shaka |q 1375 |goto Desolace 74.97,68.16
 step
   talk Azore Aldamort##11863
   turnin Book of the Ancients##6027 |goto Desolace 38.88,27.16
@@ -217,6 +289,9 @@ step
   talk Uthek the Wise##5397
   accept Khan Hratha##1380 |goto Desolace 36.22,79.25
 step
+  note Maintain your reputation with the Gelkis, and bring the Maraudine Key Fragment to Uthek the Wise in the Gelkis Village.
+  get Khan Hratha |q 1380 |goto Desolace 36.22,79.25
+step
   note Slay Lord Azrethoc and Jugkar Grim'rod and return to Takata Steelblade in Desolace.
   kill Lord Azrethoc##5760 |q 1488 |goto Desolace 56.95,75.74
 step
@@ -225,6 +300,9 @@ step
 step
   talk Warug##5398
   accept Khan Hratha##1381 |goto Desolace 74.97,68.16
+step
+  note Maintain your Magram reputation, and bring the Maraudine Key Fragment to Warug in the Magram Village in Desolace.
+  get Khan Hratha |q 1381 |goto Desolace 74.97,68.16
 step
   talk Takata Steelblade##5641
   turnin The Corrupter##1488 |goto Desolace 52.57,54.39

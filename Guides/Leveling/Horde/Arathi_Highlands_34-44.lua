@@ -13,11 +13,17 @@ step
   talk Zengu##2703
   accept Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
 step
+  note Get the Sigil of Strom for Zengu in Hammerfall.
+  get Sigil of Strom |q 639 |goto Arathi Highlands 73.8,33.96
+step
   talk Gor'mul##2792
   accept Hammerfall##655 |goto Arathi Highlands 72.64,33.93
 step
   talk Tor'gan##2706
   accept Foul Magics##671 |goto Arathi Highlands 74.72,36.29
+step
+  note Get 10 Bloodstone Amulets for Tor'gan in Hammerfall.
+  get Foul Magics |q 671 |goto Arathi Highlands 74.72,36.29
 step
   talk Drum Fel##2771
   accept Call to Arms##677 |goto Arathi Highlands 74.24,33.92
@@ -33,9 +39,6 @@ step
 step
   note Slay 10 Witherbark Axe Throwers, 10 Headhunters and 8 Witch Doctors, and return to Drum Fel in the Hammerfall outpost.
   kill Witherbark Axe Thrower##2554 |q 677 |goto Arathi Highlands 65.56,67.06
-step
-  talk Brumn Winterhoof##7869
-  accept Elemental Leatherworking##5146 |goto Arathi Highlands 28.27,45.09
 step
   talk Theldurin the Lost##2785
   turnin Theldurin the Lost##687 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
@@ -73,17 +76,23 @@ step
   talk Zengu##2703
   accept The Broken Sigil##640 |goto Arathi Highlands 73.8,33.96
 step
+  note Retrieve the 5 Sigil Fragments from the defenders in Stromgarde, and bring them to Tor'gan in Hammerfall.
+  get The Broken Sigil |q 640 |goto Arathi Highlands 73.8,33.96
+step
   talk Tor'gan##2706
   accept Raising Spirits##672 |goto Arathi Highlands 74.72,36.29
+step
+  note Acquire 10 Highland Raptor Eyes from Highland Striders and Highland Thrashers for Tor'gan in Hammerfall.
+  get Raising Spirits |q 672 |goto Arathi Highlands 74.72,36.29
 step
   talk Tor'gan##2706
   accept Foul Magics##673 |goto Arathi Highlands 74.72,36.29
 step
+  note Retrieve Marez Cowl's Bloodstone Orb and bring it to Tor'gan in Hammerfall.
+  get Foul Magics |q 673 |goto Arathi Highlands 74.72,36.29
+step
   talk Drum Fel##2771
   accept Call to Arms##678 |goto Arathi Highlands 74.24,33.92
-step
-  talk Brumn Winterhoof##7869
-  turnin Elemental Leatherworking##5146 |goto Arathi Highlands 28.27,45.09
 step
   talk Shakes O'Breen##2610
   turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
@@ -97,8 +106,14 @@ step
   talk First Mate Nilzlix##2767
   accept Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
 step
+  note First Mate Nilzlix wants you to retrieve the Charts and Logs from the Maiden's Folly and the Spirit of Silverpine.
+  get Deep Sea Salvage |q 662 |goto Arathi Highlands 32.8,81.48
+step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
+step
+  note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
+  get Sunken Treasure |q 666 |goto Arathi Highlands 33.86,80.45
 step
   note Kill 10 Boulderfist Brutes and 4 Boulderfist Magi, and return to Drum Fel in the Hammerfall outpost.
   kill Boulderfist Brute##2566 |q 678 |goto Arathi Highlands 53.1,75.63
@@ -127,6 +142,9 @@ step
   talk Korin Fel##2772
   accept The Real Threat##680 |goto Arathi Highlands 74.04,33.07
 step
+  note Slay Or'Kalar and bring his Head to Korin Fel in the Hammerfall outpost.
+  get The Real Threat |q 680 |goto Arathi Highlands 74.04,33.07
+step
   talk First Mate Nilzlix##2767
   turnin Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
 step
@@ -154,6 +172,9 @@ step
   talk Zengu##2703
   accept Sigil of Arathor##643 |goto Arathi Highlands 73.8,33.96
 step
+  note Retrieve the Sigil of Arathor and return it to Zengu in Hammerfall.
+  get Sigil of Arathor |q 643 |goto Arathi Highlands 73.8,33.96
+step
   talk Gor'mul##2792
   accept Raising Spirits##675 |goto Arathi Highlands 72.64,33.93
 step
@@ -172,8 +193,14 @@ step
   talk Zengu##2703
   accept Sigil of Trollbane##644 |goto Arathi Highlands 73.8,33.96
 step
+  note Kill Prince Galen Trollbane and bring the Sigil of Trollbane to Zengu in Hammerfall.
+  get Sigil of Trollbane |q 644 |goto Arathi Highlands 73.8,33.96
+step
   talk Tor'gan##2706
   accept Guile of the Raptor##701 |goto Arathi Highlands 74.72,36.29
+step
+  note Acquire 12 Raptor Hearts from Highland Fleshstalkers for Tor'gan.
+  get Guile of the Raptor |q 701 |goto Arathi Highlands 74.72,36.29
 step
   talk Fleet Master Seahorn##2487
   turnin Sunken Treasure##669 |goto Stranglethorn Vale 27.17,77.01 |tip {turninat}Stranglethorn Vale

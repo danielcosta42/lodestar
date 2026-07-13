@@ -23,17 +23,32 @@ step
   talk Caza'rez##17558
   accept The Blood is Life##9590 |goto Hellfire Peninsula 54.88,36.0
 step
+  note Collect 10 Fel Orc Blood Vials and return them to Centurion Caza'rez at Thrallmar in Hellfire Peninsula.
+  get The Blood is Life |q 9590 |goto Hellfire Peninsula 54.88,36.0
+step
   talk Megzeg Nukklebust##21283
   accept I Work... For the Horde!##10086 |goto Hellfire Peninsula 55.18,38.79
+step
+  note Bring 8 pieces of Salvaged Metal and 8 pieces of Salvaged Wood to Megzeg Nukklebust in Thrallmar.
+  get I Work... For the Horde! |q 10086 |goto Hellfire Peninsula 55.18,38.79
 step
   talk Vurtok Axebreaker##21256
   accept Bonechewer Blood##10450 |goto Hellfire Peninsula 55.13,36.39
 step
+  note Bring 12 Bonechewer Blood Vials to Vurtok Axebreaker in Thrallmar.
+  get Bonechewer Blood |q 10450 |goto Hellfire Peninsula 55.13,36.39
+step
   talk Foreman Razelcraz##16915
   accept Outland Sucks!##10236 |goto Hellfire Peninsula 51.37,30.52
 step
+  note Find 6 Shredder Parts and return to Foreman Razelcraz by the mine northwest of Thrallmar.
+  get Outland Sucks! |q 10236 |goto Hellfire Peninsula 51.37,30.52
+step
   talk Earthcaller Ryga##17123
   accept A Debilitating Sickness##9442 |goto Hellfire Peninsula 32.09,28.36
+step
+  note Earthcaller Ryga at Mag'har Post in Hellfire Peninsula wants you to bring her 1 Drycap Mushroom from a cave inside the Great Fissure.
+  get A Debilitating Sickness |q 9442 |goto Hellfire Peninsula 32.09,28.36
 step
   note Shadow Hunter Ty'jin at Thrallmar wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
   kill Shattered Hand Legionnaire##16700 |q 9496 |goto The Shattered Halls - Dungeon -1,-1
@@ -51,20 +66,38 @@ step
   talk Ryathen the Somber##16791
   accept In Need of Felblood##9366 |goto Hellfire Peninsula 26.99,59.54
 step
+  note Ryathen the Somber at Falcon Watch in Hellfire Peninsula wants you to bring him 6 Felblood Samples from the Terrorfiends that inhabit the Pools of Aggonar.
+  get In Need of Felblood |q 9366 |goto Hellfire Peninsula 26.99,59.54
+step
   talk Magistrix Carinda##16793
   accept Arelion's Journal##9374 |goto Hellfire Peninsula 26.38,60.32
+step
+  note Magistrix Carinda at Falcon Watch in Hellfire Peninsula wants you to go to the Pools of Aggonar and retrieve Arelion's Journal.
+  get Arelion's Journal |q 9374 |goto Hellfire Peninsula 26.38,60.32
 step
   talk Falconer Drenna Riverwind##16790
   accept Trueflight Arrows##9381 |goto Hellfire Peninsula 27.71,60.33
 step
+  note Gather 8 Bonestripper Tail Feathers from Bonestripper Vultures and bring them to Falconer Drenna Riverwind at Falcon Watch.
+  get Trueflight Arrows |q 9381 |goto Hellfire Peninsula 27.71,60.33
+step
   talk Apothecary Azethen##16794
   accept Source of the Corruption##9387 |goto Hellfire Peninsula 26.79,59.71
+step
+  note Travel to the Ruins of Sha'naar in Hellfire Peninsula and obtain 5 Demonic Essences from the Illidari Taskmasters. Return to Apothecary Azethen at Falcon Watch after you've completed the task.
+  get Source of the Corruption |q 9387 |goto Hellfire Peninsula 26.79,59.71
 step
   talk Arcanist Calesthris Dawnstar##16792
   accept Magic of the Arakkoa##9396 |goto Hellfire Peninsula 27.05,59.78
 step
+  note Bring 4 Haal'eshi Scrolls to Arcanist Calesthris Dawnstar at Falcon Watch in Hellfire Peninsula.
+  get Magic of the Arakkoa |q 9396 |goto Hellfire Peninsula 27.05,59.78
+step
   talk Falconer Drenna Riverwind##16790
   accept Birds of a Feather##9397 |goto Hellfire Peninsula 27.71,60.33
+step
+  note Travel to the Den of Haal'esh in Hellfire Peninsula and search the Kaliri Nests for a Female Kaliri Hatchling. Use the Empty Birdcage to capture it and bring it to Falconer Drenna Riverwind at Falcon Watch.
+  get Birds of a Feather |q 9397 |goto Hellfire Peninsula 27.71,60.33
 step
   talk Ranger Captain Venn'ren##16789
   accept Report to Zurai##10103 |goto Hellfire Peninsula 28.49,60.24
@@ -84,11 +117,17 @@ step
   talk Naladu##19361
   accept A Traitor Among Us##10367 |goto Hellfire Peninsula 16.27,65.09
 step
+  note Naladu at the Ruins of Sha'naar wants you to obtain the Sha'naar Key from a nearby hut.
+  get A Traitor Among Us |q 10367 |goto Hellfire Peninsula 16.27,65.09
+step
   talk Thiah Redmane##16991
   turnin Helping the Cenarion Post##10442 |goto Hellfire Peninsula 15.7,52.09
 step
   talk Thiah Redmane##16991
   accept Demonic Contamination##9372 |goto Hellfire Peninsula 15.7,52.09
+step
+  note Thiah Redmane, at the Cenarion Post in Hellfire Peninsula, has asked you to gather 6 Helboar Blood Samples from Hulking Helboars.
+  get Demonic Contamination |q 9372 |goto Hellfire Peninsula 15.7,52.09
 step
   talk Amythiel Mistwalker##16885
   accept Return to the Marsh##9732 |goto Hellfire Peninsula 16.04,52.15
@@ -117,11 +156,20 @@ step
   talk Legassi##19344
   accept Ravager Egg Roundup##9349 |goto Hellfire Peninsula 49.24,74.84
 step
+  note Retrieve 12 Ravager Eggs for Legassi at the Zeppelin Crash in Hellfire Peninsula.
+  get Ravager Egg Roundup |q 9349 |goto Hellfire Peninsula 49.24,74.84
+step
   talk "Screaming" Screed Luckheed##19367
   accept In Case of Emergency...##10161 |goto Hellfire Peninsula 49.15,74.86
 step
+  note Collect 30 pieces of Zeppelin Debris and bring them to "Screaming" Screed Luckheed at the Zeppelin Crash.
+  get In Case of Emergency... |q 10161 |goto Hellfire Peninsula 49.15,74.86
+step
   talk Grelag##16858
   accept Preparing the Salve##9345 |goto Hellfire Peninsula 60.93,81.67
+step
+  note Gather 12 Hellfire Spineleaf plants for a salve and return to Grelag at Spinebreaker Post.
+  get Preparing the Salve |q 9345 |goto Hellfire Peninsula 60.93,81.67
 step
   talk Emissary Mordiba##19682
   accept Make Them Listen##10220 |goto Hellfire Peninsula 61.78,81.71
@@ -129,8 +177,14 @@ step
   talk Althen the Historian##19736
   accept The Battle Horn##10230 |goto Hellfire Peninsula 61.74,81.79
 step
+  note Take the Unyielding Battle Horn from Lieutenant Commander Thalvos and bring it to Althen the Historian in Spinebreaker Post.
+  get The Battle Horn |q 10230 |goto Hellfire Peninsula 61.74,81.79
+step
   talk Ogath the Mad##19683
   accept The Warp Rifts##10278 |goto Hellfire Peninsula 61.87,81.53
+step
+  note Use the Unstable Warp Rift Generator in the Warp Fields. Gather 3 Warp Nethers from Unstable Voidwalkers and return them to Ogath the Mad in Spinebreaker Post.
+  get The Warp Rifts |q 10278 |goto Hellfire Peninsula 61.87,81.53
 step
   talk Captain Darkhowl##22107
   accept Zeth'Gor Must Burn!##10792 |goto Hellfire Peninsula 61.21,81.32
@@ -216,8 +270,14 @@ step
   talk Ryathen the Somber##16791
   accept The Cleansing Must Be Stopped##9370 |goto Hellfire Peninsula 26.99,59.54
 step
+  note Place the Signaling Gem near the Altar of Aggonar at the Pools of Aggonar and defeat any Draenei Anchorites that respond to your summons. Return to Ryathen the Somber at Falcon Watch with the Signaling Gem after completing this task.
+  kill Draenei Anchorite##16994 |q 9370
+step
   talk Taleris Dawngazer##17015
   accept A Pilgrim's Plight##9376 |goto Hellfire Peninsula 27.16,61.9
+step
+  note The Wounded Blood Elf Pilgrim was attacked by Quillfang Ravagers while camped in Dustquill Ravine. Find her camp and search it for the missing pack.
+  get A Pilgrim's Plight |q 9376 |goto Hellfire Peninsula 27.16,61.9
 step
   talk Ranger Captain Venn'ren##16789
   accept Marking the Path##9391 |goto Hellfire Peninsula 28.49,60.24
@@ -249,8 +309,14 @@ step
   talk Thiah Redmane##16991
   accept Testing the Antidote##10255 |goto Hellfire Peninsula 15.7,52.09
 step
+  note Use the Cenarion Antidote on a Hulking Helboar and observe the results. Once you have the results of the experiment, return to Thiah Redmane at the Cenarion Post in Hellfire Peninsula.
+  kill Dreadtusk##16992 |q 10255
+step
   talk Earthbinder Galandria Nightbreeze##19294
   accept Natural Remedies##10351 |goto Hellfire Peninsula 15.96,51.57
+step
+  note Use the Seed of Revitalization at the Earthbinder's Circle to heal the land around the crystal. Then, return to Earthbinder Galandria Nightbreeze at the Cenarion Post in Hellfire Peninsula with any information that you gain.
+  kill Goliathon##19305 |q 10351
 step
   talk Legassi##19344
   turnin Ravager Egg Roundup##9349 |goto Hellfire Peninsula 49.24,74.84
@@ -261,8 +327,14 @@ step
   talk "Screaming" Screed Luckheed##19367
   accept Voidwalkers Gone Wild##9351 |goto Hellfire Peninsula 49.15,74.86
 step
+  note Bring 10 Condensed Voidwalker Essences to "Screaming" Screed Luckheed at the Zeppelin Crash.
+  get Voidwalkers Gone Wild |q 9351 |goto Hellfire Peninsula 49.15,74.86
+step
   talk Legassi##19344
   accept Helboar, the Other White Meat##9361 |goto Hellfire Peninsula 49.24,74.84
+step
+  note Legassi at the Zeppelin Crash wants you to gather 8 Purified Helboar Meat. To purify the meat, use the Purification Mixture on the Tainted Helboar Meat you gather from Helboars.
+  get Helboar, the Other White Meat |q 9361 |goto Hellfire Peninsula 49.24,74.84
 step
   note Mordiba wants you to defeat 12 Unyielding Footmen, 8 Unyielding Knights, and 6 Unyielding Sorcerers at the Expedition Armory to the west of Spinebreaker Post.
   kill Unyielding Footman##16904 |q 10220 |goto Hellfire Peninsula 55.38,78.36
@@ -291,11 +363,20 @@ step
   talk Althen the Historian##19736
   accept Bloody Vengeance##10250 |goto Hellfire Peninsula 61.74,81.79
 step
+  note Blow the Unyielding Battle Horn near the Alliance Banner. Kill Urtrak and then return to Althen the Historian at Spinebreaker Post.
+  kill Urtrak##19862 |q 10250
+step
   talk Ogath the Mad##19683
   accept Void Ridge##10294 |goto Hellfire Peninsula 61.87,81.53
 step
+  note Go to Void Ridge and kill the creatures you find. Collect 40 Void Ridge Soul Shards and return them to Ogath the Mad in Spinebreaker Post.
+  get Void Ridge |q 10294 |goto Hellfire Peninsula 61.87,81.53
+step
   talk Zezzak##22231
   accept Grillok "Darkeye"##10834 |goto Hellfire Peninsula 61.66,81.86
+step
+  note Kill Grillok Darkeye and bring Grillok's Eyepatch to Zezzak in Spinebreaker Post.
+  get Grillok "Darkeye" |q 10834 |goto Hellfire Peninsula 61.66,81.86
 step
   talk Vlagga Freyfeather##18930
   turnin Arrival in Outland##10120 |goto Hellfire Peninsula 87.35,48.14
@@ -330,6 +411,9 @@ step
   talk Foreman Razelcraz##16915
   accept Shizz Work##10629 |goto Hellfire Peninsula 51.37,30.52
 step
+  note Use the Felhound Whistle to summon a Fel Guard Hound. Take the Fel Guard Hound for a walk and kill some Deranged Helboars. Search for the Shredder Keys in the Fel Guard Hound's "leavings." Return the Shredder Keys to Foreman Razelcraz by the mine northwest of Thrallmar.
+  get Shizz Work |q 10629 |goto Hellfire Peninsula 51.37,30.52
+step
   talk Earthcaller Ryga##17123
   turnin Administering the Salve##9447 |goto Hellfire Peninsula 32.09,28.36
 step
@@ -357,6 +441,9 @@ step
   talk Naladu##19361
   accept Arzeth's Demise##10369 |goto Hellfire Peninsula 16.27,65.09
 step
+  note Use the Staff of Dreghood Elders on Arzeth the Merciless and slay him after he's lost his powers. Return to Naladu at the Ruins of Sha'naar after completing this task.
+  kill Arzeth the Powerless##20680 |q 10369
+step
   talk Thiah Redmane##16991
   turnin Testing the Antidote##10255 |goto Hellfire Peninsula 15.7,52.09
 step
@@ -374,6 +461,9 @@ step
 step
   talk Legassi##19344
   accept Smooth as Butter##9356 |goto Hellfire Peninsula 49.24,74.84
+step
+  note Bring 12 Plump Buzzard Wings to Legassi at the Zeppelin Crash.
+  get Smooth as Butter |q 9356 |goto Hellfire Peninsula 49.24,74.84
 step
   talk Apothecary Albreck##21279
   turnin Spinebreaker Post##10242 |goto Hellfire Peninsula 61.14,81.77
@@ -393,8 +483,14 @@ step
   talk Ogath the Mad##19683
   accept From the Abyss##10295 |goto Hellfire Peninsula 61.87,81.53
 step
+  note Kill Void Baron Galaxis and collect his soul shard. Take the shard to Ogath the Mad in Spinebreaker Post.
+  get From the Abyss |q 10295 |goto Hellfire Peninsula 61.87,81.53
+step
   talk Apothecary Albreck##21279
   accept Boiling Blood##10538 |goto Hellfire Peninsula 61.14,81.77
+step
+  note Use Bleeding Hollow Blood at the Cursed Cauldron to make Boiled Blood. Bring 12 Boiled Blood to Apothecary Albreck at Spinebreaker Post.
+  get Boiling Blood |q 10538 |goto Hellfire Peninsula 61.14,81.77
 step
   talk Nazgrel##3230
   turnin Report to Nazgrel##10291 |goto Hellfire Peninsula 55.02,35.96
@@ -471,6 +567,9 @@ step
   talk Apothecary Antonivich##16588
   accept The Demoniac Scryer##10838 |goto Hellfire Peninsula 52.28,36.46
 step
+  note Use the Demoniac Scryer in Hellfire Basin, wait for it to attune, and then take a reading.
+  get The Demoniac Scryer |q 10838 |goto Hellfire Peninsula 52.28,36.46
+step
   talk Forward Commander To'arch##19273
   turnin Forward Base: Reaver's Fall##10124 |goto Hellfire Peninsula 65.89,43.59
 step
@@ -485,6 +584,9 @@ step
 step
   talk Stone Guard Stok'ton##17493
   accept Weaken the Ramparts##9572 |goto Hellfire Peninsula 55.2,36.01
+step
+  note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Caza'rez at Thrallmar in Hellfire Peninsula.
+  get Weaken the Ramparts |q 9572 |goto Hellfire Peninsula 55.2,36.01
 step
   talk Apothecary Antonivich##16588
   accept Report to Nazgrel##10875 |goto Hellfire Peninsula 52.28,36.46
@@ -503,6 +605,9 @@ step
 step
   talk Nazgrel##3230
   accept The Foot of the Citadel##10876 |goto Hellfire Peninsula 55.02,35.96
+step
+  note Kill Force Commander Gorax, place the Challenge From the Horde upon his corpse, kill The Hand of Kargath, and then bring the Head of the Hand of Kargath to Nazgrel in Thrallmar.
+  get The Foot of the Citadel |q 10876 |goto Hellfire Peninsula 55.02,35.96
 step
   note Speak with Wing Commander Brack, bomb Gateway Murketh and Gateway Shaadraz and then return to Forward Commander To'arch at Reaver's Fall.
   kill Legion Transporter: Alpha##19291 |q 10129 |goto Hellfire Peninsula 78.0,47.24
