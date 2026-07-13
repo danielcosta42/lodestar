@@ -70,6 +70,10 @@ L.ATT_TITLE    = "Raid Readiness"
 L.ATT_DONE     = "Attuned"
 L.ATT_PROGRESS = "In progress"
 L.ATT_NONE     = "Not started"
+L.SQUAD_TITLE  = "On the route"
+L.SQUAD_EMPTY  = "No one running Lodestar nearby yet."
+L.SET_SQUAD    = "On the route"
+L.SET_SQUAD_D  = "See guild/party members leveling with Lodestar (shares your progress over ChehulNet)."
 
 -- Trainers & milestones
 L.CLASS_TRAINER   = "Class trainer"

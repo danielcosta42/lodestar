@@ -101,6 +101,8 @@ local function fillGeneral(p)
 		L.SET_OPEN, function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
 	buttonRow(p, L.SET_RAIDS, L.SET_RAIDS_D,
 		L.SET_OPEN, function() if ns.Attunements then ns.Attunements:Toggle() end end)
+	buttonRow(p, L.SET_SQUAD, L.SET_SQUAD_D,
+		L.SET_OPEN, function() if ns.Squad then ns.Squad:Toggle() end end)
 end
 
 local function fillAppearance(p)
