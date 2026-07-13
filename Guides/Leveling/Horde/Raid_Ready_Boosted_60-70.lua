@@ -326,9 +326,6 @@ step
 step
   note A'dal has tasked you with the recovery of the Top and Bottom Shards of the Arcatraz Key. Return them to him, and he will fashion them into the Key to the Arcatraz for you.
 step
-  talk A'dal##18481
-  turnin How to Break Into the Arcatraz##10704 |goto Shattrath City 53.99,44.75
-step
   note {section}The Botanica
   goto Netherstorm 70.3,68.5
 step
@@ -340,6 +337,9 @@ step
 step
   run The Mechanar |dungeon The Mechanar |boss 19220 |runs 1
   |tip {rrspam}The Mechanar
+step
+  talk A'dal##18481
+  turnin How to Break Into the Arcatraz##10704 |goto Shattrath City 53.99,44.75
 step
   note {rrarca}
 step
