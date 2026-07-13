@@ -435,11 +435,16 @@ function V:Refresh()
 	local w = frame.content:GetWidth()
 	if w <= 0 then w = (ns.db.viewer.width or 340) - 40 end
 
-	-- Banner de PRÉ-REQUISITO: travado por prereq de outro guia -> botão abre em aba
+	-- Banner de PRÉ-REQUISITO: prereq de outro guia (botão "Abrir" a aba) OU gate de
+	-- cadeia sem guia (só avisa "faça isto antes", sem botão).
 	local block = ns.PrereqBlock and ns:PrereqBlock(step)
 	if block then
 		frame._prereqGuide = block.guide
 		frame.prereqText:SetText(ns.L.PREREQ_NEEDED:format(block.quest))
+		frame.prereqText:ClearAllPoints()
+		frame.prereqText:SetPoint("TOPLEFT", 10, -8)
+		frame.prereqText:SetPoint("RIGHT", frame.prereq, "RIGHT", block.guide and -70 or -10, 0)
+		frame.prereqBtn:SetShown(block.guide ~= nil)
 		frame.prereq:ClearAllPoints()
 		frame.prereq:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
 		frame.prereq:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)

@@ -78,21 +78,40 @@ local function deepestBlocking(qid, curKey, seen)
 	return nil
 end
 
--- O passo está travado por um prereq de OUTRO guia?
--- Retorna { quest = nome, guide = chave, pid = id } ou nil.
+local function titleFor(pid)
+	local name = C_QuestLog and C_QuestLog.GetTitleForQuestID and C_QuestLog.GetTitleForQuestID(pid)
+	return name or ("#" .. pid)
+end
+
+-- Gate de cadeia DURA (p.nextInChain==qid) ainda não feito. Usado como fallback
+-- quando NENHUM guia ensina o prereq: aí não dá pra abrir aba, mas ainda avisamos
+-- "faça <quest> antes". Recursivo p/ mostrar o gate MAIS FUNDO (o 1º da cadeia).
+local function chainGateFor(qid, seen)
+	local p = ns.questChainGate and ns.questChainGate[qid]
+	if not p or seen[p] then return nil end
+	seen[p] = true
+	if isDone(p) or inLog(p) then return nil end   -- prereq feito/em progresso: sem trava
+	return chainGateFor(p, seen) or p              -- mostra o mais fundo incompleto
+end
+
+-- O passo está travado por um prereq?
+--   { quest=nome, guide=chave, pid } → prereq de OUTRO guia (botão "Abrir" a aba)
+--   { quest=nome, guide=nil,   pid } → gate de cadeia sem guia (só avisa)
 function ns:PrereqBlock(step)
-	if not (step and ns.questPre and ns.currentGuide) then return nil end
+	if not (step and ns.currentGuide) then return nil end
 	if not questToGuide then buildIndex() end
 	local curKey = ns.currentGuide.key
 	for _, g in ipairs(step.goals) do
 		if g.verb == "accept" and g.id and self:IsGoalActive(g) and not self:IsGoalComplete(g)
 			and not (isDone(g.id) or inLog(g.id)) then
-			local pid, gk = deepestBlocking(g.id, curKey, {})
-			if gk then
-				local name = C_QuestLog and C_QuestLog.GetTitleForQuestID
-					and C_QuestLog.GetTitleForQuestID(pid)
-				return { quest = name or ("#" .. pid), guide = gk, pid = pid }
+			-- 1) prereq ensinado por outro guia → abre em aba
+			if ns.questPre then
+				local pid, gk = deepestBlocking(g.id, curKey, {})
+				if gk then return { quest = titleFor(pid), guide = gk, pid = pid } end
 			end
+			-- 2) gate de cadeia dura sem guia → só avisa "faça isto antes"
+			local p = chainGateFor(g.id, {})
+			if p then return { quest = titleFor(p), guide = nil, pid = p } end
 		end
 	end
 	return nil
