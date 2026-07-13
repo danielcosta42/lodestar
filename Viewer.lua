@@ -160,7 +160,7 @@ local function build()
 	frame.title = header:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(frame.title, 13, { color = C.active })
 	frame.title:SetPoint("LEFT", dot, "RIGHT", 7, 0)
-	frame.title:SetPoint("RIGHT", header, "RIGHT", -52, 0)
+	frame.title:SetPoint("RIGHT", header, "RIGHT", -92, 0)
 	frame.title:SetJustifyH("LEFT"); frame.title:SetText("Lodestar")
 
 	local close = UI.CloseButton(header, function() V:Hide() end)
@@ -181,6 +181,16 @@ local function build()
 	menuBtn:SetScript("OnEnter", function() micon:SetVertexColor(UI.unpackc(C.accent)) end)
 	menuBtn:SetScript("OnLeave", function() micon:SetVertexColor(UI.unpackc(C.muted)) end)
 	menuBtn:SetScript("OnClick", function() if ns.GuideMenu then ns.GuideMenu:Toggle() end end)
+
+	-- engrenagem: abre a tela de configurações
+	local cfgBtn = CreateFrame("Button", nil, header)
+	cfgBtn:SetSize(20, 18)
+	cfgBtn:SetPoint("RIGHT", menuBtn, "LEFT", -2, 0)
+	local cicon = UI.Glyph(cfgBtn, "config", "OVERLAY", 64)
+	cicon:SetSize(13, 13); cicon:SetPoint("CENTER"); cicon:SetVertexColor(UI.unpackc(C.muted))
+	cfgBtn:SetScript("OnEnter", function() cicon:SetVertexColor(UI.unpackc(C.accent)) end)
+	cfgBtn:SetScript("OnLeave", function() cicon:SetVertexColor(UI.unpackc(C.muted)) end)
+	cfgBtn:SetScript("OnClick", function() if ns.Settings then ns.Settings:Toggle() end end)
 
 	-- Tira de abas (guias abertos) ----------------------------------------
 	frame.tabStrip = CreateFrame("Frame", nil, frame)
