@@ -28,6 +28,17 @@ Locales\koKR.lua
 Locales\zhCN.lua
 Locales\zhTW.lua
 
+# Rede ChehulNet (família de addons: GuildOS, PartyLens, ProfessionHelper).
+# Cópias verbatim — não editar; se outro addon carregar antes, os version-guards
+# reusam a instância. ChehulNetWire.lua é o glue específico do Lodestar (tag "ls").
+Libs\LibStub.lua
+Libs\CallbackHandler-1.0.lua
+Libs\ChatThrottleLib.lua
+Libs\AceComm-3.0.lua
+Libs\LibChehulMesh.lua
+Libs\ChehulNet.lua
+ChehulNetWire.lua
+
 ZoneData.lua
 Trainers.lua
 Parser.lua
