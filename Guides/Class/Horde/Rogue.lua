@@ -166,10 +166,6 @@ step
   turnin A Discreet Inquiry##10372 |goto Ghostlands 47.2,34.31
 step
   only Rogue
-  talk Arantir##7009
-  turnin OLD Horns of Nez'ra##2358 |goto Redridge Mountains 28.06,52.32
-step
-  only Rogue
   talk Fahrad##6707
   turnin The Manor, Ravenholdt##6681 |goto Alterac Mountains 84.45,80.32
 step
@@ -276,10 +272,6 @@ step
   accept The Shattered Hand##1963 |goto Orgrimmar 42.73,53.55
 step
   only Rogue
-  talk Mennet Carkad##6467
-  accept [Not Used Tools of the Trade##2019 |goto Undercity 83.51,69.11
-step
-  only Rogue
   talk Shenthul##3401
   accept Zando'zan##2379 |goto Orgrimmar 43.05,53.74
 step
@@ -349,10 +341,6 @@ step
   only Rogue
   talk Therzok##6446
   turnin The Shattered Hand##1963 |goto Orgrimmar 42.73,53.55
-step
-  only Rogue
-  talk Therzok##6446
-  turnin [Not Used Tools of the Trade##2019 |goto Orgrimmar 42.73,53.55
 step
   only Rogue
   talk Zando'zan##3402

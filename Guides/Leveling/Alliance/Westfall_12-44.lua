@@ -59,9 +59,6 @@ step
   talk Quartermaster Lewis##491
   accept A Swift Message##6181 |goto Westfall 57.0,47.17
 step
-  talk Elder Skychaser##15577
-  accept Skychaser the Elder##8675 |goto Westfall 56.65,47.11
-step
   talk Grimbooze Thunderbrew##239
   accept Sweet Amber##48 |goto Westfall 44.62,80.25
 step
@@ -97,9 +94,6 @@ step
 step
   talk Wiley the Black##266
   turnin The Defias Brotherhood##65 |goto Redridge Mountains 26.48,45.35 |tip {turninat}Redridge Mountains
-step
-  talk Elder Skychaser##15577
-  turnin Skychaser the Elder##8675 |goto Westfall 56.65,47.11
 step
   only Human
   talk Thor##523

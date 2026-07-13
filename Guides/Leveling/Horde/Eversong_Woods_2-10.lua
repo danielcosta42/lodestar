@@ -57,9 +57,6 @@ step
   talk Ponaris##16276
   accept Cleansing the Scar##9489 |goto Eversong Woods 47.85,47.97
 step
-  talk Blood Elf Commoner##19169
-  accept Masked Orphan Matron##11357 |goto Eversong Woods 54.16,50.77
-step
   note Slay 8 Plaguebone Pillagers and report back to Ranger Jaela on the Dead Scar in Eversong Woods.
   kill Plaguebone Pillager##15654 |q 8475 |goto Eversong Woods 50.3,56.69
 step
@@ -229,9 +226,6 @@ step
   only Warlock
   talk Instructor Antheol##15970
   turnin Fetch!##9402 |goto Eversong Woods 55.7,54.51
-step
-  talk Masked Orphan Matron##23973
-  turnin Masked Orphan Matron##11357 |goto Eversong Woods 47.25,46.48
 step
   talk Magister Jaronis##15418
   accept Delivery to the North Sanctum##8895 |goto Eversong Woods 47.26,46.31

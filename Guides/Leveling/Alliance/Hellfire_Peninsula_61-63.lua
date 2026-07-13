@@ -10,14 +10,8 @@ step
   note {fp}Flightmaster Krill Bitterhue
   goto Hellfire Peninsula 54.68,62.35 |tip {vendor}
 step
-  talk Force Commander Danath Trollbane##16819
-  accept Turning the Tide##9492 |goto Hellfire Peninsula 56.64,66.7
-step
   talk Field Commander Romus##16830
   accept Pride of the Fel Horde##9493 |goto Hellfire Peninsula 56.84,62.72
-step
-  talk Magus Zabraxis##16829
-  accept Fel Embers##9494 |goto Hellfire Peninsula 53.86,65.74
 step
   talk Sid Limbardi##16826
   accept The Longbeards##9558 |goto Hellfire Peninsula 54.22,63.6
@@ -52,9 +46,6 @@ step
   talk Lieutenant Amadi##16820
   accept Fel Orc Scavengers##10482 |goto Hellfire Peninsula 50.91,60.19
 step
-  talk Force Commander Danath Trollbane##16819
-  accept Grand Master Dumphry##10762 |goto Hellfire Peninsula 56.64,66.7
-step
   note Cleanse 8 Trampled Skeletons on the Path of Glory with Draenei Holy Water, then return to Warp-Scryer Kryv at Honor Hold.
   collect Trampled Skeleton##182789 |q 10047 |goto Hellfire Peninsula 58.75,49.87
 step
@@ -84,15 +75,6 @@ step
 step
   note Slay Arazzius the Cruel in the Pools of Aggonar and return to Force Commander Danath Trollbane in the keep of Honor Hold.
   kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55
-step
-  talk Apothecary Antonivich##16588
-  accept Master of Potions##10905 |goto Hellfire Peninsula 52.28,36.46
-step
-  talk Apothecary Antonivich##16588
-  accept Master of Elixirs##10906 |goto Hellfire Peninsula 52.28,36.46
-step
-  talk Apothecary Antonivich##16588
-  accept Master of Transmutation##10907 |goto Hellfire Peninsula 52.28,36.46
 step
   talk Elsaana##17006
   accept An Ambitious Plan##9383 |goto Hellfire Peninsula 23.21,36.66
@@ -175,17 +157,8 @@ step
   note Gremni Longbeard in Hellfire Peninsula wants you to slay 4 Haal'eshi Windwalkers and 6 Haal'eshi Talonguards.
   kill Haal'eshi Windwalker##16966 |q 9417 |goto Hellfire Peninsula 26.34,76.47
 step
-  talk Dumphry##21209
-  turnin Grand Master Dumphry##10762 |goto Hellfire Peninsula 51.12,60.3
-step
-  talk Force Commander Danath Trollbane##16819
-  turnin Turning the Tide##9492 |goto Hellfire Peninsula 56.64,66.7
-step
   talk Field Commander Romus##16830
   turnin Pride of the Fel Horde##9493 |goto Hellfire Peninsula 56.84,62.72
-step
-  talk Magus Zabraxis##16829
-  turnin Fel Embers##9494 |goto Hellfire Peninsula 53.86,65.74
 step
   talk Sergeant Altumus##19309
   turnin The Legion Reborn##10141 |goto Hellfire Peninsula 61.72,60.95
@@ -232,9 +205,6 @@ step
   talk Lieutenant Amadi##16820
   accept Ill Omens##10483 |goto Hellfire Peninsula 50.91,60.19
 step
-  talk Dumphry##21209
-  accept Dumphry's Request##10763 |goto Hellfire Peninsula 51.12,60.3
-step
   talk Legassi##19344
   turnin Ravager Egg Roundup##9349 |goto Hellfire Peninsula 49.24,74.84
 step
@@ -256,9 +226,6 @@ step
   talk Wing Commander Dabir'ee##19409
   turnin Zeth'Gor Must Burn!##10895 |goto Hellfire Peninsula 71.4,62.48
 step
-  talk Lauranna Thar'well##17909
-  turnin Master of Potions##10905 |goto Zangarmarsh 80.32,64.17 |tip {turninat}Zangarmarsh
-step
   talk Ysiel Windsinger##17841
   turnin The Cenarion Expedition##9912 |goto Zangarmarsh 78.4,62.02 |tip {turninat}Zangarmarsh
 step
@@ -277,9 +244,6 @@ step
   talk Amish Wildhammer##18931
   accept Journey to Honor Hold##10140 |goto Hellfire Peninsula 87.36,52.42
 step
-  talk Lorokeem##19052
-  turnin Master of Elixirs##10906 |goto Shattrath City 45.59,21.49 |tip {turninat}Shattrath City
-step
   talk Foreman Razelcraz##16915
   turnin Outland Sucks!##10236 |goto Hellfire Peninsula 51.37,30.52
 step
@@ -288,9 +252,6 @@ step
 step
   note Amaan the Wise wants you to go to the Pools of Aggonar and slay 6 Terrorfiends and 6 Blistering Rots.
   kill Terrorfiend##16951 |q 9426 |goto Hellfire Peninsula 40.05,32.89
-step
-  talk Zarevhi##22427
-  turnin Master of Transmutation##10907 |goto Netherstorm 44.12,36.64 |tip {turninat}Netherstorm
 step
   note Use the Flaming Torch to burn the Horde Blade Throwers overlooking the Path of Glory. Then, bring the Flaming Torch to Dumphry in Honor Hold.
   kill Invis Horde Siege Engine - East##18818 |q 10078 |goto Hellfire Peninsula 58.49,47.67
@@ -364,9 +325,6 @@ step
   talk Mirren Longbeard##16851
   accept The Finest Down##9420 |goto Hellfire Peninsula 23.97,72.35
 step
-  talk Dumphry##21209
-  turnin Dumphry's Request##10763 |goto Hellfire Peninsula 51.12,60.3
-step
   talk Sergeant Altumus##19309
   turnin The Path of Anguish##10142 |goto Hellfire Peninsula 61.72,60.95
 step
@@ -393,9 +351,6 @@ step
 step
   talk Marshal Isildor##19308
   accept Force Commander Danath##10254 |goto Hellfire Peninsula 54.81,62.79
-step
-  talk Dumphry##21209
-  accept Hotter than Hell##10764 |goto Hellfire Peninsula 51.12,60.3
 step
   note Kill 15 Marauding Crust Bursters and return to Foreman Biggums at Honor Hold.
   kill Marauding Crust Burster##16857 |q 9355 |goto Hellfire Peninsula 47.92,63.19
@@ -462,9 +417,6 @@ step
 step
   talk Foreman Biggums##16837
   turnin A Job for an Intelligent Man##9355 |goto Hellfire Peninsula 52.02,62.57
-step
-  talk Dumphry##21209
-  turnin Hotter than Hell##10764 |goto Hellfire Peninsula 51.12,60.3
 step
   talk Force Commander Danath Trollbane##16819
   turnin Force Commander Danath##10254 |goto Hellfire Peninsula 56.64,66.7

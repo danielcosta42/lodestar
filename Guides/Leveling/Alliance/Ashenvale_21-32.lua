@@ -31,9 +31,6 @@ step
   talk Shindrell Swiftfire##3845
   accept Kayneth Stillwind##4581 |goto Ashenvale 34.67,48.84
 step
-  talk Elder Riversong##15605
-  accept Riversong the Elder##8725 |goto Ashenvale 34.65,48.48
-step
   talk Vindicator Palanaar##17106
   accept A Helping Hand##9533 |goto Ashenvale 34.89,49.71
 step
@@ -72,9 +69,6 @@ step
 step
   talk Illiyana Moonblaze##14753
   accept Sentinel Standard Care Package##7864 |goto Ashenvale 61.49,83.86
-step
-  talk Illiyana Moonblaze##14753
-  accept Sentinel Advanced Care Package##7865 |goto Ashenvale 61.49,83.86
 step
   talk Kayneth Stillwind##3848
   turnin Kayneth Stillwind##4581 |goto Ashenvale 85.24,44.71
@@ -120,9 +114,6 @@ step
 step
   talk Raene Wolfrunner##3691
   turnin Raene's Cleansing##1029 |goto Ashenvale 36.62,49.58
-step
-  talk Elder Riversong##15605
-  turnin Riversong the Elder##8725 |goto Ashenvale 34.65,48.48
 step
   talk Raene Wolfrunner##3691
   turnin Culling the Threat##1054 |goto Ashenvale 36.62,49.58
@@ -198,9 +189,6 @@ step
 step
   talk Illiyana Moonblaze##14753
   turnin Sentinel Standard Care Package##7864 |goto Ashenvale 61.49,83.86
-step
-  talk Illiyana Moonblaze##14753
-  turnin Sentinel Advanced Care Package##7865 |goto Ashenvale 61.49,83.86
 step
   note Slay 6 Mannoroc Lashers, 6 Felguards and 6 Searing Infernals, and then return to Vindicator Vedaar at Forest Song in Ashenvale.
   kill Mannoroc Lasher##11697 |q 9516 |goto Ashenvale 79.38,81.53

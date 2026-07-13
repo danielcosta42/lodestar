@@ -53,9 +53,6 @@ step
   talk Deathguard Podrig##6389
   accept Supplying the Sepulcher##6321 |goto Silverpine Forest 43.42,41.68
 step
-  talk Elder Obsidian##15561
-  accept Obsidian the Elder##8645 |goto Silverpine Forest 44.98,41.14
-step
   note Locate Beren's Peril, then kill 6 Ravenclaw Drudgers and 6 Ravenclaw Guardians, then return to Shadow Priest Allister at the Sepulcher.
   kill Ravenclaw Drudger##1974 |q 516 |goto Silverpine Forest 59.14,70.81
 step
@@ -91,9 +88,6 @@ step
 step
   talk Dalar Dawnweaver##1938
   turnin Prove Your Worth##421 |goto Silverpine Forest 44.2,39.81
-step
-  talk Elder Obsidian##15561
-  turnin Obsidian the Elder##8645 |goto Silverpine Forest 44.98,41.14
 step
   talk Apothecary Renferrel##1937
   turnin Wild Hearts##429 |goto Silverpine Forest 42.8,40.86

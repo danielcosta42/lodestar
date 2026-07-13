@@ -7,12 +7,6 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (2-10)", {
 	next = "Leveling/Alliance/Teldrassil (4-12)",
 }, [[
 step
-  talk Brother Paxton##951
-  accept Ink Supplies##345 |goto Elwynn Forest 49.61,40.41
-step
-  talk Brother Paxton##951
-  accept Return to Kristoff##346 |goto Elwynn Forest 49.61,40.41
-step
   talk Deputy Willem##823
   accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
 step
@@ -42,10 +36,7 @@ step
   talk Marshal Dughan##240
   accept The Fargodeep Mine##62 |goto Elwynn Forest 42.11,65.93
 step
-  talk Innkeeper Farley##295
-  accept The Legend of Stalvan##70 |goto Elwynn Forest 43.77,65.8
-step
-  talk Marshal Dughan##233
+  talk Marshal Dughan##240
   accept Report to Gryan Stoutmantle##109 |goto Elwynn Forest 42.11,65.93
 step
   talk Smith Argus##514
@@ -77,9 +68,6 @@ step
   talk Priestess Josetta##377
   accept Desperate Prayer##5635 |goto Elwynn Forest 43.28,65.72
 step
-  talk Elder Stormbrow##15565
-  accept Stormbrow the Elder##8649 |goto Elwynn Forest 40.13,62.73
-step
   only Human Priest
   note Find Guard Roberts and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Priestess Josetta in Goldshire.
   kill Guard Roberts##12423 |q 5624 |goto Elwynn Forest 48.15,68.05
@@ -107,9 +95,6 @@ step
   talk Tommy Joe Stonefield##252
   accept Speak with Gramma##111 |goto Elwynn Forest 29.84,86.0
 step
-  talk Theocritus##313
-  accept A Watchful Eye##94 |goto Elwynn Forest 65.22,69.71
-step
   only Human Rogue
   talk Master Mathias Shaw##332
   turnin Seek out SI: 7##2205 |goto Stormwind City 75.78,59.84 |tip {turninat}Stormwind City
@@ -122,11 +107,6 @@ step
 step
   talk Guard Thomas##261
   accept Protect the Frontier##52 |goto Elwynn Forest 73.97,72.18
-step
-  turnin A Watchful Eye##94 |goto Redridge Mountains 84.49,46.83 |tip {turninat}Redridge Mountains
-step
-  talk Marshal Haggard##294
-  accept The Legend of Stalvan##75 |goto Elwynn Forest 84.61,69.38
 step
   talk Sara Timberlain##278
   accept Red Linen Goods##83 |goto Elwynn Forest 79.46,68.79
@@ -150,12 +130,6 @@ step
 step
   talk Grimand Elmore##1416
   turnin Elmore's Task##1097 |goto Stormwind City 51.76,12.08 |tip {turninat}Stormwind City
-step
-  talk Foreman Oslow##341
-  turnin Ink Supplies##345 |goto Redridge Mountains 32.14,48.64 |tip {turninat}Redridge Mountains
-step
-  talk Brother Kristoff##1444
-  turnin Return to Kristoff##346 |goto Stormwind City 45.7,38.42 |tip {turninat}Stormwind City
 step
   talk Gryan Stoutmantle##234
   turnin Report to Gryan Stoutmantle##109 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
@@ -193,12 +167,6 @@ step
   talk Marshal Dughan##240
   turnin The Fargodeep Mine##62 |goto Elwynn Forest 42.11,65.93
 step
-  talk Caretaker Folsom##297
-  turnin The Legend of Stalvan##70 |goto Stormwind City 29.53,61.93 |tip {turninat}Stormwind City
-step
-  talk Elder Stormbrow##15565
-  turnin Stormbrow the Elder##8649 |goto Elwynn Forest 40.13,62.73
-step
   only Human Priest
   talk Priestess Josetta##377
   turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
@@ -214,10 +182,6 @@ step
 step
   talk Marshal Dughan##240
   accept The Jasperlode Mine##76 |goto Elwynn Forest 42.11,65.93
-step
-  only Rogue
-  talk Keryn Sylvius##917
-  accept SI:7##2300 |goto Elwynn Forest 43.87,65.94
 step
   talk Billy Maclure##247
   turnin Lost Necklace##85 |goto Elwynn Forest 43.13,85.72
@@ -252,10 +216,6 @@ step
   talk Guard Thomas##261
   turnin Protect the Frontier##52 |goto Elwynn Forest 73.97,72.18
 step
-  only Rogue
-  talk Renzik "The Shiv"##6946
-  turnin SI:7##2300 |goto Stormwind City 75.76,60.36 |tip {turninat}Stormwind City
-step
   talk Guard Thomas##261
   accept Find the Lost Guards##37 |goto Elwynn Forest 73.97,72.18
 step
@@ -269,14 +229,8 @@ step
   talk Sara Timberlain##278
   turnin Cloth and Leather Armor##59 |goto Elwynn Forest 79.46,68.79
 step
-  talk Marshal Haggard##294
-  turnin The Legend of Stalvan##75 |goto Elwynn Forest 84.61,69.38
-step
   talk Sara Timberlain##278
   turnin Red Linen Goods##83 |goto Elwynn Forest 79.46,68.79
-step
-  talk Marshal Haggard##294
-  accept The Legend of Stalvan##78 |goto Elwynn Forest 84.61,69.38
 step
   talk Marshal McBride##197
   turnin Kobold Camp Cleanup##7 |goto Elwynn Forest 48.92,41.61
@@ -286,9 +240,6 @@ step
 step
   talk Deputy Willem##823
   turnin Brotherhood of Thieves##18 |goto Elwynn Forest 48.17,42.94
-step
-  talk Tavernkeep Smitts##273
-  turnin The Legend of Stalvan##78 |goto Duskwood 73.78,44.49 |tip {turninat}Duskwood
 step
   talk Deputy Willem##823
   accept Bounty on Garrick Padfoot##6 |goto Elwynn Forest 48.17,42.94

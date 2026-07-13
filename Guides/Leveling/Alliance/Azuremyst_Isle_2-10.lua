@@ -93,17 +93,8 @@ step
   talk Priestess Kyleen Il'dinare##17241
   accept Warlord Sriss'tiz##9515 |goto Azuremyst Isle 47.13,70.28
 step
-  talk Admiral Odesyus##17240
-  accept The Bloodcurse Legacy##9751 |goto Azuremyst Isle 47.04,70.21
-step
   note Priestess Kyleen Il'dinare at Odesyus' Landing on Azuremyst Isle wants you to kill Warlord Sriss'tiz.
   kill Warlord Sriss'tiz##17298 |q 9515 |goto Azuremyst Isle 24.79,74.04
-step
-  talk Huntress Kella Nightbow##17614
-  accept The Way to Auberdine##9633 |goto Azuremyst Isle 24.18,54.35
-step
-  talk Captain Edward Hanes##17712
-  turnin The Bloodcurse Legacy##9751 |goto Bloodmyst Isle 79.15,22.65 |tip {turninat}Bloodmyst Isle
 step
   only Warrior
   note Unlock the Ravager Cage and kill the Death Ravager, then return to Ruada at Azure Watch in Azuremyst.
@@ -181,9 +172,6 @@ step
   only Draenei
   talk Exarch Menelaous##17116
   turnin A Hearty Thanks!##9612 |goto Azuremyst Isle 47.11,50.6
-step
-  talk Thundris Windweaver##3649
-  turnin The Way to Auberdine##9633 |goto Darkshore 37.4,40.13 |tip {turninat}Darkshore
 step
   talk Totem of Akida##17360
   turnin Learning the Language##9538 |goto Azuremyst Isle 49.44,50.98

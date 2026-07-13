@@ -40,9 +40,6 @@ step
   talk Cliffwatcher Longhorn##10537
   accept Family Tree##5361 |goto Thousand Needles 45.67,50.74
 step
-  talk Elder Skyseer##15584
-  accept Skyseer the Elder##8682 |goto Thousand Needles 45.29,50.0
-step
   talk Magistrix Elosai##17093
   accept A Different Approach##9431 |goto Thousand Needles 46.21,50.4
 step
@@ -104,9 +101,6 @@ step
   talk Kravel Koalbeard##4452
   accept Hemet Nesingwary Jr.##5762 |goto Thousand Needles 77.79,77.27
 step
-  talk Elder Morningdew##15604
-  accept Morningdew the Elder##8724 |goto Thousand Needles 79.74,77.31
-step
   note Kill 5 Silithid Searchers, 5 Silithid Hive Drones, and 5 Silithid Invaders and return to Moktar Krin in Thousand Needles.
   kill Silithid Searcher##4130 |q 1147 |goto Thousand Needles 69.91,83.32
 step
@@ -146,9 +140,6 @@ step
   talk Cliffwatcher Longhorn##10537
   turnin Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
 step
-  talk Elder Skyseer##15584
-  turnin Skyseer the Elder##8682 |goto Thousand Needles 45.29,50.0
-step
   talk Nataka Longhorn##11259
   turnin Family Tree##5361 |goto Desolace 55.41,55.81 |tip {turninat}Desolace
 step
@@ -172,9 +163,6 @@ step
 step
   note Kill 10 Saltstone Basilisks, 10 Saltstone Crystalhides and 6 Saltstone Gazers for Trackmaster Zherin on the Shimmering Flats.
   kill Saltstone Basilisk##4147 |q 1175 |goto Thousand Needles 75.49,59.58
-step
-  talk Elder Morningdew##15604
-  turnin Morningdew the Elder##8724 |goto Thousand Needles 79.74,77.31
 step
   talk Trackmaster Zherin##4629
   turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95

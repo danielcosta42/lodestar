@@ -10,9 +10,6 @@ step
   note {fp}Barley
   goto Hellfire Peninsula 56.29,36.24 |tip {vendor}
 step
-  talk Nazgrel##3230
-  accept The Will of the Warchief##9495 |goto Hellfire Peninsula 55.02,35.96
-step
   talk Shadow Hunter Ty'jin##16575
   accept Pride of the Fel Horde##9496 |goto Hellfire Peninsula 55.05,36.32
 step
@@ -31,24 +28,6 @@ step
 step
   talk Vurtok Axebreaker##21256
   accept Bonechewer Blood##10450 |goto Hellfire Peninsula 55.13,36.39
-step
-  talk Nazgrel##3230
-  accept Grand Master Rohok##10756 |goto Hellfire Peninsula 55.02,35.96
-step
-  talk Apothecary Antonivich##16588
-  accept Master of Potions##10905 |goto Hellfire Peninsula 52.28,36.46
-step
-  talk Apothecary Antonivich##16588
-  accept Master of Elixirs##10906 |goto Hellfire Peninsula 52.28,36.46
-step
-  talk Apothecary Antonivich##16588
-  accept Master of Transmutation##10907 |goto Hellfire Peninsula 52.28,36.46
-step
-  talk Zarevhi##22427
-  turnin Master of Transmutation##10907 |goto Netherstorm 44.12,36.64 |tip {turninat}Netherstorm
-step
-  talk Lorokeem##19052
-  turnin Master of Elixirs##10906 |goto Shattrath City 45.59,21.49 |tip {turninat}Shattrath City
 step
   talk Foreman Razelcraz##16915
   accept Outland Sucks!##10236 |goto Hellfire Peninsula 51.37,30.52
@@ -168,9 +147,6 @@ step
   talk Ysiel Windsinger##17841
   turnin Return to the Marsh##9732 |goto Zangarmarsh 78.4,62.02 |tip {turninat}Zangarmarsh
 step
-  talk Lauranna Thar'well##17909
-  turnin Master of Potions##10905 |goto Zangarmarsh 80.32,64.17 |tip {turninat}Zangarmarsh
-step
   talk Ysiel Windsinger##17841
   turnin The Cenarion Expedition##9912 |goto Zangarmarsh 78.4,62.02 |tip {turninat}Zangarmarsh
 step
@@ -179,12 +155,6 @@ step
 step
   talk Lieutenant General Orion##19253
   accept Arrival in Outland##10120 |goto Hellfire Peninsula 87.35,49.78
-step
-  talk Rohok##16583
-  turnin Grand Master Rohok##10756 |goto Hellfire Peninsula 53.13,38.16
-step
-  talk Nazgrel##3230
-  turnin The Will of the Warchief##9495 |goto Hellfire Peninsula 55.02,35.96
 step
   talk Shadow Hunter Ty'jin##16575
   turnin Pride of the Fel Horde##9496 |goto Hellfire Peninsula 55.05,36.32
@@ -203,9 +173,6 @@ step
 step
   talk Vurtok Axebreaker##21256
   accept Apothecary Zelana##10449 |goto Hellfire Peninsula 55.13,36.39
-step
-  talk Rohok##16583
-  accept Rohok's Request##10757 |goto Hellfire Peninsula 53.13,38.16
 step
   talk Foreman Razelcraz##16915
   turnin Outland Sucks!##10236 |goto Hellfire Peninsula 51.37,30.52
@@ -345,9 +312,6 @@ step
   note Use the Flaming Torch to burn the Eastern Alliance Cannon and the Western Alliance Cannon, and then return to Megzeg Nukklebust in Thrallmar.
   kill Invis Alliance Siege Engine - East##18849 |q 10087 |goto Hellfire Peninsula 60.82,51.86
 step
-  talk Rohok##16583
-  turnin Rohok's Request##10757 |goto Hellfire Peninsula 53.13,38.16
-step
   talk General Krakork##19255
   turnin Journey to Thrallmar##10289 |goto Hellfire Peninsula 55.88,36.65
 step
@@ -356,9 +320,6 @@ step
 step
   talk General Krakork##19255
   accept Report to Nazgrel##10291 |goto Hellfire Peninsula 55.88,36.65
-step
-  talk Rohok##16583
-  accept Hotter than Hell##10758 |goto Hellfire Peninsula 53.13,38.16
 step
   note Rescue Manni, Moh and Jakk from the Fel Orc camps and return to Foreman Razelcraz by the mine northwest of Thrallmar.
   collect Manni's Cage##183936 |q 10238 |goto Hellfire Peninsula 45.11,41.1
@@ -434,9 +395,6 @@ step
 step
   talk Apothecary Albreck##21279
   accept Boiling Blood##10538 |goto Hellfire Peninsula 61.14,81.77
-step
-  talk Rohok##16583
-  turnin Hotter than Hell##10758 |goto Hellfire Peninsula 53.13,38.16
 step
   talk Nazgrel##3230
   turnin Report to Nazgrel##10291 |goto Hellfire Peninsula 55.02,35.96

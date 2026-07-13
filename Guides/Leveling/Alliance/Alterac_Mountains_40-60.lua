@@ -13,12 +13,6 @@ step
   talk Archmage Ansirem Runeweaver##2543
   accept Ansirem's Key##603 |goto Alterac Mountains 18.84,78.49
 step
-  talk Archmage Cedric##18165
-  accept Khadgar##9829 |goto Alterac Mountains 15.61,54.58
-step
-  talk Khadgar##18166
-  turnin Khadgar##9829 |goto Shattrath City 54.75,44.32 |tip {turninat}Shattrath City
-step
   only Warrior
   talk Bath'rah the Windwatcher##6176
   accept Cyclonian##1712 |goto Alterac Mountains 80.5,66.92

@@ -44,9 +44,6 @@ step
   talk Brock Stoneseeker##1681
   accept Honor Students##6387 |goto Loch Modan 37.02,47.81
 step
-  talk Elder Silvervein##15558
-  accept Silvervein the Elder##8642 |goto Loch Modan 32.87,46.33
-step
   talk Huldar##2057
   turnin Resupplying the Excavation##273 |goto Loch Modan 52.19,69.32
 step
@@ -127,9 +124,6 @@ step
 step
   talk Jern Hornhelm##1105
   turnin Excavation Progress Report##298 |goto Loch Modan 37.24,47.38
-step
-  talk Elder Silvervein##15558
-  turnin Silvervein the Elder##8642 |goto Loch Modan 32.87,46.33
 step
   talk Ghak Healtouch##1470
   turnin Badlands Reagent Run##2500 |goto Loch Modan 37.07,49.38

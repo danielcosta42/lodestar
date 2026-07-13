@@ -46,9 +46,6 @@ step
   talk Jarkal Mossmeld##6868
   accept Translating the Journal##2338 |goto Badlands 2.42,46.06
 step
-  talk Shadowmage Vivian Lagrave##9078
-  accept Lost Thunderbrew Recipe##4134 |goto Badlands 2.9,47.76
-step
   talk Hammertoe Grez##2909
   turnin A Sign of Hope##721 |goto Loch Modan 37.28,85.78 |tip {turninat}Loch Modan
 step
@@ -108,9 +105,6 @@ step
 step
   talk Jarkal Mossmeld##6868
   turnin Translating the Journal##2338 |goto Badlands 2.42,46.06
-step
-  talk Shadowmage Vivian Lagrave##9078
-  turnin Lost Thunderbrew Recipe##4134 |goto Badlands 2.9,47.76
 step
   talk Theldurin the Lost##2785
   turnin Solution to Doom##709 |goto Badlands 51.39,76.87

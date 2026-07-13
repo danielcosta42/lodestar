@@ -22,7 +22,7 @@ step
   talk Drum Fel##2771
   accept Call to Arms##677 |goto Arathi Highlands 74.24,33.92
 step
-  talk Zaruk##2786
+  talk Zaruk##2787
   accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
 step
   talk Rutherford Twing##15126
@@ -30,9 +30,6 @@ step
 step
   talk Rutherford Twing##15126
   accept Defiler's Standard Care Package##8264 |goto Arathi Highlands 73.37,29.67
-step
-  talk Rutherford Twing##15126
-  accept Defiler's Advanced Care Package##8265 |goto Arathi Highlands 73.37,29.67
 step
   note Slay 10 Witherbark Axe Throwers, 10 Headhunters and 8 Witch Doctors, and return to Drum Fel in the Hammerfall outpost.
   kill Witherbark Axe Thrower##2554 |q 677 |goto Arathi Highlands 65.56,67.06
@@ -63,9 +60,6 @@ step
 step
   talk Rutherford Twing##15126
   turnin Defiler's Standard Care Package##8264 |goto Arathi Highlands 73.37,29.67
-step
-  talk Rutherford Twing##15126
-  turnin Defiler's Advanced Care Package##8265 |goto Arathi Highlands 73.37,29.67
 step
   talk Tor'gan##2706
   turnin Hammerfall##655 |goto Arathi Highlands 74.72,36.29

@@ -19,10 +19,6 @@ step
 step
   only Mage
   talk Bath'rah the Windwatcher##6176
-  accept OLD Mastering the Elements##8411 |goto Alterac Mountains 80.5,66.92
-step
-  only Mage
-  talk Bath'rah the Windwatcher##6176
   accept Spirit Totem##8412 |goto Alterac Mountains 80.5,66.92
 step
   only Rogue
@@ -43,9 +39,6 @@ step
   talk Archmage Xylem##8379
   turnin Sealed Azure Bag##8234 |goto Azshara 29.25,40.21 |tip {turninat}Azshara
 step
-  talk Archmage Cedric##18165
-  accept Khadgar##9829 |goto Alterac Mountains 15.61,54.58
-step
   talk Voggah Deathgrip##13817
   turnin The Battle for Alterac##7142 |goto Alterac Mountains 63.84,60.47
 step
@@ -58,10 +51,6 @@ step
   only Warrior
   talk Bath'rah the Windwatcher##6176
   turnin Cyclonian##1712 |goto Alterac Mountains 80.5,66.92
-step
-  only Mage
-  talk Bath'rah the Windwatcher##6176
-  turnin OLD Mastering the Elements##8411 |goto Alterac Mountains 80.5,66.92
 step
   only Mage
   talk Bath'rah the Windwatcher##6176
@@ -78,9 +67,6 @@ step
   only Rogue
   talk Fahrad##6707
   turnin Junkboxes Needed##8249 |goto Alterac Mountains 84.45,80.32
-step
-  talk Khadgar##18166
-  turnin Khadgar##9829 |goto Shattrath City 54.75,44.32 |tip {turninat}Shattrath City
 step
   talk Krusk##2229
   turnin Taretha's Gift##508 |goto Hillsbrad Foothills 63.24,20.66 |tip {turninat}Hillsbrad Foothills

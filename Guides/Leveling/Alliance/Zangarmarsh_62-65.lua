@@ -46,9 +46,6 @@ step
   talk Lauranna Thar'well##17909
   accept Master of Potions##10897 |goto Zangarmarsh 80.32,64.17
 step
-  talk Morthis Whisperwing##22832
-  accept Chasing the Moonstone##10994 |goto Zangarmarsh 80.18,65.15
-step
   note Locate and deal with Boglash, then return to Lethyn Moonfire at Cenarion Refuge.
   kill Boglash##18281 |q 9895 |goto Zangarmarsh 82.07,71.39
 step
@@ -220,9 +217,6 @@ step
   talk Lauranna Thar'well##17909
   turnin Plants of Zangarmarsh##9802 |goto Zangarmarsh 80.32,64.17
 step
-  talk Morthis Whisperwing##22832
-  turnin Chasing the Moonstone##10994 |goto Zangarmarsh 80.18,65.15
-step
   talk Ysiel Windsinger##17841
   turnin Disturbance at Umbrafen Lake##9716 |goto Zangarmarsh 78.4,62.02
 step
@@ -240,9 +234,6 @@ step
 step
   talk Lauranna Thar'well##17909
   accept Saving the Sporeloks##10096 |goto Zangarmarsh 80.32,64.17
-step
-  talk Morthis Whisperwing##22832
-  accept Vanquish the Raven God##11001 |goto Zangarmarsh 80.18,65.15
 step
   note Kill Lord Klaq and return to Windcaller Blackhoof at the Cenarion Refuge.
   kill Lord Klaq##18282 |q 9894 |goto Zangarmarsh 72.24,93.89
@@ -378,9 +369,6 @@ step
 step
   talk Windcaller Blackhoof##18070
   turnin Safeguarding the Watchers##9894 |goto Zangarmarsh 80.37,64.73
-step
-  talk Morthis Whisperwing##22832
-  turnin Vanquish the Raven God##11001 |goto Zangarmarsh 80.18,65.15
 step
   talk Ikeyen##17956
   turnin A Damp, Dark Place##9788 |goto Zangarmarsh 80.4,64.16

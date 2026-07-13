@@ -81,9 +81,6 @@ step
   talk Razzle Sprysprocket##1269
   accept Operation Recombobulation##412 |goto Dun Morogh 45.85,49.37
 step
-  talk Pilot Stonegear##1377
-  accept Search for Incendicite##466 |goto Dun Morogh 49.62,48.61
-step
   only Warlock
   talk Magis Sparkmantle##1228
   accept Speak with Bink##1879 |goto Dun Morogh 47.5,52.08
@@ -91,12 +88,6 @@ step
   only Rogue
   talk Hogral Bakkan##1234
   accept Road to Salvation##2218 |goto Dun Morogh 47.56,52.61
-step
-  talk Ozzie Togglevolt##1268
-  accept Gnogaine##2926 |goto Dun Morogh 45.89,49.38
-step
-  talk Ragnar Thunderbrew##1267
-  accept Hurley Blackbreath##4126 |goto Dun Morogh 46.83,52.36
 step
   talk Loslor Rudge##1694
   accept Ammo for Rumbleshot##5541 |goto Dun Morogh 50.08,49.42
@@ -113,12 +104,6 @@ step
   talk Maxan Anvol##1226
   accept Desperate Prayer##5637 |goto Dun Morogh 47.34,52.19
 step
-  talk Elder Goldwell##15569
-  accept Goldwell the Elder##8653 |goto Dun Morogh 46.7,51.58
-step
-  talk Costumed Orphan Matron##24519
-  accept The Headless Horseman##11135 |goto Dun Morogh 46.19,53.14
-step
   only Dwarf Priest
   note Find Mountaineer Dolf and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Maxan Anvol in Kharanos.
   kill Mountaineer Dolf##12427 |q 5625 |goto Dun Morogh 45.81,54.57
@@ -134,10 +119,6 @@ step
   only Rogue
   talk Hulfdan Blackbeard##5165
   turnin Onin's Report##2239 |goto Ironforge 51.96,14.84 |tip {turninat}Ironforge
-step
-  only Paladin
-  talk Jordan Stilwell##6181
-  accept The Test of Righteousness##1654 |goto Dun Morogh 52.49,36.92
 step
   talk Wonderform Operator##15732
   accept Winter's Presents##8827 |goto Dun Morogh 53.16,35.62
@@ -249,8 +230,6 @@ step
   talk Bink##5144
   turnin Speak with Bink##1879 |goto Ironforge 27.25,8.3 |tip {turninat}Ironforge
 step
-  turnin The Headless Horseman##11135 |goto Scarlet Monastery - Dungeon -1,-1 |tip {turninat}Scarlet Monastery - Dungeon
-step
   talk Rejold Barleybrew##1374
   accept Shimmer Stout##413 |goto Dun Morogh 30.19,45.73
 step
@@ -263,23 +242,11 @@ step
   talk Razzle Sprysprocket##1269
   turnin Operation Recombobulation##412 |goto Dun Morogh 45.85,49.37
 step
-  talk Ragnar Thunderbrew##1267
-  turnin Hurley Blackbreath##4126 |goto Dun Morogh 46.83,52.36
-step
   talk Pilot Stonegear##1377
   turnin The Grizzled Den##313 |goto Dun Morogh 49.62,48.61
 step
   talk Pilot Bellowfiz##1378
   turnin Stocking Jetsteam##317 |goto Dun Morogh 49.43,48.41
-step
-  talk Elder Goldwell##15569
-  turnin Goldwell the Elder##8653 |goto Dun Morogh 46.7,51.58
-step
-  talk Pilot Stonegear##1377
-  turnin Search for Incendicite##466 |goto Dun Morogh 49.62,48.61
-step
-  talk Ozzie Togglevolt##1268
-  turnin Gnogaine##2926 |goto Dun Morogh 45.89,49.38
 step
   only Dwarf Priest
   talk Maxan Anvol##1226
@@ -290,25 +257,6 @@ step
 step
   talk Tharek Blackstone##1872
   accept Rejold's New Brew##415 |goto Dun Morogh 46.02,51.68
-step
-  only Rogue
-  talk Hogral Bakkan##1234
-  accept To Hulfdan!##2299 |goto Dun Morogh 47.56,52.61
-step
-  talk Ozzie Togglevolt##1268
-  accept The Only Cure is More Green Glow##2962 |goto Dun Morogh 45.89,49.38
-step
-  only Paladin
-  talk Jordan Stilwell##6181
-  turnin The Test of Righteousness##1654 |goto Dun Morogh 52.49,36.92
-step
-  only Rogue
-  talk Hulfdan Blackbeard##5165
-  turnin To Hulfdan!##2299 |goto Ironforge 51.96,14.84 |tip {turninat}Ironforge
-step
-  only Paladin
-  talk Jordan Stilwell##6181
-  accept The Test of Righteousness##1806 |goto Dun Morogh 52.49,36.92
 step
   talk Rudra Amberstill##1265
   turnin Protecting the Herd##314 |goto Dun Morogh 63.08,49.85
@@ -383,13 +331,6 @@ step
 step
   talk Rejold Barleybrew##1374
   accept A Favor for Evershine##319 |goto Dun Morogh 30.19,45.73
-step
-  talk Ozzie Togglevolt##1268
-  turnin The Only Cure is More Green Glow##2962 |goto Dun Morogh 45.89,49.38
-step
-  only Paladin
-  talk Jordan Stilwell##6181
-  turnin The Test of Righteousness##1806 |goto Dun Morogh 52.49,36.92
 step
   talk Mountaineer Thalos##1965
   turnin Senir's Observations##282 |goto Dun Morogh 33.48,71.84

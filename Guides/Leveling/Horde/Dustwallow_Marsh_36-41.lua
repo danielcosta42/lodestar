@@ -139,15 +139,6 @@ step
   talk Magus Tirth##6548
   turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
 step
-  talk Emberstrife##10321
-  accept The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
-step
-  talk Emberstrife##10321
-  accept The Test of Skulls, Somnus##6583 |goto Dustwallow Marsh 56.66,87.72
-step
-  talk Emberstrife##10321
-  accept The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
-step
   talk "Swamp Eye" Jarl##4792
   turnin The Hermit of Witch Hill##11225 |goto Dustwallow Marsh 55.44,26.27
 step
@@ -283,18 +274,6 @@ step
   talk Brogg##23579
   accept Challenge to the Black Flight##11162 |goto Dustwallow Marsh 41.86,73.97
 step
-  talk Emberstrife##10321
-  turnin The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
-step
-  talk Emberstrife##10321
-  turnin The Test of Skulls, Somnus##6583 |goto Dustwallow Marsh 56.66,87.72
-step
-  talk Emberstrife##10321
-  turnin The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
-step
-  talk Emberstrife##10321
-  accept The Test of Skulls, Axtroz##6585 |goto Dustwallow Marsh 56.66,87.72
-step
   talk Mordant Grimsby##23843
   turnin What's Haunting Witch Hill?##11180 |goto Dustwallow Marsh 55.58,26.14
 step
@@ -349,20 +328,11 @@ step
   talk Brogg##23579
   turnin Challenge to the Black Flight##11162 |goto Dustwallow Marsh 41.86,73.97
 step
-  talk Emberstrife##10321
-  turnin The Test of Skulls, Axtroz##6585 |goto Dustwallow Marsh 56.66,87.72
-step
-  talk Emberstrife##10321
-  accept Ascension...##6601 |goto Dustwallow Marsh 56.66,87.72
-step
   talk Mordant Grimsby##23843
   turnin The Witch's Bane##11181 |goto Dustwallow Marsh 55.58,26.14
 step
   talk "Swamp Eye" Jarl##4792
   turnin Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
-step
-  talk Rokaro##10182
-  turnin Ascension...##6601 |goto Feralas 46.39,18.24 |tip {turninat}Feralas
 step
   talk "Swamp Eye" Jarl##4792
   accept Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27

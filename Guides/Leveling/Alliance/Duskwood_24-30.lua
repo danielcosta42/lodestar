@@ -58,9 +58,6 @@ step
   talk Watcher Backus##840
   accept The Missing Diplomat##1244 |goto Duskwood 74.83,44.22
 step
-  talk Watchmaster Sorigal##5464
-  accept Supplies for Nethergarde##1395 |goto Duskwood 75.78,46.16
-step
   note Kill 6 Nightbane Shadow Weaver worgen for Calor in Darkshire.
   kill Nightbane Shadow Weaver##533 |q 173 |goto Duskwood 63.39,52.8
 step
@@ -147,9 +144,6 @@ step
 step
   talk Madame Eva##265
   turnin The Totem of Infliction##101 |goto Duskwood 75.79,45.32
-step
-  talk Quartermaster Lungertz##5393
-  turnin Supplies for Nethergarde##1395 |goto Blasted Lands 66.52,21.39 |tip {turninat}Blasted Lands
 step
   talk Councilman Millstipe##270
   turnin Crime and Punishment##377 |goto Duskwood 71.92,47.79

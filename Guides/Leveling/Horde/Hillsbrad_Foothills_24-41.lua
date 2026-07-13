@@ -70,9 +70,6 @@ step
   talk Apothecary Lydon##2216
   accept Undamaged Venom Sac##2934 |goto Hillsbrad Foothills 61.44,19.06
 step
-  talk Apothecary Lydon##2216
-  accept Venom to the Undercity##2938 |goto Hillsbrad Foothills 61.44,19.06
-step
   talk Christoph Jeffcoat##2393
   accept Soothing Turtle Bisque##7321 |goto Hillsbrad Foothills 62.29,19.04
 step
@@ -93,9 +90,6 @@ step
 step
   talk Lieutenant Farren Orinelle##2228
   turnin Farren's Proof##561 |goto Hillsbrad Foothills 51.46,58.39
-step
-  talk Master Apothecary Faranell##2055
-  turnin Venom to the Undercity##2938 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   note Kill 10 Crushridge Maulers for Melisara in Tarren Mill.
   kill Crushridge Mauler##2254 |q 518 |goto Alterac Mountains 43.11,46.87

@@ -37,9 +37,6 @@ step
   talk Samuel Hawke##15127
   accept Arathor Standard Care Package##8261 |goto Arathi Highlands 45.97,45.21
 step
-  talk Samuel Hawke##15127
-  accept Arathor Advanced Care Package##8262 |goto Arathi Highlands 45.97,45.21
-step
   note Kill 10 Syndicate Highwaymen and 6 Syndicate Mercenaries.
   kill Syndicate Highwayman##2586 |q 681 |goto Arathi Highlands 32.21,28.87
 step
@@ -49,7 +46,7 @@ step
   talk Quae##2712
   accept Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
 step
-  talk Zaruk##2786
+  talk Zaruk##2787
   accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
 step
   talk Theldurin the Lost##2785
@@ -75,9 +72,6 @@ step
 step
   talk Samuel Hawke##15127
   turnin Arathor Standard Care Package##8261 |goto Arathi Highlands 45.97,45.21
-step
-  talk Samuel Hawke##15127
-  turnin Arathor Advanced Care Package##8262 |goto Arathi Highlands 45.97,45.21
 step
   talk Captain Nials##2700
   turnin Northfold Manor##681 |goto Arathi Highlands 45.83,47.56

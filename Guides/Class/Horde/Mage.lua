@@ -33,10 +33,6 @@ step
   accept Elemental Mastery##8410 |goto Swamp of Sorrows 48.19,57.94
 step
   only Mage
-  talk Bath'rah the Windwatcher##6176
-  accept OLD Mastering the Elements##8411 |goto Alterac Mountains 80.5,66.92
-step
-  only Mage
   talk Sagorne Creststrider##13417
   accept Material Assistance##7667 |goto Orgrimmar 38.66,35.92
 step
@@ -137,10 +133,6 @@ step
   only Mage
   talk Bath'rah the Windwatcher##6176
   turnin Elemental Mastery##8410 |goto Alterac Mountains 80.5,66.92
-step
-  only Mage
-  talk Bath'rah the Windwatcher##6176
-  turnin OLD Mastering the Elements##8411 |goto Alterac Mountains 80.5,66.92
 step
   only Mage
   talk Lorekeeper Javon##14381

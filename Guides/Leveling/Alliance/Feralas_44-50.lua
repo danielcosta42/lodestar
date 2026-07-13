@@ -16,13 +16,10 @@ step
   talk Caryssia Moonhunter##7870
   accept Tribal Leatherworking##5143 |goto Feralas 89.42,46.55
 step
-  talk Azj'Tordin##14355
-  accept Pusillin and the Elder Azj'Tordin##7441 |goto Feralas 76.91,37.35
-step
   talk Elder Grimtotem##15581
   accept Grimtotem the Elder##8679 |goto Feralas 76.72,37.9
 step
-  talk Jannos Lighthoof##3033
+  talk Jannos Lighthoof##8142
   accept Torwa Pathfinder##9063 |goto Feralas 75.99,42.28
 step
   talk Torwa Pathfinder##9619
@@ -76,9 +73,6 @@ step
   talk Ginro Hearthkindle##7880
   accept A Hero's Welcome##4266 |goto Feralas 31.86,45.13
 step
-  talk Latronicus Moonspear##7877
-  accept Lethtendris's Web##7488 |goto Feralas 30.38,46.17
-step
   talk Rockbiter##7765
   accept The Giant Guardian##2844 |goto Feralas 42.39,22.0
 step
@@ -98,9 +92,6 @@ step
 step
   talk Falfindel Waywarder##4048
   turnin The Crone of the Kraul##1101 |goto Feralas 89.64,46.57
-step
-  talk Azj'Tordin##14355
-  turnin Pusillin and the Elder Azj'Tordin##7441 |goto Feralas 76.91,37.35
 step
   talk Elder Grimtotem##15581
   turnin Grimtotem the Elder##8679 |goto Feralas 76.72,37.9
@@ -151,9 +142,6 @@ step
 step
   talk Latronicus Moonspear##7877
   turnin Against the Hatecrest##3130 |goto Feralas 30.38,46.17
-step
-  talk Latronicus Moonspear##7877
-  turnin Lethtendris's Web##7488 |goto Feralas 30.38,46.17
 step
   talk Quintis Jonespyre##7879
   turnin Jonespyre's Request##3788 |goto Feralas 32.45,43.79

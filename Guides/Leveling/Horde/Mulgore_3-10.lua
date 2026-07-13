@@ -73,9 +73,6 @@ step
   talk Var'jun##11407
   accept Touch of Weakness##5661 |goto Mulgore 46.95,58.82
 step
-  talk Elder Bloodhoof##15575
-  accept Bloodhoof the Elder##8673 |goto Mulgore 48.55,53.48
-step
   talk Ahab Wheathoof##23618
   accept Kyle's Gone Missing!##11129 |goto Mulgore 48.24,53.27
 step
@@ -162,9 +159,6 @@ step
 step
   talk Morin Cloudstalker##2988
   turnin Supervisor Fizsprocket##765 |goto Mulgore 57.2,61.22
-step
-  talk Elder Bloodhoof##15575
-  turnin Bloodhoof the Elder##8673 |goto Mulgore 48.55,53.48
 step
   talk Ruul Eagletalon##2985
   turnin Dangers of the Windfury##743 |goto Mulgore 47.35,62.02

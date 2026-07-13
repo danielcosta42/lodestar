@@ -154,15 +154,6 @@ step
   talk Lady Sylvanas Windrunner##10181
   turnin Journey to Undercity##9180 |goto Undercity 58.05,91.79 |tip {turninat}Undercity
 step
-  talk Budd Nedreck##23559
-  accept Promises, Promises...##11132 |goto Ghostlands 70.34,67.84
-step
-  talk Donna Brascoe##23858
-  accept Undercover Sister##11163 |goto Ghostlands 70.52,68.27
-step
-  talk Prigmon##23761
-  accept Tuskin' Raiders##11164 |goto Ghostlands 71.0,68.92
-step
   note Poison the Troll foodstuff at the camps in Zeb'Nowa and then return to Apothecary Venustus at the Farstrider Enclave in the Ghostlands.
   collect Raw Meat Rack##181250 |q 9275 |goto Ghostlands 65.11,66.74
 step
@@ -307,21 +298,6 @@ step
   talk Zelanis##16684
   turnin Return the Reports##9618 |goto Silvermoon City 79.71,52.16 |tip {turninat}Silvermoon City
 step
-  talk Donna Brascoe##23858
-  turnin Undercover Sister##11163 |goto Ghostlands 70.52,68.27
-step
-  talk Prigmon##23761
-  turnin Tuskin' Raiders##11164 |goto Ghostlands 71.0,68.92
-step
-  talk Budd Nedreck##23559
-  turnin Promises, Promises...##11132 |goto Ghostlands 70.34,67.84
-step
-  talk Prigmon##23761
-  accept A Troll Among Trolls##11165 |goto Ghostlands 71.0,68.92
-step
-  talk Budd Nedreck##23559
-  accept X Marks... Your Doom!##11166 |goto Ghostlands 70.34,67.84
-step
   note Kill 10 Shadowpine Catlords and 10 Shadowpine Hexxers, and return to Farstrider Solanna at the Farstrider Enclave in the Ghostlands.
   kill Shadowpine Catlord##16345 |q 9277 |goto Ghostlands 65.06,66.84
 step
@@ -389,12 +365,6 @@ step
   note Slay Anok'suten and return to Arcanist Vandril at Tranquillien in the Ghostlands.
   kill Anok'suten##16357 |q 9315 |goto Ghostlands 59.65,13.28
 step
-  talk Zungam##23897
-  turnin A Troll Among Trolls##11165 |goto Zul'Aman - Raid -1,-1 |tip {turninat}Zul'Aman - Raid
-step
-  note Enter Zul'Aman and visit Halazzi's Chamber, Jan'alai's Platform, and Akil'zon's Platform. Report the details of those areas to Budd, at his camp in the Ghostlands.
-  kill Zul'Aman - Lynx God Invisman##23815 |q 11166 |goto Zul'Aman - Raid -1,-1
-step
   only BloodElf
   talk Sathren Azuredawn##16191
   turnin Fly to Silvermoon City##9133 |goto Silvermoon City 53.93,71.02 |tip {turninat}Silvermoon City
@@ -421,12 +391,6 @@ step
   talk Magister Kaendris##16239
   accept Friend of the Sin'dorei##9811 |goto Ghostlands 55.07,48.83
 step
-  talk Budd Nedreck##23559
-  turnin X Marks... Your Doom!##11166 |goto Ghostlands 70.34,67.84
-step
-  talk Budd Nedreck##23559
-  accept Hex Lord? Hah!##11171 |goto Ghostlands 70.34,67.84
-step
   note Retrieve the Crystal Controlling Orb and then use it to deactivate the Night Elf Moon Crystal at An'owyn. Then return to Magister Sylastor at An'telas in the Ghostlands.
   collect Night Elf Moon Crystal##181359 |q 9169 |goto Ghostlands 58.17,65.14
 step
@@ -449,14 +413,8 @@ step
   talk Lor'themar Theron##16802
   turnin Hero of the Sin'dorei##9328 |goto Silvermoon City 53.8,20.23 |tip {turninat}Silvermoon City
 step
-  note Budd Nedreck in Hatchet Hills wants you to kill Hex Lord Malacrass in Zul'Aman.
-  kill Hex Lord Malacrass##24239 |q 11171 |goto Zul'Aman - Raid -1,-1
-step
   note Defeat 6 Quel'dorei Ghosts and 4 Quel'dorei Wraiths at Goldenmist Village, and then return to Arcanist Vandril at Tranquillien in the Ghostlands.
   kill Quel'dorei Ghost##16325 |q 9139 |goto Ghostlands 27.07,15.6
-step
-  talk Budd Nedreck##23559
-  turnin Hex Lord? Hah!##11171 |goto Ghostlands 70.34,67.84
 step
   talk Arcanist Vandril##16197
   turnin Goldenmist Village##9139 |goto Ghostlands 46.55,28.38

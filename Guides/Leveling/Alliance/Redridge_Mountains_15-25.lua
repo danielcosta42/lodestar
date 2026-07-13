@@ -78,12 +78,6 @@ step
   talk Shawn##8965
   accept Hilary's Necklace##3741 |goto Redridge Mountains 29.32,53.64
 step
-  talk Magistrate Solomon##344
-  accept The True Masters##4184 |goto Redridge Mountains 29.99,44.45
-step
-  talk Magistrate Solomon##344
-  accept The True Masters##4223 |goto Redridge Mountains 29.99,44.45
-step
   note Kill 15 Blackrock Champions and Guard Howe in Lakeshire will reward you.
   kill Blackrock Champion##435 |q 128 |goto Redridge Mountains 29.6,11.69
 step
@@ -104,9 +98,6 @@ step
 step
   talk Guard Berton##859
   turnin What Comes Around...##386 |goto Redridge Mountains 26.26,46.58
-step
-  talk Marshal Maxwell##9560
-  turnin The True Masters##4223 |goto Burning Steppes 84.74,69.02 |tip {turninat}Burning Steppes
 step
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##132 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
@@ -135,9 +126,6 @@ step
   only Warrior
   talk Yorus Barleybrew##6166
   turnin The Rethban Gauntlet##1699 |goto Redridge Mountains 26.58,44.72
-step
-  talk Highlord Bolvar Fordragon##1748
-  turnin The True Masters##4184 |goto Stormwind City 78.22,17.98 |tip {turninat}Stormwind City
 step
   talk Brother Paxton##951
   turnin Rethban Ore##347 |goto Elwynn Forest 49.61,40.41 |tip {turninat}Elwynn Forest

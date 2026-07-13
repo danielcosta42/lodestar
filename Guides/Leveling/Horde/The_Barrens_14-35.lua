@@ -77,12 +77,6 @@ step
   talk Sputtervalve##3442
   accept Wenikee Boltbucket##3921 |goto The Barrens 62.98,37.22
 step
-  talk Liv Rizzlefix##8496
-  accept Zapper Fuel##4146 |goto The Barrens 62.45,38.73
-step
-  talk Liv Rizzlefix##8496
-  accept Volcanic Activity##4502 |goto The Barrens 62.45,38.73
-step
   only Druid
   talk Menara Voidrender##6266
   accept Components for the Enchanted Gold Bloodrobe##4783 |goto The Barrens 62.51,35.45
@@ -102,16 +96,6 @@ step
   only Druid
   talk Menara Voidrender##6266
   accept The Completed Orb of Noh'Orahil##4975 |goto The Barrens 62.51,35.45
-step
-  talk Islen Waterseer##5901
-  accept Cleansed Water Returns to Felwood##5159 |goto The Barrens 65.83,43.78
-step
-  only Druid
-  talk Babagaya Shadowcleft##461
-  accept An Imp's Request##8419 |goto The Barrens 62.44,35.45
-step
-  talk Elder Windtotem##15582
-  accept Windtotem the Elder##8680 |goto The Barrens 62.7,36.73
 step
   note Kill 12 Southsea Brigands and 6 Southsea Cannoneers for Gazlowe in Ratchet.
   kill Southsea Brigand##3381 |q 887 |goto The Barrens 63.83,46.24
@@ -193,9 +177,6 @@ step
   talk Thork##3429
   accept Report to Kadrak##6541 |goto The Barrens 51.5,30.87
 step
-  talk Elder Moonwarden##15597
-  accept Moonwarden the Elder##8717 |goto The Barrens 51.42,30.71
-step
   note Of the Razormane tribe, kill 8 Water Seekers, 8 Thornweavers and 3 Hunters, and then return to Thork in the Crossroads.
   kill Razormane Water Seeker##3267 |q 871 |goto The Barrens 55.03,26.65
 step
@@ -211,9 +192,6 @@ step
 step
   talk Kadrak##8582
   turnin Report to Kadrak##6541 |goto The Barrens 48.12,5.42
-step
-  talk Larion##9118
-  turnin Zapper Fuel##4146 |goto Un'Goro Crater 45.54,8.72 |tip {turninat}Un'Goro Crater
 step
   talk Wenikee Boltbucket##9316
   turnin Wenikee Boltbucket##3921 |goto The Barrens 49.05,11.17
@@ -234,9 +212,6 @@ step
 step
   talk Kelm Hargunth##14754
   accept Outrider Standard Care Package##7867 |goto The Barrens 46.65,8.38
-step
-  talk Kelm Hargunth##14754
-  accept Outrider Advanced Care Package##7868 |goto The Barrens 46.65,8.38
 step
   talk Seereth Stonebreak##4049
   accept Goblin Invaders##1062 |goto The Barrens 35.26,27.88
@@ -269,10 +244,6 @@ step
   talk Felgur Twocuts##5395
   turnin The Kolkar of Desolace##1362 |goto Desolace 56.19,59.57 |tip {turninat}Desolace
 step
-  only Druid
-  talk Impsy##14470
-  turnin An Imp's Request##8419 |goto Felwood 41.36,45.02 |tip {turninat}Felwood
-step
   only Tauren
   talk Kirge Sternhorn##3418
   accept Journey to the Crossroads##854 |goto The Barrens 44.88,58.61
@@ -297,9 +268,6 @@ step
   talk Jorn Skyseer##3387
   accept The Ashenvale Hunt##6382 |goto The Barrens 44.86,59.14
 step
-  talk Elder High Mountain##15588
-  accept High Mountain the Elder##8686 |goto The Barrens 45.09,57.92
-step
   note Find Mankrik's wife and then return to him in the Crossroads.
   kill Beaten Corpse##10668 |q 4921 |goto The Barrens 49.33,50.32
 step
@@ -314,9 +282,6 @@ step
 step
   talk Gann Stonespire##3341
   accept Gann's Reclamation##843 |goto The Barrens 45.89,77.0
-step
-  talk Greta Mosshoof##10922
-  turnin Cleansed Water Returns to Felwood##5159 |goto Felwood 51.21,82.11 |tip {turninat}Felwood
 step
   talk Kravel Koalbeard##4452
   turnin Parts for Kravel##1112 |goto Thousand Needles 77.79,77.27 |tip {turninat}Thousand Needles
@@ -342,9 +307,6 @@ step
   only Druid
   talk Menara Voidrender##6266
   turnin Components for the Enchanted Gold Bloodrobe##1796 |goto The Barrens 62.51,35.45
-step
-  talk Liv Rizzlefix##8496
-  turnin Volcanic Activity##4502 |goto The Barrens 62.45,38.73
 step
   talk Belgrom Rockmaul##4485
   turnin Parts of the Swarm##1184 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
@@ -397,9 +359,6 @@ step
   talk Menara Voidrender##6266
   turnin The Completed Orb of Dar'Orahil##4964 |goto The Barrens 62.51,35.45
 step
-  talk Elder Windtotem##15582
-  turnin Windtotem the Elder##8680 |goto The Barrens 62.7,36.73
-step
   only Druid
   talk Menara Voidrender##6266
   turnin The Completed Orb of Noh'Orahil##4975 |goto The Barrens 62.51,35.45
@@ -436,9 +395,6 @@ step
 step
   note Kill 15 Venture Co. Loggers, then return to Seereth Stonebreak on the border of Stonetalon and the Barrens.
   kill Venture Co. Logger##3989 |q 1062 |goto Stonetalon Mountains 66.4,52.26
-step
-  talk Elder Moonwarden##15597
-  turnin Moonwarden the Elder##8717 |goto The Barrens 51.42,30.71
 step
   talk Mankrik##3432
   turnin Lost in Battle##4921 |goto The Barrens 51.95,31.58
@@ -560,9 +516,6 @@ step
   talk Kelm Hargunth##14754
   turnin Outrider Standard Care Package##7867 |goto The Barrens 46.65,8.38
 step
-  talk Kelm Hargunth##14754
-  turnin Outrider Advanced Care Package##7868 |goto The Barrens 46.65,8.38
-step
   talk Wenikee Boltbucket##9316
   accept Rilli Greasygob##3923 |goto The Barrens 49.05,11.17
 step
@@ -601,9 +554,6 @@ step
   only Tauren
   talk Ahanu##8359
   turnin Ride to Thunder Bluff##6362 |goto Thunder Bluff 45.77,55.84 |tip {turninat}Thunder Bluff
-step
-  talk Elder High Mountain##15588
-  turnin High Mountain the Elder##8686 |goto The Barrens 45.09,57.92
 step
   talk Tatternack Steelforge##3433
   accept A New Ore Sample##1153 |goto The Barrens 45.1,57.68

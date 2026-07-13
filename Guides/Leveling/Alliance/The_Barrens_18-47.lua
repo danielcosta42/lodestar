@@ -94,11 +94,8 @@ step
   accept The Completed Orb of Noh'Orahil##4975 |goto The Barrens 62.51,35.45
 step
   only Druid
-  talk Babagaya Shadowcleft##461
+  talk Babagaya Shadowcleft##23534
   accept An Imp's Request##8419 |goto The Barrens 62.44,35.45
-step
-  talk Elder Windtotem##15582
-  accept Windtotem the Elder##8680 |goto The Barrens 62.7,36.73
 step
   talk Nixx Sprocketspring##8126
   turnin Goblin Engineering##3633 |goto Tanaris 52.48,27.33 |tip {turninat}Tanaris
@@ -112,9 +109,6 @@ step
 step
   talk Falla Sagewind##8418
   accept In Nightmares##3370 |goto The Barrens 48.18,32.78
-step
-  talk Elder Moonwarden##15597
-  accept Moonwarden the Elder##8717 |goto The Barrens 51.42,30.71
 step
   only Druid
   talk Tabetha##6546
@@ -135,9 +129,6 @@ step
   only Druid
   talk Doan Karhan##6247
   accept The Orb of Soran'ruk##1740 |goto The Barrens 49.31,57.21
-step
-  talk Elder High Mountain##15588
-  accept High Mountain the Elder##8686 |goto The Barrens 45.09,57.92
 step
   talk Greta Mosshoof##10922
   turnin Cleansed Water Returns to Felwood##5159 |goto Felwood 51.21,82.11 |tip {turninat}Felwood
@@ -217,9 +208,6 @@ step
   talk Menara Voidrender##6266
   turnin The Completed Orb of Dar'Orahil##4964 |goto The Barrens 62.51,35.45
 step
-  talk Elder Windtotem##15582
-  turnin Windtotem the Elder##8680 |goto The Barrens 62.7,36.73
-step
   only Druid
   talk Menara Voidrender##6266
   turnin The Completed Orb of Noh'Orahil##4975 |goto The Barrens 62.51,35.45
@@ -241,18 +229,12 @@ step
   talk Menara Voidrender##6266
   accept Components for the Enchanted Gold Bloodrobe##4784 |goto The Barrens 62.51,35.45
 step
-  talk Elder Moonwarden##15597
-  turnin Moonwarden the Elder##8717 |goto The Barrens 51.42,30.71
-step
   talk Ebru##5768
   turnin Deviate Eradication##1487 |goto The Barrens 46.01,35.74
 step
   only Druid
   talk Doan Karhan##6247
   turnin The Orb of Soran'ruk##1740 |goto The Barrens 49.31,57.21
-step
-  talk Elder High Mountain##15588
-  turnin High Mountain the Elder##8686 |goto The Barrens 45.09,57.92
 step
   only Druid
   talk Xizk Goodstitch##2670

@@ -141,10 +141,6 @@ step
   turnin Redridge Rendezvous##2281 |goto Redridge Mountains 28.06,52.04
 step
   only Rogue
-  talk Arantir##7009
-  turnin OLD Horns of Nez'ra##2358 |goto Redridge Mountains 28.06,52.32
-step
-  only Rogue
   talk Fahrad##6707
   turnin The Manor, Ravenholdt##6681 |goto Alterac Mountains 84.45,80.32
 step
@@ -250,10 +246,6 @@ step
   accept Destiny Calls##2242 |goto Darnassus 36.99,21.91
 step
   only Rogue
-  talk Mennet Carkad##6467
-  accept [Not Used Tools of the Trade##2019 |goto Undercity 83.51,69.11
-step
-  only Rogue
   talk Jannok Breezesong##3599
   accept Erion Shadewhisper##2259 |goto Teldrassil 56.38,60.14
 step
@@ -329,10 +321,6 @@ step
   only Rogue
   talk Syurna##4163
   turnin Destiny Calls##2242 |goto Darnassus 36.99,21.91
-step
-  only Rogue
-  talk Therzok##6446
-  turnin [Not Used Tools of the Trade##2019 |goto Orgrimmar 42.73,53.55
 step
   only Rogue
   talk Erion Shadewhisper##4214

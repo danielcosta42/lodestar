@@ -61,19 +61,12 @@ step
   talk Master Gadrin##3188
   accept Zalazane##826 |goto Durotar 55.95,74.72
 step
-  only Warrior
-  talk Ula'elek##6408
-  accept Satyr Hooves##1842 |goto Durotar 56.31,74.33
-step
   only Warlock
   talk Un'Thuwa##5880
   accept Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
   talk Ukor##6786
   accept A Peon's Burden##2161 |goto Durotar 52.06,68.31
-step
-  talk Master Gadrin##3188
-  accept The Spider God##2936 |goto Durotar 55.95,74.72
 step
   note Defeat Zalazane.
   kill Hexed Troll##3207 |q 826 |goto Durotar 67.7,84.01
@@ -117,10 +110,6 @@ step
   talk Kaplak##3170
   accept Therzok##1859 |goto Durotar 51.98,43.69
 step
-  only Rogue
-  talk Kaplak##3170
-  accept To Orgrimmar!##2380 |goto Durotar 51.98,43.69
-step
   only Troll Priest
   talk Tai'jin##3706
   accept Garments of Spirituality##5648 |goto Durotar 54.26,42.93
@@ -133,15 +122,6 @@ step
   talk Tai'jin##3706
   accept Touch of Weakness##5660 |goto Durotar 54.26,42.93
 step
-  talk Elder Runetotem##15572
-  accept Runetotem the Elder##8670 |goto Durotar 53.2,43.68
-step
-  talk Masked Orphan Matron##23973
-  accept The Headless Horseman##11220 |goto Durotar 52.57,41.2
-step
-  talk Masked Orphan Matron##23973
-  accept Fire Training##11361 |goto Durotar 52.57,41.2
-step
   note Kill 10 Kul Tiras Sailors, 8 Kul Tiras Marines and Lieutenant Benedict and return to Gar'Thok in Razor Hill.
   kill Kul Tiras Sailor##3128 |q 784 |goto Durotar 57.39,57.21
 step
@@ -152,9 +132,6 @@ step
   note Kill 4 Razormane Quilboars, 4 Razormane Scouts, 4 Razormane Dustrunners and 4 Razormane Battleguards for Gar'Thok at Razor Hill.
   kill Razormane Quilboar##3111 |q 837 |goto Durotar 48.91,48.75
 step
-  note Toss buckets on 5 fires, then speak with the Masked Orphan Matron in Razor Hill.
-  kill Headless Horseman - Fire (DND)##23537 |q 11361 |goto Durotar 51.94,42.68
-step
   talk Vol'jin##10540
   turnin The Admiral's Orders##831 |goto Orgrimmar 34.34,36.33 |tip {turninat}Orgrimmar
 step
@@ -163,8 +140,6 @@ step
 step
   talk Rezlak##3293
   accept Winds in the Desert##834 |goto Durotar 46.37,22.94
-step
-  turnin The Headless Horseman##11220 |goto Scarlet Monastery - Dungeon -1,-1 |tip {turninat}Scarlet Monastery - Dungeon
 step
   talk Rhinag##3190
   accept Need for a Cure##812 |goto Durotar 41.54,18.6
@@ -292,10 +267,6 @@ step
   talk Master Vornal##3304
   turnin A Solvent Spirit##818 |goto Durotar 55.94,74.39
 step
-  only Warrior
-  talk Ula'elek##6408
-  turnin Satyr Hooves##1842 |goto Durotar 56.31,74.33
-step
   talk Master Gadrin##3188
   turnin Zalazane##826 |goto Durotar 55.95,74.72
 step
@@ -303,18 +274,8 @@ step
   talk Un'Thuwa##5880
   turnin Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
-  talk Master Gadrin##3188
-  turnin The Spider God##2936 |goto Durotar 55.95,74.72
-step
   talk Great-father Winter##13445
   turnin Winter's Presents##8828 |goto Orgrimmar 52.49,69.18 |tip {turninat}Orgrimmar
-step
-  only Warrior
-  talk Ula'elek##6408
-  accept Brutal Gauntlets##1843 |goto Durotar 56.31,74.33
-step
-  talk Master Gadrin##3188
-  accept Summoning Shadra##2937 |goto Durotar 55.95,74.72
 step
   talk Gar'Thok##3139
   turnin Vanquish the Betrayers##784 |goto Durotar 51.95,43.5
@@ -339,16 +300,6 @@ step
   talk Gar'Thok##3139
   turnin Encroachment##837 |goto Durotar 51.95,43.5
 step
-  only Rogue
-  talk Shenthul##3401
-  turnin To Orgrimmar!##2380 |goto Orgrimmar 43.05,53.74 |tip {turninat}Orgrimmar
-step
-  talk Elder Runetotem##15572
-  turnin Runetotem the Elder##8670 |goto Durotar 53.2,43.68
-step
-  talk Masked Orphan Matron##23973
-  turnin Fire Training##11361 |goto Durotar 52.57,41.2
-step
   talk Gar'Thok##3139
   accept From The Wreckage....##825 |goto Durotar 51.95,43.5
 step
@@ -366,9 +317,6 @@ step
 step
   talk Rhinag##3190
   turnin Need for a Cure##812 |goto Durotar 41.54,18.6
-step
-  talk Apothecary Lydon##2216
-  turnin Summoning Shadra##2937 |goto Hillsbrad Foothills 61.44,19.06 |tip {turninat}Hillsbrad Foothills
 step
   talk Margoz##3208
   turnin Margoz##828 |goto Durotar 56.41,20.04
@@ -447,10 +395,6 @@ step
 step
   talk Master Gadrin##3188
   turnin Report to Sen'jin Village##805 |goto Durotar 55.95,74.72
-step
-  only Warrior
-  talk Ula'elek##6408
-  turnin Brutal Gauntlets##1843 |goto Durotar 56.31,74.33
 step
   talk Gar'Thok##3139
   turnin From The Wreckage....##825 |goto Durotar 51.95,43.5

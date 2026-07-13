@@ -31,9 +31,6 @@ step
   note Kill Lorgus Jett in Blackfathom Deeps and then return to Je'neu Sancrea in Ashenvale.
   kill Lorgus Jett##12902 |q 6565 |goto Blackfathom Deeps - Dungeon -1,-1
 step
-  talk Elder Riversong##15605
-  accept Riversong the Elder##8725 |goto Ashenvale 34.65,48.48
-step
   note Take down 8 Thistlefur Avengers and 8 Thistlefur Shaman; most are located east of Zoram Strand in Thistlefur Village. Once completed, return to Karang Amakkar at Zoram'gar Outpost, Ashenvale.
   kill Thistlefur Avenger##3925 |q 216 |goto Ashenvale 36.64,36.96
 step
@@ -93,9 +90,6 @@ step
 step
   talk Karang Amakkar##12757
   accept King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
-step
-  talk Elder Riversong##15605
-  turnin Riversong the Elder##8725 |goto Ashenvale 34.65,48.48
 step
   talk Valusha##17355
   turnin Destroy the Legion##9534 |goto Ashenvale 73.23,60.39

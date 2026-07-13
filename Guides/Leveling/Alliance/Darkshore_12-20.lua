@@ -52,9 +52,6 @@ step
   talk Fiora Longears##4456
   accept Journey to Astranaar##1133 |goto Darkshore 33.77,42.37
 step
-  talk Fiora Longears##4456
-  accept Highperch Venom##1135 |goto Darkshore 33.77,42.37
-step
   talk Gubber Blump##10216
   accept Fruit of the Sea##1138 |goto Darkshore 36.1,44.93
 step
@@ -86,9 +83,6 @@ step
   only NightElf
   talk Laird##4200
   accept Return to Nessa##6343 |goto Darkshore 36.77,44.28
-step
-  talk Elder Starweave##15601
-  accept Starweave the Elder##8721 |goto Darkshore 36.81,46.77
 step
   talk Thundris Windweaver##3649
   accept Onward to Ashenvale##10752 |goto Darkshore 37.4,40.13
@@ -136,9 +130,6 @@ step
   talk Alanndarian Nightsong##3702
   turnin Easy Strider Living##2178 |goto Darkshore 37.69,40.66
 step
-  talk Elder Starweave##15601
-  turnin Starweave the Elder##8721 |goto Darkshore 36.81,46.77
-step
   only Paladin
   talk Thundris Windweaver##3649
   turnin Seeking the Kor Gem##1442 |goto Darkshore 37.4,40.13
@@ -177,9 +168,6 @@ step
 step
   talk Shindrell Swiftfire##3845
   turnin Journey to Astranaar##1133 |goto Ashenvale 34.67,48.84 |tip {turninat}Ashenvale
-step
-  talk Fiora Longears##4456
-  turnin Highperch Venom##1135 |goto Darkshore 33.77,42.37
 step
   talk Gubber Blump##10216
   turnin Fruit of the Sea##1138 |goto Darkshore 36.1,44.93
