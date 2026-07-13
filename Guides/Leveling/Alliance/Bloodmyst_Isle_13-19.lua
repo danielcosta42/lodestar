@@ -17,7 +17,7 @@ step
   accept Know Thine Enemy##9567 |goto Bloodmyst Isle 55.08,57.99
 step
   note Find the Nazzivus Monument in Nazzivian and retrieve a Nazzivus Monument Glyph. Return to Vindicator Aalesia in Blood Watch when you have one of the glyphs.
-  get Know Thine Enemy |q 9567 |goto Bloodmyst Isle 55.08,57.99
+  collect Nazzivus Monument Glyphs##182532 |q 9567 |goto Bloodmyst Isle 36.5,71.33
 step
   talk Morae##17434
   accept Searching for Galaen##9578 |goto Bloodmyst Isle 53.24,57.74
@@ -26,7 +26,7 @@ step
   accept The Bear Necessities##9580 |goto Bloodmyst Isle 55.86,57.0
 step
   note Bring 8 Elder Brown Bear Flanks to Tracker Lyceon in Blood Watch.
-  get The Bear Necessities |q 9580 |goto Bloodmyst Isle 55.86,57.0
+  kill Elder Brown Bear##17348 |q 9580 |goto Bloodmyst Isle 41.84,42.88
 step
   talk Harbinger Mikolaas##17423
   accept Learning from the Crystals##9581 |goto Bloodmyst Isle 52.59,53.21
@@ -48,19 +48,19 @@ step
   accept Irradiated Crystal Shards##9641 |goto Bloodmyst Isle 55.42,55.27
 step
   note Vindicator Boros at Blood Watch wants you to bring him 10 Irradiated Crystal Shards.
-  get Irradiated Crystal Shards |q 9641 |goto Bloodmyst Isle 55.42,55.27
+  kill Infected Wildkin##17322 |q 9641 |goto Bloodmyst Isle 56.36,34.11
 step
   talk Tracker Lyceon##17642
   accept Constrictor Vines##9643 |goto Bloodmyst Isle 55.86,57.0
 step
   note Tracker Lyceon at Blood Watch wants you to bring him 6 Thorny Constrictor Vines.
-  get Constrictor Vines |q 9643 |goto Bloodmyst Isle 55.86,57.0
+  kill Mutated Constrictor##17344 |q 9643 |goto Bloodmyst Isle 42.46,42.48
 step
   talk Jessera of Mac'Aree##17663
   accept Mac'Aree Mushroom Menagerie##9648 |goto Bloodmyst Isle 56.42,56.82
 step
   note Jessera of Mac'Aree at Blood Watch wants 1 Aquatic Stinkhorn, 1 Blood Mushroom, 1 Ruinous Polyspore, and 1 Fel Cone Fungus.
-  get Mac'Aree Mushroom Menagerie |q 9648 |goto Bloodmyst Isle 56.42,56.82
+  kill Stinkhorn Striker##17673 |q 9648 |goto Bloodmyst Isle 59.22,71.7
 step
   talk Achelus##17676
   accept The Missing Expedition##9669 |goto Bloodmyst Isle 53.24,57.03
@@ -86,7 +86,7 @@ step
   accept Restoring Sanctity##9687 |goto Bloodmyst Isle 74.47,33.46
 step
   note Prince Toreth on Wyrmscar Island wants you to recover 8 Dragon Bones.
-  get Restoring Sanctity |q 9687 |goto Bloodmyst Isle 74.47,33.46
+  collect Dragon Bone##181981 |q 9687 |goto Bloodmyst Isle 56.5,35.18
 step
   talk Captain Edward Hanes##17712
   accept The Bloodcursed Naga##9674 |goto Bloodmyst Isle 79.15,22.65
@@ -98,13 +98,13 @@ step
   accept Pilfered Equipment##9548 |goto Bloodmyst Isle 42.15,21.22
 step
   note Bring Clopper's Equipment back to Clopper Wizbang, who is hiding in a beached turtle shell.
-  get Pilfered Equipment |q 9548 |goto Bloodmyst Isle 42.15,21.22
+  collect Clopper's Equipment##181746 |q 9548 |goto Bloodmyst Isle 40.49,20.24
 step
   talk Clopper Wizbang##17421
   accept Artifacts of the Blacksilt##9549 |goto Bloodmyst Isle 42.15,21.22
 step
   note Bring 3 Crude Murloc Idols and 6 Crude Murloc Knives to Clopper Wizbang, who is hiding in a beached turtle shell.
-  get Artifacts of the Blacksilt |q 9549 |goto Bloodmyst Isle 42.15,21.22
+  kill Blacksilt Seer##17330 |q 9549 |goto Bloodmyst Isle 38.55,20.65
 step
   note Vindicator Boros at Blood Watch wants you to locate the Sun Portal Site and slay 5 Void Anomalies.
   kill Void Anomaly##17550 |q 9700 |goto Bloodmyst Isle 52.69,21.3
@@ -115,7 +115,7 @@ step
 step
   only Draenei Mage
   note Collect 6 Foul Essences and return them to Aqueous in the Hidden Reef at Bloodmyst Isle.
-  get Call of Water |q 9503 |goto Bloodmyst Isle 32.3,16.18
+  kill Fouled Water Spirit##17358 |q 9503 |goto Bloodmyst Isle 30.02,36.97
 step
   talk Researcher Cornelius##17686
   accept They're Alive! Maybe...##9670 |goto Bloodmyst Isle 24.88,34.35
@@ -154,7 +154,7 @@ step
   accept Galaen's Fate##9579 |goto Bloodmyst Isle 37.5,61.24
 step
   note Bring Galaen's Amulet to Morae at Blood Watch.
-  get Galaen's Fate |q 9579 |goto Bloodmyst Isle 37.5,61.24
+  kill Sunhawk Reclaimer##17606 |q 9579 |goto Bloodmyst Isle 38.58,60.93
 step
   note Kill 12 Void Critters and report to Vindicator Aesom at Blood Watch.
   kill Void Critter##17887 |q 9741 |goto Bloodmyst Isle 19.26,63.61
@@ -172,7 +172,7 @@ step
   accept A Favorite Treat##9624 |goto Bloodmyst Isle 63.43,88.79
 step
   note Aonar at Kessel's Crossing wants you to bring him 10 Sand Pears.
-  get A Favorite Treat |q 9624 |goto Bloodmyst Isle 63.43,88.79
+  collect Sand Pear##181854 |q 9624 |goto Bloodmyst Isle 65.87,83.82
 step
   talk Vorkhan the Elekk Herder##17586
   accept Alien Predators##9634 |goto Bloodmyst Isle 63.03,87.9
@@ -239,7 +239,7 @@ step
   accept Victims of Corruption##9574 |goto Bloodmyst Isle 53.24,57.74
 step
   note Bring 6 pieces of Crystallized Bark to Morae in Blood Watch.
-  get Victims of Corruption |q 9574 |goto Bloodmyst Isle 53.24,57.74
+  kill Corrupted Treant##17352 |q 9574 |goto Bloodmyst Isle 49.22,75.13
 step
   only Draenei
   talk Laando##17554
@@ -255,7 +255,7 @@ step
   accept Ysera's Tears##9649 |goto Bloodmyst Isle 56.42,56.82
 step
   note Jessera of Mac'Aree at Blood Watch wants 2 Ysera's Tears.
-  get Ysera's Tears |q 9649 |goto Bloodmyst Isle 56.42,56.82
+  collect Ysera's Tear##181897 |q 9649 |goto Bloodmyst Isle 71.03,20.3
 step
   talk Vindicator Boros##17684
   accept Blood Watch##9694 |goto Bloodmyst Isle 55.42,55.27
@@ -264,7 +264,7 @@ step
   accept The Cryo-Core##9703 |goto Bloodmyst Isle 55.64,55.22
 step
   note Vindicator Kuros at Blood Watch wants you to recover 12 boxes of Medical Supplies.
-  get The Cryo-Core |q 9703 |goto Bloodmyst Isle 55.64,55.22
+  kill Sunhawk Reclaimer##17606 |q 9703 |goto Bloodmyst Isle 38.58,60.93
 step
   note Vindicator Boros at Blood Watch wants you to slay 10 Sunhawk Spies.
   kill Sunhawk Spy##17604 |q 9694 |goto Bloodmyst Isle 48.23,46.15
@@ -280,7 +280,7 @@ step
   accept Salvaging the Data##9628 |goto Bloodmyst Isle 61.25,48.41
 step
   note Obtain the Survey Data Crystal from the Wrathscale near the dead cartographers and return it to Harbinger Mikolaas at Blood Watch.
-  get Salvaging the Data |q 9628 |goto Bloodmyst Isle 61.25,48.41
+  kill Wrathscale Marauder##17334 |q 9628 |goto Bloodmyst Isle 63.81,47.1
 step
   talk Prince Toreth##17674
   turnin Restoring Sanctity##9687 |goto Bloodmyst Isle 74.47,33.46
@@ -298,7 +298,7 @@ step
   accept The Hopeless Ones...##9682 |goto Bloodmyst Isle 79.15,22.65
 step
   note Captain Edward Hanes on Wyrmscar Island wants you to recover 4 Bloodcursed Souls.
-  get The Hopeless Ones... |q 9682 |goto Bloodmyst Isle 79.15,22.65
+  kill Bloodcursed Voyager##17714 |q 9682 |goto Bloodmyst Isle 86.06,16.46
 step
   note Prince Toreth at Wyrmscar Island has asked that you slay 5 Viridian Whelps and 5 Viridian Broodlings.
   kill Veridian Whelp##17588 |q 9688 |goto Bloodmyst Isle 73.51,20.78
@@ -394,7 +394,7 @@ step
   accept Intercepting the Message##9779 |goto Bloodmyst Isle 55.42,55.27
 step
   note Kill Sunhawk elves until you find the Sunhawk Missive, then return it to Vindicator Boros at Blood Watch.
-  get Intercepting the Message |q 9779 |goto Bloodmyst Isle 55.42,55.27
+  kill Sunhawk Spy##17604 |q 9779 |goto Bloodmyst Isle 48.23,46.15
 step
   talk Prince Toreth##17674
   turnin Into the Dream##9688 |goto Bloodmyst Isle 74.47,33.46

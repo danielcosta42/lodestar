@@ -21,7 +21,7 @@ step
   note Find and touch the bonfires located within Blackrock Spire, Dire Maul, Scholomance, and Stratholme, then return to the Festival Flamekeeper.
   collect Flame of Dire Maul##181346 |q 9319 |goto Dire Maul - Dungeon -1,-1
 step
-  get The Medallion of Faith |q 5122 |goto Stratholme - Dungeon -1,-1
+  collect Malor's Strongbox##176112 |q 5122 |goto Stratholme - Dungeon -1,-1
 step
   note Travel to Stratholme and find Archivist Galford of the Scarlet Crusade. Destroy him and burn down the Scarlet Archive.
   kill Archivist Galford##10811 |q 5251 |goto Stratholme - Dungeon -1,-1

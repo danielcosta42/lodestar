@@ -22,7 +22,7 @@ step
   get Sunfury Signets |q 10824 |goto Shadowmoon Valley 56.29,58.8
 step
   note Bring 10 Marks of Sargeras to Harbinger Saronen in Shadowmoon Valley.
-  get Marks of Sargeras |q 10826 |goto Shadowmoon Valley 62.27,29.78
+  kill Cyber-Rage Forgelord##16943 |q 10826 |goto Netherstorm 40.3,21.07
 step
   talk Mordenai##22113
   turnin Kindness##10804 |goto Shadowmoon Valley 59.19,58.69
@@ -52,9 +52,9 @@ step
 step
   get More Sunfury Signets |q 10823 |goto Shadowmoon Valley 56.29,58.8
 step
-  get More Marks of Sargeras |q 10827 |goto Shadowmoon Valley 62.27,29.78
+  kill Cyber-Rage Forgelord##16943 |q 10827 |goto Netherstorm 40.3,21.07
 step
-  get Single Mark of Sargeras |q 10828 |goto Shadowmoon Valley 62.27,29.78
+  kill Cyber-Rage Forgelord##16943 |q 10828 |goto Netherstorm 40.3,21.07
 step
   talk Neltharaku##21657
   turnin Seek Out Neltharaku##10811 |goto Shadowmoon Valley 61.31,59.98
@@ -87,7 +87,7 @@ step
   accept To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
-  get To Netherwing Ledge! |q 10837 |goto Shadowmoon Valley 61.31,59.98
+  collect Nethervine Crystal##185182 |q 10837 |goto Shadowmoon Valley 70.78,83.14
 step
   talk Neltharaku##21657
   turnin To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98
@@ -156,16 +156,16 @@ step
   accept Your Friend On The Inside##11019 |goto Shadowmoon Valley 66.0,86.47
 step
   note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 30 Netherwing Crystals.
-  get Netherwing Crystals |q 11015 |goto Shadowmoon Valley 66.12,86.36
+  kill Nethermine Flayer##23169 |q 11015 |goto Shadowmoon Valley 71.49,83.28
 step
   note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 35 Nethermine Flayer Hides.
-  get Nethermine Flayer Hide |q 11016 |goto Shadowmoon Valley 66.12,86.36
+  kill Nethermine Flayer##23169 |q 11016 |goto Shadowmoon Valley 71.49,83.28
 step
   note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 40 Netherdust Pollen.
-  get Netherdust Pollen |q 11017 |goto Shadowmoon Valley 66.12,86.36
+  collect Netherdust Bush##185881 |q 11017 |goto Shadowmoon Valley 69.04,83.96
 step
   note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 40 Nethercite Ore.
-  get Nethercite Ore |q 11018 |goto Shadowmoon Valley 66.12,86.36
+  kill Nethermine Flayer##23169 |q 11018 |goto Shadowmoon Valley 71.49,83.28
 step
   talk Taskmaster Varkule Dragonbreath##23140
   turnin Netherwing Crystals##11015 |goto Shadowmoon Valley 66.12,86.36
@@ -198,10 +198,10 @@ step
   get A Slow Death |q 11020 |goto Shadowmoon Valley 66.0,86.47
 step
   note Yarzill the Merc at Dragonmaw Base Camp in Shadowmoon Valley wants you to recover 10 Netherwing Relics.
-  get The Not-So-Friendly Skies... |q 11035 |goto Shadowmoon Valley 66.0,86.47
+  kill Dragonmaw Transporter##23188 |q 11035 |goto Shadowmoon Valley 75.29,71.34
 step
   note Yarzill the Merc at Dragonmaw Base Camp in Shadowmoon Valley wants you to recover a Netherwing Egg.
-  get The Great Netherwing Egg Hunt |q 11049 |goto Shadowmoon Valley 66.0,86.47
+  kill Nethermine Flayer##23169 |q 11049 |goto Shadowmoon Valley 71.49,83.28
 step
   talk Yarzill the Merc##23141
   turnin A Slow Death##11020 |goto Shadowmoon Valley 66.0,86.47
@@ -227,10 +227,10 @@ step
   talk Taskmaster Varkule Dragonbreath##23140
   accept Stand Tall, Captain!##11084 |goto Shadowmoon Valley 66.12,86.36
 step
-  get Accepting All Eggs |q 11050 |goto Shadowmoon Valley 66.0,86.47
+  kill Nethermine Flayer##23169 |q 11050 |goto Shadowmoon Valley 71.49,83.28
 step
   note Chief Overseer Mudlump at the Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 10 pieces of Knothide Leather and 1 Hardened Hide of Tyrantus.
-  get Overseeing and You: Making the Right Choices |q 11054 |goto Shadowmoon Valley 66.86,86.11
+  collect Heavy Fel Iron Chest##181800 |q 11054 |goto Terokkar Forest 39.25,55.95
 step
   talk Yarzill the Merc##23141
   turnin Accepting All Eggs##11050 |goto Shadowmoon Valley 66.0,86.47
@@ -263,7 +263,7 @@ step
   kill Disobedient Dragonmaw Peon##23311 |q 11055 |goto Shadowmoon Valley 69.69,87.99
 step
   note The Mistress of the Mines at the Netherwing Mines in Shadowmoon Valley wants you to recover 15 Nethermine Cargo crates.
-  get Picking Up The Pieces... |q 11076 |goto Shadowmoon Valley 65.43,90.13
+  kill Nethermine Flayer##23169 |q 11076 |goto Shadowmoon Valley 71.49,83.28
 step
   note The Dragonmaw Foreman at the Netherwing Mines in Shadowmoon Valley wants you to kill 15 Nethermine Flayers and 5 Nethermine Ravagers.
   kill Nethermine Flayer##23169 |q 11077 |goto Shadowmoon Valley 71.49,83.28

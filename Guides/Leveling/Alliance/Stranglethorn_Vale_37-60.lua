@@ -14,25 +14,25 @@ step
   accept Chapter I##339 |goto Stranglethorn Vale 35.66,10.53
 step
   note Bring pages 1, 4, 6, and 8 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter I.
-  get Chapter I |q 339 |goto Stranglethorn Vale 35.66,10.53
+  kill Bloodscalp Warrior##587 |q 339 |goto Stranglethorn Vale 33.43,16.78
 step
   talk Barnil Stonepot##716
   accept Chapter II##340 |goto Stranglethorn Vale 35.66,10.53
 step
   note Bring pages 10, 11, 14 and 16 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter II.
-  get Chapter II |q 340 |goto Stranglethorn Vale 35.66,10.53
+  kill Bloodscalp Warrior##587 |q 340 |goto Stranglethorn Vale 33.43,16.78
 step
   talk Barnil Stonepot##716
   accept Chapter III##341 |goto Stranglethorn Vale 35.66,10.53
 step
   note Bring pages 18, 20, 21and 24 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter III.
-  get Chapter III |q 341 |goto Stranglethorn Vale 35.66,10.53
+  kill Bloodscalp Warrior##587 |q 341 |goto Stranglethorn Vale 33.43,16.78
 step
   talk Barnil Stonepot##716
   accept Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
 step
   note Bring pages 25, 26, and 27 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter IV.
-  get Chapter IV |q 342 |goto Stranglethorn Vale 35.66,10.53
+  kill Bloodscalp Warrior##587 |q 342 |goto Stranglethorn Vale 33.43,16.78
 step
   talk Barnil Stonepot##716
   accept Welcome to the Jungle##583 |goto Stranglethorn Vale 35.66,10.53
@@ -44,7 +44,7 @@ step
   accept Bad Medicine##204 |goto Stranglethorn Vale 38.02,3.33
 step
   note Bring 7 Jungle Remedies and 1 Venom Fern Extract to Sergeant Yohwa at the Rebel Camp.
-  get Bad Medicine |q 204 |goto Stranglethorn Vale 38.02,3.33
+  kill Kurzen Jungle Fighter##937 |q 204 |goto Stranglethorn Vale 44.85,10.0
 step
   talk Corporal Kaleb##770
   accept Krazek's Cookery##210 |goto Stranglethorn Vale 37.74,3.3
@@ -79,7 +79,7 @@ step
 step
   only Paladin
   note Bring Jin'rokh the Breaker Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Freethinker's Armguards |q 8053 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8053 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -87,7 +87,7 @@ step
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Freethinker's Belt |q 8054 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8054 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -95,7 +95,7 @@ step
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Freethinker's Breastplate |q 8055 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8055 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Mage
   talk Maywiki of Zuldazar##14904
@@ -103,13 +103,13 @@ step
 step
   only Mage
   note Bring Maywiki of Zuldazar a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Augur's Bracers |q 8056 |goto Stranglethorn Vale 15.3,16.02
+  kill Jin'do the Hexxer##11380 |q 8056 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   talk Maywiki of Zuldazar##14904
   accept Paragons of Power: The Haruspex's Bracers##8057 |goto Stranglethorn Vale 15.3,16.02
 step
   note Bring Maywiki of Zuldazar a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Haruspex's Bracers |q 8057 |goto Stranglethorn Vale 15.3,16.02
+  kill Jin'do the Hexxer##11380 |q 8057 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -117,7 +117,7 @@ step
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Vindicator's Armguards |q 8058 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8058 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Druid
   talk Al'tabim the All-Seeing##14903
@@ -125,7 +125,7 @@ step
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Demoniac's Wraps |q 8059 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8059 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -133,7 +133,7 @@ step
 step
   only Warlock
   note Bring Al'tabim the All-Seeing Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Illusionist's Wraps |q 8060 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8060 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -141,7 +141,7 @@ step
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Confessor's Wraps |q 8061 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8061 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -149,7 +149,7 @@ step
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Predator's Bracers |q 8062 |goto Stranglethorn Vale 14.08,13.72
+  kill Jin'do the Hexxer##11380 |q 8062 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -157,19 +157,19 @@ step
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Madcap's Bracers |q 8063 |goto Stranglethorn Vale 14.08,13.72
+  kill Jin'do the Hexxer##11380 |q 8063 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   talk Maywiki of Zuldazar##14904
   accept Paragons of Power: The Haruspex's Belt##8064 |goto Stranglethorn Vale 15.3,16.02
 step
   note Bring Maywiki of Zuldazar a Primal Hakkari Sash. Maywiki of Zuldazar is located on Yojamba Isle, Stranglethorn Vale. You must also be Honored with Zandalar.
-  get Paragons of Power: The Haruspex's Belt |q 8064 |goto Stranglethorn Vale 15.3,16.02
+  kill Jin'do the Hexxer##11380 |q 8064 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   talk Maywiki of Zuldazar##14904
   accept Paragons of Power: The Haruspex's Tunic##8065 |goto Stranglethorn Vale 15.3,16.02
 step
   note Bring Maywiki of Zuldazar a Primal Hakkari Tabard. Maywiki of Zuldazar is located on Yojamba Isle, Stranglethorn Vale. You must also be Revered with Zandalar.
-  get Paragons of Power: The Haruspex's Tunic |q 8065 |goto Stranglethorn Vale 15.3,16.02
+  kill Jin'do the Hexxer##11380 |q 8065 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -177,7 +177,7 @@ step
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Predator's Belt |q 8066 |goto Stranglethorn Vale 14.08,13.72
+  kill Jin'do the Hexxer##11380 |q 8066 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -185,7 +185,7 @@ step
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Predator's Mantle |q 8067 |goto Stranglethorn Vale 14.08,13.72
+  kill Jin'do the Hexxer##11380 |q 8067 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -193,7 +193,7 @@ step
 step
   only Warlock
   note Bring Al'tabim the All-Seeing a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Illusionist's Mantle |q 8068 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8068 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -201,7 +201,7 @@ step
 step
   only Warlock
   note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Illusionist's Robes |q 8069 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8069 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -209,7 +209,7 @@ step
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Confessor's Bindings |q 8070 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8070 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -217,7 +217,7 @@ step
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Confessor's Mantle |q 8071 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8071 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -225,7 +225,7 @@ step
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Madcap's Mantle |q 8072 |goto Stranglethorn Vale 14.08,13.72
+  kill Jin'do the Hexxer##11380 |q 8072 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -233,7 +233,7 @@ step
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Madcap's Tunic |q 8073 |goto Stranglethorn Vale 14.08,13.72
+  kill Jin'do the Hexxer##11380 |q 8073 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Mage
   talk Maywiki of Zuldazar##14904
@@ -241,7 +241,7 @@ step
 step
   only Mage
   note Bring Maywiki of Zuldazar a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Augur's Belt |q 8074 |goto Stranglethorn Vale 15.3,16.02
+  kill Jin'do the Hexxer##11380 |q 8074 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Mage
   talk Maywiki of Zuldazar##14904
@@ -249,7 +249,7 @@ step
 step
   only Mage
   note Bring Maywiki of Zuldazar a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Augur's Hauberk |q 8075 |goto Stranglethorn Vale 15.3,16.02
+  kill Jin'do the Hexxer##11380 |q 8075 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Druid
   talk Al'tabim the All-Seeing##14903
@@ -257,7 +257,7 @@ step
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Demoniac's Mantle |q 8076 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8076 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Druid
   talk Al'tabim the All-Seeing##14903
@@ -265,7 +265,7 @@ step
 step
   only Druid
   note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Demoniac's Robes |q 8077 |goto Stranglethorn Vale 15.34,16.12
+  kill Jin'do the Hexxer##11380 |q 8077 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -273,7 +273,7 @@ step
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Vindicator's Belt |q 8078 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8078 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -281,7 +281,7 @@ step
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Vindicator's Breastplate |q 8079 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8079 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -319,7 +319,7 @@ step
   accept Bloodscalp Ears##189 |goto Stranglethorn Vale 27.0,77.13
 step
   note Acquire 15 Bloodscalp Ears and return them to Kebok in Booty Bay.
-  get Bloodscalp Ears |q 189 |goto Stranglethorn Vale 27.0,77.13
+  kill Bloodscalp Warrior##587 |q 189 |goto Stranglethorn Vale 33.43,16.78
 step
   talk Krazek##773
   accept Supplies to Private Thorsen##198 |goto Stranglethorn Vale 26.94,77.21
@@ -328,7 +328,7 @@ step
   accept Hostile Takeover##213 |goto Stranglethorn Vale 27.0,77.13
 step
   note Retrieve 8 Tumbled Crystals and return them to Kebok in Booty Bay.
-  get Hostile Takeover |q 213 |goto Stranglethorn Vale 27.0,77.13
+  kill Venture Co. Geologist##1096 |q 213 |goto Stranglethorn Vale 44.24,19.85
 step
   talk Fin Fizracket##2486
   accept Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
@@ -340,13 +340,13 @@ step
   accept Supply and Demand##575 |goto Stranglethorn Vale 28.29,77.59
 step
   note Bring 2 Large River Crocolisk Skins to Drizzlik in Booty Bay.
-  get Supply and Demand |q 575 |goto Stranglethorn Vale 28.29,77.59
+  kill River Crocolisk##1150 |q 575 |goto Stranglethorn Vale 36.85,10.51
 step
   talk Whiskey Slim##2491
   accept Whiskey Slim's Lost Grog##580 |goto Stranglethorn Vale 27.14,77.45
 step
   note Whiskey Slim in Booty Bay wants you to bring him the bottles of Pupellyverbos Port he lost.
-  get Whiskey Slim's Lost Grog |q 580 |goto Stranglethorn Vale 27.14,77.45
+  collect Pupellyverbos Port##2068 |q 580 |goto The Hinterlands 78.28,70.64
 step
   talk First Mate Crazz##2490
   accept The Bloodsail Buccaneers##595 |goto Stranglethorn Vale 28.1,76.22
@@ -358,19 +358,19 @@ step
   accept Singing Blue Shards##605 |goto Stranglethorn Vale 27.12,77.21
 step
   note Bring 10 Singing Crystal Shards to Crank Fizzlebub.
-  get Singing Blue Shards |q 605 |goto Stranglethorn Vale 27.12,77.21
+  kill Stone Maw Basilisk##688 |q 605 |goto Stranglethorn Vale 34.68,6.74
 step
   talk "Sea Wolf" MacKinley##2501
   accept Scaring Shaky##606 |goto Stranglethorn Vale 27.78,77.07
 step
   note Bring 5 Mistvale Giblets to "Shaky" Phillipe in Booty Bay.
-  get Scaring Shaky |q 606 |goto Stranglethorn Vale 27.78,77.07
+  kill Elder Mistvale Gorilla##1557 |q 606 |goto Stranglethorn Vale 33.05,65.45
 step
   talk Catelyn the Blade##2542
   accept "Pretty Boy" Duncan##610 |goto Stranglethorn Vale 27.28,77.53
 step
   note Get Catelyn's dagger from "Pretty Boy" Duncan.
-  get "Pretty Boy" Duncan |q 610 |goto Stranglethorn Vale 27.28,77.53
+  kill "Pretty Boy" Duncan##2545 |q 610 |goto Stranglethorn Vale 27.39,69.42
 step
   talk Captain Hecklebury Smotts##2500
   accept The Captain's Cutlass##615 |goto Stranglethorn Vale 26.69,73.61
@@ -382,19 +382,19 @@ step
   accept Akiris by the Bundle##617 |goto Stranglethorn Vale 26.76,76.38
 step
   note Bring 10 Bundles of Akiris Reed to Privateer Bloads in Booty Bay.
-  get Akiris by the Bundle |q 617 |goto Stranglethorn Vale 26.76,76.38
+  kill Naga Explorer##1907 |q 617 |goto Stranglethorn Vale 26.32,62.32
 step
   talk Crank Fizzlebub##2498
   accept Zanzil's Secret##621 |goto Stranglethorn Vale 27.12,77.21
 step
   note Bring 12 samples of Zanzil's Mixture to Crank Fizzlebub in Booty Bay.
-  get Zanzil's Secret |q 621 |goto Stranglethorn Vale 27.12,77.21
+  kill Zanzil Zombie##1488 |q 621 |goto Stranglethorn Vale 38.89,57.62
 step
   talk Krazek##773
   accept Favor for Krazek##627 |goto Stranglethorn Vale 26.94,77.21
 step
   note Bring 4 loads of Lesser Bloodstone Ore to Krazek in Booty Bay.
-  get Favor for Krazek |q 627 |goto Stranglethorn Vale 26.94,77.21
+  collect Lesser Bloodstone Deposit##2653 |q 627 |goto Arathi Highlands 84.21,31.28
 step
   talk Fleet Master Seahorn##2487
   accept Sunken Treasure##670 |goto Stranglethorn Vale 27.17,77.01
@@ -409,7 +409,7 @@ step
   accept Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.94,77.21
 step
   note Bring 10 Specks of Dream Dust to Krazek in Booty Bay. Dream Dust is gathered from the dragon whelps of the Swamp of Sorrows.
-  get Dream Dust in the Swamp |q 1116 |goto Stranglethorn Vale 26.94,77.21
+  kill Adolescent Whelp##740 |q 1116 |goto Swamp of Sorrows 14.31,62.67
 step
   talk Wharfmaster Lozgil##4631
   accept Goblin Sponsorship##1181 |goto Stranglethorn Vale 26.35,73.56
@@ -435,7 +435,7 @@ step
   accept The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
 step
   note Bring Smotts' Chest to Hecklebury Smotts in Booty Bay.
-  get The Captain's Chest |q 8551 |goto Stranglethorn Vale 26.69,73.61
+  kill Gorlash##1492 |q 8551 |goto Stranglethorn Vale 36.95,69.73
 step
   talk Elder Winterhoof##15576
   accept Winterhoof the Elder##8674 |goto Stranglethorn Vale 26.47,76.53
@@ -447,7 +447,7 @@ step
   accept Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
 step
   note Slay King Mukla and return to Princess Poobah with the Key to free her.
-  get Message in a Bottle |q 630 |goto Stranglethorn Vale 38.53,80.58
+  kill King Mukla##1559 |q 630 |goto Stranglethorn Vale 40.95,83.9
 step
   talk Fleet Master Firallon##2546
   turnin Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 30.58,90.63
@@ -519,7 +519,7 @@ step
   accept Kurzen's Mystery##207 |goto Stranglethorn Vale 37.83,3.56
 step
   note Find the 4 tablets and bring their legends back to Brother Nimetz.
-  get Kurzen's Mystery |q 207 |goto Stranglethorn Vale 37.83,3.56
+  collect Moon Over the Vale##57 |q 207 |goto Stranglethorn Vale 29.48,19.14
 step
   talk Corporal Sethman##1422
   accept Report to Doren##331 |goto Stranglethorn Vale 37.66,3.39
@@ -847,19 +847,19 @@ step
   accept Skullsplitter Tusks##209 |goto Stranglethorn Vale 27.0,77.13
 step
   note Acquire 18 Skullsplitter Tusks and return them to Kebok.
-  get Skullsplitter Tusks |q 209 |goto Stranglethorn Vale 27.0,77.13
+  kill Skullsplitter Warrior##667 |q 209 |goto Stranglethorn Vale 46.22,37.45
 step
   talk Dizzy One-Eye##2493
   accept Keep An Eye Out##576 |goto Stranglethorn Vale 28.59,75.9
 step
   note Dizzy One-Eye in Booty Bay wants you to retrieve his eye from the Bloodsail Buccaneers.
-  get Keep An Eye Out |q 576 |goto Stranglethorn Vale 28.59,75.9
+  kill Bloodsail Raider##1561 |q 576 |goto Stranglethorn Vale 32.34,71.67
 step
   talk Drizzlik##2495
   accept Some Assembly Required##577 |goto Stranglethorn Vale 28.29,77.59
 step
   note Bring 5 Snapjaw Crocolisks Skins to Drizzlik in Booty Bay.
-  get Some Assembly Required |q 577 |goto Stranglethorn Vale 28.29,77.59
+  kill Snapjaw Crocolisk##1152 |q 577 |goto Stranglethorn Vale 40.15,22.18
 step
   talk Baron Revilgaz##2496
   accept The Stone of the Tides##578 |goto Stranglethorn Vale 27.23,76.87
@@ -868,13 +868,13 @@ step
   accept Up to Snuff##587 |goto Stranglethorn Vale 26.92,77.35
 step
   note Deeg in Booty Bay wants you to bring him 15 shares of Snuff.
-  get Up to Snuff |q 587 |goto Stranglethorn Vale 26.92,77.35
+  kill Bloodsail Raider##1561 |q 587 |goto Stranglethorn Vale 32.34,71.67
 step
   talk Crank Fizzlebub##2498
   accept Venture Company Mining##600 |goto Stranglethorn Vale 27.12,77.21
 step
   note Bring 10 Singing Blue Crystals to Crank Fizzlebub in Booty Bay.
-  get Venture Company Mining |q 600 |goto Stranglethorn Vale 27.12,77.21
+  kill Venture Co. Strip Miner##674 |q 600 |goto Stranglethorn Vale 41.65,43.48
 step
   talk Fleet Master Seahorn##2487
   accept The Bloodsail Buccaneers##604 |goto Stranglethorn Vale 27.17,77.01
@@ -886,7 +886,7 @@ step
   accept The Curse of the Tides##611 |goto Stranglethorn Vale 27.28,77.53
 step
   note Destroy the Altar of the Tides with Catelyn's Blade, kill Gazban and bring the Stone of the Tides and Catelyn's Blade back to Baron Revilgaz.
-  get The Curse of the Tides |q 611 |goto Stranglethorn Vale 27.28,77.53
+  kill Gazban##2624 |q 611 |goto Stranglethorn Vale 22.74,24.1
 step
   talk Sprogger##2594
   accept Facing Negolash##618 |goto Stranglethorn Vale 26.66,73.64
@@ -907,7 +907,7 @@ step
   accept Goblin Sponsorship##1182 |goto Stranglethorn Vale 27.23,76.87
 step
   note Bring the Fuel Regulator Blueprints to Baron Revilgaz in Booty Bay.
-  get Goblin Sponsorship |q 1182 |goto Stranglethorn Vale 27.23,76.87
+  collect Cozzle's Footlocker##20691 |q 1182 |goto Stranglethorn Vale 43.33,20.33
 step
   note Slay Fleet Master Seahorn and Baron Revilgaz of Booty Bay, and then return to Fleet Master Firallon aboard the Crimson Veil off the coast of Stranglethorn Vale.
   kill Baron Revilgaz##2496 |q 4621 |goto Stranglethorn Vale 27.23,76.87
@@ -975,7 +975,7 @@ step
   accept Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
 step
   note Bring 4 Skullsplitter Fetishes to Brother Nimetz at the Rebel Camp.
-  get Troll Witchery |q 205 |goto Stranglethorn Vale 37.83,3.56
+  kill Skullsplitter Witch Doctor##670 |q 205 |goto Stranglethorn Vale 45.55,42.21
 step
   note Kill 6 Kurzen Elite, 4 Kurzen Subchiefs, and bring Kurzen's Head to Lieutenant Doren at the Rebel Camp.
   kill Kurzen Elite##939 |q 202 |goto Stranglethorn Vale 48.4,7.51
@@ -1131,7 +1131,7 @@ step
   accept Water Elementals##601 |goto Stranglethorn Vale 27.23,76.87
 step
   note Acquire 6 Water Elemental Bracers for Baron Revilgaz in Booty Bay.
-  get Water Elementals |q 601 |goto Stranglethorn Vale 27.23,76.87
+  kill Lesser Water Elemental##691 |q 601 |goto Stranglethorn Vale 21.01,23.19
 step
   talk Fleet Master Seahorn##2487
   accept The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
@@ -1140,13 +1140,13 @@ step
   accept Voodoo Dues##609 |goto Stranglethorn Vale 27.78,77.07
 step
   note Bring Maury's Clubbed Foot, Jon-Jon's Golden Spyglass, and Chucky's Huge Ring to "Sea Wolf" MacKinley in Booty Bay.
-  get Voodoo Dues |q 609 |goto Stranglethorn Vale 27.78,77.07
+  kill Maury "Club Foot" Wilkins##2535 |q 609 |goto Stranglethorn Vale 35.26,51.27
 step
   talk Drizzlik##2495
   accept Excelsior##628 |goto Stranglethorn Vale 28.29,77.59
 step
   note Bring an Elder Crocolisk Skin to Drizzlik in Booty Bay.
-  get Excelsior |q 628 |goto Stranglethorn Vale 28.29,77.59
+  kill Elder Saltwater Crocolisk##2635 |q 628 |goto Stranglethorn Vale 29.83,25.48
 step
   talk Baron Revilgaz##2496
   accept Goblin Sponsorship##1183 |goto Stranglethorn Vale 27.23,76.87
@@ -1188,7 +1188,7 @@ step
   accept Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
 step
   note Bring the Mind's Eye to Brother Nimetz at the Rebel Camp.
-  get Mai'Zoth |q 206 |goto Stranglethorn Vale 37.83,3.56
+  kill Mai'Zoth##818 |q 206 |goto Stranglethorn Vale 52.93,27.6
 step
   talk Trenton Lighthammer##7804
   turnin Galvan's Finest Pupil##2764 |goto Tanaris 51.41,28.75 |tip {turninat}Tanaris
@@ -1314,7 +1314,7 @@ step
   accept Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
 step
   note Bring Maury's Key to "Sea Wolf" Mackinley in Booty Bay.
-  get Cracking Maury's Foot |q 613 |goto Stranglethorn Vale 27.78,77.07
+  kill Mosh'Ogg Mauler##678 |q 613 |goto Stranglethorn Vale 51.48,27.73
 step
   talk Ajeck Rouack##717
   turnin Tiger Mastery##187 |goto Stranglethorn Vale 35.62,10.62
@@ -1329,19 +1329,19 @@ step
   accept Tiger Mastery##188 |goto Stranglethorn Vale 35.62,10.62
 step
   note Ajeck Rouack of Nesingwary's Expedition wants you to kill Sin'Dall and return with her paw.
-  get Tiger Mastery |q 188 |goto Stranglethorn Vale 35.62,10.62
+  kill Sin'Dall##729 |q 188 |goto Stranglethorn Vale 32.21,17.39
 step
   talk Sir S. J. Erlgadin##718
   accept Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
 step
   note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to bring him the Fang of Bhag'thera.
-  get Panther Mastery |q 193 |goto Stranglethorn Vale 35.55,10.55
+  kill Bhag'thera##728 |q 193 |goto Stranglethorn Vale 49.61,24.03
 step
   talk Hemet Nesingwary Jr.##715
   accept Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
 step
   note Hemet Nesingwary Jr. wants you to kill Tethis, an elusive, dangerous raptor in Stranglethorn.
-  get Raptor Mastery |q 197 |goto Stranglethorn Vale 35.66,10.81
+  kill Tethis##730 |q 197 |goto Stranglethorn Vale 28.74,43.45
 step
   talk Brother Nimetz##739
   turnin Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
@@ -1400,7 +1400,7 @@ step
   accept Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
 step
   note Hemet Nesingwary Jr. wants you to bring him the head of King Bangalash, the great white tiger.
-  get Big Game Hunter |q 208 |goto Stranglethorn Vale 35.66,10.81
+  kill King Bangalash##731 |q 208 |goto Stranglethorn Vale 38.21,35.58
 step
   talk Hemet Nesingwary Jr.##715
   turnin Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81

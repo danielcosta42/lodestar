@@ -106,16 +106,16 @@ step
   kill Boglash##18281 |q 9895 |goto Zangarmarsh 82.07,71.39
 step
   note Thiah Redmane, at the Cenarion Post in Hellfire Peninsula, has asked you to gather 6 Helboar Blood Samples from Hulking Helboars.
-  get Demonic Contamination |q 9372 |goto Hellfire Peninsula 15.7,52.09
+  kill Hulking Helboar##16880 |q 9372 |goto Hellfire Peninsula 24.6,54.71
 step
   note Bring 10 Unidentified Plant Parts to Lauranna Thar'well at the Cenarion Refuge in Zangarmarsh.
-  get Plants of Zangarmarsh |q 9802 |goto Zangarmarsh 80.32,64.17
+  kill Darkcrest Taskmaster##18086 |q 9802 |goto Zangarmarsh 62.13,67.45
 step
   note Slay Rajis Fyashe at Serpent Lake and return to Warden Hamoot at the Cenarion Refuge in Zangarmarsh for a reward.
   kill Rajis Fyashe##18044 |q 9817 |goto Zangarmarsh 65.15,40.91
 step
   note Collect 4 Teromoth Samples and 4 Vicious Teromoth Samples. Then return to Earthbinder Tavgren just outside the Cenarion Thicket in Terokkar Forest.
-  get Strange Energy |q 9968 |goto Terokkar Forest 44.33,26.31
+  kill Teromoth##18468 |q 9968 |goto Terokkar Forest 45.14,29.39
 step
   note Investigate the Strange Object next to the Broken Corpse to determine what might have befallen the Cenarion Thicket. Then return to Earthbinder Tavgren just outside the thicket in Terokkar Forest.
   collect Strange Object##183789 |q 9971 |goto Terokkar Forest 45.1,21.77
@@ -352,7 +352,7 @@ step
   get The Ward of Wakening |q 10961 |goto Zangarmarsh 80.18,65.15
 step
   note Look for Ikeyen's Belongings inside a cave south of Umbrafen. Return them to Ikeyen at Cenarion Refuge in Zangarmarsh.
-  get A Damp, Dark Place |q 9788 |goto Zangarmarsh 80.4,64.16
+  collect Ikeyen's Belongings##182122 |q 9788 |goto Zangarmarsh 70.49,97.94
 step
   note Kill Lord Klaq and return to Windcaller Blackhoof at the Cenarion Refuge.
   kill Lord Klaq##18282 |q 9894 |goto Zangarmarsh 72.24,93.89
@@ -364,9 +364,9 @@ step
   kill Dreadtusk##16992 |q 10255
 step
   note Warden Hamoot at the Cenarion Refuge wants you to bring him 30 Naga Claws.
-  get A Warm Welcome |q 9728 |goto Zangarmarsh 79.09,65.27
+  kill Rajis Fyashe##18044 |q 9728 |goto Zangarmarsh 65.15,40.91
 step
-  get Identify Plant Parts |q 9784 |goto Zangarmarsh 80.32,64.17
+  kill Darkcrest Taskmaster##18086 |q 9784 |goto Zangarmarsh 62.13,67.45
 step
   note Venture out into the Ruuan Weald and slay 10 Wyrmcult Hewers, then return to Tree Warden Chawn at Evergrove in the Blade's Edge Mountains.
   kill Wyrmcult Hewer##21810 |q 10713 |goto Blade's Edge Mountains 60.82,35.23
@@ -378,7 +378,7 @@ step
   get Creatures of the Eco-Domes |q 10427 |goto Netherstorm 43.82,38.26
 step
   note Obtain Coilfang Armaments from naga at Coilfang Reservoir and return them to Ysiel Windsinger at the Cenarion Refuge in Zangarmarsh.
-  get Preparing for War |q 9765 |goto Zangarmarsh 78.4,62.02
+  kill Coilfang Engineer##17721 |q 9765 |goto The Steamvault - Dungeon -1,-1
 step
   note Lauranna Thar'well wants you to go to the Botanica in Tempest Keep and retrieve the Botanist's Field Guide from High Botanist Freywinn. In addition she also wants you to bring her 5 Super Healing Potions, 5 Super Mana Potions and 5 Major Dreamless Sleep Potions.
   get Master of Potions |q 10897 |goto Zangarmarsh 80.32,64.17
@@ -474,7 +474,7 @@ step
   kill Goliathon##19305 |q 10351
 step
   note Collect 10 pieces of Discarded Nutriment and then return to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get A Question of Gluttony |q 9702 |goto Zangarmarsh 23.32,66.21
+  collect Discarded Nutriment##182031 |q 9702 |goto Zangarmarsh 30.2,63.94
 step
   note Ysiel Windsinger wants you to use the Ironvine Seeds on the Steam Pump Controls at Serpent Lake, Umbrafen Lake, Marshlight Lake and the Lagoon. Then return to her at the Cenarion Refuge in Zangarmarsh with any leftover seeds you have.
   get Balance Must Be Preserved |q 9720 |goto Zangarmarsh 70.6,80.29
@@ -483,9 +483,9 @@ step
   kill Draaca Longtail##22396 |q 10893 |goto Blade's Edge Mountains 45.19,32.49
 step
   note Aurine Moonblaze at the Stormspire wants you to bring her a Hulking Hydra Heart.
-  get When Nature Goes Too Far |q 10429 |goto Netherstorm 42.32,32.56
+  kill Markaru##20775 |q 10429 |goto Netherstorm 44.56,28.42
 step
-  get Coilfang Armaments |q 9766 |goto Zangarmarsh 78.4,62.02
+  kill Coilfang Engineer##17721 |q 9766 |goto The Steamvault - Dungeon -1,-1
 step
   talk Clintar Dreamwalker##22834
   turnin Waking the Sleeper##10964 |goto Moonglade 75.46,67.04
@@ -535,10 +535,10 @@ step
   kill Clintar Dreamwalker's Spirit##22916 |q 10965 |goto Moonglade 75.41,67.04
 step
   note Collect 15 Mushroom Samples and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get Familiar Fungi |q 9708 |goto Zangarmarsh 23.32,66.21
+  kill Ango'rosh Ogre##18117 |q 9708 |goto Zangarmarsh 33.71,31.19
 step
   note Retrieve 5 of Lathrai's Stolen Goods. Return them to Wind Trader Lathrai near the World's End Tavern in the Lower City section of Shattrath City.
-  get A Personal Favor |q 10112 |goto Shattrath City 72.22,30.75
+  kill Skithian Dreadhawk##18452 |q 10112 |goto Terokkar Forest 31.41,42.35
 step
   note Kill 4 Doomforge Attendants and 4 Doomforge Engineers.
   kill Doomforge Attendant##19961 |q 10820 |goto Blade's Edge Mountains 74.29,38.51
@@ -576,10 +576,10 @@ step
   accept Maxnar Must Die!##10748 |goto Blade's Edge Mountains 61.98,39.48
 step
   note Collect 10 Boxes of Mushrooms and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get Stealing Back the Mushrooms |q 9709 |goto Zangarmarsh 23.32,66.21
+  kill Ango'rosh Mauler##18120 |q 9709 |goto Zangarmarsh 18.89,7.03
 step
   note Find the Sealed Box and then deliver it to Earthbinder Tavgren just outside of the Cenarion Thicket in Terokkar Forest.
-  get Investigate Tuurem |q 9990 |goto Shattrath City 72.22,30.75
+  collect Sealed Box##182542 |q 9990 |goto Terokkar Forest 54.0,30.0
 step
   note Discover what happened to Earthbinder Rayge, Naturalist Bite, Weeder Greenthumb, and Windcaller Claw. Then, return to Watcher Jhang at Coilfang Reservoir in Zangarmarsh.
   kill Earthbinder Rayge##17885 |q 9738 |goto The Underbog - Dungeon -1,-1
@@ -639,7 +639,7 @@ step
   kill Sai'kkal the Elder##22932 |q 10980 |goto Blade's Edge Mountains 29.54,59.72
 step
   note The Evergrove Druid has asked you to collect 5 Fel Cannonballs. Once you have done so, use the Druid Signal to call to the Evergrove Druid inside of Death's Door at the Blade's Edge Mountains.
-  get Harvesting the Fel Ammunition |q 10904 |goto Blade's Edge Mountains 63.52,65.29
+  kill Deathforge Over-Smith##19978 |q 10904 |goto Blade's Edge Mountains 64.01,71.7
 step
   talk Arthorn Windsong##22924
   turnin The Book of the Raven##10980 |goto Blade's Edge Mountains 61.47,38.27
@@ -708,7 +708,7 @@ step
   accept Letting Earthbinder Tavgren Know##10006 |goto Terokkar Forest 50.04,45.93
 step
   note Gather 8 Raven Stones from Skettis and bring them to Arthorn Windsong at Evergrove in Blade's Edge Mountains.
-  get The Raven Stones |q 10988 |goto Nagrand 20.58,35.73
+  collect Raven Stone Fragment##185541 |q 10988 |goto Terokkar Forest 69.29,81.1
 step
   talk Arthorn Windsong##22924
   turnin The Raven Stones##10988 |goto Blade's Edge Mountains 61.47,38.27

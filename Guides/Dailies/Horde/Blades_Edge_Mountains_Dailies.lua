@@ -22,13 +22,13 @@ step
   accept Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
 step
   note Recover the Salvaged Ethereum Prison Key for Commander Ameer at the Protectorate Watch Post in Netherstorm.
-  get A Mission of Mercy |q 10970 |goto Netherstorm 59.5,32.38
+  kill Ethereum Assassin##20452 |q 10970 |goto Netherstorm 56.71,38.2
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Maggoc's Treasure Chest |q 10996 |goto Blade's Edge Mountains 55.49,44.86
+  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Even Gronn Have Standards |q 10997 |goto Blade's Edge Mountains 55.49,44.86
+  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
   note Sky Sergeant Vanderlip has tasked you with the bombing of 15 Fel Cannonball Stacks. Return to her at the Skyguard Outpost atop the Blade's Edge Mountains once you have done so.
   get Bomb Them Again! |q 11023 |goto Blade's Edge Mountains 27.56,52.9
@@ -58,7 +58,7 @@ step
   get Ethereum Secrets |q 10971 |goto Netherstorm 59.5,32.38
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Grulloc Has Two Skulls |q 10995 |goto Blade's Edge Mountains 55.49,44.86
+  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
   talk Commander Ameer##20448
   turnin Ethereum Secrets##10971 |goto Netherstorm 59.5,32.38
@@ -73,7 +73,7 @@ step
   accept Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Commander Ameer at the Protectorate Watch Post in Netherstorm wants you to bring him 5 Ethereum Prison Keys.
-  get A Thousand Worlds |q 10973 |goto Netherstorm 59.5,32.38
+  kill Ethereal Scavenger##18309 |q 10973 |goto Mana-Tombs - Dungeon -1,-1
 step
   note You must retrieve Vim'gol's Vile Grimoire. Deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
   get Grim(oire) Business |q 10998 |goto Blade's Edge Mountains 55.49,44.86
@@ -111,7 +111,7 @@ step
   talk Mog'dorg the Wizened##22941
   accept Ogre Heaven##11009 |goto Blade's Edge Mountains 55.49,44.86
 step
-  get Purging the Chambers of Bash'ir |q 10975 |goto Blade's Edge Mountains 52.85,14.99
+  kill Ethereal Scavenger##18309 |q 10975 |goto Mana-Tombs - Dungeon -1,-1
 step
   note The Image of Commander Ameer at Bash'ir's Landing in the Blade's Edge Mountains wants you to bring him a Mark of the Nexus-King.
   get The Mark of the Nexus-King |q 10976 |goto Blade's Edge Mountains 52.85,14.99
@@ -138,7 +138,7 @@ step
   accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
+  kill Hemathion##18692 |q 11025 |goto Blade's Edge Mountains 31.1,71.08
 step
   note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
   get Banish the Demons |q 11026 |goto Blade's Edge Mountains 28.9,57.92

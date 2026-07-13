@@ -20,7 +20,7 @@ step
   accept Webwood Venom##916 |goto Teldrassil 57.81,41.65
 step
   note Bring 10 Webwood Venom Sacs to Gilshalan Windwalker at Aldrassil.
-  get Webwood Venom |q 916 |goto Teldrassil 57.81,41.65
+  kill Webwood Spider##1986 |q 916 |goto Teldrassil 56.8,28.42
 step
   talk Porthannius##6780
   accept Dolanaar Delivery##2159 |goto Teldrassil 61.16,47.64
@@ -45,13 +45,13 @@ step
   accept The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
 step
   note Acquire 6 Bloodfeather Belts and bring them to Sentinel Arynia Cloudsbreak in the Oracle Glade.
-  get The Enchanted Glade |q 937 |goto Teldrassil 38.32,34.36
+  kill Bloodfeather Harpy##2015 |q 937 |goto Teldrassil 37.21,40.54
 step
   talk Oben Rageclaw##7317
   accept The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
 step
   note Bring a Shaman Voodoo Charm to Oben Rageclaw in the Ban'ethil Barrow Den.
-  get The Sleeping Druid |q 2541 |goto Teldrassil 44.94,61.59
+  kill Gnarlpine Shaman##2009 |q 2541 |goto Teldrassil 45.23,61.24
 step
   talk Innkeeper Keldamyr##6736
   turnin Dolanaar Delivery##2159 |goto Teldrassil 55.62,59.79
@@ -70,13 +70,13 @@ step
   accept Zenn's Bidding##488 |goto Teldrassil 60.46,56.3
 step
   note Bring Zenn Foulhoof outside of Dolanaar 3 Nightsaber Fangs, 3 Strigid Owl Feathers and 3 swatches of Webwood Spider Silk.
-  get Zenn's Bidding |q 488 |goto Teldrassil 60.46,56.3
+  kill Elder Nightsaber##2033 |q 488 |goto Teldrassil 45.13,37.67
 step
   talk Tallonkai Swiftroot##3567
   accept Twisted Hatred##932 |goto Teldrassil 55.57,56.95
 step
   note Kill Lord Melenas and bring his head to Tallonkai Swiftroot in Dolanaar.
-  get Twisted Hatred |q 932 |goto Teldrassil 55.57,56.95
+  kill Lord Melenas##2038 |q 932 |goto Teldrassil 51.31,50.21
 step
   talk Syral Bladeleaf##2083
   accept Denalan's Earth##997 |goto Teldrassil 56.08,57.72
@@ -95,13 +95,13 @@ step
   accept The Emerald Dreamcatcher##2438 |goto Teldrassil 55.57,56.95
 step
   note Bring the Emerald Dreamcatcher to Tallonkai Swiftroot in Dolanaar.
-  get The Emerald Dreamcatcher |q 2438 |goto Teldrassil 55.57,56.95
+  collect Tallonkai's Dresser##126158 |q 2438 |goto Teldrassil 68.02,59.65
 step
   talk Zarrin##6286
   accept Recipe of the Kaldorei##4161 |goto Teldrassil 57.12,61.3
 step
   note Collect 7 Small Spider Legs for Zarrin in Dolanaar.
-  get Recipe of the Kaldorei |q 4161 |goto Teldrassil 57.12,61.3
+  kill Forest Spider##30 |q 4161 |goto Elwynn Forest 38.2,71.23
 step
   only NightElf Priest
   talk Laurna Morninglight##3600
@@ -128,13 +128,13 @@ step
   accept Timberling Seeds##918 |goto Teldrassil 60.9,68.49
 step
   note Bring 8 Timberling Seeds to Denelan at Lake Al'Ameth.
-  get Timberling Seeds |q 918 |goto Teldrassil 60.9,68.49
+  kill Timberling##2022 |q 918 |goto Teldrassil 59.67,66.39
 step
   talk Denalan##2080
   accept Timberling Sprouts##919 |goto Teldrassil 60.9,68.49
 step
   note Bring 12 Timberling Sprouts to Denalan at Lake Al'Ameth.
-  get Timberling Sprouts |q 919 |goto Teldrassil 60.9,68.49
+  collect Timberling Sprout##4608 |q 919 |goto Teldrassil 57.32,69.93
 step
   talk Denalan##2080
   accept Planting the Heart##941 |goto Teldrassil 60.9,68.49
@@ -143,7 +143,7 @@ step
   accept Oakenscowl##2499 |goto Teldrassil 60.9,68.49
 step
   note Denalan at Lake Al'Ameth wants you to collect the Gargantuan Tumor from Oakenscowl.
-  get Oakenscowl |q 2499 |goto Teldrassil 60.9,68.49
+  kill Oakenscowl##2166 |q 2499 |goto Teldrassil 53.76,75.12
 step
   only NightElf Priest
   note Find Sentinel Shaya and heal her wounds using Lesser Heal (Rank 2). Afterwards, grant her Power Word: Fortitude and then return to Laurna Morninglight in Dolanaar.
@@ -172,13 +172,13 @@ step
   accept The Woodland Protector##459 |goto Teldrassil 57.83,45.21
 step
   note Collect 8 Fel Moss and bring them to Tarindrella.
-  get The Woodland Protector |q 459 |goto Teldrassil 57.83,45.21
+  kill Grell##1988 |q 459 |goto Teldrassil 55.97,45.81
 step
   talk Gilshalan Windwalker##2082
   accept Webwood Egg##917 |goto Teldrassil 57.81,41.65
 step
   note Bring a Webwood Egg to Gilshalan in Aldrassil.
-  get Webwood Egg |q 917 |goto Teldrassil 57.81,41.65
+  collect Webwood Eggs##4406 |q 917 |goto Teldrassil 56.8,26.49
 step
   only Warrior
   talk Conservator Ilthalaine##2079
@@ -203,7 +203,7 @@ step
   accept Iverron's Antidote##3521 |goto Teldrassil 60.9,41.96
 step
   note Collect 7 Hyacinth Mushrooms, 4 Moonpetal Lilies, and 1 Webwood Ichor for Dirania Silveshine in Shadowglen.
-  get Iverron's Antidote |q 3521 |goto Teldrassil 60.9,41.96
+  kill Grellkin##1989 |q 3521 |goto Teldrassil 54.67,39.33
 step
   note Conservator Ilthalaine needs you to kill 7 Mangy Nightsabers and 7 Thistle Boars.
   kill Mangy Nightsaber##2032 |q 457 |goto Teldrassil 61.73,36.12
@@ -261,13 +261,13 @@ step
   accept The Relics of Wakening##483 |goto Teldrassil 55.96,57.27
 step
   note Retrieve the Relics of Wakening and bring them to Athridas Bearmantle in Dolanaar.
-  get The Relics of Wakening |q 483 |goto Teldrassil 55.96,57.27
+  collect Chest of the Raven Claw##2740 |q 483 |goto Teldrassil 45.65,57.44
 step
   talk Syral Bladeleaf##2083
   accept Seek Redemption!##489 |goto Teldrassil 56.08,57.72
 step
   note Collect 3 Fel Cones and give them to Zenn Foulhoof outside of Dolanaar.
-  get Seek Redemption! |q 489 |goto Teldrassil 56.08,57.72
+  collect Fel Cone##1673 |q 489 |goto Teldrassil 53.68,62.92
 step
   only Rogue
   talk Jannok Breezesong##3599

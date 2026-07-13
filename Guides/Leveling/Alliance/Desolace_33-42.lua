@@ -23,7 +23,7 @@ step
   accept Centaur Bounty##1387 |goto Desolace 66.74,10.87
 step
   note Bring 15 Centaur Ears to Corporal Melkins at Nijel's Point in Desolace.
-  get Centaur Bounty |q 1387 |goto Desolace 66.74,10.87
+  kill Kolkar Centaur##4632 |q 1387 |goto Desolace 69.23,46.87
 step
   talk Vahlarriel Demonslayer##5642
   accept Vahlarriel's Search##1437 |goto Desolace 66.44,11.82
@@ -38,13 +38,13 @@ step
   accept The Karnitol Shipwreck##1456 |goto Desolace 66.2,9.63
 step
   note Find Karnitol's Satchel and return it to Kreldig Ungor in Desolace.
-  get The Karnitol Shipwreck |q 1456 |goto Desolace 66.2,9.63
+  kill Slitherblade Tidehunter##4716 |q 1456 |goto Desolace 29.99,10.51
 step
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1458 |goto Desolace 66.2,9.63
 step
   note Bring 10 Hatefury Claws, and 10 Hatefury Horns to Kreldig Ungor in Desolace.
-  get Reagents for Reclaimers Inc. |q 1458 |goto Desolace 66.2,9.63
+  kill Hatefury Rogue##4670 |q 1458 |goto Desolace 74.45,18.85
 step
   talk Talendria##11715
   accept Vyletongue Corruption##7041 |goto Desolace 68.5,8.88
@@ -64,19 +64,19 @@ step
   accept Search for Tyranis##1439 |goto Desolace 54.86,26.13
 step
   note Find Tyranis Malem in Desolace.
-  get Search for Tyranis |q 1439 |goto Desolace 54.86,26.13
+  kill Tyranis Malem##5643 |q 1439 |goto Desolace 53.01,29.08
 step
   talk Bibbly F'utzbuckle##11438
   accept Bone Collector##5501 |goto Desolace 62.33,38.99
 step
   note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
-  get Bone Collector |q 5501 |goto Desolace 62.33,38.99
+  collect Kodo Bones##176751 |q 5501 |goto Desolace 52.86,60.09
 step
   talk Willow##13656
   accept Twisted Evils##7028 |goto Desolace 62.2,39.63
 step
   note Collect 15 Theradric Crystal Carvings for Willow in Desolace.
-  get Twisted Evils |q 7028 |goto Desolace 62.2,39.63
+  kill Putridus Satyr##11790 |q 7028 |goto Maraudon - Dungeon -1,-1
 step
   talk Smeed Scrabblescrew##11596
   accept Kodo Roundup##5561 |goto Desolace 60.86,61.86
@@ -94,7 +94,7 @@ step
   accept Legends of Maraudon##7044 |goto Desolace 32.1,63.96
 step
   note Recover the two parts of the Scepter of Celebras: the Celebrian Rod and the Celebrian Diamond.
-  get Legends of Maraudon |q 7044 |goto Desolace 32.1,63.96
+  kill Lord Vyletongue##12236 |q 7044 |goto Maraudon - Dungeon -1,-1
 step
   talk Uthek the Wise##5397
   turnin Strange Alliance##1382 |goto Desolace 36.22,79.25
@@ -103,7 +103,7 @@ step
   accept Raid on the Kolkar##1384 |goto Desolace 36.22,79.25
 step
   note Maintain your reputation with the Gelkis, and bring 10 Crude Charms to Uthek the Wise in the Gelkis Village in Desolace.
-  get Raid on the Kolkar |q 1384 |goto Desolace 36.22,79.25
+  kill Kolkar Centaur##4632 |q 1384 |goto Desolace 69.23,46.87
 step
   talk Centaur Pariah##13717
   accept The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
@@ -126,7 +126,7 @@ step
   accept Sceptre of Light##5741 |goto Desolace 38.88,27.16
 step
   note Get the Sceptre of Light and then return it to Azore Aldamort at the tower in Ethel Rethor.
-  get Sceptre of Light |q 5741 |goto Desolace 38.88,27.16
+  kill Burning Blade Seer##13019 |q 5741 |goto Desolace 55.17,30.15
 step
   note Slay Princess Theradras and return to Keeper Marandis at Nijel's Point in Desolace.
   kill Princess Theradras##12201 |q 7065 |goto Maraudon - Dungeon -1,-1
@@ -159,7 +159,7 @@ step
   accept Reagents for Reclaimers Inc.##1459 |goto Desolace 66.2,9.63
 step
   note Bring 7 vials of Scorpashi Venom and 3 Aged Kodo Hides to Kreldig Ungor in Desolace.
-  get Reagents for Reclaimers Inc. |q 1459 |goto Desolace 66.2,9.63
+  kill Scorpashi Snapper##4696 |q 1459 |goto Desolace 65.68,27.9
 step
   talk Dalinda Malem##5644
   turnin Search for Tyranis##1439 |goto Desolace 54.86,26.13
@@ -189,7 +189,7 @@ step
   accept Stealing Supplies##1370 |goto Desolace 36.22,79.25
 step
   note Bring 6 bags of Crudely Dried Meat to Uthek the Wise in the Gelkis Village.
-  get Stealing Supplies |q 1370 |goto Desolace 36.22,79.25
+  collect Sack of Meat##22245 |q 1370 |goto Desolace 72.43,77.26
 step
   talk Centaur Pariah##13717
   turnin The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
@@ -201,7 +201,7 @@ step
   accept Broken Tears##1369 |goto Desolace 74.97,68.16
 step
   note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
-  get Broken Tears |q 1369 |goto Desolace 74.97,68.16
+  kill Gelkis Windchaser##4649 |q 1369 |goto Desolace 37.41,87.07
 step
   talk Azore Aldamort##11863
   turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
@@ -222,7 +222,7 @@ step
   accept Reagents for Reclaimers Inc.##1466 |goto Desolace 66.2,9.63
 step
   note Bring 10 Felhound Brains, 10 Nether Wings, and 10 vials of Doomwarder Blood to Kreldig Ungor in Desolace.
-  get Reagents for Reclaimers Inc. |q 1466 |goto Desolace 66.2,9.63
+  kill Mana Eater##4678 |q 1466 |goto Desolace 52.91,68.14
 step
   talk Uthek the Wise##5397
   turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
@@ -231,7 +231,7 @@ step
   accept Ongeku##1373 |goto Desolace 36.22,79.25
 step
   note Maintain your reputation with the Gelkis, and bring a Draenethyst Shard to Uthek the Wise in the Gelkis Village in Desolace.
-  get Ongeku |q 1373 |goto Desolace 36.22,79.25
+  kill Ongeku##5622 |q 1373 |goto Swamp of Sorrows 65.07,21.97
 step
   talk Warug##5398
   turnin Broken Tears##1369 |goto Desolace 74.97,68.16
@@ -258,7 +258,7 @@ step
   accept Khan Jehn##1374 |goto Desolace 36.22,79.25
 step
   note Bring the Khan Jehn's Head to Uthek the Wise in the Gelkis Village in Desolace.
-  get Khan Jehn |q 1374 |goto Desolace 36.22,79.25
+  kill Khan Jehn##5601 |q 1374 |goto Desolace 65.95,80.41
 step
   talk Warug##5398
   turnin Gizmo for Warug##1371 |goto Desolace 74.97,68.16
@@ -267,7 +267,7 @@ step
   accept Khan Shaka##1375 |goto Desolace 74.97,68.16
 step
   note Maintain your reputation with the Magram, and bring the Head of Khan Shaka to Warug in the Magram Village in Desolace.
-  get Khan Shaka |q 1375 |goto Desolace 74.97,68.16
+  kill Khan Shaka##5602 |q 1375 |goto Desolace 40.49,95.49
 step
   talk Roetten Stonehammer##5637
   turnin Reagents for Reclaimers Inc.##1467 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge

@@ -11,7 +11,7 @@ step
   accept The Love Potion##4201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   note Bring 4 Gromsblood, 10 Giant Silver Veins and Nagmara's Filled Vial to Mistress Nagmara in Blackrock Depths.
-  get The Love Potion |q 4201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Dreaming Whelp##741 |q 4201 |goto Swamp of Sorrows 12.71,59.3
 step
   talk Marshal Windsor##9023
   accept Abandoned Hope##4242 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
@@ -20,7 +20,7 @@ step
   accept A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   note Return Marshal Windsor's Lost Information.
-  get A Shred of Hope |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill General Angerforge##9033 |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   talk Kharan Mighthammer##9021
   accept Kharan's Tale##4342 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1

@@ -29,10 +29,10 @@ step
   accept Warlord's Command##4903 |goto Badlands 5.81,47.52
 step
   note Collect three Dim Necrotic Stones from the Scourge outside Orgrimmar and investigate the glowing runic circles nearby their encampment.
-  get Investigate the Scourge of Orgrimmar |q 9263 |goto Orgrimmar 51.56,81.41
+  kill Skeletal Soldier##16422 |q 9263 |goto Elwynn Forest 34.39,52.45
 step
   note Bring a Lieutenant's Insignia to Thrall in Orgrimmar.
-  get Hidden Enemies |q 5726 |goto Orgrimmar 31.73,37.82
+  kill Burning Blade Fanatic##3197 |q 5726 |goto Durotar 52.5,9.36
 step
   note Bring two Patterned Bronze Bracers, two Bronze Greatswords, and two Sharp Claws to Orokk Omosh in Orgrimmar.
   get Barbaric Battlements |q 2751 |goto Orgrimmar 79.24,22.4

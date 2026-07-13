@@ -102,13 +102,13 @@ step
   accept Of Thistleheads and Eggs...##10547 |goto Shadowmoon Valley 47.56,57.18
 step
   note Grom'tor, Son of Oronok at Coilskar Point in Shadowmoon Valley wants you to recover the First Fragment of the Cipher of Damnation.
-  get The Cipher of Damnation - Grom'tor's Charge |q 10522 |goto Shadowmoon Valley 44.62,23.66
+  collect Coilskar Chest##184716 |q 10522 |goto Shadowmoon Valley 47.92,26.7
 step
   note Seek out and slay Painmistress Gabrissa at Illidari Point and return to the corpse of Ar'tor, Son of Oronok with the Crystalline Key.
-  get Demonic Crystal Prisons |q 10528 |goto Shadowmoon Valley 29.63,50.4
+  kill Painmistress Gabrissa##21309 |q 10528 |goto Shadowmoon Valley 28.3,47.61
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  get Of Thistleheads and Eggs... |q 10547 |goto Shadowmoon Valley 47.56,57.18
+  collect Rotten Arakkoa Egg##184795 |q 10547 |goto Shadowmoon Valley 44.15,57.51
 step
   talk Grom'tor, Son of Oronok##21291
   turnin The Cipher of Damnation - Grom'tor's Charge##10522 |goto Shadowmoon Valley 44.62,23.66
@@ -129,7 +129,7 @@ step
   accept The Bundle of Bloodthistle##10550 |goto Shattrath City 63.95,70.03
 step
   note The Spirit of Ar'tor at Illidari Point in Shadowmoon Valley wants you to recover Lohn'goron, Bow of the Torn-heart from the demons of the area.
-  get Lohn'goron, Bow of the Torn-heart |q 10537 |goto Shadowmoon Valley 29.53,50.52
+  kill Illidari Dreadbringer##19799 |q 10537 |goto Shadowmoon Valley 31.44,55.67
 step
   talk Oronok Torn-heart##21183
   turnin The Cipher of Damnation - The First Fragment Recovered##10523 |goto Shadowmoon Valley 53.95,23.52
@@ -165,7 +165,7 @@ step
   accept The Shadowmoon Shuffle##10576 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover 6 pieces of Eclipsion Armor.
-  get The Shadowmoon Shuffle |q 10576 |goto Shadowmoon Valley 47.56,57.18
+  kill Eclipsion Centurion##19792 |q 10576 |goto Shadowmoon Valley 47.18,67.6
 step
   talk Oronok Torn-heart##21183
   turnin The Cipher of Damnation - The Second Fragment Recovered##10541 |goto Shadowmoon Valley 53.95,23.52
@@ -183,7 +183,7 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  get The Cipher of Damnation - Borak's Charge |q 10578 |goto Shadowmoon Valley 47.56,57.18
+  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7
 step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18

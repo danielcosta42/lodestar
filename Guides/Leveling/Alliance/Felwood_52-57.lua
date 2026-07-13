@@ -14,13 +14,13 @@ step
   accept Silver Heart##4084 |goto Felwood 51.35,81.51
 step
   note Collect 11 Silvery Claws and 1 Irontree Heart for Eridan Bluewind in Felwood.
-  get Silver Heart |q 4084 |goto Felwood 51.35,81.51
+  kill Angerclaw Bear##8956 |q 4084 |goto Felwood 46.31,79.69
 step
   talk Arathandris Silversky##9528
   accept Cleansing Felwood##4101 |goto Felwood 54.15,86.83
 step
   note Bring 15 Blood Amber to Arathandris Silversky in Felwood.
-  get Cleansing Felwood |q 4101 |goto Felwood 54.15,86.83
+  kill Warpwood Moss Flayer##7100 |q 4101 |goto Felwood 57.17,18.49
 step
   talk Eridan Bluewind##9116
   accept The Corruption of the Jadefire##4421 |goto Felwood 51.35,81.51
@@ -70,13 +70,13 @@ step
 step
   only Druid
   note Bring a piece of felcloth to Impsy in Felwood.
-  get Hot and Itchy |q 8420 |goto Felwood 41.36,45.02
+  kill Felguard Sentry##6011 |q 8420 |goto Blasted Lands 59.78,54.09
 step
   talk Meilosh##11557
   accept Runecloth##6031 |goto Felwood 65.69,2.81
 step
   note Bring 30 Runecloth to Meilosh in Timbermaw Hold.
-  get Runecloth |q 6031 |goto Felwood 65.69,2.81
+  kill Grimtooth##603 |q 6031 |goto Alterac Valley - Battleground 51.71,94.86
 step
   talk Meilosh##11557
   accept Sacred Cloth##6032 |goto Felwood 65.69,2.81
@@ -135,17 +135,17 @@ step
   talk Arathandris Silversky##9528
   accept Salve via Hunting##4103 |goto Felwood 54.15,86.83
 step
-  get Salve via Hunting |q 4103 |goto Felwood 54.15,86.83
+  kill Cursed Ooze##7086 |q 4103 |goto Felwood 40.4,70.82
 step
   talk Arathandris Silversky##9528
   accept Salve via Mining##4104 |goto Felwood 54.15,86.83
 step
-  get Salve via Mining |q 4104 |goto Felwood 54.15,86.83
+  collect Small Thorium Vein##324 |q 4104 |goto Burning Steppes 62.76,44.03
 step
   talk Arathandris Silversky##9528
   accept Salve via Gathering##4105 |goto Felwood 54.15,86.83
 step
-  get Salve via Gathering |q 4105 |goto Felwood 54.15,86.83
+  collect Arthas' Tears##142141 |q 4105 |goto Western Plaguelands 47.04,61.35
 step
   talk Arathandris Silversky##9528
   accept Salve via Skinning##4106 |goto Felwood 54.15,86.83
@@ -200,7 +200,7 @@ step
 step
   only Druid
   note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
-  get The Wrong Stuff |q 8421 |goto Felwood 41.36,45.02
+  kill Irontree Wanderer##7138 |q 8421 |goto Felwood 48.7,23.1
 step
   note Eridan Bluewind in Felwood wants you to kill 8 Jadefire Hellcallers, 8 Jadefire Betrayers, 8 Jadefire Tricksters, and Xavaric. Return to Eridan when the task is completed.
   kill Jadefire Hellcaller##7111 |q 4906 |goto Felwood 41.21,21.0
@@ -275,7 +275,7 @@ step
 step
   only Druid
   note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
-  get Trolls of a Feather |q 8422 |goto Felwood 41.36,45.02
+  kill Gasher##5713 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01

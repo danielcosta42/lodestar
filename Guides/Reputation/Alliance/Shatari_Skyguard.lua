@@ -28,13 +28,13 @@ step
   accept Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.38,52.68
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Maggoc's Treasure Chest |q 10996 |goto Blade's Edge Mountains 55.49,44.86
+  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Even Gronn Have Standards |q 10997 |goto Blade's Edge Mountains 55.49,44.86
+  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
   note Severin wants you to venture into Skettis and retrieve 6 Shadow Dusts from the arakkoa that dwell there.
-  get World of Shadows |q 11004 |goto Terokkar Forest 64.05,66.88
+  kill Skettis Wing Guard##21644 |q 11004 |goto Terokkar Forest 69.85,79.32
 step
   note Use the Nether Ray Cage in the woods south of Blackwind Landing and slay Blackwind Warp Chasers near the Hungry Nether Ray. Return to Skyguard Handler Deesak when you've completed your task.
   get Hungry Nether Rays |q 11093 |goto Terokkar Forest 63.5,65.81
@@ -79,12 +79,12 @@ step
   accept To Skettis!##11098 |goto Shattrath City 64.33,42.33
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Grulloc Has Two Skulls |q 10995 |goto Blade's Edge Mountains 55.49,44.86
+  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
   note Obtain an Elixir of Shadows from Severin and use it to find and slay Talonpriest Ishaal, Talonpriest Skizzik and Talonpriest Zellek in Skettis. Return to Commander Adaris after completing this task.
   kill Talonpriest Ishaal##23066 |q 11005 |goto Terokkar Forest 69.0,78.54
 step
-  get More Shadow Dust |q 11006 |goto Terokkar Forest 64.05,66.88
+  kill Skettis Wing Guard##21644 |q 11006 |goto Terokkar Forest 69.85,79.32
 step
   talk Mog'dorg the Wizened##22941
   turnin Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
@@ -141,7 +141,7 @@ step
   get Into the Soulgrinder |q 11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Obtain Hazzik's Package at his dwelling in eastern Skettis and return to him with it.
-  get Hazzik's Bargain |q 11056 |goto Terokkar Forest 64.23,66.97
+  collect Hazzik's Package##185954 |q 11056 |goto Terokkar Forest 74.85,80.08
 step
   talk Mog'dorg the Wizened##22941
   turnin Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
@@ -174,7 +174,7 @@ step
   accept Adversarial Blood##11885 |goto Terokkar Forest 64.23,66.97
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
+  kill Hemathion##18692 |q 11025 |goto Blade's Edge Mountains 31.1,71.08
 step
   note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
   kill Wrangled Aether Ray##23343 |q 11065
@@ -222,7 +222,7 @@ step
   get Tokens of the Descendants |q 11074 |goto Terokkar Forest 64.23,66.97
 step
   note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
+  kill Rivendark##23061 |q 11078 |goto Blade's Edge Mountains 30.43,58.58
 step
   talk Torkus##23316
   turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64

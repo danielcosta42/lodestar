@@ -28,7 +28,7 @@ step
   kill Deadwood Warrior##7153 |q 8460 |goto Felwood 48.59,91.43
 step
   note Bring 30 Runecloth to Meilosh in Timbermaw Hold.
-  get Runecloth |q 6031 |goto Felwood 65.69,2.81
+  kill Grimtooth##603 |q 6031 |goto Alterac Valley - Battleground 51.71,94.86
 step
   note Bring 2 Mooncloth to Meilosh in Timbermaw Hold.
   get Sacred Cloth |q 6032 |goto Felwood 65.69,2.81
@@ -75,11 +75,11 @@ step
   talk Salfa##11556
   accept Beads for Salfa##8469 |goto Winterspring 27.73,34.5
 step
-  get Feathers for Grazle |q 8466 |goto Felwood 50.93,85.01
+  kill Deadwood Warrior##7153 |q 8466 |goto Felwood 48.59,91.43
 step
-  get Feathers for Nafien |q 8467 |goto Felwood 64.77,8.13
+  kill Deadwood Warrior##7153 |q 8467 |goto Felwood 48.59,91.43
 step
-  get Beads for Salfa |q 8469 |goto Winterspring 27.73,34.5
+  kill Winterfall Ursa##7438 |q 8469 |goto Winterspring 66.84,37.84
 step
   talk Nafien##15395
   turnin Speak to Nafien##8462 |goto Felwood 64.77,8.13

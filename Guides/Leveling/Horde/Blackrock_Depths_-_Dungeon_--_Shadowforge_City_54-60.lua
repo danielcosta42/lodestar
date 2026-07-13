@@ -14,7 +14,7 @@ step
   accept The Love Potion##4201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   note Bring 4 Gromsblood, 10 Giant Silver Veins and Nagmara's Filled Vial to Mistress Nagmara in Blackrock Depths.
-  get The Love Potion |q 4201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Dreaming Whelp##741 |q 4201 |goto Swamp of Sorrows 12.71,59.3
 step
   talk Elder Morndeep##15549
   accept Morndeep the Elder##8619 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1

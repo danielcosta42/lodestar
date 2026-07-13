@@ -11,7 +11,7 @@ step
   accept The Hunt Begins##747 |goto Mulgore 44.88,77.07
 step
   note Grull Hawkwind in Camp Narache wants you to bring him 7 Plainstrider Feathers and 7 pieces of Plainstrider Meat.
-  get The Hunt Begins |q 747 |goto Mulgore 44.88,77.07
+  kill Plainstrider##2955 |q 747 |goto Mulgore 48.53,81.85
 step
   talk Chief Hawkwind##2981
   accept A Humble Task##752 |goto Mulgore 44.18,76.06
@@ -22,13 +22,13 @@ step
 step
   only Tauren Mage
   note Bring 2 applications of Ritual Salve to Seer Ravenfeather in Camp Narache.
-  get Call of Earth |q 1519 |goto Mulgore 44.73,76.19
+  kill Bristleback Shaman##2953 |q 1519 |goto Mulgore 63.65,77.81
 step
   talk Brave Windfeather##3209
   accept Break Sharptusk!##3376 |goto Mulgore 44.53,76.5
 step
   note Bring the head of Chief Sharptusk Thornmantle to Brave Windfeather in Red Cloud Mesa.
-  get Break Sharptusk! |q 3376 |goto Mulgore 44.53,76.5
+  kill Chief Sharptusk Thornmantle##8554 |q 3376 |goto Mulgore 64.7,77.66
 step
   talk Antur Fallow##6775
   accept A Task Unfinished##1656 |goto Mulgore 38.52,81.55
@@ -40,7 +40,7 @@ step
   accept A Humble Task##753 |goto Mulgore 50.03,81.16
 step
   note Take a Water Pitcher from the water well.
-  get A Humble Task |q 753 |goto Mulgore 50.03,81.16
+  collect Water Pitcher##2907 |q 753 |goto Mulgore 50.35,81.46
 step
   only Mage
   talk Minor Manifestation of Earth##5891
@@ -56,7 +56,7 @@ step
   accept Supervisor Fizsprocket##765 |goto Mulgore 57.2,61.22
 step
   note Kill Supervisor Fizsprocket and return his clipboard to Morin Cloudstalker at Bloodhoof Village.
-  get Supervisor Fizsprocket |q 765 |goto Mulgore 57.2,61.22
+  kill Supervisor Fizsprocket##3051 |q 765 |goto Mulgore 64.9,43.31
 step
   turnin The Ravaged Caravan##749 |goto Mulgore 53.74,48.17
 step
@@ -67,7 +67,7 @@ step
   accept Dangers of the Windfury##743 |goto Mulgore 47.35,62.02
 step
   note Bring 8 Windfury Talons to Ruul Eagletalon in Bloodhoof Village.
-  get Dangers of the Windfury |q 743 |goto Mulgore 47.35,62.02
+  kill Windfury Harpy##2962 |q 743 |goto Mulgore 62.94,69.52
 step
   talk Baine Bloodhoof##2993
   accept Sharing the Land##745 |goto Mulgore 47.51,60.16
@@ -84,25 +84,25 @@ step
 step
   only Tauren
   note Bring 6 Prairie Wolf Paws and 4 Plainstrider Talons to Mull Thunderhorn in Bloodhoof.
-  get Poison Water |q 748 |goto Mulgore 48.53,60.39
+  kill Prairie Wolf##2958 |q 748 |goto Mulgore 39.51,66.13
 step
   talk Harken Windtotem##2947
   accept Swoop Hunting##761 |goto Mulgore 48.71,59.32
 step
   note Bring 8 Trophy Swoop Quills to Harken Windtotem in Bloodhoof Village.
-  get Swoop Hunting |q 761 |goto Mulgore 48.71,59.32
+  kill Wiry Swoop##2969 |q 761 |goto Mulgore 39.5,66.28
 step
   talk Maur Raincaller##3055
   accept Mazzranache##766 |goto Mulgore 46.98,57.07
 step
   note Bring a Prairie Wolf Heart, Flatland Cougar Femur, Plainstrider Scale and Swoop Gizzard to Maur Raincaller at Bloodhoof Village.
-  get Mazzranache |q 766 |goto Mulgore 46.98,57.07
+  kill Prairie Wolf##2958 |q 766 |goto Mulgore 39.51,66.13
 step
   talk Skorn Whitecloud##3052
   accept The Hunter's Way##861 |goto Mulgore 46.75,60.23
 step
   note Bring 4 Flatland Prowler Claws to Melor Stonehoof in Thunder Bluff.
-  get The Hunter's Way |q 861 |goto Mulgore 46.75,60.23
+  kill Flatland Prowler##3566 |q 861 |goto Mulgore 50.64,18.41
 step
   only Undead Priest
   talk Var'jun##11407
@@ -151,7 +151,7 @@ step
   accept The Hunt Continues##750 |goto Mulgore 44.88,77.07
 step
   note Grull Hawkwind in Camp Narache wants you to bring him 10 Mountain Cougar Pelts.
-  get The Hunt Continues |q 750 |goto Mulgore 44.88,77.07
+  kill Mountain Cougar##2961 |q 750 |goto Mulgore 48.52,90.43
 step
   talk Chief Hawkwind##2981
   accept Rites of the Earthmother##755 |goto Mulgore 44.18,76.06
@@ -182,7 +182,7 @@ step
   accept Rite of Strength##757 |goto Mulgore 42.57,92.19
 step
   note Kill Bristlebacks in Brambleblade Ravine and bring 12 Bristleback Belts to Chief Hawkwind in Camp Narache.
-  get Rite of Strength |q 757 |goto Mulgore 42.57,92.19
+  kill Bristleback Quilboar##2952 |q 757 |goto Mulgore 61.51,79.04
 step
   talk Melor Stonehoof##3441
   turnin The Hunter's Way##861 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
@@ -262,7 +262,7 @@ step
   accept The Battleboars##780 |goto Mulgore 44.88,77.07
 step
   note Grull Hawkwind in Camp Narache wants you to kill Battleboars and bring back 8 Battleboar Snouts and 8 Battleboar Flanks.
-  get The Battleboars |q 780 |goto Mulgore 44.88,77.07
+  kill Bristleback Battleboar##2954 |q 780 |goto Mulgore 62.87,78.59
 step
   only Tauren
   talk Mull Thunderhorn##2948
@@ -277,7 +277,7 @@ step
 step
   only Tauren
   note Bring 6 Stalker Claws and 6 Cougar Claws to Mull Thunderhorn.
-  get Thunderhorn Totem |q 756 |goto Mulgore 48.53,60.39
+  kill Prairie Stalker##2959 |q 756 |goto Mulgore 49.92,45.17
 step
   talk Baine Bloodhoof##2993
   accept Rite of Vision##767 |goto Mulgore 47.51,60.16
@@ -300,7 +300,7 @@ step
   accept Rite of Vision##771 |goto Mulgore 47.76,57.53
 step
   note Collect 2 Well Stones and 2 Ambercorn and bring them back to Zarlman Two-Moons in Bloodhoof Village.
-  get Rite of Vision |q 771 |goto Mulgore 47.76,57.53
+  kill Razorlash##12258 |q 771 |goto Maraudon - Dungeon -1,-1
 step
   talk Zarlman Two-Moons##3054
   turnin Rite of Vision##771 |goto Mulgore 47.76,57.53
@@ -315,7 +315,7 @@ step
 step
   only Tauren
   note Bring 8 Prairie Alpha Teeth to Mull Thunderhorn in Bloodhoof Village.
-  get Wildmane Totem |q 759 |goto Mulgore 48.53,60.39
+  kill Prairie Wolf Alpha##2960 |q 759 |goto Mulgore 56.04,28.81
 step
   talk Zarlman Two-Moons##3054
   accept Rite of Vision##772 |goto Mulgore 47.76,57.53

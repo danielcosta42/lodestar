@@ -41,13 +41,13 @@ step
   accept Dancing for Marzipan##8360 |goto Thunder Bluff 45.81,64.71
 step
   note Collect three Dim Necrotic Stones from the Scourge outside Thunder Bluff and investigate the glowing runic circles nearby their encampment.
-  get Investigate the Scourge of Thunder Bluff |q 9264 |goto Thunder Bluff 31.08,71.38
+  kill Skeletal Soldier##16422 |q 9264 |goto Elwynn Forest 34.39,52.45
 step
   note Kill 15 Venture Co. Loggers, then return to Seereth Stonebreak on the border of Stonetalon and the Barrens.
   kill Venture Co. Logger##3989 |q 1062 |goto Stonetalon Mountains 66.4,52.26
 step
   note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
-  get Alien Egg |q 4821 |goto Thousand Needles 44.64,50.29
+  collect Alien Egg##175565 |q 4821 |goto Thousand Needles 52.34,55.25
 step
   only Tauren
   talk Dendrite Starblaze##11802
@@ -126,7 +126,7 @@ step
   accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
 step
   note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
-  get Sacred Fire |q 5062 |goto Thousand Needles 21.54,32.35
+  collect Incendia Agave##175928 |q 5062 |goto Thousand Needles 36.04,35.43
 step
   only Tauren
   talk Turak Runetotem##3033
@@ -165,7 +165,7 @@ step
   accept Blood of Innocents##1066 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Bring 5 Vials of Innocent Blood to Apothecary Lydon in Tarren Mill.
-  get Blood of Innocents |q 1066 |goto Hillsbrad Foothills 61.44,19.06
+  kill Syndicate Shadow Mage##2244 |q 1066 |goto Hillsbrad Foothills 78.99,43.42
 step
   talk Apothecary Lydon##2216
   turnin Blood of Innocents##1066 |goto Hillsbrad Foothills 61.44,19.06

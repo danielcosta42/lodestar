@@ -9,7 +9,7 @@ step
   accept Legends of Maraudon##7044 |goto Desolace 32.1,63.96
 step
   note Recover the two parts of the Scepter of Celebras: the Celebrian Rod and the Celebrian Diamond.
-  get Legends of Maraudon |q 7044 |goto Desolace 32.1,63.96
+  kill Lord Vyletongue##12236 |q 7044 |goto Maraudon - Dungeon -1,-1
 step
   talk Celebras the Redeemed##13716
   turnin Legends of Maraudon##7044

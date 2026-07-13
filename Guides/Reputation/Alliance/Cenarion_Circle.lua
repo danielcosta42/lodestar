@@ -108,7 +108,7 @@ step
   get Moonglow Vest |q 1582 |goto Darnassus 64.4,22.22
 step
   note Recover the two parts of the Scepter of Celebras: the Celebrian Rod and the Celebrian Diamond.
-  get Legends of Maraudon |q 7044 |goto Desolace 32.1,63.96
+  kill Lord Vyletongue##12236 |q 7044 |goto Maraudon - Dungeon -1,-1
 step
   note Slay Princess Theradras and return to Keeper Marandis at Nijel's Point in Desolace.
   kill Princess Theradras##12201 |q 7065 |goto Maraudon - Dungeon -1,-1
@@ -117,22 +117,22 @@ step
   kill Diseased Wolf##1817 |q 4984 |goto Western Plaguelands 47.28,44.91
 step
   note Beetix Ficklespragg at Cenarion Hold in Silithus wants you to gather 8 Stonelash Scorpid Stingers and 8 Sand Skitterer Fangs. Return to her when you have completed the task.
-  get Deadly Desert Venom |q 8277 |goto Silithus 51.61,38.63
+  kill Stonelash Scorpid##11735 |q 8277 |goto Silithus 59.92,28.33
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to collect 8 Twilight Tablet Fragments.
-  get The Twilight Mystery |q 8284 |goto Silithus 49.67,37.46
+  kill Whirling Invader##14455 |q 8284 |goto Silithus 28.49,26.89
 step
   note Bring Deathclasp's Pincer to Vish Kozus, Captain of the Guard.
-  get Wanted - Deathclasp, Terror of the Sands |q 8283
+  kill Deathclasp##15196 |q 8283 |goto Silithus 45.07,92.31
 step
   note Travel to Silithus and search for a Reliquary of Purity within the ruins of Southwind Village. If you are able to find it, return with it to Rabine Saturna in Nighthaven, Moonglade.
-  get A Reliquary of Purity |q 5527 |goto Moonglade 51.69,45.1
+  collect Dusty Reliquary##179565 |q 5527 |goto Silithus 63.23,55.35
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   note Bring 10 Encrypted Twilight Texts to Bor Wildmane in Cenarion Hold.
-  get Secret Communication |q 8318 |goto Silithus 48.57,37.78
+  kill Twilight Keeper Havunth##11804 |q 8318 |goto Silithus 40.86,42.22
 step
   note Kill 10 Twilight Geolords, then return to Huum Wildmane in Cenarion Hold.
   kill Twilight Geolord##11881 |q 8320 |goto Silithus 26.97,43.89
@@ -141,7 +141,7 @@ step
   get Abyssal Contacts |q 8361 |goto Silithus 48.57,37.78
 step
   note Obtain the Twilight Battle Orders and bring them Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Tactical Task Briefing X in order to complete this quest.
-  get Twilight Battle Orders |q 8498
+  kill Twilight Prophet##15308 |q 8498 |goto Silithus 22.82,68.66
 step
   note Kill 30 Hive'Ashi Stingers and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing XII in order to complete this quest.
   kill Hive'Ashi Stinger##11698 |q 8501 |goto Silithus 48.5,41.14
@@ -158,9 +158,9 @@ step
   note Slay 30 Hive'Zora Hive Sisters and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing V in order to complete this quest.
   kill Hive'Zora Hive Sister##11729 |q 8539 |goto Silithus 25.33,64.22
 step
-  get Mortal Champions |q 8579 |goto Ahn'Qiraj - Raid -1,-1
+  kill The Prophet Skeram##15263 |q 8579 |goto Ahn'Qiraj - Raid -1,-1
 step
-  get Mortal Champions |q 8595 |goto Ahn'Qiraj - Raid -1,-1
+  kill The Prophet Skeram##15263 |q 8595 |goto Ahn'Qiraj - Raid -1,-1
 step
   note Slay 30 Hive'Zora Tunnelers and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing VII in order to complete this quest.
   kill Hive'Zora Tunneler##11726 |q 8687 |goto Silithus 23.17,64.15
@@ -196,19 +196,19 @@ step
   kill Hive'Regal Burrower##11731 |q 8777 |goto Silithus 60.65,80.95
 step
   note Bring 6 Oils of Immolation, 5 Goblin Rocket Fuel and 10 Dense Blasting Powder to Arcanist Nozzlespring near Hive'Zora in Silithus. You must also bring Logistics Task Briefing IV in order to complete this quest.
-  get The Ironforge Brigade Needs Explosives! |q 8778
+  kill Bloodpetal Flayer##6510 |q 8778 |goto Un'Goro Crater 56.08,49.67
 step
   note Bring 8 Rugged Armor Kits and 8 Heavy Armor Kits to Janela Stouthammer at the Ironforge Brigade Outpost near Hive'Zora in Silithus. You must also bring Logistics Task Briefing VII in order to complete this quest.
-  get Armor Kits for the Field |q 8780
+  kill Rabid Blisterpaw##5427 |q 8780 |goto Tanaris 37.69,63.72
 step
   note Bring 2 Moonsteel Broadswords to Janela Stouthammer at the Ironforge Brigade Outpost outside of Hive'Zora. You must also bring Logistics Task Briefing VI in order to complete this quest.
   get Arms for the Field |q 8781
 step
   note Bring a Skin of Shadow, 3 Frayed Abomination Stitchings and 1 Twilight Cultist Robe to Aurel Goldleaf at Cenarion Hold in Silithus. You must also bring Logistics Task Briefing XI in order to complete this quest.
-  get The Ultimate Deception |q 8829
+  kill Risen Construct##10488 |q 8829 |goto Scholomance - Dungeon -1,-1
 step
   note Dirk Thunderwood at Cenarion Hold wants you to bring him Venoxis's Venom Sac and Kurinnaxx's Venom Sac.
-  get The Perfect Poison |q 9023 |goto Silithus 52.13,39.14
+  kill High Priest Venoxis##14507 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Aurel Goldleaf at Cenarion Hold in Silithus wants you to bring her 1 Abyssal Scepter. You must also be Honored with the Cenarion Circle.
   get A Humble Offering |q 9248 |goto Silithus 51.96,38.16
@@ -462,13 +462,13 @@ step
   kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.68
 step
   note Beetix Ficklespragg at Cenarion Hold in Silithus wants you to gather 3 Stonelash Pincer Stingers, 3 Stonelash Flayer Stingers and 3 Rock Stalker Fangs.
-  get Noggle's Last Hope |q 8278 |goto Silithus 51.61,38.63
+  kill Stonelash Flayer##11737 |q 8278 |goto Silithus 38.04,77.94
 step
   note Find the Felvine in Dire Maul and acquire a shard from it. Chances are you'll only be able to procure one with the demise of Alzzin the Wildshaper. Use the Reliquary of Purity to securely seal the shard inside, and return it to Rabine Saturna in Nighthaven, Moonglade.
   get Shards of the Felvine |q 5526 |goto Moonglade 51.69,45.1
 step
   note Return the Head of the Broodlord Lashlayer to Baristolth of the Shifting Sands at Cenarion Hold in Silithus.
-  get Only One May Rise |q 8288 |goto Silithus 49.45,36.45
+  kill Broodlord Lashlayer##12017 |q 8288 |goto Blackwing Lair - Raid -1,-1
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to find his beloved Natalia. The information that you gathered points to Hive'Regal in the south as being the area in which you may find Mistress Natalia Mar'alith.
   kill Mistress Natalia Mar'alith##15215 |q 8306
@@ -477,12 +477,12 @@ step
   get Glyph Chasing |q 8309 |goto Silithus 41.28,88.45
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  get Breaking the Code |q 8310 |goto Silithus 40.81,88.86
+  kill Hive'Ashi Stinger##11698 |q 8310 |goto Silithus 48.5,41.14
 step
-  get Encrypted Twilight Texts |q 8319 |goto Silithus 48.57,37.78
+  kill Twilight Keeper Havunth##11804 |q 8319 |goto Silithus 40.86,42.22
 step
   note Bring Vyral's Signet Ring to Huum Wildmane in Cenarion Hold.
-  get Vyral the Vile |q 8321 |goto Silithus 48.62,37.87
+  kill Vyral the Vile##15202 |q 8321 |goto Silithus 72.39,15.58
 step
   note Bring 1 Large Brilliant Shard and 3 Abyssal Crests to Aurel Goldleaf in Cenarion Hold.
   get Dukes of the Council |q 8332 |goto Silithus 51.96,38.16
@@ -599,7 +599,7 @@ step
   get Trial of the Sea Lion |q 272 |goto Moonglade 36.52,40.1
 step
   note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
-  get Gathering the Cure |q 6123 |goto Darkshore 37.69,40.66
+  kill Riverpaw Herbalist##501 |q 6123 |goto Westfall 31.27,61.14
 step
   note Windcaller Proudhorn at Cenarion Hold in Silithus wants you to slay 20 Dredge Crushers.
   kill Dredge Crusher##11741 |q 8281 |goto Silithus 37.84,53.47
@@ -608,13 +608,13 @@ step
   get Kitchen Assistance |q 8317 |goto Silithus 51.89,39.16
 step
   note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
-  get Noggle's Lost Satchel |q 8282 |goto Silithus 51.63,38.5
+  collect Noggle's Satchel##180435 |q 8282 |goto Silithus 44.56,91.38
 step
   note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
-  get The Twilight Lexicon |q 8279 |goto Silithus 67.19,69.76
+  kill Twilight Keeper Mayna##15200 |q 8279 |goto Silithus 26.35,36.62
 step
   note Collect 200 Silithid Carapace Fragments and return to Baristolth.
-  get The Path of the Righteous |q 8301 |goto Silithus 49.45,36.45
+  kill Hive'Ashi Stinger##11698 |q 8301 |goto Silithus 48.5,41.14
 step
   only NightElf
   talk Dendrite Starblaze##11802

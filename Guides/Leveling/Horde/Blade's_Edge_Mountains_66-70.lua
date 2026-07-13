@@ -20,19 +20,19 @@ step
   accept Silkwing Cocoons##10617 |goto Blade's Edge Mountains 75.87,61.43
 step
   note Taerek at Mok'Nathal Village wants you to collect 8 Silkwing Cocoons from Silkwing Larva.
-  get Silkwing Cocoons |q 10617 |goto Blade's Edge Mountains 75.87,61.43
+  kill Silkwing Larva##20747 |q 10617 |goto Blade's Edge Mountains 74.47,70.43
 step
   talk Silmara##21896
   accept The Softest Wings##10618 |goto Blade's Edge Mountains 75.84,61.53
 step
   note Silmara at Mok'Nathal Village wants you to collect 12 Iridescent Wings.
-  get The Softest Wings |q 10618 |goto Blade's Edge Mountains 75.84,61.53
+  kill Mature Silkwing##21839 |q 10618 |goto Blade's Edge Mountains 73.41,68.97
 step
   talk Matron Varah##21088
   accept Mok'Nathal Treats##10860 |goto Blade's Edge Mountains 76.09,60.31
 step
   note Matron Varah has given you a list of ingredients for the making of her two favorite dishes, which includes the collection of 3 Raptor Ribs and 3 Serpent Flesh. Bring them to her at Mok'Nathal Village in the Blade's Edge Mountains.
-  get Mok'Nathal Treats |q 10860 |goto Blade's Edge Mountains 76.09,60.31
+  kill Bladespire Raptor##20728 |q 10860 |goto Blade's Edge Mountains 42.29,52.88
 step
   talk Gor'drek##21117
   accept The Encroaching Wilderness##10486 |goto Blade's Edge Mountains 52.37,57.94
@@ -59,13 +59,13 @@ step
   accept Maggoc's Treasure Chest##10996 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Maggoc's Treasure Chest |q 10996 |goto Blade's Edge Mountains 55.49,44.86
+  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
   talk Mog'dorg the Wizened##22941
   accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Even Gronn Have Standards |q 10997 |goto Blade's Edge Mountains 55.49,44.86
+  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
   talk Timeon##21782
   accept Creating the Pendant##10567 |goto Blade's Edge Mountains 62.16,39.11
@@ -146,7 +146,7 @@ step
   accept They Stole Me Hookah and Me Brews!##10542 |goto Blade's Edge Mountains 44.97,72.31
 step
   note Retrieve T'chali's Hookah and 10 Bloodmaul Brutebane Brews. Bring them back to T'chali the Witch Doctor at Bloodmaul Ravine in the Blade's Edge Mountains.
-  get They Stole Me Hookah and Me Brews! |q 10542 |goto Blade's Edge Mountains 44.97,72.31
+  collect T'chali's Hookah##184744 |q 10542 |goto Blade's Edge Mountains 42.1,81.24
 step
   note Gor'drek has asked you to slay 12 Bladewing Bloodletters. Return to him at Thunderlord Stronghold in the Blade's Edge Mountains once you have accomplished that.
   kill Bladewing Bloodletter##21033 |q 10486 |goto Blade's Edge Mountains 50.5,67.45
@@ -185,7 +185,7 @@ step
   accept Harvesting the Fel Ammunition##10904 |goto Blade's Edge Mountains 63.52,65.29
 step
   note The Evergrove Druid has asked you to collect 5 Fel Cannonballs. Once you have done so, use the Druid Signal to call to the Evergrove Druid inside of Death's Door at the Blade's Edge Mountains.
-  get Harvesting the Fel Ammunition |q 10904 |goto Blade's Edge Mountains 63.52,65.29
+  kill Deathforge Over-Smith##19978 |q 10904 |goto Blade's Edge Mountains 64.01,71.7
 step
   note To begin your understanding of the Mok'Nathal, slay Vekh, leader of the Vekh'nir arakkoa. Then, return to Leoroxx at Mok'Nathal Village in the Blade's Edge Mountains.
   kill Vekh##22305 |q 10846 |goto Blade's Edge Mountains 70.08,72.18
@@ -206,7 +206,7 @@ step
   accept Dust from the Drakes##10487 |goto Blade's Edge Mountains 52.37,57.94
 step
   note Gor'drek wants you to gather 4 Dusts of the Fey Drake. After doing so, return to him at Thunderlord Stronghold in the Blade's Edge Mountains.
-  get Dust from the Drakes |q 10487 |goto Blade's Edge Mountains 52.37,57.94
+  kill Fey Drake##20713 |q 10487 |goto Blade's Edge Mountains 38.52,71.3
 step
   talk Tor'chunk Twoclaws##21147
   accept The Bloodmaul Ogres##10505 |goto Blade's Edge Mountains 51.94,58.41
@@ -233,7 +233,7 @@ step
   accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Grulloc Has Two Skulls |q 10995 |goto Blade's Edge Mountains 55.49,44.86
+  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
   talk Faradrella##22133
   turnin Culling the Wild##10753 |goto Blade's Edge Mountains 62.56,38.26
@@ -263,7 +263,7 @@ step
   accept Poaching from Poachers##10717 |goto Blade's Edge Mountains 61.94,39.45
 step
   note Samia Inkling has asked you to acquire 5 Wyrmcult Nets and return them to her at Evergrove in the Blade's Edge Mountains.
-  get Poaching from Poachers |q 10717 |goto Blade's Edge Mountains 61.94,39.45
+  kill Wyrmcult Poacher##21809 |q 10717 |goto Blade's Edge Mountains 61.57,36.36
 step
   talk Wildlord Antelarion##22127
   accept Felsworn Gas Mask##10819 |goto Blade's Edge Mountains 62.31,40.05
@@ -317,7 +317,7 @@ step
   accept The Totems of My Enemy##10851 |goto Blade's Edge Mountains 74.91,60.47
 step
   note Collect 5 Bladespire Totems for Spiritcaller Dohgar at Mok'Nathal Village in the Blade's Edge Mountains.
-  get The Totems of My Enemy |q 10851 |goto Blade's Edge Mountains 74.91,60.47
+  kill Bladespire Crusher##20765 |q 10851 |goto Blade's Edge Mountains 57.56,57.22
 step
   talk Evergrove Druid##22423
   turnin Harvesting the Fel Ammunition##10904 |goto Blade's Edge Mountains 63.52,65.29
@@ -415,7 +415,7 @@ step
   accept Spirit Calling##10853 |goto Blade's Edge Mountains 74.91,60.47
 step
   note Spiritcaller Dohgar has asked you to use the Spirit Calling Totems to collect 8 Lesser Nether Drake Spirits and return them to him at Mok'Nathal Village in the Blade's Edge Mountains.
-  get Spirit Calling |q 10853 |goto Blade's Edge Mountains 74.91,60.47
+  kill Lesser Nether Drake##21004 |q 10853 |goto Blade's Edge Mountains 62.03,76.26
 step
   talk Evergrove Druid##22423
   turnin Fire At Will!##10911 |goto Blade's Edge Mountains 63.52,65.29
@@ -508,7 +508,7 @@ step
   accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
+  kill Hemathion##18692 |q 11025 |goto Blade's Edge Mountains 31.1,71.08
 step
   talk Kronk##23253
   accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
@@ -547,7 +547,7 @@ step
   accept Into the Churning Gulch##10715 |goto Blade's Edge Mountains 53.25,41.18
 step
   note Baron Sablemane has told you that in order to make the poison that Rexxar needs, you must acquire 7 Crust Burster Venom Glands. Return to him at the Circle of Blood in the Blade's Edge Mountains once you have done so.
-  get Into the Churning Gulch |q 10715 |goto Blade's Edge Mountains 53.25,41.18
+  kill Greater Crust Burster##21380 |q 10715 |goto Blade's Edge Mountains 48.95,44.76
 step
   talk Chu'a'lor##23233
   turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
@@ -576,7 +576,7 @@ step
   accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
+  kill Rivendark##23061 |q 11078 |goto Blade's Edge Mountains 30.43,58.58
 step
   talk Leoroxx##22004
   turnin Inform Leoroxx!##10865 |goto Blade's Edge Mountains 75.29,60.86

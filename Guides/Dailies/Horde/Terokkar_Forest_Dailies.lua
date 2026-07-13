@@ -28,7 +28,7 @@ step
   accept Felblood Fillet##11669 |goto Terokkar Forest 38.72,12.8
 step
   note Severin wants you to venture into Skettis and retrieve 6 Shadow Dusts from the arakkoa that dwell there.
-  get World of Shadows |q 11004 |goto Terokkar Forest 64.05,66.88
+  kill Skettis Wing Guard##21644 |q 11004 |goto Terokkar Forest 69.85,79.32
 step
   note Bring a Baby Crocolisk to Old Man Barlo. You can find him fishing northeast of Shattrath City by Silmyr Lake.
   get Crocolisks in the City |q 11665 |goto Terokkar Forest 38.72,12.8
@@ -78,7 +78,7 @@ step
   talk Yuula##23449
   accept To Skettis!##11098 |goto Shattrath City 64.33,42.33
 step
-  get More Shadow Dust |q 11006 |goto Terokkar Forest 64.05,66.88
+  kill Skettis Wing Guard##21644 |q 11006 |goto Terokkar Forest 69.85,79.32
 step
   talk Severin##23042
   turnin More Shadow Dust##11006 |goto Terokkar Forest 64.05,66.88
@@ -114,7 +114,7 @@ step
   accept Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
 step
   note Obtain Hazzik's Package at his dwelling in eastern Skettis and return to him with it.
-  get Hazzik's Bargain |q 11056 |goto Terokkar Forest 64.23,66.97
+  collect Hazzik's Package##185954 |q 11056 |goto Terokkar Forest 74.85,80.08
 step
   talk Hazzik##23306
   turnin Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97

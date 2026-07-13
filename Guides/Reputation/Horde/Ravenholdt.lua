@@ -20,10 +20,10 @@ step
 step
   only Rogue
   note Retrieve the Sealed Azure Bag from the Timbermaw Shaman in Azshara. Then take the bag to Archmage Xylem, also found in Azshara.
-  get Sealed Azure Bag |q 8234 |goto Alterac Mountains 86.02,78.88
+  kill Timbermaw Shaman##6188 |q 8234 |goto Azshara 44.21,22.54
 step
   only Rogue
-  get Junkboxes Needed |q 8249 |goto Alterac Mountains 84.45,80.32
+  kill Irondeep Trogg##10987 |q 8249 |goto Alterac Valley - Battleground 51.14,6.98
 step
   only Rogue
   talk Fahrad##6707
@@ -47,7 +47,7 @@ step
 step
   only Rogue
   note Bring 10 Encoded Fragments to Archmage Xylem in Azshara.
-  get Encoded Fragments |q 8235 |goto Azshara 29.25,40.21
+  kill Thunderhead Stagwing##6377 |q 8235 |goto Azshara 36.82,42.87
 step
   only Rogue
   get Syndicate Emblems |q 6701 |goto Alterac Mountains 84.53,78.71
@@ -66,7 +66,7 @@ step
 step
   only Rogue
   note Return the Azure Key to Lord Jorach Ravenholdt.
-  get The Azure Key |q 8236 |goto Azshara 29.25,40.21
+  kill Morphaz##5719 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   only Rogue
   talk Lord Jorach Ravenholdt##6768

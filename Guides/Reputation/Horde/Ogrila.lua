@@ -16,10 +16,10 @@ step
   accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Maggoc's Treasure Chest |q 10996 |goto Blade's Edge Mountains 55.49,44.86
+  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Even Gronn Have Standards |q 10997 |goto Blade's Edge Mountains 55.49,44.86
+  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
   talk Mog'dorg the Wizened##22941
   turnin Mog'dorg the Wizened##10983 |goto Blade's Edge Mountains 55.49,44.86
@@ -34,7 +34,7 @@ step
   accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Grulloc Has Two Skulls |q 10995 |goto Blade's Edge Mountains 55.49,44.86
+  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
   talk Mog'dorg the Wizened##22941
   turnin Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
@@ -82,7 +82,7 @@ step
   accept A Special Thank You##11091 |goto Blade's Edge Mountains 28.76,57.36
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
+  kill Hemathion##18692 |q 11025 |goto Blade's Edge Mountains 31.1,71.08
 step
   note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
   get Banish the Demons |q 11026 |goto Blade's Edge Mountains 28.9,57.92

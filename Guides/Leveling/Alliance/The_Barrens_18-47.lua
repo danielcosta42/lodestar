@@ -25,13 +25,13 @@ step
   accept Raptor Horns##865 |goto The Barrens 62.37,37.62
 step
   note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
-  get Raptor Horns |q 865 |goto The Barrens 62.37,37.62
+  kill Sunscale Scytheclaw##3256 |q 865 |goto The Barrens 52.69,45.68
 step
   talk Mebok Mizzyrix##3446
   accept Root Samples##866 |goto The Barrens 62.37,37.62
 step
   note Bring 8 Root Samples to Mebok Mizzyrix in Ratchet.
-  get Root Samples |q 866 |goto The Barrens 62.37,37.62
+  collect Peacebloom##3724 |q 866 |goto The Barrens 49.37,33.07
 step
   talk Gazlowe##3391
   accept Southsea Freebooters##887 |goto The Barrens 62.68,36.23
@@ -43,13 +43,13 @@ step
   accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
 step
   note Retrieve the Cats Eye Emerald from one of the Venture Co. Overseers or Enforcers for Wharfmaster Dizzywig at Ratchet.
-  get Miner's Fortune |q 896 |goto The Barrens 63.35,38.45
+  kill Venture Co. Enforcer##3283 |q 896 |goto The Barrens 60.81,3.81
 step
   talk Crane Operator Bigglefuzz##3665
   accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
 step
   note Crane Operator Bigglefuzz in Ratchet wants you to retrieve the bottle of 99-Year-Old Port from Mad Magglish who is hiding in the Wailing Caverns.
-  get Trouble at the Docks |q 959 |goto The Barrens 63.09,37.61
+  kill Mad Magglish##3655 |q 959 |goto The Barrens 45.69,33.62
 step
   talk Wharfmaster Dizzywig##3453
   accept Passage to Booty Bay##1040 |goto The Barrens 63.35,38.45
@@ -58,7 +58,7 @@ step
   accept Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
 step
   note Bring 15 Deepmoss Eggs to Mebok Mizzyrix in Ratchet.
-  get Deepmoss Spider Eggs |q 1069 |goto The Barrens 62.37,37.62
+  collect Deepmoss Eggs##19541 |q 1069 |goto Stonetalon Mountains 61.35,53.71
 step
   talk Sputtervalve##3442
   accept Further Instructions##1095 |goto The Barrens 62.98,37.22
@@ -73,7 +73,7 @@ step
   accept Blueleaf Tubers##1221 |goto The Barrens 62.37,37.62
 step
   note Grab a Crate with Holes.
-  get Blueleaf Tubers |q 1221 |goto The Barrens 62.37,37.62
+  collect Blueleaf Tuber##20920 |q 1221 |goto Razorfen Kraul - Dungeon -1,-1
 step
   talk Sputtervalve##3442
   accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
@@ -92,7 +92,7 @@ step
 step
   only Druid
   note Speak to Menara's acolytes inside the tower above Ratchet and choose one of their paths to follow.
-  get Fragments of the Orb of Orahil |q 1799 |goto The Barrens 62.51,35.45
+  kill Burning Blade Summoner##4668 |q 1799 |goto Desolace 79.47,77.84
 step
   talk Tinkerwiz##3494
   accept Goblin Engineering##3633 |goto The Barrens 62.67,36.31
@@ -104,7 +104,7 @@ step
   accept Volcanic Activity##4502 |goto The Barrens 62.45,38.73
 step
   note Collect 9 samples of Un'Goro Ash from the fire elementals around the volcano in Un'Goro Crater, and return them to Liv Rizzlefix in Ratchet.
-  get Volcanic Activity |q 4502 |goto The Barrens 62.45,38.73
+  kill Scorching Elemental##6520 |q 4502 |goto Un'Goro Crater 52.73,48.83
 step
   only Druid
   talk Menara Voidrender##6266
@@ -112,7 +112,7 @@ step
 step
   only Druid
   note Bring 10 Vials of Hatefury Blood and 1 Lesser Infernal Stone to Menara Voidrender in the Barrens.
-  get Components for the Enchanted Gold Bloodrobe |q 4783 |goto The Barrens 62.51,35.45
+  kill Hatefury Rogue##4670 |q 4783 |goto Desolace 74.45,18.85
 step
   only Druid
   talk Acolyte Wytula##6254
@@ -144,7 +144,7 @@ step
 step
   only Druid
   note Bring a piece of felcloth to Impsy in Felwood.
-  get An Imp's Request |q 8419 |goto The Barrens 62.44,35.45
+  kill Felguard Sentry##6011 |q 8419 |goto Blasted Lands 59.78,54.09
 step
   talk Nixx Sprocketspring##8126
   turnin Goblin Engineering##3633 |goto Tanaris 52.48,27.33 |tip {turninat}Tanaris
@@ -181,7 +181,7 @@ step
 step
   only Druid
   note Find 3 Soran'ruk Fragments and 1 Large Soran'ruk Fragment and return them to Doan Karhan in the Barrens.
-  get The Orb of Soran'ruk |q 1740 |goto The Barrens 49.31,57.21
+  kill Twilight Acolyte##4809 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1
 step
   talk Greta Mosshoof##10922
   turnin Cleansed Water Returns to Felwood##5159 |goto Felwood 51.21,82.11 |tip {turninat}Felwood
@@ -201,7 +201,7 @@ step
   accept Ignition##858 |goto The Barrens 56.52,7.45
 step
   note Get the Ignition Key and bring it to Wizzlecrank.
-  get Ignition |q 858 |goto The Barrens 56.52,7.45
+  kill Supervisor Lugwizzle##3445 |q 858 |goto The Barrens 56.27,8.58
 step
   note Ebru in the Wailing Caverns wants you to kill 7 Deviate Ravagers, 7 Deviate Vipers, 7 Deviate Shamblers and 7 Deviate Dreadfangs.
   kill Deviate Ravager##3636 |q 1487 |goto Wailing Caverns - Dungeon -1,-1
@@ -278,7 +278,7 @@ step
   accept Smart Drinks##1491 |goto The Barrens 62.37,37.62
 step
   note Bring 6 portions of Wailing Essence to Mebok Mizzyrix in Ratchet.
-  get Smart Drinks |q 1491 |goto The Barrens 62.37,37.62
+  kill Devouring Ectoplasm##3638 |q 1491 |goto The Barrens 47.91,33.38
 step
   only Druid
   talk Menara Voidrender##6266
@@ -286,7 +286,7 @@ step
 step
   only Druid
   note Bring a Gold Bar to Xizk Goodstitch in Stranglethorn Vale.
-  get Components for the Enchanted Gold Bloodrobe |q 4781 |goto The Barrens 62.51,35.45
+  collect Tattered Chest##2846 |q 4781 |goto Bloodmyst Isle 52.92,75.29
 step
   only Druid
   talk Menara Voidrender##6266
@@ -345,7 +345,7 @@ step
   accept Stolen Booty##888 |goto The Barrens 62.68,36.23
 step
   note Retrieve the Shipment of Boots and Telescopic Lens for Gazlowe in Ratchet.
-  get Stolen Booty |q 888 |goto The Barrens 62.68,36.23
+  collect Drizzlik's Emporium##3767 |q 888 |goto The Barrens 62.63,49.63
 step
   talk Gazlowe##3391
   turnin Stolen Booty##888 |goto The Barrens 62.68,36.23

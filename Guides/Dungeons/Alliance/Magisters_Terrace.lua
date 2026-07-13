@@ -34,7 +34,7 @@ step
   accept Hard to Kill##11492 |goto Magisters' Terrace - Dungeon -1,-1
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  get Hard to Kill |q 11492 |goto Magisters' Terrace - Dungeon -1,-1
+  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1
 step
   talk Exarch Larethor##24813
   turnin Hard to Kill##11492 |goto Isle of Quel'Danas 47.42,30.74

@@ -14,7 +14,7 @@ step
   accept Sarkoth##790 |goto Durotar 40.6,62.58
 step
   note Kill Sarkoth and bring his claw back to Hana'zua.
-  get Sarkoth |q 790 |goto Durotar 40.6,62.58
+  kill Sarkoth##3281 |q 790 |goto Durotar 40.5,66.83
 step
   talk Zureetha Fargaze##3145
   accept Vile Familiars##792 |goto Durotar 42.85,69.15
@@ -25,7 +25,7 @@ step
 step
   only Druid
   note Bring 6 Vile Familiar Heads to Ruzan.
-  get Vile Familiars |q 1485 |goto Durotar 42.59,69.0
+  kill Vile Familiar##3101 |q 1485 |goto Durotar 44.24,55.54
 step
   only Mage
   talk Canaga Earthcaller##5887
@@ -33,7 +33,7 @@ step
 step
   only Mage
   note Bring 2 Felstalker Hooves to Canaga Earthcaller in the Valley of Trials.
-  get Call of Earth |q 1516 |goto Durotar 42.4,69.17
+  kill Felstalker##3102 |q 1516 |goto Durotar 44.29,54.18
 step
   talk Kaltunk##10176
   accept Your Place In The World##4641 |goto Durotar 43.29,68.53
@@ -61,19 +61,19 @@ step
   accept Minshina's Skull##808 |goto Durotar 55.95,74.72
 step
   note Retrieve Minshina's skull from the circle of power on the Echo Isles.
-  get Minshina's Skull |q 808 |goto Durotar 55.95,74.72
+  collect Imprisoned Darkspear##3237 |q 808 |goto Durotar 67.45,87.82
 step
   talk Vel'rin Fang##3194
   accept Practical Prey##817 |goto Durotar 55.96,73.93
 step
   note Bring 4 Durotar Tiger Furs to Vel'rin Fang in Sen'jin Village.
-  get Practical Prey |q 817 |goto Durotar 55.96,73.93
+  kill Durotar Tiger##3121 |q 817 |goto Durotar 64.63,84.83
 step
   talk Master Vornal##3304
   accept A Solvent Spirit##818 |goto Durotar 55.94,74.39
 step
   note Bring 4 Intact Makrura Eyes and 8 vials of Crawler Mucus to Master Vornal in Sen'jin Village.
-  get A Solvent Spirit |q 818 |goto Durotar 55.94,74.39
+  kill Makrura Clacker##3103 |q 818 |goto Durotar 62.83,72.51
 step
   talk Master Gadrin##3188
   accept Report to Orgnil##823 |goto Durotar 55.95,74.72
@@ -112,19 +112,19 @@ step
   accept Carry Your Weight##791 |goto Durotar 49.88,40.39
 step
   note Furl Scornbrow in the Razor Hill watchtower wants 8 Canvas Scraps.
-  get Carry Your Weight |q 791 |goto Durotar 49.88,40.39
+  kill Kolkar Drudge##3119 |q 791 |goto Durotar 49.89,79.65
 step
   talk Orgnil Soulscar##3142
   accept Dark Storms##806 |goto Durotar 52.24,43.15
 step
   note Bring Fizzle's Claw to Orgnil Soulscar in Razor Hill.
-  get Dark Storms |q 806 |goto Durotar 52.24,43.15
+  kill Fizzle Darkstorm##3203 |q 806 |goto Durotar 42.12,26.66
 step
   talk Cook Torka##3191
   accept Break a Few Eggs##815 |goto Durotar 51.11,42.45
 step
   note Bring 3 Taillasher Eggs to Cook Torka in Razor Hill.
-  get Break a Few Eggs |q 815 |goto Durotar 51.11,42.45
+  collect Taillasher Eggs##3240 |q 815 |goto Durotar 64.93,78.8
 step
   talk Gar'Thok##3139
   accept The Admiral's Orders##831 |goto Durotar 51.95,43.5
@@ -168,13 +168,13 @@ step
   accept Lost But Not Forgotten##816 |goto Durotar 43.1,30.24
 step
   note Bring a sign of Kron's fate to Misha Tor'kren at the farmstead northwest of Razor Hill.
-  get Lost But Not Forgotten |q 816 |goto Durotar 43.1,30.24
+  kill Dreadmaw Crocolisk##3110 |q 816 |goto Durotar 35.29,46.04
 step
   talk Rezlak##3293
   accept Winds in the Desert##834 |goto Durotar 46.37,22.94
 step
   note Retrieve 5 Sacks of Supplies and return them to Rezlak near Orgrimmar.
-  get Winds in the Desert |q 834 |goto Durotar 46.37,22.94
+  collect Stolen Supply Sack##3290 |q 834 |goto Durotar 49.63,29.67
 step
   talk Rhinag##3190
   accept Need for a Cure##812 |goto Durotar 41.54,18.6
@@ -219,13 +219,13 @@ step
   accept Sting of the Scorpid##789 |goto Durotar 42.06,68.33
 step
   note Get 10 Scorpid Worker Tails for Gornek in the Den.
-  get Sting of the Scorpid |q 789 |goto Durotar 42.06,68.33
+  kill Scorpid Worker##3124 |q 789 |goto Durotar 41.49,62.94
 step
   talk Zureetha Fargaze##3145
   accept Burning Blade Medallion##794 |goto Durotar 42.85,69.15
 step
   note Bring the Burning Blade Medallion to Zureetha Fargaze, outside The Den.
-  get Burning Blade Medallion |q 794 |goto Durotar 42.85,69.15
+  kill Yarrog Baneshadow##3183 |q 794 |goto Durotar 42.71,52.95
 step
   talk Hana'zua##3287
   accept Sarkoth##804 |goto Durotar 40.6,62.58
@@ -286,13 +286,13 @@ step
   accept Galgar's Cactus Apple Surprise##4402 |goto Durotar 42.73,67.23
 step
   note Bring Galgar 10 Cactus Apples. You remember him saying that they could be found near cactuses.
-  get Galgar's Cactus Apple Surprise |q 4402 |goto Durotar 42.73,67.23
+  collect Cactus Apple##171938 |q 4402 |goto Durotar 44.04,63.02
 step
   talk Foreman Thazz'ril##11378
   accept Thazz'ril's Pick##6394 |goto Durotar 44.63,68.65
 step
   note Bring Thazz'ril's Pick to Foreman Thazz'ril.
-  get Thazz'ril's Pick |q 6394 |goto Durotar 44.63,68.65
+  collect Thazz'ril's Pick##178087 |q 6394 |goto Durotar 43.73,53.79
 step
   only Troll Priest
   talk Ur'kyo##6018
@@ -354,7 +354,7 @@ step
   accept From The Wreckage....##825 |goto Durotar 51.95,43.5
 step
   note Gar'Thok of Razor Hill wants you to retrieve 3 Gnomish Tools from the wreckage off the coast.
-  get From The Wreckage.... |q 825 |goto Durotar 51.95,43.5
+  collect Gnomish Toolbox##3236 |q 825 |goto Durotar 62.43,53.46
 step
   talk Orgnil Soulscar##3142
   accept Margoz##828 |goto Durotar 52.24,43.15
@@ -378,7 +378,7 @@ step
   accept Skull Rock##827 |goto Durotar 56.41,20.04
 step
   note Gather Searing Collars from the cultists in Skull Rock.
-  get Skull Rock |q 827 |goto Durotar 56.41,20.04
+  kill Burning Blade Thug##3195 |q 827 |goto Durotar 53.04,29.14
 step
   note Kill 12 Dustwind Savages and 8 Dustwind Storm Witches for Rezlak near Drygulch Ravine.
   kill Dustwind Savage##3117 |q 835 |goto Durotar 53.69,23.92

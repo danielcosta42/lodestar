@@ -23,7 +23,7 @@ step
   accept Elixir of Suffering##496 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Apothecary Lydon of Tarren Mill wants 10 Gray Bear Tongues and some Creeper Ichor.
-  get Elixir of Suffering |q 496 |goto Hillsbrad Foothills 61.44,19.06
+  kill Gray Bear##2351 |q 496 |goto Hillsbrad Foothills 58.08,32.75
 step
   talk Krusk##2229
   accept The Rescue##498 |goto Hillsbrad Foothills 63.24,20.66
@@ -32,7 +32,7 @@ step
   accept Elixir of Pain##501 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Bring 10 vials of Mountain Lion Blood to Apothecary Lydon in Tarren Mill.
-  get Elixir of Pain |q 501 |goto Hillsbrad Foothills 61.44,19.06
+  kill Starving Mountain Lion##2384 |q 501 |goto Hillsbrad Foothills 52.65,39.28
 step
   talk Krusk##2229
   accept Lord Aliden Perenolde##507 |goto Hillsbrad Foothills 63.24,20.66
@@ -41,13 +41,13 @@ step
   accept Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Bring 6 Mudsnout Blossoms to Apothecary Lydon in Tarren Mill.
-  get Elixir of Agony |q 509 |goto Hillsbrad Foothills 61.44,19.06
+  collect Mudsnout Blossom##1723 |q 509 |goto Hillsbrad Foothills 64.56,61.26
 step
   talk Apothecary Lydon##2216
   accept Elixir of Agony##517 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Bring a keg of Shindigger Stout to Apothecary Lydon in Tarren Mill.
-  get Elixir of Agony |q 517 |goto Hillsbrad Foothills 61.44,19.06
+  collect Keg of Shindigger Stout##1727 |q 517 |goto Hillsbrad Foothills 72.02,80.88
 step
   talk Melisara##2278
   accept The Crown of Will##518 |goto Hillsbrad Foothills 62.63,20.65
@@ -59,31 +59,31 @@ step
   accept Prison Break In##544 |goto Hillsbrad Foothills 61.6,20.85
 step
   note Find the traitors and recover their artifacts, then return to Magus Voidglare in Tarren Mill.
-  get Prison Break In |q 544 |goto Hillsbrad Foothills 61.6,20.85
+  kill Dermot##2413 |q 544 |goto Alterac Mountains 19.91,85.97
 step
   talk Deathguard Samsa##2418
   accept Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
 step
   note Deathguard Samsa of Tarren Mill wants 30 Hillsbrad Human Skulls.
-  get Souvenirs of Death |q 546 |goto Hillsbrad Foothills 62.11,19.7
+  kill Farmer Ray##232 |q 546 |goto Hillsbrad Foothills 33.22,34.76
 step
   talk Deathguard Humbert##2419
   accept Humbert's Sword##547 |goto Hillsbrad Foothills 62.76,20.21
 step
   note Retrieve Deathguard Humbert's sword from Dun Garok and return it to him in Tarren Mill.
-  get Humbert's Sword |q 547 |goto Hillsbrad Foothills 62.76,20.21
+  kill Dun Garok Mountaineer##2344 |q 547 |goto Hillsbrad Foothills 71.58,79.62
 step
   talk Novice Thaivand##2429
   accept Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
 step
   note Retrieve Helcular's Rod from the Yeti and bring it back to Novice Thaivand in Tarren Mill.
-  get Helcular's Revenge |q 552 |goto Hillsbrad Foothills 63.88,19.66
+  kill Cave Yeti##2248 |q 552 |goto Hillsbrad Foothills 44.92,31.77
 step
   talk Keeper Bel'varil##2437
   accept Stone Tokens##556 |goto Hillsbrad Foothills 61.5,20.93
 step
   note Bring 10 Worn Stone Tokens to Keeper Bel'varil in Tarren Mill.
-  get Stone Tokens |q 556 |goto Hillsbrad Foothills 61.5,20.93
+  kill Dalaran Shield Guard##2271 |q 556 |goto Alterac Mountains 19.0,84.06
 step
   talk Tallow##2770
   accept The Hammer May Fall##676 |goto Hillsbrad Foothills 61.87,19.57
@@ -92,7 +92,7 @@ step
   accept Blood of Innocents##1066 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Bring 5 Vials of Innocent Blood to Apothecary Lydon in Tarren Mill.
-  get Blood of Innocents |q 1066 |goto Hillsbrad Foothills 61.44,19.06
+  kill Syndicate Shadow Mage##2244 |q 1066 |goto Hillsbrad Foothills 78.99,43.42
 step
   talk Krusk##2229
   accept Regthar Deathgate##1361 |goto Hillsbrad Foothills 63.24,20.66
@@ -101,13 +101,13 @@ step
   accept Undamaged Venom Sac##2934 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Bring an Undamaged Venom Sac to Apothecary Lydon in Tarren Mill.
-  get Undamaged Venom Sac |q 2934 |goto Hillsbrad Foothills 61.44,19.06
+  kill Witherbark Broodguard##2686 |q 2934 |goto The Hinterlands 34.36,70.66
 step
   talk Christoph Jeffcoat##2393
   accept Soothing Turtle Bisque##7321 |goto Hillsbrad Foothills 62.29,19.04
 step
   note Bring 10 pieces of Turtle Meat and some Soothing Spices to Christoph Jeffcoat in Tarren Mill.
-  get Soothing Turtle Bisque |q 7321 |goto Hillsbrad Foothills 62.29,19.04
+  kill Snapjaw##2408 |q 7321 |goto Alterac Mountains 30.81,45.85
 step
   note Krusk in Tarren Mill needs you to free Drull and Tog'thar from Durnholde Keep.
   collect Locked ball and chain##1721 |q 498 |goto Hillsbrad Foothills 75.33,41.5
@@ -191,7 +191,7 @@ step
   accept The Crown of Will##519 |goto Hillsbrad Foothills 62.63,20.65
 step
   note Kill Targ, Muckrake, and Glommus and bring their heads to Melisara in Tarren Mill.
-  get The Crown of Will |q 519 |goto Hillsbrad Foothills 62.63,20.65
+  kill Targ##2420 |q 519 |goto Alterac Mountains 39.57,52.83
 step
   talk Apothecary Lydon##2216
   accept Elixir of Agony##524 |goto Hillsbrad Foothills 61.44,19.06
@@ -203,7 +203,7 @@ step
   accept Infiltration##533 |goto Hillsbrad Foothills 63.24,20.66
 step
   note Retrieve information about Gol'dir's whereabouts for Krusk in Tarren Mill.
-  get Infiltration |q 533 |goto Hillsbrad Foothills 63.24,20.66
+  kill Syndicate Footpad##2240 |q 533 |goto Alterac Mountains 57.71,68.04
 step
   talk Magus Wordeen Voidglare##2410
   accept Dalaran Patrols##545 |goto Hillsbrad Foothills 61.6,20.85
@@ -215,7 +215,7 @@ step
   accept Bracers of Binding##557 |goto Hillsbrad Foothills 61.5,20.93
 step
   note Bring 4 Bracers of Earth Binding to Keeper Bel'varil in Tarren Mill.
-  get Bracers of Binding |q 557 |goto Hillsbrad Foothills 61.5,20.93
+  kill Elemental Slave##2359 |q 557 |goto Alterac Mountains 19.91,64.34
 step
   talk Apothecary Lydon##2216
   accept Return to Thunder Bluff##1067 |goto Hillsbrad Foothills 61.44,19.06
@@ -273,7 +273,7 @@ step
   accept The Crown of Will##520 |goto Hillsbrad Foothills 62.63,20.65
 step
   note Kill Mug'Thol, and return his head with the Crown of Will to Melisara in Tarren Mill.
-  get The Crown of Will |q 520 |goto Hillsbrad Foothills 62.63,20.65
+  kill Mug'thol##2257 |q 520 |goto Alterac Mountains 35.68,54.25
 step
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##529 |goto Hillsbrad Foothills 62.33,20.45

@@ -91,34 +91,34 @@ step
   accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
 step
   note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
-  get Dwarven Outfitters |q 179 |goto Dun Morogh 29.93,71.2
+  kill Timber Wolf##69 |q 179 |goto Elwynn Forest 49.48,39.15
 step
   only Paladin
   note Bring Jordan's Ore Shipment to Bailor Stonehand in Loch Modan.
-  get Bailor's Ore Shipment |q 1655 |goto Loch Modan 35.95,44.91
+  kill Mo'grosh Ogre##1178 |q 1655 |goto Loch Modan 69.33,25.54
 step
   only Paladin
   note Bring Jin'rokh the Breaker Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  get Paragons of Power: The Freethinker's Armguards |q 8053 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8053 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  get Paragons of Power: The Freethinker's Belt |q 8054 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8054 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  get Paragons of Power: The Freethinker's Breastplate |q 8055 |goto Stranglethorn Vale 15.31,14.43
+  kill Jin'do the Hexxer##11380 |q 8055 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Paladin
   note Bring the the Carapace of the Old God, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  get Avenger's Breastplate |q 8627 |goto Ahn'Qiraj - Raid -1,-1
+  kill C'Thun##15727 |q 8627 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Paladin
   note Bring Vek'lor's Diadem, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  get Avenger's Crown |q 8628 |goto Ahn'Qiraj - Raid -1,-1
+  kill Emperor Vek'lor##15276 |q 8628 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Paladin
   note Bring the Skin of the Great Sandworm, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -126,30 +126,30 @@ step
 step
   only Paladin
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Life, 5 Crystal Scarabs and 5 Gold Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  get Avenger's Pauldrons |q 8630 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8630 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Paladin
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Clay Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  get Avenger's Greaves |q 8655 |goto Ahn'Qiraj - Raid -1,-1
+  kill Viscidus##15299 |q 8655 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Paladin
   note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  get Cape of Eternal Justice |q 8695 |goto Silithus 51.76,39.54
+  kill General Rajaxx##15341 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1
 step
   only Paladin
   note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  get Ring of Eternal Justice |q 8703 |goto Silithus 52.05,38.16
+  kill Ossirian the Unscarred##15339 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1
 step
   only Paladin
   note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  get Blade of Eternal Justice |q 8711 |goto Silithus 51.14,38.94
+  kill Ossirian the Unscarred##15339 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1
 step
   only Paladin
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
-  get An Earnest Proposition |q 8908 |goto Ironforge 43.53,52.64
+  kill Frostsaber Cub##7430 |q 8908 |goto Winterspring 50.32,11.34
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  get The Dread Citadel - Naxxramas |q 9121 |goto Eastern Plaguelands 81.52,58.27
+  collect Small Thorium Vein##324 |q 9121 |goto Burning Steppes 62.76,44.03
 step
   only Paladin
   talk Duthorian Rall##6171
@@ -279,7 +279,7 @@ step
 step
   only Paladin
   note Collect 20 Minion's Scourgestones and bring them to High Priest Thel'danis in the Western Plaguelands.
-  get Dispelling Evil |q 8414 |goto Western Plaguelands 42.7,84.03
+  kill Skeletal Flayer##1783 |q 8414 |goto Western Plaguelands 38.99,58.49
 step
   only Paladin
   get The Heathen's Brand |q 8046 |goto Stranglethorn Vale 15.31,14.43
@@ -288,7 +288,7 @@ step
   get Glyph Chasing |q 8309 |goto Silithus 41.28,88.45
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  get Breaking the Code |q 8310 |goto Silithus 40.81,88.86
+  kill Hive'Ashi Stinger##11698 |q 8310 |goto Silithus 48.5,41.14
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1
@@ -398,11 +398,11 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 2 Nexus Crystals.
-  get Redemption Spaulders |q 9046 |goto Eastern Plaguelands 81.54,58.16
+  kill Grobbulus##15931 |q 9046 |goto Naxxramas - Raid -1,-1
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  get Redemption Boots |q 9047 |goto Eastern Plaguelands 81.54,58.16
+  kill Gluth##15932 |q 9047 |goto Naxxramas - Raid -1,-1
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -410,11 +410,11 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  get Redemption Girdle |q 9049 |goto Eastern Plaguelands 81.54,58.16
+  kill Gluth##15932 |q 9049 |goto Naxxramas - Raid -1,-1
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  get Redemption Wristguards |q 9050 |goto Eastern Plaguelands 81.54,58.16
+  kill Gluth##15932 |q 9050 |goto Naxxramas - Raid -1,-1
 step
   only Paladin
   talk Daphne Stilwell##6182
@@ -490,7 +490,7 @@ step
 step
   only Paladin
   note Bring the voodoo feathers to Ashlam Valorfist.
-  get Forging the Mightstone |q 8418 |goto Western Plaguelands 42.7,84.03
+  kill Gasher##5713 |q 8418 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   only Paladin
   get The Hero's Brand |q 8048 |goto Stranglethorn Vale 15.31,14.43
@@ -499,7 +499,7 @@ step
   get The Calling |q 8315 |goto Silithus 49.67,37.46
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  get Hunting for Ectoplasm |q 8924 |goto Tanaris 52.47,27.23
+  kill Tortured Druid##12178 |q 8924 |goto Silithus 62.65,52.76
 step
   only Paladin
   talk Duthorian Rall##6171
@@ -531,7 +531,7 @@ step
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
-  get A Portable Power Source |q 8925 |goto Tanaris 52.47,27.23
+  kill Magma Lord Bokk##16043 |q 8925 |goto Burning Steppes 35.39,57.76
 step
   only Paladin
   talk Jordan Stilwell##6181
@@ -557,11 +557,11 @@ step
 step
   only Paladin
   note Bring a Kor Gem to Thundris Windweaver in Darkshore.
-  get Seeking the Kor Gem |q 1442 |goto Darkshore 37.4,40.13
+  kill Blackfathom Tide Priestess##4802 |q 1442 |goto Darkshore 31.38,92.07
 step
   only Paladin
   note Using Jordan's Weapon Notes, find some Whitestone Oak Lumber, Bailor's Refined Ore Shipment, Jordan's Smithing Hammer, and a Kor Gem, and return them to Jordan Stilwell in Ironforge.
-  get The Test of Righteousness |q 1654 |goto Dun Morogh 52.49,36.92
+  kill Goblin Woodcarver##641 |q 1654 |goto The Deadmines - Dungeon - The Deadmines -1,-1
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
   get A Shifty Merchant |q 8928 |goto Tanaris 52.47,27.23
@@ -597,7 +597,7 @@ step
 step
   only Paladin
   note Bring a Lightforge Belt and a set of Lightforge Gauntlets to Deliana in Ironforge.
-  get Just Compensation |q 8933 |goto Ironforge 43.53,52.64
+  kill Rockwing Gargoyle##10408 |q 8933 |goto Stratholme - Dungeon -1,-1
 step
   only Paladin
   talk Deliana##16013
@@ -643,7 +643,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  get Falrin's Vendetta |q 8949 |goto Dire Maul - Dungeon -1,-1
+  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -652,7 +652,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  get The Instigator's Enchantment |q 8950 |goto Dire Maul - Dungeon -1,-1
+  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -688,7 +688,7 @@ step
   accept Three Kings of Flame##8961
 step
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
-  get Three Kings of Flame |q 8961
+  kill Lord Incendius##9017 |q 8961 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   talk Bodley##16033
   turnin Three Kings of Flame##8961
@@ -697,7 +697,7 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  get Components of Importance |q 8965
+  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
 step
   talk Bodley##16033
   turnin Components of Importance##8965
@@ -706,7 +706,7 @@ step
   accept More Components of Importance##8986
 step
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  get More Components of Importance |q 8986
+  kill Hive'Regal Ambusher##11730 |q 8986 |goto Silithus 61.05,86.89
 step
   talk Bodley##16033
   turnin More Components of Importance##8986
@@ -724,7 +724,7 @@ step
   accept Final Preparations##8994
 step
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
-  get Final Preparations |q 8994
+  kill Scarshield Acolyte##9045 |q 8994 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Bodley##16033
   turnin Final Preparations##8994

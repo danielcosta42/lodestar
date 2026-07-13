@@ -13,7 +13,7 @@ step
   accept Identifying the Brood##1169 |goto Dustwallow Marsh 37.15,33.09
 step
   note Draz'Zilb in Brackenwall Village would like you to bring him 7 Searing Tongues and 7 Searing Hearts.
-  get Identifying the Brood |q 1169 |goto Dustwallow Marsh 37.15,33.09
+  kill Searing Hatchling##4323 |q 1169 |goto Dustwallow Marsh 45.79,72.13
 step
   talk Krog##4926
   turnin Lieutenant Paval Reethe##1269 |goto Dustwallow Marsh 36.42,31.88

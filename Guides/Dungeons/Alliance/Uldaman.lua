@@ -22,7 +22,7 @@ step
   accept Lore for a Price##2199 |goto Ironforge 36.38,3.61
 step
   note Bring five silver bars to Talvash del Kissel in Ironforge.
-  get Lore for a Price |q 2199 |goto Ironforge 36.38,3.61
+  collect Battered Chest##2844 |q 2199 |goto Azuremyst Isle 28.62,68.23
 step
   talk Prospector Stormpike##1356
   turnin The Hidden Chamber##2240 |goto Ironforge 74.64,11.74
@@ -40,5 +40,5 @@ step
   accept Find the Gems##2201 |goto Uldaman - Dungeon -1,-1
 step
   note Find the ruby, sapphire, and topaz that are scattered throughout Uldaman. Once acquired, contact Talvash del Kissel remotely by using the Phial of Scrying he previously gave you.
-  get Find the Gems |q 2201 |goto Uldaman - Dungeon -1,-1
+  collect Shadowforge Cache##113757 |q 2201 |goto Uldaman - Dungeon -1,-1
 ]])

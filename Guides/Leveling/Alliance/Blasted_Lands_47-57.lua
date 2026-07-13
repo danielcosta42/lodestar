@@ -26,43 +26,43 @@ step
   accept Snickerfang Jowls##2581 |goto Blasted Lands 50.55,14.2
 step
   note Bring three Snickerfang Jowls, two Blasted Boar Lungs, and one Scorpok Pincer to Bloodmage Drazial.
-  get Snickerfang Jowls |q 2581 |goto Blasted Lands 50.55,14.2
+  kill Starving Snickerfang##5984 |q 2581 |goto Blasted Lands 47.77,21.37
 step
   talk Bloodmage Drazial##7505
   accept A Boar's Vitality##2583 |goto Blasted Lands 50.55,14.2
 step
   note Bring three Blasted Boar Lungs, two Scorpok Pincers, and one Basilisk Brain to Bloodmage Drazial.
-  get A Boar's Vitality |q 2583 |goto Blasted Lands 50.55,14.2
+  kill Ashmane Boar##5992 |q 2583 |goto Blasted Lands 59.34,28.99
 step
   talk Bloodmage Drazial##7505
   accept The Decisive Striker##2585 |goto Blasted Lands 50.55,14.2
 step
   note Bring three Scorpok Pincers, two Vulture Gizzards, and one Blasted Boar Lung to Bloodmage Drazial.
-  get The Decisive Striker |q 2585 |goto Blasted Lands 50.55,14.2
+  kill Scorpok Stinger##5988 |q 2585 |goto Blasted Lands 49.76,21.96
 step
   talk Bloodmage Lynnore##7506
   accept The Basilisk's Bite##2601 |goto Blasted Lands 50.64,14.3
 step
   note Bring ten Basilisk Brains and two Vulture Gizzards to Bloodmage Lynnore.
-  get The Basilisk's Bite |q 2601 |goto Blasted Lands 50.64,14.3
+  kill Redstone Basilisk##5990 |q 2601 |goto Blasted Lands 60.94,29.05
 step
   talk Bloodmage Lynnore##7506
   accept Vulture's Vigor##2603 |goto Blasted Lands 50.64,14.3
 step
   note Bring ten Vulture Gizzards and two Snickerfang Jowls to Bloodmage Lynnore.
-  get Vulture's Vigor |q 2603 |goto Blasted Lands 50.64,14.3
+  kill Black Slayer##5982 |q 2603 |goto Blasted Lands 58.63,36.46
 step
   talk Kum'isha the Collector##7363
   accept To Serve Kum'isha##2521 |goto Blasted Lands 51.98,35.65
 step
   note In your journeys throughout the Blasted Lands, should you ever come across a Flawless Draenethyst Sphere, take the item back to Kum'isha the Collector.
-  get To Serve Kum'isha |q 2521 |goto Blasted Lands 51.98,35.65
+  kill Dreadmaul Ogre##5974 |q 2521 |goto Blasted Lands 42.21,14.64
 step
   talk Kum'isha the Collector##7363
   accept Everything Counts In Large Amounts##3501 |goto Blasted Lands 51.98,35.65
 step
   note Bring Kum'isha Imperfect Draenethyst Fragments and be rewarded for each one you turn in.
-  get Everything Counts In Large Amounts |q 3501 |goto Blasted Lands 51.98,35.65
+  kill Dreadmaul Ogre##5974 |q 3501 |goto Blasted Lands 42.21,14.64
 step
   talk Ragnar Thunderbrew##1267
   turnin Ragnar Thunderbrew##4128 |goto Dun Morogh 46.83,52.36 |tip {turninat}Dun Morogh

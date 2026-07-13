@@ -13,7 +13,7 @@ step
   accept Investigate the Scourge of Orgrimmar##9263 |goto Orgrimmar 51.56,81.41
 step
   note Collect three Dim Necrotic Stones from the Scourge outside Orgrimmar and investigate the glowing runic circles nearby their encampment.
-  get Investigate the Scourge of Orgrimmar |q 9263 |goto Orgrimmar 51.56,81.41
+  kill Skeletal Soldier##16422 |q 9263 |goto Elwynn Forest 34.39,52.45
 step
   talk Innkeeper Gryshka##6929
   turnin Flexing for Nougat##8359 |goto Orgrimmar 54.1,68.41

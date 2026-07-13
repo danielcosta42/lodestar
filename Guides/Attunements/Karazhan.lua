@@ -18,7 +18,7 @@ step
   get Arcane Disturbances |q 9824 |goto Deadwind Pass 53.2,90.22
 step
   note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
-  get Restless Activity |q 9825 |goto Deadwind Pass 47.28,75.21
+  kill Restless Shade##7370 |q 9825 |goto Deadwind Pass 51.97,78.4
 step
   talk Andormu##20130
   turnin To The Master's Lair##10279 |goto Tanaris 58.43,54.28

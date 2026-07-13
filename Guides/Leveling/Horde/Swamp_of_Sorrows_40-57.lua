@@ -14,13 +14,13 @@ step
   accept Draenethyst Crystals##1389 |goto Swamp of Sorrows 25.98,31.4
 step
   note Bring 6 Draenethyst crystals to Magtoor at The Harborage in the Swamp of Sorrows.
-  get Draenethyst Crystals |q 1389 |goto Swamp of Sorrows 25.98,31.4
+  collect Draenethyst Crystals##22550 |q 1389 |goto Swamp of Sorrows 62.08,22.85
 step
   talk Dar##5591
   accept Lack of Surplus##698 |goto Swamp of Sorrows 44.7,57.21
 step
   note Bring 8 Unprepared Sawtooth Flanks to Tok'Kar in Swamp of Sorrows.
-  get Lack of Surplus |q 698 |goto Swamp of Sorrows 44.7,57.21
+  kill Sawtooth Crocolisk##1082 |q 698 |goto Swamp of Sorrows 56.53,41.34
 step
   talk Helgrum the Swift##1442
   accept Neeka Bloodscar##1418 |goto Swamp of Sorrows 47.74,55.2
@@ -29,19 +29,19 @@ step
   accept Pool of Tears##1424 |goto Swamp of Sorrows 47.93,54.78
 step
   note Fel'zerul in Stonard wants you to gather 10 Atal'ai Artifacts.
-  get Pool of Tears |q 1424 |goto Swamp of Sorrows 47.93,54.78
+  collect Atal'ai Artifact##30854 |q 1424 |goto Swamp of Sorrows 70.61,53.62
 step
   talk Dar##5591
   accept Fresh Meat##1430 |goto Swamp of Sorrows 44.7,57.21
 step
   note Bring 10 Monstrous Crawler Legs to Dar in the Swamp of Sorrows.
-  get Fresh Meat |q 1430 |goto Swamp of Sorrows 44.7,57.21
+  kill Monstrous Crawler##1088 |q 1430 |goto Swamp of Sorrows 93.13,46.26
 step
   talk Fel'zerul##1443
   accept The Temple of Atal'Hakkar##1445 |goto Swamp of Sorrows 47.93,54.78
 step
   note Collect 20 Fetishes of Hakkar and bring them to Fel'Zerul in Stonard.
-  get The Temple of Atal'Hakkar |q 1445 |goto Swamp of Sorrows 47.93,54.78
+  kill Cursed Atal'ai##5243 |q 1445 |goto Swamp of Sorrows 76.64,47.42
 step
   only Mage
   talk Haromm##986
@@ -49,7 +49,7 @@ step
 step
   only Mage
   note Collect a sample of air, fire, earth and water for Bath'rah the Windwatcher.
-  get Elemental Mastery |q 8410 |goto Swamp of Sorrows 48.19,57.94
+  kill Dust Devil##832 |q 8410 |goto Westfall 42.75,49.32
 step
   only Druid
   talk Kartosh##988
@@ -57,7 +57,7 @@ step
 step
   only Druid
   note Bring a piece of felcloth to Impsy in Felwood.
-  get An Imp's Request |q 8419 |goto Swamp of Sorrows 48.65,55.64
+  kill Felguard Sentry##6011 |q 8419 |goto Blasted Lands 59.78,54.09
 step
   talk Cersei Dusksinger##17109
   accept Little Morsels##9440 |goto Swamp of Sorrows 47.81,54.95
@@ -75,7 +75,7 @@ step
   accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
 step
   note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
-  get Uniting the Shattered Amulet |q 3627 |goto Swamp of Sorrows 34.29,66.14
+  kill Archmage Allistarj##7666 |q 3627 |goto Blasted Lands 66.69,29.24
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -95,7 +95,7 @@ step
   accept Lack of Surplus##699 |goto Swamp of Sorrows 81.32,80.97
 step
   note Bring 6 Sawtooth Snapper Claws to Tok'Kar in the Swamp of Sorrows.
-  get Lack of Surplus |q 699 |goto Swamp of Sorrows 81.32,80.97
+  kill Sawtooth Snapper##1087 |q 699 |goto Swamp of Sorrows 80.99,28.41
 step
   talk Neeka Bloodscar##5394
   turnin Neeka Bloodscar##1418 |goto Badlands 6.49,47.2 |tip {turninat}Badlands
@@ -184,7 +184,7 @@ step
 step
   only Warrior
   note Bring the Voodoo Feathers from the trolls in the Sunken Temple to the Fallen Hero of the Horde.
-  get Voodoo Feathers |q 8425 |goto Swamp of Sorrows 34.29,66.14
+  kill Gasher##5713 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   talk Katar##5593
   turnin Threat From the Sea##1422 |goto Swamp of Sorrows 83.76,80.41
@@ -202,7 +202,7 @@ step
   accept The Swamp Talker##2623 |goto Swamp of Sorrows 44.97,57.37
 step
   note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
-  get The Swamp Talker |q 2623 |goto Swamp of Sorrows 44.97,57.37
+  kill Swamp Talker##950 |q 2623 |goto Swamp of Sorrows 62.6,88.07
 step
   only Warrior
   talk Fallen Hero of the Horde##7572

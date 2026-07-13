@@ -14,25 +14,25 @@ step
   accept The Mark of Quality##2822 |goto Feralas 74.43,42.91
 step
   note Bring 10 Thick Yeti Hides to Jangdor Swiftstrider in Camp Mojache.
-  get The Mark of Quality |q 2822 |goto Feralas 74.43,42.91
+  kill Feral Scar Yeti##5292 |q 2822 |goto Feralas 55.48,56.5
 step
   talk Jangdor Swiftstrider##7854
   accept Wild Leather Armor##2854 |goto Feralas 74.43,42.91
 step
   note Bring 10 Thick Leather to Jangdor Swiftstrider in Camp Mojache.
-  get Wild Leather Armor |q 2854 |goto Feralas 74.43,42.91
+  kill Wild Gryphon##2347 |q 2854 |goto Hillsbrad Foothills 87.3,41.7
 step
   talk Hadoken Swiftstrider##7875
   accept War on the Woodpaw##2862 |goto Feralas 74.91,42.46
 step
   note Bring 10 Woodpaw Gnoll Manes to Hadoken Swiftstrider in Camp Mojache.
-  get War on the Woodpaw |q 2862 |goto Feralas 74.91,42.46
+  kill Woodpaw Mongrel##5249 |q 2862 |goto Feralas 72.44,51.01
 step
   talk Krueg Skullsplitter##4544
   accept A New Cloak's Sheen##2973 |goto Feralas 75.94,42.74
 step
   note Bring 10 Iridescent Sprite Darter Wings to Krueg Skullsplitter in Camp Mojache.
-  get A New Cloak's Sheen |q 2973 |goto Feralas 75.94,42.74
+  kill Sprite Darter##5278 |q 2973 |goto Feralas 68.51,47.89
 step
   talk Rok Orhan##7777
   accept The Ogres of Feralas##2975 |goto Feralas 75.8,43.58
@@ -41,7 +41,7 @@ step
   accept Dark Ceremony##2979 |goto Feralas 75.8,43.58
 step
   note Rok Orhan in Camp Mojache wants you to find a Gordunni Orb.
-  get Dark Ceremony |q 2979 |goto Feralas 75.8,43.58
+  kill Gordunni Mage-Lord##5239 |q 2979 |goto Feralas 60.27,69.54
 step
   talk Orwin Gizzmick##8021
   accept Gordunni Cobalt##2987 |goto Feralas 75.7,44.31
@@ -71,7 +71,7 @@ step
   accept Natural Materials##3128 |goto Feralas 74.42,43.36
 step
   note Bring 2 Splintered Logs, 6 Encrusted Minerals, 20 pieces of Resilient Sinew, and 40 Metallic Fragments to Witch Doctor Uzer'i in Camp Mojache.
-  get Natural Materials |q 3128 |goto Feralas 74.42,43.36
+  kill Wandering Forest Walker##7584 |q 3128 |goto Feralas 57.4,47.22
 step
   talk Witch Doctor Uzer'i##8115
   accept The Sunken Temple##3380 |goto Feralas 74.42,43.36
@@ -83,25 +83,25 @@ step
   accept Pusillin and the Elder Azj'Tordin##7441 |goto Feralas 76.91,37.35
 step
   note Travel to Dire Maul and locate the Imp, Pusillin. Convince Pusillin to give you Azj'Tordin's Book of Incantations through any means necessary.
-  get Pusillin and the Elder Azj'Tordin |q 7441 |goto Feralas 76.91,37.35
+  kill Pusillin##14354 |q 7441 |goto Dire Maul - Dungeon -1,-1
 step
   talk Talo Thornhoof##7776
   accept Lethtendris's Web##7489 |goto Feralas 76.18,43.83
 step
   note Bring Lethtendris's Web to Talo Thornhoof at Camp Mojache in Feralas.
-  get Lethtendris's Web |q 7489 |goto Feralas 76.18,43.83
+  kill Lethtendris##14327 |q 7489 |goto Dire Maul - Dungeon -1,-1
 step
   talk Hadoken Swiftstrider##7875
   accept Zukk'ash Infestation##7730 |goto Feralas 74.91,42.46
 step
   note Bring 20 Zukk'ash Carapaces to Hadoken Swiftstrider at Camp Mojache, Feralas.
-  get Zukk'ash Infestation |q 7730 |goto Feralas 74.91,42.46
+  kill Zukk'ash Stinger##5244 |q 7730 |goto Feralas 76.99,64.14
 step
   talk Hadoken Swiftstrider##7875
   accept Stinglasher##7731 |goto Feralas 74.91,42.46
 step
   note Defeat Stinglasher in the Writhing Deep, bringing its glands back to Hadoken Swiftstrider at Camp Mojache, Feralas.
-  get Stinglasher |q 7731 |goto Feralas 74.91,42.46
+  kill Stinglasher##14661 |q 7731 |goto Feralas 76.99,61.56
 step
   talk Elder Grimtotem##15581
   accept Grimtotem the Elder##8679 |goto Feralas 76.72,37.9
@@ -128,7 +128,7 @@ step
   accept Fuel for the Zapping##7721 |goto Feralas 44.81,43.42
 step
   note Collect 10 Water Elemental Cores from the Sea Elementals and Sea Sprays along the Forgotten Coast of Feralas, and bring them back to Zorbin Fandazzle who is near the dock there.
-  get Fuel for the Zapping |q 7721 |goto Feralas 44.81,43.42
+  kill Sea Elemental##5461 |q 7721 |goto Feralas 45.33,49.7
 step
   talk Rokaro##10182
   accept Mistress of Deception##6568 |goto Feralas 46.39,18.24
@@ -197,7 +197,7 @@ step
   accept Wild Leather Shoulders##2855 |goto Feralas 74.43,42.91
 step
   note Bring 6 Thick Armor Kits and a Wildvine to Jangdor Swiftstrider in Camp Mojache.
-  get Wild Leather Shoulders |q 2855 |goto Feralas 74.43,42.91
+  kill Olaf##6908 |q 2855 |goto Uldaman - Dungeon -1,-1
 step
   talk Jangdor Swiftstrider##7854
   accept Wild Leather Vest##2856 |goto Feralas 74.43,42.91
@@ -230,7 +230,7 @@ step
   accept A Grim Discovery##2974 |goto Feralas 75.94,42.74
 step
   note Bring 20 Grimtotem Horns to Krueg Skullsplitter in Camp Mojache.
-  get A Grim Discovery |q 2974 |goto Feralas 75.94,42.74
+  kill Grimtotem Raider##7725 |q 2974 |goto Feralas 67.22,46.35
 step
   talk Rok Orhan##7777
   accept The Ogres of Feralas##2980 |goto Feralas 75.8,43.58
@@ -251,7 +251,7 @@ step
   accept Improved Quality##7734 |goto Feralas 74.43,42.91
 step
   note Bring 10 Rage Scar Yeti Hides to Jangdor Swiftstrider at Camp Mojache, Feralas.
-  get Improved Quality |q 7734 |goto Feralas 74.43,42.91
+  kill Rage Scar Yeti##5296 |q 7734 |goto Feralas 53.28,31.85
 step
   note Rok Orhan in Camp Mojache wants you to kill 10 Gordunni Shaman, 10 Gordunni Warlocks, and 5 Gordunni Maulers.
   kill Gordunni Shaman##5236 |q 2980 |goto Feralas 60.44,67.55

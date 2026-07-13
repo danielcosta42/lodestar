@@ -23,19 +23,19 @@ step
   accept Cycle of Rebirth##6301 |goto Stonetalon Mountains 47.46,58.38
 step
   note Tammra Windfield at Sun Rock Retreat wants you to gather 10 Gaea Seeds.
-  get Cycle of Rebirth |q 6301 |goto Stonetalon Mountains 47.46,58.38
+  collect Gaea Seed##177926 |q 6301 |goto Stonetalon Mountains 48.92,40.73
 step
   talk Tsunaman##11862
   accept Elemental War##6393 |goto Stonetalon Mountains 47.36,64.25
 step
   note Bring 10 Incendrites to Tsunaman at Sun Rock Retreat.
-  get Elemental War |q 6393 |goto Stonetalon Mountains 47.36,64.25
+  kill Rogue Flame Spirit##4036 |q 6393 |goto Stonetalon Mountains 37.14,53.06
 step
   talk Mor'rogal##11861
   accept Boulderslide Ravine##6421 |goto Stonetalon Mountains 47.22,64.04
 step
   note Explore deep into the cave at Boulderslide Ravine and bring back 10 Resonite Crystals for Mor'rogal at Sun Rock Retreat to investigate.
-  get Boulderslide Ravine |q 6421 |goto Stonetalon Mountains 47.22,64.04
+  kill Gogger Rock Keeper##11915 |q 6421 |goto Stonetalon Mountains 60.44,91.47
 step
   talk Tsunaman##11862
   accept Trouble in the Deeps##6562 |goto Stonetalon Mountains 47.36,64.25
@@ -50,13 +50,13 @@ step
   accept Super Reaper 6000##1093 |goto Stonetalon Mountains 58.99,62.6
 step
   note Get the Super Reaper 6000 Blueprints for Ziz Fizziks in the Stonetalon Mountains.
-  get Super Reaper 6000 |q 1093 |goto Stonetalon Mountains 58.99,62.6
+  kill Venture Co. Operator##3988 |q 1093 |goto Stonetalon Mountains 69.99,52.05
 step
   talk Ziz Fizziks##4201
   accept Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6
 step
   note Bring Gerenzo Wrenchwhistle's Mechanical Arm to Ziz Fizziks in the Stonetalon Mountains.
-  get Gerenzo Wrenchwhistle |q 1096 |goto Stonetalon Mountains 58.99,62.6
+  kill Gerenzo Wrenchwhistle##4202 |q 1096 |goto Stonetalon Mountains 64.49,40.25
 step
   talk Piznik##4276
   accept Gerenzo's Orders##1090 |goto Stonetalon Mountains 71.87,60.0
@@ -65,13 +65,13 @@ step
   accept Test of Lore##1154 |goto Stonetalon Mountains 78.8,45.69
 step
   note Find the Legacy of the Aspects and return it to Braug Dimspirit near the entrance to Talondeep Path in Stonetalon Mountains.
-  get Test of Lore |q 1154 |goto Stonetalon Mountains 78.8,45.69
+  collect The Legacy of the Aspects##20725 |q 1154 |goto Ashenvale 75.57,74.37
 step
   talk Witch Doctor Jin'Zil##3995
   accept Jin'Zil's Forest Magic##1058 |goto Stonetalon Mountains 74.54,97.94
 step
   note Witch Doctor Jin'Zil at Malaka'jin wants 5 portions of Stonetalon Sap, 5 Twilight Whiskers, 30 Courser Eyes and a Fey Dragon Scale.
-  get Jin'Zil's Forest Magic |q 1058 |goto Stonetalon Mountains 74.54,97.94
+  kill Sap Beast##4020 |q 1058 |goto Stonetalon Mountains 35.66,17.41
 step
   talk Xen'Zilla##12816
   accept Blood Feeders##6461 |goto Stonetalon Mountains 71.25,95.02
@@ -104,13 +104,13 @@ step
   accept Ordanus##1088 |goto Stonetalon Mountains 45.94,60.42
 step
   note Bring Ordanus' head to Braelyn Firehand near Sun Rock Retreat.
-  get Ordanus |q 1088 |goto Stonetalon Mountains 45.94,60.42
+  kill Keeper Ordanus##4273 |q 1088 |goto Ashenvale 62.05,51.37
 step
   talk Maggran Earthbinder##11860
   accept Bloodfury Bloodline##6283 |goto Stonetalon Mountains 47.2,61.16
 step
   note Maggran at Sun Rock Retreat wishes you to slay Bloodfury Ripper and bring her remains as proof of your deed.
-  get Bloodfury Bloodline |q 6283 |goto Stonetalon Mountains 47.2,61.16
+  kill Bloodfury Ripper##12579 |q 6283 |goto Stonetalon Mountains 30.75,61.91
 step
   talk Tammra Windfield##11864
   accept New Life##6381 |goto Stonetalon Mountains 47.46,58.38
@@ -176,7 +176,7 @@ step
   accept The Den##1089 |goto Stonetalon Mountains 45.94,60.42
 step
   note Travel to the Den on Stonetalon Peak. Using the Gatekeeper's Key, obtain the druids' hidden items. Use these items to open the Talon Den Hoard.
-  get The Den |q 1089 |goto Stonetalon Mountains 45.94,60.42
+  collect Sleepers' Cache##19596 |q 1089 |goto Stonetalon Mountains 25.55,11.36
 step
   talk Ziz Fizziks##4201
   turnin Gerenzo's Orders##1092 |goto Stonetalon Mountains 58.99,62.6

@@ -10,7 +10,7 @@ step
   accept Blackfathom Villainy##6561 |goto Blackfathom Deeps - Dungeon -1,-1
 step
   note Bring the head of Twilight Lord Kelris to Bashana Runetotem in Thunder Bluff.
-  get Blackfathom Villainy |q 6561 |goto Blackfathom Deeps - Dungeon -1,-1
+  kill Twilight Lord Kelris##4832 |q 6561 |goto Blackfathom Deeps - Dungeon -1,-1
 step
   talk Je'neu Sancrea##12736
   turnin Allegiance to the Old Gods##6564 |goto Ashenvale 11.56,34.29

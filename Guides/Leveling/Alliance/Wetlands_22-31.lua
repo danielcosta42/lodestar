@@ -20,7 +20,7 @@ step
   accept A Grim Task##304 |goto Wetlands 49.8,18.26
 step
   note Kill Balgaras the Foul and bring his ear to Longbraid the Grim outside of Dun Modr.
-  get A Grim Task |q 304 |goto Wetlands 49.8,18.26
+  kill Balgaras the Foul##1364 |q 304 |goto Wetlands 62.49,28.42
 step
   talk Rhag Garmason##1075
   accept The Thandol Span##631 |goto Wetlands 49.9,18.24
@@ -44,7 +44,7 @@ step
   accept Uncovering the Past##299 |goto Wetlands 38.81,52.39
 step
   note Prospector Whelgar wants you to scour the excavation site in search of the 4 missing tablet fragments: Ados, Modr, Golm and Neru.
-  get Uncovering the Past |q 299 |goto Wetlands 38.81,52.39
+  collect Ancient Relic##35252 |q 299 |goto Wetlands 34.92,49.86
 step
   note Ormer Ironbraid at the Whelgar Excavation Site wants you to kill 10 Mottled Screechers and 10 Mottled Raptors.
   kill Mottled Raptor##1020 |q 294 |goto Wetlands 24.31,47.47
@@ -65,7 +65,7 @@ step
   accept The Third Fleet##288 |goto Wetlands 10.9,59.64
 step
   note Buy First Mate Fitzsimmons a Flagon of Mead.
-  get The Third Fleet |q 288 |goto Wetlands 10.9,59.64
+  kill Malgin Barleybrew##5848 |q 288 |goto The Barrens 49.59,84.3
 step
   talk Glorin Steelbrow##1217
   accept Cleansing the Eye##293 |goto Wetlands 10.58,60.59
@@ -86,7 +86,7 @@ step
   accept Digging Through the Ooze##470 |goto Wetlands 11.8,57.99
 step
   note One of the oozes at Ironbeard's Tomb has Sida's bag, retrieve it and bring it back to her in Menethil Harbor.
-  get Digging Through the Ooze |q 470 |goto Wetlands 11.8,57.99
+  kill Crimson Ooze##1031 |q 470 |goto Wetlands 44.58,24.76
 step
   talk Harlo Barnaby##2097
   accept Fall of Dun Modr##472 |goto Wetlands 10.85,55.9
@@ -98,19 +98,19 @@ step
   accept Young Crocolisk Skins##484 |goto Wetlands 8.55,55.74
 step
   note Obtain 4 Young Crocolisk Skins for James Halloran in Menethil Harbor.
-  get Young Crocolisk Skins |q 484 |goto Wetlands 8.55,55.74
+  kill Young Wetlands Crocolisk##1417 |q 484 |goto Wetlands 52.42,47.18
 step
   talk Glorin Steelbrow##1217
   accept Lightforge Ingots##526 |goto Wetlands 10.58,60.59
 step
   note Gather 5 lightforge ingots, then return to Glorin Steelbrow in the Wetlands.
-  get Lightforge Ingots |q 526 |goto Wetlands 10.58,60.59
+  kill Bluegill Raider##1418 |q 526 |goto Wetlands 12.62,64.38
 step
   talk Archaeologist Flagongut##2911
   accept The Absent Minded Prospector##943 |goto Wetlands 10.84,60.43
 step
   note Archaeologist Flagongut in Menethil Harbor wants you to bring him the Stone of Relu and Flagongut's Fossil.
-  get The Absent Minded Prospector |q 943 |goto Wetlands 10.84,60.43
+  kill Mottled Raptor##1020 |q 943 |goto Wetlands 24.31,47.47
 step
   talk Red Jack Flint##4455
   accept Fiora Longears##1132 |goto Wetlands 9.96,57.96
@@ -151,7 +151,7 @@ step
   accept The Fury Runs Deep##378 |goto Wetlands 49.67,18.23
 step
   note Motley Garmason wants Kam Deepfury's head brought to him at Dun Modr.
-  get The Fury Runs Deep |q 378 |goto Wetlands 49.67,18.23
+  kill Kam Deepfury##1666 |q 378 |goto The Stockade - Dungeon -1,-1
 step
   talk Rhag Garmason##1075
   accept Plea To The Alliance##634 |goto Wetlands 49.9,18.24
@@ -169,7 +169,7 @@ step
   accept Fire Taboo##277 |goto Wetlands 56.37,40.4
 step
   note Bring Rethiel the Greenwarden 9 Crude Flints.
-  get Fire Taboo |q 277 |goto Wetlands 56.37,40.4
+  kill Mosshide Mistweaver##1009 |q 277 |goto Wetlands 61.13,58.26
 step
   talk Ormer Ironbraid##1078
   turnin Ormer's Revenge##294 |goto Wetlands 38.18,50.89
@@ -234,13 +234,13 @@ step
   accept War Banners##464 |goto Wetlands 9.86,57.49
 step
   note Bring 8 Dragonmaw War Banners to Captain Stoutfist.
-  get War Banners |q 464 |goto Wetlands 9.86,57.49
+  kill Dragonmaw Raider##1034 |q 464 |goto Wetlands 45.5,45.35
 step
   talk James Halloran##2094
   accept Apprentice's Duties##471 |goto Wetlands 8.55,55.74
 step
   note Collect 6 Giant Crocolisk Skins and bring them to James Halloran in Menethil Harbor.
-  get Apprentice's Duties |q 471 |goto Wetlands 8.55,55.74
+  kill Giant Wetlands Crocolisk##2089 |q 471 |goto Wetlands 19.03,24.17
 step
   talk Tapoke "Slim" Jahn##4962
   accept The Missing Diplomat##1250 |goto Wetlands 10.54,60.26
@@ -264,7 +264,7 @@ step
   accept Ormer's Revenge##296 |goto Wetlands 38.18,50.89
 step
   note Ormer Ironbraid at the Whelgar Excavation Site wants you to kill Sarltooth and return to him with one of his talons once the task is fulfilled.
-  get Ormer's Revenge |q 296 |goto Wetlands 38.18,50.89
+  kill Sarltooth##1353 |q 296 |goto Wetlands 33.26,51.51
 step
   turnin Reclaiming Goods##281 |goto Wetlands 13.52,41.38
 step
@@ -284,7 +284,7 @@ step
   accept Lifting the Curse##290 |goto Wetlands 10.9,59.64
 step
   note Get the Intrepid Strongbox Key from Captain Halyndor.
-  get Lifting the Curse |q 290 |goto Wetlands 10.9,59.64
+  kill Captain Halyndor##1160 |q 290 |goto Wetlands 15.45,23.61
 step
   talk Captain Stoutfist##2104
   accept Nek'rosh's Gambit##465 |goto Wetlands 9.86,57.49

@@ -10,7 +10,7 @@ step
   accept Necklace Recovery##2283 |goto Orgrimmar 59.49,36.57
 step
   note Look for a valuable necklace within the Uldaman dig site and bring it back to Dran Droffers in Orgrimmar. The necklace may be damaged.
-  get Necklace Recovery |q 2283 |goto Orgrimmar 59.49,36.57
+  kill Shadowforge Surveyor##4844 |q 2283 |goto Loch Modan 38.32,88.59
 step
   talk Dran Droffers##6986
   turnin Necklace Recovery##2283 |goto Orgrimmar 59.49,36.57

@@ -14,7 +14,7 @@ step
   accept Marsh Frog Legs##1218 |goto Dustwallow Marsh 55.44,26.27
 step
   note Bring 10 Marsh Frog Legs to "Swamp Eye" Jarl in Dustwallow Marsh.
-  get Marsh Frog Legs |q 1218 |goto Dustwallow Marsh 55.44,26.27
+  kill Giant Marsh Frog##23979 |q 1218 |goto Dustwallow Marsh 56.18,27.25
 step
   talk Mordant Grimsby##23843
   accept What's Haunting Witch Hill?##11180 |goto Dustwallow Marsh 55.58,26.14
@@ -32,7 +32,7 @@ step
   accept Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
 step
   note Mudcrush Durtfeet in northern Dustwallow wants 8 Mirefin Heads.
-  get Hungry! |q 1177 |goto Dustwallow Marsh 35.15,38.26
+  kill Mirefin Murloc##4359 |q 1177 |goto Dustwallow Marsh 57.44,15.53
 step
   only Warlock
   talk Tabetha##6546
@@ -40,7 +40,7 @@ step
 step
   only Warlock
   note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
-  get Items of Power |q 1948 |goto Dustwallow Marsh 46.06,57.09
+  kill Flesh Eater##3 |q 1948 |goto Duskwood 23.81,38.2
 step
   only Warlock
   talk Tabetha##6546
@@ -56,13 +56,13 @@ step
 step
   only Warlock
   note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
-  get The Infernal Orb |q 1954 |goto Dustwallow Marsh 46.06,57.09
+  kill Burning Blade Summoner##4668 |q 1954 |goto Desolace 79.47,77.84
 step
   talk Tabetha##6546
   accept Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
 step
   note Bring the Tiara of the Deep to Tabetha in Dustwallow Marsh.
-  get Tiara of the Deep |q 2846 |goto Dustwallow Marsh 46.06,57.09
+  kill Hydromancer Velratha##7795 |q 2846 |goto Zul'Farrak - Dungeon -1,-1
 step
   only Druid
   talk Tabetha##6546
@@ -88,7 +88,7 @@ step
   accept The Reagent Thief##11173 |goto Dustwallow Marsh 46.05,57.24
 step
   note Bring 6 vials of Marsh Venom to Apprentice Garion at Tabetha's Farm.
-  get The Reagent Thief |q 11173 |goto Dustwallow Marsh 46.05,57.24
+  kill Noxious Shredder##4348 |q 11173 |goto Dustwallow Marsh 41.06,53.62
 step
   talk Tabetha##6546
   accept Help for Mudsprocket##11211 |goto Dustwallow Marsh 46.06,57.09
@@ -103,7 +103,7 @@ step
   accept Secure the Cargo!##11207 |goto Dustwallow Marsh 53.57,56.92
 step
   note Moxie Steelgrille at Beezil's Wreck wants you to recover 8 pieces of Zeppelin Cargo.
-  get Secure the Cargo! |q 11207 |goto Dustwallow Marsh 53.57,56.92
+  collect Zeppelin Cargo##186450 |q 11207 |goto Dustwallow Marsh 51.69,55.91
 step
   note Moxie Steelgrille wants you to dissolve 10 oozes and report back to her at Beezil's Wreck.
   kill Moxie Steelgrille##23797 |q 11174 |goto Dustwallow Marsh 53.57,56.92
@@ -122,7 +122,7 @@ step
   accept Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
 step
   note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
-  get Mudrock Soup and Bugs |q 1204 |goto Dustwallow Marsh 66.34,45.47
+  kill Mudrock Spikeshell##4397 |q 1204 |goto Dustwallow Marsh 62.14,15.72
 step
   talk Captain Garran Vimes##4944
   accept Lieutenant Paval Reethe##1259 |goto Dustwallow Marsh 68.21,48.62
@@ -140,7 +140,7 @@ step
   accept Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
 step
   note Collect 10 Shadowshard Fragments from Maraudon and return them to Archmage Tervosh in Theramore on the coast of Dustwallow Marsh.
-  get Shadowshard Fragments |q 7070 |goto Dustwallow Marsh 66.42,49.26
+  kill Shadowshard Rumbler##11777 |q 7070 |goto Desolace 27.99,57.01
 step
   talk Calia Hastings##23566
   accept Traitors Among Us##11126 |goto Dustwallow Marsh 68.33,51.04
@@ -161,7 +161,7 @@ step
   accept Defias in Dustwallow?##11137 |goto Dustwallow Marsh 59.67,41.08
 step
   note Obtain the Defias Orders from Garn Mathers and bring them to Captain Wymor at Sentry Point.
-  get Defias in Dustwallow? |q 11137 |goto Dustwallow Marsh 59.67,41.08
+  kill Garn Mathers##23679 |q 11137 |goto Dustwallow Marsh 63.9,29.05
 step
   talk Drazzit Dripvalve##23572
   turnin Help for Mudsprocket##11211 |goto Dustwallow Marsh 42.33,72.93
@@ -173,7 +173,7 @@ step
   accept Bloodfen Feathers##11158 |goto Dustwallow Marsh 41.86,73.97
 step
   note Bring 5 Bloodfen Feathers to Brogg at Mudsprocket.
-  get Bloodfen Feathers |q 11158 |goto Dustwallow Marsh 41.86,73.97
+  kill Bloodfen Razormaw##4356 |q 11158 |goto Dustwallow Marsh 33.57,66.81
 step
   talk Brogg##23579
   accept Spirits of Stonemaul Hold##11159 |goto Dustwallow Marsh 41.86,73.97
@@ -185,7 +185,7 @@ step
   accept Catch a Dragon by the Tail##11217 |goto Dustwallow Marsh 41.54,72.99
 step
   note Gizzix Grimegurgle at Mudsprocket wants you to bring him 8 Wyrmtail stalks.
-  get Catch a Dragon by the Tail |q 11217 |goto Dustwallow Marsh 41.54,72.99
+  kill Searing Whelp##4324 |q 11217 |goto Dustwallow Marsh 46.45,75.86
 step
   talk Mordant Grimsby##23843
   turnin What's Haunting Witch Hill?##11180 |goto Dustwallow Marsh 55.58,26.14
@@ -197,13 +197,13 @@ step
   accept Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
 step
   note Bring 20 Unpopped Darkmist Eyes to "Swamp Eye" Jarl at the Swamplight Manor.
-  get Jarl Needs Eyes |q 1206 |goto Dustwallow Marsh 55.44,26.27
+  kill Darkmist Spider##4376 |q 1206 |goto Dustwallow Marsh 32.46,21.9
 step
   talk Mordant Grimsby##23843
   accept The Witch's Bane##11181 |goto Dustwallow Marsh 55.58,26.14
 step
   note Bring 9 sprigs of Witchbane to Mordant Grimsby at Swamplight Manor.
-  get The Witch's Bane |q 11181 |goto Dustwallow Marsh 55.58,26.14
+  kill Risen Spirit##23554 |q 11181 |goto Dustwallow Marsh 55.33,26.3
 step
   talk Sergeant Lukas##23723
   turnin Raptor Captor##11146 |goto Dustwallow Marsh 46.66,23.05
@@ -306,7 +306,7 @@ step
   accept ... and Bugs##1258 |goto Dustwallow Marsh 66.34,45.47
 step
   note Bring 12 Pristine Crawler Legs to Morgan Stern in Theramore.
-  get ... and Bugs |q 1258 |goto Dustwallow Marsh 66.34,45.47
+  kill Silt Crawler##922 |q 1258 |goto Swamp of Sorrows 83.23,14.77
 step
   talk Archmage Tervosh##4967
   accept The Missing Diplomat##1266 |goto Dustwallow Marsh 66.42,49.26
@@ -324,13 +324,13 @@ step
   accept Propaganda War##11128 |goto Dustwallow Marsh 68.33,51.04
 step
   note Bring the Deserter Propaganda to Calia Hastings near the docks in Theramore.
-  get Propaganda War |q 11128 |goto Dustwallow Marsh 68.33,51.04
+  collect Deserter Propaganda##186266 |q 11128 |goto Dustwallow Marsh 67.94,58.72
 step
   talk Babs Fizzletorque##23892
   accept Thresher Oil##11192 |goto Dustwallow Marsh 72.11,47.05
 step
   note Bring 4 containers of Thresher Oil to Babs Fizzletorque at the lighthouse near Theramore.
-  get Thresher Oil |q 11192 |goto Dustwallow Marsh 72.11,47.05
+  kill Young Murk Thresher##4388 |q 11192 |goto Dustwallow Marsh 71.13,55.44
 step
   talk Captain Wymor##5086
   turnin Defias in Dustwallow?##11137 |goto Dustwallow Marsh 59.67,41.08
@@ -349,7 +349,7 @@ step
   accept Secondhand Diving Gear##11139 |goto Dustwallow Marsh 63.74,17.04
 step
   note Bring the Tool Kit and Damaged Diving Gear to Renn McGill in the Dustwallow Marsh.
-  get Secondhand Diving Gear |q 11139 |goto Dustwallow Marsh 63.74,17.04
+  collect Damaged Diving Gear##186273 |q 11139 |goto Dustwallow Marsh 62.33,18.23
 step
   talk Brogg##23579
   turnin Bloodfen Feathers##11158 |goto Dustwallow Marsh 41.86,73.97
@@ -367,7 +367,7 @@ step
   accept Banner of the Stonemaul##11160 |goto Dustwallow Marsh 41.86,73.97
 step
   note Retrieve the Stonemaul Banner and bring it to Brogg at Mudsprocket.
-  get Banner of the Stonemaul |q 11160 |goto Dustwallow Marsh 41.86,73.97
+  kill Firemane Scalebane##4328 |q 11160 |goto Dustwallow Marsh 53.32,73.93
 step
   talk Brogg##23579
   accept The Essence of Enmity##11161 |goto Dustwallow Marsh 41.86,73.97
@@ -391,7 +391,7 @@ step
   accept Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
 step
   note Bring Razorspine's Sword to "Swamp Eye" Jarl at Swamplight Manor.
-  get Jarl Needs a Blade |q 1203 |goto Dustwallow Marsh 55.44,26.27
+  kill Razorspine##23841 |q 1203 |goto Dustwallow Marsh 57.78,19.74
 step
   talk Mordant Grimsby##23843
   accept Cleansing Witch Hill##11183 |goto Dustwallow Marsh 55.58,26.14
@@ -424,7 +424,7 @@ step
 step
   only Warlock
   note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
-  get Power in Uldaman |q 1956 |goto Dustwallow Marsh 46.06,57.09
+  kill Obsidian Sentinel##7023 |q 1956 |goto Uldaman - Dungeon -1,-1
 step
   talk Captain Garran Vimes##4944
   turnin Daelin's Men##1285 |goto Dustwallow Marsh 68.21,48.62
@@ -544,7 +544,7 @@ step
   accept Arms of the Grimtotems##11148 |goto Dustwallow Marsh 46.62,24.6
 step
   note Captain Darill at North Point Tower wants you to bring him 7 Blackhoof Armaments.
-  get Arms of the Grimtotems |q 11148 |goto Dustwallow Marsh 46.62,24.6
+  kill Drywallow Crocolisk##4341 |q 11148 |goto Dustwallow Marsh 44.59,26.34
 step
   only Warlock
   talk Tabetha##6546

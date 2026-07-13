@@ -31,13 +31,13 @@ step
   accept The Hand of Gul'dan##10681 |goto Shadowmoon Valley 28.49,26.57
 step
   note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
-  get The Eyes of Skettis |q 10847 |goto Shattrath City 52.54,21.01
+  collect Eye of Veil Reskk##185200 |q 10847 |goto Terokkar Forest 50.12,19.37
 step
   note Use the Violet Scrying Crystal near underground sources of water in the Master's Cellar and return to Archmage Alturus outside of Karazhan.
   get Arcane Disturbances |q 9824 |goto Deadwind Pass 53.2,90.22
 step
   note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
-  get Restless Activity |q 9825 |goto Deadwind Pass 47.28,75.21
+  kill Restless Shade##7370 |q 9825 |goto Deadwind Pass 51.97,78.4
 step
   talk Rilak the Redeemed##22292
   turnin The Eyes of Skettis##10847 |goto Shattrath City 52.54,21.01
@@ -207,7 +207,7 @@ step
   get The Second and Third Fragments |q 9832 |goto Shattrath City 54.75,44.32
 step
   note Go to Manaforge Duro and retrieve the Sunfury Military Briefing and the Sunfury Arcane Briefing from the Sunfury units stationed there. Return to Exarch Orellis when you've completed this task.
-  get Sunfury Briefings |q 10328 |goto Netherstorm 32.07,64.18
+  kill Sunfury Centurion##20140 |q 10328 |goto Netherstorm 59.3,66.49
 step
   talk Kirrik the Awakened##22272
   turnin Veil Lithic: Preemptive Strike##10861 |goto Terokkar Forest 37.45,51.54
@@ -306,7 +306,7 @@ step
   accept Borak, Son of Oronok##10546 |goto Shadowmoon Valley 53.95,23.52
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  get Socrethar's Shadow |q 10407 |goto Netherstorm 32.04,64.18
+  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43
 step
   talk Anchorite Karja##19467
   turnin Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
@@ -333,13 +333,13 @@ step
   accept Of Thistleheads and Eggs...##10547 |goto Shadowmoon Valley 47.56,57.18
 step
   note Grom'tor, Son of Oronok at Coilskar Point in Shadowmoon Valley wants you to recover the First Fragment of the Cipher of Damnation.
-  get The Cipher of Damnation - Grom'tor's Charge |q 10522 |goto Shadowmoon Valley 44.62,23.66
+  collect Coilskar Chest##184716 |q 10522 |goto Shadowmoon Valley 47.92,26.7
 step
   note Seek out and slay Painmistress Gabrissa at Illidari Point and return to the corpse of Ar'tor, Son of Oronok with the Crystalline Key.
-  get Demonic Crystal Prisons |q 10528 |goto Shadowmoon Valley 29.63,50.4
+  kill Painmistress Gabrissa##21309 |q 10528 |goto Shadowmoon Valley 28.3,47.61
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  get Of Thistleheads and Eggs... |q 10547 |goto Shadowmoon Valley 47.56,57.18
+  collect Rotten Arakkoa Egg##184795 |q 10547 |goto Shadowmoon Valley 44.15,57.51
 step
   talk Ishanah##18538
   turnin Ishanah's Help##10410 |goto Shattrath City 23.97,29.73
@@ -366,7 +366,7 @@ step
   accept The Bundle of Bloodthistle##10550 |goto Shattrath City 63.95,70.03
 step
   note The Spirit of Ar'tor at Illidari Point in Shadowmoon Valley wants you to recover Lohn'goron, Bow of the Torn-heart from the demons of the area.
-  get Lohn'goron, Bow of the Torn-heart |q 10537 |goto Shadowmoon Valley 29.53,50.52
+  kill Illidari Dreadbringer##19799 |q 10537 |goto Shadowmoon Valley 31.44,55.67
 step
   talk Ishanah##18538
   turnin Deathblow to the Legion##10409 |goto Shattrath City 23.97,29.73
@@ -405,7 +405,7 @@ step
   accept The Shadowmoon Shuffle##10576 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover 6 pieces of Eclipsion Armor.
-  get The Shadowmoon Shuffle |q 10576 |goto Shadowmoon Valley 47.56,57.18
+  kill Eclipsion Centurion##19792 |q 10576 |goto Shadowmoon Valley 47.18,67.6
 step
   talk Oronok Torn-heart##21183
   turnin The Cipher of Damnation - The Second Fragment Recovered##10541 |goto Shadowmoon Valley 53.95,23.52
@@ -423,7 +423,7 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  get The Cipher of Damnation - Borak's Charge |q 10578 |goto Shadowmoon Valley 47.56,57.18
+  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7
 step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18

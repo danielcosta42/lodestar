@@ -11,19 +11,19 @@ step
   accept Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
 step
   note Acquire a Black Drake's Heart for Sigrun Ironhew.
-  get Fiery Blaze Enchantments |q 706 |goto Badlands 53.8,43.3
+  kill Scalding Whelp##2725 |q 706 |goto Badlands 81.39,37.38
 step
   talk Sigrun Ironhew##2860
   accept Mirages##718 |goto Badlands 53.8,43.3
 step
   note Retrieve the Supply Crate for Sigrun Ironhew.
-  get Mirages |q 718 |goto Badlands 53.8,43.3
+  collect Excavation Supply Crate##2867 |q 718 |goto Badlands 66.92,23.45
 step
   talk Prospector Ryedol##2910
   accept A Dwarf and His Tools##719 |goto Badlands 53.42,43.39
 step
   note Find Ryedol's Lucky Pick and return it to Prospector Ryedol south of Hammertoe's Dig Site.
-  get A Dwarf and His Tools |q 719 |goto Badlands 53.42,43.39
+  kill Shadowforge Tunneler##2739 |q 719 |goto Badlands 53.43,32.7
 step
   talk Prospector Ryedol##2910
   accept A Sign of Hope##721 |goto Badlands 53.42,43.39
@@ -35,19 +35,19 @@ step
   accept Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
 step
   note Bring 4 Buzzard Wings to Rigglefuzz.
-  get Barbecued Buzzard Wings |q 703 |goto Badlands 42.39,52.93
+  kill Carrion Vulture##1809 |q 703 |goto Western Plaguelands 32.26,62.39
 step
   talk Rigglefuzz##2817
   accept Pearl Diving##705 |goto Badlands 42.39,52.93
 step
   note Bring 9 Blue Pearls to Rigglefuzz in the Badlands.
-  get Pearl Diving |q 705 |goto Badlands 42.39,52.93
+  kill Saltscale Warrior##871 |q 705 |goto Stranglethorn Vale 24.94,24.25
 step
   talk Martek the Exiled##4618
   accept Indurium##1108 |goto Badlands 42.22,52.69
 step
   note Bring 10 Indurium Flakes to Martek the Exiled in the Badlands.
-  get Indurium |q 1108 |goto Badlands 42.22,52.69
+  kill Stonevault Seer##2892 |q 1108 |goto Badlands 64.82,43.51
 step
   talk Rigglefuzz##2817
   accept Flash Bomb Recipe##1559 |goto Badlands 42.39,52.93
@@ -56,19 +56,19 @@ step
   accept Power Stones##2418 |goto Badlands 42.39,52.93
 step
   note Bring 8 Dentrium Power Stones and 8 An'Alleum Power Stones to Rigglefuzz in the Badlands.
-  get Power Stones |q 2418 |goto Badlands 42.39,52.93
+  kill Shadowforge Surveyor##4844 |q 2418 |goto Loch Modan 38.32,88.59
 step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##710 |goto Badlands 25.95,44.87
 step
   note Find 10 Small Stone Shards and bring them to Lotwil Veriatus in the Badlands.
-  get Study of the Elements: Rock |q 710 |goto Badlands 25.95,44.87
+  kill Lesser Rock Elemental##2735 |q 710 |goto Badlands 19.26,43.19
 step
   talk Lotwil Veriatus##2921
   accept Coolant Heads Prevail##713 |goto Badlands 25.95,44.87
 step
   note Find Frost Oil and bring it to Lotwil Veriatus in Badlands.
-  get Coolant Heads Prevail |q 713 |goto Badlands 25.95,44.87
+  kill Vilebranch Witch Doctor##2640 |q 713 |goto The Hinterlands 67.33,68.58
 step
   talk Jarkal Mossmeld##6868
   accept Translating the Journal##2338 |goto Badlands 2.42,46.06
@@ -80,13 +80,13 @@ step
   accept The Lost Fragments##692 |goto Badlands 51.39,76.87
 step
   note Bring the Torn Scroll Fragment, the Crumpled Scroll Fragment and the Singed Scroll Fragment to Theldurin the Lost.
-  get The Lost Fragments |q 692 |goto Badlands 51.39,76.87
+  kill Enraged Rock Elemental##2791 |q 692 |goto Badlands 54.52,83.91
 step
   talk Theldurin the Lost##2785
   accept Solution to Doom##709 |goto Badlands 51.39,76.87
 step
   note Bring the Tablet of Ryun'eh to Theldurin the Lost.
-  get Solution to Doom |q 709 |goto Badlands 51.39,76.87
+  collect Ancient Chest##126260 |q 709 |goto Loch Modan 38.57,93.18
 step
   talk Sigrun Ironhew##2860
   turnin Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
@@ -104,13 +104,13 @@ step
   accept Scrounging##733 |goto Badlands 53.8,43.3
 step
   note Get 7 pieces of Scrap Metal for Sigrun.
-  get Scrounging |q 733 |goto Badlands 53.8,43.3
+  kill Dustbelcher Ogre##2701 |q 733 |goto Badlands 61.95,68.44
 step
   talk Garek##2888
   accept Tremors of the Earth##732 |goto Badlands 61.94,54.26
 step
   note Retrieve the Sign of the Earth for Garek.
-  get Tremors of the Earth |q 732 |goto Badlands 61.94,54.26
+  kill Boss Tho'grun##2944 |q 732 |goto Badlands 12.62,75.49
 step
   talk Rigglefuzz##2817
   turnin Pearl Diving##705 |goto Badlands 42.39,52.93
@@ -140,13 +140,13 @@ step
   accept Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
   note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
-  get Study of the Elements: Rock |q 711 |goto Badlands 25.95,44.87
+  kill Rock Elemental##92 |q 711 |goto Badlands 40.97,77.75
 step
   talk Lotwil Veriatus##2921
   accept Gyro... What?##714 |goto Badlands 25.95,44.87
 step
   note Bring a Gyrochronatom to Lotwil Veriatus in the Badlands.
-  get Gyro... What? |q 714 |goto Badlands 25.95,44.87
+  kill Venture Co. Tinkerer##677 |q 714 |goto Stranglethorn Vale 41.97,44.64
 step
   talk Jarkal Mossmeld##6868
   turnin Translating the Journal##2338 |goto Badlands 2.42,46.06
@@ -196,13 +196,13 @@ step
   accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
 step
   note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
-  get Study of the Elements: Rock |q 712 |goto Badlands 25.95,44.87
+  kill Greater Rock Elemental##2736 |q 712 |goto Badlands 6.57,82.27
 step
   talk Lucien Tosselwrench##2920
   accept Liquid Stone##715 |goto Badlands 25.82,44.24
 step
   note Bring a Healing Potion and a Lesser Invisibility Potion to Lucien Tosselwrench in the Badlands.
-  get Liquid Stone |q 715 |goto Badlands 25.82,44.24
+  kill Flesh Eater##3 |q 715 |goto Duskwood 23.81,38.2
 step
   talk Garek##2888
   turnin Tremors of the Earth##717 |goto Badlands 61.94,54.26

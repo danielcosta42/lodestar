@@ -31,7 +31,7 @@ step
   get Arcane Disturbances |q 9824 |goto Deadwind Pass 53.2,90.22
 step
   note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
-  get Restless Activity |q 9825 |goto Deadwind Pass 47.28,75.21
+  kill Restless Shade##7370 |q 9825 |goto Deadwind Pass 51.97,78.4
 step
   talk Wravien##16813
   turnin Medivh's Journal##9630 |goto Karazhan - Raid -1,-1
@@ -169,7 +169,7 @@ step
   accept Eminence Among the Violet Eye##10728 |goto Deadwind Pass 47.24,74.99
 step
   note Obtain Medivh's Journal and return to Kamsis at the Guardian's Library in Karazhan.
-  get The Shade of Aran |q 9640 |goto Karazhan - Raid -1,-1
+  kill Shade of Aran##16524 |q 9640 |goto Karazhan - Raid -1,-1
 step
   note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
   get Entry Into Karazhan |q 9831 |goto Shattrath City 54.75,44.32
@@ -226,7 +226,7 @@ step
   accept The Master's Touch##9836 |goto Shattrath City 54.75,44.32
 step
   note Archmage Alturus wants you to go to the mountains south of Karazhan in Deadwind Pass and retrieve a Charred Bone Fragment.
-  get Digging Up the Past |q 9680 |goto Deadwind Pass 47.28,75.21
+  collect Charred Bone Fragment##181963 |q 9680 |goto Deadwind Pass 45.0,78.96
 step
   talk Archmage Alturus##17613
   turnin Digging Up the Past##9680 |goto Deadwind Pass 47.28,75.21
@@ -268,7 +268,7 @@ step
   accept Assessing the Situation##9840 |goto Deadwind Pass 47.28,75.21
 step
   note Go to the Master's Terrace in Karazhan and use Kalynna's Urn to summon Nightbane. Retrieve the Faint Arcane Essence from Nightbane's corpse and bring it to Archmage Alturus.
-  get Nightbane |q 9644 |goto Netherstorm 32.22,63.6
+  kill Nightbane##17225 |q 9644 |goto Karazhan - Raid -1,-1
 step
   talk Archmage Alturus##17613
   turnin Nightbane##9644 |goto Deadwind Pass 47.28,75.21
@@ -280,7 +280,7 @@ step
   accept Keanna's Log##9843 |goto Karazhan - Raid -1,-1
 step
   note Search the Guest Chambers inside Karazhan for Keanna's Log and bring it to Archmage Alturus outside Karazhan.
-  get Keanna's Log |q 9843 |goto Karazhan - Raid -1,-1
+  collect Keanna's Log##182199 |q 9843 |goto Karazhan - Raid -1,-1
 step
   talk Archmage Alturus##17613
   turnin Keanna's Log##9843 |goto Deadwind Pass 47.28,75.21

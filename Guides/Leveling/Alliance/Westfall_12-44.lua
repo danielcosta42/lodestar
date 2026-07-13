@@ -17,13 +17,13 @@ step
   accept The Forgotten Heirloom##64 |goto Westfall 59.95,19.36
 step
   note Farmer Furlbrow wants you to retrieve his pocket watch from the wardrobe in his farmhouse at the pumpkin farm to the West.
-  get The Forgotten Heirloom |q 64 |goto Westfall 59.95,19.36
+  collect Furlbrow's Wardrobe##290 |q 64 |goto Westfall 49.33,19.28
 step
   talk Verna Furlbrow##238
   accept Poor Old Blanchy##151 |goto Westfall 59.92,19.42
 step
   note Verna Furlbrow in Westfall wants you to bring her 8 Handfuls of Oats.
-  get Poor Old Blanchy |q 151 |goto Westfall 59.92,19.42
+  collect Sack of Oats##2724 |q 151 |goto Westfall 49.67,34.48
 step
   talk Salma Saldean##235
   turnin Westfall Stew##36 |goto Westfall 56.42,30.52
@@ -35,13 +35,13 @@ step
   accept Goretusk Liver Pie##22 |goto Westfall 56.42,30.52
 step
   note Salma Saldean needs 8 Goretusk livers to make a Goretusk Liver Pie.
-  get Goretusk Liver Pie |q 22 |goto Westfall 56.42,30.52
+  kill Goretusk##157 |q 22 |goto Westfall 43.87,56.93
 step
   talk Salma Saldean##235
   accept Westfall Stew##38 |goto Westfall 56.42,30.52
 step
   note Salma Saldean wants 3 Stringy Vulture Meat, 3 Goretusk Snouts, 3 Murloc Eyes, 3 Okra.
-  get Westfall Stew |q 38 |goto Westfall 56.42,30.52
+  kill Greater Fleshripper##154 |q 38 |goto Westfall 59.4,54.85
 step
   note Farmer Saldean wants you to kill 20 Harvest Watchers.
   kill Harvest Watcher##114 |q 9 |goto Westfall 45.61,35.13
@@ -56,7 +56,7 @@ step
   accept Patrolling Westfall##102 |goto Westfall 56.42,47.62
 step
   note Bring 8 Gnoll Paws to Captain Danuvin on Sentinel Hill.
-  get Patrolling Westfall |q 102 |goto Westfall 56.42,47.62
+  kill Riverpaw Taskmaster##98 |q 102 |goto Westfall 62.26,74.96
 step
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##135 |goto Westfall 56.33,47.52
@@ -65,7 +65,7 @@ step
   accept The Defias Brotherhood##142 |goto Westfall 56.33,47.52
 step
   note Track down the Defias Messenger in Westfall and bring his message to Stoutmantle.
-  get The Defias Brotherhood |q 142 |goto Westfall 56.33,47.52
+  kill Defias Messenger##550 |q 142 |goto Westfall 45.1,69.33
 step
   talk Gryan Stoutmantle##234
   accept Messenger to Westfall##144 |goto Westfall 56.33,47.52
@@ -74,7 +74,7 @@ step
   accept Red Leather Bandanas##153 |goto Westfall 53.98,52.98
 step
   note Bring 15 Red Leather Bandanas to Scout Galiaan at Sentinel Hill.
-  get Red Leather Bandanas |q 153 |goto Westfall 53.98,52.98
+  kill Defias Smuggler##95 |q 153 |goto Westfall 45.85,26.58
 step
   only Human
   talk Quartermaster Lewis##491
@@ -84,19 +84,19 @@ step
   accept Sweet Amber##48 |goto Westfall 44.62,80.25
 step
   note Bring Holy Spring Water to Grimbooze Thunderbrew.
-  get Sweet Amber |q 48 |goto Westfall 44.62,80.25
+  collect The Holy Spring##759 |q 48 |goto Stranglethorn Vale 28.96,61.93
 step
   talk Captain Grayson##392
   accept Keeper of the Flame##103 |goto Westfall 30.01,86.02
 step
   note Bring 5 Flasks of Oil to Captain Grayson at the Westfall Lighthouse.
-  get Keeper of the Flame |q 103 |goto Westfall 30.01,86.02
+  kill Harvest Golem##36 |q 103 |goto Westfall 47.46,36.27
 step
   talk Captain Grayson##392
   accept The Coastal Menace##104 |goto Westfall 30.01,86.02
 step
   note Bring a scale of Old Murk-Eye to Captain Grayson at the Westfall Lighthouse.
-  get The Coastal Menace |q 104 |goto Westfall 30.01,86.02
+  kill Old Murk-Eye##391 |q 104 |goto Westfall 29.27,75.95
 step
   talk Captain Grayson##392
   accept The Coast Isn't Clear##152 |goto Westfall 30.01,86.02
@@ -164,7 +164,7 @@ step
   accept Sweet Amber##49 |goto Westfall 44.62,80.25
 step
   note Grimbooze Thunderbrew wants a Sack of Barley, a Sack of Rye and a Sack of Corn.
-  get Sweet Amber |q 49 |goto Westfall 44.62,80.25
+  collect Sack of Barley##50936 |q 49 |goto Swamp of Sorrows 62.54,23.11
 step
   note Gryan Stoutmantle wants you to kill 15 Defias Pillagers and 15 Defias Looters and return to him on Sentinel Hill.
   kill Defias Pillager##589 |q 13 |goto Westfall 38.81,66.41
@@ -195,13 +195,13 @@ step
   accept The Defias Brotherhood##166 |goto Westfall 56.33,47.52
 step
   note Kill Edwin VanCleef and bring his head to Gryan Stoutmantle.
-  get The Defias Brotherhood |q 166 |goto Westfall 56.33,47.52
+  kill Edwin VanCleef##639 |q 166 |goto The Deadmines - Dungeon - The Deadmines -1,-1
 step
   talk Scout Riell##820
   accept Red Silk Bandanas##214 |goto Westfall 56.67,47.35
 step
   note Scout Riell at the Sentinel Hill Tower wants you to bring her 10 Red Silk Bandanas.
-  get Red Silk Bandanas |q 214 |goto Westfall 56.67,47.35
+  kill Defias Henchman##594 |q 214 |goto Westfall 42.88,74.49
 step
   talk Grimbooze Thunderbrew##239
   turnin Sweet Amber##49 |goto Westfall 44.62,80.25
@@ -210,7 +210,7 @@ step
   accept Sweet Amber##50 |goto Westfall 44.62,80.25
 step
   note Grimbooze Thunderbrew wants Truesilver.
-  get Sweet Amber |q 50 |goto Westfall 44.62,80.25
+  collect Solid Chest##4149 |q 50 |goto Stranglethorn Vale 41.52,50.76
 step
   note Gryan Stoutmantle wants you to kill 15 Defias Highwaymen, 5 Defias Pathstalkers and 5 Defias Knuckledusters then return to him on Sentinel Hill.
   kill Defias Highwayman##122 |q 14 |goto Westfall 48.14,79.1
@@ -231,7 +231,7 @@ step
   accept Sweet Amber##51 |goto Westfall 44.62,80.25
 step
   note Bring a Sycamore Branch to Grimbooze Thunderbrew.
-  get Sweet Amber |q 51 |goto Westfall 44.62,80.25
+  kill Cursed Sycamore##5881 |q 51 |goto Feralas 55.43,67.61
 step
   talk Grimbooze Thunderbrew##239
   turnin Sweet Amber##51 |goto Westfall 44.62,80.25
@@ -240,7 +240,7 @@ step
   accept Sweet Amber##53 |goto Westfall 44.62,80.25
 step
   note Bring Grimbooze Thunderbrew a bundle of Charred Oak.
-  get Sweet Amber |q 53 |goto Westfall 44.62,80.25
+  collect The Charred Oak##50982 |q 53 |goto Searing Gorge 54.49,50.47
 step
   talk Grimbooze Thunderbrew##239
   turnin Sweet Amber##53 |goto Westfall 44.62,80.25

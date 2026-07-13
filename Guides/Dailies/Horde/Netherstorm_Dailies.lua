@@ -15,10 +15,10 @@ step
   talk Commander Ameer##20448
   accept A Mission of Mercy##10970 |goto Netherstorm 59.5,32.38
 step
-  get Nether Gas In a Fel Fire Engine |q 10850 |goto Netherstorm 36.73,25.69
+  kill Gan'arg Mekgineer##16949 |q 10850 |goto Netherstorm 37.31,28.06
 step
   note Recover the Salvaged Ethereum Prison Key for Commander Ameer at the Protectorate Watch Post in Netherstorm.
-  get A Mission of Mercy |q 10970 |goto Netherstorm 59.5,32.38
+  kill Ethereum Assassin##20452 |q 10970 |goto Netherstorm 56.71,38.2
 step
   talk Nether-Stalker Khay'ji##19880
   turnin Assisting the Consortium##10263 |goto Netherstorm 32.44,64.21
@@ -36,7 +36,7 @@ step
   accept Ethereum Secrets##10971 |goto Netherstorm 59.5,32.38
 step
   note Obtain an Arklon Crystal Artifact and return it to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  get Consortium Crystal Collection |q 10265 |goto Netherstorm 32.44,64.21
+  kill Pentatharon##20215 |q 10265 |goto Netherstorm 42.46,72.75
 step
   note Commander Ameer at the Protectorate Watch Post in Netherstorm wants you to bring him an Ethereum Prisoner I.D. Tag.
   get Ethereum Secrets |q 10971 |goto Netherstorm 59.5,32.38
@@ -54,7 +54,7 @@ step
   accept Ethereum Prisoner I.D. Catalogue##10972 |goto Netherstorm 59.5,32.38
 step
   note Collect 10 Zaxxis Insignias and return them to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  get A Heap of Ethereals |q 10262 |goto Netherstorm 32.44,64.21
+  kill Zaxxis Raider##18875 |q 10262 |goto Netherstorm 30.13,76.56
 step
   get Ethereum Prisoner I.D. Catalogue |q 10972 |goto Netherstorm 59.5,32.38
 step
@@ -67,7 +67,7 @@ step
   talk Nether-Stalker Khay'ji##19880
   accept Another Heap of Ethereals##10308 |goto Netherstorm 32.44,64.21
 step
-  get Another Heap of Ethereals |q 10308 |goto Netherstorm 32.44,64.21
+  kill Zaxxis Raider##18875 |q 10308 |goto Netherstorm 30.13,76.56
 step
   talk Nether-Stalker Khay'ji##19880
   turnin Another Heap of Ethereals##10308 |goto Netherstorm 32.44,64.21

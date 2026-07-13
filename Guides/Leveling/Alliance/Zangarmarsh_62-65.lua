@@ -14,7 +14,7 @@ step
   accept The Zapthrottle Mote Extractor!##9636 |goto Zangarmarsh 68.65,50.21
 step
   note Bring 15 Steam Pump Parts to K. Lee Smallfry at Telredor in Zangarmarsh.
-  get The Zapthrottle Mote Extractor! |q 9636 |goto Zangarmarsh 68.65,50.21
+  collect Steam Pump Part##181871 |q 9636 |goto Zangarmarsh 81.4,40.2
 step
   talk Anchorite Ahuurn##18003
   accept The Orebor Harborage##9776 |goto Zangarmarsh 68.2,49.37
@@ -23,7 +23,7 @@ step
   accept Fulgor Spores##9777 |goto Zangarmarsh 68.63,48.73
 step
   note Bring 6 Fulgor Spores to Ruam at Telredor.
-  get Fulgor Spores |q 9777 |goto Zangarmarsh 68.63,48.73
+  collect Fulgor Spore##182116 |q 9777 |goto Zangarmarsh 67.25,50.21
 step
   talk Haalrun##18005
   accept Too Many Mouths to Feed##9781 |goto Zangarmarsh 67.81,47.91
@@ -32,7 +32,7 @@ step
   accept The Dead Mire##9782 |goto Zangarmarsh 68.34,50.08
 step
   note Bring a Dead Mire Soil Sample to Vindicator Idaar at Telredor.
-  get The Dead Mire |q 9782 |goto Zangarmarsh 68.34,50.08
+  collect Dead Mire Soil##182119 |q 9782 |goto Zangarmarsh 80.79,37.71
 step
   talk Anchorite Ahuurn##18003
   accept The Boha'mu Ruins##9786 |goto Zangarmarsh 68.2,49.37
@@ -50,7 +50,7 @@ step
   accept Withered Flesh##10355 |goto Zangarmarsh 68.63,48.73
 step
   note Gather 5 Parched Hydra Samples and 5 Withered Bog Lord Samples and bring them to Ruam at Telredor.
-  get Withered Flesh |q 10355 |goto Zangarmarsh 68.63,48.73
+  kill Parched Hydra##20324 |q 10355 |goto Zangarmarsh 82.09,41.14
 step
   note Prospector Conall at Telredor wants you to kill Sporewing.
   kill Sporewing##18280 |q 9901 |goto Zangarmarsh 78.01,45.41
@@ -74,7 +74,7 @@ step
   accept Preparing for War##9765 |goto Zangarmarsh 78.4,62.02
 step
   note Obtain Coilfang Armaments from naga at Coilfang Reservoir and return them to Ysiel Windsinger at the Cenarion Refuge in Zangarmarsh.
-  get Preparing for War |q 9765 |goto Zangarmarsh 78.4,62.02
+  kill Coilfang Engineer##17721 |q 9765 |goto The Steamvault - Dungeon -1,-1
 step
   talk Ysiel Windsinger##17841
   accept Warden Hamoot##9778 |goto Zangarmarsh 78.4,62.02
@@ -86,7 +86,7 @@ step
   accept Plants of Zangarmarsh##9802 |goto Zangarmarsh 80.32,64.17
 step
   note Bring 10 Unidentified Plant Parts to Lauranna Thar'well at the Cenarion Refuge in Zangarmarsh.
-  get Plants of Zangarmarsh |q 9802 |goto Zangarmarsh 80.32,64.17
+  kill Darkcrest Taskmaster##18086 |q 9802 |goto Zangarmarsh 62.13,67.45
 step
   talk Ysiel Windsinger##17841
   accept Failed Incursion##9876 |goto Zangarmarsh 78.4,62.02
@@ -143,7 +143,7 @@ step
   accept Stinger Venom##9830 |goto Zangarmarsh 40.85,28.66
 step
   note Bring 6 Marshlight Bleeder Venom to Puluu at the Orebor Harborage.
-  get Stinger Venom |q 9830 |goto Zangarmarsh 40.85,28.66
+  kill Marshlight Bleeder##18133 |q 9830 |goto Zangarmarsh 21.88,34.55
 step
   talk Puluu##18009
   accept Lines of Communication##9833 |goto Zangarmarsh 40.85,28.66
@@ -152,7 +152,7 @@ step
   accept Natural Armor##9834 |goto Zangarmarsh 41.61,27.28
 step
   note Bring 8 Fenclaw Hides to Maktu at the Orebor Harborage.
-  get Natural Armor |q 9834 |goto Zangarmarsh 41.61,27.28
+  kill Fenclaw Thrasher##18214 |q 9834 |goto Zangarmarsh 51.47,40.29
 step
   talk Ikuti##18008
   accept Ango'rosh Encroachment##9835 |goto Zangarmarsh 41.94,27.19
@@ -161,7 +161,7 @@ step
   accept Secrets of the Daggerfen##9848 |goto Zangarmarsh 41.21,28.67
 step
   note Bring the Daggerfen Poison Manual and a Daggerfen Poison Vial to Timothy Daniels at the Orebor Harborage.
-  get Secrets of the Daggerfen |q 9848 |goto Zangarmarsh 41.21,28.67
+  collect Daggerfen Poison Manual##182184 |q 9848 |goto Zangarmarsh 24.4,27.0
 step
   talk Puluu##18009
   accept The Terror of Marshlight Lake##9902 |goto Zangarmarsh 40.85,28.66
@@ -191,19 +191,19 @@ step
   accept Bring Me A Shrubbery!##9715 |goto Zangarmarsh 19.54,50.04
 step
   note Collect 5 Sanguine Hibiscus and return them to Gzhun'tt at Sporeggar in Zangarmarsh.
-  get Bring Me A Shrubbery! |q 9715 |goto Zangarmarsh 19.54,50.04
+  kill Bog Giant##17723 |q 9715 |goto The Underbog - Dungeon -1,-1
 step
   talk T'shu##17857
   accept Oh, It's On!##9717 |goto Zangarmarsh 19.37,49.78
 step
   note Gather an Underspore Frond and return it to T'shu at Sporeggar in Zangarmarsh.
-  get Oh, It's On! |q 9717 |goto Zangarmarsh 19.37,49.78
+  collect The Underspore##182054 |q 9717 |goto The Underbog - Dungeon -1,-1
 step
   talk Khn'nix##17866
   accept Stalk the Stalker##9719 |goto Zangarmarsh 19.65,49.7
 step
   note Bring the Brain of the Black Stalker to Khn'nix at Sporeggar in Zangarmarsh.
-  get Stalk the Stalker |q 9719 |goto Zangarmarsh 19.65,49.7
+  kill The Black Stalker##17882 |q 9719 |goto The Underbog - Dungeon -1,-1
 step
   talk Gzhun'tt##17856
   accept Now That We're Friends...##9726 |goto Zangarmarsh 19.54,50.04
@@ -212,13 +212,13 @@ step
   accept Fertile Spores##9806 |goto Zangarmarsh 19.14,49.38
 step
   note Gshaff wants you to gather 6 Fertile Spores from the various Zangarmarsh Spore Bats and Marsh Walkers. Return to Ghsaff at Sporeggar when you've completed this task.
-  get Fertile Spores |q 9806 |goto Zangarmarsh 19.14,49.38
+  kill Sporebat##18128 |q 9806 |goto Zangarmarsh 51.47,55.93
 step
   talk Msshi'fn##17924
   accept Glowcap Mushrooms##9808 |goto Zangarmarsh 19.68,52.07
 step
   note Bring 10 Glowcaps to Msshi'fn at Sporeggar in Zangarmarsh.
-  get Glowcap Mushrooms |q 9808 |goto Zangarmarsh 19.68,52.07
+  collect Glowcap##182053 |q 9808 |goto Zangarmarsh 33.37,38.97
 step
   note Slay Terrorclaw and return to Puluu at the Orebor Harborage.
   kill Terrorclaw##20477 |q 9902 |goto Zangarmarsh 22.31,45.78
@@ -239,13 +239,13 @@ step
   accept The Sporelings' Plight##9739 |goto Zangarmarsh 19.02,62.43
 step
   note Fahssn at the Spawning Glen wants you to collect 10 Mature Spore Sacs.
-  get The Sporelings' Plight |q 9739 |goto Zangarmarsh 19.02,62.43
+  collect Mature Spore Sac##182069 |q 9739 |goto Zangarmarsh 12.19,62.02
 step
   talk Fahssn##17923
   accept Natural Enemies##9743 |goto Zangarmarsh 19.02,62.43
 step
   note Fahssn at the Spawning Glen in Zangarmarsh wants you to bring him 6 Bog Lord Tendrils.
-  get Natural Enemies |q 9743 |goto Zangarmarsh 19.02,62.43
+  kill Withered Giant##18124 |q 9743 |goto Zangarmarsh 82.43,41.36
 step
   talk Fahssn##17923
   accept Sporeggar##9919 |goto Zangarmarsh 19.02,62.43
@@ -287,7 +287,7 @@ step
   accept Umbrafen Eel Filets##9780 |goto Zangarmarsh 67.64,47.87
 step
   note Noraani at Telredor wants you to bring her 8 Eel Filets.
-  get Umbrafen Eel Filets |q 9780 |goto Zangarmarsh 67.64,47.87
+  kill Umbrafen Eel##18138 |q 9780 |goto Zangarmarsh 74.74,70.34
 step
   talk Vindicator Idaar##18004
   accept An Unnatural Drought##9783 |goto Zangarmarsh 68.34,50.08
@@ -296,19 +296,19 @@ step
   accept Idols of the Feralfen##9787 |goto Zangarmarsh 68.2,49.37
 step
   note Gather 6 Feralfen Idols and return them to Anchorite Ahuurn at Telredor.
-  get Idols of the Feralfen |q 9787 |goto Zangarmarsh 68.2,49.37
+  collect Feralfen Idol##182139 |q 9787 |goto Zangarmarsh 46.17,62.39
 step
   talk Haalrun##18005
   accept Diaphanous Wings##9790 |goto Zangarmarsh 67.81,47.91
 step
   note Haalrun at Telredor wants you to bring him 8 Diaphanous Wings from any of the firefly species in Zangarmarsh.
-  get Diaphanous Wings |q 9790 |goto Zangarmarsh 67.81,47.91
+  kill Umbraglow Stinger##18132 |q 9790 |goto Zangarmarsh 73.8,70.07
 step
   talk Prospector Conall##18295
   accept Blacksting's Bane##9896 |goto Zangarmarsh 68.56,49.37
 step
   note Bring Blacksting's Stinger to Prospector Conall at Telredor.
-  get Blacksting's Bane |q 9896 |goto Zangarmarsh 68.56,49.37
+  kill Blacksting##18283 |q 9896 |goto Zangarmarsh 49.75,60.06
 step
   note Vindicator Idaar at Telredor wants you to kill 12 Withered Giants.
   kill Withered Giant##18124 |q 9783 |goto Zangarmarsh 82.43,41.36
@@ -350,13 +350,13 @@ step
   accept A Warm Welcome##9728 |goto Zangarmarsh 79.09,65.27
 step
   note Warden Hamoot at the Cenarion Refuge wants you to bring him 30 Naga Claws.
-  get A Warm Welcome |q 9728 |goto Zangarmarsh 79.09,65.27
+  kill Rajis Fyashe##18044 |q 9728 |goto Zangarmarsh 65.15,40.91
 step
   talk Ikeyen##17956
   accept A Damp, Dark Place##9788 |goto Zangarmarsh 80.4,64.16
 step
   note Look for Ikeyen's Belongings inside a cave south of Umbrafen. Return them to Ikeyen at Cenarion Refuge in Zangarmarsh.
-  get A Damp, Dark Place |q 9788 |goto Zangarmarsh 80.4,64.16
+  collect Ikeyen's Belongings##182122 |q 9788 |goto Zangarmarsh 70.49,97.94
 step
   talk Windcaller Blackhoof##18070
   accept Safeguarding the Watchers##9894 |goto Zangarmarsh 80.37,64.73
@@ -440,7 +440,7 @@ step
   accept A Question of Gluttony##9702 |goto Zangarmarsh 23.32,66.21
 step
   note Collect 10 pieces of Discarded Nutriment and then return to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get A Question of Gluttony |q 9702 |goto Zangarmarsh 23.32,66.21
+  collect Discarded Nutriment##182031 |q 9702 |goto Zangarmarsh 30.2,63.94
 step
   talk Prospector Conall##18295
   turnin Blacksting's Bane##9896 |goto Zangarmarsh 68.56,49.37
@@ -461,7 +461,7 @@ step
   accept Gathering the Reagents##9801 |goto Zangarmarsh 68.2,49.37
 step
   note Anchorite Ahuurn at Telredor wants you to bring him 4 Spore Bat Eyes and 4 Fen Strider Tentacles.
-  get Gathering the Reagents |q 9801 |goto Zangarmarsh 68.2,49.37
+  kill Sporebat##18128 |q 9801 |goto Zangarmarsh 51.47,55.93
 step
   talk Warden Hamoot##17858
   turnin A Warm Welcome##9728 |goto Zangarmarsh 79.09,65.27
@@ -500,7 +500,7 @@ step
   accept Familiar Fungi##9708 |goto Zangarmarsh 23.32,66.21
 step
   note Collect 15 Mushroom Samples and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get Familiar Fungi |q 9708 |goto Zangarmarsh 23.32,66.21
+  kill Ango'rosh Ogre##18117 |q 9708 |goto Zangarmarsh 33.71,31.19
 step
   talk Anchorite Ahuurn##18003
   turnin Gathering the Reagents##9801 |goto Zangarmarsh 68.2,49.37
@@ -509,7 +509,7 @@ step
   accept Messenger to the Feralfen##9803 |goto Zangarmarsh 68.2,49.37
 step
   note Drink Ahuurn's Elixir while standing in the Boha'mu Ruins. Speak to Elder Kuruti while you are in the form of an arakkoa.
-  get Messenger to the Feralfen |q 9803 |goto Zangarmarsh 68.2,49.37
+  kill Elder Kuruti##18197 |q 9803 |goto Zangarmarsh 44.11,69.49
 step
   talk Ysiel Windsinger##17841
   turnin Balance Must Be Preserved##9720 |goto Zangarmarsh 78.4,62.02
@@ -521,7 +521,7 @@ step
   accept Stealing Back the Mushrooms##9709 |goto Zangarmarsh 23.32,66.21
 step
   note Collect 10 Boxes of Mushrooms and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get Stealing Back the Mushrooms |q 9709 |goto Zangarmarsh 23.32,66.21
+  kill Ango'rosh Mauler##18120 |q 9709 |goto Zangarmarsh 18.89,7.03
 step
   talk Anchorite Ahuurn##18003
   turnin Messenger to the Feralfen##9803 |goto Zangarmarsh 68.2,49.37

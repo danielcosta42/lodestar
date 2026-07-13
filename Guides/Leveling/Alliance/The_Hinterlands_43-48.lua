@@ -20,7 +20,7 @@ step
   accept Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
 step
   note Bring 5 Troll Tribal Necklaces to Fraggar Thundermantle in Aerie Peak.
-  get Troll Necklace Bounty |q 2880 |goto The Hinterlands 14.83,44.57
+  kill Vilebranch Axe Thrower##2639 |q 2880 |goto The Hinterlands 46.28,65.38
 step
   talk Gryphon Master Talonaxe##5636
   accept Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
@@ -32,7 +32,7 @@ step
   accept Food for Baby##4297 |goto The Hinterlands 14.16,43.62
 step
   note Bring 5 Silvermane Stalker Flanks to Agnar Beastamer in Hinterlands.
-  get Food for Baby |q 4297 |goto The Hinterlands 14.16,43.62
+  kill Silvermane Stalker##2926 |q 4297 |goto The Hinterlands 66.75,53.46
 step
   talk Ambassador Rualeth##17223
   accept Featherbeard's Endorsement##9469 |goto The Hinterlands 15.11,47.21
@@ -62,7 +62,7 @@ step
   accept Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
 step
   note The Atal'ai Exile in The Hinterlands wants the Head of Jammal'an.
-  get Jammal'an the Prophet |q 1446 |goto The Hinterlands 33.75,75.21
+  kill Jammal'an the Prophet##5710 |q 1446 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   note Ambassador Rualeth at Aerie Peak wants you to slay Witch Doctor Mai'jin and his pet spider Tcha'kaz.
   kill Witch Doctor Mai'jin##17235 |q 9470 |goto The Hinterlands 24.63,65.58
@@ -109,7 +109,7 @@ step
   accept Rhapsody's Kalimdor Kocktail##1452 |goto The Hinterlands 26.94,48.59
 step
   note Rhapsody Shindigger in The Hinterlands wants you to bring him 3 Roc Gizzards, 3 Groddoc Livers and 3 Ironfur Livers.
-  get Rhapsody's Kalimdor Kocktail |q 1452 |goto The Hinterlands 26.94,48.59
+  kill Roc##5428 |q 1452 |goto Tanaris 49.31,33.06
 step
   talk Elder Highpeak##15559
   turnin Highpeak the Elder##8643 |goto The Hinterlands 50.0,48.05

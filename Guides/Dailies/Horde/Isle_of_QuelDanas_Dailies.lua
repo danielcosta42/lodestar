@@ -100,10 +100,10 @@ step
   kill Pit Overlord##25031 |q 11533 |goto Isle of Quel'Danas 53.28,71.0
 step
   note Smith Hauthaa in Sun's Reach Armory wants you to kill Darkspine Myrmidon to the east and use their keys to steal three pieces of the ore from their chests.
-  get Making Ready |q 11535 |goto Isle of Quel'Danas 50.58,40.77
+  collect Darkspine Ore Chest##187264 |q 11535 |goto Isle of Quel'Danas 61.56,58.84
 step
   note Smith Hauthaa in Sun's Reach Armory wants you to kill Darkspine Myrmidon to the east and use their keys to steal three pieces of the ore from their chests.
-  get Don't Stop Now.... |q 11536 |goto Isle of Quel'Danas 50.58,40.77
+  collect Darkspine Ore Chest##187264 |q 11536 |goto Isle of Quel'Danas 61.56,58.84
 step
   note Harbinger Inuuro wants you to slay 6 Burning Legion Demons and the Emissary of Hate in Dawning Square. Use the Shattered Sun Banner to impale the Emissary of Hate's corpse.
   get The Battle Must Go On |q 11537 |goto Isle of Quel'Danas 47.65,35.06
@@ -130,19 +130,19 @@ step
   get Ata'mal Armaments |q 11544 |goto Isle of Quel'Danas 50.58,40.77
 step
   note Mar'nah at the Sun's Reach Harbor wants you to gather 5 Bloodberries from the bushes found on Quel'Danas.
-  get Open for Business |q 11546 |goto Isle of Quel'Danas 51.49,32.46
+  collect Bloodberry Bush##187333 |q 11546 |goto Isle of Quel'Danas 42.2,38.9
 step
   note Astromancer Darnarian in the Sun's Reach Sanctum wants you to use the Astromancer's Crystal at the Bloodcrystal, the Dawning Square portal, and the naga shrine at Greengill Coast.
   get Know Your Ley Lines |q 11547 |goto Isle of Quel'Danas 48.51,44.42
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! With the essence in hand, my mages will be able to dismantle Agamath, ultimately collapsing the gateway and unlocking the way further into the sunwell.
-  get Agamath, the First Gate |q 11551 |goto Isle of Quel'Danas 50.14,28.24
+  kill Lady Vashj##21212 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! Rohendor cannot withstand the combined force of our mages!
-  get Rohendor, the Second Gate |q 11552 |goto Isle of Quel'Danas 50.14,28.24
+  kill Lady Vashj##21212 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1
 step
   note Bring to me the essence of immortals ÔÇö found only on the most powerful beings of this world ÔÇö and Archonisus is sure to crumble!
-  get Archonisus, the Final Gate |q 11553 |goto Isle of Quel'Danas 50.14,28.24
+  kill Lady Vashj##21212 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1
 step
   talk Captain Theris Dawnhearth##24967
   turnin The Sanctum Wards##11496 |goto Isle of Quel'Danas 47.47,30.56

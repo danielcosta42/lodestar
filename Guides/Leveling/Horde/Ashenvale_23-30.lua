@@ -17,19 +17,19 @@ step
   accept Naga at the Zoram Strand##6442 |goto Ashenvale 11.69,34.91
 step
   note Bring 20 Wrathtail Heads to Marukai along the Zoram Strand.
-  get Naga at the Zoram Strand |q 6442 |goto Ashenvale 11.69,34.91
+  kill Wrathtail Myrmidon##3711 |q 6442 |goto Ashenvale 7.2,14.49
 step
   talk Mitsuwa##12721
   accept Troll Charm##6462 |goto Ashenvale 11.65,34.85
 step
   note Bring 8 Troll Charms to Mitsuwa at the Zoram'gar Outpost.
-  get Troll Charm |q 6462 |goto Ashenvale 11.65,34.85
+  collect Troll Chest##178144 |q 6462 |goto Ashenvale 40.76,33.64
 step
   talk Je'neu Sancrea##12736
   accept The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
 step
   note Bring 20 Sapphires of Aku'Mai to Je'neu Sancrea in Ashenvale.
-  get The Essence of Aku'Mai |q 6563 |goto Ashenvale 11.56,34.29
+  collect Sapphire of Aku'Mai##178184 |q 6563 |goto Darkshore 31.63,92.81
 step
   talk Je'neu Sancrea##12736
   accept Allegiance to the Old Gods##6565 |goto Ashenvale 11.56,34.29
@@ -38,7 +38,7 @@ step
   accept Amongst the Ruins##6921 |goto Ashenvale 11.56,34.29
 step
   note Bring the Fathom Core to Je'neu Sancrea at Zoram'gar Outpost, Ashenvale.
-  get Amongst the Ruins |q 6921 |goto Ashenvale 11.56,34.29
+  collect Fathom Stone##177964 |q 6921 |goto Blackfathom Deeps - Dungeon -1,-1
 step
   note Kill Lorgus Jett in Blackfathom Deeps and then return to Je'neu Sancrea in Ashenvale.
   kill Lorgus Jett##12902 |q 6565 |goto Blackfathom Deeps - Dungeon -1,-1
@@ -56,7 +56,7 @@ step
   accept Satyr Horns##6441 |goto Ashenvale 73.06,61.48
 step
   note Collect 16 Satyr Horns for Pixel in Splintertree Post.
-  get Satyr Horns |q 6441 |goto Ashenvale 73.06,61.48
+  kill Xavian Rogue##3752 |q 6441 |goto Ashenvale 78.4,45.31
 step
   talk Valusha##17355
   accept Destroy the Legion##9534 |goto Ashenvale 73.23,60.39

@@ -14,13 +14,13 @@ step
   accept Expedition Salvation##3881 |goto Un'Goro Crater 43.95,7.14
 step
   note Bring a Crate of Foodstuffs and Research Equipment to Williden Marshal in Un'Goro Crater.
-  get Expedition Salvation |q 3881 |goto Un'Goro Crater 43.95,7.14
+  collect Crate of Foodstuffs##161526 |q 3881 |goto Un'Goro Crater 68.54,36.54
 step
   talk Spark Nilminer##9272
   accept Roll the Bones##3882 |goto Un'Goro Crater 43.5,7.42
 step
   note Bring 8 Dinosaur Bones to Spark Nilminer in Un'Goro Crater.
-  get Roll the Bones |q 3882 |goto Un'Goro Crater 43.5,7.42
+  kill Stegodon##6501 |q 3882 |goto Un'Goro Crater 35.52,72.3
 step
   talk Hol'anyee Marshal##9271
   accept Alien Ecology##3883 |goto Un'Goro Crater 43.89,7.24
@@ -43,7 +43,7 @@ step
   talk Larion##9118
   accept Bloodpetal Zapper##4148 |goto Un'Goro Crater 45.54,8.72
 step
-  get Bloodpetal Zapper |q 4148 |goto Un'Goro Crater 45.54,8.72
+  kill Devilsaur##6498 |q 4148 |goto Un'Goro Crater 34.6,23.68
 step
   talk Karna Remtravel##9618
   accept Chasing A-Me 01##4243 |goto Un'Goro Crater 46.38,13.44
@@ -52,7 +52,7 @@ step
   accept Crystals of Power##4284 |goto Un'Goro Crater 41.92,2.7
 step
   note Collect 7 Power Crystals of each color: red, blue, yellow, and green. Bring them to J.D. Collie at Marshal's Refuge.
-  get Crystals of Power |q 4284 |goto Un'Goro Crater 41.92,2.7
+  kill Devilsaur##6498 |q 4284 |goto Un'Goro Crater 34.6,23.68
 step
   talk Spraggle Frock##9997
   accept Lost!##4492 |goto Un'Goro Crater 43.62,8.5
@@ -61,7 +61,7 @@ step
   accept Shizzle's Flyer##4503 |goto Un'Goro Crater 44.23,11.59
 step
   note Collect 8 Webbed Diemetradon Scales and 8 Webbed Pterrordax Scales for Shizzle in Marshal's Refuge.
-  get Shizzle's Flyer |q 4503 |goto Un'Goro Crater 44.23,11.59
+  kill Young Diemetradon##9162 |q 4503 |goto Un'Goro Crater 66.12,33.9
 step
   talk A-Me 01##9623
   turnin Chasing A-Me 01##4243 |goto Un'Goro Crater 67.66,16.76
@@ -70,7 +70,7 @@ step
   accept Chasing A-Me 01##4244 |goto Un'Goro Crater 67.66,16.76
 step
   note Find a Mithril Casing and return to A-Me 01 in Un'Goro Crater.
-  get Chasing A-Me 01 |q 4244 |goto Un'Goro Crater 67.66,16.76
+  kill Clunk##8447 |q 4244 |goto Searing Gorge 34.69,51.89
 step
   note Hunt 5 Bloodpetal Lashers, 5 Bloodpetal Threshers, 5 Bloodpetal Flayers and 5 Bloodpetal Trappers for Larion at Marshal's Refuge.
   kill Bloodpetal Lasher##6509 |q 4145 |goto Un'Goro Crater 67.86,31.66
@@ -91,19 +91,19 @@ step
   accept The Apes of Un'Goro##4289 |goto Un'Goro Crater 71.64,75.96
 step
   note Bring 2 Un'Goro Gorilla Pelts, 2 Un'Goro Stomper Pelts, and 2 Un'Goro Thunderer Pelts to Torwa Pathfinder at the entrance of Un'Goro Crater.
-  get The Apes of Un'Goro |q 4289 |goto Un'Goro Crater 71.64,75.96
+  kill Un'Goro Gorilla##6514 |q 4289 |goto Un'Goro Crater 67.05,16.62
 step
   talk Torwa Pathfinder##9619
   accept The Fare of Lar'korwi##4290 |goto Un'Goro Crater 71.64,75.96
 step
   note Find the carcass of Lar'korwi's freshest kill and steal a Piece of Threshadon Carcass before returning to Torwa Pathfinder in Un'Goro Crater.
-  get The Fare of Lar'korwi |q 4290 |goto Un'Goro Crater 71.64,75.96
+  collect Fresh Threshadon Carcass##166863 |q 4290 |goto Un'Goro Crater 68.74,56.71
 step
   talk Torwa Pathfinder##9619
   accept Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
 step
   note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.
-  get Bloodpetal Poison |q 9052 |goto Un'Goro Crater 71.64,75.96
+  kill Gorishi Wasp##6551 |q 9052 |goto Un'Goro Crater 50.14,76.41
 step
   talk J.D. Collie##9117
   turnin A Gnome's Assistance##3941 |goto Un'Goro Crater 41.92,2.7
@@ -184,7 +184,7 @@ step
   accept The Mighty U'cha##4301 |goto Un'Goro Crater 71.64,75.96
 step
   note Bring U'cha's Pelt to Torwa Pathfinder at the entrance of Un'Goro Crater.
-  get The Mighty U'cha |q 4301 |goto Un'Goro Crater 71.64,75.96
+  kill U'cha##9622 |q 4301 |goto Un'Goro Crater 68.14,12.56
 step
   talk Torwa Pathfinder##9619
   accept Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96

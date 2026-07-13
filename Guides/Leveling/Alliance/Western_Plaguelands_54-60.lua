@@ -44,7 +44,7 @@ step
   accept A Strange Historian##5153 |goto Western Plaguelands 49.17,78.57
 step
   note Bring Joseph's Wedding Ring to Chromie.
-  get A Strange Historian |q 5153 |goto Western Plaguelands 49.17,78.57
+  collect Joseph Redpath's Monument##176145 |q 5153 |goto Western Plaguelands 49.7,76.76
 step
   talk Myranda the Hag##11872
   accept Scarlet Subterfuge##5862 |goto Western Plaguelands 50.79,77.85
@@ -83,7 +83,7 @@ step
   accept Barov Family Fortune##5343 |goto Western Plaguelands 43.45,83.73
 step
   note Venture to the Scholomance and recover the Barov family fortune. Four deeds make up this fortune: The Deed to Caer Darrow; The Deed to Brill; The Deed to Tarren Mill; and The Deed to Southshore. Return to Weldon Barov when you have completed this task.
-  get Barov Family Fortune |q 5343 |goto Western Plaguelands 43.45,83.73
+  collect The Deed to Brill##176484 |q 5343 |goto Scholomance - Dungeon -1,-1
 step
   talk Argent Officer Pureheart##10840
   accept Argent Dawn Commission##5401 |goto Western Plaguelands 42.97,83.55
@@ -110,13 +110,13 @@ step
   accept A Plague Upon Thee##5903 |goto Western Plaguelands 43.42,84.83
 step
   note Use the Empty Termite Jar on the Termite Mounds in Eastern Plaguelands. After you've gathered 100 Plagueland Termites, return to Nathaniel Dumah at Chillwind Camp in Western Plaguelands.
-  get A Plague Upon Thee |q 5903 |goto Western Plaguelands 43.42,84.83
+  collect Large Termite Mound##177464 |q 5903 |goto Eastern Plaguelands 34.82,29.64
 step
   talk Flint Shadowmore##12425
   accept The Eastern Plagues##6185 |goto Western Plaguelands 43.61,84.51
 step
   note Scour the Eastern Plaguelands for clues as to the "Blightcaller" and the missing SI:7 agents. If you find any SI:7 Insignias, return them to Flint Shadowmore at Chillwind Camp.
-  get The Eastern Plagues |q 6185 |goto Western Plaguelands 43.61,84.51
+  collect Mangled Human Remains##177806 |q 6185 |goto Eastern Plaguelands 28.81,79.84
 step
   only Paladin
   talk Commander Ashlam Valorfist##10838
@@ -124,13 +124,13 @@ step
 step
   only Paladin
   note Collect 20 Minion's Scourgestones and bring them to High Priest Thel'danis in the Western Plaguelands.
-  get Dispelling Evil |q 8414 |goto Western Plaguelands 42.7,84.03
+  kill Skeletal Flayer##1783 |q 8414 |goto Western Plaguelands 38.99,58.49
 step
   talk Anchorite Truuen##17238
   accept The Mark of the Lightbringer##9474 |goto Western Plaguelands 42.91,84.5
 step
   note Obtain the Mark of the Lightbringer and return it to Anchorite Truuen at Chillwind Camp in the Western Plaguelands.
-  get The Mark of the Lightbringer |q 9474 |goto Western Plaguelands 42.91,84.5
+  collect Holy Coffer##181629 |q 9474 |goto Western Plaguelands 55.19,23.51
 step
   talk Eva Sarkhoff##11216
   accept Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
@@ -139,13 +139,13 @@ step
   accept The Lich, Ras Frostwhisper##5466 |goto Western Plaguelands 70.57,74.11
 step
   note Find Ras Frostwhisper in the Scholomance. When you have found him, use the Soulbound Keepsake on his undead visage. Should you succeed in reverting him to a mortal, strike him down and recover the Human Head of Ras Frostwhisper. Take the head back to Magistrate Marduke.
-  get The Lich, Ras Frostwhisper |q 5466 |goto Western Plaguelands 70.57,74.11
+  kill Ras Frostwhisper##10508 |q 5466 |goto Scholomance - Dungeon -1,-1
 step
   talk Artist Renfray##11936
   accept Of Love and Family##5848 |goto Western Plaguelands 65.77,75.37
 step
   note Travel to Stratholme, in the northern part of the Plaguelands. It is in the Scarlet Bastion that you will find the painting 'Of Love and Family,' hidden behind another painting depicting the twin moons of our world.
-  get Of Love and Family |q 5848 |goto Western Plaguelands 65.77,75.37
+  collect Unfinished Painting##177287 |q 5848 |goto Stratholme - Dungeon -1,-1
 step
   talk Elder Moonstrike##15594
   accept Moonstrike the Elder##8714 |goto Western Plaguelands 69.18,73.45
@@ -193,7 +193,7 @@ step
   accept Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
 step
   note Locate 5 Andorhal Watches, found in lockboxes amongst the rubble of the city. Return with them to Chromie in the Andorhal Inn, Western Plaguelands.
-  get Counting Out Time |q 4972 |goto Western Plaguelands 39.46,66.76
+  collect Small Lockbox##175802 |q 4972 |goto Western Plaguelands 42.84,69.78
 step
   talk Chromie##10667
   accept The Annals of Darrowshire##5154 |goto Western Plaguelands 39.46,66.76
@@ -263,7 +263,7 @@ step
   accept The Last Barov##5344 |goto Western Plaguelands 43.45,83.73
 step
   note Travel to the Bulwark - Horde territory - and assassinate Alexi Barov. Take his head and return to Weldon Barov.
-  get The Last Barov |q 5344 |goto Western Plaguelands 43.45,83.73
+  kill Alexi Barov##11022 |q 5344 |goto Tirisfal Glades 83.06,71.6
 step
   talk Alchemist Arbington##11056
   accept The Key to Scholomance##5505 |goto Western Plaguelands 42.66,83.77
@@ -280,7 +280,7 @@ step
 step
   only Paladin
   note Bring the voodoo feathers to Ashlam Valorfist.
-  get Forging the Mightstone |q 8418 |goto Western Plaguelands 42.7,84.03
+  kill Gasher##5713 |q 8418 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   talk Eva Sarkhoff##11216
   turnin Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
@@ -295,7 +295,7 @@ step
   accept Krastinov's Bag of Horrors##5515 |goto Western Plaguelands 70.22,73.71
 step
   note Locate Jandice Barov in the Scholomance and destroy her. From her corpse recover Krastinov's Bag of Horrors. Return the bag to Eva Sarkhoff.
-  get Krastinov's Bag of Horrors |q 5515 |goto Western Plaguelands 70.22,73.71
+  kill Jandice Barov##10503 |q 5515 |goto Scholomance - Dungeon -1,-1
 step
   talk Elder Meadowrun##15602
   turnin Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
@@ -396,7 +396,7 @@ step
   accept Skeletal Fragments##5537 |goto Western Plaguelands 42.66,83.77
 step
   note Bring 15 Skeletal Fragments to Alchemist Arbington at Chillwind Point, Western Plaguelands.
-  get Skeletal Fragments |q 5537 |goto Western Plaguelands 42.66,83.77
+  kill Skeletal Flayer##1783 |q 5537 |goto Western Plaguelands 38.99,58.49
 step
   talk Eva Sarkhoff##11216
   turnin Kirtonos the Herald##5384 |goto Western Plaguelands 70.22,73.71
@@ -405,7 +405,7 @@ step
   accept The Human, Ras Frostwhisper##5461 |goto Western Plaguelands 70.57,74.11
 step
   note Travel to the Arathi Highlands, to the ruins of Stromgarde. Search Stromgarde for a Keepsake of Remembrance. If you find such an item, return with it to Magistrate Marduke.
-  get The Human, Ras Frostwhisper |q 5461 |goto Western Plaguelands 70.57,74.11
+  collect Keepsake of Remembrance##176630 |q 5461 |goto Arathi Highlands 19.33,66.05
 step
   talk Alchemist Arbington##11056
   turnin Skeletal Fragments##5537 |goto Western Plaguelands 42.66,83.77

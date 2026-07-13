@@ -14,7 +14,7 @@ step
   accept Voren'thal's Visions##10024 |goto Shattrath City 54.98,22.54
 step
   note Bring 8 Dampscale Basilisk Eyes to Arcanist Adyria in Shattrath City.
-  get Voren'thal's Visions |q 10024 |goto Shattrath City 54.98,22.54
+  kill Dampscale Basilisk##18461 |q 10024 |goto Terokkar Forest 38.39,11.68
 step
   talk Oloraak##19045
   accept Can't Stay Away##10180 |goto Shattrath City 57.98,15.16
@@ -23,7 +23,7 @@ step
   accept The Eyes of Skettis##10847 |goto Shattrath City 52.54,21.01
 step
   note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
-  get The Eyes of Skettis |q 10847 |goto Shattrath City 52.54,21.01
+  collect Eye of Veil Reskk##185200 |q 10847 |goto Terokkar Forest 50.12,19.37
 step
   talk Rilak the Redeemed##22292
   accept Countdown to Doom##11028 |goto Shattrath City 52.54,21.01
@@ -38,7 +38,7 @@ step
   accept The Outcast's Plight##10917 |goto Shattrath City 46.21,22.36
 step
   note Bring 30 Arakkoa Feathers to Vekax in Shattrath's Lower City.
-  get The Outcast's Plight |q 10917 |goto Shattrath City 46.21,22.36
+  kill Shienor Talonite##18449 |q 10917 |goto Terokkar Forest 50.89,19.63
 step
   talk Vindicator Aeus##23270
   accept Assist Exarch Orelis##11038 |goto Shattrath City 47.24,26.26
@@ -98,13 +98,13 @@ step
   accept Crackin' Some Skulls##10009 |goto Shattrath City 77.26,34.85
 step
   note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
-  get Crackin' Some Skulls |q 10009 |goto Shattrath City 77.26,34.85
+  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4
 step
   talk Wind Trader Lathrai##18484
   accept A Personal Favor##10112 |goto Shattrath City 72.22,30.75
 step
   note Retrieve 5 of Lathrai's Stolen Goods. Return them to Wind Trader Lathrai near the World's End Tavern in the Lower City section of Shattrath City.
-  get A Personal Favor |q 10112 |goto Shattrath City 72.22,30.75
+  kill Skithian Dreadhawk##18452 |q 10112 |goto Terokkar Forest 31.41,42.35
 step
   talk Apprentice Tasserel##23948
   accept Archmage Alturus##11216 |goto Shattrath City 75.28,33.46
@@ -113,19 +113,19 @@ step
   accept Strained Supplies##10017 |goto Shattrath City 64.48,15.1
 step
   note Bring 8 Dreadfang Venom Sacs to Sha'nir in Shattrath City.
-  get Strained Supplies |q 10017 |goto Shattrath City 64.48,15.1
+  kill Dreadfang Lurker##18466 |q 10017 |goto Terokkar Forest 46.75,30.29
 step
   talk Sha'nir##18597
   accept A Cure for Zahlia##10020 |goto Shattrath City 64.48,15.1
 step
   note Bring Stonegazer's Blood to Sha'nir in Shattrath City.
-  get A Cure for Zahlia |q 10020 |goto Shattrath City 64.48,15.1
+  kill Stonegazer##18648 |q 10020 |goto Terokkar Forest 62.81,27.69
 step
   talk Seth##18653
   accept Rather Be Fishin'##10037 |goto Shattrath City 63.95,15.53
 step
   note Bring 8 Pristine Shimmerscale Eels to Seth in Shattrath.
-  get Rather Be Fishin' |q 10037 |goto Shattrath City 63.95,15.53
+  kill Shimmerscale Eel##18750 |q 10037 |goto Terokkar Forest 39.35,9.55
 step
   talk Jorus##23462
   accept Jorus the Cobalt Netherwing Drake##11109 |goto Shattrath City 67.91,17.02
@@ -149,13 +149,13 @@ step
   accept Marks of Kil'jaeden##10325 |goto Shattrath City 30.73,34.62
 step
   note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
-  get Marks of Kil'jaeden |q 10325 |goto Shattrath City 30.73,34.62
+  kill Mo'arg Engineer##16945 |q 10325 |goto Nagrand 20.0,49.34
 step
   talk Adyen the Lightwarden##18537
   accept Marks of Sargeras##10653 |goto Shattrath City 30.73,34.62
 step
   note Bring 10 Marks of Sargeras to Adyen the Lightwarden in Shattrath City.
-  get Marks of Sargeras |q 10653 |goto Shattrath City 30.73,34.62
+  kill Cyber-Rage Forgelord##16943 |q 10653 |goto Netherstorm 40.3,21.07
 step
   talk Adyen the Lightwarden##18537
   accept Crisis at the Sunwell##11481 |goto Shattrath City 30.73,34.62
@@ -167,7 +167,7 @@ step
   accept A Cleansing Light##10420 |goto Shattrath City 23.97,29.73
 step
   note Bring a Fel Armament to Ishanah in Shattrath City.
-  get A Cleansing Light |q 10420 |goto Shattrath City 23.97,29.73
+  kill Cyber-Rage Forgelord##16943 |q 10420 |goto Netherstorm 40.3,21.07
 step
   talk Arcanist Raestan##23273
   accept Report to Spymaster Thalodien##11039 |goto Shattrath City 60.85,63.53
@@ -233,7 +233,7 @@ step
   accept Firewing Signets##10412 |goto Shattrath City 45.2,81.44
 step
   note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Firewing Signets.
-  get Firewing Signets |q 10412 |goto Shattrath City 45.2,81.44
+  kill Firewing Bloodwarder##1410 |q 10412 |goto Terokkar Forest 71.58,36.73
 step
   talk Magistrix Fyalenn##18531
   accept Sunfury Signets##10656 |goto Shattrath City 45.2,81.44
@@ -245,7 +245,7 @@ step
   accept Synthesis of Power##10416 |goto Shattrath City 42.79,91.71
 step
   note Voren'thal the Seer in Shattrath City wants you to obtain an Arcane Tome.
-  get Synthesis of Power |q 10416 |goto Shattrath City 42.79,91.71
+  kill Firewing Bloodwarder##1410 |q 10416 |goto Terokkar Forest 71.58,36.73
 step
   talk Voren'thal the Seer##18530
   accept Turning Point##10507 |goto Shattrath City 42.79,91.71
@@ -361,7 +361,7 @@ step
   accept Investigate Tuurem##9990 |goto Shattrath City 72.22,30.75
 step
   note Find the Sealed Box and then deliver it to Earthbinder Tavgren just outside of the Cenarion Thicket in Terokkar Forest.
-  get Investigate Tuurem |q 9990 |goto Shattrath City 72.22,30.75
+  collect Sealed Box##182542 |q 9990 |goto Terokkar Forest 54.0,30.0
 step
   talk Sal'salabim##18584
   accept It's Just That Easy?##10010 |goto Shattrath City 77.26,34.85

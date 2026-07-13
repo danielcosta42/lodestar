@@ -14,7 +14,7 @@ step
   accept Mathystra Relics##951 |goto Darkshore 43.55,76.29
 step
   note Bring 6 Mathystra Relics to Onu at the Grove of the Ancients.
-  get Mathystra Relics |q 951 |goto Darkshore 43.55,76.29
+  collect Mathystra Relic##12654 |q 951 |goto Darkshore 59.95,23.21
 step
   talk Onu##3616
   accept Onu is meditating##960 |goto Darkshore 43.55,76.29
@@ -32,7 +32,7 @@ step
   accept Cave Mushrooms##947 |goto Darkshore 37.32,43.64
 step
   note Bring 5 Scaber Stalks and 1 Death Cap to Barithras Moonshade in Auberdine.
-  get Cave Mushrooms |q 947 |goto Darkshore 37.32,43.64
+  collect Scaber Stalk##11714 |q 947 |goto Darkshore 55.51,34.59
 step
   talk Thundris Windweaver##3649
   accept Bashal'Aran##954 |goto Darkshore 37.4,40.13
@@ -41,13 +41,13 @@ step
   accept Tools of the Highborne##958 |goto Darkshore 37.4,40.13
 step
   note Retrieve 7 Highborne Relics for Thundris Windweaver in Auberdine.
-  get Tools of the Highborne |q 958 |goto Darkshore 37.4,40.13
+  kill Cursed Highborne##2176 |q 958 |goto Darkshore 42.23,58.23
 step
   talk Cerellean Whiteclaw##3644
   accept For Love Eternal##963 |goto Darkshore 35.74,43.71
 step
   note Free the spirit of Anaya Dawnrunner and bring her pendant back to Cerellean Whiteclaw in Auberdine.
-  get For Love Eternal |q 963 |goto Darkshore 35.74,43.71
+  kill Anaya Dawnrunner##3667 |q 963 |goto Darkshore 41.81,60.73
 step
   talk Sentinel Elissa Starbreeze##3657
   accept The Tower of Althalaxx##965 |goto Darkshore 39.05,43.55
@@ -56,13 +56,13 @@ step
   accept Deep Ocean, Vast Sea##982 |goto Darkshore 38.11,41.17
 step
   note Recover the Silver Dawning's Lockbox and the Mist Veil's Lockbox for Gorbold Steelhand in Auberdine. Both items should be found aboard the wreckage of the ships to the north of the village.
-  get Deep Ocean, Vast Sea |q 982 |goto Darkshore 38.11,41.17
+  collect Silver Dawning's Lockbox##175165 |q 982 |goto Darkshore 38.24,28.8
 step
   talk Wizbang Cranktoggle##3666
   accept Buzzbox 827##983 |goto Darkshore 36.97,44.13
 step
   note Collect 6 Crawler Legs and place them in Buzzbox 827.
-  get Buzzbox 827 |q 983 |goto Darkshore 36.97,44.13
+  kill Pygmy Tide Crawler##2231 |q 983 |goto Darkshore 36.31,44.4
 step
   talk Terenthis##3693
   accept How Big a Threat?##984 |goto Darkshore 39.37,43.48
@@ -74,7 +74,7 @@ step
   accept Fruit of the Sea##1138 |goto Darkshore 36.1,44.93
 step
   note Collect 6 Fine Crab Chunks for Gubber Blump in Auberdine.
-  get Fruit of the Sea |q 1138 |goto Darkshore 36.1,44.93
+  kill Encrusted Tide Crawler##2233 |q 1138 |goto Darkshore 51.73,22.54
 step
   talk Gubber Blump##10216
   accept The Family and the Fishing Pole##1141 |goto Darkshore 36.1,44.93
@@ -86,7 +86,7 @@ step
   accept Researching the Corruption##1275 |goto Darkshore 38.33,43.04
 step
   note Gershala Nightwhisper in Auberdine wants 8 Corrupt Brain stems.
-  get Researching the Corruption |q 1275 |goto Darkshore 38.33,43.04
+  kill Fallenroot Satyr##4788 |q 1275 |goto Ashenvale 13.78,12.22
 step
   only Paladin
   talk Thundris Windweaver##3649
@@ -94,7 +94,7 @@ step
 step
   only Paladin
   note Bring a Kor Gem to Thundris Windweaver in Darkshore.
-  get Seeking the Kor Gem |q 1442 |goto Darkshore 37.4,40.13
+  kill Blackfathom Tide Priestess##4802 |q 1442 |goto Darkshore 31.38,92.07
 step
   talk Wizbang Cranktoggle##3666
   accept Gaffer Jacks##1579 |goto Darkshore 36.97,44.13
@@ -112,13 +112,13 @@ step
   accept Easy Strider Living##2178 |goto Darkshore 37.69,40.66
 step
   note Bring back 5 Strider Meat to Alanndarian Nightsong in Auberdine.
-  get Easy Strider Living |q 2178 |goto Darkshore 37.69,40.66
+  kill Strider Clutchmother##2172 |q 2178 |goto Darkshore 34.82,87.31
 step
   talk Gwennyth Bly'Leggonde##10219
   accept Washed Ashore##3524 |goto Darkshore 36.62,45.59
 step
   note Recover Sea Creature Bones from the beached sea creature just south of Auberdine, and then return with it to Gwennyth Bly'Leggonde in Auberdine.
-  get Washed Ashore |q 3524 |goto Darkshore 36.62,45.59
+  collect Beached Sea Creature##175207 |q 3524 |goto Darkshore 36.37,50.92
 step
   talk Sentinel Glynda Nal'Shea##2930
   accept The Red Crystal##4811 |goto Darkshore 37.7,43.41
@@ -137,7 +137,7 @@ step
   accept Bashal'Aran##955 |goto Darkshore 44.17,36.29
 step
   note Acquire 8 Grell Earrings for Asterion in Bashal'Aran.
-  get Bashal'Aran |q 955 |goto Darkshore 44.17,36.29
+  kill Vile Sprite##2189 |q 955 |goto Darkshore 44.82,37.54
 step
   talk Balthule Shadowstrike##3661
   turnin The Tower of Althalaxx##965 |goto Darkshore 54.97,24.89
@@ -146,19 +146,19 @@ step
   accept The Tower of Althalaxx##966 |goto Darkshore 54.97,24.89
 step
   note Collect 4 Worn Parchments for Balthule Shadowstrike near the Tower of Althalaxx.
-  get The Tower of Althalaxx |q 966 |goto Darkshore 54.97,24.89
+  kill Dark Strand Fanatic##2336 |q 966 |goto Darkshore 56.5,26.63
 step
   talk Balthule Shadowstrike##3661
   accept The Tower of Althalaxx##1143 |goto Darkshore 54.97,24.89
 step
   note Kill Athrikus Narassin and bring his head to Balthule Shadowstrike near the Tower of Althalaxx.
-  get The Tower of Althalaxx |q 1143 |goto Darkshore 54.97,24.89
+  kill Athrikus Narassin##3660 |q 1143 |goto Darkshore 56.02,26.33
 step
   talk Gelkak Gyromast##6667
   accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
 step
   note Find and return the three pieces of Gelkak's Key to Gelkak Gyromast.
-  get Gyromast's Retrieval |q 2098 |goto Darkshore 56.66,13.48
+  kill Giant Foreststrider##2323 |q 2098 |goto Darkshore 39.1,89.1
 step
   talk Onu##3616
   turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
@@ -255,7 +255,7 @@ step
   accept Washed Ashore##4681 |goto Darkshore 36.62,45.59
 step
   note Recover the Sea Turtle Remains from the Skeletal Sea Turtle in the waters west of Auberdine, and then speak with Gwennyth Bly'Leggonde back in Auberdine.
-  get Washed Ashore |q 4681 |goto Darkshore 36.62,45.59
+  collect Skeletal Sea Turtle##176189 |q 4681 |goto Darkshore 31.82,46.31
 step
   talk Terenthis##3693
   accept Thundris Windweaver##4761 |goto Darkshore 39.37,43.48
@@ -273,7 +273,7 @@ step
   accept Bashal'Aran##956 |goto Darkshore 44.17,36.29
 step
   note Obtain the Ancient Moonstone Seal and bring it to Asterion in Bashal'Aran.
-  get Bashal'Aran |q 956 |goto Darkshore 44.17,36.29
+  kill Deth'ryll Satyr##2212 |q 956 |goto Darkshore 47.28,37.68
 step
   talk Balthule Shadowstrike##3661
   turnin The Tower of Althalaxx##966 |goto Darkshore 54.97,24.89
@@ -335,7 +335,7 @@ step
   accept A Lost Master##986 |goto Darkshore 39.37,43.48
 step
   note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
-  get A Lost Master |q 986 |goto Darkshore 39.37,43.48
+  kill Moonstalker Matriarch##2071 |q 986 |goto Darkshore 43.03,89.68
 step
   talk Tharnariun Treetender##3701
   accept Tharnariun's Hope##2139 |goto Darkshore 38.84,43.42

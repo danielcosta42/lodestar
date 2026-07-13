@@ -9,7 +9,7 @@ step
   accept Seal of Ascension##4742
 step
   note Find the three gemstones of command: The Gemstone of Smolderthorn, Gemstone of Spirestone, and Gemstone of Bloodaxe. Return them, along with the Unadorned Seal of Ascension, to Vaelan.
-  get Seal of Ascension |q 4742
+  kill Highlord Omokk##9196 |q 4742 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Vaelan##10296
   turnin Seal of Ascension##4742

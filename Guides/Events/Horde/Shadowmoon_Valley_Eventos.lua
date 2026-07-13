@@ -28,7 +28,7 @@ step
   accept Bow to the Highlord##11107 |goto Shadowmoon Valley 66.12,86.36
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
-  get Tablets of Baa'ri |q 10568 |goto Shadowmoon Valley 62.58,28.38
+  kill Ashtongue Worker##21455 |q 10568 |goto Shadowmoon Valley 58.47,37.68
 step
   note Mordenai at Netherwing Fields in Shadowmoon Valley wants you to feed 8 Mature Netherwing Drakes.
   kill Netherwing Event Pinger##22131 |q 10804
@@ -73,7 +73,7 @@ step
   get Enraged Spirits of Fire and Earth |q 10458 |goto Shadowmoon Valley 42.19,45.06
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
-  get Oronu the Elder |q 10571 |goto Shadowmoon Valley 62.58,28.38
+  kill Oronu the Elder##21663 |q 10571 |goto Shadowmoon Valley 57.19,32.87
 step
   talk Earthmender Torlok##21024
   turnin Enraged Spirits of Fire and Earth##10458 |goto Shadowmoon Valley 42.19,45.06
@@ -106,7 +106,7 @@ step
   get Enraged Spirits of Water |q 10480 |goto Shadowmoon Valley 42.19,45.06
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Anchorite Ceyla at the Altar of Sha'tar in Shadowmoon Valley.
-  get The Ashtongue Corruptors |q 10574 |goto Shadowmoon Valley 62.58,28.38
+  kill Eykenen##21709 |q 10574 |goto Shadowmoon Valley 51.18,52.82
 step
   talk Earthmender Torlok##21024
   turnin Enraged Spirits of Water##10480 |goto Shadowmoon Valley 42.19,45.06
@@ -163,7 +163,7 @@ step
   kill Zandras##21827 |q 10622 |goto Shadowmoon Valley 58.03,49.13
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
-  get To Netherwing Ledge! |q 10837 |goto Shadowmoon Valley 61.31,59.98
+  collect Nethervine Crystal##185182 |q 10837 |goto Shadowmoon Valley 70.78,83.14
 step
   talk Oronok Torn-heart##21183
   turnin Oronok Torn-heart##10513 |goto Shadowmoon Valley 53.95,23.52
@@ -265,7 +265,7 @@ step
   accept Ally of the Netherwing##10870 |goto Shadowmoon Valley 69.86,61.44
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  get The Ata'mal Terrace |q 10707 |goto Shadowmoon Valley 58.11,48.18
+  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83
 step
   talk Borak, Son of Oronok##21293
   turnin Borak, Son of Oronok##10546 |goto Shadowmoon Valley 47.56,57.18
@@ -286,7 +286,7 @@ step
   accept Blood Oath of the Netherwing##11012 |goto Shadowmoon Valley 59.19,58.69
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  get Of Thistleheads and Eggs... |q 10547 |goto Shadowmoon Valley 47.56,57.18
+  collect Rotten Arakkoa Egg##184795 |q 10547 |goto Shadowmoon Valley 44.15,57.51
 step
   talk Tobias the Filth Gorger##21411
   turnin Of Thistleheads and Eggs...##10547 |goto Shattrath City 63.95,70.03
@@ -346,7 +346,7 @@ step
   accept Your Friend On The Inside##11019 |goto Shadowmoon Valley 66.0,86.47
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover 6 pieces of Eclipsion Armor.
-  get The Shadowmoon Shuffle |q 10576 |goto Shadowmoon Valley 47.56,57.18
+  kill Eclipsion Centurion##19792 |q 10576 |goto Shadowmoon Valley 47.18,67.6
 step
   note Go to the Caverns of Time in Tanaris and gain access to the Battle of Mount Hyjal. Once inside, defeat Rage Winterchill and bring the Time-Phased Phylactery to Akama in Shadowmoon Valley.
   get An Artifact From the Past |q 10947 |goto Shadowmoon Valley 58.11,48.18

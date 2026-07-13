@@ -11,7 +11,7 @@ step
   accept Deaths in the Family##354 |goto Tirisfal Glades 61.72,52.29
 step
   note Bring Gregor's Remains, Nissa's Remains and Thurman's Remains to Coleman Farthing in Brill.
-  get Deaths in the Family |q 354 |goto Tirisfal Glades 61.72,52.29
+  kill Gregor Agamand##1654 |q 354 |goto Tirisfal Glades 46.74,29.31
 step
   talk Deathguard Linnea##1495
   accept Rear Guard Patrol##356 |goto Tirisfal Glades 65.49,60.25
@@ -23,7 +23,7 @@ step
   accept The Haunted Mills##362 |goto Tirisfal Glades 61.72,52.29
 step
   note Slay Devlin Agamand, and bring Devlin's Remains to Coleman Farthing in Brill.
-  get The Haunted Mills |q 362 |goto Tirisfal Glades 61.72,52.29
+  kill Devlin Agamand##1657 |q 362 |goto Tirisfal Glades 47.34,40.78
 step
   only Undead
   talk Apothecary Johaan##1518
@@ -31,19 +31,19 @@ step
 step
   only Undead
   note Apothecary Johaan in the town of Brill wants you to collect 5 Vials of Darkhound Blood.
-  get A New Plague |q 367 |goto Tirisfal Glades 59.45,52.4
+  kill Decrepit Darkhound##1547 |q 367 |goto Tirisfal Glades 59.49,49.76
 step
   talk Gretchen Dedmar##1521
   accept The Chill of Death##375 |goto Tirisfal Glades 61.89,52.73
 step
   note Bring five Duskbat Pelts and some Coarse Thread to Gretchen Dedmar in Brill.
-  get The Chill of Death |q 375 |goto Tirisfal Glades 61.89,52.73
+  kill Greater Duskbat##1553 |q 375 |goto Tirisfal Glades 55.75,53.61
 step
   talk Deathguard Dillinger##1496
   accept A Putrid Task##404 |goto Tirisfal Glades 58.2,51.45
 step
   note Bring 7 Putrid Claws to Deathguard Dillinger in Brill.
-  get A Putrid Task |q 404 |goto Tirisfal Glades 58.2,51.45
+  kill Rotting Dead##1525 |q 404 |goto Tirisfal Glades 53.54,53.81
 step
   talk Magistrate Sevren##1499
   accept Raleigh and the Undercity##441 |goto Tirisfal Glades 61.26,50.84
@@ -104,13 +104,13 @@ step
   accept Fields of Grief##365 |goto Tirisfal Glades 40.91,54.17
 step
   note Steal 10 pumpkins from the farm to the west, just north of Deathknell and take them to Apothecary Johaan in Brill.
-  get Fields of Grief |q 365 |goto Tirisfal Glades 40.91,54.17
+  collect Tirisfal Pumpkin##375 |q 365 |goto Tirisfal Glades 35.86,50.49
 step
   talk Gordo##10666
   accept Gordo's Task##5481 |goto Tirisfal Glades 43.06,54.69
 step
   note Collect 3 Gloom Weed and deliver them to Junior Apothecary Holland in the Brill graveyard.
-  get Gordo's Task |q 5481 |goto Tirisfal Glades 43.06,54.69
+  collect Gloom Weed##175566 |q 5481 |goto Tirisfal Glades 48.02,55.03
 step
   only Undead
   talk Undertaker Mordo##1568
@@ -120,7 +120,7 @@ step
   accept The Damned##376 |goto Tirisfal Glades 30.86,66.05
 step
   note Novice Elreth requires 6 Scavenger Paws and 6 Duskbat Wings.
-  get The Damned |q 376 |goto Tirisfal Glades 30.86,66.05
+  kill Young Scavenger##1508 |q 376 |goto Tirisfal Glades 31.04,62.92
 step
   only Undead Priest
   talk Dark Cleric Duesten##2123
@@ -158,7 +158,7 @@ step
   accept Barov Family Fortune##5341 |goto Tirisfal Glades 83.06,71.6
 step
   note Venture to the Scholomance and recover the Barov family fortune. Four deeds make up this fortune: The Deed to Caer Darrow; The Deed to Brill; The Deed to Tarren Mill; and The Deed to Southshore. Return to Alexi Barov when you have completed this task.
-  get Barov Family Fortune |q 5341 |goto Tirisfal Glades 83.06,71.6
+  collect The Deed to Brill##176484 |q 5341 |goto Scholomance - Dungeon -1,-1
 step
   talk Argent Officer Garush##10839
   accept Argent Dawn Commission##5503 |goto Tirisfal Glades 83.19,68.45
@@ -185,13 +185,13 @@ step
   accept A Plague Upon Thee##5901 |goto Tirisfal Glades 83.29,72.34
 step
   note Use the Empty Termite Jar on the Termite Mounds in Eastern Plaguelands. After you've gathered 100 Plagueland Termites, return to Mickey Levine at the Bulwark in Tirisfal Glades.
-  get A Plague Upon Thee |q 5901 |goto Tirisfal Glades 83.29,72.34
+  collect Large Termite Mound##177464 |q 5901 |goto Eastern Plaguelands 34.82,29.64
 step
   talk Mehlar Dawnblade##17099
   accept The So-Called Mark of the Lightbringer##9443 |goto Tirisfal Glades 83.22,71.32
 step
   note Obtain the Mark of the Lightbringer and return it to Mehlar Dawnblade at the Bulwark in the Western Plaguelands.
-  get The So-Called Mark of the Lightbringer |q 9443 |goto Tirisfal Glades 83.22,71.32
+  collect Holy Coffer##181629 |q 9443 |goto Western Plaguelands 55.19,23.51
 step
   only Paladin
   talk Mehlar Dawnblade##17099
@@ -199,7 +199,7 @@ step
 step
   only Paladin
   note Mehlar Dawnblade at the Bulwark wants you to bring him 20 Minion's Scourgestones.
-  get Prove Your Hatred |q 10590 |goto Tirisfal Glades 83.22,71.32
+  kill Skeletal Flayer##1783 |q 10590 |goto Western Plaguelands 38.99,58.49
 step
   note Kill 8 Bleeding Horrors and 8 Wandering Spirits, then report back to Linnea at her camp.
   kill Bleeding Horror##1529 |q 356 |goto Tirisfal Glades 76.51,61.08
@@ -265,7 +265,7 @@ step
 step
   only Undead
   note Apothecary Johaan of the town of Brill needs 5 Vile Fin Scales from Murlocs in Tirisfal Glades.
-  get A New Plague |q 368 |goto Tirisfal Glades 59.45,52.4
+  kill Vile Fin Puddlejumper##1543 |q 368 |goto Tirisfal Glades 57.69,39.21
 step
   talk Magistrate Sevren##1499
   accept The Prodigal Lich##405 |goto Tirisfal Glades 61.26,50.84
@@ -277,7 +277,7 @@ step
   accept The Mills Overrun##426 |goto Tirisfal Glades 58.2,51.45
 step
   note Gather 5 Notched Ribs and 3 Blackened Skulls, then return to Deathguard Dillinger in Brill.
-  get The Mills Overrun |q 426 |goto Tirisfal Glades 58.2,51.45
+  kill Rattlecage Soldier##1520 |q 426 |goto Tirisfal Glades 47.66,40.43
 step
   only Warrior
   talk Deathguard Dillinger##1496
@@ -291,7 +291,7 @@ step
   accept Doom Weed##5482 |goto Tirisfal Glades 57.44,48.85
 step
   note Collect 10 Doom Weed and deliver them back to Junior Apothecary Holland.
-  get Doom Weed |q 5482 |goto Tirisfal Glades 57.44,48.85
+  collect Doom Weed##176753 |q 5482 |goto Tirisfal Glades 57.14,39.54
 step
   only Undead Priest
   talk Dark Cleric Beryl##2129
@@ -330,7 +330,7 @@ step
   accept Scavenging Deathknell##3902 |goto Tirisfal Glades 31.61,65.6
 step
   note Search Deathknell and the vicinity for 6 pieces of Scavenged Goods, and return them to Deathguard Saltain.
-  get Scavenging Deathknell |q 3902 |goto Tirisfal Glades 31.61,65.6
+  collect Equipment Boxes##164662 |q 3902 |goto Tirisfal Glades 33.01,64.34
 step
   talk Novice Elreth##1661
   accept Marla's Last Wish##6395 |goto Tirisfal Glades 30.86,66.05
@@ -386,7 +386,7 @@ step
   accept The Last Barov##5342 |goto Tirisfal Glades 83.06,71.6
 step
   note Travel to Chillwind Camp - Alliance territory - and assassinate Weldon Barov. Take his head and return to Alexi Barov.
-  get The Last Barov |q 5342 |goto Tirisfal Glades 83.06,71.6
+  kill Weldon Barov##11023 |q 5342 |goto Western Plaguelands 43.45,83.73
 step
   talk High Executor Derrington##10837
   accept The Key to Scholomance##5511 |goto Tirisfal Glades 83.13,68.94
@@ -437,7 +437,7 @@ step
 step
   only Undead
   note Apothecary Johaan in the town of Brill wants you to bring him 4 samples of venom from a Vicious Night Web Spider.
-  get A New Plague |q 369 |goto Tirisfal Glades 59.45,52.4
+  kill Vicious Night Web Spider##1555 |q 369 |goto Tirisfal Glades 86.73,52.54
 step
   talk Magistrate Sevren##1499
   accept The Family Crypt##408 |goto Tirisfal Glades 61.26,50.84
@@ -471,7 +471,7 @@ step
   accept The Scarlet Crusade##381 |goto Tirisfal Glades 32.15,66.01
 step
   note Bring Executor Arren 12 Scarlet Armbands from Scarlet Converts and Scarlet Initiates.
-  get The Scarlet Crusade |q 381 |goto Tirisfal Glades 32.15,66.01
+  kill Scarlet Convert##1506 |q 381 |goto Tirisfal Glades 37.55,67.95
 step
   only Warrior
   talk Shadow Priest Sarvis##1569
@@ -565,7 +565,7 @@ step
 step
   only Warrior
   note Bring Coleman Farthing the Agamand Family Axe, the Agamand Family Sword, the Agamand Family Mace and the Agamand Family dagger.
-  get Agamand Heirlooms |q 1821 |goto Tirisfal Glades 61.72,52.29
+  collect Agamand Weapon Rack##105170 |q 1821 |goto Tirisfal Glades 51.68,25.69
 step
   turnin Target: Felstone Field##5229 |goto Western Plaguelands 37.25,56.78 |tip {turninat}Western Plaguelands
 step
@@ -600,7 +600,7 @@ step
   accept The Red Messenger##382 |goto Tirisfal Glades 32.15,66.01
 step
   note Kill Meven Korgal, the messenger, at the Crusader camp, then return any information you find to Executor Arren.
-  get The Red Messenger |q 382 |goto Tirisfal Glades 32.15,66.01
+  kill Meven Korgal##1667 |q 382 |goto Tirisfal Glades 36.57,68.54
 step
   talk Apothecary Dithers##11057
   turnin Scholomance##838 |goto Tirisfal Glades 83.28,69.23
@@ -612,7 +612,7 @@ step
   accept Skeletal Fragments##964 |goto Tirisfal Glades 83.28,69.23
 step
   note Bring 15 Skeletal Fragments to Apothecary Dithers at the Bulwark, Western Plaguelands.
-  get Skeletal Fragments |q 964 |goto Tirisfal Glades 83.28,69.23
+  kill Skeletal Flayer##1783 |q 964 |goto Western Plaguelands 38.99,58.49
 step
   only Warrior
   talk Coleman Farthing##1500
@@ -664,7 +664,7 @@ step
   accept Proof of Demise##374 |goto Tirisfal Glades 60.93,52.01
 step
   note Bring 10 Scarlet Insignia Rings to Deathguard Burgess in Brill.
-  get Proof of Demise |q 374 |goto Tirisfal Glades 60.93,52.01
+  kill Scarlet Warrior##1535 |q 374 |goto Tirisfal Glades 32.08,47.71
 step
   note Executor Zygand in Brill wants you to kill Captain Perrine, 3 Scarlet Zealots and 3 Scarlet Missionaries.
   kill Captain Perrine##1662 |q 370 |goto Tirisfal Glades 51.14,67.8

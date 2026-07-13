@@ -97,7 +97,7 @@ step
   get The Art of the Imbue |q 2763 |goto Stranglethorn Vale 50.62,20.48
 step
   note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
-  get The Swamp Talker |q 2623 |goto Swamp of Sorrows 44.97,57.37
+  kill Swamp Talker##950 |q 2623 |goto Swamp of Sorrows 62.6,88.07
 step
   talk Galvan the Ancient##7802
   turnin Smelt On, Smelt Off##2761 |goto Stranglethorn Vale 50.62,20.48
@@ -183,7 +183,7 @@ step
   accept The Name of the Beast##3510 |goto Azshara 77.13,42.79
 step
   note Slay Hetaera and bring back Hetaera's Bloodied Head, Hetaera's Beaten Head, and Hetaera's Bruised Head to Lord Arkkoroc.
-  get The Name of the Beast |q 3510 |goto Azshara 77.13,42.79
+  kill Hetaera##6140 |q 3510 |goto Azshara 56.73,44.79
 step
   talk Lord Arkkoroc##6134
   turnin The Name of the Beast##3510 |goto Azshara 77.13,42.79
@@ -198,7 +198,7 @@ step
   accept Azsharite##3602 |goto Azshara 60.82,66.35
 step
   note Recover twenty Crystallized Azsharite from southern Azshara. You may use the Felhound to assist you in 'sniffing' out the location of cleverly hidden deposits.
-  get Azsharite |q 3602 |goto Azshara 60.82,66.35
+  collect Azsharite Formation##152620 |q 3602 |goto Azshara 53.52,78.4
 step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35

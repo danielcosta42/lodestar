@@ -23,7 +23,7 @@ step
   accept Toxic Horrors##5086 |goto Winterspring 31.27,45.16
 step
   note Collect 3 Toxic Horror Droplets for Donova Snowden in Winterspring.
-  get Toxic Horrors |q 5086 |goto Winterspring 31.27,45.16
+  kill Toxic Horror##7132 |q 5086 |goto Felwood 49.76,24.66
 step
   talk Donova Snowden##9298
   accept Words of the High Chief##5128 |goto Winterspring 31.27,45.16
@@ -43,19 +43,19 @@ step
   accept Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
   note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
-  get Luck Be With You |q 969 |goto Winterspring 61.92,38.3
+  kill Frostmaul Giant##7428 |q 969 |goto Winterspring 62.56,69.28
 step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
 step
   note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
-  get Are We There, Yeti? |q 3783 |goto Winterspring 60.88,37.62
+  kill Rogue Ice Thistle##7457 |q 3783 |goto Winterspring 44.74,38.51
 step
   talk Felnok Steelspring##10468
   accept Chillwind Horns##4809 |goto Winterspring 61.63,38.61
 step
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
-  get Chillwind Horns |q 4809 |goto Winterspring 61.63,38.61
+  kill Fledgling Chillwind##7447 |q 4809 |goto Winterspring 44.97,42.75
 step
   talk Storm Shadowhoof##10303
   accept Ursius of the Shardtooth##5054 |goto Winterspring 61.93,38.38
@@ -64,7 +64,7 @@ step
   accept Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
 step
   note Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.
-  get Fiery Plate Gauntlets |q 5124 |goto Winterspring 60.99,38.78
+  collect Unfired Plate Gauntlets##176089 |q 5124 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Lilith the Lithe##11191
   accept Sweet Serenity##5305 |goto Winterspring 61.33,37.13
@@ -76,7 +76,7 @@ step
   accept Snakestone of the Shadow Huntress##5306 |goto Winterspring 61.3,37.07
 step
   note Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.
-  get Snakestone of the Shadow Huntress |q 5306 |goto Winterspring 61.3,37.07
+  kill Shadow Hunter Vosh'gajin##9236 |q 5306 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Seril Scourgebane##11193
   accept Corruption##5307 |goto Winterspring 61.33,37.19
@@ -148,7 +148,7 @@ step
   accept Winterfall Runners##5087 |goto Winterspring 31.27,45.16
 step
   note Find the Winterfall Runners and stop them from delivering their shipment to Winterfall Village.
-  get Winterfall Runners |q 5087 |goto Winterspring 31.27,45.16
+  kill Winterfall Runner##10916 |q 5087 |goto Winterspring 27.96,34.48
 step
   talk Salfa##11556
   turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
@@ -202,7 +202,7 @@ step
   accept Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
 step
   note Collect 2 Pristine Yeti Horns for Umi Rumplesnicker in Everlook.
-  get Are We There, Yeti? |q 977 |goto Winterspring 60.88,37.62
+  kill Ice Thistle Matriarch##7459 |q 977 |goto Winterspring 70.01,40.71
 step
   talk Felnok Steelspring##10468
   accept Return to Tinkee##4810 |goto Winterspring 61.63,38.61

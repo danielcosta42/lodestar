@@ -40,7 +40,7 @@ step
   accept Secrets of the Colossus - Regal##8858 |goto Silithus 49.55,37.31
 step
   note Find and return the Smithing Tuyere and Lookout's Spyglass to Taskmaster Scrange in the Searing Gorge.
-  get STOLEN: Smithing Tuyere and Lookout's Spyglass |q 7728
+  kill Dark Iron Steamsmith##5840 |q 7728 |goto Searing Gorge 40.01,49.65
 step
   note Slay 15 Dark Iron Taskmasters and 15 Dark Iron Slavers. Return to Taskmaster Scrange in the Searing Gorge once you have accomplished this task.
   kill Dark Iron Taskmaster##5846 |q 7729 |goto Searing Gorge 42.74,39.64
@@ -55,23 +55,23 @@ step
   kill Incendosaur##9318 |q 7727 |goto Searing Gorge 49.49,26.48
 step
   note Deep within the Slag Pit of the Cauldron, in the Searing Gorge, you will find the traitorous Dark Iron dwarf named Overseer Maltorius.
-  get WANTED: Overseer Maltorius |q 7701
+  kill Overseer Maltorius##14621 |q 7701 |goto Searing Gorge 40.77,35.89
 step
   note Somewhere in the Slag Pit of the Cauldron you will find the Secret Plans: Fiery Flux that Overseer Maltorius stole. Find those plans and return them to Master Smith Burninate in the Searing Gorge.
-  get What the Flux? |q 7722 |goto Searing Gorge 38.8,28.51
+  collect Secret Plans: Fiery Flux##179826 |q 7722 |goto Searing Gorge 40.45,35.74
 step
-  get Favor Amongst the Brotherhood, Dark Iron Ore |q 6642 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Azzere the Skyblade##5834 |q 6642 |goto The Barrens 44.83,64.1
 step
-  get Favor Amongst the Brotherhood, Fiery Core |q 6643 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Molten Destroyer##11659 |q 6643 |goto Molten Core - Raid -1,-1
 step
-  get Favor Amongst the Brotherhood, Lava Core |q 6644 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Molten Destroyer##11659 |q 6644 |goto Molten Core - Raid -1,-1
 step
   get Favor Amongst the Brotherhood, Core Leather |q 6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
-  get Favor Amongst the Brotherhood, Blood of the Mountain |q 6646 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Firegut Brute##7035 |q 6646 |goto Burning Steppes 81.46,43.38
 step
   note Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.
-  get A Binding Contract |q 7604
+  kill Golemagg the Incinerator##11988 |q 7604 |goto Molten Core - Raid -1,-1
 step
   talk Taskmaster Scrange##14626
   turnin STOLEN: Smithing Tuyere and Lookout's Spyglass##7728 |goto Searing Gorge 38.97,27.51
@@ -168,13 +168,13 @@ step
 step
   get Imperial Plate Shoulders |q 7659 |goto Tanaris 51.38,28.67
 step
-  get Restoring Fiery Flux Supplies via Kingsblood |q 7736 |goto Searing Gorge 38.8,28.51
+  kill Incendosaur##9318 |q 7736 |goto Searing Gorge 49.49,26.48
 step
-  get Gaining Acceptance |q 7737 |goto Searing Gorge 38.8,28.51
+  kill Anvilrage Overseer##8889 |q 7737 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
-  get Restoring Fiery Flux Supplies via Iron |q 8241 |goto Searing Gorge 38.8,28.51
+  kill Incendosaur##9318 |q 8241 |goto Searing Gorge 49.49,26.48
 step
-  get Restoring Fiery Flux Supplies via Heavy Leather |q 8242 |goto Searing Gorge 38.8,28.51
+  kill Incendosaur##9318 |q 8242 |goto Searing Gorge 49.49,26.48
 step
   talk Derotain Mudsipper##14567
   turnin Imperial Plate Belt##7653 |goto Tanaris 51.38,28.67

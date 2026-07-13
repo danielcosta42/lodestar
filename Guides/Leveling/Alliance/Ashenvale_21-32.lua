@@ -17,13 +17,13 @@ step
   accept The Zoram Strand##1008 |goto Ashenvale 34.67,48.84
 step
   note Bring 20 Wrathtail Heads to Shindrell Swiftfire in Astranaar.
-  get The Zoram Strand |q 1008 |goto Ashenvale 34.67,48.84
+  kill Wrathtail Myrmidon##3711 |q 1008 |goto Ashenvale 7.2,14.49
 step
   talk Raene Wolfrunner##3691
   accept Culling the Threat##1054 |goto Ashenvale 36.62,49.58
 step
   note Bring Dal Bloodclaw's Skull to Raene Wolfrunner in Astranaar.
-  get Culling the Threat |q 1054 |goto Ashenvale 36.62,49.58
+  kill Dal Bloodclaw##3987 |q 1054 |goto Ashenvale 37.74,34.73
 step
   talk Faldreas Goeth'Shael##3996
   accept Journey to Stonetalon Peak##1056 |goto Ashenvale 35.77,49.1
@@ -44,13 +44,13 @@ step
   accept The Tower of Althalaxx##970 |goto Ashenvale 26.2,38.7
 step
   note Collect a Glowing Soul Gem and return it to Delgren the Purifier at Maestra's Post.
-  get The Tower of Althalaxx |q 970 |goto Ashenvale 26.2,38.7
+  kill Dark Strand Cultist##3725 |q 970 |goto Ashenvale 30.99,30.89
 step
   talk Orendil Broadleaf##3847
   accept Bathran's Hair##1010 |goto Ashenvale 26.44,38.59
 step
   note Bring 5 Bathran's Hair to Orendil Broadleaf in Ashenvale.
-  get Bathran's Hair |q 1010 |goto Ashenvale 26.44,38.59
+  collect Plant Bundle##17282 |q 1010 |goto Ashenvale 32.07,22.94
 step
   talk Teronis' Corpse##3891
   turnin Raene's Cleansing##991 |goto Ashenvale 20.31,42.33
@@ -59,7 +59,7 @@ step
   accept Raene's Cleansing##1023 |goto Ashenvale 20.31,42.33
 step
   note Find the Glowing Gem and return to Raene Wolfrunner in Astranaar with Teronis' Journal.
-  get Raene's Cleansing |q 1023 |goto Ashenvale 20.31,42.33
+  kill Saltspittle Puddlejumper##3737 |q 1023 |goto Ashenvale 19.99,43.11
 step
   talk Keeper Albagorm##3994
   turnin Journey to Stonetalon Peak##1056 |goto Stonetalon Mountains 37.1,8.1 |tip {turninat}Stonetalon Mountains
@@ -68,7 +68,7 @@ step
   accept The Ancient Statuette##1007 |goto Ashenvale 14.79,31.29
 step
   note Bring the Ancient Statuette to Talen, in his camp near the Zoram Strand.
-  get The Ancient Statuette |q 1007 |goto Ashenvale 14.79,31.29
+  collect Ancient Statuette##17783 |q 1007 |goto Ashenvale 14.2,20.64
 step
   talk Shael'dryn##3916
   accept Raene's Cleansing##1029 |goto Ashenvale 53.54,46.22
@@ -101,7 +101,7 @@ step
   accept Forsaken Diseases##1011 |goto Ashenvale 85.24,44.71
 step
   note Bring a Bottle of Disease to Kayneth Stillwind in Forest Song.
-  get Forsaken Diseases |q 1011 |goto Ashenvale 85.24,44.71
+  collect Bottle of Disease##18036 |q 1011 |goto Ashenvale 75.3,71.93
 step
   talk Illiyana##3901
   accept Vile Satyr! Dryads in Danger!##1021 |goto Ashenvale 87.1,43.49
@@ -116,7 +116,7 @@ step
   accept A Shameful Waste##9517 |goto Ashenvale 86.84,44.81
 step
   note Bring 15 pieces of Warsong Lumber and 5 Satyrnaar Fel Wood to Gnarl at Forest Song.
-  get A Shameful Waste |q 9517 |goto Ashenvale 86.84,44.81
+  collect Lumber Pile##181686 |q 9517 |goto Ashenvale 86.84,59.06
 step
   talk Sentinel Luciel Starwhisper##17287
   accept Agents of Destruction##9518 |goto Ashenvale 86.0,44.36
@@ -125,7 +125,7 @@ step
   accept The Lost Chalice##9519 |goto Ashenvale 85.24,44.71
 step
   note Bring the Chalice of Elune to Kayneth Stillwind at Forest Song.
-  get The Lost Chalice |q 9519 |goto Ashenvale 85.24,44.71
+  collect Chalice of Elune##181681 |q 9519 |goto Ashenvale 81.4,48.9
 step
   talk Sentinel Luciel Starwhisper##17287
   accept Report from the Northern Front##9521 |goto Ashenvale 86.0,44.36
@@ -167,7 +167,7 @@ step
   accept Pridewings of Stonetalon##1134 |goto Ashenvale 34.67,48.84
 step
   note Bring 12 Pridewing Venom Sacs to Shindrell Swiftfire in Astranaar.
-  get Pridewings of Stonetalon |q 1134 |goto Ashenvale 34.67,48.84
+  kill Young Pridewing##4011 |q 1134 |goto Stonetalon Mountains 63.51,54.09
 step
   talk Delgren the Purifier##3663
   turnin The Tower of Althalaxx##970 |goto Ashenvale 26.2,38.7
@@ -179,7 +179,7 @@ step
   accept The Tower of Althalaxx##973 |goto Ashenvale 26.2,38.7
 step
   note Bring Ilkrud Magthrull's Tome to Delgren the Purifier at Maestra's Post.
-  get The Tower of Althalaxx |q 973 |goto Ashenvale 26.2,38.7
+  kill Ilkrud Magthrull##3664 |q 973 |goto Ashenvale 25.28,60.69
 step
   talk Orendil Broadleaf##3847
   accept Orendil's Cure##1020 |goto Ashenvale 26.44,38.59
@@ -191,7 +191,7 @@ step
   accept Ruuzel##1009 |goto Ashenvale 14.79,31.29
 step
   note Bring the Ring of Zoram to Talen near the Zoram Strand.
-  get Ruuzel |q 1009 |goto Ashenvale 14.79,31.29
+  kill Ruuzel##3943 |q 1009 |goto Ashenvale 7.01,12.58
 step
   talk Shael'dryn##3916
   turnin Raene's Cleansing##1024 |goto Ashenvale 53.54,46.22
@@ -200,7 +200,7 @@ step
   accept Raene's Cleansing##1026 |goto Ashenvale 53.54,46.22
 step
   note Find the Wooden Key and a piece of Dartol's Rod before returning to Shael'dryn at the moonwell.
-  get Raene's Cleansing |q 1026 |goto Ashenvale 53.54,46.22
+  collect Worn Chest##19022 |q 1026 |goto Ashenvale 54.42,35.4
 step
   note Go to the Howling Vale and study the Tome of Mel'Thandris, then return to Sentinel Melyria Frostshadow at Forest Song.
   collect Tome of Mel'Thandris##19027 |q 1022 |goto Ashenvale 50.49,39.13
@@ -212,7 +212,7 @@ step
   accept Mage Summoner##1017 |goto Ashenvale 49.8,67.21
 step
   note Slay Sarilus Foulborne and bring his head to Sentinel Velene Starstrike in Silverwind Refuge.
-  get Mage Summoner |q 1017 |goto Ashenvale 49.8,67.21
+  kill Sarilus Foulborne##3986 |q 1017 |goto The Barrens 48.22,19.15
 step
   note Kill 1 Den Watcher, 2 Ursas, 10 Totemics, and 12 Warriors of the Foulweald tribe, and then return to Raene Wolfrunner in Astranaar.
   kill Foulweald Den Watcher##3746 |q 1025 |goto Ashenvale 54.19,61.39
@@ -275,7 +275,7 @@ step
   accept The Branch of Cenarius##1031 |goto Ashenvale 78.33,44.82
 step
   note Kill Geltharis and return the Branch of Cenarius to Illiyana at Forest Song.
-  get The Branch of Cenarius |q 1031 |goto Ashenvale 78.33,44.82
+  kill Geltharis##4619 |q 1031 |goto Ashenvale 77.99,42.42
 step
   talk Sentinel Melyria Frostshadow##3880
   accept Velinde Starsong##1037 |goto Ashenvale 86.03,44.12
@@ -293,7 +293,7 @@ step
   accept Elune's Tear##1033 |goto Ashenvale 37.37,51.79
 step
   note Bring Elune's Tear to Pelturas in Astranaar.
-  get Elune's Tear |q 1033 |goto Ashenvale 37.37,51.79
+  collect Elune's Tear##19015 |q 1033 |goto Ashenvale 46.34,46.56
 step
   talk Delgren the Purifier##3663
   turnin The Tower of Althalaxx##973 |goto Ashenvale 26.2,38.7
@@ -344,7 +344,7 @@ step
   accept Satyr Slaying!##1032 |goto Ashenvale 87.1,43.49
 step
   note Bring 16 Satyr Horns to Illiyana in Forest Song.
-  get Satyr Slaying! |q 1032 |goto Ashenvale 87.1,43.49
+  kill Xavian Rogue##3752 |q 1032 |goto Ashenvale 78.4,45.31
 step
   talk Pelturas Whitemoon##3894
   turnin Elune's Tear##1033 |goto Ashenvale 37.37,51.79
@@ -356,7 +356,7 @@ step
   accept The Ruins of Stardust##1034 |goto Ashenvale 37.37,51.79
 step
   note Bring 5 Handfuls of Stardust to Pelturas in Astranaar.
-  get The Ruins of Stardust |q 1034 |goto Ashenvale 37.37,51.79
+  collect Stardust Covered Bush##19016 |q 1034 |goto Ashenvale 33.33,67.98
 step
   talk Delgren the Purifier##3663
   turnin The Tower of Althalaxx##1140 |goto Ashenvale 26.2,38.7
@@ -383,7 +383,7 @@ step
   accept Fallen Sky Lake##1035 |goto Ashenvale 37.37,51.79
 step
   note Retrieve a Fallen Moonstone from the Shadethicket Oracle, then bring it to Pelturas in Astranaar.
-  get Fallen Sky Lake |q 1035 |goto Ashenvale 37.37,51.79
+  kill Shadethicket Oracle##3931 |q 1035 |goto Ashenvale 66.66,82.17
 step
   turnin Raene's Cleansing##1028 |goto Ashenvale 56.35,49.2
 step

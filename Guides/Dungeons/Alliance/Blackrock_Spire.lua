@@ -28,10 +28,10 @@ step
   kill Halycon##10220 |q 4701 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Find Bijou's Belongings and return them to her. Good luck!
-  get Bijou's Belongings |q 5001 |goto Blackrock Spire - Dungeon -1,-1
+  collect Bijou's Belongings##175334 |q 5001 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Read Warosh's Scroll. Bring Warosh's Mojo to Warosh.
-  get Urok Doomhowl |q 4867 |goto Blackrock Spire - Dungeon -1,-1
+  kill Warosh##10799 |q 4867 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Helendis Riverhorn##9562
   turnin Put Her Down##4701 |goto Burning Steppes 85.82,68.95

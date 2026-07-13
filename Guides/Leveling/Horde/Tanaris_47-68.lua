@@ -14,7 +14,7 @@ step
   accept Slake That Thirst##379 |goto Tanaris 52.46,28.51
 step
   note Bring 5 Wastewander Water Pouches to Chief Engineer Bilgewhizzle in Gadgetzan.
-  get Slake That Thirst |q 379 |goto Tanaris 52.46,28.51
+  kill Wastewander Rogue##5615 |q 379 |goto Tanaris 61.84,38.21
 step
   talk Chief Engineer Bilgewhizzle##7407
   accept Return to Apothecary Zinge##864 |goto Tanaris 52.46,28.51
@@ -35,19 +35,19 @@ step
   accept Water Pouch Bounty##1707 |goto Tanaris 52.49,28.45
 step
   note Bring 5 Wastewander Water Pouches to Spigot Operator Luglunket in Gadgetzan.
-  get Water Pouch Bounty |q 1707 |goto Tanaris 52.49,28.45
+  kill Wastewander Rogue##5615 |q 1707 |goto Tanaris 61.84,38.21
 step
   talk Marin Noggenfogger##7564
   accept The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
 step
   note Collect a Laden Dew Gland and bring it to Marin Noggenfogger in Gadgetzan.
-  get The Thirsty Goblin |q 2605 |goto Tanaris 51.81,28.66
+  kill Thistleshrub Dew Collector##5481 |q 2605 |goto Tanaris 29.36,66.28
 step
   talk Chief Engineer Bilgewhizzle##7407
   accept Divino-matic Rod##2768 |goto Tanaris 52.46,28.51
 step
   note Bring the Divino-matic Rod to Chief Engineer Bilgewhizzle in Gadgetzan.
-  get Divino-matic Rod |q 2768 |goto Tanaris 52.46,28.51
+  kill Sergeant Bly##7604 |q 2768 |goto Zul'Farrak - Dungeon -1,-1
 step
   talk Trenton Lighthammer##7804
   accept A Good Head On Your Shoulders##2771 |goto Tanaris 51.41,28.75
@@ -71,13 +71,13 @@ step
   accept Scarab Shells##2865 |goto Tanaris 51.57,26.76
 step
   note Bring 5 Uncracked Scarab Shells to Tran'rek in Gadgetzan.
-  get Scarab Shells |q 2865 |goto Tanaris 51.57,26.76
+  kill Scarab##7269 |q 2865 |goto Zul'Farrak - Dungeon -1,-1
 step
   talk Trenton Lighthammer##7804
   accept Troll Temper##3042 |goto Tanaris 51.41,28.75
 step
   note Bring 20 Vials of Troll Temper to Trenton Lighthammer in Gadgetzan.
-  get Troll Temper |q 3042 |goto Tanaris 51.41,28.75
+  kill Sandfury Shadowcaster##5648 |q 3042 |goto Zul'Farrak - Dungeon -1,-1
 step
   talk Tran'rek##7876
   accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
@@ -95,13 +95,13 @@ step
   accept Bungle in the Jungle##4496 |goto Tanaris 50.89,26.96
 step
   note Bring a Gorishi Scent Gland and 5 Un'Goro Soil samples to Alchemist Pestlezugg in Gadgetzan.
-  get Bungle in the Jungle |q 4496 |goto Tanaris 50.89,26.96
+  kill Gorishi Wasp##6551 |q 4496 |goto Un'Goro Crater 50.14,76.41
 step
   talk Tran'rek##7876
   accept Super Sticky##4504 |goto Tanaris 51.57,26.76
 step
   note Collect 12 samples of Super Sticky Tar for Tran'rek in Gadgetzan.
-  get Super Sticky |q 4504 |goto Tanaris 51.57,26.76
+  kill Tar Beast##6517 |q 4504 |goto Un'Goro Crater 59.89,31.38
 step
   talk Krinkle Goodsteel##5411
   accept Fire Plume Forged##5802 |goto Tanaris 51.46,28.81
@@ -116,7 +116,7 @@ step
   accept Clamlette Surprise##6610 |goto Tanaris 52.63,28.11
 step
   note Dirge Quikcleave wants you to get the following items:
-  get Clamlette Surprise |q 6610 |goto Tanaris 52.63,28.11
+  kill Carrion Vulture##1809 |q 6610 |goto Western Plaguelands 32.26,62.39
 step
   talk Derotain Mudsipper##14567
   accept A Blue Light Bargain##7652 |goto Tanaris 51.38,28.67
@@ -134,19 +134,19 @@ step
   accept Nice Hat...##12513 |goto Tanaris 53.85,28.85
 step
   note Don Carlos has inadvertently challenged you to defeat his younger self in Old Hillsbrad. Afterwards, bring Don Carlos' Hat to him in Tanaris as proof.
-  get Nice Hat... |q 12513 |goto Tanaris 53.85,28.85
+  kill Don Carlos##28132 |q 12513 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   talk Don Carlos##28126
   accept Nice Hat...##12515 |goto Tanaris 53.85,28.85
 step
   note Don Carlos has inadvertently challenged you to defeat his younger self in Old Hillsbrad. Afterwards, bring Don Carlos' Hat to him in Tanaris as proof.
-  get Nice Hat... |q 12515 |goto Tanaris 53.85,28.85
+  kill Don Carlos##28132 |q 12515 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   talk Stoley##7881
   accept Stoley's Shipment##2873 |goto Tanaris 67.11,23.98
 step
   note Bring Stoley's Shipment to Stoley in Steamwheedle Port.
-  get Stoley's Shipment |q 2873 |goto Tanaris 67.11,23.98
+  collect Stolen Cargo##142181 |q 2873 |goto Tanaris 72.15,46.76
 step
   talk Yeh'kinya##8579
   accept Screecher Spirits##3520 |goto Tanaris 66.99,22.36
@@ -161,7 +161,7 @@ step
   accept Pirate Hats Ahoy!##8365 |goto Tanaris 66.56,22.27
 step
   note Haughty Modiste wants you to collect 20 Southsea Pirate Hats and return them to her at Steamwheedle Port in Tanaris.
-  get Pirate Hats Ahoy! |q 8365 |goto Tanaris 66.56,22.27
+  kill Southsea Pirate##7855 |q 8365 |goto Tanaris 72.44,46.18
 step
   talk Security Chief Bilgewhizzle##7882
   accept Southsea Shakedown##8366 |goto Tanaris 67.06,23.89
@@ -182,13 +182,13 @@ step
   accept Gahz'ridian##3161 |goto Tanaris 52.71,45.92
 step
   note Marvon Rivetseeker in Tanaris wants you to collect 30 Gahz'ridian Ornaments.
-  get Gahz'ridian |q 3161 |goto Tanaris 52.71,45.92
+  collect Gahz'ridian##140971 |q 3161 |goto Tanaris 46.48,64.12
 step
   talk Marvon Rivetseeker##7771
   accept The Stone Circle##3444 |goto Tanaris 52.71,45.92
 step
   note Retrieve the Stone Circle from Marvon Rivetseeker's workshop in Ratchet.
-  get The Stone Circle |q 3444 |goto Tanaris 52.71,45.92
+  collect Marvon's Chest##149036 |q 3444 |goto The Barrens 62.5,38.54
 step
   note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
   kill Dunemaul Brute##5474 |q 5863 |goto Tanaris 40.63,54.8
@@ -209,7 +209,7 @@ step
   accept Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 64.2,51.42
 step
   note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  get Atiesh, the Befouled Greatstaff |q 9251 |goto Tanaris 64.2,51.42
+  kill Kel'Thuzad##15990 |q 9251 |goto Naxxramas - Raid -1,-1
 step
   talk Steward of Time##20142
   accept To The Master's Lair##10279 |goto Tanaris 66.02,49.7
@@ -239,7 +239,7 @@ step
   accept The Vials of Eternity##10445 |goto Tanaris 61.05,56.95
 step
   note Soridormi at Caverns of Time wants you to retrieve Vashj's Vial Remnant from Lady Vashj at Coilfang Reservoir and Kael's Vial Remnant from Kael'thas Sunstrider at Tempest Keep.
-  get The Vials of Eternity |q 10445 |goto Tanaris 61.05,56.95
+  kill Lady Vashj##21212 |q 10445 |goto Serpentshrine Cavern - Raid -1,-1
 step
   talk Soridormi##19935
   accept Defender's Pledge##10460 |goto Tanaris 61.05,56.95
@@ -337,13 +337,13 @@ step
   accept Noxious Lair Investigation##82 |goto Tanaris 50.21,27.48
 step
   note Bring five Centipaar insect parts from the Noxious Lair to Alchemist Pestlezugg in Gadgetzan.
-  get Noxious Lair Investigation |q 82 |goto Tanaris 50.21,27.48
+  kill Centipaar Wasp##5455 |q 82 |goto Tanaris 33.39,44.37
 step
   talk Chief Engineer Bilgewhizzle##7407
   accept Another Power Source?##841 |goto Tanaris 52.46,28.51
 step
   note Bring 10 Wastewander Water Pouches to Chief Engineer Bilgewhizzle in Gadgetzan in exchange for another power source.
-  get Another Power Source? |q 841 |goto Tanaris 52.46,28.51
+  kill Wastewander Rogue##5615 |q 841 |goto Tanaris 61.84,38.21
 step
   talk Chief Engineer Bilgewhizzle##7407
   accept More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
@@ -402,7 +402,7 @@ step
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  get Hunting for Ectoplasm |q 8924 |goto Tanaris 52.47,27.23
+  kill Tortured Druid##12178 |q 8924 |goto Silithus 62.65,52.76
 step
   talk Narain Soothfancy##11811
   turnin Translating the Ledger##8576 |goto Tanaris 65.24,18.58
@@ -435,7 +435,7 @@ step
   accept The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36
 step
   note Bring the First and Second Mosh'aru Tablets to Yeh'kinya in Tanaris.
-  get The Prophecy of Mosh'aru |q 3527 |goto Tanaris 66.99,22.36
+  kill Theka the Martyr##7272 |q 3527 |goto Zul'Farrak - Dungeon -1,-1
 step
   talk Narain Soothfancy##11811
   accept Stewvul, Ex-B.F.F.##8577 |goto Tanaris 65.24,18.58
@@ -636,13 +636,13 @@ step
   accept The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
 step
   note Discover the fate of Junior Surveyor Scrimshank, and bring either him or his surveying equipment to Senior Surveyor Fizzledowser in Gadgetzan.
-  get The Scrimshank Redemption |q 10 |goto Tanaris 50.21,27.48
+  collect Scrimshank's Surveying Gear##144053 |q 10 |goto Tanaris 55.96,71.17
 step
   talk Sprinkle##7583
   accept Sprinkle's Secret Ingredient##2641 |goto Tanaris 51.06,26.87
 step
   note Sprinkle in Gadgetzan wants you to collect a Violet Tragan and return it to her.
-  get Sprinkle's Secret Ingredient |q 2641 |goto Tanaris 51.06,26.87
+  collect Violet Tragan##141853 |q 2641 |goto The Hinterlands 40.99,59.83
 step
   talk Alchemist Pestlezugg##5594
   accept Calm Before the Storm##4509 |goto Tanaris 50.89,26.96
@@ -651,13 +651,13 @@ step
   accept The Isle of Dread!##8585 |goto Tanaris 52.63,28.11
 step
   note Recover Lakmaeran's Carcass and 20 Chimaerok Tenderloins for Dirge Quikcleave in Tanaris.
-  get The Isle of Dread! |q 8585 |goto Tanaris 52.63,28.11
+  kill Lord Lakmaeran##12803 |q 8585 |goto Feralas 29.34,72.63
 step
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
-  get A Portable Power Source |q 8925 |goto Tanaris 52.47,27.23
+  kill Magma Lord Bokk##16043 |q 8925 |goto Burning Steppes 35.39,57.76
 step
   talk Narain Soothfancy##11811
   turnin The Only Prescription##8620 |goto Tanaris 65.24,18.58
@@ -669,13 +669,13 @@ step
   accept The Ancient Egg##4787 |goto Tanaris 66.99,22.36
 step
   note Bring the Ancient Egg to Yeh'kinya in Tanaris.
-  get The Ancient Egg |q 4787 |goto Tanaris 66.99,22.36
+  collect Ancient Egg##175889 |q 4787 |goto The Hinterlands 57.58,86.79
 step
   talk Narain Soothfancy##11811
   accept Scrying Goggles? No Problem!##8578 |goto Tanaris 65.24,18.58
 step
   note Find Narain's Scrying Goggles and return them to Narain Soothfancy in Tanaris.
-  get Scrying Goggles? No Problem! |q 8578 |goto Tanaris 65.24,18.58
+  kill Molten Giant##11658 |q 8578 |goto Molten Core - Raid -1,-1
 step
   talk Zilzibin Drumlore##7010
   turnin Calm Before the Storm##4509 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
@@ -777,7 +777,7 @@ step
   accept Dirge's Kickin' Chimaerok Chops##8586 |goto Tanaris 52.63,28.11
 step
   note Dirge Quikcleave in Gadgetzan wants you to bring him 20 Goblin Rocket Fuel and 20 Deeprock Salt.
-  get Dirge's Kickin' Chimaerok Chops |q 8586 |goto Tanaris 52.63,28.11
+  kill Clunk##8447 |q 8586 |goto Searing Gorge 34.69,51.89
 step
   talk Mux Manascrambler##16014
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
@@ -891,7 +891,7 @@ step
   accept The Lost Tablets of Mosh'aru##5065 |goto Tanaris 66.89,24.03
 step
   note Bring the Third and Fourth Mosh'aru Tablets to Prospector Ironboot in Tanaris.
-  get The Lost Tablets of Mosh'aru |q 5065 |goto Tanaris 66.89,24.03
+  collect Third Mosh'aru Tablet##175487 |q 5065 |goto Eastern Plaguelands 72.33,12.9
 step
   talk Narain Soothfancy##11811
   accept The Good News and The Bad News##8728 |goto Tanaris 65.24,18.58
@@ -957,7 +957,7 @@ step
   accept The Final Tablets##4788 |goto Tanaris 66.89,24.03
 step
   note Bring the Fifth and Sixth Mosh'aru Tablets to Prospector Ironboot in Tanaris.
-  get The Final Tablets |q 4788 |goto Tanaris 66.89,24.03
+  kill Smolderthorn Shadow Priest##9240 |q 4788 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Narain Soothfancy##11811
   accept The Wrath of Neptulon##8729 |goto Tanaris 65.24,18.58

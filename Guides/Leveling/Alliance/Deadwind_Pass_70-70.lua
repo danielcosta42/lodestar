@@ -14,7 +14,7 @@ step
   accept Digging Up the Past##9680 |goto Deadwind Pass 47.28,75.21
 step
   note Archmage Alturus wants you to go to the mountains south of Karazhan in Deadwind Pass and retrieve a Charred Bone Fragment.
-  get Digging Up the Past |q 9680 |goto Deadwind Pass 47.28,75.21
+  collect Charred Bone Fragment##181963 |q 9680 |goto Deadwind Pass 45.0,78.96
 step
   talk Archmage Alturus##17613
   accept Arcane Disturbances##9824 |goto Deadwind Pass 47.28,75.21
@@ -23,7 +23,7 @@ step
   accept Restless Activity##9825 |goto Deadwind Pass 47.28,75.21
 step
   note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
-  get Restless Activity |q 9825 |goto Deadwind Pass 47.28,75.21
+  kill Restless Shade##7370 |q 9825 |goto Deadwind Pass 51.97,78.4
 step
   talk Archmage Alturus##17613
   accept Assessing the Situation##9840 |goto Deadwind Pass 47.28,75.21

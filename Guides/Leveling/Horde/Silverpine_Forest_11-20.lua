@@ -29,7 +29,7 @@ step
   accept A Recipe For Death##447 |goto Silverpine Forest 42.8,40.86
 step
   note Collect 6 Grizzled Bear Hearts and 6 samples of Skittering Blood and deliver them to Master Apothecary Faranell in the Undercity.
-  get A Recipe For Death |q 447 |goto Silverpine Forest 42.8,40.86
+  kill Ferocious Grizzled Bear##1778 |q 447 |goto Silverpine Forest 49.71,33.46
 step
   talk Apothecary Renferrel##1937
   accept Report to Hadrec##448 |goto Silverpine Forest 42.8,40.86
@@ -38,7 +38,7 @@ step
   accept A Recipe For Death##451 |goto Silverpine Forest 42.8,40.86
 step
   note Bring 6 samples of Lake Creeper Moss, 6 samples of Lake Skulker Moss and a Hardened Tumor to Master Apothecary Faranell in the Undercity.
-  get A Recipe For Death |q 451 |goto Silverpine Forest 42.8,40.86
+  kill Lake Skulker##1953 |q 451 |goto Silverpine Forest 71.53,36.09
 step
   talk Shadow Priest Allister##2121
   accept Border Crossings##477 |goto Silverpine Forest 43.98,40.93
@@ -56,7 +56,7 @@ step
   accept Arugal Must Die##1014 |goto Silverpine Forest 44.2,39.81
 step
   note Kill Arugal and bring his head to Dalar Dawnweaver at the Sepulcher.
-  get Arugal Must Die |q 1014 |goto Silverpine Forest 44.2,39.81
+  kill Archmage Arugal##4275 |q 1014 |goto Shadowfang Keep - Dungeon -1,-1
 step
   talk High Executor Hadrec##1952
   accept Deathstalkers in Shadowfang##1098 |goto Silverpine Forest 43.42,40.86
@@ -81,7 +81,7 @@ step
   accept Wild Hearts##429 |goto Silverpine Forest 53.46,13.43
 step
   note Gather 6 discolored worg hearts and bring them to Apothecary Renferrel at the Sepulcher.
-  get Wild Hearts |q 429 |goto Silverpine Forest 53.46,13.43
+  kill Worg##1765 |q 429 |goto Silverpine Forest 65.76,7.8
 step
   talk Deathstalker Erland##1978
   accept Escorting Erland##435 |goto Silverpine Forest 56.18,9.18
@@ -129,7 +129,7 @@ step
   accept Arugal's Folly##422 |goto Silverpine Forest 44.2,39.81
 step
   note Retrieve the Remedy of Arugal for Dalar Dawnweaver at the Sepulcher.
-  get Arugal's Folly |q 422 |goto Silverpine Forest 44.2,39.81
+  collect Dusty Spellbooks##1571 |q 422 |goto Silverpine Forest 52.83,28.58
 step
   talk Apothecary Renferrel##1937
   accept Return to Quinn##430 |goto Silverpine Forest 42.8,40.86
@@ -141,7 +141,7 @@ step
   accept Assault on Fenris Isle##442 |goto Silverpine Forest 43.42,40.86
 step
   note Bring Thule's Head to High Executor Hadrec at the Sepulcher.
-  get Assault on Fenris Isle |q 442 |goto Silverpine Forest 43.42,40.86
+  kill Thule Ravenclaw##1947 |q 442 |goto Silverpine Forest 65.71,23.67
 step
   talk Dalar Dawnweaver##1938
   accept Dalaran's Intentions##482 |goto Silverpine Forest 44.2,39.81
@@ -160,7 +160,7 @@ step
   accept Ivar the Foul##425 |goto Silverpine Forest 53.46,13.43
 step
   note Kill Ivar the Foul, and bring Ivar's Head to Rane Yorick at the Ivar Patch.
-  get Ivar the Foul |q 425 |goto Silverpine Forest 53.46,13.43
+  kill Ivar the Foul##1971 |q 425 |goto Silverpine Forest 51.52,13.9
 step
   talk Rane Yorick##1950
   accept The Deathstalkers' Report##449 |goto Silverpine Forest 53.46,13.43
@@ -187,19 +187,19 @@ step
   accept Arugal's Folly##423 |goto Silverpine Forest 44.2,39.81
 step
   note Bring 6 Glutton Shackles and 3 Darksoul Shackles to Dalar Dawnweaver at the Sepulcher.
-  get Arugal's Folly |q 423 |goto Silverpine Forest 44.2,39.81
+  kill Moonrage Glutton##1779 |q 423 |goto Silverpine Forest 46.54,28.93
 step
   talk High Executor Hadrec##1952
   accept Rot Hide Ichor##443 |goto Silverpine Forest 43.42,40.86
 step
   note Bring 8 bottles of rot hide ichor to Apothecary Renferrel at the Sepulcher.
-  get Rot Hide Ichor |q 443 |goto Silverpine Forest 43.42,40.86
+  kill Rot Hide Brute##1939 |q 443 |goto Silverpine Forest 66.67,29.1
 step
   talk Shadow Priest Allister##2121
   accept Ambermill Investigations##479 |goto Silverpine Forest 43.98,40.93
 step
   note Obtain 8 Dalaran Pendants for Shadow Priest Allister at the Sepulcher.
-  get Ambermill Investigations |q 479 |goto Silverpine Forest 43.98,40.93
+  kill Dalaran Protector##1912 |q 479 |goto Silverpine Forest 58.65,63.25
 step
   talk High Executor Hadrec##1952
   accept Speak with Renferrel##3221 |goto Silverpine Forest 43.42,40.86
@@ -223,7 +223,7 @@ step
   accept Arugal's Folly##424 |goto Silverpine Forest 44.2,39.81
 step
   note Kill Grimson the Pale and bring his head to Dalar Dawnweaver at the Sepulcher.
-  get Arugal's Folly |q 424 |goto Silverpine Forest 44.2,39.81
+  kill Grimson the Pale##1972 |q 424 |goto Silverpine Forest 58.58,44.86
 step
   talk Apothecary Renferrel##1937
   accept Rot Hide Origins##444 |goto Silverpine Forest 42.8,40.86
@@ -232,7 +232,7 @@ step
   accept The Weaver##480 |goto Silverpine Forest 43.98,40.93
 step
   note Kill the Dalaran archmage, then retrieve his staff for Shadow Priest Allister at the Sepulcher.
-  get The Weaver |q 480 |goto Silverpine Forest 43.98,40.93
+  kill Archmage Ataeric##2120 |q 480 |goto Silverpine Forest 63.4,64.27
 step
   talk Apothecary Renferrel##1937
   accept Zinge's Delivery##1359 |goto Silverpine Forest 42.8,40.86
@@ -253,7 +253,7 @@ step
   accept Arugal's Folly##99 |goto Silverpine Forest 44.2,39.81
 step
   note Bring 6 Pyrewood Shackles to Dalar Dawnweaver at the Sepulcher.
-  get Arugal's Folly |q 99 |goto Silverpine Forest 44.2,39.81
+  kill Pyrewood Watcher##1891 |q 99 |goto Silverpine Forest 45.68,73.01
 step
   talk Dalar Dawnweaver##1938
   turnin Arugal's Folly##99 |goto Silverpine Forest 44.2,39.81

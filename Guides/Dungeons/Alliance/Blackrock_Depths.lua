@@ -42,7 +42,7 @@ step
   talk Elder Morndeep##15549
   accept Morndeep the Elder##8619 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
-  get Rocknot's Ale |q 4295 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Anvilrage Officer##8895 |q 4295 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   note Slay Overmaster Pyron and return to Jalinda Sprig.
   kill Overmaster Pyron##9026 |q 4262
@@ -51,20 +51,20 @@ step
   kill Black Broodling##7047 |q 4182 |goto Burning Steppes 89.47,35.54
 step
   note Bring 4 Gromsblood, 10 Giant Silver Veins and Nagmara's Filled Vial to Mistress Nagmara in Blackrock Depths.
-  get The Love Potion |q 4201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Dreaming Whelp##741 |q 4201 |goto Swamp of Sorrows 12.71,59.3
 step
-  get Favor Amongst the Brotherhood, Dark Iron Ore |q 6642 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Azzere the Skyblade##5834 |q 6642 |goto The Barrens 44.83,64.1
 step
-  get Favor Amongst the Brotherhood, Fiery Core |q 6643 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Molten Destroyer##11659 |q 6643 |goto Molten Core - Raid -1,-1
 step
-  get Favor Amongst the Brotherhood, Lava Core |q 6644 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Molten Destroyer##11659 |q 6644 |goto Molten Core - Raid -1,-1
 step
   get Favor Amongst the Brotherhood, Core Leather |q 6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
-  get Favor Amongst the Brotherhood, Blood of the Mountain |q 6646 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Firegut Brute##7035 |q 6646 |goto Burning Steppes 81.46,43.38
 step
   note Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.
-  get A Binding Contract |q 7604
+  kill Golemagg the Incinerator##11988 |q 7604 |goto Molten Core - Raid -1,-1
 step
   talk Ipfelkofer Ironkeg##24710
   turnin Brewfest!##11441 |goto Dun Morogh 48.01,39.83
@@ -232,7 +232,7 @@ step
   accept A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   note Return Marshal Windsor's Lost Information.
-  get A Shred of Hope |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill General Angerforge##9033 |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   talk Marshal Windsor##9023
   turnin A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1

@@ -43,7 +43,7 @@ step
   accept Chillwind Horns##4809 |goto Winterspring 61.63,38.61
 step
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
-  get Chillwind Horns |q 4809 |goto Winterspring 61.63,38.61
+  kill Fledgling Chillwind##7447 |q 4809 |goto Winterspring 44.97,42.75
 step
   talk Felnok Steelspring##10468
   turnin Chillwind Horns##4809 |goto Winterspring 61.63,38.61

@@ -24,7 +24,7 @@ step
   get Super Hot Stew |q 11379 |goto Shattrath City 61.75,15.55
 step
   note The Rokk in Lower City has asked you collect 15 Mana Berries from the Eco-Domes in Netherstorm.
-  get Manalicious |q 11380 |goto Shattrath City 61.75,15.55
+  collect Mana Berry Bush##186729 |q 11380 |goto Netherstorm 45.03,48.9
 step
   note The Rokk in Lower City has asked you to cook up some Spiritual Soup using his cooking pot. Return to him when it's done.
   get Soup for the Soul |q 11381 |goto Shattrath City 61.75,15.55

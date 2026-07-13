@@ -20,7 +20,7 @@ step
   accept Mist##938 |goto Teldrassil 31.54,31.61
 step
   note Bring a Shaman Voodoo Charm to Oben Rageclaw in the Ban'ethil Barrow Den.
-  get The Sleeping Druid |q 2541 |goto Teldrassil 44.94,61.59
+  kill Gnarlpine Shaman##2009 |q 2541 |goto Teldrassil 45.23,61.24
 step
   only NightElf Hunter
   talk Dazalar##3601

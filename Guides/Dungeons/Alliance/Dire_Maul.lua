@@ -39,30 +39,30 @@ step
 step
   only Warlock
   note Travel to the Warpwood Quarter of Dire Maul and slay the water elemental, Hydrospawn. Return to Lorekeeper Lydros in the Athenaeum with the Hydrospawn Essence.
-  get Arcane Refreshment |q 7463 |goto Dire Maul - Dungeon -1,-1
+  kill Hydrospawn##13280 |q 7463 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring 4 Bolts of Runecloth, 8 Rugged Leather, 2 Rune Threads, and Ogre Tannin to Knot Thimblejack. He is currently chained inside the Gordok wing of Dire Maul.
   get The Gordok Ogre Suit |q 5518 |goto Dire Maul - Dungeon -1,-1
 step
-  get Free Knot! |q 5525 |goto Dire Maul - Dungeon -1,-1
+  kill Gordok Brute##11441 |q 5525 |goto Dire Maul - Dungeon -1,-1
 step
   note You must destroy the guardians surrounding the 5 Pylons that power the Prison of Immol'thar. Once the Pylons have powered down, the force field surrounding Immol'thar will have dissipated.
   kill Immol'thar##11496 |q 7461 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring a Libram of Rapidity, 1 Pristine Black Diamond, 2 Large Brilliant Shards, and 2 Blood of Heroes to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Rapidity.
-  get Libram of Rapidity |q 7483 |goto Dire Maul - Dungeon -1,-1
+  kill Gordok Brute##11441 |q 7483 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring a Libram of Focus, 1 Pristine Black Diamond, 4 Large Brilliant Shards, and 2 Skin of Shadow to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Focus.
-  get Libram of Focus |q 7484 |goto Dire Maul - Dungeon -1,-1
+  kill Gordok Brute##11441 |q 7484 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring a Libram of Protection, 1 Pristine Black Diamond, 2 Large Brilliant Shards, and 1 Frayed Abomination Stitching to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Protection.
-  get Libram of Protection |q 7485 |goto Dire Maul - Dungeon -1,-1
+  kill Gordok Brute##11441 |q 7485 |goto Dire Maul - Dungeon -1,-1
 step
   note Find the Gauntlet of Gordok Might and return it to Captain Kromcrush in Dire Maul.
-  get Unfinished Gordok Business |q 7703 |goto Dire Maul - Dungeon -1,-1
+  collect The Prince's Chest##179545 |q 7703 |goto Dire Maul - Dungeon -1,-1
 step
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Wildheart Bracers to Deliana in Ironforge.
-  get An Earnest Proposition |q 8905 |goto Ironforge 43.53,52.64
+  kill Frostsaber Cub##7430 |q 8905 |goto Winterspring 50.32,11.34
 step
   only Warlock
   talk Lorekeeper Lydros##14368
@@ -156,7 +156,7 @@ step
 step
   get The Gordok Ogre Suit |q 5519 |goto Dire Maul - Dungeon -1,-1
 step
-  get Free Knot! |q 7429 |goto Dire Maul - Dungeon -1,-1
+  kill Gordok Brute##11441 |q 7429 |goto Dire Maul - Dungeon -1,-1
 step
   talk Knot Thimblejack##14338
   turnin The Gordok Ogre Suit##5519 |goto Dire Maul - Dungeon -1,-1
@@ -194,7 +194,7 @@ step
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  get Hunting for Ectoplasm |q 8924 |goto Tanaris 52.47,27.23
+  kill Tortured Druid##12178 |q 8924 |goto Silithus 62.65,52.76
 step
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
@@ -203,7 +203,7 @@ step
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
-  get A Portable Power Source |q 8925 |goto Tanaris 52.47,27.23
+  kill Magma Lord Bokk##16043 |q 8925 |goto Burning Steppes 35.39,57.76
 step
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
@@ -227,7 +227,7 @@ step
   accept Just Compensation##8926 |goto Ironforge 43.53,52.64
 step
   note Bring a Wildheart Belt and a set of Wildheart Gloves Deliana in Ironforge.
-  get Just Compensation |q 8926 |goto Ironforge 43.53,52.64
+  kill Scarshield Raider##9258 |q 8926 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Deliana##16013
   turnin Just Compensation##8926 |goto Ironforge 43.53,52.64
@@ -272,7 +272,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  get Falrin's Vendetta |q 8949 |goto Dire Maul - Dungeon -1,-1
+  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -281,7 +281,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  get The Instigator's Enchantment |q 8950 |goto Dire Maul - Dungeon -1,-1
+  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1

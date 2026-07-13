@@ -23,19 +23,19 @@ step
   accept Into the Draenethyst Mine##10510 |goto Blade's Edge Mountains 37.41,65.04
 step
   note Bronwyn Stouthammer has asked you to collect 5 Draenethyst Mine Crystals and then return to her at Sylvanaar in the Blade's Edge Mountains.
-  get Into the Draenethyst Mine |q 10510 |goto Blade's Edge Mountains 37.41,65.04
+  kill Bloodmaul Drudger##21238 |q 10510 |goto Blade's Edge Mountains 40.6,84.6
 step
   talk Borgrim Stouthammer##21151
   accept Strange Brew##10511 |goto Blade's Edge Mountains 37.4,64.66
 step
   note Borgrim Stouthammer wants you to procure 11 Bloodmaul Brutebane Brew for him. Once you've done that, return it to him at Sylvanaar in the Blade's Edge Mountains.
-  get Strange Brew |q 10511 |goto Blade's Edge Mountains 37.4,64.66
+  kill Bloodmaul Brewmaster##19957 |q 10511 |goto Blade's Edge Mountains 46.52,78.2
 step
   talk Daranelle##21469
   accept Malaise##10555 |goto Blade's Edge Mountains 37.07,65.61
 step
   note Collect 18 Plucked Lashh'an Feathers, then read the Lashh'an Tome in the treetops of Veil Lashh.
-  get Malaise |q 10555 |goto Blade's Edge Mountains 37.07,65.61
+  kill Lashh'an Talonite##19943 |q 10555 |goto Blade's Edge Mountains 35.63,75.2
 step
   note Rina Moonspring wishes you to slay 12 Grovestalker Lynxes with all due haste and then return to her at Sylvanaar in the Blade's Edge Mountains.
   kill Grovestalker Lynx##21022 |q 10455 |goto Blade's Edge Mountains 39.17,71.16
@@ -50,7 +50,7 @@ step
   accept The Trappings of a Vindicator##10516 |goto Blade's Edge Mountains 44.01,51.83
 step
   note Retrieve Vindicator Vuuleen's Blade and Vindicator Vuuleen's Shield. Then return them to Vindicator Vuuleen at Bladespire Hold in the Blade's Edge Mountains.
-  get The Trappings of a Vindicator |q 10516 |goto Blade's Edge Mountains 44.01,51.83
+  kill Droggam##20731 |q 10516 |goto Blade's Edge Mountains 38.34,52.38
 step
   talk Mog'dorg the Wizened##22941
   turnin The Trouble Below##11057 |goto Blade's Edge Mountains 55.49,44.86
@@ -62,19 +62,19 @@ step
   accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Grulloc Has Two Skulls |q 10995 |goto Blade's Edge Mountains 55.49,44.86
+  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
   talk Mog'dorg the Wizened##22941
   accept Maggoc's Treasure Chest##10996 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Maggoc's Treasure Chest |q 10996 |goto Blade's Edge Mountains 55.49,44.86
+  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
   talk Mog'dorg the Wizened##22941
   accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Even Gronn Have Standards |q 10997 |goto Blade's Edge Mountains 55.49,44.86
+  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
   talk Timeon##21782
   accept Creating the Pendant##10567 |goto Blade's Edge Mountains 62.16,39.11
@@ -170,7 +170,7 @@ step
   accept Harvesting the Fel Ammunition##10904 |goto Blade's Edge Mountains 63.52,65.29
 step
   note The Evergrove Druid has asked you to collect 5 Fel Cannonballs. Once you have done so, use the Druid Signal to call to the Evergrove Druid inside of Death's Door at the Blade's Edge Mountains.
-  get Harvesting the Fel Ammunition |q 10904 |goto Blade's Edge Mountains 63.52,65.29
+  kill Deathforge Over-Smith##19978 |q 10904 |goto Blade's Edge Mountains 64.01,71.7
 step
   talk Bossi Pentapiston##21112
   accept Parts for the Rocket-Chief##11040 |goto Blade's Edge Mountains 60.78,69.07
@@ -208,7 +208,7 @@ step
   accept Marauding Wolves##10456 |goto Blade's Edge Mountains 36.21,67.13
 step
   note Rina Moonspring has asked you to bring her 4 Thunderlord Dire Wolf Tails. After doing so, return to her at Sylvanaar in the Blade's Edge Mountains.
-  get Marauding Wolves |q 10456 |goto Blade's Edge Mountains 36.21,67.13
+  kill Thunderlord Dire Wolf##20748 |q 10456 |goto Blade's Edge Mountains 51.32,67.66
 step
   talk Commander Skyshadow##21158
   accept The Bladespire Ogres##10504 |goto Blade's Edge Mountains 36.22,66.18
@@ -253,7 +253,7 @@ step
   accept Into the Churning Gulch##10799 |goto Blade's Edge Mountains 53.25,41.18
 step
   note Baron Sablemane has told you to bring him 7 Crust Burster Venom Glands. Return to him at the Circle of Blood in the Blade's Edge Mountains once you have procured them.
-  get Into the Churning Gulch |q 10799 |goto Blade's Edge Mountains 53.25,41.18
+  kill Greater Crust Burster##21380 |q 10799 |goto Blade's Edge Mountains 48.95,44.76
 step
   talk Mog'dorg the Wizened##22941
   accept Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
@@ -295,7 +295,7 @@ step
   accept Poaching from Poachers##10717 |goto Blade's Edge Mountains 61.94,39.45
 step
   note Samia Inkling has asked you to acquire 5 Wyrmcult Nets and return them to her at Evergrove in the Blade's Edge Mountains.
-  get Poaching from Poachers |q 10717 |goto Blade's Edge Mountains 61.94,39.45
+  kill Wyrmcult Poacher##21809 |q 10717 |goto Blade's Edge Mountains 61.57,36.36
 step
   talk Wildlord Antelarion##22127
   accept Felsworn Gas Mask##10819 |goto Blade's Edge Mountains 62.31,40.05
@@ -358,7 +358,7 @@ step
   accept Planting the Banner##10518 |goto Blade's Edge Mountains 44.01,51.83
 step
   note Use the Bladespire Banner atop the Northmaul Tower to lure Gurn Grubnosh. Deliver the banner and the Helm of Gurn Grubnosh to Commander Skyshadow at Sylvanaar in the Blade's Edge Mountains.
-  get Planting the Banner |q 10518 |goto Blade's Edge Mountains 44.01,51.83
+  kill Bladespire Champion##21296 |q 10518 |goto Blade's Edge Mountains 41.29,57.86
 step
   talk Baron Sablemane##22103
   turnin Into the Churning Gulch##10799 |goto Blade's Edge Mountains 53.25,41.18
@@ -370,7 +370,7 @@ step
   accept Goodnight, Gronn##10800 |goto Blade's Edge Mountains 53.25,41.18
 step
   note Baron Sablemane wants you to steal Grulloc's Sack, and then return it to him at the Circle of Blood in the Blade's Edge Mountains.
-  get Goodnight, Gronn |q 10800 |goto Blade's Edge Mountains 53.25,41.18
+  collect Grulloc's Sack##185152 |q 10800 |goto Blade's Edge Mountains 60.89,47.78
 step
   talk Mog'dorg the Wizened##22941
   accept Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
@@ -489,7 +489,7 @@ step
   accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
+  kill Hemathion##18692 |q 11025 |goto Blade's Edge Mountains 31.1,71.08
 step
   talk Kronk##23253
   accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
@@ -551,7 +551,7 @@ step
   accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
+  kill Rivendark##23061 |q 11078 |goto Blade's Edge Mountains 30.43,58.58
 step
   talk Baron Sablemane##22103
   turnin Baron Sablemane Has Requested Your Presence##10818 |goto Blade's Edge Mountains 53.25,41.18
@@ -572,13 +572,13 @@ step
   accept Cutting Your Teeth##10632 |goto Blade's Edge Mountains 60.15,68.21
 step
   note Razak Ironsides has asked you to gather up 5 Extra Sharp Daggermaw Teeth. Return them to him at Toshley's Station in the Blade's Edge Mountains.
-  get Cutting Your Teeth |q 10632 |goto Blade's Edge Mountains 60.15,68.21
+  kill Daggermaw Lashtail##20751 |q 10632 |goto Blade's Edge Mountains 66.25,54.79
 step
   talk Toshley##21691
   accept Ride the Lightning##10657 |goto Blade's Edge Mountains 60.53,68.97
 step
   note Toshley wants you to use the Repolarized Magneto Sphere to absorb 25 lightning strikes from the Scalewing Serpents. As well, collect 5 Scalewing Lightning Glands. Then, deliver them back to him at Toshley's Station in the Blade's Edge Mountains.
-  get Ride the Lightning |q 10657 |goto Blade's Edge Mountains 60.53,68.97
+  kill Scalewing Serpent##20749 |q 10657 |goto Blade's Edge Mountains 68.05,66.63
 step
   note Dizzy Dina wants you to kill 10 Ridgespine Stalkers. After you have done so, return to her at Toshley's Station in the Blade's Edge Mountains.
   kill Ridgespine Stalker##20714 |q 10620 |goto Blade's Edge Mountains 67.33,62.98
@@ -623,7 +623,7 @@ step
   accept More than a Pound of Flesh##10671 |goto Blade's Edge Mountains 60.4,68.76
 step
   note Dizzy Dina has asked you to acquire 5 Ether-Energized Flesh and return them to her at Toshley's Station in the Blade's Edge Mountains.
-  get More than a Pound of Flesh |q 10671 |goto Blade's Edge Mountains 60.4,68.76
+  kill Fiendling Flesh Beast##20668 |q 10671 |goto Blade's Edge Mountains 66.73,43.91
 step
   talk Toshley##21691
   accept Trapping the Light Fantastic##10674 |goto Blade's Edge Mountains 60.53,68.97

@@ -93,40 +93,40 @@ step
   accept The Savage Guard - Arcanum of Focus##9210 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Presence of Might |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Syncretist's Sigil |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Death's Embrace |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Falcon's Call |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Vodouisant's Vigilant Embrace |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Presence of Sight |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Hoodoo Hex |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Prophetic Aura |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  get Animist's Caress |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
+  kill Jin'do the Hexxer##11380 |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
-  get Zulian, Razzashi, and Hakkari Coins |q 8195 |goto Stranglethorn Vale 14.5,15.83
+  kill Hakkari Shadowcaster##11338 |q 8195 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note String 5 Channeler's Heads, then return the Collection of Troll Heads to Exzhal on Yojamba Isle.
   get A Collection of Heads |q 8201 |goto Stranglethorn Vale 15.26,15.5
 step
-  get Gurubashi, Vilebranch, and Witherbark Coins |q 8238 |goto Stranglethorn Vale 14.5,15.83
+  kill Hakkari Shadowcaster##11338 |q 8238 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
-  get Sandfury, Skullsplitter, and Bloodscalp Coins |q 8239 |goto Stranglethorn Vale 14.5,15.83
+  kill Hakkari Shadowcaster##11338 |q 8239 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Zanza the Restless in Zul'Gurub wants an Arcanum of Protection.
   get The Savage Guard - Arcanum of Protection |q 9208 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1

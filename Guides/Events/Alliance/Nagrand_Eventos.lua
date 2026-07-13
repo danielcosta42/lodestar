@@ -25,7 +25,7 @@ step
   accept Against All Odds##10669 |goto Nagrand 27.34,43.09
 step
   note Huntress Bintook at Telaar in Nagrand wants you to recover Boulderfist Plans.
-  get Do My Eyes Deceive Me |q 9917 |goto Nagrand 55.05,70.53
+  kill Boulderfist Hunter##18352 |q 9917 |goto Nagrand 62.36,72.99
 step
   note Altruis the sufferer wants you to obtain Freshly Drawn Blood from a Wrath Priestess at Forge Base: Gehenna in Netherstorm. Spill it on the ground and slay the Avatar of Sathal. Return to Altruis when you've completed this task.
   kill Avatar of Sathal##21925 |q 10641
@@ -100,7 +100,7 @@ step
   kill Boulderfist Crusher##17134 |q 9921 |goto Nagrand 74.47,64.02
 step
   note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
-  get The Master Planner |q 10001 |goto Nagrand 27.34,43.09
+  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33
 step
   talk Mo'mor the Breaker##18223
   turnin The Ruins of Burning Blade##9921 |goto Nagrand 54.61,72.21
@@ -130,7 +130,7 @@ step
   accept Crackin' Some Skulls##10009 |goto Shattrath City 77.26,34.85
 step
   note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
-  get Crackin' Some Skulls |q 10009 |goto Shattrath City 77.26,34.85
+  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4
 step
   talk Lantresor of the Blade##18261
   turnin Diplomatic Measures##10108 |goto Nagrand 73.81,62.6

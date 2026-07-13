@@ -52,7 +52,7 @@ step
   accept Waking Legends##8447 |goto Moonglade 36.18,41.79
 step
   note Return the Head of the Broodlord Lashlayer to Baristolth of the Shifting Sands at Cenarion Hold in Silithus.
-  get Only One May Rise |q 8288 |goto Silithus 49.45,36.45
+  kill Broodlord Lashlayer##12017 |q 8288 |goto Blackwing Lair - Raid -1,-1
 step
   only Tauren
   talk Tajarri##11799
@@ -72,7 +72,7 @@ step
   accept The Path of the Righteous##8301 |goto Silithus 49.45,36.45
 step
   note Collect 200 Silithid Carapace Fragments and return to Baristolth.
-  get The Path of the Righteous |q 8301 |goto Silithus 49.45,36.45
+  kill Hive'Ashi Stinger##11698 |q 8301 |goto Silithus 48.5,41.14
 step
   talk Baristolth of the Shifting Sands##15180
   turnin The Path of the Righteous##8301 |goto Silithus 49.45,36.45
@@ -113,7 +113,7 @@ step
   accept The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
 step
   note Travel to the four Emerald Dream portals in Azeroth and collect a Fragment of the Nightmare's Corruption from each. Return to Keeper Remulos in the Moonglade when you have completed this task.
-  get The Nightmare's Corruption |q 8735 |goto Moonglade 36.18,41.79
+  kill Emeraldon Boughguard##12474 |q 8735 |goto Ashenvale 94.94,39.0
 step
   talk Keeper Remulos##11832
   turnin The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79

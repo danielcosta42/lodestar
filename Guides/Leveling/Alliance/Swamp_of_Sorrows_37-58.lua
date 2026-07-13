@@ -11,7 +11,7 @@ step
   accept Draenethyst Crystals##1389 |goto Swamp of Sorrows 25.98,31.4
 step
   note Bring 6 Draenethyst crystals to Magtoor at The Harborage in the Swamp of Sorrows.
-  get Draenethyst Crystals |q 1389 |goto Swamp of Sorrows 25.98,31.4
+  collect Draenethyst Crystals##22550 |q 1389 |goto Swamp of Sorrows 62.08,22.85
 step
   talk Anchorite Avuun##17127
   accept Mercy for the Cursed##9448 |goto Swamp of Sorrows 25.75,31.79
@@ -23,7 +23,7 @@ step
   accept Pool of Tears##9610 |goto Swamp of Sorrows 25.87,32.42
 step
   note Obtain 10 Atal'ai Artifacts and return them to Holaaru at the Harborage in the Swamp of Sorrows.
-  get Pool of Tears |q 9610 |goto Swamp of Sorrows 25.87,32.42
+  collect Atal'ai Artifact##30854 |q 9610 |goto Swamp of Sorrows 70.61,53.62
 step
   talk Watcher Biggs##5476
   turnin Help Watcher Biggs##9609 |goto Swamp of Sorrows 26.74,59.83
@@ -41,7 +41,7 @@ step
   accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
 step
   note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
-  get Uniting the Shattered Amulet |q 3627 |goto Swamp of Sorrows 34.29,66.14
+  kill Archmage Allistarj##7666 |q 3627 |goto Blasted Lands 66.69,29.24
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -53,7 +53,7 @@ step
 step
   only Mage
   note Collect a sample of air, fire, earth and water for Bath'rah the Windwatcher.
-  get Elemental Mastery |q 8410 |goto Swamp of Sorrows 48.19,57.94
+  kill Dust Devil##832 |q 8410 |goto Westfall 42.75,49.32
 step
   only Warrior
   note Kill 7 Helboar in the Blasted Lands and return to the Fallen Hero of the Horde.
@@ -84,7 +84,7 @@ step
   accept The Lost Caravan##1421 |goto Swamp of Sorrows 26.74,59.83
 step
   note Find the Caravan Chest in the Fallow Sanctuary, obtain the Wizards' Reagents and bring to Watcher Biggs.
-  get The Lost Caravan |q 1421 |goto Swamp of Sorrows 26.74,59.83
+  collect Caravan Chest##28024 |q 1421 |goto Swamp of Sorrows 64.46,18.3
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -130,7 +130,7 @@ step
   accept Driftwood##1398 |goto Swamp of Sorrows 26.74,59.83
 step
   note Bring 8 pieces of Sundried Driftwood to Watcher Biggs in the Swamp of Sorrows.
-  get Driftwood |q 1398 |goto Swamp of Sorrows 26.74,59.83
+  collect Sundried Driftwood##24798 |q 1398 |goto Swamp of Sorrows 90.68,57.09
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -151,7 +151,7 @@ step
 step
   only Warrior
   note Bring the Voodoo Feathers from the trolls in the Sunken Temple to the Fallen Hero of the Horde.
-  get Voodoo Feathers |q 8425 |goto Swamp of Sorrows 34.29,66.14
+  kill Gasher##5713 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   talk Watcher Biggs##5476
   turnin Driftwood##1398 |goto Swamp of Sorrows 26.74,59.83

@@ -14,7 +14,7 @@ step
   accept The Zapthrottle Mote Extractor!##9635 |goto Zangarmarsh 34.03,50.93
 step
   note Bring 15 Steam Pump Parts to Mack Diver at Zabra'jin in Zangarmarsh.
-  get The Zapthrottle Mote Extractor! |q 9635 |goto Zangarmarsh 34.03,50.93
+  collect Steam Pump Part##181871 |q 9635 |goto Zangarmarsh 81.4,40.2
 step
   talk Shadow Hunter Denjai##18013
   accept The Ogre Threat##9795 |goto Zangarmarsh 30.74,50.89
@@ -26,13 +26,13 @@ step
   accept Burstcap Mushrooms, Mon!##9814 |goto Zangarmarsh 32.89,48.89
 step
   note Bring Witch Doctor Tor'gash 6 Burstcap Mushrooms.
-  get Burstcap Mushrooms, Mon! |q 9814 |goto Zangarmarsh 32.89,48.89
+  collect Burstcap Mushroom##182095 |q 9814 |goto Zangarmarsh 29.17,51.96
 step
   talk Shadow Hunter Denjai##18013
   accept Impending Attack##9822 |goto Zangarmarsh 30.74,50.89
 step
   note Bring the Ango'rosh Attack Plans to Shadow Hunter Denjai in Zabra'jin.
-  get Impending Attack |q 9822 |goto Zangarmarsh 30.74,50.89
+  collect Ango'rosh Attack Plans##182166 |q 9822 |goto Zangarmarsh 19.88,27.09
 step
   talk Gambarinka##18015
   accept Stinging the Stingers##9841 |goto Zangarmarsh 31.63,49.19
@@ -44,7 +44,7 @@ step
   accept Spirits of the Feralfen##9846 |goto Zangarmarsh 32.38,51.96
 step
   note Bring 10 Feralfen Protection Totems to Seer Janidi at Zabra'jin.
-  get Spirits of the Feralfen |q 9846 |goto Zangarmarsh 32.38,51.96
+  kill Feralfen Hunter##18113 |q 9846 |goto Zangarmarsh 46.24,62.23
 step
   talk Shadow Hunter Denjai##18013
   accept News for Rakoria##10105 |goto Zangarmarsh 30.74,50.89
@@ -53,19 +53,19 @@ step
   accept Bring Me A Shrubbery!##9715 |goto Zangarmarsh 19.54,50.04
 step
   note Collect 5 Sanguine Hibiscus and return them to Gzhun'tt at Sporeggar in Zangarmarsh.
-  get Bring Me A Shrubbery! |q 9715 |goto Zangarmarsh 19.54,50.04
+  kill Bog Giant##17723 |q 9715 |goto The Underbog - Dungeon -1,-1
 step
   talk T'shu##17857
   accept Oh, It's On!##9717 |goto Zangarmarsh 19.37,49.78
 step
   note Gather an Underspore Frond and return it to T'shu at Sporeggar in Zangarmarsh.
-  get Oh, It's On! |q 9717 |goto Zangarmarsh 19.37,49.78
+  collect The Underspore##182054 |q 9717 |goto The Underbog - Dungeon -1,-1
 step
   talk Khn'nix##17866
   accept Stalk the Stalker##9719 |goto Zangarmarsh 19.65,49.7
 step
   note Bring the Brain of the Black Stalker to Khn'nix at Sporeggar in Zangarmarsh.
-  get Stalk the Stalker |q 9719 |goto Zangarmarsh 19.65,49.7
+  kill The Black Stalker##17882 |q 9719 |goto The Underbog - Dungeon -1,-1
 step
   talk Gzhun'tt##17856
   accept Now That We're Friends...##9726 |goto Zangarmarsh 19.54,50.04
@@ -74,13 +74,13 @@ step
   accept Fertile Spores##9806 |goto Zangarmarsh 19.14,49.38
 step
   note Gshaff wants you to gather 6 Fertile Spores from the various Zangarmarsh Spore Bats and Marsh Walkers. Return to Ghsaff at Sporeggar when you've completed this task.
-  get Fertile Spores |q 9806 |goto Zangarmarsh 19.14,49.38
+  kill Sporebat##18128 |q 9806 |goto Zangarmarsh 51.47,55.93
 step
   talk Msshi'fn##17924
   accept Glowcap Mushrooms##9808 |goto Zangarmarsh 19.68,52.07
 step
   note Bring 10 Glowcaps to Msshi'fn at Sporeggar in Zangarmarsh.
-  get Glowcap Mushrooms |q 9808 |goto Zangarmarsh 19.68,52.07
+  collect Glowcap##182053 |q 9808 |goto Zangarmarsh 33.37,38.97
 step
   note Kill 8 Marshlight Bleeders and return to Gambarinka at Zabra'jin.
   kill Marshlight Bleeder##18133 |q 9841 |goto Zangarmarsh 21.88,34.55
@@ -89,13 +89,13 @@ step
   accept The Sporelings' Plight##9739 |goto Zangarmarsh 19.02,62.43
 step
   note Fahssn at the Spawning Glen wants you to collect 10 Mature Spore Sacs.
-  get The Sporelings' Plight |q 9739 |goto Zangarmarsh 19.02,62.43
+  collect Mature Spore Sac##182069 |q 9739 |goto Zangarmarsh 12.19,62.02
 step
   talk Fahssn##17923
   accept Natural Enemies##9743 |goto Zangarmarsh 19.02,62.43
 step
   note Fahssn at the Spawning Glen in Zangarmarsh wants you to bring him 6 Bog Lord Tendrils.
-  get Natural Enemies |q 9743 |goto Zangarmarsh 19.02,62.43
+  kill Withered Giant##18124 |q 9743 |goto Zangarmarsh 82.43,41.36
 step
   talk Fahssn##17923
   accept Sporeggar##9919 |goto Zangarmarsh 19.02,62.43
@@ -116,7 +116,7 @@ step
   accept There's No Explanation for Fashion##9769 |goto Zangarmarsh 84.36,54.33
 step
   note Bring 8 Diaphanous Wings from any species of Zangarmarsh fireflies to Magasha in Swamprat Post.
-  get There's No Explanation for Fashion |q 9769 |goto Zangarmarsh 84.36,54.33
+  kill Umbraglow Stinger##18132 |q 9769 |goto Zangarmarsh 73.8,70.07
 step
   talk Reavij##18012
   accept Menacing Marshfangs##9770 |goto Zangarmarsh 84.96,54.03
@@ -125,13 +125,13 @@ step
   accept No More Mushrooms!##9773 |goto Zangarmarsh 84.36,54.33
 step
   note Gather 8 Eel Filets from Umbrafen Eels and bring them to Magasha at Swamprat Post.
-  get No More Mushrooms! |q 9773 |goto Zangarmarsh 84.36,54.33
+  kill Umbrafen Eel##18138 |q 9773 |goto Zangarmarsh 74.74,70.34
 step
   talk Zurai##18011
   accept Thick Hydra Scales##9774 |goto Zangarmarsh 85.28,54.75
 step
   note Zurai at Swamprat Post wants you to bring him 12 Thick Hydra Scales.
-  get Thick Hydra Scales |q 9774 |goto Zangarmarsh 85.28,54.75
+  kill Mire Hydra##18213 |q 9774 |goto Zangarmarsh 71.26,65.92
 step
   talk Zurai##18011
   accept Report to Shadow Hunter Denjai##9775 |goto Zangarmarsh 85.28,54.75
@@ -158,7 +158,7 @@ step
   accept Preparing for War##9765 |goto Zangarmarsh 78.4,62.02
 step
   note Obtain Coilfang Armaments from naga at Coilfang Reservoir and return them to Ysiel Windsinger at the Cenarion Refuge in Zangarmarsh.
-  get Preparing for War |q 9765 |goto Zangarmarsh 78.4,62.02
+  kill Coilfang Engineer##17721 |q 9765 |goto The Steamvault - Dungeon -1,-1
 step
   talk Ysiel Windsinger##17841
   accept Warden Hamoot##9778 |goto Zangarmarsh 78.4,62.02
@@ -170,7 +170,7 @@ step
   accept Plants of Zangarmarsh##9802 |goto Zangarmarsh 80.32,64.17
 step
   note Bring 10 Unidentified Plant Parts to Lauranna Thar'well at the Cenarion Refuge in Zangarmarsh.
-  get Plants of Zangarmarsh |q 9802 |goto Zangarmarsh 80.32,64.17
+  kill Darkcrest Taskmaster##18086 |q 9802 |goto Zangarmarsh 62.13,67.45
 step
   talk Ysiel Windsinger##17841
   accept Failed Incursion##9876 |goto Zangarmarsh 78.4,62.02
@@ -236,7 +236,7 @@ step
   accept The Sharpest Blades##9842 |goto Zangarmarsh 31.63,49.19
 step
   note Bring 10 Marshfang Slicer Blades to Gambarinka at Zabra'jin.
-  get The Sharpest Blades |q 9842 |goto Zangarmarsh 31.63,49.19
+  kill Marshfang Slicer##18131 |q 9842 |goto Zangarmarsh 33.06,58.28
 step
   talk Seer Janidi##18017
   accept A Spirit Ally?##9847 |goto Zangarmarsh 32.38,51.96
@@ -341,7 +341,7 @@ step
   accept Nothin' Says Lovin' Like a Big Stinger##9898 |goto Zangarmarsh 84.96,54.03
 step
   note Bring Blacksting's Stinger to Reavij at Swamprat Post.
-  get Nothin' Says Lovin' Like a Big Stinger |q 9898 |goto Zangarmarsh 84.96,54.03
+  kill Blacksting##18283 |q 9898 |goto Zangarmarsh 49.75,60.06
 step
   talk Magasha##18016
   accept A Job Undone##9899 |goto Zangarmarsh 84.36,54.33
@@ -380,13 +380,13 @@ step
   accept A Warm Welcome##9728 |goto Zangarmarsh 79.09,65.27
 step
   note Warden Hamoot at the Cenarion Refuge wants you to bring him 30 Naga Claws.
-  get A Warm Welcome |q 9728 |goto Zangarmarsh 79.09,65.27
+  kill Rajis Fyashe##18044 |q 9728 |goto Zangarmarsh 65.15,40.91
 step
   talk Ikeyen##17956
   accept A Damp, Dark Place##9788 |goto Zangarmarsh 80.4,64.16
 step
   note Look for Ikeyen's Belongings inside a cave south of Umbrafen. Return them to Ikeyen at Cenarion Refuge in Zangarmarsh.
-  get A Damp, Dark Place |q 9788 |goto Zangarmarsh 80.4,64.16
+  collect Ikeyen's Belongings##182122 |q 9788 |goto Zangarmarsh 70.49,97.94
 step
   talk Windcaller Blackhoof##18070
   accept Safeguarding the Watchers##9894 |goto Zangarmarsh 80.37,64.73
@@ -431,7 +431,7 @@ step
   accept A Question of Gluttony##9702 |goto Zangarmarsh 23.32,66.21
 step
   note Collect 10 pieces of Discarded Nutriment and then return to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get A Question of Gluttony |q 9702 |goto Zangarmarsh 23.32,66.21
+  collect Discarded Nutriment##182031 |q 9702 |goto Zangarmarsh 30.2,63.94
 step
   talk Watcher Jhang##17884
   turnin Lost in Action##9738 |goto Zangarmarsh 52.29,35.98
@@ -443,7 +443,7 @@ step
   accept Jyoba's Report##9772 |goto Zangarmarsh 80.75,36.27
 step
   note Retrieve Scout Jyoba's Report from the Withered Giants and return it to Zurai at Swamprat Post.
-  get Jyoba's Report |q 9772 |goto Zangarmarsh 80.75,36.27
+  kill Withered Giant##18124 |q 9772 |goto Zangarmarsh 82.43,41.36
 step
   note Magasha at Swamprat Post wants you to kill Sporewing.
   kill Sporewing##18280 |q 9899 |goto Zangarmarsh 78.01,45.41
@@ -485,7 +485,7 @@ step
   accept Familiar Fungi##9708 |goto Zangarmarsh 23.32,66.21
 step
   note Collect 15 Mushroom Samples and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get Familiar Fungi |q 9708 |goto Zangarmarsh 23.32,66.21
+  kill Ango'rosh Ogre##18117 |q 9708 |goto Zangarmarsh 33.71,31.19
 step
   talk Ysiel Windsinger##17841
   turnin Balance Must Be Preserved##9720 |goto Zangarmarsh 78.4,62.02
@@ -497,7 +497,7 @@ step
   accept Stealing Back the Mushrooms##9709 |goto Zangarmarsh 23.32,66.21
 step
   note Collect 10 Boxes of Mushrooms and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  get Stealing Back the Mushrooms |q 9709 |goto Zangarmarsh 23.32,66.21
+  kill Ango'rosh Mauler##18120 |q 9709 |goto Zangarmarsh 18.89,7.03
 step
   talk Watcher Leesa'oh##17831
   turnin Stealing Back the Mushrooms##9709 |goto Zangarmarsh 23.32,66.21

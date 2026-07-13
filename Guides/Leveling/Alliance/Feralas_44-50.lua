@@ -14,7 +14,7 @@ step
   accept The Crone of the Kraul##1101 |goto Feralas 89.64,46.57
 step
   note Bring Razorflank's Medallion to Falfindel Waywarder in Thalanaar.
-  get The Crone of the Kraul |q 1101 |goto Feralas 89.64,46.57
+  kill Charlga Razorflank##4421 |q 1101 |goto Razorfen Kraul - Dungeon -1,-1
 step
   talk Caryssia Moonhunter##7870
   accept Tribal Leatherworking##5143 |goto Feralas 89.42,46.55
@@ -26,7 +26,7 @@ step
   accept Pusillin and the Elder Azj'Tordin##7441 |goto Feralas 76.91,37.35
 step
   note Travel to Dire Maul and locate the Imp, Pusillin. Convince Pusillin to give you Azj'Tordin's Book of Incantations through any means necessary.
-  get Pusillin and the Elder Azj'Tordin |q 7441 |goto Feralas 76.91,37.35
+  kill Pusillin##14354 |q 7441 |goto Dire Maul - Dungeon -1,-1
 step
   talk Elder Grimtotem##15581
   accept Grimtotem the Elder##8679 |goto Feralas 76.72,37.9
@@ -50,19 +50,19 @@ step
   accept Fuel for the Zapping##7721 |goto Feralas 44.81,43.42
 step
   note Collect 10 Water Elemental Cores from the Sea Elementals and Sea Sprays along the Forgotten Coast of Feralas, and bring them back to Zorbin Fandazzle who is near the dock there.
-  get Fuel for the Zapping |q 7721 |goto Feralas 44.81,43.42
+  kill Sea Elemental##5461 |q 7721 |goto Feralas 45.33,49.7
 step
   talk Pratt McGrubben##7852
   accept The Mark of Quality##2821 |goto Feralas 30.63,42.71
 step
   note Bring 10 Thick Yeti Hides to Pratt McGrubben in Feathermoon Stronghold.
-  get The Mark of Quality |q 2821 |goto Feralas 30.63,42.71
+  kill Feral Scar Yeti##5292 |q 2821 |goto Feralas 55.48,56.5
 step
   talk Pratt McGrubben##7852
   accept Wild Leather Armor##2847 |goto Feralas 30.63,42.71
 step
   note Bring 10 Thick Leather to Pratt McGrubben in Feathermoon Stronghold.
-  get Wild Leather Armor |q 2847 |goto Feralas 30.63,42.71
+  kill Wild Gryphon##2347 |q 2847 |goto Hillsbrad Foothills 87.3,41.7
 step
   talk Shandris Feathermoon##3936
   accept The Ruins of Solarsal##2866 |goto Feralas 30.28,46.17
@@ -107,7 +107,7 @@ step
   accept Lethtendris's Web##7488 |goto Feralas 30.38,46.17
 step
   note Bring Lethtendris' Web to Latronicus Moonspear at the Feathermoon Stronghold in Feralas.
-  get Lethtendris's Web |q 7488 |goto Feralas 30.38,46.17
+  kill Lethtendris##14327 |q 7488 |goto Dire Maul - Dungeon -1,-1
 step
   talk Rockbiter##7765
   accept The Giant Guardian##2844 |goto Feralas 42.39,22.0
@@ -116,7 +116,7 @@ step
   accept Haze of Evil##4143 |goto Feralas 45.12,25.57
 step
   note Collect 5 samples of Atal'ai Haze, then return to Muigin in Un'Goro Crater.
-  get Haze of Evil |q 4143 |goto Feralas 45.12,25.57
+  kill Murk Worm##5226 |q 4143 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   talk Shay Leafrunner##7774
   turnin The Giant Guardian##2844 |goto Feralas 38.22,10.3
@@ -198,7 +198,7 @@ step
   accept Wild Leather Shoulders##2848 |goto Feralas 30.63,42.71
 step
   note Bring 6 Thick Armor Kits and a Wildvine to Pratt McGrubben in Feathermoon Stronghold.
-  get Wild Leather Shoulders |q 2848 |goto Feralas 30.63,42.71
+  kill Olaf##6908 |q 2848 |goto Uldaman - Dungeon -1,-1
 step
   talk Pratt McGrubben##7852
   accept Wild Leather Vest##2849 |goto Feralas 30.63,42.71
@@ -228,7 +228,7 @@ step
   accept Against the Hatecrest##2869 |goto Feralas 30.38,46.17
 step
   note Bring 10 Hatecrest Naga Scales to Latronicus Moonspear in Feathermoon Stronghold.
-  get Against the Hatecrest |q 2869 |goto Feralas 30.38,46.17
+  kill Hatecrest Warrior##5331 |q 2869 |goto Feralas 28.82,53.67
 step
   talk Ginro Hearthkindle##7880
   accept The Missing Courier##4125 |goto Feralas 31.86,45.13
@@ -243,7 +243,7 @@ step
   accept Improved Quality##7733 |goto Feralas 30.63,42.71
 step
   note Bring 10 Rage Scar Yeti Hides to Pratt McGrubben at Feathermoon Stronghold, Feralas.
-  get Improved Quality |q 7733 |goto Feralas 30.63,42.71
+  kill Rage Scar Yeti##5296 |q 7733 |goto Feralas 53.28,31.85
 step
   talk Jer'kai Moonweaver##7957
   turnin Doling Justice##2970 |goto Feralas 65.95,45.61
@@ -290,7 +290,7 @@ step
   accept Against Lord Shalzaru##2870 |goto Feralas 30.38,46.17
 step
   note Eliminate Lord Shalzaru, and then bring the Mysterious Relic he uncovered to Latronicus Moonspear in Feathermoon Stronghold.
-  get Against Lord Shalzaru |q 2870 |goto Feralas 30.38,46.17
+  kill Lord Shalzaru##8136 |q 2870 |goto Feralas 28.5,70.46
 step
   talk Ginro Hearthkindle##7880
   accept The Woodpaw Gnolls##4131 |goto Feralas 31.86,45.13

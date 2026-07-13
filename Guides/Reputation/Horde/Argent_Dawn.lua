@@ -94,37 +94,37 @@ step
   accept They Call Me "The Rooster"##9141 |goto Eastern Plaguelands 81.05,57.55
 step
   note Bring the head of Twilight Lord Kelris to Bashana Runetotem in Thunder Bluff.
-  get Blackfathom Villainy |q 6561 |goto Blackfathom Deeps - Dungeon -1,-1
+  kill Twilight Lord Kelris##4832 |q 6561 |goto Blackfathom Deeps - Dungeon -1,-1
 step
   note Get the Sceptre of Light and then return it to Azore Aldamort at the tower in Ethel Rethor.
-  get Sceptre of Light |q 5741 |goto Desolace 38.88,27.16
+  kill Burning Blade Seer##13019 |q 5741 |goto Desolace 55.17,30.15
 step
   note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
   get Broodling Essence |q 4726 |goto Burning Steppes 65.24,24.0
 step
-  get Minion's Scourgestones |q 5402 |goto Tirisfal Glades 83.19,68.45
+  kill Skeletal Flayer##1783 |q 5402 |goto Western Plaguelands 38.99,58.49
 step
-  get Invader's Scourgestones |q 5403 |goto Tirisfal Glades 83.19,68.45
+  kill Skeletal Warlord##1788 |q 5403 |goto Western Plaguelands 45.12,69.56
 step
-  get Corruptor's Scourgestones |q 5406 |goto Tirisfal Glades 83.19,68.45
+  kill Putridius##1850 |q 5406 |goto Western Plaguelands 47.76,67.3
 step
-  get Corruptor's Scourgestones |q 5508 |goto Eastern Plaguelands 81.44,59.82
+  kill Putridius##1850 |q 5508 |goto Western Plaguelands 47.76,67.3
 step
-  get Invader's Scourgestones |q 5509 |goto Eastern Plaguelands 81.44,59.82
+  kill Skeletal Warlord##1788 |q 5509 |goto Western Plaguelands 45.12,69.56
 step
-  get Minion's Scourgestones |q 5510 |goto Eastern Plaguelands 81.44,59.82
+  kill Skeletal Flayer##1783 |q 5510 |goto Western Plaguelands 38.99,58.49
 step
   note Bring Zaeldarr's Head to Caretaker Alen at Light's Hope Chapel.
-  get Zaeldarr the Outcast |q 6021 |goto Eastern Plaguelands 79.55,63.86
+  kill Zaeldarr the Outcast##12250 |q 6021 |goto Eastern Plaguelands 27.47,84.86
 step
   note Kill 20 Plagued Hatchlings, then return to Betina Bigglezink at the Light's Hope Chapel.
   kill Plagued Hatchling##10678 |q 5529 |goto Scholomance - Dungeon -1,-1
 step
   note Recover 10 Plagued Flesh Samples from Stratholme and return them to Betina Bigglezink. You suspect that any creature in Stratholme would have said flesh sample.
-  get The Flesh Does Not Lie |q 5212 |goto Eastern Plaguelands 81.47,59.66
+  kill Ravaged Cadaver##10381 |q 5212 |goto Stratholme - Dungeon -1,-1
 step
   note Travel to Stratholme, in the north. Search the supply crates that litter the city and recover 5 Stratholme Holy Water. Return to Leonid Barthalomew the Revered when you have collected enough of the blessed fluid.
-  get Houses of the Holy |q 5243 |goto Eastern Plaguelands 81.73,57.83
+  collect Supply Crate##176224 |q 5243 |goto Stratholme - Dungeon -1,-1
 step
   note Travel to Stratholme and find Archivist Galford of the Scarlet Crusade. Destroy him and burn down the Scarlet Archive.
   kill Archivist Galford##10811 |q 5251 |goto Stratholme - Dungeon -1,-1
@@ -133,28 +133,28 @@ step
   kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1
 step
   note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Wildheart Bracers to Mokvar in Orgrimmar.
-  get An Earnest Proposition |q 8913 |goto Orgrimmar 34.95,38.29
+  kill Stonelash Scorpid##11735 |q 8913 |goto Silithus 59.92,28.33
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  get The Dread Citadel - Naxxramas |q 9121 |goto Eastern Plaguelands 81.52,58.27
+  collect Small Thorium Vein##324 |q 9121 |goto Burning Steppes 62.76,44.03
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 2 Arcane Crystals, 1 Nexus Crystal and 30 gold pieces. You must also be Revered with the Argent Dawn.
-  get The Dread Citadel - Naxxramas |q 9122 |goto Eastern Plaguelands 81.52,58.27
+  collect Small Thorium Vein##324 |q 9122 |goto Burning Steppes 62.76,44.03
 step
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
-  get Cryptstalker Armor Doesn't Make Itself... |q 9124 |goto Eastern Plaguelands 81.51,58.55
+  kill Crypt Stalker##8555 |q 9124 |goto Eastern Plaguelands 15.44,33.03
 step
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands wants 30 Bone Fragments.
-  get Bonescythe Digs |q 9126 |goto Eastern Plaguelands 81.43,58.51
+  kill Skeletal Flayer##1783 |q 9126 |goto Western Plaguelands 38.99,58.49
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 30 Core of Elements.
-  get The Elemental Equation |q 9128 |goto Eastern Plaguelands 81.52,58.27
+  kill Scorching Elemental##6520 |q 9128 |goto Un'Goro Crater 52.73,48.83
 step
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands wants 30 Dark Iron Scraps.
-  get Binding the Dreadnaught |q 9131 |goto Eastern Plaguelands 81.8,58.08
+  kill Dark Iron Steamsmith##5840 |q 9131 |goto Searing Gorge 40.01,49.65
 step
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands wants 30 Savage Fronds.
-  get Savage Flora |q 9136 |goto Eastern Plaguelands 81.2,59.0
+  kill Cursed Sycamore##5881 |q 9136 |goto Feralas 55.43,67.61
 step
   note Dispatch Commander Metz at Light's Hope Chapel in the Eastern Plaguelands wants an Argent Dawn Valor Token.
   get They Call Me "The Rooster" |q 9141 |goto Eastern Plaguelands 81.05,57.55
@@ -169,7 +169,7 @@ step
   get Craftsman's Writ - Wicked Leather Headband |q 9184
 step
   note Deliver 25 Rugged Armor Kits and the Craftsman's Writ - Rugged Armor Kit - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Rugged Armor Kit |q 9185
+  kill Rabid Blisterpaw##5427 |q 9185 |goto Tanaris 37.69,63.72
 step
   note Deliver 9 Wicked Leather Belts and the Craftsman's Writ - Wicked Leather Belt - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
   get Craftsman's Writ - Wicked Leather Belt |q 9186
@@ -199,19 +199,19 @@ step
   get Craftsman's Writ - Thorium Tube |q 9198
 step
   note Deliver 10 Major Mana Potions and the Craftsman's Writ - Major Mana Potion - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Major Mana Potion |q 9200
+  kill Grimtooth##603 |q 9200 |goto Alterac Valley - Battleground 51.71,94.86
 step
   note Deliver 15 Greater Arcane Protection Potions and the Craftsman's Writ - Greater Arcane Protection Potion - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
   get Craftsman's Writ - Greater Arcane Protection Potion |q 9201
 step
   note Deliver 20 Major Healing Potions and the Craftsman's Writ - Major Healing Potion - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Major Healing Potion |q 9202
+  kill Blue Dragonspawn##193 |q 9202 |goto Azshara 36.88,74.64
 step
   note Deliver 1 Flask of Petrification and the Craftsman's Writ - Flask of Petrification - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
   get Craftsman's Writ - Flask of Petrification |q 9203
 step
   note Deliver 40 Stonescale Eel and the Craftsman's Writ - Stonescale Eel - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Stonescale Eel |q 9204
+  collect School of Tastyfish##180248 |q 9204 |goto Stranglethorn Vale 27.26,49.25
 step
   note Deliver 30 Plated Armorfish and the Craftsman's Writ - Plated Armorfish - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
   get Craftsman's Writ - Plated Armorfish |q 9205
@@ -415,23 +415,23 @@ step
   get Pamela's Doll |q 5149 |goto Eastern Plaguelands 36.45,90.8
 step
   note Travel to Stratholme and search the ziggurats. Find and return new Scourge Data to Betina Bigglezink.
-  get The Active Agent |q 5213 |goto Eastern Plaguelands 81.47,59.66
+  collect Scourge Data##176249 |q 5213 |goto Stratholme - Dungeon -1,-1
 step
   note Locate Jandice Barov in the Scholomance and destroy her. From her corpse recover Krastinov's Bag of Horrors. Return the bag to Eva Sarkhoff.
-  get Krastinov's Bag of Horrors |q 5515 |goto Western Plaguelands 70.22,73.71
+  kill Jandice Barov##10503 |q 5515 |goto Scholomance - Dungeon -1,-1
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1
 step
-  get Crypt Fiend Parts |q 9125 |goto Eastern Plaguelands 81.51,58.55
+  kill Crypt Stalker##8555 |q 9125 |goto Eastern Plaguelands 15.44,33.03
 step
-  get Bone Fragments |q 9127 |goto Eastern Plaguelands 81.43,58.51
+  kill Skeletal Flayer##1783 |q 9127 |goto Western Plaguelands 38.99,58.49
 step
-  get Core of Elements |q 9129 |goto Eastern Plaguelands 81.52,58.27
+  kill Scorching Elemental##6520 |q 9129 |goto Un'Goro Crater 52.73,48.83
 step
-  get Dark Iron Scraps |q 9132 |goto Eastern Plaguelands 81.8,58.08
+  kill Dark Iron Steamsmith##5840 |q 9132 |goto Searing Gorge 40.01,49.65
 step
-  get Savage Fronds |q 9137 |goto Eastern Plaguelands 81.2,59.0
+  kill Cursed Sycamore##5881 |q 9137 |goto Feralas 55.43,67.61
 step
   get Craftsman's Writ |q 9142 |goto Eastern Plaguelands 81.05,57.55
 step
@@ -655,13 +655,13 @@ step
   accept Bindings of Faith##9118 |goto Eastern Plaguelands 81.47,58.15
 step
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
-  get Chillwind Horns |q 4809 |goto Winterspring 61.63,38.61
+  kill Fledgling Chillwind##7447 |q 4809 |goto Winterspring 44.97,42.75
 step
   note Using the Beacon Torch, mark each tower in Andorhal; you will need to stand in the doorway of the tower to successfully mark it.
   kill Andorhal Tower One##10902 |q 5098 |goto Western Plaguelands 40.05,71.6
 step
   note Venture to Stratholme and destroy Baron Rivendare. Take his head and return to Duke Nicholas Zverenhoff.
-  get Above and Beyond |q 5263 |goto Eastern Plaguelands 81.44,59.82
+  kill Baron Rivendare##10440 |q 5263 |goto Stratholme - Dungeon -1,-1
 step
   note Return to the Scholomance with the Blood of Innocents. Find the porch and place the Blood of Innocents in the brazier. Kirtonos will come to feast upon your soul.
   kill Kirtonos the Herald##10506 |q 5384
@@ -675,7 +675,7 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Pauldrons if you bring him the following items: 1 Desecrated Pauldrons, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  get Dreadnaught Pauldrons |q 9038 |goto Eastern Plaguelands 81.8,58.08
+  kill Grobbulus##15931 |q 9038 |goto Naxxramas - Raid -1,-1
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Gauntlets if you bring him the following items: 1 Desecrated Gauntlets, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -683,27 +683,27 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Waistguard if you bring him the following items: 1 Desecrated Waistguard, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  get Dreadnaught Waistguard |q 9041 |goto Eastern Plaguelands 81.8,58.08
+  kill Gluth##15932 |q 9041 |goto Naxxramas - Raid -1,-1
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Bracers if you bring him the following items: 1 Desecrated Bracers, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 1 Nexus Crystal.
-  get Dreadnaught Bracers |q 9042 |goto Eastern Plaguelands 81.8,58.08
+  kill Gluth##15932 |q 9042 |goto Naxxramas - Raid -1,-1
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  get Redemption Boots |q 9047 |goto Eastern Plaguelands 81.54,58.16
+  kill Gluth##15932 |q 9047 |goto Naxxramas - Raid -1,-1
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  get Redemption Girdle |q 9049 |goto Eastern Plaguelands 81.54,58.16
+  kill Gluth##15932 |q 9049 |goto Naxxramas - Raid -1,-1
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  get Redemption Wristguards |q 9050 |goto Eastern Plaguelands 81.54,58.16
+  kill Gluth##15932 |q 9050 |goto Naxxramas - Raid -1,-1
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  get Cryptstalker Boots |q 9058 |goto Eastern Plaguelands 81.51,58.55
+  kill Gluth##15932 |q 9058 |goto Naxxramas - Raid -1,-1
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -711,11 +711,11 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make a Cryptstalker Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  get Cryptstalker Girdle |q 9060 |goto Eastern Plaguelands 81.51,58.55
+  kill Gluth##15932 |q 9060 |goto Naxxramas - Raid -1,-1
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Chain Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  get Cryptstalker Wristguards |q 9061 |goto Eastern Plaguelands 81.51,58.55
+  kill Gluth##15932 |q 9061 |goto Naxxramas - Raid -1,-1
 step
   only Mage
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Legguards if you bring him the following: 1 Desecrated Legguards, 20 Wartorn Chain Scraps, 3 Arcanite Bars and 5 Cured Rugged Hides.
@@ -723,27 +723,27 @@ step
 step
   only Mage
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Chain Scraps, 2 Arcanite Bars and 2 Mooncloth.
-  get Earthshatter Spaulders |q 9071 |goto Eastern Plaguelands 81.12,59.02
+  kill Grobbulus##15931 |q 9071 |goto Naxxramas - Raid -1,-1
 step
   only Mage
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  get Earthshatter Boots |q 9072 |goto Eastern Plaguelands 81.12,59.02
+  kill Gluth##15932 |q 9072 |goto Naxxramas - Raid -1,-1
 step
   only Mage
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make an Earthshatter Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  get Earthshatter Girdle |q 9074 |goto Eastern Plaguelands 81.12,59.02
+  kill Gluth##15932 |q 9074 |goto Naxxramas - Raid -1,-1
 step
   only Mage
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Chain Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  get Earthshatter Wristguards |q 9075 |goto Eastern Plaguelands 81.12,59.02
+  kill Gluth##15932 |q 9075 |goto Naxxramas - Raid -1,-1
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Pauldrons if you bring him the following: 1 Desecrated Pauldrons, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 50 gold pieces.
-  get Bonescythe Pauldrons |q 9080 |goto Eastern Plaguelands 81.43,58.51
+  kill Grobbulus##15931 |q 9080 |goto Naxxramas - Raid -1,-1
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Sabatons if you bring him the following: 1 Desecrated Sabatons, 12 Wartorn Leather Scraps, 3 Cured Rugged Hides, 2 Nexus Crystals and 25 gold pieces.
-  get Bonescythe Sabatons |q 9081 |goto Eastern Plaguelands 81.43,58.51
+  kill Gluth##15932 |q 9081 |goto Naxxramas - Raid -1,-1
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Gauntlets if you bring him the following: 1 Desecrated Gauntlets, 8 Wartorn Leather Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -751,30 +751,30 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Waistguard if you bring him the following: 1 Desecrated Waistguard, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 15 gold pieces.
-  get Bonescythe Waistguard |q 9083 |goto Eastern Plaguelands 81.43,58.51
+  kill Gluth##15932 |q 9083 |goto Naxxramas - Raid -1,-1
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Bracers if you bring him the following: 1 Desecrated Bracers, 6 Wartorn Leather Scraps, 1 Arcanite Bar, 2 Cured Rugged Hides and 10 gold pieces.
-  get Bonescythe Bracers |q 9084 |goto Eastern Plaguelands 81.43,58.51
+  kill Gluth##15932 |q 9084 |goto Naxxramas - Raid -1,-1
 step
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Spaulders if you bring her the following: 1 Desecrated Spaulders, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides and 1 Nexus Crystal.
-  get Dreamwalker Spaulders |q 9089 |goto Eastern Plaguelands 81.2,59.0
+  kill Grobbulus##15931 |q 9089 |goto Naxxramas - Raid -1,-1
 step
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Boots if you bring her the following: 1 Desecrated Boots, 12 Wartorn Leather Scraps, 3 Mooncloth and 2 Cured Rugged Hides.
-  get Dreamwalker Boots |q 9090 |goto Eastern Plaguelands 81.2,59.0
+  kill Gluth##15932 |q 9090 |goto Naxxramas - Raid -1,-1
 step
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Handguards if you bring her the following: 1 Desecrated Handguards, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides and 1 Nexus Crystal.
   get Dreamwalker Handguards |q 9091 |goto Eastern Plaguelands 81.2,59.0
 step
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Girdle if you bring her the following: 1 Desecrated Girdle, 8 Wartorn Leather Scraps, 3 Mooncloth and 2 Cured Rugged Hides.
-  get Dreamwalker Girdle |q 9092 |goto Eastern Plaguelands 81.2,59.0
+  kill Gluth##15932 |q 9092 |goto Naxxramas - Raid -1,-1
 step
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Wristguards if you bring her the following: 1 Desecrated Wristguards, 6 Wartorn Leather Scraps, 1 Arcane Crystal and 2 Cured Rugged Hides.
-  get Dreamwalker Wristguards |q 9093 |goto Eastern Plaguelands 81.2,59.0
+  kill Gluth##15932 |q 9093 |goto Naxxramas - Raid -1,-1
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Sandals if you bring her the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  get Frostfire Sandals |q 9099 |goto Eastern Plaguelands 81.52,58.27
+  kill Gluth##15932 |q 9099 |goto Naxxramas - Raid -1,-1
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Gloves if you bring her the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
@@ -782,11 +782,11 @@ step
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Belt if you bring her the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  get Frostfire Belt |q 9101 |goto Eastern Plaguelands 81.52,58.27
+  kill Gluth##15932 |q 9101 |goto Naxxramas - Raid -1,-1
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Bindings if you bring her the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  get Frostfire Bindings |q 9102 |goto Eastern Plaguelands 81.52,58.27
+  kill Gluth##15932 |q 9102 |goto Naxxramas - Raid -1,-1
 step
   only Druid
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Leggings if you bring him the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
@@ -794,19 +794,19 @@ step
 step
   only Druid
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Sandals if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  get Plagueheart Sandals |q 9107 |goto Eastern Plaguelands 81.39,58.23
+  kill Gluth##15932 |q 9107 |goto Naxxramas - Raid -1,-1
 step
   only Druid
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Belt if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  get Plagueheart Belt |q 9109 |goto Eastern Plaguelands 81.39,58.23
+  kill Gluth##15932 |q 9109 |goto Naxxramas - Raid -1,-1
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Shoulderpads of Faith if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  get Shoulderpads of Faith |q 9114 |goto Eastern Plaguelands 81.47,58.15
+  kill Grobbulus##15931 |q 9114 |goto Naxxramas - Raid -1,-1
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Sandals of Faith if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  get Sandals of Faith |q 9115 |goto Eastern Plaguelands 81.47,58.15
+  kill Gluth##15932 |q 9115 |goto Naxxramas - Raid -1,-1
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Gloves of Faith if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
@@ -814,7 +814,7 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Bindings of Faith if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  get Bindings of Faith |q 9118 |goto Eastern Plaguelands 81.47,58.15
+  kill Gluth##15932 |q 9118 |goto Naxxramas - Raid -1,-1
 step
   talk Shadow Priestess Vandis##11055
   turnin The Scourge Cauldrons##5228 |goto Tirisfal Glades 83.04,71.91
@@ -1018,16 +1018,16 @@ step
   kill Darrowshire Spirit##11064 |q 5211
 step
   note Bring Joseph's Wedding Ring to Chromie.
-  get A Strange Historian |q 5153 |goto Western Plaguelands 49.17,78.57
+  collect Joseph Redpath's Monument##176145 |q 5153 |goto Western Plaguelands 49.7,76.76
 step
   note Bring Araj's Phylactery Shard to High Executor Derrington at the Bulwark, Western Plaguelands.
   get Alas, Andorhal |q 105 |goto Tirisfal Glades 83.13,68.94
 step
   note Travel to the Arathi Highlands, to the ruins of Stromgarde. Search Stromgarde for a Keepsake of Remembrance. If you find such an item, return with it to Magistrate Marduke.
-  get The Human, Ras Frostwhisper |q 5461 |goto Western Plaguelands 70.57,74.11
+  collect Keepsake of Remembrance##176630 |q 5461 |goto Arathi Highlands 19.33,66.05
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  get Hunting for Ectoplasm |q 8924 |goto Tanaris 52.47,27.23
+  kill Tortured Druid##12178 |q 8924 |goto Silithus 62.65,52.76
 step
   turnin Target: Felstone Field##5229 |goto Western Plaguelands 37.25,56.78
 step
@@ -1076,10 +1076,10 @@ step
   get The Annals of Darrowshire |q 5154 |goto Western Plaguelands 39.46,66.76
 step
   note Bring Davil's Libram and Redpath's Shield to Carlin Redpath.
-  get Heroes of Darrowshire |q 5168 |goto Eastern Plaguelands 81.52,59.77
+  collect Davil's Libram##176206 |q 5168 |goto Western Plaguelands 42.52,18.99
 step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
-  get A Portable Power Source |q 8925 |goto Tanaris 52.47,27.23
+  kill Magma Lord Bokk##16043 |q 8925 |goto Burning Steppes 35.39,57.76
 step
   turnin Felstone Field Cauldron##5218 |goto Western Plaguelands 37.25,56.78
 step
@@ -1164,7 +1164,7 @@ step
   get Dalson's Tears Cauldron |q 5221
 step
   note Bring the Skull of Horgus and the Shattered Sword of Marduk to Carlin Redpath at Light's Hope Chapel.
-  get Villains of Darrowshire |q 5181 |goto Eastern Plaguelands 81.52,59.77
+  collect Horgus' Skull##176208 |q 5181 |goto Eastern Plaguelands 51.11,49.93
 step
   turnin Dalson's Tears Cauldron##5221 |goto Western Plaguelands 46.18,51.9
 step
@@ -1205,7 +1205,7 @@ step
   kill Joseph Redpath##10936 |q 5721
 step
   note Bring a Wildheart Belt and a set of Wildheart Gloves to Mokvar in Orgrimmar.
-  get Just Compensation |q 8927 |goto Orgrimmar 34.95,38.29
+  kill Scarshield Raider##9258 |q 8927 |goto Blackrock Spire - Dungeon -1,-1
 step
   turnin Target: Writhing Haunt##5233 |goto Western Plaguelands 53.02,65.61
 step

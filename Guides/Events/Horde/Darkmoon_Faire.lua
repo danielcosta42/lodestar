@@ -125,7 +125,7 @@ step
 step
   get Crocolisk Boy and the Bearded Murloc |q 7884 |goto Mulgore 36.16,35.18
 step
-  get Armor Kits |q 7885 |goto Mulgore 36.16,35.18
+  kill Rabid Blisterpaw##5427 |q 7885 |goto Tanaris 37.69,63.72
 step
   get Coarse Weightstone |q 7889 |goto Mulgore 37.87,39.83
 step
@@ -137,25 +137,25 @@ step
 step
   get Rituals of Strength |q 7893 |goto Mulgore 37.87,39.83
 step
-  get Copper Modulator |q 7894 |goto Mulgore 37.12,37.31
+  kill Harvest Golem##36 |q 7894 |goto Westfall 47.46,36.27
 step
-  get Whirring Bronze Gizmo |q 7895 |goto Mulgore 37.12,37.31
+  kill Blackrock Tracker##615 |q 7895 |goto Redridge Mountains 35.53,10.43
 step
   get Green Fireworks |q 7896 |goto Mulgore 37.12,37.31
 step
   get Mechanical Repair Kits |q 7897 |goto Mulgore 37.12,37.31
 step
-  get Thorium Widget |q 7898 |goto Mulgore 37.12,37.31
+  kill Anvilrage Marshal##8898 |q 7898 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
-  get Small Furry Paws |q 7899 |goto Mulgore 37.54,39.63
+  kill Moonstalker##2069 |q 7899 |goto Darkshore 42.66,66.05
 step
-  get Torn Bear Pelts |q 7900 |goto Mulgore 37.54,39.63
+  kill Gray Bear##2351 |q 7900 |goto Hillsbrad Foothills 58.08,32.75
 step
-  get Soft Bushy Tails |q 7901 |goto Mulgore 37.54,39.63
+  kill Crag Coyote##2727 |q 7901 |goto Badlands 50.97,41.5
 step
-  get Vibrant Plumes |q 7902 |goto Mulgore 37.54,39.63
+  kill Carrion Vulture##1809 |q 7902 |goto Western Plaguelands 32.26,62.39
 step
-  get Evil Bat Eyes |q 7903 |goto Mulgore 37.54,39.63
+  kill Plaguebat##8600 |q 7903 |goto Eastern Plaguelands 33.87,77.16
 step
   note Return the Beast Deck to the Darkmoon Faire when it comes to town.
   get Darkmoon Beast Deck |q 7907
@@ -187,19 +187,19 @@ step
 step
   get 1200 Tickets - Orb of the Darkmoon |q 7940 |goto Mulgore 37.31,37.73
 step
-  get More Armor Kits |q 7941 |goto Mulgore 36.16,35.18
+  kill Rabid Blisterpaw##5427 |q 7941 |goto Tanaris 37.69,63.72
 step
-  get More Thorium Widgets |q 7942 |goto Mulgore 37.12,37.31
+  kill Anvilrage Marshal##8898 |q 7942 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
-  get More Bat Eyes |q 7943 |goto Mulgore 37.54,39.63
+  kill Plaguebat##8600 |q 7943 |goto Eastern Plaguelands 33.87,77.16
 step
-  get Spawn of Jubjub |q 7946 |goto Elwynn Forest 43.34,70.28
+  kill Anvilrage Officer##8895 |q 7946 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   get 1200 Tickets - Amulet of the Darkmoon |q 7981 |goto Mulgore 37.31,37.73
 step
-  get Glowing Scorpid Blood |q 8222 |goto Mulgore 37.54,39.63
+  kill Scorpok Stinger##5988 |q 8222 |goto Blasted Lands 49.76,21.96
 step
-  get More Glowing Scorpid Blood |q 8223 |goto Mulgore 37.54,39.63
+  kill Scorpok Stinger##5988 |q 8223 |goto Blasted Lands 49.76,21.96
 step
   get 40 Tickets - Schematic: Steam Tonk Controller |q 9249 |goto Mulgore 37.31,37.73
 step

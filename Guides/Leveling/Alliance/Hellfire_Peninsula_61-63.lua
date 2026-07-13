@@ -20,7 +20,7 @@ step
   accept The Blood is Life##9589 |goto Hellfire Peninsula 56.4,66.66
 step
   note Collect 10 Fel Orc Blood Vials and return them to Gunny at Honor Hold in Hellfire Peninsula.
-  get The Blood is Life |q 9589 |goto Hellfire Peninsula 56.4,66.66
+  kill Laughing Skull Enforcer##17370 |q 9589 |goto The Blood Furnace - Dungeon -1,-1
 step
   talk Warp-Scryer Kryv##16839
   accept The Path of Glory##10047 |goto Hellfire Peninsula 56.69,66.52
@@ -32,13 +32,13 @@ step
   accept Waste Not, Want Not##10055 |goto Hellfire Peninsula 51.12,60.3
 step
   note Bring 8 pieces of Salvaged Metal and 8 pieces of Salvaged Wood to Dumphry at Honor Hold.
-  get Waste Not, Want Not |q 10055 |goto Hellfire Peninsula 51.12,60.3
+  collect Salvageable Metal##182797 |q 10055 |goto Hellfire Peninsula 57.71,53.38
 step
   talk Father Malgor Devidicus##16825
   accept An Old Gift##10058 |goto Hellfire Peninsula 54.29,63.58
 step
   note Retrieve Mysteries of the Light and return it to Father Malgor Devidicus at Honor Hold.
-  get An Old Gift |q 10058 |goto Hellfire Peninsula 54.29,63.58
+  collect Mysteries of the Light##182804 |q 10058 |goto Hellfire Peninsula 54.96,86.81
 step
   talk Force Commander Danath Trollbane##16819
   accept The Legion Reborn##10141 |goto Hellfire Peninsula 56.64,66.7
@@ -62,13 +62,13 @@ step
   accept Ravager Egg Roundup##9349 |goto Hellfire Peninsula 49.24,74.84
 step
   note Retrieve 12 Ravager Eggs for Legassi at the Zeppelin Crash in Hellfire Peninsula.
-  get Ravager Egg Roundup |q 9349 |goto Hellfire Peninsula 49.24,74.84
+  kill Razorfang Ravager##16933 |q 9349 |goto Hellfire Peninsula 37.29,88.21
 step
   talk "Screaming" Screed Luckheed##19367
   accept In Case of Emergency...##10161 |goto Hellfire Peninsula 49.15,74.86
 step
   note Collect 30 pieces of Zeppelin Debris and bring them to "Screaming" Screed Luckheed at the Zeppelin Crash.
-  get In Case of Emergency... |q 10161 |goto Hellfire Peninsula 49.15,74.86
+  collect Zeppelin Debris##183394 |q 10161 |goto Hellfire Peninsula 61.31,71.15
 step
   note Honor Guard Wesilow wants you to defeat 12 Unyielding Footmen, 10 Unyielding Sorcerers, and 5 Unyielding Knights at the Expedition Armory to the south.
   kill Unyielding Footman##16904 |q 10050 |goto Hellfire Peninsula 55.38,78.36
@@ -86,7 +86,7 @@ step
   accept Outland Sucks!##10236 |goto Hellfire Peninsula 51.37,30.52
 step
   note Find 6 Shredder Parts and return to Foreman Razelcraz by the mine northwest of Thrallmar.
-  get Outland Sucks! |q 10236 |goto Hellfire Peninsula 51.37,30.52
+  collect Shredder Parts##183934 |q 10236 |goto Hellfire Peninsula 47.97,41.71
 step
   note Kill 10 Terrorfiends in the Pools of Aggonar and return to Warp-Scryer Kryv in the main keep of Honor Hold.
   kill Terrorfiend##16951 |q 10399 |goto Hellfire Peninsula 40.05,32.89
@@ -116,7 +116,7 @@ step
   accept The Rock Flayer Matriarch##9490 |goto Hellfire Peninsula 23.09,40.22
 step
   note Obtain Blacktalon's Claws from Blacktalon the Savage at the Great Fissure and bring it to Ikan at the Temple of Telhamat in Hellfire Peninsula.
-  get The Rock Flayer Matriarch |q 9490 |goto Hellfire Peninsula 23.09,40.22
+  kill Blacktalon the Savage##17057 |q 9490 |goto Hellfire Peninsula 33.37,65.08
 step
   talk Amaan the Wise##16796
   accept Helping the Cenarion Post##10443 |goto Hellfire Peninsula 23.42,36.54
@@ -131,7 +131,7 @@ step
   accept Demonic Contamination##9372 |goto Hellfire Peninsula 15.7,52.09
 step
   note Thiah Redmane, at the Cenarion Post in Hellfire Peninsula, has asked you to gather 6 Helboar Blood Samples from Hulking Helboars.
-  get Demonic Contamination |q 9372 |goto Hellfire Peninsula 15.7,52.09
+  kill Hulking Helboar##16880 |q 9372 |goto Hellfire Peninsula 24.6,54.71
 step
   talk Amythiel Mistwalker##16885
   accept Return to the Marsh##9732 |goto Hellfire Peninsula 16.04,52.15
@@ -164,7 +164,7 @@ step
   accept A Traitor Among Us##10367 |goto Hellfire Peninsula 16.27,65.09
 step
   note Naladu at the Ruins of Sha'naar wants you to obtain the Sha'naar Key from a nearby hut.
-  get A Traitor Among Us |q 10367 |goto Hellfire Peninsula 16.27,65.09
+  collect Metal Coffer##184466 |q 10367 |goto Hellfire Peninsula 14.34,63.5
 step
   talk Gremni Longbeard##16850
   turnin The Longbeards##9558 |goto Hellfire Peninsula 23.89,72.17
@@ -239,7 +239,7 @@ step
   accept Ill Omens##10483 |goto Hellfire Peninsula 50.91,60.19
 step
   note Lieutenant Amadi in Honor Hold wants you to bring 1 Cursed Talisman to Corporal Ironridge at Expedition Point.
-  get Ill Omens |q 10483 |goto Hellfire Peninsula 50.91,60.19
+  kill Bleeding Hollow Grunt##16871 |q 10483 |goto Hellfire Peninsula 67.1,71.23
 step
   note Use the Flaming Torch to burn the Horde Blade Throwers overlooking the Path of Glory. Then, bring the Flaming Torch to Dumphry in Honor Hold.
   kill Invis Horde Siege Engine - East##18818 |q 10078 |goto Hellfire Peninsula 58.49,47.67
@@ -254,7 +254,7 @@ step
   accept Voidwalkers Gone Wild##9351 |goto Hellfire Peninsula 49.15,74.86
 step
   note Bring 10 Condensed Voidwalker Essences to "Screaming" Screed Luckheed at the Zeppelin Crash.
-  get Voidwalkers Gone Wild |q 9351 |goto Hellfire Peninsula 49.15,74.86
+  kill Rogue Voidwalker##16974 |q 9351 |goto Hellfire Peninsula 48.37,83.38
 step
   talk Legassi##19344
   accept Helboar, the Other White Meat##9361 |goto Hellfire Peninsula 49.24,74.84
@@ -281,7 +281,7 @@ step
   accept Cursed Talismans##10484 |goto Hellfire Peninsula 70.96,63.37
 step
   note Bring 12 Cursed Talismans to Corporal Ironridge at Expedition Point.
-  get Cursed Talismans |q 10484 |goto Hellfire Peninsula 70.96,63.37
+  kill Bleeding Hollow Grunt##16871 |q 10484 |goto Hellfire Peninsula 67.1,71.23
 step
   note Sergeant Altumus at the East Supply Caravan east of Honor Hold in Hellfire Peninsula wants you to kill 4 Flamewaker Imps, 6 Infernal Warbringers and 1 Dreadcaller.
   kill Dreadcaller##19434 |q 10142 |goto Hellfire Peninsula 68.38,57.72
@@ -380,7 +380,7 @@ step
   accept The Finest Down##9420 |goto Hellfire Peninsula 23.97,72.35
 step
   note Mirren Longbeard in Hellfire Peninsula wants you to bring him 8 Kaliri Feathers from the various kaliri found in the Den of Haal'esh.
-  get The Finest Down |q 9420 |goto Hellfire Peninsula 23.97,72.35
+  kill Kaliri Matriarch##17035 |q 9420 |goto Hellfire Peninsula 25.72,75.23
 step
   talk Sergeant Altumus##19309
   turnin The Path of Anguish##10142 |goto Hellfire Peninsula 61.72,60.95
@@ -401,7 +401,7 @@ step
   accept Weaken the Ramparts##9575 |goto Hellfire Peninsula 56.73,66.34
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Gunny at Honor Hold in Hellfire Peninsula.
-  get Weaken the Ramparts |q 9575 |goto Hellfire Peninsula 56.73,66.34
+  kill Watchkeeper Gargolmar##17306 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1
 step
   talk Foreman Biggums##16837
   accept When This Mine's a-Rockin'##10079 |goto Hellfire Peninsula 52.02,62.57
@@ -428,7 +428,7 @@ step
   accept Smooth as Butter##9356 |goto Hellfire Peninsula 49.24,74.84
 step
   note Bring 12 Plump Buzzard Wings to Legassi at the Zeppelin Crash.
-  get Smooth as Butter |q 9356 |goto Hellfire Peninsula 49.24,74.84
+  kill Bonestripper Buzzard##16972 |q 9356 |goto Hellfire Peninsula 61.75,67.82
 step
   talk Forward Commander Kingston##19310
   turnin Expedition Point##10143 |goto Hellfire Peninsula 71.34,62.77
@@ -443,7 +443,7 @@ step
   accept Warlord of the Bleeding Hollow##10485 |goto Hellfire Peninsula 70.96,63.37
 step
   note Bring Warlord Morkh's Shattered Armor to Corporal Ironridge in Expedition Point.
-  get Warlord of the Bleeding Hollow |q 10485 |goto Hellfire Peninsula 70.96,63.37
+  kill Warlord Morkh##16964 |q 10485 |goto Hellfire Peninsula 70.08,77.09
 step
   note Defeat enemies around Portal Grimh and Portal Kaalez to gather Demonic Rune Stones.
   collect Portal Grimh##184414 |q 10144 |goto Hellfire Peninsula 71.46,55.16
@@ -467,7 +467,7 @@ step
   accept Makuru's Vengeance##9424 |goto Hellfire Peninsula 23.14,40.16
 step
   note Makuru at the Temple of Telhamat in Hellfire Peninsula wants you to bring him 10 Mag'har Ancestral Beads.
-  get Makuru's Vengeance |q 9424 |goto Hellfire Peninsula 23.14,40.16
+  kill Mag'har Grunt##16846 |q 9424 |goto Hellfire Peninsula 35.79,30.43
 step
   talk Thiah Redmane##16991
   turnin Testing the Antidote##10255 |goto Hellfire Peninsula 15.7,52.09
@@ -560,7 +560,7 @@ step
   accept Digging for Prayer Beads##10916 |goto Hellfire Peninsula 54.32,63.65
 step
   note Recover the Draenei Prayer Beads and bring them to Assistant Klatu in Honor Hold.
-  get Digging for Prayer Beads |q 10916 |goto Hellfire Peninsula 54.32,63.65
+  collect Fei Fei's Cache##185302 |q 10916 |goto Hellfire Peninsula 54.02,63.3
 step
   talk Forward Commander Kingston##19310
   turnin Mission: The Murketh and Shaadraz Gateways##10146 |goto Hellfire Peninsula 71.34,62.77
@@ -584,7 +584,7 @@ step
   accept Sha'naar Relics##9430 |goto Hellfire Peninsula 23.42,36.54
 step
   note Amaan the Wise at the Temple of Telhamat in Hellfire Peninsula wants you to travel to the Ruins of Sha'naar and retrieve 10 Sha'naar Relics.
-  get Sha'naar Relics |q 9430 |goto Hellfire Peninsula 23.42,36.54
+  collect Sha'naar Relic##181637 |q 9430 |goto Hellfire Peninsula 13.8,59.53
 step
   talk Assistant Klatu##22430
   turnin Fel Spirits##10909 |goto Hellfire Peninsula 54.32,63.65
