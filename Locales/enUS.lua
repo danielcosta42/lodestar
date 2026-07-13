@@ -74,6 +74,11 @@ L.SQUAD_TITLE  = "On the route"
 L.SQUAD_EMPTY  = "No one running Lodestar nearby yet."
 L.SET_SQUAD    = "On the route"
 L.SET_SQUAD_D  = "See guild/party members leveling with Lodestar (shares your progress over ChehulNet)."
+L.GATHER_NEEDPH = "Gathering routes need the Profession Helper addon."
+L.GATHER_NONE   = "No gathering profession on this character."
+L.GATHER_PICK   = "Pick a gathering profession:"
+L.SET_GATHER    = "Gathering route"
+L.SET_GATHER_D  = "Hand off to Profession Helper's gathering route for your zones."
 
 -- Trainers & milestones
 L.CLASS_TRAINER   = "Class trainer"

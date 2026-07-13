@@ -48,6 +48,7 @@ Prereq.lua
 RaidAttuneData.lua
 Attunements.lua
 Squad.lua
+Gather.lua
 SubZones.lua
 TransitData.lua
 FlightData.lua

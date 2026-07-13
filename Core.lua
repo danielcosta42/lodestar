@@ -206,6 +206,8 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Attunements then ns.Attunements:Toggle() end
 	elseif cmd == "party" or cmd == "squad" then
 		if ns.Squad then ns.Squad:Toggle() end
+	elseif cmd == "gather" or cmd == "coleta" then
+		if ns.Gather then ns.Gather:Open(rest) end
 	elseif cmd == "mark" then
 		ns.db.markTargets = not ns.db.markTargets
 		ns:Print(ns.L.MARK_TARGETS, ns.db.markTargets and ns.L.ON or ns.L.OFF)
