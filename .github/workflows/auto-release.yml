@@ -5,7 +5,10 @@ name: Auto Release
 #   1. bumps the version (vX.Y.Z),
 #   2. writes/updates CHANGELOG.md and commits it back ([skip ci]),
 #   3. creates the tag, and
-#   4. packages the addon and uploads it to CurseForge (+ a GitHub release).
+#   4. dispatches release.yml ON that tag, which packages + uploads to CurseForge.
+# (We dispatch instead of packaging here because the packager skips a branch push
+#  whose HEAD is tagged — "Found future tag" — and GITHUB_TOKEN-pushed tags don't
+#  trigger the tag workflow. A workflow_dispatch run isn't a "push", so it builds.)
 # No manual tagging needed.
 #
 #   fix: ...                          -> patch   (1.2.3 -> 1.2.4)
@@ -22,6 +25,7 @@ on:
 
 permissions:
   contents: write   # commit CHANGELOG.md, create the tag + GitHub release
+  actions: write    # dispatch release.yml to package the new tag
 
 concurrency:
   group: auto-release
@@ -54,27 +58,11 @@ jobs:
           skip-version-file: "true" # no package.json — the .toc uses @project-version@
           skip-on-empty: "true"     # no conventional commits -> no release
 
-      # The version bump commits CHANGELOG.md and tags THAT new commit, so the
-      # runner's HEAD is behind the tag. Check the tag out so the packager runs
-      # exactly on the tagged commit (otherwise: "Found future tag, not packaging").
-      - name: Check out the tagged release
+      # Hand off packaging to release.yml, dispatched ON the new tag. Because a
+      # workflow_dispatch run's event name isn't "push", the packager's
+      # "Found future tag" guard never fires and it builds the tag cleanly.
+      - name: Package the new tag (dispatch Release workflow)
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        run: |
-          git fetch origin --tags --force
-          git checkout --force --detach "${{ steps.changelog.outputs.tag }}"
-
-      - name: Package and upload to CurseForge
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        uses: BigWigsMods/packager@v2
         env:
-          # Repo secret: Settings -> Secrets and variables -> Actions -> CF_API_KEY
-          # CurseForge project id (1608165) is read from ## X-Curse-Project-ID in Lodestar.toc.
-          CF_API_KEY: ${{ secrets.CF_API_KEY }}
-          GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
-          # The packager refuses to build a BRANCH push whose HEAD is tagged
-          # ("Found future tag"), expecting the tag push to build instead — but tags
-          # pushed with GITHUB_TOKEN don't trigger workflows, so nothing would build.
-          # We already checked out the tag above, so present this step AS the tag build.
-          GITHUB_REF: refs/tags/${{ steps.changelog.outputs.tag }}
-          GITHUB_REF_NAME: ${{ steps.changelog.outputs.tag }}
-          GITHUB_REF_TYPE: tag
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run release.yml --repo "$GITHUB_REPOSITORY" --ref "${{ steps.changelog.outputs.tag }}"

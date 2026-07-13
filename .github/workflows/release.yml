@@ -1,12 +1,16 @@
-name: Release (manual tag)
+name: Release (tag)
 
-# Manual path: publish to CurseForge (and create a GitHub release) whenever YOU
-# push a version tag by hand, e.g.:  git tag v1.0.0 && git push origin v1.0.0
-# Day-to-day releases are automatic — see auto-release.yml (bumps from commits).
+# Publishes to CurseForge (and creates a GitHub release) for a version tag.
+# Fires two ways:
+#   • you push a tag by hand:            git tag v1.0.0 && git push origin v1.0.0
+#   • auto-release.yml dispatches it ON the tag it just created (workflow_dispatch).
+# The dispatch path exists because GITHUB_TOKEN-pushed tags don't trigger `push`,
+# and the packager skips branch pushes whose HEAD is tagged.
 on:
   push:
     tags:
       - "**"
+  workflow_dispatch:
 
 permissions:
   contents: write   # needed to create the GitHub release
