@@ -71,3 +71,10 @@ jobs:
           # CurseForge project id (1608165) is read from ## X-Curse-Project-ID in Lodestar.toc.
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
           GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+          # The packager refuses to build a BRANCH push whose HEAD is tagged
+          # ("Found future tag"), expecting the tag push to build instead — but tags
+          # pushed with GITHUB_TOKEN don't trigger workflows, so nothing would build.
+          # We already checked out the tag above, so present this step AS the tag build.
+          GITHUB_REF: refs/tags/${{ steps.changelog.outputs.tag }}
+          GITHUB_REF_NAME: ${{ steps.changelog.outputs.tag }}
+          GITHUB_REF_TYPE: tag
