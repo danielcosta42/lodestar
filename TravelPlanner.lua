@@ -107,7 +107,17 @@ local uiMapToZone
 local function ensureUiMapToZone()
 	if uiMapToZone then return end
 	uiMapToZone = {}
-	if ns.zoneUiMap then for name, id in pairs(ns.zoneUiMap) do uiMapToZone[id] = name end end
+	if ns.zoneUiMap then
+		for name, id in pairs(ns.zoneUiMap) do
+			-- Vários nomes-fake (raids de SoD) colidem no mesmo uiMapID de zonas reais
+			-- (ex.: Blasted Lands e "The Tainted Scar" = 1419). Prefira a zona REAL
+			-- (a que está em CONTINENT) sobre o fake, senão PlayerZoneEng dá nil ali.
+			local cur = uiMapToZone[id]
+			if not cur or (CONTINENT[name] and not CONTINENT[cur]) then
+				uiMapToZone[id] = name
+			end
+		end
+	end
 end
 local function mapContinent(uiMapID)
 	ensureUiMapToZone()
@@ -245,7 +255,7 @@ function TP:Plan(targetEng)
 		local curEng = self:PlayerZoneEng()
 		if curEng and curEng ~= targetEng then
 			local fm = ns.flightMasters[curEng]
-			local pt = fm and (fm[fac] or fm.A or fm.H)
+			local pt = fm and fm[fac]   -- só o MF da SUA facção (nada de mandar pro inimigo)
 			if pt then
 				return ns.L.FLY_PATH:format(locTarget), { zone = curEng, x = pt[1], y = pt[2] }
 			end
