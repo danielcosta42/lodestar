@@ -1,0 +1,54 @@
+name: Auto Release
+
+# Automatic versioning from your commit messages (Conventional Commits).
+# Every push to main is analyzed; if it warrants a release, a vX.Y.Z tag is
+# created automatically and the addon is packaged + uploaded to CurseForge.
+# No manual tagging needed.
+#
+#   fix: ...                          -> patch   (1.2.3 -> 1.2.4)
+#   feat: ...                         -> minor   (1.2.3 -> 1.3.0)
+#   feat!: ...  /  "BREAKING CHANGE:" -> major   (1.2.3 -> 2.0.0)
+#   any other message                 -> patch   (default_bump below)
+#   message contains [skip ci]        -> no release
+#
+# The very first release is seeded manually with the v1.0.0 tag (see README /
+# push instructions); from then on this workflow bumps from the latest tag.
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write   # create the tag + GitHub release
+
+concurrency:
+  group: auto-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    steps:
+      - name: Checkout (full history + tags)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute and create the next version tag
+        id: tag
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_branches: main
+          default_bump: patch
+          tag_prefix: v
+
+      - name: Package and upload to CurseForge
+        if: ${{ steps.tag.outputs.new_tag != '' }}
+        uses: BigWigsMods/packager@v2
+        env:
+          # Repo secret: Settings -> Secrets and variables -> Actions -> CF_API_KEY
+          # CurseForge project id (1608165) is read from ## X-Curse-Project-ID in Lodestar.toc.
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}

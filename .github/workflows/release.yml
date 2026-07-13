@@ -1,7 +1,8 @@
-name: Release
+name: Release (manual tag)
 
-# Publish to CurseForge (and create a GitHub release) whenever you push a
-# version tag, e.g.:  git tag v1.0.0 && git push origin v1.0.0
+# Manual path: publish to CurseForge (and create a GitHub release) whenever YOU
+# push a version tag by hand, e.g.:  git tag v1.0.0 && git push origin v1.0.0
+# Day-to-day releases are automatic — see auto-release.yml (bumps from commits).
 on:
   push:
     tags:

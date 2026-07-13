@@ -3,7 +3,7 @@
 ## Notes: Free 1-70 leveling guide — waypoints, quest automation, shareable report.
 ## Notes-ptBR: Guia de leveling 1-70 livre — setas, automação de quest e boletim compartilhável.
 ## Author: Lodestar
-## Version: 1.0.0
+## Version: @project-version@
 ## IconTexture: Interface\AddOns\Lodestar\lodestar-icones\logo-estrela-64
 ## SavedVariables: LodestarDB
 ## SavedVariablesPerCharacter: LodestarCharDB
