@@ -18,9 +18,6 @@ step
   talk Severin##23042
   accept World of Shadows##11004 |goto Terokkar Forest 64.05,66.88
 step
-  talk Sky Sergeant Vanderlip##23120
-  accept Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
-step
   talk Skyguard Khatie##23335
   accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
 step
@@ -47,9 +44,6 @@ step
 step
   talk Sky Commander Adaris##23038
   turnin Ishaal's Almanac##11021 |goto Terokkar Forest 64.09,66.9
-step
-  talk Sky Sergeant Vanderlip##23120
-  turnin Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
 step
   talk Skyguard Khatie##23335
   turnin Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
@@ -218,4 +212,10 @@ step
 step
   talk Sky Sergeant Vanderlip##23120
   turnin Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
+step
+  talk Sky Sergeant Vanderlip##23120
+  accept Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
+step
+  talk Sky Sergeant Vanderlip##23120
+  turnin Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
 ]])

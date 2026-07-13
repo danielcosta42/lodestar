@@ -15,9 +15,6 @@ step
   talk Mog'dorg the Wizened##22941
   accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
-  talk Sky Sergeant Vanderlip##23120
-  accept Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
-step
   talk Kronk##23253
   accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
 step
@@ -35,9 +32,6 @@ step
 step
   talk Mog'dorg the Wizened##22941
   turnin Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
-step
-  talk Sky Sergeant Vanderlip##23120
-  turnin Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
 step
   talk Kronk##23253
   turnin Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
@@ -161,4 +155,10 @@ step
 step
   talk Sky Sergeant Vanderlip##23120
   turnin Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
+step
+  talk Sky Sergeant Vanderlip##23120
+  accept Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
+step
+  talk Sky Sergeant Vanderlip##23120
+  turnin Bomb Them Again!##11023 |goto Blade's Edge Mountains 27.56,52.9
 ]])
