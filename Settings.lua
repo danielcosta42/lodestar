@@ -105,6 +105,8 @@ local function fillGeneral(p)
 		L.SET_OPEN, function() if ns.Squad then ns.Squad:Toggle() end end)
 	buttonRow(p, L.SET_GATHER, L.SET_GATHER_D,
 		L.SET_OPEN, function() if ns.Gather then ns.Gather:Open() end end)
+	buttonRow(p, L.SET_CONS, L.SET_CONS_D,
+		L.SET_OPEN, function() if ns.Consumables then ns.Consumables:Toggle() end end)
 end
 
 local function fillAppearance(p)

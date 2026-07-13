@@ -208,6 +208,8 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Squad then ns.Squad:Toggle() end
 	elseif cmd == "gather" or cmd == "coleta" then
 		if ns.Gather then ns.Gather:Open(rest) end
+	elseif cmd == "check" or cmd == "consume" or cmd == "raidprep" then
+		if ns.Consumables then ns.Consumables:Toggle() end
 	elseif cmd == "mark" then
 		ns.db.markTargets = not ns.db.markTargets
 		ns:Print(ns.L.MARK_TARGETS, ns.db.markTargets and ns.L.ON or ns.L.OFF)

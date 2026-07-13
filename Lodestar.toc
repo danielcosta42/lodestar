@@ -49,6 +49,7 @@ RaidAttuneData.lua
 Attunements.lua
 Squad.lua
 Gather.lua
+Consumables.lua
 SubZones.lua
 TransitData.lua
 FlightData.lua
