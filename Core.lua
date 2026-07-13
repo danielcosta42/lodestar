@@ -104,7 +104,8 @@ local DB_DEFAULTS = {
 	minimap = { angle = 208, hide = false, rangeMult = 1 },
 	autoAccept = true,
 	autoTurnin = true,
-	autoReward = true,    -- escolhe a melhor recompensa da quest automaticamente
+	autoReward = false,   -- OPT-IN: auto-pega recompensa em quest de múltipla escolha
+	                      -- (risco de item errado; guias curados com |reward já acertam)
 	autoGossip = true,    -- seleciona a opção/quest certa no diálogo (gossip)
 	autoSkip = true,      -- pula passo cujo NPC não oferece a quest (nunca trava)
 	autoRepair = true,    -- repara tudo ao abrir o vendedor
@@ -118,7 +119,7 @@ local DB_DEFAULTS = {
 	coords = true,        -- coordenadas do player no minimapa/mapa
 	guideMap = true,      -- marca os pontos dos próximos passos no mapa-múndi
 	mobWarning = true,    -- avisa ao mirar mob muito acima do nível
-	autoShareQuest = true,-- compartilha a quest no grupo ao aceitar
+	autoShareQuest = false,-- OPT-IN: compartilha a quest no grupo ao aceitar (evita spam)
 	customGuides = {},    -- guias importados (key -> {body, faction})
 	seenIntro = false,    -- já viu a tela de boas-vindas?
 	markTargets = true,   -- destacar NPCs/mobs-alvo (tooltip + nameplate)

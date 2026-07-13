@@ -25,8 +25,14 @@ local function labelPair(page, title, desc)
 	return t, d
 end
 
-local function switchRow(page, title, desc, get, set)
-	labelPair(page, title, desc)
+local function switchRow(page, title, desc, get, set, optin)
+	local t = labelPair(page, title, desc)
+	if optin then   -- marca amarela "opt-in": desligado por padrão de propósito
+		local b = page:CreateFontString(nil, "OVERLAY")
+		UI.SetFont(b, 9.5, { num = true, color = UI.COL.amber })
+		b:SetPoint("LEFT", t, "RIGHT", 6, 1)
+		b:SetText("• " .. ns.L.SET_OPTIN)
+	end
 	local sw = UI.Switch(page, function(on) set(on) end)
 	sw:SetPoint("TOPRIGHT", -22, -page._y - 2)
 	sw:SetOn(get())
@@ -62,67 +68,69 @@ end
 -- páginas
 --------------------------------------------------------------------------------
 local function fillGeneral(p)
-	switchRow(p, "Auto-aceitar missões", "Aceita a missão do passo automaticamente.",
+	local L = ns.L
+	switchRow(p, L.SET_ACCEPT, L.SET_ACCEPT_D,
 		function() return ns.db.autoAccept end, function(v) ns.db.autoAccept = v end)
-	switchRow(p, "Auto-entregar missões", "Entrega quando não há recompensa a escolher.",
+	switchRow(p, L.SET_TURNIN, L.SET_TURNIN_D,
 		function() return ns.db.autoTurnin end, function(v) ns.db.autoTurnin = v end)
-	switchRow(p, "Escolher recompensa", "Pega a melhor recompensa (equipável de maior nível).",
-		function() return ns.db.autoReward end, function(v) ns.db.autoReward = v end)
-	switchRow(p, "Diálogo automático", "Seleciona a quest/opção certa no gossip do NPC.",
+	switchRow(p, L.SET_REWARD, L.SET_REWARD_D,
+		function() return ns.db.autoReward end, function(v) ns.db.autoReward = v end, true)
+	switchRow(p, L.SET_GOSSIP, L.SET_GOSSIP_D,
 		function() return ns.db.autoGossip end, function(v) ns.db.autoGossip = v end)
-	switchRow(p, "Reparar automático", "Repara tudo ao abrir o vendedor (guilda primeiro).",
+	switchRow(p, L.SET_REPAIR, L.SET_REPAIR_D,
 		function() return ns.db.autoRepair end, function(v) ns.db.autoRepair = v end)
-	switchRow(p, "Vender lixo", "Vende itens cinza ao abrir o vendedor.",
+	switchRow(p, L.SET_SELL, L.SET_SELL_D,
 		function() return ns.db.autoSell end, function(v) ns.db.autoSell = v end)
-	switchRow(p, "Avisar upgrades", "Avisa quando um item da bolsa é melhoria.",
+	switchRow(p, L.SET_GEAR, L.SET_GEAR_D,
 		function() return ns.db.gearAdvisor end, function(v) ns.db.gearAdvisor = v end)
-	switchRow(p, "Compartilhar quest", "Compartilha a missão no grupo ao aceitar.",
-		function() return ns.db.autoShareQuest end, function(v) ns.db.autoShareQuest = v end)
-	switchRow(p, "Aviso de mob perigoso", "Alerta ao mirar inimigo muito acima do nível.",
+	switchRow(p, L.SET_SHARE, L.SET_SHARE_D,
+		function() return ns.db.autoShareQuest end, function(v) ns.db.autoShareQuest = v end, true)
+	switchRow(p, L.SET_MOBWARN, L.SET_MOBWARN_D,
 		function() return ns.db.mobWarning end, function(v) ns.db.mobWarning = v end)
-	buttonRow(p, "Biblioteca de guias", "Escolha ou troque o guia ativo.",
-		"Abrir ›", function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
+	buttonRow(p, L.SET_LIBRARY, L.SET_LIBRARY_D,
+		L.SET_OPEN, function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
 end
 
 local function fillAppearance(p)
-	switchRow(p, "Seta de rota no mundo", "Seta flutuante apontando o objetivo.",
+	local L = ns.L
+	switchRow(p, L.SET_ARROW, L.SET_ARROW_D,
 		function() return ns.db.arrow.enabled end,
 		function(v) ns.db.arrow.enabled = v; if ns.Waypoint then ns.Waypoint:Update() end end)
-	switchRow(p, "Caminho de formiga", "Trilha até o objetivo no minimapa e mapa.",
+	switchRow(p, L.SET_TRAIL, L.SET_TRAIL_D,
 		function() return ns.db.trail end, function(v) ns.db.trail = v end)
-	switchRow(p, "Painel de ritmo/XP", "XP/hora, tempo pro nível e adiantado/atrasado.",
+	switchRow(p, L.SET_XPHUD, L.SET_XPHUD_D,
 		function() return ns.db.xpHud end,
 		function(v) ns.db.xpHud = v; if ns.XPHud then ns.XPHud:Update() end end)
-	switchRow(p, "Guia de talentos", "Sugere o próximo talento e aprende com 1 clique.",
+	switchRow(p, L.SET_TALENTS, L.SET_TALENTS_D,
 		function() return ns.db.talents end,
 		function(v) ns.db.talents = v; if ns.Talents then ns.Talents:Update() end end)
-	switchRow(p, "Boletim de leveling", "Card com nota (S/A/B/C) e ritmo a cada marco.",
+	switchRow(p, L.SET_CARD, L.SET_CARD_D,
 		function() return ns.db.reportCard end, function(v) ns.db.reportCard = v end)
-	switchRow(p, "Marcar alvos", "Destaca NPCs/mobs do passo (tooltip e nameplate).",
+	switchRow(p, L.SET_MARK, L.SET_MARK_D,
 		function() return ns.db.markTargets end,
 		function(v) ns.db.markTargets = v; if not v and ns.TargetMarker then ns.TargetMarker:RefreshPlates() end end)
-	switchRow(p, "Coordenadas", "Mostra suas coordenadas no minimapa e no mapa.",
+	switchRow(p, L.SET_COORDS, L.SET_COORDS_D,
 		function() return ns.db.coords end,
 		function(v) ns.db.coords = v; if ns.Coords then ns.Coords.Update() end end)
-	switchRow(p, "Pontos no mapa", "Marca os próximos passos do guia no mapa-múndi.",
+	switchRow(p, L.SET_MAPPINS, L.SET_MAPPINS_D,
 		function() return ns.db.guideMap end, function(v) ns.db.guideMap = v end)
-	sliderRow(p, "Escala do painel", "", 70, 140, 5,
+	sliderRow(p, L.SET_SCALE, "", 70, 140, 5,
 		function() return (ns.db.viewer.scale or 1) * 100 end,
 		function(v) ns.db.viewer.scale = v / 100; if ns.Viewer then ns.Viewer:ApplyDisplay() end end, "%d%%")
-	sliderRow(p, "Opacidade do painel", "", 30, 100, 5,
+	sliderRow(p, L.SET_ALPHA, "", 30, 100, 5,
 		function() return (ns.db.viewer.alpha or 1) * 100 end,
 		function(v) ns.db.viewer.alpha = v / 100; if ns.Viewer then ns.Viewer:ApplyDisplay() end end, "%d%%")
 end
 
 local function fillAlerts(p)
-	switchRow(p, "Toasts de evento", "Avisos de missão e nível, sem poluir a tela.",
+	switchRow(p, ns.L.SET_TOASTS, ns.L.SET_TOASTS_D,
 		function() return ns.db.toastsEnabled end, function(v) ns.db.toastsEnabled = v end)
 end
 
 local PAGES = {
-	{ key = "geral", label = "Geral", fill = fillGeneral },
-	{ key = "aparencia", label = "Aparência", fill = fillAppearance },
-	{ key = "alertas", label = "Alertas", fill = fillAlerts },
+	{ key = "geral", label = ns.L.SET_TAB_GENERAL, fill = fillGeneral },
+	{ key = "aparencia", label = ns.L.SET_TAB_LOOK, fill = fillAppearance },
+	{ key = "alertas", label = ns.L.SET_TAB_ALERTS, fill = fillAlerts },
 }
 
 --------------------------------------------------------------------------------
@@ -156,7 +164,7 @@ local function build()
 	local sub = header:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(sub, 10, { num = true, color = C.muted })
 	sub:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 1, -1)
-	sub:SetText(("CONFIGURAÇÕES · v%s"):format(ns.version or "?"))
+	sub:SetText(("%s · v%s"):format(ns.L.SET_TITLE, ns.version or "?"))
 
 	local close = UI.CloseButton(header, function() S:Hide() end)
 	close:SetPoint("RIGHT", -8, 0)
