@@ -104,11 +104,13 @@ end
 -- conhecida em CONTINENT. uiMapToZone é o inverso de ns.zoneUiMap.
 --------------------------------------------------------------------------------
 local uiMapToZone
+local function ensureUiMapToZone()
+	if uiMapToZone then return end
+	uiMapToZone = {}
+	if ns.zoneUiMap then for name, id in pairs(ns.zoneUiMap) do uiMapToZone[id] = name end end
+end
 local function mapContinent(uiMapID)
-	if not uiMapToZone then
-		uiMapToZone = {}
-		if ns.zoneUiMap then for name, id in pairs(ns.zoneUiMap) do uiMapToZone[id] = name end end
-	end
+	ensureUiMapToZone()
 	local guard = 0
 	while uiMapID and guard < 12 do
 		guard = guard + 1
@@ -123,6 +125,22 @@ end
 function TP:PlayerContinent()
 	local m = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
 	return m and mapContinent(m) or nil
+end
+
+-- Zona (inglês) onde o player está — sobe a cadeia de mapas até uma zona conhecida.
+function TP:PlayerZoneEng()
+	ensureUiMapToZone()
+	local m = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
+	local guard = 0
+	while m and guard < 12 do
+		guard = guard + 1
+		local eng = uiMapToZone[m]
+		if eng and CONTINENT[eng] then return eng end
+		local info = C_Map and C_Map.GetMapInfo and C_Map.GetMapInfo(m)
+		m = info and info.parentMapID
+		if m == 0 then m = nil end
+	end
+	return nil
 end
 
 --------------------------------------------------------------------------------
@@ -217,6 +235,20 @@ function TP:Plan(targetEng)
 			local zoneName = hop and localizedZone(hop.zone) or ""
 			local txt = (fac == "H") and ns.L.ZEPPELIN:format(zoneName) or ns.L.SHIP:format(zoneName)
 			return txt, hop
+		end
+	end
+
+	-- 7) MESMO continente, zona diferente: PONTO DE VOO (o caso mais comum). Manda
+	-- ao mestre de voo da SUA zona e diz "Pegue o voo para <alvo>". Hop = FM da zona
+	-- atual, então a seta/trilha apontam ONDE pegar o voo (não o destino distante).
+	if not crossCont and ns.flightMasters then
+		local curEng = self:PlayerZoneEng()
+		if curEng and curEng ~= targetEng then
+			local fm = ns.flightMasters[curEng]
+			local pt = fm and (fm[fac] or fm.A or fm.H)
+			if pt then
+				return ns.L.FLY_PATH:format(locTarget), { zone = curEng, x = pt[1], y = pt[2] }
+			end
 		end
 	end
 

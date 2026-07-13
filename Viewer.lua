@@ -215,10 +215,19 @@ local function build()
 	frame.content:SetPoint("TOPLEFT", 12, -8)
 	frame.content:SetPoint("RIGHT", -8, 0)
 
-	-- Banner de viagem (método p/ chegar quando o alvo está fora da zona)
-	frame.travel = frame.content:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.travel, 12, { color = C.amber })
-	frame.travel:SetJustifyH("LEFT"); frame.travel:SetWordWrap(true)
+	-- "Guard" de viagem: painel destacado no topo do card quando o alvo está fora
+	-- da zona — mostra o MELHOR caminho (voo/barco/portal) ANTES dos objetivos.
+	frame.travel = UI.Panel(frame.content, { color = { 0.20, 0.14, 0.05, 0.9 }, borderColor = C.amber })
+	local tstripe = UI.Rect(frame.travel, "ARTWORK", C.amber)
+	tstripe:SetPoint("TOPLEFT"); tstripe:SetPoint("BOTTOMLEFT"); tstripe:SetWidth(3)
+	frame.travelIcon = UI.Glyph(frame.travel, "seta-rota", "OVERLAY", 128)
+	frame.travelIcon:SetSize(15, 15); frame.travelIcon:SetPoint("TOPLEFT", 9, -8)
+	frame.travelIcon:SetVertexColor(UI.unpackc(C.amber))
+	frame.travelText = frame.travel:CreateFontString(nil, "OVERLAY")
+	UI.SetFont(frame.travelText, 12, { color = C.amber })
+	frame.travelText:SetPoint("TOPLEFT", frame.travelIcon, "TOPRIGHT", 7, 1)
+	frame.travelText:SetPoint("RIGHT", frame.travel, "RIGHT", -8, 0)
+	frame.travelText:SetJustifyH("LEFT"); frame.travelText:SetWordWrap(true)
 	frame.travel:Hide()
 
 	-- Prévia "a seguir" ---------------------------------------------------
@@ -401,15 +410,17 @@ function V:Refresh()
 	local w = frame.content:GetWidth()
 	if w <= 0 then w = (ns.db.viewer.width or 340) - 40 end
 
-	-- Banner de viagem: método p/ chegar quando o alvo está fora da zona
+	-- "Guard" de viagem: como chegar (voo/barco/portal) quando o alvo está fora da zona
 	local thint = travelHint()
 	if thint then
 		frame.travel:ClearAllPoints()
 		frame.travel:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, 0)
 		frame.travel:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)
-		frame.travel:SetText("|cfff0c26a›|r " .. thint)
+		frame.travelText:SetText(thint)
+		local th = math.max(24, frame.travelText:GetStringHeight() + 15)
+		frame.travel:SetHeight(th)
 		frame.travel:Show()
-		y = frame.travel:GetStringHeight() + 8
+		y = th + 8
 	else
 		frame.travel:Hide()
 	end

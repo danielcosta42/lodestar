@@ -1,7 +1,7 @@
 ## Interface: 20505
 ## Title: |cff66ccffLodestar|r
-## Notes: Free 1-70 leveling guide — waypoints, quest automation, shareable report.
-## Notes-ptBR: Guia de leveling 1-70 livre — setas, automação de quest e boletim compartilhável.
+## Notes: Free & open in-game leveling guides for TBC Classic — 1-70 routes (Alliance & Horde), waypoint arrow, quest automation, XP pace, and a boosted 60-70 dungeon path to Karazhan-attuned.
+## Notes-ptBR: Guias de leveling livres para TBC Classic — rotas 1-70 (Aliança e Horda), seta de waypoint, automação de quests, ritmo de XP e rota 60-70 boostado até atunado em Karazhan.
 ## Author: Lodestar
 ## Version: @project-version@
 ## IconTexture: Interface\AddOns\Lodestar\lodestar-icones\logo-estrela-64
@@ -34,6 +34,7 @@ Parser.lua
 Guide.lua
 SubZones.lua
 TransitData.lua
+FlightData.lua
 TravelPlanner.lua
 StepTracker.lua
 DungeonRuns.lua
