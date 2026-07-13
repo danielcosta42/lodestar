@@ -40,23 +40,8 @@ step
   note Rina Moonspring wishes you to slay 12 Grovestalker Lynxes with all due haste and then return to her at Sylvanaar in the Blade's Edge Mountains.
   kill Grovestalker Lynx##21022 |q 10455 |goto Blade's Edge Mountains 39.17,71.16
 step
-  talk Kronk##23253
-  accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
-step
-  note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
-  get Banish the Demons |q 11026 |goto Blade's Edge Mountains 28.9,57.92
-step
   talk Chu'a'lor##23233
   accept The Trouble Below##11057 |goto Blade's Edge Mountains 28.76,57.36
-step
-  talk Skyguard Khatie##23335
-  accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
-step
-  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
-  kill Wrangled Aether Ray##23343 |q 11065
-step
-  talk Chu'a'lor##23233
-  accept A Special Thank You##11091 |goto Blade's Edge Mountains 28.76,57.36
 step
   talk Sky Commander Keller##23334
   accept Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.38,52.68
@@ -234,28 +219,8 @@ step
   note Take the Bloodmaul Brutebane Keg and use it in an attempt to get 5 Bladespire Ogres drunk. If you're successful, return to Borgrim at Sylvanaar in the Blade's Edge Mountains.
   get Getting the Bladespire Tanked |q 10512 |goto Blade's Edge Mountains 37.4,64.66
 step
-  talk Kronk##23253
-  turnin Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
-step
-  talk Skyguard Khatie##23335
-  turnin Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
-step
-  talk Jho'nass##23428
-  turnin A Special Thank You##11091 |goto Blade's Edge Mountains 28.06,58.73
-step
   talk Aether-tech Apprentice##23473
   turnin Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.9,52.16
-step
-  talk Gahk##23300
-  accept A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
-step
-  get A Crystalforged Darkrune |q 11060 |goto Blade's Edge Mountains 28.48,58.08
-step
-  talk Sky Commander Keller##23334
-  accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
-step
-  note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Vindicator Vuuleen##21277
   turnin The Trappings of a Vindicator##10516 |goto Blade's Edge Mountains 44.01,51.83
@@ -385,12 +350,6 @@ step
 step
   note Use Rina's Bough on 5 of the Grove Seedlings to summon forth defenses for the Living Grove. Then return to Rina Moonspring at Sylvanaar in the Blade's Edge Mountains.
   collect Grove Seedling##184631 |q 10457 |goto Blade's Edge Mountains 38.57,71.16
-step
-  talk Gahk##23300
-  turnin A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
-step
-  talk Sky Commander Keller##23334
-  turnin To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Vindicator Vuuleen##21277
   turnin Gorr'Dim, Your Time Has Come...##10517 |goto Blade's Edge Mountains 44.01,51.83
@@ -532,6 +491,21 @@ step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
   get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
 step
+  talk Kronk##23253
+  accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
+  get Banish the Demons |q 11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  talk Skyguard Khatie##23335
+  accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
+step
+  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
+  kill Wrangled Aether Ray##23343 |q 11065
+step
+  talk Chu'a'lor##23233
+  accept A Special Thank You##11091 |goto Blade's Edge Mountains 28.76,57.36
+step
   talk Commander Haephus Stonewall##22149
   turnin Gorgrom the Dragon-Eater##10802 |goto Blade's Edge Mountains 61.99,37.98
 step
@@ -553,11 +527,31 @@ step
   talk Chu'a'lor##23233
   turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
+  talk Kronk##23253
+  turnin Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  talk Skyguard Khatie##23335
+  turnin Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
+step
+  talk Jho'nass##23428
+  turnin A Special Thank You##11091 |goto Blade's Edge Mountains 28.06,58.73
+step
   talk Torkus##23316
   accept Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
 step
   note Torkus has asked you to obtain an Unstable Flask of the Beast for him. Return with it to him at Ogri'la atop the Blade's Edge Mountains.
   get Our Boy Wants To Be A Skyguard Ranger |q 11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  talk Gahk##23300
+  accept A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  get A Crystalforged Darkrune |q 11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  talk Sky Commander Keller##23334
+  accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
+step
+  note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
+  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Baron Sablemane##22103
   turnin Baron Sablemane Has Requested Your Presence##10818 |goto Blade's Edge Mountains 53.25,41.18
@@ -591,6 +585,12 @@ step
 step
   talk Torkus##23316
   turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  talk Gahk##23300
+  turnin A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  talk Sky Commander Keller##23334
+  turnin To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Torkus##23316
   accept A Father's Duty##11061 |goto Blade's Edge Mountains 28.38,57.64

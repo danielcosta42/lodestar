@@ -18,9 +18,6 @@ step
   talk Severin##23042
   accept World of Shadows##11004 |goto Terokkar Forest 64.05,66.88
 step
-  talk Skyguard Khatie##23335
-  accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
-step
   talk Skyguard Handler Deesak##23415
   accept Hungry Nether Rays##11093 |goto Terokkar Forest 63.5,65.81
 step
@@ -39,9 +36,6 @@ step
   note Severin wants you to venture into Skettis and retrieve 6 Shadow Dusts from the arakkoa that dwell there.
   get World of Shadows |q 11004 |goto Terokkar Forest 64.05,66.88
 step
-  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
-  kill Wrangled Aether Ray##23343 |q 11065
-step
   note Use the Nether Ray Cage in the woods south of Blackwind Landing and slay Blackwind Warp Chasers near the Hungry Nether Ray. Return to Skyguard Handler Deesak when you've completed your task.
   get Hungry Nether Rays |q 11093 |goto Terokkar Forest 63.5,65.81
 step
@@ -59,9 +53,6 @@ step
 step
   talk Sky Commander Adaris##23038
   turnin Ishaal's Almanac##11021 |goto Terokkar Forest 64.09,66.9
-step
-  talk Skyguard Khatie##23335
-  turnin Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
 step
   talk Skyguard Handler Deesak##23415
   turnin Hungry Nether Rays##11093 |goto Terokkar Forest 63.5,65.81
@@ -84,12 +75,6 @@ step
   talk Sky Commander Adaris##23038
   accept An Ally in Lower City##11024 |goto Terokkar Forest 64.09,66.9
 step
-  talk Skyguard Khatie##23335
-  accept Wrangle More Aether Rays!##11066 |goto Blade's Edge Mountains 27.95,51.45
-step
-  talk Sky Commander Keller##23334
-  accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
-step
   talk Yuula##23449
   accept To Skettis!##11098 |goto Shattrath City 64.33,42.33
 step
@@ -100,12 +85,6 @@ step
   kill Talonpriest Ishaal##23066 |q 11005 |goto Terokkar Forest 69.0,78.54
 step
   get More Shadow Dust |q 11006 |goto Terokkar Forest 64.05,66.88
-step
-  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
-  kill Wrangled Aether Ray##23343 |q 11066
-step
-  note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Mog'dorg the Wizened##22941
   turnin Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
@@ -118,12 +97,6 @@ step
 step
   talk Rilak the Redeemed##22292
   turnin An Ally in Lower City##11024 |goto Shattrath City 52.54,21.01
-step
-  talk Skyguard Khatie##23335
-  turnin Wrangle More Aether Rays!##11066 |goto Blade's Edge Mountains 27.95,51.45
-step
-  talk Sky Commander Keller##23334
-  turnin To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Sky Sergeant Doryn##23048
   turnin To Skettis!##11098 |goto Terokkar Forest 64.55,66.7
@@ -194,17 +167,26 @@ step
   talk Chu'a'lor##23233
   accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
+  talk Skyguard Khatie##23335
+  accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
+step
   talk Hazzik##23306
   accept Adversarial Blood##11885 |goto Terokkar Forest 64.23,66.97
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
   get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
 step
+  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
+  kill Wrangled Aether Ray##23343 |q 11065
+step
   note Find the Skull Piles in the middle of the summoning circles of Skettis. Summon and defeat each of the descendants by using 10 Time-Lost Scrolls at the Skull Pile. Return to Hazzik at Blackwind Landing.
   kill Darkscreecher Akkarai##23161 |q 11885
 step
   talk Chu'a'lor##23233
   turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
+step
+  talk Skyguard Khatie##23335
+  turnin Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
 step
   talk Hazzik##23306
   turnin Adversarial Blood##11885 |goto Terokkar Forest 64.23,66.97
@@ -215,14 +197,23 @@ step
   talk Chu'a'lor##23233
   accept An Apexis Relic##11058 |goto Blade's Edge Mountains 28.76,57.36
 step
+  talk Skyguard Khatie##23335
+  accept Wrangle More Aether Rays!##11066 |goto Blade's Edge Mountains 27.95,51.45
+step
   talk Sky Commander Adaris##23038
   accept Terokk's Downfall##11073 |goto Terokkar Forest 64.09,66.9
 step
   talk Hazzik##23306
   accept Tokens of the Descendants##11074 |goto Terokkar Forest 64.23,66.97
 step
+  talk Sky Commander Keller##23334
+  accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
+step
   note Torkus has asked you to obtain an Unstable Flask of the Beast for him. Return with it to him at Ogri'la atop the Blade's Edge Mountains.
   get Our Boy Wants To Be A Skyguard Ranger |q 11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
+  kill Wrangled Aether Ray##23343 |q 11066
 step
   note Take the Time-Lost Offering prepared by Hazzik to the Skull Pile at the center of Skettis and summon and defeat Terokk. Return to Sky Commander Adaris when you've completed this task.
   kill Terokk##21838 |q 11073
@@ -230,17 +221,26 @@ step
   note Collect Time-Lost Scrolls from the time-lost arakkoa in Skettis and bring them to a Skull Pile inside a summoning circle in Skettis. Summon and defeat the descendants of Terokk's adversaries and return to Hakkiz with Akkarai's Talon, Garokk's Spine, Vekkaz's Scale and Gezzarak's Claw.
   get Tokens of the Descendants |q 11074 |goto Terokkar Forest 64.23,66.97
 step
+  note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
+  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
+step
   talk Torkus##23316
   turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
 step
   talk Chu'a'lor##23233
   turnin An Apexis Relic##11058 |goto Blade's Edge Mountains 28.76,57.36
 step
+  talk Skyguard Khatie##23335
+  turnin Wrangle More Aether Rays!##11066 |goto Blade's Edge Mountains 27.95,51.45
+step
   talk Sky Commander Adaris##23038
   turnin Terokk's Downfall##11073 |goto Terokkar Forest 64.09,66.9
 step
   talk Hazzik##23306
   turnin Tokens of the Descendants##11074 |goto Terokkar Forest 64.23,66.97
+step
+  talk Sky Commander Keller##23334
+  turnin To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Chu'a'lor##23233
   accept The Skyguard Outpost##11062 |goto Blade's Edge Mountains 28.76,57.36

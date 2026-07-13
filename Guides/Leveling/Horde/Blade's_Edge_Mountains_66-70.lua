@@ -136,23 +136,8 @@ step
   talk Rocket-Chief Fuselage##19570
   turnin Out of This World Produce!##11036 |goto Netherstorm 32.73,64.96 |tip {turninat}Netherstorm
 step
-  talk Kronk##23253
-  accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
-step
-  note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
-  get Banish the Demons |q 11026 |goto Blade's Edge Mountains 28.9,57.92
-step
   talk Chu'a'lor##23233
   accept The Trouble Below##11057 |goto Blade's Edge Mountains 28.76,57.36
-step
-  talk Skyguard Khatie##23335
-  accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
-step
-  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
-  kill Wrangled Aether Ray##23343 |q 11065
-step
-  talk Chu'a'lor##23233
-  accept A Special Thank You##11091 |goto Blade's Edge Mountains 28.76,57.36
 step
   talk Sky Commander Keller##23334
   accept Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.38,52.68
@@ -304,28 +289,8 @@ step
   talk Image of Commander Ameer##22919
   accept Stasis Chambers of the Mana-Tombs##10977 |goto Blade's Edge Mountains 52.85,14.99
 step
-  talk Kronk##23253
-  turnin Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
-step
-  talk Skyguard Khatie##23335
-  turnin Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
-step
-  talk Jho'nass##23428
-  turnin A Special Thank You##11091 |goto Blade's Edge Mountains 28.06,58.73
-step
   talk Aether-tech Apprentice##23473
   turnin Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.9,52.16
-step
-  talk Gahk##23300
-  accept A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
-step
-  get A Crystalforged Darkrune |q 11060 |goto Blade's Edge Mountains 28.48,58.08
-step
-  talk Sky Commander Keller##23334
-  accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
-step
-  note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk T'chali the Witch Doctor##21349
   turnin They Stole Me Hookah and Me Brews!##10542 |goto Blade's Edge Mountains 44.97,72.31
@@ -427,12 +392,6 @@ step
 step
   talk Image of Commander Ameer##22919
   accept The Eye of Haramad##10982 |goto Blade's Edge Mountains 52.85,14.99
-step
-  talk Gahk##23300
-  turnin A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
-step
-  talk Sky Commander Keller##23334
-  turnin To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk T'chali the Witch Doctor##21349
   turnin Bladespire Kegger##10545 |goto Blade's Edge Mountains 44.97,72.31
@@ -551,6 +510,21 @@ step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
   get The Crystals |q 11025 |goto Blade's Edge Mountains 28.76,57.36
 step
+  talk Kronk##23253
+  accept Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
+  get Banish the Demons |q 11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  talk Skyguard Khatie##23335
+  accept Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
+step
+  note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
+  kill Wrangled Aether Ray##23343 |q 11065
+step
+  talk Chu'a'lor##23233
+  accept A Special Thank You##11091 |goto Blade's Edge Mountains 28.76,57.36
+step
   talk T'chali the Witch Doctor##21349
   turnin A Curse Upon Both of Your Clans!##10544 |goto Blade's Edge Mountains 44.97,72.31
 step
@@ -578,11 +552,31 @@ step
   talk Chu'a'lor##23233
   turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
 step
+  talk Kronk##23253
+  turnin Banish the Demons##11026 |goto Blade's Edge Mountains 28.9,57.92
+step
+  talk Skyguard Khatie##23335
+  turnin Wrangle Some Aether Rays!##11065 |goto Blade's Edge Mountains 27.95,51.45
+step
+  talk Jho'nass##23428
+  turnin A Special Thank You##11091 |goto Blade's Edge Mountains 28.06,58.73
+step
   talk Torkus##23316
   accept Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
 step
   note Torkus has asked you to obtain an Unstable Flask of the Beast for him. Return with it to him at Ogri'la atop the Blade's Edge Mountains.
   get Our Boy Wants To Be A Skyguard Ranger |q 11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  talk Gahk##23300
+  accept A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  get A Crystalforged Darkrune |q 11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  talk Sky Commander Keller##23334
+  accept To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
+step
+  note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
+  get To Rule The Skies |q 11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Leoroxx##22004
   turnin Inform Leoroxx!##10865 |goto Blade's Edge Mountains 75.29,60.86
@@ -601,6 +595,12 @@ step
 step
   talk Torkus##23316
   turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  talk Gahk##23300
+  turnin A Crystalforged Darkrune##11060 |goto Blade's Edge Mountains 28.48,58.08
+step
+  talk Sky Commander Keller##23334
+  turnin To Rule The Skies##11078 |goto Blade's Edge Mountains 27.38,52.68
 step
   talk Torkus##23316
   accept A Father's Duty##11061 |goto Blade's Edge Mountains 28.38,57.64
