@@ -41,27 +41,7 @@ local function stepQuestIDs(verb)
 end
 
 --------------------------------------------------------------------------------
--- Auto-accept: quando a janela de detalhe da quest abrir e ela casar com um
--- goal `accept` do step atual, aceita sozinho.
---------------------------------------------------------------------------------
-ns:On("QUEST_DETAIL", function()
-	if not (ns.db and ns.db.autoAccept and ns.currentGuide) then return end
-	local qid = GetQuestID and GetQuestID()
-	local wanted = stepQuestIDs("accept")
-	-- se não sabemos o id (cliente antigo), aceita só se o step tem exatamente 1 accept
-	if not qid then
-		local n, only = 0, nil
-		for id in pairs(wanted) do n = n + 1; only = id end
-		if n >= 1 then AcceptQuest() end
-		return
-	end
-	if wanted[qid] then AcceptQuest() end
-end)
-
---------------------------------------------------------------------------------
--- REDE DE SEGURANÇA "nunca travado": se você está no NPC do passo e ele NÃO
--- oferece a quest de accept (nem está no seu log/concluída), o passo está
--- quebrado -> pula sozinho. Garante que dado imperfeito nunca trave o jogador.
+-- Helpers de NPC / gossip
 --------------------------------------------------------------------------------
 local GI = C_GossipInfo
 
@@ -78,6 +58,53 @@ local function stepTalksTo(step, npc)
 	end
 	return false
 end
+
+-- "Modo guloso": pega TODAS as quests do NPC ao qual o passo te mandou (hubs/
+-- dailies), não só as listadas. Usa uma SESSÃO por-NPC com janela de tempo: assim
+-- que o passo avança ao aceitar a 1ª quest, a sessão segue pegando as demais no
+-- re-abrir do gossip. Escopo por GUID+tempo evita "vazar" p/ outros NPCs.
+local grabNPC, grabUntil
+local function shouldGrab()
+	local npc = npcID()
+	if not npc then return false end
+	if grabNPC == npc and grabUntil and GetTime() < grabUntil then
+		grabUntil = GetTime() + 3          -- mantém viva enquanto o gossip re-abre
+		return true
+	end
+	local step = ns:GetStep()              -- inicia se o passo te manda pegar quest aqui
+	if step and stepTalksTo(step, npc) then
+		for _, g in ipairs(step.goals) do
+			if g.verb == "accept" then
+				grabNPC, grabUntil = npc, GetTime() + 3
+				return true
+			end
+		end
+	end
+	return false
+end
+
+--------------------------------------------------------------------------------
+-- Auto-accept: ao abrir a janela de detalhe da quest. Guloso no NPC do passo;
+-- senão só aceita as quests que o passo pede.
+--------------------------------------------------------------------------------
+ns:On("QUEST_DETAIL", function()
+	if not (ns.db and ns.db.autoAccept and ns.currentGuide) then return end
+	local qid = GetQuestID and GetQuestID()
+	local wanted = stepQuestIDs("accept")
+	local greedy = shouldGrab()
+	-- se não sabemos o id (cliente antigo), aceita se guloso ou se o step pede accept
+	if not qid then
+		if greedy or next(wanted) then AcceptQuest() end
+		return
+	end
+	if greedy or wanted[qid] then AcceptQuest() end
+end)
+
+--------------------------------------------------------------------------------
+-- REDE DE SEGURANÇA "nunca travado": se você está no NPC do passo e ele NÃO
+-- oferece a quest de accept (nem está no seu log/concluída), o passo está
+-- quebrado -> pula sozinho. Garante que dado imperfeito nunca trave o jogador.
+--------------------------------------------------------------------------------
 
 local function inLogOrDone(qid)
 	local QL = C_QuestLog
@@ -125,13 +152,9 @@ ns:On("GOSSIP_SHOW", skipIfUnavailable)
 -- fluxo normal de accept (QUEST_DETAIL auto-aceita se casar com o passo).
 ns:On("QUEST_GREETING", function()
 	if not (ns.db and ns.db.autoAccept and ns.currentGuide) then return end
-	local step = ns:GetStep(); if not step then return end
-	local npc = npcID(); if not (npc and stepTalksTo(step, npc)) then return end
-	local pending = false
-	for _, g in ipairs(step.goals) do
-		if g.verb == "accept" and g.id and ns:IsGoalActive(g) and not ns:IsGoalComplete(g) then pending = true end
-	end
-	if pending and GetNumAvailableQuests and SelectAvailableQuest and (GetNumAvailableQuests() or 0) > 0 then
+	if not shouldGrab() then return end        -- guia te mandou a este NPC (talk/click)
+	-- pega TODAS as quests da janela (uma por vez; a greeting re-abre após aceitar)
+	if GetNumAvailableQuests and SelectAvailableQuest and (GetNumAvailableQuests() or 0) > 0 then
 		SelectAvailableQuest(1)
 	end
 end)
@@ -161,16 +184,20 @@ ns:On("GOSSIP_SHOW", function()
 		end
 	end
 
-	-- 2) aceitar quest disponível que o step pede
+	-- 2) aceitar quest disponível: guloso no NPC do passo (TODAS), senão só as pedidas.
+	--    Seleciona uma; as demais entram quando o gossip re-abre após aceitar.
 	if ns.db.autoAccept then
+		local greedy = shouldGrab()
 		local want = stepQuestIDs("accept")
 		if GI and GI.GetAvailableQuests then
 			for _, q in ipairs(GI.GetAvailableQuests()) do
-				if q.questID and want[q.questID] then pcall(GI.SelectAvailableQuest, q.questID); return end
+				if q.questID and (greedy or want[q.questID]) then
+					pcall(GI.SelectAvailableQuest, q.questID); return
+				end
 			end
-		elseif GetNumGossipAvailableQuests and GetNumGossipAvailableQuests() == 1
-			and next(want) and SelectGossipAvailableQuest then
-			pcall(SelectGossipAvailableQuest, 1); return   -- fallback clássico: 1 quest só
+		elseif GetNumGossipAvailableQuests and (GetNumGossipAvailableQuests() or 0) >= 1
+			and (greedy or next(want)) and SelectGossipAvailableQuest then
+			pcall(SelectGossipAvailableQuest, 1); return   -- fallback clássico
 		end
 	end
 
