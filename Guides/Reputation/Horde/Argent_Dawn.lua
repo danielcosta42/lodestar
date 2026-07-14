@@ -160,64 +160,64 @@ step
   get They Call Me "The Rooster" |q 9141 |goto Eastern Plaguelands 81.05,57.55
 step
   note Deliver 120 Dense Weightstones and the Craftsman's Writ - Dense Weightstone - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Dense Weightstone |q 9178
+  get Dense Weightstone##12643 |q 9178 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 3 Huge Thorium Battleaxes and the Craftsman's Writ - Huge Thorium Battleaxe - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Huge Thorium Battleaxe |q 9182
+  get Huge Thorium Battleaxe##12775 |q 9182 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 10 Wicked Leather Headbands and the Craftsman's Writ - Wicked Leather Headband - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Wicked Leather Headband |q 9184
+  get Wicked Leather Headband##15086 |q 9184 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 25 Rugged Armor Kits and the Craftsman's Writ - Rugged Armor Kit - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  kill Rabid Blisterpaw##5427 |q 9185 |goto Tanaris 37.69,63.72
+  get Rugged Armor Kit##15564 |q 9185 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 9 Wicked Leather Belts and the Craftsman's Writ - Wicked Leather Belt - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Wicked Leather Belt |q 9186
+  get Wicked Leather Belt##15088 |q 9186 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 4 Runic Leather Pants and the Craftsman's Writ - Runic Leather Pants - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Runic Leather Pants |q 9187
+  get Runic Leather Pants##15095 |q 9187 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 6 Brightcloth Pants and the Craftsman's Writ - Brightcloth Pants - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Brightcloth Pants |q 9188
+  get Brightcloth Pants##14104 |q 9188 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 8 Runecloth Boots and the Craftsman's Writ - Runecloth Boots - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Runecloth Boots |q 9190
+  get Runecloth Boots##13864 |q 9190 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 8 Runecloth Bags and the Craftsman's Writ - Runecloth Bag - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Runecloth Bag |q 9191
+  get Runecloth Bag##14046 |q 9191 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 8 Runecloth Robes and the Craftsman's Writ - Runecloth Robe - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Runecloth Robe |q 9194
+  get Runecloth Robe##13858 |q 9194 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 20 Goblin Sapper Charges and the Craftsman's Writ - Goblin Sapper Charge - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Goblin Sapper Charge |q 9195
+  get Goblin Sapper Charge##10646 |q 9195 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 20 Thorium Grenades and the Craftsman's Writ - Thorium Grenade - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Thorium Grenade |q 9196
+  get Thorium Grenade##15993 |q 9196 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 14 Thorium Tubes and the Craftsman's Writ - Thorium Tube - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Thorium Tube |q 9198
+  get Thorium Tube##16000 |q 9198 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 10 Major Mana Potions and the Craftsman's Writ - Major Mana Potion - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  kill Grimtooth##603 |q 9200 |goto Alterac Valley - Battleground 51.71,94.86
+  get Major Mana Potion##13444 |q 9200 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 15 Greater Arcane Protection Potions and the Craftsman's Writ - Greater Arcane Protection Potion - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Greater Arcane Protection Potion |q 9201
+  get Greater Arcane Protection Potion##13461 |q 9201 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 20 Major Healing Potions and the Craftsman's Writ - Major Healing Potion - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  kill Blue Dragonspawn##193 |q 9202 |goto Azshara 36.88,74.64
+  get Major Healing Potion##13446 |q 9202 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 1 Flask of Petrification and the Craftsman's Writ - Flask of Petrification - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Flask of Petrification |q 9203
+  get Flask of Petrification##13506 |q 9203 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 40 Stonescale Eel and the Craftsman's Writ - Stonescale Eel - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  collect School of Tastyfish##180248 |q 9204 |goto Stranglethorn Vale 27.26,49.25
+  get Stonescale Eel##13422 |q 9204 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 30 Plated Armorfish and the Craftsman's Writ - Plated Armorfish - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Plated Armorfish |q 9205
+  get Plated Armorfish##13890 |q 9205 |tip Craft this (or buy it), then deliver it.
 step
   note Deliver 30 Lightning Eel and the Craftsman's Writ - Lightning Eel - to Packmaster Stonebruiser at Light's Hope Chapel in the Eastern Plaguelands.
-  get Craftsman's Writ - Lightning Eel |q 9206
+  get Lightning Eel##13757 |q 9206 |tip Craft this (or buy it), then deliver it.
 step
   talk Bashana Runetotem##9087
   turnin Blackfathom Villainy##6561 |goto Thunder Bluff 71.06,34.19
@@ -433,7 +433,7 @@ step
 step
   kill Cursed Sycamore##5881 |q 9137 |goto Feralas 55.43,67.61
 step
-  get Craftsman's Writ |q 9142 |goto Eastern Plaguelands 81.05,57.55
+  get Argent Dawn Valor Token##12844 |q 9142 |tip Craft this (or buy it), then deliver it.
 step
   talk Azore Aldamort##11863
   turnin Book of the Ancients##6027 |goto Desolace 38.88,27.16
