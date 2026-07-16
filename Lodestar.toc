@@ -1,4 +1,4 @@
-## Interface: 20505
+## Interface: 20506
 ## Title: |cff66ccffLodestar|r
 ## Notes: Free & open in-game leveling guides for TBC Classic — 1-70 routes (Alliance & Horde), waypoint arrow, quest automation, XP pace, and a boosted 60-70 dungeon path to Karazhan-attuned.
 ## Notes-ptBR: Guias de leveling livres para TBC Classic — rotas 1-70 (Aliança e Horda), seta de waypoint, automação de quests, ritmo de XP e rota 60-70 boostado até atunado em Karazhan.

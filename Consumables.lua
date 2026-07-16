@@ -25,16 +25,15 @@ local function count(items)
 	return n
 end
 
--- menor preço conhecido (PH.TSM) dos itens da categoria; nil sem PH
+-- menor preço conhecido (PH.TSM) dos itens da categoria; nil sem PH.
+-- Usa GetItemPriceByID(itemId): busca por ID direto no TSM. (GetItemPrice(name)
+-- só resolve MATERIAIS via PH.Materials — consumíveis prontos não estão lá.)
 local function priceOf(items)
 	local ph = _G.ProfessionHelper
-	if not (ph and ph.TSM and ph.TSM.GetItemPrice) then return nil end
+	if not (ph and ph.TSM and ph.TSM.GetItemPriceByID) then return nil end
 	for _, id in ipairs(items) do
-		local name = GetItemInfo and GetItemInfo(id)
-		if name then
-			local ok, p = pcall(function() return ph.TSM:GetItemPrice(name) end)
-			if ok and p and p > 0 then return p end
-		end
+		local ok, p = pcall(function() return ph.TSM:GetItemPriceByID(id) end)
+		if ok and p and p > 0 then return p end
 	end
 end
 

@@ -187,7 +187,7 @@ SlashCmdList.LODESTAR = function(msg)
 		ns:AdvanceStep()
 	elseif cmd == "prev" then
 		ns:AdvanceStep(-1)
-	elseif cmd == "check" then
+	elseif cmd == "rescan" then          -- "check" é o checklist de consumíveis (abaixo)
 		if ns.currentGuide then
 			ns:CheckProgress()
 			ns:Printf("re-varredura: passo %d/%d", ns.char.currentStep, #ns.currentGuide.steps)
