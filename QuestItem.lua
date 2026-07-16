@@ -33,16 +33,9 @@ function QI:CurrentItem()
 	local step = ns:GetStep()
 	if not step then return nil end
 
-	-- 1) explícito: "use Algo##<itemID>" com o item na bolsa
-	for _, g in ipairs(step.goals) do
-		if g.verb == "use" and g.id and ns:IsGoalActive(g) and not ns:IsGoalComplete(g)
-			and ItemCount(g.id) > 0 then
-			return g.id
-		end
-	end
-
-	-- 2) auto: item especial (GetQuestLogSpecialItemInfo) de uma missão do passo.
-	--    Itera o log usando o MESMO índice p/ questID e item (evita descasar índices).
+	-- 1) AUTORITATIVO: item especial da missão (GetQuestLogSpecialItemInfo) — a rede/
+	--    salve/bomba que a quest te dá. Cobre os passos "use <criatura>##id |q qid"
+	--    (o ##id é o ALVO, não o item). Itera o log com o MESMO índice p/ quest e item.
 	if GetSpecial and NumEntries and GetInfo then
 		local want
 		for _, g in ipairs(step.goals) do
@@ -59,6 +52,16 @@ function QI:CurrentItem()
 					if id and ItemCount(id) > 0 then return id end
 				end
 			end
+		end
+	end
+
+	-- 2) fallback: passo explícito "use <item>##<itemID>" SEM |q (aí o ##id é mesmo o
+	--    item). Passos gerados de "usar na criatura" têm |q e já foram tratados acima —
+	--    excluí-los aqui evita ler o ID da criatura como item (colisão de espaço de ID).
+	for _, g in ipairs(step.goals) do
+		if g.verb == "use" and g.id and not (g.q and g.q.id) and ns:IsGoalActive(g)
+			and not ns:IsGoalComplete(g) and ItemCount(g.id) > 0 then
+			return g.id
 		end
 	end
 	return nil
