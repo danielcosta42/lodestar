@@ -136,11 +136,36 @@ function S:Show() build(); frame:Show() end
 function S:Toggle() build(); if frame:IsShown() then frame:Hide() else frame:Show() end end
 
 --------------------------------------------------------------------------------
+-- Contexto de "grupo para esta quest": varre o step atual pelo goal elite/chefe
+-- ativo+incompleto (mesma lógica do banner no Viewer) e monta o que o PartyLens
+-- precisa pra pré-preencher o recrutamento. Só campos simples, sem efeito colateral.
+local function questGroupCtx(isRaid)
+	local ctx = { needRaid = isRaid and true or false, size = isRaid and 10 or 5 }
+	local step = ns:GetStep()
+	if step and step.goals then
+		for _, goal in ipairs(step.goals) do
+			if (goal.elite or goal.raid) and ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal) then
+				ctx.stepText = ctx.stepText or goal.text
+				if goal.goto_ then ctx.zone = ctx.zone or goal.goto_.zone end
+				if goal.raid then ctx.needRaid = true; ctx.size = 10 end
+			end
+		end
+	end
+	ctx.questName = ctx.stepText
+	return ctx
+end
+
+--------------------------------------------------------------------------------
 -- Gancho pro localizador de party (PartyLens, addon irmão da rede ChehulNet):
--- passos de inimigo elite/chefe oferecem "Procurar grupo". Abre o buscador do
--- PartyLens; standalone-safe — sem ele, tenta o buscador nativo e, por fim, avisa.
+-- passos de inimigo elite/chefe oferecem "Procurar grupo". PREFERIDO: entrega o
+-- contexto da quest ao PartyLens (que pré-preenche o recrutamento pro grupo);
+-- standalone-safe — PartyLens antigo só abre o buscador; sem ele, buscador nativo.
 function ns:FindGroup(isRaid)
 	local PL = _G.PartyLens
+	if PL and PL.API and PL.API.StartQuestGroup then
+		local ok, res = pcall(PL.API.StartQuestGroup, questGroupCtx(isRaid))
+		if ok and res then return true end
+	end
 	if PL and PL.Toggle then
 		pcall(function() PL:Toggle() end)
 		return true
@@ -152,6 +177,37 @@ function ns:FindGroup(isRaid)
 	end
 	ns:Print(ns.L.GROUP_NO_FINDER)
 	return false
+end
+
+--------------------------------------------------------------------------------
+-- API pública do Lodestar (superfície estável pra addons irmãos). Hoje: o que o
+-- PartyLens quer ler — meu objetivo atual (quest/step/zona + se pede grupo/raide).
+-- Standalone-safe, sem efeito colateral. Acesso: _G.Lodestar.API.CurrentObjective().
+ns.API = ns.API or {}
+
+function ns.API.CurrentObjective()
+	local g = ns.currentGuide
+	if not g or not g.key then return nil end
+	local idx = (ns.char and ns.char.currentStep) or 1
+	local o = {
+		guide = g.key,
+		step = idx,
+		total = (g.steps and #g.steps) or 0,
+		needGroup = false,
+		needRaid = false,
+	}
+	local step = ns:GetStep(idx)
+	if step and step.goals then
+		for _, goal in ipairs(step.goals) do
+			if goal.q and goal.q.id and not o.questID then o.questID = goal.q.id end
+			if (goal.elite or goal.raid) and ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal) then
+				o.label = o.label or goal.text
+				if goal.goto_ then o.zone = o.zone or goal.goto_.zone end
+				if goal.raid then o.needRaid = true else o.needGroup = true end
+			end
+		end
+	end
+	return o
 end
 
 --------------------------------------------------------------------------------
