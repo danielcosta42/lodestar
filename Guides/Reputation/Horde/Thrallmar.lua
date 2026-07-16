@@ -42,23 +42,11 @@ step
   note Kill Worg Master Kruush and bring his head to Captain Darkhowl in Spinebreaker Post.
   kill Worg Master Kruush##19442 |q 10809 |goto Hellfire Peninsula 68.34,73.51
 step
-  note Foreman Razelcraz at the mines near Thrallmar wants you to kill 15 Marauding Crust Bursters. The worms have a tendency to attack suddenly from their tunnels below ground.
-  kill Marauding Crust Burster##16857 |q 9342 |goto Hellfire Peninsula 47.92,63.19
-step
   note Gather 12 Hellfire Spineleaf plants for a salve and return to Grelag at Spinebreaker Post.
   collect Hellfire Spineleaf##181372 |q 9345 |goto Hellfire Peninsula 62.77,67.2
 step
-  note Slay Grillok "Darkeye" and search his lair for the Bleeding Hollow Attack Plans.
-  kill Grillok "Darkeye"##19457 |q 10059 |goto Hellfire Peninsula 66.66,71.5
-step
   note Bring 8 pieces of Salvaged Metal and 8 pieces of Salvaged Wood to Megzeg Nukklebust in Thrallmar.
   collect Salvageable Metal##182797 |q 10086 |goto Hellfire Peninsula 57.71,53.38
-step
-  note Kill 12 Gan'arg Sappers and return to Foreman Razelcraz.
-  kill Gan'arg Sapper##18827 |q 10088 |goto Hellfire Peninsula 53.89,61.12
-step
-  note Locate and kill Urga'zz within the mines beneath Thrallmar, then return to Foreman Razelcraz.
-  kill Urga'zz##18976 |q 10100 |goto Hellfire Peninsula 54.39,31.57
 step
   note Mordiba wants you to defeat 12 Unyielding Footmen, 8 Unyielding Knights, and 6 Unyielding Sorcerers at the Expedition Armory to the west of Spinebreaker Post.
   kill Unyielding Footman##16904 |q 10220 |goto Hellfire Peninsula 55.38,78.36

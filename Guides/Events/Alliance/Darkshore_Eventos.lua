@@ -90,6 +90,8 @@ step
   note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
   kill Moonstalker Matriarch##2071 |q 986 |goto Darkshore 43.03,89.68
 step
+  turnin The Master's Glaive##944 |goto Darkshore 43.55,76.29
+step
   talk Terenthis##3693
   turnin A Lost Master##986 |goto Darkshore 39.37,43.48
 step

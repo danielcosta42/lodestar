@@ -776,6 +776,8 @@ step
   talk Dirge Quikcleave##8125
   turnin Never Ask Me About My Business##8584 |goto Tanaris 52.63,28.11
 step
+  turnin Draconic for Dummies##8597 |goto Tanaris 65.24,18.58
+step
   talk Keeper Remulos##11832
   turnin The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
 step
@@ -873,6 +875,8 @@ step
   accept Treasure of the Timeless One##8745 |goto Silithus 25.94,90.96
 step
   get Bang a Gong! |q 8743
+step
+  turnin Bang a Gong!##8743
 step
   talk Jonathan the Revelator##15693
   turnin Treasure of the Timeless One##8745 |goto Silithus 25.94,90.96

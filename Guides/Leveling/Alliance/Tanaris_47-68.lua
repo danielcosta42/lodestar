@@ -650,6 +650,8 @@ step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
   kill Magma Lord Bokk##16043 |q 8925 |goto Burning Steppes 35.39,57.76
 step
+  turnin Draconic for Dummies##8597 |goto Tanaris 65.24,18.58
+step
   talk Narain Soothfancy##11811
   turnin The Only Prescription##8620 |goto Tanaris 65.24,18.58
 step
