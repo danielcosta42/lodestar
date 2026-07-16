@@ -61,25 +61,25 @@ step
   kill Unyielding Footman##16904 |q 10050 |goto Hellfire Peninsula 55.38,78.36
 step
   note Bring 8 pieces of Salvaged Metal and 8 pieces of Salvaged Wood to Dumphry at Honor Hold.
-  collect Salvageable Metal##182797 |q 10055 |goto Hellfire Peninsula 57.71,53.38
+  collect 8 Salvaged Metal##25912 |q 10055 |goto Hellfire Peninsula 57.71,53.38 |tip {dropsfrom}Salvageable Metal
 step
   note Retrieve Mysteries of the Light and return it to Father Malgor Devidicus at Honor Hold.
-  collect Mysteries of the Light##182804 |q 10058 |goto Hellfire Peninsula 54.96,86.81
+  collect Mysteries of the Light##25938 |q 10058 |goto Hellfire Peninsula 54.96,86.81 |tip {dropsfrom}Mysteries of the Light
 step
   note Mirren Longbeard wants you to bring him 1 Nethergarde Bitter. You must also attain Friendly reputation with Honor Hold to complete this quest.
-  get Gaining Mirren's Trust |q 9563 |goto Hellfire Peninsula 23.97,72.35
+  collect Nethergarde Bitter##23848 |q 9563 |goto Hellfire Peninsula 23.97,72.35
 step
   note Kill 10 Quillfang Ravagers and return to Gremni Longbeard in Hellfire Peninsula.
   kill Quillfang Ravager##16934 |q 9385 |goto Hellfire Peninsula 22.66,66.55
 step
   note Bring Warchief Kargath's Fist to Force Commander Danath Trollbane in Honor Hold.
-  kill Warchief Kargath Bladefist##16808 |q 9492 |goto The Shattered Halls - Dungeon -1,-1 |elite
+  collect Warchief Kargath's Fist##23723 |q 9492 |goto The Shattered Halls - Dungeon -1,-1 |tip {dropsfrom}Warchief Kargath Bladefist, Warchief Kargath Bladefist (1)
 step
   note Field Commander Romus at Honor Hold wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
   kill Shattered Hand Legionnaire##16700 |q 9493 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   note Magus Zabraxis at Honor Hold wants you to bring her a Fel Ember.
-  get Fel Embers |q 9494 |goto Hellfire Peninsula 53.86,65.74
+  collect Fel Ember##23726 |q 9494 |goto Hellfire Peninsula 53.86,65.74
 step
   note Rescue Captain Alina inside Hellfire Citadel before she is executed.
   kill Captain Alina##17290 |q 9524
@@ -175,7 +175,7 @@ step
   accept Grand Master Dumphry##10762 |goto Hellfire Peninsula 56.64,66.7
 step
   note Lieutenant Amadi in Honor Hold wants you to bring 1 Cursed Talisman to Corporal Ironridge at Expedition Point.
-  kill Bleeding Hollow Grunt##16871 |q 10483 |goto Hellfire Peninsula 67.1,71.23
+  collect 1 Cursed Talisman##30157 |q 10483 |goto Hellfire Peninsula 67.1,71.23 |tip {dropsfrom}Bleeding Hollow Grunt, Bleeding Hollow Dark Shaman, Bleeding Hollow Peon
 step
   note Overcome the ghosts of Arch Mage Xintor and Lieutenant Commander Thalvos and return to Honor Guard Wesilow in the tower northwest of Honor Hold.
   kill Arch Mage Xintor##16977 |q 10057 |goto Hellfire Peninsula 53.67,81.1
@@ -190,13 +190,13 @@ step
   kill Terrorfiend##16951 |q 10399 |goto Hellfire Peninsula 40.05,32.89
 step
   note Mirren Longbeard in Hellfire Peninsula wants you to bring him 8 Kaliri Feathers from the various kaliri found in the Den of Haal'esh.
-  kill Kaliri Matriarch##17035 |q 9420 |goto Hellfire Peninsula 25.72,75.23
+  collect Kaliri Feather##23588 |q 9420 |goto Hellfire Peninsula 25.72,75.23 |tip {dropsfrom}Female Kaliri Hatchling, Kaliri Matriarch, Male Kaliri Hatchling
 step
   note Gremni Longbeard in Hellfire Peninsula wants you to slay 4 Haal'eshi Windwalkers and 6 Haal'eshi Talonguards.
   kill Haal'eshi Windwalker##16966 |q 9417 |goto Hellfire Peninsula 26.34,76.47
 step
   note Collect 10 Fel Orc Blood Vials and return them to Gunny at Honor Hold in Hellfire Peninsula.
-  kill Laughing Skull Enforcer##17370 |q 9589 |goto The Blood Furnace - Dungeon -1,-1 |elite
+  collect 10 Fel Orc Blood Vial##23894 |q 9589 |goto The Blood Furnace - Dungeon -1,-1 |tip {dropsfrom}Laughing Skull Enforcer, Shadowmoon Warlock, Keli'dan the Breaker
 step
   note Slay Arazzius the Cruel in the Pools of Aggonar and return to Force Commander Danath Trollbane in the keep of Honor Hold.
   kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55 |elite
@@ -256,7 +256,7 @@ step
   accept Dumphry's Request##10763 |goto Hellfire Peninsula 51.12,60.3
 step
   note Bring 12 Cursed Talismans to Corporal Ironridge at Expedition Point.
-  kill Bleeding Hollow Grunt##16871 |q 10484 |goto Hellfire Peninsula 67.1,71.23
+  collect 12 Cursed Talisman##30157 |q 10484 |goto Hellfire Peninsula 67.1,71.23 |tip {dropsfrom}Bleeding Hollow Grunt, Bleeding Hollow Dark Shaman, Bleeding Hollow Peon
 step
   note Kill 15 Marauding Crust Bursters and return to Foreman Biggums at Honor Hold.
   kill Marauding Crust Burster##16857 |q 9355 |goto Hellfire Peninsula 47.92,63.19
@@ -265,10 +265,10 @@ step
   kill Gan'arg Sapper##18827 |q 10079 |goto Hellfire Peninsula 53.89,61.12
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Gunny at Honor Hold in Hellfire Peninsula.
-  kill Watchkeeper Gargolmar##17306 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1 |elite
+  collect Gargolmar's Hand##23881 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1 |tip {dropsfrom}Watchkeeper Gargolmar, Watchkeeper Gargolmar (1)
 step
   note Bring 4 Fel Iron Bars, 2 Arcane Dust and 4 Motes of Fire to Dumphry at Honor Hold in Hellfire Peninsula.
-  collect Heavy Fel Iron Chest##181800 |q 10763 |goto Terokkar Forest 39.25,55.95
+  collect 4 Fel Iron Bar##23445 |q 10763 |goto Terokkar Forest 39.25,55.95 |tip {dropsfrom}Heavy Fel Iron Chest, Adamantite Bound Chest, Felsteel Chest
 step
   talk Corporal Ironridge##21133
   turnin Cursed Talismans##10484 |goto Hellfire Peninsula 70.96,63.37
@@ -307,7 +307,7 @@ step
   accept Hotter than Hell##10764 |goto Hellfire Peninsula 51.12,60.3
 step
   note Bring Warlord Morkh's Shattered Armor to Corporal Ironridge in Expedition Point.
-  kill Warlord Morkh##16964 |q 10485 |goto Hellfire Peninsula 70.08,77.09
+  collect Morkh's Shattered Armor##30158 |q 10485 |goto Hellfire Peninsula 70.08,77.09 |tip {dropsfrom}Warlord Morkh
 step
   note Locate and kill Z'kral in the mines beneath Honor Hold, then report back to Foreman Biggums.
   kill Z'kral##18974 |q 10099 |goto Hellfire Peninsula 56.21,61.52
@@ -316,7 +316,7 @@ step
   collect Portal Grimh##184414 |q 10144 |goto Hellfire Peninsula 71.46,55.16
 step
   note Destroy a Fel Reaver in Hellfire Peninsula and plunge the Unfired Key Mold into its remains. Bring the Charred Key Mold to Dumphry in Honor Hold.
-  get Hotter than Hell |q 10764 |goto Hellfire Peninsula 51.12,60.3
+  collect Charred Key Mold##31252 |q 10764 |goto Hellfire Peninsula 51.12,60.3
 step
   talk Corporal Ironridge##21133
   turnin Warlord of the Bleeding Hollow##10485 |goto Hellfire Peninsula 70.96,63.37
@@ -361,7 +361,7 @@ step
   kill Fel Spirit##22454 |q 10909
 step
   note Recover the Draenei Prayer Beads and bring them to Assistant Klatu in Honor Hold.
-  collect Fei Fei's Cache##185302 |q 10916 |goto Hellfire Peninsula 54.02,63.3
+  collect Draenei Prayer Beads##31795 |q 10916 |goto Hellfire Peninsula 54.02,63.3 |tip {dropsfrom}Fei Fei's Cache
 step
   talk Runetog Wildhammer##20234
   turnin Shatter Point##10340 |goto Hellfire Peninsula 78.42,34.9

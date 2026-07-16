@@ -14,13 +14,13 @@ step
   accept Silver Heart##4084 |goto Felwood 51.35,81.51
 step
   note Collect 11 Silvery Claws and 1 Irontree Heart for Eridan Bluewind in Felwood.
-  kill Angerclaw Bear##8956 |q 4084 |goto Felwood 46.31,79.69
+  collect 11 Silvery Claws##11172 |q 4084 |goto Felwood 46.31,79.69 |tip {dropsfrom}Angerclaw Bear, Angerclaw Grizzly, Angerclaw Mauler
 step
   talk Arathandris Silversky##9528
   accept Cleansing Felwood##4101 |goto Felwood 54.15,86.83
 step
   note Bring 15 Blood Amber to Arathandris Silversky in Felwood.
-  kill Warpwood Moss Flayer##7100 |q 4101 |goto Felwood 57.17,18.49
+  collect 15 Blood Amber##11503 |q 4101 |goto Felwood 57.17,18.49 |tip {dropsfrom}Warpwood Moss Flayer, Warpwood Shredder, Dessecus
 step
   talk Eridan Bluewind##9116
   accept The Corruption of the Jadefire##4421 |goto Felwood 51.35,81.51
@@ -29,7 +29,7 @@ step
   accept Felbound Ancients##4441 |goto Felwood 51.35,81.51
 step
   note Travel to Darnassus and use Eridan's Vial to collect a Vial of Blessed Water from the Temple of the Moon. Return to Eridan with the filled vial.
-  get Felbound Ancients |q 4441 |goto Felwood 51.35,81.51
+  collect Vial of Blessed Water##5646 |q 4441 |goto Felwood 51.35,81.51
 step
   talk Greta Mosshoof##10922
   accept Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
@@ -70,19 +70,19 @@ step
 step
   only Druid
   note Bring a piece of felcloth to Impsy in Felwood.
-  kill Felguard Sentry##6011 |q 8420 |goto Blasted Lands 59.78,54.09
+  collect Felcloth##14256 |q 8420 |goto Blasted Lands 59.78,54.09 |tip {dropsfrom}Felguard Sentry, Legashi Satyr, Legashi Rogue
 step
   talk Meilosh##11557
   accept Runecloth##6031 |goto Felwood 65.69,2.81
 step
   note Bring 30 Runecloth to Meilosh in Timbermaw Hold.
-  kill Grimtooth##603 |q 6031 |goto Alterac Valley - Battleground 51.71,94.86
+  collect 30 Runecloth##14047 |q 6031 |goto Alterac Valley - Battleground 51.71,94.86 |tip {dropsfrom}Grimtooth, Stonard Shaman, Firewing Bloodwarder
 step
   talk Meilosh##11557
   accept Sacred Cloth##6032 |goto Felwood 65.69,2.81
 step
   note Bring 2 Mooncloth to Meilosh in Timbermaw Hold.
-  get Sacred Cloth |q 6032 |goto Felwood 65.69,2.81
+  collect 2 Mooncloth##14342 |q 6032 |goto Felwood 65.69,2.81
 step
   talk Nafien##15395
   accept Deadwood of the North##8461 |goto Felwood 64.77,8.13
@@ -94,7 +94,7 @@ step
   accept The Root of All Evil##8481 |goto Felwood 65.18,2.68
 step
   note Plant the Demon Summoning Torch in the mouth of High Chief Winterfall's cave in the Winterfall furbolg village. Defeat the demon and retrieve the Essence of Xandivious for Gorn One Eye in Timbermaw Hold.
-  get The Root of All Evil |q 8481 |goto Felwood 65.18,2.68
+  collect Essence of Xandivious##21145 |q 8481 |goto Felwood 65.18,2.68 |tip {dropsfrom}Xandivious
 step
   talk Gorn One Eye##11555
   accept The Brokering of Peace##8484 |goto Felwood 65.18,2.68
@@ -130,32 +130,32 @@ step
   accept Aquementas##4005 |goto Felwood 51.35,81.51
 step
   note Take the Book of Aquor, the Silvery Claws, and the Irontree Heart to Tanaris.
-  get Aquementas |q 4005 |goto Felwood 51.35,81.51
+  collect Silver Totem of Aquementas##11522 |q 4005 |goto Felwood 51.35,81.51
 step
   talk Arathandris Silversky##9528
   accept Salve via Hunting##4103 |goto Felwood 54.15,86.83
 step
-  kill Cursed Ooze##7086 |q 4103 |goto Felwood 40.4,70.82
+  collect Corrupted Soul Shard##11515 |q 4103 |goto Felwood 40.4,70.82 |tip {dropsfrom}Cursed Ooze, Tainted Ooze, Vile Ooze
 step
   talk Arathandris Silversky##9528
   accept Salve via Mining##4104 |goto Felwood 54.15,86.83
 step
-  collect Small Thorium Vein##324 |q 4104 |goto Burning Steppes 62.76,44.03
+  collect Tainted Vitriol##11513 |q 4104 |goto Burning Steppes 62.76,44.03 |tip {dropsfrom}Small Thorium Vein, Gold Vein, Mithril Deposit
 step
   talk Arathandris Silversky##9528
   accept Salve via Gathering##4105 |goto Felwood 54.15,86.83
 step
-  collect Arthas' Tears##142141 |q 4105 |goto Western Plaguelands 47.04,61.35
+  collect Fel Creep##11514 |q 4105 |goto Western Plaguelands 47.04,61.35 |tip {dropsfrom}Arthas' Tears, Gromsblood, Plaguebloom
 step
   talk Arathandris Silversky##9528
   accept Salve via Skinning##4106 |goto Felwood 54.15,86.83
 step
-  get Salve via Skinning |q 4106 |goto Felwood 54.15,86.83
+  collect Patch of Tainted Skin##11512 |q 4106 |goto Felwood 54.15,86.83
 step
   talk Arathandris Silversky##9528
   accept Salve via Disenchanting##4107 |goto Felwood 54.15,86.83
 step
-  get Salve via Disenchanting |q 4107 |goto Felwood 54.15,86.83
+  collect Lesser Nether Essence##11174 |q 4107 |goto Felwood 54.15,86.83
 step
   talk Eridan Bluewind##9116
   accept Purified!##4442 |goto Felwood 51.35,81.51
@@ -167,7 +167,7 @@ step
   accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
 step
   note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
-  get Collection of the Corrupt Water |q 5157 |goto Felwood 51.21,82.11
+  collect Corrupt Moonwell Water##12907 |q 5157 |goto Felwood 51.21,82.11
 step
   talk Jessir Moonbow##11019
   accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
@@ -200,7 +200,7 @@ step
 step
   only Druid
   note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
-  kill Irontree Wanderer##7138 |q 8421 |goto Felwood 48.7,23.1
+  collect 10 Rotting Wood##20613 |q 8421 |goto Felwood 48.7,23.1 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
 step
   note Eridan Bluewind in Felwood wants you to kill 8 Jadefire Hellcallers, 8 Jadefire Betrayers, 8 Jadefire Tricksters, and Xavaric. Return to Eridan when the task is completed.
   kill Jadefire Hellcaller##7111 |q 4906 |goto Felwood 41.21,21.0
@@ -275,7 +275,7 @@ step
 step
   only Druid
   note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
-  kill Gasher##5713 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
+  collect Amber Voodoo Feather##20606 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Gasher, Zul'Lor
 step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01

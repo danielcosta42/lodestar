@@ -14,19 +14,19 @@ step
   accept Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
 step
   note Bring 4 Buzzard Wings to Rigglefuzz.
-  kill Carrion Vulture##1809 |q 703 |goto Western Plaguelands 32.26,62.39
+  collect 4 Buzzard Wing##3404 |q 703 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Young Mesa Buzzard, Mesa Buzzard
 step
   talk Rigglefuzz##2817
   accept Pearl Diving##705 |goto Badlands 42.39,52.93
 step
   note Bring 9 Blue Pearls to Rigglefuzz in the Badlands.
-  kill Saltscale Warrior##871 |q 705 |goto Stranglethorn Vale 24.94,24.25
+  collect 9 Blue Pearl##4611 |q 705 |goto Stranglethorn Vale 24.94,24.25 |tip {dropsfrom}Saltscale Warrior, Saltscale Oracle, Saltscale Tide Lord
 step
   talk Martek the Exiled##4618
   accept Indurium##1108 |goto Badlands 42.22,52.69
 step
   note Bring 10 Indurium Flakes to Martek the Exiled in the Badlands.
-  kill Stonevault Seer##2892 |q 1108 |goto Badlands 64.82,43.51
+  collect 10 Indurium Flake##5797 |q 1108 |goto Badlands 64.82,43.51 |tip {dropsfrom}Stonevault Seer, Stonevault Bonesnapper, Stonevault Shaman
 step
   talk Rigglefuzz##2817
   accept Flash Bomb Recipe##1559 |goto Badlands 42.39,52.93
@@ -35,31 +35,31 @@ step
   accept Power Stones##2418 |goto Badlands 42.39,52.93
 step
   note Bring 8 Dentrium Power Stones and 8 An'Alleum Power Stones to Rigglefuzz in the Badlands.
-  kill Shadowforge Surveyor##4844 |q 2418 |goto Loch Modan 38.32,88.59
+  collect 8 Dentrium Power Stone##8009 |q 2418 |goto Loch Modan 38.32,88.59 |tip {dropsfrom}Shadowforge Surveyor, Shadowforge Ruffian, Shadowforge Digger
 step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##710 |goto Badlands 25.95,44.87
 step
   note Find 10 Small Stone Shards and bring them to Lotwil Veriatus in the Badlands.
-  kill Lesser Rock Elemental##2735 |q 710 |goto Badlands 19.26,43.19
+  collect 10 Small Stone Shard##4626 |q 710 |goto Badlands 19.26,43.19 |tip {dropsfrom}Lesser Rock Elemental
 step
   talk Lotwil Veriatus##2921
   accept Coolant Heads Prevail##713 |goto Badlands 25.95,44.87
 step
   note Find Frost Oil and bring it to Lotwil Veriatus in Badlands.
-  kill Vilebranch Witch Doctor##2640 |q 713 |goto The Hinterlands 67.33,68.58
+  collect Frost Oil##3829 |q 713 |goto The Hinterlands 67.33,68.58 |tip {dropsfrom}Vilebranch Witch Doctor, Tar Creeper, Deadwood Gardener
 step
   talk Gorn##1068
   accept Broken Alliances##782 |goto Badlands 2.91,45.6
 step
   note Kill Boss Tho'grun and bring the Sign of the Earth to Gorn in Kargath.
-  kill Boss Tho'grun##2944 |q 782 |goto Badlands 12.62,75.49
+  collect Sign of the Earth##4640 |q 782 |goto Badlands 12.62,75.49 |tip {dropsfrom}Boss Tho'grun
 step
   talk Neeka Bloodscar##5394
   accept Coyote Thieves##1419 |goto Badlands 6.49,47.2
 step
   note Bring 30 Coyote Jawbones to Neeka Bloodscar in Kargath.
-  kill Crag Coyote##2727 |q 1419 |goto Badlands 50.97,41.5
+  collect 30 Coyote Jawbone##6166 |q 1419 |goto Badlands 50.97,41.5 |tip {dropsfrom}Crag Coyote, Feral Crag Coyote, Elder Crag Coyote
 step
   talk Neeka Bloodscar##5394
   accept Report to Helgrum##1420 |goto Badlands 6.49,47.2
@@ -68,7 +68,7 @@ step
   accept Badlands Reagent Run##2258 |goto Badlands 2.42,46.06
 step
   note Bring 5 Buzzard Gizzards, 10 Crag Coyote Fangs, and 5 Rock Elemental Shards to Jarkal Mossmeld in Kargath, Badlands.
-  kill Starving Buzzard##2829 |q 2258 |goto Badlands 58.76,28.59
+  collect 5 Buzzard Gizzard##7847 |q 2258 |goto Badlands 58.76,28.59 |tip {dropsfrom}Starving Buzzard, Buzzard, Giant Buzzard
 step
   talk Jarkal Mossmeld##6868
   accept Translating the Journal##2338 |goto Badlands 2.42,46.06
@@ -86,7 +86,7 @@ step
   accept The Rise of the Machines##4061 |goto Badlands 3.02,47.81
 step
   note Venture to the Burning Steppes and recover 10 Fractured Elemental Shards for Hierophant Theodora Mulvadania.
-  kill Greater Obsidian Elemental##7032 |q 4061 |goto Burning Steppes 54.83,49.02
+  collect Fractured Elemental Shard##11266 |q 4061 |goto Burning Steppes 54.83,49.02 |tip {dropsfrom}Greater Obsidian Elemental, War Reaver, Malfunctioning Reaver
 step
   talk Lexlort##9080
   accept Grark Lorkrub##4122 |goto Badlands 5.88,47.63
@@ -98,7 +98,7 @@ step
   accept Lost Thunderbrew Recipe##4134 |goto Badlands 2.9,47.76
 step
   note Bring the Lost Thunderbrew Recipe to Vivian Lagrave in Kargath.
-  get Lost Thunderbrew Recipe |q 4134 |goto Badlands 2.9,47.76
+  collect Lost Thunderbrew Recipe##11312 |q 4134 |goto Badlands 2.9,47.76 |tip {dropsfrom}Hurley Blackbreath, Blackbreath Crony
 step
   talk Galamav the Marksman##9081
   accept The Pack Mistress##4724 |goto Badlands 5.96,47.73
@@ -107,7 +107,7 @@ step
   accept The Darkstone Tablet##4768 |goto Badlands 2.9,47.76
 step
   note Bring the Darkstone Tablet to Shadow Mage Vivian Lagrave in Kargath.
-  collect Darkstone Tablet##175385 |q 4768 |goto Blackrock Spire - Dungeon -1,-1
+  collect Darkstone Tablet##12358 |q 4768 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Darkstone Tablet
 step
   talk Warlord Goretooth##9077
   accept Warlord's Command##4903 |goto Badlands 5.81,47.52
@@ -119,13 +119,13 @@ step
   accept The Last Element##7201 |goto Badlands 2.9,47.76
 step
   note Travel to Blackrock Depths and recover 10 Essence of the Elements. Your first inclination is to search the golems and golem makers. You remember Vivian Lagrave also muttering something about elementals.
-  kill Warbringer Construct##8905 |q 7201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+  collect Essence of the Elements##11129 |q 7201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Warbringer Construct, Ragereaver Golem, Scald
 step
   talk Advisor Sarophas##17097
   accept Unclaimed Baggage##9439 |goto Badlands 6.0,48.06
 step
   note Retrieve the Advisor's Pack and Advisor's Rapier from their holding places in the Angor Fortress and return them to Advisor Sarophas at Kargath.
-  collect Empty Barrel##181628 |q 9439 |goto Badlands 41.1,29.25
+  collect Advisor's Pack##23658 |q 9439 |goto Badlands 41.1,29.25 |tip {dropsfrom}Empty Barrel
 step
   note Travel to Blackrock Depths and slay General Angerforge! Return to Warlord Goretooth when the task is complete.
   kill General Angerforge##9033 |q 4132 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
@@ -140,19 +140,19 @@ step
   accept The Lost Fragments##692 |goto Badlands 51.39,76.87
 step
   note Bring the Torn Scroll Fragment, the Crumpled Scroll Fragment and the Singed Scroll Fragment to Theldurin the Lost.
-  kill Enraged Rock Elemental##2791 |q 692 |goto Badlands 54.52,83.91
+  collect Torn Scroll Fragment##4518 |q 692 |goto Badlands 54.52,83.91 |tip {dropsfrom}Enraged Rock Elemental
 step
   talk Theldurin the Lost##2785
   accept Solution to Doom##709 |goto Badlands 51.39,76.87
 step
   note Bring the Tablet of Ryun'eh to Theldurin the Lost.
-  collect Ancient Chest##126260 |q 709 |goto Loch Modan 38.57,93.18
+  collect Tablet of Ryun'eh##4631 |q 709 |goto Loch Modan 38.57,93.18 |tip {dropsfrom}Ancient Chest
 step
   talk Thorkaf Dragoneye##7867
   accept Dragonscale Leatherworking##5145 |goto Badlands 62.7,57.4
 step
   note Bring 2 Tough Scorpid Breastplates, 2 Tough Scorpid Gloves, and 10 Worn Dragonscales to Thorkaf Dragoneye in the Badlands.
-  get Dragonscale Leatherworking |q 5145 |goto Badlands 62.7,57.4
+  collect 2 Tough Scorpid Breastplate##8203 |q 5145 |goto Badlands 62.7,57.4
 step
   talk Helgrum the Swift##1442
   turnin Report to Helgrum##1420 |goto Swamp of Sorrows 47.74,55.2 |tip {turninat}Swamp of Sorrows
@@ -188,13 +188,13 @@ step
   accept Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
   note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
-  kill Rock Elemental##92 |q 711 |goto Badlands 40.97,77.75
+  collect 3 Large Stone Slab##4627 |q 711 |goto Badlands 40.97,77.75 |tip {dropsfrom}Rock Elemental
 step
   talk Lotwil Veriatus##2921
   accept Gyro... What?##714 |goto Badlands 25.95,44.87
 step
   note Bring a Gyrochronatom to Lotwil Veriatus in the Badlands.
-  kill Venture Co. Tinkerer##677 |q 714 |goto Stranglethorn Vale 41.97,44.64
+  collect Gyrochronatom##4389 |q 714 |goto Stranglethorn Vale 41.97,44.64 |tip {dropsfrom}Venture Co. Tinkerer, Venture Co. Mechanic, Advanced Target Dummy
 step
   talk Neeka Bloodscar##5394
   turnin Coyote Thieves##1419 |goto Badlands 6.49,47.2
@@ -242,19 +242,19 @@ step
   accept Broken Alliances##793 |goto Badlands 2.91,45.6
 step
   note Use the Sign of the Earth to activate the Pillars of Diamond, Opal, and Amethyst and obtain the Runestones.
-  get Broken Alliances |q 793 |goto Badlands 2.91,45.6
+  collect Blacklash's Bindings##4615 |q 793 |goto Badlands 2.91,45.6 |tip {dropsfrom}Blacklash
 step
   talk Jarkal Mossmeld##6868
   accept Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
 step
   note Bring 12 Magenta Fungus Caps to Jarkal Mossmeld in Kargath.
-  collect Magenta Cap Clusters##126049 |q 2202 |goto Loch Modan 37.19,89.74
+  collect 12 Magenta Fungus Cap##8047 |q 2202 |goto Loch Modan 37.19,89.74 |tip {dropsfrom}Magenta Cap Clusters
 step
   talk Jarkal Mossmeld##6868
   accept Find the Gems and Power Source##2339 |goto Badlands 2.42,46.06
 step
   note Recover all three gems and a power source for the necklace from Uldaman, and then bring them to Jarkal Mossmeld in Kargath. Jarkal believes a power source might be found on the strongest construct present in Uldaman.
-  collect Shadowforge Cache##113757 |q 2339 |goto Uldaman - Dungeon -1,-1
+  collect Shattered Necklace Ruby##7669 |q 2339 |goto Uldaman - Dungeon -1,-1 |tip {dropsfrom}Shadowforge Cache
 step
   talk Thunderheart##9084
   accept Disharmony of Fire##3907 |goto Badlands 3.33,48.26
@@ -278,7 +278,7 @@ step
   accept Summoning the Princess##656 |goto Badlands 51.39,76.87
 step
   note Go to the Shards of Myzrael, summon her and defeat her.
-  get Summoning the Princess |q 656 |goto Badlands 51.39,76.87
+  collect Eldritch Shackles##4473 |q 656 |goto Badlands 51.39,76.87 |tip {dropsfrom}Myzrael
 step
   talk Theldurin the Lost##2785
   accept To the Undercity for Yagyin's Digest##728 |goto Badlands 51.39,76.87
@@ -307,19 +307,19 @@ step
   accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
 step
   note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
-  kill Greater Rock Elemental##2736 |q 712 |goto Badlands 6.57,82.27
+  collect 5 Bracers of Rock Binding##4628 |q 712 |goto Badlands 6.57,82.27 |tip {dropsfrom}Greater Rock Elemental
 step
   talk Lucien Tosselwrench##2920
   accept Liquid Stone##715 |goto Badlands 25.82,44.24
 step
   note Bring a Healing Potion and a Lesser Invisibility Potion to Lucien Tosselwrench in the Badlands.
-  kill Flesh Eater##3 |q 715 |goto Duskwood 23.81,38.2
+  collect Healing Potion##929 |q 715 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Skeletal Warrior, Skeletal Horror
 step
   talk Lotwil Veriatus##2921
   accept The Rise of the Machines##4063 |goto Badlands 25.95,44.87
 step
   note Find and slay Golem Lord Argelmach. Return his head to Lotwil. You will also need to collect 10 Intact Elemental Cores from the Ragereaver Golems and Warbringer Constructs protecting Argelmach. You know this because you are psychic.
-  kill Golem Lord Argelmach##8983 |q 4063 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+  collect 10 Head of Argelmach##11268 |q 4063 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Golem Lord Argelmach
 step
   talk Commander Gor'shak##9020
   turnin Commander Gor'shak##3981 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {turninat}Blackrock Depths - Dungeon -- Shadowforge City
@@ -340,7 +340,7 @@ step
   accept Badlands Reagent Run II##2203 |goto Badlands 2.42,46.06
 step
   note Use the empty thaumaturgy vessels on scorched guardian dragons found in the Badlands. Once you have them filled, bring them to Jarkal Mossmeld in Kargath.
-  get Badlands Reagent Run II |q 2203 |goto Badlands 2.42,46.06
+  collect Vessel of Dragon's Blood##7867 |q 2203 |goto Badlands 2.42,46.06
 step
   talk Jarkal Mossmeld##6868
   accept Deliver the Gems##2340 |goto Badlands 2.42,46.06
@@ -361,7 +361,7 @@ step
   accept Stone Is Better than Cloth##716 |goto Badlands 25.82,44.24
 step
   note Bring some Patterned Bronze Bracers to Lucien Tosselwrench in the Badlands.
-  get Stone Is Better than Cloth |q 716 |goto Badlands 25.82,44.24
+  collect Patterned Bronze Bracers##2868 |q 716 |goto Badlands 25.82,44.24
 step
   talk Lotwil Veriatus##2921
   accept This Is Going to Be Hard##734 |goto Badlands 25.95,44.87
@@ -385,7 +385,7 @@ step
   accept This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
 step
   note Defeat the Fam'retor Guardian and bring Lotwil's Shackles of Elemental Binding back to Lotwil Veriatus.
-  get This Is Going to Be Hard |q 778 |goto Badlands 25.95,44.87
+  collect Lotwil's Shackles of Elemental Binding##4847 |q 778 |goto Badlands 25.95,44.87 |tip {dropsfrom}Fam'retor Guardian
 step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##778 |goto Badlands 25.95,44.87

@@ -10,10 +10,10 @@ step
   accept Brewfest!##11446 |goto Silvermoon City 78.03,57.73
 step
   note The "dwarf," Glodrak Huntsniper, has asked you to capture 5 Stunned Wolpertingers using the Wolpertinger Net. He mentioned that you must be intoxicated to see them.
-  get Catch the Wild Wolpertinger! |q 11431
+  collect 5 Catch the Wild Wolpertinger!##32906 |q 11431
 step
   note Bring the "Brew of the Month" club membership form to Ray'ma in the Darkbriar Lodge in Orgrimmar's Valley of Spirits.
-  get Brew of the Month Club |q 12306
+  collect "Brew of the Month" Club Membership Form##37599 |q 12306
 step
   note Visit the beer gardens outside of Silvermoon, Thunder Bluff, and the Undercity, zap three elekks at each location, and return to Glodrak Huntsniper. You must be drunk to see the pink elekks.
   kill Eversong Pink Elekk##23531 |q 11120 |goto Eversong Woods 56.62,52.76

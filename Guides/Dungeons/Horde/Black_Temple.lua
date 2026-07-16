@@ -10,7 +10,7 @@ step
   accept Tablets of Baa'ri##10568 |goto Shadowmoon Valley 62.58,28.38
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
-  kill Ashtongue Worker##21455 |q 10568 |goto Shadowmoon Valley 58.47,37.68
+  collect 12 Baa'ri Tablet Fragment##30596 |q 10568 |goto Shadowmoon Valley 58.47,37.68 |tip {dropsfrom}Ashtongue Worker, Baa'ri Tablet Fragment
 step
   talk Anchorite Ceyla##21402
   turnin Tablets of Baa'ri##10568 |goto Shadowmoon Valley 62.58,28.38
@@ -19,7 +19,7 @@ step
   accept Oronu the Elder##10571 |goto Shadowmoon Valley 62.58,28.38
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
-  kill Oronu the Elder##21663 |q 10571 |goto Shadowmoon Valley 57.19,32.87
+  collect Orders From Akama##30649 |q 10571 |goto Shadowmoon Valley 57.19,32.87 |tip {dropsfrom}Oronu the Elder
 step
   talk Anchorite Ceyla##21402
   turnin Oronu the Elder##10571 |goto Shadowmoon Valley 62.58,28.38
@@ -28,7 +28,7 @@ step
   accept The Ashtongue Corruptors##10574 |goto Shadowmoon Valley 62.58,28.38
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Anchorite Ceyla at the Altar of Sha'tar in Shadowmoon Valley.
-  kill Eykenen##21709 |q 10574 |goto Shadowmoon Valley 51.18,52.82
+  collect Eykenen's Medallion Fragment##30692 |q 10574 |goto Shadowmoon Valley 51.18,52.82 |tip {dropsfrom}Eykenen
 step
   talk Anchorite Ceyla##21402
   turnin The Ashtongue Corruptors##10574 |goto Shadowmoon Valley 62.58,28.38
@@ -70,7 +70,7 @@ step
   accept The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |elite
+  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |tip {dropsfrom}Shadowlord Deathwail
 step
   talk Akama##21700
   turnin The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18
@@ -97,7 +97,7 @@ step
   accept An Artifact From the Past##10947 |goto Shadowmoon Valley 58.11,48.18
 step
   note Go to the Caverns of Time in Tanaris and gain access to the Battle of Mount Hyjal. Once inside, defeat Rage Winterchill and bring the Time-Phased Phylactery to Akama in Shadowmoon Valley.
-  get An Artifact From the Past |q 10947 |goto Shadowmoon Valley 58.11,48.18
+  collect Time-Phased Phylactery##32459 |q 10947 |goto Shadowmoon Valley 58.11,48.18 |tip {dropsfrom}Rage Winterchill
 step
   talk Akama##21700
   turnin An Artifact From the Past##10947 |goto Shadowmoon Valley 58.11,48.18

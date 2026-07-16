@@ -17,25 +17,25 @@ step
   accept The Sketh'lon Wreckage##10569 |goto Shadowmoon Valley 38.79,54.21
 step
   note Recover the Skethlon Commander's Journal Page 1, Skethlon Commander's Journal Page 2, and Skethlon Commander's Journal Page 3 from the Dark Conclave arakkoa at the Sketh'lon Wreckage to Gryphonrider Kieran.
-  kill Dark Conclave Shadowmancer##19826 |q 10569 |goto Shadowmoon Valley 37.18,30.79
+  collect Sketh'lon Commander's Journal - Page 1##31260 |q 10569 |goto Shadowmoon Valley 37.18,30.79 |tip {dropsfrom}Dark Conclave Shadowmancer, Dark Conclave Ravenguard, Dark Conclave Hawkeye
 step
   talk Ordinn Thunderfist##19370
   accept Capture the Weapons##10626 |goto Shadowmoon Valley 36.82,54.89
 step
   note Ordinn Thunderfist at Wildhammer Stronghold wants you to bring him Mazakradon's Glaive and Morgroron's Glaive.
-  kill Makazradon##21501 |q 10626 |goto Shadowmoon Valley 22.68,35.3 |elite
+  collect Makazradon's Glaive##30786 |q 10626 |goto Shadowmoon Valley 22.68,35.3 |tip {dropsfrom}Makazradon
 step
   talk Zorus the Judicator##21774
   accept A Ghost in the Machine##10642 |goto Shadowmoon Valley 37.13,55.57
 step
   note Zorus the Judicator at Wildhammer Stronghold in Shadowmoon Valley wants you to bring him 15 Ever-burning Ash samples.
-  collect Ever-burning Ash##184948 |q 10642 |goto Shadowmoon Valley 37.64,40.52
+  collect Ever-burning Ash##30716 |q 10642 |goto Shadowmoon Valley 37.64,40.52 |tip {dropsfrom}Ever-burning Ash
 step
   talk Gnomus##21777
   accept Spleendid!##10661 |goto Shadowmoon Valley 36.54,55.24
 step
   note Gnomus at Wildhammer Stronghold in Shadowmoon Valley wants you to recover 8 Felfire Spleens.
-  kill Felfire Diemetradon##21408 |q 10661 |goto Shadowmoon Valley 36.04,40.66
+  collect Felfire Spleen##30819 |q 10661 |goto Shadowmoon Valley 36.04,40.66 |tip {dropsfrom}Felfire Diemetradon
 step
   talk Earthmender Sophurus##21937
   accept The Hand of Gul'dan##10680 |goto Shadowmoon Valley 36.37,56.95
@@ -56,19 +56,19 @@ step
   accept To Catch A Thistlehead##10570 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Stormrage Missive.
-  get To Catch A Thistlehead |q 10570 |goto Shadowmoon Valley 47.56,57.18
+  collect Stormrage Missive##30617 |q 10570 |goto Shadowmoon Valley 47.56,57.18 |tip {dropsfrom}Envoy Icarius
 step
   talk Arcanist Thelis##21955
   accept Tablets of Baa'ri##10683 |goto Shadowmoon Valley 56.25,59.6
 step
   note Arcanist Thelis at the Sanctum of the Stars wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
-  kill Ashtongue Worker##21455 |q 10683 |goto Shadowmoon Valley 58.47,37.68
+  collect 12 Baa'ri Tablet Fragment##30596 |q 10683 |goto Shadowmoon Valley 58.47,37.68 |tip {dropsfrom}Ashtongue Worker, Baa'ri Tablet Fragment
 step
   talk Larissa Sunstrike##21954
   accept Karabor Training Grounds##10687 |goto Shadowmoon Valley 55.73,58.17
 step
   note Larissa Sunstrike at the Sanctum of the Stars wants you to obtain 8 Sunfury Glaives from the Demon Hunter Supplicants and Demon Hunter Initiates at the Ruins of Karabor, northeast of the Sanctum of the Stars.
-  kill Demon Hunter Supplicant##21179 |q 10687 |goto Shadowmoon Valley 68.74,53.05
+  collect 8 Sunfury Glaive##30679 |q 10687 |goto Shadowmoon Valley 68.74,53.05 |tip {dropsfrom}Demon Hunter Supplicant, Demon Hunter Initiate
 step
   talk Larissa Sunstrike##21954
   accept Varedis Must Be Stopped##10692 |goto Shadowmoon Valley 55.73,58.17
@@ -86,13 +86,13 @@ step
   accept Sunfury Signets##10824 |goto Shadowmoon Valley 56.29,58.8
 step
   note Battlemage Vyara at the Sanctum of the Stars wants you to bring her 10 Sunfury Signets.
-  get Sunfury Signets |q 10824 |goto Shadowmoon Valley 56.29,58.8
+  collect Sunfury Signet##30810 |q 10824 |goto Shadowmoon Valley 56.29,58.8 |tip {dropsfrom}Bloodwarder Protector, Bloodwarder Falconer, Bloodwarder Steward
 step
   talk Akama##21700
   accept The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |elite
+  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |tip {dropsfrom}Shadowlord Deathwail
 step
   talk Akama##21700
   accept Ruse of the Ashtongue##10946 |goto Shadowmoon Valley 58.11,48.18
@@ -104,13 +104,13 @@ step
   accept Tablets of Baa'ri##10568 |goto Shadowmoon Valley 62.58,28.38
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
-  kill Ashtongue Worker##21455 |q 10568 |goto Shadowmoon Valley 58.47,37.68
+  collect 12 Baa'ri Tablet Fragment##30596 |q 10568 |goto Shadowmoon Valley 58.47,37.68 |tip {dropsfrom}Ashtongue Worker, Baa'ri Tablet Fragment
 step
   talk Exarch Onaala##21860
   accept Karabor Training Grounds##10587 |goto Shadowmoon Valley 61.2,29.23
 step
   note Exarch Onaala at the Altar of Sha'tar wants you to obtain 8 Sunfury Glaives from Demon Hunter Supplicants and Demon Hunter Initiates at the Ruins of Karabor, southeast of the Altar of Sha'tar.
-  kill Demon Hunter Supplicant##21179 |q 10587 |goto Shadowmoon Valley 68.74,53.05
+  collect 8 Sunfury Glaive##30679 |q 10587 |goto Shadowmoon Valley 68.74,53.05 |tip {dropsfrom}Demon Hunter Supplicant, Demon Hunter Initiate
 step
   talk Vindicator Aluumen##21822
   accept The Ashtongue Tribe##10619 |goto Shadowmoon Valley 61.17,29.14
@@ -122,7 +122,7 @@ step
   accept Marks of Sargeras##10826 |goto Shadowmoon Valley 62.27,29.78
 step
   note Bring 10 Marks of Sargeras to Harbinger Saronen in Shadowmoon Valley.
-  kill Cyber-Rage Forgelord##16943 |q 10826 |goto Netherstorm 40.3,21.07
+  collect 10 Mark of Sargeras##30809 |q 10826 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Gan'arg Mekgineer
 step
   note Varen the Reclaimer wants you to go to the Ruins of Baa'ri and slay 3 Ashtongue Handlers, 4 Ashtongue Warriors and 6 Ashtongue Shaman.
   kill Ashtongue Handler##21803 |q 10807 |goto Shadowmoon Valley 57.71,36.86
@@ -140,19 +140,19 @@ step
   accept Divination: Gorefiend's Armor##10634 |goto Shadowmoon Valley 58.23,70.79
 step
   note The Ancient Shadowmoon Spirit at the Altar of Shadows in southeast Shadowmoon Valley wants you to recover Gorefiend's Armor.
-  kill Vhel'kur##21801 |q 10634 |goto Shadowmoon Valley 67.04,87.07 |elite
+  collect Gorefiend's Armor##30797 |q 10634 |goto Shadowmoon Valley 67.04,87.07 |tip {dropsfrom}Vhel'kur
 step
   talk Ancient Shadowmoon Spirit##21797
   accept Divination: Gorefiend's Cloak##10635 |goto Shadowmoon Valley 58.23,70.79
 step
   note The Ancient Shadowmoon Spirit at the Altar of Shadows in southeast Shadowmoon Valley wants you to recover Gorefiend's Cloak.
-  kill Cleric of Karabor##21815 |q 10635 |goto Shadowmoon Valley 64.37,47.31
+  collect Gorefiend's Cloak##30799 |q 10635 |goto Shadowmoon Valley 64.37,47.31 |tip {dropsfrom}Cleric of Karabor
 step
   talk Ancient Shadowmoon Spirit##21797
   accept Divination: Gorefiend's Truncheon##10636 |goto Shadowmoon Valley 58.23,70.79
 step
   note The Ancient Shadowmoon Spirit at the Altar of Shadows in southeast Shadowmoon Valley wants you to recover Gorefiend's Truncheon.
-  kill Ghostrider of Karabor##21784 |q 10636 |goto Shadowmoon Valley 61.88,31.87
+  collect Gorefiend's Truncheon##30800 |q 10636 |goto Shadowmoon Valley 61.88,31.87 |tip {dropsfrom}Ghostrider of Karabor
 step
   talk Ancient Shadowmoon Spirit##21797
   accept Teron Gorefiend, I am...##10645 |goto Shadowmoon Valley 58.23,70.79
@@ -203,7 +203,7 @@ step
   accept The Second Course...##10677 |goto Shadowmoon Valley 36.54,55.24
 step
   note Gnomus at Wildhammer Stronghold in Shadowmoon Valley wants you to recover 1 Overdeveloped Felfire Gizzard.
-  kill Greater Felfire Diemetradon##21462 |q 10677 |goto Shadowmoon Valley 56.44,41.11
+  collect Overdeveloped Felfire Gizzard##30867 |q 10677 |goto Shadowmoon Valley 56.44,41.11 |tip {dropsfrom}Greater Felfire Diemetradon
 step
   talk Gryphonrider Kieran##22042
   accept Find the Deserter##10759 |goto Shadowmoon Valley 38.79,54.21
@@ -227,7 +227,7 @@ step
   accept Asghar's Totem##10777 |goto Shadowmoon Valley 35.42,42.15
 step
   note Bring the Sketh'lon War Totem to Parshah in the Magma Fields.
-  kill Asghar##22025 |q 10777 |goto Shadowmoon Valley 39.65,29.33
+  collect Sketh'lon War Totem##31169 |q 10777 |goto Shadowmoon Valley 39.65,29.33 |tip {dropsfrom}Asghar
 step
   talk Borak, Son of Oronok##21293
   turnin To Catch A Thistlehead##10570 |goto Shadowmoon Valley 47.56,57.18
@@ -236,7 +236,7 @@ step
   accept The Shadowmoon Shuffle##10576 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover 6 pieces of Eclipsion Armor.
-  kill Eclipsion Centurion##19792 |q 10576 |goto Shadowmoon Valley 47.18,67.6
+  collect Eclipsion Armor##30640 |q 10576 |goto Shadowmoon Valley 47.18,67.6 |tip {dropsfrom}Eclipsion Centurion, Eclipsion Blood Knight, Eclipsion Archmage
 step
   talk Mordenai##22113
   turnin Kindness##10804 |goto Shadowmoon Valley 59.19,58.69
@@ -260,7 +260,7 @@ step
   accept Oronu the Elder##10684 |goto Shadowmoon Valley 56.25,59.6
 step
   note Arcanist Thelis at the Sanctum of the Stars wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
-  kill Oronu the Elder##21663 |q 10684 |goto Shadowmoon Valley 57.19,32.87
+  collect Orders From Akama##30649 |q 10684 |goto Shadowmoon Valley 57.19,32.87 |tip {dropsfrom}Oronu the Elder
 step
   talk Larissa Sunstrike##21954
   accept A Necessary Distraction##10688 |goto Shadowmoon Valley 55.73,58.17
@@ -284,7 +284,7 @@ step
   accept An Artifact From the Past##10947 |goto Shadowmoon Valley 58.11,48.18
 step
   note Go to the Caverns of Time in Tanaris and gain access to the Battle of Mount Hyjal. Once inside, defeat Rage Winterchill and bring the Time-Phased Phylactery to Akama in Shadowmoon Valley.
-  get An Artifact From the Past |q 10947 |goto Shadowmoon Valley 58.11,48.18
+  collect Time-Phased Phylactery##32459 |q 10947 |goto Shadowmoon Valley 58.11,48.18 |tip {dropsfrom}Rage Winterchill
 step
   talk David Wayne##21465
   turnin The Hermit Smith##10662 |goto Terokkar Forest 77.58,38.72 |tip {turninat}Terokkar Forest
@@ -320,7 +320,7 @@ step
   accept Oronu the Elder##10571 |goto Shadowmoon Valley 62.58,28.38
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
-  kill Oronu the Elder##21663 |q 10571 |goto Shadowmoon Valley 57.19,32.87
+  collect Orders From Akama##30649 |q 10571 |goto Shadowmoon Valley 57.19,32.87 |tip {dropsfrom}Oronu the Elder
 step
   talk Exarch Onaala##21860
   accept A Necessary Distraction##10637 |goto Shadowmoon Valley 61.2,29.23
@@ -359,7 +359,7 @@ step
   accept Setting Up the Bomb##10572 |goto Shadowmoon Valley 39.5,53.73
 step
   note Obtain a Fel Reaver Power Core and a Fel Reaver Armor Plate and bring them to Wing Commander Nuainn at Wildhammer Stronghold.
-  collect Fel Reaver Power Core##184859 |q 10572 |goto Shadowmoon Valley 26.3,41.27
+  collect Fel Reaver Power Core##30628 |q 10572 |goto Shadowmoon Valley 26.3,41.27 |tip {dropsfrom}Fel Reaver Power Core
 step
   talk Zorus the Judicator##21774
   accept Teron Gorefiend - Lore and Legend##10644 |goto Shadowmoon Valley 37.13,55.57
@@ -368,7 +368,7 @@ step
   accept The Main Course!##10678 |goto Shadowmoon Valley 36.54,55.24
 step
   note Gnomus at Wildhammer Stronghold in Shadowmoon Valley wants you to recover Felspine's Hide.
-  kill Felspine the Greater##21897 |q 10678 |goto Shadowmoon Valley 56.1,44.33
+  collect Felspine's Hide##30851 |q 10678 |goto Shadowmoon Valley 56.1,44.33 |tip {dropsfrom}Felspine the Greater
 step
   talk Parshah##22024
   turnin Asghar's Totem##10777 |goto Shadowmoon Valley 35.42,42.15
@@ -386,7 +386,7 @@ step
   accept The Rod of Lianthe##10778 |goto Shadowmoon Valley 35.42,42.15
 step
   note Obtain Lianthe's Key from any of the blood elves at Eclipse Point and use it to open Lianthe's Strongbox and claim the Rod of Lianthe. Return the rod to Parshah in the Magma Fields.
-  kill Eclipsion Centurion##19792 |q 10778 |goto Shadowmoon Valley 47.18,67.6
+  collect Lianthe's Key##31316 |q 10778 |goto Shadowmoon Valley 47.18,67.6 |tip {dropsfrom}Eclipsion Centurion, Eclipsion Archmage, Eclipsion Bloodwarder
 step
   talk Borak, Son of Oronok##21293
   turnin The Shadowmoon Shuffle##10576 |goto Shadowmoon Valley 47.56,57.18
@@ -410,7 +410,7 @@ step
   accept The Ashtongue Corruptors##10685 |goto Shadowmoon Valley 56.25,59.6
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Arcanist Thelis at the Sanctum of the Stars in Shadowmoon Valley.
-  kill Eykenen##21709 |q 10685 |goto Shadowmoon Valley 51.18,52.82
+  collect Eykenen's Medallion Fragment##30692 |q 10685 |goto Shadowmoon Valley 51.18,52.82 |tip {dropsfrom}Eykenen
 step
   talk Larissa Sunstrike##21954
   accept Altruis##10689 |goto Shadowmoon Valley 55.73,58.17
@@ -446,7 +446,7 @@ step
   accept The Ashtongue Corruptors##10574 |goto Shadowmoon Valley 62.58,28.38
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Anchorite Ceyla at the Altar of Sha'tar in Shadowmoon Valley.
-  kill Eykenen##21709 |q 10574 |goto Shadowmoon Valley 51.18,52.82
+  collect Eykenen's Medallion Fragment##30692 |q 10574 |goto Shadowmoon Valley 51.18,52.82 |tip {dropsfrom}Eykenen
 step
   talk Exarch Onaala##21860
   accept Altruis##10640 |goto Shadowmoon Valley 61.2,29.23
@@ -470,7 +470,7 @@ step
   turnin Altruis##10689 |goto Nagrand 27.34,43.09 |tip {turninat}Nagrand
 step
   note Use the Fel Bomb while standing on the green glyph in Legion Hold, then report to Wing Commander Nuainn at Wildhammer Stronghold.
-  kill Invis Legion Hold Glyph##21512 |q 10564 |goto Shadowmoon Valley 22.65,39.88
+  use Invis Legion Hold Glyph##21512 |q 10564 |goto Shadowmoon Valley 22.65,39.88 |tip {useit}
 step
   talk Parshah##22024
   turnin The Rod of Lianthe##10778 |goto Shadowmoon Valley 35.42,42.15
@@ -485,7 +485,7 @@ step
   accept Sketh'lon Feathers##10780 |goto Shadowmoon Valley 35.42,42.15
 step
   note Gather 8 Sketh'lon Feathers and bring them to Parshah in the Magma Fields.
-  collect Sketh'lon Feather##185130 |q 10780 |goto Shadowmoon Valley 43.75,57.52
+  collect 8 Sketh'lon Feather##31324 |q 10780 |goto Shadowmoon Valley 43.75,57.52 |tip {dropsfrom}Sketh'lon Feather
 step
   talk Borak, Son of Oronok##21293
   turnin What Illidan Wants, Illidan Gets...##10577 |goto Shadowmoon Valley 47.56,57.18
@@ -494,7 +494,7 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |elite
+  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |tip {dropsfrom}Ruul the Darkener
 step
   talk Arcanist Thelis##21955
   turnin The Ashtongue Corruptors##10685 |goto Shadowmoon Valley 56.25,59.6
@@ -533,7 +533,7 @@ step
   accept I Was A Lot Of Things...##10514 |goto Shadowmoon Valley 53.95,23.52
 step
   note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
-  get I Was A Lot Of Things... |q 10514 |goto Shadowmoon Valley 53.95,23.52
+  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52 |tip {dropsfrom}Shadowmoon Tuber
 step
   talk Wing Commander Nuainn##21357
   turnin Blast the Infernals!##10564 |goto Shadowmoon Valley 39.5,53.73
@@ -554,7 +554,7 @@ step
   accept Imbuing the Headpiece##10782 |goto Shadowmoon Valley 35.42,42.15
 step
   note Equip the Unfinished Headpiece, travel to the Altar of Damnation, and use it while standing near Gul'dan. When the headpiece is energized, return to Parshah in the Magma Fields.
-  get Imbuing the Headpiece |q 10782 |goto Shadowmoon Valley 35.42,42.15
+  collect Energized Headpiece##31365 |q 10782 |goto Shadowmoon Valley 35.42,42.15
 step
   note Stormer Ewan Wildwing at the Deathforge Tower wants you to kill 10 Deathforge Guardians and 5 Deathforge Summoners.
   kill Deathforge Guardian##20878 |q 10582 |goto Shadowmoon Valley 39.4,39.26
@@ -572,7 +572,7 @@ step
   accept To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
-  collect Nethervine Crystal##185182 |q 10837 |goto Shadowmoon Valley 70.78,83.14
+  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14 |tip {dropsfrom}Nethervine Crystal
 step
   talk Sanoru##21826
   turnin The Warden's Cage##10575 |goto Shadowmoon Valley 57.33,49.58
@@ -605,7 +605,7 @@ step
   accept The Fate of Flanis##10583 |goto Shadowmoon Valley 40.45,41.29
 step
   note Stormer Ewan Wildwing at Deathforge Tower wants you to search the Deathforge for Flanis Swiftwing and recover Flanis's Pack.
-  get The Fate of Flanis |q 10583 |goto Shadowmoon Valley 40.45,41.29
+  collect Flanis's Pack##30658 |q 10583 |goto Shadowmoon Valley 40.45,41.29
 step
   talk Stormer Ewan Wildwing##21471
   accept The Summoning Chamber##10585 |goto Shadowmoon Valley 40.45,41.29
@@ -680,7 +680,7 @@ step
   accept The Cipher of Damnation - Grom'tor's Charge##10522 |goto Shadowmoon Valley 44.62,23.66
 step
   note Grom'tor, Son of Oronok at Coilskar Point in Shadowmoon Valley wants you to recover the First Fragment of the Cipher of Damnation.
-  collect Coilskar Chest##184716 |q 10522 |goto Shadowmoon Valley 47.92,26.7
+  collect First Fragment of the Cipher of Damnation##30428 |q 10522 |goto Shadowmoon Valley 47.92,26.7 |tip {dropsfrom}Coilskar Chest
 step
   talk Karynaku##22112
   turnin Karynaku##10858 |goto Shadowmoon Valley 69.86,61.44
@@ -698,7 +698,7 @@ step
   accept Gaining Access##10589 |goto Shadowmoon Valley 39.5,53.73
 step
   note Bring a Legion Teleporter Control to Wing Commander Nuainn at Wildhammer Stronghold. The Mo'arg Weaponsmiths at Legion Hold are known to carry the devices.
-  kill Mo'arg Weaponsmith##19755 |q 10589 |goto Shadowmoon Valley 23.53,33.94
+  collect Legion Teleporter Control##30695 |q 10589 |goto Shadowmoon Valley 23.53,33.94 |tip {dropsfrom}Mo'arg Weaponsmith
 step
   talk Ar'tor, Son of Oronok##21292
   turnin Ar'tor, Son of Oronok##10527 |goto Shadowmoon Valley 29.63,50.4
@@ -707,7 +707,7 @@ step
   accept Demonic Crystal Prisons##10528 |goto Shadowmoon Valley 29.63,50.4
 step
   note Seek out and slay Painmistress Gabrissa at Illidari Point and return to the corpse of Ar'tor, Son of Oronok with the Crystalline Key.
-  kill Painmistress Gabrissa##21309 |q 10528 |goto Shadowmoon Valley 28.3,47.61
+  collect Crystalline Key##30442 |q 10528 |goto Shadowmoon Valley 28.3,47.61 |tip {dropsfrom}Painmistress Gabrissa
 step
   talk Borak, Son of Oronok##21293
   turnin Borak, Son of Oronok##10546 |goto Shadowmoon Valley 47.56,57.18
@@ -716,7 +716,7 @@ step
   accept Of Thistleheads and Eggs...##10547 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  collect Rotten Arakkoa Egg##184795 |q 10547 |goto Shadowmoon Valley 44.15,57.51
+  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51 |tip {dropsfrom}Rotten Arakkoa Egg
 step
   talk Grom'tor, Son of Oronok##21291
   turnin The Cipher of Damnation - Grom'tor's Charge##10522 |goto Shadowmoon Valley 44.62,23.66

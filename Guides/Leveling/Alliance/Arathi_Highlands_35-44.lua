@@ -32,7 +32,7 @@ step
   accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
 step
   note Find 10 Witherbark Tusks, 4 Witherbark Medicine Pouches and a Shadow Hunter Knife for Apprentice Kryten at Refuge Pointe.
-  kill Witherbark Troll##2552 |q 691 |goto Arathi Highlands 37.5,45.78
+  collect 10 Witherbark Tusk##4503 |q 691 |goto Arathi Highlands 37.5,45.78 |tip {dropsfrom}Witherbark Troll, Witherbark Shadowcaster, Witherbark Axe Thrower
 step
   talk Samuel Hawke##15127
   accept Arathor Basic Care Package##8260 |goto Arathi Highlands 45.97,45.21
@@ -50,7 +50,7 @@ step
   accept Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
 step
   note Find the Forsaken Courier and bring back her Sealed Folder to Quae near the Go'Shek Farm.
-  kill Forsaken Courier##2714 |q 658 |goto Arathi Highlands 52.47,61.53
+  collect Sealed Folder##4482 |q 658 |goto Arathi Highlands 52.47,61.53 |tip {dropsfrom}Forsaken Courier, Alterac Granite
 step
   talk Zaruk##2787
   accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
@@ -71,13 +71,13 @@ step
   accept Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
 step
   note First Mate Nilzlix wants you to retrieve the Charts and Logs from the Maiden's Folly and the Spirit of Silverpine.
-  collect Maiden's Folly Charts##2707 |q 662 |goto Arathi Highlands 23.05,84.51
+  collect Maiden's Folly Charts##4487 |q 662 |goto Arathi Highlands 23.05,84.51 |tip {dropsfrom}Maiden's Folly Charts
 step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
 step
   note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
-  collect Calcified Elven Gem##2712 |q 666 |goto Arathi Highlands 22.43,89.37
+  collect 10 Elven Gem##4492 |q 666 |goto Arathi Highlands 22.43,89.37 |tip {dropsfrom}Calcified Elven Gem
 step
   talk Samuel Hawke##15127
   turnin Arathor Basic Care Package##8260 |goto Arathi Highlands 45.97,45.21
@@ -95,13 +95,13 @@ step
   accept Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
 step
   note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
-  kill Syndicate Prowler##2588 |q 682 |goto Arathi Highlands 28.15,63.55
+  collect 7 Stromgarde Badge##4506 |q 682 |goto Arathi Highlands 28.15,63.55 |tip {dropsfrom}Syndicate Prowler, Syndicate Conjuror, Syndicate Magus
 step
   talk Skuerto##2789
   accept Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
 step
   note Find Trelane's Wand of Invocation and return it to Skuerto at Refuge Pointe.
-  kill Kor'gresh Coldrage##2793 |q 693 |goto Arathi Highlands 54.75,81.87
+  collect Trelane's Wand of Invocation##4525 |q 693 |goto Arathi Highlands 54.75,81.87 |tip {dropsfrom}Kor'gresh Coldrage
 step
   talk Quae##2712
   turnin Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
@@ -128,7 +128,7 @@ step
   accept Trelane's Defenses##694 |goto Arathi Highlands 46.65,47.01
 step
   note Find an Azure Agate and bring it to Apprentice Kryten at Refuge Pointe.
-  kill Boulderfist Shaman##2570 |q 694 |goto Arathi Highlands 20.23,67.51
+  collect Azure Agate##4527 |q 694 |goto Arathi Highlands 20.23,67.51 |tip {dropsfrom}Boulderfist Shaman
 step
   talk Kinelory##2713
   turnin Hints of a New Plague?##657 |goto Arathi Highlands 60.24,53.92
@@ -164,7 +164,7 @@ step
   accept Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
 step
   note Find Trelane's Phylactery, Trelane's Orb, and Trelane's Ember Agate, and return them to Skuerto at Refuge Pointe.
-  collect Trelane's Footlocker##2717 |q 696 |goto Arathi Highlands 18.18,68.14
+  collect Trelane's Phylactery##4530 |q 696 |goto Arathi Highlands 18.18,68.14 |tip {dropsfrom}Trelane's Footlocker
 step
   talk Phin Odelic##2711
   turnin Hints of a New Plague?##661 |goto Hillsbrad Foothills 50.35,59.05 |tip {turninat}Hillsbrad Foothills

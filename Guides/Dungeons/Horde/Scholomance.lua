@@ -16,7 +16,7 @@ step
   accept Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
 step
   note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
-  get Broodling Essence |q 4726 |goto Burning Steppes 65.24,24.0
+  collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 65.24,24.0 |tip {dropsfrom}Broodling Essence
 step
   note Kill 20 Plagued Hatchlings, then return to Betina Bigglezink at the Light's Hope Chapel.
   kill Plagued Hatchling##10678 |q 5529 |goto Scholomance - Dungeon -1,-1
@@ -43,7 +43,7 @@ step
   accept Chillwind Horns##4809 |goto Winterspring 61.63,38.61
 step
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
-  kill Fledgling Chillwind##7447 |q 4809 |goto Winterspring 44.97,42.75
+  collect 8 Uncracked Chillwind Horn##12444 |q 4809 |goto Winterspring 44.97,42.75 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
 step
   talk Felnok Steelspring##10468
   turnin Chillwind Horns##4809 |goto Winterspring 61.63,38.61
@@ -64,7 +64,7 @@ step
   accept Egg Collection##4735 |goto Burning Steppes 65.24,24.0
 step
   note Bring 8 Collected Dragon Eggs and the Collectronic Module to Tinkee Steamboil at Flame Crest in the Burning Steppes.
-  get Egg Collection |q 4735 |goto Burning Steppes 65.24,24.0
+  collect 8 Collected Dragon Egg##12241 |q 4735 |goto Burning Steppes 65.24,24.0
 step
   talk Tinkee Steamboil##10267
   turnin Egg Collection##4735 |goto Burning Steppes 65.24,24.0

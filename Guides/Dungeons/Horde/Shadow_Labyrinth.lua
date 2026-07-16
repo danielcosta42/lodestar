@@ -16,7 +16,7 @@ step
   accept Wanted: Malicious Instructors##11376 |goto Shattrath City 75.5,37.24
 step
   note Steal 5 Soul Devices and deliver them to Spymistress Mehlisah Highcrown at the Terrace of the Light in Shattrath City.
-  collect Soul Device##182940 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1
+  collect Soul Device##27480 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Soul Device
 step
   note Destroy Murmur and inform Spymistress Mehlisah Highcrown at the Terrace of Light in Shattrath City of the events that have transpired inside the Shadow Labyrinth.
   kill Murmur##18708 |q 10095 |goto Shadow Labyrinth - Dungeon -1,-1 |elite

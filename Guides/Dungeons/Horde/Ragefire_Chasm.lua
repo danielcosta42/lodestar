@@ -16,7 +16,7 @@ step
   accept Searching for the Lost Satchel##5722 |goto Thunder Bluff 70.14,29.52
 step
   note Bring a Lieutenant's Insignia to Thrall in Orgrimmar.
-  kill Burning Blade Fanatic##3197 |q 5726 |goto Durotar 52.5,9.36
+  collect Lieutenant's Insignia##14544 |q 5726 |goto Durotar 52.5,9.36 |tip {dropsfrom}Burning Blade Fanatic, Burning Blade Apprentice
 step
   note Search Orgrimmar for Ragefire Chasm, then kill 8 Ragefire Troggs and 8 Ragefire Shaman before returning to Rahauro in Thunder Bluff.
   kill Ragefire Trogg##11318 |q 5723 |goto Ragefire Chasm - Dungeon -1,-1 |elite

@@ -20,7 +20,7 @@ step
   accept Webwood Venom##916 |goto Teldrassil 57.81,41.65
 step
   note Bring 10 Webwood Venom Sacs to Gilshalan Windwalker at Aldrassil.
-  kill Webwood Spider##1986 |q 916 |goto Teldrassil 56.8,28.42
+  collect 10 Webwood Venom Sac##5166 |q 916 |goto Teldrassil 56.8,28.42 |tip {dropsfrom}Webwood Spider
 step
   talk Porthannius##6780
   accept Dolanaar Delivery##2159 |goto Teldrassil 61.16,47.64
@@ -45,13 +45,13 @@ step
   accept The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
 step
   note Acquire 6 Bloodfeather Belts and bring them to Sentinel Arynia Cloudsbreak in the Oracle Glade.
-  kill Bloodfeather Harpy##2015 |q 937 |goto Teldrassil 37.21,40.54
+  collect 6 Bloodfeather Belt##5204 |q 937 |goto Teldrassil 37.21,40.54 |tip {dropsfrom}Bloodfeather Harpy, Bloodfeather Rogue, Bloodfeather Sorceress
 step
   talk Oben Rageclaw##7317
   accept The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
 step
   note Bring a Shaman Voodoo Charm to Oben Rageclaw in the Ban'ethil Barrow Den.
-  kill Gnarlpine Shaman##2009 |q 2541 |goto Teldrassil 45.23,61.24
+  collect Shaman Voodoo Charm##8363 |q 2541 |goto Teldrassil 45.23,61.24 |tip {dropsfrom}Gnarlpine Shaman
 step
   talk Innkeeper Keldamyr##6736
   turnin Dolanaar Delivery##2159 |goto Teldrassil 55.62,59.79
@@ -70,13 +70,13 @@ step
   accept Zenn's Bidding##488 |goto Teldrassil 60.46,56.3
 step
   note Bring Zenn Foulhoof outside of Dolanaar 3 Nightsaber Fangs, 3 Strigid Owl Feathers and 3 swatches of Webwood Spider Silk.
-  kill Elder Nightsaber##2033 |q 488 |goto Teldrassil 45.13,37.67
+  collect Nightsaber Fang##3409 |q 488 |goto Teldrassil 45.13,37.67 |tip {dropsfrom}Elder Nightsaber, Feral Nightsaber, Nightsaber
 step
   talk Tallonkai Swiftroot##3567
   accept Twisted Hatred##932 |goto Teldrassil 55.57,56.95
 step
   note Kill Lord Melenas and bring his head to Tallonkai Swiftroot in Dolanaar.
-  kill Lord Melenas##2038 |q 932 |goto Teldrassil 51.31,50.21
+  collect Melenas' Head##5221 |q 932 |goto Teldrassil 51.31,50.21 |tip {dropsfrom}Lord Melenas
 step
   talk Syral Bladeleaf##2083
   accept Denalan's Earth##997 |goto Teldrassil 56.08,57.72
@@ -85,7 +85,7 @@ step
   accept Elixirs for the Bladeleafs##1581 |goto Teldrassil 56.08,57.72
 step
   note Bring 6 Elixirs of Lion's Strength and 2 Elixirs of Minor Defense to Syral Bladeleaf in Dolanaar.
-  get Elixirs for the Bladeleafs |q 1581 |goto Teldrassil 56.08,57.72
+  collect 6 Elixir of Lion's Strength##2454 |q 1581 |goto Teldrassil 56.08,57.72
 step
   only Rogue
   talk Jannok Breezesong##3599
@@ -95,13 +95,13 @@ step
   accept The Emerald Dreamcatcher##2438 |goto Teldrassil 55.57,56.95
 step
   note Bring the Emerald Dreamcatcher to Tallonkai Swiftroot in Dolanaar.
-  collect Tallonkai's Dresser##126158 |q 2438 |goto Teldrassil 68.02,59.65
+  collect Emerald Dreamcatcher##8048 |q 2438 |goto Teldrassil 68.02,59.65 |tip {dropsfrom}Tallonkai's Dresser
 step
   talk Zarrin##6286
   accept Recipe of the Kaldorei##4161 |goto Teldrassil 57.12,61.3
 step
   note Collect 7 Small Spider Legs for Zarrin in Dolanaar.
-  kill Forest Spider##30 |q 4161 |goto Elwynn Forest 38.2,71.23
+  collect 7 Small Spider Leg##5465 |q 4161 |goto Elwynn Forest 38.2,71.23 |tip {dropsfrom}Forest Spider, Mine Spider, Mother Fang
 step
   only NightElf Priest
   talk Laurna Morninglight##3600
@@ -128,13 +128,13 @@ step
   accept Timberling Seeds##918 |goto Teldrassil 60.9,68.49
 step
   note Bring 8 Timberling Seeds to Denelan at Lake Al'Ameth.
-  kill Timberling##2022 |q 918 |goto Teldrassil 59.67,66.39
+  collect 8 Timberling Seed##5168 |q 918 |goto Teldrassil 59.67,66.39 |tip {dropsfrom}Timberling, Timberling Bark Ripper, Timberling Trampler
 step
   talk Denalan##2080
   accept Timberling Sprouts##919 |goto Teldrassil 60.9,68.49
 step
   note Bring 12 Timberling Sprouts to Denalan at Lake Al'Ameth.
-  collect Timberling Sprout##4608 |q 919 |goto Teldrassil 57.32,69.93
+  collect 12 Timberling Sprout##5169 |q 919 |goto Teldrassil 57.32,69.93 |tip {dropsfrom}Timberling Sprout
 step
   talk Denalan##2080
   accept Planting the Heart##941 |goto Teldrassil 60.9,68.49
@@ -143,7 +143,7 @@ step
   accept Oakenscowl##2499 |goto Teldrassil 60.9,68.49
 step
   note Denalan at Lake Al'Ameth wants you to collect the Gargantuan Tumor from Oakenscowl.
-  kill Oakenscowl##2166 |q 2499 |goto Teldrassil 53.76,75.12
+  collect Gargantuan Tumor##8136 |q 2499 |goto Teldrassil 53.76,75.12 |tip {dropsfrom}Oakenscowl
 step
   only NightElf Priest
   note Find Sentinel Shaya and heal her wounds using Lesser Heal (Rank 2). Afterwards, grant her Power Word: Fortitude and then return to Laurna Morninglight in Dolanaar.
@@ -172,13 +172,13 @@ step
   accept The Woodland Protector##459 |goto Teldrassil 57.83,45.21
 step
   note Collect 8 Fel Moss and bring them to Tarindrella.
-  kill Grell##1988 |q 459 |goto Teldrassil 55.97,45.81
+  collect 8 Fel Moss##3297 |q 459 |goto Teldrassil 55.97,45.81 |tip {dropsfrom}Grell, Grellkin
 step
   talk Gilshalan Windwalker##2082
   accept Webwood Egg##917 |goto Teldrassil 57.81,41.65
 step
   note Bring a Webwood Egg to Gilshalan in Aldrassil.
-  collect Webwood Eggs##4406 |q 917 |goto Teldrassil 56.8,26.49
+  collect Webwood Egg##5167 |q 917 |goto Teldrassil 56.8,26.49 |tip {dropsfrom}Webwood Eggs
 step
   only Warrior
   talk Conservator Ilthalaine##2079
@@ -203,7 +203,7 @@ step
   accept Iverron's Antidote##3521 |goto Teldrassil 60.9,41.96
 step
   note Collect 7 Hyacinth Mushrooms, 4 Moonpetal Lilies, and 1 Webwood Ichor for Dirania Silveshine in Shadowglen.
-  kill Grellkin##1989 |q 3521 |goto Teldrassil 54.67,39.33
+  collect 7 Hyacinth Mushroom##10639 |q 3521 |goto Teldrassil 54.67,39.33 |tip {dropsfrom}Grellkin, Hyacinth Mushroom
 step
   note Conservator Ilthalaine needs you to kill 7 Mangy Nightsabers and 7 Thistle Boars.
   kill Mangy Nightsaber##2032 |q 457 |goto Teldrassil 61.73,36.12
@@ -261,13 +261,13 @@ step
   accept The Relics of Wakening##483 |goto Teldrassil 55.96,57.27
 step
   note Retrieve the Relics of Wakening and bring them to Athridas Bearmantle in Dolanaar.
-  collect Chest of the Raven Claw##2740 |q 483 |goto Teldrassil 45.65,57.44
+  collect Raven Claw Talisman##3405 |q 483 |goto Teldrassil 45.65,57.44 |tip {dropsfrom}Chest of the Raven Claw
 step
   talk Syral Bladeleaf##2083
   accept Seek Redemption!##489 |goto Teldrassil 56.08,57.72
 step
   note Collect 3 Fel Cones and give them to Zenn Foulhoof outside of Dolanaar.
-  collect Fel Cone##1673 |q 489 |goto Teldrassil 53.68,62.92
+  collect 3 Fel Cone##3418 |q 489 |goto Teldrassil 53.68,62.92 |tip {dropsfrom}Fel Cone
 step
   only Rogue
   talk Jannok Breezesong##3599
@@ -374,7 +374,7 @@ step
   accept Crown of the Earth##921 |goto Teldrassil 59.06,39.45
 step
   note Fill the Crystal Phial and bring it back to Tenaron Stormgrip atop Aldrassil.
-  get Crown of the Earth |q 921 |goto Teldrassil 59.06,39.45
+  collect Filled Crystal Phial##5184 |q 921 |goto Teldrassil 59.06,39.45
 step
   note Kill Ursal the Mauler and return to Athridas Bearmantle in Dolanaar.
   kill Ursal the Mauler##2039 |q 486 |goto Teldrassil 38.83,79.81
@@ -395,7 +395,7 @@ step
   accept Crown of the Earth##929 |goto Teldrassil 56.14,61.71
 step
   note Fill the Jade Phial and bring it back to Corithras Moonrage in Dolanaar.
-  get Crown of the Earth |q 929 |goto Teldrassil 56.14,61.71
+  collect Filled Jade Phial##5639 |q 929 |goto Teldrassil 56.14,61.71
 step
   talk Corithras Moonrage##3515
   turnin Crown of the Earth##929 |goto Teldrassil 56.14,61.71
@@ -404,7 +404,7 @@ step
   accept Crown of the Earth##933 |goto Teldrassil 56.14,61.71
 step
   note Fill the Tourmaline Phial and bring it back to Corithras Moonrage in Dolanaar.
-  get Crown of the Earth |q 933 |goto Teldrassil 56.14,61.71
+  collect Filled Tourmaline Phial##5645 |q 933 |goto Teldrassil 56.14,61.71
 step
   talk Corithras Moonrage##3515
   turnin Crown of the Earth##933 |goto Teldrassil 56.14,61.71
@@ -413,7 +413,7 @@ step
   accept Crown of the Earth##7383 |goto Teldrassil 56.14,61.71
 step
   note Fill the Amethyst Phial and bring it back to Corithras Moonrage in Dolanaar.
-  get Crown of the Earth |q 7383 |goto Teldrassil 56.14,61.71
+  collect Filled Amethyst Phial##18151 |q 7383 |goto Teldrassil 56.14,61.71
 step
   talk Corithras Moonrage##3515
   turnin Crown of the Earth##7383 |goto Teldrassil 56.14,61.71

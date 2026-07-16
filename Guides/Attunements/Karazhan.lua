@@ -18,7 +18,7 @@ step
   get Arcane Disturbances |q 9824 |goto Deadwind Pass 53.2,90.22
 step
   note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
-  kill Restless Shade##7370 |q 9825 |goto Deadwind Pass 51.97,78.4
+  collect 10 Ghostly Essence##24480 |q 9825 |goto Deadwind Pass 51.97,78.4 |tip {dropsfrom}Restless Shade, Wailing Spectre, Damned Soul
 step
   talk Andormu##20130
   turnin To The Master's Lair##10279 |goto Tanaris 58.43,54.28
@@ -63,7 +63,7 @@ step
   get Taretha's Diversion |q 10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
-  get Entry Into Karazhan |q 9831 |goto Shattrath City 54.75,44.32
+  collect First Key Fragment##24514 |q 9831 |goto Shattrath City 54.75,44.32 |tip {dropsfrom}First Fragment Guardian
 step
   talk Thrall##17876
   turnin Taretha's Diversion##10283 |goto Old Hillsbrad Foothills - Dungeon -1,-1
@@ -81,7 +81,7 @@ step
   get Escape from Durnholde |q 10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1
 step
   note Obtain the Second Key Fragment from an Arcane Container inside Coilfang Reservoir and the Third Key Fragment from an Arcane Container inside Tempest Keep. Return to Khadgar in Shattrath City after you've completed this task.
-  get The Second and Third Fragments |q 9832 |goto Shattrath City 54.75,44.32
+  collect Second Key Fragment##24487 |q 9832 |goto Shattrath City 54.75,44.32 |tip {dropsfrom}Second Fragment Guardian
 step
   talk Erozion##18723
   turnin Escape from Durnholde##10284 |goto Old Hillsbrad Foothills - Dungeon -1,-1

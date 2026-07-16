@@ -35,19 +35,19 @@ step
   accept Inoculation##9303 |goto Azuremyst Isle 79.49,51.62
 step
   note Use the Inoculating Crystal on 6 Nestlewood Owlkin. Then return to Vindicator Aldar at the Crash Site in Ammen Vale.
-  kill Inoculated Nestlewood Owlkin##16534 |q 9303
+  use Inoculated Nestlewood Owlkin##16534 |q 9303 |tip {useit}
 step
   talk Technician Zhanaa##17071
   accept Spare Parts##9305 |goto Azuremyst Isle 79.42,51.23
 step
   note Collect 4 Emitter Spare Parts and then return to Technician Zhanaa at the Crash Site in Ammen Vale.
-  collect Emitter Spare Part##181283 |q 9305 |goto Azuremyst Isle 85.17,65.14
+  collect 4 Emitter Spare Part##22978 |q 9305 |goto Azuremyst Isle 85.17,65.14 |tip {dropsfrom}Emitter Spare Part
 step
   talk Proenitus##16477
   accept Replenishing the Healing Crystals##9369 |goto Azuremyst Isle 80.42,45.89
 step
   note Acquire 8 Vials of Moth Blood from the nearby Vale Moths and bring them to Proenitus at the Crash Site in Ammen Vale.
-  kill Vale Moth##16520 |q 9369 |goto Azuremyst Isle 76.38,45.03
+  collect 8 Vial of Moth Blood##22889 |q 9369 |goto Azuremyst Isle 76.38,45.03 |tip {dropsfrom}Vale Moth
 step
   only Mage
   talk Firmanvaar##17089
@@ -60,7 +60,7 @@ step
   accept Red Snapper - Very Tasty!##9452 |goto Azuremyst Isle 61.05,54.25
 step
   note Use the Draenei Fishing Net to catch 10 Red Snappers. Return both the fish and the net to Diktynna on Azuremyst Isle when the task is complete.
-  get Red Snapper - Very Tasty! |q 9452 |goto Azuremyst Isle 61.05,54.25
+  collect Red Snapper##23614 |q 9452 |goto Azuremyst Isle 61.05,54.25 |tip {dropsfrom}Angry Murloc
 step
   talk Caregiver Chellan##16553
   turnin Word from Azure Watch##9314 |goto Azuremyst Isle 48.37,49.2
@@ -74,7 +74,7 @@ step
 step
   only Draenei
   note Anchorite Fateema at Azure Watch wants you to bring her 8 Root Trapper Vines.
-  kill Root Trapper##17196 |q 9463 |goto Azuremyst Isle 46.23,59.12
+  collect Root Trapper Vine##23685 |q 9463 |goto Azuremyst Isle 46.23,59.12 |tip {dropsfrom}Root Trapper
 step
   talk Cryptographer Aurren##17232
   accept Learning the Language##9538 |goto Azuremyst Isle 49.38,50.96
@@ -104,13 +104,13 @@ step
   accept A Small Start##9506 |goto Azuremyst Isle 47.04,70.21
 step
   note Admiral Odesyus at Odesyus' Landing wants you to recover the Nautical Compass and Nautical Map stolen by the Venture Co.
-  collect Nautical Compass##181675 |q 9506 |goto Azuremyst Isle 59.58,67.65
+  collect Nautical Compass##23738 |q 9506 |goto Azuremyst Isle 59.58,67.65 |tip {dropsfrom}Nautical Compass
 step
   talk "Cookie" McWeaksauce##17246
   accept Cookie's Jumbo Gumbo##9512 |goto Azuremyst Isle 46.69,70.62
 step
   note "Cookie" McWeaksauce at the Odesyus' Landing wants you to bring him 6 Skittering Crawler Meat.
-  kill Skittering Crawler##17216 |q 9512 |goto Azuremyst Isle 54.52,69.82
+  collect Skittering Crawler Meat##23757 |q 9512 |goto Azuremyst Isle 54.52,69.82 |tip {dropsfrom}Skittering Crawler, Barbed Crawler
 step
   talk Priestess Kyleen Il'dinare##17241
   accept Warlord Sriss'tiz##9515 |goto Azuremyst Isle 47.13,70.28
@@ -168,7 +168,7 @@ step
 step
   only Draenei
   note Acquire 8 Vials of Moth Blood from the nearby Vale Moths and give them to Proenitus at the Crash Site in Ammen Vale.
-  kill Vale Moth##16520 |q 9280 |goto Azuremyst Isle 76.38,45.03
+  collect 8 Vial of Moth Blood##22889 |q 9280 |goto Azuremyst Isle 76.38,45.03 |tip {dropsfrom}Vale Moth
 step
   talk Vindicator Aldar##16535
   accept The Missing Scout##9309 |goto Azuremyst Isle 79.49,51.62
@@ -224,7 +224,7 @@ step
   accept The Great Moongraze Hunt##9454 |goto Azuremyst Isle 49.78,51.94
 step
   note Bring 6 Moongraze Stag Tenderloins to Acteon at Azure Watch.
-  kill Moongraze Stag##17200 |q 9454 |goto Azuremyst Isle 44.66,59.18
+  collect 6 Moongraze Stag Tenderloin##23676 |q 9454 |goto Azuremyst Isle 44.66,59.18 |tip {dropsfrom}Moongraze Stag, Moongraze Buck
 step
   only Draenei
   talk Daedal##17215
@@ -232,7 +232,7 @@ step
 step
   only Draenei
   note Daedal at Azure Watch wants you to bring him 5 Azure Snapdragon Bulbs.
-  collect Azure Snapdragon##181644 |q 9473 |goto Azuremyst Isle 51.77,50.23
+  collect Azure Snapdragon Bulb##23692 |q 9473 |goto Azuremyst Isle 51.77,50.23 |tip {dropsfrom}Azure Snapdragon
 step
   talk Totem of Akida##17360
   accept Totem of Coo##9539 |goto Azuremyst Isle 49.44,50.98
@@ -261,13 +261,13 @@ step
   accept Precious and Fragile Things Need Special Handling##9523 |goto Azuremyst Isle 47.24,69.99
 step
   note Archaeologist Adamant Ironheart at Odesyus' Landing on Azuremyst Isle wants you to bring him 8 Ancient Relics.
-  collect Ancient Relic##181683 |q 9523 |goto Azuremyst Isle 30.79,77.98
+  collect Ancient Relic##23779 |q 9523 |goto Azuremyst Isle 30.79,77.98 |tip {dropsfrom}Ancient Relic
 step
   talk Admiral Odesyus##17240
   accept I've Got a Plant##9530 |goto Azuremyst Isle 47.04,70.21
 step
   note Admiral Odesyus at Odesyus' Landing on Azuremyst Isle wants you to bring him a Hollowed Out Tree and 5 Piles of Leaves.
-  collect Hollowed Out Tree##181696 |q 9530 |goto Azuremyst Isle 48.01,63.16
+  collect Hollowed Out Tree##23790 |q 9530 |goto Azuremyst Isle 48.01,63.16 |tip {dropsfrom}Hollowed Out Tree
 step
   note Priestess Kyleen Il'dinare at Odesyus' Landing on Azuremyst Isle wants you to kill 5 Wrathscale Myrmidons, 5 Wrathscale Naga and 5 Wrathscale Sirens.
   kill Wrathscale Myrmidon##17194 |q 9513 |goto Azuremyst Isle 32.31,78.46
@@ -288,13 +288,13 @@ step
   accept Beasts of the Apocalypse!##9560 |goto Azuremyst Isle 44.76,23.91
 step
   note Moordo at Stillpine Hold on Azuremyst Isle wants you to bring him 8 Ravager Hides.
-  kill Ravager Specimen##17199 |q 9560 |goto Azuremyst Isle 54.26,16.7
+  collect Ravager Hide##23845 |q 9560 |goto Azuremyst Isle 54.26,16.7 |tip {dropsfrom}Ravager Specimen
 step
   talk Gurf##17441
   accept Murlocs... Why Here? Why Now?##9562 |goto Azuremyst Isle 44.62,23.48
 step
   note Gurf at Stillpine Hold on Azuremyst Isle wants you to recover 5 sacks of Stillpine Grain.
-  kill Siltfin Murloc##17190 |q 9562 |goto Azuremyst Isle 33.28,25.91
+  collect Stillpine Grain##23849 |q 9562 |goto Azuremyst Isle 33.28,25.91 |tip {dropsfrom}Siltfin Murloc, Siltfin Oracle, Siltfin Hunter
 step
   only Draenei
   talk Proenitus##16477
@@ -318,7 +318,7 @@ step
 step
   only Draenei
   note Use your Gift of the Naaru ability on one of the Draenei Survivors spread throughout Ammen Vale, then return to Zalduun at the Crash Site in Ammen Vale.
-  kill Draenei Survivor##16483 |q 9283 |goto Azuremyst Isle 75.17,54.91
+  use Draenei Survivor##16483 |q 9283 |goto Azuremyst Isle 75.17,54.91 |tip {useit}
 step
   note Slay Surveyor Candress and then inform Vindicator Aldar at the Crash Site in Ammen Vale.
   kill Surveyor Candress##16522 |q 9311 |goto Azuremyst Isle 69.27,65.78
@@ -344,7 +344,7 @@ step
   accept The Great Moongraze Hunt##10324 |goto Azuremyst Isle 49.78,51.94
 step
   note Bring 6 Moongraze Buck Hides to Acteon at Azure Watch.
-  kill Moongraze Buck##17201 |q 10324 |goto Azuremyst Isle 43.83,42.87
+  collect 6 Moongraze Buck Hide##23677 |q 10324 |goto Azuremyst Isle 43.83,42.87 |tip {dropsfrom}Moongraze Buck
 step
   only Draenei
   talk Admiral Odesyus##17240
@@ -424,7 +424,7 @@ step
   accept Show Gnomercy##9537 |goto Azuremyst Isle 47.04,70.21
 step
   note Admiral Odesyus at Odesyus' Landing wants you to recover the Traitor's Communication from Engineer "Spark" Overgrind.
-  kill Engineer "Spark" Overgrind##17243 |q 9537 |goto Azuremyst Isle 49.81,69.9
+  collect Traitor's Communication##23899 |q 9537 |goto Azuremyst Isle 49.81,69.9 |tip {dropsfrom}Engineer "Spark" Overgrind
 step
   talk High Chief Stillpine##17440
   turnin Stillpine Hold##9559 |goto Azuremyst Isle 46.69,20.61
@@ -438,7 +438,7 @@ step
   accept The Kurken is Lurkin'##9570 |goto Azuremyst Isle 46.97,22.27
 step
   note Kurz the Revelator at Stillpine Hold on Azuremyst Isle wants you to kill the Kurken and bring back the Kurken's Hide.
-  kill The Kurken##17447 |q 9570 |goto Azuremyst Isle 49.95,12.81
+  collect The Kurken's Hide##23860 |q 9570 |goto Azuremyst Isle 49.95,12.81 |tip {dropsfrom}The Kurken
 step
   talk Botanist Taerix##16514
   turnin Volatile Mutations##10302 |goto Azuremyst Isle 79.14,46.54
@@ -450,7 +450,7 @@ step
   accept What Must Be Done...##9293 |goto Azuremyst Isle 79.14,46.54
 step
   note Gather 10 Lasher Samples and return them to Botanist Taerix at the Crash Site in Ammen Vale.
-  kill Mutated Root Lasher##16517 |q 9293 |goto Azuremyst Isle 73.22,50.3
+  collect 10 Lasher Sample##22934 |q 9293 |goto Azuremyst Isle 73.22,50.3 |tip {dropsfrom}Mutated Root Lasher
 step
   talk Technician Zhanaa##17071
   accept Travel to Azure Watch##9313 |goto Azuremyst Isle 79.42,51.23
@@ -459,7 +459,7 @@ step
   accept Botanical Legwork##9799 |goto Azuremyst Isle 79.07,46.63
 step
   note Gather 3 Corrupted Flowers and return them to Apprentice Vishael at the Crash Site in Ammen Vale.
-  collect Corrupted Flower##182127 |q 9799 |goto Azuremyst Isle 73.55,50.55
+  collect 3 Corrupted Flower##24416 |q 9799 |goto Azuremyst Isle 73.55,50.55 |tip {dropsfrom}Corrupted Flower
 step
   talk Technician Dyvuun##16551
   turnin Travel to Azure Watch##9313 |goto Azuremyst Isle 48.71,50.27

@@ -14,7 +14,7 @@ step
   accept Crushridge Bounty##500 |goto Hillsbrad Foothills 49.47,58.73
 step
   note Gather 9 Dirty Knucklebones from Crushridge ogres in the Alterac Mountains. Bring them to Marshal Redpath in Southshore.
-  kill Crushridge Ogre##2252 |q 500 |goto Alterac Mountains 50.15,43.25
+  collect 9 Dirty Knucklebones##2843 |q 500 |goto Alterac Mountains 50.15,43.25 |tip {dropsfrom}Crushridge Ogre, Crushridge Brute, Crushridge Mauler
 step
   talk Magistrate Henry Maleb##2276
   accept Syndicate Assassins##505 |goto Hillsbrad Foothills 48.14,59.11
@@ -23,7 +23,7 @@ step
   accept Noble Deaths##512 |goto Hillsbrad Foothills 48.14,59.11
 step
   note Bring 7 Alterac Signet Rings to Magistrate Maleb in Southshore.
-  kill Syndicate Spy##2242 |q 512 |goto Alterac Mountains 61.03,43.86
+  collect 7 Alterac Signet Ring##3505 |q 512 |goto Alterac Mountains 61.03,43.86 |tip {dropsfrom}Syndicate Spy, Syndicate Sentry, Syndicate Saboteur
 step
   talk Loremaster Dibbs##2277
   accept Letter to Stormpike##514 |goto Hillsbrad Foothills 50.57,57.09
@@ -32,7 +32,7 @@ step
   accept Baron's Demise##523 |goto Hillsbrad Foothills 48.14,59.11
 step
   note Bring the Head of Baron Vardus to Magistrate Maleb in Southshore.
-  kill Baron Vardus##2306 |q 523 |goto Alterac Mountains 47.83,17.11
+  collect Head of Baron Vardus##3626 |q 523 |goto Alterac Mountains 47.83,17.11 |tip {dropsfrom}Baron Vardus
 step
   talk Lieutenant Farren Orinelle##2228
   accept Down the Coast##536 |goto Hillsbrad Foothills 51.46,58.39
@@ -44,7 +44,7 @@ step
   accept Preserving Knowledge##540 |goto Hillsbrad Foothills 50.57,57.09
 step
   note Bring 5 Recovered Tomes and the Worn Leather Book containing The Arm of Gri'lek to Loremaster Dibbs in Southshore.
-  kill Crushridge Ogre##2252 |q 540 |goto Alterac Mountains 50.15,43.25
+  collect 5 Recovered Tome##3658 |q 540 |goto Alterac Mountains 50.15,43.25 |tip {dropsfrom}Crushridge Ogre, Crushridge Brute, Crushridge Mauler
 step
   talk Loremaster Dibbs##2277
   accept Stormpike's Deciphering##554 |goto Hillsbrad Foothills 50.57,57.09
@@ -53,7 +53,7 @@ step
   accept Soothing Turtle Bisque##555 |goto Hillsbrad Foothills 51.89,58.68
 step
   note Bring 10 pieces of Turtle Meat and some Soothing Spices to Chef Jessen in Southshore.
-  kill Snapjaw##2408 |q 555 |goto Alterac Mountains 30.81,45.85
+  collect 10 Turtle Meat##3712 |q 555 |goto Alterac Mountains 30.81,45.85 |tip {dropsfrom}Snapjaw, Saltwater Snapjaw, Sparkleshell Tortoise
 step
   talk Darren Malvew##2382
   accept Costly Menace##564 |goto Hillsbrad Foothills 52.42,55.96
@@ -62,7 +62,7 @@ step
   accept Bartolo's Yeti Fur Cloak##565 |goto Hillsbrad Foothills 49.43,55.53
 step
   note Bring Bartolo Ginsetti of Southshore a Bolt of Wool, a Hillman's Cloak, Fine Thread and 10 clumps of Yeti Fur.
-  collect Tattered Chest##2847 |q 565 |goto Ghostlands 14.66,26.99
+  collect Bolt of Woolen Cloth##2997 |q 565 |goto Ghostlands 14.66,26.99 |tip {dropsfrom}Tattered Chest, Battered Chest, Solid Chest
 step
   talk Phin Odelic##2711
   accept Hints of a New Plague?##659 |goto Hillsbrad Foothills 50.35,59.05
@@ -74,7 +74,7 @@ step
   accept Missing Crystals##9435 |goto Hillsbrad Foothills 50.99,58.69
 step
   note Retrieve the Shipment of Rare Crystals from the Forsaken and return it to Huraan in Southshore.
-  collect Unopened Crate##181620 |q 9435 |goto Hillsbrad Foothills 55.57,35.22
+  collect Shipment of Rare Crystals##23646 |q 9435 |goto Hillsbrad Foothills 55.57,35.22 |tip {dropsfrom}Unopened Crate
 step
   note Kill 4 Argus Shadow Mages.
   kill Argus Shadow Mage##2318 |q 537 |goto Alterac Mountains 58.7,40.58
@@ -146,7 +146,7 @@ step
   accept Farren's Proof##559 |goto Hillsbrad Foothills 51.46,58.39
 step
   note Collect 10 Murloc Heads from the murlocs on the Western Strand for Lieutenant Farren Orinelle in Southshore.
-  kill Torn Fin Muckdweller##2374 |q 559 |goto Hillsbrad Foothills 25.6,72.38
+  collect 10 Murloc Head##3716 |q 559 |goto Hillsbrad Foothills 25.6,72.38 |tip {dropsfrom}Torn Fin Muckdweller, Torn Fin Coastrunner, Torn Fin Oracle
 step
   note Slay 10 Crushridge Warmongers, then return to Marshal Redpath in Southshore.
   kill Crushridge Warmonger##2287 |q 504 |goto Alterac Mountains 36.3,53.86

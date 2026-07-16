@@ -28,7 +28,7 @@ step
   accept Bow to the Highlord##11107 |goto Shadowmoon Valley 66.12,86.36
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
-  kill Ashtongue Worker##21455 |q 10568 |goto Shadowmoon Valley 58.47,37.68
+  collect 12 Baa'ri Tablet Fragment##30596 |q 10568 |goto Shadowmoon Valley 58.47,37.68 |tip {dropsfrom}Ashtongue Worker, Baa'ri Tablet Fragment
 step
   note Mordenai at Netherwing Fields in Shadowmoon Valley wants you to feed 8 Mature Netherwing Drakes.
   kill Netherwing Event Pinger##22131 |q 10804
@@ -73,7 +73,7 @@ step
   get Enraged Spirits of Fire and Earth |q 10458 |goto Shadowmoon Valley 42.19,45.06
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
-  kill Oronu the Elder##21663 |q 10571 |goto Shadowmoon Valley 57.19,32.87
+  collect Orders From Akama##30649 |q 10571 |goto Shadowmoon Valley 57.19,32.87 |tip {dropsfrom}Oronu the Elder
 step
   talk Earthmender Torlok##21024
   turnin Enraged Spirits of Fire and Earth##10458 |goto Shadowmoon Valley 42.19,45.06
@@ -106,7 +106,7 @@ step
   get Enraged Spirits of Water |q 10480 |goto Shadowmoon Valley 42.19,45.06
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Anchorite Ceyla at the Altar of Sha'tar in Shadowmoon Valley.
-  kill Eykenen##21709 |q 10574 |goto Shadowmoon Valley 51.18,52.82
+  collect Eykenen's Medallion Fragment##30692 |q 10574 |goto Shadowmoon Valley 51.18,52.82 |tip {dropsfrom}Eykenen
 step
   talk Earthmender Torlok##21024
   turnin Enraged Spirits of Water##10480 |goto Shadowmoon Valley 42.19,45.06
@@ -163,7 +163,7 @@ step
   kill Zandras##21827 |q 10622 |goto Shadowmoon Valley 58.03,49.13
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
-  collect Nethervine Crystal##185182 |q 10837 |goto Shadowmoon Valley 70.78,83.14
+  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14 |tip {dropsfrom}Nethervine Crystal
 step
   talk Oronok Torn-heart##21183
   turnin Oronok Torn-heart##10513 |goto Shadowmoon Valley 53.95,23.52
@@ -190,7 +190,7 @@ step
   accept Dragonmaw Race: Wing Commander Mulverick##11070 |goto Shadowmoon Valley 65.17,84.88
 step
   note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
-  get I Was A Lot Of Things... |q 10514 |goto Shadowmoon Valley 53.95,23.52
+  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52 |tip {dropsfrom}Shadowmoon Tuber
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to free 5 Enslaved Netherwing Drakes.
   get The Force of Neltharaku |q 10854 |goto Shadowmoon Valley 61.31,59.98
@@ -265,7 +265,7 @@ step
   accept Ally of the Netherwing##10870 |goto Shadowmoon Valley 69.86,61.44
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |elite
+  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |tip {dropsfrom}Shadowlord Deathwail
 step
   talk Borak, Son of Oronok##21293
   turnin Borak, Son of Oronok##10546 |goto Shadowmoon Valley 47.56,57.18
@@ -286,7 +286,7 @@ step
   accept Blood Oath of the Netherwing##11012 |goto Shadowmoon Valley 59.19,58.69
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  collect Rotten Arakkoa Egg##184795 |q 10547 |goto Shadowmoon Valley 44.15,57.51
+  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51 |tip {dropsfrom}Rotten Arakkoa Egg
 step
   talk Tobias the Filth Gorger##21411
   turnin Of Thistleheads and Eggs...##10547 |goto Shattrath City 63.95,70.03
@@ -325,7 +325,7 @@ step
   accept Enter the Taskmaster##11014 |goto Shadowmoon Valley 66.3,85.56
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Stormrage Missive.
-  get To Catch A Thistlehead |q 10570 |goto Shadowmoon Valley 47.56,57.18
+  collect Stormrage Missive##30617 |q 10570 |goto Shadowmoon Valley 47.56,57.18 |tip {dropsfrom}Envoy Icarius
 step
   talk Borak, Son of Oronok##21293
   turnin To Catch A Thistlehead##10570 |goto Shadowmoon Valley 47.56,57.18
@@ -346,10 +346,10 @@ step
   accept Your Friend On The Inside##11019 |goto Shadowmoon Valley 66.0,86.47
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover 6 pieces of Eclipsion Armor.
-  kill Eclipsion Centurion##19792 |q 10576 |goto Shadowmoon Valley 47.18,67.6
+  collect Eclipsion Armor##30640 |q 10576 |goto Shadowmoon Valley 47.18,67.6 |tip {dropsfrom}Eclipsion Centurion, Eclipsion Blood Knight, Eclipsion Archmage
 step
   note Go to the Caverns of Time in Tanaris and gain access to the Battle of Mount Hyjal. Once inside, defeat Rage Winterchill and bring the Time-Phased Phylactery to Akama in Shadowmoon Valley.
-  get An Artifact From the Past |q 10947 |goto Shadowmoon Valley 58.11,48.18
+  collect Time-Phased Phylactery##32459 |q 10947 |goto Shadowmoon Valley 58.11,48.18 |tip {dropsfrom}Rage Winterchill
 step
   talk Borak, Son of Oronok##21293
   turnin The Shadowmoon Shuffle##10576 |goto Shadowmoon Valley 47.56,57.18
@@ -406,7 +406,7 @@ step
   accept Hail, Commander!##11092 |goto Shadowmoon Valley 66.12,86.36
 step
   note Illidari Lord Balthas at the Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 2 Felsteel Bars, 1 Adamantite Frame, 1 Khorium Power Core and 1 Flawless Arcane Essence.
-  get The Soul Cannon of Reth'hedron |q 11089 |goto Shadowmoon Valley 66.3,85.7
+  collect Felsteel Bar##23448 |q 11089 |goto Shadowmoon Valley 66.3,85.7
 step
   talk Xi'ri##18528
   turnin A Distraction for Akama##10985 |goto Shadowmoon Valley 65.22,43.96
@@ -433,7 +433,7 @@ step
   accept Kill Them All!##11099 |goto Shadowmoon Valley 66.3,85.56
 step
   note Find a Murkblood Overseer and interrogate him. Return to the Mistress of the Mines with the Murkblood information and the Hand of the Overseer.
-  get Seeker of Truth |q 11082 |goto Shadowmoon Valley 65.43,90.13
+  collect Hand of the Overseer##32734 |q 11082 |goto Shadowmoon Valley 65.43,90.13
 step
   talk Mistress of the Mines##23149
   turnin Seeker of Truth##11082 |goto Shadowmoon Valley 65.43,90.13

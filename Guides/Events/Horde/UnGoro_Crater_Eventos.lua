@@ -19,7 +19,7 @@ step
   accept Lost!##4492 |goto Un'Goro Crater 43.62,8.5
 step
   note Collect 7 Power Crystals of each color: red, blue, yellow, and green. Bring them to J.D. Collie at Marshal's Refuge.
-  kill Devilsaur##6498 |q 4284 |goto Un'Goro Crater 34.6,23.68 |elite
+  collect 7 Red Power Crystal##11186 |q 4284 |goto Un'Goro Crater 34.6,23.68 |tip {dropsfrom}Devilsaur, Ironhide Devilsaur, Tyrant Devilsaur
 step
   talk Torwa Pathfinder##9619
   turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96
@@ -52,10 +52,10 @@ step
   accept A Little Help From My Friends##4491 |goto Un'Goro Crater 51.9,49.85
 step
   note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.
-  kill Gorishi Wasp##6551 |q 9052 |goto Un'Goro Crater 50.14,76.41
+  collect 8 Gorishi Sting##22435 |q 9052 |goto Un'Goro Crater 50.14,76.41 |tip {dropsfrom}Gorishi Wasp, Gorishi Worker, Gorishi Reaver
 step
   note Find a Mithril Casing and return to A-Me 01 in Un'Goro Crater.
-  kill Clunk##8447 |q 4244 |goto Searing Gorge 34.69,51.89
+  collect Mithril Casing##10561 |q 4244 |goto Searing Gorge 34.69,51.89 |tip {dropsfrom}Clunk, Frostwolf Shredder Unit, Stormpike Shredder Unit
 step
   talk Torwa Pathfinder##9619
   turnin Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96

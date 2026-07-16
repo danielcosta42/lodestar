@@ -19,7 +19,7 @@ step
   kill Ravenholdt##13936 |q 6681 |goto Alterac Mountains 81.27,74.62
 step
   only Rogue
-  kill Irondeep Trogg##10987 |q 8249 |goto Alterac Valley - Battleground 51.14,6.98
+  collect Heavy Junkbox##16885 |q 8249 |goto Alterac Valley - Battleground 51.14,6.98 |tip {dropsfrom}Irondeep Trogg, Irondeep Skullthumper, Taskmaster Snivvle
 step
   only Rogue
   talk Fahrad##6707
@@ -43,10 +43,10 @@ step
 step
   only Rogue
   note Retrieve the Sealed Azure Bag from the Timbermaw Shaman in Azshara. Then take the bag to Archmage Xylem, also found in Azshara.
-  kill Timbermaw Shaman##6188 |q 8234 |goto Azshara 44.21,22.54
+  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.21,22.54 |tip {dropsfrom}Timbermaw Shaman
 step
   only Rogue
-  get Syndicate Emblems |q 6701 |goto Alterac Mountains 84.53,78.71
+  collect Syndicate Emblem##17124 |q 6701 |goto Alterac Mountains 84.53,78.71
 step
   only Rogue
   talk Archmage Xylem##8379
@@ -62,7 +62,7 @@ step
 step
   only Rogue
   note Bring 10 Encoded Fragments to Archmage Xylem in Azshara.
-  kill Thunderhead Stagwing##6377 |q 8235 |goto Azshara 36.82,42.87
+  collect 10 Encoded Fragment##20023 |q 8235 |goto Azshara 36.82,42.87 |tip {dropsfrom}Thunderhead Stagwing, Thunderhead Skystormer, Thunderhead Patriarch
 step
   only Rogue
   talk Archmage Xylem##8379
@@ -74,7 +74,7 @@ step
 step
   only Rogue
   note Return the Azure Key to Lord Jorach Ravenholdt.
-  kill Morphaz##5719 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
+  collect Azure Key##20022 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
 step
   only Rogue
   talk Lord Jorach Ravenholdt##6768

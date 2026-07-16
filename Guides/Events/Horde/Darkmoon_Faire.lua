@@ -117,103 +117,103 @@ step
   talk Gelvas Grimegate##14828
   accept 40 Tickets - Schematic: Steam Tonk Controller##9249 |goto Mulgore 37.31,37.73
 step
-  get Carnival Boots |q 7881 |goto Mulgore 36.16,35.18
+  collect Embossed Leather Boots##2309 |q 7881 |goto Mulgore 36.16,35.18
 step
-  get Carnival Jerkins |q 7882 |goto Mulgore 36.16,35.18
+  collect Toughened Leather Armor##2314 |q 7882 |goto Mulgore 36.16,35.18
 step
-  get The World's Largest Gnome! |q 7883 |goto Mulgore 36.16,35.18
+  collect Barbaric Harness##5739 |q 7883 |goto Mulgore 36.16,35.18
 step
-  get Crocolisk Boy and the Bearded Murloc |q 7884 |goto Mulgore 36.16,35.18
+  collect Turtle Scale Leggings##8185 |q 7884 |goto Mulgore 36.16,35.18
 step
-  kill Rabid Blisterpaw##5427 |q 7885 |goto Tanaris 37.69,63.72
+  collect Rugged Armor Kit##15564 |q 7885 |goto Tanaris 37.69,63.72 |tip {dropsfrom}Rabid Blisterpaw, Scorching Elemental
 step
-  get Coarse Weightstone |q 7889 |goto Mulgore 37.87,39.83
+  collect Coarse Weightstone##3240 |q 7889 |goto Mulgore 37.87,39.83
 step
-  get Heavy Grinding Stone |q 7890 |goto Mulgore 37.87,39.83
+  collect Heavy Grinding Stone##3486 |q 7890 |goto Mulgore 37.87,39.83
 step
-  get Green Iron Bracers |q 7891 |goto Mulgore 37.87,39.83
+  collect Green Iron Bracers##3835 |q 7891 |goto Mulgore 37.87,39.83
 step
-  get Big Black Mace |q 7892 |goto Mulgore 37.87,39.83
+  collect Big Black Mace##7945 |q 7892 |goto Mulgore 37.87,39.83
 step
-  get Rituals of Strength |q 7893 |goto Mulgore 37.87,39.83
+  collect Dense Grinding Stone##12644 |q 7893 |goto Mulgore 37.87,39.83
 step
-  kill Harvest Golem##36 |q 7894 |goto Westfall 47.46,36.27
+  collect Copper Modulator##4363 |q 7894 |goto Westfall 47.46,36.27 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
 step
-  kill Blackrock Tracker##615 |q 7895 |goto Redridge Mountains 35.53,10.43
+  collect Whirring Bronze Gizmo##4375 |q 7895 |goto Redridge Mountains 35.53,10.43 |tip {dropsfrom}Blackrock Tracker, Scarlet Paladin, Narillasanz
 step
-  get Green Fireworks |q 7896 |goto Mulgore 37.12,37.31
+  collect Green Firework##9313 |q 7896 |goto Mulgore 37.12,37.31
 step
-  get Mechanical Repair Kits |q 7897 |goto Mulgore 37.12,37.31
+  collect Mechanical Repair Kit##11590 |q 7897 |goto Mulgore 37.12,37.31
 step
-  kill Anvilrage Marshal##8898 |q 7898 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+  collect Thorium Widget##15994 |q 7898 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
 step
-  kill Moonstalker##2069 |q 7899 |goto Darkshore 42.66,66.05
+  collect Small Furry Paw##5134 |q 7899 |goto Darkshore 42.66,66.05 |tip {dropsfrom}Moonstalker, Moonstalker Runt, Moonstalker Matriarch
 step
-  kill Gray Bear##2351 |q 7900 |goto Hillsbrad Foothills 58.08,32.75
+  collect Torn Bear Pelt##11407 |q 7900 |goto Hillsbrad Foothills 58.08,32.75 |tip {dropsfrom}Gray Bear, Vicious Gray Bear, Elder Gray Bear
 step
-  kill Crag Coyote##2727 |q 7901 |goto Badlands 50.97,41.5
+  collect Soft Bushy Tail##4582 |q 7901 |goto Badlands 50.97,41.5 |tip {dropsfrom}Crag Coyote, Feral Crag Coyote, Elder Crag Coyote
 step
-  kill Carrion Vulture##1809 |q 7902 |goto Western Plaguelands 32.26,62.39
+  collect Vibrant Plume##5117 |q 7902 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Vicious Owlbeast, Primitive Owlbeast
 step
-  kill Plaguebat##8600 |q 7903 |goto Eastern Plaguelands 33.87,77.16
+  collect Evil Bat Eye##11404 |q 7903 |goto Eastern Plaguelands 33.87,77.16 |tip {dropsfrom}Plaguebat, Noxious Plaguebat, Monstrous Plaguebat
 step
   note Return the Beast Deck to the Darkmoon Faire when it comes to town.
-  get Darkmoon Beast Deck |q 7907
+  collect Beasts Deck##19228 |q 7907
 step
   note Return the Portals Deck to the Darkmoon Faire when it comes to town.
-  get Darkmoon Portals Deck |q 7927
+  collect Portals Deck##19277 |q 7927
 step
   note Return the Warlords Deck to the Darkmoon Faire when it comes to town.
-  get Darkmoon Warlords Deck |q 7928
+  collect Warlords Deck##19257 |q 7928
 step
   note Return the Elementals Deck to the Darkmoon Faire when it comes to town.
-  get Darkmoon Elementals Deck |q 7929
+  collect Elementals Deck##19267 |q 7929
 step
-  get 5 Tickets - Darkmoon Flower |q 7930 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7930 |goto Mulgore 37.31,37.73
 step
-  get 5 Tickets - Minor Darkmoon Prize |q 7931 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7931 |goto Mulgore 37.31,37.73
 step
-  get 12 Tickets - Lesser Darkmoon Prize |q 7932 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7932 |goto Mulgore 37.31,37.73
 step
-  get 40 Tickets - Greater Darkmoon Prize |q 7933 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7933 |goto Mulgore 37.31,37.73
 step
-  get 50 Tickets - Darkmoon Storage Box |q 7934 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7934 |goto Mulgore 37.31,37.73
 step
-  get 10 Tickets - Last Month's Mutton |q 7935 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7935 |goto Mulgore 37.31,37.73
 step
-  get 50 Tickets - Last Year's Mutton |q 7936 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7936 |goto Mulgore 37.31,37.73
 step
-  get More Dense Grinding Stones |q 7939 |goto Mulgore 36.16,35.18
+  collect Dense Grinding Stone##12644 |q 7939 |goto Mulgore 36.16,35.18
 step
-  get 1200 Tickets - Orb of the Darkmoon |q 7940 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7940 |goto Mulgore 37.31,37.73
 step
-  kill Rabid Blisterpaw##5427 |q 7941 |goto Tanaris 37.69,63.72
+  collect Rugged Armor Kit##15564 |q 7941 |goto Tanaris 37.69,63.72 |tip {dropsfrom}Rabid Blisterpaw, Scorching Elemental
 step
-  kill Anvilrage Marshal##8898 |q 7942 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+  collect Thorium Widget##15994 |q 7942 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
 step
-  kill Plaguebat##8600 |q 7943 |goto Eastern Plaguelands 33.87,77.16
+  collect Evil Bat Eye##11404 |q 7943 |goto Eastern Plaguelands 33.87,77.16 |tip {dropsfrom}Plaguebat, Noxious Plaguebat, Monstrous Plaguebat
 step
-  kill Anvilrage Officer##8895 |q 7946 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+  collect Dark Iron Ale Mug##11325 |q 7946 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Officer, Grim Patron, Guzzling Patron
 step
-  get 1200 Tickets - Amulet of the Darkmoon |q 7981 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 7981 |goto Mulgore 37.31,37.73
 step
-  kill Scorpok Stinger##5988 |q 8222 |goto Blasted Lands 49.76,21.96
+  collect Glowing Scorpid Blood##19933 |q 8222 |goto Blasted Lands 49.76,21.96 |tip {dropsfrom}Scorpok Stinger, Deep Stinger, Clack the Reaver
 step
-  kill Scorpok Stinger##5988 |q 8223 |goto Blasted Lands 49.76,21.96
+  collect Glowing Scorpid Blood##19933 |q 8223 |goto Blasted Lands 49.76,21.96 |tip {dropsfrom}Scorpok Stinger, Deep Stinger, Clack the Reaver
 step
-  get 40 Tickets - Schematic: Steam Tonk Controller |q 9249 |goto Mulgore 37.31,37.73
+  collect Darkmoon Faire Prize Ticket##19182 |q 9249 |goto Mulgore 37.31,37.73
 step
   note Return the Blessings Deck to the Darkmoon Faire when it comes to town.
-  get Darkmoon Blessings Deck |q 10938
+  collect Blessings Deck##31890 |q 10938
 step
   note Return the Storms Deck to the Darkmoon Faire when it comes to town.
-  get Darkmoon Storms Deck |q 10939
+  collect Storms Deck##31891 |q 10939
 step
   note Return the Furies Deck to the Darkmoon Faire when it comes to town.
-  get Darkmoon Furies Deck |q 10940
+  collect Furies Deck##31907 |q 10940
 step
   note Return the Lunacy Deck to the Darkmoon Faire when it comes to town.
-  get Darkmoon Lunacy Deck |q 10941
+  collect Lunacy Deck##31914 |q 10941
 step
   talk Chronos##14833
   turnin Carnival Boots##7881 |goto Mulgore 36.16,35.18

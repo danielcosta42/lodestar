@@ -130,7 +130,7 @@ step
 step
   only Warlock
   note Dive to the bottom of Stillwhisper Pond and retrieve the Azure Phial for Instructor Antheol.
-  collect Azure Phial##181594 |q 9402 |goto Eversong Woods 54.87,56.37
+  collect Azure Phial##23551 |q 9402 |goto Eversong Woods 54.87,56.37 |tip {dropsfrom}Azure Phial
 step
   only Warlock
   note Kill Murlocs of the Silting Shore to summon a Quel'dorei Magewraith, then destroy it. Afterwards, speak with Bati at the Vault of Lights in the Exodar.
@@ -138,69 +138,69 @@ step
 step
   only Warlock
   note Arcanist Vandril wants you to collect 10 Arcane Fragments for him.
-  kill Arcane Reaver##16339 |q 9487 |goto Ghostlands 78.57,19.87
+  collect 10 Arcane Fragment##23706 |q 9487 |goto Ghostlands 78.57,19.87 |tip {dropsfrom}Arcane Reaver
 step
   only Warlock
   note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
-  kill Flesh Eater##3 |q 1948 |goto Duskwood 23.81,38.2
+  collect 1 Jade##1529 |q 1948 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Rock Elemental, Harvest Reaper
 step
   only Warlock
   note Bring Al'tabim the All-Seeing Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8060 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
+  collect Primal Hakkari Bindings##19716 |q 8060 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Warlock
   note Bring Al'tabim the All-Seeing a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8068 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
+  collect Primal Hakkari Shawl##19721 |q 8068 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Warlock
   note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8069 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
+  collect Primal Hakkari Kossack##19723 |q 8069 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Warlock
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Death, 5 Stone Scarabs and 5 Bronze Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8625 |goto Ahn'Qiraj - Raid -1,-1 |raid
+  collect Qiraji Bindings of Dominance##20932 |q 8625 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Warlock
   note Bring Ouro's Intact Hide, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  get Enigma Leggings |q 8631 |goto Ahn'Qiraj - Raid -1,-1
+  collect Ouro's Intact Hide##20927 |q 8631 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ouro
 step
   only Warlock
   note Bring Vek'nilash's Circlet, 2 Idols of Night, 5 Bronze Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'nilash##15275 |q 8632 |goto Ahn'Qiraj - Raid -1,-1 |raid
+  collect Vek'nilash's Circlet##20926 |q 8632 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Emperor Vek'nilash
 step
   only Warlock
   note Bring the Husk of the Old God, 2 Idols of the Sun, 5 Gold Scarabs and 5 Clay Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8633 |goto Ahn'Qiraj - Raid -1,-1 |raid
+  collect Husk of the Old God##20933 |q 8633 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}C'Thun
 step
   only Warlock
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sun, 5 Silver Scarabs and 5 Crystal Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8634 |goto Ahn'Qiraj - Raid -1,-1 |raid
+  collect Qiraji Bindings of Dominance##20932 |q 8634 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Warlock
   note Bring 1 Qiraji Martial Drape, 2 Alabaster Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8691 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
+  collect 1 Qiraji Martial Drape##20885 |q 8691 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Warlock
   note Bring 1 Qiraji Magisterial Ring, 2 Azure Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8699 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
+  collect 1 Qiraji Magisterial Ring##20884 |q 8699 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Warlock
   note Bring 1 Qiraji Ornate Hilt, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8707 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
+  collect 1 Qiraji Ornate Hilt##20890 |q 8707 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Warlock
   note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Magister's Bindings to Mokvar in Orgrimmar.
-  kill Stonelash Scorpid##11735 |q 8915 |goto Silithus 59.92,28.33
+  collect 15 Silithus Venom Sample##22381 |q 8915 |goto Silithus 59.92,28.33 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Small Thorium Vein##324 |q 9121 |goto Burning Steppes 62.76,44.03
+  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 62.76,44.03 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
 step
   only Warlock
   note Retrieve the Prismatic Shell for Archmage Xylem. The Archmage resides in a tower atop the cliffs of Azshara.
-  kill Warlord Krellian##8408 |q 9362 |goto Azshara 41.02,53.05
+  collect Prismatic Shell##23250 |q 9362 |goto Azshara 41.02,53.05 |tip {dropsfrom}Warlord Krellian
 step
   only Undead
   talk Shadow Priest Sarvis##1569
@@ -402,7 +402,7 @@ step
 step
   only Warlock
   note Bring Balnir Snapdragons to Anastasia Hartwell in the Mage Quarter of the Undercity.
-  collect Balnir Snapdragons##102985 |q 1882 |goto Tirisfal Glades 77.58,62.01
+  collect Balnir Snapdragons##7227 |q 1882 |goto Tirisfal Glades 77.58,62.01 |tip {dropsfrom}Balnir Snapdragons
 step
   only Warlock
   note Destroy 4 Ju-Ju Heaps, then return to Un'thuwa in Sen'jin Village.
@@ -410,42 +410,42 @@ step
 step
   only Warlock
   note Instructor Antheol wants you to fill the Azure Phial at Elrendar Falls.
-  get The Purest Water |q 9403 |goto Eversong Woods 55.7,54.51
+  collect Filled Azure Phial##23552 |q 9403 |goto Eversong Woods 55.7,54.51
 step
   only Warlock
   note Obtain a Cantation of Manifestation and a Chest of Containment Coffers from behind Anastasia Hartwell. Bring 3 Filled Containment Coffers, the Chest of Containment Coffers and the Cantation of Manifestation to Anastasia in the Undercity.
-  get Investigate the Alchemist Shop |q 1960 |goto Undercity 85.14,10.03
+  collect 3 Filled Containment Coffer##7292 |q 1960 |goto Undercity 85.14,10.03 |tip {dropsfrom}Filled Containment Coffer
 step
   only Warlock
   note Arcanist Vandril wants you to bring him 15 Linen Cloth and a Spindleweb Silk Gland.
-  kill Flesh Eater##3 |q 9488 |goto Duskwood 23.81,38.2
+  collect Linen Cloth##2589 |q 9488 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Kobold Miner, Mine Spider
 step
   only Warlock
   note Bring the Xavian Water Sample to Deino in Orgrimmar.
-  get Waters of Xavian |q 1944 |goto Orgrimmar 38.45,86.13
+  collect Xavian Water Sample##7268 |q 1944 |goto Orgrimmar 38.45,86.13
 step
   only Warlock
   note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
-  kill Burning Blade Summoner##4668 |q 1954 |goto Desolace 79.47,77.84
+  collect Infernal Orb##7291 |q 1954 |goto Desolace 79.47,77.84 |tip {dropsfrom}Burning Blade Summoner
 step
   only Warlock
   note Bring 10 Glittering Dust to Archmage Xylem.
-  kill Blood Elf Surveyor##6198 |q 8251 |goto Azshara 57.95,28.49
+  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 57.95,28.49 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer
 step
   only Warlock
-  get The Pebble of Kajaro |q 8102 |goto Stranglethorn Vale 15.34,16.12
+  collect Pebble of Kajaro##19598 |q 8102 |goto Stranglethorn Vale 15.34,16.12
 step
   note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  get Glyph Chasing |q 8309 |goto Silithus 41.28,88.45
+  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 41.28,88.45
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  kill Hive'Ashi Stinger##11698 |q 8310 |goto Silithus 48.5,41.14
+  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 48.5,41.14 |tip {dropsfrom}Hive'Ashi Stinger, Hive'Ashi Worker, Hive'Ashi Defender
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
   note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  kill Kel'Thuzad##15990 |q 9251 |goto Naxxramas - Raid -1,-1 |raid
+  collect Staff Head of Atiesh##22733 |q 9251 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Kel'Thuzad
 step
   only Troll Warlock
   talk Mai'ah##5884
@@ -598,15 +598,15 @@ step
 step
   only Warlock
   note Slay the Eversong Green Keepers until they yield a Living Branch for Instructor Antheol.
-  kill Eversong Green Keeper##15636 |q 9404 |goto Eversong Woods 58.03,73.7
+  collect Living Branch##23553 |q 9404 |goto Eversong Woods 58.03,73.7 |tip {dropsfrom}Eversong Green Keeper
 step
   only Warlock
   note Bring 10 Linen Cloth and 6 Dalaran Mana Gems to Josef Gregorian.
-  kill Flesh Eater##3 |q 1961 |goto Duskwood 23.81,38.2
+  collect 10 Linen Cloth##2589 |q 1961 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Kobold Miner, Mine Spider
 step
   only Warlock
   note Bring 12 Laughing Sister's Hairs to Kil'hala at the Crossroads.
-  kill Laughing Sister##4054 |q 1945 |goto Ashenvale 59.86,55.06
+  collect 12 Laughing Sister's Hair##7270 |q 1945 |goto Ashenvale 59.86,55.06 |tip {dropsfrom}Laughing Sister
 step
   only Warlock
   note Kill the Demon of the Orb, then speak with Tabetha.
@@ -614,45 +614,45 @@ step
 step
   only Warlock
   note Collect 6 Enchanted Coral and return them to Archmage Xylem.
-  kill Spitelash Siren##6195 |q 8252 |goto Azshara 44.56,54.02
+  collect 6 Enchanted Coral##20029 |q 8252 |goto Azshara 44.56,54.02 |tip {dropsfrom}Spitelash Siren
 step
   only Warlock
-  get The Pebble of Kajaro |q 8103 |goto Stranglethorn Vale 15.34,16.12
+  collect Pebble of Kajaro##19599 |q 8103 |goto Stranglethorn Vale 15.34,16.12
 step
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  get The Ectoplasmic Distiller |q 8921 |goto Tanaris 52.47,27.23
+  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Robe if you bring her the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  get Frostfire Robe |q 9095 |goto Eastern Plaguelands 81.52,58.27
+  collect Desecrated Robe##22351 |q 9095 |goto Eastern Plaguelands 81.52,58.27
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Leggings if you bring her the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  get Frostfire Leggings |q 9096 |goto Eastern Plaguelands 81.52,58.27
+  collect Desecrated Leggings##22366 |q 9096 |goto Eastern Plaguelands 81.52,58.27
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Circlet if you bring her the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  get Frostfire Circlet |q 9097 |goto Eastern Plaguelands 81.52,58.27
+  collect Desecrated Circlet##22367 |q 9097 |goto Eastern Plaguelands 81.52,58.27
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Shoulderpads if you bring her the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  kill Grobbulus##15931 |q 9098 |goto Naxxramas - Raid -1,-1 |raid
+  collect Desecrated Shoulderpads##22368 |q 9098 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Sandals if you bring her the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  kill Gluth##15932 |q 9099 |goto Naxxramas - Raid -1,-1 |raid
+  collect Desecrated Sandals##22372 |q 9099 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Gloves if you bring her the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  get Frostfire Gloves |q 9100 |goto Eastern Plaguelands 81.52,58.27
+  collect Desecrated Gloves##22371 |q 9100 |goto Eastern Plaguelands 81.52,58.27
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Belt if you bring her the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  kill Gluth##15932 |q 9101 |goto Naxxramas - Raid -1,-1 |raid
+  collect Desecrated Belt##22370 |q 9101 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Warlock
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Bindings if you bring her the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  kill Gluth##15932 |q 9102 |goto Naxxramas - Raid -1,-1 |raid
+  collect Desecrated Bindings##22369 |q 9102 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
 step
   only Warlock
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
@@ -768,24 +768,24 @@ step
 step
   only Warlock
   note Bring the book Rituals of Power to Tabetha in Dustwallow Marsh.
-  collect Rituals of Power##103664 |q 1951 |goto Scarlet Monastery - Dungeon -1,-1
+  collect Rituals of Power##7274 |q 1951 |goto Scarlet Monastery - Dungeon -1,-1 |tip {dropsfrom}Rituals of Power
 step
   only Warlock
   note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
-  kill Obsidian Sentinel##7023 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite
+  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |tip {dropsfrom}Obsidian Sentinel
 step
   only Warlock
   note Retrieve the Arcane Shard from Morphaz and return to Archmage Xylem.
-  kill Morphaz##5719 |q 8253 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
+  collect Arcane Shard##20085 |q 8253 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
 step
   only Warlock
-  get The Jewel of Kajaro |q 8104 |goto Stranglethorn Vale 15.34,16.12
+  collect Pebble of Kajaro##19600 |q 8104 |goto Stranglethorn Vale 15.34,16.12
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
-  get The Calling |q 8315 |goto Silithus 49.67,37.46
+  collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 49.67,37.46 |tip {dropsfrom}Emissary Roman'khan
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  kill Tortured Druid##12178 |q 8924 |goto Silithus 62.65,52.76
+  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.76 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
   only Warlock
   talk Josef Gregorian##4576
@@ -837,7 +837,7 @@ step
   kill Mana Surge##6550 |q 1957
 step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
-  kill Magma Lord Bokk##16043 |q 8925 |goto Burning Steppes 35.39,57.76
+  collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
   only Warlock
   talk Tabetha##6546
@@ -862,7 +862,7 @@ step
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
-  get A Shifty Merchant |q 8928 |goto Tanaris 52.47,27.23
+  collect Fel Elemental Rod##21939 |q 8928 |goto Tanaris 52.47,27.23
 step
   only Warlock
   talk Tabetha##6546
@@ -883,7 +883,7 @@ step
 step
   only Warlock
   note Bring a Magister's Belt and a set of Magister's Gloves to Mokvar in Orgrimmar.
-  kill Smolderthorn Mystic##9239 |q 8939 |goto Blackrock Spire - Dungeon -1,-1
+  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Mystic, Thuzadin Shadowcaster, Thuzadin Necromancer
 step
   only Warlock
   talk Mokvar##16012
@@ -914,7 +914,7 @@ step
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
 step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  get Anthion's Strange Request |q 8947 |goto Eastern Plaguelands 30.85,16.75
+  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 30.85,16.75
 step
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
@@ -929,7 +929,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -938,7 +938,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -947,7 +947,7 @@ step
   accept The Challenge##9015 |goto Dire Maul - Dungeon -1,-1
 step
   note Travel to the Ring of the Law in Blackrock Depths and place the Banner of Provocation in its center as you are sentenced by High Justice Grimstone. Slay Theldren and his gladiators and return to Anthion Harmon in the Eastern Plaguelands with the first piece of Lord Valthalak's amulet.
-  get The Challenge |q 9015 |goto Dire Maul - Dungeon -1,-1
+  collect Top Piece of Lord Valthalak's Amulet##22047 |q 9015 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Theldren
 step
   talk Anthion Harmon##16016
   turnin The Challenge##9015 |goto Eastern Plaguelands 30.85,16.75
@@ -958,7 +958,7 @@ step
 step
   only Warlock
   note Return to Mokvar in Orgimmar with a set of Magister's Boots, Magister's Leggings and Magister's Mantle.
-  kill Hearthsinger Forresten##10558 |q 9018 |goto Stratholme - Dungeon -1,-1 |elite
+  collect Magister's Boots##16682 |q 9018 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Hearthsinger Forresten
 step
   only Warlock
   talk Mokvar##16012
@@ -974,7 +974,7 @@ step
   accept Three Kings of Flame##8961
 step
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
-  kill Lord Incendius##9017 |q 8961 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  collect Incendicite of Incendius##21987 |q 8961 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Lord Incendius
 step
   talk Bodley##16033
   turnin Three Kings of Flame##8961
@@ -983,7 +983,7 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |elite
+  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |tip {dropsfrom}Cursed Paladin, Cursed Justicar, Writhing Mage
 step
   talk Bodley##16033
   turnin Components of Importance##8965
@@ -992,7 +992,7 @@ step
   accept More Components of Importance##8986
 step
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  kill Hive'Regal Ambusher##11730 |q 8986 |goto Silithus 61.05,86.89
+  collect Druidical Remains##22226 |q 8986 |goto Silithus 61.05,86.89 |tip {dropsfrom}Hive'Regal Ambusher, Hive'Regal Burrower, Hive'Regal Spitfire
 step
   talk Bodley##16033
   turnin More Components of Importance##8986
@@ -1010,7 +1010,7 @@ step
   accept Final Preparations##8994
 step
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
-  kill Scarshield Acolyte##9045 |q 8994 |goto Blackrock Spire - Dungeon -1,-1
+  collect 40 Blackrock Bracer##22138 |q 8994 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Sentry, Scarshield Acolyte, Scarshield Legionnaire
 step
   talk Bodley##16033
   turnin Final Preparations##8994
@@ -1019,7 +1019,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  kill Lord Valthalak##16042 |q 8995 |raid
+  use Lord Valthalak##16042 |q 8995 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995
@@ -1028,7 +1028,7 @@ step
   accept Return to Bodley##8996
 step
   note Return to Bodley inside Blackrock Mountain and give him the Brazier of Beckoning.
-  get Return to Bodley |q 8996
+  collect Brazier of Beckoning##22056 |q 8996
 step
   talk Bodley##16033
   turnin Return to Bodley##8996
@@ -1045,7 +1045,7 @@ step
 step
   only Warlock
   note Give Mokvar your Magister's Crown and Magister's Robes.
-  get Saving the Best for Last |q 9014 |goto Orgrimmar 34.95,38.29
+  collect Magister's Crown##16686 |q 9014 |goto Orgrimmar 34.95,38.29 |tip {dropsfrom}Darkmaster Gandling
 step
   only Warlock
   talk Mokvar##16012

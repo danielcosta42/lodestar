@@ -16,10 +16,10 @@ step
   accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Maggoc##20600 |q 10996 |goto Blade's Edge Mountains 58.59,60.8 |elite
+  collect Maggoc's Treasure Chest##32380 |q 10996 |goto Blade's Edge Mountains 58.59,60.8 |tip {dropsfrom}Maggoc's Treasure Chest
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Slaag##22199 |q 10997 |goto Terokkar Forest 20.17,18.1 |elite
+  collect Slaag's Standard##32382 |q 10997 |goto Terokkar Forest 20.17,18.1 |tip {dropsfrom}Slaag's Standard
 step
   talk Mog'dorg the Wizened##22941
   turnin Mog'dorg the Wizened##10983 |goto Blade's Edge Mountains 55.49,44.86
@@ -34,7 +34,7 @@ step
   accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  kill Grulloc##20216 |q 10995 |goto Blade's Edge Mountains 60.92,47.61 |elite
+  collect Grulloc's Dragon Skull##32379 |q 10995 |goto Blade's Edge Mountains 60.92,47.61 |tip {dropsfrom}Grulloc, Grulloc's Dragon Skull
 step
   talk Mog'dorg the Wizened##22941
   turnin Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
@@ -43,7 +43,7 @@ step
   accept Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
 step
   note You must retrieve Vim'gol's Vile Grimoire. Deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Grim(oire) Business |q 10998 |goto Blade's Edge Mountains 55.49,44.86
+  collect Vim'gol's Vile Grimoire##32358 |q 10998 |goto Blade's Edge Mountains 55.49,44.86 |tip {dropsfrom}Vim'gol's Vile Grimoire
 step
   talk Mog'dorg the Wizened##22941
   turnin Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
@@ -52,7 +52,7 @@ step
   accept Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Skulloc's Soul and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  get Into the Soulgrinder |q 11000 |goto Blade's Edge Mountains 55.49,44.86
+  collect Skulloc's Soul##32383 |q 11000 |goto Blade's Edge Mountains 55.49,44.86 |tip {dropsfrom}Skulloc's Soul
 step
   talk Mog'dorg the Wizened##22941
   turnin Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
@@ -82,13 +82,13 @@ step
   accept A Special Thank You##11091 |goto Blade's Edge Mountains 28.76,57.36
 step
   note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
-  kill Abyssal Flamebringer##19973 |q 11025 |goto Blade's Edge Mountains 28.84,81.09
+  collect 5 Apexis Shard##32569 |q 11025 |goto Blade's Edge Mountains 28.84,81.09 |tip {dropsfrom}Abyssal Flamebringer, Wrath Hound, Hemathion
 step
   note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
   get Banish the Demons |q 11026 |goto Blade's Edge Mountains 28.9,57.92
 step
   note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
-  kill Wrangled Aether Ray##23343 |q 11065
+  use Wrangled Aether Ray##23343 |q 11065 |tip {useit}
 step
   talk Chu'a'lor##23233
   turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
@@ -118,15 +118,15 @@ step
   accept Wrangle More Aether Rays!##11066 |goto Blade's Edge Mountains 27.95,51.45
 step
   note Torkus has asked you to obtain an Unstable Flask of the Beast for him. Return with it to him at Ogri'la atop the Blade's Edge Mountains.
-  get Our Boy Wants To Be A Skyguard Ranger |q 11030 |goto Blade's Edge Mountains 28.38,57.64
+  collect Unstable Flask of the Beast##32598 |q 11030 |goto Blade's Edge Mountains 28.38,57.64
 step
   note Kronk has asked you to use the Banishing Crystal to banish 15 demons at Forge Camp: Wrath or Forge Camp: Terror atop the Blade's Edge Mountains. Return it to him once you have done so.
   get Banish More Demons |q 11051 |goto Blade's Edge Mountains 28.9,57.92
 step
-  get A Crystalforged Darkrune |q 11060 |goto Blade's Edge Mountains 28.48,58.08
+  collect Darkrune##32643 |q 11060 |goto Blade's Edge Mountains 28.48,58.08
 step
   note Skyguard Khatie has asked you to wrangle 5 Aether Rays. After you have done so, return them to her at the Skyguard Outpost atop the Blade's Edge Mountains.
-  kill Wrangled Aether Ray##23343 |q 11066
+  use Wrangled Aether Ray##23343 |q 11066 |tip {useit}
 step
   talk Torkus##23316
   turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
@@ -155,10 +155,10 @@ step
   talk Chu'a'lor##23233
   accept The Relic's Emanation##11080 |goto Blade's Edge Mountains 28.76,57.36
 step
-  get Yous Have Da Darkrune? |q 11027 |goto Blade's Edge Mountains 28.48,58.08
+  collect Darkrune##32643 |q 11027 |goto Blade's Edge Mountains 28.48,58.08
 step
   note Torkus has asked you to obtain an Unstable Flask of the Sorcerer for him. Return with it to him at Ogri'la atop the Blade's Edge Mountains.
-  get A Father's Duty |q 11061 |goto Blade's Edge Mountains 28.38,57.64
+  collect Unstable Flask of the Sorcerer##32601 |q 11061 |goto Blade's Edge Mountains 28.38,57.64
 step
   talk Gahk##23300
   turnin Yous Have Da Darkrune?##11027 |goto Blade's Edge Mountains 28.48,58.08
@@ -188,10 +188,10 @@ step
   get Bombing Run |q 11010 |goto Blade's Edge Mountains 27.56,52.9
 step
   note Chu'a'lor has asked you to obtain an Apexis Guardian's Head for him as proof. Return with it to him at Ogri'la atop the Blade's Edge Mountains once you have done so.
-  get Guardian of the Monument |q 11059 |goto Blade's Edge Mountains 28.76,57.36
+  collect Apexis Guardian's Head##32697 |q 11059 |goto Blade's Edge Mountains 28.76,57.36 |tip {dropsfrom}Apexis Guardian
 step
   note Gahk has asked you to acquire a Fel Whip. Bring it to him at Ogri'la atop the Blade's Edge Mountains.
-  get A Fel Whip For Gahk |q 11079 |goto Blade's Edge Mountains 28.48,58.08
+  collect Fel Whip##32733 |q 11079 |goto Blade's Edge Mountains 28.48,58.08 |tip {dropsfrom}Galvanoth, Braxxus, Mo'arg Incinerator
 step
   note Sky Sergeant Vanderlip has tasked you with the bombing of 15 Fel Cannonball Stacks. Return to her at the Skyguard Outpost atop the Blade's Edge Mountains once you have done so.
   get Bombing Run |q 11102 |goto Blade's Edge Mountains 27.56,52.9

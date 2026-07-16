@@ -22,7 +22,7 @@ step
   accept Triage##6624 |goto Dustwallow Marsh 67.76,48.97
 step
   note Obtain the Defias Orders from Garn Mathers and bring them to Captain Wymor at Sentry Point.
-  kill Garn Mathers##23679 |q 11137 |goto Dustwallow Marsh 63.9,29.05
+  collect Defias Orders##33037 |q 11137 |goto Dustwallow Marsh 63.9,29.05 |tip {dropsfrom}Garn Mathers
 step
   talk Bishop DeLavey##4960
   turnin The Missing Diplomat##1274 |goto Stormwind City 78.28,25.38
@@ -49,7 +49,7 @@ step
   accept Renn McGill##11138 |goto Dustwallow Marsh 59.67,41.08
 step
   note Bring 4 containers of Thresher Oil to Babs Fizzletorque at the lighthouse near Theramore.
-  kill Young Murk Thresher##4388 |q 11192 |goto Dustwallow Marsh 71.13,55.44
+  collect 4 Thresher Oil##33126 |q 11192 |goto Dustwallow Marsh 71.13,55.44 |tip {dropsfrom}Young Murk Thresher
 step
   talk Jorgen##4959
   turnin The Missing Diplomat##1241 |goto Stormwind City 73.17,78.42
@@ -70,7 +70,7 @@ step
   accept Secondhand Diving Gear##11139 |goto Dustwallow Marsh 63.74,17.04
 step
   note Bring the Tool Kit and Damaged Diving Gear to Renn McGill in the Dustwallow Marsh.
-  collect Damaged Diving Gear##186273 |q 11139 |goto Dustwallow Marsh 62.33,18.23
+  collect Damaged Diving Gear##33038 |q 11139 |goto Dustwallow Marsh 62.33,18.23 |tip {dropsfrom}Damaged Diving Gear
 step
   talk Elling Trias##482
   turnin The Missing Diplomat##1242 |goto Stormwind City 59.91,64.18
@@ -91,7 +91,7 @@ step
   accept Recover the Cargo!##11140 |goto Dustwallow Marsh 63.74,17.04
 step
   note Bring 6 Salvaged Strongboxes to Renn McGill in Dustwallow Marsh.
-  get Recover the Cargo! |q 11140 |goto Dustwallow Marsh 63.74,17.04
+  collect 6 Salvaged Strongbox##33041 |q 11140 |goto Dustwallow Marsh 63.74,17.04
 step
   talk Watcher Backus##840
   turnin The Missing Diplomat##1243 |goto Duskwood 74.83,44.22
@@ -112,7 +112,7 @@ step
   accept Nat's Bargain##11209 |goto Dustwallow Marsh 58.76,60.17
 step
   note Find the Defias Docket and return it to Watcher Backus in Duskwood.
-  collect Defias Strongbox##21052 |q 1244 |goto Duskwood 23.92,72.07
+  collect Defias Docket##5947 |q 1244 |goto Duskwood 23.92,72.07 |tip {dropsfrom}Defias Strongbox
 step
   note Nat Pagle at Nat's Landing wants you to test his new fish bait.
   kill Lurking Shark##23928 |q 11209

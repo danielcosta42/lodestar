@@ -28,7 +28,7 @@ step
   accept Escape from the Staging Grounds##10425 |goto Netherstorm 57.3,37.71
 step
   note Spymaster Thalodien at Area 52 wants you to go to the outskirts of Manaforge B'naar and retrieve the B'naar Personnel Roster from Captain Arathyn.
-  kill Captain Arathyn##19635 |q 10189 |goto Netherstorm 27.24,65.44
+  collect B'naar Personnel Roster##28376 |q 10189 |goto Netherstorm 27.24,65.44 |tip {dropsfrom}Captain Arathyn
 step
   note Commander Ameer wants you to kill 5 Ethereum Assassins, 5 Ethereum Shocktroopers, 2 Ethereum Researchers and Captain Zovax then activate Ethereum Transponder Zeta.
   kill Ethereum Assassin##20452 |q 10339 |goto Netherstorm 56.71,38.2
@@ -76,10 +76,10 @@ step
   kill Sunfury Warp-Master##18857 |q 10193 |goto Netherstorm 23.85,70.92
 step
   note Obtain an Arklon Crystal Artifact and return it to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  kill Pentatharon##20215 |q 10265 |goto Netherstorm 42.46,72.75
+  collect Arklon Crystal Artifact##28829 |q 10265 |goto Netherstorm 42.46,72.75 |tip {dropsfrom}Pentatharon
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover the Ethereum Data Cell.
-  collect Ethereum Data Cell##184560 |q 10384 |goto Netherstorm 55.77,39.89
+  collect Ethereum Data Cell##29582 |q 10384 |goto Netherstorm 55.77,39.89 |tip {dropsfrom}Ethereum Data Cell
 step
   talk Spymaster Thalodien##19468
   turnin High Value Targets##10193 |goto Netherstorm 32.0,64.07
@@ -109,13 +109,13 @@ step
   accept Potential for Brain Damage = High##10385 |goto Netherstorm 56.82,38.7
 step
   note Collect 10 Zaxxis Insignias and return them to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  kill Zaxxis Raider##18875 |q 10262 |goto Netherstorm 30.13,76.56
+  collect 10 Zaxxis Insignia##29209 |q 10262 |goto Netherstorm 30.13,76.56 |tip {dropsfrom}Zaxxis Raider, Warp-Raider Nesaad, Zaxxis Stalker
 step
   note Return to Manaforge B'naar and obtain the B'naar Access Crystal from Overseer Theredis. Use it at the B'naar Control Console to shut it down, then report back to Spymaster Thalodien.
   kill B'naar Control Console##20209 |q 10329
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover 15 pieces of Ethereum Relay Data.
-  kill Ethereum Relay##20619 |q 10385 |goto Netherstorm 56.08,41.03
+  collect Ethereum Relay Data##29459 |q 10385 |goto Netherstorm 56.08,41.03 |tip {dropsfrom}Ethereum Relay
 step
   talk Nether-Stalker Khay'ji##19880
   turnin A Heap of Ethereals##10262 |goto Netherstorm 32.44,64.21
@@ -139,7 +139,7 @@ step
   kill Warp-Raider Nesaad##19641 |q 10205 |goto Netherstorm 28.36,79.45
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover 1 Prepared Ethereum Wrapping.
-  kill Ethereum Archon##20458 |q 10405 |goto Netherstorm 55.75,42.87
+  collect Prepared Ethereum Wrapping##29591 |q 10405 |goto Netherstorm 55.75,42.87 |tip {dropsfrom}Ethereum Archon, Ethereum Overlord
 step
   talk Veronia##20162
   turnin Stealth Flight##10194 |goto Netherstorm 33.81,64.23
@@ -175,10 +175,10 @@ step
   accept Rightful Repossession##10267 |goto Netherstorm 46.67,56.95
 step
   note Obtain a set of Sunfury Arcanist Robes, one pair of Sunfury Researcher Gloves and a Sunfury Guardsman Medallion and bring them to Caledis Brightdawn at Manaforge Coruu in Netherstorm.
-  kill Sunfury Researcher##20136 |q 10197 |goto Netherstorm 53.02,83.05
+  collect Sunfury Researcher Gloves##28636 |q 10197 |goto Netherstorm 53.02,83.05 |tip {dropsfrom}Sunfury Researcher
 step
   note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  collect Box of Surveying Equipment##184031 |q 10267 |goto Netherstorm 58.82,65.76
+  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76 |tip {dropsfrom}Box of Surveying Equipment
 step
   talk Caledis Brightdawn##19840
   turnin A Convincing Disguise##10197 |goto Netherstorm 48.24,86.6

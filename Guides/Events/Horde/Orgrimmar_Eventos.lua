@@ -29,13 +29,13 @@ step
   accept Warlord's Command##4903 |goto Badlands 5.81,47.52
 step
   note Collect three Dim Necrotic Stones from the Scourge outside Orgrimmar and investigate the glowing runic circles nearby their encampment.
-  kill Skeletal Soldier##16422 |q 9263 |goto Elwynn Forest 34.39,52.45
+  collect Dim Necrotic Stone##22892 |q 9263 |goto Elwynn Forest 34.39,52.45 |tip {dropsfrom}Skeletal Soldier, Spectral Apparition, Spectral Spirit
 step
   note Bring a Lieutenant's Insignia to Thrall in Orgrimmar.
-  kill Burning Blade Fanatic##3197 |q 5726 |goto Durotar 52.5,9.36
+  collect Lieutenant's Insignia##14544 |q 5726 |goto Durotar 52.5,9.36 |tip {dropsfrom}Burning Blade Fanatic, Burning Blade Apprentice
 step
   note Bring two Patterned Bronze Bracers, two Bronze Greatswords, and two Sharp Claws to Orokk Omosh in Orgrimmar.
-  get Barbaric Battlements |q 2751 |goto Orgrimmar 79.24,22.4
+  collect Patterned Bronze Bracers##2868 |q 2751 |goto Orgrimmar 79.24,22.4
 step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
   kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1 |elite
@@ -81,7 +81,7 @@ step
   accept Eitrigg's Wisdom##4941 |goto Badlands 5.81,47.52
 step
   note Bring four Bronze Battleaxes and four Bronze Warhammers to Orokk Omosh in Orgrimmar.
-  get On Iron Pauldrons |q 2752 |goto Orgrimmar 79.24,22.4
+  collect Bronze Battle Axe##7958 |q 2752 |goto Orgrimmar 79.24,22.4
 step
   talk Thrall##4949
   turnin Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82
@@ -108,10 +108,10 @@ step
   accept For The Horde!##4974 |goto Orgrimmar 31.73,37.82
 step
   note Bring four Green Iron Helms, four Green Iron Bracers, and two Green Iron Leggings to Orokk Omosh in Orgrimmar.
-  get Trampled Under Foot |q 2753 |goto Orgrimmar 79.24,22.4
+  collect Green Iron Helm##3836 |q 2753 |goto Orgrimmar 79.24,22.4
 step
   note Travel to Blackrock Spire and slay Warchief Rend Blackhand. Take his head and return to Orgrimmar.
-  get For The Horde! |q 4974 |goto Orgrimmar 31.73,37.82
+  collect Head of Rend Blackhand##12630 |q 4974 |goto Orgrimmar 31.73,37.82 |tip {dropsfrom}Warchief Rend Blackhand
 step
   talk Orokk Omosh##7790
   turnin Trampled Under Foot##2753 |goto Orgrimmar 79.24,22.4
@@ -126,7 +126,7 @@ step
   accept What the Wind Carries##6566 |goto Orgrimmar 31.73,37.82
 step
   note Bring two Solid Iron Mauls, two Silvered Bronze Boots, and two Silvered Bronze Gauntlets to Orokk Omosh in Orgrimmar.
-  get Horns of Frenzy |q 2754 |goto Orgrimmar 79.24,22.4
+  collect Solid Iron Maul##3851 |q 2754 |goto Orgrimmar 79.24,22.4
 step
   talk Orokk Omosh##7790
   turnin Horns of Frenzy##2754 |goto Orgrimmar 79.24,22.4

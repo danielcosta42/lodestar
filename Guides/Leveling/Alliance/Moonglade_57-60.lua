@@ -17,7 +17,7 @@ step
   accept A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1
 step
   note Travel to Silithus and search for a Reliquary of Purity within the ruins of Southwind Village. If you are able to find it, return with it to Rabine Saturna in Nighthaven, Moonglade.
-  collect Dusty Reliquary##179565 |q 5527 |goto Silithus 63.23,55.35
+  collect Reliquary of Purity##22201 |q 5527 |goto Silithus 63.23,55.35 |tip {dropsfrom}Dusty Reliquary
 step
   talk Umber##11939
   accept Uncovering Past Secrets##6845 |goto Moonglade 44.88,35.6
@@ -26,7 +26,7 @@ step
   accept The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
 step
   note Travel to the four Emerald Dream portals in Azeroth and collect a Fragment of the Nightmare's Corruption from each. Return to Keeper Remulos in the Moonglade when you have completed this task.
-  kill Emeraldon Boughguard##12474 |q 8735 |goto Ashenvale 94.94,39.0 |elite
+  collect Fragment of the Nightmare's Corruption##21147 |q 8735 |goto Ashenvale 94.94,39.0 |tip {dropsfrom}Emeraldon Boughguard, Emeraldon Tree Warder, Emeraldon Oracle
 step
   talk Layo Starstrike##13220
   turnin Wasteland##1124 |goto Silithus 81.87,18.93 |tip {turninat}Silithus
@@ -41,7 +41,7 @@ step
   accept Shards of the Felvine##5526 |goto Moonglade 51.69,45.1
 step
   note Find the Felvine in Dire Maul and acquire a shard from it. Chances are you'll only be able to procure one with the demise of Alzzin the Wildshaper. Use the Reliquary of Purity to securely seal the shard inside, and return it to Rabine Saturna in Nighthaven, Moonglade.
-  get Shards of the Felvine |q 5526 |goto Moonglade 51.69,45.1
+  collect Sealed Reliquary of Purity##18540 |q 5526 |goto Moonglade 51.69,45.1
 step
   talk Umber##11939
   accept Under the Chitin Was...##1185 |goto Moonglade 44.88,35.6

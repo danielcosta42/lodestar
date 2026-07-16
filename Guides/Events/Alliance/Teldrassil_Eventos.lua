@@ -20,7 +20,7 @@ step
   accept Mist##938 |goto Teldrassil 31.54,31.61
 step
   note Bring a Shaman Voodoo Charm to Oben Rageclaw in the Ban'ethil Barrow Den.
-  kill Gnarlpine Shaman##2009 |q 2541 |goto Teldrassil 45.23,61.24
+  collect Shaman Voodoo Charm##8363 |q 2541 |goto Teldrassil 45.23,61.24 |tip {dropsfrom}Gnarlpine Shaman
 step
   only NightElf Hunter
   talk Dazalar##3601

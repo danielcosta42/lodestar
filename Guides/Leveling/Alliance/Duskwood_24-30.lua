@@ -26,13 +26,13 @@ step
   accept Seasoned Wolf Kabobs##90 |goto Duskwood 73.75,43.48
 step
   note Gather 10 Lean Wolf Flanks and Stormwind Seasoning Herbs and return to Chef Grual in Darkshire.
-  kill Starving Dire Wolf##213 |q 90 |goto Duskwood 33.64,23.26
+  collect 10 Lean Wolf Flank##1015 |q 90 |goto Duskwood 33.64,23.26 |tip {dropsfrom}Starving Dire Wolf, Rabid Dire Wolf, Lupos
 step
   talk Madame Eva##265
   accept The Totem of Infliction##101 |goto Duskwood 75.79,45.32
 step
   note Bring 10 Ghoul Fangs, 10 Skeleton Fingers and 5 Vials of Spider Venom to Madame Eva in Darkshire.
-  kill Flesh Eater##3 |q 101 |goto Duskwood 23.81,38.2
+  collect 10 Ghoul Fang##1129 |q 101 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
 step
   talk Lord Ello Ebonlocke##263
   accept Messenger to Darkshire##146 |goto Duskwood 71.93,46.42
@@ -53,7 +53,7 @@ step
   accept Look To The Stars##174 |goto Duskwood 79.8,48.02
 step
   note Viktori Prism'Antras of Darkshire wants you to bring him a bronze tube.
-  kill Bael'dun Excavator##3374 |q 174 |goto The Barrens 47.58,85.32
+  collect Bronze Tube##4371 |q 174 |goto The Barrens 47.58,85.32 |tip {dropsfrom}Bael'dun Excavator, Bael'dun Foreman, Bael'dun Rifleman
 step
   talk Sirra Von'Indi##268
   accept Morgan Ladimore##227 |goto Duskwood 72.62,47.62
@@ -62,7 +62,7 @@ step
   accept Crime and Punishment##377 |goto Duskwood 71.92,47.79
 step
   note Councilman Millstipe of Darkshire wants you to bring him the hand of Dextren Ward.
-  kill Dextren Ward##1663 |q 377 |goto The Stockade - Dungeon -1,-1 |elite
+  collect Hand of Dextren Ward##3628 |q 377 |goto The Stockade - Dungeon -1,-1 |tip {dropsfrom}Dextren Ward
 step
   talk Clerk Daltry##267
   accept The Carevin Family##1042 |goto Duskwood 72.54,46.87
@@ -71,7 +71,7 @@ step
   accept The Missing Diplomat##1244 |goto Duskwood 74.83,44.22
 step
   note Find the Defias Docket and return it to Watcher Backus in Duskwood.
-  collect Defias Strongbox##21052 |q 1244 |goto Duskwood 23.92,72.07
+  collect Defias Docket##5947 |q 1244 |goto Duskwood 23.92,72.07 |tip {dropsfrom}Defias Strongbox
 step
   note Kill 6 Nightbane Shadow Weaver worgen for Calor in Darkshire.
   kill Nightbane Shadow Weaver##533 |q 173 |goto Duskwood 63.39,52.8
@@ -179,7 +179,7 @@ step
   accept Dusky Crab Cakes##93 |goto Duskwood 73.75,43.48
 step
   note Gather 6 Gooey Spider Legs and bring them to Chef Grual in Darkshire.
-  kill Venom Web Spider##217 |q 93 |goto Duskwood 41.79,25.82
+  collect 6 Gooey Spider Leg##2251 |q 93 |goto Duskwood 41.79,25.82 |tip {dropsfrom}Venom Web Spider, Pygmy Venom Web Spider, Green Recluse
 step
   talk Madame Eva##265
   accept Ghost Hair Thread##149 |goto Duskwood 75.79,45.32
@@ -194,7 +194,7 @@ step
   accept Mor'Ladim##228 |goto Duskwood 73.54,46.82
 step
   note Kill Mor'Ladim, then return his skull to Commander Althea Ebonlocke in Darkshire.
-  kill Mor'Ladim##522 |q 228 |goto Duskwood 16.67,37.35 |elite
+  collect Mor'Ladim's Skull##3514 |q 228 |goto Duskwood 16.67,37.35 |tip {dropsfrom}Mor'Ladim
 step
   talk Madame Eva##265
   accept The Shadowy Search Continues##265 |goto Duskwood 75.79,45.32
@@ -218,7 +218,7 @@ step
   accept Look To The Stars##177 |goto Duskwood 81.99,59.09
 step
   note Retrieve Blind Mary's Looking Glass from the Insane Ghoul and give it to Viktori in Darkshire.
-  kill Insane Ghoul##511 |q 177 |goto Duskwood 80.9,71.96
+  collect Mary's Looking Glass##1946 |q 177 |goto Duskwood 80.9,71.96 |tip {dropsfrom}Insane Ghoul
 step
   note Look for signs of the Scythe of Elune then return to Jonathan Carevin in Darkshire.
   collect Mound of Dirt##19030 |q 1043 |goto Duskwood 73.53,79.14
@@ -285,7 +285,7 @@ step
   accept Look To The Stars##181 |goto Duskwood 79.8,48.02
 step
   note Locate Zzarc'Vul in the southern ogre mound in Duskwood and return his monocle to Viktori in Darkshire.
-  kill Zzarc' Vul##300 |q 181 |goto Duskwood 36.83,80.64
+  collect Ogre's Monocle##1968 |q 181 |goto Duskwood 36.83,80.64 |tip {dropsfrom}Zzarc' Vul
 step
   talk Calor##663
   accept Worgen in the Woods##222 |goto Duskwood 75.75,47.57
@@ -345,13 +345,13 @@ step
   accept The Legend of Stalvan##98 |goto Duskwood 73.54,46.82
 step
   note Kill Stalvan Mistmantle and show Madame Eva his family ring.
-  kill Stalvan Mistmantle##315 |q 98 |goto Duskwood 77.35,36.19
+  collect Mistmantle Family Ring##3629 |q 98 |goto Duskwood 77.35,36.19 |tip {dropsfrom}Stalvan Mistmantle
 step
   talk Tavernkeep Smitts##273
   accept Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49
 step
   note Gather 8 Rot Blossoms and bring them to Tavernkeep Smitts in Darkshire.
-  kill Skeletal Horror##202 |q 156 |goto Duskwood 23.06,47.92
+  collect 8 Rot Blossom##1598 |q 156 |goto Duskwood 23.06,47.92 |tip {dropsfrom}Skeletal Horror, Skeletal Fiend
 step
   talk Calor##663
   accept Worgen in the Woods##223 |goto Duskwood 75.75,47.57
@@ -407,7 +407,7 @@ step
   accept Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
 step
   note Gather 7 Ghoul Ribs and bring them to Abercrombie at his shack.
-  kill Flesh Eater##3 |q 133 |goto Duskwood 23.81,38.2
+  collect 7 Ghoul Rib##884 |q 133 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
 step
   talk Abercrombie##289
   turnin Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
@@ -416,7 +416,7 @@ step
   accept Ogre Thieves##134 |goto Duskwood 28.11,31.46
 step
   note Return Abercrombie's Crate to Abercrombie.
-  collect Abercrombie's Crate##119 |q 134 |goto Duskwood 33.42,76.35
+  collect Abercrombie's Crate##1349 |q 134 |goto Duskwood 33.42,76.35 |tip {dropsfrom}Abercrombie's Crate
 step
   talk Abercrombie##289
   turnin Ogre Thieves##134 |goto Duskwood 28.11,31.46

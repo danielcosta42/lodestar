@@ -17,13 +17,13 @@ step
   accept The Plagued Coast##9149 |goto Ghostlands 47.66,34.86
 step
   note Bring 6 Plagued Murloc Spines to Apothecary Renzithen in Tranquillien in the Ghostlands.
-  kill Zombified Grimscale##16402 |q 9149 |goto Ghostlands 18.26,24.87
+  collect 6 Plagued Murloc Spine##22579 |q 9149 |goto Ghostlands 18.26,24.87 |tip {dropsfrom}Zombified Grimscale, Withered Grimscale
 step
   talk Magister Darenis##16199
   accept Salvaging the Past##9150 |goto Ghostlands 46.02,31.95
 step
   note Magister Darenis wants you to travel to the Sanctum of the Moon to the west of Tranquillien and recover 8 Crystallized Mana Essences from the Arcane Devourers and Mana Shifters that inhabit the structure.
-  kill Arcane Devourer##16304 |q 9150 |goto Ghostlands 33.48,32.77
+  collect Crystallized Mana Essence##22580 |q 9150 |goto Ghostlands 33.48,32.77 |tip {dropsfrom}Arcane Devourer, Mana Shifter
 step
   talk Magister Darenis##16199
   accept The Sanctum of the Sun##9151 |goto Ghostlands 46.02,31.95
@@ -32,7 +32,7 @@ step
   accept Tomber's Supplies##9152 |goto Ghostlands 47.24,28.57
 step
   note Retrieve Rathis Tomber's Supplies and return it to him at Tranquillien in the Ghostlands.
-  collect Rathis Tomber's Supplies##181133 |q 9152 |goto Ghostlands 33.55,26.55
+  collect Rathis Tomber's Supplies##22583 |q 9152 |goto Ghostlands 33.55,26.55 |tip {dropsfrom}Rathis Tomber's Supplies
 step
   talk Deathstalker Rathiel##16200
   accept Down the Dead Scar##9155 |goto Ghostlands 46.02,33.57
@@ -44,7 +44,7 @@ step
   accept Culinary Crunch##9171 |goto Ghostlands 48.43,30.93
 step
   note Collect 5 Crunchy Spider Legs and return them to Master Chef Mouldier at Tranquillien in the Ghostlands.
-  kill Venom Web Spider##217 |q 9171 |goto Duskwood 41.79,25.82
+  collect 5 Crunchy Spider Leg##22644 |q 9171 |goto Duskwood 41.79,25.82 |tip {dropsfrom}Venom Web Spider, Tarantula, Greater Tarantula
 step
   talk High Executor Mavren##16252
   accept Retaking Windrunner Spire##9173 |goto Ghostlands 44.77,32.45
@@ -62,19 +62,19 @@ step
   accept Troll Juju##9199 |goto Ghostlands 44.75,32.28
 step
   note Collect 8 Troll Juju and return them to Deathstalker Maltendis at Tranquillien in the Ghostlands.
-  kill Mummified Headhunter##16342 |q 9199 |goto Ghostlands 62.78,29.46
+  collect 8 Troll Juju##22633 |q 9199 |goto Ghostlands 62.78,29.46 |tip {dropsfrom}Mummified Headhunter, Shadowpine Oracle
 step
   talk Magistrix Aminel##16205
   accept Rotting Hearts##9216 |goto Ghostlands 48.92,31.31
 step
   note Bring back 10 Rotting Hearts to Magistrix Aminel in Tranquillien.
-  kill Risen Hungerer##16301 |q 9216 |goto Ghostlands 39.2,35.65
+  collect Rotting Heart##22641 |q 9216 |goto Ghostlands 39.2,35.65 |tip {dropsfrom}Risen Hungerer, Risen Stalker
 step
   talk Magistrix Aminel##16205
   accept Spinal Dust##9218 |goto Ghostlands 48.92,31.31
 step
   note Bring back 10 Spinal Dusts to Magistrix Aminel in Tranquillien.
-  kill Dreadbone Skeleton##16303 |q 9218 |goto Ghostlands 41.19,23.14
+  collect Spinal Dust##22642 |q 9218 |goto Ghostlands 41.19,23.14 |tip {dropsfrom}Dreadbone Skeleton, Dreadbone Sentinel, Deathcage Scryer
 step
   only BloodElf
   talk Arcanist Vandril##16197
@@ -89,7 +89,7 @@ step
 step
   only Warlock
   note Arcanist Vandril wants you to collect 10 Arcane Fragments for him.
-  kill Arcane Reaver##16339 |q 9487 |goto Ghostlands 78.57,19.87
+  collect 10 Arcane Fragment##23706 |q 9487 |goto Ghostlands 78.57,19.87 |tip {dropsfrom}Arcane Reaver
 step
   only Rogue
   talk Eralan##16268
@@ -97,7 +97,7 @@ step
 step
   only Rogue
   note Eralan in Tranquillien wants you to retrieve the Pitted Gold Band from the Amani Catacombs.
-  collect Burial Chest##181665 |q 9491 |goto Ghostlands 63.52,28.92
+  collect Pitted Gold Band##23717 |q 9491 |goto Ghostlands 63.52,28.92 |tip {dropsfrom}Burial Chest
 step
   note Slay 10 Risen Hungerers and 10 Gangled Cannibals on the Dead Scar. Return to Deathstalker Rathiel in Tranquillien for a reward.
   kill Risen Hungerer##16301 |q 9155 |goto Ghostlands 39.2,35.65
@@ -115,7 +115,7 @@ step
   accept Shadowpine Weaponry##9214 |goto Ghostlands 72.37,29.64
 step
   note Collect 3 Headhunter Axes, 3 Shadowcaster Maces, 3 Catlord Claws and 3 Hexxer Staves. Return them to Captain Helios at Farstrider Enclave in the Ghostlands.
-  kill Shadowpine Headhunter##16344 |q 9214 |goto Ghostlands 77.03,39.75
+  collect 3 Headhunter Axe##23165 |q 9214 |goto Ghostlands 77.03,39.75 |tip {dropsfrom}Shadowpine Headhunter
 step
   talk Ranger Krenn'an##16462
   accept Spirits of the Drowned##9274 |goto Ghostlands 72.21,29.78
@@ -138,13 +138,13 @@ step
   accept Dealing with Zeb'Sora##9143 |goto Ghostlands 69.4,15.18
 step
   note Collect 6 Zeb'Sora Troll Ears and return them to Ranger Valanna in the Ghostlands.
-  kill Shadowpine Ripper##16340 |q 9143 |goto Ghostlands 75.85,10.94
+  collect 6 Zeb'Sora Troll Ear##22639 |q 9143 |goto Ghostlands 75.85,10.94 |tip {dropsfrom}Shadowpine Ripper, Shadowpine Witch
 step
   talk Geranis Whitemorn##16201
   accept Forgotten Rituals##9157 |goto Ghostlands 72.29,19.1
 step
   note Bring 8 Wavefront Medallions to Geranis Whitemorn in the Ghostlands.
-  collect Glistening Mud##181151 |q 9157 |goto Ghostlands 71.99,22.01
+  collect 8 Wavefront Medallion##22674 |q 9157 |goto Ghostlands 71.99,22.01 |tip {dropsfrom}Glistening Mud
 step
   note Ranger Krenn'an, at the Farstrider Enclave in the Ghostlands, wants you to kill 8 Vengeful Apparitions and 8 Ravening Apparitions in the nearby lake.
   kill Ravening Apparition##16327 |q 9274 |goto Ghostlands 71.8,21.26
@@ -155,7 +155,7 @@ step
 step
   only BloodElf Rogue
   note Keltus Darkleaf wants you to pickpocket the Lacy Handkerchief from the Sentinel Leader and bring it to him.
-  get Combining Forces |q 9460 |goto Ghostlands 32.98,11.17
+  collect Lacy Handkerchief##23686 |q 9460 |goto Ghostlands 32.98,11.17
 step
   note Investigate the area at An'daroth, kill 12 Sentinel Spies and then return to Dame Auriferous at Tranquillien in the Ghostlands.
   kill Sentinel Spy##16330 |q 9160 |goto Ghostlands 37.27,14.56
@@ -164,7 +164,7 @@ step
   accept Underlight Ore Samples##9207 |goto Ghostlands 31.43,48.33
 step
   note Collect 6 Underlight Ore and deliver them to Magister Quallestis at the Sanctum of the Sun in the Ghostlands.
-  kill Blackpaw Gnoll##16334 |q 9207 |goto Ghostlands 29.25,49.58
+  collect 6 Underlight Ore##22634 |q 9207 |goto Ghostlands 29.25,49.58 |tip {dropsfrom}Blackpaw Gnoll, Blackpaw Scavenger, Blackpaw Shaman
 step
   note Slay 8 Deatholme Acolytes and 10 Fallen Rangers, and return to High Executor Mavren at Tranquillien in the Ghostlands.
   kill Deatholme Acolyte##16315 |q 9173 |goto Ghostlands 12.43,57.09
@@ -194,7 +194,7 @@ step
   accept The Twin Ziggurats##9176 |goto Ghostlands 55.07,48.83
 step
   note Travel to the Bleeding Ziggurat and the Howling Ziggurat and recover the Stone of Light and the Stone of Flame. Return to Magister Kaendris at the Sanctum of the Sun after recovering the items.
-  collect Worn Chest##181239 |q 9176 |goto Ghostlands 40.37,49.75
+  collect Stone of Flame##22599 |q 9176 |goto Ghostlands 40.37,49.75 |tip {dropsfrom}Worn Chest
 step
   talk Magister Idonis##16204
   accept War on Deatholme##9220 |goto Ghostlands 54.87,48.55
@@ -261,7 +261,7 @@ step
   accept Into Occupied Territory##9163 |goto Ghostlands 44.88,32.51
 step
   note Steal the Night Elf Plans: An'daroth, Night Elf Plans: An'owyn and Night Elf Plans: Scrying on the Sin'dorei, and return them to Dame Auriferous at Tranquillien in the Ghostlands.
-  collect Night Elf Plans: An'daroth##181138 |q 9163 |goto Ghostlands 13.69,26.84
+  collect Night Elf Plans: An'daroth##22590 |q 9163 |goto Ghostlands 13.69,26.84 |tip {dropsfrom}Night Elf Plans: An'daroth
 step
   only Warlock
   talk Arcanist Vandril##16197
@@ -269,7 +269,7 @@ step
 step
   only Warlock
   note Arcanist Vandril wants you to bring him 15 Linen Cloth and a Spindleweb Silk Gland.
-  kill Flesh Eater##3 |q 9488 |goto Duskwood 23.81,38.2
+  collect Linen Cloth##2589 |q 9488 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Kobold Miner, Mine Spider
 step
   talk High Executor Mavren##16252
   accept Return to Arcanist Vandril##9758 |goto Ghostlands 44.77,32.45
@@ -280,7 +280,7 @@ step
 step
   only Rogue
   note Eralan in Tranquillien wants you to retrieve the Archeologist's Shrunken Head from one of the chests in Zeb'Tela or Zeb'Nowa.
-  collect Primitive Chest##184793 |q 10548 |goto Ghostlands 75.03,46.98
+  collect Archeologist's Shrunken Head##30503 |q 10548 |goto Ghostlands 75.03,46.98 |tip {dropsfrom}Primitive Chest
 step
   note Farstrider Sedina at the Farstrider Enclave in the Ghostlands wants you to slay 10 Ghostclaw Lynxes.
   kill Ghostclaw Lynx##16348 |q 9158 |goto Ghostlands 66.7,41.41
@@ -351,7 +351,7 @@ step
   accept The Traitor's Destruction##9167 |goto Ghostlands 55.07,48.83
 step
   note Slay Dar'Khan Drathir inside Deatholme and bring his head to Magister Kaendris at the Sanctum of the Sun in the Ghostlands.
-  kill Dar'Khan Drathir##16329 |q 9167 |goto Ghostlands 33.04,81.26 |elite
+  collect Dar'Khan's Head##22653 |q 9167 |goto Ghostlands 33.04,81.26 |tip {dropsfrom}Dar'Khan Drathir
 step
   talk Magister Idonis##16204
   accept Dar'Khan's Lieutenants##9170 |goto Ghostlands 54.87,48.55
@@ -488,7 +488,7 @@ step
   accept Windrunner Village##9140 |goto Ghostlands 46.55,28.38
 step
   note Gather 6 Phantasmal Substance and 4 Gargoyle Fragments. Return them to Arcanist Vandril at Tranquillien in the Ghostlands.
-  kill Phantasmal Seeker##16323 |q 9140 |goto Ghostlands 17.68,44.72
+  collect 6 Phantasmal Substance##22566 |q 9140 |goto Ghostlands 17.68,44.72 |tip {dropsfrom}Phantasmal Seeker
 step
   talk Arcanist Vandril##16197
   turnin Windrunner Village##9140 |goto Ghostlands 46.55,28.38

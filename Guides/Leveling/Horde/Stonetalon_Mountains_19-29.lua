@@ -23,19 +23,19 @@ step
   accept Cycle of Rebirth##6301 |goto Stonetalon Mountains 47.46,58.38
 step
   note Tammra Windfield at Sun Rock Retreat wants you to gather 10 Gaea Seeds.
-  collect Gaea Seed##177926 |q 6301 |goto Stonetalon Mountains 48.92,40.73
+  collect 10 Gaea Seed##16205 |q 6301 |goto Stonetalon Mountains 48.92,40.73 |tip {dropsfrom}Gaea Seed
 step
   talk Tsunaman##11862
   accept Elemental War##6393 |goto Stonetalon Mountains 47.36,64.25
 step
   note Bring 10 Incendrites to Tsunaman at Sun Rock Retreat.
-  kill Rogue Flame Spirit##4036 |q 6393 |goto Stonetalon Mountains 37.14,53.06
+  collect 10 Incendrites##16312 |q 6393 |goto Stonetalon Mountains 37.14,53.06 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
 step
   talk Mor'rogal##11861
   accept Boulderslide Ravine##6421 |goto Stonetalon Mountains 47.22,64.04
 step
   note Explore deep into the cave at Boulderslide Ravine and bring back 10 Resonite Crystals for Mor'rogal at Sun Rock Retreat to investigate.
-  kill Gogger Rock Keeper##11915 |q 6421 |goto Stonetalon Mountains 60.44,91.47
+  collect Resonite Crystal##16581 |q 6421 |goto Stonetalon Mountains 60.44,91.47 |tip {dropsfrom}Gogger Rock Keeper, Gogger Geomancer, Gogger Stonepounder
 step
   talk Tsunaman##11862
   accept Trouble in the Deeps##6562 |goto Stonetalon Mountains 47.36,64.25
@@ -50,13 +50,13 @@ step
   accept Super Reaper 6000##1093 |goto Stonetalon Mountains 58.99,62.6
 step
   note Get the Super Reaper 6000 Blueprints for Ziz Fizziks in the Stonetalon Mountains.
-  kill Venture Co. Operator##3988 |q 1093 |goto Stonetalon Mountains 69.99,52.05
+  collect Super Reaper 6000 Blueprints##5734 |q 1093 |goto Stonetalon Mountains 69.99,52.05 |tip {dropsfrom}Venture Co. Operator
 step
   talk Ziz Fizziks##4201
   accept Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6
 step
   note Bring Gerenzo Wrenchwhistle's Mechanical Arm to Ziz Fizziks in the Stonetalon Mountains.
-  kill Gerenzo Wrenchwhistle##4202 |q 1096 |goto Stonetalon Mountains 64.49,40.25
+  collect Gerenzo's Mechanical Arm##5736 |q 1096 |goto Stonetalon Mountains 64.49,40.25 |tip {dropsfrom}Gerenzo Wrenchwhistle
 step
   talk Piznik##4276
   accept Gerenzo's Orders##1090 |goto Stonetalon Mountains 71.87,60.0
@@ -65,13 +65,13 @@ step
   accept Test of Lore##1154 |goto Stonetalon Mountains 78.8,45.69
 step
   note Find the Legacy of the Aspects and return it to Braug Dimspirit near the entrance to Talondeep Path in Stonetalon Mountains.
-  collect The Legacy of the Aspects##20725 |q 1154 |goto Ashenvale 75.57,74.37
+  collect Legacy of the Aspects##5860 |q 1154 |goto Ashenvale 75.57,74.37 |tip {dropsfrom}The Legacy of the Aspects
 step
   talk Witch Doctor Jin'Zil##3995
   accept Jin'Zil's Forest Magic##1058 |goto Stonetalon Mountains 74.54,97.94
 step
   note Witch Doctor Jin'Zil at Malaka'jin wants 5 portions of Stonetalon Sap, 5 Twilight Whiskers, 30 Courser Eyes and a Fey Dragon Scale.
-  kill Sap Beast##4020 |q 1058 |goto Stonetalon Mountains 35.66,17.41
+  collect Stonetalon Sap##5582 |q 1058 |goto Stonetalon Mountains 35.66,17.41 |tip {dropsfrom}Sap Beast
 step
   talk Xen'Zilla##12816
   accept Blood Feeders##6461 |goto Stonetalon Mountains 71.25,95.02
@@ -104,13 +104,13 @@ step
   accept Ordanus##1088 |goto Stonetalon Mountains 45.94,60.42
 step
   note Bring Ordanus' head to Braelyn Firehand near Sun Rock Retreat.
-  kill Keeper Ordanus##4273 |q 1088 |goto Ashenvale 62.05,51.37
+  collect Ordanus' Head##5686 |q 1088 |goto Ashenvale 62.05,51.37 |tip {dropsfrom}Keeper Ordanus
 step
   talk Maggran Earthbinder##11860
   accept Bloodfury Bloodline##6283 |goto Stonetalon Mountains 47.2,61.16
 step
   note Maggran at Sun Rock Retreat wishes you to slay Bloodfury Ripper and bring her remains as proof of your deed.
-  kill Bloodfury Ripper##12579 |q 6283 |goto Stonetalon Mountains 30.75,61.91
+  collect Bloodfury Ripper's Remains##16190 |q 6283 |goto Stonetalon Mountains 30.75,61.91 |tip {dropsfrom}Bloodfury Ripper
 step
   talk Tammra Windfield##11864
   accept New Life##6381 |goto Stonetalon Mountains 47.46,58.38
@@ -176,7 +176,7 @@ step
   accept The Den##1089 |goto Stonetalon Mountains 45.94,60.42
 step
   note Travel to the Den on Stonetalon Peak. Using the Gatekeeper's Key, obtain the druids' hidden items. Use these items to open the Talon Den Hoard.
-  collect Sleepers' Cache##19596 |q 1089 |goto Stonetalon Mountains 25.55,11.36
+  collect Sleepers' Key##5689 |q 1089 |goto Stonetalon Mountains 25.55,11.36 |tip {dropsfrom}Sleepers' Cache
 step
   talk Ziz Fizziks##4201
   turnin Gerenzo's Orders##1092 |goto Stonetalon Mountains 58.99,62.6

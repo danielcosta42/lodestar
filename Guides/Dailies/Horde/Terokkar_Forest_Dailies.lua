@@ -28,22 +28,22 @@ step
   accept Felblood Fillet##11669 |goto Terokkar Forest 38.72,12.8
 step
   note Severin wants you to venture into Skettis and retrieve 6 Shadow Dusts from the arakkoa that dwell there.
-  kill Skettis Wing Guard##21644 |q 11004 |goto Terokkar Forest 69.85,79.32
+  collect 6 Shadow Dust##32388 |q 11004 |goto Terokkar Forest 69.85,79.32 |tip {dropsfrom}Skettis Wing Guard, Skettis Windwalker, Skettis Talonite
 step
   note Bring a Baby Crocolisk to Old Man Barlo. You can find him fishing northeast of Shattrath City by Silmyr Lake.
-  get Crocolisks in the City |q 11665 |goto Terokkar Forest 38.72,12.8
+  collect Baby Crocolisk##34864 |q 11665 |goto Terokkar Forest 38.72,12.8
 step
   note Bring a Blackfin Darter to Old Man Barlo. You can find him fishing northeast of Shattrath City by Silmyr Lake.
-  get Bait Bandits |q 11666 |goto Terokkar Forest 38.72,12.8
+  collect Blackfin Darter##34865 |q 11666 |goto Terokkar Forest 38.72,12.8
 step
   note Catch the World's Largest Mudfish and bring it to Old Man Barlo. You can find him fishing northeast of Shattrath City by Silmyr Lake.
-  get The One That Got Away |q 11667 |goto Terokkar Forest 38.72,12.8
+  collect World's Largest Mudfish##34868 |q 11667 |goto Terokkar Forest 38.72,12.8
 step
   note Bring 10 Giant Freshwater Shrimp to Old Man Barlo. You can find him fishing northeast of Shattrath City by Silmyr Lake.
-  get Shrimpin' Ain't Easy |q 11668 |goto Terokkar Forest 38.72,12.8
+  collect 10 Giant Freshwater Shrimp##34866 |q 11668 |goto Terokkar Forest 38.72,12.8
 step
   note Bring a Monstrous Felblood Snapper to Old Man Barlo. You can find him fishing northeast of Shattrath City by Silmyr Lake.
-  get Felblood Fillet |q 11669 |goto Terokkar Forest 38.72,12.8
+  collect Monstrous Felblood Snapper##34867 |q 11669 |goto Terokkar Forest 38.72,12.8
 step
   talk Severin##23042
   turnin World of Shadows##11004 |goto Terokkar Forest 64.05,66.88
@@ -78,7 +78,7 @@ step
   talk Yuula##23449
   accept To Skettis!##11098 |goto Shattrath City 64.33,42.33
 step
-  kill Skettis Wing Guard##21644 |q 11006 |goto Terokkar Forest 69.85,79.32
+  collect Shadow Dust##32388 |q 11006 |goto Terokkar Forest 69.85,79.32 |tip {dropsfrom}Skettis Wing Guard, Skettis Windwalker, Skettis Talonite
 step
   talk Severin##23042
   turnin More Shadow Dust##11006 |goto Terokkar Forest 64.05,66.88
@@ -114,7 +114,7 @@ step
   accept Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
 step
   note Obtain Hazzik's Package at his dwelling in eastern Skettis and return to him with it.
-  collect Hazzik's Package##185954 |q 11056 |goto Terokkar Forest 74.85,80.08
+  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08 |tip {dropsfrom}Hazzik's Package
 step
   talk Hazzik##23306
   turnin Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
@@ -123,7 +123,7 @@ step
   accept A Shabby Disguise##11029 |goto Terokkar Forest 64.23,66.97
 step
   note Use the Shabby Arakkoa Disguise to obtain the Adversarial Bloodlines from Sahaak and return to Hazzik.
-  get A Shabby Disguise |q 11029 |goto Terokkar Forest 64.23,66.97
+  collect Adversarial Bloodlines##32742 |q 11029 |goto Terokkar Forest 64.23,66.97
 step
   talk Hazzik##23306
   turnin A Shabby Disguise##11029 |goto Terokkar Forest 64.23,66.97
@@ -141,7 +141,7 @@ step
   accept Tokens of the Descendants##11074 |goto Terokkar Forest 64.23,66.97
 step
   note Collect Time-Lost Scrolls from the time-lost arakkoa in Skettis and bring them to a Skull Pile inside a summoning circle in Skettis. Summon and defeat the descendants of Terokk's adversaries and return to Hakkiz with Akkarai's Talon, Garokk's Spine, Vekkaz's Scale and Gezzarak's Claw.
-  get Tokens of the Descendants |q 11074 |goto Terokkar Forest 64.23,66.97
+  collect Akkarai's Talons##32715 |q 11074 |goto Terokkar Forest 64.23,66.97 |tip {dropsfrom}Darkscreecher Akkarai
 step
   talk Hazzik##23306
   turnin Tokens of the Descendants##11074 |goto Terokkar Forest 64.23,66.97

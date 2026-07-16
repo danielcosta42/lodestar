@@ -14,7 +14,7 @@ step
   accept Digging Up the Past##9680 |goto Deadwind Pass 47.28,75.21
 step
   note Archmage Alturus wants you to go to the mountains south of Karazhan in Deadwind Pass and retrieve a Charred Bone Fragment.
-  collect Charred Bone Fragment##181963 |q 9680 |goto Deadwind Pass 45.0,78.96
+  collect Charred Bone Fragment##24152 |q 9680 |goto Deadwind Pass 45.0,78.96 |tip {dropsfrom}Charred Bone Fragment
 step
   talk Archmage Alturus##17613
   accept Arcane Disturbances##9824 |goto Deadwind Pass 47.28,75.21
@@ -23,7 +23,7 @@ step
   accept Restless Activity##9825 |goto Deadwind Pass 47.28,75.21
 step
   note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
-  kill Restless Shade##7370 |q 9825 |goto Deadwind Pass 51.97,78.4
+  collect 10 Ghostly Essence##24480 |q 9825 |goto Deadwind Pass 51.97,78.4 |tip {dropsfrom}Restless Shade, Wailing Spectre, Damned Soul
 step
   talk Archmage Alturus##17613
   accept Assessing the Situation##9840 |goto Deadwind Pass 47.28,75.21
@@ -92,25 +92,25 @@ step
   accept Down the Violet Path##10733 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Honored reputation with the Violet Eye.
-  get Down the Violet Path |q 10733 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29284 |q 10733 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Down the Violet Path##10734 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Honored reputation with the Violet Eye.
-  get Down the Violet Path |q 10734 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29288 |q 10734 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Down the Violet Path##10735 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Honored reputation with the Violet Eye.
-  get Down the Violet Path |q 10735 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29280 |q 10735 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Down the Violet Path##10736 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Honored reputation with the Violet Eye.
-  get Down the Violet Path |q 10736 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29276 |q 10736 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Cedric##18165
   turnin Contact from Dalaran##9826 |goto Alterac Mountains 15.61,54.58 |tip {turninat}Alterac Mountains
@@ -137,25 +137,25 @@ step
   accept Distinguished Service##10738 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Revered reputation with the Violet Eye.
-  get Distinguished Service |q 10738 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29285 |q 10738 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Distinguished Service##10739 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Revered reputation with the Violet Eye.
-  get Distinguished Service |q 10739 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29289 |q 10739 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Distinguished Service##10740 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Revered reputation with the Violet Eye.
-  get Distinguished Service |q 10740 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29281 |q 10740 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Distinguished Service##10741 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Revered reputation with the Violet Eye.
-  get Distinguished Service |q 10741 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29277 |q 10741 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   turnin Distinguished Service##10738 |goto Deadwind Pass 47.24,74.99
@@ -173,25 +173,25 @@ step
   accept Eminence Among the Violet Eye##10725 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Exalted reputation with the Violet Eye.
-  get Eminence Among the Violet Eye |q 10725 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29286 |q 10725 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Eminence Among the Violet Eye##10726 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Exalted reputation with the Violet Eye.
-  get Eminence Among the Violet Eye |q 10726 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29291 |q 10726 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Eminence Among the Violet Eye##10727 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Exalted reputation with the Violet Eye.
-  get Eminence Among the Violet Eye |q 10727 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29282 |q 10727 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   accept Eminence Among the Violet Eye##10728 |goto Deadwind Pass 47.24,74.99
 step
   note Bring your Violet Signet to Archmage Leryda at Deadwind Pass after obtaining Exalted reputation with the Violet Eye.
-  get Eminence Among the Violet Eye |q 10728 |goto Deadwind Pass 47.24,74.99
+  collect Violet Signet##29278 |q 10728 |goto Deadwind Pass 47.24,74.99
 step
   talk Archmage Leryda##18253
   turnin Eminence Among the Violet Eye##10725 |goto Deadwind Pass 47.24,74.99

@@ -100,7 +100,7 @@ step
   accept The Master Planner##10001 |goto Nagrand 27.34,43.09
 step
   note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
-  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33 |elite
+  collect The Master Planner's Blueprints##25751 |q 10001 |goto Nagrand 23.61,50.33 |tip {dropsfrom}Mo'arg Master Planner
 step
   talk Jorin Deadeye##18106
   turnin Because Kilrath is a Coward##9891 |goto Nagrand 55.56,37.62
@@ -133,7 +133,7 @@ step
   kill Boulderfist Warrior##17136 |q 9907 |goto Nagrand 41.35,35.08
 step
   note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
-  kill Raliq the Drunk##18585 |q 10009 |goto Shattrath City 74.99,31.4 |elite
+  collect Raliq's Debt##25767 |q 10009 |goto Shattrath City 74.99,31.4 |tip {dropsfrom}Raliq the Drunk
 step
   talk Jorin Deadeye##18106
   turnin An Audacious Advance##9907 |goto Nagrand 55.56,37.62
@@ -172,7 +172,7 @@ step
   accept Material Components##10045 |goto Nagrand 56.7,34.31
 step
   note Greatmother Geyah at Garadar in Nagrand has asked that you collect 1 Olemba Root, 1 Marshberry, 1 Telaari Frond and 1 Dragonspine.
-  collect Olemba Root##182601 |q 10045 |goto Terokkar Forest 37.69,34.03
+  collect 1 Olemba Root##25863 |q 10045 |goto Terokkar Forest 37.69,34.03 |tip {dropsfrom}Olemba Root
 step
   talk Greatmother Geyah##18141
   turnin Material Components##10045 |goto Nagrand 56.7,34.31

@@ -10,7 +10,7 @@ step
   accept Brewfest!##11441 |goto Stormwind City 61.45,64.25
 step
   note Goldark Snipehunter has asked you to capture 5 Stunned Wolpertingers using the Wolpertinger Net. He mentioned that you must be intoxicated to see them.
-  get Catch the Wild Wolpertinger! |q 11117
+  collect 5 Catch the Wild Wolpertinger!##32906 |q 11117
 step
   note Visit the beer gardens outside of Stormwind, Darnassus, and the Exodar, zap three elekks at each location, and return to Goldark Snipehunter. You must be drunk to see the pink elekks.
   kill Azuremyst Pink Elekk##23528 |q 11118 |goto The Exodar 78.88,57.63

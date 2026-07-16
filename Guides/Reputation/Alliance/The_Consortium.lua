@@ -166,40 +166,40 @@ step
   accept Wanted: Sisters of Torment##11500 |goto Shattrath City 75.5,37.24
 step
   note Obtain 10 Oshu'gun Crystal Fragments and bring them to Gezhe at Aeris Landing in Nagrand.
-  kill Vir'aani Raider##17149 |q 9882 |goto Nagrand 35.23,71.18
+  collect 10 Oshu'gun Crystal Fragment##25416 |q 9882 |goto Nagrand 35.23,71.18 |tip {dropsfrom}Vir'aani Raider, Oshu'gun Crystal Fragment
 step
   note Collect 3 Pair of Ivory Tusks and return them to Shadrek at Aeris Landing in Nagrand.
-  kill Wild Elekk##18334 |q 9914 |goto Nagrand 46.86,54.6
+  collect 3 Pair of Ivory Tusks##25463 |q 9914 |goto Nagrand 46.86,54.6 |tip {dropsfrom}Wild Elekk
 step
   note Zerid at Aeris Landing in Nagrand wants you to kill 12 Voidspawn near Oshu'gun.
   kill Voidspawn##17981 |q 9925 |goto Nagrand 37.52,70.28
 step
   note Nexus-Prince Haramad located outside of the Mana-Tombs wants you to kill Nexus-Prince Shaffar and bring Shaffar's Wrappings back to him.
-  kill Nexus-Prince Shaffar##18344 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |elite
+  collect Shaffar's Wrappings##28490 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Nexus-Prince Shaffar, Nexus-Prince Shaffar (1)
 step
   note Artificer Morphalius wants you to kill 10 Ethereal Crypt Raiders, 5 Ethereal Sorcerers, 5 Nexus Stalkers and 5 Ethereal Spellbinders.
   kill Ethereal Crypt Raider##18311 |q 10216 |goto Mana-Tombs - Dungeon -1,-1 |elite
 step
   note Bring 10 Obsidian Warbeads to Gezhe at Aeris Landing in Nagrand.
-  kill Boulderfist Crusher##17134 |q 9893 |goto Nagrand 74.47,64.02
+  collect 10 Obsidian Warbeads##25433 |q 9893 |goto Nagrand 74.47,64.02 |tip {dropsfrom}Boulderfist Crusher, Boulderfist Mystic, Boulderfist Warrior
 step
   note Slay Gava'xi near Oshu'gun and return to Zerid at Aeris Landing in Nagrand.
   kill Gava'xi##18298 |q 9900 |goto Nagrand 41.51,71.42
 step
   note Retrieve the Diagnostic Results and return them to Mehrdad at Midrealm Post.
-  collect Diagnostic Equipment##184589 |q 10417 |goto Netherstorm 48.23,55.0
+  collect Diagnostic Results##29741 |q 10417 |goto Netherstorm 48.23,55.0 |tip {dropsfrom}Diagnostic Equipment
 step
   note Gather 15 Ivory Bells and return to Mehrdad at Midrealm Post.
-  collect Ivory Bell##184443 |q 10348 |goto Netherstorm 45.1,53.89
+  collect 15 Ivory Bell##29474 |q 10348 |goto Netherstorm 45.1,53.89 |tip {dropsfrom}Ivory Bell
 step
   note Obtain 5 Condensed Nether Gas from Gan'arg Mekgineers at Forge Base: Oblivion, northwest of the Stormspire, and load them into a nearby Inactive Fel Reaver. Return to Nether-Stalker Nauthis after you've completed this task.
   kill Inactive Fel Reaver##22293 |q 10855 |goto Netherstorm 36.73,25.69
 step
   note Retrieve the Teleporter Power Pack and bring it to the Ethereal Teleport Pad on the Celestial Ridge to the east of Manaforge Ultris. Activate the pad and give the Teleporter Power Pack to the Image of Wind Trader Marid so he can install it.
-  collect Teleporter Power Pack##184075 |q 10270 |goto Netherstorm 60.98,41.52
+  collect Teleporter Power Pack##28969 |q 10270 |goto Netherstorm 60.98,41.52 |tip {dropsfrom}Teleporter Power Pack
 step
   note Gather 4 pieces of Raw Farahlite and return to Zuben Elgenubi at the Stormspire.
-  kill Farahlon Giant##18885 |q 10290 |goto Netherstorm 41.02,67.16 |elite
+  collect 4 Raw Farahlite##29163 |q 10290 |goto Netherstorm 41.02,67.16 |tip {dropsfrom}Farahlon Giant, Farahlon Breaker, Cragskaar
 step
   note Kill 15 Sunfury Nethermancers and return to Nether-Stalker Oazul at Tuluman's Landing in the Netherstorm.
   kill Sunfury Nethermancer##20248 |q 10315 |goto Netherstorm 28.4,39.55
@@ -214,7 +214,7 @@ step
   kill Ethereum Assassin##20452 |q 10339 |goto Netherstorm 56.71,38.2
 step
   note Use the Protectorate Igniter on 12 Withered Corpses. Return the Protectorate Igniter to Agent Araxes outside of Access Shaft Zeon when the task is complete.
-  kill Withered Corpse##20561 |q 10345 |goto Netherstorm 60.65,42.86
+  use Withered Corpse##20561 |q 10345 |goto Netherstorm 60.65,42.86 |tip {useit}
 step
   note Agent Ya-six at Access Shaft Zeon in Netherstorm has asked you to slay Arconus the Insatiable and return to Commander Ameer at the Protectorate Watch Post in Netherstorm.
   kill Arconus the Insatiable##20554 |q 10353 |goto Netherstorm 60.16,39.78
@@ -226,70 +226,70 @@ step
   get Captain Tyralius |q 10422 |goto Netherstorm 59.25,32.07
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to recover 8 Fragments of Dimensius.
-  kill Unstable Voidwraith##18869 |q 10437 |goto Netherstorm 61.8,39.74
+  collect Fragment of Dimensius##29822 |q 10437 |goto Netherstorm 61.8,39.74 |tip {dropsfrom}Unstable Voidwraith, Voidshrieker
 step
   note Recover the Salvaged Ethereum Prison Key for Commander Ameer at the Protectorate Watch Post in Netherstorm.
-  kill Ethereum Assassin##20452 |q 10970 |goto Netherstorm 56.71,38.2
+  collect Salvaged Ethereum Prison Key##31956 |q 10970 |goto Netherstorm 56.71,38.2 |tip {dropsfrom}Ethereum Assassin, Ethereum Shocktrooper, Nexus-King Salhadaar
 step
   note Wind Trader Zhareem has asked you to obtain Nazan's Riding Crop. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: Nazan's Riding Crop |q 11354 |goto Shattrath City 75.13,36.65
+  collect Nazan's Riding Crop##33833 |q 11354 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Nazan (1)
 step
   note Wind Trader Zhareem has asked you to obtain Keli'dan's Feathered Stave. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: Keli'dan's Feathered Stave |q 11362 |goto Shattrath City 75.13,36.65
+  collect Keli'dan's Feathered Stave##33814 |q 11362 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Keli'dan the Breaker (1)
 step
   note Wind Trader Zhareem has asked you to obtain Bladefist's Seal. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: Bladefist's Seal |q 11363 |goto Shattrath City 75.13,36.65
+  collect Bladefist's Seal##33815 |q 11363 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Warchief Kargath Bladefist (1)
 step
   note Nether-Stalker Mah'duun has tasked you with the deaths of 4 Shattered Hand Centurions. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Shattered Hand Centurion##17465 |q 11364 |goto The Shattered Halls - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to obtain The Heart of Quagmirran. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Heart of Quagmirran |q 11368 |goto Shattrath City 75.13,36.65
+  collect The Heart of Quagmirran##33821 |q 11368 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Quagmirran (1)
 step
   note Wind Trader Zhareem wants you to obtain a Black Stalker Egg. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: A Black Stalker Egg |q 11369 |goto Shattrath City 75.13,36.65
+  collect Black Stalker Egg##33826 |q 11369 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}The Black Stalker (1)
 step
   note Wind Trader Zhareem has asked you to acquire The Warlord's Treatise. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Warlord's Treatise |q 11370 |goto Shattrath City 75.13,36.65
+  collect The Warlord's Treatise##33827 |q 11370 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Warlord Kalithresh (1)
 step
   note Nether-Stalker Mah'duun has asked you to slay 14 Coilfang Myrmidons. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Coilfang Myrmidon##17800 |q 11371 |goto The Steamvault - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to acquire The Headfeathers of Ikiss. Deliver them to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Headfeathers of Ikiss |q 11372 |goto Shattrath City 75.13,36.65
+  collect The Headfeathers of Ikiss##33834 |q 11372 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Talon King Ikiss (1)
 step
   note Wind Trader Zhareem wants you to obtain Shaffar's Wondrous Amulet. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: Shaffar's Wondrous Pendant |q 11373 |goto Shattrath City 75.13,36.65
+  collect Shaffar's Wondrous Amulet##33835 |q 11373 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Nexus-Prince Shaffar (1)
 step
   note Wind Trader Zhareem has asked you to recover The Exarch's Soul Gem. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Exarch's Soul Gem |q 11374 |goto Shattrath City 75.13,36.65
+  collect The Exarch's Soul Gem##33836 |q 11374 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Exarch Maladaar (1)
 step
   note Wind Trader Zhareem has asked you to obtain Murmur's Whisper. Deliver it to him in Shattrath's Lower City to collect the reward.
-  kill Murmur##18708 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
+  collect Murmur's Whisper##33840 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Murmur (1)
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Wind Trader Zhareem has asked you to obtain the Epoch Hunter's Head. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Epoch Hunter's Head |q 11378 |goto Shattrath City 75.13,36.65
+  collect Epoch Hunter's Head##33847 |q 11378 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Epoch Hunter (1)
 step
   note Wind Trader Zhareem has asked you to acquire Aeonus's Hourglass. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: Aeonus's Hourglass |q 11382 |goto Shattrath City 75.13,36.65
+  collect Aeonus's Hourglass##33858 |q 11382 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Aeonus (1)
 step
   note Wind Trader Zhareem has asked you to obtain a Warp Splinter Clipping. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: A Warp Splinter Clipping |q 11384 |goto Shattrath City 75.13,36.65
+  collect Warp Splinter Clipping##33859 |q 11384 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Warp Splinter (1)
 step
   note Nether-Stalker Mah'duun wants you to kill 6 Sunseeker Channelers. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Sunseeker Channeler##19505 |q 11385 |elite
 step
   note Wind Trader Zhareem has asked you to acquire Pathaleon's Projector. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: Pathaleon's Projector |q 11386 |goto Shattrath City 75.13,36.65
+  collect Pathaleon's Projector##33860 |q 11386 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Pathaleon the Calculator (1)
 step
   note Nether-Stalker Mah'duun wants you to destroy 5 Tempest-Forge Destroyers. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Tempest-Forge Destroyer##19735 |q 11387 |elite
 step
   note Wind Trader Zhareem has asked you to obtain The Scroll of Skyriss. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Scroll of Skyriss |q 11388 |goto Shattrath City 75.13,36.65
+  collect The Scroll of Skyriss##33861 |q 11388 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Harbinger Skyriss (1)
 step
   note Nether-Stalker Mah'duun wants you to dismantle 5 Arcatraz Sentinels. Return to him in Shattrath's Lower City once that has been accomplished in order to collect the bounty.
   kill Arcatraz Sentinel##20869 |q 11389 |elite
@@ -503,20 +503,20 @@ step
   talk Tyrith##24822
   accept The Scryer's Scryer##11490 |goto Magisters' Terrace - Dungeon -1,-1
 step
-  kill Vir'aani Raider##17149 |q 9883 |goto Nagrand 35.23,71.18
+  collect Oshu'gun Crystal Fragment##25416 |q 9883 |goto Nagrand 35.23,71.18 |tip {dropsfrom}Vir'aani Raider, Oshu'gun Crystal Fragment
 step
-  kill Wild Elekk##18334 |q 9915 |goto Nagrand 46.86,54.6
+  collect Pair of Ivory Tusks##25463 |q 9915 |goto Nagrand 46.86,54.6 |tip {dropsfrom}Wild Elekk
 step
-  kill Boulderfist Crusher##17134 |q 9892 |goto Nagrand 74.47,64.02
+  collect Obsidian Warbeads##25433 |q 9892 |goto Nagrand 74.47,64.02 |tip {dropsfrom}Boulderfist Crusher, Boulderfist Mystic, Boulderfist Warrior
 step
   note Mehrdad at Midrealm Post wants you to kill 8 Barbscale Crocolisks.
   kill Barbscale Crocolisk##20773 |q 10418 |goto Netherstorm 46.5,53.0
 step
   note Obtain an Arklon Crystal Artifact and return it to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  kill Pentatharon##20215 |q 10265 |goto Netherstorm 42.46,72.75
+  collect Arklon Crystal Artifact##28829 |q 10265 |goto Netherstorm 42.46,72.75 |tip {dropsfrom}Pentatharon
 step
   note Zuben Elgenubi at the Stormspire wants you to obtain a Farahlite Core.
-  kill Cragskaar##20202 |q 10293 |goto Netherstorm 47.58,21.15 |elite
+  collect Farahlite Core##29164 |q 10293 |goto Netherstorm 47.58,21.15 |tip {dropsfrom}Cragskaar
 step
   note Nether-Stalker Nauthis wants you to slay 12 Wrathbringers at Forge Base: Gehenna, north of the Stormspire.
   kill Wrathbringer##18858 |q 10856 |goto Netherstorm 40.45,20.01
@@ -525,16 +525,16 @@ step
   kill Overmaster Grindgarr##20803 |q 10318 |goto Netherstorm 26.82,35.84
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover the Ethereum Data Cell.
-  collect Ethereum Data Cell##184560 |q 10384 |goto Netherstorm 55.77,39.89
+  collect Ethereum Data Cell##29582 |q 10384 |goto Netherstorm 55.77,39.89 |tip {dropsfrom}Ethereum Data Cell
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to use your Phase Disruptor when you get in range of the Void Conduit that rests atop Ultris. Drop as many charges of the Phase Disruptor as you can to ensure total annihilation. The Phase Disruptor charges will automatically home in on the Void Conduit so long as you are close enough to use it.
   kill Void Conduit##20899 |q 10438 |goto Netherstorm 62.42,40.89
 step
   note Zarevhi at the Stormspire in Netherstorm wants you to bring him 4 Primal Mights.
-  get Master of Transmutation |q 10899 |goto Netherstorm 44.12,36.64
+  collect Primal Might##23571 |q 10899 |goto Netherstorm 44.12,36.64
 step
   note Commander Ameer at the Protectorate Watch Post in Netherstorm wants you to bring him an Ethereum Prisoner I.D. Tag.
-  get Ethereum Secrets |q 10971 |goto Netherstorm 59.5,32.38
+  collect Ethereum Prisoner I.D. Tag##31957 |q 10971 |goto Netherstorm 59.5,32.38 |tip {dropsfrom}Porfus the Gem Gorger, Armbreaker Huffaz, Fel Tinkerer Zortan
 step
   note Tyrith wants you to use the orb on the balcony in Magisters' Terrace.
   get The Scryer's Scryer |q 11490 |goto Magisters' Terrace - Dungeon -1,-1
@@ -609,24 +609,24 @@ step
   accept Hard to Kill##11492 |goto Magisters' Terrace - Dungeon -1,-1
 step
   note Collect 10 Zaxxis Insignias and return them to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  kill Zaxxis Raider##18875 |q 10262 |goto Netherstorm 30.13,76.56
+  collect 10 Zaxxis Insignia##29209 |q 10262 |goto Netherstorm 30.13,76.56 |tip {dropsfrom}Zaxxis Raider, Warp-Raider Nesaad, Zaxxis Stalker
 step
   note Nether-Stalker Nauthis wants you to use the Mental Interference Rod on the Mo'arg at Forge Base: Gehenna and use their Detonate Teleporter ability on the three teleporters in the forge camp.
   get Teleport This! |q 10857 |goto Netherstorm 39.2,20.43
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover 15 pieces of Ethereum Relay Data.
-  kill Ethereum Relay##20619 |q 10385 |goto Netherstorm 56.08,41.03
+  collect Ethereum Relay Data##29459 |q 10385 |goto Netherstorm 56.08,41.03 |tip {dropsfrom}Ethereum Relay
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to speak with Captain Saeed and then follow his army to Manaforge Ultris and kill Dimensius the All-Devouring!
   kill Dimensius the All-Devouring##19554 |q 10439 |goto Netherstorm 62.41,40.88 |elite
 step
-  get Ethereum Prisoner I.D. Catalogue |q 10972 |goto Netherstorm 59.5,32.38
+  collect Ethereum Prisoner I.D. Tag##31957 |q 10972 |goto Netherstorm 59.5,32.38 |tip {dropsfrom}Porfus the Gem Gorger, Armbreaker Huffaz, Fel Tinkerer Zortan
 step
   note Commander Ameer at the Protectorate Watch Post in Netherstorm wants you to bring him 5 Ethereum Prison Keys.
-  kill Ethereal Scavenger##18309 |q 10973 |goto Mana-Tombs - Dungeon -1,-1
+  collect Ethereum Prison Key##29460 |q 10973 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Ethereal Scavenger, Ethereal Crypt Raider, Ethereal Spellbinder
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite
+  collect Head of Kael'thas##34157 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |tip {dropsfrom}Kael'thas Sunstrider, Kael'thas Sunstrider (1)
 step
   talk Nether-Stalker Khay'ji##19880
   turnin A Heap of Ethereals##10262 |goto Netherstorm 32.44,64.21
@@ -670,22 +670,22 @@ step
   talk Wind Trader Zhareem##24369
   accept Wanted: The Signet Ring of Prince Kael'thas##11499 |goto Shattrath City 75.13,36.65
 step
-  kill Zaxxis Raider##18875 |q 10308 |goto Netherstorm 30.13,76.56
+  collect Zaxxis Insignia##29209 |q 10308 |goto Netherstorm 30.13,76.56 |tip {dropsfrom}Zaxxis Raider, Warp-Raider Nesaad, Zaxxis Stalker
 step
   note Kill Warp-Raider Nesaad and then return to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
   kill Warp-Raider Nesaad##19641 |q 10205 |goto Netherstorm 28.36,79.45
 step
   note Use the Diagnostic Device while standing near the Eco-Dome Sutheron Generator and bring the Diagnostic Results back to Ghabar at the Stormspire.
-  get Diagnosis: Critical |q 10424 |goto Netherstorm 43.54,35.15
+  collect Diagnostic Results##29769 |q 10424 |goto Netherstorm 43.54,35.15
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover 1 Prepared Ethereum Wrapping.
-  kill Ethereum Archon##20458 |q 10405 |goto Netherstorm 55.75,42.87
+  collect Prepared Ethereum Wrapping##29591 |q 10405 |goto Netherstorm 55.75,42.87 |tip {dropsfrom}Ethereum Archon, Ethereum Overlord
 step
   note Use the Ethereum Key Tablet - Alpha to open Stasis Chamber Alpha at Bash'ir's Landing in Blade's Edge Mountains.
-  get Stasis Chambers of Bash'ir |q 10974 |goto Netherstorm 59.5,32.38
+  collect Evidence from Alpha##32061 |q 10974 |goto Netherstorm 59.5,32.38 |tip {dropsfrom}Thuk the Defiant
 step
   note Wind Trader Zhareem has asked you to obtain The Signet Ring of Prince Kael'thas. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Signet Ring of Prince Kael'thas |q 11499 |goto Shattrath City 75.13,36.65
+  collect The Signet Ring of Prince Kael'thas##34160 |q 11499 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Kael'thas Sunstrider (1)
 step
   talk Nether-Stalker Khay'ji##19880
   turnin Another Heap of Ethereals##10308 |goto Netherstorm 32.44,64.21
@@ -720,10 +720,10 @@ step
   talk Image of Commander Ameer##22919
   accept The Mark of the Nexus-King##10976 |goto Blade's Edge Mountains 52.85,14.99
 step
-  kill Ethereal Scavenger##18309 |q 10975 |goto Mana-Tombs - Dungeon -1,-1
+  collect Ethereum Prison Key##29460 |q 10975 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Ethereal Scavenger, Ethereal Crypt Raider, Ethereal Spellbinder
 step
   note The Image of Commander Ameer at Bash'ir's Landing in the Blade's Edge Mountains wants you to bring him a Mark of the Nexus-King.
-  get The Mark of the Nexus-King |q 10976 |goto Blade's Edge Mountains 52.85,14.99
+  collect Mark of the Nexus-King##31941 |q 10976 |goto Blade's Edge Mountains 52.85,14.99 |tip {dropsfrom}Solus the Eternal, Matron Li-sahar, King Dorfbruiser
 step
   talk Gahruj##20066
   turnin Request for Assistance##10266 |goto Netherstorm 46.67,56.95
@@ -753,7 +753,7 @@ step
   accept Stasis Chambers of the Mana-Tombs##10977 |goto Blade's Edge Mountains 52.85,14.99
 step
   note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  collect Box of Surveying Equipment##184031 |q 10267 |goto Netherstorm 58.82,65.76
+  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76 |tip {dropsfrom}Box of Surveying Equipment
 step
   note Tashar, stationed at Eco-Dome Farfield, wants you to kill 12 Scythetooth Raptors.
   kill Scythetooth Raptor##20634 |q 10436 |goto Netherstorm 46.05,12.29
@@ -779,7 +779,7 @@ step
   talk Image of Commander Ameer##22919
   accept Nexus-Prince Shaffar's Personal Chamber##10981 |goto Blade's Edge Mountains 52.85,14.99
 step
-  get Nexus-Prince Shaffar's Personal Chamber |q 10981 |goto Blade's Edge Mountains 52.85,14.99
+  collect Mark of the Nexus-King##31941 |q 10981 |goto Blade's Edge Mountains 52.85,14.99 |tip {dropsfrom}Solus the Eternal, Matron Li-sahar, King Dorfbruiser
 step
   talk Image of Nexus-Prince Haramad##20084
   turnin An Audience with the Prince##10268 |goto Netherstorm 45.87,35.96
@@ -803,7 +803,7 @@ step
   accept Full Triangle##10276 |goto Netherstorm 34.62,37.95
 step
   note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
-  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53 |elite
+  collect Ata'mal Crystal##29026 |q 10276 |goto Netherstorm 53.51,21.53 |tip {dropsfrom}Culuthas
 step
   talk Image of Nexus-Prince Haramad##20084
   turnin Full Triangle##10276 |goto Netherstorm 45.87,35.96

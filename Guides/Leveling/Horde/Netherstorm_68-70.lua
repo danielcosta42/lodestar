@@ -14,25 +14,25 @@ step
   accept Kalynna's Request##9637 |goto Netherstorm 32.22,63.6
 step
   note Kalynna Lathred wants you to retrieve the Tome of Dusk from Grand Warlock Nethekurse in the Shattered Halls of Hellfire Citadel and the Book of Forgotten Names from Darkweaver Syth in the Sethekk Halls in Auchindoun.
-  get Kalynna's Request |q 9637 |goto Netherstorm 32.22,63.6
+  collect Book of Forgotten Names##25461 |q 9637 |goto Netherstorm 32.22,63.6 |tip {dropsfrom}Darkweaver Syth (1)
 step
   talk Ravandwyr##19217
   accept The Archmage's Staff##10173 |goto Netherstorm 31.36,66.15
 step
   note Retrieve Archmage Vargoth's Staff from Ekkorash the Inquisitor and bring it to Ravandwyr in Area 52. To bring Ekkorash out of hiding, sprinkle the Conjuring Powder on the brazier in the center of the ruins.
-  kill Archmage Vargoth##19481 |q 10173 |goto Netherstorm 58.34,86.4
+  collect Archmage Vargoth's Staff##28292 |q 10173 |goto Netherstorm 58.34,86.4 |tip {dropsfrom}Ekkorash the Inquisitor
 step
   talk Rocket-Chief Fuselage##19570
   accept You're Hired!##10186 |goto Netherstorm 32.73,64.96
 step
   note Collect 10 Etherlithium Matrix Crystals and return them to Rocket-Chief Fuselage at Area 52 in the Netherstorm.
-  collect Etherlithium Matrix Crystal##183767 |q 10186 |goto Netherstorm 34.16,54.24
+  collect 10 Etherlithium Matrix Crystal##28364 |q 10186 |goto Netherstorm 34.16,54.24 |tip {dropsfrom}Etherlithium Matrix Crystal
 step
   talk Spymaster Thalodien##19468
   accept Manaforge B'naar##10189 |goto Netherstorm 32.0,64.07
 step
   note Spymaster Thalodien at Area 52 wants you to go to the outskirts of Manaforge B'naar and retrieve the B'naar Personnel Roster from Captain Arathyn.
-  kill Captain Arathyn##19635 |q 10189 |goto Netherstorm 27.24,65.44
+  collect B'naar Personnel Roster##28376 |q 10189 |goto Netherstorm 27.24,65.44 |tip {dropsfrom}Captain Arathyn
 step
   talk Exarch Orelis##19466
   accept Distraction at Manaforge B'naar##10241 |goto Netherstorm 32.07,64.18
@@ -56,7 +56,7 @@ step
   accept Securing the Shaleskin Shale##10342 |goto Netherstorm 32.27,63.92
 step
   note Collect 5 Shaleskin Shale and give them to Boots at Area 52 in the Netherstorm.
-  kill Shaleskin Flayer##20210 |q 10342 |goto Netherstorm 30.3,62.83
+  collect 5 Shaleskin Shale##29464 |q 10342 |goto Netherstorm 30.3,62.83 |tip {dropsfrom}Shaleskin Flayer
 step
   note Slay 8 Sunfury Magisters and 8 Sunfury Bloodwarders and return to Exarch Orelis at Area 52.
   kill Sunfury Magister##18855 |q 10241 |goto Netherstorm 25.07,68.25
@@ -65,7 +65,7 @@ step
   accept Recharging the Batteries##10190 |goto Netherstorm 31.51,56.59
 step
   note Use the Battery Recharging Blaster on enough Phase Hunters to get the Battery Recharge Level to 10. Then return it to Bot-Specialist Alley at the Ruins of Enkaat in the Netherstorm.
-  kill Drained Phase Hunter##19595 |q 10190
+  use Drained Phase Hunter##19595 |q 10190 |tip {useit}
 step
   talk Netherologist Coppernickels##19569
   accept Off To Area 52##10183 |goto Netherstorm 21.3,55.62
@@ -80,7 +80,7 @@ step
   accept In Search of Farahlite##10290 |goto Netherstorm 44.08,36.05
 step
   note Gather 4 pieces of Raw Farahlite and return to Zuben Elgenubi at the Stormspire.
-  kill Farahlon Giant##18885 |q 10290 |goto Netherstorm 41.02,67.16 |elite
+  collect 4 Raw Farahlite##29163 |q 10290 |goto Netherstorm 41.02,67.16 |tip {dropsfrom}Farahlon Giant, Farahlon Breaker, Cragskaar
 step
   talk Zephyrion##20470
   accept Surveying the Ruins##10335 |goto Netherstorm 44.72,34.87
@@ -98,13 +98,13 @@ step
   accept Master of Transmutation##10899 |goto Netherstorm 44.12,36.64
 step
   note Zarevhi at the Stormspire in Netherstorm wants you to bring him 4 Primal Mights.
-  get Master of Transmutation |q 10899 |goto Netherstorm 44.12,36.64
+  collect Primal Might##23571 |q 10899 |goto Netherstorm 44.12,36.64
 step
   talk Protectorate Advisor Rahim##22899
   accept Seek Out Ameer##10969 |goto Netherstorm 45.8,36.29
 step
   note Use the Energy Field Modulator on Farahlon Lashers. Observe the results and report back to Aurine Moonblaze at the Stormspire when you have conducted 10 tests.
-  kill Mutated Farahlon Lasher##20983 |q 10426 |goto Netherstorm 41.01,32.56
+  use Mutated Farahlon Lasher##20983 |q 10426 |goto Netherstorm 41.01,32.56 |tip {useit}
 step
   note Obtain 5 Condensed Nether Gas from Gan'arg Mekgineers at Forge Base: Oblivion, northwest of the Stormspire, and load them into a nearby Inactive Fel Reaver. Return to Nether-Stalker Nauthis after you've completed this task.
   kill Inactive Fel Reaver##22293 |q 10855 |goto Netherstorm 36.73,25.69
@@ -116,7 +116,7 @@ step
   accept Arconus the Insatiable##10353 |goto Netherstorm 60.92,41.51
 step
   note Use the Protectorate Igniter on 12 Withered Corpses. Return the Protectorate Igniter to Agent Araxes outside of Access Shaft Zeon when the task is complete.
-  kill Withered Corpse##20561 |q 10345 |goto Netherstorm 60.65,42.86
+  use Withered Corpse##20561 |q 10345 |goto Netherstorm 60.65,42.86 |tip {useit}
 step
   note Agent Ya-six at Access Shaft Zeon in Netherstorm has asked you to slay Arconus the Insatiable and return to Commander Ameer at the Protectorate Watch Post in Netherstorm.
   kill Arconus the Insatiable##20554 |q 10353 |goto Netherstorm 60.16,39.78
@@ -131,7 +131,7 @@ step
   accept A Not-So-Modest Proposal##10270 |goto Netherstorm 58.32,31.66
 step
   note Retrieve the Teleporter Power Pack and bring it to the Ethereal Teleport Pad on the Celestial Ridge to the east of Manaforge Ultris. Activate the pad and give the Teleporter Power Pack to the Image of Wind Trader Marid so he can install it.
-  collect Teleporter Power Pack##184075 |q 10270 |goto Netherstorm 60.98,41.52
+  collect Teleporter Power Pack##28969 |q 10270 |goto Netherstorm 60.98,41.52 |tip {dropsfrom}Teleporter Power Pack
 step
   talk Commander Ameer##20448
   accept The Ethereum##10339 |goto Netherstorm 59.5,32.38
@@ -152,13 +152,13 @@ step
   accept Recipe for Destruction##10437 |goto Netherstorm 60.11,31.72
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to recover 8 Fragments of Dimensius.
-  kill Unstable Voidwraith##18869 |q 10437 |goto Netherstorm 61.8,39.74
+  collect Fragment of Dimensius##29822 |q 10437 |goto Netherstorm 61.8,39.74 |tip {dropsfrom}Unstable Voidwraith, Voidshrieker
 step
   talk Commander Ameer##20448
   accept A Mission of Mercy##10970 |goto Netherstorm 59.5,32.38
 step
   note Recover the Salvaged Ethereum Prison Key for Commander Ameer at the Protectorate Watch Post in Netherstorm.
-  kill Ethereum Assassin##20452 |q 10970 |goto Netherstorm 56.71,38.2
+  collect Salvaged Ethereum Prison Key##31956 |q 10970 |goto Netherstorm 56.71,38.2 |tip {dropsfrom}Ethereum Assassin, Ethereum Shocktrooper, Nexus-King Salhadaar
 step
   note Slay 10 Hounds of Culuthas and 5 Eyes of Culuthas. Then return to Nether-Stalker Nauthis at the Stormspire in the Netherstorm.
   kill Hound of Culuthas##20141 |q 10336 |goto Netherstorm 53.91,21.97
@@ -170,7 +170,7 @@ step
   accept Bloody Imp-ossible!##10924 |goto Netherstorm 66.39,67.3
 step
   note Bring 8 vials of Warp Chaser Blood to Sab'aoth at Cosmowrench.
-  get Bloody Imp-ossible! |q 10924 |goto Netherstorm 66.39,67.3
+  collect 8 Warp Chaser Blood##31813 |q 10924 |goto Netherstorm 66.39,67.3
 step
   talk Custodian Dieworth##19488
   accept The Sunfury Garrison##10222 |goto Netherstorm 57.5,86.34
@@ -188,13 +188,13 @@ step
   accept Capturing the Phylactery##10319 |goto Netherstorm 57.5,86.34
 step
   note Recover Naberius's Phylactery from Kirin'Var Village's Chapel Yard district and bring it to Custodian Dieworth.
-  collect Suspicious Outhouse##184310 |q 10319 |goto Netherstorm 59.86,80.38
+  collect Naberius's Phylactery##29361 |q 10319 |goto Netherstorm 59.86,80.38 |tip {dropsfrom}Suspicious Outhouse
 step
   talk Apprentice Andrethan##20463
   accept Indispensable Tools##10331 |goto Netherstorm 57.71,85.19
 step
   note Retrieve the Smithing Hammer from the Kirin'Var Apprentices and bring it back to Apprentice Andrethan in Kirin'Var Village.
-  kill Kirin'Var Apprentice##20409 |q 10331 |goto Netherstorm 61.23,84.95
+  collect Smithing Hammer##29365 |q 10331 |goto Netherstorm 61.23,84.95 |tip {dropsfrom}Kirin'Var Apprentice
 step
   talk Thadell##20464
   accept Needs More Cowbell##10334 |goto Netherstorm 57.72,84.94
@@ -206,19 +206,19 @@ step
   accept New Opportunities##10348 |goto Netherstorm 46.45,56.41
 step
   note Gather 15 Ivory Bells and return to Mehrdad at Midrealm Post.
-  collect Ivory Bell##184443 |q 10348 |goto Netherstorm 45.1,53.89
+  collect 15 Ivory Bell##29474 |q 10348 |goto Netherstorm 45.1,53.89 |tip {dropsfrom}Ivory Bell
 step
   talk Mehrdad##20810
   accept Run a Diagnostic!##10417 |goto Netherstorm 46.45,56.41
 step
   note Retrieve the Diagnostic Results and return them to Mehrdad at Midrealm Post.
-  collect Diagnostic Equipment##184589 |q 10417 |goto Netherstorm 48.23,55.0
+  collect Diagnostic Results##29741 |q 10417 |goto Netherstorm 48.23,55.0 |tip {dropsfrom}Diagnostic Equipment
 step
   talk Shauly Pore##20921
   accept Keeping Up Appearances##10433 |goto Netherstorm 46.48,56.04
 step
   note Bring 10 Ripfang Lynx Pelts to Shauly Pore at Midrealm Post.
-  kill Ripfang Lynx##20671 |q 10433 |goto Netherstorm 44.01,53.57
+  collect 10 Ripfang Lynx Pelt##29801 |q 10433 |goto Netherstorm 44.01,53.57 |tip {dropsfrom}Ripfang Lynx
 step
   turnin Naaru Technology##10243 |goto Netherstorm 23.21,68.25
 step
@@ -226,7 +226,7 @@ step
   accept It's a Fel Reaver, But with Heart##10309 |goto Netherstorm 26.82,76.98
 step
   note Recover the Heart of the Fel Reaver and deliver it to N. D. Meancamp at The Heap in the Netherstorm.
-  kill Scrapped Fel Reaver##20243 |q 10309 |goto Netherstorm 26.52,78.7 |elite
+  collect Heart of the Fel Reaver##29260 |q 10309 |goto Netherstorm 26.52,78.7 |tip {dropsfrom}Scrapped Fel Reaver
 step
   note Place the three Surveying Markers and then return to Zephyrion at the Stormspire in the Netherstorm.
   kill Surveying Marker One##20473 |q 10335 |goto Netherstorm 51.66,20.47
@@ -265,7 +265,7 @@ step
   accept Nightbane##9644 |goto Netherstorm 32.22,63.6
 step
   note Go to the Master's Terrace in Karazhan and use Kalynna's Urn to summon Nightbane. Retrieve the Faint Arcane Essence from Nightbane's corpse and bring it to Archmage Alturus.
-  kill Nightbane##17225 |q 9644 |goto Karazhan - Raid -1,-1 |raid
+  collect Faint Arcane Essence##24139 |q 9644 |goto Karazhan - Raid -1,-1 |tip {dropsfrom}Nightbane
 step
   talk Spymaster Thalodien##19468
   accept High Value Targets##10193 |goto Netherstorm 32.0,64.07
@@ -274,7 +274,7 @@ step
   accept That Little Extra Kick##10199 |goto Netherstorm 32.27,63.92
 step
   note Obtain 5 Nether Ray Stingers for Boots at Area 52 in the Netherstorm.
-  kill Nether Ray##18880 |q 10199 |goto Netherstorm 38.85,64.2
+  collect 5 Nether Ray Stinger##28417 |q 10199 |goto Netherstorm 38.85,64.2 |tip {dropsfrom}Nether Ray
 step
   talk Rocket-Chief Fuselage##19570
   accept Invaluable Asset Zapping##10203 |goto Netherstorm 32.73,64.96
@@ -286,13 +286,13 @@ step
   accept Consortium Crystal Collection##10265 |goto Netherstorm 32.44,64.21
 step
   note Obtain an Arklon Crystal Artifact and return it to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  kill Pentatharon##20215 |q 10265 |goto Netherstorm 42.46,72.75
+  collect Arklon Crystal Artifact##28829 |q 10265 |goto Netherstorm 42.46,72.75 |tip {dropsfrom}Pentatharon
 step
   talk Ravandwyr##19217
   accept Rebuilding the Staff##10300 |goto Netherstorm 31.36,66.15
 step
   note Obtain 4 Flawless Crystal Shards from the ghosts at the Enkaat Ruins and return them to Ravandwyr at Area 52.
-  kill Disembodied Vindicator##18872 |q 10300 |goto Netherstorm 33.2,53.76
+  collect 4 Flawless Crystal Shard##29216 |q 10300 |goto Netherstorm 33.2,53.76 |tip {dropsfrom}Disembodied Vindicator, Disembodied Protector, Disembodied Exarch
 step
   talk Exarch Orelis##19466
   accept Measuring Warp Energies##10313 |goto Netherstorm 32.07,64.18
@@ -349,7 +349,7 @@ step
   accept Hitting the Motherlode##10293 |goto Netherstorm 44.08,36.05
 step
   note Zuben Elgenubi at the Stormspire wants you to obtain a Farahlite Core.
-  kill Cragskaar##20202 |q 10293 |goto Netherstorm 47.58,21.15 |elite
+  collect Farahlite Core##29164 |q 10293 |goto Netherstorm 47.58,21.15 |tip {dropsfrom}Cragskaar
 step
   talk Aurine Moonblaze##20871
   accept Creatures of the Eco-Domes##10427 |goto Netherstorm 42.32,32.56
@@ -358,7 +358,7 @@ step
   accept The Best Defense##10856 |goto Netherstorm 44.7,34.94
 step
   note Tag 12 Talbuks for Aurine Moonblaze at the Stormspire. You may tag either Talbuk Sires or Talbuk Does using the Talbuk Tagger.
-  kill Invis Talbuk Credit##20982 |q 10427 |goto Netherstorm 43.82,38.26
+  use Invis Talbuk Credit##20982 |q 10427 |goto Netherstorm 43.82,38.26 |tip {useit}
 step
   talk Agent Araxes##20551
   turnin The Flesh Lies...##10345 |goto Netherstorm 59.42,45.03
@@ -385,7 +385,7 @@ step
   accept Ethereum Secrets##10971 |goto Netherstorm 59.5,32.38
 step
   note Commander Ameer at the Protectorate Watch Post in Netherstorm wants you to bring him an Ethereum Prisoner I.D. Tag.
-  get Ethereum Secrets |q 10971 |goto Netherstorm 59.5,32.38
+  collect Ethereum Prisoner I.D. Tag##31957 |q 10971 |goto Netherstorm 59.5,32.38 |tip {dropsfrom}Porfus the Gem Gorger, Armbreaker Huffaz, Fel Tinkerer Zortan
 step
   talk Tyri##20110
   turnin Formal Introductions##10281 |goto Netherstorm 71.22,35.12
@@ -394,7 +394,7 @@ step
   accept A Promising Start##10272 |goto Netherstorm 71.22,35.12
 step
   note Gather 15 Nether Dragonkin Eggs, then return to Tyri and Jorad on the Celestial Ridge.
-  collect Nether Dragonkin Egg##184077 |q 10272 |goto Netherstorm 72.4,38.53
+  collect 15 Nether Dragonkin Egg##28971 |q 10272 |goto Netherstorm 72.4,38.53 |tip {dropsfrom}Nether Dragonkin Egg
 step
   talk Sab'aoth##22479
   turnin Bloody Imp-ossible!##10924 |goto Netherstorm 66.39,67.3
@@ -430,7 +430,7 @@ step
   accept Capturing the Keystone##10257 |goto Netherstorm 58.34,86.4
 step
   note Venture into Tempest Keep's Botanica and retrieve the Keystone from Commander Sarannis. Bring it to Archmage Vargoth at the Violet Tower.
-  get Capturing the Keystone |q 10257 |goto Netherstorm 58.34,86.4
+  collect The Keystone##28769 |q 10257 |goto Netherstorm 58.34,86.4 |tip {dropsfrom}Commander Sarannis, Commander Sarannis (1)
 step
   talk Custodian Dieworth##19488
   accept Destroy Naberius!##10320 |goto Netherstorm 57.5,86.34
@@ -511,7 +511,7 @@ step
   accept Pick Your Part##10206 |goto Netherstorm 32.99,64.66
 step
   note Collect 10 pieces of Ethereal Technology and return them to Papa Wheeler at Area 52 in the Netherstorm.
-  collect Ethereal Technology##183813 |q 10206 |goto Netherstorm 29.24,78.91
+  collect 10 Ethereal Technology##28457 |q 10206 |goto Netherstorm 29.24,78.91 |tip {dropsfrom}Ethereal Technology
 step
   talk Lead Sapper Blastfizzle##19634
   accept Dr. Boom!##10221 |goto Netherstorm 34.19,68.15
@@ -520,7 +520,7 @@ step
   accept Essence for the Engines##10224 |goto Netherstorm 32.43,66.78
 step
   note Collect 7 Mana Wraith Essences and return them to Chief Engineer Trep at Area 52 in the Netherstorm.
-  kill Mana Wraith##18864 |q 10224 |goto Netherstorm 34.2,60.2
+  collect 7 Mana Wraith Essence##28527 |q 10224 |goto Netherstorm 34.2,60.2 |tip {dropsfrom}Mana Wraith
 step
   talk Exarch Orelis##19466
   accept Attack on Manaforge Coruu##10246 |goto Netherstorm 32.07,64.18
@@ -529,7 +529,7 @@ step
   accept A Heap of Ethereals##10262 |goto Netherstorm 32.44,64.21
 step
   note Collect 10 Zaxxis Insignias and return them to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  kill Zaxxis Raider##18875 |q 10262 |goto Netherstorm 30.13,76.56
+  collect 10 Zaxxis Insignia##29209 |q 10262 |goto Netherstorm 30.13,76.56 |tip {dropsfrom}Zaxxis Raider, Warp-Raider Nesaad, Zaxxis Stalker
 step
   talk Anchorite Karja##19467
   accept Shutting Down Manaforge Duro##10322 |goto Netherstorm 32.04,64.18
@@ -541,7 +541,7 @@ step
   accept Sunfury Briefings##10328 |goto Netherstorm 32.07,64.18
 step
   note Go to Manaforge Duro and retrieve the Sunfury Military Briefing and the Sunfury Arcane Briefing from the Sunfury units stationed there. Return to Exarch Orellis when you've completed this task.
-  kill Sunfury Centurion##20140 |q 10328 |goto Netherstorm 59.3,66.49
+  collect Sunfury Military Briefing##29545 |q 10328 |goto Netherstorm 59.3,66.49 |tip {dropsfrom}Sunfury Centurion, Sunfury Bowman
 step
   talk Spymaster Thalodien##19468
   accept Shutting Down Manaforge B'naar##10329 |goto Netherstorm 32.0,64.07
@@ -568,13 +568,13 @@ step
   accept When Nature Goes Too Far##10429 |goto Netherstorm 42.32,32.56
 step
   note Aurine Moonblaze at the Stormspire wants you to bring her a Hulking Hydra Heart.
-  kill Markaru##20775 |q 10429 |goto Netherstorm 44.56,28.42
+  collect Hulking Hydra Heart##29768 |q 10429 |goto Netherstorm 44.56,28.42 |tip {dropsfrom}Markaru
 step
   talk Audi the Needle##20205
   accept Retrieving the Goods##10435 |goto Netherstorm 44.74,36.75
 step
   note Audi the Needle at the Stormspire wants you to bring her 10 Dome Generator Segments.
-  collect Dome Generator Segment##184607 |q 10435 |goto Netherstorm 45.18,12.06
+  collect Dome Generator Segment##29798 |q 10435 |goto Netherstorm 45.18,12.06 |tip {dropsfrom}Dome Generator Segment
 step
   talk Nether-Stalker Nauthis##20471
   accept Teleport This!##10857 |goto Netherstorm 44.7,34.94
@@ -586,7 +586,7 @@ step
   accept Ethereum Data##10384 |goto Netherstorm 56.82,38.7
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover the Ethereum Data Cell.
-  collect Ethereum Data Cell##184560 |q 10384 |goto Netherstorm 55.77,39.89
+  collect Ethereum Data Cell##29582 |q 10384 |goto Netherstorm 55.77,39.89 |tip {dropsfrom}Ethereum Data Cell
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to use your Phase Disruptor when you get in range of the Void Conduit that rests atop Ultris. Drop as many charges of the Phase Disruptor as you can to ensure total annihilation. The Phase Disruptor charges will automatically home in on the Void Conduit so long as you are close enough to use it.
   kill Void Conduit##20899 |q 10438 |goto Netherstorm 62.42,40.89
@@ -604,7 +604,7 @@ step
   accept A Thousand Worlds##10973 |goto Netherstorm 59.5,32.38
 step
   note Commander Ameer at the Protectorate Watch Post in Netherstorm wants you to bring him 5 Ethereum Prison Keys.
-  kill Ethereal Scavenger##18309 |q 10973 |goto Mana-Tombs - Dungeon -1,-1
+  collect Ethereum Prison Key##29460 |q 10973 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Ethereal Scavenger, Ethereal Crypt Raider, Ethereal Spellbinder
 step
   talk Tyri##20110
   turnin A Promising Start##10272 |goto Netherstorm 71.22,35.12
@@ -637,7 +637,7 @@ step
   accept To the Stormspire##10423 |goto Netherstorm 46.45,56.41
 step
   note Nether-Stalker Nauthis wants you to use the Mental Interference Rod on the Mo'arg at Forge Base: Gehenna and use their Detonate Teleporter ability on the three teleporters in the forge camp.
-  kill Western Gehenna Teleporter Credit##22348 |q 10857 |goto Netherstorm 39.2,20.43
+  use Western Gehenna Teleporter Credit##22348 |q 10857 |goto Netherstorm 39.2,20.43 |tip {useit}
 step
   talk Exarch Orelis##19466
   turnin Attack on Manaforge Coruu##10246 |goto Netherstorm 32.07,64.18
@@ -673,7 +673,7 @@ step
   accept Elemental Power Extraction##10226 |goto Netherstorm 32.43,66.78
 step
   note Extract 5 Elemental Power for Chief Engineer Trep at Area 52 in the Netherstorm.
-  get Elemental Power Extraction |q 10226 |goto Netherstorm 32.43,66.78
+  collect Elemental Power##28548 |q 10226 |goto Netherstorm 32.43,66.78 |tip {dropsfrom}Elemental Power
 step
   talk Papa Wheeler##19645
   accept In A Scrap With The Legion##10232 |goto Netherstorm 32.99,64.66
@@ -712,7 +712,7 @@ step
   accept Diagnosis: Critical##10424 |goto Netherstorm 43.54,35.15
 step
   note Use the Diagnostic Device while standing near the Eco-Dome Sutheron Generator and bring the Diagnostic Results back to Ghabar at the Stormspire.
-  get Diagnosis: Critical |q 10424 |goto Netherstorm 43.54,35.15
+  collect Diagnostic Results##29769 |q 10424 |goto Netherstorm 43.54,35.15
 step
   talk Image of Commander Ameer##20482
   turnin Ethereum Data##10384 |goto Netherstorm 56.82,38.7
@@ -721,7 +721,7 @@ step
   accept Potential for Brain Damage = High##10385 |goto Netherstorm 56.82,38.7
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover 15 pieces of Ethereum Relay Data.
-  kill Ethereum Relay##20619 |q 10385 |goto Netherstorm 56.08,41.03
+  collect Ethereum Relay Data##29459 |q 10385 |goto Netherstorm 56.08,41.03 |tip {dropsfrom}Ethereum Relay
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to speak with Captain Saeed and then follow his army to Manaforge Ultris and kill Dimensius the All-Devouring!
   kill Dimensius the All-Devouring##19554 |q 10439 |goto Netherstorm 62.41,40.88 |elite
@@ -736,7 +736,7 @@ step
   accept Stasis Chambers of Bash'ir##10974 |goto Netherstorm 59.5,32.38
 step
   note Use the Ethereum Key Tablet - Alpha to open Stasis Chamber Alpha at Bash'ir's Landing in Blade's Edge Mountains.
-  get Stasis Chambers of Bash'ir |q 10974 |goto Netherstorm 59.5,32.38
+  collect Evidence from Alpha##32061 |q 10974 |goto Netherstorm 59.5,32.38 |tip {dropsfrom}Thuk the Defiant
 step
   note Speak with Wind Trader Marid and lure him away from his trading post. Deal with him and then return to Tyri and Jorad on the Celestial Ridge.
   kill Wind Trader Marid##20071 |q 10273 |goto Netherstorm 58.32,31.66
@@ -757,7 +757,7 @@ step
   accept One Demon's Trash...##10234 |goto Netherstorm 46.63,56.53
 step
   note Gather 10 Fel Reaver Parts and return them to Mama Wheeler at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  collect Fel Reaver Part##183935 |q 10234 |goto Netherstorm 50.05,58.61
+  collect 10 Fel Reaver Part##28551 |q 10234 |goto Netherstorm 50.05,58.61 |tip {dropsfrom}Fel Reaver Part
 step
   note Kill 5 Mo'arg Doomsmiths and 15 Gan'arg Engineers. Then return to Papa Wheeler at Area 52 in the Netherstorm.
   kill Mo'arg Doomsmith##16944 |q 10232 |goto Netherstorm 50.22,59.22
@@ -811,7 +811,7 @@ step
   accept S-A-B-O-T-A-G-E##10405 |goto Netherstorm 56.82,38.7
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover 1 Prepared Ethereum Wrapping.
-  kill Ethereum Archon##20458 |q 10405 |goto Netherstorm 55.75,42.87
+  collect Prepared Ethereum Wrapping##29591 |q 10405 |goto Netherstorm 55.75,42.87 |tip {dropsfrom}Ethereum Archon, Ethereum Overlord
 step
   talk Tyri##20110
   turnin Securing the Celestial Ridge##10274 |goto Netherstorm 71.22,35.12
@@ -823,7 +823,7 @@ step
   accept A Convincing Disguise##10197 |goto Netherstorm 48.24,86.6
 step
   note Obtain a set of Sunfury Arcanist Robes, one pair of Sunfury Researcher Gloves and a Sunfury Guardsman Medallion and bring them to Caledis Brightdawn at Manaforge Coruu in Netherstorm.
-  kill Sunfury Researcher##20136 |q 10197 |goto Netherstorm 53.02,83.05
+  collect Sunfury Researcher Gloves##28636 |q 10197 |goto Netherstorm 53.02,83.05 |tip {dropsfrom}Sunfury Researcher
 step
   talk Gahruj##20066
   turnin Request for Assistance##10266 |goto Netherstorm 46.67,56.95
@@ -835,13 +835,13 @@ step
   accept Declawing Doomclaw##10235 |goto Netherstorm 46.63,56.53
 step
   note Obtain Doomclaw's Hand and deliver it to Mama Wheeler at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  kill Doomclaw##19738 |q 10235 |goto Netherstorm 50.69,57.19
+  collect Doomclaw's Hand##28563 |q 10235 |goto Netherstorm 50.69,57.19 |tip {dropsfrom}Doomclaw
 step
   talk Gahruj##20066
   accept Rightful Repossession##10267 |goto Netherstorm 46.67,56.95
 step
   note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  collect Box of Surveying Equipment##184031 |q 10267 |goto Netherstorm 58.82,65.76
+  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76 |tip {dropsfrom}Box of Surveying Equipment
 step
   talk Tashar##20913
   turnin Testing the Prototype##10430 |goto Netherstorm 44.69,14.57
@@ -859,7 +859,7 @@ step
   accept Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43 |elite
+  collect First Half of Socrethar's Stone##29624 |q 10407 |goto Netherstorm 36.15,26.43 |tip {dropsfrom}Forgemaster Morug
 step
   talk Image of Commander Ameer##20482
   turnin S-A-B-O-T-A-G-E##10405 |goto Netherstorm 56.82,38.7
@@ -955,7 +955,7 @@ step
   accept Full Triangle##10276 |goto Netherstorm 34.62,37.95
 step
   note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
-  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53 |elite
+  collect Ata'mal Crystal##29026 |q 10276 |goto Netherstorm 53.51,21.53 |tip {dropsfrom}Culuthas
 step
   talk Image of Nexus-Prince Haramad##20084
   turnin Full Triangle##10276 |goto Netherstorm 45.87,35.96

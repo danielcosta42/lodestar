@@ -31,10 +31,10 @@ step
   accept The Sleeper Has Awakened##5321 |goto Darkshore 44.4,76.43
 step
   note Bring 5 Scaber Stalks and 1 Death Cap to Barithras Moonshade in Auberdine.
-  collect Scaber Stalk##11714 |q 947 |goto Darkshore 55.51,34.59
+  collect 5 Scaber Stalk##5271 |q 947 |goto Darkshore 55.51,34.59 |tip {dropsfrom}Scaber Stalk
 step
   note Escort Kerlonian Evershade to Liladris Moonriver at Maestra's Post in Ashenvale.
-  collect Kerlonian's Chest##176634 |q 5321 |goto Darkshore 44.39,76.31
+  collect Horn of Awakening##13536 |q 5321 |goto Darkshore 44.39,76.31 |tip {dropsfrom}Kerlonian's Chest
 step
   talk Asterion##3650
   turnin Bashal'Aran##954 |goto Darkshore 44.17,36.29
@@ -88,7 +88,7 @@ step
   accept A Lost Master##986 |goto Darkshore 39.37,43.48
 step
   note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
-  kill Moonstalker Matriarch##2071 |q 986 |goto Darkshore 43.03,89.68
+  collect 5 Fine Moonstalker Pelt##5386 |q 986 |goto Darkshore 43.03,89.68 |tip {dropsfrom}Moonstalker Matriarch, Moonstalker Sire
 step
   turnin The Master's Glaive##944 |goto Darkshore 43.55,76.29
 step

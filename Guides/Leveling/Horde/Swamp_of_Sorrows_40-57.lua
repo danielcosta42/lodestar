@@ -14,13 +14,13 @@ step
   accept Draenethyst Crystals##1389 |goto Swamp of Sorrows 25.98,31.4
 step
   note Bring 6 Draenethyst crystals to Magtoor at The Harborage in the Swamp of Sorrows.
-  collect Draenethyst Crystals##22550 |q 1389 |goto Swamp of Sorrows 62.08,22.85
+  collect 6 Draenethyst Crystal##6071 |q 1389 |goto Swamp of Sorrows 62.08,22.85 |tip {dropsfrom}Draenethyst Crystals
 step
   talk Dar##5591
   accept Lack of Surplus##698 |goto Swamp of Sorrows 44.7,57.21
 step
   note Bring 8 Unprepared Sawtooth Flanks to Tok'Kar in Swamp of Sorrows.
-  kill Sawtooth Crocolisk##1082 |q 698 |goto Swamp of Sorrows 56.53,41.34
+  collect 8 Unprepared Sawtooth Flank##6169 |q 698 |goto Swamp of Sorrows 56.53,41.34 |tip {dropsfrom}Sawtooth Crocolisk, Sawtooth Snapper
 step
   talk Helgrum the Swift##1442
   accept Neeka Bloodscar##1418 |goto Swamp of Sorrows 47.74,55.2
@@ -29,19 +29,19 @@ step
   accept Pool of Tears##1424 |goto Swamp of Sorrows 47.93,54.78
 step
   note Fel'zerul in Stonard wants you to gather 10 Atal'ai Artifacts.
-  collect Atal'ai Artifact##30854 |q 1424 |goto Swamp of Sorrows 70.61,53.62
+  collect 10 Atal'ai Artifact##6175 |q 1424 |goto Swamp of Sorrows 70.61,53.62 |tip {dropsfrom}Atal'ai Artifact
 step
   talk Dar##5591
   accept Fresh Meat##1430 |goto Swamp of Sorrows 44.7,57.21
 step
   note Bring 10 Monstrous Crawler Legs to Dar in the Swamp of Sorrows.
-  kill Monstrous Crawler##1088 |q 1430 |goto Swamp of Sorrows 93.13,46.26
+  collect 10 Monstrous Crawler Leg##6184 |q 1430 |goto Swamp of Sorrows 93.13,46.26 |tip {dropsfrom}Monstrous Crawler
 step
   talk Fel'zerul##1443
   accept The Temple of Atal'Hakkar##1445 |goto Swamp of Sorrows 47.93,54.78
 step
   note Collect 20 Fetishes of Hakkar and bring them to Fel'Zerul in Stonard.
-  kill Cursed Atal'ai##5243 |q 1445 |goto Swamp of Sorrows 76.64,47.42
+  collect 20 Fetish of Hakkar##6181 |q 1445 |goto Swamp of Sorrows 76.64,47.42 |tip {dropsfrom}Cursed Atal'ai, Atal'ai Warrior, Atal'ai Witch Doctor
 step
   only Mage
   talk Haromm##986
@@ -49,7 +49,7 @@ step
 step
   only Mage
   note Collect a sample of air, fire, earth and water for Bath'rah the Windwatcher.
-  kill Dust Devil##832 |q 8410 |goto Westfall 42.75,49.32
+  collect Elemental Air##7069 |q 8410 |goto Westfall 42.75,49.32 |tip {dropsfrom}Dust Devil, Thundering Exile, Cyclonian
 step
   only Druid
   talk Kartosh##988
@@ -57,7 +57,7 @@ step
 step
   only Druid
   note Bring a piece of felcloth to Impsy in Felwood.
-  kill Felguard Sentry##6011 |q 8419 |goto Blasted Lands 59.78,54.09
+  collect Felcloth##14256 |q 8419 |goto Blasted Lands 59.78,54.09 |tip {dropsfrom}Felguard Sentry, Legashi Satyr, Legashi Rogue
 step
   talk Cersei Dusksinger##17109
   accept Little Morsels##9440 |goto Swamp of Sorrows 47.81,54.95
@@ -75,7 +75,7 @@ step
   accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
 step
   note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
-  kill Archmage Allistarj##7666 |q 3627 |goto Blasted Lands 66.69,29.24 |elite
+  collect Amulet of Allistarj##10755 |q 3627 |goto Blasted Lands 66.69,29.24 |tip {dropsfrom}Archmage Allistarj
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -95,7 +95,7 @@ step
   accept Lack of Surplus##699 |goto Swamp of Sorrows 81.32,80.97
 step
   note Bring 6 Sawtooth Snapper Claws to Tok'Kar in the Swamp of Sorrows.
-  kill Sawtooth Snapper##1087 |q 699 |goto Swamp of Sorrows 80.99,28.41
+  collect 6 Sawtooth Snapper Claw##6168 |q 699 |goto Swamp of Sorrows 80.99,28.41 |tip {dropsfrom}Sawtooth Snapper
 step
   talk Neeka Bloodscar##5394
   turnin Neeka Bloodscar##1418 |goto Badlands 6.49,47.2 |tip {turninat}Badlands
@@ -149,7 +149,7 @@ step
   accept You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14
 step
   note Destroy Razelikh the Defiler and return the Severed Horn of the Defiler to the Fallen Hero of the Horde. You will also need to return the Ward of the Defiler so that the Fallen Hero can destroy it, preventing it from ever falling into the wrong hands.
-  get You Are Rakh'likh, Demon |q 3628 |goto Swamp of Sorrows 34.29,66.14
+  collect Severed Horn of the Defiler##10759 |q 3628 |goto Swamp of Sorrows 34.29,66.14 |tip {dropsfrom}Razelikh the Defiler
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -184,7 +184,7 @@ step
 step
   only Warrior
   note Bring the Voodoo Feathers from the trolls in the Sunken Temple to the Fallen Hero of the Horde.
-  kill Gasher##5713 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
+  collect Amber Voodoo Feather##20606 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Gasher, Zul'Lor
 step
   talk Katar##5593
   turnin Threat From the Sea##1422 |goto Swamp of Sorrows 83.76,80.41
@@ -202,7 +202,7 @@ step
   accept The Swamp Talker##2623 |goto Swamp of Sorrows 44.97,57.37
 step
   note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
-  kill Swamp Talker##950 |q 2623 |goto Swamp of Sorrows 62.6,88.07
+  collect Warchief's Orders##8463 |q 2623 |goto Swamp of Sorrows 62.6,88.07 |tip {dropsfrom}Swamp Talker
 step
   only Warrior
   talk Fallen Hero of the Horde##7572

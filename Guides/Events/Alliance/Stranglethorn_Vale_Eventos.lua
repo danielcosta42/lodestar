@@ -22,7 +22,7 @@ step
   accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
   note Bring six Golden Scale Bracers to Hank the Hammer in Stormwind.
-  get The Origins of Smithing |q 2758 |goto Stormwind City 55.8,15.99
+  collect Golden Scale Bracers##6040 |q 2758 |goto Stormwind City 55.8,15.99
 step
   talk Krazek##773
   turnin Investigate the Camp##201 |goto Stranglethorn Vale 26.94,77.21
@@ -85,13 +85,13 @@ step
   accept Heroes of Old##2702 |goto Swamp of Sorrows 34.29,66.14
 step
   note Bring forty Mithril Bars and forty Iron Bars to Galvan the Ancient in Stranglethorn.
-  get Smelt On, Smelt Off |q 2761 |goto Stranglethorn Vale 50.62,20.48
+  collect Iron Bar##3575 |q 2761 |goto Stranglethorn Vale 50.62,20.48
 step
   note Bring forty Mithril Bars and five Truesilver Bars to Galvan the Ancient in Stranglethorn.
-  get The Great Silver Deceiver |q 2762 |goto Stranglethorn Vale 50.62,20.48
+  collect Mithril Bar##3860 |q 2762 |goto Stranglethorn Vale 50.62,20.48
 step
   note Bring forty Mithril Bars and four Citrines to Galvan the Ancient in Stranglethorn.
-  get The Art of the Imbue |q 2763 |goto Stranglethorn Vale 50.62,20.48
+  collect Mithril Bar##3860 |q 2763 |goto Stranglethorn Vale 50.62,20.48
 step
   talk Galvan the Ancient##7802
   turnin Smelt On, Smelt Off##2761 |goto Stranglethorn Vale 50.62,20.48
@@ -156,7 +156,7 @@ step
   accept The Name of the Beast##3510 |goto Azshara 77.13,42.79
 step
   note Slay Hetaera and bring back Hetaera's Bloodied Head, Hetaera's Beaten Head, and Hetaera's Bruised Head to Lord Arkkoroc.
-  kill Hetaera##6140 |q 3510 |goto Azshara 56.73,44.79
+  collect Hetaera's Beaten Head##10599 |q 3510 |goto Azshara 56.73,44.79 |tip {dropsfrom}Hetaera
 step
   talk Lord Arkkoroc##6134
   turnin The Name of the Beast##3510 |goto Azshara 77.13,42.79
@@ -171,7 +171,7 @@ step
   accept Azsharite##3602 |goto Azshara 60.82,66.35
 step
   note Recover twenty Crystallized Azsharite from southern Azshara. You may use the Felhound to assist you in 'sniffing' out the location of cleverly hidden deposits.
-  collect Azsharite Formation##152620 |q 3602 |goto Azshara 53.52,78.4
+  collect Crystallized Azsharite##10714 |q 3602 |goto Azshara 53.52,78.4 |tip {dropsfrom}Azsharite Formation
 step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35

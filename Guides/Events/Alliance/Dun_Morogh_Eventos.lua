@@ -26,7 +26,7 @@ step
   kill Frostmane Troll Whelp##706 |q 182 |goto Dun Morogh 27.16,79.96
 step
   note Collect three Dim Necrotic Stones from the Scourge outside Ironforge and investigate the glowing runic circles nearby their encampment.
-  kill Skeletal Soldier##16422 |q 9261 |goto Elwynn Forest 34.39,52.45
+  collect Dim Necrotic Stone##22892 |q 9261 |goto Elwynn Forest 34.39,52.45 |tip {dropsfrom}Skeletal Soldier, Spectral Apparition, Spectral Spirit
 step
   only Dwarf Hunter
   talk Grif Wildheart##1231
@@ -52,7 +52,7 @@ step
   accept The Stolen Journal##218 |goto Dun Morogh 25.08,75.71
 step
   note Grelin Whitebeard wants you to kill Grik'nir the Cold, and retrieve his journal.
-  kill Grik'nir the Cold##808 |q 218 |goto Dun Morogh 30.48,80.15
+  collect Grelin Whitebeard's Journal##2004 |q 218 |goto Dun Morogh 30.48,80.15 |tip {dropsfrom}Grik'nir the Cold
 step
   only Dwarf Hunter
   talk Grif Wildheart##1231

@@ -17,19 +17,19 @@ step
   accept Naga at the Zoram Strand##6442 |goto Ashenvale 11.69,34.91
 step
   note Bring 20 Wrathtail Heads to Marukai along the Zoram Strand.
-  kill Wrathtail Myrmidon##3711 |q 6442 |goto Ashenvale 7.2,14.49
+  collect 20 Wrathtail Head##5490 |q 6442 |goto Ashenvale 7.2,14.49 |tip {dropsfrom}Wrathtail Myrmidon, Wrathtail Razortail, Wrathtail Wave Rider
 step
   talk Mitsuwa##12721
   accept Troll Charm##6462 |goto Ashenvale 11.65,34.85
 step
   note Bring 8 Troll Charms to Mitsuwa at the Zoram'gar Outpost.
-  collect Troll Chest##178144 |q 6462 |goto Ashenvale 40.76,33.64
+  collect 8 Troll Charm##16602 |q 6462 |goto Ashenvale 40.76,33.64 |tip {dropsfrom}Troll Chest
 step
   talk Je'neu Sancrea##12736
   accept The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
 step
   note Bring 20 Sapphires of Aku'Mai to Je'neu Sancrea in Ashenvale.
-  collect Sapphire of Aku'Mai##178184 |q 6563 |goto Darkshore 31.63,92.81
+  collect 20 Sapphire of Aku'Mai##16784 |q 6563 |goto Darkshore 31.63,92.81 |tip {dropsfrom}Sapphire of Aku'Mai
 step
   talk Je'neu Sancrea##12736
   accept Allegiance to the Old Gods##6565 |goto Ashenvale 11.56,34.29
@@ -38,7 +38,7 @@ step
   accept Amongst the Ruins##6921 |goto Ashenvale 11.56,34.29
 step
   note Bring the Fathom Core to Je'neu Sancrea at Zoram'gar Outpost, Ashenvale.
-  collect Fathom Stone##177964 |q 6921 |goto Blackfathom Deeps - Dungeon -1,-1
+  collect Fathom Core##16762 |q 6921 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {dropsfrom}Fathom Stone
 step
   note Kill Lorgus Jett in Blackfathom Deeps and then return to Je'neu Sancrea in Ashenvale.
   kill Lorgus Jett##12902 |q 6565 |goto Blackfathom Deeps - Dungeon -1,-1 |elite
@@ -56,7 +56,7 @@ step
   accept Satyr Horns##6441 |goto Ashenvale 73.06,61.48
 step
   note Collect 16 Satyr Horns for Pixel in Splintertree Post.
-  kill Xavian Rogue##3752 |q 6441 |goto Ashenvale 78.4,45.31
+  collect 16 Satyr Horns##5481 |q 6441 |goto Ashenvale 78.4,45.31 |tip {dropsfrom}Xavian Rogue, Xavian Betrayer, Xavian Felsworn
 step
   talk Valusha##17355
   accept Destroy the Legion##9534 |goto Ashenvale 73.23,60.39
@@ -71,13 +71,13 @@ step
   accept The Lost Pages##6504 |goto Ashenvale 70.01,71.16
 step
   note Find the 12 missing pages of the Shredder Operating Manual, and put them together to form Chapters 1, 2, and 3. Return the pages to Gurda Ragescar near Splintertree Post.
-  get The Lost Pages |q 6504 |goto Ashenvale 70.01,71.16
+  collect Shredder Operating Manual - Chapter 1##16642 |q 6504 |goto Ashenvale 70.01,71.16
 step
   talk Locke Okarr##11820
   accept Warsong Supplies##6571 |goto Ashenvale 71.4,67.63
 step
   note Collect the Warsong Supplies: Warsong Saw Blades, Logging Rope, Warsong Oil, and the Warsong Axe Shipment for Locke Okarr in Splintertree Post.
-  get Warsong Supplies |q 6571 |goto Ashenvale 71.4,67.63
+  collect Warsong Saw Blades##16742 |q 6571 |goto Ashenvale 71.4,67.63
 step
   note Slay 6 Mannoroc Lashers, 6 Felguards and 6 Searing Infernals, and then return to Valusha at Splintertree Post in Ashenvale.
   kill Mannoroc Lasher##11697 |q 9534 |goto Ashenvale 79.38,81.53
@@ -113,7 +113,7 @@ step
   accept King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
 step
   note Place Karang's Banner on the Foulweald Totem Mound. Do not let the furbolgs destroy the banner. Defeat Chief Murgut and bring Murgut's Totem to Karang Amakkar at Zoram'gar.
-  get King of the Foulweald |q 6621 |goto Ashenvale 11.9,34.54
+  collect Murgut's Totem##16976 |q 6621 |goto Ashenvale 11.9,34.54 |tip {dropsfrom}Chief Murgut, Murgut's Totem Basket
 step
   talk Valusha##17355
   turnin Destroy the Legion##9534 |goto Ashenvale 73.23,60.39

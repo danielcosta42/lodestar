@@ -13,7 +13,7 @@ step
   accept Investigate the Scourge of Ironforge##9261 |goto Dun Morogh 52.98,35.03
 step
   note Collect three Dim Necrotic Stones from the Scourge outside Ironforge and investigate the glowing runic circles nearby their encampment.
-  kill Skeletal Soldier##16422 |q 9261 |goto Elwynn Forest 34.39,52.45
+  collect Dim Necrotic Stone##22892 |q 9261 |goto Elwynn Forest 34.39,52.45 |tip {dropsfrom}Skeletal Soldier, Spectral Apparition, Spectral Spirit
 step
   talk Costumed Orphan Matron##24519
   turnin Stop the Fires!##11131 |goto Dun Morogh 46.19,53.14

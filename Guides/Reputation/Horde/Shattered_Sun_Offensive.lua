@@ -109,10 +109,10 @@ step
   kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
-  get Discovering Your Roots |q 11520 |goto Isle of Quel'Danas 51.49,32.46
+  collect 5 Razorthorn Root##34254 |q 11520 |goto Isle of Quel'Danas 51.49,32.46 |tip {dropsfrom}Razorthorn Root
 step
   note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
-  get Rediscovering Your Roots |q 11521 |goto Isle of Quel'Danas 51.49,32.46
+  collect 5 Razorthorn Root##34254 |q 11521 |goto Isle of Quel'Danas 51.49,32.46 |tip {dropsfrom}Razorthorn Root
 step
   note Vindicator Xayanna at the Shattered Sun Staging Area wants you to place the Attuned Crystal Cores inside 5 defeated Erratic Sentries to turn them into friendly units.
   get Erratic Behavior |q 11524 |goto Isle of Quel'Danas 47.6,35.25
@@ -127,10 +127,10 @@ step
   kill Pit Overlord##25031 |q 11533 |goto Isle of Quel'Danas 53.28,71.0 |elite
 step
   note Smith Hauthaa in Sun's Reach Armory wants you to kill Darkspine Myrmidon to the east and use their keys to steal three pieces of the ore from their chests.
-  collect Darkspine Ore Chest##187264 |q 11535 |goto Isle of Quel'Danas 61.56,58.84
+  collect Darkspine Iron Ore##34479 |q 11535 |goto Isle of Quel'Danas 61.56,58.84 |tip {dropsfrom}Darkspine Ore Chest
 step
   note Smith Hauthaa in Sun's Reach Armory wants you to kill Darkspine Myrmidon to the east and use their keys to steal three pieces of the ore from their chests.
-  collect Darkspine Ore Chest##187264 |q 11536 |goto Isle of Quel'Danas 61.56,58.84
+  collect Darkspine Iron Ore##34479 |q 11536 |goto Isle of Quel'Danas 61.56,58.84 |tip {dropsfrom}Darkspine Ore Chest
 step
   note Harbinger Inuuro wants you to slay 6 Burning Legion Demons and the Emissary of Hate in Dawning Square. Use the Shattered Sun Banner to impale the Emissary of Hate's corpse.
   get The Battle Must Go On |q 11537 |goto Isle of Quel'Danas 47.65,35.06
@@ -154,22 +154,22 @@ step
   get Keeping the Enemy at Bay |q 11543 |goto Isle of Quel'Danas 52.66,14.79
 step
   note Smith Hauthaa needs you to produce 5 Cleansed Ata'mal Metal. Do so by breaking down Ata'mal Armaments on her anvil at the Sun's Reach Armory on the Isle of Quel'Danas.
-  get Ata'mal Armaments |q 11544 |goto Isle of Quel'Danas 50.58,40.77
+  collect Cleansed Ata'mal Metal##34501 |q 11544 |goto Isle of Quel'Danas 50.58,40.77
 step
   note Mar'nah at the Sun's Reach Harbor wants you to gather 5 Bloodberries from the bushes found on Quel'Danas.
-  collect Bloodberry Bush##187333 |q 11546 |goto Isle of Quel'Danas 42.2,38.9
+  collect 5 Bloodberry##34502 |q 11546 |goto Isle of Quel'Danas 42.2,38.9 |tip {dropsfrom}Bloodberry Bush
 step
   note Astromancer Darnarian in the Sun's Reach Sanctum wants you to use the Astromancer's Crystal at the Bloodcrystal, the Dawning Square portal, and the naga shrine at Greengill Coast.
   get Know Your Ley Lines |q 11547 |goto Isle of Quel'Danas 48.51,44.42
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! With the essence in hand, my mages will be able to dismantle Agamath, ultimately collapsing the gateway and unlocking the way further into the sunwell.
-  kill Lady Vashj##21212 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1 |raid
+  collect Essence of the Immortals##34544 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! Rohendor cannot withstand the combined force of our mages!
-  kill Lady Vashj##21212 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1 |raid
+  collect Essence of the Immortals##34544 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   note Bring to me the essence of immortals ÔÇö found only on the most powerful beings of this world ÔÇö and Archonisus is sure to crumble!
-  kill Lady Vashj##21212 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1 |raid
+  collect Essence of the Immortals##34544 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   talk Exarch Larethor##24813
   turnin Crisis at the Sunwell##11481 |goto Isle of Quel'Danas 47.42,30.74
@@ -295,16 +295,16 @@ step
   get The Scryer's Scryer |q 11490 |goto Magisters' Terrace - Dungeon -1,-1
 step
   note Obtain 10 Smuggled Mana Cells and return them to Exarch Nasuun on the Terrace of Light in Shattrath City.
-  kill Phase Wyrm##24917 |q 11513 |goto Blade's Edge Mountains 51.44,17.52
+  collect 10 Smuggled Mana Cell##34246 |q 11513 |goto Blade's Edge Mountains 51.44,17.52 |tip {dropsfrom}Phase Wyrm, Smuggled Mana Cell
 step
   note Obtain 10 Smuggled Mana Cells and return them to Exarch Nasuun on the Terrace of Light in Shattrath City.
-  kill Phase Wyrm##24917 |q 11514 |goto Blade's Edge Mountains 51.44,17.52
+  collect 10 Smuggled Mana Cell##34246 |q 11514 |goto Blade's Edge Mountains 51.44,17.52 |tip {dropsfrom}Phase Wyrm, Smuggled Mana Cell
 step
   note Bring 8 Nether Residue to Emissary Mordin in Shattrath City.
-  collect Felweed##181270 |q 11875 |goto Hellfire Peninsula 50.59,55.14
+  collect 8 Nether Residue##35229 |q 11875 |goto Hellfire Peninsula 50.59,55.14 |tip {dropsfrom}Felweed, Dreaming Glory, Ragveil
 step
   note Lord Torvos in Shattrath wants you to capture the Sunfury Attack Plans.
-  kill Sunfury Guardsman##18850 |q 11877 |goto Netherstorm 50.24,83.67
+  collect Sunfury Attack Plans##35231 |q 11877 |goto Netherstorm 50.24,83.67 |tip {dropsfrom}Sunfury Guardsman, Sunfury Warp-Engineer, Sunfury Bloodwarder
 step
   note Harbinger Haronem in Shattrath City wants you to use the Multiphase Spectrographic Goggles to take 6 Multiphase Readings.
   kill Multiphase Disturbance##25882 |q 11880 |goto Nagrand 36.5,67.99
@@ -340,7 +340,7 @@ step
   accept Blast the Gateway##11516 |goto Hellfire Peninsula 58.18,17.58
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  kill Kael'thas Sunstrider##24664 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite
+  collect Head of Kael'thas##34157 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |tip {dropsfrom}Kael'thas Sunstrider, Kael'thas Sunstrider (1)
 step
   note Magistrix Seyla at the Throne of Kil'jaeden wants you to kill 4 Emaciated Felbloods by using the Fel Siphon on them. You will need Demonic Blood from nearby Wrath Heralds to power the Fel Siphon.
   kill Emaciated Felblood##24955 |q 11515
@@ -358,7 +358,7 @@ step
   accept Wanted: The Signet Ring of Prince Kael'thas##11499 |goto Shattrath City 75.13,36.65
 step
   note Wind Trader Zhareem has asked you to obtain The Signet Ring of Prince Kael'thas. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Signet Ring of Prince Kael'thas |q 11499 |goto Shattrath City 75.13,36.65
+  collect The Signet Ring of Prince Kael'thas##34160 |q 11499 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Kael'thas Sunstrider (1)
 step
   talk Wind Trader Zhareem##24369
   turnin Wanted: The Signet Ring of Prince Kael'thas##11499 |goto Shattrath City 75.13,36.65

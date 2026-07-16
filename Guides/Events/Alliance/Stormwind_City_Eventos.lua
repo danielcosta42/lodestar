@@ -45,7 +45,7 @@ step
   accept Children's Week##1468 |goto Stormwind City 47.35,38.19
 step
   note Collect three Dim Necrotic Stones from the Scourge outside Stormwind and investigate the glowing runic circles nearby their encampment.
-  kill Skeletal Soldier##16422 |q 9260 |goto Elwynn Forest 34.39,52.45
+  collect Dim Necrotic Stone##22892 |q 9260 |goto Elwynn Forest 34.39,52.45 |tip {dropsfrom}Skeletal Soldier, Spectral Apparition, Spectral Spirit
 step
   note Slay 15 Black Broodlings, 10 Black Dragonspawn, 4 Black Wyrmkin and 1 Black Drake. Return to Helendis Riverhorn when the task is complete.
   kill Black Broodling##7047 |q 4182 |goto Burning Steppes 89.47,35.54
@@ -119,7 +119,7 @@ step
 step
   only Rogue
   note Steal the Defias Tower Key, break into the Defias Tower and uncover the contents of the Duskwood Chest. Take whatever information you find back to Mathias Shaw in Stormwind. Read Kearnen's Journal to gain insight about the tower.
-  collect Duskwood Chest##123214 |q 2359 |goto Westfall 70.41,73.93
+  collect Klaven Mortwake's Journal##7908 |q 2359 |goto Westfall 70.41,73.93 |tip {dropsfrom}Duskwood Chest
 step
   only Warrior
   talk Bartleby##6090
@@ -165,7 +165,7 @@ step
   accept The True Masters##4184 |goto Redridge Mountains 29.99,44.45
 step
   note Kill Bazil Thredd and bring his head back to Warden Thelwater at the Stockade.
-  kill Bazil Thredd##1716 |q 391 |goto The Stockade - Dungeon -1,-1
+  collect Head of Bazil Thredd##2926 |q 391 |goto The Stockade - Dungeon -1,-1 |tip {dropsfrom}Bazil Thredd
 step
   only Warrior
   talk Bartleby##6090
@@ -217,7 +217,7 @@ step
   accept The Missing Diplomat##1244 |goto Duskwood 74.83,44.22
 step
   note Find the Defias Docket and return it to Watcher Backus in Duskwood.
-  collect Defias Strongbox##21052 |q 1244 |goto Duskwood 23.92,72.07
+  collect Defias Docket##5947 |q 1244 |goto Duskwood 23.92,72.07 |tip {dropsfrom}Defias Strongbox
 step
   talk Master Mathias Shaw##332
   turnin Shadow of the Past##393 |goto Stormwind City 75.78,59.84
@@ -256,7 +256,7 @@ step
   accept Items of Some Consequence##2746 |goto Stormwind City 69.21,14.4
 step
   note Bring 3 Silk Cloth and 2 of Clara's Fresh Apples to Tyrion in Stormwind.
-  kill Flesh Eater##3 |q 2746 |goto Duskwood 23.81,38.2
+  collect 3 Silk Cloth##4306 |q 2746 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Skeletal Warrior, Skeletal Horror
 step
   talk Dashel Stonefist##4961
   turnin The Missing Diplomat##1447 |goto Stormwind City 70.55,44.89

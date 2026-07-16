@@ -14,13 +14,13 @@ step
   accept A Rare Bean##9800 |goto Nagrand 60.8,22.38
 step
   note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to bring him 15 Digested Caracoli.
-  collect Dung##182128 |q 9800 |goto Nagrand 52.83,23.31
+  collect Digested Caracoli##24419 |q 9800 |goto Nagrand 52.83,23.31 |tip {dropsfrom}Dung
 step
   talk Elementalist Lo'ap##18073
   accept Muck Diving##9815 |goto Nagrand 60.8,22.38
 step
   note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to retrieve 5 Muck-ridden Cores.
-  kill Muck Spawn##17154 |q 9815 |goto Nagrand 43.16,42.98
+  collect 5 Muck-ridden Core##24469 |q 9815 |goto Nagrand 43.16,42.98 |tip {dropsfrom}Muck Spawn
 step
   talk Elementalist Untrag##18071
   accept The Underneath##9818 |goto Nagrand 60.66,22.65
@@ -32,7 +32,7 @@ step
   accept Vile Idolatry##9863 |goto Nagrand 54.78,39.41
 step
   note Farseer Kurkush at Garadar in Nagrand wants you to bring him 20 Murkblood Idols.
-  kill Murkblood Putrifier##18202 |q 9863 |goto Nagrand 32.22,44.97
+  collect Murkblood Idol##24542 |q 9863 |goto Nagrand 32.22,44.97 |tip {dropsfrom}Murkblood Putrifier, Murkblood Raider, Ortor of Murkblood
 step
   talk Farseer Corhuk##18067
   accept The Missing War Party##9864 |goto Nagrand 54.8,39.87
@@ -41,7 +41,7 @@ step
   accept Murkblood Leaders...##9867 |goto Nagrand 54.53,39.96
 step
   note Farseer Margadesh at Garadar in Nagrand wants you to bring him the Head of Ortor of Murkblood.
-  kill Ortor of Murkblood##18204 |q 9867 |goto Nagrand 30.84,42.36
+  collect Head of Ortor of Murkblood##24543 |q 9867 |goto Nagrand 30.84,42.36 |tip {dropsfrom}Ortor of Murkblood
 step
   talk Elementalist Yal'hah##18234
   accept The Throne of the Elements##9870 |goto Nagrand 55.44,37.99
@@ -68,7 +68,7 @@ step
   accept Proving Your Strength##10479 |goto Nagrand 55.79,37.95
 step
   note Warden Bullrok at Garadar wants you to obtain 10 Obsidian Warbeads from the various ogres that inhabit Nagrand.
-  kill Boulderfist Crusher##17134 |q 10479 |goto Nagrand 74.47,64.02
+  collect 10 Obsidian Warbeads##25433 |q 10479 |goto Nagrand 74.47,64.02 |tip {dropsfrom}Boulderfist Crusher, Boulderfist Mystic, Boulderfist Warrior
 step
   talk Seer Nakha##23265
   accept A Strange Vision##11037 |goto Nagrand 55.64,37.34
@@ -98,7 +98,7 @@ step
   accept Armaments for Deception##9928 |goto Nagrand 73.81,62.6
 step
   note Lantresor of the Blade at the Burning Blade Ruins in Nagrand wants you to collect 20 Kil'sorrow Armaments.
-  kill Kil'sorrow Cultist##17147 |q 9928 |goto Nagrand 69.34,79.16
+  collect 20 Kil'sorrow Armaments##25554 |q 9928 |goto Nagrand 69.34,79.16 |tip {dropsfrom}Kil'sorrow Cultist, Kil'sorrow Armaments
 step
   talk Lantresor of the Blade##18261
   accept Returning the Favor##9931 |goto Nagrand 73.81,62.6
@@ -122,7 +122,7 @@ step
   accept I Must Have Them!##10109 |goto Nagrand 61.72,67.05
 step
   note Wazat across from Clan Watch in southern Nagrand wants you to bring him 3 Air Elemental Gases.
-  kill Dust Howler##17158 |q 10109 |goto Nagrand 68.0,50.8
+  collect Air Elemental Gas##27807 |q 10109 |goto Nagrand 68.0,50.8 |tip {dropsfrom}Dust Howler, Storm Rager, Living Cyclone
 step
   note Hunt down 30 Clefthoof and return to Hemet Nesingwary at Nesingwary's Safari in Nagrand to prove yourself.
   kill Clefthoof##18205 |q 9789 |goto Nagrand 65.01,63.98
@@ -137,7 +137,7 @@ step
   accept Vision of the Dead##10252 |goto Nagrand 51.82,56.84
 step
   note Nitrin at the Abandoned Armory in Nagrand wants you to bring him 1 Mountain Gronn Eyeball, 1 Flawless Greater Windroc Beak, and 1 Aged Clefthoof Blubber.
-  kill Mountain Gronn##19201 |q 10252 |goto Nagrand 27.22,42.14 |elite
+  collect Mountain Gronn Eyeball##28665 |q 10252 |goto Nagrand 27.22,42.14 |tip {dropsfrom}Mountain Gronn
 step
   talk Rocket-Chief Fuselage##19570
   turnin A Strange Vision##11037 |goto Netherstorm 32.73,64.96 |tip {turninat}Netherstorm
@@ -152,13 +152,13 @@ step
   accept Stealing from Thieves##9882 |goto Nagrand 31.36,57.79
 step
   note Obtain 10 Oshu'gun Crystal Fragments and bring them to Gezhe at Aeris Landing in Nagrand.
-  kill Vir'aani Raider##17149 |q 9882 |goto Nagrand 35.23,71.18
+  collect 10 Oshu'gun Crystal Fragment##25416 |q 9882 |goto Nagrand 35.23,71.18 |tip {dropsfrom}Vir'aani Raider, Oshu'gun Crystal Fragment
 step
   talk Gezhe##18265
   accept Obsidian Warbeads##9893 |goto Nagrand 31.36,57.79
 step
   note Bring 10 Obsidian Warbeads to Gezhe at Aeris Landing in Nagrand.
-  kill Boulderfist Crusher##17134 |q 9893 |goto Nagrand 74.47,64.02
+  collect 10 Obsidian Warbeads##25433 |q 9893 |goto Nagrand 74.47,64.02 |tip {dropsfrom}Boulderfist Crusher, Boulderfist Mystic, Boulderfist Warrior
 step
   talk Zerid##18276
   accept Gava'xi##9900 |goto Nagrand 30.78,58.13
@@ -167,7 +167,7 @@ step
   accept A Head Full of Ivory##9914 |goto Nagrand 31.77,56.78
 step
   note Collect 3 Pair of Ivory Tusks and return them to Shadrek at Aeris Landing in Nagrand.
-  kill Wild Elekk##18334 |q 9914 |goto Nagrand 46.86,54.6
+  collect 3 Pair of Ivory Tusks##25463 |q 9914 |goto Nagrand 46.86,54.6 |tip {dropsfrom}Wild Elekk
 step
   talk Zerid##18276
   accept Matters of Security##9925 |goto Nagrand 30.78,58.13
@@ -308,7 +308,7 @@ step
   accept Bleeding Hollow Supply Crates##9916 |goto Nagrand 55.63,37.53
 step
   note Elkay'gan the Mystic at Garadar in Nagrand wants you to recover 20 Bleeding Hollow Supply Crates.
-  kill Corki##18369 |q 9916 |goto Nagrand 72.53,70.74
+  collect Bleeding Hollow Supply Crate##25460 |q 9916 |goto Nagrand 72.53,70.74 |tip {dropsfrom}Corki, Bleeding Hollow Supply Crate
 step
   talk Greatmother Geyah##18141
   accept The Inconsolable Chieftain##10171 |goto Nagrand 56.7,34.31
@@ -362,7 +362,7 @@ step
   accept Levixus the Soul Caller##10253 |goto Nagrand 51.82,56.84
 step
   note Destroy Levixus and take the Book of the Dead from his possession.
-  kill Levixus##19847 |q 10253 |goto Terokkar Forest 39.63,71.27 |elite
+  collect The Book of the Dead##28677 |q 10253 |goto Terokkar Forest 39.63,71.27 |tip {dropsfrom}Levixus
 step
   note Hunt down 30 Ravenous Windrocs and then return to Fitz at the Nesingwary Safari in Nagrand.
   kill Ravenous Windroc##18220 |q 9855 |goto Nagrand 49.01,60.47
@@ -428,7 +428,7 @@ step
   accept Cho'war the Pillager##9946 |goto Nagrand 32.31,36.15
 step
   note Elder Yorley at the Mag'hari Procession in Nagrand has asked that you slay Cho'war the Pillager and retrieve the Head of Cho'war.
-  kill Cho'war the Pillager##18423 |q 9946 |goto Nagrand 26.03,13.94 |elite
+  collect Head of Cho'war##25590 |q 9946 |goto Nagrand 26.03,13.94 |tip {dropsfrom}Cho'war the Pillager
 step
   note Jorin Deadeye at Garadar in Nagrand has asked that you slay 25 Boulderfist Warriors and 25 Boulderfist Mages.
   kill Boulderfist Warrior##17136 |q 9907 |goto Nagrand 41.35,35.08
@@ -455,7 +455,7 @@ step
   accept Eating Damnation##9821 |goto Nagrand 61.33,24.82
 step
   note Gordawg at the Throne of the Elements in Nagrand has asked that you bring him 15 Enraged Crusher Cores.
-  kill Enraged Crusher##18062 |q 9821 |goto Nagrand 47.41,52.99
+  collect Enraged Crusher Core##24473 |q 9821 |goto Nagrand 47.41,52.99 |tip {dropsfrom}Enraged Crusher
 step
   talk Farseer Corhuk##18067
   turnin He Will Walk The Earth...##9866 |goto Nagrand 54.8,39.87
@@ -494,19 +494,19 @@ step
   accept Clefthoof Mastery##9851 |goto Nagrand 71.52,40.82
 step
   note Acquire the Horn of Banthar and return it to Hemet Nesingwary at the Nesingwary Safari in Nagrand.
-  kill Banthar##18259 |q 9851 |goto Nagrand 41.4,61.57 |elite
+  collect Horn of Banthar##24496 |q 9851 |goto Nagrand 41.4,61.57 |tip {dropsfrom}Banthar
 step
   talk Shado 'Fitz' Farstrider##18200
   accept Windroc Mastery##9856 |goto Nagrand 71.57,40.52
 step
   note Bring the Eye of Gutripper to Fitz at the Nesingwary Safari in Nagrand.
-  kill Gutripper##18257 |q 9856 |goto Nagrand 31.01,30.98 |elite
+  collect Eye of Gutripper##24513 |q 9856 |goto Nagrand 31.01,30.98 |tip {dropsfrom}Gutripper
 step
   talk Harold Lane##18218
   accept Talbuk Mastery##9859 |goto Nagrand 71.38,40.62
 step
   note Obtain the Hoof of Bach'lor and return it to Harold Lane at the Nesingwary Safari in Nagrand.
-  kill Bach'lor##18258 |q 9859 |goto Nagrand 26.1,53.12 |elite
+  collect Hoof of Bach'lor##24523 |q 9859 |goto Nagrand 26.1,53.12 |tip {dropsfrom}Bach'lor
 step
   note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to destroy the Large Hut, the Western Hut, the Southern Hut and the Eastern Hut at Windyreed Village.
   kill Windyreed Quest Credit (Big Hut)##18110 |q 9805 |goto Nagrand 72.43,50.25
@@ -524,13 +524,13 @@ step
   accept The Master Planner##10001 |goto Nagrand 27.34,43.09
 step
   note Altruis the Sufferer in western Nagrand has asked that you recover the Master Planner's Blueprints.
-  kill Mo'arg Master Planner##18567 |q 10001 |goto Nagrand 23.61,50.33 |elite
+  collect The Master Planner's Blueprints##25751 |q 10001 |goto Nagrand 23.61,50.33 |tip {dropsfrom}Mo'arg Master Planner
 step
   talk Altruis the Sufferer##18417
   accept The Book of Fel Names##10649 |goto Nagrand 27.34,43.09
 step
   note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
-  kill Blackheart the Inciter##18667 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
+  collect Book of Fel Names##30808 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Blackheart the Inciter, Blackheart the Inciter (1)
 step
   talk Elder Yorley##18414
   turnin Cho'war the Pillager##9946 |goto Nagrand 32.31,36.15
@@ -569,7 +569,7 @@ step
   accept Material Components##10045 |goto Nagrand 56.7,34.31
 step
   note Greatmother Geyah at Garadar in Nagrand has asked that you collect 1 Olemba Root, 1 Marshberry, 1 Telaari Frond and 1 Dragonspine.
-  collect Olemba Root##182601 |q 10045 |goto Terokkar Forest 37.69,34.03
+  collect 1 Olemba Root##25863 |q 10045 |goto Terokkar Forest 37.69,34.03 |tip {dropsfrom}Olemba Root
 step
   talk Greatmother Geyah##18141
   accept Thrall, Son of Durotan##10175 |goto Nagrand 56.7,34.31
@@ -587,7 +587,7 @@ step
   accept The Ultimate Bloodsport##9852 |goto Nagrand 71.52,40.82
 step
   note Bring the Heart of Tusker to Hemet Nesingwary at Nesingwary's Safari in Nagrand.
-  kill Tusker##18290 |q 9852 |goto Nagrand 44.24,65.16 |elite
+  collect Heart of Tusker##24505 |q 9852 |goto Nagrand 44.24,65.16 |tip {dropsfrom}Tusker
 step
   note Elementalist Lo'ap at the Throne of the Elements in Nagrand wants you to destroy Watoosun's Polluted Essence and 10 Lake Surgers.
   kill Watoosun's Polluted Essence##18145 |q 9810 |goto Nagrand 33.02,50.86
@@ -629,7 +629,7 @@ step
   accept Gurok the Usurper##9853 |goto Nagrand 61.33,24.82
 step
   note Gordawg at the Throne of the Elements in Nagrand has asked that you destroy Gurok the Usurper and bring back Gurok's Earthen Head.
-  get Gurok the Usurper |q 9853 |goto Nagrand 61.33,24.82
+  collect Gurok's Earthen Head##24503 |q 9853 |goto Nagrand 61.33,24.82 |tip {dropsfrom}Gurok the Usurper
 step
   talk Greatmother Geyah##18141
   turnin Material Components##10045 |goto Nagrand 56.7,34.31

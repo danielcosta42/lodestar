@@ -42,7 +42,7 @@ step
   talk Elder Morndeep##15549
   accept Morndeep the Elder##8619 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
-  kill Anvilrage Officer##8895 |q 4295 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+  collect Dark Iron Ale Mug##11325 |q 4295 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Officer, Grim Patron, Guzzling Patron
 step
   note Slay Overmaster Pyron and return to Jalinda Sprig.
   kill Overmaster Pyron##9026 |q 4262 |elite
@@ -51,20 +51,20 @@ step
   kill Black Broodling##7047 |q 4182 |goto Burning Steppes 89.47,35.54
 step
   note Bring 4 Gromsblood, 10 Giant Silver Veins and Nagmara's Filled Vial to Mistress Nagmara in Blackrock Depths.
-  kill Dreaming Whelp##741 |q 4201 |goto Swamp of Sorrows 12.71,59.3
+  collect 4 Gromsblood##8846 |q 4201 |goto Swamp of Sorrows 12.71,59.3 |tip {dropsfrom}Dreaming Whelp, Mosshide Brute, Leper Gnome
 step
-  kill Dark Iron Geologist##5839 |q 6642 |goto Searing Gorge 63.9,59.56
+  collect Dark Iron Ore##11370 |q 6642 |goto Searing Gorge 63.9,59.56 |tip {dropsfrom}Dark Iron Geologist, Firegut Ogre Mage, Azzere the Skyblade
 step
-  kill Molten Destroyer##11659 |q 6643 |goto Molten Core - Raid -1,-1 |elite
+  collect Fiery Core##17010 |q 6643 |goto Molten Core - Raid -1,-1 |tip {dropsfrom}Molten Destroyer, Firewalker, Flameguard
 step
-  kill Molten Destroyer##11659 |q 6644 |goto Molten Core - Raid -1,-1 |elite
+  collect Lava Core##17011 |q 6644 |goto Molten Core - Raid -1,-1 |tip {dropsfrom}Molten Destroyer, Lava Annihilator, Golemagg the Incinerator
 step
-  get Favor Amongst the Brotherhood, Core Leather |q 6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  collect Core Leather##17012 |q 6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
-  kill Firegut Brute##7035 |q 6646 |goto Burning Steppes 81.46,43.38
+  collect Blood of the Mountain##11382 |q 6646 |goto Burning Steppes 81.46,43.38 |tip {dropsfrom}Firegut Brute, War Reaver, Scalding Broodling
 step
   note Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.
-  kill Golemagg the Incinerator##11988 |q 7604 |goto Molten Core - Raid -1,-1 |raid
+  collect Sulfuron Ingot##17203 |q 7604 |goto Molten Core - Raid -1,-1 |tip {dropsfrom}Golemagg the Incinerator
 step
   talk Ipfelkofer Ironkeg##24710
   turnin Brewfest!##11441 |goto Dun Morogh 48.01,39.83
@@ -232,7 +232,7 @@ step
   accept A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   note Return Marshal Windsor's Lost Information.
-  kill General Angerforge##9033 |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+  collect Marshal Windsor's Lost Information##11464 |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}General Angerforge
 step
   talk Marshal Windsor##9023
   turnin A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1

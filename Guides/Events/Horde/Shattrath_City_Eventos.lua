@@ -31,13 +31,13 @@ step
   accept The Hand of Gul'dan##10681 |goto Shadowmoon Valley 28.49,26.57
 step
   note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
-  collect Eye of Veil Reskk##185200 |q 10847 |goto Terokkar Forest 50.12,19.37
+  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37 |tip {dropsfrom}Eye of Veil Reskk
 step
   note Use the Violet Scrying Crystal near underground sources of water in the Master's Cellar and return to Archmage Alturus outside of Karazhan.
   get Arcane Disturbances |q 9824 |goto Deadwind Pass 53.2,90.22
 step
   note Bring 10 Ghostly Essences to Archmage Alturus outside of Karazhan.
-  kill Restless Shade##7370 |q 9825 |goto Deadwind Pass 51.97,78.4
+  collect 10 Ghostly Essence##24480 |q 9825 |goto Deadwind Pass 51.97,78.4 |tip {dropsfrom}Restless Shade, Wailing Spectre, Damned Soul
 step
   talk Rilak the Redeemed##22292
   turnin The Eyes of Skettis##10847 |goto Shattrath City 52.54,21.01
@@ -171,7 +171,7 @@ step
   kill Coruu Control Console##20417 |q 10321
 step
   note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
-  get Entry Into Karazhan |q 9831 |goto Shattrath City 54.75,44.32
+  collect First Key Fragment##24514 |q 9831 |goto Shattrath City 54.75,44.32 |tip {dropsfrom}First Fragment Guardian
 step
   note Earthmender Torlok at the Altar of Damnation in Shadowmoon Valley wants you to use the Totem of Spirits to capture 10 Airy Souls.
   get Enraged Spirits of Air |q 10481 |goto Shadowmoon Valley 42.19,45.06
@@ -204,10 +204,10 @@ step
   kill Malevolent Hatchling##22337 |q 10861
 step
   note Obtain the Second Key Fragment from an Arcane Container inside Coilfang Reservoir and the Third Key Fragment from an Arcane Container inside Tempest Keep. Return to Khadgar in Shattrath City after you've completed this task.
-  get The Second and Third Fragments |q 9832 |goto Shattrath City 54.75,44.32
+  collect Second Key Fragment##24487 |q 9832 |goto Shattrath City 54.75,44.32 |tip {dropsfrom}Second Fragment Guardian
 step
   note Go to Manaforge Duro and retrieve the Sunfury Military Briefing and the Sunfury Arcane Briefing from the Sunfury units stationed there. Return to Exarch Orellis when you've completed this task.
-  kill Sunfury Centurion##20140 |q 10328 |goto Netherstorm 59.3,66.49
+  collect Sunfury Military Briefing##29545 |q 10328 |goto Netherstorm 59.3,66.49 |tip {dropsfrom}Sunfury Centurion, Sunfury Bowman
 step
   talk Kirrik the Awakened##22272
   turnin Veil Lithic: Preemptive Strike##10861 |goto Terokkar Forest 37.45,51.54
@@ -237,7 +237,7 @@ step
   collect Sapphire Signal Fire##185216 |q 10874 |goto Terokkar Forest 55.18,67.21
 step
   note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
-  get I Was A Lot Of Things... |q 10514 |goto Shadowmoon Valley 53.95,23.52
+  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52 |tip {dropsfrom}Shadowmoon Tuber
 step
   talk Kirrik the Awakened##22272
   turnin Veil Shalas: Signal Fires##10874 |goto Terokkar Forest 37.45,51.54
@@ -306,7 +306,7 @@ step
   accept Borak, Son of Oronok##10546 |goto Shadowmoon Valley 53.95,23.52
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43 |elite
+  collect First Half of Socrethar's Stone##29624 |q 10407 |goto Netherstorm 36.15,26.43 |tip {dropsfrom}Forgemaster Morug
 step
   talk Anchorite Karja##19467
   turnin Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
@@ -333,13 +333,13 @@ step
   accept Of Thistleheads and Eggs...##10547 |goto Shadowmoon Valley 47.56,57.18
 step
   note Grom'tor, Son of Oronok at Coilskar Point in Shadowmoon Valley wants you to recover the First Fragment of the Cipher of Damnation.
-  collect Coilskar Chest##184716 |q 10522 |goto Shadowmoon Valley 47.92,26.7
+  collect First Fragment of the Cipher of Damnation##30428 |q 10522 |goto Shadowmoon Valley 47.92,26.7 |tip {dropsfrom}Coilskar Chest
 step
   note Seek out and slay Painmistress Gabrissa at Illidari Point and return to the corpse of Ar'tor, Son of Oronok with the Crystalline Key.
-  kill Painmistress Gabrissa##21309 |q 10528 |goto Shadowmoon Valley 28.3,47.61
+  collect Crystalline Key##30442 |q 10528 |goto Shadowmoon Valley 28.3,47.61 |tip {dropsfrom}Painmistress Gabrissa
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  collect Rotten Arakkoa Egg##184795 |q 10547 |goto Shadowmoon Valley 44.15,57.51
+  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51 |tip {dropsfrom}Rotten Arakkoa Egg
 step
   talk Ishanah##18538
   turnin Ishanah's Help##10410 |goto Shattrath City 23.97,29.73
@@ -366,7 +366,7 @@ step
   accept The Bundle of Bloodthistle##10550 |goto Shattrath City 63.95,70.03
 step
   note The Spirit of Ar'tor at Illidari Point in Shadowmoon Valley wants you to recover Lohn'goron, Bow of the Torn-heart from the demons of the area.
-  kill Illidari Dreadbringer##19799 |q 10537 |goto Shadowmoon Valley 31.44,55.67
+  collect Lohn'goron, Bow of the Torn-heart##30451 |q 10537 |goto Shadowmoon Valley 31.44,55.67 |tip {dropsfrom}Illidari Dreadbringer, Illidari Painlasher, Illidari Shocktrooper
 step
   talk Ishanah##18538
   turnin Deathblow to the Legion##10409 |goto Shattrath City 23.97,29.73
@@ -387,10 +387,10 @@ step
   accept To Catch A Thistlehead##10570 |goto Shadowmoon Valley 47.56,57.18
 step
   note The Spirit of Ar'tor at Illidari Point in Shadowmoon Valley wants you to recover the Second Fragment of the Cipher of Damnation from Veneratus the Many.
-  get The Cipher of Damnation - Ar'tor's Charge |q 10540 |goto Shadowmoon Valley 29.53,50.52
+  collect Second Fragment of the Cipher of Damnation##30453 |q 10540 |goto Shadowmoon Valley 29.53,50.52 |tip {dropsfrom}Veneratus the Many
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Stormrage Missive.
-  get To Catch A Thistlehead |q 10570 |goto Shadowmoon Valley 47.56,57.18
+  collect Stormrage Missive##30617 |q 10570 |goto Shadowmoon Valley 47.56,57.18 |tip {dropsfrom}Envoy Icarius
 step
   talk Spirit of Ar'tor##21318
   turnin The Cipher of Damnation - Ar'tor's Charge##10540 |goto Shadowmoon Valley 29.53,50.52
@@ -405,7 +405,7 @@ step
   accept The Shadowmoon Shuffle##10576 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover 6 pieces of Eclipsion Armor.
-  kill Eclipsion Centurion##19792 |q 10576 |goto Shadowmoon Valley 47.18,67.6
+  collect Eclipsion Armor##30640 |q 10576 |goto Shadowmoon Valley 47.18,67.6 |tip {dropsfrom}Eclipsion Centurion, Eclipsion Blood Knight, Eclipsion Archmage
 step
   talk Oronok Torn-heart##21183
   turnin The Cipher of Damnation - The Second Fragment Recovered##10541 |goto Shadowmoon Valley 53.95,23.52
@@ -423,7 +423,7 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |elite
+  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |tip {dropsfrom}Ruul the Darkener
 step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18

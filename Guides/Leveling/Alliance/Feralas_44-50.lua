@@ -14,19 +14,19 @@ step
   accept The Crone of the Kraul##1101 |goto Feralas 89.64,46.57
 step
   note Bring Razorflank's Medallion to Falfindel Waywarder in Thalanaar.
-  kill Charlga Razorflank##4421 |q 1101 |goto Razorfen Kraul - Dungeon -1,-1 |elite
+  collect Razorflank's Medallion##5792 |q 1101 |goto Razorfen Kraul - Dungeon -1,-1 |tip {dropsfrom}Charlga Razorflank
 step
   talk Caryssia Moonhunter##7870
   accept Tribal Leatherworking##5143 |goto Feralas 89.42,46.55
 step
   note Bring a Wild Leather Vest and a Wild Leather Helmet to Caryssia Moonhunter in Feralas.
-  get Tribal Leatherworking |q 5143 |goto Feralas 89.42,46.55
+  collect Wild Leather Vest##8211 |q 5143 |goto Feralas 89.42,46.55
 step
   talk Azj'Tordin##14355
   accept Pusillin and the Elder Azj'Tordin##7441 |goto Feralas 76.91,37.35
 step
   note Travel to Dire Maul and locate the Imp, Pusillin. Convince Pusillin to give you Azj'Tordin's Book of Incantations through any means necessary.
-  kill Pusillin##14354 |q 7441 |goto Dire Maul - Dungeon -1,-1 |elite
+  collect Book of Incantations##18261 |q 7441 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Pusillin
 step
   talk Elder Grimtotem##15581
   accept Grimtotem the Elder##8679 |goto Feralas 76.72,37.9
@@ -44,25 +44,25 @@ step
   accept Zapped Giants##7003 |goto Feralas 44.81,43.42
 step
   note Use Zorbin's Ultra-Shrinker to zap any kind of giant found in Feralas into a more manageable form. Bring 15 Miniaturization Residues found on the zapped versions of these giants to Zorbin Fandazzle at the docks of the Forgotten Coast, Feralas.
-  get Zapped Giants |q 7003 |goto Feralas 44.81,43.42
+  collect 15 Miniaturization Residue##18956 |q 7003 |goto Feralas 44.81,43.42 |tip {dropsfrom}Zapped Shore Strider, Zapped Land Walker, Zapped Wave Strider
 step
   talk Zorbin Fandazzle##14637
   accept Fuel for the Zapping##7721 |goto Feralas 44.81,43.42
 step
   note Collect 10 Water Elemental Cores from the Sea Elementals and Sea Sprays along the Forgotten Coast of Feralas, and bring them back to Zorbin Fandazzle who is near the dock there.
-  kill Sea Elemental##5461 |q 7721 |goto Feralas 45.33,49.7
+  collect 10 Water Elemental Core##18958 |q 7721 |goto Feralas 45.33,49.7 |tip {dropsfrom}Sea Elemental, Sea Spray
 step
   talk Pratt McGrubben##7852
   accept The Mark of Quality##2821 |goto Feralas 30.63,42.71
 step
   note Bring 10 Thick Yeti Hides to Pratt McGrubben in Feathermoon Stronghold.
-  kill Feral Scar Yeti##5292 |q 2821 |goto Feralas 55.48,56.5
+  collect 10 Thick Yeti Hide##8973 |q 2821 |goto Feralas 55.48,56.5 |tip {dropsfrom}Feral Scar Yeti, Hulking Feral Scar, Enraged Feral Scar
 step
   talk Pratt McGrubben##7852
   accept Wild Leather Armor##2847 |goto Feralas 30.63,42.71
 step
   note Bring 10 Thick Leather to Pratt McGrubben in Feathermoon Stronghold.
-  kill Wild Gryphon##2347 |q 2847 |goto Hillsbrad Foothills 87.3,41.7
+  collect 10 Thick Leather##4304 |q 2847 |goto Hillsbrad Foothills 87.3,41.7 |tip {dropsfrom}Wild Gryphon, Searing Whelp, Skhowl
 step
   talk Shandris Feathermoon##3936
   accept The Ruins of Solarsal##2866 |goto Feralas 30.28,46.17
@@ -71,7 +71,7 @@ step
   accept The Stave of Equinex##2879 |goto Feralas 31.78,45.5
 step
   note Energize Troyas' Stave and find the Equinex Monolith.
-  get The Stave of Equinex |q 2879 |goto Feralas 31.78,45.5
+  collect Stave of Equinex##9306 |q 2879 |goto Feralas 31.78,45.5
 step
   talk Troyas Moonbreeze##7764
   accept In Search of Knowledge##2939 |goto Feralas 31.78,45.5
@@ -92,7 +92,7 @@ step
   accept The Mystery of Morrowgrain##3791 |goto Feralas 32.45,43.79
 step
   note Bring 10 Morrowgrain to Quintis Jonespyre in Feathermoon Stronghold.
-  get The Mystery of Morrowgrain |q 3791 |goto Feralas 32.45,43.79
+  collect 10 Morrowgrain##11040 |q 3791 |goto Feralas 32.45,43.79
 step
   talk Latronicus Moonspear##7877
   accept The Missing Courier##4124 |goto Feralas 30.38,46.17
@@ -107,7 +107,7 @@ step
   accept Lethtendris's Web##7488 |goto Feralas 30.38,46.17
 step
   note Bring Lethtendris' Web to Latronicus Moonspear at the Feathermoon Stronghold in Feralas.
-  kill Lethtendris##14327 |q 7488 |goto Dire Maul - Dungeon -1,-1 |elite
+  collect Lethtendris's Web##18426 |q 7488 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Lethtendris
 step
   talk Rockbiter##7765
   accept The Giant Guardian##2844 |goto Feralas 42.39,22.0
@@ -116,7 +116,7 @@ step
   accept Haze of Evil##4143 |goto Feralas 45.12,25.57
 step
   note Collect 5 samples of Atal'ai Haze, then return to Muigin in Un'Goro Crater.
-  kill Murk Worm##5226 |q 4143 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
+  collect 5 Atal'ai Haze##11318 |q 4143 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Murk Worm, Saturated Ooze, Deep Lurker
 step
   talk Shay Leafrunner##7774
   turnin The Giant Guardian##2844 |goto Feralas 38.22,10.3
@@ -198,37 +198,37 @@ step
   accept Wild Leather Shoulders##2848 |goto Feralas 30.63,42.71
 step
   note Bring 6 Thick Armor Kits and a Wildvine to Pratt McGrubben in Feathermoon Stronghold.
-  kill Olaf##6908 |q 2848 |goto Uldaman - Dungeon -1,-1
+  collect 6 Thick Armor Kit##8173 |q 2848 |goto Uldaman - Dungeon -1,-1 |tip {dropsfrom}Olaf
 step
   talk Pratt McGrubben##7852
   accept Wild Leather Vest##2849 |goto Feralas 30.63,42.71
 step
   note Bring 2 Turtle Scale Breastplates, 2 Turtle Scale Gloves, and a Wildvine to Pratt McGrubben in Feathermoon Stronghold.
-  get Wild Leather Vest |q 2849 |goto Feralas 30.63,42.71
+  collect 2 Turtle Scale Breastplate##8189 |q 2849 |goto Feralas 30.63,42.71
 step
   talk Pratt McGrubben##7852
   accept Wild Leather Helmet##2850 |goto Feralas 30.63,42.71
 step
   note Bring 2 Nightscape Tunics, 2 Nightscape Headbands, and a Wildvine to Pratt McGrubben in Feathermoon Stronghold.
-  get Wild Leather Helmet |q 2850 |goto Feralas 30.63,42.71
+  collect 2 Nightscape Tunic##8175 |q 2850 |goto Feralas 30.63,42.71
 step
   talk Pratt McGrubben##7852
   accept Wild Leather Boots##2851 |goto Feralas 30.63,42.71
 step
   note Bring 2 Nightscape Pants, 2 Nightscape Boots, and 2 Wildvines to Pratt McGrubben in Feathermoon Stronghold.
-  get Wild Leather Boots |q 2851 |goto Feralas 30.63,42.71
+  collect 2 Nightscape Pants##8193 |q 2851 |goto Feralas 30.63,42.71
 step
   talk Pratt McGrubben##7852
   accept Wild Leather Leggings##2852 |goto Feralas 30.63,42.71
 step
   note Bring 2 Turtle Scale Helms, 2 Turtle Scale Bracers, and 2 Wildvines to Pratt McGrubben in Feathermoon Stronghold.
-  get Wild Leather Leggings |q 2852 |goto Feralas 30.63,42.71
+  collect 2 Turtle Scale Helm##8191 |q 2852 |goto Feralas 30.63,42.71
 step
   talk Latronicus Moonspear##7877
   accept Against the Hatecrest##2869 |goto Feralas 30.38,46.17
 step
   note Bring 10 Hatecrest Naga Scales to Latronicus Moonspear in Feathermoon Stronghold.
-  kill Hatecrest Warrior##5331 |q 2869 |goto Feralas 28.82,53.67
+  collect 10 Hatecrest Naga Scale##9247 |q 2869 |goto Feralas 28.82,53.67 |tip {dropsfrom}Hatecrest Warrior, Hatecrest Wave Rider, Hatecrest Serpent Guard
 step
   talk Ginro Hearthkindle##7880
   accept The Missing Courier##4125 |goto Feralas 31.86,45.13
@@ -243,7 +243,7 @@ step
   accept Improved Quality##7733 |goto Feralas 30.63,42.71
 step
   note Bring 10 Rage Scar Yeti Hides to Pratt McGrubben at Feathermoon Stronghold, Feralas.
-  kill Rage Scar Yeti##5296 |q 7733 |goto Feralas 53.28,31.85
+  collect 10 Rage Scar Yeti Hide##18947 |q 7733 |goto Feralas 53.28,31.85 |tip {dropsfrom}Rage Scar Yeti, Elder Rage Scar, Ferocious Rage Scar
 step
   talk Jer'kai Moonweaver##7957
   turnin Doling Justice##2970 |goto Feralas 65.95,45.61
@@ -290,7 +290,7 @@ step
   accept Against Lord Shalzaru##2870 |goto Feralas 30.38,46.17
 step
   note Eliminate Lord Shalzaru, and then bring the Mysterious Relic he uncovered to Latronicus Moonspear in Feathermoon Stronghold.
-  kill Lord Shalzaru##8136 |q 2870 |goto Feralas 28.5,70.46
+  collect Mysterious Relic##9248 |q 2870 |goto Feralas 28.5,70.46 |tip {dropsfrom}Lord Shalzaru
 step
   talk Ginro Hearthkindle##7880
   accept The Woodpaw Gnolls##4131 |goto Feralas 31.86,45.13

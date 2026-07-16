@@ -73,10 +73,10 @@ step
   accept Hallow's End Treats for Jesper!##8311 |goto Stormwind City 47.63,35.32
 step
   note Bring 5 Gingerbread Cookies and an Ice Cold Milk to Greatfather Winter in Orgrimmar.
-  get Treats for Great-father Winter |q 6962 |goto Orgrimmar 52.49,69.18
+  collect 5 Gingerbread Cookie##17197 |q 6962 |goto Orgrimmar 52.49,69.18
 step
   note Speak with the innkeepers of Orgrimmar, Undercity, and Thunder Bluff, as well as Kali Remik in Sen'jin Village. Perform the tricks they ask of you in exchange for the treats they offer.
-  get Hallow's End Treats for Spoops! |q 8312 |goto Orgrimmar 71.44,22.81
+  collect Orgrimmar Nougat##20493 |q 8312 |goto Orgrimmar 71.44,22.81
 step
   note Find Metzen the Reindeer. Use the notes provided to you for clues as to where he is being held.
   kill Metzen the Reindeer##15664 |q 8746 |goto Searing Gorge 68.75,34.23
@@ -84,12 +84,12 @@ step
   note Find Metzen the Reindeer. Use the notes provided to you for clues as to where he is being held.
   kill Metzen the Reindeer##15664 |q 8762 |goto Searing Gorge 68.75,34.23
 step
-  get Gift Giving |q 8981 |goto Undercity 55.2,89.95
+  collect Horde Gift Collection##22263 |q 8981 |goto Undercity 55.2,89.95
 step
-  get Gift Giving |q 8993 |goto Undercity 55.2,89.95
+  collect Alliance Gift Collection##22262 |q 8993 |goto Undercity 55.2,89.95
 step
   note Speak with the innkeepers of Stormwind, Ironforge, and Darnassus, as well as Talvash del Kissel in Ironforge. Perform the tricks they ask of you in exchange for the treats they offer.
-  get Hallow's End Treats for Jesper! |q 8311 |goto Stormwind City 47.63,35.32
+  collect Stormwind Nougat##20492 |q 8311 |goto Stormwind City 47.63,35.32
 step
   talk Great-father Winter##13445
   turnin Great-father Winter is Here!##6961 |goto Orgrimmar 52.49,69.18
@@ -181,10 +181,10 @@ step
   accept The Hero of the Day##8799 |goto Orgrimmar 53.33,66.49
 step
   note Locate and return the Stolen Treats to Kaymard Copperpinch in Orgrimmar. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains.
-  kill The Abominable Greench##13602 |q 6983 |goto Alterac Mountains 37.26,63.57 |elite
+  collect Stolen Treats##17662 |q 6983 |goto Alterac Mountains 37.26,63.57 |tip {dropsfrom}The Abominable Greench
 step
   note Bring 1 Deeprock Salt and 5 gold coins to the Holly Preserver machine, upon which you will receive 5 Preserved Holly.
-  kill Rock Elemental##92 |q 8799 |goto Badlands 40.97,77.75
+  collect 1 Deeprock Salt##8150 |q 8799 |goto Badlands 40.97,77.75 |tip {dropsfrom}Rock Elemental, Elemental Slave, Stone Fury
 step
   talk Kaymard Copperpinch##13418
   turnin You're a Mean One...##6983 |goto Orgrimmar 53.33,66.49

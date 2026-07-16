@@ -19,10 +19,10 @@ step
   accept Wanted: Rift Lords##11383 |goto Shattrath City 75.5,37.24
 step
   note Wind Trader Zhareem has asked you to obtain the Epoch Hunter's Head. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Epoch Hunter's Head |q 11378 |goto Shattrath City 75.13,36.65
+  collect Epoch Hunter's Head##33847 |q 11378 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Epoch Hunter (1)
 step
   note Wind Trader Zhareem has asked you to acquire Aeonus's Hourglass. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: Aeonus's Hourglass |q 11382 |goto Shattrath City 75.13,36.65
+  collect Aeonus's Hourglass##33858 |q 11382 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Aeonus (1)
 step
   talk Andormu##20130
   turnin To The Master's Lair##10279 |goto Tanaris 58.43,54.28

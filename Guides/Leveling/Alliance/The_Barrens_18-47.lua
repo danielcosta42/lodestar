@@ -25,13 +25,13 @@ step
   accept Raptor Horns##865 |goto The Barrens 62.37,37.62
 step
   note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
-  kill Sunscale Scytheclaw##3256 |q 865 |goto The Barrens 52.69,45.68
+  collect 5 Intact Raptor Horn##5055 |q 865 |goto The Barrens 52.69,45.68 |tip {dropsfrom}Sunscale Scytheclaw, Ishamuhale, Takk the Leaper
 step
   talk Mebok Mizzyrix##3446
   accept Root Samples##866 |goto The Barrens 62.37,37.62
 step
   note Bring 8 Root Samples to Mebok Mizzyrix in Ratchet.
-  collect Peacebloom##3724 |q 866 |goto The Barrens 49.37,33.07
+  collect 8 Root Sample##5056 |q 866 |goto The Barrens 49.37,33.07 |tip {dropsfrom}Peacebloom, Silverleaf, Earthroot
 step
   talk Gazlowe##3391
   accept Southsea Freebooters##887 |goto The Barrens 62.68,36.23
@@ -43,13 +43,13 @@ step
   accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
 step
   note Retrieve the Cats Eye Emerald from one of the Venture Co. Overseers or Enforcers for Wharfmaster Dizzywig at Ratchet.
-  kill Venture Co. Enforcer##3283 |q 896 |goto The Barrens 60.81,3.81
+  collect Cats Eye Emerald##5097 |q 896 |goto The Barrens 60.81,3.81 |tip {dropsfrom}Venture Co. Enforcer, Venture Co. Overseer, Boss Copperplug
 step
   talk Crane Operator Bigglefuzz##3665
   accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
 step
   note Crane Operator Bigglefuzz in Ratchet wants you to retrieve the bottle of 99-Year-Old Port from Mad Magglish who is hiding in the Wailing Caverns.
-  kill Mad Magglish##3655 |q 959 |goto The Barrens 45.69,33.62
+  collect 99-Year-Old Port##5334 |q 959 |goto The Barrens 45.69,33.62 |tip {dropsfrom}Mad Magglish
 step
   talk Wharfmaster Dizzywig##3453
   accept Passage to Booty Bay##1040 |goto The Barrens 63.35,38.45
@@ -58,7 +58,7 @@ step
   accept Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
 step
   note Bring 15 Deepmoss Eggs to Mebok Mizzyrix in Ratchet.
-  collect Deepmoss Eggs##19541 |q 1069 |goto Stonetalon Mountains 61.35,53.71
+  collect 15 Deepmoss Egg##5570 |q 1069 |goto Stonetalon Mountains 61.35,53.71 |tip {dropsfrom}Deepmoss Eggs
 step
   talk Sputtervalve##3442
   accept Further Instructions##1095 |goto The Barrens 62.98,37.22
@@ -73,7 +73,7 @@ step
   accept Blueleaf Tubers##1221 |goto The Barrens 62.37,37.62
 step
   note Grab a Crate with Holes.
-  collect Blueleaf Tuber##20920 |q 1221 |goto Razorfen Kraul - Dungeon -1,-1
+  collect Blueleaf Tuber##5876 |q 1221 |goto Razorfen Kraul - Dungeon -1,-1 |tip {dropsfrom}Blueleaf Tuber
 step
   talk Sputtervalve##3442
   accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
@@ -84,7 +84,7 @@ step
 step
   only Druid
   note Bring Robes of the Arcana to Menara Voidrender in the Barrens.
-  get Components for the Enchanted Gold Bloodrobe |q 1796 |goto The Barrens 62.51,35.45
+  collect Robes of Arcana##5770 |q 1796 |goto The Barrens 62.51,35.45
 step
   only Druid
   talk Menara Voidrender##6266
@@ -92,7 +92,7 @@ step
 step
   only Druid
   note Speak to Menara's acolytes inside the tower above Ratchet and choose one of their paths to follow.
-  kill Burning Blade Summoner##4668 |q 1799 |goto Desolace 79.47,77.84
+  collect Infernal Orb##7291 |q 1799 |goto Desolace 79.47,77.84 |tip {dropsfrom}Burning Blade Summoner
 step
   talk Tinkerwiz##3494
   accept Goblin Engineering##3633 |goto The Barrens 62.67,36.31
@@ -104,7 +104,7 @@ step
   accept Volcanic Activity##4502 |goto The Barrens 62.45,38.73
 step
   note Collect 9 samples of Un'Goro Ash from the fire elementals around the volcano in Un'Goro Crater, and return them to Liv Rizzlefix in Ratchet.
-  kill Scorching Elemental##6520 |q 4502 |goto Un'Goro Crater 52.73,48.83
+  collect 9 Un'Goro Ash##11829 |q 4502 |goto Un'Goro Crater 52.73,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Blazerunner
 step
   only Druid
   talk Menara Voidrender##6266
@@ -112,7 +112,7 @@ step
 step
   only Druid
   note Bring 10 Vials of Hatefury Blood and 1 Lesser Infernal Stone to Menara Voidrender in the Barrens.
-  kill Hatefury Rogue##4670 |q 4783 |goto Desolace 74.45,18.85
+  collect 10 Vial of Hatefury Blood##6989 |q 4783 |goto Desolace 74.45,18.85 |tip {dropsfrom}Hatefury Rogue, Hatefury Trickster, Hatefury Felsworn
 step
   only Druid
   talk Acolyte Wytula##6254
@@ -120,7 +120,7 @@ step
 step
   only Druid
   note Take the Felhas Ruby and use it on one of the Felhounds found in Desolace. After successful, bring the Felhas Ruby and the Imprisoned Felhound Spirit back to Menara Voidrender in the Barrens.
-  get Shard of a Felhound |q 4962 |goto The Barrens 62.64,35.3
+  collect Imprisoned Felhound Spirit##12648 |q 4962 |goto The Barrens 62.64,35.3
 step
   only Druid
   talk Acolyte Magaz##6252
@@ -128,7 +128,7 @@ step
 step
   only Druid
   note Take the Infus Emerald and use it on one of the Infernals found in Desolace. After successful, bring the Infus Emerald and the Imprisoned Infernal Spirit back to Menara Voidrender in the Barrens.
-  get Shard of an Infernal |q 4963 |goto The Barrens 62.56,35.23
+  collect Imprisoned Infernal Spirit##12649 |q 4963 |goto The Barrens 62.56,35.23
 step
   only Druid
   talk Menara Voidrender##6266
@@ -144,7 +144,7 @@ step
 step
   only Druid
   note Bring a piece of felcloth to Impsy in Felwood.
-  kill Felguard Sentry##6011 |q 8419 |goto Blasted Lands 59.78,54.09
+  collect Felcloth##14256 |q 8419 |goto Blasted Lands 59.78,54.09 |tip {dropsfrom}Felguard Sentry, Legashi Satyr, Legashi Rogue
 step
   talk Nixx Sprocketspring##8126
   turnin Goblin Engineering##3633 |goto Tanaris 52.48,27.33 |tip {turninat}Tanaris
@@ -181,7 +181,7 @@ step
 step
   only Druid
   note Find 3 Soran'ruk Fragments and 1 Large Soran'ruk Fragment and return them to Doan Karhan in the Barrens.
-  kill Twilight Acolyte##4809 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1 |elite
+  collect 3 Soran'ruk Fragment##6914 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {dropsfrom}Twilight Acolyte
 step
   talk Greta Mosshoof##10922
   turnin Cleansed Water Returns to Felwood##5159 |goto Felwood 51.21,82.11 |tip {turninat}Felwood
@@ -201,7 +201,7 @@ step
   accept Ignition##858 |goto The Barrens 56.52,7.45
 step
   note Get the Ignition Key and bring it to Wizzlecrank.
-  kill Supervisor Lugwizzle##3445 |q 858 |goto The Barrens 56.27,8.58
+  collect Ignition Key##5050 |q 858 |goto The Barrens 56.27,8.58 |tip {dropsfrom}Supervisor Lugwizzle
 step
   note Ebru in the Wailing Caverns wants you to kill 7 Deviate Ravagers, 7 Deviate Vipers, 7 Deviate Shamblers and 7 Deviate Dreadfangs.
   kill Deviate Ravager##3636 |q 1487 |goto Wailing Caverns - Dungeon -1,-1 |elite
@@ -278,7 +278,7 @@ step
   accept Smart Drinks##1491 |goto The Barrens 62.37,37.62
 step
   note Bring 6 portions of Wailing Essence to Mebok Mizzyrix in Ratchet.
-  kill Devouring Ectoplasm##3638 |q 1491 |goto The Barrens 47.91,33.38
+  collect 6 Wailing Essence##6464 |q 1491 |goto The Barrens 47.91,33.38 |tip {dropsfrom}Devouring Ectoplasm, Evolving Ectoplasm, Nightmare Ectoplasm
 step
   only Druid
   talk Menara Voidrender##6266
@@ -286,7 +286,7 @@ step
 step
   only Druid
   note Bring a Gold Bar to Xizk Goodstitch in Stranglethorn Vale.
-  collect Tattered Chest##2846 |q 4781 |goto Bloodmyst Isle 52.92,75.29
+  collect Gold Bar##3577 |q 4781 |goto Bloodmyst Isle 52.92,75.29 |tip {dropsfrom}Tattered Chest, Battered Chest, Solid Chest
 step
   only Druid
   talk Menara Voidrender##6266
@@ -294,7 +294,7 @@ step
 step
   only Druid
   note Bring some Fine Gold Thread, 2 Smoldering Coals, and a Soul Shard to Menara Voidrender in the Barrens.
-  get Components for the Enchanted Gold Bloodrobe |q 4784 |goto The Barrens 62.51,35.45
+  collect Fine Gold Thread##12293 |q 4784 |goto The Barrens 62.51,35.45
 step
   talk Ebru##5768
   turnin Deviate Eradication##1487 |goto The Barrens 46.01,35.74
@@ -345,7 +345,7 @@ step
   accept Stolen Booty##888 |goto The Barrens 62.68,36.23
 step
   note Retrieve the Shipment of Boots and Telescopic Lens for Gazlowe in Ratchet.
-  collect Drizzlik's Emporium##3767 |q 888 |goto The Barrens 62.63,49.63
+  collect Shipment of Boots##5076 |q 888 |goto The Barrens 62.63,49.63 |tip {dropsfrom}Drizzlik's Emporium
 step
   talk Gazlowe##3391
   turnin Stolen Booty##888 |goto The Barrens 62.68,36.23

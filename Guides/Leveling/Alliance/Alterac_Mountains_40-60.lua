@@ -19,7 +19,7 @@ step
 step
   only Warrior
   note Bring the items on Bath'rah's Parchment to Bath'rah the Windwatcher in Alterac.
-  kill Nightbane Dark Runner##205 |q 1712 |goto Duskwood 64.14,67.71
+  collect Liferoot##3357 |q 1712 |goto Duskwood 64.14,67.71 |tip {dropsfrom}Nightbane Dark Runner, Nightbane Vile Fang, Splinter Fist Warrior
 step
   only Mage
   talk Bath'rah the Windwatcher##6176
@@ -27,7 +27,7 @@ step
 step
   only Mage
   note Bring the pieces for the spirit totem to Bath'rah the Windwatcher.
-  kill Carrion Vulture##1809 |q 8412 |goto Western Plaguelands 32.26,62.39
+  collect Bloodshot Spider Eye##20610 |q 8412 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Carrion Lurker, Venom Mist Lurker
 step
   only Rogue
   talk Lord Jorach Ravenholdt##6768
@@ -35,14 +35,14 @@ step
 step
   only Rogue
   note Retrieve the Sealed Azure Bag from the Timbermaw Shaman in Azshara. Then take the bag to Archmage Xylem, also found in Azshara.
-  kill Timbermaw Shaman##6188 |q 8234 |goto Azshara 44.21,22.54
+  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.21,22.54 |tip {dropsfrom}Timbermaw Shaman
 step
   only Rogue
   talk Fahrad##6707
   accept Junkboxes Needed##8249 |goto Alterac Mountains 84.45,80.32
 step
   only Rogue
-  kill Irondeep Trogg##10987 |q 8249 |goto Alterac Valley - Battleground 51.14,6.98
+  collect Heavy Junkbox##16885 |q 8249 |goto Alterac Valley - Battleground 51.14,6.98 |tip {dropsfrom}Irondeep Trogg, Irondeep Skullthumper, Taskmaster Snivvle
 step
   talk Prospector Stonehewer##13816
   turnin The Battle of Alterac##7141 |goto Alterac Mountains 40.65,79.56
@@ -71,7 +71,7 @@ step
 step
   only Warrior
   note Bring the Whirlwind Heart to Bath'rah Windwatcher.
-  get The Summoning |q 1713 |goto Alterac Mountains 80.5,66.92
+  collect Whirlwind Heart##6894 |q 1713 |goto Alterac Mountains 80.5,66.92 |tip {dropsfrom}Cyclonian
 step
   only Mage
   talk Bath'rah the Windwatcher##6176
@@ -79,7 +79,7 @@ step
 step
   only Mage
   note Bring the voodoo feathers to Bath'rah the Windwatcher.
-  kill Gasher##5713 |q 8413 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
+  collect Amber Voodoo Feather##20606 |q 8413 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Gasher, Zul'Lor
 step
   only Rogue
   talk Fahrad##6707

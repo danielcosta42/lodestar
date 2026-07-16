@@ -110,7 +110,7 @@ step
   accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
 step
   note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
-  kill Timber Wolf##69 |q 179 |goto Elwynn Forest 49.48,39.15
+  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 49.48,39.15 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
 step
   note Kill 7 Young Nightsabers and 4 Young Thistle Boars and return to Conservator Ilthalaine.
   kill Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
@@ -120,61 +120,61 @@ step
   kill Death Ravager##17556 |q 9582 |goto Azuremyst Isle 54.03,9.95
 step
   only Warrior
-  kill Drywhisker Kobold##2572 |q 1714 |goto Arathi Highlands 78.55,37.77
+  collect Thundering Charm##4480 |q 1714 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8058 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
+  collect Primal Hakkari Armsplint##19717 |q 8058 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8078 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
+  collect Primal Hakkari Girdle##19719 |q 8078 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Warrior
   note Bring Jin'rokh the Breaker a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  kill Jin'do the Hexxer##11380 |q 8079 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid
+  collect Primal Hakkari Kossack##19723 |q 8079 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Warrior
   note Bring the Qiraji Bindings of Command, 2 Idols of Night, 5 Stone Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  kill Viscidus##15299 |q 8544 |goto Ahn'Qiraj - Raid -1,-1 |raid
+  collect Qiraji Bindings of Command##20928 |q 8544 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Warrior
   note Bring 1 Qiraji Magisterial Ring, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8556 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
+  collect 1 Qiraji Magisterial Ring##20884 |q 8556 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Warrior
   note Bring 1 Qiraji Martial Drape, 2 Onyx Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  kill General Rajaxx##15341 |q 8557 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
+  collect 1 Qiraji Martial Drape##20885 |q 8557 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Warrior
   note Bring 1 Qiraji Spiked Hilt, 2 Alabaster Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  kill Ossirian the Unscarred##15339 |q 8558 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid
+  collect 1 Qiraji Spiked Hilt##20886 |q 8558 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Warrior
   note Bring the Qiraji Bindings of Command, 2 Idols of War, 5 Ivory Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  kill Viscidus##15299 |q 8559 |goto Ahn'Qiraj - Raid -1,-1 |raid
+  collect Qiraji Bindings of Command##20928 |q 8559 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Warrior
   note Bring Ouro's Intact Hide, 2 Idols of Death, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  get Conqueror's Legguards |q 8560 |goto Ahn'Qiraj - Raid -1,-1
+  collect Ouro's Intact Hide##20927 |q 8560 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ouro
 step
   only Warrior
   note Bring Vek'nilash's Circlet, 2 Idols of the Sun, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  kill Emperor Vek'nilash##15275 |q 8561 |goto Ahn'Qiraj - Raid -1,-1 |raid
+  collect Vek'nilash's Circlet##20926 |q 8561 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Emperor Vek'nilash
 step
   only Warrior
   note Bring the the Carapace of the Old God, 2 Idols of War, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  kill C'Thun##15727 |q 8562 |goto Ahn'Qiraj - Raid -1,-1 |raid
+  collect Carapace of the Old God##20929 |q 8562 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}C'Thun
 step
   only Warrior
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Bracers of Valor to Deliana in Ironforge.
-  kill Frostsaber Cub##7430 |q 8912 |goto Winterspring 50.32,11.34
+  collect 15 Winterspring Blood Sample##21928 |q 8912 |goto Winterspring 50.32,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Small Thorium Vein##324 |q 9121 |goto Burning Steppes 62.76,44.03
+  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 62.76,44.03 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
 step
   only Warrior
   talk Harry Burlguard##6089
@@ -347,7 +347,7 @@ step
 step
   only Warrior
   note Bring the Horn of Vorlus to Elanaria in Darnassus.
-  kill Vorlus Vilehoof##6128 |q 1683 |goto Teldrassil 47.25,63.6
+  collect Horn of Vorlus##6805 |q 1683 |goto Teldrassil 47.25,63.6 |tip {dropsfrom}Vorlus Vilehoof
 step
   only Warrior
   note Kill Big Will, then speak to Klannoc Macleod on Fray Island.
@@ -358,20 +358,20 @@ step
 step
   only Warrior
   note Bring Vejrek's Head to Muren Stormpike in Ironforge.
-  kill Vejrek##6113 |q 1678 |goto Dun Morogh 27.83,57.96
+  collect Vejrek's Head##6799 |q 1678 |goto Dun Morogh 27.83,57.96 |tip {dropsfrom}Vejrek
 step
   only Warrior
   note Kill 7 Helboar in the Blasted Lands and return to the Fallen Hero of the Horde.
   kill Helboar##5993 |q 8423 |goto Blasted Lands 52.38,53.24
 step
   only Warrior
-  get Strength of Mount Mugamba |q 8042 |goto Stranglethorn Vale 15.31,14.43
+  collect Strength of Mugamba##19574 |q 8042 |goto Stranglethorn Vale 15.31,14.43
 step
   note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  get Glyph Chasing |q 8309 |goto Silithus 41.28,88.45
+  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 41.28,88.45
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  kill Hive'Ashi Stinger##11698 |q 8310 |goto Silithus 48.5,41.14
+  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 48.5,41.14 |tip {dropsfrom}Hive'Ashi Stinger, Hive'Ashi Worker, Hive'Ashi Defender
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
@@ -507,49 +507,49 @@ step
 step
   only Warrior
   note Bring 8 loads of Elunite Ore and the Medallion of Elura to Elanaria in Darnassus.
-  collect Crate of Elunite##86492 |q 1686 |goto Darkshore 32.47,44.42
+  collect 8 Elunite Ore##6808 |q 1686 |goto Darkshore 32.47,44.42 |tip {dropsfrom}Crate of Elunite
 step
   only Warrior
   note Slaughter the Shadowsworn in the Blasted Lands and return to the Fallen Hero of the Horde.
   kill Shadowsworn Adept##6006 |q 8424 |goto Blasted Lands 64.64,35.24
 step
   only Warrior
-  get Strength of Mount Mugamba |q 8043 |goto Stranglethorn Vale 15.31,14.43
+  collect Strength of Mugamba##19575 |q 8043 |goto Stranglethorn Vale 15.31,14.43
 step
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  get The Ectoplasmic Distiller |q 8921 |goto Tanaris 52.47,27.23
+  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Breastplate if you bring him the following items: 1 Desecrated Breastplate, 25 Wartorn Plate Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  get Dreadnaught Breastplate |q 9034 |goto Eastern Plaguelands 81.8,58.08
+  collect Desecrated Breastplate##22349 |q 9034 |goto Eastern Plaguelands 81.8,58.08
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Legplates if you bring him the following items: 1 Desecrated Legplates, 20 Wartorn Plate Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  get Dreadnaught Legplates |q 9036 |goto Eastern Plaguelands 81.8,58.08
+  collect Desecrated Legplates##22352 |q 9036 |goto Eastern Plaguelands 81.8,58.08
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Helmet if you bring him the following items: 1 Desecrated Helmet, 15 Wartorn Plate Scraps, 5 Arcanite Bars and 1 Nexus Crystal.
-  get Dreadnaught Helmet |q 9037 |goto Eastern Plaguelands 81.8,58.08
+  collect Desecrated Helmet##22353 |q 9037 |goto Eastern Plaguelands 81.8,58.08
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Pauldrons if you bring him the following items: 1 Desecrated Pauldrons, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  kill Grobbulus##15931 |q 9038 |goto Naxxramas - Raid -1,-1 |raid
+  collect Desecrated Pauldrons##22354 |q 9038 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Sabatons if you bring him the following items: 1 Desecrated Sabatons, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  kill Gluth##15932 |q 9039 |goto Naxxramas - Raid -1,-1 |raid
+  collect Desecrated Sabatons##22358 |q 9039 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Gauntlets if you bring him the following items: 1 Desecrated Gauntlets, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  get Dreadnaught Gauntlets |q 9040 |goto Eastern Plaguelands 81.8,58.08
+  collect Desecrated Gauntlets##22357 |q 9040 |goto Eastern Plaguelands 81.8,58.08
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Waistguard if you bring him the following items: 1 Desecrated Waistguard, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  kill Gluth##15932 |q 9041 |goto Naxxramas - Raid -1,-1 |raid
+  collect Desecrated Waistguard##22356 |q 9041 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Bracers if you bring him the following items: 1 Desecrated Bracers, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 1 Nexus Crystal.
-  kill Gluth##15932 |q 9042 |goto Naxxramas - Raid -1,-1 |raid
+  collect Desecrated Bracers##22355 |q 9042 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
 step
   only Warrior
   talk Bartleby##6090
@@ -657,28 +657,28 @@ step
 step
   only Warrior
   note Bring a load of Umbral Ore to Tormus Deepforge in Ironforge.
-  collect Ironband's Strongbox##85562 |q 1681 |goto Dun Morogh 77.96,62.16
+  collect Umbral Ore##6800 |q 1681 |goto Dun Morogh 77.96,62.16 |tip {dropsfrom}Ironband's Strongbox
 step
   only Warrior
   note Gather the materials Furen Longbeard requires, and bring them to him in Stormwind.
-  kill Leech Stalker##1111 |q 1701 |goto Wetlands 52.66,62.81
+  collect Scorched Spider Fang##6838 |q 1701 |goto Wetlands 52.66,62.81 |tip {dropsfrom}Leech Stalker, Cave Stalker
 step
   only Warrior
   note Bring the items on Bath'rah's Parchment to Bath'rah the Windwatcher in Alterac.
-  kill Nightbane Dark Runner##205 |q 1712 |goto Duskwood 64.14,67.71
+  collect Liferoot##3357 |q 1712 |goto Duskwood 64.14,67.71 |tip {dropsfrom}Nightbane Dark Runner, Nightbane Vile Fang, Splinter Fist Warrior
 step
   only Warrior
   note Bring the Voodoo Feathers from the trolls in the Sunken Temple to the Fallen Hero of the Horde.
-  kill Gasher##5713 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite
+  collect Amber Voodoo Feather##20606 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Gasher, Zul'Lor
 step
   only Warrior
-  get The Rage of Mugamba |q 8044 |goto Stranglethorn Vale 15.31,14.43
+  collect Strength of Mugamba##19576 |q 8044 |goto Stranglethorn Vale 15.31,14.43
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
-  get The Calling |q 8315 |goto Silithus 49.67,37.46
+  collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 49.67,37.46 |tip {dropsfrom}Emissary Roman'khan
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  kill Tortured Druid##12178 |q 8924 |goto Silithus 62.65,52.76
+  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.76 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
   only Warrior
   talk Harry Burlguard##6089
@@ -755,10 +755,10 @@ step
 step
   only Warrior
   note Bring the Whirlwind Heart to Bath'rah Windwatcher.
-  get The Summoning |q 1713 |goto Alterac Mountains 80.5,66.92
+  collect Whirlwind Heart##6894 |q 1713 |goto Alterac Mountains 80.5,66.92 |tip {dropsfrom}Cyclonian
 step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
-  kill Magma Lord Bokk##16043 |q 8925 |goto Burning Steppes 35.39,57.76
+  collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
   only Warrior
   talk Marshal Haggard##294
@@ -824,22 +824,22 @@ step
 step
   only Warrior
   note Retrieve Haggard's Badge from Dead-tooth Jack's camp, and return to Marshal Haggard.
-  collect Dead-tooth's Strongbox##85563 |q 1667 |goto Elwynn Forest 89.33,78.88
+  collect Marshal Haggard's Badge##6782 |q 1667 |goto Elwynn Forest 89.33,78.88 |tip {dropsfrom}Dead-tooth's Strongbox
 step
   only Warrior
   note Bring 20 vials of Burning Blood and 1 Burning Rock to Grimand Elmore in Stormwind.
-  kill Nightbane Dark Runner##205 |q 1705 |goto Duskwood 64.14,67.71
+  collect 20 Burning Blood##6844 |q 1705 |goto Duskwood 64.14,67.71 |tip {dropsfrom}Nightbane Dark Runner, Nightbane Vile Fang, Nightbane Shadow Weaver
 step
   only Warrior
   note Bring 20 loads of Searing Coral to Klockmort Spannerspan in Ironforge.
-  collect Iron Coral##89634 |q 1708 |goto Wetlands 9.08,70.34
+  collect 20 Searing Coral##6848 |q 1708 |goto Wetlands 9.08,70.34 |tip {dropsfrom}Iron Coral
 step
   only Warrior
   note Bring 20 Sunscorched Shells to Mathiel in Darnassus.
-  collect Sunscorched Shell##89635 |q 1710 |goto Thousand Needles 11.79,37.1
+  collect 20 Sunscorched Shell##6849 |q 1710 |goto Thousand Needles 11.79,37.1 |tip {dropsfrom}Sunscorched Shell
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
-  get A Shifty Merchant |q 8928 |goto Tanaris 52.47,27.23
+  collect Fel Elemental Rod##21939 |q 8928 |goto Tanaris 52.47,27.23
 step
   only Warrior
   talk Marshal Haggard##294
@@ -900,7 +900,7 @@ step
 step
   only Warrior
   note Bring a Belt of Valor and a set of Gauntlets of Valor to Deliana in Ironforge.
-  kill Smolderthorn Berserker##9268 |q 8937 |goto Blackrock Spire - Dungeon -1,-1 |elite
+  collect Belt of Valor##16736 |q 8937 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Berserker, Patchwork Horror, Bile Spewer
 step
   only Warrior
   talk Deliana##16013
@@ -931,7 +931,7 @@ step
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
 step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  get Anthion's Strange Request |q 8947 |goto Eastern Plaguelands 30.85,16.75
+  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 30.85,16.75
 step
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
@@ -946,7 +946,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  kill Highlord Omokk##9196 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -955,7 +955,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  kill Eldreth Sorcerer##11470 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -964,7 +964,7 @@ step
   accept The Challenge##9015 |goto Dire Maul - Dungeon -1,-1
 step
   note Travel to the Ring of the Law in Blackrock Depths and place the Banner of Provocation in its center as you are sentenced by High Justice Grimstone. Slay Theldren and his gladiators and return to Anthion Harmon in the Eastern Plaguelands with the first piece of Lord Valthalak's amulet.
-  get The Challenge |q 9015 |goto Dire Maul - Dungeon -1,-1
+  collect Top Piece of Lord Valthalak's Amulet##22047 |q 9015 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Theldren
 step
   talk Anthion Harmon##16016
   turnin The Challenge##9015 |goto Eastern Plaguelands 30.85,16.75
@@ -975,7 +975,7 @@ step
 step
   only Warrior
   note Return to Deliana in Ironforge with a set of Boots of Valor, Legplates of Valor and Spaulders of Valor.
-  get Anthion's Parting Words |q 8959 |goto Eastern Plaguelands 30.85,16.75
+  collect Boots of Valor##16734 |q 8959 |goto Eastern Plaguelands 30.85,16.75 |tip {dropsfrom}Kirtonos the Herald
 step
   only Warrior
   talk Deliana##16013
@@ -991,7 +991,7 @@ step
   accept Three Kings of Flame##8961
 step
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
-  kill Lord Incendius##9017 |q 8961 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  collect Incendicite of Incendius##21987 |q 8961 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Lord Incendius
 step
   talk Bodley##16033
   turnin Three Kings of Flame##8961
@@ -1000,7 +1000,7 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  kill Cursed Paladin##7071 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |elite
+  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |tip {dropsfrom}Cursed Paladin, Cursed Justicar, Writhing Mage
 step
   talk Bodley##16033
   turnin Components of Importance##8965
@@ -1009,7 +1009,7 @@ step
   accept More Components of Importance##8986
 step
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  kill Hive'Regal Ambusher##11730 |q 8986 |goto Silithus 61.05,86.89
+  collect Druidical Remains##22226 |q 8986 |goto Silithus 61.05,86.89 |tip {dropsfrom}Hive'Regal Ambusher, Hive'Regal Burrower, Hive'Regal Spitfire
 step
   talk Bodley##16033
   turnin More Components of Importance##8986
@@ -1027,7 +1027,7 @@ step
   accept Final Preparations##8994
 step
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
-  kill Scarshield Acolyte##9045 |q 8994 |goto Blackrock Spire - Dungeon -1,-1
+  collect 40 Blackrock Bracer##22138 |q 8994 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Sentry, Scarshield Acolyte, Scarshield Legionnaire
 step
   talk Bodley##16033
   turnin Final Preparations##8994
@@ -1036,7 +1036,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  kill Lord Valthalak##16042 |q 8995 |raid
+  use Lord Valthalak##16042 |q 8995 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995
@@ -1045,7 +1045,7 @@ step
   accept Return to Bodley##8996
 step
   note Return to Bodley inside Blackrock Mountain and give him the Brazier of Beckoning.
-  get Return to Bodley |q 8996
+  collect Brazier of Beckoning##22056 |q 8996
 step
   talk Bodley##16033
   turnin Return to Bodley##8996
@@ -1062,7 +1062,7 @@ step
 step
   only Warrior
   note Give Deliana your Helm of Valor and Breastplate of Valor.
-  get Saving the Best for Last |q 9006 |goto Ironforge 43.53,52.64
+  collect Helm of Valor##16731 |q 9006 |goto Ironforge 43.53,52.64 |tip {dropsfrom}Darkmaster Gandling
 step
   only Warrior
   talk Deliana##16013

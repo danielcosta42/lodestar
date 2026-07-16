@@ -204,27 +204,27 @@ step
   talk Lunar Festival Herald##15891
   accept The Lunar Festival##8875 |goto Orgrimmar 41.46,31.74
 step
-  get Elune's Candle |q 8862 |goto Moonglade 53.65,35.26
+  collect Coin of Ancestry##21100 |q 8862 |goto Moonglade 53.65,35.26
 step
-  get Festival Dumplings |q 8863 |goto Moonglade 53.65,35.26
+  collect Coin of Ancestry##21100 |q 8863 |goto Moonglade 53.65,35.26
 step
-  get Festive Lunar Dresses |q 8864 |goto Moonglade 53.65,35.26
+  collect Coin of Ancestry##21100 |q 8864 |goto Moonglade 53.65,35.26
 step
-  get Festive Lunar Pant Suits |q 8865 |goto Moonglade 53.65,35.26
+  collect Coin of Ancestry##21100 |q 8865 |goto Moonglade 53.65,35.26
 step
-  get Small Rockets |q 8876 |goto Moonglade 53.79,35.32
+  collect Coin of Ancestry##21100 |q 8876 |goto Moonglade 53.79,35.32
 step
-  get Firework Launcher |q 8877 |goto Moonglade 53.79,35.32
+  collect Coin of Ancestry##21100 |q 8877 |goto Moonglade 53.79,35.32
 step
-  get Festive Recipes |q 8878 |goto Moonglade 53.79,35.32
+  collect Coin of Ancestry##21100 |q 8878 |goto Moonglade 53.79,35.32
 step
-  get Large Rockets |q 8879 |goto Moonglade 53.79,35.32
+  collect Coin of Ancestry##21100 |q 8879 |goto Moonglade 53.79,35.32
 step
-  get Cluster Rockets |q 8880 |goto Moonglade 53.79,35.32
+  collect Coin of Ancestry##21100 |q 8880 |goto Moonglade 53.79,35.32
 step
-  get Large Cluster Rockets |q 8881 |goto Moonglade 53.79,35.32
+  collect Coin of Ancestry##21100 |q 8881 |goto Moonglade 53.79,35.32
 step
-  get Cluster Launcher |q 8882 |goto Moonglade 53.79,35.32
+  collect Coin of Ancestry##21100 |q 8882 |goto Moonglade 53.79,35.32
 step
   note Launch 8 Lunar Fireworks and 2 Cluster Fireworks and return to a Lunar Festival Harbinger at any capital city.
   get Lunar Fireworks |q 8867 |goto Darnassus 31.75,12.39

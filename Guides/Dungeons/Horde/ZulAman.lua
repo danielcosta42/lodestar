@@ -16,10 +16,10 @@ step
   accept Playin' With Dolls##11195 |goto Zul'Aman - Raid -1,-1
 step
   note Budd Nedreck in Hatchet Hills wants you to retrieve his map from High Priest Nalorakk's terrace in Zul'Aman.
-  collect The Map of Zul'Aman##186733 |q 11132 |goto Zul'Aman - Raid -1,-1
+  collect Budd's Map of Zul'Aman##33013 |q 11132 |goto Zul'Aman - Raid -1,-1 |tip {dropsfrom}The Map of Zul'Aman
 step
   note Prigmon needs you to collect 10 Forest Troll Tusks from the trolls in Zul'Aman. Bring them to him at Budd's camp in the Ghostlands.
-  kill Amani'shi Axe Thrower##23542 |q 11164 |goto Zul'Aman - Raid -1,-1 |elite
+  collect 10 Forest Troll Tusk##33106 |q 11164 |goto Zul'Aman - Raid -1,-1 |tip {dropsfrom}Amani'shi Axe Thrower, Amani'shi Warbringer, Amani'shi Medicine Man
 step
   talk Budd Nedreck##23559
   turnin Promises, Promises...##11132 |goto Ghostlands 70.34,67.84

@@ -14,31 +14,31 @@ step
   accept The Heart of the Mountain##4123 |goto Burning Steppes 65.15,23.91
 step
   note Bring the Heart of the Mountain to Maxwort Uberglint in the Burning Steppes.
-  collect Heart of the Mountain##165554 |q 4123 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  collect The Heart of the Mountain##11309 |q 4123 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Heart of the Mountain
 step
   talk Yuka Screwspigot##9544
   accept Ribbly Screwspigot##4136 |goto Burning Steppes 66.06,21.95
 step
   note Bring Ribbly's Head to Yuka Screwspigot in the Burning Steppes.
-  kill Ribbly Screwspigot##9543 |q 4136 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+  collect Ribbly's Head##11313 |q 4136 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Ribbly Screwspigot
 step
   talk Maxwort Uberglint##9536
   accept Tablet of the Seven##4296 |goto Burning Steppes 65.15,23.91
 step
   note Bring the Tablet Transcript to Maxwort Uberglint in the Burning Steppes.
-  get Tablet of the Seven |q 4296 |goto Burning Steppes 65.15,23.91
+  collect Tablet Transcript##11470 |q 4296 |goto Burning Steppes 65.15,23.91
 step
   talk Tinkee Steamboil##10267
   accept Broodling Essence##4726 |goto Burning Steppes 65.24,24.0
 step
   note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
-  get Broodling Essence |q 4726 |goto Burning Steppes 65.24,24.0
+  collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 65.24,24.0 |tip {dropsfrom}Broodling Essence
 step
   talk Kibler##10260
   accept Kibler's Exotic Pets##4729 |goto Burning Steppes 65.89,21.92
 step
   note Travel to Blackrock Spire and find Bloodaxe Worg Pups. Use the cage to carry the ferocious little beasts. Bring back a Caged Worg Pup to Kibler.
-  get Kibler's Exotic Pets |q 4729 |goto Burning Steppes 65.89,21.92
+  collect Caged Worg Pup##12263 |q 4729 |goto Burning Steppes 65.89,21.92
 step
   talk Tinkee Steamboil##10267
   accept Egg Freezing##4734 |goto Burning Steppes 65.24,24.0
@@ -47,7 +47,7 @@ step
   accept En-Ay-Es-Tee-Why##4862 |goto Burning Steppes 65.89,21.92
 step
   note Travel to Blackrock Spire and collect 15 Spire Spider Eggs for Kibler.
-  collect Spire Spider Egg##175588 |q 4862 |goto Blackrock Spire - Dungeon -1,-1
+  collect 15 Spire Spider Egg##12530 |q 4862 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Spire Spider Egg
 step
   talk Elder Dawnstrider##15585
   accept Dawnstrider the Elder##8683 |goto Burning Steppes 64.46,23.95
@@ -59,13 +59,13 @@ step
   accept A Taste of Flame##4022 |goto Burning Steppes 95.09,31.56
 step
   note Show Cyrus Therepentous the Black Dragonflight Molt you received from Kalaran Windblade.
-  kill Dark Iron Taskmaster##5846 |q 4022 |goto Searing Gorge 42.74,39.64
+  collect Black Dragonflight Molt##10575 |q 4022 |goto Searing Gorge 42.74,39.64 |tip {dropsfrom}Dark Iron Taskmaster, Heavy War Golem, Frenzied Black Drake
 step
   talk Cyrus Therepentous##9459
   accept A Taste of Flame##4023 |goto Burning Steppes 95.09,31.56
 step
   note Show Cyrus Therepentous proof of your worth.
-  kill Dark Iron Taskmaster##5846 |q 4023 |goto Searing Gorge 42.74,39.64
+  collect Black Dragonflight Molt##10575 |q 4023 |goto Searing Gorge 42.74,39.64 |tip {dropsfrom}Dark Iron Taskmaster, Heavy War Golem, Frenzied Black Drake
 step
   talk Oralius##9177
   accept Extinguish the Firegut##3823 |goto Burning Steppes 84.56,68.68
@@ -86,13 +86,13 @@ step
   accept FIFTY! YEP!##4283 |goto Burning Steppes 84.56,68.68
 step
   note Oralius wants 50 Blackrock Medallions. Chances are high that these medallions can be found on the orcs in the Burning Steppes.
-  kill Blackrock Soldier##7025 |q 4283 |goto Burning Steppes 45.02,54.68
+  collect Blackrock Medallion##11467 |q 4283 |goto Burning Steppes 45.02,54.68 |tip {dropsfrom}Blackrock Soldier, Blackrock Sorcerer, Blackrock Slayer
 step
   talk Oralius##9177
   accept The Good Stuff##4286 |goto Burning Steppes 84.56,68.68
 step
   note Travel to Blackrock Depths and recover 20 Dark Iron Fanny Packs. Return to Oralius when you have completed this task. You assume that the Dark Iron dwarves inside Blackrock Depths carry these 'fanny pack' contraptions.
-  kill Anvilrage Overseer##8889 |q 4286 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  collect Dark Iron Fanny Pack##11468 |q 4286 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Overseer, Anvilrage Warden, Anvilrage Guardsman
 step
   talk Helendis Riverhorn##9562
   accept Put Her Down##4701 |goto Burning Steppes 85.82,68.95
@@ -101,7 +101,7 @@ step
   accept Doomrigger's Clasp##4764 |goto Burning Steppes 84.84,69.12
 step
   note Bring Doomrigger's Clasp to Mayara Brightwing in the Burning Steppes.
-  collect Doomrigger's Coffer##175382 |q 4764 |goto Blackrock Spire - Dungeon -1,-1
+  collect Doomrigger's Clasp##12352 |q 4764 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Doomrigger's Coffer
 step
   talk Marshal Maxwell##9560
   accept Maxwell's Mission##5081 |goto Burning Steppes 84.74,69.02
@@ -140,7 +140,7 @@ step
   accept Egg Collection##4735 |goto Burning Steppes 65.24,24.0
 step
   note Bring 8 Collected Dragon Eggs and the Collectronic Module to Tinkee Steamboil at Flame Crest in the Burning Steppes.
-  get Egg Collection |q 4735 |goto Burning Steppes 65.24,24.0
+  collect 8 Collected Dragon Egg##12241 |q 4735 |goto Burning Steppes 65.24,24.0
 step
   talk Tinkee Steamboil##10267
   accept Felnok Steelspring##4808 |goto Burning Steppes 65.24,24.0
@@ -170,7 +170,7 @@ step
   accept A Taste of Flame##4024 |goto Burning Steppes 95.09,31.56
 step
   note Travel to Blackrock Depths and slay Bael'Gar.
-  get A Taste of Flame |q 4024 |goto Burning Steppes 95.09,31.56
+  collect Encased Fiery Essence##11230 |q 4024 |goto Burning Steppes 95.09,31.56
 step
   note Slay 15 Black Broodlings, 10 Black Dragonspawn, 4 Black Wyrmkin and 1 Black Drake. Return to Helendis Riverhorn when the task is complete.
   kill Black Broodling##7047 |q 4182 |goto Burning Steppes 89.47,35.54
@@ -209,7 +209,7 @@ step
   accept Gor'tesh the Brute Lord##3824 |goto Burning Steppes 84.56,68.68
 step
   note Find Gor'tesh, somewhere to the west of Dreadmaul Rock. Kill Gor'tesh and then take Gor'tesh's Lopped Off Head back to Oralius in Burning Steppes.
-  kill Gor'tesh##9176 |q 3824 |goto Burning Steppes 39.33,55.3
+  collect Gor'tesh's Lopped Off Head##11080 |q 3824 |goto Burning Steppes 39.33,55.3 |tip {dropsfrom}Gor'tesh
 step
   talk Helendis Riverhorn##9562
   accept The True Masters##4183 |goto Burning Steppes 85.82,68.95

@@ -70,7 +70,7 @@ step
   accept Wanted: Malicious Instructors##11376 |goto Shattrath City 75.5,37.24
 step
   note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
-  collect Eye of Veil Reskk##185200 |q 10847 |goto Terokkar Forest 50.12,19.37
+  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37 |tip {dropsfrom}Eye of Veil Reskk
 step
   note Mekeda at the Refugee Caravan in Terokkar Forest wants you to kill 8 Cabal Skirmishers, 4 Cabal Spell-Weavers and 2 Cabal Initiates.
   kill Cabal Skirmisher##21661 |q 10878 |goto Terokkar Forest 37.89,56.0
@@ -79,34 +79,34 @@ step
   kill Slain Sha'tar Vindicator##21859 |q 10913 |goto Terokkar Forest 34.6,76.1
 step
   note Bring 30 Arakkoa Feathers to Vekax in Shattrath's Lower City.
-  kill Shienor Talonite##18449 |q 10917 |goto Terokkar Forest 50.89,19.63
+  collect 30 Arakkoa Feather##25719 |q 10917 |goto Terokkar Forest 50.89,19.63 |tip {dropsfrom}Shienor Talonite, Shienor Sorcerer, Shienor Wing Guard
 step
   note Kill Darkweaver Syth in the Sethekk halls, then free Lakka from captivity. Return to Isfar outside the Sethekk Halls when you've completed the rescue.
   kill Darkweaver Syth##18472 |q 10097 |goto Sethekk Halls - Dungeon -1,-1 |elite
 step
   note Steal 5 Soul Devices and deliver them to Spymistress Mehlisah Highcrown at the Terrace of the Light in Shattrath City.
-  collect Soul Device##182940 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1
+  collect Soul Device##27480 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Soul Device
 step
   note Destroy Murmur and inform Spymistress Mehlisah Highcrown at the Terrace of Light in Shattrath City of the events that have transpired inside the Shadow Labyrinth.
   kill Murmur##18708 |q 10095 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
 step
   note Use the Square of Imbued Netherweave while standing in Cenarion Refuge's moonwell to create a Sample of Primal Mooncloth. Bring the completed sample back to Nasmara Moonsong in Shattrath's Lower City.
-  get Becoming a Mooncloth Tailor |q 10831 |goto Shattrath City 66.55,69.33
+  collect Sample of Primal Mooncloth##31530 |q 10831 |goto Shattrath City 66.55,69.33
 step
   note Bring a sample of Nether-wraith Essence to Gidge Spellweaver in Shattrath's Lower City.
-  get Becoming a Spellfire Tailor |q 10832 |goto Shattrath City 66.82,68.75
+  collect Nether-wraith Essence##31741 |q 10832 |goto Shattrath City 66.82,68.75 |tip {dropsfrom}Furious Nether-wraith
 step
   note Use the Crystal of Deep Shadows near the Altar of Shadows to deepen your attunement to the altar, then return to Andrion Darkspinner in Shattrath's Lower City.
   get Becoming a Shadoweave Tailor |q 10833 |goto Shadowmoon Valley 58.3,70.92
 step
   note Wind Trader Zhareem has asked you to acquire The Headfeathers of Ikiss. Deliver them to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Headfeathers of Ikiss |q 11372 |goto Shattrath City 75.13,36.65
+  collect The Headfeathers of Ikiss##33834 |q 11372 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Talon King Ikiss (1)
 step
   note Wind Trader Zhareem has asked you to recover The Exarch's Soul Gem. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Exarch's Soul Gem |q 11374 |goto Shattrath City 75.13,36.65
+  collect The Exarch's Soul Gem##33836 |q 11374 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Exarch Maladaar (1)
 step
   note Wind Trader Zhareem has asked you to obtain Murmur's Whisper. Deliver it to him in Shattrath's Lower City to collect the reward.
-  kill Murmur##18708 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
+  collect Murmur's Whisper##33840 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Murmur (1)
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
@@ -198,18 +198,18 @@ step
   accept Master of Elixirs##10902 |goto Shattrath City 45.59,21.49
 step
   note Go into the Shadow Tomb, west of the Refugee Caravan and retrieve the Drape of Arunen, the Gavel of K'alen and the Scroll of Atalor. Return to Mekeda at the Refugee Caravan after you've completed this task.
-  collect Cabal Chest##185226 |q 10881 |goto Terokkar Forest 32.1,51.2
+  collect Drape of Arunen##31709 |q 10881 |goto Terokkar Forest 32.1,51.2 |tip {dropsfrom}Cabal Chest
 step
   note Commander Ra'vaj at the Sha'tari Outpost in the Bone Wastes of Terokkar Forest wants you to slay 12 Auchenai Initiates and 5 Auchenai Doomsayers.
   kill Auchenai Initiate##21284 |q 10914 |goto Terokkar Forest 35.03,72.94
 step
-  kill Shienor Talonite##18449 |q 10918 |goto Terokkar Forest 50.89,19.63
+  collect Arakkoa Feather##25719 |q 10918 |goto Terokkar Forest 50.89,19.63 |tip {dropsfrom}Shienor Talonite, Shienor Sorcerer, Shienor Wing Guard
 step
   note Dwarfowitz at the Sha'tari Base Camp in the Bone Wastes wants you to bring him 8 Mature Bone Sifter Carcasses.
-  get Fumping |q 10929 |goto Terokkar Forest 30.98,76.19
+  collect Mature Bone Sifter Carcass##31814 |q 10929 |goto Terokkar Forest 30.98,76.19 |tip {dropsfrom}Mature Bone Sifter
 step
   note Go to the Black Morass in the Caverns of Time and obtain 10 Essences of Infinity from Rift Lords and Rift Keepers. Bring these along with 5 Elixirs of Major Defense, 5 Elixirs of Mastery and 5 Elixirs of Major Agility to Lorokeem in Shattrath's Lower City.
-  get Master of Elixirs |q 10902 |goto Shattrath City 45.59,21.49
+  collect 10 Essence of Infinity##31753 |q 10902 |goto Shattrath City 45.59,21.49 |tip {dropsfrom}Rift Lord, Rift Lord (1), Rift Keeper
 step
   talk Kirrik the Awakened##22272
   turnin Seek Out Kirrik##10849 |goto Terokkar Forest 37.45,51.54
@@ -257,7 +257,7 @@ step
   kill Reanimated Exarch##22452 |q 10915
 step
   note Dwarfowitz at the Sha'tari Base Camp in the Bone Wastes wants you to recover Enormous Bone Worm Organs.
-  get The Big Bone Worm |q 10930 |goto Terokkar Forest 30.98,76.19
+  collect Enormous Bone Worm Organs##31826 |q 10930 |goto Terokkar Forest 30.98,76.19 |tip {dropsfrom}Hai'shulud
 step
   talk Kirrik the Awakened##22272
   turnin Veil Skith: Darkstone of Terokk##10839 |goto Terokkar Forest 37.45,51.54
@@ -286,7 +286,7 @@ step
   kill Deathtalon Spirit##21198 |q 10848 |goto Terokkar Forest 28.05,54.35
 step
   note Collect 10 Restless Bones. Deliver them to Ramdor the Mad, just off the western side of the Ring of Observance in Auchindoun, which is in the middle of the Bone Wastes of Terokkar Forest.
-  collect Restless Bones##182584 |q 10030 |goto Terokkar Forest 39.84,61.97
+  collect 10 Restless Bones##25842 |q 10030 |goto Terokkar Forest 39.84,61.97 |tip {dropsfrom}Restless Bones
 step
   talk Kirrik the Awakened##22272
   turnin Veil Rhaze: Unliving Evil##10848 |goto Terokkar Forest 37.45,51.54

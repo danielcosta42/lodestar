@@ -18,13 +18,13 @@ step
   talk Soridormi##19935
   accept Defender No More##11106 |goto Tanaris 61.05,56.95
 step
-  get Sage No More |q 11103 |goto Tanaris 61.05,56.95
+  collect Band of the Eternal Sage##29305 |q 11103 |goto Tanaris 61.05,56.95
 step
-  get Restorer No More |q 11104 |goto Tanaris 61.05,56.95
+  collect Band of the Eternal Restorer##29309 |q 11104 |goto Tanaris 61.05,56.95
 step
-  get Champion No More |q 11105 |goto Tanaris 61.05,56.95
+  collect Band of the Eternal Champion##29301 |q 11105 |goto Tanaris 61.05,56.95
 step
-  get Defender No More |q 11106 |goto Tanaris 61.05,56.95
+  collect Band of the Eternal Defender##29297 |q 11106 |goto Tanaris 61.05,56.95
 step
   talk Soridormi##19935
   turnin Sage No More##11103 |goto Tanaris 61.05,56.95

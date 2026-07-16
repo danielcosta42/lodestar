@@ -11,7 +11,7 @@ step
   accept Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
 step
   note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
-  kill Timber Wolf##69 |q 179 |goto Elwynn Forest 49.48,39.15
+  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 49.48,39.15 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
 step
   talk Sten Stoutarm##658
   accept Coldridge Valley Mail Delivery##233 |goto Dun Morogh 29.93,71.2
@@ -23,7 +23,7 @@ step
   accept A Refugee's Quandary##3361 |goto Dun Morogh 28.55,67.64
 step
   note Bring Felix's Box, Felix's Chest and Felix's Bucket of Bolts to Felix Whindlebolt in Anvilmar.
-  collect Felix's Box##148499 |q 3361 |goto Dun Morogh 20.88,76.07
+  collect Felix's Box##10438 |q 3361 |goto Dun Morogh 20.88,76.07 |tip {dropsfrom}Felix's Box
 step
   only Dwarf Priest
   talk Branstock Khalder##837
@@ -61,19 +61,19 @@ step
   accept The Grizzled Den##313 |goto Dun Morogh 49.62,48.61
 step
   note Gather 8 Wendigo Manes and bring them to Pilot Stonegear.
-  kill Young Wendigo##1134 |q 313 |goto Dun Morogh 42.12,54.63
+  collect 8 Wendigo Mane##2671 |q 313 |goto Dun Morogh 42.12,54.63 |tip {dropsfrom}Young Wendigo, Wendigo, Edan the Howler
 step
   talk Pilot Bellowfiz##1378
   accept Stocking Jetsteam##317 |goto Dun Morogh 49.43,48.41
 step
   note Gather 4 Chunks of Boar Meat and 2 Thick Bear Furs, and deliver them to Pilot Bellowfiz at Steelgrill's Depot.
-  kill Stonetusk Boar##113 |q 317 |goto Elwynn Forest 38.75,85.14
+  collect 4 Chunk of Boar Meat##769 |q 317 |goto Elwynn Forest 38.75,85.14 |tip {dropsfrom}Stonetusk Boar, Longsnout, Goretusk
 step
   talk Ragnar Thunderbrew##1267
   accept Beer Basted Boar Ribs##384 |goto Dun Morogh 46.83,52.36
 step
   note Ragnar Thunderbrew in Kharanos wants 6 Crag Boar Ribs and a mug of Rhapsody Malt.
-  kill Small Crag Boar##708 |q 384 |goto Dun Morogh 22.2,71.37
+  collect Crag Boar Rib##2886 |q 384 |goto Dun Morogh 22.2,71.37 |tip {dropsfrom}Small Crag Boar, Crag Boar, Large Crag Boar
 step
   talk Tharek Blackstone##1872
   accept Tools for Steelgrill##400 |goto Dun Morogh 46.02,51.68
@@ -82,7 +82,7 @@ step
   accept Operation Recombobulation##412 |goto Dun Morogh 45.85,49.37
 step
   note Bring Razzle Sprysprocket in Kharanos 8 Restabilization Cogs and 8 Gyromechanic Gears.
-  kill Leper Gnome##1211 |q 412 |goto Dun Morogh 26.02,40.76
+  collect Restabilization Cog##3083 |q 412 |goto Dun Morogh 26.02,40.76 |tip {dropsfrom}Leper Gnome, Gibblewilt
 step
   only Warlock
   talk Magis Sparkmantle##1228
@@ -96,7 +96,7 @@ step
   accept Ammo for Rumbleshot##5541 |goto Dun Morogh 50.08,49.42
 step
   note Bring Rumbleshot's Ammo to Hegnar Rumbleshot in Dun Morogh.
-  collect Ammo Crate##176785 |q 5541 |goto Dun Morogh 44.13,56.95
+  collect Rumbleshot's Ammo##13850 |q 5541 |goto Dun Morogh 44.13,56.95 |tip {dropsfrom}Ammo Crate
 step
   only Dwarf Priest
   talk Maxan Anvol##1226
@@ -118,7 +118,7 @@ step
   accept Tundra MacGrann's Stolen Stash##312 |goto Dun Morogh 34.57,51.65
 step
   note Retrieve Tundra MacGrann's dried meats from the stolen meat locker in Old Icebeard's cave.
-  collect MacGrann's Meat Locker##272 |q 312 |goto Dun Morogh 38.51,53.93
+  collect MacGrann's Dried Meats##2667 |q 312 |goto Dun Morogh 38.51,53.93 |tip {dropsfrom}MacGrann's Meat Locker
 step
   only Warlock
   talk Bink##5144
@@ -131,7 +131,7 @@ step
   accept The Perfect Stout##315 |goto Dun Morogh 30.19,45.73
 step
   note Bring 6 Shimmerweeds to Rejold Barleybrew in the Brewnall Village.
-  kill Frostmane Seer##1397 |q 315 |goto Dun Morogh 41.76,35.86
+  collect 6 Shimmerweed##2676 |q 315 |goto Dun Morogh 41.76,35.86 |tip {dropsfrom}Frostmane Seer, Shimmerweed Basket
 step
   only Rogue
   talk Onin MacHammar##6886
@@ -156,7 +156,7 @@ step
   accept Protecting the Herd##314 |goto Dun Morogh 63.08,49.85
 step
   note Rudra Amberstill wants you to slay Vagash and bring his fang to her at the Ram ranch.
-  kill Vagash##1388 |q 314 |goto Dun Morogh 62.62,46.05
+  collect Fang of Vagash##3627 |q 314 |goto Dun Morogh 62.62,46.05 |tip {dropsfrom}Vagash
 step
   talk Foreman Stonebrow##1254
   accept Those Blasted Troggs!##432 |goto Dun Morogh 69.08,56.33
@@ -250,7 +250,7 @@ step
   accept The Stolen Journal##218 |goto Dun Morogh 25.08,75.71
 step
   note Grelin Whitebeard wants you to kill Grik'nir the Cold, and retrieve his journal.
-  kill Grik'nir the Cold##808 |q 218 |goto Dun Morogh 30.48,80.15
+  collect Grelin Whitebeard's Journal##2004 |q 218 |goto Dun Morogh 30.48,80.15 |tip {dropsfrom}Grik'nir the Cold
 step
   talk Hegnar Rumbleshot##1243
   turnin Ammo for Rumbleshot##5541 |goto Dun Morogh 40.68,65.13

@@ -121,22 +121,22 @@ step
   accept Wanted: Arcatraz Sentinels##11389 |goto Shattrath City 75.5,37.24
 step
   note Bring 8 Dreadfang Venom Sacs to Sha'nir in Shattrath City.
-  kill Dreadfang Lurker##18466 |q 10017 |goto Terokkar Forest 46.75,30.29
+  collect 8 Dreadfang Venom Sac##25802 |q 10017 |goto Terokkar Forest 46.75,30.29 |tip {dropsfrom}Dreadfang Lurker, Dreadfang Widow
 step
   note Bring Stonegazer's Blood to Sha'nir in Shattrath City.
-  kill Stonegazer##18648 |q 10020 |goto Terokkar Forest 62.81,27.69 |elite
+  collect Stonegazer's Blood##25815 |q 10020 |goto Terokkar Forest 62.81,27.69 |tip {dropsfrom}Stonegazer
 step
   note Ishanah wants you to go to the Arakkoa outpost east of Shattrath City and use the Blessed Vial to cleanse the Eastern Altar, the Western Altar and the Northern Altar.
   collect Northern Altar##182563 |q 10021 |goto Terokkar Forest 50.66,16.56
 step
   note Bring 8 Dampscale Basilisk Eyes to Arcanist Adyria in Shattrath City.
-  kill Dampscale Basilisk##18461 |q 10024 |goto Terokkar Forest 38.39,11.68
+  collect 8 Dampscale Basilisk Eye##25744 |q 10024 |goto Terokkar Forest 38.39,11.68 |tip {dropsfrom}Dampscale Basilisk, Dampscale Devourer, Stonegazer
 step
   note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
-  kill Mo'arg Engineer##16945 |q 10325 |goto Nagrand 20.0,49.34 |elite
+  collect 10 Mark of Kil'jaeden##29425 |q 10325 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
 step
   note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Firewing Signets.
-  kill Firewing Bloodwarder##1410 |q 10412 |goto Terokkar Forest 71.58,36.73
+  collect Firewing Signet##29426 |q 10412 |goto Terokkar Forest 71.58,36.73 |tip {dropsfrom}Firewing Bloodwarder, Firewing Defender, Firewing Warlock
 step
   note Scout Navrin wants you to travel to the Netherweb Ridge and free 6 Webbed Sha'tar Warriors and then return to him at Sha'tar Outpost.
   kill Freed Sha'tar Warrior##22459 |q 10873
@@ -145,22 +145,22 @@ step
   kill Dreadfang Widow##18467 |q 10920 |goto Terokkar Forest 31.75,67.01
 step
   note Oakun wants you to travel east to the Derelict Caravan to recover the Dread Relic. Return to Oakun when the task is complete.
-  collect Massive Treasure Chest##185220 |q 10877 |goto Terokkar Forest 43.92,76.4
+  collect Dread Relic##31697 |q 10877 |goto Terokkar Forest 43.92,76.4 |tip {dropsfrom}Massive Treasure Chest
 step
   note Spymaster Thalodien at Area 52 wants you to go to the outskirts of Manaforge B'naar and retrieve the B'naar Personnel Roster from Captain Arathyn.
-  kill Captain Arathyn##19635 |q 10189 |goto Netherstorm 27.24,65.44
+  collect B'naar Personnel Roster##28376 |q 10189 |goto Netherstorm 27.24,65.44 |tip {dropsfrom}Captain Arathyn
 step
   note Voren'thal the Seer in Shattrath City wants you to obtain an Arcane Tome.
-  kill Firewing Bloodwarder##1410 |q 10416 |goto Terokkar Forest 71.58,36.73
+  collect Arcane Tome##29739 |q 10416 |goto Terokkar Forest 71.58,36.73 |tip {dropsfrom}Firewing Bloodwarder, Firewing Defender, Firewing Warlock
 step
   note Bring a Fel Armament to Ishanah in Shattrath City.
-  kill Cyber-Rage Forgelord##16943 |q 10420 |goto Netherstorm 40.3,21.07
+  collect Fel Armament##29740 |q 10420 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Mo'arg Engineer
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
-  kill Ashtongue Worker##21455 |q 10568 |goto Shadowmoon Valley 58.47,37.68
+  collect 12 Baa'ri Tablet Fragment##30596 |q 10568 |goto Shadowmoon Valley 58.47,37.68 |tip {dropsfrom}Ashtongue Worker, Baa'ri Tablet Fragment
 step
   note Exarch Onaala at the Altar of Sha'tar wants you to obtain 8 Sunfury Glaives from Demon Hunter Supplicants and Demon Hunter Initiates at the Ruins of Karabor, southeast of the Altar of Sha'tar.
-  kill Demon Hunter Supplicant##21179 |q 10587 |goto Shadowmoon Valley 68.74,53.05
+  collect 8 Sunfury Glaive##30679 |q 10587 |goto Shadowmoon Valley 68.74,53.05 |tip {dropsfrom}Demon Hunter Supplicant, Demon Hunter Initiate
 step
   note Vindicator Aluumen wants you to go to the Ruins of Baa'ri and slay 3 Ashtongue Handlers, 4 Ashtongue Warriors and 6 Ashtongue Shaman.
   kill Ashtongue Handler##21803 |q 10619 |goto Shadowmoon Valley 57.71,36.86
@@ -169,10 +169,10 @@ step
   kill Avatar of Sathal##21925 |q 10641
 step
   note Bring 10 Marks of Sargeras to Adyen the Lightwarden in Shattrath City.
-  kill Cyber-Rage Forgelord##16943 |q 10653 |goto Netherstorm 40.3,21.07
+  collect 10 Mark of Sargeras##30809 |q 10653 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Gan'arg Mekgineer
 step
   note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Sunfury Signets.
-  get Sunfury Signets |q 10656 |goto Shattrath City 45.2,81.44
+  collect Sunfury Signet##30810 |q 10656 |goto Shattrath City 45.2,81.44 |tip {dropsfrom}Bloodwarder Protector, Bloodwarder Falconer, Bloodwarder Steward
 step
   note Altruis the Sufferer wants you to slay Lothros at Illidari Point in Shadowmoon Valley.
   kill Lothros##21928 |q 10668 |goto Shadowmoon Valley 28.29,49.97
@@ -181,34 +181,34 @@ step
   kill Xeleth##21894 |q 10669
 step
   note Arcanist Thelis at the Sanctum of the Stars wants you to collect 12 Baa'ri Tablets from the ground and from Ashtongue Workers at the Ruins of Baa'ri.
-  kill Ashtongue Worker##21455 |q 10683 |goto Shadowmoon Valley 58.47,37.68
+  collect 12 Baa'ri Tablet Fragment##30596 |q 10683 |goto Shadowmoon Valley 58.47,37.68 |tip {dropsfrom}Ashtongue Worker, Baa'ri Tablet Fragment
 step
   note Larissa Sunstrike at the Sanctum of the Stars wants you to obtain 8 Sunfury Glaives from the Demon Hunter Supplicants and Demon Hunter Initiates at the Ruins of Karabor, northeast of the Sanctum of the Stars.
-  kill Demon Hunter Supplicant##21179 |q 10687 |goto Shadowmoon Valley 68.74,53.05
+  collect 8 Sunfury Glaive##30679 |q 10687 |goto Shadowmoon Valley 68.74,53.05 |tip {dropsfrom}Demon Hunter Supplicant, Demon Hunter Initiate
 step
   note Varen the Reclaimer wants you to go to the Ruins of Baa'ri and slay 3 Ashtongue Handlers, 4 Ashtongue Warriors and 6 Ashtongue Shaman.
   kill Ashtongue Handler##21803 |q 10807 |goto Shadowmoon Valley 57.71,36.86
 step
   note Battlemage Vyara at the Sanctum of the Stars wants you to bring her 10 Sunfury Signets.
-  get Sunfury Signets |q 10824 |goto Shadowmoon Valley 56.29,58.8
+  collect Sunfury Signet##30810 |q 10824 |goto Shadowmoon Valley 56.29,58.8 |tip {dropsfrom}Bloodwarder Protector, Bloodwarder Falconer, Bloodwarder Steward
 step
   note Bring 10 Marks of Sargeras to Harbinger Saronen in Shadowmoon Valley.
-  kill Cyber-Rage Forgelord##16943 |q 10826 |goto Netherstorm 40.3,21.07
+  collect 10 Mark of Sargeras##30809 |q 10826 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Gan'arg Mekgineer
 step
   note Wind Trader Zhareem has asked you to obtain a Warp Splinter Clipping. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: A Warp Splinter Clipping |q 11384 |goto Shattrath City 75.13,36.65
+  collect Warp Splinter Clipping##33859 |q 11384 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Warp Splinter (1)
 step
   note Nether-Stalker Mah'duun wants you to kill 6 Sunseeker Channelers. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Sunseeker Channeler##19505 |q 11385 |elite
 step
   note Wind Trader Zhareem has asked you to acquire Pathaleon's Projector. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: Pathaleon's Projector |q 11386 |goto Shattrath City 75.13,36.65
+  collect Pathaleon's Projector##33860 |q 11386 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Pathaleon the Calculator (1)
 step
   note Nether-Stalker Mah'duun wants you to destroy 5 Tempest-Forge Destroyers. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Tempest-Forge Destroyer##19735 |q 11387 |elite
 step
   note Wind Trader Zhareem has asked you to obtain The Scroll of Skyriss. Deliver it to him in Shattrath's Lower City to collect the reward.
-  get Wanted: The Scroll of Skyriss |q 11388 |goto Shattrath City 75.13,36.65
+  collect The Scroll of Skyriss##33861 |q 11388 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Harbinger Skyriss (1)
 step
   note Nether-Stalker Mah'duun wants you to dismantle 5 Arcatraz Sentinels. Return to him in Shattrath's Lower City once that has been accomplished in order to collect the bounty.
   kill Arcatraz Sentinel##20869 |q 11389 |elite
@@ -417,9 +417,9 @@ step
   talk Harbinger Saronen##22214
   accept Single Mark of Sargeras##10828 |goto Shadowmoon Valley 62.27,29.78
 step
-  kill Mo'arg Engineer##16945 |q 10326 |goto Nagrand 20.0,49.34 |elite
+  collect Mark of Kil'jaeden##29425 |q 10326 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
 step
-  kill Mo'arg Engineer##16945 |q 10327 |goto Nagrand 20.0,49.34 |elite
+  collect Mark of Kil'jaeden##29425 |q 10327 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
 step
   note Vindicator Haylen wants you to kill the Terokkarantula and then return to him west of Netherweb Ridge.
   kill Terokkarantula##20682 |q 10921 |goto Terokkar Forest 54.27,81.82 |elite
@@ -434,35 +434,35 @@ step
   kill Sunfury Magister##18855 |q 10241 |goto Netherstorm 25.07,68.25
 step
   note Obtain an Arklon Crystal Artifact and return it to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  kill Pentatharon##20215 |q 10265 |goto Netherstorm 42.46,72.75
+  collect Arklon Crystal Artifact##28829 |q 10265 |goto Netherstorm 42.46,72.75 |tip {dropsfrom}Pentatharon
 step
-  kill Firewing Bloodwarder##1410 |q 10414 |goto Terokkar Forest 71.58,36.73
+  collect Firewing Signet##29426 |q 10414 |goto Terokkar Forest 71.58,36.73 |tip {dropsfrom}Firewing Bloodwarder, Firewing Defender, Firewing Warlock
 step
-  kill Firewing Bloodwarder##1410 |q 10415 |goto Terokkar Forest 71.58,36.73
+  collect Firewing Signet##29426 |q 10415 |goto Terokkar Forest 71.58,36.73 |tip {dropsfrom}Firewing Bloodwarder, Firewing Defender, Firewing Warlock
 step
-  kill Firewing Bloodwarder##1410 |q 10419 |goto Terokkar Forest 71.58,36.73
+  collect Arcane Tome##29739 |q 10419 |goto Terokkar Forest 71.58,36.73 |tip {dropsfrom}Firewing Bloodwarder, Firewing Defender, Firewing Warlock
 step
-  kill Cyber-Rage Forgelord##16943 |q 10421 |goto Netherstorm 40.3,21.07
+  collect Fel Armament##29740 |q 10421 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Mo'arg Engineer
 step
   note Earthmender Torlok at the Altar of Damnation in Shadowmoon Valley wants you to use the Totem of Spirits to capture 8 Earthen Souls and 8 Fiery Souls.
   get Enraged Spirits of Fire and Earth |q 10458 |goto Shadowmoon Valley 42.19,45.06
 step
   note Anchorite Ceyla at the Altar of Sha'tar wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
-  kill Oronu the Elder##21663 |q 10571 |goto Shadowmoon Valley 57.19,32.87
+  collect Orders From Akama##30649 |q 10571 |goto Shadowmoon Valley 57.19,32.87 |tip {dropsfrom}Oronu the Elder
 step
   note Exarch Onaala wants you to return to the Ruins of Karabor and find a way to unleash Azaloth on his captors.
   get A Necessary Distraction |q 10637 |goto Shadowmoon Valley 69.84,51.42
 step
-  kill Cyber-Rage Forgelord##16943 |q 10654 |goto Netherstorm 40.3,21.07
+  collect Mark of Sargeras##30809 |q 10654 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Gan'arg Mekgineer
 step
-  kill Cyber-Rage Forgelord##16943 |q 10655 |goto Netherstorm 40.3,21.07
+  collect Mark of Sargeras##30809 |q 10655 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Gan'arg Mekgineer
 step
-  get More Sunfury Signets |q 10658 |goto Shattrath City 45.2,81.44
+  collect Sunfury Signet##30810 |q 10658 |goto Shattrath City 45.2,81.44 |tip {dropsfrom}Bloodwarder Protector, Bloodwarder Falconer, Bloodwarder Steward
 step
-  get Single Sunfury Signet |q 10659 |goto Shattrath City 45.2,81.44
+  collect Sunfury Signet##30810 |q 10659 |goto Shattrath City 45.2,81.44 |tip {dropsfrom}Bloodwarder Protector, Bloodwarder Falconer, Bloodwarder Steward
 step
   note Arcanist Thelis at the Sanctum of the Stars wants you to obtain the Orders from Akama from Oronu the Elder at the Ruins of Baa'ri.
-  kill Oronu the Elder##21663 |q 10684 |goto Shadowmoon Valley 57.19,32.87
+  collect Orders From Akama##30649 |q 10684 |goto Shadowmoon Valley 57.19,32.87 |tip {dropsfrom}Oronu the Elder
 step
   note Larissa Sunstrike wants you to return to the Ruins of Karabor and find a way to unleash Azaloth on his captors.
   get A Necessary Distraction |q 10688 |goto Shadowmoon Valley 69.84,51.42
@@ -473,13 +473,13 @@ step
   note Varen the Reclaimer wants you to slay 8 Shadowmoon Slayers, 8 Shadowmoon Chosen and 4 Shadowmoon Darkweavers.
   kill Shadowmoon Slayer##22082 |q 10817 |goto Shadowmoon Valley 69.23,38.7
 step
-  get Single Sunfury Signet |q 10822 |goto Shadowmoon Valley 56.29,58.8
+  collect Sunfury Signet##30810 |q 10822 |goto Shadowmoon Valley 56.29,58.8 |tip {dropsfrom}Bloodwarder Protector, Bloodwarder Falconer, Bloodwarder Steward
 step
-  get More Sunfury Signets |q 10823 |goto Shadowmoon Valley 56.29,58.8
+  collect Sunfury Signet##30810 |q 10823 |goto Shadowmoon Valley 56.29,58.8 |tip {dropsfrom}Bloodwarder Protector, Bloodwarder Falconer, Bloodwarder Steward
 step
-  kill Cyber-Rage Forgelord##16943 |q 10827 |goto Netherstorm 40.3,21.07
+  collect Mark of Sargeras##30809 |q 10827 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Gan'arg Mekgineer
 step
-  kill Cyber-Rage Forgelord##16943 |q 10828 |goto Netherstorm 40.3,21.07
+  collect Mark of Sargeras##30809 |q 10828 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Gan'arg Mekgineer
 step
   talk Khadgar##18166
   turnin City of Light##10211 |goto Shattrath City 54.75,44.32
@@ -620,7 +620,7 @@ step
   accept Altruis##10689 |goto Shadowmoon Valley 55.73,58.17
 step
   note Collect 10 Zaxxis Insignias and return them to Nether-Stalker Khay'ji at Area 52 in the Netherstorm.
-  kill Zaxxis Raider##18875 |q 10262 |goto Netherstorm 30.13,76.56
+  collect 10 Zaxxis Insignia##29209 |q 10262 |goto Netherstorm 30.13,76.56 |tip {dropsfrom}Zaxxis Raider, Warp-Raider Nesaad, Zaxxis Stalker
 step
   note Return to Manaforge B'naar and obtain the B'naar Access Crystal from Overseer Theredis. Use it at the Manaforge B'naar console to shut it down and report back to Anchorite Karja.
   kill B'naar Control Console##20209 |q 10299
@@ -635,13 +635,13 @@ step
   get Enraged Spirits of Water |q 10480 |goto Shadowmoon Valley 42.19,45.06
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Anchorite Ceyla at the Altar of Sha'tar in Shadowmoon Valley.
-  kill Eykenen##21709 |q 10574 |goto Shadowmoon Valley 51.18,52.82
+  collect Eykenen's Medallion Fragment##30692 |q 10574 |goto Shadowmoon Valley 51.18,52.82 |tip {dropsfrom}Eykenen
 step
   note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
-  kill Blackheart the Inciter##18667 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
+  collect Book of Fel Names##30808 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Blackheart the Inciter, Blackheart the Inciter (1)
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Arcanist Thelis at the Sanctum of the Stars in Shadowmoon Valley.
-  kill Eykenen##21709 |q 10685 |goto Shadowmoon Valley 51.18,52.82
+  collect Eykenen's Medallion Fragment##30692 |q 10685 |goto Shadowmoon Valley 51.18,52.82 |tip {dropsfrom}Eykenen
 step
   talk Khadgar##18166
   turnin Allegiance to the Aldor##10551 |goto Shattrath City 54.75,44.32
@@ -797,13 +797,13 @@ step
   accept Varedis Must Be Stopped##10692 |goto Shadowmoon Valley 55.73,58.17
 step
   note Nitrin at the Abandoned Armory in Nagrand wants you to bring him 1 Mountain Gronn Eyeball, 1 Flawless Greater Windroc Beak, and 1 Aged Clefthoof Blubber.
-  kill Mountain Gronn##19201 |q 10252 |goto Nagrand 27.22,42.14 |elite
+  collect Mountain Gronn Eyeball##28665 |q 10252 |goto Nagrand 27.22,42.14 |tip {dropsfrom}Mountain Gronn
 step
   note Anchorite Karja wants you to go Manaforge Duro and obtain the Duro Access Crystal from Overseer Athanel. Use it at the Manaforge Duro Console to shut it down.
   kill Duro Control Console##20418 |q 10322
 step
   note Go to Manaforge Duro and retrieve the Sunfury Military Briefing and the Sunfury Arcane Briefing from the Sunfury units stationed there. Return to Exarch Orellis when you've completed this task.
-  kill Sunfury Centurion##20140 |q 10328 |goto Netherstorm 59.3,66.49
+  collect Sunfury Military Briefing##29545 |q 10328 |goto Netherstorm 59.3,66.49 |tip {dropsfrom}Sunfury Centurion, Sunfury Bowman
 step
   note Slay Zandras at the Warden's Cage in Shadowmoon Valley and return to Sanoru.
   kill Zandras##21827 |q 10622 |goto Shadowmoon Valley 58.03,49.13
@@ -863,19 +863,19 @@ step
   accept Akama##10628 |goto Shadowmoon Valley 57.33,49.58
 step
   note Destroy Levixus and take the Book of the Dead from his possession.
-  kill Levixus##19847 |q 10253 |goto Terokkar Forest 39.63,71.27 |elite
+  collect The Book of the Dead##28677 |q 10253 |goto Terokkar Forest 39.63,71.27 |tip {dropsfrom}Levixus
 step
   note Obtain a set of Sunfury Arcanist Robes, one pair of Sunfury Researcher Gloves and a Sunfury Guardsman Medallion and bring them to Caledis Brightdawn at Manaforge Coruu in Netherstorm.
-  kill Sunfury Researcher##20136 |q 10197 |goto Netherstorm 53.02,83.05
+  collect Sunfury Researcher Gloves##28636 |q 10197 |goto Netherstorm 53.02,83.05 |tip {dropsfrom}Sunfury Researcher
 step
   note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  collect Box of Surveying Equipment##184031 |q 10267 |goto Netherstorm 58.82,65.76
+  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76 |tip {dropsfrom}Box of Surveying Equipment
 step
   note Travel to Manaforge Ara and obtain the Ara Access Crystal from Overseer Azarad. Use it at the Manaforge Ara console to shut it down.
   kill Ara Control Console##20440 |q 10323
 step
   note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
-  get I Was A Lot Of Things... |q 10514 |goto Shadowmoon Valley 53.95,23.52
+  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52 |tip {dropsfrom}Shadowmoon Tuber
 step
   talk Ramdor the Mad##19417
   turnin Levixus the Soul Caller##10253 |goto Terokkar Forest 35.15,66.24
@@ -1004,10 +1004,10 @@ step
   kill Sunfury Conjurer##20139 |q 10341 |goto Netherstorm 57.97,63.5
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  kill Forgemaster Morug##20800 |q 10407 |goto Netherstorm 36.15,26.43 |elite
+  collect First Half of Socrethar's Stone##29624 |q 10407 |goto Netherstorm 36.15,26.43 |tip {dropsfrom}Forgemaster Morug
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  kill Shadowlord Deathwail##22006 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |elite
+  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |tip {dropsfrom}Shadowlord Deathwail
 step
   talk Spymaster Thalodien##19468
   turnin Return to Thalodien##10200 |goto Netherstorm 32.0,64.07
@@ -1058,19 +1058,19 @@ step
   accept Akama's Promise##10708 |goto Shadowmoon Valley 58.11,48.18
 step
   note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
-  kill Culuthas##20138 |q 10276 |goto Netherstorm 53.51,21.53 |elite
+  collect Ata'mal Crystal##29026 |q 10276 |goto Netherstorm 53.51,21.53 |tip {dropsfrom}Culuthas
 step
   note Return to Manaforge Duro and obtain the Duro Access Crystal from Overseer Athanel. Use it at the Duro Control Console to shut it down and report back to Spymaster Thalodien.
   kill Duro Control Console##20418 |q 10338
 step
   note Grom'tor, Son of Oronok at Coilskar Point in Shadowmoon Valley wants you to recover the First Fragment of the Cipher of Damnation.
-  collect Coilskar Chest##184716 |q 10522 |goto Shadowmoon Valley 47.92,26.7
+  collect First Fragment of the Cipher of Damnation##30428 |q 10522 |goto Shadowmoon Valley 47.92,26.7 |tip {dropsfrom}Coilskar Chest
 step
   note Seek out and slay Painmistress Gabrissa at Illidari Point and return to the corpse of Ar'tor, Son of Oronok with the Crystalline Key.
-  kill Painmistress Gabrissa##21309 |q 10528 |goto Shadowmoon Valley 28.3,47.61
+  collect Crystalline Key##30442 |q 10528 |goto Shadowmoon Valley 28.3,47.61 |tip {dropsfrom}Painmistress Gabrissa
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  collect Rotten Arakkoa Egg##184795 |q 10547 |goto Shadowmoon Valley 44.15,57.51
+  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51 |tip {dropsfrom}Rotten Arakkoa Egg
 step
   talk Magister Theledorn##20920
   turnin A Defector##10202 |goto Netherstorm 26.19,41.57
@@ -1121,10 +1121,10 @@ step
   kill Ara Control Console##20440 |q 10365
 step
   note Obtain 8 Orders from Kael'thas from demons at Manaforge Ara and bring them to Spymaster Thalodien in Area 52.
-  kill Daughter of Destiny##18860 |q 10432 |goto Netherstorm 29.39,42.28
+  collect 8 Orders From Kael'thas##29797 |q 10432 |goto Netherstorm 29.39,42.28 |tip {dropsfrom}Daughter of Destiny, Gan'arg Warp-Tinker, Mo'arg Warp-Master
 step
   note The Spirit of Ar'tor at Illidari Point in Shadowmoon Valley wants you to recover Lohn'goron, Bow of the Torn-heart from the demons of the area.
-  kill Illidari Dreadbringer##19799 |q 10537 |goto Shadowmoon Valley 31.44,55.67
+  collect Lohn'goron, Bow of the Torn-heart##30451 |q 10537 |goto Shadowmoon Valley 31.44,55.67 |tip {dropsfrom}Illidari Dreadbringer, Illidari Painlasher, Illidari Shocktrooper
 step
   talk A'dal##18481
   turnin Special Delivery to Shattrath City##10280 |goto Shattrath City 53.99,44.75
@@ -1160,16 +1160,16 @@ step
   accept How to Break Into the Arcatraz##10704 |goto Shattrath City 53.99,44.75
 step
   note Spymaster Thalodien at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  kill Forgemaster Morug##20800 |q 10508 |goto Netherstorm 36.15,26.43 |elite
+  collect First Half of Socrethar's Stone##29624 |q 10508 |goto Netherstorm 36.15,26.43 |tip {dropsfrom}Forgemaster Morug
 step
   note The Spirit of Ar'tor at Illidari Point in Shadowmoon Valley wants you to recover the Second Fragment of the Cipher of Damnation from Veneratus the Many.
-  get The Cipher of Damnation - Ar'tor's Charge |q 10540 |goto Shadowmoon Valley 29.53,50.52
+  collect Second Fragment of the Cipher of Damnation##30453 |q 10540 |goto Shadowmoon Valley 29.53,50.52 |tip {dropsfrom}Veneratus the Many
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Stormrage Missive.
-  get To Catch A Thistlehead |q 10570 |goto Shadowmoon Valley 47.56,57.18
+  collect Stormrage Missive##30617 |q 10570 |goto Shadowmoon Valley 47.56,57.18 |tip {dropsfrom}Envoy Icarius
 step
   note A'dal has tasked you with the recovery of the Top and Bottom Shards of the Arcatraz Key. Return them to him, and he will fashion them into the Key to the Arcatraz for you.
-  get How to Break Into the Arcatraz |q 10704 |goto Shattrath City 53.99,44.75
+  collect Top Shard of the Arcatraz Key##31085 |q 10704 |goto Shattrath City 53.99,44.75 |tip {dropsfrom}Warp Splinter, Warp Splinter (1)
 step
   talk Spymaster Thalodien##19468
   turnin A Gift for Voren'thal##10508 |goto Netherstorm 32.0,64.07
@@ -1196,7 +1196,7 @@ step
   accept Harbinger of Doom##10882 |goto Shattrath City 53.99,44.75
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover 6 pieces of Eclipsion Armor.
-  kill Eclipsion Centurion##19792 |q 10576 |goto Shadowmoon Valley 47.18,67.6
+  collect Eclipsion Armor##30640 |q 10576 |goto Shadowmoon Valley 47.18,67.6 |tip {dropsfrom}Eclipsion Centurion, Eclipsion Blood Knight, Eclipsion Archmage
 step
   note You have been tasked to go to Tempest Keep's Arcatraz satellite and slay Harbinger Skyriss. Return to A'dal at the Terrace of Light in Shattrath City after you have done so.
   kill Harbinger Skyriss##20912 |q 10882 |elite
@@ -1232,7 +1232,7 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  kill Ruul the Darkener##21315 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |elite
+  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |tip {dropsfrom}Ruul the Darkener
 step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
@@ -1268,10 +1268,10 @@ step
   accept Trial of the Naaru: Tenacity##10886 |goto Shattrath City 53.99,44.75
 step
   note A'dal in Shattrath City wants you to recover the Unused Axe of the Executioner from the Shattered Halls of Hellfire Citadel.
-  get Trial of the Naaru: Mercy |q 10884 |goto Shattrath City 53.99,44.75
+  collect Unused Axe of the Executioner##31716 |q 10884 |goto Shattrath City 53.99,44.75 |tip {dropsfrom}Shattered Hand Executioner, Shattered Hand Executioner (1)
 step
   note A'dal in Shattrath City wants you to recover Kalithresh's Trident and Murmur's Essence.
-  get Trial of the Naaru: Strength |q 10885 |goto Shattrath City 53.99,44.75
+  collect Kalithresh's Trident##31721 |q 10885 |goto Shattrath City 53.99,44.75 |tip {dropsfrom}Warlord Kalithresh (1)
 step
   talk A'dal##18481
   turnin Trial of the Naaru: Mercy##10884 |goto Shattrath City 53.99,44.75

@@ -14,7 +14,7 @@ step
   accept The Videre Elixir##3909 |goto Winterspring 31.27,45.16
 step
   note Seek out Gregan Brewspewer in northern Feralas. From him, learn how you may acquire the Videre Elixir, then return to Donova Snowden in Winterspring.
-  get The Videre Elixir |q 3909 |goto Winterspring 31.27,45.16
+  collect Videre Elixir##11243 |q 3909 |goto Winterspring 31.27,45.16
 step
   talk Donova Snowden##9298
   accept Falling to Corruption##5084 |goto Winterspring 31.27,45.16
@@ -23,7 +23,7 @@ step
   accept Toxic Horrors##5086 |goto Winterspring 31.27,45.16
 step
   note Collect 3 Toxic Horror Droplets for Donova Snowden in Winterspring.
-  kill Toxic Horror##7132 |q 5086 |goto Felwood 49.76,24.66
+  collect 3 Toxic Horror Droplet##12822 |q 5086 |goto Felwood 49.76,24.66 |tip {dropsfrom}Toxic Horror
 step
   talk Donova Snowden##9298
   accept Words of the High Chief##5128 |goto Winterspring 31.27,45.16
@@ -43,43 +43,43 @@ step
   accept Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
   note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
-  kill Frostmaul Giant##7428 |q 969 |goto Winterspring 62.56,69.28 |elite
+  collect 4 Frostmaul Shards##12334 |q 969 |goto Winterspring 62.56,69.28 |tip {dropsfrom}Frostmaul Giant, Frostmaul Preserver, Kashoch the Reaver
 step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
 step
   note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
-  kill Rogue Ice Thistle##7457 |q 3783 |goto Winterspring 44.74,38.51
+  collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 44.74,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti, Ice Thistle Matriarch
 step
   talk Felnok Steelspring##10468
   accept Chillwind Horns##4809 |goto Winterspring 61.63,38.61
 step
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
-  kill Fledgling Chillwind##7447 |q 4809 |goto Winterspring 44.97,42.75
+  collect 8 Uncracked Chillwind Horn##12444 |q 4809 |goto Winterspring 44.97,42.75 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
 step
   talk Malyfous Darkhammer##10637
   accept Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
 step
   note Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.
-  collect Unfired Plate Gauntlets##176089 |q 5124 |goto Blackrock Spire - Dungeon -1,-1
+  collect Unfired Plate Gauntlets##12812 |q 5124 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Unfired Plate Gauntlets
 step
   talk Lilith the Lithe##11191
   accept Sweet Serenity##5305 |goto Winterspring 61.33,37.13
 step
   note Travel to Stratholme and kill the Crimson Hammersmith. Recover the Crimson Hammersmith's Apron and return to Lilith.
-  get Sweet Serenity |q 5305 |goto Winterspring 61.33,37.13
+  collect Crimson Hammersmith's Apron##13351 |q 5305 |goto Winterspring 61.33,37.13 |tip {dropsfrom}Crimson Hammersmith
 step
   talk Kilram##11192
   accept Snakestone of the Shadow Huntress##5306 |goto Winterspring 61.3,37.07
 step
   note Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.
-  kill Shadow Hunter Vosh'gajin##9236 |q 5306 |goto Blackrock Spire - Dungeon -1,-1 |elite
+  collect Vosh'gajin's Snakestone##13352 |q 5306 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Shadow Hunter Vosh'gajin
 step
   talk Seril Scourgebane##11193
   accept Corruption##5307 |goto Winterspring 61.33,37.19
 step
   note Find the Black Guard Swordsmith in Stratholme and destroy him. Recover the Insignia of the Black Guard and return to Seril Scourgebane.
-  get Corruption |q 5307 |goto Winterspring 61.33,37.19
+  collect Insignia of the Black Guard##13350 |q 5307 |goto Winterspring 61.33,37.19 |tip {dropsfrom}Black Guard Swordsmith
 step
   talk Jessica Redpath##11629
   accept Sister Pamela##5601 |goto Winterspring 61.28,38.98
@@ -120,7 +120,7 @@ step
   accept Drakefire Amulet##6502 |goto Winterspring 54.55,51.2
 step
   note You must retrieve the Blood of the Black Dragon Champion from General Drakkisath. Drakkisath can be found in his throne room behind the Halls of Ascension in Blackrock Spire.
-  kill General Drakkisath##10363 |q 6502 |goto Blackrock Spire - Dungeon -1,-1 |raid
+  collect Blood of the Black Dragon Champion##16663 |q 6502 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}General Drakkisath
 step
   talk Kelek Skykeeper##10920
   turnin Words of the High Chief##5128 |goto Felwood 51.14,81.75 |tip {turninat}Felwood
@@ -156,7 +156,7 @@ step
   accept Winterfall Runners##5087 |goto Winterspring 31.27,45.16
 step
   note Find the Winterfall Runners and stop them from delivering their shipment to Winterfall Village.
-  kill Winterfall Runner##10916 |q 5087 |goto Winterspring 27.96,34.48
+  collect Winterfall Crate##12829 |q 5087 |goto Winterspring 27.96,34.48 |tip {dropsfrom}Winterfall Runner
 step
   talk Salfa##11556
   turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
@@ -180,7 +180,7 @@ step
   accept Troubled Spirits of Kel'Theril##5245 |goto Winterspring 52.14,30.43
 step
   note Use Jaron's Pick to find the four Highborne Relic Fragments. Bring them to Aurora Skycaller in Eastern Plaguelands.
-  collect Highborne Relic Fragment##175888 |q 5245 |goto Winterspring 55.14,42.98
+  collect First Relic Fragment##12896 |q 5245 |goto Winterspring 55.14,42.98 |tip {dropsfrom}Highborne Relic Fragment
 step
   talk Wynd Nightchaser##11079
   accept The Crystal of Zin-Malor##5253 |goto Winterspring 51.97,30.39
@@ -216,7 +216,7 @@ step
   accept Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
 step
   note Collect 2 Pristine Yeti Horns for Umi Rumplesnicker in Everlook.
-  kill Ice Thistle Matriarch##7459 |q 977 |goto Winterspring 70.01,40.71
+  collect 2 Pristine Yeti Horn##12367 |q 977 |goto Winterspring 70.01,40.71 |tip {dropsfrom}Ice Thistle Matriarch, Ice Thistle Patriarch
 step
   talk Felnok Steelspring##10468
   accept Return to Tinkee##4810 |goto Winterspring 61.63,38.61
@@ -240,7 +240,7 @@ step
   accept The Demon Forge##5127 |goto Winterspring 63.79,73.76
 step
   note Travel to Blackrock Spire and find Goraluk Anvilcrack. Slay him and then use the Blood Stained Pike upon his corpse. After his soul has been siphoned, the pike will be Soul Stained.
-  get The Demon Forge |q 5127 |goto Winterspring 63.79,73.76
+  collect Soul Stained Pike##12847 |q 5127 |goto Winterspring 63.79,73.76
 step
   talk Donova Snowden##9298
   turnin Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16

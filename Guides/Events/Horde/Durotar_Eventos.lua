@@ -43,7 +43,7 @@ step
   accept Undamaged Venom Sac##2934 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Bring an Undamaged Venom Sac to Apothecary Lydon in Tarren Mill.
-  kill Witherbark Broodguard##2686 |q 2934 |goto The Hinterlands 34.36,70.66
+  collect Undamaged Venom Sac##9322 |q 2934 |goto The Hinterlands 34.36,70.66 |tip {dropsfrom}Witherbark Broodguard
 step
   only Hunter
   talk Thotar##3171

@@ -14,13 +14,13 @@ step
   accept Covert Ops - Alpha##1079 |goto Stonetalon Mountains 59.52,67.15
 step
   note Retrieve the Venture Co.'s Engineering Plans from the lumber mill in Windshear Crag.
-  collect Venture Co. Engineering Plans##19602 |q 1079 |goto Stonetalon Mountains 66.09,51.33
+  collect Venture Co. Engineering Plans##5718 |q 1079 |goto Stonetalon Mountains 66.09,51.33 |tip {dropsfrom}Venture Co. Engineering Plans
 step
   talk Gaxim Rustfizzle##4077
   accept Covert Ops - Beta##1080 |goto Stonetalon Mountains 59.52,67.15
 step
   note Retrieve the Venture Co. Letters from Windshear Mine at the east end of Windshear Crag.
-  collect Venture Co. Documents##19603 |q 1080 |goto Stonetalon Mountains 74.46,59.3
+  collect Venture Co. Letters##5717 |q 1080 |goto Stonetalon Mountains 74.46,59.3 |tip {dropsfrom}Venture Co. Documents
 step
   talk Kaela Shadowspear##4080
   accept On Guard in Stonetalon##1085 |goto Stonetalon Mountains 59.9,66.85
@@ -80,13 +80,13 @@ step
   accept Enraged Spirits##1083 |goto Stonetalon Mountains 59.9,66.85
 step
   note Bring 8 Smoldering Embers from any of the fire elementals in the Charred Vale to Kaela Shadowspear in Stonetalon.
-  kill Rogue Flame Spirit##4036 |q 1083 |goto Stonetalon Mountains 37.14,53.06
+  collect 8 Smoldering Embers##5659 |q 1083 |goto Stonetalon Mountains 37.14,53.06 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
 step
   talk Kaela Shadowspear##4080
   accept Wounded Ancients##1084 |goto Stonetalon Mountains 59.9,66.85
 step
   note Bring a piece of Corroded Shrapnel to Kaela Shadowspear in Stonetalon.
-  kill Charred Ancient##4028 |q 1084 |goto Stonetalon Mountains 32.8,67.58
+  collect Corroded Shrapnel##5664 |q 1084 |goto Stonetalon Mountains 32.8,67.58 |tip {dropsfrom}Charred Ancient, Blackened Ancient, Vengeful Ancient
 step
   talk Lomac Gearstrip##4081
   turnin An Old Colleague##1072 |goto Ironforge 72.08,51.88 |tip {turninat}Ironforge

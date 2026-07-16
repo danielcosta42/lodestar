@@ -17,7 +17,7 @@ step
   accept Nekrum's Medallion##2991 |goto Blasted Lands 66.9,19.47
 step
   note Bring Nekrum's Medallion to Thadius Grimshade in the Blasted Lands.
-  get Nekrum's Medallion |q 2991 |goto Blasted Lands 66.9,19.47
+  collect Nekrum's Medallion##9471 |q 2991 |goto Blasted Lands 66.9,19.47 |tip {dropsfrom}Nekrum Gutchewer
 step
   talk Enohar Thunderbrew##9540
   accept Ragnar Thunderbrew##4128 |goto Blasted Lands 63.63,20.63
@@ -26,43 +26,43 @@ step
   accept Snickerfang Jowls##2581 |goto Blasted Lands 50.55,14.2
 step
   note Bring three Snickerfang Jowls, two Blasted Boar Lungs, and one Scorpok Pincer to Bloodmage Drazial.
-  kill Starving Snickerfang##5984 |q 2581 |goto Blasted Lands 47.77,21.37
+  collect Snickerfang Jowl##8391 |q 2581 |goto Blasted Lands 47.77,21.37 |tip {dropsfrom}Starving Snickerfang, Snickerfang Hyena, Ravage
 step
   talk Bloodmage Drazial##7505
   accept A Boar's Vitality##2583 |goto Blasted Lands 50.55,14.2
 step
   note Bring three Blasted Boar Lungs, two Scorpok Pincers, and one Basilisk Brain to Bloodmage Drazial.
-  kill Ashmane Boar##5992 |q 2583 |goto Blasted Lands 59.34,28.99
+  collect Blasted Boar Lung##8392 |q 2583 |goto Blasted Lands 59.34,28.99 |tip {dropsfrom}Ashmane Boar, Helboar, Grunter
 step
   talk Bloodmage Drazial##7505
   accept The Decisive Striker##2585 |goto Blasted Lands 50.55,14.2
 step
   note Bring three Scorpok Pincers, two Vulture Gizzards, and one Blasted Boar Lung to Bloodmage Drazial.
-  kill Scorpok Stinger##5988 |q 2585 |goto Blasted Lands 49.76,21.96
+  collect Scorpok Pincer##8393 |q 2585 |goto Blasted Lands 49.76,21.96 |tip {dropsfrom}Scorpok Stinger, Clack the Reaver
 step
   talk Bloodmage Lynnore##7506
   accept The Basilisk's Bite##2601 |goto Blasted Lands 50.64,14.3
 step
   note Bring ten Basilisk Brains and two Vulture Gizzards to Bloodmage Lynnore.
-  kill Redstone Basilisk##5990 |q 2601 |goto Blasted Lands 60.94,29.05
+  collect Basilisk Brain##8394 |q 2601 |goto Blasted Lands 60.94,29.05 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide, Deatheye
 step
   talk Bloodmage Lynnore##7506
   accept Vulture's Vigor##2603 |goto Blasted Lands 50.64,14.3
 step
   note Bring ten Vulture Gizzards and two Snickerfang Jowls to Bloodmage Lynnore.
-  kill Black Slayer##5982 |q 2603 |goto Blasted Lands 58.63,36.46
+  collect Vulture Gizzard##8396 |q 2603 |goto Blasted Lands 58.63,36.46 |tip {dropsfrom}Black Slayer, Bonepicker, Spiteflayer
 step
   talk Kum'isha the Collector##7363
   accept To Serve Kum'isha##2521 |goto Blasted Lands 51.98,35.65
 step
   note In your journeys throughout the Blasted Lands, should you ever come across a Flawless Draenethyst Sphere, take the item back to Kum'isha the Collector.
-  kill Dreadmaul Ogre##5974 |q 2521 |goto Blasted Lands 42.21,14.64
+  collect Flawless Draenethyst Sphere##8244 |q 2521 |goto Blasted Lands 42.21,14.64 |tip {dropsfrom}Dreadmaul Ogre, Dreadmaul Ogre Mage, Dreadmaul Brute
 step
   talk Kum'isha the Collector##7363
   accept Everything Counts In Large Amounts##3501 |goto Blasted Lands 51.98,35.65
 step
   note Bring Kum'isha Imperfect Draenethyst Fragments and be rewarded for each one you turn in.
-  kill Dreadmaul Ogre##5974 |q 3501 |goto Blasted Lands 42.21,14.64
+  collect Imperfect Draenethyst Fragment##10593 |q 3501 |goto Blasted Lands 42.21,14.64 |tip {dropsfrom}Dreadmaul Ogre, Dreadmaul Ogre Mage, Dreadmaul Brute
 step
   talk Ragnar Thunderbrew##1267
   turnin Ragnar Thunderbrew##4128 |goto Dun Morogh 46.83,52.36 |tip {turninat}Dun Morogh
