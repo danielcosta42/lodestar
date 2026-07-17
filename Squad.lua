@@ -144,9 +144,9 @@ local function questGroupCtx(isRaid)
 	local step = ns:GetStep()
 	if step and step.goals then
 		for _, goal in ipairs(step.goals) do
+			if goal.q and goal.q.id and not ctx.questID then ctx.questID = goal.q.id end
 			if (goal.elite or goal.raid) and ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal) then
 				ctx.stepText = ctx.stepText or goal.text
-				ctx.questID = ctx.questID or (goal.q and goal.q.id)
 				if goal.goto_ then ctx.zone = ctx.zone or goal.goto_.zone end
 				if goal.raid then ctx.needRaid = true; ctx.size = 10 end
 			end
