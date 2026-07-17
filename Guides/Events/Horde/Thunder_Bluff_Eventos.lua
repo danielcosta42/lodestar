@@ -6,7 +6,7 @@ ns:RegisterGuide("Events/Horde/Thunder Bluff (Eventos)", {
 	author = "Lodestar Generator",
 }, [[
 step
-  only Tauren
+  only Tauren Druid
   talk Turak Runetotem##3033
   accept Moonglade##5922 |goto Thunder Bluff 76.48,27.22
 step
@@ -47,9 +47,9 @@ step
   kill Venture Co. Logger##3989 |q 1062 |goto Stonetalon Mountains 66.4,52.26
 step
   note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
-  collect Alien Egg##12467 |q 4821 |goto Thousand Needles 52.34,55.25 |tip {dropsfrom}Alien Egg
+  collect Alien Egg##12467 |q 4821 |goto Thousand Needles 52.34,55.25
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   turnin Moonglade##5922 |goto Moonglade 56.21,30.64
 step
@@ -83,7 +83,7 @@ step
   talk Innkeeper Pala##6746
   turnin Dancing for Marzipan##8360 |goto Thunder Bluff 45.81,64.71
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   accept Great Bear Spirit##5930 |goto Moonglade 56.21,30.64
 step
@@ -99,7 +99,7 @@ step
   talk Hagar Lightninghoof##10539
   accept Serpent Wild##4865 |goto Thousand Needles 44.64,50.29
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   turnin Great Bear Spirit##5930 |goto Moonglade 56.21,30.64
 step
@@ -115,7 +115,7 @@ step
   talk Motega Firemane##10428
   turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   accept Back to Thunder Bluff##5932 |goto Moonglade 56.21,30.64
 step
@@ -126,9 +126,9 @@ step
   accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
 step
   note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
-  collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.04,35.43 |tip {dropsfrom}Incendia Agave
+  collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.04,35.43
 step
-  only Tauren
+  only Tauren Druid
   talk Turak Runetotem##3033
   turnin Back to Thunder Bluff##5932 |goto Thunder Bluff 76.48,27.22
 step
@@ -138,7 +138,7 @@ step
   talk Magatha Grimtotem##4046
   turnin Sacred Fire##5062 |goto Thunder Bluff 69.85,30.91
 step
-  only Tauren
+  only Tauren Druid
   talk Turak Runetotem##3033
   accept Body and Heart##6002 |goto Thunder Bluff 76.48,27.22
 step
@@ -151,7 +151,7 @@ step
   note Slay Arikara. Bring her remains and the Incendia powder to Motega Firemane in Whitereach Post as proof of your deed.
   collect Arikara Serpent Skin##12925 |q 5088 |goto Thunder Bluff 69.85,30.91 |tip {dropsfrom}Arikara
 step
-  only Tauren
+  only Tauren Druid
   talk Turak Runetotem##3033
   turnin Body and Heart##6002 |goto Thunder Bluff 76.48,27.22
 step

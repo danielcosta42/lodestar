@@ -16,6 +16,20 @@ step
   talk Marshal Redpath##2263
   accept Farren's Proof##561 |goto Hillsbrad Foothills 49.47,58.73
 step
+  talk Master Apothecary Faranell##2055
+  accept Going, Going, Guano!##1109 |goto Undercity 48.82,69.28
+step
+  note Bring 1 pile of Kraul Guano to Master Apothecary Faranell in the Undercity.
+  collect 1 Going, Going, Guano!##5801 |q 1109 |goto Undercity 48.82,69.28
+step
+  only Warlock
+  talk Zevrost##3326
+  accept In Search of Menara Voidrender##4737 |goto Orgrimmar 48.47,45.43
+step
+  only Warlock
+  talk Menara Voidrender##6266
+  turnin In Search of Menara Voidrender##4737 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
   talk High Executor Darthalia##2215
   turnin Time To Strike##494 |goto Hillsbrad Foothills 62.33,20.45
 step
@@ -47,7 +61,7 @@ step
   accept Elixir of Agony##517 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Bring a keg of Shindigger Stout to Apothecary Lydon in Tarren Mill.
-  collect Keg of Shindigger Stout##3517 |q 517 |goto Hillsbrad Foothills 72.02,80.88 |tip {dropsfrom}Keg of Shindigger Stout
+  collect Keg of Shindigger Stout##3517 |q 517 |goto Hillsbrad Foothills 72.02,80.88
 step
   talk Melisara##2278
   accept The Crown of Will##518 |goto Hillsbrad Foothills 62.63,20.65
@@ -73,6 +87,9 @@ step
   note Retrieve Deathguard Humbert's sword from Dun Garok and return it to him in Tarren Mill.
   collect Humbert's Sword##3693 |q 547 |goto Hillsbrad Foothills 71.58,79.62 |tip {dropsfrom}Dun Garok Mountaineer, Dun Garok Rifleman, Dun Garok Priest
 step
+  click WANTED##1763
+  accept WANTED: Syndicate Personnel##549 |goto Hillsbrad Foothills 62.63,20.75
+step
   talk Novice Thaivand##2429
   accept Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
 step
@@ -85,6 +102,15 @@ step
   note Bring 10 Worn Stone Tokens to Keeper Bel'varil in Tarren Mill.
   collect 10 Worn Stone Token##3714 |q 556 |goto Alterac Mountains 19.0,84.06 |tip {dropsfrom}Dalaran Shield Guard, Dalaran Theurgist, Dalaran Summoner
 step
+  click WANTED##1763
+  accept WANTED: Baron Vardus##566 |goto Hillsbrad Foothills 62.63,20.75
+step
+  note Kill Baron Vardus and deliver his head to High Executor Darthalia in Tarren Mill.
+  collect Head of Baron Vardus##3626 |q 566 |goto Alterac Mountains 47.83,17.11 |tip {dropsfrom}Baron Vardus
+step
+  click Dangerous!##2008
+  accept Dangerous!##567 |goto Hillsbrad Foothills 62.56,19.66
+step
   talk Tallow##2770
   accept The Hammer May Fall##676 |goto Hillsbrad Foothills 61.87,19.57
 step
@@ -94,8 +120,17 @@ step
   note Bring 5 Vials of Innocent Blood to Apothecary Lydon in Tarren Mill.
   collect 5 Vial of Innocent Blood##5620 |q 1066 |goto Hillsbrad Foothills 78.99,43.42 |tip {dropsfrom}Syndicate Shadow Mage
 step
+  talk Belgrom Rockmaul##4485
+  accept The Swarm Grows##1146 |goto Orgrimmar 75.23,34.24
+step
   talk Krusk##2229
   accept Regthar Deathgate##1361 |goto Hillsbrad Foothills 63.24,20.66
+step
+  talk Orokk Omosh##7790
+  accept Barbaric Battlements##2751 |goto Orgrimmar 79.24,22.4
+step
+  note Bring two Patterned Bronze Bracers, two Bronze Greatswords, and two Sharp Claws to Orokk Omosh in Orgrimmar.
+  collect Patterned Bronze Bracers##2868 |q 2751 |goto Orgrimmar 79.24,22.4
 step
   talk Apothecary Lydon##2216
   accept Undamaged Venom Sac##2934 |goto Hillsbrad Foothills 61.44,19.06
@@ -103,11 +138,18 @@ step
   note Bring an Undamaged Venom Sac to Apothecary Lydon in Tarren Mill.
   collect Undamaged Venom Sac##9322 |q 2934 |goto The Hinterlands 34.36,70.66 |tip {dropsfrom}Witherbark Broodguard
 step
+  only Warlock
+  talk Kaal Soulreaper##4563
+  accept In Search of Menara Voidrender##4739 |goto Undercity 86.21,15.93
+step
   talk Christoph Jeffcoat##2393
   accept Soothing Turtle Bisque##7321 |goto Hillsbrad Foothills 62.29,19.04
 step
   note Bring 10 pieces of Turtle Meat and some Soothing Spices to Christoph Jeffcoat in Tarren Mill.
   collect 10 Turtle Meat##3712 |q 7321 |goto Alterac Mountains 30.81,45.85 |tip {dropsfrom}Snapjaw, Saltwater Snapjaw, Sparkleshell Tortoise
+step
+  note Kill 10 Syndicate Rogues and 10 Syndicate Watchmen. Return to High Executor Darthalia in Tarren Mill for your reward.
+  kill Syndicate Rogue##2260 |q 549 |goto Hillsbrad Foothills 78.71,45.6
 step
   note Krusk in Tarren Mill needs you to free Drull and Tog'thar from Durnholde Keep.
   collect Locked ball and chain##1721 |q 498 |goto Hillsbrad Foothills 75.33,41.5
@@ -121,14 +163,33 @@ step
   note Kill 8 Boulderfist Ogres and 10 Boulderfist Enforcers, then find Drum Fel in the Hammerfall outpost in Arathi Highlands.
   kill Boulderfist Ogre##2562 |q 676 |goto Arathi Highlands 34.69,45.29
 step
+  note High Executor Darthalia of Tarren Mill is offering a bounty on Clerk Horrace Whitesteed, Citizen Wilkes, Miner Hackett and Farmer Kalaba.
+  kill Clerk Horrace Whitesteed##2448 |q 567 |goto Hillsbrad Foothills 29.51,42.41
+step
   note Kill Lord Aliden Perenolde and ask his mistress, Elysa, about Taretha's pendant.
   kill Lord Aliden Perenolde##2423 |q 507 |goto Alterac Mountains 39.32,14.58
+step
+  talk Master Apothecary Faranell##2055
+  turnin Going, Going, Guano!##1109 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   talk Lieutenant Farren Orinelle##2228
   turnin Farren's Proof##561 |goto Hillsbrad Foothills 51.46,58.39
 step
+  talk Moktar Krin##4483
+  turnin The Swarm Grows##1146 |goto Thousand Needles 67.58,63.94 |tip {turninat}Thousand Needles
+step
+  talk Master Apothecary Faranell##2055
+  accept Hearts of Zeal##1113 |goto Undercity 48.82,69.28
+step
+  note Master Apothecary Faranell in the Undercity wants 20 Hearts of Zeal.
+  collect Hearts of Zeal##5805 |q 1113 |goto Undercity 48.82,69.28
+step
   note Kill 10 Crushridge Maulers for Melisara in Tarren Mill.
   kill Crushridge Mauler##2254 |q 518 |goto Alterac Mountains 43.11,46.87
+step
+  only Warlock
+  talk Menara Voidrender##6266
+  turnin In Search of Menara Voidrender##4739 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
   talk Apothecary Lydon##2216
   turnin Elixir of Agony##517 |goto Hillsbrad Foothills 61.44,19.06
@@ -154,6 +215,9 @@ step
   talk Drum Fel##2771
   turnin The Hammer May Fall##676 |goto Arathi Highlands 74.24,33.92 |tip {turninat}Arathi Highlands
 step
+  talk High Executor Darthalia##2215
+  turnin WANTED: Syndicate Personnel##549 |goto Hillsbrad Foothills 62.33,20.45
+step
   talk Novice Thaivand##2429
   turnin Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
 step
@@ -172,11 +236,20 @@ step
   talk Apothecary Lydon##2216
   turnin Elixir of Pain##501 |goto Hillsbrad Foothills 61.44,19.06
 step
+  talk High Executor Darthalia##2215
+  turnin WANTED: Baron Vardus##566 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk High Executor Darthalia##2215
+  turnin Dangerous!##567 |goto Hillsbrad Foothills 62.33,20.45
+step
   talk Apothecary Lydon##2216
   turnin Undamaged Venom Sac##2934 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk Apothecary Lydon##2216
   turnin Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
+step
+  talk Orokk Omosh##7790
+  turnin Barbaric Battlements##2751 |goto Orgrimmar 79.24,22.4 |tip {turninat}Orgrimmar
 step
   talk Apothecary Lydon##2216
   accept Elixir of Suffering##499 |goto Hillsbrad Foothills 61.44,19.06
@@ -220,6 +293,12 @@ step
   talk Apothecary Lydon##2216
   accept Return to Thunder Bluff##1067 |goto Hillsbrad Foothills 61.44,19.06
 step
+  talk Orokk Omosh##7790
+  accept On Iron Pauldrons##2752 |goto Orgrimmar 79.24,22.4
+step
+  note Bring four Bronze Battleaxes and four Bronze Warhammers to Orokk Omosh in Orgrimmar.
+  collect Bronze Battle Axe##7958 |q 2752 |goto Orgrimmar 79.24,22.4
+step
   talk Apothecary Lydon##2216
   accept Consult Master Gadrin##2935 |goto Hillsbrad Foothills 61.44,19.06
 step
@@ -244,10 +323,16 @@ step
   talk Master Apothecary Faranell##2055
   turnin Elixir of Agony##513 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
+  talk Master Apothecary Faranell##2055
+  turnin Hearts of Zeal##1113 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
+step
   turnin Helcular's Revenge##553 |goto Hillsbrad Foothills 52.75,53.37
 step
   talk Master Gadrin##3188
   turnin Consult Master Gadrin##2935 |goto Durotar 55.95,74.72 |tip {turninat}Durotar
+step
+  talk Orokk Omosh##7790
+  turnin On Iron Pauldrons##2752 |goto Orgrimmar 79.24,22.4 |tip {turninat}Orgrimmar
 step
   talk Melisara##2278
   turnin The Crown of Will##519 |goto Hillsbrad Foothills 62.63,20.65

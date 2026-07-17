@@ -28,7 +28,7 @@ step
   accept Threat from Above##11096 |goto Shattrath City 64.33,42.33
 step
   note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
-  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37 |tip {dropsfrom}Eye of Veil Reskk
+  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37
 step
   talk Exorcist Sullivan##24885
   turnin Spirits of Auchindoun##11505 |goto Terokkar Forest 55.81,53.74

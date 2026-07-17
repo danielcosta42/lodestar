@@ -16,11 +16,11 @@ step
   talk Chief Hawkwind##2981
   accept A Humble Task##752 |goto Mulgore 44.18,76.06
 step
-  only Tauren Mage
+  only Tauren Shaman
   talk Seer Ravenfeather##5888
   accept Call of Earth##1519 |goto Mulgore 44.73,76.19
 step
-  only Tauren Mage
+  only Tauren Shaman
   note Bring 2 applications of Ritual Salve to Seer Ravenfeather in Camp Narache.
   collect 2 Ritual Salve##6634 |q 1519 |goto Mulgore 63.65,77.81 |tip {dropsfrom}Bristleback Shaman
 step
@@ -40,23 +40,17 @@ step
   accept A Humble Task##753 |goto Mulgore 50.03,81.16
 step
   note Take a Water Pitcher from the water well.
-  collect Water Pitcher##4755 |q 753 |goto Mulgore 50.35,81.46 |tip {dropsfrom}Water Pitcher
+  collect Water Pitcher##4755 |q 753 |goto Mulgore 50.35,81.46
 step
-  only Mage
+  collect Dirt-stained Map##3076 |goto Mulgore 63.24,82.7 |tip Loot the quest item here — it starts the quest.
+  accept Attack on Camp Narache##781 |goto Mulgore 63.24,82.7
+step
+  only Shaman
   talk Minor Manifestation of Earth##5891
   accept Call of Earth##1518 |goto Mulgore 53.89,80.54
 step
   talk Morin Cloudstalker##2988
   accept The Ravaged Caravan##749 |goto Mulgore 57.2,61.22
-step
-  talk Morin Cloudstalker##2988
-  accept The Venture Co.##764 |goto Mulgore 57.2,61.22
-step
-  talk Morin Cloudstalker##2988
-  accept Supervisor Fizsprocket##765 |goto Mulgore 57.2,61.22
-step
-  note Kill Supervisor Fizsprocket and return his clipboard to Morin Cloudstalker at Bloodhoof Village.
-  collect Fizsprocket's Clipboard##4819 |q 765 |goto Mulgore 64.9,43.31 |tip {dropsfrom}Supervisor Fizsprocket
 step
   turnin The Ravaged Caravan##749 |goto Mulgore 53.74,48.17
 step
@@ -85,6 +79,9 @@ step
   only Tauren
   note Bring 6 Prairie Wolf Paws and 4 Plainstrider Talons to Mull Thunderhorn in Bloodhoof.
   collect 6 Prairie Wolf Paw##4758 |q 748 |goto Mulgore 39.51,66.13 |tip {dropsfrom}Prairie Wolf, Prairie Stalker, Prairie Wolf Alpha
+step
+  click Sealed Supply Crate##2908
+  accept The Ravaged Caravan##751 |goto Mulgore 53.74,48.17
 step
   talk Harken Windtotem##2947
   accept Swoop Hunting##761 |goto Mulgore 48.71,59.32
@@ -127,22 +124,22 @@ step
   note Lorekeeper Raintotem wants you to kill 8 Bristleback Interlopers at Red Rocks.
   kill Bristleback Interloper##3232 |q 833 |goto Mulgore 61.34,21.28
 step
-  note Kill 14 Venture Co. Workers and 6 Venture Co. Supervisors for Morin Cloudstalker at Bloodhoof Village.
-  kill Venture Co. Worker##2978 |q 764 |goto Mulgore 62.46,40.85
-step
-  talk Brave Windfeather##3209
-  turnin Break Sharptusk!##3376 |goto Mulgore 44.53,76.5
-step
   talk Grull Hawkwind##2980
   turnin The Hunt Begins##747 |goto Mulgore 44.88,77.07
 step
-  only Mage
+  talk Chief Hawkwind##2981
+  turnin Attack on Camp Narache##781 |goto Mulgore 44.18,76.06
+step
+  only Shaman
   talk Canaga Earthcaller##5887
   turnin Call of Earth##1518 |goto Durotar 42.4,69.17 |tip {turninat}Durotar
 step
-  only Tauren Mage
+  only Tauren Shaman
   talk Seer Ravenfeather##5888
   turnin Call of Earth##1519 |goto Mulgore 44.73,76.19
+step
+  talk Brave Windfeather##3209
+  turnin Break Sharptusk!##3376 |goto Mulgore 44.53,76.5
 step
   talk Chief Hawkwind##2981
   turnin A Humble Task##753 |goto Mulgore 44.18,76.06
@@ -156,7 +153,7 @@ step
   talk Chief Hawkwind##2981
   accept Rites of the Earthmother##755 |goto Mulgore 44.18,76.06
 step
-  only Tauren Mage
+  only Tauren Shaman
   talk Seer Ravenfeather##5888
   accept Call of Earth##1520 |goto Mulgore 44.73,76.19
 step
@@ -168,10 +165,11 @@ step
   talk Grull Hawkwind##2980
   accept Etched Note##3092 |goto Mulgore 44.88,77.07
 step
-  only Mage
+  only Shaman
   talk Grull Hawkwind##2980
   accept Rune-Inscribed Note##3093 |goto Mulgore 44.88,77.07
 step
+  only Druid
   talk Grull Hawkwind##2980
   accept Verdant Note##3094 |goto Mulgore 44.88,77.07
 step
@@ -187,19 +185,25 @@ step
   talk Melor Stonehoof##3441
   turnin The Hunter's Way##861 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
 step
-  only Tauren Mage
+  only Tauren Shaman
   talk Minor Manifestation of Earth##5891
   turnin Call of Earth##1520 |goto Mulgore 53.89,80.54
 step
-  only Tauren Mage
+  only Tauren Shaman
   talk Minor Manifestation of Earth##5891
   accept Call of Earth##1521 |goto Mulgore 53.89,80.54
 step
   talk Morin Cloudstalker##2988
-  turnin The Venture Co.##764 |goto Mulgore 57.2,61.22
+  turnin The Ravaged Caravan##751 |goto Mulgore 57.2,61.22
 step
   talk Morin Cloudstalker##2988
-  turnin Supervisor Fizsprocket##765 |goto Mulgore 57.2,61.22
+  accept The Venture Co.##764 |goto Mulgore 57.2,61.22
+step
+  talk Morin Cloudstalker##2988
+  accept Supervisor Fizsprocket##765 |goto Mulgore 57.2,61.22
+step
+  note Kill Supervisor Fizsprocket and return his clipboard to Morin Cloudstalker at Bloodhoof Village.
+  collect Fizsprocket's Clipboard##4819 |q 765 |goto Mulgore 64.9,43.31 |tip {dropsfrom}Supervisor Fizsprocket
 step
   talk Ruul Eagletalon##2985
   turnin Dangers of the Windfury##743 |goto Mulgore 47.35,62.02
@@ -230,6 +234,9 @@ step
   talk Lorekeeper Raintotem##3233
   turnin A Sacred Burial##833 |goto Mulgore 59.86,25.62
 step
+  note Kill 14 Venture Co. Workers and 6 Venture Co. Supervisors for Morin Cloudstalker at Bloodhoof Village.
+  kill Venture Co. Worker##2978 |q 764 |goto Mulgore 62.46,40.85
+step
   only Warrior
   talk Harutt Thunderhorn##3059
   turnin Simple Note##3091 |goto Mulgore 44.01,76.13
@@ -238,17 +245,18 @@ step
   talk Lanka Farshot##3061
   turnin Etched Note##3092 |goto Mulgore 44.26,75.69
 step
-  only Mage
+  only Shaman
   talk Meela Dawnstrider##3062
   turnin Rune-Inscribed Note##3093 |goto Mulgore 45.01,75.94
 step
+  only Druid
   talk Gart Mistrunner##3060
   turnin Verdant Note##3094 |goto Mulgore 45.09,75.93
 step
   talk Grull Hawkwind##2980
   turnin The Hunt Continues##750 |goto Mulgore 44.88,77.07
 step
-  only Tauren Mage
+  only Tauren Shaman
   talk Seer Ravenfeather##5888
   turnin Call of Earth##1521 |goto Mulgore 44.73,76.19
 step
@@ -263,6 +271,12 @@ step
 step
   note Grull Hawkwind in Camp Narache wants you to kill Battleboars and bring back 8 Battleboar Snouts and 8 Battleboar Flanks.
   collect Battleboar Snout##4848 |q 780 |goto Mulgore 62.87,78.59 |tip {dropsfrom}Bristleback Battleboar, Battleboar
+step
+  talk Morin Cloudstalker##2988
+  turnin The Venture Co.##764 |goto Mulgore 57.2,61.22
+step
+  talk Morin Cloudstalker##2988
+  turnin Supervisor Fizsprocket##765 |goto Mulgore 57.2,61.22
 step
   only Tauren
   talk Mull Thunderhorn##2948
@@ -300,7 +314,7 @@ step
   accept Rite of Vision##771 |goto Mulgore 47.76,57.53
 step
   note Collect 2 Well Stones and 2 Ambercorn and bring them back to Zarlman Two-Moons in Bloodhoof Village.
-  collect 2 Well Stone##4808 |q 771 |goto Maraudon - Dungeon -1,-1 |tip {dropsfrom}Razorlash, Well Stone
+  collect 2 Well Stone##4808 |q 771 |goto Maraudon - Dungeon -1,-1 |elite |tip {dropsfrom}Razorlash, Well Stone
 step
   talk Zarlman Two-Moons##3054
   turnin Rite of Vision##771 |goto Mulgore 47.76,57.53

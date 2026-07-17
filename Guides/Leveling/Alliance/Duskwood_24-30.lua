@@ -55,14 +55,11 @@ step
   note Viktori Prism'Antras of Darkshire wants you to bring him a bronze tube.
   collect Bronze Tube##4371 |q 174 |goto The Barrens 47.58,85.32 |tip {dropsfrom}Bael'dun Excavator, Bael'dun Foreman, Bael'dun Rifleman
 step
-  talk Sirra Von'Indi##268
-  accept Morgan Ladimore##227 |goto Duskwood 72.62,47.62
-step
   talk Councilman Millstipe##270
   accept Crime and Punishment##377 |goto Duskwood 71.92,47.79
 step
   note Councilman Millstipe of Darkshire wants you to bring him the hand of Dextren Ward.
-  collect Hand of Dextren Ward##3628 |q 377 |goto The Stockade - Dungeon -1,-1 |tip {dropsfrom}Dextren Ward
+  collect Hand of Dextren Ward##3628 |q 377 |goto The Stockade - Dungeon -1,-1 |elite |tip {dropsfrom}Dextren Ward
 step
   talk Clerk Daltry##267
   accept The Carevin Family##1042 |goto Duskwood 72.54,46.87
@@ -106,17 +103,20 @@ step
   talk Lars##893
   accept Wolves at Our Heels##226 |goto Duskwood 7.71,33.2
 step
-  talk Sven Yorgen##311
-  accept The Shadowy Figure##262 |goto Duskwood 7.78,34.07
+  talk Abercrombie##289
+  turnin The Hermit##165 |goto Duskwood 28.11,31.46
 step
   talk Magistrate Solomon##344
   turnin Messenger to Darkshire##146 |goto Redridge Mountains 29.99,44.45 |tip {turninat}Redridge Mountains
 step
   talk Abercrombie##289
-  turnin The Hermit##165 |goto Duskwood 28.11,31.46
-step
-  talk Abercrombie##289
   accept Supplies from Darkshire##148 |goto Duskwood 28.11,31.46
+step
+  click A Weathered Grave##61
+  accept The Weathered Grave##225 |goto Duskwood 17.73,29.08
+step
+  kill Flesh Eater##3 |goto Duskwood 23.81,38.2 |tip Loot the quest item here — it starts the quest.
+  accept An Old History Book##337 |goto Duskwood 23.81,38.2
 step
   note Kill 12 Starving Dire Wolves and 8 Rabid Dire Wolves, then return to Lars at Sven's Camp on the western border of Duskwood.
   kill Starving Dire Wolf##213 |q 226 |goto Duskwood 33.64,23.26
@@ -126,9 +126,6 @@ step
 step
   talk Chef Grual##272
   turnin Jitters' Growling Gut##5 |goto Duskwood 73.75,43.48
-step
-  talk Madame Eva##265
-  turnin The Shadowy Figure##262 |goto Duskwood 75.79,45.32
 step
   talk Jonathan Carevin##661
   turnin The Carevin Family##1042 |goto Duskwood 75.32,49.02
@@ -151,14 +148,17 @@ step
   talk Commander Althea Ebonlocke##264
   turnin The Legend of Stalvan##79 |goto Duskwood 73.54,46.82
 step
+  talk Milton Sheaf##1440
+  turnin An Old History Book##337 |goto Stormwind City 74.18,7.46 |tip {turninat}Stormwind City
+step
   talk Chef Grual##272
   turnin Seasoned Wolf Kabobs##90 |goto Duskwood 73.75,43.48
 step
   talk Watcher Backus##840
   turnin The Missing Diplomat##1244 |goto Duskwood 74.83,44.22
 step
-  talk Commander Althea Ebonlocke##264
-  turnin Morgan Ladimore##227 |goto Duskwood 73.54,46.82
+  talk Sirra Von'Indi##268
+  turnin The Weathered Grave##225 |goto Duskwood 72.62,47.62
 step
   talk Madame Eva##265
   turnin The Totem of Infliction##101 |goto Duskwood 75.79,45.32
@@ -190,14 +190,8 @@ step
   talk Calor##663
   accept Worgen in the Woods##221 |goto Duskwood 75.75,47.57
 step
-  talk Commander Althea Ebonlocke##264
-  accept Mor'Ladim##228 |goto Duskwood 73.54,46.82
-step
-  note Kill Mor'Ladim, then return his skull to Commander Althea Ebonlocke in Darkshire.
-  collect Mor'Ladim's Skull##3514 |q 228 |goto Duskwood 16.67,37.35 |tip {dropsfrom}Mor'Ladim
-step
-  talk Madame Eva##265
-  accept The Shadowy Search Continues##265 |goto Duskwood 75.79,45.32
+  talk Sirra Von'Indi##268
+  accept Morgan Ladimore##227 |goto Duskwood 72.62,47.62
 step
   talk Jonathan Carevin##661
   accept The Scythe of Elune##1043 |goto Duskwood 75.32,49.02
@@ -233,6 +227,9 @@ step
   talk Watcher Dodds##888
   turnin Eight-Legged Menaces##245 |goto Duskwood 45.12,67.03
 step
+  click Mound of loose dirt##59
+  accept Sven's Camp##230 |goto Duskwood 49.85,77.71
+step
   note Kill 12 Nightbane Dark Runner worgen for Calor in Darkshire.
   kill Nightbane Dark Runner##205 |q 221 |goto Duskwood 64.14,67.71
 step
@@ -245,8 +242,14 @@ step
   talk Lars##893
   turnin Wolves at Our Heels##226 |goto Duskwood 7.71,33.2
 step
-  talk Clerk Daltry##267
-  turnin The Shadowy Search Continues##265 |goto Duskwood 72.54,46.87
+  talk Sven Yorgen##311
+  turnin Sven's Camp##230 |goto Duskwood 7.78,34.07
+step
+  talk Sven Yorgen##311
+  accept The Shadowy Figure##262 |goto Duskwood 7.78,34.07
+step
+  talk Madame Eva##265
+  turnin The Shadowy Figure##262 |goto Duskwood 75.79,45.32
 step
   talk Jonathan Carevin##661
   turnin The Scythe of Elune##1043 |goto Duskwood 75.32,49.02
@@ -270,7 +273,7 @@ step
   turnin Worgen in the Woods##221 |goto Duskwood 75.75,47.57
 step
   talk Commander Althea Ebonlocke##264
-  turnin Mor'Ladim##228 |goto Duskwood 73.54,46.82
+  turnin Morgan Ladimore##227 |goto Duskwood 73.54,46.82
 step
   talk Commander Althea Ebonlocke##264
   accept The Night Watch##58 |goto Duskwood 73.54,46.82
@@ -291,13 +294,17 @@ step
   accept Worgen in the Woods##222 |goto Duskwood 75.75,47.57
 step
   talk Commander Althea Ebonlocke##264
-  accept The Daughter Who Lived##229 |goto Duskwood 73.54,46.82
+  accept Mor'Ladim##228 |goto Duskwood 73.54,46.82
+step
+  note Kill Mor'Ladim, then return his skull to Commander Althea Ebonlocke in Darkshire.
+  kill Mor'Ladim##522 |goto Duskwood 16.67,37.35 |elite
+  collect Mor'Ladim's Skull##3514 |q 228 |goto Duskwood 16.67,37.35
 step
   talk Chef Grual##272
   accept Return to Jitters##240 |goto Duskwood 73.75,43.48
 step
-  talk Clerk Daltry##267
-  accept Inquire at the Inn##266 |goto Duskwood 72.54,46.87
+  talk Madame Eva##265
+  accept The Shadowy Search Continues##265 |goto Duskwood 75.79,45.32
 step
   talk Jonathan Carevin##661
   accept Answered Questions##1044 |goto Duskwood 75.32,49.02
@@ -317,8 +324,8 @@ step
   note Commander Althea Ebonlocke of Darkshire wants you to kill 20 Plague Spreaders in the eastern Raven Hill mausoleum.
   kill Plague Spreader##604 |q 58 |goto Duskwood 24.06,34.21
 step
-  talk Tavernkeep Smitts##273
-  turnin Inquire at the Inn##266 |goto Duskwood 73.78,44.49
+  talk Clerk Daltry##267
+  turnin The Shadowy Search Continues##265 |goto Duskwood 72.54,46.87
 step
   talk Thyn'tel Bladeweaver##8026
   turnin Answered Questions##1044 |goto Darnassus 61.77,39.18 |tip {turninat}Darnassus
@@ -332,14 +339,14 @@ step
   talk Commander Althea Ebonlocke##264
   turnin The Night Watch##58 |goto Duskwood 73.54,46.82
 step
-  talk Commander Althea Ebonlocke##264
-  turnin The Legend of Stalvan##97 |goto Duskwood 73.54,46.82
-step
   talk Calor##663
   turnin Worgen in the Woods##222 |goto Duskwood 75.75,47.57
 step
-  talk Watcher Ladimore##576
-  turnin The Daughter Who Lived##229 |goto Duskwood 74.02,47.82
+  talk Commander Althea Ebonlocke##264
+  turnin The Legend of Stalvan##97 |goto Duskwood 73.54,46.82
+step
+  talk Commander Althea Ebonlocke##264
+  turnin Mor'Ladim##228 |goto Duskwood 73.54,46.82
 step
   talk Commander Althea Ebonlocke##264
   accept The Legend of Stalvan##98 |goto Duskwood 73.54,46.82
@@ -355,6 +362,30 @@ step
 step
   talk Calor##663
   accept Worgen in the Woods##223 |goto Duskwood 75.75,47.57
+step
+  talk Commander Althea Ebonlocke##264
+  accept The Daughter Who Lived##229 |goto Duskwood 73.54,46.82
+step
+  talk Clerk Daltry##267
+  accept Inquire at the Inn##266 |goto Duskwood 72.54,46.87
+step
+  talk Tavernkeep Smitts##273
+  turnin Inquire at the Inn##266 |goto Duskwood 73.78,44.49
+step
+  talk Tavernkeep Smitts##273
+  turnin Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49
+step
+  talk Jonathan Carevin##661
+  turnin Worgen in the Woods##223 |goto Duskwood 75.32,49.02
+step
+  talk Madame Eva##265
+  turnin The Legend of Stalvan##98 |goto Duskwood 75.79,45.32
+step
+  talk Watcher Ladimore##576
+  turnin The Daughter Who Lived##229 |goto Duskwood 74.02,47.82
+step
+  talk Tavernkeep Smitts##273
+  accept Juice Delivery##159 |goto Duskwood 73.78,44.49
 step
   talk Watcher Ladimore##576
   accept A Daughter's Love##231 |goto Duskwood 74.02,47.82
@@ -377,31 +408,10 @@ step
   note Kill 15 Skeletal Raiders, 3 Skeletal Healers and 3 Skeletal Warders, and then return to Sven.
   kill Skeletal Raider##1110 |q 323 |goto Duskwood 16.89,36.85
 step
-  turnin A Daughter's Love##231 |goto Duskwood 17.73,29.08
-step
-  talk Tavernkeep Smitts##273
-  turnin Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49
-step
-  talk Jonathan Carevin##661
-  turnin Worgen in the Woods##223 |goto Duskwood 75.32,49.02
-step
-  talk Madame Eva##265
-  turnin The Legend of Stalvan##98 |goto Duskwood 75.79,45.32
-step
-  talk Tavernkeep Smitts##273
-  accept Juice Delivery##159 |goto Duskwood 73.78,44.49
-step
-  talk Sven Yorgen##311
-  turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
-step
-  talk Sven Yorgen##311
-  accept Seeking Wisdom##269 |goto Duskwood 7.78,34.07
-step
-  talk Bishop Farthing##1212
-  turnin Seeking Wisdom##269 |goto Stormwind City 39.1,27.86 |tip {turninat}Stormwind City
-step
   talk Abercrombie##289
   turnin Juice Delivery##159 |goto Duskwood 28.11,31.46
+step
+  turnin A Daughter's Love##231 |goto Duskwood 17.73,29.08
 step
   talk Abercrombie##289
   accept Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
@@ -409,14 +419,23 @@ step
   note Gather 7 Ghoul Ribs and bring them to Abercrombie at his shack.
   collect 7 Ghoul Rib##884 |q 133 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
 step
+  talk Sven Yorgen##311
+  turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
+step
+  talk Sven Yorgen##311
+  accept Seeking Wisdom##269 |goto Duskwood 7.78,34.07
+step
   talk Abercrombie##289
   turnin Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
+step
+  talk Bishop Farthing##1212
+  turnin Seeking Wisdom##269 |goto Stormwind City 39.1,27.86 |tip {turninat}Stormwind City
 step
   talk Abercrombie##289
   accept Ogre Thieves##134 |goto Duskwood 28.11,31.46
 step
   note Return Abercrombie's Crate to Abercrombie.
-  collect Abercrombie's Crate##1349 |q 134 |goto Duskwood 33.42,76.35 |tip {dropsfrom}Abercrombie's Crate
+  collect Abercrombie's Crate##1349 |q 134 |goto Duskwood 33.42,76.35
 step
   talk Abercrombie##289
   turnin Ogre Thieves##134 |goto Duskwood 28.11,31.46

@@ -54,7 +54,7 @@ step
   accept I Was A Lot Of Things...##10514 |goto Shadowmoon Valley 53.95,23.52
 step
   note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
-  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52 |tip {dropsfrom}Shadowmoon Tuber
+  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52
 step
   talk Oronok Torn-heart##21183
   turnin I Was A Lot Of Things...##10514 |goto Shadowmoon Valley 53.95,23.52
@@ -108,7 +108,7 @@ step
   collect Crystalline Key##30442 |q 10528 |goto Shadowmoon Valley 28.3,47.61 |tip {dropsfrom}Painmistress Gabrissa
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51 |tip {dropsfrom}Rotten Arakkoa Egg
+  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51
 step
   talk Grom'tor, Son of Oronok##21291
   turnin The Cipher of Damnation - Grom'tor's Charge##10522 |goto Shadowmoon Valley 44.62,23.66
@@ -183,7 +183,8 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |tip {dropsfrom}Ruul the Darkener
+  kill Ruul the Darkener##21315 |goto Shadowmoon Valley 57.28,50.7 |elite
+  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7
 step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18

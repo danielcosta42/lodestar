@@ -13,6 +13,9 @@ step
   talk Brother Anton##1182
   accept Down the Scarlet Path##261 |goto Desolace 66.52,7.91
 step
+  talk Prospector Stormpike##1356
+  accept Ironband Wants You!##707 |goto Ironforge 74.64,11.74
+step
   talk Captain Pentigast##5396
   accept Strange Alliance##1382 |goto Desolace 66.66,10.93
 step
@@ -28,17 +31,8 @@ step
   talk Vahlarriel Demonslayer##5642
   accept Vahlarriel's Search##1437 |goto Desolace 66.44,11.82
 step
-  talk Vahlarriel Demonslayer##5642
-  accept Vahlarriel's Search##1438 |goto Desolace 66.44,11.82
-step
   talk Kreldig Ungor##5638
   accept The Karnitol Shipwreck##1454 |goto Desolace 66.2,9.63
-step
-  talk Kreldig Ungor##5638
-  accept The Karnitol Shipwreck##1456 |goto Desolace 66.2,9.63
-step
-  note Find Karnitol's Satchel and return it to Kreldig Ungor in Desolace.
-  collect Karnitol's Satchel##6245 |q 1456 |goto Desolace 29.99,10.51 |tip {dropsfrom}Slitherblade Tidehunter, Slitherblade Sea Witch
 step
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1458 |goto Desolace 66.2,9.63
@@ -55,16 +49,16 @@ step
   talk Keeper Marandis##13698
   accept Corruption of Earth and Seed##7065 |goto Desolace 63.83,10.67
 step
+  talk Highlord Bolvar Fordragon##1748
+  accept Return to Jaina##11223 |goto Stormwind City 78.22,17.98
+step
   turnin Vahlarriel's Search##1437 |goto Desolace 56.52,17.84
 step
-  talk Dalinda Malem##5644
-  turnin Vahlarriel's Search##1438 |goto Desolace 54.86,26.13
+  click Malem Chest##50961
+  accept Vahlarriel's Search##1465 |goto Desolace 56.52,17.84
 step
-  talk Dalinda Malem##5644
-  accept Search for Tyranis##1439 |goto Desolace 54.86,26.13
-step
-  note Find Tyranis Malem in Desolace.
-  collect Tyranis' Pendant##6767 |q 1439 |goto Desolace 53.01,29.08 |tip {dropsfrom}Tyranis Malem
+  talk Lady Jaina Proudmoore##4968
+  turnin Return to Jaina##11223 |goto Dustwallow Marsh 66.27,49.04 |tip {turninat}Dustwallow Marsh
 step
   talk Bibbly F'utzbuckle##11438
   accept Bone Collector##5501 |goto Desolace 62.33,38.99
@@ -77,6 +71,9 @@ step
 step
   note Collect 15 Theradric Crystal Carvings for Willow in Desolace.
   collect 15 Theradric Crystal Carving##17684 |q 7028 |goto Maraudon - Dungeon -1,-1 |tip {dropsfrom}Putridus Satyr, Putridus Trickster, Putridus Shadowstalker
+step
+  talk Prospector Ironband##1344
+  turnin Ironband Wants You!##707 |goto Loch Modan 65.93,65.62 |tip {turninat}Loch Modan
 step
   talk Smeed Scrabblescrew##11596
   accept Kodo Roundup##5561 |goto Desolace 60.86,61.86
@@ -122,14 +119,29 @@ step
 step
   turnin The Karnitol Shipwreck##1454 |goto Desolace 36.11,30.45
 step
+  click Karnitol's Chest##35251
+  accept The Karnitol Shipwreck##1455 |goto Desolace 36.11,30.45
+step
+  talk Archbishop Benedictus##1284
+  accept Bring the Light##3636 |goto Stormwind City 39.59,27.19
+step
   talk Azore Aldamort##11863
   accept Sceptre of Light##5741 |goto Desolace 38.88,27.16
 step
   note Get the Sceptre of Light and then return it to Azore Aldamort at the tower in Ethel Rethor.
   collect Sceptre of Light##15750 |q 5741 |goto Desolace 55.17,30.15 |tip {dropsfrom}Burning Blade Seer
 step
+  click Rackmore's Log##177787
+  accept Claim Rackmore's Treasure!##6161 |goto Desolace 36.07,30.41
+step
+  note Find Rackmore's Silver Key. Find Rackmore's Golden Key. Find and open Rackmore's Chest.
+  collect Rackmore's Silver Key##15878 |q 6161 |goto Desolace 24.08,76.56 |tip {dropsfrom}Drysnap Crawler, Drysnap Pincer
+step
   note Slay Princess Theradras and return to Keeper Marandis at Nijel's Point in Desolace.
   kill Princess Theradras##12201 |q 7065 |goto Maraudon - Dungeon -1,-1 |elite
+step
+  note Archbishop Bendictus wants you to slay Amnennar the Coldbringer in Razorfen Downs.
+  kill Amnennar the Coldbringer##7358 |q 3636 |goto Razorfen Downs - Dungeon -1,-1 |elite
 step
   talk Talendria##11715
   turnin Vyletongue Corruption##7041 |goto Desolace 68.5,8.88
@@ -140,20 +152,29 @@ step
   talk Keeper Marandis##13698
   turnin Corruption of Earth and Seed##7065 |goto Desolace 63.83,10.67
 step
+  talk Corporal Melkins##5752
+  turnin Centaur Bounty##1387 |goto Desolace 66.74,10.87
+step
   talk Kreldig Ungor##5638
-  turnin The Karnitol Shipwreck##1456 |goto Desolace 66.2,9.63
+  turnin The Karnitol Shipwreck##1455 |goto Desolace 66.2,9.63
 step
   talk Kreldig Ungor##5638
   turnin Reagents for Reclaimers Inc.##1458 |goto Desolace 66.2,9.63
 step
-  talk Corporal Melkins##5752
-  turnin Centaur Bounty##1387 |goto Desolace 66.74,10.87
+  talk Vahlarriel Demonslayer##5642
+  turnin Vahlarriel's Search##1465 |goto Desolace 66.44,11.82
 step
   talk Brother Anton##1182
   accept Down the Scarlet Path##1052 |goto Desolace 66.52,7.91
 step
+  talk Vahlarriel Demonslayer##5642
+  accept Vahlarriel's Search##1438 |goto Desolace 66.44,11.82
+step
   talk Kreldig Ungor##5638
-  accept The Karnitol Shipwreck##1457 |goto Desolace 66.2,9.63
+  accept The Karnitol Shipwreck##1456 |goto Desolace 66.2,9.63
+step
+  note Find Karnitol's Satchel and return it to Kreldig Ungor in Desolace.
+  collect Karnitol's Satchel##6245 |q 1456 |goto Desolace 29.99,10.51 |tip {dropsfrom}Slitherblade Tidehunter, Slitherblade Sea Witch
 step
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1459 |goto Desolace 66.2,9.63
@@ -162,7 +183,13 @@ step
   collect 7 Scorpashi Venom##6248 |q 1459 |goto Desolace 65.68,27.9 |tip {dropsfrom}Scorpashi Snapper, Scorpashi Lasher, Scorpashi Venomlash
 step
   talk Dalinda Malem##5644
-  turnin Search for Tyranis##1439 |goto Desolace 54.86,26.13
+  turnin Vahlarriel's Search##1438 |goto Desolace 54.86,26.13
+step
+  talk Dalinda Malem##5644
+  accept Search for Tyranis##1439 |goto Desolace 54.86,26.13
+step
+  note Find Tyranis Malem in Desolace.
+  collect Tyranis' Pendant##6767 |q 1439 |goto Desolace 53.01,29.08 |tip {dropsfrom}Tyranis Malem
 step
   talk Willow##13656
   turnin Twisted Evils##7028 |goto Desolace 62.2,39.63
@@ -203,8 +230,13 @@ step
   note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
   collect 3 Broken Tears##6083 |q 1369 |goto Desolace 37.41,87.07 |tip {dropsfrom}Gelkis Windchaser, Gelkis Earthcaller, Tear of Theradras
 step
+  turnin Claim Rackmore's Treasure!##6161 |goto Desolace 30.0,8.71
+step
   talk Azore Aldamort##11863
   turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
+step
+  talk Archbishop Benedictus##1284
+  turnin Bring the Light##3636 |goto Stormwind City 39.59,27.19 |tip {turninat}Stormwind City
 step
   talk Azore Aldamort##11863
   accept Book of the Ancients##6027 |goto Desolace 38.88,27.16
@@ -212,17 +244,23 @@ step
   note Get the Book of the Ancients and return it to Azore Aldamort at the tower in Ethel Rethor.
   collect Book of the Ancients##15803 |q 6027 |goto Desolace 38.88,27.16 |tip {dropsfrom}Lord Kragaru
 step
-  talk Roetten Stonehammer##5637
-  turnin The Karnitol Shipwreck##1457 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+  talk Kreldig Ungor##5638
+  turnin The Karnitol Shipwreck##1456 |goto Desolace 66.2,9.63
 step
   talk Kreldig Ungor##5638
   turnin Reagents for Reclaimers Inc.##1459 |goto Desolace 66.2,9.63
+step
+  talk Kreldig Ungor##5638
+  accept The Karnitol Shipwreck##1457 |goto Desolace 66.2,9.63
 step
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1466 |goto Desolace 66.2,9.63
 step
   note Bring 10 Felhound Brains, 10 Nether Wings, and 10 vials of Doomwarder Blood to Kreldig Ungor in Desolace.
   collect 10 Felhound Brain##6250 |q 1466 |goto Desolace 52.91,68.14 |tip {dropsfrom}Mana Eater, Mage Hunter, Ley Hunter
+step
+  talk Dalinda Malem##5644
+  turnin Search for Tyranis##1439 |goto Desolace 54.86,26.13
 step
   talk Uthek the Wise##5397
   turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
@@ -244,6 +282,9 @@ step
 step
   talk Azore Aldamort##11863
   turnin Book of the Ancients##6027 |goto Desolace 38.88,27.16
+step
+  talk Roetten Stonehammer##5637
+  turnin The Karnitol Shipwreck##1457 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
 step
   talk Kreldig Ungor##5638
   turnin Reagents for Reclaimers Inc.##1466 |goto Desolace 66.2,9.63

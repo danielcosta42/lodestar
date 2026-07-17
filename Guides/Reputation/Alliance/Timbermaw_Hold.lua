@@ -21,6 +21,12 @@ step
   talk Nafien##15395
   accept Speak to Salfa##8465 |goto Felwood 64.77,8.13
 step
+  kill Deadwood Den Watcher##7156 |goto Felwood 62.08,8.01 |tip Loot the quest item here — it starts the quest.
+  accept Deadwood Ritual Totem##8470 |goto Felwood 62.08,8.01
+step
+  kill Winterfall Ursa##7438 |goto Winterspring 66.84,37.84 |tip Loot the quest item here — it starts the quest.
+  accept Winterfall Ritual Totem##8471 |goto Winterspring 66.84,37.84
+step
   talk Salfa##11556
   accept Winterfall Activity##8464 |goto Winterspring 27.73,34.5
 step

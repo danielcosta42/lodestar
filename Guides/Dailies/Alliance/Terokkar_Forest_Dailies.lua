@@ -9,6 +9,9 @@ step
   talk Severin##23042
   accept World of Shadows##11004 |goto Terokkar Forest 64.05,66.88
 step
+  kill Talonpriest Ishaal##23066 |goto Terokkar Forest 69.0,78.54 |tip Loot the quest item here — it starts the quest.
+  accept Ishaal's Almanac##11021 |goto Terokkar Forest 69.0,78.54
+step
   talk Yuula##23449
   accept Threat from Above##11096 |goto Shattrath City 64.33,42.33
 step
@@ -114,7 +117,7 @@ step
   accept Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
 step
   note Obtain Hazzik's Package at his dwelling in eastern Skettis and return to him with it.
-  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08 |tip {dropsfrom}Hazzik's Package
+  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08
 step
   talk Hazzik##23306
   turnin Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97

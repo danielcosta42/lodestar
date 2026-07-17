@@ -23,7 +23,7 @@ step
   accept The Eyes of Skettis##10847 |goto Shattrath City 52.54,21.01
 step
   note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
-  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37 |tip {dropsfrom}Eye of Veil Reskk
+  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37
 step
   talk Rilak the Redeemed##22292
   accept Countdown to Doom##11028 |goto Shattrath City 52.54,21.01
@@ -42,6 +42,12 @@ step
 step
   talk Vindicator Aeus##23270
   accept Assist Exarch Orelis##11038 |goto Shattrath City 47.24,26.26
+step
+  talk Jesper##15310
+  accept Hallow's End Treats for Jesper!##8311 |goto Stormwind City 47.63,35.32
+step
+  note Speak with the innkeepers of Stormwind, Ironforge, and Darnassus, as well as Talvash del Kissel in Ironforge. Perform the tricks they ask of you in exchange for the treats they offer.
+  collect Stormwind Nougat##20492 |q 8311 |goto Stormwind City 47.63,35.32
 step
   talk Ezekiel##19715
   accept What Book? I Don't See Any Book.##10231 |goto Shattrath City 49.12,35.9
@@ -94,11 +100,15 @@ step
   talk Orphan Matron Mercy##22819
   accept Children's Week##10943 |goto Shattrath City 75.23,48.0
 step
+  talk Blood Elf Commoner##19169
+  accept Masked Orphan Matron##11357 |goto Silvermoon City 78.03,57.73
+step
   talk Sal'salabim##18584
   accept Crackin' Some Skulls##10009 |goto Shattrath City 77.26,34.85
 step
   note Sal'salabim at Shattrath City wants you to recover Raliq's Debt, Coosh'coosh's Debt and Floon's Debt.
-  collect Raliq's Debt##25767 |q 10009 |goto Shattrath City 74.99,31.4 |tip {dropsfrom}Raliq the Drunk
+  kill Raliq the Drunk##18585 |goto Shattrath City 74.99,31.4 |elite
+  collect Raliq's Debt##25767 |q 10009 |goto Shattrath City 74.99,31.4
 step
   talk Wind Trader Lathrai##18484
   accept A Personal Favor##10112 |goto Shattrath City 72.22,30.75
@@ -119,7 +129,8 @@ step
   accept A Cure for Zahlia##10020 |goto Shattrath City 64.48,15.1
 step
   note Bring Stonegazer's Blood to Sha'nir in Shattrath City.
-  collect Stonegazer's Blood##25815 |q 10020 |goto Terokkar Forest 62.81,27.69 |tip {dropsfrom}Stonegazer
+  kill Stonegazer##18648 |goto Terokkar Forest 62.81,27.69 |elite
+  collect Stonegazer's Blood##25815 |q 10020 |goto Terokkar Forest 62.81,27.69
 step
   talk Seth##18653
   accept Rather Be Fishin'##10037 |goto Shattrath City 63.95,15.53
@@ -145,11 +156,18 @@ step
   talk Zoya##23465
   accept Zoya the Veridian Netherwing Drake##11114 |goto Shattrath City 65.89,19.14
 step
+  talk Alicia##24729
+  accept Alicia's Poem##11451 |goto Stormwind City 66.47,14.39
+step
+  talk Caylee Dak##24727
+  turnin Alicia's Poem##11451 |goto Shattrath City 31.19,27.74
+step
   talk Adyen the Lightwarden##18537
   accept Marks of Kil'jaeden##10325 |goto Shattrath City 30.73,34.62
 step
   note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
-  collect 10 Mark of Kil'jaeden##29425 |q 10325 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
+  kill Mo'arg Engineer##16945 |goto Nagrand 20.0,49.34 |elite
+  collect 10 Mark of Kil'jaeden##29425 |q 10325 |goto Nagrand 20.0,49.34
 step
   talk Adyen the Lightwarden##18537
   accept Marks of Sargeras##10653 |goto Shattrath City 30.73,34.62
@@ -241,6 +259,9 @@ step
   note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Sunfury Signets.
   collect Sunfury Signet##30810 |q 10656 |goto Shattrath City 45.2,81.44 |tip {dropsfrom}Bloodwarder Protector, Bloodwarder Falconer, Bloodwarder Steward
 step
+  talk Dwarf Commoner##19148
+  accept Costumed Orphan Matron##11356 |goto Ironforge 31.03,63.03
+step
   talk Voren'thal the Seer##18530
   accept Synthesis of Power##10416 |goto Shattrath City 42.79,91.71
 step
@@ -277,6 +298,9 @@ step
   talk "Dirty" Larry##19720
   accept The Master's Grand Design?##10251 |goto Shattrath City 43.63,29.76
 step
+  talk Jesper##15310
+  turnin Hallow's End Treats for Jesper!##8311 |goto Stormwind City 47.63,35.32 |tip {turninat}Stormwind City
+step
   talk Exarch Larethor##24813
   turnin Crisis at the Sunwell##11481 |goto Isle of Quel'Danas 47.42,30.74 |tip {turninat}Isle of Quel'Danas
 step
@@ -297,6 +321,12 @@ step
 step
   talk A'dal##18481
   turnin How to Break Into the Arcatraz##10704 |goto Shattrath City 53.99,44.75
+step
+  talk Costumed Orphan Matron##24519
+  turnin Costumed Orphan Matron##11356 |goto Dun Morogh 46.19,53.14 |tip {turninat}Dun Morogh
+step
+  talk Masked Orphan Matron##23973
+  turnin Masked Orphan Matron##11357 |goto Durotar 52.57,41.2 |tip {turninat}Durotar
 step
   talk Kirrik the Awakened##22272
   turnin Seek Out Kirrik##10849 |goto Terokkar Forest 37.45,51.54 |tip {turninat}Terokkar Forest
@@ -361,7 +391,7 @@ step
   accept Investigate Tuurem##9990 |goto Shattrath City 72.22,30.75
 step
   note Find the Sealed Box and then deliver it to Earthbinder Tavgren just outside of the Cenarion Thicket in Terokkar Forest.
-  collect Sealed Box##25727 |q 9990 |goto Terokkar Forest 54.0,30.0 |tip {dropsfrom}Sealed Box
+  collect Sealed Box##25727 |q 9990 |goto Terokkar Forest 54.0,30.0
 step
   talk Sal'salabim##18584
   accept It's Just That Easy?##10010 |goto Shattrath City 77.26,34.85
@@ -393,6 +423,9 @@ step
   talk Zoya##23465
   turnin Zoya the Veridian Netherwing Drake##11114 |goto Shattrath City 65.89,19.14
 step
+  note Use Socrethar's Teleportation's Stone at Invasion Point: Overlord, north of Forge Base: Oblivion to transport your party to Socrethar's Landing. Once there, use Voren'thal's Presence to defeat Socrethar.
+  kill Socrethar##20132 |q 10507 |goto Netherstorm 29.31,13.7 |elite
+step
   talk Altruis the Sufferer##18417
   turnin It's Just That Easy?##10010 |goto Nagrand 27.34,43.09 |tip {turninat}Nagrand
 step
@@ -407,9 +440,6 @@ step
 step
   talk Ishanah##18538
   turnin A Cleansing Light##10420 |goto Shattrath City 23.97,29.73
-step
-  note Use Socrethar's Teleportation's Stone at Invasion Point: Overlord, north of Forge Base: Oblivion to transport your party to Socrethar's Landing. Once there, use Voren'thal's Presence to defeat Socrethar.
-  kill Socrethar##20132 |q 10507 |goto Netherstorm 29.31,13.7 |elite
 step
   talk Nitrin the Learned##19844
   turnin The Master's Grand Design?##10251 |goto Nagrand 51.82,56.84 |tip {turninat}Nagrand

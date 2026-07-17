@@ -40,6 +40,10 @@ step
   accept A Simple Request##8233 |goto Orgrimmar 43.9,54.63
 step
   only Rogue
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Garona: A Study on Stealth and Treachery##7498 |goto Dire Maul - Dungeon -1,-1
+step
+  only Rogue
   talk Falthir the Sightless##14905
   accept Paragons of Power: The Madcap's Bracers##8063 |goto Stranglethorn Vale 14.08,13.72
 step
@@ -117,15 +121,15 @@ step
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Armsplint##19717 |q 8063 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Armsplint##19717 |q 8063 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Girdle##19719 |q 8072 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Girdle##19719 |q 8072 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Rogue
   note Bring Falthir the Sightless a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Aegis##19724 |q 8073 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Aegis##19724 |q 8073 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Rogue
   collect Heavy Junkbox##16885 |q 8249 |goto Alterac Valley - Battleground 51.14,6.98 |tip {dropsfrom}Irondeep Trogg, Irondeep Skullthumper, Taskmaster Snivvle
@@ -135,15 +139,15 @@ step
 step
   only Rogue
   note Bring the Qiraji Bindings of Command, 2 Idols of Strife, 5 Crystal Scarabs and 5 Bone Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Command##20928 |q 8637 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Command##20928 |q 8637 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Rogue
   note Bring the the Carapace of the Old God, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Carapace of the Old God##20929 |q 8638 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}C'Thun
+  collect Carapace of the Old God##20929 |q 8638 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}C'Thun
 step
   only Rogue
   note Bring Vek'lor's Diadem, 2 Idols of the War, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'lor's Diadem##20930 |q 8639 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Emperor Vek'lor
+  collect Vek'lor's Diadem##20930 |q 8639 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Emperor Vek'lor
 step
   only Rogue
   note Bring Ouro's Intact Hide, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -151,19 +155,19 @@ step
 step
   only Rogue
   note Bring the Qiraji Bindings of Command, 2 Idols of the Sun, 5 Silver Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Command##20928 |q 8641 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Command##20928 |q 8641 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Rogue
   note Bring 1 Qiraji Martial Drape, 2 Azure Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8693 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Martial Drape##20885 |q 8693 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Rogue
   note Bring 1 Qiraji Ceremonial Ring, 2 Onyx Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8701 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8701 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Rogue
   note Bring 1 Qiraji Spiked Hilt, 2 Vermillion Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8709 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8709 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Rogue
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Shadowcraft Bracers to Deliana in Ironforge.
@@ -545,11 +549,11 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Pauldrons if you bring him the following: 1 Desecrated Pauldrons, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 50 gold pieces.
-  collect Desecrated Pauldrons##22354 |q 9080 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect Desecrated Pauldrons##22354 |q 9080 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Sabatons if you bring him the following: 1 Desecrated Sabatons, 12 Wartorn Leather Scraps, 3 Cured Rugged Hides, 2 Nexus Crystals and 25 gold pieces.
-  collect Desecrated Sabatons##22358 |q 9081 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect Desecrated Sabatons##22358 |q 9081 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Gauntlets if you bring him the following: 1 Desecrated Gauntlets, 8 Wartorn Leather Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -557,11 +561,11 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Waistguard if you bring him the following: 1 Desecrated Waistguard, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 15 gold pieces.
-  collect Desecrated Waistguard##22356 |q 9083 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect Desecrated Waistguard##22356 |q 9083 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Bracers if you bring him the following: 1 Desecrated Bracers, 6 Wartorn Leather Scraps, 1 Arcanite Bar, 2 Cured Rugged Hides and 10 gold pieces.
-  collect Desecrated Bracers##22355 |q 9084 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect Desecrated Bracers##22355 |q 9084 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
 step
   only Human Rogue
   talk Jorik Kerridan##915
@@ -649,7 +653,7 @@ step
 step
   only Rogue
   note Return the Azure Key to Lord Jorach Ravenholdt.
-  collect Azure Key##20022 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
+  collect Azure Key##20022 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
 step
   only Rogue
   collect Zandalarian Shadow Talisman##19616 |q 8144 |goto Stranglethorn Vale 14.08,13.72
@@ -774,7 +778,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -783,7 +787,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -803,7 +807,7 @@ step
 step
   only Rogue
   note Return to Deliana in Ironforge with a set of Shadowcraft Boots, Shadowcraft Pants and Shadowcraft Spaulders.
-  collect Shadowcraft Boots##16711 |q 8956 |goto Scholomance - Dungeon -1,-1 |tip {dropsfrom}Rattlegore
+  collect Shadowcraft Boots##16711 |q 8956 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Rattlegore
 step
   only Rogue
   talk Deliana##16013
@@ -828,7 +832,8 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |tip {dropsfrom}Cursed Paladin, Cursed Justicar, Writhing Mage
+  kill Cursed Paladin##7071 |goto Hillsbrad Foothills 18.45,76.6 |elite
+  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
 step
   talk Bodley##16033
   turnin Components of Importance##8965

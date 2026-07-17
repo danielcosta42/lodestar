@@ -19,19 +19,19 @@ step
   talk Zureetha Fargaze##3145
   accept Vile Familiars##792 |goto Durotar 42.85,69.15
 step
-  only Druid
+  only Warlock
   talk Ruzan##5765
   accept Vile Familiars##1485 |goto Durotar 42.59,69.0
 step
-  only Druid
+  only Warlock
   note Bring 6 Vile Familiar Heads to Ruzan.
   collect 6 Vile Familiar Head##6487 |q 1485 |goto Durotar 44.24,55.54 |tip {dropsfrom}Vile Familiar
 step
-  only Mage
+  only Shaman
   talk Canaga Earthcaller##5887
   accept Call of Earth##1516 |goto Durotar 42.4,69.17
 step
-  only Mage
+  only Shaman
   note Bring 2 Felstalker Hooves to Canaga Earthcaller in the Valley of Trials.
   collect 2 Felstalker Hoof##6640 |q 1516 |goto Durotar 44.29,54.18 |tip {dropsfrom}Felstalker
 step
@@ -81,7 +81,7 @@ step
   talk Master Gadrin##3188
   accept Zalazane##826 |goto Durotar 55.95,74.72
 step
-  only Warlock
+  only Mage
   talk Un'Thuwa##5880
   accept Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
@@ -91,7 +91,7 @@ step
   note Defeat Zalazane.
   kill Hexed Troll##3207 |q 826 |goto Durotar 67.7,84.01
 step
-  only Warlock
+  only Mage
   note Destroy 4 Ju-Ju Heaps, then return to Un'thuwa in Sen'jin Village.
   collect Ju-Ju Heap##102986 |q 1884 |goto Durotar 67.79,83.37
 step
@@ -104,6 +104,12 @@ step
 step
   talk Innkeeper Grosk##6928
   turnin A Peon's Burden##2161 |goto Durotar 51.51,41.64
+step
+  talk Veren Tallstrider##3050
+  accept Gathering Leather##768 |goto Thunder Bluff 44.39,44.7
+step
+  note Bring 12 pieces of Light Leather to Veren Tallstrider in Thunder Bluff.
+  collect 12 Light Leather##2318 |q 768 |goto Ghostlands 37.36,79.33 |tip {dropsfrom}Mirdoran the Fallen, Ghostclaw Lynx, Ghostclaw Ravager
 step
   talk Gar'Thok##3139
   accept Vanquish the Betrayers##784 |goto Durotar 51.95,43.5
@@ -126,8 +132,8 @@ step
   note Bring 3 Taillasher Eggs to Cook Torka in Razor Hill.
   collect 3 Taillasher Egg##4890 |q 815 |goto Durotar 64.93,78.8 |tip {dropsfrom}Taillasher Eggs
 step
-  talk Gar'Thok##3139
-  accept The Admiral's Orders##831 |goto Durotar 51.95,43.5
+  collect Benedict's Chest##3239 |goto Durotar 59.26,57.65 |tip Loot the quest item here — it starts the quest.
+  accept The Admiral's Orders##830 |goto Durotar 59.26,57.65
 step
   talk Gar'Thok##3139
   accept Encroachment##837 |goto Durotar 51.95,43.5
@@ -161,8 +167,8 @@ step
   note Kill 4 Razormane Quilboars, 4 Razormane Scouts, 4 Razormane Dustrunners and 4 Razormane Battleguards for Gar'Thok at Razor Hill.
   kill Razormane Quilboar##3111 |q 837 |goto Durotar 48.91,48.75
 step
-  talk Vol'jin##10540
-  turnin The Admiral's Orders##831 |goto Orgrimmar 34.34,36.33 |tip {turninat}Orgrimmar
+  talk Eitrigg##3144
+  accept The New Horde##787 |goto Orgrimmar 34.28,39.35
 step
   talk Misha Tor'kren##3193
   accept Lost But Not Forgotten##816 |goto Durotar 43.1,30.24
@@ -186,11 +192,23 @@ step
   talk Aelthalyste##4606
   turnin Touch of Weakness##5660 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
 step
+  kill Gazz'uz##3204 |goto Durotar 51.89,9.72 |tip Loot the quest item here — it starts the quest.
+  accept Burning Shadows##832 |goto Durotar 51.89,9.72
+step
   talk Wonderform Operator##15732
   accept Winter's Presents##8828 |goto Durotar 49.99,13.59
 step
   talk Kargal Battlescar##3337
   turnin Conscript of the Horde##840 |goto The Barrens 62.26,19.38 |tip {turninat}The Barrens
+step
+  talk Bethor Iceshard##1498
+  accept The Lich's Identity##357 |goto Undercity 84.07,17.45
+step
+  note Bring the Lich's Spellbook to Bethor Iceshard in the Undercity.
+  collect The Lich's Identity##2833 |q 357 |goto Undercity 84.07,17.45
+step
+  talk Gornek##3143
+  turnin The New Horde##787 |goto Durotar 42.06,68.33
 step
   talk Gornek##3143
   turnin Cutting Teeth##788 |goto Durotar 42.06,68.33
@@ -207,11 +225,11 @@ step
   talk Foreman Thazz'ril##11378
   turnin Lazy Peons##5441 |goto Durotar 44.63,68.65
 step
-  only Druid
+  only Warlock
   talk Ruzan##5765
   turnin Vile Familiars##1485 |goto Durotar 42.59,69.0
 step
-  only Mage
+  only Shaman
   talk Canaga Earthcaller##5887
   turnin Call of Earth##1516 |goto Durotar 42.4,69.17
 step
@@ -230,11 +248,11 @@ step
   talk Hana'zua##3287
   accept Sarkoth##804 |goto Durotar 40.6,62.58
 step
-  only Druid
+  only Warlock
   talk Ruzan##5765
   accept Vile Familiars##1499 |goto Durotar 42.59,69.0
 step
-  only Mage
+  only Shaman
   talk Canaga Earthcaller##5887
   accept Call of Earth##1517 |goto Durotar 42.4,69.17
 step
@@ -254,7 +272,7 @@ step
   talk Gornek##3143
   accept Encrypted Tablet##3083 |goto Durotar 42.06,68.33
 step
-  only Troll Mage
+  only Troll Shaman
   talk Gornek##3143
   accept Rune-Inscribed Tablet##3084 |goto Durotar 42.06,68.33
 step
@@ -262,7 +280,7 @@ step
   talk Gornek##3143
   accept Hallowed Tablet##3085 |goto Durotar 42.06,68.33
 step
-  only Troll Warlock
+  only Troll Mage
   talk Gornek##3143
   accept Glyphic Tablet##3086 |goto Durotar 42.06,68.33
 step
@@ -274,11 +292,11 @@ step
   talk Gornek##3143
   accept Encrypted Parchment##3088 |goto Durotar 42.06,68.33
 step
-  only Orc Mage
+  only Orc Shaman
   talk Gornek##3143
   accept Rune-Inscribed Parchment##3089 |goto Durotar 42.06,68.33
 step
-  only Orc Druid
+  only Orc Warlock
   talk Gornek##3143
   accept Tainted Parchment##3090 |goto Durotar 42.06,68.33
 step
@@ -286,19 +304,19 @@ step
   accept Galgar's Cactus Apple Surprise##4402 |goto Durotar 42.73,67.23
 step
   note Bring Galgar 10 Cactus Apples. You remember him saying that they could be found near cactuses.
-  collect Cactus Apple##11583 |q 4402 |goto Durotar 44.04,63.02 |tip {dropsfrom}Cactus Apple
+  collect Cactus Apple##11583 |q 4402 |goto Durotar 44.04,63.02
 step
   talk Foreman Thazz'ril##11378
   accept Thazz'ril's Pick##6394 |goto Durotar 44.63,68.65
 step
   note Bring Thazz'ril's Pick to Foreman Thazz'ril.
-  collect Thazz'ril's Pick##16332 |q 6394 |goto Durotar 43.73,53.79 |tip {dropsfrom}Thazz'ril's Pick
+  collect Thazz'ril's Pick##16332 |q 6394 |goto Durotar 43.73,53.79
 step
   only Troll Priest
   talk Ur'kyo##6018
   turnin Hex of Weakness##5654 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
 step
-  only Mage
+  only Shaman
   talk Minor Manifestation of Earth##5891
   turnin Call of Earth##1517 |goto Durotar 44.03,76.2
 step
@@ -320,12 +338,15 @@ step
   talk Master Gadrin##3188
   turnin Zalazane##826 |goto Durotar 55.95,74.72
 step
-  only Warlock
+  only Mage
   talk Un'Thuwa##5880
   turnin Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
   talk Great-father Winter##13445
   turnin Winter's Presents##8828 |goto Orgrimmar 52.49,69.18 |tip {turninat}Orgrimmar
+step
+  talk Veren Tallstrider##3050
+  turnin Gathering Leather##768 |goto Thunder Bluff 44.39,44.7 |tip {turninat}Thunder Bluff
 step
   talk Gar'Thok##3139
   turnin Vanquish the Betrayers##784 |goto Durotar 51.95,43.5
@@ -343,6 +364,12 @@ step
   talk Cook Torka##3191
   turnin Break a Few Eggs##815 |goto Durotar 51.11,42.45
 step
+  talk Gar'Thok##3139
+  turnin The Admiral's Orders##830 |goto Durotar 51.95,43.5
+step
+  talk Neeru Fireblade##3216
+  turnin Burning Shadows##832 |goto Orgrimmar 49.47,50.59 |tip {turninat}Orgrimmar
+step
   only Rogue
   talk Therzok##6446
   turnin Therzok##1859 |goto Orgrimmar 42.73,53.55 |tip {turninat}Orgrimmar
@@ -359,8 +386,14 @@ step
   talk Orgnil Soulscar##3142
   accept Margoz##828 |goto Durotar 52.24,43.15
 step
+  talk Gar'Thok##3139
+  accept The Admiral's Orders##831 |goto Durotar 51.95,43.5
+step
   talk Misha Tor'kren##3193
   turnin Lost But Not Forgotten##816 |goto Durotar 43.1,30.24
+step
+  talk Vol'jin##10540
+  turnin The Admiral's Orders##831 |goto Orgrimmar 34.34,36.33 |tip {turninat}Orgrimmar
 step
   talk Rezlak##3293
   turnin Winds in the Desert##834 |goto Durotar 46.37,22.94
@@ -373,6 +406,12 @@ step
 step
   talk Margoz##3208
   turnin Margoz##828 |goto Durotar 56.41,20.04
+step
+  talk Bethor Iceshard##1498
+  turnin The Lich's Identity##357 |goto Undercity 84.07,17.45 |tip {turninat}Undercity
+step
+  talk Bethor Iceshard##1498
+  accept Return the Book##366 |goto Undercity 84.07,17.45
 step
   talk Margoz##3208
   accept Skull Rock##827 |goto Durotar 56.41,20.04
@@ -391,7 +430,7 @@ step
   talk Rwag##3155
   turnin Encrypted Tablet##3083 |goto Durotar 41.28,68.0
 step
-  only Troll Mage
+  only Troll Shaman
   talk Shikrik##3157
   turnin Rune-Inscribed Tablet##3084 |goto Durotar 42.39,69.0
 step
@@ -399,7 +438,7 @@ step
   talk Ken'jai##3707
   turnin Hallowed Tablet##3085 |goto Durotar 42.36,68.81
 step
-  only Troll Warlock
+  only Troll Mage
   talk Mai'ah##5884
   turnin Glyphic Tablet##3086 |goto Durotar 42.51,69.04
 step
@@ -407,20 +446,20 @@ step
   talk Jen'shan##3154
   turnin Etched Parchment##3087 |goto Durotar 42.84,69.33
 step
-  only Rogue
-  talk Rwag##3155
-  turnin Encrypted Parchment##3088 |goto Durotar 41.28,68.0
+  only Orc Warlock
+  talk Nartok##3156
+  turnin Tainted Parchment##3090 |goto Durotar 40.65,68.52
 step
   talk Gornek##3143
   turnin Sting of the Scorpid##789 |goto Durotar 42.06,68.33
 step
-  only Orc Druid
-  talk Nartok##3156
-  turnin Tainted Parchment##3090 |goto Durotar 40.65,68.52
-step
-  only Orc Mage
+  only Orc Shaman
   talk Shikrik##3157
   turnin Rune-Inscribed Parchment##3089 |goto Durotar 42.39,69.0
+step
+  only Rogue
+  talk Rwag##3155
+  turnin Encrypted Parchment##3088 |goto Durotar 41.28,68.0
 step
   talk Zureetha Fargaze##3145
   turnin Burning Blade Medallion##794 |goto Durotar 42.85,69.15
@@ -435,7 +474,7 @@ step
   talk Frang##3153
   turnin Simple Parchment##2383 |goto Durotar 42.89,69.44
 step
-  only Druid
+  only Warlock
   talk Zureetha Fargaze##3145
   turnin Vile Familiars##1499 |goto Durotar 42.85,69.15
 step
@@ -454,6 +493,9 @@ step
 step
   talk Gar'Thok##3139
   turnin From The Wreckage....##825 |goto Durotar 51.95,43.5
+step
+  talk Gunther Arcanus##1497
+  turnin Return the Book##366 |goto Tirisfal Glades 68.2,41.92 |tip {turninat}Tirisfal Glades
 step
   talk Rezlak##3293
   turnin Securing the Lines##835 |goto Durotar 46.37,22.94

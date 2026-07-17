@@ -19,17 +19,18 @@ step
   note Recover the Skethlon Commander's Journal Page 1, Skethlon Commander's Journal Page 2, and Skethlon Commander's Journal Page 3 from the Dark Conclave arakkoa at the Sketh'lon Wreckage to Gryphonrider Kieran.
   collect Sketh'lon Commander's Journal - Page 1##31260 |q 10569 |goto Shadowmoon Valley 37.18,30.79 |tip {dropsfrom}Dark Conclave Shadowmancer, Dark Conclave Ravenguard, Dark Conclave Hawkeye
 step
-  talk Ordinn Thunderfist##19370
-  accept Capture the Weapons##10626 |goto Shadowmoon Valley 36.82,54.89
-step
-  note Ordinn Thunderfist at Wildhammer Stronghold wants you to bring him Mazakradon's Glaive and Morgroron's Glaive.
-  collect Makazradon's Glaive##30786 |q 10626 |goto Shadowmoon Valley 22.68,35.3 |tip {dropsfrom}Makazradon
-step
   talk Zorus the Judicator##21774
   accept A Ghost in the Machine##10642 |goto Shadowmoon Valley 37.13,55.57
 step
   note Zorus the Judicator at Wildhammer Stronghold in Shadowmoon Valley wants you to bring him 15 Ever-burning Ash samples.
-  collect Ever-burning Ash##30716 |q 10642 |goto Shadowmoon Valley 37.64,40.52 |tip {dropsfrom}Ever-burning Ash
+  collect Ever-burning Ash##30716 |q 10642 |goto Shadowmoon Valley 37.64,40.52
+step
+  click Wanted Poster##184946
+  accept Wanted: Uvuros, Scourge of Shadowmoon##10648 |goto Shadowmoon Valley 38.22,53.96
+step
+  note Slay Uvuros and recover Uvuros's Fiery Mane. Return it to Warcaller Beersnout at Wildhammer Stronghold in Shadowmoon Valley.
+  kill Uvuros##21102 |goto Shadowmoon Valley 54.84,49.39 |elite
+  collect Uvuros's Fiery Mane##30807 |q 10648 |goto Shadowmoon Valley 54.84,49.39
 step
   talk Gnomus##21777
   accept Spleendid!##10661 |goto Shadowmoon Valley 36.54,55.24
@@ -42,6 +43,9 @@ step
 step
   talk Thane Yoregar##21773
   accept Put On Yer Kneepads...##10703 |goto Shadowmoon Valley 36.21,56.9
+step
+  kill Overseer Ripsaw##21499 |goto Shadowmoon Valley 23.18,35.15 |tip Loot the quest item here — it starts the quest.
+  accept Illidari-Bane Shard##10621 |goto Shadowmoon Valley 23.18,35.15
 step
   talk Earthmender Torlok##21024
   turnin The Hand of Gul'dan##10680 |goto Shadowmoon Valley 42.19,45.06
@@ -73,6 +77,9 @@ step
   talk Larissa Sunstrike##21954
   accept Varedis Must Be Stopped##10692 |goto Shadowmoon Valley 55.73,58.17
 step
+  kill Val'zareq the Conqueror##21979 |goto Shadowmoon Valley 51.61,64.92 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Journal of Val'zareq: Portends of War##10793 |goto Shadowmoon Valley 51.61,64.92
+step
   talk Mordenai##22113
   accept Kindness##10804 |goto Shadowmoon Valley 59.19,58.69
 step
@@ -92,10 +99,14 @@ step
   accept The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |tip {dropsfrom}Shadowlord Deathwail
+  kill Shadowlord Deathwail##22006 |goto Shadowmoon Valley 72.33,34.83 |elite
+  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83
 step
   talk Akama##21700
   accept Ruse of the Ashtongue##10946 |goto Shadowmoon Valley 58.11,48.18
+step
+  kill Smith Gorlunk##22037 |goto Shadowmoon Valley 67.64,36.2 |tip Loot the quest item here — it starts the quest.
+  accept Entry Into the Citadel##10754 |goto Shadowmoon Valley 67.64,36.2
 step
   talk Xi'ri##18528
   accept A Distraction for Akama##10985 |goto Shadowmoon Valley 65.22,43.96
@@ -136,11 +147,17 @@ step
   note Larissa Sunstrike wants you to go to the ruins of Karabor and slay Alandien, Theras, Netharel and Varedis. Use the Book of Fel Names when Varedis uses Metamorphosis to weaken him. Return to Larissa Sunstrike with the Book of Fel Names after completing this task.
   kill Varedis##21178 |q 10692 |goto Shadowmoon Valley 72.16,53.67 |elite
 step
+  talk Force Commander Danath Trollbane##16819
+  turnin Entry Into the Citadel##10754 |goto Hellfire Peninsula 56.64,66.7 |tip {turninat}Hellfire Peninsula
+step
+  turnin The Journal of Val'zareq: Portends of War##10793 |goto Shadowmoon Valley 51.38,72.79
+step
   talk Ancient Shadowmoon Spirit##21797
   accept Divination: Gorefiend's Armor##10634 |goto Shadowmoon Valley 58.23,70.79
 step
   note The Ancient Shadowmoon Spirit at the Altar of Shadows in southeast Shadowmoon Valley wants you to recover Gorefiend's Armor.
-  collect Gorefiend's Armor##30797 |q 10634 |goto Shadowmoon Valley 67.04,87.07 |tip {dropsfrom}Vhel'kur
+  kill Vhel'kur##21801 |goto Shadowmoon Valley 67.04,87.07 |elite
+  collect Gorefiend's Armor##30797 |q 10634 |goto Shadowmoon Valley 67.04,87.07
 step
   talk Ancient Shadowmoon Spirit##21797
   accept Divination: Gorefiend's Cloak##10635 |goto Shadowmoon Valley 58.23,70.79
@@ -166,14 +183,14 @@ step
   talk Taskmaster Varkule Dragonbreath##23140
   accept Bow to the Highlord##11107 |goto Shadowmoon Valley 66.12,86.36
 step
-  talk Ordinn Thunderfist##19370
-  turnin Capture the Weapons##10626 |goto Shadowmoon Valley 36.82,54.89
-step
   talk Zorus the Judicator##21774
   turnin A Ghost in the Machine##10642 |goto Shadowmoon Valley 37.13,55.57
 step
   talk Zorus the Judicator##21774
   turnin Teron Gorefiend, I am...##10645 |goto Shadowmoon Valley 37.13,55.57
+step
+  talk Warcaller Beersnout##21775
+  turnin Wanted: Uvuros, Scourge of Shadowmoon##10648 |goto Shadowmoon Valley 38.26,53.9
 step
   talk Gnomus##21777
   turnin Spleendid!##10661 |goto Shadowmoon Valley 36.54,55.24
@@ -187,17 +204,24 @@ step
   talk Thane Yoregar##21773
   turnin Put On Yer Kneepads...##10703 |goto Shadowmoon Valley 36.21,56.9
 step
+  talk Ordinn Thunderfist##19370
+  turnin Illidari-Bane Shard##10621 |goto Shadowmoon Valley 36.82,54.89
+step
   talk Wing Commander Nuainn##21357
   accept To Legion Hold##10563 |goto Shadowmoon Valley 39.5,53.73
 step
   note Make your way to Legion Hold and locate the Legion Communication Device. While standing near the communication device, use your disguise and learn about the Legion's plans. Return to Wing Commander Nuainn at Wildhammer Stronghold when you've completed your mission.
   kill Image of Warbringer Razuun##21502 |q 10563
 step
+  talk Ordinn Thunderfist##19370
+  accept Capture the Weapons##10626 |goto Shadowmoon Valley 36.82,54.89
+step
+  note Ordinn Thunderfist at Wildhammer Stronghold wants you to bring him Mazakradon's Glaive and Morgroron's Glaive.
+  kill Makazradon##21501 |goto Shadowmoon Valley 22.68,35.3 |elite
+  collect Makazradon's Glaive##30786 |q 10626 |goto Shadowmoon Valley 22.68,35.3
+step
   talk Zorus the Judicator##21774
   accept Harbingers of Shadowmoon##10643 |goto Shadowmoon Valley 37.13,55.57
-step
-  talk Ordinn Thunderfist##19370
-  accept The Hermit Smith##10662 |goto Shadowmoon Valley 36.82,54.89
 step
   talk Gnomus##21777
   accept The Second Course...##10677 |goto Shadowmoon Valley 36.54,55.24
@@ -286,9 +310,6 @@ step
   note Go to the Caverns of Time in Tanaris and gain access to the Battle of Mount Hyjal. Once inside, defeat Rage Winterchill and bring the Time-Phased Phylactery to Akama in Shadowmoon Valley.
   collect Time-Phased Phylactery##32459 |q 10947 |goto Shadowmoon Valley 58.11,48.18 |tip {dropsfrom}Rage Winterchill
 step
-  talk David Wayne##21465
-  turnin The Hermit Smith##10662 |goto Terokkar Forest 77.58,38.72 |tip {turninat}Terokkar Forest
-step
   talk Xi'ri##18528
   turnin A Distraction for Akama##10985 |goto Shadowmoon Valley 65.22,43.96
 step
@@ -346,6 +367,9 @@ step
   talk Overlord Mor'ghor##23139
   turnin Bow to the Highlord##11107 |goto Shadowmoon Valley 66.3,85.56
 step
+  talk Ordinn Thunderfist##19370
+  turnin Capture the Weapons##10626 |goto Shadowmoon Valley 36.82,54.89
+step
   talk Zorus the Judicator##21774
   turnin Harbingers of Shadowmoon##10643 |goto Shadowmoon Valley 37.13,55.57
 step
@@ -359,10 +383,13 @@ step
   accept Setting Up the Bomb##10572 |goto Shadowmoon Valley 39.5,53.73
 step
   note Obtain a Fel Reaver Power Core and a Fel Reaver Armor Plate and bring them to Wing Commander Nuainn at Wildhammer Stronghold.
-  collect Fel Reaver Power Core##30628 |q 10572 |goto Shadowmoon Valley 26.3,41.27 |tip {dropsfrom}Fel Reaver Power Core
+  collect Fel Reaver Power Core##30628 |q 10572 |goto Shadowmoon Valley 26.3,41.27
 step
   talk Zorus the Judicator##21774
   accept Teron Gorefiend - Lore and Legend##10644 |goto Shadowmoon Valley 37.13,55.57
+step
+  talk Ordinn Thunderfist##19370
+  accept The Hermit Smith##10662 |goto Shadowmoon Valley 36.82,54.89
 step
   talk Gnomus##21777
   accept The Main Course!##10678 |goto Shadowmoon Valley 36.54,55.24
@@ -427,6 +454,9 @@ step
   talk Akama##21700
   accept The Hostage Soul##10948 |goto Shadowmoon Valley 58.11,48.18
 step
+  talk David Wayne##21465
+  turnin The Hermit Smith##10662 |goto Terokkar Forest 77.58,38.72 |tip {turninat}Terokkar Forest
+step
   note Exarch Onaala wants you to return to the Ruins of Karabor and find a way to unleash Azaloth on his captors.
   kill Azaloth Credit Marker##21892 |q 10637 |goto Shadowmoon Valley 69.84,51.42
 step
@@ -485,7 +515,7 @@ step
   accept Sketh'lon Feathers##10780 |goto Shadowmoon Valley 35.42,42.15
 step
   note Gather 8 Sketh'lon Feathers and bring them to Parshah in the Magma Fields.
-  collect 8 Sketh'lon Feather##31324 |q 10780 |goto Shadowmoon Valley 43.75,57.52 |tip {dropsfrom}Sketh'lon Feather
+  collect 8 Sketh'lon Feather##31324 |q 10780 |goto Shadowmoon Valley 43.75,57.52
 step
   talk Borak, Son of Oronok##21293
   turnin What Illidan Wants, Illidan Gets...##10577 |goto Shadowmoon Valley 47.56,57.18
@@ -494,7 +524,8 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |tip {dropsfrom}Ruul the Darkener
+  kill Ruul the Darkener##21315 |goto Shadowmoon Valley 57.28,50.7 |elite
+  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7
 step
   talk Arcanist Thelis##21955
   turnin The Ashtongue Corruptors##10685 |goto Shadowmoon Valley 56.25,59.6
@@ -533,7 +564,7 @@ step
   accept I Was A Lot Of Things...##10514 |goto Shadowmoon Valley 53.95,23.52
 step
   note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
-  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52 |tip {dropsfrom}Shadowmoon Tuber
+  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52
 step
   talk Wing Commander Nuainn##21357
   turnin Blast the Infernals!##10564 |goto Shadowmoon Valley 39.5,53.73
@@ -572,7 +603,7 @@ step
   accept To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
-  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14 |tip {dropsfrom}Nethervine Crystal
+  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14
 step
   talk Sanoru##21826
   turnin The Warden's Cage##10575 |goto Shadowmoon Valley 57.33,49.58
@@ -716,7 +747,7 @@ step
   accept Of Thistleheads and Eggs...##10547 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51 |tip {dropsfrom}Rotten Arakkoa Egg
+  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51
 step
   talk Grom'tor, Son of Oronok##21291
   turnin The Cipher of Damnation - Grom'tor's Charge##10522 |goto Shadowmoon Valley 44.62,23.66
@@ -805,6 +836,12 @@ step
   talk Yarzill the Merc##23141
   accept Your Friend On The Inside##11019 |goto Shadowmoon Valley 66.0,86.47
 step
+  kill Arvoar the Rapacious##23267 |goto Shadowmoon Valley 74.19,86.39 |elite |tip Loot the quest item here — it starts the quest.
+  accept A Job Unfinished...##11041 |goto Shadowmoon Valley 74.19,86.39
+step
+  note Slay 10 Overmine Flayers and Barash the Den Mother. Return to Overlord Mor'ghor at the Dragonmaw Base Camp should you succeed.
+  kill Overmine Flayer##23264 |q 11041 |goto Shadowmoon Valley 72.59,85.62
+step
   talk Oronok Torn-heart##21183
   turnin The Cipher of Damnation - The Second Fragment Recovered##10541 |goto Shadowmoon Valley 53.95,23.52
 step
@@ -813,6 +850,9 @@ step
 step
   talk Yarzill the Merc##23141
   turnin Your Friend On The Inside##11019 |goto Shadowmoon Valley 66.0,86.47
+step
+  talk Overlord Mor'ghor##23139
+  turnin A Job Unfinished...##11041 |goto Shadowmoon Valley 66.3,85.56
 step
   talk Oronok Torn-heart##21183
   accept The Cipher of Damnation##10588 |goto Shadowmoon Valley 53.95,23.52

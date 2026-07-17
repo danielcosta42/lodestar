@@ -34,11 +34,8 @@ step
   talk Andarl##18252
   accept Magical Disturbances##10026 |goto Terokkar Forest 58.53,53.56
 step
-  talk Taela Everstride##18704
-  accept Torgos!##10035 |goto Terokkar Forest 58.1,53.42
-step
-  note Call down Torgos with Trachela's Carcass. Acquire a Tail Feather of Torgos and return it to Taela Everstride at the Allerian Stronghold in Terokkar Forest.
-  collect Tail Feather of Torgos##25852 |q 10035 |goto Terokkar Forest 58.1,53.42 |tip {dropsfrom}Torgos
+  click Wanted Poster##182587
+  accept Wanted: Bonelashers Dead!##10033 |goto Terokkar Forest 57.6,54.73
 step
   talk Lieutenant Gravelhammer##18713
   accept Speak with Private Weeks##10038 |goto Terokkar Forest 57.5,55.78
@@ -55,14 +52,14 @@ step
   note Severin wants you to venture into Skettis and retrieve 6 Shadow Dusts from the arakkoa that dwell there.
   collect 6 Shadow Dust##32388 |q 11004 |goto Terokkar Forest 69.85,79.32 |tip {dropsfrom}Skettis Wing Guard, Skettis Windwalker, Skettis Talonite
 step
-  talk Sky Commander Adaris##23038
-  accept An Ally in Lower City##11024 |goto Terokkar Forest 64.09,66.9
+  kill Talonpriest Ishaal##23066 |goto Terokkar Forest 69.0,78.54 |tip Loot the quest item here — it starts the quest.
+  accept Ishaal's Almanac##11021 |goto Terokkar Forest 69.0,78.54
 step
   talk Hazzik##23306
   accept Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
 step
   note Obtain Hazzik's Package at his dwelling in eastern Skettis and return to him with it.
-  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08 |tip {dropsfrom}Hazzik's Package
+  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08
 step
   talk Skyguard Handler Deesak##23415
   accept Hungry Nether Rays##11093 |goto Terokkar Forest 63.5,65.81
@@ -92,10 +89,19 @@ step
   accept Undercutting the Competition##10165 |goto Terokkar Forest 39.37,58.48
 step
   note Nexus-Prince Haramad located outside of the Mana-Tombs wants you to kill Nexus-Prince Shaffar and bring Shaffar's Wrappings back to him.
-  collect Shaffar's Wrappings##28490 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Nexus-Prince Shaffar, Nexus-Prince Shaffar (1)
+  collect Shaffar's Wrappings##28490 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |elite |tip {dropsfrom}Nexus-Prince Shaffar, Nexus-Prince Shaffar (1)
 step
   talk Artificer Morphalius##19670
   accept Safety Is Job One##10216 |goto Terokkar Forest 39.42,58.51
+step
+  kill Cabal Skirmisher##21661 |goto Terokkar Forest 37.89,56.0 |tip Loot the quest item here — it starts the quest.
+  accept Cabal Orders##10880 |goto Terokkar Forest 37.89,56.0
+step
+  note Kill 20 Bonelashers and then report to Taela Everstride at the Allerian Stronghold in Terokkar Forest.
+  kill Bonelasher##18470 |q 10033 |goto Terokkar Forest 43.89,54.84
+step
+  talk Mekeda##22370
+  turnin Cabal Orders##10880 |goto Terokkar Forest 37.84,51.84
 step
   talk Kirrik the Awakened##22272
   accept Veil Skith: Darkstone of Terokk##10839 |goto Terokkar Forest 37.45,51.54
@@ -137,7 +143,7 @@ step
   accept Terokk's Legacy##10098 |goto Terokkar Forest 44.07,64.96
 step
   note Bring Terokk's Mask, Terokk's Quill, and the Saga of Terokk to Isfar outside the Sethekk Halls.
-  collect The Saga of Terokk##27634 |q 10098 |goto Sethekk Halls - Dungeon -1,-1 |tip {dropsfrom}The Saga of Terokk
+  collect The Saga of Terokk##27634 |q 10098 |goto Sethekk Halls - Dungeon -1,-1
 step
   talk Scout Navrin##22364
   accept Taken in the Night##10873 |goto Terokkar Forest 31.44,75.66
@@ -168,9 +174,6 @@ step
 step
   note While in disguise, speak with the Shadowy Initiate, the Shadowy Laborer and the Shadowy Advisor. Then return to Private Weeks at Grangol'var Village in Terokkar Forest.
   get Who Are They? |q 10040 |goto Terokkar Forest 40.46,36.16
-step
-  talk Rilak the Redeemed##22292
-  turnin An Ally in Lower City##11024 |goto Shattrath City 52.54,21.01 |tip {turninat}Shattrath City
 step
   talk Rilak the Redeemed##22292
   turnin Speak with Rilak the Redeemed##10908 |goto Shattrath City 52.54,21.01 |tip {turninat}Shattrath City
@@ -222,6 +225,9 @@ step
   note Lieutenant Gravelhammer asks that you kill 14 Shienor Talonites and 6 Shienor Sorcerers and then return to him in Allerian Stronghold.
   kill Shienor Talonite##18449 |q 10869 |goto Terokkar Forest 50.89,19.63
 step
+  click Fel Orc Plans##182549
+  accept Fel Orc Plans##10012 |goto Terokkar Forest 67.92,53.56
+step
   note Kill 12 Warped Peons and then report to Theloria Shadecloak at Allerian Post.
   kill Warped Peon##18595 |q 9998 |goto Terokkar Forest 66.59,51.93
 step
@@ -244,13 +250,16 @@ step
   turnin What Are These Things?##9994 |goto Terokkar Forest 57.01,53.49
 step
   talk Bertelm##18387
+  turnin Fel Orc Plans##10012 |goto Terokkar Forest 58.3,54.75
+step
+  talk Bertelm##18387
   turnin Timber Worg Tails##10016 |goto Terokkar Forest 58.3,54.75
 step
   talk Andarl##18252
   turnin Magical Disturbances##10026 |goto Terokkar Forest 58.53,53.56
 step
   talk Taela Everstride##18704
-  turnin Torgos!##10035 |goto Terokkar Forest 58.1,53.42
+  turnin Wanted: Bonelashers Dead!##10033 |goto Terokkar Forest 58.1,53.42
 step
   turnin The Vengeful Harbinger##10842 |goto Terokkar Forest 50.88,54.75
 step
@@ -267,10 +276,19 @@ step
   accept Vessels of Power##10028 |goto Terokkar Forest 57.4,55.44
 step
   note Bring 8 Draenei Vessels to Ros'eleth at the Allerian Stronghold.
-  collect 8 Draenei Vessel##25841 |q 10028 |goto Terokkar Forest 53.21,30.45 |tip {dropsfrom}Draenei Vessel
+  collect 8 Draenei Vessel##25841 |q 10028 |goto Terokkar Forest 53.21,30.45
+step
+  talk Taela Everstride##18704
+  accept Torgos!##10035 |goto Terokkar Forest 58.1,53.42
+step
+  note Call down Torgos with Trachela's Carcass. Acquire a Tail Feather of Torgos and return it to Taela Everstride at the Allerian Stronghold in Terokkar Forest.
+  collect Tail Feather of Torgos##25852 |q 10035 |goto Terokkar Forest 58.1,53.42 |tip {dropsfrom}Torgos
 step
   talk Jenai Starwhisper##18459
   accept Report to the Allerian Post##10444 |goto Terokkar Forest 57.01,53.49
+step
+  talk Sky Commander Adaris##23038
+  turnin Ishaal's Almanac##11021 |goto Terokkar Forest 64.09,66.9
 step
   talk Hazzik##23306
   turnin Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
@@ -283,6 +301,9 @@ step
 step
   talk Sky Commander Adaris##23038
   accept Secrets of the Talonpriests##11005 |goto Terokkar Forest 64.09,66.9
+step
+  talk Sky Commander Adaris##23038
+  accept An Ally in Lower City##11024 |goto Terokkar Forest 64.09,66.9
 step
   talk Hazzik##23306
   accept A Shabby Disguise##11029 |goto Terokkar Forest 64.23,66.97
@@ -342,7 +363,7 @@ step
   accept Recover the Bones##10030 |goto Terokkar Forest 37.05,49.53
 step
   note Collect 10 Restless Bones. Deliver them to Ramdor the Mad, just off the western side of the Ring of Observance in Auchindoun, which is in the middle of the Bone Wastes of Terokkar Forest.
-  collect 10 Restless Bones##25842 |q 10030 |goto Terokkar Forest 39.84,61.97 |tip {dropsfrom}Restless Bones
+  collect 10 Restless Bones##25842 |q 10030 |goto Terokkar Forest 39.84,61.97
 step
   talk Kirrik the Awakened##22272
   accept Veil Rhaze: Unliving Evil##10848 |goto Terokkar Forest 37.45,51.54
@@ -392,6 +413,9 @@ step
   note Kill 10 Shadowy Executioners, 10 Shadowy Summoners and Shadowmaster Grieve, and then return to Lieutenant Gravelhammer at the Allerian Stronghold in Terokkar Forest.
   kill Shadowy Executioner##16519 |q 10042 |goto Terokkar Forest 39.01,40.92
 step
+  talk Rilak the Redeemed##22292
+  turnin An Ally in Lower City##11024 |goto Shattrath City 52.54,21.01 |tip {turninat}Shattrath City
+step
   talk Warden Treelos##18424
   turnin It's Watching You!##9951 |goto Terokkar Forest 43.44,22.36
 step
@@ -431,13 +455,13 @@ step
   accept Fresh From the Mechanar##10665 |goto Terokkar Forest 77.58,38.72
 step
   note David Wayne at Wayne's Retreat wants you to bring him an Overcharged Manacell.
-  collect Overcharged Manacell##30824 |q 10665 |goto Terokkar Forest 77.58,38.72 |tip {dropsfrom}Overcharged Manacell
+  collect Overcharged Manacell##30824 |q 10665 |goto Terokkar Forest 77.58,38.72
 step
   talk David Wayne##21465
   accept The Lexicon Demonica##10666 |goto Terokkar Forest 77.58,38.72
 step
   note Obtain the Lexicon Demonica from Grandmaster Vorpil and bring it to David Wayne at Wayne's Refuge.
-  collect Lexicon Demonica##30827 |q 10666 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Grandmaster Vorpil, Grandmaster Vorpil (1)
+  collect Lexicon Demonica##30827 |q 10666 |goto Shadow Labyrinth - Dungeon -1,-1 |elite |tip {dropsfrom}Grandmaster Vorpil, Grandmaster Vorpil (1)
 step
   note Kill 10 Firewing Defenders, 10 Firewing Bloodwarders, and 10 Firewing Warlocks. Then report back to Lieutenant Meridian at the Allerian Post in Terokkar Forest.
   kill Firewing Defender##5355 |q 9996 |goto Terokkar Forest 71.62,36.54
@@ -447,6 +471,9 @@ step
 step
   talk Ros'eleth##18390
   turnin Vessels of Power##10028 |goto Terokkar Forest 57.4,55.44
+step
+  talk Taela Everstride##18704
+  turnin Torgos!##10035 |goto Terokkar Forest 58.1,53.42
 step
   talk Lieutenant Gravelhammer##18713
   turnin Kill the Shadow Council!##10042 |goto Terokkar Forest 57.5,55.78
@@ -548,13 +575,13 @@ step
   accept Underworld Loam##10667 |goto Terokkar Forest 77.58,38.72
 step
   note Get a Vial of Underworld Loam from Hydromancer Thespia and bring it to David Wayne at Wayne's Refuge.
-  collect Vial of Underworld Loam##30828 |q 10667 |goto The Steamvault - Dungeon -1,-1 |tip {dropsfrom}Hydromancer Thespia, Hydromancer Thespia (1)
+  collect Vial of Underworld Loam##30828 |q 10667 |goto The Steamvault - Dungeon -1,-1 |elite |tip {dropsfrom}Hydromancer Thespia, Hydromancer Thespia (1)
 step
   talk David Wayne##21465
   accept Tear of the Earthmother##10670 |goto Terokkar Forest 77.58,38.72
 step
   note Recover the Tear of the Earthmother from Warbringer O'mrogg and return it to David Wayne at Wayne's Refuge.
-  collect Tear of the Earthmother##30829 |q 10670 |goto The Shattered Halls - Dungeon -1,-1 |tip {dropsfrom}Warbringer O'mrogg, Warbringer O'mrogg (1)
+  collect Tear of the Earthmother##30829 |q 10670 |goto The Shattered Halls - Dungeon -1,-1 |elite |tip {dropsfrom}Warbringer O'mrogg, Warbringer O'mrogg (1)
 step
   note Lieutenant Meridian wants you to use The Final Code to set off the Mana Bomb. Then report back to Jenai Starwhisper at the Allerian Stronghold in Terokkar Forest.
   kill Mana Bomb Kill Credit Trigger##21039 |q 10446 |goto Terokkar Forest 71.26,37.37

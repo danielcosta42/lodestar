@@ -76,7 +76,7 @@ step
   accept Dragonmaw Race: Wing Commander Ichman##11069 |goto Alterac Valley - Battleground 48.36,84.56
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
-  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14 |tip {dropsfrom}Nethervine Crystal
+  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14
 step
   talk Neltharaku##21657
   turnin To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98
@@ -158,6 +158,9 @@ step
 step
   talk Yarzill the Merc##23141
   accept Your Friend On The Inside##11019 |goto Shadowmoon Valley 66.0,86.47
+step
+  kill Arvoar the Rapacious##23267 |goto Shadowmoon Valley 74.19,86.39 |elite |tip Loot the quest item here — it starts the quest.
+  accept A Job Unfinished...##11041 |goto Shadowmoon Valley 74.19,86.39
 step
   note Taskmaster Varkule Dragonbreath at Dragonmaw Base Camp in Shadowmoon Valley wants you to bring him 30 Netherwing Crystals.
   collect Netherwing Crystal##32427 |q 11015 |goto Shadowmoon Valley 71.49,83.28 |tip {dropsfrom}Nethermine Flayer, Overmine Flayer, Arvoar the Rapacious

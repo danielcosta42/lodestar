@@ -18,18 +18,19 @@ step
   talk Al'tabim the All-Seeing##14903
   accept The Eye of Zuldazar##8049 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   talk Al'tabim the All-Seeing##14903
   accept The Pebble of Kajaro##8101 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   talk Al'tabim the All-Seeing##14903
   accept Kezan's Taint##8106 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   talk Maywiki of Zuldazar##14904
   accept Enchanted South Seas Kelp##8110 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   talk Maywiki of Zuldazar##14904
   accept Vision of Voodress##8116 |goto Stranglethorn Vale 15.3,16.02
 step
@@ -40,6 +41,9 @@ step
   only Hunter
   talk Falthir the Sightless##14905
   accept The Maelstrom's Tendril##8145 |goto Stranglethorn Vale 14.08,13.72
+step
+  kill Hakkar##14834 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip Loot the quest item here — it starts the quest.
+  accept The Heart of Hakkar##8183 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   talk Zanza the Restless##15042
   accept Presence of Might##8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
@@ -93,40 +97,40 @@ step
   accept The Savage Guard - Arcanum of Focus##9210 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
-  collect Zulian Coin##19698 |q 8195 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
+  collect Zulian Coin##19698 |q 8195 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |elite |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
 step
   note String 5 Channeler's Heads, then return the Collection of Troll Heads to Exzhal on Yojamba Isle.
   collect Gurubashi Head Collection##19880 |q 8201 |goto Stranglethorn Vale 15.26,15.5
 step
-  collect Gurubashi Coin##19701 |q 8238 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
+  collect Gurubashi Coin##19701 |q 8238 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |elite |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
 step
-  collect Sandfury Coin##19704 |q 8239 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
+  collect Sandfury Coin##19704 |q 8239 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |elite |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
 step
   note Zanza the Restless in Zul'Gurub wants an Arcanum of Protection.
   collect Arcanum of Protection##18331 |q 9208 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
@@ -149,18 +153,19 @@ step
   talk Al'tabim the All-Seeing##14903
   turnin The Eye of Zuldazar##8049 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   talk Al'tabim the All-Seeing##14903
   turnin The Pebble of Kajaro##8101 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   talk Al'tabim the All-Seeing##14903
   turnin Kezan's Taint##8106 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   talk Maywiki of Zuldazar##14904
   turnin Enchanted South Seas Kelp##8110 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   talk Maywiki of Zuldazar##14904
   turnin Vision of Voodress##8116 |goto Stranglethorn Vale 15.3,16.02
 step
@@ -238,18 +243,19 @@ step
   talk Al'tabim the All-Seeing##14903
   accept The Eye of Zuldazar##8050 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   talk Al'tabim the All-Seeing##14903
   accept The Pebble of Kajaro##8102 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   talk Al'tabim the All-Seeing##14903
   accept Kezan's Taint##8107 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   talk Maywiki of Zuldazar##14904
   accept Enchanted South Seas Kelp##8111 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   talk Maywiki of Zuldazar##14904
   accept Vision of Voodress##8117 |goto Stranglethorn Vale 15.3,16.02
 step
@@ -270,15 +276,16 @@ step
   only Priest
   collect The Eye of Zuldazar##19591 |q 8050 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   collect Pebble of Kajaro##19598 |q 8102 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   collect Kezan's Taint##19602 |q 8107 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   collect Enchanted South Seas Kelp##19610 |q 8111 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   collect Vision of Voodress##19606 |q 8117 |goto Stranglethorn Vale 15.3,16.02
 step
   only Rogue
@@ -299,18 +306,19 @@ step
   talk Al'tabim the All-Seeing##14903
   turnin The Eye of Zuldazar##8050 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   talk Al'tabim the All-Seeing##14903
   turnin The Pebble of Kajaro##8102 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   talk Al'tabim the All-Seeing##14903
   turnin Kezan's Taint##8107 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   talk Maywiki of Zuldazar##14904
   turnin Enchanted South Seas Kelp##8111 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   talk Maywiki of Zuldazar##14904
   turnin Vision of Voodress##8117 |goto Stranglethorn Vale 15.3,16.02
 step
@@ -334,18 +342,19 @@ step
   talk Al'tabim the All-Seeing##14903
   accept The Eye of Zuldazar##8051 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   talk Al'tabim the All-Seeing##14903
   accept The Pebble of Kajaro##8103 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   talk Al'tabim the All-Seeing##14903
   accept Kezan's Taint##8108 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   talk Maywiki of Zuldazar##14904
   accept Enchanted South Seas Kelp##8112 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   talk Maywiki of Zuldazar##14904
   accept Vision of Voodress##8118 |goto Stranglethorn Vale 15.3,16.02
 step
@@ -366,15 +375,16 @@ step
   only Priest
   collect The Eye of Zuldazar##19592 |q 8051 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   collect Pebble of Kajaro##19599 |q 8103 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   collect Kezan's Taint##19603 |q 8108 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   collect Enchanted South Seas Kelp##19611 |q 8112 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   collect Vision of Voodress##19607 |q 8118 |goto Stranglethorn Vale 15.3,16.02
 step
   only Rogue
@@ -395,18 +405,19 @@ step
   talk Al'tabim the All-Seeing##14903
   turnin The Eye of Zuldazar##8051 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   talk Al'tabim the All-Seeing##14903
   turnin The Pebble of Kajaro##8103 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   talk Al'tabim the All-Seeing##14903
   turnin Kezan's Taint##8108 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   talk Maywiki of Zuldazar##14904
   turnin Enchanted South Seas Kelp##8112 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   talk Maywiki of Zuldazar##14904
   turnin Vision of Voodress##8118 |goto Stranglethorn Vale 15.3,16.02
 step
@@ -430,18 +441,19 @@ step
   talk Al'tabim the All-Seeing##14903
   accept The All-Seeing Eye of Zuldazar##8052 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   talk Al'tabim the All-Seeing##14903
   accept The Jewel of Kajaro##8104 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   talk Al'tabim the All-Seeing##14903
   accept Kezan's Unstoppable Taint##8109 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   talk Maywiki of Zuldazar##14904
   accept Pristine Enchanted South Seas Kelp##8113 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   talk Maywiki of Zuldazar##14904
   accept The Unmarred Vision of Voodress##8119 |goto Stranglethorn Vale 15.3,16.02
 step
@@ -462,15 +474,16 @@ step
   only Priest
   collect The Eye of Zuldazar##19593 |q 8052 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   collect Pebble of Kajaro##19600 |q 8104 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   collect Kezan's Taint##19604 |q 8109 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   collect Enchanted South Seas Kelp##19612 |q 8113 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   collect Vision of Voodress##19608 |q 8119 |goto Stranglethorn Vale 15.3,16.02
 step
   only Rogue
@@ -491,18 +504,19 @@ step
   talk Al'tabim the All-Seeing##14903
   turnin The All-Seeing Eye of Zuldazar##8052 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Warlock
+  only Mage
   talk Al'tabim the All-Seeing##14903
   turnin The Jewel of Kajaro##8104 |goto Stranglethorn Vale 15.34,16.12
 step
-  only Druid
+  only Warlock
   talk Al'tabim the All-Seeing##14903
   turnin Kezan's Unstoppable Taint##8109 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Druid
   talk Maywiki of Zuldazar##14904
   turnin Pristine Enchanted South Seas Kelp##8113 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Mage
+  only Shaman
   talk Maywiki of Zuldazar##14904
   turnin The Unmarred Vision of Voodress##8119 |goto Stranglethorn Vale 15.3,16.02
 step

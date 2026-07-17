@@ -6,8 +6,12 @@ ns:RegisterGuide("Reputation/Alliance/Cenarion Expedition", {
 	author = "Lodestar Generator",
 }, [[
 step
+  only Druid
   talk Loganaar##12042
   accept Morthis Whisperwing##10955 |goto Moonglade 52.53,40.57
+step
+  kill Marauding Crust Burster##16857 |goto Hellfire Peninsula 47.92,63.19 |tip Loot the quest item here — it starts the quest.
+  accept Missing Missive##9373 |goto Hellfire Peninsula 47.92,63.19
 step
   talk Amaan the Wise##16796
   accept Helping the Cenarion Post##10443 |goto Hellfire Peninsula 23.42,36.54
@@ -27,11 +31,17 @@ step
   talk Ysiel Windsinger##17841
   accept Disturbance at Umbrafen Lake##9716 |goto Zangarmarsh 78.4,62.02
 step
+  kill Bloodscale Enchantress##18088 |goto Zangarmarsh 26.22,41.24 |tip Loot the quest item here — it starts the quest.
+  accept Drain Schematics##9731 |goto Zangarmarsh 26.22,41.24
+step
   talk Kayra Longmane##17969
   accept Escape from Umbrafen##9752 |goto Zangarmarsh 83.38,85.54
 step
   talk Lauranna Thar'well##17909
   accept Plants of Zangarmarsh##9802 |goto Zangarmarsh 80.32,64.17
+step
+  click Wanted Poster##182115
+  accept Leader of the Bloodscale##9817 |goto Zangarmarsh 79.08,64.88
 step
   talk Lethyn Moonfire##17834
   accept What's Wrong at Cenarion Thicket?##9957 |goto Zangarmarsh 78.53,63.15
@@ -48,14 +58,23 @@ step
   talk Tola'thion##19293
   accept Colossal Menace##10132 |goto Hellfire Peninsula 15.62,52.04
 step
+  kill Raging Colossus##19188 |goto Hellfire Peninsula 15.38,42.29 |elite |tip Loot the quest item here — it starts the quest.
+  accept Crimson Crystal Clue##10134 |goto Hellfire Peninsula 15.38,42.29
+step
   talk Mahuram Stouthoof##16888
   accept Keep Thornfang Hill Clear!##10159 |goto Hellfire Peninsula 15.94,52.17
+step
+  click Wanted Poster##182115
+  accept Leader of the Darkcrest##9730 |goto Zangarmarsh 79.08,64.88
 step
   talk Ysiel Windsinger##17841
   accept Warden Hamoot##9778 |goto Zangarmarsh 78.4,62.02
 step
   talk Windcaller Blackhoof##18070
   accept Blessings of the Ancients##9785 |goto Zangarmarsh 80.37,64.73
+step
+  kill "Count" Ungula##18285 |goto Zangarmarsh 32.81,59.53 |tip Loot the quest item here — it starts the quest.
+  accept The Count of the Marshes##9911 |goto Zangarmarsh 32.81,59.53
 step
   talk Warden Treelos##18424
   accept It's Watching You!##9951 |goto Terokkar Forest 43.44,22.36
@@ -69,6 +88,9 @@ step
   talk Tree Warden Chawn##22007
   accept A Time for Negotiation...##10682 |goto Blade's Edge Mountains 61.98,39.48
 step
+  kill Wyrmcult Poacher##21809 |goto Blade's Edge Mountains 61.57,36.36 |tip Loot the quest item here — it starts the quest.
+  accept Did You Get The Note?##10719 |goto Blade's Edge Mountains 61.57,36.36
+step
   talk Faradrella##22133
   accept Culling the Wild##10753 |goto Blade's Edge Mountains 62.56,38.26
 step
@@ -78,11 +100,17 @@ step
   talk Mosswood the Ancient##22053
   accept From the Ashes##10771 |goto Blade's Edge Mountains 61.25,38.45
 step
+  kill Fel Corrupter##21300 |goto Blade's Edge Mountains 71.44,33.06 |tip Loot the quest item here — it starts the quest.
+  accept Damaged Mask##10810 |goto Blade's Edge Mountains 71.44,33.06
+step
   talk Aurine Moonblaze##20871
   accept Flora of the Eco-Domes##10426 |goto Netherstorm 42.32,32.56
 step
   talk Watcher Jhang##17884
   accept The Warlord's Hideout##9763 |goto Zangarmarsh 52.29,35.98
+step
+  kill Coilfang Engineer##17721 |goto The Steamvault - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Orders from Lady Vashj##9764 |goto The Steamvault - Dungeon -1,-1
 step
   talk Apothecary Antonivich##16588
   accept Master of Potions##10905 |goto Hellfire Peninsula 52.28,36.46
@@ -168,6 +196,7 @@ step
   note Nether-Stalker Mah'duun has asked you to slay 14 Coilfang Myrmidons. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Coilfang Myrmidon##17800 |q 11371 |goto The Steamvault - Dungeon -1,-1 |elite
 step
+  only Druid
   talk Morthis Whisperwing##22832
   turnin Morthis Whisperwing##10955 |goto Zangarmarsh 80.18,65.15
 step
@@ -291,6 +320,7 @@ step
   talk Nether-Stalker Mah'duun##24370
   turnin Wanted: Coilfang Myrmidons##11371 |goto Shattrath City 75.5,37.24
 step
+  only Druid
   talk Morthis Whisperwing##22832
   accept The Ward of Wakening##10961 |goto Zangarmarsh 80.18,65.15
 step
@@ -348,11 +378,12 @@ step
   talk Lauranna Thar'well##17909
   accept Master of Potions##10897 |goto Zangarmarsh 80.32,64.17
 step
+  only Druid
   note Bring 10 Bogblossoms, 10 Ancient Lichen, and 10 Dreaming Glory to Morthis Whisperwing at the Cenarion Refuge.
-  collect 10 Bogblossom##31950 |q 10961 |goto Zangarmarsh 80.18,65.15 |tip {dropsfrom}Bogblossom
+  collect 10 Bogblossom##31950 |q 10961 |goto Zangarmarsh 80.18,65.15
 step
   note Look for Ikeyen's Belongings inside a cave south of Umbrafen. Return them to Ikeyen at Cenarion Refuge in Zangarmarsh.
-  collect Ikeyen's Belongings##24411 |q 9788 |goto Zangarmarsh 70.49,97.94 |tip {dropsfrom}Ikeyen's Belongings
+  collect Ikeyen's Belongings##24411 |q 9788 |goto Zangarmarsh 70.49,97.94
 step
   note Kill Lord Klaq and return to Windcaller Blackhoof at the Cenarion Refuge.
   kill Lord Klaq##18282 |q 9894 |goto Zangarmarsh 72.24,93.89
@@ -364,7 +395,8 @@ step
   use Dreadtusk##16992 |q 10255 |tip {useit}
 step
   note Warden Hamoot at the Cenarion Refuge wants you to bring him 30 Naga Claws.
-  collect Naga Claws##24280 |q 9728 |goto Zangarmarsh 65.15,40.91 |tip {dropsfrom}Rajis Fyashe, Rajah Haghazed, Darkcrest Taskmaster
+  kill Rajis Fyashe##18044 |goto Zangarmarsh 65.15,40.91 |elite
+  collect Naga Claws##24280 |q 9728 |goto Zangarmarsh 65.15,40.91
 step
   collect Unidentified Plant Parts##24401 |q 9784 |goto Zangarmarsh 62.13,67.45 |tip {dropsfrom}Darkcrest Taskmaster, Darkcrest Siren, Bloodscale Enchantress
 step
@@ -378,11 +410,12 @@ step
   get Creatures of the Eco-Domes |q 10427 |goto Netherstorm 43.82,38.26
 step
   note Obtain Coilfang Armaments from naga at Coilfang Reservoir and return them to Ysiel Windsinger at the Cenarion Refuge in Zangarmarsh.
-  collect Coilfang Armaments##24368 |q 9765 |goto The Steamvault - Dungeon -1,-1 |tip {dropsfrom}Coilfang Engineer, Coilfang Sorceress, Coilfang Myrmidon
+  collect Coilfang Armaments##24368 |q 9765 |goto The Steamvault - Dungeon -1,-1 |elite |tip {dropsfrom}Coilfang Engineer, Coilfang Sorceress, Coilfang Myrmidon
 step
   note Lauranna Thar'well wants you to go to the Botanica in Tempest Keep and retrieve the Botanist's Field Guide from High Botanist Freywinn. In addition she also wants you to bring her 5 Super Healing Potions, 5 Super Mana Potions and 5 Major Dreamless Sleep Potions.
   collect Botanist's Field Guide##31744 |q 10897 |goto Zangarmarsh 80.32,64.17 |tip {dropsfrom}High Botanist Freywinn, High Botanist Freywinn (1)
 step
+  only Druid
   talk Morthis Whisperwing##22832
   turnin The Ward of Wakening##10961 |goto Zangarmarsh 80.18,65.15
 step
@@ -440,6 +473,7 @@ step
   talk Lauranna Thar'well##17909
   turnin Master of Potions##10897 |goto Zangarmarsh 80.32,64.17
 step
+  only Druid
   talk Morthis Whisperwing##22832
   accept Waking the Sleeper##10964 |goto Zangarmarsh 80.18,65.15
 step
@@ -474,7 +508,7 @@ step
   kill Goliathon##19305 |q 10351 |elite
 step
   note Collect 10 pieces of Discarded Nutriment and then return to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
-  collect 10 Discarded Nutriment##24233 |q 9702 |goto Zangarmarsh 30.2,63.94 |tip {dropsfrom}Discarded Nutriment
+  collect 10 Discarded Nutriment##24233 |q 9702 |goto Zangarmarsh 30.2,63.94
 step
   note Ysiel Windsinger wants you to use the Ironvine Seeds on the Steam Pump Controls at Serpent Lake, Umbrafen Lake, Marshlight Lake and the Lagoon. Then return to her at the Cenarion Refuge in Zangarmarsh with any leftover seeds you have.
   get Balance Must Be Preserved |q 9720 |goto Zangarmarsh 70.6,80.29
@@ -485,8 +519,9 @@ step
   note Aurine Moonblaze at the Stormspire wants you to bring her a Hulking Hydra Heart.
   collect Hulking Hydra Heart##29768 |q 10429 |goto Netherstorm 44.56,28.42 |tip {dropsfrom}Markaru
 step
-  collect Coilfang Armaments##24368 |q 9766 |goto The Steamvault - Dungeon -1,-1 |tip {dropsfrom}Coilfang Engineer, Coilfang Sorceress, Coilfang Myrmidon
+  collect Coilfang Armaments##24368 |q 9766 |goto The Steamvault - Dungeon -1,-1 |elite |tip {dropsfrom}Coilfang Engineer, Coilfang Sorceress, Coilfang Myrmidon
 step
+  only Druid
   talk Clintar Dreamwalker##22834
   turnin Waking the Sleeper##10964 |goto Moonglade 75.46,67.04
 step
@@ -516,6 +551,7 @@ step
   talk Ysiel Windsinger##17841
   turnin Coilfang Armaments##9766 |goto Zangarmarsh 78.4,62.02
 step
+  only Druid
   talk Clintar Dreamwalker##22834
   accept No Mere Dream##10965 |goto Moonglade 75.46,67.04
 step
@@ -531,6 +567,10 @@ step
   talk Watcher Moonshade##22386
   accept Meeting at the Blackwing Coven##10722 |goto Blade's Edge Mountains 50.03,35.95
 step
+  click Legion Communicator##185165
+  accept Deceive thy Enemy##10820 |goto Blade's Edge Mountains 73.27,40.03
+step
+  only Druid
   note Protect Clintar Dreamwalker's Spirit while it gathers the relics of Aviana, then speak to Dreamwarden Lurosa.
   kill Clintar Dreamwalker's Spirit##22916 |q 10965 |goto Moonglade 75.41,67.04
 step
@@ -543,6 +583,7 @@ step
   note Kill 4 Doomforge Attendants and 4 Doomforge Engineers.
   kill Doomforge Attendant##19961 |q 10820 |goto Blade's Edge Mountains 74.29,38.51
 step
+  only Druid
   talk Dreamwarden Lurosa##22837
   turnin No Mere Dream##10965 |goto Moonglade 72.47,63.27
 step
@@ -560,6 +601,7 @@ step
 step
   turnin Deceive thy Enemy##10820 |goto Blade's Edge Mountains 73.27,40.03
 step
+  only Druid
   talk Dreamwarden Lurosa##22837
   accept Return to Morthis Whisperwing##10978 |goto Moonglade 72.47,63.27
 step
@@ -575,11 +617,14 @@ step
   talk Tree Warden Chawn##22007
   accept Maxnar Must Die!##10748 |goto Blade's Edge Mountains 61.98,39.48
 step
+  click Legion Communicator##185165
+  accept You're Fired!##10821 |goto Blade's Edge Mountains 73.27,40.03
+step
   note Collect 10 Boxes of Mushrooms and return them to Watcher Leesa'oh at the Cenarion Watchpost in Zangarmarsh.
   collect 10 Box of Mushrooms##24240 |q 9709 |goto Zangarmarsh 18.89,7.03 |tip {dropsfrom}Ango'rosh Mauler, Ango'rosh Souleater, Overlord Gorefist
 step
   note Find the Sealed Box and then deliver it to Earthbinder Tavgren just outside of the Cenarion Thicket in Terokkar Forest.
-  collect Sealed Box##25727 |q 9990 |goto Terokkar Forest 54.0,30.0 |tip {dropsfrom}Sealed Box
+  collect Sealed Box##25727 |q 9990 |goto Terokkar Forest 54.0,30.0
 step
   note Discover what happened to Earthbinder Rayge, Naturalist Bite, Weeder Greenthumb, and Windcaller Claw. Then, return to Watcher Jhang at Coilfang Reservoir in Zangarmarsh.
   kill Earthbinder Rayge##17885 |q 9738 |goto The Underbog - Dungeon -1,-1
@@ -590,6 +635,7 @@ step
   note Kill Doomcryer and report back to Wildlord Antelarion in Evergrove.
   kill Doomcryer##19963 |q 10821 |elite
 step
+  only Druid
   talk Morthis Whisperwing##22832
   turnin Return to Morthis Whisperwing##10978 |goto Zangarmarsh 80.18,65.15
 step
@@ -608,6 +654,7 @@ step
   talk Wildlord Antelarion##22127
   turnin You're Fired!##10821 |goto Blade's Edge Mountains 62.31,40.05
 step
+  only Druid
   talk Morthis Whisperwing##22832
   accept To the Evergrove##10979 |goto Zangarmarsh 80.18,65.15
 step
@@ -617,6 +664,7 @@ step
   talk Wildlord Antelarion##22127
   accept Death's Door##10910 |goto Blade's Edge Mountains 62.31,40.05
 step
+  only Druid
   talk Arthorn Windsong##22924
   turnin To the Evergrove##10979 |goto Blade's Edge Mountains 61.47,38.27
 step
@@ -626,6 +674,7 @@ step
   talk Evergrove Druid##22423
   turnin Death's Door##10910 |goto Blade's Edge Mountains 63.52,65.29
 step
+  only Druid
   talk Arthorn Windsong##22924
   accept The Book of the Raven##10980 |goto Blade's Edge Mountains 61.47,38.27
 step
@@ -635,12 +684,14 @@ step
   talk Evergrove Druid##22423
   accept Harvesting the Fel Ammunition##10904 |goto Blade's Edge Mountains 63.52,65.29
 step
+  only Druid
   note Use an Aether Ray Eye with your Seer's Stone to reveal the raven cult ghosts. Search the Vortex Pinnacle for the spirit of Sai'kkal the Elder and question him about the book of the raven, then return to Arthorn Windsong.
   kill Sai'kkal the Elder##22932 |q 10980 |goto Blade's Edge Mountains 29.54,59.72
 step
   note The Evergrove Druid has asked you to collect 5 Fel Cannonballs. Once you have done so, use the Druid Signal to call to the Evergrove Druid inside of Death's Door at the Blade's Edge Mountains.
   collect 5 Fel Cannonball##31757 |q 10904 |goto Blade's Edge Mountains 64.01,71.7 |tip {dropsfrom}Deathforge Over-Smith, Deathforge Technician, Death's Watch
 step
+  only Druid
   talk Arthorn Windsong##22924
   turnin The Book of the Raven##10980 |goto Blade's Edge Mountains 61.47,38.27
 step
@@ -650,6 +701,7 @@ step
   talk Evergrove Druid##22423
   turnin Harvesting the Fel Ammunition##10904 |goto Blade's Edge Mountains 63.52,65.29
 step
+  only Druid
   talk Arthorn Windsong##22924
   accept Eyes in the Sky##10986 |goto Blade's Edge Mountains 61.47,38.27
 step
@@ -665,6 +717,7 @@ step
   note Use the Naturalized Ammunition to take control of the Death's Door Fel Cannons. Use them to destroy both the South Warp-Gate and the North Warp-Gate. Then, use the Druid Signal to call out to an Evergrove Druid to report your success.
   get Fire At Will! |q 10911 |goto Blade's Edge Mountains 63.52,65.29
 step
+  only Druid
   talk Watcher Elaira##22981
   turnin Eyes in the Sky##10986 |goto Nagrand 20.58,35.73
 step
@@ -674,6 +727,7 @@ step
   talk Evergrove Druid##22423
   turnin Fire At Will!##10911 |goto Blade's Edge Mountains 63.52,65.29
 step
+  only Druid
   talk Watcher Elaira##22981
   accept To Catch A Sparrowhawk##10987 |goto Nagrand 20.58,35.73
 step
@@ -683,6 +737,7 @@ step
   talk Evergrove Druid##22423
   accept The Hound-Master##10912 |goto Blade's Edge Mountains 63.52,65.29
 step
+  only Druid
   note Use the Sparrowhawk Net to capture a Wild Sparrowhawk and bring it to Watcher Elaira on the Twilight Ridge.
   collect Captive Sparrowhawk##32320 |q 10987 |goto Nagrand 20.58,35.73
 step
@@ -692,6 +747,7 @@ step
   note The Evergrove Druid has told you that the final thing you must do is to slay Baelmon the Hound-Master. Afterward, return to Evergrove in the Blade's Edge Mountains, and inform Wildlord Antelarion of your success.
   kill Baelmon the Hound-Master##19747 |q 10912 |goto Blade's Edge Mountains 63.04,60.41 |elite
 step
+  only Druid
   talk Watcher Elaira##22981
   turnin To Catch A Sparrowhawk##10987 |goto Nagrand 20.58,35.73
 step
@@ -701,69 +757,89 @@ step
   talk Wildlord Antelarion##22127
   turnin The Hound-Master##10912 |goto Blade's Edge Mountains 62.31,40.05
 step
+  only Druid
   talk Watcher Elaira##22981
   accept The Raven Stones##10988 |goto Nagrand 20.58,35.73
 step
   talk Jenai Starwhisper##18459
   accept Letting Earthbinder Tavgren Know##10005 |goto Terokkar Forest 57.01,53.49
 step
+  only Druid
   note Gather 8 Raven Stones from Skettis and bring them to Arthorn Windsong at Evergrove in Blade's Edge Mountains.
   collect 8 Raven Stone##32313 |q 10988 |goto Terokkar Forest 69.29,81.1 |tip {dropsfrom}Raven Stone Fragment
 step
+  only Druid
   talk Arthorn Windsong##22924
   turnin The Raven Stones##10988 |goto Blade's Edge Mountains 61.47,38.27
 step
   talk Earthbinder Tavgren##18446
   turnin Letting Earthbinder Tavgren Know##10005 |goto Terokkar Forest 44.33,26.31
 step
+  only Druid
   talk Arthorn Windsong##22924
   accept The Eagle's Essence##10990 |goto Blade's Edge Mountains 61.47,38.27
 step
+  only Druid
   note Defeat the Guardian of the Eagle and obtain the Essence of the Eagle. Use Arthorn's Sparrowhawk Whistle to call Arthorn's Sparrowhawk to relay news of your success.
   collect Essence of the Eagle##32355 |q 10990 |goto Blade's Edge Mountains 61.47,38.27 |tip {dropsfrom}Guardian of the Eagle
 step
+  only Druid
   talk Arthorn's Sparrowhawk##23338
   turnin The Eagle's Essence##10990
 step
+  only Druid
   talk Arthorn's Sparrowhawk##23338
   accept The Falcon's Essence##10991
 step
+  only Druid
   note Defeat the Guardian of the Falcon, obtain the Essence of the Falcon. Use Arthorn's Sparrowhawk Whistle to call Arthorn's Sparrowhawk to relay news of your success.
   collect Essence of the Falcon##32357 |q 10991 |tip {dropsfrom}Guardian of the Falcon
 step
+  only Druid
   talk Arthorn's Sparrowhawk##23338
   turnin The Falcon's Essence##10991
 step
+  only Druid
   talk Arthorn's Sparrowhawk##23338
   accept The Hawk's Essence##10992
 step
+  only Druid
   note Defeat the Guardian of the Hawk and bring the Essence of the Hawk to Arthorn Windsong at the Evergrove.
   collect Essence of the Hawk##32356 |q 10992 |tip {dropsfrom}Guardian of the Hawk
 step
+  only Druid
   talk Arthorn Windsong##22924
   turnin The Hawk's Essence##10992 |goto Blade's Edge Mountains 61.47,38.27
 step
+  only Druid
   talk Arthorn Windsong##22924
   accept Return to Cenarion Refuge##10993 |goto Blade's Edge Mountains 61.47,38.27
 step
+  only Druid
   talk Morthis Whisperwing##22832
   turnin Return to Cenarion Refuge##10993 |goto Zangarmarsh 80.18,65.15
 step
+  only Druid
   talk Morthis Whisperwing##22832
   accept Chasing the Moonstone##10994 |goto Zangarmarsh 80.18,65.15
 step
+  only Druid
   note Bring a Southfury Moonstone to Morthis Whisperwing at the Cenarion Refuge.
   collect Southfury Moonstone##32364 |q 10994 |goto Zangarmarsh 80.18,65.15
 step
+  only Druid
   talk Morthis Whisperwing##22832
   turnin Chasing the Moonstone##10994 |goto Zangarmarsh 80.18,65.15
 step
+  only Druid
   talk Morthis Whisperwing##22832
   accept Vanquish the Raven God##11001 |goto Zangarmarsh 80.18,65.15
 step
+  only Druid
   note Slay the Raven God and return to Morthis Whisperwing at Cenarion Refuge.
   kill Anzu##23035 |q 11001 |elite
 step
+  only Druid
   talk Morthis Whisperwing##22832
   turnin Vanquish the Raven God##11001 |goto Zangarmarsh 80.18,65.15
 ]])

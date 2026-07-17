@@ -6,8 +6,14 @@ ns:RegisterGuide("Events/Horde/Blade's Edge Mountains (Eventos)", {
 	author = "Lodestar Generator",
 }, [[
 step
+  kill Bladespire Brute##19995 |goto Blade's Edge Mountains 43.35,52.71 |tip Loot the quest item here — it starts the quest.
+  accept Thunderlord Clan Artifacts##10524 |goto Blade's Edge Mountains 43.35,52.71
+step
   talk Tree Warden Chawn##22007
   accept A Time for Negotiation...##10682 |goto Blade's Edge Mountains 61.98,39.48
+step
+  kill Wyrmcult Poacher##21809 |goto Blade's Edge Mountains 61.57,36.36 |tip Loot the quest item here — it starts the quest.
+  accept Did You Get The Note?##10719 |goto Blade's Edge Mountains 61.57,36.36
 step
   talk Commander Ameer##20448
   accept A Mission of Mercy##10970 |goto Netherstorm 59.5,32.38
@@ -22,16 +28,20 @@ step
   accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve the Thunderlord Clan Drum, Thunderlord Clan Arrow and the Thunderlord Clan Tablet. Return them, along with the Thunderlord Clan Artifact, to Rokgah Bloodgrip at Thunderlord Stronghold in the Blade's Edge Mountains.
-  collect Thunderlord Clan Arrow##30433 |q 10524 |goto Blade's Edge Mountains 41.54,52.66 |tip {dropsfrom}Thunderlord Clan Arrow
+  collect Thunderlord Clan Arrow##30433 |q 10524 |goto Blade's Edge Mountains 41.54,52.66
 step
   note Recover the Salvaged Ethereum Prison Key for Commander Ameer at the Protectorate Watch Post in Netherstorm.
   collect Salvaged Ethereum Prison Key##31956 |q 10970 |goto Netherstorm 56.71,38.2 |tip {dropsfrom}Ethereum Assassin, Ethereum Shocktrooper, Nexus-King Salhadaar
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Maggoc's Treasure Chest##32380 |q 10996 |goto Blade's Edge Mountains 58.59,60.8 |tip {dropsfrom}Maggoc's Treasure Chest
+  kill Maggoc##20600 |goto Blade's Edge Mountains 58.59,60.8 |elite
+  click Maggoc's Treasure Chest##185569 |tip {spawnsafter}Maggoc
+  collect Maggoc's Treasure Chest##32380 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Slaag's Standard##32382 |q 10997 |goto Terokkar Forest 20.17,18.1 |tip {dropsfrom}Slaag's Standard
+  kill Slaag##22199 |goto Terokkar Forest 20.17,18.1 |elite
+  click Slaag's Standard##185574 |tip {spawnsafter}Slaag
+  collect Slaag's Standard##32382 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
   talk Rokgah Bloodgrip##21311
   turnin Thunderlord Clan Artifacts##10524 |goto Blade's Edge Mountains 52.8,58.96
@@ -70,7 +80,8 @@ step
   collect Ethereum Prisoner I.D. Tag##31957 |q 10971 |goto Netherstorm 59.5,32.38 |tip {dropsfrom}Porfus the Gem Gorger, Armbreaker Huffaz, Fel Tinkerer Zortan
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Grulloc's Dragon Skull##32379 |q 10995 |goto Blade's Edge Mountains 60.92,47.61 |tip {dropsfrom}Grulloc, Grulloc's Dragon Skull
+  kill Grulloc##20216 |goto Blade's Edge Mountains 60.92,47.61 |elite
+  collect Grulloc's Dragon Skull##32379 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
   talk Rokgah Bloodgrip##21311
   turnin Vision Guide##10525 |goto Blade's Edge Mountains 52.8,58.96
@@ -100,7 +111,7 @@ step
   collect Ethereum Prison Key##29460 |q 10973 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Ethereal Scavenger, Ethereal Crypt Raider, Ethereal Spellbinder
 step
   note You must retrieve Vim'gol's Vile Grimoire. Deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Vim'gol's Vile Grimoire##32358 |q 10998 |goto Blade's Edge Mountains 55.49,44.86 |tip {dropsfrom}Vim'gol's Vile Grimoire
+  collect Vim'gol's Vile Grimoire##32358 |q 10998 |goto Blade's Edge Mountains 55.49,44.86
 step
   talk Watcher Moonshade##22386
   turnin Longtail is the Lynchpin##10893 |goto Blade's Edge Mountains 50.03,35.95
@@ -124,7 +135,7 @@ step
   collect Evidence from Alpha##32061 |q 10974 |goto Netherstorm 59.5,32.38 |tip {dropsfrom}Thuk the Defiant
 step
   note Retrieve Skulloc's Soul and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Skulloc's Soul##32383 |q 11000 |goto Blade's Edge Mountains 55.49,44.86 |tip {dropsfrom}Skulloc's Soul
+  collect Skulloc's Soul##32383 |q 11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   talk Tree Warden Chawn##22007
   turnin Meeting at the Blackwing Coven##10722 |goto Blade's Edge Mountains 61.98,39.48

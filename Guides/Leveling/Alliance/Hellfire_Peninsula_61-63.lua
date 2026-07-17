@@ -10,6 +10,9 @@ step
   note {fp}Flightmaster Krill Bitterhue
   goto Hellfire Peninsula 54.68,62.35 |tip {vendor}
 step
+  kill Marauding Crust Burster##16857 |goto Hellfire Peninsula 47.92,63.19 |tip Loot the quest item here — it starts the quest.
+  accept Missing Missive##9373 |goto Hellfire Peninsula 47.92,63.19
+step
   talk Field Commander Romus##16830
   accept Pride of the Fel Horde##9493 |goto Hellfire Peninsula 56.84,62.72
 step
@@ -20,7 +23,7 @@ step
   accept The Blood is Life##9589 |goto Hellfire Peninsula 56.4,66.66
 step
   note Collect 10 Fel Orc Blood Vials and return them to Gunny at Honor Hold in Hellfire Peninsula.
-  collect 10 Fel Orc Blood Vial##23894 |q 9589 |goto The Blood Furnace - Dungeon -1,-1 |tip {dropsfrom}Laughing Skull Enforcer, Shadowmoon Warlock, Keli'dan the Breaker
+  collect 10 Fel Orc Blood Vial##23894 |q 9589 |goto The Blood Furnace - Dungeon -1,-1 |elite |tip {dropsfrom}Laughing Skull Enforcer, Shadowmoon Warlock, Keli'dan the Breaker
 step
   talk Warp-Scryer Kryv##16839
   accept The Path of Glory##10047 |goto Hellfire Peninsula 56.69,66.52
@@ -38,19 +41,13 @@ step
   accept An Old Gift##10058 |goto Hellfire Peninsula 54.29,63.58
 step
   note Retrieve Mysteries of the Light and return it to Father Malgor Devidicus at Honor Hold.
-  collect Mysteries of the Light##25938 |q 10058 |goto Hellfire Peninsula 54.96,86.81 |tip {dropsfrom}Mysteries of the Light
+  collect Mysteries of the Light##25938 |q 10058 |goto Hellfire Peninsula 54.96,86.81
 step
   talk Force Commander Danath Trollbane##16819
   accept The Legion Reborn##10141 |goto Hellfire Peninsula 56.64,66.7
 step
   talk Force Commander Danath Trollbane##16819
   accept Know your Enemy##10160 |goto Hellfire Peninsula 56.64,66.7
-step
-  talk Warp-Scryer Kryv##16839
-  accept The Heart of Darkness##10399 |goto Hellfire Peninsula 56.69,66.52
-step
-  talk Force Commander Danath Trollbane##16819
-  accept Overlord##10400 |goto Hellfire Peninsula 56.64,66.7
 step
   talk Lieutenant Amadi##16820
   accept Fel Orc Scavengers##10482 |goto Hellfire Peninsula 50.91,60.19
@@ -68,7 +65,7 @@ step
   accept In Case of Emergency...##10161 |goto Hellfire Peninsula 49.15,74.86
 step
   note Collect 30 pieces of Zeppelin Debris and bring them to "Screaming" Screed Luckheed at the Zeppelin Crash.
-  collect 30 Zeppelin Debris##28116 |q 10161 |goto Hellfire Peninsula 61.31,71.15 |tip {dropsfrom}Zeppelin Debris
+  collect 30 Zeppelin Debris##28116 |q 10161 |goto Hellfire Peninsula 61.31,71.15
 step
   note Honor Guard Wesilow wants you to defeat 12 Unyielding Footmen, 10 Unyielding Sorcerers, and 5 Unyielding Knights at the Expedition Armory to the south.
   kill Unyielding Footman##16904 |q 10050 |goto Hellfire Peninsula 55.38,78.36
@@ -88,11 +85,8 @@ step
   note Find 6 Shredder Parts and return to Foreman Razelcraz by the mine northwest of Thrallmar.
   collect 6 Shredder Spare Parts##28554 |q 10236 |goto Hellfire Peninsula 47.97,41.71 |tip {dropsfrom}Shredder Parts
 step
-  note Kill 10 Terrorfiends in the Pools of Aggonar and return to Warp-Scryer Kryv in the main keep of Honor Hold.
-  kill Terrorfiend##16951 |q 10399 |goto Hellfire Peninsula 40.05,32.89
-step
-  note Slay Arazzius the Cruel in the Pools of Aggonar and return to Force Commander Danath Trollbane in the keep of Honor Hold.
-  kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55 |elite
+  kill Warbringer Arix'Amal##19298 |goto Hellfire Peninsula 53.09,26.47 |tip Loot the quest item here — it starts the quest.
+  accept The Dark Missive##10395 |goto Hellfire Peninsula 53.09,26.47
 step
   talk Elsaana##17006
   accept An Ambitious Plan##9383 |goto Hellfire Peninsula 23.21,36.66
@@ -116,13 +110,23 @@ step
   accept The Rock Flayer Matriarch##9490 |goto Hellfire Peninsula 23.09,40.22
 step
   note Obtain Blacktalon's Claws from Blacktalon the Savage at the Great Fissure and bring it to Ikan at the Temple of Telhamat in Hellfire Peninsula.
-  collect Blacktalon's Claws##23687 |q 9490 |goto Hellfire Peninsula 33.37,65.08 |tip {dropsfrom}Blacktalon the Savage
+  kill Blacktalon the Savage##17057 |goto Hellfire Peninsula 33.37,65.08 |elite
+  collect Blacktalon's Claws##23687 |q 9490 |goto Hellfire Peninsula 33.37,65.08
+step
+  kill Raging Colossus##19188 |goto Hellfire Peninsula 15.38,42.29 |elite |tip Loot the quest item here — it starts the quest.
+  accept Crimson Crystal Clue##10134 |goto Hellfire Peninsula 15.38,42.29
 step
   talk Amaan the Wise##16796
   accept Helping the Cenarion Post##10443 |goto Hellfire Peninsula 23.42,36.54
 step
   note Field Commander Romus at Honor Hold wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
   kill Shattered Hand Legionnaire##16700 |q 9493 |goto The Shattered Halls - Dungeon -1,-1 |elite
+step
+  talk Tola'thion##19293
+  turnin Crimson Crystal Clue##10134 |goto Hellfire Peninsula 15.62,52.04
+step
+  talk Thiah Redmane##16991
+  turnin Missing Missive##9373 |goto Hellfire Peninsula 15.7,52.09
 step
   talk Thiah Redmane##16991
   turnin Helping the Cenarion Post##10443 |goto Hellfire Peninsula 15.7,52.09
@@ -175,6 +179,9 @@ step
   talk Gremni Longbeard##16850
   accept The Arakkoa Threat##9417 |goto Hellfire Peninsula 23.89,72.17
 step
+  kill Avruu##17084 |goto Hellfire Peninsula 25.66,76.4 |tip Loot the quest item here — it starts the quest.
+  accept Avruu's Orb##9418 |goto Hellfire Peninsula 25.66,76.4
+step
   talk Mirren Longbeard##16851
   accept Gaining Mirren's Trust##9563 |goto Hellfire Peninsula 23.97,72.35
 step
@@ -193,14 +200,11 @@ step
   talk Field Commander Romus##16830
   turnin Pride of the Fel Horde##9493 |goto Hellfire Peninsula 56.84,62.72
 step
+  talk Warp-Scryer Kryv##16839
+  turnin The Dark Missive##10395 |goto Hellfire Peninsula 56.69,66.52
+step
   talk Sergeant Altumus##19309
   turnin The Legion Reborn##10141 |goto Hellfire Peninsula 61.72,60.95
-step
-  talk Warp-Scryer Kryv##16839
-  turnin The Heart of Darkness##10399 |goto Hellfire Peninsula 56.69,66.52
-step
-  talk Force Commander Danath Trollbane##16819
-  turnin Overlord##10400 |goto Hellfire Peninsula 56.64,66.7
 step
   talk Lieutenant Amadi##16820
   turnin Know your Enemy##10160 |goto Hellfire Peninsula 50.91,60.19
@@ -234,6 +238,12 @@ step
 step
   talk Sergeant Altumus##19309
   accept The Path of Anguish##10142 |goto Hellfire Peninsula 61.72,60.95
+step
+  talk Warp-Scryer Kryv##16839
+  accept The Heart of Darkness##10399 |goto Hellfire Peninsula 56.69,66.52
+step
+  talk Force Commander Danath Trollbane##16819
+  accept Overlord##10400 |goto Hellfire Peninsula 56.64,66.7
 step
   talk Lieutenant Amadi##16820
   accept Ill Omens##10483 |goto Hellfire Peninsula 50.91,60.19
@@ -297,6 +307,12 @@ step
 step
   talk Foreman Razelcraz##16915
   accept How to Serve Goblins##10238 |goto Hellfire Peninsula 51.37,30.52
+step
+  note Kill 10 Terrorfiends in the Pools of Aggonar and return to Warp-Scryer Kryv in the main keep of Honor Hold.
+  kill Terrorfiend##16951 |q 10399 |goto Hellfire Peninsula 40.05,32.89
+step
+  note Slay Arazzius the Cruel in the Pools of Aggonar and return to Force Commander Danath Trollbane in the keep of Honor Hold.
+  kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55 |elite
 step
   note Amaan the Wise wants you to go to the Pools of Aggonar and slay 6 Terrorfiends and 6 Blistering Rots.
   kill Terrorfiend##16951 |q 9426 |goto Hellfire Peninsula 40.05,32.89
@@ -382,11 +398,17 @@ step
   note Mirren Longbeard in Hellfire Peninsula wants you to bring him 8 Kaliri Feathers from the various kaliri found in the Den of Haal'esh.
   collect Kaliri Feather##23588 |q 9420 |goto Hellfire Peninsula 25.72,75.23 |tip {dropsfrom}Female Kaliri Hatchling, Kaliri Matriarch, Male Kaliri Hatchling
 step
+  talk Marshal Isildor##19308
+  turnin Journey to Honor Hold##10140 |goto Hellfire Peninsula 54.81,62.79
+step
   talk Sergeant Altumus##19309
   turnin The Path of Anguish##10142 |goto Hellfire Peninsula 61.72,60.95
 step
-  talk Marshal Isildor##19308
-  turnin Journey to Honor Hold##10140 |goto Hellfire Peninsula 54.81,62.79
+  talk Warp-Scryer Kryv##16839
+  turnin The Heart of Darkness##10399 |goto Hellfire Peninsula 56.69,66.52
+step
+  talk Force Commander Danath Trollbane##16819
+  turnin Overlord##10400 |goto Hellfire Peninsula 56.64,66.7
 step
   talk Honor Guard Wesilow##16827
   turnin Looking to the Leadership##10057 |goto Hellfire Peninsula 50.88,60.35
@@ -401,7 +423,7 @@ step
   accept Weaken the Ramparts##9575 |goto Hellfire Peninsula 56.73,66.34
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Gunny at Honor Hold in Hellfire Peninsula.
-  collect Gargolmar's Hand##23881 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1 |tip {dropsfrom}Watchkeeper Gargolmar, Watchkeeper Gargolmar (1)
+  collect Gargolmar's Hand##23881 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1 |elite |tip {dropsfrom}Watchkeeper Gargolmar, Watchkeeper Gargolmar (1)
 step
   talk Foreman Biggums##16837
   accept When This Mine's a-Rockin'##10079 |goto Hellfire Peninsula 52.02,62.57
@@ -584,7 +606,7 @@ step
   accept Sha'naar Relics##9430 |goto Hellfire Peninsula 23.42,36.54
 step
   note Amaan the Wise at the Temple of Telhamat in Hellfire Peninsula wants you to travel to the Ruins of Sha'naar and retrieve 10 Sha'naar Relics.
-  collect 10 Sha'naar Relic##23642 |q 9430 |goto Hellfire Peninsula 13.8,59.53 |tip {dropsfrom}Sha'naar Relic
+  collect 10 Sha'naar Relic##23642 |q 9430 |goto Hellfire Peninsula 13.8,59.53
 step
   talk Assistant Klatu##22430
   turnin Fel Spirits##10909 |goto Hellfire Peninsula 54.32,63.65
@@ -657,6 +679,9 @@ step
 step
   note Destroy 3 Fel Cannon MKIs in Forge Camp: Rage and return to Field Marshal Brock at Honor Point.
   kill Fel Cannon MKI##22461 |q 10396 |goto Hellfire Peninsula 59.62,32.56
+step
+  talk Aeranas##17085
+  turnin Avruu's Orb##9418
 step
   talk Force Commander Danath Trollbane##16819
   turnin Drill the Drillmaster##10937 |goto Hellfire Peninsula 56.64,66.7

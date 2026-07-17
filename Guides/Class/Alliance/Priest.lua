@@ -112,6 +112,10 @@ step
   accept Cenarion Aid##8254 |goto Stormwind City 38.58,26.06
 step
   only Priest
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Holy Bologna: What the Light Won't Tell You##7504 |goto Dire Maul - Dungeon -1,-1
+step
+  only Priest
   talk Eris Havenfire##14494
   accept A Warning##7621 |goto Eastern Plaguelands 20.96,18.4
 step
@@ -193,22 +197,22 @@ step
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Stanchion##19718 |q 8061 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Stanchion##19718 |q 8061 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Sash##19720 |q 8070 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Sash##19720 |q 8070 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Aegis##19724 |q 8071 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Aegis##19724 |q 8071 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Priest
   note Bring Vek'nilash's Circlet, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'nilash's Circlet##20926 |q 8592 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Emperor Vek'nilash
+  collect Vek'nilash's Circlet##20926 |q 8592 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash
 step
   only Priest
   note Bring Ouro's Intact Hide, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -216,27 +220,27 @@ step
 step
   only Priest
   note Bring the Qiraji Bindings of Command, 2 Idols of Rebirth, 5 Silver Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Command##20928 |q 8594 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Command##20928 |q 8594 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Priest
   note Bring the Qiraji Bindings of Command, 2 Idols of Death, 5 Bronze Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Command##20928 |q 8596 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Command##20928 |q 8596 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Priest
   note Bring the the Husk of the Old God, 2 Idols of Death, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Husk of the Old God##20933 |q 8603 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}C'Thun
+  collect Husk of the Old God##20933 |q 8603 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}C'Thun
 step
   only Priest
   note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Priest
   note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Priest
   note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Priest
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with 1 set of Devout Bracers to Deliana in Ironforge.
@@ -497,7 +501,7 @@ step
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
   note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  collect Staff Head of Atiesh##22733 |q 9251 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Kel'Thuzad
+  collect Staff Head of Atiesh##22733 |q 9251 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Kel'Thuzad
 step
   only Dwarf Priest
   talk Branstock Khalder##837
@@ -627,11 +631,11 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Shoulderpads of Faith if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9114 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect Desecrated Shoulderpads##22368 |q 9114 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Sandals of Faith if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9115 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect Desecrated Sandals##22372 |q 9115 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Gloves of Faith if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
@@ -639,11 +643,11 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Belt of Faith if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9117 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect Desecrated Belt##22370 |q 9117 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Bindings of Faith if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9118 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect Desecrated Bindings##22369 |q 9118 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
 step
   only Priest
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
@@ -719,7 +723,7 @@ step
 step
   only Priest
   note Kill Morphaz in the sunken temple of Atal'Hakkar, and return his blood to Greta Mosshoof in Felwood. The entrance to the sunken temple can be found in the Swamp of Sorrows.
-  collect Blood of Morphaz##20025 |q 8257 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
+  collect Blood of Morphaz##20025 |q 8257 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
 step
   only Priest
   collect The Eye of Zuldazar##19593 |q 8052 |goto Stranglethorn Vale 15.34,16.12
@@ -828,7 +832,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -837,7 +841,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -857,7 +861,7 @@ step
 step
   only Priest
   note Return to Deliana in Ironforge with a set of Devout Sandals, Devout Skirt and Devout Mantle.
-  collect Devout Sandals##16691 |q 8955 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Maleki the Pallid
+  collect Devout Sandals##16691 |q 8955 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
 step
   only Priest
   talk Deliana##16013
@@ -882,7 +886,8 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |tip {dropsfrom}Cursed Paladin, Cursed Justicar, Writhing Mage
+  kill Cursed Paladin##7071 |goto Hillsbrad Foothills 18.45,76.6 |elite
+  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
 step
   talk Bodley##16033
   turnin Components of Importance##8965

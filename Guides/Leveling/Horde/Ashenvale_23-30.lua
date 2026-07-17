@@ -13,6 +13,12 @@ step
   talk Karang Amakkar##12757
   accept Between a Rock and a Thistlefur##216 |goto Ashenvale 11.9,34.54
 step
+  talk Auld Stonespire##4451
+  accept A Vengeful Fate##1102 |goto Thunder Bluff 35.97,59.92
+step
+  note Bring Razorflank's Heart to Auld Stonespire in Thunder Bluff.
+  collect A Vengeful Fate##5793 |q 1102 |goto Thunder Bluff 35.97,59.92
+step
   talk Marukai##12719
   accept Naga at the Zoram Strand##6442 |goto Ashenvale 11.69,34.91
 step
@@ -29,7 +35,7 @@ step
   accept The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
 step
   note Bring 20 Sapphires of Aku'Mai to Je'neu Sancrea in Ashenvale.
-  collect 20 Sapphire of Aku'Mai##16784 |q 6563 |goto Darkshore 31.63,92.81 |tip {dropsfrom}Sapphire of Aku'Mai
+  collect 20 Sapphire of Aku'Mai##16784 |q 6563 |goto Darkshore 31.63,92.81
 step
   talk Je'neu Sancrea##12736
   accept Allegiance to the Old Gods##6565 |goto Ashenvale 11.56,34.29
@@ -46,8 +52,15 @@ step
   note Take down 8 Thistlefur Avengers and 8 Thistlefur Shaman; most are located east of Zoram Strand in Thistlefur Village. Once completed, return to Karang Amakkar at Zoram'gar Outpost, Ashenvale.
   kill Thistlefur Avenger##3925 |q 216 |goto Ashenvale 36.64,36.96
 step
-  talk Mastok Wrilehiss##12737
-  accept Je'neu of the Earthen Ring##824 |goto Ashenvale 73.67,60.0
+  talk Keeper Bel'dugur##2934
+  accept The Book of Ur##1013 |goto Undercity 53.74,54.46
+step
+  note Bring the Book of Ur to Keeper Bel'dugur at the Apothecarium in the Undercity.
+  collect The Book of Ur##6283 |q 1013 |goto Undercity 53.74,54.46
+step
+  only Mage
+  talk Anastasia Hartwell##4568
+  accept Speak with Deino##1943 |goto Undercity 85.14,10.03
 step
   talk Senani Thunderheart##12696
   accept The Ashenvale Hunt##6383 |goto Ashenvale 73.78,61.46
@@ -61,8 +74,20 @@ step
   talk Valusha##17355
   accept Destroy the Legion##9534 |goto Ashenvale 73.23,60.39
 step
-  talk Valusha##17355
-  accept Never Again!##9536 |goto Ashenvale 73.23,60.39
+  only Mage
+  talk Deino##5885
+  turnin Speak with Deino##1943 |goto Orgrimmar 38.45,86.13 |tip {turninat}Orgrimmar
+step
+  kill Tideress##12759 |goto Ashenvale 45.88,70.62 |tip Loot the quest item here — it starts the quest.
+  accept The Befouled Element##1918 |goto Ashenvale 45.88,70.62
+step
+  only Mage
+  talk Deino##5885
+  accept Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13
+step
+  only Mage
+  note Bring the Xavian Water Sample to Deino in Orgrimmar.
+  collect Xavian Water Sample##7268 |q 1944 |goto Orgrimmar 38.45,86.13
 step
   talk Kuray'bin##12867
   accept Ashenvale Outrunners##6503 |goto Ashenvale 71.11,68.12
@@ -79,11 +104,11 @@ step
   note Collect the Warsong Supplies: Warsong Saw Blades, Logging Rope, Warsong Oil, and the Warsong Axe Shipment for Locke Okarr in Splintertree Post.
   collect Warsong Saw Blades##16742 |q 6571 |goto Ashenvale 71.4,67.63
 step
+  kill Searing Infernal##6073 |goto Ashenvale 80.61,80.38 |tip Loot the quest item here — it starts the quest.
+  accept Diabolical Plans##9535 |goto Ashenvale 80.61,80.38
+step
   note Slay 6 Mannoroc Lashers, 6 Felguards and 6 Searing Infernals, and then return to Valusha at Splintertree Post in Ashenvale.
   kill Mannoroc Lasher##11697 |q 9534 |goto Ashenvale 79.38,81.53
-step
-  note Kill Gorgannon and Diathorus the Seeker, and then return to Velusha at Splintertree Post in Ashenvale.
-  kill Gorgannon##17300 |q 9536 |goto Ashenvale 89.79,76.73
 step
   note Kill 9 Ashenvale Outrunners, then return to Kuray'bin at Splintertree Outpost.
   kill Ashenvale Outrunner##12856 |q 6503 |goto Ashenvale 73.64,72.44
@@ -100,8 +125,8 @@ step
   talk Marukai##12719
   turnin Naga at the Zoram Strand##6442 |goto Ashenvale 11.69,34.91
 step
-  talk Je'neu Sancrea##12736
-  turnin Je'neu of the Earthen Ring##824 |goto Ashenvale 11.56,34.29
+  talk Auld Stonespire##4451
+  turnin A Vengeful Fate##1102 |goto Thunder Bluff 35.97,59.92 |tip {turninat}Thunder Bluff
 step
   talk Karang Amakkar##12757
   turnin Between a Rock and a Thistlefur##216 |goto Ashenvale 11.9,34.54
@@ -115,17 +140,36 @@ step
   note Place Karang's Banner on the Foulweald Totem Mound. Do not let the furbolgs destroy the banner. Defeat Chief Murgut and bring Murgut's Totem to Karang Amakkar at Zoram'gar.
   collect Murgut's Totem##16976 |q 6621 |goto Ashenvale 11.9,34.54 |tip {dropsfrom}Chief Murgut, Murgut's Totem Basket
 step
-  talk Valusha##17355
-  turnin Destroy the Legion##9534 |goto Ashenvale 73.23,60.39
-step
-  talk Valusha##17355
-  turnin Never Again!##9536 |goto Ashenvale 73.23,60.39
-step
   talk Pixel##12724
   turnin Satyr Horns##6441 |goto Ashenvale 73.06,61.48
 step
   talk Senani Thunderheart##12696
   turnin The Ashenvale Hunt##6383 |goto Ashenvale 73.78,61.46
+step
+  talk Mastok Wrilehiss##12737
+  turnin The Befouled Element##1918 |goto Ashenvale 73.67,60.0
+step
+  talk Keeper Bel'dugur##2934
+  turnin The Book of Ur##1013 |goto Undercity 53.74,54.46 |tip {turninat}Undercity
+step
+  talk Valusha##17355
+  turnin Destroy the Legion##9534 |goto Ashenvale 73.23,60.39
+step
+  talk Valusha##17355
+  turnin Diabolical Plans##9535 |goto Ashenvale 73.23,60.39
+step
+  kill Shadumbra##12677 |goto Ashenvale 57.5,56.05 |tip Loot the quest item here — it starts the quest.
+  accept Shadumbra's Head##24 |goto Ashenvale 57.5,56.05
+step
+  talk Mastok Wrilehiss##12737
+  accept Je'neu of the Earthen Ring##824 |goto Ashenvale 73.67,60.0
+step
+  talk Valusha##17355
+  accept Never Again!##9536 |goto Ashenvale 73.23,60.39
+step
+  only Mage
+  talk Deino##5885
+  turnin Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13 |tip {turninat}Orgrimmar
 step
   talk Kuray'bin##12867
   turnin Ashenvale Outrunners##6503 |goto Ashenvale 71.11,68.12
@@ -136,8 +180,50 @@ step
   talk Locke Okarr##11820
   turnin Warsong Supplies##6571 |goto Ashenvale 71.4,67.63
 step
+  kill Sharptalon##12676 |goto Ashenvale 74.98,70.06 |tip Loot the quest item here — it starts the quest.
+  accept Sharptalon's Claw##2 |goto Ashenvale 74.98,70.06
+step
+  kill Ursangous##12678 |goto Ashenvale 39.76,65.21 |tip Loot the quest item here — it starts the quest.
+  accept Ursangous's Paw##23 |goto Ashenvale 39.76,65.21
+step
+  only Mage
+  talk Deino##5885
+  accept Laughing Sisters##1945 |goto Orgrimmar 38.45,86.13
+step
+  only Mage
+  note Bring 12 Laughing Sister's Hairs to Kil'hala at the Crossroads.
+  collect 12 Laughing Sister's Hair##7270 |q 1945 |goto Ashenvale 59.86,55.06 |tip {dropsfrom}Laughing Sister
+step
+  note Kill Gorgannon and Diathorus the Seeker, and then return to Velusha at Splintertree Post in Ashenvale.
+  kill Gorgannon##17300 |q 9536 |goto Ashenvale 89.79,76.73
+step
   talk Karang Amakkar##12757
   turnin King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
+step
+  talk Je'neu Sancrea##12736
+  turnin Je'neu of the Earthen Ring##824 |goto Ashenvale 11.56,34.29
+step
+  talk Valusha##17355
+  turnin Never Again!##9536 |goto Ashenvale 73.23,60.39
+step
+  talk Senani Thunderheart##12696
+  turnin Sharptalon's Claw##2 |goto Ashenvale 73.78,61.46
+step
+  talk Senani Thunderheart##12696
+  turnin Ursangous's Paw##23 |goto Ashenvale 73.78,61.46
+step
+  talk Senani Thunderheart##12696
+  turnin Shadumbra's Head##24 |goto Ashenvale 73.78,61.46
+step
+  only Mage
+  talk Kil'hala##3484
+  turnin Laughing Sisters##1945 |goto The Barrens 52.2,31.7 |tip {turninat}The Barrens
+step
+  talk Senani Thunderheart##12696
+  accept The Hunt Completed##247 |goto Ashenvale 73.78,61.46
+step
+  talk Senani Thunderheart##12696
+  turnin The Hunt Completed##247 |goto Ashenvale 73.78,61.46
 step
   note {travel}Thousand Needles
   goto Thousand Needles 32.24,22.17

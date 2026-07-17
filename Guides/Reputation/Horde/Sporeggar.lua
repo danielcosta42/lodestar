@@ -37,7 +37,7 @@ step
   accept Fhwoor Smash!##9729 |goto Zangarmarsh 19.79,50.83
 step
   note Fahssn at the Spawning Glen wants you to collect 10 Mature Spore Sacs.
-  collect 10 Mature Spore Sac##24290 |q 9739 |goto Zangarmarsh 12.19,62.02 |tip {dropsfrom}Mature Spore Sac
+  collect 10 Mature Spore Sac##24290 |q 9739 |goto Zangarmarsh 12.19,62.02
 step
   note Kill 12 Bloodscale Slavedrivers and 6 Bloodscale Enchantresses, and then return to Gzhun'tt at Sporeggar in Zangarmarsh.
   kill Bloodscale Slavedriver##18089 |q 9726 |goto Zangarmarsh 26.54,40.93
@@ -49,16 +49,16 @@ step
   collect 6 Fertile Spores##24449 |q 9806 |goto Zangarmarsh 51.47,55.93 |tip {dropsfrom}Sporebat, Greater Sporebat, Fen Strider
 step
   note Bring 10 Glowcaps to Msshi'fn at Sporeggar in Zangarmarsh.
-  collect 10 Glowcap##24245 |q 9808 |goto Zangarmarsh 33.37,38.97 |tip {dropsfrom}Glowcap
+  collect 10 Glowcap##24245 |q 9808 |goto Zangarmarsh 33.37,38.97
 step
   note Collect 5 Sanguine Hibiscus and return them to Gzhun'tt at Sporeggar in Zangarmarsh.
-  collect 5 Sanguine Hibiscus##24246 |q 9715 |goto The Underbog - Dungeon -1,-1 |tip {dropsfrom}Bog Giant, Underbat, Underbog Lurker
+  collect 5 Sanguine Hibiscus##24246 |q 9715 |goto The Underbog - Dungeon -1,-1 |elite |tip {dropsfrom}Bog Giant, Underbat, Underbog Lurker
 step
   note Gather an Underspore Frond and return it to T'shu at Sporeggar in Zangarmarsh.
   collect Underspore Frond##24247 |q 9717 |goto The Underbog - Dungeon -1,-1 |tip {dropsfrom}The Underspore
 step
   note Bring the Brain of the Black Stalker to Khn'nix at Sporeggar in Zangarmarsh.
-  collect Brain of the Black Stalker##24248 |q 9719 |goto The Underbog - Dungeon -1,-1 |tip {dropsfrom}The Black Stalker, The Black Stalker (1)
+  collect Brain of the Black Stalker##24248 |q 9719 |goto The Underbog - Dungeon -1,-1 |elite |tip {dropsfrom}The Black Stalker, The Black Stalker (1)
 step
   talk Fahssn##17923
   turnin The Sporelings' Plight##9739 |goto Zangarmarsh 19.02,62.43
@@ -108,7 +108,7 @@ step
   talk Gzhun'tt##17856
   accept Bring Me Another Shrubbery!##9714 |goto Zangarmarsh 19.54,50.04
 step
-  collect Mature Spore Sac##24290 |q 9742 |goto Zangarmarsh 12.19,62.02 |tip {dropsfrom}Mature Spore Sac
+  collect Mature Spore Sac##24290 |q 9742 |goto Zangarmarsh 12.19,62.02
 step
   note Kill 12 Bloodscale Slavedrivers and 6 Bloodscale Enchantresses, and then return to Gzhun'tt at Sporeggar in Zangarmarsh.
   kill Bloodscale Slavedriver##18089 |q 9727 |goto Zangarmarsh 26.54,40.93
@@ -117,9 +117,9 @@ step
 step
   collect Fertile Spores##24449 |q 9807 |goto Zangarmarsh 51.47,55.93 |tip {dropsfrom}Sporebat, Greater Sporebat, Fen Strider
 step
-  collect Glowcap##24245 |q 9809 |goto Zangarmarsh 33.37,38.97 |tip {dropsfrom}Glowcap
+  collect Glowcap##24245 |q 9809 |goto Zangarmarsh 33.37,38.97
 step
-  collect Sanguine Hibiscus##24246 |q 9714 |goto The Underbog - Dungeon -1,-1 |tip {dropsfrom}Bog Giant, Underbat, Underbog Lurker
+  collect Sanguine Hibiscus##24246 |q 9714 |goto The Underbog - Dungeon -1,-1 |elite |tip {dropsfrom}Bog Giant, Underbat, Underbog Lurker
 step
   talk Fahssn##17923
   turnin More Spore Sacs##9742 |goto Zangarmarsh 19.02,62.43

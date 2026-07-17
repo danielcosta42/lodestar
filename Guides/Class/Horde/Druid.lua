@@ -6,309 +6,264 @@ ns:RegisterGuide("Class/Horde/Druid", {
 	author = "Lodestar Generator",
 }, [[
 step
-  only Undead
-  talk Undertaker Mordo##1568
-  accept Rude Awakening##363 |goto Tirisfal Glades 30.22,71.65
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  accept A Lesson to Learn##27 |goto Thunder Bluff 76.48,27.22
 step
-  talk Magistrix Erona##15278
-  accept Reclaiming Sunstrider Isle##8325 |goto Eversong Woods 38.21,20.83
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  accept Moonglade##5922 |goto Thunder Bluff 76.48,27.22
 step
-  talk Gornek##3143
-  accept Cutting Teeth##788 |goto Durotar 42.06,68.33
+  only Tauren Druid
+  talk Gennia Runetotem##3064
+  accept Heeding the Call##5926 |goto Mulgore 48.48,59.64
 step
-  only Druid
-  talk Doan Karhan##6247
-  accept The Orb of Soran'ruk##1740 |goto The Barrens 49.31,57.21
+  only Tauren Druid
+  talk Gart Mistrunner##3060
+  accept Heeding the Call##5927 |goto Mulgore 45.09,75.93
 step
-  only Druid
-  talk Menara Voidrender##6266
-  accept Components for the Enchanted Gold Bloodrobe##1796 |goto The Barrens 62.51,35.45
-step
-  only Druid
-  talk Zevrost##3326
-  accept In Search of Menara Voidrender##4737 |goto Orgrimmar 48.47,45.43
+  only Tauren Druid
+  talk Harene Plainwalker##16655
+  accept Heeding the Call##5928 |goto Silvermoon City 71.55,55.76
 step
   only Druid
-  talk Kaal Soulreaper##4563
-  accept In Search of Menara Voidrender##4739 |goto Undercity 86.21,15.93
+  talk Loganaar##12042
+  accept Morthis Whisperwing##10955 |goto Moonglade 52.53,40.57
+step
+  talk Grull Hawkwind##2980
+  accept The Hunt Begins##747 |goto Mulgore 44.88,77.07
 step
   only Druid
-  talk Demisette Cloyce##461
-  accept Knowledge of the Orb of Orahil##4968 |goto Stormwind City 25.28,78.22
+  talk Turak Runetotem##3033
+  accept Torwa Pathfinder##9063 |goto Thunder Bluff 76.48,27.22
 step
   only Druid
-  talk Kaal Soulreaper##4563
-  accept Knowledge of the Orb of Orahil##4969 |goto Undercity 86.21,15.93
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
 step
   only Druid
-  talk Menara Voidrender##6266
-  accept Fragments of the Orb of Orahil##1799 |goto The Barrens 62.51,35.45
+  talk Maywiki of Zuldazar##14904
+  accept Paragons of Power: The Haruspex's Bracers##8057 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  talk Acolyte Wytula##6254
-  accept Shard of a Felhound##4962 |goto The Barrens 62.64,35.3
+  talk Maywiki of Zuldazar##14904
+  accept Paragons of Power: The Haruspex's Belt##8064 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  talk Acolyte Magaz##6252
-  accept Shard of an Infernal##4963 |goto The Barrens 62.56,35.23
+  talk Maywiki of Zuldazar##14904
+  accept Paragons of Power: The Haruspex's Tunic##8065 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  talk Demisette Cloyce##461
-  accept An Imp's Request##8419 |goto Stormwind City 25.28,78.22
+  talk Maywiki of Zuldazar##14904
+  accept Enchanted South Seas Kelp##8110 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Druid
-  talk Impsy##14470
-  accept Hot and Itchy##8420 |goto Felwood 41.36,45.02
-step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Demoniac's Wraps##8059 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Demoniac's Mantle##8076 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Demoniac's Robes##8077 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  accept Kezan's Taint##8106 |goto Stranglethorn Vale 15.34,16.12
+  talk Commander Mar'alith##15181
+  accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
   only Druid
   talk Kandrostrasz##15503
-  accept Doomcaller's Footwraps##8660 |goto Ahn'Qiraj - Raid -1,-1
+  accept Genesis Boots##8665 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Vethsera##15504
-  accept Doomcaller's Robes##8661 |goto Ahn'Qiraj - Raid -1,-1
+  accept Genesis Vest##8666 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Andorgos##15502
-  accept Doomcaller's Circlet##8662 |goto Ahn'Qiraj - Raid -1,-1
+  accept Genesis Helm##8667 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Kandrostrasz##15503
-  accept Doomcaller's Trousers##8663 |goto Ahn'Qiraj - Raid -1,-1
+  accept Genesis Trousers##8668 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Andorgos##15502
-  accept Doomcaller's Mantle##8664 |goto Ahn'Qiraj - Raid -1,-1
+  accept Genesis Shoulderpads##8669 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Keyl Swiftclaw##15500
-  accept Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
+  accept Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
 step
   only Druid
   talk Windcaller Yessendra##15498
-  accept Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
+  accept Band of Unending Life##8700 |goto Silithus 52.05,38.16
 step
   only Druid
   talk Warden Haro##15499
-  accept Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
+  accept Mace of Unending Life##8708 |goto Silithus 51.14,38.94
 step
   only Druid
   talk Mokvar##16012
-  accept An Earnest Proposition##8919 |goto Orgrimmar 34.95,38.29
+  accept An Earnest Proposition##8913 |goto Orgrimmar 34.95,38.29
 step
   talk Archmage Angela Dosantos##16116
   accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
 step
-  note Kill 8 Mana Wyrms; they are located close to the Burning Crystals that are adjacent to the tower and gazebo. Return to Magistrix Erona at the tower on Sunstrider Isle when you are done.
-  kill Mana Wyrm##15274 |q 8325 |goto Eversong Woods 36.91,21.9
+  talk Grok##22940
+  accept Mog'dorg the Wizened##10983 |goto Shattrath City 64.93,68.14
 step
-  note Kill 10 Mottled Boars then return to Gornek at the Den.
-  kill Mottled Boar##3098 |q 788 |goto Durotar 44.44,64.81
+  talk Mog'dorg the Wizened##22941
+  accept Maggoc's Treasure Chest##10996 |goto Blade's Edge Mountains 55.49,44.86
 step
-  only Druid
-  note Find 3 Soran'ruk Fragments and 1 Large Soran'ruk Fragment and return them to Doan Karhan in the Barrens.
-  collect 3 Soran'ruk Fragment##6914 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {dropsfrom}Twilight Acolyte
+  talk Mog'dorg the Wizened##22941
+  accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
-  only Druid
-  note Bring Robes of the Arcana to Menara Voidrender in the Barrens.
-  collect Robes of Arcana##5770 |q 1796 |goto The Barrens 62.51,35.45
+  note Grull Hawkwind in Camp Narache wants you to bring him 7 Plainstrider Feathers and 7 pieces of Plainstrider Meat.
+  collect Plainstrider Meat##4739 |q 747 |goto Mulgore 48.53,81.85 |tip {dropsfrom}Plainstrider
 step
   only Druid
-  note Speak to Menara's acolytes inside the tower above Ratchet and choose one of their paths to follow.
-  collect Infernal Orb##7291 |q 1799 |goto Desolace 79.47,77.84 |tip {dropsfrom}Burning Blade Summoner
+  note Bring Maywiki of Zuldazar a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
+  collect Primal Hakkari Stanchion##19718 |q 8057 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Druid
-  note Take the Felhas Ruby and use it on one of the Felhounds found in Desolace. After successful, bring the Felhas Ruby and the Imprisoned Felhound Spirit back to Menara Voidrender in the Barrens.
-  collect Imprisoned Felhound Spirit##12648 |q 4962 |goto The Barrens 62.64,35.3
+  note Bring Maywiki of Zuldazar a Primal Hakkari Sash. Maywiki of Zuldazar is located on Yojamba Isle, Stranglethorn Vale. You must also be Honored with Zandalar.
+  collect Primal Hakkari Sash##19720 |q 8064 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Druid
-  note Take the Infus Emerald and use it on one of the Infernals found in Desolace. After successful, bring the Infus Emerald and the Imprisoned Infernal Spirit back to Menara Voidrender in the Barrens.
-  collect Imprisoned Infernal Spirit##12649 |q 4963 |goto The Barrens 62.56,35.23
+  note Bring Maywiki of Zuldazar a Primal Hakkari Tabard. Maywiki of Zuldazar is located on Yojamba Isle, Stranglethorn Vale. You must also be Revered with Zandalar.
+  collect Primal Hakkari Tabard##19722 |q 8065 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+step
+  note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
+  get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Druid
-  note Bring a piece of felcloth to Impsy in Felwood.
-  collect Felcloth##14256 |q 8419 |goto Blasted Lands 59.78,54.09 |tip {dropsfrom}Felguard Sentry, Legashi Satyr, Legashi Rogue
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Silver Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  collect Qiraji Bindings of Dominance##20932 |q 8665 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Druid
-  note Bring a piece of felcloth to Impsy in Felwood.
-  collect Felcloth##14256 |q 8420 |goto Blasted Lands 59.78,54.09 |tip {dropsfrom}Felguard Sentry, Legashi Satyr, Legashi Rogue
+  note Bring the the Husk of the Old God, 2 Idols of Rebirth, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  collect Husk of the Old God##20933 |q 8666 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}C'Thun
 step
   only Druid
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Stanchion##19718 |q 8059 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  note Bring Vek'lor's Diadem, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  collect Vek'lor's Diadem##20930 |q 8667 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Emperor Vek'lor
 step
   only Druid
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Sash##19720 |q 8076 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  note Bring the Skin of the Great Sandworm, 2 Idols of War, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  collect Skin of the Great Sandworm##20931 |q 8668 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ouro
 step
   only Druid
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Kossack##19723 |q 8077 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Strife, 5 Gold Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  collect Qiraji Bindings of Dominance##20932 |q 8669 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Druid
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of Night, 5 Clay Scarabs and 5 Ivory Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Dominance##20932 |q 8660 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  note Bring 1 Qiraji Regal Drape, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Regal Drape##20889 |q 8692 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Druid
-  note Bring the the Husk of the Old God, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Husk of the Old God##20933 |q 8661 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}C'Thun
+  note Bring 1 Qiraji Magisterial Ring, 2 Alabaster Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Magisterial Ring##20884 |q 8700 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Druid
-  note Bring Vek'nilash's Circlet, 2 Idols of Death, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'nilash's Circlet##20926 |q 8662 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Emperor Vek'nilash
+  note Bring 1 Qiraji Ornate Hilt, 2 Jasper Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ornate Hilt##20890 |q 8708 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Druid
-  note Bring the Skin of the Great Sandworm, 2 Idols of Rebirth, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Skin of the Great Sandworm##20931 |q 8663 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ouro
-step
-  only Druid
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Dominance##20932 |q 8664 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Druid
-  note Bring 1 Qiraji Regal Drape, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8694 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
-  only Druid
-  note Bring 1 Qiraji Ceremonial Ring, 2 Jasper Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8702 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
-  only Druid
-  note Bring 1 Qiraji Ornate Hilt, 2 Onyx Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8710 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Druid
-  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Dreadmist Bracers to Mokvar in Orgrimmar.
-  collect 15 Silithus Venom Sample##22381 |q 8919 |goto Silithus 59.92,28.33 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Wildheart Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8913 |goto Silithus 59.92,28.33 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
   collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 62.76,44.03 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
 step
-  only Undead
-  talk Shadow Priest Sarvis##1569
-  turnin Rude Awakening##363 |goto Tirisfal Glades 30.84,66.2
+  note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  kill Maggoc##20600 |goto Blade's Edge Mountains 58.59,60.8 |elite
+  click Maggoc's Treasure Chest##185569 |tip {spawnsafter}Maggoc
+  collect Maggoc's Treasure Chest##32380 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
-  talk Magistrix Erona##15278
-  turnin Reclaiming Sunstrider Isle##8325 |goto Eversong Woods 38.21,20.83
+  note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  kill Slaag##22199 |goto Terokkar Forest 20.17,18.1 |elite
+  click Slaag's Standard##185574 |tip {spawnsafter}Slaag
+  collect Slaag's Standard##32382 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
-  talk Gornek##3143
-  turnin Cutting Teeth##788 |goto Durotar 42.06,68.33
+  only Tauren Druid
+  talk Dendrite Starblaze##11802
+  turnin A Lesson to Learn##27 |goto Moonglade 56.21,30.64
 step
-  only Druid
-  talk Doan Karhan##6247
-  turnin The Orb of Soran'ruk##1740 |goto The Barrens 49.31,57.21
+  only Tauren Druid
+  talk Dendrite Starblaze##11802
+  turnin Moonglade##5922 |goto Moonglade 56.21,30.64
 step
-  only Druid
-  talk Menara Voidrender##6266
-  turnin Components for the Enchanted Gold Bloodrobe##1796 |goto The Barrens 62.51,35.45
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  turnin Heeding the Call##5926 |goto Thunder Bluff 76.48,27.22
 step
-  only Druid
-  talk Menara Voidrender##6266
-  turnin In Search of Menara Voidrender##4737 |goto The Barrens 62.51,35.45
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  turnin Heeding the Call##5927 |goto Thunder Bluff 76.48,27.22
 step
-  only Druid
-  talk Menara Voidrender##6266
-  turnin In Search of Menara Voidrender##4739 |goto The Barrens 62.51,35.45
-step
-  only Druid
-  talk Menara Voidrender##6266
-  turnin Knowledge of the Orb of Orahil##4968 |goto The Barrens 62.51,35.45
-step
-  only Druid
-  talk Menara Voidrender##6266
-  turnin Knowledge of the Orb of Orahil##4969 |goto The Barrens 62.51,35.45
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  turnin Heeding the Call##5928 |goto Thunder Bluff 76.48,27.22
 step
   only Druid
-  talk Tabetha##6546
-  turnin Fragments of the Orb of Orahil##1799 |goto Dustwallow Marsh 46.06,57.09
+  talk Morthis Whisperwing##22832
+  turnin Morthis Whisperwing##10955 |goto Zangarmarsh 80.18,65.15
+step
+  talk Grull Hawkwind##2980
+  turnin The Hunt Begins##747 |goto Mulgore 44.88,77.07
 step
   only Druid
-  talk Menara Voidrender##6266
-  turnin Shard of a Felhound##4962 |goto The Barrens 62.51,35.45
+  talk Torwa Pathfinder##9619
+  turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96
 step
   only Druid
-  talk Menara Voidrender##6266
-  turnin Shard of an Infernal##4963 |goto The Barrens 62.51,35.45
+  talk Lorekeeper Javon##14381
+  turnin The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
 step
   only Druid
-  talk Impsy##14470
-  turnin An Imp's Request##8419 |goto Felwood 41.36,45.02
+  talk Maywiki of Zuldazar##14904
+  turnin Paragons of Power: The Haruspex's Bracers##8057 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  talk Impsy##14470
-  turnin Hot and Itchy##8420 |goto Felwood 41.36,45.02
+  talk Maywiki of Zuldazar##14904
+  turnin Paragons of Power: The Haruspex's Belt##8064 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  talk Lorekeeper Mykos##14382
-  turnin Harnessing Shadows##7502 |goto Dire Maul - Dungeon -1,-1
+  talk Maywiki of Zuldazar##14904
+  turnin Paragons of Power: The Haruspex's Tunic##8065 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Demoniac's Wraps##8059 |goto Stranglethorn Vale 15.34,16.12
+  talk Maywiki of Zuldazar##14904
+  turnin Enchanted South Seas Kelp##8110 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Demoniac's Mantle##8076 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Demoniac's Robes##8077 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  turnin Kezan's Taint##8106 |goto Stranglethorn Vale 15.34,16.12
+  talk Commander Mar'alith##15181
+  turnin Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
   only Druid
   talk Kandrostrasz##15503
-  turnin Doomcaller's Footwraps##8660 |goto Ahn'Qiraj - Raid -1,-1
+  turnin Genesis Boots##8665 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Vethsera##15504
-  turnin Doomcaller's Robes##8661 |goto Ahn'Qiraj - Raid -1,-1
+  turnin Genesis Vest##8666 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Andorgos##15502
-  turnin Doomcaller's Circlet##8662 |goto Ahn'Qiraj - Raid -1,-1
+  turnin Genesis Helm##8667 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Kandrostrasz##15503
-  turnin Doomcaller's Trousers##8663 |goto Ahn'Qiraj - Raid -1,-1
+  turnin Genesis Trousers##8668 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Andorgos##15502
-  turnin Doomcaller's Mantle##8664 |goto Ahn'Qiraj - Raid -1,-1
+  turnin Genesis Shoulderpads##8669 |goto Ahn'Qiraj - Raid -1,-1
 step
   only Druid
   talk Keyl Swiftclaw##15500
-  turnin Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
+  turnin Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
 step
   only Druid
   talk Windcaller Yessendra##15498
-  turnin Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
+  turnin Band of Unending Life##8700 |goto Silithus 52.05,38.16
 step
   only Druid
   talk Warden Haro##15499
-  turnin Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
+  turnin Mace of Unending Life##8708 |goto Silithus 51.14,38.94
 step
   only Druid
   talk Mokvar##16012
-  turnin An Earnest Proposition##8919 |goto Orgrimmar 34.95,38.29
+  turnin An Earnest Proposition##8913 |goto Orgrimmar 34.95,38.29
 step
   talk Archmage Angela Dosantos##16116
   turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
@@ -316,33 +271,48 @@ step
   talk Anachronos##15192
   turnin Frame of Atiesh##9250 |goto Tanaris 64.2,51.42
 step
-  only Orc Druid
-  talk Gornek##3143
-  accept Tainted Parchment##3090 |goto Durotar 42.06,68.33
+  talk Mog'dorg the Wizened##22941
+  turnin Mog'dorg the Wizened##10983 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Maggoc's Treasure Chest##10996 |goto Blade's Edge Mountains 55.49,44.86
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
+step
+  only Tauren Druid
+  talk Dendrite Starblaze##11802
+  accept Trial of the Lake##28 |goto Moonglade 56.21,30.64
+step
+  only Tauren Druid
+  talk Dendrite Starblaze##11802
+  accept Great Bear Spirit##5930 |goto Moonglade 56.21,30.64
 step
   only Druid
-  talk Magistrix Erona##15278
-  accept Warlock Training##8563 |goto Eversong Woods 38.21,20.83
-step
-  only Undead
-  talk Shadow Priest Sarvis##1569
-  accept The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
+  talk Morthis Whisperwing##22832
+  accept The Ward of Wakening##10961 |goto Zangarmarsh 80.18,65.15
 step
   only Druid
-  talk Menara Voidrender##6266
-  accept Components for the Enchanted Gold Bloodrobe##4781 |goto The Barrens 62.51,35.45
+  talk Grull Hawkwind##2980
+  accept Verdant Note##3094 |goto Mulgore 44.88,77.07
 step
   only Druid
-  talk Tabetha##6546
-  accept Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
+  talk Turak Runetotem##3033
+  accept Lessons Anew##6126 |goto Thunder Bluff 76.48,27.22
 step
   only Druid
-  talk Impsy##14470
-  accept The Wrong Stuff##8421 |goto Felwood 41.36,45.02
+  talk Torwa Pathfinder##9619
+  accept Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
 step
   only Druid
-  talk Al'tabim the All-Seeing##14903
-  accept Kezan's Taint##8107 |goto Stranglethorn Vale 15.34,16.12
+  talk Maywiki of Zuldazar##14904
+  accept Enchanted South Seas Kelp##8111 |goto Stranglethorn Vale 15.3,16.02
+step
+  talk Rutgar Glyphshaper##15170
+  accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
+step
+  talk Frankal Stonebridge##15171
+  accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
   talk Mokvar##16012
   accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
@@ -353,58 +323,69 @@ step
   talk Anachronos##15192
   accept Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 64.2,51.42
 step
-  only Undead
-  note Shadow Priest Sarvis wants you to kill 8 Mindless Zombies and 8 Wretched Zombies.
-  kill Mindless Zombie##1501 |q 364 |goto Tirisfal Glades 32.54,63.84
+  talk Mog'dorg the Wizened##22941
+  accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
   only Druid
-  note Bring a Gold Bar to Xizk Goodstitch in Stranglethorn Vale.
-  collect Gold Bar##3577 |q 4781 |goto Bloodmyst Isle 52.92,75.29 |tip {dropsfrom}Tattered Chest, Battered Chest, Solid Chest
+  note Bring 10 Bogblossoms, 10 Ancient Lichen, and 10 Dreaming Glory to Morthis Whisperwing at the Cenarion Refuge.
+  collect 10 Bogblossom##31950 |q 10961 |goto Zangarmarsh 80.18,65.15
 step
   only Druid
-  note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 4961 |elite
+  note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.
+  collect 8 Gorishi Sting##22435 |q 9052 |goto Un'Goro Crater 50.14,76.41 |tip {dropsfrom}Gorishi Wasp, Gorishi Worker, Gorishi Reaver
 step
   only Druid
-  note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
-  collect 10 Rotting Wood##20613 |q 8421 |goto Felwood 48.7,23.1 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
+  collect Enchanted South Seas Kelp##19610 |q 8111 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Druid
-  collect Kezan's Taint##19602 |q 8107 |goto Stranglethorn Vale 15.34,16.12
+  note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
+  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 41.28,88.45
+step
+  note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
+  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 48.5,41.14 |tip {dropsfrom}Hive'Ashi Stinger, Hive'Ashi Worker, Hive'Ashi Defender
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
   note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  collect Staff Head of Atiesh##22733 |q 9251 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Kel'Thuzad
+  collect Staff Head of Atiesh##22733 |q 9251 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Kel'Thuzad
 step
-  only Orc Druid
-  talk Nartok##3156
-  turnin Tainted Parchment##3090 |goto Durotar 40.65,68.52
+  note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  kill Grulloc##20216 |goto Blade's Edge Mountains 60.92,47.61 |elite
+  collect Grulloc's Dragon Skull##32379 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
-  only Druid
-  talk Summoner Teli'Larien##15283
-  turnin Warlock Training##8563 |goto Eversong Woods 38.93,21.44
+  only Tauren Druid
+  talk Tajarri##11799
+  turnin Trial of the Lake##28 |goto Moonglade 36.52,40.1
 step
-  only Undead
-  talk Shadow Priest Sarvis##1569
-  turnin The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
-step
-  only Druid
-  talk Xizk Goodstitch##2670
-  turnin Components for the Enchanted Gold Bloodrobe##4781 |goto Stranglethorn Vale 28.71,76.89
+  only Tauren Druid
+  talk Dendrite Starblaze##11802
+  turnin Great Bear Spirit##5930 |goto Moonglade 56.21,30.64
 step
   only Druid
-  talk Tabetha##6546
-  turnin Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
+  talk Morthis Whisperwing##22832
+  turnin The Ward of Wakening##10961 |goto Zangarmarsh 80.18,65.15
 step
   only Druid
-  talk Impsy##14470
-  turnin The Wrong Stuff##8421 |goto Felwood 41.36,45.02
+  talk Gart Mistrunner##3060
+  turnin Verdant Note##3094 |goto Mulgore 45.09,75.93
 step
   only Druid
-  talk Al'tabim the All-Seeing##14903
-  turnin Kezan's Taint##8107 |goto Stranglethorn Vale 15.34,16.12
+  talk Dendrite Starblaze##11802
+  turnin Lessons Anew##6126 |goto Moonglade 56.21,30.64
+step
+  only Druid
+  talk Torwa Pathfinder##9619
+  turnin Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
+step
+  only Druid
+  talk Maywiki of Zuldazar##14904
+  turnin Enchanted South Seas Kelp##8111 |goto Stranglethorn Vale 15.3,16.02
+step
+  talk Rutgar Glyphshaper##15170
+  turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
+step
+  talk Frankal Stonebridge##15171
+  turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8923 |goto Tanaris 52.47,27.23
@@ -415,364 +396,606 @@ step
   talk Anachronos##15192
   turnin Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 64.2,51.42
 step
-  only Druid
-  talk Shadow Priest Sarvis##1569
-  accept Tainted Scroll##3099 |goto Tirisfal Glades 30.84,66.2
+  talk Mog'dorg the Wizened##22941
+  turnin Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
+step
+  only Tauren Druid
+  talk Tajarri##11799
+  accept Trial of the Sea Lion##30 |goto Moonglade 36.52,40.1
+step
+  only Tauren Druid
+  talk Dendrite Starblaze##11802
+  accept Back to Thunder Bluff##5932 |goto Moonglade 56.21,30.64
 step
   only Druid
-  talk Summoner Teli'Larien##15283
-  accept Well Watcher Solanian##10073 |goto Eversong Woods 38.93,21.44
+  talk Dendrite Starblaze##11802
+  accept The Principal Source##6127 |goto Moonglade 56.21,30.64
 step
   only Druid
-  talk Xizk Goodstitch##2670
-  accept Components for the Enchanted Gold Bloodrobe##4782 |goto Stranglethorn Vale 28.71,76.89
+  talk Morthis Whisperwing##22832
+  accept Waking the Sleeper##10964 |goto Zangarmarsh 80.18,65.15
 step
   only Druid
-  talk Tabetha##6546
-  accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
+  talk Torwa Pathfinder##9619
+  accept Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
 step
   only Druid
-  talk Impsy##14470
-  accept Trolls of a Feather##8422 |goto Felwood 41.36,45.02
+  talk Maywiki of Zuldazar##14904
+  accept Enchanted South Seas Kelp##8112 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  accept Kezan's Taint##8108 |goto Stranglethorn Vale 15.34,16.12
+  talk Rutgar Glyphshaper##15170
+  accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
   talk Mux Manascrambler##16014
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Robe##9103 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  accept Dreamwalker Tunic##9086 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Leggings##9104 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  accept Dreamwalker Legguards##9087 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Circlet##9105 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  accept Dreamwalker Headpiece##9088 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Shoulderpads##9106 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  accept Dreamwalker Spaulders##9089 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Sandals##9107 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  accept Dreamwalker Boots##9090 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Gloves##9108 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  accept Dreamwalker Handguards##9091 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Belt##9109 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  accept Dreamwalker Girdle##9092 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Bindings##9110 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  accept Dreamwalker Wristguards##9093 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
   talk Anachronos##15192
-  accept Atiesh, Greatstaff of the Guardian##9271 |goto Tanaris 64.2,51.42
+  accept Atiesh, Greatstaff of the Guardian##9269 |goto Tanaris 64.2,51.42
+step
+  talk Mog'dorg the Wizened##22941
+  accept Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
+step
+  only Tauren Druid
+  note Find the Half Pendant of Aquatic Agility and the Half Pendant of Aquatic Endurance. Speak with the residents of Moonglade to learn clues as to where these items may be located.
+  collect Pendant of the Sea Lion##15885 |q 30 |goto Moonglade 36.52,40.1
 step
   only Druid
-  note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
-  collect Amber Voodoo Feather##20606 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Gasher, Zul'Lor
+  note Use the Empty Dreadmist Peak Sampler to draw a sample of water from a pool at the top of the peak.
+  collect Filled Dreadmist Peak Sampler##15843 |q 6127 |goto Moonglade 56.21,30.64
 step
   only Druid
-  collect Kezan's Taint##19603 |q 8108 |goto Stranglethorn Vale 15.34,16.12
+  collect Enchanted South Seas Kelp##19611 |q 8112 |goto Stranglethorn Vale 15.3,16.02
 step
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
   collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
 step
   only Druid
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Robe if you bring him the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Robe##22351 |q 9103 |goto Eastern Plaguelands 81.39,58.23
+  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Tunic if you bring her the following: 1 Desecrated Tunic, 25 Wartorn Leather Scraps, 6 Cured Rugged Hides and 2 Nexus Crystals.
+  collect Desecrated Tunic##22350 |q 9086 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Leggings if you bring him the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Leggings##22366 |q 9104 |goto Eastern Plaguelands 81.39,58.23
+  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Legguards if you bring her the following: 1 Desecrated Legguards, 20 Wartorn Leather Scraps, 8 Cured Rugged Hides and 1 Nexus Crystal.
+  collect Desecrated Legguards##22359 |q 9087 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Circlet if you bring him the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  collect Desecrated Circlet##22367 |q 9105 |goto Eastern Plaguelands 81.39,58.23
+  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Headpiece if you bring her the following: 1 Desecrated Headpiece, 15 Wartorn Leather Scraps, 6 Cured Rugged Hides and 2 Nexus Crystals.
+  collect Desecrated Headpiece##22360 |q 9088 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Shoulderpads if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9106 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Spaulders if you bring her the following: 1 Desecrated Spaulders, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides and 1 Nexus Crystal.
+  collect Desecrated Spaulders##22361 |q 9089 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Druid
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Sandals if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9107 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Boots if you bring her the following: 1 Desecrated Boots, 12 Wartorn Leather Scraps, 3 Mooncloth and 2 Cured Rugged Hides.
+  collect Desecrated Boots##22365 |q 9090 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Druid
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Gloves if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  collect Desecrated Gloves##22371 |q 9108 |goto Eastern Plaguelands 81.39,58.23
+  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Handguards if you bring her the following: 1 Desecrated Handguards, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides and 1 Nexus Crystal.
+  collect Desecrated Handguards##22364 |q 9091 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Belt if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9109 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Girdle if you bring her the following: 1 Desecrated Girdle, 8 Wartorn Leather Scraps, 3 Mooncloth and 2 Cured Rugged Hides.
+  collect Desecrated Girdle##22363 |q 9092 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Druid
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Bindings if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9110 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Wristguards if you bring her the following: 1 Desecrated Wristguards, 6 Wartorn Leather Scraps, 1 Arcane Crystal and 2 Cured Rugged Hides.
+  collect Desecrated Wristguards##22362 |q 9093 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
 step
   only Druid
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
-  kill Atiesh##16387 |q 9271 |raid
+  kill Atiesh##16387 |q 9269 |raid
+step
+  note You must retrieve Vim'gol's Vile Grimoire. Deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  collect Vim'gol's Vile Grimoire##32358 |q 10998 |goto Blade's Edge Mountains 55.49,44.86
+step
+  only Tauren Druid
+  talk Dendrite Starblaze##11802
+  turnin Trial of the Sea Lion##30 |goto Moonglade 56.21,30.64
+step
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  turnin Back to Thunder Bluff##5932 |goto Thunder Bluff 76.48,27.22
 step
   only Druid
-  talk Maximillion##2126
-  turnin Tainted Scroll##3099 |goto Tirisfal Glades 30.91,66.34
+  talk Tonga Runetotem##3448
+  turnin The Principal Source##6127 |goto The Barrens 52.26,31.93
 step
   only Druid
-  talk Well Watcher Solanian##15295
-  turnin Well Watcher Solanian##10073 |goto Eversong Woods 38.76,19.36
+  talk Clintar Dreamwalker##22834
+  turnin Waking the Sleeper##10964 |goto Moonglade 75.46,67.04
 step
   only Druid
-  talk Menara Voidrender##6266
-  turnin Components for the Enchanted Gold Bloodrobe##4782 |goto The Barrens 62.51,35.45
+  talk Torwa Pathfinder##9619
+  turnin Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
 step
   only Druid
-  talk Menara Voidrender##6266
-  turnin Returning the Cleansed Orb##4976 |goto The Barrens 62.51,35.45
+  talk Maywiki of Zuldazar##14904
+  turnin Enchanted South Seas Kelp##8112 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Druid
-  talk Impsy##14470
-  turnin Trolls of a Feather##8422 |goto Felwood 41.36,45.02
-step
-  only Druid
-  talk Al'tabim the All-Seeing##14903
-  turnin Kezan's Taint##8108 |goto Stranglethorn Vale 15.34,16.12
+  talk Geologist Larksbane##15183
+  turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Robe##9103 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  turnin Dreamwalker Tunic##9086 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Leggings##9104 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  turnin Dreamwalker Legguards##9087 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Circlet##9105 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  turnin Dreamwalker Headpiece##9088 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Shoulderpads##9106 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  turnin Dreamwalker Spaulders##9089 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Sandals##9107 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  turnin Dreamwalker Boots##9090 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Gloves##9108 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  turnin Dreamwalker Handguards##9091 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Belt##9109 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  turnin Dreamwalker Girdle##9092 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Bindings##9110 |goto Eastern Plaguelands 81.39,58.23
+  talk Rayne##16135
+  turnin Dreamwalker Wristguards##9093 |goto Eastern Plaguelands 81.2,59.0
 step
   only Druid
   talk Anachronos##15192
-  turnin Atiesh, Greatstaff of the Guardian##9271 |goto Tanaris 64.2,51.42
+  turnin Atiesh, Greatstaff of the Guardian##9269 |goto Tanaris 64.2,51.42
+step
+  talk Mog'dorg the Wizened##22941
+  turnin Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
+step
+  only Tauren Druid
+  talk Dendrite Starblaze##11802
+  accept Aquatic Form##31 |goto Moonglade 56.21,30.64
+step
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  accept Body and Heart##6002 |goto Thunder Bluff 76.48,27.22
 step
   only Druid
-  talk Menara Voidrender##6266
-  accept Components for the Enchanted Gold Bloodrobe##4783 |goto The Barrens 62.51,35.45
+  talk Tonga Runetotem##3448
+  accept Gathering the Cure##6128 |goto The Barrens 52.26,31.93
 step
   only Druid
-  talk Menara Voidrender##6266
-  accept The Completed Orb of Dar'Orahil##4964 |goto The Barrens 62.51,35.45
+  talk Clintar Dreamwalker##22834
+  accept No Mere Dream##10965 |goto Moonglade 75.46,67.04
 step
   only Druid
-  talk Menara Voidrender##6266
-  accept The Completed Orb of Noh'Orahil##4975 |goto The Barrens 62.51,35.45
+  talk Torwa Pathfinder##9619
+  accept A Better Ingredient##9053 |goto Un'Goro Crater 71.64,75.96
 step
   only Druid
-  talk Al'tabim the All-Seeing##14903
-  accept Kezan's Unstoppable Taint##8109 |goto Stranglethorn Vale 15.34,16.12
+  talk Maywiki of Zuldazar##14904
+  accept Pristine Enchanted South Seas Kelp##8113 |goto Stranglethorn Vale 15.3,16.02
+step
+  talk Geologist Larksbane##15183
+  accept The Calling##8315 |goto Silithus 49.67,37.46
 step
   talk Mux Manascrambler##16014
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
-  only Druid
-  note Bring 10 Vials of Hatefury Blood and 1 Lesser Infernal Stone to Menara Voidrender in the Barrens.
-  collect 10 Vial of Hatefury Blood##6989 |q 4783 |goto Desolace 74.45,18.85 |tip {dropsfrom}Hatefury Rogue, Hatefury Trickster, Hatefury Felsworn
+  talk Mog'dorg the Wizened##22941
+  accept Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   only Druid
-  collect Kezan's Taint##19604 |q 8109 |goto Stranglethorn Vale 15.34,16.12
+  note Bring 5 Earthroot and 5 Kodo Horns to Tonga Runetotem at the Crossroads so he may make a curative salve.
+  collect 5 Earthroot##2449 |q 6128 |goto Westfall 31.27,61.14 |tip {dropsfrom}Riverpaw Herbalist, Swampwalker, Swampwalker Elder
+step
+  only Druid
+  note Protect Clintar Dreamwalker's Spirit while it gathers the relics of Aviana, then speak to Dreamwarden Lurosa.
+  kill Clintar Dreamwalker's Spirit##22916 |q 10965 |goto Moonglade 75.41,67.04
+step
+  only Druid
+  note Retrieve a Putrid Vine from the guardian at the bottom of the Sunken Temple and return to Torwa Pathfinder.
+  collect Putrid Vine##22444 |q 9053 |goto Un'Goro Crater 71.64,75.96 |tip {dropsfrom}Atal'alarion
+step
+  only Druid
+  collect Enchanted South Seas Kelp##19612 |q 8113 |goto Stranglethorn Vale 15.3,16.02
+step
+  note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
+  collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 49.67,37.46 |tip {dropsfrom}Emissary Roman'khan
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
   collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.76 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
-  only Druid
-  talk Menara Voidrender##6266
-  turnin Components for the Enchanted Gold Bloodrobe##4783 |goto The Barrens 62.51,35.45
+  note Retrieve Skulloc's Soul and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
+  collect Skulloc's Soul##32383 |q 11000 |goto Blade's Edge Mountains 55.49,44.86
+step
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  turnin Aquatic Form##31 |goto Thunder Bluff 76.48,27.22
+step
+  only Tauren Druid
+  talk Turak Runetotem##3033
+  turnin Body and Heart##6002 |goto Thunder Bluff 76.48,27.22
 step
   only Druid
-  talk Menara Voidrender##6266
-  turnin The Completed Orb of Dar'Orahil##4964 |goto The Barrens 62.51,35.45
+  talk Tonga Runetotem##3448
+  turnin Gathering the Cure##6128 |goto The Barrens 52.26,31.93
 step
   only Druid
-  talk Menara Voidrender##6266
-  turnin The Completed Orb of Noh'Orahil##4975 |goto The Barrens 62.51,35.45
+  talk Dreamwarden Lurosa##22837
+  turnin No Mere Dream##10965 |goto Moonglade 72.47,63.27
 step
   only Druid
-  talk Al'tabim the All-Seeing##14903
-  turnin Kezan's Unstoppable Taint##8109 |goto Stranglethorn Vale 15.34,16.12
+  talk Torwa Pathfinder##9619
+  turnin A Better Ingredient##9053 |goto Un'Goro Crater 71.64,75.96
+step
+  only Druid
+  talk Maywiki of Zuldazar##14904
+  turnin Pristine Enchanted South Seas Kelp##8113 |goto Stranglethorn Vale 15.3,16.02
+step
+  talk Geologist Larksbane##15183
+  turnin The Calling##8315 |goto Silithus 49.67,37.46
 step
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
-  only Druid
-  talk Menara Voidrender##6266
-  accept Components for the Enchanted Gold Bloodrobe##4784 |goto The Barrens 62.51,35.45
+  talk Mog'dorg the Wizened##22941
+  turnin Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   only Druid
-  talk Xizk Goodstitch##2670
-  accept Fine Gold Thread##4785 |goto Stranglethorn Vale 28.71,76.89
+  talk Tonga Runetotem##3448
+  accept Curing the Sick##6129 |goto The Barrens 52.26,31.93
+step
+  only Druid
+  talk Dreamwarden Lurosa##22837
+  accept Return to Morthis Whisperwing##10978 |goto Moonglade 72.47,63.27
+step
+  only Druid
+  talk Geologist Larksbane##15183
+  accept Armaments of War##8382 |goto Silithus 49.67,37.46
 step
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  talk Mog'dorg the Wizened##22941
+  accept Ogre Heaven##11009 |goto Blade's Edge Mountains 55.49,44.86
+step
   only Druid
-  note Bring some Fine Gold Thread, 2 Smoldering Coals, and a Soul Shard to Menara Voidrender in the Barrens.
-  collect Fine Gold Thread##12293 |q 4784 |goto The Barrens 62.51,35.45
+  note Use the Curative Animal Salve on 10 Sickly Gazelles that are located throughout the northern part of the Barrens; doing so should cure them. Sickly Gazelles have been reported north of the east-west road that runs through the Crossroads.
+  use Cured Gazelle##12297 |q 6129 |tip {useit}
 step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
   collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
   only Druid
-  talk Menara Voidrender##6266
-  turnin Components for the Enchanted Gold Bloodrobe##4784 |goto The Barrens 62.51,35.45
+  talk Dendrite Starblaze##11802
+  turnin Curing the Sick##6129 |goto Moonglade 56.21,30.64
 step
   only Druid
-  talk Xizk Goodstitch##2670
-  turnin Fine Gold Thread##4785 |goto Stranglethorn Vale 28.71,76.89
+  talk Morthis Whisperwing##22832
+  turnin Return to Morthis Whisperwing##10978 |goto Zangarmarsh 80.18,65.15
+step
+  only Druid
+  talk Geologist Larksbane##15183
+  turnin Armaments of War##8382 |goto Silithus 49.67,37.46
 step
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  talk Chu'a'lor##23233
+  turnin Ogre Heaven##11009 |goto Blade's Edge Mountains 28.76,57.36
+step
   only Druid
-  talk Menara Voidrender##6266
-  accept The Completed Robe##4786 |goto The Barrens 62.51,35.45
+  talk Dendrite Starblaze##11802
+  accept Power over Poison##6130 |goto Moonglade 56.21,30.64
+step
+  only Druid
+  talk Morthis Whisperwing##22832
+  accept To the Evergrove##10979 |goto Zangarmarsh 80.18,65.15
 step
   talk Mux Manascrambler##16014
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  talk Chu'a'lor##23233
+  accept The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
+step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
   collect Fel Elemental Rod##21939 |q 8928 |goto Tanaris 52.47,27.23
 step
+  note Chu'a'lor has tasked you with gathering 5 Apexis Shards. Bring them to him at Ogri'la atop the Blade's Edge Mountains.
+  collect 5 Apexis Shard##32569 |q 11025 |goto Blade's Edge Mountains 28.84,81.09 |tip {dropsfrom}Abyssal Flamebringer, Wrath Hound, Hemathion
+step
   only Druid
-  talk Menara Voidrender##6266
-  turnin The Completed Robe##4786 |goto The Barrens 62.51,35.45
+  talk Turak Runetotem##3033
+  turnin Power over Poison##6130 |goto Thunder Bluff 76.48,27.22
+step
+  only Druid
+  talk Arthorn Windsong##22924
+  turnin To the Evergrove##10979 |goto Blade's Edge Mountains 61.47,38.27
 step
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  talk Chu'a'lor##23233
+  turnin The Crystals##11025 |goto Blade's Edge Mountains 28.76,57.36
+step
+  only Druid
+  talk Arthorn Windsong##22924
+  accept The Book of the Raven##10980 |goto Blade's Edge Mountains 61.47,38.27
+step
   talk Mux Manascrambler##16014
   accept Return to Mokvar##8978 |goto Tanaris 52.47,27.23
+step
+  talk Torkus##23316
+  accept Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  only Druid
+  note Use an Aether Ray Eye with your Seer's Stone to reveal the raven cult ghosts. Search the Vortex Pinnacle for the spirit of Sai'kkal the Elder and question him about the book of the raven, then return to Arthorn Windsong.
+  kill Sai'kkal the Elder##22932 |q 10980 |goto Blade's Edge Mountains 29.54,59.72
+step
+  note Torkus has asked you to obtain an Unstable Flask of the Beast for him. Return with it to him at Ogri'la atop the Blade's Edge Mountains.
+  collect Unstable Flask of the Beast##32598 |q 11030 |goto Blade's Edge Mountains 28.38,57.64
+step
+  only Druid
+  talk Arthorn Windsong##22924
+  turnin The Book of the Raven##10980 |goto Blade's Edge Mountains 61.47,38.27
 step
   talk Mokvar##16012
   turnin Return to Mokvar##8978 |goto Orgrimmar 34.95,38.29
 step
-  only Druid
-  talk Mokvar##16012
-  accept Just Compensation##8943 |goto Orgrimmar 34.95,38.29
+  talk Torkus##23316
+  turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
 step
   only Druid
-  note Bring a Dreadmist Belt and a set of Dreadmist Wraps to Mokvar in Orgrimmar.
-  collect Dreadmist Belt##16702 |q 8943 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Thuzadin Shadowcaster, Thuzadin Necromancer, Crimson Conjuror
+  talk Arthorn Windsong##22924
+  accept Eyes in the Sky##10986 |goto Blade's Edge Mountains 61.47,38.27
 step
   only Druid
   talk Mokvar##16012
-  turnin Just Compensation##8943 |goto Orgrimmar 34.95,38.29
+  accept Just Compensation##8927 |goto Orgrimmar 34.95,38.29
+step
+  talk Chu'a'lor##23233
+  accept The Skyguard Outpost##11062 |goto Blade's Edge Mountains 28.76,57.36
+step
+  only Druid
+  note Bring a Wildheart Belt and a set of Wildheart Gloves to Mokvar in Orgrimmar.
+  collect Wildheart Belt##16716 |q 8927 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider, Bile Spewer
+step
+  only Druid
+  talk Watcher Elaira##22981
+  turnin Eyes in the Sky##10986 |goto Nagrand 20.58,35.73
+step
+  only Druid
+  talk Mokvar##16012
+  turnin Just Compensation##8927 |goto Orgrimmar 34.95,38.29
+step
+  talk Sky Commander Keller##23334
+  turnin The Skyguard Outpost##11062 |goto Blade's Edge Mountains 27.38,52.68
+step
+  only Druid
+  talk Watcher Elaira##22981
+  accept To Catch A Sparrowhawk##10987 |goto Nagrand 20.58,35.73
 step
   talk Mokvar##16012
   accept In Search of Anthion##8930 |goto Orgrimmar 34.95,38.29
 step
+  only Druid
+  talk Sky Sergeant Vanderlip##23120
+  accept Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
+step
+  only Druid
+  note Use the Sparrowhawk Net to capture a Wild Sparrowhawk and bring it to Watcher Elaira on the Twilight Ridge.
+  collect Captive Sparrowhawk##32320 |q 10987 |goto Nagrand 20.58,35.73
+step
+  only Druid
+  note Sky Sergeant Vanderlip has tasked you with the bombing of 15 Fel Cannonball Stacks. Return to her at the Skyguard Outpost atop the Blade's Edge Mountains once you have done so.
+  get Bombing Run |q 11102 |goto Blade's Edge Mountains 27.56,52.9
+step
+  only Druid
+  talk Watcher Elaira##22981
+  turnin To Catch A Sparrowhawk##10987 |goto Nagrand 20.58,35.73
+step
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8930 |goto Eastern Plaguelands 30.85,16.75
+step
+  only Druid
+  talk Sky Sergeant Vanderlip##23120
+  turnin Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
+step
+  only Druid
+  talk Watcher Elaira##22981
+  accept The Raven Stones##10988 |goto Nagrand 20.58,35.73
 step
   talk Anthion Harmon##16016
   accept Dead Man's Plea##8945 |goto Eastern Plaguelands 30.85,16.75
 step
+  only Druid
+  note Gather 8 Raven Stones from Skettis and bring them to Arthorn Windsong at Evergrove in Blade's Edge Mountains.
+  collect 8 Raven Stone##32313 |q 10988 |goto Terokkar Forest 69.29,81.1 |tip {dropsfrom}Raven Stone Fragment
+step
   note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
   kill Ysida Harmon##16031 |q 8945
+step
+  only Druid
+  talk Arthorn Windsong##22924
+  turnin The Raven Stones##10988 |goto Blade's Edge Mountains 61.47,38.27
 step
   talk Ysida Harmon##16031
   turnin Dead Man's Plea##8945
 step
+  only Druid
+  talk Arthorn Windsong##22924
+  accept The Eagle's Essence##10990 |goto Blade's Edge Mountains 61.47,38.27
+step
   talk Ysida Harmon##16031
   accept Proof of Life##8946
+step
+  only Druid
+  note Defeat the Guardian of the Eagle and obtain the Essence of the Eagle. Use Arthorn's Sparrowhawk Whistle to call Arthorn's Sparrowhawk to relay news of your success.
+  collect Essence of the Eagle##32355 |q 10990 |goto Blade's Edge Mountains 61.47,38.27 |tip {dropsfrom}Guardian of the Eagle
+step
+  only Druid
+  talk Arthorn's Sparrowhawk##23338
+  turnin The Eagle's Essence##10990
 step
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 30.85,16.75
 step
+  only Druid
+  talk Arthorn's Sparrowhawk##23338
+  accept The Falcon's Essence##10991
+step
   talk Anthion Harmon##16016
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
+step
+  only Druid
+  note Defeat the Guardian of the Falcon, obtain the Essence of the Falcon. Use Arthorn's Sparrowhawk Whistle to call Arthorn's Sparrowhawk to relay news of your success.
+  collect Essence of the Falcon##32357 |q 10991 |tip {dropsfrom}Guardian of the Falcon
 step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
   collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 30.85,16.75
 step
+  only Druid
+  talk Arthorn's Sparrowhawk##23338
+  turnin The Falcon's Essence##10991
+step
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
+step
+  only Druid
+  talk Arthorn's Sparrowhawk##23338
+  accept The Hawk's Essence##10992
 step
   talk Anthion Harmon##16016
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 30.85,16.75
 step
+  only Druid
+  note Defeat the Guardian of the Hawk and bring the Essence of the Hawk to Arthorn Windsong at the Evergrove.
+  collect Essence of the Hawk##32356 |q 10992 |tip {dropsfrom}Guardian of the Hawk
+step
+  only Druid
+  talk Arthorn Windsong##22924
+  turnin The Hawk's Essence##10992 |goto Blade's Edge Mountains 61.47,38.27
+step
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
+step
+  only Druid
+  talk Arthorn Windsong##22924
+  accept Return to Cenarion Refuge##10993 |goto Blade's Edge Mountains 61.47,38.27
 step
   talk Falrin Treeshaper##16032
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+step
+  only Druid
+  talk Morthis Whisperwing##22832
+  turnin Return to Cenarion Refuge##10993 |goto Zangarmarsh 80.18,65.15
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
+  only Druid
+  talk Morthis Whisperwing##22832
+  accept Chasing the Moonstone##10994 |goto Zangarmarsh 80.18,65.15
+step
   talk Falrin Treeshaper##16032
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
+  only Druid
+  note Bring a Southfury Moonstone to Morthis Whisperwing at the Cenarion Refuge.
+  collect Southfury Moonstone##32364 |q 10994 |goto Zangarmarsh 80.18,65.15
+step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+step
+  only Druid
+  talk Morthis Whisperwing##22832
+  turnin Chasing the Moonstone##10994 |goto Zangarmarsh 80.18,65.15
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
+  only Druid
+  talk Morthis Whisperwing##22832
+  accept Vanquish the Raven God##11001 |goto Zangarmarsh 80.18,65.15
+step
   talk Falrin Treeshaper##16032
   accept The Challenge##9015 |goto Dire Maul - Dungeon -1,-1
 step
+  only Druid
+  note Slay the Raven God and return to Morthis Whisperwing at Cenarion Refuge.
+  kill Anzu##23035 |q 11001 |elite
+step
   note Travel to the Ring of the Law in Blackrock Depths and place the Banner of Provocation in its center as you are sentenced by High Justice Grimstone. Slay Theldren and his gladiators and return to Anthion Harmon in the Eastern Plaguelands with the first piece of Lord Valthalak's amulet.
   collect Top Piece of Lord Valthalak's Amulet##22047 |q 9015 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Theldren
+step
+  only Druid
+  talk Morthis Whisperwing##22832
+  turnin Vanquish the Raven God##11001 |goto Zangarmarsh 80.18,65.15
 step
   talk Anthion Harmon##16016
   turnin The Challenge##9015 |goto Eastern Plaguelands 30.85,16.75
 step
   only Druid
   talk Anthion Harmon##16016
-  accept Anthion's Parting Words##9021 |goto Eastern Plaguelands 30.85,16.75
+  accept Anthion's Parting Words##9016 |goto Eastern Plaguelands 30.85,16.75
 step
   only Druid
-  note Return to Mokvar in Orgimmar with a set of Dreadmist Sandals, Dreadmist Leggings and Dreadmist Mantle.
-  collect Dreadmist Sandals##16704 |q 9021 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Baroness Anastari
+  talk Morthis Whisperwing##22832
+  accept Eternal Vigilance##11011 |goto Zangarmarsh 80.18,65.15
+step
+  only Druid
+  note Return to Mokvar in Orgimmar with a set of Wildheart Boots, a Wildheart Kilt and Wildheart Spaulders.
+  collect Wildheart Boots##16715 |q 9016 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Mother Smolderweb
 step
   only Druid
   talk Mokvar##16012
-  turnin Anthion's Parting Words##9021 |goto Orgrimmar 34.95,38.29
+  turnin Anthion's Parting Words##9016 |goto Orgrimmar 34.95,38.29
+step
+  only Druid
+  talk Morthis Whisperwing##22832
+  turnin Eternal Vigilance##11011 |goto Zangarmarsh 80.18,65.15
 step
   talk Mokvar##16012
   accept Bodley's Unfortunate Fate##9032 |goto Orgrimmar 34.95,38.29
@@ -793,7 +1016,8 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |tip {dropsfrom}Cursed Paladin, Cursed Justicar, Writhing Mage
+  kill Cursed Paladin##7071 |goto Hillsbrad Foothills 18.45,76.6 |elite
+  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
 step
   talk Bodley##16033
   turnin Components of Importance##8965
@@ -851,13 +1075,13 @@ step
 step
   only Druid
   talk Mokvar##16012
-  accept Saving the Best for Last##9012 |goto Orgrimmar 34.95,38.29
+  accept Saving the Best for Last##9007 |goto Orgrimmar 34.95,38.29
 step
   only Druid
-  note Give Mokvar your Dreadmist Mask and Dreadmist Robe.
-  collect Dreadmist Mask##16698 |q 9012 |goto Orgrimmar 34.95,38.29 |tip {dropsfrom}Darkmaster Gandling
+  note Give Mokvar your Wildheart Cowl and Wildheart Vest.
+  collect Wildheart Cowl##16720 |q 9007 |goto Orgrimmar 34.95,38.29 |tip {dropsfrom}Darkmaster Gandling
 step
   only Druid
   talk Mokvar##16012
-  turnin Saving the Best for Last##9012 |goto Orgrimmar 34.95,38.29
+  turnin Saving the Best for Last##9007 |goto Orgrimmar 34.95,38.29
 ]])

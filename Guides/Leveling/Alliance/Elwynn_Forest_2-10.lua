@@ -7,6 +7,9 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (2-10)", {
 	next = "Leveling/Alliance/Teldrassil (4-12)",
 }, [[
 step
+  kill Riverpaw Runt##97 |goto Elwynn Forest 66.09,46.34 |tip Loot the quest item here — it starts the quest.
+  accept The Collector##123 |goto Elwynn Forest 66.09,46.34
+step
   talk Deputy Willem##823
   accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
 step
@@ -16,6 +19,9 @@ step
   only Human Priest
   talk Priestess Anetta##375
   accept In Favor of the Light##5623 |goto Elwynn Forest 49.81,39.49
+step
+  talk Marshal Dughan##240
+  turnin The Collector##123 |goto Elwynn Forest 42.11,65.93
 step
   only Human Priest
   talk Priestess Josetta##377
@@ -54,10 +60,13 @@ step
   note Find and kill "the Collector" then return to Marshal Dughan with The Collector's Ring.
   collect The Collector's Ring##2239 |q 147 |goto Elwynn Forest 71.09,80.65 |tip {dropsfrom}Morgan the Collector
 step
+  kill Defias Bandit##116 |goto Elwynn Forest 47.48,74.93 |tip Loot the quest item here — it starts the quest.
+  accept Furlbrow's Deed##184 |goto Elwynn Forest 47.48,74.93
+step
   talk Smith Argus##514
   accept Elmore's Task##1097 |goto Elwynn Forest 41.71,65.54
 step
-  only Human Warlock
+  only Human Mage
   talk Zaldimar Wefhellt##328
   accept Speak with Jennea##1860 |goto Elwynn Forest 43.25,66.19
 step
@@ -88,7 +97,7 @@ step
   talk Maybell Maclure##251
   accept Young Lovers##106 |goto Elwynn Forest 43.15,89.62
 step
-  only Human Warlock
+  only Human Mage
   talk Jennea Cannon##5497
   turnin Speak with Jennea##1860 |goto Stormwind City 38.62,79.3 |tip {turninat}Stormwind City
 step
@@ -107,8 +116,12 @@ step
   talk Tommy Joe Stonefield##252
   accept Speak with Gramma##111 |goto Elwynn Forest 29.84,86.0
 step
-  talk Guard Thomas##261
-  accept Deliver Thomas' Report##39 |goto Elwynn Forest 73.97,72.18
+  click Wanted Poster##68
+  accept Wanted:  "Hogger"##176 |goto Elwynn Forest 24.55,74.69
+step
+  note Slay the gnoll Hogger and bring his Huge Gnoll Claw to Marshal Dughan.
+  kill Hogger##448 |goto Elwynn Forest 26.43,92.71 |elite
+  collect Huge Gnoll Claw##1931 |q 176 |goto Elwynn Forest 26.43,92.71
 step
   talk Guard Thomas##261
   accept Bounty on Murlocs##46 |goto Elwynn Forest 73.97,72.18
@@ -141,7 +154,7 @@ step
   accept A Bundle of Trouble##5545 |goto Elwynn Forest 81.38,66.11
 step
   note Bring 8 Bundles of Wood to Raelen at the Eastvale Logging Camp.
-  collect 8 Bundle of Wood##13872 |q 5545 |goto Elwynn Forest 80.24,60.97 |tip {dropsfrom}Bundle of Wood
+  collect 8 Bundle of Wood##13872 |q 5545 |goto Elwynn Forest 80.24,60.97
 step
   note Kill 8 Prowlers and 5 Young Forest Bears, and then return to Guard Thomas at the east Elwynn bridge.
   kill Prowler##118 |q 52 |goto Elwynn Forest 80.51,70.87
@@ -162,6 +175,9 @@ step
   talk Verner Osgood##415
   turnin Return to Verner##119 |goto Redridge Mountains 30.97,47.27 |tip {turninat}Redridge Mountains
 step
+  talk Farmer Furlbrow##237
+  turnin Furlbrow's Deed##184 |goto Westfall 59.95,19.36 |tip {turninat}Westfall
+step
   talk Marshal McBride##197
   accept Kobold Camp Cleanup##7 |goto Elwynn Forest 48.92,41.61
 step
@@ -177,11 +193,12 @@ step
   note Kill 10 Kobold Vermin, then return to Marshal McBride.
   kill Kobold Vermin##6 |q 7 |goto Elwynn Forest 49.27,36.26
 step
-  talk Marshal Dughan##240
-  turnin Manhunt##147 |goto Elwynn Forest 42.11,65.93
+  only Human Priest
+  talk Priestess Josetta##377
+  turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
 step
   talk Marshal Dughan##240
-  turnin Deliver Thomas' Report##39 |goto Elwynn Forest 42.11,65.93
+  turnin Manhunt##147 |goto Elwynn Forest 42.11,65.93
 step
   talk Marshal Dughan##240
   turnin A Fishy Peril##40 |goto Elwynn Forest 42.11,65.93
@@ -189,9 +206,8 @@ step
   talk Remy "Two Times"##241
   turnin Gold Dust Exchange##47 |goto Elwynn Forest 42.14,67.26
 step
-  only Human Priest
-  talk Priestess Josetta##377
-  turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
+  talk Marshal Dughan##240
+  turnin Wanted:  "Hogger"##176 |goto Elwynn Forest 42.11,65.93
 step
   talk William Pestle##253
   turnin Kobold Candles##60 |goto Elwynn Forest 43.32,65.7
@@ -201,9 +217,6 @@ step
 step
   talk Marshal Dughan##240
   accept Further Concerns##35 |goto Elwynn Forest 42.11,65.93
-step
-  talk Marshal Dughan##240
-  accept Cloth and Leather Armor##59 |goto Elwynn Forest 42.11,65.93
 step
   talk William Pestle##253
   accept Shipment to Stormwind##61 |goto Elwynn Forest 43.32,65.7
@@ -261,9 +274,6 @@ step
   talk Supervisor Raelen##10616
   turnin A Bundle of Trouble##5545 |goto Elwynn Forest 81.38,66.11
 step
-  talk Sara Timberlain##278
-  turnin Cloth and Leather Armor##59 |goto Elwynn Forest 79.46,68.79
-step
   only Rogue
   talk Renzik "The Shiv"##6946
   turnin SI:7##2300 |goto Stormwind City 75.76,60.36 |tip {turninat}Stormwind City
@@ -308,11 +318,11 @@ step
   talk Marshal McBride##197
   accept Hallowed Letter##3103 |goto Elwynn Forest 48.92,41.61
 step
-  only Human Warlock
+  only Human Mage
   talk Marshal McBride##197
   accept Glyphic Letter##3104 |goto Elwynn Forest 48.92,41.61
 step
-  only Human Druid
+  only Human Warlock
   talk Marshal McBride##197
   accept Tainted Letter##3105 |goto Elwynn Forest 48.92,41.61
 step
@@ -360,6 +370,14 @@ step
 step
   turnin Find the Lost Guards##37 |goto Elwynn Forest 72.66,60.34
 step
+  click A half-eaten body##55
+  accept Discover Rolf's Fate##45 |goto Elwynn Forest 72.66,60.34
+step
+  turnin Discover Rolf's Fate##45 |goto Elwynn Forest 79.8,55.5
+step
+  click Rolf's corpse##56
+  accept Report to Thomas##71 |goto Elwynn Forest 79.8,55.5
+step
   talk Deputy Willem##823
   turnin Bounty on Garrick Padfoot##6 |goto Elwynn Forest 48.17,42.94
 step
@@ -382,14 +400,14 @@ step
   talk Priestess Anetta##375
   turnin Hallowed Letter##3103 |goto Elwynn Forest 49.81,39.49
 step
-  only Human Warlock
+  only Human Mage
   talk Khelden Bremen##198
   turnin Glyphic Letter##3104 |goto Elwynn Forest 49.66,39.4
 step
   talk Eagan Peltskinner##196
   turnin Wolves Across the Border##33 |goto Elwynn Forest 48.94,40.16
 step
-  only Human Druid
+  only Human Warlock
   talk Drusilla La Salle##459
   turnin Tainted Letter##3105 |goto Elwynn Forest 49.87,42.65
 step
@@ -414,6 +432,12 @@ step
   talk Deputy Rainer##963
   turnin Riverpaw Gnoll Bounty##11 |goto Elwynn Forest 24.23,74.45
 step
+  talk Guard Thomas##261
+  turnin Report to Thomas##71 |goto Elwynn Forest 73.97,72.18
+step
+  talk Guard Thomas##261
+  accept Deliver Thomas' Report##39 |goto Elwynn Forest 73.97,72.18
+step
   talk Marshal McBride##197
   turnin Skirmish at Echo Ridge##21 |goto Elwynn Forest 48.92,41.61
 step
@@ -427,10 +451,19 @@ step
   accept Milly's Harvest##3904 |goto Elwynn Forest 50.69,39.35
 step
   note Bring 8 crates of Milly's Harvest to Milly Osworth at Northshire Abbey.
-  collect 8 Milly's Harvest##11119 |q 3904 |goto Elwynn Forest 53.93,48.89 |tip {dropsfrom}Milly's Harvest
+  collect 8 Milly's Harvest##11119 |q 3904 |goto Elwynn Forest 53.93,48.89
+step
+  talk Marshal Dughan##240
+  turnin Deliver Thomas' Report##39 |goto Elwynn Forest 42.11,65.93
 step
   talk Marshal Dughan##240
   turnin Report to Goldshire##54 |goto Elwynn Forest 42.11,65.93
+step
+  talk Marshal Dughan##240
+  accept Cloth and Leather Armor##59 |goto Elwynn Forest 42.11,65.93
+step
+  talk Sara Timberlain##278
+  turnin Cloth and Leather Armor##59 |goto Elwynn Forest 79.46,68.79
 step
   talk Milly Osworth##9296
   turnin Milly's Harvest##3904 |goto Elwynn Forest 50.69,39.35

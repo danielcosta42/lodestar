@@ -36,11 +36,20 @@ step
   note Kill 8 Mana Wyrms; they are located close to the Burning Crystals that are adjacent to the tower and gazebo. Return to Magistrix Erona at the tower on Sunstrider Isle when you are done.
   kill Mana Wyrm##15274 |q 8325 |goto Eversong Woods 36.91,21.9
 step
+  kill Tainted Arcane Wraith##15298 |goto Eversong Woods 31.25,27.72 |tip Loot the quest item here — it starts the quest.
+  accept Tainted Arcane Sliver##8338 |goto Eversong Woods 31.25,27.72
+step
   talk Aeldon Sunbrand##15403
   accept Unstable Mana Crystals##8463 |goto Eversong Woods 48.17,46.0
 step
   note Bring back 6 Unstable Mana Crystals to Aeldon Sunbrand at Falconwing Square.
   collect Unstable Mana Crystal##20743 |q 8463 |goto Eversong Woods 44.4,39.75 |tip {dropsfrom}Unstable Mana Crystal Crate
+step
+  click Wanted: Thaelis the Hungerer##180918
+  accept Wanted: Thaelis the Hungerer##8468 |goto Eversong Woods 48.18,46.31
+step
+  note Bring Thaelis's Head to Sergeant Kan'ren at Falconwing Square in Eversong Woods.
+  collect Thaelis's Head##21781 |q 8468 |goto Eversong Woods 45.02,37.68 |tip {dropsfrom}Thaelis the Hungerer
 step
   talk Magister Jaronis##15418
   accept Major Malfunction##8472 |goto Eversong Woods 47.26,46.31
@@ -51,30 +60,13 @@ step
   talk Ranger Jaela##15416
   accept The Dead Scar##8475 |goto Eversong Woods 50.34,50.77
 step
-  talk Aeldon Sunbrand##15403
-  accept The Dwarven Spy##8483 |goto Eversong Woods 48.17,46.0
-step
-  note Bring Prospector Anvilward's Head to Aeldon Sunbrand at Falconwing Square in Eversong Woods.
-  collect Prospector Anvilward's Head##20764 |q 8483 |goto Eversong Woods 44.57,53.3 |tip {dropsfrom}Prospector Anvilward
-step
   only BloodElf
   talk Skymistress Gloaming##16192
   accept Return to Quartermaster Lymel##9135 |goto Eversong Woods 54.36,50.72
 step
-  only Warlock
-  talk Instructor Antheol##15970
-  accept Fetch!##9402 |goto Eversong Woods 55.7,54.51
-step
-  only Warlock
-  note Dive to the bottom of Stillwhisper Pond and retrieve the Azure Phial for Instructor Antheol.
-  collect Azure Phial##23551 |q 9402 |goto Eversong Woods 54.87,56.37 |tip {dropsfrom}Azure Phial
-step
   only Priest
   talk Ponaris##16276
   accept Cleansing the Scar##9489 |goto Eversong Woods 47.85,47.97
-step
-  note Slay 8 Plaguebone Pillagers and report back to Ranger Jaela on the Dead Scar in Eversong Woods.
-  kill Plaguebone Pillager##15654 |q 8475 |goto Eversong Woods 50.3,56.69
 step
   talk Apprentice Ralen##15941
   accept Roadside Ambush##9035 |goto Eversong Woods 45.19,56.43
@@ -85,11 +77,23 @@ step
   note Apprentice Meledor in Eversong Woods wants you to search the water beneath the bridge nearby and bring him Antheol's Elemental Grimoire.
   collect Antheol's Elemental Grimoire##22414 |q 9062 |goto Eversong Woods 44.34,61.99 |tip {dropsfrom}Soaked Tome
 step
+  note Slay 8 Plaguebone Pillagers and report back to Ranger Jaela on the Dead Scar in Eversong Woods.
+  kill Plaguebone Pillager##15654 |q 8475 |goto Eversong Woods 50.3,56.69
+step
+  kill Darnassian Scout##15968 |goto Eversong Woods 34.19,60.81 |tip Loot the quest item here — it starts the quest.
+  accept Incriminating Documents##8482 |goto Eversong Woods 34.19,60.81
+step
   talk Hathvelion Sungaze##15920
   accept Fish Heads, Fish Heads...##8884 |goto Eversong Woods 29.89,58.43
 step
   note Collect 8 Grimscale Murloc Heads. Return them to Hathvelion Sungaze in the Eversong Woods on the bluff overlooking the Tranquil Shore.
   collect 8 Grimscale Murloc Head##21757 |q 8884 |goto Eversong Woods 24.82,68.91 |tip {dropsfrom}Grimscale Murloc, Grimscale Oracle, Grimscale Forager
+step
+  kill Grimscale Murloc##15668 |goto Eversong Woods 24.82,68.91 |tip Loot the quest item here — it starts the quest.
+  accept Captain Kelisendra's Lost Rutters##8887 |goto Eversong Woods 24.82,68.91
+step
+  talk Captain Kelisendra##15921
+  turnin Captain Kelisendra's Lost Rutters##8887 |goto Eversong Woods 36.36,66.62
 step
   talk Velendris Whitemorn##15404
   accept Lost Armaments##8480 |goto Eversong Woods 36.36,66.77
@@ -144,7 +148,7 @@ step
   accept Corrupted Soil##8487 |goto Eversong Woods 54.28,70.98
 step
   note Apprentice Mirveda at the East Sanctum in Eversong Woods wants you to collect 8 Tainted Soil Samples.
-  collect 8 Tainted Soil Sample##20771 |q 8487 |goto Eversong Woods 52.08,69.86 |tip {dropsfrom}Tainted Soil Sample
+  collect 8 Tainted Soil Sample##20771 |q 8487 |goto Eversong Woods 52.08,69.86
 step
   note Slay 4 Rotlimb Marauders and 4 Darkwraiths and return to Ranger Sareyn at Fairbreeze Village in Eversong Woods.
   kill Rotlimb Marauder##15658 |q 9252 |goto Eversong Woods 51.28,72.77
@@ -158,14 +162,22 @@ step
   talk Magister Duskwither##15951
   accept The Magister's Apprentice##8888 |goto Eversong Woods 60.32,61.38
 step
-  talk Lieutenant Dawnrunner##15399
-  accept Warning Fairbreeze Village##9363 |goto Eversong Woods 60.32,62.77
+  only Mage
+  talk Instructor Antheol##15970
+  accept Fetch!##9402 |goto Eversong Woods 55.7,54.51
+step
+  only Mage
+  note Dive to the bottom of Stillwhisper Pond and retrieve the Azure Phial for Instructor Antheol.
+  collect Azure Phial##23551 |q 9402 |goto Eversong Woods 54.87,56.37
 step
   talk Apprentice Loralthalis##15924
   turnin The Magister's Apprentice##8888 |goto Eversong Woods 67.81,56.51
 step
   talk Apprentice Loralthalis##15924
   accept Deactivating the Spire##8889 |goto Eversong Woods 67.81,56.51
+step
+  click Magister Duskwither's Journal##181011
+  accept Abandoned Investigations##8891 |goto Eversong Woods 69.24,52.11
 step
   talk Apprentice Loralthalis##15924
   accept Where's Wyllithen?##9394 |goto Eversong Woods 67.81,56.51
@@ -188,6 +200,9 @@ step
   note Ven'jashi, the troll prisoner at Tor'Watha, wants you to bring him Chieftain Zul'Marosh's Head. Chieftain Zul'Marosh can be found in Zeb'Watha, across Lake Elrendar.
   collect Chieftain Zul'Marosh's Head##20760 |q 8479 |goto Eversong Woods 62.51,79.68 |tip {dropsfrom}Chieftain Zul'Marosh
 step
+  kill Chieftain Zul'Marosh##15407 |goto Eversong Woods 62.51,79.68 |tip Loot the quest item here — it starts the quest.
+  accept Amani Invasion##9360 |goto Eversong Woods 62.51,79.68
+step
   talk Courier Dawnstrider##16183
   turnin Missing in the Ghostlands##9144 |goto Eversong Woods 48.98,88.99
 step
@@ -203,8 +218,8 @@ step
   talk Larianna Riverwind##15398
   accept A Somber Task##8473 |goto Eversong Woods 34.06,80.02
 step
-  talk Larianna Riverwind##15398
-  accept Whitebark's Memory##10166 |goto Eversong Woods 34.06,80.02
+  kill Old Whitebark##15409 |goto Eversong Woods 34.93,84.46 |tip Loot the quest item here — it starts the quest.
+  accept Old Whitebark's Pendant##8474 |goto Eversong Woods 34.93,84.46
 step
   note Slay 10 Withered Green Keepers at the Scorched Grove. Then report back to Larianna Riverwind inside the tower just to the northwest of the Scorched Grove in Eversong Woods.
   kill Withered Green Keeper##15637 |q 8473 |goto Eversong Woods 36.63,84.72
@@ -214,6 +229,9 @@ step
 step
   talk Arcanist Ithanas##15296
   turnin A Fistful of Slivers##8336 |goto Eversong Woods 38.27,19.13
+step
+  talk Arcanist Helion##15297
+  turnin Tainted Arcane Sliver##8338 |goto Eversong Woods 37.18,18.94
 step
   talk Well Watcher Solanian##15295
   turnin The Shrine of Dath'Remar##8345 |goto Eversong Woods 38.76,19.36
@@ -228,11 +246,11 @@ step
   note Collect 8 Lynx Collars from slain Springpaw Lynxes and Springpaw Cubs. Return to Magistrix Erona on Sunstrider Isle when you are done.
   collect 8 Lynx Collar##20797 |q 8326 |goto Eversong Woods 38.31,19.89 |tip {dropsfrom}Springpaw Cub, Springpaw Lynx
 step
-  only Warlock
+  only Mage
   talk Magistrix Erona##15278
   accept Mage Training##8328 |goto Eversong Woods 38.21,20.83
 step
-  only Druid
+  only Warlock
   talk Magistrix Erona##15278
   accept Warlock Training##8563 |goto Eversong Woods 38.21,20.83
 step
@@ -263,6 +281,9 @@ step
   talk Ponaris##16276
   turnin Cleansing the Scar##9489 |goto Eversong Woods 47.85,47.97
 step
+  talk Sergeant Kan'ren##16924
+  turnin Wanted: Thaelis the Hungerer##8468 |goto Eversong Woods 47.77,46.58
+step
   talk Magister Jaronis##15418
   turnin Major Malfunction##8472 |goto Eversong Woods 47.26,46.31
 step
@@ -270,28 +291,19 @@ step
   turnin The Dead Scar##8475 |goto Eversong Woods 50.34,50.77
 step
   talk Aeldon Sunbrand##15403
-  turnin The Dwarven Spy##8483 |goto Eversong Woods 48.17,46.0
+  turnin Incriminating Documents##8482 |goto Eversong Woods 48.17,46.0
 step
-  only Warlock
-  talk Instructor Antheol##15970
-  turnin Fetch!##9402 |goto Eversong Woods 55.7,54.51
+  talk Aeldon Sunbrand##15403
+  accept The Dwarven Spy##8483 |goto Eversong Woods 48.17,46.0
+step
+  note Bring Prospector Anvilward's Head to Aeldon Sunbrand at Falconwing Square in Eversong Woods.
+  collect Prospector Anvilward's Head##20764 |q 8483 |goto Eversong Woods 44.57,53.3 |tip {dropsfrom}Prospector Anvilward
 step
   talk Magister Jaronis##15418
   accept Delivery to the North Sanctum##8895 |goto Eversong Woods 47.26,46.31
 step
   talk Aeldon Sunbrand##15403
-  accept Fairbreeze Village##9256 |goto Eversong Woods 48.17,46.0
-step
-  talk Aeldon Sunbrand##15403
   accept Darnassian Intrusions##9352 |goto Eversong Woods 48.17,46.0
-step
-  only Warlock
-  talk Instructor Antheol##15970
-  accept The Purest Water##9403 |goto Eversong Woods 55.7,54.51
-step
-  only Warlock
-  note Instructor Antheol wants you to fill the Azure Phial at Elrendar Falls.
-  collect Filled Azure Phial##23552 |q 9403 |goto Eversong Woods 55.7,54.51
 step
   talk Apprentice Meledor##15945
   turnin Roadside Ambush##9035 |goto Eversong Woods 44.88,61.03
@@ -329,14 +341,8 @@ step
   talk Ranger Sareyn##15942
   turnin Ranger Sareyn##9358 |goto Eversong Woods 46.93,71.79
 step
-  talk Ranger Degolien##15939
-  turnin Warning Fairbreeze Village##9363 |goto Eversong Woods 43.34,70.82
-step
   talk Ranger Sareyn##15942
   turnin Defending Fairbreeze Village##9252 |goto Eversong Woods 46.93,71.79
-step
-  talk Ranger Degolien##15939
-  turnin Fairbreeze Village##9256 |goto Eversong Woods 43.34,70.82
 step
   talk Velan Brightoak##15417
   turnin Pelt Collection##8491 |goto Eversong Woods 44.72,69.63
@@ -347,9 +353,6 @@ step
   talk Lord Saltheril##16144
   turnin The Party Never Ends##9067 |goto Eversong Woods 38.14,73.56
 step
-  talk Ranger Degolien##15939
-  accept Situation at Sunsail Anchorage##8892 |goto Eversong Woods 43.34,70.82
-step
   talk Ranger Sareyn##15942
   accept Runewarden Deryan##9253 |goto Eversong Woods 46.93,71.79
 step
@@ -359,8 +362,35 @@ step
   talk Apprentice Mirveda##15402
   accept Unexpected Results##8488 |goto Eversong Woods 54.28,70.98
 step
+  talk Lieutenant Dawnrunner##15399
+  turnin Amani Invasion##9360 |goto Eversong Woods 60.32,62.77
+step
   talk Arathel Sunforge##15400
   turnin The Spearcrafter's Hammer##8477 |goto Eversong Woods 59.52,62.6
+step
+  only Mage
+  talk Instructor Antheol##15970
+  turnin Fetch!##9402 |goto Eversong Woods 55.7,54.51
+step
+  talk Magister Duskwither##15951
+  turnin Abandoned Investigations##8891 |goto Eversong Woods 60.32,61.38
+step
+  talk Instructor Antheol##15970
+  turnin Taking the Fall##9064 |goto Eversong Woods 55.7,54.51
+step
+  talk Instructor Antheol##15970
+  accept Swift Discipline##9066 |goto Eversong Woods 55.7,54.51
+step
+  talk Lieutenant Dawnrunner##15399
+  accept Warning Fairbreeze Village##9363 |goto Eversong Woods 60.32,62.77
+step
+  only Mage
+  talk Instructor Antheol##15970
+  accept The Purest Water##9403 |goto Eversong Woods 55.7,54.51
+step
+  only Mage
+  note Instructor Antheol wants you to fill the Azure Phial at Elrendar Falls.
+  collect Filled Azure Phial##23552 |q 9403 |goto Eversong Woods 55.7,54.51
 step
   talk Apprentice Loralthalis##15924
   turnin Deactivating the Spire##8889 |goto Eversong Woods 67.81,56.51
@@ -392,10 +422,16 @@ step
   talk Larianna Riverwind##15398
   turnin A Somber Task##8473 |goto Eversong Woods 34.06,80.02
 step
+  talk Larianna Riverwind##15398
+  turnin Old Whitebark's Pendant##8474 |goto Eversong Woods 34.06,80.02
+step
+  talk Larianna Riverwind##15398
+  accept Whitebark's Memory##10166 |goto Eversong Woods 34.06,80.02
+step
   talk Magistrix Erona##15278
   turnin Unfortunate Measures##8326 |goto Eversong Woods 38.21,20.83
 step
-  only Warlock
+  only Mage
   talk Julia Sunstriker##15279
   turnin Mage Training##8328 |goto Eversong Woods 39.23,21.46
 step
@@ -411,7 +447,7 @@ step
   talk Jesthenis Sunstriker##15280
   turnin Paladin Training##9676 |goto Eversong Woods 39.47,20.56
 step
-  only Druid
+  only Warlock
   talk Summoner Teli'Larien##15283
   turnin Warlock Training##8563 |goto Eversong Woods 38.93,21.44
 step
@@ -422,7 +458,7 @@ step
   talk Magistrix Erona##15278
   accept Report to Lanthan Perilon##8327 |goto Eversong Woods 38.21,20.83
 step
-  only Warlock
+  only Mage
   talk Jesthenis Sunstriker##15280
   accept Well Watcher Solanian##10068 |goto Eversong Woods 39.47,20.56
 step
@@ -442,36 +478,24 @@ step
   talk Ranger Sallina##15513
   accept Well Watcher Solanian##10072 |goto Eversong Woods 39.05,20.01
 step
-  only Druid
+  only Warlock
   talk Summoner Teli'Larien##15283
   accept Well Watcher Solanian##10073 |goto Eversong Woods 38.93,21.44
 step
   talk Arcanist Vandril##16197
   turnin Delivery to Tranquillien##9148 |goto Ghostlands 46.55,28.38 |tip {turninat}Ghostlands
 step
-  only Warlock
-  talk Instructor Antheol##15970
-  turnin The Purest Water##9403 |goto Eversong Woods 55.7,54.51
+  talk Aeldon Sunbrand##15403
+  turnin The Dwarven Spy##8483 |goto Eversong Woods 48.17,46.0
 step
   talk Ley-Keeper Caidanis##15405
   turnin Delivery to the North Sanctum##8895 |goto Eversong Woods 44.63,53.13
 step
-  talk Instructor Antheol##15970
-  turnin Taking the Fall##9064 |goto Eversong Woods 55.7,54.51
-step
-  talk Instructor Antheol##15970
-  accept Swift Discipline##9066 |goto Eversong Woods 55.7,54.51
-step
   talk Ley-Keeper Caidanis##15405
   accept Malfunction at the West Sanctum##9119 |goto Eversong Woods 44.63,53.13
 step
-  only Warlock
-  talk Instructor Antheol##15970
-  accept Recently Living##9404 |goto Eversong Woods 55.7,54.51
-step
-  only Warlock
-  note Slay the Eversong Green Keepers until they yield a Living Branch for Instructor Antheol.
-  collect Living Branch##23553 |q 9404 |goto Eversong Woods 58.03,73.7 |tip {dropsfrom}Eversong Green Keeper
+  talk Aeldon Sunbrand##15403
+  accept Fairbreeze Village##9256 |goto Eversong Woods 48.17,46.0
 step
   note Use Antheol's Disciplinary Rod on his two students: Apprentice Ralen and Apprentice Meledor. Return to Antheol at Stillwhisper Pond in Eversong Woods with the rod after this.
   use Apprentice Meledor##15945 |q 9066 |goto Eversong Woods 44.88,61.03 |tip {useit}
@@ -494,14 +518,14 @@ step
   talk Velendris Whitemorn##15404
   turnin Wretched Ringleader##9076 |goto Eversong Woods 36.36,66.77
 step
-  note Kill 5 Wretched Thugs and 5 Wretched Hooligans and report to Ranger Degolien in Eversong Woods.
-  kill Wretched Thug##15645 |q 8892 |goto Eversong Woods 32.62,69.31
+  talk Ranger Degolien##15939
+  turnin Warning Fairbreeze Village##9363 |goto Eversong Woods 43.34,70.82
 step
   talk Ranger Degolien##15939
-  turnin Situation at Sunsail Anchorage##8892 |goto Eversong Woods 43.34,70.82
+  turnin Fairbreeze Village##9256 |goto Eversong Woods 43.34,70.82
 step
   talk Ranger Degolien##15939
-  accept Farstrider Retreat##9359 |goto Eversong Woods 43.34,70.82
+  accept Situation at Sunsail Anchorage##8892 |goto Eversong Woods 43.34,70.82
 step
   talk Apprentice Mirveda##15402
   turnin Unexpected Results##8488 |goto Eversong Woods 54.28,70.98
@@ -509,17 +533,23 @@ step
   talk Apprentice Mirveda##15402
   accept Research Notes##9255 |goto Eversong Woods 54.28,70.98
 step
-  talk Lieutenant Dawnrunner##15399
-  turnin Farstrider Retreat##9359 |goto Eversong Woods 60.32,62.77
-step
   talk Magister Duskwither##15951
   turnin Word from the Spire##8890 |goto Eversong Woods 60.32,61.38
 step
-  talk Lieutenant Dawnrunner##15399
-  accept Amani Encroachment##8476 |goto Eversong Woods 60.32,62.77
+  only Mage
+  talk Instructor Antheol##15970
+  turnin The Purest Water##9403 |goto Eversong Woods 55.7,54.51
 step
-  note Lieutenant Dawnrunner at the Farstrider Retreat in Eversong Woods wants you to kill 5 Amani Berserkers and 5 Amani Axe Throwers.
-  kill Amani Berserker##15643 |q 8476 |goto Eversong Woods 68.92,77.72
+  talk Instructor Antheol##15970
+  turnin Swift Discipline##9066 |goto Eversong Woods 55.7,54.51
+step
+  only Mage
+  talk Instructor Antheol##15970
+  accept Recently Living##9404 |goto Eversong Woods 55.7,54.51
+step
+  only Mage
+  note Slay the Eversong Green Keepers until they yield a Living Branch for Instructor Antheol.
+  collect Living Branch##23553 |q 9404 |goto Eversong Woods 58.03,73.7 |tip {dropsfrom}Eversong Green Keeper
 step
   talk Runewarden Deryan##16362
   turnin Powering our Defenses##8490 |goto Eversong Woods 44.19,85.47
@@ -527,7 +557,7 @@ step
   talk Lanthan Perilon##15281
   turnin Report to Lanthan Perilon##8327 |goto Eversong Woods 35.37,22.52
 step
-  only Warlock
+  only Mage
   talk Well Watcher Solanian##15295
   turnin Well Watcher Solanian##10068 |goto Eversong Woods 38.76,19.36
 step
@@ -547,7 +577,7 @@ step
   talk Well Watcher Solanian##15295
   turnin Well Watcher Solanian##10072 |goto Eversong Woods 38.76,19.36
 step
-  only Druid
+  only Warlock
   talk Well Watcher Solanian##15295
   turnin Well Watcher Solanian##10073 |goto Eversong Woods 38.76,19.36
 step
@@ -555,7 +585,7 @@ step
   accept Solanian's Belongings##8330 |goto Eversong Woods 38.76,19.36
 step
   note Collect Well Watcher Solanian's Scrying Orb, his Scroll of Scourge Magic, and his Journal. They are found on Sunstrider Isle by the pond, the fountain, and one of the Burning Crystals. Return them to the Well Watcher at the Sunspire on Sunstrider Isle when you've collected them all.
-  collect Solanian's Scrying Orb##20470 |q 8330 |goto Eversong Woods 35.14,28.89 |tip {dropsfrom}Solanian's Scrying Orb
+  collect Solanian's Scrying Orb##20470 |q 8330 |goto Eversong Woods 35.14,28.89
 step
   talk Lanthan Perilon##15281
   accept Aggression##8334 |goto Eversong Woods 35.37,22.52
@@ -563,21 +593,33 @@ step
   note Kill 7 Tenders and 7 Feral Tenders, and then return to Lanthan Perilon on Sunstrider Isle.
   kill Tender##15271 |q 8334 |goto Eversong Woods 33.88,25.43
 step
-  only Warlock
-  talk Instructor Antheol##15970
-  turnin Recently Living##9404 |goto Eversong Woods 55.7,54.51
-step
-  talk Instructor Antheol##15970
-  turnin Swift Discipline##9066 |goto Eversong Woods 55.7,54.51
-step
   talk Ley-Keeper Velania##15401
   turnin Arcane Instability##8486 |goto Eversong Woods 36.7,57.44
+step
+  note Kill 5 Wretched Thugs and 5 Wretched Hooligans and report to Ranger Degolien in Eversong Woods.
+  kill Wretched Thug##15645 |q 8892 |goto Eversong Woods 32.62,69.31
 step
   talk Magistrix Landra Dawnstrider##16210
   turnin Research Notes##9255 |goto Eversong Woods 44.03,70.76
 step
+  talk Ranger Degolien##15939
+  turnin Situation at Sunsail Anchorage##8892 |goto Eversong Woods 43.34,70.82
+step
+  talk Ranger Degolien##15939
+  accept Farstrider Retreat##9359 |goto Eversong Woods 43.34,70.82
+step
   talk Lieutenant Dawnrunner##15399
-  turnin Amani Encroachment##8476 |goto Eversong Woods 60.32,62.77
+  turnin Farstrider Retreat##9359 |goto Eversong Woods 60.32,62.77
+step
+  only Mage
+  talk Instructor Antheol##15970
+  turnin Recently Living##9404 |goto Eversong Woods 55.7,54.51
+step
+  talk Lieutenant Dawnrunner##15399
+  accept Amani Encroachment##8476 |goto Eversong Woods 60.32,62.77
+step
+  note Lieutenant Dawnrunner at the Farstrider Retreat in Eversong Woods wants you to kill 5 Amani Berserkers and 5 Amani Axe Throwers.
+  kill Amani Berserker##15643 |q 8476 |goto Eversong Woods 68.92,77.72
 step
   talk Well Watcher Solanian##15295
   turnin Solanian's Belongings##8330 |goto Eversong Woods 38.76,19.36
@@ -590,6 +632,9 @@ step
 step
   note Kill 8 Arcane Wraiths and 2 Tainted Arcane Wraiths, as well as Felendren the Banished; they are located in the Falthrien Academy. Bring Felendren's Head to Lanthan Perilon on Sunstrider Isle.
   kill Arcane Wraith##15273 |q 8335 |goto Eversong Woods 30.71,26.99
+step
+  talk Lieutenant Dawnrunner##15399
+  turnin Amani Encroachment##8476 |goto Eversong Woods 60.32,62.77
 step
   talk Lanthan Perilon##15281
   turnin Felendren the Banished##8335 |goto Eversong Woods 35.37,22.52

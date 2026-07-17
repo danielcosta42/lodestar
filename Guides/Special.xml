@@ -65,6 +65,8 @@
     <Script file="Class/Horde/Priest.lua"/>
     <Script file="Class/Alliance/Rogue.lua"/>
     <Script file="Class/Horde/Rogue.lua"/>
+    <Script file="Class/Alliance/Shaman.lua"/>
+    <Script file="Class/Horde/Shaman.lua"/>
     <Script file="Class/Alliance/Warlock.lua"/>
     <Script file="Class/Horde/Warlock.lua"/>
     <Script file="Class/Alliance/Warrior.lua"/>

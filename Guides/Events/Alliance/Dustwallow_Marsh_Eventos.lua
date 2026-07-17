@@ -70,7 +70,7 @@ step
   accept Secondhand Diving Gear##11139 |goto Dustwallow Marsh 63.74,17.04
 step
   note Bring the Tool Kit and Damaged Diving Gear to Renn McGill in the Dustwallow Marsh.
-  collect Damaged Diving Gear##33038 |q 11139 |goto Dustwallow Marsh 62.33,18.23 |tip {dropsfrom}Damaged Diving Gear
+  collect Damaged Diving Gear##33038 |q 11139 |goto Dustwallow Marsh 62.33,18.23
 step
   talk Elling Trias##482
   turnin The Missing Diplomat##1242 |goto Stormwind City 59.91,64.18

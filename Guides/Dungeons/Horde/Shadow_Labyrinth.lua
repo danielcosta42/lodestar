@@ -9,6 +9,9 @@ step
   talk Spy To'gun##18891
   accept The Soul Devices##10091 |goto Shadow Labyrinth - Dungeon -1,-1
 step
+  click The Codex of Blood##182947
+  accept Into the Heart of the Labyrinth##10095 |goto Shadow Labyrinth - Dungeon -1,-1
+step
   talk Spy Grik'tha##19496
   accept Find Spy To'gun##10178 |goto Terokkar Forest 39.94,72.28
 step
@@ -16,7 +19,7 @@ step
   accept Wanted: Malicious Instructors##11376 |goto Shattrath City 75.5,37.24
 step
   note Steal 5 Soul Devices and deliver them to Spymistress Mehlisah Highcrown at the Terrace of the Light in Shattrath City.
-  collect Soul Device##27480 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Soul Device
+  collect Soul Device##27480 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1
 step
   note Destroy Murmur and inform Spymistress Mehlisah Highcrown at the Terrace of Light in Shattrath City of the events that have transpired inside the Shadow Labyrinth.
   kill Murmur##18708 |q 10095 |goto Shadow Labyrinth - Dungeon -1,-1 |elite

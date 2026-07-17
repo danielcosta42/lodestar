@@ -10,9 +10,6 @@ step
   note {fp}Laando
   goto Bloodmyst Isle 57.68,53.87 |tip {vendor}
 step
-  talk Anchorite Paetheus##17424
-  accept Nolkai's Words##9561 |goto Bloodmyst Isle 54.66,53.94
-step
   talk Vindicator Aalesia##17433
   accept Know Thine Enemy##9567 |goto Bloodmyst Isle 55.08,57.99
 step
@@ -56,6 +53,12 @@ step
   note Tracker Lyceon at Blood Watch wants you to bring him 6 Thorny Constrictor Vines.
   collect Thorny Constrictor Vine##23994 |q 9643 |goto Bloodmyst Isle 42.46,42.48 |tip {dropsfrom}Mutated Constrictor
 step
+  click Wanted Poster##181889
+  accept WANTED: Deathclaw##9646 |goto Bloodmyst Isle 55.26,59.12
+step
+  note Bring Deathclaw's Paw to Harbinger Mikolaas in Blood Watch.
+  collect Deathclaw's Paw##24025 |q 9646 |goto Bloodmyst Isle 37.22,29.91 |tip {dropsfrom}Deathclaw
+step
   talk Jessera of Mac'Aree##17663
   accept Mac'Aree Mushroom Menagerie##9648 |goto Bloodmyst Isle 56.42,56.82
 step
@@ -80,13 +83,14 @@ step
   talk Harbinger Mikolaas##17423
   accept Talk to the Hand##10064 |goto Bloodmyst Isle 52.59,53.21
 step
-  turnin Nolkai's Words##9561 |goto Bloodmyst Isle 61.17,49.64
+  click Battered Ancient Book##181756
+  accept Deciphering the Book##9557 |goto Bloodmyst Isle 61.16,41.89
 step
   talk Prince Toreth##17674
   accept Restoring Sanctity##9687 |goto Bloodmyst Isle 74.47,33.46
 step
   note Prince Toreth on Wyrmscar Island wants you to recover 8 Dragon Bones.
-  collect Dragon Bone##24185 |q 9687 |goto Bloodmyst Isle 56.5,35.18 |tip {dropsfrom}Dragon Bone
+  collect Dragon Bone##24185 |q 9687 |goto Bloodmyst Isle 56.5,35.18
 step
   talk Captain Edward Hanes##17712
   accept The Bloodcursed Naga##9674 |goto Bloodmyst Isle 79.15,22.65
@@ -98,7 +102,7 @@ step
   accept Pilfered Equipment##9548 |goto Bloodmyst Isle 42.15,21.22
 step
   note Bring Clopper's Equipment back to Clopper Wizbang, who is hiding in a beached turtle shell.
-  collect Clopper's Equipment##23830 |q 9548 |goto Bloodmyst Isle 40.49,20.24 |tip {dropsfrom}Clopper's Equipment
+  collect Clopper's Equipment##23830 |q 9548 |goto Bloodmyst Isle 40.49,20.24
 step
   talk Clopper Wizbang##17421
   accept Artifacts of the Blacksilt##9549 |goto Bloodmyst Isle 42.15,21.22
@@ -109,11 +113,11 @@ step
   note Vindicator Boros at Blood Watch wants you to locate the Sun Portal Site and slay 5 Void Anomalies.
   kill Void Anomaly##17550 |q 9700 |goto Bloodmyst Isle 52.69,21.3
 step
-  only Draenei Mage
+  only Draenei Shaman
   talk Aqueous##17275
   accept Call of Water##9503 |goto Bloodmyst Isle 32.3,16.18
 step
-  only Draenei Mage
+  only Draenei Shaman
   note Collect 6 Foul Essences and return them to Aqueous in the Hidden Reef at Bloodmyst Isle.
   collect 6 Foul Essence##23744 |q 9503 |goto Bloodmyst Isle 30.02,36.97 |tip {dropsfrom}Fouled Water Spirit
 step
@@ -156,11 +160,17 @@ step
   note Bring Galaen's Amulet to Morae at Blood Watch.
   collect Galaen's Amulet##23873 |q 9579 |goto Bloodmyst Isle 38.58,60.93 |tip {dropsfrom}Sunhawk Reclaimer
 step
+  kill Tzerak##17528 |goto Bloodmyst Isle 38.43,82.02 |tip Loot the quest item here — it starts the quest.
+  accept Signs of the Legion##9594 |goto Bloodmyst Isle 38.43,82.02
+step
   note Kill 12 Void Critters and report to Vindicator Aesom at Blood Watch.
   kill Void Critter##17887 |q 9741 |goto Bloodmyst Isle 19.26,63.61
 step
   note Kill 8 Mutated Tanglers and report to Vindicator Corin at Vindicator's Rest.
   kill Mutated Tangler##17346 |q 10066 |goto Bloodmyst Isle 30.09,58.86
+step
+  note Kill 8 Nazzivus Satyr and 8 Nazzivus Felsworn, then bring Tzerak's Armor Plate to Vindicator Aalesia in Blood Watch.
+  kill Nazzivus Satyr##17337 |q 9594 |goto Bloodmyst Isle 36.09,76.89
 step
   talk Princess Stillpine##17682
   accept Saving Princess Stillpine##9667 |goto Bloodmyst Isle 68.26,80.99
@@ -168,11 +178,14 @@ step
   note Release Princess Stillpine from her cage and then speak with Stillpine Ambassador Frasaboo at Blood Watch.
   get Saving Princess Stillpine |q 9667 |goto Bloodmyst Isle 68.26,80.99
 step
+  kill Cruelfin##17496 |goto Bloodmyst Isle 47.71,94.34 |tip Loot the quest item here — it starts the quest.
+  accept Cruelfin's Necklace##9576 |goto Bloodmyst Isle 47.71,94.34
+step
   talk Aonar##17599
   accept A Favorite Treat##9624 |goto Bloodmyst Isle 63.43,88.79
 step
   note Aonar at Kessel's Crossing wants you to bring him 10 Sand Pears.
-  collect Sand Pear##23927 |q 9624 |goto Bloodmyst Isle 65.87,83.82 |tip {dropsfrom}Sand Pear
+  collect Sand Pear##23927 |q 9624 |goto Bloodmyst Isle 65.87,83.82
 step
   talk Vorkhan the Elekk Herder##17586
   accept Alien Predators##9634 |goto Bloodmyst Isle 63.03,87.9
@@ -202,6 +215,9 @@ step
   talk Tracker Lyceon##17642
   turnin Constrictor Vines##9643 |goto Bloodmyst Isle 55.86,57.0
 step
+  talk Harbinger Mikolaas##17423
+  turnin WANTED: Deathclaw##9646 |goto Bloodmyst Isle 52.59,53.21
+step
   talk Jessera of Mac'Aree##17663
   turnin Mac'Aree Mushroom Menagerie##9648 |goto Bloodmyst Isle 56.42,56.82
 step
@@ -214,6 +230,9 @@ step
   talk Messenger Hermesius##17703
   turnin Urgent Delivery##9671 |goto Bloodmyst Isle 55.84,54.9
 step
+  talk Anchorite Paetheus##17424
+  turnin Deciphering the Book##9557 |goto Bloodmyst Isle 54.66,53.94
+step
   talk Vindicator Boros##17684
   turnin What Argus Means to Me##9693 |goto Bloodmyst Isle 55.42,55.27
 step
@@ -224,6 +243,9 @@ step
   turnin I Shoot Magic Into the Darkness##9700 |goto Bloodmyst Isle 55.42,55.27
 step
   talk Morae##17434
+  turnin Cruelfin's Necklace##9576 |goto Bloodmyst Isle 53.24,57.74
+step
+  talk Morae##17434
   turnin Galaen's Fate##9579 |goto Bloodmyst Isle 53.24,57.74
 step
   talk Tracker Lyceon##17642
@@ -231,6 +253,12 @@ step
 step
   talk Harbinger Mikolaas##17423
   turnin Learning from the Crystals##9581 |goto Bloodmyst Isle 52.59,53.21
+step
+  talk Vindicator Aalesia##17433
+  turnin Signs of the Legion##9594 |goto Bloodmyst Isle 55.08,57.99
+step
+  talk Anchorite Paetheus##17424
+  accept Nolkai's Words##9561 |goto Bloodmyst Isle 54.66,53.94
 step
   talk Vindicator Aalesia##17433
   accept Containing the Threat##9569 |goto Bloodmyst Isle 55.08,57.99
@@ -255,7 +283,7 @@ step
   accept Ysera's Tears##9649 |goto Bloodmyst Isle 56.42,56.82
 step
   note Jessera of Mac'Aree at Blood Watch wants 2 Ysera's Tears.
-  collect Ysera's Tear##24049 |q 9649 |goto Bloodmyst Isle 71.03,20.3 |tip {dropsfrom}Ysera's Tear
+  collect Ysera's Tear##24049 |q 9649 |goto Bloodmyst Isle 71.03,20.3
 step
   talk Vindicator Boros##17684
   accept Blood Watch##9694 |goto Bloodmyst Isle 55.42,55.27
@@ -275,6 +303,8 @@ step
 step
   talk Draenei Cartographer##17600
   turnin The Missing Survey Team##9620 |goto Bloodmyst Isle 61.25,48.41
+step
+  turnin Nolkai's Words##9561 |goto Bloodmyst Isle 61.17,49.64
 step
   talk Draenei Cartographer##17600
   accept Salvaging the Data##9628 |goto Bloodmyst Isle 61.25,48.41
@@ -315,15 +345,15 @@ step
   note Kill 5 Axxarien Shadowstalkers, 5 Axxarien Hellcallers, and Zevrax, then gather 5 Corrupted Crystals and return to Vindicator Aalesia in Blood Watch.
   kill Zevrax##17494 |q 9569 |goto Bloodmyst Isle 41.91,29.53
 step
-  only Draenei Mage
+  only Draenei Shaman
   talk Aqueous##17275
   turnin Call of Water##9503 |goto Bloodmyst Isle 32.3,16.18
 step
-  only Draenei Mage
+  only Draenei Shaman
   talk Aqueous##17275
   accept Call of Water##9504 |goto Bloodmyst Isle 32.3,16.18
 step
-  only Draenei Mage
+  only Draenei Shaman
   note Fill the Empty Bota Bag and then return to Aqueous in the Hidden Reef at Bloodmyst Isle.
   collect Filled Bota Bag##23750 |q 9504 |goto Bloodmyst Isle 32.3,16.18
 step
@@ -414,17 +444,20 @@ step
   note Captain Edward Hanes on Wyrmscar Island wants you to destroy the Statue of Queen Azshara and kill Atoph the Bloodcursed.
   kill Atoph the Bloodcursed##17715 |q 9683
 step
-  only Draenei Mage
+  only Draenei Shaman
   talk Aqueous##17275
   turnin Call of Water##9504 |goto Bloodmyst Isle 32.3,16.18
 step
-  only Draenei Mage
+  only Draenei Shaman
   talk Aqueous##17275
   accept Call of Water##9508 |goto Bloodmyst Isle 32.3,16.18
 step
-  only Draenei Mage
+  only Draenei Shaman
   note Bring the Head of Tel'athion to Aqueous in the Hidden Reef at Bloodmyst Isle.
   collect Head of Tel'athion##23997 |q 9508 |goto Bloodmyst Isle 32.3,16.18 |tip {dropsfrom}Tel'athion the Impure
+step
+  click Galaen's Journal##182032
+  accept Galaen's Journal - The Fate of Vindicator Saruan##9706 |goto Bloodmyst Isle 37.55,61.25
 step
   note Kessel at Kessel's Crossing on Bloodmyst Isle wants you to kill Lord Xiz at Wrathscale Lair and drive the Draenei Banner through his dead body.
   kill Lord Xiz##17701 |q 9666 |goto Bloodmyst Isle 68.77,68.16
@@ -443,6 +476,9 @@ step
 step
   talk Exarch Admetius##17658
   turnin Report to Exarch Admetius##9668 |goto Bloodmyst Isle 52.68,53.21
+step
+  talk Vindicator Kuros##17843
+  turnin Galaen's Journal - The Fate of Vindicator Saruan##9706 |goto Bloodmyst Isle 55.64,55.22
 step
   talk Harbinger Mikolaas##17423
   turnin The Second Sample##9584 |goto Bloodmyst Isle 52.59,53.21
@@ -465,15 +501,15 @@ step
   talk Captain Edward Hanes##17712
   turnin Ending the Bloodcurse##9683 |goto Bloodmyst Isle 79.15,22.65
 step
-  only Draenei Mage
+  only Draenei Shaman
   talk Aqueous##17275
   turnin Call of Water##9508 |goto Bloodmyst Isle 32.3,16.18
 step
-  only Draenei Mage
+  only Draenei Shaman
   talk Aqueous##17275
   accept Call of Water##9509 |goto Bloodmyst Isle 32.3,16.18
 step
-  only Draenei Mage
+  only Draenei Shaman
   talk Farseer Nobundo##17204
   turnin Call of Water##9509 |goto The Exodar 29.72,33.26 |tip {turninat}The Exodar
 step

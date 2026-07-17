@@ -30,6 +30,9 @@ step
   talk Force Commander Danath Trollbane##16819
   accept The Legion Reborn##10141 |goto Hellfire Peninsula 56.64,66.7
 step
+  kill Warbringer Arix'Amal##19298 |goto Hellfire Peninsula 53.09,26.47 |tip Loot the quest item here — it starts the quest.
+  accept The Dark Missive##10395 |goto Hellfire Peninsula 53.09,26.47
+step
   talk Sid Limbardi##16826
   accept The Longbeards##9558 |goto Hellfire Peninsula 54.22,63.6
 step
@@ -51,6 +54,12 @@ step
   talk Randy Whizzlesprocket##17288
   accept Imprisoned in the Citadel##9524
 step
+  kill Smith Gorlunk##22037 |goto Shadowmoon Valley 67.64,36.2 |tip Loot the quest item here — it starts the quest.
+  accept Entry Into the Citadel##10754 |goto Shadowmoon Valley 67.64,36.2
+step
+  kill Magtheridon##17257 |goto Magtheridon's Lair - Raid -1,-1 |raid |tip Loot the quest item here — it starts the quest.
+  accept The Fall of Magtheridon##11002 |goto Magtheridon's Lair - Raid -1,-1
+step
   note Capture the Overlook, the Stadium and Broken Hill, then return to Warrant Officer Tracy Proudwell in Honor Hold in Hellfire Peninsula.
   get Hellfire Fortifications |q 10106 |goto Hellfire Peninsula 39.94,48.39
 step
@@ -64,7 +73,7 @@ step
   collect 8 Salvaged Metal##25912 |q 10055 |goto Hellfire Peninsula 57.71,53.38 |tip {dropsfrom}Salvageable Metal
 step
   note Retrieve Mysteries of the Light and return it to Father Malgor Devidicus at Honor Hold.
-  collect Mysteries of the Light##25938 |q 10058 |goto Hellfire Peninsula 54.96,86.81 |tip {dropsfrom}Mysteries of the Light
+  collect Mysteries of the Light##25938 |q 10058 |goto Hellfire Peninsula 54.96,86.81
 step
   note Mirren Longbeard wants you to bring him 1 Nethergarde Bitter. You must also attain Friendly reputation with Honor Hold to complete this quest.
   collect Nethergarde Bitter##23848 |q 9563 |goto Hellfire Peninsula 23.97,72.35
@@ -73,7 +82,7 @@ step
   kill Quillfang Ravager##16934 |q 9385 |goto Hellfire Peninsula 22.66,66.55
 step
   note Bring Warchief Kargath's Fist to Force Commander Danath Trollbane in Honor Hold.
-  collect Warchief Kargath's Fist##23723 |q 9492 |goto The Shattered Halls - Dungeon -1,-1 |tip {dropsfrom}Warchief Kargath Bladefist, Warchief Kargath Bladefist (1)
+  collect Warchief Kargath's Fist##23723 |q 9492 |goto The Shattered Halls - Dungeon -1,-1 |elite |tip {dropsfrom}Warchief Kargath Bladefist, Warchief Kargath Bladefist (1)
 step
   note Field Commander Romus at Honor Hold wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
   kill Shattered Hand Legionnaire##16700 |q 9493 |goto The Shattered Halls - Dungeon -1,-1 |elite
@@ -196,7 +205,7 @@ step
   kill Haal'eshi Windwalker##16966 |q 9417 |goto Hellfire Peninsula 26.34,76.47
 step
   note Collect 10 Fel Orc Blood Vials and return them to Gunny at Honor Hold in Hellfire Peninsula.
-  collect 10 Fel Orc Blood Vial##23894 |q 9589 |goto The Blood Furnace - Dungeon -1,-1 |tip {dropsfrom}Laughing Skull Enforcer, Shadowmoon Warlock, Keli'dan the Breaker
+  collect 10 Fel Orc Blood Vial##23894 |q 9589 |goto The Blood Furnace - Dungeon -1,-1 |elite |tip {dropsfrom}Laughing Skull Enforcer, Shadowmoon Warlock, Keli'dan the Breaker
 step
   note Slay Arazzius the Cruel in the Pools of Aggonar and return to Force Commander Danath Trollbane in the keep of Honor Hold.
   kill Arazzius the Cruel##19191 |q 10400 |goto Hellfire Peninsula 43.82,31.55 |elite
@@ -265,7 +274,7 @@ step
   kill Gan'arg Sapper##18827 |q 10079 |goto Hellfire Peninsula 53.89,61.12
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Gunny at Honor Hold in Hellfire Peninsula.
-  collect Gargolmar's Hand##23881 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1 |tip {dropsfrom}Watchkeeper Gargolmar, Watchkeeper Gargolmar (1)
+  collect Gargolmar's Hand##23881 |q 9575 |goto Hellfire Ramparts - Dungeon -1,-1 |elite |tip {dropsfrom}Watchkeeper Gargolmar, Watchkeeper Gargolmar (1)
 step
   note Bring 4 Fel Iron Bars, 2 Arcane Dust and 4 Motes of Fire to Dumphry at Honor Hold in Hellfire Peninsula.
   collect 4 Fel Iron Bar##23445 |q 10763 |goto Terokkar Forest 39.25,55.95 |tip {dropsfrom}Heavy Fel Iron Chest, Adamantite Bound Chest, Felsteel Chest

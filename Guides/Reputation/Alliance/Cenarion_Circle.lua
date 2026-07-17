@@ -6,14 +6,15 @@ ns:RegisterGuide("Reputation/Alliance/Cenarion Circle", {
 	author = "Lodestar Generator",
 }, [[
 step
-  only NightElf
+  only NightElf Druid
   talk Mathrengyl Bearwalker##4217
   accept A Lesson to Learn##26 |goto Darnassus 35.37,8.4
 step
-  only NightElf
+  only NightElf Druid
   talk Mathrengyl Bearwalker##4217
   accept Moonglade##5921 |goto Darnassus 35.37,8.4
 step
+  only Druid
   talk Mathrengyl Bearwalker##4217
   accept Lessons Anew##6121 |goto Darnassus 35.37,8.4
 step
@@ -47,6 +48,9 @@ step
   talk Geologist Larksbane##15183
   accept The Twilight Mystery##8284 |goto Silithus 49.67,37.46
 step
+  click Wanted Poster: Deathclasp##180448
+  accept Wanted - Deathclasp, Terror of the Sands##8283 |goto Silithus 51.35,38.27
+step
   talk Rabine Saturna##11801
   accept A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1
 step
@@ -55,6 +59,9 @@ step
 step
   talk Commander Mar'alith##15181
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
+step
+  kill Hive'Ashi Stinger##11698 |goto Silithus 48.5,41.14 |tip Loot the quest item here — it starts the quest.
+  accept Brann Bronzebeard's Lost Letter##8308 |goto Silithus 48.5,41.14
 step
   talk Bor Wildmane##15306
   accept Secret Communication##8318 |goto Silithus 48.57,37.78
@@ -80,8 +87,14 @@ step
   talk Kandrostrasz##15503
   accept Mortal Champions##8595 |goto Ahn'Qiraj - Raid -1,-1
 step
+  kill Ossirian the Unscarred##15339 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip Loot the quest item here — it starts the quest.
+  accept The Fall of Ossirian##8791 |goto Ruins of Ahn'Qiraj - Raid -1,-1
+step
   talk Windcaller Kaldon##15540
   accept Cenarion Battlegear##8800 |goto Silithus 49.98,36.35
+step
+  kill C'Thun##15727 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip Loot the quest item here — it starts the quest.
+  accept C'Thun's Legacy##8801 |goto Ahn'Qiraj - Raid -1,-1
 step
   talk Lunar Festival Emissary##15892
   accept The Lunar Festival##8870 |goto Darnassus 32.14,13.12
@@ -104,6 +117,9 @@ step
   talk Rifleman Torrig##17082
   accept Report to Marshal Bluewall##9415 |goto Silithus 50.68,34.71
 step
+  kill Marauding Crust Burster##16857 |goto Hellfire Peninsula 47.92,63.19 |tip Loot the quest item here — it starts the quest.
+  accept Missing Missive##9373 |goto Hellfire Peninsula 47.92,63.19
+step
   note Bring 1 Embossed Leather Gloves, 5 Embossed Leather Boots and 5 Embossed Leather Cloaks to Lotherias in Darnassus.
   collect 1 Embossed Leather Gloves##4239 |q 1582 |goto Darnassus 64.4,22.22
 step
@@ -123,7 +139,8 @@ step
   collect 8 Twilight Tablet Fragment##20378 |q 8284 |goto Silithus 28.49,26.89 |tip {dropsfrom}Whirling Invader, Twilight Tablet Fragment
 step
   note Bring Deathclasp's Pincer to Vish Kozus, Captain of the Guard.
-  collect Deathclasp's Pincer##20385 |q 8283 |goto Silithus 45.07,92.31 |tip {dropsfrom}Deathclasp
+  kill Deathclasp##15196 |goto Silithus 45.07,92.31 |elite
+  collect Deathclasp's Pincer##20385 |q 8283 |goto Silithus 45.07,92.31
 step
   note Travel to Silithus and search for a Reliquary of Purity within the ruins of Southwind Village. If you are able to find it, return with it to Rabine Saturna in Nighthaven, Moonglade.
   collect Reliquary of Purity##22201 |q 5527 |goto Silithus 63.23,55.35 |tip {dropsfrom}Dusty Reliquary
@@ -141,7 +158,8 @@ step
   collect Abyssal Crest##20513 |q 8361 |goto Silithus 48.57,37.78 |tip {dropsfrom}Crimson Templar, Azure Templar, Hoary Templar
 step
   note Obtain the Twilight Battle Orders and bring them Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Tactical Task Briefing X in order to complete this quest.
-  collect Twilight Battle Orders##20803 |q 8498 |goto Silithus 22.82,68.66 |tip {dropsfrom}Twilight Prophet
+  kill Twilight Prophet##15308 |goto Silithus 22.82,68.66 |elite
+  collect Twilight Battle Orders##20803 |q 8498 |goto Silithus 22.82,68.66
 step
   note Kill 30 Hive'Ashi Stingers and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing XII in order to complete this quest.
   kill Hive'Ashi Stinger##11698 |q 8501 |goto Silithus 48.5,41.14
@@ -158,9 +176,9 @@ step
   note Slay 30 Hive'Zora Hive Sisters and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing V in order to complete this quest.
   kill Hive'Zora Hive Sister##11729 |q 8539 |goto Silithus 25.33,64.22
 step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
+  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
 step
-  collect Qiraji Lord's Insignia##21229 |q 8595 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
+  collect Qiraji Lord's Insignia##21229 |q 8595 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
 step
   note Slay 30 Hive'Zora Tunnelers and report back to Commander Mar'alith at Cenarion Hold in Silithus. You must also bring Combat Task Briefing VII in order to complete this quest.
   kill Hive'Zora Tunneler##11726 |q 8687 |goto Silithus 23.17,64.15
@@ -205,24 +223,25 @@ step
   collect 2 Moonsteel Broadsword##3853 |q 8781
 step
   note Bring a Skin of Shadow, 3 Frayed Abomination Stitchings and 1 Twilight Cultist Robe to Aurel Goldleaf at Cenarion Hold in Silithus. You must also bring Logistics Task Briefing XI in order to complete this quest.
-  collect Skin of Shadow##12753 |q 8829 |goto Scholomance - Dungeon -1,-1 |tip {dropsfrom}Risen Construct, Risen Bonewarder, Lady Illucia Barov
+  collect Skin of Shadow##12753 |q 8829 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Risen Construct, Risen Bonewarder, Lady Illucia Barov
 step
   note Dirk Thunderwood at Cenarion Hold wants you to bring him Venoxis's Venom Sac and Kurinnaxx's Venom Sac.
-  collect Venoxis's Venom Sac##22216 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}High Priest Venoxis
+  collect Venoxis's Venom Sac##22216 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}High Priest Venoxis
 step
   note Aurel Goldleaf at Cenarion Hold in Silithus wants you to bring her 1 Abyssal Scepter. You must also be Honored with the Cenarion Circle.
   collect Abyssal Scepter##20515 |q 9248 |goto Silithus 51.96,38.16 |tip {dropsfrom}Prince Skaldrenox, High Marshal Whirlaxis, Baron Kazum
 step
   collect Cenarion Combat Badge##20802 |q 9338 |goto Silithus 49.98,36.35
 step
-  only NightElf
+  only NightElf Druid
   talk Dendrite Starblaze##11802
   turnin A Lesson to Learn##26 |goto Moonglade 56.21,30.64
 step
-  only NightElf
+  only NightElf Druid
   talk Dendrite Starblaze##11802
   turnin Moonglade##5921 |goto Moonglade 56.21,30.64
 step
+  only Druid
   talk Dendrite Starblaze##11802
   turnin Lessons Anew##6121 |goto Moonglade 56.21,30.64
 step
@@ -390,14 +409,15 @@ step
   talk Thiah Redmane##16991
   turnin Missing Missive##9373 |goto Hellfire Peninsula 15.7,52.09
 step
-  only NightElf
+  only NightElf Druid
   talk Dendrite Starblaze##11802
   accept Trial of the Lake##29 |goto Moonglade 56.21,30.64
 step
-  only NightElf
+  only NightElf Druid
   talk Dendrite Starblaze##11802
   accept Great Bear Spirit##5929 |goto Moonglade 56.21,30.64
 step
+  only Druid
   talk Dendrite Starblaze##11802
   accept The Principal Source##6122 |goto Moonglade 56.21,30.64
 step
@@ -412,6 +432,9 @@ step
 step
   talk Beetix Ficklespragg##15189
   accept Noggle's Last Hope##8278 |goto Silithus 51.61,38.63
+step
+  click Sandy Cookbook##180503
+  accept Sharing the Knowledge##8313 |goto Silithus 37.94,45.31
 step
   talk Geologist Larksbane##15183
   accept The Deserter##8285 |goto Silithus 49.67,37.46
@@ -452,6 +475,7 @@ step
   talk Marshal Bluewall##17080
   accept Scouring the Desert##9419 |goto Silithus 33.29,51.06
 step
+  only Druid
   note Use the Empty Cliffspring Falls Sampler to draw a sample of water from the mouth of the cave by the falls.
   collect Filled Cliffspring Falls Sampler##15845 |q 6122 |goto Moonglade 56.21,30.64
 step
@@ -468,7 +492,7 @@ step
   collect Sealed Reliquary of Purity##18540 |q 5526 |goto Moonglade 51.69,45.1
 step
   note Return the Head of the Broodlord Lashlayer to Baristolth of the Shifting Sands at Cenarion Hold in Silithus.
-  collect Head of the Broodlord Lashlayer##20383 |q 8288 |goto Blackwing Lair - Raid -1,-1 |tip {dropsfrom}Broodlord Lashlayer
+  collect Head of the Broodlord Lashlayer##20383 |q 8288 |goto Blackwing Lair - Raid -1,-1 |raid |tip {dropsfrom}Broodlord Lashlayer
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to find his beloved Natalia. The information that you gathered points to Hive'Regal in the south as being the area in which you may find Mistress Natalia Mar'alith.
   kill Mistress Natalia Mar'alith##15215 |q 8306
@@ -495,14 +519,15 @@ step
   note Find and deliver Silithyst to the Silithyst Extractor, then speak with Marshal Bluewall at the Alliance encampment near Hive'Zora.
   kill Silithus Dust Turnin Quest Doodad##17090 |q 9419 |goto Silithus 32.95,50.81
 step
-  only NightElf
+  only NightElf Druid
   talk Tajarri##11799
   turnin Trial of the Lake##29 |goto Moonglade 36.52,40.1
 step
-  only NightElf
+  only NightElf Druid
   talk Dendrite Starblaze##11802
   turnin Great Bear Spirit##5929 |goto Moonglade 56.21,30.64
 step
+  only Druid
   talk Alanndarian Nightsong##3702
   turnin The Principal Source##6122 |goto Darkshore 37.69,40.66
 step
@@ -560,10 +585,11 @@ step
   talk Marshal Bluewall##17080
   turnin Scouring the Desert##9419 |goto Silithus 33.29,51.06
 step
-  only NightElf
+  only NightElf Druid
   talk Tajarri##11799
   accept Trial of the Sea Lion##272 |goto Moonglade 36.52,40.1
 step
+  only Druid
   talk Alanndarian Nightsong##3702
   accept Gathering the Cure##6123 |goto Darkshore 37.69,40.66
 step
@@ -594,10 +620,11 @@ step
   talk Aurel Goldleaf##15282
   accept Bor Wishes to Speak##8351 |goto Silithus 51.96,38.16
 step
-  only NightElf
+  only NightElf Druid
   note Find the Half Pendant of Aquatic Agility and the Half Pendant of Aquatic Endurance. Speak with the residents of Moonglade to learn clues as to where these items may be located.
   collect Pendant of the Sea Lion##15885 |q 272 |goto Moonglade 36.52,40.1
 step
+  only Druid
   note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
   collect 5 Earthroot##2449 |q 6123 |goto Westfall 31.27,61.14 |tip {dropsfrom}Riverpaw Herbalist, Swampwalker, Swampwalker Elder
 step
@@ -608,7 +635,7 @@ step
   collect Smoked Desert Dumplings##20452 |q 8317 |goto Silithus 51.89,39.16
 step
   note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
-  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38 |tip {dropsfrom}Noggle's Satchel
+  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
 step
   note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
   collect Twilight Lexicon - Chapter 1##20394 |q 8279 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
@@ -616,10 +643,11 @@ step
   note Collect 200 Silithid Carapace Fragments and return to Baristolth.
   collect 200 Silithid Carapace Fragment##20384 |q 8301 |goto Silithus 48.5,41.14 |tip {dropsfrom}Hive'Ashi Stinger, Hive'Ashi Worker, Hive'Ashi Defender
 step
-  only NightElf
+  only NightElf Druid
   talk Dendrite Starblaze##11802
   turnin Trial of the Sea Lion##272 |goto Moonglade 56.21,30.64
 step
+  only Druid
   talk Alanndarian Nightsong##3702
   turnin Gathering the Cure##6123 |goto Darkshore 37.69,40.66
 step
@@ -650,10 +678,11 @@ step
   talk Bor Wildmane##15306
   turnin Bor Wishes to Speak##8351 |goto Silithus 48.57,37.78
 step
-  only NightElf
+  only NightElf Druid
   talk Dendrite Starblaze##11802
   accept Aquatic Form##5061 |goto Moonglade 56.21,30.64
 step
+  only Druid
   talk Alanndarian Nightsong##3702
   accept Curing the Sick##6124 |goto Darkshore 37.69,40.66
 step
@@ -675,6 +704,7 @@ step
   talk Bor Wildmane##15306
   accept Scepter of the Council##8352 |goto Silithus 48.57,37.78
 step
+  only Druid
   note Use the Curative Animal Salve on 10 Sickly Deer that are located throughout Darkshore; doing so should cure them. Sickly Deer have been reported starting south of the Cliffspring River to the north of Auberdine and extending all the way into southern Darkshore where the edge of Ashenvale begins.
   use Cured Deer##12299 |q 6124 |tip {useit}
 step
@@ -690,10 +720,11 @@ step
   note Bring an Abyssal Scepter to Bor Wildmane in Cenarion Hold.
   collect Abyssal Scepter##20515 |q 8352 |goto Silithus 48.57,37.78 |tip {dropsfrom}Prince Skaldrenox, High Marshal Whirlaxis, Baron Kazum
 step
-  only NightElf
+  only NightElf Druid
   talk Mathrengyl Bearwalker##4217
   turnin Aquatic Form##5061 |goto Darnassus 35.37,8.4
 step
+  only Druid
   talk Dendrite Starblaze##11802
   turnin Curing the Sick##6124 |goto Moonglade 56.21,30.64
 step
@@ -715,6 +746,7 @@ step
   talk Bor Wildmane##15306
   turnin Scepter of the Council##8352 |goto Silithus 48.57,37.78
 step
+  only Druid
   talk Dendrite Starblaze##11802
   accept Power over Poison##6125 |goto Moonglade 56.21,30.64
 step
@@ -747,14 +779,15 @@ step
   talk Geologist Larksbane##15183
   accept Armaments of War##8379 |goto Silithus 49.67,37.46
 step
-  only Mage
+  only Shaman
   talk Geologist Larksbane##15183
   accept Armaments of War##8380 |goto Silithus 49.67,37.46
 step
-  only Warlock
+  only Mage
   talk Geologist Larksbane##15183
   accept Armaments of War##8381 |goto Silithus 49.67,37.46
 step
+  only Druid
   talk Geologist Larksbane##15183
   accept Armaments of War##8382 |goto Silithus 49.67,37.46
 step
@@ -763,6 +796,7 @@ step
 step
   collect Abyssal Signet##20514 |q 8363 |goto Silithus 48.57,37.78 |tip {dropsfrom}The Duke of Cynders, The Duke of Fathoms, The Duke of Shards
 step
+  only Druid
   talk Mathrengyl Bearwalker##4217
   turnin Power over Poison##6125 |goto Darnassus 35.37,8.4
 step
@@ -794,19 +828,23 @@ step
   talk Geologist Larksbane##15183
   turnin Armaments of War##8379 |goto Silithus 49.67,37.46
 step
-  only Mage
+  only Shaman
   talk Geologist Larksbane##15183
   turnin Armaments of War##8380 |goto Silithus 49.67,37.46
 step
-  only Warlock
+  only Mage
   talk Geologist Larksbane##15183
   turnin Armaments of War##8381 |goto Silithus 49.67,37.46
 step
+  only Druid
   talk Geologist Larksbane##15183
   turnin Armaments of War##8382 |goto Silithus 49.67,37.46
 step
   talk Layo Starstrike##13220
   accept Umber, Archivist##6844 |goto Silithus 81.87,18.93
+step
+  click Crystalline Tear##180633
+  accept A Pawn on the Eternal Board##8519 |goto Silithus 28.68,89.14
 step
   talk Umber##11939
   turnin Umber, Archivist##6844 |goto Moonglade 44.88,35.6

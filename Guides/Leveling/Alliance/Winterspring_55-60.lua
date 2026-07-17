@@ -17,21 +17,13 @@ step
   collect Videre Elixir##11243 |q 3909 |goto Winterspring 31.27,45.16
 step
   talk Donova Snowden##9298
-  accept Falling to Corruption##5084 |goto Winterspring 31.27,45.16
-step
-  talk Donova Snowden##9298
   accept Toxic Horrors##5086 |goto Winterspring 31.27,45.16
 step
   note Collect 3 Toxic Horror Droplets for Donova Snowden in Winterspring.
   collect 3 Toxic Horror Droplet##12822 |q 5086 |goto Felwood 49.76,24.66 |tip {dropsfrom}Toxic Horror
 step
-  talk Donova Snowden##9298
-  accept Words of the High Chief##5128 |goto Winterspring 31.27,45.16
-step
   talk Salfa##11556
   accept Winterfall Activity##8464 |goto Winterspring 27.73,34.5
-step
-  turnin Falling to Corruption##5084 |goto Felwood 60.2,5.84 |tip {turninat}Felwood
 step
   talk Jaron Stoneshaper##10301
   accept Enraged Wildkin##4861 |goto Winterspring 52.14,30.43
@@ -43,7 +35,8 @@ step
   accept Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
   note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
-  collect 4 Frostmaul Shards##12334 |q 969 |goto Winterspring 62.56,69.28 |tip {dropsfrom}Frostmaul Giant, Frostmaul Preserver, Kashoch the Reaver
+  kill Frostmaul Giant##7428 |goto Winterspring 62.56,69.28 |elite
+  collect 4 Frostmaul Shards##12334 |q 969 |goto Winterspring 62.56,69.28
 step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
@@ -57,11 +50,32 @@ step
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
   collect 8 Uncracked Chillwind Horn##12444 |q 4809 |goto Winterspring 44.97,42.75 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
 step
+  click Malyfous's Catalogue##175927
+  accept Cap of the Scarlet Savant##5063 |goto Winterspring 61.0,38.8
+step
+  note In order to create the Cap of the Scarlet Savant, you will be required to bring the following items back to Malyfous Darkhammer: 1 Pristine Hide of the Beast; 5 Frayed Abomination Stitchings; 8 Arcane Crystals; 5 Enchanted Scarlet Thread.
+  collect Pristine Hide of the Beast##12731 |q 5063 |goto Winterspring 61.0,38.8
+step
+  click Malyfous's Catalogue##175927
+  accept Leggings of Arcana##5067 |goto Winterspring 61.0,38.8
+step
+  note In order to create the Leggings of Arcana, you will be required to bring the following items back to Malyfous Darkhammer: 1 Pristine Hide of the Beast; 5 Frayed Abomination Stitchings; 5 Arcanite Bars; 5 Frostwhisper's Embalming Fluid.
+  collect Pristine Hide of the Beast##12731 |q 5067 |goto Winterspring 61.0,38.8
+step
+  click Malyfous's Catalogue##175927
+  accept Breastplate of Bloodthirst##5068 |goto Winterspring 61.0,38.8
+step
+  note In order to create the Breastplate of Bloodthirst, you will be required to bring the following items back to Malyfous Darkhammer: 1 Pristine Hide of the Beast; 10 Frayed Abomination Stitchings; 5 Arcanite Bars; 5 Skin of Shadow.
+  collect Pristine Hide of the Beast##12731 |q 5068 |goto Winterspring 61.0,38.8
+step
+  kill Winterfall Ursa##7438 |goto Winterspring 66.84,37.84 |tip Loot the quest item here — it starts the quest.
+  accept Winterfall Firewater##5083 |goto Winterspring 66.84,37.84
+step
   talk Malyfous Darkhammer##10637
   accept Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
 step
   note Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.
-  collect Unfired Plate Gauntlets##12812 |q 5124 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Unfired Plate Gauntlets
+  collect Unfired Plate Gauntlets##12812 |q 5124 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Lilith the Lithe##11191
   accept Sweet Serenity##5305 |goto Winterspring 61.33,37.13
@@ -73,7 +87,7 @@ step
   accept Snakestone of the Shadow Huntress##5306 |goto Winterspring 61.3,37.07
 step
   note Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.
-  collect Vosh'gajin's Snakestone##13352 |q 5306 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Shadow Hunter Vosh'gajin
+  collect Vosh'gajin's Snakestone##13352 |q 5306 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Shadow Hunter Vosh'gajin
 step
   talk Seril Scourgebane##11193
   accept Corruption##5307 |goto Winterspring 61.33,37.19
@@ -99,6 +113,9 @@ step
   talk Harlo Wigglesworth##11755
   accept A Little Luck##6606 |goto Winterspring 61.12,38.43
 step
+  kill Winterfall Ursa##7438 |goto Winterspring 66.84,37.84 |tip Loot the quest item here — it starts the quest.
+  accept Winterfall Ritual Totem##8471 |goto Winterspring 66.84,37.84
+step
   talk Elder Stonespire##15574
   accept Stonespire the Elder##8672 |goto Winterspring 61.45,37.81
 step
@@ -113,6 +130,9 @@ step
 step
   turnin Enraged Wildkin##4861 |goto Winterspring 58.99,59.79
 step
+  click Damaged Crate##175587
+  accept Enraged Wildkin##4863 |goto Winterspring 58.99,59.79
+step
   talk Haleh##10929
   accept Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
@@ -120,10 +140,7 @@ step
   accept Drakefire Amulet##6502 |goto Winterspring 54.55,51.2
 step
   note You must retrieve the Blood of the Black Dragon Champion from General Drakkisath. Drakkisath can be found in his throne room behind the Halls of Ascension in Blackrock Spire.
-  collect Blood of the Black Dragon Champion##16663 |q 6502 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}General Drakkisath
-step
-  talk Kelek Skykeeper##10920
-  turnin Words of the High Chief##5128 |goto Felwood 51.14,81.75 |tip {turninat}Felwood
+  collect Blood of the Black Dragon Champion##16663 |q 6502 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
   talk Argent Officer Pureheart##10840
   turnin The Everlook Report##6028 |goto Western Plaguelands 42.97,83.55 |tip {turninat}Western Plaguelands
@@ -144,6 +161,9 @@ step
   turnin Trouble in Winterspring!##6603 |goto Winterspring 31.27,45.16
 step
   talk Donova Snowden##9298
+  turnin Winterfall Firewater##5083 |goto Winterspring 31.27,45.16
+step
+  talk Donova Snowden##9298
   turnin Toxic Horrors##5086 |goto Winterspring 31.27,45.16
 step
   talk Donova Snowden##9298
@@ -151,6 +171,9 @@ step
 step
   talk Donova Snowden##9298
   accept Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
+step
+  talk Donova Snowden##9298
+  accept Falling to Corruption##5084 |goto Winterspring 31.27,45.16
 step
   talk Donova Snowden##9298
   accept Winterfall Runners##5087 |goto Winterspring 31.27,45.16
@@ -167,11 +190,16 @@ step
   talk Wynd Nightchaser##11079
   turnin Remorseful Highborne##5252 |goto Winterspring 51.97,30.39
 step
+  talk Kernda##11558
+  turnin Winterfall Ritual Totem##8471 |goto Felwood 65.5,3.52 |tip {turninat}Felwood
+step
   talk Gaeriyan##9299
   turnin Meet at the Grave##3912 |goto Tanaris 53.92,23.33 |tip {turninat}Tanaris
 step
   talk Jaron Stoneshaper##10301
   turnin Enraged Wildkin##6604 |goto Winterspring 52.14,30.43
+step
+  turnin Falling to Corruption##5084 |goto Felwood 60.2,5.84 |tip {turninat}Felwood
 step
   talk Jaron Stoneshaper##10301
   turnin The Ruins of Kel'Theril##5244 |goto Winterspring 52.14,30.43
@@ -200,11 +228,20 @@ step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
 step
+  talk Malyfous Darkhammer##10637
+  turnin Cap of the Scarlet Savant##5063 |goto Winterspring 60.99,38.78
+step
   talk Witch Doctor Mau'ari##10307
   turnin Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
   talk Felnok Steelspring##10468
   turnin Chillwind Horns##4809 |goto Winterspring 61.63,38.61
+step
+  talk Malyfous Darkhammer##10637
+  turnin Leggings of Arcana##5067 |goto Winterspring 60.99,38.78
+step
+  talk Malyfous Darkhammer##10637
+  turnin Breastplate of Bloodthirst##5068 |goto Winterspring 60.99,38.78
 step
   talk Witch Doctor Mau'ari##10307
   turnin A Little Luck##6606 |goto Winterspring 61.92,38.3
@@ -230,6 +267,14 @@ step
   talk Haleh##10929
   turnin Drakefire Amulet##6502 |goto Winterspring 54.55,51.2
 step
+  turnin Enraged Wildkin##4863 |goto Winterspring 61.44,60.68
+step
+  click Jaron's Wagon##175586
+  accept Enraged Wildkin##4864 |goto Winterspring 61.44,60.68
+step
+  note Pick up Jaron's Supplies from the snow, then find the wildkin that stole the amulet Jaron spoke of.
+  collect Jaron's Supplies##12525 |q 4864 |goto Winterspring 61.41,60.73
+step
   talk Haleh##10929
   accept Wrath of the Blue Flight##5162 |goto Winterspring 54.55,51.2
 step
@@ -254,17 +299,23 @@ step
   talk Arch Druid Fandral Staghelm##3516
   turnin The Crystal of Zin-Malor##5253 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
 step
-  talk Aurora Skycaller##10304
-  turnin Troubled Spirits of Kel'Theril##5245 |goto Eastern Plaguelands 53.5,22.0 |tip {turninat}Eastern Plaguelands
+  talk Jaron Stoneshaper##10301
+  turnin Enraged Wildkin##4864 |goto Winterspring 52.14,30.43
 step
   talk Tinkee Steamboil##10267
   turnin Return to Tinkee##4810 |goto Burning Steppes 65.24,24.0 |tip {turninat}Burning Steppes
+step
+  talk Aurora Skycaller##10304
+  turnin Troubled Spirits of Kel'Theril##5245 |goto Eastern Plaguelands 53.5,22.0 |tip {turninat}Eastern Plaguelands
 step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
 step
   talk Felnok Steelspring##10468
   accept Tinkee Steamboil##4907 |goto Winterspring 61.63,38.61
+step
+  kill High Chief Winterfall##10738 |goto Winterspring 69.56,38.31 |tip Loot the quest item here — it starts the quest.
+  accept The Final Piece##5123 |goto Winterspring 69.56,38.31
 step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##5163 |goto Winterspring 60.88,37.62
@@ -284,6 +335,12 @@ step
   talk Donova Snowden##9298
   turnin High Chief Winterfall##5121 |goto Winterspring 31.27,45.16
 step
+  talk Donova Snowden##9298
+  turnin The Final Piece##5123 |goto Winterspring 31.27,45.16
+step
+  talk Donova Snowden##9298
+  accept Words of the High Chief##5128 |goto Winterspring 31.27,45.16
+step
   talk Tinkee Steamboil##10267
   turnin Tinkee Steamboil##4907 |goto Burning Steppes 65.24,24.0 |tip {turninat}Burning Steppes
 step
@@ -292,6 +349,9 @@ step
 step
   talk Umi Rumplesnicker##10305
   accept A Yeti of Your Own##8798 |goto Winterspring 60.88,37.62
+step
+  talk Kelek Skykeeper##10920
+  turnin Words of the High Chief##5128 |goto Felwood 51.14,81.75 |tip {turninat}Felwood
 step
   talk Umi Rumplesnicker##10305
   turnin A Yeti of Your Own##8798 |goto Winterspring 60.88,37.62

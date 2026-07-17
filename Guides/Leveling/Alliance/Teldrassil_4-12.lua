@@ -41,11 +41,20 @@ step
   talk Iverron##8584
   accept A Friend in Need##3519 |goto Teldrassil 54.59,32.99
 step
+  kill Blackmoss the Fetid##3535 |goto Teldrassil 43.97,30.22 |tip Loot the quest item here — it starts the quest.
+  accept The Moss-twined Heart##927 |goto Teldrassil 43.97,30.22
+step
+  click Strange Fronded Plant##6752
+  accept The Shimmering Frond##931 |goto Teldrassil 34.61,28.76
+step
   talk Sentinel Arynia Cloudsbreak##3519
   accept The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
 step
   note Acquire 6 Bloodfeather Belts and bring them to Sentinel Arynia Cloudsbreak in the Oracle Glade.
   collect 6 Bloodfeather Belt##5204 |q 937 |goto Teldrassil 37.21,40.54 |tip {dropsfrom}Bloodfeather Harpy, Bloodfeather Rogue, Bloodfeather Sorceress
+step
+  click Strange Fruited Plant##6751
+  accept The Glowing Fruit##930 |goto Teldrassil 42.61,76.19
 step
   talk Oben Rageclaw##7317
   accept The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
@@ -122,6 +131,15 @@ step
   accept Gnarlpine Corruption##476 |goto Teldrassil 66.26,58.52
 step
   talk Denalan##2080
+  turnin The Moss-twined Heart##927 |goto Teldrassil 60.9,68.49
+step
+  talk Denalan##2080
+  turnin The Glowing Fruit##930 |goto Teldrassil 60.9,68.49
+step
+  talk Denalan##2080
+  turnin The Shimmering Frond##931 |goto Teldrassil 60.9,68.49
+step
+  talk Denalan##2080
   turnin Denalan's Earth##997 |goto Teldrassil 60.9,68.49
 step
   talk Denalan##2080
@@ -134,10 +152,13 @@ step
   accept Timberling Sprouts##919 |goto Teldrassil 60.9,68.49
 step
   note Bring 12 Timberling Sprouts to Denalan at Lake Al'Ameth.
-  collect 12 Timberling Sprout##5169 |q 919 |goto Teldrassil 57.32,69.93 |tip {dropsfrom}Timberling Sprout
+  collect 12 Timberling Sprout##5169 |q 919 |goto Teldrassil 57.32,69.93
 step
   talk Denalan##2080
   accept Planting the Heart##941 |goto Teldrassil 60.9,68.49
+step
+  click Sprouted Frond##7510
+  accept The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
 step
   talk Denalan##2080
   accept Oakenscowl##2499 |goto Teldrassil 60.9,68.49
@@ -148,6 +169,22 @@ step
   only NightElf Priest
   note Find Sentinel Shaya and heal her wounds using Lesser Heal (Rank 2). Afterwards, grant her Power Word: Fortitude and then return to Laurna Morninglight in Dolanaar.
   kill Sentinel Shaya##12429 |q 5621 |goto Teldrassil 57.24,63.51
+step
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  turnin Returning Home##5629 |goto Darnassus 39.52,81.2 |tip {turninat}Darnassus
+step
+  click Feralas: A History##142958
+  accept Feralas: A History##2940 |goto Teldrassil 55.22,91.46
+step
+  talk Daryn Lightwind##7907
+  accept Return to Troyas##2943 |goto Teldrassil 55.41,92.23
+step
+  talk Erelas Ambersky##7916
+  accept Favored of Elune?##3661 |goto Teldrassil 55.5,92.05
+step
+  note Collect 15 Wildkin Feathers from the Hinterlands for Erelas Ambersky in Rut'theran Village.
+  collect 15 Wildkin Feather##10819 |q 3661 |goto The Hinterlands 34.07,52.92
 step
   only NightElf
   talk Nessa Shadowsong##10118
@@ -196,6 +233,7 @@ step
   talk Conservator Ilthalaine##2079
   accept Hallowed Sigil##3119 |goto Teldrassil 58.69,44.27
 step
+  only Druid
   talk Conservator Ilthalaine##2079
   accept Verdant Sigil##3120 |goto Teldrassil 58.69,44.27
 step
@@ -219,15 +257,14 @@ step
   talk Syurna##4163
   turnin The Apple Falls##2241 |goto Darnassus 36.99,21.91 |tip {turninat}Darnassus
 step
+  talk Troyas Moonbreeze##7764
+  turnin Return to Troyas##2943 |goto Feralas 31.78,45.5 |tip {turninat}Feralas
+step
   talk Sentinel Arynia Cloudsbreak##3519
   accept Teldrassil##940 |goto Teldrassil 38.32,34.36
 step
   talk Oben Rageclaw##7317
   turnin The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
-step
-  only NightElf Priest
-  talk Priestess Alathea##11401
-  turnin Returning Home##5629 |goto Darnassus 39.52,81.2 |tip {turninat}Darnassus
 step
   note Slay 6 Gnarlpine Ambushers and return to Sentinel Amara Nightwalker outside of Dolanaar.
   kill Gnarlpine Ambusher##2152 |q 487 |goto Teldrassil 46.3,53.42
@@ -267,7 +304,7 @@ step
   accept Seek Redemption!##489 |goto Teldrassil 56.08,57.72
 step
   note Collect 3 Fel Cones and give them to Zenn Foulhoof outside of Dolanaar.
-  collect 3 Fel Cone##3418 |q 489 |goto Teldrassil 53.68,62.92 |tip {dropsfrom}Fel Cone
+  collect 3 Fel Cone##3418 |q 489 |goto Teldrassil 53.68,62.92
 step
   only Rogue
   talk Jannok Breezesong##3599
@@ -290,12 +327,23 @@ step
   talk Denalan##2080
   turnin Oakenscowl##2499 |goto Teldrassil 60.9,68.49
 step
+  turnin The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
+step
   talk Denalan##2080
   accept Rellian Greenspyre##922 |goto Teldrassil 60.9,68.49
 step
   only NightElf
   talk Vesprystus##3838
   turnin The Bounty of Teldrassil##6341 |goto Teldrassil 58.4,94.02
+step
+  talk Erelas Ambersky##7916
+  turnin Favored of Elune?##3661 |goto Teldrassil 55.5,92.05
+step
+  talk Daryn Lightwind##7907
+  turnin Feralas: A History##2940 |goto Teldrassil 55.41,92.23
+step
+  talk Daryn Lightwind##7907
+  accept The Borrower##2941 |goto Teldrassil 55.41,92.23
 step
   only NightElf
   talk Vesprystus##3838
@@ -320,6 +368,7 @@ step
   talk Shanda##3595
   turnin Hallowed Sigil##3119 |goto Teldrassil 59.17,40.44
 step
+  only Druid
   talk Mardant Strongoak##3597
   turnin Verdant Sigil##3120 |goto Teldrassil 58.63,40.29
 step
@@ -340,6 +389,9 @@ step
 step
   talk Iverron##8584
   turnin Iverron's Antidote##3522 |goto Teldrassil 54.59,32.99
+step
+  talk Curgle Cranklehop##7763
+  turnin The Borrower##2941 |goto Tanaris 52.36,26.91 |tip {turninat}Tanaris
 step
   talk Rellian Greenspyre##3517
   turnin Rellian Greenspyre##922 |goto Darnassus 38.18,21.64 |tip {turninat}Darnassus

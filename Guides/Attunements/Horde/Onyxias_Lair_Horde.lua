@@ -52,7 +52,7 @@ step
   accept Oculus Illusions##6569 |goto Western Plaguelands 50.79,77.85
 step
   note Travel to Blackrock Spire and collect 20 Black Dragonspawn Eyes. Return to Myranda the Hag when the task is complete.
-  collect 20 Black Dragonspawn Eye##16786 |q 6569 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Rage Talon Dragonspawn, Overlord Wyrmthalak, Rage Talon Flamescale
+  collect 20 Black Dragonspawn Eye##16786 |q 6569 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Rage Talon Dragonspawn, Overlord Wyrmthalak, Rage Talon Flamescale
 step
   talk Myranda the Hag##11872
   turnin Oculus Illusions##6569 |goto Western Plaguelands 50.79,77.85
@@ -73,13 +73,16 @@ step
   accept The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
 step
   note You must find the blue dragonflight drake champion, Scryer, and slay him. Pry his skull from his corpse and return it to Emberstrife.
-  collect The Skull of Scryer##16869 |q 6582 |goto Winterspring 52.71,55.89 |tip {dropsfrom}Scryer
+  kill Scryer##10664 |goto Winterspring 52.71,55.89 |elite
+  collect The Skull of Scryer##16869 |q 6582 |goto Winterspring 52.71,55.89
 step
   note Destroy the drake champion of the Green Flight, Somnus. Take his skull and return it to Emberstrife.
-  collect The Skull of Somnus##16870 |q 6583 |goto Swamp of Sorrows 74.12,68.35 |tip {dropsfrom}Somnus
+  kill Somnus##12900 |goto Swamp of Sorrows 74.12,68.35 |elite
+  collect The Skull of Somnus##16870 |q 6583 |goto Swamp of Sorrows 74.12,68.35
 step
   note Guarding the Caverns of Time in the Tanaris Desert is Chronalis, child of Nozdormu. Destroy him and return his skull to Emberstrife.
-  collect The Skull of Chronalis##16871 |q 6584 |goto Tanaris 64.16,48.49 |tip {dropsfrom}Chronalis
+  kill Chronalis##8197 |goto Tanaris 64.16,48.49 |elite
+  collect The Skull of Chronalis##16871 |q 6584 |goto Tanaris 64.16,48.49
 step
   talk Emberstrife##10321
   turnin The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
@@ -94,7 +97,8 @@ step
   accept The Test of Skulls, Axtroz##6585 |goto Dustwallow Marsh 56.66,87.72
 step
   note Travel to Grim Batol and track down Axtroz, drake champion of the Red Flight. Destroy him and take his skull. Return the skull to Emberstrife.
-  collect The Skull of Axtroz##16872 |q 6585 |goto Wetlands 81.82,48.24 |tip {dropsfrom}Axtroz
+  kill Axtroz##12899 |goto Wetlands 81.82,48.24 |elite
+  collect The Skull of Axtroz##16872 |q 6585 |goto Wetlands 81.82,48.24
 step
   talk Emberstrife##10321
   turnin The Test of Skulls, Axtroz##6585 |goto Dustwallow Marsh 56.66,87.72
@@ -109,7 +113,7 @@ step
   accept Blood of the Black Dragon Champion##6602 |goto Feralas 46.39,18.24
 step
   note Travel to Blackrock Spire and slay General Drakkisath. Gather his blood and return it to Rokaro.
-  collect Blood of the Black Dragon Champion##16663 |q 6602 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}General Drakkisath
+  collect Blood of the Black Dragon Champion##16663 |q 6602 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
   talk Rokaro##10182
   turnin Blood of the Black Dragon Champion##6602 |goto Feralas 46.39,18.24

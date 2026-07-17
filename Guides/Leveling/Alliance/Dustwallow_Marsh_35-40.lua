@@ -16,6 +16,9 @@ step
   note Bring 10 Marsh Frog Legs to "Swamp Eye" Jarl in Dustwallow Marsh.
   collect 10 Marsh Frog Leg##33202 |q 1218 |goto Dustwallow Marsh 56.18,27.25 |tip {dropsfrom}Giant Marsh Frog
 step
+  click Loose Dirt##20985
+  accept The Orc Report##1219 |goto Dustwallow Marsh 55.44,25.92
+step
   talk Mordant Grimsby##23843
   accept What's Haunting Witch Hill?##11180 |goto Dustwallow Marsh 55.58,26.14
 step
@@ -34,27 +37,35 @@ step
   note Mudcrush Durtfeet in northern Dustwallow wants 8 Mirefin Heads.
   collect Mirefin Head##5847 |q 1177 |goto Dustwallow Marsh 57.44,15.53 |tip {dropsfrom}Mirefin Puddlejumper, Mirefin Murloc, Mirefin Warrior
 step
-  only Warlock
+  click Theramore Guard Badge##21042
+  accept Lieutenant Paval Reethe##1252 |goto Dustwallow Marsh 29.83,48.24
+step
+  click Black Shield##20992
+  accept The Black Shield##1253 |goto Dustwallow Marsh 29.63,48.62
+step
+  click Suspicious Hoofprint##187273
+  accept Suspicious Hoofprints##1284 |goto Dustwallow Marsh 29.7,47.64
+step
+  click Musty Scroll##2555
+  accept Cortello's Riddle##626 |goto Dustwallow Marsh 31.1,66.14
+step
+  only Mage
   talk Tabetha##6546
   accept Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
   collect 1 Jade##1529 |q 1948 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Rock Elemental, Harvest Reaper
 step
-  only Warlock
-  talk Tabetha##6546
-  accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   accept Mage's Wand##1952 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
   collect Infernal Orb##7291 |q 1954 |goto Desolace 79.47,77.84 |tip {dropsfrom}Burning Blade Summoner
 step
@@ -62,13 +73,13 @@ step
   accept Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
 step
   note Bring the Tiara of the Deep to Tabetha in Dustwallow Marsh.
-  collect Tiara of the Deep##9234 |q 2846 |goto Zul'Farrak - Dungeon -1,-1 |tip {dropsfrom}Hydromancer Velratha
+  collect Tiara of the Deep##9234 |q 2846 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Hydromancer Velratha
 step
-  only Druid
+  only Warlock
   talk Tabetha##6546
   accept Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Druid
+  only Warlock
   note Kill the Demon of the Orb, then speak with Tabetha.
   kill Demon of the Orb##6549 |q 4961 |elite
 step
@@ -90,6 +101,9 @@ step
   note Bring 6 vials of Marsh Venom to Apprentice Garion at Tabetha's Farm.
   collect 6 Marsh Venom##33103 |q 11173 |goto Dustwallow Marsh 41.06,53.62 |tip {dropsfrom}Noxious Shredder, Darkfang Creeper
 step
+  kill Apothecary Cylla##23881 |goto Dustwallow Marsh 47.22,46.59 |tip Loot the quest item here — it starts the quest.
+  accept The Apothecary's Letter##11185 |goto Dustwallow Marsh 47.22,46.59
+step
   talk Tabetha##6546
   accept Help for Mudsprocket##11211 |goto Dustwallow Marsh 46.06,57.09
 step
@@ -103,14 +117,10 @@ step
   accept Secure the Cargo!##11207 |goto Dustwallow Marsh 53.57,56.92
 step
   note Moxie Steelgrille at Beezil's Wreck wants you to recover 8 pieces of Zeppelin Cargo.
-  collect Zeppelin Cargo##33163 |q 11207 |goto Dustwallow Marsh 51.69,55.91 |tip {dropsfrom}Zeppelin Cargo
+  collect Zeppelin Cargo##33163 |q 11207 |goto Dustwallow Marsh 51.69,55.91
 step
   note Moxie Steelgrille wants you to dissolve 10 oozes and report back to her at Beezil's Wreck.
   kill Moxie Steelgrille##23797 |q 11174 |goto Dustwallow Marsh 53.57,56.92
-step
-  only Warlock
-  talk Magus Tirth##6548
-  turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
 step
   talk Nat Pagle##12919
   accept Nat Pagle, Angler Extreme##6607 |goto Dustwallow Marsh 58.76,60.17
@@ -118,11 +128,19 @@ step
   note Nat Pagle wants you to catch the following fish:
   collect Feralas Ahi##16967 |q 6607 |goto Dustwallow Marsh 58.76,60.17
 step
-  talk Morgan Stern##4794
-  accept Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
+  talk Captain Garran Vimes##4944
+  turnin Suspicious Hoofprints##1284 |goto Dustwallow Marsh 68.21,48.62
 step
-  note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
-  collect 8 Forked Mudrock Tongue##5883 |q 1204 |goto Dustwallow Marsh 62.14,15.72 |tip {dropsfrom}Mudrock Tortoise, Mudrock Spikeshell, Mudrock Burrower
+  talk Lieutenant Aden##23951
+  turnin The Orc Report##1219 |goto Dustwallow Marsh 65.07,47.13
+step
+  talk Captain Garran Vimes##4944
+  turnin Lieutenant Paval Reethe##1252 |goto Dustwallow Marsh 68.21,48.62
+step
+  talk Captain Garran Vimes##4944
+  turnin The Black Shield##1253 |goto Dustwallow Marsh 68.21,48.62
+step
+  turnin Cortello's Riddle##626 |goto The Hinterlands 80.79,46.82 |tip {turninat}The Hinterlands
 step
   talk Captain Garran Vimes##4944
   accept Lieutenant Paval Reethe##1259 |goto Dustwallow Marsh 68.21,48.62
@@ -163,11 +181,27 @@ step
   note Obtain the Defias Orders from Garn Mathers and bring them to Captain Wymor at Sentry Point.
   collect Defias Orders##33037 |q 11137 |goto Dustwallow Marsh 63.9,29.05 |tip {dropsfrom}Garn Mathers
 step
+  talk Milton Sheaf##1440
+  accept Southshore##538 |goto Stormwind City 74.18,7.46
+step
+  talk Librarian Mae Paledust##3979
+  accept Mythology of the Titans##1050 |goto Ironforge 74.97,12.48
+step
+  note Retrieve Mythology of the Titans from the Monastery and bring it to Librarian Mae Paledust in Ironforge.
+  collect Mythology of the Titans##5536 |q 1050 |goto Ironforge 74.97,12.48
+step
   talk Drazzit Dripvalve##23572
   turnin Help for Mudsprocket##11211 |goto Dustwallow Marsh 42.33,72.93
 step
   talk Drazzit Dripvalve##23572
   turnin Mission to Mudsprocket##11214 |goto Dustwallow Marsh 42.33,72.93
+step
+  talk Angus Stern##1141
+  accept Morgan Stern##1260 |goto Stormwind City 41.49,89.4
+step
+  only Mage
+  talk Jennea Cannon##5497
+  accept Journey to the Marsh##1947 |goto Stormwind City 38.62,79.3
 step
   talk Brogg##23579
   accept Bloodfen Feathers##11158 |goto Dustwallow Marsh 41.86,73.97
@@ -180,6 +214,9 @@ step
 step
   note Brogg, at Mudsprocket, wants you to put 10 Stonemaul Spirits to rest.
   kill Stonemaul Spirit##23786 |q 11159
+step
+  click Wanted Poster##186426
+  accept WANTED: Goreclaw the Ravenous##11184 |goto Dustwallow Marsh 41.75,73.13
 step
   talk Gizzix Grimegurgle##23570
   accept Catch a Dragon by the Tail##11217 |goto Dustwallow Marsh 41.54,72.99
@@ -223,48 +260,65 @@ step
   talk Mudcrush Durtfeet##4503
   turnin Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
 step
+  note Kill Goreclaw the Ravenous and report to Drazzit Dripvalve at Mudsprocket.
+  kill Goreclaw the Ravenous##23873 |q 11184 |goto Dustwallow Marsh 32.17,65.66
+step
   talk Apprentice Morlann##23600
   turnin Direhorn Raiders##11156 |goto Dustwallow Marsh 46.1,57.43
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  talk Tabetha##6546
+  turnin Journey to the Marsh##1947 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Tabetha##6546
   turnin Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   turnin Mage's Wand##1952 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Apprentice Garion##23601
   turnin The Grimtotem Weapon##11169 |goto Dustwallow Marsh 46.05,57.24
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Apprentice Garion##23601
   turnin The Reagent Thief##11173 |goto Dustwallow Marsh 46.05,57.24
 step
+  talk Andello Porter##23942
+  turnin The Apothecary's Letter##11185 |goto Dustwallow Marsh 45.47,57.76
+step
   talk Tabetha##6546
   turnin Tabetha's Farm##11212 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Druid
+  only Warlock
   talk Tabetha##6546
   turnin Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
+  talk Tabetha##6546
+  accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
   talk Tabetha##6546
   accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   note Kill the Demon of the Orb, then speak with Tabetha.
   kill Demon of the Orb##6549 |q 1955 |elite
 step
-  only Druid
+  only Warlock
   talk Tabetha##6546
   accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
+step
+  talk Loremaster Dibbs##2277
+  turnin Southshore##538 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
 step
   talk Moxie Steelgrille##23797
   turnin Corrosion Prevention##11174 |goto Dustwallow Marsh 53.57,56.92
@@ -274,6 +328,10 @@ step
 step
   talk Moxie Steelgrille##23797
   accept Delivery for Drazzit##11208 |goto Dustwallow Marsh 53.57,56.92
+step
+  only Mage
+  talk Magus Tirth##6548
+  turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
 step
   talk Nat Pagle##12919
   turnin Nat Pagle, Angler Extreme##6607 |goto Dustwallow Marsh 58.76,60.17
@@ -287,14 +345,14 @@ step
   talk Caz Twosprocket##4941
   turnin The Black Shield##1319 |goto Dustwallow Marsh 64.75,50.43
 step
-  talk Morgan Stern##4794
-  turnin Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
-step
   talk Babs Fizzletorque##23892
   turnin This Old Lighthouse##11191 |goto Dustwallow Marsh 72.11,47.05
 step
   talk Adjutant Tesoran##4948
   turnin Lieutenant Paval Reethe##1259 |goto Dustwallow Marsh 68.05,48.11
+step
+  talk Morgan Stern##4794
+  turnin Morgan Stern##1260 |goto Dustwallow Marsh 66.34,45.47
 step
   talk Archmage Tervosh##4967
   turnin The Missing Diplomat##1265 |goto Dustwallow Marsh 66.42,49.26
@@ -303,10 +361,10 @@ step
   turnin Traitors Among Us##11126 |goto Dustwallow Marsh 68.33,51.04
 step
   talk Morgan Stern##4794
-  accept ... and Bugs##1258 |goto Dustwallow Marsh 66.34,45.47
+  accept Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
 step
-  note Bring 12 Pristine Crawler Legs to Morgan Stern in Theramore.
-  collect 12 Pristine Crawler Leg##5938 |q 1258 |goto Swamp of Sorrows 83.23,14.77 |tip {dropsfrom}Silt Crawler, Monstrous Crawler
+  note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
+  collect 8 Forked Mudrock Tongue##5883 |q 1204 |goto Dustwallow Marsh 62.14,15.72 |tip {dropsfrom}Mudrock Tortoise, Mudrock Spikeshell, Mudrock Burrower
 step
   talk Archmage Tervosh##4967
   accept The Missing Diplomat##1266 |goto Dustwallow Marsh 66.42,49.26
@@ -324,7 +382,7 @@ step
   accept Propaganda War##11128 |goto Dustwallow Marsh 68.33,51.04
 step
   note Bring the Deserter Propaganda to Calia Hastings near the docks in Theramore.
-  collect Deserter Propaganda##33008 |q 11128 |goto Dustwallow Marsh 67.94,58.72 |tip {dropsfrom}Deserter Propaganda
+  collect Deserter Propaganda##33008 |q 11128 |goto Dustwallow Marsh 67.94,58.72
 step
   talk Babs Fizzletorque##23892
   accept Thresher Oil##11192 |goto Dustwallow Marsh 72.11,47.05
@@ -335,7 +393,7 @@ step
   talk Captain Wymor##5086
   turnin Defias in Dustwallow?##11137 |goto Dustwallow Marsh 59.67,41.08
 step
-  only Druid
+  only Warlock
   talk Menara Voidrender##6266
   turnin Returning the Cleansed Orb##4976 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
@@ -345,17 +403,23 @@ step
   talk Renn McGill##23569
   turnin Renn McGill##11138 |goto Dustwallow Marsh 63.74,17.04
 step
+  talk Librarian Mae Paledust##3979
+  turnin Mythology of the Titans##1050 |goto Ironforge 74.97,12.48 |tip {turninat}Ironforge
+step
   talk Renn McGill##23569
   accept Secondhand Diving Gear##11139 |goto Dustwallow Marsh 63.74,17.04
 step
   note Bring the Tool Kit and Damaged Diving Gear to Renn McGill in the Dustwallow Marsh.
-  collect Damaged Diving Gear##33038 |q 11139 |goto Dustwallow Marsh 62.33,18.23 |tip {dropsfrom}Damaged Diving Gear
+  collect Damaged Diving Gear##33038 |q 11139 |goto Dustwallow Marsh 62.33,18.23
 step
   talk Brogg##23579
   turnin Bloodfen Feathers##11158 |goto Dustwallow Marsh 41.86,73.97
 step
   talk Brogg##23579
   turnin Spirits of Stonemaul Hold##11159 |goto Dustwallow Marsh 41.86,73.97
+step
+  talk Drazzit Dripvalve##23572
+  turnin WANTED: Goreclaw the Ravenous##11184 |goto Dustwallow Marsh 42.33,72.93
 step
   talk Drazzit Dripvalve##23572
   turnin Delivery for Drazzit##11208 |goto Dustwallow Marsh 42.33,72.93
@@ -414,17 +478,17 @@ step
   talk Inspector Tarem##23567
   turnin Inspecting the Ruins##11123 |goto Dustwallow Marsh 29.79,47.67
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   accept Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
-  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |tip {dropsfrom}Obsidian Sentinel
+  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Obsidian Sentinel
 step
   talk Captain Garran Vimes##4944
   turnin Daelin's Men##1285 |goto Dustwallow Marsh 68.21,48.62
@@ -435,14 +499,20 @@ step
   talk Archmage Tervosh##4967
   turnin The Missing Diplomat##1324 |goto Dustwallow Marsh 66.42,49.26
 step
+  talk Morgan Stern##4794
+  turnin Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
+step
   talk Babs Fizzletorque##23892
   turnin Thresher Oil##11192 |goto Dustwallow Marsh 72.11,47.05
 step
-  talk Morgan Stern##4794
-  turnin ... and Bugs##1258 |goto Dustwallow Marsh 66.34,45.47
-step
   talk Calia Hastings##23566
   turnin Propaganda War##11128 |goto Dustwallow Marsh 68.33,51.04
+step
+  talk Morgan Stern##4794
+  accept ... and Bugs##1258 |goto Dustwallow Marsh 66.34,45.47
+step
+  note Bring 12 Pristine Crawler Legs to Morgan Stern in Theramore.
+  collect 12 Pristine Crawler Leg##5938 |q 1258 |goto Swamp of Sorrows 83.23,14.77 |tip {dropsfrom}Silt Crawler, Monstrous Crawler
 step
   talk Archmage Tervosh##4967
   accept The Missing Diplomat##1267 |goto Dustwallow Marsh 66.42,49.26
@@ -472,10 +542,10 @@ step
   turnin Banner of the Stonemaul##11160 |goto Dustwallow Marsh 41.86,73.97
 step
   talk Brogg##23579
-  turnin The Essence of Enmity##11161 |goto Dustwallow Marsh 41.86,73.97
+  turnin Challenge to the Black Flight##11162 |goto Dustwallow Marsh 41.86,73.97
 step
   talk Brogg##23579
-  turnin Challenge to the Black Flight##11162 |goto Dustwallow Marsh 41.86,73.97
+  turnin The Essence of Enmity##11161 |goto Dustwallow Marsh 41.86,73.97
 step
   talk Mordant Grimsby##23843
   turnin Cleansing Witch Hill##11183 |goto Dustwallow Marsh 55.58,26.14
@@ -489,15 +559,15 @@ step
   talk Balos Jacken##5089
   accept The Deserters##1287 |goto Dustwallow Marsh 36.09,54.31
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   accept Mana Surges##1957 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   note Kill 12 Mana Surges in the allowed time limit.
   kill Mana Surge##6550 |q 1957
 step
@@ -506,6 +576,9 @@ step
 step
   talk "Dirty" Michael Crowe##23896
   turnin Dastardly Denizens of the Deep##11193 |goto Dustwallow Marsh 69.24,51.89
+step
+  talk Morgan Stern##4794
+  turnin ... and Bugs##1258 |goto Dustwallow Marsh 66.34,45.47
 step
   talk Lady Jaina Proudmoore##4968
   turnin The Missing Diplomat##1267 |goto Dustwallow Marsh 66.27,49.04
@@ -546,11 +619,11 @@ step
   note Captain Darill at North Point Tower wants you to bring him 7 Blackhoof Armaments.
   collect Blackhoof Armaments##33071 |q 11148 |goto Dustwallow Marsh 44.59,26.34 |tip {dropsfrom}Drywallow Crocolisk, Withervine Creeper, Grimtotem Breaker
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   turnin Mana Surges##1957 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   accept Celestial Power##1958 |goto Dustwallow Marsh 46.06,57.09
 step
@@ -596,7 +669,7 @@ step
   talk Tabetha##6546
   turnin Tabetha's Assistance##11149 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   turnin Celestial Power##1958 |goto Dustwallow Marsh 46.06,57.09
 step
@@ -641,7 +714,4 @@ step
 step
   talk Captain Garran Vimes##4944
   turnin Peace at Last##11152 |goto Dustwallow Marsh 68.21,48.62
-step
-  note {travel}Arathi Highlands
-  goto Arathi Highlands 43.24,92.64
 ]])

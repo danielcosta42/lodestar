@@ -82,10 +82,10 @@ step
   accept Archonisus, the Final Gate##11553 |goto Isle of Quel'Danas 50.14,28.24
 step
   note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
-  collect 5 Razorthorn Root##34254 |q 11520 |goto Isle of Quel'Danas 51.49,32.46 |tip {dropsfrom}Razorthorn Root
+  collect 5 Razorthorn Root##34254 |q 11520 |goto Isle of Quel'Danas 51.49,32.46
 step
   note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
-  collect 5 Razorthorn Root##34254 |q 11521 |goto Isle of Quel'Danas 51.49,32.46 |tip {dropsfrom}Razorthorn Root
+  collect 5 Razorthorn Root##34254 |q 11521 |goto Isle of Quel'Danas 51.49,32.46
 step
   note Vindicator Xayanna at the Shattered Sun Staging Area wants you to place the Attuned Crystal Cores inside 5 defeated Erratic Sentries to turn them into friendly units.
   get Erratic Behavior |q 11524 |goto Isle of Quel'Danas 47.6,35.25
@@ -136,13 +136,13 @@ step
   get Know Your Ley Lines |q 11547 |goto Isle of Quel'Danas 48.51,44.42
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! With the essence in hand, my mages will be able to dismantle Agamath, ultimately collapsing the gateway and unlocking the way further into the sunwell.
-  collect Essence of the Immortals##34544 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
+  collect Essence of the Immortals##34544 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1 |raid |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! Rohendor cannot withstand the combined force of our mages!
-  collect Essence of the Immortals##34544 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
+  collect Essence of the Immortals##34544 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1 |raid |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   note Bring to me the essence of immortals ÔÇö found only on the most powerful beings of this world ÔÇö and Archonisus is sure to crumble!
-  collect Essence of the Immortals##34544 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
+  collect Essence of the Immortals##34544 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1 |raid |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   talk Captain Theris Dawnhearth##24967
   turnin The Sanctum Wards##11496 |goto Isle of Quel'Danas 47.47,30.56

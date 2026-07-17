@@ -9,6 +9,12 @@ step
   talk Blood Elf Commoner##19169
   accept Brewfest!##11446 |goto Silvermoon City 78.03,57.73
 step
+  kill Coren Direbrew##23872 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Direbrew's Dire Brew##12492 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
+  click Dark Iron Sabotage Plans##186881
+  accept Seek the Saboteurs##11454 |goto Dun Morogh 48.06,39.1
+step
   note The "dwarf," Glodrak Huntsniper, has asked you to capture 5 Stunned Wolpertingers using the Wolpertinger Net. He mentioned that you must be intoxicated to see them.
   collect 5 Catch the Wild Wolpertinger!##32906 |q 11431
 step

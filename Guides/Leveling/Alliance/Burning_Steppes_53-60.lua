@@ -20,7 +20,7 @@ step
   accept Ribbly Screwspigot##4136 |goto Burning Steppes 66.06,21.95
 step
   note Bring Ribbly's Head to Yuka Screwspigot in the Burning Steppes.
-  collect Ribbly's Head##11313 |q 4136 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Ribbly Screwspigot
+  collect Ribbly's Head##11313 |q 4136 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip {dropsfrom}Ribbly Screwspigot
 step
   talk Maxwort Uberglint##9536
   accept Tablet of the Seven##4296 |goto Burning Steppes 65.15,23.91
@@ -32,7 +32,7 @@ step
   accept Broodling Essence##4726 |goto Burning Steppes 65.24,24.0
 step
   note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
-  collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 65.24,24.0 |tip {dropsfrom}Broodling Essence
+  collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 65.24,24.0
 step
   talk Kibler##10260
   accept Kibler's Exotic Pets##4729 |goto Burning Steppes 65.89,21.92
@@ -47,7 +47,7 @@ step
   accept En-Ay-Es-Tee-Why##4862 |goto Burning Steppes 65.89,21.92
 step
   note Travel to Blackrock Spire and collect 15 Spire Spider Eggs for Kibler.
-  collect 15 Spire Spider Egg##12530 |q 4862 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Spire Spider Egg
+  collect 15 Spire Spider Egg##12530 |q 4862 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Elder Dawnstrider##15585
   accept Dawnstrider the Elder##8683 |goto Burning Steppes 64.46,23.95

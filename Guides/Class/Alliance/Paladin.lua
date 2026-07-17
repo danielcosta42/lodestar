@@ -6,6 +6,62 @@ ns:RegisterGuide("Class/Alliance/Paladin", {
 	author = "Lodestar Generator",
 }, [[
 step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  accept The Symbol of Life##1789 |goto Ironforge 27.63,12.18
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  accept The Symbol of Life##1790 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Duthorian Rall##6171
+  accept The Tome of Valor##1793 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Brandur Ironhammer##5149
+  accept The Tome of Valor##1794 |goto Ironforge 23.13,6.14
+step
+  only Dwarf Paladin
+  talk Azar Stronghammer##1232
+  accept Tome of Divinity##2997 |goto Dun Morogh 47.6,52.07
+step
+  only Human Paladin
+  talk Brother Wilhelm##927
+  accept Tome of Divinity##2998 |goto Elwynn Forest 41.1,66.04
+step
+  only Dwarf Paladin
+  talk Brandur Ironhammer##5149
+  accept Tome of Divinity##2999 |goto Ironforge 23.13,6.14
+step
+  only Dwarf Paladin
+  talk Lord Grayson Shadowbreaker##928
+  accept Tome of Divinity##3000 |goto Stormwind City 37.16,33.32
+step
+  only Human Paladin
+  talk Brandur Ironhammer##5149
+  accept Tome of Divinity##3681 |goto Ironforge 23.13,6.14
+step
+  only Paladin
+  talk Duthorian Rall##6171
+  accept Lord Grayson Shadowbreaker##7638 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Merideth Carlson##2357
+  accept Manna-Enriched Horse Feed##7645 |goto Hillsbrad Foothills 52.19,55.48
+step
+  only Paladin
+  talk Brandur Ironhammer##5149
+  accept Lord Grayson Shadowbreaker##7670 |goto Ironforge 23.13,6.14
+step
+  only Draenei Paladin
+  talk Jol##17509
+  accept Redemption##9598 |goto The Exodar 38.37,82.57
+step
+  only Draenei Paladin
+  talk Tullas##17483
+  accept Jol##10366 |goto Azuremyst Isle 48.36,49.56
+step
   talk Sten Stoutarm##658
   accept Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
 step
@@ -31,6 +87,10 @@ step
   only Paladin
   talk Lord Grayson Shadowbreaker##928
   accept Chillwind Camp##8415 |goto Stormwind City 37.16,33.32
+step
+  only Paladin
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -90,6 +150,10 @@ step
   talk Archmage Angela Dosantos##16116
   accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
 step
+  only Paladin
+  note Retrieve 20 Enriched Manna Biscuits - the key ingredient in making Manna-Enriched Horse Feed - for Merideth Carlson at Southshore in the Hillsbrad Foothills. The Argent Dawn is known as the sole purveyor of the biscuits.
+  collect 20 Enriched Manna Biscuit##13724 |q 7645 |goto Hillsbrad Foothills 52.19,55.48
+step
   note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
   collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 49.48,39.15 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
 step
@@ -99,26 +163,26 @@ step
 step
   only Paladin
   note Bring Jin'rokh the Breaker Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Bindings##19716 |q 8053 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Bindings##19716 |q 8053 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Shawl##19721 |q 8054 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Shawl##19721 |q 8054 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Tabard##19722 |q 8055 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Tabard##19722 |q 8055 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Paladin
   note Bring the the Carapace of the Old God, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Carapace of the Old God##20929 |q 8627 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}C'Thun
+  collect Carapace of the Old God##20929 |q 8627 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}C'Thun
 step
   only Paladin
   note Bring Vek'lor's Diadem, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'lor's Diadem##20930 |q 8628 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Emperor Vek'lor
+  collect Vek'lor's Diadem##20930 |q 8628 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Emperor Vek'lor
 step
   only Paladin
   note Bring the Skin of the Great Sandworm, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -126,23 +190,23 @@ step
 step
   only Paladin
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Life, 5 Crystal Scarabs and 5 Gold Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Dominance##20932 |q 8630 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Dominance##20932 |q 8630 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Paladin
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Clay Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Dominance##20932 |q 8655 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Dominance##20932 |q 8655 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Paladin
   note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Regal Drape##20889 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Paladin
   note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Magisterial Ring##20884 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Paladin
   note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Paladin
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
@@ -154,6 +218,62 @@ step
   only Paladin
   talk Duthorian Rall##6171
   turnin The Tome of Valor##1649 |goto Stormwind City 39.81,29.79
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin The Symbol of Life##1789 |goto Ironforge 27.63,12.18
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  turnin The Symbol of Life##1790 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Valor##1793 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Brandur Ironhammer##5149
+  turnin The Tome of Valor##1794 |goto Ironforge 23.13,6.14
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin Tome of Divinity##2997 |goto Ironforge 27.63,12.18
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  turnin Tome of Divinity##2998 |goto Stormwind City 39.81,29.79
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin Tome of Divinity##2999 |goto Ironforge 27.63,12.18
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin Tome of Divinity##3000 |goto Ironforge 27.63,12.18
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  turnin Tome of Divinity##3681 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  turnin Lord Grayson Shadowbreaker##7638 |goto Stormwind City 37.16,33.32
+step
+  only Paladin
+  talk Merideth Carlson##2357
+  turnin Manna-Enriched Horse Feed##7645 |goto Hillsbrad Foothills 52.19,55.48
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  turnin Lord Grayson Shadowbreaker##7670 |goto Stormwind City 37.16,33.32
+step
+  only Draenei Paladin
+  talk Jol##17509
+  turnin Redemption##9598 |goto The Exodar 38.37,82.57
+step
+  only Draenei Paladin
+  talk Jol##17509
+  turnin Jol##10366 |goto The Exodar 38.37,82.57
 step
   talk Sten Stoutarm##658
   turnin Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
@@ -243,9 +363,25 @@ step
   talk Archmage Angela Dosantos##16116
   turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
 step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  accept The Tome of Divinity##1641 |goto Stormwind City 39.81,29.79
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  accept The Tome of Divinity##1645 |goto Ironforge 27.63,12.18
+step
   only Paladin
   talk Duthorian Rall##6171
   accept The Tome of Valor##1650 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  accept Emphasis on Sacrifice##7637 |goto Stormwind City 37.16,33.32
+step
+  only Draenei Paladin
+  talk Jol##17509
+  accept Redemption##9600 |goto The Exodar 38.37,82.57
 step
   only Dwarf Paladin
   talk Sten Stoutarm##658
@@ -274,6 +410,10 @@ step
   talk Commander Eligor Dawnbringer##16115
   accept Echoes of War##9033 |goto Eastern Plaguelands 81.54,58.16
 step
+  only Draenei Paladin
+  note Jol wants you to resurrect a Young Furbolg Shaman with the Symbol of Life and return to her.
+  kill Young Furbolg Shaman##17542 |q 9600 |goto Bloodmyst Isle 65.29,77.54
+step
   note Kill 10 Kobold Vermin, then return to Marshal McBride.
   kill Kobold Vermin##6 |q 7 |goto Elwynn Forest 49.27,36.26
 step
@@ -293,9 +433,25 @@ step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Divinity##1641 |goto Stormwind City 39.81,29.79
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin The Tome of Divinity##1645 |goto Ironforge 27.63,12.18
+step
   only Paladin
   talk Daphne Stilwell##6182
   turnin The Tome of Valor##1650 |goto Westfall 41.69,89.24
+step
+  only Paladin
+  talk High Priest Rohan##11406
+  turnin Emphasis on Sacrifice##7637 |goto Ironforge 24.73,8.16
+step
+  only Draenei Paladin
+  talk Jol##17509
+  turnin Redemption##9600 |goto The Exodar 38.37,82.57
 step
   only Dwarf Paladin
   talk Bromos Grummner##926
@@ -327,6 +483,10 @@ step
   only Paladin
   talk Daphne Stilwell##6182
   accept The Tome of Valor##1651 |goto Westfall 41.69,89.24
+step
+  only Paladin
+  talk High Priest Rohan##11406
+  accept To Show Due Judgment##7639 |goto Ironforge 24.73,8.16
 step
   only Human Paladin
   talk Marshal McBride##197
@@ -398,11 +558,11 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Spaulders##22361 |q 9046 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect Desecrated Spaulders##22361 |q 9046 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Boots##22365 |q 9047 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect Desecrated Boots##22365 |q 9047 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -410,15 +570,27 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9049 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect Desecrated Girdle##22363 |q 9049 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9050 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect Desecrated Wristguards##22362 |q 9050 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Divinity##1642 |goto Stormwind City 39.81,29.79
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin The Tome of Divinity##1646 |goto Ironforge 27.63,12.18
 step
   only Paladin
   talk Daphne Stilwell##6182
   turnin The Tome of Valor##1651 |goto Westfall 41.69,89.24
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  turnin To Show Due Judgment##7639 |goto Stormwind City 37.16,33.32
 step
   only Human Paladin
   talk Brother Sammuel##925
@@ -470,9 +642,21 @@ step
   talk Commander Eligor Dawnbringer##16115
   turnin Redemption Wristguards##9050 |goto Eastern Plaguelands 81.54,58.16
 step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  accept The Tome of Divinity##1643 |goto Stormwind City 39.81,29.79
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  accept The Tome of Divinity##1647 |goto Ironforge 27.63,12.18
+step
   only Paladin
   talk Daphne Stilwell##6182
   accept The Tome of Valor##1652 |goto Westfall 41.69,89.24
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  accept Exorcising Terrordale##7640 |goto Stormwind City 37.16,33.32
 step
   only Paladin
   talk Commander Ashlam Valorfist##10838
@@ -489,8 +673,12 @@ step
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   only Paladin
+  note Use the Exorcism Censer to drive out the spirits that torment Terrordale. When you have slain 25 Terrordale Spirits, return to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
+  kill Terrordale Spirit##14564 |q 7640
+step
+  only Paladin
   note Bring the voodoo feathers to Ashlam Valorfist.
-  collect Amber Voodoo Feather##20606 |q 8418 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Gasher, Zul'Lor
+  collect Amber Voodoo Feather##20606 |q 8418 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Gasher, Zul'Lor
 step
   only Paladin
   collect Heathen's Brand##19586 |q 8048 |goto Stranglethorn Vale 15.31,14.43
@@ -501,9 +689,21 @@ step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
   collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.76 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
+  only Human Paladin
+  talk Stephanie Turner##6174
+  turnin The Tome of Divinity##1643 |goto Stormwind City 57.08,61.74
+step
+  only Dwarf Paladin
+  talk John Turner##6175
+  turnin The Tome of Divinity##1647 |goto Ironforge 23.34,61.86
+step
   only Paladin
   talk Duthorian Rall##6171
   turnin The Tome of Valor##1652 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  turnin Exorcising Terrordale##7640 |goto Stormwind City 37.16,33.32
 step
   only Paladin
   talk Commander Ashlam Valorfist##10838
@@ -519,9 +719,21 @@ step
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only Human Paladin
+  talk Stephanie Turner##6174
+  accept The Tome of Divinity##1644 |goto Stormwind City 57.08,61.74
+step
+  only Dwarf Paladin
+  talk John Turner##6175
+  accept The Tome of Divinity##1648 |goto Ironforge 23.34,61.86
+step
   only Paladin
   talk Duthorian Rall##6171
   accept The Test of Righteousness##1653 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  accept The Work of Grimand Elmore##7641 |goto Stormwind City 37.16,33.32
 step
   only Paladin
   talk Geologist Larksbane##15183
@@ -530,12 +742,32 @@ step
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only Human Paladin
+  note Bring 10 Linen Cloth to Stephanie Turner in Stormwind.
+  collect 10 Linen Cloth##2589 |q 1644 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Kobold Miner, Mine Spider
+step
+  only Dwarf Paladin
+  note Bring 10 Linen Cloth to John Turner in Ironforge.
+  collect 10 Linen Cloth##2589 |q 1648 |goto Duskwood 23.81,38.2 |tip {dropsfrom}Flesh Eater, Kobold Miner, Mine Spider
+step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
   collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
+step
+  only Human Paladin
+  talk Stephanie Turner##6174
+  turnin The Tome of Divinity##1644 |goto Stormwind City 57.08,61.74
+step
+  only Dwarf Paladin
+  talk John Turner##6175
+  turnin The Tome of Divinity##1648 |goto Ironforge 23.34,61.86
 step
   only Paladin
   talk Jordan Stilwell##6181
   turnin The Test of Righteousness##1653 |goto Dun Morogh 52.49,36.92
+step
+  only Paladin
+  talk Grimand Elmore##1416
+  turnin The Work of Grimand Elmore##7641 |goto Stormwind City 51.76,12.08
 step
   only Paladin
   talk Geologist Larksbane##15183
@@ -543,6 +775,18 @@ step
 step
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
+step
+  only Dwarf Paladin
+  talk John Turner##6175
+  accept The Tome of Divinity##1778 |goto Ironforge 23.34,61.86
+step
+  only Human Paladin
+  talk Stephanie Turner##6174
+  accept The Tome of Divinity##1780 |goto Stormwind City 57.08,61.74
+step
+  only Paladin
+  talk Grimand Elmore##1416
+  accept Collection of Goods##7642 |goto Stormwind City 51.76,12.08
 step
   only Paladin
   talk Thundris Windweaver##3649
@@ -556,15 +800,31 @@ step
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
   only Paladin
+  note Bring 40 Runecloth, 6 Arcanite Bars, 10 Arthas' Tears, 5 Stratholme Holy Water vials, and 150 gold to Grimand Elmore in the Dwarven District of Stormwind.
+  collect 40 Stratholme Holy Water##13180 |q 7642 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+step
+  only Paladin
   note Bring a Kor Gem to Thundris Windweaver in Darkshore.
   collect Corrupted Kor Gem##6995 |q 1442 |goto Darkshore 31.38,92.07 |tip {dropsfrom}Blackfathom Tide Priestess, Blackfathom Oracle, Blackfathom Sea Witch
 step
   only Paladin
   note Using Jordan's Weapon Notes, find some Whitestone Oak Lumber, Bailor's Refined Ore Shipment, Jordan's Smithing Hammer, and a Kor Gem, and return them to Jordan Stilwell in Ironforge.
-  collect Whitestone Oak Lumber##6994 |q 1654 |goto The Deadmines - Dungeon - The Deadmines -1,-1 |tip {dropsfrom}Goblin Woodcarver
+  collect Whitestone Oak Lumber##6994 |q 1654 |goto The Deadmines - Dungeon - The Deadmines -1,-1 |elite |tip {dropsfrom}Goblin Woodcarver
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
   collect Fel Elemental Rod##21939 |q 8928 |goto Tanaris 52.47,27.23
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin The Tome of Divinity##1778 |goto Ironforge 27.63,12.18
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Divinity##1780 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Grimand Elmore##1416
+  turnin Collection of Goods##7642 |goto Stormwind City 51.76,12.08
 step
   only Paladin
   talk Thundris Windweaver##3649
@@ -577,6 +837,22 @@ step
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  accept The Tome of Divinity##1779 |goto Ironforge 27.63,12.18
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  accept The Tome of Divinity##1781 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  accept Ancient Equine Spirit##7643 |goto Stormwind City 37.16,33.32
+step
+  only Paladin
+  talk Grimand Elmore##1416
+  accept Grimand's Finest Work##7648 |goto Stormwind City 51.76,12.08
+step
   only Paladin
   talk Jordan Stilwell##6181
   accept The Test of Righteousness##1806 |goto Dun Morogh 52.49,36.92
@@ -585,41 +861,166 @@ step
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
   only Paladin
+  note Acquire special horse feed used for feeding a spirit horse. Merideth Carlson in Southshore apparently is the source for such food.
+  collect Manna-Enriched Horse Feed##18775 |q 7643 |goto Stormwind City 37.16,33.32
+step
+  only Dwarf Paladin
+  talk Muiredon Battleforge##6178
+  turnin The Tome of Divinity##1779 |goto Ironforge 23.54,8.3
+step
+  only Human Paladin
+  talk Gazin Tenorm##6173
+  turnin The Tome of Divinity##1781 |goto Stormwind City 38.58,26.56
+step
+  only Paladin
+  talk Ancient Equine Spirit##14566
+  turnin Ancient Equine Spirit##7643
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  turnin Grimand's Finest Work##7648 |goto Stormwind City 37.16,33.32
+step
+  only Paladin
   talk Jordan Stilwell##6181
   turnin The Test of Righteousness##1806 |goto Dun Morogh 52.49,36.92
 step
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
+  only Dwarf Paladin
+  talk Muiredon Battleforge##6178
+  accept The Tome of Divinity##1783 |goto Ironforge 23.54,8.3
+step
+  only Human Paladin
+  talk Gazin Tenorm##6173
+  accept The Tome of Divinity##1786 |goto Stormwind City 38.58,26.56
+step
+  only Paladin
+  talk Ancient Equine Spirit##14566
+  accept Blessed Arcanite Barding##7644
+step
   only Paladin
   talk Deliana##16013
   accept Just Compensation##8933 |goto Ironforge 43.53,52.64
 step
+  only Dwarf Paladin
+  note Take the Symbol of Life and resurrect Narm Faulk in Dun Morogh.
+  kill Narm Faulk##6177 |q 1783 |goto Dun Morogh 78.32,58.09
+step
+  only Human Paladin
+  note Take the Symbol of Life and resurrect Henze Faulk in Elwynn.
+  kill Henze Faulk##6172 |q 1786 |goto Elwynn Forest 72.6,51.41
+step
   only Paladin
   note Bring a Lightforge Belt and a set of Lightforge Gauntlets to Deliana in Ironforge.
-  collect Lightforge Belt##16723 |q 8933 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
+  collect Lightforge Belt##16723 |q 8933 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
+step
+  only Dwarf Paladin
+  talk Narm Faulk##6177
+  turnin The Tome of Divinity##1783 |goto Dun Morogh 78.32,58.09
+step
+  only Human Paladin
+  talk Henze Faulk##6172
+  turnin The Tome of Divinity##1786 |goto Elwynn Forest 72.6,51.41
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  turnin Blessed Arcanite Barding##7644 |goto Stormwind City 37.16,33.32
 step
   only Paladin
   talk Deliana##16013
   turnin Just Compensation##8933 |goto Ironforge 43.53,52.64
 step
+  only Dwarf Paladin
+  talk Narm Faulk##6177
+  accept The Tome of Divinity##1784 |goto Dun Morogh 78.32,58.09
+step
+  only Human Paladin
+  talk Henze Faulk##6172
+  accept The Tome of Divinity##1787 |goto Elwynn Forest 72.6,51.41
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  accept The Divination Scryer##7646 |goto Stormwind City 37.16,33.32
+step
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
+step
+  only Dwarf Paladin
+  note Retrieve a Dark Iron Script from the Dark Iron dwarves near Helm's Bed, and return to Muiredon Battleforge in Ironforge.
+  collect Dark Iron Script##6847 |q 1784 |goto Dun Morogh 77.46,61.31 |tip {dropsfrom}Dark Iron Spy
+step
+  only Human Paladin
+  note Retrieve a Defias Script from the Defias Rogue Wizards in Elwynn, and return to Gazin Tenorm in Stormwind.
+  collect Defias Script##6846 |q 1787 |goto Elwynn Forest 73.38,52.48 |tip {dropsfrom}Defias Rogue Wizard
+step
+  only Paladin
+  note Bring an Azerothian Diamond and a Pristine Black Diamond to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
+  kill Cliff Breaker##6146 |goto Azshara 59.31,79.76 |elite
+  collect Azerothian Diamond##12800 |q 7646 |goto Azshara 59.31,79.76
+step
+  only Dwarf Paladin
+  talk Muiredon Battleforge##6178
+  turnin The Tome of Divinity##1784 |goto Ironforge 23.54,8.3
+step
+  only Human Paladin
+  talk Gazin Tenorm##6173
+  turnin The Tome of Divinity##1787 |goto Stormwind City 38.58,26.56
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  turnin The Divination Scryer##7646 |goto Stormwind City 37.16,33.32
 step
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 30.85,16.75
 step
+  only Dwarf Paladin
+  talk Muiredon Battleforge##6178
+  accept The Tome of Divinity##1785 |goto Ironforge 23.54,8.3
+step
+  only Human Paladin
+  talk Gazin Tenorm##6173
+  accept The Tome of Divinity##1788 |goto Stormwind City 38.58,26.56
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  accept Judgment and Redemption##7647 |goto Stormwind City 37.16,33.32
+step
   talk Anthion Harmon##16016
   accept Dead Man's Plea##8945 |goto Eastern Plaguelands 30.85,16.75
+step
+  only Paladin
+  note Use the Divination Scryer in the heart of the Great Ossuary's basement in the Scholomance. Doing so will bring forth the spirits you must judge. Defeating these spirits will summon forth Death Knight Darkreaver. Defeat him and reclaim the lost soul of the fallen charger.
+  collect Charger's Redeemed Soul##18799 |q 7647 |goto Stormwind City 37.16,33.32
 step
   note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
   kill Ysida Harmon##16031 |q 8945
 step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin The Tome of Divinity##1785 |goto Ironforge 27.63,12.18
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Divinity##1788 |goto Stormwind City 39.81,29.79
+step
+  only Paladin
+  talk Darkreaver's Fallen Charger##14568
+  turnin Judgment and Redemption##7647
+step
   talk Ysida Harmon##16031
   turnin Dead Man's Plea##8945
 step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  accept Again Into the Great Ossuary##7666 |goto Stormwind City 37.16,33.32
+step
   talk Ysida Harmon##16031
   accept Proof of Life##8946
+step
+  only Paladin
+  talk Lord Grayson Shadowbreaker##928
+  turnin Again Into the Great Ossuary##7666 |goto Stormwind City 37.16,33.32
 step
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 30.85,16.75
@@ -643,7 +1044,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -652,7 +1053,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -697,7 +1098,8 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |tip {dropsfrom}Cursed Paladin, Cursed Justicar, Writhing Mage
+  kill Cursed Paladin##7071 |goto Hillsbrad Foothills 18.45,76.6 |elite
+  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
 step
   talk Bodley##16033
   turnin Components of Importance##8965

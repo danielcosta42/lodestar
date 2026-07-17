@@ -23,7 +23,7 @@ step
   accept Cycle of Rebirth##6301 |goto Stonetalon Mountains 47.46,58.38
 step
   note Tammra Windfield at Sun Rock Retreat wants you to gather 10 Gaea Seeds.
-  collect 10 Gaea Seed##16205 |q 6301 |goto Stonetalon Mountains 48.92,40.73 |tip {dropsfrom}Gaea Seed
+  collect 10 Gaea Seed##16205 |q 6301 |goto Stonetalon Mountains 48.92,40.73
 step
   talk Tsunaman##11862
   accept Elemental War##6393 |goto Stonetalon Mountains 47.36,64.25
@@ -58,6 +58,18 @@ step
   note Bring Gerenzo Wrenchwhistle's Mechanical Arm to Ziz Fizziks in the Stonetalon Mountains.
   collect Gerenzo's Mechanical Arm##5736 |q 1096 |goto Stonetalon Mountains 64.49,40.25 |tip {dropsfrom}Gerenzo Wrenchwhistle
 step
+  talk Zangen Stonehoof##4721
+  accept The Sacred Flame##1195 |goto Thunder Bluff 54.97,51.41
+step
+  note Return a Filled Etched Phial to Zangen Stonehoof in Thunder Bluff.
+  collect The Sacred Flame##5868 |q 1195 |goto Thunder Bluff 54.97,51.41
+step
+  click Wanted Poster: Besseleth##177904
+  accept Arachnophobia##6284 |goto Stonetalon Mountains 59.06,75.71
+step
+  note Kill Besseleth and bring Besseleth's Fang to Maggran at Sun Rock Retreat.
+  collect Besseleth's Fang##16192 |q 6284 |goto Stonetalon Mountains 52.5,71.96 |tip {dropsfrom}Besseleth
+step
   talk Piznik##4276
   accept Gerenzo's Orders##1090 |goto Stonetalon Mountains 71.87,60.0
 step
@@ -66,6 +78,18 @@ step
 step
   note Find the Legacy of the Aspects and return it to Braug Dimspirit near the entrance to Talondeep Path in Stonetalon Mountains.
   collect Legacy of the Aspects##5860 |q 1154 |goto Ashenvale 75.57,74.37 |tip {dropsfrom}The Legacy of the Aspects
+step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  accept The Path of the Adept##9692 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
+  note Bring a Corrupted Kor Gem, a Crate of Bloodforged Ingots, a quantity of Blood of the Wrathful, and a Blood Knight Insignia to Knight-Lord Bloodvalor in Silvermoon City.
+  collect Corrupted Kor Gem##6995 |q 9692 |goto Darkshore 31.38,92.07 |tip {dropsfrom}Blackfathom Tide Priestess, Blackfathom Oracle, Blackfathom Sea Witch
+step
+  only Rogue
+  talk Zelanis##16684
+  accept Rogues of the Shattered Hand##10794 |goto Silvermoon City 79.71,52.16
 step
   talk Witch Doctor Jin'Zil##3995
   accept Jin'Zil's Forest Magic##1058 |goto Stonetalon Mountains 74.54,97.94
@@ -84,6 +108,13 @@ step
 step
   talk Maggran Earthbinder##11860
   turnin Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
+step
+  talk Maggran Earthbinder##11860
+  turnin Arachnophobia##6284 |goto Stonetalon Mountains 47.2,61.16
+step
+  only Rogue
+  talk Shenthul##3401
+  turnin Rogues of the Shattered Hand##10794 |goto Orgrimmar 43.05,53.74 |tip {turninat}Orgrimmar
 step
   talk Grish Longrunner##12576
   turnin Calling in the Reserves##5881 |goto Thousand Needles 31.86,21.66 |tip {turninat}Thousand Needles
@@ -130,6 +161,9 @@ step
   talk Ziz Fizziks##4201
   turnin Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6
 step
+  talk Zangen Stonehoof##4721
+  turnin The Sacred Flame##1195 |goto Thunder Bluff 54.97,51.41 |tip {turninat}Thunder Bluff
+step
   talk Ziz Fizziks##4201
   accept Further Instructions##1094 |goto Stonetalon Mountains 58.99,62.6
 step
@@ -151,8 +185,16 @@ step
   talk Kadrak##8582
   turnin Report to Kadrak##6542 |goto The Barrens 48.12,5.42 |tip {turninat}The Barrens
 step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  turnin The Path of the Adept##9692 |goto Silvermoon City 89.26,35.2 |tip {turninat}Silvermoon City
+step
   talk Braug Dimspirit##4489
   accept Test of Lore##6627 |goto Stonetalon Mountains 78.8,45.69
+step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  accept Forging the Weapon##9707 |goto Silvermoon City 89.26,35.2
 step
   talk Witch Doctor Jin'Zil##3995
   turnin Jin'Zil's Forest Magic##1058 |goto Stonetalon Mountains 74.54,97.94
@@ -184,13 +226,25 @@ step
   talk Braug Dimspirit##4489
   turnin Test of Lore##6627 |goto Stonetalon Mountains 78.8,45.69
 step
+  only BloodElf Paladin
+  talk Bemarrin##16669
+  turnin Forging the Weapon##9707 |goto Silvermoon City 79.38,38.64 |tip {turninat}Silvermoon City
+step
   talk Braug Dimspirit##4489
   accept Test of Lore##1159 |goto Stonetalon Mountains 78.8,45.69
+step
+  only BloodElf Paladin
+  talk Bemarrin##16669
+  accept The Blood-Tempered Ranseur##9710 |goto Silvermoon City 79.38,38.64
 step
   turnin The Den##1089 |goto Stonetalon Mountains 26.6,10.87
 step
   talk Parqual Fintallas##4488
   turnin Test of Lore##1159 |goto Undercity 57.8,65.42 |tip {turninat}Undercity
+step
+  only BloodElf Paladin
+  talk Bemarrin##16669
+  turnin The Blood-Tempered Ranseur##9710 |goto Silvermoon City 79.38,38.64 |tip {turninat}Silvermoon City
 step
   note {travel}Ashenvale
   goto Ashenvale 11.69,34.91

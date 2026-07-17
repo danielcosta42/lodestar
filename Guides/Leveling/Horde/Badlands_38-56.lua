@@ -88,6 +88,9 @@ step
   note Venture to the Burning Steppes and recover 10 Fractured Elemental Shards for Hierophant Theodora Mulvadania.
   collect Fractured Elemental Shard##11266 |q 4061 |goto Burning Steppes 54.83,49.02 |tip {dropsfrom}Greater Obsidian Elemental, War Reaver, Malfunctioning Reaver
 step
+  click WANTED##164867
+  accept KILL ON SIGHT: Dark Iron Dwarves##4081 |goto Badlands 3.74,47.43
+step
   talk Lexlort##9080
   accept Grark Lorkrub##4122 |goto Badlands 5.88,47.63
 step
@@ -107,7 +110,7 @@ step
   accept The Darkstone Tablet##4768 |goto Badlands 2.9,47.76
 step
   note Bring the Darkstone Tablet to Shadow Mage Vivian Lagrave in Kargath.
-  collect Darkstone Tablet##12358 |q 4768 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Darkstone Tablet
+  collect Darkstone Tablet##12358 |q 4768 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Warlord Goretooth##9077
   accept Warlord's Command##4903 |goto Badlands 5.81,47.52
@@ -119,7 +122,7 @@ step
   accept The Last Element##7201 |goto Badlands 2.9,47.76
 step
   note Travel to Blackrock Depths and recover 10 Essence of the Elements. Your first inclination is to search the golems and golem makers. You remember Vivian Lagrave also muttering something about elementals.
-  collect Essence of the Elements##11129 |q 7201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Warbringer Construct, Ragereaver Golem, Scald
+  collect Essence of the Elements##11129 |q 7201 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip {dropsfrom}Warbringer Construct, Ragereaver Golem, Scald
 step
   talk Advisor Sarophas##17097
   accept Unclaimed Baggage##9439 |goto Badlands 6.0,48.06
@@ -132,6 +135,9 @@ step
 step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
   kill Overlord Wyrmthalak##9568 |q 4903 |goto Blackrock Spire - Dungeon -1,-1 |elite
+step
+  note Venture to Blackrock Depths and destroy the vile aggressors!
+  kill Anvilrage Guardsman##8891 |q 4081 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
 step
   note Slay Halycon, pack mistress of the Bloodaxe worg.
   kill Halycon##10220 |q 4724 |goto Blackrock Spire - Dungeon -1,-1 |elite
@@ -147,6 +153,30 @@ step
 step
   note Bring the Tablet of Ryun'eh to Theldurin the Lost.
   collect Tablet of Ryun'eh##4631 |q 709 |goto Loch Modan 38.57,93.18 |tip {dropsfrom}Ancient Chest
+step
+  talk Varimathras##2425
+  accept Into The Scarlet Monastery##1048 |goto Undercity 56.25,92.2
+step
+  talk Uthel'nay##7311
+  accept Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27
+step
+  note Collect 10 Shadowshard Fragments from Maraudon and return them to Uthel'nay in Orgrimmar.
+  collect 10 Shadowshard Fragment##17756 |q 7068 |goto Desolace 27.99,57.01 |tip {dropsfrom}Shadowshard Rumbler, Shadowshard Smasher
+step
+  talk Patrick Garrett##5651
+  accept Reclaimed Treasures##2342 |goto Undercity 62.32,48.61
+step
+  note Get Patrick Garrett's family treasure from their family chest in the South Common Hall of Uldaman, and bring it to him in the Undercity.
+  collect Reclaimed Treasures##8026 |q 2342 |goto Undercity 62.32,48.61
+step
+  talk Belgrom Rockmaul##4485
+  accept A Threat in Feralas##2981 |goto Orgrimmar 75.23,34.24
+step
+  talk Andrew Brownell##2308
+  accept Bring the End##3341 |goto Undercity 74.05,33.31
+step
+  note Andrew Brownell wants you to kill Amnennar the Coldbringer and return his skull.
+  collect Skull of the Coldbringer##10420 |q 3341 |goto Razorfen Downs - Dungeon -1,-1 |tip {dropsfrom}Amnennar the Coldbringer
 step
   talk Thorkaf Dragoneye##7867
   accept Dragonscale Leatherworking##5145 |goto Badlands 62.7,57.4
@@ -232,6 +262,9 @@ step
   talk Advisor Sarophas##17097
   turnin Unclaimed Baggage##9439 |goto Badlands 6.0,48.06
 step
+  talk Warlord Goretooth##9077
+  turnin KILL ON SIGHT: Dark Iron Dwarves##4081 |goto Badlands 5.81,47.52
+step
   talk Galamav the Marksman##9081
   turnin The Pack Mistress##4724 |goto Badlands 5.96,47.73
 step
@@ -265,8 +298,23 @@ step
   talk Hierophant Theodora Mulvadania##9079
   accept The Rise of the Machines##4062 |goto Badlands 3.02,47.81
 step
+  click KILL ON SIGHT##164868
+  accept KILL ON SIGHT: High Ranking Dark Iron Officials##4082 |goto Badlands 3.94,46.73
+step
+  note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Varimathras in the Undercity.
+  kill High Inquisitor Whitemane##3977 |q 1048 |goto Scarlet Monastery - Dungeon -1,-1 |elite
+step
   note Enter Blackrock Depths and track down Lord Incendius. Slay him and return any source of information you may find to Thunderheart.
   kill Lord Incendius##9017 |q 3907 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+step
+  note Venture to Blackrock Depths and destroy the vile aggressors!
+  kill Anvilrage Medic##8894 |q 4082 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite
+step
+  talk Varimathras##2425
+  turnin Into The Scarlet Monastery##1048 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
+step
+  talk Uthel'nay##7311
+  turnin Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
 step
   talk Theldurin the Lost##2785
   turnin The Lost Fragments##692 |goto Badlands 51.39,76.87
@@ -283,16 +331,31 @@ step
   talk Theldurin the Lost##2785
   accept To the Undercity for Yagyin's Digest##728 |goto Badlands 51.39,76.87
 step
+  talk Andrew Brownell##2308
+  turnin Bring the End##3341 |goto Undercity 74.05,33.31 |tip {turninat}Undercity
+step
   turnin Summoning the Princess##656 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
 step
   talk Thorkaf Dragoneye##7867
   turnin Dragonscale Leatherworking##5145 |goto Badlands 62.7,57.4
+step
+  talk Rok Orhan##7777
+  turnin A Threat in Feralas##2981 |goto Feralas 75.8,43.58 |tip {turninat}Feralas
+step
+  talk Patrick Garrett##5651
+  turnin Reclaimed Treasures##2342 |goto Undercity 62.32,48.61 |tip {turninat}Undercity
 step
   talk Keeper Bel'dugur##2934
   turnin To the Undercity for Yagyin's Digest##728 |goto Undercity 53.74,54.46 |tip {turninat}Undercity
 step
   talk Fizzle Brassbolts##4454
   turnin News for Fizzle##1137 |goto Thousand Needles 78.06,77.13 |tip {turninat}Thousand Needles
+step
+  talk Keeper Bel'dugur##2934
+  accept The Star, the Hand and the Heart##736 |goto Undercity 53.74,54.46
+step
+  note Bring the items on Bel'dugur's Note to Keeper Bel'dugur in the Undercity.
+  collect Star of Xil'yeh##4646 |q 736 |goto Alterac Mountains 35.58,54.42 |tip {dropsfrom}Grel'borg the Miser
 step
   talk Lotwil Veriatus##2921
   turnin Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
@@ -319,7 +382,7 @@ step
   accept The Rise of the Machines##4063 |goto Badlands 25.95,44.87
 step
   note Find and slay Golem Lord Argelmach. Return his head to Lotwil. You will also need to collect 10 Intact Elemental Cores from the Ragereaver Golems and Warbringer Constructs protecting Argelmach. You know this because you are psychic.
-  collect 10 Head of Argelmach##11268 |q 4063 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Golem Lord Argelmach
+  collect 10 Head of Argelmach##11268 |q 4063 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip {dropsfrom}Golem Lord Argelmach
 step
   talk Commander Gor'shak##9020
   turnin Commander Gor'shak##3981 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {turninat}Blackrock Depths - Dungeon -- Shadowforge City
@@ -336,6 +399,9 @@ step
   talk Thunderheart##9084
   turnin Disharmony of Fire##3907 |goto Badlands 3.33,48.26
 step
+  talk Warlord Goretooth##9077
+  turnin KILL ON SIGHT: High Ranking Dark Iron Officials##4082 |goto Badlands 5.81,47.52
+step
   talk Jarkal Mossmeld##6868
   accept Badlands Reagent Run II##2203 |goto Badlands 2.42,46.06
 step
@@ -347,6 +413,12 @@ step
 step
   talk Dran Droffers##6986
   turnin Deliver the Gems##2340 |goto Orgrimmar 59.49,36.57 |tip {turninat}Orgrimmar
+step
+  talk Keeper Bel'dugur##2934
+  turnin The Star, the Hand and the Heart##736 |goto Undercity 53.74,54.46 |tip {turninat}Undercity
+step
+  talk Dran Droffers##6986
+  accept Necklace Recovery, Take 3##2341 |goto Orgrimmar 59.49,36.57
 step
   talk Lotwil Veriatus##2921
   turnin Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
@@ -368,6 +440,9 @@ step
 step
   talk Jarkal Mossmeld##6868
   turnin Badlands Reagent Run II##2203 |goto Badlands 2.42,46.06
+step
+  talk Jarkal Mossmeld##6868
+  turnin Necklace Recovery, Take 3##2341 |goto Badlands 2.42,46.06
 step
   talk Lucien Tosselwrench##2920
   turnin Stone Is Better than Cloth##716 |goto Badlands 25.82,44.24

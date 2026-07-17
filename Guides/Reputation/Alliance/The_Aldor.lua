@@ -58,13 +58,15 @@ step
   collect 8 Dreadfang Venom Sac##25802 |q 10017 |goto Terokkar Forest 46.75,30.29 |tip {dropsfrom}Dreadfang Lurker, Dreadfang Widow
 step
   note Bring Stonegazer's Blood to Sha'nir in Shattrath City.
-  collect Stonegazer's Blood##25815 |q 10020 |goto Terokkar Forest 62.81,27.69 |tip {dropsfrom}Stonegazer
+  kill Stonegazer##18648 |goto Terokkar Forest 62.81,27.69 |elite
+  collect Stonegazer's Blood##25815 |q 10020 |goto Terokkar Forest 62.81,27.69
 step
   note Ishanah wants you to go to the Arakkoa outpost east of Shattrath City and use the Blessed Vial to cleanse the Eastern Altar, the Western Altar and the Northern Altar.
   collect Northern Altar##182563 |q 10021 |goto Terokkar Forest 50.66,16.56
 step
   note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
-  collect 10 Mark of Kil'jaeden##29425 |q 10325 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
+  kill Mo'arg Engineer##16945 |goto Nagrand 20.0,49.34 |elite
+  collect 10 Mark of Kil'jaeden##29425 |q 10325 |goto Nagrand 20.0,49.34
 step
   note Bring a Fel Armament to Ishanah in Shattrath City.
   collect Fel Armament##29740 |q 10420 |goto Netherstorm 40.3,21.07 |tip {dropsfrom}Cyber-Rage Forgelord, Mo'arg Doomsmith, Mo'arg Engineer
@@ -155,6 +157,9 @@ step
   talk Exarch Orelis##19466
   accept Distraction at Manaforge B'naar##10241 |goto Netherstorm 32.07,64.18
 step
+  click B'naar Control Console##183770
+  accept B'naar Console Transcription##10245 |goto Netherstorm 23.21,68.25
+step
   talk Ishanah##18538
   accept Fel Armaments##10421 |goto Shattrath City 23.97,29.73
 step
@@ -184,9 +189,11 @@ step
 step
   collect Dreadfang Venom Sac##25802 |q 10019 |goto Terokkar Forest 46.75,30.29 |tip {dropsfrom}Dreadfang Lurker, Dreadfang Widow
 step
-  collect Mark of Kil'jaeden##29425 |q 10326 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
+  kill Mo'arg Engineer##16945 |goto Nagrand 20.0,49.34 |elite
+  collect Mark of Kil'jaeden##29425 |q 10326 |goto Nagrand 20.0,49.34
 step
-  collect Mark of Kil'jaeden##29425 |q 10327 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
+  kill Mo'arg Engineer##16945 |goto Nagrand 20.0,49.34 |elite
+  collect Mark of Kil'jaeden##29425 |q 10327 |goto Nagrand 20.0,49.34
 step
   note Slay 8 Sunfury Magisters and 8 Sunfury Bloodwarders and return to Exarch Orelis at Area 52.
   kill Sunfury Magister##18855 |q 10241 |goto Netherstorm 25.07,68.25
@@ -283,7 +290,7 @@ step
   collect Eykenen's Medallion Fragment##30692 |q 10574 |goto Shadowmoon Valley 51.18,52.82 |tip {dropsfrom}Eykenen
 step
   note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
-  collect Book of Fel Names##30808 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Blackheart the Inciter, Blackheart the Inciter (1)
+  collect Book of Fel Names##30808 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |elite |tip {dropsfrom}Blackheart the Inciter, Blackheart the Inciter (1)
 step
   talk Khadgar##18166
   turnin Allegiance to the Aldor##10551 |goto Shattrath City 54.75,44.32
@@ -400,7 +407,8 @@ step
   accept Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  collect First Half of Socrethar's Stone##29624 |q 10407 |goto Netherstorm 36.15,26.43 |tip {dropsfrom}Forgemaster Morug
+  kill Forgemaster Morug##20800 |goto Netherstorm 36.15,26.43 |elite
+  collect First Half of Socrethar's Stone##29624 |q 10407 |goto Netherstorm 36.15,26.43
 step
   talk Anchorite Karja##19467
   turnin Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18

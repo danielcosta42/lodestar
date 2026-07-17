@@ -6,6 +6,9 @@ ns:RegisterGuide("Events/Horde/Dustwallow Marsh (Eventos)", {
 	author = "Lodestar Generator",
 }, [[
 step
+  click Theramore Guard Badge##21042
+  accept Lieutenant Paval Reethe##1269 |goto Dustwallow Marsh 29.83,48.24
+step
   talk "Stinky" Ignatz##4880
   accept Stinky's Escape##1270 |goto Dustwallow Marsh 46.88,17.52
 step

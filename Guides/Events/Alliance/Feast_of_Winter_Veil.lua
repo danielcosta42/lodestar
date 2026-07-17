@@ -57,8 +57,29 @@ step
   talk Wonderform Operator##15732
   accept New Year Celebrations!##8860 |goto Stormwind City 62.28,60.73
 step
+  click Winter Veil Gift##187236
+  accept A Winter Veil Gift##11528 |goto Ironforge 33.71,65.85
+step
+  click Carefully Wrapped Present##180743
+  accept A Carefully Wrapped Present##8744 |goto Ironforge 33.46,65.6
+step
+  click Gently Shaken Gift##180746
+  accept A Gently Shaken Gift##8767 |goto Ironforge 34.45,65.79
+step
+  click Gently Shaken Gift##180746
+  accept A Gently Shaken Gift##8788 |goto Ironforge 34.45,65.79
+step
   talk Wonderform Operator##15732
   accept Winter's Presents##8827 |goto Stormwind City 62.28,60.73
+step
+  click Festive Gift##180793
+  accept A Festive Gift##8803 |goto Ironforge 34.37,66.1
+step
+  click Gaily Wrapped Present##180747
+  accept A Gaily Wrapped Present##8768 |goto Ironforge 33.86,65.79
+step
+  click Ticking Present##180748
+  accept A Ticking Present##8769 |goto Ironforge 33.81,66.18
 step
   talk Innkeeper Saelienne##6735
   accept Dancing for Marzipan##8357 |goto Darnassus 67.42,15.65
@@ -176,10 +197,12 @@ step
   accept The Hero of the Day##8763 |goto Ironforge 33.7,67.23
 step
   note Locate and return the Stolen Treats to Kaymard Copperpinch in Orgrimmar. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains.
-  collect Stolen Treats##17662 |q 6983 |goto Alterac Mountains 37.26,63.57 |tip {dropsfrom}The Abominable Greench
+  kill The Abominable Greench##13602 |goto Alterac Mountains 37.26,63.57 |elite
+  collect Stolen Treats##17662 |q 6983 |goto Alterac Mountains 37.26,63.57
 step
   note Locate and return the Stolen Treats to Wulmort Jinglepocket in Ironforge. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains.
-  collect Stolen Treats##17662 |q 7043 |goto Alterac Mountains 37.26,63.57 |tip {dropsfrom}The Abominable Greench
+  kill The Abominable Greench##13602 |goto Alterac Mountains 37.26,63.57 |elite
+  collect Stolen Treats##17662 |q 7043 |goto Alterac Mountains 37.26,63.57
 step
   note Bring 1 Deeprock Salt and 5 gold coins to any Holly Preserver machine, upon which you will receive 5 Preserved Holly.
   collect 1 Deeprock Salt##8150 |q 8763 |goto Badlands 40.97,77.75 |tip {dropsfrom}Rock Elemental, Elemental Slave, Stone Fury

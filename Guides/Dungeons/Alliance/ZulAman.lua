@@ -19,7 +19,7 @@ step
   collect Budd's Map of Zul'Aman##33013 |q 11132 |goto Zul'Aman - Raid -1,-1 |tip {dropsfrom}The Map of Zul'Aman
 step
   note Prigmon needs you to collect 10 Forest Troll Tusks from the trolls in Zul'Aman. Bring them to him at Budd's camp in the Ghostlands.
-  collect 10 Forest Troll Tusk##33106 |q 11164 |goto Zul'Aman - Raid -1,-1 |tip {dropsfrom}Amani'shi Axe Thrower, Amani'shi Warbringer, Amani'shi Medicine Man
+  collect 10 Forest Troll Tusk##33106 |q 11164 |goto Zul'Aman - Raid -1,-1 |elite |tip {dropsfrom}Amani'shi Axe Thrower, Amani'shi Warbringer, Amani'shi Medicine Man
 step
   talk Budd Nedreck##23559
   turnin Promises, Promises...##11132 |goto Ghostlands 70.34,67.84

@@ -87,7 +87,7 @@ step
   accept To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
-  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14 |tip {dropsfrom}Nethervine Crystal
+  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14
 step
   talk Neltharaku##21657
   turnin To Netherwing Ledge!##10837 |goto Shadowmoon Valley 61.31,59.98

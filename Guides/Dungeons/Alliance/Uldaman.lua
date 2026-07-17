@@ -9,6 +9,9 @@ step
   talk Prospector Stormpike##1356
   accept The Lost Dwarves##2398 |goto Ironforge 74.64,11.74
 step
+  kill Shadowforge Surveyor##4844 |goto Loch Modan 38.32,88.59 |tip Loot the quest item here — it starts the quest.
+  accept The Shattered Necklace##2198 |goto Loch Modan 38.32,88.59
+step
   talk Baelog##6906
   turnin The Lost Dwarves##2398 |goto Uldaman - Dungeon -1,-1
 step

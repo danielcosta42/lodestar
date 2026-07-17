@@ -54,7 +54,7 @@ step
   accept Rightful Repossession##10267 |goto Netherstorm 46.67,56.95
 step
   note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76 |tip {dropsfrom}Box of Surveying Equipment
+  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76
 step
   talk Gahruj##20066
   turnin Rightful Repossession##10267 |goto Netherstorm 46.67,56.95
@@ -81,7 +81,8 @@ step
   accept Full Triangle##10276 |goto Netherstorm 34.62,37.95
 step
   note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
-  collect Ata'mal Crystal##29026 |q 10276 |goto Netherstorm 53.51,21.53 |tip {dropsfrom}Culuthas
+  kill Culuthas##20138 |goto Netherstorm 53.51,21.53 |elite
+  collect Ata'mal Crystal##29026 |q 10276 |goto Netherstorm 53.51,21.53
 step
   talk Image of Nexus-Prince Haramad##20084
   turnin Full Triangle##10276 |goto Netherstorm 45.87,35.96

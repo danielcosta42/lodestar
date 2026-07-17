@@ -127,7 +127,8 @@ step
   collect 8 Dampscale Basilisk Eye##25744 |q 10024 |goto Terokkar Forest 38.39,11.68 |tip {dropsfrom}Dampscale Basilisk, Dampscale Devourer, Stonegazer
 step
   note Bring 10 Marks of Kil'jaeden to Adyen the Lightwarden in Shattrath City.
-  collect 10 Mark of Kil'jaeden##29425 |q 10325 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
+  kill Mo'arg Engineer##16945 |goto Nagrand 20.0,49.34 |elite
+  collect 10 Mark of Kil'jaeden##29425 |q 10325 |goto Nagrand 20.0,49.34
 step
   note Magistrix Fyalenn in Shattrath City wants you to bring her 10 Firewing Signets.
   collect Firewing Signet##29426 |q 10412 |goto Terokkar Forest 71.58,36.73 |tip {dropsfrom}Firewing Bloodwarder, Firewing Defender, Firewing Warlock
@@ -181,7 +182,7 @@ step
   collect The Exarch's Soul Gem##33836 |q 11374 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Exarch Maladaar (1)
 step
   note Wind Trader Zhareem has asked you to obtain Murmur's Whisper. Deliver it to him in Shattrath's Lower City to collect the reward.
-  collect Murmur's Whisper##33840 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Murmur (1)
+  collect Murmur's Whisper##33840 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |elite |tip {dropsfrom}Murmur (1)
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
@@ -398,9 +399,11 @@ step
 step
   collect Dampscale Basilisk Eye##25744 |q 10025 |goto Terokkar Forest 38.39,11.68 |tip {dropsfrom}Dampscale Basilisk, Dampscale Devourer, Stonegazer
 step
-  collect Mark of Kil'jaeden##29425 |q 10326 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
+  kill Mo'arg Engineer##16945 |goto Nagrand 20.0,49.34 |elite
+  collect Mark of Kil'jaeden##29425 |q 10326 |goto Nagrand 20.0,49.34
 step
-  collect Mark of Kil'jaeden##29425 |q 10327 |goto Nagrand 20.0,49.34 |tip {dropsfrom}Mo'arg Engineer, Kil'sorrow Spellbinder, Kil'sorrow Cultist
+  kill Mo'arg Engineer##16945 |goto Nagrand 20.0,49.34 |elite
+  collect Mark of Kil'jaeden##29425 |q 10327 |goto Nagrand 20.0,49.34
 step
   collect Arakkoa Feather##25719 |q 10918 |goto Terokkar Forest 50.89,19.63 |tip {dropsfrom}Shienor Talonite, Shienor Sorcerer, Shienor Wing Guard
 step
@@ -496,7 +499,7 @@ step
   accept Hard to Kill##11492 |goto Magisters' Terrace - Dungeon -1,-1
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  collect Head of Kael'thas##34157 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |tip {dropsfrom}Kael'thas Sunstrider, Kael'thas Sunstrider (1)
+  collect Head of Kael'thas##34157 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite |tip {dropsfrom}Kael'thas Sunstrider, Kael'thas Sunstrider (1)
 step
   talk Exarch Larethor##24813
   turnin Hard to Kill##11492 |goto Isle of Quel'Danas 47.42,30.74

@@ -61,7 +61,7 @@ step
   accept Entry Into Karazhan##9831 |goto Shattrath City 54.75,44.32
 step
   note Obtain Medivh's Journal and return to Kamsis at the Guardian's Library in Karazhan.
-  collect Medivh's Journal##23933 |q 9640 |goto Karazhan - Raid -1,-1 |tip {dropsfrom}Shade of Aran
+  collect Medivh's Journal##23933 |q 9640 |goto Karazhan - Raid -1,-1 |raid |tip {dropsfrom}Shade of Aran
 step
   note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
   collect First Key Fragment##24514 |q 9831 |goto Shattrath City 54.75,44.32 |tip {dropsfrom}First Fragment Guardian
@@ -115,7 +115,7 @@ step
   accept Keanna's Log##9843 |goto Karazhan - Raid -1,-1
 step
   note Search the Guest Chambers inside Karazhan for Keanna's Log and bring it to Archmage Alturus outside Karazhan.
-  collect Keanna's Log##24492 |q 9843 |goto Karazhan - Raid -1,-1 |tip {dropsfrom}Keanna's Log
+  collect Keanna's Log##24492 |q 9843 |goto Karazhan - Raid -1,-1
 step
   talk Archmage Alturus##17613
   turnin Keanna's Log##9843 |goto Deadwind Pass 47.28,75.21

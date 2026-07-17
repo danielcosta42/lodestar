@@ -7,6 +7,15 @@ ns:RegisterGuide("Leveling/Alliance/Alterac Mountains (40-60)", {
 	next = "Leveling/Alliance/Un'Goro Crater (52-55)",
 }, [[
 step
+  click Syndicate Documents##1740
+  accept Foreboding Plans##510 |goto Alterac Mountains 58.32,67.92
+step
+  click Syndicate Documents##1740
+  accept Encrypted Letter##511 |goto Alterac Mountains 58.32,67.92
+step
+  collect Worn Wooden Chest##1765 |goto Alterac Mountains 39.18,14.66 |tip Loot the quest item here — it starts the quest.
+  accept The Ensorcelled Parchment##551 |goto Alterac Mountains 39.18,14.66
+step
   talk Prospector Stonehewer##13816
   accept The Battle of Alterac##7141 |goto Alterac Mountains 40.65,79.56
 step
@@ -21,11 +30,11 @@ step
   note Bring the items on Bath'rah's Parchment to Bath'rah the Windwatcher in Alterac.
   collect Liferoot##3357 |q 1712 |goto Duskwood 64.14,67.71 |tip {dropsfrom}Nightbane Dark Runner, Nightbane Vile Fang, Splinter Fist Warrior
 step
-  only Mage
+  only Shaman
   talk Bath'rah the Windwatcher##6176
   accept Spirit Totem##8412 |goto Alterac Mountains 80.5,66.92
 step
-  only Mage
+  only Shaman
   note Bring the pieces for the spirit totem to Bath'rah the Windwatcher.
   collect Bloodshot Spider Eye##20610 |q 8412 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Carrion Lurker, Venom Mist Lurker
 step
@@ -47,6 +56,15 @@ step
   talk Prospector Stonehewer##13816
   turnin The Battle of Alterac##7141 |goto Alterac Mountains 40.65,79.56
 step
+  talk Loremaster Dibbs##2277
+  turnin The Ensorcelled Parchment##551 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
+step
+  talk Magistrate Henry Maleb##2276
+  turnin Foreboding Plans##510 |goto Hillsbrad Foothills 48.14,59.11 |tip {turninat}Hillsbrad Foothills
+step
+  talk Loremaster Dibbs##2277
+  turnin Encrypted Letter##511 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
+step
   talk Prospector Stonehewer##13816
   accept Hero of the Stormpike##8271 |goto Alterac Mountains 40.65,79.56
 step
@@ -61,7 +79,7 @@ step
   talk Bath'rah the Windwatcher##6176
   turnin Cyclonian##1712 |goto Alterac Mountains 80.5,66.92
 step
-  only Mage
+  only Shaman
   talk Bath'rah the Windwatcher##6176
   turnin Spirit Totem##8412 |goto Alterac Mountains 80.5,66.92
 step
@@ -73,13 +91,13 @@ step
   note Bring the Whirlwind Heart to Bath'rah Windwatcher.
   collect Whirlwind Heart##6894 |q 1713 |goto Alterac Mountains 80.5,66.92 |tip {dropsfrom}Cyclonian
 step
-  only Mage
+  only Shaman
   talk Bath'rah the Windwatcher##6176
   accept Da Voodoo##8413 |goto Alterac Mountains 80.5,66.92
 step
-  only Mage
+  only Shaman
   note Bring the voodoo feathers to Bath'rah the Windwatcher.
-  collect Amber Voodoo Feather##20606 |q 8413 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Gasher, Zul'Lor
+  collect Amber Voodoo Feather##20606 |q 8413 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Gasher, Zul'Lor
 step
   only Rogue
   talk Fahrad##6707
@@ -92,7 +110,7 @@ step
   talk Bath'rah the Windwatcher##6176
   turnin The Summoning##1713 |goto Alterac Mountains 80.5,66.92
 step
-  only Mage
+  only Shaman
   talk Bath'rah the Windwatcher##6176
   turnin Da Voodoo##8413 |goto Alterac Mountains 80.5,66.92
 step
@@ -103,7 +121,4 @@ step
   only Warrior
   talk Bath'rah the Windwatcher##6176
   turnin Whirlwind Weapon##1792 |goto Alterac Mountains 80.5,66.92
-step
-  note {travel}Un'Goro Crater
-  goto Un'Goro Crater 43.5,7.42
 ]])

@@ -6,6 +6,50 @@ ns:RegisterGuide("Class/Horde/Hunter", {
 	author = "Lodestar Generator",
 }, [[
 step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  accept Taming the Beast##6061 |goto Mulgore 47.82,55.69
+step
+  only Hunter
+  talk Thotar##3171
+  accept Taming the Beast##6062 |goto Durotar 51.85,43.49
+step
+  only Tauren Hunter
+  talk Kary Thunderhorn##3038
+  accept The Hunter's Path##6065 |goto Thunder Bluff 58.49,88.33
+step
+  only Tauren Hunter
+  talk Lanka Farshot##3061
+  accept The Hunter's Path##6066 |goto Mulgore 44.26,75.69
+step
+  only Tauren Hunter
+  talk Thotar##3171
+  accept The Hunter's Path##6067 |goto Durotar 51.85,43.49
+step
+  only Hunter
+  talk Jen'shan##3154
+  accept The Hunter's Path##6068 |goto Durotar 42.84,69.33
+step
+  only Hunter
+  talk Sian'dur##3407
+  accept The Hunter's Path##6069 |goto Orgrimmar 67.96,17.8
+step
+  only Hunter
+  talk Kary Thunderhorn##3038
+  accept The Hunter's Path##6070 |goto Thunder Bluff 58.49,88.33
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  accept Taming the Beast##9484 |goto Eversong Woods 60.32,62.77
+step
+  only BloodElf Hunter
+  talk Oninath##16673
+  accept Seek the Farstriders##9617 |goto Silvermoon City 84.39,26.03
+step
+  only BloodElf Hunter
+  talk Yaw Sharpmane##3065
+  accept The Hunter's Path##10530 |goto Mulgore 47.82,55.69
+step
   talk Magistrix Erona##15278
   accept Reclaiming Sunstrider Isle##8325 |goto Eversong Woods 38.21,20.83
 step
@@ -18,6 +62,14 @@ step
   only Hunter
   talk Kary Thunderhorn##3038
   accept The Hunter's Charm##8151 |goto Thunder Bluff 58.49,88.33
+step
+  only Hunter
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Greatest Race of Hunters##7503 |goto Dire Maul - Dungeon -1,-1
+step
+  only Hunter
+  collect Cache of the Firelord##179703 |goto Molten Core - Raid -1,-1 |tip Loot the quest item here — it starts the quest.
+  accept The Ancient Leaf##7632 |goto Molten Core - Raid -1,-1
 step
   only Hunter
   talk Vartrus the Ancient##14524
@@ -92,30 +144,30 @@ step
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Bindings##19716 |q 8062 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Bindings##19716 |q 8062 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Shawl##19721 |q 8066 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Shawl##19721 |q 8066 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Hunter
   note Bring the following Paragons of Power from Zul'Gurub to Falthir the Sightless: A Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Aegis##19724 |q 8067 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Aegis##19724 |q 8067 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Hunter
   note Bring the Qiraji Bindings of Command, 2 Idols of Life, 5 Stone Scarabs and 5 Bone Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Command##20928 |q 8626 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Command##20928 |q 8626 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Hunter
   note Bring the the Carapace of the Old God, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Carapace of the Old God##20929 |q 8656 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}C'Thun
+  collect Carapace of the Old God##20929 |q 8656 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}C'Thun
 step
   only Hunter
   note Bring Vek'lor's Diadem, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'lor's Diadem##20930 |q 8657 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Emperor Vek'lor
+  collect Vek'lor's Diadem##20930 |q 8657 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Emperor Vek'lor
 step
   only Hunter
   note Bring the Skin of the Great Sandworm, 2 Idols of the Sun, 5 Silver Scarabs and 5 Bone Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -123,19 +175,19 @@ step
 step
   only Hunter
   note Bring the Qiraji Bindings of Command, 2 Idols of War, 5 Crystal Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Command##20928 |q 8659 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Command##20928 |q 8659 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Hunter
   note Bring 1 Qiraji Regal Drape, 2 Lambent Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8696 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Regal Drape##20889 |q 8696 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Hunter
   note Bring 1 Qiraji Ceremonial Ring, 2 Amber Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8704 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8704 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Hunter
   note Bring 1 Qiraji Spiked Hilt, 2 Azure Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8712 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8712 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Hunter
   note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Beaststalker's Bindings to Mokvar in Orgrimmar.
@@ -143,6 +195,50 @@ step
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
   collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 62.76,44.03 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  turnin Taming the Beast##6061 |goto Mulgore 47.82,55.69
+step
+  only Hunter
+  talk Thotar##3171
+  turnin Taming the Beast##6062 |goto Durotar 51.85,43.49
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  turnin The Hunter's Path##6065 |goto Mulgore 47.82,55.69
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  turnin The Hunter's Path##6066 |goto Mulgore 47.82,55.69
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  turnin The Hunter's Path##6067 |goto Mulgore 47.82,55.69
+step
+  only Hunter
+  talk Thotar##3171
+  turnin The Hunter's Path##6068 |goto Durotar 51.85,43.49
+step
+  only Hunter
+  talk Thotar##3171
+  turnin The Hunter's Path##6069 |goto Durotar 51.85,43.49
+step
+  only Hunter
+  talk Thotar##3171
+  turnin The Hunter's Path##6070 |goto Durotar 51.85,43.49
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  turnin Taming the Beast##9484 |goto Eversong Woods 60.32,62.77
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  turnin Seek the Farstriders##9617 |goto Eversong Woods 60.32,62.77
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  turnin The Hunter's Path##10530 |goto Eversong Woods 60.32,62.77
 step
   talk Magistrix Erona##15278
   turnin Reclaiming Sunstrider Isle##8325 |goto Eversong Woods 38.21,20.83
@@ -227,6 +323,18 @@ step
   talk Archmage Angela Dosantos##16116
   turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
 step
+  only Hunter
+  talk Thotar##3171
+  accept Taming the Beast##6083 |goto Durotar 51.85,43.49
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  accept Taming the Beast##6087 |goto Mulgore 47.82,55.69
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  accept Taming the Beast##9486 |goto Eversong Woods 60.32,62.77
+step
   only Troll Hunter
   talk Gornek##3143
   accept Etched Tablet##3082 |goto Durotar 42.06,68.33
@@ -307,6 +415,18 @@ step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
+  only Hunter
+  talk Thotar##3171
+  turnin Taming the Beast##6083 |goto Durotar 51.85,43.49
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  turnin Taming the Beast##6087 |goto Mulgore 47.82,55.69
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  turnin Taming the Beast##9486 |goto Eversong Woods 60.32,62.77
+step
   only Troll Hunter
   talk Jen'shan##3154
   turnin Etched Tablet##3082 |goto Durotar 42.84,69.33
@@ -358,6 +478,18 @@ step
 step
   talk Commander Eligor Dawnbringer##16115
   turnin Echoes of War##9033 |goto Eastern Plaguelands 81.54,58.16
+step
+  only Hunter
+  talk Thotar##3171
+  accept Taming the Beast##6082 |goto Durotar 51.85,43.49
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  accept Taming the Beast##6088 |goto Mulgore 47.82,55.69
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  accept Taming the Beast##9485 |goto Eversong Woods 60.32,62.77
 step
   only Hunter
   talk Matron Arena##15284
@@ -433,11 +565,11 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Chain Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Spaulders##22361 |q 9057 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect Desecrated Spaulders##22361 |q 9057 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Boots##22365 |q 9058 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect Desecrated Boots##22365 |q 9058 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -445,11 +577,23 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make a Cryptstalker Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9060 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect Desecrated Girdle##22363 |q 9060 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Chain Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9061 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect Desecrated Wristguards##22362 |q 9061 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+step
+  only Hunter
+  talk Thotar##3171
+  turnin Taming the Beast##6082 |goto Durotar 51.85,43.49
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  turnin Taming the Beast##6088 |goto Mulgore 47.82,55.69
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  turnin Taming the Beast##9485 |goto Eversong Woods 60.32,62.77
 step
   only Hunter
   talk Well Watcher Solanian##15295
@@ -502,6 +646,18 @@ step
   turnin Cryptstalker Wristguards##9061 |goto Eastern Plaguelands 81.51,58.55
 step
   only Hunter
+  talk Thotar##3171
+  accept Training the Beast##6081 |goto Durotar 51.85,43.49
+step
+  only Tauren Hunter
+  talk Yaw Sharpmane##3065
+  accept Training the Beast##6089 |goto Mulgore 47.82,55.69
+step
+  only BloodElf Hunter
+  talk Lieutenant Dawnrunner##15399
+  accept Beast Training##9673 |goto Eversong Woods 60.32,62.77
+step
+  only Hunter
   talk Ogtinc##8405
   accept The Green Drake##8232 |goto Azshara 42.4,42.62
 step
@@ -517,7 +673,7 @@ step
 step
   only Hunter
   note Bring the Tooth of Morphaz to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
-  collect Tooth of Morphaz##20019 |q 8232 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
+  collect Tooth of Morphaz##20019 |q 8232 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
 step
   only Hunter
   collect Maelstrom's Tendril##19620 |q 8148 |goto Stranglethorn Vale 14.08,13.72
@@ -527,6 +683,18 @@ step
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
   collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.76 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+step
+  only Hunter
+  talk Ormak Grimshot##3352
+  turnin Training the Beast##6081 |goto Orgrimmar 66.05,18.53
+step
+  only Tauren Hunter
+  talk Holt Thunderhorn##3039
+  turnin Training the Beast##6089 |goto Thunder Bluff 57.3,89.79
+step
+  only BloodElf Hunter
+  talk Halthenis##16675
+  turnin Beast Training##9673 |goto Silvermoon City 82.18,28.13
 step
   only Hunter
   talk Ogtinc##8405
@@ -580,7 +748,7 @@ step
 step
   only Hunter
   note Bring a Beaststalker's Belt and a set of Beaststalker's Gloves to Mokvar in Orgrimmar.
-  collect Beaststalker's Belt##16680 |q 8938 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Headhunter, Scarshield Raider, Firebrand Grunt
+  collect Beaststalker's Belt##16680 |q 8938 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Headhunter, Scarshield Raider, Firebrand Grunt
 step
   only Hunter
   talk Mokvar##16012
@@ -626,7 +794,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -635,7 +803,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -655,7 +823,7 @@ step
 step
   only Hunter
   note Return to Mokvar in Orgimmar with a set of Beaststalker's Boots, Beaststalker's Pants and Beaststalker's Mantle.
-  collect Beaststalker's Boots##16675 |q 9017 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Nerub'enkan
+  collect Beaststalker's Boots##16675 |q 9017 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Nerub'enkan
 step
   only Hunter
   talk Mokvar##16012
@@ -680,7 +848,8 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |tip {dropsfrom}Cursed Paladin, Cursed Justicar, Writhing Mage
+  kill Cursed Paladin##7071 |goto Hillsbrad Foothills 18.45,76.6 |elite
+  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
 step
   talk Bodley##16033
   turnin Components of Importance##8965

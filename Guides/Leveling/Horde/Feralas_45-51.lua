@@ -10,6 +10,9 @@ step
   note {fp}Shyn
   goto Feralas 75.45,44.36 |tip {vendor}
 step
+  kill Gordunni Ogre##5229 |goto Feralas 75.15,29.76 |tip Loot the quest item here — it starts the quest.
+  accept Find OOX-22/FE!##2766 |goto Feralas 75.15,29.76
+step
   talk Jangdor Swiftstrider##7854
   accept The Mark of Quality##2822 |goto Feralas 74.43,42.91
 step
@@ -37,11 +40,8 @@ step
   talk Rok Orhan##7777
   accept The Ogres of Feralas##2975 |goto Feralas 75.8,43.58
 step
-  talk Rok Orhan##7777
-  accept Dark Ceremony##2979 |goto Feralas 75.8,43.58
-step
-  note Rok Orhan in Camp Mojache wants you to find a Gordunni Orb.
-  collect Gordunni Orb##9371 |q 2979 |goto Feralas 60.27,69.54 |tip {dropsfrom}Gordunni Mage-Lord
+  collect Gordunni Scroll##143980 |goto Feralas 75.13,29.73 |tip Loot the quest item here — it starts the quest.
+  accept The Gordunni Scroll##2978 |goto Feralas 75.13,29.73
 step
   talk Orwin Gizzmick##8021
   accept Gordunni Cobalt##2987 |goto Feralas 75.7,44.31
@@ -83,29 +83,18 @@ step
   accept Pusillin and the Elder Azj'Tordin##7441 |goto Feralas 76.91,37.35
 step
   note Travel to Dire Maul and locate the Imp, Pusillin. Convince Pusillin to give you Azj'Tordin's Book of Incantations through any means necessary.
-  collect Book of Incantations##18261 |q 7441 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Pusillin
+  collect Book of Incantations##18261 |q 7441 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Pusillin
 step
   talk Talo Thornhoof##7776
   accept Lethtendris's Web##7489 |goto Feralas 76.18,43.83
 step
   note Bring Lethtendris's Web to Talo Thornhoof at Camp Mojache in Feralas.
-  collect Lethtendris's Web##18426 |q 7489 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Lethtendris
-step
-  talk Hadoken Swiftstrider##7875
-  accept Zukk'ash Infestation##7730 |goto Feralas 74.91,42.46
-step
-  note Bring 20 Zukk'ash Carapaces to Hadoken Swiftstrider at Camp Mojache, Feralas.
-  collect 20 Zukk'ash Carapace##18961 |q 7730 |goto Feralas 76.99,64.14 |tip {dropsfrom}Zukk'ash Stinger, Zukk'ash Wasp, Zukk'ash Worker
-step
-  talk Hadoken Swiftstrider##7875
-  accept Stinglasher##7731 |goto Feralas 74.91,42.46
-step
-  note Defeat Stinglasher in the Writhing Deep, bringing its glands back to Hadoken Swiftstrider at Camp Mojache, Feralas.
-  collect Stinglasher's Glands##18962 |q 7731 |goto Feralas 76.99,61.56 |tip {dropsfrom}Stinglasher
+  collect Lethtendris's Web##18426 |q 7489 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Lethtendris
 step
   talk Elder Grimtotem##15581
   accept Grimtotem the Elder##8679 |goto Feralas 76.72,37.9
 step
+  only Druid
   talk Jannos Lighthoof##8142
   accept Torwa Pathfinder##9063 |goto Feralas 75.99,42.28
 step
@@ -114,6 +103,13 @@ step
 step
   talk Neeru Fireblade##3216
   turnin A Strange Request##3121 |goto Orgrimmar 49.47,50.59 |tip {turninat}Orgrimmar
+step
+  talk Homing Robot OOX-22/FE##7807
+  turnin Find OOX-22/FE!##2766 |goto Feralas 53.35,55.7
+step
+  only Druid
+  talk Torwa Pathfinder##9619
+  turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96 |tip {turninat}Un'Goro Crater
 step
   talk Marvon Rivetseeker##7771
   turnin The Sunken Temple##3380 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris
@@ -155,7 +151,7 @@ step
   turnin The Ogres of Feralas##2975 |goto Feralas 75.8,43.58
 step
   talk Rok Orhan##7777
-  turnin Dark Ceremony##2979 |goto Feralas 75.8,43.58
+  turnin The Gordunni Scroll##2978 |goto Feralas 75.8,43.58
 step
   talk Jangdor Swiftstrider##7854
   turnin Wild Leather Armor##2854 |goto Feralas 74.43,42.91
@@ -166,14 +162,8 @@ step
   talk Hadoken Swiftstrider##7875
   turnin War on the Woodpaw##2862 |goto Feralas 74.91,42.46
 step
-  talk Hadoken Swiftstrider##7875
-  turnin Zukk'ash Infestation##7730 |goto Feralas 74.91,42.46
-step
   talk Witch Doctor Uzer'i##8115
   turnin Testing the Vessel##3123 |goto Feralas 74.42,43.36
-step
-  talk Hadoken Swiftstrider##7875
-  turnin Stinglasher##7731 |goto Feralas 74.91,42.46
 step
   talk Witch Doctor Uzer'i##8115
   turnin Natural Materials##3128 |goto Feralas 74.42,43.36
@@ -183,9 +173,6 @@ step
 step
   talk Elder Grimtotem##15581
   turnin Grimtotem the Elder##8679 |goto Feralas 76.72,37.9
-step
-  talk Torwa Pathfinder##9619
-  turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96 |tip {turninat}Un'Goro Crater
 step
   talk Talo Thornhoof##7776
   turnin Dark Heart##3062 |goto Feralas 76.18,43.83
@@ -233,10 +220,13 @@ step
   collect 20 Grimtotem Horn##9460 |q 2974 |goto Feralas 67.22,46.35 |tip {dropsfrom}Grimtotem Raider, Grimtotem Naturalist, Grimtotem Shaman
 step
   talk Rok Orhan##7777
-  accept The Ogres of Feralas##2980 |goto Feralas 75.8,43.58
+  accept Dark Ceremony##2979 |goto Feralas 75.8,43.58
+step
+  note Rok Orhan in Camp Mojache wants you to find a Gordunni Orb.
+  collect Gordunni Orb##9371 |q 2979 |goto Feralas 60.27,69.54 |tip {dropsfrom}Gordunni Mage-Lord
 step
   talk Rok Orhan##7777
-  accept The Gordunni Orb##3002 |goto Feralas 75.8,43.58
+  accept The Ogres of Feralas##2980 |goto Feralas 75.8,43.58
 step
   talk Witch Doctor Uzer'i##8115
   accept Hippogryph Muisek##3124 |goto Feralas 74.42,43.36
@@ -244,17 +234,11 @@ step
   note Kill 10 Frayfeather Hippogryphs of any type, then use the Muisek Vessel to shrink and capture them.
   collect 10 Hippogryph Muisek##9595 |q 3124 |goto Feralas 74.42,43.36
 step
-  talk Hadoken Swiftstrider##7875
-  accept Zukk'ash Report##7732 |goto Feralas 74.91,42.46
-step
   talk Jangdor Swiftstrider##7854
   accept Improved Quality##7734 |goto Feralas 74.43,42.91
 step
   note Bring 10 Rage Scar Yeti Hides to Jangdor Swiftstrider at Camp Mojache, Feralas.
   collect 10 Rage Scar Yeti Hide##18947 |q 7734 |goto Feralas 53.28,31.85 |tip {dropsfrom}Rage Scar Yeti, Elder Rage Scar, Ferocious Rage Scar
-step
-  note Rok Orhan in Camp Mojache wants you to kill 10 Gordunni Shaman, 10 Gordunni Warlocks, and 5 Gordunni Maulers.
-  kill Gordunni Shaman##5236 |q 2980 |goto Feralas 60.44,67.55
 step
   note Kill 5 Woodpaw Alphas and return to Hadoken Swiftstrider within one hour.
   kill Woodpaw Alpha##5258 |q 2863 |goto Feralas 71.42,55.63
@@ -262,20 +246,20 @@ step
   talk Myranda the Hag##11872
   turnin Mistress of Deception##6568 |goto Western Plaguelands 50.79,77.85 |tip {turninat}Western Plaguelands
 step
+  note Rok Orhan in Camp Mojache wants you to kill 10 Gordunni Shaman, 10 Gordunni Warlocks, and 5 Gordunni Maulers.
+  kill Gordunni Shaman##5236 |q 2980 |goto Feralas 60.44,67.55
+step
   talk Zorbin Fandazzle##14637
   turnin Fuel for the Zapping##7721 |goto Feralas 44.81,43.42
-step
-  talk Zilzibin Drumlore##7010
-  turnin Zukk'ash Report##7732 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
-step
-  talk Uthel'nay##7311
-  turnin The Gordunni Orb##3002 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
 step
   talk Zorbin Fandazzle##14637
   turnin Zapped Giants##7003 |goto Feralas 44.81,43.42
 step
   talk Krueg Skullsplitter##4544
   turnin A Grim Discovery##2974 |goto Feralas 75.94,42.74
+step
+  talk Rok Orhan##7777
+  turnin Dark Ceremony##2979 |goto Feralas 75.8,43.58
 step
   talk Rok Orhan##7777
   turnin The Ogres of Feralas##2980 |goto Feralas 75.8,43.58
@@ -313,11 +297,17 @@ step
   talk Krueg Skullsplitter##4544
   accept A Grim Discovery##2976 |goto Feralas 75.94,42.74
 step
+  talk Rok Orhan##7777
+  accept The Gordunni Orb##3002 |goto Feralas 75.8,43.58
+step
   talk Witch Doctor Uzer'i##8115
   accept Faerie Dragon Muisek##3125 |goto Feralas 74.42,43.36
 step
   note Kill 8 Sprite Darters or Sprite Dragons. Use the Muisek Vessel to shrink and capture the fallen Faerie Dragons.
   collect 8 Faerie Dragon Muisek##9596 |q 3125 |goto Feralas 74.42,43.36
+step
+  talk Uthel'nay##7311
+  turnin The Gordunni Orb##3002 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
 step
   talk Una##3007
   turnin Master of the Wild Leather##2860 |goto Thunder Bluff 41.5,42.57 |tip {turninat}Thunder Bluff
@@ -330,6 +320,9 @@ step
 step
   turnin Woodpaw Investigation##2902 |goto Feralas 71.63,55.92
 step
+  click Woodpaw Battle Map##142195
+  accept The Battle Plans##2903 |goto Feralas 71.63,55.92
+step
   talk Witch Doctor Uzer'i##8115
   accept Treant Muisek##3126 |goto Feralas 74.42,43.36
 step
@@ -339,21 +332,45 @@ step
   talk Witch Doctor Uzer'i##8115
   turnin Treant Muisek##3126 |goto Feralas 74.42,43.36
 step
+  talk Hadoken Swiftstrider##7875
+  turnin The Battle Plans##2903 |goto Feralas 74.91,42.46
+step
   talk Witch Doctor Uzer'i##8115
   accept Mountain Giant Muisek##3127 |goto Feralas 74.42,43.36
 step
   note Kill 7 Land Walkers or Cliff Giants. Use the Muisek Vessel to shrink and capture the fallen Mountain Giants.
   collect 7 Mountain Giant Muisek##9597 |q 3127 |goto Feralas 74.42,43.36
 step
+  talk Hadoken Swiftstrider##7875
+  accept Zukk'ash Infestation##7730 |goto Feralas 74.91,42.46
+step
+  note Bring 20 Zukk'ash Carapaces to Hadoken Swiftstrider at Camp Mojache, Feralas.
+  collect 20 Zukk'ash Carapace##18961 |q 7730 |goto Feralas 76.99,64.14 |tip {dropsfrom}Zukk'ash Stinger, Zukk'ash Wasp, Zukk'ash Worker
+step
+  talk Hadoken Swiftstrider##7875
+  accept Stinglasher##7731 |goto Feralas 74.91,42.46
+step
+  note Defeat Stinglasher in the Writhing Deep, bringing its glands back to Hadoken Swiftstrider at Camp Mojache, Feralas.
+  collect Stinglasher's Glands##18962 |q 7731 |goto Feralas 76.99,61.56 |tip {dropsfrom}Stinglasher
+step
+  talk Hadoken Swiftstrider##7875
+  turnin Zukk'ash Infestation##7730 |goto Feralas 74.91,42.46
+step
   talk Witch Doctor Uzer'i##8115
   turnin Mountain Giant Muisek##3127 |goto Feralas 74.42,43.36
+step
+  talk Hadoken Swiftstrider##7875
+  turnin Stinglasher##7731 |goto Feralas 74.91,42.46
 step
   talk Witch Doctor Uzer'i##8115
   accept Weapons of Spirit##3129 |goto Feralas 74.42,43.36
 step
+  talk Hadoken Swiftstrider##7875
+  accept Zukk'ash Report##7732 |goto Feralas 74.91,42.46
+step
+  talk Zilzibin Drumlore##7010
+  turnin Zukk'ash Report##7732 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
+step
   talk Witch Doctor Uzer'i##8115
   turnin Weapons of Spirit##3129 |goto Feralas 74.42,43.36
-step
-  note {travel}The Hinterlands
-  goto The Hinterlands 33.75,75.21
 ]])

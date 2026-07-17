@@ -37,6 +37,7 @@ step
   accept Dangerous Love##8903 |goto Stormwind City 54.6,65.3
 step
   note Get a Stormwind Guard's Card and return it to Aristan Mottar in Stormwind.
+  kill Stormwind Guard##1423 |goto Elwynn Forest 25.68,72.74
   collect Stormwind Guard's Card##22143 |q 8903 |goto Elwynn Forest 25.68,72.74
 step
   talk Aristan Mottar##16105

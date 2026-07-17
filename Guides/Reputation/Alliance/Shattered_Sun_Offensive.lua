@@ -109,10 +109,10 @@ step
   kill Sister of Torment##24697 |q 11500 |goto Magisters' Terrace - Dungeon -1,-1 |elite
 step
   note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
-  collect 5 Razorthorn Root##34254 |q 11520 |goto Isle of Quel'Danas 51.49,32.46 |tip {dropsfrom}Razorthorn Root
+  collect 5 Razorthorn Root##34254 |q 11520 |goto Isle of Quel'Danas 51.49,32.46
 step
   note Mar'nah at Sun's Reach Harbor wants you to travel to Razorthorn Rise in Outlands, collect 5 Razorthorn Roots, and return to her.
-  collect 5 Razorthorn Root##34254 |q 11521 |goto Isle of Quel'Danas 51.49,32.46 |tip {dropsfrom}Razorthorn Root
+  collect 5 Razorthorn Root##34254 |q 11521 |goto Isle of Quel'Danas 51.49,32.46
 step
   note Vindicator Xayanna at the Shattered Sun Staging Area wants you to place the Attuned Crystal Cores inside 5 defeated Erratic Sentries to turn them into friendly units.
   get Erratic Behavior |q 11524 |goto Isle of Quel'Danas 47.6,35.25
@@ -163,13 +163,13 @@ step
   get Know Your Ley Lines |q 11547 |goto Isle of Quel'Danas 48.51,44.42
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! With the essence in hand, my mages will be able to dismantle Agamath, ultimately collapsing the gateway and unlocking the way further into the sunwell.
-  collect Essence of the Immortals##34544 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
+  collect Essence of the Immortals##34544 |q 11551 |goto Serpentshrine Cavern - Raid -1,-1 |raid |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   note Bring to me the essence of immortals, found only on the most powerful beings of this world! Rohendor cannot withstand the combined force of our mages!
-  collect Essence of the Immortals##34544 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
+  collect Essence of the Immortals##34544 |q 11552 |goto Serpentshrine Cavern - Raid -1,-1 |raid |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   note Bring to me the essence of immortals ÔÇö found only on the most powerful beings of this world ÔÇö and Archonisus is sure to crumble!
-  collect Essence of the Immortals##34544 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1 |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
+  collect Essence of the Immortals##34544 |q 11553 |goto Serpentshrine Cavern - Raid -1,-1 |raid |tip {dropsfrom}Archimonde, Kael'thas Sunstrider, Lady Vashj
 step
   talk Exarch Larethor##24813
   turnin Crisis at the Sunwell##11481 |goto Isle of Quel'Danas 47.42,30.74
@@ -340,7 +340,7 @@ step
   accept Blast the Gateway##11516 |goto Hellfire Peninsula 58.18,17.58
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  collect Head of Kael'thas##34157 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |tip {dropsfrom}Kael'thas Sunstrider, Kael'thas Sunstrider (1)
+  collect Head of Kael'thas##34157 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite |tip {dropsfrom}Kael'thas Sunstrider, Kael'thas Sunstrider (1)
 step
   note Magistrix Seyla at the Throne of Kil'jaeden wants you to kill 4 Emaciated Felbloods by using the Fel Siphon on them. You will need Demonic Blood from nearby Wrath Heralds to power the Fel Siphon.
   kill Emaciated Felblood##24955 |q 11515

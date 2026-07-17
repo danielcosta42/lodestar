@@ -43,31 +43,31 @@ step
   accept The Savage Guard - Arcanum of Focus##9210 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8184 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8185 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8186 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8187 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8188 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8189 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8190 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8191 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Bring me thise things and I will create a powerful enchantment for you!
-  collect Primal Hakkari Idol##22637 |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+  collect Primal Hakkari Idol##22637 |q 8192 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Zanza the Restless in Zul'Gurub wants an Arcanum of Protection.
   collect Arcanum of Protection##18331 |q 9208 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1

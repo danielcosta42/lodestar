@@ -74,7 +74,7 @@ step
 step
   only Rogue
   note Return the Azure Key to Lord Jorach Ravenholdt.
-  collect Azure Key##20022 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
+  collect Azure Key##20022 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
 step
   only Rogue
   talk Lord Jorach Ravenholdt##6768

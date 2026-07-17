@@ -9,6 +9,9 @@ step
   talk Human Commoner##18927
   accept Brewfest!##11441 |goto Stormwind City 61.45,64.25
 step
+  click Dark Iron Sabotage Plans##186881
+  accept Seek the Saboteurs##11454 |goto Dun Morogh 48.06,39.1
+step
   note Goldark Snipehunter has asked you to capture 5 Stunned Wolpertingers using the Wolpertinger Net. He mentioned that you must be intoxicated to see them.
   collect 5 Catch the Wild Wolpertinger!##32906 |q 11117
 step
@@ -65,6 +68,9 @@ step
 step
   talk Pol Amberstill##24468
   accept Say, There Wouldn't Happen to be a Souvenir This Year, Would There?##12193 |goto Dun Morogh 46.43,40.32
+step
+  kill Coren Direbrew##23872 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Direbrew's Dire Brew##12491 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   talk Daran Thunderbrew##23628
   accept Bark for the Thunderbrews!##11294 |goto Dun Morogh 49.45,38.66

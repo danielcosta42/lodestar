@@ -6,9 +6,10 @@
 # Guide generator + validator + the large Questie data dumps (dev only)
 tools/
 
-# Internal documentation (not shipped)
+# Internal documentation (not shipped) — specs, plans, design notes stay LOCAL
 DSL.md
 PACKAGING.md
+docs/
 
 # Art sources / previews — the shipped textures are the .tga files
 *.zip

@@ -12,6 +12,9 @@ step
   talk Vurtok Axebreaker##21256
   accept Bonechewer Blood##10450 |goto Hellfire Peninsula 55.13,36.39
 step
+  click Wanted Poster##185166
+  accept Wanted: Worg Master Kruush##10809 |goto Hellfire Peninsula 61.2,80.62
+step
   talk Grelag##16858
   accept Preparing the Salve##9345 |goto Hellfire Peninsula 60.93,81.67
 step
@@ -24,14 +27,26 @@ step
   talk Emissary Mordiba##19682
   accept Make Them Listen##10220 |goto Hellfire Peninsula 61.78,81.71
 step
+  kill Unyielding Knight##16906 |goto Hellfire Peninsula 55.5,79.24 |tip Loot the quest item here — it starts the quest.
+  accept Decipher the Tome##10229 |goto Hellfire Peninsula 55.5,79.24
+step
   talk Ogath the Mad##19683
   accept The Warp Rifts##10278 |goto Hellfire Peninsula 61.87,81.53
+step
+  kill Razorsaw##20798 |goto Hellfire Peninsula 64.35,30.93 |tip Loot the quest item here — it starts the quest.
+  accept Vile Plans##10393 |goto Hellfire Peninsula 64.35,30.93
 step
   talk Nazgrel##3230
   accept The Will of the Warchief##9495 |goto Hellfire Peninsula 55.02,35.96
 step
   talk Shadow Hunter Ty'jin##16575
   accept Pride of the Fel Horde##9496 |goto Hellfire Peninsula 55.05,36.32
+step
+  kill Smith Gorlunk##22037 |goto Shadowmoon Valley 67.64,36.2 |tip Loot the quest item here — it starts the quest.
+  accept Entry Into the Citadel##10755 |goto Shadowmoon Valley 67.64,36.2
+step
+  kill Magtheridon##17257 |goto Magtheridon's Lair - Raid -1,-1 |raid |tip Loot the quest item here — it starts the quest.
+  accept The Fall of Magtheridon##11003 |goto Magtheridon's Lair - Raid -1,-1
 step
   note Capture the Overlook, the Stadium and Broken Hill, then return to Battlecryer Blackeye in Thrallmar.
   get Hellfire Fortifications |q 10110 |goto Hellfire Peninsula 39.94,48.39
@@ -43,7 +58,7 @@ step
   collect Worg Master's Head##31374 |q 10809 |goto Hellfire Peninsula 68.34,73.51 |tip {dropsfrom}Worg Master Kruush
 step
   note Gather 12 Hellfire Spineleaf plants for a salve and return to Grelag at Spinebreaker Post.
-  collect 12 Hellfire Spineleaf##23205 |q 9345 |goto Hellfire Peninsula 62.77,67.2 |tip {dropsfrom}Hellfire Spineleaf
+  collect 12 Hellfire Spineleaf##23205 |q 9345 |goto Hellfire Peninsula 62.77,67.2
 step
   note Bring 8 pieces of Salvaged Metal and 8 pieces of Salvaged Wood to Megzeg Nukklebust in Thrallmar.
   collect 8 Salvaged Metal##25912 |q 10086 |goto Hellfire Peninsula 57.71,53.38 |tip {dropsfrom}Salvageable Metal
@@ -55,7 +70,7 @@ step
   collect 3 Warp Nether##29051 |q 10278 |goto Hellfire Peninsula 61.87,81.53 |tip {dropsfrom}Unstable Voidwalker
 step
   note Bring Warchief Kargath's Fist to Nazgrel in Thrallmar.
-  collect Warchief Kargath's Fist##23723 |q 9495 |goto The Shattered Halls - Dungeon -1,-1 |tip {dropsfrom}Warchief Kargath Bladefist, Warchief Kargath Bladefist (1)
+  collect Warchief Kargath's Fist##23723 |q 9495 |goto The Shattered Halls - Dungeon -1,-1 |elite |tip {dropsfrom}Warchief Kargath Bladefist, Warchief Kargath Bladefist (1)
 step
   note Shadow Hunter Ty'jin at Thrallmar wants you to kill 8 Shattered Hand Legionnaires, 4 Shattered Hand Centurions, and 4 Shattered Hand Champions.
   kill Shattered Hand Legionnaire##16700 |q 9496 |goto The Shattered Halls - Dungeon -1,-1 |elite
@@ -154,7 +169,7 @@ step
   get The Eyes of Grillok |q 10813 |goto Hellfire Peninsula 61.69,81.81
 step
   note Collect 10 Fel Orc Blood Vials and return them to Centurion Caza'rez at Thrallmar in Hellfire Peninsula.
-  collect 10 Fel Orc Blood Vial##23894 |q 9590 |goto The Blood Furnace - Dungeon -1,-1 |tip {dropsfrom}Laughing Skull Enforcer, Shadowmoon Warlock, Keli'dan the Breaker
+  collect 10 Fel Orc Blood Vial##23894 |q 9590 |goto The Blood Furnace - Dungeon -1,-1 |elite |tip {dropsfrom}Laughing Skull Enforcer, Shadowmoon Warlock, Keli'dan the Breaker
 step
   talk Apothecary Zelana##21257
   turnin Apothecary Zelana##10449 |goto Hellfire Peninsula 66.17,41.95
@@ -316,7 +331,7 @@ step
   accept Disrupt Their Reinforcements##10208 |goto Hellfire Peninsula 65.89,43.59
 step
   note Slay Watchkeeper Gargolmar, Omor the Unscarred and the drake, Nazan. Return Gargolmar's Hand, Omor's Hoof and Nazan's Head to Caza'rez at Thrallmar in Hellfire Peninsula.
-  collect Gargolmar's Hand##23881 |q 9572 |goto Hellfire Ramparts - Dungeon -1,-1 |tip {dropsfrom}Watchkeeper Gargolmar, Watchkeeper Gargolmar (1)
+  collect Gargolmar's Hand##23881 |q 9572 |goto Hellfire Ramparts - Dungeon -1,-1 |elite |tip {dropsfrom}Watchkeeper Gargolmar, Watchkeeper Gargolmar (1)
 step
   note Defeat enemies around Portal Xilus and Portal Kruul to gather Demonic Rune Stones.
   collect Portal Xilus##184290 |q 10208 |goto Hellfire Peninsula 70.83,45.47

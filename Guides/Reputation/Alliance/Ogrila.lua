@@ -16,10 +16,14 @@ step
   accept Even Gronn Have Standards##10997 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Maggoc's Treasure Chest##32380 |q 10996 |goto Blade's Edge Mountains 58.59,60.8 |tip {dropsfrom}Maggoc's Treasure Chest
+  kill Maggoc##20600 |goto Blade's Edge Mountains 58.59,60.8 |elite
+  click Maggoc's Treasure Chest##185569 |tip {spawnsafter}Maggoc
+  collect Maggoc's Treasure Chest##32380 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Slaag's Standard##32382 |q 10997 |goto Terokkar Forest 20.17,18.1 |tip {dropsfrom}Slaag's Standard
+  kill Slaag##22199 |goto Terokkar Forest 20.17,18.1 |elite
+  click Slaag's Standard##185574 |tip {spawnsafter}Slaag
+  collect Slaag's Standard##32382 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
   talk Mog'dorg the Wizened##22941
   turnin Mog'dorg the Wizened##10983 |goto Blade's Edge Mountains 55.49,44.86
@@ -34,7 +38,8 @@ step
   accept Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Grulloc's Dragon Skull##32379 |q 10995 |goto Blade's Edge Mountains 60.92,47.61 |tip {dropsfrom}Grulloc, Grulloc's Dragon Skull
+  kill Grulloc##20216 |goto Blade's Edge Mountains 60.92,47.61 |elite
+  collect Grulloc's Dragon Skull##32379 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
   talk Mog'dorg the Wizened##22941
   turnin Grulloc Has Two Skulls##10995 |goto Blade's Edge Mountains 55.49,44.86
@@ -43,7 +48,7 @@ step
   accept Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
 step
   note You must retrieve Vim'gol's Vile Grimoire. Deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Vim'gol's Vile Grimoire##32358 |q 10998 |goto Blade's Edge Mountains 55.49,44.86 |tip {dropsfrom}Vim'gol's Vile Grimoire
+  collect Vim'gol's Vile Grimoire##32358 |q 10998 |goto Blade's Edge Mountains 55.49,44.86
 step
   talk Mog'dorg the Wizened##22941
   turnin Grim(oire) Business##10998 |goto Blade's Edge Mountains 55.49,44.86
@@ -52,7 +57,7 @@ step
   accept Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Retrieve Skulloc's Soul and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Skulloc's Soul##32383 |q 11000 |goto Blade's Edge Mountains 55.49,44.86 |tip {dropsfrom}Skulloc's Soul
+  collect Skulloc's Soul##32383 |q 11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   talk Mog'dorg the Wizened##22941
   turnin Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
@@ -181,6 +186,7 @@ step
   talk Gahk##23300
   accept A Fel Whip For Gahk##11079 |goto Blade's Edge Mountains 28.48,58.08
 step
+  only Druid
   talk Sky Sergeant Vanderlip##23120
   accept Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
 step
@@ -193,6 +199,7 @@ step
   note Gahk has asked you to acquire a Fel Whip. Bring it to him at Ogri'la atop the Blade's Edge Mountains.
   collect Fel Whip##32733 |q 11079 |goto Blade's Edge Mountains 28.48,58.08 |tip {dropsfrom}Galvanoth, Braxxus, Mo'arg Incinerator
 step
+  only Druid
   note Sky Sergeant Vanderlip has tasked you with the bombing of 15 Fel Cannonball Stacks. Return to her at the Skyguard Outpost atop the Blade's Edge Mountains once you have done so.
   get Bombing Run |q 11102 |goto Blade's Edge Mountains 27.56,52.9
 step
@@ -205,6 +212,7 @@ step
   talk Gahk##23300
   turnin A Fel Whip For Gahk##11079 |goto Blade's Edge Mountains 28.48,58.08
 step
+  only Druid
   talk Sky Sergeant Vanderlip##23120
   turnin Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
 step

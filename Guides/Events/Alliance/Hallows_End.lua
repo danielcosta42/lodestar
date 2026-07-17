@@ -18,6 +18,9 @@ step
   talk Masked Orphan Matron##23973
   accept Stop the Fires!##11219 |goto Durotar 52.57,41.2
 step
+  click Pumpkin Shrine##186267
+  accept Call the Headless Horseman##11405 |goto Scarlet Monastery - Dungeon -1,-1
+step
   talk Costumed Orphan Matron##24519
   accept The Headless Horseman##11135 |goto Dun Morogh 46.19,53.14
 step

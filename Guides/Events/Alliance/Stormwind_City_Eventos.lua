@@ -32,6 +32,9 @@ step
   talk Lieutenant Orrin##16478
   accept Investigate the Scourge of Stormwind##9260 |goto Stormwind City 63.79,75.47
 step
+  kill Edwin VanCleef##639 |goto The Deadmines - Dungeon - The Deadmines -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Unsent Letter##373 |goto The Deadmines - Dungeon - The Deadmines -1,-1
+step
   talk Thomas##4982
   accept The Missing Diplomat##1274 |goto Stormwind City 38.72,25.9
 step

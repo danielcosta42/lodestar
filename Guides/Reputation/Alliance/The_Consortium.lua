@@ -75,6 +75,9 @@ step
   talk Researcher Navuud##20449
   accept Electro-Shock Goodness!##10411 |goto Netherstorm 59.25,32.58
 step
+  kill Congealed Void Horror##20779 |goto Netherstorm 54.63,43.96 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Horrors of Pollution##10413 |goto Netherstorm 54.63,43.96
+step
   talk Flesh Handler Viridius##20450
   accept Captain Tyralius##10422 |goto Netherstorm 59.25,32.07
 step
@@ -175,7 +178,7 @@ step
   kill Voidspawn##17981 |q 9925 |goto Nagrand 37.52,70.28
 step
   note Nexus-Prince Haramad located outside of the Mana-Tombs wants you to kill Nexus-Prince Shaffar and bring Shaffar's Wrappings back to him.
-  collect Shaffar's Wrappings##28490 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Nexus-Prince Shaffar, Nexus-Prince Shaffar (1)
+  collect Shaffar's Wrappings##28490 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |elite |tip {dropsfrom}Nexus-Prince Shaffar, Nexus-Prince Shaffar (1)
 step
   note Artificer Morphalius wants you to kill 10 Ethereal Crypt Raiders, 5 Ethereal Sorcerers, 5 Nexus Stalkers and 5 Ethereal Spellbinders.
   kill Ethereal Crypt Raider##18311 |q 10216 |goto Mana-Tombs - Dungeon -1,-1 |elite
@@ -190,16 +193,17 @@ step
   collect Diagnostic Results##29741 |q 10417 |goto Netherstorm 48.23,55.0 |tip {dropsfrom}Diagnostic Equipment
 step
   note Gather 15 Ivory Bells and return to Mehrdad at Midrealm Post.
-  collect 15 Ivory Bell##29474 |q 10348 |goto Netherstorm 45.1,53.89 |tip {dropsfrom}Ivory Bell
+  collect 15 Ivory Bell##29474 |q 10348 |goto Netherstorm 45.1,53.89
 step
   note Obtain 5 Condensed Nether Gas from Gan'arg Mekgineers at Forge Base: Oblivion, northwest of the Stormspire, and load them into a nearby Inactive Fel Reaver. Return to Nether-Stalker Nauthis after you've completed this task.
   kill Inactive Fel Reaver##22293 |q 10855 |goto Netherstorm 36.73,25.69
 step
   note Retrieve the Teleporter Power Pack and bring it to the Ethereal Teleport Pad on the Celestial Ridge to the east of Manaforge Ultris. Activate the pad and give the Teleporter Power Pack to the Image of Wind Trader Marid so he can install it.
-  collect Teleporter Power Pack##28969 |q 10270 |goto Netherstorm 60.98,41.52 |tip {dropsfrom}Teleporter Power Pack
+  collect Teleporter Power Pack##28969 |q 10270 |goto Netherstorm 60.98,41.52
 step
   note Gather 4 pieces of Raw Farahlite and return to Zuben Elgenubi at the Stormspire.
-  collect 4 Raw Farahlite##29163 |q 10290 |goto Netherstorm 41.02,67.16 |tip {dropsfrom}Farahlon Giant, Farahlon Breaker, Cragskaar
+  kill Farahlon Giant##18885 |goto Netherstorm 41.02,67.16 |elite
+  collect 4 Raw Farahlite##29163 |q 10290 |goto Netherstorm 41.02,67.16
 step
   note Kill 15 Sunfury Nethermancers and return to Nether-Stalker Oazul at Tuluman's Landing in the Netherstorm.
   kill Sunfury Nethermancer##20248 |q 10315 |goto Netherstorm 28.4,39.55
@@ -265,7 +269,7 @@ step
   collect The Exarch's Soul Gem##33836 |q 11374 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Exarch Maladaar (1)
 step
   note Wind Trader Zhareem has asked you to obtain Murmur's Whisper. Deliver it to him in Shattrath's Lower City to collect the reward.
-  collect Murmur's Whisper##33840 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Murmur (1)
+  collect Murmur's Whisper##33840 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |elite |tip {dropsfrom}Murmur (1)
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
@@ -516,7 +520,8 @@ step
   collect Arklon Crystal Artifact##28829 |q 10265 |goto Netherstorm 42.46,72.75 |tip {dropsfrom}Pentatharon
 step
   note Zuben Elgenubi at the Stormspire wants you to obtain a Farahlite Core.
-  collect Farahlite Core##29164 |q 10293 |goto Netherstorm 47.58,21.15 |tip {dropsfrom}Cragskaar
+  kill Cragskaar##20202 |goto Netherstorm 47.58,21.15 |elite
+  collect Farahlite Core##29164 |q 10293 |goto Netherstorm 47.58,21.15
 step
   note Nether-Stalker Nauthis wants you to slay 12 Wrathbringers at Forge Base: Gehenna, north of the Stormspire.
   kill Wrathbringer##18858 |q 10856 |goto Netherstorm 40.45,20.01
@@ -525,7 +530,7 @@ step
   kill Overmaster Grindgarr##20803 |q 10318 |goto Netherstorm 26.82,35.84
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover the Ethereum Data Cell.
-  collect Ethereum Data Cell##29582 |q 10384 |goto Netherstorm 55.77,39.89 |tip {dropsfrom}Ethereum Data Cell
+  collect Ethereum Data Cell##29582 |q 10384 |goto Netherstorm 55.77,39.89
 step
   note Professor Dabiri at the Protectorate Watch Post in Netherstorm wants you to use your Phase Disruptor when you get in range of the Void Conduit that rests atop Ultris. Drop as many charges of the Phase Disruptor as you can to ensure total annihilation. The Phase Disruptor charges will automatically home in on the Void Conduit so long as you are close enough to use it.
   kill Void Conduit##20899 |q 10438 |goto Netherstorm 62.42,40.89
@@ -626,7 +631,7 @@ step
   collect Ethereum Prison Key##29460 |q 10973 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Ethereal Scavenger, Ethereal Crypt Raider, Ethereal Spellbinder
 step
   note Kalecgos has asked you to defeat Kael'thas in Magisters' Terrace. You are to take Kael's head and report back to Larethor at the Shattered Sun Staging Area.
-  collect Head of Kael'thas##34157 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |tip {dropsfrom}Kael'thas Sunstrider, Kael'thas Sunstrider (1)
+  collect Head of Kael'thas##34157 |q 11492 |goto Magisters' Terrace - Dungeon -1,-1 |elite |tip {dropsfrom}Kael'thas Sunstrider, Kael'thas Sunstrider (1)
 step
   talk Nether-Stalker Khay'ji##19880
   turnin A Heap of Ethereals##10262 |goto Netherstorm 32.44,64.21
@@ -753,7 +758,7 @@ step
   accept Stasis Chambers of the Mana-Tombs##10977 |goto Blade's Edge Mountains 52.85,14.99
 step
   note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76 |tip {dropsfrom}Box of Surveying Equipment
+  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76
 step
   note Tashar, stationed at Eco-Dome Farfield, wants you to kill 12 Scythetooth Raptors.
   kill Scythetooth Raptor##20634 |q 10436 |goto Netherstorm 46.05,12.29
@@ -803,7 +808,8 @@ step
   accept Full Triangle##10276 |goto Netherstorm 34.62,37.95
 step
   note Recover the Ata'mal Crystal and deliver it to the Image of Nexus-Prince Haramad at the Stormspire in the Netherstorm.
-  collect Ata'mal Crystal##29026 |q 10276 |goto Netherstorm 53.51,21.53 |tip {dropsfrom}Culuthas
+  kill Culuthas##20138 |goto Netherstorm 53.51,21.53 |elite
+  collect Ata'mal Crystal##29026 |q 10276 |goto Netherstorm 53.51,21.53
 step
   talk Image of Nexus-Prince Haramad##20084
   turnin Full Triangle##10276 |goto Netherstorm 45.87,35.96

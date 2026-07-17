@@ -16,7 +16,7 @@ step
   accept Blackfathom Villainy##1200 |goto Blackfathom Deeps - Dungeon -1,-1
 step
   note Bring the head of Twilight Lord Kelris to Dawnwatcher Selgorm in Darnassus.
-  collect Head of Kelris##5881 |q 1200 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {dropsfrom}Twilight Lord Kelris
+  collect Head of Kelris##5881 |q 1200 |goto Blackfathom Deeps - Dungeon -1,-1 |elite |tip {dropsfrom}Twilight Lord Kelris
 step
   talk Dawnwatcher Selgorm##4783
   turnin Blackfathom Villainy##1200 |goto Darnassus 56.16,24.39

@@ -16,6 +16,20 @@ step
   note Locate the other half of the Good Luck Charm somewhere on the Felstone Farm in Western Plaguelands and reassemble it.
   collect Good Luck Charm##12723 |q 5051 |goto Western Plaguelands 38.4,54.05
 step
+  click Mrs. Dalson's Diary##175926
+  accept Mrs. Dalson's Diary##5058 |goto Western Plaguelands 47.8,50.67
+step
+  click Locked Cabinet##175924
+  accept Locked Away##5060 |goto Western Plaguelands 47.35,49.63
+step
+  collect Dalson Cabinet Key##12739 |q 5060 |goto Western Plaguelands 47.35,49.63 |tip {dropsfrom}Farmer Dalson
+step
+  click Scourge Cauldron##176361
+  accept Return to the Bulwark##5230 |goto Western Plaguelands 37.25,56.78
+step
+  click Scourge Cauldron##177289
+  accept Return to the Bulwark##5232 |goto Western Plaguelands 46.18,51.9
+step
   talk Chromie##10667
   accept A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
 step
@@ -34,6 +48,12 @@ step
   talk Mulgris Deepriver##10739
   accept The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
 step
+  click Scourge Cauldron##176393
+  accept Return to the Bulwark##5234 |goto Western Plaguelands 53.02,65.61
+step
+  click Scourge Cauldron##176392
+  accept Return to the Bulwark##5236 |goto Western Plaguelands 62.54,58.47
+step
   talk Marlene Redpath##10927
   accept Little Pamela##5142 |goto Western Plaguelands 49.17,78.57
 step
@@ -50,7 +70,7 @@ step
   accept Oculus Illusions##6569 |goto Western Plaguelands 50.79,77.85
 step
   note Travel to Blackrock Spire and collect 20 Black Dragonspawn Eyes. Return to Myranda the Hag when the task is complete.
-  collect 20 Black Dragonspawn Eye##16786 |q 6569 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Rage Talon Dragonspawn, Overlord Wyrmthalak, Rage Talon Flamescale
+  collect 20 Black Dragonspawn Eye##16786 |q 6569 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Rage Talon Dragonspawn, Overlord Wyrmthalak, Rage Talon Flamescale
 step
   talk Pamela Redpath##10926
   turnin Little Pamela##5142 |goto Eastern Plaguelands 36.45,90.8 |tip {turninat}Eastern Plaguelands
@@ -67,6 +87,18 @@ step
   note Bring 25 Argent Dawn Valor Tokens to Quartermaster Lightspark at Chillwind Camp, Western Plaguelands.
   collect 25 Argent Dawn Valor Token##12844 |q 5521 |goto Western Plaguelands 42.84,83.72
 step
+  talk Shadow Priestess Vandis##11055
+  turnin Return to the Bulwark##5230 |goto Tirisfal Glades 83.04,71.91 |tip {turninat}Tirisfal Glades
+step
+  talk Shadow Priestess Vandis##11055
+  turnin Return to the Bulwark##5232 |goto Tirisfal Glades 83.04,71.91 |tip {turninat}Tirisfal Glades
+step
+  talk Shadow Priestess Vandis##11055
+  turnin Return to the Bulwark##5234 |goto Tirisfal Glades 83.04,71.91 |tip {turninat}Tirisfal Glades
+step
+  talk Shadow Priestess Vandis##11055
+  turnin Return to the Bulwark##5236 |goto Tirisfal Glades 83.04,71.91 |tip {turninat}Tirisfal Glades
+step
   talk Eva Sarkhoff##11216
   accept Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
 step
@@ -74,7 +106,7 @@ step
   accept The Lich, Ras Frostwhisper##5466 |goto Western Plaguelands 70.57,74.11
 step
   note Find Ras Frostwhisper in the Scholomance. When you have found him, use the Soulbound Keepsake on his undead visage. Should you succeed in reverting him to a mortal, strike him down and recover the Human Head of Ras Frostwhisper. Take the head back to Magistrate Marduke.
-  collect Human Head of Ras Frostwhisper##13626 |q 5466 |goto Scholomance - Dungeon -1,-1 |tip {dropsfrom}Ras Frostwhisper
+  collect Human Head of Ras Frostwhisper##13626 |q 5466 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Ras Frostwhisper
 step
   talk Artist Renfray##11936
   accept Of Love and Family##5848 |goto Western Plaguelands 65.77,75.37
@@ -91,19 +123,29 @@ step
   talk Kirsta Deepshadow##11610
   accept Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
 step
+  click Termite Barrel##177491
+  accept A Plague Upon Thee##6390 |goto Western Plaguelands 48.35,32.0
+step
   talk Highlord Taelan Fordring##1842
   turnin Scarlet Subterfuge##5862 |goto Western Plaguelands 42.02,14.79
 step
   note Find Doctor Theolen Krastinov inside the Scholomance. Destroy him, then burn the Remains of Eva Sarkhoff and the Remains of Lucien Sarkhoff. Return to Eva Sarkhoff when the task is complete.
   kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1 |elite
 step
+  turnin Mrs. Dalson's Diary##5058 |goto Western Plaguelands 47.8,50.67
+step
+  turnin Locked Away##5060 |goto Western Plaguelands 47.35,49.63
+step
   talk Tirion Fordring##1855
   turnin Of Love and Family##5848 |goto Eastern Plaguelands 7.62,43.64 |tip {turninat}Eastern Plaguelands
+step
+  turnin Better Late Than Never##5021 |goto Western Plaguelands 38.73,55.24
 step
   talk Janice Felstone##10778
   turnin Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
 step
-  turnin Better Late Than Never##5021 |goto Western Plaguelands 38.73,55.24
+  click Janice's Parcel##175894
+  accept Better Late Than Never##5023 |goto Western Plaguelands 38.73,55.24
 step
   note Kill 2 Scarlet Medics, 2 Scarlet Hunters, 2 Scarlet Magi and 2 Scarlet Knights before returning to Kirsta Deepshadow in Western Plaguelands.
   kill Scarlet Medic##10605 |q 6004 |goto Western Plaguelands 43.67,51.91
@@ -130,6 +172,18 @@ step
 step
   note Bring the Annals of Darrowshire to Chromie in Andorhal.
   collect Annals of Darrowshire##12900 |q 5154 |goto Western Plaguelands 39.46,66.76 |tip {dropsfrom}Musty Tome
+step
+  click Catalogue of the Wayward##176192
+  accept Breastplate of the Chromatic Flight##5166 |goto Western Plaguelands 39.35,66.6
+step
+  note To forge the Breastplate of the Chromatic Flight, you will be required to bring the following items to Jeziba the 'Sculptor':
+  collect Chromatic Carapace##12871 |q 5166 |goto Western Plaguelands 39.35,66.6 |tip {dropsfrom}Gyth
+step
+  click Catalogue of the Wayward##176192
+  accept Legplates of the Chromatic Defier##5167 |goto Western Plaguelands 39.35,66.6
+step
+  note To forge the Legplates of the Chromatic Defier, you will be required to bring the following items to Jeziba the 'Sculptor':
+  collect Chromatic Carapace##12871 |q 5167 |goto Western Plaguelands 39.35,66.6 |tip {dropsfrom}Gyth
 step
   talk Mulgris Deepriver##10739
   turnin The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
@@ -158,14 +212,20 @@ step
   talk Magistrate Marduke##11286
   turnin The Lich, Ras Frostwhisper##5466 |goto Western Plaguelands 70.57,74.11
 step
+  talk Mickey Levine##11615
+  turnin A Plague Upon Thee##6390 |goto Tirisfal Glades 83.29,72.34 |tip {turninat}Tirisfal Glades
+step
   talk Eva Sarkhoff##11216
   accept Krastinov's Bag of Horrors##5515 |goto Western Plaguelands 70.22,73.71
 step
   note Locate Jandice Barov in the Scholomance and destroy her. From her corpse recover Krastinov's Bag of Horrors. Return the bag to Eva Sarkhoff.
-  collect Krastinov's Bag of Horrors##13725 |q 5515 |goto Scholomance - Dungeon -1,-1 |tip {dropsfrom}Jandice Barov
+  collect Krastinov's Bag of Horrors##13725 |q 5515 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Jandice Barov
 step
   talk Elder Meadowrun##15602
   turnin Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
+step
+  talk Royal Overseer Bauhaus##10781
+  turnin Better Late Than Never##5023 |goto Undercity 69.79,43.16 |tip {turninat}Undercity
 step
   note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
   kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.68
@@ -184,6 +244,12 @@ step
 step
   talk Chromie##10667
   turnin Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
+step
+  talk Jeziba##10976
+  turnin Breastplate of the Chromatic Flight##5166 |goto Western Plaguelands 39.37,66.78
+step
+  talk Jeziba##10976
+  turnin Legplates of the Chromatic Defier##5167 |goto Western Plaguelands 39.37,66.78
 step
   talk Chromie##10667
   accept Brother Carlin##5210 |goto Western Plaguelands 39.46,66.76
@@ -222,7 +288,7 @@ step
   accept The Human, Ras Frostwhisper##5461 |goto Western Plaguelands 70.57,74.11
 step
   note Travel to the Arathi Highlands, to the ruins of Stromgarde. Search Stromgarde for a Keepsake of Remembrance. If you find such an item, return with it to Magistrate Marduke.
-  collect Keepsake of Remembrance##13585 |q 5461 |goto Arathi Highlands 19.33,66.05 |tip {dropsfrom}Keepsake of Remembrance
+  collect Keepsake of Remembrance##13585 |q 5461 |goto Arathi Highlands 19.33,66.05
 step
   talk Magistrate Marduke##11286
   turnin The Human, Ras Frostwhisper##5461 |goto Western Plaguelands 70.57,74.11

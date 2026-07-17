@@ -13,6 +13,13 @@ step
   talk Magistrate Bluntnose##1139
   accept Mercenaries##255 |goto Loch Modan 34.6,44.47
 step
+  click WANTED##256
+  accept WANTED: Chok'sul##256 |goto Loch Modan 37.3,46.52
+step
+  note Kill Chok'sul and bring his head to Magistrate Bluntnose of Thelsamar.
+  kill Chok'sul##1210 |goto Loch Modan 79.59,14.7 |elite
+  collect Chok'sul's Head##2561 |q 256 |goto Loch Modan 79.59,14.7
+step
   talk Jern Hornhelm##1105
   accept Resupplying the Excavation##273 |goto Loch Modan 37.24,47.38
 step
@@ -79,10 +86,18 @@ step
   accept Agmond's Fate##704 |goto Loch Modan 65.93,65.62
 step
   note Bring 4 Carved Stone Urns to Prospector Ironband in Loch Modan.
-  collect 4 Carved Stone Urn##4610 |q 704 |goto Loch Modan 35.56,90.65 |tip {dropsfrom}Carved Stone Urn
+  collect 4 Carved Stone Urn##4610 |q 704 |goto Loch Modan 35.56,90.65
 step
   talk Prospector Ironband##1344
   accept Find Agmond##738 |goto Loch Modan 65.93,65.62
+step
+  talk Field Marshal Snowfall##15701
+  accept Five Signets for War Supplies##8846 |goto Ironforge 60.98,73.85
+step
+  collect Alliance Commendation Signet##21436 |q 8846 |goto Ironforge 60.98,73.85
+step
+  talk Master Mathias Shaw##332
+  accept The Defias Brotherhood##141 |goto Stormwind City 75.78,59.84
 step
   talk Daryl the Youngling##1187
   accept A Hunter's Boast##257 |goto Loch Modan 83.47,65.46
@@ -96,6 +111,9 @@ step
   note Kill 6 Mountain Buzzards and return to Daryl the Youngling in the Farstrider Lodge within 15 minutes.
   kill Mountain Buzzard##1194 |q 257 |goto Loch Modan 76.77,70.46
 step
+  talk Gryan Stoutmantle##234
+  turnin The Defias Brotherhood##141 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
+step
   talk Bingles Blastenheimer##6577
   accept Bingles' Missing Supplies##2038 |goto Loch Modan 63.56,47.92
 step
@@ -105,8 +123,11 @@ step
   note Magistrate Bluntnose of Thelsamar has hired you to kill 4 Mo'grosh Ogres, 4 Mo'grosh Brutes and 4 Mo'grosh Enforcers.
   kill Mo'grosh Ogre##1178 |q 255 |goto Loch Modan 69.33,25.54
 step
-  talk Chief Engineer Hinderweir VII##1093
-  accept A Dark Threat Looms##161 |goto Loch Modan 46.05,13.61
+  talk Wilder Thistlenettle##656
+  accept Collecting Memories##168 |goto Stormwind City 65.44,21.17
+step
+  note Retrieve 4 Miners' Union Cards and return them to Wilder Thistlenettle in Stormwind.
+  collect 4 Collecting Memories##1894 |q 168 |goto Stormwind City 65.44,21.17
 step
   talk Chief Engineer Hinderweir VII##1093
   accept A Dark Threat Looms##250 |goto Loch Modan 46.05,13.61
@@ -116,6 +137,12 @@ step
 step
   note Chief Engineer Hinderweir wants you to gather Lurker Venom, a Mo'grosh Crystal, and a Crocolisk Tear.
   collect Lurker Venom##2606 |q 278 |goto Loch Modan 60.23,65.18 |tip {dropsfrom}Cliff Lurker, Wood Lurker, Forest Lurker
+step
+  talk Lotherias##6034
+  accept Moonglow Vest##1582 |goto Darnassus 64.4,22.22
+step
+  note Bring 1 Embossed Leather Gloves, 5 Embossed Leather Boots and 5 Embossed Leather Cloaks to Lotherias in Darnassus.
+  collect 1 Embossed Leather Gloves##4239 |q 1582 |goto Darnassus 64.4,22.22
 step
   talk Mountaineer Rockgar##1342
   turnin Report to Mountaineer Rockgar##468 |goto Loch Modan 25.44,10.38
@@ -152,6 +179,17 @@ step
 step
   note Find Hammertoe's Amulet and return it to him in Uldaman.
   collect Hammertoe's Amulet##4635 |q 722 |goto Loch Modan 38.37,93.97 |tip {dropsfrom}Magregan Deepshadow
+step
+  kill Shadowforge Surveyor##4844 |goto Loch Modan 38.32,88.59 |tip Loot the quest item here — it starts the quest.
+  accept The Shattered Necklace##2198 |goto Loch Modan 38.32,88.59
+step
+  talk Warlord Gorchuk##15700
+  accept Five Signets for War Supplies##8851 |goto Orgrimmar 34.92,74.89
+step
+  collect Five Signets for War Supplies##21438 |q 8851 |goto Orgrimmar 34.92,74.89
+step
+  talk Magistrate Bluntnose##1139
+  turnin WANTED: Chok'sul##256 |goto Loch Modan 34.6,44.47
 step
   talk Mountaineer Kadrell##1340
   turnin Rat Catching##416 |goto Loch Modan 34.17,47.84
@@ -201,6 +239,9 @@ step
 step
   turnin Find Agmond##738 |goto Badlands 50.89,62.4 |tip {turninat}Badlands
 step
+  talk Field Marshal Snowfall##15701
+  turnin Five Signets for War Supplies##8846 |goto Ironforge 60.98,73.85 |tip {turninat}Ironforge
+step
   talk Magmar Fellhew##1345
   turnin Gathering Idols##297 |goto Loch Modan 64.9,66.66
 step
@@ -225,11 +266,14 @@ step
   talk Chief Engineer Hinderweir VII##1093
   turnin A Dark Threat Looms##278 |goto Loch Modan 46.05,13.61
 step
-  talk Ashlan Stonesmirk##1073
-  turnin A Dark Threat Looms##161 |goto Wetlands 50.05,18.17 |tip {turninat}Wetlands
+  talk Wilder Thistlenettle##656
+  turnin Collecting Memories##168 |goto Stormwind City 65.44,21.17 |tip {turninat}Stormwind City
 step
   talk Prospector Stormpike##1356
   turnin Report to Ironforge##301 |goto Ironforge 74.64,11.74 |tip {turninat}Ironforge
+step
+  talk Lotherias##6034
+  turnin Moonglow Vest##1582 |goto Darnassus 64.4,22.22 |tip {turninat}Darnassus
 step
   talk Furen Longbeard##5413
   turnin Stormpike's Order##1338 |goto Stormwind City 58.09,16.54 |tip {turninat}Stormwind City
@@ -242,8 +286,14 @@ step
 step
   turnin A Dark Threat Looms##250 |goto Loch Modan 56.05,13.24
 step
+  click Suspicious Barrel##257
+  accept A Dark Threat Looms##199 |goto Loch Modan 56.05,13.24
+step
   talk Chief Engineer Hinderweir VII##1093
   accept A Dark Threat Looms##280 |goto Loch Modan 46.05,13.61
+step
+  talk Talvash del Kissel##6826
+  turnin The Shattered Necklace##2198 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
 step
   talk Mountaineer Stormpike##1343
   turnin Filthy Paws##307 |goto Loch Modan 24.76,18.4
@@ -286,6 +336,15 @@ step
 step
   turnin A Dark Threat Looms##280 |goto Loch Modan 50.58,14.3
 step
+  talk Chief Engineer Hinderweir VII##1093
+  turnin A Dark Threat Looms##199 |goto Loch Modan 46.05,13.61
+step
+  talk Chief Engineer Hinderweir VII##1093
+  accept A Dark Threat Looms##161 |goto Loch Modan 46.05,13.61
+step
+  click Explosive Charge##1585
+  accept A Dark Threat Looms##283 |goto Loch Modan 50.58,14.3
+step
   talk Mountaineer Gravelgaw##1091
   turnin In Defense of the King's Lands##237 |goto Loch Modan 23.54,76.4
 step
@@ -300,6 +359,12 @@ step
 step
   talk Daryl the Youngling##1187
   accept Vyrin's Revenge##531 |goto Loch Modan 83.47,65.46
+step
+  talk Chief Engineer Hinderweir VII##1093
+  turnin A Dark Threat Looms##283 |goto Loch Modan 46.05,13.61
+step
+  talk Ashlan Stonesmirk##1073
+  turnin A Dark Threat Looms##161 |goto Wetlands 50.05,18.17 |tip {turninat}Wetlands
 step
   talk Mountaineer Wallbang##1090
   turnin In Defense of the King's Lands##263 |goto Loch Modan 23.47,74.51

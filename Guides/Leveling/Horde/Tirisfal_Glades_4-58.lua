@@ -39,6 +39,12 @@ step
   note Bring five Duskbat Pelts and some Coarse Thread to Gretchen Dedmar in Brill.
   collect Duskbat Pelt##2876 |q 375 |goto Tirisfal Glades 55.75,53.61 |tip {dropsfrom}Greater Duskbat, Vampiric Duskbat
 step
+  click Wanted!##711
+  accept Wanted: Maggot Eye##398 |goto Tirisfal Glades 60.74,51.5
+step
+  note Kill Maggot Eye and return to Executor Zygand in Brill with his paw for a reward.
+  collect Maggot Eye's Paw##3635 |q 398 |goto Tirisfal Glades 58.66,30.77 |tip {dropsfrom}Maggot Eye
+step
   talk Deathguard Dillinger##1496
   accept A Putrid Task##404 |goto Tirisfal Glades 58.2,51.45
 step
@@ -55,7 +61,7 @@ step
   talk Austil de Mon##2131
   accept Speak with Dillinger##1818 |goto Tirisfal Glades 61.85,52.54
 step
-  only Warlock
+  only Mage
   talk Cain Firesong##2128
   accept Speak with Anastasia##1881 |goto Tirisfal Glades 61.97,52.47
 step
@@ -63,17 +69,18 @@ step
   talk Marion Call##2130
   accept Mennet Carkad##1885 |goto Tirisfal Glades 61.75,52.0
 step
+  talk Innkeeper Gryshka##6929
+  accept Doras the Wind Rider Master##6385 |goto Orgrimmar 54.1,68.41
+step
   talk Elder Graveborn##15568
   accept Graveborn the Elder##8652 |goto Tirisfal Glades 61.87,53.84
 step
   talk Deathguard Tor##16003
   accept Dearest Elenia,##8902 |goto Tirisfal Glades 60.66,59.48
 step
-  talk Masked Orphan Matron##23973
-  accept Fire Training##11361 |goto Tirisfal Glades 60.87,53.05
-step
-  note Toss buckets on 5 fires, then speak with the Masked Orphan Matron in Razor Hill.
-  kill Headless Horseman - Fire (DND)##23537 |q 11361 |goto Tirisfal Glades 60.77,52.3
+  only BloodElf
+  talk Sathren Azuredawn##16191
+  accept Skymistress Gloaming##9134 |goto Silvermoon City 53.93,71.02
 step
   note Kill Rot Hide Graverobbers and Rot Hide Mongrels.
   kill Rot Hide Graverobber##1941 |q 358 |goto Tirisfal Glades 55.78,42.56
@@ -81,7 +88,7 @@ step
   talk Elenia Haydon##16004
   turnin Dearest Elenia,##8902 |goto Undercity 66.93,45.24 |tip {turninat}Undercity
 step
-  only Warlock
+  only Mage
   talk Anastasia Hartwell##4568
   turnin Speak with Anastasia##1881 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
 step
@@ -94,23 +101,105 @@ step
   note Obtain a Candle of Beckoning.
   kill Lillith Nefara##1946 |q 409
 step
+  talk Arch Druid Hamuul Runetotem##5769
+  accept The Barrens Oases##886 |goto Thunder Bluff 78.62,28.56
+step
+  only Mage
+  talk Anastasia Hartwell##4568
+  accept The Balnir Farmstead##1882 |goto Undercity 85.14,10.03
+step
+  only Mage
+  note Bring Balnir Snapdragons to Anastasia Hartwell in the Mage Quarter of the Undercity.
+  collect Balnir Snapdragons##7227 |q 1882 |goto Tirisfal Glades 77.58,62.01
+step
+  only Troll Priest
+  talk Aelthalyste##4606
+  accept Hex of Weakness##5657 |goto Undercity 49.26,17.12
+step
+  only Undead Priest
+  talk Aelthalyste##4606
+  accept Touch of Weakness##5658 |goto Undercity 49.26,17.12
+step
+  only Undead
+  talk Gordon Wendham##4556
+  accept Michael Garrett##6322 |goto Undercity 61.49,41.79
+step
+  only BloodElf Rogue
+  talk Zelanis##16684
+  accept Find Keltus Darkleaf##9532 |goto Silvermoon City 79.71,52.16
+step
+  only Priest
+  talk Aelthalyste##4606
+  accept Touch of Weakness##10379 |goto Undercity 49.26,17.12
+step
+  only BloodElf Rogue
+  talk Keltus Darkleaf##17224
+  turnin Find Keltus Darkleaf##9532 |goto Ghostlands 32.98,11.17 |tip {turninat}Ghostlands
+step
   talk Apothecary Renferrel##1937
   turnin Delivery to Silverpine Forest##445 |goto Silverpine Forest 42.8,40.86 |tip {turninat}Silverpine Forest
 step
+  talk Doras##3310
+  turnin Doras the Wind Rider Master##6385 |goto Orgrimmar 45.12,63.89 |tip {turninat}Orgrimmar
+step
   talk Calvin Montague##6784
   accept A Rogue's Deal##8 |goto Tirisfal Glades 38.23,56.79
+step
+  kill Rattlecage Soldier##1520 |goto Tirisfal Glades 47.66,40.43 |tip Loot the quest item here — it starts the quest.
+  accept A Letter Undelivered##361 |goto Tirisfal Glades 47.66,40.43
 step
   talk Deathguard Simmer##1519
   accept Fields of Grief##365 |goto Tirisfal Glades 40.91,54.17
 step
   note Steal 10 pumpkins from the farm to the west, just north of Deathknell and take them to Apothecary Johaan in Brill.
-  collect Tirisfal Pumpkin##2846 |q 365 |goto Tirisfal Glades 35.86,50.49 |tip {dropsfrom}Tirisfal Pumpkin
+  collect Tirisfal Pumpkin##2846 |q 365 |goto Tirisfal Glades 35.86,50.49
+step
+  talk Eyahn Eagletalon##2987
+  accept Preparation for Ceremony##744 |goto Thunder Bluff 37.69,59.56
+step
+  note Collect 6 Azure Feathers and 6 Bronze Feathers, and bring them to Eyahn Eagletalon in Thunder Bluff.
+  collect 6 Preparation for Ceremony##4752 |q 744 |goto Thunder Bluff 37.69,59.56
+step
+  talk Veren Tallstrider##3050
+  accept Kodo Hide Bag##769 |goto Thunder Bluff 44.39,44.7
+step
+  note Bring 4 Light Leather and 4 Coarse Thread to Veren Tallstrider in Thunder Bluff.
+  collect 4 Light Leather##2318 |q 769 |goto Ghostlands 37.36,79.33 |tip {dropsfrom}Mirdoran the Fallen, Ghostclaw Lynx, Ghostclaw Ravager
 step
   talk Gordo##10666
   accept Gordo's Task##5481 |goto Tirisfal Glades 43.06,54.69
 step
   note Collect 3 Gloom Weed and deliver them to Junior Apothecary Holland in the Brill graveyard.
-  collect 3 Gloom Weed##12737 |q 5481 |goto Tirisfal Glades 48.02,55.03 |tip {dropsfrom}Gloom Weed
+  collect 3 Gloom Weed##12737 |q 5481 |goto Tirisfal Glades 48.02,55.03
+step
+  only Troll Priest
+  talk Miles Welsh##3044
+  accept Hex of Weakness##5656 |goto Thunder Bluff 25.32,15.27
+step
+  only Undead Priest
+  talk Miles Welsh##3044
+  accept Touch of Weakness##5663 |goto Thunder Bluff 25.32,15.27
+step
+  talk Thrall##4949
+  accept Hidden Enemies##5726 |goto Orgrimmar 31.73,37.82
+step
+  note Bring a Lieutenant's Insignia to Thrall in Orgrimmar.
+  collect Lieutenant's Insignia##14544 |q 5726 |goto Durotar 52.5,9.36 |tip {dropsfrom}Burning Blade Fanatic, Burning Blade Apprentice
+step
+  only Tauren
+  talk Ahanu##8359
+  accept Tal the Wind Rider Master##6363 |goto Thunder Bluff 45.77,55.84
+step
+  talk Doras##3310
+  accept Return to the Crossroads.##6386 |goto Orgrimmar 45.12,63.89
+step
+  only Troll Priest
+  talk Ur'kyo##6018
+  turnin Hex of Weakness##5656 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
+step
+  only Troll Priest
+  talk Ur'kyo##6018
+  turnin Hex of Weakness##5657 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
 step
   only Undead
   talk Undertaker Mordo##1568
@@ -122,13 +211,28 @@ step
   note Novice Elreth requires 6 Scavenger Paws and 6 Duskbat Wings.
   collect Scavenger Paw##3265 |q 376 |goto Tirisfal Glades 31.04,62.92 |tip {dropsfrom}Young Scavenger, Ragged Scavenger
 step
+  only Mage
+  talk Uthel'nay##7311
+  accept Speak with Un'thuwa##1883 |goto Orgrimmar 39.16,86.27
+step
   only Undead Priest
   talk Dark Cleric Duesten##2123
   accept In Favor of Darkness##5651 |goto Tirisfal Glades 31.11,66.03
 step
+  only Troll Priest
+  talk Ur'kyo##6018
+  accept Hex of Weakness##5652 |goto Orgrimmar 35.59,87.82
+step
+  only Undead Priest
+  talk Ur'kyo##6018
+  accept Touch of Weakness##5662 |goto Orgrimmar 35.59,87.82
+step
   only Rogue
   talk Mennet Carkad##6467
   turnin Mennet Carkad##1885 |goto Undercity 83.51,69.11 |tip {turninat}Undercity
+step
+  talk Melor Stonehoof##3441
+  accept Sergra Darkthorn##860 |goto Thunder Bluff 61.54,80.92
 step
   talk High Executor Derrington##10837
   accept Scarlet Diversions##5096 |goto Tirisfal Glades 83.13,68.94
@@ -158,7 +262,7 @@ step
   accept Barov Family Fortune##5341 |goto Tirisfal Glades 83.06,71.6
 step
   note Venture to the Scholomance and recover the Barov family fortune. Four deeds make up this fortune: The Deed to Caer Darrow; The Deed to Brill; The Deed to Tarren Mill; and The Deed to Southshore. Return to Alexi Barov when you have completed this task.
-  collect The Deed to Brill##13471 |q 5341 |goto Scholomance - Dungeon -1,-1 |tip {dropsfrom}The Deed to Brill
+  collect The Deed to Brill##13471 |q 5341 |goto Scholomance - Dungeon -1,-1
 step
   talk Argent Officer Garush##10839
   accept Argent Dawn Commission##5503 |goto Tirisfal Glades 83.19,68.45
@@ -207,6 +311,9 @@ step
   talk Innkeeper Renee##5688
   turnin A Rogue's Deal##8 |goto Tirisfal Glades 61.71,52.05
 step
+  talk Executor Zygand##1515
+  turnin Wanted: Maggot Eye##398 |goto Tirisfal Glades 60.59,51.76
+step
   only Undead Priest
   talk Dark Cleric Beryl##2129
   turnin In Favor of Darkness##5651 |goto Tirisfal Glades 61.57,52.19
@@ -218,11 +325,20 @@ step
   talk Deathguard Dillinger##1496
   turnin Speak with Dillinger##1818 |goto Tirisfal Glades 58.2,51.45
 step
+  only BloodElf
+  talk Skymistress Gloaming##16192
+  turnin Skymistress Gloaming##9134 |goto Eversong Woods 54.36,50.72 |tip {turninat}Eversong Woods
+step
+  only Undead
+  talk Michael Garrett##4551
+  turnin Michael Garrett##6322 |goto Undercity 63.25,48.56 |tip {turninat}Undercity
+step
   talk Elder Graveborn##15568
   turnin Graveborn the Elder##8652 |goto Tirisfal Glades 61.87,53.84
 step
-  talk Masked Orphan Matron##23973
-  turnin Fire Training##11361 |goto Tirisfal Glades 60.87,53.05
+  only Mage
+  talk Un'Thuwa##5880
+  turnin Speak with Un'thuwa##1883 |goto Durotar 56.31,75.11 |tip {turninat}Durotar
 step
   talk Coleman Farthing##1500
   turnin Deaths in the Family##354 |goto Tirisfal Glades 61.72,52.29
@@ -233,11 +349,14 @@ step
   talk Magistrate Sevren##1499
   turnin Graverobbers##358 |goto Tirisfal Glades 61.26,50.84
 step
-  talk Junior Apothecary Holland##10665
-  turnin Gordo's Task##5481 |goto Tirisfal Glades 57.44,48.85
+  talk Yvette Farthing##1560
+  turnin A Letter Undelivered##361 |goto Tirisfal Glades 61.58,52.6
 step
   talk Coleman Farthing##1500
   turnin The Haunted Mills##362 |goto Tirisfal Glades 61.72,52.29
+step
+  talk Junior Apothecary Holland##10665
+  turnin Gordo's Task##5481 |goto Tirisfal Glades 57.44,48.85
 step
   talk Apothecary Johaan##1518
   turnin Fields of Grief##365 |goto Tirisfal Glades 59.45,52.4
@@ -291,15 +410,23 @@ step
   accept Doom Weed##5482 |goto Tirisfal Glades 57.44,48.85
 step
   note Collect 10 Doom Weed and deliver them back to Junior Apothecary Holland.
-  collect 10 Doom Weed##13702 |q 5482 |goto Tirisfal Glades 57.14,39.54 |tip {dropsfrom}Doom Weed
+  collect 10 Doom Weed##13702 |q 5482 |goto Tirisfal Glades 57.14,39.54
 step
   only Undead Priest
   talk Dark Cleric Beryl##2129
   accept Garments of Darkness##5650 |goto Tirisfal Glades 61.57,52.19
 step
+  only Undead
+  talk Michael Garrett##4551
+  accept Return to Podrig##6324 |goto Undercity 63.25,48.56
+step
   only Undead Priest
   note Find Deathguard Kel and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Dark Cleric Beryl in Brill.
   kill Deathguard Kel##12428 |q 5650 |goto Tirisfal Glades 59.18,46.5
+step
+  only Priest
+  talk Aelthalyste##4606
+  turnin Touch of Weakness##10379 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
 step
   talk Bethor Iceshard##1498
   turnin The Prodigal Lich##405 |goto Undercity 84.07,17.45 |tip {turninat}Undercity
@@ -307,10 +434,60 @@ step
   talk Gunther Arcanus##1497
   turnin Proving Allegiance##409 |goto Tirisfal Glades 68.2,41.92
 step
+  only Undead Priest
+  talk Aelthalyste##4606
+  turnin Touch of Weakness##5658 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
+step
+  only Undead Priest
+  talk Aelthalyste##4606
+  turnin Touch of Weakness##5662 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
+step
+  only Undead Priest
+  talk Aelthalyste##4606
+  turnin Touch of Weakness##5663 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
+step
+  only Mage
+  talk Anastasia Hartwell##4568
+  turnin The Balnir Farmstead##1882 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
+step
+  talk Sergra Darkthorn##3338
+  turnin Sergra Darkthorn##860 |goto The Barrens 52.23,31.01 |tip {turninat}The Barrens
+step
+  talk Zargh##3489
+  turnin Return to the Crossroads.##6386 |goto The Barrens 52.62,29.84 |tip {turninat}The Barrens
+step
+  talk Tonga Runetotem##3448
+  turnin The Barrens Oases##886 |goto The Barrens 52.26,31.93 |tip {turninat}The Barrens
+step
   talk Gunther Arcanus##1497
   accept The Prodigal Lich Returns##411 |goto Tirisfal Glades 68.2,41.92
 step
+  talk Veren Tallstrider##3050
+  turnin Kodo Hide Bag##769 |goto Thunder Bluff 44.39,44.7 |tip {turninat}Thunder Bluff
+step
+  only Undead
+  talk Deathguard Podrig##6389
+  turnin Return to Podrig##6324 |goto Silverpine Forest 43.42,41.68 |tip {turninat}Silverpine Forest
+step
+  only Tauren
+  talk Tal##2995
+  turnin Tal the Wind Rider Master##6363 |goto Thunder Bluff 47.0,49.83 |tip {turninat}Thunder Bluff
+step
+  talk Thrall##4949
+  turnin Hidden Enemies##5726 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
+step
+  talk Eyahn Eagletalon##2987
+  turnin Preparation for Ceremony##744 |goto Thunder Bluff 37.69,59.56 |tip {turninat}Thunder Bluff
+step
   turnin Target: Dalson's Tears##5231 |goto Western Plaguelands 46.18,51.9 |tip {turninat}Western Plaguelands
+step
+  only Tauren
+  talk Tal##2995
+  accept Return to Jahan##6364 |goto Thunder Bluff 47.0,49.83
+step
+  only Troll Priest
+  talk Ur'kyo##6018
+  turnin Hex of Weakness##5652 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
 step
   only Undead
   talk Shadow Priest Sarvis##1569
@@ -386,7 +563,8 @@ step
   accept The Last Barov##5342 |goto Tirisfal Glades 83.06,71.6
 step
   note Travel to Chillwind Camp - Alliance territory - and assassinate Weldon Barov. Take his head and return to Alexi Barov.
-  collect Head of Weldon Barov##13469 |q 5342 |goto Western Plaguelands 43.45,83.73 |tip {dropsfrom}Weldon Barov
+  kill Weldon Barov##11023 |goto Western Plaguelands 43.45,83.73 |elite
+  collect Head of Weldon Barov##13469 |q 5342 |goto Western Plaguelands 43.45,83.73
 step
   talk High Executor Derrington##10837
   accept The Key to Scholomance##5511 |goto Tirisfal Glades 83.13,68.94
@@ -451,6 +629,10 @@ step
   talk Bethor Iceshard##1498
   turnin The Prodigal Lich Returns##411 |goto Undercity 84.07,17.45 |tip {turninat}Undercity
 step
+  only Tauren
+  talk Jahan Hawkwing##3483
+  turnin Return to Jahan##6364 |goto The Barrens 51.21,29.05 |tip {turninat}The Barrens
+step
   note Kill 8 Wailing Ancestors and 8 Rotting Ancestors.
   kill Wailing Ancestor##1534 |q 408 |goto Tirisfal Glades 52.23,28.76
 step
@@ -485,17 +667,20 @@ step
   talk Shadow Priest Sarvis##1569
   accept Hallowed Scroll##3097 |goto Tirisfal Glades 30.84,66.2
 step
-  only Warlock
+  only Mage
   talk Shadow Priest Sarvis##1569
   accept Glyphic Scroll##3098 |goto Tirisfal Glades 30.84,66.2
 step
-  only Druid
+  only Warlock
   talk Shadow Priest Sarvis##1569
   accept Tainted Scroll##3099 |goto Tirisfal Glades 30.84,66.2
 step
   only Undead
   talk Shadow Priest Sarvis##1569
   accept Rattling the Rattlecages##3901 |goto Tirisfal Glades 30.84,66.2
+step
+  note Using the Beacon Torch, mark each tower in Andorhal; you will need to stand in the doorway of the tower to successfully mark it.
+  kill Andorhal Tower One##10902 |q 5098 |goto Western Plaguelands 40.05,71.6
 step
   only Undead
   note Kill 12 Rattlecage Skeletons, and then return to Shadow Priest Sarvis in Deathknell when you are done.
@@ -504,11 +689,11 @@ step
   note Defile Uther's Tomb and return to Mehlar Dawnblade at the Bulwark in the Western Plaguelands.
   collect Temp Uther's Statue##181653 |q 9444 |goto Western Plaguelands 52.13,83.5
 step
-  note Using the Beacon Torch, mark each tower in Andorhal; you will need to stand in the doorway of the tower to successfully mark it.
-  kill Andorhal Tower One##10902 |q 5098 |goto Western Plaguelands 40.05,71.6
-step
   talk High Executor Derrington##10837
   turnin The Key to Scholomance##5511 |goto Tirisfal Glades 83.13,68.94
+step
+  talk High Executor Derrington##10837
+  turnin All Along the Watchtowers##5098 |goto Tirisfal Glades 83.13,68.94
 step
   talk Alexi Barov##11022
   turnin The Last Barov##5342 |goto Tirisfal Glades 83.06,71.6
@@ -519,9 +704,6 @@ step
 step
   talk Mehlar Dawnblade##17099
   turnin Defiling Uther's Tomb##9444 |goto Tirisfal Glades 83.22,71.32
-step
-  talk High Executor Derrington##10837
-  turnin All Along the Watchtowers##5098 |goto Tirisfal Glades 83.13,68.94
 step
   talk Shadow Priestess Vandis##11055
   turnin The Scourge Cauldrons##5228 |goto Tirisfal Glades 83.04,71.91
@@ -541,15 +723,15 @@ step
   note Go to Felstone Field in Western Plaguelands to locate and defeat the Cauldron Lord present there. It may have a key that will allow access to the cauldron. You must have the Empty Felstone Field Bottle with you to secure a sample of the poisons used inside the cauldron.
   collect Felstone Field Cauldron Key##13194 |q 5229 |goto Tirisfal Glades 83.04,71.91 |tip {dropsfrom}Cauldron Lord Bilemaw
 step
-  talk Magistrate Sevren##1499
-  turnin Return to the Magistrate##360 |goto Tirisfal Glades 61.26,50.84
+  only Warrior
+  talk Coleman Farthing##1500
+  turnin Speak with Coleman##1820 |goto Tirisfal Glades 61.72,52.29
 step
   talk Magistrate Sevren##1499
   turnin The Family Crypt##408 |goto Tirisfal Glades 61.26,50.84
 step
-  only Warrior
-  talk Coleman Farthing##1500
-  turnin Speak with Coleman##1820 |goto Tirisfal Glades 61.72,52.29
+  talk Magistrate Sevren##1499
+  turnin Return to the Magistrate##360 |goto Tirisfal Glades 61.26,50.84
 step
   only Undead
   talk Apothecary Johaan##1518
@@ -569,6 +751,10 @@ step
 step
   turnin Target: Felstone Field##5229 |goto Western Plaguelands 37.25,56.78 |tip {turninat}Western Plaguelands
 step
+  only Mage
+  talk Isabella##2124
+  turnin Glyphic Scroll##3098 |goto Tirisfal Glades 30.93,66.06
+step
   only Undead Priest
   talk Dark Cleric Duesten##2123
   turnin Hallowed Scroll##3097 |goto Tirisfal Glades 31.11,66.03
@@ -582,10 +768,6 @@ step
   turnin Simple Scroll##3095 |goto Tirisfal Glades 32.69,65.56
 step
   only Warlock
-  talk Isabella##2124
-  turnin Glyphic Scroll##3098 |goto Tirisfal Glades 30.93,66.06
-step
-  only Druid
   talk Maximillion##2126
   turnin Tainted Scroll##3099 |goto Tirisfal Glades 30.91,66.34
 step

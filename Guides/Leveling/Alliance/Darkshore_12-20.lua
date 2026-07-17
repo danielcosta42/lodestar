@@ -11,13 +11,13 @@ step
   goto Darkshore 36.34,45.58 |tip {vendor}
 step
   talk Onu##3616
-  accept Mathystra Relics##951 |goto Darkshore 43.55,76.29
-step
-  note Bring 6 Mathystra Relics to Onu at the Grove of the Ancients.
-  collect 6 Mathystra Relic##5273 |q 951 |goto Darkshore 59.95,23.21 |tip {dropsfrom}Mathystra Relic
-step
-  talk Onu##3616
   accept Onu is meditating##960 |goto Darkshore 43.55,76.29
+step
+  click Twilight Tome##12666
+  accept Return to Onu##950 |goto Darkshore 38.54,86.05
+step
+  kill Twilight Disciple##2338 |goto Darkshore 38.74,87.21 |tip Loot the quest item here — it starts the quest.
+  accept The Powers Below##968 |goto Darkshore 38.74,87.21
 step
   talk Sentinel Tysha Moonblade##3639
   accept The Fall of Ameth'Aran##953 |goto Darkshore 40.3,59.73
@@ -32,7 +32,7 @@ step
   accept Cave Mushrooms##947 |goto Darkshore 37.32,43.64
 step
   note Bring 5 Scaber Stalks and 1 Death Cap to Barithras Moonshade in Auberdine.
-  collect 5 Scaber Stalk##5271 |q 947 |goto Darkshore 55.51,34.59 |tip {dropsfrom}Scaber Stalk
+  collect 5 Scaber Stalk##5271 |q 947 |goto Darkshore 55.51,34.59
 step
   talk Thundris Windweaver##3649
   accept Bashal'Aran##954 |goto Darkshore 37.4,40.13
@@ -56,7 +56,7 @@ step
   accept Deep Ocean, Vast Sea##982 |goto Darkshore 38.11,41.17
 step
   note Recover the Silver Dawning's Lockbox and the Mist Veil's Lockbox for Gorbold Steelhand in Auberdine. Both items should be found aboard the wreckage of the ships to the north of the village.
-  collect Silver Dawning's Lockbox##12191 |q 982 |goto Darkshore 38.24,28.8 |tip {dropsfrom}Silver Dawning's Lockbox
+  collect Silver Dawning's Lockbox##12191 |q 982 |goto Darkshore 38.24,28.8
 step
   talk Wizbang Cranktoggle##3666
   accept Buzzbox 827##983 |goto Darkshore 36.97,44.13
@@ -120,6 +120,12 @@ step
   note Recover Sea Creature Bones from the beached sea creature just south of Auberdine, and then return with it to Gwennyth Bly'Leggonde in Auberdine.
   collect Sea Creature Bones##12242 |q 3524 |goto Darkshore 36.37,50.92 |tip {dropsfrom}Beached Sea Creature
 step
+  click WANTED: Murkdeep!##175320
+  accept WANTED: Murkdeep!##4740 |goto Darkshore 37.22,44.22
+step
+  note Find and slay the murloc known as Murkdeep. The creature is thought to be defending the murloc huts south of Auberdine along the water.
+  kill Murkdeep##10323 |q 4740
+step
   talk Sentinel Glynda Nal'Shea##2930
   accept The Red Crystal##4811 |goto Darkshore 37.7,43.41
 step
@@ -154,6 +160,9 @@ step
   note Kill Athrikus Narassin and bring his head to Balthule Shadowstrike near the Tower of Althalaxx.
   collect Athrikus Narassin's Head##5383 |q 1143 |goto Darkshore 56.02,26.33 |tip {dropsfrom}Athrikus Narassin
 step
+  talk Gerrig Bonegrip##2786
+  turnin The Powers Below##968 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
+step
   talk Gelkak Gyromast##6667
   accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
 step
@@ -161,10 +170,16 @@ step
   collect Top of Gelkak's Key##7498 |q 2098 |goto Darkshore 39.1,89.1 |tip {dropsfrom}Giant Foreststrider
 step
   talk Onu##3616
-  turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
+  turnin Return to Onu##950 |goto Darkshore 43.55,76.29
 step
   talk Onu##3616
   turnin Onu is meditating##960 |goto Darkshore 43.55,76.29
+step
+  talk Onu##3616
+  accept Mathystra Relics##951 |goto Darkshore 43.55,76.29
+step
+  note Bring 6 Mathystra Relics to Onu at the Grove of the Ancients.
+  collect 6 Mathystra Relic##5273 |q 951 |goto Darkshore 59.95,23.21
 step
   only NightElf
   talk Nessa Shadowsong##10118
@@ -184,6 +199,9 @@ step
 step
   talk Alanndarian Nightsong##3702
   turnin Easy Strider Living##2178 |goto Darkshore 37.69,40.66
+step
+  talk Sentinel Glynda Nal'Shea##2930
+  turnin WANTED: Murkdeep!##4740 |goto Darkshore 37.7,43.41
 step
   only Paladin
   talk Thundris Windweaver##3649
@@ -242,6 +260,12 @@ step
   talk Terenthis##3693
   accept How Big a Threat?##985 |goto Darkshore 39.37,43.48
 step
+  click Buzzbox 827##17182
+  accept Buzzbox 411##1001 |goto Darkshore 36.64,46.26
+step
+  note Collect 3 Thresher Eyes from Darkshore Threshers in the deep sea near Buzzbox 411.
+  collect 3 Thresher Eye##5412 |q 1001 |goto Darkshore 33.85,38.38 |tip {dropsfrom}Darkshore Thresher, Elder Darkshore Thresher
+step
   talk Wizbang Cranktoggle##3666
   accept Electropellers##1580 |goto Darkshore 36.97,44.13
 step
@@ -269,14 +293,24 @@ step
   talk Asterion##3650
   turnin Bashal'Aran##955 |goto Darkshore 44.17,36.29
 step
+  turnin Buzzbox 411##1001 |goto Darkshore 41.96,28.62
+step
   talk Asterion##3650
   accept Bashal'Aran##956 |goto Darkshore 44.17,36.29
 step
   note Obtain the Ancient Moonstone Seal and bring it to Asterion in Bashal'Aran.
   collect Ancient Moonstone Seal##5338 |q 956 |goto Darkshore 47.28,37.68 |tip {dropsfrom}Deth'ryll Satyr
 step
+  click Buzzbox 411##17183
+  accept Buzzbox 323##1002 |goto Darkshore 41.96,28.62
+step
+  note Collect 6 Moonstalker Fangs and place them in Buzzbox 323.
+  collect 6 Moonstalker Fang##5413 |q 1002 |goto Darkshore 42.66,66.05 |tip {dropsfrom}Moonstalker, Moonstalker Runt, Moonstalker Matriarch
+step
   talk Balthule Shadowstrike##3661
   turnin The Tower of Althalaxx##966 |goto Darkshore 54.97,24.89
+step
+  turnin Buzzbox 323##1002 |goto Darkshore 51.29,24.57
 step
   talk Balthule Shadowstrike##3661
   turnin The Tower of Althalaxx##1143 |goto Darkshore 54.97,24.89
@@ -286,6 +320,12 @@ step
 step
   talk Balthule Shadowstrike##3661
   accept The Tower of Althalaxx##981 |goto Darkshore 54.97,24.89
+step
+  click Buzzbox 323##17184
+  accept Buzzbox 525##1003 |goto Darkshore 51.29,24.57
+step
+  note Collect 4 Grizzled Scalps from Grizzled Thistle Bears to the south of Auberdine and place them in Buzzbox 525.
+  collect 4 Grizzled Scalp##5414 |q 1003 |goto Darkshore 39.3,81.13 |tip {dropsfrom}Grizzled Thistle Bear, Den Mother
 step
   talk Gelkak Gyromast##6667
   turnin Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
@@ -298,6 +338,11 @@ step
 step
   talk Onu##3616
   turnin Onu##948 |goto Darkshore 43.55,76.29
+step
+  talk Onu##3616
+  turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
+step
+  turnin Buzzbox 525##1003 |goto Darkshore 41.39,80.56
 step
   talk Chief Archaeologist Greywhisker##2912
   turnin The Absent Minded Prospector##741 |goto Darnassus 31.24,84.51 |tip {turninat}Darnassus
@@ -314,11 +359,11 @@ step
   talk Wizbang Cranktoggle##3666
   turnin Electropellers##1580 |goto Darkshore 36.97,44.13
 step
-  talk Delgren the Purifier##3663
-  turnin The Tower of Althalaxx##967 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale
-step
   talk Gwennyth Bly'Leggonde##10219
   turnin Washed Ashore##4681 |goto Darkshore 36.62,45.59
+step
+  talk Delgren the Purifier##3663
+  turnin The Tower of Althalaxx##967 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale
 step
   turnin As Water Cascades##4812 |goto Darkshore 47.32,48.68
 step
@@ -346,17 +391,47 @@ step
   note Travel north of Auberdine to the first waterfall along the Cliffspring River and draw a sample from the pool there.
   collect Cliffspring River Sample##12349 |q 4762 |goto Darkshore 37.4,40.13
 step
+  click Mysterious Red Crystal##175524
+  accept The Fragments Within##4813 |goto Darkshore 47.32,48.68
+step
   talk Asterion##3650
   turnin Bashal'Aran##956 |goto Darkshore 44.17,36.29
 step
   talk Asterion##3650
   accept Bashal'Aran##957 |goto Darkshore 44.17,36.29
 step
+  click Beached Sea Creature##175233
+  accept Beached Sea Creature##4723 |goto Darkshore 41.93,31.53
+step
   note Find and kill the Den Mother.
   kill Den Mother##6788 |q 2139 |goto Darkshore 51.48,38.26
 step
+  click Beached Sea Turtle##176197
+  accept Beached Sea Turtle##4725 |goto Darkshore 44.19,20.6
+step
   talk Gelkak Gyromast##6667
   turnin Gyromast's Revenge##2078 |goto Darkshore 56.66,13.48
+step
+  click Beached Sea Turtle##176196
+  accept Beached Sea Turtle##4727 |goto Darkshore 53.11,18.08
+step
+  click Beached Sea Creature##175226
+  accept Beached Sea Creature##4728 |goto Darkshore 36.01,70.88
+step
+  click Beached Sea Creature##175227
+  accept Beached Sea Creature##4730 |goto Darkshore 32.69,80.79
+step
+  click Beached Sea Turtle##176198
+  accept Beached Sea Turtle##4731 |goto Darkshore 31.67,83.68
+step
+  click Beached Sea Turtle##176191
+  accept Beached Sea Turtle##4732 |goto Darkshore 31.23,85.6
+step
+  click Beached Sea Creature##175230
+  accept Beached Sea Creature##4733 |goto Darkshore 31.26,87.44
+step
+  click Beached Sea Turtle##176190
+  accept Beached Sea Turtle##4722 |goto Darkshore 37.09,62.18
 step
   note Destroy the Ancient Moonstone Seal at the ancient flame in Ameth'Aran, then return to Asterion in Bashal'Aran.
   collect Ancient Flame##16393 |q 957 |goto Darkshore 42.37,61.82
@@ -364,11 +439,41 @@ step
   talk Thundris Windweaver##3649
   turnin The Cliffspring River##4762 |goto Darkshore 37.4,40.13
 step
+  talk Sentinel Glynda Nal'Shea##2930
+  turnin The Fragments Within##4813 |goto Darkshore 37.7,43.41
+step
   talk Terenthis##3693
   turnin A Lost Master##986 |goto Darkshore 39.37,43.48
 step
   talk Tharnariun Treetender##3701
   turnin Tharnariun's Hope##2139 |goto Darkshore 38.84,43.42
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Turtle##4722 |goto Darkshore 36.62,45.59
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Creature##4723 |goto Darkshore 36.62,45.59
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Turtle##4725 |goto Darkshore 36.62,45.59
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Turtle##4727 |goto Darkshore 36.62,45.59
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Creature##4728 |goto Darkshore 36.62,45.59
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Creature##4730 |goto Darkshore 36.62,45.59
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Turtle##4731 |goto Darkshore 36.62,45.59
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Turtle##4732 |goto Darkshore 36.62,45.59
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Creature##4733 |goto Darkshore 36.62,45.59
 step
   talk Terenthis##3693
   accept A Lost Master##993 |goto Darkshore 39.37,43.48

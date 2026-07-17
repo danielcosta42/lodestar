@@ -13,6 +13,12 @@ step
   talk Brave Moonhorn##10079
   accept Message to Freewind Post##4542 |goto Thousand Needles 32.24,22.17
 step
+  kill Galak Messenger##10617 |goto Thousand Needles 39.43,33.1 |tip Loot the quest item here — it starts the quest.
+  accept Assassination Plot##4881 |goto Thousand Needles 39.43,33.1
+step
+  talk Kanati Greycloud##10638
+  turnin Assassination Plot##4881 |goto Thousand Needles 21.25,32.06
+step
   talk Kanati Greycloud##10638
   accept Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
 step
@@ -20,7 +26,8 @@ step
   accept Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
 step
   note Slay the beast and bring back the Hypercapacitor Gizmo and Panther Cage Key to Wizlo Bearingshiner.
-  collect Hypercapacitor Gizmo##12946 |q 5151 |goto Thousand Needles 22.76,24.62 |tip {dropsfrom}Enraged Panther
+  kill Enraged Panther##10992 |goto Thousand Needles 22.76,24.62 |elite
+  collect Hypercapacitor Gizmo##12946 |q 5151 |goto Thousand Needles 22.76,24.62
 step
   talk Pao'ka Swiftmountain##10427
   accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
@@ -28,29 +35,51 @@ step
   talk Cliffwatcher Longhorn##10537
   turnin Message to Freewind Post##4542 |goto Thousand Needles 45.67,50.74
 step
-  talk Rau Cliffrunner##4722
-  accept The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
+  talk Master Apothecary Faranell##2055
+  accept Elixir of Agony##515 |goto Undercity 48.82,69.28
 step
-  note Retrieve the Cloven Hoof for Rau Cliffrunner at the Freewind Post.
-  collect Cloven Hoof##5869 |q 1197 |goto Thousand Needles 42.01,31.47 |tip {dropsfrom}Ancient Brazier
+  note Bring the Mudsnout Mixture, a Strong Troll's Blood Potion, 5 Daggerspine Scales and 5 Torn Fin Eyes to Apothecary Lydon in Tarren Mill.
+  collect Elixir of Agony##3388 |q 515 |goto Undercity 48.82,69.28
+step
+  talk Zangen Stonehoof##4721
+  accept The Sacred Flame##1196 |goto Thunder Bluff 54.97,51.41
+step
+  only Warrior
+  talk Orm Stonehoof##6410
+  accept Chimaeric Horn##1844 |goto Thunder Bluff 38.99,55.98
+step
+  only Warrior
+  note Bring a Galvanized Horn to Orm Stonehoof in Thunder Bluff.
+  collect Galvanized Horn##6840 |q 1844 |goto Stonetalon Mountains 33.64,74.66 |tip {dropsfrom}Chimaera Matriarch
 step
   talk Elu##10377
   accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
   note Bring 10 Highperch Wyvern Eggs to Elu in Freewind Post.
-  collect 10 Highperch Wyvern Egg##12356 |q 4767 |goto Thousand Needles 12.19,37.11 |tip {dropsfrom}Highperch Wyvern Egg
+  collect 10 Highperch Wyvern Egg##12356 |q 4767 |goto Thousand Needles 12.19,37.11
 step
   talk Hagar Lightninghoof##10539
   accept Alien Egg##4821 |goto Thousand Needles 44.64,50.29
 step
   note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
-  collect Alien Egg##12467 |q 4821 |goto Thousand Needles 52.34,55.25 |tip {dropsfrom}Alien Egg
+  collect Alien Egg##12467 |q 4821 |goto Thousand Needles 52.34,55.25
 step
   talk Cliffwatcher Longhorn##10537
   accept Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
 step
+  click Wanted Poster - Arnak Grimtotem##176115
+  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46.0,50.86
+step
+  note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
+  collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
+step
   talk Cliffwatcher Longhorn##10537
   accept Family Tree##5361 |goto Thousand Needles 45.67,50.74
+step
+  talk Warlord Gorchuk##15700
+  accept Ten Signets for War Supplies##8852 |goto Orgrimmar 34.92,74.89
+step
+  collect Ten Signets for War Supplies##21438 |q 8852 |goto Orgrimmar 34.92,74.89
 step
   talk Magistrix Elosai##17093
   accept A Different Approach##9431 |goto Thousand Needles 46.21,50.4
@@ -58,8 +87,22 @@ step
   note Gather 2 handfuls of Purifying Earth from Thundering Boulderkin and take them to Wizlo Bearingshiner at Whitereach Post.
   collect 2 Purifying Earth##23643 |q 9431 |goto Thousand Needles 13.45,26.99 |tip {dropsfrom}Thundering Boulderkin
 step
+  talk Apothecary Lydon##2216
+  turnin Elixir of Agony##515 |goto Hillsbrad Foothills 61.44,19.06 |tip {turninat}Hillsbrad Foothills
+step
   talk Dorn Plainstalker##2986
   accept Test of Faith##1149 |goto Thousand Needles 53.95,41.49
+step
+  talk Craven Drok##5639
+  accept Alliance Relations##1431 |goto Orgrimmar 51.3,45.9
+step
+  only Warrior
+  talk Velora Nitely##6411
+  accept Dragonmaw Shinbones##1846 |goto Undercity 62.14,39.14
+step
+  only Warrior
+  note Bring 8 Sturdy Dragonmaw Shinbones to Velora Nitely in the Undercity.
+  collect 8 Sturdy Dragonmaw Shinbone##7134 |q 1846 |goto Undercity 62.14,39.14
 step
   note Kill 12 Galak Scouts, 10 Galak Wranglers, and 6 Galak Windchasers, and then return to Cliffwatcher Longhorn in Freewind Post.
   kill Galak Scout##4094 |q 4841 |goto Thousand Needles 43.29,37.97
@@ -103,6 +146,18 @@ step
   talk Kravel Koalbeard##4452
   accept Get the Goblins Drunk##1121 |goto Thousand Needles 77.79,77.27
 step
+  talk Melor Stonehoof##3441
+  accept Steelsnap##1131 |goto Thunder Bluff 61.54,80.92
+step
+  note Bring Steelsnap's Rib to Melor Stonehoof in Thunder Bluff.
+  collect Steelsnap##5837 |q 1131 |goto Thunder Bluff 61.54,80.92
+step
+  kill Silithid Searcher##4130 |goto Thousand Needles 69.91,83.32 |tip Loot the quest item here — it starts the quest.
+  accept Parts of the Swarm##1148 |goto Thousand Needles 69.91,83.32
+step
+  note Bring 1 Silithid Heart, 5 Silithid Talons, and 3 Intact Silithid Carapaces, to Korran at the Crossroads.
+  collect 1 Parts of the Swarm##5855 |q 1148 |goto Thousand Needles 69.91,83.32
+step
   talk Trackmaster Zherin##4629
   accept A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
 step
@@ -118,7 +173,7 @@ step
   talk Pozzik##4630
   accept Keeping Pace##1190 |goto Thousand Needles 80.18,75.88
 step
-  only Warlock
+  only Mage
   talk Magus Tirth##6548
   accept Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
 step
@@ -155,11 +210,27 @@ step
   note Use the Robotron Control while standing near the Concealed Command Console hidden in a small cluster of bushes on the rim of the needle closest to Thalanaar to take command of a Robotron 3000. Pilot the robot to the western edge of Thousand Needles where the Alliance outpost of Thalanaar is located. Use the robot to collect a sample of the moonwell's water and return it to Wizlo Bearingshiner at Whitereach Post.
   collect Thalanaar Moonwell Water##23670 |q 9433 |goto Thousand Needles 21.43,32.55
 step
+  talk Keldran##5640
+  turnin Alliance Relations##1431 |goto Orgrimmar 22.56,52.63 |tip {turninat}Orgrimmar
+step
+  talk Keldran##5640
+  accept Alliance Relations##1432 |goto Orgrimmar 22.56,52.63
+step
+  talk Takata Steelblade##5641
+  turnin Alliance Relations##1432 |goto Desolace 52.57,54.39 |tip {turninat}Desolace
+step
+  talk Cliffwatcher Longhorn##10537
+  turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
+step
   talk Elu##10377
   turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
   talk Rau Cliffrunner##4722
-  turnin The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
+  turnin The Sacred Flame##1196 |goto Thousand Needles 46.14,51.71
+step
+  only Warrior
+  talk Orm Stonehoof##6410
+  turnin Chimaeric Horn##1844 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
 step
   talk Martek the Exiled##4618
   turnin Martek the Exiled##1106 |goto Badlands 42.22,52.69 |tip {turninat}Badlands
@@ -176,6 +247,16 @@ step
   talk Nataka Longhorn##11259
   turnin Family Tree##5361 |goto Desolace 55.41,55.81 |tip {turninat}Desolace
 step
+  talk Rau Cliffrunner##4722
+  accept The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
+step
+  note Retrieve the Cloven Hoof for Rau Cliffrunner at the Freewind Post.
+  collect Cloven Hoof##5869 |q 1197 |goto Thousand Needles 42.01,31.47 |tip {dropsfrom}Ancient Brazier
+step
+  only Warrior
+  talk Orm Stonehoof##6410
+  accept Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98
+step
   talk Hagar Lightninghoof##10539
   accept Serpent Wild##4865 |goto Thousand Needles 44.64,50.29
 step
@@ -185,8 +266,15 @@ step
   note Locate and retrieve the three Secret Notes in Darkcloud Pinnacle.
   collect Secret Note #1##12765 |q 5064 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {dropsfrom}Pitted Iron Chest, Document Chest
 step
+  only Warrior
+  talk Velora Nitely##6411
+  turnin Dragonmaw Shinbones##1846 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
+step
   talk Wharfmaster Dizzywig##3453
   turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
+step
+  talk Korran##3428
+  turnin Parts of the Swarm##1148 |goto The Barrens 51.07,29.63 |tip {turninat}The Barrens
 step
   talk Dorn Plainstalker##2986
   turnin Test of Faith##1149 |goto Thousand Needles 53.95,41.49
@@ -196,6 +284,10 @@ step
 step
   note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
   collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 53.95,41.49 |tip {dropsfrom}Grenka Bloodscreech
+step
+  only Warrior
+  talk Velora Nitely##6411
+  accept Brutal Legguards##1847 |goto Undercity 62.14,39.14
 step
   talk Moktar Krin##4483
   turnin The Swarm Grows##1147 |goto Thousand Needles 67.58,63.94
@@ -209,7 +301,7 @@ step
   talk Pozzik##4630
   turnin Load Lightening##1176 |goto Thousand Needles 80.18,75.88
 step
-  only Warlock
+  only Mage
   talk Magus Tirth##6548
   turnin Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
 step
@@ -239,6 +331,9 @@ step
   talk Goblin Pit Boss##4496
   turnin Get the Goblins Drunk##1121 |goto Thousand Needles 79.9,76.74
 step
+  talk Melor Stonehoof##3441
+  turnin Steelsnap##1131 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
+step
   talk Wizzle Brassbolts##4453
   accept Encrusted Tail Fins##1107 |goto Thousand Needles 78.14,77.12
 step
@@ -260,13 +355,16 @@ step
   note Retrieve the Seaforium Booster for Razzeric in the Shimmering Flats.
   collect Seaforium Booster##5862 |q 1187 |goto Dustwallow Marsh 54.07,56.49 |tip {dropsfrom}Gizmorium Shipping Crate
 step
-  only Warlock
+  click Rizzle's Unguarded Plans##20805
+  accept Rizzle's Schematics##1194 |goto Thousand Needles 77.21,77.39
+step
+  only Mage
   talk Magus Tirth##6548
   accept Rituals of Power##1951 |goto Thousand Needles 78.29,75.7
 step
-  only Warlock
+  only Mage
   note Bring the book Rituals of Power to Tabetha in Dustwallow Marsh.
-  collect Rituals of Power##7274 |q 1951 |goto Scarlet Monastery - Dungeon -1,-1 |tip {dropsfrom}Rituals of Power
+  collect Rituals of Power##7274 |q 1951 |goto Scarlet Monastery - Dungeon -1,-1
 step
   talk Motega Firemane##10428
   turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
@@ -278,14 +376,21 @@ step
   accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
 step
   note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
-  collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.04,35.43 |tip {dropsfrom}Incendia Agave
+  collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.04,35.43
 step
   talk Wizlo Bearingshiner##10941
   accept Testing the Tonic##9434 |goto Thousand Needles 21.43,32.55
 step
-  only Warlock
+  only Mage
   talk Tabetha##6546
   turnin Rituals of Power##1951 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
+step
+  talk Rau Cliffrunner##4722
+  turnin The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
+step
+  only Warrior
+  talk Orm Stonehoof##6410
+  turnin Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
 step
   talk Cliffwatcher Longhorn##10537
   turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
@@ -302,6 +407,10 @@ step
   talk Gazlowe##3391
   turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
 step
+  only Warrior
+  talk Velora Nitely##6411
+  turnin Brutal Legguards##1847 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
+step
   talk Magatha Grimtotem##4046
   turnin Sacred Fire##5062 |goto Thunder Bluff 69.85,30.91 |tip {turninat}Thunder Bluff
 step
@@ -316,6 +425,9 @@ step
 step
   talk Razzeric##4706
   turnin Razzeric's Tweaking##1187 |goto Thousand Needles 80.33,76.09
+step
+  talk Pozzik##4630
+  turnin Rizzle's Schematics##1194 |goto Thousand Needles 80.18,75.88
 step
   talk Wizzle Brassbolts##4453
   turnin Encrusted Tail Fins##1107 |goto Thousand Needles 78.14,77.12

@@ -7,6 +7,11 @@ ns:RegisterGuide("Leveling/Alliance/Dire Maul - Dungeon (60-60)", {
 	next = "Leveling/Alliance/Hellfire Peninsula (61-63)",
 }, [[
 step
+  click Broken Trap##179485
+  accept A Broken Trap##1193 |goto Dire Maul - Dungeon -1,-1
+step
+  collect Thorium Widget##15994 |q 1193 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
+step
   talk Knot Thimblejack##14338
   accept The Gordok Ogre Suit##5518 |goto Dire Maul - Dungeon -1,-1
 step
@@ -16,7 +21,7 @@ step
   talk Knot Thimblejack##14338
   accept Free Knot!##5525 |goto Dire Maul - Dungeon -1,-1
 step
-  collect Gordok Shackle Key##18250 |q 5525 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Gordok Brute, Gordok Mage-Lord, Gordok Captain
+  collect Gordok Shackle Key##18250 |q 5525 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Gordok Brute, Gordok Mage-Lord, Gordok Captain
 step
   talk Stomper Kreeg##14322
   accept The Gordok Taste Test##5528 |goto Dire Maul - Dungeon -1,-1
@@ -28,7 +33,46 @@ step
   accept Libram of Focus##7484 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring a Libram of Focus, 1 Pristine Black Diamond, 4 Large Brilliant Shards, and 2 Skin of Shadow to Lorekeeper Lydros in Dire Maul to receive an Arcanum of Focus.
-  collect Libram of Focus##18333 |q 7484 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Gordok Brute, Gordok Mage-Lord, Gordok Captain
+  collect Libram of Focus##18333 |q 7484 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Gordok Brute, Gordok Mage-Lord, Gordok Captain
+step
+  only Rogue
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Garona: A Study on Stealth and Treachery##7498 |goto Dire Maul - Dungeon -1,-1
+step
+  only Warrior
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Codex of Defense##7499 |goto Dire Maul - Dungeon -1,-1
+step
+  only Mage
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Arcanist's Cookbook##7500 |goto Dire Maul - Dungeon -1,-1
+step
+  only Paladin
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
+step
+  only Warlock
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Harnessing Shadows##7502 |goto Dire Maul - Dungeon -1,-1
+step
+  only Hunter
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Greatest Race of Hunters##7503 |goto Dire Maul - Dungeon -1,-1
+step
+  only Priest
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Holy Bologna: What the Light Won't Tell You##7504 |goto Dire Maul - Dungeon -1,-1
+step
+  only Shaman
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Frost Shock and You##7505 |goto Dire Maul - Dungeon -1,-1
+step
+  only Druid
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
+step
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept Foror's Compendium##7507 |goto Dire Maul - Dungeon -1,-1
 step
   talk Captain Kromcrush##14325
   accept Unfinished Gordok Business##7703 |goto Dire Maul - Dungeon -1,-1
@@ -40,7 +84,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
 step
   note You must destroy the guardians surrounding the 5 Pylons that power the Prison of Immol'thar. Once the Pylons have powered down, the force field surrounding Immol'thar will have dissipated.
   kill Immol'thar##11496 |q 7461 |goto Dire Maul - Dungeon -1,-1 |elite
@@ -48,8 +92,49 @@ step
   talk Shen'dralar Ancient##14358
   turnin The Madness Within##7461 |goto Dire Maul - Dungeon -1,-1
 step
+  turnin A Broken Trap##1193 |goto Dire Maul - Dungeon -1,-1
+step
+  only Rogue
+  talk Lorekeeper Kildrath##14383
+  turnin Garona: A Study on Stealth and Treachery##7498 |goto Dire Maul - Dungeon -1,-1
+step
+  only Warrior
+  talk Lorekeeper Kildrath##14383
+  turnin Codex of Defense##7499 |goto Dire Maul - Dungeon -1,-1
+step
+  only Mage
+  talk Lorekeeper Kildrath##14383
+  turnin The Arcanist's Cookbook##7500 |goto Dire Maul - Dungeon -1,-1
+step
+  only Paladin
+  talk Lorekeeper Mykos##14382
+  turnin The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
+step
   talk Knot Thimblejack##14338
   turnin The Gordok Ogre Suit##5518 |goto Dire Maul - Dungeon -1,-1
+step
+  only Warlock
+  talk Lorekeeper Mykos##14382
+  turnin Harnessing Shadows##7502 |goto Dire Maul - Dungeon -1,-1
+step
+  only Hunter
+  talk Lorekeeper Mykos##14382
+  turnin The Greatest Race of Hunters##7503 |goto Dire Maul - Dungeon -1,-1
+step
+  only Priest
+  talk Lorekeeper Javon##14381
+  turnin Holy Bologna: What the Light Won't Tell You##7504 |goto Dire Maul - Dungeon -1,-1
+step
+  only Shaman
+  talk Lorekeeper Javon##14381
+  turnin Frost Shock and You##7505 |goto Dire Maul - Dungeon -1,-1
+step
+  only Druid
+  talk Lorekeeper Javon##14381
+  turnin The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
+step
+  talk Lorekeeper Lydros##14368
+  turnin Foror's Compendium##7507 |goto Dire Maul - Dungeon -1,-1
 step
   talk Knot Thimblejack##14338
   turnin Free Knot!##5525 |goto Dire Maul - Dungeon -1,-1
@@ -73,7 +158,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
 step
   turnin The Treasure of the Shen'dralar##7462 |goto Dire Maul - Dungeon -1,-1
 step

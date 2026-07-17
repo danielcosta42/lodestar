@@ -14,7 +14,7 @@ step
   accept Covert Ops - Alpha##1079 |goto Stonetalon Mountains 59.52,67.15
 step
   note Retrieve the Venture Co.'s Engineering Plans from the lumber mill in Windshear Crag.
-  collect Venture Co. Engineering Plans##5718 |q 1079 |goto Stonetalon Mountains 66.09,51.33 |tip {dropsfrom}Venture Co. Engineering Plans
+  collect Venture Co. Engineering Plans##5718 |q 1079 |goto Stonetalon Mountains 66.09,51.33
 step
   talk Gaxim Rustfizzle##4077
   accept Covert Ops - Beta##1080 |goto Stonetalon Mountains 59.52,67.15
@@ -28,11 +28,35 @@ step
   talk Gaxim Rustfizzle##4077
   accept Castpipe's Task##2931 |goto Stonetalon Mountains 59.52,67.15
 step
+  talk Argos Nightwhisper##4984
+  accept The Corruption Abroad##3765 |goto Stormwind City 21.4,55.8
+step
+  talk Brother Kristoff##1444
+  accept Speaking of Fortitude##343 |goto Stormwind City 45.7,38.42
+step
+  talk Baros Alexston##1646
+  accept Bazil Thredd##389 |goto Stormwind City 49.19,30.28
+step
+  talk Gerrig Bonegrip##2786
+  accept Knowledge in the Deeps##971 |goto Ironforge 50.83,5.62
+step
+  note Bring the Lorgalis Manuscript to Gerrig Bonegrip in the Forlorn Cavern in Ironforge.
+  collect Knowledge in the Deeps##5359 |q 971 |goto Ironforge 50.83,5.62
+step
   talk Keeper Albagorm##3994
   accept Reclaiming the Charred Vale##1057 |goto Stonetalon Mountains 37.1,8.1
 step
+  talk Dawnwatcher Shaedlass##4786
+  accept In Search of Thaelrid##1198 |goto Darnassus 55.36,25.03
+step
+  talk Warden Thelwater##1719
+  turnin Bazil Thredd##389 |goto Stormwind City 41.11,58.09 |tip {turninat}Stormwind City
+step
   talk Master Mechanic Castpipe##7950
   turnin Castpipe's Task##2931 |goto Ironforge 69.83,48.1 |tip {turninat}Ironforge
+step
+  talk Gershala Nightwhisper##8997
+  turnin The Corruption Abroad##3765 |goto Darkshore 38.33,43.04 |tip {turninat}Darkshore
 step
   talk Gaxim Rustfizzle##4077
   turnin Covert Ops - Alpha##1079 |goto Stonetalon Mountains 59.52,67.15
@@ -58,6 +82,18 @@ step
   talk Keeper Albagorm##3994
   turnin Reclaiming the Charred Vale##1057 |goto Stonetalon Mountains 37.1,8.1
 step
+  talk Gerrig Bonegrip##2786
+  turnin Knowledge in the Deeps##971 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
+step
+  talk Argent Guard Thaelrid##4787
+  turnin In Search of Thaelrid##1198 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {turninat}Blackfathom Deeps - Dungeon
+step
+  talk Milton Sheaf##1440
+  turnin Speaking of Fortitude##343 |goto Stormwind City 74.18,7.46 |tip {turninat}Stormwind City
+step
+  talk Milton Sheaf##1440
+  accept Brother Paxton##344 |goto Stormwind City 74.18,7.46
+step
   talk Keeper Albagorm##3994
   accept Reclaiming the Charred Vale##1059 |goto Stonetalon Mountains 37.1,8.1
 step
@@ -69,6 +105,9 @@ step
 step
   talk Gaxim Rustfizzle##4077
   turnin A Gnome's Respite##1071 |goto Stonetalon Mountains 59.52,67.15
+step
+  talk Brother Paxton##951
+  turnin Brother Paxton##344 |goto Elwynn Forest 49.61,40.41 |tip {turninat}Elwynn Forest
 step
   talk Gaxim Rustfizzle##4077
   accept An Old Colleague##1072 |goto Stonetalon Mountains 59.52,67.15

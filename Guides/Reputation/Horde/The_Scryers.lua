@@ -268,7 +268,7 @@ step
   kill B'naar Control Console##20209 |q 10329
 step
   note Venture inside the Shadow Labyrinth in Auchindoun and obtain the Book of Fel Names from Blackheart the Inciter. Return to Altruis in Nagrand once you've completed this task.
-  collect Book of Fel Names##30808 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Blackheart the Inciter, Blackheart the Inciter (1)
+  collect Book of Fel Names##30808 |q 10649 |goto Shadow Labyrinth - Dungeon -1,-1 |elite |tip {dropsfrom}Blackheart the Inciter, Blackheart the Inciter (1)
 step
   note Obtain the four medallion fragments from Haalum, Eykenen, Lakaan and Uylaru and return to Arcanist Thelis at the Sanctum of the Stars in Shadowmoon Valley.
   collect Eykenen's Medallion Fragment##30692 |q 10685 |goto Shadowmoon Valley 51.18,52.82 |tip {dropsfrom}Eykenen
@@ -403,7 +403,8 @@ step
   accept A Gift for Voren'thal##10508 |goto Netherstorm 32.0,64.07
 step
   note Spymaster Thalodien at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  collect First Half of Socrethar's Stone##29624 |q 10508 |goto Netherstorm 36.15,26.43 |tip {dropsfrom}Forgemaster Morug
+  kill Forgemaster Morug##20800 |goto Netherstorm 36.15,26.43 |elite
+  collect First Half of Socrethar's Stone##29624 |q 10508 |goto Netherstorm 36.15,26.43
 step
   talk Spymaster Thalodien##19468
   turnin A Gift for Voren'thal##10508 |goto Netherstorm 32.0,64.07

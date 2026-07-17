@@ -6,11 +6,11 @@ ns:RegisterGuide("Events/Horde/Moonglade (Eventos)", {
 	author = "Lodestar Generator",
 }, [[
 step
-  only Tauren
+  only Tauren Druid
   talk Turak Runetotem##3033
   accept A Lesson to Learn##27 |goto Thunder Bluff 76.48,27.22
 step
-  only Tauren
+  only Tauren Druid
   talk Turak Runetotem##3033
   accept Moonglade##5922 |goto Thunder Bluff 76.48,27.22
 step
@@ -20,11 +20,11 @@ step
   talk Baristolth of the Shifting Sands##15180
   accept What Tomorrow Brings##8286 |goto Silithus 49.45,36.45
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   turnin A Lesson to Learn##27 |goto Moonglade 56.21,30.64
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   turnin Moonglade##5922 |goto Moonglade 56.21,30.64
 step
@@ -37,11 +37,11 @@ step
   talk Keeper Remulos##11832
   turnin Shrouded in Nightmare##8446 |goto Moonglade 36.18,41.79
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   accept Trial of the Lake##28 |goto Moonglade 56.21,30.64
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   accept Great Bear Spirit##5930 |goto Moonglade 56.21,30.64
 step
@@ -52,13 +52,13 @@ step
   accept Waking Legends##8447 |goto Moonglade 36.18,41.79
 step
   note Return the Head of the Broodlord Lashlayer to Baristolth of the Shifting Sands at Cenarion Hold in Silithus.
-  collect Head of the Broodlord Lashlayer##20383 |q 8288 |goto Blackwing Lair - Raid -1,-1 |tip {dropsfrom}Broodlord Lashlayer
+  collect Head of the Broodlord Lashlayer##20383 |q 8288 |goto Blackwing Lair - Raid -1,-1 |raid |tip {dropsfrom}Broodlord Lashlayer
 step
-  only Tauren
+  only Tauren Druid
   talk Tajarri##11799
   turnin Trial of the Lake##28 |goto Moonglade 36.52,40.1
 step
-  only Tauren
+  only Tauren Druid
   talk Dendrite Starblaze##11802
   turnin Great Bear Spirit##5930 |goto Moonglade 56.21,30.64
 step
@@ -88,6 +88,9 @@ step
 step
   turnin Long Forgotten Memories##8305 |goto Silithus 28.68,89.14
 step
+  click Crystalline Tear##180633
+  accept A Pawn on the Eternal Board##8519 |goto Silithus 28.68,89.14
+step
   talk Anachronos##15192
   turnin A Pawn on the Eternal Board##8519 |goto Tanaris 64.2,51.42
 step
@@ -113,7 +116,8 @@ step
   accept The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
 step
   note Travel to the four Emerald Dream portals in Azeroth and collect a Fragment of the Nightmare's Corruption from each. Return to Keeper Remulos in the Moonglade when you have completed this task.
-  collect Fragment of the Nightmare's Corruption##21147 |q 8735 |goto Ashenvale 94.94,39.0 |tip {dropsfrom}Emeraldon Boughguard, Emeraldon Tree Warder, Emeraldon Oracle
+  kill Emeraldon Boughguard##12474 |goto Ashenvale 94.94,39.0 |elite
+  collect Fragment of the Nightmare's Corruption##21147 |q 8735 |goto Ashenvale 94.94,39.0
 step
   talk Keeper Remulos##11832
   turnin The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79

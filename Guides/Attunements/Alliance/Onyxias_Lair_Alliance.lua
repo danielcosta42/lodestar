@@ -63,6 +63,9 @@ step
   talk Marshal Maxwell##9560
   turnin Abandoned Hope##4242 |goto Burning Steppes 84.74,69.02
 step
+  kill Anvilrage Overseer##8889 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip Loot the quest item here — it starts the quest.
+  accept A Crumpled Up Note##4264 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+step
   talk Marshal Windsor##9023
   turnin A Crumpled Up Note##4264 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
@@ -70,7 +73,7 @@ step
   accept A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
 step
   note Return Marshal Windsor's Lost Information.
-  collect Marshal Windsor's Lost Information##11464 |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}General Angerforge
+  collect Marshal Windsor's Lost Information##11464 |q 4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip {dropsfrom}General Angerforge
 step
   talk Marshal Windsor##9023
   turnin A Shred of Hope##4282 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
@@ -103,7 +106,7 @@ step
   accept Drakefire Amulet##6502 |goto Winterspring 54.55,51.2
 step
   note You must retrieve the Blood of the Black Dragon Champion from General Drakkisath. Drakkisath can be found in his throne room behind the Halls of Ascension in Blackrock Spire.
-  collect Blood of the Black Dragon Champion##16663 |q 6502 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}General Drakkisath
+  collect Blood of the Black Dragon Champion##16663 |q 6502 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
   talk Haleh##10929
   turnin Drakefire Amulet##6502 |goto Winterspring 54.55,51.2

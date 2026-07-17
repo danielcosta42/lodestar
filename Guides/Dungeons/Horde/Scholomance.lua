@@ -16,7 +16,7 @@ step
   accept Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
 step
   note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
-  collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 65.24,24.0 |tip {dropsfrom}Broodling Essence
+  collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 65.24,24.0
 step
   note Kill 20 Plagued Hatchlings, then return to Betina Bigglezink at the Light's Hope Chapel.
   kill Plagued Hatchling##10678 |q 5529 |goto Scholomance - Dungeon -1,-1

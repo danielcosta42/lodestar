@@ -169,7 +169,7 @@ step
   accept Eminence Among the Violet Eye##10728 |goto Deadwind Pass 47.24,74.99
 step
   note Obtain Medivh's Journal and return to Kamsis at the Guardian's Library in Karazhan.
-  collect Medivh's Journal##23933 |q 9640 |goto Karazhan - Raid -1,-1 |tip {dropsfrom}Shade of Aran
+  collect Medivh's Journal##23933 |q 9640 |goto Karazhan - Raid -1,-1 |raid |tip {dropsfrom}Shade of Aran
 step
   note Khadgar wants you to enter the Shadow Labyrinth at Auchindoun and retrieve the First Key Fragment from an Arcane Container hidden there.
   collect First Key Fragment##24514 |q 9831 |goto Shattrath City 54.75,44.32 |tip {dropsfrom}First Fragment Guardian
@@ -226,7 +226,7 @@ step
   accept The Master's Touch##9836 |goto Shattrath City 54.75,44.32
 step
   note Archmage Alturus wants you to go to the mountains south of Karazhan in Deadwind Pass and retrieve a Charred Bone Fragment.
-  collect Charred Bone Fragment##24152 |q 9680 |goto Deadwind Pass 45.0,78.96 |tip {dropsfrom}Charred Bone Fragment
+  collect Charred Bone Fragment##24152 |q 9680 |goto Deadwind Pass 45.0,78.96
 step
   talk Archmage Alturus##17613
   turnin Digging Up the Past##9680 |goto Deadwind Pass 47.28,75.21
@@ -268,7 +268,7 @@ step
   accept Assessing the Situation##9840 |goto Deadwind Pass 47.28,75.21
 step
   note Go to the Master's Terrace in Karazhan and use Kalynna's Urn to summon Nightbane. Retrieve the Faint Arcane Essence from Nightbane's corpse and bring it to Archmage Alturus.
-  collect Faint Arcane Essence##24139 |q 9644 |goto Karazhan - Raid -1,-1 |tip {dropsfrom}Nightbane
+  collect Faint Arcane Essence##24139 |q 9644 |goto Karazhan - Raid -1,-1 |raid |tip {dropsfrom}Nightbane
 step
   talk Archmage Alturus##17613
   turnin Nightbane##9644 |goto Deadwind Pass 47.28,75.21
@@ -280,7 +280,7 @@ step
   accept Keanna's Log##9843 |goto Karazhan - Raid -1,-1
 step
   note Search the Guest Chambers inside Karazhan for Keanna's Log and bring it to Archmage Alturus outside Karazhan.
-  collect Keanna's Log##24492 |q 9843 |goto Karazhan - Raid -1,-1 |tip {dropsfrom}Keanna's Log
+  collect Keanna's Log##24492 |q 9843 |goto Karazhan - Raid -1,-1
 step
   talk Archmage Alturus##17613
   turnin Keanna's Log##9843 |goto Deadwind Pass 47.28,75.21

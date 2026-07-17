@@ -79,7 +79,7 @@ step
   collect Arklon Crystal Artifact##28829 |q 10265 |goto Netherstorm 42.46,72.75 |tip {dropsfrom}Pentatharon
 step
   note The Image of Commander Ameer at the Ethereum Staging Grounds - Ethereum Transponder Zeta - wants you to recover the Ethereum Data Cell.
-  collect Ethereum Data Cell##29582 |q 10384 |goto Netherstorm 55.77,39.89 |tip {dropsfrom}Ethereum Data Cell
+  collect Ethereum Data Cell##29582 |q 10384 |goto Netherstorm 55.77,39.89
 step
   talk Spymaster Thalodien##19468
   turnin High Value Targets##10193 |goto Netherstorm 32.0,64.07
@@ -178,7 +178,7 @@ step
   collect Sunfury Researcher Gloves##28636 |q 10197 |goto Netherstorm 53.02,83.05 |tip {dropsfrom}Sunfury Researcher
 step
   note Collect 10 Boxes of Surveying Equipment and return them to Gahruj at the Midrealm Post inside Eco-Dome Midrealm in the Netherstorm.
-  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76 |tip {dropsfrom}Box of Surveying Equipment
+  collect 10 Box of Surveying Equipment##28913 |q 10267 |goto Netherstorm 58.82,65.76
 step
   talk Caledis Brightdawn##19840
   turnin A Convincing Disguise##10197 |goto Netherstorm 48.24,86.6

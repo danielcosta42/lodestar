@@ -20,13 +20,22 @@ step
   accept Bijou's Belongings##5001 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Find Bijou's Belongings and return them to her. Good luck!
-  collect Bijou's Belongings##12345 |q 5001 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Bijou's Belongings
+  collect Bijou's Belongings##12345 |q 5001 |goto Blackrock Spire - Dungeon -1,-1
+step
+  kill Overlord Wyrmthalak##9568 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept General Drakkisath's Command##5089 |goto Blackrock Spire - Dungeon -1,-1
+step
+  click Human Remains##176090
+  accept Hot Fiery Death##5103 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Awbee##10740
   accept The Matron Protectorate##5160 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Elder Stonefort##15560
   accept Stonefort the Elder##8644 |goto Blackrock Spire - Dungeon -1,-1
+step
+  talk Marshal Maxwell##9560
+  turnin General Drakkisath's Command##5089 |goto Burning Steppes 84.74,69.02 |tip {turninat}Burning Steppes
 step
   talk Warosh##10799
   turnin Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
@@ -39,6 +48,9 @@ step
 step
   talk Bijou##10257
   turnin Bijou's Belongings##5001 |goto Blackrock Spire - Dungeon -1,-1
+step
+  talk Malyfous Darkhammer##10637
+  turnin Hot Fiery Death##5103 |goto Winterspring 60.99,38.78 |tip {turninat}Winterspring
 step
   talk Lexlort##9080
   turnin Bijou's Reconnaissance Report##4983 |goto Badlands 5.88,47.63 |tip {turninat}Badlands

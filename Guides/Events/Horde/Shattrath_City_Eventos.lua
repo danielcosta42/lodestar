@@ -31,7 +31,7 @@ step
   accept The Hand of Gul'dan##10681 |goto Shadowmoon Valley 28.49,26.57
 step
   note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
-  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37 |tip {dropsfrom}Eye of Veil Reskk
+  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37
 step
   note Use the Violet Scrying Crystal near underground sources of water in the Master's Cellar and return to Archmage Alturus outside of Karazhan.
   get Arcane Disturbances |q 9824 |goto Deadwind Pass 53.2,90.22
@@ -73,6 +73,9 @@ step
 step
   talk Exarch Orelis##19466
   accept Distraction at Manaforge B'naar##10241 |goto Netherstorm 32.07,64.18
+step
+  click B'naar Control Console##183770
+  accept B'naar Console Transcription##10245 |goto Netherstorm 23.21,68.25
 step
   talk Archmage Alturus##17613
   accept Contact from Dalaran##9826 |goto Deadwind Pass 47.28,75.21
@@ -237,7 +240,7 @@ step
   collect Sapphire Signal Fire##185216 |q 10874 |goto Terokkar Forest 55.18,67.21
 step
   note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
-  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52 |tip {dropsfrom}Shadowmoon Tuber
+  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52
 step
   talk Kirrik the Awakened##22272
   turnin Veil Shalas: Signal Fires##10874 |goto Terokkar Forest 37.45,51.54
@@ -306,7 +309,8 @@ step
   accept Borak, Son of Oronok##10546 |goto Shadowmoon Valley 53.95,23.52
 step
   note Anchorite Karja at Area 52 wants you to obtain the First Half of Socrethar's Stone from Forgemaster Morug at Forge Base: Oblivion and the Second Half of Socrethar's Stone from Silroth at Forge Base: Gehenna.
-  collect First Half of Socrethar's Stone##29624 |q 10407 |goto Netherstorm 36.15,26.43 |tip {dropsfrom}Forgemaster Morug
+  kill Forgemaster Morug##20800 |goto Netherstorm 36.15,26.43 |elite
+  collect First Half of Socrethar's Stone##29624 |q 10407 |goto Netherstorm 36.15,26.43
 step
   talk Anchorite Karja##19467
   turnin Socrethar's Shadow##10407 |goto Netherstorm 32.04,64.18
@@ -339,7 +343,7 @@ step
   collect Crystalline Key##30442 |q 10528 |goto Shadowmoon Valley 28.3,47.61 |tip {dropsfrom}Painmistress Gabrissa
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51 |tip {dropsfrom}Rotten Arakkoa Egg
+  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51
 step
   talk Ishanah##18538
   turnin Ishanah's Help##10410 |goto Shattrath City 23.97,29.73
@@ -423,7 +427,8 @@ step
   accept The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18
 step
   note Borak, Son of Oronok at the bridge near Eclipse Point in Shadowmoon Valley wants you to recover the Third Part of the Cipher of Damnation from Ruul the Darkener.
-  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7 |tip {dropsfrom}Ruul the Darkener
+  kill Ruul the Darkener##21315 |goto Shadowmoon Valley 57.28,50.7 |elite
+  collect Third Fragment of the Cipher of Damnation##30645 |q 10578 |goto Shadowmoon Valley 57.28,50.7
 step
   talk Borak, Son of Oronok##21293
   turnin The Cipher of Damnation - Borak's Charge##10578 |goto Shadowmoon Valley 47.56,57.18

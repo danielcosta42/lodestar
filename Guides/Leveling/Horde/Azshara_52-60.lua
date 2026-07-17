@@ -19,14 +19,11 @@ step
   note Destroy 6 Highborne Apparitions and 6 Highborne Lichlings before returning to Loh'atu in Azshara.
   kill Highborne Apparition##6116 |q 5535 |goto Azshara 16.55,70.71
 step
-  talk Ag'tor Bloodfist##8576
-  accept Betrayed##3507 |goto Azshara 22.26,51.48
-step
   talk Jediga##8587
   accept Stealing Knowledge##3517 |goto Azshara 22.56,51.42
 step
   note Find the Tablet of Beth'Amara, the Tablet of Jin'yael, the Tablet of Markri, and the Tablet of Sael'hai before returning to Jediga in Azshara.
-  collect Tablet of Beth'Amara##10538 |q 3517 |goto Azshara 38.41,52.69 |tip {dropsfrom}Tablet of Beth'Amara
+  collect Tablet of Beth'Amara##10538 |q 3517 |goto Azshara 38.41,52.69
 step
   note Kill 6 Haldarr Satyr, 2 Haldarr Tricksters, 2 Haldarr Felsworn and then return to Loh'atu on the border of Ashenvale.
   kill Haldarr Satyr##6125 |q 5536 |goto Azshara 20.4,61.79
@@ -39,21 +36,24 @@ step
   note Bring 10 Encoded Fragments to Archmage Xylem in Azshara.
   collect 10 Encoded Fragment##20023 |q 8235 |goto Azshara 36.82,42.87 |tip {dropsfrom}Thunderhead Stagwing, Thunderhead Skystormer, Thunderhead Patriarch
 step
-  only Warlock
+  only Mage
   talk Archmage Xylem##8379
   accept Magic Dust##8251 |goto Azshara 29.25,40.21
 step
-  only Warlock
+  only Mage
   note Bring 10 Glittering Dust to Archmage Xylem.
   collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 57.95,28.49 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer
 step
-  only Warlock
+  only Mage
   talk Archmage Xylem##8379
   accept Warlord Krellian##9362 |goto Azshara 29.25,40.21
 step
-  only Warlock
+  only Mage
   note Retrieve the Prismatic Shell for Archmage Xylem. The Archmage resides in a tower atop the cliffs of Azshara.
   collect Prismatic Shell##23250 |q 9362 |goto Azshara 41.02,53.05 |tip {dropsfrom}Warlord Krellian
+step
+  talk Zilzibin Drumlore##7010
+  accept March of the Silithid##4494 |goto Orgrimmar 56.26,46.68
 step
   only Hunter
   talk Ogtinc##8405
@@ -71,6 +71,9 @@ step
   note Acquire 4 Healthy Courser Glands and bring them to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
   collect 4 Healthy Courser Gland##20027 |q 8255 |goto Azshara 52.87,68.58 |tip {dropsfrom}Mosshoof Courser
 step
+  talk Alchemist Pestlezugg##5594
+  turnin March of the Silithid##4494 |goto Tanaris 50.89,26.96 |tip {turninat}Tanaris
+step
   talk Kim'jael##8420
   accept Kim'jael Indeed!##3601 |goto Azshara 53.45,21.82
 step
@@ -78,7 +81,7 @@ step
   collect Kim'Jael's Compass##10717 |q 3601 |goto Azshara 58.54,28.99 |tip {dropsfrom}Kim'jael's Equipment
 step
   talk Belgrom Rockmaul##4485
-  turnin Betrayed##3507 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
+  accept Betrayed##3504 |goto Orgrimmar 75.23,34.24
 step
   talk Loramus Thalipedes##7783
   accept Loramus##3141 |goto Azshara 60.82,66.35
@@ -101,8 +104,14 @@ step
   talk Loh'atu##11548
   turnin Spiritual Unrest##5535 |goto Azshara 11.37,78.17
 step
+  talk Ag'tor Bloodfist##8576
+  turnin Betrayed##3504 |goto Azshara 22.26,51.48
+step
   talk Jediga##8587
   turnin Stealing Knowledge##3517 |goto Azshara 22.56,51.42
+step
+  talk Ag'tor Bloodfist##8576
+  accept Betrayed##3505 |goto Azshara 22.26,51.48
 step
   talk Jediga##8587
   accept Delivery to Magatha##3518 |goto Azshara 22.56,51.42
@@ -116,6 +125,10 @@ step
   talk Jediga##8587
   accept Delivery to Archmage Xylem##3561 |goto Azshara 22.56,51.42
 step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin Warlord Krellian##9362 |goto Azshara 29.25,40.21
+step
   talk Archmage Xylem##8379
   turnin Delivery to Archmage Xylem##3561 |goto Azshara 29.25,40.21
 step
@@ -123,11 +136,7 @@ step
   talk Archmage Xylem##8379
   turnin Encoded Fragments##8235 |goto Azshara 29.25,40.21
 step
-  only Warlock
-  talk Archmage Xylem##8379
-  turnin Warlord Krellian##9362 |goto Azshara 29.25,40.21
-step
-  only Warlock
+  only Mage
   talk Archmage Xylem##8379
   turnin Magic Dust##8251 |goto Azshara 29.25,40.21
 step
@@ -140,13 +149,13 @@ step
 step
   only Rogue
   note Return the Azure Key to Lord Jorach Ravenholdt.
-  collect Azure Key##20022 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
+  collect Azure Key##20022 |q 8236 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
 step
-  only Warlock
+  only Mage
   talk Archmage Xylem##8379
   accept The Siren's Coral##8252 |goto Azshara 29.25,40.21
 step
-  only Warlock
+  only Mage
   note Collect 6 Enchanted Coral and return them to Archmage Xylem.
   collect 6 Enchanted Coral##20029 |q 8252 |goto Azshara 44.56,54.02 |tip {dropsfrom}Spitelash Siren
 step
@@ -189,6 +198,9 @@ step
   note Find Some Rune that the naga have in their possession in the Ruins of Eldarath and return it to Kim'jael in Azshara.
   collect Some Rune##13815 |q 5534 |goto Azshara 44.56,54.02 |tip {dropsfrom}Spitelash Siren, Spitelash Myrmidon, Spitelash Battlemaster
 step
+  note Kill 10 Blood Elf Reclaimers, and 10 Blood Elf Surveyors before seeking out Magus Rimtori's camp. Once you've found it, look for something that might be important to her that can be used to draw her into a fight.
+  kill Blood Elf Reclaimer##6199 |q 3505 |goto Azshara 56.75,28.57
+step
   talk Magatha Grimtotem##4046
   turnin Delivery to Magatha##3518 |goto Thunder Bluff 69.85,30.91 |tip {turninat}Thunder Bluff
 step
@@ -215,7 +227,7 @@ step
   accept Eye of the Emberseer##6821 |goto Azshara 79.28,73.7
 step
   note Bring the Eye of the Emberseer to Duke Hydraxis in Azshara.
-  collect Eye of the Emberseer##17322 |q 6821 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Pyroguard Emberseer
+  collect Eye of the Emberseer##17322 |q 6821 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Pyroguard Emberseer
 step
   talk Elder Skygleam##15600
   turnin Skygleam the Elder##8720 |goto Azshara 72.55,85.24
@@ -223,17 +235,17 @@ step
   talk Jediga##8587
   turnin Xylem's Payment to Jediga##3565 |goto Azshara 22.56,51.42
 step
-  only Warlock
+  only Mage
   talk Archmage Xylem##8379
   turnin The Siren's Coral##8252 |goto Azshara 29.25,40.21
 step
-  only Warlock
+  only Mage
   talk Archmage Xylem##8379
   accept Destroy Morphaz##8253 |goto Azshara 29.25,40.21
 step
-  only Warlock
+  only Mage
   note Retrieve the Arcane Shard from Morphaz and return to Archmage Xylem.
-  collect Arcane Shard##20085 |q 8253 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
+  collect Arcane Shard##20085 |q 8253 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
 step
   only Priest
   talk Ogtinc##8405
@@ -249,7 +261,7 @@ step
 step
   only Hunter
   note Bring the Tooth of Morphaz to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
-  collect Tooth of Morphaz##20019 |q 8232 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
+  collect Tooth of Morphaz##20019 |q 8232 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
 step
   only Priest
   talk Ogtinc##8405
@@ -257,10 +269,18 @@ step
 step
   only Priest
   note Kill Morphaz in the sunken temple of Atal'Hakkar, and return his blood to Greta Mosshoof in Felwood. The entrance to the sunken temple can be found in the Swamp of Sorrows.
-  collect Blood of Morphaz##20025 |q 8257 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Morphaz
+  collect Blood of Morphaz##20025 |q 8257 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
 step
   talk Kim'jael##8420
   turnin Kim'jael's "Missing" Equipment##5534 |goto Azshara 53.45,21.82
+step
+  turnin Betrayed##3505 |goto Azshara 59.51,31.3
+step
+  click Kaldorei Tome of Summoning##151286
+  accept Betrayed##3506 |goto Azshara 59.51,31.3
+step
+  note Destroy the arcane focusing crystal tied to Magus Rimtori and then slay her. Afterwards, take the Head of Magus Rimtori to Ag'tor Bloodfist in Azshara.
+  collect Head of Magus Rimtori##10597 |q 3506 |goto Azshara 59.51,31.3 |tip {dropsfrom}Magus Rimtori
 step
   only Priest
   talk Greta Mosshoof##10922
@@ -278,7 +298,13 @@ step
   talk Duke Hydraxis##13278
   accept The Molten Core##6822 |goto Azshara 79.28,73.7
 step
-  only Warlock
+  talk Ag'tor Bloodfist##8576
+  turnin Betrayed##3506 |goto Azshara 22.26,51.48
+step
+  talk Ag'tor Bloodfist##8576
+  accept Betrayed##3507 |goto Azshara 22.26,51.48
+step
+  only Mage
   talk Archmage Xylem##8379
   turnin Destroy Morphaz##8253 |goto Azshara 29.25,40.21
 step
@@ -288,6 +314,9 @@ step
   only Hunter
   talk Ogtinc##8405
   turnin The Green Drake##8232 |goto Azshara 42.4,42.62
+step
+  talk Belgrom Rockmaul##4485
+  turnin Betrayed##3507 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
 step
   talk Lord Arkkoroc##6134
   turnin The Name of the Beast##3509 |goto Azshara 77.13,42.79
@@ -326,7 +355,7 @@ step
   accept Hands of the Enemy##6824 |goto Azshara 79.28,73.7
 step
   note Bring the Hands of Lucifron, Sulfuron, Gehennas and Shazzrah to Duke Hydraxis in Azshara.
-  collect Hand of Shazzrah##17332 |q 6824 |goto Molten Core - Raid -1,-1 |tip {dropsfrom}Shazzrah
+  collect Hand of Shazzrah##17332 |q 6824 |goto Molten Core - Raid -1,-1 |raid |tip {dropsfrom}Shazzrah
 step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35
@@ -344,7 +373,4 @@ step
   turnin The Formation of Felbane##3621 |goto Stranglethorn Vale 50.62,20.48 |tip {turninat}Stranglethorn Vale
 step
   turnin A Hero's Reward##7486 |goto Azshara 79.24,74.87
-step
-  note {travel}Un'Goro Crater
-  goto Un'Goro Crater 43.5,7.42
 ]])

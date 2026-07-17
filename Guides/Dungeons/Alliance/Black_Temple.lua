@@ -70,7 +70,8 @@ step
   accept The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |tip {dropsfrom}Shadowlord Deathwail
+  kill Shadowlord Deathwail##22006 |goto Shadowmoon Valley 72.33,34.83 |elite
+  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83
 step
   talk Akama##21700
   turnin The Ata'mal Terrace##10707 |goto Shadowmoon Valley 58.11,48.18

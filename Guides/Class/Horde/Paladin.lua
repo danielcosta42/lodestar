@@ -7,8 +7,20 @@ ns:RegisterGuide("Class/Horde/Paladin", {
 }, [[
 step
   only BloodElf Paladin
+  talk Noellene##16275
+  accept Summons from Knight-Lord Bloodvalor##9677 |goto Eversong Woods 48.4,46.47
+step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  accept The First Trial##9678 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
   talk Knight-Lord Bloodvalor##17717
   accept The Second Trial##9690 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  accept A Summons from Lord Solanar##9721 |goto Silvermoon City 89.26,35.2
 step
   talk Magistrix Erona##15278
   accept Reclaiming Sunstrider Isle##8325 |goto Eversong Woods 38.21,20.83
@@ -16,6 +28,10 @@ step
   only Paladin
   talk Champion Cyssa Dawnrose##20406
   accept To The Bulwark##9601 |goto Undercity 58.0,90.45
+step
+  only Paladin
+  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -75,31 +91,35 @@ step
   talk Mokvar##16012
   accept An Earnest Proposition##10493 |goto Orgrimmar 34.95,38.29
 step
+  only BloodElf Paladin
+  note Travel to the island Knight-Lord Bloodvalor described, find the cave, and light the brazier. When the First Trial is over, return to Knight-Lord Bloodvalor in Silvermoon City.
+  kill Sangrias Stillblade##17716 |q 9678
+step
   note Kill 8 Mana Wyrms; they are located close to the Burning Crystals that are adjacent to the tower and gazebo. Return to Magistrix Erona at the tower on Sunstrider Isle when you are done.
   kill Mana Wyrm##15274 |q 8325 |goto Eversong Woods 36.91,21.9
 step
   only Paladin
   note Bring Jin'rokh the Breaker Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Bindings##19716 |q 8053 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Bindings##19716 |q 8053 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Shawl##19721 |q 8054 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Shawl##19721 |q 8054 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Paladin
   note Bring Jin'rokh the Breaker a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Tabard##19722 |q 8055 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Tabard##19722 |q 8055 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
 step
   only Paladin
   note Bring the the Carapace of the Old God, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Carapace of the Old God##20929 |q 8627 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}C'Thun
+  collect Carapace of the Old God##20929 |q 8627 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}C'Thun
 step
   only Paladin
   note Bring Vek'lor's Diadem, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'lor's Diadem##20930 |q 8628 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Emperor Vek'lor
+  collect Vek'lor's Diadem##20930 |q 8628 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Emperor Vek'lor
 step
   only Paladin
   note Bring the Skin of the Great Sandworm, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
@@ -107,23 +127,23 @@ step
 step
   only Paladin
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Life, 5 Crystal Scarabs and 5 Gold Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Dominance##20932 |q 8630 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Dominance##20932 |q 8630 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Paladin
   note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Clay Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Dominance##20932 |q 8655 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Viscidus, Princess Huhuran
+  collect Qiraji Bindings of Dominance##20932 |q 8655 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
 step
   only Paladin
   note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Regal Drape##20889 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Paladin
   note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Magisterial Ring##20884 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Paladin
   note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
   collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 62.76,44.03 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
@@ -133,8 +153,20 @@ step
   collect 15 Silithus Venom Sample##22381 |q 10493 |goto Silithus 59.92,28.33 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
 step
   only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  turnin Summons from Knight-Lord Bloodvalor##9677 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  turnin The First Trial##9678 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
   talk Master Kelerun Bloodmourn##17807
   turnin The Second Trial##9690 |goto Eversong Woods 42.88,28.69
+step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  turnin A Summons from Lord Solanar##9721 |goto Silvermoon City 92.05,38.81
 step
   talk Magistrix Erona##15278
   turnin Reclaiming Sunstrider Isle##8325 |goto Eversong Woods 38.21,20.83
@@ -206,10 +238,18 @@ step
   turnin An Earnest Proposition##10493 |goto Orgrimmar 34.95,38.29
 step
   only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  accept A Study in Power##9681 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
   talk Master Kelerun Bloodmourn##17807
   accept The Second Trial##9686 |goto Eversong Woods 42.88,28.69
 step
-  only Warlock
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  accept The Master's Path##9722 |goto Silvermoon City 92.05,38.81
+step
+  only Mage
   talk Magistrix Erona##15278
   accept Mage Training##8328 |goto Eversong Woods 38.21,20.83
 step
@@ -254,10 +294,18 @@ step
   kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
 step
   only BloodElf Paladin
+  talk Magister Astalor Bloodsworn##17718
+  turnin A Study in Power##9681 |goto Silvermoon City 92.06,36.24
+step
+  only BloodElf Paladin
   talk Master Kelerun Bloodmourn##17807
   turnin The Second Trial##9686 |goto Eversong Woods 42.88,28.69
 step
-  only Warlock
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  turnin The Master's Path##9722 |goto Silvermoon City 92.05,38.81
+step
+  only Mage
   talk Julia Sunstriker##15279
   turnin Mage Training##8328 |goto Eversong Woods 39.23,21.46
 step
@@ -286,8 +334,16 @@ step
   turnin Echoes of War##9033 |goto Eastern Plaguelands 81.54,58.16
 step
   only BloodElf Paladin
+  talk Magister Astalor Bloodsworn##17718
+  accept Claiming the Light##9684 |goto Silvermoon City 92.06,36.24
+step
+  only BloodElf Paladin
   talk Master Kelerun Bloodmourn##17807
   accept Return to Silvermoon##9691 |goto Eversong Woods 42.88,28.69
+step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  accept A Gesture of Commitment##9723 |goto Silvermoon City 92.05,38.81
 step
   only Paladin
   talk Julia Sunstriker##15279
@@ -339,6 +395,14 @@ step
   talk Commander Eligor Dawnbringer##16115
   accept Redemption Wristguards##9050 |goto Eastern Plaguelands 81.54,58.16
 step
+  only BloodElf Paladin
+  note Use the Shimmering Vessel on the Blood Elf Magisters to fill it and return to Knight-Lord Bloodvalor in Silvermoon City.
+  collect Filled Shimmering Vessel##24156 |q 9684 |goto Silvermoon City 92.06,36.24
+step
+  only BloodElf Paladin
+  note Bring 40 Runecloth, 6 Arcanite Bars, 10 Sungrass, 5 Dark Runes, and 150 Gold to Lord Solanar Bloodwrath in Silvermoon City.
+  collect 40 Runecloth##14047 |q 9723 |goto Alterac Valley - Battleground 51.71,94.86 |tip {dropsfrom}Grimtooth, Stonard Shaman, Firewing Bloodwarder
+step
   only Paladin
   collect Heathen's Brand##19585 |q 8047 |goto Stranglethorn Vale 15.31,14.43
 step
@@ -359,11 +423,11 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Spaulders##22361 |q 9046 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect Desecrated Spaulders##22361 |q 9046 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Boots##22365 |q 9047 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect Desecrated Boots##22365 |q 9047 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
@@ -371,15 +435,23 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9049 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect Desecrated Girdle##22363 |q 9049 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9050 |goto Naxxramas - Raid -1,-1 |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect Desecrated Wristguards##22362 |q 9050 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
+  turnin Claiming the Light##9684 |goto Silvermoon City 89.26,35.2
 step
   only BloodElf Paladin
   talk Knight-Lord Bloodvalor##17717
   turnin Return to Silvermoon##9691 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  turnin A Gesture of Commitment##9723 |goto Silvermoon City 92.05,38.81
 step
   only Paladin
   talk Well Watcher Solanian##15295
@@ -433,6 +505,14 @@ step
 step
   only BloodElf Paladin
   talk Knight-Lord Bloodvalor##17717
+  accept Redeeming the Dead##9685 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  accept A Demonstration of Loyalty##9725 |goto Silvermoon City 92.05,38.81
+step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
   accept The Path of the Adept##9692 |goto Silvermoon City 89.26,35.2
 step
   only Paladin
@@ -448,6 +528,14 @@ step
 step
   talk Mux Manascrambler##16014
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
+step
+  only BloodElf Paladin
+  note Take the Filled Shimmering Vessel to Silvermoon City's inn and use its magic to resurrect Sangrias Stillblade.
+  kill Blood Knight Stillblade##17768 |q 9685 |goto Silvermoon City 80.12,60.3
+step
+  only BloodElf Paladin
+  note Lord Solanar Bloodwrath in Silvermoon City wants you to destroy 3 Scourge Meat Wagons and kill 15 Scourge Siege Engineers.
+  kill Scourge Siege Engineer##17878 |q 9725 |goto Eastern Plaguelands 60.85,21.91
 step
   only BloodElf Paladin
   note Bring a Corrupted Kor Gem, a Crate of Bloodforged Ingots, a quantity of Blood of the Wrathful, and a Blood Knight Insignia to Knight-Lord Bloodvalor in Silvermoon City.
@@ -468,6 +556,14 @@ step
 step
   only BloodElf Paladin
   talk Knight-Lord Bloodvalor##17717
+  turnin Redeeming the Dead##9685 |goto Silvermoon City 89.26,35.2
+step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  turnin A Demonstration of Loyalty##9725 |goto Silvermoon City 92.05,38.81
+step
+  only BloodElf Paladin
+  talk Knight-Lord Bloodvalor##17717
   turnin The Path of the Adept##9692 |goto Silvermoon City 89.26,35.2
 step
   only Paladin
@@ -485,6 +581,10 @@ step
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  accept True Masters of the Light##9735 |goto Silvermoon City 92.05,38.81
+step
+  only BloodElf Paladin
   talk Knight-Lord Bloodvalor##17717
   accept Forging the Weapon##9707 |goto Silvermoon City 89.26,35.2
 step
@@ -495,8 +595,16 @@ step
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only BloodElf Paladin
+  note Lord Solanar Bloodwrath in Silvermoon City wants you to bring him a vial of Tyr's Hand Holy Water.
+  collect Tyr's Hand Holy Water##24284 |q 9735 |goto Eastern Plaguelands 83.63,77.62 |tip {dropsfrom}Basin of Holy Water
+step
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
   collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
+step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  turnin True Masters of the Light##9735 |goto Silvermoon City 92.05,38.81
 step
   only BloodElf Paladin
   talk Bemarrin##16669
@@ -510,14 +618,26 @@ step
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
   only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  accept True Masters of the Light##9736 |goto Silvermoon City 92.05,38.81
+step
+  only BloodElf Paladin
   talk Bemarrin##16669
   accept The Blood-Tempered Ranseur##9710 |goto Silvermoon City 79.38,38.64
 step
   talk Mux Manascrambler##16014
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only BloodElf Paladin
+  note Lord Solanar Bloodwrath in Silvermoon City wants you to bring him 1 Arcane Catalyst, 1 Crepuscular Powder, 1 Azerothian Diamond, and 1 Pristine Black Diamond.
+  collect Arcane Catalyst##24286 |q 9736 |goto Silvermoon City 92.05,38.81
+step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
   collect Fel Elemental Rod##21939 |q 8928 |goto Tanaris 52.47,27.23
+step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  turnin True Masters of the Light##9736 |goto Silvermoon City 92.05,38.81
 step
   only BloodElf Paladin
   talk Bemarrin##16669
@@ -526,8 +646,20 @@ step
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  accept True Masters of the Light##9737 |goto Silvermoon City 92.05,38.81
+step
   talk Mux Manascrambler##16014
   accept Return to Mokvar##8978 |goto Tanaris 52.47,27.23
+step
+  only BloodElf Paladin
+  note Use the Extinguishing Mixture near the eternal flame in the Alonsus Chapel to remove the Light's protection. Be prepared to fight anyone who may attempt to defend the chapel.
+  get True Masters of the Light |q 9737 |goto Stratholme - Dungeon -1,-1
+step
+  only BloodElf Paladin
+  talk Lord Solanar Bloodwrath##25223
+  turnin True Masters of the Light##9737 |goto Silvermoon City 92.05,38.81
 step
   talk Mokvar##16012
   turnin Return to Mokvar##8978 |goto Orgrimmar 34.95,38.29
@@ -538,7 +670,7 @@ step
 step
   only Paladin
   note Bring a Lightforge Belt and a set of Lightforge Gauntlets to Mokvar in Orgrimmar.
-  collect Lightforge Belt##16723 |q 10495 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
+  collect Lightforge Belt##16723 |q 10495 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
 step
   only Paladin
   talk Mokvar##16012
@@ -584,7 +716,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -593,7 +725,7 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -638,7 +770,8 @@ step
   accept Components of Importance##8965
 step
   note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6 |tip {dropsfrom}Cursed Paladin, Cursed Justicar, Writhing Mage
+  kill Cursed Paladin##7071 |goto Hillsbrad Foothills 18.45,76.6 |elite
+  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
 step
   talk Bodley##16033
   turnin Components of Importance##8965

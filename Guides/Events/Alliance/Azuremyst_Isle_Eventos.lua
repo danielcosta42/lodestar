@@ -16,11 +16,11 @@ step
   talk Magwin##17312
   accept A Cry For Help##9528 |goto Azuremyst Isle 13.62,73.22
 step
-  only Warlock
+  only Mage
   talk Semid##17481
   accept Control##9595 |goto Azuremyst Isle 49.87,49.95
 step
-  only Warlock
+  only Mage
   note Kill Murlocs of the Silting Shore to summon a Quel'dorei Magewraith, then destroy it. Afterwards, speak with Bati at the Vault of Lights in the Exodar.
   kill Quel'dorei Magewraith##17612 |q 9595
 step
@@ -34,7 +34,7 @@ step
   talk Cowlen##17311
   turnin A Cry For Help##9528
 step
-  only Warlock
+  only Mage
   talk Bati##17514
   turnin Control##9595 |goto The Exodar 46.35,63.48
 step

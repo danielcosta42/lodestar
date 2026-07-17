@@ -87,6 +87,12 @@ step
   talk Gelvas Grimegate##14828
   accept 50 Tickets - Last Year's Mutton##7936 |goto Mulgore 37.31,37.73
 step
+  kill Sayge##14822 |goto Mulgore 36.92,38.36 |tip Loot the quest item here — it starts the quest.
+  accept Your Fortune Awaits You...##7937 |goto Mulgore 36.92,38.36
+step
+  kill Sayge##14822 |goto Mulgore 36.92,38.36 |tip Loot the quest item here — it starts the quest.
+  accept Your Fortune Awaits You...##7938 |goto Mulgore 36.92,38.36
+step
   talk Chronos##14833
   accept More Dense Grinding Stones##7939 |goto Mulgore 36.16,35.18
 step
@@ -101,6 +107,12 @@ step
 step
   talk Yebb Neblegear##14829
   accept More Bat Eyes##7943 |goto Mulgore 37.54,39.63
+step
+  kill Sayge##14822 |goto Mulgore 36.92,38.36 |tip Loot the quest item here — it starts the quest.
+  accept Your Fortune Awaits You...##7944 |goto Mulgore 36.92,38.36
+step
+  kill Sayge##14822 |goto Mulgore 36.92,38.36 |tip Loot the quest item here — it starts the quest.
+  accept Your Fortune Awaits You...##7945 |goto Mulgore 36.92,38.36
 step
   talk Morja##14871
   accept Spawn of Jubjub##7946 |goto Elwynn Forest 43.34,70.28
@@ -145,7 +157,7 @@ step
 step
   collect Mechanical Repair Kit##11590 |q 7897 |goto Mulgore 37.12,37.31
 step
-  collect Thorium Widget##15994 |q 7898 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
+  collect Thorium Widget##15994 |q 7898 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
 step
   collect Small Furry Paw##5134 |q 7899 |goto Darkshore 42.66,66.05 |tip {dropsfrom}Moonstalker, Moonstalker Runt, Moonstalker Matriarch
 step
@@ -189,11 +201,11 @@ step
 step
   collect Rugged Armor Kit##15564 |q 7941 |goto Tanaris 37.69,63.72 |tip {dropsfrom}Rabid Blisterpaw, Scorching Elemental
 step
-  collect Thorium Widget##15994 |q 7942 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
+  collect Thorium Widget##15994 |q 7942 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
 step
   collect Evil Bat Eye##11404 |q 7943 |goto Eastern Plaguelands 33.87,77.16 |tip {dropsfrom}Plaguebat, Noxious Plaguebat, Monstrous Plaguebat
 step
-  collect Dark Iron Ale Mug##11325 |q 7946 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Officer, Grim Patron, Guzzling Patron
+  collect Dark Iron Ale Mug##11325 |q 7946 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |elite |tip {dropsfrom}Anvilrage Officer, Grim Patron, Guzzling Patron
 step
   collect Darkmoon Faire Prize Ticket##19182 |q 7981 |goto Mulgore 37.31,37.73
 step

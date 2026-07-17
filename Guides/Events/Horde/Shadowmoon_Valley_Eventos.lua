@@ -163,7 +163,7 @@ step
   kill Zandras##21827 |q 10622 |goto Shadowmoon Valley 58.03,49.13
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to collect 12 Nethervine Crystals from Netherwing Ledge.
-  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14 |tip {dropsfrom}Nethervine Crystal
+  collect 12 Nethervine Crystal##31504 |q 10837 |goto Shadowmoon Valley 70.78,83.14
 step
   talk Oronok Torn-heart##21183
   turnin Oronok Torn-heart##10513 |goto Shadowmoon Valley 53.95,23.52
@@ -190,7 +190,7 @@ step
   accept Dragonmaw Race: Wing Commander Mulverick##11070 |goto Shadowmoon Valley 65.17,84.88
 step
   note Oronok Torn-heart at Oronok's Farm in Shadowmoon Valley wants you to recover 10 Shadowmoon Tubers from the Shattered Plains.
-  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52 |tip {dropsfrom}Shadowmoon Tuber
+  collect Shadowmoon Tuber##30356 |q 10514 |goto Shadowmoon Valley 53.95,23.52
 step
   note Neltharaku, flying high above Netherwing Fields in Shadowmoon Valley, wants you to free 5 Enslaved Netherwing Drakes.
   get The Force of Neltharaku |q 10854 |goto Shadowmoon Valley 61.31,59.98
@@ -265,7 +265,8 @@ step
   accept Ally of the Netherwing##10870 |goto Shadowmoon Valley 69.86,61.44
 step
   note Go to the top of the Atam'al Terrace in Shadowmoon Valley and obtain the Heart of Fury. Return to Akama at the Warden's Cage in Shadowmoon Valley when you've completed this task.
-  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83 |tip {dropsfrom}Shadowlord Deathwail
+  kill Shadowlord Deathwail##22006 |goto Shadowmoon Valley 72.33,34.83 |elite
+  collect Heart of Fury##31307 |q 10707 |goto Shadowmoon Valley 72.33,34.83
 step
   talk Borak, Son of Oronok##21293
   turnin Borak, Son of Oronok##10546 |goto Shadowmoon Valley 47.56,57.18
@@ -286,7 +287,7 @@ step
   accept Blood Oath of the Netherwing##11012 |goto Shadowmoon Valley 59.19,58.69
 step
   note Borak, Son of Oronok at the bridge north of Eclipse Point wants you to find a Rotten Arakkoa Egg and deliver it to Tobias the Filth Gorger in Shattrath City, located in northwest Terokkar Forest.
-  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51 |tip {dropsfrom}Rotten Arakkoa Egg
+  collect Rotten Arakkoa Egg##30500 |q 10547 |goto Shadowmoon Valley 44.15,57.51
 step
   talk Tobias the Filth Gorger##21411
   turnin Of Thistleheads and Eggs...##10547 |goto Shattrath City 63.95,70.03

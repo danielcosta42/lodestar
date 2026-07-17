@@ -18,6 +18,9 @@ step
   talk Severin##23042
   accept World of Shadows##11004 |goto Terokkar Forest 64.05,66.88
 step
+  kill Talonpriest Ishaal##23066 |goto Terokkar Forest 69.0,78.54 |tip Loot the quest item here — it starts the quest.
+  accept Ishaal's Almanac##11021 |goto Terokkar Forest 69.0,78.54
+step
   talk Skyguard Handler Deesak##23415
   accept Hungry Nether Rays##11093 |goto Terokkar Forest 63.5,65.81
 step
@@ -28,10 +31,14 @@ step
   accept Assault on Bash'ir Landing!##11119 |goto Blade's Edge Mountains 27.38,52.68
 step
   note Retrieve Maggoc's Treasure Chest and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Maggoc's Treasure Chest##32380 |q 10996 |goto Blade's Edge Mountains 58.59,60.8 |tip {dropsfrom}Maggoc's Treasure Chest
+  kill Maggoc##20600 |goto Blade's Edge Mountains 58.59,60.8 |elite
+  click Maggoc's Treasure Chest##185569 |tip {spawnsafter}Maggoc
+  collect Maggoc's Treasure Chest##32380 |q 10996 |goto Blade's Edge Mountains 58.59,60.8
 step
   note Retrieve Slaag's Standard and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Slaag's Standard##32382 |q 10997 |goto Terokkar Forest 20.17,18.1 |tip {dropsfrom}Slaag's Standard
+  kill Slaag##22199 |goto Terokkar Forest 20.17,18.1 |elite
+  click Slaag's Standard##185574 |tip {spawnsafter}Slaag
+  collect Slaag's Standard##32382 |q 10997 |goto Terokkar Forest 20.17,18.1
 step
   note Severin wants you to venture into Skettis and retrieve 6 Shadow Dusts from the arakkoa that dwell there.
   collect 6 Shadow Dust##32388 |q 11004 |goto Terokkar Forest 69.85,79.32 |tip {dropsfrom}Skettis Wing Guard, Skettis Windwalker, Skettis Talonite
@@ -79,7 +86,8 @@ step
   accept To Skettis!##11098 |goto Shattrath City 64.33,42.33
 step
   note Retrieve Grulloc's Dragon Skull and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Grulloc's Dragon Skull##32379 |q 10995 |goto Blade's Edge Mountains 60.92,47.61 |tip {dropsfrom}Grulloc, Grulloc's Dragon Skull
+  kill Grulloc##20216 |goto Blade's Edge Mountains 60.92,47.61 |elite
+  collect Grulloc's Dragon Skull##32379 |q 10995 |goto Blade's Edge Mountains 60.92,47.61
 step
   note Obtain an Elixir of Shadows from Severin and use it to find and slay Talonpriest Ishaal, Talonpriest Skizzik and Talonpriest Zellek in Skettis. Return to Commander Adaris after completing this task.
   kill Talonpriest Ishaal##23066 |q 11005 |goto Terokkar Forest 69.0,78.54
@@ -114,7 +122,7 @@ step
   accept Escape from Skettis##11085 |goto Terokkar Forest 75.07,86.3
 step
   note You must retrieve Vim'gol's Vile Grimoire. Deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Vim'gol's Vile Grimoire##32358 |q 10998 |goto Blade's Edge Mountains 55.49,44.86 |tip {dropsfrom}Vim'gol's Vile Grimoire
+  collect Vim'gol's Vile Grimoire##32358 |q 10998 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Seek out Monstrous Kaliri Eggs on the tops of Skettis dwellings and use the Skyguard Blasting Charges on them. Return to Sky Sergeant Doryn.
   get Fires Over Skettis |q 11008 |goto Terokkar Forest 70.04,80.35
@@ -138,10 +146,10 @@ step
   accept Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
 step
   note Retrieve Skulloc's Soul and deliver it to Mog'dorg the Wizened atop the tower at the Circle of Blood in the Blade's Edge Mountains.
-  collect Skulloc's Soul##32383 |q 11000 |goto Blade's Edge Mountains 55.49,44.86 |tip {dropsfrom}Skulloc's Soul
+  collect Skulloc's Soul##32383 |q 11000 |goto Blade's Edge Mountains 55.49,44.86
 step
   note Obtain Hazzik's Package at his dwelling in eastern Skettis and return to him with it.
-  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08 |tip {dropsfrom}Hazzik's Package
+  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08
 step
   talk Mog'dorg the Wizened##22941
   turnin Into the Soulgrinder##11000 |goto Blade's Edge Mountains 55.49,44.86
@@ -222,7 +230,8 @@ step
   collect Akkarai's Talons##32715 |q 11074 |goto Terokkar Forest 64.23,66.97 |tip {dropsfrom}Darkscreecher Akkarai
 step
   note Sky Commander Keller has asked you to acquire Dragon Teeth and return them to him at the Skyguard Outpost atop the Blade's Edge Mountains.
-  collect Dragon Teeth##32732 |q 11078 |goto Blade's Edge Mountains 30.43,58.58 |tip {dropsfrom}Rivendark, Furywing, Insidion
+  kill Rivendark##23061 |goto Blade's Edge Mountains 30.43,58.58 |elite
+  collect Dragon Teeth##32732 |q 11078 |goto Blade's Edge Mountains 30.43,58.58
 step
   talk Torkus##23316
   turnin Our Boy Wants To Be A Skyguard Ranger##11030 |goto Blade's Edge Mountains 28.38,57.64
@@ -254,6 +263,7 @@ step
   talk Chu'a'lor##23233
   accept Guardian of the Monument##11059 |goto Blade's Edge Mountains 28.76,57.36
 step
+  only Druid
   talk Sky Sergeant Vanderlip##23120
   accept Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
 step
@@ -263,6 +273,7 @@ step
   note Chu'a'lor has asked you to obtain an Apexis Guardian's Head for him as proof. Return with it to him at Ogri'la atop the Blade's Edge Mountains once you have done so.
   collect Apexis Guardian's Head##32697 |q 11059 |goto Blade's Edge Mountains 28.76,57.36 |tip {dropsfrom}Apexis Guardian
 step
+  only Druid
   note Sky Sergeant Vanderlip has tasked you with the bombing of 15 Fel Cannonball Stacks. Return to her at the Skyguard Outpost atop the Blade's Edge Mountains once you have done so.
   get Bombing Run |q 11102 |goto Blade's Edge Mountains 27.56,52.9
 step
@@ -272,6 +283,7 @@ step
   talk Chu'a'lor##23233
   turnin Guardian of the Monument##11059 |goto Blade's Edge Mountains 28.76,57.36
 step
+  only Druid
   talk Sky Sergeant Vanderlip##23120
   turnin Bombing Run##11102 |goto Blade's Edge Mountains 27.56,52.9
 step

@@ -6,11 +6,14 @@ ns:RegisterGuide("Dungeons/Horde/Blackfathom Deeps", {
 	author = "Lodestar Generator",
 }, [[
 step
+  kill Blackfathom Tide Priestess##4802 |goto Darkshore 31.38,92.07 |tip Loot the quest item here — it starts the quest.
+  accept Allegiance to the Old Gods##6564 |goto Darkshore 31.38,92.07
+step
   talk Argent Guard Thaelrid##4787
   accept Blackfathom Villainy##6561 |goto Blackfathom Deeps - Dungeon -1,-1
 step
   note Bring the head of Twilight Lord Kelris to Bashana Runetotem in Thunder Bluff.
-  collect Head of Kelris##5881 |q 6561 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {dropsfrom}Twilight Lord Kelris
+  collect Head of Kelris##5881 |q 6561 |goto Blackfathom Deeps - Dungeon -1,-1 |elite |tip {dropsfrom}Twilight Lord Kelris
 step
   talk Je'neu Sancrea##12736
   turnin Allegiance to the Old Gods##6564 |goto Ashenvale 11.56,34.29

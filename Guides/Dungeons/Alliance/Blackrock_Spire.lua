@@ -18,6 +18,9 @@ step
   talk Warosh##10799
   accept Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
 step
+  kill Overlord Wyrmthalak##9568 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  accept General Drakkisath's Command##5089 |goto Blackrock Spire - Dungeon -1,-1
+step
   talk Awbee##10740
   accept The Matron Protectorate##5160 |goto Blackrock Spire - Dungeon -1,-1
 step
@@ -28,7 +31,7 @@ step
   kill Halycon##10220 |q 4701 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   note Find Bijou's Belongings and return them to her. Good luck!
-  collect Bijou's Belongings##12345 |q 5001 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Bijou's Belongings
+  collect Bijou's Belongings##12345 |q 5001 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Read Warosh's Scroll. Bring Warosh's Mojo to Warosh.
   collect Warosh's Mojo##12712 |q 4867 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Urok Doomhowl

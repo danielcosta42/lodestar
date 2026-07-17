@@ -22,6 +22,13 @@ step
   talk Windcaller Proudhorn##15191
   accept Securing the Supply Lines##8280 |goto Silithus 51.15,38.29
 step
+  click Wanted Poster: Deathclasp##180448
+  accept Wanted - Deathclasp, Terror of the Sands##8283 |goto Silithus 51.35,38.27
+step
+  note Bring Deathclasp's Pincer to Vish Kozus, Captain of the Guard.
+  kill Deathclasp##15196 |goto Silithus 45.07,92.31 |elite
+  collect Deathclasp's Pincer##20385 |q 8283 |goto Silithus 45.07,92.31
+step
   talk Geologist Larksbane##15183
   accept The Twilight Mystery##8284 |goto Silithus 49.67,37.46
 step
@@ -37,11 +44,8 @@ step
   talk Calandrath##15174
   accept Desert Recipe##8307 |goto Silithus 51.89,39.16
 step
-  talk Calandrath##15174
-  accept Kitchen Assistance##8317 |goto Silithus 51.89,39.16
-step
-  note Calandrath at Cenarion Hold needs a batch of 10 Smoked Desert Dumplings.
-  collect Smoked Desert Dumplings##20452 |q 8317 |goto Silithus 51.89,39.16
+  kill Hive'Ashi Stinger##11698 |goto Silithus 48.5,41.14 |tip Loot the quest item here — it starts the quest.
+  accept Brann Bronzebeard's Lost Letter##8308 |goto Silithus 48.5,41.14
 step
   talk Bor Wildmane##15306
   accept Secret Communication##8318 |goto Silithus 48.57,37.78
@@ -70,7 +74,7 @@ step
 step
   only Warrior
   note Bring 1 Qiraji Magisterial Ring, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8556 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Magisterial Ring##20884 |q 8556 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Warrior
   talk Keyl Swiftclaw##15500
@@ -78,7 +82,7 @@ step
 step
   only Warrior
   note Bring 1 Qiraji Martial Drape, 2 Onyx Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8557 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Martial Drape##20885 |q 8557 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Warrior
   talk Warden Haro##15499
@@ -86,7 +90,7 @@ step
 step
   only Warrior
   note Bring 1 Qiraji Spiked Hilt, 2 Alabaster Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8558 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8558 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Priest
   talk Keyl Swiftclaw##15500
@@ -94,29 +98,31 @@ step
 step
   only Priest
   note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
-  only Mage
+  only Shaman
   talk Keyl Swiftclaw##15500
   accept Cloak of the Gathering Storm##8690 |goto Silithus 51.76,39.54
 step
-  only Mage
+  only Shaman
   note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Clay Scarabs and 5 Gold Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8690 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Regal Drape##20889 |q 8690 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
-  only Warlock
+  only Mage
   talk Keyl Swiftclaw##15500
   accept Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
 step
-  only Warlock
+  only Mage
   note Bring 1 Qiraji Martial Drape, 2 Alabaster Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8691 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Martial Drape##20885 |q 8691 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
+  only Druid
   talk Keyl Swiftclaw##15500
   accept Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
 step
+  only Druid
   note Bring 1 Qiraji Regal Drape, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8692 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Regal Drape##20889 |q 8692 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Rogue
   talk Keyl Swiftclaw##15500
@@ -124,15 +130,15 @@ step
 step
   only Rogue
   note Bring 1 Qiraji Martial Drape, 2 Azure Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8693 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Martial Drape##20885 |q 8693 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
-  only Druid
+  only Warlock
   talk Keyl Swiftclaw##15500
   accept Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
 step
-  only Druid
+  only Warlock
   note Bring 1 Qiraji Regal Drape, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8694 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Regal Drape##20889 |q 8694 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Paladin
   talk Keyl Swiftclaw##15500
@@ -140,7 +146,7 @@ step
 step
   only Paladin
   note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Regal Drape##20889 |q 8695 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Hunter
   talk Keyl Swiftclaw##15500
@@ -148,7 +154,7 @@ step
 step
   only Hunter
   note Bring 1 Qiraji Regal Drape, 2 Lambent Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8696 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Regal Drape##20889 |q 8696 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Priest
   talk Windcaller Yessendra##15498
@@ -156,29 +162,31 @@ step
 step
   only Priest
   note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
-  only Mage
+  only Shaman
   talk Windcaller Yessendra##15498
   accept Ring of the Gathering Storm##8698 |goto Silithus 52.05,38.16
 step
-  only Mage
+  only Shaman
   note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8698 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Magisterial Ring##20884 |q 8698 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
-  only Warlock
+  only Mage
   talk Windcaller Yessendra##15498
   accept Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
 step
-  only Warlock
+  only Mage
   note Bring 1 Qiraji Magisterial Ring, 2 Azure Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8699 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Magisterial Ring##20884 |q 8699 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
+  only Druid
   talk Windcaller Yessendra##15498
   accept Band of Unending Life##8700 |goto Silithus 52.05,38.16
 step
+  only Druid
   note Bring 1 Qiraji Magisterial Ring, 2 Alabaster Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8700 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Magisterial Ring##20884 |q 8700 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Rogue
   talk Windcaller Yessendra##15498
@@ -186,15 +194,15 @@ step
 step
   only Rogue
   note Bring 1 Qiraji Ceremonial Ring, 2 Onyx Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8701 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8701 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
-  only Druid
+  only Warlock
   talk Windcaller Yessendra##15498
   accept Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
 step
-  only Druid
+  only Warlock
   note Bring 1 Qiraji Ceremonial Ring, 2 Jasper Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8702 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8702 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Paladin
   talk Windcaller Yessendra##15498
@@ -202,7 +210,7 @@ step
 step
   only Paladin
   note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Magisterial Ring##20884 |q 8703 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Hunter
   talk Windcaller Yessendra##15498
@@ -210,7 +218,7 @@ step
 step
   only Hunter
   note Bring 1 Qiraji Ceremonial Ring, 2 Amber Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8704 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8704 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Priest
   talk Warden Haro##15499
@@ -218,29 +226,31 @@ step
 step
   only Priest
   note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
-  only Mage
+  only Shaman
   talk Warden Haro##15499
   accept Hammer of the Gathering Storm##8706 |goto Silithus 51.14,38.94
 step
-  only Mage
+  only Shaman
   note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8706 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8706 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
-  only Warlock
+  only Mage
   talk Warden Haro##15499
   accept Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
 step
-  only Warlock
+  only Mage
   note Bring 1 Qiraji Ornate Hilt, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8707 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Ornate Hilt##20890 |q 8707 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
+  only Druid
   talk Warden Haro##15499
   accept Mace of Unending Life##8708 |goto Silithus 51.14,38.94
 step
+  only Druid
   note Bring 1 Qiraji Ornate Hilt, 2 Jasper Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8708 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Ornate Hilt##20890 |q 8708 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Rogue
   talk Warden Haro##15499
@@ -248,15 +258,15 @@ step
 step
   only Rogue
   note Bring 1 Qiraji Spiked Hilt, 2 Vermillion Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8709 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8709 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
-  only Druid
+  only Warlock
   talk Warden Haro##15499
   accept Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
 step
-  only Druid
+  only Warlock
   note Bring 1 Qiraji Ornate Hilt, 2 Onyx Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8710 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Ornate Hilt##20890 |q 8710 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Paladin
   talk Warden Haro##15499
@@ -264,7 +274,7 @@ step
 step
   only Paladin
   note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8711 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Hunter
   talk Warden Haro##15499
@@ -272,7 +282,7 @@ step
 step
   only Hunter
   note Bring 1 Qiraji Spiked Hilt, 2 Azure Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8712 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Spiked Hilt##20886 |q 8712 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   talk Elder Bladesing##15599
   accept Bladesing the Elder##8719 |goto Silithus 48.96,37.66
@@ -293,7 +303,7 @@ step
   accept The Perfect Poison##9023 |goto Silithus 52.13,39.14
 step
   note Dirk Thunderwood at Cenarion Hold wants you to bring him Venoxis's Venom Sac and Kurinnaxx's Venom Sac.
-  collect Venoxis's Venom Sac##22216 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |tip {dropsfrom}High Priest Venoxis
+  collect Venoxis's Venom Sac##22216 |q 9023 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}High Priest Venoxis
 step
   talk Aurel Goldleaf##15282
   accept A Humble Offering##9248 |goto Silithus 51.96,38.16
@@ -312,6 +322,9 @@ step
 step
   turnin Desert Recipe##8307 |goto Silithus 37.94,45.31
 step
+  click Sandy Cookbook##180503
+  accept Sharing the Knowledge##8313 |goto Silithus 37.94,45.31
+step
   talk Marshal Bluewall##17080
   accept Scouring the Desert##9419 |goto Silithus 33.29,51.06
 step
@@ -320,6 +333,9 @@ step
 step
   note Find and deliver Silithyst to the Silithyst Extractor, then speak with Marshal Bluewall at the Alliance encampment near Hive'Zora.
   kill Silithus Dust Turnin Quest Doodad##17090 |q 9419 |goto Silithus 32.95,50.81
+step
+  talk Rutgar Glyphshaper##15170
+  turnin Brann Bronzebeard's Lost Letter##8308 |goto Silithus 41.28,88.45
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   kill Frankal Invisible Trigger##15221 |q 8304 |goto Silithus 40.62,89.18
@@ -357,10 +373,6 @@ step
   talk Huum Wildmane##15270
   turnin Twilight Geolords##8320 |goto Silithus 48.62,37.87
 step
-  only Rogue
-  talk Windcaller Yessendra##15498
-  turnin Band of Veiled Shadows##8701 |goto Silithus 52.05,38.16
-step
   only Hunter
   talk Windcaller Yessendra##15498
   turnin Signet of the Unseen Path##8704 |goto Silithus 52.05,38.16
@@ -369,26 +381,27 @@ step
   talk Warden Haro##15499
   turnin Gavel of Infinite Wisdom##8705 |goto Silithus 51.14,38.94
 step
-  only Mage
+  only Shaman
   talk Warden Haro##15499
   turnin Hammer of the Gathering Storm##8706 |goto Silithus 51.14,38.94
 step
-  only Warlock
+  only Mage
   talk Warden Haro##15499
   turnin Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
 step
   only Druid
-  talk Windcaller Yessendra##15498
-  turnin Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
-step
   talk Warden Haro##15499
   turnin Mace of Unending Life##8708 |goto Silithus 51.14,38.94
+step
+  only Warlock
+  talk Windcaller Yessendra##15498
+  turnin Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
 step
   only Rogue
   talk Warden Haro##15499
   turnin Dagger of Veiled Shadows##8709 |goto Silithus 51.14,38.94
 step
-  only Druid
+  only Warlock
   talk Warden Haro##15499
   turnin Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
 step
@@ -396,12 +409,12 @@ step
   talk Warden Haro##15499
   turnin Blade of Eternal Justice##8711 |goto Silithus 51.14,38.94
 step
-  talk Aurel Goldleaf##15282
-  turnin Aurel Goldleaf##8331 |goto Silithus 51.96,38.16
-step
   only Hunter
   talk Warden Haro##15499
   turnin Scythe of the Unseen Path##8712 |goto Silithus 51.14,38.94
+step
+  talk Aurel Goldleaf##15282
+  turnin Aurel Goldleaf##8331 |goto Silithus 51.96,38.16
 step
   talk Elder Bladesing##15599
   turnin Bladesing the Elder##8719 |goto Silithus 48.96,37.66
@@ -427,6 +440,9 @@ step
   talk Windcaller Proudhorn##15191
   turnin Securing the Supply Lines##8280 |goto Silithus 51.15,38.29
 step
+  talk Vish Kozus##15182
+  turnin Wanted - Deathclasp, Terror of the Sands##8283 |goto Silithus 50.75,33.65
+step
   talk Geologist Larksbane##15183
   turnin The Twilight Mystery##8284 |goto Silithus 49.67,37.46
 step
@@ -436,9 +452,16 @@ step
   talk Vargus##15176
   turnin Cenarion Battlegear##8800 |goto Silithus 51.23,38.86
 step
+  talk Calandrath##15174
+  turnin Sharing the Knowledge##8313 |goto Silithus 51.89,39.16
+step
   only Paladin
   talk Keyl Swiftclaw##15500
   turnin Cape of Eternal Justice##8695 |goto Silithus 51.76,39.54
+step
+  only Hunter
+  talk Keyl Swiftclaw##15500
+  turnin Cloak of the Unseen Path##8696 |goto Silithus 51.76,39.54
 step
   only Warrior
   talk Windcaller Yessendra##15498
@@ -459,14 +482,15 @@ step
   talk Keyl Swiftclaw##15500
   turnin Shroud of Infinite Wisdom##8689 |goto Silithus 51.76,39.54
 step
-  only Mage
+  only Shaman
   talk Keyl Swiftclaw##15500
   turnin Cloak of the Gathering Storm##8690 |goto Silithus 51.76,39.54
 step
-  only Warlock
+  only Mage
   talk Keyl Swiftclaw##15500
   turnin Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
 step
+  only Druid
   talk Keyl Swiftclaw##15500
   turnin Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
 step
@@ -474,31 +498,29 @@ step
   talk Keyl Swiftclaw##15500
   turnin Cloak of Veiled Shadows##8693 |goto Silithus 51.76,39.54
 step
-  only Druid
+  only Warlock
   talk Keyl Swiftclaw##15500
   turnin Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
-step
-  only Hunter
-  talk Keyl Swiftclaw##15500
-  turnin Cloak of the Unseen Path##8696 |goto Silithus 51.76,39.54
 step
   only Priest
   talk Windcaller Yessendra##15498
   turnin Ring of Infinite Wisdom##8697 |goto Silithus 52.05,38.16
 step
-  only Mage
+  only Shaman
   talk Windcaller Yessendra##15498
   turnin Ring of the Gathering Storm##8698 |goto Silithus 52.05,38.16
 step
-  only Warlock
+  only Mage
   talk Windcaller Yessendra##15498
   turnin Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
 step
+  only Druid
   talk Windcaller Yessendra##15498
   turnin Band of Unending Life##8700 |goto Silithus 52.05,38.16
 step
-  talk Calandrath##15174
-  turnin Kitchen Assistance##8317 |goto Silithus 51.89,39.16
+  only Rogue
+  talk Windcaller Yessendra##15498
+  turnin Band of Veiled Shadows##8701 |goto Silithus 52.05,38.16
 step
   talk Bor Wildmane##15306
   turnin Secret Communication##8318 |goto Silithus 48.57,37.78
@@ -523,13 +545,19 @@ step
   accept Only One May Rise##8288 |goto Silithus 49.45,36.45
 step
   note Return the Head of the Broodlord Lashlayer to Baristolth of the Shifting Sands at Cenarion Hold in Silithus.
-  collect Head of the Broodlord Lashlayer##20383 |q 8288 |goto Blackwing Lair - Raid -1,-1 |tip {dropsfrom}Broodlord Lashlayer
+  collect Head of the Broodlord Lashlayer##20383 |q 8288 |goto Blackwing Lair - Raid -1,-1 |raid |tip {dropsfrom}Broodlord Lashlayer
 step
   talk Commander Mar'alith##15181
   accept Into The Maw of Madness##8306 |goto Silithus 49.2,34.18
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to find his beloved Natalia. The information that you gathered points to Hive'Regal in the south as being the area in which you may find Mistress Natalia Mar'alith.
   kill Mistress Natalia Mar'alith##15215 |q 8306
+step
+  talk Calandrath##15174
+  accept Kitchen Assistance##8317 |goto Silithus 51.89,39.16
+step
+  note Calandrath at Cenarion Hold needs a batch of 10 Smoked Desert Dumplings.
+  collect Smoked Desert Dumplings##20452 |q 8317 |goto Silithus 51.89,39.16
 step
   talk Huum Wildmane##15270
   accept Vyral the Vile##8321 |goto Silithus 48.62,37.87
@@ -651,11 +679,14 @@ step
   talk Commander Mar'alith##15181
   turnin Into The Maw of Madness##8306 |goto Silithus 49.2,34.18
 step
+  talk Calandrath##15174
+  turnin Kitchen Assistance##8317 |goto Silithus 51.89,39.16
+step
   talk Noggle Ficklespragg##15190
   accept Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
 step
   note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
-  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38 |tip {dropsfrom}Noggle's Satchel
+  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
 step
   talk Baristolth of the Shifting Sands##15180
   accept The Path of the Righteous##8301 |goto Silithus 49.45,36.45
@@ -764,14 +795,15 @@ step
   talk Geologist Larksbane##15183
   accept Armaments of War##8379 |goto Silithus 49.67,37.46
 step
-  only Mage
+  only Shaman
   talk Geologist Larksbane##15183
   accept Armaments of War##8380 |goto Silithus 49.67,37.46
 step
-  only Warlock
+  only Mage
   talk Geologist Larksbane##15183
   accept Armaments of War##8381 |goto Silithus 49.67,37.46
 step
+  only Druid
   talk Geologist Larksbane##15183
   accept Armaments of War##8382 |goto Silithus 49.67,37.46
 step
@@ -791,14 +823,15 @@ step
   talk Geologist Larksbane##15183
   turnin Armaments of War##8379 |goto Silithus 49.67,37.46
 step
-  only Mage
+  only Shaman
   talk Geologist Larksbane##15183
   turnin Armaments of War##8380 |goto Silithus 49.67,37.46
 step
-  only Warlock
+  only Mage
   talk Geologist Larksbane##15183
   turnin Armaments of War##8381 |goto Silithus 49.67,37.46
 step
+  only Druid
   talk Geologist Larksbane##15183
   turnin Armaments of War##8382 |goto Silithus 49.67,37.46
 step

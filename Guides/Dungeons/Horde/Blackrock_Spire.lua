@@ -55,7 +55,7 @@ step
   accept Bijou's Belongings##4982 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Find Bijou's Belongings and return them to her. You recall her mentioning that she stashed them on the bottom floor of the city.
-  collect Bijou's Belongings##12345 |q 4982 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Bijou's Belongings
+  collect Bijou's Belongings##12345 |q 4982 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Bijou##10257
   turnin Bijou's Belongings##4982 |goto Blackrock Spire - Dungeon -1,-1

@@ -19,6 +19,9 @@ step
   talk Masked Orphan Matron##23973
   accept Stop the Fires!##11219 |goto Durotar 52.57,41.2
 step
+  click Venom Bottle##142702
+  accept Venom Bottles##2933 |goto The Hinterlands 23.54,58.8
+step
   only Hunter
   talk Thotar##3171
   turnin Taming the Beast##6062 |goto Durotar 51.85,43.49

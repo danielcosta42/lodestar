@@ -34,11 +34,8 @@ step
   talk Kurgatok##18383
   accept Magical Disturbances##10027 |goto Terokkar Forest 48.77,45.69
 step
-  talk Mawg Grimshot##18705
-  accept Torgos!##10036 |goto Terokkar Forest 49.25,45.88
-step
-  note Call down Torgos with Trachela's Carcass. Acquire a Tail Feather of Torgos and return it to Mawg Grimshot at Stonebreaker Hold in Terokkar Forest.
-  collect Tail Feather of Torgos##25852 |q 10036 |goto Terokkar Forest 49.25,45.88 |tip {dropsfrom}Torgos
+  click Wanted Poster##182588
+  accept Wanted: Bonelashers Dead!##10034 |goto Terokkar Forest 49.81,45.28
 step
   talk Advisor Faila##18712
   accept Speak with Scout Neftis##10039 |goto Terokkar Forest 48.94,44.58
@@ -73,12 +70,6 @@ step
   talk Mekeda##22370
   accept Before Darkness Falls##10878 |goto Terokkar Forest 37.84,51.84
 step
-  talk Mekeda##22370
-  accept The Shadow Tomb##10881 |goto Terokkar Forest 37.84,51.84
-step
-  note Go into the Shadow Tomb, west of the Refugee Caravan and retrieve the Drape of Arunen, the Gavel of K'alen and the Scroll of Atalor. Return to Mekeda at the Refugee Caravan after you've completed this task.
-  collect Drape of Arunen##31709 |q 10881 |goto Terokkar Forest 32.1,51.2 |tip {dropsfrom}Cabal Chest
-step
   talk Lakotae##22420
   accept The Infested Protectors##10896 |goto Terokkar Forest 37.86,51.68
 step
@@ -92,10 +83,16 @@ step
   accept Undercutting the Competition##10165 |goto Terokkar Forest 39.37,58.48
 step
   note Nexus-Prince Haramad located outside of the Mana-Tombs wants you to kill Nexus-Prince Shaffar and bring Shaffar's Wrappings back to him.
-  collect Shaffar's Wrappings##28490 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |tip {dropsfrom}Nexus-Prince Shaffar, Nexus-Prince Shaffar (1)
+  collect Shaffar's Wrappings##28490 |q 10165 |goto Mana-Tombs - Dungeon -1,-1 |elite |tip {dropsfrom}Nexus-Prince Shaffar, Nexus-Prince Shaffar (1)
 step
   talk Artificer Morphalius##19670
   accept Safety Is Job One##10216 |goto Terokkar Forest 39.42,58.51
+step
+  kill Cabal Skirmisher##21661 |goto Terokkar Forest 37.89,56.0 |tip Loot the quest item here — it starts the quest.
+  accept Cabal Orders##10880 |goto Terokkar Forest 37.89,56.0
+step
+  note Kill 20 Bonelashers and then report to Mawg Grimshot at Stonebreaker Hold in Terokkar Forest.
+  kill Bonelasher##18470 |q 10034 |goto Terokkar Forest 43.89,54.84
 step
   note High Priest Orglum wants you to journey to the Tomb of Lights and kill 10 Ethereal Nethermancers and 10 Ethereal Plunderers and then return to him by the Refugee Caravan.
   kill Ethereal Nethermancer##21370 |q 10840 |goto Terokkar Forest 47.79,55.01
@@ -110,7 +107,7 @@ step
   accept Terokk's Legacy##10098 |goto Terokkar Forest 44.07,64.96
 step
   note Bring Terokk's Mask, Terokk's Quill, and the Saga of Terokk to Isfar outside the Sethekk Halls.
-  collect The Saga of Terokk##27634 |q 10098 |goto Sethekk Halls - Dungeon -1,-1 |tip {dropsfrom}The Saga of Terokk
+  collect The Saga of Terokk##27634 |q 10098 |goto Sethekk Halls - Dungeon -1,-1
 step
   talk Field Commander Mahfuun##19542
   accept The Codex of Blood##10094 |goto Terokkar Forest 40.04,72.16
@@ -154,20 +151,23 @@ step
   note Severin wants you to venture into Skettis and retrieve 6 Shadow Dusts from the arakkoa that dwell there.
   collect 6 Shadow Dust##32388 |q 11004 |goto Terokkar Forest 69.85,79.32 |tip {dropsfrom}Skettis Wing Guard, Skettis Windwalker, Skettis Talonite
 step
-  talk Sky Commander Adaris##23038
-  accept An Ally in Lower City##11024 |goto Terokkar Forest 64.09,66.9
+  kill Talonpriest Ishaal##23066 |goto Terokkar Forest 69.0,78.54 |tip Loot the quest item here — it starts the quest.
+  accept Ishaal's Almanac##11021 |goto Terokkar Forest 69.0,78.54
 step
   talk Hazzik##23306
   accept Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
 step
   note Obtain Hazzik's Package at his dwelling in eastern Skettis and return to him with it.
-  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08 |tip {dropsfrom}Hazzik's Package
+  collect Hazzik's Package##32687 |q 11056 |goto Terokkar Forest 74.85,80.08
 step
   talk Skyguard Handler Deesak##23415
   accept Hungry Nether Rays##11093 |goto Terokkar Forest 63.5,65.81
 step
   note Use the Nether Ray Cage in the woods south of Blackwind Landing and slay Blackwind Warp Chasers near the Hungry Nether Ray. Return to Skyguard Handler Deesak when you've completed your task.
   get Hungry Nether Rays |q 11093 |goto Terokkar Forest 63.5,65.81
+step
+  click Fel Orc Plans##182549
+  accept An Unseen Hand##10013 |goto Terokkar Forest 67.92,53.56
 step
   note Kill 12 Warped Peons and then report to Shadowstalker Kaide.
   kill Warped Peon##18595 |q 10000 |goto Terokkar Forest 66.59,51.93
@@ -180,9 +180,6 @@ step
 step
   note David Wayne at Wayne's Refuge wants you to bring him an Adamantite Frame, 4 Heavy Knothide Leather, and a Demon Warding Totem.
   collect Adamantite Frame##23784 |q 10664 |goto Terokkar Forest 77.58,38.72
-step
-  talk Rilak the Redeemed##22292
-  turnin An Ally in Lower City##11024 |goto Shattrath City 52.54,21.01 |tip {turninat}Shattrath City
 step
   talk Rilak the Redeemed##22292
   turnin Speak with Rilak the Redeemed##10908 |goto Shattrath City 52.54,21.01 |tip {turninat}Shattrath City
@@ -249,6 +246,9 @@ step
   talk Tooki##18447
   turnin What Are These Things?##9995 |goto Terokkar Forest 50.04,45.93
 step
+  talk Rokag##18386
+  turnin An Unseen Hand##10013 |goto Terokkar Forest 48.97,44.63
+step
   talk Malukaz##18384
   turnin Vestments of the Wolf Spirit##10018 |goto Terokkar Forest 50.18,46.44
 step
@@ -256,7 +256,7 @@ step
   turnin Magical Disturbances##10027 |goto Terokkar Forest 48.77,45.69
 step
   talk Mawg Grimshot##18705
-  turnin Torgos!##10036 |goto Terokkar Forest 49.25,45.88
+  turnin Wanted: Bonelashers Dead!##10034 |goto Terokkar Forest 49.25,45.88
 step
   turnin The Vengeful Harbinger##10842 |goto Terokkar Forest 50.88,54.75
 step
@@ -268,6 +268,12 @@ step
 step
   note Bring Ironjaw's Pelt to Malukaz at Stonebreaker Hold.
   collect Ironjaw's Pelt##25837 |q 10023 |goto Terokkar Forest 65.48,34.92 |tip {dropsfrom}Ironjaw
+step
+  talk Mawg Grimshot##18705
+  accept Torgos!##10036 |goto Terokkar Forest 49.25,45.88
+step
+  note Call down Torgos with Trachela's Carcass. Acquire a Tail Feather of Torgos and return it to Mawg Grimshot at Stonebreaker Hold in Terokkar Forest.
+  collect Tail Feather of Torgos##25852 |q 10036 |goto Terokkar Forest 49.25,45.88 |tip {dropsfrom}Torgos
 step
   talk Rakoria##18385
   accept And Now, the Moment of Truth##10201 |goto Terokkar Forest 50.13,44.88
@@ -291,7 +297,7 @@ step
   kill Captive Child##22314 |q 10852 |goto Terokkar Forest 31.14,42.41
 step
   talk Mekeda##22370
-  turnin The Shadow Tomb##10881 |goto Terokkar Forest 37.84,51.84
+  turnin Cabal Orders##10880 |goto Terokkar Forest 37.84,51.84
 step
   talk Lakotae##22420
   turnin The Infested Protectors##10896 |goto Terokkar Forest 37.86,51.68
@@ -312,10 +318,16 @@ step
   accept Recover the Bones##10030 |goto Terokkar Forest 37.05,49.53
 step
   note Collect 10 Restless Bones. Deliver them to Ramdor the Mad, just off the western side of the Ring of Observance in Auchindoun, which is in the middle of the Bone Wastes of Terokkar Forest.
-  collect 10 Restless Bones##25842 |q 10030 |goto Terokkar Forest 39.84,61.97 |tip {dropsfrom}Restless Bones
+  collect 10 Restless Bones##25842 |q 10030 |goto Terokkar Forest 39.84,61.97
 step
   talk Kirrik the Awakened##22272
   accept Veil Rhaze: Unliving Evil##10848 |goto Terokkar Forest 37.45,51.54
+step
+  talk Mekeda##22370
+  accept The Shadow Tomb##10881 |goto Terokkar Forest 37.84,51.84
+step
+  note Go into the Shadow Tomb, west of the Refugee Caravan and retrieve the Drape of Arunen, the Gavel of K'alen and the Scroll of Atalor. Return to Mekeda at the Refugee Caravan after you've completed this task.
+  collect Drape of Arunen##31709 |q 10881 |goto Terokkar Forest 32.1,51.2 |tip {dropsfrom}Cabal Chest
 step
   note Kill 4 Deathtalon Spirits, 4 Screeching Spirits and 2 Spirit Ravens and return to Kirrik at the Refugee Caravan.
   kill Deathtalon Spirit##21198 |q 10848 |goto Terokkar Forest 28.05,54.35
@@ -380,6 +392,9 @@ step
   note Vindicator Haylen wants you to kill the Terokkarantula and then return to him west of Netherweb Ridge.
   kill Terokkarantula##20682 |q 10921 |goto Terokkar Forest 54.27,81.82 |elite
 step
+  talk Sky Commander Adaris##23038
+  turnin Ishaal's Almanac##11021 |goto Terokkar Forest 64.09,66.9
+step
   talk Hazzik##23306
   turnin Hazzik's Bargain##11056 |goto Terokkar Forest 64.23,66.97
 step
@@ -391,6 +406,9 @@ step
 step
   talk Sky Commander Adaris##23038
   accept Secrets of the Talonpriests##11005 |goto Terokkar Forest 64.09,66.9
+step
+  talk Sky Commander Adaris##23038
+  accept An Ally in Lower City##11024 |goto Terokkar Forest 64.09,66.9
 step
   talk Hazzik##23306
   accept A Shabby Disguise##11029 |goto Terokkar Forest 64.23,66.97
@@ -426,16 +444,19 @@ step
   accept Fresh From the Mechanar##10665 |goto Terokkar Forest 77.58,38.72
 step
   note David Wayne at Wayne's Retreat wants you to bring him an Overcharged Manacell.
-  collect Overcharged Manacell##30824 |q 10665 |goto Terokkar Forest 77.58,38.72 |tip {dropsfrom}Overcharged Manacell
+  collect Overcharged Manacell##30824 |q 10665 |goto Terokkar Forest 77.58,38.72
 step
   talk David Wayne##21465
   accept The Lexicon Demonica##10666 |goto Terokkar Forest 77.58,38.72
 step
   note Obtain the Lexicon Demonica from Grandmaster Vorpil and bring it to David Wayne at Wayne's Refuge.
-  collect Lexicon Demonica##30827 |q 10666 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Grandmaster Vorpil, Grandmaster Vorpil (1)
+  collect Lexicon Demonica##30827 |q 10666 |goto Shadow Labyrinth - Dungeon -1,-1 |elite |tip {dropsfrom}Grandmaster Vorpil, Grandmaster Vorpil (1)
 step
   note Kill 10 Firewing Defenders, 10 Firewing Bloodwarders, and 10 Firewing Warlocks. Then report back to Sergeant Chawni at Stonebreaker Camp in Terokkar Forest.
   kill Firewing Defender##5355 |q 9997 |goto Terokkar Forest 71.62,36.54
+step
+  talk Rilak the Redeemed##22292
+  turnin An Ally in Lower City##11024 |goto Shattrath City 52.54,21.01 |tip {turninat}Shattrath City
 step
   talk Warden Treelos##18424
   turnin It's Watching You!##9951 |goto Terokkar Forest 43.44,22.36
@@ -460,6 +481,9 @@ step
   talk Malukaz##18384
   turnin Patriarch Ironjaw##10023 |goto Terokkar Forest 50.18,46.44
 step
+  talk Mawg Grimshot##18705
+  turnin Torgos!##10036 |goto Terokkar Forest 49.25,45.88
+step
   talk Advisor Faila##18712
   turnin Kill the Shadow Council!##10043 |goto Terokkar Forest 48.94,44.58
 step
@@ -474,6 +498,9 @@ step
 step
   note Use the Ceremonial Incense near the candles in Malukaz's hut and observe the ceremony. When the ceremony is complete, speak with Malukaz again.
   kill Malukaz##18384 |q 10791 |goto Terokkar Forest 50.18,46.44
+step
+  talk Mekeda##22370
+  turnin The Shadow Tomb##10881 |goto Terokkar Forest 37.84,51.84
 step
   talk Kirrik the Awakened##22272
   turnin Veil Rhaze: Unliving Evil##10848 |goto Terokkar Forest 37.45,51.54
@@ -557,13 +584,13 @@ step
   accept Underworld Loam##10667 |goto Terokkar Forest 77.58,38.72
 step
   note Get a Vial of Underworld Loam from Hydromancer Thespia and bring it to David Wayne at Wayne's Refuge.
-  collect Vial of Underworld Loam##30828 |q 10667 |goto The Steamvault - Dungeon -1,-1 |tip {dropsfrom}Hydromancer Thespia, Hydromancer Thespia (1)
+  collect Vial of Underworld Loam##30828 |q 10667 |goto The Steamvault - Dungeon -1,-1 |elite |tip {dropsfrom}Hydromancer Thespia, Hydromancer Thespia (1)
 step
   talk David Wayne##21465
   accept Tear of the Earthmother##10670 |goto Terokkar Forest 77.58,38.72
 step
   note Recover the Tear of the Earthmother from Warbringer O'mrogg and return it to David Wayne at Wayne's Refuge.
-  collect Tear of the Earthmother##30829 |q 10670 |goto The Shattered Halls - Dungeon -1,-1 |tip {dropsfrom}Warbringer O'mrogg, Warbringer O'mrogg (1)
+  collect Tear of the Earthmother##30829 |q 10670 |goto The Shattered Halls - Dungeon -1,-1 |elite |tip {dropsfrom}Warbringer O'mrogg, Warbringer O'mrogg (1)
 step
   note Sergeant Chawni wants you to use the Final Code Sheet to set off the Mana Bomb. Then report back to Tooki at Stonebreaker Hold in Terokkar Forest.
   kill Mana Bomb Kill Credit Trigger##21039 |q 10447 |goto Terokkar Forest 71.26,37.37

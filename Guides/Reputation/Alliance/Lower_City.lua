@@ -15,6 +15,9 @@ step
   talk Mekeda##22370
   accept Before Darkness Falls##10878 |goto Terokkar Forest 37.84,51.84
 step
+  kill Cabal Skirmisher##21661 |goto Terokkar Forest 37.89,56.0 |tip Loot the quest item here — it starts the quest.
+  accept Cabal Orders##10880 |goto Terokkar Forest 37.89,56.0
+step
   talk Akuno##22377
   accept Escaping the Tomb##10887 |goto Terokkar Forest 30.61,49.06
 step
@@ -38,6 +41,9 @@ step
 step
   talk Field Commander Mahfuun##19542
   accept The Codex of Blood##10094 |goto Terokkar Forest 40.04,72.16
+step
+  click The Codex of Blood##182947
+  accept Into the Heart of the Labyrinth##10095 |goto Shadow Labyrinth - Dungeon -1,-1
 step
   talk Spymistress Mehlisah Highcrown##18893
   accept Trouble at Auchindoun##10177 |goto Shattrath City 50.24,45.36
@@ -70,7 +76,7 @@ step
   accept Wanted: Malicious Instructors##11376 |goto Shattrath City 75.5,37.24
 step
   note Bring the Eye of Reskk and the Eye of Shienor to Rilak the Redeemed in the Lower City district of Shattrath.
-  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37 |tip {dropsfrom}Eye of Veil Reskk
+  collect Eye of Veil Reskk##25638 |q 10847 |goto Terokkar Forest 50.12,19.37
 step
   note Mekeda at the Refugee Caravan in Terokkar Forest wants you to kill 8 Cabal Skirmishers, 4 Cabal Spell-Weavers and 2 Cabal Initiates.
   kill Cabal Skirmisher##21661 |q 10878 |goto Terokkar Forest 37.89,56.0
@@ -85,7 +91,7 @@ step
   kill Darkweaver Syth##18472 |q 10097 |goto Sethekk Halls - Dungeon -1,-1 |elite
 step
   note Steal 5 Soul Devices and deliver them to Spymistress Mehlisah Highcrown at the Terrace of the Light in Shattrath City.
-  collect Soul Device##27480 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Soul Device
+  collect Soul Device##27480 |q 10091 |goto Shadow Labyrinth - Dungeon -1,-1
 step
   note Destroy Murmur and inform Spymistress Mehlisah Highcrown at the Terrace of Light in Shattrath City of the events that have transpired inside the Shadow Labyrinth.
   kill Murmur##18708 |q 10095 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
@@ -106,7 +112,7 @@ step
   collect The Exarch's Soul Gem##33836 |q 11374 |goto Shattrath City 75.13,36.65 |tip {dropsfrom}Exarch Maladaar (1)
 step
   note Wind Trader Zhareem has asked you to obtain Murmur's Whisper. Deliver it to him in Shattrath's Lower City to collect the reward.
-  collect Murmur's Whisper##33840 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |tip {dropsfrom}Murmur (1)
+  collect Murmur's Whisper##33840 |q 11375 |goto Shadow Labyrinth - Dungeon -1,-1 |elite |tip {dropsfrom}Murmur (1)
 step
   note Nether-Stalker Mah'duun wants you to kill 3 Malicious Instructors. Return to him in Shattrath's Lower City once they all lie dead in order to collect the bounty.
   kill Malicious Instructor##18848 |q 11376 |goto Shadow Labyrinth - Dungeon -1,-1 |elite
@@ -286,7 +292,7 @@ step
   kill Deathtalon Spirit##21198 |q 10848 |goto Terokkar Forest 28.05,54.35
 step
   note Collect 10 Restless Bones. Deliver them to Ramdor the Mad, just off the western side of the Ring of Observance in Auchindoun, which is in the middle of the Bone Wastes of Terokkar Forest.
-  collect 10 Restless Bones##25842 |q 10030 |goto Terokkar Forest 39.84,61.97 |tip {dropsfrom}Restless Bones
+  collect 10 Restless Bones##25842 |q 10030 |goto Terokkar Forest 39.84,61.97
 step
   talk Kirrik the Awakened##22272
   turnin Veil Rhaze: Unliving Evil##10848 |goto Terokkar Forest 37.45,51.54
