@@ -239,30 +239,8 @@ local function build()
 	frame.travelText:SetJustifyH("LEFT"); frame.travelText:SetWordWrap(true)
 	frame.travel:Hide()
 
-	-- Banner de PRÉ-REQUISITO: quest travada por prereq de outro guia -> abre em aba
-	frame.prereq = UI.Panel(frame.content, { color = { 0.05, 0.11, 0.18, 0.92 }, borderColor = C.tip })
-	local pstripe = UI.Rect(frame.prereq, "ARTWORK", C.tip)
-	pstripe:SetPoint("TOPLEFT"); pstripe:SetPoint("BOTTOMLEFT"); pstripe:SetWidth(3)
-	frame.prereqText = frame.prereq:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.prereqText, 11.5, { color = C.tip })
-	frame.prereqText:SetPoint("TOPLEFT", 10, -8)
-	frame.prereqText:SetPoint("RIGHT", frame.prereq, "RIGHT", -70, 0)
-	frame.prereqText:SetJustifyH("LEFT"); frame.prereqText:SetWordWrap(true)
-	frame.prereqBtn = UI.Button(frame.prereq, ns.L.SET_OPEN, 58, 20)
-	frame.prereqBtn:SetPoint("RIGHT", -8, 0)
-	frame.prereqBtn:SetScript("OnClick", function()
-		if frame._prereqGuide then ns:LoadGuide(frame._prereqGuide) end
-	end)
-	-- "Rota": aponta a SETA pro NPC que dá o prereq (o "onde pegar")
-	frame.prereqRouteBtn = UI.Button(frame.prereq, ns.L.PREREQ_ROUTE, 52, 20)
-	frame.prereqRouteBtn:SetScript("OnClick", function()
-		local g = frame._prereqGiver
-		if g and ns.Waypoint then
-			ns.Waypoint:SetCustom(g[1], g[2], g[3], ns.L.PREREQ_NEEDED:format(frame._prereqQuest or "?"))
-			frame._prereqRoutePid = frame._prereqPid
-		end
-	end)
-	frame.prereq:Hide()
+	-- (Pré-requisitos não têm mais banner: a cadeia que falta é injetada inline
+	--  como passos nativos — ver Prereq.lua / ns.Prereq:InjectChains.)
 
 	-- Banner de GRUPO: passo atual tem inimigo elite/chefe -> recomenda grupo/raide
 	-- e oferece "Procurar grupo" (gancho pro PartyLens; fallback: buscador nativo).
@@ -467,50 +445,8 @@ function V:Refresh()
 	local w = frame.content:GetWidth()
 	if w <= 0 then w = (ns.db.viewer.width or 340) - 40 end
 
-	-- Banner de PRÉ-REQUISITO: "Abrir" a aba do guia que ensina + "Rota" aponta a
-	-- seta pro NPC que dá o prereq (o "onde pegar"). Sem guia, só a Rota/aviso.
-	local block = ns.PrereqBlock and ns:PrereqBlock(step)
-	if block then
-		frame._prereqGuide = block.guide
-		frame._prereqPid   = block.pid
-		frame._prereqQuest = block.quest
-		frame._prereqGiver = ns.questGiver and block.pid and ns.questGiver[block.pid]
-		local msg = ns.L.PREREQ_NEEDED:format(block.quest)
-		if frame._prereqGiver then msg = msg .. " · " .. frame._prereqGiver[1] end   -- + a zona
-		frame.prereqText:SetText(msg)
-
-		-- botões da direita p/ esquerda: Rota (onde pegar) e Abrir (guia)
-		local hasOpen, hasRoute = block.guide ~= nil, frame._prereqGiver ~= nil
-		local rpad = -8
-		if hasRoute then
-			frame.prereqRouteBtn:ClearAllPoints()
-			frame.prereqRouteBtn:SetPoint("RIGHT", frame.prereq, "RIGHT", rpad, 0)
-			frame.prereqRouteBtn:Show(); rpad = rpad - 56
-		else frame.prereqRouteBtn:Hide() end
-		if hasOpen then
-			frame.prereqBtn:ClearAllPoints()
-			frame.prereqBtn:SetPoint("RIGHT", frame.prereq, "RIGHT", rpad, 0)
-			frame.prereqBtn:Show(); rpad = rpad - 62
-		else frame.prereqBtn:Hide() end
-
-		frame.prereqText:ClearAllPoints()
-		frame.prereqText:SetPoint("TOPLEFT", 10, -8)
-		frame.prereqText:SetPoint("RIGHT", frame.prereq, "RIGHT", (hasOpen or hasRoute) and (rpad - 2) or -10, 0)
-		frame.prereq:ClearAllPoints()
-		frame.prereq:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
-		frame.prereq:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)
-		local ph = math.max(28, frame.prereqText:GetStringHeight() + 16)
-		frame.prereq:SetHeight(ph)
-		frame.prereq:Show()
-		y = y + ph + 8
-	else
-		frame.prereq:Hide()
-	end
-	-- limpa a rota-custom se o prereq sumiu ou trocou (ex.: jogador já pegou)
-	if frame._prereqRoutePid and (not block or block.pid ~= frame._prereqRoutePid) then
-		if ns.Waypoint then ns.Waypoint:ClearCustom() end
-		frame._prereqRoutePid = nil
-	end
+	-- Pré-requisitos: sem banner. A cadeia que falta já foi injetada inline como
+	-- passos nativos no parse (Prereq.lua), então nada a desenhar aqui.
 
 	-- Banner de GRUPO: o passo atual tem um objetivo elite/chefe ainda não feito?
 	local needRaid, needGroup = false, false

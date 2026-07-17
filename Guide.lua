@@ -138,11 +138,23 @@ function ns:ResolveGuideKey(query)
 	return nil
 end
 
--- Parseia sob demanda e anota índices nos goals.
+-- Passos-base (parse cru, sem injeção nem indexação). Cacheado p/ o injetor de
+-- pré-requisitos reusar ESTE guia como fonte de harvest sem recursão.
+local function getBaseSteps(guide)
+	if not guide._baseSteps then guide._baseSteps = ns:ParseGuide(guide.body) end
+	return guide._baseSteps
+end
+ns.GetBaseSteps = getBaseSteps
+
+-- Parseia sob demanda: base -> injeta cadeias de pré-requisito inline -> indexa.
+-- A indexação (_gkey/_step) roda POR CIMA do array já splicado, então os passos
+-- injetados viram passos de primeira classe (seta, mapa, progresso, Back/Skip).
 local function ensureParsed(guide)
 	if guide.steps then return guide.steps end
-	guide.steps = ns:ParseGuide(guide.body)
-	for si, step in ipairs(guide.steps) do
+	local base = getBaseSteps(guide)
+	local steps = (ns.Prereq and ns.Prereq:InjectChains(guide, base)) or base
+	guide.steps = steps
+	for si, step in ipairs(steps) do
 		step.index = si
 		for gi, goal in ipairs(step.goals) do
 			goal._gkey = ("%s\0%d\0%d"):format(guide.key, si, gi)

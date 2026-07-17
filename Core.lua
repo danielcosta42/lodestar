@@ -192,6 +192,23 @@ SlashCmdList.LODESTAR = function(msg)
 			ns:CheckProgress()
 			ns:Printf("re-varredura: passo %d/%d", ns.char.currentStep, #ns.currentGuide.steps)
 		end
+	elseif cmd == "chains" then          -- debug: passos que a injeção de pré-req embutiu
+		local key = (rest ~= "" and ns:ResolveGuideKey(rest)) or (ns.currentGuide and ns.currentGuide.key)
+		local g = key and ns.guides[key]
+		if not g then
+			ns:Print("uso: /ls chains <guia> (ou abra um guia primeiro)")
+		else
+			ns.ensureParsed(g)
+			local base = ns.GetBaseSteps(g)
+			ns:Printf("chains %s: base=%d, final=%d (+%d injetados)", key, #base, #g.steps, #g.steps - #base)
+			for i, s in ipairs(g.steps) do
+				if s._injected then
+					local gg = s.goals[1]
+					local what = gg and ((gg.verb or "?") .. " " .. tostring(gg.text or gg.id or "")) or "?"
+					ns:Printf("  [%d] <%s> %s", i, tostring(s._injected), what)
+				end
+			end
+		end
 	elseif cmd == "reset" then
 		ns.char.currentStep = 1
 		if ns.currentGuide then ns.char.steps[ns.currentGuide.key] = 1 end
