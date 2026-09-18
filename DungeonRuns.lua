@@ -34,11 +34,7 @@ local function currentTargets()
 	return targets, dungeon
 end
 
-local function npcIDFromGUID(guid)
-	if not guid then return nil end
-	local _, _, _, _, _, id = strsplit("-", guid)
-	return tonumber(id)
-end
+local npcIDFromGUID = ns.NpcID
 
 --------------------------------------------------------------------------------
 -- Detecção: boss final do passo morreu -> +1 corrida naquela dungeon.

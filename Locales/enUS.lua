@@ -185,6 +185,7 @@ L.SET_HEARTH_HUB = "You'll be around %s for a while - bind at the local innkeepe
 -- Core / slash
 L.LOADED         = "v%s loaded. |cffffff00/ls|r to open."
 L.GUIDE_NOTFOUND = "guide not found: %s"
+L.GUIDE_NOCONTENT = "%s has no content on this client."
 L.GUIDE_LOADED_MSG = "loaded: |cffffff00%s|r (%d steps)"
 L.NO_MATCH       = "no guide matches '%s'. Use /ls list."
 L.PROGRESS_RESET = "guide progress reset."

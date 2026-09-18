@@ -3,6 +3,9 @@
 -- build (ns.talentBuilds), com botão "Aprender" (1 clique via LearnTalent).
 -- Talentos resolvidos por {tab, tier, coluna} -> índice (à prova de idioma).
 --=============================================================================
+-- No Forever não há abas de talento (GetNumTalentTabs/GetNumTalents sumiram; o
+-- cliente usa C_ClassTalents/C_Traits): o painel simplesmente não sugere nada
+-- até essa leitura existir. As builds daqui são de TBC de qualquer forma.
 local ADDON, ns = ...
 local UI = ns.UI
 local T = {}

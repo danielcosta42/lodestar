@@ -59,11 +59,13 @@ local XP_TO_NEXT = {
 	142500,148200,154000,159900,165800,172000,                                  -- 1..59
 	290000,322900,359600,400300,445300,494700,548800,607900,672200,742000,      -- 60..69 (TBC)
 }
--- tempo estimado até o nível 70 (resto do nível atual + soma dos próximos)
+-- tempo estimado até o nível máximo DESTE cliente (70 no Anniversary, o que o
+-- Forever disser — o beta está capado em 30): resto do nível atual + os próximos.
+local MAXLVL = ns.Client.maxLevel
 local function etaToMax(xph, lvl, curXP, curMax)
-	if not xph or xph <= 0 or lvl >= 70 then return nil end
+	if not xph or xph <= 0 or lvl >= MAXLVL then return nil end
 	local remain = (curMax or 0) - (curXP or 0)
-	for L = lvl + 1, 69 do remain = remain + (XP_TO_NEXT[L] or 0) end
+	for L = lvl + 1, MAXLVL - 1 do remain = remain + (XP_TO_NEXT[L] or 0) end
 	return remain / xph * 3600
 end
 
@@ -188,9 +190,9 @@ function H:Update()
 
 	local xph = xpPerHour()
 	local eta = xph > 0 and ((max - xp) / xph * 3600) or nil
-	local eta70 = etaToMax(xph, lvl, xp, max)
+	local etaMax = etaToMax(xph, lvl, xp, max)
 	local l2 = ("%s/h  ·  %s"):format(fmtNum(xph), ns.L.ETA_LEVEL:format(fmtTime(eta)))
-	if eta70 and lvl < 69 then l2 = l2 .. ("  ·  70: %s"):format(fmtTime(eta70)) end
+	if etaMax and lvl < MAXLVL - 1 then l2 = l2 .. ("  ·  %d: %s"):format(MAXLVL, fmtTime(etaMax)) end
 	frame.l2:SetText(l2)
 
 	local d = pace()

@@ -175,6 +175,7 @@ L.SET_HEARTH_HUB = "Você vai passar um tempo em %s - vincule no estalajadeiro d
 
 L.LOADED         = "v%s carregado. |cffffff00/ls|r para abrir."
 L.GUIDE_NOTFOUND = "guia não encontrado: %s"
+L.GUIDE_NOCONTENT = "%s não tem conteúdo neste cliente."
 L.GUIDE_LOADED_MSG = "carregado: |cffffff00%s|r (%d passos)"
 L.NO_MATCH       = "nenhum guia casa com '%s'. Use /ls list."
 L.PROGRESS_RESET = "progresso do guia resetado."

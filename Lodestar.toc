@@ -1,7 +1,7 @@
-## Interface: 20506
+## Interface: 20506, 16001
 ## Title: |cff66ccffLodestar|r
-## Notes: Free & open in-game leveling guides for TBC Classic — 1-70 routes (Alliance & Horde), waypoint arrow, quest automation, XP pace, and a boosted 60-70 dungeon path to Karazhan-attuned.
-## Notes-ptBR: Guias de leveling livres para TBC Classic — rotas 1-70 (Aliança e Horda), seta de waypoint, automação de quests, ritmo de XP e rota 60-70 boostado até atunado em Karazhan.
+## Notes: Free & open in-game leveling guides for TBC Classic and WoW: Forever — routes for both clients (Alliance & Horde), waypoint arrow, quest automation, XP pace, and a boosted 60-70 dungeon path to Karazhan-attuned.
+## Notes-ptBR: Guias de leveling livres para TBC Classic e WoW: Forever — rotas para os dois clientes (Aliança e Horda), seta de waypoint, automação de quests, ritmo de XP e rota 60-70 boostado até atunado em Karazhan.
 ## Author: Lodestar
 ## Version: @project-version@
 ## IconTexture: Interface\AddOns\Lodestar\lodestar-icones\logo-estrela-64
@@ -11,6 +11,9 @@
 ## X-Curse-Project-ID: 1608165
 ## X-Wago-ID:
 ## X-License: MIT
+
+# Qual cliente é, e o que ele tem: lido antes de qualquer módulo.
+Compat.lua
 
 Core.lua
 UI.lua
@@ -42,6 +45,8 @@ ChehulNetWire.lua
 ZoneData.lua
 Trainers.lua
 Parser.lua
+# Gerado (tools/gen_forever.py): o que não existe no Forever.
+ForeverData.lua
 Guide.lua
 PrereqData.lua
 Prereq.lua

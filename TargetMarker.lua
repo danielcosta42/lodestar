@@ -18,12 +18,7 @@ local hasPlates = C_NamePlate and C_NamePlate.GetNamePlateForUnit
 --------------------------------------------------------------------------------
 -- id de criatura a partir do GUID ("Creature-0-...-...-...-<id>-...")
 --------------------------------------------------------------------------------
-local function npcID(guid)
-	if not guid then return nil end
-	local kind, _, _, _, _, id = strsplit("-", guid)
-	if kind == "Creature" or kind == "Vehicle" then return tonumber(id) end
-	return nil
-end
+local npcID = ns.NpcID
 
 function TM:Kind(id)
 	if not id then return nil end
@@ -128,10 +123,8 @@ ns:On("_GUIDE_LOADED", function() TM:Rebuild() end)
 --------------------------------------------------------------------------------
 -- mouseover: linha no tooltip
 --------------------------------------------------------------------------------
-local function onTooltipUnit(tt)
+local function onTooltipUnit(tt, unit)
 	if not (ns.db and ns.db.markTargets) then return end
-	local _, unit = tt:GetUnit()
-	if not unit then return end
 	local kind = TM:Kind(npcID(UnitGUID(unit)))
 	if not kind then return end
 	local c = kind == "kill" and KILL_COL or TALK_COL
@@ -139,6 +132,5 @@ local function onTooltipUnit(tt)
 	tt:Show()
 end
 
-if GameTooltip and GameTooltip.HookScript then
-	pcall(GameTooltip.HookScript, GameTooltip, "OnTooltipSetUnit", onTooltipUnit)
-end
+-- OnTooltipSetUnit no Anniversary, TooltipDataProcessor no Forever (Compat.lua).
+ns.HookUnitTooltip(onTooltipUnit)

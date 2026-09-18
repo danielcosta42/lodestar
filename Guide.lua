@@ -29,6 +29,31 @@ end
 local ItemCount = (C_Item and C_Item.GetItemCount) or GetItemCount or function() return 0 end
 
 --------------------------------------------------------------------------------
+-- Conteúdo que este cliente não tem (ForeverData.lua, gerado pelo gen_forever.py)
+--
+-- No Forever não existe Outland nem as zonas iniciais de blood elf/draenei, e
+-- nas rotas que seguem valendo ainda sobram quests que aquele cliente não tem.
+-- Guia sem conteúdo some da biblioteca; quest que sumiu vira passo pulado.
+--------------------------------------------------------------------------------
+local goneQuest = ns.Client.isForever and ns.foreverGoneQuests or nil
+local deadGuide = ns.Client.isForever and ns.foreverDeadGuides or nil
+
+function ns:GuideAvailable(key)
+	return not (deadGuide and deadGuide[key])
+end
+
+-- Próximo guia do encadeamento, pulando os que não existem neste cliente.
+function ns:NextGuideKey(guide)
+	local nxt = guide.meta and guide.meta.next
+	local hops = 0
+	while nxt and self.guides[nxt] and not self:GuideAvailable(nxt) and hops < 50 do
+		nxt = self.guides[nxt].meta.next
+		hops = hops + 1
+	end
+	if nxt and self.guides[nxt] then return nxt end
+end
+
+--------------------------------------------------------------------------------
 -- Condições (para `only` e `complete`)
 --------------------------------------------------------------------------------
 local CLASSES = {
@@ -72,6 +97,10 @@ local function evalToken(tok)
 		elseif op == ">" then result = lvl > n
 		elseif op == "<" then result = lvl < n
 		elseif op == "==" or op == "=" then result = lvl == n end
+	elseif U == "FOREVER" then
+		result = ns.Client.isForever
+	elseif U == "ANNIVERSARY" or U == "TBC" then
+		result = not ns.Client.isForever
 	elseif U == "ALLIANCE" or U == "HORDE" then
 		result = (UnitFactionGroup("player") or ""):upper() == U
 	elseif CLASSES[U] then
@@ -149,10 +178,66 @@ ns.GetBaseSteps = getBaseSteps
 -- Parseia sob demanda: base -> injeta cadeias de pré-requisito inline -> indexa.
 -- A indexação (_gkey/_step) roda POR CIMA do array já splicado, então os passos
 -- injetados viram passos de primeira classe (seta, mapa, progresso, Back/Skip).
+-- Quest de um goal: `accept`/`turnin` trazem o id no próprio alvo; os demais
+-- (collect/kill/click...) trazem a quest a que servem no modificador `|q`.
+local function questOf(goal)
+	if goal.verb == "accept" or goal.verb == "turnin" then return goal.id end
+	return goal.q and goal.q.id
+end
+
+-- Sobrou algo que o addon sabe dar por concluído sozinho? (ns:IsGoalTrackable só
+-- existe mais abaixo no arquivo, mas isto só roda com o guia já em uso.)
+local function anyTrackable(goals)
+	for _, goal in ipairs(goals) do
+		if ns:IsGoalTrackable(goal) then return true end
+	end
+	return false
+end
+
+-- Tira do guia os passos cuja quest não existe neste cliente.
+--
+-- Um passo é pelo que ele serve: "talk NPC / accept Quest |goto x,y" existe para
+-- aquela quest. Tirando só o goal da quest sobraria um "talk" sem coordenada que
+-- nunca completa — e o avanço automático para ali, que é justamente o que isto
+-- evita. Então o passo inteiro sai, a menos que sobre algo que se complete
+-- sozinho (um `ding`, um `collect` com conta própria, um `goto` com coordenada).
+--
+-- O passo que muda é COPIADO: o array cru fica em guide._baseSteps, de onde o
+-- Prereq colhe cadeias para OUTROS guias, e mutar ali tornaria a injeção
+-- dependente da ordem em que os guias foram abertos (índices e progresso salvos
+-- deixariam de bater entre sessões).
+--
+-- Roda ANTES da indexação, então _gkey/_step batem com o array devolvido.
+local function stripMissingQuests(steps)
+	if not goneQuest then return steps end
+	local out = {}
+	for _, step in ipairs(steps) do
+		local goals, hadQuest, keptQuest = {}, false, false
+		for _, goal in ipairs(step.goals) do
+			local qid = questOf(goal)
+			if qid then hadQuest = true end
+			if not (qid and goneQuest[qid]) then
+				goals[#goals + 1] = goal
+				if qid then keptQuest = true end
+			end
+		end
+		if #goals == #step.goals then
+			out[#out + 1] = step                       -- nada mudou: mesmo passo
+		elseif #goals > 0 and not (hadQuest and not keptQuest and not anyTrackable(goals)) then
+			local copy = {}
+			for k, v in pairs(step) do copy[k] = v end
+			copy.goals = goals
+			out[#out + 1] = copy
+		end
+	end
+	return out
+end
+
 local function ensureParsed(guide)
 	if guide.steps then return guide.steps end
 	local base = getBaseSteps(guide)
 	local steps = (ns.Prereq and ns.Prereq:InjectChains(guide, base)) or base
+	steps = stripMissingQuests(steps)
 	guide.steps = steps
 	for si, step in ipairs(steps) do
 		step.index = si
@@ -191,7 +276,9 @@ end
 function ns:LoadGuide(key, keepProgress, silent)
 	local guide = self.guides[key]
 	if not guide then return self:Printf(ns.L.GUIDE_NOTFOUND, key) end
-	ensureParsed(guide)
+	-- Tirando os passos de quest que este cliente não tem, alguns guias não
+	-- sobram: abrir uma aba vazia (0/0 na barra) não ajuda ninguém.
+	if #ensureParsed(guide) == 0 then return self:Printf(ns.L.GUIDE_NOCONTENT, key) end
 	self:SyncStep()                                   -- guarda o passo da aba que sai
 	local wasOpen = self:IsGuideOpen(key)
 	if not wasOpen then table.insert(self.char.openGuides, key) end
@@ -354,8 +441,8 @@ function ns:AdvanceStep(delta)
 	if idx < 1 then idx = 1 end
 	if idx > #guide.steps then
 		-- fim do guia: encadeia para o próximo, se houver
-		local nxt = guide.meta.next
-		if nxt and self.guides[nxt] then
+		local nxt = self:NextGuideKey(guide)
+		if nxt then
 			self:Print("guia concluído, carregando o próximo...")
 			return self:ChainGuide(guide.key, nxt)
 		end
@@ -411,7 +498,7 @@ local function findStartGuide()
 	local pf = UnitFactionGroup("player")
 	for key, g in pairs(ns.guides) do
 		if key:sub(1, 9) == "Leveling/" and key:find(zone, 1, true)
-			and (not g.meta.faction or g.meta.faction == pf) then
+			and (not g.meta.faction or g.meta.faction == pf) and ns:GuideAvailable(key) then
 			return key
 		end
 	end
@@ -429,7 +516,8 @@ function ns:BestGuideForPlayer()
 	end
 	local best, bestScore
 	for key, g in pairs(self.guides) do
-		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf) then
+		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf)
+			and self:GuideAvailable(key) then
 			local lo, hi = key:match("%((%d+)%s*%-%s*(%d+)%)")
 			lo, hi = tonumber(lo), tonumber(hi)
 			if lo and hi then

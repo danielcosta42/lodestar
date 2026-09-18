@@ -17,11 +17,15 @@ local function check()
 	if not danger then return end
 
 	local guid = UnitGUID("target")
+	-- Identidade restrita (Forever): não dá pra comparar nem formatar — sem aviso.
+	if ns.IsSecret(guid) then return end
 	local now = GetTime()
 	if guid == lastGUID and (now - lastAt) < 8 then return end   -- não repete o mesmo alvo
 	lastGUID, lastAt = guid, now
 
-	local name = UnitName("target") or "?"
+	local name = UnitName("target")
+	if ns.IsSecret(name) then return end
+	name = name or "?"
 	local lvltxt = (lvl == -1) and "??" or tostring(lvl)
 	if ns.Toast then
 		ns.Toast:Show({ title = ns.L.MOB_DANGER_T, text = ns.L.MOB_DANGER:format(name, lvltxt),

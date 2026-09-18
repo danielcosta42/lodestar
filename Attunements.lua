@@ -77,7 +77,7 @@ function A:Refresh()
 		local txt = label
 		if st.state == "progress" then txt = txt .. "  " .. st.done .. "/" .. st.total end
 		r.status:SetText(txt); r.status:SetTextColor(UI.unpackc(col))
-		if st.key and ns.guides and ns.guides[st.key] then
+		if st.key and ns.guides and ns.guides[st.key] and ns:GuideAvailable(st.key) then
 			r.btn:Show()
 			r.btn:SetScript("OnClick", function() ns:LoadGuide(st.key); if ns.Viewer then ns.Viewer:Show() end end)
 		else

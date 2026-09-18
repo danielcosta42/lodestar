@@ -1,10 +1,12 @@
 # Lodestar
 
-**Free & open leveling and raid-prep guides for World of Warcraft: The Burning Crusade Classic.**
+**Free & open leveling and raid-prep guides for World of Warcraft: The Burning Crusade Classic and WoW: Forever.**
 
 Lodestar is an in-game, step-by-step guide engine — a community-built alternative to paid guide addons. It routes you from **1 to 70** (Alliance & Horde), automates the tedious quest clicks, points an arrow at your next objective, and gets boosted characters **raid-ready**. No gating, no nag screens, no telemetry — 100% **MIT-licensed**, and every route is generated from **open community data** (Questie).
 
 Install it, log in, and Lodestar automatically loads the best guide for your level and zone. That's it.
+
+One build serves both clients. On **WoW: Forever** (beta, Interface 16001) the addon hides what that client does not have — Outland, the blood elf and draenei starting zones, TBC attunements and dailies — and skips the individual steps whose quest was removed, so the 1-60 routes keep flowing. See [docs/forever.md](docs/forever.md) for the numbers and what is still open.
 
 ---
 

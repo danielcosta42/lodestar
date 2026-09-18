@@ -46,10 +46,7 @@ end
 local GI = C_GossipInfo
 
 local function npcID()
-	local guid = UnitGUID and (UnitGUID("npc") or UnitGUID("target"))
-	if not guid then return nil end
-	local _, _, _, _, _, id = strsplit("-", guid)
-	return tonumber(id)
+	return ns.NpcID(UnitGUID and (UnitGUID("npc") or UnitGUID("target")))
 end
 
 local function stepTalksTo(step, npc)

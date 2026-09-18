@@ -64,11 +64,13 @@ ns:On("PLAYER_LEVEL_UP", function(_, level)
 	level = tonumber(level) or UnitLevel("player")
 	local T, L, A = ns.Toast, ns.L, ns.UI.COL
 	if not T then return end
-	if level == 30 then
+	-- Montaria: os níveis são os de TBC. Ninguém sabe ainda quais são no Forever
+	-- (o beta para no 30), e chutar aqui é pior que ficar calado.
+	if level == 30 and ns.Client.isTBC then
 		T:Show({ title = L.MOUNT_30_T, text = L.MOUNT_30_S, color = A.accent, hold = 7 })
-	elseif level == 60 then
+	elseif level == 60 and ns.Client.isTBC then
 		T:Show({ title = L.MOUNT_60_T, text = L.MOUNT_60_S, color = A.accent, hold = 7 })
-	elseif level == 70 then
+	elseif level == 70 and ns.Client.isTBC then
 		T:Show({ title = L.MOUNT_70_T, text = L.MOUNT_70_S, color = A.accent, hold = 8 })
 	elseif level < 60 and level % 2 == 0 then
 		T:Show({ title = L.TRAIN_T, text = L.TRAIN_S, color = A.tip, hold = 5 })
