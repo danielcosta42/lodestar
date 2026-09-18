@@ -62,11 +62,40 @@ Ashenvale 9, Barrens 7, Tirisfal 7, Redridge 6, e caudas de 1 a 5 em outras zona
 
 No Anniversary nada muda: as duas listas ficam desligadas e os guias são os mesmos de sempre.
 
+## Onde estão os dados das quests novas
+
+Pesquisa de 2026-09-18, um dia de beta:
+
+| fonte | o que tem |
+|---|---|
+| DB2 do build (wago.tools) | `QuestV2` só ids; `QuestPOIBlob` 54 registros e `QuestPOIPoint` 99 — POI de quest é do servidor. Trechos de tabela vêm criptografados |
+| Questie | compat de cliente (branch `feature/forever`) e as zonas novas extraídas do build; o `QuestieDB` **não tem pasta Forever** |
+| Wowhead `/forever` | 4.520 quests indexadas, com nível, facção, zona e — na página de cada uma — quem dá, quem entrega e onde ficam os objetivos, com coordenada |
+
+Das 2.824 quests que só o Forever tem, o Wowhead conhece **441**, e as zonas novas (Riverglades,
+Zephras Isle, Darkspear Islands, Shen'dralas) não têm **nenhuma** quest nem NPC listados lá. O
+conteúdo novo só existe no servidor do beta.
+
+Daí as duas fontes:
+
+- **`tools/fetch_forever.py`** — o índice inteiro sai em ~70 requisições (`?filter=minle=N;maxle=N`);
+  a página de cada quest traz os pontos com coordenada. O site **barra coleta em volume** (403 depois
+  de ~130 páginas a 1/s): o coletor trata 403/429 como "pare", espera 4s entre requisições e só busca
+  id que o índice conhece. Tudo fica em cache; rodar de novo não repete requisição.
+- **`/ls scan` (ForeverScan.lua)** — o coletor em jogo, para o que não está em lugar nenhum. Pergunta
+  ao servidor por id (`RequestLoadQuestByID`) e, enquanto se joga, guarda quem dá e quem entrega cada
+  quest com id de NPC e coordenada, os objetivos, e o waypoint que o próprio servidor aponta. Vai
+  para `LodestarDB.scan`.
+
+`tools/import_forever.py` funde as duas fontes com a base do Questie e escreve `build/forever/`, que
+é o que o roteador consome. Conferido: Ashenvale sai com 68 quests roteadas, 27 delas novas do
+Forever; Feralas com 71, 27 novas.
+
 ## Em aberto
 
-- **As 2.824 quests novas não têm rota.** Nome, objetivo e coordenada delas não estão em DB2 (são do
-  servidor) e o Questie, de onde o gerador tira os dados, ainda não cobre o Forever. É trabalho de
-  conteúdo com o jogo aberto, não de código.
+- **Gerar a biblioteca de guias do Forever.** Falta decidir como as duas variantes de uma mesma zona
+  convivem (a de TBC e a do Forever) — hoje o `build/forever/` existe e gera rota, mas nenhum guia
+  foi trocado.
 - Níveis de montaria e leitura de talentos, quando o jogo disser quais são.
 - O corte por proporção (`DEAD_RATIO`, 80%) é heurística; as duas zonas iniciais de TBC entram por
   uma lista explícita porque a tabela de quests não sabe que a raça não existe.

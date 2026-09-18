@@ -87,6 +87,8 @@ Settings.lua
 Share.lua
 Intro.lua
 Recorder.lua
+# Coletor do cliente do Forever (dado que nenhum banco público tem).
+ForeverScan.lua
 
 Guides\Sample.lua
 Guides\Leveling\Leveling.xml

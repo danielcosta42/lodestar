@@ -209,6 +209,13 @@ SlashCmdList.LODESTAR = function(msg)
 				end
 			end
 		end
+	elseif cmd == "scan" then
+		local S = ns.Scan
+		if not S then return end
+		if rest == "stop" then S:Stop()
+		elseif rest == "status" then S:Status()
+		elseif rest == "clear" then S:Clear()
+		else S:Start() end
 	elseif cmd == "reset" then
 		ns.char.currentStep = 1
 		if ns.currentGuide then ns.char.steps[ns.currentGuide.key] = 1 end

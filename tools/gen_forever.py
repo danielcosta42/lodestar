@@ -9,6 +9,7 @@ ruído de dados e fica de fora, para nunca esconder um passo que funciona.
 """
 import csv
 import io
+import json
 import os
 import re
 import sys
@@ -95,6 +96,20 @@ lines += [
 ]
 lines += ["\t[%d]=true," % q for q in sorted(missing)]
 lines.append("}")
+
+# Ids que o cliente do Forever tem e nenhum banco público conhece: é o que o
+# coletor em jogo (`/ls scan`) pergunta ao servidor, um a um. Como string porque
+# só é lida quando alguém manda varrer — não vira 2.400 chaves de tabela à toa.
+conhecidos = set()
+if os.path.exists(os.path.join(CACHE, "forever_index.json")):
+    conhecidos = {int(k) for k in json.load(
+        open(os.path.join(CACHE, "forever_index.json"), encoding="utf-8"))}
+desconhecidos = sorted(q for q in (forever - anniv) if q not in conhecidos)
+lines += [
+    "",
+    "-- Ids que só o cliente sabe responder (%d), para `/ls scan`." % len(desconhecidos),
+    'ns.foreverUnknown = "%s"' % ",".join(str(q) for q in desconhecidos),
+]
 
 open(OUT, "w", encoding="utf-8").write("\n".join(lines) + "\n")
 print("gerado:", os.path.normpath(OUT))
