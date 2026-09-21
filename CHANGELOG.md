@@ -1,17 +1,20 @@
-## [1.5.0](https://github.com/danielcosta42/lodestar/compare/v1.4.1...v1.5.0) (2026-07-17)
+## [2.0.0](https://github.com/danielcosta42/lodestar/compare/v1.5.0...v2.0.0) (2026-09-21)
 
+
+### ⚠ BREAKING CHANGES
+
+* **forever:** o addon não carrega mais no TBC Anniversary.
 
 ### Features
 
-* **guides:** inline prerequisite chains; retire the prereq banner ([bdf8fc9](https://github.com/danielcosta42/lodestar/commit/bdf8fc9f53ea1c9d81800ffbf72e1dd69a8dcc51))
-* **guides:** item-collect steps show what/how-many/where + which mobs drop it ([508156c](https://github.com/danielcosta42/lodestar/commit/508156ca2641aff54331df685f98823f0a060009)), closes [#19973](https://github.com/danielcosta42/lodestar/issues/19973) [#32569](https://github.com/danielcosta42/lodestar/issues/32569)
-* **guides:** kill-to-loot steps, class-guide fix, wider quest coverage ([c4dd0e0](https://github.com/danielcosta42/lodestar/commit/c4dd0e0f843dbf0da2237001188953611413bd52))
-* **squad:** richer PartyLens hand-off + public ns.API.CurrentObjective ([c46e4e7](https://github.com/danielcosta42/lodestar/commit/c46e4e74601529bb5ee4a05d8b2ce3e5d87b27e8))
+* **forever:** coletor colhe no gossip, e para de engolir título vazio ([a955455](https://github.com/danielcosta42/lodestar/commit/a95545573d156fef00dea106259350ca281ad449))
+* **forever:** collect the quests this client is the only one that knows ([630a229](https://github.com/danielcosta42/lodestar/commit/630a2296ec5ebc73855f291d6be1e3f3ad18492c)), closes [#3](https://github.com/danielcosta42/lodestar/issues/3)
+* **forever:** decoder do Cache/WDB — os ids-alvo que nenhuma API dá ([adea620](https://github.com/danielcosta42/lodestar/commit/adea6206ffe57b38efb450da4df9b695483b2284))
+* **forever:** Lodestar passa a ser WoW: Forever e só ([675ecae](https://github.com/danielcosta42/lodestar/commit/675ecaeb32fa8b916cb2665674ed2eaa2294a1fc)), closes [#5](https://github.com/danielcosta42/lodestar/issues/5)
+* **forever:** run on WoW: Forever, with the content that client does not have ([56df87a](https://github.com/danielcosta42/lodestar/commit/56df87a12e40c44de231f89fdd5eba954d76e00d)), closes [#1](https://github.com/danielcosta42/lodestar/issues/1)
 
 
 ### Bug Fixes
 
-* **guides:** strip BETA test quests + resolve dangling object-turnins ([d225f4e](https://github.com/danielcosta42/lodestar/commit/d225f4ed0969769416317653af91695f388093ca))
-* **questitem:** resolve the use-item button from the quest's special item first ([efdb84a](https://github.com/danielcosta42/lodestar/commit/efdb84ac8ed671d69b51a06b2ef3697c1a9490ba))
-* **release:** pre-release hardening — interface ver, /ls check, consumable prices ([9abf551](https://github.com/danielcosta42/lodestar/commit/9abf55109f0aa71c4cb03c78c1c7e238b6af6c8d))
+* **forever:** parar de consumir o dado raspado, não só de raspá-lo ([86e3168](https://github.com/danielcosta42/lodestar/commit/86e316875131031551dac670cce171584290913f))
 
