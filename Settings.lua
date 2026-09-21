@@ -99,8 +99,6 @@ local function fillGeneral(p)
 		function() return ns.db.mobWarning end, function(v) ns.db.mobWarning = v end)
 	buttonRow(p, L.SET_LIBRARY, L.SET_LIBRARY_D,
 		L.SET_OPEN, function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
-	buttonRow(p, L.SET_RAIDS, L.SET_RAIDS_D,
-		L.SET_OPEN, function() if ns.Attunements then ns.Attunements:Toggle() end end)
 	buttonRow(p, L.SET_SQUAD, L.SET_SQUAD_D,
 		L.SET_OPEN, function() if ns.Squad then ns.Squad:Toggle() end end)
 	buttonRow(p, L.SET_GATHER, L.SET_GATHER_D,
@@ -119,9 +117,6 @@ local function fillAppearance(p)
 	switchRow(p, L.SET_XPHUD, L.SET_XPHUD_D,
 		function() return ns.db.xpHud end,
 		function(v) ns.db.xpHud = v; if ns.XPHud then ns.XPHud:Update() end end)
-	switchRow(p, L.SET_TALENTS, L.SET_TALENTS_D,
-		function() return ns.db.talents end,
-		function(v) ns.db.talents = v; if ns.Talents then ns.Talents:Update() end end)
 	switchRow(p, L.SET_CARD, L.SET_CARD_D,
 		function() return ns.db.reportCard end, function(v) ns.db.reportCard = v end)
 	switchRow(p, L.SET_MARK, L.SET_MARK_D,

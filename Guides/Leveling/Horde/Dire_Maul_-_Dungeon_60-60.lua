@@ -4,7 +4,6 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Dire Maul - Dungeon (60-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Hellfire Peninsula (61-63)",
 }, [[
 step
   click Broken Trap##179485

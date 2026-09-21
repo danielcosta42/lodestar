@@ -7,6 +7,7 @@ ignore:
   - "Media/*.zip"       # zip de arte-fonte
   - "Media/*.html"      # preview de HUD
   - "tools"             # gerador Python + validador (dev only)
+  - "docs"               # notas internas (o README linka pelo GitHub)
   - "DSL.md"            # doc interna do formato de guia
   - "PACKAGING.md"
   - ".pkgmeta"

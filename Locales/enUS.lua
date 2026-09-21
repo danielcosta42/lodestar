@@ -185,6 +185,16 @@ L.SET_HEARTH_HUB = "You'll be around %s for a while - bind at the local innkeepe
 -- Core / slash
 L.LOADED         = "v%s loaded. |cffffff00/ls|r to open."
 L.GUIDE_NOTFOUND = "guide not found: %s"
+L.GUIDE_NOCONTENT = "%s has no content on this client."
+-- Coletor do Forever (/ls scan)
+L.SCAN_START = "scanning %d unknown quest ids — keep playing, it runs in the background."
+L.SCAN_PROGRESS = "scan: %d/%d ids, %d quests known."
+L.SCAN_STOP = "scan stopped. %d quests collected."
+L.SCAN_ALREADY = "a scan is already running (/ls scan stop)."
+L.SCAN_NOLIST = "no id list in this build — regenerate with tools/gen_forever.py."
+L.SCAN_NOTIMER = "this client has no timer API; scan unavailable."
+L.SCAN_STATUS = "collected: %d quests, %d givers, %d enders. Scan: %s."
+L.SCAN_CLEARED = "collected data wiped."
 L.GUIDE_LOADED_MSG = "loaded: |cffffff00%s|r (%d steps)"
 L.NO_MATCH       = "no guide matches '%s'. Use /ls list."
 L.PROGRESS_RESET = "guide progress reset."

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Darkshore (12-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Bloodmyst Isle (13-19)",
+	next = "Leveling/Alliance/Loch Modan (14-38)",
 }, [[
 step
   note {fp}Caylais Moonfeather

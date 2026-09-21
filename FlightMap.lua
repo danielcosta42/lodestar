@@ -82,7 +82,7 @@ local function destinationZones()
 		end
 	end
 	-- zona do próximo guia (destino de viagem, mesmo que longe na lista)
-	local nxt = guide.meta and guide.meta.next
+	local nxt = ns:NextGuideKey(guide)
 	if nxt then
 		local z = nxt:match("[^/]+$")
 		if z then add((z:gsub("%s*%(.-%)%s*$", ""))) end
