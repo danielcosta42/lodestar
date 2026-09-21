@@ -8,15 +8,20 @@ local C = {}
 ns.Consumables = C
 local UI = ns.UI
 
--- Categorias de consumível de raid TBC. have = soma nas bags; done se have>=need.
+-- Categorias de consumível de raid. have = soma nas bags; done se have>=need.
 -- IDs resolvidos por GetItemInfo em runtime — id errado só some, não quebra.
+--
+-- Eram os de TBC (flask de Outland, Super Healing, Netherweave). NENHUM dos 15
+-- existe no ItemSparse do 1.60.1.69913 — conferido item a item contra o build —
+-- então o checklist marcava tudo como faltando, para sempre. Estes são os
+-- equivalentes vanilla, todos confirmados presentes naquele mesmo build.
 local CATS = {
-	{ key = "flask",   need = 1, items = { 22854, 22851, 22853, 22861, 22866 } },
-	{ key = "hp",      need = 5, items = { 22829 } },   -- Super Healing Potion
-	{ key = "mp",      need = 5, items = { 22832 } },   -- Super Mana Potion
-	{ key = "food",    need = 1, items = { 33872, 27659, 27665, 27657, 27663 } },
-	{ key = "water",   need = 1, items = { 27860, 29395 } },
-	{ key = "bandage", need = 5, items = { 21991 } },   -- Heavy Netherweave Bandage
+	{ key = "flask",   need = 1, items = { 13510, 13511, 13512 } },
+	{ key = "hp",      need = 5, items = { 13446 } },   -- Major Healing Potion
+	{ key = "mp",      need = 5, items = { 13444 } },   -- Major Mana Potion
+	{ key = "food",    need = 1, items = { 20452, 13928, 13931, 18045 } },
+	{ key = "water",   need = 1, items = { 8079, 8766 } },
+	{ key = "bandage", need = 5, items = { 14530 } },   -- Heavy Runecloth Bandage
 }
 
 local function count(items)

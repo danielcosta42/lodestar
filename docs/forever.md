@@ -110,6 +110,12 @@ runtime escondendo guia.
   do build, que são legíveis.
 - **Ids-alvo de objetivo.** Nenhuma API expõe (`GetQuestObjectives` dá texto e tipo, nunca o id). O
   registro do WDB tem — é o que `tools/wdb.py` persegue.
+- **Dado morto de Outland nas tabelas geradas.** `FlightData`, `TransitData`, `Trainers`,
+  `ZoneData` e `TravelPlanner` ainda trazem as 17 zonas de TBC — conferido: nenhuma delas está no
+  `AreaTable` do 69913. É dado **inalcançável, não errado**: nenhum guia rota para lá. Sai quando
+  essas tabelas forem regestradas para o Forever, junto com os guias. (O `Consumables` era caso
+  diferente e já foi corrigido: os 15 itens de raide eram de Outland e o `/ls check`, acessível de
+  qualquer lugar, marcava tudo como faltando para sempre.)
 - **Níveis de montaria**, quando o jogo disser quais são. Avisar chutando é pior que calar.
 - **`ChehulNet.lua` na VERSION 7 nos quatro addons da família.** A cópia do Lodestar e a do GuildOS
   já pulam GUID secreto; PartyLens e ProfessionHelper ainda não. Corrigir nos quatro e subir para 8
