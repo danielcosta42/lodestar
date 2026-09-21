@@ -22,15 +22,17 @@ sendo `ID, UniqueBitFlag, UiQuestDetailsThemeID`. `QuestObjective` e `QuestV2Cli
 nesse build** (404 no wago — ao contrário do que o README do ForeverGuide afirma). `QuestPOIBlob`
 tem 54 linhas e `QuestPOIPoint`, 99. Título, nível, zona, giver e objetivo são **servidor**.
 
-Quantas quests são novas depende da baseline, e é preciso dizer qual:
+Quantas quests são novas depende da baseline, e as três são defensáveis — o que não vale é citar
+um número sem dizer contra o quê:
 
 | baseline | quantas |
 |---|---|
-| ids ≥ 30000 no `QuestV2` do 69913 | **2.844** |
-| ids que o `QuestV2` do Classic Era (1.15.9.69722) não tem | **1.795** |
+| ids que o `QuestV2` do **Anniversary 2.5.6.69795** não tem | **2.824** |
+| ids ≥ 30000 no `QuestV2` do 69913 | 2.844 |
+| ids que o `QuestV2` do **Classic Era 1.15.9.69722** não tem | 1.795 |
 
-Este documento usa **2.844**. (A figura "2.824" que circulou antes não é reproduzível de fonte
-nenhuma e foi retirada.)
+Este repositório usa a primeira: é a que `tools/gen_forever.py` calcula, e é a comparação que
+importa aqui, já que a base de guias veio do Anniversary.
 
 E ninguém resolveu isso: o branch `forever` do QuestieDB tem 4.244 quests com id máximo **9.665** —
 zero conteúdo novo. Nada vai ser dataminado até o lançamento, porque não há o que minerar.

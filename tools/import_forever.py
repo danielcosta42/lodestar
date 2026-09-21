@@ -2,8 +2,12 @@
 
 Entrada:
   build/{quests,npcs,objects,zones}.json   base atual (Questie, vanilla/TBC)
-  build/forever_quests.json                Wowhead (fetch_forever.py)
-  build/scan.json                          cliente do beta (import_scan.py), se houver
+  build/scan.json                          o cliente do Forever (import_scan.py)
+
+NAO consome dado raspado. A ToU da Fanbyte (rodape da Wowhead) so permite
+navegador, e o robots.txt deles bloqueia coletor automatico por nome — dataset
+que a gente quer que os outros reusem nao pode nascer daquilo. O que o servidor
+responde ao nosso proprio cliente, e o que ele escreve em Cache/WDB, e limpo.
 
 Saída: build/forever/{quests,npcs,objects,zones,items}.json — a mesma base, menos
 o que o Forever não tem, mais o que só ele tem. O roteador roda em cima disso
@@ -61,57 +65,16 @@ def main():
     quests, npcs = carrega("quests"), carrega("npcs")
     objetos, zonas = carrega("objects"), carrega("zones")
     itens = carrega("items")
-    wowhead = carrega("forever_quests")
     scan = carrega("scan")
 
     # 1. tira o que o Forever não tem
-    forever, anniv = quest_ids("1.60.1.69893"), quest_ids("2.5.6.69795")
+    forever, anniv = quest_ids("1.60.1.69913"), quest_ids("2.5.6.69795")
     sumiram = anniv - forever
     for qid in list(quests):
         if int(qid) in sumiram:
             del quests[qid]
 
-    # 2. põe o que só o Forever tem
-    novas, sem_ponto = 0, 0
-    for qid, q in wowhead.items():
-        zona = q.get("category") or 0
-        entrada = {
-            "name": q.get("name"),
-            "reqLevel": q.get("reqlevel") or 0,
-            # nível DESCONHECIDO é None, nunca 0: o roteador corta questLevel < 1
-            # (holiday/AQ) e deixa None passar — 0 apaga a quest do guia calada.
-            "questLevel": q.get("level") or None,
-            "races": 0, "classes": 0,
-            "faction": FACCAO.get(q.get("side"), "AH"),
-            "startNpcs": [], "startObjects": [], "startItems": [],
-            "endNpcs": [], "endObjects": [],
-            "preSingle": [], "preGroup": [], "exclusiveTo": [],
-            "nextInChain": None,
-            "zoneOrSort": zona,
-            "specialFlags": 0,
-            "objCreatures": [], "objObjects": [], "objItems": [],
-            "objText": [q["objText"]] if q.get("objText") else [],
-            "repReward": [],
-        }
-        pontos = q.get("points") or []
-        if not pontos:
-            sem_ponto += 1
-        for p in pontos:
-            if not p.get("id"):
-                continue
-            zona_ponto = p.get("zone") or zona
-            alvo = npcs if p.get("type") == TIPO_NPC else objetos
-            ponto_vira_entrada(alvo, p, zona_ponto)
-            campo = {
-                ("start", TIPO_NPC): "startNpcs", ("start", TIPO_OBJETO): "startObjects",
-                ("end", TIPO_NPC): "endNpcs", ("end", TIPO_OBJETO): "endObjects",
-            }.get((p.get("point"), p.get("type")))
-            if not campo:                      # sourcerequirement e afins: é objetivo
-                campo = "objCreatures" if p.get("type") == TIPO_NPC else "objObjects"
-            if p["id"] not in entrada[campo]:
-                entrada[campo].append(p["id"])
-        quests[str(qid)] = entrada
-        novas += 1
+    novas = 0
 
     # 3. o que veio do cliente do beta manda: é o único dado das zonas novas
     inv = inverte(zonas)
@@ -196,7 +159,6 @@ def main():
                   ensure_ascii=False)
     print("gravado em", os.path.normpath(OUT))
     print("  quests:", len(quests), "| tiradas (não existem no Forever):", len(sumiram))
-    print("  vindas do Wowhead:", novas, "(sem nenhum ponto no mapa:", sem_ponto, ")")
     print("  vindas do cliente do beta:", do_cliente, "| com waypoint do servidor:", com_wp)
     if sem_area:
         print("  givers/enders sem areaID (zona nova, ainda fora do zones.json):", sem_area)
