@@ -2,9 +2,9 @@
 -- sob um cliente stubado, com os eventos disparados como o jogo os dispara.
 --
 -- Prova que: quem dá e quem entrega a quest são gravados com id de NPC e
--- coordenada; o objetivo vem junto; identidade secreta não é gravada; a resposta
--- do servidor (QUEST_DATA_LOAD_RESULT) vira nome; e que no Anniversary o coletor
--- não grava nada — lá o dado já é conhecido.
+-- coordenada; o objetivo vem junto; identidade restrita não é gravada; a
+-- resposta do servidor vira nome; título VAZIO não gruda (o bug clássico: "" é
+-- verdadeiro em Lua); e a colheita no gossip rende o NPC inteiro sem aceitar.
 --
 --   luajit tools/forever-scan.lua
 --
@@ -31,11 +31,25 @@ function strsplit(sep, s)
 	for piece in (s .. sep):gmatch("([^" .. sep .. "]*)" .. sep) do out[#out + 1] = piece end
 	return unpack(out)
 end
-function UnitGUID(unit) return unit == "npc" and npcGuid or nil end
-function UnitName(unit) return unit == "npc" and npcName or nil end
+function UnitGUID(unit) return (unit == "npc" or unit == "questnpc") and npcGuid or nil end
+function UnitName(unit) return (unit == "npc" or unit == "questnpc") and npcName or nil end
+function UnitExists(unit) return unit == "npc" end   -- "questnpc" não existe: cai no genérico
+function UnitFactionGroup() return "Horde" end
+function GetLocale() return "enUS" end
 function GetQuestID() return questAtual end
 function GetZoneText() return "Riverglades" end
 function GetMaxPlayerLevel() return 60 end
+function GetQuestFactionGroup() return 2 end
+function GetQuestUiMapID() return 2548 end
+local temDado = {}
+function HaveQuestData(id) return temDado[id] == true end
+
+-- o que o NPC oferece antes de você aceitar
+local ofertas = {}
+C_GossipInfo = {
+	GetAvailableQuests = function() return ofertas end,
+	GetActiveQuests = function() return {} end,
+}
 
 C_Map = {
 	GetBestMapForUnit = function() return 2548 end,
@@ -48,6 +62,7 @@ C_QuestLog = {
 	GetQuestObjectives = function() return { { text = "0/8 Shriekling", type = "monster", numRequired = 8 } } end,
 	RequestLoadQuestByID = function(id) pedidos[#pedidos + 1] = id end,
 	IsQuestFlaggedCompleted = function() return false end,
+	IsRepeatableQuest = function() return false end,
 }
 C_Timer = { NewTicker = function() return { Cancel = function() end } end }
 
@@ -68,7 +83,7 @@ local function load_addon(interfaceNumber)
 	ns.fire = function(event, ...)
 		for _, fn in ipairs(handlers[event] or {}) do fn(event, ...) end
 	end
-	function GetBuildInfo() return "1.60.1", "69893", "Sep 17 2026", interfaceNumber end
+	function GetBuildInfo() return "1.60.1", "69913", "Sep 18 2026", interfaceNumber end
 	for _, file in ipairs({ "Compat.lua", "ForeverScan.lua" }) do
 		assert(loadfile(ROOT .. "/" .. file))("Lodestar", ns)
 	end
@@ -117,11 +132,39 @@ check(fe.Scan:Running(), "a varredura ficou rodando")
 fe.Scan:Stop()
 check(not fe.Scan:Running(), "e para quando mandam parar")
 
--- ── Anniversary: o coletor fica quieto ─────────────────────────────────────
-local tbc = load_addon(20506)
-questAtual = 783
-tbc.fire("QUEST_DETAIL")
-tbc.fire("QUEST_ACCEPTED", 1, 783)
-check(tbc.db.scan == nil, "no Anniversary nada é coletado")
+-- facção e zona: dois campos que o roteador EXIGE e que só o cliente dá
+check(q.faction == 2, "a facção da quest foi gravada")
+check(q.uiMap == 2548, "e o uiMap que o servidor aponta")
+
+-- título vazio não pode grudar: "" é VERDADEIRO em Lua, então `q.name or ...`
+-- gravaria a string vazia e a varredura nunca pediria o id de novo
+C_QuestLog.GetTitleForQuestID = function() return "" end
+fe.fire("QUEST_DATA_LOAD_RESULT", 90010, true)
+check(fe.db.scan.quests[90010].name == nil, "título vazio não vira nome")
+C_QuestLog.GetTitleForQuestID = function(id) return "Quest " .. tostring(id) end
+fe.fire("QUEST_DATA_LOAD_RESULT", 90010, true)
+check(fe.db.scan.quests[90010].name == "Quest 90010", "e o id volta a ser colhido depois")
+
+-- colheita no gossip: um clique no NPC rende tudo que ele oferece, sem aceitar
+ofertas = {
+	{ questID = 95101, title = "Coming of Age", questLevel = 7 },
+	{ questID = 95102, title = "Harmony in Balance", questLevel = 9 },
+}
+fe.fire("GOSSIP_SHOW")
+check(fe.db.scan.quests[95101] and fe.db.scan.quests[95102], "as duas quests do NPC foram colhidas")
+check(fe.db.scan.quests[95101].level == 7, "com o nível que o gossip dá")
+check(fe.db.scan.givers[95102] and fe.db.scan.givers[95102].npc == 218920,
+	"e cada uma ligada ao NPC que a oferece")
+
+-- registro com id de NPC não pode ser sobrescrito por um sem
+UnitGUID = function() return nil end
+fe.fire("GOSSIP_SHOW")
+check(fe.db.scan.givers[95102].npc == 218920, "registro pior não sobrescreve o melhor")
+UnitGUID = function(unit) return (unit == "npc" or unit == "questnpc") and npcGuid or nil end
+
+-- a sessão se identifica: sem isso, mesclar contribuição de estranhos é adivinhação
+local meta = fe.db.scan.meta
+check(meta and meta.build == "69913" and meta.interface == 16001, "a colheita diz de que build veio")
+check(meta.faction == "Horde" and meta.locale == "enUS", "e de que facção e idioma")
 
 print(("ok: %d checks"):format(checks))
