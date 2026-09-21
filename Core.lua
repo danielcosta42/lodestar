@@ -88,7 +88,6 @@ end
 function ns:RefreshHUDs()
 	if ns.Waypoint then ns.Waypoint:Update() end
 	if ns.XPHud then ns.XPHud:Update() end
-	if ns.Talents then ns.Talents:Update() end
 	if ns.QuestItem then ns.QuestItem.Update() end
 	if ns.TargetMarker then ns.TargetMarker:Rebuild() end
 	-- trilha e pin do mapa se atualizam por ticker (somem em <0.3s)
@@ -226,8 +225,6 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.GuideMenu then ns.GuideMenu:Toggle() end
 	elseif cmd == "config" or cmd == "options" or cmd == "settings" then
 		if ns.Settings then ns.Settings:Toggle() end
-	elseif cmd == "raids" or cmd == "raid" or cmd == "attune" then
-		if ns.Attunements then ns.Attunements:Toggle() end
 	elseif cmd == "party" or cmd == "squad" then
 		if ns.Squad then ns.Squad:Toggle() end
 	elseif cmd == "gather" or cmd == "coleta" then
@@ -249,10 +246,6 @@ SlashCmdList.LODESTAR = function(msg)
 		ns.db.xpHud = not ns.db.xpHud
 		ns:Print(ns.L.XP_HUD, ns.db.xpHud and ns.L.ON or ns.L.OFF)
 		if ns.XPHud then ns.XPHud:Update() end
-	elseif cmd == "talents" then
-		ns.db.talents = not ns.db.talents
-		ns:Print(ns.L.TALENTS, ns.db.talents and ns.L.ON or ns.L.OFF)
-		if ns.Talents then ns.Talents:Update() end
 	elseif cmd == "coords" then
 		ns.db.coords = not ns.db.coords
 		ns:Print(ns.L.COORDS, ns.db.coords and ns.L.ON or ns.L.OFF)

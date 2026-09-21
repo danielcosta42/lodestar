@@ -7,7 +7,8 @@
 # Exceções: o gerador e o teste do port para o Forever — quem revisa precisa rodar.
 tools/*
 !tools/gen_forever.py
-!tools/fetch_forever.py
+!tools/wdb.py
+!tools/import_scan.py
 !tools/import_forever.py
 !tools/forever-guides.lua
 !tools/forever-scan.lua

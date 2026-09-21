@@ -1,12 +1,19 @@
 # Lodestar
 
-**Free & open leveling and raid-prep guides for World of Warcraft: The Burning Crusade Classic and WoW: Forever.**
+**Free & open leveling guides for World of Warcraft: Forever.**
 
-Lodestar is an in-game, step-by-step guide engine — a community-built alternative to paid guide addons. It routes you from **1 to 70** (Alliance & Horde), automates the tedious quest clicks, points an arrow at your next objective, and gets boosted characters **raid-ready**. No gating, no nag screens, no telemetry — 100% **MIT-licensed**, and every route is generated from **open community data** (Questie).
+Lodestar is an in-game, step-by-step guide engine — a community-built alternative to paid guide addons. It routes you (Alliance & Horde), automates the tedious quest clicks, and points an arrow at your next objective. No gating, no nag screens, no telemetry — 100% **MIT-licensed**.
 
 Install it, log in, and Lodestar automatically loads the best guide for your level and zone. That's it.
 
-One build serves both clients. On **WoW: Forever** (beta, Interface 16001) the addon hides what that client does not have — Outland, the blood elf and draenei starting zones, TBC attunements and dailies — and skips the individual steps whose quest was removed, so the 1-60 routes keep flowing. See [docs/forever.md](docs/forever.md) for the numbers and what is still open.
+### Why this addon exists
+
+Forever keeps its quest text, objectives and coordinates **on the server** — the client ships
+6,600 bare quest IDs and nothing else. No amount of datamining will produce a guide for the new
+zones. The only way anyone gets that data is by **being there**, so Lodestar collects it while you
+play and gives it back, open.
+
+See [docs/forever.md](docs/forever.md) for the measurements and what is still open.
 
 ---
 
@@ -25,16 +32,17 @@ One build serves both clients. On **WoW: Forever** (beta, Interface 16001) the a
 
 ### Leveling companions
 - **XP/hour pace HUD** with ETA-to-level and ahead/behind tracking.
-- **Talent suggestions** per level, with a one-click learn button.
 - **Gear Advisor** — pings you when a bag item is an upgrade.
 - Target markers on tooltips & nameplates; player coordinates on minimap and map.
 - Death counter and a shareable end-of-run **Report Card** (with "ghost racing").
 
-### ⭐ Raid Ready — Boosted 60–70
-A curated route that takes a **boosted level 60 to 70 and Karazhan-attuned**, purely by dungeon spam:
-- **Only dungeon & attunement quests** — no open-world filler.
-- A live **dungeon run-counter** (`Blood Furnace 3/12`) that auto-advances the step when you hit the target.
-- Full **Karazhan attunement** (all three key fragments), the **Arcatraz key**, the **Shattered Halls key**, and heroic-key reputation earned along the way — walk out ready for **SSC / Tempest Keep**.
+### ⭐ Quest collection — `/ls scan`
+Forever's new content is not in any public database, so Lodestar harvests it as you play: who gives
+and who ends each quest, with NPC ID and coordinates, the objectives, and the waypoint the server
+itself points at. It goes to `LodestarDB.scan`, and `tools/` turns it into routes.
+
+Nothing personal is collected and nothing is sent anywhere — sharing a harvest is a file you hand
+over on purpose.
 
 ### For contributors
 - **Import / export** guides with share codes; record your own route in-game.
@@ -45,7 +53,7 @@ A curated route that takes a **boosted level 60 to 70 and Karazhan-attuned**, pu
 ## Getting started
 
 - `/ls` (or the minimap button) opens/closes the guide window.
-- `/ls menu` browses the full library — leveling, dungeons, attunements, reputation, dailies and events.
+- `/ls menu` browses the full library — leveling, dungeons, reputation, dailies and events.
 - `/ls config` opens the settings.
 
 ### Slash commands
@@ -58,6 +66,7 @@ A curated route that takes a **boosted level 60 to 70 and Karazhan-attuned**, pu
 | `/ls reset` | Reset progress on the current guide |
 | `/ls next` · `/ls prev` | Step forward / back |
 | `/ls export` · `/ls import` | Share or load a custom guide |
+| `/ls scan` | Ask the server about the quests only this client knows |
 
 ### Optional
 - **TomTom** — if installed, Lodestar can hand the arrow/waypoint off to it.
@@ -66,6 +75,8 @@ A curated route that takes a **boosted level 60 to 70 and Karazhan-attuned**, pu
 
 ## Credits & license
 
-- Route data is derived from the open **[Questie](https://github.com/Questie/Questie)** database plus community curation.
-- The Boosted 60–70 route is based on the community guide by **Biosparks / myro**.
+- The vanilla-era routes are derived from the open **[Questie](https://github.com/Questie/Questie)**
+  database plus community curation. Forever's own content is collected in-game (see `/ls scan`).
+- No data is scraped from any site: Wowhead's terms allow browsers only, and we intend this data
+  to be reusable by anyone.
 - Code: **MIT**. Bug reports and pull requests welcome on [GitHub](https://github.com/danielcosta42/lodestar).

@@ -1,7 +1,7 @@
-## Interface: 20506, 16001
+## Interface: 16001
 ## Title: |cff66ccffLodestar|r
-## Notes: Free & open in-game leveling guides for TBC Classic and WoW: Forever — routes for both clients (Alliance & Horde), waypoint arrow, quest automation, XP pace, and a boosted 60-70 dungeon path to Karazhan-attuned.
-## Notes-ptBR: Guias de leveling livres para TBC Classic e WoW: Forever — rotas para os dois clientes (Aliança e Horda), seta de waypoint, automação de quests, ritmo de XP e rota 60-70 boostado até atunado em Karazhan.
+## Notes: Free & open in-game leveling guides for WoW: Forever — Alliance & Horde routes, waypoint arrow, quest automation and XP pace. Collects the quest data this client keeps server-side, so the guides grow as people play.
+## Notes-ptBR: Guias de leveling livres para WoW: Forever — rotas de Aliança e Horda, seta de waypoint, automação de quests e ritmo de XP. Colhe o dado de quest que este cliente guarda no servidor, então os guias crescem conforme se joga.
 ## Author: Lodestar
 ## Version: @project-version@
 ## IconTexture: Interface\AddOns\Lodestar\lodestar-icones\logo-estrela-64
@@ -50,8 +50,6 @@ ForeverData.lua
 Guide.lua
 PrereqData.lua
 Prereq.lua
-RaidAttuneData.lua
-Attunements.lua
 Squad.lua
 Gather.lua
 Consumables.lua
@@ -77,8 +75,6 @@ GearAdvisor.lua
 RunTracker.lua
 ReportCard.lua
 XPHud.lua
-TalentBuilds.lua
-Talents.lua
 Coords.lua
 MobWarn.lua
 Deaths.lua

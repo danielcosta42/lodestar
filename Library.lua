@@ -56,7 +56,6 @@ local function computeList()
 	for key, guide in pairs(ns.guides) do
 		local m = guideMeta(guide)
 		if m.category == curCat
-			and ns:GuideAvailable(key)                   -- conteúdo que este cliente tem
 			and (not m.faction or m.faction == curFac)   -- só facção do player + neutros
 			and (q == "" or key:lower():find(q, 1, true))
 		then

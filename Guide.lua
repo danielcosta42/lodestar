@@ -35,21 +35,12 @@ local ItemCount = (C_Item and C_Item.GetItemCount) or GetItemCount or function()
 -- nas rotas que seguem valendo ainda sobram quests que aquele cliente não tem.
 -- Guia sem conteúdo some da biblioteca; quest que sumiu vira passo pulado.
 --------------------------------------------------------------------------------
-local goneQuest = ns.Client.isForever and ns.foreverGoneQuests or nil
-local deadGuide = ns.Client.isForever and ns.foreverDeadGuides or nil
+local goneQuest = ns.foreverGoneQuests
 
-function ns:GuideAvailable(key)
-	return not (deadGuide and deadGuide[key])
-end
-
--- Próximo guia do encadeamento, pulando os que não existem neste cliente.
+-- Próximo guia do encadeamento. Ponteiro pendurado (o guia seguinte não existe)
+-- encerra a cadeia em vez de estourar.
 function ns:NextGuideKey(guide)
 	local nxt = guide.meta and guide.meta.next
-	local hops = 0
-	while nxt and self.guides[nxt] and not self:GuideAvailable(nxt) and hops < 50 do
-		nxt = self.guides[nxt].meta.next
-		hops = hops + 1
-	end
 	if nxt and self.guides[nxt] then return nxt end
 end
 
@@ -498,7 +489,7 @@ local function findStartGuide()
 	local pf = UnitFactionGroup("player")
 	for key, g in pairs(ns.guides) do
 		if key:sub(1, 9) == "Leveling/" and key:find(zone, 1, true)
-			and (not g.meta.faction or g.meta.faction == pf) and ns:GuideAvailable(key) then
+			and (not g.meta.faction or g.meta.faction == pf) then
 			return key
 		end
 	end
@@ -516,8 +507,7 @@ function ns:BestGuideForPlayer()
 	end
 	local best, bestScore
 	for key, g in pairs(self.guides) do
-		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf)
-			and self:GuideAvailable(key) then
+		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf) then
 			local lo, hi = key:match("%((%d+)%s*%-%s*(%d+)%)")
 			lo, hi = tonumber(lo), tonumber(hi)
 			if lo and hi then

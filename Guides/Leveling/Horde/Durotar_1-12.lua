@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Durotar (1-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Eversong Woods (2-10)",
+	next = "Leveling/Horde/Tirisfal Glades (4-58)",
 }, [[
 step
   talk Gornek##3143

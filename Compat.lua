@@ -1,14 +1,11 @@
 --=============================================================================
--- Compat: tudo que depende de QUAL cliente está rodando mora aqui.
--- Nenhum módulo espalha guarda de C_* nem testa versão por conta própria.
+-- Compat: tudo que depende do cliente mora aqui. Nenhum módulo espalha guarda
+-- de C_* nem testa versão por conta própria.
 --
--- Clientes suportados:
---   TBC Anniversary  (2.5.x, interface 205xx)  -- o de sempre
---   WoW: Forever     (1.60.x, interface 160xx) -- "Project Camelot", beta 2026-09-17
---
--- O Forever roda a interface de RETAIL sobre conteúdo vanilla: tem Secret Values,
--- tooltip de retail e nenhum Outland. Ele não expõe WOW_PROJECT_ID próprio nem
--- API de detecção — o número de interface é a única coisa que o cliente diz.
+-- O Lodestar é WoW: Forever e só ("Project Camelot", 1.60.x, interface 160xx).
+-- Aquele cliente roda a interface de RETAIL sobre conteúdo vanilla: tem Secret
+-- Values e tooltip de retail, e reporta WOW_PROJECT_ID = 1, igual ao retail —
+-- então o número de interface é a única coisa que identifica ele.
 --=============================================================================
 local ADDON, ns = ...
 
@@ -19,27 +16,33 @@ ns.Client = {
 	version   = version,
 	build     = build,
 	interface = interface,
+	-- Só para diagnóstico: o .toc já restringe a carga. Se alguém forçar
+	-- "carregar desatualizados" em outro cliente, o addon avisa em vez de
+	-- se comportar de um jeito que ninguém previu.
 	isForever = interface >= 16000 and interface < 20000,
-	isTBC     = interface >= 20500 and interface < 30000,
 }
 
--- Nível máximo: no Anniversary é 70 e sempre foi; no Forever quem responde é o
--- cliente (o beta está capado em 30, o lançamento vai a 60).
+-- Nível máximo: quem responde é o cliente (o beta está capado em 30).
 local function askedMaxLevel(fn)
 	local n = fn and tonumber(fn())
 	if n and n > 0 then return n end     -- 0 é verdadeiro em Lua: mataria o ETA calado
 end
-ns.Client.maxLevel = ns.Client.isTBC and 70
-	or askedMaxLevel(GetMaxLevelForPlayerExpansion)
+ns.Client.maxLevel = askedMaxLevel(GetMaxLevelForPlayerExpansion)
 	or askedMaxLevel(GetMaxPlayerLevel)
 	or 60
 
 --------------------------------------------------------------------------------
--- Secret Values (sistema de retail, ativo no Forever)
+-- Secret Values
 --
 -- Quando a identidade de uma unidade é restrita, ou o chat entra em lockdown, o
 -- valor chega "secreto": dá pra repassar, mas comparar, concatenar, formatar ou
 -- fatiar ESTOURA. Quem lê, pergunta antes.
+--
+-- Na prática, neste cliente, o que é secreto é estado de COMBATE (vida, auras,
+-- cast, ameaça). Identidade de NPC vem limpa — colhemos id e nome de quest giver
+-- sem problema. Mas a doc gerada marca UnitGUID/UnitName com os predicados
+-- SecretWhenUnitIdentityRestricted / SecretWhenUnitNameIdentityRestricted, então
+-- perguntamos antes em vez de depender de um comportamento que pode apertar.
 --------------------------------------------------------------------------------
 function ns.IsSecret(...)
 	if not issecretvalue then return false end
@@ -49,8 +52,21 @@ function ns.IsSecret(...)
 	return false
 end
 
--- "Creature-0-4467-0-25-6-000019B300" -> 6. GUID de jogador, secreto (identidade
--- restrita no Forever) ou fora do formato: nil — fatiar um secreto estoura.
+-- Pré-teste oficial: a identidade desta unidade vai vir secreta?
+function ns.IdentityIsSecret(unit)
+	if not C_Secrets then return false end
+	if C_Secrets.HasSecretRestrictions and not C_Secrets.HasSecretRestrictions() then
+		return false                     -- build sem restrição: nada vira secreto
+	end
+	if C_Secrets.ShouldUnitIdentityBeSecret then
+		local ok, secreto = pcall(C_Secrets.ShouldUnitIdentityBeSecret, unit)
+		if ok then return secreto and true or false end
+	end
+	return false
+end
+
+-- "Creature-0-4467-0-25-6-000019B300" -> 6. GUID de jogador, secreto ou fora do
+-- formato: nil — fatiar um secreto estoura.
 function ns.NpcID(guid)
 	if not guid or ns.IsSecret(guid) then return nil end
 	local kind, _, _, _, _, id = strsplit("-", guid)
@@ -58,12 +74,20 @@ function ns.NpcID(guid)
 	return nil
 end
 
+-- Id e nome do NPC de uma unidade, já com o pré-teste. Devolve nil, nil quando a
+-- identidade está restrita — quem chama decide se registra sem nome ou desiste.
+function ns.UnitNpc(unit)
+	if not unit or not UnitExists(unit) then return nil end
+	if ns.IdentityIsSecret(unit) then return nil end
+	local id = ns.NpcID(UnitGUID(unit))
+	local nome = UnitName(unit)
+	if ns.IsSecret(nome) then nome = nil end
+	return id, nome
+end
+
 --------------------------------------------------------------------------------
--- Tooltip
---
--- OnTooltipSetUnit é script de frame no Anniversary; no Forever o tooltip é o de
--- retail e a entrada é o TooltipDataProcessor — um registro por tipo de dado,
--- servindo todos os tooltips de uma vez.
+-- Tooltip: aqui é o de retail, entrada pelo TooltipDataProcessor — um registro
+-- por tipo de dado, servindo todos os tooltips de uma vez.
 --------------------------------------------------------------------------------
 function ns.HookUnitTooltip(fn)          -- fn(tooltip, unit)
 	if TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall and Enum
@@ -71,13 +95,6 @@ function ns.HookUnitTooltip(fn)          -- fn(tooltip, unit)
 		and TooltipUtil and TooltipUtil.GetDisplayedUnit then
 		TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, function(tt)
 			local _, unit = TooltipUtil.GetDisplayedUnit(tt)
-			if unit then fn(tt, unit) end
-		end)
-		return true
-	end
-	if GameTooltip and GameTooltip.HasScript and GameTooltip:HasScript("OnTooltipSetUnit") then
-		GameTooltip:HookScript("OnTooltipSetUnit", function(tt)
-			local _, unit = tt:GetUnit()
 			if unit then fn(tt, unit) end
 		end)
 		return true

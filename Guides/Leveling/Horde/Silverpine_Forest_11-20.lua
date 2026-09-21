@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Ghostlands (11-20)",
+	next = "Leveling/Horde/The Barrens (14-35)",
 }, [[
 step
   note {fp}Karos Razok

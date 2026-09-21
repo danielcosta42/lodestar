@@ -16,6 +16,8 @@ import io
 import json
 import os
 
+from import_scan import inverte, para_area
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 BUILD = os.path.join(HERE, "build")
 OUT = os.path.join(BUILD, "forever")
@@ -76,7 +78,9 @@ def main():
         entrada = {
             "name": q.get("name"),
             "reqLevel": q.get("reqlevel") or 0,
-            "questLevel": q.get("level") or 0,
+            # nível DESCONHECIDO é None, nunca 0: o roteador corta questLevel < 1
+            # (holiday/AQ) e deixa None passar — 0 apaga a quest do guia calada.
+            "questLevel": q.get("level") or None,
             "races": 0, "classes": 0,
             "faction": FACCAO.get(q.get("side"), "AH"),
             "startNpcs": [], "startObjects": [], "startItems": [],
@@ -110,10 +114,23 @@ def main():
         novas += 1
 
     # 3. o que veio do cliente do beta manda: é o único dado das zonas novas
+    inv = inverte(zonas)
+    avisos, sem_area = set(), 0
+
+    def area_do(registro, entrada=None):
+        """areaID do registro do scan — o scan grava uiMapID, o roteador indexa
+        spawn por areaID (`npcs[id]["spawns"][areaID]`). Chave errada = giver que
+        nunca ancora = quest fora de todo guia. O import_scan já traduz; aqui é
+        o cinto de segurança para scan.json antigo ou escrito à mão."""
+        if registro.get("area"):
+            return registro["area"]
+        area = para_area(inv, zonas, registro.get("map"), registro.get("zone"), avisos)
+        return area or (entrada or {}).get("zoneOrSort") or 0
+
     do_cliente = 0
     for qid, q in (scan.get("quests") or {}).items():
         entrada = quests.get(str(qid)) or {
-            "name": None, "reqLevel": 0, "questLevel": 0, "races": 0, "classes": 0,
+            "name": None, "reqLevel": 0, "questLevel": None, "races": 0, "classes": 0,
             "faction": "AH", "startNpcs": [], "startObjects": [], "startItems": [],
             "endNpcs": [], "endObjects": [], "preSingle": [], "preGroup": [],
             "exclusiveTo": [], "nextInChain": None, "zoneOrSort": 0, "specialFlags": 0,
@@ -135,13 +152,42 @@ def main():
             entrada = quests.get(str(qid))
             if not (entrada and g.get("npc")):
                 continue
+            area = area_do(g, entrada)
+            if not area:
+                sem_area += 1
             ponto_vira_entrada(npcs, {"id": g["npc"], "name": g.get("name"),
                                       "x": g.get("x") or 0, "y": g.get("y") or 0},
-                               g.get("map") or entrada.get("zoneOrSort") or 0)
+                               area)
             if g["npc"] not in entrada[campo]:
                 entrada[campo].append(g["npc"])
-            if not entrada.get("zoneOrSort") and g.get("map"):
-                entrada["zoneOrSort"] = g["map"]
+            if not entrada.get("zoneOrSort") and area:
+                entrada["zoneOrSort"] = area
+
+    # 4. waypoints: o próprio servidor aponta o objetivo atual de cada quest do
+    # log — é a única coordenada que existe para as zonas que o Forever inventou.
+    com_wp = 0
+    for qid, pontos in (scan.get("waypoints") or {}).items():
+        entrada = quests.get(str(qid))
+        if not entrada:
+            continue
+        por_area = {}
+        for p in pontos or []:
+            area = area_do(p, entrada)
+            if not area:
+                continue
+            coord = [round(p["x"], 2), round(p["y"], 2)]
+            if coord not in por_area.setdefault(str(area), []):
+                por_area[str(area)].append(coord)
+        if not por_area:
+            continue
+        entrada["objPoints"] = por_area
+        com_wp += 1
+        if not entrada.get("zoneOrSort"):      # a zona onde o objetivo mais aparece
+            entrada["zoneOrSort"] = int(max(por_area, key=lambda a: len(por_area[a])))
+    # ponytail: objPoints fica gravado no banco e só serve de zona hoje — teto: o
+    # roteador tira coordenada de spawn de NPC/objeto, então um waypoint sozinho
+    # não vira |goto. Upgrade: no emit_do do router.py, quando não houver alvo com
+    # spawn, emitir o goto a partir de q["objPoints"][area][0].
 
     os.makedirs(OUT, exist_ok=True)
     for nome, dado in (("quests", quests), ("npcs", npcs), ("objects", objetos),
@@ -151,7 +197,11 @@ def main():
     print("gravado em", os.path.normpath(OUT))
     print("  quests:", len(quests), "| tiradas (não existem no Forever):", len(sumiram))
     print("  vindas do Wowhead:", novas, "(sem nenhum ponto no mapa:", sem_ponto, ")")
-    print("  vindas do cliente do beta:", do_cliente)
+    print("  vindas do cliente do beta:", do_cliente, "| com waypoint do servidor:", com_wp)
+    if sem_area:
+        print("  givers/enders sem areaID (zona nova, ainda fora do zones.json):", sem_area)
+    for aviso in sorted(avisos):
+        print("  uiMapID ambíguo:", aviso)
 
 
 if __name__ == "__main__":

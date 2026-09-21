@@ -15,7 +15,7 @@ import re
 import sys
 import urllib.request
 
-FOREVER = sys.argv[1] if len(sys.argv) > 1 else "1.60.1.69893"
+FOREVER = sys.argv[1] if len(sys.argv) > 1 else "1.60.1.69913"
 ANNIV = sys.argv[2] if len(sys.argv) > 2 else "2.5.6.69795"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -78,17 +78,15 @@ for key, ids in guides():
         missing |= hit          # guia vivo: são os passos dele que somem
 
 lines = [
-    "-- AUTO-GERADO (gen_forever.py). O que não existe no WoW: Forever.",
+    "-- AUTO-GERADO (gen_forever.py). O que o WoW: Forever não tem.",
+    "--",
+    "-- Os guias cujo conteúdo inteiro era de TBC foram DELETADOS do addon (o",
+    "-- Lodestar é Forever e só). O que sobra aqui são as quests soltas que as",
+    "-- rotas vivas ainda citam e aquele cliente não tem, mais os ids que só o",
+    "-- servidor sabe responder.",
     "-- QuestV2 do build %s contra o do Anniversary %s." % (FOREVER, ANNIV),
     "local ADDON, ns = ...",
     "if not ns then return end",
-    "",
-    "-- Guias cujo conteúdo é de TBC: saem da biblioteca e do encadeamento.",
-    "ns.foreverDeadGuides = {",
-]
-lines += ['\t["%s"]=true,' % k for k in sorted(dead)]
-lines += [
-    "}",
     "",
     "-- Quests que o Anniversary tem e o Forever não, dentro de guias que seguem",
     "-- valendo: o passo é pulado em vez de mandar o jogador num NPC mudo.",
@@ -100,11 +98,13 @@ lines.append("}")
 # Ids que o cliente do Forever tem e nenhum banco público conhece: é o que o
 # coletor em jogo (`/ls scan`) pergunta ao servidor, um a um. Como string porque
 # só é lida quando alguém manda varrer — não vira 2.400 chaves de tabela à toa.
-conhecidos = set()
-if os.path.exists(os.path.join(CACHE, "forever_index.json")):
-    conhecidos = {int(k) for k in json.load(
-        open(os.path.join(CACHE, "forever_index.json"), encoding="utf-8"))}
-desconhecidos = sorted(q for q in (forever - anniv) if q not in conhecidos)
+#
+# Antes isto descontava o que a Wowhead já sabia. Não desconta mais: raspar o
+# site é contra a ToU deles (só navegador) e o robots.txt bloqueia coletor
+# automático por nome — não dá pra semear dado aberto com aquilo. O que o
+# servidor responde a `/ls scan`, e o que o cliente escreve em Cache/WDB, é
+# nosso e é limpo.
+desconhecidos = sorted(forever - anniv)
 lines += [
     "",
     "-- Ids que só o cliente sabe responder (%d), para `/ls scan`." % len(desconhecidos),
@@ -113,6 +113,8 @@ lines += [
 
 open(OUT, "w", encoding="utf-8").write("\n".join(lines) + "\n")
 print("gerado:", os.path.normpath(OUT))
-print("  guias mortos no Forever:", len(dead))
+print("  guias sem conteudo no Forever (DELETE estes arquivos):", len(dead))
+for k in sorted(dead):
+    print("    ", k)
 print("  quests removidas em guias vivos:", len(missing))
 print("  (quests que o Forever tem e o Anniversary não:", len(forever - anniv), ")")
