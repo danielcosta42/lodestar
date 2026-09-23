@@ -41,8 +41,11 @@ Forever's new content is not in any public database, so Lodestar harvests it as 
 and who ends each quest, with NPC ID and coordinates, the objectives, and the waypoint the server
 itself points at. It goes to `LodestarDB.scan`, and `tools/` turns it into routes.
 
-Nothing personal is collected and nothing is sent anywhere — sharing a harvest is a file you hand
-over on purpose.
+Nothing personal is collected. Nothing leaves your machine unless you turn on **Share quest
+locations with the family** (off by default), which whispers only the *where* — quest ID, NPC ID, map
+and coordinate — to guildmates running the companion, so the guides grow. Nothing about your character
+goes in the message, and the addon on the other side drops who sent it. Off, sharing a harvest stays
+what it always was: a file you hand over on purpose.
 
 ### For contributors
 - **Import / export** guides with share codes; record your own route in-game.

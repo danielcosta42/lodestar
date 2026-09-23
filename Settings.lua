@@ -95,6 +95,8 @@ local function fillGeneral(p)
 		function() return ns.db.gearAdvisor end, function(v) ns.db.gearAdvisor = v end)
 	switchRow(p, L.SET_SHARE, L.SET_SHARE_D,
 		function() return ns.db.autoShareQuest end, function(v) ns.db.autoShareQuest = v end, true)
+	switchRow(p, L.SET_SHAREQ, L.SET_SHAREQ_D,
+		function() return ns.db.shareQuests end, function(v) ns.db.shareQuests = v end, true)
 	switchRow(p, L.SET_MOBWARN, L.SET_MOBWARN_D,
 		function() return ns.db.mobWarning end, function(v) ns.db.mobWarning = v end)
 	buttonRow(p, L.SET_LIBRARY, L.SET_LIBRARY_D,

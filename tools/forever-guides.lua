@@ -3,7 +3,7 @@
 --
 -- Prova que: passo cuja quest não existe neste cliente é retirado do guia sem
 -- deixar passo sem saída, o array cru nunca é mutado, cadeia com ponteiro
--- pendurado termina em vez de estourar, e identidade de NPC secreta não vira id.
+-- pendurado termina em vez de estourar, e GUID secreto não é fatiado em id.
 --
 --   luajit tools/forever-guides.lua
 --
@@ -128,21 +128,8 @@ check(fe.NpcID("SECRETO") == nil, "GUID secreto não é fatiado")
 check(fe.NpcID("Player-4467-0000ABCD") == nil, "GUID de jogador não vira NPC")
 check(fe.IsSecret("SECRETO") and not fe.IsSecret("x"), "IsSecret responde pelo cliente")
 
--- o pré-teste oficial manda: identidade restrita não é lida, mesmo que o GUID
--- viesse limpo. É o que separa "colhe" de "estoura" quando a regra apertar.
-UnitGUID = function() return "Creature-0-4467-0-25-6-000019B300" end
-UnitName = function() return "Zarlman Two-Moons" end
-C_Secrets = {
-	HasSecretRestrictions = function() return true end,
-	ShouldUnitIdentityBeSecret = function() return false end,
-}
-local id, nome = fe.UnitNpc("npc")
-check(id == 3054 or id == 6, "identidade liberada devolve o id do NPC (deu " .. tostring(id) .. ")")
-check(nome == "Zarlman Two-Moons", "e o nome junto")
-C_Secrets.ShouldUnitIdentityBeSecret = function() return true end
-check(fe.UnitNpc("npc") == nil, "identidade restrita não é lida")
-C_Secrets.HasSecretRestrictions = function() return false end
-check(fe.UnitNpc("npc") ~= nil, "build sem restrição lê normalmente")
-C_Secrets, UnitGUID, UnitName, issecretvalue = nil, nil, nil, nil
+-- O pré-teste oficial de identidade restrita mora na LibChehulQuest, que carrega a
+-- cópia dela (não pode depender do ns): quem cobre é tools/forever-scan.lua.
+issecretvalue = nil
 
 print(("ok: %d checks"):format(checks))
