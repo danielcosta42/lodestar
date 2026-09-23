@@ -1,10 +1,13 @@
--- O coletor do Forever, rodado contra o arquivo de verdade (ForeverScan.lua)
--- sob um cliente stubado, com os eventos disparados como o jogo os dispara.
+-- O coletor do Forever, rodado contra os arquivos de verdade (LibChehulQuest +
+-- ForeverScan) sob um cliente stubado, com os eventos disparados como o jogo os
+-- dispara.
 --
 -- Prova que: quem dá e quem entrega a quest são gravados com id de NPC e
 -- coordenada; o objetivo vem junto; identidade restrita não é gravada; a
 -- resposta do servidor vira nome; título VAZIO não gruda (o bug clássico: "" é
--- verdadeiro em Lua); e a colheita no gossip rende o NPC inteiro sem aceitar.
+-- verdadeiro em Lua); a colheita no gossip rende o NPC inteiro sem aceitar; e o
+-- repasse pela malha só sai com consentimento, só para quem anuncia `qsink` e
+-- só com o "onde" — nunca com quem mandou.
 --
 --   luajit tools/forever-scan.lua
 --
@@ -66,6 +69,30 @@ C_QuestLog = {
 }
 C_Timer = { NewTicker = function() return { Cancel = function() end } end }
 
+-- a lib escuta por frame próprio (não depende do host): guarda o OnEvent dela
+local libEvents = {}
+function CreateFrame()
+	return {
+		RegisterEvent = function(_, e) libEvents[e] = true end,
+		SetScript = function(_, _, fn) libEvents.handler = fn end,
+	}
+end
+
+-- malha stubada: quem recebeu o quê
+local sussurros, aceita, meshHandler = {}, true, nil
+_G.ChehulMesh = {
+	Whisper = function(_, prefix, payload, alvo)
+		if not aceita then return false end        -- AceComm fora do ar
+		sussurros[#sussurros + 1] = { prefix = prefix, payload = payload, alvo = alvo }
+		return true
+	end,
+	Register = function(_, _, handler) meshHandler = handler end,
+}
+_G.ChehulNet = { peers = {
+	GuildOS  = { caps = "v=3,qsink,lvl=60" },   -- tem companion: recebe
+	Outro    = { caps = "v=1,lvl=42" },         -- não tem: não recebe nada
+} }
+
 -- ── carrega os arquivos de verdade, com eventos que disparam ───────────────
 local function load_addon(interfaceNumber)
 	local handlers = {}
@@ -84,8 +111,15 @@ local function load_addon(interfaceNumber)
 		for _, fn in ipairs(handlers[event] or {}) do fn(event, ...) end
 	end
 	function GetBuildInfo() return "1.60.1", "69913", "Sep 18 2026", interfaceNumber end
-	for _, file in ipairs({ "Compat.lua", "ForeverScan.lua" }) do
+	for _, file in ipairs({ "Compat.lua", "Libs/LibStub.lua", "Libs/LibChehulQuest.lua",
+	                        "ForeverScan.lua" }) do
 		assert(loadfile(ROOT .. "/" .. file))("Lodestar", ns)
+	end
+	-- O jogo entrega o evento ao frame da lib; aqui o `fire` do teste faz o mesmo.
+	local aoHost = ns.fire
+	ns.fire = function(event, ...)
+		aoHost(event, ...)
+		if libEvents.handler then libEvents.handler(nil, event, ...) end
 	end
 	return ns
 end
@@ -166,5 +200,103 @@ UnitGUID = function(unit) return (unit == "npc" or unit == "questnpc") and npcGu
 local meta = fe.db.scan.meta
 check(meta and meta.build == "69913" and meta.interface == 16001, "a colheita diz de que build veio")
 check(meta.faction == "Horde" and meta.locale == "enUS", "e de que facção e idioma")
+
+-- ── repasse pela malha ─────────────────────────────────────────────────────
+local lib = LibStub("LibChehulQuest-1.0")
+check(lib and lib.ligado, "a lib carregou e o addon a ligou")
+
+-- sem consentimento não sai nada, por mais cheio que esteja o buffer
+check(next(lib.buffer), "o colhido ficou na fila de repasse")
+check(lib:Flush() == 0 and #sussurros == 0, "sem consentimento nada é mandado")
+
+-- com consentimento: só para quem anuncia `qsink`, e só o "onde"
+fe.db.shareQuests = true
+check(lib:Flush() > 0, "com consentimento o lote sai")
+check(#sussurros == 1 and sussurros[1].alvo == "GuildOS",
+	"sussurrado só para quem tem companion")
+local payload = sussurros[1].payload
+check(payload:find("^CQ1|"), "com o protocolo na frente")
+check(payload:find("g:80120:218920:2548:5200:3400", 1, true),
+	"e o ponto do giver dentro (deu " .. payload .. ")")
+check(not payload:find("Keanna") and not payload:find("Quest 80120"),
+	"sem nome de NPC nem título: o sink pergunta isso ao servidor sozinho")
+check(lib:Flush() == 0, "o que já foi não é remandado na sessão")
+
+-- waypoint: a coordenada que o servidor aponta também é repassada
+C_QuestLog.GetNumQuestLogEntries = function() return 1 end
+C_QuestLog.GetInfo = function() return { questID = 80120, isHeader = false, level = 24 } end
+C_QuestLog.GetNextWaypointForMap = function() return 0.61, 0.28 end
+lib:SweepWaypoints()
+local pontos = fe.db.scan.waypoints[80120]
+check(pontos and pontos[1].map == 2548 and pontos[1].x == 61, "o waypoint do servidor foi gravado")
+lib:Flush()
+check(sussurros[#sussurros].payload:find("w:80120:2548:6100:2800", 1, true),
+	"e repassado como ponto")
+
+-- ── lado sink: recebe de estranho ──────────────────────────────────────────
+local deFora = "CQ1|g:70500:4321:1519:5000:6000;w:70500:1519:5100:6100"
+check(lib:OnRelay(deFora) == 0, "quem não é sink ignora o que chega")
+
+lib.host.isSink = function() return true end
+check(lib:OnRelay(deFora) == 2, "o sink aceita os dois registros")
+local recebido = fe.db.scan.givers[70500]
+check(recebido and recebido.npc == 4321 and recebido.map == 1519, "com npc e mapa")
+check(recebido.x == 50 and recebido.y == 60, "e a coordenada de volta em 0-100")
+check(recebido.src == "relay", "marcado como vindo da malha")
+check(recebido.name == nil, "sem nada sobre quem mandou")
+check(lib.novos[70500], "id desconhecido entrou na fila de perguntar ao servidor")
+local antes = #pedidos
+check(lib:PullNew(3) == 1, "e é perguntado ao servidor")
+check(#pedidos == antes + 1 and pedidos[#pedidos] == 70500, "pelo id que chegou")
+
+-- registro que o sink já tem não é sobrescrito por um de fora
+check(lib:OnRelay("CQ1|g:70500:9999:1519:1000:1000") == 0, "o que já existe não é sobrescrito")
+check(fe.db.scan.givers[70500].npc == 4321, "o npc original continua")
+
+-- ── o que a revisão pegou (regressões que passariam batido) ────────────────
+-- parado no mesmo lugar, o waypoint não é remandado a cada sweep; ponto novo é
+lib:SweepWaypoints()
+check(lib:Flush() == 0, "o mesmo waypoint não sai duas vezes")
+C_QuestLog.GetNextWaypointForMap = function() return 0.99, 0.11 end
+lib:SweepWaypoints()
+check(lib:Flush() == 1, "mas o ponto novo sai")
+
+-- malha fora do ar: o lote FICA na fila. A sessão é tudo que o membro tem —
+-- dar por enviado o que não saiu perde o dado pra sempre.
+aceita = false
+questAtual = 80130
+fe.fire("QUEST_DETAIL")
+local antesDaFalha = #sussurros
+check(lib:Flush() == 0 and #sussurros == antesDaFalha, "sem entrega, nada é dado por enviado")
+aceita = true
+check(lib:Flush() > 0, "e o mesmo lote sai quando a malha volta")
+check(sussurros[#sussurros].payload:find("g:80130:", 1, true), "com o registro que quase se perdeu")
+
+-- o handler é chamado como o LibChehulMesh chama: (message, sender, dist)
+check(type(meshHandler) == "function", "a lib registrou o prefixo na malha")
+meshHandler("CQ1|g:70600:4322:1519:5000:6000", "Fulano", "WHISPER")
+check(fe.db.scan.givers[70600], "o payload vem na 1ª posição, como o OnReceive entrega")
+
+-- o pré-teste oficial de identidade restrita, na cópia que a lib carrega
+C_Secrets = {
+	HasSecretRestrictions = function() return true end,
+	ShouldUnitIdentityBeSecret = function() return true end,
+}
+questAtual = 80140
+fe.fire("QUEST_DETAIL")
+local restrito = fe.db.scan.givers[80140]
+check(restrito and restrito.npc == nil, "identidade restrita: o ponto entra, o id do NPC não")
+check(lib:Flush() == 0, "e ponto sem NPC não é repassado (não serve pra ninguém)")
+C_Secrets = nil
+
+-- sem malha instalada o addon segue colhendo local: é a feature dele, e não
+-- depende de ninguém (DoD da issue #7)
+local malha = _G.ChehulMesh
+_G.ChehulMesh = nil
+questAtual = 80150
+fe.fire("QUEST_DETAIL")
+check(fe.db.scan.givers[80150], "sem malha, a colheita local continua")
+check(lib:Flush() == 0, "e o repasse simplesmente não acontece, sem estourar")
+_G.ChehulMesh = malha
 
 print(("ok: %d checks"):format(checks))

@@ -40,6 +40,8 @@ Libs\ChatThrottleLib.lua
 Libs\AceComm-3.0.lua
 Libs\LibChehulMesh.lua
 Libs\ChehulNet.lua
+# Coletor de quest da família: cópia verbatim, a mais nova vence (LibStub).
+Libs\LibChehulQuest.lua
 ChehulNetWire.lua
 
 ZoneData.lua

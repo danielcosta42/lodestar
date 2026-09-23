@@ -52,19 +52,6 @@ function ns.IsSecret(...)
 	return false
 end
 
--- Pré-teste oficial: a identidade desta unidade vai vir secreta?
-function ns.IdentityIsSecret(unit)
-	if not C_Secrets then return false end
-	if C_Secrets.HasSecretRestrictions and not C_Secrets.HasSecretRestrictions() then
-		return false                     -- build sem restrição: nada vira secreto
-	end
-	if C_Secrets.ShouldUnitIdentityBeSecret then
-		local ok, secreto = pcall(C_Secrets.ShouldUnitIdentityBeSecret, unit)
-		if ok then return secreto and true or false end
-	end
-	return false
-end
-
 -- "Creature-0-4467-0-25-6-000019B300" -> 6. GUID de jogador, secreto ou fora do
 -- formato: nil — fatiar um secreto estoura.
 function ns.NpcID(guid)
@@ -72,17 +59,6 @@ function ns.NpcID(guid)
 	local kind, _, _, _, _, id = strsplit("-", guid)
 	if kind == "Creature" or kind == "Vehicle" then return tonumber(id) end
 	return nil
-end
-
--- Id e nome do NPC de uma unidade, já com o pré-teste. Devolve nil, nil quando a
--- identidade está restrita — quem chama decide se registra sem nome ou desiste.
-function ns.UnitNpc(unit)
-	if not unit or not UnitExists(unit) then return nil end
-	if ns.IdentityIsSecret(unit) then return nil end
-	local id = ns.NpcID(UnitGUID(unit))
-	local nome = UnitName(unit)
-	if ns.IsSecret(nome) then nome = nil end
-	return id, nome
 end
 
 --------------------------------------------------------------------------------

@@ -121,6 +121,8 @@ local DB_DEFAULTS = {
 	guideMap = true,      -- marca os pontos dos próximos passos no mapa-múndi
 	mobWarning = true,    -- avisa ao mirar mob muito acima do nível
 	autoShareQuest = false,-- OPT-IN: compartilha a quest no grupo ao aceitar (evita spam)
+	shareQuests = false,  -- OPT-IN: repassa o que colheu (só giver/ender/waypoint) a
+	                      -- quem da família tem companion. Colher local não depende disto.
 	customGuides = {},    -- guias importados (key -> {body, faction})
 	seenIntro = false,    -- já viu a tela de boas-vindas?
 	markTargets = true,   -- destacar NPCs/mobs-alvo (tooltip + nameplate)
