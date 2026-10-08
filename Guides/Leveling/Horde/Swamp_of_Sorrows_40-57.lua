@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (42-57)", {
+ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (40-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Azshara (52-60)",
+	next = "Leveling/Horde/Un'Goro Crater (52-55)",
 }, [[
 step
   note {fp}Hekkru
@@ -357,7 +357,4 @@ step
 step
   talk Spirit of Kirith##7729
   turnin Kirith##2721 |goto Blasted Lands 68.8,31.07 |tip {turninat}Blasted Lands
-step
-  note {travel}Azshara
-  goto Azshara 11.37,78.17
 ]])

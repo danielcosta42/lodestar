@@ -6,11 +6,11 @@ ns:RegisterGuide("Events/Horde/Midsummer Fire Festival", {
 	author = "Lodestar Generator",
 }, [[
 step
-  talk Festival Loremaster##16817
-  accept Flickering Flames in Kalimdor##9388 |goto Teldrassil 56.47,92.23
+  talk Festival Talespinner##16818
+  accept Flickering Flames in Kalimdor##9388 |goto Undercity 66.47,37.76
 step
-  talk Festival Loremaster##16817
-  accept Flickering Flames in the Eastern Kingdoms##9389 |goto Teldrassil 56.47,92.23
+  talk Festival Talespinner##16818
+  accept Flickering Flames in the Eastern Kingdoms##9389 |goto Undercity 66.47,37.76
 step
   talk Festival Flamekeeper##16788
   accept A Light in Dark Places##9319 |goto Teldrassil 56.56,91.94

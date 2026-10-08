@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (54-60)", {
+ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (55-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Burning Steppes (53-60)",
+	next = "Leveling/Alliance/Swamp of Sorrows (57-60)",
 }, [[
 step
   talk Janice Felstone##10778
@@ -495,6 +495,6 @@ step
   talk Commander Ashlam Valorfist##10838
   turnin Mission Accomplished!##5237 |goto Western Plaguelands 42.7,84.03
 step
-  note {travel}Burning Steppes
-  goto Burning Steppes 65.15,23.91
+  note {travel}Swamp of Sorrows
+  goto Swamp of Sorrows 25.98,31.4
 ]])

@@ -42,7 +42,7 @@ step
   talk Moon Priestess Amara##2151
   accept Elanaria##1684 |goto Teldrassil 52.91,57.2
 step
-  only Warrior
+  only Skyborne Warrior
   talk Seena Skybreaker##252377
   accept The Skybreaker Bulwark##94003 |goto Zephras Isle 59.87,72.82
 step
@@ -59,16 +59,16 @@ step
   accept The Rethban Gauntlet##1699 |goto Redridge Mountains 21.49,44.72
 step
   only Warrior
-  talk Torm Ragetotem##3041
-  accept The Islander##1718 |goto Thunder Bluff 57.24,87.37
+  talk Kelv Sternhammer##5113
+  accept The Islander##1718 |goto Ironforge 70.34,90.65
 step
   only Warrior
   click Bath'rah's Cauldron##89931
   accept Essence of the Exile##1714 |goto Alterac Mountains 79.32,66.8
 step
   only Warrior
-  talk Torm Ragetotem##3041
-  accept A Troubled Spirit##8417 |goto Thunder Bluff 57.24,87.37
+  talk Kelv Sternhammer##5113
+  accept A Troubled Spirit##8417 |goto Ironforge 70.34,90.65
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -133,7 +133,7 @@ step
   note Bring the Horn of Vorlus to Elanaria in Darnassus.
   collect Horn of Vorlus##6805 |q 1683 |goto Teldrassil 47.25,63.6 |tip {dropsfrom}Vorlus Vilehoof
 step
-  only Warrior
+  only Skyborne Warrior
   note Reclaim the Skybreaker Bulwark from Zaal Stormshield at the Shrine of Akir.
   collect Skybreaker Bulwark##263993 |q 94003 |goto Zephras Isle 36.05,33.53 |tip {dropsfrom}Zaal Stormshield
 step
@@ -223,7 +223,7 @@ step
   talk Elanaria##4088
   turnin Elanaria##1684 |goto Darnassus 57.3,34.61
 step
-  only Warrior
+  only Skyborne Warrior
   talk Seena Skybreaker##252377
   turnin The Skybreaker Bulwark##94003 |goto Zephras Isle 59.87,72.82
 step
@@ -1098,7 +1098,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

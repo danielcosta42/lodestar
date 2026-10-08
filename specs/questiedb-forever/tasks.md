@@ -20,4 +20,16 @@
 - [x] "Speak with X" saía como `kill` — vira `talk`.
 - [x] Pré-requisito em ciclo no QuestieDB (Call of Earth) — retirado no import.
 - [x] Zonas sintéticas de continente sem nome ("Zone10074") — nome no leitor.
-- [x] Aba "Dailies" da biblioteca ficaria vazia — removida.
+- [x] ~~Aba "Dailies" da biblioteca removida~~ — revertido na revisão: guia importado pelo jogador
+      nessa categoria ficaria inalcançável; a aba vazia já tem estado vazio.
+
+## Revisão adversarial (preflight, passo 4)
+
+- [x] H1 — zona inicial com duas faixas: `findStartGuide` pegava qualquer uma (ordem do `pairs`) → a mais baixa.
+- [x] H2 — máscara com os dois bits Skyborne não saía `only Skyborne` → regra por máscara, não por bit único.
+- [x] M1 — quest de classe decidia faixa de zona ("Moonglade (10-20)" de druida) → só quest sem classe conta.
+- [x] M2 — Zephras Isle na cadeia de todo mundo → `next` pula a ilha; autopilot só a oferece a Skyborne.
+- [x] M3 — quest das duas facções mandava para cidade inimiga → roteador por facção, pelo `friendlyToFaction`.
+- [x] Baixos — CBOR (mapa com chave repetida, string em pedaços, valores simples), arquivos fechados,
+      scan só preenche lista vazia, `talk` só para NPC amigo e sem perder a marca de grupo do `use`,
+      teste confere também a zona de coordenada de instância, números do doc remedidos (289).

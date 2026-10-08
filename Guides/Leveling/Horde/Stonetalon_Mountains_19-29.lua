@@ -70,6 +70,12 @@ step
   note Bring 15 Glittering Sunstones to Mor'rogal.
   collect 15 Glittering Sunstone##277936 |q 86576 |goto Stonetalon Mountains 32.75,60.8 |tip {dropsfrom}Bloodfury Harpy, Bloodfury Roguefeather, Bloodfury Slayer
 step
+  talk Theodore Griffs##11835
+  accept The New Plague##95216 |goto Undercity 46.31,71.91
+step
+  note Collect the Highly Toxic Strain from Witherfang in Ruins of Lordaeron for Theodore Griffs in Undercity.
+  collect Highly Toxic Strain##275443 |q 95216 |goto Undercity 46.31,71.91 |tip {dropsfrom}Witherfang
+step
   talk Tah Winterhoof##3024
   accept Pigments for Paints##97538 |goto Thunder Bluff 54.14,47.05
 step
@@ -119,6 +125,12 @@ step
 step
   turnin Wet Job##79974 |goto Loch Modan 49.42,12.78 |tip {turninat}Loch Modan
 step
+  talk Nara Wildmane##5770
+  accept Leaders of the Fang##914 |goto Thunder Bluff 75.65,31.61
+step
+  note Bring the Gems of Cobrahn, Anacondra, Pythas and Serpentis to Nara Wildmane in Thunder Bluff.
+  collect Gem of Cobrahn##9738 |q 914 |goto Wailing Caverns - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Cobrahn, Cobrahn Snake Form
+step
   talk Braug Dimspirit##4489
   accept Test of Lore##1154 |goto Stonetalon Mountains 78.8,45.69
 step
@@ -147,6 +159,12 @@ step
 step
   talk Darn Talongrip##11821
   accept Report to Kadrak##6542 |goto Stonetalon Mountains 73.25,94.89
+step
+  talk Morbin Lightbane##266484
+  accept Light's Justice##92421 |goto Undercity 57.89,89.34
+step
+  note Collect 25 Intact Limbs within The Ruins of Lordaeron for Morbin Lightbane in the Undercity.
+  collect 25 Intact Limbs##268580 |q 92421 |goto Undercity 57.89,89.34 |tip {dropsfrom}Skeleton, Cadaver, Ragged Ghoul
 step
   talk Maggran Earthbinder##11860
   turnin Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
@@ -185,6 +203,9 @@ step
   turnin Ken'zigla's Draught##1511 |goto The Barrens 44.62,59.27 |tip {turninat}The Barrens
 step
   turnin Scramble##79980 |goto Stonetalon Mountains 39.64,49.91
+step
+  talk Theodore Griffs##11835
+  turnin The New Plague##95216 |goto Undercity 46.31,71.91 |tip {turninat}Undercity
 step
   talk Keeper Bel'dugur##2934
   turnin The Book of Ur##1013 |goto Undercity 53.74,54.46 |tip {turninat}Undercity
@@ -249,11 +270,17 @@ step
   talk Kadrak##8582
   turnin Report to Kadrak##6542 |goto The Barrens 48.12,5.42 |tip {turninat}The Barrens
 step
+  talk Nara Wildmane##5770
+  turnin Leaders of the Fang##914 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
+step
   talk Sputtervalve##3442
   turnin Further Instructions##1094 |goto The Barrens 62.98,37.22 |tip {turninat}The Barrens
 step
   talk Braug Dimspirit##4489
   accept Test of Lore##6627 |goto Stonetalon Mountains 78.8,45.69
+step
+  talk Morbin Lightbane##266484
+  turnin Light's Justice##92421 |goto Undercity 57.89,89.34 |tip {turninat}Undercity
 step
   talk Witch Doctor Jin'Zil##3995
   turnin Jin'Zil's Forest Magic##1058 |goto Stonetalon Mountains 74.54,97.94

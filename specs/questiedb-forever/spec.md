@@ -42,7 +42,8 @@ certa e as quests novas roteadas, incluindo a zona inicial da raça nova.
       cai nele pelo `findStartGuide`, e `only Skyborne` funciona como condição.
 - [x] Toda quest nova com giver posicionado e nível ≤ 60 está em algum guia, ou o gerador
       lista quantas ficaram de fora e por quê.
-- [x] `ForeverData.lua`: `foreverUnknown` = ids do `QuestV2` do Forever que o banco não conhece.
+- [x] `ForeverData.lua`: `foreverUnknown` = ids ≥ 30000 do `QuestV2` do Forever que o banco não
+      conhece (abaixo disso são as 217 quests vanilla que o Questie descartou por não serem usadas).
 - [x] `luajit tools/forever-guides.lua` e `luajit tools/forever-scan.lua` verdes.
 
 ## Matriz de estados

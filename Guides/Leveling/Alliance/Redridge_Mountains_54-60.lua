@@ -347,20 +347,8 @@ step
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93 |tip {turninat}Eastern Kingdoms - the continent map
 step
-  talk Dokimi##256386
-  turnin A Sealed Crate##91904 |goto The Barrens 50.15,29.35 |tip {turninat}The Barrens
-step
-  talk Dokimi##256386
-  turnin A Sealed Crate##91905 |goto The Barrens 50.15,29.35 |tip {turninat}The Barrens
-step
   talk Mayara Brightwing##9565
   turnin Mayara Brightwing##4766 |goto Burning Steppes 84.84,69.12 |tip {turninat}Burning Steppes
-step
-  talk Dokimi##256386
-  turnin A Sealed Crate##91899 |goto The Barrens 50.15,29.35 |tip {turninat}The Barrens
-step
-  talk Dokimi##256386
-  turnin A Sealed Crate##91900 |goto The Barrens 50.15,29.35 |tip {turninat}The Barrens
 step
   talk Master Mathias Shaw##332
   turnin The First and the Last##6182 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
@@ -547,6 +535,18 @@ step
 step
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91904 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91905 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91899 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91900 |goto Redridge Mountains 9.75,71.02
 step
   only Mage
   talk Jennea Cannon##5497

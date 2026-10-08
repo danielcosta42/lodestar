@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Durotar (2-11)", {
+ns:RegisterGuide("Leveling/Horde/Durotar (5-11)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Mulgore (4-10)",
+	next = "Leveling/Horde/Silverpine Forest (11-20)",
 }, [[
 step
   note {fp}Shoja'my
@@ -79,21 +79,6 @@ step
   note Kill 12 Vile Familiars.
   kill Vile Familiar##3101 |q 792 |goto Durotar 44.24,55.54
 step
-  only Shaman
-  talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1521 |goto Durotar 44.03,76.2
-step
-  only Troll Priest
-  talk Ur'kyo##6018
-  accept Hex of Weakness##5652 |goto Orgrimmar 35.59,87.82
-step
-  only Undead Priest
-  talk Ur'kyo##6018
-  accept Touch of Weakness##5662 |goto Orgrimmar 35.59,87.82
-step
-  talk Pal'juh##275811
-  accept Lost in the Shadows##99123 |goto Durotar 46.29,78.71
-step
   collect Benedict's Chest##3239 |goto Durotar 59.26,57.65 |tip Loot the quest item here — it starts the quest.
   accept The Admiral's Orders##830 |goto Durotar 59.26,57.65
 step
@@ -109,9 +94,6 @@ step
 step
   kill Ukorsbane##266851 |goto Durotar 49.76,56.6 |tip Loot the quest item here — it starts the quest.
   accept Ukor's Lost Pack##96876 |goto Durotar 49.76,56.6
-step
-  talk Master Vornal##3304
-  turnin Lost in the Shadows##99123 |goto Durotar 55.94,74.39
 step
   talk Lar Prowltusk##3140
   accept Thwarting Kolkar Aggression##786 |goto Durotar 54.44,74.35
@@ -144,10 +126,6 @@ step
   talk Un'Thuwa##5880
   accept Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
-  only Mage
-  talk Un'Thuwa##5880
-  accept Report to Anastasia##1959 |goto Durotar 56.31,75.11
-step
   only Hunter
   talk Kali Remik##11814
   accept The Hunter's Path##6069 |goto Durotar 56.13,74.24
@@ -179,6 +157,20 @@ step
   only Mage
   note Destroy 4 Ju-Ju Heaps, then return to Un'thuwa in Sen'jin Village.
   collect Ju-Ju Heap##102986 |q 1884 |goto Durotar 67.79,83.37
+step
+  only Troll Priest
+  talk Ur'kyo##6018
+  accept Hex of Weakness##5652 |goto Orgrimmar 35.59,87.82
+step
+  only Undead Priest
+  talk Ur'kyo##6018
+  accept Touch of Weakness##5662 |goto Orgrimmar 35.59,87.82
+step
+  talk Pal'juh##275811
+  accept Lost in the Shadows##99123 |goto Durotar 46.29,78.71
+step
+  note Lar Prowltusk outside of Sen'jin Village wants you to destroy the 3 sets of Attack Plans held within Kolkar Crag.
+  collect Attack Plan: Valley of Trials##3189 |q 786 |goto Durotar 49.81,81.29
 step
   only Troll Priest
   talk Tai'jin##3706
@@ -234,10 +226,6 @@ step
   only Orc Warlock
   note Retrieve the Tablet of Verga for Gan'rul Bloodeye in Orgrimmar.
   collect Tablet of Verga##6535 |q 1501 |goto Durotar 51.62,9.76 |tip {dropsfrom}Burning Blade Stash
-step
-  only Warrior
-  talk Tarshaw Jaggedscar##3169
-  accept Veteran Uzzek##1505 |goto Durotar 54.19,42.47
 step
   only Warlock
   talk Ophek##3294
@@ -372,13 +360,13 @@ step
   note Find Kor'ghan in Orgrimmar and get the Venomtail Antidote. Then bring the antidote to Rhinag near the northwestern border of Durotar.
   collect Venomtail Antidote##4904 |q 812 |goto Orgrimmar 47.24,53.58 |tip {dropsfrom}Kor'ghan
 step
+  only Mage
+  talk Thurston Xane##3049
+  accept Speak with Un'thuwa##1883 |goto Thunder Bluff 25.18,20.96
+step
   only Tauren Druid
   talk Turak Runetotem##3033
   turnin Heeding the Call##5927 |goto Thunder Bluff 76.48,27.22 |tip {turninat}Thunder Bluff
-step
-  only Mage
-  talk Anastasia Hartwell##4568
-  turnin Report to Anastasia##1959 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
 step
   only Shaman
   talk Kranal Fiss##5907
@@ -386,10 +374,6 @@ step
 step
   talk Kargal Battlescar##3337
   turnin Conscript of the Horde##840 |goto The Barrens 62.26,19.38 |tip {turninat}The Barrens
-step
-  only Warrior
-  talk Uzzek##5810
-  turnin Veteran Uzzek##1505 |goto The Barrens 61.38,21.12 |tip {turninat}The Barrens
 step
   only Shaman
   talk Kranal Fiss##5907
@@ -557,29 +541,6 @@ step
   note Bring Thazz'ril's Pick to Foreman Thazz'ril.
   collect Thazz'ril's Pick##16332 |q 6394 |goto Durotar 43.73,53.79
 step
-  only Troll Priest
-  talk Ur'kyo##6018
-  turnin Hex of Weakness##5652 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
-step
-  only Troll Priest
-  talk Ur'kyo##6018
-  turnin Hex of Weakness##5654 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
-step
-  only Shaman
-  talk Minor Manifestation of Earth##5891
-  turnin Call of Earth##1517 |goto Durotar 44.03,76.2
-step
-  only Shaman
-  talk Seer Ravenfeather##5888
-  turnin Call of Earth##1521 |goto Mulgore 44.35,76.77 |tip {turninat}Mulgore
-step
-  only Shaman
-  talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1518 |goto Durotar 44.03,76.2
-step
-  note Lar Prowltusk outside of Sen'jin Village wants you to destroy the 3 sets of Attack Plans held within Kolkar Crag.
-  collect Attack Plan: Valley of Trials##3189 |q 786 |goto Durotar 49.81,81.29
-step
   talk Ukor##6786
   turnin Ukor's Lost Pack##96876 |goto Durotar 52.06,68.31
 step
@@ -601,8 +562,15 @@ step
   talk Master Vornal##3304
   turnin A Solvent Spirit##818 |goto Durotar 55.94,74.39
 step
+  talk Master Vornal##3304
+  turnin Lost in the Shadows##99123 |goto Durotar 55.94,74.39
+step
   talk Master Gadrin##3188
   turnin Zalazane##826 |goto Durotar 55.95,74.72
+step
+  only Mage
+  talk Un'Thuwa##5880
+  turnin Speak with Un'thuwa##1883 |goto Durotar 56.31,75.11
 step
   only Mage
   talk Un'Thuwa##5880
@@ -616,6 +584,18 @@ step
 step
   talk Master Gadrin##3188
   turnin Forgotten Loa Idols##97225 |goto Durotar 55.95,74.72
+step
+  only Troll Priest
+  talk Ur'kyo##6018
+  turnin Hex of Weakness##5652 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
+step
+  only Troll Priest
+  talk Ur'kyo##6018
+  turnin Hex of Weakness##5654 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
+step
+  only Shaman
+  talk Minor Manifestation of Earth##5891
+  turnin Call of Earth##1517 |goto Durotar 44.03,76.2
 step
   talk Gar'Thok##3139
   turnin Vanquish the Betrayers##784 |goto Durotar 51.95,43.5
@@ -809,10 +789,6 @@ step
   turnin Vile Familiars##1499 |goto Durotar 42.85,69.15
 step
   only Shaman
-  talk Canaga Earthcaller##5887
-  turnin Call of Earth##1518 |goto Durotar 42.4,69.17
-step
-  only Shaman
   turnin Call of Fire##1526 |goto Durotar 38.96,58.22
 step
   only Troll Warrior
@@ -892,6 +868,6 @@ step
   talk Ormak Grimshot##3352
   turnin Training the Beast##6081 |goto Orgrimmar 66.05,18.53 |tip {turninat}Orgrimmar
 step
-  note {travel}Mulgore
-  goto Mulgore 44.47,77.5
+  note {travel}Silverpine Forest
+  goto Silverpine Forest 44.2,39.81
 ]])

@@ -16,6 +16,12 @@ step
   note Seek out Gregan Brewspewer in northern Feralas. From him, learn how you may acquire the Videre Elixir, then return to Donova Snowden in Winterspring.
   collect Videre Elixir##11243 |q 3909 |goto Feralas 45.12,25.57 |tip {dropsfrom}Gregan Brewspewer
 step
+  talk King Magni Bronzebeard##2784
+  accept Kharan Mighthammer##4341 |goto Ironforge 39.09,56.2
+step
+  talk King Magni Bronzebeard##2784
+  accept The Fate of the Kingdom##4362 |goto Ironforge 39.09,56.2
+step
   talk Donova Snowden##9298
   accept Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
 step
@@ -25,8 +31,14 @@ step
   note Collect 3 Toxic Horror Droplets for Donova Snowden in Winterspring.
   collect 3 Toxic Horror Droplet##12822 |q 5086 |goto Felwood 49.76,24.66 |tip {dropsfrom}Toxic Horror
 step
+  talk Kharan Mighthammer##9021
+  turnin Kharan Mighthammer##4341 |goto Blackrock Depths - Dungeon -1,-1 |tip {turninat}Blackrock Depths - Dungeon
+step
   talk Salfa##11556
   accept Winterfall Activity##8464 |goto Winterspring 27.73,34.5
+step
+  note Return to Blackrock Depths and rescue Princess Moira Bronzebeard from the evil clutches of Emperor Dagran Thaurissan.
+  kill Emperor Dagran Thaurissan##9019 |q 4362 |goto Blackrock Depths - Dungeon -1,-1 |elite
 step
   note Donova Snowden in Winterspring wants you to kill 8 Winterfall Pathfinders, 8 Winterfall Den Watchers, and 8 Winterfall Totemics.
   kill Winterfall Pathfinder##7442 |q 5082 |goto Winterspring 34.72,37.72
@@ -103,6 +115,10 @@ step
   note You must retrieve the Blood of the Black Dragon Champion from General Drakkisath. Drakkisath can be found in his throne room behind the Halls of Ascension in Blackrock Spire.
   collect Blood of the Black Dragon Champion##16663 |q 6502 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
+  only Warlock
+  talk Spackle Thornberry##5520
+  accept Mor'zul Bloodbringer##7562 |goto Stormwind City 39.53,84.53
+step
   talk Donova Snowden##9298
   turnin The Videre Elixir##3909 |goto Winterspring 31.27,45.16
 step
@@ -132,6 +148,13 @@ step
 step
   note Find the Winterfall Runners and stop them from delivering their shipment to Winterfall Village.
   collect Winterfall Crate##12829 |q 5087 |goto Winterspring 27.96,34.48 |tip {dropsfrom}Winterfall Runner
+step
+  talk Princess Moira Bronzebeard##8929
+  turnin The Fate of the Kingdom##4362 |goto Blackrock Depths - Dungeon -1,-1 |tip {turninat}Blackrock Depths - Dungeon
+step
+  only Warlock
+  talk Mor'zul Bloodbringer##14436
+  turnin Mor'zul Bloodbringer##7562 |goto Burning Steppes 12.69,31.64 |tip {turninat}Burning Steppes
 step
   talk Salfa##11556
   turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5

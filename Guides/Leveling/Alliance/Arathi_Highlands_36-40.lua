@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (36-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Alterac Mountains (13-40)",
+	next = "Leveling/Alliance/Stranglethorn Vale (34-46)",
 }, [[
 step
   collect Waterlogged Letter##2656 |goto Arathi Highlands 44.29,92.88 |tip Loot the quest item here — it starts the quest.
@@ -54,20 +54,17 @@ step
   talk Sara Balloo##2695
   turnin Sully Balloo's Letter##637 |goto Ironforge 63.5,67.3 |tip {turninat}Ironforge
 step
-  talk Quae##2712
-  accept Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
-step
-  note Find the Forsaken Courier and bring back her Sealed Folder to Quae near the Go'Shek Farm.
-  collect Sealed Folder##4482 |q 658 |goto Arathi Highlands 52.47,61.53 |tip {dropsfrom}Forsaken Courier, Alterac Granite
-step
-  talk Brother Anton##1182
-  turnin Brother Anton##6141 |goto Desolace 66.52,7.91 |tip {turninat}Desolace
-step
   click Shards of Myzrael##138492
   accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
 step
   note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
   collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
+step
+  talk Quae##2712
+  accept Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
+step
+  note Find the Forsaken Courier and bring back her Sealed Folder to Quae near the Go'Shek Farm.
+  collect Sealed Folder##4482 |q 658 |goto Arathi Highlands 52.47,61.53 |tip {dropsfrom}Forsaken Courier, Alterac Granite
 step
   talk Shakes O'Breen##2610
   turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
@@ -98,6 +95,9 @@ step
   talk Captain Nials##2700
   turnin Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 45.83,47.56
 step
+  talk Brother Anton##1182
+  turnin Brother Anton##6141 |goto Desolace 66.52,7.91 |tip {turninat}Desolace
+step
   talk Apprentice Kryten##2788
   turnin Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
 step
@@ -114,19 +114,19 @@ step
   note Find Trelane's Wand of Invocation and return it to Skuerto at Refuge Pointe.
   collect Trelane's Wand of Invocation##4525 |q 693 |goto Arathi Highlands 54.75,81.87 |tip {dropsfrom}Kor'gresh Coldrage
 step
+  turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
+step
   talk Quae##2712
   turnin Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
-step
-  talk Quae##2712
-  accept Hints of a New Plague?##657 |goto Arathi Highlands 60.18,53.85
-step
-  turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
 step
   click Iridescent Shards##2701
   accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
 step
   note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
   collect Burning Key##4483 |q 651 |goto Arathi Highlands 25.46,30.11 |tip {dropsfrom}Stone of West Binding
+step
+  talk Quae##2712
+  accept Hints of a New Plague?##657 |goto Arathi Highlands 60.18,53.85
 step
   talk First Mate Nilzlix##2767
   turnin Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
@@ -194,20 +194,14 @@ step
   talk Quae##2712
   accept Hints of a New Plague?##661 |goto Arathi Highlands 60.18,53.85
 step
-  talk Gerrig Bonegrip##2786
-  turnin Myzrael's Allies##653 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
-step
-  talk Zaruk##2787
-  accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
-step
-  talk Theldurin the Lost##2785
-  turnin Theldurin the Lost##687 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
-step
   talk Shakes O'Breen##2610
   turnin Sunken Treasure##668 |goto Arathi Highlands 32.28,81.38
 step
   talk Shakes O'Breen##2610
   accept Sunken Treasure##669 |goto Arathi Highlands 32.28,81.38
+step
+  talk Gerrig Bonegrip##2786
+  turnin Myzrael's Allies##653 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
 step
   talk Skuerto##2789
   turnin An Apprentice's Enchantment##695 |goto Arathi Highlands 46.65,47.01
@@ -233,6 +227,6 @@ step
   talk Archmage Malin##2708
   turnin Malin's Request##697 |goto Stormwind City 50.5,87.47 |tip {turninat}Stormwind City
 step
-  note {travel}Alterac Mountains
-  goto Alterac Mountains 18.84,78.49
+  note {travel}Stranglethorn Vale
+  goto Stranglethorn Vale 27.37,74.08
 ]])

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Badlands (37-42)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Stranglethorn Vale (36-60)",
+	next = "Leveling/Alliance/Feralas (43-50)",
 }, [[
 step
   talk Sigrun Ironhew##2860
@@ -27,9 +27,6 @@ step
 step
   click Crumpled Map##2868
   accept A Sign of Hope##720 |goto Badlands 53.03,33.94
-step
-  talk Archbishop Benedictus##1284
-  accept Bring the Light##3636 |goto Stormwind City 50.31,45.47
 step
   talk Rigglefuzz##2817
   accept Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
@@ -75,9 +72,6 @@ step
   kill Shadowforge Surveyor##4844 |goto Badlands 47.6,11 |tip Loot the quest item here — it starts the quest.
   accept The Shattered Necklace##2198 |goto Badlands 47.6,11
 step
-  note Archbishop Bendictus wants you to slay Amnennar the Coldbringer in Razorfen Downs.
-  kill Amnennar the Coldbringer##7358 |q 3636 |goto Razorfen Downs - Dungeon -1,-1 |elite
-step
   talk Theldurin the Lost##2785
   accept The Lost Fragments##692 |goto Badlands 51.39,76.87
 step
@@ -89,9 +83,6 @@ step
 step
   note Bring the Tablet of Ryun'eh to Theldurin the Lost.
   collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
-step
-  talk Mazen Mac'Nadir##338
-  accept Mazen's Behest##1363 |goto Stormwind City 51.8,74.24
 step
   note Slay Agmond's killer, Murdaloc.
   kill Murdaloc##2945 |q 739 |goto Badlands 49.63,66.31
@@ -107,9 +98,6 @@ step
 step
   talk Prospector Ryedol##2910
   turnin A Sign of Hope##720 |goto Badlands 53.42,43.39
-step
-  talk Archbishop Benedictus##1284
-  turnin Bring the Light##3636 |goto Stormwind City 50.31,45.47 |tip {turninat}Stormwind City
 step
   talk Prospector Ryedol##2910
   accept A Sign of Hope##721 |goto Badlands 53.42,43.39
@@ -132,11 +120,11 @@ step
   talk Rigglefuzz##2817
   turnin Pearl Diving##705 |goto Badlands 42.39,52.93
 step
-  talk Martek the Exiled##4618
-  turnin Indurium##1108 |goto Badlands 42.22,52.69
-step
   talk Rigglefuzz##2817
   turnin Power Stones##2418 |goto Badlands 42.39,52.93
+step
+  talk Martek the Exiled##4618
+  turnin Indurium##1108 |goto Badlands 42.22,52.69
 step
   talk Rigglefuzz##2817
   turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
@@ -175,17 +163,8 @@ step
   kill Magregan Deepshadow##2932 |goto Badlands 38.99,19.73 |elite
   collect Hammertoe's Amulet##4635 |q 722 |goto Badlands 38.99,19.73
 step
-  talk Talvash del Kissel##6826
-  accept Lore for a Price##2199 |goto Ironforge 36.38,3.61
-step
-  note Bring five silver bars to Talvash del Kissel in Ironforge.
-  collect Silver Bar##2842 |q 2199 |goto Ironforge 36.38,3.61 |tip {dropsfrom}Battered Chest, Tattered Chest
-step
   talk Theldurin the Lost##2785
   turnin Solution to Doom##709 |goto Badlands 51.39,76.87
-step
-  talk Acolyte Dellis##5386
-  turnin Mazen's Behest##1363 |goto Stormwind City 51.4,73.81 |tip {turninat}Stormwind City
 step
   talk Fizzle Brassbolts##4454
   turnin News for Fizzle##1137 |goto Thousand Needles 78.06,77.13 |tip {turninat}Thousand Needles
@@ -202,16 +181,7 @@ step
   talk Theldurin the Lost##2785
   accept To Ironforge for Yagyin's Digest##727 |goto Badlands 51.39,76.87
 step
-  talk Acolyte Dellis##5386
-  accept Mazen's Behest##1364 |goto Stormwind City 51.4,73.81
-step
-  note Retrieve Khadgar's Essays on Dimensional Convergence and deliver them to Watcher Mahar Ba in Nethergarde Keep.
-  collect Khadgar's Essays on Dimensional Convergence##6065 |q 1364 |goto Swamp of Sorrows 15.81,37.04 |tip {dropsfrom}Swampwalker, Swampwalker Elder, Tangled Horror
-step
   turnin Summoning the Princess##656 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
-step
-  talk Watcher Mahar Ba##5385
-  turnin Mazen's Behest##1364 |goto Blasted Lands 67.65,19.17 |tip {turninat}Blasted Lands
 step
   talk Sigrun Ironhew##2860
   turnin Scrounging##733 |goto Badlands 53.8,43.3
@@ -247,17 +217,11 @@ step
   talk Hammertoe Grez##2909
   turnin Amulet of Secrets##722 |goto Badlands 37.9,10.59
 step
-  talk Talvash del Kissel##6826
-  turnin Lore for a Price##2199 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
-step
   talk Gerrig Bonegrip##2786
   turnin To Ironforge for Yagyin's Digest##727 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
 step
   talk Hammertoe Grez##2909
   accept Prospect of Faith##723 |goto Badlands 37.9,10.59
-step
-  talk Talvash del Kissel##6826
-  accept Back to Uldaman##2200 |goto Ironforge 36.38,3.61
 step
   talk Prospector Ryedol##2910
   turnin Prospect of Faith##723 |goto Badlands 53.42,43.39
@@ -283,9 +247,6 @@ step
   talk Lotwil Veriatus##2921
   accept This Is Going to Be Hard##734 |goto Badlands 25.95,44.87
 step
-  talk Remains of a Paladin##6912
-  turnin Back to Uldaman##2200 |goto Uldaman - Dungeon -1,-1 |tip {turninat}Uldaman - Dungeon
-step
   talk Historian Karnik##2916
   turnin Prospect of Faith##724 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
 step
@@ -310,6 +271,6 @@ step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
 step
-  note {travel}Stranglethorn Vale
-  goto Stranglethorn Vale 27.37,74.08
+  note {travel}Feralas
+  goto Feralas 89.64,46.57
 ]])

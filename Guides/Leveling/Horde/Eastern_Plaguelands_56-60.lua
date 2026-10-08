@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Eastern Plaguelands (57-60)", {
+ns:RegisterGuide("Leveling/Horde/Eastern Plaguelands (56-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Moonglade (57-60)",
+	next = "Leveling/Horde/Silithus (57-60)",
 }, [[
 step
   talk Pamela Redpath##10926
@@ -1239,6 +1239,6 @@ step
   talk Artist Renfray##11936
   turnin Of Love and Family##5846 |goto Western Plaguelands 65.77,75.37 |tip {turninat}Western Plaguelands
 step
-  note {travel}Moonglade
-  goto Moonglade 56.21,30.64
+  note {travel}Silithus
+  goto Silithus 81.87,18.93
 ]])

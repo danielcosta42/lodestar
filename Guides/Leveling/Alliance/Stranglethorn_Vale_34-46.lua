@@ -1,112 +1,23 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (37-60)", {
-	faction = "Horde",
+ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (34-46)", {
+	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Feralas (43-50)",
+	next = "Leveling/Alliance/Badlands (37-42)",
 }, [[
 step
   note {fp}Grimestack
   goto Stranglethorn Vale 27.29,77.22 |tip {vendor}
-step
-  talk Barnil Stonepot##716
-  accept Chapter I##339 |goto Stranglethorn Vale 35.66,10.53
-step
-  note Bring pages 1, 4, 6, and 8 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter I.
-  collect Green Hills of Stranglethorn - Page 1##2725 |q 339 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
-step
-  talk Barnil Stonepot##716
-  accept Chapter II##340 |goto Stranglethorn Vale 35.66,10.53
-step
-  note Bring pages 10, 11, 14 and 16 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter II.
-  collect Green Hills of Stranglethorn - Page 10##2734 |q 340 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
-step
-  talk Barnil Stonepot##716
-  accept Chapter III##341 |goto Stranglethorn Vale 35.66,10.53
-step
-  note Bring pages 18, 20, 21and 24 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter III.
-  collect Green Hills of Stranglethorn - Page 18##2742 |q 341 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
-step
-  talk Barnil Stonepot##716
-  accept Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
-step
-  note Bring pages 25, 26, and 27 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter IV.
-  collect Green Hills of Stranglethorn - Page 25##2749 |q 342 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
-step
-  talk Barnil Stonepot##716
-  accept Welcome to the Jungle##583 |goto Stranglethorn Vale 35.66,10.53
-step
-  kill Bloodscalp Warrior##587 |goto Stranglethorn Vale 33.43,16.78 |tip Loot the quest item here — it starts the quest.
-  accept Crystal in the Mountains##635 |goto Stranglethorn Vale 33.43,16.78
-step
-  talk Commander Aggro'gosh##2464
-  accept The Defense of Grom'gol##568 |goto Stranglethorn Vale 32.17,28.9
-step
-  talk Far Seer Mok'thardin##2465
-  accept Mok'thardin's Enchantment##570 |goto Stranglethorn Vale 32.12,29.24
-step
-  note Far Seer Mok'thardin at the Grom'gol base camp wants 8 Shadowmaw Claws and a Pristine Tigress Fang.
-  collect Shadowmaw Claw##3838 |q 570 |goto Stranglethorn Vale 40.73,34.82 |tip {dropsfrom}Shadowmaw Panther, Elder Shadowmaw Panther
-step
-  talk Nimboya##2497
-  accept Hunt for Yenniku##581 |goto Stranglethorn Vale 32.16,27.72
-step
-  note Bring 9 Bloodscalp Tusks to Nimboya at the Grom'gol Base Camp.
-  collect 9 Bloodscalp Tusk##3901 |q 581 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
-step
-  talk Kin'weelay##2519
-  accept Bloody Bone Necklaces##596 |goto Stranglethorn Vale 32.27,27.71
-step
-  note Bring 25 Bloody Bone Necklaces to Kin'weelay at the Grom'gol Base Camp.
-  collect 25 Bloody Bone Necklace##3915 |q 596 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
-step
-  talk Kin'weelay##2519
-  accept The Vile Reef##629 |goto Stranglethorn Vale 32.27,27.71
-step
-  note Bring a Tablet Shard to Kin'weelay at the Grom'gol Base Camp.
-  collect Tablet Shard##4094 |q 629 |goto Stranglethorn Vale 24.82,23.03 |tip {dropsfrom}Gri'lek the Wanderer
-step
-  talk Nimboya##2497
-  accept Trollbane##638 |goto Stranglethorn Vale 32.16,27.72
-step
-  click Bubbling Cauldron##2076
-  accept Marg Speaks##1261 |goto Stranglethorn Vale 32.22,27.6
-step
-  note Bring the Jeweled Pendant to Nazeer in Brackenwall Village.
-  collect Jeweled Pendant##5942 |q 1261 |goto Dustwallow Marsh 55.4,63 |tip {dropsfrom}Muckshell Razorclaw, Muckshell Clacker, Muckshell Scrabbler
-step
-  note Commander Aggro'gosh of the Grom'gol base camp wants you to kill 15 Lashtail Raptors.
-  kill Lashtail Raptor##686 |q 568 |goto Stranglethorn Vale 35.62,23.72
-step
-  turnin Crystal in the Mountains##635 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
-step
-  talk Zengu##2703
-  turnin Trollbane##638 |goto Arathi Highlands 73.8,33.96 |tip {turninat}Arathi Highlands
-step
-  talk Anastasia Hartwell##4568
-  accept Tabetha's Task##2861 |goto Undercity 85.14,10.03
-step
-  talk Galvan the Ancient##7802
-  accept Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
-step
-  note Wait for Galvan to finish forging the weaponry.
-  kill Galvan the Ancient##7802 |q 3625 |goto Stranglethorn Vale 50.62,20.48
-step
-  talk Tabetha##6546
-  turnin Tabetha's Task##2861 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
-step
-  talk Neeru Fireblade##3216
-  accept Return to Witch Doctor Uzer'i##3122 |goto Orgrimmar 49.47,50.59
-step
-  collect Arena Treasure Chest##179697 |goto Stranglethorn Vale 30.52,47.87 |tip Loot the quest item here — it starts the quest.
-  accept Arena Master##7810 |goto Stranglethorn Vale 30.52,47.87
 step
   talk Kebok##737
   accept Bloodscalp Ears##189 |goto Stranglethorn Vale 27,77.13
 step
   note Acquire 15 Bloodscalp Ears and return them to Kebok in Booty Bay.
   collect 15 Bloodscalp Ear##1519 |q 189 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
+step
+  talk Krazek##773
+  accept Supplies to Private Thorsen##198 |goto Stranglethorn Vale 26.95,77.21
 step
   talk Kebok##737
   accept Hostile Takeover##213 |goto Stranglethorn Vale 27,77.13
@@ -147,6 +58,15 @@ step
   note Bring 5 Mistvale Giblets to "Shaky" Phillipe in Booty Bay.
   collect 5 Mistvale Giblets##3919 |q 606 |goto Stranglethorn Vale 33.05,65.45 |tip {dropsfrom}Elder Mistvale Gorilla
 step
+  talk Catelyn the Blade##2542
+  accept "Pretty Boy" Duncan##610 |goto Stranglethorn Vale 27.28,77.53
+step
+  note Get Catelyn's dagger from "Pretty Boy" Duncan.
+  collect Catelyn's Blade##4027 |q 610 |goto Stranglethorn Vale 27.39,69.42 |tip {dropsfrom}"Pretty Boy" Duncan
+step
+  talk Krazek##773
+  accept The Haunted Isle##616 |goto Stranglethorn Vale 26.95,77.21
+step
   talk Privateer Bloads##2494
   accept Akiris by the Bundle##617 |goto Stranglethorn Vale 26.76,76.38
 step
@@ -164,6 +84,9 @@ step
 step
   talk "Pretty Boy" Duncan##2545
   accept Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 27.39,69.42
+step
+  talk Caravaneer Ruzzgot##3945
+  accept The Caravan Road##1041 |goto Stranglethorn Vale 27.37,74.08
 step
   talk Krazek##773
   accept Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
@@ -197,17 +120,21 @@ step
   talk Shakes O'Breen##2610
   turnin Sunken Treasure##670 |goto Arathi Highlands 32.28,81.38 |tip {turninat}Arathi Highlands
 step
-  talk Apothecary Zinge##5204
-  accept Errand for Apothecary Zinge##232 |goto Undercity 50.14,67.97
+  talk Angus Stern##1141
+  accept A Meal Served Cold##212 |goto Stormwind City 51.79,93.64
+step
+  note Kill a Cold Eye Basilisk, get a Chilled Basilisk Haunch, and return it to Angus Stern in the Blue Recluse.
+  collect Chilled Basilisk Haunch##2476 |q 212 |goto Stranglethorn Vale 31.36,40.88 |tip {dropsfrom}Cold Eye Basilisk
 step
   collect Half-Buried Bottle##2560 |goto Stranglethorn Vale 36.26,77.09 |tip Loot the quest item here — it starts the quest.
   accept Message in a Bottle##594 |goto Stranglethorn Vale 36.26,77.09
 step
-  talk Melor Stonehoof##3441
-  accept Deadmire##1205 |goto Thunder Bluff 61.54,80.92
+  talk Mazen Mac'Nadir##338
+  accept Mazen's Behest##1363 |goto Stormwind City 51.8,74.24
 step
-  note Bring Deadmire's Tooth to Melor in Thunder Bluff.
-  collect Deadmire's Tooth##5945 |q 1205 |goto Dustwallow Marsh 50.2,52.7 |tip {dropsfrom}Deadmire
+  only Warlock
+  talk Demisette Cloyce##461
+  accept Summon Felsteed##4488 |goto Stormwind City 39.24,84.96
 step
   talk Fleet Master Firallon##2546
   turnin Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 30.58,90.63
@@ -221,9 +148,152 @@ step
   talk Fleet Master Firallon##2546
   accept Dressing the Part##9272 |goto Stranglethorn Vale 30.58,90.63
 step
+  turnin Cortello's Riddle##624 |goto Swamp of Sorrows 22.87,48.19 |tip {turninat}Swamp of Sorrows
+step
+  only Paladin
+  talk Duthorian Rall##6171
+  accept The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
+step
+  talk Archbishop Benedictus##1284
+  accept Bring the Light##3636 |goto Stormwind City 50.31,45.47
+step
+  collect Arena Treasure Chest##179697 |goto Stranglethorn Vale 30.52,47.87 |tip Loot the quest item here — it starts the quest.
+  accept Arena Master##7810 |goto Stranglethorn Vale 30.52,47.87
+step
+  only Warlock
+  talk Strahad Farsan##6251
+  turnin Summon Felsteed##4488 |goto The Barrens 62.63,35.5 |tip {turninat}The Barrens
+step
+  talk Clerk Daltry##267
+  turnin The Caravan Road##1041 |goto Duskwood 72.54,46.87 |tip {turninat}Duskwood
+step
+  only Warlock
+  talk Menara Voidrender##6266
+  turnin Components for the Enchanted Gold Bloodrobe##4782 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  talk Tran'rek##7876
+  turnin Tran'rek##2864 |goto Tanaris 51.57,26.76 |tip {turninat}Tanaris
+step
+  talk Stoley##7881
+  turnin Stoley's Debt##2872 |goto Tanaris 67.11,23.98 |tip {turninat}Tanaris
+step
+  talk Count Remington Ridgewell##2285
+  accept The Perenolde Tiara##543 |goto Stormwind City 76.94,47.83
+step
+  note Bring the Perenolde Tiara to Remington Ridgewell in Stormwind.
+  kill Grel'borg the Miser##2417 |goto Alterac Mountains 35.58,54.42 |elite
+  collect Perenolde Tiara##3684 |q 543 |goto Alterac Mountains 35.58,54.42
+step
+  talk Gerrig Bonegrip##2786
+  accept Theldurin the Lost##687 |goto Ironforge 50.83,5.62
+step
+  talk Historian Karnik##2916
+  accept Passing Word of a Threat##725 |goto Ironforge 77.54,11.82
+step
+  talk Gerrig Bonegrip##2786
+  accept Forbidden Knowledge##737 |goto Ironforge 50.83,5.62
+step
+  talk Krom Stoutarm##6294
+  accept Reclaimed Treasures##1360 |goto Ironforge 74.19,9.39
+step
+  note Get Krom Stoutarm's treasured possession from his chest in the North Common Hall of Uldaman, and bring it to him in Ironforge.
+  collect Krom Stoutarm's Treasure##8027 |q 1360 |goto Badlands 35.56,23.51 |tip {dropsfrom}Krom Stoutarm's Chest
+step
+  talk Brohann Caskbelly##5384
+  accept To The Hinterlands##1449 |goto Stormwind City 69.45,40.4
+step
+  talk Prospector Stormpike##1356
+  accept The Lost Dwarves##2398 |goto Ironforge 74.64,11.74
+step
+  talk Galvan the Ancient##7802
+  accept Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
+step
+  only Warlock
+  talk Briarthorn##5172
+  accept Summon Felsteed##4487 |goto Ironforge 50.35,5.66
+step
+  note Wait for Galvan to finish forging the weaponry.
+  kill Galvan the Ancient##7802 |q 3625 |goto Stranglethorn Vale 50.62,20.48
+step
+  talk Private Thorsen##738
+  turnin Supplies to Private Thorsen##198 |goto Stranglethorn Vale 40.34,8.44
+step
+  talk Sergeant Yohwa##733
+  accept The Second Rebellion##203 |goto Stranglethorn Vale 38.02,3.33
+step
+  talk Sergeant Yohwa##733
+  accept Bad Medicine##204 |goto Stranglethorn Vale 38.02,3.33
+step
+  note Bring 7 Jungle Remedies and 1 Venom Fern Extract to Sergeant Yohwa at the Rebel Camp.
+  collect 7 Jungle Remedy##2633 |q 204 |goto Stranglethorn Vale 44.45,9.79 |tip {dropsfrom}Kurzen Medicine Man, Kurzen Headshrinker, Kurzen Witch Doctor
+step
+  talk Corporal Kaleb##770
+  accept Krazek's Cookery##210 |goto Stranglethorn Vale 37.74,3.3
+step
+  talk Private Thorsen##738
+  accept Jungle Secrets##215 |goto Stranglethorn Vale 40.34,8.44
+step
+  talk Barnil Stonepot##716
+  accept Chapter I##339 |goto Stranglethorn Vale 35.66,10.53
+step
+  note Bring pages 1, 4, 6, and 8 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter I.
+  collect Green Hills of Stranglethorn - Page 1##2725 |q 339 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
+step
+  talk Barnil Stonepot##716
+  accept Chapter II##340 |goto Stranglethorn Vale 35.66,10.53
+step
+  note Bring pages 10, 11, 14 and 16 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter II.
+  collect Green Hills of Stranglethorn - Page 10##2734 |q 340 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
+step
+  talk Barnil Stonepot##716
+  accept Chapter III##341 |goto Stranglethorn Vale 35.66,10.53
+step
+  note Bring pages 18, 20, 21and 24 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter III.
+  collect Green Hills of Stranglethorn - Page 18##2742 |q 341 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
+step
+  talk Barnil Stonepot##716
+  accept Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
+step
+  note Bring pages 25, 26, and 27 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter IV.
+  collect Green Hills of Stranglethorn - Page 25##2749 |q 342 |goto Stranglethorn Vale 33.43,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
+step
+  talk Barnil Stonepot##716
+  accept Welcome to the Jungle##583 |goto Stranglethorn Vale 35.66,10.53
+step
+  kill Bloodscalp Warrior##587 |goto Stranglethorn Vale 33.43,16.78 |tip Loot the quest item here — it starts the quest.
+  accept Crystal in the Mountains##635 |goto Stranglethorn Vale 33.43,16.78
+step
+  only Mage
+  talk Bink##5144
+  accept Return to the Marsh##1953 |goto Ironforge 27.25,8.3
+step
+  talk Talvash del Kissel##6826
+  accept Lore for a Price##2199 |goto Ironforge 36.38,3.61
+step
+  note Bring five silver bars to Talvash del Kissel in Ironforge.
+  collect Silver Bar##2842 |q 2199 |goto Ironforge 36.38,3.61 |tip {dropsfrom}Battered Chest, Tattered Chest
+step
+  only Paladin
+  talk Tiza Battleforge##6179
+  accept The Tome of Nobility##4485 |goto Ironforge 27.63,12.18
+step
+  note Kill 15 Kurzen Jungle Fighters.
+  kill Kurzen Jungle Fighter##937 |q 203 |goto Stranglethorn Vale 44.85,10
+step
+  talk Baelog##6906
+  turnin The Lost Dwarves##2398 |goto Uldaman - Dungeon -1,-1 |tip {turninat}Uldaman - Dungeon
+step
+  only Paladin
+  talk Brandur Ironhammer##5149
+  accept The Tome of Nobility##4486 |goto Ironforge 23.13,6.14
+step
   only Warrior
   talk Jin'rokh the Breaker##14902
   accept Strength of Mount Mugamba##8041 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  talk Jin'rokh the Breaker##14902
+  accept The Heathen's Brand##8045 |goto Stranglethorn Vale 15.31,14.43
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -433,10 +503,6 @@ step
   talk Maywiki of Zuldazar##14904
   accept Enchanted South Seas Kelp##8110 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  accept Vision of Voodress##8116 |goto Stranglethorn Vale 15.3,16.02
-step
   only Rogue
   talk Falthir the Sightless##14905
   accept Zandalarian Shadow Talisman##8141 |goto Stranglethorn Vale 14.08,13.72
@@ -451,116 +517,8 @@ step
   note String 5 Channeler's Heads, then return the Collection of Troll Heads to Exzhal on Yojamba Isle.
   collect Gurubashi Head Collection##19880 |q 8201 |goto Stranglethorn Vale 15.26,15.5
 step
-  talk Hemet Nesingwary##715
-  turnin Welcome to the Jungle##583 |goto Stranglethorn Vale 35.66,10.81
-step
-  talk Barnil Stonepot##716
-  turnin Chapter I##339 |goto Stranglethorn Vale 35.66,10.53
-step
-  talk Barnil Stonepot##716
-  turnin Chapter II##340 |goto Stranglethorn Vale 35.66,10.53
-step
-  talk Barnil Stonepot##716
-  turnin Chapter III##341 |goto Stranglethorn Vale 35.66,10.53
-step
-  talk Barnil Stonepot##716
-  turnin Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
-step
-  talk Ajeck Rouack##717
-  accept Tiger Mastery##185 |goto Stranglethorn Vale 35.62,10.62
-step
-  talk Sir S. J. Erlgadin##718
-  accept Panther Mastery##190 |goto Stranglethorn Vale 35.55,10.55
-step
-  talk Hemet Nesingwary##715
-  accept Raptor Mastery##194 |goto Stranglethorn Vale 35.66,10.81
-step
-  talk Barnil Stonepot##716
-  accept The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
-step
-  note Collect the missing pages from The Green Hills of Stranglethorn manuscript. Once all four chapters are complete, return them to Barnil.
-  collect Green Hills of Stranglethorn - Chapter I##2756 |q 338 |goto Stranglethorn Vale 35.66,10.53
-step
-  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Young Stranglethorn Tigers.
-  kill Young Stranglethorn Tiger##681 |q 185 |goto Stranglethorn Vale 35.6,11.6
-step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Young Panthers.
-  kill Young Panther##683 |q 190 |goto Stranglethorn Vale 41.27,12.75
-step
-  talk Commander Aggro'gosh##2464
-  turnin The Defense of Grom'gol##568 |goto Stranglethorn Vale 32.17,28.9
-step
-  talk Far Seer Mok'thardin##2465
-  turnin Mok'thardin's Enchantment##570 |goto Stranglethorn Vale 32.12,29.24
-step
-  talk Nimboya##2497
-  turnin Hunt for Yenniku##581 |goto Stranglethorn Vale 32.16,27.72
-step
-  talk Kin'weelay##2519
-  turnin Bloody Bone Necklaces##596 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Nazeer Bloodpike##4791
-  turnin Marg Speaks##1261 |goto Dustwallow Marsh 35.21,30.66 |tip {turninat}Dustwallow Marsh
-step
-  talk Kin'weelay##2519
-  turnin The Vile Reef##629 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Commander Aggro'gosh##2464
-  accept The Defense of Grom'gol##569 |goto Stranglethorn Vale 32.17,28.9
-step
-  talk Far Seer Mok'thardin##2465
-  accept Mok'thardin's Enchantment##572 |goto Stranglethorn Vale 32.12,29.24
-step
-  note Bring 10 Jungle Stalker Feathers to Far Seer Mok'thardin at the Grom'gol base camp.
-  collect 10 Jungle Stalker Feather##3863 |q 572 |goto Stranglethorn Vale 28.88,44.1 |tip {dropsfrom}Jungle Stalker
-step
-  talk Nimboya##2497
-  accept Headhunting##582 |goto Stranglethorn Vale 32.16,27.72
-step
-  note Bring 20 Shrunken Heads to Nimboya at the Grom'gol Base Camp.
-  collect 20 Shrunken Head##1532 |q 582 |goto Stranglethorn Vale 23.37,10.29 |tip {dropsfrom}Bloodscalp Headhunter
-step
-  talk Kin'weelay##2519
-  accept Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
-step
-  note Bring 25 Split Bone Necklaces to Kin'weelay at the Grom'gol Base camp.
-  collect 25 Split Bone Necklace##3916 |q 598 |goto Stranglethorn Vale 46.22,37.45 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
-step
-  note Commander Aggro'gosh of the Grom'gol base camp wants you to kill 10 Ogre Brutes and 5 Ogre Witch Doctors.
-  kill Mosh'Ogg Brute##1142 |q 569 |goto Stranglethorn Vale 37.34,30.92
-step
-  talk Galvan the Ancient##7802
-  turnin Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
-step
-  only Warlock
-  talk Menara Voidrender##6266
-  turnin Components for the Enchanted Gold Bloodrobe##4782 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
-step
-  talk Tran'rek##7876
-  turnin Tran'rek##2864 |goto Tanaris 51.57,26.76 |tip {turninat}Tanaris
-step
-  talk Witch Doctor Uzer'i##8115
-  turnin Return to Witch Doctor Uzer'i##3122 |goto Feralas 74.42,43.36 |tip {turninat}Feralas
-step
-  talk Stoley##7881
-  turnin Stoley's Debt##2872 |goto Tanaris 67.11,23.98 |tip {turninat}Tanaris
-step
-  talk Galvan the Ancient##7802
-  accept Return to the Blasted Lands##3626 |goto Stranglethorn Vale 50.62,20.48
-step
-  turnin Cortello's Riddle##624 |goto Swamp of Sorrows 22.87,48.19 |tip {turninat}Swamp of Sorrows
-step
-  talk Short John Mithril##14508
-  turnin Arena Master##7810 |goto Stranglethorn Vale 29.59,47.38
-step
-  talk Alessandro Luca##7683
-  turnin Errand for Apothecary Zinge##232 |goto Undercity 58.61,54.68 |tip {turninat}Undercity
-step
-  talk Alessandro Luca##7683
-  accept Errand for Apothecary Zinge##238 |goto Undercity 58.61,54.68
-step
-  talk Fallen Hero of the Horde##7572
-  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
+  note Archbishop Bendictus wants you to slay Amnennar the Coldbringer in Razorfen Downs.
+  kill Amnennar the Coldbringer##7358 |q 3636 |goto Razorfen Downs - Dungeon -1,-1 |elite
 step
   talk Drizzlik##2495
   turnin Supply and Demand##575 |goto Stranglethorn Vale 28.29,77.59
@@ -570,8 +528,8 @@ step
 step
   turnin The Bloodsail Buccaneers##595 |goto Stranglethorn Vale 27.28,69.52
 step
-  talk Fin Fizracket##2486
-  turnin Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
+  talk Krazek##773
+  turnin Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
 step
   talk Crank Fizzlebub##2498
   turnin Singing Blue Shards##605 |goto Stranglethorn Vale 27.12,77.21
@@ -579,14 +537,11 @@ step
   talk "Shaky" Phillipe##2502
   turnin Scaring Shaky##606 |goto Stranglethorn Vale 26.9,73.59
 step
-  talk Krazek##773
-  turnin Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
+  talk Catelyn the Blade##2542
+  turnin "Pretty Boy" Duncan##610 |goto Stranglethorn Vale 27.28,77.53
 step
-  talk Captain Hecklebury Smotts##2500
-  turnin The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
-step
-  talk Captain Hecklebury Smotts##2500
-  turnin The Monogrammed Sash##8552 |goto Stranglethorn Vale 26.69,73.61
+  talk Baron Revilgaz##2496
+  turnin The Haunted Isle##616 |goto Stranglethorn Vale 27.23,76.87
 step
   talk Privateer Bloads##2494
   turnin Akiris by the Bundle##617 |goto Stranglethorn Vale 26.76,76.38
@@ -600,8 +555,20 @@ step
   talk Kebok##737
   turnin Bloodscalp Ears##189 |goto Stranglethorn Vale 27,77.13
 step
+  talk Krazek##773
+  turnin Krazek's Cookery##210 |goto Stranglethorn Vale 26.95,77.21
+step
   talk Kebok##737
   turnin Hostile Takeover##213 |goto Stranglethorn Vale 27,77.13
+step
+  talk Fin Fizracket##2486
+  turnin Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
+step
+  talk Captain Hecklebury Smotts##2500
+  turnin The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
+step
+  talk Captain Hecklebury Smotts##2500
+  turnin The Monogrammed Sash##8552 |goto Stranglethorn Vale 26.69,73.61
 step
   talk Kebok##737
   accept Skullsplitter Tusks##209 |goto Stranglethorn Vale 27,77.13
@@ -615,6 +582,9 @@ step
   note Bring 5 Snapjaw Crocolisks Skins to Drizzlik in Booty Bay.
   collect 5 Snapjaw Crocolisk Skin##4104 |q 577 |goto Stranglethorn Vale 40.15,22.18 |tip {dropsfrom}Snapjaw Crocolisk
 step
+  talk Baron Revilgaz##2496
+  accept The Stone of the Tides##578 |goto Stranglethorn Vale 27.23,76.87
+step
   click Bloodsail Correspondence##2083
   accept The Bloodsail Buccaneers##597 |goto Stranglethorn Vale 27.28,69.52
 step
@@ -626,6 +596,21 @@ step
 step
   talk "Shaky" Phillipe##2502
   accept Return to MacKinley##607 |goto Stranglethorn Vale 26.9,73.59
+step
+  talk Catelyn the Blade##2542
+  accept The Curse of the Tides##611 |goto Stranglethorn Vale 27.28,77.53
+step
+  note Destroy the Altar of the Tides with Catelyn's Blade, kill Gazban and bring the Stone of the Tides and Catelyn's Blade back to Baron Revilgaz.
+  collect Stone of the Tides##4034 |q 611 |goto Stranglethorn Vale 24.97,23.58 |tip {dropsfrom}Gazban
+step
+  talk Privateer Bloads##2494
+  accept Akiris by the Bundle##623 |goto Stranglethorn Vale 26.76,76.38
+step
+  talk Krazek##773
+  accept Favor for Krazek##627 |goto Stranglethorn Vale 26.95,77.21
+step
+  note Bring 4 loads of Lesser Bloodstone Ore to Krazek in Booty Bay.
+  collect 4 Lesser Bloodstone Ore##4278 |q 627 |goto Arathi Highlands 84.21,31.28 |tip {dropsfrom}Lesser Bloodstone Deposit
 step
   talk Krazek##773
   accept Rumors for Kravel##1117 |goto Stranglethorn Vale 26.95,77.21
@@ -648,14 +633,17 @@ step
   talk Kravel Koalbeard##4452
   turnin Rumors for Kravel##1117 |goto Thousand Needles 77.79,77.27 |tip {turninat}Thousand Needles
 step
-  talk Melor Stonehoof##3441
-  turnin Deadmire##1205 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
+  talk Theldurin the Lost##2785
+  turnin Theldurin the Lost##687 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
 step
-  talk Apothecary Zinge##5204
-  turnin Errand for Apothecary Zinge##238 |goto Undercity 50.14,67.97 |tip {turninat}Undercity
+  talk Angus Stern##1141
+  turnin A Meal Served Cold##212 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
 step
-  talk Apothecary Zinge##5204
-  accept Into the Field##243 |goto Undercity 50.14,67.97
+  talk Theldurin the Lost##2785
+  turnin Forbidden Knowledge##737 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
+step
+  talk Acolyte Dellis##5386
+  turnin Mazen's Behest##1363 |goto Stormwind City 51.4,73.81 |tip {turninat}Stormwind City
 step
   talk Princess Poobah##2634
   accept Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
@@ -664,18 +652,152 @@ step
   kill King Mukla##1559 |goto Stranglethorn Vale 40.95,83.9 |elite
   collect Shackle Key##4103 |q 630 |goto Stranglethorn Vale 40.95,83.9
 step
+  talk Acolyte Dellis##5386
+  accept Mazen's Behest##1364 |goto Stormwind City 51.4,73.81
+step
+  note Retrieve Khadgar's Essays on Dimensional Convergence and deliver them to Watcher Mahar Ba in Nethergarde Keep.
+  collect Khadgar's Essays on Dimensional Convergence##6065 |q 1364 |goto Swamp of Sorrows 15.81,37.04 |tip {dropsfrom}Swampwalker, Swampwalker Elder, Tangled Horror
+step
   talk Fleet Master Firallon##2546
   turnin Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
 step
   talk Fleet Master Firallon##2546
   turnin Dressing the Part##9272 |goto Stranglethorn Vale 30.58,90.63
 step
+  talk Archbishop Benedictus##1284
+  turnin Bring the Light##3636 |goto Stormwind City 50.31,45.47 |tip {turninat}Stormwind City
+step
+  only Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
+step
+  talk Short John Mithril##14508
+  turnin Arena Master##7810 |goto Stranglethorn Vale 29.59,47.38
+step
+  only Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Nobility##4485 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
+step
+  only Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Nobility##4486 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
+step
+  only Mage
+  talk Tabetha##6546
+  turnin Return to the Marsh##1953 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
+step
+  talk Falstad Wildhammer##5635
+  turnin To The Hinterlands##1449 |goto The Hinterlands 11.81,46.76 |tip {turninat}The Hinterlands
+step
+  talk Count Remington Ridgewell##2285
+  turnin The Perenolde Tiara##543 |goto Stormwind City 76.94,47.83 |tip {turninat}Stormwind City
+step
+  talk Galvan the Ancient##7802
+  turnin Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
+step
+  talk Privateer Groy##2616
+  turnin Akiris by the Bundle##623 |goto Dustwallow Marsh 68.84,53.22 |tip {turninat}Dustwallow Marsh
+step
+  turnin Crystal in the Mountains##635 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
+step
+  talk Advisor Belgrum##2918
+  turnin Passing Word of a Threat##725 |goto Ironforge 77.34,9.71 |tip {turninat}Ironforge
+step
+  talk Krom Stoutarm##6294
+  turnin Reclaimed Treasures##1360 |goto Ironforge 74.19,9.39 |tip {turninat}Ironforge
+step
+  talk Watcher Mahar Ba##5385
+  turnin Mazen's Behest##1364 |goto Blasted Lands 67.65,19.17 |tip {turninat}Blasted Lands
+step
+  only Warlock
+  talk Strahad Farsan##6251
+  turnin Summon Felsteed##4487 |goto The Barrens 62.63,35.5 |tip {turninat}The Barrens
+step
+  talk Advisor Belgrum##2918
+  accept Passing Word of a Threat##726 |goto Ironforge 77.34,9.71
+step
+  talk Galvan the Ancient##7802
+  accept Return to the Blasted Lands##3626 |goto Stranglethorn Vale 50.62,20.48
+step
+  talk Hemet Nesingwary##715
+  turnin Welcome to the Jungle##583 |goto Stranglethorn Vale 35.66,10.81
+step
+  talk Talvash del Kissel##6826
+  turnin Lore for a Price##2199 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
+step
+  talk Sergeant Yohwa##733
+  turnin The Second Rebellion##203 |goto Stranglethorn Vale 38.02,3.33
+step
+  talk Sergeant Yohwa##733
+  turnin Bad Medicine##204 |goto Stranglethorn Vale 38.02,3.33
+step
+  talk Lieutenant Doren##469
+  turnin Jungle Secrets##215 |goto Stranglethorn Vale 38.04,3.01
+step
+  talk Barnil Stonepot##716
+  turnin Chapter I##339 |goto Stranglethorn Vale 35.66,10.53
+step
+  talk Barnil Stonepot##716
+  turnin Chapter III##341 |goto Stranglethorn Vale 35.66,10.53
+step
+  talk Barnil Stonepot##716
+  turnin Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
+step
+  talk Barnil Stonepot##716
+  turnin Chapter II##340 |goto Stranglethorn Vale 35.66,10.53
+step
+  talk Ajeck Rouack##717
+  accept Tiger Mastery##185 |goto Stranglethorn Vale 35.62,10.62
+step
+  talk Sir S. J. Erlgadin##718
+  accept Panther Mastery##190 |goto Stranglethorn Vale 35.55,10.55
+step
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##194 |goto Stranglethorn Vale 35.66,10.81
+step
+  talk Lieutenant Doren##469
+  accept Bookie Herod##200 |goto Stranglethorn Vale 38.04,3.01
+step
+  talk Brother Nimetz##739
+  accept Kurzen's Mystery##207 |goto Stranglethorn Vale 37.83,3.56
+step
+  note Find the 4 tablets and bring their legends back to Brother Nimetz.
+  collect The First Troll Legend##2005 |q 207 |goto Stranglethorn Vale 29.48,19.14 |tip {dropsfrom}Moon Over the Vale
+step
+  talk Barnil Stonepot##716
+  accept The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
+step
+  note Collect the missing pages from The Green Hills of Stranglethorn manuscript. Once all four chapters are complete, return them to Barnil.
+  collect Green Hills of Stranglethorn - Chapter I##2756 |q 338 |goto Stranglethorn Vale 35.66,10.53
+step
+  talk Sergeant Yohwa##733
+  accept Special Forces##574 |goto Stranglethorn Vale 38.02,3.33
+step
+  talk Talvash del Kissel##6826
+  accept Back to Uldaman##2200 |goto Ironforge 36.38,3.61
+step
+  note Kill 10 Kurzen Commandoes and 6 Kurzen Headshrinkers.
+  kill Kurzen Commando##938 |q 574 |goto Stranglethorn Vale 45.96,7.91
+step
+  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Young Stranglethorn Tigers.
+  kill Young Stranglethorn Tiger##681 |q 185 |goto Stranglethorn Vale 35.6,11.6
+step
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Young Panthers.
+  kill Young Panther##683 |q 190 |goto Stranglethorn Vale 41.27,12.75
+step
   talk Exzhal##14910
   turnin A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
+step
+  talk Remains of a Paladin##6912
+  turnin Back to Uldaman##2200 |goto Uldaman - Dungeon -1,-1 |tip {turninat}Uldaman - Dungeon
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
   turnin Strength of Mount Mugamba##8041 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  talk Jin'rokh the Breaker##14902
+  turnin The Heathen's Brand##8045 |goto Stranglethorn Vale 15.31,14.43
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -789,10 +911,6 @@ step
   talk Maywiki of Zuldazar##14904
   turnin Enchanted South Seas Kelp##8110 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  turnin Vision of Voodress##8116 |goto Stranglethorn Vale 15.3,16.02
-step
   only Rogue
   talk Falthir the Sightless##14905
   turnin Zandalarian Shadow Talisman##8141 |goto Stranglethorn Vale 14.08,13.72
@@ -807,6 +925,13 @@ step
 step
   only Warrior
   collect Strength of Mugamba##19574 |q 8042 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  talk Jin'rokh the Breaker##14902
+  accept The Heathen's Brand##8046 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  collect Heathen's Brand##19579 |q 8046 |goto Stranglethorn Vale 15.31,14.43
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -836,13 +961,6 @@ step
   only Druid
   collect Enchanted South Seas Kelp##19610 |q 8111 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  accept Vision of Voodress##8117 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Shaman
-  collect Vision of Voodress##19606 |q 8117 |goto Stranglethorn Vale 15.3,16.02
-step
   only Rogue
   talk Falthir the Sightless##14905
   accept Zandalarian Shadow Talisman##8142 |goto Stranglethorn Vale 14.08,13.72
@@ -860,65 +978,14 @@ step
   note Hemet Nesingwary wants you to kill 10 Stranglethorn Raptors.
   kill Stranglethorn Raptor##685 |q 194 |goto Stranglethorn Vale 26.01,16.07
 step
-  talk Barnil Stonepot##716
-  turnin The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
-step
-  talk Ajeck Rouack##717
-  turnin Tiger Mastery##185 |goto Stranglethorn Vale 35.62,10.62
-step
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##190 |goto Stranglethorn Vale 35.55,10.55
-step
-  talk Hemet Nesingwary##715
-  turnin Raptor Mastery##194 |goto Stranglethorn Vale 35.66,10.81
-step
-  talk Ajeck Rouack##717
-  accept Tiger Mastery##186 |goto Stranglethorn Vale 35.62,10.62
-step
-  talk Sir S. J. Erlgadin##718
-  accept Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
-step
-  talk Hemet Nesingwary##715
-  accept Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
-step
-  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Stranglethorn Tigers.
-  kill Stranglethorn Tiger##682 |q 186 |goto Stranglethorn Vale 37.8,13.68
-step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Panthers.
-  kill Panther##736 |q 191 |goto Stranglethorn Vale 29.77,12.6
-step
-  talk Commander Aggro'gosh##2464
-  turnin The Defense of Grom'gol##569 |goto Stranglethorn Vale 32.17,28.9
-step
-  talk Far Seer Mok'thardin##2465
-  turnin Mok'thardin's Enchantment##572 |goto Stranglethorn Vale 32.12,29.24
-step
-  talk Nimboya##2497
-  turnin Headhunting##582 |goto Stranglethorn Vale 32.16,27.72
-step
-  talk Kin'weelay##2519
-  turnin Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Far Seer Mok'thardin##2465
-  accept Mok'thardin's Enchantment##571 |goto Stranglethorn Vale 32.12,29.24
-step
-  note Bring an Aged Gorilla Sinew to Far Seer Mok'thardin in Grom'gol.
-  collect Aged Gorilla Sinew##3862 |q 571 |goto Stranglethorn Vale 33.05,65.45 |tip {dropsfrom}Elder Mistvale Gorilla
-step
-  talk Nimboya##2497
-  accept Bloodscalp Clan Heads##584 |goto Stranglethorn Vale 32.16,27.72
-step
-  note Bring Gan'zulah's Head and Nezzliok's Head to the bubbling cauldron at the Grom'gol Base Camp.
-  collect Gan'zulah's Head##3904 |q 584 |goto Stranglethorn Vale 23.44,8.12 |tip {dropsfrom}Gan'zulah
-step
-  note Hemet Nesingwary wants you to kill 10 Lashtail Raptors.
-  kill Lashtail Raptor##686 |q 195 |goto Stranglethorn Vale 35.62,23.72
-step
-  talk Chief Engineer Bilgewhizzle##7407
-  turnin Into the Field##243 |goto Tanaris 52.46,28.51 |tip {turninat}Tanaris
+  talk Fallen Hero of the Horde##7572
+  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
 step
   talk Drizzlik##2495
   turnin Some Assembly Required##577 |goto Stranglethorn Vale 28.29,77.59
+step
+  talk Baron Revilgaz##2496
+  turnin The Stone of the Tides##578 |goto Stranglethorn Vale 27.23,76.87
 step
   talk First Mate Crazz##2490
   turnin The Bloodsail Buccaneers##597 |goto Stranglethorn Vale 28.1,76.22
@@ -929,14 +996,20 @@ step
   talk "Sea Wolf" MacKinley##2501
   turnin Return to MacKinley##607 |goto Stranglethorn Vale 27.78,77.07
 step
-  talk Sprogger##2594
-  turnin The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.66,73.64
+  talk Baron Revilgaz##2496
+  turnin The Curse of the Tides##611 |goto Stranglethorn Vale 27.23,76.87
+step
+  talk Krazek##773
+  turnin Favor for Krazek##627 |goto Stranglethorn Vale 26.95,77.21
 step
   talk Baron Revilgaz##2496
   turnin Goblin Sponsorship##1182 |goto Stranglethorn Vale 27.23,76.87
 step
   talk Kebok##737
   turnin Skullsplitter Tusks##209 |goto Stranglethorn Vale 27,77.13
+step
+  talk Sprogger##2594
+  turnin The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.66,73.64
 step
   talk Dizzy One-Eye##2493
   accept Keep An Eye Out##576 |goto Stranglethorn Vale 28.59,75.9
@@ -953,11 +1026,20 @@ step
   talk First Mate Crazz##2490
   accept The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 28.1,76.22
 step
+  talk Baron Revilgaz##2496
+  accept Water Elementals##601 |goto Stranglethorn Vale 27.23,76.87
+step
+  note Acquire 6 Water Elemental Bracers for Baron Revilgaz in Booty Bay.
+  collect 6 Water Elemental Bracers##3923 |q 601 |goto Stranglethorn Vale 21.01,23.19 |tip {dropsfrom}Lesser Water Elemental
+step
   talk "Sea Wolf" MacKinley##2501
   accept Voodoo Dues##609 |goto Stranglethorn Vale 27.78,77.07
 step
   note Bring Maury's Clubbed Foot, Jon-Jon's Golden Spyglass, and Chucky's Huge Ring to "Sea Wolf" MacKinley in Booty Bay.
   collect Maury's Clubbed Foot##3924 |q 609 |goto Stranglethorn Vale 35.26,51.27 |tip {dropsfrom}Maury "Club Foot" Wilkins
+step
+  talk Krazek##773
+  accept Return to Corporal Kaleb##622 |goto Stranglethorn Vale 26.95,77.21
 step
   talk Drizzlik##2495
   accept Excelsior##628 |goto Stranglethorn Vale 28.29,77.59
@@ -982,9 +1064,72 @@ step
   talk Pozzik##4630
   turnin Goblin Sponsorship##1183 |goto Thousand Needles 80.18,75.88 |tip {turninat}Thousand Needles
 step
+  talk Historian Karnik##2916
+  turnin Passing Word of a Threat##726 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
+step
+  talk Lieutenant Doren##469
+  turnin Special Forces##574 |goto Stranglethorn Vale 38.04,3.01
+step
+  talk Corporal Kaleb##770
+  turnin Return to Corporal Kaleb##622 |goto Stranglethorn Vale 37.74,3.3
+step
+  talk Ajeck Rouack##717
+  turnin Tiger Mastery##185 |goto Stranglethorn Vale 35.62,10.62
+step
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##190 |goto Stranglethorn Vale 35.55,10.55
+step
+  talk Hemet Nesingwary##715
+  turnin Raptor Mastery##194 |goto Stranglethorn Vale 35.66,10.81
+step
+  turnin Bookie Herod##200 |goto Stranglethorn Vale 43.67,9.37
+step
+  talk Brother Nimetz##739
+  turnin Kurzen's Mystery##207 |goto Stranglethorn Vale 37.83,3.56
+step
+  talk Barnil Stonepot##716
+  turnin The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
+step
+  talk Ajeck Rouack##717
+  accept Tiger Mastery##186 |goto Stranglethorn Vale 35.62,10.62
+step
+  talk Sir S. J. Erlgadin##718
+  accept Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
+step
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
+step
+  talk Lieutenant Doren##469
+  accept Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
+step
+  talk Brother Nimetz##739
+  accept Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
+step
+  note Bring 4 Skullsplitter Fetishes to Brother Nimetz at the Rebel Camp.
+  collect 4 Skullsplitter Fetish##2466 |q 205 |goto Stranglethorn Vale 45.55,42.21 |tip {dropsfrom}Skullsplitter Witch Doctor, Skullsplitter Mystic
+step
+  click Bookie Herod's Records##287
+  accept The Hidden Key##328 |goto Stranglethorn Vale 43.67,9.37
+step
+  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Stranglethorn Tigers.
+  kill Stranglethorn Tiger##682 |q 186 |goto Stranglethorn Vale 37.8,13.68
+step
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Panthers.
+  kill Panther##736 |q 191 |goto Stranglethorn Vale 29.77,12.6
+step
+  note Hemet Nesingwary wants you to kill 10 Lashtail Raptors.
+  kill Lashtail Raptor##686 |q 195 |goto Stranglethorn Vale 35.62,23.72
+step
+  note Kill 6 Kurzen Elite, 4 Kurzen Subchiefs, and bring Kurzen's Head to Lieutenant Doren at the Rebel Camp.
+  kill Kurzen Elite##939 |q 202 |goto Stranglethorn Vale 48.4,7.51
+step
   only Warrior
   talk Jin'rokh the Breaker##14902
   turnin Strength of Mount Mugamba##8042 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  talk Jin'rokh the Breaker##14902
+  turnin The Heathen's Brand##8046 |goto Stranglethorn Vale 15.31,14.43
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -1002,10 +1147,6 @@ step
   talk Maywiki of Zuldazar##14904
   turnin Enchanted South Seas Kelp##8111 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  turnin Vision of Voodress##8117 |goto Stranglethorn Vale 15.3,16.02
-step
   only Rogue
   talk Falthir the Sightless##14905
   turnin Zandalarian Shadow Talisman##8142 |goto Stranglethorn Vale 14.08,13.72
@@ -1020,6 +1161,13 @@ step
 step
   only Warrior
   collect Strength of Mugamba##19575 |q 8043 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  talk Jin'rokh the Breaker##14902
+  accept The Heathen's Brand##8047 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  collect Heathen's Brand##19585 |q 8047 |goto Stranglethorn Vale 15.31,14.43
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -1049,13 +1197,6 @@ step
   only Druid
   collect Enchanted South Seas Kelp##19611 |q 8112 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  accept Vision of Voodress##8118 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Shaman
-  collect Vision of Voodress##19607 |q 8118 |goto Stranglethorn Vale 15.3,16.02
-step
   only Rogue
   talk Falthir the Sightless##14905
   accept Zandalarian Shadow Talisman##8143 |goto Stranglethorn Vale 14.08,13.72
@@ -1070,53 +1211,6 @@ step
   only Hunter
   collect Maelstrom's Tendril##19619 |q 8147 |goto Stranglethorn Vale 14.08,13.72
 step
-  talk Ajeck Rouack##717
-  turnin Tiger Mastery##186 |goto Stranglethorn Vale 35.62,10.62
-step
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
-step
-  talk Hemet Nesingwary##715
-  turnin Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
-step
-  talk Ajeck Rouack##717
-  accept Tiger Mastery##187 |goto Stranglethorn Vale 35.62,10.62
-step
-  talk Sir S. J. Erlgadin##718
-  accept Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
-step
-  talk Hemet Nesingwary##715
-  accept Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
-step
-  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Elder Stranglethorn Tigers.
-  kill Elder Stranglethorn Tiger##1085 |q 187 |goto Stranglethorn Vale 33.53,18.86
-step
-  talk Far Seer Mok'thardin##2465
-  turnin Mok'thardin's Enchantment##571 |goto Stranglethorn Vale 32.12,29.24
-step
-  turnin Bloodscalp Clan Heads##584 |goto Stranglethorn Vale 32.22,27.6
-step
-  talk Far Seer Mok'thardin##2465
-  accept Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
-step
-  click Bubbling Cauldron##2076
-  accept Speaking with Nezzliok##585 |goto Stranglethorn Vale 32.22,27.6
-step
-  note Bring a Balia'mah Trophy, a Ziata'jai Trophy and a Zul'Mamwe Trophy to the Bubbling Cauldron at the Grom'gol Base Camp.
-  collect Balia'mah Trophy##3906 |q 585 |goto Stranglethorn Vale 46.13,32.33 |tip {dropsfrom}Balia'mah Trophy Skulls
-step
-  click Bubbling Cauldron##2076
-  accept Speaking with Gan'zulah##586 |goto Stranglethorn Vale 32.22,27.6
-step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Shadowmaw Panthers.
-  kill Shadowmaw Panther##684 |q 192 |goto Stranglethorn Vale 40.73,34.82
-step
-  note Kill 8 Skullsplitter Hunters, 6 Skullsplitter Headhunters, and 4 Skullsplitter Berserkers.
-  kill Skullsplitter Hunter##669 |q 586 |goto Stranglethorn Vale 45.79,42.4
-step
-  note Hemet Nesingwary wants you to kill 10 Jungle Stalkers.
-  kill Jungle Stalker##687 |q 196 |goto Stranglethorn Vale 28.88,44.1
-step
   talk Dizzy One-Eye##2493
   turnin Keep An Eye Out##576 |goto Stranglethorn Vale 28.59,75.9
 step
@@ -1126,14 +1220,20 @@ step
   talk Fleet Master Seahorn##2487
   turnin The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 27.17,77.01
 step
+  talk Baron Revilgaz##2496
+  turnin Water Elementals##601 |goto Stranglethorn Vale 27.23,76.87
+step
   talk "Sea Wolf" MacKinley##2501
   turnin Voodoo Dues##609 |goto Stranglethorn Vale 27.78,77.07
+step
+  talk Drizzlik##2495
+  turnin Excelsior##628 |goto Stranglethorn Vale 28.29,77.59
 step
   talk Captain Hecklebury Smotts##2500
   turnin Facing Negolash##8554 |goto Stranglethorn Vale 26.69,73.61
 step
-  talk Drizzlik##2495
-  turnin Excelsior##628 |goto Stranglethorn Vale 28.29,77.59
+  talk Baron Revilgaz##2496
+  accept Magical Analysis##602 |goto Stranglethorn Vale 27.23,76.87
 step
   talk Fleet Master Seahorn##2487
   accept The Bloodsail Buccaneers##604 |goto Stranglethorn Vale 27.17,77.01
@@ -1145,15 +1245,61 @@ step
   kill Mosh'Ogg Mauler##678 |goto Stranglethorn Vale 51.48,27.73 |elite
   collect Maury's Key##3930 |q 613 |goto Stranglethorn Vale 51.48,27.73
 step
-  note Far Seer Mok'thardin of Grom'gol needs Holy Spring Water. He also wants you to kill 10 Naga Explorers.
-  kill Naga Explorer##1907 |q 573 |goto Stranglethorn Vale 26.32,62.32
-step
   note Fleet Master Seahorn in Booty Bay wants you to kill 10 Bloodsail Swashbucklers and bring back the Bloodsail Charts and the Bloodsail Orders.
   kill Bloodsail Swashbuckler##1563 |q 604 |goto Stranglethorn Vale 26.91,82.4
+step
+  turnin The Hidden Key##328 |goto Stranglethorn Vale 49.62,7.56
+step
+  click Bookie Herod's Strongbox##288
+  accept The Spy Revealed!##329 |goto Stranglethorn Vale 49.62,7.56
+step
+  talk Ajeck Rouack##717
+  turnin Tiger Mastery##186 |goto Stranglethorn Vale 35.62,10.62
+step
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
+step
+  talk Hemet Nesingwary##715
+  turnin Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
+step
+  talk Lieutenant Doren##469
+  turnin Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
+step
+  talk Brother Nimetz##739
+  turnin Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
+step
+  talk Lieutenant Doren##469
+  turnin The Spy Revealed!##329 |goto Stranglethorn Vale 38.04,3.01
+step
+  talk Ajeck Rouack##717
+  accept Tiger Mastery##187 |goto Stranglethorn Vale 35.62,10.62
+step
+  talk Sir S. J. Erlgadin##718
+  accept Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
+step
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
+step
+  talk Brother Nimetz##739
+  accept Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
+step
+  note Bring the Mind's Eye to Brother Nimetz at the Rebel Camp.
+  kill Mai'Zoth##818 |goto Stranglethorn Vale 52.93,27.6 |elite
+  collect Mind's Eye##3616 |q 206 |goto Stranglethorn Vale 52.93,27.6
+step
+  talk Lieutenant Doren##469
+  accept Patrol Schedules##330 |goto Stranglethorn Vale 38.04,3.01
+step
+  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Elder Stranglethorn Tigers.
+  kill Elder Stranglethorn Tiger##1085 |q 187 |goto Stranglethorn Vale 33.53,18.86
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
   turnin Strength of Mount Mugamba##8043 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  talk Jin'rokh the Breaker##14902
+  turnin The Heathen's Brand##8047 |goto Stranglethorn Vale 15.31,14.43
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -1171,10 +1317,6 @@ step
   talk Maywiki of Zuldazar##14904
   turnin Enchanted South Seas Kelp##8112 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  turnin Vision of Voodress##8118 |goto Stranglethorn Vale 15.3,16.02
-step
   only Rogue
   talk Falthir the Sightless##14905
   turnin Zandalarian Shadow Talisman##8143 |goto Stranglethorn Vale 14.08,13.72
@@ -1189,6 +1331,13 @@ step
 step
   only Warrior
   collect Strength of Mugamba##19576 |q 8044 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  talk Jin'rokh the Breaker##14902
+  accept The Hero's Brand##8048 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  collect Heathen's Brand##19586 |q 8048 |goto Stranglethorn Vale 15.31,14.43
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -1218,13 +1367,6 @@ step
   only Druid
   collect Enchanted South Seas Kelp##19612 |q 8113 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  accept The Unmarred Vision of Voodress##8119 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Shaman
-  collect Vision of Voodress##19608 |q 8119 |goto Stranglethorn Vale 15.3,16.02
-step
   only Rogue
   talk Falthir the Sightless##14905
   accept Zandalarian Shadow Mastery Talisman##8144 |goto Stranglethorn Vale 14.08,13.72
@@ -1239,6 +1381,27 @@ step
   only Hunter
   collect Maelstrom's Tendril##19620 |q 8148 |goto Stranglethorn Vale 14.08,13.72
 step
+  talk Archmage Ansirem Runeweaver##2543
+  turnin Magical Analysis##602 |goto Alterac Mountains 18.84,78.49 |tip {turninat}Alterac Mountains
+step
+  talk Fleet Master Seahorn##2487
+  turnin The Bloodsail Buccaneers##604 |goto Stranglethorn Vale 27.17,77.01
+step
+  talk "Sea Wolf" MacKinley##2501
+  turnin Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
+step
+  talk Fleet Master Seahorn##2487
+  accept The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
+step
+  note Fleet-Master Seahorn in Booty Bay wants you to kill Captain Stillwater, Captain Keelhaul and Fleet Master Firallon.
+  kill Captain Stillwater##2550 |q 608 |goto Stranglethorn Vale 32.87,88.2
+step
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Shadowmaw Panthers.
+  kill Shadowmaw Panther##684 |q 192 |goto Stranglethorn Vale 40.73,34.82
+step
+  note Hemet Nesingwary wants you to kill 10 Jungle Stalkers.
+  kill Jungle Stalker##687 |q 196 |goto Stranglethorn Vale 28.88,44.1
+step
   talk Ajeck Rouack##717
   turnin Tiger Mastery##187 |goto Stranglethorn Vale 35.62,10.62
 step
@@ -1247,6 +1410,12 @@ step
 step
   talk Hemet Nesingwary##715
   turnin Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
+step
+  talk Brother Nimetz##739
+  turnin Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
+step
+  talk Corporal Sethman##1422
+  turnin Patrol Schedules##330 |goto Stranglethorn Vale 37.66,3.39
 step
   talk Ajeck Rouack##717
   accept Tiger Mastery##188 |goto Stranglethorn Vale 35.62,10.62
@@ -1268,31 +1437,16 @@ step
   kill Tethis##730 |goto Stranglethorn Vale 31.5,42.8 |elite
   collect Talon of Tethis##3877 |q 197 |goto Stranglethorn Vale 31.5,42.8
 step
-  talk Far Seer Mok'thardin##2465
-  turnin Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
-step
-  turnin Speaking with Nezzliok##585 |goto Stranglethorn Vale 32.22,27.6
-step
-  turnin Speaking with Gan'zulah##586 |goto Stranglethorn Vale 32.22,27.6
-step
-  click Bubbling Cauldron##2076
-  accept The Fate of Yenniku##588 |goto Stranglethorn Vale 32.22,27.6
-step
-  talk Fleet Master Seahorn##2487
-  turnin The Bloodsail Buccaneers##604 |goto Stranglethorn Vale 27.17,77.01
-step
-  talk "Sea Wolf" MacKinley##2501
-  turnin Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
-step
-  talk Fleet Master Seahorn##2487
-  accept The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
-step
-  note Fleet-Master Seahorn in Booty Bay wants you to kill Captain Stillwater, Captain Keelhaul and Fleet Master Firallon.
-  kill Captain Stillwater##2550 |q 608 |goto Stranglethorn Vale 32.87,88.2
+  talk Corporal Sethman##1422
+  accept Report to Doren##331 |goto Stranglethorn Vale 37.66,3.39
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
   turnin The Rage of Mugamba##8044 |goto Stranglethorn Vale 15.31,14.43
+step
+  only Paladin
+  talk Jin'rokh the Breaker##14902
+  turnin The Hero's Brand##8048 |goto Stranglethorn Vale 15.31,14.43
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -1310,10 +1464,6 @@ step
   talk Maywiki of Zuldazar##14904
   turnin Pristine Enchanted South Seas Kelp##8113 |goto Stranglethorn Vale 15.3,16.02
 step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  turnin The Unmarred Vision of Voodress##8119 |goto Stranglethorn Vale 15.3,16.02
-step
   only Rogue
   talk Falthir the Sightless##14905
   turnin Zandalarian Shadow Mastery Talisman##8144 |goto Stranglethorn Vale 14.08,13.72
@@ -1321,6 +1471,9 @@ step
   only Hunter
   talk Falthir the Sightless##14905
   turnin Maelstrom's Wrath##8148 |goto Stranglethorn Vale 14.08,13.72
+step
+  talk Fleet Master Seahorn##2487
+  turnin The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
 step
   talk Ajeck Rouack##717
   turnin Tiger Mastery##188 |goto Stranglethorn Vale 35.62,10.62
@@ -1331,6 +1484,9 @@ step
   talk Hemet Nesingwary##715
   turnin Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
 step
+  talk Lieutenant Doren##469
+  turnin Report to Doren##331 |goto Stranglethorn Vale 38.04,3.01
+step
   talk Hemet Nesingwary##715
   accept Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
 step
@@ -1338,43 +1494,9 @@ step
   kill King Bangalash##731 |goto Stranglethorn Vale 38.21,35.58 |elite
   collect Head of Bangalash##3880 |q 208 |goto Stranglethorn Vale 38.21,35.58
 step
-  talk Kin'weelay##2519
-  turnin The Fate of Yenniku##588 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Kin'weelay##2519
-  accept The Singing Crystals##589 |goto Stranglethorn Vale 32.27,27.71
-step
-  note Bring 3 Pulsing Blue Shards to Kin'weelay at the Grom'gol Base Camp.
-  collect 3 Pulsing Blue Shard##3911 |q 589 |goto Stranglethorn Vale 43.39,47.83 |tip {dropsfrom}Ironjaw Basilisk
-step
-  talk Fleet Master Seahorn##2487
-  turnin The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
-step
   talk Hemet Nesingwary##715
   turnin Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
 step
-  talk Kin'weelay##2519
-  turnin The Singing Crystals##589 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Kin'weelay##2519
-  accept The Mind's Eye##591 |goto Stranglethorn Vale 32.27,27.71
-step
-  note Bring the Mind's Eye to Kin'weelay at the Grom'gol Base Camp.
-  kill Mai'Zoth##818 |goto Stranglethorn Vale 52.93,27.6 |elite
-  collect Mind's Eye##3616 |q 591 |goto Stranglethorn Vale 52.93,27.6
-step
-  talk Kin'weelay##2519
-  turnin The Mind's Eye##591 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Kin'weelay##2519
-  accept Saving Yenniku##592 |goto Stranglethorn Vale 32.27,27.71
-step
-  note Bring the Filled Soul Gem to Nimboya.
-  collect Filled Soul Gem##3913 |q 592 |goto Stranglethorn Vale 39.02,58.35 |tip {dropsfrom}Yenniku
-step
-  talk Nimboya##2497
-  turnin Saving Yenniku##592 |goto Stranglethorn Vale 32.16,27.72
-step
-  note {travel}Feralas
-  goto Feralas 74.91,42.46
+  note {travel}Badlands
+  goto Badlands 53.42,43.39
 ]])

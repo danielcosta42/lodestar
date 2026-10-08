@@ -73,6 +73,10 @@ step
   note Bring the Ancient Statuette to Talen, in his camp near the Zoram Strand.
   collect Ancient Statuette##5424 |q 1007 |goto Ashenvale 14.2,20.64
 step
+  only Mage
+  talk Bink##5144
+  accept High Sorcerer Andromath##1939 |goto Ironforge 27.25,8.3
+step
   talk Brother Kristoff##1444
   accept Speaking of Fortitude##343 |goto Stormwind City 55.04,54.16
 step
@@ -85,11 +89,17 @@ step
   note Bring 10 Twilight Pendants to Argent Guard Manados in Darnassus.
   collect 10 Twilight Pendant##5879 |q 1199 |goto Blackfathom Deeps - Dungeon -1,-1 |elite |tip {dropsfrom}Twilight Acolyte, Twilight Reaver, Twilight Aquamancer
 step
+  talk Brother Sarno##7917
+  accept Tinkmaster Overspark##2923 |goto Stormwind City 51.05,48.39
+step
   note Go to the Howling Vale and study the Tome of Mel'Thandris, then return to Sentinel Melyria Frostshadow at Forest Song.
   collect Tome of Mel'Thandris##19027 |q 1022 |goto Ashenvale 50.49,39.13
 step
   talk Kaela Shadowspear##4080
   turnin On Guard in Stonetalon##1070 |goto Stonetalon Mountains 59.9,66.85 |tip {turninat}Stonetalon Mountains
+step
+  talk Warden Thelwater##1719
+  accept Quell The Uprising##387 |goto Stormwind City 51.49,69.38
 step
   talk Sentinel Velene Starstrike##3885
   accept Elemental Bracers##1016 |goto Ashenvale 49.8,67.21
@@ -112,8 +122,29 @@ step
   talk Alonso##210995
   accept Dragonslayer's Lance##78134 |goto Ashenvale 43.4,70.4
 step
+  only Mage
+  talk High Sorcerer Andromath##5694
+  turnin High Sorcerer Andromath##1939 |goto Stormwind City 48.71,87.62 |tip {turninat}Stormwind City
+step
+  talk Collin Mauren##4078
+  accept Retrieval for Mauren##1078 |goto Stormwind City 53.02,86.64
+step
+  note Bring 8 Crystalized Scales to Collin Mauren in Stormwind.
+  collect 8 Crystalized Scales##5675 |q 1078 |goto Stonetalon Mountains 33.27,72.14 |tip {dropsfrom}Scorched Basilisk, Singed Basilisk, Blackened Basilisk
+step
+  only Mage
+  talk High Sorcerer Andromath##5694
+  accept Pristine Spider Silk##1940 |goto Stormwind City 48.71,87.62
+step
+  only Mage
+  note Bring 8 Pristine Spider Silk to Wynne Larson in Stormwind.
+  collect 8 Pristine Spider Silk##7267 |q 1940 |goto Duskwood 32.57,51.43 |tip {dropsfrom}Black Widow Hatchling, Carrion Recluse
+step
   talk Milton Sheaf##1440
   turnin Speaking of Fortitude##343 |goto Stormwind City 77.07,30.21 |tip {turninat}Stormwind City
+step
+  talk Tinkmaster Overspark##7944
+  turnin Tinkmaster Overspark##2923 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
 step
   talk Anilia##3920
   turnin Vile Satyr! Dryads in Danger!##1021 |goto Ashenvale 78.33,44.82
@@ -121,11 +152,24 @@ step
   talk Milton Sheaf##1440
   accept Brother Paxton##344 |goto Stormwind City 77.07,30.21
 step
+  talk Nikova Raskol##1721
+  accept The Color of Blood##388 |goto Stormwind City 76.42,63.67
+step
+  note Nikova Raskol of Stormwind wants you to collect 10 Red Wool Bandanas.
+  collect 10 Red Wool Bandana##2909 |q 388 |goto The Stockade - Dungeon -1,-1 |elite |tip {dropsfrom}Dextren Ward, Defias Prisoner, Defias Captive
+step
   talk Anilia##3920
   accept The Branch of Cenarius##1031 |goto Ashenvale 78.33,44.82
 step
   note Kill Geltharis and return the Branch of Cenarius to Illiyana at Forest Song.
   collect Branch of Cenarius##5461 |q 1031 |goto Ashenvale 77.99,42.42 |tip {dropsfrom}Geltharis
+step
+  talk Tinkmaster Overspark##7944
+  accept Save Techbot's Brain!##2922 |goto Ironforge 69.55,50.33
+step
+  note Bring Techbot's Memory Core to Tinkmaster Overspark in Ironforge.
+  kill Techbot##6231 |goto Dun Morogh 19.78,31.93 |elite
+  collect Techbot's Memory Core##9277 |q 2922 |goto Dun Morogh 19.78,31.93
 step
   talk Kayneth Stillwind##3848
   turnin Kayneth Stillwind##4581 |goto Ashenvale 85.24,44.71
@@ -202,6 +246,9 @@ step
   note Bring the Ring of Zoram to Talen near the Zoram Strand.
   collect Ring of Zoram##5445 |q 1009 |goto Ashenvale 7.22,13.06 |tip {dropsfrom}Ruuzel
 step
+  note Warden Thelwater of Stormwind wants you to kill 10 Defias Prisoners, 8 Defias Convicts, and 8 Defias Insurgents in The Stockade.
+  kill Defias Prisoner##1706 |q 387 |goto The Stockade - Dungeon -1,-1 |elite
+step
   talk Shael'dryn##3916
   turnin Raene's Cleansing##1024 |goto Ashenvale 53.54,46.22
 step
@@ -219,6 +266,9 @@ step
 step
   note Find the Wooden Key and a piece of Dartol's Rod before returning to Shael'dryn at the moonwell.
   collect Iron Shaft##5464 |q 1026 |goto Ashenvale 54.42,35.4 |tip {dropsfrom}Worn Chest
+step
+  talk Warden Thelwater##1719
+  turnin Quell The Uprising##387 |goto Stormwind City 51.49,69.38 |tip {turninat}Stormwind City
 step
   talk Sentinel Velene Starstrike##3885
   turnin Elemental Bracers##1016 |goto Ashenvale 49.8,67.21
@@ -240,6 +290,23 @@ step
 step
   talk Alonso##210995
   turnin Dragonslayer's Lance##78134 |goto Ashenvale 43.4,70.4
+step
+  only Mage
+  talk Wynne Larson##1309
+  turnin Pristine Spider Silk##1940 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
+step
+  talk Collin Mauren##4078
+  turnin Retrieval for Mauren##1078 |goto Stormwind City 53.02,86.64 |tip {turninat}Stormwind City
+step
+  only Mage
+  talk Wynne Larson##1309
+  accept Astral Knot Garment##1942 |goto Stormwind City 51.84,83.51
+step
+  talk Nikova Raskol##1721
+  turnin The Color of Blood##388 |goto Stormwind City 76.42,63.67 |tip {turninat}Stormwind City
+step
+  talk Tinkmaster Overspark##7944
+  turnin Save Techbot's Brain!##2922 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
 step
   talk Kayneth Stillwind##3848
   turnin Forsaken Diseases##1011 |goto Ashenvale 85.24,44.71
@@ -285,6 +352,10 @@ step
 step
   talk Sentinel Velene Starstrike##3885
   turnin Mage Summoner##1017 |goto Ashenvale 49.8,67.21
+step
+  only Mage
+  talk Wynne Larson##1309
+  turnin Astral Knot Garment##1942 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
 step
   note Kill the druids: Taneel Darkwood, Uthil Mooncall, Mavoris Cloudsbreak; then return to Kayneth Stillwind in Forest Song.
   kill Taneel Darkwood##3940 |q 1012 |goto Ashenvale 77.18,73.99

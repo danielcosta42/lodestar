@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/The Barrens (18-40)", {
+ns:RegisterGuide("Leveling/Alliance/The Barrens (14-35)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Duskwood (24-30)",
+	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
 }, [[
 step
   note {fp}Reggifuz
@@ -92,9 +92,11 @@ step
   note Speak to Menara's acolytes inside the tower above Ratchet and choose one of their paths to follow.
   collect Infernal Orb##7291 |q 1799 |goto Desolace 79.47,77.84 |tip {dropsfrom}Burning Blade Summoner
 step
-  only Warlock
-  talk Strahad Farsan##6251
-  accept Summon Felsteed##4490 |goto The Barrens 62.63,35.5
+  talk Shoni the Shilent##6579
+  accept Underground Assault##2040 |goto Stormwind City 62.63,34.11
+step
+  note Retrieve the Gnoam Sprecklesprocket from the Deadmines and return it to Shoni the Shilent in Stormwind.
+  collect Gnoam Sprecklesprocket##7365 |q 2040 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Sneed's Shredder
 step
   only Warlock
   talk Menara Voidrender##6266
@@ -133,18 +135,38 @@ step
   talk Kravel Koalbeard##4452
   turnin Parts for Kravel##1112 |goto Thousand Needles 77.79,77.27 |tip {turninat}Thousand Needles
 step
-  talk Master Mathias Shaw##332
-  accept Look to an Old Friend##350 |goto Stormwind City 78.31,70.74
+  talk Wilder Thistlenettle##656
+  accept Oh Brother. . .##167 |goto Stormwind City 70.31,40.82
 step
-  talk Dashel Stonefist##4961
-  accept The Missing Diplomat##1247 |goto Stormwind City 74.26,59.17
+  note Bring Foreman Thistlenettle's Explorers' League Badge to Wilder Thistlenettle in Stormwind.
+  kill Foreman Thistlenettle##626 |goto Westfall 42.22,82.61 |elite
+  collect Thistlenettle's Badge##1875 |q 167 |goto Westfall 42.22,82.61
+step
+  talk Lomac Gearstrip##4081
+  accept Ineptitude + Chemicals = Fun##1073 |goto Ironforge 72.08,51.88
+step
+  note Bring 4 Minor Mana Potions and 2 Elixirs of Minor Fortitude to Lomac Gearstrip in Ironforge.
+  collect 4 Minor Mana Potion##2455 |q 1073 |goto Westfall 45.85,26.58 |tip {dropsfrom}Defias Smuggler, Riverpaw Taskmaster, Harvest Watcher
 step
   only Warrior
   talk Klannoc Macleod##6236
   accept The Affray##1719 |goto The Barrens 68.62,49.16
 step
-  talk Gnoarn##6569
-  accept The Day After##2927 |goto Ironforge 69.18,50.55
+  only Rogue
+  talk Master Mathias Shaw##332
+  accept Mathias and the Defias##2360 |goto Stormwind City 78.31,70.74
+step
+  only Rogue
+  talk Master Mathias Shaw##332
+  accept The Touch of Zanzil##2607 |goto Stormwind City 78.31,70.74
+step
+  only Rogue
+  talk Doc Mixilpixil##7207
+  accept The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9
+step
+  only Rogue
+  note Bring Doc Mixilpixil one bundle of Simple Wildflowers, one Leaded Vial, one Bronze Tube, and one Spool of Light Chartreuse Silk Thread. The 'itis' doesn't cure itself, young <fella/lady>.
+  collect Simple Wildflowers##3421 |q 2609 |goto Stormwind City 69.24,71.84 |tip {dropsfrom}Bernard Gump, Felicia Gump
 step
   only Warrior
   note Kill Big Will, then speak to Klannoc Macleod on Fray Island.
@@ -169,20 +191,9 @@ step
   talk Ziz Fizziks##4201
   turnin Ziz Fizziks##1483 |goto Stonetalon Mountains 58.99,62.6 |tip {turninat}Stonetalon Mountains
 step
-  talk Elling Trias##482
-  turnin Look to an Old Friend##350 |goto Stormwind City 66.03,74.1 |tip {turninat}Stormwind City
-step
-  talk Elling Trias##482
-  turnin The Missing Diplomat##1247 |goto Stormwind City 66.03,74.1 |tip {turninat}Stormwind City
-step
-  talk Ozzie Togglevolt##1268
-  turnin The Day After##2927 |goto Dun Morogh 45.89,49.39 |tip {turninat}Dun Morogh
-step
-  talk Elling Trias##482
-  accept The Head of the Beast##394 |goto Stormwind City 66.03,74.1
-step
-  talk Elling Trias##482
-  accept The Missing Diplomat##1246 |goto Stormwind City 66.03,74.1
+  only Paladin
+  talk Duthorian Rall##6171
+  accept The Test of Righteousness##1653 |goto Stormwind City 50.48,47.49
 step
   only Warlock
   talk Takar the Seer##6244
@@ -200,8 +211,13 @@ step
   note Find 3 Soran'ruk Fragments and 1 Large Soran'ruk Fragment and return them to Doan Karhan in the Barrens.
   collect 3 Soran'ruk Fragment##6914 |q 1740 |goto Blackfathom Deeps - Dungeon -1,-1 |elite |tip {dropsfrom}Twilight Acolyte
 step
-  talk Elling Trias##482
-  accept Infiltrating the Castle##2745 |goto Stormwind City 66.03,74.1
+  only NightElf Priest
+  talk Nara Meideros##11397
+  accept Elune's Grace##5674 |goto Stormwind City 35.68,63.18
+step
+  only Paladin
+  talk Jordan Stilwell##6181
+  turnin The Test of Righteousness##1653 |goto Dun Morogh 52.49,36.92 |tip {turninat}Dun Morogh
 step
   talk Nalpak##5767
   accept Deviate Hides##1486 |goto The Barrens 45.99,35.66
@@ -215,6 +231,22 @@ step
 step
   talk Falla Sagewind##8418
   accept In Nightmares##3370 |goto The Barrens 48.18,32.78
+step
+  only Dwarf Priest
+  talk High Priestess Laurena##376
+  accept A Lack of Fear##5645 |goto Stormwind City 49.53,44.6
+step
+  only NightElf Priest
+  talk High Priestess Laurena##376
+  accept Elune's Grace##5673 |goto Stormwind City 49.53,44.6
+step
+  only Human Priest
+  talk High Priestess Laurena##376
+  accept Arcane Feedback##5676 |goto Stormwind City 49.53,44.6
+step
+  only Dwarf Priest
+  talk High Priest Rohan##11406
+  turnin A Lack of Fear##5645 |goto Ironforge 24.73,8.16 |tip {turninat}Ironforge
 step
   talk Mathrengyl Bearwalker##4217
   turnin In Nightmares##3370 |goto Darnassus 35.37,8.4 |tip {turninat}Darnassus
@@ -235,8 +267,28 @@ step
   accept Samophlange##900 |goto The Barrens 52.4,11.65
 step
   only Warlock
-  talk Briarthorn##5172
-  accept In Search of Menara Voidrender##4736 |goto Ironforge 50.35,5.66
+  talk Lago Blackwrench##6120
+  accept Gakin's Summons##1717 |goto Ironforge 47.63,9.26
+step
+  only Dwarf Priest
+  talk High Priest Rohan##11406
+  accept A Lack of Fear##5641 |goto Ironforge 24.73,8.16
+step
+  only NightElf Priest
+  talk High Priest Rohan##11406
+  accept Elune's Grace##5675 |goto Ironforge 24.73,8.16
+step
+  only Human Priest
+  talk High Priest Rohan##11406
+  accept Arcane Feedback##5677 |goto Ironforge 24.73,8.16
+step
+  only Shaman
+  talk Eldrun Stormbreaker##258098
+  accept Call of Water##94494 |goto Ironforge 47.48,13.5
+step
+  only Druid
+  talk Mathrengyl Bearwalker##4217
+  accept The Great Cat Spirit##98393 |goto Darnassus 35.37,8.4
 step
   note Close off the Fuel Control Valve, the Regulator Valve and the Main Control Valve then use the control console again.
   collect Main Control Valve##4072 |q 900 |goto The Barrens 52.33,11.56
@@ -244,36 +296,71 @@ step
   note Ebru in the Wailing Caverns wants you to kill 7 Deviate Ravagers, 7 Deviate Vipers, 7 Deviate Shamblers and 7 Deviate Dreadfangs.
   kill Deviate Ravager##3636 |q 1487 |goto Wailing Caverns - Dungeon -1,-1 |elite
 step
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  turnin Elune's Grace##5673 |goto Darnassus 39.52,81.2 |tip {turninat}Darnassus
+step
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  turnin Elune's Grace##5674 |goto Darnassus 39.52,81.2 |tip {turninat}Darnassus
+step
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  turnin Elune's Grace##5675 |goto Darnassus 39.52,81.2 |tip {turninat}Darnassus
+step
+  only Warlock
+  talk Gakin the Darkbinder##6122
+  turnin Gakin's Summons##1717 |goto Stormwind City 39.22,85.23 |tip {turninat}Stormwind City
+step
   only Warlock
   talk Gakin the Darkbinder##6122
   turnin Heartswood##1738 |goto Stormwind City 39.22,85.23 |tip {turninat}Stormwind City
 step
-  talk Grand Mason Marblesten##2790
-  accept A King's Tribute##689 |goto Ironforge 39.04,88.05
+  talk Chief Archaeologist Greywhisker##2912
+  accept The Absent Minded Prospector##942 |goto Darnassus 31.24,84.51
 step
-  note Grand Mason Marblesten of Ironforge wants 5 pieces of Alterac Granite.
-  collect Alterac Granite##4521 |q 689 |goto Hillsbrad Foothills 43.85,30.19
+  talk Collin Mauren##4078
+  accept Devils in Westfall##1076 |goto Stormwind City 53.02,86.64
+step
+  note Bring Dust Devil Debris to Collin Mauren in Stormwind.
+  collect Dust Devil Debris##5669 |q 1076 |goto Westfall 42.75,49.32 |tip {dropsfrom}Dust Devil
+step
+  only Warrior
+  talk Kelv Sternhammer##5113
+  accept Yorus Barleybrew##1698 |goto Ironforge 70.34,90.65
 step
   only Warlock
-  talk Demisette Cloyce##461
-  accept In Search of Menara Voidrender##4738 |goto Stormwind City 39.24,84.96
+  talk Gakin the Darkbinder##6122
+  accept The Binding##1739 |goto Stormwind City 39.22,85.23
+step
+  only Warlock
+  note Using the Heartswood Core, summon and subdue a succubus, then return the Heartswood Core to Gakin the Darkbinder in the Slaughtered Lamb.
+  use Summoned Succubus##5677 |q 1739 |tip {useit}
+step
+  only Dwarf Priest
+  talk Priestess Alathea##11401
+  accept A Lack of Fear##5647 |goto Darnassus 39.52,81.2
+step
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  accept Elune's Grace##5672 |goto Darnassus 39.52,81.2
+step
+  only Human Priest
+  talk Priestess Alathea##11401
+  accept Arcane Feedback##5678 |goto Darnassus 39.52,81.2
 step
   talk Myriam Moonsinger##12866
   accept A Host of Evil##6626 |goto The Barrens 49.01,94.94
+step
+  only Mage
+  talk Garion Wendell##211033
+  accept Research Access##97286 |goto Stormwind City 49.02,86.45
 step
   note Kill 8 Razorfen Battleguard, 8 Razorfen Thornweavers, and 8 Death's Head Cultists and return to Myriam Moonsinger near the entrance to Razorfen Downs.
   kill Razorfen Battleguard##7873 |q 6626 |goto The Barrens 47.48,90.1 |elite
 step
   talk Wharfmaster Dizzywig##3453
   turnin Miner's Fortune##896 |goto The Barrens 63.35,38.45
-step
-  only Warlock
-  talk Menara Voidrender##6266
-  turnin In Search of Menara Voidrender##4736 |goto The Barrens 62.51,35.45
-step
-  only Warlock
-  talk Menara Voidrender##6266
-  turnin In Search of Menara Voidrender##4738 |goto The Barrens 62.51,35.45
 step
   only Warlock
   talk Strahad Farsan##6251
@@ -283,10 +370,6 @@ step
   talk Menara Voidrender##6266
   turnin Components for the Enchanted Gold Bloodrobe##1796 |goto The Barrens 62.51,35.45
 step
-  only Warlock
-  talk Strahad Farsan##6251
-  turnin Summon Felsteed##4490 |goto The Barrens 62.63,35.5
-step
   talk Mebok Mizzyrix##3446
   turnin Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
 step
@@ -294,14 +377,15 @@ step
   talk Menara Voidrender##6266
   turnin Components for the Enchanted Gold Bloodrobe##4783 |goto The Barrens 62.51,35.45
 step
-  talk Tyrion##7766
-  turnin Infiltrating the Castle##2745 |goto Stormwind City 73.23,35.58 |tip {turninat}Stormwind City
-step
   talk Crane Operator Bigglefuzz##3665
   turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61
 step
   talk Mebok Mizzyrix##3446
   turnin Blueleaf Tubers##1221 |goto The Barrens 62.37,37.62
+step
+  only Druid
+  talk Dendrite Starblaze##11802
+  turnin The Great Cat Spirit##98393 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
 step
   talk Mebok Mizzyrix##3446
   turnin Raptor Horns##865 |goto The Barrens 62.37,37.62
@@ -320,6 +404,9 @@ step
   talk Gazlowe##3391
   turnin Southsea Freebooters##887 |goto The Barrens 62.68,36.23
 step
+  talk Shoni the Shilent##6579
+  turnin Underground Assault##2040 |goto Stormwind City 62.63,34.11 |tip {turninat}Stormwind City
+step
   talk Gazlowe##3391
   turnin WANTED: Baron Longshore##895 |goto The Barrens 62.68,36.23
 step
@@ -332,12 +419,6 @@ step
   note Bring 6 portions of Wailing Essence to Mebok Mizzyrix in Ratchet.
   kill Devouring Ectoplasm##3638 |goto The Barrens 47.91,33.38 |elite
   collect 6 Wailing Essence##6464 |q 1491 |goto The Barrens 47.91,33.38
-step
-  talk Tyrion##7766
-  accept Items of Some Consequence##2746 |goto Stormwind City 73.23,35.58
-step
-  note Bring 3 Silk Cloth and 2 of Clara's Fresh Apples to Tyrion in Stormwind.
-  collect 3 Silk Cloth##4306 |q 2746 |goto Hillsbrad Foothills 43.85,30.19 |tip {dropsfrom}Alterac Granite, Battered Chest, Solid Chest
 step
   only Warlock
   talk Menara Voidrender##6266
@@ -355,26 +436,64 @@ step
   note Bring some Fine Gold Thread, 2 Smoldering Coals, and a Soul Shard to Menara Voidrender in the Barrens.
   collect Fine Gold Thread##12293 |q 4784 |goto Stranglethorn Vale 28.71,76.89 |tip {dropsfrom}Xizk Goodstitch
 step
-  talk Master Mathias Shaw##332
-  turnin The Head of the Beast##394 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
+  talk Wilder Thistlenettle##656
+  turnin Oh Brother. . .##167 |goto Stormwind City 70.31,40.82 |tip {turninat}Stormwind City
+step
+  only Rogue
+  talk Doc Mixilpixil##7207
+  turnin The Touch of Zanzil##2607 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
+step
+  talk Lomac Gearstrip##4081
+  turnin Ineptitude + Chemicals = Fun##1073 |goto Ironforge 72.08,51.88 |tip {turninat}Ironforge
+step
+  only Rogue
+  talk Doc Mixilpixil##7207
+  turnin The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
 step
   only Warrior
   talk Klannoc Macleod##6236
   turnin The Affray##1719 |goto The Barrens 68.62,49.16
 step
-  talk Dashel Stonefist##4961
-  turnin The Missing Diplomat##1246 |goto Stormwind City 74.26,59.17 |tip {turninat}Stormwind City
+  only Rogue
+  talk Agent Kearnen##7024
+  turnin Mathias and the Defias##2360 |goto Westfall 68.49,70.08 |tip {turninat}Westfall
 step
-  talk Master Mathias Shaw##332
-  accept Brotherhood's End##395 |goto Stormwind City 78.31,70.74
+  talk Lomac Gearstrip##4081
+  accept Ineptitude + Chemicals = Fun##1074 |goto Ironforge 72.08,51.88
 step
   only Warrior
   talk Klannoc Macleod##6236
   accept The Windwatcher##1791 |goto The Barrens 68.62,49.16
 step
+  talk Archaeologist Flagongut##2911
+  turnin The Absent Minded Prospector##942 |goto Wetlands 10.84,60.43 |tip {turninat}Wetlands
+step
+  talk Gaxim Rustfizzle##4077
+  turnin Ineptitude + Chemicals = Fun##1074 |goto Stonetalon Mountains 59.52,67.15 |tip {turninat}Stonetalon Mountains
+step
   only Warlock
   talk Doan Karhan##6247
   turnin The Orb of Soran'ruk##1740 |goto The Barrens 49.31,57.21
+step
+  only Shaman
+  talk Norric Lochthane##258043
+  turnin Call of Water##94494 |goto Loch Modan 41.89,19.03 |tip {turninat}Loch Modan
+step
+  only Warrior
+  talk Yorus Barleybrew##6166
+  turnin Yorus Barleybrew##1698 |goto Redridge Mountains 21.49,44.72 |tip {turninat}Redridge Mountains
+step
+  only Human Priest
+  talk High Priestess Laurena##376
+  turnin Arcane Feedback##5676 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
+step
+  only Human Priest
+  talk High Priestess Laurena##376
+  turnin Arcane Feedback##5677 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
+step
+  only Human Priest
+  talk High Priestess Laurena##376
+  turnin Arcane Feedback##5678 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
 step
   talk Nalpak##5767
   turnin Deviate Hides##1486 |goto The Barrens 45.99,35.66
@@ -383,6 +502,14 @@ step
   turnin Deviate Eradication##1487 |goto The Barrens 46.01,35.74
 step
   turnin Samophlange##900 |goto The Barrens 52.4,11.65
+step
+  only Dwarf Priest
+  talk High Priest Rohan##11406
+  turnin A Lack of Fear##5641 |goto Ironforge 24.73,8.16 |tip {turninat}Ironforge
+step
+  only Dwarf Priest
+  talk High Priest Rohan##11406
+  turnin A Lack of Fear##5647 |goto Ironforge 24.73,8.16 |tip {turninat}Ironforge
 step
   talk Wizzlecrank's Shredder##3439
   turnin Ignition##858 |goto The Barrens 56.52,7.45
@@ -393,25 +520,34 @@ step
   note Get the Console Key from Tinkerer Sniggles to use on the control console.
   collect Console Key##5089 |q 901 |goto The Barrens 52.84,10.39 |tip {dropsfrom}Tinkerer Sniggles
 step
+  only Mage
+  talk Garion Wendell##211033
+  turnin Research Access##97286 |goto Stormwind City 49.02,86.45 |tip {turninat}Stormwind City
+step
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  turnin Elune's Grace##5672 |goto Darnassus 39.52,81.2 |tip {turninat}Darnassus
+step
   only Warlock
   talk Xizk Goodstitch##2670
   turnin Components for the Enchanted Gold Bloodrobe##4781 |goto Stranglethorn Vale 28.71,76.89 |tip {turninat}Stranglethorn Vale
 step
-  talk Grand Mason Marblesten##2790
-  turnin A King's Tribute##689 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge
+  talk Collin Mauren##4078
+  turnin Devils in Westfall##1076 |goto Stormwind City 53.02,86.64 |tip {turninat}Stormwind City
+step
+  only Warlock
+  talk Gakin the Darkbinder##6122
+  turnin The Binding##1739 |goto Stormwind City 39.22,85.23 |tip {turninat}Stormwind City
 step
   talk Myriam Moonsinger##12866
   turnin A Host of Evil##6626 |goto The Barrens 49.01,94.94
 step
-  talk Grand Mason Marblesten##2790
-  accept A King's Tribute##700 |goto Ironforge 39.04,88.05
+  talk Collin Mauren##4078
+  accept Special Delivery for Gaxim##1077 |goto Stormwind City 53.02,86.64
 step
   only Warlock
   talk Menara Voidrender##6266
   turnin Components for the Enchanted Gold Bloodrobe##4784 |goto The Barrens 62.51,35.45
-step
-  talk Tyrion##7766
-  turnin Items of Some Consequence##2746 |goto Stormwind City 73.23,35.58 |tip {turninat}Stormwind City
 step
   talk Mebok Mizzyrix##3446
   turnin Smart Drinks##1491 |goto The Barrens 62.37,37.62
@@ -430,18 +566,12 @@ step
   note Wait for Menara Voidrender to complete your robe and then speak to her again.
   kill Menara Voidrender##6266 |q 4786 |goto The Barrens 62.51,35.45
 step
-  talk Baros Alexston##1646
-  turnin Brotherhood's End##395 |goto Stormwind City 57.74,47.86 |tip {turninat}Stormwind City
-step
   only Warrior
   talk Bath'rah the Windwatcher##6176
   turnin The Windwatcher##1791 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
 step
-  talk Baros Alexston##1646
-  accept An Audience with the King##396 |goto Stormwind City 57.74,47.86
-step
-  talk King Magni Bronzebeard##2784
-  turnin A King's Tribute##700 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
+  talk Gaxim Rustfizzle##4077
+  turnin Special Delivery for Gaxim##1077 |goto Stonetalon Mountains 59.52,67.15 |tip {turninat}Stonetalon Mountains
 step
   turnin Samophlange##901 |goto The Barrens 52.4,11.65
 step
@@ -464,12 +594,9 @@ step
   note Retrieve the Shipment of Boots and Telescopic Lens for Gazlowe in Ratchet.
   collect Shipment of Boots##5076 |q 888 |goto The Barrens 62.63,49.63 |tip {dropsfrom}Drizzlik's Emporium
 step
-  talk Lady Katrana Prestor##1749
-  turnin An Audience with the King##396 |goto Stormwind City 80.1,38.17 |tip {turninat}Stormwind City
-step
   talk Gazlowe##3391
   turnin Stolen Booty##888 |goto The Barrens 62.68,36.23
 step
-  note {travel}Duskwood
-  goto Duskwood 71.93,46.42
+  note {travel}Stonetalon Mountains
+  goto Stonetalon Mountains 59.52,67.15
 ]])

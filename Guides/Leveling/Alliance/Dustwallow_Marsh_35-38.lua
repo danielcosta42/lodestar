@@ -1,17 +1,14 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Dustwallow Marsh (35-40)", {
+ns:RegisterGuide("Leveling/Alliance/Dustwallow Marsh (35-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Arathi Highlands (36-40)",
+	next = "Leveling/Alliance/Desolace (33-42)",
 }, [[
 step
   note {fp}Michael
   goto Dustwallow Marsh 66.01,45.5 |tip {vendor}
-step
-  talk Milton Sheaf##1440
-  accept Southshore##538 |goto Stormwind City 77.07,30.21
 step
   talk Fiora Longears##4456
   accept Journey to Astranaar##1133 |goto Dustwallow Marsh 66.46,45.15
@@ -41,11 +38,17 @@ step
   kill Shadowshard Rumbler##11777 |goto Desolace 27.99,57.01 |elite
   collect 10 Shadowshard Fragment##17756 |q 7070 |goto Desolace 27.99,57.01
 step
-  talk Loremaster Dibbs##2277
-  turnin Southshore##538 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
+  only Mage
+  talk Tabetha##6546
+  accept Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
-  talk Angus Stern##1141
-  accept Morgan Stern##1260 |goto Stormwind City 51.79,93.64
+  only Mage
+  note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
+  collect 1 Jade##1529 |q 1948 |goto Arathi Highlands 50.28,64.63 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
+step
+  only Mage
+  talk Tabetha##6546
+  accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
 step
   only Mage
   talk Tabetha##6546
@@ -77,19 +80,9 @@ step
   note Mudcrush Durtfeet in northern Dustwallow wants 12 Mirefin Heads.
   collect Mirefin Head##5847 |q 1177 |goto Dustwallow Marsh 59.89,9.48 |tip {dropsfrom}Mirefin Oracle, Mirefin Coastrunner, Mirefin Warrior
 step
-  only Mage
-  talk Ursyn Ghull##3048
-  accept Journey to the Marsh##1947 |goto Thunder Bluff 25.7,14.19
-step
   only Warlock
   talk Menara Voidrender##6266
   turnin Returning the Cleansed Orb##4976 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
-step
-  talk Librarian Mae Paledust##3979
-  accept Mythology of the Titans##1050 |goto Ironforge 74.97,12.48
-step
-  note Retrieve Mythology of the Titans from the Monastery and bring it to Librarian Mae Paledust in Ironforge.
-  collect Mythology of the Titans##5536 |q 1050 |goto Scarlet Monastery - Dungeon -1,-1
 step
   talk "Swamp Eye" Jarl##4792
   accept Soothing Spices##1218 |goto Dustwallow Marsh 55.44,26.27
@@ -106,9 +99,6 @@ step
   talk Theramore Lieutenant##4947
   turnin The Orc Report##1219 |goto Dustwallow Marsh 67.2,48
 step
-  talk Morgan Stern##4794
-  turnin Morgan Stern##1260 |goto Dustwallow Marsh 66.34,45.47
-step
   talk Fiora Longears##4456
   turnin Highperch Venom##1135 |goto Dustwallow Marsh 66.46,45.15
 step
@@ -119,6 +109,10 @@ step
 step
   talk Morgan Stern##4794
   turnin Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
+step
+  only Mage
+  talk Magus Tirth##6548
+  turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
 step
   talk Archmage Tervosh##4967
   turnin Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
@@ -144,19 +138,7 @@ step
 step
   only Mage
   talk Tabetha##6546
-  turnin Journey to the Marsh##1947 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Tabetha##6546
-  accept Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
-  collect 1 Jade##1529 |q 1948 |goto Arathi Highlands 50.28,64.63 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
-step
-  only Mage
-  talk Tabetha##6546
-  accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
+  turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
   only Mage
   talk Tabetha##6546
@@ -190,9 +172,6 @@ step
   talk "Swamp Eye" Jarl##4792
   turnin Soothing Spices##1218 |goto Dustwallow Marsh 55.44,26.27
 step
-  talk Librarian Mae Paledust##3979
-  turnin Mythology of the Titans##1050 |goto Ironforge 74.97,12.48 |tip {turninat}Ironforge
-step
   talk "Swamp Eye" Jarl##4792
   accept Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
 step
@@ -204,10 +183,6 @@ step
 step
   talk Captain Garran Vimes##4944
   turnin Suspicious Hoofprints##1284 |goto Dustwallow Marsh 68.21,48.62
-step
-  only Mage
-  talk Magus Tirth##6548
-  turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
 step
   talk Captain Garran Vimes##4944
   turnin Lieutenant Paval Reethe##1252 |goto Dustwallow Marsh 68.21,48.62
@@ -229,10 +204,6 @@ step
 step
   talk Captain Garran Vimes##4944
   accept The Black Shield##1319 |goto Dustwallow Marsh 68.21,48.62
-step
-  only Mage
-  talk Tabetha##6546
-  turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
   only Mage
   talk Tabetha##6546
@@ -314,4 +285,7 @@ step
   only Mage
   talk Tabetha##6546
   turnin Celestial Power##1958 |goto Dustwallow Marsh 46.06,57.09
+step
+  note {travel}Desolace
+  goto Desolace 66.74,10.87
 ]])

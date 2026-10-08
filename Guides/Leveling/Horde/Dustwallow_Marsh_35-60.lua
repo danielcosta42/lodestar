@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-45)", {
+ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Badlands (38-58)",
+	next = "Leveling/Horde/Stranglethorn Vale (35-47)",
 }, [[
 step
   talk Overlord Mok'Morokk##4500
@@ -282,6 +282,6 @@ step
   talk Tabetha##6546
   turnin Celestial Power##1958 |goto Dustwallow Marsh 46.06,57.09
 step
-  note {travel}Badlands
-  goto Badlands 42.39,52.93
+  note {travel}Stranglethorn Vale
+  goto Stranglethorn Vale 35.66,10.53
 ]])

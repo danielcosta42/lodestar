@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Felwood (52-59)", {
+ns:RegisterGuide("Leveling/Horde/Felwood (52-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Western Plaguelands (55-60)",
+	next = "Leveling/Horde/Moonglade (20-60)",
 }, [[
 step
   talk Warcaller Gorlach##10880
@@ -398,6 +398,6 @@ step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
 step
-  note {travel}Western Plaguelands
-  goto Western Plaguelands 38.4,54.05
+  note {travel}Moonglade
+  goto Moonglade 56.21,30.64
 ]])

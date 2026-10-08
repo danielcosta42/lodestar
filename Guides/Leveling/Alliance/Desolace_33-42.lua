@@ -16,6 +16,12 @@ step
   talk Prospector Stormpike##1356
   accept Ironband Wants You!##707 |goto Ironforge 74.64,11.74
 step
+  talk Librarian Mae Paledust##3979
+  accept Mythology of the Titans##1050 |goto Ironforge 74.97,12.48
+step
+  note Retrieve Mythology of the Titans from the Monastery and bring it to Librarian Mae Paledust in Ironforge.
+  collect Mythology of the Titans##5536 |q 1050 |goto Scarlet Monastery - Dungeon -1,-1
+step
   talk Captain Pentigast##5396
   accept Strange Alliance##1382 |goto Desolace 66.66,10.93
 step
@@ -51,6 +57,9 @@ step
   click Malem Chest##50961
   accept Vahlarriel's Search##1465 |goto Desolace 56.52,17.84
 step
+  talk Milton Sheaf##1440
+  accept Southshore##538 |goto Stormwind City 77.07,30.21
+step
   talk Bibbly F'utzbuckle##11438
   accept Bone Collector##5501 |goto Desolace 62.33,38.99
 step
@@ -68,6 +77,9 @@ step
 step
   talk Smeed Scrabblescrew##11596
   accept Kodo Roundup##5561 |goto Desolace 60.86,61.86
+step
+  talk Loremaster Dibbs##2277
+  turnin Southshore##538 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
 step
   talk Hornizz Brimbuzzle##6019
   accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
@@ -89,6 +101,9 @@ step
 step
   note Maintain your reputation with the Gelkis, and bring 10 Crude Charms to Uthek the Wise in the Gelkis Village in Desolace.
   collect 10 Crude Charm##6079 |q 1384 |goto Desolace 69.23,46.87 |tip {dropsfrom}Kolkar Centaur, Kolkar Scout, Kolkar Mauler
+step
+  talk Angus Stern##1141
+  accept Morgan Stern##1260 |goto Stormwind City 51.79,93.64
 step
   talk Angus Stern##1141
   accept Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64
@@ -116,6 +131,10 @@ step
   click Karnitol's Chest##35251
   accept The Karnitol Shipwreck##1455 |goto Desolace 36.11,30.45
 step
+  only Mage
+  talk Bink##5144
+  accept Journey to the Marsh##1947 |goto Ironforge 27.25,8.3
+step
   talk Azore Aldamort##11863
   accept Sceptre of Light##5741 |goto Desolace 38.88,27.16
 step
@@ -142,6 +161,9 @@ step
 step
   talk Keeper Marandis##13698
   turnin Corruption of Earth and Seed##7065 |goto Desolace 63.83,10.67
+step
+  talk Librarian Mae Paledust##3979
+  turnin Mythology of the Titans##1050 |goto Ironforge 74.97,12.48 |tip {turninat}Ironforge
 step
   talk Kreldig Ungor##5638
   turnin The Karnitol Shipwreck##1455 |goto Desolace 66.2,9.63
@@ -182,6 +204,9 @@ step
   note Find Tyranis Malem in Desolace.
   collect Tyranis' Pendant##6767 |q 1439 |goto Desolace 53.01,29.08 |tip {dropsfrom}Tyranis Malem, Corrupt Tyranis Malem
 step
+  talk Morgan Stern##4794
+  turnin Morgan Stern##1260 |goto Dustwallow Marsh 66.34,45.47 |tip {turninat}Dustwallow Marsh
+step
   talk Willow##13656
   turnin Twisted Evils##7028 |goto Desolace 62.2,39.63
 step
@@ -193,6 +218,10 @@ step
 step
   talk Smeed Scrabblescrew##11596
   turnin Kodo Roundup##5561 |goto Desolace 60.86,61.86
+step
+  only Mage
+  talk Tabetha##6546
+  turnin Journey to the Marsh##1947 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
 step
   talk Raleigh the Devout##3980
   turnin Down the Scarlet Path##1052 |goto Hillsbrad Foothills 51.47,58.35 |tip {turninat}Hillsbrad Foothills

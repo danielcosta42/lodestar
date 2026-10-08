@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/The Hinterlands (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Blasted Lands (47-60)",
+	next = "Leveling/Alliance/Blasted Lands (47-55)",
 }, [[
 step
   note {fp}Killium Bouldertoe

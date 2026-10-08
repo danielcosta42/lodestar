@@ -116,6 +116,10 @@ step
   talk Pilot Longbeard##2092
   accept The Brassbolts Brothers##1179 |goto Ironforge 72.73,94.01
 step
+  only Warrior
+  talk Kelv Sternhammer##5113
+  accept The Islander##1718 |goto Ironforge 70.34,90.65
+step
   note Commander Althea Ebonlocke of Darkshire wants you to kill 8 Skeletal Warriors and 6 Skeletal Mages.
   kill Skeletal Warrior##48 |q 56 |goto Duskwood 79.75,70.25
 step
@@ -145,10 +149,6 @@ step
 step
   talk Thomas##4982
   accept The Missing Diplomat##1274 |goto Stormwind City 49.64,44.48
-step
-  only Warrior
-  talk Torm Ragetotem##3041
-  accept The Islander##1718 |goto Thunder Bluff 57.24,87.37
 step
   only Mage
   talk High Sorcerer Andromath##5694

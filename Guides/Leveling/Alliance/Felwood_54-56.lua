@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Felwood (52-58)", {
+ns:RegisterGuide("Leveling/Alliance/Felwood (54-56)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Swamp of Sorrows (52-60)",
+	next = "Leveling/Alliance/Moonglade (20-60)",
 }, [[
 step
   talk Eridan Bluewind##9116
@@ -371,6 +371,6 @@ step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
 step
-  note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 25.98,31.4
+  note {travel}Moonglade
+  goto Moonglade 56.21,30.64
 ]])

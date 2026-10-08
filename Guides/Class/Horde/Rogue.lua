@@ -56,8 +56,8 @@ step
   accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
 step
   only Rogue
-  talk Osborne the Night Man##918
-  accept A Simple Request##8233 |goto Stormwind City 77.43,65.31
+  talk Ormok##3328
+  accept A Simple Request##8233 |goto Orgrimmar 43.9,54.63
 step
   only Rogue
   talk Lord Jorach Ravenholdt##6768
@@ -924,7 +924,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

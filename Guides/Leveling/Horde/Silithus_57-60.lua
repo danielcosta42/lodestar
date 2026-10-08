@@ -1,8 +1,8 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Silithus (60-60)", {
-	faction = "Alliance",
+ns:RegisterGuide("Leveling/Horde/Silithus (57-60)", {
+	faction = "Horde",
 	author = "Lodestar Generator",
 }, [[
 step
@@ -109,6 +109,14 @@ step
   note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
   collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
+  only Shaman
+  talk Keyl Swiftclaw##15500
+  accept Cloak of the Gathering Storm##8690 |goto Silithus 51.76,39.54
+step
+  only Shaman
+  note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Clay Scarabs and 5 Gold Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Regal Drape##20889 |q 8690 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
   only Mage
   talk Keyl Swiftclaw##15500
   accept Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
@@ -141,14 +149,6 @@ step
   note Bring 1 Qiraji Regal Drape, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
   collect 1 Qiraji Regal Drape##20889 |q 8694 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
-  only Paladin
-  talk Keyl Swiftclaw##15500
-  accept Cape of Eternal Justice##8695 |goto Silithus 51.76,39.54
-step
-  only Paladin
-  note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8695 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
   only Hunter
   talk Keyl Swiftclaw##15500
   accept Cloak of the Unseen Path##8696 |goto Silithus 51.76,39.54
@@ -164,6 +164,14 @@ step
   only Priest
   note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
   collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Shaman
+  talk Windcaller Yessendra##15498
+  accept Ring of the Gathering Storm##8698 |goto Silithus 52.05,38.16
+step
+  only Shaman
+  note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Magisterial Ring##20884 |q 8698 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Mage
   talk Windcaller Yessendra##15498
@@ -197,14 +205,6 @@ step
   note Bring 1 Qiraji Ceremonial Ring, 2 Jasper Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
   collect 1 Qiraji Ceremonial Ring##20888 |q 8702 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
-  only Paladin
-  talk Windcaller Yessendra##15498
-  accept Ring of Eternal Justice##8703 |goto Silithus 52.05,38.16
-step
-  only Paladin
-  note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8703 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
   only Hunter
   talk Windcaller Yessendra##15498
   accept Signet of the Unseen Path##8704 |goto Silithus 52.05,38.16
@@ -220,6 +220,14 @@ step
   only Priest
   note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
   collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Shaman
+  talk Warden Haro##15499
+  accept Hammer of the Gathering Storm##8706 |goto Silithus 51.14,38.94
+step
+  only Shaman
+  note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Spiked Hilt##20886 |q 8706 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Mage
   talk Warden Haro##15499
@@ -252,14 +260,6 @@ step
   only Warlock
   note Bring 1 Qiraji Ornate Hilt, 2 Onyx Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
   collect 1 Qiraji Ornate Hilt##20890 |q 8710 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Paladin
-  talk Warden Haro##15499
-  accept Blade of Eternal Justice##8711 |goto Silithus 51.14,38.94
-step
-  only Paladin
-  note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8711 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Hunter
   talk Warden Haro##15499
@@ -294,8 +294,11 @@ step
   kill Prince Skaldrenox##15203 |goto Silithus 25.56,45.08 |raid
   collect Abyssal Scepter##20515 |q 9248 |goto Silithus 25.56,45.08
 step
-  talk Rifleman Torrig##17082
-  accept Report to Marshal Bluewall##9415 |goto Silithus 50.68,34.71
+  talk Scout Bloodfist##17081
+  accept Report to General Kirika##9416 |goto Silithus 48.95,36.69
+step
+  note Kill 10 Twilight Geolords, then return to Huum Wildmane in Cenarion Hold.
+  kill Twilight Geolord##11881 |q 8320 |goto Silithus 26.97,43.89
 step
   note Windcaller Proudhorn at Cenarion Hold in Silithus wants you to kill 15 Dredge Strikers.
   kill Dredge Striker##11740 |q 8280 |goto Silithus 56.37,29.6
@@ -303,17 +306,20 @@ step
   note Venture to the Caverns of Time in Tanaris and find Anachronos, Brood of Nozdormu.
   kill Anachronos##15192 |q 8286 |goto Tanaris 65.27,50.03 |raid
 step
-  talk Marshal Bluewall##17080
-  turnin Report to Marshal Bluewall##9415 |goto Silithus 33.29,51.06
+  talk General Kirika##17079
+  turnin Report to General Kirika##9416 |goto Silithus 50.75,69.54
 step
-  talk Marshal Bluewall##17080
-  accept Scouring the Desert##9419 |goto Silithus 33.29,51.06
+  talk General Kirika##17079
+  accept Scouring the Desert##9422 |goto Silithus 50.75,69.54
 step
-  note Kill 10 Twilight Geolords, then return to Huum Wildmane in Cenarion Hold.
-  kill Twilight Geolord##11881 |q 8320 |goto Silithus 26.97,43.89
+  note Find and deliver Silithyst to the Silithyst Extractor then speak with General Kirika at the Horde encampment near Hive'Regal.
+  kill Silithus Dust Turnin Quest Doodad Horde##18199 |q 9422 |goto Silithus 50.93,69.33
 step
-  note Find and deliver Silithyst to the Silithyst Extractor, then speak with Marshal Bluewall at the Alliance encampment near Hive'Zora.
-  kill Silithus Dust Turnin Quest Doodad##17090 |q 9419 |goto Silithus 32.95,50.81
+  talk Lord Maxwell Tyrosus##11034
+  turnin Secrets of the Colossus - Zora##8859 |goto Eastern Plaguelands 71.9,48.41 |tip {turninat}Eastern Plaguelands
+step
+  note Free the spirits of 8 Tortured Druids and 8 Tortured Sentinels in Southwind Village, and then return to Layo Starstrike at the Valor's Rest graveyard of Silithus.
+  kill Tortured Druid##12178 |q 1125 |goto Silithus 62.65,52.76
 step
   talk Rutgar Glyphshaper##15170
   turnin Brann Bronzebeard's Lost Letter##8308 |goto Silithus 41.28,88.45
@@ -331,12 +337,6 @@ step
 step
   talk Jonathan the Revelator##15693
   accept Treasure of the Timeless One##8745 |goto Silithus 25.94,90.96
-step
-  talk Lord Maxwell Tyrosus##11034
-  turnin Secrets of the Colossus - Zora##8859 |goto Eastern Plaguelands 71.9,48.41 |tip {turninat}Eastern Plaguelands
-step
-  note Free the spirits of 8 Tortured Druids and 8 Tortured Sentinels in Southwind Village, and then return to Layo Starstrike at the Valor's Rest graveyard of Silithus.
-  kill Tortured Druid##12178 |q 1125 |goto Silithus 62.65,52.76
 step
   talk Layo Starstrike##13220
   turnin The Spirits of Southwind##1125 |goto Silithus 81.87,18.93
@@ -358,6 +358,10 @@ step
   talk Warden Haro##15499
   turnin Gavel of Infinite Wisdom##8705 |goto Silithus 51.14,38.94
 step
+  only Shaman
+  talk Warden Haro##15499
+  turnin Hammer of the Gathering Storm##8706 |goto Silithus 51.14,38.94
+step
   only Mage
   talk Warden Haro##15499
   turnin Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
@@ -366,21 +370,17 @@ step
   talk Warden Haro##15499
   turnin Mace of Unending Life##8708 |goto Silithus 51.14,38.94
 step
+  only Warlock
+  talk Windcaller Yessendra##15498
+  turnin Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
+step
   only Rogue
   talk Warden Haro##15499
   turnin Dagger of Veiled Shadows##8709 |goto Silithus 51.14,38.94
 step
   only Warlock
-  talk Windcaller Yessendra##15498
-  turnin Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
-step
-  only Warlock
   talk Warden Haro##15499
   turnin Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
-step
-  only Paladin
-  talk Warden Haro##15499
-  turnin Blade of Eternal Justice##8711 |goto Silithus 51.14,38.94
 step
   only Hunter
   talk Warden Haro##15499
@@ -428,10 +428,6 @@ step
   talk Vargus##15176
   turnin Cenarion Battlegear##8800 |goto Silithus 51.23,38.86
 step
-  only Paladin
-  talk Keyl Swiftclaw##15500
-  turnin Cape of Eternal Justice##8695 |goto Silithus 51.76,39.54
-step
   only Warrior
   talk Windcaller Yessendra##15498
   turnin Signet of Unyielding Strength##8556 |goto Silithus 52.05,38.16
@@ -450,6 +446,10 @@ step
   only Priest
   talk Keyl Swiftclaw##15500
   turnin Shroud of Infinite Wisdom##8689 |goto Silithus 51.76,39.54
+step
+  only Shaman
+  talk Keyl Swiftclaw##15500
+  turnin Cloak of the Gathering Storm##8690 |goto Silithus 51.76,39.54
 step
   only Mage
   talk Keyl Swiftclaw##15500
@@ -475,6 +475,10 @@ step
   talk Windcaller Yessendra##15498
   turnin Ring of Infinite Wisdom##8697 |goto Silithus 52.05,38.16
 step
+  only Shaman
+  talk Windcaller Yessendra##15498
+  turnin Ring of the Gathering Storm##8698 |goto Silithus 52.05,38.16
+step
   only Mage
   talk Windcaller Yessendra##15498
   turnin Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
@@ -489,10 +493,6 @@ step
 step
   talk Bor Wildmane##15306
   turnin Secret Communication##8318 |goto Silithus 48.57,37.78
-step
-  only Paladin
-  talk Windcaller Yessendra##15498
-  turnin Ring of Eternal Justice##8703 |goto Silithus 52.05,38.16
 step
   talk Beetix Ficklespragg##15189
   accept Noggle's Last Hope##8278 |goto Silithus 51.61,38.63
@@ -541,11 +541,20 @@ step
   kill Prince Skaldrenox##15203 |goto Silithus 25.56,45.08 |raid
   collect Abyssal Scepter##20515 |q 8352 |goto Silithus 25.56,45.08
 step
-  talk Marshal Bluewall##17080
-  turnin Scouring the Desert##9419 |goto Silithus 33.29,51.06
-step
   note Windcaller Proudhorn at Cenarion Hold in Silithus wants you to slay 20 Dredge Crushers.
   kill Dredge Crusher##11741 |q 8281 |goto Silithus 37.84,53.47
+step
+  talk General Kirika##17079
+  turnin Scouring the Desert##9422 |goto Silithus 50.75,69.54
+step
+  talk Hermit Ortell##15194
+  turnin The Deserter##8285 |goto Silithus 67.19,69.76
+step
+  talk Hermit Ortell##15194
+  accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
+step
+  note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
+  collect Twilight Lexicon - Chapter 1##20394 |q 8279 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
 step
   talk Rutgar Glyphshaper##15170
   accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
@@ -567,15 +576,6 @@ step
 step
   talk Jonathan the Revelator##15693
   turnin Treasure of the Timeless One##8745 |goto Silithus 25.94,90.96
-step
-  talk Hermit Ortell##15194
-  turnin The Deserter##8285 |goto Silithus 67.19,69.76
-step
-  talk Hermit Ortell##15194
-  accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
-step
-  note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
-  collect Twilight Lexicon - Chapter 1##20394 |q 8279 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
 step
   talk Layo Starstrike##13220
   turnin Hive in the Tower##1126 |goto Silithus 81.87,18.93
@@ -626,15 +626,6 @@ step
   kill Hive'Ashi Stinger##11698 |goto Silithus 48.5,41.14 |elite
   collect 200 Silithid Carapace Fragment##20384 |q 8301 |goto Silithus 48.5,41.14
 step
-  talk Frankal Stonebridge##15171
-  turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
-step
-  talk Rutgar Glyphshaper##15170
-  turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
-step
-  talk Rutgar Glyphshaper##15170
-  accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
-step
   talk Hermit Ortell##15194
   turnin The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
 step
@@ -647,17 +638,26 @@ step
   note Hermit Ortell wants you to bring him 10 Encrypted Twilight Texts
   collect Encrypted Twilight Text##20404 |q 8323 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth, Twilight Avenger, Twilight Geolord
 step
+  talk Frankal Stonebridge##15171
+  turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
+step
+  talk Rutgar Glyphshaper##15170
+  turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
+step
+  talk Rutgar Glyphshaper##15170
+  accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
+step
   talk Noggle Ficklespragg##15190
   turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
 step
   talk Commander Mar'alith##15181
   turnin A Terrible Purpose##8287 |goto Silithus 49.2,34.18
 step
-  talk Baristolth of the Shifting Sands##15180
-  turnin The Path of the Righteous##8301 |goto Silithus 49.45,36.45
-step
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
+step
+  talk Baristolth of the Shifting Sands##15180
+  turnin The Path of the Righteous##8301 |goto Silithus 49.45,36.45
 step
   talk Baristolth of the Shifting Sands##15180
   accept Anachronos##8303 |goto Silithus 49.45,36.45
@@ -682,10 +682,6 @@ step
   talk Geologist Larksbane##15183
   accept Armaments of War##8316 |goto Silithus 49.67,37.46
 step
-  only Paladin
-  talk Geologist Larksbane##15183
-  accept Armaments of War##8376 |goto Silithus 49.67,37.46
-step
   only Hunter
   talk Geologist Larksbane##15183
   accept Armaments of War##8377 |goto Silithus 49.67,37.46
@@ -698,16 +694,16 @@ step
   talk Geologist Larksbane##15183
   accept Armaments of War##8379 |goto Silithus 49.67,37.46
 step
+  only Shaman
+  talk Geologist Larksbane##15183
+  accept Armaments of War##8380 |goto Silithus 49.67,37.46
+step
   talk Geologist Larksbane##15183
   accept Armaments of War##8381 |goto Silithus 49.67,37.46
 step
   only Druid
   talk Geologist Larksbane##15183
   accept Armaments of War##8382 |goto Silithus 49.67,37.46
-step
-  only Paladin
-  talk Geologist Larksbane##15183
-  turnin Armaments of War##8376 |goto Silithus 49.67,37.46
 step
   only Hunter
   talk Geologist Larksbane##15183
@@ -720,6 +716,10 @@ step
   only Priest
   talk Geologist Larksbane##15183
   turnin Armaments of War##8379 |goto Silithus 49.67,37.46
+step
+  only Shaman
+  talk Geologist Larksbane##15183
+  turnin Armaments of War##8380 |goto Silithus 49.67,37.46
 step
   talk Geologist Larksbane##15183
   turnin Armaments of War##8381 |goto Silithus 49.67,37.46

@@ -71,10 +71,6 @@ step
   note Collect 8 Webbed Diemetradon Scales and 8 Webbed Pterrordax Scales for Shizzle in Marshal's Refuge.
   collect 8 Webbed Diemetradon Scale##11830 |q 4503 |goto Un'Goro Crater 66.12,33.9 |tip {dropsfrom}Young Diemetradon, Diemetradon, Elder Diemetradon
 step
-  only Priest
-  talk Malakai Cross##3045
-  accept Cenarion Aid##8254 |goto Thunder Bluff 24.56,22.57
-step
   talk A-Me 01##9623
   turnin Chasing A-Me 01##4243 |goto Un'Goro Crater 67.66,16.76
 step
@@ -96,12 +92,12 @@ step
   talk Ringo##9999
   turnin Lost!##4492 |goto Un'Goro Crater 51.9,49.85
 step
-  only Priest
-  talk Ogtinc##8405
-  turnin Cenarion Aid##8254 |goto Azshara 42.4,42.62 |tip {turninat}Azshara
-step
   talk Royal Factor Bathrilor##10782
   accept Good Natured Emma##5048 |goto Stormwind City 57.17,48.07
+step
+  only Priest
+  talk Brother Joshua##5489
+  accept Cenarion Aid##8254 |goto Stormwind City 49.5,45.21
 step
   only Paladin
   talk Lord Grayson Shadowbreaker##928
@@ -217,6 +213,10 @@ step
 step
   talk Ol' Emma##3520
   turnin Good Natured Emma##5048 |goto Stormwind City 60.2,57.03 |tip {turninat}Stormwind City
+step
+  only Priest
+  talk Ogtinc##8405
+  turnin Cenarion Aid##8254 |goto Azshara 42.4,42.62 |tip {turninat}Azshara
 step
   only Warlock
   talk Impsy##14470

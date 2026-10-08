@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Dustwallow Marsh (35-45)",
+	next = "Leveling/Horde/Dustwallow Marsh (35-60)",
 }, [[
 step
   note {fp}Tharlidun
@@ -35,11 +35,39 @@ step
   talk Drum Fel##2771
   accept Call to Arms##677 |goto Arathi Highlands 74.24,33.92
 step
+  talk Keeper Bel'dugur##2934
+  accept Forbidden Knowledge##737 |goto Undercity 53.74,54.46
+step
+  only Mage
+  talk Ursyn Ghull##3048
+  accept Return to the Marsh##1953 |goto Thunder Bluff 25.7,14.19
+step
+  only Warlock
+  talk Zevrost##3326
+  accept Summon Felsteed##3631 |goto Orgrimmar 48.47,45.43
+step
+  only Warlock
+  talk Kaal Soulreaper##4563
+  accept Summon Felsteed##4489 |goto Undercity 86.21,15.93
+step
+  talk Zor Lonetree##4047
+  accept Service to the Horde##7541 |goto Orgrimmar 38.93,38.4
+step
   click Messenger Bag##406918
   accept This Must Be The Place##79976 |goto Arathi Highlands 22.48,24.23
 step
   note Slay 10 Witherbark Axe Throwers, 10 Headhunters and 8 Witch Doctors, and return to Drum Fel in the Hammerfall outpost.
   kill Witherbark Axe Thrower##2554 |q 677 |goto Arathi Highlands 65.56,67.06
+step
+  talk Theldurin the Lost##2785
+  turnin Forbidden Knowledge##737 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
+step
+  only Mage
+  talk Tabetha##6546
+  turnin Return to the Marsh##1953 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
+step
+  talk Sharlindra##2227
+  accept The Crown of Will##495 |goto Undercity 57.63,93.8
 step
   talk Lolo the Lookout##2766
   accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
@@ -51,11 +79,25 @@ step
 step
   turnin This Must Be The Place##79976 |goto Arathi Highlands 22.47,24.23
 step
+  only Warlock
+  talk Strahad Farsan##6251
+  turnin Summon Felsteed##4489 |goto The Barrens 62.63,35.5 |tip {turninat}The Barrens
+step
   talk Tor'gan##2706
   turnin Hammerfall##655 |goto Arathi Highlands 74.72,36.29
 step
   talk Zengu##2703
   turnin Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
+step
+  only Warlock
+  talk Strahad Farsan##6251
+  turnin Summon Felsteed##3631 |goto The Barrens 62.63,35.5 |tip {turninat}The Barrens
+step
+  talk Melisara##2278
+  turnin The Crown of Will##495 |goto Hillsbrad Foothills 62.63,20.65 |tip {turninat}Hillsbrad Foothills
+step
+  talk Zor Lonetree##4047
+  turnin Service to the Horde##7541 |goto Orgrimmar 38.93,38.4 |tip {turninat}Orgrimmar
 step
   talk Tor'gan##2706
   turnin Foul Magics##671 |goto Arathi Highlands 74.72,36.29
@@ -123,10 +165,10 @@ step
   turnin The Broken Sigil##640 |goto Arathi Highlands 74.72,36.29
 step
   talk Tor'gan##2706
-  turnin Raising Spirits##672 |goto Arathi Highlands 74.72,36.29
+  turnin Foul Magics##673 |goto Arathi Highlands 74.72,36.29
 step
   talk Tor'gan##2706
-  turnin Foul Magics##673 |goto Arathi Highlands 74.72,36.29
+  turnin Raising Spirits##672 |goto Arathi Highlands 74.72,36.29
 step
   talk Drum Fel##2771
   turnin Call to Arms##678 |goto Arathi Highlands 74.24,33.92
@@ -198,11 +240,11 @@ step
   talk Zaruk##2787
   accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
 step
-  talk Doctor Draxlegauge##2774
-  turnin Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
-step
   talk Theldurin the Lost##2785
   turnin Theldurin the Lost##687 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
+step
+  talk Doctor Draxlegauge##2774
+  turnin Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
 step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##668 |goto Arathi Highlands 33.86,80.45

@@ -19,11 +19,17 @@ step
   kill Gordunni Ogre##5229 |goto Feralas 75.15,29.76 |tip Loot the quest item here — it starts the quest.
   accept Find OOX-22/FE!##2766 |goto Feralas 75.15,29.76
 step
+  talk Klockmort Spannerspan##6169
+  accept The Brassbolts Brothers##2769 |goto Ironforge 67.92,46.1
+step
   talk Kindal Moonweaver##7956
   accept Freedom for All Creatures##2969 |goto Feralas 65.94,45.65
 step
   talk Homing Robot OOX-22/FE##7807
   turnin Find OOX-22/FE!##2766 |goto Feralas 53.35,55.7
+step
+  talk High Sorcerer Andromath##5694
+  accept Vital Supplies##1477 |goto Stormwind City 48.71,87.62
 step
   talk Zorbin Fandazzle##14637
   accept Zapped Giants##7003 |goto Feralas 44.81,43.42
@@ -77,6 +83,13 @@ step
   talk Ginro Hearthkindle##7880
   accept A Hero's Welcome##4266 |goto Feralas 31.86,45.13
 step
+  talk Historian Karnik##2916
+  accept An Ambassador of Evil##762 |goto Ironforge 77.54,11.82
+step
+  note Kill Ambassador Infernus in Angor Fortress and bring proof of his death to Advisor Belgrum in Ironforge.
+  kill Ambassador Infernus##2745 |goto Badlands 42.1,28.88 |elite
+  collect Ambassador Infernus' Bracer##4621 |q 762 |goto Badlands 42.1,28.88
+step
   talk High Explorer Magellas##5387
   accept The Platinum Discs##2439 |goto Ironforge 69.93,18.55
 step
@@ -100,6 +113,18 @@ step
 step
   turnin The Stave of Equinex##2879 |goto Feralas 38.83,13.17
 step
+  talk Gerrig Bonegrip##2786
+  accept The Star, the Hand and the Heart##735 |goto Ironforge 50.83,5.62
+step
+  note Return the items on the Bonegrip's Note to Gerrig Bonegrip in Ironforge.
+  collect Star of Xil'yeh##4646 |q 735 |goto Alterac Mountains 35.58,54.42 |tip {dropsfrom}Grel'borg the Miser
+step
+  talk Talvash del Kissel##6826
+  accept Restoring the Necklace##2361 |goto Ironforge 36.38,3.61
+step
+  talk Bink##5144
+  accept Tabetha's Task##2861 |goto Ironforge 27.25,8.3
+step
   click Equinex Monolith##144063
   accept The Morrow Stone##2942 |goto Feralas 38.83,13.17
 step
@@ -109,14 +134,23 @@ step
   talk Falfindel Waywarder##4048
   turnin The Crone of the Kraul##1101 |goto Feralas 89.64,46.57
 step
+  talk Wizzle Brassbolts##4453
+  turnin The Brassbolts Brothers##2769 |goto Thousand Needles 78.14,77.12 |tip {turninat}Thousand Needles
+step
   talk Kindal Moonweaver##7956
   turnin Freedom for All Creatures##2969 |goto Feralas 65.94,45.65
+step
+  talk Watchmaster Sorigal##5464
+  turnin Vital Supplies##1477 |goto Duskwood 75.78,46.16 |tip {turninat}Duskwood
 step
   talk Jer'kai Moonweaver##7957
   accept Doling Justice##2970 |goto Feralas 65.95,45.61
 step
   note Kill 12 Grimtotem Naturalists, 10 Grimtotem Raiders, and 6 Grimtotem Shamans before returning to Jer'kai Moonweaver in Feralas.
   kill Grimtotem Naturalist##7726 |q 2970 |goto Feralas 68.74,39.19
+step
+  talk Tabetha##6546
+  turnin Tabetha's Task##2861 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
 step
   talk Daryn Lightwind##7907
   turnin In Search of Knowledge##2939 |goto Teldrassil 55.41,92.23 |tip {turninat}Teldrassil
@@ -177,6 +211,21 @@ step
   note Bring 10 Rage Scar Yeti Hides to Pratt McGrubben at Feathermoon Stronghold, Feralas.
   collect 10 Rage Scar Yeti Hide##18947 |q 7733 |goto Feralas 53.28,31.85 |tip {dropsfrom}Rage Scar Yeti, Elder Rage Scar, Ferocious Rage Scar
 step
+  talk Advisor Belgrum##2918
+  turnin An Ambassador of Evil##762 |goto Ironforge 77.34,9.71 |tip {turninat}Ironforge
+step
+  talk Advisor Belgrum##2918
+  accept The Lost Tablets of Will##1139 |goto Ironforge 77.34,9.71
+step
+  note Find the Tablet of Will, and return them to Advisor Belgrum in Ironforge.
+  collect Tablet of Will##5824 |q 1139 |goto Uldaman - Dungeon -1,-1
+step
+  talk Talvash del Kissel##6826
+  turnin Restoring the Necklace##2361 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
+step
+  talk Gerrig Bonegrip##2786
+  turnin The Star, the Hand and the Heart##735 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
+step
   talk Jer'kai Moonweaver##7957
   turnin Doling Justice##2970 |goto Feralas 65.95,45.61
 step
@@ -208,6 +257,9 @@ step
 step
   talk Ginro Hearthkindle##7880
   accept The Knife Revealed##4129 |goto Feralas 31.86,45.13
+step
+  talk Advisor Belgrum##2918
+  turnin The Lost Tablets of Will##1139 |goto Ironforge 77.34,9.71 |tip {turninat}Ironforge
 step
   talk Kindal Moonweaver##7956
   accept An Orphan Looking For a Home##3841 |goto Feralas 65.94,45.65

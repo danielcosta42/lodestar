@@ -19,6 +19,9 @@ step
   note Bring 10 Thick Yeti Hides to Jangdor Swiftstrider in Camp Mojache.
   collect 10 Thick Yeti Hide##8973 |q 2822 |goto Feralas 55.48,56.5 |tip {dropsfrom}Feral Scar Yeti, Hulking Feral Scar, Enraged Feral Scar
 step
+  talk Anastasia Hartwell##4568
+  accept Tabetha's Task##2861 |goto Undercity 85.14,10.03
+step
   talk Hadoken Swiftstrider##7875
   accept War on the Woodpaw##2862 |goto Feralas 74.91,42.46
 step
@@ -83,14 +86,23 @@ step
   note Rok Orhan in Camp Mojache wants you to kill 10 Gordunni Ogres, 10 Gordunni Ogre-Magi, and 5 Gordunni Brutes.
   kill Gordunni Ogre##5229 |q 2975 |goto Feralas 75.15,29.76
 step
+  talk Tabetha##6546
+  turnin Tabetha's Task##2861 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
+step
   talk Homing Robot OOX-22/FE##7807
   turnin Find OOX-22/FE!##2766 |goto Feralas 53.35,55.7
 step
   talk Neeru Fireblade##3216
   turnin A Strange Request##3121 |goto Orgrimmar 49.47,50.59 |tip {turninat}Orgrimmar
 step
+  talk Apothecary Zinge##5204
+  accept Into the Field##243 |goto Undercity 50.14,67.97
+step
   talk Marvon Rivetseeker##7771
   turnin The Sunken Temple##3380 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris
+step
+  talk Chief Engineer Bilgewhizzle##7407
+  turnin Into the Field##243 |goto Tanaris 52.46,28.51 |tip {turninat}Tanaris
 step
   talk Sage Truthseeker##3978
   accept The Platinum Discs##2440 |goto Thunder Bluff 34.4,46.87
@@ -120,6 +132,9 @@ step
   talk Jangdor Swiftstrider##7854
   turnin The Mark of Quality##2822 |goto Feralas 74.43,42.91
 step
+  talk Oran Snakewrithe##7825
+  turnin Oran's Gratitude##8273 |goto Undercity 73.06,32.85 |tip {turninat}Undercity
+step
   talk Talo Thornhoof##7776
   turnin The Strength of Corruption##4120 |goto Feralas 76.18,43.83
 step
@@ -144,17 +159,14 @@ step
   talk Witch Doctor Uzer'i##8115
   turnin Testing the Vessel##3123 |goto Feralas 74.42,43.36
 step
-  talk Witch Doctor Uzer'i##8115
-  turnin Natural Materials##3128 |goto Feralas 74.42,43.36
-step
-  talk Oran Snakewrithe##7825
-  turnin Oran's Gratitude##8273 |goto Undercity 73.06,32.85 |tip {turninat}Undercity
-step
   talk Talo Thornhoof##7776
   turnin Dark Heart##3062 |goto Feralas 76.18,43.83
 step
   talk Talo Thornhoof##7776
   turnin Vengeance on the Northspring##3063 |goto Feralas 76.18,43.83
+step
+  talk Witch Doctor Uzer'i##8115
+  turnin Natural Materials##3128 |goto Feralas 74.42,43.36
 step
   talk Hadoken Swiftstrider##7875
   accept Alpha Strike##2863 |goto Feralas 74.91,42.46
@@ -196,10 +208,10 @@ step
   turnin The Platinum Discs##2440 |goto Thunder Bluff 46.62,33.17 |tip {turninat}Thunder Bluff
 step
   talk Zorbin Fandazzle##14637
-  turnin Fuel for the Zapping##7721 |goto Feralas 44.81,43.42
+  turnin Zapped Giants##7003 |goto Feralas 44.81,43.42
 step
   talk Zorbin Fandazzle##14637
-  turnin Zapped Giants##7003 |goto Feralas 44.81,43.42
+  turnin Fuel for the Zapping##7721 |goto Feralas 44.81,43.42
 step
   talk Krueg Skullsplitter##4544
   turnin A Grim Discovery##2974 |goto Feralas 75.94,42.74
@@ -237,13 +249,13 @@ step
   talk Uthel'nay##7311
   turnin The Gordunni Orb##3002 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
 step
+  turnin Woodpaw Investigation##2902 |goto Feralas 71.63,55.92
+step
   talk Belgrom Rockmaul##4485
   turnin A Grim Discovery##2976 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
 step
   talk Witch Doctor Uzer'i##8115
   turnin Faerie Dragon Muisek##3125 |goto Feralas 74.42,43.36
-step
-  turnin Woodpaw Investigation##2902 |goto Feralas 71.63,55.92
 step
   click Woodpaw Battle Map##142195
   accept The Battle Plans##2903 |goto Feralas 71.63,55.92
@@ -254,11 +266,11 @@ step
   note Kill 3 Wandering Forest Walkers. Use the Muisek Vessel to shrink and capture the fallen Treants.
   collect 3 Treant Muisek##9593 |q 3126 |goto Feralas 57.4,47.22 |tip {dropsfrom}Wandering Forest Walker
 step
-  talk Witch Doctor Uzer'i##8115
-  turnin Treant Muisek##3126 |goto Feralas 74.42,43.36
-step
   talk Hadoken Swiftstrider##7875
   turnin The Battle Plans##2903 |goto Feralas 74.91,42.46
+step
+  talk Witch Doctor Uzer'i##8115
+  turnin Treant Muisek##3126 |goto Feralas 74.42,43.36
 step
   talk Witch Doctor Uzer'i##8115
   accept Mountain Giant Muisek##3127 |goto Feralas 74.42,43.36
@@ -282,11 +294,11 @@ step
   talk Hadoken Swiftstrider##7875
   turnin Zukk'ash Infestation##7730 |goto Feralas 74.91,42.46
 step
-  talk Witch Doctor Uzer'i##8115
-  turnin Mountain Giant Muisek##3127 |goto Feralas 74.42,43.36
-step
   talk Hadoken Swiftstrider##7875
   turnin Stinglasher##7731 |goto Feralas 74.91,42.46
+step
+  talk Witch Doctor Uzer'i##8115
+  turnin Mountain Giant Muisek##3127 |goto Feralas 74.42,43.36
 step
   talk Witch Doctor Uzer'i##8115
   accept Weapons of Spirit##3129 |goto Feralas 74.42,43.36

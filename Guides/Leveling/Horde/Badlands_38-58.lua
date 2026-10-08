@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Badlands (38-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Stranglethorn Vale (37-60)",
+	next = "Leveling/Horde/Feralas (43-50)",
 }, [[
 step
   note {fp}Greth
@@ -45,11 +45,8 @@ step
   talk Belgrom Rockmaul##4485
   accept A Threat in Feralas##2981 |goto Orgrimmar 75.23,34.24
 step
-  talk Andrew Brownell##2308
-  accept Bring the End##3341 |goto Undercity 74.05,33.31
-step
-  note Andrew Brownell wants you to kill Amnennar the Coldbringer and return his skull.
-  collect Skull of the Coldbringer##10420 |q 3341 |goto Razorfen Downs - Dungeon -1,-1 |elite |tip {dropsfrom}Amnennar the Coldbringer
+  talk Neeru Fireblade##3216
+  accept Return to Witch Doctor Uzer'i##3122 |goto Orgrimmar 49.47,50.59
 step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##710 |goto Badlands 25.95,44.87
@@ -138,6 +135,9 @@ step
   note Slay Halycon, pack mistress of the Bloodaxe worg.
   kill Halycon##10220 |q 4724 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
+  talk Apothecary Zinge##5204
+  accept Errand for Apothecary Zinge##232 |goto Undercity 50.14,67.97
+step
   talk Theldurin the Lost##2785
   accept The Lost Fragments##692 |goto Badlands 51.39,76.87
 step
@@ -150,15 +150,11 @@ step
   note Bring the Tablet of Ryun'eh to Theldurin the Lost.
   collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
 step
-  talk Varimathras##2425
-  accept Into The Scarlet Monastery##1048 |goto Undercity 56.25,92.2
+  talk Melor Stonehoof##3441
+  accept Deadmire##1205 |goto Thunder Bluff 61.54,80.92
 step
-  talk Uthel'nay##7311
-  accept Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27
-step
-  note Collect 10 Shadowshard Fragments from Maraudon and return them to Uthel'nay in Orgrimmar.
-  kill Shadowshard Rumbler##11777 |goto Desolace 27.99,57.01 |elite
-  collect 10 Shadowshard Fragment##17756 |q 7068 |goto Desolace 27.99,57.01
+  note Bring Deadmire's Tooth to Melor in Thunder Bluff.
+  collect Deadmire's Tooth##5945 |q 1205 |goto Dustwallow Marsh 50.2,52.7 |tip {dropsfrom}Deadmire
 step
   note Travel to the quarry in Blackrock Mountain and slay Overmaster Pyron. Return to Thunderheart when you have completed this assignment.
   kill Overmaster Pyron##9026 |q 3906 |goto Eastern Kingdoms - the continent map 46.82,67.7 |elite
@@ -166,14 +162,14 @@ step
   talk Helgrum the Swift##1442
   turnin Report to Helgrum##1420 |goto Swamp of Sorrows 47.74,55.2 |tip {turninat}Swamp of Sorrows
 step
-  talk Andrew Brownell##2308
-  turnin Bring the End##3341 |goto Undercity 74.05,33.31 |tip {turninat}Undercity
-step
   talk Rok Orhan##7777
   turnin A Threat in Feralas##2981 |goto Feralas 75.8,43.58 |tip {turninat}Feralas
 step
   talk Patrick Garrett##5651
   turnin Reclaimed Treasures##2342 |goto Undercity 62.32,48.61 |tip {turninat}Undercity
+step
+  talk Witch Doctor Uzer'i##8115
+  turnin Return to Witch Doctor Uzer'i##3122 |goto Feralas 74.42,43.36 |tip {turninat}Feralas
 step
   talk Rigglefuzz##2817
   turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
@@ -184,11 +180,17 @@ step
   talk Martek the Exiled##4618
   turnin Indurium##1108 |goto Badlands 42.22,52.69
 step
+  talk Alessandro Luca##7683
+  turnin Errand for Apothecary Zinge##232 |goto Undercity 58.61,54.68 |tip {turninat}Undercity
+step
   talk Sha'ni Proudtusk##9136
   turnin Dreadmaul Rock##3821 |goto Burning Steppes 79.95,45.4 |tip {turninat}Burning Steppes
 step
   talk Rigglefuzz##2817
   turnin Power Stones##2418 |goto Badlands 42.39,52.93
+step
+  talk Alessandro Luca##7683
+  accept Errand for Apothecary Zinge##238 |goto Undercity 58.61,54.68
 step
   talk Martek the Exiled##4618
   accept News for Fizzle##1137 |goto Badlands 42.22,52.69
@@ -287,26 +289,23 @@ step
   note Travel to Blackrock Depths and recover 10 Essence of the Elements. Your first inclination is to search the golems and golem makers. You remember Vivian Lagrave also muttering something about elementals.
   collect Essence of the Elements##11129 |q 7201 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Molten War Golem, Ragereaver Golem, Warbringer Construct
 step
-  note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Varimathras in the Undercity.
-  kill High Inquisitor Whitemane##3977 |q 1048 |goto Scarlet Monastery - Dungeon -1,-1 |elite
-step
   note Enter Blackrock Depths and track down Lord Incendius. Slay him and return any source of information you may find to Thunderheart.
   kill Lord Incendius##9017 |q 3907 |goto Blackrock Depths - Dungeon -1,-1 |elite
 step
   note Venture to Blackrock Depths and destroy the vile aggressors!
   kill Anvilrage Medic##8894 |q 4082 |goto Blackrock Depths - Dungeon -1,-1 |elite
 step
-  talk Varimathras##2425
-  turnin Into The Scarlet Monastery##1048 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
-step
-  talk Uthel'nay##7311
-  turnin Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
-step
   talk Theldurin the Lost##2785
   turnin The Lost Fragments##692 |goto Badlands 51.39,76.87
 step
+  talk Melor Stonehoof##3441
+  turnin Deadmire##1205 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
+step
   talk Theldurin the Lost##2785
   turnin Solution to Doom##709 |goto Badlands 51.39,76.87
+step
+  talk Apothecary Zinge##5204
+  turnin Errand for Apothecary Zinge##238 |goto Undercity 50.14,67.97 |tip {turninat}Undercity
 step
   talk Fizzle Brassbolts##4454
   turnin News for Fizzle##1137 |goto Thousand Needles 78.06,77.13 |tip {turninat}Thousand Needles
@@ -439,6 +438,6 @@ step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
 step
-  note {travel}Stranglethorn Vale
-  goto Stranglethorn Vale 35.66,10.53
+  note {travel}Feralas
+  goto Feralas 74.91,42.46
 ]])

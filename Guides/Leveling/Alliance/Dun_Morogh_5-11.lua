@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Dun Morogh (3-11)", {
+ns:RegisterGuide("Leveling/Alliance/Dun Morogh (5-11)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Zephras Isle (4-11)",
+	next = "Leveling/Alliance/Westfall (12-20)",
 }, [[
 step
   note {fp}Shelby Stoneflint
@@ -894,6 +894,6 @@ step
   talk Tormus Deepforge##6031
   turnin Grey Iron Weapons##1682 |goto Ironforge 48.64,42.48 |tip {turninat}Ironforge
 step
-  note {travel}Zephras Isle
-  goto Zephras Isle 42.82,23.37
+  note {travel}Westfall
+  goto Westfall 56.04,31.23
 ]])

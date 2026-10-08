@@ -56,12 +56,12 @@ step
   accept Ur's Treatise on Shadow Magic##1938 |goto Stormwind City 48.71,87.62
 step
   only Mage
-  talk Ursyn Ghull##3048
-  accept Journey to the Marsh##1947 |goto Thunder Bluff 25.7,14.19
+  talk Bink##5144
+  accept Journey to the Marsh##1947 |goto Ironforge 27.25,8.3
 step
   only Mage
-  talk Ursyn Ghull##3048
-  accept Return to the Marsh##1953 |goto Thunder Bluff 25.7,14.19
+  talk Bink##5144
+  accept Return to the Marsh##1953 |goto Ironforge 27.25,8.3
 step
   only Mage
   talk Tabetha##6546
@@ -242,8 +242,8 @@ step
   turnin Investigate the Blue Recluse##1920 |goto Stormwind City 49.56,85.8
 step
   only Mage
-  talk Owen Thadd##211022
-  turnin Research Access##97286 |goto Undercity 73.67,33.03
+  talk Garion Wendell##211033
+  turnin Research Access##97286 |goto Stormwind City 49.02,86.45
 step
   only Mage
   talk High Sorcerer Andromath##5694
@@ -990,7 +990,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (32-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Desolace (33-42)",
+	next = "Leveling/Alliance/Dustwallow Marsh (35-38)",
 }, [[
 step
   note {fp}Wesley
@@ -254,6 +254,6 @@ step
   talk Major Samuelson##2439
   turnin Reassignment##563 |goto Stormwind City 75.83,36.72 |tip {turninat}Stormwind City
 step
-  note {travel}Desolace
-  goto Desolace 66.74,10.87
+  note {travel}Dustwallow Marsh
+  goto Dustwallow Marsh 66.46,45.15
 ]])

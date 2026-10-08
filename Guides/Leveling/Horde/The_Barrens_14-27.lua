@@ -1,7 +1,7 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/The Barrens (14-30)", {
+ns:RegisterGuide("Leveling/Horde/The Barrens (14-27)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stonetalon Mountains (19-29)",
@@ -226,12 +226,6 @@ step
   note Retrieve the Cats Eye Emerald from one of the Venture Co. Overseers or Enforcers for Wharfmaster Dizzywig at Ratchet.
   collect Cats Eye Emerald##5097 |q 896 |goto The Barrens 60.81,3.81 |tip {dropsfrom}Venture Co. Enforcer, Venture Co. Overseer, Boss Copperplug
 step
-  talk Nara Wildmane##5770
-  accept Leaders of the Fang##914 |goto Thunder Bluff 75.65,31.61
-step
-  note Bring the Gems of Cobrahn, Anacondra, Pythas and Serpentis to Nara Wildmane in Thunder Bluff.
-  collect Gem of Cobrahn##9738 |q 914 |goto Wailing Caverns - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Cobrahn, Cobrahn Snake Form
-step
   talk Crane Operator Bigglefuzz##3665
   accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
 step
@@ -339,6 +333,9 @@ step
 step
   kill Lakota'mani##3474 |goto The Barrens 47.41,52.74 |tip Loot the quest item here — it starts the quest.
   accept Lakota'mani##883 |goto The Barrens 47.41,52.74
+step
+  talk Zor Lonetree##4047
+  accept The Spirits of Stonetalon##1061 |goto Orgrimmar 38.93,38.4
 step
   only Warlock
   talk Cazul##5909
@@ -469,12 +466,6 @@ step
   click Burned-Out Remains##415106
   accept Stepping Stones##79192 |goto The Barrens 46.34,73.96
 step
-  talk Theodore Griffs##11835
-  accept The New Plague##95216 |goto Undercity 46.31,71.91
-step
-  note Collect the Highly Toxic Strain from Witherfang in Ruins of Lordaeron for Theodore Griffs in Undercity.
-  collect Highly Toxic Strain##275443 |q 95216 |goto Undercity 46.31,71.91 |tip {dropsfrom}Witherfang
-step
   talk Master Apothecary Faranell##2055
   accept Unending Torment##97289 |goto Undercity 48.82,69.28
 step
@@ -506,17 +497,20 @@ step
   talk Torm Ragetotem##3041
   accept Speak with Ruga##1823 |goto Thunder Bluff 57.24,87.37
 step
-  talk Morbin Lightbane##266484
-  accept Light's Justice##92421 |goto Undercity 57.89,89.34
-step
-  note Collect 25 Intact Limbs within The Ruins of Lordaeron for Morbin Lightbane in the Undercity.
-  collect 25 Intact Limbs##268580 |q 92421 |goto Undercity 57.89,89.34 |tip {dropsfrom}Skeleton, Cadaver, Ragged Ghoul
-step
   note Gann Stonespire wants you to kill 15 Bael'dun Excavators and 5 Bael'dun Foremen.
   kill Bael'dun Excavator##3374 |q 843 |goto The Barrens 47.58,85.32
 step
   talk Myriam Moonsinger##12866
   accept A Host of Evil##6626 |goto The Barrens 49.01,94.94
+step
+  talk Seereth Stonebreak##4049
+  turnin The Spirits of Stonetalon##1061 |goto The Barrens 35.26,27.88
+step
+  talk Apothecary Zamah##3419
+  accept Serpentbloom##962 |goto Thunder Bluff 22.81,20.89
+step
+  note Apothecary Zamah in Thunder Bluff wants you to collect 10 Serpentbloom.
+  collect 10 Serpentbloom##5339 |q 962 |goto The Barrens 47.62,33.51
 step
   talk Seereth Stonebreak##4049
   accept Goblin Invaders##1062 |goto The Barrens 35.26,27.88
@@ -838,9 +832,6 @@ step
   talk Wharfmaster Dizzywig##3453
   turnin Miner's Fortune##896 |goto The Barrens 63.35,38.45
 step
-  talk Nara Wildmane##5770
-  turnin Leaders of the Fang##914 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
-step
   talk Crane Operator Bigglefuzz##3665
   turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61
 step
@@ -1007,9 +998,6 @@ step
   talk Gann Stonespire##3341
   turnin Gann's Reclamation##843 |goto The Barrens 45.89,77
 step
-  talk Theodore Griffs##11835
-  turnin The New Plague##95216 |goto Undercity 46.31,71.91 |tip {turninat}Undercity
-step
   only Shaman
   talk Brine##5899
   turnin Call of Water##1535 |goto The Barrens 43.42,77.41
@@ -1027,9 +1015,6 @@ step
   only Shaman
   note Fill the Empty Red Waterskin at the well in Tarren Mill and return to Brine in the Barrens.
   collect Filled Red Waterskin##7771 |q 1536 |goto Hillsbrad Foothills 62.18,20.79 |tip {dropsfrom}Spring Well
-step
-  talk Morbin Lightbane##266484
-  turnin Light's Justice##92421 |goto Undercity 57.89,89.34 |tip {turninat}Undercity
 step
   talk Feegly the Exiled##3421
   turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
@@ -1055,6 +1040,9 @@ step
 step
   talk Makaba Flathoof##11857
   turnin Avenge My Village##6548 |goto The Barrens 35.19,27.76
+step
+  talk Apothecary Zamah##3419
+  turnin Serpentbloom##962 |goto Thunder Bluff 22.81,20.89 |tip {turninat}Thunder Bluff
 step
   talk Seereth Stonebreak##4049
   accept The Elder Crone##1063 |goto The Barrens 35.26,27.88
@@ -1189,6 +1177,9 @@ step
   talk Wharfmaster Dizzywig##3453
   accept The Missing Shipment##892 |goto The Barrens 63.35,38.45
 step
+  talk Magatha Grimtotem##4046
+  accept Forsaken Aid##1064 |goto Thunder Bluff 69.85,30.91
+step
   only Warlock
   talk Menara Voidrender##6266
   accept The Completed Robe##4786 |goto The Barrens 62.51,35.45
@@ -1248,16 +1239,25 @@ step
   note Kill Grundig Darkcloud and 6 Grimtotem Brutes, and return to Makaba Flathoof near the southeastern edge of Stonetalon.
   kill Grundig Darkcloud##11858 |q 6629 |goto Stonetalon Mountains 73.65,86.12
 step
+  talk Apothecary Zamah##3419
+  turnin Forsaken Aid##1064 |goto Thunder Bluff 22.81,20.89 |tip {turninat}Thunder Bluff
+step
   talk Seereth Stonebreak##4049
   turnin Shredding Machines##1068 |goto The Barrens 35.26,27.88
 step
   talk Makaba Flathoof##11857
   turnin Kill Grundig Darkcloud##6629 |goto The Barrens 35.19,27.76
 step
+  talk Apothecary Zamah##3419
+  accept Journey to Tarren Mill##1065 |goto Thunder Bluff 22.81,20.89
+step
   turnin Samophlange##901 |goto The Barrens 52.4,11.65
 step
   click Control Console##4141
   accept Samophlange##902 |goto The Barrens 52.4,11.65
+step
+  talk Apothecary Lydon##2216
+  turnin Journey to Tarren Mill##1065 |goto Hillsbrad Foothills 61.44,19.06 |tip {turninat}Hillsbrad Foothills
 step
   only Warrior
   talk Thun'grim Firegaze##5878

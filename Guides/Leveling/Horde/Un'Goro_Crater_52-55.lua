@@ -65,8 +65,22 @@ step
   note Collect 8 Webbed Diemetradon Scales and 8 Webbed Pterrordax Scales for Shizzle in Marshal's Refuge.
   collect 8 Webbed Diemetradon Scale##11830 |q 4503 |goto Un'Goro Crater 66.12,33.9 |tip {dropsfrom}Young Diemetradon, Diemetradon, Elder Diemetradon
 step
+  only Mage
+  talk Archmage Shymm##3047
+  accept Magecraft##8250 |goto Thunder Bluff 22.76,14.53
+step
+  only Priest
+  talk Malakai Cross##3045
+  accept Cenarion Aid##8254 |goto Thunder Bluff 24.56,22.57
+step
   talk A-Me 01##9623
   turnin Chasing A-Me 01##4243 |goto Un'Goro Crater 67.66,16.76
+step
+  talk Belgrom Rockmaul##4485
+  accept Betrayed##3504 |goto Orgrimmar 75.23,34.24
+step
+  talk Magatha Grimtotem##4046
+  accept Magatha's Payment to Jediga##3562 |goto Thunder Bluff 69.85,30.91
 step
   talk A-Me 01##9623
   accept Chasing A-Me 01##4244 |goto Un'Goro Crater 67.66,16.76
@@ -80,8 +94,71 @@ step
   talk Ringo##9999
   turnin Lost!##4492 |goto Un'Goro Crater 51.9,49.85
 step
+  only Priest
+  talk Ogtinc##8405
+  turnin Cenarion Aid##8254 |goto Azshara 42.4,42.62 |tip {turninat}Azshara
+step
+  talk Jes'rimon##8659
+  accept Jes'rimon's Payment to Jediga##3563 |goto Orgrimmar 55.52,34.08
+step
+  talk Chemist Cuely##8390
+  accept Seeping Corruption##3568 |goto Undercity 48.71,71.39
+step
+  note Fill all 4 Empty Vials at the tide pools along the coast of the Ruins of Eldarath in Azshara before returning to Chemist Cuely.
+  collect Filled Vial Labeled #1##10691 |q 3568 |goto Azshara 47.98,61.03 |tip {dropsfrom}the First Tide Pool
+step
+  talk Chemist Fuely##10136
+  accept A Sample of Slime...##4293 |goto Undercity 47.45,73.35
+step
+  note Gather Felwood Slime Samples from any of the slimes in Felwood. Then, using the Testing Equipment next to Chemist Fuely in Undercity, see which of your samples are the most corrupt. Bring 5 of the Corrupted Felwood Samples you find to Chemist Fuely.
+  collect 5 Corrupted Felwood Sample##12234 |q 4293 |goto Undercity 47.85,73.48 |tip {dropsfrom}Testing Equipment
+step
+  talk Jes'rimon##8659
+  accept Bone-Bladed Weapons##4300 |goto Orgrimmar 55.52,34.08
+step
+  note Bring 8 White Ravasaur Claws to Jes'rimon in Orgrimmar.
+  collect 8 White Ravasaur Claw##11477 |q 4300 |goto Un'Goro Crater 62.87,74.25 |tip {dropsfrom}Ravasaur, Ravasaur Runner, Ravasaur Hunter
+step
+  talk Zilzibin Drumlore##7010
+  accept March of the Silithid##4494 |goto Orgrimmar 56.26,46.68
+step
+  talk Royal Overseer Bauhaus##10781
+  accept The Jeremiah Blues##5049 |goto Undercity 69.79,43.16
+step
+  only Rogue
+  talk Ormok##3328
+  accept A Simple Request##8233 |goto Orgrimmar 43.9,54.63
+step
+  only Warlock
+  talk Zevrost##3326
+  accept An Imp's Request##8419 |goto Orgrimmar 48.47,45.43
+step
+  only Warlock
+  note Bring a piece of felcloth to Impsy in Felwood.
+  collect Felcloth##14256 |q 8419 |goto Blasted Lands 57.91,51.54 |tip {dropsfrom}Felhunter, Felguard Sentry, Legashi Satyr
+step
+  talk Ag'tor Bloodfist##8576
+  turnin Betrayed##3504 |goto Azshara 22.26,51.48 |tip {turninat}Azshara
+step
+  only Mage
+  talk Sanath Lim-yo##8395
+  turnin Magecraft##8250 |goto Azshara 28.11,50.09 |tip {turninat}Azshara
+step
+  talk Jediga##8587
+  turnin Magatha's Payment to Jediga##3562 |goto Azshara 22.56,51.42 |tip {turninat}Azshara
+step
+  talk Jediga##8587
+  turnin Jes'rimon's Payment to Jediga##3563 |goto Azshara 22.56,51.42 |tip {turninat}Azshara
+step
   talk Krakle##10302
   accept Finding the Source##974 |goto Un'Goro Crater 30.93,50.44
+step
+  only Rogue
+  talk Lord Jorach Ravenholdt##6768
+  turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88 |tip {turninat}Alterac Mountains
+step
+  talk Andron Gant##6522
+  accept Andron's Payment to Jediga##3564 |goto Undercity 54.81,76.33
 step
   click A Wrecked Raft##161505
   accept It's a Secret to Everybody##3844 |goto Un'Goro Crater 63.02,68.6
@@ -97,6 +174,10 @@ step
 step
   note Find the carcass of Lar'korwi's freshest kill and steal a Piece of Threshadon Carcass before returning to Torwa Pathfinder in Un'Goro Crater.
   collect Piece of Threshadon Carcass##11504 |q 4290 |goto Un'Goro Crater 68.74,56.71 |tip {dropsfrom}Fresh Threshadon Carcass
+step
+  only Hunter
+  talk Holt Thunderhorn##3039
+  accept The Hunter's Charm##8151 |goto Thunder Bluff 57.3,89.79
 step
   only Druid
   talk Torwa Pathfinder##9619
@@ -151,11 +232,40 @@ step
   talk Larion##9118
   accept Marvon's Workshop##4147 |goto Un'Goro Crater 45.54,8.72
 step
+  talk Alchemist Pestlezugg##5594
+  turnin March of the Silithid##4494 |goto Tanaris 50.89,26.96 |tip {turninat}Tanaris
+step
   talk A-Me 01##9623
   turnin Chasing A-Me 01##4244 |goto Un'Goro Crater 67.66,16.76
 step
   talk Liv Rizzlefix##8496
   turnin Marvon's Workshop##4147 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
+step
+  talk Jeremiah Payson##8403
+  turnin The Jeremiah Blues##5049 |goto Undercity 67.6,44.16 |tip {turninat}Undercity
+step
+  talk Chemist Fuely##10136
+  turnin A Sample of Slime...##4293 |goto Undercity 47.45,73.35 |tip {turninat}Undercity
+step
+  talk Jes'rimon##8659
+  turnin Bone-Bladed Weapons##4300 |goto Orgrimmar 55.52,34.08 |tip {turninat}Orgrimmar
+step
+  only Hunter
+  talk Ogtinc##8405
+  turnin The Hunter's Charm##8151 |goto Azshara 42.4,42.62 |tip {turninat}Azshara
+step
+  only Warlock
+  talk Impsy##14470
+  turnin An Imp's Request##8419 |goto Felwood 41.36,45.02 |tip {turninat}Felwood
+step
+  talk Chemist Cuely##8390
+  turnin Seeping Corruption##3568 |goto Undercity 48.71,71.39 |tip {turninat}Undercity
+step
+  talk Chemist Cuely##8390
+  accept Seeping Corruption##3569 |goto Undercity 48.71,71.39
+step
+  talk Jeremiah Payson##8403
+  accept Good Luck Charm##5050 |goto Undercity 67.6,44.16
 step
   note Krakle in Un'Goro Crater wants you to find the hottest area of Fire Plume Ridge.
   collect Fire Plume Ridge Hot Spot##148503 |q 974 |goto Un'Goro Crater 49.69,45.64
@@ -163,8 +273,14 @@ step
   note Travel to Fire Plume Ridge, south of Marshal's Refuge.
   kill Blazerunner##9376 |q 3962 |goto Un'Goro Crater 49.41,49.33 |elite
 step
+  talk Janice Felstone##10778
+  turnin Good Luck Charm##5050 |goto Western Plaguelands 38.4,54.05 |tip {turninat}Western Plaguelands
+step
   talk Krakle##10302
   turnin Finding the Source##974 |goto Un'Goro Crater 30.93,50.44
+step
+  talk Jediga##8587
+  turnin Andron's Payment to Jediga##3564 |goto Azshara 22.56,51.42 |tip {turninat}Azshara
 step
   talk Krakle##10302
   accept The New Springs##980 |goto Un'Goro Crater 30.93,50.44
@@ -215,6 +331,12 @@ step
   talk Linken##8737
   accept It's a Secret to Everybody##3908 |goto Un'Goro Crater 44.66,8.1
 step
+  talk Thersa Windsong##8393
+  turnin Seeping Corruption##3569 |goto Undercity 49.04,70.8 |tip {turninat}Undercity
+step
+  talk Chemist Cuely##8390
+  accept Seeping Corruption##3570 |goto Undercity 48.71,71.39
+step
   talk Donova Snowden##9298
   turnin It's a Secret to Everybody##3908 |goto Winterspring 31.27,45.16 |tip {turninat}Winterspring
 step
@@ -244,6 +366,9 @@ step
   only Druid
   note Retrieve a Putrid Vine from the guardian at the bottom of the Sunken Temple and return to Torwa Pathfinder.
   collect Putrid Vine##22444 |q 9053 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Atal'alarion
+step
+  talk Chemist Cuely##8390
+  turnin Seeping Corruption##3570 |goto Undercity 48.71,71.39 |tip {turninat}Undercity
 step
   talk Torwa Pathfinder##9619
   turnin The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96

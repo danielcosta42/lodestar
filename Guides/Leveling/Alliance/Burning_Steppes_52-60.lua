@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Burning Steppes (53-60)", {
+ns:RegisterGuide("Leveling/Alliance/Burning Steppes (52-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Winterspring (54-60)",
+	next = "Leveling/Alliance/Felwood (54-56)",
 }, [[
 step
   talk Maxwort Uberglint##9536
@@ -108,15 +108,6 @@ step
   talk Franclorn Forgewright##8888
   accept Dark Iron Legacy##3801 |goto Burning Steppes 28.96,28.93
 step
-  talk King Magni Bronzebeard##2784
-  accept Kharan Mighthammer##4341 |goto Ironforge 39.09,56.2
-step
-  talk King Magni Bronzebeard##2784
-  accept The Fate of the Kingdom##4362 |goto Ironforge 39.09,56.2
-step
-  talk Kharan Mighthammer##9021
-  turnin Kharan Mighthammer##4341 |goto Blackrock Depths - Dungeon -1,-1 |tip {turninat}Blackrock Depths - Dungeon
-step
   only Warlock
   talk Mor'zul Bloodbringer##14436
   accept Rage of Blood##7563 |goto Burning Steppes 12.69,31.64
@@ -135,9 +126,6 @@ step
 step
   note Use the Eggscilloscope Prototype on an egg in the Rookery.
   collect Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
-step
-  note Return to Blackrock Depths and rescue Princess Moira Bronzebeard from the evil clutches of Emperor Dagran Thaurissan.
-  kill Emperor Dagran Thaurissan##9019 |q 4362 |goto Blackrock Depths - Dungeon -1,-1 |elite
 step
   only Warlock
   note Bring the Imp in a Jar to the alchemy lab in the Scholomance. After the parchment is created, return the jar to Gorzeeki Wildeyes.
@@ -267,9 +255,6 @@ step
   note Slay Fineous Darkvire and recover the great hammer, Ironfel. Take Ironfel to the Shrine of Thaurissan and place it on the statue of Franclorn Forgewright.
   collect Ironfel##10999 |q 3802 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Fineous Darkvire
 step
-  talk Princess Moira Bronzebeard##8929
-  turnin The Fate of the Kingdom##4362 |goto Blackrock Depths - Dungeon -1,-1 |tip {turninat}Blackrock Depths - Dungeon
-step
   only Warlock
   talk Mor'zul Bloodbringer##14436
   turnin Rage of Blood##7563 |goto Burning Steppes 12.69,31.64
@@ -390,6 +375,6 @@ step
   talk Dreadsteed Spirit##14504
   turnin Dreadsteed of Xoroth##7631 |goto Dire Maul - Dungeon -1,-1 |tip {turninat}Dire Maul - Dungeon
 step
-  note {travel}Winterspring
-  goto Winterspring 31.27,45.16
+  note {travel}Felwood
+  goto Felwood 50.93,85.01
 ]])

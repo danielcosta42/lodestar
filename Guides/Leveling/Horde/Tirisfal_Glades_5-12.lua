@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (4-12)", {
+ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Zephras Isle (4-11)",
+	next = "Leveling/Horde/Durotar (5-11)",
 }, [[
 step
   note {fp}Morganus
@@ -91,12 +91,6 @@ step
   note Collect 3 Gloom Weed and deliver them to Junior Apothecary Holland in the Brill graveyard.
   collect 3 Gloom Weed##12737 |q 5481 |goto Tirisfal Glades 48.02,55.03
 step
-  talk Thrall##4949
-  accept Hidden Enemies##5726 |goto Orgrimmar 31.73,37.82
-step
-  note Bring a Lieutenant's Insignia to Thrall in Orgrimmar.
-  collect Lieutenant's Insignia##14544 |q 5726 |goto Durotar 52.5,9.36 |tip {dropsfrom}Burning Blade Fanatic, Burning Blade Apprentice
-step
   talk Bareth Dawnstone##275954
   accept Seeking Refuge##99144 |goto Tirisfal Glades 31.96,46.34
 step
@@ -178,12 +172,12 @@ step
   talk Dark Cleric Beryl##2129
   turnin In Favor of Darkness##5651 |goto Tirisfal Glades 61.57,52.19
 step
+  talk Shari Stilwell##246152
+  turnin Seeking Refuge##99144 |goto Tirisfal Glades 60.25,52.63
+step
   only Undead Paladin
   talk Shari Stilwell##246152
   turnin Continue Your Training##91209 |goto Tirisfal Glades 60.25,52.63
-step
-  talk Shari Stilwell##246152
-  turnin Seeking Refuge##99144 |goto Tirisfal Glades 60.25,52.63
 step
   talk Yvette Farthing##1560
   turnin A Letter Undelivered##361 |goto Tirisfal Glades 61.58,52.6
@@ -267,6 +261,10 @@ step
   only Undead Rogue
   talk Marion Call##2130
   accept Mennet Carkad##1885 |goto Tirisfal Glades 61.75,52
+step
+  only Mage
+  talk Cain Firesong##2128
+  accept Report to Anastasia##1959 |goto Tirisfal Glades 61.97,52.47
 step
   talk Junior Apothecary Holland##10665
   accept Doom Weed##5482 |goto Tirisfal Glades 57.44,48.85
@@ -361,6 +359,10 @@ step
 step
   note Kill Rot Hide Graverobbers and Rot Hide Mongrels.
   kill Rot Hide Graverobber##1941 |q 358 |goto Tirisfal Glades 55.78,42.56
+step
+  only Mage
+  talk Anastasia Hartwell##4568
+  turnin Report to Anastasia##1959 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
 step
   talk Raleigh Andrean##2050
   turnin Raleigh and the Undercity##441 |goto Undercity 62.01,42.75 |tip {turninat}Undercity
@@ -536,9 +538,6 @@ step
 step
   talk Eyahn Eagletalon##2987
   turnin Preparation for Ceremony##744 |goto Thunder Bluff 37.75,59.57 |tip {turninat}Thunder Bluff
-step
-  talk Thrall##4949
-  turnin Hidden Enemies##5726 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
 step
   talk Apothecary Renferrel##1937
   turnin Delivery to Silverpine Forest##445 |goto Silverpine Forest 42.8,40.86 |tip {turninat}Silverpine Forest
@@ -940,6 +939,6 @@ step
   talk Bethor Iceshard##1498
   turnin The Prodigal Lich Returns##411 |goto Undercity 84.07,17.45 |tip {turninat}Undercity
 step
-  note {travel}Zephras Isle
-  goto Zephras Isle 42.82,23.37
+  note {travel}Durotar
+  goto Durotar 42.06,68.33
 ]])

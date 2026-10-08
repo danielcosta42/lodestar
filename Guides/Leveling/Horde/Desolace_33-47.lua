@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Desolace (33-47)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Alterac Mountains (26-52)",
+	next = "Leveling/Horde/Arathi Highlands (34-40)",
 }, [[
 step
   note {fp}Aboda
@@ -429,6 +429,6 @@ step
   talk Takata Steelblade##5641
   turnin The Corrupter##1488 |goto Desolace 52.57,54.39
 step
-  note {travel}Alterac Mountains
-  goto Alterac Mountains 80.5,66.92
+  note {travel}Arathi Highlands
+  goto Arathi Highlands 74.24,33.92
 ]])

@@ -22,7 +22,7 @@ step
   talk Kal##3602
   accept Heeding the Call##5925 |goto Teldrassil 55.95,61.56
 step
-  only Druid
+  only Skyborne Druid
   talk Lotheluum Starbreeze##252359
   accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.02,75.11
 step
@@ -38,6 +38,7 @@ step
   talk Mathrengyl Bearwalker##4217
   accept A Lesson to Learn##26 |goto Darnassus 35.37,8.4
 step
+  only Skyborne
   talk Dendrite Starblaze##11802
   accept The Great Windborne Cat Spirit##98341 |goto Moonglade 56.21,30.64
 step
@@ -53,6 +54,7 @@ step
   talk Great Cat Spirit##11957
   accept The Great Cat Spirit##98396 |goto Moonglade 58.39,73.52
 step
+  only Skyborne
   talk Avatar of Saeyleenan##272054
   accept The Great Windborne Cat Spirit##98404 |goto Moonglade 44,73.6
 step
@@ -60,6 +62,7 @@ step
   talk Great Cat Spirit##11957
   accept Blessings of the Great Cat Spirit##98731 |goto Moonglade 58.39,73.52
 step
+  only Skyborne
   talk Avatar of Saeyleenan##272054
   accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 44,73.6
 step
@@ -268,6 +271,7 @@ step
   note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
   collect Relic of the Fang##280502 |q 98396 |goto Moonglade 58.39,73.52
 step
+  only Skyborne
   note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
   collect Relic of the Fang##280502 |q 98404 |goto Moonglade 44,73.6
 step
@@ -550,7 +554,7 @@ step
   talk Mathrengyl Bearwalker##4217
   turnin Heeding the Call##5925 |goto Darnassus 35.37,8.4
 step
-  only Druid
+  only Skyborne Druid
   talk Urs'endris##255853
   turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.72,61.67
 step
@@ -566,6 +570,7 @@ step
   talk Dendrite Starblaze##11802
   turnin A Lesson to Learn##26 |goto Moonglade 56.21,30.64
 step
+  only Skyborne
   talk Avatar of Saeyleenan##272054
   turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 44,73.6
 step
@@ -581,6 +586,7 @@ step
   talk Great Cat Spirit##11957
   turnin The Great Cat Spirit##98396 |goto Moonglade 58.39,73.52
 step
+  only Skyborne
   talk Avatar of Saeyleenan##272054
   turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 44,73.6
 step
@@ -588,6 +594,7 @@ step
   talk Dendrite Starblaze##11802
   turnin Blessings of the Great Cat Spirit##98731 |goto Moonglade 56.21,30.64
 step
+  only Skyborne
   talk Dendrite Starblaze##11802
   turnin Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 56.21,30.64
 step

@@ -11,8 +11,8 @@ step
   accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
 step
   only Rogue
-  talk Osborne the Night Man##918
-  accept A Simple Request##8233 |goto Stormwind City 77.43,65.31
+  talk Ormok##3328
+  accept A Simple Request##8233 |goto Orgrimmar 43.9,54.63
 step
   only Rogue
   talk Lord Jorach Ravenholdt##6768

@@ -1,7 +1,7 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Thousand Needles (28-41)", {
+ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Desolace (33-47)",

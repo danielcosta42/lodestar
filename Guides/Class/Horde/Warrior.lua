@@ -34,7 +34,7 @@ step
   talk Deathguard Dillinger##1496
   accept Ulag the Cleaver##1819 |goto Tirisfal Glades 58.2,51.45
 step
-  only Warrior
+  only Skyborne Warrior
   talk Seena Skybreaker##252377
   accept The Skybreaker Bulwark##94003 |goto Zephras Isle 59.87,72.82
 step
@@ -128,7 +128,7 @@ step
   note Kill Ulag the Cleaver, then speak with Deathguard Dillinger.
   kill Ulag the Cleaver##6390 |q 1819 |goto Tirisfal Glades 59.47,48.28
 step
-  only Warrior
+  only Skyborne Warrior
   note Reclaim the Skybreaker Bulwark from Zaal Stormshield at the Shrine of Akir.
   collect Skybreaker Bulwark##263993 |q 94003 |goto Zephras Isle 36.05,33.53 |tip {dropsfrom}Zaal Stormshield
 step
@@ -210,7 +210,7 @@ step
   talk Deathguard Dillinger##1496
   turnin Ulag the Cleaver##1819 |goto Tirisfal Glades 58.2,51.45
 step
-  only Warrior
+  only Skyborne Warrior
   talk Seena Skybreaker##252377
   turnin The Skybreaker Bulwark##94003 |goto Zephras Isle 59.87,72.82
 step
@@ -1024,7 +1024,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

@@ -55,7 +55,7 @@ step
   talk Grif Wildheart##1231
   accept The Hunter's Path##6722 |goto Dun Morogh 45.81,53.04
 step
-  only Hunter
+  only Skyborne Hunter
   talk Elayaa Easewind##254084
   accept Taming the Beast##94007 |goto Zephras Isle 45.14,44.94
 step
@@ -75,13 +75,13 @@ step
   talk Josephine Carson##251507
   accept Taming the Beast##94864 |goto Elwynn Forest 41.21,66.32
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   accept Taming the Beast##94978 |goto Zephras Isle 59.61,72.65
 step
   only Hunter
-  talk Holt Thunderhorn##3039
-  accept The Hunter's Charm##8151 |goto Thunder Bluff 57.3,89.79
+  talk Dorion##4205
+  accept The Hunter's Charm##8151 |goto Darnassus 42.21,7.27
 step
   only Hunter
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
@@ -150,7 +150,7 @@ step
   note Use the Taming Rod to tame a Large Crag Boar. Practice your skills, then return the Taming Rod to Grif Wildheart in Kharanos.
   use Large Crag Boar##1126 |q 6064 |goto Dun Morogh 45.36,50.31 |tip {useit}
 step
-  only Hunter
+  only Skyborne Hunter
   note Use the Taming Rod to tame a Windsong Crawler found near bodies of water. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
   use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 51.91,60.4 |tip {useit}
 step
@@ -242,7 +242,7 @@ step
   talk Dazalar##3601
   turnin The Hunter's Path##6722 |goto Teldrassil 56.68,59.49
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   turnin Taming the Beast##94007 |goto Zephras Isle 59.61,72.65
 step
@@ -262,7 +262,7 @@ step
   talk Josephine Carson##251507
   turnin Taming the Beast##94864 |goto Elwynn Forest 41.21,66.32
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   turnin Taming the Beast##94978 |goto Zephras Isle 59.61,72.65
 step
@@ -342,7 +342,7 @@ step
   talk Dazalar##3601
   accept Taming the Beast##6101 |goto Teldrassil 56.68,59.49
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   accept Taming the Beast##94979 |goto Zephras Isle 59.61,72.65
 step
@@ -413,7 +413,7 @@ step
   note Use the Taming Rod to tame a Nightsaber Stalker. Practice your skills, then return the Taming Rod to Dazalar in Dolanaar.
   use Nightsaber Stalker##2043 |q 6101 |goto Teldrassil 46.97,72.1 |tip {useit}
 step
-  only Hunter
+  only Skyborne Hunter
   note Use the Taming Rod to tame an Ornery Galestrider in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
   use Vuldren Alpha##250874 |q 94979 |goto Zephras Isle 53.35,73.83 |tip {useit}
 step
@@ -486,7 +486,7 @@ step
   talk Dazalar##3601
   turnin Taming the Beast##6101 |goto Teldrassil 56.68,59.49
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   turnin Taming the Beast##94979 |goto Zephras Isle 59.61,72.65
 step
@@ -558,7 +558,7 @@ step
   talk Dazalar##3601
   accept Taming the Beast##6102 |goto Teldrassil 56.68,59.49
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   accept Taming the Beast##94013 |goto Zephras Isle 59.61,72.65
 step
@@ -616,7 +616,7 @@ step
   note Use the Taming Rod to tame a Strigid Screecher. Practice your skills, then return the Taming Rod to Dazalar in Dolanaar.
   use Strigid Screecher##1996 |q 6102 |goto Teldrassil 43.77,69.24 |tip {useit}
 step
-  only Hunter
+  only Skyborne Hunter
   note Use the Taming Rod to tame a Vuldren Alpha in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
   use Ornery Galestrider##251707 |q 94013 |goto Zephras Isle 50.89,77.41 |tip {useit}
 step
@@ -674,7 +674,7 @@ step
   talk Dazalar##3601
   turnin Taming the Beast##6102 |goto Teldrassil 56.68,59.49
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   turnin Taming the Beast##94013 |goto Zephras Isle 59.61,72.65
 step
@@ -732,7 +732,7 @@ step
   talk Dazalar##3601
   accept Training the Beast##6103 |goto Teldrassil 56.68,59.49
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   accept Training the Beast##94050 |goto Zephras Isle 59.61,72.65
 step
@@ -772,7 +772,7 @@ step
   talk Jocaste##4146
   turnin Training the Beast##6103 |goto Darnassus 40.38,8.55
 step
-  only Hunter
+  only Skyborne Hunter
   talk Quel'dora Quickgale##254411
   turnin Training the Beast##94050 |goto Zephras Isle 59.62,72.6
 step
@@ -985,7 +985,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

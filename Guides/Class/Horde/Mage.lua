@@ -64,8 +64,8 @@ step
   accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
   only Mage
-  talk Maginor Dumas##331
-  accept Magecraft##8250 |goto Stormwind City 49.25,87.77
+  talk Archmage Shymm##3047
+  accept Magecraft##8250 |goto Thunder Bluff 22.76,14.53
 step
   only Mage
   talk Archmage Xylem##8379
@@ -948,7 +948,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

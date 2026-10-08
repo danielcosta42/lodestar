@@ -109,16 +109,16 @@ step
   accept What Niby Commands##7601 |goto Felwood 41.38,44.85
 step
   only Warlock
-  talk Demisette Cloyce##461
-  accept An Imp's Request##8419 |goto Stormwind City 39.24,84.96
+  talk Zevrost##3326
+  accept An Imp's Request##8419 |goto Orgrimmar 48.47,45.43
 step
   only Warlock
   talk Impsy##14470
   accept Hot and Itchy##8420 |goto Felwood 41.36,45.02
 step
   only Warlock
-  talk Spackle Thornberry##5520
-  accept Mor'zul Bloodbringer##7562 |goto Stormwind City 39.53,84.53
+  talk Kurgul##5815
+  accept Mor'zul Bloodbringer##7562 |goto Orgrimmar 47.52,46.72
 step
   only Warlock
   talk Mor'zul Bloodbringer##14436
@@ -1370,7 +1370,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

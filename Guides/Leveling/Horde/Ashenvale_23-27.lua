@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Ashenvale (23-27)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Hillsbrad Foothills (23-39)",
+	next = "Leveling/Horde/Hillsbrad Foothills (23-41)",
 }, [[
 step
   note {fp}Qeeju

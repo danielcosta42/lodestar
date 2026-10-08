@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Loch Modan (13-23)", {
+ns:RegisterGuide("Leveling/Alliance/Loch Modan (12-23)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Redridge Mountains (15-24)",
+	next = "Leveling/Alliance/Darkshore (13-20)",
 }, [[
 step
   note {fp}Lina Hearthstove
@@ -99,10 +99,13 @@ step
   talk Mountaineer Rockgar##1342
   turnin Report to Mountaineer Rockgar##468 |goto Loch Modan 25.44,10.38
 step
-  turnin Eagle's Fist##79975 |goto Arathi Highlands 22.48,24.23 |tip {turninat}Arathi Highlands
+  talk Arch Druid Fandral Staghelm##3516
+  accept Grove of the Ancients##952 |goto Darnassus 34.81,9.26
 step
   talk Mountaineer Stormpike##1343
   turnin Mountaineer Stormpike's Task##1339 |goto Loch Modan 24.76,18.4
+step
+  turnin Eagle's Fist##79975 |goto Arathi Highlands 22.48,24.23 |tip {turninat}Arathi Highlands
 step
   talk Mountaineer Stormpike##1343
   accept Filthy Paws##307 |goto Loch Modan 24.76,18.4
@@ -150,6 +153,9 @@ step
 step
   talk Huldar##2057
   turnin Resupplying the Excavation##273 |goto Loch Modan 52.19,69.32
+step
+  talk Onu##3616
+  turnin Grove of the Ancients##952 |goto Darkshore 43.55,76.29 |tip {turninat}Darkshore
 step
   talk Huldar##2057
   accept After the Ambush##454 |goto Loch Modan 52.19,69.32
@@ -200,6 +206,12 @@ step
   click Discarded Fishing Toolbox##665289
   accept Silver of the Waves##86614 |goto Loch Modan 50.58,53.29
 step
+  talk Borgus Steelhand##7232
+  accept Business in Auberdine##97894 |goto Stormwind City 59.4,34.26
+step
+  talk Baros Alexston##1646
+  accept Making Do##97926 |goto Stormwind City 57.74,47.86
+step
   note Magistrate Bluntnose of Thelsamar has hired you to kill 4 Mo'grosh Ogres, 4 Mo'grosh Brutes and 4 Mo'grosh Enforcers.
   kill Mo'grosh Ogre##1178 |q 255 |goto Loch Modan 69.33,25.54 |elite
 step
@@ -230,8 +242,14 @@ step
   talk Thorgrum Borrelson##1572
   accept Ride to Ironforge##6391 |goto Loch Modan 33.94,50.95
 step
+  talk Thundris Windweaver##3649
+  turnin Making Do##97926 |goto Darkshore 37.4,40.13 |tip {turninat}Darkshore
+step
   talk Khara Deepwater##1684
   turnin Silver of the Waves##86614 |goto Loch Modan 40.28,39.28
+step
+  talk Gorbold Steelhand##6301
+  turnin Business in Auberdine##97894 |goto Darkshore 38.11,41.17 |tip {turninat}Darkshore
 step
   only Shaman
   talk Norric Lochthane##258043
@@ -243,10 +261,10 @@ step
   talk Chief Engineer Hinderweir VII##1093
   turnin A Dark Threat Looms##278 |goto Loch Modan 46.05,13.61
 step
-  turnin A Dark Threat Looms##250 |goto Loch Modan 56.05,13.24
-step
   talk Prospector Stormpike##1356
   turnin Report to Ironforge##301 |goto Ironforge 74.64,11.74 |tip {turninat}Ironforge
+step
+  turnin A Dark Threat Looms##250 |goto Loch Modan 56.05,13.24
 step
   click Suspicious Barrel##257
   accept A Dark Threat Looms##199 |goto Loch Modan 56.05,13.24
@@ -274,11 +292,11 @@ step
   talk Captain Rugelfuss##1092
   turnin The Trogg Threat##267 |goto Loch Modan 23.23,73.68
 step
-  talk Mountaineer Cobbleflint##1089
-  turnin In Defense of the King's Lands##224 |goto Loch Modan 22.07,73.13
-step
   talk Captain Rugelfuss##1092
   turnin Banner of the Fallen##86585 |goto Loch Modan 23.23,73.68
+step
+  talk Mountaineer Cobbleflint##1089
+  turnin In Defense of the King's Lands##224 |goto Loch Modan 22.07,73.13
 step
   talk Mountaineer Gravelgaw##1091
   accept In Defense of the King's Lands##237 |goto Loch Modan 23.54,76.4
@@ -310,10 +328,10 @@ step
   note Kill 5 Elder Mountain Boars and return to Daryl the Youngling in the Farstrider Lodge within 12 minutes.
   kill Elder Mountain Boar##1192 |q 258 |goto Loch Modan 65.37,39.62
 step
+  turnin A Dark Threat Looms##280 |goto Loch Modan 50.58,14.3
+step
   talk Chief Engineer Hinderweir VII##1093
   turnin A Dark Threat Looms##199 |goto Loch Modan 46.05,13.61
-step
-  turnin A Dark Threat Looms##280 |goto Loch Modan 50.58,14.3
 step
   talk Chief Engineer Hinderweir VII##1093
   accept A Dark Threat Looms##161 |goto Loch Modan 46.05,13.61
@@ -367,6 +385,6 @@ step
   talk Vyrin Swiftwind##1156
   turnin Vyrin's Revenge##531 |goto Loch Modan 81.73,64.14
 step
-  note {travel}Redridge Mountains
-  goto Redridge Mountains 24.9,44.45
+  note {travel}Darkshore
+  goto Darkshore 39.05,43.55
 ]])

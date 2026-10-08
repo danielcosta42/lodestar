@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Winterspring (54-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Eastern Plaguelands (57-60)",
+	next = "Leveling/Horde/Eastern Plaguelands (56-60)",
 }, [[
 step
   note {fp}Azzleby

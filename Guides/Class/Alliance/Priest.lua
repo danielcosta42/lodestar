@@ -156,8 +156,8 @@ step
   accept Arcane Feedback##5678 |goto Darnassus 39.52,81.2
 step
   only Priest
-  talk Malakai Cross##3045
-  accept Cenarion Aid##8254 |goto Thunder Bluff 24.56,22.57
+  talk Brother Joshua##5489
+  accept Cenarion Aid##8254 |goto Stormwind City 49.5,45.21
 step
   only Priest
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
@@ -1036,7 +1036,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

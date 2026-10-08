@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (23-39)", {
+ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (23-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Thousand Needles (28-41)",
+	next = "Leveling/Horde/Thousand Needles (27-41)",
 }, [[
 step
   note {fp}Theodore Mont Claire

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (4-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Dun Morogh (3-11)",
+	next = "Leveling/Alliance/Dun Morogh (5-11)",
 }, [[
 step
   note {fp}Erma

@@ -28,7 +28,7 @@ step
   talk Kal##3602
   accept Heeding the Call##5925 |goto Teldrassil 55.95,61.56
 step
-  only Druid
+  only Skyborne Druid
   talk Lotheluum Starbreeze##252359
   accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.02,75.11
 step
@@ -73,8 +73,8 @@ step
   accept Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
 step
   only Druid
-  talk Turak Runetotem##3033
-  accept Torwa Pathfinder##9063 |goto Thunder Bluff 76.48,27.22
+  talk Mathrengyl Bearwalker##4217
+  accept Torwa Pathfinder##9063 |goto Darnassus 35.37,8.4
 step
   only Druid
   kill Captain Kromcrush##14325 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
@@ -197,7 +197,7 @@ step
   talk Mathrengyl Bearwalker##4217
   turnin Heeding the Call##5925 |goto Darnassus 35.37,8.4
 step
-  only Druid
+  only Skyborne Druid
   talk Urs'endris##255853
   turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.72,61.67
 step
@@ -308,7 +308,7 @@ step
   talk Dendrite Starblaze##11802
   accept Great Bear Spirit##5929 |goto Moonglade 56.21,30.64
 step
-  only Druid
+  only Skyborne Druid
   talk Urs'endris##255853
   accept Strength and Mercy##94638 |goto Zephras Isle 69.72,61.67
 step
@@ -370,7 +370,7 @@ step
   note Seek out the Great Bear Spirit in northwestern Moonglade and learn what it has to share with you about the nature of the bear. When finished, return to Dendrite Starblaze in Nighthaven, Moonglade.
   kill Great Bear Spirit##11956 |q 5929 |goto Moonglade 39.11,27.5
 step
-  only Druid
+  only Skyborne Druid
   note Find and kill Ur'endra in the Shen'dar Highlands.
   kill Ur'endra##258443 |q 94638 |goto Zephras Isle 53.89,65.34
 step
@@ -429,7 +429,7 @@ step
   talk Dendrite Starblaze##11802
   turnin Great Bear Spirit##5929 |goto Moonglade 56.21,30.64
 step
-  only Druid
+  only Skyborne Druid
   talk Urs'endris##255853
   turnin Strength and Mercy##94638 |goto Zephras Isle 69.72,61.67
 step
@@ -935,7 +935,7 @@ step
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1

@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Mulgore (4-10)", {
+ns:RegisterGuide("Leveling/Horde/Mulgore (5-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Tirisfal Glades (4-12)",
+	next = "Leveling/Horde/Tirisfal Glades (5-12)",
 }, [[
 step
   note {fp}Seikwa
@@ -27,6 +27,10 @@ step
 step
   collect Dirt-stained Map##3076 |goto Mulgore 59.8,82.2 |tip Loot the quest item here — it starts the quest.
   accept Attack on Camp Narache##781 |goto Mulgore 59.8,82.2
+step
+  only Shaman
+  talk Minor Manifestation of Earth##5891
+  accept Call of Earth##1518 |goto Mulgore 51.99,80.4
 step
   only Shaman
   talk Seer Ravenfeather##5888
@@ -67,6 +71,10 @@ step
 step
   talk Perith Stormhoof##272203
   accept The Longwalkers##98430 |goto Mulgore 33.1,65.93
+step
+  only Shaman
+  talk Canaga Earthcaller##5887
+  turnin Call of Earth##1518 |goto Durotar 42.4,69.17 |tip {turninat}Durotar
 step
   talk Kaga Wildhoof##265810
   turnin The Adventurer##96659 |goto Mulgore 46.19,67.21
@@ -121,6 +129,10 @@ step
 step
   note Bring 4 Flatland Prowler Claws to Melor Stonehoof in Thunder Bluff.
   collect 4 Flatland Prowler Claw##5203 |q 861 |goto Mulgore 49.28,28.53 |tip {dropsfrom}Flatland Prowler
+step
+  only Warrior
+  talk Krang Stonehoof##3063
+  accept Veteran Uzzek##1505 |goto Mulgore 48.35,63.74
 step
   only Shaman
   talk Narm Skychaser##3066
@@ -180,15 +192,15 @@ step
   talk Ahab Wheathoof##277182
   accept Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
 step
-  only Tauren Hunter
-  note Use the Taming Rod to tame an Adult Plainstrider. Practice your skills, then return the Taming Rod to Yaw Sharpmane in Bloodhoof Village.
-  use Adult Plainstrider##2956 |q 6061 |goto Mulgore 41.08,61.57 |tip {useit}
-step
   note Ahab Wheathoof at Bloodhoof Village in Mulgore wants you to feed his prized puppy, Kyle the Frenzied.
   kill Kyle the Frenzied##277154 |q 99411 |goto Mulgore 46.82,63.84
 step
   note Sit near Kaga's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
   collect Basic Campfire##450006 |q 96605 |goto Mulgore 46.21,67.31
+step
+  only Tauren Hunter
+  note Use the Taming Rod to tame an Adult Plainstrider. Practice your skills, then return the Taming Rod to Yaw Sharpmane in Bloodhoof Village.
+  use Adult Plainstrider##2956 |q 6061 |goto Mulgore 41.08,61.57 |tip {useit}
 step
   talk Malah Longwind##275789
   turnin Longwalker Malah##99079 |goto Mulgore 57.65,63.27
@@ -222,10 +234,6 @@ step
   talk Xanis Flameweaver##5906
   accept Call of Fire##1523 |goto Thunder Bluff 25.16,20.51
 step
-  only Mage
-  talk Thurston Xane##3049
-  accept Speak with Un'thuwa##1883 |goto Thunder Bluff 25.18,20.96
-step
   only Troll Priest
   talk Miles Welsh##3044
   accept Hex of Weakness##5656 |goto Thunder Bluff 25.32,15.27
@@ -242,20 +250,20 @@ step
   talk Alaana Stormwalker##259119
   accept Welcome to Azeroth##95350 |goto Mulgore 33.4,22.5
 step
-  talk Arch Druid Hamuul Runetotem##5769
-  turnin Thunderhorn's Report##98435 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
-step
   only Tauren Druid
   talk Turak Runetotem##3033
   turnin Heeding the Call##5926 |goto Thunder Bluff 76.48,27.22 |tip {turninat}Thunder Bluff
 step
-  only Shaman
-  talk Kranal Fiss##5907
-  turnin Call of Fire##2984 |goto The Barrens 56.03,19.89 |tip {turninat}The Barrens
-step
   only Tauren Druid
   talk Turak Runetotem##3033
   turnin Heeding the Call##5928 |goto Thunder Bluff 76.48,27.22 |tip {turninat}Thunder Bluff
+step
+  talk Arch Druid Hamuul Runetotem##5769
+  turnin Thunderhorn's Report##98435 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
+step
+  only Shaman
+  talk Kranal Fiss##5907
+  turnin Call of Fire##2984 |goto The Barrens 56.03,19.89 |tip {turninat}The Barrens
 step
   only Hunter
   talk Thotar##3171
@@ -264,6 +272,10 @@ step
   only Skyborne Druid
   talk Turak Runetotem##3033
   turnin Child of Nature##94911 |goto Thunder Bluff 76.48,27.22 |tip {turninat}Thunder Bluff
+step
+  only Warrior
+  talk Uzzek##5810
+  turnin Veteran Uzzek##1505 |goto The Barrens 61.38,21.12 |tip {turninat}The Barrens
 step
   only Shaman
   talk Kranal Fiss##5907
@@ -368,17 +380,14 @@ step
   note Kill Bristlebacks in Brambleblade Ravine and bring 12 Bristleback Belts to Chief Hawkwind in Camp Narache.
   collect 12 Bristleback Belt##4770 |q 757 |goto Mulgore 58.36,79.15 |tip {dropsfrom}Bristleback Quilboar, Bristleback Shaman
 step
-  talk Eylah Sunhorn##269068
-  turnin Traditions of the Bluff##97485 |goto Thunder Bluff 38.14,56.25 |tip {turninat}Thunder Bluff
-step
   talk Boarton Shadetotem##205729
   turnin Stalk With The Earthmother##76156 |goto Thunder Bluff 39.58,65.85 |tip {turninat}Thunder Bluff
 step
+  talk Eylah Sunhorn##269068
+  turnin Traditions of the Bluff##97485 |goto Thunder Bluff 38.14,56.25 |tip {turninat}Thunder Bluff
+step
   note Kill 10 Palemane Tanners, 8 Palemane Skinners, and 5 Palemane Poachers, then return to Baine Bloodhoof in Bloodhoof Village.
   kill Palemane Tanner##2949 |q 745 |goto Mulgore 36.82,66.12
-step
-  talk Yaw Sharpmane##3065
-  turnin Chakuyak##96130 |goto Mulgore 46.93,59.65
 step
   talk Skorn Whitecloud##3052
   turnin The Demon Scarred Cloak##770 |goto Mulgore 46.03,63.44
@@ -389,28 +398,28 @@ step
   talk Brave Wildrunner##3222
   turnin Grim Tidings##99081 |goto Mulgore 46.68,63.83
 step
-  talk Maur Raincaller##3055
-  turnin Mazzranache##766 |goto Mulgore 46.23,60.8
-step
   talk Baine Bloodhoof##2993
   turnin Our Ancient Enemy##99101 |goto Mulgore 46.67,63.38
 step
   talk Krang Stonehoof##3063
   turnin Sparring Match##99108 |goto Mulgore 48.35,63.74
 step
+  talk Ahab Wheathoof##277182
+  turnin Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
+step
+  talk Kaga Wildhoof##265810
+  turnin The Great Outdoors##96605 |goto Mulgore 46.19,67.21
+step
+  talk Yaw Sharpmane##3065
+  turnin Chakuyak##96130 |goto Mulgore 46.93,59.65
+step
   only Tauren Hunter
   talk Yaw Sharpmane##3065
   turnin Taming the Beast##6061 |goto Mulgore 46.93,59.65
 step
-  talk Ahab Wheathoof##277182
-  turnin Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
-step
   only Tauren
   talk Tal##2995
   turnin Tal the Wind Rider Master##6363 |goto Thunder Bluff 47,49.83 |tip {turninat}Thunder Bluff
-step
-  talk Kaga Wildhoof##265810
-  turnin The Great Outdoors##96605 |goto Mulgore 46.19,67.21
 step
   talk Ruul Eagletalon##2985
   turnin Dangers of the Windfury##743 |goto Mulgore 46.54,64.94
@@ -429,6 +438,9 @@ step
 step
   talk Harken Windtotem##2947
   turnin Swoop Hunting##761 |goto Mulgore 47.67,62.68
+step
+  talk Maur Raincaller##3055
+  turnin Mazzranache##766 |goto Mulgore 46.23,60.8
 step
   talk Zarlman Two-Moons##3054
   turnin Rite of Vision##767 |goto Mulgore 46.88,61.19
@@ -464,18 +476,14 @@ step
   note Use the Taming Rod to tame a Prairie Stalker. Practice your skills, then return the Taming Rod to Yaw Sharpmane in Bloodhoof Village.
   use Prairie Stalker##2959 |q 6087 |goto Mulgore 48.68,50.87 |tip {useit}
 step
-  only Mage
-  talk Un'Thuwa##5880
-  turnin Speak with Un'thuwa##1883 |goto Durotar 56.31,75.11 |tip {turninat}Durotar
-step
-  talk Morin Cloudstalker##2988
-  turnin The Ravaged Caravan##751 |goto Mulgore 54.76,64.27
-step
   talk Morin Cloudstalker##2988
   turnin Fizsprocket's Notes##98424 |goto Mulgore 54.76,64.27
 step
   talk Morin Cloudstalker##2988
   turnin Ceasing Operations##98427 |goto Mulgore 54.76,64.27
+step
+  talk Morin Cloudstalker##2988
+  turnin The Ravaged Caravan##751 |goto Mulgore 54.76,64.27
 step
   talk Morin Cloudstalker##2988
   accept The Venture Co.##764 |goto Mulgore 54.76,64.27
@@ -501,19 +509,19 @@ step
   talk Lorekeeper Raintotem##3233
   turnin A Sacred Burial##833 |goto Mulgore 56.98,34.55
 step
+  talk Sergra Darkthorn##3338
+  turnin Sergra Darkthorn##860 |goto The Barrens 52.23,31.01 |tip {turninat}The Barrens
+step
+  talk Tonga Runetotem##3448
+  turnin The Barrens Oases##886 |goto The Barrens 52.26,31.93 |tip {turninat}The Barrens
+step
   only Skyborne Druid
   talk Dendrite Starblaze##11802
   turnin Moonglade##94913 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
 step
-  talk Sergra Darkthorn##3338
-  turnin Sergra Darkthorn##860 |goto The Barrens 52.23,31.01 |tip {turninat}The Barrens
-step
   only Tauren
   talk Jahan Hawkwing##3483
   turnin Return to Jahan##6364 |goto The Barrens 51.21,29.05 |tip {turninat}The Barrens
-step
-  talk Tonga Runetotem##3448
-  turnin The Barrens Oases##886 |goto The Barrens 52.26,31.93 |tip {turninat}The Barrens
 step
   note Kill 14 Venture Co. Workers and 6 Venture Co. Supervisors for Morin Cloudstalker at Bloodhoof Village.
   kill Venture Co. Worker##2978 |q 764 |goto Mulgore 59.15,47.26
@@ -552,6 +560,10 @@ step
 step
   note Grull Hawkwind in Camp Narache wants you to kill Battleboars and bring back 8 Battleboar Snouts and 8 Battleboar Flanks.
   collect Battleboar Snout##4848 |q 780 |goto Mulgore 59.49,78.77 |tip {dropsfrom}Bristleback Battleboar, Battleboar
+step
+  only Shaman
+  talk Minor Manifestation of Earth##5891
+  accept Call of Earth##1521 |goto Mulgore 51.99,80.4
 step
   talk Zarlman Two-Moons##3054
   turnin Rite of Vision##771 |goto Mulgore 46.88,61.19
@@ -609,6 +621,10 @@ step
 step
   talk Grull Hawkwind##2980
   turnin The Battleboars##780 |goto Mulgore 44.47,77.5
+step
+  only Shaman
+  talk Seer Ravenfeather##5888
+  turnin Call of Earth##1521 |goto Mulgore 44.35,76.77
 step
   only Tauren Hunter
   talk Yaw Sharpmane##3065

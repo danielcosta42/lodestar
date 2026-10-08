@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Loch Modan (13-23)",
+	next = "Leveling/Alliance/Redridge Mountains (15-24)",
 }, [[
 step
   note {fp}Jaelysia
@@ -131,18 +131,8 @@ step
   note Acquire 8 Grell Earrings for Asterion in Bashal'Aran.
   collect 8 Grell Earring##5336 |q 955 |goto Darkshore 44.82,37.54 |tip {dropsfrom}Vile Sprite, Wild Grell
 step
-  talk Baros Alexston##1646
-  accept Making Do##97926 |goto Stormwind City 57.74,47.86
-step
   talk Balthule Shadowstrike##3661
   turnin The Tower of Althalaxx##965 |goto Darkshore 54.97,24.89
-step
-  talk Wilder Thistlenettle##656
-  accept Collecting Memories##168 |goto Stormwind City 70.31,40.82
-step
-  note Retrieve 4 Miners' Union Cards and return them to Wilder Thistlenettle in Stormwind.
-  kill Skeletal Miner##623 |goto Westfall 41.22,81.67 |elite
-  collect 4 Miners' Union Card##1894 |q 168 |goto Westfall 41.22,81.67
 step
   talk Balthule Shadowstrike##3661
   accept The Tower of Althalaxx##966 |goto Darkshore 54.97,24.89
@@ -156,20 +146,8 @@ step
   note Kill Athrikus Narassin and bring his head to Balthule Shadowstrike near the Tower of Althalaxx.
   collect Athrikus Narassin's Head##5383 |q 1143 |goto Darkshore 56.02,26.33 |tip {dropsfrom}Athrikus Narassin, Galvinquam Leafsyre
 step
-  talk Donyal Tovald##2504
-  accept Shelf Picked##97237 |goto Stormwind City 75.05,30.12
-step
-  note Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park.
-  collect The Forsaken Ally##277195 |q 97237 |goto Stormwind City 75.05,30.12
-step
-  talk Borgus Steelhand##7232
-  accept Business in Auberdine##97894 |goto Stormwind City 59.4,34.26
-step
   kill Baron Marinous##270294 |goto Darkshore 59.06,22.95 |tip Loot the quest item here — it starts the quest.
   accept Baron Marinous##98028 |goto Darkshore 59.06,22.95
-step
-  talk Arch Druid Fandral Staghelm##3516
-  accept Grove of the Ancients##952 |goto Darnassus 34.81,9.26
 step
   talk Gelkak Gyromast##6667
   accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
@@ -177,14 +155,8 @@ step
   note Find and return the three pieces of Gelkak's Key to Gelkak Gyromast.
   collect Top of Gelkak's Key##7498 |q 2098 |goto Darkshore 39.1,89.1 |tip {dropsfrom}Giant Foreststrider
 step
-  talk Roy Lewells##268568
-  turnin Shelf Picked##97237 |goto Stormwind City 38.72,62.18 |tip {turninat}Stormwind City
-step
   talk Sentinel Tysha Moonblade##3639
   accept The Fall of Ameth'Aran##953 |goto Darkshore 40.3,59.73
-step
-  talk Roy Lewells##268568
-  accept Reading Room##97234 |goto Stormwind City 38.72,62.18
 step
   note Study the tablets which tell of Ameth'Aran and of its fall, then return to Sentinel Tysha Moonblade in Darkshore.
   collect The Lay of Ameth'Aran##17188 |q 953 |goto Darkshore 43.3,58.68
@@ -193,13 +165,7 @@ step
   use Rabid Thistle Bear##2164 |q 2118 |goto Darkshore 43.74,56.59 |tip {useit}
 step
   talk Onu##3616
-  turnin Grove of the Ancients##952 |goto Darkshore 43.55,76.29
-step
-  talk Onu##3616
   turnin Baron Marinous##98028 |goto Darkshore 43.55,76.29
-step
-  talk Master Mathias Shaw##332
-  accept The Defias Brotherhood##141 |goto Stormwind City 78.31,70.74
 step
   talk Arbal##270269
   accept Swelling Forces##98013 |goto Darkshore 43.71,76.51
@@ -228,9 +194,6 @@ step
 step
   talk Sentinel Glynda Nal'Shea##2930
   turnin WANTED: Murkdeep!##4740 |goto Darkshore 37.7,43.41
-step
-  talk Thundris Windweaver##3649
-  turnin Making Do##97926 |goto Darkshore 37.4,40.13
 step
   talk Tarrel Rockweaver##2096
   turnin Unrequited Love##98461 |goto Wetlands 11.5,52.17 |tip {turninat}Wetlands
@@ -266,9 +229,6 @@ step
 step
   talk Archaeologist Hollee##2913
   turnin The Absent Minded Prospector##731 |goto Darkshore 37.44,41.84
-step
-  talk Gorbold Steelhand##6301
-  turnin Business in Auberdine##97894 |goto Darkshore 38.11,41.17
 step
   talk Sentinel Glynda Nal'Shea##2930
   turnin WANTED: Jai'vhanel##98025 |goto Darkshore 37.7,43.41
@@ -330,9 +290,6 @@ step
   note Use the Curative Animal Salve on 10 Sickly Deer that are located throughout Darkshore; doing so should cure them. Sickly Deer have been reported starting south of the Cliffspring River to the north of Auberdine and extending all the way into southern Darkshore where the edge of Ashenvale begins.
   use Sickly Deer##12298 |q 6124 |goto Darkshore 43.35,48.22 |tip {useit}
 step
-  talk Gryan Stoutmantle##234
-  turnin The Defias Brotherhood##141 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
-step
   talk Asterion##3650
   turnin Bashal'Aran##955 |goto Darkshore 44.17,36.29
 step
@@ -350,14 +307,8 @@ step
   note Collect 6 Moonstalker Fangs and place them in Buzzbox 323.
   collect 6 Moonstalker Fang##5413 |q 1002 |goto Darkshore 42.66,66.05 |tip {dropsfrom}Moonstalker, Moonstalker Runt, Moonstalker Matriarch
 step
-  talk Wilder Thistlenettle##656
-  turnin Collecting Memories##168 |goto Stormwind City 70.31,40.82 |tip {turninat}Stormwind City
-step
   talk Balthule Shadowstrike##3661
   turnin The Tower of Althalaxx##966 |goto Darkshore 54.97,24.89
-step
-  talk Donyal Tovald##2504
-  turnin Reading Room##97234 |goto Stormwind City 75.05,30.12 |tip {turninat}Stormwind City
 step
   turnin Buzzbox 323##1002 |goto Darkshore 51.29,24.57
 step
@@ -434,14 +385,14 @@ step
 step
   turnin As Water Cascades##4812 |goto Darkshore 47.32,48.68
 step
+  talk Delgren the Purifier##3663
+  turnin The Tower of Althalaxx##981 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale
+step
   talk Terenthis##3693
   turnin How Big a Threat?##985 |goto Darkshore 39.37,43.48
 step
   talk Tharnariun Treetender##3701
   turnin Cleansing of the Infected##2138 |goto Darkshore 38.84,43.42
-step
-  talk Delgren the Purifier##3663
-  turnin The Tower of Althalaxx##981 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale
 step
   talk Terenthis##3693
   accept A Lost Master##986 |goto Darkshore 39.37,43.48
@@ -595,6 +546,6 @@ step
   talk Raene Wolfrunner##3691
   turnin Trek to Ashenvale##990 |goto Ashenvale 36.62,49.58 |tip {turninat}Ashenvale
 step
-  note {travel}Loch Modan
-  goto Loch Modan 37.02,47.81
+  note {travel}Redridge Mountains
+  goto Redridge Mountains 24.9,44.45
 ]])

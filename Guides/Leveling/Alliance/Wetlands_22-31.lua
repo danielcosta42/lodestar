@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Wetlands (22-31)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/The Barrens (18-40)",
+	next = "Leveling/Alliance/Duskwood (24-30)",
 }, [[
 step
   note {fp}Bethaine Flinthammer
@@ -26,9 +26,9 @@ step
   talk Rhag Garmason##1075
   accept The Thandol Span##631 |goto Wetlands 49.9,18.24
 step
-  only Mage
-  talk Bink##5144
-  accept High Sorcerer Andromath##1939 |goto Ironforge 27.25,8.3
+  only Warlock
+  talk Briarthorn##5172
+  accept In Search of Menara Voidrender##4736 |goto Ironforge 50.35,5.66
 step
   note Motley Garmason at Dun Modr wants you to kill 10 Dark Iron Dwarves, 5 Dark Iron Tunnelers, 5 Dark Iron Saboteurs and 5 Dark Iron Demolitionists.
   kill Dark Iron Dwarf##1051 |q 303 |goto Wetlands 59.49,23.02 |elite
@@ -36,21 +36,18 @@ step
   talk Einar Stonegrip##2093
   accept Daily Delivery##469 |goto Wetlands 49.92,39.37
 step
-  talk Brother Sarno##7917
-  accept Tinkmaster Overspark##2923 |goto Stormwind City 51.05,48.39
-step
-  talk Tinkmaster Overspark##7944
-  turnin Tinkmaster Overspark##2923 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
+  only Warlock
+  talk Menara Voidrender##6266
+  turnin In Search of Menara Voidrender##4736 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
   talk Rethiel the Greenwarden##1244
   accept Tramping Paws##276 |goto Wetlands 56.37,40.4
 step
-  talk Tinkmaster Overspark##7944
-  accept Save Techbot's Brain!##2922 |goto Ironforge 69.55,50.33
+  talk Gnoarn##6569
+  accept The Day After##2927 |goto Ironforge 69.18,50.55
 step
-  note Bring Techbot's Memory Core to Tinkmaster Overspark in Ironforge.
-  kill Techbot##6231 |goto Dun Morogh 19.78,31.93 |elite
-  collect Techbot's Memory Core##9277 |q 2922 |goto Dun Morogh 19.78,31.93
+  talk Ozzie Togglevolt##1268
+  turnin The Day After##2927 |goto Dun Morogh 45.89,49.39 |tip {turninat}Dun Morogh
 step
   talk Ormer Ironbraid##1078
   accept Ormer's Revenge##294 |goto Wetlands 38.18,50.89
@@ -148,32 +145,27 @@ step
   note Subdue Tapoke Jahn before he escapes, and then return to Mikhail in Menethil.
   use Tapoke "Slim" Jahn##4962 |q 1249 |goto Wetlands 10.54,60.26 |tip {useit}
 step
-  only Mage
-  talk High Sorcerer Andromath##5694
-  turnin High Sorcerer Andromath##1939 |goto Stormwind City 48.71,87.62 |tip {turninat}Stormwind City
+  talk Master Mathias Shaw##332
+  accept Look to an Old Friend##350 |goto Stormwind City 78.31,70.74
 step
-  talk Warden Thelwater##1719
-  accept Quell The Uprising##387 |goto Stormwind City 51.49,69.38
+  talk Elling Trias##482
+  accept The Head of the Beast##394 |goto Stormwind City 66.03,74.1
 step
-  talk Nikova Raskol##1721
-  accept The Color of Blood##388 |goto Stormwind City 76.42,63.67
+  talk Grand Mason Marblesten##2790
+  accept A King's Tribute##689 |goto Ironforge 39.04,88.05
 step
-  note Nikova Raskol of Stormwind wants you to collect 10 Red Wool Bandanas.
-  collect 10 Red Wool Bandana##2909 |q 388 |goto The Stockade - Dungeon -1,-1 |elite |tip {dropsfrom}Dextren Ward, Defias Prisoner, Defias Captive
+  note Grand Mason Marblesten of Ironforge wants 5 pieces of Alterac Granite.
+  collect Alterac Granite##4521 |q 689 |goto Hillsbrad Foothills 43.85,30.19
 step
-  talk Collin Mauren##4078
-  accept Retrieval for Mauren##1078 |goto Stormwind City 53.02,86.64
+  talk Elling Trias##482
+  accept The Missing Diplomat##1246 |goto Stormwind City 66.03,74.1
 step
-  note Bring 8 Crystalized Scales to Collin Mauren in Stormwind.
-  collect 8 Crystalized Scales##5675 |q 1078 |goto Stonetalon Mountains 33.27,72.14 |tip {dropsfrom}Scorched Basilisk, Singed Basilisk, Blackened Basilisk
+  talk Dashel Stonefist##4961
+  accept The Missing Diplomat##1247 |goto Stormwind City 74.26,59.17
 step
-  only Mage
-  talk High Sorcerer Andromath##5694
-  accept Pristine Spider Silk##1940 |goto Stormwind City 48.71,87.62
-step
-  only Mage
-  note Bring 8 Pristine Spider Silk to Wynne Larson in Stormwind.
-  collect 8 Pristine Spider Silk##7267 |q 1940 |goto Duskwood 32.57,51.43 |tip {dropsfrom}Black Widow Hatchling, Carrion Recluse
+  only Warlock
+  talk Demisette Cloyce##461
+  accept In Search of Menara Voidrender##4738 |goto Stormwind City 39.24,84.96
 step
   only Shaman
   talk Hervdana Saegrund##258203
@@ -233,8 +225,9 @@ step
   click Ebenezer Rustlocke's Corpse##2652
   accept The Thandol Span##632 |goto Wetlands 51.28,7.95
 step
-  note Warden Thelwater of Stormwind wants you to kill 10 Defias Prisoners, 8 Defias Convicts, and 8 Defias Insurgents in The Stockade.
-  kill Defias Prisoner##1706 |q 387 |goto The Stockade - Dungeon -1,-1 |elite
+  only Warlock
+  talk Menara Voidrender##6266
+  turnin In Search of Menara Voidrender##4738 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
   talk Rethiel the Greenwarden##1244
   turnin Tramping Paws##276 |goto Wetlands 56.37,40.4
@@ -244,9 +237,6 @@ step
 step
   talk Rethiel the Greenwarden##1244
   turnin The Greenwarden##463 |goto Wetlands 56.37,40.4
-step
-  talk Tinkmaster Overspark##7944
-  turnin Save Techbot's Brain!##2922 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
 step
   talk Fiora Longears##4456
   turnin Fiora Longears##1132 |goto Dustwallow Marsh 66.46,45.15 |tip {turninat}Dustwallow Marsh
@@ -337,15 +327,8 @@ step
   note Kill 13 Cursed Sailors, 5 Cursed Marines and First Mate Snellig. Bring Snellig's Snuffbox to First Mate Fitzsimmons in Menethil Harbor.
   kill Cursed Sailor##1157 |q 289 |goto Wetlands 13.93,30.28
 step
-  talk Warden Thelwater##1719
-  turnin Quell The Uprising##387 |goto Stormwind City 51.49,69.38 |tip {turninat}Stormwind City
-step
-  talk Nikova Raskol##1721
-  turnin The Color of Blood##388 |goto Stormwind City 76.42,63.67 |tip {turninat}Stormwind City
-step
-  only Mage
-  talk Wynne Larson##1309
-  turnin Pristine Spider Silk##1940 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
+  talk Master Mathias Shaw##332
+  turnin The Head of the Beast##394 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
 step
   only Shaman
   talk Hervdana Saegrund##258203
@@ -359,12 +342,26 @@ step
   talk Hervdana Saegrund##258203
   turnin Call of Water##94500 |goto Wetlands 65.73,76.43
 step
-  talk Collin Mauren##4078
-  turnin Retrieval for Mauren##1078 |goto Stormwind City 53.02,86.64 |tip {turninat}Stormwind City
+  talk Grand Mason Marblesten##2790
+  turnin A King's Tribute##689 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge
 step
-  only Mage
-  talk Wynne Larson##1309
-  accept Astral Knot Garment##1942 |goto Stormwind City 51.84,83.51
+  talk Elling Trias##482
+  turnin Look to an Old Friend##350 |goto Stormwind City 66.03,74.1 |tip {turninat}Stormwind City
+step
+  talk Dashel Stonefist##4961
+  turnin The Missing Diplomat##1246 |goto Stormwind City 74.26,59.17 |tip {turninat}Stormwind City
+step
+  talk Elling Trias##482
+  turnin The Missing Diplomat##1247 |goto Stormwind City 66.03,74.1 |tip {turninat}Stormwind City
+step
+  talk Master Mathias Shaw##332
+  accept Brotherhood's End##395 |goto Stormwind City 78.31,70.74
+step
+  talk Grand Mason Marblesten##2790
+  accept A King's Tribute##700 |goto Ironforge 39.04,88.05
+step
+  talk Elling Trias##482
+  accept Infiltrating the Castle##2745 |goto Stormwind City 66.03,74.1
 step
   talk Rhag Garmason##1075
   turnin The Thandol Span##632 |goto Wetlands 49.9,18.24
@@ -384,14 +381,32 @@ step
   kill Chieftain Nek'rosh##2091 |goto Wetlands 53.51,54.67 |elite
   collect Nek'rosh's Head##3625 |q 474 |goto Wetlands 53.51,54.67
 step
+  talk Baros Alexston##1646
+  turnin Brotherhood's End##395 |goto Stormwind City 57.74,47.86 |tip {turninat}Stormwind City
+step
   talk Rethiel the Greenwarden##1244
   turnin Fire Taboo##277 |goto Wetlands 56.37,40.4
+step
+  talk Tyrion##7766
+  turnin Infiltrating the Castle##2745 |goto Stormwind City 73.23,35.58 |tip {turninat}Stormwind City
 step
   talk Rethiel the Greenwarden##1244
   accept Blisters on The Land##275 |goto Wetlands 56.37,40.4
 step
+  talk Baros Alexston##1646
+  accept An Audience with the King##396 |goto Stormwind City 57.74,47.86
+step
+  talk Tyrion##7766
+  accept Items of Some Consequence##2746 |goto Stormwind City 73.23,35.58
+step
+  note Bring 3 Silk Cloth and 2 of Clara's Fresh Apples to Tyrion in Stormwind.
+  collect 3 Silk Cloth##4306 |q 2746 |goto Hillsbrad Foothills 43.85,30.19 |tip {dropsfrom}Alterac Granite, Battered Chest, Solid Chest
+step
   talk Ormer Ironbraid##1078
   turnin Ormer's Revenge##295 |goto Wetlands 38.18,50.89
+step
+  talk King Magni Bronzebeard##2784
+  turnin A King's Tribute##700 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
 step
   talk Ormer Ironbraid##1078
   accept Ormer's Revenge##296 |goto Wetlands 38.18,50.89
@@ -431,10 +446,6 @@ step
   talk Mikhail##4963
   accept The Missing Diplomat##1264 |goto Wetlands 10.6,60.77
 step
-  only Mage
-  talk Wynne Larson##1309
-  turnin Astral Knot Garment##1942 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
-step
   note Destroy the cache of explosives.
   collect Cache of Explosives##2704 |q 633 |goto Arathi Highlands 48.79,88.05
 step
@@ -447,8 +458,14 @@ step
   note Kill 12 Fen Creepers, then return to Rethiel the Greenwarden in the Wetlands.
   kill Fen Creeper##1040 |q 275 |goto Wetlands 33.01,32.92
 step
+  talk Lady Katrana Prestor##1749
+  turnin An Audience with the King##396 |goto Stormwind City 80.1,38.17 |tip {turninat}Stormwind City
+step
   talk Rethiel the Greenwarden##1244
   turnin Blisters on The Land##275 |goto Wetlands 56.37,40.4
+step
+  talk Tyrion##7766
+  turnin Items of Some Consequence##2746 |goto Stormwind City 73.23,35.58 |tip {turninat}Stormwind City
 step
   talk Grimand Elmore##1416
   turnin Blessed Arm##322 |goto Stormwind City 59.73,33.78 |tip {turninat}Stormwind City
@@ -489,6 +506,6 @@ step
   talk Karl Boran##1242
   turnin Return the Statuette##286 |goto Wetlands 8.32,58.57
 step
-  note {travel}The Barrens
-  goto The Barrens 62.68,36.23
+  note {travel}Duskwood
+  goto Duskwood 71.93,46.42
 ]])

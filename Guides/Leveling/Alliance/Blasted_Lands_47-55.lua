@@ -1,7 +1,7 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Blasted Lands (47-60)", {
+ns:RegisterGuide("Leveling/Alliance/Blasted Lands (47-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Searing Gorge (48-52)",

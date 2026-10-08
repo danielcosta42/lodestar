@@ -73,33 +73,44 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 
 ## O que o gerador decide
 
-- **Faixa de nível por leva.** O Forever pôs conteúdo de 55-60 em Tirisfal e de 52-60 em Moonglade;
-  zona com um buraco de 10 níveis sem quest vira dois guias (`Tirisfal Glades (4-12)` e `(55-60)`),
-  senão o jogador de nível 5 seria mandado a quest de nível 55.
+- **Faixa de nível por leva.** O Forever pôs conteúdo de 55-60 em Tirisfal e em Teldrassil; zona
+  com um buraco de 10 níveis sem quest vira dois guias (`Tirisfal Glades (5-12)` e `(55-60)`), senão
+  o jogador de nível 5 seria mandado a quest de nível 55. Quest de classe entra no guia mas não decide
+  a faixa — as de druida em Moonglade inventavam um "Moonglade (10-20)" na cadeia de todo mundo.
 - **Fica fora do leveling:** quest que exige profissão (as onze "Camping 101: <profissão>" de cada
   zona inicial), entrega de Craftsman's Writ, e categoria que não é rota — feriado, Darkmoon, guerra
   de AQ, reputação de fim de jogo, profissão e campo de batalha. Classe fica, com `only <Classe>`.
+- **Cada facção com o seu lado.** Quest das duas facções lista quem dá e quem recebe dos dois lados
+  (The Hunter's Charm: Thunder Bluff e Darnassus); no guia de uma facção fica só o lado dela, pelo
+  `friendlyToFaction` do NPC — o que as correções por facção do QuestieDB fazem em Lua. Quest que só
+  a outra facção dá sai do guia. Viagem a cidade inimiga: de 43 para 27 passos na Aliança e de 41
+  para 31 na Horda; o que sobra é Lunar Festival, alvo de quest (Mathias Shaw) e NPC neutro do
+  Argent Dawn dentro de cidade inimiga.
 - **Quest de capital** vai para o guia cuja faixa serve, preferindo a zona onde a capital fica
-  (Ironforge → Dun Morogh) — e nunca para Zephras Isle: quem está na ilha não vai a capital nenhuma.
-- **"Speak with X"** sai como `talk`, não `kill`: o banco guarda o objetivo como de criatura.
+  (Ironforge → Dun Morogh) — e nunca para Zephras Isle.
+- **Zephras Isle fica fora da cadeia.** O `next` dos guias pula a ilha (Dun Morogh → Westfall), e o
+  autopilot só a oferece a Skyborne ou a quem já está lá.
+- **"Speak with X"** num NPC amigo sai como `talk`, não `kill`: o banco guarda o objetivo como de
+  criatura.
 - **Pré-requisito em ciclo** (a própria quest, ou a versão dela de outra raça — "Call of Earth" 1516
   pedia `[1516, 1519, 92466]`) é retirado no import.
 - **Skyborne** são as raças 95 (Aliança) e 96 (Horda), máscaras `2^32` e `2^33` (enum do QuestieDB,
-  não `2^(id-1)`). O token em inglês ainda não é público: o `Guide.lua` reconhece a raça pelo id, e o
-  guia inicial dela é Zephras Isle.
+  não `2^(id-1)`). Máscara só com esses bits — um ou os dois — sai `only Skyborne`. O token em inglês
+  ainda não é público: o `Guide.lua` reconhece a raça pelo id, e o guia inicial dela é Zephras Isle.
+  Zona inicial com duas faixas começa pela mais baixa.
 
 ## Números (QuestieDB 1.0.5, build 70245)
 
 | | |
 |---|---|
-| Guias | 154 (68 de leveling, 85 especiais, 1 exemplo) |
-| Quests novas do Forever em guia | **454 de 760** |
+| Guias | 150 (64 de leveling, 85 especiais, 1 exemplo) |
+| Quests novas do Forever em guia | **453 de 760** |
 | — fora: entrega de Craftsman's Writ | 150 |
 | — fora: exigem profissão | 80 |
 | — fora: começam por item ou giver sem posição | 64 |
 | — fora: evento/repetível/campo de batalha | 8 |
-| — fora: outro | 4 |
-| `validate_guides.py` — bloqueios reais | **0** (os guias anteriores, no mesmo banco: 293) |
+| — fora: outro | 5 |
+| `validate_guides.py` — bloqueios reais | **0** (os guias anteriores, no mesmo banco: 289) |
 | `guide_integrity.py` — passo sem coordenada | 50 (antes: 434) |
 
 `gen_forever.py` imprime essa conta a cada rodada.
@@ -146,8 +157,8 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
 - **Quest de profissão.** Fica fora porque o DSL não tem condição de profissão; com uma (`skill(171)`),
   as "Camping 101" e as entregas de Craftsman's Writ podiam entrar para quem tem a profissão.
 - **Quest de capital de nível 60** cai no primeiro guia de mediana 60 (hoje Redridge 54-60 na
-  Aliança e Eastern Plaguelands 57-60 na Horda, ~70 accepts cada). Herdado do gerador; um guia de
-  "capital 60" seria o lugar certo.
+  Aliança e Eastern Plaguelands 56-60 na Horda, que fica com 135 accepts). Herdado do gerador; um
+  guia de "capital 60" seria o lugar certo.
 - **Passo que começa por item de drop** sem fonte localizada (64 quests novas): falta o
   `itemDrops` do QuestieDB no `items.json`.
 - **Dado de Outland nas tabelas escritas à mão.** `FlightData`, `TransitData` e `TravelPlanner`

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Tanaris (46-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Felwood (52-59)",
+	next = "Leveling/Horde/Felwood (52-58)",
 }, [[
 step
   note {fp}Laziphus
