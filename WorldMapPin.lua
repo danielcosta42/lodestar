@@ -43,14 +43,14 @@ local function update()
 
 	-- coords a marcar: o ALVO (se este é o mapa dele) ou, se o alvo está longe,
 	-- o HUB de transporte (cais/portal/torre) caso você esteja vendo a zona dele.
-	local px, py
-	local tmap = ns.TargetMapID and ns.TargetMapID(goal)
-	if shown == tmap then
-		px, py = goal.goto_.x, goal.goto_.y
-	elseif ns.TravelPlanner and goal.goto_.zone then
+	-- em 0-1 no mapa aberto: o do alvo, ou outro (zona vizinha, continente) pela
+	-- coordenada de mundo; fora dele, o HUB do plano de viagem se ele estiver ali
+	local px, py = ns.Waypoint:MapPos(goal.goto_.zone, goal.goto_.x, goal.goto_.y, shown)
+	if px and (px < 0 or px > 1 or py < 0 or py > 1) then px = nil end
+	if not px and ns.TravelPlanner and goal.goto_.zone then
 		local _, hop = ns.TravelPlanner:Plan(goal.goto_.zone)
 		if hop and hop.zone and ns.zoneUiMap and ns.zoneUiMap[hop.zone] == shown then
-			px, py = hop.x, hop.y
+			px, py = hop.x / 100, hop.y / 100
 		end
 	end
 	if not px then if pin then pin:Hide() end return end
@@ -65,7 +65,7 @@ local function update()
 	local w, h = canvas:GetSize()
 	if not w or w == 0 then p:Hide(); return end
 	p:ClearAllPoints()
-	p:SetPoint("CENTER", canvas, "TOPLEFT", (px / 100) * w, -(py / 100) * h)
+	p:SetPoint("CENTER", canvas, "TOPLEFT", px * w, -py * h)
 	p:Show()
 end
 

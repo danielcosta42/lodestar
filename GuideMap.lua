@@ -94,12 +94,13 @@ local function update()
 
 	releaseAll()
 	for _, info in ipairs(upcomingPins()) do
-		local map = ns.zoneUiMap and ns.zoneUiMap[info.zone]
-		if map == shown then
+		-- qualquer mapa aberto que contenha o ponto (zona vizinha, continente)
+		local x, y = ns.Waypoint:MapPos(info.zone, info.x, info.y, shown)
+		if x and x >= 0 and x <= 1 and y >= 0 and y <= 1 then
 			local p = acquire(canvas)
 			style(p, info)
 			p:ClearAllPoints()
-			p:SetPoint("CENTER", canvas, "TOPLEFT", (info.x / 100) * w, -(info.y / 100) * h)
+			p:SetPoint("CENTER", canvas, "TOPLEFT", x * w, -y * h)
 			p:Show()
 		end
 	end

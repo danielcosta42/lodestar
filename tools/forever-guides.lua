@@ -230,6 +230,34 @@ check(logar(10).char.currentGuide == "Leveling/Alliance/Elwynn Forest (3-10)",
 C_Map = nil
 playerLevel = 1
 
+-- ── mapa-múndi: alvo e jogador projetados no mapa que estiver aberto ────────
+-- Silverpine fica à esquerda de Tirisfal: com o mapa de Tirisfal aberto e o alvo
+-- em Silverpine, nada se desenhava (só o mapa da zona do alvo servia)
+C_Map = {
+	GetBestMapForUnit = function() return 1420 end,
+	GetPlayerMapPosition = function() return { x = 0.6, y = 0.5 } end,
+	GetWorldPosFromMapPos = function(m, p)
+		return 0, { x = (m == 1421 and -1000 or 0) + p.x * 1000, y = p.y * 1000 }
+	end,
+	GetMapPosFromWorldPos = function(_, w, m)
+		return m, { x = (w.x - (m == 1421 and -1000 or 0)) / 1000, y = w.y / 1000 }
+	end,
+}
+CreateVector2D = function(x, y) return { x = x, y = y } end
+local wns = { zoneUiMap = { ["Tirisfal Glades"] = 1420, ["Silverpine Forest"] = 1421 },
+	On = function() end, Every = function() end }
+assert(loadfile(ROOT .. "/Waypoint.lua"))("Lodestar", wns)
+local WP = wns.Waypoint
+local function perto(a, b) return a and math.abs(a - b) < 1e-9 end
+local gx, gy = WP:MapPos("Silverpine Forest", 50, 50, 1420)
+check(perto(gx, -0.5) and perto(gy, 0.5), "alvo de Silverpine cai à esquerda, fora do mapa de Tirisfal")
+check(perto((WP:MapPos("Tirisfal Glades", 30, 40, 1420)), 0.3), "alvo da zona aberta: a própria coordenada")
+check(perto((WP:PlayerMapPos(1421)), 1.6), "jogador de Tirisfal projetado no mapa de Silverpine")
+local x0, y0, x1, y1 = WP.ClipSegment(0.6, 0.5, -0.5, 0.5)
+check(perto(x0, 0.6) and perto(x1, 0) and perto(y1, 0.5), "linha até alvo fora do mapa para na borda")
+check(WP.ClipSegment(1.2, 0.5, 1.5, 0.5) == nil, "segmento todo fora do mapa não desenha")
+C_Map, CreateVector2D = nil, nil
+
 -- ── a biblioteca gerada inteira ──────────────────────────────────────────────
 -- Todo guia que os manifestos carregam é Lua válido, registra, interpreta com
 -- passo, e toda zona de |goto existe no ZoneData (senão a seta não acha o mapa).

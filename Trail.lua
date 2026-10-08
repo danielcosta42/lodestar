@@ -137,15 +137,18 @@ local function updateWorld()
 	local WMF = WorldMapFrame
 	if not (ns.db and ns.db.trail and ns:UIShown()
 		and WMF and WMF.GetCanvas and WMF:IsShown()) then return hideWM() end
-	if not ns.Waypoint then return hideWM() end
-	local goal, traveling = ns.Waypoint:DrawContext()
+	local WP = ns.Waypoint
+	if not WP then return hideWM() end
+	-- em qualquer mapa aberto (o da zona, o de outra zona, o do continente): alvo e
+	-- jogador projetados nele, a linha recortada na borda
+	local goal = WP:DrawContext()
 	local shown = WMF.GetMapID and WMF:GetMapID()
-	if not goal or traveling or not goal.goto_
-		or shown ~= (ns.TargetMapID and ns.TargetMapID(goal)) then
-		return hideWM()
-	end
-	local ppos = C_Map.GetPlayerMapPosition and C_Map.GetPlayerMapPosition(shown, "player")
-	if not ppos then return hideWM() end
+	if not (goal and goal.goto_ and goal.goto_.zone and shown) then return hideWM() end
+	local gx, gy = WP:MapPos(goal.goto_.zone, goal.goto_.x, goal.goto_.y, shown)
+	local px, py = WP:PlayerMapPos(shown)
+	if not (gx and px) then return hideWM() end
+	px, py, gx, gy = WP.ClipSegment(px, py, gx, gy)
+	if not px then return hideWM() end
 	local ok, canvas = pcall(WMF.GetCanvas, WMF)
 	if not ok or not canvas then return end
 	if not wmFrame then
@@ -157,8 +160,8 @@ local function updateWorld()
 	wmFrame:SetParent(canvas); wmFrame:SetAllPoints(canvas)
 	local w, h = canvas:GetSize()
 	for _, l in ipairs({ wmGlow, wmCore }) do
-		l:SetStartPoint("TOPLEFT", canvas, ppos.x * w, -ppos.y * h)
-		l:SetEndPoint("TOPLEFT", canvas, (goal.goto_.x / 100) * w, -(goal.goto_.y / 100) * h)
+		l:SetStartPoint("TOPLEFT", canvas, px * w, -py * h)
+		l:SetEndPoint("TOPLEFT", canvas, gx * w, -gy * h)
 		l:Show()
 	end
 end
@@ -190,6 +193,19 @@ function ns.Trail.Debug()
 	end
 	ns:Print("mmCore shown:", mmCore and tostring(mmCore:IsShown()),
 		"| mmEnd shown:", mmEnd and tostring(mmEnd:IsShown()))
+	-- mapa-múndi (abra o mapa e rode de novo)
+	local WMF = WorldMapFrame
+	local shown = WMF and WMF.GetMapID and WMF:GetMapID()
+	ns:Print("mapa aberto:", tostring(WMF and WMF:IsShown()), "| id:", tostring(shown),
+		"| GetMapPosFromWorldPos:", tostring(C_Map.GetMapPosFromWorldPos ~= nil))
+	if shown and goal.goto_ then
+		local gx, gy = ns.Waypoint:MapPos(goal.goto_.zone, goal.goto_.x, goal.goto_.y, shown)
+		local px, py = ns.Waypoint:PlayerMapPos(shown)
+		ns:Print("no mapa aberto — alvo:", tostring(gx), tostring(gy), "| jogador:", tostring(px), tostring(py))
+	end
+	ns:Print("linha:", wmCore and tostring(wmCore:IsShown()), "| pino:",
+		LodestarMapPin and tostring(LodestarMapPin:IsShown()), "| seta:",
+		LodestarArrow and tostring(LodestarArrow:IsShown()), "| guideMap:", tostring(ns.db.guideMap))
 end
 
 --------------------------------------------------------------------------------

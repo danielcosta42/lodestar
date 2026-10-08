@@ -66,6 +66,56 @@ local function targetMapID(goal)
 end
 ns.TargetMapID = targetMapID
 
+-- Ponto (zona, x, y em 0-100) no mapa `shown`, em 0-1 — pode cair fora de 0-1. Mapa
+-- de outra zona ou de continente: pela coordenada de mundo. Sem isso, com o mapa
+-- aberto em Tirisfal e o alvo em Silverpine, nada se desenhava.
+local GetMapPosFromWorld = C_Map and C_Map.GetMapPosFromWorldPos
+function WP:MapPos(zone, x, y, shown)
+	local tmap = targetMapID({ goto_ = { zone = zone } })
+	if not (tmap and shown) then return nil end
+	if tmap == shown then return x / 100, y / 100 end
+	if not (GetWorldPos and GetMapPosFromWorld and mkVec) then return nil end
+	local cont, wpos = GetWorldPos(tmap, mkVec(x / 100, y / 100))
+	if not (cont and wpos) then return nil end
+	local _, pos = GetMapPosFromWorld(cont, wpos, shown)
+	if pos then return pos.x, pos.y end
+end
+
+-- O jogador no mapa `shown`, em 0-1 (pode cair fora: mapa de outra zona).
+function WP:PlayerMapPos(shown)
+	local pm = GetBestMap and GetBestMap("player")
+	local p = pm and GetPlayerMapPos and GetPlayerMapPos(pm, "player")
+	if not (p and shown) then return nil end
+	if pm == shown then return p.x, p.y end
+	if not (GetWorldPos and GetMapPosFromWorld) then return nil end
+	local cont, wpos = GetWorldPos(pm, p)
+	if not (cont and wpos) then return nil end
+	local _, pos = GetMapPosFromWorld(cont, wpos, shown)
+	if pos then return pos.x, pos.y end
+end
+
+-- Recorta o segmento (x0,y0)-(x1,y1) ao quadrado 0-1 do mapa (Liang-Barsky): a
+-- linha até um alvo fora do mapa para na borda, na direção certa. nil se não cruza.
+function WP.ClipSegment(x0, y0, x1, y1)
+	local t0, t1, dx, dy = 0, 1, x1 - x0, y1 - y0
+	for _, pq in ipairs({ { -dx, x0 }, { dx, 1 - x0 }, { -dy, y0 }, { dy, 1 - y0 } }) do
+		local p, q = pq[1], pq[2]
+		if p == 0 then
+			if q < 0 then return nil end
+		else
+			local r = q / p
+			if p < 0 then
+				if r > t1 then return nil end
+				if r > t0 then t0 = r end
+			else
+				if r < t0 then return nil end
+				if r < t1 then t1 = r end
+			end
+		end
+	end
+	return x0 + t0 * dx, y0 + t0 * dy, x0 + t1 * dx, y0 + t1 * dy
+end
+
 function WP:DistanceTo(goal)
 	if not (GetWorldPos and GetPlayerMapPos and mkVec) then return nil end
 	local pmap = GetBestMap("player")
