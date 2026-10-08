@@ -22,6 +22,7 @@ tools/*
 !tools/gen_prereq.py
 !tools/gen_zonedata.py
 !tools/gen_trainers.py
+!tools/gen_travel.py
 !tools/gen_subzones.py
 !tools/validate_guides.py
 !tools/guide_integrity.py

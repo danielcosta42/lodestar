@@ -58,6 +58,7 @@ Consumables.lua
 SubZones.lua
 TransitData.lua
 FlightData.lua
+TravelData.lua
 TravelPlanner.lua
 StepTracker.lua
 DungeonRuns.lua
