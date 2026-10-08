@@ -34,9 +34,9 @@ DESCARTE = ("zzOLD", "Programmer", "Quest Path")
 CONTINENTES = {"0", "1"}
 
 # Entradas do bonde de Ironforge-Stormwind: gatilhos 2173 e 2175 da tabela AreaTrigger.
-TRAM = {"a": {"c": 0, "x": -8346.0, "y": 514.0, "n": "Stormwind City"},
-        "b": {"c": 0, "x": -4840.0, "y": -1330.0, "n": "Ironforge"},
-        "s": 120}
+# O Deeprun Tram: as pontas são os gatilhos de área do cliente nas duas estações.
+TRAM_GATILHOS = (("2173", "Stormwind City"), ("2175", "Ironforge"))
+TRAM_S = 120
 
 # Teleportes de classe: o destino é do servidor, então a chegada é o ponto de voo da cidade.
 TELEPORTES = [
@@ -74,12 +74,25 @@ def faccao(r):
 
 
 def zona_do_nome(nome, zonas):
-    """'Sentinel Hill, Westfall' -> 'Westfall'; 'Stormwind, Elwynn' -> 'Elwynn Forest'."""
+    """'Sentinel Hill, Westfall' -> 'Westfall'; 'Stormwind, Elwynn' -> 'Elwynn Forest'. `zonas` =
+    {nome: areaID}; se o começo casa mais de uma ('Arathi': Highlands e Basin), vale a de menor
+    areaID — a zona aberta, mais antiga que o campo de batalha."""
     parte = nome.rsplit(",", 1)[-1].strip()
     if parte in zonas:
         return parte
-    casa = sorted(z for z in zonas if z.startswith(parte))
-    return casa[0] if len(casa) == 1 else None
+    casa = sorted((zonas[z], z) for z in zonas if z.startswith(parte))
+    return casa[0][1] if casa else None
+
+
+def bonde():
+    g = {r["ID"]: r for r in tabela("AreaTrigger") if r["ID"] in dict(TRAM_GATILHOS)}
+
+    def ponta(ident, nome):
+        r = g[ident]
+        return {"c": int(r["ContinentID"]), "x": round(float(r["Pos_0"]), 1),
+                "y": round(float(r["Pos_1"]), 1), "n": nome}
+    (ia, na), (ib, nb) = TRAM_GATILHOS
+    return {"a": ponta(ia, na), "b": ponta(ib, nb), "s": TRAM_S}
 
 
 def comprimento(pts):
@@ -106,7 +119,10 @@ def simplifica(pts, tol=TOLERANCIA):
 
 def construir():
     zonas_json = json.load(open(os.path.join(BANCO, "zones.json"), encoding="utf-8"))
-    zonas = {v["name"] for v in zonas_json.values() if v.get("name")}
+    zonas = {}
+    for area, v in zonas_json.items():
+        if v.get("name"):
+            zonas[v["name"]] = min(int(area), zonas.get(v["name"], int(area)))
     N = tabela("TaxiNodes")
     P = tabela("TaxiPath")
     porpath = {}
@@ -194,7 +210,7 @@ def construir():
                                        "sub": v.get("subName") or ""})
     for lista in services.values():
         lista.sort(key=lambda s: (s["zone"], s["id"]))
-    return {"nodes": nodes, "flights": flights, "ships": ships, "tram": TRAM,
+    return {"nodes": nodes, "flights": flights, "ships": ships, "tram": bonde(),
             "teleports": teleports, "services": services}
 
 
@@ -298,6 +314,11 @@ def demo(d):
         assert lista, "serviço sem ninguém: %s" % kind
         assert all(s["zone"] and s["x"] is not None for s in lista), kind
     assert d["tram"]["a"] and d["tram"]["b"]
+    # bonde dos gatilhos do cliente (AreaTrigger 2173/2175), não de constante digitada
+    assert abs(d["tram"]["a"]["x"] + 8346.46) < 1 and abs(d["tram"]["b"]["y"] + 1330.46) < 1, d["tram"]
+    # "Refuge Pointe, Arathi": Arathi Highlands (área 45), não Arathi Basin
+    zs = {v["n"].split(",")[0]: v["z"] for v in nodes.values()}
+    assert zs.get("Refuge Pointe") == "Arathi Highlands" and zs.get("Hammerfall") == "Arathi Highlands",         (zs.get("Refuge Pointe"), zs.get("Hammerfall"))
     print("ok: %d voos, %d rotas, %d transportes, serviços %s" % (
         len(nodes), sum(len(v) for v in d["flights"].values()), len(d["ships"]),
         {k: len(v) for k, v in d["services"].items()}))

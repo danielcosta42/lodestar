@@ -16,8 +16,8 @@ ns.travel = {
 		[12] = { n = "Darkshire, Duskwood", c = 0, x = -10515.5, y = -1261.7, f = "A", z = "Duskwood" },
 		[13] = { n = "Tarren Mill, Hillsbrad", c = 0, x = -0.1, y = -859.9, f = "H", z = "Hillsbrad Foothills" },
 		[14] = { n = "Southshore, Hillsbrad", c = 0, x = -711.5, y = -515.5, f = "A", z = "Hillsbrad Foothills" },
-		[16] = { n = "Refuge Pointe, Arathi", c = 0, x = -1240.5, y = -2515.1, f = "A", z = nil },
-		[17] = { n = "Hammerfall, Arathi", c = 0, x = -916.3, y = -3496.9, f = "H", z = nil },
+		[16] = { n = "Refuge Pointe, Arathi", c = 0, x = -1240.5, y = -2515.1, f = "A", z = "Arathi Highlands" },
+		[17] = { n = "Hammerfall, Arathi", c = 0, x = -916.3, y = -3496.9, f = "H", z = "Arathi Highlands" },
 		[18] = { n = "Booty Bay, Stranglethorn", c = 0, x = -14444.3, y = 509.6, f = "H", z = "Stranglethorn Vale" },
 		[19] = { n = "Booty Bay, Stranglethorn", c = 0, x = -14473.0, y = 464.1, f = "A", z = "Stranglethorn Vale" },
 		[20] = { n = "Grom'gol, Stranglethorn", c = 0, x = -12414.2, y = 146.3, f = "H", z = "Stranglethorn Vale" },
@@ -525,7 +525,7 @@ ns.travel = {
 		{ k = "boat", w = 112, s = { 52, 53 }, stops = { { c = 1, x = -6932.6, y = -4950.8, f = "AH", n = "Gadgetzan" }, { c = 0, x = -8232.3, y = -5800.8, f = "A", n = "Powderfuse Port" } }, p = { -6606.8, -5617.6, 1, -6695.5, -5183.2, 1, -6775.0, -5030.8, 1, -6849.3, -4965.9, 1, -6991.3, -4952.8, 1, -7127.1, -5055.7, 1, -7330.2, -5420.0, 1, -7340.6, -5746.1, 1, -8230.1, -6340.4, 0, -8226.3, -6110.4, 0, -8158.8, -5918.3, 0, -8176.4, -5842.7, 0, -8280.1, -5781.1, 0, -8418.9, -5808.6, 0, -8689.6, -5940.5, 0, -8885.7, -6155.3, 0 } },
 		{ k = "boat", w = 107, s = { 52, 42 }, stops = { { c = 1, x = 6548.3, y = 942.2, f = "A", n = "Auberdine" }, { c = 0, x = -8654.5, y = 1344.4, f = "AH", n = "Stormwind" } }, p = { 7057.8, 1488.4, 1, 6992.8, 1253.5, 1, 6871.3, 1082.9, 1, 6768.1, 996.1, 1, 6604.0, 932.3, 1, 6496.8, 971.9, 1, 6405.0, 1116.5, 1, 6397.1, 1271.8, 1, 6484.8, 1813.8, 1, -8950.9, 1780.0, 0, -8948.2, 1564.3, 0, -8883.0, 1423.4, 0, -8793.6, 1343.0, 0, -8711.2, 1327.5, 0, -8611.7, 1372.8, 0, -8444.3, 1724.4, 0 } },
 	},
-	tram = { s = 120, a = { c = 0, x = -8346.0, y = 514.0 }, b = { c = 0, x = -4840.0, y = -1330.0 } },
+	tram = { s = 120, a = { c = 0, x = -8346.5, y = 514.0 }, b = { c = 0, x = -4840.3, y = -1330.5 } },
 	teleports = { { spell = 3561, node = 2 }, { spell = 3562, node = 6 }, { spell = 3565, node = 27 }, { spell = 3567, node = 23 }, { spell = 3563, node = 11 }, { spell = 3566, node = 22 }, { spell = 18960, node = 49 } },
 	services = {
 		auction = {

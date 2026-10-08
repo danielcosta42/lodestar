@@ -6,7 +6,8 @@
 --   local route = ns.Journey.Plan(from, to, ctx)
 --   from/to: { c = continente, x = norte, y = oeste } (coordenada de mundo)
 --   ctx: { data = ns.travel, fac = "A"|"H", known = {[nó]=true}, speed = jd/s,
---          hearth = { c, x, y, wait = s } | nil, teleports = { { c, x, y, cast, label } } }
+--          hearth = { c, x, y, wait = s, spell = Retorno Astral | nil } | nil,
+--          teleports = { { c, x, y, cast, label, spell } } }
 --   route: { s = total, legs = { { k, a, b, s, name, p, discover, ship } } } ou nil
 --=============================================================================
 local ADDON, ns = ...
@@ -102,11 +103,11 @@ function J.Plan(from, to, ctx)
 	end
 	if ctx.hearth then
 		local h = add({ c = ctx.hearth.c, x = ctx.hearth.x, y = ctx.hearth.y }, "hearth")
-		link(START, h, HEARTH_CAST + (ctx.hearth.wait or 0), { k = "hearth" })
+		link(START, h, HEARTH_CAST + (ctx.hearth.wait or 0), { k = "hearth", spell = ctx.hearth.spell })
 	end
 	for _, t in ipairs(ctx.teleports or {}) do
 		local h = add({ c = t.c, x = t.x, y = t.y }, "teleport")
-		link(START, h, t.cast or 10, { k = "teleport", name = t.label })
+		link(START, h, t.cast or 10, { k = "teleport", name = t.label, spell = t.spell })
 	end
 
 	-- Dijkstra O(n²): ~120 nós, a pé entre todo par do mesmo continente

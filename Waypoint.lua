@@ -110,7 +110,7 @@ function WP.LegText(route, i, secs)
 	elseif leg.k == "tram" then
 		text = L.LEG_TRAM
 	elseif leg.k == "hearth" then
-		text = L.LEG_HEARTH
+		text = leg.spell and L.LEG_RECALL or L.LEG_HEARTH
 	else
 		text = L.LEG_TELEPORT:format(leg.name or "")
 	end
@@ -119,6 +119,7 @@ end
 
 -- ícone da perna de pedra ou teleporte (o que lançar)
 local function legIcon(leg)
+	if leg.k == "hearth" and leg.spell then return GetSpellTexture and GetSpellTexture(leg.spell) end
 	if leg.k == "hearth" then return GetItemIcon and GetItemIcon(6948) end
 	if leg.k == "teleport" and leg.spell and GetSpellTexture then return GetSpellTexture(leg.spell) end
 end

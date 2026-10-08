@@ -47,6 +47,13 @@ function G.ToMinimap(px, py, wx, wy, facing, rotate, ydPerPx, radius)
 	return right, up, true
 end
 
+-- Alcance do minimapa (raio, jardas) por zoom; fechado (cidade, caverna) é bem menor.
+local MM_OUT = { [0] = 233.33, [1] = 200, [2] = 166.66, [3] = 133.33, [4] = 100, [5] = 66.66 }
+local MM_IN = { [0] = 150, [1] = 120, [2] = 90, [3] = 60, [4] = 40, [5] = 25 }
+function G.MinimapRange(zoom, indoor)
+	return (indoor and MM_IN or MM_OUT)[zoom] or (indoor and 60 or 133.33)
+end
+
 -- O inverso: pixels (direita, cima) do minimapa -> ponto de mundo (Shift+clique).
 function G.FromMinimap(px, py, right, up, facing, rotate, ydPerPx)
 	right, up = right * ydPerPx, up * ydPerPx

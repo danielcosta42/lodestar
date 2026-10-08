@@ -245,7 +245,7 @@ local L = setmetatable({
 	LEG_TO_FLIGHT = "FM %s", LEG_TO_NEW_FLIGHT = "NOVO %s", LEG_FLY = "VOE %s", LEG_TO_DOCK = "CAIS %s",
 	LEG_SHIP = "PEGUE %s", LEG_TO_TRAM = "BONDE", LEG_TRAM = "NO BONDE", LEG_HEARTH = "PEDRA",
 	LEG_TELEPORT = "TELE %s", SHIP_boat = "barco", SHIP_zeppelin = "zepelim",
-	LEG_SHIP_TO = "PEGUE %s PARA %s", LEG_TO_DOCK_TO = "CAIS %s PARA %s",
+	LEG_SHIP_TO = "PEGUE %s PARA %s", LEG_TO_DOCK_TO = "CAIS %s PARA %s", LEG_RECALL = "RETORNO",
 }, { __index = function(_, k) return k end })
 local WPT = load("Waypoint.lua", { L = L, On = function() end, Every = function() end, zoneUiMap = {} }).Waypoint
 check(WPT.FmtTime(45) == "45s" and WPT.FmtTime(130) == "2m10s" and WPT.FmtTime(3900) == "1h05m",
@@ -410,5 +410,26 @@ check(kt[2] and not kt[4], "continente sincronizado: vale o mapa de voo, não a 
 check(kt[26] and not kt[27] and not kt[40], "outro continente: voos da facção nas zonas visitadas")
 kt = T.KnownTaxi({ taxiSynced = true, taxi = { [2] = true }, zones = { Darkshore = true } }, NODES, "A")
 check(kt[2] and kt[26], "save antigo (taxiSynced = true) não desliga o fallback")
+
+-- ── #19: polimento ───────────────────────────────────────────────────────────
+-- 1/7: perna de teleporte e de pedra levam o feitiço (ícone; Retorno Astral no texto)
+r = J.Plan(P(0, 0, 0), P(1, 5000, 5000), ctx({ teleports = { { c = 1, x = 5000, y = 5010, cast = 10, label = "Teleporte", spell = 3567 } } }))
+check(r and r.legs[1].k == "teleport" and r.legs[1].spell == 3567, "a perna de teleporte leva o feitiço (ícone)")
+r = J.Plan(P(0, 0, 0), P(1, 5000, 5000), ctx({ hearth = { c = 1, x = 5000, y = 5010, wait = 0, spell = 556 } }))
+check(r and r.legs[1].k == "hearth" and r.legs[1].spell == 556, "a perna de pedra leva o Retorno Astral quando é ele")
+check(WPT.LegText({ legs = { { k = "hearth", spell = 556 } } }, 1, 10):find("^RETORNO"), "texto: Retorno Astral, não Pedra")
+-- 6: a velocidade a pé não aprende no barco/bonde
+check(T.NextSpeed(7, 25, "ship") == 7 and T.NextSpeed(7, 25, "tram") == 7, "no barco e no bonde a amostra é ignorada")
+check(T.NextSpeed(7, 14, "walk") > 7, "a pé, a amostra entra")
+-- 4: minimapa dentro de cidade tem alcance menor
+check(G.MinimapRange(0, true) < G.MinimapRange(0, false) and near(G.MinimapRange(0, false), 233.33), "alcance do minimapa: fechado menor que aberto")
+
+-- 2: a chegada do teleporte aprendida em jogo vale mais que o mestre de voo da cidade
+local NODES2 = { [27] = { c = 1, x = 8643.6, y = 841.0 } }
+local tp = { spell = 3565, node = 27 }
+local pt = T.TeleportPoint(tp, NODES2, nil)
+check(pt and pt.x == 8643.6, "sem chegada aprendida: o mestre de voo da cidade")
+pt = T.TeleportPoint(tp, NODES2, { [3565] = { c = 1, x = 9660, y = 2510 } })
+check(pt and pt.x == 9660, "com chegada aprendida: o ponto onde o jogador chegou")
 
 print(("ok: %d checks"):format(checks))

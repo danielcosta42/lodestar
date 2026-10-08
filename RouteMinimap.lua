@@ -8,11 +8,11 @@ local ADDON, ns = ...
 local UI = ns.UI
 local G = ns.RouteGeom
 
--- alcance do minimapa em jardas por nível de zoom (aprox.; calibrável em Avançado)
-local MM_RANGE = { [0] = 233.33, [1] = 200, [2] = 166.66, [3] = 133.33, [4] = 100, [5] = 66.66 }
+-- alcance do minimapa em jardas pelo zoom, aberto ou fechado (calibrável em Avançado)
 local function minimapRange()
 	local zoom = (Minimap and Minimap.GetZoom and Minimap:GetZoom()) or 3
-	return (MM_RANGE[zoom] or 133.33) * ((ns.db and ns.db.minimap.rangeMult) or 1)
+	local indoor = IsIndoors and IsIndoors() or false
+	return G.MinimapRange(zoom, indoor) * ((ns.db and ns.db.minimap.rangeMult) or 1)
 end
 
 local SPACING, INSET = 6, 0.92       -- pixels entre pontos; fração do raio usada

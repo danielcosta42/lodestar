@@ -80,6 +80,13 @@ function T.World(zone, x, y, map)
 	if c and pos then return { c = c, x = pos.x, y = pos.y } end
 end
 
+-- Próxima estimativa da velocidade a pé, com a amostra `v` (jd/s) da perna `legKind`. No
+-- barco, zepelim e bonde quem anda é o transporte: a amostra não entra.
+function T.NextSpeed(speed, v, legKind)
+	if legKind == "ship" or legKind == "tram" or not (v > 1.5 and v < 40) then return speed end
+	return math.min(30, math.max(5, speed * 0.7 + v * 0.3))
+end
+
 function T.PlayerWorld()
 	local map = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
 	local p = map and C_Map.GetPlayerMapPosition and C_Map.GetPlayerMapPosition(map, "player")
@@ -139,17 +146,24 @@ local function hearth()
 		if w then bind = { name = bind.name, c = w.c, x = w.x, y = w.y } else bind = nil end
 	end
 	if not (bind and bind.c) then return nil end
-	local wait
+	local wait, spell
 	if GetItemCount and GetItemCount(HEARTH_ITEM) > 0 then
 		local getCd = (C_Container and C_Container.GetItemCooldown) or GetItemCooldown
 		wait = cooldownLeft(getCd(HEARTH_ITEM))
 	end
 	if IsSpellKnown and IsSpellKnown(ASTRAL_RECALL) and GetSpellCooldown then
 		local w = cooldownLeft(GetSpellCooldown(ASTRAL_RECALL))
-		wait = wait and math.min(wait, w) or w
+		if not wait or w < wait then wait, spell = w, ASTRAL_RECALL end   -- o Retorno sai antes
 	end
 	if not wait then return nil end
-	return { c = bind.c, x = bind.x, y = bind.y, wait = wait }
+	return { c = bind.c, x = bind.x, y = bind.y, wait = wait, spell = spell }
+end
+
+-- Onde o teleporte deixa o jogador: o ponto aprendido no primeiro uso (o destino é do
+-- servidor; nenhuma tabela do cliente o traz), senão o mestre de voo da cidade.
+function T.TeleportPoint(t, nodes, learned)
+	local p = learned and learned[t.spell] or (nodes and nodes[t.node])
+	return p and { c = p.c, x = p.x, y = p.y } or nil
 end
 
 local function teleports()
@@ -158,11 +172,11 @@ local function teleports()
 	if not (data and IsSpellKnown) then return out end
 	local hasRune = GetItemCount and GetItemCount(RUNE_TELEPORT) > 0
 	for _, t in ipairs(data.teleports or {}) do
-		local node = data.nodes[t.node]
+		local pt = T.TeleportPoint(t, data.nodes, ns.db and ns.db.teleportArrival)
 		local mage = t.spell ~= 18960
-		if node and IsSpellKnown(t.spell) and (not mage or hasRune) then
+		if pt and IsSpellKnown(t.spell) and (not mage or hasRune) then
 			local name = GetSpellInfo and GetSpellInfo(t.spell) or nil
-			out[#out + 1] = { c = node.c, x = node.x, y = node.y, cast = 10, label = name, spell = t.spell }
+			out[#out + 1] = { c = pt.c, x = pt.x, y = pt.y, cast = 10, label = name, spell = t.spell }
 		end
 	end
 	return out
@@ -242,6 +256,15 @@ ns:On("TAXIMAP_OPENED", function()
 	T:Replan(true)
 end)
 
+-- teleporte lançado: grava onde ele deixou o jogador (o primeiro ponto longe de onde lançou)
+local pendingTp
+ns:On("UNIT_SPELLCAST_SUCCEEDED", function(_, unit, _, spell)
+	if unit ~= "player" then return end
+	for _, t in ipairs(ns.travel and ns.travel.teleports or {}) do
+		if t.spell == spell then pendingTp = { spell = spell, from = T.PlayerWorld(), t = GetTime() } end
+	end
+end)
+
 -- zonas visitadas (fallback dos voos no continente cujo mapa de voo ainda não foi aberto);
 -- no login também, senão a zona onde o personagem já está nunca entra
 local function visit()
@@ -259,10 +282,21 @@ ns:Every(1, function()
 	local now = GetTime()
 	local pos = T.PlayerWorld()
 	local onTaxi = UnitOnTaxi and UnitOnTaxi("player")
+	if pendingTp and pos then
+		local f = pendingTp.from
+		if now - pendingTp.t > 60 then
+			pendingTp = nil
+		elseif not f or f.c ~= pos.c or dist(f, pos) > 300 then
+			ns.db.teleportArrival = ns.db.teleportArrival or {}
+			ns.db.teleportArrival[pendingTp.spell] = { c = pos.c, x = pos.x, y = pos.y }
+			pendingTp = nil
+		end
+	end
 	-- velocidade a pé medida (montaria e buffs entram sozinhos)
 	if pos and lastPos and lastPos.c == pos.c and not onTaxi and not UnitIsDeadOrGhost("player") then
 		local v = dist(pos, lastPos) / math.max(0.1, now - lastT)
-		if v > 1.5 and v < 40 then speed = math.min(30, math.max(5, speed * 0.7 + v * 0.3)) end
+		local leg = route and route.legs[route.leg]
+		speed = T.NextSpeed(speed, v, leg and leg.k)
 	end
 	lastPos, lastT = pos, now
 	-- pedra vinculada num lugar novo: é onde o jogador está agora (acabou de falar com o
