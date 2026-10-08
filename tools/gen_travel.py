@@ -34,6 +34,9 @@ DESCARTE = ("zzOLD", "Programmer", "Quest Path")
 CONTINENTES = {"0", "1"}
 
 # Entradas do bonde de Ironforge-Stormwind: gatilhos 2173 e 2175 da tabela AreaTrigger.
+# Títulos de quem anuncia a chegada de barco/zepelim no cais.
+ANUNCIA = {"Zeppelin Master", "Shipmaster"}
+
 # O Deeprun Tram: as pontas são os gatilhos de área do cliente nas duas estações.
 TRAM_GATILHOS = (("2173", "Stormwind City"), ("2175", "Ironforge"))
 TRAM_S = 120
@@ -178,11 +181,13 @@ def construir():
                 for k in range(len(paradas))]
         ciclo = sum(legs) + sum(int(r["Delay"]) for _, r in paradas)
         ships.append({
+            "id": int(pid),                 # o trajeto no cliente: chave estável do horário aprendido
             "k": "zeppelin" if zep else "boat",
             "w": round(ciclo / 2),
             "stops": [cais(nodes, int(r["ContinentID"]), float(r["Loc_0"]), float(r["Loc_1"]), zep)
                       for _, r in paradas],
             "s": legs,
+            "d": [int(r["Delay"]) for _, r in paradas],     # espera atracado em cada parada
             "p": [(round(x, 1), round(y, 1), c) for x, y, c in simplifica(pts)],
         })
 
@@ -210,8 +215,19 @@ def construir():
                                        "sub": v.get("subName") or ""})
     for lista in services.values():
         lista.sort(key=lambda s: (s["zone"], s["id"]))
+    # quem grita a chegada do transporte (mestres de zepelim, shipmasters): o horário se aprende ouvindo
+    announcers = []
+    for nid, v in npcs.items():
+        spawns = v.get("spawns") or {}
+        if v.get("subName") in ANUNCIA and spawns:
+            area = next(iter(spawns))
+            zona = (zonas_json.get(area) or {}).get("name")
+            if zona and spawns[area]:
+                x, y = spawns[area][0]
+                announcers.append({"id": int(nid), "zone": zona, "x": round(x, 2), "y": round(y, 2)})
+    announcers.sort(key=lambda a: a["id"])
     return {"nodes": nodes, "flights": flights, "ships": ships, "tram": bonde(),
-            "teleports": teleports, "services": services}
+            "teleports": teleports, "services": services, "announcers": announcers}
 
 
 def cais(nodes, c, x, y, zep):
@@ -251,8 +267,8 @@ def lua(d):
         L.append("\t\t},")
     L += ["\t},", "\tships = {"]
     for s in d["ships"]:
-        L.append("\t\t{ k = %s, w = %d, s = { %s }, stops = { %s }, p = { %s } }," % (
-            lua_str(s["k"]), s["w"], ", ".join(map(str, s["s"])),
+        L.append("\t\t{ id = %d, k = %s, w = %d, s = { %s }, d = { %s }, stops = { %s }, p = { %s } }," % (
+            s["id"], lua_str(s["k"]), s["w"], ", ".join(map(str, s["s"])), ", ".join(map(str, s["d"])),
             ", ".join("{ c = %d, x = %s, y = %s, f = %s%s }" % (
                 p["c"], p["x"], p["y"], lua_str(p["f"]), (", n = %s" % lua_str(p["n"])) if p["n"] else "")
                 for p in s["stops"]),
@@ -263,6 +279,9 @@ def lua(d):
               t["s"], t["a"]["c"], t["a"]["x"], t["a"]["y"], t["b"]["c"], t["b"]["x"], t["b"]["y"]),
           "\tteleports = { %s }," % ", ".join(
               "{ spell = %d, node = %d }" % (t["spell"], t["node"]) for t in d["teleports"]),
+          "\tannouncers = { %s }," % ", ".join(
+              "{ id = %d, zone = %s, x = %s, y = %s }" % (a["id"], lua_str(a["zone"]), a["x"], a["y"])
+              for a in d["announcers"]),
           "\tservices = {"]
     for kind, lista in sorted(d["services"].items()):
         L.append("\t\t%s = {" % kind)
@@ -285,6 +304,11 @@ def demo(d):
             assert a in nodes and b in nodes, "rota de voo com ponta descartada: %s-%s" % (a, b)
     assert not [v["n"] for v in nodes.values() if v["n"].startswith(("zzOLD", "Programmer", "Quest Path"))]
     assert all(len(s["stops"]) >= 2 for s in d["ships"]), "transporte com menos de duas paradas"
+    # horário (parte D): espera por parada, id estável, quem anuncia a chegada
+    assert all(len(s["d"]) == len(s["stops"]) and set(s["d"]) <= {30, 60} for s in d["ships"]), "espera por parada"
+    assert len({s["id"] for s in d["ships"]}) == len(d["ships"]), "id de transporte repetido"
+    anunc = {a["id"] for a in d["announcers"]}
+    assert {9566, 3150, 9558, 9559} <= anunc, anunc            # Zapetta, Hin Denburg, Grimble, Grizzlowe
 
     # cais conhecidos, em coordenada de mundo (as torres de zepelim não são ponto de voo)
     cais = {"Booty Bay": (0, -14278, 583), "Ratchet": (1, -1006, -3842),

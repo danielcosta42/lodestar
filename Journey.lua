@@ -7,8 +7,11 @@
 --   from/to: { c = continente, x = norte, y = oeste } (coordenada de mundo)
 --   ctx: { data = ns.travel, fac = "A"|"H", known = {[nó]=true}, speed = jd/s,
 --          hearth = { c, x, y, wait = s, spell = Retorno Astral | nil } | nil,
---          teleports = { { c, x, y, cast, label, spell } } }
+--          teleports = { { c, x, y, cast, label, spell } },
+--          now = hora do servidor, sched = { [id do transporte] = horário aprendido (Schedule) } }
 --   route: { s = total, legs = { { k, a, b, s, name, p, discover, ship } } } ou nil
+--   Perna de barco/zepelim: sid, stop (parada de saída), dock (s atracado), ride (travessia)
+--   e, com horário, dep = hora da saída que a rota pega.
 --=============================================================================
 local ADDON, ns = ...
 local J = {}
@@ -66,9 +69,9 @@ function J.Plan(from, to, ctx)
 		end
 	end
 	local special = {}                        -- arestas que não são a pé: [i] = { {j, s, leg} }
-	local function link(i, j, s, leg)
+	local function link(i, j, s, leg, fn)          -- fn(chegada no nó) -> custo, saída: aresta que depende da hora
 		special[i] = special[i] or {}
-		table.insert(special[i], { j = j, s = s, leg = leg })
+		table.insert(special[i], { j = j, s = s, leg = leg, fn = fn })
 	end
 	for a, dests in pairs(data.flights or {}) do
 		local ia = fmIndex[a]
@@ -87,11 +90,25 @@ function J.Plan(from, to, ctx)
 		-- "para trás" num laço de três é seguir as próximas, e a espera conta de novo
 		local m = #ship.stops
 		local function ok(st) return not st.f or st.f:find(fac, 1, true) end   -- cais da outra facção: guardas
+		local h = ship.id and ctx.sched and ctx.sched[ship.id]
+		local SC = h and ctx.now and ns.Schedule
 		for k = 1, m do
 			local nxt = k % m + 1
 			if ok(ship.stops[k]) and ok(ship.stops[nxt]) then
-				link(idx[k], idx[nxt], ship.w + (ship.s[k] or 0), { k = "ship", ship = ship.k,
-					name = ship.stops[nxt].n, p = shipSlice(ship.p, ship.stops[k], ship.stops[nxt]) })
+				local ride = h and h.ride and h.ride[k] or ship.s[k] or 0
+				local leg = { k = "ship", ship = ship.k, name = ship.stops[nxt].n, sid = ship.id, stop = k,
+					dock = ship.d and ship.d[k] or 0, ride = ride,
+					p = shipSlice(ship.p, ship.stops[k], ship.stops[nxt]) }
+				if SC then
+					-- horário conhecido: espera até a próxima saída na hora em que se chega ao cais
+					-- (esperar nunca faz chegar antes: o Dijkstra segue valendo)
+					link(idx[k], idx[nxt], nil, leg, function(at)
+						local dep = SC.NextDeparture(ship, k, ctx.now + at, h)
+						return dep - (ctx.now + at) + ride, dep
+					end)
+				else
+					link(idx[k], idx[nxt], ship.w + (ship.s[k] or 0), leg)
+				end
 			end
 		end
 	end
@@ -130,8 +147,16 @@ function J.Plan(from, to, ctx)
 			end
 		end
 		for _, e in ipairs(special[u] or {}) do
-			local s = bu + e.s
-			if not done[e.j] and s < best[e.j] then best[e.j], prev[e.j], via[e.j] = s, u, e.leg end
+			local es, leg = e.s, e.leg
+			if e.fn then
+				local dep
+				es, dep = e.fn(bu)
+				leg = {}
+				for kk, vv in pairs(e.leg) do leg[kk] = vv end
+				leg.dep = dep
+			end
+			local s = bu + es
+			if not done[e.j] and s < best[e.j] then best[e.j], prev[e.j], via[e.j] = s, u, leg end
 		end
 	end
 	if best[GOAL] == math.huge then return nil end

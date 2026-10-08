@@ -42,14 +42,14 @@ local data = {
 		[4] = { [2] = { s = 1, p = { 10, 10, 3000, 0 } } },
 	},
 	ships = {
-		{ k = "boat", w = 100, s = { 200, 200 },
+		{ id = 7, k = "boat", w = 100, s = { 200, 200 }, d = { 20, 20 },
 			stops = { { c = 0, x = 0, y = -500 }, { c = 1, x = 0, y = 0 } },
 			p = { 0, -500, 0, 0, -300, 0, 0, 0, 1 } },
 	},
 	tram = { s = 120, a = { c = 0, x = 9000, y = 9000 }, b = { c = 0, x = 12000, y = 12000 } },
 	teleports = {},
 }
-local ns = load("Journey.lua", {})
+local ns = load("Journey.lua", load("Schedule.lua", {}))
 local J = ns.Journey
 local function ctx(over)
 	local c = { data = data, fac = "A", known = { [1] = true, [2] = true }, speed = 7, teleports = {} }
@@ -431,5 +431,36 @@ local pt = T.TeleportPoint(tp, NODES2, nil)
 check(pt and pt.x == 8643.6, "sem chegada aprendida: o mestre de voo da cidade")
 pt = T.TeleportPoint(tp, NODES2, { [3565] = { c = 1, x = 9660, y = 2510 } })
 check(pt and pt.x == 9660, "com chegada aprendida: o ponto onde o jogador chegou")
+
+-- ── #21: horário de barco e zepelim ──────────────────────────────────────────
+local SC = load("Schedule.lua", {}).Schedule
+local navio = { id = 1, stops = { {}, {} }, s = { 100, 80 }, d = { 60, 60 } }
+local arr, dep, Tc = SC.Offsets(navio)
+check(arr[1] == 0 and dep[1] == 60 and arr[2] == 160 and dep[2] == 220 and Tc == 300,
+	"ciclo: chega 0, sai 60, chega na 2ª 160, sai 220, volta 300")
+check(SC.CycleStart(navio, 2, "arr", 1000) == 840, "chegada na 2ª parada às 1000 → ciclo começou às 840")
+local h = { t0 = 840, T = 300 }
+check(SC.NextDeparture(navio, 1, 850, h) == 900 and SC.NextDeparture(navio, 1, 950, h) == 1200,
+	"próxima saída da 1ª: 900 se chegar às 850; 1200 se chegar às 950")
+check(SC.NextDeparture(navio, 1, 850, nil) == nil, "sem horário aprendido: nada")
+h = SC.Learn(nil, navio, 1, "arr", 1000)
+h = SC.Learn(h, navio, 1, "arr", 1000 + 3 * 305)
+check(near(h.T, 305) and #h.starts == 2, "duas chegadas 3 voltas depois: o período aprendido é 305 (" .. h.T .. ")")
+h = SC.Learn(h, navio, 1, "arr", 1000 + 3 * 305 + 305 + 100)
+check(#h.starts == 1 and near(h.T, 305), "100 s fora da previsão (servidor reiniciou): recomeça, o período fica")
+h = SC.Learn(h, navio, 2, "arr", h.starts[1] + 160 + 2)
+check(#h.starts == 1, "a outra parada do mesmo ciclo não conta como volta nova")
+local _, _, Tr = SC.Offsets(navio, { [1] = 90 })
+check(Tr == 290, "travessia medida (90 s) substitui a estimada no ciclo")
+
+-- o planejador usa o horário: a espera é até a próxima saída na hora em que se chega ao cais
+-- (cais a 500 jd, 7 jd/s: ~71 s; ciclo 440 s: sai às t0+20)
+local barcoH = function(saida) return { [7] = { t0 = 1000 + saida - 20, T = 440 } } end
+r = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(60) }))       -- saiu aos 60 s
+check(r and r.legs[2].k == "ship" and math.abs(r.legs[2].s - (1500 - 1000 - 500 / 7 + 200)) < 0.5 and r.legs[2].dep == 1500,
+	"chegou depois da saída: espera a volta inteira (" .. (r and r.legs[2].s or 0) .. ")")
+r = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(80) }))       -- sai aos 80 s
+check(r and math.abs(r.legs[2].s - (80 - 500 / 7 + 200)) < 0.5 and r.legs[2].dep == 1080 and r.legs[2].stop == 1 and r.legs[2].sid == 7,
+	"chegou antes da saída: espera curta e a perna leva a hora de saída (" .. (r and r.legs[2].s or 0) .. ")")
 
 print(("ok: %d checks"):format(checks))
