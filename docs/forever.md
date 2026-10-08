@@ -1,11 +1,11 @@
 # WoW: Forever — o que o Lodestar faz, e por quê
 
 Beta aberto em 2026-09-17, até 2026-10-21; lançamento em **2026-11-04**. Build corrente
-**1.60.1.69913** (`wow_classic_beta`, **Interface 16001**, token de TOC `Camelot`). O beta está
+**1.60.1.70245** (`wow_classic_beta`, **Interface 16001**, token de TOC `Camelot`). O beta está
 capado no nível 30 e sem raides.
 
-O Lodestar é **Forever e só**. O suporte a TBC/Anniversary saiu na v2.0.0: os guias cujo conteúdo
-aquele cliente não tem foram deletados, junto com os módulos de atunação e talento de TBC.
+O Lodestar é **Forever e só**. O suporte a TBC/Anniversary saiu na v2.0.0, e desde a #9 a biblioteca
+inteira de guias é gerada do banco do Forever.
 
 - **É a interface de retail sobre conteúdo vanilla.** O cliente reporta `WOW_PROJECT_ID = 1`, igual
   ao retail — a detecção é pela **faixa de interface 16000–16999**, e só.
@@ -15,68 +15,54 @@ aquele cliente não tem foram deletados, junto com os módulos de atunação e t
   `C_Secrets.ShouldUnitIdentityBeSecret`, porque a doc gerada marca `UnitGUID`/`UnitName` com
   predicado condicional e a regra pode apertar.
 
-## O problema: o dado não existe em lugar nenhum
+## O cliente só entrega ids
 
-O cliente entrega **ids e mais nada**. `QuestV2` no 69913 tem 6.600 linhas, com o schema inteiro
-sendo `ID, UniqueBitFlag, UiQuestDetailsThemeID`. `QuestObjective` e `QuestV2CliTask` **não existem
-nesse build** (404 no wago — ao contrário do que o README do ForeverGuide afirma). `QuestPOIBlob`
-tem 54 linhas e `QuestPOIPoint`, 99. Título, nível, zona, giver e objetivo são **servidor**.
+`QuestV2` no 70245 tem 6.609 linhas, com o schema inteiro sendo `ID, UniqueBitFlag,
+UiQuestDetailsThemeID`. `QuestObjective` e `QuestV2CliTask` **não existem nesse build** (404 no wago).
+Título, nível, zona, giver e objetivo são **servidor**.
 
-Quantas quests são novas depende da baseline, e as três são defensáveis — o que não vale é citar
-um número sem dizer contra o quê:
+E a `QuestV2` **não lista quest repetível**: "Earth Sapta" (1463) foi vista em jogo e não está nela, e
+o QuestieDB tem 724 quests que nenhuma das duas `QuestV2` (Forever e Anniversary) lista. Por isso
+quest só conta como removida quando o Anniversary **tem** e o Forever **não tem** — ausência nas duas
+é repetível, não remoção.
 
-| baseline | quantas |
+| baseline de "quest nova" | quantas |
 |---|---|
-| ids que o `QuestV2` do **Anniversary 2.5.6.69795** não tem | **2.824** |
-| ids ≥ 30000 no `QuestV2` do 69913 | 2.844 |
-| ids que o `QuestV2` do **Classic Era 1.15.9.69722** não tem | 1.795 |
+| ids que o `QuestV2` do **Anniversary 2.5.6.69795** não tem | 2.833 |
+| ids ≥ 30000 no `QuestV2` do 70245 | **2.853** |
+| ids que o `QuestV2` do **Classic Era 1.15.9.69722** não tem | 1.795 (no 69913) |
 
-Este repositório usa a primeira: é a que `tools/gen_forever.py` calcula, e é a comparação que
-importa aqui, já que a base de guias veio do Anniversary.
+## De onde vêm as rotas
 
-E ninguém resolveu isso: o branch `forever` do QuestieDB tem 4.244 quests com id máximo **9.665** —
-zero conteúdo novo. Nada vai ser dataminado até o lançamento, porque não há o que minerar.
+**1. QuestieDB do Forever — a base.** Desde a 1.0.5 (2026-10, "Add Forever base data") o QuestieDB,
+o addon de dados que o Questie 12 exige, traz a base inteira do Forever: 5.010 quests, **760 delas
+novas**, 13.311 NPCs (3.110 novos), objetos, itens e o mapa de zonas do Forever. É GPL e aberto, como
+o banco do Questie de onde as rotas do Lodestar sempre vieram.
 
-## As zonas novas
+O dado mora no próprio `.toc`, em modo *baked*: `## X-Quest-<id>-S: <base64 de CBOR>` com os campos
+escalares e uma máscara de quais campos-tabela existem, `## X-Quest-<id>-<campo>` para cada tabela,
+valor longo partido em `~N~` + `-1..-N`, e o cabeçalho de ids comprimido com zlib. O número do campo
+é o índice do Questie (`questKeys`), então `tools/questiedb.py` decodifica (CBOR à mão, sem
+dependência) e entrega o mesmo JSON que o `build_intermediate.py` sempre produziu.
 
-| zona | areaID / uiMapID | nível | o que se sabe |
-|---|---|---|---|
-| Zephras Isle | 16593 / 2521 | 1-12 | zona inicial da raça nova (**Skyborne**); é a única alcançável no beta |
-| Riverglades | 16591 / 2548 | 36-44 | fora do beta; subzonas nomeadas no `AreaTable` |
-| Shen'dralas | 16651 / 2652 | — | fora do beta |
-| Darkspear Islands | 16606 / 2524 | 30-60 | **Battleground 15v15**, não zona de quest |
+**A coordenada já está no sistema do Forever.** Conferido contra o scan em jogo, Zarlman Two-Moons em
+Mulgore: 46.88/61.19 no QuestieDB, 46.86/61.13 no cliente, 47.76/57.53 no banco do Anniversary. O
+`EraToForever` que o próprio QuestieDB exporta é para dado de Era, não para este — não reprojetar.
 
-Mount Hyjal (uiMapID 2482) também volta. As subzonas de Riverglades já estão legíveis no
-`AreaTable` do build: Farholde Keep, Sunnyglade, Powderfuse Port, Bolder'ok, Twilight's Shroud,
-Wheeler's Grange, Eastwind Shore, Terral's Watch e outras.
+**2. `Cache/WDB/*.wdb` e `/ls scan` — o que nenhum banco tem.** `RequestLoadQuestByID` faz o servidor
+mandar o registro completo, e o cliente grava em disco (`tools/wdb.py` lê). O coletor em jogo
+(`/ls scan`, `ForeverScan.lua` sobre a `LibChehulQuest`) guarda quem dá e quem entrega cada quest,
+com id de NPC e coordenada, e o waypoint que o servidor aponta. No `import_forever.py` o scan **só
+preenche lacuna** da base: o nome e o texto do QuestieDB são enUS e estáveis, e o scan pode vir de
+um cliente ptBR. O `ForeverData.lua` lista para o `/ls scan` só os **2.106** ids ≥ 30000 que o
+QuestieDB não conhece.
 
-**O beta não é a janela.** Riverglades é 36-44 e Shen'dralas nem está no beta; o cap é 30. Quem
-estiver em campo com coletor ligado no dia 4 de novembro é quem terá o dado.
-
-## De onde vem o dado
-
-Duas fontes, as duas limpas.
-
-**1. `Cache/WDB/*.wdb` — escrito pelo próprio cliente.** `RequestLoadQuestByID` faz o servidor
-mandar o registro completo, e o cliente grava em disco. `questcache.wdb`, `creaturecache.wdb` e
-`gameobjectcache.wdb` são exatamente o tripé que o roteador consome. Numa sessão curta de teste o
-`questcache` tinha **23 quests, 8 delas exclusivas do Forever**, com título, texto de objetivo e
-descrição legíveis. Formato: header de 24 bytes, depois `id` + `size` + payload. Lido por
-`tools/wdb.py`.
-
-**2. `/ls scan` (`ForeverScan.lua`) — o coletor em jogo.** Para o que o WDB não tem: coordenada.
-Pergunta ao servidor por id e, enquanto se joga, guarda quem dá e quem entrega cada quest com id de
-NPC e coordenada, os objetivos, e o waypoint que o próprio servidor aponta.
-
-### O bug que obriga o desenho
+### O bug que obriga o desenho do coletor
 
 **SavedVariables não volta no login neste cliente.** A tabela nasce vazia, então o logout sobrescreve
-o arquivo com apenas aquela sessão. Reproduzido aqui: uma sessão gravou 7 quests de Mulgore; a
-seguinte gravou 13 de Tirisfal e as 7 sumiram.
-
-Por isso `tools/import_scan.py` varre **muitos** arquivos e mescla de forma aditiva, incluindo os
-`.bak` que o cliente mantém — e por isso o WDB, que o addon não escreve, é o canal mais confiável
-que existe neste cliente.
+o arquivo com apenas aquela sessão. Por isso `tools/import_scan.py` varre **muitos** arquivos e
+mescla de forma aditiva, incluindo os `.bak` que o cliente mantém — e por isso o WDB, que o addon não
+escreve, é o canal mais confiável que existe neste cliente.
 
 ### O que não raspamos
 
@@ -85,37 +71,88 @@ Wowhead) proíbe baixar conteúdo por qualquer mecanismo que não seja navegador
 deles bloqueia coletor automático por nome. Não dá pra semear dado aberto com aquilo. Também não
 ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que derivasse.
 
-## Regerar num build novo
+## O que o gerador decide
+
+- **Faixa de nível por leva.** O Forever pôs conteúdo de 55-60 em Tirisfal e de 52-60 em Moonglade;
+  zona com um buraco de 10 níveis sem quest vira dois guias (`Tirisfal Glades (4-12)` e `(55-60)`),
+  senão o jogador de nível 5 seria mandado a quest de nível 55.
+- **Fica fora do leveling:** quest que exige profissão (as onze "Camping 101: <profissão>" de cada
+  zona inicial), entrega de Craftsman's Writ, e categoria que não é rota — feriado, Darkmoon, guerra
+  de AQ, reputação de fim de jogo, profissão e campo de batalha. Classe fica, com `only <Classe>`.
+- **Quest de capital** vai para o guia cuja faixa serve, preferindo a zona onde a capital fica
+  (Ironforge → Dun Morogh) — e nunca para Zephras Isle: quem está na ilha não vai a capital nenhuma.
+- **"Speak with X"** sai como `talk`, não `kill`: o banco guarda o objetivo como de criatura.
+- **Pré-requisito em ciclo** (a própria quest, ou a versão dela de outra raça — "Call of Earth" 1516
+  pedia `[1516, 1519, 92466]`) é retirado no import.
+- **Skyborne** são as raças 95 (Aliança) e 96 (Horda), máscaras `2^32` e `2^33` (enum do QuestieDB,
+  não `2^(id-1)`). O token em inglês ainda não é público: o `Guide.lua` reconhece a raça pelo id, e o
+  guia inicial dela é Zephras Isle.
+
+## Números (QuestieDB 1.0.5, build 70245)
+
+| | |
+|---|---|
+| Guias | 156 (70 de leveling, 85 especiais, 1 exemplo) |
+| Quests novas do Forever em guia | **454 de 760** |
+| — fora: entrega de Craftsman's Writ | 150 |
+| — fora: exigem profissão | 80 |
+| — fora: começam por item ou giver sem posição | 64 |
+| — fora: evento/repetível/campo de batalha | 8 |
+| — fora: outro | 4 |
+| `validate_guides.py` — bloqueios reais | **0** (os guias anteriores, no mesmo banco: 293) |
+| `guide_integrity.py` — passo sem coordenada | 50 (antes: 434) |
+
+`gen_forever.py` imprime essa conta a cada rodada.
+
+## As zonas novas
+
+| zona | areaID / uiMapID | nível | no QuestieDB 1.0.5 |
+|---|---|---|---|
+| Zephras Isle | 16593 / 2521 | 1-12 | zona inicial da raça nova; **guia nas duas facções** |
+| Riverglades | 16591 / 2548 | 36-44 | 181 NPCs com spawn, **nenhuma quest** — fora do beta |
+| Mount Hyjal | 616 / 2482 | — | NPCs, nenhuma quest |
+| Shen'dralas | 16651 / 2652 | — | NPCs, nenhuma quest |
+| Darkspear Islands | 16606 / 2524 | 30-60 | **Battleground 15v15**, não zona de quest |
+
+## Regerar
+
+Num build novo do cliente, ajustar `FOREVER` em `tools/import_forever.py`; numa versão nova do
+QuestieDB, só rodar de novo. Tudo é determinístico.
 
 ```
-python tools/gen_forever.py <build_forever> <build_anniversary>
-python tools/wdb.py <pasta Cache/WDB>
-python tools/import_scan.py
-python tools/import_forever.py
+python tools/questiedb.py --demo <pasta do QuestieDB>
+python tools/wdb.py <pasta Cache/WDB>          # opcional: o que o cliente gravou
+python tools/import_scan.py                     # opcional: o /ls scan de todos os SavedVariables
+python tools/import_forever.py <pasta do QuestieDB>
+python tools/generate_all.py 60
+python tools/gen_special.py
+python tools/gen_prereq.py
+python tools/gen_zonedata.py
+python tools/gen_trainers.py
+python tools/gen_subzones.py <pasta do QuestieDB>
+python tools/gen_forever.py
+python tools/validate_guides.py
 luajit tools/forever-guides.lua
 ```
 
-O gerador baixa e guarda cada `QuestV2` em `tools/build/`; build que não existe devolve 404 em vez
-de cair em outro. Guia que ficar sem conteúdo é **listado para deleção** — não existe mais lista de
-runtime escondendo guia.
+Sem argumento, a pasta do QuestieDB é a vizinha do Lodestar (`AddOns/QuestieDB`). O `QuestV2` de
+cada build é baixado do wago uma vez e fica em `tools/build/`; build que não existe devolve 404 em
+vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretórios de guia do zero.
 
 ## Em aberto
 
-- **Gerar a biblioteca de guias do Forever.** `build/forever/` já roteia (Mulgore saiu com 45 quests
-  usando coordenada colhida em jogo), mas os 174 guias que sobreviveram ainda são rota vanilla. Eles
-  ficam até haver substituto — apagá-los antes deixaria o addon sem nada.
-- **Zephras Isle / Skyborne.** Raça nova (race IDs 95/96, máscaras `4294967296`/`8589934632` — não é
-  `2^(id-1)`), zona inicial inteira, e nenhum guia nosso.
-- **Zonas novas no `zones.json`.** Zona ausente dali não vira guia nunca. Saem do `AreaTable`/`UiMap`
-  do build, que são legíveis.
-- **Ids-alvo de objetivo.** Nenhuma API expõe (`GetQuestObjectives` dá texto e tipo, nunca o id). O
-  registro do WDB tem — é o que `tools/wdb.py` persegue.
-- **Dado morto de Outland nas tabelas geradas.** `FlightData`, `TransitData`, `Trainers`,
-  `ZoneData` e `TravelPlanner` ainda trazem as 17 zonas de TBC — conferido: nenhuma delas está no
-  `AreaTable` do 69913. É dado **inalcançável, não errado**: nenhum guia rota para lá. Sai quando
-  essas tabelas forem regestradas para o Forever, junto com os guias. (O `Consumables` era caso
-  diferente e já foi corrigido: os 15 itens de raide eram de Outland e o `/ls check`, acessível de
-  qualquer lugar, marcava tudo como faltando para sempre.)
+- **Riverglades, Hyjal e Shen'dralas.** O QuestieDB 1.0.5 tem os NPCs, não as quests. Entram quando
+  ele tiver — ou quando o `/ls scan` colher no lançamento.
+- **Quest de profissão.** Fica fora porque o DSL não tem condição de profissão; com uma (`skill(171)`),
+  as "Camping 101" e as entregas de Craftsman's Writ podiam entrar para quem tem a profissão.
+- **Quest de capital de nível 60** cai no primeiro guia de mediana 60 (hoje Redridge 54-60 na
+  Aliança e Eastern Plaguelands 57-60 na Horda, ~70 accepts cada). Herdado do gerador; um guia de
+  "capital 60" seria o lugar certo.
+- **Passo que começa por item de drop** sem fonte localizada (64 quests novas): falta o
+  `itemDrops` do QuestieDB no `items.json`.
+- **Dado de Outland nas tabelas escritas à mão.** `FlightData`, `TransitData` e `TravelPlanner`
+  ainda trazem as zonas de TBC. É dado **inalcançável, não errado**: nenhum guia rota para lá.
+  (`ZoneData`, `Trainers` e `SubZones` já saem do banco do Forever.)
 - **Níveis de montaria**, quando o jogo disser quais são. Avisar chutando é pior que calar.
 - **`ChehulNet.lua` na VERSION 7 nos quatro addons da família.** A cópia do Lodestar e a do GuildOS
   já pulam GUID secreto; PartyLens e ProfessionHelper ainda não. Corrigir nos quatro e subir para 8
