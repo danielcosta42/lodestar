@@ -116,7 +116,10 @@ def discover_zones(router, faction, level_max, min_quests):
             per_area[area]["sA"] += 1
         elif q["faction"] == "H":
             per_area[area]["sH"] += 1
-        if q["faction"] in fac_ok:
+        # quest de classe entra no guia (com `only <Classe>`) mas não decide se a
+        # zona é rota nem a faixa dela: as de druida em Moonglade inventavam um
+        # "Moonglade (10-20)" no meio da cadeia de todo mundo.
+        if q["faction"] in fac_ok and not q["classes"]:
             per_area[area]["count"] += 1
             per_area[area]["levels"].append(ql)
 
@@ -137,10 +140,12 @@ def discover_zones(router, faction, level_max, min_quests):
             zones.append({
                 "area": area, "name": router.zones[str(area)]["name"],
                 "count": len(g), "median": pct(g, 0.5), "lo": pct(g, 0.15), "hi": pct(g, 0.85),
-                # faixas contíguas: nenhum nível da zona fica sem guia (quest sem
-                # nível vai com a primeira leva, a mais alta pega o resto)
-                "band": (grupos[n - 1][-1] + 1 if n else -999,
+                # faixas contíguas entre as levas (quest sem nível vai com a primeira,
+                # a mais alta pega o resto); abaixo da primeira leva só até BAND_GAP
+                # níveis — mais que isso o jogador da faixa já passou da quest.
+                "band": (grupos[n - 1][-1] + 1 if n else g[0] - BAND_GAP,
                          grupos[n + 1][0] - 1 if n + 1 < len(grupos) else 999),
+                "primeira": n == 0,
             })
     zones.sort(key=lambda z: (z["median"], z["lo"], -z["count"]))
     return zones
@@ -207,12 +212,17 @@ def gen_faction(router, faction, level_max, min_quests):
     used = set()
     files = []
     for i, z in enumerate(zones):
-        nxt = zones[i + 1] if i + 1 < len(zones) else None
+        # a cadeia não passa pela ilha da raça nova: só quem nasce lá vai para lá
+        nxt = next((n for n in zones[i + 1:] if n["area"] not in ISOLADAS), None)
         next_key = nxt["key"] if nxt else None
         travel = nxt["entry"] if nxt else None
         de, ate = z["band"]
+
+        def na_faixa(q):
+            ql = q["questLevel"] or 0
+            return (ql <= 0 and z["primeira"]) or de <= ql <= ate
         fora = {qid for qid, q in router.select(z["area"], faction, level_max).items()
-                if not de <= (q["questLevel"] or 0) <= ate}
+                if not na_faixa(q)}
         text, n, qids = router.generate_zone(
             z["area"], faction, z["title"], level_max,
             next_key=next_key, exclude=used | fora, travel_to=travel,
@@ -253,11 +263,11 @@ def write_xml(all_files):
 def main():
     level_max = int(sys.argv[1]) if len(sys.argv) > 1 else 60
     min_quests = int(sys.argv[2]) if len(sys.argv) > 2 else 6
-    router = Router(load_data())
+    data = load_data()
     all_files = []
     for faction in ("A", "H"):
         print("=== %s ===" % ("Alliance" if faction == "A" else "Horde"))
-        all_files += gen_faction(router, faction, level_max, min_quests)
+        all_files += gen_faction(Router(data, faction), faction, level_max, min_quests)
     write_xml(all_files)
 
 

@@ -48,8 +48,10 @@ def guides():
 
 forever, anniv = quest_ids(FOREVER), quest_ids(ANNIV)
 gone = anniv - forever
-banco = {int(q) for q in json.load(open(os.path.join(BUILD, "quests.json"), encoding="utf-8"))}
-fonte = json.load(open(os.path.join(BUILD, "fonte.json"), encoding="utf-8"))
+with open(os.path.join(BUILD, "quests.json"), encoding="utf-8") as fh:
+    banco = {int(q) for q in json.load(fh)}
+with open(os.path.join(BUILD, "fonte.json"), encoding="utf-8") as fh:
+    fonte = json.load(fh)
 
 missing, dead = set(), []
 for key, ids in guides():
@@ -80,7 +82,7 @@ lines.append("}")
 
 # Ids que o cliente do Forever tem e o banco não conhece: é o que o coletor em
 # jogo (`/ls scan`) pergunta ao servidor, um a um. Como string porque só é lida
-# quando alguém manda varrer — não vira 1.700 chaves de tabela à toa.
+# quando alguém manda varrer — não vira 2.100 chaves de tabela à toa.
 #
 # Não desconta o que a Wowhead sabe: raspar o site é contra a ToU deles (só
 # navegador) e o robots.txt bloqueia coletor automático por nome — não dá pra

@@ -58,11 +58,13 @@ def cbor(b, i=0):
     if tipo == 7:
         if info in (20, 21):
             return info == 21, i
-        if info in (22, 23):
-            return None, i
-        fmt = {25: ">e", 26: ">f", 27: ">d"}[info]
-        n = struct.calcsize(fmt)
-        return struct.unpack(fmt, b[i:i + n])[0], i + n
+        if info in (25, 26, 27):
+            fmt = {25: ">e", 26: ">f", 27: ">d"}[info]
+            n = struct.calcsize(fmt)
+            return struct.unpack(fmt, b[i:i + n])[0], i + n
+        if info == 24:                             # valor simples de 1 byte
+            return None, i + 1
+        return None, i                             # null, undefined, simples sem significado
     if info < 24:
         n = info
     elif info == 31:
@@ -76,18 +78,27 @@ def cbor(b, i=0):
     if tipo == 1:
         return -1 - n, i
     if tipo in (2, 3):
+        if n is None:                              # string em pedaços, até o 0xFF
+            partes = []
+            while b[i] != 0xFF:
+                parte, i = cbor(b, i)
+                partes.append(parte)
+            return "".join(partes), i + 1
         return b[i:i + n].decode("utf-8", "replace"), i + n
     if tipo == 6:                                  # tag: o valor é o que importa
         return cbor(b, i)
     if tipo not in (4, 5):
         raise ValueError("CBOR tipo %d no byte %d" % (tipo, i - 1))
     out = [] if tipo == 4 else {}
-    while (b[i] != 0xFF) if n is None else (len(out) < n):
+    # conta pares, não len(out): true e 1 são chaves distintas em Lua e a mesma no dict
+    lidos = 0
+    while (b[i] != 0xFF) if n is None else (lidos < n):
         v, i = cbor(b, i)
         if tipo == 4:
             out.append(v)
         else:
             out[v], i = cbor(b, i)
+        lidos += 1
     return out, (i + 1 if n is None else i)
 
 
@@ -101,12 +112,15 @@ def lua(v):
 
 
 def le_toc(caminho):
+    """As chaves X- do metadado, mais a versão do QuestieDB em "Version"."""
     meta = {}
     with open(caminho, encoding="utf-8") as fh:
         for linha in fh:
             m = LINHA.match(linha)
             if m:
                 meta[m.group(1)] = m.group(2).rstrip("\r\n")
+            elif linha.startswith("## Version:"):
+                meta["Version"] = linha.split(":", 1)[1].strip()
     return meta
 
 
@@ -156,7 +170,10 @@ def zonas(pasta):
     ("Referenced dungeon area"): o nome vem do dungeons.lua, com o sufixo
     " - Dungeon" que o gen_special usa para reconhecê-la."""
     base = os.path.join(pasta, ZONAS)
-    texto = open(os.path.join(base, "areaIdToUiMapId.lua"), encoding="utf-8").read()
+    with open(os.path.join(base, "areaIdToUiMapId.lua"), encoding="utf-8") as fh:
+        texto = fh.read()
+    with open(os.path.join(base, "dungeons.lua"), encoding="utf-8") as fh:
+        masmorras = fh.read().splitlines()
     override, principal = texto.split("ZoneDB.private.areaIdToUiMapId =")
     uimap, nomes = {}, {}
     for parte, e_override in ((principal, False), (override, True)):
@@ -171,7 +188,7 @@ def zonas(pasta):
     # Id alternativo que cai no mapa de uma zona de topo é subzona a céu aberto
     # (Gnomeregan 133 = New Tinkertown, em Dun Morogh): não é a masmorra.
     abertos = {uimap[a] for a in nomes} - {0}
-    for linha in open(os.path.join(base, "dungeons.lua"), encoding="utf-8"):
+    for linha in masmorras:
         m = MASMORRA.match(linha)
         if not m:
             continue
@@ -223,8 +240,7 @@ def carrega(pasta=PADRAO):
         "items": itens(raw["Item"], quests),
         "zones": zonas(pasta),
     }
-    versao = re.search(r"^## Version:\s*(\S+)", open(os.path.join(pasta, TOC), encoding="utf-8").read(), re.M)
-    banco["versao"] = versao.group(1) if versao else "?"
+    banco["versao"] = meta.get("Version", "?")
     # Ida e volta pelo JSON: chave vira string em todos os níveis, como no
     # arquivo que o roteador lê (spawn de zona 215 é "215", não 215).
     return json.loads(json.dumps(banco))
@@ -234,6 +250,12 @@ def demo(pasta=PADRAO):
     # CBOR com bytes conhecidos: {1: "ab", "p": 3} e [1, nil, -2, 1.5]
     assert cbor(bytes.fromhex("a201426162417003"))[0] == {1: "ab", "p": 3}
     assert lua(cbor(bytes.fromhex("8401f621f93e00"))[0]) == {1: 1, 3: -2, 4: 1.5}
+    # true e 1 colidem no dict: o mapa de 2 pares não pode ler além do fim
+    assert cbor(bytes.fromhex("a2f56161016162")) == ({True: "b"}, 7)
+    # string em pedaços (5f ... ff), inteiro de 4 bytes, negativo de 1 byte, float32
+    assert cbor(bytes.fromhex("5f41614162ff"))[0] == "ab"
+    assert cbor(bytes.fromhex("1a00030d40"))[0] == 200000 and cbor(bytes.fromhex("3818"))[0] == -25
+    assert cbor(bytes.fromhex("fa3fc00000"))[0] == 1.5
 
     b = carrega(pasta)
     q, npcs, zonas_ = b["quests"], b["npcs"], b["zones"]

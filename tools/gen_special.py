@@ -109,12 +109,13 @@ def main():
                 if nome.endswith(".lua"):
                     os.remove(os.path.join(raiz, nome))
     data = load_data()
-    r = Router(data)
+    # um roteador por lado: quest das duas facções fica com quem dá/recebe do lado amigo
+    routers = {f: Router(data, f) for f in ("A", "H", "N")}
     Q, N, O, Z = data["quests"], data["npcs"], data["objects"], data["zones"]
     files = []
 
     def emit(category, faction, title, ids, mode, min_n=1):
-        text, n, _ = r.generate_linear(ids, faction, title, category, mode=mode)
+        text, n, _ = routers[faction].generate_linear(ids, faction, title, category, mode=mode)
         if not text or n < min_n:
             return 0
         path, rel = out_path(category, faction, title)

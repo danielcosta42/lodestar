@@ -8,9 +8,7 @@ ns.Library = LB
 ns.GuideMenu = LB          -- alias: referências antigas continuam funcionando
 local UI = ns.UI
 
--- Sem "Dailies": as diárias eram de TBC (nível 65+); o Forever para no 60. Aba fixa
--- sem guia nenhum só mostraria a lista vazia.
-local CAT_ORDER = { "Leveling", "Class", "Dungeons", "Attunements", "Reputation", "Events" }
+local CAT_ORDER = { "Leveling", "Class", "Dungeons", "Attunements", "Reputation", "Dailies", "Events" }
 local COLS, GAP, CARD_H = 3, 12, 118
 
 local frame, scroll, content, cards, catTabs

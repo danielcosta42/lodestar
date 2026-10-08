@@ -144,6 +144,30 @@ check(sky.opened == "Leveling/Alliance/Zephras Isle (1-11)",
 	"Skyborne começa em Zephras Isle (abriu " .. tostring(sky.opened) .. ")")
 raceId = 1
 
+-- zona inicial com duas faixas (o Forever pôs 48-57 em Teldrassil): o char novo
+-- começa pela mais baixa, seja qual for a ordem em que os guias registraram
+local duas = load_addon(16001)
+for _, faixa in ipairs({ "48-57", "50-58", "52-59", "54-60", "4-10", "56-60" }) do
+	duas:RegisterGuide("Leveling/Alliance/Elwynn Forest (" .. faixa .. ")", { faction = "Alliance" },
+		"step\n  note x\n")
+end
+function duas:LoadGuide(key) self.opened = key end
+duas.handlers._READY()
+check(duas.opened == "Leveling/Alliance/Elwynn Forest (4-10)",
+	"char novo começa pela faixa mais baixa da zona (abriu " .. tostring(duas.opened) .. ")")
+
+-- o autopilot não manda quem não é Skyborne para a ilha, mesmo com faixa igual
+local auto = load_addon(16001)
+for n = 1, 8 do
+	auto:RegisterGuide(("Leveling/Alliance/Zephras Isle (4-1%d)"):format(n), { faction = "Alliance" },
+		"step\n  note z\n")
+end
+auto:RegisterGuide("Leveling/Alliance/Elwynn Forest (4-10)", { faction = "Alliance" }, "step\n  note e\n")
+playerLevel = 6
+check(auto:BestGuideForPlayer() == "Leveling/Alliance/Elwynn Forest (4-10)",
+	"humano no nível 6 não vai para Zephras Isle")
+playerLevel = 1
+
 -- ── a biblioteca gerada inteira ──────────────────────────────────────────────
 -- Todo guia que os manifestos carregam é Lua válido, registra, interpreta com
 -- passo, e toda zona de |goto existe no ZoneData (senão a seta não acha o mapa).
@@ -167,9 +191,9 @@ for key, g in pairs(lib.guides) do
 	if #passos == 0 then sem_passo[#sem_passo + 1] = key end
 	for _, s in ipairs(passos) do
 		for _, goal in ipairs(s.goals) do
-			local z = goal.goto_ and goal.goto_.zone
-			-- "-1,-1" (instância) o parser lê como zona "X -": problema conhecido, à parte
-			if z and not z:match(" %-$") and not lib.zoneUiMap[z] then zonas_fora[z] = key end
+			-- "-1,-1" (instância) o parser lê como zona "X -": a zona é o que vem antes
+			local z = goal.goto_ and goal.goto_.zone and (goal.goto_.zone:gsub(" %-$", ""))
+			if z and not lib.zoneUiMap[z] then zonas_fora[z] = key end
 		end
 	end
 end

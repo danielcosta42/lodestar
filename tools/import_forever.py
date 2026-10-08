@@ -39,7 +39,8 @@ def carrega(nome, padrao=None):
     caminho = os.path.join(BUILD, "%s.json" % nome)
     if not os.path.exists(caminho):
         return padrao if padrao is not None else {}
-    return json.load(open(caminho, encoding="utf-8"))
+    with open(caminho, encoding="utf-8") as fh:
+        return json.load(fh)
 
 
 def quest_ids(build):
@@ -50,14 +51,17 @@ def quest_ids(build):
     não está nela): ausência aqui não prova que a quest não existe."""
     path = os.path.join(BUILD, "QuestV2-%s.csv" % build)
     if os.path.exists(path):
-        raw = open(path, encoding="utf-8").read()
+        with open(path, encoding="utf-8") as fh:
+            raw = fh.read()
     else:
         url = "https://wago.tools/db2/QuestV2/csv?build=" + build
         # wago recusa o User-Agent padrão do urllib (403).
         req = urllib.request.Request(url, headers={"User-Agent": "Lodestar-gen_forever/1.0"})
-        raw = urllib.request.urlopen(req, timeout=120).read().decode("utf-8")
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            raw = resp.read().decode("utf-8")
         os.makedirs(BUILD, exist_ok=True)
-        open(path, "w", encoding="utf-8").write(raw)
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(raw)
     return {int(r[0]) for r in csv.reader(io.StringIO(raw)) if r and r[0].isdigit()}
 
 
@@ -135,7 +139,8 @@ def main(argv):
     for tabela, campo in (("givers", "startNpcs"), ("enders", "endNpcs")):
         for qid, g in (scan.get(tabela) or {}).items():
             entrada = quests.get(str(qid))
-            if not (entrada and g.get("npc")):
+            # quem dá/recebe vem da base quando ela sabe; o scan só entra no vazio
+            if not (entrada and g.get("npc")) or entrada[campo]:
                 continue
             area = area_do(g, entrada)
             if not area:

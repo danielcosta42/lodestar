@@ -80,10 +80,11 @@ PREREQ_OVERRIDES = {
 }
 
 RACE_BIT = {1: "Human", 2: "Orc", 4: "Dwarf", 8: "NightElf", 16: "Undead",
-            32: "Tauren", 64: "Gnome", 128: "Troll", 512: "BloodElf", 1024: "Draenei",
-            # Forever: uma raça Skyborne por facção; a facção já sai da máscara, e o
-            # Guide.lua reconhece "Skyborne" pelo id da raça (95/96).
-            1 << 32: "Skyborne", 1 << 33: "Skyborne"}
+            32: "Tauren", 64: "Gnome", 128: "Troll", 512: "BloodElf", 1024: "Draenei"}
+# Forever: Skyborne são duas raças, uma por facção (bits 32 e 33). Máscara só com
+# esses bits — um deles ou os dois — é quest de Skyborne; a facção já sai da
+# máscara, e o Guide.lua reconhece "Skyborne" pelo id da raça (95/96).
+VANILLA_RACES = (1 << 32) - 1
 # bitmask de classe do WoW = 1<<(classId-1): Sha=64, Mag=128, Wlk=256, Dru=1024.
 # (bit 32 = DeathKnight, inexistente no TBC.)
 CLASS_BIT = {1: "Warrior", 2: "Paladin", 4: "Hunter", 8: "Rogue", 16: "Priest",
@@ -130,6 +131,8 @@ def only_cond(q):
     conds = []
     if single_bit(q["races"]) and q["races"] in RACE_BIT:
         conds.append(RACE_BIT[q["races"]])
+    elif q["races"] and not q["races"] & VANILLA_RACES:
+        conds.append("Skyborne")
     if single_bit(q["classes"]) and q["classes"] in CLASS_BIT:
         conds.append(CLASS_BIT[q["classes"]])
     return " ".join(conds)
@@ -140,9 +143,11 @@ def esc(name):
 
 
 class Router:
-    def __init__(self, data):
-        self.quests = data["quests"]
+    def __init__(self, data, faction=None):
         self.npcs = data["npcs"]
+        self.quests = data["quests"]
+        if faction in ("A", "H"):
+            self.quests = {k: self._lado(q, faction) for k, q in self.quests.items()}
         self.objects = data["objects"]
         self.zones = data["zones"]
         self.items = data.get("items") or {}
@@ -152,6 +157,25 @@ class Router:
             nm = n.get("name")
             if nm and n.get("spawns"):
                 self._npc_by_name.setdefault(nm.lower(), int(nid))
+
+    def _lado(self, q, faction):
+        """Quest das duas facções lista quem dá/recebe dos dois lados (The Hunter's
+        Charm: Holt Thunderhorn em Thunder Bluff e Dorion em Darnassus). No guia de
+        uma facção fica só quem não é da outra — o que as correções por facção do
+        QuestieDB fazem em Lua, aqui pelo `friendlyToFaction` do próprio NPC."""
+        inimigo = "H" if faction == "A" else "A"
+        out = None
+        for campo in ("startNpcs", "endNpcs"):
+            amigos = [n for n in q[campo] if (self.npc(n) or {}).get("faction") != inimigo]
+            if amigos and len(amigos) < len(q[campo]):
+                out = out or dict(q)
+                out[campo] = amigos
+            elif campo == "startNpcs" and q[campo] and not amigos \
+                    and not q["startObjects"] and not q["startItems"]:
+                # só quem é da outra facção dá a quest (In Search of Thaelrid, só em
+                # Darnassus): este lado não consegue pegá-la
+                return dict(q, faction=inimigo)
+        return out or q
 
     def item_source(self, iid):
         """De onde o item de objetivo vem: (kind, id, nome, spawn) ou None.
@@ -279,6 +303,12 @@ class Router:
             names = []                                      # tip circular (fonte == item): descarta
         tip = (" |tip {dropsfrom}" + ", ".join(names)) if names else ""
         return "  %s %s%s##%d |q %d%s%s" % (verb, cstr, esc(iname), iid, qid, self._goto_str(sp), tip)
+
+    @staticmethod
+    def _fala(q, npc):
+        """Objetivo "Speak with X" num NPC amigo: o passo é falar, não matar. Alvo
+        hostil (sem facção amiga) continua kill mesmo que o texto comece assim."""
+        return is_talk_quest(q["objText"]) and bool((npc or {}).get("faction"))
 
     def group_tag(self, nid, quest_level):
         """ ' |elite' / ' |raid' se o alvo (NPC) exige grupo/raide, senão ''.
@@ -635,7 +665,9 @@ class Router:
                     steps.append(("  use %s##%d |q %d%s%s |tip {useit}" % (esc(it["otarget"]["name"]),
                                   it["oid"], qid, goto_str(it["oc"]), self.group_tag(it["oid"], ql)), None))
                 else:
-                    okind = "talk" if it["okind"] == "kill" and is_talk_quest(q["objText"]) else it["okind"]
+                    okind = it["okind"]
+                    if okind == "kill" and self._fala(q, it["otarget"]):
+                        okind = "talk"
                     gt = self.group_tag(it["oid"], ql) if okind == "kill" else ""
                     steps.append(("  %s %s##%d |q %d%s%s" % (okind, esc(it["otarget"]["name"]),
                                   it["oid"], qid, goto_str(it["oc"]), gt), None))
@@ -643,9 +675,9 @@ class Router:
                 npc = objc and self.npc(objc[0])
                 obj = objo and self.obj(objo[0])
                 if npc and not is_marker(npc["name"]):
-                    verb = "use" if useq else ("talk" if is_talk_quest(q["objText"]) else "kill")
+                    verb = "use" if useq else ("talk" if self._fala(q, npc) else "kill")
                     ut = " |tip {useit}" if useq else ""
-                    gt = self.group_tag(objc[0], ql) if verb == "kill" else ""
+                    gt = self.group_tag(objc[0], ql) if verb != "talk" else ""
                     steps.append(("  %s %s##%d |q %d%s%s%s" % (verb, esc(npc["name"]), objc[0], qid,
                                   goto_str(self.best_spawn(npc, area)), gt, ut), None))
                 elif obj and not is_marker(obj["name"]):
@@ -977,9 +1009,9 @@ class Router:
             npc = objc and self.npc(objc[0])
             obj = objo and self.obj(objo[0])
             if npc and not is_marker(npc["name"]):     # matar/usar/falar com criatura (goto se tiver spawn)
-                verb = "use" if useq else ("talk" if is_talk_quest(q["objText"]) else "kill")
+                verb = "use" if useq else ("talk" if self._fala(q, npc) else "kill")
                 ut = " |tip {useit}" if useq else ""
-                gt = self.group_tag(objc[0], ql) if verb == "kill" else ""
+                gt = self.group_tag(objc[0], ql) if verb != "talk" else ""
                 steps.append(("  %s %s##%d |q %d%s%s%s" % (verb, esc(npc["name"]), objc[0], qid,
                               goto_str(self.best_spawn(npc, -1)), gt, ut), None))
             elif obj and not is_marker(obj["name"]):   # coletar de objeto no mundo

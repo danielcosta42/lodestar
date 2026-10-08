@@ -489,17 +489,25 @@ local RACE_START = {
 	SCOURGE = "Tirisfal Glades", BLOODELF = "Eversong Woods",
 }
 
+-- A ilha da raça nova (Forever): a cadeia de leveling não passa por ela, e o
+-- autopilot só a oferece a Skyborne ou a quem já está lá.
+local SKYBORNE_START = "Zephras Isle"
+
 local function findStartGuide()
 	local race = (select(2, UnitRace("player")) or ""):upper()
-	local zone = isSkyborne() and "Zephras Isle" or RACE_START[race]
+	local zone = isSkyborne() and SKYBORNE_START or RACE_START[race]
 	if not zone then return nil end
 	local pf = UnitFactionGroup("player")
+	-- a zona pode ter duas faixas (Teldrassil 4-10 e 48-57): começa pela mais baixa
+	local best, bestLo
 	for key, g in pairs(ns.guides) do
 		if key:sub(1, 9) == "Leveling/" and key:find(zone, 1, true)
 			and (not g.meta.faction or g.meta.faction == pf) then
-			return key
+			local lo = tonumber(key:match("%((%d+)%s*%-")) or 0
+			if not bestLo or lo < bestLo then best, bestLo = key, lo end
 		end
 	end
+	return best
 end
 
 -- AUTOPILOT: melhor guia de leveling p/ QUALQUER nível — faixa (lo-hi) que contém
@@ -512,9 +520,11 @@ function ns:BestGuideForPlayer()
 	if m and ns.zoneUiMap then
 		for name, id in pairs(ns.zoneUiMap) do if id == m then curEng = name; break end end
 	end
+	local ilha = isSkyborne() or curEng == SKYBORNE_START
 	local best, bestScore
 	for key, g in pairs(self.guides) do
-		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf) then
+		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf)
+			and (ilha or not key:find(SKYBORNE_START, 1, true)) then
 			local lo, hi = key:match("%((%d+)%s*%-%s*(%d+)%)")
 			lo, hi = tonumber(lo), tonumber(hi)
 			if lo and hi then
