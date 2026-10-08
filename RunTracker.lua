@@ -40,9 +40,9 @@ RT.Opponent = opponent
 
 -- o /played que o addon pede não vai para o chat: as janelas de chat deixam de ouvir
 -- a resposta até ela chegar (10 s no máximo)
-local muted
-local function unmute()
-	if not muted then return end
+local muted, gen = nil, 0
+local function unmute(g)
+	if not muted or (g and g ~= gen) then return end   -- prazo de um pedido mais velho
 	for _, f in ipairs(muted) do f:RegisterEvent("TIME_PLAYED_MSG") end
 	muted = nil
 end
@@ -56,8 +56,10 @@ local function requestPlayed()
 				f:UnregisterEvent("TIME_PLAYED_MSG"); muted[#muted + 1] = f
 			end
 		end
-		C_Timer.After(10, unmute)
 	end
+	gen = gen + 1
+	local g = gen
+	C_Timer.After(10, function() unmute(g) end)
 	RequestTimePlayed()
 end
 

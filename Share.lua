@@ -47,11 +47,21 @@ ns:On("_INIT", function()
 	local saved = ns.db and ns.db.customGuides
 	if not saved then return end
 	local moved = {}                                -- save de antes da regra acima: renomeia
-	for key, gd in pairs(saved) do
+	for key in pairs(saved) do
 		local k = freeKey(key)
-		if k ~= key then moved[k] = gd; saved[key] = nil end
+		if k ~= key then moved[key] = k end
 	end
-	for k, gd in pairs(moved) do saved[k] = gd end
+	-- a aba deste char segue o importado
+	-- ponytail: a de outro char fica no embutido (o SavedVariables dele não carrega aqui)
+	local c = ns.char
+	for old, new in pairs(moved) do
+		saved[new], saved[old] = saved[old], nil
+		if c then
+			for i, x in ipairs(c.openGuides or {}) do if x == old then c.openGuides[i] = new end end
+			if c.currentGuide == old then c.currentGuide = new end
+			if c.steps and c.steps[old] then c.steps[new], c.steps[old] = c.steps[old], nil end
+		end
+	end
 	for key, gd in pairs(saved) do
 		ns:RegisterGuide(key, { faction = gd.faction, author = "Import" }, gd.body)
 	end

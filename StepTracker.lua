@@ -109,12 +109,7 @@ end)
 --------------------------------------------------------------------------------
 
 local function inLogOrDone(qid)
-	local QL = C_QuestLog
-	if QL then
-		if QL.GetLogIndexForQuestID and QL.GetLogIndexForQuestID(qid) then return true end
-		if QL.IsQuestFlaggedCompleted and QL.IsQuestFlaggedCompleted(qid) then return true end
-	end
-	return false
+	return ns.IsQuestInLog(qid) or ns.IsQuestDone(qid)
 end
 
 local function gossipOffered()

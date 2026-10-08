@@ -181,6 +181,7 @@ local function marca() dirty = true end
 ns:On("QUEST_LOG_UPDATE", marca)
 ns:On("BAG_UPDATE_DELAYED", marca)
 ns:On("PLAYER_REGEN_ENABLED", marca)
+ns:On("BAG_UPDATE_COOLDOWN", marca)                -- recarga do item que não se gasta
 
 local function update()
 	if not (ns:UIShown() and ns.db and ns.db.questItem ~= false) then

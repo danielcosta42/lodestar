@@ -19,6 +19,7 @@ local function IsQuestInLog(id)
 	if GetQuestLogIndexByID then return (GetQuestLogIndexByID(id) or 0) > 0 end
 	return false
 end
+ns.IsQuestInLog, ns.IsQuestDone = IsQuestInLog, IsQuestComplete
 -- `obj`: aquele objetivo. Sem índice, a quest inteira: o passo cita o 1º alvo e a nota diz o
 -- resto — concluir no 1º avançava o guia com objetivos por fazer.
 local function QuestObjectiveDone(id, obj)
@@ -381,15 +382,23 @@ local function goalQuest(goal)
 	return goal.q and goal.q.id or (goal.verb == "turnin" and goal.id) or nil
 end
 
-function ns:IsGoalActive(goal)
-	-- missão descartada (o NPC não a oferecia): seus passos seguintes não valem mais, a não
-	-- ser que ela esteja no diário
+-- missão descartada (o NPC não a oferecia): seus passos seguintes não valem mais, a não
+-- ser que ela esteja no diário ou já entregue (o jogador a fez por conta própria)
+local function droppedGoal(char, goal)
 	local q = goalQuest(goal)
-	if q and self.char and self.char.dropped and self.char.dropped[q] and not IsQuestInLog(q) then
-		return false
-	end
+	return q and char and char.dropped and char.dropped[q] and not IsQuestInLog(q)
+		and not IsQuestComplete(q) or false
+end
+
+function ns:IsGoalActive(goal)
+	if droppedGoal(self.char, goal) then return false end
 	return self:EvalCondition(goal.only)
 end
+
+ns:On("QUEST_ACCEPTED", function(_, a, b)       -- (id) ou (índice no diário, id)
+	local q = b or a
+	if q and ns.char and ns.char.dropped then ns.char.dropped[q] = nil end
+end)
 
 -- Um goal é "rastreável" se dá pra detectar conclusão automaticamente.
 function ns:IsGoalTrackable(goal)
@@ -435,11 +444,14 @@ function ns:IsGoalComplete(goal)
 end
 
 -- Step completo = todos os goals ativos e rastreáveis estão completos,
--- e existe pelo menos um goal rastreável (senão avança manual).
+-- e existe pelo menos um goal rastreável (senão avança manual). Goal de missão
+-- descartada conta como feito: o passo que só tinha ela não trava o guia.
 function ns:IsStepComplete(step)
 	local anyTrackable = false
 	for _, goal in ipairs(step.goals) do
-		if self:IsGoalActive(goal) and self:IsGoalTrackable(goal) then
+		if droppedGoal(self.char, goal) then
+			anyTrackable = true
+		elseif self:IsGoalActive(goal) and self:IsGoalTrackable(goal) then
 			anyTrackable = true
 			if not self:IsGoalComplete(goal) then return false end
 		end
@@ -461,7 +473,7 @@ function ns:AdvanceStep(delta)
 	while guide.steps[idx] and not self:IsStepActive(guide.steps[idx]) do
 		idx = idx + (delta >= 0 and 1 or -1)
 	end
-	if idx < 1 then idx = 1 end
+	if idx < 1 then return end                   -- nada ativo antes: fica onde está
 	if idx > #guide.steps then
 		-- fim do guia: encadeia para o próximo, se houver
 		local nxt = self:NextGuideKey(guide)
@@ -487,6 +499,7 @@ end
 function ns:MarkGoal(goal, done)
 	if done == nil then done = not self.char.completedGoals[goal._gkey] end
 	self.char.completedGoals[goal._gkey] = done or nil
+	self.char.hold = nil                         -- marcou: o guia volta a andar sozinho
 	self:CheckProgress()
 	if self.Viewer then self.Viewer:Refresh() end
 end
@@ -502,7 +515,11 @@ function ns:CheckProgress()
 		if self.currentGuide ~= guide then break end   -- encadeou p/ outro guia
 		local step = self:GetStep()
 		if not step then break end
-		if self.char.hold == self.char.currentStep then break end   -- o jogador voltou aqui à mão
+		if self.char.hold == self.char.currentStep then        -- o jogador voltou aqui à mão
+			-- ...e o passo está por fazer: solta a trava, para seguir quando concluir
+			if self:IsStepActive(step) and not self:IsStepComplete(step) then self.char.hold = nil end
+			break
+		end
 		if self:IsStepActive(step) and not self:IsStepComplete(step) then break end
 		local before = self.char.currentStep
 		self:AdvanceStep(1)
@@ -585,6 +602,18 @@ function ns:BestGuideForPlayer()
 	return best
 end
 
+-- 2.4: os passos injetados (pré-requisitos de outros guias) saíram, e o passo salvo
+-- contava com eles (lista maior). Recua até logo depois do último passo concluído —
+-- seguir o número velho pulava missões.
+local function migrateStep(guide, i)
+	local steps = ensureParsed(guide)
+	local j = math.min(i, #steps)
+	while j > 1 and not (ns:IsStepActive(steps[j - 1]) and ns:IsStepComplete(steps[j - 1])) do
+		j = j - 1
+	end
+	return math.max(j, 1)
+end
+
 -- Restaura as abas/guia salvos (migrando o estado antigo single-guia); senão
 -- faz onboarding de char novo.
 ns:On("_READY", function()
@@ -599,6 +628,16 @@ ns:On("_READY", function()
 	-- Descarta abas cujo guia não existe mais (ex.: guia importado apagado).
 	for i = #char.openGuides, 1, -1 do
 		if not ns.guides[char.openGuides[i]] then table.remove(char.openGuides, i) end
+	end
+	if (char.stepsVer or 1) < 2 then
+		char.completedGoals = {}                 -- marcas manuais: chave com o número velho
+		for k, i in pairs(char.steps) do
+			if ns.guides[k] then char.steps[k] = migrateStep(ns.guides[k], i) end
+		end
+		if char.currentGuide and char.steps[char.currentGuide] then
+			char.currentStep = char.steps[char.currentGuide]
+		end
+		char.stepsVer = 2
 	end
 	-- Restaura a aba ativa salva; senão a primeira aba válida que sobrou.
 	local key = char.currentGuide

@@ -225,6 +225,7 @@ SlashCmdList.LODESTAR = function(msg)
 		ns.char.currentStep = 1
 		if ns.currentGuide then ns.char.steps[ns.currentGuide.key] = 1 end
 		wipe(ns.char.completedGoals)
+		ns.char.dropped, ns.char.hold = nil, nil
 		ns:Print(ns.L.PROGRESS_RESET)
 		if ns.Viewer then ns.Viewer:Refresh() end
 	elseif cmd == "menu" or cmd == "guides" then

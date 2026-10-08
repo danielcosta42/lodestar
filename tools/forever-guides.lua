@@ -377,6 +377,97 @@ check(not fe:IsGoalActive({ verb = "kill", q = { id = 777 } }), "objetivo de mis
 check(not fe:IsGoalActive({ verb = "turnin", id = 777 }), "entrega de missão descartada não vale")
 check(fe:IsGoalActive({ verb = "kill", q = { id = 778 } }), "as outras seguem valendo")
 fe.char.dropped = nil
+-- o passo que só tinha goals da descartada está feito: o guia não para nele
+local dr = load_addon(16001)
+dr:RegisterGuide("Leveling/Alliance/Drop (1-3)", { faction = "Alliance" }, [[
+step
+  accept Q##777
+step
+  kill X##1 |q 777
+step
+  turnin Q##777
+step
+  note fim
+]])
+dr.currentGuide = dr.guides["Leveling/Alliance/Drop (1-3)"]
+dr.ensureParsed(dr.currentGuide)
+dr.char.dropped = { [777] = true }
+dr.char.currentStep = 2
+dr:CheckProgress()
+check(dr.char.currentStep == 4, "passos só da descartada são pulados (parou no " .. dr.char.currentStep .. ")")
+-- descartada, mas feita à mão depois: a entrega vale (e está feita)
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 777 end
+check(dr:IsGoalActive({ verb = "turnin", id = 777 }), "descartada e entregue à mão: a entrega vale")
+C_QuestLog.IsQuestFlaggedCompleted = function() return false end
+-- aceitá-la de novo (outro NPC, depois do RP) a tira do descarte
+dr.handlers.QUEST_ACCEPTED("QUEST_ACCEPTED", 777)
+check(not dr.char.dropped[777], "aceitar a missão a tira do descarte")
+dr.char.dropped[777] = true
+dr.handlers.QUEST_ACCEPTED("QUEST_ACCEPTED", 3, 777)          -- (índice no diário, id)
+check(not dr.char.dropped[777], "aceitar (índice, id) também")
+
+-- passo voltado à mão, mas não concluído: quando concluir, o guia segue sozinho
+local vt = load_addon(16001)
+vt:RegisterGuide("Leveling/Alliance/Vt (1-3)", { faction = "Alliance" }, [[
+step
+  turnin A##601
+step
+  note b
+]])
+vt.currentGuide = vt.guides["Leveling/Alliance/Vt (1-3)"]
+vt.ensureParsed(vt.currentGuide)
+vt.char.currentStep = 2
+vt:AdvanceStep(-1)
+vt:CheckProgress()
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 601 end
+vt:CheckProgress()
+check(vt.char.currentStep == 2, "voltado e ainda por fazer: ao concluir, avança (está no " .. vt.char.currentStep .. ")")
+C_QuestLog.IsQuestFlaggedCompleted = function() return false end
+-- "< Voltar" sem passo ativo antes: fica onde está
+local vi = load_addon(16001)
+vi:RegisterGuide("Leveling/Alliance/Vi (1-3)", { faction = "Alliance" }, [[
+step
+  only Druid
+  note a
+step
+  note b
+]])
+vi.currentGuide = vi.guides["Leveling/Alliance/Vi (1-3)"]
+vi.ensureParsed(vi.currentGuide)
+vi.char.currentStep = 2
+vi:AdvanceStep(-1)
+check(vi.char.currentStep == 2, "voltar sem passo ativo antes não cai num passo de outra classe")
+
+-- passo salvo antes da 2.4 contava os passos injetados (lista maior): recua até o último
+-- passo concluído, em vez de pular missões
+local mig = load_addon(16001)
+local MK = "Leveling/Alliance/Mig (1-3)"
+mig:RegisterGuide(MK, { faction = "Alliance" }, [[
+step
+  turnin A##501
+step
+  turnin B##502
+step
+  talk C##1
+step
+  turnin D##503
+step
+  turnin E##504
+]])
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 501 or id == 502 end
+mig.fire = function() end
+mig.char.openGuides = { MK }
+mig.char.currentGuide = MK
+mig.char.steps = { [MK] = 9 }
+mig.char.completedGoals = { ["velho 1 1"] = true }
+playerLevel = 1
+mig.handlers._READY()
+check(mig.char.currentStep == 3, "migração recua ao passo depois do último concluído (" .. mig.char.currentStep .. ")")
+check(next(mig.char.completedGoals) == nil, "marcas manuais com o número velho do passo saem")
+mig.char.steps[MK], mig.char.currentStep = 5, 5
+mig.handlers._READY()
+check(mig.char.currentStep == 5, "migra uma vez só")
+C_QuestLog.IsQuestFlaggedCompleted = function() return false end
 
 -- ── identidade de unidade / Secret Values ───────────────────────────────────
 issecretvalue = function(v) return v == "SECRETO" end
