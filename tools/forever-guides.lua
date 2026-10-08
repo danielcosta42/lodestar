@@ -166,6 +166,15 @@ auto:RegisterGuide("Leveling/Alliance/Elwynn Forest (4-10)", { faction = "Allian
 playerLevel = 6
 check(auto:BestGuideForPlayer() == "Leveling/Alliance/Elwynn Forest (4-10)",
 	"humano no nível 6 não vai para Zephras Isle")
+
+-- faixa larga de poucas quests não ganha da faixa em que o nível fica no meio
+local meio = load_addon(16001)
+for _, k in ipairs({ "Alterac Mountains (34-60)", "Searing Gorge (48-52)", "Tanaris (47-60)" }) do
+	meio:RegisterGuide("Leveling/Alliance/" .. k, { faction = "Alliance" }, "step\n  note m\n")
+end
+playerLevel = 50
+check(meio:BestGuideForPlayer() == "Leveling/Alliance/Searing Gorge (48-52)",
+	"no nível 50, a faixa 48-52 ganha da 34-60 (abriu " .. tostring(meio:BestGuideForPlayer()) .. ")")
 playerLevel = 1
 
 -- ── a biblioteca gerada inteira ──────────────────────────────────────────────

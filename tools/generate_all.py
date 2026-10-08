@@ -174,9 +174,10 @@ def gen_faction(router, faction, level_max, min_quests):
         if velho.endswith(".lua"):
             os.remove(os.path.join(out_dir, velho))
 
-    # títulos, chaves e entradas (hub inicial) antecipados
-    for z in zones:
-        z["title"] = "%s (%d-%d)" % (z["name"], z["lo"], z["hi"])
+    # chave provisória (o `next` de um guia aponta para o seguinte antes de ele
+    # existir); o título de verdade sai das quests que o guia acabar levando
+    for i, z in enumerate(zones):
+        z["title"] = "@@%d@@" % i
         z["key"] = guide_key(faction, z["title"])
         z["entry"] = router.zone_entry(z["area"], faction, level_max)
 
@@ -214,7 +215,7 @@ def gen_faction(router, faction, level_max, min_quests):
             cap_assign[tgt["key"]].add(int(qid))     # por guia: a zona pode ter duas faixas
 
     used = set()
-    files = []
+    gerados = []
     for i, z in enumerate(zones):
         # a cadeia não passa pela ilha da raça nova: só quem nasce lá vai para lá
         nxt = next((n for n in zones[i + 1:] if n["area"] not in ISOLADAS), None)
@@ -234,12 +235,43 @@ def gen_faction(router, faction, level_max, min_quests):
         if not text or n == 0:
             continue
         used.update(qids)
-        path = os.path.join(out_dir, fname_for(z["title"]))
+        gerados.append((z, text, qids))
+
+    # Título = a faixa das quests que o guia leva, não a da descoberta: um
+    # grupinho de nível 60 que a descoberta colou na zona (as de Onyxia em
+    # Dustwallow) fazia "35-60" de um guia que para no 51, e o autopilot o
+    # escolhia para quem tem 58.
+    titulos = {}
+    for z in zones:
+        titulo = "%s (%d-%d)" % (z["name"], z["lo"], z["hi"])
+        feito = next((qids for g, _, qids in gerados if g is z), None)
+        if feito:
+            lo, hi = faixa_do_guia(router, feito) or (z["lo"], z["hi"])
+            proprio = "%s (%d-%d)" % (z["name"], lo, hi)
+            titulo = proprio if proprio not in titulos.values() else titulo
+        titulos[z["key"]] = titulo
+    files = []
+    for z, text, n_ in ((g, t, len(q)) for g, t, q in gerados):
+        for provisoria, titulo in titulos.items():
+            text = text.replace('"%s"' % provisoria, '"%s"' % guide_key(faction, titulo))
+        titulo = titulos[z["key"]]
+        path = os.path.join(out_dir, fname_for(titulo))
         with open(path, "w", encoding="utf-8") as fh:
             fh.write(text)
         files.append("%s/%s" % (fac_dir, os.path.basename(path)))
-        print("  [%s] %-34s lvl~%2d  quests=%d" % (faction, z["title"], z["median"], n))
+        print("  [%s] %-34s lvl~%2d  quests=%d" % (faction, titulo, z["median"], n_))
     return files
+
+
+def faixa_do_guia(router, qids):
+    """(lo, hi) das quests que o guia leva: percentis 15 e 85, como na descoberta,
+    sem quest de classe ou só de Skyborne quando houver outras."""
+    qs = [router.quests[str(i)] for i in qids if str(i) in router.quests]
+    todos = sorted(q["questLevel"] for q in qs if (q["questLevel"] or 0) > 0)
+    rota = sorted(q["questLevel"] for q in qs if (q["questLevel"] or 0) > 0 and not q["classes"]
+                  and not (q["races"] and not q["races"] & VANILLA_RACES))
+    lv = rota or todos
+    return (pct(lv, 0.15), pct(lv, 0.85)) if lv else None
 
 
 def write_xml(all_files):

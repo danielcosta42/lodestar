@@ -498,7 +498,7 @@ local function findStartGuide()
 	local zone = isSkyborne() and SKYBORNE_START or RACE_START[race]
 	if not zone then return nil end
 	local pf = UnitFactionGroup("player")
-	-- a zona pode ter duas faixas (Teldrassil 4-10 e 48-57): começa pela mais baixa
+	-- a zona pode ter duas faixas (Teldrassil 4-10 e 48-55): começa pela mais baixa
 	local best, bestLo
 	for key, g in pairs(ns.guides) do
 		if key:sub(1, 9) == "Leveling/" and key:find(zone, 1, true)
@@ -534,8 +534,13 @@ function ns:BestGuideForPlayer()
 				if curEng and (key:match("[^/]+$") or ""):find(curEng, 1, true) then
 					score = score - 5                -- zona atual bate: forte preferência
 				end
-				score = score + lo / 1000            -- desempate estável (banda mais cedo)
-				if not bestScore or score < bestScore then bestScore, best = score, key end
+				-- desempate: a faixa em que o nível fica mais no meio (uma 34-60 de
+				-- dez quests não pode ganhar de uma 48-52 no nível 50); no empate
+				-- exato, a chave — a ordem do pairs muda a cada carga
+				score = score + math.abs(lvl - (lo + hi) / 2) / 100
+				if not bestScore or score < bestScore or (score == bestScore and key < best) then
+					bestScore, best = score, key
+				end
 			end
 		end
 	end
