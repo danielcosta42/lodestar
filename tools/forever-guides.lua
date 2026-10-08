@@ -258,6 +258,25 @@ check(perto(x0, 0.6) and perto(x1, 0) and perto(y1, 0.5), "linha até alvo fora 
 check(WP.ClipSegment(1.2, 0.5, 1.5, 0.5) == nil, "segmento todo fora do mapa não desenha")
 C_Map, CreateVector2D = nil, nil
 
+-- pontos do mapa: só os passos que são seus, numerados na ordem do guia; o que
+-- depende de pegar a quest antes fica marcado como "depois"
+local gm = load_addon(16001)
+gm.Every = function() end
+assert(loadfile(ROOT .. "/GuideMap.lua"))("Lodestar", gm)
+gm:RegisterGuide("Leveling/Alliance/Pontos (1-10)", { faction = "Alliance" }, table.concat({
+	"step", "  accept Uma##783 |goto Elwynn Forest 40,40",
+	"step", "  only Mage", "  accept De mago##1 |goto Elwynn Forest 41,41",
+	"step", "  kill Lobo##299 |q 783 |goto Elwynn Forest 42,42",
+	"step", "  turnin Uma##783 |goto Elwynn Forest 43,43",
+}, "\n"))
+gm.currentGuide = gm.guides["Leveling/Alliance/Pontos (1-10)"]
+gm.ensureParsed(gm.currentGuide)
+gm.char.currentStep = 1
+local pts = gm.GuideMapPins()
+check(#pts == 3, "passo de outra classe não vira ponto (" .. #pts .. " pontos)")
+check(pts[1].order == 1 and pts[2].order == 2 and pts[3].order == 3, "pontos numerados na ordem do guia")
+check(not pts[1].later and pts[2].later and pts[3].later, "objetivo e entrega de quest fora do log: depois")
+
 -- ── a biblioteca gerada inteira ──────────────────────────────────────────────
 -- Todo guia que os manifestos carregam é Lua válido, registra, interpreta com
 -- passo, e toda zona de |goto existe no ZoneData (senão a seta não acha o mapa).

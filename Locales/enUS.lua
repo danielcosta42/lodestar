@@ -64,6 +64,7 @@ L.TM_TALK = "> Lodestar: guide target"
 L.YARDS = "%d yd"
 L.DEST  = "Destination"
 L.IN_FLIGHT = "In flight"
+L.MAP_LATER = "Not yet: pick up the quest first"
 -- Elite / group warnings + party-finder hook (PartyLens)
 L.GROUP_TAG_ELITE = "Elite"
 L.GROUP_TAG_RAID  = "Boss"

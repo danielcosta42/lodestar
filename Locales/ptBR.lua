@@ -58,6 +58,7 @@ L.TM_TALK = "> Lodestar: alvo do guia"
 L.YARDS = "%d jd"
 L.DEST  = "Destino"
 L.IN_FLIGHT = "Em voo"
+L.MAP_LATER = "Ainda não: pegue a quest antes"
 -- Avisos de elite / grupo + gancho pro localizador de party (PartyLens)
 L.GROUP_TAG_ELITE = "Elite"
 L.GROUP_TAG_RAID  = "Chefe"
