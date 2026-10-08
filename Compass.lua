@@ -165,6 +165,7 @@ local function update()
 	local step = route.kind ~= "guide" and ns.Destinations and ns.Destinations.GuideTarget()
 	place(markers.step, p, step and ns.Travel.World(step.zone, step.x, step.y) or nil, facing, C.done, 0.6)
 	local d = leg and leg.b.c == p.c and math.sqrt((leg.b.x - p.x) ^ 2 + (leg.b.y - p.y) ^ 2)
+	if d and leg.k == "walk" and leg.path and ns.Terrain then d = select(3, ns.Terrain.Ahead(leg.path, p, 0)) end
 	info:SetText((d and (ns.L.YARDS:format(d) .. "  ·  ") or "") .. ns.Waypoint.FmtTime(
 		ns.Travel.Remaining(route, p, ns.Travel:Speed(), GetServerTime and GetServerTime())))
 end

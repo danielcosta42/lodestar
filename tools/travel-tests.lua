@@ -472,14 +472,6 @@ r = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(80) }))    
 check(r and math.abs(r.legs[2].s - (80 - 500 / 7 + 200)) < 0.5 and r.legs[2].dep == 1080 and r.legs[2].stop == 1 and r.legs[2].sid == 7,
 	"chegou antes da saída: espera curta e a perna leva a hora de saída (" .. (r and r.legs[2].s or 0) .. ")")
 
--- o anunciador anuncia a parada mais perto dele (os dois zepelins da mesma torre têm plataformas próprias)
-local frota = {
-	{ id = 301, stops = { { c = 0, x = 2060, y = 290 }, { c = 0, x = -12450, y = 230 } } },
-	{ id = 302, stops = { { c = 1, x = 1320, y = -4650 }, { c = 0, x = 2070, y = 255 } } },
-}
-local sid, k = T.NearestStop(frota, { c = 0, x = 2066, y = 260 }, 200)
-check(sid == 302 and k == 2, "anunciador perto da plataforma do zepelim de Orgrimmar: parada 2 do 302")
-check(T.NearestStop(frota, { c = 0, x = 0, y = 0 }, 200) == nil, "longe de todo cais: nenhuma parada")
 -- quanto falta numa perna de barco com horário: até a saída + a travessia
 local rb2 = { leg = 1, legs = { { k = "ship", a = P(0, 0, 0), b = P(1, 0, 0), s = 999, dep = 1100, ride = 200 } } }
 check(math.abs(T.Remaining(rb2, P(0, 0, 0), 7, 1000) - 300) < 0.01, "barco com horário: 100 s até sair + 200 de travessia")
@@ -497,5 +489,110 @@ local cands = { { 285, 2, "Grom'gol", 18 }, { 302, 1, "Undercity", 22 } }
 check(select(1, T.PickAnnounced(cands, "The zeppelin to Undercity has just arrived!")) == 302,
 	"grito com o destino: o zepelim de Undercity, mesmo sendo o mais longe")
 check(select(1, T.PickAnnounced(cands, "Zepelim chegou!")) == 285, "sem o nome no texto: o mais perto")
+
+-- ── #23: caminho a pé pelo terreno ───────────────────────────────────────────
+local TRN = load("Terrain.lua", {}).Terrain
+local DIRS8 = { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } }
+-- quadrante 0 sintético: `bloq(r, c)` diz o que é parede, `agua(r, c)` o que é lago
+local function quadranteSint(bloq, agua)
+	local by, wb = {}, {}
+	for r = 0, 31 do
+		for c = 0, 31 do
+			local v = 0
+			if not bloq(r, c) then
+				for d, rc in ipairs(DIRS8) do
+					local nr, nc = r + rc[1], c + rc[2]
+					if nr >= 0 and nr < 32 and nc >= 0 and nc < 32 and not bloq(nr, nc) then v = v + 2 ^ (d - 1) end
+				end
+			end
+			by[#by + 1] = string.char(1, v)
+		end
+	end
+	for i = 0, 127 do
+		local v = 0
+		for k = 0, 7 do
+			local cel = i * 8 + k
+			if agua and agua(math.floor(cel / 32), cel % 32) then v = v + 2 ^ k end
+		end
+		wb[#wb + 1] = string.char(1, v)
+	end
+	return { [0] = { [0] = table.concat(by) .. table.concat(wb) } }
+end
+local function mundo(r, c) return TRN.CellCenter(0, r, c) end
+local function comprimento(pts)
+	local s = 0
+	for i = 2, #pts do s = s + math.sqrt((pts[i].x - pts[i - 1].x) ^ 2 + (pts[i].y - pts[i - 1].y) ^ 2) end
+	return s
+end
+-- parede na coluna 10 com brecha embaixo (linhas 26+)
+local parede = quadranteSint(function(r, c) return c == 10 and r < 26 end)
+local A, B = mundo(5, 5), mundo(5, 15)
+local cam = TRN.Path(parede, A, B, 20000)
+check(cam and #cam >= 2, "há caminho pela brecha da parede")
+check(cam and comprimento(cam) > 2.5 * math.sqrt((A.x - B.x) ^ 2 + (A.y - B.y) ^ 2), "o caminho contorna a parede (bem mais longo que a reta)")
+check(cam and math.abs(cam[#cam].x - B.x) < 0.01 and math.abs(cam[1].x - A.x) < 0.01, "começa no jogador e termina no destino")
+local fechada = quadranteSint(function(r, c) return c == 10 end)
+check(TRN.Path(fechada, A, B, 20000) == nil, "parede inteira: sem caminho (volta a reta)")
+-- lago no meio: contorna se a volta for curta
+local lago = quadranteSint(function() return false end, function(r, c) return c >= 9 and c <= 11 and r >= 3 and r <= 7 end)
+cam = TRN.Path(lago, A, B, 20000)
+local molhou = false
+for i = 2, #(cam or {}) do                      -- percorre cada segmento a cada 2 jd
+	local p0, p1 = cam[i - 1], cam[i]
+	local len = math.sqrt((p1.x - p0.x) ^ 2 + (p1.y - p0.y) ^ 2)
+	for t = 0, len, 2 do
+		local r, c = TRN.Cell(p0.x + (p1.x - p0.x) * t / len, p0.y + (p1.y - p0.y) * t / len)
+		if c >= 9 and c <= 11 and r >= 3 and r <= 7 then molhou = true end
+	end
+end
+check(cam and not molhou, "lago pequeno no meio: contorna em vez de nadar")
+
+-- a seta mira o ponto do caminho ~25 jd à frente; o que falta é pelo caminho
+local L_ = { { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 0, x = 100, y = 100 } }   -- 100 norte, 100 oeste
+local ax, ay, falta = TRN.Ahead(L_, { c = 0, x = 90, y = 2 }, 25)
+check(near(ax, 100) and near(ay, 15) and near(falta, 110), "virando a esquina: mira o trecho seguinte e falta 110 jd (" .. ax .. "," .. ay .. "," .. falta .. ")")
+ax, ay, falta = TRN.Ahead(L_, { c = 0, x = 100, y = 95 }, 25)
+check(near(ax, 100) and near(ay, 100) and near(falta, 5), "perto do fim: mira o destino")
+-- terreno de verdade (Kalimdor): Ratchet -> Encruzilhada existe e contorna o relevo
+local K = load("Terrain1.lua", {}).terrain
+local rat, cru = { c = 1, x = -894.6, y = -3773.0 }, { c = 1, x = -441.8, y = -2596.4 }
+cam = TRN.Path(K, rat, cru, 300000)
+local reta = math.sqrt((rat.x - cru.x) ^ 2 + (rat.y - cru.y) ^ 2)
+check(cam and comprimento(cam) > reta and comprimento(cam) < 1.6 * reta,
+	"real: Ratchet -> Encruzilhada pelo terreno (" .. (cam and math.floor(comprimento(cam)) or 0) .. " jd; reta " .. math.floor(reta) .. ")")
+
+-- a perna a pé com caminho: desenho e "quanto falta" seguem o caminho
+local RMT = load("RouteMap.lua", { Terrain = TRN }).RouteMap
+local perna = { k = "walk", a = P(0, 0, 0), b = P(0, 100, 100),
+	path = { P(0, 0, 0), P(0, 100, 0), P(0, 100, 100) } }
+pts = RMT.LegPoints(perna, P(0, 90, 2))
+check(#pts == 9 and pts[1] == 90 and pts[4] == 100 and pts[5] == 0 and pts[7] == 100 and pts[8] == 100,
+	"a pé com caminho: do jogador, o resto do caminho (sem o trecho já andado)")
+local TT = load("Travel.lua", { Journey = J, Terrain = TRN }).Travel
+check(math.abs(TT.Remaining({ leg = 1, legs = { perna } }, P(0, 90, 2), 10) - 11) < 0.01,
+	"quanto falta a pé: pelo caminho (110 jd a 10 jd/s), não em reta")
+check(math.abs(TT.Remaining({ leg = 1, legs = { { k = "walk", a = P(0, 0, 0), b = P(0, 100, 100) } } }, P(0, 90, 2), 10)
+	- math.sqrt(10 ^ 2 + 98 ^ 2) / 10) < 0.01, "sem caminho: em reta, como antes")
+
+-- revisão do #24: o A* cede a vez por função (orçamento de tempo), ajusta ponta bloqueada e
+-- nunca sai da grade
+local vezes = 0
+local co = coroutine.create(function()
+	return TRN.Path(parede, A, B, 20000, function() vezes = vezes + 1; return true end)
+end)
+local okc, res = coroutine.resume(co)
+local cedeu = 0
+while okc and coroutine.status(co) ~= "dead" do cedeu = cedeu + 1; okc, res = coroutine.resume(co) end
+check(okc and res and cedeu > 0, "cede a vez (orçamento) e ainda acha o caminho (" .. cedeu .. " vezes)")
+local alvoBloq = quadranteSint(function(r, c) return r == 5 and c == 15 end)
+cam = TRN.Path(alvoBloq, A, B, 20000)
+check(cam and cam[#cam].x == B.x and cam[#cam].y == B.y, "destino em célula bloqueada: ajusta para a vizinha passável e termina nele")
+local borda = quadranteSint(function() return false end)
+local t0 = TRN.Decode(borda[0][0])
+borda[0][0] = string.char(1, 255) .. borda[0][0]:sub(3)       -- célula (0,0) com todas as ligações, até para fora
+cam = TRN.Path(borda, mundo(0, 0), mundo(0, 4), 20000)
+local fora = false
+for _, pt in ipairs(cam or {}) do local r, c = TRN.Cell(pt.x, pt.y); if r < 0 or c < 0 then fora = true end end
+check(cam and not fora, "ligação para fora da grade não vira caminho")
 
 print(("ok: %d checks"):format(checks))

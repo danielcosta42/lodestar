@@ -57,3 +57,5 @@ desktop.ini
 
 # relatório de auditoria (local)
 AUDIT_REPORT.html
+!tools/casc.py
+!tools/gen_terrain.py

@@ -57,13 +57,15 @@ end
 
 -- Segundos que faltam: a perna a pé atual pela distância que sobra, as próximas inteiras.
 -- `now` (hora do servidor): perna de barco com horário conta até a saída mais a travessia
--- (já a bordo, o que falta dela); sem `now`, o custo com que a rota foi planejada.
-function T.Remaining(route, pos, speed, now)
+-- (já a bordo, o que falta dela); sem `now`, o custo com que a rota foi planejada. `reta`: a
+-- pé em linha reta mesmo com caminho — para comparar com uma rota nova, que é custada assim.
+function T.Remaining(route, pos, speed, now, reta)
 	local s = 0
 	for i = route.leg, #route.legs do
 		local leg = route.legs[i]
 		if i == route.leg and leg.k == "walk" and pos and pos.c == leg.b.c then
-			s = s + dist(pos, leg.b) / (speed or 7)
+			local falta = not reta and leg.path and ns.Terrain and select(3, ns.Terrain.Ahead(leg.path, pos, 0))
+			s = s + (falta or dist(pos, leg.b)) / (speed or 7)
 		elseif leg.k == "ship" and leg.dep and now then
 			s = s + math.max(0, leg.dep - now) + math.max(0, (leg.ride or 0) - math.max(0, now - leg.dep))
 		else
@@ -80,20 +82,6 @@ function T.PickAnnounced(cands, text)
 		if c[3] and text and text:find(c[3], 1, true) then return c[1], c[2] end
 	end
 	if cands and cands[1] then return cands[1][1], cands[1][2] end
-end
-
--- A parada (id do transporte, índice) mais perto do ponto de mundo `w`, até `maxd` jardas.
-function T.NearestStop(ships, w, maxd)
-	local bsid, bk, bd
-	for _, s in ipairs(ships or {}) do
-		for k, st in ipairs(s.stops) do
-			if st.c == w.c then
-				local d = dist(st, w)
-				if d <= maxd and (not bd or d < bd) then bsid, bk, bd = s.id, k, d end
-			end
-		end
-	end
-	return bsid, bk
 end
 
 --------------------------------------------------------------------------------
@@ -279,11 +267,17 @@ function T:Replan(force)
 	local new = ns.Journey.Plan(from, to, self:Context())
 	if new then new.leg, new.dest, new.kind = 1, dest, kind end
 	sinceReplan = 0
+	-- a rota nova que segue a pé para o mesmo ponto herda o caminho já calculado
+	local cur, n1 = route and route.legs[route.leg], new and new.legs[1]
+	if cur and n1 and cur.k == "walk" and n1.k == "walk" and cur.path ~= nil and cur.b.c == n1.b.c
+		and cur.b.x == n1.b.x and cur.b.y == n1.b.y then
+		n1.path, n1.pathAt = cur.path, cur.pathAt
+	end
 	if force or key ~= routeKey or not route then
 		local was = route
 		route, routeKey = new, key
 		if was or new then changed() end                -- sem rota antes e depois: nada mudou
-	elseif T.ShouldReplace({ s = T.Remaining(route, from, speed) }, new) then
+	elseif T.ShouldReplace({ s = T.Remaining(route, from, speed, serverNow(), true) }, new) then
 		route = new
 		changed()
 	end
@@ -353,6 +347,51 @@ local function onAnnounce(_, text, ...)
 end
 ns:On("CHAT_MSG_MONSTER_YELL", onAnnounce)
 ns:On("CHAT_MSG_MONSTER_SAY", onAnnounce)
+
+-- caminho a pé pelo terreno: a perna a pé atual ganha `path`, calculado em corrotina com
+-- orçamento de 3 ms por quadro; refeito se o jogador sair dele por mais de 40 jd. Sem caminho
+-- (cidade fechada, fora da grade): fica a reta (ou o caminho anterior) e só tenta de novo 300
+-- jd adiante — a busca que falha é a mais cara.
+local pathCo, pathLeg, quadro
+local ORCAMENTO = 3                                   -- ms por quadro
+local function estourou()
+	return debugprofilestop and quadro and debugprofilestop() - quadro > ORCAMENTO
+end
+local function pathTick()
+	if not (ns.Terrain and ns.terrain) then return end
+	local leg = route and route.legs[route.leg]
+	if not (leg and leg.k == "walk") then pathCo = nil; return end
+	if pathCo and pathLeg ~= leg then pathCo = nil end
+	if pathCo then
+		quadro = debugprofilestop and debugprofilestop()
+		local ok, res = coroutine.resume(pathCo)
+		if not ok or coroutine.status(pathCo) == "dead" then
+			if not ok then ns:Debug("Terrain:", res) end
+			pathCo = nil
+			if ok and res then
+				leg.path, leg.pathFail = res, nil
+			else
+				leg.path = leg.path or false             -- falhou: fica o caminho anterior, se havia
+				leg.pathFail = true
+			end
+		end
+		return
+	end
+	local pos = T.PlayerWorld()
+	if not (pos and pos.c == leg.b.c) then return end
+	if leg.pathFail and leg.pathAt and dist(pos, leg.pathAt) < 300 then return end
+	if leg.path and select(4, ns.Terrain.Ahead(leg.path, pos, 0)) <= 40 then return end
+	pathLeg = leg
+	leg.pathAt = { c = pos.c, x = pos.x, y = pos.y }
+	local from, to = leg.pathAt, leg.b
+	-- sem debugprofilestop (fora do jogo), cede a cada 3000 expansões
+	local ceder = debugprofilestop and estourou or 3000
+	pathCo = coroutine.create(function() return ns.Terrain.Path(ns.terrain, from, to, 150000, ceder) end)
+end
+ns:Every(0.05, function()
+	local ok, err = pcall(pathTick)
+	if not ok then ns:Debug("Terrain:", err); pathCo = nil end
+end)
 
 -- aviso de chegada do transporte (toast + som), uma vez por saída
 local alerted = {}
