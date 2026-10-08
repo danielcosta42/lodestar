@@ -192,4 +192,30 @@ local best = S.Pick(cands, function(c) return c.n == "Perto em reta" and 500 or 
 check(best and best.n == "Atrás de um voo", "ganha o de menor tempo de viagem, não o mais perto em reta")
 check(S.Pick(cands, function() return nil end) == nil, "sem rota para nenhum: nada")
 
+-- ── Waypoint: texto da perna e tempo ─────────────────────────────────────────
+local L = setmetatable({
+	LEG_TO_FLIGHT = "FM %s", LEG_TO_NEW_FLIGHT = "NOVO %s", LEG_FLY = "VOE %s", LEG_TO_DOCK = "CAIS %s",
+	LEG_SHIP = "PEGUE %s", LEG_TO_TRAM = "BONDE", LEG_TRAM = "NO BONDE", LEG_HEARTH = "PEDRA",
+	LEG_TELEPORT = "TELE %s", SHIP_boat = "barco", SHIP_zeppelin = "zepelim",
+}, { __index = function(_, k) return k end })
+local WPT = load("Waypoint.lua", { L = L, On = function() end, Every = function() end, zoneUiMap = {} }).Waypoint
+check(WPT.FmtTime(45) == "45s" and WPT.FmtTime(130) == "2m10s" and WPT.FmtTime(3900) == "1h05m",
+	"tempo: 45s, 2m10s, 1h05m (" .. WPT.FmtTime(130) .. ")")
+local rt = { legs = {
+	{ k = "walk", name = "Sentinel Hill" },
+	{ k = "flight", name = "Ironforge" },
+	{ k = "walk" },
+	{ k = "ship", ship = "zeppelin" },
+	{ k = "hearth" },
+	{ k = "teleport", name = "Teleporte: Orgrimmar" },
+} }
+check(WPT.LegText(rt, 1, 40) == "FM Sentinel Hill · 40s", "a pé até o voo: nome do mestre e tempo (" .. WPT.LegText(rt, 1, 40) .. ")")
+check(WPT.LegText(rt, 2, 130) == "VOE Ironforge · 2m10s", "voo: destino e tempo")
+check(WPT.LegText(rt, 3, 10):find("CAIS zepelim", 1, true), "a pé até o cais: tipo do transporte")
+check(WPT.LegText(rt, 4, 60):find("PEGUE zepelim", 1, true), "no transporte")
+check(WPT.LegText(rt, 5, 10):find("PEDRA", 1, true), "pedra de lar")
+check(WPT.LegText(rt, 6, 10):find("TELE Teleporte: Orgrimmar", 1, true), "teleporte com o nome do feitiço")
+rt.legs[2].discover = 7
+check(WPT.LegText(rt, 1, 40):find("NOVO Sentinel Hill", 1, true), "voo ainda não descoberto: pede para descobrir")
+
 print(("ok: %d checks"):format(checks))

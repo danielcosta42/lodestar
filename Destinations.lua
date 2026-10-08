@@ -12,7 +12,12 @@ ns.Destinations = D
 local ORDER = { "corpse", "manual", "guide" }
 local slots = {}
 
+local function same(a, b)
+	return a and b and a.zone == b.zone and a.map == b.map and a.x == b.x and a.y == b.y
+end
+
 function D:Set(kind, dest)
+	if same(slots[kind], dest) then return end   -- nada mudou: não recalcula a rota
 	slots[kind] = dest
 	if ns.Travel and ns.Travel.Replan then ns.Travel:Replan(true) end
 end
@@ -76,3 +81,5 @@ ns:On("PLAYER_DEAD", syncCorpse)
 ns:On("PLAYER_ALIVE", syncCorpse)
 ns:On("PLAYER_UNGHOST", syncCorpse)
 ns:On("PLAYER_ENTERING_WORLD", syncCorpse)
+-- a posição do corpo só aparece depois de soltar o espírito
+ns:Every(2, function() if UnitIsGhost and UnitIsGhost("player") then syncCorpse() end end)
