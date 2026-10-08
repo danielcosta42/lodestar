@@ -342,6 +342,7 @@ L.ON  = "LIGADO"
 L.OFF = "DESLIGADO"
 -- Planejador de viagem (rotas, serviços, corpo)
 L.SERVICE_NONE = "Nenhum serviço desse tipo para a sua facção."
+L.SERVICE_NO_TRAINER = "Nenhum treinador de %s da %s conhecido ainda — fale com um uma vez e o Lodestar lembra onde ele fica."
 L.SERVICE_CLASSTRAINER = "Treinador da classe"
 L.SERVICE_PROFTRAINER = "Treinador de profissão"
 L.SERVICE_REPAIR = "Reparo"

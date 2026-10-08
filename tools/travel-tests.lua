@@ -692,5 +692,24 @@ cam = TRN.Path(borda, mundo(0, 0), mundo(0, 4), 20000)
 local fora = false
 for _, pt in ipairs(cam or {}) do local r, c = TRN.Cell(pt.x, pt.y); if r < 0 or c < 0 then fora = true end end
 check(cam and not fora, "ligação para fora da grade não vira caminho")
+-- ── #17: treinador de classe visto em jogo (o banco do Forever não tem o paladino da Horda) ──
+local store = {}
+S.Remember(store, "PALADIN", "Horde", { id = 246349, n = "Breton Samuels", map = 1420, x = 21.85, y = 45.31 })
+S.Remember(store, "PALADIN", "Horde", { id = 246349, n = "Breton Samuels", map = 1420, x = 21.9, y = 45.3 })
+local seen = store.PALADIN.Horde
+check(seen[246349] and seen[246349].x == 21.9, "o treinador visto fica guardado por classe e facção (o último lugar vale)")
+local merged = S.WithSeen(nil, seen)
+check(#merged == 1 and merged[1].n == "Breton Samuels", "classe sem treinador no banco: usa o visto")
+merged = S.WithSeen({ { id = 1, n = "Do banco" }, { id = 246349, n = "Breton (banco)" } }, seen)
+check(#merged == 2, "o visto que já está no banco não duplica")
+merged = S.WithSeen(nil, seen); merged[1].w = false
+check(seen[246349].w == nil, "o cálculo da rota não grava nada no treinador salvo (SavedVariables)")
+
+-- #17: o paladino da Horda (Forever) tem treinador no banco — título vindo do cache do cliente
+local TR = load(os.getenv("TRAINERS") or "Trainers.lua", {})
+local pal = TR.classTrainers.PALADIN and TR.classTrainers.PALADIN.Horde or {}
+local temShari
+for _, t in ipairs(pal) do if t.n == "Shari Stilwell" and t.zone == "Tirisfal Glades" then temShari = true end end
+check(temShari, "Paladino da Horda: Shari Stilwell (Brill) está no banco de treinadores")
 
 print(("ok: %d checks"):format(checks))

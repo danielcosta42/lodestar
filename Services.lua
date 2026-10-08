@@ -70,6 +70,29 @@ function S.KindFromText(text)
 	end
 end
 
+-- Treinador de classe visto em jogo — o banco do Forever não tem alguns (ex.: o paladino
+-- da Horda): guardado por classe e facção, pelo id do NPC; o último lugar vale.
+function S.Remember(store, class, fac, e)
+	store[class] = store[class] or {}
+	store[class][fac] = store[class][fac] or {}
+	store[class][fac][e.id] = e
+end
+
+-- Os do banco mais os vistos que o banco não tem. Os vistos vão em cópia: o que a busca
+-- calcula neles (a coordenada de mundo) não vai parar no SavedVariables.
+function S.WithSeen(static, seen)
+	local out, have = {}, {}
+	for _, e in ipairs(static or {}) do out[#out + 1] = e; have[e.id] = true end
+	for id, e in pairs(seen or {}) do
+		if not have[id] then
+			local c = {}
+			for k, v in pairs(e) do c[k] = v end
+			out[#out + 1] = c
+		end
+	end
+	return out
+end
+
 --------------------------------------------------------------------------------
 -- o jogo
 --------------------------------------------------------------------------------
@@ -77,7 +100,9 @@ local function list(kind, sub)
 	local facName = UnitFactionGroup("player")
 	if kind == "classtrainer" then
 		local class = select(2, UnitClass("player"))
-		return ns.classTrainers and ns.classTrainers[class] and ns.classTrainers[class][facName]
+		local seen = ns.db and ns.db.trainersSeen and ns.db.trainersSeen[class]
+		return S.WithSeen(ns.classTrainers and ns.classTrainers[class] and ns.classTrainers[class][facName],
+			seen and seen[facName])
 	elseif kind == "proftrainer" then
 		return sub and ns.profTrainers and ns.profTrainers[sub] and ns.profTrainers[sub][facName]
 	end
@@ -90,7 +115,7 @@ function S:Nearest(kind, sub)
 	if not from then return nil end
 	local entries = list(kind, sub) or {}
 	for _, e in ipairs(entries) do
-		if e.w == nil then e.w = T.World(e.zone, e.x, e.y) or false end
+		if e.w == nil then e.w = T.World(e.zone, e.x, e.y, e.map) or false end
 	end
 	local valid = {}
 	for _, e in ipairs(entries) do if e.w then valid[#valid + 1] = e end end
@@ -110,16 +135,37 @@ end
 function S:GoTo(kind, sub, quiet)
 	local best = self:Nearest(kind, sub)
 	if not best then
-		if not quiet then ns:Print(ns.L.SERVICE_NONE) end
-		return false, ns.L.SERVICE_NONE
+		local msg = ns.L.SERVICE_NONE
+		if kind == "classtrainer" and #(list(kind) or {}) == 0 then   -- nenhum conhecido: diga por quê
+			msg = ns.L.SERVICE_NO_TRAINER:format((UnitClass("player")), (select(2, UnitFactionGroup("player"))))
+		end
+		if not quiet then ns:Print(msg) end
+		return false, msg
 	end
 	local title = sub or ns.L["SERVICE_" .. kind:upper()] or kind
-	ns.Destinations:Set("manual", { zone = best.zone, x = best.x, y = best.y,
+	local where = best.zone or (best.map and C_Map.GetMapInfo(best.map) or {}).name or "?"
+	ns.Destinations:Set("manual", { zone = best.zone, map = best.map, x = best.x, y = best.y,
 		label = ("%s — %s"):format(title, best.n), service = kind })
 	if ns.Waypoint then ns.Waypoint:Update() end
 	if ns.Toast then
 		ns.Toast:Show({ title = title,
-			text = ("%s — %s"):format(best.n, best.zone), color = ns.UI.COL.tip, hold = 5 })
+			text = ("%s — %s"):format(best.n, where), color = ns.UI.COL.tip, hold = 5 })
 	end
 	return true
 end
+
+-- janela de treinador de classe aberta: lembra onde ele fica (por conta; vale para os alts)
+-- ponytail: o treinador de pet do caçador abre a mesma janela e entra como de classe; filtrar
+-- pelo tipo do serviço se incomodar
+if not ns.On then return end
+ns:On("TRAINER_SHOW", function()
+	if IsTradeskillTrainer and IsTradeskillTrainer() then return end          -- profissão
+	local guid = UnitGUID("npc")
+	local id = guid and tonumber((select(6, strsplit("-", guid))))
+	local map = C_Map.GetBestMapForUnit("player")
+	local pos = map and C_Map.GetPlayerMapPosition(map, "player")
+	if not (id and pos and ns.db) then return end
+	ns.db.trainersSeen = ns.db.trainersSeen or {}
+	S.Remember(ns.db.trainersSeen, select(2, UnitClass("player")), UnitFactionGroup("player"),
+		{ id = id, n = UnitName("npc"), map = map, x = pos.x * 100, y = pos.y * 100 })
+end)
