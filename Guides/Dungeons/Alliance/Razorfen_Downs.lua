@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Razorfen Downs", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "a252d988",
+	rev = "2d6305a1",
 }, [[
 step
   talk Myriam Moonsinger##12866
@@ -29,6 +29,7 @@ step
   talk Myriam Moonsinger##12866
   turnin A Host of Evil##6626 |goto The Barrens 49.01,94.94
 step
+  note If you agree to aid Belnistrasz, speak with him again and hand the Oathstone he gave you back to him.
   talk Belnistrasz##8516
   turnin Scourge of the Downs##3523 |goto Razorfen Downs - Dungeon -1,-1
 step
@@ -36,6 +37,7 @@ step
   turnin Bring the Light##3636 |goto Stormwind City 50.31,45.47
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak with Lord Grayson Shadowbreaker in Stormwind's Cathedral District.
   talk Lord Grayson Shadowbreaker##928
   turnin Lord Grayson Shadowbreaker##7638 |goto Stormwind City 48.43,50.22
 step
@@ -46,9 +48,11 @@ step
   talk Lord Grayson Shadowbreaker##928
   accept Emphasis on Sacrifice##7637 |goto Stormwind City 48.43,50.22
 step
+  note Escort Belnistrasz to the Quilboar's idol in Razorfen Downs.
   turnin Extinguishing the Idol##3525 |goto Razorfen Downs - Dungeon -1,-1
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Travel to Ironforge and get High Priest Rohan's Exorcism Censer. You will need to make a donation of 150 gold in order to secure it.
   talk High Priest Rohan##11406
   turnin Emphasis on Sacrifice##7637 |goto Ironforge 24.73,8.16
 step
@@ -57,6 +61,7 @@ step
   accept To Show Due Judgment##7639 |goto Ironforge 24.73,8.16
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Return the Exorcism Censer to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
   talk Lord Grayson Shadowbreaker##928
   turnin To Show Due Judgment##7639 |goto Stormwind City 48.43,50.22
 step
@@ -77,6 +82,7 @@ step
   accept The Work of Grimand Elmore##7641 |goto Stormwind City 48.43,50.22
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak with Grimand Elmore in Stormwind's Dwarven District.
   talk Grimand Elmore##1416
   turnin The Work of Grimand Elmore##7641 |goto Stormwind City 59.73,33.78
 step

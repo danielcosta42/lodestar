@@ -18,7 +18,7 @@ L.LEVEL_UP="%s 级！"; L.LEVEL_UP_SUB="继续加油。"; L.GUIDE_LOADED="向导
 L.CHOOSE_GUIDE="选择一个向导"; L.MENU_HINT="输入 /ls menu 浏览"; L.QUEST_FALLBACK="任务 #%s"
 
 L.CAT_Leveling="升级"; L.CAT_Class="职业"; L.CAT_Dungeons="地下城"
-L.CAT_Attunements="入场资格"; L.CAT_Reputation="声望"; L.CAT_Dailies="每日"; L.CAT_Events="节日"
+L.CAT_Attunements="入场资格"; L.CAT_Reputation="声望"; L.CAT_Events="节日"
 
 L.TM_KILL="> Lodestar：击杀目标"; L.TM_TALK="> Lodestar：向导目标"
 L.YARDS="%d 码"; L.DEST="目的地"

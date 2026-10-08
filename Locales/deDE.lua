@@ -19,7 +19,7 @@ L.CHOOSE_GUIDE="Wähle einen Guide"; L.MENU_HINT="Nutze /ls menu zum Durchsuchen
 L.QUEST_FALLBACK="Quest #%s"
 
 L.CAT_Leveling="Leveln"; L.CAT_Class="Klasse"; L.CAT_Dungeons="Dungeons"
-L.CAT_Attunements="Einstimmungen"; L.CAT_Reputation="Ruf"; L.CAT_Dailies="Tägliche"; L.CAT_Events="Events"
+L.CAT_Attunements="Einstimmungen"; L.CAT_Reputation="Ruf"; L.CAT_Events="Events"
 
 L.TM_KILL="> Lodestar: Ziel zum Töten"; L.TM_TALK="> Lodestar: Guide-Ziel"
 L.YARDS="%d m"; L.DEST="Ziel"

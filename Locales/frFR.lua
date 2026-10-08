@@ -18,7 +18,7 @@ L.LEVEL_UP="Niveau %s !"; L.LEVEL_UP_SUB="Continuez."; L.GUIDE_LOADED="Guide cha
 L.CHOOSE_GUIDE="Choisissez un guide"; L.MENU_HINT="Utilisez /ls menu pour parcourir"; L.QUEST_FALLBACK="Quête #%s"
 
 L.CAT_Leveling="Progression"; L.CAT_Class="Classe"; L.CAT_Dungeons="Donjons"
-L.CAT_Attunements="Synchronisations"; L.CAT_Reputation="Réputation"; L.CAT_Dailies="Quotidiennes"; L.CAT_Events="Événements"
+L.CAT_Attunements="Synchronisations"; L.CAT_Reputation="Réputation"; L.CAT_Events="Événements"
 
 L.TM_KILL="> Lodestar : cible à tuer"; L.TM_TALK="> Lodestar : cible du guide"
 L.YARDS="%d m"; L.DEST="Destination"

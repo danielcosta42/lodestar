@@ -18,7 +18,7 @@ L.LEVEL_UP="Уровень %s!"; L.LEVEL_UP_SUB="Так держать."; L.GUID
 L.CHOOSE_GUIDE="Выберите гайд"; L.MENU_HINT="Введите /ls menu для просмотра"; L.QUEST_FALLBACK="Задание #%s"
 
 L.CAT_Leveling="Прокачка"; L.CAT_Class="Класс"; L.CAT_Dungeons="Подземелья"
-L.CAT_Attunements="Допуски"; L.CAT_Reputation="Репутация"; L.CAT_Dailies="Ежедневные"; L.CAT_Events="События"
+L.CAT_Attunements="Допуски"; L.CAT_Reputation="Репутация"; L.CAT_Events="События"
 
 L.TM_KILL="> Lodestar: цель для убийства"; L.TM_TALK="> Lodestar: цель гайда"
 L.YARDS="%d м"; L.DEST="Пункт назначения"

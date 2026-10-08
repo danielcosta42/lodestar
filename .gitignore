@@ -25,6 +25,7 @@ tools/*
 !tools/gen_travel.py
 !tools/gen_subzones.py
 !tools/validate_guides.py
+!tools/check_special.py
 !tools/guide_integrity.py
 
 # Internal documentation (not shipped) — specs, plans, design notes stay LOCAL

@@ -237,7 +237,7 @@ function WP:DistanceTo(goal)
 	local ppos = GetPlayerMapPos(pmap, "player")
 	if not ppos then return nil end
 	-- world-pos é global do continente: comparar por continente (pc==tc),
-	-- não por mapa exato — assim funciona entre sub-zonas (ex: Shattrath).
+	-- não por mapa exato — assim funciona entre sub-zonas (ex: Stormwind City).
 	local pc, pw = GetWorldPos(pmap, ppos)
 	local tc, tw = GetWorldPos(tmap, mkVec(goal.goto_.x / 100, goal.goto_.y / 100))
 	if not (pw and tw) or pc ~= tc then return nil end

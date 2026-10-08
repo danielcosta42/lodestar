@@ -18,7 +18,7 @@ L.LEVEL_UP="레벨 %s!"; L.LEVEL_UP_SUB="계속 힘내세요."; L.GUIDE_LOADED="
 L.CHOOSE_GUIDE="가이드를 선택하세요"; L.MENU_HINT="/ls menu 로 탐색"; L.QUEST_FALLBACK="퀘스트 #%s"
 
 L.CAT_Leveling="레벨업"; L.CAT_Class="직업"; L.CAT_Dungeons="던전"
-L.CAT_Attunements="입장 자격"; L.CAT_Reputation="평판"; L.CAT_Dailies="일일"; L.CAT_Events="이벤트"
+L.CAT_Attunements="입장 자격"; L.CAT_Reputation="평판"; L.CAT_Events="이벤트"
 
 L.TM_KILL="> Lodestar: 처치 대상"; L.TM_TALK="> Lodestar: 가이드 대상"
 L.YARDS="%dyd"; L.DEST="목적지"

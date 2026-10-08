@@ -4,11 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Ravenholdt", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "6292cf79",
+	rev = "911bee28",
 }, [[
 step
   only Rogue
-  kill Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip Loot the quest item here — it starts the quest.
+  talk Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip They give you the item that starts the quest.
   accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
 step
   only Rogue
@@ -24,6 +24,7 @@ step
   accept A Simple Request##8233 |goto Stormwind City 77.43,65.31
 step
   only Rogue
+  note Speak with Lord Jorach Ravenholdt in Ravenholdt Manor.
   talk Lord Jorach Ravenholdt##6768
   turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88
 step

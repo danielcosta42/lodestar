@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Wailing Caverns", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "19cf8c2c",
+	rev = "b9dc9a7a",
 }, [[
 step
   talk Tonga Runetotem##3448
@@ -48,6 +48,7 @@ step
   note Travel to Ratchet to find someone that can tell you more about the glowing shard.
   talk Sputtervalve##3442 |q 6981 |goto The Barrens 62.98,37.22
 step
+  note Report back to Tonga Runetotem with your findings.
   talk Tonga Runetotem##3448
   turnin The Forgotten Pools##870 |goto The Barrens 52.26,31.93
 step
@@ -99,12 +100,14 @@ step
   talk Tonga Runetotem##3448
   accept Hamuul Runetotem##1489 |goto The Barrens 52.26,31.93
 step
+  note Speak with Hamuul Runetotem.
   talk Arch Druid Hamuul Runetotem##5769
   turnin Hamuul Runetotem##1489 |goto Thunder Bluff 78.62,28.56
 step
   talk Arch Druid Hamuul Runetotem##5769
   accept Nara Wildmane##1490 |goto Thunder Bluff 78.62,28.56
 step
+  note Speak with Nara Wildmane.
   talk Nara Wildmane##5770
   turnin Nara Wildmane##1490 |goto Thunder Bluff 75.65,31.61
 step

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Zandalar Tribe", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "c7a06b9e",
+	rev = "7b83d4a2",
 }, [[
 step
   talk Exzhal##14910
@@ -43,12 +43,14 @@ step
   talk Vinchaxa##15070
   accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
+  note Destroy any one of the Hakkari Bijous found in Zul'Gurub at the Altar of Zanza on Yojamba Isle. When done, speak with Vinchaxa nearby.
   talk Vinchaxa##15070
   turnin A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
   kill Hakkar##14834 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.
   accept The Heart of Hakkar##8183 |goto Zul'Gurub - Dungeon -1,-1
 step
+  note Bring the Heart of Hakkar to Molthor on Yojamba Isle.
   talk Molthor##14875
   turnin The Heart of Hakkar##8183 |goto Stranglethorn Vale 15.04,15.13
 step

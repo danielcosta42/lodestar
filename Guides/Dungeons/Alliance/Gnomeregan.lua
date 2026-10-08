@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Gnomeregan", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "09fc3827",
+	rev = "df2a90f3",
 }, [[
 step
   talk Ozzie Togglevolt##1268
@@ -64,6 +64,7 @@ step
   talk Shoni the Shilent##6579
   turnin Gyrodrillmatic Excavationators##2928 |goto Stormwind City 62.63,34.11
 step
+  note Figure out a way to remove the grime from the Grime-Encrusted Ring.
   turnin Grime-Encrusted Ring##2945 |goto Gnomeregan - Dungeon -1,-1
 step
   talk High Tinker Mekkatorque##7937
@@ -72,26 +73,9 @@ step
   talk Ozzie Togglevolt##1268
   accept The Only Cure is More Green Glow##2962 |goto Dun Morogh 45.89,49.39
 step
-  only not completed(2952) not completed(4606) not haveq(2952) not haveq(4606)
-  click The Sparklematic 5200##175084
-  accept The Sparklematic 5200!##4605 |goto Gnomeregan - Dungeon -1,-1
-step
   note Travel to Gnomeregan and bring back High Potency Radioactive Fallout. Be warned, the fallout is unstable and will collapse rather quickly.
   collect High Potency Radioactive Fallout##9365 |q 2962 |goto Gnomeregan - Dungeon -1,-1 |elite |tip {dropsfrom}Irradiated Slime, Corrosive Lurker, Irradiated Horror
 step
   talk Ozzie Togglevolt##1268
   turnin The Only Cure is More Green Glow##2962 |goto Dun Morogh 45.89,49.39
-step
-  only not completed(2952) not completed(4606) not haveq(2952) not haveq(4606)
-  turnin The Sparklematic 5200!##4605 |goto Gnomeregan - Dungeon -1,-1
-step
-  only not completed(4603) not completed(4604) not haveq(4603) not haveq(4604)
-  click The Sparklematic 5200##142487
-  accept More Sparklematic Action##2953 |goto Gnomeregan - Dungeon -1,-1
-step
-  only not completed(4603) not completed(4604) not haveq(4603) not haveq(4604)
-  collect Grime-Encrusted Object##9308 |q 2953 |goto Gnomeregan - Dungeon -1,-1 |tip {dropsfrom}Caverndeep Burrower, Caverndeep Ambusher, Caverndeep Invader
-step
-  only not completed(4603) not completed(4604) not haveq(4603) not haveq(4604)
-  turnin More Sparklematic Action##2953 |goto Gnomeregan - Dungeon -1,-1
 ]])

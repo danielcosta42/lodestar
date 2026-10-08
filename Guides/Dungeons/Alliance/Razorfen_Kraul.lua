@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Razorfen Kraul", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "88957120",
+	rev = "69e88d35",
 }, [[
 step
   talk Mebok Mizzyrix##3446
@@ -31,9 +31,11 @@ step
   talk Treshala Fallowbrook##4521
   turnin Mortality Wanes##1142 |goto Darnassus 69.54,67.75
 step
+  note Escort Willix the Importer out of Razorfen Kraul.
   talk Willix the Importer##4508
   turnin Willix the Importer##1144 |goto Razorfen Kraul - Dungeon -1,-1
 step
+  note Read Henrig Lonebrow's Journal.
   talk Falfindel Waywarder##4048
   turnin Lonebrow's Journal##1100 |goto Feralas 89.64,46.57
 step

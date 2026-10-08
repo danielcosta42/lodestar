@@ -115,6 +115,8 @@ local DB_DEFAULTS = {
 	xpHud = true,         -- painel de ritmo (XP/h, ETA, adiantado/atrasado)
 	xpHudPos = {},        -- posição destacada do HUD (se arrastado)
 	reportCard = true,    -- boletim de leveling (nota + card compartilhável)
+	cardEvery = false,    -- boletim a cada nível (desligado: só nos marcos)
+	cardAskGuild = true,  -- o boletim pergunta se manda no chat da guilda
 	ghost = {},           -- run de referência por classe (Ghost Racing)
 	coords = true,        -- coordenadas do player no minimapa/mapa
 	guideMap = true,      -- marca os pontos dos próximos passos no mapa-múndi
@@ -137,7 +139,6 @@ local CHAR_DEFAULTS = {
 	steps = {},                -- [guideKey] = índice do step (progresso por guia)
 	completedGoals = {},       -- ["guide\0step\0goal"] = true (progresso manual)
 	deaths = 0,                -- mortes deste personagem
-	dungeonRuns = {},          -- [nomeDaDungeon] = nº de clears (contador de spam)
 }
 
 local function applyDefaults(target, defaults)
