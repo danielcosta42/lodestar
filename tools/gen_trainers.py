@@ -34,7 +34,7 @@ PT = {"Guerreiros": "Warrior", "Paladinos": "Paladin", "Caçadores": "Hunter", "
 
 def chave_titulo(t):
     """Título do cliente (en ou pt) -> chave de classe/profissão ("Paladin", "Mining") ou None."""
-    m = re.match(r"(.+) Trainer$", t or "")
+    m = re.match(r"(?:Junior )?(.+) Trainer$", t or "")     # "Junior Mining Trainer" (cliente en)
     if m and m.group(1) in CLASSES + PROFS:
         return m.group(1)
     m = re.match(r"(?:Treinamento de|Instrutora? (?:Júnior )?de) (.+)$", t or "")
@@ -113,6 +113,7 @@ def demo():
     assert chave_titulo("Treinamento de Primeiros Socorros") == "First Aid"
     assert chave_titulo("Instrutor Júnior de Mineração") == "Mining"
     assert chave_titulo("Instrutora Júnior de Herborismo") == "Herbalism"
+    assert chave_titulo("Junior Mining Trainer") == "Mining"          # cliente em inglês
     assert chave_titulo("Mestre de Estábulo") is None and chave_titulo(None) is None
     assert 246152 in CANDIDATOS and 2131 not in CANDIDATOS, "sem título no banco entra; com título, não"
     if TITULOS:                     # cache do cliente presente: o paladino da Horda aparece
