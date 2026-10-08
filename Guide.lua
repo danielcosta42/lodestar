@@ -525,6 +525,8 @@ function ns:BestGuideForPlayer()
 		for name, id in pairs(ns.zoneUiMap) do if id == m then curEng = name; break end end
 	end
 	local ilha = isSkyborne() or curEng == SKYBORNE_START
+	local TP = self.TravelPlanner
+	local curCont = TP and TP.PlayerContinent and TP:PlayerContinent()
 	local best, bestScore
 	for key, g in pairs(self.guides) do
 		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf)
@@ -532,11 +534,16 @@ function ns:BestGuideForPlayer()
 			local lo, hi = key:match("%((%d+)%s*%-%s*(%d+)%)")
 			lo, hi = tonumber(lo), tonumber(hi)
 			if lo and hi then
-				local score = (lvl >= lo and lvl <= hi) and 0
-					or math.min(math.abs(lvl - lo), math.abs(lvl - hi))
-				score = score * 2
-				if curEng and (key:match("[^/]+$") or ""):find(curEng, 1, true) then
-					score = score - 5                -- zona atual bate: forte preferência
+				-- o nível manda: guia já passado pesa mais que o que ainda vem (o que
+				-- sobra nele é cinza — no 11, o Elwynn 3-10 abria numa quest nível 5)
+				local score = (lvl < lo and (lo - lvl) * 2) or (lvl > hi and (lvl - hi) * 3) or 0
+				local zone = key:match("^Leveling/[^/]+/(.-) %(")
+				local cont = TP and TP.ZoneContinent and TP:ZoneContinent(zone)
+				if curCont and cont and cont ~= curCont then
+					score = score + 4                -- outro continente: é viagem
+				end
+				if curEng and zone == curEng then
+					score = score - 1.5              -- zona atual: só desempata
 				end
 				-- desempate: a faixa em que o nível fica mais no meio (uma 34-60 de
 				-- dez quests não pode ganhar de uma 48-52 no nível 50); no empate
@@ -570,7 +577,12 @@ ns:On("_READY", function()
 	local key = char.currentGuide
 	if not (key and ns.guides[key]) then key = char.openGuides[1] end
 	if key and ns.guides[key] then
-		ns:LoadGuide(key, true)   -- mantém o step salvo
+		-- aba de leveling que o nível já passou (logou no 11 com Tirisfal 5-10 ativo,
+		-- e a primeira coisa sugerida era uma quest cinza de Deathknell): abre o guia
+		-- recomendado; a antiga fica na aba
+		local hi = key:sub(1, 9) == "Leveling/" and tonumber(key:match("%-%s*(%d+)%)$"))
+		local best = hi and (UnitLevel("player") or 0) > hi and ns:BestGuideForPlayer()
+		ns:LoadGuide(best and best ~= key and best or key, true)   -- mantém o step salvo
 		return
 	end
 	-- AUTOPILOT: char novo usa a zona-inicial da raça; qualquer outro nível usa o

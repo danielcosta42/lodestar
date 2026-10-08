@@ -227,6 +227,7 @@ def gen_faction(router, faction, level_max, min_quests):
     # mais próxima como desempate). O `exclude` acumulado evita duplicar.
     zone_areas = {z["area"] for z in zones}
     cap_assign = defaultdict(set)
+    entre_continentes = 0
     for qid, q in router.quests.items():
         ql = q["questLevel"] or 0
         if not (1 <= ql <= level_max) or not router.de_leveling(q, faction, level_max):
@@ -244,23 +245,30 @@ def gen_faction(router, faction, level_max, min_quests):
         alvos = [i for i, z in enumerate(zones) if z["area"] not in ISOLADAS]
         if caps and not in_zone and alvos:
             casa = {CAPITAL_HOME.get(c) for c in caps}
-            # onde ela se resolve manda no continente: "Brother Anton", de Stormwind
-            # para Desolace, vai no guia de Kalimdor (no de Duskwood seria cortada)
+            # onde ela se resolve manda no continente
             it = router._info({int(qid): q}, -1)[int(qid)]
             areas = {int(p[0]) for p in (it["ec"], it["oc"], it["ic"])
                      if p and int(p[0]) not in CAPITAIS[faction]}
             destino = {continente(a, faction) for a in areas}
+            # breadcrumb entre continentes ("Reclaimers' Business in Desolace", de
+            # Ironforge) abria o guia de Desolace mandando quem está em Kalimdor a
+            # Ironforge: a trilha é por continente e não passa na capital do outro
+            if destino and not destino & {continente(c, faction) for c in caps}:
+                entre_continentes += 1
+                continue
             cont = destino or {continente(c, faction) for c in caps}
             # e a zona: "Feralas: A History", de Darnassus, vai no guia de Feralas
-            # (pega na capital antes de ir) — não num "Teldrassil 48-55" de recados
-            tgt = min(alvos, key=lambda i: (bool(destino) and continente(zones[i]["area"], faction) not in cont,
+            # (pega na capital antes de ir) — não num "Teldrassil 48-55" de recados.
+            # Continente antes da faixa, sempre: "Hidden Enemies", do Thrall, abria o
+            # guia de Silverpine mandando o jogador de Brill a Orgrimmar
+            tgt = min(alvos, key=lambda i: (continente(zones[i]["area"], faction) not in cont,
                                             not (zones[i]["area"] in areas
                                                  and zones[i]["lo"] - 5 <= ql <= zones[i]["hi"] + 5),
                                             0 if zones[i]["lo"] <= ql <= zones[i]["hi"] else 1,
                                             0 if zones[i]["area"] in casa else 1,
-                                            0 if continente(zones[i]["area"], faction) in cont else 1,
                                             abs(zones[i]["median"] - ql)))
             cap_assign[tgt].add(int(qid))            # por guia: a zona pode ter duas faixas
+    print("  [%s] breadcrumbs de capital entre continentes fora: %d" % (faction, entre_continentes))
 
     def gerar(i, used, next_key=None, travel=None, title="?", fixas=None):
         """`used`: o que os guias gerados antes já levam — fica de fora daqui, e o

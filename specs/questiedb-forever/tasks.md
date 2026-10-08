@@ -76,3 +76,9 @@ Quatro revisores leram os 152 guias; o roteador foi reescrito em cima do que ach
 - [x] Recalcular as medianas fez as duas trilhas terminarem no 60, e o salto entre continentes valia dos dois lados: a cadeia da Horda virou laço (Silithus → Stranglethorn → Eastern Plaguelands → Silithus) → só atravessa a trilha que acaba antes.
 - [x] Exclusivas em guias diferentes do mesmo caminho (Call of Fire em Durotar e em The Barrens, Ashenvale Hunt, Mantles of the Dawn) — 94 pares → exclusividade vira condição do passo, `not completed(x) not haveq(x)`, herdada pelos dependentes; feita uma, a outra some. Breadcrumb some depois da quest que a fecha pelo mesmo caminho.
 - [x] A condição de exclusiva herdada de uma opção de `preSingle` negava as outras opções: Call of Earth 1520 sumia para o tauren que fez a 1519, Tormus Deepforge para o anão que fez Vejrek → das opções só vale a negação comum a todas, e nenhuma quest nega a si mesma nem um pré-req dela.
+
+## Guia recomendado (teste em jogo)
+
+- [x] No login (nível 11, em Brill) o addon sugeriu "A Rogue's Deal", quest nível 5 de Deathknell: o bônus de zona (−5) passava por cima do nível e o Tirisfal 5-10 ganhava do Silverpine 11-20 → nível manda (já passado pesa 3/nível, acima 2/nível, outro continente +4), zona só desempata (−1,5).
+- [x] Aba ativa salva abaixo do nível era restaurada sem passar pelo autopilot → no login, se o nível passou da faixa da aba de leveling, abre o recomendado (a antiga fica na aba).
+- [x] Silverpine 11-20 começava por "Hidden Enemies" em Orgrimmar: a atribuição de quest de capital testava faixa antes de continente → continente primeiro; breadcrumb de capital para outro continente (73) fica fora do leveling.

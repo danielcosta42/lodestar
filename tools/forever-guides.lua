@@ -185,6 +185,49 @@ end
 playerLevel = 50
 check(meio:BestGuideForPlayer() == "Leveling/Alliance/Searing Gorge (48-52)",
 	"no nível 50, a faixa 48-52 ganha da 34-60 (abriu " .. tostring(meio:BestGuideForPlayer()) .. ")")
+
+-- nível manda, zona só desempata: no 11, parado em Elwynn, o guia é Westfall (11-18)
+-- — não o Elwynn (3-10) já passado (a primeira quest dele seria cinza), nem a
+-- Darkshore do outro continente, que também cabe no nível
+local zona = load_addon(16001)
+for _, k in ipairs({ "Elwynn Forest (3-10)", "Westfall (11-18)", "Darkshore (11-20)" }) do
+	zona:RegisterGuide("Leveling/Alliance/" .. k, { faction = "Alliance" }, "step\n  note w\n")
+end
+zona.zoneUiMap = { ["Elwynn Forest"] = 1429, ["Westfall"] = 1436, ["Darkshore"] = 1439 }
+zona.TravelPlanner = {
+	PlayerContinent = function() return "EK" end,
+	ZoneContinent = function(_, z) return ({ ["Elwynn Forest"] = "EK", ["Westfall"] = "EK", ["Darkshore"] = "K" })[z] end,
+}
+C_Map = { GetBestMapForUnit = function() return 1429 end }
+playerLevel = 11
+check(zona:BestGuideForPlayer() == "Leveling/Alliance/Westfall (11-18)",
+	"nível 11 em Elwynn vai para Westfall (abriu " .. tostring(zona:BestGuideForPlayer()) .. ")")
+playerLevel = 10
+check(zona:BestGuideForPlayer() == "Leveling/Alliance/Elwynn Forest (3-10)",
+	"nível 10 em Elwynn fica em Elwynn (abriu " .. tostring(zona:BestGuideForPlayer()) .. ")")
+-- login com aba de leveling que o nível já passou: abre o recomendado, a antiga
+-- fica na aba. No nível dela, retoma onde parou.
+local function logar(nivel)
+	local l = load_addon(16001)
+	for _, k in ipairs({ "Elwynn Forest (3-10)", "Westfall (11-18)", "Darkshore (11-20)" }) do
+		l:RegisterGuide("Leveling/Alliance/" .. k, { faction = "Alliance" }, "step\n  note w\n")
+	end
+	l.zoneUiMap, l.TravelPlanner = zona.zoneUiMap, zona.TravelPlanner
+	l.fire = function() end                        -- eventos internos (Core.lua)
+	l.char.openGuides = { "Leveling/Alliance/Elwynn Forest (3-10)" }
+	l.char.currentGuide = "Leveling/Alliance/Elwynn Forest (3-10)"
+	l.char.steps = { ["Leveling/Alliance/Elwynn Forest (3-10)"] = 1 }
+	playerLevel = nivel
+	l.handlers._READY()
+	return l
+end
+local l11 = logar(11)
+check(l11.char.currentGuide == "Leveling/Alliance/Westfall (11-18)",
+	"logou no 11 com Elwynn 3-10 salvo: abre Westfall (abriu " .. tostring(l11.char.currentGuide) .. ")")
+check(l11:IsGuideOpen("Leveling/Alliance/Elwynn Forest (3-10)"), "a aba antiga continua aberta")
+check(logar(10).char.currentGuide == "Leveling/Alliance/Elwynn Forest (3-10)",
+	"no nível da aba salva, retoma ela")
+C_Map = nil
 playerLevel = 1
 
 -- ── a biblioteca gerada inteira ──────────────────────────────────────────────

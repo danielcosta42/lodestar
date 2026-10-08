@@ -89,8 +89,10 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   cidade inimiga (Argent Dawn em Darnassus e Ironforge).
 - **Quest de capital** vai para o guia da zona onde ela se resolve (entrega ou objetivo) quando a
   faixa serve — "Feralas: A History", de Darnassus, é pega antes de ir a Feralas —; senão para o
-  guia cuja faixa serve, preferindo a zona onde a capital fica (Ironforge → Dun Morogh). Nunca para
-  Zephras Isle, e nunca noutro continente que não o do destino.
+  guia cuja faixa serve, preferindo a zona onde a capital fica (Ironforge → Dun Morogh). Sempre no
+  continente da capital e do destino, nunca em Zephras Isle; breadcrumb de capital para outro
+  continente ("Reclaimers' Business in Desolace", de Ironforge) fica fora — a trilha é por
+  continente e não passa na capital do outro.
 - **Pré-requisito de fora do guia vira condição do passo**: `only completed(p)` (com várias opções,
   `completed(a,b)` = qualquer uma). O passo só aparece para quem já entregou; antes, ou o guia
   cortava a quest, ou mandava a um NPC que não a abre e travava. Quem depende dela no guia herda.
@@ -109,9 +111,12 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   e quest que ninguém dá (giver sem spawn, item sem fonte). Item que a quest anterior dá
   (Tome of Divinity) começa onde ela é entregue.
 - **O título é a faixa do que o guia leva** (percentis 15-85 das quests dele), não a da descoberta:
-  um grupinho de quests de Onyxia fazia "Dustwallow Marsh (35-60)" de um guia que para no 51. E o
-  autopilot desempata pela faixa em que o nível do jogador fica mais no meio, não pela que começa
-  mais cedo — senão uma 34-60 de dez quests ganhava de toda zona dos níveis 45 a 60.
+  um grupinho de quests de Onyxia fazia "Dustwallow Marsh (35-60)" de um guia que para no 51.
+- **Autopilot: o nível manda.** Guia já passado pesa 3 por nível, guia ainda acima 2 por nível,
+  outro continente +4; a zona atual só desempata (−1,5) e, por último, a faixa em que o nível fica
+  mais no meio. No 11, parado em Brill, abre Silverpine (11-20), não o Tirisfal (5-10) já passado
+  — cuja primeira quest pendente era cinza. No login, se a aba ativa de leveling ficou abaixo do
+  nível, abre o recomendado; a antiga continua na aba.
 - **Zephras Isle fica fora da cadeia.** O `next` dos guias pula a ilha (Dun Morogh → Westfall), e o
   autopilot só a oferece a Skyborne ou a quem já está lá.
 - **"Speak with X"** num NPC amigo sai como `talk`, não `kill`: o banco guarda o objetivo como de
@@ -128,13 +133,13 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 | | |
 |---|---|
 | Guias | 182 (86 de leveling, 95 especiais, 1 exemplo) |
-| Quests distintas em guia | 3723 |
-| Quests novas do Forever em guia | **444 de 760** |
+| Quests distintas em guia | 3693 |
+| Quests novas do Forever em guia | **442 de 760** |
 | — fora: entrega de Craftsman's Writ | 150 |
 | — fora: exigem profissão | 80 |
 | — fora: começam por item ou giver sem posição | 68 |
 | — fora: evento/repetível/campo de batalha | 8 |
-| — fora: outro | 10 |
+| — fora: outro | 12 |
 | `validate_guides.py` — ocorrências | **0** (antes da revisão: 10 bloqueios, 244 pré-req ausentes) |
 | Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos |
 | `guide_integrity.py` — passo sem coordenada | 2 |
