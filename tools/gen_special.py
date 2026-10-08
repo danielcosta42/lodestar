@@ -4,11 +4,10 @@ Escreve Guides/{Dungeons,Attunements,Events}/** e Guides/Special.xml.
 
 Uso: python gen_special.py
 """
-import json
 import os
 from collections import defaultdict
 
-from router import Router, load_data, esc, is_placeholder
+from router import Router, load_data, is_placeholder
 
 GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides")
 # Refeitas do zero a cada rodada: o Special.xml é reescrito inteiro, então guia

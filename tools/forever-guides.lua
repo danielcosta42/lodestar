@@ -152,7 +152,10 @@ assert(loadfile(ROOT .. "/ZoneData.lua"))("Lodestar", lib)
 local arquivos = 0
 for _, xml in ipairs({ "Guides/Leveling/Leveling.xml", "Guides/Special.xml" }) do
 	local dir = xml:match("^(.*)/")
-	for rel in io.open(ROOT .. "/" .. xml):read("*a"):gmatch('file="([^"]+)"') do
+	local fh = assert(io.open(ROOT .. "/" .. xml))
+	local manifesto = fh:read("*a")
+	fh:close()
+	for rel in manifesto:gmatch('file="([^"]+)"') do
 		assert(loadfile(ROOT .. "/" .. dir .. "/" .. rel))("Lodestar", lib)
 		arquivos = arquivos + 1
 	end
@@ -160,9 +163,9 @@ end
 local guias, sem_passo, zonas_fora = 0, {}, {}
 for key, g in pairs(lib.guides) do
 	guias = guias + 1
-	local steps = lib.ensureParsed(g)
-	if #steps == 0 then sem_passo[#sem_passo + 1] = key end
-	for _, s in ipairs(steps) do
+	local passos = lib.ensureParsed(g)
+	if #passos == 0 then sem_passo[#sem_passo + 1] = key end
+	for _, s in ipairs(passos) do
 		for _, goal in ipairs(s.goals) do
 			local z = goal.goto_ and goal.goto_.zone
 			-- "-1,-1" (instância) o parser lê como zona "X -": problema conhecido, à parte
@@ -170,7 +173,8 @@ for key, g in pairs(lib.guides) do
 		end
 	end
 end
-check(arquivos > 100 and guias == arquivos, ("todo arquivo registra um guia (%d arquivos, %d guias)"):format(arquivos, guias))
+check(arquivos > 100 and guias == arquivos,
+	("todo arquivo registra um guia (%d arquivos, %d guias)"):format(arquivos, guias))
 check(#sem_passo == 0, "guia gerado sem passo: " .. table.concat(sem_passo, ", "))
 check(next(zonas_fora) == nil, "zona de |goto fora do ZoneData: " .. tostring(next(zonas_fora)))
 local zephras = {}
