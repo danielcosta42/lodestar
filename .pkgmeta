@@ -2,14 +2,25 @@ package-as: Lodestar
 
 enable-nolib-creation: no
 
+# Comentário só em linha própria: o packager (BigWigsMods) não tira comentário
+# do fim do item, e o "#"/";" que sobrava quebrava o eval da cópia — todo zip
+# saía só com o CHANGELOG (issue #11).
 ignore:
-  - "**/*.png"          # WoW só carrega .tga/.blp; os .png são só fonte
-  - "Media/*.zip"       # zip de arte-fonte
-  - "Media/*.html"      # preview de HUD
-  - "tools"             # gerador Python + validador (dev only)
-  - "docs"               # notas internas (o README linka pelo GitHub)
-  - "DSL.md"            # doc interna do formato de guia
+  # WoW só carrega .tga/.blp; os .png são só fonte
+  - "**/*.png"
+  # arte-fonte e preview de HUD
+  - "Media/*.zip"
+  - "Media/*.html"
+  # gerador Python + validador (dev only)
+  - "tools"
+  # notas internas (o README linka pelo GitHub)
+  - "docs"
+  # spec/plano/tarefas de cada feature (fluxo de desenvolvimento)
+  - "specs"
+  # doc interna do formato de guia
+  - "DSL.md"
   - "PACKAGING.md"
   - ".pkgmeta"
   - ".gitignore"
-  - ".github"           # workflows de CI/deploy — não vão no pacote
+  # workflows de CI/deploy
+  - ".github"
