@@ -87,7 +87,9 @@ function WP.ParseWay(text)
 	return x, y, zone ~= "" and zone or nil
 end
 
-function WP.LegText(route, i, secs)
+-- `now` (hora do servidor): com horário de barco/zepelim, diz quando ele sai, chega ou se
+-- é hora de embarcar.
+function WP.LegText(route, i, secs, now)
 	local L = ns.L
 	local leg, nxt = route.legs[i], route.legs[i + 1]
 	local text
@@ -114,7 +116,19 @@ function WP.LegText(route, i, secs)
 	else
 		text = L.LEG_TELEPORT:format(leg.name or "")
 	end
-	return ("%s · %s"):format(text, WP.FmtTime(secs or leg.s or 0))
+	local t = WP.FmtTime(secs or leg.s or 0)
+	local sl = leg.k == "ship" and leg or (leg.k == "walk" and nxt and nxt.k == "ship" and nxt)
+	if now and sl and sl.dep then
+		local arrT = sl.dep - (sl.dock or 0)
+		if sl ~= leg then
+			t = t .. " · " .. L.SHIP_LEAVES:format(WP.FmtTime(math.max(0, sl.dep - now)))
+		elseif now < arrT then
+			t = L.SHIP_ARRIVES:format(WP.FmtTime(arrT - now))
+		elseif now < sl.dep then
+			t = L.SHIP_BOARD:format(WP.FmtTime(sl.dep - now))
+		end
+	end
+	return ("%s · %s"):format(text, t)
 end
 
 -- ícone da perna de pedra ou teleporte (o que lançar)
@@ -142,7 +156,7 @@ function WP:PickTarget()
 			secs = math.sqrt(dx * dx + dy * dy) / T:Speed()
 		end
 		legGoal.verb, legGoal._leg, legGoal.world, legGoal.legKind = "goto_", true, leg.b, leg.k
-		legGoal.text, legGoal.icon = WP.LegText(route, route.leg, secs), legIcon(leg)
+		legGoal.text, legGoal.icon = WP.LegText(route, route.leg, secs, GetServerTime and GetServerTime()), legIcon(leg)
 		legGoal.goto_ = nil
 		return legGoal
 	end

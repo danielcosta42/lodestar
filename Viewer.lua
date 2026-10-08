@@ -31,7 +31,7 @@ end
 local function travelHint()
 	local route = ns.Travel and ns.Travel:Route()
 	if route then
-		return route.leg < #route.legs and ns.Waypoint.LegText(route, route.leg) or nil
+		return route.leg < #route.legs and ns.Waypoint.LegText(route, route.leg, nil, GetServerTime and GetServerTime()) or nil
 	end
 	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
 	local tz = tgt and tgt.goto_ and tgt.goto_.zone

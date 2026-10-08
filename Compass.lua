@@ -135,8 +135,9 @@ local function update()
 		return
 	end
 	build():Show()
-	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.0f"):format(tostring(route), route.leg, p.x, p.y,
-		GetPlayerFacing and GetPlayerFacing() or 0, ns.Travel:Speed() * 10)
+	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.0f|%d"):format(tostring(route), route.leg, p.x, p.y,
+		GetPlayerFacing and GetPlayerFacing() or 0, ns.Travel:Speed() * 10,
+		GetServerTime and GetServerTime() or 0)       -- o segundo: a contagem do barco anda parada
 	if sig == lastSig then return end
 	lastSig = sig
 	local C = UI.COL
@@ -165,7 +166,7 @@ local function update()
 	place(markers.step, p, step and ns.Travel.World(step.zone, step.x, step.y) or nil, facing, C.done, 0.6)
 	local d = leg and leg.b.c == p.c and math.sqrt((leg.b.x - p.x) ^ 2 + (leg.b.y - p.y) ^ 2)
 	info:SetText((d and (ns.L.YARDS:format(d) .. "  ·  ") or "") .. ns.Waypoint.FmtTime(
-		ns.Travel.Remaining(route, p, ns.Travel:Speed())))
+		ns.Travel.Remaining(route, p, ns.Travel:Speed(), GetServerTime and GetServerTime())))
 end
 
 ns:Every(0.05, function()

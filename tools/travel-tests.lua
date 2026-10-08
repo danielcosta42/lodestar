@@ -246,6 +246,7 @@ local L = setmetatable({
 	LEG_SHIP = "PEGUE %s", LEG_TO_TRAM = "BONDE", LEG_TRAM = "NO BONDE", LEG_HEARTH = "PEDRA",
 	LEG_TELEPORT = "TELE %s", SHIP_boat = "barco", SHIP_zeppelin = "zepelim",
 	LEG_SHIP_TO = "PEGUE %s PARA %s", LEG_TO_DOCK_TO = "CAIS %s PARA %s", LEG_RECALL = "RETORNO",
+	SHIP_LEAVES = "SAI %s", SHIP_ARRIVES = "CHEGA %s", SHIP_BOARD = "EMBARQUE %s",
 }, { __index = function(_, k) return k end })
 local WPT = load("Waypoint.lua", { L = L, On = function() end, Every = function() end, zoneUiMap = {} }).Waypoint
 check(WPT.FmtTime(45) == "45s" and WPT.FmtTime(130) == "2m10s" and WPT.FmtTime(3900) == "1h05m",
@@ -462,5 +463,25 @@ check(r and r.legs[2].k == "ship" and math.abs(r.legs[2].s - (1500 - 1000 - 500 
 r = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(80) }))       -- sai aos 80 s
 check(r and math.abs(r.legs[2].s - (80 - 500 / 7 + 200)) < 0.5 and r.legs[2].dep == 1080 and r.legs[2].stop == 1 and r.legs[2].sid == 7,
 	"chegou antes da saída: espera curta e a perna leva a hora de saída (" .. (r and r.legs[2].s or 0) .. ")")
+
+-- o anunciador anuncia a parada mais perto dele (os dois zepelins da mesma torre têm plataformas próprias)
+local frota = {
+	{ id = 301, stops = { { c = 0, x = 2060, y = 290 }, { c = 0, x = -12450, y = 230 } } },
+	{ id = 302, stops = { { c = 1, x = 1320, y = -4650 }, { c = 0, x = 2070, y = 255 } } },
+}
+local sid, k = T.NearestStop(frota, { c = 0, x = 2066, y = 260 }, 200)
+check(sid == 302 and k == 2, "anunciador perto da plataforma do zepelim de Orgrimmar: parada 2 do 302")
+check(T.NearestStop(frota, { c = 0, x = 0, y = 0 }, 200) == nil, "longe de todo cais: nenhuma parada")
+-- quanto falta numa perna de barco com horário: até a saída + a travessia
+local rb2 = { leg = 1, legs = { { k = "ship", a = P(0, 0, 0), b = P(1, 0, 0), s = 999, dep = 1100, ride = 200 } } }
+check(math.abs(T.Remaining(rb2, P(0, 0, 0), 7, 1000) - 300) < 0.01, "barco com horário: 100 s até sair + 200 de travessia")
+check(math.abs(T.Remaining(rb2, P(0, 0, 0), 7) - 999) < 0.01, "sem a hora: o custo da rota, como antes")
+
+-- a contagem na seta e no painel (horário conhecido; now = hora do servidor)
+local rs = { legs = { { k = "walk" }, { k = "ship", ship = "boat", name = "Menethil", dep = 1100, dock = 60, ride = 200 }, { k = "walk" } } }
+check(WPT.LegText(rs, 1, 30, 1000):find("SAI 1m40s$"), "indo ao cais: quando sai (" .. WPT.LegText(rs, 1, 30, 1000) .. ")")
+check(WPT.LegText(rs, 2, 0, 1000):find("CHEGA 40s$"), "no cais, antes de atracar: quando chega (" .. WPT.LegText(rs, 2, 0, 1000) .. ")")
+check(WPT.LegText(rs, 2, 0, 1070):find("EMBARQUE 30s$"), "atracado: embarque e quando sai (" .. WPT.LegText(rs, 2, 0, 1070) .. ")")
+check(not WPT.LegText(rs, 2, 0):find("CHEGA"), "sem a hora: como antes")
 
 print(("ok: %d checks"):format(checks))
