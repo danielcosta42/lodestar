@@ -6,243 +6,186 @@ ns:RegisterGuide("Class/Horde/Mage", {
 	author = "Lodestar Generator",
 }, [[
 step
-  talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
+  talk Gornek##3143
+  accept Cutting Teeth##788 |goto Durotar 42.06,68.33
+step
+  note Kill 10 Mottled Boars then return to Gornek at the Den.
+  talk Mottled Boar##3098 |q 788 |goto Durotar 44.49,65.1
+step
+  talk Gornek##3143
+  turnin Cutting Teeth##788 |goto Durotar 42.06,68.33
+step
+  only Troll Mage
+  talk Gornek##3143
+  accept Glyphic Tablet##3086 |goto Durotar 42.06,68.33
+step
+  only Troll Mage
+  talk Mai'ah##5884
+  turnin Glyphic Tablet##3086 |goto Durotar 42.51,69.04
 step
   only Orc Mage
   talk Gornek##3143
   accept Glyphic Parchment##98576 |goto Durotar 42.06,68.33
-step
-  talk Shadow Priest Sarvis##1569
-  accept The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
-step
-  talk Gornek##3143
-  accept Cutting Teeth##788 |goto Durotar 42.06,68.33
-step
-  only Mage
-  talk Cain Firesong##2128
-  accept Speak with Anastasia##1881 |goto Tirisfal Glades 61.97,52.47
-step
-  only Mage
-  talk Anastasia Hartwell##4568
-  accept The Balnir Farmstead##1882 |goto Undercity 85.14,10.03
-step
-  only Mage
-  talk Thurston Xane##3049
-  accept Speak with Un'thuwa##1883 |goto Thunder Bluff 25.18,20.96
-step
-  only Mage
-  talk Un'Thuwa##5880
-  accept Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
-step
-  only Mage
-  talk Cain Firesong##2128
-  accept Report to Anastasia##1959 |goto Tirisfal Glades 61.97,52.47
-step
-  only Mage
-  talk Anastasia Hartwell##4568
-  accept Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03
-step
-  only Mage
-  talk Anastasia Hartwell##4568
-  accept Speak with Deino##1943 |goto Undercity 85.14,10.03
-step
-  only Mage
-  talk Deino##5885
-  accept Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13
-step
-  only Mage
-  talk Ursyn Ghull##3048
-  accept Journey to the Marsh##1947 |goto Thunder Bluff 25.7,14.19
-step
-  only Mage
-  talk Ursyn Ghull##3048
-  accept Return to the Marsh##1953 |goto Thunder Bluff 25.7,14.19
-step
-  only Mage
-  talk Tabetha##6546
-  accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Archmage Shymm##3047
-  accept Magecraft##8250 |goto Thunder Bluff 22.76,14.53
-step
-  only Mage
-  talk Archmage Xylem##8379
-  accept Magic Dust##8251 |goto Azshara 29.25,40.21
-step
-  only Mage
-  talk Lorekeeper Lydros##14368
-  accept Arcane Refreshment##7463 |goto Dire Maul - Dungeon -1,-1
-step
-  only Mage
-  collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
-  accept The Arcanist's Cookbook##7500 |goto Dire Maul - Dungeon -1,-1
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Illusionist's Wraps##8060 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Illusionist's Mantle##8068 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Illusionist's Robes##8069 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  accept The Pebble of Kajaro##8101 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Zanza the Restless##15042
-  accept Presence of Sight##8189 |goto Zul'Gurub - Dungeon -1,-1
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Keyl Swiftclaw##15500
-  accept Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
-step
-  only Mage
-  talk Windcaller Yessendra##15498
-  accept Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
-step
-  only Mage
-  talk Warden Haro##15499
-  accept Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
-step
-  only Mage
-  talk Mokvar##16012
-  accept An Earnest Proposition##8915 |goto Orgrimmar 34.95,38.29
-step
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Xylem##8379
-  accept Warlord Krellian##9362 |goto Azshara 29.25,40.21
-step
-  note Shadow Priest Sarvis wants you to kill 8 Mindless Zombies and 8 Wretched Zombies.
-  kill Mindless Zombie##1501 |q 364 |goto Tirisfal Glades 32.54,63.84
-step
-  note Kill 10 Mottled Boars then return to Gornek at the Den.
-  kill Mottled Boar##3098 |q 788 |goto Durotar 44.47,64.86
-step
-  only Mage
-  note Bring Balnir Snapdragons to Anastasia Hartwell in the Mage Quarter of the Undercity.
-  collect Balnir Snapdragons##7227 |q 1882 |goto Tirisfal Glades 77.58,62.01
-step
-  only Mage
-  note Destroy 4 Ju-Ju Heaps, then return to Un'thuwa in Sen'jin Village.
-  collect Ju-Ju Heap##102986 |q 1884 |goto Durotar 67.79,83.37
-step
-  only Mage
-  note Obtain a Cantation of Manifestation and a Chest of Containment Coffers from behind Anastasia Hartwell. Bring 3 Filled Containment Coffers, the Chest of Containment Coffers and the Cantation of Manifestation to Anastasia in the Undercity.
-  collect 3 Filled Containment Coffer##7292 |q 1960 |goto Undercity 85.14,10.03
-step
-  only Mage
-  note Bring the Xavian Water Sample to Deino in Orgrimmar.
-  collect Xavian Water Sample##7268 |q 1944 |goto Ashenvale 76.29,41.49 |tip {dropsfrom}Xavian Waterfall
-step
-  only Mage
-  note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
-  collect Infernal Orb##7291 |q 1954 |goto Desolace 79.47,77.84 |tip {dropsfrom}Burning Blade Summoner
-step
-  only Mage
-  note Bring 10 Glittering Dust to Archmage Xylem.
-  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 57.95,28.49 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Defender
-step
-  only Mage
-  note Travel to the Warpwood Quarter of Dire Maul and slay the water elemental, Hydrospawn. Return to Lorekeeper Lydros in the Athenaeum with the Hydrospawn Essence.
-  collect Hydrospawn Essence##18299 |q 7463 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Hydrospawn
-step
-  only Mage
-  note Bring Al'tabim the All-Seeing Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Bindings##19716 |q 8060 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Mage
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Shawl##19721 |q 8068 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Mage
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Kossack##19723 |q 8069 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Mage
-  collect Primal Hakkari Idol##22637 |q 8189 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  only Mage
-  note Bring 1 Qiraji Martial Drape, 2 Alabaster Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8691 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
-  only Mage
-  note Bring 1 Qiraji Magisterial Ring, 2 Azure Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8699 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
-  only Mage
-  note Bring 1 Qiraji Ornate Hilt, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8707 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Mage
-  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Magister's Bindings to Mokvar in Orgrimmar.
-  collect 15 Silithus Venom Sample##22381 |q 8915 |goto Silithus 59.92,28.33 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
-step
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 62.76,44.03 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only Mage
-  note Retrieve the Prismatic Shell for Archmage Xylem. The Archmage resides in a tower atop the cliffs of Azshara.
-  collect Prismatic Shell##23250 |q 9362 |goto Azshara 41.02,53.05 |tip {dropsfrom}Warlord Krellian, Scalebeard
-step
-  talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
 step
   only Orc Mage
   talk Mai'ah##5884
   turnin Glyphic Parchment##98576 |goto Durotar 42.51,69.04
 step
   talk Shadow Priest Sarvis##1569
+  accept The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
+step
+  note Shadow Priest Sarvis wants you to kill 8 Mindless Zombies and 8 Wretched Zombies.
+  talk Mindless Zombie##1501 |q 364 |goto Tirisfal Glades 32.28,63.63
+step
+  talk Shadow Priest Sarvis##1569
   turnin The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
 step
-  talk Gornek##3143
-  turnin Cutting Teeth##788 |goto Durotar 42.06,68.33
+  only Undead Mage
+  talk Shadow Priest Sarvis##1569
+  accept Glyphic Scroll##3098 |goto Tirisfal Glades 30.84,66.2
 step
-  only Mage
-  talk Anastasia Hartwell##4568
-  turnin Speak with Anastasia##1881 |goto Undercity 85.14,10.03
+  only Undead Mage
+  talk Isabella##2124
+  turnin Glyphic Scroll##3098 |goto Tirisfal Glades 30.93,66.06
 step
-  only Mage
-  talk Anastasia Hartwell##4568
-  turnin The Balnir Farmstead##1882 |goto Undercity 85.14,10.03
+  talk Ailee Farheart##251362
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
 step
-  only Mage
+  talk Rorian the Dayseeker##251361
+  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
+step
+  talk Rorian the Dayseeker##251361
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+step
+  note Slay 8 Vuldren Juveniles in Thendal Grove.
+  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.71,26.43
+step
+  talk Rorian the Dayseeker##251361
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+step
+  only not Orc not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
+  talk Thurston Xane##3049
+  accept Speak with Un'thuwa##1883 |goto Thunder Bluff 25.18,20.96
+step
+  only not Orc not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
   talk Un'Thuwa##5880
   turnin Speak with Un'thuwa##1883 |goto Durotar 56.31,75.11
 step
-  only Mage
+  only Undead Mage not completed(1884) not haveq(1884)
+  talk Cain Firesong##2128
+  accept Speak with Anastasia##1881 |goto Tirisfal Glades 61.97,52.47
+step
+  only Undead Mage not completed(1884) not haveq(1884)
+  talk Anastasia Hartwell##4568
+  turnin Speak with Anastasia##1881 |goto Undercity 85.14,10.03
+step
+  only not Undead not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
+  talk Un'Thuwa##5880
+  accept Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
+step
+  only not Undead not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
+  note Destroy 4 Ju-Ju Heaps, then return to Un'thuwa in Sen'jin Village.
+  collect Ju-Ju Heap##102986 |q 1884 |goto Durotar 67.79,83.37
+step
+  only not Undead not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
   talk Un'Thuwa##5880
   turnin Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
-  only Mage
+  only Undead Mage not completed(1884) not haveq(1884)
+  talk Anastasia Hartwell##4568
+  accept The Balnir Farmstead##1882 |goto Undercity 85.14,10.03
+step
+  only Undead Mage not completed(1884) not haveq(1884)
+  note Bring Balnir Snapdragons to Anastasia Hartwell in the Mage Quarter of the Undercity.
+  collect Balnir Snapdragons##7227 |q 1882 |goto Tirisfal Glades 77.59,62.01
+step
+  only Undead Mage not completed(1884) not haveq(1884)
+  talk Anastasia Hartwell##4568
+  turnin The Balnir Farmstead##1882 |goto Undercity 85.14,10.03
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Cain Firesong##2128
+  accept Report to Anastasia##1959 |goto Tirisfal Glades 61.97,52.47
+step
+  only not Orc not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
   turnin Report to Anastasia##1959 |goto Undercity 85.14,10.03
 step
-  only Mage
+  only not Orc not Tauren not Skyborne Mage
+  talk Anastasia Hartwell##4568
+  accept Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03
+step
+  only not Orc not Tauren not Skyborne Mage
+  note Obtain a Cantation of Manifestation and a Chest of Containment Coffers from behind Anastasia Hartwell. Bring 3 Filled Containment Coffers, the Chest of Containment Coffers and the Cantation of Manifestation to Anastasia in the Undercity.
+  collect 3 Filled Containment Coffer##7292 |q 1960 |goto Undercity 85.14,10.03
+step
+  only not Orc not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
   turnin Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03
 step
-  only Mage
+  only not Tauren not Skyborne Mage
+  talk Anastasia Hartwell##4568
+  accept Gathering Materials##1961 |goto Undercity 85.14,10.03
+step
+  only not Tauren not Skyborne Mage
+  note Bring 10 Linen Cloth and 6 Dalaran Mana Gems to Josef Gregorian.
+  collect 10 Linen Cloth##2589 |q 1961 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
+step
+  only not Tauren not Skyborne Mage
+  talk Josef Gregorian##4576
+  turnin Gathering Materials##1961 |goto Undercity 70.76,30.69
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Josef Gregorian##4576
+  accept Spellfire Robes##1962 |goto Undercity 70.76,30.69
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Josef Gregorian##4576
+  turnin Spellfire Robes##1962 |goto Undercity 70.76,30.69
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Anastasia Hartwell##4568
+  accept Speak with Deino##1943 |goto Undercity 85.14,10.03
+step
+  only not Orc not Tauren not Skyborne Mage
   talk Deino##5885
   turnin Speak with Deino##1943 |goto Orgrimmar 38.45,86.13
 step
-  only Mage
+  only not Orc not Tauren not Skyborne Mage
+  talk Deino##5885
+  accept Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13
+step
+  only not Orc not Tauren not Skyborne Mage
+  note Bring the Xavian Water Sample to Deino in Orgrimmar.
+  collect Xavian Water Sample##7268 |q 1944 |goto Ashenvale 76.29,41.49 |tip {dropsfrom}Xavian Waterfall
+step
+  only not Orc not Tauren not Skyborne Mage
   talk Deino##5885
   turnin Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Deino##5885
+  accept Laughing Sisters##1945 |goto Orgrimmar 38.45,86.13
+step
+  only not Orc not Tauren not Skyborne Mage
+  note Bring 12 Laughing Sister's Hairs to Kil'hala at the Crossroads.
+  collect 12 Laughing Sister's Hair##7270 |q 1945 |goto Ashenvale 59.79,55.37 |tip {dropsfrom}Laughing Sister
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Kil'hala##3484
+  turnin Laughing Sisters##1945 |goto The Barrens 52.2,31.7
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Kil'hala##3484
+  accept Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Kil'hala##3484
+  turnin Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
+step
+  only Mage
+  talk Ursyn Ghull##3048
+  accept Journey to the Marsh##1947 |goto Thunder Bluff 25.7,14.19
 step
   only Mage
   talk Tabetha##6546
@@ -250,401 +193,19 @@ step
 step
   only Mage
   talk Tabetha##6546
-  turnin Return to the Marsh##1953 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Tabetha##6546
-  turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Sanath Lim-yo##8395
-  turnin Magecraft##8250 |goto Azshara 28.11,50.09
-step
-  only Mage
-  talk Archmage Xylem##8379
-  turnin Magic Dust##8251 |goto Azshara 29.25,40.21
-step
-  only Mage
-  talk Lorekeeper Lydros##14368
-  turnin Arcane Refreshment##7463 |goto Dire Maul - Dungeon -1,-1
-step
-  only Mage
-  talk Lorekeeper Kildrath##14383
-  turnin The Arcanist's Cookbook##7500 |goto Dire Maul - Dungeon -1,-1
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Illusionist's Wraps##8060 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Illusionist's Mantle##8068 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Illusionist's Robes##8069 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  turnin The Pebble of Kajaro##8101 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Zanza the Restless##15042
-  turnin Presence of Sight##8189 |goto Zul'Gurub - Dungeon -1,-1
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Keyl Swiftclaw##15500
-  turnin Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
-step
-  only Mage
-  talk Windcaller Yessendra##15498
-  turnin Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
-step
-  only Mage
-  talk Warden Haro##15499
-  turnin Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
-step
-  only Mage
-  talk Mokvar##16012
-  turnin An Earnest Proposition##8915 |goto Orgrimmar 34.95,38.29
-step
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Anachronos##15192
-  turnin Frame of Atiesh##9250 |goto Tanaris 65.27,50.03
-step
-  only Mage
-  talk Archmage Xylem##8379
-  turnin Warlord Krellian##9362 |goto Azshara 29.25,40.21
-step
-  only Troll Mage
-  talk Gornek##3143
-  accept Glyphic Tablet##3086 |goto Durotar 42.06,68.33
-step
-  only Undead Mage
-  talk Shadow Priest Sarvis##1569
-  accept Glyphic Scroll##3098 |goto Tirisfal Glades 30.84,66.2
-step
-  talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
-step
-  only Mage
-  talk Anastasia Hartwell##4568
-  accept Gathering Materials##1961 |goto Undercity 85.14,10.03
-step
-  only Mage
-  talk Deino##5885
-  accept Laughing Sisters##1945 |goto Orgrimmar 38.45,86.13
-step
-  only Mage
-  talk Tabetha##6546
   accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Tabetha##6546
-  accept Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Tabetha##6546
-  accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Archmage Xylem##8379
-  accept The Siren's Coral##8252 |goto Azshara 29.25,40.21
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  accept The Pebble of Kajaro##8102 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Andorgos##15502
-  accept Enigma Shoulderpads##8625 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Kandrostrasz##15503
-  accept Enigma Leggings##8631 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Andorgos##15502
-  accept Enigma Circlet##8632 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Vethsera##15504
-  accept Enigma Robes##8633 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Kandrostrasz##15503
-  accept Enigma Boots##8634 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  talk Mokvar##16012
-  accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  talk Anachronos##15192
-  accept Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 65.27,50.03
-step
-  only Mage
-  talk Archmage Xylem##8379
-  accept Fragmented Magic##9364 |goto Azshara 29.25,40.21
-step
-  note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.64,26.38
-step
-  only Mage
-  note Bring 10 Linen Cloth and 6 Dalaran Mana Gems to Josef Gregorian.
-  collect 10 Linen Cloth##2589 |q 1961 |goto Alterac Mountains 20.7,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
-step
-  only Mage
-  note Bring 12 Laughing Sister's Hairs to Kil'hala at the Crossroads.
-  collect 12 Laughing Sister's Hair##7270 |q 1945 |goto Ashenvale 59.86,55.06 |tip {dropsfrom}Laughing Sister
-step
-  only Mage
-  note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
-  collect 1 Jade##1529 |q 1948 |goto Arathi Highlands 50.28,64.63 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
-step
-  only Mage
-  note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 1955 |goto Dustwallow Marsh 45.79,56.97 |elite
-step
-  only Mage
-  note Collect 6 Enchanted Coral and return them to Archmage Xylem.
-  collect 6 Enchanted Coral##20029 |q 8252 |goto Azshara 44.56,54.02 |tip {dropsfrom}Spitelash Siren
-step
-  only Mage
-  collect Pebble of Kajaro##19598 |q 8102 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of Death, 5 Stone Scarabs and 5 Bronze Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Dominance##20932 |q 8625 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Mage
-  note Bring Ouro's Intact Hide, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Ouro's Intact Hide##20927 |q 8631 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
-step
-  only Mage
-  note Bring Vek'nilash's Circlet, 2 Idols of Night, 5 Bronze Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'nilash's Circlet##20926 |q 8632 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash
-step
-  only Mage
-  note Bring the Husk of the Old God, 2 Idols of the Sun, 5 Gold Scarabs and 5 Clay Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Husk of the Old God##20933 |q 8633 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
-step
-  only Mage
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sun, 5 Silver Scarabs and 5 Crystal Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Dominance##20932 |q 8634 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  collect Staff Head of Atiesh##22733 |q 9251 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Kel'Thuzad
-step
-  only Mage
-  note Polymorph the Spitelash of Azshara and kill the clones that appear several seconds later. When you have slain 50 Polymorph Clones, return to Archmage Xylem in Azshara.
-  kill Polymorph Clone##16479 |q 9364 |goto Azshara 36.16,54.59
-step
-  only Troll Mage
-  talk Mai'ah##5884
-  turnin Glyphic Tablet##3086 |goto Durotar 42.51,69.04
-step
-  only Undead Mage
-  talk Isabella##2124
-  turnin Glyphic Scroll##3098 |goto Tirisfal Glades 30.93,66.06
-step
-  talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
-step
-  only Mage
-  talk Josef Gregorian##4576
-  turnin Gathering Materials##1961 |goto Undercity 70.76,30.69
-step
-  only Mage
-  talk Kil'hala##3484
-  turnin Laughing Sisters##1945 |goto The Barrens 52.2,31.7
 step
   only Mage
   talk Magus Tirth##6548
   turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7
 step
   only Mage
-  talk Tabetha##6546
-  turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Tabetha##6546
-  turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Archmage Xylem##8379
-  turnin The Siren's Coral##8252 |goto Azshara 29.25,40.21
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  turnin The Pebble of Kajaro##8102 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Mage
-  talk Andorgos##15502
-  turnin Enigma Shoulderpads##8625 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Kandrostrasz##15503
-  turnin Enigma Leggings##8631 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Andorgos##15502
-  turnin Enigma Circlet##8632 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Vethsera##15504
-  turnin Enigma Robes##8633 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Mage
-  talk Kandrostrasz##15503
-  turnin Enigma Boots##8634 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  talk Mux Manascrambler##16014
-  turnin A Supernatural Device##8923 |goto Tanaris 52.47,27.23
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  talk Anachronos##15192
-  turnin Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 65.27,50.03
-step
-  only Mage
-  talk Archmage Xylem##8379
-  turnin Fragmented Magic##9364 |goto Azshara 29.25,40.21
-step
-  only Mage
-  talk Josef Gregorian##4576
-  accept Spellfire Robes##1962 |goto Undercity 70.76,30.69
-step
-  only Mage
-  talk Kil'hala##3484
-  accept Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
-step
-  only Mage
   talk Magus Tirth##6548
   accept Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
 step
   only Mage
-  talk Tabetha##6546
-  accept Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Archmage Xylem##8379
-  accept Destroy Morphaz##8253 |goto Azshara 29.25,40.21
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  accept The Pebble of Kajaro##8103 |goto Stranglethorn Vale 15.34,16.12
-step
-  talk Mux Manascrambler##16014
-  accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  accept Frostfire Robe##9095 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  accept Frostfire Leggings##9096 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  accept Frostfire Circlet##9097 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  accept Frostfire Shoulderpads##9098 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  accept Frostfire Sandals##9099 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  accept Frostfire Gloves##9100 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  accept Frostfire Belt##9101 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  accept Frostfire Bindings##9102 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Anachronos##15192
-  accept Atiesh, Greatstaff of the Guardian##9270 |goto Tanaris 65.27,50.03
-step
-  only Mage
   note Find the phrase to Tirth's strongbox, then return to Tirth.
-  kill "Plucky" Johnson##6626 |q 1950 |goto Thousand Needles 79.61,75.63
-step
-  only Mage
-  note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
-  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Obsidian Sentinel
-step
-  only Mage
-  note Retrieve the Arcane Shard from Morphaz and return to Archmage Xylem.
-  collect Arcane Shard##20085 |q 8253 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
-step
-  only Mage
-  collect Pebble of Kajaro##19599 |q 8103 |goto Stranglethorn Vale 15.34,16.12
-step
-  note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
-step
-  only Mage
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Robe if you bring her the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Robe##22351 |q 9095 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Leggings if you bring her the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Leggings##22366 |q 9096 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Circlet if you bring her the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  collect Desecrated Circlet##22367 |q 9097 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Shoulderpads if you bring her the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9098 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Mage
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Sandals if you bring her the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9099 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Mage
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Gloves if you bring her the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  collect Desecrated Gloves##22371 |q 9100 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Belt if you bring her the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9101 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Mage
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Bindings if you bring her the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9102 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Mage
-  note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
-  kill Atiesh##16387 |q 9270 |raid
-step
-  only Mage
-  talk Josef Gregorian##4576
-  turnin Spellfire Robes##1962 |goto Undercity 70.76,30.69
-step
-  only Mage
-  talk Kil'hala##3484
-  turnin Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
+  talk "Plucky" Johnson##6626 |q 1950 |goto Thousand Needles 79.61,75.63
 step
   only Mage
   talk Magus Tirth##6548
@@ -652,83 +213,23 @@ step
 step
   only Mage
   talk Tabetha##6546
-  turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
+  accept Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
   only Mage
-  talk Archmage Xylem##8379
-  turnin Destroy Morphaz##8253 |goto Azshara 29.25,40.21
+  note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
+  collect 1 Jade##1529 |q 1948 |goto Arathi Highlands 48.32,64.36 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
 step
   only Mage
-  talk Al'tabim the All-Seeing##14903
-  turnin The Pebble of Kajaro##8103 |goto Stranglethorn Vale 15.34,16.12
-step
-  talk Mux Manascrambler##16014
-  turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  turnin Frostfire Robe##9095 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  turnin Frostfire Leggings##9096 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  turnin Frostfire Circlet##9097 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  turnin Frostfire Shoulderpads##9098 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  turnin Frostfire Sandals##9099 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  turnin Frostfire Gloves##9100 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  turnin Frostfire Belt##9101 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Archmage Angela Dosantos##16116
-  turnin Frostfire Bindings##9102 |goto Eastern Plaguelands 71.7,48.69
-step
-  only Mage
-  talk Anachronos##15192
-  turnin Atiesh, Greatstaff of the Guardian##9270 |goto Tanaris 65.27,50.03
+  talk Tabetha##6546
+  turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
   only Mage
   talk Magus Tirth##6548
   accept Rituals of Power##1951 |goto Thousand Needles 78.29,75.7
 step
   only Mage
-  talk Tabetha##6546
-  accept Mana Surges##1957 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  accept The Jewel of Kajaro##8104 |goto Stranglethorn Vale 15.34,16.12
-step
-  talk Mux Manascrambler##16014
-  accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
-step
-  only Mage
   note Bring the book Rituals of Power to Tabetha in Dustwallow Marsh.
   collect Rituals of Power##7274 |q 1951 |goto Scarlet Monastery - Dungeon -1,-1
-step
-  only Mage
-  note Kill 12 Mana Surges in the allowed time limit.
-  kill Mana Surge##6550 |q 1957 |goto Dustwallow Marsh 45.83,56.94
-step
-  only Mage
-  collect Pebble of Kajaro##19600 |q 8104 |goto Stranglethorn Vale 15.34,16.12
-step
-  note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.76 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
   only Mage
   talk Tabetha##6546
@@ -736,36 +237,169 @@ step
 step
   only Mage
   talk Tabetha##6546
-  turnin Mana Surges##1957 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Al'tabim the All-Seeing##14903
-  turnin The Jewel of Kajaro##8104 |goto Stranglethorn Vale 15.34,16.12
-step
-  talk Mux Manascrambler##16014
-  turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
-step
-  only Mage
-  talk Tabetha##6546
   accept Mage's Wand##1952 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Tabetha##6546
-  accept Celestial Power##1958 |goto Dustwallow Marsh 46.06,57.09
-step
-  talk Mux Manascrambler##16014
-  accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
-step
-  note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
-  collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
   only Mage
   talk Tabetha##6546
   turnin Mage's Wand##1952 |goto Dustwallow Marsh 46.06,57.09
 step
   only Mage
+  talk Ursyn Ghull##3048
+  accept Return to the Marsh##1953 |goto Thunder Bluff 25.7,14.19
+step
+  only Mage
+  talk Tabetha##6546
+  turnin Return to the Marsh##1953 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  talk Tabetha##6546
+  accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
+  collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
+step
+  only Mage
+  talk Tabetha##6546
+  turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  talk Tabetha##6546
+  accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  note Kill the Demon of the Orb, then speak with Tabetha.
+  kill Demon of the Orb##6549 |q 1955 |goto Dustwallow Marsh 45.79,56.97 |elite
+step
+  only Mage
+  talk Tabetha##6546
+  turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  talk Tabetha##6546
+  accept Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
+  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Obsidian Sentinel
+step
+  only Mage
+  talk Tabetha##6546
+  turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  talk Tabetha##6546
+  accept Mana Surges##1957 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  note Kill 12 Mana Surges in the allowed time limit.
+  kill Mana Surge##6550 |q 1957 |goto Dustwallow Marsh 45.83,56.94
+step
+  only Mage
+  talk Tabetha##6546
+  turnin Mana Surges##1957 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  talk Tabetha##6546
+  accept Celestial Power##1958 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
   talk Tabetha##6546
   turnin Celestial Power##1958 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  talk Archmage Xylem##8379
+  accept Magic Dust##8251 |goto Azshara 29.25,40.21
+step
+  only Mage
+  note Bring 10 Glittering Dust to Archmage Xylem.
+  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Defender
+step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin Magic Dust##8251 |goto Azshara 29.25,40.21
+step
+  only Mage
+  talk Archmage Xylem##8379
+  accept The Siren's Coral##8252 |goto Azshara 29.25,40.21
+step
+  only Mage
+  note Collect 6 Enchanted Coral and return them to Archmage Xylem.
+  collect 6 Enchanted Coral##20029 |q 8252 |goto Azshara 44.37,53.93 |tip {dropsfrom}Spitelash Siren
+step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin The Siren's Coral##8252 |goto Azshara 29.25,40.21
+step
+  only Mage
+  talk Archmage Xylem##8379
+  accept Destroy Morphaz##8253 |goto Azshara 29.25,40.21
+step
+  only Mage
+  note Retrieve the Arcane Shard from Morphaz and return to Archmage Xylem.
+  collect Arcane Shard##20085 |q 8253 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Morphaz
+step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin Destroy Morphaz##8253 |goto Azshara 29.25,40.21
+step
+  only Mage
+  talk Archmage Shymm##3047
+  accept Magecraft##8250 |goto Thunder Bluff 22.76,14.53
+step
+  only Mage
+  talk Sanath Lim-yo##8395
+  turnin Magecraft##8250 |goto Azshara 28.11,50.09
+step
+  only Mage
+  collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
+  accept The Arcanist's Cookbook##7500 |goto Dire Maul - Dungeon -1,-1
+step
+  only Mage
+  talk Lorekeeper Kildrath##14383
+  turnin The Arcanist's Cookbook##7500 |goto Dire Maul - Dungeon -1,-1
+step
+  only Mage
+  talk Mokvar##16012
+  accept An Earnest Proposition##8915 |goto Orgrimmar 34.95,38.29
+step
+  only Mage
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Magister's Bindings to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8915 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Mage
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8915 |goto Orgrimmar 34.95,38.29
+step
+  talk Mokvar##16012
+  accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
+step
+  talk Mux Manascrambler##16014
+  turnin A Supernatural Device##8923 |goto Tanaris 52.47,27.23
+step
+  talk Mux Manascrambler##16014
+  accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
+step
+  note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
+  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
+step
+  talk Mux Manascrambler##16014
+  turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
+step
+  talk Mux Manascrambler##16014
+  accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
+step
+  note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
+  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+step
+  talk Mux Manascrambler##16014
+  turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
+step
+  talk Mux Manascrambler##16014
+  accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
+step
+  note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
+  collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
@@ -807,7 +441,7 @@ step
   accept Dead Man's Plea##8945 |goto Eastern Plaguelands 26.11,11.3
 step
   note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
-  kill Ysida Harmon##16031 |q 8945 |goto Stratholme - Dungeon -1,-1
+  talk Ysida Harmon##16031 |q 8945 |goto Stratholme - Dungeon -1,-1
 step
   talk Ysida Harmon##16031
   turnin Dead Man's Plea##8945 |goto Stratholme - Dungeon -1,-1
@@ -887,22 +521,28 @@ step
   talk Bodley##16033
   turnin Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
   talk Bodley##16033
   accept Components of Importance##8962 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  kill Hive'Regal Ambusher##11730 |goto Silithus 61.05,86.89 |elite
-  collect Druidical Remains##22226 |q 8962 |goto Silithus 61.05,86.89
+  kill Hive'Regal Ambusher##11730 |goto Silithus 58.08,86.89 |elite
+  collect Druidical Remains##22226 |q 8962 |goto Silithus 58.08,86.89
 step
+  only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
   talk Bodley##16033
   turnin Components of Importance##8962 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(8967) not completed(8968) not completed(8969) not haveq(8967) not haveq(8968) not haveq(8969)
   talk Bodley##16033
   accept The Left Piece of Lord Valthalak's Amulet##8966 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(8967) not completed(8968) not completed(8969) not haveq(8967) not haveq(8968) not haveq(8969)
   note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the Left Piece of Lord Valthalak's Amulet and the Brazier of Beckoning.
   kill Mor Grayhoof##16080 |q 8966 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
+  only not completed(8967) not completed(8968) not completed(8969) not haveq(8967) not haveq(8968) not haveq(8969)
   talk Bodley##16033
   turnin The Left Piece of Lord Valthalak's Amulet##8966 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -910,28 +550,33 @@ step
   accept I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 20 Bloodkelp from the Strashaz naga and then return to Bodley inside Blackrock Mountain.
-  kill Strashaz Warrior##4364 |goto Dustwallow Marsh 75.47,18.43 |elite
-  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 75.47,18.43
+  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Strashaz Warrior, Strashaz Serpent Guard, Strashaz Myrmidon
 step
   talk Bodley##16033
   turnin I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
   talk Bodley##16033
   accept More Components of Importance##8985 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
   note Acquire a Starbreeze Village Relic and return it to Bodley inside Blackrock Mountain.
-  kill Frostmaul Giant##7428 |goto Winterspring 62.56,69.28 |elite
-  collect Starbreeze Village Relic##22227 |q 8985 |goto Winterspring 62.56,69.28
+  kill Frostmaul Giant##7428 |goto Winterspring 62.56,69.55 |elite
+  collect Starbreeze Village Relic##22227 |q 8985 |goto Winterspring 62.56,69.55
 step
+  only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
   talk Bodley##16033
   turnin More Components of Importance##8985 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(8990) not completed(8991) not completed(8992) not haveq(8990) not haveq(8991) not haveq(8992)
   talk Bodley##16033
   accept The Right Piece of Lord Valthalak's Amulet##8989 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(8990) not completed(8991) not completed(8992) not haveq(8990) not haveq(8991) not haveq(8992)
   note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the recombined Lord Valthalak's Amulet and the Brazier of Beckoning.
   kill Mor Grayhoof##16080 |q 8989 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
+  only not completed(8990) not completed(8991) not completed(8992) not haveq(8990) not haveq(8991) not haveq(8992)
   talk Bodley##16033
   turnin The Right Piece of Lord Valthalak's Amulet##8989 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -979,4 +624,349 @@ step
   only Mage
   talk Mokvar##16012
   turnin Saving the Best for Last##9014 |goto Orgrimmar 34.95,38.29
+step
+  only Mage
+  talk Zanza the Restless##15042
+  accept Presence of Sight##8189 |goto Zul'Gurub - Dungeon -1,-1
+step
+  only Mage
+  collect Primal Hakkari Idol##22637 |q 8189 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
+step
+  only Mage
+  talk Zanza the Restless##15042
+  turnin Presence of Sight##8189 |goto Zul'Gurub - Dungeon -1,-1
+step
+  only Mage
+  talk Archmage Xylem##8379
+  accept Warlord Krellian##9362 |goto Azshara 29.25,40.21
+step
+  only Mage
+  note Retrieve the Prismatic Shell for Archmage Xylem. The Archmage resides in a tower atop the cliffs of Azshara.
+  collect Prismatic Shell##23250 |q 9362 |goto Azshara 41.02,53.05 |tip {dropsfrom}Warlord Krellian, Scalebeard
+step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin Warlord Krellian##9362 |goto Azshara 29.25,40.21
+step
+  only Mage
+  talk Archmage Xylem##8379
+  accept Fragmented Magic##9364 |goto Azshara 29.25,40.21
+step
+  only Mage
+  note Polymorph the Spitelash of Azshara and kill the clones that appear several seconds later. When you have slain 50 Polymorph Clones, return to Archmage Xylem in Azshara.
+  talk Polymorph Clone##16479 |q 9364 |goto Azshara 36.16,54.59
+step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin Fragmented Magic##9364 |goto Azshara 29.25,40.21
+step
+  only Mage
+  talk Lorekeeper Lydros##14368
+  accept Arcane Refreshment##7463 |goto Dire Maul - Dungeon -1,-1
+step
+  only Mage
+  note Travel to the Warpwood Quarter of Dire Maul and slay the water elemental, Hydrospawn. Return to Lorekeeper Lydros in the Athenaeum with the Hydrospawn Essence.
+  collect Hydrospawn Essence##18299 |q 7463 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Hydrospawn
+step
+  only Mage
+  talk Lorekeeper Lydros##14368
+  turnin Arcane Refreshment##7463 |goto Dire Maul - Dungeon -1,-1
+step
+  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
+  talk Archmage Angela Dosantos##16116
+  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
+step
+  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
+  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
+step
+  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
+  talk Archmage Angela Dosantos##16116
+  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
+step
+  talk Commander Eligor Dawnbringer##16115
+  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
+step
+  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
+  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
+step
+  talk Commander Eligor Dawnbringer##16115
+  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  accept Frostfire Robe##9095 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Robe if you bring her the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
+  collect Desecrated Robe##22351 |q 9095 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  turnin Frostfire Robe##9095 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  accept Frostfire Leggings##9096 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Leggings if you bring her the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
+  collect Desecrated Leggings##22366 |q 9096 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  turnin Frostfire Leggings##9096 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  accept Frostfire Circlet##9097 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Circlet if you bring her the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
+  collect Desecrated Circlet##22367 |q 9097 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  turnin Frostfire Circlet##9097 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  accept Frostfire Shoulderpads##9098 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Shoulderpads if you bring her the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
+  collect Desecrated Shoulderpads##22368 |q 9098 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  turnin Frostfire Shoulderpads##9098 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  accept Frostfire Sandals##9099 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Sandals if you bring her the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
+  collect Desecrated Sandals##22372 |q 9099 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  turnin Frostfire Sandals##9099 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  accept Frostfire Gloves##9100 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Gloves if you bring her the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
+  collect Desecrated Gloves##22371 |q 9100 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  turnin Frostfire Gloves##9100 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  accept Frostfire Belt##9101 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Belt if you bring her the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
+  collect Desecrated Belt##22370 |q 9101 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  turnin Frostfire Belt##9101 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  accept Frostfire Bindings##9102 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Bindings if you bring her the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
+  collect Desecrated Bindings##22369 |q 9102 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+step
+  only Mage
+  talk Archmage Angela Dosantos##16116
+  turnin Frostfire Bindings##9102 |goto Eastern Plaguelands 71.7,48.69
+step
+  only Mage
+  talk Windcaller Yessendra##15498
+  accept Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
+step
+  only Mage
+  note Bring 1 Qiraji Magisterial Ring, 2 Azure Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Magisterial Ring##20884 |q 8699 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Mage
+  talk Windcaller Yessendra##15498
+  turnin Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
+step
+  only Mage
+  talk Warden Haro##15499
+  accept Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
+step
+  only Mage
+  note Bring 1 Qiraji Ornate Hilt, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ornate Hilt##20890 |q 8707 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Mage
+  talk Warden Haro##15499
+  turnin Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
+step
+  only Mage
+  talk Keyl Swiftclaw##15500
+  accept Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
+step
+  only Mage
+  note Bring 1 Qiraji Martial Drape, 2 Alabaster Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Martial Drape##20885 |q 8691 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
+  only Mage
+  talk Keyl Swiftclaw##15500
+  turnin Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  accept Paragons of Power: The Illusionist's Wraps##8060 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  note Bring Al'tabim the All-Seeing Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
+  collect Primal Hakkari Bindings##19716 |q 8060 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  turnin Paragons of Power: The Illusionist's Wraps##8060 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  accept Paragons of Power: The Illusionist's Mantle##8068 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  note Bring Al'tabim the All-Seeing a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
+  collect Primal Hakkari Shawl##19721 |q 8068 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  turnin Paragons of Power: The Illusionist's Mantle##8068 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  accept Paragons of Power: The Illusionist's Robes##8069 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
+  collect Primal Hakkari Kossack##19723 |q 8069 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  turnin Paragons of Power: The Illusionist's Robes##8069 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  accept The Pebble of Kajaro##8101 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  turnin The Pebble of Kajaro##8101 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  accept The Pebble of Kajaro##8102 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  collect Pebble of Kajaro##19598 |q 8102 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  turnin The Pebble of Kajaro##8102 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  accept The Pebble of Kajaro##8103 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  collect Pebble of Kajaro##19599 |q 8103 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  turnin The Pebble of Kajaro##8103 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  accept The Jewel of Kajaro##8104 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  collect Pebble of Kajaro##19600 |q 8104 |goto Stranglethorn Vale 15.34,16.12
+step
+  only Mage
+  talk Al'tabim the All-Seeing##14903
+  turnin The Jewel of Kajaro##8104 |goto Stranglethorn Vale 15.34,16.12
+step
+  talk Kandrostrasz##15503
+  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
+step
+  talk Kandrostrasz##15503
+  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  talk Andorgos##15502
+  accept Enigma Shoulderpads##8625 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of Death, 5 Stone Scarabs and 5 Bronze Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  collect Qiraji Bindings of Dominance##20932 |q 8625 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
+step
+  only Mage
+  talk Andorgos##15502
+  turnin Enigma Shoulderpads##8625 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  talk Kandrostrasz##15503
+  accept Enigma Leggings##8631 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  note Bring Ouro's Intact Hide, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  collect Ouro's Intact Hide##20927 |q 8631 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
+step
+  only Mage
+  talk Kandrostrasz##15503
+  turnin Enigma Leggings##8631 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  talk Andorgos##15502
+  accept Enigma Circlet##8632 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  note Bring Vek'nilash's Circlet, 2 Idols of Night, 5 Bronze Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  collect Vek'nilash's Circlet##20926 |q 8632 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash
+step
+  only Mage
+  talk Andorgos##15502
+  turnin Enigma Circlet##8632 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  talk Vethsera##15504
+  accept Enigma Robes##8633 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  note Bring the Husk of the Old God, 2 Idols of the Sun, 5 Gold Scarabs and 5 Clay Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  collect Husk of the Old God##20933 |q 8633 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
+step
+  only Mage
+  talk Vethsera##15504
+  turnin Enigma Robes##8633 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  talk Kandrostrasz##15503
+  accept Enigma Boots##8634 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Mage
+  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sun, 5 Silver Scarabs and 5 Crystal Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  collect Qiraji Bindings of Dominance##20932 |q 8634 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
+step
+  only Mage
+  talk Kandrostrasz##15503
+  turnin Enigma Boots##8634 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

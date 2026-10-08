@@ -6,28 +6,312 @@ ns:RegisterGuide("Dungeons/Horde/Temple of Ahn'Qiraj", {
 	author = "Lodestar Generator",
 }, [[
 step
+  only Warrior
+  talk Windcaller Yessendra##15498
+  accept Signet of Unyielding Strength##8556 |goto Silithus 52.05,38.16
+step
+  only Priest
+  talk Windcaller Yessendra##15498
+  accept Ring of Infinite Wisdom##8697 |goto Silithus 52.05,38.16
+step
+  only Shaman
+  talk Windcaller Yessendra##15498
+  accept Ring of the Gathering Storm##8698 |goto Silithus 52.05,38.16
+step
+  only Mage
+  talk Windcaller Yessendra##15498
+  accept Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
+step
+  only Druid
+  talk Windcaller Yessendra##15498
+  accept Band of Unending Life##8700 |goto Silithus 52.05,38.16
+step
+  only Rogue
+  talk Windcaller Yessendra##15498
+  accept Band of Veiled Shadows##8701 |goto Silithus 52.05,38.16
+step
+  only Warlock
+  talk Windcaller Yessendra##15498
+  accept Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
+step
+  only Hunter
+  talk Windcaller Yessendra##15498
+  accept Signet of the Unseen Path##8704 |goto Silithus 52.05,38.16
+step
+  only Warrior
+  talk Warden Haro##15499
+  accept Sickle of Unyielding Strength##8558 |goto Silithus 51.14,38.94
+step
+  only Priest
+  talk Warden Haro##15499
+  accept Gavel of Infinite Wisdom##8705 |goto Silithus 51.14,38.94
+step
+  only Shaman
+  talk Warden Haro##15499
+  accept Hammer of the Gathering Storm##8706 |goto Silithus 51.14,38.94
+step
+  only Mage
+  talk Warden Haro##15499
+  accept Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
+step
+  only Druid
+  talk Warden Haro##15499
+  accept Mace of Unending Life##8708 |goto Silithus 51.14,38.94
+step
+  only Rogue
+  talk Warden Haro##15499
+  accept Dagger of Veiled Shadows##8709 |goto Silithus 51.14,38.94
+step
+  only Warlock
+  talk Warden Haro##15499
+  accept Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
+step
+  only Hunter
+  talk Warden Haro##15499
+  accept Scythe of the Unseen Path##8712 |goto Silithus 51.14,38.94
+step
+  only Warrior
+  talk Keyl Swiftclaw##15500
+  accept Drape of Unyielding Strength##8557 |goto Silithus 51.76,39.54
+step
+  only Priest
+  talk Keyl Swiftclaw##15500
+  accept Shroud of Infinite Wisdom##8689 |goto Silithus 51.76,39.54
+step
+  only Shaman
+  talk Keyl Swiftclaw##15500
+  accept Cloak of the Gathering Storm##8690 |goto Silithus 51.76,39.54
+step
+  only Mage
+  talk Keyl Swiftclaw##15500
+  accept Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
+step
+  only Druid
+  talk Keyl Swiftclaw##15500
+  accept Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
+step
+  only Rogue
+  talk Keyl Swiftclaw##15500
+  accept Cloak of Veiled Shadows##8693 |goto Silithus 51.76,39.54
+step
+  only Warlock
+  talk Keyl Swiftclaw##15500
+  accept Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
+step
+  only Hunter
+  talk Keyl Swiftclaw##15500
+  accept Cloak of the Unseen Path##8696 |goto Silithus 51.76,39.54
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  accept The Path of the Protector##8747 |goto Tanaris 65.27,50.03
+step
   talk Kandrostrasz##15503
   accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
   kill Vekniss Soldier##15229 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
   accept Secrets of the Qiraji##8784 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
-  talk Arygos##15380
-  accept Imperial Qiraji Armaments##8789 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  talk Merithra of the Dream##15378
-  accept Imperial Qiraji Regalia##8790 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
   kill C'Thun##15727 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.
   accept C'Thun's Legacy##8801 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  only Warrior
+  note Bring 1 Qiraji Magisterial Ring, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Magisterial Ring##20884 |q 8556 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Priest
+  note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Shaman
+  note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Magisterial Ring##20884 |q 8698 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Mage
+  note Bring 1 Qiraji Magisterial Ring, 2 Azure Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Magisterial Ring##20884 |q 8699 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Druid
+  note Bring 1 Qiraji Magisterial Ring, 2 Alabaster Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Magisterial Ring##20884 |q 8700 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Rogue
+  note Bring 1 Qiraji Ceremonial Ring, 2 Onyx Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8701 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Warlock
+  note Bring 1 Qiraji Ceremonial Ring, 2 Jasper Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8702 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Hunter
+  note Bring 1 Qiraji Ceremonial Ring, 2 Amber Idols, 5 Gold Scarabs and 5 Clay Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8704 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+step
+  only Warrior
+  note Bring 1 Qiraji Spiked Hilt, 2 Alabaster Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Spiked Hilt##20886 |q 8558 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Priest
+  note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Shaman
+  note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Spiked Hilt##20886 |q 8706 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Mage
+  note Bring 1 Qiraji Ornate Hilt, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ornate Hilt##20890 |q 8707 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Druid
+  note Bring 1 Qiraji Ornate Hilt, 2 Jasper Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ornate Hilt##20890 |q 8708 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Rogue
+  note Bring 1 Qiraji Spiked Hilt, 2 Vermillion Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Spiked Hilt##20886 |q 8709 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Warlock
+  note Bring 1 Qiraji Ornate Hilt, 2 Onyx Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Ornate Hilt##20890 |q 8710 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Hunter
+  note Bring 1 Qiraji Spiked Hilt, 2 Azure Idols, 5 Silver Scarabs and 5 Bone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Spiked Hilt##20886 |q 8712 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+step
+  only Warrior
+  note Bring 1 Qiraji Martial Drape, 2 Onyx Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Martial Drape##20885 |q 8557 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
+  only Priest
+  note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
+  only Shaman
+  note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Clay Scarabs and 5 Gold Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Regal Drape##20889 |q 8690 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
+  only Mage
+  note Bring 1 Qiraji Martial Drape, 2 Alabaster Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Martial Drape##20885 |q 8691 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
+  only Druid
+  note Bring 1 Qiraji Regal Drape, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Regal Drape##20889 |q 8692 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
+  only Rogue
+  note Bring 1 Qiraji Martial Drape, 2 Azure Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Martial Drape##20885 |q 8693 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
+  only Warlock
+  note Bring 1 Qiraji Regal Drape, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Regal Drape##20889 |q 8694 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
+  only Hunter
+  note Bring 1 Qiraji Regal Drape, 2 Lambent Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
+  collect 1 Qiraji Regal Drape##20889 |q 8696 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+step
   collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
 step
-  note Arygos in the Temple of Ahn'Qiraj will create Elementium Infused Armaments for you should you bring him Imperial Qiraji Armaments and 3 Elementium Ore.
-  collect Imperial Qiraji Armaments##21232 |q 8789 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash, Emperor Vek'lor, Viscidus
+  only Warrior
+  talk Windcaller Yessendra##15498
+  turnin Signet of Unyielding Strength##8556 |goto Silithus 52.05,38.16
 step
-  note Merithra of the Dream in the Temple of Ahn'Qiraj will create Elementium Infused Armaments for you should you bring her Imperial Qiraji Regalia and 3 Elementium Ore.
-  collect Imperial Qiraji Regalia##21237 |q 8790 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash, Emperor Vek'lor, Viscidus
+  only Priest
+  talk Windcaller Yessendra##15498
+  turnin Ring of Infinite Wisdom##8697 |goto Silithus 52.05,38.16
+step
+  only Shaman
+  talk Windcaller Yessendra##15498
+  turnin Ring of the Gathering Storm##8698 |goto Silithus 52.05,38.16
+step
+  only Mage
+  talk Windcaller Yessendra##15498
+  turnin Band of Vaulted Secrets##8699 |goto Silithus 52.05,38.16
+step
+  only Druid
+  talk Windcaller Yessendra##15498
+  turnin Band of Unending Life##8700 |goto Silithus 52.05,38.16
+step
+  only Rogue
+  talk Windcaller Yessendra##15498
+  turnin Band of Veiled Shadows##8701 |goto Silithus 52.05,38.16
+step
+  only Warlock
+  talk Windcaller Yessendra##15498
+  turnin Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
+step
+  only Hunter
+  talk Windcaller Yessendra##15498
+  turnin Signet of the Unseen Path##8704 |goto Silithus 52.05,38.16
+step
+  only Warrior
+  talk Warden Haro##15499
+  turnin Sickle of Unyielding Strength##8558 |goto Silithus 51.14,38.94
+step
+  only Priest
+  talk Warden Haro##15499
+  turnin Gavel of Infinite Wisdom##8705 |goto Silithus 51.14,38.94
+step
+  only Shaman
+  talk Warden Haro##15499
+  turnin Hammer of the Gathering Storm##8706 |goto Silithus 51.14,38.94
+step
+  only Mage
+  talk Warden Haro##15499
+  turnin Blade of Vaulted Secrets##8707 |goto Silithus 51.14,38.94
+step
+  only Druid
+  talk Warden Haro##15499
+  turnin Mace of Unending Life##8708 |goto Silithus 51.14,38.94
+step
+  only Rogue
+  talk Warden Haro##15499
+  turnin Dagger of Veiled Shadows##8709 |goto Silithus 51.14,38.94
+step
+  only Warlock
+  talk Warden Haro##15499
+  turnin Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
+step
+  only Hunter
+  talk Warden Haro##15499
+  turnin Scythe of the Unseen Path##8712 |goto Silithus 51.14,38.94
+step
+  only Warrior
+  talk Keyl Swiftclaw##15500
+  turnin Drape of Unyielding Strength##8557 |goto Silithus 51.76,39.54
+step
+  only Priest
+  talk Keyl Swiftclaw##15500
+  turnin Shroud of Infinite Wisdom##8689 |goto Silithus 51.76,39.54
+step
+  only Shaman
+  talk Keyl Swiftclaw##15500
+  turnin Cloak of the Gathering Storm##8690 |goto Silithus 51.76,39.54
+step
+  only Mage
+  talk Keyl Swiftclaw##15500
+  turnin Drape of Vaulted Secrets##8691 |goto Silithus 51.76,39.54
+step
+  only Druid
+  talk Keyl Swiftclaw##15500
+  turnin Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
+step
+  only Rogue
+  talk Keyl Swiftclaw##15500
+  turnin Cloak of Veiled Shadows##8693 |goto Silithus 51.76,39.54
+step
+  only Warlock
+  talk Keyl Swiftclaw##15500
+  turnin Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
+step
+  only Hunter
+  talk Keyl Swiftclaw##15500
+  turnin Cloak of the Unseen Path##8696 |goto Silithus 51.76,39.54
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  turnin The Path of the Protector##8747 |goto Tanaris 65.27,50.03
 step
   talk Kandrostrasz##15503
   turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
@@ -35,14 +319,12 @@ step
   talk Andorgos##15502
   turnin Secrets of the Qiraji##8784 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
-  talk Arygos##15380
-  turnin Imperial Qiraji Armaments##8789 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  talk Merithra of the Dream##15378
-  turnin Imperial Qiraji Regalia##8790 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
   talk Caelestrasz##15379
   turnin C'Thun's Legacy##8801 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  accept The Path of the Protector##8748 |goto Tanaris 65.27,50.03
 step
   only Warrior
   talk Andorgos##15502
@@ -210,6 +492,9 @@ step
   talk Caelestrasz##15379
   accept The Savior of Kalimdor##8802 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  collect Signet Ring of the Bronze Dragonflight##21196 |q 8748 |goto Tanaris 65.27,50.03
+step
   only Warrior
   note Bring the Qiraji Bindings of Command, 2 Idols of Night, 5 Stone Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
   collect Qiraji Bindings of Command##20928 |q 8544 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
@@ -371,6 +656,10 @@ step
   only Druid
   note Bring the Qiraji Bindings of Dominance, 2 Idols of Strife, 5 Gold Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
   collect Qiraji Bindings of Dominance##20932 |q 8669 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  turnin The Path of the Protector##8748 |goto Tanaris 65.27,50.03
 step
   only Warrior
   talk Andorgos##15502
@@ -537,4 +826,48 @@ step
 step
   talk Anachronos##15192
   turnin The Savior of Kalimdor##8802 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  accept The Path of the Protector##8749 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  collect Signet Ring of the Bronze Dragonflight##21197 |q 8749 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  turnin The Path of the Protector##8749 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  accept The Path of the Protector##8750 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  collect Signet Ring of the Bronze Dragonflight##21198 |q 8750 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  turnin The Path of the Protector##8750 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  accept The Protector of Kalimdor##8751 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  collect Signet Ring of the Bronze Dragonflight##21199 |q 8751 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  turnin The Protector of Kalimdor##8751 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  accept The Changing of Paths - Protector No More##8764 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  collect Signet Ring of the Bronze Dragonflight##21200 |q 8764 |goto Tanaris 65.27,50.03
+step
+  only not completed(8752) not completed(8757) not haveq(8752) not haveq(8757)
+  talk Anachronos##15192
+  turnin The Changing of Paths - Protector No More##8764 |goto Tanaris 65.27,50.03
 ]])

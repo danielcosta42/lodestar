@@ -6,7 +6,7 @@ ns:RegisterGuide("Attunements/Horde/Onyxia's Lair (Horde)", {
 	author = "Lodestar Generator",
 }, [[
 step
-  talk Warlord Goretooth##9077
+  kill Warlord Goretooth##9077 |goto Badlands 5.81,47.52 |tip Loot the quest item here — it starts the quest.
   accept Warlord's Command##4903 |goto Badlands 5.81,47.52
 step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
@@ -66,29 +66,29 @@ step
   talk Emberstrife##10321
   accept The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
 step
-  talk Emberstrife##10321
-  accept The Test of Skulls, Somnus##6583 |goto Dustwallow Marsh 56.66,87.72
-step
-  talk Emberstrife##10321
-  accept The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
-step
   note You must find the blue dragonflight drake champion, Scryer, and slay him. Pry his skull from his corpse and return it to Emberstrife.
   kill Scryer##10664 |goto Winterspring 52.71,55.89 |elite
   collect The Skull of Scryer##16869 |q 6582 |goto Winterspring 52.71,55.89
-step
-  note Destroy the drake champion of the Green Flight, Somnus. Take his skull and return it to Emberstrife.
-  kill Somnus##12900 |goto Swamp of Sorrows 76,66.6 |elite
-  collect The Skull of Somnus##16870 |q 6583 |goto Swamp of Sorrows 76,66.6
-step
-  note Guarding the Caverns of Time in the Tanaris Desert is Chronalis, child of Nozdormu. Destroy him and return his skull to Emberstrife.
-  kill Chronalis##8197 |goto Tanaris 64.16,48.49 |elite
-  collect The Skull of Chronalis##16871 |q 6584 |goto Tanaris 64.16,48.49
 step
   talk Emberstrife##10321
   turnin The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
 step
   talk Emberstrife##10321
+  accept The Test of Skulls, Somnus##6583 |goto Dustwallow Marsh 56.66,87.72
+step
+  note Destroy the drake champion of the Green Flight, Somnus. Take his skull and return it to Emberstrife.
+  kill Somnus##12900 |goto Swamp of Sorrows 76,66.6 |elite
+  collect The Skull of Somnus##16870 |q 6583 |goto Swamp of Sorrows 76,66.6
+step
+  talk Emberstrife##10321
   turnin The Test of Skulls, Somnus##6583 |goto Dustwallow Marsh 56.66,87.72
+step
+  talk Emberstrife##10321
+  accept The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
+step
+  note Guarding the Caverns of Time in the Tanaris Desert is Chronalis, child of Nozdormu. Destroy him and return his skull to Emberstrife.
+  kill Chronalis##8197 |goto Tanaris 64.16,48.49 |elite
+  collect The Skull of Chronalis##16871 |q 6584 |goto Tanaris 64.16,48.49
 step
   talk Emberstrife##10321
   turnin The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72

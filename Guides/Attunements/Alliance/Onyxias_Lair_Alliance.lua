@@ -10,7 +10,7 @@ step
   accept Dragonkin Menace##4182 |goto Burning Steppes 85.82,68.95
 step
   note Slay 15 Black Broodlings, 10 Black Dragonspawn, 4 Black Wyrmkin and 1 Black Drake. Return to Helendis Riverhorn when the task is complete.
-  kill Black Broodling##7047 |q 4182 |goto Burning Steppes 89.47,35.54
+  kill Black Broodling##7047 |q 4182 |goto Burning Steppes 91.67,35.54
 step
   talk Helendis Riverhorn##9562
   turnin Dragonkin Menace##4182 |goto Burning Steppes 85.82,68.95
