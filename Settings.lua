@@ -168,7 +168,6 @@ local function fillAdvanced(p)
 	switchRow(p, L.SET_DEBUG, L.SET_DEBUG_D,
 		function() return ns.db.debug end, function(v) ns.db.debug = v end)
 	buttonRow(p, L.SET_TDEBUG, L.SET_TDEBUG_D, L.SET_RUN, function() SlashCmdList.LODESTAR("tdebug") end)
-	buttonRow(p, L.SET_CHAINS, L.SET_CHAINS_D, L.SET_RUN, function() SlashCmdList.LODESTAR("chains") end)
 	sliderRow(p, L.SET_MMRANGE, L.SET_MMRANGE_D, 50, 200, 5,
 		function() return (ns.db.minimap.rangeMult or 1) * 100 end,
 		function(v) ns.db.minimap.rangeMult = v / 100 end, "%d%%")

@@ -168,7 +168,6 @@ python tools/import_scan.py                     # opcional: o /ls scan de todos 
 python tools/import_forever.py <pasta do QuestieDB>
 python tools/generate_all.py 60
 python tools/gen_special.py
-python tools/gen_prereq.py
 python tools/gen_zonedata.py
 python tools/gen_trainers.py
 python tools/gen_travel.py                      # voos, barcos, zepelins, bonde, serviços

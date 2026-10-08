@@ -49,8 +49,6 @@ Parser.lua
 # Gerado (tools/gen_forever.py): o que não existe no Forever.
 ForeverData.lua
 Guide.lua
-PrereqData.lua
-Prereq.lua
 Squad.lua
 Gather.lua
 Consumables.lua
@@ -94,6 +92,5 @@ Recorder.lua
 # Coletor do cliente do Forever (dado que nenhum banco público tem).
 ForeverScan.lua
 
-Guides\Sample.lua
 Guides\Leveling\Leveling.xml
 Guides\Special.xml

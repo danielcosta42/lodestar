@@ -60,6 +60,11 @@ end
 -- dailies), não só as listadas. Usa uma SESSÃO por-NPC com janela de tempo: assim
 -- que o passo avança ao aceitar a 1ª quest, a sessão segue pegando as demais no
 -- re-abrir do gossip. Escopo por GUID+tempo evita "vazar" p/ outros NPCs.
+-- a automação só age com o guia aberto: fechar a janela (X) é parar o guia
+local function ativo()
+	return ns.currentGuide ~= nil and ns:UIShown()
+end
+
 local grabNPC, grabUntil
 local function shouldGrab()
 	local npc = npcID()
@@ -85,7 +90,7 @@ end
 -- senão só aceita as quests que o passo pede.
 --------------------------------------------------------------------------------
 ns:On("QUEST_DETAIL", function()
-	if not (ns.db and ns.db.autoAccept and ns.currentGuide) then return end
+	if not (ns.db and ns.db.autoAccept and ativo()) then return end
 	local qid = GetQuestID and GetQuestID()
 	local wanted = stepQuestIDs("accept")
 	local greedy = shouldGrab()
@@ -126,7 +131,7 @@ local function gossipOffered()
 end
 
 local function skipIfUnavailable()
-	if not (ns.db and ns.db.autoSkip and ns.currentGuide) then return end
+	if not (ns.db and ns.db.autoSkip and ativo()) then return end
 	local step = ns:GetStep(); if not step then return end
 	local npc = npcID(); if not (npc and stepTalksTo(step, npc)) then return end
 	local offered, any = gossipOffered()
@@ -139,6 +144,12 @@ local function skipIfUnavailable()
 		end
 	end
 	if pending and blocked then                    -- NPC tem quests, mas nenhuma do passo
+		-- a missão sai do guia: os passos seguintes dela (objetivo, entrega) deixam de valer,
+		-- senão o travamento só mudava de lugar
+		ns.char.dropped = ns.char.dropped or {}
+		for _, g in ipairs(step.goals) do
+			if g.verb == "accept" and g.id and not inLogOrDone(g.id) then ns.char.dropped[g.id] = true end
+		end
 		ns:Print(ns.L.SKIP_UNAVAILABLE)
 		ns:AdvanceStep(1)
 	end
@@ -148,7 +159,7 @@ ns:On("GOSSIP_SHOW", skipIfUnavailable)
 -- NPCs multi-quest usam a janela "greeting": roteia a próxima disponível p/ o
 -- fluxo normal de accept (QUEST_DETAIL auto-aceita se casar com o passo).
 ns:On("QUEST_GREETING", function()
-	if not (ns.db and ns.db.autoAccept and ns.currentGuide) then return end
+	if not (ns.db and ns.db.autoAccept and ativo()) then return end
 	if not shouldGrab() then return end        -- guia te mandou a este NPC (talk/click)
 	-- pega TODAS as quests da janela (uma por vez; a greeting re-abre após aceitar)
 	if GetNumAvailableQuests and SelectAvailableQuest and (GetNumAvailableQuests() or 0) > 0 then
@@ -161,7 +172,7 @@ end)
 --  2) quest disponível que casa com goal `accept` -> pega;
 --  3) quest ativa completa que casa com goal `turnin` -> entrega.
 ns:On("GOSSIP_SHOW", function()
-	if not ns.currentGuide then return end
+	if not ativo() then return end
 	local step = ns:GetStep()
 	if not step then return end
 
@@ -216,14 +227,12 @@ end)
 -- Só entrega automaticamente quando NÃO há recompensa de escolha (evita erro).
 --------------------------------------------------------------------------------
 ns:On("QUEST_PROGRESS", function()
-	if not (ns.db and ns.db.autoTurnin and ns.currentGuide) then return end
+	if not (ns.db and ns.db.autoTurnin and ativo()) then return end
+	-- só a missão que o passo manda entregar, e nunca a que cobra ouro
 	local qid = GetQuestID and GetQuestID()
-	local wanted = stepQuestIDs("turnin")
-	if IsQuestCompletable and IsQuestCompletable() then
-		if not qid or wanted[qid] or next(wanted) then
-			CompleteQuest()
-		end
-	end
+	if not (qid and stepQuestIDs("turnin")[qid]) then return end
+	if GetQuestMoneyToGet and (GetQuestMoneyToGet() or 0) > 0 then return end
+	if IsQuestCompletable and IsQuestCompletable() then CompleteQuest() end
 end)
 
 -- Pontua uma recompensa: equipável usa o peso de classe do GearAdvisor (mais
@@ -248,7 +257,9 @@ local function bestRewardIndex(n)
 end
 
 ns:On("QUEST_COMPLETE", function()
-	if not (ns.db and ns.db.autoTurnin and ns.currentGuide) then return end
+	if not (ns.db and ns.db.autoTurnin and ativo()) then return end
+	local qid = GetQuestID and GetQuestID()
+	if not (qid and stepQuestIDs("turnin")[qid]) then return end     -- a do passo, não outra
 	local n = GetNumQuestChoices and GetNumQuestChoices() or 0
 	-- pcall: entregar com bolsa cheia / item único já equipado lança erro visível
 	if n <= 1 then

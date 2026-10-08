@@ -131,7 +131,7 @@ local function makeCard(i)
 	card.action = UI.Button(card, "", 82, 22)
 	card.action:SetPoint("BOTTOMRIGHT", -10, 9)
 	card.action:SetScript("OnClick", function()
-		if card._key then ns:LoadGuide(card._key); if ns.Viewer then ns.Viewer:Show() end; LB:Hide() end
+		if card._key then ns:LoadGuide(card._key, ns.char.steps[card._key] ~= nil); if ns.Viewer then ns.Viewer:Show() end; LB:Hide() end
 	end)
 
 	card:SetScript("OnEnter", function(self)
@@ -143,7 +143,7 @@ local function makeCard(i)
 		bg:SetColorTexture(UI.unpackc(C.panel))
 	end)
 	card:SetScript("OnClick", function(self)
-		if self._key then ns:LoadGuide(self._key); if ns.Viewer then ns.Viewer:Show() end; LB:Hide() end
+		if self._key then ns:LoadGuide(self._key, ns.char.steps[self._key] ~= nil); if ns.Viewer then ns.Viewer:Show() end; LB:Hide() end
 	end)
 	cards[i] = card
 	return card

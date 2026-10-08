@@ -19,12 +19,21 @@ local function IsQuestInLog(id)
 	if GetQuestLogIndexByID then return (GetQuestLogIndexByID(id) or 0) > 0 end
 	return false
 end
+-- `obj`: aquele objetivo. Sem índice, a quest inteira: o passo cita o 1º alvo e a nota diz o
+-- resto — concluir no 1º avançava o guia com objetivos por fazer.
 local function QuestObjectiveDone(id, obj)
 	local objectives
 	if QuestLog.GetQuestObjectives then objectives = QuestLog.GetQuestObjectives(id) end
 	if not objectives then return false end
-	local o = objectives[obj or 1]
-	return o and o.finished or false
+	if obj then
+		local o = objectives[obj]
+		return o and o.finished or false
+	end
+	if #objectives == 0 then return false end
+	for _, o in ipairs(objectives) do
+		if not o.finished then return false end
+	end
+	return true
 end
 local ItemCount = (C_Item and C_Item.GetItemCount) or GetItemCount or function() return 0 end
 
@@ -204,10 +213,8 @@ end
 -- evita. Então o passo inteiro sai, a menos que sobre algo que se complete
 -- sozinho (um `ding`, um `collect` com conta própria, um `goto` com coordenada).
 --
--- O passo que muda é COPIADO: o array cru fica em guide._baseSteps, de onde o
--- Prereq colhe cadeias para OUTROS guias, e mutar ali tornaria a injeção
--- dependente da ordem em que os guias foram abertos (índices e progresso salvos
--- deixariam de bater entre sessões).
+-- O passo que muda é COPIADO: o array cru fica em guide._baseSteps, intacto —
+-- índices e progresso salvos têm de bater entre sessões.
 --
 -- Roda ANTES da indexação, então _gkey/_step batem com o array devolvido.
 local function stripMissingQuests(steps)
@@ -238,7 +245,9 @@ end
 local function ensureParsed(guide)
 	if guide.steps then return guide.steps end
 	local base = getBaseSteps(guide)
-	local steps = (ns.Prereq and ns.Prereq:InjectChains(guide, base)) or base
+	-- os passos do próprio guia: o gerador já esconde (por condição) o que depende de quest
+	-- de outro guia — injetar a cadeia aqui punha passos impossíveis e travava todo caminho
+	local steps = base
 	steps = stripMissingQuests(steps)
 	guide.steps = steps
 	for si, step in ipairs(steps) do
@@ -286,6 +295,7 @@ function ns:LoadGuide(key, keepProgress, silent)
 	if not wasOpen then table.insert(self.char.openGuides, key) end
 	self.currentGuide = guide
 	self.char.currentGuide = key
+	self.char.hold = nil
 	if keepProgress or wasOpen then
 		self.char.currentStep = self.char.steps[key] or 1   -- retoma (troca de aba/login)
 	else
@@ -366,7 +376,18 @@ end
 --------------------------------------------------------------------------------
 -- Conclusão de goals
 --------------------------------------------------------------------------------
+-- a quest do goal (objetivo `|q` ou entrega)
+local function goalQuest(goal)
+	return goal.q and goal.q.id or (goal.verb == "turnin" and goal.id) or nil
+end
+
 function ns:IsGoalActive(goal)
+	-- missão descartada (o NPC não a oferecia): seus passos seguintes não valem mais, a não
+	-- ser que ela esteja no diário
+	local q = goalQuest(goal)
+	if q and self.char and self.char.dropped and self.char.dropped[q] and not IsQuestInLog(q) then
+		return false
+	end
 	return self:EvalCondition(goal.only)
 end
 
@@ -449,10 +470,15 @@ function ns:AdvanceStep(delta)
 			return self:ChainGuide(guide.key, nxt)
 		end
 		idx = #guide.steps
-		self:Print("|cff88ff88" .. ns.L.GUIDE_DONE .. "|r")
+		if not guide._doneShown then                -- uma vez: todo evento passa por aqui de novo
+			guide._doneShown = true
+			self:Print("|cff88ff88" .. ns.L.GUIDE_DONE .. "|r")
+		end
 	end
 	self.char.currentStep = idx
 	self.char.steps[guide.key] = idx        -- persiste o passo por-guia (p/ trocar/logar)
+	-- voltar à mão segura o passo: o próximo evento não o pula de novo (até avançar à mão)
+	self.char.hold = delta < 0 and idx or nil
 	if self.Viewer then self.Viewer:Refresh() end
 	if self.Waypoint then self.Waypoint:Update() end
 end
@@ -476,6 +502,7 @@ function ns:CheckProgress()
 		if self.currentGuide ~= guide then break end   -- encadeou p/ outro guia
 		local step = self:GetStep()
 		if not step then break end
+		if self.char.hold == self.char.currentStep then break end   -- o jogador voltou aqui à mão
 		if self:IsStepActive(step) and not self:IsStepComplete(step) then break end
 		local before = self.char.currentStep
 		self:AdvanceStep(1)

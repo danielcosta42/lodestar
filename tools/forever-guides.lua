@@ -317,6 +317,63 @@ for key in pairs(lib.guides) do
 end
 check(zephras.Alliance and zephras.Horde, "Zephras Isle tem guia nas duas facções")
 
+-- ── revisão geral: motor de guias ───────────────────────────────────────────
+-- missão com vários objetivos só conclui com todos (o passo cita o 1º alvo, a nota diz tudo)
+C_QuestLog.GetQuestObjectives = function() return { { finished = true }, { finished = false } } end
+check(not fe:IsGoalComplete({ verb = "kill", q = { id = 263 }, _gkey = "o1" }), "dois objetivos, só o 1º feito: não conclui")
+check(fe:IsGoalComplete({ verb = "kill", q = { id = 263, obj = 1 }, _gkey = "o2" }), "com o índice do objetivo: aquele basta")
+C_QuestLog.GetQuestObjectives = function() return { { finished = true }, { finished = true } } end
+check(fe:IsGoalComplete({ verb = "kill", q = { id = 263 }, _gkey = "o3" }), "todos os objetivos feitos: conclui")
+C_QuestLog.GetQuestObjectives = nil
+-- carregar o guia não injeta passos de outros guias (o gerador já esconde por condição)
+local inj = load_addon(16001)
+inj.Prereq = { InjectChains = function() error("injetou passos") end }
+inj:RegisterGuide("Leveling/Alliance/Teste (1-2)", { faction = "Alliance" }, [[
+step
+  note a
+step
+  note b
+]])
+local okInj, passos = pcall(inj.ensureParsed, inj.guides["Leveling/Alliance/Teste (1-2)"])
+check(okInj and #passos == 2, "carregar o guia não injeta pré-requisitos")
+-- "Guia concluído!" uma vez só, num guia sem next
+local fim = load_addon(16001)
+local avisos = 0
+fim.Print = function() avisos = avisos + 1 end
+fim:RegisterGuide("Leveling/Alliance/Fim (1-2)", { faction = "Alliance" }, [[
+step
+  ding 1
+]])
+fim.currentGuide = fim.guides["Leveling/Alliance/Fim (1-2)"]
+fim.ensureParsed(fim.currentGuide)
+fim.char.currentStep = 1
+for _ = 1, 5 do fim:CheckProgress() end
+check(avisos == 1, "guia concluído avisado uma vez (" .. avisos .. ")")
+-- "< Voltar" fica: o passo voltado à mão não é pulado pelo próximo evento
+local volta = load_addon(16001)
+volta:RegisterGuide("Leveling/Alliance/Volta (1-3)", { faction = "Alliance" }, [[
+step
+  ding 1
+step
+  note b
+]])
+volta.currentGuide = volta.guides["Leveling/Alliance/Volta (1-3)"]
+volta.ensureParsed(volta.currentGuide)
+volta.char.currentStep = 2
+volta:AdvanceStep(-1)
+volta:CheckProgress()
+check(volta.char.currentStep == 1, "voltou à mão: o próximo evento não o desfaz")
+volta:AdvanceStep(1)
+check(volta.char.currentStep == 2, "avançar à mão segue normal")
+
+-- missão descartada (o NPC não a oferecia e o passo foi pulado): seus passos seguintes não
+-- valem mais — senão o travamento só mudava de lugar
+fe.char.dropped = { [777] = true }
+check(not fe:IsGoalActive({ verb = "kill", q = { id = 777 } }), "objetivo de missão descartada não vale")
+check(not fe:IsGoalActive({ verb = "turnin", id = 777 }), "entrega de missão descartada não vale")
+check(fe:IsGoalActive({ verb = "kill", q = { id = 778 } }), "as outras seguem valendo")
+fe.char.dropped = nil
+
 -- ── identidade de unidade / Secret Values ───────────────────────────────────
 issecretvalue = function(v) return v == "SECRETO" end
 check(fe.NpcID("Creature-0-4467-0-25-6-000019B300") == 6, "GUID de criatura dá o id")

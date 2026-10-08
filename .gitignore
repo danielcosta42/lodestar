@@ -20,7 +20,6 @@ tools/*
 !tools/router.py
 !tools/generate_all.py
 !tools/gen_special.py
-!tools/gen_prereq.py
 !tools/gen_zonedata.py
 !tools/gen_trainers.py
 !tools/gen_travel.py

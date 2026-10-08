@@ -290,7 +290,7 @@ local function build()
 	frame.travel:Hide()
 
 	-- (Pré-requisitos não têm mais banner: a cadeia que falta é injetada inline
-	--  como passos nativos — ver Prereq.lua / ns.Prereq:InjectChains.)
+	--  como passos nativos.)
 
 	-- Banner de GRUPO: passo atual tem inimigo elite/chefe -> recomenda grupo/raide
 	-- e oferece "Procurar grupo" (gancho pro PartyLens; fallback: buscador nativo).
@@ -495,8 +495,6 @@ function V:Refresh()
 	local w = frame.content:GetWidth()
 	if w <= 0 then w = (ns.db.viewer.width or 340) - 40 end
 
-	-- Pré-requisitos: sem banner. A cadeia que falta já foi injetada inline como
-	-- passos nativos no parse (Prereq.lua), então nada a desenhar aqui.
 
 	-- Banner de GRUPO: o passo atual tem um objetivo elite/chefe ainda não feito?
 	local needRaid, needGroup = false, false
