@@ -103,7 +103,7 @@ ns:Every(0.1, function()
 end)
 
 -- Shift+clique no minimapa: destino manual ali (cursor -> jardas -> mundo); em cima do
--- atual, limpa. Sem Shift, o clique segue para o original (ping).
+-- atual, limpa.
 local function shiftClick()
 	local p = ns.Travel.PlayerWorld()
 	local map = C_Map.GetBestMapForUnit("player")
@@ -131,19 +131,16 @@ local function shiftClick()
 	return true
 end
 
--- no login, para embrulhar o que outro addon de minimapa já tenha posto
-ns:On("PLAYER_LOGIN", function()
-	if not Minimap then return end
-	local orig = Minimap:GetScript("OnMouseUp")
-	Minimap:SetScript("OnMouseUp", function(self, button, ...)
+-- gancho, não troca o script: os outros addons de minimapa seguem funcionando (o clique
+-- com Shift também faz o ping do jogo)
+if Minimap then
+	Minimap:HookScript("OnMouseUp", function(_, button)
 		if button == "LeftButton" and IsShiftKeyDown and IsShiftKeyDown() then
-			local ok, done = pcall(shiftClick)
-			if not ok then ns:Debug("RouteMinimap click:", done) end
-			if ok and done then return end
+			local ok, err = pcall(shiftClick)
+			if not ok then ns:Debug("RouteMinimap click:", err) end
 		end
-		if orig then return orig(self, button, ...) end
 	end)
-end)
+end
 
 --------------------------------------------------------------------------------
 -- diagnóstico ( /ls tdebug )
