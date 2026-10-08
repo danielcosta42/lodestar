@@ -1,223 +1,130 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/The Hinterlands (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Feralas (44-50)",
+	next = "Leveling/Alliance/Searing Gorge (48-50)",
 }, [[
+step
+  only completed(1448)
+  talk Brohann Caskbelly##5384
+  accept To The Hinterlands##1449 |goto Stormwind City 69.45,40.4
 step
   note {fp}Guthrum Thunderfist
   goto The Hinterlands 11.07,46.15 |tip {vendor}
 step
+  only completed(1448)
+  talk Falstad Wildhammer##5635
+  turnin To The Hinterlands##1449 |goto The Hinterlands 11.81,46.76
+step
+  only completed(1448)
   talk Falstad Wildhammer##5635
   accept Gryphon Master Talonaxe##1450 |goto The Hinterlands 11.81,46.76
-step
-  talk Ursyn Ghull##3048
-  accept Tabetha's Task##2861 |goto Thunder Bluff 25.7,14.19
-step
-  talk Fraggar Thundermantle##7884
-  accept Skulk Rock Clean-up##2877 |goto The Hinterlands 14.83,44.57
 step
   talk Fraggar Thundermantle##7884
   accept Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
 step
-  note Bring 5 Troll Tribal Necklaces to Fraggar Thundermantle in Aerie Peak.
-  collect 5 Troll Tribal Necklace##9259 |q 2880 |goto The Hinterlands 46.28,65.38 |tip {dropsfrom}Vilebranch Axe Thrower, Vilebranch Witch Doctor, Vilebranch Headhunter
-step
   talk Gryphon Master Talonaxe##5636
   accept Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
 step
+  only completed(1448)
   talk Gryphon Master Talonaxe##5636
-  accept Saving Sharpbeak##2994 |goto The Hinterlands 9.75,44.47
+  turnin Gryphon Master Talonaxe##1450 |goto The Hinterlands 9.75,44.47
 step
-  talk Agnar Beastamer##9660
-  accept Food for Baby##4297 |goto The Hinterlands 14.16,43.62
+  only completed(1448)
+  talk Gryphon Master Talonaxe##5636
+  accept Rhapsody Shindigger##1451 |goto The Hinterlands 9.75,44.47
 step
-  note Bring 5 Silvermane Stalker Flanks to Agnar Beastamer in Hinterlands.
-  collect 5 Silvermane Stalker Flank##11472 |q 4297 |goto The Hinterlands 66.75,53.46 |tip {dropsfrom}Silvermane Stalker
+  only completed(1448)
+  talk Rhapsody Shindigger##5634
+  turnin Rhapsody Shindigger##1451 |goto The Hinterlands 26.94,48.59
 step
-  talk Ambassador Rualeth##17223
-  accept Featherbeard's Endorsement##9469 |goto The Hinterlands 15.11,47.21
-step
-  talk Ambassador Rualeth##17223
-  accept A Gesture of Goodwill##9470 |goto The Hinterlands 15.11,47.21
-step
-  talk Ambassador Rualeth##17223
-  accept Preying on the Predators##9471 |goto The Hinterlands 15.11,47.21
+  note Bring 5 Troll Tribal Necklaces to Fraggar Thundermantle in Aerie Peak.
+  collect 5 Troll Tribal Necklace##9259 |q 2880 |goto The Hinterlands 46.28,66.93 |tip {dropsfrom}Vilebranch Axe Thrower, Vilebranch Witch Doctor, Vilebranch Headhunter
 step
   note Check the cages at the two Witherbark villages, then return to Gryphon Master Talonaxe.
   collect First Witherbark Cage##144066 |q 2988 |goto The Hinterlands 23.28,58.81
 step
-  note Ambassador Rualeth at Aerie Peak wants you to kill 10 Mangy Silvermane and 5 Silvermane Wolves.
-  kill Mangy Silvermane##2923 |q 9471 |goto The Hinterlands 19.68,52.34
-step
-  talk Tabetha##6546
-  turnin Tabetha's Task##2861 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
-step
-  kill Saltwater Snapjaw##2505 |goto The Hinterlands 81.48,60.4 |tip Loot the quest item here — it starts the quest.
-  accept Find OOX-09/HL!##485 |goto The Hinterlands 81.48,60.4
-step
-  talk Klockmort Spannerspan##6169
-  accept The Brassbolts Brothers##2769 |goto Ironforge 67.92,46.1
-step
-  talk Springspindle Fizzlegear##5174
-  accept Gnome Engineering##3632 |goto Ironforge 68.46,43.54
-step
-  talk Elder Highpeak##15559
-  accept Highpeak the Elder##8643 |goto The Hinterlands 50.0,48.05
-step
-  note Fight to the top of Jintha'Alor, kill Vile Priestess Hexx for the key to Sharpbeak's cage, and save Sharpbeak.
-  collect Sharpbeak's Cage##144070 |q 2994 |goto The Hinterlands 53.38,67.11
-step
-  note Kill 10 Green Sludges and 10 Jade Oozes, and then report back to Fraggar Thundermantle in Aerie Peak.
-  kill Green Sludge##2655 |q 2877 |goto The Hinterlands 49.47,43.04
-step
-  talk Homing Robot OOX-09/HL##7806
-  turnin Find OOX-09/HL!##485 |goto The Hinterlands 49.35,37.66
-step
-  talk High Explorer Magellas##5387
-  accept The Platinum Discs##2439 |goto Ironforge 69.93,18.55
-step
-  talk Curator Thorius##8256
-  accept Dwarven Justice##3371 |goto Ironforge 71.5,15.74
-step
-  talk Lilliam Sparkspindle##5518
-  accept Gnome Engineering##3630 |goto Stormwind City 54.81,7.6
-step
-  talk Lilliam Sparkspindle##5518
-  accept Goblin Engineering##4181 |goto Stormwind City 54.81,7.6
-step
-  talk Atal'ai Exile##5598
-  accept Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
-step
-  note The Atal'ai Exile in The Hinterlands wants the Head of Jammal'an.
-  collect Head of Jammal'an##6212 |q 1446 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Jammal'an the Prophet
-step
-  note Ambassador Rualeth at Aerie Peak wants you to slay Witch Doctor Mai'jin and his pet spider Tcha'kaz.
-  kill Witch Doctor Mai'jin##17235 |q 9470 |goto The Hinterlands 24.63,65.58
-step
-  talk Gryphon Master Talonaxe##5636
-  turnin Gryphon Master Talonaxe##1450 |goto The Hinterlands 9.75,44.47
+  talk Fraggar Thundermantle##7884
+  turnin Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
 step
   talk Gryphon Master Talonaxe##5636
   turnin Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
 step
+  only completed(3843)
+  talk Agnar Beastamer##9660
+  accept Food for Baby##4297 |goto The Hinterlands 14.16,43.62
+step
+  only completed(3843)
+  note Bring 5 Silvermane Stalker Flanks to Agnar Beastamer in Hinterlands.
+  collect 5 Silvermane Stalker Flank##11472 |q 4297 |goto The Hinterlands 68,52.86 |tip {dropsfrom}Silvermane Stalker
+step
+  only completed(3843)
+  talk Agnar Beastamer##9660
+  turnin Food for Baby##4297 |goto The Hinterlands 14.16,43.62
+step
+  only completed(2279)
+  talk High Explorer Magellas##5387
+  accept The Platinum Discs##2439 |goto Ironforge 69.93,18.55
+step
+  kill Saltwater Snapjaw##2505 |goto The Hinterlands 81.48,60.46 |tip Loot the quest item here — it starts the quest.
+  accept Find OOX-09/HL!##485 |goto The Hinterlands 81.48,60.46
+step
+  talk Fraggar Thundermantle##7884
+  accept Skulk Rock Clean-up##2877 |goto The Hinterlands 14.83,44.57
+step
+  only completed(2993)
   talk Gryphon Master Talonaxe##5636
-  turnin Saving Sharpbeak##2994 |goto The Hinterlands 9.75,44.47
+  accept Saving Sharpbeak##2994 |goto The Hinterlands 9.75,44.47
+step
+  note Kill 10 Green Sludges and 10 Jade Oozes, and then report back to Fraggar Thundermantle in Aerie Peak.
+  kill Green Sludge##2655 |q 2877 |goto The Hinterlands 47.98,42.25
+step
+  only completed(2993)
+  note Fight to the top of Jintha'Alor, kill Vile Priestess Hexx for the key to Sharpbeak's cage, and save Sharpbeak.
+  collect Sharpbeak's Cage##144070 |q 2994 |goto The Hinterlands 53.38,67.11
+step
+  only completed(2279)
+  talk Dinita Stonemantle##7292
+  turnin The Platinum Discs##2439 |goto Ironforge 33.88,59.15 |tip {turninat}Ironforge
+step
+  talk Homing Robot OOX-09/HL##7806
+  turnin Find OOX-09/HL!##485 |goto The Hinterlands 49.35,37.66
 step
   talk Fraggar Thundermantle##7884
   turnin Skulk Rock Clean-up##2877 |goto The Hinterlands 14.83,44.57
 step
-  talk Fraggar Thundermantle##7884
-  turnin Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
-step
-  talk Agnar Beastamer##9660
-  turnin Food for Baby##4297 |goto The Hinterlands 14.16,43.62
-step
-  turnin Featherbeard's Endorsement##9469 |goto The Hinterlands 13.44,55.25
-step
-  talk Ambassador Rualeth##17223
-  turnin A Gesture of Goodwill##9470 |goto The Hinterlands 15.11,47.21
-step
-  talk Ambassador Rualeth##17223
-  turnin Preying on the Predators##9471 |goto The Hinterlands 15.11,47.21
-step
+  only completed(2993)
   talk Gryphon Master Talonaxe##5636
-  accept Rhapsody Shindigger##1451 |goto The Hinterlands 9.75,44.47
+  turnin Saving Sharpbeak##2994 |goto The Hinterlands 9.75,44.47
+step
+  talk Homing Robot OOX-09/HL##7806
+  accept Rescue OOX-09/HL!##836 |goto The Hinterlands 49.35,37.66
 step
   talk Gryphon Master Talonaxe##5636
   accept The Altar of Zul##2989 |goto The Hinterlands 9.75,44.47
 step
+  only completed(3843)
   talk Agnar Beastamer##9660
   accept Becoming a Parent##4298 |goto The Hinterlands 14.16,43.62
 step
-  click Featherbeard's Journal##181649
-  accept In Pursuit of Featherbeard##9476 |goto The Hinterlands 13.44,55.25
-step
-  talk Dinita Stonemantle##7292
-  turnin The Platinum Discs##2439 |goto Ironforge 33.88,59.15 |tip {turninat}Ironforge
-step
-  talk Rhapsody Shindigger##5634
-  turnin Rhapsody Shindigger##1451 |goto The Hinterlands 26.94,48.59
-step
-  talk Rhapsody Shindigger##5634
-  accept Rhapsody's Kalimdor Kocktail##1452 |goto The Hinterlands 26.94,48.59
-step
-  note Rhapsody Shindigger in The Hinterlands wants you to bring him 3 Roc Gizzards, 3 Groddoc Livers and 3 Ironfur Livers.
-  collect Roc Gizzard##6257 |q 1452 |goto Tanaris 49.31,33.06 |tip {dropsfrom}Roc, Fire Roc, Searing Roc
-step
-  talk Tinkmaster Overspark##7944
-  turnin Gnome Engineering##3630 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
-step
-  talk Tinkmaster Overspark##7944
-  turnin Gnome Engineering##3632 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
-step
-  talk Elder Highpeak##15559
-  turnin Highpeak the Elder##8643 |goto The Hinterlands 50.0,48.05
-step
-  talk Wizzle Brassbolts##4453
-  turnin The Brassbolts Brothers##2769 |goto Thousand Needles 78.14,77.12 |tip {turninat}Thousand Needles
-step
-  talk Tinkmaster Overspark##7944
-  accept The Pledge of Secrecy##3640 |goto Ironforge 69.55,50.33
-step
-  note If you agree to become a Gnome Engineer, then right-click on the Pledge of Secrecy and speak once more with Tinkmaster Overspark in Ironforge.
-  collect Overspark's Signed Pledge##11283 |q 3640 |goto Ironforge 69.55,50.33
-step
-  talk Dying Archaeologist##8417
-  turnin Dwarven Justice##3371 |goto Searing Gorge 41.14,25.56 |tip {turninat}Searing Gorge
-step
-  talk Nixx Sprocketspring##8126
-  turnin Goblin Engineering##4181 |goto Tanaris 52.48,27.33 |tip {turninat}Tanaris
-step
-  turnin In Pursuit of Featherbeard##9476 |goto The Hinterlands 37.15,71.55
-step
-  talk Atal'ai Exile##5598
-  turnin Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
-step
-  click Featherbeard's Remains##181643
-  accept Reclaiming the Eggs##9475 |goto The Hinterlands 37.15,71.55
-step
-  note Gather 5 Gryphon Eggs and return them to Ambassador Rualeth at Aerie Peak.
-  collect 5 Gryphon Egg##23694 |q 9475 |goto The Hinterlands 34.18,71.17
-step
-  talk Ambassador Rualeth##17223
-  turnin Reclaiming the Eggs##9475 |goto The Hinterlands 15.11,47.21
+  talk Oglethorpe Obnoticus##7406
+  turnin Rescue OOX-09/HL!##836 |goto Stranglethorn Vale 28.36,76.35 |tip {turninat}Stranglethorn Vale
 step
   talk Gryphon Master Talonaxe##5636
   turnin The Altar of Zul##2989 |goto The Hinterlands 9.75,44.47
 step
+  only completed(3843)
   talk Agnar Beastamer##9660
   turnin Becoming a Parent##4298 |goto The Hinterlands 14.16,43.62
 step
   talk Gryphon Master Talonaxe##5636
   accept Thadius Grimshade##2990 |goto The Hinterlands 9.75,44.47
 step
-  talk Rhapsody Shindigger##5634
-  turnin Rhapsody's Kalimdor Kocktail##1452 |goto The Hinterlands 26.94,48.59
-step
-  talk Rhapsody Shindigger##5634
-  accept Rhapsody's Tale##1469 |goto The Hinterlands 26.94,48.59
-step
-  talk Tinkmaster Overspark##7944
-  turnin The Pledge of Secrecy##3640 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
-step
-  talk Tinkmaster Overspark##7944
-  accept Show Your Work##3641 |goto Ironforge 69.55,50.33
-step
-  note Bring 6 Mithril Tubes, an Accurate Scope, and 2 Advanced Target Dummies to Tinkmaster Overspark in Ironforge.
-  collect 6 Mithril Tube##10559 |q 3641 |goto Ironforge 69.55,50.33
-step
   talk Thadius Grimshade##8022
   turnin Thadius Grimshade##2990 |goto Blasted Lands 66.9,19.47 |tip {turninat}Blasted Lands
 step
-  talk Brohann Caskbelly##5384
-  turnin Rhapsody's Tale##1469 |goto Stormwind City 64.33,20.63 |tip {turninat}Stormwind City
-step
-  talk Tinkmaster Overspark##7944
-  turnin Show Your Work##3641 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
-step
-  note {travel}Feralas
-  goto Feralas 89.64,46.57
+  note {travel}Searing Gorge
+  goto Searing Gorge 40.58,49.48
 ]])

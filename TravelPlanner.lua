@@ -132,6 +132,8 @@ local function mapContinent(uiMapID)
 	end
 	return nil
 end
+function TP:ZoneContinent(eng) return CONTINENT[eng] end
+
 function TP:PlayerContinent()
 	local m = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
 	return m and mapContinent(m) or nil

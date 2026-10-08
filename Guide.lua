@@ -31,9 +31,9 @@ local ItemCount = (C_Item and C_Item.GetItemCount) or GetItemCount or function()
 --------------------------------------------------------------------------------
 -- Conteúdo que este cliente não tem (ForeverData.lua, gerado pelo gen_forever.py)
 --
--- No Forever não existe Outland nem as zonas iniciais de blood elf/draenei, e
--- nas rotas que seguem valendo ainda sobram quests que aquele cliente não tem.
--- Guia sem conteúdo some da biblioteca; quest que sumiu vira passo pulado.
+-- Os guias saem do banco do Forever, então isto é rede de segurança: quest que
+-- um guia cite e este cliente não tenha vira passo pulado, e guia que fique
+-- sem passo nenhum não abre.
 --------------------------------------------------------------------------------
 local goneQuest = ns.foreverGoneQuests
 
@@ -60,6 +60,11 @@ local RACE_ALIAS = { UNDEAD = "SCOURGE" }  -- fala comum -> token da API
 local function playerClass() return (select(2, UnitClass("player"))) end
 local function playerRace()  return (select(2, UnitRace("player")))  end
 
+-- Skyborne (Forever) são duas raças, 95 na Aliança e 96 na Horda. O token em
+-- inglês ainda não é público, então a raça é reconhecida pelo id.
+local SKYBORNE = { [95] = true, [96] = true }
+local function isSkyborne() return SKYBORNE[select(3, UnitRace("player"))] or false end
+
 -- Avalia um token único. Retorna true/false.
 local function evalToken(tok)
 	local raw = tok
@@ -71,7 +76,11 @@ local function evalToken(tok)
 	local fn, arg = tok:match("^(%a+)%(([^)]*)%)$")   -- ex: completed(783)
 	if fn then
 		fn = fn:lower()
-		if fn == "completed" then result = IsQuestComplete(tonumber(arg))
+		if fn == "completed" then   -- completed(a,b): qualquer uma (preSingle do banco)
+			result = false
+			for id in arg:gmatch("%d+") do
+				if IsQuestComplete(tonumber(id)) then result = true; break end
+			end
 		elseif fn == "haveq" then result = IsQuestInLog(tonumber(arg))
 		elseif fn == "hasitem" then
 			local id, n = arg:match("^(%d+),?(%d*)$")
@@ -96,6 +105,8 @@ local function evalToken(tok)
 		result = (UnitFactionGroup("player") or ""):upper() == U
 	elseif CLASSES[U] then
 		result = playerClass() == U
+	elseif U == "SKYBORNE" then
+		result = isSkyborne()
 	elseif RACES[U] or RACE_ALIAS[U] then
 		result = playerRace():upper() == (RACE_ALIAS[U] or U)
 	else
@@ -482,17 +493,25 @@ local RACE_START = {
 	SCOURGE = "Tirisfal Glades", BLOODELF = "Eversong Woods",
 }
 
+-- A ilha da raça nova (Forever): a cadeia de leveling não passa por ela, e o
+-- autopilot só a oferece a Skyborne ou a quem já está lá.
+local SKYBORNE_START = "Zephras Isle"
+
 local function findStartGuide()
 	local race = (select(2, UnitRace("player")) or ""):upper()
-	local zone = RACE_START[race]
+	local zone = isSkyborne() and SKYBORNE_START or RACE_START[race]
 	if not zone then return nil end
 	local pf = UnitFactionGroup("player")
+	-- a zona pode ter duas faixas (Teldrassil 4-10 e 48-55): começa pela mais baixa
+	local best, bestLo
 	for key, g in pairs(ns.guides) do
 		if key:sub(1, 9) == "Leveling/" and key:find(zone, 1, true)
 			and (not g.meta.faction or g.meta.faction == pf) then
-			return key
+			local lo = tonumber(key:match("%((%d+)%s*%-")) or 0
+			if not bestLo or lo < bestLo then best, bestLo = key, lo end
 		end
 	end
+	return best
 end
 
 -- AUTOPILOT: melhor guia de leveling p/ QUALQUER nível — faixa (lo-hi) que contém
@@ -505,20 +524,34 @@ function ns:BestGuideForPlayer()
 	if m and ns.zoneUiMap then
 		for name, id in pairs(ns.zoneUiMap) do if id == m then curEng = name; break end end
 	end
+	local ilha = isSkyborne() or curEng == SKYBORNE_START
+	local TP = self.TravelPlanner
+	local curCont = TP and TP.PlayerContinent and TP:PlayerContinent()
 	local best, bestScore
 	for key, g in pairs(self.guides) do
-		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf) then
+		if key:sub(1, 9) == "Leveling/" and (not g.meta.faction or g.meta.faction == pf)
+			and (ilha or not key:find(SKYBORNE_START, 1, true)) then
 			local lo, hi = key:match("%((%d+)%s*%-%s*(%d+)%)")
 			lo, hi = tonumber(lo), tonumber(hi)
 			if lo and hi then
-				local score = (lvl >= lo and lvl <= hi) and 0
-					or math.min(math.abs(lvl - lo), math.abs(lvl - hi))
-				score = score * 2
-				if curEng and (key:match("[^/]+$") or ""):find(curEng, 1, true) then
-					score = score - 5                -- zona atual bate: forte preferência
+				-- o nível manda: guia já passado pesa mais que o que ainda vem (o que
+				-- sobra nele é cinza — no 11, o Elwynn 3-10 abria numa quest nível 5)
+				local score = (lvl < lo and (lo - lvl) * 2) or (lvl > hi and (lvl - hi) * 3) or 0
+				local zone = key:match("^Leveling/[^/]+/(.-) %(")
+				local cont = TP and TP.ZoneContinent and TP:ZoneContinent(zone)
+				if curCont and cont and cont ~= curCont then
+					score = score + 4                -- outro continente: é viagem
 				end
-				score = score + lo / 1000            -- desempate estável (banda mais cedo)
-				if not bestScore or score < bestScore then bestScore, best = score, key end
+				if curEng and zone == curEng then
+					score = score - 1.5              -- zona atual: só desempata
+				end
+				-- desempate: a faixa em que o nível fica mais no meio (uma 34-60 de
+				-- dez quests não pode ganhar de uma 48-52 no nível 50); no empate
+				-- exato, a chave — a ordem do pairs muda a cada carga
+				score = score + math.abs(lvl - (lo + hi) / 2) / 100
+				if not bestScore or score < bestScore or (score == bestScore and key < best) then
+					bestScore, best = score, key
+				end
 			end
 		end
 	end
@@ -544,7 +577,12 @@ ns:On("_READY", function()
 	local key = char.currentGuide
 	if not (key and ns.guides[key]) then key = char.openGuides[1] end
 	if key and ns.guides[key] then
-		ns:LoadGuide(key, true)   -- mantém o step salvo
+		-- aba de leveling que o nível já passou (logou no 11 com Tirisfal 5-10 ativo,
+		-- e a primeira coisa sugerida era uma quest cinza de Deathknell): abre o guia
+		-- recomendado; a antiga fica na aba
+		local hi = key:sub(1, 9) == "Leveling/" and tonumber(key:match("%-%s*(%d+)%)$"))
+		local best = hi and (UnitLevel("player") or 0) > hi and ns:BestGuideForPlayer()
+		ns:LoadGuide(best and best ~= key and best or key, true)   -- mantém o step salvo
 		return
 	end
 	-- AUTOPILOT: char novo usa a zona-inicial da raça; qualquer outro nível usa o

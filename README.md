@@ -9,9 +9,10 @@ Install it, log in, and Lodestar automatically loads the best guide for your lev
 ### Why this addon exists
 
 Forever keeps its quest text, objectives and coordinates **on the server** — the client ships
-6,600 bare quest IDs and nothing else. No amount of datamining will produce a guide for the new
-zones. The only way anyone gets that data is by **being there**, so Lodestar collects it while you
-play and gives it back, open.
+bare quest IDs and nothing else. Lodestar's routes are generated from the open **QuestieDB**
+(Forever flavor), which now carries Forever's own content — the new Skyborne starting zone,
+Zephras Isle, included. For what no database has yet, the only way to get it is by **being there**,
+so Lodestar collects it while you play and gives it back, open.
 
 See [docs/forever.md](docs/forever.md) for the measurements and what is still open.
 
@@ -37,7 +38,7 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - Death counter and a shareable end-of-run **Report Card** (with "ghost racing").
 
 ### ⭐ Quest collection — `/ls scan`
-Forever's new content is not in any public database, so Lodestar harvests it as you play: who gives
+Part of Forever's new content is not in any public database yet, so Lodestar harvests it as you play: who gives
 and who ends each quest, with NPC ID and coordinates, the objectives, and the waypoint the server
 itself points at. It goes to `LodestarDB.scan`, and `tools/` turns it into routes.
 
@@ -56,7 +57,7 @@ what it always was: a file you hand over on purpose.
 ## Getting started
 
 - `/ls` (or the minimap button) opens/closes the guide window.
-- `/ls menu` browses the full library — leveling, dungeons, reputation, dailies and events.
+- `/ls menu` browses the full library — leveling, dungeons, class quests, reputation and events.
 - `/ls config` opens the settings.
 
 ### Slash commands
@@ -78,8 +79,8 @@ what it always was: a file you hand over on purpose.
 
 ## Credits & license
 
-- The vanilla-era routes are derived from the open **[Questie](https://github.com/Questie/Questie)**
-  database plus community curation. Forever's own content is collected in-game (see `/ls scan`).
+- Routes are generated from the open **[QuestieDB](https://github.com/Questie/QuestieDB)** (Forever
+  flavor) by the Questie team, plus what `/ls scan` collects in-game for content no database has yet.
 - No data is scraped from any site: Wowhead's terms allow browsers only, and we intend this data
   to be reusable by anyone.
 - Code: **MIT**. Bug reports and pull requests welcome on [GitHub](https://github.com/danielcosta42/lodestar).

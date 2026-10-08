@@ -1,82 +1,113 @@
-"""Funde o que se colheu do Forever no formato que o roteador já consome.
+"""Monta o banco do Forever no formato que o roteador já consome.
 
 Entrada:
-  build/{quests,npcs,objects,zones}.json   base atual (Questie, vanilla/TBC)
-  build/scan.json                          o cliente do Forever (import_scan.py)
+  QuestieDB_Forever.toc            a base: quests, NPCs, objetos, itens e zonas do
+                                   Forever, coordenada já neste cliente (questiedb.py)
+  build/scan.json                  o que o cliente do Forever respondeu em jogo
+                                   (import_scan.py) — só preenche lacuna da base
+  build/QuestV2-<build>.csv        ids de quest dos dois clientes (wago.tools)
 
 NAO consome dado raspado. A ToU da Fanbyte (rodape da Wowhead) so permite
 navegador, e o robots.txt deles bloqueia coletor automatico por nome — dataset
-que a gente quer que os outros reusem nao pode nascer daquilo. O que o servidor
-responde ao nosso proprio cliente, e o que ele escreve em Cache/WDB, e limpo.
+que a gente quer que os outros reusem nao pode nascer daquilo. O QuestieDB é
+GPL e aberto; o que o servidor responde ao nosso próprio cliente é nosso.
 
-Saída: build/forever/{quests,npcs,objects,zones,items}.json — a mesma base, menos
-o que o Forever não tem, mais o que só ele tem. O roteador roda em cima disso
-apontando `router.BUILD` para essa pasta.
+Saída: build/forever/{quests,npcs,objects,zones,items,fonte}.json. O roteador lê
+essa pasta (`router.BUILD`).
 
-    python import_forever.py
+    python import_forever.py [pasta do QuestieDB]
 """
 import csv
 import io
 import json
 import os
+import sys
+import urllib.request
 
 from import_scan import inverte, para_area
+from questiedb import PADRAO, carrega as carrega_questiedb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BUILD = os.path.join(HERE, "build")
 OUT = os.path.join(BUILD, "forever")
 
-FACCAO = {1: "A", 2: "H", 3: "AH"}
-TIPO_NPC, TIPO_OBJETO = 1, 2
+FOREVER = "1.60.1.70245"
+ANNIV = "2.5.6.69795"
 
 
 def carrega(nome, padrao=None):
     caminho = os.path.join(BUILD, "%s.json" % nome)
     if not os.path.exists(caminho):
         return padrao if padrao is not None else {}
-    return json.load(open(caminho, encoding="utf-8"))
+    with open(caminho, encoding="utf-8") as fh:
+        return json.load(fh)
 
 
 def quest_ids(build):
-    raw = open(os.path.join(BUILD, "QuestV2-%s.csv" % build), encoding="utf-8").read()
+    """Ids da tabela QuestV2 do build (wago.tools, presa ao build — build que não
+    existe devolve 404 em vez de cair em outro). Fica em cache em build/.
+
+    A QuestV2 não lista quest repetível (Earth Sapta, 1463, foi vista em jogo e
+    não está nela): ausência aqui não prova que a quest não existe."""
+    path = os.path.join(BUILD, "QuestV2-%s.csv" % build)
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            raw = fh.read()
+    else:
+        url = "https://wago.tools/db2/QuestV2/csv?build=" + build
+        # wago recusa o User-Agent padrão do urllib (403).
+        req = urllib.request.Request(url, headers={"User-Agent": "Lodestar-gen_forever/1.0"})
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            raw = resp.read().decode("utf-8")
+        os.makedirs(BUILD, exist_ok=True)
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(raw)
     return {int(r[0]) for r in csv.reader(io.StringIO(raw)) if r and r[0].isdigit()}
 
 
 def ponto_vira_entrada(alvo, ponto, zona):
-    """Garante o NPC/objeto no catálogo e acrescenta o ponto onde ele aparece."""
+    """Garante o NPC/objeto no catálogo e, se a base não sabe onde ele fica, o
+    ponto onde o cliente o viu. Base com spawn manda: um segundo ponto quase igual
+    (46.88 contra 46.86) só desfocaria o hub."""
     ident = str(ponto["id"])
-    ent = alvo.get(ident)
-    if not ent:
-        ent = {"name": ponto.get("name"), "spawns": {}, "zoneID": zona,
-               "questStarts": [], "questEnds": [], "faction": None}
-        if alvo is not None:
-            alvo[ident] = ent
-    ent.setdefault("spawns", {})
-    pontos = ent["spawns"].setdefault(str(zona), [])
-    coord = [round(ponto["x"], 2), round(ponto["y"], 2)]
-    if coord not in pontos:
-        pontos.append(coord)
+    ent = alvo.setdefault(ident, {"name": ponto.get("name"), "spawns": {}, "zoneID": zona,
+                                  "questStarts": [], "questEnds": [], "faction": None})
     if not ent.get("name"):
         ent["name"] = ponto.get("name")
+    if ent.get("spawns"):
+        return ent
+    ent["spawns"] = {str(zona): [[round(ponto["x"], 2), round(ponto["y"], 2)]]}
     return ent
 
 
-def main():
-    quests, npcs = carrega("quests"), carrega("npcs")
-    objetos, zonas = carrega("objects"), carrega("zones")
-    itens = carrega("items")
+def main(argv):
+    pasta = argv[0] if argv else PADRAO
+    banco = carrega_questiedb(pasta)
+    quests, npcs, objetos = banco["quests"], banco["npcs"], banco["objects"]
+    zonas, itens = banco["zones"], banco["items"]
     scan = carrega("scan")
 
-    # 1. tira o que o Forever não tem
-    forever, anniv = quest_ids("1.60.1.69913"), quest_ids("2.5.6.69795")
+    # 1. tira o que o Forever não tem: o Anniversary tem e o Forever não. Id
+    # ausente nas duas tabelas é quest repetível, não quest removida.
+    forever, anniv = quest_ids(FOREVER), quest_ids(ANNIV)
     sumiram = anniv - forever
-    for qid in list(quests):
-        if int(qid) in sumiram:
-            del quests[qid]
+    tiradas = [qid for qid in quests if int(qid) in sumiram]
+    for qid in tiradas:
+        del quests[qid]
 
-    novas = 0
+    # Pré-requisito que é a própria quest, ou uma versão dela que exclui esta
+    # (Call of Earth 1516 pede [1516, 1519, 92466]: Durotar, Mulgore e Zephras),
+    # é ciclo, não pré-requisito — a ordenação do roteador não fecha com ele.
+    ciclos = 0
+    for qid, q in quests.items():
+        proibidos = {int(qid)} | set(q["exclusiveTo"])
+        for campo in ("preSingle", "preGroup"):
+            limpo = [p for p in q[campo] if p not in proibidos]
+            ciclos += len(q[campo]) - len(limpo)
+            q[campo] = limpo
 
-    # 3. o que veio do cliente do beta manda: é o único dado das zonas novas
+    # 2. o scan do cliente só preenche o que a base não tem: nome e texto da
+    # base são enUS e estáveis; o scan pode vir de um cliente ptBR.
     inv = inverte(zonas)
     avisos, sem_area = set(), 0
 
@@ -92,28 +123,24 @@ def main():
 
     do_cliente = 0
     for qid, q in (scan.get("quests") or {}).items():
-        entrada = quests.get(str(qid)) or {
-            "name": None, "reqLevel": 0, "questLevel": None, "races": 0, "classes": 0,
-            "faction": "AH", "startNpcs": [], "startObjects": [], "startItems": [],
-            "endNpcs": [], "endObjects": [], "preSingle": [], "preGroup": [],
+        if str(qid) in quests:
+            continue
+        quests[str(qid)] = {
+            "name": q.get("name"), "reqLevel": 0, "questLevel": q.get("level") or None,
+            "races": 0, "classes": 0, "faction": "AH", "startNpcs": [], "startObjects": [],
+            "startItems": [], "endNpcs": [], "endObjects": [], "preSingle": [], "preGroup": [],
             "exclusiveTo": [], "nextInChain": None, "zoneOrSort": 0, "specialFlags": 0,
-            "objCreatures": [], "objObjects": [], "objItems": [], "objText": [],
+            "objCreatures": [], "objObjects": [], "objItems": [],
+            "objText": [o["text"] for o in q.get("obj") or [] if o.get("text")],
             "repReward": [],
         }
-        if q.get("name"):
-            entrada["name"] = q["name"]
-        if q.get("level"):
-            entrada["questLevel"] = q["level"]
-        for o in q.get("obj") or []:
-            if o.get("text") and o["text"] not in entrada["objText"]:
-                entrada["objText"].append(o["text"])
-        quests[str(qid)] = entrada
         do_cliente += 1
 
     for tabela, campo in (("givers", "startNpcs"), ("enders", "endNpcs")):
         for qid, g in (scan.get(tabela) or {}).items():
             entrada = quests.get(str(qid))
-            if not (entrada and g.get("npc")):
+            # quem dá/recebe vem da base quando ela sabe; o scan só entra no vazio
+            if not (entrada and g.get("npc")) or entrada[campo]:
                 continue
             area = area_do(g, entrada)
             if not area:
@@ -126,8 +153,8 @@ def main():
             if not entrada.get("zoneOrSort") and area:
                 entrada["zoneOrSort"] = area
 
-    # 4. waypoints: o próprio servidor aponta o objetivo atual de cada quest do
-    # log — é a única coordenada que existe para as zonas que o Forever inventou.
+    # 3. waypoints: o próprio servidor aponta o objetivo atual de cada quest do
+    # log — é a única coordenada de objetivo para quest que a base não conhece.
     com_wp = 0
     for qid, pontos in (scan.get("waypoints") or {}).items():
         entrada = quests.get(str(qid))
@@ -152,19 +179,23 @@ def main():
     # não vira |goto. Upgrade: no emit_do do router.py, quando não houver alvo com
     # spawn, emitir o goto a partir de q["objPoints"][area][0].
 
+    fonte = {"questiedb": banco["versao"], "forever": FOREVER, "anniversary": ANNIV}
     os.makedirs(OUT, exist_ok=True)
     for nome, dado in (("quests", quests), ("npcs", npcs), ("objects", objetos),
-                       ("zones", zonas), ("items", itens)):
-        json.dump(dado, open(os.path.join(OUT, "%s.json" % nome), "w", encoding="utf-8"),
-                  ensure_ascii=False)
+                       ("zones", zonas), ("items", itens), ("fonte", fonte)):
+        with open(os.path.join(OUT, "%s.json" % nome), "w", encoding="utf-8") as fh:
+            json.dump(dado, fh, ensure_ascii=False, sort_keys=True)
+    novas = sum(1 for q in quests if int(q) >= 30000)
     print("gravado em", os.path.normpath(OUT))
-    print("  quests:", len(quests), "| tiradas (não existem no Forever):", len(sumiram))
-    print("  vindas do cliente do beta:", do_cliente, "| com waypoint do servidor:", com_wp)
+    print("  QuestieDB %s: %d quests (%d novas do Forever) | tiradas (Anniversary tem, "
+          "Forever %s não): %d" % (banco["versao"], len(quests), novas, FOREVER, len(tiradas)))
+    print("  pré-requisitos em ciclo retirados:", ciclos)
+    print("  só o cliente conhecia:", do_cliente, "| com waypoint do servidor:", com_wp)
     if sem_area:
-        print("  givers/enders sem areaID (zona nova, ainda fora do zones.json):", sem_area)
+        print("  givers/enders sem areaID (zona fora do zones.json):", sem_area)
     for aviso in sorted(avisos):
         print("  uiMapID ambíguo:", aviso)
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])

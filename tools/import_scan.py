@@ -249,7 +249,11 @@ def main(args):
         print("nenhum SavedVariables do Lodestar encontrado")
         return
 
-    zonas = json.load(open(os.path.join(BUILD, "zones.json"), encoding="utf-8"))
+    # As zonas do Forever (import_forever.py) quando já existem: as de Anniversary
+    # não conhecem Zephras Isle nem Riverglades.
+    zonas_forever = os.path.join(BUILD, "forever", "zones.json")
+    zonas = json.load(open(zonas_forever if os.path.exists(zonas_forever)
+                           else os.path.join(BUILD, "zones.json"), encoding="utf-8"))
     inv = inverte(zonas)
     acc, avisos, lidos = {t: {} for t in TABELAS}, set(), 0
     for caminho in caminhos:
