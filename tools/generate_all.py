@@ -16,7 +16,7 @@ import re
 import sys
 from collections import defaultdict
 
-from router import FORA_DO_LEVELING, Router, load_data, esc, is_placeholder
+from router import FORA_DO_LEVELING, VANILLA_RACES, Router, load_data, esc, is_placeholder
 
 GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides", "Leveling")
 
@@ -99,7 +99,7 @@ def bands(levels, min_quests):
 def discover_zones(router, faction, level_max, min_quests):
     """area -> {count, levels[], sA, sH}; filtra território inimigo."""
     fac_ok = {"A", "AH"} if faction == "A" else {"H", "AH"}
-    per_area = defaultdict(lambda: {"count": 0, "levels": [], "sA": 0, "sH": 0})
+    per_area = defaultdict(lambda: {"count": 0, "levels": [], "faixa": [], "sA": 0, "sH": 0})
     for qid, q in router.quests.items():
         if q["specialFlags"] and (q["specialFlags"] & 1):
             continue
@@ -116,12 +116,14 @@ def discover_zones(router, faction, level_max, min_quests):
             per_area[area]["sA"] += 1
         elif q["faction"] == "H":
             per_area[area]["sH"] += 1
-        # quest de classe entra no guia (com `only <Classe>`) mas não decide se a
-        # zona é rota nem a faixa dela: as de druida em Moonglade inventavam um
-        # "Moonglade (10-20)" no meio da cadeia de todo mundo.
-        if q["faction"] in fac_ok and not q["classes"]:
+        if q["faction"] in fac_ok:
             per_area[area]["count"] += 1
             per_area[area]["levels"].append(ql)
+            # quest de classe ou só de Skyborne conta para a zona ser rota, mas não
+            # decide a faixa: as de druida em Moonglade inventavam um "Moonglade
+            # (10-20)" no meio da cadeia de todo mundo
+            if not q["classes"] and not (q["races"] and not q["races"] & VANILLA_RACES):
+                per_area[area]["faixa"].append(ql)
 
     zones = []
     for area, d in per_area.items():
@@ -132,7 +134,8 @@ def discover_zones(router, faction, level_max, min_quests):
             continue
         if faction == "H" and d["sA"] > d["sH"] and d["sH"] < 3:
             continue
-        levels = sorted(l for l in d["levels"] if l > 0)
+        levels = (sorted(l for l in d["faixa"] if l > 0)
+                  or sorted(l for l in d["levels"] if l > 0))
         if not levels:
             continue
         grupos = bands(levels, min_quests)
@@ -140,10 +143,11 @@ def discover_zones(router, faction, level_max, min_quests):
             zones.append({
                 "area": area, "name": router.zones[str(area)]["name"],
                 "count": len(g), "median": pct(g, 0.5), "lo": pct(g, 0.15), "hi": pct(g, 0.85),
-                # faixas contíguas entre as levas (quest sem nível vai com a primeira,
-                # a mais alta pega o resto); abaixo da primeira leva só até BAND_GAP
-                # níveis — mais que isso o jogador da faixa já passou da quest.
-                "band": (grupos[n - 1][-1] + 1 if n else g[0] - BAND_GAP,
+                # faixas disjuntas e sem buraco: cada leva vai do próprio início até
+                # antes da seguinte (quest sem nível vai com a primeira); abaixo da
+                # primeira, só até BAND_GAP níveis — mais que isso o jogador da faixa
+                # já passou da quest
+                "band": (g[0] - BAND_GAP if n == 0 else g[0],
                          grupos[n + 1][0] - 1 if n + 1 < len(grupos) else 999),
                 "primeira": n == 0,
             })

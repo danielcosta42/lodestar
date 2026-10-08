@@ -170,11 +170,6 @@ class Router:
             if amigos and len(amigos) < len(q[campo]):
                 out = out or dict(q)
                 out[campo] = amigos
-            elif campo == "startNpcs" and q[campo] and not amigos \
-                    and not q["startObjects"] and not q["startItems"]:
-                # só quem é da outra facção dá a quest (In Search of Thaelrid, só em
-                # Darnassus): este lado não consegue pegá-la
-                return dict(q, faction=inimigo)
         return out or q
 
     def item_source(self, iid):
