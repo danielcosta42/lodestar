@@ -150,6 +150,6 @@ step
 step
   turnin Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
-  note {travel}Undercity
-  goto Undercity 67.74,37.89
+  note {travel}Blasted Lands
+  goto Blasted Lands 50.55,14.2
 ]])

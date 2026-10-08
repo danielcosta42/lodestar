@@ -44,6 +44,13 @@ step
   talk Gorn##1068
   turnin Broken Alliances##793 |goto Badlands 2.91,45.6
 step
+  talk Hierophant Theodora Mulvadania##9079
+  accept The Rise of the Machines##4061 |goto Badlands 3.02,47.81
+step
+  only completed(4082)
+  talk Lexlort##9080
+  accept Grark Lorkrub##4122 |goto Badlands 5.88,47.63
+step
   only completed(3568)
   talk Thersa Windsong##8393
   turnin Seeping Corruption##3569 |goto Undercity 49.04,70.8 |tip {turninat}Undercity
@@ -55,15 +62,12 @@ step
   talk Lord Jorach Ravenholdt##6768
   turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88 |tip {turninat}Alterac Mountains
 step
-  talk Hierophant Theodora Mulvadania##9079
-  accept The Rise of the Machines##4061 |goto Badlands 3.02,47.81
+  only completed(4082)
+  talk Grark Lorkrub##9520
+  turnin Grark Lorkrub##4122 |goto Burning Steppes 40.2,34.24 |tip {turninat}Burning Steppes
 step
   talk Apothecary Zinge##5204
   accept Vivian Lagrave##4133 |goto Undercity 50.14,67.97
-step
-  only completed(4082)
-  talk Lexlort##9080
-  accept Grark Lorkrub##4122 |goto Badlands 5.88,47.63
 step
   only completed(692)
   note Go to the Shards of Myzrael, summon her and defeat her.
@@ -93,10 +97,6 @@ step
   talk Shadowmage Vivian Lagrave##9078
   turnin Vivian Lagrave##4133 |goto Badlands 2.9,47.76
 step
-  only completed(4082)
-  talk Grark Lorkrub##9520
-  turnin Grark Lorkrub##4122 |goto Burning Steppes 40.2,34.24 |tip {turninat}Burning Steppes
-step
   only completed(3568)
   talk Chemist Cuely##8390
   accept Seeping Corruption##3570 |goto Undercity 48.71,71.39
@@ -111,6 +111,6 @@ step
   talk Lotwil Veriatus##2921
   turnin The Rise of the Machines##4062 |goto Badlands 25.95,44.87
 step
-  note {travel}Undercity
-  goto Undercity 63.9,44.08
+  note {travel}Tirisfal Glades
+  goto Tirisfal Glades 83.13,68.94
 ]])

@@ -289,5 +289,5 @@ step
   turnin The Mystery of Morrowgrain##3791 |goto Feralas 32.45,43.79 |tip {turninat}Feralas
 step
   note {travel}Tanaris
-  goto Tanaris 66.99,22.36
+  goto Tanaris 51.57,26.76
 ]])

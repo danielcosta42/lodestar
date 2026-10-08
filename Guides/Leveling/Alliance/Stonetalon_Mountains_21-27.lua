@@ -64,11 +64,28 @@ step
   talk Kaela Shadowspear##4080
   accept Enraged Spirits##1083 |goto Stonetalon Mountains 59.9,66.85
 step
+  only completed(1091)
+  note Bring 8 Smoldering Embers from any of the fire elementals in the Charred Vale to Kaela Shadowspear in Stonetalon.
+  collect 8 Smoldering Embers##5659 |q 1083 |goto Stonetalon Mountains 36.55,51.37 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
+step
+  only completed(1091)
+  talk Kaela Shadowspear##4080
+  turnin Enraged Spirits##1083 |goto Stonetalon Mountains 59.9,66.85
+step
   note {fp}Teloren
   goto Stonetalon Mountains 36.44,7.18 |tip {vendor}
 step
   talk Keeper Albagorm##3994
   accept Reclaiming the Charred Vale##1057 |goto Stonetalon Mountains 37.1,8.1
+step
+  note Keeper Albagorm on Stonetalon Peak wants you to slay 7 Bloodfury Harpies, 7 Bloodfury Ambushers, 7 Bloodfury Slayers and 7 Bloodfury Roguefeathers.
+  kill Bloodfury Harpy##4022 |q 1057 |goto Stonetalon Mountains 32.57,60.66
+step
+  talk Keeper Albagorm##3994
+  turnin Reclaiming the Charred Vale##1057 |goto Stonetalon Mountains 37.1,8.1
+step
+  talk Keeper Albagorm##3994
+  accept Reclaiming the Charred Vale##1059 |goto Stonetalon Mountains 37.1,8.1
 step
   only completed(1091)
   talk Kaela Shadowspear##4080
@@ -78,39 +95,31 @@ step
   accept Castpipe's Task##2931 |goto Stonetalon Mountains 59.52,67.15
 step
   only completed(1091)
-  note Bring 8 Smoldering Embers from any of the fire elementals in the Charred Vale to Kaela Shadowspear in Stonetalon.
-  collect 8 Smoldering Embers##5659 |q 1083 |goto Stonetalon Mountains 36.55,51.37 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
-step
-  note Keeper Albagorm on Stonetalon Peak wants you to slay 7 Bloodfury Harpies, 7 Bloodfury Ambushers, 7 Bloodfury Slayers and 7 Bloodfury Roguefeathers.
-  kill Bloodfury Harpy##4022 |q 1057 |goto Stonetalon Mountains 32.57,60.66
-step
-  only completed(1091)
   note Bring a piece of Corroded Shrapnel to Kaela Shadowspear in Stonetalon.
   collect Corroded Shrapnel##5664 |q 1084 |goto Stonetalon Mountains 34.15,67.58 |tip {dropsfrom}Charred Ancient, Blackened Ancient, Vengeful Ancient
 step
   only completed(1091)
   talk Kaela Shadowspear##4080
-  turnin Enraged Spirits##1083 |goto Stonetalon Mountains 59.9,66.85
-step
-  talk Keeper Albagorm##3994
-  turnin Reclaiming the Charred Vale##1057 |goto Stonetalon Mountains 37.1,8.1
-step
-  only completed(1091)
-  talk Kaela Shadowspear##4080
   turnin Wounded Ancients##1084 |goto Stonetalon Mountains 59.9,66.85
-step
-  talk Master Mechanic Castpipe##7950
-  turnin Castpipe's Task##2931 |goto Ironforge 69.83,48.1 |tip {turninat}Ironforge
-step
-  talk Sputtervalve##3442
-  turnin Further Instructions##1094 |goto The Barrens 62.98,37.22 |tip {turninat}The Barrens
 step
   only completed(1091)
   talk Kaela Shadowspear##4080
   accept Update for Sentinel Thenysil##1082 |goto Stonetalon Mountains 59.9,66.85
 step
-  talk Keeper Albagorm##3994
-  accept Reclaiming the Charred Vale##1059 |goto Stonetalon Mountains 37.1,8.1
+  talk Master Mechanic Castpipe##7950
+  turnin Castpipe's Task##2931 |goto Ironforge 69.83,48.1 |tip {turninat}Ironforge
+step
+  talk Myriam Moonsinger##12866
+  accept A Host of Evil##6626 |goto The Barrens 49.01,94.94
+step
+  note Kill 8 Razorfen Battleguard, 8 Razorfen Thornweavers, and 8 Death's Head Cultists and return to Myriam Moonsinger near the entrance to Razorfen Downs.
+  kill Razorfen Battleguard##7873 |q 6626 |goto The Barrens 47.3,89.89 |elite
+step
+  talk Myriam Moonsinger##12866
+  turnin A Host of Evil##6626 |goto The Barrens 49.01,94.94 |tip {turninat}The Barrens
+step
+  talk Sputtervalve##3442
+  turnin Further Instructions##1094 |goto The Barrens 62.98,37.22 |tip {turninat}The Barrens
 step
   only completed(1091)
   talk Sentinel Thenysil##4079

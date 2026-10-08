@@ -163,6 +163,20 @@ step
   talk Squire Maltrake##8509
   turnin Squire Maltrake##3462 |goto Searing Gorge 39.17,39
 step
+  talk Squire Maltrake##8509
+  accept Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
+step
+  note Set the North, South, East, and West Sentry Towers on fire by using the Torch of Retribution inside each of the buildings.
+  collect Sentry Brazier##149025 |q 3463 |goto Searing Gorge 35.67,60.68
+step
+  talk Squire Maltrake##8509
+  turnin Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
+step
+  click Hoard of the Black Dragonflight##149502
+  accept Trinkets...##3481 |goto Searing Gorge 38.85,38.99
+step
+  turnin Trinkets...##3481 |goto Searing Gorge 38.85,38.99
+step
   talk Mountaineer Pebblebitty##3836
   turnin The Horn of the Beast##3181 |goto Loch Modan 18.18,84.01 |tip {turninat}Loch Modan
 step
@@ -207,20 +221,6 @@ step
 step
   talk Curator Thorius##8256
   turnin Rise, Obsidion!##3566 |goto Ironforge 71.5,15.74 |tip {turninat}Ironforge
-step
-  talk Squire Maltrake##8509
-  accept Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
-step
-  note Set the North, South, East, and West Sentry Towers on fire by using the Torch of Retribution inside each of the buildings.
-  collect Sentry Brazier##149025 |q 3463 |goto Searing Gorge 35.67,60.68
-step
-  talk Squire Maltrake##8509
-  turnin Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
-step
-  click Hoard of the Black Dragonflight##149502
-  accept Trinkets...##3481 |goto Searing Gorge 38.85,38.99
-step
-  turnin Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
   note {travel}Blasted Lands
   goto Blasted Lands 50.55,14.2

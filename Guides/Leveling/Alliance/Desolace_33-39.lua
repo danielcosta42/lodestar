@@ -265,20 +265,21 @@ step
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1467 |goto Desolace 66.2,9.63
 step
-  talk Talendria##11715
-  accept Vyletongue Corruption##7041 |goto Desolace 68.5,8.88
+  talk Warug##5398
+  accept Khan Hratha##1381 |goto Desolace 74.97,68.16
+step
+  note Maintain your Magram reputation, and bring the Maraudine Key Fragment to Warug in the Magram Village in Desolace.
+  kill Khan Hratha##5402 |goto Desolace 29.55,52 |elite
+  collect Maraudine Key Fragment##6077 |q 1381 |goto Desolace 29.55,52
+step
+  talk Warug##5398
+  turnin Khan Hratha##1381 |goto Desolace 74.97,68.16
 step
   talk Centaur Pariah##13717
   accept The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
 step
   note Read the Pariah's Instructions. Afterwards, obtain the Amulet of Union from Maraudon and return it to the Centaur Pariah in southern Desolace.
   collect Amulet of Union##17758 |q 7067 |goto Desolace 50.42,86.65
-step
-  note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
-  kill Noxxious Scion##13696 |q 7041 |goto Maraudon - Dungeon -1,-1
-step
-  talk Talendria##11715
-  turnin Vyletongue Corruption##7041 |goto Desolace 68.5,8.88
 step
   talk Centaur Pariah##13717
   turnin The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
@@ -290,16 +291,6 @@ step
   only completed(1453)
   talk Roetten Stonehammer##5637
   turnin Reagents for Reclaimers Inc.##1467 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
-step
-  talk Warug##5398
-  accept Khan Hratha##1381 |goto Desolace 74.97,68.16
-step
-  note Maintain your Magram reputation, and bring the Maraudine Key Fragment to Warug in the Magram Village in Desolace.
-  kill Khan Hratha##5402 |goto Desolace 29.55,52 |elite
-  collect Maraudine Key Fragment##6077 |q 1381 |goto Desolace 29.55,52
-step
-  talk Warug##5398
-  turnin Khan Hratha##1381 |goto Desolace 74.97,68.16
 step
   note {travel}Dustwallow Marsh
   goto Dustwallow Marsh 66.46,45.15

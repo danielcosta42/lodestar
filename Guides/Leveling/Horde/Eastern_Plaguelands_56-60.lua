@@ -145,6 +145,34 @@ step
   talk Tirion Fordring##1855
   accept Of Love and Family##5846 |goto Eastern Plaguelands 5.16,35.57
 step
+  click Torn Scroll##177667
+  accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
+step
+  talk Nathanos Blightcaller##11878
+  accept The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
+step
+  only completed(5848)
+  talk Tirion Fordring##1855
+  accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
+step
+  only completed(8946)
+  talk Anthion Harmon##16016
+  accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
+step
+  only completed(8946)
+  note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
+  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
+step
+  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
+  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
+step
+  note Travel to the northern borders of the Eastern Plaguelands and recover the Quel'Thalas Registry. The item is somewhere in the Quel'Lithien lodge.
+  talk Pathstrider##8565 |q 6133 |goto Eastern Plaguelands 46.74,13.01
+step
+  only completed(8946)
+  talk Anthion Harmon##16016
+  turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
+step
   talk Caretaker Alen##11038
   accept The Restless Souls##5281 |goto Eastern Plaguelands 69.93,53.72
 step
@@ -176,24 +204,6 @@ step
   talk Leonid Barthalomew the Revered##11036
   accept Betina Bigglezink##5531 |goto Eastern Plaguelands 71.89,48.29
 step
-  only completed(5848)
-  talk Tirion Fordring##1855
-  accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
-step
-  click Torn Scroll##177667
-  accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
-step
-  talk Nathanos Blightcaller##11878
-  accept The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
-step
-  only completed(8946)
-  talk Anthion Harmon##16016
-  accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
-step
-  only completed(8946)
-  note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
-step
   talk Huntsman Leopold##16132
   accept Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
 step
@@ -215,31 +225,6 @@ step
   note Capture Crown Guard Tower, Eastwall Tower, Northpass Tower and Plaguewood Tower in the Eastern Plaguelands, then return to Emmisary Gormok at Light's Hope Chapel.
   get Bolstering Our Defenses |q 9665 |goto Eastern Plaguelands 70.37,47.94
 step
-  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
-  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
-step
-  note Travel to the northern borders of the Eastern Plaguelands and recover the Quel'Thalas Registry. The item is somewhere in the Quel'Lithien lodge.
-  talk Pathstrider##8565 |q 6133 |goto Eastern Plaguelands 46.74,13.01
-step
-  note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
-  collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
-step
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands wants 30 Bone Fragments.
-  collect Bone Fragments##22526 |q 9126 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
-step
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands wants 30 Dark Iron Scraps.
-  collect Dark Iron Scraps##22528 |q 9131 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith, Dark Iron Slaver, Dark Iron Taskmaster
-step
-  talk Egan##11140
-  turnin The Restless Souls##5281 |goto Eastern Plaguelands 11.36,26.6
-step
-  only completed(5462)
-  turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1 |tip {turninat}Stratholme - Dungeon
-step
-  only completed(5464)
-  talk Magistrate Marduke##11286
-  turnin Soulbound Keepsake##5465 |goto Western Plaguelands 70.57,74.11 |tip {turninat}Western Plaguelands
-step
   only not completed(5504) not completed(5507) not haveq(5504) not haveq(5507)
   talk Quartermaster Miranda Breechlock##11536
   turnin Mantles of the Dawn##5513 |goto Eastern Plaguelands 71.79,50.25
@@ -252,40 +237,16 @@ step
   talk Betina Bigglezink##11035
   turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
 step
-  only completed(5848)
-  talk Myranda the Hag##11872
-  turnin Find Myranda##5861 |goto Western Plaguelands 50.79,77.85 |tip {turninat}Western Plaguelands
-step
-  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
-step
-  talk Nathanos Blightcaller##11878
-  turnin The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
-step
-  only completed(8946)
-  talk Anthion Harmon##16016
-  turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
-step
-  talk Huntsman Leopold##16132
-  turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
-step
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Digs##9126 |goto Eastern Plaguelands 71.62,48.91
-step
-  talk Korfax, Champion of the Light##16112
-  turnin Binding the Dreadnaught##9131 |goto Eastern Plaguelands 71.95,48.52
-step
   talk Dispatch Commander Metz##16212
   turnin They Call Me "The Rooster"##9141 |goto Eastern Plaguelands 71.28,48.04
 step
   talk Emmisary Gormok##17072
   turnin Bolstering Our Defenses##9665 |goto Eastern Plaguelands 70.37,47.94
 step
-  talk Marlene Redpath##10927
-  turnin Auntie Marlene##5152 |goto Western Plaguelands 49.17,78.57 |tip {turninat}Western Plaguelands
+  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
 step
-  only completed(5848)
-  talk Myranda the Hag##11872
-  accept Scarlet Subterfuge##5862 |goto Western Plaguelands 50.79,77.85
+  talk Nathanos Blightcaller##11878
+  turnin The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
 step
   talk Nathanos Blightcaller##11878
   accept Duskwing, Oh How I Hate Thee...##6135 |goto Eastern Plaguelands 22.23,63.51
@@ -297,18 +258,63 @@ step
   kill Duskwing##11897 |goto Eastern Plaguelands 26.08,59.03 |elite
   collect Patch of Duskwing's Fur##15850 |q 6135 |goto Eastern Plaguelands 26.08,59.03
 step
+  talk Nathanos Blightcaller##11878
+  turnin Duskwing, Oh How I Hate Thee...##6135 |goto Eastern Plaguelands 22.23,63.51
+step
+  talk Egan##11140
+  turnin The Restless Souls##5281 |goto Eastern Plaguelands 11.36,26.6
+step
+  note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
+  collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
+step
   note Find Borelgore in the northern wastes of Eastern Plaguelands and destroy him. Return to Nathanos Blightcaller when the mission is complete.
   kill Borelgore##11896 |q 6136 |goto Eastern Plaguelands 47.69,24.87 |elite
+step
+  talk Huntsman Leopold##16132
+  turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
+step
+  talk Nathanos Blightcaller##11878
+  turnin The Corpulent One##6136 |goto Eastern Plaguelands 22.23,63.51
+step
+  talk Nathanos Blightcaller##11878
+  accept The Call to Command##6144 |goto Eastern Plaguelands 22.23,63.51
+step
+  only completed(5462)
+  turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1 |tip {turninat}Stratholme - Dungeon
+step
+  only completed(5464)
+  talk Magistrate Marduke##11286
+  turnin Soulbound Keepsake##5465 |goto Western Plaguelands 70.57,74.11 |tip {turninat}Western Plaguelands
+step
+  only completed(5848)
+  talk Myranda the Hag##11872
+  turnin Find Myranda##5861 |goto Western Plaguelands 50.79,77.85 |tip {turninat}Western Plaguelands
+step
+  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands wants 30 Bone Fragments.
+  collect Bone Fragments##22526 |q 9126 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
+step
+  note Korfax at Light's Hope Chapel in the Eastern Plaguelands wants 30 Dark Iron Scraps.
+  collect Dark Iron Scraps##22528 |q 9131 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith, Dark Iron Slaver, Dark Iron Taskmaster
+step
+  talk Rohan the Assassin##16131
+  turnin Bonescythe Digs##9126 |goto Eastern Plaguelands 71.62,48.91
+step
+  talk Korfax, Champion of the Light##16112
+  turnin Binding the Dreadnaught##9131 |goto Eastern Plaguelands 71.95,48.52
+step
+  talk Marlene Redpath##10927
+  turnin Auntie Marlene##5152 |goto Western Plaguelands 49.17,78.57 |tip {turninat}Western Plaguelands
+step
+  only completed(5848)
+  talk Myranda the Hag##11872
+  accept Scarlet Subterfuge##5862 |goto Western Plaguelands 50.79,77.85
 step
   only completed(5848)
   talk Highlord Taelan Fordring##1842
   turnin Scarlet Subterfuge##5862 |goto Western Plaguelands 42.02,14.79 |tip {turninat}Western Plaguelands
 step
-  talk Nathanos Blightcaller##11878
-  turnin Duskwing, Oh How I Hate Thee...##6135 |goto Eastern Plaguelands 22.23,63.51
-step
-  talk Nathanos Blightcaller##11878
-  turnin The Corpulent One##6136 |goto Eastern Plaguelands 22.23,63.51
+  talk Varimathras##2425
+  turnin The Call to Command##6144 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
 step
   talk Marlene Redpath##10927
   accept A Strange Historian##5153 |goto Western Plaguelands 49.17,78.57
@@ -316,9 +322,6 @@ step
   only completed(5848)
   talk Highlord Taelan Fordring##1842
   accept In Dreams##5944 |goto Western Plaguelands 42.02,14.79
-step
-  talk Nathanos Blightcaller##11878
-  accept The Call to Command##6144 |goto Eastern Plaguelands 22.23,63.51
 step
   note Bring Joseph's Wedding Ring to Chromie.
   collect Joseph's Wedding Ring##12894 |q 5153 |goto Western Plaguelands 49.7,76.76 |tip {dropsfrom}Joseph Redpath's Monument
@@ -329,9 +332,6 @@ step
   only completed(5848)
   talk Tirion Fordring##1855
   turnin In Dreams##5944 |goto Eastern Plaguelands 5.16,35.57
-step
-  talk Varimathras##2425
-  turnin The Call to Command##6144 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
 step
   only completed(5542) completed(5543) completed(5544)
   talk Artist Renfray##11936

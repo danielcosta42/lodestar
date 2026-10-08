@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (13-21)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Silverpine Forest (11-20)",
+	next = "Leveling/Horde/Silverpine Forest (11-18)",
 }, [[
 step
   only Undead Paladin
@@ -54,8 +54,23 @@ step
   turnin Remnants of War##96898 |goto Tirisfal Glades 65.88,61.13
 step
   only Undead Paladin
+  talk Deathguard Falgan##257663
+  accept A Lesson in Divinity##94440 |goto Tirisfal Glades 86.67,47.74
+step
+  only Undead Paladin
+  note Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Tyr's Watch.
+  collect Scarlet Crusade Attack Plans##264693 |q 94440 |goto Tirisfal Glades 78.38,56.03 |tip {dropsfrom}Scarlet Zealot, Scarlet Friar, Tarnished Exemplar
+step
+  note Bring Riptear's Heart to Deathguard Linnea.
+  collect Riptear's Heart##286326 |q 99156 |goto Tirisfal Glades 84.28,45.38 |tip {dropsfrom}Riptear
+step
+  only Undead Paladin
   talk Danitha Morr##246378
   turnin A Lesson in Divinity##94435 |goto Tirisfal Glades 22.05,44.7
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  turnin A Lesson in Divinity##94440 |goto Tirisfal Glades 21.95,44.57
 step
   talk Leonid Barthalomew the Revered##267008
   turnin Bandarion Keep##96899 |goto Tirisfal Glades 22.01,44.77
@@ -66,17 +81,63 @@ step
   talk Leonid Barthalomew the Revered##267008
   accept Leonid's Letter##98545 |goto Tirisfal Glades 22.01,44.77
 step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept A Lesson in Divinity##94427 |goto Tirisfal Glades 22.05,44.7
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept A Lesson in Divinity##94436 |goto Tirisfal Glades 22.05,44.7
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  accept A Lesson in Divinity##94438 |goto Tirisfal Glades 21.95,44.57
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  accept A Lesson in Divinity##94441 |goto Tirisfal Glades 21.95,44.57
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  turnin A Lesson in Divinity##94436 |goto Tirisfal Glades 21.95,44.57
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  turnin A Lesson in Divinity##94441 |goto Tirisfal Glades 22.05,44.7
+step
   talk Leonid Barthalomew the Revered##267008
   turnin A Righteous Cause##96896 |goto Tirisfal Glades 22.01,44.77
-step
-  note Bring Riptear's Heart to Deathguard Linnea.
-  collect Riptear's Heart##286326 |q 99156 |goto Tirisfal Glades 84.28,45.38 |tip {dropsfrom}Riptear
 step
   talk Deathguard Linnea##1495
   turnin Rear Guard Patrol##99156 |goto Tirisfal Glades 65.49,60.25
 step
+  only Undead Paladin
+  talk Deathguard Falgan##257663
+  turnin A Lesson in Divinity##94438 |goto Tirisfal Glades 86.67,47.74
+step
+  talk Deathguard Kristof##251001
+  accept The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.22,60.19
+step
+  note Kill Rath'mael in the Ruins of Lordaeron for Deathguard Kristof in Brill.
+  kill Rath'mael##250657 |q 92422
+step
+  talk Deathguard Kristof##251001
+  turnin The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.22,60.19
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept Diplomatic Incident##91858 |goto Tirisfal Glades 22.05,44.7
+step
   talk Glix Xizzix##272526
   turnin Leonid's Letter##98545 |goto Undercity 69.84,47.13 |tip {turninat}Undercity
+step
+  only Undead Paladin
+  talk Tanis Alderwood##257648
+  turnin A Lesson in Divinity##94427 |goto Undercity 65.62,37.94 |tip {turninat}Undercity
+step
+  only Undead Paladin
+  talk Trevan Rol##248840
+  turnin Diplomatic Incident##91858 |goto Silverpine Forest 43.4,41 |tip {turninat}Silverpine Forest
 step
   talk Master Apothecary Faranell##2055
   accept Unending Torment##97289 |goto Undercity 48.82,69.28
@@ -92,16 +153,6 @@ step
 step
   talk Master Apothecary Faranell##2055
   accept Unending Torment##97292 |goto Undercity 48.82,69.28
-step
-  only Undead Paladin
-  talk Danitha Morr##246378
-  accept Diplomatic Incident##91858 |goto Tirisfal Glades 22.05,44.7
-step
-  talk Deathguard Kristof##251001
-  accept The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.22,60.19
-step
-  note Kill Rath'mael in the Ruins of Lordaeron for Deathguard Kristof in Brill.
-  kill Rath'mael##250657 |q 92422
 step
   only Warrior completed(1848)
   talk Velora Nitely##6411
@@ -123,13 +174,6 @@ step
   talk Master Apothecary Faranell##2055
   turnin Unending Torment##97292 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
-  only Undead Paladin
-  talk Trevan Rol##248840
-  turnin Diplomatic Incident##91858 |goto Silverpine Forest 43.4,41 |tip {turninat}Silverpine Forest
-step
-  talk Deathguard Kristof##251001
-  turnin The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.22,60.19
-step
   only Warrior completed(1848)
   talk Velora Nitely##6411
   turnin Dragonmaw Shinbones##1846 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
@@ -142,6 +186,6 @@ step
   talk Velora Nitely##6411
   turnin Brutal Legguards##1847 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
 step
-  note {travel}Undercity
-  goto Undercity 63.25,48.56
+  note {travel}Silverpine Forest
+  goto Silverpine Forest 43.42,40.86
 ]])

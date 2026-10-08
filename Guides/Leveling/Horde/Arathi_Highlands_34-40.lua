@@ -128,11 +128,17 @@ step
   talk Drum Fel##2771
   turnin Call to Arms##678 |goto Arathi Highlands 74.24,33.92
 step
-  talk Genavie Callow##4486
-  turnin To Steal From Thieves##1164 |goto Undercity 63.83,49.45 |tip {turninat}Undercity
-step
   talk Zengu##2703
   accept The Broken Sigil##640 |goto Arathi Highlands 73.8,33.96
+step
+  talk Tor'gan##2706
+  accept Foul Magics##673 |goto Arathi Highlands 74.72,36.29
+step
+  talk Drum Fel##2771
+  accept Call to Arms##679 |goto Arathi Highlands 74.24,33.92
+step
+  talk Korin Fel##2772
+  accept The Real Threat##680 |goto Arathi Highlands 74.04,33.07
 step
   talk First Mate Nilzlix##2767
   accept Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
@@ -142,9 +148,6 @@ step
 step
   talk Professor Phizzlethorpe##2768
   accept Sunken Treasure##665 |goto Arathi Highlands 33.87,80.55
-step
-  talk Tor'gan##2706
-  accept Foul Magics##673 |goto Arathi Highlands 74.72,36.29
 step
   note Retrieve the 11 Sigil Fragments from the defenders in Stromgarde, and bring them to Tor'gan in Hammerfall.
   kill Stromgarde Troll Hunter##2583 |goto Arathi Highlands 23.89,60.57 |elite
@@ -160,8 +163,12 @@ step
   kill Marez Cowl##2783 |goto Arathi Highlands 29.47,64.14 |elite
   collect Befouled Bloodstone Orb##4510 |q 673 |goto Arathi Highlands 29.47,64.14
 step
-  talk Tor'gan##2706
-  turnin The Broken Sigil##640 |goto Arathi Highlands 74.72,36.29
+  note Kill 7 Boulderfist Shaman and 3 Boulderfist Lords and return to Drum Fel in the Hammerfall outpost.
+  kill Boulderfist Shaman##2570 |q 679 |goto Arathi Highlands 19.97,67.51 |elite
+step
+  note Slay Or'Kalar and bring his Head to Korin Fel in the Hammerfall outpost.
+  kill Or'Kalar##2773 |goto Arathi Highlands 18.63,65.96 |elite
+  collect Or'Kalar's Head##4551 |q 680 |goto Arathi Highlands 18.63,65.96
 step
   talk First Mate Nilzlix##2767
   turnin Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
@@ -172,43 +179,29 @@ step
   talk Doctor Draxlegauge##2774
   turnin Sunken Treasure##665 |goto Arathi Highlands 33.86,80.45
 step
-  talk Tor'gan##2706
-  turnin Foul Magics##673 |goto Arathi Highlands 74.72,36.29
-step
-  talk Tor'gan##2706
-  accept Sigil of Thoradin##641 |goto Arathi Highlands 74.72,36.29
-step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
-step
-  talk Drum Fel##2771
-  accept Call to Arms##679 |goto Arathi Highlands 74.24,33.92
-step
-  talk Korin Fel##2772
-  accept The Real Threat##680 |goto Arathi Highlands 74.04,33.07
-step
-  click Stone of Inner Binding##2702
-  accept Breaking the Keystone##652 |goto Arathi Highlands 36.23,57.38
 step
   note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
   collect 10 Elven Gem##4492 |q 666 |goto Arathi Highlands 23,89 |tip {dropsfrom}Calcified Elven Gem
 step
-  note Kill 7 Boulderfist Shaman and 3 Boulderfist Lords and return to Drum Fel in the Hammerfall outpost.
-  kill Boulderfist Shaman##2570 |q 679 |goto Arathi Highlands 19.97,67.51 |elite
-step
-  note Slay Or'Kalar and bring his Head to Korin Fel in the Hammerfall outpost.
-  kill Or'Kalar##2773 |goto Arathi Highlands 18.63,65.96 |elite
-  collect Or'Kalar's Head##4551 |q 680 |goto Arathi Highlands 18.63,65.96
-step
-  note Find and kill Fozruk. Bring the Rod of Order to the Keystone in the Arathi Highlands.
-  kill Fozruk##2611 |goto Arathi Highlands 63.9,30 |elite
-  collect Rod of Order##4469 |q 652 |goto Arathi Highlands 63.9,30
-step
-  talk Zengu##2703
-  turnin Sigil of Thoradin##641 |goto Arathi Highlands 73.8,33.96
-step
   talk Doctor Draxlegauge##2774
   turnin Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
+step
+  talk Doctor Draxlegauge##2774
+  accept Sunken Treasure##668 |goto Arathi Highlands 33.86,80.45
+step
+  talk Shakes O'Breen##2610
+  turnin Sunken Treasure##668 |goto Arathi Highlands 32.28,81.38
+step
+  talk Shakes O'Breen##2610
+  accept Sunken Treasure##669 |goto Arathi Highlands 32.28,81.38
+step
+  talk Tor'gan##2706
+  turnin The Broken Sigil##640 |goto Arathi Highlands 74.72,36.29
+step
+  talk Tor'gan##2706
+  turnin Foul Magics##673 |goto Arathi Highlands 74.72,36.29
 step
   talk Drum Fel##2771
   turnin Call to Arms##679 |goto Arathi Highlands 74.24,33.92
@@ -216,42 +209,63 @@ step
   talk Korin Fel##2772
   turnin The Real Threat##680 |goto Arathi Highlands 74.04,33.07
 step
-  turnin Breaking the Keystone##652 |goto Arathi Highlands 36.08,58.09
+  talk Tor'gan##2706
+  accept Sigil of Thoradin##641 |goto Arathi Highlands 74.72,36.29
 step
-  talk Doctor Draxlegauge##2774
-  accept Sunken Treasure##668 |goto Arathi Highlands 33.86,80.45
-step
-  click Keystone##2688
-  accept Myzrael's Allies##688 |goto Arathi Highlands 36.08,58.09
+  talk Zengu##2703
+  turnin Sigil of Thoradin##641 |goto Arathi Highlands 73.8,33.96
 step
   talk Zengu##2703
   accept Sigil of Arathor##643 |goto Arathi Highlands 73.8,33.96
+step
+  click Stone of Inner Binding##2702
+  accept Breaking the Keystone##652 |goto Arathi Highlands 36.23,57.38
 step
   note Retrieve the Sigil of Arathor and return it to Zengu in Hammerfall.
   kill Lieutenant Valorcall##2612 |goto Arathi Highlands 33.47,52.08 |elite
   collect Sigil of Arathor##4458 |q 643 |goto Arathi Highlands 33.47,52.08
 step
-  talk Shakes O'Breen##2610
-  turnin Sunken Treasure##668 |goto Arathi Highlands 32.28,81.38
-step
-  talk Zaruk##2787
-  turnin Myzrael's Allies##688 |goto Arathi Highlands 74.54,35.64
-step
   talk Zengu##2703
   turnin Sigil of Arathor##643 |goto Arathi Highlands 73.8,33.96
 step
-  talk Shakes O'Breen##2610
-  accept Sunken Treasure##669 |goto Arathi Highlands 32.28,81.38
+  talk Zengu##2703
+  accept Sigil of Trollbane##644 |goto Arathi Highlands 73.8,33.96
+step
+  note Find and kill Fozruk. Bring the Rod of Order to the Keystone in the Arathi Highlands.
+  kill Fozruk##2611 |goto Arathi Highlands 63.9,30 |elite
+  collect Rod of Order##4469 |q 652 |goto Arathi Highlands 63.9,30
+step
+  turnin Breaking the Keystone##652 |goto Arathi Highlands 36.08,58.09
+step
+  click Keystone##2688
+  accept Myzrael's Allies##688 |goto Arathi Highlands 36.08,58.09
+step
+  note Kill Prince Galen Trollbane and bring the Sigil of Trollbane to Zengu in Hammerfall.
+  kill Prince Galen Trollbane##2607 |goto Arathi Highlands 28.36,58.11 |elite
+  collect Sigil of Trollbane##4466 |q 644 |goto Arathi Highlands 28.36,58.11
+step
+  talk Zengu##2703
+  turnin Sigil of Trollbane##644 |goto Arathi Highlands 73.8,33.96
+step
+  talk Zaruk##2787
+  turnin Myzrael's Allies##688 |goto Arathi Highlands 74.54,35.64
 step
   talk Zaruk##2787
   accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
 step
   talk Zengu##2703
-  accept Sigil of Trollbane##644 |goto Arathi Highlands 73.8,33.96
+  accept Trol'kalar##645 |goto Arathi Highlands 73.8,33.96
 step
-  note Kill Prince Galen Trollbane and bring the Sigil of Trollbane to Zengu in Hammerfall.
-  kill Prince Galen Trollbane##2607 |goto Arathi Highlands 28.36,58.11 |elite
-  collect Sigil of Trollbane##4466 |q 644 |goto Arathi Highlands 28.36,58.11
+  turnin Trol'kalar##645 |goto Arathi Highlands 28.86,59.62
+step
+  click Trollbane's Tomb##2703
+  accept Trol'kalar##646 |goto Arathi Highlands 28.86,59.62
+step
+  talk Zengu##2703
+  turnin Trol'kalar##646 |goto Arathi Highlands 73.8,33.96
+step
+  talk Genavie Callow##4486
+  turnin To Steal From Thieves##1164 |goto Undercity 63.83,49.45 |tip {turninat}Undercity
 step
   talk Fleet Master Seahorn##2487
   turnin Sunken Treasure##669 |goto Stranglethorn Vale 27.17,77.01 |tip {turninat}Stranglethorn Vale
@@ -259,28 +273,14 @@ step
   talk Theldurin the Lost##2785
   turnin Theldurin the Lost##687 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
 step
-  talk Zengu##2703
-  turnin Sigil of Trollbane##644 |goto Arathi Highlands 73.8,33.96
-step
   talk Fleet Master Seahorn##2487
   accept Sunken Treasure##670 |goto Stranglethorn Vale 27.17,77.01
-step
-  talk Zengu##2703
-  accept Trol'kalar##645 |goto Arathi Highlands 73.8,33.96
 step
   talk Shakes O'Breen##2610
   turnin Sunken Treasure##670 |goto Arathi Highlands 32.28,81.38
 step
-  turnin Trol'kalar##645 |goto Arathi Highlands 28.86,59.62
-step
-  click Trollbane's Tomb##2703
-  accept Trol'kalar##646 |goto Arathi Highlands 28.86,59.62
-step
   talk Shakes O'Breen##2610
   accept Death From Below##667 |goto Arathi Highlands 32.28,81.38
-step
-  talk Zengu##2703
-  turnin Trol'kalar##646 |goto Arathi Highlands 73.8,33.96
 step
   talk Shakes O'Breen##2610
   turnin Death From Below##667 |goto Arathi Highlands 32.28,81.38

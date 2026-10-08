@@ -293,5 +293,5 @@ step
   turnin Betrayed##3507 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
 step
   note {travel}Tanaris
-  goto Tanaris 66.99,22.36
+  goto Tanaris 51.57,26.76
 ]])

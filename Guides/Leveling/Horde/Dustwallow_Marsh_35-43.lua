@@ -1,7 +1,7 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-45)", {
+ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-43)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (37-41)",
@@ -103,10 +103,6 @@ step
   talk Do'gol##5087
   accept The Black Shield##1323 |goto Dustwallow Marsh 36.53,30.79
 step
-  only completed(1261)
-  talk Nazeer Bloodpike##4791
-  accept Report to Zor##1262 |goto Dustwallow Marsh 35.21,30.66
-step
   note Bring 40 Unpopped Darkmist Eyes to "Swamp Eye" Jarl at the Swamplight Manor.
   collect 40 Unpopped Darkmist Eye##5884 |q 1206 |goto Dustwallow Marsh 32.32,22.29 |tip {dropsfrom}Darkmist Spider, Darkmist Lurker, Darkmist Recluse
 step
@@ -147,6 +143,64 @@ step
   talk Nazeer Bloodpike##4791
   turnin The Severed Head##1239 |goto Dustwallow Marsh 35.21,30.66
 step
+  only completed(1261)
+  talk Nazeer Bloodpike##4791
+  accept Report to Zor##1262 |goto Dustwallow Marsh 35.21,30.66
+step
+  talk Overlord Mok'Morokk##4500
+  accept Overlord Mok'Morokk's Concern##1166 |goto Dustwallow Marsh 36.29,31.41
+step
+  talk Tharg##4502
+  accept Army of the Black Dragon##1168 |goto Dustwallow Marsh 37.37,31.39
+step
+  talk Draz'Zilb##4501
+  accept Identifying the Brood##1169 |goto Dustwallow Marsh 37.15,33.09
+step
+  note Overlord Mok'Morokk in Brackenwall Village wants you to retrieve his grog, snuff and strongbox in Dustwallow Swamp.
+  collect Mok'Morokk's Snuff##5834 |q 1166 |goto Dustwallow Marsh 44.53,66.04
+step
+  note Tharg in Brackenwall Village wants you to kill 10 Firemane Scouts, 10 Firemane Ash Tails, and 5 Firemane Scalebanes.
+  kill Firemane Scout##4329 |q 1168 |goto Dustwallow Marsh 42.4,67.8
+step
+  note Draz'Zilb in Brackenwall Village would like you to bring him 15 Searing Tongues and 15 Searing Hearts.
+  collect Searing Tongue##5840 |q 1169 |goto Dustwallow Marsh 45.4,73 |tip {dropsfrom}Searing Hatchling, Searing Whelp
+step
+  talk Overlord Mok'Morokk##4500
+  turnin Overlord Mok'Morokk's Concern##1166 |goto Dustwallow Marsh 36.29,31.41
+step
+  talk Tharg##4502
+  turnin Army of the Black Dragon##1168 |goto Dustwallow Marsh 37.37,31.39
+step
+  talk Draz'Zilb##4501
+  turnin Identifying the Brood##1169 |goto Dustwallow Marsh 37.15,33.09
+step
+  talk Draz'Zilb##4501
+  accept The Brood of Onyxia##1170 |goto Dustwallow Marsh 37.15,33.09
+step
+  talk Overlord Mok'Morokk##4500
+  turnin The Brood of Onyxia##1170 |goto Dustwallow Marsh 36.29,31.41
+step
+  talk Overlord Mok'Morokk##4500
+  accept The Brood of Onyxia##1171 |goto Dustwallow Marsh 36.29,31.41
+step
+  talk Draz'Zilb##4501
+  turnin The Brood of Onyxia##1171 |goto Dustwallow Marsh 37.15,33.09
+step
+  talk Draz'Zilb##4501
+  accept The Brood of Onyxia##1172 |goto Dustwallow Marsh 37.15,33.09
+step
+  note Draz'Zilb in Brackenwall Village wants you to destroy 5 Eggs of Onyxia.
+  collect Egg of Onyxia##20359 |q 1172 |goto Dustwallow Marsh 56.65,75.41
+step
+  talk Draz'Zilb##4501
+  turnin The Brood of Onyxia##1172 |goto Dustwallow Marsh 37.15,33.09
+step
+  talk Overlord Mok'Morokk##4500
+  accept Challenge Overlord Mok'Morokk##1173 |goto Dustwallow Marsh 36.29,31.41
+step
+  talk Draz'Zilb##4501
+  turnin Challenge Overlord Mok'Morokk##1173 |goto Dustwallow Marsh 37.15,33.09
+step
   talk Mebok Mizzyrix##3446
   turnin Stinky's Escape##1270 |goto The Barrens 62.37,37.62 |tip {turninat}The Barrens
 step
@@ -162,54 +216,20 @@ step
   talk Ursyn Ghull##3048
   accept Return to the Marsh##1953 |goto Thunder Bluff 25.7,14.19
 step
-  talk Overlord Mok'Morokk##4500
-  accept Overlord Mok'Morokk's Concern##1166 |goto Dustwallow Marsh 36.29,31.41
-step
-  talk Tharg##4502
-  accept Army of the Black Dragon##1168 |goto Dustwallow Marsh 37.37,31.39
-step
-  talk Draz'Zilb##4501
-  accept Identifying the Brood##1169 |goto Dustwallow Marsh 37.15,33.09
-step
   talk Melor Stonehoof##3441
   accept Deadmire##1205 |goto Thunder Bluff 61.54,80.92
 step
   talk Anastasia Hartwell##4568
   accept Tabetha's Task##2861 |goto Undercity 85.14,10.03
 step
-  only completed(4974)
-  talk Thrall##4949
-  accept What the Wind Carries##6566 |goto Orgrimmar 31.73,37.82
-step
-  only completed(6570)
-  talk Emberstrife##10321
-  accept The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
-step
-  only completed(6570)
-  talk Emberstrife##10321
-  accept The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
-step
-  note Overlord Mok'Morokk in Brackenwall Village wants you to retrieve his grog, snuff and strongbox in Dustwallow Swamp.
-  collect Mok'Morokk's Snuff##5834 |q 1166 |goto Dustwallow Marsh 44.53,66.04
-step
-  note Tharg in Brackenwall Village wants you to kill 10 Firemane Scouts, 10 Firemane Ash Tails, and 5 Firemane Scalebanes.
-  kill Firemane Scout##4329 |q 1168 |goto Dustwallow Marsh 42.4,67.8
-step
-  note Draz'Zilb in Brackenwall Village would like you to bring him 15 Searing Tongues and 15 Searing Hearts.
-  collect Searing Tongue##5840 |q 1169 |goto Dustwallow Marsh 45.4,73 |tip {dropsfrom}Searing Hatchling, Searing Whelp
+  talk Vark Battlescar##11823
+  accept Vyletongue Corruption##7029 |goto Desolace 23.22,70.33
 step
   note Bring Deadmire's Tooth to Melor in Thunder Bluff.
   collect Deadmire's Tooth##5945 |q 1205 |goto Dustwallow Marsh 50.2,52.7 |tip {dropsfrom}Deadmire
 step
-  only completed(6570)
-  note You must find the blue dragonflight drake champion, Scryer, and slay him. Pry his skull from his corpse and return it to Emberstrife.
-  kill Scryer##10664 |goto Winterspring 52.71,55.89 |elite
-  collect The Skull of Scryer##16869 |q 6582 |goto Winterspring 52.71,55.89
-step
-  only completed(6570)
-  note Guarding the Caverns of Time in the Tanaris Desert is Chronalis, child of Nozdormu. Destroy him and return his skull to Emberstrife.
-  kill Chronalis##8197 |goto Tanaris 64.16,48.49 |elite
-  collect The Skull of Chronalis##16871 |q 6584 |goto Tanaris 64.16,48.49
+  note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
+  kill Noxxious Scion##13696 |q 7029 |goto Maraudon - Dungeon -1,-1
 step
   only Mage
   talk Tabetha##6546
@@ -219,32 +239,14 @@ step
   talk Tabetha##6546
   turnin Return to the Marsh##1953 |goto Dustwallow Marsh 46.06,57.09
 step
-  talk Overlord Mok'Morokk##4500
-  turnin Overlord Mok'Morokk's Concern##1166 |goto Dustwallow Marsh 36.29,31.41
-step
-  talk Tharg##4502
-  turnin Army of the Black Dragon##1168 |goto Dustwallow Marsh 37.37,31.39
-step
-  talk Draz'Zilb##4501
-  turnin Identifying the Brood##1169 |goto Dustwallow Marsh 37.15,33.09
-step
   talk Melor Stonehoof##3441
   turnin Deadmire##1205 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
 step
   talk Tabetha##6546
   turnin Tabetha's Task##2861 |goto Dustwallow Marsh 46.06,57.09
 step
-  only completed(4974)
-  talk Thrall##4949
-  turnin What the Wind Carries##6566 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
-step
-  only completed(6570)
-  talk Emberstrife##10321
-  turnin The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
-step
-  only completed(6570)
-  talk Emberstrife##10321
-  turnin The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
+  talk Vark Battlescar##11823
+  turnin Vyletongue Corruption##7029 |goto Desolace 23.22,70.33 |tip {turninat}Desolace
 step
   only Warlock completed(1799) completed(4962)
   talk Menara Voidrender##6266
@@ -261,13 +263,6 @@ step
   only Mage
   talk Tabetha##6546
   accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
-step
-  talk Draz'Zilb##4501
-  accept The Brood of Onyxia##1170 |goto Dustwallow Marsh 37.15,33.09
-step
-  only completed(4974)
-  talk Thrall##4949
-  accept The Champion of the Horde##6567 |goto Orgrimmar 31.73,37.82
 step
   only Mage
   note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
@@ -289,13 +284,6 @@ step
   talk Tabetha##6546
   turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
-  talk Overlord Mok'Morokk##4500
-  turnin The Brood of Onyxia##1170 |goto Dustwallow Marsh 36.29,31.41
-step
-  only completed(4974)
-  talk Rexxar##10182
-  turnin The Champion of the Horde##6567 |goto Desolace 54,2 |tip {turninat}Desolace
-step
   talk Mosarn##4943
   turnin The Black Shield##1276 |goto Thunder Bluff 54.01,80.77 |tip {turninat}Thunder Bluff
 step
@@ -306,9 +294,6 @@ step
   only Mage
   talk Tabetha##6546
   accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
-step
-  talk Overlord Mok'Morokk##4500
-  accept The Brood of Onyxia##1171 |goto Dustwallow Marsh 36.29,31.41
 step
   only Mage
   note Find the phrase to Tirth's strongbox, then return to Tirth.
@@ -326,24 +311,6 @@ step
   talk Tabetha##6546
   turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step
-  talk Draz'Zilb##4501
-  turnin The Brood of Onyxia##1171 |goto Dustwallow Marsh 37.15,33.09
-step
-  talk Draz'Zilb##4501
-  accept The Brood of Onyxia##1172 |goto Dustwallow Marsh 37.15,33.09
-step
-  note Draz'Zilb in Brackenwall Village wants you to destroy 5 Eggs of Onyxia.
-  collect Egg of Onyxia##20359 |q 1172 |goto Dustwallow Marsh 56.65,75.41
-step
-  talk Draz'Zilb##4501
-  turnin The Brood of Onyxia##1172 |goto Dustwallow Marsh 37.15,33.09
-step
-  talk Overlord Mok'Morokk##4500
-  accept Challenge Overlord Mok'Morokk##1173 |goto Dustwallow Marsh 36.29,31.41
-step
-  talk Draz'Zilb##4501
-  turnin Challenge Overlord Mok'Morokk##1173 |goto Dustwallow Marsh 37.15,33.09
-step
   note {travel}Thousand Needles
-  goto Thousand Needles 80.18,75.88
+  goto Thousand Needles 32.24,22.17
 ]])

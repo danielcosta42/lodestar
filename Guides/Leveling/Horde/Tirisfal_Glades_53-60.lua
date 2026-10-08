@@ -44,16 +44,6 @@ step
   talk Shadow Priestess Vandis##11055
   accept Target: Felstone Field##5229 |goto Tirisfal Glades 83.04,71.91
 step
-  only not completed(1000) not completed(1018) not haveq(1000) not haveq(1018)
-  talk Harbinger Balthazad##10879
-  accept The New Frontier##1004 |goto Undercity 63.9,44.08
-step
-  talk Chemist Fuely##10136
-  accept ... and a Batch of Ooze##4294 |goto Undercity 47.45,73.35
-step
-  talk Apothecary Zinge##5204
-  accept Vivian Lagrave and the Darkstone Tablet##4769 |goto Undercity 50.14,67.97
-step
   only not completed(5507) not completed(5513) not haveq(5507) not haveq(5513)
   talk Argent Quartermaster Hasana##10856
   accept Mantles of the Dawn##5504 |goto Tirisfal Glades 83.26,68.14
@@ -73,6 +63,24 @@ step
   only completed(5802)
   talk Apothecary Dithers##11057
   accept Araj's Scarab##5804 |goto Tirisfal Glades 83.28,69.23
+step
+  only not completed(5507) not completed(5513) not haveq(5507) not haveq(5513)
+  talk Argent Quartermaster Hasana##10856
+  turnin Mantles of the Dawn##5504 |goto Tirisfal Glades 83.26,68.14
+step
+  only not completed(5517) not completed(5521) not haveq(5517) not haveq(5521)
+  talk Argent Quartermaster Hasana##10856
+  turnin Chromatic Mantle of the Dawn##5524 |goto Tirisfal Glades 83.26,68.14
+step
+  only not completed(1000) not completed(1018) not haveq(1000) not haveq(1018)
+  talk Harbinger Balthazad##10879
+  accept The New Frontier##1004 |goto Undercity 63.9,44.08
+step
+  talk Chemist Fuely##10136
+  accept ... and a Batch of Ooze##4294 |goto Undercity 47.45,73.35
+step
+  talk Apothecary Zinge##5204
+  accept Vivian Lagrave and the Darkstone Tablet##4769 |goto Undercity 50.14,67.97
 step
   note Use the Empty Termite Jar on the Termite Mounds in Eastern Plaguelands. After you've gathered 100 Plagueland Termites, return to Mickey Levine at the Bulwark in Tirisfal Glades.
   collect Plagueland Termites##15043 |q 5901 |goto Eastern Plaguelands 28.82,23.2 |tip {dropsfrom}Large Termite Mound
@@ -96,14 +104,6 @@ step
 step
   talk Shadowmage Vivian Lagrave##9078
   turnin Vivian Lagrave and the Darkstone Tablet##4769 |goto Badlands 2.9,47.76 |tip {turninat}Badlands
-step
-  only not completed(5507) not completed(5513) not haveq(5507) not haveq(5513)
-  talk Argent Quartermaster Hasana##10856
-  turnin Mantles of the Dawn##5504 |goto Tirisfal Glades 83.26,68.14
-step
-  only not completed(5517) not completed(5521) not haveq(5517) not haveq(5521)
-  talk Argent Quartermaster Hasana##10856
-  turnin Chromatic Mantle of the Dawn##5524 |goto Tirisfal Glades 83.26,68.14
 step
   only completed(5802)
   talk Apothecary Dithers##11057
@@ -157,6 +157,6 @@ step
   talk Apothecary Dithers##11057
   turnin Skeletal Fragments##964 |goto Tirisfal Glades 83.28,69.23
 step
-  note {travel}Undercity
-  goto Undercity 67.6,44.16
+  note {travel}Western Plaguelands
+  goto Western Plaguelands 38.4,54.05
 ]])

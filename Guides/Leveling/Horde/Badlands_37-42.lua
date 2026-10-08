@@ -122,70 +122,22 @@ step
   talk Theldurin the Lost##2785
   turnin The Lost Fragments##692 |goto Badlands 51.39,76.87
 step
-  talk Helgrum the Swift##1442
-  turnin Report to Helgrum##1420 |goto Swamp of Sorrows 47.74,55.2 |tip {turninat}Swamp of Sorrows
+  talk Lotwil Veriatus##2921
+  accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
+step
+  talk Jarkal Mossmeld##6868
+  accept Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
 step
   only completed(2318)
   talk Jarkal Mossmeld##6868
   accept Translating the Journal##2338 |goto Badlands 2.42,46.06
 step
-  talk Gorn##1068
-  accept Broken Alliances##782 |goto Badlands 2.91,45.6
-step
-  talk Patrick Garrett##5651
-  accept Reclaimed Treasures##2342 |goto Undercity 62.32,48.61
-step
-  note Bring 9 Blue Pearls to Rigglefuzz in the Badlands.
-  collect 9 Blue Pearl##4611 |q 705 |goto Stranglethorn Vale 26.3,26.1 |tip {dropsfrom}Giant Clam
-step
-  note Bring 4 Buzzard Wings to Rigglefuzz.
-  collect 4 Buzzard Wing##3404 |q 703 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Young Mesa Buzzard, Mesa Buzzard
-step
-  note Kill Boss Tho'grun and bring the Sign of the Earth to Gorn in Kargath.
-  collect Sign of the Earth##4640 |q 782 |goto Badlands 12.62,75.49 |tip {dropsfrom}Boss Tho'grun
-step
-  note Get Patrick Garrett's family treasure from their family chest in the South Common Hall of Uldaman, and bring it to him in the Undercity.
-  collect Garrett Family Treasure##8026 |q 2342 |goto Badlands 34.19,18.63 |tip {dropsfrom}Garrett Family Chest
-step
-  talk Rigglefuzz##2817
-  turnin Pearl Diving##705 |goto Badlands 42.39,52.93
-step
-  talk Rigglefuzz##2817
-  turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
+  note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
+  collect 5 Bracers of Rock Binding##4628 |q 712 |goto Badlands 5.48,82.27 |tip {dropsfrom}Greater Rock Elemental
 step
   only completed(2318)
   talk Jarkal Mossmeld##6868
   turnin Translating the Journal##2338 |goto Badlands 2.42,46.06
-step
-  talk Gorn##1068
-  turnin Broken Alliances##782 |goto Badlands 2.91,45.6
-step
-  talk Patrick Garrett##5651
-  turnin Reclaimed Treasures##2342 |goto Undercity 62.32,48.61 |tip {turninat}Undercity
-step
-  talk Keeper Bel'dugur##2934
-  turnin To the Undercity for Yagyin's Digest##728 |goto Undercity 53.74,54.46 |tip {turninat}Undercity
-step
-  talk Jarkal Mossmeld##6868
-  accept Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
-step
-  note Bring 12 Magenta Fungus Caps to Jarkal Mossmeld in Kargath.
-  collect 12 Magenta Fungus Cap##8047 |q 2202 |goto Badlands 37.57,15.26 |tip {dropsfrom}Magenta Cap Clusters
-step
-  talk Jarkal Mossmeld##6868
-  turnin Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
-step
-  talk Lotwil Veriatus##2921
-  accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
-step
-  note Bring a Healing Potion and a Lesser Invisibility Potion to Lucien Tosselwrench in the Badlands.
-  collect Healing Potion##929 |q 715 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Skeletal Warrior, Skeletal Horror
-step
-  note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
-  collect 5 Bracers of Rock Binding##4628 |q 712 |goto Badlands 5.48,82.27 |tip {dropsfrom}Greater Rock Elemental
-step
-  talk Lucien Tosselwrench##2920
-  turnin Liquid Stone##715 |goto Badlands 25.82,44.24
 step
   talk Lotwil Veriatus##2921
   turnin Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
@@ -199,6 +151,9 @@ step
   talk Lotwil Veriatus##2921
   accept This Is Going to Be Hard##734 |goto Badlands 25.95,44.87
 step
+  note Bring 12 Magenta Fungus Caps to Jarkal Mossmeld in Kargath.
+  collect 12 Magenta Fungus Cap##8047 |q 2202 |goto Badlands 37.57,15.26 |tip {dropsfrom}Magenta Cap Clusters
+step
   talk Lucien Tosselwrench##2920
   turnin Stone Is Better than Cloth##716 |goto Badlands 25.82,44.24
 step
@@ -211,6 +166,18 @@ step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##777 |goto Badlands 25.95,44.87
 step
+  talk Jarkal Mossmeld##6868
+  turnin Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
+step
+  talk Gorn##1068
+  accept Broken Alliances##782 |goto Badlands 2.91,45.6
+step
+  note Kill Boss Tho'grun and bring the Sign of the Earth to Gorn in Kargath.
+  collect Sign of the Earth##4640 |q 782 |goto Badlands 12.62,75.49 |tip {dropsfrom}Boss Tho'grun
+step
+  talk Gorn##1068
+  turnin Broken Alliances##782 |goto Badlands 2.91,45.6
+step
   talk Lotwil Veriatus##2921
   accept This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
 step
@@ -219,6 +186,39 @@ step
 step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
+step
+  talk Helgrum the Swift##1442
+  turnin Report to Helgrum##1420 |goto Swamp of Sorrows 47.74,55.2 |tip {turninat}Swamp of Sorrows
+step
+  talk Patrick Garrett##5651
+  accept Reclaimed Treasures##2342 |goto Undercity 62.32,48.61
+step
+  note Bring 9 Blue Pearls to Rigglefuzz in the Badlands.
+  collect 9 Blue Pearl##4611 |q 705 |goto Stranglethorn Vale 26.3,26.1 |tip {dropsfrom}Giant Clam
+step
+  note Bring 4 Buzzard Wings to Rigglefuzz.
+  collect 4 Buzzard Wing##3404 |q 703 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Young Mesa Buzzard, Mesa Buzzard
+step
+  note Get Patrick Garrett's family treasure from their family chest in the South Common Hall of Uldaman, and bring it to him in the Undercity.
+  collect Garrett Family Treasure##8026 |q 2342 |goto Badlands 34.19,18.63 |tip {dropsfrom}Garrett Family Chest
+step
+  talk Rigglefuzz##2817
+  turnin Pearl Diving##705 |goto Badlands 42.39,52.93
+step
+  talk Rigglefuzz##2817
+  turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
+step
+  talk Patrick Garrett##5651
+  turnin Reclaimed Treasures##2342 |goto Undercity 62.32,48.61 |tip {turninat}Undercity
+step
+  talk Keeper Bel'dugur##2934
+  turnin To the Undercity for Yagyin's Digest##728 |goto Undercity 53.74,54.46 |tip {turninat}Undercity
+step
+  note Bring a Healing Potion and a Lesser Invisibility Potion to Lucien Tosselwrench in the Badlands.
+  collect Healing Potion##929 |q 715 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Skeletal Warrior, Skeletal Horror
+step
+  talk Lucien Tosselwrench##2920
+  turnin Liquid Stone##715 |goto Badlands 25.82,44.24
 step
   note {travel}Swamp of Sorrows
   goto Swamp of Sorrows 25.98,31.4

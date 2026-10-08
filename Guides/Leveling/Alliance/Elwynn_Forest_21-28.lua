@@ -18,6 +18,30 @@ step
   talk Theocritus##313
   accept A Watchful Eye##94 |goto Elwynn Forest 65.22,69.71
 step
+  only completed(69)
+  talk Innkeeper Farley##295
+  accept The Legend of Stalvan##70 |goto Elwynn Forest 43.77,65.8
+step
+  only completed(69)
+  note Retrieve Stalvan's Undelivered Letter from the chest and deliver it to the Canal District in Stormwind.
+  collect An Undelivered Letter##910 |q 70 |goto Elwynn Forest 44.3,65.82 |tip {dropsfrom}Storage Chest
+step
+  only completed(74)
+  talk Marshal Haggard##294
+  accept The Legend of Stalvan##75 |goto Elwynn Forest 84.61,69.38
+step
+  only completed(74)
+  note Marshal Haggard wants you to check the chest upstairs for the Faded Journal Page.
+  collect A Faded Journal Page##921 |q 75 |goto Elwynn Forest 85.7,69.54 |tip {dropsfrom}Marshal Haggard's Chest
+step
+  only completed(74)
+  talk Marshal Haggard##294
+  turnin The Legend of Stalvan##75 |goto Elwynn Forest 84.61,69.38
+step
+  only completed(74)
+  talk Marshal Haggard##294
+  accept The Legend of Stalvan##78 |goto Elwynn Forest 84.61,69.38
+step
   only completed(118)
   talk Verner Osgood##415
   turnin Return to Verner##119 |goto Redridge Mountains 25.88,47.27 |tip {turninat}Redridge Mountains
@@ -28,19 +52,15 @@ step
   talk Warden Thelwater##1719
   turnin Bazil Thredd##389 |goto Stormwind City 51.49,69.38 |tip {turninat}Stormwind City
 step
+  only completed(69)
+  talk Caretaker Folsom##297
+  turnin The Legend of Stalvan##70 |goto Stormwind City 42.53,72.36 |tip {turninat}Stormwind City
+step
   talk Brother Kristoff##1444
   accept Speaking of Fortitude##343 |goto Stormwind City 55.04,54.16
 step
   talk Brother Sarno##7917
   accept Tinkmaster Overspark##2923 |goto Stormwind City 51.05,48.39
-step
-  only completed(69)
-  talk Innkeeper Farley##295
-  accept The Legend of Stalvan##70 |goto Elwynn Forest 43.77,65.8
-step
-  only completed(74)
-  talk Marshal Haggard##294
-  accept The Legend of Stalvan##75 |goto Elwynn Forest 84.61,69.38
 step
   only Warrior completed(1701)
   talk Furen Longbeard##5413
@@ -57,27 +77,11 @@ step
   talk Thomas##4982
   accept The Missing Diplomat##1274 |goto Stormwind City 49.64,44.48
 step
-  only completed(69)
-  note Retrieve Stalvan's Undelivered Letter from the chest and deliver it to the Canal District in Stormwind.
-  collect An Undelivered Letter##910 |q 70 |goto Elwynn Forest 44.3,65.82 |tip {dropsfrom}Storage Chest
-step
-  only completed(74)
-  note Marshal Haggard wants you to check the chest upstairs for the Faded Journal Page.
-  collect A Faded Journal Page##921 |q 75 |goto Elwynn Forest 85.7,69.54 |tip {dropsfrom}Marshal Haggard's Chest
-step
   talk Milton Sheaf##1440
   turnin Speaking of Fortitude##343 |goto Stormwind City 77.07,30.21 |tip {turninat}Stormwind City
 step
   talk Tinkmaster Overspark##7944
   turnin Tinkmaster Overspark##2923 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
-step
-  only completed(69)
-  talk Caretaker Folsom##297
-  turnin The Legend of Stalvan##70 |goto Stormwind City 42.53,72.36 |tip {turninat}Stormwind City
-step
-  only completed(74)
-  talk Marshal Haggard##294
-  turnin The Legend of Stalvan##75 |goto Elwynn Forest 84.61,69.38
 step
   only Warrior completed(1701)
   talk Furen Longbeard##5413
@@ -93,6 +97,10 @@ step
 step
   talk Bishop DeLavey##4960
   turnin The Missing Diplomat##1274 |goto Stormwind City 80.24,44.07 |tip {turninat}Stormwind City
+step
+  only completed(74)
+  talk Tavernkeep Smitts##273
+  turnin The Legend of Stalvan##78 |goto Duskwood 73.78,44.49 |tip {turninat}Duskwood
 step
   only completed(118)
   talk Verner Osgood##415
@@ -111,10 +119,6 @@ step
   only completed(69)
   talk Caretaker Folsom##297
   accept The Legend of Stalvan##72 |goto Stormwind City 42.53,72.36
-step
-  only completed(74)
-  talk Marshal Haggard##294
-  accept The Legend of Stalvan##78 |goto Elwynn Forest 84.61,69.38
 step
   only Human Warrior completed(1701)
   talk Furen Longbeard##5413
@@ -170,10 +174,6 @@ step
 step
   only completed(69)
   turnin The Legend of Stalvan##72 |goto Stormwind City 42.47,72.05 |tip {turninat}Stormwind City
-step
-  only completed(74)
-  talk Tavernkeep Smitts##273
-  turnin The Legend of Stalvan##78 |goto Duskwood 73.78,44.49 |tip {turninat}Duskwood
 step
   only Human Warrior completed(1701)
   talk Grimand Elmore##1416
@@ -278,5 +278,5 @@ step
   turnin The Legend of Stalvan##97 |goto Duskwood 73.54,46.82 |tip {turninat}Duskwood
 step
   note {travel}Stormwind City
-  goto Stormwind City 59.73,33.78
+  goto Stormwind City 40.14,85.31
 ]])

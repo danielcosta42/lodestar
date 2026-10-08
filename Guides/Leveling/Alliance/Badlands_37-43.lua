@@ -147,8 +147,77 @@ step
   kill Shadowforge Surveyor##4844 |goto Badlands 48.2,11 |tip Loot the quest item here — it starts the quest.
   accept The Shattered Necklace##2198 |goto Badlands 48.2,11
 step
+  only completed(738)
+  click Battered Dwarven Skeleton##2875
+  accept Murdaloc##739 |goto Badlands 50.89,62.4
+step
+  only completed(738)
+  note Slay Agmond's killer, Murdaloc.
+  kill Murdaloc##2945 |q 739 |goto Badlands 49.63,66.31
+step
+  talk Lotwil Veriatus##2921
+  accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
+step
+  note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
+  collect 5 Bracers of Rock Binding##4628 |q 712 |goto Badlands 5.48,82.27 |tip {dropsfrom}Greater Rock Elemental
+step
+  talk Lotwil Veriatus##2921
+  turnin Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
+step
+  talk Lucien Tosselwrench##2920
+  accept Stone Is Better than Cloth##716 |goto Badlands 25.82,44.24
+step
+  note Bring some Patterned Bronze Bracers to Lucien Tosselwrench in the Badlands.
+  collect Patterned Bronze Bracers##2868 |q 716 |goto Badlands 25.82,44.24
+step
+  talk Lotwil Veriatus##2921
+  accept This Is Going to Be Hard##734 |goto Badlands 25.95,44.87
+step
+  talk Lucien Tosselwrench##2920
+  turnin Stone Is Better than Cloth##716 |goto Badlands 25.82,44.24
+step
+  talk Lucien Tosselwrench##2920
+  turnin This Is Going to Be Hard##734 |goto Badlands 25.82,44.24
+step
+  talk Lucien Tosselwrench##2920
+  accept This Is Going to Be Hard##777 |goto Badlands 25.82,44.24
+step
+  talk Lotwil Veriatus##2921
+  turnin This Is Going to Be Hard##777 |goto Badlands 25.95,44.87
+step
+  talk Garek##2888
+  accept Tremors of the Earth##732 |goto Badlands 61.94,54.26
+step
+  note Retrieve the Sign of the Earth for Garek.
+  collect Sign of the Earth##4640 |q 732 |goto Badlands 12.62,75.49 |tip {dropsfrom}Boss Tho'grun
+step
+  talk Garek##2888
+  turnin Tremors of the Earth##732 |goto Badlands 61.94,54.26
+step
+  talk Sigrun Ironhew##2860
+  accept Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
+step
+  note Acquire a Black Drake's Heart for Sigrun Ironhew.
+  collect Black Drake's Heart##4612 |q 706 |goto Badlands 80.66,37.38 |tip {dropsfrom}Scalding Whelp, Scorched Guardian
+step
+  talk Lotwil Veriatus##2921
+  accept This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
+step
+  note Defeat the Fam'retor Guardian and bring Lotwil's Shackles of Elemental Binding back to Lotwil Veriatus.
+  collect Lotwil's Shackles of Elemental Binding##4847 |q 778 |goto Badlands 26.01,45.78 |tip {dropsfrom}Fam'retor Guardian
+step
+  talk Lotwil Veriatus##2921
+  turnin This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
+step
+  talk Sigrun Ironhew##2860
+  turnin Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
+step
   talk Talvash del Kissel##6826
   turnin The Shattered Necklace##2198 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
+step
+  only completed(738)
+  talk Prospector Ironband##1344
+  turnin Murdaloc##739 |goto Loch Modan 65.93,65.62 |tip {turninat}Loch Modan
 step
   only completed(653,688)
   talk Gerrig Bonegrip##2786
@@ -157,10 +226,6 @@ step
   talk Mazen Mac'Nadir##338
   accept Mazen's Behest##1363 |goto Stormwind City 51.8,74.24
 step
-  only completed(738)
-  click Battered Dwarven Skeleton##2875
-  accept Murdaloc##739 |goto Badlands 50.89,62.4
-step
   only not NightElf not Gnome not Skyborne Paladin not completed(4485) not completed(4486) not haveq(4485) not haveq(4486)
   talk Duthorian Rall##6171
   accept The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
@@ -168,24 +233,14 @@ step
   talk Krom Stoutarm##6294
   accept Reclaimed Treasures##1360 |goto Ironforge 74.19,9.39
 step
-  talk Sigrun Ironhew##2860
-  accept Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
-step
   note Bring 9 Blue Pearls to Rigglefuzz in the Badlands.
   collect 9 Blue Pearl##4611 |q 705 |goto Stranglethorn Vale 26.3,26.1 |tip {dropsfrom}Giant Clam
 step
   note Bring 4 Buzzard Wings to Rigglefuzz.
   collect 4 Buzzard Wing##3404 |q 703 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Young Mesa Buzzard, Mesa Buzzard
 step
-  only completed(738)
-  note Slay Agmond's killer, Murdaloc.
-  kill Murdaloc##2945 |q 739 |goto Badlands 49.63,66.31
-step
   note Get Krom Stoutarm's treasured possession from his chest in the North Common Hall of Uldaman, and bring it to him in Ironforge.
   collect Krom Stoutarm's Treasure##8027 |q 1360 |goto Badlands 35.56,23.51 |tip {dropsfrom}Krom Stoutarm's Chest
-step
-  note Acquire a Black Drake's Heart for Sigrun Ironhew.
-  collect Black Drake's Heart##4612 |q 706 |goto Badlands 80.66,37.38 |tip {dropsfrom}Scalding Whelp, Scorched Guardian
 step
   talk Rigglefuzz##2817
   turnin Pearl Diving##705 |goto Badlands 42.39,52.93
@@ -200,19 +255,12 @@ step
   talk Acolyte Dellis##5386
   turnin Mazen's Behest##1363 |goto Stormwind City 51.4,73.81 |tip {turninat}Stormwind City
 step
-  only completed(738)
-  talk Prospector Ironband##1344
-  turnin Murdaloc##739 |goto Loch Modan 65.93,65.62 |tip {turninat}Loch Modan
-step
   only not NightElf not Gnome not Skyborne Paladin not completed(4485) not completed(4486) not haveq(4485) not haveq(4486)
   talk Duthorian Rall##6171
   turnin The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
 step
   talk Krom Stoutarm##6294
   turnin Reclaimed Treasures##1360 |goto Ironforge 74.19,9.39 |tip {turninat}Ironforge
-step
-  talk Sigrun Ironhew##2860
-  turnin Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
 step
   talk Gerrig Bonegrip##2786
   turnin To Ironforge for Yagyin's Digest##727 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
@@ -234,9 +282,6 @@ step
   note Bring five silver bars to Talvash del Kissel in Ironforge.
   collect Silver Bar##2842 |q 2199 |goto Ironforge 36.38,3.61 |tip {dropsfrom}Battered Chest, Tattered Chest
 step
-  talk Garek##2888
-  accept Tremors of the Earth##732 |goto Badlands 61.94,54.26
-step
   only completed(738)
   note Bring 4 Carved Stone Urns to Prospector Ironband in Loch Modan.
   collect 4 Carved Stone Urn##4610 |q 704 |goto Badlands 35.52,16.36
@@ -247,9 +292,6 @@ step
 step
   note Retrieve Khadgar's Essays on Dimensional Convergence and deliver them to Watcher Mahar Ba in Nethergarde Keep.
   collect Khadgar's Essays on Dimensional Convergence##6065 |q 1364 |goto Swamp of Sorrows 15.81,36.55 |tip {dropsfrom}Swampwalker, Swampwalker Elder, Tangled Horror
-step
-  note Retrieve the Sign of the Earth for Garek.
-  collect Sign of the Earth##4640 |q 732 |goto Badlands 12.62,75.49 |tip {dropsfrom}Boss Tho'grun
 step
   only completed(738)
   talk Prospector Ironband##1344
@@ -265,12 +307,6 @@ step
   talk Talvash del Kissel##6826
   turnin Lore for a Price##2199 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
 step
-  talk Garek##2888
-  turnin Tremors of the Earth##732 |goto Badlands 61.94,54.26
-step
-  talk Lotwil Veriatus##2921
-  accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
-step
   talk Gerrig Bonegrip##2786
   accept The Star, the Hand and the Heart##735 |goto Ironforge 50.83,5.62
 step
@@ -283,9 +319,6 @@ step
 step
   note Bring a Healing Potion and a Lesser Invisibility Potion to Lucien Tosselwrench in the Badlands.
   collect Healing Potion##929 |q 715 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Skeletal Warrior, Skeletal Horror
-step
-  note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
-  collect 5 Bracers of Rock Binding##4628 |q 712 |goto Badlands 5.48,82.27 |tip {dropsfrom}Greater Rock Elemental
 step
   note Return the items on the Bonegrip's Note to Gerrig Bonegrip in Ironforge.
   collect Star of Xil'yeh##4646 |q 735 |goto Alterac Mountains 35.58,54.42 |tip {dropsfrom}Grel'borg the Miser
@@ -301,9 +334,6 @@ step
   talk Lucien Tosselwrench##2920
   turnin Liquid Stone##715 |goto Badlands 25.82,44.24
 step
-  talk Lotwil Veriatus##2921
-  turnin Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
-step
   talk Gerrig Bonegrip##2786
   turnin The Star, the Hand and the Heart##735 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
 step
@@ -316,47 +346,17 @@ step
   talk Gerrig Bonegrip##2786
   accept Forbidden Knowledge##737 |goto Ironforge 50.83,5.62
 step
-  talk Lucien Tosselwrench##2920
-  accept Stone Is Better than Cloth##716 |goto Badlands 25.82,44.24
-step
-  note Bring some Patterned Bronze Bracers to Lucien Tosselwrench in the Badlands.
-  collect Patterned Bronze Bracers##2868 |q 716 |goto Badlands 25.82,44.24
-step
-  talk Lotwil Veriatus##2921
-  accept This Is Going to Be Hard##734 |goto Badlands 25.95,44.87
-step
   talk Theldurin the Lost##2785
   turnin Forbidden Knowledge##737 |goto Badlands 51.39,76.87
-step
-  talk Lucien Tosselwrench##2920
-  turnin Stone Is Better than Cloth##716 |goto Badlands 25.82,44.24
-step
-  talk Lucien Tosselwrench##2920
-  turnin This Is Going to Be Hard##734 |goto Badlands 25.82,44.24
 step
   talk Historian Karnik##2916
   turnin Prospect of Faith##724 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
 step
-  talk Lucien Tosselwrench##2920
-  accept This Is Going to Be Hard##777 |goto Badlands 25.82,44.24
-step
-  talk Lotwil Veriatus##2921
-  turnin This Is Going to Be Hard##777 |goto Badlands 25.95,44.87
-step
   talk Historian Karnik##2916
   accept Passing Word of a Threat##725 |goto Ironforge 77.54,11.82
 step
-  talk Lotwil Veriatus##2921
-  accept This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
-step
-  note Defeat the Fam'retor Guardian and bring Lotwil's Shackles of Elemental Binding back to Lotwil Veriatus.
-  collect Lotwil's Shackles of Elemental Binding##4847 |q 778 |goto Badlands 26.01,45.78 |tip {dropsfrom}Fam'retor Guardian
-step
   talk Advisor Belgrum##2918
   turnin Passing Word of a Threat##725 |goto Ironforge 77.34,9.71 |tip {turninat}Ironforge
-step
-  talk Lotwil Veriatus##2921
-  turnin This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
 step
   talk Advisor Belgrum##2918
   accept Passing Word of a Threat##726 |goto Ironforge 77.34,9.71

@@ -44,16 +44,16 @@ step
 step
   turnin Helcular's Revenge##553 |goto Hillsbrad Foothills 52.75,53.37
 step
+  only completed(549)
+  click WANTED##1763
+  accept WANTED: Baron Vardus##566 |goto Hillsbrad Foothills 62.63,20.75
+step
   only completed(541)
   talk Varimathras##2425
   turnin Battle of Hillsbrad##550 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
 step
   talk Sharlindra##2227
   accept The Crown of Will##495 |goto Undercity 57.63,93.8
-step
-  only completed(549)
-  click WANTED##1763
-  accept WANTED: Baron Vardus##566 |goto Hillsbrad Foothills 62.63,20.75
 step
   note Bring 10 Worn Stone Tokens to Keeper Bel'varil in Tarren Mill.
   collect 10 Worn Stone Token##3714 |q 556 |goto Alterac Mountains 19,84.35 |tip {dropsfrom}Dalaran Shield Guard, Dalaran Theurgist, Dalaran Summoner
@@ -158,5 +158,5 @@ step
   turnin The Crown of Will##521 |goto Undercity 57.63,93.8 |tip {turninat}Undercity
 step
   note {travel}Alterac Mountains
-  goto Alterac Mountains 80.5,66.92
+  goto Alterac Mountains 57.17,69.51
 ]])

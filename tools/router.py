@@ -124,6 +124,9 @@ def continente(area, faction):
 # ---------------------------------------------------------------------------
 # Carga
 # ---------------------------------------------------------------------------
+DIARIO = 18                  # missões no diário, com folga para as de classe
+
+
 def load_data():
     d = {}
     for name in ("quests", "npcs", "objects", "zones"):
@@ -408,16 +411,45 @@ class Router:
                     sel[x] = dict(sel[x], races=resto)
         return tirar
 
-    @staticmethod
-    def _portoes(sel):
+    def _portoes(self, sel, faction=None):
         """{quest: condições do passo}. Pré-requisito que vem de fora do guia (outra
         zona, masmorra, classe) vira `completed(p)`: o passo só aparece para quem já o
         entregou, em vez de travar num NPC que não abre a quest. Quest exclusiva com
         outra (exclusiveTo) leva `not completed(x) not haveq(x)`: Call of Fire de
         Durotar e a de Orgrimmar (em The Barrens, o guia seguinte) — feita uma, a
         outra some em vez de travar; breadcrumb some depois da quest que a fecha.
-        Quem depende dela dentro do guia herda tudo, menos o que fala dela mesma."""
+        Quem depende dela dentro do guia herda tudo, menos o que fala dela mesma.
+        Classe e raça também: A Supernatural Device abre com a An Earnest Proposition
+        de qualquer classe — menos paladino, que a Horda do Forever tem e o banco
+        não — então o passo é `not Paladin`, e o que vem depois dele herda."""
         memo = {}
+        fac_ok = {"A", "AH"} if faction == "A" else {"H", "AH"}
+        todas_cls = sum(CLASS_BIT)
+        todas_rac = sum(RACAS[faction]) if faction in RACAS else 0
+
+        def mascaras(q):
+            return q["classes"] or todas_cls, (q["races"] & todas_rac) or todas_rac
+
+        def estreita(q):
+            """Classes e raças que conseguem a quest, pelo que as opções abrem."""
+            cls, rac = mascaras(q)
+            if q["preSingle"]:
+                mc = mr = 0
+                for p in q["preSingle"]:
+                    if p in sel:
+                        c, r = mascaras(sel[p])
+                    else:
+                        pq = self.quests.get(str(p))
+                        if pq and faction and pq["faction"] not in fac_ok:
+                            continue                 # da outra facção: não abre nada
+                        c, r = todas_cls, todas_rac
+                    mc, mr = mc | c, mr | r
+                cls, rac = cls & mc, rac & mr
+            for p in q["preGroup"]:
+                if p in sel:
+                    c, r = mascaras(sel[p])
+                    cls, rac = cls & c, rac & r
+            return cls, rac
 
         def portao(qid, pilha):
             if qid in memo:
@@ -427,6 +459,11 @@ class Router:
             q, pilha = sel[qid], pilha | {qid}
             out = {"not %s(%d)" % (f, x) for x in q["exclusiveTo"] if x != qid
                    for f in ("completed", "haveq")}
+            (cls, rac), (cls0, rac0) = estreita(q), mascaras(q)
+            if cls and cls != cls0:
+                out |= {"not " + n for b, n in CLASS_BIT.items() if cls0 & b and not cls & b}
+            if rac and rac != rac0 and faction in RACAS:
+                out |= {"not " + n for b, n in RACAS[faction].items() if rac0 & b and not rac & b}
             for p in q["preGroup"]:
                 out |= portao(p, pilha) if p in sel else {"completed(%d)" % p}
             dentro = [p for p in q["preSingle"] if p in sel]
@@ -848,8 +885,11 @@ class Router:
 
     def _sem_giver(self, sel, info):
         """Tira a quest que ninguém dá (giver sem spawn, item sem fonte nem quest
-        anterior que o entregue): nunca entra no log, e a entrega travaria o guia."""
-        for qid in self._tira(sel, {q for q, it in info.items() if not it["giver"]}):
+        anterior que o entregue): nunca entra no log, e a entrega travaria o guia.
+        E a que ninguém recebe (missão nova do Forever sem o NPC de entrega no banco):
+        aceita, ficava no diário até o fim do jogo."""
+        for qid in self._tira(sel, {q for q, it in info.items()
+                                    if not it["giver"] or not (it["ender"] or it["eobj"])}):
             del info[qid]
 
     # -- geração de uma zona ------------------------------------------------
@@ -960,7 +1000,7 @@ class Router:
             del info[qid]
         if not sel:
             return None, 0, []
-        for qid, tokens in self._portoes(sel).items():
+        for qid, tokens in self._portoes(sel, faction).items():
             if tokens:
                 info[qid]["q"] = sel[qid] = dict(sel[qid], portao=tokens)
 
@@ -982,12 +1022,18 @@ class Router:
         n_hi = niveis[min(len(niveis) - 1, int(len(niveis) * 0.85))]
         ini = n_lo if nivel_inicial is None else nivel_inicial
         accepted, done, turned = set(), set(), set()
+        teto = max(n_hi, ini)
+        subiu = [0]                # níveis ganhos fora das entregas (o loop travou)
 
         def precisa(q):
             return max(q.get("reqLevel") or 0, (q.get("questLevel") or 0) - 2)
 
+        # As entregas sozinhas subestimam o nível: o guia leva as de todas as classes e
+        # raças, e a fração entregue de Durotar parava em 7 de 98 (nível 2,7) — o resto
+        # caía no bloco de sobras, aceito de uma vez.
         def nivel_ok(q):
-            return precisa(q) <= ini + (max(n_hi, ini) - ini) * len(turned) / len(sel) + 1
+            est = ini + (teto - ini) * len(turned) / len(sel) + subiu[0]
+            return precisa(q) <= min(est, teto) + 1
 
         all_ids = set(sel)
         antes = self._antes(sel)
@@ -1008,7 +1054,14 @@ class Router:
         def tem_objetivo(q):
             return bool(q["objCreatures"] or q["objItems"] or q["objObjects"])
 
+        # Diário do Classic: 20. O guia leva as de todas as raças, então a conta é
+        # folgada; as de classe ficam fora dela (uma ou duas por vez, de cada classe).
+        def aberto():
+            return sum(1 for q in accepted if q not in turned and not sel[q]["classes"])
+
         def aceitar(qid):
+            if not sel[qid]["classes"] and aberto() >= DIARIO:
+                return False
             if emit_accept(qid):
                 accepted.add(qid)
                 it = info[qid]
@@ -1051,28 +1104,47 @@ class Router:
         lowest = min(sel, key=lambda q: (precisa(sel[q]), q))
         start = info[lowest]["ghub"] or 0
         path = self.hub_path(hubs, start) if hubs else []
-        for _ in range(16):
-            if not any([visita(h) for h in path]):
+        while True:
+            for _ in range(16):
+                if not any([visita(h) for h in path]):
+                    break
+            # travou: o jogador sobe matando no caminho — mais um nível e volta aos hubs
+            if ini + subiu[0] >= teto:
                 break
+            subiu[0] += 1
 
+        import sys as _s
+        _est = ini + (max(n_hi, ini) - ini) * len(turned) / len(sel) + 1
+        _s.stderr.write("PROBE|%s|sel=%d|ehubNone=%d|turned=%d|accepted=%d|naoAceitas=%d|ini=%s|n_hi=%s|est=%.1f|bloqNivel=%d" % (
+            title, len(sel), sum(1 for i in info.values() if i["ehub"] is None), len(turned), len(accepted),
+            sum(1 for q in sel if q not in accepted and q not in turned), ini, n_hi, _est,
+            sum(1 for q in sel if q not in accepted and q not in turned and not nivel_ok(sel[q]))) + chr(10))
         # Sobras, num bloco no fim: o que é de fora da zona (entrega na capital,
         # objetivo noutra zona) e o que o nível ainda não deixou. Ondas topológicas,
         # entregando o pré-req antes de aceitar a dependente.
         def pode_entregar(qid):
             return qid not in turned and (info[qid]["ender"] or info[qid]["eobj"])
+
+        def esvazia():                           # diário cheio: faz e entrega o que tem
+            for qid in sorted(accepted):
+                if qid not in turned and qid not in done:
+                    emit_do(qid); done.add(qid)
+            for qid in sorted(accepted):
+                if qid in done and pode_entregar(qid):
+                    emit_turnin(qid); turned.add(qid)
         for wave in self._topo_waves(sel):
             wave = sorted(wave, key=lambda q: (precisa(sel[q]), q))
             for qid in wave:
                 if qid in accepted and qid in done and pode_entregar(qid):
                     emit_turnin(qid); turned.add(qid)
             for qid in wave:
-                if qid not in accepted and qid not in turned:
-                    aceitar(qid)
+                if qid not in accepted and qid not in turned and not aceitar(qid):
+                    esvazia(); aceitar(qid)
             for qid in wave:
                 if qid in accepted and qid not in done:
                     emit_do(qid); done.add(qid)
             for qid in wave:
-                if pode_entregar(qid):
+                if qid in accepted and pode_entregar(qid):
                     emit_turnin(qid); turned.add(qid)
 
         # ponto de voo: no primeiro passo que passa perto dele, não no começo (o de
@@ -1249,7 +1321,7 @@ class Router:
         self._sem_giver(sel, info)
         if not sel:
             return None, 0, []
-        for qid, tokens in self._portoes(sel).items():
+        for qid, tokens in self._portoes(sel, faction).items():
             if tokens:
                 info[qid]["q"] = sel[qid] = dict(sel[qid], portao=tokens)
         antes = self._antes(sel)

@@ -303,8 +303,10 @@ def gen_faction(router, faction, level_max, min_quests):
         if any(f["titulo"] == titulo for f in feitos):
             titulo = "%s (%d-%d)" % (z["name"], z["lo"], z["hi"])
         # a viagem do guia anterior leva ao primeiro passo deste, não à "entrada"
-        # da zona inteira (Tirisfal 10-13 começa em Brill, não em Deathknell)
-        primeiro = re.search(r"\|goto ([^|\n]+?) ([\d.]+),([\d.]+)", text)
+        # da zona inteira (Tirisfal 10-13 começa em Brill, não em Deathknell) — o
+        # primeiro que vale para todos: o de uma classe só mandava os outros à toa
+        primeiro = next((m for bloco in text.split("\nstep\n") if "\n  only " not in "\n" + bloco
+                         for m in [re.search(r"\|goto ([^|\n]+?) ([\d.]+),([\d.]+)", bloco)] if m), None)
         feitos.append({"i": i, "z": z, "lo": lo, "hi": hi, "med": med, "titulo": titulo,
                        "key": guide_key(faction, titulo), "qids": set(qids),
                        "entrada": (primeiro.group(1), primeiro.group(2), primeiro.group(3))
@@ -350,6 +352,26 @@ def gen_faction(router, faction, level_max, min_quests):
         pos = {f["i"]: (cont, n) for cont, fs in trilha.items() for n, f in enumerate(fs)}
         for f in feitos:
             pos.setdefault(f["i"], (continente(f["z"]["area"], faction), -1))
+        # Nível: quest que pede mais que o teto do guia vai para o guia seguinte da
+        # trilha que o alcança. "Call of Water" (20) num Westfall 12-18 travava no
+        # NPC, que não a oferece a quem chega com 18.
+        # O teto é o do título final (o que o guia leva agora), até nada mais mudar.
+        subiu = True
+        while subiu:
+            subiu = False
+            leva = defaultdict(set)
+            for q, i in guia_de.items():
+                leva[i].add(q)
+            teto = {f["i"]: (faixa_do_guia(router, leva[f["i"]]) or (0, f["hi"], 0))[1] for f in feitos}
+            for q, i in list(guia_de.items()):
+                req = router.quests[str(q)].get("reqLevel") or 0
+                if i not in teto or req <= teto[i] + 1:
+                    continue
+                cont, n = pos[i]
+                adiante = [g for g in trilha.get(cont, []) if pos[g["i"]][1] > n]
+                if adiante:
+                    guia_de[q] = next((g for g in adiante if teto[g["i"]] + 1 >= req), adiante[-1])["i"]
+                    subiu = True
         mudou = True
         while mudou:                  # só anda para a frente na trilha: termina
             mudou = False

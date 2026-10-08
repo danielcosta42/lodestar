@@ -188,6 +188,18 @@ step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
 step
+  talk Gorn One Eye##11555
+  accept The Root of All Evil##8481 |goto Felwood 65.18,2.68
+step
+  note Plant the Demon Summoning Torch in the mouth of High Chief Winterfall's cave in the Winterfall furbolg village. Defeat the demon and retrieve the Essence of Xandivious for Gorn One Eye in Timbermaw Hold.
+  collect Essence of Xandivious##21145 |q 8481 |goto Felwood 65.18,2.68 |tip {dropsfrom}Xandivious' Demon Bag
+step
+  talk Gorn One Eye##11555
+  turnin The Root of All Evil##8481 |goto Felwood 65.18,2.68
+step
+  talk Gorn One Eye##11555
+  accept The Brokering of Peace##8485 |goto Felwood 65.18,2.68
+step
   only Druid
   talk Torwa Pathfinder##9619
   turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96 |tip {turninat}Un'Goro Crater
@@ -198,12 +210,6 @@ step
 step
   talk Rabine Saturna##11801
   accept A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1
-step
-  talk Gorn One Eye##11555
-  accept The Root of All Evil##8481 |goto Felwood 65.18,2.68
-step
-  note Plant the Demon Summoning Torch in the mouth of High Chief Winterfall's cave in the Winterfall furbolg village. Defeat the demon and retrieve the Essence of Xandivious for Gorn One Eye in Timbermaw Hold.
-  collect Essence of Xandivious##21145 |q 8481 |goto Felwood 65.18,2.68 |tip {dropsfrom}Xandivious' Demon Bag
 step
   note Trull Failbane in Felwood wants you to kill 15 Raging Owlbeasts and 15 Ragged Owlbeasts.
   kill Raging Owlbeast##7451 |q 4521 |goto Winterspring 59.83,31.69
@@ -217,11 +223,11 @@ step
   talk Rabine Saturna##11801
   turnin A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
 step
-  talk Gorn One Eye##11555
-  turnin The Root of All Evil##8481 |goto Felwood 65.18,2.68
-step
   talk Salfa##11556
   turnin Speak to Salfa##8465 |goto Winterspring 27.73,34.5 |tip {turninat}Winterspring
+step
+  talk Thrall##4949
+  turnin The Brokering of Peace##8485 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
 step
   talk Arch Druid Hamuul Runetotem##5769
   accept Rabine Saturna##1123 |goto Thunder Bluff 78.62,28.56
@@ -234,9 +240,6 @@ step
 step
   note Find the Felvine in Dire Maul and acquire a shard from it. Chances are you'll only be able to procure one with the demise of Alzzin the Wildshaper. Use the Reliquary of Purity to securely seal the shard inside, and return it to Rabine Saturna in Nighthaven, Moonglade.
   collect Sealed Reliquary of Purity##18540 |q 5526 |goto Moonglade 51.69,45.1
-step
-  talk Gorn One Eye##11555
-  accept The Brokering of Peace##8485 |goto Felwood 65.18,2.68
 step
   only Warlock
   note Impsy in Felwood has asked that you bring him three Flawless Fel Essences originating from three distinct locations.
@@ -257,9 +260,6 @@ step
 step
   talk Rabine Saturna##11801
   turnin Shards of the Felvine##5526 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
-step
-  talk Thrall##4949
-  turnin The Brokering of Peace##8485 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
 step
   talk Islen Waterseer##5901
   turnin Seeking Spiritual Aid##5158 |goto The Barrens 65.83,43.78 |tip {turninat}The Barrens
@@ -292,5 +292,5 @@ step
   turnin Wild Guardians##4721 |goto Felwood 34.73,52.79
 step
   note {travel}Winterspring
-  goto Winterspring 31.27,45.16
+  goto Winterspring 61.12,38.43
 ]])

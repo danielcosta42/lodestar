@@ -178,6 +178,41 @@ step
   talk Brother Nimetz##739
   turnin Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
 step
+  talk Whiskey Slim##2491
+  accept Whiskey Slim's Lost Grog##580 |goto Stranglethorn Vale 27.14,77.45
+step
+  kill Mok'rash##1493 |goto Stranglethorn Vale 23.25,72.1 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Monogrammed Sash##8552 |goto Stranglethorn Vale 23.25,72.1
+step
+  talk Captain Hecklebury Smotts##2500
+  turnin The Monogrammed Sash##8552 |goto Stranglethorn Vale 26.69,73.61
+step
+  talk Captain Hecklebury Smotts##2500
+  accept The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.69,73.61
+step
+  talk Sprogger##2594
+  turnin The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.66,73.64
+step
+  talk Sprogger##2594
+  accept Facing Negolash##8554 |goto Stranglethorn Vale 26.66,73.64
+step
+  talk Princess Poobah##2634
+  accept Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
+step
+  note Slay King Mukla and return to Princess Poobah with the Key to free her.
+  kill King Mukla##1559 |goto Stranglethorn Vale 40.95,83.9 |elite
+  collect Shackle Key##4103 |q 630 |goto Stranglethorn Vale 40.95,83.9
+step
+  note Bring 10 Barbecued Buzzard Wings and 5 bottles of Junglevine Wine to Captain Smotts' Lifeboat.
+  kill Negolash##1494 |goto Stranglethorn Vale 32.45,81.57 |elite
+  collect 10 Smotts' Cutlass##3935 |q 8554 |goto Stranglethorn Vale 32.45,81.57
+step
+  talk Princess Poobah##2634
+  turnin Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
+step
+  talk Captain Hecklebury Smotts##2500
+  turnin Facing Negolash##8554 |goto Stranglethorn Vale 26.69,73.61
+step
   turnin Cortello's Riddle##624 |goto Swamp of Sorrows 22.87,48.19 |tip {turninat}Swamp of Sorrows
 step
   talk Brohann Caskbelly##5384
@@ -190,47 +225,12 @@ step
   talk Watchmaster Sorigal##5464
   turnin Vital Supplies##1477 |goto Duskwood 75.78,46.16 |tip {turninat}Duskwood
 step
-  talk Whiskey Slim##2491
-  accept Whiskey Slim's Lost Grog##580 |goto Stranglethorn Vale 27.14,77.45
-step
-  kill Mok'rash##1493 |goto Stranglethorn Vale 23.25,72.1 |elite |tip Loot the quest item here — it starts the quest.
-  accept The Monogrammed Sash##8552 |goto Stranglethorn Vale 23.25,72.1
-step
   note Whiskey Slim in Booty Bay wants you to bring him the bottles of Pupellyverbos Port he lost.
   collect Pupellyverbos Port##3900 |q 580 |goto The Hinterlands 78.7,70.64
 step
   talk Whiskey Slim##2491
   turnin Whiskey Slim's Lost Grog##580 |goto Stranglethorn Vale 27.14,77.45
 step
-  talk Captain Hecklebury Smotts##2500
-  turnin The Monogrammed Sash##8552 |goto Stranglethorn Vale 26.69,73.61
-step
-  talk Captain Hecklebury Smotts##2500
-  accept The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.69,73.61
-step
-  talk Princess Poobah##2634
-  accept Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
-step
-  note Slay King Mukla and return to Princess Poobah with the Key to free her.
-  kill King Mukla##1559 |goto Stranglethorn Vale 40.95,83.9 |elite
-  collect Shackle Key##4103 |q 630 |goto Stranglethorn Vale 40.95,83.9
-step
-  talk Sprogger##2594
-  turnin The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.66,73.64
-step
-  talk Princess Poobah##2634
-  turnin Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
-step
-  talk Sprogger##2594
-  accept Facing Negolash##8554 |goto Stranglethorn Vale 26.66,73.64
-step
-  note Bring 10 Barbecued Buzzard Wings and 5 bottles of Junglevine Wine to Captain Smotts' Lifeboat.
-  kill Negolash##1494 |goto Stranglethorn Vale 32.45,81.57 |elite
-  collect 10 Smotts' Cutlass##3935 |q 8554 |goto Stranglethorn Vale 32.45,81.57
-step
-  talk Captain Hecklebury Smotts##2500
-  turnin Facing Negolash##8554 |goto Stranglethorn Vale 26.69,73.61
-step
-  note {travel}Stormwind City
-  goto Stormwind City 69.45,40.4
+  note {travel}The Hinterlands
+  goto The Hinterlands 14.83,44.57
 ]])

@@ -84,6 +84,16 @@ step
   talk Glorin Steelbrow##1217
   accept Cleansing the Eye##293 |goto Wetlands 10.58,60.59
 step
+  talk Longbraid the Grim##1071
+  accept A Grim Task##304 |goto Wetlands 49.8,18.26
+step
+  note Kill Balgaras the Foul and bring his ear to Longbraid the Grim outside of Dun Modr.
+  kill Balgaras the Foul##1364 |goto Wetlands 62.49,28.42 |elite
+  collect Ear of Balgaras##3639 |q 304 |goto Wetlands 62.49,28.42
+step
+  talk Longbraid the Grim##1071
+  turnin A Grim Task##304 |goto Wetlands 49.8,18.26
+step
   only completed(393)
   talk Elling Trias##482
   turnin Look to an Old Friend##350 |goto Stormwind City 66.03,74.1 |tip {turninat}Stormwind City
@@ -92,18 +102,8 @@ step
   talk Dashel Stonefist##4961
   turnin The Missing Diplomat##1246 |goto Stormwind City 74.26,59.17 |tip {turninat}Stormwind City
 step
-  talk Longbraid the Grim##1071
-  accept A Grim Task##304 |goto Wetlands 49.8,18.26
-step
   talk Connor Rivers##5081
   accept James Hyal##1301 |goto Stormwind City 51.12,95.52
-step
-  note Kill Balgaras the Foul and bring his ear to Longbraid the Grim outside of Dun Modr.
-  kill Balgaras the Foul##1364 |goto Wetlands 62.49,28.42 |elite
-  collect Ear of Balgaras##3639 |q 304 |goto Wetlands 62.49,28.42
-step
-  talk Longbraid the Grim##1071
-  turnin A Grim Task##304 |goto Wetlands 49.8,18.26
 step
   talk Vincent Hyal##5082
   turnin James Hyal##1301 |goto Wetlands 10.8,60.4
@@ -180,6 +180,6 @@ step
   talk Mikhail##4963
   turnin The Missing Diplomat##1250 |goto Wetlands 10.6,60.77
 step
-  note {travel}Ironforge
-  goto Ironforge 39.04,88.05
+  note {travel}Hillsbrad Foothills
+  goto Hillsbrad Foothills 50.53,70.01
 ]])

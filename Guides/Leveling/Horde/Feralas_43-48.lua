@@ -197,18 +197,21 @@ step
   talk Talo Thornhoof##7776
   turnin Vengeance on the Northspring##3063 |goto Feralas 76.18,43.83
 step
-  talk Neeru Fireblade##3216
-  turnin A Strange Request##3121 |goto Orgrimmar 49.47,50.59 |tip {turninat}Orgrimmar
-step
-  only completed(2280)
-  talk Sage Truthseeker##3978
-  accept The Platinum Discs##2440 |goto Thunder Bluff 34.4,46.87
-step
   talk Witch Doctor Uzer'i##8115
   accept The Sunken Temple##3380 |goto Feralas 74.42,43.36
 step
   talk Talo Thornhoof##7776
   accept The Strength of Corruption##4120 |goto Feralas 76.18,43.83
+step
+  talk Neeru Fireblade##3216
+  turnin A Strange Request##3121 |goto Orgrimmar 49.47,50.59 |tip {turninat}Orgrimmar
+step
+  talk Marvon Rivetseeker##7771
+  turnin The Sunken Temple##3380 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris
+step
+  only completed(2280)
+  talk Sage Truthseeker##3978
+  accept The Platinum Discs##2440 |goto Thunder Bluff 34.4,46.87
 step
   note Talo Thornhoof at Camp Mojache in Feralas wants you to kill 12 Angerclaw Grizzlies and 12 Felpaw Ravagers in Felwood.
   kill Angerclaw Grizzly##8957 |q 4120 |goto Felwood 57.6,17.79
@@ -216,9 +219,6 @@ step
   only completed(2280)
   talk Bena Winterhoof##3009
   turnin The Platinum Discs##2440 |goto Thunder Bluff 46.62,33.17 |tip {turninat}Thunder Bluff
-step
-  talk Marvon Rivetseeker##7771
-  turnin The Sunken Temple##3380 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris
 step
   talk Talo Thornhoof##7776
   turnin The Strength of Corruption##4120 |goto Feralas 76.18,43.83
@@ -248,5 +248,5 @@ step
   turnin Zukk'ash Report##7732 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
 step
   note {travel}Tanaris
-  goto Tanaris 50.96,27.24
+  goto Tanaris 52.46,28.51
 ]])

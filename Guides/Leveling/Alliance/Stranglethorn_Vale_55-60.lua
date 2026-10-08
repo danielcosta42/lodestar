@@ -38,6 +38,12 @@ step
   talk "Pretty Boy" Duncan##2545
   accept Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 27.39,69.42
 step
+  talk Fleet Master Firallon##2546
+  turnin Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 30.58,90.63
+step
+  talk Fleet Master Firallon##2546
+  accept Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
+step
   talk Exzhal##14910
   accept A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
 step
@@ -47,21 +53,11 @@ step
   talk Vinchaxa##15070
   accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
-  talk Fleet Master Firallon##2546
-  turnin Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 30.58,90.63
-step
   talk Exzhal##14910
   turnin A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
 step
   talk Vinchaxa##15070
   turnin A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
-step
-  only completed(3621)
-  talk Fallen Hero of the Horde##7572
-  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
-step
-  talk Fleet Master Firallon##2546
-  accept Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
 step
   note {fp}Gyll
   goto Stranglethorn Vale 27.53,77.79 |tip {vendor}
@@ -71,6 +67,10 @@ step
 step
   talk Fleet Master Firallon##2546
   turnin Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
+step
+  only completed(3621)
+  talk Fallen Hero of the Horde##7572
+  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
 step
   only completed(3621)
   talk Fallen Hero of the Horde##7572
@@ -98,6 +98,6 @@ step
   talk Fallen Hero of the Horde##7572
   turnin You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
 step
-  note {travel}Stormwind City
-  goto Stormwind City 80.21,38.35
+  note {travel}Redridge Mountains
+  goto Redridge Mountains 9.75,71.02
 ]])

@@ -49,12 +49,19 @@ step
   talk Beldin Steelgrill##1376
   accept A Visitor to Dun Morogh##96408 |goto Dun Morogh 50.44,49.09
 step
+  talk Earthseer Farsen##264936
+  turnin A Visitor to Dun Morogh##96408 |goto Dun Morogh 64.92,58.51
+step
   only not Dwarf not NightElf not Skyborne Mage
   talk Magis Sparkmantle##1228
   accept Report to Jennea##1919 |goto Dun Morogh 47.5,52.08
 step
-  talk Earthseer Farsen##264936
-  turnin A Visitor to Dun Morogh##96408 |goto Dun Morogh 64.92,58.51
+  only Rogue
+  talk Hogral Bakkan##1234
+  accept To Hulfdan!##2299 |goto Dun Morogh 47.56,52.61
+step
+  talk Pilot Stonegear##1377
+  accept Search for Incendicite##466 |goto Dun Morogh 49.62,48.61
 step
   talk Afadra Dunwall##264943
   turnin The Restless Dead##96394 |goto Ironforge 33.34,47.82 |tip {turninat}Ironforge
@@ -69,15 +76,12 @@ step
   talk Jennea Cannon##5497
   turnin Report to Jennea##1919 |goto Stormwind City 49.56,85.8 |tip {turninat}Stormwind City
 step
+  only Rogue
+  talk Hulfdan Blackbeard##5165
+  turnin To Hulfdan!##2299 |goto Ironforge 51.96,14.84 |tip {turninat}Ironforge
+step
   talk Gnoarn##6569
   accept Speak with Shoni##2041 |goto Ironforge 69.18,50.55
-step
-  only Rogue
-  talk Hogral Bakkan##1234
-  accept To Hulfdan!##2299 |goto Dun Morogh 47.56,52.61
-step
-  talk Pilot Stonegear##1377
-  accept Search for Incendicite##466 |goto Dun Morogh 49.62,48.61
 step
   only Warlock not completed(1716) not haveq(1716)
   talk Lago Blackwrench##6120
@@ -95,6 +99,14 @@ step
   talk High Priest Rohan##11406
   accept Arcane Feedback##5677 |goto Ironforge 24.73,8.16
 step
+  only Shaman
+  talk Eldrun Stormbreaker##258098
+  accept Call of Water##94494 |goto Ironforge 47.43,13.5
+step
+  only Shaman
+  talk Norric Lochthane##258043
+  accept Water Sapta##94616 |goto Loch Modan 41.89,19.03
+step
   talk Tinkmaster Overspark##7944
   accept Save Techbot's Brain!##2922 |goto Ironforge 69.55,50.33
 step
@@ -110,10 +122,6 @@ step
 step
   talk Shoni the Shilent##6579
   turnin Speak with Shoni##2041 |goto Stormwind City 62.63,34.11 |tip {turninat}Stormwind City
-step
-  only Rogue
-  talk Hulfdan Blackbeard##5165
-  turnin To Hulfdan!##2299 |goto Ironforge 51.96,14.84 |tip {turninat}Ironforge
 step
   talk Pilot Stonegear##1377
   turnin Search for Incendicite##466 |goto Dun Morogh 49.62,48.61
@@ -133,6 +141,14 @@ step
   only Human Priest not completed(5676) not completed(5678) not haveq(5676) not haveq(5678)
   talk High Priestess Laurena##376
   turnin Arcane Feedback##5677 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
+step
+  only Shaman
+  talk Norric Lochthane##258043
+  turnin Call of Water##94494 |goto Loch Modan 41.89,19.03 |tip {turninat}Loch Modan
+step
+  only Shaman
+  talk Norric Lochthane##258043
+  turnin Water Sapta##94616 |goto Loch Modan 41.89,19.03 |tip {turninat}Loch Modan
 step
   talk Tinkmaster Overspark##7944
   turnin Save Techbot's Brain!##2922 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
@@ -159,5 +175,5 @@ step
   turnin Gnogaine##2926 |goto Dun Morogh 45.89,49.39
 step
   note {travel}Stormwind City
-  goto Stormwind City 70.95,72.51
+  goto Stormwind City 26.29,47.15
 ]])

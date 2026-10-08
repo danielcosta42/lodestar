@@ -174,6 +174,27 @@ step
   talk Dorn Plainstalker##2986
   accept Test of Lore##1152 |goto Thousand Needles 53.95,41.49
 step
+  talk Trackmaster Zherin##4629
+  accept A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
+step
+  note Kill 10 Saltstone Basilisks, 10 Saltstone Crystalhides and 6 Saltstone Gazers for Trackmaster Zherin on the Shimmering Flats.
+  kill Saltstone Basilisk##4147 |q 1175 |goto Thousand Needles 73.64,59.44
+step
+  talk Trackmaster Zherin##4629
+  turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
+step
+  talk Cliffwatcher Longhorn##10537
+  accept Family Tree##5361 |goto Thousand Needles 45.67,50.74
+step
+  talk Kravel Koalbeard##4452
+  accept Wharfmaster Dizzywig##1111 |goto Thousand Needles 77.79,77.27
+step
+  talk Nataka Longhorn##11259
+  turnin Family Tree##5361 |goto Desolace 55.41,55.81 |tip {turninat}Desolace
+step
+  talk Wharfmaster Dizzywig##3453
+  turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
+step
   only completed(1195)
   talk Zangen Stonehoof##4721
   accept The Sacred Flame##1196 |goto Thunder Bluff 54.97,51.41
@@ -196,20 +217,8 @@ step
   talk Belgrom Rockmaul##4485
   accept The Swarm Grows##1146 |goto Orgrimmar 75.23,34.24
 step
-  talk Trackmaster Zherin##4629
-  accept A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
-step
-  talk Cliffwatcher Longhorn##10537
-  accept Family Tree##5361 |goto Thousand Needles 45.67,50.74
-step
-  talk Kravel Koalbeard##4452
-  accept Wharfmaster Dizzywig##1111 |goto Thousand Needles 77.79,77.27
-step
   note Bring Steelsnap's Rib to Melor Stonehoof in Thunder Bluff.
   collect Steelsnap's Rib##5837 |q 1131 |goto Thousand Needles 17.79,19.79 |tip {dropsfrom}Steelsnap
-step
-  note Kill 10 Saltstone Basilisks, 10 Saltstone Crystalhides and 6 Saltstone Gazers for Trackmaster Zherin on the Shimmering Flats.
-  kill Saltstone Basilisk##4147 |q 1175 |goto Thousand Needles 73.64,59.44
 step
   only completed(1195)
   talk Rau Cliffrunner##4722
@@ -232,15 +241,6 @@ step
   only completed(1145)
   talk Moktar Krin##4483
   turnin The Swarm Grows##1146 |goto Thousand Needles 67.58,63.94
-step
-  talk Trackmaster Zherin##4629
-  turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
-step
-  talk Nataka Longhorn##11259
-  turnin Family Tree##5361 |goto Desolace 55.41,55.81 |tip {turninat}Desolace
-step
-  talk Wharfmaster Dizzywig##3453
-  turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
 step
   only completed(1195)
   talk Rau Cliffrunner##4722
@@ -334,6 +334,6 @@ step
   talk Parqual Fintallas##4488
   turnin Test of Lore##1159 |goto Undercity 57.8,65.42 |tip {turninat}Undercity
 step
-  note {travel}Orgrimmar
-  goto Orgrimmar 22.56,52.63
+  note {travel}Desolace
+  goto Desolace 56.29,59.68
 ]])

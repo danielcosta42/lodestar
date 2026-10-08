@@ -38,6 +38,12 @@ step
   talk "Pretty Boy" Duncan##2545
   accept Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 27.39,69.42
 step
+  talk Fleet Master Firallon##2546
+  turnin Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 30.58,90.63
+step
+  talk Fleet Master Firallon##2546
+  accept Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
+step
   talk Exzhal##14910
   accept A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
 step
@@ -47,27 +53,21 @@ step
   talk Vinchaxa##15070
   accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
-  talk Fleet Master Firallon##2546
-  turnin Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 30.58,90.63
-step
   talk Exzhal##14910
   turnin A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
 step
   talk Vinchaxa##15070
   turnin A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
-  only completed(3621)
-  talk Fallen Hero of the Horde##7572
-  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
-step
-  talk Fleet Master Firallon##2546
-  accept Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
-step
   note Slay Fleet Master Seahorn and Baron Revilgaz of Booty Bay, and then return to Fleet Master Firallon aboard the Crimson Veil off the coast of Stranglethorn Vale.
   talk Baron Revilgaz##2496 |q 4621 |goto Stranglethorn Vale 27.23,76.87
 step
   talk Fleet Master Firallon##2546
   turnin Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
+step
+  only completed(3621)
+  talk Fallen Hero of the Horde##7572
+  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
 step
   only completed(3621)
   talk Fallen Hero of the Horde##7572

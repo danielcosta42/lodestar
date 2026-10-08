@@ -78,6 +78,6 @@ step
   talk Karus##3309
   turnin Calm Before the Storm##4511 |goto Orgrimmar 49.58,69.12 |tip {turninat}Orgrimmar
 step
-  note {travel}Thunder Bluff
-  goto Thunder Bluff 44.33,58.76
+  note {travel}Felwood
+  goto Felwood 50.93,85.01
 ]])

@@ -79,5 +79,5 @@ step
   turnin Assisting Arch Druid Runetotem##3784 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
 step
   note {travel}Undercity
-  goto Undercity 48.71,71.39
+  goto Undercity 47.45,73.35
 ]])

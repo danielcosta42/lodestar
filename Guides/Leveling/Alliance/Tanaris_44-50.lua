@@ -244,6 +244,6 @@ step
   talk Alchemist Pestlezugg##5594
   turnin March of the Silithid##4493 |goto Tanaris 50.89,26.96
 step
-  note {travel}Teldrassil
-  goto Teldrassil 55.22,91.46
+  note {travel}Stormwind City
+  goto Stormwind City 56.39,74.09
 ]])

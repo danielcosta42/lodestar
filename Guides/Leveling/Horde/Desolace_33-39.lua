@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Desolace (33-39)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Dustwallow Marsh (35-45)",
+	next = "Leveling/Horde/Dustwallow Marsh (35-43)",
 }, [[
 step
   only completed(1431)
@@ -131,6 +131,9 @@ step
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1481 |goto Desolace 52.25,53.44
 step
+  talk Nataka Longhorn##11259
+  accept Catch of the Day##5386 |goto Desolace 55.41,55.81
+step
   talk Uthek the Wise##5397
   turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
 step
@@ -139,6 +142,9 @@ step
 step
   talk Drulzegar Skraghook##12340
   accept Other Fish to Fry##6143 |goto Desolace 23.32,72.87
+step
+  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
+  collect Bloodbelly Fish##13546 |q 5386 |goto Desolace 22.45,73.12 |tip {dropsfrom}Jinar'Zillen
 step
   talk Azore Aldamort##11863
   turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
@@ -179,11 +185,11 @@ step
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1481 |goto Desolace 52.25,53.44
 step
+  talk Nataka Longhorn##11259
+  turnin Catch of the Day##5386 |goto Desolace 55.41,55.81
+step
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1482 |goto Desolace 52.25,53.44
-step
-  talk Nataka Longhorn##11259
-  accept Catch of the Day##5386 |goto Desolace 55.41,55.81
 step
   talk Rigger Gizelton##11626
   accept Gizelton Caravan##5943 |goto Desolace 45.4,75.29
@@ -193,9 +199,6 @@ step
 step
   talk Taiga Wisemane##11624
   accept Hand of Iruxos##5381 |goto Desolace 25.82,68.21
-step
-  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
-  collect Bloodbelly Fish##13546 |q 5386 |goto Desolace 22.45,73.12 |tip {dropsfrom}Jinar'Zillen
 step
   note Find Rackmore's Silver Key. Find Rackmore's Golden Key. Find and open Rackmore's Chest.
   collect Rackmore's Silver Key##15878 |q 6161 |goto Desolace 24.7,78.72 |tip {dropsfrom}Drysnap Crawler, Drysnap Pincer
@@ -214,6 +217,9 @@ step
   talk Azore Aldamort##11863
   turnin Book of the Ancients##6027 |goto Desolace 38.88,27.16
 step
+  talk Bibbly F'utzbuckle##11438
+  accept Bone Collector##5501 |goto Desolace 62.33,38.99
+step
   note Retrieve the Demon Box from Thunder Axe Fortress, and return it, along with the Demon Pick to Taiga Wisemane in Shadowprey Village.
   collect Demon Box##13542 |q 5381 |goto Desolace 55,26.6 |tip {dropsfrom}Demon Spirit
 step
@@ -222,9 +228,6 @@ step
 step
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1482 |goto Desolace 52.25,53.44
-step
-  talk Nataka Longhorn##11259
-  turnin Catch of the Day##5386 |goto Desolace 55.41,55.81
 step
   talk Smeed Scrabblescrew##11596
   turnin Gizelton Caravan##5943 |goto Desolace 60.86,61.86
@@ -235,8 +238,17 @@ step
   talk Takata Steelblade##5641
   turnin The Corrupter##1484 |goto Desolace 52.57,54.39
 step
+  talk Takata Steelblade##5641
+  accept The Corrupter##1488 |goto Desolace 52.57,54.39
+step
   talk Hornizz Brimbuzzle##6019
   accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
+step
+  note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
+  collect 10 Kodo Bone##13703 |q 5501 |goto Desolace 53.26,61.24 |tip {dropsfrom}Kodo Bones
+step
+  note Slay Lord Azrethoc and Jugkar Grim'rod and return to Takata Steelblade in Desolace.
+  kill Lord Azrethoc##5760 |q 1488 |goto Desolace 56.95,75.74 |elite
 step
   talk Taiga Wisemane##11624
   turnin Hand of Iruxos##5381 |goto Desolace 25.82,68.21
@@ -248,10 +260,13 @@ step
   accept Get Me Out of Here!##6132 |goto Desolace 33.95,53.5
 step
   talk Bibbly F'utzbuckle##11438
-  accept Bone Collector##5501 |goto Desolace 62.33,38.99
+  turnin Bone Collector##5501 |goto Desolace 62.33,38.99
 step
   note Bring 8 Ghost-o-plasms and the Crate of Ghost Magnets to Hornizz Brimbuzzle in Desolace.
   collect 8 Ghost-o-plasm##15849 |q 6134 |goto Desolace 64.18,91.63 |tip {dropsfrom}Magrami Spectre
+step
+  talk Takata Steelblade##5641
+  turnin The Corrupter##1488 |goto Desolace 52.57,54.39
 step
   talk Hornizz Brimbuzzle##6019
   turnin Get Me Out of Here!##6132 |goto Desolace 47.83,61.83
@@ -259,62 +274,11 @@ step
   talk Hornizz Brimbuzzle##6019
   turnin Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
 step
-  note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
-  collect 10 Kodo Bone##13703 |q 5501 |goto Desolace 53.26,61.24 |tip {dropsfrom}Kodo Bones
-step
   note Banish 6 Portals at Mannoroc Coven and return to Taiga Wisemane at Shadowprey Village.
   kill Demon Portal Guardian##11937 |q 5581 |goto Desolace 52.6,77.4
 step
   talk Taiga Wisemane##11624
   turnin Portals of the Legion##5581 |goto Desolace 25.82,68.21
-step
-  talk Bibbly F'utzbuckle##11438
-  turnin Bone Collector##5501 |goto Desolace 62.33,38.99
-step
-  talk Takata Steelblade##5641
-  accept The Corrupter##1488 |goto Desolace 52.57,54.39
-step
-  note Slay Lord Azrethoc and Jugkar Grim'rod and return to Takata Steelblade in Desolace.
-  kill Lord Azrethoc##5760 |q 1488 |goto Desolace 56.95,75.74 |elite
-step
-  talk Takata Steelblade##5641
-  turnin The Corrupter##1488 |goto Desolace 52.57,54.39
-step
-  only completed(2949)
-  talk Nogg##3412
-  turnin Nogg's Ring Redo##2950 |goto Orgrimmar 75.99,25.41 |tip {turninat}Orgrimmar
-step
-  talk Uthel'nay##7311
-  accept Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27
-step
-  talk Vark Battlescar##11823
-  accept Vyletongue Corruption##7029 |goto Desolace 23.22,70.33
-step
-  talk Centaur Pariah##13717
-  accept The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
-step
-  note Read the Pariah's Instructions. Afterwards, obtain the Amulet of Union from Maraudon and return it to the Centaur Pariah in southern Desolace.
-  collect Amulet of Union##17758 |q 7067 |goto Desolace 50.42,86.65
-step
-  note Collect 10 Shadowshard Fragments from Maraudon and return them to Uthel'nay in Orgrimmar.
-  kill Shadowshard Rumbler##11777 |goto Desolace 27.23,57.68 |elite
-  collect 10 Shadowshard Fragment##17756 |q 7068 |goto Desolace 27.23,57.68
-step
-  note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
-  kill Noxxious Scion##13696 |q 7029 |goto Maraudon - Dungeon -1,-1
-step
-  talk Uthel'nay##7311
-  turnin Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
-step
-  talk Vark Battlescar##11823
-  turnin Vyletongue Corruption##7029 |goto Desolace 23.22,70.33
-step
-  talk Centaur Pariah##13717
-  turnin The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
-step
-  only completed(1431)
-  talk Keldran##5640
-  turnin Alliance Relations##1436 |goto Orgrimmar 22.56,52.63 |tip {turninat}Orgrimmar
 step
   talk Warug##5398
   accept Khan Hratha##1381 |goto Desolace 74.97,68.16
@@ -325,6 +289,65 @@ step
 step
   talk Warug##5398
   turnin Khan Hratha##1381 |goto Desolace 74.97,68.16
+step
+  only completed(2949)
+  talk Nogg##3412
+  turnin Nogg's Ring Redo##2950 |goto Orgrimmar 75.99,25.41 |tip {turninat}Orgrimmar
+step
+  only Warlock not completed(4965) not completed(4968) not completed(4969) not haveq(4965) not haveq(4968) not haveq(4969)
+  talk Zevrost##3326
+  accept Knowledge of the Orb of Orahil##4967 |goto Orgrimmar 48.47,45.43
+step
+  only Warlock not completed(4963) not haveq(4963)
+  talk Acolyte Wytula##6254
+  accept Shard of a Felhound##4962 |goto The Barrens 62.64,35.3
+step
+  talk Uthel'nay##7311
+  accept Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27
+step
+  talk Centaur Pariah##13717
+  accept The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
+step
+  note Read the Pariah's Instructions. Afterwards, obtain the Amulet of Union from Maraudon and return it to the Centaur Pariah in southern Desolace.
+  collect Amulet of Union##17758 |q 7067 |goto Desolace 50.42,86.65
+step
+  only Warlock not completed(4963) not haveq(4963)
+  note Take the Felhas Ruby and use it on one of the Felhounds found in Desolace. After successful, bring the Felhas Ruby and the Imprisoned Felhound Spirit back to Menara Voidrender in the Barrens.
+  collect Imprisoned Felhound Spirit##12648 |q 4962 |goto Desolace 52.91,68.14 |tip {dropsfrom}Mana Eater
+step
+  note Collect 10 Shadowshard Fragments from Maraudon and return them to Uthel'nay in Orgrimmar.
+  kill Shadowshard Rumbler##11777 |goto Desolace 27.23,57.68 |elite
+  collect 10 Shadowshard Fragment##17756 |q 7068 |goto Desolace 27.23,57.68
+step
+  only Warlock not completed(4965) not completed(4968) not completed(4969) not haveq(4965) not haveq(4968) not haveq(4969)
+  talk Menara Voidrender##6266
+  turnin Knowledge of the Orb of Orahil##4967 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  only Warlock not completed(4963) not haveq(4963)
+  talk Menara Voidrender##6266
+  turnin Shard of a Felhound##4962 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  talk Uthel'nay##7311
+  turnin Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
+step
+  talk Centaur Pariah##13717
+  turnin The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
+step
+  only Warlock
+  talk Menara Voidrender##6266
+  accept Fragments of the Orb of Orahil##1799 |goto The Barrens 62.51,35.45
+step
+  only Warlock
+  note Speak to Menara's acolytes inside the tower above Ratchet and choose one of their paths to follow.
+  collect Infernal Orb##7291 |q 1799 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
+step
+  only Warlock
+  talk Tabetha##6546
+  turnin Fragments of the Orb of Orahil##1799 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
+step
+  only completed(1431)
+  talk Keldran##5640
+  turnin Alliance Relations##1436 |goto Orgrimmar 22.56,52.63 |tip {turninat}Orgrimmar
 step
   note {travel}Dustwallow Marsh
   goto Dustwallow Marsh 35.21,30.66

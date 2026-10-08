@@ -120,6 +120,9 @@ step
   talk Tirion Fordring##1855
   accept Of Love and Family##5846 |goto Eastern Plaguelands 5.16,35.57
 step
+  click Torn Scroll##177667
+  accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
+step
   talk Caretaker Alen##11038
   accept The Restless Souls##5281 |goto Eastern Plaguelands 69.93,53.72
 step
@@ -151,29 +154,6 @@ step
   talk Leonid Barthalomew the Revered##11036
   accept Betina Bigglezink##5531 |goto Eastern Plaguelands 71.89,48.29
 step
-  only completed(5848)
-  talk Tirion Fordring##1855
-  accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
-step
-  click Torn Scroll##177667
-  accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
-step
-  only completed(6186)
-  talk Highlord Bolvar Fordragon##1748
-  accept Order Must Be Restored##6187 |goto Stormwind City 80.21,38.35
-step
-  only completed(8926,8931,8932,8933,8934,8935,8936,8937)
-  talk Deliana##16013
-  accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
-step
-  only completed(8946)
-  talk Anthion Harmon##16016
-  accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
-step
-  only completed(8946)
-  note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
-step
   talk Huntsman Leopold##16132
   accept Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
 step
@@ -195,32 +175,6 @@ step
   note Capture Crown Guard Tower, Eastwall Tower, Northpass Tower and Plaguewood Tower in the Eastern Plaguelands, then return to Emmisary Whitebeard at Light's Hope Chapel.
   get Establishing New Outposts |q 9664 |goto Eastern Plaguelands 71.51,49.66
 step
-  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
-  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
-step
-  only completed(6186)
-  note Assemble an army and travel to the Eastern Plaguelands. Launch a full assault on Nathanos Blightcaller and any Horde filth that may attempt to protect him.
-  talk Nathanos Blightcaller##11878 |q 6187 |goto Eastern Plaguelands 22.23,63.51
-step
-  note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
-  collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
-step
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands wants 30 Bone Fragments.
-  collect Bone Fragments##22526 |q 9126 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
-step
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands wants 30 Dark Iron Scraps.
-  collect Dark Iron Scraps##22528 |q 9131 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith, Dark Iron Slaver, Dark Iron Taskmaster
-step
-  talk Egan##11140
-  turnin The Restless Souls##5281 |goto Eastern Plaguelands 11.36,26.6
-step
-  only completed(5462)
-  turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1 |tip {turninat}Stratholme - Dungeon
-step
-  only completed(5464)
-  talk Magistrate Marduke##11286
-  turnin Soulbound Keepsake##5465 |goto Western Plaguelands 70.57,74.11 |tip {turninat}Western Plaguelands
-step
   only not completed(5504) not completed(5507) not haveq(5504) not haveq(5507)
   talk Quartermaster Miranda Breechlock##11536
   turnin Mantles of the Dawn##5513 |goto Eastern Plaguelands 71.79,50.25
@@ -233,11 +187,70 @@ step
   talk Betina Bigglezink##11035
   turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
 step
+  talk Dispatch Commander Metz##16212
+  turnin They Call Me "The Rooster"##9141 |goto Eastern Plaguelands 71.28,48.04
+step
+  talk Emmisary Whitebeard##17069
+  turnin Establishing New Outposts##9664 |goto Eastern Plaguelands 71.51,49.66
+step
+  only completed(8946)
+  talk Anthion Harmon##16016
+  accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
+step
+  only completed(8946)
+  note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
+  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
+step
+  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
+  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
+step
+  only completed(8946)
+  talk Anthion Harmon##16016
+  turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Egan##11140
+  turnin The Restless Souls##5281 |goto Eastern Plaguelands 11.36,26.6
+step
+  note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
+  collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
+step
+  only completed(5848)
+  talk Tirion Fordring##1855
+  accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
+step
+  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
+step
+  talk Huntsman Leopold##16132
+  turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
+step
+  only completed(5462)
+  turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1 |tip {turninat}Stratholme - Dungeon
+step
+  only completed(5464)
+  talk Magistrate Marduke##11286
+  turnin Soulbound Keepsake##5465 |goto Western Plaguelands 70.57,74.11 |tip {turninat}Western Plaguelands
+step
   only completed(5848)
   talk Myranda the Hag##11872
   turnin Find Myranda##5861 |goto Western Plaguelands 50.79,77.85 |tip {turninat}Western Plaguelands
 step
-  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
+  only completed(6186)
+  talk Highlord Bolvar Fordragon##1748
+  accept Order Must Be Restored##6187 |goto Stormwind City 80.21,38.35
+step
+  only completed(8926,8931,8932,8933,8934,8935,8936,8937)
+  talk Deliana##16013
+  accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
+step
+  only completed(6186)
+  note Assemble an army and travel to the Eastern Plaguelands. Launch a full assault on Nathanos Blightcaller and any Horde filth that may attempt to protect him.
+  talk Nathanos Blightcaller##11878 |q 6187 |goto Eastern Plaguelands 22.23,63.51
+step
+  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands wants 30 Bone Fragments.
+  collect Bone Fragments##22526 |q 9126 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
+step
+  note Korfax at Light's Hope Chapel in the Eastern Plaguelands wants 30 Dark Iron Scraps.
+  collect Dark Iron Scraps##22528 |q 9131 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith, Dark Iron Slaver, Dark Iron Taskmaster
 step
   only completed(6186)
   talk Highlord Bolvar Fordragon##1748
@@ -247,24 +260,11 @@ step
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
-  only completed(8946)
-  talk Anthion Harmon##16016
-  turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
-step
-  talk Huntsman Leopold##16132
-  turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
-step
   talk Rohan the Assassin##16131
   turnin Bonescythe Digs##9126 |goto Eastern Plaguelands 71.62,48.91
 step
   talk Korfax, Champion of the Light##16112
   turnin Binding the Dreadnaught##9131 |goto Eastern Plaguelands 71.95,48.52
-step
-  talk Dispatch Commander Metz##16212
-  turnin They Call Me "The Rooster"##9141 |goto Eastern Plaguelands 71.28,48.04
-step
-  talk Emmisary Whitebeard##17069
-  turnin Establishing New Outposts##9664 |goto Eastern Plaguelands 71.51,49.66
 step
   talk Marlene Redpath##10927
   turnin Auntie Marlene##5152 |goto Western Plaguelands 49.17,78.57 |tip {turninat}Western Plaguelands

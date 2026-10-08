@@ -138,9 +138,23 @@ step
   talk Bainham##267309
   accept Chol'aruk the Ravener##97005 |goto The Barrens 61.8,39.4
 step
+  note Bring Chol'aruk's Head to Bainham in the Barrens.
+  collect Chol'aruk's Head##276070 |q 97005 |goto The Barrens 57.76,27.42 |tip {dropsfrom}Chol'aruk
+step
+  talk Bainham##267309
+  turnin Chol'aruk the Ravener##97005 |goto The Barrens 61.8,39.4
+step
   only Warlock completed(1716)
   talk Takar the Seer##6244
   accept Heartswood##1738 |goto The Barrens 49.31,57.1
+step
+  click Burned-Out Remains##415106
+  accept Stepping Stones##79192 |goto The Barrens 46.34,73.96
+step
+  talk Ziz Fizziks##4201
+  turnin Ziz Fizziks##1483 |goto Stonetalon Mountains 58.99,62.6 |tip {turninat}Stonetalon Mountains
+step
+  turnin Stepping Stones##79192 |goto Stonetalon Mountains 40.79,52.61 |tip {turninat}Stonetalon Mountains
 step
   only Dwarf Priest not completed(5641) not completed(5645) not haveq(5641) not haveq(5645)
   talk Priestess Alathea##11401
@@ -158,37 +172,19 @@ step
   talk Mathrengyl Bearwalker##4217
   accept The Great Cat Spirit##98393 |goto Darnassus 35.37,8.4
 step
-  click Burned-Out Remains##415106
-  accept Stepping Stones##79192 |goto The Barrens 46.34,73.96
-step
   only completed(6981)
   talk Falla Sagewind##8418
   accept In Nightmares##3370 |goto The Barrens 48.18,32.78
 step
-  talk Myriam Moonsinger##12866
-  accept A Host of Evil##6626 |goto The Barrens 49.01,94.94
-step
   note Bring 15 Deepmoss Eggs to Mebok Mizzyrix in Ratchet.
   collect 15 Deepmoss Egg##5570 |q 1069 |goto Stonetalon Mountains 61.39,56.74 |tip {dropsfrom}Deepmoss Eggs
-step
-  note Bring Chol'aruk's Head to Bainham in the Barrens.
-  collect Chol'aruk's Head##276070 |q 97005 |goto The Barrens 57.76,27.42 |tip {dropsfrom}Chol'aruk
 step
   only Warlock completed(1716)
   note Retrieve the Heartswood from Ashenvale and bring it to Gakin the Darkbinder in the Mage Quarter of Stormwind.
   collect Heartswood##6912 |q 1738 |goto Ashenvale 31.55,31.57
 step
-  note Kill 8 Razorfen Battleguard, 8 Razorfen Thornweavers, and 8 Death's Head Cultists and return to Myriam Moonsinger near the entrance to Razorfen Downs.
-  kill Razorfen Battleguard##7873 |q 6626 |goto The Barrens 47.3,89.89 |elite
-step
   talk Mebok Mizzyrix##3446
   turnin Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
-step
-  talk Ziz Fizziks##4201
-  turnin Ziz Fizziks##1483 |goto Stonetalon Mountains 58.99,62.6 |tip {turninat}Stonetalon Mountains
-step
-  talk Bainham##267309
-  turnin Chol'aruk the Ravener##97005 |goto The Barrens 61.8,39.4
 step
   only Warlock completed(1716)
   talk Gakin the Darkbinder##6122
@@ -210,14 +206,9 @@ step
   talk Dendrite Starblaze##11802
   turnin The Great Cat Spirit##98393 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
 step
-  turnin Stepping Stones##79192 |goto Stonetalon Mountains 40.79,52.61 |tip {turninat}Stonetalon Mountains
-step
   only completed(6981)
   talk Mathrengyl Bearwalker##4217
   turnin In Nightmares##3370 |goto Darnassus 35.37,8.4 |tip {turninat}Darnassus
-step
-  talk Myriam Moonsinger##12866
-  turnin A Host of Evil##6626 |goto The Barrens 49.01,94.94
 step
   note {travel}Stonetalon Mountains
   goto Stonetalon Mountains 59.9,66.85

@@ -235,6 +235,6 @@ step
   talk Zggi##1733
   turnin You Have Served Us Well##397 |goto Stormwind City 40.21,85.31 |tip {turninat}Stormwind City
 step
-  note {travel}Stormwind City
-  goto Stormwind City 78.31,70.74
+  note {travel}Wetlands
+  goto Wetlands 49.67,18.23
 ]])

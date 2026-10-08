@@ -193,6 +193,27 @@ step
   talk Karang Amakkar##12757
   turnin King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
 step
+  kill Sharptalon##12676 |goto Ashenvale 74.98,70.06 |tip Loot the quest item here — it starts the quest.
+  accept Sharptalon's Claw##2 |goto Ashenvale 74.98,70.06
+step
+  talk Gurda Ragescar##12718
+  accept The Lost Pages##6504 |goto Ashenvale 70.01,71.16
+step
+  note Find the 12 missing pages of the Shredder Operating Manual, and put them together to form Chapters 1, 2, and 3. Return the pages to Gurda Ragescar near Splintertree Post.
+  collect Shredder Operating Manual - Chapter 1##16642 |q 6504 |goto Ashenvale 70.01,71.16
+step
+  talk Senani Thunderheart##12696
+  turnin Sharptalon's Claw##2 |goto Ashenvale 73.78,61.46
+step
+  talk Gurda Ragescar##12718
+  turnin The Lost Pages##6504 |goto Ashenvale 70.01,71.16
+step
+  talk Senani Thunderheart##12696
+  accept The Hunt Completed##247 |goto Ashenvale 73.78,61.46
+step
+  talk Senani Thunderheart##12696
+  turnin The Hunt Completed##247 |goto Ashenvale 73.78,61.46
+step
   only Warlock completed(65601) not completed(1472) not haveq(1472)
   talk Gan'rul Bloodeye##5875
   turnin Wish You Were Here##65610 |goto Orgrimmar 48.25,45.28 |tip {turninat}Orgrimmar
@@ -203,12 +224,6 @@ step
   only not Orc not Tauren not Skyborne Mage
   talk Deino##5885
   accept Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13
-step
-  talk Gurda Ragescar##12718
-  accept The Lost Pages##6504 |goto Ashenvale 70.01,71.16
-step
-  note Find the 12 missing pages of the Shredder Operating Manual, and put them together to form Chapters 1, 2, and 3. Return the pages to Gurda Ragescar near Splintertree Post.
-  collect Shredder Operating Manual - Chapter 1##16642 |q 6504 |goto Ashenvale 70.01,71.16
 step
   note Return a Filled Etched Phial to Zangen Stonehoof in Thunder Bluff.
   collect Filled Etched Phial##5868 |q 1195 |goto Ashenvale 60.2,72.91 |tip {dropsfrom}Ashenvale Moonwell
@@ -224,9 +239,6 @@ step
   talk Deino##5885
   turnin Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13 |tip {turninat}Orgrimmar
 step
-  talk Gurda Ragescar##12718
-  turnin The Lost Pages##6504 |goto Ashenvale 70.01,71.16
-step
   only not Orc not Tauren not Skyborne Mage
   talk Deino##5885
   accept Laughing Sisters##1945 |goto Orgrimmar 38.45,86.13
@@ -238,18 +250,6 @@ step
   only not Orc not Tauren not Skyborne Mage
   talk Kil'hala##3484
   turnin Laughing Sisters##1945 |goto The Barrens 52.2,31.7 |tip {turninat}The Barrens
-step
-  kill Sharptalon##12676 |goto Ashenvale 74.98,70.06 |tip Loot the quest item here — it starts the quest.
-  accept Sharptalon's Claw##2 |goto Ashenvale 74.98,70.06
-step
-  talk Senani Thunderheart##12696
-  turnin Sharptalon's Claw##2 |goto Ashenvale 73.78,61.46
-step
-  talk Senani Thunderheart##12696
-  accept The Hunt Completed##247 |goto Ashenvale 73.78,61.46
-step
-  talk Senani Thunderheart##12696
-  turnin The Hunt Completed##247 |goto Ashenvale 73.78,61.46
 step
   note {travel}The Barrens
   goto The Barrens 51.07,29.63
