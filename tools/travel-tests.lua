@@ -723,7 +723,7 @@ check(cam and #cam == 2, "campo aberto, perna de ~2600 jd: reta (" .. (cam and #
 -- começando dentro da parede (ajusta para a célula vizinha): o primeiro trecho sai dela antes
 -- de seguir, não corre por dentro da parede
 cam = TRN.Path(parede, mundo(5, 10), mundo(5, 15), 20000)
-check(cam and not atravessa(cam, function(r, c) return c == 10 and r < 26 and r ~= 5 end),
+check(cam and not atravessa(cam, function(lin, col) return col == 10 and lin < 26 and lin ~= 5 end),
 	"começo dentro da parede: o caminho não corre por dentro dela")
 
 -- a seta mira o ponto do caminho ~25 jd à frente; o que falta é pelo caminho
