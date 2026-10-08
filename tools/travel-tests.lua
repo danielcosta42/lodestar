@@ -490,4 +490,75 @@ check(select(1, T.PickAnnounced(cands, "The zeppelin to Undercity has just arriv
 	"grito com o destino: o zepelim de Undercity, mesmo sendo o mais longe")
 check(select(1, T.PickAnnounced(cands, "Zepelim chegou!")) == 285, "sem o nome no texto: o mais perto")
 
+-- ── #23: caminho a pé pelo terreno ───────────────────────────────────────────
+local TRN = load("Terrain.lua", {}).Terrain
+local DIRS8 = { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } }
+-- quadrante 0 sintético: `bloq(r, c)` diz o que é parede, `agua(r, c)` o que é lago
+local function quadranteSint(bloq, agua)
+	local by, wb = {}, {}
+	for r = 0, 31 do
+		for c = 0, 31 do
+			local v = 0
+			if not bloq(r, c) then
+				for d, rc in ipairs(DIRS8) do
+					local nr, nc = r + rc[1], c + rc[2]
+					if nr >= 0 and nr < 32 and nc >= 0 and nc < 32 and not bloq(nr, nc) then v = v + 2 ^ (d - 1) end
+				end
+			end
+			by[#by + 1] = string.char(1, v)
+		end
+	end
+	for i = 0, 127 do
+		local v = 0
+		for k = 0, 7 do
+			local cel = i * 8 + k
+			if agua and agua(math.floor(cel / 32), cel % 32) then v = v + 2 ^ k end
+		end
+		wb[#wb + 1] = string.char(1, v)
+	end
+	return { [0] = { [0] = table.concat(by) .. table.concat(wb) } }
+end
+local function mundo(r, c) return TRN.CellCenter(0, r, c) end
+local function comprimento(pts)
+	local s = 0
+	for i = 2, #pts do s = s + math.sqrt((pts[i].x - pts[i - 1].x) ^ 2 + (pts[i].y - pts[i - 1].y) ^ 2) end
+	return s
+end
+-- parede na coluna 10 com brecha embaixo (linhas 26+)
+local parede = quadranteSint(function(r, c) return c == 10 and r < 26 end)
+local A, B = mundo(5, 5), mundo(5, 15)
+local cam = TRN.Path(parede, A, B, 20000)
+check(cam and #cam >= 2, "há caminho pela brecha da parede")
+check(cam and comprimento(cam) > 2.5 * math.sqrt((A.x - B.x) ^ 2 + (A.y - B.y) ^ 2), "o caminho contorna a parede (bem mais longo que a reta)")
+check(cam and math.abs(cam[#cam].x - B.x) < 0.01 and math.abs(cam[1].x - A.x) < 0.01, "começa no jogador e termina no destino")
+local fechada = quadranteSint(function(r, c) return c == 10 end)
+check(TRN.Path(fechada, A, B, 20000) == nil, "parede inteira: sem caminho (volta a reta)")
+-- lago no meio: contorna se a volta for curta
+local lago = quadranteSint(function() return false end, function(r, c) return c >= 9 and c <= 11 and r >= 3 and r <= 7 end)
+cam = TRN.Path(lago, A, B, 20000)
+local molhou = false
+for i = 2, #(cam or {}) do                      -- percorre cada segmento a cada 2 jd
+	local p0, p1 = cam[i - 1], cam[i]
+	local len = math.sqrt((p1.x - p0.x) ^ 2 + (p1.y - p0.y) ^ 2)
+	for t = 0, len, 2 do
+		local r, c = TRN.Cell(p0.x + (p1.x - p0.x) * t / len, p0.y + (p1.y - p0.y) * t / len)
+		if c >= 9 and c <= 11 and r >= 3 and r <= 7 then molhou = true end
+	end
+end
+check(cam and not molhou, "lago pequeno no meio: contorna em vez de nadar")
+
+-- a seta mira o ponto do caminho ~25 jd à frente; o que falta é pelo caminho
+local L_ = { { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 0, x = 100, y = 100 } }   -- 100 norte, 100 oeste
+local ax, ay, falta = TRN.Ahead(L_, { c = 0, x = 90, y = 2 }, 25)
+check(near(ax, 100) and near(ay, 15) and near(falta, 110), "virando a esquina: mira o trecho seguinte e falta 110 jd (" .. ax .. "," .. ay .. "," .. falta .. ")")
+ax, ay, falta = TRN.Ahead(L_, { c = 0, x = 100, y = 95 }, 25)
+check(near(ax, 100) and near(ay, 100) and near(falta, 5), "perto do fim: mira o destino")
+-- terreno de verdade (Kalimdor): Ratchet -> Encruzilhada existe e contorna o relevo
+local K = load("Terrain1.lua", {}).terrain
+local rat, cru = { c = 1, x = -894.6, y = -3773.0 }, { c = 1, x = -441.8, y = -2596.4 }
+cam = TRN.Path(K, rat, cru, 300000)
+local reta = math.sqrt((rat.x - cru.x) ^ 2 + (rat.y - cru.y) ^ 2)
+check(cam and comprimento(cam) > reta and comprimento(cam) < 1.6 * reta,
+	"real: Ratchet -> Encruzilhada pelo terreno (" .. (cam and math.floor(comprimento(cam)) or 0) .. " jd; reta " .. math.floor(reta) .. ")")
+
 print(("ok: %d checks"):format(checks))
