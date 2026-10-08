@@ -18,13 +18,7 @@ local function verbLabel(verb)
 end
 
 -- nome localizado da zona (p/ casar com GetZoneText do client)
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
+local localizedZone = ns.LocalizedZone
 
 -- Texto de viagem p/ o passo atual: a perna atual da rota (antes da última, a pé);
 -- sem rota e com o alvo fora da zona, "Vá para <zona>".

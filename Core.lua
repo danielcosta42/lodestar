@@ -114,7 +114,6 @@ local DB_DEFAULTS = {
 	gearAdvisor = true,   -- avisa quando acha um upgrade de equipamento na bolsa
 	xpHud = true,         -- painel de ritmo (XP/h, ETA, adiantado/atrasado)
 	xpHudPos = {},        -- posição destacada do HUD (se arrastado)
-	talents = true,       -- sugestão de talento por nível + botão aprender
 	reportCard = true,    -- boletim de leveling (nota + card compartilhável)
 	ghost = {},           -- run de referência por classe (Ghost Racing)
 	coords = true,        -- coordenadas do player no minimapa/mapa

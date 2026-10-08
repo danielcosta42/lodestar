@@ -64,6 +64,15 @@ function ns.PlayerName()
 	return UnitName("player") or "?"
 end
 
+-- Nome da zona (chave em inglês dos guias) no idioma do cliente, pelo mapa.
+function ns.LocalizedZone(engZone)
+	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
+		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
+		if info and info.name then return info.name end
+	end
+	return engZone
+end
+
 -- "Creature-0-4467-0-25-6-000019B300" -> 6. GUID de jogador, secreto ou fora do
 -- formato: nil — fatiar um secreto estoura.
 function ns.NpcID(guid)

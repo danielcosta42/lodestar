@@ -10,6 +10,16 @@ ignore:
   - "**/*.png"
   # arte-fonte e preview de HUD
   - "Media/*.zip"
+  # glifos que a interface não usa (ficam no repositório como fonte)
+  - "lodestar-glyphs/chevron-cima-*.tga"
+  - "lodestar-glyphs/chevron-dir-*.tga"
+  - "lodestar-glyphs/chevron-esq-*.tga"
+  - "lodestar-glyphs/combate-*.tga"
+  - "lodestar-glyphs/escudo-*.tga"
+  - "lodestar-glyphs/martelo-*.tga"
+  - "lodestar-glyphs/moeda-*.tga"
+  - "lodestar-glyphs/passo-atual-*.tga"
+  - "lodestar-glyphs/faccao-*-128.tga"
   - "Media/*.html"
   # gerador Python + validador (dev only)
   - "tools"

@@ -65,10 +65,3 @@ end)
 function DR:CountFor(dungeon)
 	return (dungeon and ns.char.dungeonRuns and ns.char.dungeonRuns[dungeon]) or 0
 end
-
--- Zera o contador de uma dungeon (ex.: ao (re)entrar num passo). Não usado por
--- padrão — mantemos o acumulado do char —, exposto p/ um comando futuro.
-function DR:Reset(dungeon)
-	if ns.char.dungeonRuns then ns.char.dungeonRuns[dungeon] = nil end
-	if ns.Viewer then ns.Viewer:Refresh() end
-end

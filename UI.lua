@@ -46,19 +46,6 @@ local function unpackc(c, a)
 end
 UI.unpackc = unpackc
 
--- Gradiente compatível (API nova SetGradient; fallback SetGradientAlpha).
-function UI.Gradient(tex, orientation, c1, c2)
-	tex:SetColorTexture(1, 1, 1, 1)
-	if tex.SetGradient and CreateColor then
-		local ok = pcall(tex.SetGradient, tex, orientation,
-			CreateColor(unpackc(c1)), CreateColor(unpackc(c2)))
-		if ok then return end
-	end
-	if tex.SetGradientAlpha then
-		tex:SetGradientAlpha(orientation, unpackc(c1), unpackc(c2))
-	end
-end
-
 function UI.SetFont(fs, size, opts)
 	opts = opts or {}
 	local font = opts.title and UI.FONT_TITLE or (opts.num and UI.FONT_NUM) or UI.FONT

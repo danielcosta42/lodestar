@@ -1,6 +1,6 @@
 """
 guide_integrity.py — INTEGRIDADE ESTRUTURAL e QUALIDADE DE FLUXO dos guias.
-Complementa validate_guides.py (bloqueios) e audit.py (nomes/coords/alvos):
+Complementa validate_guides.py (bloqueios):
 
 INTEGRIDADE (correção):
   DANGLING  — quest ACEITA em algum guia mas NUNCA entregue em lugar nenhum

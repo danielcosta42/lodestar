@@ -503,15 +503,6 @@ function ns:AdvanceStep(delta)
 	if self.Waypoint then self.Waypoint:Update() end
 end
 
--- Marca/desmarca conclusão manual de um goal.
-function ns:MarkGoal(goal, done)
-	if done == nil then done = not self.char.completedGoals[goal._gkey] end
-	self.char.completedGoals[goal._gkey] = done or nil
-	self.char.hold = nil                         -- marcou: o guia volta a andar sozinho
-	self:CheckProgress()
-	if self.Viewer then self.Viewer:Refresh() end
-end
-
 -- Chamado quando o estado do jogo muda: auto-avança por TODOS os steps já
 -- concluídos/inativos (importante ao retomar um guia salvo).
 function ns:CheckProgress()

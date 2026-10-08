@@ -310,14 +310,7 @@ local function goalName(goal)
 end
 
 -- nome localizado da zona (para casar com GetZoneText do client)
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
-ns.localizedZone = localizedZone
+local localizedZone = ns.LocalizedZone
 
 --------------------------------------------------------------------------------
 -- Em VIAGEM (voo/táxi): a direção não importa — mostra ETA (distância restante ÷

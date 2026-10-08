@@ -29,13 +29,7 @@ local CONTINENT = {
 	["Hellfire Peninsula"]="O", ["Zangarmarsh"]="O", ["Terokkar Forest"]="O", ["Nagrand"]="O",
 	["Blade's Edge Mountains"]="O", ["Netherstorm"]="O", ["Shadowmoon Valley"]="O", ["Shattrath City"]="O",
 }
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
+local localizedZone = ns.LocalizedZone
 
 --------------------------------------------------------------------------------
 -- Continente do player: sobe a cadeia de mapas (uiMap -> pai) até achar uma zona

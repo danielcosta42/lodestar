@@ -37,13 +37,7 @@ end)
 -- Nudge de Pedra de Lar: sugere vincular no hub onde você vai passar um tempo,
 -- economizando deslocamento. Shattrath é o caso especial (hub central do TBC).
 --------------------------------------------------------------------------------
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
+local localizedZone = ns.LocalizedZone
 
 -- Quantos dos próximos ~20 passos acontecem na zona atual (sinal de "vou ficar").
 local function upcomingHereCount(curLower)
