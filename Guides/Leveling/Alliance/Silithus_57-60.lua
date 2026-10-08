@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Silithus (57-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	next = "Leveling/Alliance/Moonglade (57-60)",
 }, [[
 step
   note {fp}Squire Leoren Mal'derath
@@ -731,4 +732,7 @@ step
   only Warrior
   talk Geologist Larksbane##15183
   turnin Armaments of War##8316 |goto Silithus 49.67,37.46
+step
+  note {travel}Moonglade
+  goto Moonglade 56.21,30.64
 ]])

@@ -33,3 +33,10 @@
 - [x] Baixos — CBOR (mapa com chave repetida, string em pedaços, valores simples), arquivos fechados,
       scan só preenche lista vazia, `talk` só para NPC amigo e sem perder a marca de grupo do `use`,
       teste confere também a zona de coordenada de instância, números do doc remedidos (289).
+
+## Revisão adversarial — segunda rodada
+
+- [x] Regressão do M1: contar só quest sem classe derrubou Alterac Mountains (8 quests sem guia) → a
+      zona vira rota pela contagem total; só a faixa usa as quests sem classe e não só-Skyborne.
+- [x] Faixas vizinhas se sobrepunham no vão → disjuntas (cada leva vai do próprio início até antes da seguinte).
+- [x] Ramo "só a outra facção dá a quest" nunca disparava neste dado → removido, e o doc corrigido.

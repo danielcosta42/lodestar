@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Felwood (52-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Moonglade (20-60)",
+	next = "Leveling/Horde/Azshara (52-60)",
 }, [[
 step
   talk Warcaller Gorlach##10880
@@ -398,6 +398,6 @@ step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
 step
-  note {travel}Moonglade
-  goto Moonglade 56.21,30.64
+  note {travel}Azshara
+  goto Azshara 11.37,78.17
 ]])

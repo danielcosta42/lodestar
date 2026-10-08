@@ -28,10 +28,6 @@ step
   talk Takata Steelblade##5641
   accept Befouled by Satyr##1434 |goto Desolace 52.57,54.39
 step
-  only Warlock
-  talk Zevrost##3326
-  accept Knowledge of the Orb of Orahil##4967 |goto Orgrimmar 48.47,45.43
-step
   talk Nataka Longhorn##11259
   accept Catch of the Day##5386 |goto Desolace 55.41,55.81
 step
@@ -40,15 +36,6 @@ step
 step
   talk Smeed Scrabblescrew##11596
   accept Kodo Roundup##5561 |goto Desolace 60.86,61.86
-step
-  talk Parqual Fintallas##4488
-  accept Test of Lore##1160 |goto Undercity 57.8,65.42
-step
-  note Find The Beginnings of the Undead Threat, and return it to Parqual Fintallas in Undercity.
-  collect Beginnings of the Undead Threat##5861 |q 1160 |goto Scarlet Monastery - Dungeon -1,-1
-step
-  talk Parqual Fintallas##4488
-  accept Final Passage##1394 |goto Undercity 57.8,65.42
 step
   talk Hornizz Brimbuzzle##6019
   accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
@@ -107,13 +94,6 @@ step
   note Bring Frostmaw's Mane to Melor Stonehoof in Thunder Bluff.
   collect Frostmaw's Mane##5811 |q 1136 |goto Alterac Mountains 37.51,67.2 |tip {dropsfrom}Frostmaw
 step
-  talk Varimathras##2425
-  accept An Unholy Alliance##6521 |goto Undercity 56.25,92.2
-step
-  note Bring Ambassador Malcin's Head to Varimathras in the Undercity.
-  kill Ambassador Malcin##12865 |goto The Barrens 48.4,95.4 |elite
-  collect Ambassador Malcin's Head##17009 |q 6521 |goto The Barrens 48.4,95.4
-step
   talk Centaur Pariah##13717
   accept The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
 step
@@ -129,40 +109,8 @@ step
   note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
   collect 3 Broken Tears##6083 |q 1369 |goto Desolace 39.65,93.68 |tip {dropsfrom}Tear of Theradras
 step
-  only Warlock
-  talk Menara Voidrender##6266
-  turnin Knowledge of the Orb of Orahil##4967 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
-step
-  talk Dorn Plainstalker##2986
-  turnin Final Passage##1394 |goto Thousand Needles 53.95,41.49 |tip {turninat}Thousand Needles
-step
-  talk Genavie Callow##4486
-  accept To Steal From Thieves##1164 |goto Undercity 63.83,49.45
-step
-  note Bring Kenata, Fardel, and Marcel Dabyrie's Heads to Genavie Callow in Undercity.
-  collect Kenata's Head##5830 |q 1164 |goto Arathi Highlands 56.38,36.09 |tip {dropsfrom}Kenata Dabyrie
-step
   kill Burning Blade Augur##4663 |goto Desolace 55.28,27.4 |tip Loot the quest item here — it starts the quest.
   accept The Corrupter##1480 |goto Desolace 55.28,27.4
-step
-  talk Nogg##3412
-  accept Rig Wars##2841 |goto Orgrimmar 75.99,25.41
-step
-  note Retrieve the Rig Blueprints and Thermaplugg's Safe Combination from Gnomeregan and bring them to Nogg in Orgrimmar.
-  collect Rig Blueprints##9153 |q 2841 |goto Gnomeregan - Dungeon -1,-1 |tip {dropsfrom}Thermaplugg's Safe
-step
-  talk Sovik##3413
-  accept Chief Engineer Scooty##2842 |goto Orgrimmar 75.49,25.36
-step
-  talk Nogg##3412
-  accept Nogg's Ring Redo##2950 |goto Orgrimmar 75.99,25.41
-step
-  note Bring the Brilliant Gold Ring, a Silver Bar, a Moss Agate, and 30 silver coins to Nogg in Orgrimmar.
-  collect Silver Bar##2842 |q 2950 |goto Orgrimmar 75.99,25.41 |tip {dropsfrom}Battered Chest, Tattered Chest
-step
-  only Warlock
-  talk Kaal Soulreaper##4563
-  accept Knowledge of the Orb of Orahil##4969 |goto Undercity 86.21,15.93
 step
   talk Bibbly F'utzbuckle##11438
   accept Bone Collector##5501 |goto Desolace 62.33,38.99
@@ -246,9 +194,6 @@ step
   note Bring a Shadowstalker Scalp to Maurin Bonesplitter in Desolace.
   collect Shadowstalker Scalp##6441 |q 1481 |goto Desolace 76.49,21.26 |tip {dropsfrom}Hatefury Shadowstalker
 step
-  talk Parqual Fintallas##4488
-  turnin Test of Lore##1160 |goto Undercity 57.8,65.42 |tip {turninat}Undercity
-step
   only Mage
   talk Tabetha##6546
   turnin Journey to the Marsh##1947 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
@@ -264,9 +209,6 @@ step
 step
   talk Selendra##13699
   turnin Corruption of Earth and Seed##7064 |goto Desolace 26.87,77.67
-step
-  talk Scooty##7853
-  turnin Chief Engineer Scooty##2842 |goto Stranglethorn Vale 27.6,77.48 |tip {turninat}Stranglethorn Vale
 step
   talk Vark Battlescar##11823
   turnin Vyletongue Corruption##7029 |goto Desolace 23.22,70.33
@@ -295,9 +237,6 @@ step
   talk Melor Stonehoof##3441
   turnin Frostmaw##1136 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
 step
-  talk Varimathras##2425
-  turnin An Unholy Alliance##6521 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
-step
   note Banish 6 Portals at Mannoroc Coven and return to Taiga Wisemane at Shadowprey Village.
   kill Demon Portal Guardian##11937 |q 5581 |goto Desolace 52.4,77.6
 step
@@ -309,19 +248,6 @@ step
 step
   note Maintain your reputation with the Magram, and bring an Advanced Target Dummy to Warug in the Magram Village in Desolace.
   collect Advanced Target Dummy##4392 |q 1371 |goto Desolace 74.97,68.16
-step
-  talk Nogg##3412
-  turnin Nogg's Ring Redo##2950 |goto Orgrimmar 75.99,25.41 |tip {turninat}Orgrimmar
-step
-  talk Genavie Callow##4486
-  turnin To Steal From Thieves##1164 |goto Undercity 63.83,49.45 |tip {turninat}Undercity
-step
-  talk Nogg##3412
-  turnin Rig Wars##2841 |goto Orgrimmar 75.99,25.41 |tip {turninat}Orgrimmar
-step
-  only Warlock
-  talk Menara Voidrender##6266
-  turnin Knowledge of the Orb of Orahil##4969 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
   talk Willow##13656
   turnin Twisted Evils##7028 |goto Desolace 62.2,39.63

@@ -31,12 +31,6 @@ step
   note The Atal'ai Exile in The Hinterlands wants the Head of Jammal'an.
   collect Head of Jammal'an##6212 |q 1446 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Jammal'an the Prophet
 step
-  talk Horde Warbringer##15350
-  accept For Great Honor##8367 |goto The Hinterlands 50.33,89.57
-step
-  note Bring 3 Alterac Valley Marks of Honor, 3 Arathi Basin Marks of Honor and 3 Warsong Gulch Marks of Honor to a Horde Warbringer outside the battlegrounds.
-  collect 3 Warsong Gulch Mark of Honor##20558 |q 8367 |goto The Hinterlands 50.33,89.57
-step
   turnin Rin'ji is Trapped!##2742 |goto The Hinterlands 86.3,59.01
 step
   kill Saltwater Snapjaw##2505 |goto The Hinterlands 81.48,60.4 |tip Loot the quest item here — it starts the quest.
@@ -138,9 +132,6 @@ step
 step
   talk Atal'ai Exile##5598
   turnin Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
-step
-  talk Horde Warbringer##15350
-  turnin For Great Honor##8367 |goto The Hinterlands 50.33,89.57
 step
   talk Elder Torntusk##14757
   turnin Kidnapped Elder Torntusk!##7845 |goto The Hinterlands 59.69,77.84

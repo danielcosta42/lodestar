@@ -55,16 +55,8 @@ step
   talk Brandur Ironhammer##5149
   accept Tome of Divinity##3681 |goto Ironforge 23.13,6.14
 step
-  only Druid
-  talk Mathrengyl Bearwalker##4217
-  accept Lessons Anew##6121 |goto Darnassus 35.37,8.4
-step
   talk Salma Saldean##235
   turnin Westfall Stew##36 |goto Westfall 56.42,30.52
-step
-  only Druid
-  talk Dendrite Starblaze##11802
-  turnin Lessons Anew##6121 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
 step
   only NightElf Druid
   talk Dendrite Starblaze##11802

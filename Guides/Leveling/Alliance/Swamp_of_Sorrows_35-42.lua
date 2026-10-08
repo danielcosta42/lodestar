@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (35-42)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Arathi Highlands (36-40)",
+	next = "Leveling/Alliance/Alterac Mountains (37-37)",
 }, [[
 step
   talk Magtoor##1776
@@ -95,4 +95,7 @@ step
 step
   talk Quartermaster Lungertz##5393
   turnin Deliver the Shipment##1425 |goto Blasted Lands 66.52,21.39 |tip {turninat}Blasted Lands
+step
+  note {travel}Alterac Mountains
+  goto Alterac Mountains 18.84,78.49
 ]])

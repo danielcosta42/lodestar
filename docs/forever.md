@@ -75,17 +75,18 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 
 - **Faixa de nível por leva.** O Forever pôs conteúdo de 55-60 em Tirisfal e em Teldrassil; zona
   com um buraco de 10 níveis sem quest vira dois guias (`Tirisfal Glades (5-12)` e `(55-60)`), senão
-  o jogador de nível 5 seria mandado a quest de nível 55. Quest de classe entra no guia mas não decide
-  a faixa — as de druida em Moonglade inventavam um "Moonglade (10-20)" na cadeia de todo mundo.
+  o jogador de nível 5 seria mandado a quest de nível 55. Quest de classe ou só de Skyborne conta para
+  a zona virar rota, mas não decide a faixa — as de druida em Moonglade inventavam um "Moonglade
+  (10-20)" na cadeia de todo mundo. Abaixo da primeira leva, o guia só leva quest até 10 níveis menor.
 - **Fica fora do leveling:** quest que exige profissão (as onze "Camping 101: <profissão>" de cada
   zona inicial), entrega de Craftsman's Writ, e categoria que não é rota — feriado, Darkmoon, guerra
   de AQ, reputação de fim de jogo, profissão e campo de batalha. Classe fica, com `only <Classe>`.
 - **Cada facção com o seu lado.** Quest das duas facções lista quem dá e quem recebe dos dois lados
   (The Hunter's Charm: Thunder Bluff e Darnassus); no guia de uma facção fica só o lado dela, pelo
-  `friendlyToFaction` do NPC — o que as correções por facção do QuestieDB fazem em Lua. Quest que só
-  a outra facção dá sai do guia. Viagem a cidade inimiga: de 43 para 27 passos na Aliança e de 41
-  para 31 na Horda; o que sobra é Lunar Festival, alvo de quest (Mathias Shaw) e NPC neutro do
-  Argent Dawn dentro de cidade inimiga.
+  `friendlyToFaction` do NPC — o que as correções por facção do QuestieDB fazem em Lua. Viagem a
+  cidade inimiga: de 43 para 27 passos na Aliança e de 41 para 31 na Horda; o que sobra é Lunar
+  Festival, alvo de quest (Mathias Shaw) e NPC que o banco marca como dos dois lados dentro de
+  cidade inimiga (Argent Dawn em Darnassus e Ironforge).
 - **Quest de capital** vai para o guia cuja faixa serve, preferindo a zona onde a capital fica
   (Ironforge → Dun Morogh) — e nunca para Zephras Isle.
 - **Zephras Isle fica fora da cadeia.** O `next` dos guias pula a ilha (Dun Morogh → Westfall), e o
@@ -103,13 +104,13 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 
 | | |
 |---|---|
-| Guias | 150 (64 de leveling, 85 especiais, 1 exemplo) |
-| Quests novas do Forever em guia | **453 de 760** |
+| Guias | 152 (66 de leveling, 85 especiais, 1 exemplo) |
+| Quests novas do Forever em guia | **454 de 760** |
 | — fora: entrega de Craftsman's Writ | 150 |
 | — fora: exigem profissão | 80 |
 | — fora: começam por item ou giver sem posição | 64 |
 | — fora: evento/repetível/campo de batalha | 8 |
-| — fora: outro | 5 |
+| — fora: outro | 4 |
 | `validate_guides.py` — bloqueios reais | **0** (os guias anteriores, no mesmo banco: 289) |
 | `guide_integrity.py` — passo sem coordenada | 50 (antes: 434) |
 
@@ -159,6 +160,9 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
 - **Quest de capital de nível 60** cai no primeiro guia de mediana 60 (hoje Redridge 54-60 na
   Aliança e Eastern Plaguelands 56-60 na Horda, que fica com 135 accepts). Herdado do gerador; um
   guia de "capital 60" seria o lugar certo.
+- **"Welcome to Azeroth" da Aliança (94947)** — a quest que tira o Skyborne da ilha — tem quem a dá
+  (Denaaris Stargale) posicionado em Alterac Mountains no QuestieDB 1.0.5, e fica fora do guia; a
+  gêmea da Horda (95350) está em Mulgore e roteada. Conferir em jogo de onde parte o portal.
 - **Passo que começa por item de drop** sem fonte localizada (64 quests novas): falta o
   `itemDrops` do QuestieDB no `items.json`.
 - **Dado de Outland nas tabelas escritas à mão.** `FlightData`, `TransitData` e `TravelPlanner`

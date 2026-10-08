@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Desolace (33-47)",
+	next = "Leveling/Horde/Alterac Mountains (34-36)",
 }, [[
 step
   note {fp}Awenasa
@@ -28,12 +28,6 @@ step
 step
   talk Cliffwatcher Longhorn##10537
   turnin Message to Freewind Post##4542 |goto Thousand Needles 45.67,50.74
-step
-  talk Auld Stonespire##4451
-  accept A Vengeful Fate##1102 |goto Thunder Bluff 35.97,59.92
-step
-  note Bring Razorflank's Heart to Auld Stonespire in Thunder Bluff.
-  collect Razorflank's Heart##5793 |q 1102 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Charlga Razorflank
 step
   talk Master Apothecary Faranell##2055
   accept Going, Going, Guano!##1109 |goto Undercity 48.82,69.28
@@ -178,29 +172,26 @@ step
   talk Wizlo Bearingshiner##10941
   turnin Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
 step
-  talk Cliffwatcher Longhorn##10537
-  turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
-step
-  talk Elu##10377
-  turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
-step
-  talk Rau Cliffrunner##4722
-  turnin The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
-step
-  talk Auld Stonespire##4451
-  turnin A Vengeful Fate##1102 |goto Thunder Bluff 35.97,59.92 |tip {turninat}Thunder Bluff
-step
   talk Master Apothecary Faranell##2055
   turnin Going, Going, Guano!##1109 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   talk Hagar Lightninghoof##10539
   turnin Alien Egg##4821 |goto Thousand Needles 44.64,50.29
 step
+  talk Cliffwatcher Longhorn##10537
+  turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
+step
   talk Crank Fizzlebub##2498
   turnin Back to Booty Bay##1118 |goto Stranglethorn Vale 27.12,77.21 |tip {turninat}Stranglethorn Vale
 step
+  talk Elu##10377
+  turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
+step
   talk Cliffwatcher Longhorn##10537
   turnin Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
+step
+  talk Rau Cliffrunner##4722
+  turnin The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
 step
   talk Nataka Longhorn##11259
   turnin Family Tree##5361 |goto Desolace 55.41,55.81 |tip {turninat}Desolace
@@ -245,21 +236,6 @@ step
   note Kill 10 Saltstone Basilisks, 10 Saltstone Crystalhides and 6 Saltstone Gazers for Trackmaster Zherin on the Shimmering Flats.
   kill Saltstone Basilisk##4147 |q 1175 |goto Thousand Needles 75.49,59.58
 step
-  talk Trackmaster Zherin##4629
-  turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
-step
-  talk Pozzik##4630
-  turnin Load Lightening##1176 |goto Thousand Needles 80.18,75.88
-step
-  only Mage
-  talk Magus Tirth##6548
-  turnin Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
-step
-  talk Razzeric##4706
-  turnin The Eighteenth Pilot##1186 |goto Thousand Needles 80.33,76.09
-step
-  turnin Keeping Pace##1190 |goto Thousand Needles 77.21,77.39
-step
   talk Fizzle Brassbolts##4454
   turnin Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
 step
@@ -272,14 +248,29 @@ step
   talk Kravel Koalbeard##4452
   turnin Rocket Car Parts##1110 |goto Thousand Needles 77.79,77.27
 step
+  talk Trackmaster Zherin##4629
+  turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
+step
   talk Fizzle Brassbolts##4454
   turnin Delivery to the Gnomes##1114 |goto Thousand Needles 78.06,77.13
+step
+  talk Pozzik##4630
+  turnin Load Lightening##1176 |goto Thousand Needles 80.18,75.88
 step
   talk Gnome Pit Boss##4495
   turnin Get the Gnomes Drunk##1120 |goto Thousand Needles 77.56,76.94
 step
   talk Goblin Pit Boss##4496
   turnin Get the Goblins Drunk##1121 |goto Thousand Needles 79.9,76.74
+step
+  talk Razzeric##4706
+  turnin The Eighteenth Pilot##1186 |goto Thousand Needles 80.33,76.09
+step
+  only Mage
+  talk Magus Tirth##6548
+  turnin Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
+step
+  turnin Keeping Pace##1190 |goto Thousand Needles 77.21,77.39
 step
   talk Fizzle Brassbolts##4454
   accept Martek the Exiled##1106 |goto Thousand Needles 78.06,77.13
@@ -326,10 +317,6 @@ step
   note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
   collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.04,35.43
 step
-  only Mage
-  talk Tabetha##6546
-  turnin Rituals of Power##1951 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
-step
   talk Cliffwatcher Longhorn##10537
   turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
@@ -342,14 +329,18 @@ step
   talk Krazek##773
   turnin The Rumormonger##1115 |goto Stranglethorn Vale 26.95,77.21 |tip {turninat}Stranglethorn Vale
 step
+  only Mage
+  talk Tabetha##6546
+  turnin Rituals of Power##1951 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
+step
   talk Crank Fizzlebub##2498
   turnin Report Back to Fizzlebub##1122 |goto Stranglethorn Vale 27.12,77.21 |tip {turninat}Stranglethorn Vale
 step
-  talk Gazlowe##3391
-  turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
-step
   talk Magatha Grimtotem##4046
   turnin Sacred Fire##5062 |goto Thunder Bluff 69.85,30.91 |tip {turninat}Thunder Bluff
+step
+  talk Gazlowe##3391
+  turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
 step
   talk Dorn Plainstalker##2986
   turnin Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
@@ -361,14 +352,14 @@ step
   kill Rok'Alim the Pounder##4499 |goto Thousand Needles 17.1,38.1 |elite
   collect Fragments of Rok'Alim##5844 |q 1151 |goto Thousand Needles 17.1,38.1
 step
+  talk Wizzle Brassbolts##4453
+  turnin Encrusted Tail Fins##1107 |goto Thousand Needles 78.14,77.12
+step
   talk Razzeric##4706
   turnin Razzeric's Tweaking##1187 |goto Thousand Needles 80.33,76.09
 step
   talk Pozzik##4630
   turnin Rizzle's Schematics##1194 |goto Thousand Needles 80.18,75.88
-step
-  talk Wizzle Brassbolts##4453
-  turnin Encrusted Tail Fins##1107 |goto Thousand Needles 78.14,77.12
 step
   talk Razzeric##4706
   accept Safety First##1188 |goto Thousand Needles 80.33,76.09
@@ -385,6 +376,6 @@ step
   talk Braug Dimspirit##4489
   turnin Test of Lore##1152 |goto Stonetalon Mountains 78.8,45.69 |tip {turninat}Stonetalon Mountains
 step
-  note {travel}Desolace
-  goto Desolace 56.19,59.57
+  note {travel}Alterac Mountains
+  goto Alterac Mountains 80.5,66.92
 ]])

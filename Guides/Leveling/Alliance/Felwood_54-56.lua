@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Felwood (54-56)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Moonglade (20-60)",
+	next = "Leveling/Alliance/Western Plaguelands (55-60)",
 }, [[
 step
   talk Eridan Bluewind##9116
@@ -371,6 +371,6 @@ step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
 step
-  note {travel}Moonglade
-  goto Moonglade 56.21,30.64
+  note {travel}Western Plaguelands
+  goto Western Plaguelands 38.4,54.05
 ]])
