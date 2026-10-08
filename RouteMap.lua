@@ -33,6 +33,7 @@ local SPACING = 9          -- pixels entre pontos no canvas
 local overlay
 local dots, rings = {}, {}
 local nDots, nRings = 0, 0
+local lastSig                         -- o que está desenhado; igual = não refaz
 
 local function ensure(canvas)
 	if not overlay then
@@ -73,6 +74,7 @@ local function hideAll()
 	for i = 1, #dots do dots[i]:Hide() end
 	for i = 1, #rings do rings[i]:Hide() end
 	nDots, nRings = 0, 0
+	lastSig = nil
 	if overlay then overlay:Hide() end
 end
 
@@ -108,13 +110,17 @@ local function update()
 	if not (shown and ok and canvas) then return hideAll() end
 	local w, h = canvas:GetSize()
 	if not w or w == 0 then return hideAll() end
+	local from = ns.Travel.PlayerWorld()
+	local sig = ("%s|%d|%s|%d|%d|%.0f|%.0f"):format(tostring(route), route.leg, tostring(shown), w, h,
+		from and from.x or 0, from and from.y or 0)
+	if sig == lastSig and overlay and overlay:IsShown() then return end
+	lastSig = sig
 	ensure(canvas)
 	for i = 1, #dots do dots[i]:Hide() end
 	for i = 1, #rings do rings[i]:Hide() end
 	nDots, nRings = 0, 0
 	local C = UI.COL
 	local col = route.dest and route.dest.red and { 0.9, 0.2, 0.2 } or C.accent
-	local from = ns.Travel.PlayerWorld()
 	for i = route.leg, #route.legs do
 		local leg = route.legs[i]
 		local alpha = i == route.leg and 1 or 0.5

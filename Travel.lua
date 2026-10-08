@@ -222,8 +222,9 @@ function T:Replan(force)
 	if new then new.leg, new.dest, new.kind = 1, dest, kind end
 	sinceReplan = 0
 	if force or key ~= routeKey or not route then
+		local was = route
 		route, routeKey = new, key
-		changed()
+		if was or new then changed() end                -- sem rota antes e depois: nada mudou
 	elseif T.ShouldReplace({ s = T.Remaining(route, from, speed) }, new) then
 		route = new
 		changed()

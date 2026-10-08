@@ -11,7 +11,7 @@ local UI = ns.UI
 
 local W, PAD, ROW = 300, 12, 15
 local MAX_LEGS = 10
-local frame, destKind, destText, clearBtn, corpseText, legRows, totalText, noRoute, profList
+local frame, destKind, destText, clearBtn, corpseText, legRows, totalText, noRoute, profList, status
 local legTop                                   -- y onde começam as pernas
 
 local function section(parent, y, text)
@@ -35,6 +35,16 @@ function TP.ProfLabel(prof)
 	return rawget(ns.L, "PROF_" .. prof:upper()) or prof
 end
 
+-- serviço pedido pelo painel: a falha aparece aqui, não no chat
+local function say(msg)
+	status:SetText(msg or ""); status:Show()
+	if C_Timer then C_Timer.After(6, function() if status:GetText() == msg then status:Hide() end end) end
+end
+local function goService(kind, sub)
+	local ok, msg = ns.Services:GoTo(kind, sub, true)
+	if not ok then say(msg) end
+end
+
 -- lista de profissões ao lado do painel (o botão "Treinador de profissão")
 local function toggleProfList(anchor)
 	if profList and profList:IsShown() then return profList:Hide() end
@@ -49,7 +59,7 @@ local function toggleProfList(anchor)
 			b:SetPoint("TOPLEFT", 6, -6 - (i - 1) * 22)
 			b:SetScript("OnClick", function()
 				profList:Hide()
-				ns.Services:GoTo("proftrainer", prof)
+				goService("proftrainer", prof)
 			end)
 		end
 		profList:SetSize(132, 12 + #names * 22 - 2)
@@ -105,10 +115,12 @@ local function build()
 		b:SetPoint("TOPLEFT", PAD + ((i - 1) % 2) * (bw + 6), -y - math.floor((i - 1) / 2) * 25)
 		b:SetScript("OnClick", function(self)
 			if kind == "proftrainer" then return toggleProfList(self) end
-			ns.Services:GoTo(kind)
+			goService(kind)
 		end)
 	end
-	y = y + math.ceil(#ns.Services.KINDS / 2) * 25 + 8
+	y = y + math.ceil(#ns.Services.KINDS / 2) * 25
+	status = line(frame, y, 11, C.amber); status:Hide()
+	y = y + 16
 
 	-- coordenada
 	section(frame, y, L.TRAVEL_COORD)

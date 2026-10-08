@@ -37,6 +37,7 @@ local W, H, FADE = 360, 40, 56
 local PARCH = { 0.72, 0.67, 0.55 }      -- o tom de pergaminho das marcações do jogo
 local TICK_Y, MARK_Y = -6, -10
 local frame, ticks, markers, info, mover
+local lastSig                         -- o que está desenhado; igual = não refaz
 
 -- ícone do próprio jogo quando o cliente tem o atlas; senão, o nosso
 local function icon(t, atlas, size, fallback)
@@ -130,9 +131,14 @@ local function update()
 	local p = route and ns.Travel.PlayerWorld()
 	if not (db and db.enabled and route and p and (route.kind ~= "guide" or ns:UIShown())) then
 		if frame then frame:Hide() end
+		lastSig = nil
 		return
 	end
 	build():Show()
+	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.0f"):format(tostring(route), route.leg, p.x, p.y,
+		GetPlayerFacing and GetPlayerFacing() or 0, ns.Travel:Speed() * 10)
+	if sig == lastSig then return end
+	lastSig = sig
 	local C = UI.COL
 	local facing = GetPlayerFacing and GetPlayerFacing() or 0
 	for i = 0, 23 do
@@ -164,5 +170,5 @@ end
 
 ns:Every(0.05, function()
 	local ok, err = pcall(update)
-	if not ok then ns:Debug("Compass:", err); if frame then frame:Hide() end end
+	if not ok then ns:Debug("Compass:", err); lastSig = nil; if frame then frame:Hide() end end
 end)
