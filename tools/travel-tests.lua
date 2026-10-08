@@ -160,4 +160,36 @@ check(inn and inn.n == "Renee", "pedra sem posição: a única estalagem da fac�
 check(T.SingleInn(inns, "Elwynn Forest", "A") == nil, "duas estalagens na zona: não chuta")
 check(T.SingleInn(inns, "Durotar", "H") == nil, "zona sem estalagem: nada")
 
+-- ── Destinations: corpo > manual > guia ──────────────────────────────────────
+local D = load("Destinations.lua", {}).Destinations
+D.GuideTarget = function() return { zone = "Elwynn Forest", x = 40, y = 60, label = "passo" } end
+local d, kind = D:Active()
+check(kind == "guide" and d.label == "passo", "sem nada marcado, o destino é o passo do guia")
+D:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "meu ponto" })
+d, kind = D:Active()
+check(kind == "manual" and d.label == "meu ponto", "destino manual passa na frente do guia")
+D:Set("corpse", { map = 1429, x = 10, y = 10, label = "corpo", red = true })
+d, kind = D:Active()
+check(kind == "corpse" and d.red, "o corpo passa na frente de tudo, em vermelho")
+D:Clear("corpse")
+d, kind = D:Active()
+check(kind == "manual", "reviveu: volta ao destino manual, não ao guia")
+D:Clear("manual")
+check(select(2, D:Active()) == "guide", "limpou o manual: volta ao guia")
+D.GuideTarget = function() return nil end
+check(D:Active() == nil, "sem guia e sem nada: sem destino")
+
+-- ── Services: o mais próximo em TEMPO, da sua facção ──────────────────────────
+local S = load("Services.lua", {}).Services
+local cands = S.Candidates({
+	{ n = "Perto em reta", f = "A", w = { c = 0, x = 100, y = 0 } },
+	{ n = "Atrás de um voo", f = "AH", w = { c = 0, x = 300, y = 0 } },
+	{ n = "Da Horda", f = "H", w = { c = 0, x = 10, y = 0 } },
+}, "A", { c = 0, x = 0, y = 0 }, 5)
+check(#cands == 2, "o serviço da outra facção não entra")
+check(cands[1].n == "Perto em reta", "candidatos em ordem de distância em reta")
+local best = S.Pick(cands, function(c) return c.n == "Perto em reta" and 500 or 200 end)
+check(best and best.n == "Atrás de um voo", "ganha o de menor tempo de viagem, não o mais perto em reta")
+check(S.Pick(cands, function() return nil end) == nil, "sem rota para nenhum: nada")
+
 print(("ok: %d checks"):format(checks))

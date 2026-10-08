@@ -128,6 +128,7 @@ local DB_DEFAULTS = {
 	markTargets = true,   -- destacar NPCs/mobs-alvo (tooltip + nameplate)
 	trail = true,         -- caminho de formiga (minimapa + mapa-múndi)
 	questItem = true,     -- botão pra usar o item da missão do passo
+	corpseRoute = true,   -- fantasma: rota (vermelha) até o corpo
 }
 local CHAR_DEFAULTS = {
 	currentGuide = nil,        -- chave do guia ativo (aba em foco)

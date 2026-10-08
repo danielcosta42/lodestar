@@ -72,9 +72,9 @@ end
 --------------------------------------------------------------------------------
 -- o jogo: coordenada de mundo, contexto do personagem
 --------------------------------------------------------------------------------
--- (zona em inglês, x, y em 0-100) -> { c, x, y } de mundo
-function T.World(zone, x, y)
-	local map = ns.zoneMap and ns.zoneMap[zone] or ns.zoneUiMap and ns.zoneUiMap[zone]
+-- (zona em inglês, x, y em 0-100) -> { c, x, y } de mundo; `map` (uiMapID) dispensa a zona
+function T.World(zone, x, y, map)
+	map = map or ns.zoneMap and ns.zoneMap[zone] or ns.zoneUiMap and ns.zoneUiMap[zone]
 	if not (map and C_Map and C_Map.GetWorldPosFromMapPos and CreateVector2D) then return nil end
 	local c, pos = C_Map.GetWorldPosFromMapPos(map, CreateVector2D(x / 100, y / 100))
 	if c and pos then return { c = c, x = pos.x, y = pos.y } end
@@ -183,7 +183,7 @@ local function destination()
 end
 
 local function keyOf(dest, kind)
-	return dest and ("%s:%s:%.1f:%.1f"):format(kind or "?", dest.zone or "?", dest.x or 0, dest.y or 0)
+	return dest and ("%s:%s:%.1f:%.1f"):format(kind or "?", dest.zone or dest.map or "?", dest.x or 0, dest.y or 0)
 end
 
 local function changed()
@@ -194,7 +194,7 @@ function T:Replan(force)
 	local dest, kind = destination()
 	local key = keyOf(dest, kind)
 	local from = dest and T.PlayerWorld()
-	local to = dest and T.World(dest.zone, dest.x, dest.y)
+	local to = dest and T.World(dest.zone, dest.x, dest.y, dest.map)
 	if not (dest and from and to and ns.travel) then
 		if route then route, routeKey = nil, key; changed() end
 		return
