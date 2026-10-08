@@ -8,6 +8,8 @@ local ADDON, ns = ...
 local RM = {}
 ns.RouteMap = RM
 
+local CURVA = 20           -- jardas cortadas de cada lado de um canto do caminho a pé
+
 -- Pontos de mundo que a perna desenha: {x, y, c, x, y, c, ...}. A perna a pé atual sai do
 -- jogador (`from`); pedra e teleporte são salto, sem linha.
 function RM.LegPoints(leg, from)
@@ -17,11 +19,16 @@ function RM.LegPoints(leg, from)
 		for i = 1, #leg.p - 1, 2 do put(leg.p[i], leg.p[i + 1], leg.a.c) end
 	elseif leg.k == "ship" and leg.p then
 		for i = 1, #leg.p - 2, 3 do put(leg.p[i], leg.p[i + 1], leg.p[i + 2]) end
-	elseif leg.k == "walk" and leg.path and from and ns.Terrain then
-		-- pelo terreno: do jogador, o resto do caminho
-		local _, _, _, _, nxt = ns.Terrain.Ahead(leg.path, from, 0)
-		put(from.x, from.y, from.c)
-		for i = nxt, #leg.path do put(leg.path[i].x, leg.path[i].y, leg.path[i].c) end
+	elseif leg.k == "walk" and leg.path and ns.Terrain and ns.RouteGeom then
+		-- pelo terreno, de cantos redondos: do jogador o resto do caminho; a perna seguinte, inteira
+		local xy, nxt = {}, 1
+		if from and from.c == leg.b.c then
+			nxt = select(5, ns.Terrain.Ahead(leg.path, from, 0))
+			xy[1], xy[2] = from.x, from.y
+		end
+		for i = nxt, #leg.path do xy[#xy + 1] = leg.path[i].x; xy[#xy + 1] = leg.path[i].y end
+		xy = ns.RouteGeom.Round(xy, CURVA)
+		for i = 1, #xy - 1, 2 do put(xy[i], xy[i + 1], leg.b.c) end
 	elseif leg.k == "walk" or leg.k == "tram" then
 		local a = from or leg.a
 		put(a.x, a.y, a.c)

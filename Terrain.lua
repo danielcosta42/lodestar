@@ -99,6 +99,36 @@ local function ajusta(grid, r, c)
 	return br, bc
 end
 
+local PASSO = {}                       -- (dr, dc) -> índice em DIRS
+for d, rc in ipairs(DIRS) do PASSO[(rc[1] + 1) * 3 + rc[2] + 2] = d end
+
+-- A reta de centro a centro, de (r0,c0) a (r1,c1), célula a célula (na quina exata, em
+-- diagonal): nil se algum passo não liga; senão quantas células de água cruza.
+local function reta(grid, r0, c0, r1, c1)
+	local ar, ac = math.abs(r1 - r0), math.abs(c1 - c0)
+	local sr, sc = r1 > r0 and 1 or -1, c1 > c0 and 1 or -1
+	local tr = ar > 0 and 0.5 / ar or math.huge          -- "tempo" até a próxima borda de linha/coluna
+	local tc = ac > 0 and 0.5 / ac or math.huge
+	local r, c, agua = r0, c0, 0
+	while r ~= r1 or c ~= c1 do
+		local mr, mc = 0, 0
+		if math.abs(tr - tc) < 1e-9 then
+			mr, mc, tr, tc = sr, sc, tr + 1 / ar, tc + 1 / ac
+		elseif tr < tc then
+			mr, tr = sr, tr + 1 / ar
+		else
+			mc, tc = sc, tc + 1 / ac
+		end
+		local d = PASSO[(mr + 1) * 3 + mc + 2]
+		if info(grid, r, c) % 2 ^ d < 2 ^ (d - 1) then return nil end
+		r, c = r + mr, c + mc
+		if select(2, info(grid, r, c)) then agua = agua + 1 end
+	end
+	return agua
+end
+
+local LONGE = 40                       -- células à frente que o fio tenta alcançar (~670 jd)
+
 -- Caminho de `de` a `para` ({c,x,y}, mesmo continente). nil se não há (fora da grade, longe de
 -- célula passável, sem passagem ou busca grande demais): quem chama volta à reta. `ceder`, numa
 -- corrotina: a cada tantas expansões (número) ou quando a função disser (orçamento de tempo),
@@ -159,16 +189,27 @@ function TR.Path(dados, de, para, maxExp, ceder)
 		inv[#inv + 1] = k
 		k = came[k]
 	end
-	-- só os pontos onde a direção muda; o primeiro é o jogador, o último o destino
+	local cel, molh = {}, { [0] = 0 }             -- do início ao fim; água acumulada
+	for i = #inv, 1, -1 do
+		local n = #cel + 1
+		cel[n] = inv[i]
+		molh[n] = molh[n - 1] + (select(2, info(grid, floor(inv[i] / W), inv[i] % W)) and 1 or 0)
+	end
+	-- puxa o fio: de cada vértice, reta até a célula mais adiante do caminho que se alcança sem
+	-- passo travado nem mais água que o caminho por ali. Some a escadinha das 8 direções.
+	-- O primeiro ponto é o jogador, o último o destino.
 	local pts = { { c = de.c, x = de.x, y = de.y } }
-	local pdr, pdc
-	for i = #inv - 1, 2, -1 do
-		local a, b = inv[i], inv[i - 1]
-		local dr, dc = floor(b / W) - floor(a / W), b % W - a % W
-		if dr ~= pdr or dc ~= pdc then
-			pts[#pts + 1] = TR.CellCenter(de.c, floor(a / W), a % W)
-			pdr, pdc = dr, dc
+	local i = 1
+	while i < #cel do
+		local r0, c0 = floor(cel[i] / W), cel[i] % W
+		local melhor = i + 1
+		for j = i + 2, math.min(#cel, i + LONGE) do
+			local a = reta(grid, r0, c0, floor(cel[j] / W), cel[j] % W)
+			if a and a <= molh[j] - molh[i] then melhor = j end
 		end
+		if melhor < #cel then pts[#pts + 1] = TR.CellCenter(de.c, floor(cel[melhor] / W), cel[melhor] % W) end
+		i = melhor
+		if porFuncao and coroutine.running() and ceder() then coroutine.yield() end
 	end
 	pts[#pts + 1] = { c = para.c, x = para.x, y = para.y }
 	return pts
