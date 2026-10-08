@@ -123,4 +123,41 @@ r = J.Plan(P(ra.c, ra.x, ra.y), P(bb.c, bb.x, bb.y),
 	{ data = real, fac = "H", known = {}, speed = 7, teleports = {} })
 check(r and kinds(r):find("ship"), "real: Ratchet -> Booty Bay de barco (" .. (r and kinds(r) or "nil") .. ")")
 
+-- ── Travel: trocar de rota, avançar de perna, quanto falta ───────────────────
+local T = load("Travel.lua", { Journey = J }).Travel
+check(T.ShouldReplace(nil, { s = 100 }), "sem rota, qualquer rota entra")
+check(not T.ShouldReplace({ s = 300 }, nil), "replanejar sem resultado mantém a rota atual")
+check(T.ShouldReplace({ s = 300 }, { s = 250 }), "15% mais rápida troca")
+check(T.ShouldReplace({ s = 300 }, { s = 265 }), "30 s mais rápida troca")
+check(not T.ShouldReplace({ s = 300 }, { s = 280 }), "7% e 20 s: não troca (histerese)")
+check(not T.ShouldReplace({ s = 300 }, { s = 300 }), "empate não troca")
+
+local rota = { leg = 1, legs = {
+	{ k = "walk", b = P(0, 700, 0), s = 100 },
+	{ k = "flight", b = P(0, 3000, 0), s = 60 },
+	{ k = "walk", b = P(0, 3010, 0), s = 2 },
+} }
+check(T.AdvanceLeg(rota, P(0, 690, 0), false) == 2, "chegou ao fim da perna a pé: próxima")
+check(T.AdvanceLeg(rota, P(0, 300, 0), false) == 1, "no meio da perna a pé: continua nela")
+rota.leg = 2
+check(T.AdvanceLeg(rota, P(0, 2990, 0), true) == 2, "em voo, mesmo perto do pouso: continua no voo")
+check(T.AdvanceLeg(rota, P(0, 2990, 0), false) == 3, "pousou: próxima perna")
+check(T.AdvanceLeg(rota, P(0, 1500, 0), false) == 2, "fora do táxi longe do pouso: continua no voo")
+check(T.AdvanceLeg(rota, P(1, 2990, 0), false) == 2, "outro continente não conta como chegada")
+rota.leg = 1
+check(math.abs(T.Remaining(rota, P(0, 0, 0), 7) - (100 + 60 + 2)) < 0.01,
+	"quanto falta = a pé até o fim da perna + as próximas")
+check(math.abs(T.Remaining(rota, P(0, 350, 0), 7) - (50 + 60 + 2)) < 0.01, "andando, a perna atual encolhe")
+
+local inns = {
+	{ n = "Renee", zone = "Tirisfal Glades", x = 61.7, y = 52.0, f = "H" },
+	{ n = "Aliada", zone = "Tirisfal Glades", x = 10, y = 10, f = "A" },
+	{ n = "Farley", zone = "Elwynn Forest", x = 43.7, y = 65.8, f = "A" },
+	{ n = "Outra", zone = "Elwynn Forest", x = 90, y = 90, f = "A" },
+}
+local inn = T.SingleInn(inns, "Tirisfal Glades", "H")
+check(inn and inn.n == "Renee", "pedra sem posição: a única estalagem da facção na zona")
+check(T.SingleInn(inns, "Elwynn Forest", "A") == nil, "duas estalagens na zona: não chuta")
+check(T.SingleInn(inns, "Durotar", "H") == nil, "zona sem estalagem: nada")
+
 print(("ok: %d checks"):format(checks))
