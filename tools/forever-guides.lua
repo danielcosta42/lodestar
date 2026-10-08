@@ -28,7 +28,8 @@ end
 local playerLevel = 1
 function UnitLevel() return playerLevel end
 function UnitClass() return "Warrior", "WARRIOR" end
-function UnitRace() return "Human", "HUMAN" end
+local raceId = 1
+function UnitRace() return "Human", "HUMAN", raceId end
 function UnitFactionGroup() return "Alliance" end
 function UnitIsDeadOrGhost() return false end
 function UnitExists(u) return u ~= nil end
@@ -40,11 +41,12 @@ local function load_addon(interfaceNumber)
 	local ns = {
 		guides = {},
 		char = { openGuides = {}, steps = {}, completedGoals = {} },
-		On = function() end, Print = function() end, Debug = function() end,
+		Print = function() end, Debug = function() end,
 		Printf = function() end,
 		L = setmetatable({}, { __index = function(_, k) return k .. ": %s" end }),
 	}
-	ns.On = function() end
+	ns.handlers = {}
+	ns.On = function(_, ev, fn) ns.handlers[ev] = fn end
 	function GetBuildInfo()
 		local major = math.floor(interfaceNumber / 10000)
 		local minor = math.floor(interfaceNumber / 100) % 100
@@ -53,10 +55,14 @@ local function load_addon(interfaceNumber)
 	for _, file in ipairs({ "Compat.lua", "Parser.lua", "ForeverData.lua", "Guide.lua" }) do
 		local chunk = assert(loadfile(ROOT .. "/" .. file))
 		chunk("Lodestar", ns)
+		-- A biblioteca gerada não cita quest removida, então a lista real vem
+		-- vazia: o teste planta uma (Outland) para exercitar o corte.
+		if file == "ForeverData.lua" then ns.foreverGoneQuests[GONE] = true end
 	end
 	return ns
 end
 
+GONE = 10142   -- quest de Outland: o Anniversary tem, o Forever não
 local fe = load_addon(16001)
 check(fe.Client.isForever, "16001 é o Forever")
 check(fe.Client.maxLevel == 60, "nível máximo vem do cliente, não de um número fixo")
@@ -74,8 +80,7 @@ check(fe:NextGuideKey(fe.guides["Leveling/Alliance/Pendurado"]) == nil,
 	"ponteiro pendurado termina a cadeia em vez de estourar")
 
 -- ── quests que este cliente não tem ─────────────────────────────────────────
-local gone = next(fe.foreverGoneQuests)
-check(gone, "há quests removidas conhecidas")
+local gone = GONE
 fe:RegisterGuide("Leveling/Alliance/Amostra", {}, table.concat({
 	"step",
 	"  accept Sumida##" .. gone,
@@ -120,6 +125,60 @@ check(#base[3].goals == 3 and base[3].goals[2].id == gone,
 fe:RegisterGuide("Dungeons/Alliance/Vazio", {}, "step\n  talk Alguém##240\n  accept Sumida##" .. gone .. "\n")
 fe:LoadGuide("Dungeons/Alliance/Vazio")
 check(#fe.char.openGuides == 0 and fe.currentGuide == nil, "guia sem conteúdo não abre")
+
+-- ── Skyborne (raças 95/96 do Forever) ────────────────────────────────────────
+-- O stub segue respondendo "HUMAN" no token: quem decide é o id (95/96).
+raceId = 95
+check(fe:EvalCondition("Skyborne"), "Skyborne é reconhecido pelo id da raça")
+raceId = 1
+check(not fe:EvalCondition("Skyborne"), "humano não é Skyborne")
+
+-- char novo Skyborne cai no guia de Zephras Isle, não no da zona do token
+local sky = load_addon(16001)
+sky:RegisterGuide("Leveling/Alliance/Elwynn Forest (1-10)", { faction = "Alliance" }, "step\n  note a\n")
+sky:RegisterGuide("Leveling/Alliance/Zephras Isle (1-11)", { faction = "Alliance" }, "step\n  note b\n")
+function sky:LoadGuide(key) self.opened = key end   -- só a escolha importa aqui
+raceId = 96
+sky.handlers._READY()
+check(sky.opened == "Leveling/Alliance/Zephras Isle (1-11)",
+	"Skyborne começa em Zephras Isle (abriu " .. tostring(sky.opened) .. ")")
+raceId = 1
+
+-- ── a biblioteca gerada inteira ──────────────────────────────────────────────
+-- Todo guia que os manifestos carregam é Lua válido, registra, interpreta com
+-- passo, e toda zona de |goto existe no ZoneData (senão a seta não acha o mapa).
+local lib = load_addon(16001)
+assert(loadfile(ROOT .. "/ZoneData.lua"))("Lodestar", lib)
+local arquivos = 0
+for _, xml in ipairs({ "Guides/Leveling/Leveling.xml", "Guides/Special.xml" }) do
+	local dir = xml:match("^(.*)/")
+	for rel in io.open(ROOT .. "/" .. xml):read("*a"):gmatch('file="([^"]+)"') do
+		assert(loadfile(ROOT .. "/" .. dir .. "/" .. rel))("Lodestar", lib)
+		arquivos = arquivos + 1
+	end
+end
+local guias, sem_passo, zonas_fora = 0, {}, {}
+for key, g in pairs(lib.guides) do
+	guias = guias + 1
+	local steps = lib.ensureParsed(g)
+	if #steps == 0 then sem_passo[#sem_passo + 1] = key end
+	for _, s in ipairs(steps) do
+		for _, goal in ipairs(s.goals) do
+			local z = goal.goto_ and goal.goto_.zone
+			-- "-1,-1" (instância) o parser lê como zona "X -": problema conhecido, à parte
+			if z and not z:match(" %-$") and not lib.zoneUiMap[z] then zonas_fora[z] = key end
+		end
+	end
+end
+check(arquivos > 100 and guias == arquivos, ("todo arquivo registra um guia (%d arquivos, %d guias)"):format(arquivos, guias))
+check(#sem_passo == 0, "guia gerado sem passo: " .. table.concat(sem_passo, ", "))
+check(next(zonas_fora) == nil, "zona de |goto fora do ZoneData: " .. tostring(next(zonas_fora)))
+local zephras = {}
+for key in pairs(lib.guides) do
+	local fac = key:match("^Leveling/(%a+)/Zephras Isle %(")
+	if fac then zephras[fac] = true end
+end
+check(zephras.Alliance and zephras.Horde, "Zephras Isle tem guia nas duas facções")
 
 -- ── identidade de unidade / Secret Values ───────────────────────────────────
 issecretvalue = function(v) return v == "SECRETO" end

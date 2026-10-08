@@ -31,9 +31,9 @@ local ItemCount = (C_Item and C_Item.GetItemCount) or GetItemCount or function()
 --------------------------------------------------------------------------------
 -- Conteúdo que este cliente não tem (ForeverData.lua, gerado pelo gen_forever.py)
 --
--- No Forever não existe Outland nem as zonas iniciais de blood elf/draenei, e
--- nas rotas que seguem valendo ainda sobram quests que aquele cliente não tem.
--- Guia sem conteúdo some da biblioteca; quest que sumiu vira passo pulado.
+-- Os guias saem do banco do Forever, então isto é rede de segurança: quest que
+-- um guia cite e este cliente não tenha vira passo pulado, e guia que fique
+-- sem passo nenhum não abre.
 --------------------------------------------------------------------------------
 local goneQuest = ns.foreverGoneQuests
 
@@ -59,6 +59,11 @@ local RACE_ALIAS = { UNDEAD = "SCOURGE" }  -- fala comum -> token da API
 
 local function playerClass() return (select(2, UnitClass("player"))) end
 local function playerRace()  return (select(2, UnitRace("player")))  end
+
+-- Skyborne (Forever) são duas raças, 95 na Aliança e 96 na Horda. O token em
+-- inglês ainda não é público, então a raça é reconhecida pelo id.
+local SKYBORNE = { [95] = true, [96] = true }
+local function isSkyborne() return SKYBORNE[select(3, UnitRace("player"))] or false end
 
 -- Avalia um token único. Retorna true/false.
 local function evalToken(tok)
@@ -96,6 +101,8 @@ local function evalToken(tok)
 		result = (UnitFactionGroup("player") or ""):upper() == U
 	elseif CLASSES[U] then
 		result = playerClass() == U
+	elseif U == "SKYBORNE" then
+		result = isSkyborne()
 	elseif RACES[U] or RACE_ALIAS[U] then
 		result = playerRace():upper() == (RACE_ALIAS[U] or U)
 	else
@@ -484,7 +491,7 @@ local RACE_START = {
 
 local function findStartGuide()
 	local race = (select(2, UnitRace("player")) or ""):upper()
-	local zone = RACE_START[race]
+	local zone = isSkyborne() and "Zephras Isle" or RACE_START[race]
 	if not zone then return nil end
 	local pf = UnitFactionGroup("player")
 	for key, g in pairs(ns.guides) do
