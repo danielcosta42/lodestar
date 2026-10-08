@@ -11,7 +11,6 @@ Formato conferido no cliente do Forever (build 1.60.1.70245): índice v7, raiz M
 """
 import os
 import struct
-import sys
 import zlib
 
 RAIZ_WOW = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
