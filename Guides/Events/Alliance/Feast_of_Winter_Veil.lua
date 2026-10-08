@@ -4,12 +4,13 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Feast of Winter Veil", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "fd31b604",
+	rev = "836ab3a4",
 }, [[
 step
   talk Wonderform Operator##15732
   accept Winter's Presents##8827 |goto Dun Morogh 53.16,35.62
 step
+  note Speak with Greatfather Winter. He is located near the Smokywood Pastures vendor area in Ironforge.
   talk Greatfather Winter##13444
   turnin Winter's Presents##8827 |goto Ironforge 33.2,65.41
 step
@@ -59,6 +60,7 @@ step
   talk Wonderform Operator##15732
   accept New Year Celebrations!##8860 |goto Dun Morogh 53.16,35.62
 step
+  note Bring the Smokywood Supplies to Innkeeper Allison in Stormwind.
   talk Innkeeper Allison##6740
   turnin New Year Celebrations!##8860 |goto Stormwind City 60.39,75.27
 step
@@ -92,12 +94,14 @@ step
   talk Goli Krumn##1365
   accept The Reason for the Season##7062 |goto Ironforge 30.26,59.38
 step
+  note Speak with Historian Karnik at the Explorer's League in Ironforge about the Feast of Winter Veil.
   talk Historian Karnik##2916
   turnin The Reason for the Season##7062 |goto Ironforge 77.54,11.82
 step
   talk Historian Karnik##2916
   accept The Feast of Winter Veil##7063 |goto Ironforge 77.54,11.82
 step
+  note Feel free to read the book, "The Feast of Winter Veil", to learn more about the holiday. When you are finished with the book, deliver it to King Magni Bronzebeard in Ironforge.
   talk King Magni Bronzebeard##2784
   turnin The Feast of Winter Veil##7063 |goto Ironforge 39.09,56.2
 step
@@ -115,12 +119,14 @@ step
   accept Greatfather Winter is Here!##7022 |goto Ironforge 33.7,67.23
 step
   only not completed(7023) not haveq(7023)
+  note Speak with Greatfather Winter; he is located near the Smokywood Pastures vendor area in Ironforge.
   talk Greatfather Winter##13444
   turnin Greatfather Winter is Here!##7022 |goto Ironforge 33.2,65.41
 step
   talk Wulmort Jinglepocket##13433
   accept Stolen Winter Veil Treats##7042 |goto Ironforge 33.7,67.23
 step
+  note Locate the Smokywood Pastures investigator that has gone missing in the snowy regions of the Alterac Mountains.
   talk Strange Snowman##13636
   turnin Stolen Winter Veil Treats##7042 |goto Alterac Mountains 35.44,72.46
 step
@@ -137,6 +143,7 @@ step
   talk Wulmort Jinglepocket##13433
   accept A Smokywood Pastures' Thank You!##7045 |goto Ironforge 33.7,67.23
 step
+  note Speak with Greatfather Winter in Ironforge.
   talk Greatfather Winter##13444
   turnin A Smokywood Pastures' Thank You!##7045 |goto Ironforge 33.2,65.41
 step

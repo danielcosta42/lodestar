@@ -541,6 +541,14 @@ check(ren.char.currentGuide == "Leveling/Horde/Silverpine Forest (11-18)",
 check(#ren.char.openGuides == 1 and ren.char.steps["Leveling/Horde/Silverpine Forest (11-20)"] == nil,
 	"a chave velha some")
 
+-- nome da zona no idioma do cliente: uma função só, no Compat
+local zm, cm = fe.zoneUiMap, C_Map
+fe.zoneUiMap = { ["Elwynn Forest"] = 1429 }
+C_Map = { GetMapInfo = function(id) return id == 1429 and { name = "Floresta de Elwynn" } or nil end }
+check(fe.LocalizedZone("Elwynn Forest") == "Floresta de Elwynn", "zona traduzida pelo mapa do cliente")
+check(fe.LocalizedZone("Lugar Nenhum") == "Lugar Nenhum", "zona fora do mapa fica como veio")
+fe.zoneUiMap, C_Map = zm, cm
+
 -- ── identidade de unidade / Secret Values ───────────────────────────────────
 issecretvalue = function(v) return v == "SECRETO" end
 check(fe.NpcID("Creature-0-4467-0-25-6-000019B300") == 6, "GUID de criatura dá o id")

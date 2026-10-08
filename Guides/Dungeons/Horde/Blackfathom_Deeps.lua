@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackfathom Deeps", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "098e718a",
+	rev = "c8e82250",
 }, [[
 step
   talk Tsunaman##11862
@@ -28,9 +28,11 @@ step
   note Bring the head of Twilight Lord Kelris to Bashana Runetotem in Thunder Bluff.
   collect Head of Kelris##5881 |q 6561 |goto Blackfathom Deeps - Dungeon -1,-1 |elite |tip {dropsfrom}Twilight Lord Kelris
 step
+  note Speak to Je'neu Sancrea in Ashenvale.
   talk Je'neu Sancrea##12736
   turnin Trouble in the Deeps##6562 |goto Ashenvale 11.56,34.29
 step
+  note Seek out Argent Guard Thaelrid in Blackfathom Deeps.
   talk Argent Guard Thaelrid##4787
   turnin In Search of Thaelrid##1198 |goto Blackfathom Deeps - Dungeon -1,-1
 step
@@ -40,6 +42,7 @@ step
   talk Bashana Runetotem##9087
   turnin Blackfathom Villainy##6561 |goto Thunder Bluff 71.06,34.19
 step
+  note Bring the Strange Water Globe to Je'neu Sancrea at Zoram'gar Outpost, Ashenvale.
   talk Je'neu Sancrea##12736
   turnin Baron Aquanis##6922 |goto Ashenvale 11.56,34.29
 step
@@ -52,6 +55,7 @@ step
   note Bring 20 Sapphires of Aku'Mai to Je'neu Sancrea in Ashenvale.
   collect 20 Sapphire of Aku'Mai##16784 |q 6563 |goto Darkshore 32,92.81
 step
+  note Bring the Damp Note to Je'neu Sancrea in Ashenvale.
   talk Je'neu Sancrea##12736
   turnin Allegiance to the Old Gods##6564 |goto Ashenvale 11.56,34.29
 step

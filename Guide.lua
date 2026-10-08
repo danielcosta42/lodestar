@@ -59,11 +59,11 @@ end
 --------------------------------------------------------------------------------
 local CLASSES = {
 	WARRIOR=1, PALADIN=1, HUNTER=1, ROGUE=1, PRIEST=1,
-	SHAMAN=1, MAGE=1, WARLOCK=1, DRUID=1, DEATHKNIGHT=1,
+	SHAMAN=1, MAGE=1, WARLOCK=1, DRUID=1,
 }
 local RACES = {
-	HUMAN=1, DWARF=1, NIGHTELF=1, GNOME=1, DRAENEI=1,
-	ORC=1, SCOURGE=1, TAUREN=1, TROLL=1, BLOODELF=1,
+	HUMAN=1, DWARF=1, NIGHTELF=1, GNOME=1,
+	ORC=1, SCOURGE=1, TAUREN=1, TROLL=1,
 }
 local RACE_ALIAS = { UNDEAD = "SCOURGE" }  -- fala comum -> token da API
 
@@ -109,8 +109,6 @@ local function evalToken(tok)
 		elseif op == "==" or op == "=" then result = lvl == n end
 	elseif U == "FOREVER" then
 		result = ns.Client.isForever
-	elseif U == "ANNIVERSARY" or U == "TBC" then
-		result = not ns.Client.isForever
 	elseif U == "ALLIANCE" or U == "HORDE" then
 		result = (UnitFactionGroup("player") or ""):upper() == U
 	elseif CLASSES[U] then
@@ -316,7 +314,9 @@ function ns:LoadGuide(key, keepProgress, silent)
 		self:Printf(ns.L.GUIDE_LOADED_MSG, key, #guide.steps)
 	end
 	self.fire("_GUIDE_LOADED", guide, silent)
+	self._abrindo = true                    -- o que o guia pula ao abrir não é passo feito agora
 	self:CheckProgress()
+	self._abrindo = nil
 	if self.Viewer then self.Viewer:Refresh() end
 	if self.Waypoint then self.Waypoint:Update() end
 end
@@ -411,7 +411,6 @@ end)
 -- Um goal é "rastreável" se dá pra detectar conclusão automaticamente.
 function ns:IsGoalTrackable(goal)
 	if goal.verb == "note" then return false end
-	if goal.verb == "run" then return goal.runs ~= nil end   -- completa por nº de corridas
 	if goal.complete then return true end
 	if goal.verb == "accept" or goal.verb == "turnin" then return goal.id ~= nil end
 	if goal.verb == "ding" then return true end
@@ -429,10 +428,6 @@ function ns:IsGoalComplete(goal)
 
 	local v = goal.verb
 	if v == "note" then return true end
-	if v == "run" then   -- spam de dungeon: completo quando bater o nº de corridas
-		local n = ns.DungeonRuns and ns.DungeonRuns:CountFor(goal.dungeon) or 0
-		return goal.runs ~= nil and n >= (tonumber(goal.runs) or 0)
-	end
 	if v == "accept" then return goal.id and (IsQuestInLog(goal.id) or IsQuestComplete(goal.id)) end
 	if v == "turnin" then return goal.id and IsQuestComplete(goal.id) end
 	if v == "ding" then return UnitLevel("player") >= (tonumber(goal.text) or goal.count or 0) end
@@ -486,7 +481,7 @@ function ns:AdvanceStep(delta)
 		-- fim do guia: encadeia para o próximo, se houver
 		local nxt = self:NextGuideKey(guide)
 		if nxt then
-			self:Print("guia concluído, carregando o próximo...")
+			self:Print(ns.L.GUIDE_CHAINING)
 			return self:ChainGuide(guide.key, nxt)
 		end
 		idx = #guide.steps
@@ -501,15 +496,6 @@ function ns:AdvanceStep(delta)
 	self.char.hold = delta < 0 and idx or nil
 	if self.Viewer then self.Viewer:Refresh() end
 	if self.Waypoint then self.Waypoint:Update() end
-end
-
--- Marca/desmarca conclusão manual de um goal.
-function ns:MarkGoal(goal, done)
-	if done == nil then done = not self.char.completedGoals[goal._gkey] end
-	self.char.completedGoals[goal._gkey] = done or nil
-	self.char.hold = nil                         -- marcou: o guia volta a andar sozinho
-	self:CheckProgress()
-	if self.Viewer then self.Viewer:Refresh() end
 end
 
 -- Chamado quando o estado do jogo muda: auto-avança por TODOS os steps já
@@ -529,6 +515,7 @@ function ns:CheckProgress()
 			break
 		end
 		if self:IsStepActive(step) and not self:IsStepComplete(step) then break end
+		if self:IsStepActive(step) and not self._abrindo and self.fire then self.fire("_STEP_DONE") end
 		local before = self.char.currentStep
 		self:AdvanceStep(1)
 		if self.currentGuide == guide and self.char.currentStep == before then break end
@@ -540,9 +527,9 @@ end
 -- Zona inicial por raça (token não-localizado de UnitRace).
 local RACE_START = {
 	HUMAN = "Elwynn Forest", DWARF = "Dun Morogh", GNOME = "Dun Morogh",
-	NIGHTELF = "Teldrassil", DRAENEI = "Azuremyst Isle",
+	NIGHTELF = "Teldrassil",
 	ORC = "Durotar", TROLL = "Durotar", TAUREN = "Mulgore",
-	SCOURGE = "Tirisfal Glades", BLOODELF = "Eversong Woods",
+	SCOURGE = "Tirisfal Glades",
 }
 
 -- A ilha da raça nova (Forever): a cadeia de leveling não passa por ela, e o

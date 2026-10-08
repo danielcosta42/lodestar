@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Timbermaw Hold", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "ab4f31c2",
+	rev = "6512177d",
 }, [[
 step
   talk Grazle##11554
@@ -37,6 +37,7 @@ step
   kill Deadwood Den Watcher##7156 |goto Felwood 62.76,8.01 |tip Loot the quest item here — it starts the quest.
   accept Deadwood Ritual Totem##8470 |goto Felwood 62.76,8.01
 step
+  note Take the Deadwood Ritual Totem inside Timbermaw Hold and see if one of the furbolgs there will find a use for the item. The Timbermaw will not speak with you unless you are of Neutral reputation or greater with them.
   talk Kernda##11558
   turnin Deadwood Ritual Totem##8470 |goto Felwood 65.5,3.52
 step
@@ -52,6 +53,7 @@ step
   talk Nafien##15395
   accept Speak to Salfa##8465 |goto Felwood 64.77,8.13
 step
+  note Travel through Timbermaw Hold and exit into Winterspring. Speak with Salfa, who stands guard outside the entrance to Timbermaw Hold.
   talk Salfa##11556
   turnin Speak to Salfa##8465 |goto Winterspring 27.73,34.5
 step
@@ -66,6 +68,7 @@ step
   talk Grazle##11554
   accept Speak to Nafien##8462 |goto Felwood 50.93,85.01
 step
+  note Travel north along the main road in Felwood and speak with the furbolg named Nafien. He stands guard outside the entrance to Timbermaw Hold.
   talk Nafien##15395
   turnin Speak to Nafien##8462 |goto Felwood 64.77,8.13
 step
@@ -80,6 +83,7 @@ step
   kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
   accept Winterfall Ritual Totem##8471 |goto Winterspring 66.66,37.07
 step
+  note Take the Winterfall Ritual Totem inside Timbermaw Hold and see if one of the furbolgs there will find a use for the item. The Timbermaw will not speak with you unless you are of Neutral reputation or greater with them.
   talk Kernda##11558
   turnin Winterfall Ritual Totem##8471 |goto Felwood 65.5,3.52
 step

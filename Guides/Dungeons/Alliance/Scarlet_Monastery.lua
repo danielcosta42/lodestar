@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Scarlet Monastery", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "58e9ddb9",
+	rev = "278d9475",
 }, [[
 step
   only Mage
@@ -24,6 +24,7 @@ step
   kill Undead Ravager##11561 |q 261 |goto Desolace 64.24,90.37
 step
   only Mage
+  note Speak with Tabetha.
   talk Tabetha##6546
   turnin Journey to the Marsh##1947 |goto Dustwallow Marsh 46.06,57.09
 step
@@ -41,9 +42,11 @@ step
   accept Down the Scarlet Path##1052 |goto Desolace 66.52,7.91
 step
   only Mage
+  note Speak with Magus Tirth in the Shimmering Flats.
   talk Magus Tirth##6548
   turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7
 step
+  note Take Brother Anton's Letter of Commendation to Raleigh the Devout in Southshore.
   talk Raleigh the Devout##3980
   turnin Down the Scarlet Path##1052 |goto Hillsbrad Foothills 51.47,58.35
 step
