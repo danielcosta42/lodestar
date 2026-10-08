@@ -54,6 +54,10 @@ Gather.lua
 Consumables.lua
 SubZones.lua
 TravelData.lua
+Terrain0.lua
+Terrain1.lua
+Terrain.lua
+Schedule.lua
 Journey.lua
 TravelPlanner.lua
 Travel.lua

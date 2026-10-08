@@ -171,6 +171,7 @@ python tools/gen_special.py
 python tools/gen_zonedata.py
 python tools/gen_trainers.py
 python tools/gen_travel.py                      # voos, barcos, zepelins, bonde, serviços
+python tools/gen_terrain.py                     # caminho a pé: terreno do CASC local (casc.py)
 python tools/gen_subzones.py <pasta do QuestieDB>
 python tools/gen_forever.py
 python tools/validate_guides.py

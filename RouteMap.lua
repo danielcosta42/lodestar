@@ -17,6 +17,11 @@ function RM.LegPoints(leg, from)
 		for i = 1, #leg.p - 1, 2 do put(leg.p[i], leg.p[i + 1], leg.a.c) end
 	elseif leg.k == "ship" and leg.p then
 		for i = 1, #leg.p - 2, 3 do put(leg.p[i], leg.p[i + 1], leg.p[i + 2]) end
+	elseif leg.k == "walk" and leg.path and from and ns.Terrain then
+		-- pelo terreno: do jogador, o resto do caminho
+		local _, _, _, _, nxt = ns.Terrain.Ahead(leg.path, from, 0)
+		put(from.x, from.y, from.c)
+		for i = nxt, #leg.path do put(leg.path[i].x, leg.path[i].y, leg.path[i].c) end
 	elseif leg.k == "walk" or leg.k == "tram" then
 		local a = from or leg.a
 		put(a.x, a.y, a.c)
@@ -33,6 +38,7 @@ local SPACING = 9          -- pixels entre pontos no canvas
 local overlay
 local dots, rings = {}, {}
 local nDots, nRings = 0, 0
+local lastSig                         -- o que está desenhado; igual = não refaz
 
 local function ensure(canvas)
 	if not overlay then
@@ -73,6 +79,7 @@ local function hideAll()
 	for i = 1, #dots do dots[i]:Hide() end
 	for i = 1, #rings do rings[i]:Hide() end
 	nDots, nRings = 0, 0
+	lastSig = nil
 	if overlay then overlay:Hide() end
 end
 
@@ -108,13 +115,18 @@ local function update()
 	if not (shown and ok and canvas) then return hideAll() end
 	local w, h = canvas:GetSize()
 	if not w or w == 0 then return hideAll() end
+	local from = ns.Travel.PlayerWorld()
+	local sig = ("%s|%s|%d|%s|%d|%d|%.0f|%.0f"):format(tostring(route.legs[route.leg] and route.legs[route.leg].path),
+		tostring(route), route.leg, tostring(shown), w, h,
+		from and from.x or 0, from and from.y or 0)
+	if sig == lastSig and overlay and overlay:IsShown() then return end
+	lastSig = sig
 	ensure(canvas)
 	for i = 1, #dots do dots[i]:Hide() end
 	for i = 1, #rings do rings[i]:Hide() end
 	nDots, nRings = 0, 0
 	local C = UI.COL
 	local col = route.dest and route.dest.red and { 0.9, 0.2, 0.2 } or C.accent
-	local from = ns.Travel.PlayerWorld()
 	for i = route.leg, #route.legs do
 		local leg = route.legs[i]
 		local alpha = i == route.leg and 1 or 0.5

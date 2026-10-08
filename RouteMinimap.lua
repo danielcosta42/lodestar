@@ -8,17 +8,18 @@ local ADDON, ns = ...
 local UI = ns.UI
 local G = ns.RouteGeom
 
--- alcance do minimapa em jardas por nível de zoom (aprox.; calibrável em Avançado)
-local MM_RANGE = { [0] = 233.33, [1] = 200, [2] = 166.66, [3] = 133.33, [4] = 100, [5] = 66.66 }
+-- alcance do minimapa em jardas pelo zoom, aberto ou fechado (calibrável em Avançado)
 local function minimapRange()
 	local zoom = (Minimap and Minimap.GetZoom and Minimap:GetZoom()) or 3
-	return (MM_RANGE[zoom] or 133.33) * ((ns.db and ns.db.minimap.rangeMult) or 1)
+	local indoor = IsIndoors and IsIndoors() or false
+	return G.MinimapRange(zoom, indoor) * ((ns.db and ns.db.minimap.rangeMult) or 1)
 end
 
 local SPACING, INSET = 6, 0.92       -- pixels entre pontos; fração do raio usada
 local overlay
 local dots, rings = {}, {}
 local nDots, nRings = 0, 0
+local lastSig                         -- o que está desenhado; igual = não refaz
 
 local function ensure()
 	if overlay then return overlay end
@@ -45,21 +46,29 @@ local function hideAll()
 	for i = 1, #dots do dots[i]:Hide() end
 	for i = 1, #rings do rings[i]:Hide() end
 	nDots, nRings = 0, 0
+	lastSig = nil
 end
 
 local function update()
-	hideAll()
 	local route = ns.Travel and ns.Travel:Route()
 	-- rota do guia só com o guia aberto; destino próprio (manual, corpo) sempre
-	if not (route and ns.db and ns.db.trail and (route.kind ~= "guide" or ns:UIShown()) and Minimap and G) then return end
+	if not (route and ns.db and ns.db.trail and (route.kind ~= "guide" or ns:UIShown()) and Minimap and G) then
+		return hideAll()
+	end
 	local p = ns.Travel.PlayerWorld()
-	if not p then return end
-	ensure()
+	if not p then return hideAll() end
 	local radius = Minimap:GetWidth() / 2 * INSET
-	if radius <= 0 then return end
+	if radius <= 0 then return hideAll() end
 	local ydPerPx = minimapRange() / (Minimap:GetWidth() / 2)
 	local facing = GetPlayerFacing and GetPlayerFacing() or 0
 	local rotate = GetCVar and GetCVar("rotateMinimap") == "1"
+	-- parado, mesma rota e mesmo zoom: o desenho de antes vale
+	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.3f|%s"):format(tostring(route), route.leg, p.x, p.y,
+		rotate and facing or 0, ydPerPx, tostring(route.legs[route.leg] and route.legs[route.leg].path))
+	if sig == lastSig then return end
+	hideAll()
+	lastSig = sig
+	ensure()
 	local C = UI.COL
 	local col = route.dest and route.dest.red and { 0.9, 0.2, 0.2 } or C.accent
 	local function px(x, y)            -- mundo -> pixels do minimapa, sem prender na borda

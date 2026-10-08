@@ -105,10 +105,13 @@ function S:Nearest(kind, sub)
 	return best, best and routes[best]
 end
 
-function S:GoTo(kind, sub)
+-- `quiet`: quem chamou mostra a falha (o painel Viagem); senão ela vai ao chat.
+-- Devolve true, ou false e a mensagem.
+function S:GoTo(kind, sub, quiet)
 	local best = self:Nearest(kind, sub)
 	if not best then
-		return ns:Print(ns.L.SERVICE_NONE)
+		if not quiet then ns:Print(ns.L.SERVICE_NONE) end
+		return false, ns.L.SERVICE_NONE
 	end
 	local title = sub or ns.L["SERVICE_" .. kind:upper()] or kind
 	ns.Destinations:Set("manual", { zone = best.zone, x = best.x, y = best.y,
@@ -118,4 +121,5 @@ function S:GoTo(kind, sub)
 		ns.Toast:Show({ title = title,
 			text = ("%s — %s"):format(best.n, best.zone), color = ns.UI.COL.tip, hold = 5 })
 	end
+	return true
 end

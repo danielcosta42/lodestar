@@ -42,14 +42,14 @@ local data = {
 		[4] = { [2] = { s = 1, p = { 10, 10, 3000, 0 } } },
 	},
 	ships = {
-		{ k = "boat", w = 100, s = { 200, 200 },
+		{ id = 7, k = "boat", w = 100, s = { 200, 200 }, d = { 20, 20 },
 			stops = { { c = 0, x = 0, y = -500 }, { c = 1, x = 0, y = 0 } },
 			p = { 0, -500, 0, 0, -300, 0, 0, 0, 1 } },
 	},
 	tram = { s = 120, a = { c = 0, x = 9000, y = 9000 }, b = { c = 0, x = 12000, y = 12000 } },
 	teleports = {},
 }
-local ns = load("Journey.lua", {})
+local ns = load("Journey.lua", load("Schedule.lua", {}))
 local J = ns.Journey
 local function ctx(over)
 	local c = { data = data, fac = "A", known = { [1] = true, [2] = true }, speed = 7, teleports = {} }
@@ -245,7 +245,8 @@ local L = setmetatable({
 	LEG_TO_FLIGHT = "FM %s", LEG_TO_NEW_FLIGHT = "NOVO %s", LEG_FLY = "VOE %s", LEG_TO_DOCK = "CAIS %s",
 	LEG_SHIP = "PEGUE %s", LEG_TO_TRAM = "BONDE", LEG_TRAM = "NO BONDE", LEG_HEARTH = "PEDRA",
 	LEG_TELEPORT = "TELE %s", SHIP_boat = "barco", SHIP_zeppelin = "zepelim",
-	LEG_SHIP_TO = "PEGUE %s PARA %s", LEG_TO_DOCK_TO = "CAIS %s PARA %s",
+	LEG_SHIP_TO = "PEGUE %s PARA %s", LEG_TO_DOCK_TO = "CAIS %s PARA %s", LEG_RECALL = "RETORNO",
+	SHIP_LEAVES = "SAI %s", SHIP_ARRIVES = "CHEGA %s", SHIP_BOARD = "EMBARQUE %s",
 }, { __index = function(_, k) return k end })
 local WPT = load("Waypoint.lua", { L = L, On = function() end, Every = function() end, zoneUiMap = {} }).Waypoint
 check(WPT.FmtTime(45) == "45s" and WPT.FmtTime(130) == "2m10s" and WPT.FmtTime(3900) == "1h05m",
@@ -508,5 +509,188 @@ check(kt[2] and not kt[4], "continente sincronizado: vale o mapa de voo, não a 
 check(kt[26] and not kt[27] and not kt[40], "outro continente: voos da facção nas zonas visitadas")
 kt = T.KnownTaxi({ taxiSynced = true, taxi = { [2] = true }, zones = { Darkshore = true } }, NODES, "A")
 check(kt[2] and kt[26], "save antigo (taxiSynced = true) não desliga o fallback")
+
+-- ── #19: polimento ───────────────────────────────────────────────────────────
+-- 1/7: perna de teleporte e de pedra levam o feitiço (ícone; Retorno Astral no texto)
+r = J.Plan(P(0, 0, 0), P(1, 5000, 5000), ctx({ teleports = { { c = 1, x = 5000, y = 5010, cast = 10, label = "Teleporte", spell = 3567 } } }))
+check(r and r.legs[1].k == "teleport" and r.legs[1].spell == 3567, "a perna de teleporte leva o feitiço (ícone)")
+r = J.Plan(P(0, 0, 0), P(1, 5000, 5000), ctx({ hearth = { c = 1, x = 5000, y = 5010, wait = 0, spell = 556 } }))
+check(r and r.legs[1].k == "hearth" and r.legs[1].spell == 556, "a perna de pedra leva o Retorno Astral quando é ele")
+check(WPT.LegText({ legs = { { k = "hearth", spell = 556 } } }, 1, 10):find("^RETORNO"), "texto: Retorno Astral, não Pedra")
+-- 6: a velocidade a pé não aprende no barco/bonde
+check(T.NextSpeed(7, 25, "ship") == 7 and T.NextSpeed(7, 25, "tram") == 7, "no barco e no bonde a amostra é ignorada")
+check(T.NextSpeed(7, 14, "walk") > 7, "a pé, a amostra entra")
+-- 4: minimapa dentro de cidade tem alcance menor
+check(G.MinimapRange(0, true) < G.MinimapRange(0, false) and near(G.MinimapRange(0, false), 233.33), "alcance do minimapa: fechado menor que aberto")
+
+-- 2: a chegada do teleporte aprendida em jogo vale mais que o mestre de voo da cidade
+local NODES2 = { [27] = { c = 1, x = 8643.6, y = 841.0 } }
+local tp = { spell = 3565, node = 27 }
+local pt = T.TeleportPoint(tp, NODES2, nil)
+check(pt and pt.x == 8643.6, "sem chegada aprendida: o mestre de voo da cidade")
+pt = T.TeleportPoint(tp, NODES2, { [3565] = { c = 1, x = 9660, y = 2510 } })
+check(pt and pt.x == 9660, "com chegada aprendida: o ponto onde o jogador chegou")
+
+-- ── #21: horário de barco e zepelim ──────────────────────────────────────────
+local SC = load("Schedule.lua", {}).Schedule
+local navio = { id = 1, stops = { {}, {} }, s = { 100, 80 }, d = { 60, 60 } }
+local arr, dep, Tc = SC.Offsets(navio)
+check(arr[1] == 0 and dep[1] == 60 and arr[2] == 160 and dep[2] == 220 and Tc == 300,
+	"ciclo: chega 0, sai 60, chega na 2ª 160, sai 220, volta 300")
+check(SC.CycleStart(navio, 2, "arr", 1000) == 840, "chegada na 2ª parada às 1000 → ciclo começou às 840")
+local h = { t0 = 840, T = 300 }
+check(SC.NextDeparture(navio, 1, 850, h) == 900 and SC.NextDeparture(navio, 1, 950, h) == 1200,
+	"próxima saída da 1ª: 900 se chegar às 850; 1200 se chegar às 950")
+check(SC.NextDeparture(navio, 1, 850, nil) == nil, "sem horário aprendido: nada")
+-- aprender: uma observação dá a fase; o período sai de duas da mesma parada e evento
+local h1 = SC.Learn(nil, navio, 1, "arr", 1000)
+check(h1.T == nil and h1.t0 == 1000, "uma chegada: fase conhecida, período ainda não")
+check(SC.NextDeparture(navio, 1, 1010, h1) == 1060, "sem período aprendido, a volta atual vale (sai às 1060)")
+check(SC.NextDeparture(navio, 1, 1000 + 300 + 10, h1) == nil, "sem período aprendido, além de uma volta não se adivinha")
+local h2 = SC.Learn(h1, navio, 1, "arr", 1000 + 356)          -- estimativa 300, real 356 (+19%)
+check(h2.T and near(h2.T, 356), "duas chegadas na mesma parada: período aprendido 356 (" .. tostring(h2.T) .. ")")
+check(SC.NextDeparture(navio, 1, 1356 + 5 * 356 + 10, h2) == 1356 + 5 * 356 + 60, "com período aprendido, vale várias voltas adiante")
+local h3 = SC.Learn(h2, navio, 1, "arr", 1356 + 2 * 356 + 100)  -- 100 s fora: servidor reiniciou
+check(near(h3.T, 356) and h3.t0 == 1356 + 2 * 356 + 100, "fora da previsão: a fase recomeça, o período fica")
+check(SC.NextDeparture(navio, 1, h3.last + 13 * 3600, h3) == nil, "observação de mais de 12 h: o horário é ignorado")
+local h4 = SC.Learn(SC.Learn(nil, navio, 1, "arr", 1000), navio, 2, "arr", 1000 + 160 + 50)
+check(h4.T == nil, "parada diferente não ensina o período (só a fase)")
+local h5 = SC.Learn(SC.Learn(nil, navio, 1, "arr", 1000), navio, 1, "arr", 1000 + 10 * 356)
+check(h5.T == nil, "dez voltas depois: longe demais para saber quantas foram")
+local _, _, Tr = SC.Offsets(navio, { [1] = 90 })
+check(Tr == 290, "travessia medida (90 s) substitui a estimada no ciclo")
+
+-- o planejador usa o horário: a espera é até a próxima saída na hora em que se chega ao cais
+-- (cais a 500 jd, 7 jd/s: ~71 s; ciclo 440 s: sai às t0+20)
+local barcoH = function(saida) return { [7] = { t0 = 1000 + saida - 20, T = 440 } } end
+r = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(60) }))       -- saiu aos 60 s
+check(r and r.legs[2].k == "ship" and math.abs(r.legs[2].s - (1500 - 1000 - 500 / 7 + 200)) < 0.5 and r.legs[2].dep == 1500,
+	"chegou depois da saída: espera a volta inteira (" .. (r and r.legs[2].s or 0) .. ")")
+r = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(80) }))       -- sai aos 80 s
+check(r and math.abs(r.legs[2].s - (80 - 500 / 7 + 200)) < 0.5 and r.legs[2].dep == 1080 and r.legs[2].stop == 1 and r.legs[2].sid == 7,
+	"chegou antes da saída: espera curta e a perna leva a hora de saída (" .. (r and r.legs[2].s or 0) .. ")")
+
+-- quanto falta numa perna de barco com horário: até a saída + a travessia
+local rb2 = { leg = 1, legs = { { k = "ship", a = P(0, 0, 0), b = P(1, 0, 0), s = 999, dep = 1100, ride = 200 } } }
+check(math.abs(T.Remaining(rb2, P(0, 0, 0), 7, 1000) - 300) < 0.01, "barco com horário: 100 s até sair + 200 de travessia")
+check(math.abs(T.Remaining(rb2, P(0, 0, 0), 7) - 999) < 0.01, "sem a hora: o custo da rota, como antes")
+
+-- a contagem na seta e no painel (horário conhecido; now = hora do servidor)
+local rs = { legs = { { k = "walk" }, { k = "ship", ship = "boat", name = "Menethil", dep = 1100, dock = 60, ride = 200 }, { k = "walk" } } }
+check(WPT.LegText(rs, 1, 30, 1000):find("SAI 1m40s$"), "indo ao cais: quando sai (" .. WPT.LegText(rs, 1, 30, 1000) .. ")")
+check(WPT.LegText(rs, 2, 0, 1000):find("CHEGA 40s$"), "no cais, antes de atracar: quando chega (" .. WPT.LegText(rs, 2, 0, 1000) .. ")")
+check(WPT.LegText(rs, 2, 0, 1070):find("EMBARQUE 30s$"), "atracado: embarque e quando sai (" .. WPT.LegText(rs, 2, 0, 1070) .. ")")
+check(not WPT.LegText(rs, 2, 0):find("CHEGA"), "sem a hora: como antes")
+
+-- o grito escolhe o zepelim pelo destino; sem nome no texto, o mais perto
+local cands = { { 285, 2, "Grom'gol", 18 }, { 302, 1, "Undercity", 22 } }
+check(select(1, T.PickAnnounced(cands, "The zeppelin to Undercity has just arrived!")) == 302,
+	"grito com o destino: o zepelim de Undercity, mesmo sendo o mais longe")
+check(select(1, T.PickAnnounced(cands, "Zepelim chegou!")) == 285, "sem o nome no texto: o mais perto")
+
+-- ── #23: caminho a pé pelo terreno ───────────────────────────────────────────
+local TRN = load("Terrain.lua", {}).Terrain
+local DIRS8 = { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } }
+-- quadrante 0 sintético: `bloq(r, c)` diz o que é parede, `agua(r, c)` o que é lago
+local function quadranteSint(bloq, agua)
+	local by, wb = {}, {}
+	for r = 0, 31 do
+		for c = 0, 31 do
+			local v = 0
+			if not bloq(r, c) then
+				for d, rc in ipairs(DIRS8) do
+					local nr, nc = r + rc[1], c + rc[2]
+					if nr >= 0 and nr < 32 and nc >= 0 and nc < 32 and not bloq(nr, nc) then v = v + 2 ^ (d - 1) end
+				end
+			end
+			by[#by + 1] = string.char(1, v)
+		end
+	end
+	for i = 0, 127 do
+		local v = 0
+		for k = 0, 7 do
+			local cel = i * 8 + k
+			if agua and agua(math.floor(cel / 32), cel % 32) then v = v + 2 ^ k end
+		end
+		wb[#wb + 1] = string.char(1, v)
+	end
+	return { [0] = { [0] = table.concat(by) .. table.concat(wb) } }
+end
+local function mundo(r, c) return TRN.CellCenter(0, r, c) end
+local function comprimento(pts)
+	local s = 0
+	for i = 2, #pts do s = s + math.sqrt((pts[i].x - pts[i - 1].x) ^ 2 + (pts[i].y - pts[i - 1].y) ^ 2) end
+	return s
+end
+-- parede na coluna 10 com brecha embaixo (linhas 26+)
+local parede = quadranteSint(function(r, c) return c == 10 and r < 26 end)
+local A, B = mundo(5, 5), mundo(5, 15)
+local cam = TRN.Path(parede, A, B, 20000)
+check(cam and #cam >= 2, "há caminho pela brecha da parede")
+check(cam and comprimento(cam) > 2.5 * math.sqrt((A.x - B.x) ^ 2 + (A.y - B.y) ^ 2), "o caminho contorna a parede (bem mais longo que a reta)")
+check(cam and math.abs(cam[#cam].x - B.x) < 0.01 and math.abs(cam[1].x - A.x) < 0.01, "começa no jogador e termina no destino")
+local fechada = quadranteSint(function(r, c) return c == 10 end)
+check(TRN.Path(fechada, A, B, 20000) == nil, "parede inteira: sem caminho (volta a reta)")
+-- lago no meio: contorna se a volta for curta
+local lago = quadranteSint(function() return false end, function(r, c) return c >= 9 and c <= 11 and r >= 3 and r <= 7 end)
+cam = TRN.Path(lago, A, B, 20000)
+local molhou = false
+for i = 2, #(cam or {}) do                      -- percorre cada segmento a cada 2 jd
+	local p0, p1 = cam[i - 1], cam[i]
+	local len = math.sqrt((p1.x - p0.x) ^ 2 + (p1.y - p0.y) ^ 2)
+	for t = 0, len, 2 do
+		local r, c = TRN.Cell(p0.x + (p1.x - p0.x) * t / len, p0.y + (p1.y - p0.y) * t / len)
+		if c >= 9 and c <= 11 and r >= 3 and r <= 7 then molhou = true end
+	end
+end
+check(cam and not molhou, "lago pequeno no meio: contorna em vez de nadar")
+
+-- a seta mira o ponto do caminho ~25 jd à frente; o que falta é pelo caminho
+local L_ = { { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 0, x = 100, y = 100 } }   -- 100 norte, 100 oeste
+local ax, ay, falta = TRN.Ahead(L_, { c = 0, x = 90, y = 2 }, 25)
+check(near(ax, 100) and near(ay, 15) and near(falta, 110), "virando a esquina: mira o trecho seguinte e falta 110 jd (" .. ax .. "," .. ay .. "," .. falta .. ")")
+ax, ay, falta = TRN.Ahead(L_, { c = 0, x = 100, y = 95 }, 25)
+check(near(ax, 100) and near(ay, 100) and near(falta, 5), "perto do fim: mira o destino")
+-- terreno de verdade (Kalimdor): Ratchet -> Encruzilhada existe e contorna o relevo
+local K = load("Terrain1.lua", {}).terrain
+local rat, cru = { c = 1, x = -894.6, y = -3773.0 }, { c = 1, x = -441.8, y = -2596.4 }
+cam = TRN.Path(K, rat, cru, 300000)
+local reta = math.sqrt((rat.x - cru.x) ^ 2 + (rat.y - cru.y) ^ 2)
+check(cam and comprimento(cam) > reta and comprimento(cam) < 1.6 * reta,
+	"real: Ratchet -> Encruzilhada pelo terreno (" .. (cam and math.floor(comprimento(cam)) or 0) .. " jd; reta " .. math.floor(reta) .. ")")
+
+-- a perna a pé com caminho: desenho e "quanto falta" seguem o caminho
+local RMT = load("RouteMap.lua", { Terrain = TRN }).RouteMap
+local perna = { k = "walk", a = P(0, 0, 0), b = P(0, 100, 100),
+	path = { P(0, 0, 0), P(0, 100, 0), P(0, 100, 100) } }
+pts = RMT.LegPoints(perna, P(0, 90, 2))
+check(#pts == 9 and pts[1] == 90 and pts[4] == 100 and pts[5] == 0 and pts[7] == 100 and pts[8] == 100,
+	"a pé com caminho: do jogador, o resto do caminho (sem o trecho já andado)")
+local TT = load("Travel.lua", { Journey = J, Terrain = TRN }).Travel
+check(math.abs(TT.Remaining({ leg = 1, legs = { perna } }, P(0, 90, 2), 10) - 11) < 0.01,
+	"quanto falta a pé: pelo caminho (110 jd a 10 jd/s), não em reta")
+check(math.abs(TT.Remaining({ leg = 1, legs = { { k = "walk", a = P(0, 0, 0), b = P(0, 100, 100) } } }, P(0, 90, 2), 10)
+	- math.sqrt(10 ^ 2 + 98 ^ 2) / 10) < 0.01, "sem caminho: em reta, como antes")
+
+-- revisão do #24: o A* cede a vez por função (orçamento de tempo), ajusta ponta bloqueada e
+-- nunca sai da grade
+local vezes = 0
+local co = coroutine.create(function()
+	return TRN.Path(parede, A, B, 20000, function() vezes = vezes + 1; return true end)
+end)
+local okc, res = coroutine.resume(co)
+local cedeu = 0
+while okc and coroutine.status(co) ~= "dead" do cedeu = cedeu + 1; okc, res = coroutine.resume(co) end
+check(okc and res and cedeu > 0, "cede a vez (orçamento) e ainda acha o caminho (" .. cedeu .. " vezes)")
+local alvoBloq = quadranteSint(function(r, c) return r == 5 and c == 15 end)
+cam = TRN.Path(alvoBloq, A, B, 20000)
+check(cam and cam[#cam].x == B.x and cam[#cam].y == B.y, "destino em célula bloqueada: ajusta para a vizinha passável e termina nele")
+local borda = quadranteSint(function() return false end)
+local t0 = TRN.Decode(borda[0][0])
+borda[0][0] = string.char(1, 255) .. borda[0][0]:sub(3)       -- célula (0,0) com todas as ligações, até para fora
+cam = TRN.Path(borda, mundo(0, 0), mundo(0, 4), 20000)
+local fora = false
+for _, pt in ipairs(cam or {}) do local r, c = TRN.Cell(pt.x, pt.y); if r < 0 or c < 0 then fora = true end end
+check(cam and not fora, "ligação para fora da grade não vira caminho")
 
 print(("ok: %d checks"):format(checks))

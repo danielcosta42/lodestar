@@ -25,6 +25,7 @@ local localizedZone = ns.LocalizedZone
 local function travelHint()
 	local route = ns.Travel and ns.Travel:Route()
 	if route then
+		-- sem contagem: a dica só se refaz ao trocar de passo (a seta e o painel contam)
 		return route.leg < #route.legs and ns.Waypoint.LegText(route, route.leg) or nil
 	end
 	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
