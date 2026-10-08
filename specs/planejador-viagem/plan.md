@@ -37,7 +37,7 @@ gerador (`tools/gen_travel.py`).
 
 ---
 
-### T1 — Dados: `tools/gen_travel.py` → `TravelData.lua`
+### Task 1 — Dados: `tools/gen_travel.py` → `TravelData.lua`
 
 **Arquivos:** criar `tools/gen_travel.py`, `TravelData.lua`; alterar `Lodestar.toc` (carregar
 `TravelData.lua` antes de `TravelPlanner.lua`), `docs/forever.md` (pipeline).
@@ -69,7 +69,7 @@ comprimento entre paradas ÷ `SHIP_SPEED`; `w` = meio ciclo. Serviços pelas fla
 mantidos; nenhum nome descartado sobra; todo transporte tem 2+ paradas; Booty Bay–Ratchet é barco e
 Orgrimmar–Undercity é zepelim; todo serviço tem zona e coordenada.
 
-### T2 — Planejador puro: `Journey.lua`
+### Task 2 — Planejador puro: `Journey.lua`
 
 **Produz:** `ns.Journey.Plan(from, to, ctx) → route|nil`, com
 `ctx = { data = ns.travel, fac = "A"|"H", known = {[id]=true}, speed = 7,
@@ -88,7 +88,7 @@ Transporte: `w + s` entre paradas consecutivas (ida e volta). Pedra: do início 
 destino desconhecido nunca é destino de voo; pedra pronta perto do alvo vence; pedra com espera de 900 s
 perde; outro continente usa barco; outro continente sem ligação → nil.
 
-### T3 — Camada de jogo: `Travel.lua`
+### Task 3 — Camada de jogo: `Travel.lua`
 
 **Consome:** `ns.Journey.Plan`, `ns.travel`, `ns.Destinations:Active()` (T4).
 **Produz:** `ns.Travel:Route()` (rota atual, `legs` e `leg` = índice da perna atual),
@@ -104,7 +104,7 @@ mudar o destino, ao terminar perna, a cada 10 s; troca só se `ShouldReplace`.
 **Testes:** `ShouldReplace` (≥15% ou ≥30 s; empate não troca); `AdvanceLeg` (chegou ao fim da perna a
 pé → próxima; pousou → próxima; no meio → mesma).
 
-### T4 — Destinos e serviços: `Destinations.lua`, `Services.lua`
+### Task 4 — Destinos e serviços: `Destinations.lua`, `Services.lua`
 
 **Produz:** `ns.Destinations:Set(kind, dest)` / `:Clear(kind)` / `:Active() → dest, kind` com
 `kind ∈ {"corpse","manual","guide"}` e `dest = { zone, x, y, label, red = bool }`;
@@ -113,7 +113,7 @@ pé → próxima; pousou → próxima; no meio → mesma).
 **Testes:** prioridade corpo > manual > guia; limpar o corpo volta ao manual; `Pick` escolhe o de menor
 tempo e não o de menor distância; filtro de facção.
 
-### T5 — Seta pela perna: `Waypoint.lua`, adaptador `TravelPlanner.lua`
+### Task 5 — Seta pela perna: `Waypoint.lua`, adaptador `TravelPlanner.lua`
 
 `WP:PickTarget()` passa a devolver o fim da perna atual quando há rota (com `goto_` sintético e
 `text` = rótulo da perna); sem rota, comportamento atual. Rótulo: `L.LEG_WALK/FLY/SHIP/TRAM/HEARTH/
@@ -122,7 +122,7 @@ TELEPORT` + tempo (`fmtTime`). Perna de pedra ou teleporte: ícone do item/feiti
 
 **Testes:** rótulo de cada tipo de perna; `fmtTime` (45 → "45s", 130 → "2m10s").
 
-### T6 — Geometria pura: `RouteGeom.lua`
+### Task 6 — Geometria pura: `RouteGeom.lua`
 
 **Produz:** `G.Dots(path, spacing) → {x,y,...}` (pontos igualmente espaçados ao longo da linha),
 `G.ToMinimap(px, py, wx, wy, facing, rotate, ydPerPx, radius) → rx, ry, inside`,
@@ -132,36 +132,36 @@ TELEPORT` + tempo (`fmtTime`). Perna de pedra ou teleporte: ícone do item/feiti
 cima; fora do raio volta `inside=false` na borda; bússola: alvo à frente = 0, à esquerda = negativo,
 350° com jogador a 10° = levemente à direita, fora do campo = preso na borda.
 
-### T7 — Rota no mapa-múndi: `RouteMap.lua` (substitui a linha do `Trail.lua`)
+### Task 7 — Rota no mapa-múndi: `RouteMap.lua` (substitui a linha do `Trail.lua`)
 
 Pool de texturas de ponto; cada perna projetada por `WP:MapPos` (mundo → mapa aberto via
 `C_Map.GetMapPosFromWorldPos`), recortada por `WP.ClipSegment`; perna atual alfa 1, próximas 0,5;
 corpo em vermelho; ícones de parada (voo, cais, destino, "descubra"). Redesenho quando muda mapa,
 tamanho do canvas ou rota; ponta do jogador a cada 0,25 s com o mapa aberto.
 
-### T8 — Rota no minimapa: `RouteMinimap.lua` (substitui a linha do `Trail.lua`)
+### Task 8 — Rota no minimapa: `RouteMinimap.lua` (substitui a linha do `Trail.lua`)
 
 Mesmo traçado via `G.ToMinimap` com o alcance calibrado (`MM_RANGE` + `ns.db.minimap.rangeMult`),
 respeitando `rotateMinimap`; pontos param na borda; ícone da próxima parada (preso na borda se longe).
 
-### T9 — Bússola: `Compass.lua`
+### Task 9 — Bússola: `Compass.lua`
 
 Faixa no topo (`ns.db.compass = { enabled, scale, point, x, y, locked }`), marcas N/L/S/O, marcadores
 da próxima parada, do destino e do próximo passo do guia por `G.CompassX`; texto de distância e tempo.
 
-### T10 — Destino manual e serviços por comando
+### Task 10 — Destino manual e serviços por comando
 
 Shift+clique no mapa-múndi (`WorldMapFrame:GetNormalizedCursorPosition()` no mapa aberto) e no
 minimapa (cursor → jardas → mundo) → `Destinations:Set("manual")`; Shift+clique perto do pino limpa.
 `/ls way` e `/ls train`/`/ls prof` passam por `Destinations`; novo `/ls near [tipo]`.
 
-### T11 — Painel Viagem: `TravelPanel.lua` + botão no cabeçalho do guia
+### Task 11 — Painel Viagem: `TravelPanel.lua` + botão no cabeçalho do guia
 
 Lista das pernas com tempo e total; botões de serviço (treinador de classe, de profissão com escolha,
 reparo, vendedor, estalagem, banco, leilão, voo, estábulo); destino manual (ativo, "Limpar", campo
 de coordenada); estado do corpo.
 
-### T12 — Todo comando na interface
+### Task 12 — Todo comando na interface
 
 Botão **⋯** no cabeçalho (reset, export, import, record, scan iniciar/parar/status/limpar); clique
 direito no botão do minimapa vira menu rápido; Configurações → Geral ("Ver boletim agora", "Rever o
@@ -171,12 +171,12 @@ comando do `/ls` para sua entrada.
 
 **Teste:** lista os `cmd == "..."` do `Core.lua` e falha se algum não está em `ns.COMMAND_UI`.
 
-### T13 — Limpeza e acabamento
+### Task 13 — Limpeza e acabamento
 
 `FlightMap.lua` destaca o destino da perna de voo da rota; saem `FlightData.lua`, `TransitData.lua`
 e a cadeia de regras do `TravelPlanner.lua`; strings enUS/ptBR; README e `docs/`.
 
-### T14 — Verificação final
+### Task 14 — Verificação final
 
 Testes Lua, `gen_travel.py --demo`, luacheck, ruff (F, E9), harness com o addon inteiro (rota em Brill
 → Silverpine; Goldshire → Ironforge), pacote do CI, instalação no beta, PR com `Closes #13`.
