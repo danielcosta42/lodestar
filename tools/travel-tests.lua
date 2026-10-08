@@ -484,4 +484,10 @@ check(WPT.LegText(rs, 2, 0, 1000):find("CHEGA 40s$"), "no cais, antes de atracar
 check(WPT.LegText(rs, 2, 0, 1070):find("EMBARQUE 30s$"), "atracado: embarque e quando sai (" .. WPT.LegText(rs, 2, 0, 1070) .. ")")
 check(not WPT.LegText(rs, 2, 0):find("CHEGA"), "sem a hora: como antes")
 
+-- o grito escolhe o zepelim pelo destino; sem nome no texto, o mais perto
+local cands = { { 285, 2, "Grom'gol", 18 }, { 302, 1, "Undercity", 22 } }
+check(select(1, T.PickAnnounced(cands, "The zeppelin to Undercity has just arrived!")) == 302,
+	"grito com o destino: o zepelim de Undercity, mesmo sendo o mais longe")
+check(select(1, T.PickAnnounced(cands, "Zepelim chegou!")) == 285, "sem o nome no texto: o mais perto")
+
 print(("ok: %d checks"):format(checks))

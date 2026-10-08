@@ -73,6 +73,15 @@ function T.Remaining(route, pos, speed, now)
 	return s
 end
 
+-- Entre as paradas perto de um anunciador ({ sid, k, nome da outra parada, distância },
+-- da mais perto), a que o grito nomeia ("...to Grom'gol..."); sem nome no texto, a mais perto.
+function T.PickAnnounced(cands, text)
+	for _, c in ipairs(cands or {}) do
+		if c[3] and text and text:find(c[3], 1, true) then return c[1], c[2] end
+	end
+	if cands and cands[1] then return cands[1][1], cands[1][2] end
+end
+
 -- A parada (id do transporte, índice) mais perto do ponto de mundo `w`, até `maxd` jardas.
 function T.NearestStop(ships, w, maxd)
 	local bsid, bk, bd
@@ -218,8 +227,9 @@ function T:Context()
 end
 
 -- Uma observação do transporte `sid` (parada k, "arr" | "dep", hora do servidor t); com a
--- travessia medida (`rideFrom` -> `rideS` s), que passa a valer no ciclo.
-function T:Observe(sid, k, ev, t, rideFrom, rideS)
+-- travessia medida (`rideFrom` -> `rideS` s), que passa a valer no ciclo. `replan`: refaz a
+-- rota com a espera nova — só fora do transporte (a bordo, a posição é o mar).
+function T:Observe(sid, k, ev, t, rideFrom, rideS, replan)
 	local ship
 	for _, s in ipairs(ns.travel and ns.travel.ships or {}) do if s.id == sid then ship = s end end
 	if not (ship and ns.Schedule) then return end
@@ -230,7 +240,7 @@ function T:Observe(sid, k, ev, t, rideFrom, rideS)
 		ride[rideFrom] = rideS
 	end
 	store[sid] = ns.Schedule.Learn(store[sid], ship, k, ev, t, ride)
-	T:Replan(true)
+	if replan then T:Replan(true) end
 end
 
 --------------------------------------------------------------------------------
@@ -303,25 +313,35 @@ ns:On("TAXIMAP_OPENED", function()
 end)
 
 -- anunciador gritou a chegada: o NPC (pelo GUID) diz qual transporte e qual parada
-local announced            -- [id do NPC] = { id do transporte, parada }, na primeira vez
-local function announcerStop(npc)
-	if not announced then
-		announced = {}
+-- Numa torre com dois zepelins os dois mestres ficam a 20 jd um do outro: a distância sozinha
+-- pode errar o transporte. O grito diz o destino ("...to Grom'gol..."), que é o nome da
+-- outra parada; a distância só desempata.
+local near                 -- [id do NPC] = { { sid, k, outra parada }, ... } (perto, 250 jd)
+local function announcerStops(npc)
+	if not near then
+		near = {}
 		local data = ns.travel or {}
 		for _, a in ipairs(data.announcers or {}) do
 			local w = T.World(a.zone, a.x, a.y)
-			local sid, k
-			if w then sid, k = T.NearestStop(data.ships, w, 250) end
-			if sid then announced[a.id] = { sid, k } end
+			for _, s in ipairs(w and data.ships or {}) do
+				for k, st in ipairs(s.stops) do
+					if st.c == w.c and dist(st, w) <= 250 then
+						near[a.id] = near[a.id] or {}
+						local other = s.stops[k % #s.stops + 1]
+						table.insert(near[a.id], { s.id, k, other.n, dist(st, w) })
+					end
+				end
+			end
 		end
+		for _, l in pairs(near) do table.sort(l, function(x, y) return x[4] < y[4] end) end
 	end
-	return announced[npc]
+	return near[npc]
 end
-local function onAnnounce(_, ...)
-	local guid = select(12, ...)
+local function onAnnounce(_, text, ...)
+	local guid = select(11, ...)
 	local npc = guid and tonumber((select(6, strsplit("-", guid))))
-	local st = npc and announcerStop(npc)
-	if st then T:Observe(st[1], st[2], "arr", serverNow()) end
+	local sid, k = T.PickAnnounced(npc and announcerStops(npc), text)
+	if sid then T:Observe(sid, k, "arr", serverNow(), nil, nil, true) end
 end
 ns:On("CHAT_MSG_MONSTER_YELL", onAnnounce)
 ns:On("CHAT_MSG_MONSTER_SAY", onAnnounce)
@@ -433,5 +453,6 @@ ns:Every(1, function()
 		end
 	end
 	sinceReplan = sinceReplan + 1
-	if sinceReplan >= REPLAN_EVERY and not onTaxi then T:Replan(false) end
+	local aboard = route and route.legs[route.leg] and route.legs[route.leg].boarded
+	if sinceReplan >= REPLAN_EVERY and not onTaxi and not aboard then T:Replan(false) end
 end)
