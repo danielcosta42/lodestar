@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Molten Core", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "57870739",
 }, [[
 step
   talk Duke Hydraxis##13278

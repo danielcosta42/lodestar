@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Teldrassil (48-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Un'Goro Crater (50-55)",
+	rev = "c7267052",
 }, [[
 step
   note {fp}Vesprystus
@@ -46,8 +47,8 @@ step
   talk Herald Moonstalker##10878
   accept The New Frontier##1047 |goto Darnassus 47.81,81.97
 step
-  talk Crier Goodman##2198
-  accept Feathermoon Stronghold##7494 |goto Stormwind City 56.39,74.09
+  talk Herald Moonstalker##10878
+  accept Feathermoon Stronghold##7494 |goto Darnassus 47.81,81.97
 step
   only not completed(3789) not completed(3790) not haveq(3789) not haveq(3790)
   talk Arch Druid Fandral Staghelm##3516

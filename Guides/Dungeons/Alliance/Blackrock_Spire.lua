@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackrock Spire", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "bc8db0bd",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -213,6 +214,7 @@ step
   talk Haleh##10929
   accept Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
+  only not Druid not Hunter not Mage not Priest not Rogue not Warlock
   talk Lorax##10918
   accept The Demon Forge##5127 |goto Winterspring 63.79,73.76
 step
@@ -231,6 +233,7 @@ step
   note Bring Doomrigger's Clasp to Mayara Brightwing in the Burning Steppes.
   collect Doomrigger's Clasp##12352 |q 4764 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Doomrigger's Coffer
 step
+  only not Druid not Hunter not Mage not Priest not Rogue not Warlock
   note Travel to Blackrock Spire and find Goraluk Anvilcrack. Slay him and then use the Blood Stained Pike upon his corpse. After his soul has been siphoned, the pike will be Soul Stained.
   collect Soul Stained Pike##12847 |q 5127 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Goraluk Anvilcrack
 step
@@ -264,6 +267,7 @@ step
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
+  only not Druid not Hunter not Mage not Priest not Rogue not Warlock
   talk Lorax##10918
   turnin The Demon Forge##5127 |goto Winterspring 63.79,73.76
 step

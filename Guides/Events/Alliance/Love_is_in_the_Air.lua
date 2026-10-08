@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Love is in the Air", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "e3912dab",
 }, [[
 step
   only not completed(8898) not completed(8899) not haveq(8898) not haveq(8899)

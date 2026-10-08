@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (33-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (23-38)",
+	rev = "e4c4e007",
 }, [[
 step
   only completed(2947)

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackfathom Deeps", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "098e718a",
 }, [[
 step
   talk Tsunaman##11862

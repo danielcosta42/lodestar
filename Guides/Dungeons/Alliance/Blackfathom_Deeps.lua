@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackfathom Deeps", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "452ef8c6",
 }, [[
 step
   talk Gerrig Bonegrip##2786

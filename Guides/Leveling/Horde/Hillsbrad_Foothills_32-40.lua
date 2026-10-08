@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (32-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Alterac Mountains (34-40)",
+	rev = "f371048e",
 }, [[
 step
   note {fp}Zarise

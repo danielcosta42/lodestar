@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (30-35)",
+	rev = "44b4adcf",
 }, [[
 step
   only completed(373)

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Badlands (50-54)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Tirisfal Glades (53-60)",
+	rev = "48089a28",
 }, [[
 step
   only completed(3568)
@@ -15,8 +16,8 @@ step
   accept A Sample of Slime...##4293 |goto Undercity 47.45,73.35
 step
   only Rogue
-  talk Ormok##3328
-  accept A Simple Request##8233 |goto Orgrimmar 43.9,54.63
+  talk Miles Dexter##4583
+  accept A Simple Request##8233 |goto Undercity 85.21,71.57
 step
   only completed(692)
   talk Theldurin the Lost##2785

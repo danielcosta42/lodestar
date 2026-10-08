@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Hinterlands (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Searing Gorge (48-50)",
+	rev = "65348afb",
 }, [[
 step
   only completed(1448)

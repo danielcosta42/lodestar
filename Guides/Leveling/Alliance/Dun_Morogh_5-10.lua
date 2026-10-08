@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dun Morogh (5-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (11-18)",
+	rev = "f8a337a1",
 }, [[
 step
   talk Sten Stoutarm##658

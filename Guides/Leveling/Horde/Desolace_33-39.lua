@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Desolace (33-39)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Dustwallow Marsh (35-43)",
+	rev = "7ebff011",
 }, [[
 step
   only completed(1431)

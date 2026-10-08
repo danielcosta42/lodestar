@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Deadmines", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "a7abff4e",
 }, [[
 step
   talk Wilder Thistlenettle##656

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (30-35)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (30-33)",
+	rev = "b53da317",
 }, [[
 step
   only completed(322)

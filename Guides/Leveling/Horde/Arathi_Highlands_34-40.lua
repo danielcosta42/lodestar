@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Badlands (37-42)",
+	rev = "c6e05acb",
 }, [[
 step
   talk Genavie Callow##4486

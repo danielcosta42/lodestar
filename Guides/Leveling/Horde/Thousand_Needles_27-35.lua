@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-35)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Desolace (33-39)",
+	rev = "de661e1b",
 }, [[
 step
   talk Brave Moonhorn##10079

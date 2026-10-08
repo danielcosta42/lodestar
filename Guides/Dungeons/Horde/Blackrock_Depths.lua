@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackrock Depths", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "4fa3efcd",
 }, [[
 step
   talk Private Rocknot##9503

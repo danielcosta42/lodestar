@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Durotar (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-20)",
+	rev = "892742c2",
 }, [[
 step
   talk Kaltunk##10176

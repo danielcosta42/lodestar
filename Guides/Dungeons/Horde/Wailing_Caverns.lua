@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Wailing Caverns", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "19cf8c2c",
 }, [[
 step
   talk Tonga Runetotem##3448

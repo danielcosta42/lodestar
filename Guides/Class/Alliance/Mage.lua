@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Mage", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "b19be5e2",
 }, [[
 step
   talk Sten Stoutarm##658

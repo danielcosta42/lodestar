@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Tanaris (44-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Teldrassil (48-55)",
+	rev = "528ef721",
 }, [[
 step
   note {fp}Bera Stonehammer
@@ -244,6 +245,6 @@ step
   talk Alchemist Pestlezugg##5594
   turnin March of the Silithid##4493 |goto Tanaris 50.89,26.96
 step
-  note {travel}Stormwind City
-  goto Stormwind City 56.39,74.09
+  note {travel}Darnassus
+  goto Darnassus 47.81,81.97
 ]])

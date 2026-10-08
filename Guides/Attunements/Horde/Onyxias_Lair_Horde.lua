@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Horde/Onyxia's Lair (Horde)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "9ce4c922",
 }, [[
 step
   kill Warlord Goretooth##9077 |goto Badlands 5.81,47.52 |tip Loot the quest item here — it starts the quest.

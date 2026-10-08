@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (55-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Redridge Mountains (54-60)",
+	rev = "00d1e7f9",
 }, [[
 step
   collect Arena Treasure Chest##179697 |goto Stranglethorn Vale 30.52,47.87 |tip Loot the quest item here — it starts the quest.

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Western Plaguelands (53-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Swamp of Sorrows (50-57)",
+	rev = "192ecf97",
 }, [[
 step
   talk Janice Felstone##10778

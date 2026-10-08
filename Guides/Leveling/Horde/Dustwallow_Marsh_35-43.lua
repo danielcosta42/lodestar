@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-43)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (37-41)",
+	rev = "120d844d",
 }, [[
 step
   note {fp}Shardi
@@ -219,8 +220,8 @@ step
   talk Melor Stonehoof##3441
   accept Deadmire##1205 |goto Thunder Bluff 61.54,80.92
 step
-  talk Anastasia Hartwell##4568
-  accept Tabetha's Task##2861 |goto Undercity 85.14,10.03
+  talk Deino##5885
+  accept Tabetha's Task##2861 |goto Orgrimmar 38.45,86.13
 step
   talk Vark Battlescar##11823
   accept Vyletongue Corruption##7029 |goto Desolace 23.22,70.33

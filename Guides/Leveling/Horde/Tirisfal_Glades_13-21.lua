@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (13-21)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silverpine Forest (11-18)",
+	rev = "1d7abab7",
 }, [[
 step
   only Undead Paladin

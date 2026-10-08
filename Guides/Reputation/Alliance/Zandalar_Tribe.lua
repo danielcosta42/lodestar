@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Zandalar Tribe", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "f0b450bc",
 }, [[
 step
   talk Exzhal##14910

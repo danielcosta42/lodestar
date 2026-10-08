@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-23)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (21-28)",
+	rev = "da1732b2",
 }, [[
 step
   talk Barkeep Daniels##346

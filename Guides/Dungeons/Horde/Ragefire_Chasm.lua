@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Ragefire Chasm", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "4cc643c5",
 }, [[
 step
   talk Thrall##4949

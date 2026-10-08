@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Westfall (12-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Redridge Mountains (15-23)",
+	rev = "c9dd3a53",
 }, [[
 step
   talk Gilbert Gray##267118

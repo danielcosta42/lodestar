@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Uldaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "9ba30d2a",
 }, [[
 step
   talk Wizzle Brassbolts##4453

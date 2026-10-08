@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Blasted Lands (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Burning Steppes (52-59)",
+	rev = "1b506a09",
 }, [[
 step
   talk Bloodmage Drazial##7505

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Druid", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "e6090278",
 }, [[
 step
   talk Conservator Ilthalaine##2079

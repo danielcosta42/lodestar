@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Azshara (52-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Winterspring (54-59)",
+	rev = "ee726597",
 }, [[
 step
   only Hunter

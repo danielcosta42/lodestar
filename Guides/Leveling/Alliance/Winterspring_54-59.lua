@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Winterspring (54-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Silithus (57-60)",
+	rev = "07f20acc",
 }, [[
 step
   only completed(3908)

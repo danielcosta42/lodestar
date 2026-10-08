@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Tanaris (53-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Felwood (52-57)",
+	rev = "67f4f02e",
 }, [[
 step
   only completed(4787)

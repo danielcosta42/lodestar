@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Burning Steppes (52-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Western Plaguelands (53-58)",
+	rev = "647de8a9",
 }, [[
 step
   talk Royal Historian Archesonus##8879

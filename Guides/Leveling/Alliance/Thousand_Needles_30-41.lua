@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Thousand Needles (30-41)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Feralas (43-48)",
+	rev = "da3bd36f",
 }, [[
 step
   only Warrior completed(1782)

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackwing Lair", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "5717a717",
 }, [[
 step
   kill Nefarian##11583 |goto Blackwing Lair - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.

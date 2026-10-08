@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Badlands (37-43)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (43-50)",
+	rev = "cbd83e71",
 }, [[
 step
   talk Rigglefuzz##2817

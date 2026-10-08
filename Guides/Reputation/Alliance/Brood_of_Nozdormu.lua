@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Brood of Nozdormu", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "fa03d151",
 }, [[
 step
   kill Ossirian the Unscarred##15339 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.

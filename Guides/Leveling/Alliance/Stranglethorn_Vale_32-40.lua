@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (32-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Alterac Mountains (34-40)",
+	rev = "6c2691f0",
 }, [[
 step
   talk Barnil Stonepot##716

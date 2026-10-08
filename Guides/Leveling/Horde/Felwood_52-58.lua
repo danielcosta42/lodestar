@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Felwood (52-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Winterspring (54-59)",
+	rev = "b37bb42c",
 }, [[
 step
   only Druid

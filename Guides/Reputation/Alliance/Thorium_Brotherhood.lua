@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Thorium Brotherhood", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "9cf5df5a",
 }, [[
 step
   click Wanted/Missing/Lost & Found##179827

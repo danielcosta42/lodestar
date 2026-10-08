@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Scarlet Monastery", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "58e9ddb9",
 }, [[
 step
   only Mage

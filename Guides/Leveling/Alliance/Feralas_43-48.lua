@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Feralas (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Tanaris (44-50)",
+	rev = "ea4a2bd9",
 }, [[
 step
   talk Shandris Feathermoon##3936

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/The Temple of Atal'Hakkar", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "87bf47dd",
 }, [[
 step
   talk Fel'zerul##1443

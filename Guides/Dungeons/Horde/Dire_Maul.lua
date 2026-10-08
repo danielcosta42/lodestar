@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Dire Maul", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "6f0b03a2",
 }, [[
 step
   click Ruined Lifeboat##2289

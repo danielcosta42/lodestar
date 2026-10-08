@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-18)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (22-30)",
+	rev = "29a142af",
 }, [[
 step
   only Undead Rogue
@@ -440,7 +441,7 @@ step
   talk Andron Gant##6522
   accept The Deathstalkers##1899 |goto Undercity 54.81,76.33
 step
-  only not Orc not Tauren not Skyborne Mage not Orc
+  only not Orc not Tauren not Skyborne Mage
   talk Josef Gregorian##4576
   accept Spellfire Robes##1962 |goto Undercity 70.76,30.69
 step
@@ -462,7 +463,7 @@ step
   talk Mennet Carkad##6467
   turnin The Deathstalkers##1899 |goto Undercity 83.51,69.11 |tip {turninat}Undercity
 step
-  only not Orc not Tauren not Skyborne Mage not Orc
+  only not Orc not Tauren not Skyborne Mage
   talk Josef Gregorian##4576
   turnin Spellfire Robes##1962 |goto Undercity 70.76,30.69 |tip {turninat}Undercity
 step

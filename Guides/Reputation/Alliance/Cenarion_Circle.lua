@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Cenarion Circle", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "ae1b9143",
 }, [[
 step
   only NightElf Druid not completed(5924) not completed(5925) not haveq(5924) not haveq(5925)

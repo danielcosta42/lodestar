@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Stratholme", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "6293b7bb",
 }, [[
 step
   talk Tirion Fordring##1855

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Mulgore (4-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-20)",
+	rev = "e67aa81e",
 }, [[
 step
   talk Grull Hawkwind##2980

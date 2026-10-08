@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (23-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (32-40)",
+	rev = "f3a8e4fa",
 }, [[
 step
   note {fp}Thorgrum Borrelson

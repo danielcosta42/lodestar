@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Alterac Mountains (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (34-41)",
+	rev = "3ba1be50",
 }, [[
 step
   only not Undead not Skyborne Shaman

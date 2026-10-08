@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Temple of Ahn'Qiraj", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "48acafd1",
 }, [[
 step
   only Warrior

@@ -3,6 +3,7 @@ local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Attunements/Upper Blackrock Spire - Seal of Ascension", {
 	author = "Lodestar Generator",
+	rev = "41e55865",
 }, [[
 step
   talk Scarshield Infiltrator##10299

@@ -3,6 +3,7 @@ local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Attunements/Maraudon - Scepter of Celebras", {
 	author = "Lodestar Generator",
+	rev = "cc18ad98",
 }, [[
 step
   talk Cavindra##13697

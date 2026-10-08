@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Badlands (37-42)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Swamp of Sorrows (38-44)",
+	rev = "47d5c49e",
 }, [[
 step
   talk Rigglefuzz##2817

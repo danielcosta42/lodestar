@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Azshara (52-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Tanaris (53-54)",
+	rev = "725138ef",
 }, [[
 step
   only Hunter

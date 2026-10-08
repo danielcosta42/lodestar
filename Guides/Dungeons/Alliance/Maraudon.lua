@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Maraudon", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "9d666d46",
 }, [[
 step
   talk Archmage Tervosh##4967

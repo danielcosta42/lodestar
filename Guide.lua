@@ -285,10 +285,10 @@ end
 -- Abre um guia (como aba) e o ativa. Se já estiver aberto, apenas troca p/ ele
 -- retomando o passo salvo. `keepProgress` retoma em vez de zerar; `silent` evita
 -- print/toast (usado ao trocar de aba, que não deve poluir o chat).
--- Assinatura do conteúdo do guia: muda quando ele é regerado (ver migrateStep).
--- ponytail: tamanho do texto; troca por um hash se um guia mudar sem mudar de tamanho
+-- Assinatura do conteúdo do guia: a revisão que o gerador grava no meta (muda quando
+-- ele é regerado, ver migrateStep); guia importado, sem ela, usa o tamanho do texto.
 local function guideSig(guide)
-	return #(guide.body or "")
+	return guide.meta and guide.meta.rev or #(guide.body or "")
 end
 
 function ns:LoadGuide(key, keepProgress, silent)
@@ -669,7 +669,11 @@ ns:On("_READY", function()
 	char.sigs = char.sigs or {}
 	for k, i in pairs(char.steps) do
 		local g = ns.guides[k]
-		if g and char.sigs[k] ~= guideSig(g) then
+		-- save de antes das assinaturas: só os guias de leveling mudaram (passos injetados
+		-- e regerados); nos outros, o passo salvo vale e só se grava a assinatura
+		if g and char.sigs[k] == nil and k:sub(1, 9) ~= "Leveling/" then
+			char.sigs[k] = guideSig(g)
+		elseif g and char.sigs[k] ~= guideSig(g) then
 			local pre = k .. "\0"                  -- marcas manuais: chave com o número velho
 			for gk in pairs(char.completedGoals) do
 				if gk:sub(1, #pre) == pre then char.completedGoals[gk] = nil end

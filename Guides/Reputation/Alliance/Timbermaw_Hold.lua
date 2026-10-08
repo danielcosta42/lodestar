@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Timbermaw Hold", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "ab4f31c2",
 }, [[
 step
   talk Grazle##11554

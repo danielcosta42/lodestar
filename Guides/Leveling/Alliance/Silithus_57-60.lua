@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Silithus (57-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (55-60)",
+	rev = "f0f90f1a",
 }, [[
 step
   only completed(1124)

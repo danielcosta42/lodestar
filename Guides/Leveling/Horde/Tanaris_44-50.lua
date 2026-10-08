@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tanaris (44-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Un'Goro Crater (51-55)",
+	rev = "06ece8d1",
 }, [[
 step
   note {fp}Bulkrek Ragefist

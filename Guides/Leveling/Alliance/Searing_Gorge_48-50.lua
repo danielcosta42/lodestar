@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Searing Gorge (48-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Blasted Lands (50-55)",
+	rev = "1f88ba30",
 }, [[
 step
   kill Dark Iron Steamsmith##5840 |goto Searing Gorge 40.58,49.48 |tip Loot the quest item here — it starts the quest.

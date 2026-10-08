@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Alterac Mountains (34-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (35-42)",
+	rev = "947ce85f",
 }, [[
 step
   click Syndicate Documents##1740

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (53-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (55-57)",
+	rev = "6e3ca934",
 }, [[
 step
   only not completed(5090) not completed(5091) not haveq(5090) not haveq(5091)

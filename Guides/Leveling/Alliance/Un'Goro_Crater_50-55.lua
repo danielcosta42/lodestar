@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Un'Goro Crater (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Tanaris (53-60)",
+	rev = "f49b63a7",
 }, [[
 step
   talk Arch Druid Fandral Staghelm##3516

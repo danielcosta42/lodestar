@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Barrens (12-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stonetalon Mountains (19-26)",
+	rev = "1f402fa6",
 }, [[
 step
   only completed(861)
@@ -728,8 +729,8 @@ step
   accept The Spirits of Stonetalon##1061 |goto Orgrimmar 38.93,38.4
 step
   only not Orc not Tauren not Skyborne Mage
-  talk Cain Firesong##2128
-  accept Report to Anastasia##1959 |goto Tirisfal Glades 61.97,52.47
+  talk Thurston Xane##3049
+  accept Report to Anastasia##1959 |goto Thunder Bluff 25.18,20.96
 step
   only Tauren Druid
   talk Turak Runetotem##3033

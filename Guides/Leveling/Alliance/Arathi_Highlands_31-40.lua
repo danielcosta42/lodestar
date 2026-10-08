@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (31-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Badlands (37-43)",
+	rev = "a919f687",
 }, [[
 step
   talk Archmage Malin##2708

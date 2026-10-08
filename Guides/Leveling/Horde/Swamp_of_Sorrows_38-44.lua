@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (38-44)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (43-47)",
+	rev = "0c24bb8d",
 }, [[
 step
   talk Magtoor##1776

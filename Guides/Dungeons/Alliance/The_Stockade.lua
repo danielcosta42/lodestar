@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Stockade", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "74a7ccfb",
 }, [[
 step
   kill Edwin VanCleef##639 |goto The Deadmines - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.

@@ -13,6 +13,7 @@ Exposto: generate_zone(data, area, faction, title, level_max) -> (texto_dsl, n_q
 """
 import json
 import os
+import hashlib
 import re
 from collections import defaultdict
 
@@ -182,7 +183,7 @@ def only_cond(q, faction=None):
     elif cls and 0 < sum(1 for b in CLASS_BIT if cls & b) < len(CLASS_BIT):
         # várias classes (A Gently Shaken Gift: guerreiro, paladino, caçador, ladino)
         conds += ["not " + CLASS_BIT[b] for b in CLASS_BIT if not cls & b]
-    return " ".join(conds + sorted(q.get("portao") or ()))
+    return " ".join(conds + sorted(set(q.get("portao") or ()) - set(conds)))
 
 
 def esc(name):
@@ -191,6 +192,7 @@ def esc(name):
 
 class Router:
     def __init__(self, data, faction=None):
+        self.faction = faction
         self.npcs = data["npcs"]
         self.quests = data["quests"]
         if faction in ("A", "H"):
@@ -430,24 +432,22 @@ class Router:
         def mascaras(q):
             return q["classes"] or todas_cls, (q["races"] & todas_rac) or todas_rac
 
-        def estreita(q):
+        def estreita(q, qid):
             """Classes e raças que conseguem a quest, pelo que as opções abrem."""
-            cls, rac = mascaras(q)
+            cls, rac = mascaras(self.quests.get(str(qid)) or q)
             if q["preSingle"]:
                 mc = mr = 0
                 for p in q["preSingle"]:
-                    if p in sel:
-                        c, r = mascaras(sel[p])
-                    else:
-                        pq = self.quests.get(str(p))
-                        if pq and faction and pq["faction"] not in fac_ok:
-                            continue                 # da outra facção: não abre nada
-                        c, r = todas_cls, todas_rac
+                    pq = self.quests.get(str(p))
+                    if pq and faction and pq["faction"] not in fac_ok:
+                        continue                     # da outra facção: não abre nada
+                    c, r = mascaras(pq) if p in sel and pq else (todas_cls, todas_rac)
                     mc, mr = mc | c, mr | r
                 cls, rac = cls & mc, rac & mr
             for p in q["preGroup"]:
-                if p in sel:
-                    c, r = mascaras(sel[p])
+                pq = self.quests.get(str(p))
+                if p in sel and pq:
+                    c, r = mascaras(pq)
                     cls, rac = cls & c, rac & r
             return cls, rac
 
@@ -459,7 +459,7 @@ class Router:
             q, pilha = sel[qid], pilha | {qid}
             out = {"not %s(%d)" % (f, x) for x in q["exclusiveTo"] if x != qid
                    for f in ("completed", "haveq")}
-            (cls, rac), (cls0, rac0) = estreita(q), mascaras(q)
+            (cls, rac), (cls0, rac0) = estreita(q, qid), mascaras(self.quests.get(str(qid)) or q)
             if cls and cls != cls0:
                 out |= {"not " + n for b, n in CLASS_BIT.items() if cls0 & b and not cls & b}
             if rac and rac != rac0 and faction in RACAS:
@@ -820,12 +820,14 @@ class Router:
                         giver, giver_id = {"name": src[2]}, src[1]
                         giver_kind, item_verb, gc_o = "item", src[0], src[3]
                         break
-            if giver is None:                       # giver noutra zona (capital)
-                for n in q["startNpcs"]:
-                    cand = self.npc(n)
-                    if cand and cand.get("spawns"):
-                        giver, giver_id = cand, n
-                        break
+            if giver is None:                       # giver noutra zona (capital): do continente
+                cands = [(n, self.npc(n)) for n in q["startNpcs"]]   # do guia, se houver
+                cands = [(n, c) for n, c in cands if c and c.get("spawns")]
+                cont = continente(area, self.faction) if area != -1 and self.faction else None
+                perto = [(n, c) for n, c in cands
+                         if cont and any(continente(int(a), self.faction) == cont for a in c["spawns"])]
+                if cands:
+                    giver_id, giver = (perto or cands)[0]
             gc = gc_o or self.best_spawn(giver, area)
             ender = ender_id = eobj = None
             for n in q["endNpcs"]:                   # quem recebe: o que spawna na zona primeiro
@@ -1056,6 +1058,7 @@ class Router:
 
         # Diário do Classic: 20. O guia leva as de todas as raças, então a conta é
         # folgada; as de classe ficam fora dela (uma ou duas por vez, de cada classe).
+        # Sem o teto, The Barrens 12-20 chegava a 20 para o guerreiro orc.
         def aberto():
             return sum(1 for q in accepted if q not in turned and not sel[q]["classes"])
 
@@ -1113,23 +1116,20 @@ class Router:
                 break
             subiu[0] += 1
 
-        import sys as _s
-        _est = ini + (max(n_hi, ini) - ini) * len(turned) / len(sel) + 1
-        _s.stderr.write("PROBE|%s|sel=%d|ehubNone=%d|turned=%d|accepted=%d|naoAceitas=%d|ini=%s|n_hi=%s|est=%.1f|bloqNivel=%d" % (
-            title, len(sel), sum(1 for i in info.values() if i["ehub"] is None), len(turned), len(accepted),
-            sum(1 for q in sel if q not in accepted and q not in turned), ini, n_hi, _est,
-            sum(1 for q in sel if q not in accepted and q not in turned and not nivel_ok(sel[q]))) + chr(10))
         # Sobras, num bloco no fim: o que é de fora da zona (entrega na capital,
         # objetivo noutra zona) e o que o nível ainda não deixou. Ondas topológicas,
         # entregando o pré-req antes de aceitar a dependente.
         def pode_entregar(qid):
             return qid not in turned and (info[qid]["ender"] or info[qid]["eobj"])
 
-        def esvazia():                           # diário cheio: faz e entrega o que tem
-            for qid in sorted(accepted):
+        def por_hub(chave):                      # agrupa por lugar (sem hub: no fim)
+            return lambda q: (info[q][chave] is None, info[q][chave] or 0, q)
+
+        def esvazia():                           # diário cheio nas sobras: faz e entrega
+            for qid in sorted(accepted, key=por_hub("ohub")):
                 if qid not in turned and qid not in done:
                     emit_do(qid); done.add(qid)
-            for qid in sorted(accepted):
+            for qid in sorted(accepted, key=por_hub("ehub")):
                 if qid in done and pode_entregar(qid):
                     emit_turnin(qid); turned.add(qid)
         for wave in self._topo_waves(sel):
@@ -1384,13 +1384,17 @@ class Router:
         L.append('\tauthor = "Lodestar Generator",')
         if next_key:
             L.append('\tnext = "%s",' % next_key)
-        L.append("}, [[")
+        corpo = []
         for text, cond in steps:
             if text == "step":
-                L.append("step")
+                corpo.append("step")
                 if cond:
-                    L.append("  only " + cond)
+                    corpo.append("  only " + cond)
             else:
-                L.append(text)
+                corpo.append(text)
+        # revisão do conteúdo: o addon recua o passo salvo de quem estava no guia
+        L.append('\trev = "%s",' % hashlib.sha1("\n".join(corpo).encode("utf-8")).hexdigest()[:8])
+        L.append("}, [[")
+        L += corpo
         L.append("]])")
         return "\n".join(L) + "\n"

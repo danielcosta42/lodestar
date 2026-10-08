@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (11-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dun Morogh (13-26)",
+	rev = "e6d30788",
 }, [[
 step
   only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)

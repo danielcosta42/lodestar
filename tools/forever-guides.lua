@@ -504,6 +504,28 @@ nov.char.steps["Leveling/Alliance/Nov (1-3)"], nov.char.currentStep = 3, 3
 nov.handlers._READY()
 check(nov.char.currentStep == 3, "guia sem mudança não é migrado (" .. nov.char.currentStep .. ")")
 
+-- reordenar sem mudar o tamanho do texto: vale a revisão que o gerador grava no meta
+local ro = load_addon(16001)
+ro.fire = function() end
+local RK = "Leveling/Alliance/Ro (1-3)"
+ro:RegisterGuide(RK, { faction = "Alliance", rev = "aaaa" }, "step\n  note a\nstep\n  note b\nstep\n  note c\n")
+ro:LoadGuide(RK)
+ro.char.steps[RK], ro.char.currentStep = 3, 3
+ro:RegisterGuide(RK, { faction = "Alliance", rev = "bbbb" }, "step\n  note c\nstep\n  note b\nstep\n  note a\n")
+ro.currentGuide = nil
+ro.handlers._READY()
+check(ro.char.currentStep == 1, "revisão nova, mesmo tamanho: recua (" .. ro.char.currentStep .. ")")
+
+-- save antigo (sem assinatura): só os guias de leveling mudaram; o de reputação, com
+-- entregas repetíveis que nunca contam como feitas, fica onde estava
+local rep = load_addon(16001)
+rep.fire = function() end
+local PK = "Reputation/Argent Dawn"
+rep:RegisterGuide(PK, {}, "step\n  turnin Rep##901\nstep\n  turnin Rep##902\nstep\n  turnin Rep##903\n")
+rep.char.openGuides, rep.char.currentGuide, rep.char.steps = { PK }, PK, { [PK] = 3 }
+rep.handlers._READY()
+check(rep.char.currentStep == 3, "guia que não é de leveling não recua no save antigo (" .. rep.char.currentStep .. ")")
+
 -- guia regerado com outra faixa no título: a aba e o passo seguem para o da mesma zona
 local ren = load_addon(16001)
 ren.fire = function() end

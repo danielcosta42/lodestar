@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Shadowfang Keep", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "fe342fef",
 }, [[
 step
   talk High Executor Hadrec##1952

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Temple of Atal'Hakkar", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "ba5fbd99",
 }, [[
 step
   only Rogue

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Hinterlands (47-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Searing Gorge (48-50)",
+	rev = "713bd1f5",
 }, [[
 step
   talk Oran Snakewrithe##7825

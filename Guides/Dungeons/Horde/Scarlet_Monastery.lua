@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Scarlet Monastery", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "b5a9073b",
 }, [[
 step
   talk Dorn Plainstalker##2986

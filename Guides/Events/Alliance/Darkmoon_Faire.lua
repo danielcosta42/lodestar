@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Darkmoon Faire", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "08937295",
 }, [[
 step
   talk Gelvas Grimegate##14828

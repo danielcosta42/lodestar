@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (43-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/The Hinterlands (43-48)",
+	rev = "9a16c735",
 }, [[
 step
   talk Brohann Caskbelly##5384

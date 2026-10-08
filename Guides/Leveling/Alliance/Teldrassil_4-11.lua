@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Teldrassil (4-11)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Darkshore (13-20)",
+	rev = "bbbf103e",
 }, [[
 step
   talk Conservator Ilthalaine##2079

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Mage", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "d27e1b71",
 }, [[
 step
   talk Gornek##3143
@@ -123,15 +124,15 @@ step
   talk Anastasia Hartwell##4568
   turnin Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03
 step
-  only not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage not Orc
   talk Anastasia Hartwell##4568
   accept Gathering Materials##1961 |goto Undercity 85.14,10.03
 step
-  only not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage not Orc
   note Bring 10 Linen Cloth and 6 Dalaran Mana Gems to Josef Gregorian.
   collect 10 Linen Cloth##2589 |q 1961 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
 step
-  only not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage not Orc
   talk Josef Gregorian##4576
   turnin Gathering Materials##1961 |goto Undercity 70.76,30.69
 step

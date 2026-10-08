@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Zephras Isle (5-12)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (11-18)",
+	rev = "5c5ea947",
 }, [[
 step
   talk Ailee Farheart##251362

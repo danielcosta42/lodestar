@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (21-29)",
+	rev = "af80e45a",
 }, [[
 step
   talk Orphan Matron Nightingale##14450

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Razorfen Kraul", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "3c11e832",
 }, [[
 step
   talk Mebok Mizzyrix##3446

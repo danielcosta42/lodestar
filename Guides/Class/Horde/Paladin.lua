@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Paladin", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "baec9a47",
 }, [[
 step
   only Undead Paladin
@@ -181,10 +182,6 @@ step
   only Undead Paladin
   talk Lumina Windsinger##259620
   turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.2,40.8
-step
-  only Undead Paladin
-  talk Deathguard Baldren##259611
-  accept A Grim Fate##91860 |goto Silverpine Forest 44.43,40.87
 step
   only Undead Paladin
   talk Trevan Rol##248840

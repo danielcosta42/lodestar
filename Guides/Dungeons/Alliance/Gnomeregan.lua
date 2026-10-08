@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Gnomeregan", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "09fc3827",
 }, [[
 step
   talk Ozzie Togglevolt##1268

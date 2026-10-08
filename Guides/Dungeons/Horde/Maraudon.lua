@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Maraudon", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "ca3e9fee",
 }, [[
 step
   talk Uthel'nay##7311

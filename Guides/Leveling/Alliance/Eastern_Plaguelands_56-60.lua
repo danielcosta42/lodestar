@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (56-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "75113e2d",
 }, [[
 step
   talk Pamela Redpath##10926

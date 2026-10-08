@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Zephras Isle (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-20)",
+	rev = "05e85e69",
 }, [[
 step
   talk Ailee Farheart##251362

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dun Morogh (13-26)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Westfall (12-18)",
+	rev = "1ddba0e3",
 }, [[
 step
   talk Afadra Dunwall##264943

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (37-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Feralas (43-48)",
+	rev = "0dcea16f",
 }, [[
 step
   only completed(1176)

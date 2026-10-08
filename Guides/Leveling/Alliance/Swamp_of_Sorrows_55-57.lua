@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (55-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (55-60)",
+	rev = "e55fc688",
 }, [[
 step
   only completed(1469)

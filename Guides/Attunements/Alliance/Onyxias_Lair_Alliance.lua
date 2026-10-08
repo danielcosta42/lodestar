@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Alliance/Onyxia's Lair (Alliance)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "c3d04df8",
 }, [[
 step
   talk Helendis Riverhorn##9562

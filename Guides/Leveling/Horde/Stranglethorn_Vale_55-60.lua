@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (55-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Eastern Plaguelands (56-60)",
+	rev = "75a64fb4",
 }, [[
 step
   collect Arena Treasure Chest##179697 |goto Stranglethorn Vale 30.52,47.87 |tip Loot the quest item here — it starts the quest.

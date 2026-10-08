@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Lunar Festival", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "b2e7a3ec",
 }, [[
 step
   talk Elder Riversong##15605

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Argent Dawn", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "6296fcb8",
 }, [[
 step
   talk Leonid Barthalomew the Revered##267008

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Druid", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "063725f6",
 }, [[
 step
   talk Grull Hawkwind##2980

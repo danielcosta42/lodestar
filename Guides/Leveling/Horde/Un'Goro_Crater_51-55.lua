@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Un'Goro Crater (51-55)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Azshara (52-58)",
+	rev = "a89c7889",
 }, [[
 step
   talk Arch Druid Hamuul Runetotem##5769

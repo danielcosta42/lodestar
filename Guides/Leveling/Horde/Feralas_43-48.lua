@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Feralas (43-48)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Tanaris (44-50)",
+	rev = "5fec973f",
 }, [[
 step
   talk Belgrom Rockmaul##4485

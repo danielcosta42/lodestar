@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (22-30)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (32-40)",
+	rev = "cdcd2f0a",
 }, [[
 step
   only Warlock completed(1476) not completed(1507) not haveq(1507)

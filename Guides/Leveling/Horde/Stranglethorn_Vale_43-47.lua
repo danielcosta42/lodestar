@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (43-47)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Hinterlands (47-50)",
+	rev = "5b6342cb",
 }, [[
 step
   talk Apothecary Zinge##5204

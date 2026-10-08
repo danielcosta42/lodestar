@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Ashenvale (21-30)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Desolace (33-39)",
+	rev = "886d642c",
 }, [[
 step
   note {fp}Daelyshia

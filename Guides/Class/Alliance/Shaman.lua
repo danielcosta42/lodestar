@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Shaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "1224b2ed",
 }, [[
 step
   only Dwarf Shaman
@@ -167,14 +168,6 @@ step
   only Shaman
   talk Hervdana Saegrund##258203
   turnin Call of Water##94499 |goto Wetlands 65.73,76.43
-step
-  only Shaman
-  talk Norric Lochthane##258043
-  accept Call of Water##94502 |goto Loch Modan 41.89,19.03
-step
-  only Shaman
-  note Cleanse the corruption at Stendel's Pond in Westfall. Return to Norric in Loch Modan when finished.
-  collect Corrupt Manifestation's Bracers##7812 |q 94502 |goto Silverpine Forest 38.78,44.26 |tip {dropsfrom}Corrupt Minor Manifestation of Water
 step
   only Shaman
   talk Minor Manifestation of Water##5895

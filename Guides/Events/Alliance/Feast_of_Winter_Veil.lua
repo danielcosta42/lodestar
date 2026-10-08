@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Feast of Winter Veil", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "fd31b604",
 }, [[
 step
   talk Wonderform Operator##15732

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (5-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Tirisfal Glades (13-21)",
+	rev = "53ad7427",
 }, [[
 step
   only Undead

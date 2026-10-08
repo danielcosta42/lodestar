@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Eastern Plaguelands (56-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silithus (57-60)",
+	rev = "fa2277e2",
 }, [[
 step
   talk Lady Sylvanas Windrunner##10181

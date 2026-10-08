@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Silithus (57-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "a02dcee4",
 }, [[
 step
   talk Cenarion Emissary Blackhoof##15188

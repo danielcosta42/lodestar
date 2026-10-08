@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Felwood (52-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Azshara (52-58)",
+	rev = "ef1d0c1c",
 }, [[
 step
   talk Grazle##11554

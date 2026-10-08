@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/The Barrens (14-21)",
+	rev = "1446f956",
 }, [[
 step
   only Warrior completed(1683,1678,1639)

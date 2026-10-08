@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Desolace (33-39)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dustwallow Marsh (35-38)",
+	rev = "b86a6779",
 }, [[
 step
   talk Smeed Scrabblescrew##11596

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Cenarion Circle", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "4f5140e5",
 }, [[
 step
   only Skyborne Druid

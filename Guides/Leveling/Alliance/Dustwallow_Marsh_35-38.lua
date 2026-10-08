@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dustwallow Marsh (35-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Thousand Needles (30-41)",
+	rev = "0d79ff11",
 }, [[
 step
   note {fp}Baldruc

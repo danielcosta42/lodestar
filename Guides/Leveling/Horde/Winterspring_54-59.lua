@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Winterspring (54-59)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silithus (57-60)",
+	rev = "0818844d",
 }, [[
 step
   only completed(3908)
@@ -176,8 +177,8 @@ step
   talk Trull Failbane##10306
   turnin Guarding Secrets##4882 |goto Felwood 34.73,52.79 |tip {turninat}Felwood
 step
-  talk Harbinger Balthazad##10879
-  accept Camp Mojache##7492 |goto Undercity 63.9,44.08
+  talk Warcaller Gorlach##10880
+  accept Camp Mojache##7492 |goto Orgrimmar 37.68,75.16
 step
   only completed(3908)
   note Seek out Gregan Brewspewer in northern Feralas. From him, learn how you may acquire the Videre Elixir, then return to Donova Snowden in Winterspring.

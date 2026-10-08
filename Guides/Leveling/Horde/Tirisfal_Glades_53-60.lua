@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (53-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Western Plaguelands (53-57)",
+	rev = "8d063078",
 }, [[
 step
   only not completed(5093) not completed(5095) not haveq(5093) not haveq(5095)

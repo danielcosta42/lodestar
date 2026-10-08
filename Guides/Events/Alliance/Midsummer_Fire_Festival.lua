@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Midsummer Fire Festival", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "0127e1be",
 }, [[
 step
   talk Festival Loremaster##16817

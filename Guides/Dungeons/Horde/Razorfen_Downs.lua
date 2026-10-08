@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Razorfen Downs", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "7c72d03b",
 }, [[
 step
   talk Myriam Moonsinger##12866

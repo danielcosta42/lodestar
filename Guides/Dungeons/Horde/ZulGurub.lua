@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Zul'Gurub", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "08367730",
 }, [[
 step
   talk Yeh'kinya##8579

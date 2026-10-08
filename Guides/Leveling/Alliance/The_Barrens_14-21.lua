@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Barrens (14-21)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
+	rev = "b9fa1829",
 }, [[
 step
   note {fp}Bragok

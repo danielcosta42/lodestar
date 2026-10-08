@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (3-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (11-18)",
+	rev = "6fee6348",
 }, [[
 step
   talk Deputy Willem##823

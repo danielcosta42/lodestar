@@ -5,11 +5,12 @@ ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (50-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (55-60)",
+	rev = "8c299a06",
 }, [[
 step
   only Warrior
-  talk Torm Ragetotem##3041
-  accept A Troubled Spirit##8417 |goto Thunder Bluff 57.24,87.37
+  talk Christoph Walker##4593
+  accept A Troubled Spirit##8417 |goto Undercity 46.93,15.23
 step
   only Warrior
   talk Fallen Hero of the Horde##7572

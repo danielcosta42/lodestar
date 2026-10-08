@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stonetalon Mountains (21-27)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Ashenvale (21-30)",
+	rev = "a3bccf6e",
 }, [[
 step
   talk Kaela Shadowspear##4080

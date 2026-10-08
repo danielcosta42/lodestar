@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Priest", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "c8b9d292",
 }, [[
 step
   talk Gornek##3143

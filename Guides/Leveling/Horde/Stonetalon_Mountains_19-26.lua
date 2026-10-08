@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stonetalon Mountains (19-26)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Ashenvale (22-27)",
+	rev = "03a4b4cd",
 }, [[
 step
   note {fp}Tharm

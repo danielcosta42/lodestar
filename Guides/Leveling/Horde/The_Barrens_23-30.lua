@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Barrens (23-30)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (27-35)",
+	rev = "8f2fee4e",
 }, [[
 step
   talk Korran##3428

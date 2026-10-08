@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (54-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Eastern Plaguelands (56-60)",
+	rev = "d6234b7a",
 }, [[
 step
   only completed(4183)

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Ashenvale (22-27)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (23-30)",
+	rev = "325f3c50",
 }, [[
 step
   only not completed(6382) not completed(742) not haveq(6382) not haveq(742)

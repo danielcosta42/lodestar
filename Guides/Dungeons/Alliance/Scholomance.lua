@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Scholomance", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "6d77b373",
 }, [[
 step
   talk Tinkee Steamboil##10267

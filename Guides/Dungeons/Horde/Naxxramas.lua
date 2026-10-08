@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Naxxramas", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "e63f53b7",
 }, [[
 step
   only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)

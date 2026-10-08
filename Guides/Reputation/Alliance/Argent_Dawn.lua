@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Argent Dawn", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "4f51e778",
 }, [[
 step
   talk Dawnwatcher Shaedlass##4786

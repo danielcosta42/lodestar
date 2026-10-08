@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Shadowfang Keep", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "8e32f4eb",
 }, [[
 step
   only Warlock

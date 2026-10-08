@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Ravenholdt", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "6292cf79",
 }, [[
 step
   only Rogue
