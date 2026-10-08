@@ -121,6 +121,10 @@ local function fillAppearance(p)
 		function(v) ns.db.xpHud = v; if ns.XPHud then ns.XPHud:Update() end end)
 	switchRow(p, L.SET_CARD, L.SET_CARD_D,
 		function() return ns.db.reportCard end, function(v) ns.db.reportCard = v end)
+	switchRow(p, L.SET_CARD_EVERY, L.SET_CARD_EVERY_D,
+		function() return ns.db.cardEvery end, function(v) ns.db.cardEvery = v end)
+	switchRow(p, L.SET_CARD_GUILD, L.SET_CARD_GUILD_D,
+		function() return ns.db.cardAskGuild ~= false end, function(v) ns.db.cardAskGuild = v end)
 	switchRow(p, L.SET_MARK, L.SET_MARK_D,
 		function() return ns.db.markTargets end,
 		function(v) ns.db.markTargets = v; if not v and ns.TargetMarker then ns.TargetMarker:RefreshPlates() end end)

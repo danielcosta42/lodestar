@@ -488,6 +488,7 @@ function ns:AdvanceStep(delta)
 			self:Print("|cff88ff88" .. ns.L.GUIDE_DONE .. "|r")
 		end
 	end
+	if delta > 0 and idx > self.char.currentStep and self.fire then self.fire("_STEP_DONE") end
 	self.char.currentStep = idx
 	self.char.steps[guide.key] = idx        -- persiste o passo por-guia (p/ trocar/logar)
 	-- voltar à mão segura o passo: o próximo evento não o pula de novo (até avançar à mão)
