@@ -411,4 +411,17 @@ check(kt[26] and not kt[27] and not kt[40], "outro continente: voos da facção 
 kt = T.KnownTaxi({ taxiSynced = true, taxi = { [2] = true }, zones = { Darkshore = true } }, NODES, "A")
 check(kt[2] and kt[26], "save antigo (taxiSynced = true) não desliga o fallback")
 
+-- ── #17: treinador de classe visto em jogo (o banco do Forever não tem o paladino da Horda) ──
+local store = {}
+S.Remember(store, "PALADIN", "Horde", { id = 246349, n = "Breton Samuels", map = 1420, x = 21.85, y = 45.31 })
+S.Remember(store, "PALADIN", "Horde", { id = 246349, n = "Breton Samuels", map = 1420, x = 21.9, y = 45.3 })
+local seen = store.PALADIN.Horde
+check(seen[246349] and seen[246349].x == 21.9, "o treinador visto fica guardado por classe e facção (o último lugar vale)")
+local merged = S.WithSeen(nil, seen)
+check(#merged == 1 and merged[1].n == "Breton Samuels", "classe sem treinador no banco: usa o visto")
+merged = S.WithSeen({ { id = 1, n = "Do banco" }, { id = 246349, n = "Breton (banco)" } }, seen)
+check(#merged == 2, "o visto que já está no banco não duplica")
+merged = S.WithSeen(nil, seen); merged[1].w = false
+check(seen[246349].w == nil, "o cálculo da rota não grava nada no treinador salvo (SavedVariables)")
+
 print(("ok: %d checks"):format(checks))

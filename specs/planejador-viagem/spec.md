@@ -152,6 +152,9 @@ Substituem a linha reta do `Trail.lua`.
 - Instância ou mapa sem coordenada de mundo: sem rota, seta como hoje.
 - Em combate: o planejamento é Lua puro e segue; nada de quadro protegido é tocado.
 - Destino de serviço sem candidato da facção: o painel avisa e não traça rota.
+- Classe sem treinador no banco do Forever (paladino da Horda; xamã da Aliança): ao abrir a janela
+  de um treinador de classe, o Lodestar lembra dele (por conta) e passa a usá-lo; sem nenhum
+  conhecido, a mensagem diz a classe e a facção e pede para falar com um treinador uma vez (#17).
 - Voo conhecido apagado do cliente (personagem novo, outra conta): a lista é por personagem e se
   refaz ao abrir o mapa de voo.
 

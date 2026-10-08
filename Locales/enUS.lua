@@ -357,6 +357,7 @@ L.ON  = "ON"
 L.OFF = "OFF"
 -- Travel planner (routes, services, corpse)
 L.SERVICE_NONE = "No such service found for your faction."
+L.SERVICE_NO_TRAINER = "No %s trainer known for the %s yet — talk to one once and Lodestar remembers where it is."
 L.SERVICE_CLASSTRAINER = "Class trainer"
 L.SERVICE_PROFTRAINER = "Profession trainer"
 L.SERVICE_REPAIR = "Repairs"
