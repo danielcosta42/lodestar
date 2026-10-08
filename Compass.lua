@@ -36,7 +36,7 @@ local function build()
 	frame:SetSize(W, H)
 	frame:SetPoint(db.point or "TOP", UIParent, db.point or "TOP", db.x or 0, db.y or -14)
 	frame:SetFrameStrata("MEDIUM")
-	frame:SetMovable(true); frame:EnableMouse(true); frame:SetClampedToScreen(true)
+	frame:SetMovable(true); frame:SetClampedToScreen(true)
 	frame:RegisterForDrag("LeftButton")
 	frame:SetScript("OnDragStart", function(self) if not db.locked then self:StartMoving() end end)
 	frame:SetScript("OnDragStop", function(self)
@@ -62,12 +62,16 @@ local function build()
 	info = frame:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(info, 10, { num = true, color = C.amber })
 	info:SetPoint("LEFT", frame, "RIGHT", 6, 0)
+	CP:ApplyDisplay()
 	return frame
 end
 
+-- tamanho e trava; travada, não pega o mouse (não rouba o clique nem o arrastar da câmera)
 function CP:ApplyDisplay()
 	if not frame then return end
-	frame:SetScale((ns.db.compass.scale or 1))
+	local db = ns.db.compass
+	frame:SetScale(db.scale or 1)
+	frame:EnableMouse(not db.locked)
 end
 
 local function place(tex, p, w, facing, col)

@@ -126,7 +126,10 @@ local function fillAppearance(p)
 		function() return ns.db.guideMap end, function(v) ns.db.guideMap = v end)
 	switchRow(p, L.SET_COMPASS, L.SET_COMPASS_D,
 		function() return ns.db.compass.enabled end, function(v) ns.db.compass.enabled = v end)
-	sliderRow(p, L.SET_COMPASS_SCALE, "", 60, 160, 5,
+	switchRow(p, L.SET_COMPASS_LOCK, L.SET_COMPASS_LOCK_D,
+		function() return ns.db.compass.locked end,
+		function(v) ns.db.compass.locked = v; if ns.Compass then ns.Compass:ApplyDisplay() end end)
+	sliderRow(p, L.SET_COMPASS_SCALE, "", 50, 200, 5,
 		function() return (ns.db.compass.scale or 1) * 100 end,
 		function(v) ns.db.compass.scale = v / 100; if ns.Compass then ns.Compass:ApplyDisplay() end end, "%d%%")
 	switchRow(p, L.SET_CORPSE, L.SET_CORPSE_D,
