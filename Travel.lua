@@ -95,16 +95,21 @@ local function faction()
 	return UnitFactionGroup("player") == "Horde" and "H" or "A"
 end
 
--- Voos conhecidos: o que o mapa de voo disse; antes de abri-lo a primeira vez, os voos das
--- zonas por onde o personagem já passou.
-local function knownTaxi(fac)
-	local char = ns.char or {}
-	if char.taxiSynced and char.taxi then return char.taxi end
-	local k, zones = {}, char.zones or {}
-	for id, v in pairs(ns.travel and ns.travel.nodes or {}) do
-		if v.z and zones[v.z] and v.f:find(fac, 1, true) then k[id] = true end
+-- Voos conhecidos, por continente: onde o mapa de voo já foi aberto, vale o que ele disse;
+-- nos outros, os voos da facção nas zonas por onde o personagem passou. `taxiSynced` era
+-- um booleano (save antigo): vale como nenhum continente sincronizado.
+function T.KnownTaxi(char, nodes, fac)
+	local synced = type(char.taxiSynced) == "table" and char.taxiSynced or {}
+	local taxi, zones, k = char.taxi or {}, char.zones or {}, {}
+	for id, v in pairs(nodes or {}) do
+		if v.f:find(fac, 1, true) and (taxi[id] or (not synced[v.c] and v.z and zones[v.z])) then
+			k[id] = true
+		end
 	end
 	return k
+end
+local function knownTaxi(fac)
+	return T.KnownTaxi(ns.char or {}, ns.travel and ns.travel.nodes, fac)
 end
 
 local function cooldownLeft(start, duration)
@@ -224,22 +229,30 @@ ns:On("TAXIMAP_OPENED", function()
 	local ok, list = pcall(C_TaxiMap.GetAllTaxiNodes, mapID)
 	if not (ok and type(list) == "table" and #list > 0) then return end
 	char.taxi = char.taxi or {}
+	if type(char.taxiSynced) ~= "table" then char.taxiSynced = {} end
 	local unreachable = Enum and Enum.FlightPathState and Enum.FlightPathState.Unreachable or 2
+	local nodes = ns.travel and ns.travel.nodes or {}
 	for _, info in ipairs(list) do
-		if info.nodeID then char.taxi[info.nodeID] = info.state ~= unreachable or nil end
+		if info.nodeID then
+			char.taxi[info.nodeID] = info.state ~= unreachable or nil
+			local n = nodes[info.nodeID]
+			if n then char.taxiSynced[n.c] = true end     -- o mapa de voo é de um continente só
+		end
 	end
-	char.taxiSynced = true
 	T:Replan(true)
 end)
 
--- zonas visitadas (fallback dos voos antes do primeiro mapa de voo)
-ns:On("ZONE_CHANGED_NEW_AREA", function()
+-- zonas visitadas (fallback dos voos no continente cujo mapa de voo ainda não foi aberto);
+-- no login também, senão a zona onde o personagem já está nunca entra
+local function visit()
 	local zone = ns.TravelPlanner and ns.TravelPlanner:PlayerZoneEng()
 	if zone and ns.char then
 		ns.char.zones = ns.char.zones or {}
 		ns.char.zones[zone] = true
 	end
-end)
+end
+ns:On("ZONE_CHANGED_NEW_AREA", visit)
+ns:On("PLAYER_ENTERING_WORLD", visit)
 
 ns:Every(1, function()
 	if not ns.char then return end

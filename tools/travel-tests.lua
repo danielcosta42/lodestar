@@ -367,4 +367,17 @@ local TPn = load("TravelPanel.lua", { L = Lmiss, On = function() end, Every = fu
 check(TPn.ProfLabel("Cooking") == "Cooking" and TPn.ProfLabel("Mining") == "Mineração",
 	"profissão sem tradução sai com o nome, não [PROF_...]")
 
+-- #8: voos conhecidos por continente — abrir o mapa de voo num continente não apaga o
+-- fallback (zonas visitadas) do outro
+local NODES = {
+	[2] = { c = 0, f = "A", z = "Elwynn Forest" }, [4] = { c = 0, f = "A", z = "Westfall" },
+	[26] = { c = 1, f = "A", z = "Darkshore" }, [27] = { c = 1, f = "A", z = "Ashenvale" },
+	[40] = { c = 1, f = "H", z = "Darkshore" },
+}
+local kt = T.KnownTaxi({ taxiSynced = { [0] = true }, taxi = { [2] = true }, zones = { Westfall = true, Darkshore = true } }, NODES, "A")
+check(kt[2] and not kt[4], "continente sincronizado: vale o mapa de voo, não a zona visitada")
+check(kt[26] and not kt[27] and not kt[40], "outro continente: voos da facção nas zonas visitadas")
+kt = T.KnownTaxi({ taxiSynced = true, taxi = { [2] = true }, zones = { Darkshore = true } }, NODES, "A")
+check(kt[2] and kt[26], "save antigo (taxiSynced = true) não desliga o fallback")
+
 print(("ok: %d checks"):format(checks))
