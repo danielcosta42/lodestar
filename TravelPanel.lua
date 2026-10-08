@@ -30,6 +30,11 @@ local function line(parent, y, size, col)
 	return fs
 end
 
+-- nome da profissão: a tradução, se houver; o ns.L devolve "[CHAVE]" para o que falta
+function TP.ProfLabel(prof)
+	return rawget(ns.L, "PROF_" .. prof:upper()) or prof
+end
+
 -- lista de profissões ao lado do painel (o botão "Treinador de profissão")
 local function toggleProfList(anchor)
 	if profList and profList:IsShown() then return profList:Hide() end
@@ -40,7 +45,7 @@ local function toggleProfList(anchor)
 		for prof in pairs(ns.profTrainers or {}) do names[#names + 1] = prof end
 		table.sort(names)
 		for i, prof in ipairs(names) do
-			local b = UI.Button(profList, ns.L["PROF_" .. prof:upper()] or prof, 120, 20)
+			local b = UI.Button(profList, TP.ProfLabel(prof), 120, 20)
 			b:SetPoint("TOPLEFT", 6, -6 - (i - 1) * 22)
 			b:SetScript("OnClick", function()
 				profList:Hide()

@@ -361,4 +361,10 @@ local wns = load("Waypoint.lua", { L = L, On = function() end, Every = function(
 check(pcall(wns.TargetMapID, { verb = "goto_", _leg = true, world = { c = 0, x = 1, y = 1 } }),
 	"alvo de perna (sem goto_) não quebra o mapa do alvo")
 
+-- #6: rótulo da profissão no painel; o ns.L devolve "[CHAVE]" para chave que não existe
+local Lmiss = setmetatable({ PROF_MINING = "Mineração" }, { __index = function(_, k) return "[" .. k .. "]" end })
+local TPn = load("TravelPanel.lua", { L = Lmiss, On = function() end, Every = function() end, UI = {} }).TravelPanel
+check(TPn.ProfLabel("Cooking") == "Cooking" and TPn.ProfLabel("Mining") == "Mineração",
+	"profissão sem tradução sai com o nome, não [PROF_...]")
+
 print(("ok: %d checks"):format(checks))
