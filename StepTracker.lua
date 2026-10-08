@@ -161,9 +161,17 @@ ns:On("GOSSIP_SHOW", skipIfUnavailable)
 ns:On("QUEST_GREETING", function()
 	if not (ns.db and ns.db.autoAccept and ativo()) then return end
 	if not shouldGrab() then return end        -- guia te mandou a este NPC (talk/click)
-	-- pega TODAS as quests da janela (uma por vez; a greeting re-abre após aceitar)
-	if GetNumAvailableQuests and SelectAvailableQuest and (GetNumAvailableQuests() or 0) > 0 then
-		SelectAvailableQuest(1)
+	-- pega as quests da janela (uma por vez; a greeting re-abre após aceitar), menos
+	-- cinza e repetível que o passo não pede
+	if not (GetNumAvailableQuests and SelectAvailableQuest) then return end
+	local want = stepQuestIDs("accept")
+	for i = 1, GetNumAvailableQuests() or 0 do
+		local trivial, repeatable, qid
+		if GetAvailableQuestInfo then
+			local _
+			trivial, _, repeatable, _, qid = GetAvailableQuestInfo(i)
+		end
+		if (qid and want[qid]) or not (trivial or repeatable) then SelectAvailableQuest(i); return end
 	end
 end)
 
@@ -176,11 +184,12 @@ ns:On("GOSSIP_SHOW", function()
 	local step = ns:GetStep()
 	if not step then return end
 
-	-- 1) opção explícita via |gossip N
+	-- 1) opção explícita via |gossip N — só no NPC que o goal cita
 	if ns.db.autoGossip then
+		local npc = npcID()
 		for _, g in ipairs(step.goals) do
 			local n = tonumber(g.gossip)
-			if n and ns:IsGoalActive(g) and not ns:IsGoalComplete(g) then
+			if n and (not g.id or g.id == npc) and ns:IsGoalActive(g) and not ns:IsGoalComplete(g) then
 				if GI and GI.GetOptions and GI.SelectOption then
 					local opts = GI.GetOptions()
 					local o = opts and opts[n]
@@ -192,14 +201,15 @@ ns:On("GOSSIP_SHOW", function()
 		end
 	end
 
-	-- 2) aceitar quest disponível: guloso no NPC do passo (TODAS), senão só as pedidas.
+	-- 2) aceitar quest disponível: guloso no NPC do passo (menos cinza e repetível),
+	--    senão só as pedidas.
 	--    Seleciona uma; as demais entram quando o gossip re-abre após aceitar.
 	if ns.db.autoAccept then
 		local greedy = shouldGrab()
 		local want = stepQuestIDs("accept")
 		if GI and GI.GetAvailableQuests then
 			for _, q in ipairs(GI.GetAvailableQuests()) do
-				if q.questID and (greedy or want[q.questID]) then
+				if q.questID and (want[q.questID] or (greedy and not q.isTrivial and not q.repeatable)) then
 					pcall(GI.SelectAvailableQuest, q.questID); return
 				end
 			end

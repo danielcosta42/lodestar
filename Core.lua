@@ -204,7 +204,7 @@ SlashCmdList.LODESTAR = function(msg)
 		for key in pairs(ns.guides or {}) do print("  " .. key) end
 	elseif cmd == "load" and rest ~= "" then
 		local key = ns:ResolveGuideKey(rest)
-		if key then ns:LoadGuide(key) else ns:Printf(ns.L.NO_MATCH, rest) end
+		if key then ns.char.manualPick = key; ns:LoadGuide(key) else ns:Printf(ns.L.NO_MATCH, rest) end
 	elseif cmd == "next" then
 		ns:AdvanceStep()
 	elseif cmd == "prev" then

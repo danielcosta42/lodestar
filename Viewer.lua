@@ -116,7 +116,7 @@ local function getTab(i)
 	x:SetScript("OnClick", function() if t._key then ns:CloseGuide(t._key) end end)
 	t.x = x
 
-	t:SetScript("OnClick", function() if t._key then ns:SwitchGuide(t._key) end end)
+	t:SetScript("OnClick", function() if t._key then ns.char.manualPick = t._key; ns:SwitchGuide(t._key) end end)
 	t:SetScript("OnEnter", function()
 		if not t._active then
 			bg:SetColorTexture(unpackc(C.panel)); label:SetTextColor(unpackc(C.active)); x:Show()

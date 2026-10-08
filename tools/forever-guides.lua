@@ -207,7 +207,7 @@ check(zona:BestGuideForPlayer() == "Leveling/Alliance/Elwynn Forest (3-10)",
 	"nível 10 em Elwynn fica em Elwynn (abriu " .. tostring(zona:BestGuideForPlayer()) .. ")")
 -- login com aba de leveling que o nível já passou: abre o recomendado, a antiga
 -- fica na aba. No nível dela, retoma onde parou.
-local function logar(nivel)
+local function logar(nivel, manual)
 	local l = load_addon(16001)
 	for _, k in ipairs({ "Elwynn Forest (3-10)", "Westfall (11-18)", "Darkshore (11-20)" }) do
 		l:RegisterGuide("Leveling/Alliance/" .. k, { faction = "Alliance" }, "step\n  note w\n")
@@ -217,6 +217,7 @@ local function logar(nivel)
 	l.char.openGuides = { "Leveling/Alliance/Elwynn Forest (3-10)" }
 	l.char.currentGuide = "Leveling/Alliance/Elwynn Forest (3-10)"
 	l.char.steps = { ["Leveling/Alliance/Elwynn Forest (3-10)"] = 1 }
+	l.char.manualPick = manual
 	playerLevel = nivel
 	l.handlers._READY()
 	return l
@@ -227,6 +228,9 @@ check(l11.char.currentGuide == "Leveling/Alliance/Westfall (11-18)",
 check(l11:IsGuideOpen("Leveling/Alliance/Elwynn Forest (3-10)"), "a aba antiga continua aberta")
 check(logar(10).char.currentGuide == "Leveling/Alliance/Elwynn Forest (3-10)",
 	"no nível da aba salva, retoma ela")
+-- o jogador abriu essa aba de propósito (terminar as quests de Elwynn): o login não a troca
+check(logar(11, "Leveling/Alliance/Elwynn Forest (3-10)").char.currentGuide == "Leveling/Alliance/Elwynn Forest (3-10)",
+	"aba escolhida à mão não é trocada no login")
 C_Map = nil
 playerLevel = 1
 

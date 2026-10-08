@@ -606,8 +606,8 @@ ns:On("_READY", function()
 	if key and ns.guides[key] then
 		-- aba de leveling que o nível já passou (logou no 11 com Tirisfal 5-10 ativo,
 		-- e a primeira coisa sugerida era uma quest cinza de Deathknell): abre o guia
-		-- recomendado; a antiga fica na aba
-		local hi = key:sub(1, 9) == "Leveling/" and tonumber(key:match("%-%s*(%d+)%)$"))
+		-- recomendado; a antiga fica na aba. Aba que o jogador escolheu à mão fica.
+		local hi = key ~= char.manualPick and key:sub(1, 9) == "Leveling/" and tonumber(key:match("%-%s*(%d+)%)$"))
 		local best = hi and (UnitLevel("player") or 0) > hi and ns:BestGuideForPlayer()
 		ns:LoadGuide(best and best ~= key and best or key, true)   -- mantém o step salvo
 		return
