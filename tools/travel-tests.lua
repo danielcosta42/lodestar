@@ -314,6 +314,20 @@ check(#runs == 2 and #runs[1] == 6 and runs[1][5] == 20 and #runs[2] == 6 and ru
 	"sai e volta pela borda: dois trechos, cortados nela")
 runs = G.Runs({ 0, 0, false, false, 10, 0, 20, 0 }, corta20)
 check(#runs == 1 and runs[1][1] == 10, "ponto fora do mapa aberto (outro continente) quebra o trecho")
+-- setas no pontilhado: a cada tantos pontos, apontando para onde a linha segue (a seta sem
+-- girar aponta para cima; a rotação é anti-horária, como SetRotation)
+local function aponta(rot) return -math.sin(rot), math.cos(rot) end
+local mk = G.Marks({ 0, 0, 100, 0 }, 10, 3)
+local setas, pontos, ax_, ay_ = 0, 0, nil, nil
+for k = 1, #mk - 2, 3 do
+	if mk[k + 2] then setas = setas + 1; ax_, ay_ = aponta(mk[k + 2]) else pontos = pontos + 1 end
+end
+check(setas == 3 and pontos == 8 and math.abs(ax_ - 1) < 1e-6 and math.abs(ay_) < 1e-6,
+	"linha para a direita: 1 seta a cada 3 pontos, apontando para a direita")
+mk = G.Marks({ 0, 0, 0, 100 }, 10, 3, true)
+ax_, ay_ = aponta(mk[9])
+check(mk[9] and math.abs(ax_) < 1e-6 and math.abs(ay_ + 1) < 1e-6,
+	"no canvas (y para baixo), descendo: a seta aponta para baixo")
 
 local rx, ry, inside = G.ToMinimap(0, 0, 10, 0, 0, false, 1, 100)
 check(near(rx, 0) and near(ry, 10) and inside, "10 jd ao norte: em cima")

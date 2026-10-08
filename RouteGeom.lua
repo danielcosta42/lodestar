@@ -76,6 +76,22 @@ function G.Runs(p, clip)
 	return runs
 end
 
+-- O pontilhado do trecho com setas: a cada `every` pontos, uma seta para onde a linha segue.
+-- Devolve {x, y, rot, ...}: rot = false (ponto) ou a rotação anti-horária da seta, que sem
+-- girar aponta para cima. `ydown`: y cresce para baixo (o canvas do mapa).
+function G.Marks(run, spacing, every, ydown)
+	local d, out = G.Dots(run, spacing), {}
+	for k = 1, #d - 1, 2 do
+		local rot = false
+		if ((k + 1) / 2) % every == 0 and d[k + 2] then
+			local dx, dy = d[k + 2] - d[k - 2], d[k + 3] - d[k - 1]
+			rot = math.atan2(-dx, ydown and -dy or dy)
+		end
+		out[#out + 1], out[#out + 2], out[#out + 3] = d[k], d[k + 1], rot
+	end
+	return out
+end
+
 -- Ponto de mundo (wx, wy) visto do jogador (px, py) no minimapa: pixels (direita, cima).
 -- `rotate`: minimapa girando com o jogador (a frente fica em cima). Fora do raio: preso
 -- na borda, `inside` = false.

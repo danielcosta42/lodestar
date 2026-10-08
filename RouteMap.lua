@@ -1,8 +1,9 @@
 --=============================================================================
--- RouteMap — a rota no mapa-múndi, por pernas, em pontilhado: a pé em reta, o voo pelo
--- traçado real, o barco pelo trajeto. A perna atual forte, as próximas mais fracas, as
--- feitas somem; anel em cada parada (mestre de voo, cais) e no destino. Em qualquer
--- mapa aberto — zona, vizinha ou continente —, projetada pela coordenada de mundo.
+-- RouteMap — a rota no mapa-múndi, por pernas, em pontilhado com setas: a pé pelo caminho
+-- do terreno (em reta enquanto não há), o voo pelo traçado real, o barco pelo trajeto. A
+-- perna atual forte, as próximas mais fracas, as feitas somem; anel em cada parada (mestre
+-- de voo, cais) e no destino. Em qualquer mapa aberto — zona, vizinha ou continente —,
+-- projetada pela coordenada de mundo.
 --=============================================================================
 local ADDON, ns = ...
 local RM = {}
@@ -41,10 +42,10 @@ if not ns.On then return end
 local UI = ns.UI
 local WP, G = ns.Waypoint, ns.RouteGeom
 
-local SPACING = 9          -- pixels entre pontos no canvas
+local SPACING, SETA = 9, 6   -- pixels entre pontos no canvas; uma seta a cada tantos pontos
 local overlay
-local dots, rings = {}, {}
-local nDots, nRings = 0, 0
+local dots, arrows, rings = {}, {}, {}
+local nDots, nArrows, nRings = 0, 0, 0
 local lastSig                         -- o que está desenhado; igual = não refaz
 
 local function ensure(canvas)
@@ -56,59 +57,68 @@ local function ensure(canvas)
 	return overlay
 end
 
-local function dot(col, alpha, x, y)
-	nDots = nDots + 1
-	local t = dots[nDots]
+-- marca (ponto, seta, anel) com sombra escura por baixo: lê sobre qualquer mapa
+local function mark(list, n, file, size, col, alpha, x, y, rot)
+	local t = list[n]
 	if not t then
-		t = UI.Media(overlay, "dot", "OVERLAY")
-		t:SetSize(5, 5)
-		dots[nDots] = t
+		t = UI.Media(overlay, file, "OVERLAY")
+		t.sh = UI.Media(overlay, file, "ARTWORK")
+		list[n] = t
 	end
+	t:SetSize(size, size); t.sh:SetSize(size + 3, size + 3)
 	t:SetVertexColor(col[1], col[2], col[3], alpha)
+	t.sh:SetVertexColor(0, 0, 0, 0.6 * alpha)
+	if rot then t:SetRotation(rot); t.sh:SetRotation(rot) end
 	t:ClearAllPoints(); t:SetPoint("CENTER", overlay, "TOPLEFT", x, -y)
-	t:Show()
+	t.sh:ClearAllPoints(); t.sh:SetPoint("CENTER", overlay, "TOPLEFT", x, -y)
+	t:Show(); t.sh:Show()
 end
 
-local function ring(col, size, x, y)
-	nRings = nRings + 1
-	local t = rings[nRings]
-	if not t then
-		t = UI.Media(overlay, "ring", "OVERLAY")
-		rings[nRings] = t
+local function clear()
+	for _, list in ipairs({ dots, arrows, rings }) do
+		for i = 1, #list do list[i]:Hide(); list[i].sh:Hide() end
 	end
-	t:SetSize(size, size)
-	t:SetVertexColor(col[1], col[2], col[3], 1)
-	t:ClearAllPoints(); t:SetPoint("CENTER", overlay, "TOPLEFT", x, -y)
-	t:Show()
+	nDots, nArrows, nRings = 0, 0, 0
 end
 
 local function hideAll()
-	for i = 1, #dots do dots[i]:Hide() end
-	for i = 1, #rings do rings[i]:Hide() end
-	nDots, nRings = 0, 0
+	clear()
 	lastSig = nil
 	if overlay then overlay:Hide() end
 end
 
--- pontos de mundo -> segmentos no mapa aberto, recortados na borda, em pontilhado
+-- pontos de mundo -> trechos no mapa aberto, recortados na borda, em pontilhado com setas
 local function drawLine(pts, shown, w, h, col, alpha)
-	local px, py
+	local xy = {}
 	for i = 1, #pts - 2, 3 do
 		local mx, my = WP:WorldMapPos({ x = pts[i], y = pts[i + 1], c = pts[i + 2] }, shown)
-		if mx and px then
-			local x0, y0, x1, y1 = WP.ClipSegment(px, py, mx, my)
-			if x0 then
-				local d = G.Dots({ x0 * w, y0 * h, x1 * w, y1 * h }, SPACING)
-				for k = 1, #d - 1, 2 do dot(col, alpha, d[k], d[k + 1]) end
+		xy[#xy + 1] = mx and mx * w or false
+		xy[#xy + 1] = mx and my * h or false
+	end
+	local function clip(x0, y0, x1, y1)
+		local a, b, c, d = WP.ClipSegment(x0 / w, y0 / h, x1 / w, y1 / h)
+		if a then return a * w, b * h, c * w, d * h end
+	end
+	for _, run in ipairs(G.Runs(xy, clip)) do
+		local m = G.Marks(run, SPACING, SETA, true)
+		for k = 1, #m - 2, 3 do
+			if m[k + 2] then
+				nArrows = nArrows + 1
+				mark(arrows, nArrows, "chevron", 12, col, alpha, m[k], m[k + 1], m[k + 2])
+			else
+				nDots = nDots + 1
+				mark(dots, nDots, "dot", 5, col, alpha, m[k], m[k + 1])
 			end
 		end
-		px, py = mx, my
 	end
 end
 
 local function stop(pt, shown, w, h, col, size)
 	local x, y = WP:WorldMapPos(pt, shown)
-	if x and x >= 0 and x <= 1 and y >= 0 and y <= 1 then ring(col, size, x * w, y * h) end
+	if x and x >= 0 and x <= 1 and y >= 0 and y <= 1 then
+		nRings = nRings + 1
+		mark(rings, nRings, "ring", size, col, 1, x * w, y * h)
+	end
 end
 
 local function update()
@@ -123,15 +133,13 @@ local function update()
 	local w, h = canvas:GetSize()
 	if not w or w == 0 then return hideAll() end
 	local from = ns.Travel.PlayerWorld()
-	local sig = ("%s|%s|%d|%s|%d|%d|%.0f|%.0f"):format(tostring(route.legs[route.leg] and route.legs[route.leg].path),
+	local sig = ("%d|%s|%d|%s|%d|%d|%.0f|%.0f"):format(route.pv or 0,
 		tostring(route), route.leg, tostring(shown), w, h,
 		from and from.x or 0, from and from.y or 0)
 	if sig == lastSig and overlay and overlay:IsShown() then return end
 	lastSig = sig
 	ensure(canvas)
-	for i = 1, #dots do dots[i]:Hide() end
-	for i = 1, #rings do rings[i]:Hide() end
-	nDots, nRings = 0, 0
+	clear()
 	local C = UI.COL
 	local col = route.dest and route.dest.red and { 0.9, 0.2, 0.2 } or C.accent
 	for i = route.leg, #route.legs do

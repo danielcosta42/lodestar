@@ -351,17 +351,23 @@ ns:On("CHAT_MSG_MONSTER_SAY", onAnnounce)
 -- caminho a pé pelo terreno: a perna a pé atual ganha `path`, calculado em corrotina com
 -- orçamento de 3 ms por quadro; refeito se o jogador sair dele por mais de 40 jd. Sem caminho
 -- (cidade fechada, fora da grade): fica a reta (ou o caminho anterior) e só tenta de novo 300
--- jd adiante — a busca que falha é a mais cara.
-local pathCo, pathLeg, quadro
+-- jd adiante — a busca que falha é a mais cara. Com a atual em dia, as próximas pernas a pé
+-- ganham o delas, da parada de início, uma de cada vez. `route.pv` conta os caminhos novos
+-- (o desenho refaz).
+local pathCo, pathLeg, pathRoute, pathIdx, quadro
 local ORCAMENTO = 3                                   -- ms por quadro
 local function estourou()
 	return debugprofilestop and quadro and debugprofilestop() - quadro > ORCAMENTO
 end
 local function pathTick()
-	if not (ns.Terrain and ns.terrain) then return end
-	local leg = route and route.legs[route.leg]
-	if not (leg and leg.k == "walk") then pathCo = nil; return end
-	if pathCo and pathLeg ~= leg then pathCo = nil end
+	if not (ns.Terrain and ns.terrain and route) then pathCo = nil; return end
+	local cur = route.legs[route.leg]
+	local pos = T.PlayerWorld()
+	local precisa = cur and cur.k == "walk" and pos and pos.c == cur.b.c
+		and not (cur.pathFail and cur.pathAt and dist(pos, cur.pathAt) < 300)
+		and not (cur.path and select(4, ns.Terrain.Ahead(cur.path, pos, 0)) <= 40)
+	-- rota nova, perna já passada, ou a atual precisa e a busca em curso é de outra: larga
+	if pathCo and (pathRoute ~= route or pathIdx < route.leg or (precisa and pathLeg ~= cur)) then pathCo = nil end
 	if pathCo then
 		quadro = debugprofilestop and debugprofilestop()
 		local ok, res = coroutine.resume(pathCo)
@@ -369,21 +375,28 @@ local function pathTick()
 			if not ok then ns:Debug("Terrain:", res) end
 			pathCo = nil
 			if ok and res then
-				leg.path, leg.pathFail = res, nil
+				pathLeg.path, pathLeg.pathFail = res, nil
+				route.pv = (route.pv or 0) + 1
 			else
-				leg.path = leg.path or false             -- falhou: fica o caminho anterior, se havia
-				leg.pathFail = true
+				pathLeg.path = pathLeg.path or false     -- falhou: fica o caminho anterior, se havia
+				pathLeg.pathFail = true
 			end
 		end
 		return
 	end
-	local pos = T.PlayerWorld()
-	if not (pos and pos.c == leg.b.c) then return end
-	if leg.pathFail and leg.pathAt and dist(pos, leg.pathAt) < 300 then return end
-	if leg.path and select(4, ns.Terrain.Ahead(leg.path, pos, 0)) <= 40 then return end
-	pathLeg = leg
-	leg.pathAt = { c = pos.c, x = pos.x, y = pos.y }
-	local from, to = leg.pathAt, leg.b
+	local leg, idx, from = nil, nil, nil
+	if precisa then
+		leg, idx, from = cur, route.leg, { c = pos.c, x = pos.x, y = pos.y }
+	else
+		for i = route.leg + 1, #route.legs do
+			local l = route.legs[i]
+			if l.k == "walk" and l.path == nil and l.a.c == l.b.c then leg, idx, from = l, i, l.a; break end
+		end
+	end
+	if not leg then return end
+	pathLeg, pathRoute, pathIdx = leg, route, idx
+	leg.pathAt = from
+	local to = leg.b
 	-- sem debugprofilestop (fora do jogo), cede a cada 3000 expansões
 	local ceder = debugprofilestop and estourou or 3000
 	pathCo = coroutine.create(function() return ns.Terrain.Path(ns.terrain, from, to, 150000, ceder) end)
