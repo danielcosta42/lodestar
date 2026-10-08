@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Dire Maul", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "d70f2c4f",
+	rev = "478df5ef",
 }, [[
 step
   talk Harbinger Balthazad##10879
@@ -116,6 +116,7 @@ step
   note Travel to the Warpwood Quarter of Dire Maul and slay the water elemental, Hydrospawn. Return to Lorekeeper Lydros in the Athenaeum with the Hydrospawn Essence.
   collect Hydrospawn Essence##18299 |q 7463 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Hydrospawn
 step
+  note Speak with Talo Thornhoof at Camp Mojache in Feralas.
   talk Talo Thornhoof##7776
   turnin Camp Mojache##7492 |goto Feralas 76.18,43.83
 step
@@ -135,38 +136,47 @@ step
   turnin The Madness Within##7461 |goto Dire Maul - Dungeon -1,-1
 step
   only Rogue
+  note Return the book to its rightful owners.
   talk Lorekeeper Kildrath##14383
   turnin Garona: A Study on Stealth and Treachery##7498 |goto Dire Maul - Dungeon -1,-1
 step
   only Warrior
+  note Return the book to its rightful owners.
   talk Lorekeeper Kildrath##14383
   turnin Codex of Defense##7499 |goto Dire Maul - Dungeon -1,-1
 step
   only Mage
+  note Return the book to its rightful owners.
   talk Lorekeeper Kildrath##14383
   turnin The Arcanist's Cookbook##7500 |goto Dire Maul - Dungeon -1,-1
 step
   only Paladin
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
   only Warlock
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin Harnessing Shadows##7502 |goto Dire Maul - Dungeon -1,-1
 step
   only Hunter
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin The Greatest Race of Hunters##7503 |goto Dire Maul - Dungeon -1,-1
 step
   only Priest
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin Holy Bologna: What the Light Won't Tell You##7504 |goto Dire Maul - Dungeon -1,-1
 step
   only Shaman
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin Frost Shock and You##7505 |goto Dire Maul - Dungeon -1,-1
 step
   only Druid
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
 step
@@ -181,6 +191,7 @@ step
   turnin The Prison's Bindings##7581 |goto Blasted Lands 34.13,50.14
 step
   only Warlock
+  note Purchase Shadowy Potions from Gorzeeki in the Burning Steppes.
   talk Lord Banehollow##9516
   turnin Lord Banehollow##7623 |goto Felwood 35.93,44.42
 step
@@ -193,6 +204,7 @@ step
   turnin Arcane Refreshment##7463 |goto Dire Maul - Dungeon -1,-1
 step
   only not Hunter not Rogue not Priest not Shaman not Mage not Warlock not Druid
+  note Return Nostro's Compendium of Dragon Slaying to the Athenaeum.
   talk Lorekeeper Lydros##14368
   turnin Nostro's Compendium##7507 |goto Dire Maul - Dungeon -1,-1
 step
@@ -224,13 +236,16 @@ step
   talk Talo Thornhoof##7776
   turnin Lethtendris's Web##7489 |goto Feralas 76.18,43.83
 step
+  note Return to the Athenaeum and find the Treasure of the Shen'dralar. Claim your reward!
   turnin The Treasure of the Shen'dralar##7877 |goto Dire Maul - Dungeon -1,-1
 step
   only Warlock
+  note Bring the Case of Blood to Gorzeeki Wildeyes in the Burning Steppes.
   talk Gorzeeki Wildeyes##14437
   turnin Wildeyes##7564 |goto Burning Steppes 12.44,31.63
 step
   only not Hunter not Rogue not Priest not Shaman not Mage not Warlock not Druid
+  note Give the Dull and Flat Elven Blade to Lorekeeper Lydros.
   talk Lorekeeper Lydros##14368
   turnin The Forging of Quel'Serrar##7508 |goto Dire Maul - Dungeon -1,-1
 step

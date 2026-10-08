@@ -18,7 +18,6 @@ L.VERB_home    = "Pedra de lar"
 L.VERB_ding    = "Suba ao nível"
 L.VERB_goto    = "Vá até"
 L.VERB_get     = "Pegue"
-L.VERB_run     = "Corra"
 
 L.NOW          = "AGORA"
 L.NEXT         = "A SEGUIR"
@@ -103,7 +102,6 @@ L.LIB_EMPTY     = "Nenhum guia corresponde."
 L.FLY_TO        = "Voe para"
 L.OUT_OF_ZONE   = "Vá para %s"
 L.SET_HEARTH_T  = "Defina sua Pedra de Regresso"
-L.SET_HEARTH_SHAT = "Vincule aqui em Shattrath - é o hub central de Outland."
 L.SET_HEARTH_HUB = "Você vai passar um tempo em %s - vincule no estalajadeiro daqui."
 
 L.LOADED         = "v%s carregado. |cffffff00/ls|r para abrir."
@@ -251,7 +249,6 @@ L.REC_STOP       = "gravação encerrada."
 L.REC_DONE_T     = "Guia gravado"
 L.REC_DONE_H     = "Revise/edite e depois Exporte."
 L.GUIDE_DONE     = "Guia concluído!"
-L.RUN_DONE       = "Corrida concluída"
 
 -- Tela de configurações
 L.SET_TITLE       = "CONFIGURAÇÕES"

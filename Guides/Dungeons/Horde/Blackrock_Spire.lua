@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackrock Spire", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "59d71b8c",
+	rev = "9a686191",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -99,6 +99,7 @@ step
   talk Duke Hydraxis##13278
   turnin Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
 step
+  note Travel to Blackrock Spire and find out what happened to Bijou.
   talk Bijou##10257
   turnin Operative Bijou##4981 |goto Blackrock Spire - Dungeon -1,-1
 step
@@ -114,15 +115,18 @@ step
   talk Warosh##10799
   turnin Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
 step
+  note Talk to Malyfous Darkhammer in Everlook.
   talk Malyfous Darkhammer##10637
   turnin Pip Quickwit, At Your Service!##5047 |goto Winterspring 60.99,38.78
 step
+  note Travel to Winterspring and find Haleh. Give her Awbee's scale.
   talk Haleh##10929
   turnin The Matron Protectorate##5160 |goto Winterspring 54.55,51.2
 step
   talk Ragged John##9563
   turnin Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  note Speak with Shadowmage Vivian Lagrave.
   talk Shadowmage Vivian Lagrave##9078
   turnin Vivian Lagrave and the Darkstone Tablet##4769 |goto Badlands 2.9,47.76
 step
@@ -174,6 +178,7 @@ step
   talk Yeh'kinya##8579
   turnin The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36
 step
+  note Give Tinkee's Letter to Felnok Steelspring.
   talk Felnok Steelspring##10468
   turnin Felnok Steelspring##4808 |goto Winterspring 61.63,38.61
 step
@@ -186,6 +191,7 @@ step
   talk Shadowmage Vivian Lagrave##9078
   turnin The Darkstone Tablet##4768 |goto Badlands 2.9,47.76
 step
+  note Speak with Haleh if you wish to continue.
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
@@ -217,9 +223,11 @@ step
   talk Felnok Steelspring##10468
   turnin Chillwind Horns##4809 |goto Winterspring 61.63,38.61
 step
+  note Take Bijou's Reconnaissance Report back to Grandmaster Lexlort in Kargath.
   talk Lexlort##9080
   turnin Bijou's Reconnaissance Report##4983 |goto Badlands 5.88,47.63
 step
+  note Speak with Jeziba in the Plaguelands. He resides in Andorhal.
   talk Jeziba##10976
   turnin Wrath of the Blue Flight##5162 |goto Western Plaguelands 39.37,66.78
 step
@@ -238,9 +246,11 @@ step
   talk Yeh'kinya##8579
   turnin The God Hakkar##3528 |goto Tanaris 66.99,22.36
 step
+  note Bring Felnok's Package to Tinkee Steamboil in the Burning Steppes.
   talk Tinkee Steamboil##10267
   turnin Return to Tinkee##4810 |goto Burning Steppes 65.24,24
 step
+  note Read from the Catalogue of the Wayward.
   turnin Catalogue of the Wayward##5164 |goto Western Plaguelands 39.35,66.6
 step
   talk Prospector Ironboot##10460
@@ -282,6 +292,7 @@ step
   talk Jeziba##10976
   turnin Legplates of the Chromatic Defier##5167 |goto Western Plaguelands 39.37,66.78
 step
+  note Speak with Tinkee Steamboil.
   talk Tinkee Steamboil##10267
   turnin Tinkee Steamboil##4907 |goto Burning Steppes 65.24,24
 step

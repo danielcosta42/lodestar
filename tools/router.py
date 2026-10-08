@@ -83,7 +83,6 @@ RACE_BIT = {1: "Human", 2: "Orc", 4: "Dwarf", 8: "NightElf", 16: "Undead",
 VANILLA_RACES = (1 << 32) - 1
 TODAS_RACAS = VANILLA_RACES | 1 << 32 | 1 << 33        # com as duas Skyborne
 # bitmask de classe do WoW = 1<<(classId-1): Sha=64, Mag=128, Wlk=256, Dru=1024.
-# (bit 32 = DeathKnight, inexistente no TBC.)
 CLASS_BIT = {1: "Warrior", 2: "Paladin", 4: "Hunter", 8: "Rogue", 16: "Priest",
              64: "Shaman", 128: "Mage", 256: "Warlock", 1024: "Druid"}
 
@@ -253,6 +252,8 @@ class Router:
             sp = self.best_spawn(ent, area) if ent else None
             if not sp:
                 continue
+            if self.faction in ("A", "H") and npc_amigo(ent) and self.faction not in ent["faction"]:
+                continue                       # NPC amigo só da outra facção
             rank = ent.get("rank") or 0
             penalty = 2 if rank in (3, 4) else (1 if rank in (1, 2) else 0)
             cand = (longe(sp), penalty, nid, ent["name"], sp)
@@ -798,6 +799,8 @@ class Router:
             if not (it["ender"] or it["eobj"]):
                 return False
             abre(q)
+            if area == -1 and q["objText"] and not (q["objCreatures"] or q["objItems"] or q["objObjects"]):
+                steps.append(("  note " + esc(q["objText"][0]), None))
             if it["ender"]:
                 steps.append(("  talk %s##%d" % (esc(it["ender"]["name"]), it["ender_id"]), None))
             tip = ""
@@ -829,6 +832,9 @@ class Router:
             if giver is None:                       # início por ITEM (lootar a fonte)
                 for iid in q["startItems"]:
                     src = self.item_source(iid, area)
+                    if src and src[3] and src[0] == "kill" and src[1] in q["startNpcs"]:
+                        giver, giver_id, gc_o = self.npc(src[1]), src[1], src[3]
+                        break
                     if src and src[3]:
                         giver, giver_id = {"name": src[2]}, src[1]
                         giver_kind, item_verb, gc_o = "item", src[0], src[3]
@@ -1350,7 +1356,8 @@ class Router:
         self._tira(sel, {qid for qid, q in sel.items()
                          if not (q["startNpcs"] or q["startObjects"] or q["startItems"])})
         # mutuamente exclusivas (Call of Earth em Durotar, Mulgore e Zephras): uma só
-        self._tira(sel, self._exclusivas(sel, lambda q: (sel[q]["reqLevel"] or 0, q), faction))
+        if mode != "tiers":
+            self._tira(sel, self._exclusivas(sel, lambda q: (sel[q]["reqLevel"] or 0, q), faction))
         if not sel:
             return None, 0, []
         info = self._info(sel, -1)
@@ -1372,7 +1379,7 @@ class Router:
             q = sel[qid]
             return (max(q.get("reqLevel") or 0, (q.get("questLevel") or 0) - 2),) + onde(qid) + (qid,)
 
-        if mode == "chain":
+        if mode in ("chain", "tiers"):
             # ordem topológica por prioridade: entre as liberadas, a de menor nível
             # (o guia de guerreiro não manda o nível 10 aceitar Naxxramas), e no
             # empate a da mesma zona — os anciões do Lunar Festival saem zona a zona

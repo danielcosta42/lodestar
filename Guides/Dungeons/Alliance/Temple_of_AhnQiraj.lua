@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Temple of Ahn'Qiraj", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "b980817e",
+	rev = "4a2e840c",
 }, [[
 step
   talk Kandrostrasz##15503
@@ -18,12 +18,14 @@ step
   talk Kandrostrasz##15503
   turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Take the Eye of C'Thun to Caelastrasz in the Temple of Ahn'Qiraj.
   talk Caelestrasz##15379
   turnin C'Thun's Legacy##8801 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
   talk Caelestrasz##15379
   accept The Savior of Kalimdor##8802 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Take the Eye of C'Thun to Anachronos at the Caverns of Time.
   talk Anachronos##15192
   turnin The Savior of Kalimdor##8802 |goto Tanaris 65.27,50.03
 ]])

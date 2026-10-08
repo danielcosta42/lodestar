@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Stratholme", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "3cc24d2d",
+	rev = "11346ea1",
 }, [[
 step
   talk Tirion Fordring##1855
@@ -40,9 +40,8 @@ step
   talk Nathanos Blightcaller##11878
   accept The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
 step
-  only completed(5122)
   talk Aurius##10917
-  accept Aurius' Reckoning##5125 |goto Stratholme - Dungeon -1,-1
+  accept The Medallion of Faith##5122 |goto Stratholme - Dungeon -1,-1
 step
   talk Eva Sarkhoff##11216
   accept Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
@@ -84,6 +83,8 @@ step
   note Travel to the northern borders of the Eastern Plaguelands and recover the Quel'Thalas Registry. The item is somewhere in the Quel'Lithien lodge.
   talk Pathstrider##8565 |q 6133 |goto Eastern Plaguelands 46.74,13.01
 step
+  collect Medallion of Faith##12845 |q 5122 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Malor's Strongbox
+step
   note Find Doctor Theolen Krastinov inside the Scholomance. Destroy him, then burn the Remains of Eva Sarkhoff and the Remains of Lucien Sarkhoff. Return to Eva Sarkhoff when the task is complete.
   kill Doctor Theolen Krastinov##11261 |q 5382 |goto Scholomance - Dungeon -1,-1 |elite
 step
@@ -121,15 +122,15 @@ step
   talk Duke Nicholas Zverenhoff##11039
   turnin The Archivist##5251 |goto Eastern Plaguelands 71.63,50.09
 step
+  note Find Egan. You only know that he was last seen around Stratholme.
   talk Egan##11140
   turnin The Restless Souls##5281 |goto Eastern Plaguelands 11.36,26.6
 step
   talk Nathanos Blightcaller##11878
   turnin The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
 step
-  only completed(5122)
   talk Aurius##10917
-  turnin Aurius' Reckoning##5125 |goto Stratholme - Dungeon -1,-1
+  turnin The Medallion of Faith##5122 |goto Stratholme - Dungeon -1,-1
 step
   talk Eva Sarkhoff##11216
   turnin Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
@@ -155,6 +156,9 @@ step
 step
   talk Nathanos Blightcaller##11878
   accept The Corpulent One##6136 |goto Eastern Plaguelands 22.23,63.51
+step
+  talk Aurius##10917
+  accept Aurius' Reckoning##5125 |goto Stratholme - Dungeon -1,-1
 step
   kill Grand Crusader Dathrohan##10812 |goto Stratholme - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
   accept The Truth Comes Crashing Down##5262 |goto Stratholme - Dungeon -1,-1
@@ -196,6 +200,10 @@ step
   talk Nathanos Blightcaller##11878
   turnin The Corpulent One##6136 |goto Eastern Plaguelands 22.23,63.51
 step
+  talk Aurius##10917
+  turnin Aurius' Reckoning##5125 |goto Stratholme - Dungeon -1,-1
+step
+  note Take the Head of Balnazzar to Duke Nicholas Zverenhoff in the Eastern Plaguelands.
   talk Duke Nicholas Zverenhoff##11039
   turnin The Truth Comes Crashing Down##5262 |goto Eastern Plaguelands 71.63,50.09
 step
@@ -262,9 +270,11 @@ step
   talk Magistrate Marduke##11286
   accept The Dying, Ras Frostwhisper##5462 |goto Western Plaguelands 70.57,74.11
 step
+  note Travel to island of Caer Darrow, in the south-central region of the Plaguelands, and look for any clues as to the whereabouts of the painting.
   talk Artist Renfray##11936
   turnin Of Love and Family##5846 |goto Western Plaguelands 65.77,75.37
 step
+  note Travel to Light's Hope in Eastern Plaguelands and seek out Leonid Barthalomew the Revered. Show him the Keepsake of Remembrance and tell him all that you have discovered.
   talk Leonid Barthalomew the Revered##11036
   turnin The Dying, Ras Frostwhisper##5462 |goto Eastern Plaguelands 71.89,48.29
 step
@@ -277,6 +287,7 @@ step
   note Travel to Stratholme, in the northern part of the Plaguelands. It is in the Scarlet Bastion that you will find the painting 'Of Love and Family,' hidden behind another painting depicting the twin moons of our world.
   collect Of Love and Family##14679 |q 5848 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Unfinished Painting
 step
+  note Travel to Stratholme and find Menethil's Gift. Place the Keepsake of Remembrance upon the unholy ground.
   turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1
 step
   talk Tirion Fordring##1855

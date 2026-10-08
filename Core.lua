@@ -137,7 +137,6 @@ local CHAR_DEFAULTS = {
 	steps = {},                -- [guideKey] = índice do step (progresso por guia)
 	completedGoals = {},       -- ["guide\0step\0goal"] = true (progresso manual)
 	deaths = 0,                -- mortes deste personagem
-	dungeonRuns = {},          -- [nomeDaDungeon] = nº de clears (contador de spam)
 }
 
 local function applyDefaults(target, defaults)

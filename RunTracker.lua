@@ -9,7 +9,7 @@ local RT = {}
 ns.RunTracker = RT
 
 RT.MILESTONES = { [10] = true, [20] = true, [30] = true, [40] = true,
-                  [50] = true, [58] = true, [70] = true }
+                  [50] = true, [60] = true }
 
 local pendingLevel                       -- nível aguardando o /played chegar
 local lastPlayed, lastAt                 -- último /played sincronizado (p/ estimar ao vivo)

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Gnomeregan", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "0424f13b",
+	rev = "df2a90f3",
 }, [[
 step
   talk Ozzie Togglevolt##1268
@@ -64,6 +64,7 @@ step
   talk Shoni the Shilent##6579
   turnin Gyrodrillmatic Excavationators##2928 |goto Stormwind City 62.63,34.11
 step
+  note Figure out a way to remove the grime from the Grime-Encrusted Ring.
   turnin Grime-Encrusted Ring##2945 |goto Gnomeregan - Dungeon -1,-1
 step
   talk High Tinker Mekkatorque##7937

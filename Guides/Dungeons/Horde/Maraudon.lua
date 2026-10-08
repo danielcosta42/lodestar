@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Maraudon", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "1a879064",
+	rev = "38ec0e28",
 }, [[
 step
   talk Uthel'nay##7311
@@ -56,6 +56,7 @@ step
   talk Selendra##13699
   turnin Corruption of Earth and Seed##7064 |goto Desolace 26.87,77.67
 step
+  note Seek out Remulos in Moonglade and give him the Seed of Life.
   talk Keeper Remulos##11832
   turnin Seed of Life##7066 |goto Moonglade 36.18,41.79
 ]])

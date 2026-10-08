@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Alliance/Dungeon Set 2 (Alliance)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "4b93fff2",
+	rev = "6cf43aff",
 }, [[
 step
   only Druid
@@ -108,6 +108,7 @@ step
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
   only not Shaman
+  note Bring the Sealed Blood Container to Mux Manascrambler inside Gadgetzan in Tanaris.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
@@ -164,6 +165,7 @@ step
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
   only not Shaman
+  note Bring the Extra-Dimensional Ghost Revealer to Deliana in Ironforge.
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
@@ -268,6 +270,7 @@ step
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
   only not Shaman
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -288,6 +291,7 @@ step
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
   only not Shaman
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -308,6 +312,7 @@ step
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
   only not Shaman
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -448,6 +453,7 @@ step
   accept Bodley's Unfortunate Fate##8960 |goto Ironforge 43.53,52.64
 step
   only not Shaman
+  note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -579,6 +585,7 @@ step
   accept Back to the Beginning##8997 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   only not Shaman
+  note Speak with Deliana at The High Seat in Ironforge.
   talk Deliana##16013
   turnin Back to the Beginning##8997 |goto Ironforge 43.53,52.64
 step

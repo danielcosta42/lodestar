@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Dire Maul", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "3b20d86b",
+	rev = "db29764e",
 }, [[
 step
   talk Crier Goodman##2198
@@ -120,6 +120,7 @@ step
   note Travel to the Warpwood Quarter of Dire Maul and slay the water elemental, Hydrospawn. Return to Lorekeeper Lydros in the Athenaeum with the Hydrospawn Essence.
   collect Hydrospawn Essence##18299 |q 7463 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Hydrospawn
 step
+  note Speak with Latronicus Moonspear at the Feathermoon Stronghold in Feralas.
   talk Latronicus Moonspear##7877
   turnin Feathermoon Stronghold##7494 |goto Feralas 30.38,46.17
 step
@@ -139,38 +140,47 @@ step
   turnin The Madness Within##7461 |goto Dire Maul - Dungeon -1,-1
 step
   only Rogue
+  note Return the book to its rightful owners.
   talk Lorekeeper Kildrath##14383
   turnin Garona: A Study on Stealth and Treachery##7498 |goto Dire Maul - Dungeon -1,-1
 step
   only Warrior
+  note Return the book to its rightful owners.
   talk Lorekeeper Kildrath##14383
   turnin Codex of Defense##7499 |goto Dire Maul - Dungeon -1,-1
 step
   only Mage
+  note Return the book to its rightful owners.
   talk Lorekeeper Kildrath##14383
   turnin The Arcanist's Cookbook##7500 |goto Dire Maul - Dungeon -1,-1
 step
   only Paladin
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
   only Warlock
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin Harnessing Shadows##7502 |goto Dire Maul - Dungeon -1,-1
 step
   only Hunter
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin The Greatest Race of Hunters##7503 |goto Dire Maul - Dungeon -1,-1
 step
   only Priest
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin Holy Bologna: What the Light Won't Tell You##7504 |goto Dire Maul - Dungeon -1,-1
 step
   only Shaman
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin Frost Shock and You##7505 |goto Dire Maul - Dungeon -1,-1
 step
   only Druid
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
 step
@@ -185,6 +195,7 @@ step
   turnin The Prison's Bindings##7581 |goto Blasted Lands 34.13,50.14
 step
   only Warlock
+  note Purchase Shadowy Potions from Gorzeeki in the Burning Steppes.
   talk Lord Banehollow##9516
   turnin Lord Banehollow##7623 |goto Felwood 35.93,44.42
 step
@@ -197,10 +208,12 @@ step
   turnin Arcane Refreshment##7463 |goto Dire Maul - Dungeon -1,-1
 step
   only not Hunter not Rogue not Priest not Shaman not Mage not Warlock not Druid
+  note Return Nostro's Compendium of Dragon Slaying to the Athenaeum.
   talk Lorekeeper Lydros##14368
   turnin Nostro's Compendium##7507 |goto Dire Maul - Dungeon -1,-1
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak with Lord Grayson Shadowbreaker in Stormwind's Cathedral District.
   talk Lord Grayson Shadowbreaker##928
   turnin Lord Grayson Shadowbreaker##7638 |goto Stormwind City 48.43,50.22
 step
@@ -239,15 +252,19 @@ step
   talk Latronicus Moonspear##7877
   turnin Lethtendris's Web##7488 |goto Feralas 30.38,46.17
 step
+  note Return to the Athenaeum and find the Treasure of the Shen'dralar. Claim your reward!
   turnin The Treasure of the Shen'dralar##7462 |goto Dire Maul - Dungeon -1,-1
 step
+  note Return to the Athenaeum and find the Treasure of the Shen'dralar. Claim your reward!
   turnin The Treasure of the Shen'dralar##7877 |goto Dire Maul - Dungeon -1,-1
 step
   only Warlock
+  note Bring the Case of Blood to Gorzeeki Wildeyes in the Burning Steppes.
   talk Gorzeeki Wildeyes##14437
   turnin Wildeyes##7564 |goto Burning Steppes 12.44,31.63
 step
   only not Hunter not Rogue not Priest not Shaman not Mage not Warlock not Druid
+  note Give the Dull and Flat Elven Blade to Lorekeeper Lydros.
   talk Lorekeeper Lydros##14368
   turnin The Forging of Quel'Serrar##7508 |goto Dire Maul - Dungeon -1,-1
 step
@@ -256,6 +273,7 @@ step
   turnin Ulathek the Traitor##7624 |goto Felwood 35.93,44.42
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Travel to Ironforge and get High Priest Rohan's Exorcism Censer. You will need to make a donation of 150 gold in order to secure it.
   talk High Priest Rohan##11406
   turnin Emphasis on Sacrifice##7637 |goto Ironforge 24.73,8.16
 step
@@ -312,6 +330,7 @@ step
   turnin Xorothian Stardust##7625 |goto Burning Steppes 12.44,31.63
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Return the Exorcism Censer to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
   talk Lord Grayson Shadowbreaker##928
   turnin To Show Due Judgment##7639 |goto Stormwind City 48.43,50.22
 step
@@ -368,6 +387,7 @@ step
   turnin Dreadsteed of Xoroth##7631 |goto Dire Maul - Dungeon -1,-1
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak with Grimand Elmore in Stormwind's Dwarven District.
   talk Grimand Elmore##1416
   turnin The Work of Grimand Elmore##7641 |goto Stormwind City 59.73,33.78
 step

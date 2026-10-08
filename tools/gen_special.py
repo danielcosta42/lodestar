@@ -29,8 +29,8 @@ ATTUNEMENTS = [
     ("Blackwing Lair - Blackhand's Command",  "N", [7761],                      "chain"),
     # as três variantes por reputação (Honrado/Reverenciado/Exaltado): a Angela só
     # oferece a do nível do jogador, e o passo das outras é pulado no NPC
-    ("Naxxramas - The Dread Citadel",         "N", [9121, 9122, 9123],          "chain"),
-    # abertura de Ahn'Qiraj: as três pontas da cadeia
+    ("Naxxramas - The Dread Citadel",         "N", [9121, 9122, 9123],          "tiers"),
+    # abertura de Ahn'Qiraj: as pontas da cadeia (a terceira, The Hand of the Righteous, é repetível)
     ("Ahn'Qiraj - Scepter of the Shifting Sands", "N", [8743, 8745],            "chain"),
     # set de masmorra 2 (T0.5): Saving the Best for Last de cada classe
     ("Dungeon Set 2 (Alliance)",              "A", list(range(8999, 9015)),     "chain"),
@@ -50,6 +50,17 @@ GRIND_FACTIONS = {
 # nele. Fica a cadeia de classe que começa por item do raid (The Ancient Leaf).
 RAIDS = {"Molten Core", "Onyxia's Lair", "Blackwing Lair", "Zul'Gurub", "Ruins of Ahn'Qiraj",
          "Temple of Ahn'Qiraj", "Naxxramas"}
+
+
+def por_item(Q, q):
+    """A cadeia da quest começa por item (The Ancient Leaf, a forja de Quel'Serrar):
+    é cadeia de classe de verdade, não troca de token."""
+    return any(Q[str(x)]["startItems"] for x in walk_chain(Q, [q]) if str(x) in Q)
+
+
+def troca_de_raide(Q, name, q):
+    v = Q[str(q)]
+    return name in RAIDS and v["classes"] and not por_item(Q, q)
 
 
 def walk_chain(Q, seeds):
@@ -148,18 +159,16 @@ def main():
     dq = dungeon_quests(routers["N"], dA)
     sintonia = {q for _, _, seeds, _ in ATTUNEMENTS for q in walk_chain(Q, seeds)}
     repetivel = {int(k) for k, v in Q.items() if (v.get("specialFlags") or 0) & 1}
-
-    def fica(name, q):
-        v = Q[str(q)]
-        if (v.get("specialFlags") or 0) & 1 or q in sintonia:
-            return False
-        return not (name in RAIDS and v["classes"] and not v["startItems"])
     for name, qids in sorted(dq.items(), key=lambda kv: -len(kv[1])):
-        qids = [q for q in qids if fica(name, q)]
+        qids = [q for q in qids if q not in sintonia and not troca_de_raide(Q, name, q)]
+        # repetível que abre uma cadeia (What Is Going On?, a escolta da princesa; The
+        # Medallion of Faith, o Aurius) fica: a quest seguinte a pede
+        precisa = {p for q in qids if q not in repetivel for p in walk_chain(Q, [q]) if p in repetivel}
+        qids = [q for q in qids if q not in repetivel or q in precisa]
         if len(qids) < (1 if name in RAIDS else 3):    # raide: a da cabeça do chefe já vale
             continue
         for fac in ("A", "H"):
-            n = emit("Dungeons", fac, name, qids, "phase", exclude=sintonia | repetivel)
+            n = emit("Dungeons", fac, name, qids, "phase", exclude=sintonia | (repetivel - precisa))
             if n:
                 print("  [%s] %-28s %d quests" % (fac, name, n))
 
@@ -172,7 +181,7 @@ def main():
 
     # -- Quests de classe ---------------------------------------------------
     print("=== Class ===")
-    # bitmask WoW = 1<<(classId-1): Sha=64, Mag=128, Wlk=256, Dru=1024 (32=DK, N/A no TBC).
+    # bitmask WoW = 1<<(classId-1): Sha=64, Mag=128, Wlk=256, Dru=1024.
     CLASS_BIT = {1: "Warrior", 2: "Paladin", 4: "Hunter", 8: "Rogue", 16: "Priest",
                  64: "Shaman", 128: "Mage", 256: "Warlock", 1024: "Druid"}
     byc = defaultdict(list)
@@ -182,7 +191,9 @@ def main():
         # quest de classe tem questLevel=-1 (é gated por classe, não por nível).
         if c in CLASS_BIT and (c & (c - 1)) == 0 and not is_placeholder(q.get("name")):
             byc[CLASS_BIT[c]].append(int(qid))
+    trocas = {q for name, qs in dq.items() for q in qs if troca_de_raide(Q, name, q)}
     for cls, qids in sorted(byc.items()):
+        qids = [q for q in qids if q not in trocas]
         for fac in ("A", "H"):
             n = emit("Class", fac, cls, qids, "chain")
             if n:

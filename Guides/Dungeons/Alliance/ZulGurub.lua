@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Zul'Gurub", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "8da845c0",
+	rev = "237169c5",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -40,12 +40,15 @@ step
   talk Exzhal##14910
   turnin A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
 step
+  note Destroy any one of the Hakkari Bijous found in Zul'Gurub at the Altar of Zanza on Yojamba Isle. When done, speak with Vinchaxa nearby.
   talk Vinchaxa##15070
   turnin A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
+  note Bring the Heart of Hakkar to Molthor on Yojamba Isle.
   talk Molthor##14875
   turnin The Heart of Hakkar##8183 |goto Stranglethorn Vale 15.04,15.13
 step
+  note Return Nat's Measuring Tape to Nat Pagle in Dustwallow Marsh.
   talk Nat Pagle##12919
   turnin Nat's Measuring Tape##8227 |goto Dustwallow Marsh 58.61,60.06
 step
@@ -100,6 +103,7 @@ step
   talk Prospector Ironboot##10460
   accept Confront Yeh'kinya##8181 |goto Tanaris 66.89,24.03
 step
+  note Speak with Yeh'kinya.
   talk Yeh'kinya##8579
   turnin Confront Yeh'kinya##8181 |goto Tanaris 66.99,22.36
 ]])

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Shaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "c29b6a05",
+	rev = "4b177035",
 }, [[
 step
   only Dwarf Shaman
@@ -12,12 +12,14 @@ step
   accept Archaic Rune##98581 |goto Dun Morogh 29.93,71.2
 step
   only Dwarf Shaman
+  note Read the Archaic Rune and speak to Teo Hammerstorm in Anvilmar.
   talk Teo Hammerstorm##257446
   turnin Archaic Rune##98581 |goto Dun Morogh 28.84,66.23
 step
   talk Ailee Farheart##251362
   accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
 step
+  note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
   turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
 step
@@ -47,6 +49,7 @@ step
   accept Call of Earth##94374 |goto Dun Morogh 28.84,66.23
 step
   only not Human not NightElf not Skyborne Shaman
+  note Find the Spirit Stone and drink the Earth Sapta.
   talk Minor Manifestation of Earth##5891
   turnin Call of Earth##94374 |goto Durotar 44.03,76.2
 step
@@ -55,6 +58,7 @@ step
   accept Earth Sapta##94472 |goto Dun Morogh 28.84,66.23
 step
   only not Human not NightElf not Skyborne Shaman
+  note Speak to Teo Hammerstorm for another Earth Sapta.
   talk Teo Hammerstorm##257446
   turnin Earth Sapta##94472 |goto Dun Morogh 28.84,66.23
 step
@@ -63,6 +67,7 @@ step
   accept Call of Earth##94375 |goto Durotar 44.03,76.2
 step
   only Shaman
+  note Bring the Rough Quartz to Teo Hammerstorm in Anvilmar.
   talk Teo Hammerstorm##257446
   turnin Call of Earth##94375 |goto Dun Morogh 28.84,66.23
 step
@@ -71,6 +76,7 @@ step
   accept Call of Fire##94465 |goto Dun Morogh 87.62,43.77
 step
   only not Human not NightElf not Skyborne Shaman
+  note Bring the Torch of the Dormant Flame to Braldir Ashmantle in Loch Modan.
   talk Braldir Ashmantle##257808
   turnin Call of Fire##94465 |goto Loch Modan 32.05,66.06
 step
@@ -79,6 +85,7 @@ step
   accept Call of Fire##94449 |goto Ironforge 47.43,13.5
 step
   only Shaman
+  note Find Bruegs Kindleborn in Dun Morogh.
   talk Bruegs Kindleborn##257597
   turnin Call of Fire##94449 |goto Dun Morogh 87.62,43.77
 step
@@ -87,6 +94,7 @@ step
   accept Fire Sapta##94473 |goto Loch Modan 32.05,66.06
 step
   only Shaman
+  note Speak to Braldir Ashmantle for another Fire Sapta
   talk Braldir Ashmantle##257808
   turnin Fire Sapta##94473 |goto Loch Modan 32.05,66.06
 step
@@ -95,6 +103,7 @@ step
   accept Call of Fire##94468 |goto Durotar 38.96,58.22
 step
   only Shaman
+  note Bring the Torch of Eternal Flame to Bruegs Kindleborn in Dun Morogh.
   talk Bruegs Kindleborn##257597
   turnin Call of Fire##94468 |goto Dun Morogh 87.62,43.77
 step
@@ -126,6 +135,7 @@ step
   accept Call of Water##94494 |goto Ironforge 47.43,13.5
 step
   only Shaman
+  note Find Norric Lochthane in Loch Modan.
   talk Norric Lochthane##258043
   turnin Call of Water##94494 |goto Loch Modan 41.89,19.03
 step
@@ -134,6 +144,7 @@ step
   accept Call of Water##94495 |goto Loch Modan 41.89,19.03
 step
   only Shaman
+  note Find Hervdana Saegrund in the Wetlands.
   talk Hervdana Saegrund##258203
   turnin Call of Water##94495 |goto Wetlands 65.73,76.43
 step
@@ -174,6 +185,7 @@ step
   accept Call of Water##94505 |goto Silverpine Forest 38.65,44.58
 step
   only Shaman
+  note Bring the Shard of Water to Norric Lochthane in Loch Modan.
   talk Norric Lochthane##258043
   turnin Call of Water##94505 |goto Loch Modan 41.89,19.03
 step
@@ -182,6 +194,7 @@ step
   accept Call of Water##94503 |goto Westfall 45.45,59.89
 step
   only Shaman
+  note Speak to the Minor Manifestation of Water in Westfall.
   talk Minor Manifestation of Water##5895
   turnin Call of Water##94503 |goto Silverpine Forest 38.65,44.58
 step
@@ -202,6 +215,7 @@ step
   accept Call of Water##94501 |goto Wetlands 65.73,76.43
 step
   only Shaman
+  note Bring the Vial of Purest Water to Norric Lochthane in Loch Modan.
   talk Norric Lochthane##258043
   turnin Call of Water##94501 |goto Loch Modan 41.89,19.03
 step
@@ -210,6 +224,7 @@ step
   accept Frost Shock and You##7505 |goto Dire Maul - Dungeon -1,-1
 step
   only Shaman
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin Frost Shock and You##7505 |goto Dire Maul - Dungeon -1,-1
 step
@@ -314,6 +329,7 @@ step
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
   only not Shaman
+  note Bring the Sealed Blood Container to Mux Manascrambler inside Gadgetzan in Tanaris.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
@@ -370,6 +386,7 @@ step
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
   only not Shaman
+  note Bring the Extra-Dimensional Ghost Revealer to Deliana in Ironforge.
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
@@ -474,6 +491,7 @@ step
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
   only not Shaman
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -494,6 +512,7 @@ step
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
   only not Shaman
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -514,6 +533,7 @@ step
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
   only not Shaman
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -584,6 +604,7 @@ step
   talk Rutgar Glyphshaper##15170
   accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment wants you to deliver the Glyphed Crystal Prism to Geologist Larksbane at the Cenarion Hold in Silithus.
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
@@ -596,165 +617,4 @@ step
 step
   talk Geologist Larksbane##15183
   turnin The Calling##8315 |goto Silithus 49.67,37.46
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  accept Earthshatter Tunic##9068 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make an Earthshatter Tunic if you bring him the following: 1 Desecrated Tunic, 25 Wartorn Chain Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Tunic##22350 |q 9068 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  turnin Earthshatter Tunic##9068 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  accept Earthshatter Legguards##9069 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Legguards if you bring him the following: 1 Desecrated Legguards, 20 Wartorn Chain Scraps, 3 Arcanite Bars and 5 Cured Rugged Hides.
-  collect Desecrated Legguards##22359 |q 9069 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  turnin Earthshatter Legguards##9069 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  accept Earthshatter Headpiece##9070 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make an Earthshatter Headpiece if you bring him the following: 1 Desecrated Headpiece, 15 Wartorn Chain Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Headpiece##22360 |q 9070 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  turnin Earthshatter Headpiece##9070 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  accept Earthshatter Spaulders##9071 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Chain Scraps, 2 Arcanite Bars and 2 Mooncloth.
-  collect Desecrated Spaulders##22361 |q 9071 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  turnin Earthshatter Spaulders##9071 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  accept Earthshatter Boots##9072 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Boots##22365 |q 9072 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  turnin Earthshatter Boots##9072 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  accept Earthshatter Handguards##9073 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Handguards##22364 |q 9073 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  turnin Earthshatter Handguards##9073 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  accept Earthshatter Girdle##9074 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make an Earthshatter Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9074 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  turnin Earthshatter Girdle##9074 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  accept Earthshatter Wristguards##9075 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Chain Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9075 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Shaman
-  talk Rimblat Earthshatter##16134
-  turnin Earthshatter Wristguards##9075 |goto Eastern Plaguelands 71.34,49.36
-step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  accept Paragons of Power: The Augur's Bracers##8056 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Shaman
-  note Bring Maywiki of Zuldazar a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Armsplint##19717 |q 8056 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  turnin Paragons of Power: The Augur's Bracers##8056 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  accept Paragons of Power: The Augur's Belt##8074 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Shaman
-  note Bring Maywiki of Zuldazar a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Girdle##19719 |q 8074 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  turnin Paragons of Power: The Augur's Belt##8074 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  accept Paragons of Power: The Augur's Hauberk##8075 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Shaman
-  note Bring Maywiki of Zuldazar a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Tabard##19722 |q 8075 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Shaman
-  talk Maywiki of Zuldazar##14904
-  turnin Paragons of Power: The Augur's Hauberk##8075 |goto Stranglethorn Vale 15.3,16.02
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

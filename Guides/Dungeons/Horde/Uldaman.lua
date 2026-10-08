@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Uldaman", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "40b8ecd2",
+	rev = "962ff785",
 }, [[
 step
   only Mage
@@ -40,6 +40,7 @@ step
   talk Jangdor Swiftstrider##7854
   turnin Wild Leather Armor##2854 |goto Feralas 74.43,42.91
 step
+  note Someone in this world must know what to do with these gauntlets. Good luck!
   talk Malyfous Darkhammer##10637
   turnin Hot Fiery Death##5103 |goto Winterspring 60.99,38.78
 step
@@ -70,6 +71,7 @@ step
   talk Tabetha##6546
   turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step
+  note Find a clue as to the gems' whereabouts in the depths of Uldaman.
   talk Remains of a Paladin##6912
   turnin Necklace Recovery, Take 2##2284 |goto Uldaman - Dungeon -1,-1
 step
@@ -94,12 +96,14 @@ step
   talk Tabetha##6546
   turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
+  note Find someone who can translate the paladin's journal. The closest location that might have someone is Kargath, in the Badlands.
   talk Jarkal Mossmeld##6868
   turnin Translating the Journal##2318 |goto Badlands 2.42,46.06
 step
   talk Jarkal Mossmeld##6868
   accept Translating the Journal##2338 |goto Badlands 2.42,46.06
 step
+  note Let Jarkal borrow the necklace. In exchange, he will translate the journal for you.
   talk Jarkal Mossmeld##6868
   turnin Translating the Journal##2338 |goto Badlands 2.42,46.06
 step

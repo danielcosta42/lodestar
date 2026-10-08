@@ -4,12 +4,12 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Ravenholdt", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "5f5b9e94",
+	rev = "5b05311e",
 }, [[
 step
   only Rogue
-  talk Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip They give you the item that starts the quest.
-  accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
+  talk Gest##3327 |goto Orgrimmar 42.69,51.48 |tip They give you the item that starts the quest.
+  accept The Manor, Ravenholdt##6681 |goto Orgrimmar 42.69,51.48
 step
   only Rogue
   note Take the Seal of Ravenholdt to Fahrad at Ravenholdt Manor, hidden away in the hills of Hillsbrad.
@@ -24,6 +24,7 @@ step
   accept A Simple Request##8233 |goto Orgrimmar 43.9,54.63
 step
   only Rogue
+  note Speak with Lord Jorach Ravenholdt in Ravenholdt Manor.
   talk Lord Jorach Ravenholdt##6768
   turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88
 step

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Thorium Brotherhood", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "26e60148",
+	rev = "121a1a21",
 }, [[
 step
   click Wanted/Missing/Lost & Found##179827
@@ -106,6 +106,7 @@ step
   talk Colossus Researcher Eazel##15799
   accept Secrets of the Colossus - Regal##8858 |goto Silithus 49.55,37.31
 step
+  note Take the Colossus of Regal's Husk to Overseer Oilfist in Searing Gorge.
   talk Overseer Oilfist##14625
   turnin Secrets of the Colossus - Regal##8858 |goto Searing Gorge 38.12,26.97
 step

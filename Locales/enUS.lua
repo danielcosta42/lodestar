@@ -18,7 +18,6 @@ L.VERB_home    = "Hearth"
 L.VERB_ding    = "Reach level"
 L.VERB_goto    = "Go to"
 L.VERB_get     = "Get"
-L.VERB_run     = "Run"
 
 -- Viewer
 L.NOW          = "NOW"
@@ -112,7 +111,6 @@ L.LIB_EMPTY     = "No guides match."
 L.FLY_TO        = "Fly to"
 L.OUT_OF_ZONE   = "Go to %s"
 L.SET_HEARTH_T  = "Set your Hearthstone"
-L.SET_HEARTH_SHAT = "Bind here in Shattrath - it's Outland's central hub."
 L.SET_HEARTH_HUB = "You'll be around %s for a while - bind at the local innkeeper."
 
 -- Core / slash
@@ -261,7 +259,6 @@ L.REC_STOP       = "recording stopped."
 L.REC_DONE_T     = "Recorded guide"
 L.REC_DONE_H     = "Review/edit this, then Export it."
 L.GUIDE_DONE     = "Guide complete!"
-L.RUN_DONE       = "Run complete"
 
 -- Settings screen
 L.SET_TITLE       = "SETTINGS"

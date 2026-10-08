@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Scholomance", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "b9a1fffa",
+	rev = "f3cb6fc0",
 }, [[
 step
   talk Tinkee Steamboil##10267
@@ -52,10 +52,12 @@ step
   turnin Barov Family Fortune##5343 |goto Western Plaguelands 43.45,83.73
 step
   only Warlock
+  note Purchase Shadowy Potions from Gorzeeki in the Burning Steppes.
   talk Lord Banehollow##9516
   turnin Lord Banehollow##7623 |goto Felwood 35.93,44.42
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak with Lord Grayson Shadowbreaker in Stormwind's Cathedral District.
   talk Lord Grayson Shadowbreaker##928
   turnin Lord Grayson Shadowbreaker##7638 |goto Stormwind City 48.43,50.22
 step
@@ -80,6 +82,7 @@ step
   note Confront Ulathek, then bring The Traitor's Heart to Lord Banehollow in Jaedenar.
   collect The Traitor's Heart##18719 |q 7624 |goto Felwood 40.76,48.42 |tip {dropsfrom}Ulathek
 step
+  note Give Tinkee's Letter to Felnok Steelspring.
   talk Felnok Steelspring##10468
   turnin Felnok Steelspring##4808 |goto Winterspring 61.63,38.61
 step
@@ -91,6 +94,7 @@ step
   turnin Ulathek the Traitor##7624 |goto Felwood 35.93,44.42
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Travel to Ironforge and get High Priest Rohan's Exorcism Censer. You will need to make a donation of 150 gold in order to secure it.
   talk High Priest Rohan##11406
   turnin Emphasis on Sacrifice##7637 |goto Ironforge 24.73,8.16
 step
@@ -129,6 +133,7 @@ step
   turnin Xorothian Stardust##7625 |goto Burning Steppes 12.44,31.63
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Return the Exorcism Censer to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
   talk Lord Grayson Shadowbreaker##928
   turnin To Show Due Judgment##7639 |goto Stormwind City 48.43,50.22
 step
@@ -157,6 +162,7 @@ step
   note Use the Exorcism Censer to drive out the spirits that torment Terrordale. When you have slain 25 Terrordale Spirits, return to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
   kill Terrordale Spirit##14564 |q 7640 |goto Eastern Plaguelands 11.36,20.78
 step
+  note Bring Felnok's Package to Tinkee Steamboil in the Burning Steppes.
   talk Tinkee Steamboil##10267
   turnin Return to Tinkee##4810 |goto Burning Steppes 65.24,24
 step
@@ -187,10 +193,12 @@ step
   talk Tinkee Steamboil##10267
   turnin Egg Freezing##4734 |goto Burning Steppes 65.24,24
 step
+  note Travel to Light's Hope in Eastern Plaguelands and seek out Leonid Barthalomew the Revered. Show him the Keepsake of Remembrance and tell him all that you have discovered.
   talk Leonid Barthalomew the Revered##11036
   turnin The Dying, Ras Frostwhisper##5462 |goto Eastern Plaguelands 71.89,48.29
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak with Grimand Elmore in Stormwind's Dwarven District.
   talk Grimand Elmore##1416
   turnin The Work of Grimand Elmore##7641 |goto Stormwind City 59.73,33.78
 step
@@ -214,6 +222,7 @@ step
   talk Tinkee Steamboil##10267
   turnin Egg Collection##4735 |goto Burning Steppes 65.24,24
 step
+  note Travel to Stratholme and find Menethil's Gift. Place the Keepsake of Remembrance upon the unholy ground.
   turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1
 step
   only not NightElf not Gnome not Skyborne Paladin
@@ -234,9 +243,11 @@ step
   note Acquire special horse feed used for feeding a spirit horse. Merideth Carlson in Southshore apparently is the source for such food.
   collect Manna-Enriched Horse Feed##18775 |q 7643 |goto Stormwind City 48.43,50.22
 step
+  note Bring the Frozen Eggs to Leonid Barthalomew in the Eastern Plaguelands.
   talk Leonid Barthalomew the Revered##11036
   turnin Leonid Barthalomew##5522 |goto Eastern Plaguelands 71.89,48.29
 step
+  note Take the Soulbound Keepsake to Leonid Barthalomew in Eastern Plaguelands.
   talk Leonid Barthalomew the Revered##11036
   turnin Menethil's Gift##5464 |goto Eastern Plaguelands 71.89,48.29
 step
@@ -254,13 +265,16 @@ step
   talk Ancient Equine Spirit##14566
   accept Blessed Arcanite Barding##7644 |goto Dire Maul - Dungeon -1,-1
 step
+  note Return to Magistrate Marduke in Caer Darrow. Show him the Soulbound Keepsake.
   talk Magistrate Marduke##11286
   turnin Soulbound Keepsake##5465 |goto Western Plaguelands 70.57,74.11
 step
+  note Bring the Frozen Eggs to Betina Bigglezink.
   talk Betina Bigglezink##11035
   turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Return with the Blessed Arcanite Barding to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
   talk Lord Grayson Shadowbreaker##928
   turnin Blessed Arcanite Barding##7644 |goto Stormwind City 48.43,50.22
 step

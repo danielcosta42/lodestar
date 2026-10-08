@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackrock Depths", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "7e04ea34",
+	rev = "d63fd82e",
 }, [[
 step
   talk Kalaran Windblade##8479
@@ -66,12 +66,14 @@ step
   talk Kalaran Windblade##8479
   turnin Divine Retribution##3441 |goto Searing Gorge 39.06,38.99
 step
+  note Speak with Franclorn Forgewright if you are interested in obtaining a key to the city major.
   talk Franclorn Forgewright##8888
   turnin Dark Iron Legacy##3801 |goto Burning Steppes 28.96,28.93
 step
   talk Jalinda Sprig##9561
   turnin Overmaster Pyron##4262 |goto Burning Steppes 85.41,70.06
 step
+  note Speak with Yuka Screwspigot in the Burning Steppes.
   talk Yuka Screwspigot##9544
   turnin Yuka Screwspigot##4324 |goto Burning Steppes 66.06,21.95
 step
@@ -83,6 +85,7 @@ step
 step
   turnin The Spectral Chalice##4083 |goto Blackrock Depths - Dungeon -1,-1
 step
+  note Speak with Ragnar Thunderbrew.
   talk Ragnar Thunderbrew##1267
   turnin Ragnar Thunderbrew##4128 |goto Dun Morogh 46.83,52.36
 step
@@ -160,6 +163,7 @@ step
   talk Kalaran Windblade##8479
   turnin Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
 step
+  note Travel to Blackrock Depths and find Kharan Mighthammer.
   talk Kharan Mighthammer##9021
   turnin Kharan Mighthammer##4341 |goto Blackrock Depths - Dungeon -1,-1
 step
@@ -194,6 +198,7 @@ step
   talk Kalaran Windblade##8479
   turnin The Torch of Retribution##3453 |goto Searing Gorge 39.06,38.99
 step
+  note Return to Ironforge and deliver the bad news to King Magni Bronzebeard.
   talk King Magni Bronzebeard##2784
   turnin The Bearer of Bad News##4361 |goto Ironforge 39.09,56.2
 step
@@ -206,6 +211,7 @@ step
   note Return to Blackrock Depths and rescue Princess Moira Bronzebeard from the evil clutches of Emperor Dagran Thaurissan.
   kill Emperor Dagran Thaurissan##9019 |q 4362 |goto Blackrock Depths - Dungeon -1,-1 |elite
 step
+  note Take the Torch of Retribution.
   turnin The Torch of Retribution##3454 |goto Searing Gorge 39.06,39.07
 step
   talk Princess Moira Bronzebeard##8929
@@ -217,9 +223,11 @@ step
   talk Princess Moira Bronzebeard##8929
   accept The Princess's Surprise##4363 |goto Blackrock Depths - Dungeon -1,-1
 step
+  note Speak with Squire Maltrake.
   talk Squire Maltrake##8509
   turnin Squire Maltrake##3462 |goto Searing Gorge 39.17,39
 step
+  note Return to Ironforge and speak with King Magni Bronzebeard.
   talk King Magni Bronzebeard##2784
   turnin The Princess's Surprise##4363 |goto Ironforge 39.09,56.2
 step
@@ -235,6 +243,7 @@ step
   click Hoard of the Black Dragonflight##149502
   accept Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
+  note Open the chest.
   turnin Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
   only not completed(4023) not haveq(4023)

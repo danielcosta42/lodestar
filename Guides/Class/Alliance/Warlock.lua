@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warlock", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "b644386c",
+	rev = "6c463940",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -21,12 +21,14 @@ step
   accept Tainted Memorandum##3115 |goto Dun Morogh 29.93,71.2
 step
   only Gnome Warlock
+  note Read the Tainted Memorandum and speak to Alamar Grimm inside Anvilmar above Coldridge Valley.
   talk Alamar Grimm##460
   turnin Tainted Memorandum##3115 |goto Dun Morogh 28.65,66.14
 step
   talk Deputy Willem##823
   accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
 step
+  note Speak with Marshal McBride.
   talk Marshal McBride##197
   turnin A Threat Within##783 |goto Elwynn Forest 48.92,41.61
 step
@@ -44,6 +46,7 @@ step
   accept Tainted Letter##3105 |goto Elwynn Forest 48.92,41.61
 step
   only Human Warlock
+  note Read the Tainted Letter and speak to Drusilla La Salle next to Northshire Abbey.
   talk Drusilla La Salle##459
   turnin Tainted Letter##3105 |goto Elwynn Forest 49.87,42.65
 step
@@ -76,6 +79,7 @@ step
   accept Gakin's Summons##1685 |goto Elwynn Forest 44.49,66.27
 step
   only Human Warlock
+  note Report to Gakin the Darkbinder in the Mage Quarter of Stormwind.
   talk Gakin the Darkbinder##6122
   turnin Gakin's Summons##1685 |goto Stormwind City 39.22,85.23
 step
@@ -84,6 +88,7 @@ step
   accept The Slaughtered Lamb##1715 |goto Ironforge 47.63,9.26
 step
   only Warlock not completed(1688) not haveq(1688)
+  note Report to Gakin the Darkbinder in the Mage Quarter of Stormwind.
   talk Gakin the Darkbinder##6122
   turnin The Slaughtered Lamb##1715 |goto Stormwind City 39.22,85.23
 step
@@ -116,6 +121,7 @@ step
   accept Gakin's Summons##1717 |goto Ironforge 47.63,9.26
 step
   only Warlock not completed(1716) not haveq(1716)
+  note Report to Gakin the Darkbinder in the Mage Quarter of Stormwind.
   talk Gakin the Darkbinder##6122
   turnin Gakin's Summons##1717 |goto Stormwind City 39.22,85.23
 step
@@ -124,6 +130,7 @@ step
   accept Devourer of Souls##1716 |goto Stormwind City 39.22,85.23
 step
   only Warlock
+  note Speak with Takar the Seer in the Barrens.
   talk Takar the Seer##6244
   turnin Devourer of Souls##1716 |goto The Barrens 49.31,57.1
 step
@@ -199,6 +206,7 @@ step
   talk Zardeth of the Black Claw##1435
   accept A Noble Brew##336 |goto Stormwind City 40.14,85.31
 step
+  note Take the Black Claw Stout to Lord Wishock in the Hall of Petitioners.
   talk Lord Baurles K. Wishock##1439
   turnin A Noble Brew##336 |goto Stormwind City 77.88,48.95
 step
@@ -207,6 +215,7 @@ step
   accept You Have Served Us Well##397 |goto Stormwind City 40.14,85.31
 step
   only not Dwarf not NightElf not Skyborne Warlock
+  note Speak with Zggi, the servant of Zardeth the Blackclaw, to claim your reward.
   talk Zggi##1733
   turnin You Have Served Us Well##397 |goto Stormwind City 40.21,85.31
 step
@@ -215,6 +224,7 @@ step
   accept Seeking Strahad##1798 |goto Ironforge 47.63,9.26
 step
   only Warlock
+  note Speak with Strahad Farsan in the Barrens.
   talk Strahad Farsan##6251
   turnin Seeking Strahad##1798 |goto The Barrens 62.63,35.5
 step
@@ -223,6 +233,7 @@ step
   accept Tome of the Cabal##1758 |goto The Barrens 62.63,35.5
 step
   only Warlock
+  note Speak with Krom Stoutarm in Ironforge.
   talk Krom Stoutarm##6294
   turnin Tome of the Cabal##1758 |goto Ironforge 74.19,9.39
 step
@@ -267,6 +278,7 @@ step
   accept In Search of Menara Voidrender##4736 |goto Ironforge 50.35,5.66
 step
   only not Human not NightElf not Skyborne Warlock not completed(4737) not completed(4738) not completed(4739) not haveq(4737) not haveq(4738) not haveq(4739)
+  note Speak to Menara Voidrender in the Barrens.
   talk Menara Voidrender##6266
   turnin In Search of Menara Voidrender##4736 |goto The Barrens 62.51,35.45
 step
@@ -275,6 +287,7 @@ step
   accept In Search of Menara Voidrender##4738 |goto Stormwind City 39.24,84.96
 step
   only not Dwarf not NightElf not Gnome Warlock not completed(4736) not completed(4737) not completed(4739) not haveq(4736) not haveq(4737) not haveq(4739)
+  note Speak with Menara Voidrender in the Barrens.
   talk Menara Voidrender##6266
   turnin In Search of Menara Voidrender##4738 |goto The Barrens 62.51,35.45
 step
@@ -307,6 +320,7 @@ step
   accept Components for the Enchanted Gold Bloodrobe##4782 |goto Stranglethorn Vale 28.71,76.89
 step
   only Warlock
+  note Return to Menara Voidrender in the Barrens.
   talk Menara Voidrender##6266
   turnin Components for the Enchanted Gold Bloodrobe##4782 |goto The Barrens 62.51,35.45
 step
@@ -315,6 +329,7 @@ step
   accept Knowledge of the Orb of Orahil##4965 |goto Ironforge 50.35,5.66
 step
   only not Human not NightElf not Skyborne Warlock not completed(4967) not completed(4968) not completed(4969) not haveq(4967) not haveq(4968) not haveq(4969)
+  note Speak to Menara Voidrender in the Barrens.
   talk Menara Voidrender##6266
   turnin Knowledge of the Orb of Orahil##4965 |goto The Barrens 62.51,35.45
 step
@@ -323,6 +338,7 @@ step
   accept Knowledge of the Orb of Orahil##4968 |goto Stormwind City 39.24,84.96
 step
   only not Dwarf not NightElf not Gnome Warlock not completed(4965) not completed(4967) not completed(4969) not haveq(4965) not haveq(4967) not haveq(4969)
+  note Speak to Menara Voidrender in the Barrens.
   talk Menara Voidrender##6266
   turnin Knowledge of the Orb of Orahil##4968 |goto The Barrens 62.51,35.45
 step
@@ -411,6 +427,7 @@ step
   accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
 step
   only Warlock not completed(4963) not haveq(4963)
+  note Return the Cleansed Infernal Orb to Menara Voidrender in the Barrens.
   talk Menara Voidrender##6266
   turnin Returning the Cleansed Orb##4976 |goto The Barrens 62.51,35.45
 step
@@ -419,6 +436,7 @@ step
   accept Summon Felsteed##4487 |goto Ironforge 50.35,5.66
 step
   only not Human not NightElf not Skyborne Warlock not completed(3631) not completed(4488) not completed(4489) not haveq(3631) not haveq(4488) not haveq(4489)
+  note Speak to Strahad Farsan in Ratchet.
   talk Strahad Farsan##6251
   turnin Summon Felsteed##4487 |goto The Barrens 62.63,35.5
 step
@@ -427,6 +445,7 @@ step
   accept Summon Felsteed##4488 |goto Stormwind City 39.24,84.96
 step
   only not Dwarf not NightElf not Gnome Warlock not completed(3631) not completed(4487) not completed(4489) not haveq(3631) not haveq(4487) not haveq(4489)
+  note Speak to Strahad Farsan in Ratchet.
   talk Strahad Farsan##6251
   turnin Summon Felsteed##4488 |goto The Barrens 62.63,35.5
 step
@@ -435,6 +454,7 @@ step
   accept Summon Felsteed##4490 |goto The Barrens 62.63,35.5
 step
   only Warlock
+  note Speak to Strahad Farsan in Ratchet to learn the ability to summon a Felsteed.
   talk Strahad Farsan##6251
   turnin Summon Felsteed##4490 |goto The Barrens 62.63,35.5
 step
@@ -443,6 +463,7 @@ step
   accept What Niby Commands##7601 |goto Felwood 41.38,44.85
 step
   only Warlock
+  note Speak with Impsy in Felwood.
   talk Impsy##14470
   turnin What Niby Commands##7601 |goto Felwood 41.36,45.02
 step
@@ -511,6 +532,7 @@ step
   accept Harnessing Shadows##7502 |goto Dire Maul - Dungeon -1,-1
 step
   only Warlock
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin Harnessing Shadows##7502 |goto Dire Maul - Dungeon -1,-1
 step
@@ -529,6 +551,7 @@ step
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
+  note Bring the Sealed Blood Container to Mux Manascrambler inside Gadgetzan in Tanaris.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
@@ -571,6 +594,7 @@ step
   talk Mux Manascrambler##16014
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
+  note Bring the Extra-Dimensional Ghost Revealer to Deliana in Ironforge.
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
@@ -589,6 +613,7 @@ step
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -604,6 +629,7 @@ step
   talk Ysida Harmon##16031
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -619,6 +645,7 @@ step
   talk Anthion Harmon##16016
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -664,6 +691,7 @@ step
   talk Deliana##16013
   accept Bodley's Unfortunate Fate##8960 |goto Ironforge 43.53,52.64
 step
+  note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -765,6 +793,7 @@ step
   talk Bodley##16033
   accept Back to the Beginning##8997 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  note Speak with Deliana at The High Seat in Ironforge.
   talk Deliana##16013
   turnin Back to the Beginning##8997 |goto Ironforge 43.53,52.64
 step
@@ -779,17 +808,6 @@ step
   only Warlock
   talk Deliana##16013
   turnin Saving the Best for Last##9005 |goto Ironforge 43.53,52.64
-step
-  only Warlock
-  talk Zanza the Restless##15042
-  accept Hoodoo Hex##8190 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only Warlock
-  collect Primal Hakkari Idol##22637 |q 8190 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
-step
-  only Warlock
-  talk Zanza the Restless##15042
-  turnin Hoodoo Hex##8190 |goto Zul'Gurub - Dungeon -1,-1
 step
   only Warlock
   talk Daio the Decrepit##14463
@@ -833,6 +851,7 @@ step
   accept Lord Banehollow##7623 |goto Burning Steppes 12.44,31.63
 step
   only Warlock
+  note Purchase Shadowy Potions from Gorzeeki in the Burning Steppes.
   talk Lord Banehollow##9516
   turnin Lord Banehollow##7623 |goto Felwood 35.93,44.42
 step
@@ -872,164 +891,12 @@ step
   talk Gorzeeki Wildeyes##14437
   turnin Imp Delivery##7629 |goto Burning Steppes 12.44,31.63
 step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Robe##9103 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Robe if you bring him the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Robe##22351 |q 9103 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Robe##9103 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Leggings##9104 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Leggings if you bring him the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Leggings##22366 |q 9104 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Leggings##9104 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Circlet##9105 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Circlet if you bring him the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  collect Desecrated Circlet##22367 |q 9105 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Circlet##9105 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Shoulderpads##9106 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Shoulderpads if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9106 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Shoulderpads##9106 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Sandals##9107 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Sandals if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9107 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Sandals##9107 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Gloves##9108 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Gloves if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  collect Desecrated Gloves##22371 |q 9108 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Gloves##9108 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Belt##9109 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Belt if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9109 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Belt##9109 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  accept Plagueheart Bindings##9110 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Bindings if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9110 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Warlock
-  talk Mataus the Wrathcaster##16133
-  turnin Plagueheart Bindings##9110 |goto Eastern Plaguelands 71.58,48.65
-step
-  only Warlock
-  talk Windcaller Yessendra##15498
-  accept Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
-step
-  only Warlock
-  note Bring 1 Qiraji Ceremonial Ring, 2 Jasper Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8702 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
-  only Warlock
-  talk Windcaller Yessendra##15498
-  turnin Ring of Unspoken Names##8702 |goto Silithus 52.05,38.16
-step
-  only Warlock
-  talk Warden Haro##15499
-  accept Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
-step
-  only Warlock
-  note Bring 1 Qiraji Ornate Hilt, 2 Onyx Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8710 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Warlock
-  talk Warden Haro##15499
-  turnin Kris of Unspoken Names##8710 |goto Silithus 51.14,38.94
-step
-  only Warlock
-  talk Keyl Swiftclaw##15500
-  accept Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
-step
-  only Warlock
-  note Bring 1 Qiraji Regal Drape, 2 Amber Idols, 5 Ivory Scarabs and 5 Bronze Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8694 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
-  only Warlock
-  talk Keyl Swiftclaw##15500
-  turnin Shroud of Unspoken Names##8694 |goto Silithus 51.76,39.54
-step
   only Warlock
   talk Spackle Thornberry##5520
   accept Mor'zul Bloodbringer##7562 |goto Stormwind City 39.53,84.53
 step
   only Warlock
+  note Speak with Mor'zul Bloodbringer in the Burning Steppes.
   talk Mor'zul Bloodbringer##14436
   turnin Mor'zul Bloodbringer##7562 |goto Burning Steppes 12.69,31.64
 step
@@ -1050,6 +917,7 @@ step
   accept Wildeyes##7564 |goto Burning Steppes 12.69,31.64
 step
   only Warlock
+  note Bring the Case of Blood to Gorzeeki Wildeyes in the Burning Steppes.
   talk Gorzeeki Wildeyes##14437
   turnin Wildeyes##7564 |goto Burning Steppes 12.44,31.63
 step
@@ -1112,149 +980,4 @@ step
   only Warlock
   talk Dreadsteed Spirit##14504
   turnin Dreadsteed of Xoroth##7631 |goto Dire Maul - Dungeon -1,-1
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Demoniac's Wraps##8059 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Stanchion##19718 |q 8059 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Demoniac's Wraps##8059 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Demoniac's Mantle##8076 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Sash##19720 |q 8076 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Demoniac's Mantle##8076 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Demoniac's Robes##8077 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Kossack##19723 |q 8077 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Demoniac's Robes##8077 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  accept Kezan's Taint##8106 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  turnin Kezan's Taint##8106 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  accept Kezan's Taint##8107 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  collect Kezan's Taint##19602 |q 8107 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  turnin Kezan's Taint##8107 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  accept Kezan's Taint##8108 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  collect Kezan's Taint##19603 |q 8108 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  turnin Kezan's Taint##8108 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  accept Kezan's Unstoppable Taint##8109 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  collect Kezan's Taint##19604 |q 8109 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Warlock
-  talk Al'tabim the All-Seeing##14903
-  turnin Kezan's Unstoppable Taint##8109 |goto Stranglethorn Vale 15.34,16.12
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  talk Kandrostrasz##15503
-  accept Doomcaller's Footwraps##8660 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of Night, 5 Clay Scarabs and 5 Ivory Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Dominance##20932 |q 8660 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Warlock
-  talk Kandrostrasz##15503
-  turnin Doomcaller's Footwraps##8660 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  talk Vethsera##15504
-  accept Doomcaller's Robes##8661 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  note Bring the the Husk of the Old God, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Husk of the Old God##20933 |q 8661 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
-step
-  only Warlock
-  talk Vethsera##15504
-  turnin Doomcaller's Robes##8661 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  talk Andorgos##15502
-  accept Doomcaller's Circlet##8662 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  note Bring Vek'nilash's Circlet, 2 Idols of Death, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'nilash's Circlet##20926 |q 8662 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash
-step
-  only Warlock
-  talk Andorgos##15502
-  turnin Doomcaller's Circlet##8662 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  talk Kandrostrasz##15503
-  accept Doomcaller's Trousers##8663 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  note Bring the Skin of the Great Sandworm, 2 Idols of Rebirth, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Skin of the Great Sandworm##20931 |q 8663 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
-step
-  only Warlock
-  talk Kandrostrasz##15503
-  turnin Doomcaller's Trousers##8663 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  talk Andorgos##15502
-  accept Doomcaller's Mantle##8664 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warlock
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Dominance##20932 |q 8664 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Warlock
-  talk Andorgos##15502
-  turnin Doomcaller's Mantle##8664 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

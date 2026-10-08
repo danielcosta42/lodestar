@@ -17,7 +17,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from gen_special import RAIDS  # noqa: E402
+from gen_special import troca_de_raide, walk_chain  # noqa: E402
 from router import CLASS_BIT, load_data, npc_amigo  # noqa: E402
 
 RAIZ = os.path.join(os.path.dirname(__file__), "..", "Guides")
@@ -110,16 +110,27 @@ def main():
                     for v, qid, _ in goals:
                         if v == "accept":
                             sinton.setdefault(qid, chave)
+    # quem alguma guia (de qualquer categoria) manda aceitar
+    dadas = set()
+    for f in glob.glob(os.path.join(RAIZ, "**", "*.lua"), recursive=True):
+        dadas |= {int(x) for x in re.findall(r"accept [^\n]*?##(\d+)", open(f, encoding="utf-8").read())}
     for cat, chave, ps in guias:
         fac = "Horde" if "/Horde/" in chave else "Alliance"
         nome = chave.rsplit("/", 1)[-1]
-        for _, goals in ps:
+        aceitas = {qid for _, goals in ps for v, qid, _ in goals if v == "accept"}
+        for only, goals in ps:
+            # portão em quest que guia nenhum dá: o passo nunca aparece
+            for ids in re.findall(r"(?<!not )completed\(([\d,]+)\)", only or ""):
+                if not any(int(x) in dadas for x in ids.split(",")):
+                    probs.append("%s: portão em quest que nenhum guia dá: %s" % (chave, ids))
             for v, qid, linha in goals:
                 q = Q.get(str(qid)) or {}
-                if v == "accept" and (q.get("specialFlags") or 0) & 1:
+                # repetível só se nenhuma quest não repetível do guia depende dela
+                if v == "accept" and (q.get("specialFlags") or 0) & 1 and not any(
+                        qid in walk_chain(Q, [x]) for x in aceitas
+                        if x != qid and not (Q.get(str(x), {}).get("specialFlags") or 0) & 1):
                     probs.append("%s: repetível %d %s" % (chave, qid, q.get("name")))
-                if v == "accept" and cat == "Dungeons" and nome in RAIDS and q.get("classes") \
-                        and not q.get("startItems"):
+                if v == "accept" and cat == "Dungeons" and q and troca_de_raide(Q, nome, qid):
                     probs.append("%s: troca de classe no raid %d %s" % (chave, qid, q.get("name")))
                 if v == "accept" and cat == "Dungeons" and qid in sinton:
                     probs.append("%s: %d também em %s" % (chave, qid, sinton[qid]))

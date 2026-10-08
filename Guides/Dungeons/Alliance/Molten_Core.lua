@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Molten Core", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "9c5dcb19",
+	rev = "2390b097",
 }, [[
 step
   talk Duke Hydraxis##13278
@@ -33,9 +33,11 @@ step
   turnin Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
 step
   only Hunter
+  note Find the owner of the Ancient Petrified Leaf. Good luck, <Name>; It's a big world.
   talk Vartrus the Ancient##14524
   turnin The Ancient Leaf##7632 |goto Felwood 47.78,24.08
 step
+  note Examine the Vessel of Rebirth and return it to Highlord Demitrian.
   talk Highlord Demitrian##14347
   turnin Examine the Vessel##7785 |goto Silithus 21.71,8.57
 step
@@ -69,6 +71,7 @@ step
   talk Duke Hydraxis##13278
   accept Agent of Hydraxis##6823 |goto Azshara 79.28,73.7
 step
+  note Earn an Honored faction with the Hydraxian Waterlords, then talk to Duke Hydraxis in Azshara.
   talk Duke Hydraxis##13278
   turnin Agent of Hydraxis##6823 |goto Azshara 79.28,73.7
 step

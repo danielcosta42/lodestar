@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Paladin", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "8953c6bd",
+	rev = "bfa60266",
 }, [[
 step
   only Undead Paladin
@@ -12,6 +12,7 @@ step
   accept A Difficult Path##98601 |goto Tirisfal Glades 30.84,66.2
 step
   only Undead Paladin
+  note Read the Consecrated Scroll and speak to Aramis Hammerhand in the church in Deathknell.
   talk Aramis Hammerhand##244808
   turnin A Difficult Path##98601 |goto Tirisfal Glades 31.09,66.32
 step
@@ -20,6 +21,7 @@ step
   accept Rediscovering the Light##90902 |goto Tirisfal Glades 31.09,66.32
 step
   only Undead Paladin
+  note Heal 5 Injured Deathguard with your Holy Light ability.
   talk Aramis Hammerhand##244808
   turnin Rediscovering the Light##90902 |goto Tirisfal Glades 31.09,66.32
 step
@@ -28,6 +30,7 @@ step
   accept Coming to Terms##91208 |goto Tirisfal Glades 31.09,66.32
 step
   only Undead Paladin
+  note Find the Frightened Paladin in Deathknell.
   talk Aramis Hammerhand##244808
   turnin Coming to Terms##91208 |goto Tirisfal Glades 31.09,66.32
 step
@@ -36,6 +39,7 @@ step
   accept Continue Your Training##91209 |goto Tirisfal Glades 31.09,66.32
 step
   only Undead Paladin
+  note Follow the road east out of Deathknell to find the town of Brill. Report to Shari Stilwell to continue your training.
   talk Shari Stilwell##246152
   turnin Continue Your Training##91209 |goto Tirisfal Glades 60.25,52.63
 step
@@ -68,6 +72,7 @@ step
   accept Touring the Grounds##91294 |goto Tirisfal Glades 21.85,45.31
 step
   only Undead Paladin
+  note Speak to the residents of Bandarion Keep.
   talk Danitha Morr##246378
   turnin Touring the Grounds##91294 |goto Tirisfal Glades 22.05,44.7
 step
@@ -76,6 +81,7 @@ step
   accept A Second Home##91282 |goto Tirisfal Glades 60.25,52.63
 step
   only Undead Paladin
+  note Find the fortress of Bandarion Keep and report to Breton Samuels there.
   talk Breton Samuels##246349
   turnin A Second Home##91282 |goto Tirisfal Glades 21.85,45.31
 step
@@ -96,6 +102,7 @@ step
   accept A Token of Good Faith##95803 |goto Tirisfal Glades 22.05,44.7
 step
   only Undead Paladin
+  note Bring the head of Rudolph Gelhardt to Sylvanas Windrunner in the Undercity.
   talk Lady Sylvanas Windrunner##10181
   turnin A Token of Good Faith##95803 |goto Undercity 58.05,91.79
 step
@@ -104,6 +111,7 @@ step
   accept A Lesson in Divinity##94438 |goto Tirisfal Glades 21.95,44.57
 step
   only Undead Paladin
+  note Take the Symbol of Life and use it to resurrect Deathguard Falgan at Venomweb Vale.
   talk Deathguard Falgan##257663
   turnin A Lesson in Divinity##94438 |goto Tirisfal Glades 86.67,47.74
 step
@@ -112,6 +120,7 @@ step
   accept A Lesson in Divinity##94441 |goto Tirisfal Glades 21.95,44.57
 step
   only Undead Paladin
+  note Speak with Danitha Morr in the keep at Bandarion Keep.
   talk Danitha Morr##246378
   turnin A Lesson in Divinity##94441 |goto Tirisfal Glades 22.05,44.7
 step
@@ -120,6 +129,7 @@ step
   accept A Lesson in Divinity##94427 |goto Tirisfal Glades 22.05,44.7
 step
   only Undead Paladin
+  note Speak to Tanis Alderwood in the Undercity.
   talk Tanis Alderwood##257648
   turnin A Lesson in Divinity##94427 |goto Undercity 65.62,37.94
 step
@@ -128,6 +138,7 @@ step
   accept A Lesson in Divinity##94436 |goto Tirisfal Glades 22.05,44.7
 step
   only Undead Paladin
+  note Speak with Deathguard Billmuth at Bandarion Keep.
   talk Deathguard Billmuth##257655
   turnin A Lesson in Divinity##94436 |goto Tirisfal Glades 21.95,44.57
 step
@@ -160,6 +171,7 @@ step
   accept A Lesson in Divinity##94435 |goto Undercity 65.62,37.94
 step
   only Undead Paladin
+  note Return to Danitha Morr at Bandarion Keep.
   talk Danitha Morr##246378
   turnin A Lesson in Divinity##94435 |goto Tirisfal Glades 22.05,44.7
 step
@@ -180,6 +192,7 @@ step
   accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.8,28.6
 step
   only Undead Paladin
+  note Accompany Lumina Windsinger and help her escape Fenris Keep.
   talk Lumina Windsinger##259620
   turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.2,40.8
 step
@@ -188,6 +201,7 @@ step
   accept A Curious Pair##91859 |goto Silverpine Forest 43.4,41
 step
   only Undead Paladin
+  note Speak with Deathguard Baldren about the mysterious Earthen Ring travelers who recently passed through The Sepulcher.
   talk Deathguard Baldren##259611
   turnin A Curious Pair##91859 |goto Silverpine Forest 44.43,40.87
 step
@@ -196,6 +210,7 @@ step
   accept Diplomatic Incident##91858 |goto Tirisfal Glades 22.05,44.7
 step
   only Undead Paladin
+  note Travel to The Sepulcher in Silverpine Forest and speak with Trevan Rol about the missing Earthen Ring travelers.
   talk Trevan Rol##248840
   turnin Diplomatic Incident##91858 |goto Silverpine Forest 43.4,41
 step
@@ -204,6 +219,7 @@ step
   accept The Debt##95034 |goto Silverpine Forest 43.2,40.8
 step
   only Undead Paladin
+  note Speak with Lumina Windsinger in the Sepulcher.
   talk Lumina Windsinger##259620
   turnin The Debt##95034 |goto Silverpine Forest 43.2,40.8
 step
@@ -224,6 +240,7 @@ step
   accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
 step
   only Undead Paladin
+  note Watch as Ott forges your blade.
   talk Ott##3539
   turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
 step
@@ -232,6 +249,7 @@ step
   accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
 step
   only Undead Paladin
+  note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
   talk Trevan Rol##248840
   turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.4,41
 step
@@ -252,6 +270,7 @@ step
   accept An Underrated Talent##95111 |goto Silverpine Forest 43.4,41
 step
   only Undead Paladin
+  note Speak with Ott and ask him to forge your blade.
   talk Ott##3539
   turnin An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.18
 step
@@ -260,6 +279,7 @@ step
   accept Old Fire-Eye##95140 |goto Silverpine Forest 43.2,40.8
 step
   only Undead Paladin
+  note Use the Moonsilver Blade to destroy Old-Fire Eye in Silverpine Forest.
   talk Lumina Windsinger##259620
   turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.2,40.8
 step
@@ -268,6 +288,7 @@ step
   accept The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
   only Paladin
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
@@ -372,6 +393,7 @@ step
   accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
 step
   only not Paladin
+  note Take the Sealed Venom Container to Mux Manascrambler in Gadgetzan.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8923 |goto Tanaris 52.47,27.23
 step
@@ -428,6 +450,7 @@ step
   accept Return to Mokvar##8978 |goto Tanaris 52.47,27.23
 step
   only not Paladin
+  note Return to Mokvar in Orgrimmar with the Extra-Dimensional Ghost Revealer.
   talk Mokvar##16012
   turnin Return to Mokvar##8978 |goto Orgrimmar 34.95,38.29
 step
@@ -532,6 +555,7 @@ step
   accept In Search of Anthion##8930 |goto Orgrimmar 34.95,38.29
 step
   only not Paladin
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8930 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -552,6 +576,7 @@ step
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
   only not Paladin
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -572,6 +597,7 @@ step
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
   only not Paladin
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -642,6 +668,7 @@ step
   talk Rutgar Glyphshaper##15170
   accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment wants you to deliver the Glyphed Crystal Prism to Geologist Larksbane at the Cenarion Hold in Silithus.
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
@@ -654,165 +681,4 @@ step
 step
   talk Geologist Larksbane##15183
   turnin The Calling##8315 |goto Silithus 49.67,37.46
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Tunic##9043 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Tunic if you bring him the following: 1 Desecrated Tunic, 25 Wartorn Plate Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Tunic##22350 |q 9043 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Tunic##9043 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Legguards##9044 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Legguards if you bring him the following: 1 Desecrated Legguards, 20 Wartorn Plate Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Legguards##22359 |q 9044 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Legguards##9044 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Headpiece##9045 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Headpiece if you bring him the following: 1 Desecrated Headpiece, 15 Wartorn Plate Scraps, 5 Arcanite Bars and 2 Cured Rugged Hides.
-  collect Desecrated Headpiece##22360 |q 9045 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Headpiece##9045 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Spaulders##9046 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Spaulders##22361 |q 9046 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Spaulders##9046 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Boots##9047 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Boots##22365 |q 9047 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Boots##9047 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Handguards##9048 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Handguards##22364 |q 9048 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Handguards##9048 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Girdle##9049 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9049 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Girdle##9049 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Wristguards##9050 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9050 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Wristguards##9050 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Freethinker's Armguards##8053 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  note Bring Jin'rokh the Breaker Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Bindings##19716 |q 8053 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Freethinker's Armguards##8053 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Freethinker's Belt##8054 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  note Bring Jin'rokh the Breaker a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Shawl##19721 |q 8054 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Freethinker's Belt##8054 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Freethinker's Breastplate##8055 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  note Bring Jin'rokh the Breaker a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Tabard##19722 |q 8055 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Freethinker's Breastplate##8055 |goto Stranglethorn Vale 15.31,14.43
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

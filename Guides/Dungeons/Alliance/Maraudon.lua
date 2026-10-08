@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Maraudon", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "e4fdb3aa",
+	rev = "dabee2a2",
 }, [[
 step
   talk Archmage Tervosh##4967
@@ -56,6 +56,7 @@ step
   talk Keeper Marandis##13698
   turnin Corruption of Earth and Seed##7065 |goto Desolace 63.83,10.67
 step
+  note Seek out Remulos in Moonglade and give him the Seed of Life.
   talk Keeper Remulos##11832
   turnin Seed of Life##7066 |goto Moonglade 36.18,41.79
 ]])

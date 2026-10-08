@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Darkmoon Faire", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "d08395db",
+	rev = "b41b70b5",
 }, [[
 step
   talk Gelvas Grimegate##14828
@@ -82,21 +82,25 @@ step
   talk Sayge##14822 |goto Elwynn Forest 42.13,69 |tip They give you the item that starts the quest.
   accept Your Fortune Awaits You...##7937 |goto Elwynn Forest 42.13,69
 step
+  note Travel to the Eastvale Logging Camp in Elwynn Forest and seek out your fortune.
   turnin Your Fortune Awaits You...##7937 |goto Elwynn Forest 84.85,64.41
 step
   talk Sayge##14822 |goto Elwynn Forest 42.13,69 |tip They give you the item that starts the quest.
   accept Your Fortune Awaits You...##7938 |goto Elwynn Forest 42.13,69
 step
+  note Travel to the Deadmines in Westfall and seek out your fortune.
   turnin Your Fortune Awaits You...##7938 |goto The Deadmines - Dungeon -1,-1
 step
   talk Sayge##14822 |goto Elwynn Forest 42.13,69 |tip They give you the item that starts the quest.
   accept Your Fortune Awaits You...##7944 |goto Elwynn Forest 42.13,69
 step
+  note Travel to the Wailing Caverns in the Barrens and seek out your fortune.
   turnin Your Fortune Awaits You...##7944 |goto Wailing Caverns - Dungeon -1,-1
 step
   talk Sayge##14822 |goto Elwynn Forest 42.13,69 |tip They give you the item that starts the quest.
   accept Your Fortune Awaits You...##7945 |goto Elwynn Forest 42.13,69
 step
+  note Travel to Palemane Rock in Mulgore and seek out your fortune.
   turnin Your Fortune Awaits You...##7945 |goto Mulgore 36.23,64.55
 step
   talk Yebb Neblegear##14829

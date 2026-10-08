@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Horde/Dungeon Set 2 (Horde)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "94882bfe",
+	rev = "9c31dce1",
 }, [[
 step
   only Druid
@@ -108,6 +108,7 @@ step
   accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
 step
   only not Paladin
+  note Take the Sealed Venom Container to Mux Manascrambler in Gadgetzan.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8923 |goto Tanaris 52.47,27.23
 step
@@ -164,6 +165,7 @@ step
   accept Return to Mokvar##8978 |goto Tanaris 52.47,27.23
 step
   only not Paladin
+  note Return to Mokvar in Orgrimmar with the Extra-Dimensional Ghost Revealer.
   talk Mokvar##16012
   turnin Return to Mokvar##8978 |goto Orgrimmar 34.95,38.29
 step
@@ -268,6 +270,7 @@ step
   accept In Search of Anthion##8930 |goto Orgrimmar 34.95,38.29
 step
   only not Paladin
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8930 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -288,6 +291,7 @@ step
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
   only not Paladin
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -308,6 +312,7 @@ step
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
   only not Paladin
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -448,6 +453,7 @@ step
   accept Bodley's Unfortunate Fate##9032 |goto Orgrimmar 34.95,38.29
 step
   only not Paladin
+  note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##9032 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -579,6 +585,7 @@ step
   accept Back to the Beginning##8998 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   only not Paladin
+  note Speak with Mokvar at Grommash Hold in Orgrimmar's Valley of Wisdom.
   talk Mokvar##16012
   turnin Back to the Beginning##8998 |goto Orgrimmar 34.95,38.29
 step

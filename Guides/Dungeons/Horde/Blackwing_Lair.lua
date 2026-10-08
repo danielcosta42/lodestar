@@ -4,12 +4,13 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackwing Lair", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "0b5c0195",
+	rev = "c8efcba7",
 }, [[
 step
   kill Nefarian##11583 |goto Blackwing Lair - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.
   accept The Lord of Blackrock##7783 |goto Blackwing Lair - Dungeon -1,-1
 step
+  note Return the Head of Nefarian to Thrall in Orgrimmar.
   talk Thrall##4949
   turnin The Lord of Blackrock##7783 |goto Orgrimmar 31.73,37.82
 ]])

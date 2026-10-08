@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Scholomance", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "f894683e",
+	rev = "fe426c3d",
 }, [[
 step
   talk Tinkee Steamboil##10267
@@ -60,6 +60,7 @@ step
   turnin Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
 step
   only Warlock
+  note Purchase Shadowy Potions from Gorzeeki in the Burning Steppes.
   talk Lord Banehollow##9516
   turnin Lord Banehollow##7623 |goto Felwood 35.93,44.42
 step
@@ -88,6 +89,7 @@ step
   note Confront Ulathek, then bring The Traitor's Heart to Lord Banehollow in Jaedenar.
   collect The Traitor's Heart##18719 |q 7624 |goto Felwood 40.76,48.42 |tip {dropsfrom}Ulathek
 step
+  note Give Tinkee's Letter to Felnok Steelspring.
   talk Felnok Steelspring##10468
   turnin Felnok Steelspring##4808 |goto Winterspring 61.63,38.61
 step
@@ -149,6 +151,7 @@ step
   note Bring the Imp in a Jar to the alchemy lab in the Scholomance. After the parchment is created, return the jar to Gorzeeki Wildeyes.
   talk J'eevee##14500 |q 7629 |goto Scholomance - Dungeon -1,-1
 step
+  note Bring Felnok's Package to Tinkee Steamboil in the Burning Steppes.
   talk Tinkee Steamboil##10267
   turnin Return to Tinkee##4810 |goto Burning Steppes 65.24,24
 step
@@ -171,6 +174,7 @@ step
   talk Tinkee Steamboil##10267
   turnin Egg Freezing##4734 |goto Burning Steppes 65.24,24
 step
+  note Travel to Light's Hope in Eastern Plaguelands and seek out Leonid Barthalomew the Revered. Show him the Keepsake of Remembrance and tell him all that you have discovered.
   talk Leonid Barthalomew the Revered##11036
   turnin The Dying, Ras Frostwhisper##5462 |goto Eastern Plaguelands 71.89,48.29
 step
@@ -186,6 +190,7 @@ step
   talk Tinkee Steamboil##10267
   turnin Egg Collection##4735 |goto Burning Steppes 65.24,24
 step
+  note Travel to Stratholme and find Menethil's Gift. Place the Keepsake of Remembrance upon the unholy ground.
   turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1
 step
   talk Tinkee Steamboil##10267
@@ -194,9 +199,11 @@ step
   click Menethil's Gift##176631
   accept Menethil's Gift##5464 |goto Stratholme - Dungeon -1,-1
 step
+  note Bring the Frozen Eggs to Leonid Barthalomew in the Eastern Plaguelands.
   talk Leonid Barthalomew the Revered##11036
   turnin Leonid Barthalomew##5522 |goto Eastern Plaguelands 71.89,48.29
 step
+  note Take the Soulbound Keepsake to Leonid Barthalomew in Eastern Plaguelands.
   talk Leonid Barthalomew the Revered##11036
   turnin Menethil's Gift##5464 |goto Eastern Plaguelands 71.89,48.29
 step
@@ -206,9 +213,11 @@ step
   talk Leonid Barthalomew the Revered##11036
   accept Betina Bigglezink##5531 |goto Eastern Plaguelands 71.89,48.29
 step
+  note Return to Magistrate Marduke in Caer Darrow. Show him the Soulbound Keepsake.
   talk Magistrate Marduke##11286
   turnin Soulbound Keepsake##5465 |goto Western Plaguelands 70.57,74.11
 step
+  note Bring the Frozen Eggs to Betina Bigglezink.
   talk Betina Bigglezink##11035
   turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
 step

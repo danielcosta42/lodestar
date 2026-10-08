@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Gnomeregan", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "6769bfc0",
+	rev = "0fcb7684",
 }, [[
 step
   only not completed(4601) not completed(4602) not haveq(4601) not haveq(4602)
@@ -27,6 +27,7 @@ step
   only not completed(4601) not completed(4602) not haveq(4601) not haveq(4602)
   turnin The Sparklematic 5200!##2951 |goto Gnomeregan - Dungeon -1,-1
 step
+  note Figure out a way to remove the grime from the Grime-Encrusted Ring.
   turnin Grime-Encrusted Ring##2945 |goto Gnomeregan - Dungeon -1,-1
 step
   talk Nogg##3412

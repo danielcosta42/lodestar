@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackrock Depths", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "849b21dc",
+	rev = "c452361a",
 }, [[
 step
   talk Kalaran Windblade##8479
@@ -24,10 +24,6 @@ step
 step
   talk Hierophant Theodora Mulvadania##9079
   accept The Rise of the Machines##4061 |goto Badlands 3.02,47.81
-step
-  only completed(3982)
-  talk Commander Gor'shak##9020
-  accept What Is Going On?##4001 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Mistress Nagmara##9500
   accept The Love Potion##4201 |goto Blackrock Depths - Dungeon -1,-1
@@ -56,10 +52,6 @@ step
   note Venture to the Burning Steppes and recover 10 Fractured Elemental Shards for Hierophant Theodora Mulvadania.
   collect Fractured Elemental Shard##11266 |q 4061 |goto Burning Steppes 55.47,49.02 |tip {dropsfrom}Greater Obsidian Elemental, War Reaver, Malfunctioning Reaver
 step
-  only completed(3982)
-  note Speak with Kharan Mighthammer and gather information about Princess Moira Bronzebeard's kidnapping. Take that information to Thrall in Orgrimmar.
-  talk Kharan Mighthammer##9021 |q 4001 |goto Blackrock Depths - Dungeon -1,-1
-step
   note Bring 4 Gromsblood, 10 Giant Silver Veins and Nagmara's Filled Vial to Mistress Nagmara in Blackrock Depths.
   collect 4 Gromsblood##8846 |q 4201 |goto Felwood 38.83,49.24 |tip {dropsfrom}Razorlash, Gromsblood
 step
@@ -80,18 +72,16 @@ step
   talk Thunderheart##9084
   turnin Disharmony of Flame##3906 |goto Badlands 3.33,48.26
 step
+  note Speak with Franclorn Forgewright if you are interested in obtaining a key to the city major.
   talk Franclorn Forgewright##8888
   turnin Dark Iron Legacy##3801 |goto Burning Steppes 28.96,28.93
 step
+  note Speak with Yuka Screwspigot in the Burning Steppes.
   talk Yuka Screwspigot##9544
   turnin Yuka Screwspigot##4324 |goto Burning Steppes 66.06,21.95
 step
   talk Hierophant Theodora Mulvadania##9079
   turnin The Rise of the Machines##4061 |goto Badlands 3.02,47.81
-step
-  only completed(3982)
-  talk Thrall##4949
-  turnin What Is Going On?##4001 |goto Orgrimmar 31.73,37.82
 step
   talk Mistress Nagmara##9500
   turnin The Love Potion##4201 |goto Blackrock Depths - Dungeon -1,-1
@@ -101,6 +91,7 @@ step
   talk Maxwort Uberglint##9536
   turnin The Heart of the Mountain##4123 |goto Burning Steppes 65.15,23.91
 step
+  note Speak with Shadowmaster Vivian Lagrave in Kargath.
   talk Shadowmage Vivian Lagrave##9078
   turnin Vivian Lagrave##4133 |goto Badlands 2.9,47.76
 step
@@ -127,10 +118,6 @@ step
 step
   talk Hierophant Theodora Mulvadania##9079
   accept The Rise of the Machines##4062 |goto Badlands 3.02,47.81
-step
-  only completed(3982)
-  talk Thrall##4949
-  accept The Eastern Kingdom##4002 |goto Orgrimmar 31.73,37.82
 step
   talk Shadowmage Vivian Lagrave##9078
   accept Lost Thunderbrew Recipe##4134 |goto Badlands 2.9,47.76
@@ -162,6 +149,7 @@ step
   talk Kalaran Windblade##8479
   turnin The Flawless Flame##3442 |goto Searing Gorge 39.06,38.99
 step
+  note Find Commander Gor'shak in Blackrock Depths.
   talk Commander Gor'shak##9020
   turnin Commander Gor'shak##3981 |goto Blackrock Depths - Dungeon -1,-1
 step
@@ -176,12 +164,9 @@ step
   talk Shadowmage Vivian Lagrave##9078
   turnin The Last Element##7201 |goto Badlands 2.9,47.76
 step
+  note Take the Elemental Shard Sample to Lotwil Veriatus.
   talk Lotwil Veriatus##2921
   turnin The Rise of the Machines##4062 |goto Badlands 25.95,44.87
-step
-  only completed(3982)
-  talk Thrall##4949
-  turnin The Eastern Kingdom##4002 |goto Orgrimmar 31.73,37.82
 step
   talk Shadowmage Vivian Lagrave##9078
   turnin Lost Thunderbrew Recipe##4134 |goto Badlands 2.9,47.76
@@ -192,52 +177,52 @@ step
   talk Kalaran Windblade##8479
   accept Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
 step
+  talk Commander Gor'shak##9020
+  accept What Is Going On?##3982 |goto Blackrock Depths - Dungeon -1,-1
+step
   talk Lotwil Veriatus##2921
   accept The Rise of the Machines##4063 |goto Badlands 25.95,44.87
 step
   talk Lexlort##9080
   accept Grark Lorkrub##4122 |goto Badlands 5.88,47.63
 step
-  only completed(3982)
-  talk Thrall##4949
-  accept The Royal Rescue##4003 |goto Orgrimmar 31.73,37.82
-step
   note Bring 8 Thorium Plated Daggers to Kalaran Windblade.
   collect 8 Thorium Plated Dagger##10551 |q 3443 |goto Searing Gorge 63.66,59.26 |tip {dropsfrom}Dark Iron Geologist, Dark Iron Steamsmith, Slave Worker
+step
+  note Defend Gor'shak.
+  talk Commander Gor'shak##9020 |q 3982 |goto Blackrock Depths - Dungeon -1,-1
 step
   note Find and slay Golem Lord Argelmach. Return his head to Lotwil. You will also need to collect 10 Intact Elemental Cores from the Ragereaver Golems and Warbringer Constructs protecting Argelmach. You know this because you are psychic.
   collect 10 Head of Argelmach##11268 |q 4063 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Golem Lord Argelmach
 step
-  only completed(3982)
-  note Slay Emperor Dagran Thaurissan and free Princess Moira Bronzebeard from his evil spell.
-  kill Emperor Dagran Thaurissan##9019 |q 4003 |goto Blackrock Depths - Dungeon -1,-1 |elite
-step
   talk Kalaran Windblade##8479
   turnin Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
+step
+  talk Commander Gor'shak##9020
+  turnin What Is Going On?##3982 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lotwil Veriatus##2921
   turnin The Rise of the Machines##4063 |goto Badlands 25.95,44.87
 step
+  note Travel to the Burning Steppes and find Grark Lorkrub. You recall Lexlort mentioning that he was last seen in a massive Blackrock fortress.
   talk Grark Lorkrub##9520
   turnin Grark Lorkrub##4122 |goto Burning Steppes 40.2,34.24
-step
-  only completed(3982)
-  talk Princess Moira Bronzebeard##8929
-  turnin The Royal Rescue##4003 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Kalaran Windblade##8479
   accept The Flame's Casing##3452 |goto Searing Gorge 39.06,38.99
 step
+  talk Commander Gor'shak##9020
+  accept What Is Going On?##4001 |goto Blackrock Depths - Dungeon -1,-1
+step
   talk Grark Lorkrub##9520
   accept Precarious Predicament##4121 |goto Burning Steppes 40.2,34.24
-step
-  only completed(3982)
-  talk Princess Moira Bronzebeard##8929
-  accept The Princess Saved?##4004 |goto Blackrock Depths - Dungeon -1,-1
 step
   note Find and return a Symbol of Ragnaros to Kalaran Windblade.
   kill Twilight Dark Shaman##5860 |goto Searing Gorge 23.52,36.55 |elite
   collect Symbol of Ragnaros##10552 |q 3452 |goto Searing Gorge 23.52,36.55
+step
+  note Speak with Kharan Mighthammer and gather information about Princess Moira Bronzebeard's kidnapping. Take that information to Thrall in Orgrimmar.
+  talk Kharan Mighthammer##9021 |q 4001 |goto Blackrock Depths - Dungeon -1,-1
 step
   note Escort your prisoner, Grark Lorkrub, through Burning Steppes and through Blackrock Mountain to the Searing Gorge.
   collect Thorium Shackles##11286 |q 4121 |goto Burning Steppes 40.2,34.24
@@ -245,15 +230,17 @@ step
   talk Kalaran Windblade##8479
   turnin The Flame's Casing##3452 |goto Searing Gorge 39.06,38.99
 step
+  talk Thrall##4949
+  turnin What Is Going On?##4001 |goto Orgrimmar 31.73,37.82
+step
   talk Lexlort##9080
   turnin Precarious Predicament##4121 |goto Badlands 5.88,47.63
 step
-  only completed(3982)
-  talk Thrall##4949
-  turnin The Princess Saved?##4004 |goto Orgrimmar 31.73,37.82
-step
   talk Kalaran Windblade##8479
   accept The Torch of Retribution##3453 |goto Searing Gorge 39.06,38.99
+step
+  talk Thrall##4949
+  accept The Eastern Kingdom##4002 |goto Orgrimmar 31.73,37.82
 step
   talk Warlord Goretooth##9077
   accept Operation: Death to Angerforge##4132 |goto Badlands 5.81,47.52
@@ -267,19 +254,41 @@ step
   talk Kalaran Windblade##8479
   turnin The Torch of Retribution##3453 |goto Searing Gorge 39.06,38.99
 step
+  note Speak with Thrall if you are prepared to take on the mission he has planned.
+  talk Thrall##4949
+  turnin The Eastern Kingdom##4002 |goto Orgrimmar 31.73,37.82
+step
   talk Warlord Goretooth##9077
   turnin Operation: Death to Angerforge##4132 |goto Badlands 5.81,47.52
 step
   talk Kalaran Windblade##8479
   accept The Torch of Retribution##3454 |goto Searing Gorge 39.06,38.99
 step
+  talk Thrall##4949
+  accept The Royal Rescue##4003 |goto Orgrimmar 31.73,37.82
+step
+  note Slay Emperor Dagran Thaurissan and free Princess Moira Bronzebeard from his evil spell.
+  kill Emperor Dagran Thaurissan##9019 |q 4003 |goto Blackrock Depths - Dungeon -1,-1 |elite
+step
+  note Take the Torch of Retribution.
   turnin The Torch of Retribution##3454 |goto Searing Gorge 39.06,39.07
+step
+  talk Princess Moira Bronzebeard##8929
+  turnin The Royal Rescue##4003 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Kalaran Windblade##8479
   accept Squire Maltrake##3462 |goto Searing Gorge 39.06,38.99
 step
+  talk Princess Moira Bronzebeard##8929
+  accept The Princess Saved?##4004 |goto Blackrock Depths - Dungeon -1,-1
+step
+  note Speak with Squire Maltrake.
   talk Squire Maltrake##8509
   turnin Squire Maltrake##3462 |goto Searing Gorge 39.17,39
+step
+  note Return to Thrall!
+  talk Thrall##4949
+  turnin The Princess Saved?##4004 |goto Orgrimmar 31.73,37.82
 step
   talk Squire Maltrake##8509
   accept Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
@@ -293,6 +302,7 @@ step
   click Hoard of the Black Dragonflight##149502
   accept Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
+  note Open the chest.
   turnin Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
   only not completed(4023) not haveq(4023)

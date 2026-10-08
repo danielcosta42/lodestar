@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackrock Spire", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "6da7771b",
+	rev = "cce2a9dd",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -120,18 +120,22 @@ step
   talk Warosh##10799
   turnin Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
 step
+  note Talk to Malyfous Darkhammer in Everlook.
   talk Malyfous Darkhammer##10637
   turnin Pip Quickwit, At Your Service!##5047 |goto Winterspring 60.99,38.78
 step
+  note Take General Drakkisath's Command to Marshal Maxwell in Burning Steppes.
   talk Marshal Maxwell##9560
   turnin General Drakkisath's Command##5089 |goto Burning Steppes 84.74,69.02
 step
+  note Travel to Winterspring and find Haleh. Give her Awbee's scale.
   talk Haleh##10929
   turnin The Matron Protectorate##5160 |goto Winterspring 54.55,51.2
 step
   talk Ragged John##9563
   turnin Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  note Speak with Mayara Brightwing in the Burning Steppes.
   talk Mayara Brightwing##9565
   turnin Mayara Brightwing##4766 |goto Burning Steppes 84.84,69.12
 step
@@ -186,9 +190,11 @@ step
   talk Yeh'kinya##8579
   turnin The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36
 step
+  note Give Tinkee's Letter to Felnok Steelspring.
   talk Felnok Steelspring##10468
   turnin Felnok Steelspring##4808 |goto Winterspring 61.63,38.61
 step
+  note Travel to the Burning Steppes and give Bijou's Information to Marshal Maxwell.
   talk Marshal Maxwell##9560
   turnin Message to Maxwell##5002 |goto Burning Steppes 84.74,69.02
 step
@@ -201,6 +207,7 @@ step
   talk Mayara Brightwing##9565
   turnin Doomrigger's Clasp##4764 |goto Burning Steppes 84.84,69.12
 step
+  note Speak with Haleh if you wish to continue.
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
@@ -241,9 +248,11 @@ step
   talk Marshal Maxwell##9560
   turnin Maxwell's Mission##5081 |goto Burning Steppes 84.74,69.02
 step
+  note Bring Ridgewell's Crate to Remington Ridgewell in Stormwind.
   talk Count Remington Ridgewell##2285
   turnin Delivery to Ridgewell##4765 |goto Stormwind City 76.94,47.83
 step
+  note Speak with Jeziba in the Plaguelands. He resides in Andorhal.
   talk Jeziba##10976
   turnin Wrath of the Blue Flight##5162 |goto Western Plaguelands 39.37,66.78
 step
@@ -262,9 +271,11 @@ step
   talk Yeh'kinya##8579
   turnin The God Hakkar##3528 |goto Tanaris 66.99,22.36
 step
+  note Bring Felnok's Package to Tinkee Steamboil in the Burning Steppes.
   talk Tinkee Steamboil##10267
   turnin Return to Tinkee##4810 |goto Burning Steppes 65.24,24
 step
+  note Read from the Catalogue of the Wayward.
   turnin Catalogue of the Wayward##5164 |goto Western Plaguelands 39.35,66.6
 step
   talk Prospector Ironboot##10460
@@ -306,6 +317,7 @@ step
   talk Jeziba##10976
   turnin Legplates of the Chromatic Defier##5167 |goto Western Plaguelands 39.37,66.78
 step
+  note Speak with Tinkee Steamboil.
   talk Tinkee Steamboil##10267
   turnin Tinkee Steamboil##4907 |goto Burning Steppes 65.24,24
 step

@@ -8,9 +8,9 @@ local UI = ns.UI
 local RC = {}
 ns.ReportCard = RC
 
--- par de /played (horas) p/ cada marco — médias TBC aprox.; ajustável.
-local PAR = { [10] = 3, [20] = 8, [30] = 16, [40] = 26, [50] = 40, [58] = 58, [70] = 88 }
-local PTS = { 10, 20, 30, 40, 50, 58, 70 }
+-- par de /played (horas) p/ cada marco — médias aproximadas; ajustável.
+local PAR = { [10] = 3, [20] = 8, [30] = 16, [40] = 26, [50] = 40, [60] = 62 }
+local PTS = { 10, 20, 30, 40, 50, 60 }
 
 local function parHours(L)
 	if L <= 10 then return PAR[10] * L / 10 end
@@ -18,7 +18,7 @@ local function parHours(L)
 		local a, b = PTS[i], PTS[i + 1]
 		if L <= b then return PAR[a] + (PAR[b] - PAR[a]) * (L - a) / (b - a) end
 	end
-	return PAR[70]
+	return PAR[60]
 end
 
 -- nota: mistura ritmo-vs-par e mortes -> letra + cor

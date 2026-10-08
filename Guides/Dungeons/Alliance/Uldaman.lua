@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Uldaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "2b88263a",
+	rev = "50dc9c21",
 }, [[
 step
   click Crumpled Map##2868
@@ -33,6 +33,7 @@ step
   note Bring 10 Thick Leather to Pratt McGrubben in Feathermoon Stronghold.
   buy 10 Thick Leather##4304 |q 2847 |goto Elwynn Forest 41.2,69.9
 step
+  note Find Prospector Ryedol and let him know Hammertoe Grez is alive.
   talk Prospector Ryedol##2910
   turnin A Sign of Hope##720 |goto Badlands 53.42,43.39
 step
@@ -40,15 +41,18 @@ step
   talk Tabetha##6546
   turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
+  note Find Baelog in Uldaman.
   talk Baelog##6906
   turnin The Lost Dwarves##2398 |goto Uldaman - Dungeon -1,-1
 step
+  note Search for the original creator of the shattered necklace to learn of its potential value.
   talk Talvash del Kissel##6826
   turnin The Shattered Necklace##2198 |goto Ironforge 36.38,3.61
 step
   talk Pratt McGrubben##7852
   turnin Wild Leather Armor##2847 |goto Feralas 30.63,42.71
 step
+  note Someone in this world must know what to do with these gauntlets. Good luck!
   talk Malyfous Darkhammer##10637
   turnin Hot Fiery Death##5103 |goto Winterspring 60.99,38.78
 step
@@ -81,6 +85,7 @@ step
   note Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.
   collect Unfired Plate Gauntlets##12812 |q 5124 |goto Blackrock Spire - Dungeon -1,-1
 step
+  note Find Hammertoe Grez in Uldaman.
   talk Hammertoe Grez##2909
   turnin A Sign of Hope##721 |goto Badlands 37.9,10.59
 step
@@ -122,6 +127,7 @@ step
   talk Tabetha##6546
   turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
+  note Search for clues as to the current disposition of Talvash's necklace within Uldaman. The slain paladin he mentioned was the person who had it last.
   talk Remains of a Paladin##6912
   turnin Back to Uldaman##2200 |goto Uldaman - Dungeon -1,-1
 step
@@ -134,6 +140,7 @@ step
   note Find the ruby, sapphire, and topaz that are scattered throughout Uldaman. Once acquired, contact Talvash del Kissel remotely by using the Phial of Scrying he previously gave you.
   collect Shattered Necklace Ruby##7669 |q 2201 |goto Uldaman - Dungeon -1,-1 |tip {dropsfrom}Shadowforge Cache
 step
+  note Take Hammertoe's Amulet to Prospector Ryedol in the Badlands.
   talk Prospector Ryedol##2910
   turnin Prospect of Faith##723 |goto Badlands 53.42,43.39
 step
@@ -148,6 +155,7 @@ step
   note Obtain a power source from the most powerful construct you can find in Uldaman, and deliver it to Talvash del Kissel in Ironforge.
   collect Shattered Necklace Power Source##7672 |q 2204 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Archaedas
 step
+  note Take Hammertoe's Amulet to Historian Karnik in Ironforge.
   talk Historian Karnik##2916
   turnin Prospect of Faith##724 |goto Ironforge 77.54,11.82
 step
@@ -157,12 +165,14 @@ step
   talk Historian Karnik##2916
   accept Passing Word of a Threat##725 |goto Ironforge 77.54,11.82
 step
+  note Find Advisor Belgrum and give him his note.
   talk Advisor Belgrum##2918
   turnin Passing Word of a Threat##725 |goto Ironforge 77.34,9.71
 step
   talk Advisor Belgrum##2918
   accept Passing Word of a Threat##726 |goto Ironforge 77.34,9.71
 step
+  note Speak to Historian Karnik.
   talk Historian Karnik##2916
   turnin Passing Word of a Threat##726 |goto Ironforge 77.54,11.82
 step
