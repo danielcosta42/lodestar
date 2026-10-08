@@ -218,4 +218,35 @@ check(WPT.LegText(rt, 6, 10):find("TELE Teleporte: Orgrimmar", 1, true), "telepo
 rt.legs[2].discover = 7
 check(WPT.LegText(rt, 1, 40):find("NOVO Sentinel Hill", 1, true), "voo ainda não descoberto: pede para descobrir")
 
+-- ── RouteGeom: pontilhado, minimapa, bússola ─────────────────────────────────
+local G = load("RouteGeom.lua", {}).RouteGeom
+local function near(a, b) return math.abs(a - b) < 1e-6 end
+local d = G.Dots({ 0, 0, 10, 0 }, 2.5)
+check(#d == 10 and near(d[3], 2.5) and near(d[9], 10), "pontos a cada 2,5 ao longo da reta (" .. #d / 2 .. " pontos)")
+d = G.Dots({ 0, 0, 3, 0, 3, 3 }, 2)
+check(#d == 8 and near(d[5], 3) and near(d[6], 1), "o espaçamento continua depois da curva")
+
+local rx, ry, inside = G.ToMinimap(0, 0, 10, 0, 0, false, 1, 100)
+check(near(rx, 0) and near(ry, 10) and inside, "10 jd ao norte: em cima")
+rx, ry = G.ToMinimap(0, 0, 0, 10, 0, false, 1, 100)
+check(near(rx, -10) and near(ry, 0), "10 jd a oeste: à esquerda")
+rx, ry = G.ToMinimap(0, 0, 0, 10, math.pi / 2, true, 1, 100)
+check(near(rx, 0) and near(ry, 10), "minimapa giratório olhando para oeste: o oeste fica em cima")
+rx, ry, inside = G.ToMinimap(0, 0, 500, 0, 0, false, 1, 100)
+check(near(rx, 0) and near(ry, 100) and not inside, "fora do raio: preso na borda, na direção certa")
+rx, ry = G.ToMinimap(0, 0, 20, 0, 0, false, 2, 100)
+check(near(ry, 10), "escala: 2 jd por pixel")
+
+local x, clamped = G.CompassX(0, 0, 100, 0, 0, math.pi / 2, 100)
+check(near(x, 0) and not clamped, "alvo à frente: no meio da bússola")
+x = G.CompassX(0, 0, 0, 100, 0, math.pi / 2, 100)
+check(x < 0, "alvo a oeste olhando para o norte: à esquerda")
+x = G.CompassX(0, 0, 0, -100, 0, math.pi / 2, 100)
+check(x > 0, "alvo a leste: à direita")
+x, clamped = G.CompassX(0, 0, -100, 0, 0, math.pi / 2, 100)
+check(clamped and math.abs(x) == 100, "alvo atrás: preso na borda")
+local f = math.rad(10)
+x, clamped = G.CompassX(0, 0, 100 * math.cos(math.rad(-10)), 100 * math.sin(math.rad(-10)), f, math.pi / 2, 100)
+check(not clamped and x > 0 and x < 50, "volta dos 360°: alvo a 350° com o jogador a 10° fica levemente à direita (" .. x .. ")")
+
 print(("ok: %d checks"):format(checks))

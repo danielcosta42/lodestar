@@ -64,6 +64,7 @@ TravelPlanner.lua
 Travel.lua
 Destinations.lua
 Services.lua
+RouteGeom.lua
 StepTracker.lua
 DungeonRuns.lua
 Waypoint.lua
