@@ -14,11 +14,16 @@ import re
 import sys
 from parse_lua import parse_db
 
-# ---- máscaras de raça (WoW clássico/TBC) -----------------------------------
+# ---- máscaras de raça (WoW clássico/TBC + Forever) --------------------------
+# Skyborne (Forever) são duas raças, uma por facção, como o pandaren: bits 32 e 33
+# (enum SKYBORNE_ALLIANCE/SKYBORNE_HORDE do QuestieDB — não é 2^(raceId-1)).
 RACE = dict(Human=1, Orc=2, Dwarf=4, NightElf=8, Undead=16, Tauren=32,
-            Gnome=64, Troll=128, Goblin=256, BloodElf=512, Draenei=1024)
-ALLIANCE_MASK = RACE["Human"] | RACE["Dwarf"] | RACE["NightElf"] | RACE["Gnome"] | RACE["Draenei"]
-HORDE_MASK = RACE["Orc"] | RACE["Undead"] | RACE["Tauren"] | RACE["Troll"] | RACE["BloodElf"]
+            Gnome=64, Troll=128, Goblin=256, BloodElf=512, Draenei=1024,
+            SkyborneA=1 << 32, SkyborneH=1 << 33)
+ALLIANCE_MASK = (RACE["Human"] | RACE["Dwarf"] | RACE["NightElf"] | RACE["Gnome"]
+                 | RACE["Draenei"] | RACE["SkyborneA"])
+HORDE_MASK = (RACE["Orc"] | RACE["Undead"] | RACE["Tauren"] | RACE["Troll"]
+              | RACE["BloodElf"] | RACE["SkyborneH"])
 
 
 def faction_of(mask):
@@ -102,6 +107,8 @@ def build_quests(raw):
             "objObjects": first_of_each(objectives.get(2)),
             "objItems": first_of_each(objectives.get(3)),
             "objText": [t for t in (q.get(8) or {}).values() if isinstance(t, str)],
+            # profissão exigida [skillId, valor] — nem todo jogador pode pegar
+            "reqSkill": [q[18].get(1), q[18].get(2)] if isinstance(q.get(18), dict) else None,
             "repReward": [[o.get(1), o.get(2)] for o in (q.get(26) or {}).values()
                           if isinstance(o, dict) and isinstance(o.get(1), int)],
         }
