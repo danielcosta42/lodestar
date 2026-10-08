@@ -72,11 +72,12 @@ end
 function RC:Stats(L)
 	local RT = ns.RunTracker
 	local r = RT:Run()
-	local s = (r.levels and r.levels[L]) or RT:Current() or {}
+	local rec = r.levels and r.levels[L]
+	local s = rec or RT:Current() or {}           -- sem registro: o nível em andamento, até agora
 	local played = r.levelPlayed[L] or RT:LivePlayed()
 	local letter, col = grade(L, played, ns.char.deaths)
 	local out = {
-		level = L, played = played, letter = letter, col = col,
+		level = L, played = played, letter = letter, col = col, sofar = not rec,
 		time = s.time, quests = s.quests or 0, deaths = s.deaths or 0, zones = s.zones or 0,
 		steps = s.steps or 0, gold = s.gold,
 		xph = (s.time and s.time > 0 and s.xp) and s.xp / s.time * 3600 or nil,
@@ -127,113 +128,116 @@ local function send(msg, canal)
 end
 
 --------------------------------------------------------------------------------
--- painel do card (vertical, para print)
+-- painel do card: área do print em cima, barra de ações embaixo (fora do print)
 --------------------------------------------------------------------------------
-local W, H = 360, 560
+local W, H, BAR_H = 360, 480, 60
+local NOTA_BOA = { S = true, A = true, B = true }    -- nota baixa não vai para o print
 local card
 
-local function tile(parent, x, y)
-	local t = CreateFrame("Frame", nil, parent)
-	t:SetSize(152, 54); t:SetPoint("TOPLEFT", x, y)
-	local bg = UI.Rect(t, "BACKGROUND", { 0, 0, 0, 0.28 }); bg:SetAllPoints()
-	t.label = t:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(t.label, 10, { color = UI.COL.muted }); t.label:SetPoint("TOPLEFT", 10, -9)
-	t.value = t:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(t.value, 18, { num = true, color = UI.COL.active }); t.value:SetPoint("BOTTOMLEFT", 10, 8)
-	return t
+local function texto(parent, size, color, opts)
+	local fs = parent:CreateFontString(nil, "OVERLAY")
+	opts = opts or {}; opts.color = color
+	UI.SetFont(fs, size, opts)
+	return fs
+end
+
+-- grade 3x2 de fios finos: o fundo da grade aparece só no espaço de 1px entre as células
+local function grade3x2(parent, y)
+	local gw = W - 36
+	local cw, ch = (gw - 2) / 3, 52
+	local fundo = UI.Rect(parent, "BACKGROUND", { 1, 1, 1, 0.07 })
+	fundo:SetPoint("TOPLEFT", 18, y); fundo:SetSize(gw + 2, 2 * ch + 3)
+	local tiles = {}
+	for i = 1, 6 do
+		local col, row = (i - 1) % 3, math.floor((i - 1) / 3)
+		local t = CreateFrame("Frame", nil, parent)
+		t:SetSize(cw, ch); t:SetPoint("TOPLEFT", 19 + col * (cw + 1), y - 1 - row * (ch + 1))
+		local bg = UI.Rect(t, "BORDER", UI.COL.bg); bg:SetAllPoints()
+		t.value = texto(t, 17, UI.COL.active, { num = true }); t.value:SetPoint("TOPLEFT", 10, -9)
+		t.label = texto(t, 10, UI.COL.muted, { num = true }); t.label:SetPoint("BOTTOMLEFT", 10, 9)
+		tiles[i] = t
+	end
+	return tiles
+end
+
+local function iconButton(parent, glyph, tip)
+	local b = UI.Button(parent, "", 34, 34)
+	local ic = UI.Glyph(b, glyph, "OVERLAY", 64); ic:SetSize(16, 16); ic:SetPoint("CENTER")
+	ic:SetVertexColor(UI.unpackc(UI.COL.muted))
+	b:HookScript("OnEnter", function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_TOP"); GameTooltip:AddLine(tip, 1, 1, 1); GameTooltip:Show()
+	end)
+	b:HookScript("OnLeave", function() GameTooltip:Hide() end)
+	return b
 end
 
 local function build()
 	if card then return card end
-	local C = UI.COL
-	card = UI.Panel(UIParent, { name = "LodestarCard", color = C.panel })
+	local C, L = UI.COL, ns.L
+	card = UI.Panel(UIParent, { name = "LodestarCard", color = C.bg })
 	card:SetSize(W, H); card:SetPoint("CENTER")
-	card:SetFrameStrata("FULLSCREEN_DIALOG"); card:SetToplevel(true)
+	card:SetFrameStrata("DIALOG"); card:SetToplevel(true)     -- o menu ⋯ (FULLSCREEN_DIALOG) fica por cima
 	card:EnableMouse(true); card:SetMovable(true); card:RegisterForDrag("LeftButton")
 	card:SetScript("OnDragStart", card.StartMoving); card:SetScript("OnDragStop", card.StopMovingOrSizing)
+	local fio = UI.Rect(card, "ARTWORK", C.accent); fio:SetPoint("TOPLEFT"); fio:SetPoint("TOPRIGHT"); fio:SetHeight(2)
 
-	-- faixa da classe: ícone, nome, raça e classe
-	card.band = UI.Rect(card, "ARTWORK", C.accent)
-	card.band:SetPoint("TOPLEFT"); card.band:SetPoint("TOPRIGHT"); card.band:SetHeight(70)
-	card.icon = card:CreateTexture(nil, "OVERLAY")
-	card.icon:SetSize(44, 44); card.icon:SetPoint("TOPLEFT", 14, -13)
-	card.name = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.name, 17, { outline = "OUTLINE", color = { 1, 1, 1, 1 } })
-	card.name:SetPoint("TOPLEFT", card.icon, "TOPRIGHT", 10, -4)
-	card.who = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.who, 11, { outline = "OUTLINE", color = { 1, 1, 1, 0.9 } })
-	card.who:SetPoint("TOPLEFT", card.name, "BOTTOMLEFT", 0, -4)
-	card.close = UI.CloseButton(card, function() card:Hide() end)
-	card.close:SetPoint("TOPRIGHT", -6, -6)
+	-- quem: ícone da classe na caixa com o tom dela, nome, raça e classe
+	card.iconBox = UI.Rect(card, "ARTWORK", { 1, 1, 1, 0.1 }); card.iconBox:SetSize(40, 40)
+	card.iconBox:SetPoint("TOPLEFT", 18, -16)
+	card.icon = card:CreateTexture(nil, "OVERLAY"); card.icon:SetSize(32, 32)
+	card.icon:SetPoint("CENTER", card.iconBox, "CENTER")
+	card.name = texto(card, 19, C.active, { title = true }); card.name:SetPoint("TOPLEFT", 70, -17)
+	card.who = texto(card, 12.5, C.muted); card.who:SetPoint("TOPLEFT", card.name, "BOTTOMLEFT", 0, -3)
+	card.kind = texto(card, 10, C.accent, { num = true }); card.kind:SetPoint("TOPRIGHT", -18, -22)
 
-	-- nível em destaque e a nota num selo
-	card.lvlLabel = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.lvlLabel, 11, { color = C.muted }); card.lvlLabel:SetPoint("TOP", 0, -84)
-	card.lvlLabel:SetText(ns.L.CARD_LEVEL)
-	card.level = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.level, 76, { num = true, outline = "THICKOUTLINE", color = C.accent })
-	card.level:SetPoint("TOP", card.lvlLabel, "BOTTOM", 0, -2)
-	card.seal = card:CreateTexture(nil, "ARTWORK")
-	card.seal:SetTexture(UI.MEDIA .. "ring"); card.seal:SetSize(62, 62)
-	card.seal:SetPoint("TOPRIGHT", -22, -92)
-	card.grade = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.grade, 32, { outline = "THICKOUTLINE" }); card.grade:SetPoint("CENTER", card.seal, "CENTER", 0, 0)
-	card.sub = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.sub, 9, { outline = "OUTLINE", color = { 1, 1, 1, 0.8 } })
-	card.sub:SetPoint("BOTTOMRIGHT", card.band, "BOTTOMRIGHT", -12, 8)
-	card.sub:SetText(ns.L.CARD_SUB)
+	-- medalhão com o nível
+	card.ring = UI.Media(card, "ring", "ARTWORK"); card.ring:SetSize(132, 132); card.ring:SetPoint("TOP", 0, -72)
+	card.ring:SetVertexColor(UI.unpackc(C.accent))
+	local miolo = UI.Media(card, "dot", "BORDER"); miolo:SetSize(116, 116); miolo:SetPoint("CENTER", card.ring, "CENTER")
+	miolo:SetVertexColor(C.accent[1], C.accent[2], C.accent[3], 0.07)
+	local anel = UI.Media(card, "ring", "ARTWORK"); anel:SetSize(116, 116); anel:SetPoint("CENTER", card.ring, "CENTER")
+	anel:SetVertexColor(C.accent[1], C.accent[2], C.accent[3], 0.4)
+	local rot = texto(card, 10, C.muted, { num = true }); rot:SetPoint("CENTER", card.ring, "CENTER", 0, 26)
+	rot:SetText(L.CARD_LEVEL)
+	card.level = texto(card, 56, C.accent, { title = true }); card.level:SetPoint("CENTER", card.ring, "CENTER", 0, -6)
 
-	card.highlight = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.highlight, 13, { num = true, color = C.accent })
-	card.highlight:SetPoint("TOP", 0, -192)
+	-- selo de ritmo (só nota boa) + destaque, centrados juntos
+	card.badges = CreateFrame("Frame", nil, card); card.badges:SetSize(W - 36, 22); card.badges:SetPoint("TOP", 0, -214)
+	card.pace = CreateFrame("Frame", nil, card.badges); card.pace:SetHeight(22)
+	card.paceBg = UI.Rect(card.pace, "BACKGROUND", { 0.56, 0.76, 1, 0.1 }); card.paceBg:SetAllPoints()
+	UI.AddBorder(card.pace, { 0.56, 0.76, 1, 0.45 })
+	card.paceTxt = texto(card.pace, 10.5, { 0.56, 0.76, 1, 1 }, { num = true }); card.paceTxt:SetPoint("CENTER")
+	card.highlight = texto(card.badges, 12.5, C.done)
 
-	-- seis blocos do nível que acabou
-	card.tiles = {}
-	for i = 1, 6 do
-		local col, row = (i - 1) % 2, math.floor((i - 1) / 2)
-		card.tiles[i] = tile(card, 20 + col * 168, -218 - row * 64)
-	end
+	card.tiles = grade3x2(card, -250)
 
-	card.played = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.played, 11, { num = true, color = C.muted }); card.played:SetPoint("TOP", 0, -410)
-
-	-- pergunta da guilda
-	card.ask = CreateFrame("Frame", nil, card)
-	card.ask:SetSize(W - 32, 46); card.ask:SetPoint("TOP", 0, -428)
-	card.askText = card.ask:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.askText, 12, { color = C.active }); card.askText:SetPoint("TOP", 0, 0)
-	card.askText:SetText(ns.L.CARD_ASK_GUILD)
-	card.askNever = UI.Button(card.ask, ns.L.CARD_NEVER, 96, 22); card.askNever:SetPoint("BOTTOMRIGHT", 0, 0)
-	card.askLater = UI.Button(card.ask, ns.L.CARD_LATER, 96, 22)
-	card.askLater:SetPoint("BOTTOM", 0, 0)
-	card.askYes = UI.Button(card.ask, ns.L.CARD_YES, 96, 22)
-	card.askYes:SetPoint("BOTTOMLEFT", 0, 0)
-	card.askLater:SetScript("OnClick", function() card.ask:Hide() end)
-	card.askNever:SetScript("OnClick", function() ns.db.cardAskGuild = false; card.ask:Hide() end)
-
-	card.copy = UI.Button(card, ns.L.CARD_COPYTXT, 104, 24); card.copy:SetPoint("BOTTOMLEFT", 16, 46)
-	card.shot = UI.Button(card, ns.L.CARD_SHOT, 104, 24); card.shot:SetPoint("BOTTOM", 0, 46)
-	card.party = UI.Button(card, ns.L.CARD_PARTY, 104, 24); card.party:SetPoint("BOTTOMRIGHT", -16, 46)
-
-	-- rodapé: a marca vai em todo print
-	card.footer = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.footer, 10, { color = C.muted }); card.footer:SetPoint("BOTTOM", 9, 18)
-	card.footer:SetText(ns.L.CARD_FOOTER:format(URL))
+	-- marca: vai em todo print
+	card.footer = texto(card, 10.5, C.muted); card.footer:SetPoint("BOTTOM", 9, BAR_H + 14)
+	card.footer:SetText(L.CARD_FOOTER:format(URL))
 	local logo = card:CreateTexture(nil, "OVERLAY")
-	logo:SetTexture(UI.ICON .. "logo-estrela-64"); logo:SetSize(16, 16)
+	logo:SetTexture(UI.ICON .. "logo-estrela-64"); logo:SetSize(15, 15)
 	logo:SetPoint("RIGHT", card.footer, "LEFT", -5, 0)
 
-	card.shot:SetScript("OnClick", function()
-		local ask = card.ask:IsShown()
-		local botoes = { card.copy, card.shot, card.party, card.close, card.ask }
-		for _, b in ipairs(botoes) do b:Hide() end
+	-- barra de ações (fora do print)
+	card.bar = UI.Panel(card, { color = { 0.051, 0.047, 0.035, 1 }, border = false })
+	card.bar:SetPoint("BOTTOMLEFT", 1, 1); card.bar:SetPoint("BOTTOMRIGHT", -1, 1); card.bar:SetHeight(BAR_H)
+	local sep = UI.Rect(card.bar, "ARTWORK", { 1, 1, 1, 0.06 }); sep:SetPoint("TOPLEFT"); sep:SetPoint("TOPRIGHT"); sep:SetHeight(1)
+	card.close = iconButton(card.bar, "fechar", CLOSE or "Close"); card.close:SetPoint("RIGHT", -12, 0)
+	card.close:SetScript("OnClick", function() card:Hide() end)
+	card.more = UI.Button(card.bar, "···", 34, 34); card.more:SetPoint("RIGHT", card.close, "LEFT", -6, 0)
+	card.party = UI.Button(card.bar, L.CARD_PARTY, 64, 34)
+	-- botão principal: mandar na guilda; sem guilda, copiar o texto ocupa o lugar
+	card.guild = UI.Button(card.bar, L.CARD_GUILD, 10, 34)
+	local gbg = UI.Rect(card.guild, "ARTWORK", C.accent); gbg:SetAllPoints()
+	if card.guild.text then UI.SetFont(card.guild.text, 13, { num = true, color = { 0.07, 0.067, 0.051, 1 } }) end
+	card.guild:SetScript("OnEnter", nil); card.guild:SetScript("OnLeave", nil)
+	card.copy = UI.Button(card.bar, L.CARD_COPYTXT, 10, 34)
+
+	card.tirarPrint = function()
+		card.bar:Hide()
 		if Screenshot then Screenshot() end
-		if C_Timer then C_Timer.After(0.4, function()
-			card.copy:Show(); card.shot:Show(); card.close:Show()
-			if card._grupo then card.party:Show() end
-			if ask then card.ask:Show() end
-		end) end
-	end)
+		if C_Timer then C_Timer.After(0.4, function() card.bar:Show() end) end
+	end
 	card:Hide()
 	return card
 end
@@ -254,46 +258,68 @@ function RC:Show(L)
 	local C = UI.COL
 	local className, class = UnitClass("player")
 	local cc = RAID_CLASS_COLORS and RAID_CLASS_COLORS[class or ""]
-	-- um tom abaixo da cor da classe: o texto branco lê em sacerdote e ladino
-	card.band:SetColorTexture((cc and cc.r or C.accent[1]) * 0.7, (cc and cc.g or C.accent[2]) * 0.7,
-		(cc and cc.b or C.accent[3]) * 0.7, 0.95)
+	local ccor = cc and { cc.r, cc.g, cc.b } or C.accent
+	card.iconBox:SetColorTexture(ccor[1], ccor[2], ccor[3], 0.12)
 	classIcon(card.icon, class)
 	card.name:SetText(UnitName("player") or "")
 	card.who:SetText(("%s %s"):format(UnitRace("player") or "", className or ""))
+	card.who:SetTextColor(ccor[1], ccor[2], ccor[3], 1)
+	card.kind:SetText(st.sofar and ns.L.CARD_SOFAR or ns.L.CARD_LEVELUP)
 	card.level:SetText(tostring(L))
-	card.grade:SetText(st.letter); card.grade:SetTextColor(UI.unpackc(st.col))
-	card.seal:SetVertexColor(UI.unpackc(st.col))
+
+	-- selo de ritmo e destaque, centrados como um par
+	local boa = NOTA_BOA[st.letter]
+	card.paceTxt:SetText(ns.L.CARD_PACE:format(st.letter or ""))
+	card.pace:SetWidth((card.paceTxt:GetStringWidth() or 60) + 18)
+	card.pace:SetShown(boa and true or false)
 	card.highlight:SetText(st.highlight or "")
 	if st.hcol then card.highlight:SetTextColor(UI.unpackc(st.hcol)) end
+	local wp = boa and card.pace:GetWidth() or 0
+	local wh = st.highlight and (card.highlight:GetStringWidth() or 0) or 0
+	local total = wp + wh + ((boa and st.highlight) and 8 or 0)
+	card.pace:ClearAllPoints(); card.pace:SetPoint("LEFT", card.badges, "CENTER", -total / 2, 0)
+	card.highlight:ClearAllPoints()
+	card.highlight:SetPoint("LEFT", card.badges, "CENTER", -total / 2 + wp + ((boa and st.highlight) and 8 or 0), 0)
 
+	local function oupraco(v, f) return (v and v ~= 0) and f(v) or "—" end
 	local valores = {
-		{ ns.L.CARD_TIME, fmtDur(st.time) },
-		{ ns.L.CARD_XPH, st.xph and fmtNum(st.xph) or "--" },
-		{ ns.L.CARD_QUESTS, tostring(st.quests) },
-		{ ns.L.CARD_GOLD, fmtGold(st.gold) },
+		{ st.sofar and ns.L.CARD_TIME_NOW or ns.L.CARD_TIME, fmtDur(st.time) },
+		{ ns.L.CARD_XPH, st.xph and fmtNum(st.xph) or "—" },
+		{ ns.L.CARD_QUESTS, oupraco(st.quests, tostring) },
+		{ ns.L.CARD_GOLD, oupraco(st.gold, fmtGold) },
 		{ ns.L.CARD_DEATHS, tostring(st.deaths) },
 		{ ns.L.CARD_ZONES, tostring(st.zones) },
 	}
 	for i, v in ipairs(valores) do
-		card.tiles[i].label:SetText(v[1]); card.tiles[i].value:SetText(v[2])
+		card.tiles[i].label:SetText(v[1]:upper()); card.tiles[i].value:SetText(v[2])
+		card.tiles[i].value:SetTextColor(UI.unpackc(i == 4 and st.gold and st.gold > 0 and C.accentBright or C.active))
 	end
-	card.played:SetText(("/played %s  ·  %s"):format(fmtDur(st.played), date and date(ns.L.CARD_DATE) or ""))
 
-	-- compartilhar: só no clique; a pergunta da guilda só para quem está em guilda
+	-- compartilhar: só no clique; guilda só para quem está em guilda e não desligou
 	local msg = self:ChatLine(L)
-	local guilda = IsInGuild and IsInGuild() and ns.db.cardAskGuild ~= false
-	card.ask:SetShown(guilda and true or false)
-	card.askYes:SetScript("OnClick", function() send(msg, "GUILD"); card.ask:Hide() end)
-	card._grupo = IsInGroup and IsInGroup() and true or false
-	card.party:SetShown(card._grupo)
-	card.party:SetScript("OnClick", function()           -- uma vez por card: sem spam
-		send(msg, (IsInRaid and IsInRaid()) and "RAID" or "PARTY")
-		card._grupo = false; card.party:Hide()
-	end)
-	card.copy:SetScript("OnClick", function()             -- a janela de copiar fica atrás do card
+	local function copiar()                               -- a janela de copiar ficaria atrás do card
 		card:Hide()
 		if ns.Share then ns.Share:ShowText(ns.L.CARD_COPYTXT, ns.L.CARD_COPYTXT_H, RC:ShareText(L), false) end
+	end
+	local guilda = IsInGuild and IsInGuild() and ns.db.cardAskGuild ~= false and true or false
+	local grupo = IsInGroup and IsInGroup() and true or false
+	card.guild:SetShown(guilda); card.copy:SetShown(not guilda)
+	card.party:SetShown(grupo)
+	card.party:ClearAllPoints(); card.party:SetPoint("RIGHT", card.more, "LEFT", -6, 0)
+	local direita = grupo and card.party or card.more
+	for _, b in ipairs({ card.guild, card.copy }) do
+		b:ClearAllPoints(); b:SetPoint("LEFT", 14, 0); b:SetPoint("RIGHT", direita, "LEFT", -6, 0)
+	end
+	card.guild:SetScript("OnClick", function() send(msg, "GUILD"); card.guild:Hide(); card.copy:Show() end)
+	card.party:SetScript("OnClick", function()           -- uma vez por card: sem spam
+		send(msg, (IsInRaid and IsInRaid()) and "RAID" or "PARTY")
+		card.party:Hide()
 	end)
+	card.copy:SetScript("OnClick", copiar)
+	card.more:SetScript("OnClick", function(btn)
+		UI.Menu(btn, { { ns.L.CARD_COPYTXT, copiar }, { ns.L.CARD_SHOT, card.tirarPrint } })
+	end)
+	card.bar:Show()
 	card:Show()
 end
 
