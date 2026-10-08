@@ -1,6 +1,7 @@
 --=============================================================================
--- RouteGeom — a geometria pura da rota: pontilhado ao longo de uma linha, ponto de
--- mundo no minimapa, alvo na faixa da bússola. Sem nada do jogo (testada fora dele).
+-- RouteGeom — a geometria pura da rota: pontilhado com setas ao longo de uma linha, cantos
+-- arredondados, trechos recortados contínuos, ponto de mundo no minimapa, alvo na faixa da
+-- bússola. Sem nada do jogo (testada fora dele).
 --
 -- Mundo: x = norte, y = oeste. Ângulos como GetPlayerFacing(): 0 = norte, anti-horário.
 --=============================================================================

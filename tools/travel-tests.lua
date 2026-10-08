@@ -713,6 +713,18 @@ check(cam and #cam == 2, "campo aberto em ângulo qualquer: reta, sem escadinha 
 cam = TRN.Path(parede, A, B, 20000)
 check(cam and #cam <= 5, "contornando a parede: poucos vértices (" .. (cam and #cam or 0) .. ")")
 check(cam and not atravessa(cam, function(r, c) return c == 10 and r < 26 end), "o caminho puxado não atravessa a parede")
+-- campo aberto grande (vários quadrantes): perna longa sai reta, sem cotovelo do A*
+local grande = { [0] = {} }
+for tr = 0, 5 do
+	for tc = 0, 2 do grande[0][tr * 64 + tc] = string.rep(string.char(128, 255), 8) .. string.char(128, 0) end
+end
+cam = TRN.Path(grande, mundo(2, 2), mundo(150, 60), 200000)
+check(cam and #cam == 2, "campo aberto, perna de ~2600 jd: reta (" .. (cam and #cam or 0) .. " pontos)")
+-- começando dentro da parede (ajusta para a célula vizinha): o primeiro trecho sai dela antes
+-- de seguir, não corre por dentro da parede
+cam = TRN.Path(parede, mundo(5, 10), mundo(5, 15), 20000)
+check(cam and not atravessa(cam, function(r, c) return c == 10 and r < 26 and r ~= 5 end),
+	"começo dentro da parede: o caminho não corre por dentro dela")
 
 -- a seta mira o ponto do caminho ~25 jd à frente; o que falta é pelo caminho
 local L_ = { { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 0, x = 100, y = 100 } }   -- 100 norte, 100 oeste
