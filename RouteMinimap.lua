@@ -1,8 +1,8 @@
 --=============================================================================
--- RouteMinimap — a rota em volta do jogador no minimapa, em pontilhado, por pernas:
--- a pé até a parada, o voo pelo traçado, o barco pelo trajeto. Para na borda,
--- apontando para onde segue; a próxima parada vira anel (preso na borda se longe).
--- Respeita o minimapa giratório. Substitui a antiga linha reta do Trail.
+-- RouteMinimap — a rota em volta do jogador no minimapa, em pontilhado com setas, por
+-- pernas: a pé pelo caminho do terreno, o voo pelo traçado, o barco pelo trajeto. Para na
+-- borda; a próxima parada vira anel (preso na borda se longe). Respeita o minimapa
+-- giratório. Substitui a antiga linha reta do Trail.
 --=============================================================================
 local ADDON, ns = ...
 local UI = ns.UI
@@ -15,10 +15,10 @@ local function minimapRange()
 	return G.MinimapRange(zoom, indoor) * ((ns.db and ns.db.minimap.rangeMult) or 1)
 end
 
-local SPACING, INSET = 6, 0.92       -- pixels entre pontos; fração do raio usada
+local SPACING, SETA, INSET = 6, 5, 0.92   -- pixels entre pontos; seta a cada tantos; fração do raio
 local overlay
-local dots, rings = {}, {}
-local nDots, nRings = 0, 0
+local dots, arrows, rings = {}, {}, {}
+local nDots, nArrows, nRings = 0, 0, 0
 local lastSig                         -- o que está desenhado; igual = não refaz
 
 local function ensure()
@@ -30,22 +30,28 @@ local function ensure()
 	return overlay
 end
 
-local function put(list, n, file, size, col, alpha, x, y)
+-- marca (ponto, seta, anel) com sombra escura por baixo: lê sobre qualquer terreno
+local function put(list, n, file, size, col, alpha, x, y, rot)
 	local t = list[n]
 	if not t then
 		t = UI.Media(overlay, file, "OVERLAY")
+		t.sh = UI.Media(overlay, file, "ARTWORK")
 		list[n] = t
 	end
-	t:SetSize(size, size)
+	t:SetSize(size, size); t.sh:SetSize(size + 2, size + 2)
 	t:SetVertexColor(col[1], col[2], col[3], alpha)
+	t.sh:SetVertexColor(0, 0, 0, 0.6 * alpha)
+	if rot then t:SetRotation(rot); t.sh:SetRotation(rot) end
 	t:ClearAllPoints(); t:SetPoint("CENTER", overlay, "CENTER", x, y)
-	t:Show()
+	t.sh:ClearAllPoints(); t.sh:SetPoint("CENTER", overlay, "CENTER", x, y)
+	t:Show(); t.sh:Show()
 end
 
 local function hideAll()
-	for i = 1, #dots do dots[i]:Hide() end
-	for i = 1, #rings do rings[i]:Hide() end
-	nDots, nRings = 0, 0
+	for _, list in ipairs({ dots, arrows, rings }) do
+		for i = 1, #list do list[i]:Hide(); list[i].sh:Hide() end
+	end
+	nDots, nArrows, nRings = 0, 0, 0
 	lastSig = nil
 end
 
@@ -63,8 +69,8 @@ local function update()
 	local facing = GetPlayerFacing and GetPlayerFacing() or 0
 	local rotate = GetCVar and GetCVar("rotateMinimap") == "1"
 	-- parado, mesma rota e mesmo zoom: o desenho de antes vale
-	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.3f|%s"):format(tostring(route), route.leg, p.x, p.y,
-		rotate and facing or 0, ydPerPx, tostring(route.legs[route.leg] and route.legs[route.leg].path))
+	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.3f|%d"):format(tostring(route), route.leg, p.x, p.y,
+		rotate and facing or 0, ydPerPx, route.pv or 0)
 	if sig == lastSig then return end
 	hideAll()
 	lastSig = sig
@@ -75,25 +81,28 @@ local function update()
 		local rx, ry = G.ToMinimap(p.x, p.y, x, y, facing, rotate, ydPerPx, math.huge)
 		return rx, ry
 	end
+	local function clip(x0, y0, x1, y1) return G.ClipCircle(x0, y0, x1, y1, radius) end
 	for i = route.leg, #route.legs do
 		local leg = route.legs[i]
 		local alpha = i == route.leg and 1 or 0.55
 		local pts = ns.RouteMap.LegPoints(leg, i == route.leg and p or nil)
-		local ax, ay
+		local xy = {}
 		for k = 1, #pts - 2, 3 do
-			local bx, by
+			local bx, by = false, false
 			if pts[k + 2] == p.c then bx, by = px(pts[k], pts[k + 1]) end
-			if ax and bx then
-				local x0, y0, x1, y1 = G.ClipCircle(ax, ay, bx, by, radius)
-				if x0 then
-					local d = G.Dots({ x0, y0, x1, y1 }, SPACING)
-					for j = 1, #d - 1, 2 do
-						nDots = nDots + 1
-						put(dots, nDots, "dot", 3, col, alpha, d[j], d[j + 1])
-					end
+			xy[#xy + 1], xy[#xy + 2] = bx, by
+		end
+		for _, run in ipairs(G.Runs(xy, clip)) do
+			local m = G.Marks(run, SPACING, SETA)
+			for k = 1, #m - 2, 3 do
+				if m[k + 2] then
+					nArrows = nArrows + 1
+					put(arrows, nArrows, "chevron", 9, col, alpha, m[k], m[k + 1], m[k + 2])
+				else
+					nDots = nDots + 1
+					put(dots, nDots, "dot", 3, col, alpha, m[k], m[k + 1])
 				end
 			end
-			ax, ay = bx, by
 		end
 	end
 	-- próxima parada (ou o destino), presa na borda se estiver longe

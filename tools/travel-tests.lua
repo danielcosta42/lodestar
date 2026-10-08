@@ -279,6 +279,56 @@ check(#d == 10 and near(d[3], 2.5) and near(d[9], 10), "pontos a cada 2,5 ao lon
 d = G.Dots({ 0, 0, 3, 0, 3, 3 }, 2)
 check(#d == 8 and near(d[5], 3) and near(d[6], 1), "o espaçamento continua depois da curva")
 
+-- #43: cantos arredondados (só no desenho) e trechos contínuos para o pontilhado
+local function maxCurva(xy)
+	local m = 0
+	for i = 3, #xy - 3, 2 do
+		local a1 = math.atan2(xy[i + 1] - xy[i - 1], xy[i] - xy[i - 2])
+		local a2 = math.atan2(xy[i + 3] - xy[i + 1], xy[i + 2] - xy[i])
+		if xy[i] ~= xy[i - 2] or xy[i + 1] ~= xy[i - 1] then
+			if xy[i + 2] ~= xy[i] or xy[i + 3] ~= xy[i + 1] then
+				m = math.max(m, math.abs((a2 - a1 + math.pi) % (2 * math.pi) - math.pi))
+			end
+		end
+	end
+	return math.deg(m)
+end
+local rd = G.Round({ 0, 0, 100, 0, 100, 100 }, 20)
+check(rd[1] == 0 and rd[2] == 0 and rd[#rd - 1] == 100 and rd[#rd] == 100, "canto redondo: as pontas ficam")
+check(maxCurva(rd) < 35, "canto de 90° vira curva suave (maior virada " .. math.floor(maxCurva(rd)) .. "°)")
+local perto = math.huge
+for i = 1, #rd - 1, 2 do perto = math.min(perto, math.sqrt((rd[i] - 100) ^ 2 + rd[i + 1] ^ 2)) end
+check(perto > 1 and perto < 20, "a curva corta o canto, mas perto dele (" .. math.floor(perto) .. " jd)")
+check(#G.Round({ 0, 0, 50, 0 }, 20) == 4, "reta sem canto fica igual")
+local function corta20(x0, y0, x1, y1)        -- recorte de mentira: só x <= 20
+	if x0 > 20 and x1 > 20 then return nil end
+	local function em20(ax, ay, bx, by) local t = (20 - ax) / (bx - ax); return 20, ay + (by - ay) * t end
+	if x0 > 20 then x0, y0 = em20(x1, y1, x0, y0) end
+	if x1 > 20 then x1, y1 = em20(x0, y0, x1, y1) end
+	return x0, y0, x1, y1
+end
+local runs = G.Runs({ 0, 0, 10, 0, 10, 10 }, corta20)
+check(#runs == 1 and #runs[1] == 6, "linha toda dentro: um trecho só, o pontilhado não recomeça nas curvas")
+runs = G.Runs({ 0, 0, 10, 0, 30, 0, 10, 10, 0, 10 }, corta20)
+check(#runs == 2 and #runs[1] == 6 and runs[1][5] == 20 and #runs[2] == 6 and runs[2][1] == 20,
+	"sai e volta pela borda: dois trechos, cortados nela")
+runs = G.Runs({ 0, 0, false, false, 10, 0, 20, 0 }, corta20)
+check(#runs == 1 and runs[1][1] == 10, "ponto fora do mapa aberto (outro continente) quebra o trecho")
+-- setas no pontilhado: a cada tantos pontos, apontando para onde a linha segue (a seta sem
+-- girar aponta para cima; a rotação é anti-horária, como SetRotation)
+local function aponta(rot) return -math.sin(rot), math.cos(rot) end
+local mk = G.Marks({ 0, 0, 100, 0 }, 10, 3)
+local setas, pontos, ax_, ay_ = 0, 0, nil, nil
+for k = 1, #mk - 2, 3 do
+	if mk[k + 2] then setas = setas + 1; ax_, ay_ = aponta(mk[k + 2]) else pontos = pontos + 1 end
+end
+check(setas == 3 and pontos == 8 and math.abs(ax_ - 1) < 1e-6 and math.abs(ay_) < 1e-6,
+	"linha para a direita: 1 seta a cada 3 pontos, apontando para a direita")
+mk = G.Marks({ 0, 0, 0, 100 }, 10, 3, true)
+ax_, ay_ = aponta(mk[9])
+check(mk[9] and math.abs(ax_) < 1e-6 and math.abs(ay_ + 1) < 1e-6,
+	"no canvas (y para baixo), descendo: a seta aponta para baixo")
+
 local rx, ry, inside = G.ToMinimap(0, 0, 10, 0, 0, false, 1, 100)
 check(near(rx, 0) and near(ry, 10) and inside, "10 jd ao norte: em cima")
 rx, ry = G.ToMinimap(0, 0, 0, 10, 0, false, 1, 100)
@@ -592,29 +642,37 @@ check(select(1, T.PickAnnounced(cands, "Zepelim chegou!")) == 285, "sem o nome n
 local TRN = load("Terrain.lua", {}).Terrain
 local DIRS8 = { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } }
 -- quadrante 0 sintético: `bloq(r, c)` diz o que é parede, `agua(r, c)` o que é lago
-local function quadranteSint(bloq, agua)
-	local by, wb = {}, {}
-	for r = 0, 31 do
-		for c = 0, 31 do
-			local v = 0
-			if not bloq(r, c) then
-				for d, rc in ipairs(DIRS8) do
-					local nr, nc = r + rc[1], c + rc[2]
-					if nr >= 0 and nr < 32 and nc >= 0 and nc < 32 and not bloq(nr, nc) then v = v + 2 ^ (d - 1) end
+-- `tq` quadrantes por lado (1 se omitido)
+local function quadranteSint(bloq, agua, tq)
+	tq = tq or 1
+	local lado, grade = 32 * tq, {}
+	for qr = 0, tq - 1 do
+		for qc = 0, tq - 1 do
+			local by, wb = {}, {}
+			for r = qr * 32, qr * 32 + 31 do
+				for c = qc * 32, qc * 32 + 31 do
+					local v = 0
+					if not bloq(r, c) then
+						for d, rc in ipairs(DIRS8) do
+							local nr, nc = r + rc[1], c + rc[2]
+							if nr >= 0 and nr < lado and nc >= 0 and nc < lado and not bloq(nr, nc) then v = v + 2 ^ (d - 1) end
+						end
+					end
+					by[#by + 1] = string.char(1, v)
 				end
 			end
-			by[#by + 1] = string.char(1, v)
+			for i = 0, 127 do
+				local v = 0
+				for k = 0, 7 do
+					local cel = i * 8 + k
+					if agua and agua(qr * 32 + math.floor(cel / 32), qc * 32 + cel % 32) then v = v + 2 ^ k end
+				end
+				wb[#wb + 1] = string.char(1, v)
+			end
+			grade[qr * 64 + qc] = table.concat(by) .. table.concat(wb)
 		end
 	end
-	for i = 0, 127 do
-		local v = 0
-		for k = 0, 7 do
-			local cel = i * 8 + k
-			if agua and agua(math.floor(cel / 32), cel % 32) then v = v + 2 ^ k end
-		end
-		wb[#wb + 1] = string.char(1, v)
-	end
-	return { [0] = { [0] = table.concat(by) .. table.concat(wb) } }
+	return { [0] = grade }
 end
 local function mundo(r, c) return TRN.CellCenter(0, r, c) end
 local function comprimento(pts)
@@ -629,8 +687,9 @@ local cam = TRN.Path(parede, A, B, 20000)
 check(cam and #cam >= 2, "há caminho pela brecha da parede")
 check(cam and comprimento(cam) > 2.5 * math.sqrt((A.x - B.x) ^ 2 + (A.y - B.y) ^ 2), "o caminho contorna a parede (bem mais longo que a reta)")
 check(cam and math.abs(cam[#cam].x - B.x) < 0.01 and math.abs(cam[1].x - A.x) < 0.01, "começa no jogador e termina no destino")
-local fechada = quadranteSint(function(r, c) return c == 10 end)
-check(TRN.Path(fechada, A, B, 20000) == nil, "parede inteira: sem caminho (volta a reta)")
+-- parede inteira entre duas regiões grandes (não ilhas): sem caminho, volta à reta
+local fechada = quadranteSint(function(r, c) return c == 48 end, nil, 3)
+check(TRN.Path(fechada, mundo(5, 40), mundo(5, 56), 20000) == nil, "parede inteira: sem caminho (volta a reta)")
 -- lago no meio: contorna se a volta for curta
 local lago = quadranteSint(function() return false end, function(r, c) return c >= 9 and c <= 11 and r >= 3 and r <= 7 end)
 cam = TRN.Path(lago, A, B, 20000)
@@ -644,6 +703,54 @@ for i = 2, #(cam or {}) do                      -- percorre cada segmento a cada
 	end
 end
 check(cam and not molhou, "lago pequeno no meio: contorna em vez de nadar")
+
+-- #43: o caminho puxado — em campo aberto, reta em qualquer ângulo; com parede, contorna sem
+-- atravessar
+local function atravessa(caminho, ruim)
+	for i = 2, #(caminho or {}) do
+		local p0, p1 = caminho[i - 1], caminho[i]
+		local len = math.sqrt((p1.x - p0.x) ^ 2 + (p1.y - p0.y) ^ 2)
+		for t = 0, len, 2 do
+			if ruim(TRN.Cell(p0.x + (p1.x - p0.x) * t / len, p0.y + (p1.y - p0.y) * t / len)) then return true end
+		end
+	end
+	return false
+end
+local aberto = quadranteSint(function() return false end)
+cam = TRN.Path(aberto, mundo(5, 5), mundo(20, 12), 20000)
+check(cam and #cam == 2, "campo aberto em ângulo qualquer: reta, sem escadinha (" .. (cam and #cam or 0) .. " pontos)")
+cam = TRN.Path(parede, A, B, 20000)
+check(cam and #cam <= 5, "contornando a parede: poucos vértices (" .. (cam and #cam or 0) .. ")")
+check(cam and not atravessa(cam, function(r, c) return c == 10 and r < 26 end), "o caminho puxado não atravessa a parede")
+-- campo aberto grande (vários quadrantes): perna longa sai reta, sem cotovelo do A*
+local grande = { [0] = {} }
+for tr = 0, 5 do
+	for tc = 0, 2 do grande[0][tr * 64 + tc] = string.rep(string.char(128, 255), 8) .. string.char(128, 0) end
+end
+cam = TRN.Path(grande, mundo(2, 2), mundo(150, 60), 200000)
+check(cam and #cam == 2, "campo aberto, perna de ~2600 jd: reta (" .. (cam and #cam or 0) .. " pontos)")
+-- começando dentro da parede (ajusta para a célula vizinha): o primeiro trecho sai dela antes
+-- de seguir, não corre por dentro da parede
+cam = TRN.Path(parede, mundo(5, 10), mundo(5, 15), 20000)
+check(cam and not atravessa(cam, function(lin, col) return col == 10 and lin < 26 and lin ~= 5 end),
+	"começo dentro da parede: o caminho não corre por dentro dela")
+-- destino numa ilha da grade (morro de prédio, rampa que o terreno não tem): vai pelo
+-- terreno até a borda mais perto e só o fim salta em reta
+local function ilhaEm(r0, c0)
+	return function(lin, col) return math.max(math.abs(lin - r0), math.abs(col - c0)) == 2 end
+end
+local CEL_ = TRN.CellCenter(0, 0, 0).y - TRN.CellCenter(0, 0, 1).y
+cam = TRN.Path(quadranteSint(ilhaEm(11, 21)), mundo(11, 5), mundo(11, 21), 20000)
+local penult = cam and cam[#cam - 1]
+check(cam and cam[#cam].x == mundo(11, 21).x and cam[1].x == mundo(11, 5).x
+	and math.sqrt((penult.x - mundo(11, 21).x) ^ 2 + (penult.y - mundo(11, 21).y) ^ 2) <= 3.5 * CEL_,
+	"destino ilhado: caminho até a borda da ilha, depois reta curta até ele")
+cam = TRN.Path(quadranteSint(ilhaEm(11, 5)), mundo(11, 5), mundo(11, 25), 20000)
+check(cam and cam[1].x == mundo(11, 5).x and cam[#cam].y == mundo(11, 25).y,
+	"jogador ilhado (dentro da vila): sai pela célula livre mais perto e segue")
+local bloco = quadranteSint(function(lin, col) return math.abs(lin - 11) <= 3 and math.abs(col - 5) <= 3 end)
+cam = TRN.Path(bloco, mundo(11, 5), mundo(11, 25), 20000)
+check(cam and cam[#cam].y == mundo(11, 25).y, "jogador no meio de um bloco (prédio grande): sai dele e segue")
 
 -- a seta mira o ponto do caminho ~25 jd à frente; o que falta é pelo caminho
 local L_ = { { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 0, x = 100, y = 100 } }   -- 100 norte, 100 oeste
@@ -660,12 +767,20 @@ check(cam and comprimento(cam) > reta and comprimento(cam) < 1.6 * reta,
 	"real: Ratchet -> Encruzilhada pelo terreno (" .. (cam and math.floor(comprimento(cam)) or 0) .. " jd; reta " .. math.floor(reta) .. ")")
 
 -- a perna a pé com caminho: desenho e "quanto falta" seguem o caminho
-local RMT = load("RouteMap.lua", { Terrain = TRN }).RouteMap
+local RMT = load("RouteMap.lua", { Terrain = TRN, RouteGeom = G }).RouteMap
 local perna = { k = "walk", a = P(0, 0, 0), b = P(0, 100, 100),
 	path = { P(0, 0, 0), P(0, 100, 0), P(0, 100, 100) } }
 pts = RMT.LegPoints(perna, P(0, 90, 2))
-check(#pts == 9 and pts[1] == 90 and pts[4] == 100 and pts[5] == 0 and pts[7] == 100 and pts[8] == 100,
-	"a pé com caminho: do jogador, o resto do caminho (sem o trecho já andado)")
+local atras, canto = false, math.huge
+for i = 1, #pts - 2, 3 do
+	if pts[i] < 90 - 1e-6 then atras = true end
+	canto = math.min(canto, math.sqrt((pts[i] - 100) ^ 2 + pts[i + 1] ^ 2))
+end
+check(pts[1] == 90 and pts[2] == 2 and pts[#pts - 2] == 100 and pts[#pts - 1] == 100 and not atras and canto < 8,
+	"a pé com caminho: do jogador, o resto do caminho (sem o trecho já andado), dobrando no canto")
+pts = RMT.LegPoints(perna)
+check(#pts > 6 and pts[1] == 0 and pts[2] == 0 and pts[#pts - 2] == 100,
+	"perna a pé seguinte, já com caminho: desenhada pelo caminho, não em reta")
 local TT = load("Travel.lua", { Journey = J, Terrain = TRN }).Travel
 check(math.abs(TT.Remaining({ leg = 1, legs = { perna } }, P(0, 90, 2), 10) - 11) < 0.01,
 	"quanto falta a pé: pelo caminho (110 jd a 10 jd/s), não em reta")

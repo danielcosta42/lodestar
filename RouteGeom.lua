@@ -1,6 +1,7 @@
 --=============================================================================
--- RouteGeom — a geometria pura da rota: pontilhado ao longo de uma linha, ponto de
--- mundo no minimapa, alvo na faixa da bússola. Sem nada do jogo (testada fora dele).
+-- RouteGeom — a geometria pura da rota: pontilhado com setas ao longo de uma linha, cantos
+-- arredondados, trechos recortados contínuos, ponto de mundo no minimapa, alvo na faixa da
+-- bússola. Sem nada do jogo (testada fora dele).
 --
 -- Mundo: x = norte, y = oeste. Ângulos como GetPlayerFacing(): 0 = norte, anti-horário.
 --=============================================================================
@@ -25,6 +26,69 @@ function G.Dots(path, spacing)
 			t = t + spacing
 		end
 		carry = len - (t - spacing)
+	end
+	return out
+end
+
+-- Cantos arredondados da linha {x1, y1, x2, y2, ...}: em cada vértice do meio, corta até `r`
+-- de cada lado (no máximo 1/3 do segmento, para dois cantos não se cruzarem) e liga por uma
+-- curva de `n` pedaços. As pontas ficam.
+function G.Round(p, r, n)
+	n = n or 4
+	if #p < 6 then return p end
+	local out = { p[1], p[2] }
+	for i = 3, #p - 3, 2 do
+		local ax, ay, vx, vy, bx, by = p[i - 2], p[i - 1], p[i], p[i + 1], p[i + 2], p[i + 3]
+		local la = math.sqrt((ax - vx) ^ 2 + (ay - vy) ^ 2)
+		local lb = math.sqrt((bx - vx) ^ 2 + (by - vy) ^ 2)
+		local ka = la > 0 and math.min(r, la / 3) / la or 0
+		local kb = lb > 0 and math.min(r, lb / 3) / lb or 0
+		local qx, qy = vx + (ax - vx) * ka, vy + (ay - vy) * ka
+		local sx, sy = vx + (bx - vx) * kb, vy + (by - vy) * kb
+		for j = 0, n do
+			local t = j / n
+			local u = 1 - t
+			out[#out + 1] = u * u * qx + 2 * u * t * vx + t * t * sx
+			out[#out + 1] = u * u * qy + 2 * u * t * vy + t * t * sy
+		end
+	end
+	out[#out + 1], out[#out + 2] = p[#p - 1], p[#p]
+	return out
+end
+
+-- A linha {x1, y1, ...} (ponto `false` = fora: outro continente) recortada por
+-- `clip(x0, y0, x1, y1)` em trechos contínuos {x, y, x, y, ...}: o pontilhado corre por
+-- cada trecho inteiro, sem recomeçar nos vértices.
+function G.Runs(p, clip)
+	local runs, run = {}, nil
+	for i = 1, #p - 3, 2 do
+		local x0, y0, x1, y1
+		if p[i] and p[i + 2] then x0, y0, x1, y1 = clip(p[i], p[i + 1], p[i + 2], p[i + 3]) end
+		if not x0 then
+			run = nil
+		else
+			if not (run and math.abs(run[#run - 1] - x0) < 1e-6 and math.abs(run[#run] - y0) < 1e-6) then
+				run = { x0, y0 }
+				runs[#runs + 1] = run
+			end
+			run[#run + 1], run[#run + 2] = x1, y1
+		end
+	end
+	return runs
+end
+
+-- O pontilhado do trecho com setas: a cada `every` pontos, uma seta para onde a linha segue.
+-- Devolve {x, y, rot, ...}: rot = false (ponto) ou a rotação anti-horária da seta, que sem
+-- girar aponta para cima. `ydown`: y cresce para baixo (o canvas do mapa).
+function G.Marks(run, spacing, every, ydown)
+	local d, out = G.Dots(run, spacing), {}
+	for k = 1, #d - 1, 2 do
+		local rot = false
+		if ((k + 1) / 2) % every == 0 and d[k + 2] then
+			local dx, dy = d[k + 2] - d[k - 2], d[k + 3] - d[k - 1]
+			rot = math.atan2(-dx, ydown and -dy or dy)
+		end
+		out[#out + 1], out[#out + 2], out[#out + 3] = d[k], d[k + 1], rot
 	end
 	return out
 end
