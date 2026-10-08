@@ -100,7 +100,7 @@ end
 local function update()
 	local WMF = WorldMapFrame
 	local route = ns.Travel and ns.Travel:Route()
-	if not (route and ns.db and ns.db.trail and WMF and WMF:IsShown() and WMF.GetCanvas) then
+	if not (route and ns.db and ns.db.trail and (route.kind ~= "guide" or ns:UIShown()) and WMF and WMF:IsShown() and WMF.GetCanvas) then
 		return hideAll()
 	end
 	local shown = WMF.GetMapID and WMF:GetMapID()

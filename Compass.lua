@@ -86,7 +86,7 @@ local function update()
 	local db = ns.db and ns.db.compass
 	local route = ns.Travel and ns.Travel:Route()
 	local p = route and ns.Travel.PlayerWorld()
-	if not (db and db.enabled and route and p and ns:UIShown()) then
+	if not (db and db.enabled and route and p and (route.kind ~= "guide" or ns:UIShown())) then
 		if frame then frame:Hide() end
 		return
 	end

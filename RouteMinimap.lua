@@ -50,7 +50,8 @@ end
 local function update()
 	hideAll()
 	local route = ns.Travel and ns.Travel:Route()
-	if not (route and ns.db and ns.db.trail and ns:UIShown() and Minimap and G) then return end
+	-- rota do guia só com o guia aberto; destino próprio (manual, corpo) sempre
+	if not (route and ns.db and ns.db.trail and (route.kind ~= "guide" or ns:UIShown()) and Minimap and G) then return end
 	local p = ns.Travel.PlayerWorld()
 	if not p then return end
 	ensure()
