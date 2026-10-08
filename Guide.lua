@@ -314,7 +314,9 @@ function ns:LoadGuide(key, keepProgress, silent)
 		self:Printf(ns.L.GUIDE_LOADED_MSG, key, #guide.steps)
 	end
 	self.fire("_GUIDE_LOADED", guide, silent)
+	self._abrindo = true                    -- o que o guia pula ao abrir não é passo feito agora
 	self:CheckProgress()
+	self._abrindo = nil
 	if self.Viewer then self.Viewer:Refresh() end
 	if self.Waypoint then self.Waypoint:Update() end
 end
@@ -488,7 +490,6 @@ function ns:AdvanceStep(delta)
 			self:Print("|cff88ff88" .. ns.L.GUIDE_DONE .. "|r")
 		end
 	end
-	if delta > 0 and idx > self.char.currentStep and self.fire then self.fire("_STEP_DONE") end
 	self.char.currentStep = idx
 	self.char.steps[guide.key] = idx        -- persiste o passo por-guia (p/ trocar/logar)
 	-- voltar à mão segura o passo: o próximo evento não o pula de novo (até avançar à mão)
@@ -514,6 +515,7 @@ function ns:CheckProgress()
 			break
 		end
 		if self:IsStepActive(step) and not self:IsStepComplete(step) then break end
+		if self:IsStepActive(step) and not self._abrindo and self.fire then self.fire("_STEP_DONE") end
 		local before = self.char.currentStep
 		self:AdvanceStep(1)
 		if self.currentGuide == guide and self.char.currentStep == before then break end

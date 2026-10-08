@@ -119,12 +119,6 @@ local function fillAppearance(p)
 	switchRow(p, L.SET_XPHUD, L.SET_XPHUD_D,
 		function() return ns.db.xpHud end,
 		function(v) ns.db.xpHud = v; if ns.XPHud then ns.XPHud:Update() end end)
-	switchRow(p, L.SET_CARD, L.SET_CARD_D,
-		function() return ns.db.reportCard end, function(v) ns.db.reportCard = v end)
-	switchRow(p, L.SET_CARD_EVERY, L.SET_CARD_EVERY_D,
-		function() return ns.db.cardEvery end, function(v) ns.db.cardEvery = v end)
-	switchRow(p, L.SET_CARD_GUILD, L.SET_CARD_GUILD_D,
-		function() return ns.db.cardAskGuild ~= false end, function(v) ns.db.cardAskGuild = v end)
 	switchRow(p, L.SET_MARK, L.SET_MARK_D,
 		function() return ns.db.markTargets end,
 		function(v) ns.db.markTargets = v; if not v and ns.TargetMarker then ns.TargetMarker:RefreshPlates() end end)
@@ -169,6 +163,12 @@ local function fillPanels(p)
 	buttonRow(p, L.SET_CONS, L.SET_CONS_D,
 		L.SET_OPEN, function() if ns.Consumables then ns.Consumables:Toggle() end end)
 	buttonRow(p, L.SET_CARDNOW, L.SET_CARDNOW_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("card") end)
+	switchRow(p, L.SET_CARD, L.SET_CARD_D,
+		function() return ns.db.reportCard end, function(v) ns.db.reportCard = v end)
+	switchRow(p, L.SET_CARD_EVERY, L.SET_CARD_EVERY_D,
+		function() return ns.db.cardEvery end, function(v) ns.db.cardEvery = v end)
+	switchRow(p, L.SET_CARD_GUILD, L.SET_CARD_GUILD_D,
+		function() return ns.db.cardAskGuild ~= false end, function(v) ns.db.cardAskGuild = v end)
 	buttonRow(p, L.SET_TOUR, L.SET_TOUR_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("intro") end)
 end
 

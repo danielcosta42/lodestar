@@ -24,8 +24,12 @@ RT.Run = run
 -- No ding vira run.levels[L] — os números do boletim daquele nível.
 local function cur()
 	local r = run()
-	r.cur = r.cur or { quests = 0, deaths = 0, steps = 0, zones = {},
-		money0 = GetMoney and GetMoney() or 0, xp = UnitXPMax and UnitXPMax("player") or nil }
+	if not r.cur then
+		local z = GetZoneText and GetZoneText() or ""
+		r.cur = { level = UnitLevel and UnitLevel("player") or nil, quests = 0, deaths = 0, steps = 0,
+			zones = z ~= "" and { [z] = true } or {},       -- a zona onde o nível começou conta
+			money0 = GetMoney and GetMoney() or 0, xp = UnitXPMax and UnitXPMax("player") or nil }
+	end
 	return r.cur
 end
 
@@ -33,6 +37,22 @@ local function contaZonas(z)
 	local n = 0
 	for _ in pairs(z or {}) do n = n + 1 end
 	return n
+end
+
+-- fecha o nível que acabou (L = o nível alcançado) e começa o seguinte do zero. Registro
+-- de outro nível (addon desligado num ding, reload antes da resposta) não vira os
+-- números deste: fica só a marca de que o nível existiu.
+local function fechar(r, L, total)
+	local c = cur()
+	r.levels = r.levels or {}
+	if c.level and c.level ~= L - 1 then
+		r.levels[L] = {}
+	else
+		r.levels[L] = { time = (r.levelStart and total) and (total - r.levelStart) or nil, quests = c.quests,
+			deaths = c.deaths, steps = c.steps, zones = contaZonas(c.zones), xp = c.xp,
+			gold = (GetMoney and GetMoney() or 0) - (c.money0 or 0) }
+	end
+	r.cur, r.levelStart = nil, total
 end
 
 -- o nível em andamento, no formato de run.levels (o boletim aberto à mão usa)
@@ -87,6 +107,11 @@ local function requestPlayed()
 end
 
 ns:On("PLAYER_LEVEL_UP", function(_, level)
+	if pendingLevel then           -- segundo ding antes da resposta: fecha o anterior pela estimativa
+		local t = lastPlayed and RT:LivePlayed() or nil
+		run().levelPlayed[pendingLevel] = t
+		fechar(run(), pendingLevel, t)
+	end
 	pendingLevel = tonumber(level) or UnitLevel("player")
 	requestPlayed()
 end)
@@ -99,19 +124,15 @@ ns:On("TIME_PLAYED_MSG", function(_, total, levelTime)
 	if pendingLevel then
 		local L = pendingLevel; pendingLevel = nil
 		r.levelPlayed[L] = total
-		-- fecha o nível que acabou e começa o novo do zero
-		local c = cur()
-		r.levels = r.levels or {}
-		r.levels[L] = { time = r.levelStart and (total - r.levelStart) or nil, quests = c.quests,
-			deaths = c.deaths, steps = c.steps, zones = contaZonas(c.zones), xp = c.xp,
-			gold = (GetMoney and GetMoney() or 0) - (c.money0 or 0) }
-		r.cur, r.levelStart = nil, total
+		fechar(r, L, total)
 		cur()
 		opponent()                                    -- congela o oponente na 1ª vez
 		if ns.ReportCard then ns.ReportCard:OnLevel(L, total) end
 		RT:UpdateGhost(L)
 	elseif levelTime then
 		r.levelStart = total - levelTime              -- login: quanto do nível atual já foi
+		-- registro de outro nível (reload entre o ding e a resposta): recomeça
+		if r.cur and r.cur.level and r.cur.level ~= UnitLevel("player") then r.cur = nil end
 	end
 end)
 

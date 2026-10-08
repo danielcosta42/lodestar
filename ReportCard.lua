@@ -81,16 +81,17 @@ function RC:Stats(L)
 		steps = s.steps or 0, gold = s.gold,
 		xph = (s.time and s.time > 0 and s.xp) and s.xp / s.time * 3600 or nil,
 	}
-	-- destaque: o nível mais rápido até agora (com 3+ níveis medidos) ou o fantasma
-	if s.time and r.levels then
-		local n, menor = 0, true
+	-- destaque: o melhor ritmo (XP/h) até agora, com 3+ níveis medidos — em segundos,
+	-- nível alto sempre demora mais — ou o fantasma
+	if out.xph and r.levels then
+		local n, melhor = 0, true
 		for lv, o in pairs(r.levels) do
-			if o.time and lv ~= L then
+			if o.time and o.time > 0 and o.xp and lv ~= L then
 				n = n + 1
-				if o.time <= s.time then menor = false end
+				if o.xp / o.time * 3600 >= out.xph then melhor = false end
 			end
 		end
-		if n >= 2 and menor then out.highlight, out.hcol = ns.L.CARD_FASTEST, UI.COL.done end
+		if n >= 2 and melhor then out.highlight, out.hcol = ns.L.CARD_FASTEST, UI.COL.done end
 	end
 	local opp = not out.highlight and RT:Opponent()
 	if opp and opp.levelPlayed and opp.levelPlayed[L] then
@@ -105,7 +106,8 @@ end
 -- uma linha para o chat (guilda/grupo): até 255 caracteres, cita o Lodestar
 function RC:ChatLine(L)
 	local st = self:Stats(L)
-	local msg = ns.L.CARD_CHAT:format(L, fmtDur(st.time), st.quests, st.letter, URL)
+	local msg = st.time and ns.L.CARD_CHAT:format(L, fmtDur(st.time), st.quests, st.letter, URL)
+		or ns.L.CARD_CHAT_NT:format(L, st.quests, st.letter, URL)
 	return msg:sub(1, 255)
 end
 
@@ -127,7 +129,7 @@ end
 --------------------------------------------------------------------------------
 -- painel do card (vertical, para print)
 --------------------------------------------------------------------------------
-local W, H = 360, 540
+local W, H = 360, 560
 local card
 
 local function tile(parent, x, y)
@@ -159,7 +161,7 @@ local function build()
 	UI.SetFont(card.name, 17, { outline = "OUTLINE", color = { 1, 1, 1, 1 } })
 	card.name:SetPoint("TOPLEFT", card.icon, "TOPRIGHT", 10, -4)
 	card.who = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.who, 11, { color = { 1, 1, 1, 0.85 } })
+	UI.SetFont(card.who, 11, { outline = "OUTLINE", color = { 1, 1, 1, 0.9 } })
 	card.who:SetPoint("TOPLEFT", card.name, "BOTTOMLEFT", 0, -4)
 	card.close = UI.CloseButton(card, function() card:Hide() end)
 	card.close:SetPoint("TOPRIGHT", -6, -6)
@@ -177,7 +179,8 @@ local function build()
 	card.grade = card:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(card.grade, 32, { outline = "THICKOUTLINE" }); card.grade:SetPoint("CENTER", card.seal, "CENTER", 0, 0)
 	card.sub = card:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.sub, 9, { color = C.muted }); card.sub:SetPoint("TOP", card.seal, "BOTTOM", 0, -2)
+	UI.SetFont(card.sub, 9, { outline = "OUTLINE", color = { 1, 1, 1, 0.8 } })
+	card.sub:SetPoint("BOTTOMRIGHT", card.band, "BOTTOMRIGHT", -12, 8)
 	card.sub:SetText(ns.L.CARD_SUB)
 
 	card.highlight = card:CreateFontString(nil, "OVERLAY")
@@ -196,15 +199,15 @@ local function build()
 
 	-- pergunta da guilda
 	card.ask = CreateFrame("Frame", nil, card)
-	card.ask:SetSize(W - 32, 26); card.ask:SetPoint("BOTTOM", 0, 84)
+	card.ask:SetSize(W - 32, 46); card.ask:SetPoint("TOP", 0, -428)
 	card.askText = card.ask:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(card.askText, 12, { color = C.active }); card.askText:SetPoint("LEFT", 0, 0)
+	UI.SetFont(card.askText, 12, { color = C.active }); card.askText:SetPoint("TOP", 0, 0)
 	card.askText:SetText(ns.L.CARD_ASK_GUILD)
-	card.askNever = UI.Button(card.ask, ns.L.CARD_NEVER, 74, 22); card.askNever:SetPoint("RIGHT", 0, 0)
-	card.askLater = UI.Button(card.ask, ns.L.CARD_LATER, 64, 22)
-	card.askLater:SetPoint("RIGHT", card.askNever, "LEFT", -4, 0)
-	card.askYes = UI.Button(card.ask, ns.L.CARD_YES, 64, 22)
-	card.askYes:SetPoint("RIGHT", card.askLater, "LEFT", -4, 0)
+	card.askNever = UI.Button(card.ask, ns.L.CARD_NEVER, 96, 22); card.askNever:SetPoint("BOTTOMRIGHT", 0, 0)
+	card.askLater = UI.Button(card.ask, ns.L.CARD_LATER, 96, 22)
+	card.askLater:SetPoint("BOTTOM", 0, 0)
+	card.askYes = UI.Button(card.ask, ns.L.CARD_YES, 96, 22)
+	card.askYes:SetPoint("BOTTOMLEFT", 0, 0)
 	card.askLater:SetScript("OnClick", function() card.ask:Hide() end)
 	card.askNever:SetScript("OnClick", function() ns.db.cardAskGuild = false; card.ask:Hide() end)
 
@@ -251,7 +254,9 @@ function RC:Show(L)
 	local C = UI.COL
 	local className, class = UnitClass("player")
 	local cc = RAID_CLASS_COLORS and RAID_CLASS_COLORS[class or ""]
-	card.band:SetColorTexture(cc and cc.r or C.accent[1], cc and cc.g or C.accent[2], cc and cc.b or C.accent[3], 0.85)
+	-- um tom abaixo da cor da classe: o texto branco lê em sacerdote e ladino
+	card.band:SetColorTexture((cc and cc.r or C.accent[1]) * 0.7, (cc and cc.g or C.accent[2]) * 0.7,
+		(cc and cc.b or C.accent[3]) * 0.7, 0.95)
 	classIcon(card.icon, class)
 	card.name:SetText(UnitName("player") or "")
 	card.who:SetText(("%s %s"):format(UnitRace("player") or "", className or ""))
@@ -272,7 +277,7 @@ function RC:Show(L)
 	for i, v in ipairs(valores) do
 		card.tiles[i].label:SetText(v[1]); card.tiles[i].value:SetText(v[2])
 	end
-	card.played:SetText(("/played %s  ·  %s"):format(fmtDur(st.played), date and date("%d/%m/%Y") or ""))
+	card.played:SetText(("/played %s  ·  %s"):format(fmtDur(st.played), date and date(ns.L.CARD_DATE) or ""))
 
 	-- compartilhar: só no clique; a pergunta da guilda só para quem está em guilda
 	local msg = self:ChatLine(L)
@@ -281,8 +286,12 @@ function RC:Show(L)
 	card.askYes:SetScript("OnClick", function() send(msg, "GUILD"); card.ask:Hide() end)
 	card._grupo = IsInGroup and IsInGroup() and true or false
 	card.party:SetShown(card._grupo)
-	card.party:SetScript("OnClick", function() send(msg, "PARTY") end)
-	card.copy:SetScript("OnClick", function()
+	card.party:SetScript("OnClick", function()           -- uma vez por card: sem spam
+		send(msg, (IsInRaid and IsInRaid()) and "RAID" or "PARTY")
+		card._grupo = false; card.party:Hide()
+	end)
+	card.copy:SetScript("OnClick", function()             -- a janela de copiar fica atrás do card
+		card:Hide()
 		if ns.Share then ns.Share:ShowText(ns.L.CARD_COPYTXT, ns.L.CARD_COPYTXT_H, RC:ShareText(L), false) end
 	end)
 	card:Show()
