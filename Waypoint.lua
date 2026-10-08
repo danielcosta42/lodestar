@@ -41,6 +41,17 @@ function WP:ClearCustom()
 	self:Update()
 end
 
+-- /ls way e o campo do painel Viagem: sem zona, vale o mapa onde o jogador está
+function WP:Way(text)
+	local x, y, zone = WP.ParseWay(text)
+	if not x then return false end
+	local map = not zone and C_Map.GetBestMapForUnit("player") or nil
+	self:SetCustom(zone, x, y, ns.L.WAYPOINT, map)
+	local info = map and C_Map.GetMapInfo(map)
+	ns:Printf("%s: %s %.1f, %.1f", ns.L.WAYPOINT, zone or info and info.name or "?", x, y)
+	return true
+end
+
 -- Shift+clique (mapa ou minimapa) em (uiMapID, x, y 0-100): em cima do destino manual
 -- atual (`near`), limpa; senão, novo destino ali.
 function WP:ClickDest(map, x, y, near)
@@ -67,6 +78,14 @@ function WP.FmtTime(s)
 	if s >= 3600 then return ("%dh%02dm"):format(math.floor(s / 3600), math.floor(s % 3600 / 60)) end
 	if s >= 60 then return ("%dm%02ds"):format(math.floor(s / 60), s % 60) end
 	return ("%ds"):format(s)
+end
+
+-- "x y [zona]" (vírgula também separa) -> x, y (0-100), zona ou nil
+function WP.ParseWay(text)
+	local x, y, zone = (text or ""):match("^%s*([%d%.]+)[%s,]+([%d%.]+)%s*(.-)%s*$")
+	x, y = tonumber(x), tonumber(y)
+	if not (x and y and x <= 100 and y <= 100) then return nil end
+	return x, y, zone ~= "" and zone or nil
 end
 
 function WP.LegText(route, i, secs)

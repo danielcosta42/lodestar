@@ -260,15 +260,9 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Waypoint then ns.Waypoint:ClearCustom() end
 		ns:Print(ns.L.DEST_CLEARED)
 	elseif cmd == "way" then
-		local x, y, zone = rest:match("^([%d%.]+)[%s,]+([%d%.]+)%s*(.*)$")
-		x, y = tonumber(x), tonumber(y)
-		if x and y and ns.Waypoint then
-			zone = (zone ~= "" and zone) or (GetZoneText and GetZoneText()) or nil
-			ns.Waypoint:SetCustom(zone, x, y, ns.L.WAYPOINT)
-			ns:Printf("%s: %s %.1f, %.1f", ns.L.WAYPOINT, zone or "?", x, y)
-		else
-			ns:Print("/ls way <x> <y> [zona]")
-		end
+		if not (ns.Waypoint and ns.Waypoint:Way(rest)) then ns:Print("/ls way <x> <y> [zona]") end
+	elseif cmd == "travel" or cmd == "viagem" then
+		if ns.TravelPanel then ns.TravelPanel:Toggle() end
 	elseif cmd == "export" then
 		if ns.Share then ns.Share:ShowExport(rest ~= "" and rest or nil) end
 	elseif cmd == "import" then

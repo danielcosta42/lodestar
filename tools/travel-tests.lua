@@ -307,4 +307,11 @@ check(S.KindFromText("Estalagem") == "inn" and S.KindFromText("voo") == "flight"
 check(S.KindFromText("treinador") == "classtrainer", "treinador = da classe")
 check(S.KindFromText("banana") == nil, "texto desconhecido: nada")
 
+-- ── Campo de coordenada (painel Viagem e /ls way) ────────────────────────────
+local wx, wy, wz = WPT.ParseWay("45.2 30.1")
+check(wx == 45.2 and wy == 30.1 and wz == nil, "coordenada sem zona")
+wx, wy, wz = WPT.ParseWay(" 45,30 Elwynn Forest ")
+check(wx == 45 and wy == 30 and wz == "Elwynn Forest", "coordenada com vírgula e zona")
+check(WPT.ParseWay("abc") == nil and WPT.ParseWay("120 30") == nil, "texto ou fora de 0-100: nada")
+
 print(("ok: %d checks"):format(checks))
