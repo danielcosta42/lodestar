@@ -133,6 +133,16 @@ check(fe:EvalCondition("Skyborne"), "Skyborne é reconhecido pelo id da raça")
 raceId = 1
 check(not fe:EvalCondition("Skyborne"), "humano não é Skyborne")
 
+-- pré-req de fora do guia vira `completed(...)`; com várias, basta uma (preSingle)
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 1642 end
+check(fe:EvalCondition("Warrior completed(2998,1642)"), "completed com várias: qualquer uma vale")
+check(not fe:EvalCondition("Paladin completed(2998,1642)"), "classe ainda conta no AND")
+check(not fe:EvalCondition("completed(2998)"), "completed de uma só que não foi entregue")
+-- exclusiva: feita a irmã, o passo some (Call of Fire de Durotar x a de Orgrimmar)
+check(not fe:EvalCondition("Warrior not completed(1642) not haveq(1642)"), "irmã entregue esconde o passo")
+check(fe:EvalCondition("not completed(2998) not haveq(2998)"), "irmã não feita deixa o passo")
+C_QuestLog.IsQuestFlaggedCompleted = function() return false end
+
 -- char novo Skyborne cai no guia de Zephras Isle, não no da zona do token
 local sky = load_addon(16001)
 sky:RegisterGuide("Leveling/Alliance/Elwynn Forest (1-10)", { faction = "Alliance" }, "step\n  note a\n")

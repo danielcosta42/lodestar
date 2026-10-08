@@ -120,7 +120,7 @@ def cobertura():
             return "entrega de Craftsman's Writ"
         if q.get("reqSkill"):
             return "exige profissão"
-        if q["zoneOrSort"] in FORA_DO_LEVELING or (q["specialFlags"] or 0) & 3:
+        if q["zoneOrSort"] in FORA_DO_LEVELING or (q["specialFlags"] or 0) & 1:
             return "evento/repetível/campo de batalha"
         if not any((npcs.get(str(n)) or {}).get("spawns") for n in q["startNpcs"]) and \
                 not any((objs.get(str(o)) or {}).get("spawns") for o in q["startObjects"]):

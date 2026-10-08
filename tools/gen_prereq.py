@@ -12,7 +12,8 @@ from router import BUILD as B
 Q = json.load(open(os.path.join(B, "quests.json"), encoding="utf-8"))
 N = json.load(open(os.path.join(B, "npcs.json"), encoding="utf-8"))
 Z = json.load(open(os.path.join(B, "zones.json"), encoding="utf-8"))
-GD = os.path.join("..", "Guides")
+HERE = os.path.dirname(os.path.abspath(__file__))
+GD = os.path.join(HERE, "..", "Guides")
 
 def giver_coord(qid):
     """(zoneName, x, y) do 1º giver com spawn — p/ a seta 'onde pegar' o prereq."""
@@ -106,6 +107,6 @@ for qid, (z, x, y) in sorted(givers.items()):
     L.append('\t[%d]={"%s",%s,%s},' % (qid, z.replace("\\", "\\\\").replace('"', '\\"'), x, y))
 L.append("}")
 
-open(os.path.join("..", "PrereqData.lua"), "w", encoding="utf-8").write("\n".join(L) + "\n")
+open(os.path.join(HERE, "..", "PrereqData.lua"), "w", encoding="utf-8").write("\n".join(L) + "\n")
 print("PrereqData.lua:", len(idx), "prereqs,", len(gate), "gates,", len(givers), "givers,",
-      os.path.getsize(os.path.join("..", "PrereqData.lua")) // 1024, "KB")
+      os.path.getsize(os.path.join(HERE, "..", "PrereqData.lua")) // 1024, "KB")

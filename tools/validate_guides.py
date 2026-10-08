@@ -72,6 +72,10 @@ def validate(path):
     issues = []
     for si, step in enumerate(steps):
         talk = None
+        # `only completed(a,b)`: o passo só aparece para quem já entregou a ou b —
+        # o pré-req de fora do guia que ele cobre está garantido
+        gates = [{int(x) for x in m.split(",")} for g in step if g["verb"] == "only"
+                 for m in re.findall(r"(?<!not )completed\(([\d,]+)\)", g["line"])]
         for g in step:
             v = g["verb"]
             if v in ("talk", "click", "get", "buy"):
@@ -88,11 +92,12 @@ def validate(path):
                                    "talk %d nao esta em startNpcs %s" % (talk, sorted(givers))))
                 preG = [p for p in (q.get("preGroup") or [])]
                 preS = [p for p in (q.get("preSingle") or [])]
-                missG = [p for p in preG if p not in completed]
+                missG = [p for p in preG if p not in completed and {p} not in gates]
                 if missG:
                     kind = "PREREQ_ORDER" if all(p in guide_accepts for p in missG) else "PREREQ_MISSING"
                     issues.append((kind, qid, si, "preGroup faltando: %s" % missG))
-                if preS and not any(p in completed for p in preS):
+                if preS and not any(p in completed for p in preS) \
+                        and not any(gt <= set(preS) for gt in gates):
                     kind = "PREREQ_ORDER" if any(p in guide_accepts for p in preS) else "PREREQ_MISSING"
                     issues.append((kind, qid, si, "preSingle nenhum feito: %s" % preS))
                 if not faction_ok(q.get("faction"), faction):

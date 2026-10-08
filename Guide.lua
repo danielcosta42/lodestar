@@ -76,7 +76,11 @@ local function evalToken(tok)
 	local fn, arg = tok:match("^(%a+)%(([^)]*)%)$")   -- ex: completed(783)
 	if fn then
 		fn = fn:lower()
-		if fn == "completed" then result = IsQuestComplete(tonumber(arg))
+		if fn == "completed" then   -- completed(a,b): qualquer uma (preSingle do banco)
+			result = false
+			for id in arg:gmatch("%d+") do
+				if IsQuestComplete(tonumber(id)) then result = true; break end
+			end
 		elseif fn == "haveq" then result = IsQuestInLog(tonumber(arg))
 		elseif fn == "hasitem" then
 			local id, n = arg:match("^(%d+),?(%d*)$")

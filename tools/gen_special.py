@@ -13,6 +13,10 @@ GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides")
 # Refeitas do zero a cada rodada: o Special.xml é reescrito inteiro, então guia
 # que o banco novo não gera mais ficaria no disco sem ninguém carregar.
 CATEGORIAS = ("Dungeons", "Attunements", "Class", "Reputation", "Dailies", "Events")
+# Feriados (zoneOrSort): têm guia próprio em Events e ficam fora de masmorra,
+# reputação e classe. Não há mais "Eventos por zona": o bit 2 de specialFlags é
+# escolta/script, não feriado — aqueles guias eram leveling misturado.
+FERIADOS = {-22, -284, -364, -365, -366, -368, -369}
 
 # Attunements curados: (nome, facção A/H/N, seeds, modo). O chain-walk expande
 # os pré-requisitos automaticamente.
@@ -68,23 +72,30 @@ def dungeon_areas(Z):
     return dA
 
 
-def dungeon_quests(Q, N, O, dA):
-    def areas_of(ids, tbl):
-        a = set()
-        for i in ids:
-            e = tbl.get(str(i))
-            if e:
-                for z in e.get("spawns", {}):
-                    a.add(int(z))
-        return a
+def dungeon_quests(r, dA):
+    """Quest de masmorra é a que o leveling deixa de fora por isso (`em_masmorra`):
+    objetivo, fonte do item ou quem recebe só dentro da instância — a masmorra é a
+    da área do objetivo. Conta também a do próprio zoneOrSort da masmorra e a que
+    começa por item que cai lá dentro (The Glowing Shard, do Mutanus). Fonte de
+    minério, erva ou baú espalhada pelo mapa não classifica mais nada (a Jade do
+    Tin Vein mandava "Items of Power" para Deadmines)."""
     dq = defaultdict(list)
-    for qid, q in Q.items():
-        areas = areas_of(q["objCreatures"] + q["endNpcs"] + q["startNpcs"], N) \
-            | areas_of(q["objObjects"], O)
-        for a in areas:
-            if a in dA:
-                dq[dA[a]].append(int(qid))
-                break
+    for qid, q in r.quests.items():
+        areas = set()
+        if r.em_masmorra(q):
+            areas = r._areas(q["objCreatures"] + q["endNpcs"], r.npc) | r._areas(q["objObjects"], r.obj)
+            for iid in q["objItems"]:
+                it = r.items.get(str(iid)) or {}
+                areas |= r._areas(it.get("npc") or [], r.npc) | r._areas(it.get("obj") or [], r.obj)
+        if q["zoneOrSort"] in dA:
+            areas.add(q["zoneOrSort"])
+        for iid in q["startItems"]:
+            src = r.item_source(iid)
+            if src and src[3] and int(src[3][0]) in dA:
+                areas.add(int(src[3][0]))
+        dung = next((dA[a] for a in sorted(int(a) for a in areas) if a in dA), None)
+        if dung:
+            dq[dung].append(int(qid))
     return dq
 
 
@@ -111,10 +122,12 @@ def main():
     data = load_data()
     # um roteador por lado: quest das duas facções fica com quem dá/recebe do lado amigo
     routers = {f: Router(data, f) for f in ("A", "H", "N")}
-    Q, N, O, Z = data["quests"], data["npcs"], data["objects"], data["zones"]
+    Q, N, Z = data["quests"], data["npcs"], data["zones"]
     files = []
 
     def emit(category, faction, title, ids, mode, min_n=1):
+        if category != "Events":           # feriado tem guia próprio, não entra em masmorra/reputação
+            ids = [i for i in ids if Q[str(i)]["zoneOrSort"] not in FERIADOS]
         text, n, _ = routers[faction].generate_linear(ids, faction, title, category, mode=mode)
         if not text or n < min_n:
             return 0
@@ -127,7 +140,7 @@ def main():
     # -- Masmorras ----------------------------------------------------------
     print("=== Dungeons ===")
     dA = dungeon_areas(Z)
-    dq = dungeon_quests(Q, N, O, dA)
+    dq = dungeon_quests(routers["N"], dA)
     for name, qids in sorted(dq.items(), key=lambda kv: -len(kv[1])):
         if len(qids) < 3:
             continue
@@ -200,28 +213,6 @@ def main():
             if n:
                 print("  [%s] %-24s %d" % (fac, zname, n))
 
-    # -- Eventos (specialFlags bit 2 = requer evento) -----------------------
-    print("=== Eventos ===")
-    ev_by_zone = defaultdict(list)
-    for qid, q in Q.items():
-        if not ((q["specialFlags"] or 0) & 2):
-            continue
-        for nid in q["startNpcs"]:
-            npc = N.get(str(nid))
-            if npc and npc.get("spawns"):
-                area = int(next(iter(npc["spawns"])))
-                if str(area) in Z:
-                    ev_by_zone[area].append(int(qid))
-                break
-    for area, qids in sorted(ev_by_zone.items(), key=lambda kv: -len(kv[1])):
-        if len(qids) < 6:
-            continue
-        zname = Z[str(area)]["name"]
-        for fac in ("A", "H"):
-            n = emit("Events", fac, "%s (Eventos)" % zname, qids, "phase")
-            if n:
-                print("  [%s] %-28s %d quests" % (fac, zname, n))
-
     # -- Dailies de PROFISSÃO (Cozinha, Pesca) — guias dedicados ------------
     # (já existiam enfiadas nas dailies de zona; aqui viram guias próprios)
     print("=== Profession Dailies ===")
@@ -269,7 +260,7 @@ def main():
         if len(qids) < 3:
             continue
         for fac in ("A", "H"):
-            n = emit("Events", fac, holiday, qids, "phase")
+            n = emit("Events", fac, holiday, qids, "chain")
             if n:
                 print("  [%s] %-28s %d quests" % (fac, holiday, n))
 

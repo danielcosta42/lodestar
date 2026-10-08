@@ -47,3 +47,32 @@
       para no 51, e o autopilot o escolhia para nível 50-60 → título = faixa das quests que o guia leva.
 - [x] Com o título fiel, a "Alterac Mountains (34-60)" de dez quests ganhava o desempate do autopilot
       → desempate pela faixa em que o nível fica mais no meio; empate exato pela chave (determinístico).
+
+## Revisão das rotas (QA, pedido "valida se as rotas fazem sentido")
+
+Quatro revisores leram os 152 guias; o roteador foi reescrito em cima do que acharam.
+
+- [x] Hub montado por coordenada crua (passo de Stormwind caía na fazenda de Westfall) → hub só para ponto dentro da zona; o resto vai num bloco final.
+- [x] Só `reqLevel` decidia a hora da quest → nível estimado do jogador sobe conforme as entregas; quest espera chegar a ~2 do nível dela.
+- [x] Quest de masmorra no leveling, guia de masmorra classificado por fonte de item → `em_masmorra` sai do leveling; masmorra pelo alvo/entrega.
+- [x] "Eventos por zona" eram escolta (bit 2 de `specialFlags`), não feriado → guias removidos; feriado só pelo `zoneOrSort`.
+- [x] `kill` em NPC amigo, `only` com várias raças, fonte de item de outra zona, mestre de estábulo no lugar do de voo, viagem para a "entrada" da zona → corrigidos no emissor.
+- [x] Cadeia `next` zigue-zague entre continentes → trilha por continente; zona inicial e a ilha só como começo.
+- [x] Pré-req de fora do guia: cortava (−773 quests) ou travava (10 bloqueios, 244 ausentes) → `only completed(...)`; `completed(a,b)` = qualquer uma no `Guide.lua`.
+- [x] exclusiveTo de um lado tratado como escolha (Frostmane Hold sumia) → só par mútuo é escolha; breadcrumb entra antes.
+- [x] Call of Earth de Durotar/Mulgore/Zephras colapsava na da ilha → raça pela zona inicial do giver; capital da raça desempata.
+- [x] Item dado pela quest anterior (Tome of Divinity) saía `turnin` sem `accept` → começa onde a anterior é entregue; quest sem quem a dê sai.
+- [x] Cadeia Westfall → Redridge → Westfall ficava escondida → quest vai para o guia mais adiante onde o pré-req está; guia que esvazia se dissolve.
+- [x] Azshara da Aliança sem guia (contava como território da Horda) → neutras contam.
+- [x] Quest de capital na faixa da zona "casa" (Teldrassil 48-55 de recados de Darnassus; Tirisfal 13-16 com quest 50) → pela zona de destino quando a faixa serve.
+- [x] Concerted Efforts / doações de pano no leveling → fora (`SO_REPUTACAO`); poluente medido sem quest de classe.
+- [x] `gen_prereq.py` lia `../Guides` relativo ao cwd (rodado da raiz, gerava vazio) → relativo ao arquivo.
+
+### Revisão do roteador reescrito (preflight)
+
+- [x] Variantes exclusivas com público sobreposto (não igual) chegavam ao mesmo jogador — Call of Fire de Durotar e de Orgrimmar para o orc, Desperate Prayer humano/anão/ambos, Mantles of the Dawn neutra e da facção — e o segundo accept travava → a que sobra perde as raças já cobertas (só do lado do guia); sai se não sobrar. `only` agora exprime máscara de várias classes (`not <Classe>`).
+- [x] Passada 2 refiltrava (faixa, poluente) e perdia 14 quests atribuídas (Get the Gnomes Drunk em guia nenhum) → passada 2 gera exatamente o conjunto atribuído; título refeito do conjunto final. Só sai quest de classe acima do teto do guia (está no guia de classe).
+- [x] `_antes` calculado antes de tirar as quests sem giver (latente) → depois.
+- [x] Recalcular as medianas fez as duas trilhas terminarem no 60, e o salto entre continentes valia dos dois lados: a cadeia da Horda virou laço (Silithus → Stranglethorn → Eastern Plaguelands → Silithus) → só atravessa a trilha que acaba antes.
+- [x] Exclusivas em guias diferentes do mesmo caminho (Call of Fire em Durotar e em The Barrens, Ashenvale Hunt, Mantles of the Dawn) — 94 pares → exclusividade vira condição do passo, `not completed(x) not haveq(x)`, herdada pelos dependentes; feita uma, a outra some. Breadcrumb some depois da quest que a fecha pelo mesmo caminho.
+- [x] A condição de exclusiva herdada de uma opção de `preSingle` negava as outras opções: Call of Earth 1520 sumia para o tauren que fez a 1519, Tormus Deepforge para o anão que fez Vejrek → das opções só vale a negação comum a todas, e nenhuma quest nega a si mesma nem um pré-req dela.

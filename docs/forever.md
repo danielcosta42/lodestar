@@ -87,8 +87,27 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   cidade inimiga: de 43 para 27 passos na Aliança e de 41 para 31 na Horda; o que sobra é Lunar
   Festival, alvo de quest (Mathias Shaw) e NPC que o banco marca como dos dois lados dentro de
   cidade inimiga (Argent Dawn em Darnassus e Ironforge).
-- **Quest de capital** vai para o guia cuja faixa serve, preferindo a zona onde a capital fica
-  (Ironforge → Dun Morogh) — e nunca para Zephras Isle.
+- **Quest de capital** vai para o guia da zona onde ela se resolve (entrega ou objetivo) quando a
+  faixa serve — "Feralas: A History", de Darnassus, é pega antes de ir a Feralas —; senão para o
+  guia cuja faixa serve, preferindo a zona onde a capital fica (Ironforge → Dun Morogh). Nunca para
+  Zephras Isle, e nunca noutro continente que não o do destino.
+- **Pré-requisito de fora do guia vira condição do passo**: `only completed(p)` (com várias opções,
+  `completed(a,b)` = qualquer uma). O passo só aparece para quem já entregou; antes, ou o guia
+  cortava a quest, ou mandava a um NPC que não a abre e travava. Quem depende dela no guia herda.
+- **Cadeia que atravessa zonas** (The Defias Brotherhood: Westfall → Redridge → Westfall): a quest
+  cujo pré-req fica num guia mais adiante da trilha do continente vai para ele, no bloco final
+  ("volte a Sentinel Hill"). Guia que fica com menos de 6 quests se dissolve no vizinho da trilha.
+- **Exclusivas.** Todo passo de quest com `exclusiveTo` leva `not completed(x) not haveq(x)`: feita
+  uma variante, a outra some em vez de travar — inclusive em guias diferentes do mesmo caminho
+  (Call of Fire em Durotar e a de Orgrimmar em The Barrens). No mesmo guia, de par que se lista dos
+  dois lados fica uma por público (a outra perde as raças já cobertas); exclusiva de um lado só é
+  breadcrumb e entra antes da quest que a fecha (Senir's Observations → Frostmane Hold). No guia de
+  classe, a variante dada só numa zona inicial é da raça de lá (Call of Earth em Durotar, Mulgore e
+  Zephras), e entre capitais a raça da casa desempata (Devourer of Souls).
+- **Fica fora também:** entrega de marca de campo de batalha e doação de pano (Concerted Efforts
+  fazia do Alterac da Aliança um "34-60"), quest cujo objetivo ou entrega fica noutro continente,
+  e quest que ninguém dá (giver sem spawn, item sem fonte). Item que a quest anterior dá
+  (Tome of Divinity) começa onde ela é entregue.
 - **O título é a faixa do que o guia leva** (percentis 15-85 das quests dele), não a da descoberta:
   um grupinho de quests de Onyxia fazia "Dustwallow Marsh (35-60)" de um guia que para no 51. E o
   autopilot desempata pela faixa em que o nível do jogador fica mais no meio, não pela que começa
@@ -108,15 +127,17 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 
 | | |
 |---|---|
-| Guias | 152 (66 de leveling, 85 especiais, 1 exemplo) |
-| Quests novas do Forever em guia | **454 de 760** |
+| Guias | 182 (86 de leveling, 95 especiais, 1 exemplo) |
+| Quests distintas em guia | 3723 |
+| Quests novas do Forever em guia | **444 de 760** |
 | — fora: entrega de Craftsman's Writ | 150 |
 | — fora: exigem profissão | 80 |
-| — fora: começam por item ou giver sem posição | 64 |
+| — fora: começam por item ou giver sem posição | 68 |
 | — fora: evento/repetível/campo de batalha | 8 |
-| — fora: outro | 4 |
-| `validate_guides.py` — bloqueios reais | **0** (os guias anteriores, no mesmo banco: 289) |
-| `guide_integrity.py` — passo sem coordenada | 50 (antes: 434) |
+| — fora: outro | 10 |
+| `validate_guides.py` — ocorrências | **0** (antes da revisão: 10 bloqueios, 244 pré-req ausentes) |
+| Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos |
+| `guide_integrity.py` — passo sem coordenada | 2 |
 
 `gen_forever.py` imprime essa conta a cada rodada.
 
@@ -161,9 +182,10 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
   ele tiver — ou quando o `/ls scan` colher no lançamento.
 - **Quest de profissão.** Fica fora porque o DSL não tem condição de profissão; com uma (`skill(171)`),
   as "Camping 101" e as entregas de Craftsman's Writ podiam entrar para quem tem a profissão.
-- **Quest de capital de nível 60** cai no primeiro guia de mediana 60 (hoje Redridge Mountains
-  (60-60) na Aliança, 70 accepts, e Eastern Plaguelands na Horda, 135). Herdado do gerador; um
-  guia de "capital 60" seria o lugar certo.
+- **A cadeia é por continente.** Quem começa em Elwynn fica nos Reinos do Leste até o 60 e só
+  atravessa no fim; parte dos passos condicionados (~10% em cada caminho) é de cadeia do outro
+  continente e não aparece para esse jogador. Quest entre continentes (Thousand Needles → Booty
+  Bay) fica fora.
 - **"Welcome to Azeroth" da Aliança (94947)** — a quest que tira o Skyborne da ilha — tem quem a dá
   (Denaaris Stargale) posicionado em Alterac Mountains no QuestieDB 1.0.5, e fica fora do guia; a
   gêmea da Horda (95350) está em Mulgore e roteada. Conferir em jogo de onde parte o portal.
