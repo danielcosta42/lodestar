@@ -6,7 +6,10 @@
 -- pela malha para quem tem o companion.
 --
 -- Aqui fica o que é do Lodestar: a varredura por id (`/ls scan`), que percorre a
--- lista gerada em ForeverData.lua, e os comandos de status.
+-- lista gerada em ForeverData.lua — e depois os NPCs que o banco deixou sem título
+-- (Trainers.lua): a resposta do servidor (nome e título, ex. "Paladin Trainer") fica no
+-- cache do cliente, de onde o tools/gen_trainers.py tira os treinadores novos —, e os
+-- comandos de status.
 --
 -- Colher local é a feature do addon e não pede nada a ninguém. MANDAR para outra
 -- máquina é opt-in — `ns.db.shareQuests`, desligado por padrão.
@@ -19,10 +22,10 @@ local QL = C_QuestLog or {}
 local lib = LibStub and LibStub("LibChehulQuest-1.0", true)
 
 -- 12 pedidos por segundo: o servidor responde um a um e uma rajada maior
--- arrisca desconectar. 2.800 ids levam ~4 minutos.
+-- arrisca desconectar. ~2.800 quests + ~3.250 NPCs levam ~8 minutos.
 local POR_TICK, INTERVALO = 3, 0.25
 
-local ticker, fila, pos, pedidos
+local ticker, fila, pos, pedidos, nQuests, tip
 
 local function store()
 	local db = ns.db
@@ -51,7 +54,27 @@ local function queue()
 	for id in (ns.foreverUnknown or ""):gmatch("%d+") do
 		out[#out + 1] = tonumber(id)
 	end
-	return out
+	local q = #out
+	for id in (ns.trainerCandidates or ""):gmatch("%d+") do
+		out[#out + 1] = tonumber(id)
+	end
+	return out, q
+end
+
+-- Pergunta o NPC ao servidor pelo link de unidade (o cliente pede e guarda a resposta no
+-- cache). true se o cliente já o conhecia.
+local function askNpc(id)
+	local link = ("unit:Creature-0-0-0-0-%d-0000000000"):format(id)
+	if C_TooltipInfo and C_TooltipInfo.GetHyperlink then
+		local ok, data = pcall(C_TooltipInfo.GetHyperlink, link)
+		local l1 = ok and data and data.lines and data.lines[1]
+		return l1 and (l1.leftText or "") ~= "" or false
+	end
+	tip = tip or CreateFrame("GameTooltip", "LodestarScanTip", nil, "GameTooltipTemplate")
+	tip:SetOwner(UIParent, "ANCHOR_NONE")
+	pcall(tip.SetHyperlink, tip, link)
+	local fs = _G.LodestarScanTipTextLeft1
+	return fs and (fs:GetText() or "") ~= "" or false
 end
 
 -- Já temos o dado deste id? `HaveQuestData` é o teste canônico do cliente.
@@ -72,7 +95,9 @@ local function step()
 			S:Stop()
 			return
 		end
-		if cached(qid) then
+		if pos > nQuests then                        -- fase dos NPCs sem título
+			if not askNpc(qid) then pedidos = pedidos + 1 end
+		elseif cached(qid) then
 			if lib then lib:Record(qid) end          -- já em cache: só colhe
 		else
 			pedidos = pedidos + 1
@@ -86,7 +111,8 @@ end
 
 function S:Start()
 	if ticker then return ns:Print(ns.L.SCAN_ALREADY) end
-	fila, pos, pedidos = queue(), 0, 0
+	fila, nQuests = queue()
+	pos, pedidos = 0, 0
 	if #fila == 0 then return ns:Print(ns.L.SCAN_NOLIST) end
 	store()
 	ticker = C_Timer and C_Timer.NewTicker and C_Timer.NewTicker(INTERVALO, step)
