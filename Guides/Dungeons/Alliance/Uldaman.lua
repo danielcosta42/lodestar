@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Uldaman", {
@@ -6,11 +6,17 @@ ns:RegisterGuide("Dungeons/Alliance/Uldaman", {
 	author = "Lodestar Generator",
 }, [[
 step
+  talk Baelog##6906
+  accept The Hidden Chamber##2240 |goto Uldaman - Dungeon -1,-1
+step
   talk Prospector Stormpike##1356
   accept The Lost Dwarves##2398 |goto Ironforge 74.64,11.74
 step
-  kill Shadowforge Surveyor##4844 |goto Loch Modan 38.32,88.59 |tip Loot the quest item here — it starts the quest.
-  accept The Shattered Necklace##2198 |goto Loch Modan 38.32,88.59
+  kill Shadowforge Surveyor##4844 |goto Badlands 47.6,11 |tip Loot the quest item here — it starts the quest.
+  accept The Shattered Necklace##2198 |goto Badlands 47.6,11
+step
+  talk Prospector Stormpike##1356
+  turnin The Hidden Chamber##2240 |goto Ironforge 74.64,11.74
 step
   talk Baelog##6906
   turnin The Lost Dwarves##2398 |goto Uldaman - Dungeon -1,-1
@@ -18,17 +24,11 @@ step
   talk Talvash del Kissel##6826
   turnin The Shattered Necklace##2198 |goto Ironforge 36.38,3.61
 step
-  talk Baelog##6906
-  accept The Hidden Chamber##2240 |goto Uldaman - Dungeon -1,-1
-step
   talk Talvash del Kissel##6826
   accept Lore for a Price##2199 |goto Ironforge 36.38,3.61
 step
   note Bring five silver bars to Talvash del Kissel in Ironforge.
-  collect Silver Bar##2842 |q 2199 |goto Azuremyst Isle 28.62,68.23 |tip {dropsfrom}Battered Chest, Tattered Chest
-step
-  talk Prospector Stormpike##1356
-  turnin The Hidden Chamber##2240 |goto Ironforge 74.64,11.74
+  collect Silver Bar##2842 |q 2199 |goto Ironforge 36.38,3.61 |tip {dropsfrom}Battered Chest, Tattered Chest
 step
   talk Talvash del Kissel##6826
   turnin Lore for a Price##2199 |goto Ironforge 36.38,3.61

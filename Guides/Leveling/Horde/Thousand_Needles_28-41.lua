@@ -1,14 +1,14 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Thousand Needles (28-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Hillsbrad Foothills (24-41)",
+	next = "Leveling/Horde/Desolace (33-47)",
 }, [[
 step
-  note {fp}Nyse
-  goto Thousand Needles 45.14,49.11 |tip {vendor}
+  note {fp}Awenasa
+  goto Thousand Needles 45.77,51.07 |tip {vendor}
 step
   talk Brave Moonhorn##10079
   accept Message to Freewind Post##4542 |goto Thousand Needles 32.24,22.17
@@ -19,9 +19,6 @@ step
   talk Kanati Greycloud##10638
   turnin Assassination Plot##4881 |goto Thousand Needles 21.25,32.06
 step
-  talk Kanati Greycloud##10638
-  accept Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
-step
   talk Wizlo Bearingshiner##10941
   accept Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
 step
@@ -29,28 +26,30 @@ step
   kill Enraged Panther##10992 |goto Thousand Needles 22.76,24.62 |elite
   collect Hypercapacitor Gizmo##12946 |q 5151 |goto Thousand Needles 22.76,24.62
 step
-  talk Pao'ka Swiftmountain##10427
-  accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
-step
   talk Cliffwatcher Longhorn##10537
   turnin Message to Freewind Post##4542 |goto Thousand Needles 45.67,50.74
 step
+  talk Auld Stonespire##4451
+  accept A Vengeful Fate##1102 |goto Thunder Bluff 35.97,59.92
+step
+  note Bring Razorflank's Heart to Auld Stonespire in Thunder Bluff.
+  collect Razorflank's Heart##5793 |q 1102 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Charlga Razorflank
+step
   talk Master Apothecary Faranell##2055
-  accept Elixir of Agony##515 |goto Undercity 48.82,69.28
+  accept Going, Going, Guano!##1109 |goto Undercity 48.82,69.28
 step
-  note Bring the Mudsnout Mixture, a Strong Troll's Blood Potion, 5 Daggerspine Scales and 5 Torn Fin Eyes to Apothecary Lydon in Tarren Mill.
-  collect Elixir of Agony##3388 |q 515 |goto Undercity 48.82,69.28
+  note Bring 1 pile of Kraul Guano to Master Apothecary Faranell in the Undercity.
+  collect 1 Kraul Guano##5801 |q 1109 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Kraul Bat, Greater Kraul Bat, Blind Hunter
 step
-  talk Zangen Stonehoof##4721
-  accept The Sacred Flame##1196 |goto Thunder Bluff 54.97,51.41
+  talk Rau Cliffrunner##4722
+  accept The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
 step
-  only Warrior
-  talk Orm Stonehoof##6410
-  accept Chimaeric Horn##1844 |goto Thunder Bluff 38.99,55.98
+  note Retrieve the Cloven Hoof for Rau Cliffrunner at the Freewind Post.
+  collect Cloven Hoof##5869 |q 1197 |goto Thousand Needles 42.01,31.47 |tip {dropsfrom}Ancient Brazier
 step
-  only Warrior
-  note Bring a Galvanized Horn to Orm Stonehoof in Thunder Bluff.
-  collect Galvanized Horn##6840 |q 1844 |goto Stonetalon Mountains 33.64,74.66 |tip {dropsfrom}Chimaera Matriarch
+  only Warlock
+  talk Zevrost##3326
+  accept In Search of Menara Voidrender##4737 |goto Orgrimmar 48.47,45.43
 step
   talk Elu##10377
   accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
@@ -68,7 +67,7 @@ step
   accept Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
 step
   click Wanted Poster - Arnak Grimtotem##176115
-  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46.0,50.86
+  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
 step
   note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
   collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
@@ -76,36 +75,25 @@ step
   talk Cliffwatcher Longhorn##10537
   accept Family Tree##5361 |goto Thousand Needles 45.67,50.74
 step
-  talk Warlord Gorchuk##15700
-  accept Ten Signets for War Supplies##8852 |goto Orgrimmar 34.92,74.89
+  only Warlock
+  talk Menara Voidrender##6266
+  turnin In Search of Menara Voidrender##4737 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
-  collect Ten Signets for War Supplies##21438 |q 8852 |goto Orgrimmar 34.92,74.89
-step
-  talk Magistrix Elosai##17093
-  accept A Different Approach##9431 |goto Thousand Needles 46.21,50.4
-step
-  note Gather 2 handfuls of Purifying Earth from Thundering Boulderkin and take them to Wizlo Bearingshiner at Whitereach Post.
-  collect 2 Purifying Earth##23643 |q 9431 |goto Thousand Needles 13.45,26.99 |tip {dropsfrom}Thundering Boulderkin
-step
-  talk Apothecary Lydon##2216
-  turnin Elixir of Agony##515 |goto Hillsbrad Foothills 61.44,19.06 |tip {turninat}Hillsbrad Foothills
+  talk Belgrom Rockmaul##4485
+  accept The Swarm Grows##1146 |goto Orgrimmar 75.23,34.24
 step
   talk Dorn Plainstalker##2986
   accept Test of Faith##1149 |goto Thousand Needles 53.95,41.49
 step
-  talk Craven Drok##5639
-  accept Alliance Relations##1431 |goto Orgrimmar 51.3,45.9
-step
-  only Warrior
-  talk Velora Nitely##6411
-  accept Dragonmaw Shinbones##1846 |goto Undercity 62.14,39.14
-step
-  only Warrior
-  note Bring 8 Sturdy Dragonmaw Shinbones to Velora Nitely in the Undercity.
-  collect 8 Sturdy Dragonmaw Shinbone##7134 |q 1846 |goto Undercity 62.14,39.14
+  only Warlock
+  talk Kaal Soulreaper##4563
+  accept In Search of Menara Voidrender##4739 |goto Undercity 86.21,15.93
 step
   note Kill 12 Galak Scouts, 10 Galak Wranglers, and 6 Galak Windchasers, and then return to Cliffwatcher Longhorn in Freewind Post.
   kill Galak Scout##4094 |q 4841 |goto Thousand Needles 43.29,37.97
+step
+  talk Moktar Krin##4483
+  turnin The Swarm Grows##1146 |goto Thousand Needles 67.58,63.94
 step
   talk Moktar Krin##4483
   accept The Swarm Grows##1147 |goto Thousand Needles 67.58,63.94
@@ -121,9 +109,6 @@ step
 step
   note Bring 9 Hardened Tortoise Shells to Wizzle Brassbolts in the Shimmering Flats.
   collect 9 Hardened Tortoise Shell##5795 |q 1105 |goto Thousand Needles 75.38,56.27 |tip {dropsfrom}Sparkleshell Tortoise, Sparkleshell Snapper, Sparkleshell Borer
-step
-  talk Fizzle Brassbolts##4454
-  accept Martek the Exiled##1106 |goto Thousand Needles 78.06,77.13
 step
   talk Kravel Koalbeard##4452
   accept Rocket Car Parts##1110 |goto Thousand Needles 77.79,77.27
@@ -146,17 +131,11 @@ step
   talk Kravel Koalbeard##4452
   accept Get the Goblins Drunk##1121 |goto Thousand Needles 77.79,77.27
 step
-  talk Melor Stonehoof##3441
-  accept Steelsnap##1131 |goto Thunder Bluff 61.54,80.92
-step
-  note Bring Steelsnap's Rib to Melor Stonehoof in Thunder Bluff.
-  collect Steelsnap##5837 |q 1131 |goto Thunder Bluff 61.54,80.92
-step
   kill Silithid Searcher##4130 |goto Thousand Needles 69.91,83.32 |tip Loot the quest item here — it starts the quest.
   accept Parts of the Swarm##1148 |goto Thousand Needles 69.91,83.32
 step
   note Bring 1 Silithid Heart, 5 Silithid Talons, and 3 Intact Silithid Carapaces, to Korran at the Crossroads.
-  collect 1 Parts of the Swarm##5855 |q 1148 |goto Thousand Needles 69.91,83.32
+  collect 1 Silithid Heart##5855 |q 1148 |goto Thousand Needles 69.91,83.32 |tip {dropsfrom}Silithid Searcher, Silithid Invader, Silithid Ravager
 step
   talk Trackmaster Zherin##4629
   accept A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
@@ -181,43 +160,23 @@ step
   accept Gahz'rilla##2770 |goto Thousand Needles 78.14,77.12
 step
   note Bring Gahz'rilla's Electrified Scale to Wizzle Brassbolts in the Shimmering Flats.
-  collect Gahz'rilla's Electrified Scale##8707 |q 2770 |goto Thousand Needles 78.14,77.12 |tip {dropsfrom}Gahz'rilla
+  collect Gahz'rilla's Electrified Scale##8707 |q 2770 |goto Zul'Farrak - Dungeon -1,-1 |tip {dropsfrom}Gahz'rilla
 step
   talk Kravel Koalbeard##4452
-  accept Hemet Nesingwary Jr.##5762 |goto Thousand Needles 77.79,77.27
+  accept Hemet Nesingwary##5762 |goto Thousand Needles 77.79,77.27
+step
+  only Mage
+  note Find the phrase to Tirth's strongbox, then return to Tirth.
+  kill "Plucky" Johnson##6626 |q 1950 |goto Thousand Needles 79.61,75.63
 step
   note Kill 5 Silithid Searchers, 5 Silithid Hive Drones, and 5 Silithid Invaders and return to Moktar Krin in Thousand Needles.
   kill Silithid Searcher##4130 |q 1147 |goto Thousand Needles 69.91,83.32
 step
-  talk Hemet Nesingwary Jr.##715
-  turnin Hemet Nesingwary Jr.##5762 |goto Stranglethorn Vale 35.66,10.81 |tip {turninat}Stranglethorn Vale
+  talk Hemet Nesingwary##715
+  turnin Hemet Nesingwary##5762 |goto Stranglethorn Vale 35.66,10.81 |tip {turninat}Stranglethorn Vale
 step
   talk Wizlo Bearingshiner##10941
   turnin Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
-step
-  talk Motega Firemane##10428
-  turnin Homeward Bound##4770 |goto Thousand Needles 21.54,32.35
-step
-  talk Wizlo Bearingshiner##10941
-  turnin A Different Approach##9431 |goto Thousand Needles 21.43,32.55
-step
-  talk Kanati Greycloud##10638
-  turnin Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
-step
-  talk Wizlo Bearingshiner##10941
-  accept A Dip in the Moonwell##9433 |goto Thousand Needles 21.43,32.55
-step
-  note Use the Robotron Control while standing near the Concealed Command Console hidden in a small cluster of bushes on the rim of the needle closest to Thalanaar to take command of a Robotron 3000. Pilot the robot to the western edge of Thousand Needles where the Alliance outpost of Thalanaar is located. Use the robot to collect a sample of the moonwell's water and return it to Wizlo Bearingshiner at Whitereach Post.
-  collect Thalanaar Moonwell Water##23670 |q 9433 |goto Thousand Needles 21.43,32.55
-step
-  talk Keldran##5640
-  turnin Alliance Relations##1431 |goto Orgrimmar 22.56,52.63 |tip {turninat}Orgrimmar
-step
-  talk Keldran##5640
-  accept Alliance Relations##1432 |goto Orgrimmar 22.56,52.63
-step
-  talk Takata Steelblade##5641
-  turnin Alliance Relations##1432 |goto Desolace 52.57,54.39 |tip {turninat}Desolace
 step
   talk Cliffwatcher Longhorn##10537
   turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
@@ -226,14 +185,13 @@ step
   turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
   talk Rau Cliffrunner##4722
-  turnin The Sacred Flame##1196 |goto Thousand Needles 46.14,51.71
+  turnin The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
 step
-  only Warrior
-  talk Orm Stonehoof##6410
-  turnin Chimaeric Horn##1844 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
+  talk Auld Stonespire##4451
+  turnin A Vengeful Fate##1102 |goto Thunder Bluff 35.97,59.92 |tip {turninat}Thunder Bluff
 step
-  talk Martek the Exiled##4618
-  turnin Martek the Exiled##1106 |goto Badlands 42.22,52.69 |tip {turninat}Badlands
+  talk Master Apothecary Faranell##2055
+  turnin Going, Going, Guano!##1109 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   talk Hagar Lightninghoof##10539
   turnin Alien Egg##4821 |goto Thousand Needles 44.64,50.29
@@ -247,15 +205,11 @@ step
   talk Nataka Longhorn##11259
   turnin Family Tree##5361 |goto Desolace 55.41,55.81 |tip {turninat}Desolace
 step
-  talk Rau Cliffrunner##4722
-  accept The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
+  talk Master Apothecary Faranell##2055
+  accept Hearts of Zeal##1113 |goto Undercity 48.82,69.28
 step
-  note Retrieve the Cloven Hoof for Rau Cliffrunner at the Freewind Post.
-  collect Cloven Hoof##5869 |q 1197 |goto Thousand Needles 42.01,31.47 |tip {dropsfrom}Ancient Brazier
-step
-  only Warrior
-  talk Orm Stonehoof##6410
-  accept Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98
+  note Master Apothecary Faranell in the Undercity wants 20 Hearts of Zeal.
+  collect Heart of Zeal##5805 |q 1113 |goto Scarlet Monastery - Dungeon -1,-1 |elite |tip {dropsfrom}Houndmaster Loksey, Herod, Scarlet Commander Mograine
 step
   talk Hagar Lightninghoof##10539
   accept Serpent Wild##4865 |goto Thousand Needles 44.64,50.29
@@ -264,11 +218,11 @@ step
   accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
   note Locate and retrieve the three Secret Notes in Darkcloud Pinnacle.
-  collect Secret Note #1##12765 |q 5064 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {dropsfrom}Pitted Iron Chest, Document Chest
+  collect Secret Note #1##12765 |q 5064 |goto Thousand Needles 31.79,32.58 |tip {dropsfrom}Document Chest
 step
-  only Warrior
-  talk Velora Nitely##6411
-  turnin Dragonmaw Shinbones##1846 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
+  only Warlock
+  talk Menara Voidrender##6266
+  turnin In Search of Menara Voidrender##4739 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
   talk Wharfmaster Dizzywig##3453
   turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
@@ -283,11 +237,7 @@ step
   accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
 step
   note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
-  collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 53.95,41.49 |tip {dropsfrom}Grenka Bloodscreech
-step
-  only Warrior
-  talk Velora Nitely##6411
-  accept Brutal Legguards##1847 |goto Undercity 62.14,39.14
+  collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.6 |tip {dropsfrom}Grenka Bloodscreech
 step
   talk Moktar Krin##4483
   turnin The Swarm Grows##1147 |goto Thousand Needles 67.58,63.94
@@ -331,14 +281,15 @@ step
   talk Goblin Pit Boss##4496
   turnin Get the Goblins Drunk##1121 |goto Thousand Needles 79.9,76.74
 step
-  talk Melor Stonehoof##3441
-  turnin Steelsnap##1131 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
+  talk Fizzle Brassbolts##4454
+  accept Martek the Exiled##1106 |goto Thousand Needles 78.06,77.13
 step
   talk Wizzle Brassbolts##4453
   accept Encrusted Tail Fins##1107 |goto Thousand Needles 78.14,77.12
 step
   note Bring 10 Encrusted Tail Fins to Wizzle Brassbolts in the Shimmering Flats.
-  collect 10 Encrusted Tail Fin##5796 |q 1107 |goto Stranglethorn Vale 24.94,24.25 |tip {dropsfrom}Saltscale Warrior, Saltscale Oracle, Saltscale Tide Lord
+  kill Saltscale Warrior##871 |goto Stranglethorn Vale 25.2,25.6 |elite
+  collect 10 Encrusted Tail Fin##5796 |q 1107 |goto Stranglethorn Vale 25.2,25.6
 step
   talk Kravel Koalbeard##4452
   accept The Rumormonger##1115 |goto Thousand Needles 77.79,77.27
@@ -369,47 +320,33 @@ step
   talk Motega Firemane##10428
   turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
 step
-  talk Wizlo Bearingshiner##10941
-  turnin A Dip in the Moonwell##9433 |goto Thousand Needles 21.43,32.55
-step
   talk Motega Firemane##10428
   accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
 step
   note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
   collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.04,35.43
 step
-  talk Wizlo Bearingshiner##10941
-  accept Testing the Tonic##9434 |goto Thousand Needles 21.43,32.55
-step
   only Mage
   talk Tabetha##6546
   turnin Rituals of Power##1951 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
 step
-  talk Rau Cliffrunner##4722
-  turnin The Sacred Flame##1197 |goto Thousand Needles 46.14,51.71
-step
-  only Warrior
-  talk Orm Stonehoof##6410
-  turnin Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
-step
   talk Cliffwatcher Longhorn##10537
   turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
-  talk Magistrix Elosai##17093
-  turnin Testing the Tonic##9434 |goto Thousand Needles 46.21,50.4
+  talk Martek the Exiled##4618
+  turnin Martek the Exiled##1106 |goto Badlands 42.22,52.69 |tip {turninat}Badlands
+step
+  talk Master Apothecary Faranell##2055
+  turnin Hearts of Zeal##1113 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   talk Krazek##773
-  turnin The Rumormonger##1115 |goto Stranglethorn Vale 26.94,77.21 |tip {turninat}Stranglethorn Vale
+  turnin The Rumormonger##1115 |goto Stranglethorn Vale 26.95,77.21 |tip {turninat}Stranglethorn Vale
 step
   talk Crank Fizzlebub##2498
   turnin Report Back to Fizzlebub##1122 |goto Stranglethorn Vale 27.12,77.21 |tip {turninat}Stranglethorn Vale
 step
   talk Gazlowe##3391
   turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
-step
-  only Warrior
-  talk Velora Nitely##6411
-  turnin Brutal Legguards##1847 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
 step
   talk Magatha Grimtotem##4046
   turnin Sacred Fire##5062 |goto Thunder Bluff 69.85,30.91 |tip {turninat}Thunder Bluff
@@ -421,7 +358,8 @@ step
   accept Test of Strength##1151 |goto Thousand Needles 53.95,41.49
 step
   note Bring Fragments of Rok'Alim to Dorn Plainstalker in Thousand Needles.
-  collect Fragments of Rok'Alim##5844 |q 1151 |goto Thousand Needles 25.81,42.11 |tip {dropsfrom}Rok'Alim the Pounder
+  kill Rok'Alim the Pounder##4499 |goto Thousand Needles 17.1,38.1 |elite
+  collect Fragments of Rok'Alim##5844 |q 1151 |goto Thousand Needles 17.1,38.1
 step
   talk Razzeric##4706
   turnin Razzeric's Tweaking##1187 |goto Thousand Needles 80.33,76.09
@@ -447,6 +385,6 @@ step
   talk Braug Dimspirit##4489
   turnin Test of Lore##1152 |goto Stonetalon Mountains 78.8,45.69 |tip {turninat}Stonetalon Mountains
 step
-  note {travel}Hillsbrad Foothills
-  goto Hillsbrad Foothills 20.79,47.4
+  note {travel}Desolace
+  goto Desolace 56.19,59.57
 ]])

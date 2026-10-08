@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Thorium Brotherhood", {
@@ -27,23 +27,23 @@ step
   talk Master Smith Burninate##14624
   accept What the Flux?##7722 |goto Searing Gorge 38.8,28.51
 step
-  click Dark Iron Sabotage Plans##186881
-  accept Seek the Saboteurs##11454 |goto Dun Morogh 48.06,39.1
+  talk Lokhtos Darkbargainer##12944
+  accept Favor Amongst the Brotherhood, Dark Iron Ore##6642 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  accept Favor Amongst the Brotherhood, Dark Iron Ore##6642 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  accept Favor Amongst the Brotherhood, Fiery Core##6643 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  accept Favor Amongst the Brotherhood, Fiery Core##6643 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  accept Favor Amongst the Brotherhood, Lava Core##6644 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  accept Favor Amongst the Brotherhood, Lava Core##6644 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  accept Favor Amongst the Brotherhood, Core Leather##6645 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  accept Favor Amongst the Brotherhood, Core Leather##6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  accept Favor Amongst the Brotherhood, Blood of the Mountain##6646 |goto Blackrock Depths - Dungeon -1,-1
 step
-  talk Lokhtos Darkbargainer##12944
-  accept Favor Amongst the Brotherhood, Blood of the Mountain##6646 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  kill Lokhtos Darkbargainer##12944 |goto Blackrock Depths - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
+  accept A Binding Contract##7604 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Derotain Mudsipper##14567
   accept A Blue Light Bargain##7652 |goto Tanaris 51.38,28.67
@@ -67,23 +67,24 @@ step
   kill Incendosaur##9318 |q 7727 |goto Searing Gorge 49.49,26.48
 step
   note Deep within the Slag Pit of the Cauldron, in the Searing Gorge, you will find the traitorous Dark Iron dwarf named Overseer Maltorius.
-  collect Head of Overseer Maltorius##18946 |q 7701 |goto Searing Gorge 40.77,35.89 |tip {dropsfrom}Overseer Maltorius
+  kill Overseer Maltorius##14621 |goto Searing Gorge 40.77,35.89 |elite
+  collect Head of Overseer Maltorius##18946 |q 7701 |goto Searing Gorge 40.77,35.89
 step
   note Somewhere in the Slag Pit of the Cauldron you will find the Secret Plans: Fiery Flux that Overseer Maltorius stole. Find those plans and return them to Master Smith Burninate in the Searing Gorge.
   collect Secret Plans: Fiery Flux##18922 |q 7722 |goto Searing Gorge 40.45,35.74
 step
-  collect Dark Iron Ore##11370 |q 6642 |goto Searing Gorge 63.9,59.56 |tip {dropsfrom}Dark Iron Geologist, Firegut Ogre Mage, Azzere the Skyblade
+  collect Dark Iron Ore##11370 |q 6642 |goto Burning Steppes 62.76,44.03 |tip {dropsfrom}Dark Iron Deposit
 step
-  collect Fiery Core##17010 |q 6643 |goto Molten Core - Raid -1,-1 |elite |tip {dropsfrom}Molten Destroyer, Firewalker, Flameguard
+  collect Fiery Core##17010 |q 6643 |goto Molten Core - Dungeon -1,-1 |elite |tip {dropsfrom}Molten Destroyer, Firewalker, Flameguard
 step
-  collect Lava Core##17011 |q 6644 |goto Molten Core - Raid -1,-1 |elite |tip {dropsfrom}Molten Destroyer, Lava Annihilator, Golemagg the Incinerator
+  collect Lava Core##17011 |q 6644 |goto Molten Core - Dungeon -1,-1 |elite |tip {dropsfrom}Molten Destroyer, Lava Annihilator, Golemagg the Incinerator
 step
-  collect Core Leather##17012 |q 6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  collect Core Leather##17012 |q 6645 |goto Blackrock Depths - Dungeon -1,-1
 step
   collect Blood of the Mountain##11382 |q 6646 |goto Burning Steppes 81.46,43.38 |tip {dropsfrom}Firegut Brute, War Reaver, Scalding Broodling
 step
   note Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.
-  collect Sulfuron Ingot##17203 |q 7604 |goto Molten Core - Raid -1,-1 |raid |tip {dropsfrom}Golemagg the Incinerator
+  collect Sulfuron Ingot##17203 |q 7604 |goto Molten Core - Dungeon -1,-1 |raid |tip {dropsfrom}Golemagg the Incinerator
 step
   talk Taskmaster Scrange##14626
   turnin STOLEN: Smithing Tuyere and Lookout's Spyglass##7728 |goto Searing Gorge 38.97,27.51
@@ -103,29 +104,29 @@ step
   talk Lookout Captain Lolo Longstriker##14634
   turnin WANTED: Overseer Maltorius##7701 |goto Searing Gorge 37.74,26.56
 step
+  talk Evonice Sootsmoker##14628
+  turnin Look at the Size of It!##7704 |goto Searing Gorge 38.35,27.74
+step
   talk Master Smith Burninate##14624
   turnin What the Flux?##7722 |goto Searing Gorge 38.8,28.51
 step
-  talk Coren Direbrew##23872
-  turnin Seek the Saboteurs##11454 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  talk Lokhtos Darkbargainer##12944
+  turnin Favor Amongst the Brotherhood, Dark Iron Ore##6642 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  turnin Favor Amongst the Brotherhood, Dark Iron Ore##6642 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  turnin Favor Amongst the Brotherhood, Fiery Core##6643 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  turnin Favor Amongst the Brotherhood, Fiery Core##6643 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  turnin Favor Amongst the Brotherhood, Lava Core##6644 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  turnin Favor Amongst the Brotherhood, Lava Core##6644 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  turnin Favor Amongst the Brotherhood, Core Leather##6645 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  turnin Favor Amongst the Brotherhood, Core Leather##6645 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  turnin Favor Amongst the Brotherhood, Blood of the Mountain##6646 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Lokhtos Darkbargainer##12944
-  turnin Favor Amongst the Brotherhood, Blood of the Mountain##6646 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
-step
-  talk Lokhtos Darkbargainer##12944
-  turnin A Binding Contract##7604 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  turnin A Binding Contract##7604 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Derotain Mudsipper##14567
   turnin A Blue Light Bargain##7652 |goto Tanaris 51.38,28.67
@@ -182,7 +183,7 @@ step
 step
   collect Incendosaur Scale##18944 |q 7736 |goto Searing Gorge 49.49,26.48 |tip {dropsfrom}Incendosaur
 step
-  collect Dark Iron Residue##18945 |q 7737 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Anvilrage Overseer, Anvilrage Warden, Anvilrage Guardsman
+  collect Dark Iron Residue##18945 |q 7737 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Anvilrage Overseer, Anvilrage Warden, Anvilrage Guardsman
 step
   collect Incendosaur Scale##18944 |q 8241 |goto Searing Gorge 49.49,26.48 |tip {dropsfrom}Incendosaur
 step

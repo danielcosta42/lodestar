@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Events/Horde/Stranglethorn Vale (Eventos)", {
@@ -7,7 +7,7 @@ ns:RegisterGuide("Events/Horde/Stranglethorn Vale (Eventos)", {
 }, [[
 step
   talk Krazek##773
-  accept Investigate the Camp##201 |goto Stranglethorn Vale 26.94,77.21
+  accept Investigate the Camp##201 |goto Stranglethorn Vale 26.95,77.21
 step
   talk Sovik##3413
   accept Chief Engineer Scooty##2842 |goto Orgrimmar 75.49,25.36
@@ -27,8 +27,11 @@ step
   note Bring four Steel Breastplates and four Steel Plate Helms to Aturk the Anvil in Orgrimmar.
   collect Steel Breastplate##7963 |q 2756 |goto Orgrimmar 80.94,23.32
 step
+  note Listen to the Fallen Hero of the Horde tell his story.
+  kill Fallen Hero of the Horde##7572 |q 2784 |goto Swamp of Sorrows 34.29,66.14
+step
   talk Krazek##773
-  turnin Investigate the Camp##201 |goto Stranglethorn Vale 26.94,77.21
+  turnin Investigate the Camp##201 |goto Stranglethorn Vale 26.95,77.21
 step
   talk Scooty##7853
   turnin Chief Engineer Scooty##2842 |goto Stranglethorn Vale 27.6,77.48
@@ -53,6 +56,9 @@ step
 step
   talk Fallen Hero of the Horde##7572
   accept The Disgraced One##2621 |goto Swamp of Sorrows 34.29,66.14
+step
+  note Wait for Scooty to calibrate the Goblin Transponder.
+  kill Scooty##7853 |q 2843 |goto Stranglethorn Vale 27.6,77.48
 step
   talk Scooty##7853
   turnin Gnomer-gooooone!##2843 |goto Stranglethorn Vale 27.6,77.48
@@ -97,7 +103,7 @@ step
   collect Mithril Bar##3860 |q 2763 |goto Stranglethorn Vale 50.62,20.48
 step
   note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
-  collect Warchief's Orders##8463 |q 2623 |goto Swamp of Sorrows 62.6,88.07 |tip {dropsfrom}Swamp Talker
+  collect Warchief's Orders##8463 |q 2623 |goto Swamp of Sorrows 63.6,84.6 |tip {dropsfrom}Swamp Talker
 step
   talk Galvan the Ancient##7802
   turnin Smelt On, Smelt Off##2761 |goto Stranglethorn Vale 50.62,20.48
@@ -116,6 +122,12 @@ step
 step
   talk Fallen Hero of the Horde##7572
   accept A Tale of Sorrow##2801 |goto Swamp of Sorrows 34.29,66.14
+step
+  note Claim your reward from Galvan the Ancient!
+  kill Galvan the Ancient##7802 |q 2765 |goto Stranglethorn Vale 50.62,20.48
+step
+  note Listen to the Fallen Hero of the Horde tell his story.
+  kill Fallen Hero of the Horde##7572 |q 2801 |goto Swamp of Sorrows 34.29,66.14
 step
   talk Galvan the Ancient##7802
   turnin Expert Blacksmith!##2765 |goto Stranglethorn Vale 50.62,20.48
@@ -136,10 +148,10 @@ step
   accept Heroes of Old##2702 |goto Swamp of Sorrows 34.29,66.14
 step
   talk Corporal Thund Splithoof##7750
-  turnin Heroes of Old##2702
+  turnin Heroes of Old##2702 |goto Swamp of Sorrows 33.49,65.99
 step
   talk Corporal Thund Splithoof##7750
-  accept Heroes of Old##2701
+  accept Heroes of Old##2701 |goto Swamp of Sorrows 33.49,65.99
 step
   turnin Heroes of Old##2701 |goto Swamp of Sorrows 33.26,66.22
 step
@@ -147,10 +159,10 @@ step
   accept Kirith##2721 |goto Swamp of Sorrows 34.29,66.14
 step
   talk Spirit of Kirith##7729
-  turnin Kirith##2721
+  turnin Kirith##2721 |goto Blasted Lands 68.8,31.07
 step
   talk Spirit of Kirith##7729
-  accept The Cover of Darkness##2743
+  accept The Cover of Darkness##2743 |goto Blasted Lands 68.8,31.07
 step
   talk Fallen Hero of the Horde##7572
   turnin The Cover of Darkness##2743 |goto Swamp of Sorrows 34.29,66.14
@@ -158,11 +170,17 @@ step
   talk Fallen Hero of the Horde##7572
   accept The Demon Hunter##2744 |goto Swamp of Sorrows 34.29,66.14
 step
+  note Speak with Loramus Thalipedes in Azshara.
+  talk Loramus Thalipedes##7783 |q 2744 |goto Azshara 60.82,66.35
+step
   talk Loramus Thalipedes##7783
   turnin The Demon Hunter##2744 |goto Azshara 60.82,66.35
 step
   talk Loramus Thalipedes##7783
   accept Loramus##3141 |goto Azshara 60.82,66.35
+step
+  note Listen to Loramus Thalipedes tell his story.
+  kill Loramus Thalipedes##7783 |q 3141 |goto Azshara 60.82,66.35
 step
   talk Loramus Thalipedes##7783
   turnin Loramus##3141 |goto Azshara 60.82,66.35
@@ -183,7 +201,8 @@ step
   accept The Name of the Beast##3510 |goto Azshara 77.13,42.79
 step
   note Slay Hetaera and bring back Hetaera's Bloodied Head, Hetaera's Beaten Head, and Hetaera's Bruised Head to Lord Arkkoroc.
-  collect Hetaera's Beaten Head##10599 |q 3510 |goto Azshara 56.73,44.79 |tip {dropsfrom}Hetaera
+  kill Hetaera##6140 |goto Azshara 56.73,44.79 |elite
+  collect Hetaera's Beaten Head##10599 |q 3510 |goto Azshara 56.73,44.79
 step
   talk Lord Arkkoroc##6134
   turnin The Name of the Beast##3510 |goto Azshara 77.13,42.79
@@ -198,7 +217,7 @@ step
   accept Azsharite##3602 |goto Azshara 60.82,66.35
 step
   note Recover twenty Crystallized Azsharite from southern Azshara. You may use the Felhound to assist you in 'sniffing' out the location of cleverly hidden deposits.
-  collect Crystallized Azsharite##10714 |q 3602 |goto Azshara 53.52,78.4 |tip {dropsfrom}Azsharite Formation
+  collect Crystallized Azsharite##10714 |q 3602 |goto Azshara 55.46,79.76 |tip {dropsfrom}Azsharite Formation
 step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35
@@ -211,6 +230,9 @@ step
 step
   talk Galvan the Ancient##7802
   accept Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
+step
+  note Wait for Galvan to finish forging the weaponry.
+  kill Galvan the Ancient##7802 |q 3625 |goto Stranglethorn Vale 50.62,20.48
 step
   talk Galvan the Ancient##7802
   turnin Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48

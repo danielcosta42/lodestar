@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Events/Alliance/Lunar Festival", {
@@ -6,56 +6,20 @@ ns:RegisterGuide("Events/Alliance/Lunar Festival", {
 	author = "Lodestar Generator",
 }, [[
 step
-  talk Valadar Starsong##15864
-  accept Elune's Candle##8862 |goto Moonglade 53.65,35.26
-step
-  talk Valadar Starsong##15864
-  accept Festival Dumplings##8863 |goto Moonglade 53.65,35.26
-step
-  talk Valadar Starsong##15864
-  accept Festive Lunar Dresses##8864 |goto Moonglade 53.65,35.26
-step
-  talk Valadar Starsong##15864
-  accept Festive Lunar Pant Suits##8865 |goto Moonglade 53.65,35.26
-step
-  talk Valadar Starsong##15864
-  accept Elune's Blessing##8868 |goto Moonglade 53.65,35.26
-step
-  talk Fariel Starsong##15909
-  accept Small Rockets##8876 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  accept Firework Launcher##8877 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  accept Festive Recipes##8878 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  accept Large Rockets##8879 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  accept Cluster Rockets##8880 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  accept Large Cluster Rockets##8881 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  accept Cluster Launcher##8882 |goto Moonglade 53.79,35.32
-step
   talk Elder Morndeep##15549
-  accept Morndeep the Elder##8619 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  accept Morndeep the Elder##8619 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Elder Splitrock##15556
   accept Splitrock the Elder##8635 |goto Maraudon - Dungeon -1,-1
 step
   talk Elder Rumblerock##15557
-  accept Rumblerock the Elder##8636 |goto Burning Steppes 83.13,47.37
+  accept Rumblerock the Elder##8636 |goto Burning Steppes 82.21,46.48
 step
   talk Elder Silvervein##15558
-  accept Silvervein the Elder##8642 |goto Loch Modan 32.87,46.33
+  accept Silvervein the Elder##8642 |goto Loch Modan 33.33,46.54
 step
   talk Elder Highpeak##15559
-  accept Highpeak the Elder##8643 |goto The Hinterlands 50.0,48.05
+  accept Highpeak the Elder##8643 |goto The Hinterlands 50,48.05
 step
   talk Elder Stonefort##15560
   accept Stonefort the Elder##8644 |goto Blackrock Spire - Dungeon -1,-1
@@ -64,19 +28,19 @@ step
   accept Obsidian the Elder##8645 |goto Silverpine Forest 44.98,41.14
 step
   talk Elder Hammershout##15562
-  accept Hammershout the Elder##8646 |goto Stormwind City 21.44,53.9
+  accept Hammershout the Elder##8646 |goto Stormwind City 36.27,66.14
 step
   talk Elder Bellowrage##15563
-  accept Bellowrage the Elder##8647 |goto Blasted Lands 57.92,54.93
+  accept Bellowrage the Elder##8647 |goto Blasted Lands 58.75,51.7
 step
   talk Elder Darkcore##15564
   accept Darkcore the Elder##8648 |goto Undercity 66.63,38.22
 step
   talk Elder Stormbrow##15565
-  accept Stormbrow the Elder##8649 |goto Elwynn Forest 40.13,62.73
+  accept Stormbrow the Elder##8649 |goto Elwynn Forest 39.79,63.67
 step
   talk Elder Snowcrown##15566
-  accept Snowcrown the Elder##8650 |goto Eastern Plaguelands 81.51,60.52
+  accept Snowcrown the Elder##8650 |goto Eastern Plaguelands 71.69,50.72
 step
   talk Elder Ironband##15567
   accept Ironband the Elder##8651 |goto Searing Gorge 21.46,78.97
@@ -85,25 +49,25 @@ step
   accept Graveborn the Elder##8652 |goto Tirisfal Glades 61.87,53.84
 step
   talk Elder Goldwell##15569
-  accept Goldwell the Elder##8653 |goto Dun Morogh 46.7,51.58
+  accept Goldwell the Elder##8653 |goto Dun Morogh 46.82,51.61
 step
   talk Elder Primestone##15570
-  accept Primestone the Elder##8654 |goto Silithus 21.14,10.51
+  accept Primestone the Elder##8654 |goto Silithus 23.08,11.84
 step
   talk Elder Runetotem##15572
   accept Runetotem the Elder##8670 |goto Durotar 53.2,43.68
 step
   talk Elder Ragetotem##15573
-  accept Ragetotem the Elder##8671 |goto Tanaris 35.96,80.12
+  accept Ragetotem the Elder##8671 |goto Tanaris 36.3,80.54
 step
   talk Elder Stonespire##15574
   accept Stonespire the Elder##8672 |goto Winterspring 61.45,37.81
 step
   talk Elder Bloodhoof##15575
-  accept Bloodhoof the Elder##8673 |goto Mulgore 48.55,53.48
+  accept Bloodhoof the Elder##8673 |goto Mulgore 47.54,57.81
 step
   talk Elder Winterhoof##15576
-  accept Winterhoof the Elder##8674 |goto Stranglethorn Vale 26.47,76.53
+  accept Winterhoof the Elder##8674 |goto Stranglethorn Vale 27.62,74.26
 step
   talk Elder Skychaser##15577
   accept Skychaser the Elder##8675 |goto Westfall 56.65,47.11
@@ -127,22 +91,22 @@ step
   accept Thunderhorn the Elder##8681 |goto Un'Goro Crater 50.35,76.07
 step
   talk Elder Skyseer##15584
-  accept Skyseer the Elder##8682 |goto Thousand Needles 45.29,50.0
+  accept Skyseer the Elder##8682 |goto Thousand Needles 45.29,50
 step
   talk Elder Dawnstrider##15585
   accept Dawnstrider the Elder##8683 |goto Burning Steppes 64.46,23.95
 step
   talk Elder Dreamseer##15586
-  accept Dreamseer the Elder##8684 |goto Tanaris 51.61,26.99
+  accept Dreamseer the Elder##8684 |goto Tanaris 51.47,27.85
 step
   talk Elder Mistwalker##15587
-  accept Mistwalker the Elder##8685
+  accept Mistwalker the Elder##8685 |goto Feralas 62.58,30.96
 step
   talk Elder High Mountain##15588
   accept High Mountain the Elder##8686 |goto The Barrens 45.09,57.92
 step
   talk Elder Windrun##15592
-  accept Windrun the Elder##8688 |goto Eastern Plaguelands 39.68,75.39
+  accept Windrun the Elder##8688 |goto Eastern Plaguelands 34.06,64.1
 step
   talk Elder Starsong##15593
   accept Starsong the Elder##8713 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
@@ -175,13 +139,13 @@ step
   accept Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
 step
   talk Elder Nightwind##15603
-  accept Nightwind the Elder##8723 |goto Felwood 37.64,53.0
+  accept Nightwind the Elder##8723 |goto Felwood 37.64,53
 step
   talk Elder Morningdew##15604
-  accept Morningdew the Elder##8724 |goto Thousand Needles 79.74,77.31
+  accept Morningdew the Elder##8724 |goto Thousand Needles 79.2,77.05
 step
   talk Elder Riversong##15605
-  accept Riversong the Elder##8725 |goto Ashenvale 34.65,48.48
+  accept Riversong the Elder##8725 |goto Ashenvale 35.6,48.8
 step
   talk Elder Brightspear##15606
   accept Brightspear the Elder##8726 |goto Winterspring 55.61,43.65
@@ -189,20 +153,50 @@ step
   talk Elder Farwhisper##15607
   accept Farwhisper the Elder##8727 |goto Stratholme - Dungeon -1,-1
 step
+  talk Valadar Starsong##15864
+  accept Elune's Candle##8862 |goto Moonglade 53.65,35.26
+step
+  talk Valadar Starsong##15864
+  accept Festival Dumplings##8863 |goto Moonglade 53.65,35.26
+step
+  talk Valadar Starsong##15864
+  accept Festive Lunar Dresses##8864 |goto Moonglade 53.65,35.26
+step
+  talk Valadar Starsong##15864
+  accept Festive Lunar Pant Suits##8865 |goto Moonglade 53.65,35.26
+step
   talk Elder Bronzebeard##15871
   accept Bronzebeard the Elder##8866 |goto Ironforge 29.2,17.05
 step
   talk Lunar Festival Harbinger##15895
-  accept Lunar Fireworks##8867 |goto Darnassus 33.89,13.87
+  accept Lunar Fireworks##8867 |goto Undercity 65.62,36
+step
+  talk Valadar Starsong##15864
+  accept Elune's Blessing##8868 |goto Moonglade 53.65,35.26
 step
   talk Lunar Festival Emissary##15892
-  accept The Lunar Festival##8870 |goto Darnassus 32.14,13.12
+  accept The Lunar Festival##8870 |goto Stormwind City 61.74,75.73
 step
-  talk Lunar Festival Emissary##15892
-  accept The Lunar Festival##8871 |goto Darnassus 32.14,13.12
+  talk Fariel Starsong##15909
+  accept Small Rockets##8876 |goto Moonglade 53.79,35.32
 step
-  talk Lunar Festival Emissary##15892
-  accept The Lunar Festival##8872 |goto Darnassus 32.14,13.12
+  talk Fariel Starsong##15909
+  accept Firework Launcher##8877 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  accept Festive Recipes##8878 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  accept Large Rockets##8879 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  accept Cluster Rockets##8880 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  accept Large Cluster Rockets##8881 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  accept Cluster Launcher##8882 |goto Moonglade 53.79,35.32
 step
   collect Coin of Ancestry##21100 |q 8862 |goto Moonglade 53.65,35.26
 step
@@ -211,6 +205,9 @@ step
   collect Coin of Ancestry##21100 |q 8864 |goto Moonglade 53.65,35.26
 step
   collect Coin of Ancestry##21100 |q 8865 |goto Moonglade 53.65,35.26
+step
+  note Launch 8 Lunar Fireworks and 2 Cluster Fireworks and return to a Lunar Festival Harbinger at any capital city.
+  collect Firework Launcher##180771 |q 8867 |goto Moonglade 37.38,57.41
 step
   collect Coin of Ancestry##21100 |q 8876 |goto Moonglade 53.79,35.32
 step
@@ -226,59 +223,20 @@ step
 step
   collect Coin of Ancestry##21100 |q 8882 |goto Moonglade 53.79,35.32
 step
-  note Launch 8 Lunar Fireworks and 2 Cluster Fireworks and return to a Lunar Festival Harbinger at any capital city.
-  get Lunar Fireworks |q 8867 |goto Darnassus 31.75,12.39
-step
-  talk Valadar Starsong##15864
-  turnin Elune's Candle##8862 |goto Moonglade 53.65,35.26
-step
-  talk Valadar Starsong##15864
-  turnin Festival Dumplings##8863 |goto Moonglade 53.65,35.26
-step
-  talk Valadar Starsong##15864
-  turnin Festive Lunar Dresses##8864 |goto Moonglade 53.65,35.26
-step
-  talk Valadar Starsong##15864
-  turnin Festive Lunar Pant Suits##8865 |goto Moonglade 53.65,35.26
-step
-  talk Valadar Starsong##15864
-  turnin Elune's Blessing##8868 |goto Moonglade 53.65,35.26
-step
-  talk Fariel Starsong##15909
-  turnin Small Rockets##8876 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  turnin Firework Launcher##8877 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  turnin Festive Recipes##8878 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  turnin Large Rockets##8879 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  turnin Cluster Rockets##8880 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  turnin Large Cluster Rockets##8881 |goto Moonglade 53.79,35.32
-step
-  talk Fariel Starsong##15909
-  turnin Cluster Launcher##8882 |goto Moonglade 53.79,35.32
-step
   talk Elder Morndeep##15549
-  turnin Morndeep the Elder##8619 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  turnin Morndeep the Elder##8619 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Elder Splitrock##15556
   turnin Splitrock the Elder##8635 |goto Maraudon - Dungeon -1,-1
 step
   talk Elder Rumblerock##15557
-  turnin Rumblerock the Elder##8636 |goto Burning Steppes 83.13,47.37
+  turnin Rumblerock the Elder##8636 |goto Burning Steppes 82.21,46.48
 step
   talk Elder Silvervein##15558
-  turnin Silvervein the Elder##8642 |goto Loch Modan 32.87,46.33
+  turnin Silvervein the Elder##8642 |goto Loch Modan 33.33,46.54
 step
   talk Elder Highpeak##15559
-  turnin Highpeak the Elder##8643 |goto The Hinterlands 50.0,48.05
+  turnin Highpeak the Elder##8643 |goto The Hinterlands 50,48.05
 step
   talk Elder Stonefort##15560
   turnin Stonefort the Elder##8644 |goto Blackrock Spire - Dungeon -1,-1
@@ -287,19 +245,19 @@ step
   turnin Obsidian the Elder##8645 |goto Silverpine Forest 44.98,41.14
 step
   talk Elder Hammershout##15562
-  turnin Hammershout the Elder##8646 |goto Stormwind City 21.44,53.9
+  turnin Hammershout the Elder##8646 |goto Stormwind City 36.27,66.14
 step
   talk Elder Bellowrage##15563
-  turnin Bellowrage the Elder##8647 |goto Blasted Lands 57.92,54.93
+  turnin Bellowrage the Elder##8647 |goto Blasted Lands 58.75,51.7
 step
   talk Elder Darkcore##15564
   turnin Darkcore the Elder##8648 |goto Undercity 66.63,38.22
 step
   talk Elder Stormbrow##15565
-  turnin Stormbrow the Elder##8649 |goto Elwynn Forest 40.13,62.73
+  turnin Stormbrow the Elder##8649 |goto Elwynn Forest 39.79,63.67
 step
   talk Elder Snowcrown##15566
-  turnin Snowcrown the Elder##8650 |goto Eastern Plaguelands 81.51,60.52
+  turnin Snowcrown the Elder##8650 |goto Eastern Plaguelands 71.69,50.72
 step
   talk Elder Ironband##15567
   turnin Ironband the Elder##8651 |goto Searing Gorge 21.46,78.97
@@ -308,25 +266,25 @@ step
   turnin Graveborn the Elder##8652 |goto Tirisfal Glades 61.87,53.84
 step
   talk Elder Goldwell##15569
-  turnin Goldwell the Elder##8653 |goto Dun Morogh 46.7,51.58
+  turnin Goldwell the Elder##8653 |goto Dun Morogh 46.82,51.61
 step
   talk Elder Primestone##15570
-  turnin Primestone the Elder##8654 |goto Silithus 21.14,10.51
+  turnin Primestone the Elder##8654 |goto Silithus 23.08,11.84
 step
   talk Elder Runetotem##15572
   turnin Runetotem the Elder##8670 |goto Durotar 53.2,43.68
 step
   talk Elder Ragetotem##15573
-  turnin Ragetotem the Elder##8671 |goto Tanaris 35.96,80.12
+  turnin Ragetotem the Elder##8671 |goto Tanaris 36.3,80.54
 step
   talk Elder Stonespire##15574
   turnin Stonespire the Elder##8672 |goto Winterspring 61.45,37.81
 step
   talk Elder Bloodhoof##15575
-  turnin Bloodhoof the Elder##8673 |goto Mulgore 48.55,53.48
+  turnin Bloodhoof the Elder##8673 |goto Mulgore 47.54,57.81
 step
   talk Elder Winterhoof##15576
-  turnin Winterhoof the Elder##8674 |goto Stranglethorn Vale 26.47,76.53
+  turnin Winterhoof the Elder##8674 |goto Stranglethorn Vale 27.62,74.26
 step
   talk Elder Skychaser##15577
   turnin Skychaser the Elder##8675 |goto Westfall 56.65,47.11
@@ -350,22 +308,22 @@ step
   turnin Thunderhorn the Elder##8681 |goto Un'Goro Crater 50.35,76.07
 step
   talk Elder Skyseer##15584
-  turnin Skyseer the Elder##8682 |goto Thousand Needles 45.29,50.0
+  turnin Skyseer the Elder##8682 |goto Thousand Needles 45.29,50
 step
   talk Elder Dawnstrider##15585
   turnin Dawnstrider the Elder##8683 |goto Burning Steppes 64.46,23.95
 step
   talk Elder Dreamseer##15586
-  turnin Dreamseer the Elder##8684 |goto Tanaris 51.61,26.99
+  turnin Dreamseer the Elder##8684 |goto Tanaris 51.47,27.85
 step
   talk Elder Mistwalker##15587
-  turnin Mistwalker the Elder##8685
+  turnin Mistwalker the Elder##8685 |goto Feralas 62.58,30.96
 step
   talk Elder High Mountain##15588
   turnin High Mountain the Elder##8686 |goto The Barrens 45.09,57.92
 step
   talk Elder Windrun##15592
-  turnin Windrun the Elder##8688 |goto Eastern Plaguelands 39.68,75.39
+  turnin Windrun the Elder##8688 |goto Eastern Plaguelands 34.06,64.1
 step
   talk Elder Starsong##15593
   turnin Starsong the Elder##8713 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
@@ -398,13 +356,13 @@ step
   turnin Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
 step
   talk Elder Nightwind##15603
-  turnin Nightwind the Elder##8723 |goto Felwood 37.64,53.0
+  turnin Nightwind the Elder##8723 |goto Felwood 37.64,53
 step
   talk Elder Morningdew##15604
-  turnin Morningdew the Elder##8724 |goto Thousand Needles 79.74,77.31
+  turnin Morningdew the Elder##8724 |goto Thousand Needles 79.2,77.05
 step
   talk Elder Riversong##15605
-  turnin Riversong the Elder##8725 |goto Ashenvale 34.65,48.48
+  turnin Riversong the Elder##8725 |goto Ashenvale 35.6,48.8
 step
   talk Elder Brightspear##15606
   turnin Brightspear the Elder##8726 |goto Winterspring 55.61,43.65
@@ -412,23 +370,59 @@ step
   talk Elder Farwhisper##15607
   turnin Farwhisper the Elder##8727 |goto Stratholme - Dungeon -1,-1
 step
+  talk Valadar Starsong##15864
+  turnin Elune's Candle##8862 |goto Moonglade 53.65,35.26
+step
+  talk Valadar Starsong##15864
+  turnin Festival Dumplings##8863 |goto Moonglade 53.65,35.26
+step
+  talk Valadar Starsong##15864
+  turnin Festive Lunar Dresses##8864 |goto Moonglade 53.65,35.26
+step
+  talk Valadar Starsong##15864
+  turnin Festive Lunar Pant Suits##8865 |goto Moonglade 53.65,35.26
+step
   talk Elder Bronzebeard##15871
   turnin Bronzebeard the Elder##8866 |goto Ironforge 29.2,17.05
 step
   talk Lunar Festival Harbinger##15895
-  turnin Lunar Fireworks##8867 |goto Darnassus 33.89,13.87
+  turnin Lunar Fireworks##8867 |goto Undercity 65.62,36
+step
+  talk Valadar Starsong##15864
+  turnin Elune's Blessing##8868 |goto Moonglade 53.65,35.26
 step
   talk Lunar Festival Harbinger##15895
-  turnin The Lunar Festival##8870 |goto Darnassus 33.89,13.87
+  turnin The Lunar Festival##8870 |goto Undercity 65.62,36
 step
   talk Lunar Festival Harbinger##15895
-  turnin The Lunar Festival##8871 |goto Darnassus 33.89,13.87
+  turnin The Lunar Festival##8871 |goto Undercity 65.62,36
 step
   talk Lunar Festival Harbinger##15895
-  turnin The Lunar Festival##8872 |goto Darnassus 33.89,13.87
+  turnin The Lunar Festival##8872 |goto Undercity 65.62,36
+step
+  talk Fariel Starsong##15909
+  turnin Small Rockets##8876 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  turnin Firework Launcher##8877 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  turnin Festive Recipes##8878 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  turnin Large Rockets##8879 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  turnin Cluster Rockets##8880 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  turnin Large Cluster Rockets##8881 |goto Moonglade 53.79,35.32
+step
+  talk Fariel Starsong##15909
+  turnin Cluster Launcher##8882 |goto Moonglade 53.79,35.32
 step
   talk Lunar Festival Harbinger##15895
-  accept Valadar Starsong##8883 |goto Darnassus 33.89,13.87
+  accept Valadar Starsong##8883 |goto Undercity 65.62,36
 step
   talk Valadar Starsong##15864
   turnin Valadar Starsong##8883 |goto Moonglade 53.65,35.26

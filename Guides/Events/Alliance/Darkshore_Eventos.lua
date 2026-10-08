@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Events/Alliance/Darkshore (Eventos)", {
@@ -16,7 +16,7 @@ step
   accept The Red Crystal##4811 |goto Darkshore 37.7,43.41
 step
   talk Sentinel Aynasha##11711
-  accept One Shot.  One Kill.##5713 |goto Darkshore 45.94,90.29
+  accept One Shot. One Kill.##5713 |goto Darkshore 45.94,90.29
 step
   talk Barithras Moonshade##3583
   accept Cave Mushrooms##947 |goto Darkshore 37.32,43.64
@@ -29,6 +29,9 @@ step
 step
   talk Kerlonian Evershade##11218
   accept The Sleeper Has Awakened##5321 |goto Darkshore 44.4,76.43
+step
+  note Travel east of Auberdine and look for a large, red crystal along Darkshore's eastern mountain range. Report back what you find to Sentinel Glynda Nal'Shea in Auberdine.
+  collect Mysterious Red Crystal##175524 |q 4811 |goto Darkshore 47.32,48.68
 step
   note Bring 5 Scaber Stalks and 1 Death Cap to Barithras Moonshade in Auberdine.
   collect 5 Scaber Stalk##5271 |q 947 |goto Darkshore 55.51,34.59
@@ -46,7 +49,7 @@ step
   turnin The Red Crystal##4811 |goto Darkshore 37.7,43.41
 step
   talk Sentinel Onaeya##11806
-  turnin One Shot.  One Kill.##5713 |goto Ashenvale 26.6,36.73
+  turnin One Shot. One Kill.##5713 |goto Ashenvale 26.6,36.73
 step
   talk Barithras Moonshade##3583
   turnin Cave Mushrooms##947 |goto Darkshore 37.32,43.64
@@ -90,7 +93,7 @@ step
   note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
   collect 5 Fine Moonstalker Pelt##5386 |q 986 |goto Darkshore 43.03,89.68 |tip {dropsfrom}Moonstalker Matriarch, Moonstalker Sire
 step
-  turnin The Master's Glaive##944 |goto Darkshore 43.55,76.29
+  turnin The Master's Glaive##944 |goto Darkshore 38.6,86.2
 step
   talk Terenthis##3693
   turnin A Lost Master##986 |goto Darkshore 39.37,43.48

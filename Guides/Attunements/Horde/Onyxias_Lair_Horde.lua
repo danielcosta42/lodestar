@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Attunements/Horde/Onyxia's Lair (Horde)", {
@@ -25,7 +25,7 @@ step
   accept For The Horde!##4974 |goto Orgrimmar 31.73,37.82
 step
   note Travel to Blackrock Spire and slay Warchief Rend Blackhand. Take his head and return to Orgrimmar.
-  collect Head of Rend Blackhand##12630 |q 4974 |goto Orgrimmar 31.73,37.82 |tip {dropsfrom}Warchief Rend Blackhand
+  collect Head of Rend Blackhand##12630 |q 4974 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Warchief Rend Blackhand
 step
   talk Thrall##4949
   turnin For The Horde!##4974 |goto Orgrimmar 31.73,37.82
@@ -39,14 +39,14 @@ step
   talk Thrall##4949
   accept The Champion of the Horde##6567 |goto Orgrimmar 31.73,37.82
 step
-  talk Rokaro##10182
-  turnin The Champion of the Horde##6567 |goto Feralas 46.39,18.24
+  talk Rexxar##10182
+  turnin The Champion of the Horde##6567 |goto Desolace 54,2
 step
-  talk Rokaro##10182
-  accept Mistress of Deception##6568 |goto Feralas 46.39,18.24
+  talk Rexxar##10182
+  accept The Testament of Rexxar##6568 |goto Desolace 54,2
 step
   talk Myranda the Hag##11872
-  turnin Mistress of Deception##6568 |goto Western Plaguelands 50.79,77.85
+  turnin The Testament of Rexxar##6568 |goto Western Plaguelands 50.79,77.85
 step
   talk Myranda the Hag##11872
   accept Oculus Illusions##6569 |goto Western Plaguelands 50.79,77.85
@@ -77,8 +77,8 @@ step
   collect The Skull of Scryer##16869 |q 6582 |goto Winterspring 52.71,55.89
 step
   note Destroy the drake champion of the Green Flight, Somnus. Take his skull and return it to Emberstrife.
-  kill Somnus##12900 |goto Swamp of Sorrows 74.12,68.35 |elite
-  collect The Skull of Somnus##16870 |q 6583 |goto Swamp of Sorrows 74.12,68.35
+  kill Somnus##12900 |goto Swamp of Sorrows 76,66.6 |elite
+  collect The Skull of Somnus##16870 |q 6583 |goto Swamp of Sorrows 76,66.6
 step
   note Guarding the Caverns of Time in the Tanaris Desert is Chronalis, child of Nozdormu. Destroy him and return his skull to Emberstrife.
   kill Chronalis##8197 |goto Tanaris 64.16,48.49 |elite
@@ -106,15 +106,15 @@ step
   talk Emberstrife##10321
   accept Ascension...##6601 |goto Dustwallow Marsh 56.66,87.72
 step
-  talk Rokaro##10182
-  turnin Ascension...##6601 |goto Feralas 46.39,18.24
+  talk Rexxar##10182
+  turnin Ascension...##6601 |goto Desolace 54,2
 step
-  talk Rokaro##10182
-  accept Blood of the Black Dragon Champion##6602 |goto Feralas 46.39,18.24
+  talk Rexxar##10182
+  accept Blood of the Black Dragon Champion##6602 |goto Desolace 54,2
 step
-  note Travel to Blackrock Spire and slay General Drakkisath. Gather his blood and return it to Rokaro.
+  note Travel to Blackrock Spire and slay General Drakkisath. Gather his blood and return it to Rexxar.
   collect Blood of the Black Dragon Champion##16663 |q 6602 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
-  talk Rokaro##10182
-  turnin Blood of the Black Dragon Champion##6602 |goto Feralas 46.39,18.24
+  talk Rexxar##10182
+  turnin Blood of the Black Dragon Champion##6602 |goto Desolace 54,2
 ]])

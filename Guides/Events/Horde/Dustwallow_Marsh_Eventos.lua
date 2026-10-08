@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Events/Horde/Dustwallow Marsh (Eventos)", {
@@ -15,8 +15,8 @@ step
   talk Draz'Zilb##4501
   accept Identifying the Brood##1169 |goto Dustwallow Marsh 37.15,33.09
 step
-  note Draz'Zilb in Brackenwall Village would like you to bring him 7 Searing Tongues and 7 Searing Hearts.
-  collect Searing Tongue##5840 |q 1169 |goto Dustwallow Marsh 45.79,72.13 |tip {dropsfrom}Searing Hatchling, Searing Whelp
+  note Draz'Zilb in Brackenwall Village would like you to bring him 15 Searing Tongues and 15 Searing Hearts.
+  collect Searing Tongue##5840 |q 1169 |goto Dustwallow Marsh 45.6,73 |tip {dropsfrom}Searing Hatchling, Searing Whelp
 step
   talk Krog##4926
   turnin Lieutenant Paval Reethe##1269 |goto Dustwallow Marsh 36.42,31.88

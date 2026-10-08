@@ -1,14 +1,11 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Un'Goro Crater (52-55)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Blackrock Depths - Dungeon -- Shadowforge City (54-60)",
+	next = "Leveling/Horde/Tanaris (46-60)",
 }, [[
-step
-  note {fp}Gryfe
-  goto Un'Goro Crater 45.23,5.83 |tip {vendor}
 step
   talk Williden Marshal##9270
   accept Expedition Salvation##3881 |goto Un'Goro Crater 43.95,7.14
@@ -27,7 +24,7 @@ step
   accept Alien Ecology##3883 |goto Un'Goro Crater 43.89,7.24
 step
   note Use the Scraping Vial to collect a Hive Wall Sample from one of the Gorishi hive hatcheries in Un'Goro Crater. Look for the chambers with the hanging larval spawns.
-  collect Hive Wall Sample##11131 |q 3883 |goto Un'Goro Crater 43.89,7.24
+  collect Hive Wall Sample##11131 |q 3883 |goto Un'Goro Crater 48.69,85.32 |tip {dropsfrom}Gorishi Hive Hatchery
 step
   kill Devilsaur##6498 |goto Un'Goro Crater 34.6,23.68 |elite |tip Loot the quest item here — it starts the quest.
   accept Williden's Journal##3884 |goto Un'Goro Crater 34.6,23.68
@@ -54,8 +51,7 @@ step
   accept Crystals of Power##4284 |goto Un'Goro Crater 41.92,2.7
 step
   note Collect 7 Power Crystals of each color: red, blue, yellow, and green. Bring them to J.D. Collie at Marshal's Refuge.
-  kill Devilsaur##6498 |goto Un'Goro Crater 34.6,23.68 |elite
-  collect 7 Red Power Crystal##11186 |q 4284 |goto Un'Goro Crater 34.6,23.68
+  collect 7 Red Power Crystal##11186 |q 4284 |goto Un'Goro Crater 59.2,51.4
 step
   talk Spraggle Frock##9997
   accept Lost!##4492 |goto Un'Goro Crater 43.62,8.5
@@ -87,12 +83,6 @@ step
   talk Krakle##10302
   accept Finding the Source##974 |goto Un'Goro Crater 30.93,50.44
 step
-  talk Elder Thunderhorn##15583
-  accept Thunderhorn the Elder##8681 |goto Un'Goro Crater 50.35,76.07
-step
-  note Kill 10 Pterrordax and 15 Frenzied Pterrordax, then speak to Spraggle Frock at Marshal's Refuge.
-  kill Pterrordax##9166 |q 4501 |goto Un'Goro Crater 53.48,87.13
-step
   click A Wrecked Raft##161505
   accept It's a Secret to Everybody##3844 |goto Un'Goro Crater 63.02,68.6
 step
@@ -114,7 +104,10 @@ step
 step
   only Druid
   note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.
-  collect 8 Gorishi Sting##22435 |q 9052 |goto Un'Goro Crater 50.14,76.41 |tip {dropsfrom}Gorishi Wasp, Gorishi Worker, Gorishi Reaver
+  collect 8 Gorishi Sting##22435 |q 9052 |goto Un'Goro Crater 50.14,76.41 |tip {dropsfrom}Gorishi Wasp, Gorishi Stinger
+step
+  note Kill 10 Pterrordax and 15 Frenzied Pterrordax, then speak to Spraggle Frock at Marshal's Refuge.
+  kill Pterrordax##9166 |q 4501 |goto Un'Goro Crater 56.2,87.4
 step
   talk Spraggle Frock##9997
   turnin Beware of Pterrordax##4501 |goto Un'Goro Crater 43.62,8.5
@@ -165,7 +158,7 @@ step
   turnin Marvon's Workshop##4147 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
 step
   note Krakle in Un'Goro Crater wants you to find the hottest area of Fire Plume Ridge.
-  kill Krakle's Thermometer##10541 |q 974 |goto Un'Goro Crater 49.71,48.53
+  collect Fire Plume Ridge Hot Spot##148503 |q 974 |goto Un'Goro Crater 49.69,45.64
 step
   note Travel to Fire Plume Ridge, south of Marshal's Refuge.
   kill Blazerunner##9376 |q 3962 |goto Un'Goro Crater 49.41,49.33 |elite
@@ -175,12 +168,6 @@ step
 step
   talk Krakle##10302
   accept The New Springs##980 |goto Un'Goro Crater 30.93,50.44
-step
-  talk Eridan Bluewind##9116
-  turnin Linken's Memory##3942 |goto Felwood 51.35,81.51 |tip {turninat}Felwood
-step
-  talk Elder Thunderhorn##15583
-  turnin Thunderhorn the Elder##8681 |goto Un'Goro Crater 50.35,76.07
 step
   turnin It's a Secret to Everybody##3844 |goto Un'Goro Crater 63.11,69.06
 step
@@ -194,6 +181,9 @@ step
   talk Torwa Pathfinder##9619
   turnin Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
 step
+  talk Eridan Bluewind##9116
+  turnin Linken's Memory##3942 |goto Felwood 51.35,81.51 |tip {turninat}Felwood
+step
   click A Small Pack##161504
   accept It's a Secret to Everybody##3845 |goto Un'Goro Crater 63.11,69.06
 step
@@ -204,7 +194,7 @@ step
   accept The Scent of Lar'korwi##4291 |goto Un'Goro Crater 71.64,75.96
 step
   note Bring 2 Ravasaur Pheromone Glands to Torwa Pathfinder near the entrance to Un'Goro Crater.
-  collect 2 Ravasaur Pheromone Gland##11509 |q 4291 |goto Un'Goro Crater 71.64,75.96 |tip {dropsfrom}Lar'korwi Mate
+  collect 2 Ravasaur Pheromone Gland##11509 |q 4291 |goto Un'Goro Crater 66,67 |tip {dropsfrom}Lar'korwi Mate
 step
   talk Torwa Pathfinder##9619
   accept The Mighty U'cha##4301 |goto Un'Goro Crater 71.64,75.96
@@ -245,7 +235,7 @@ step
   accept The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
 step
   note Using the contents of Torwa's Pouch, summon Lar'korwi and defeat him. Then bring Lar'korwi's Head to Torwa Pathfinder near the entrance to Un'Goro Crater.
-  collect Lar'korwi's Head##11510 |q 4292 |goto Un'Goro Crater 71.64,75.96 |tip {dropsfrom}Lar'korwi
+  collect Lar'korwi's Head##11510 |q 4292 |goto Un'Goro Crater 79.65,49.83 |tip {dropsfrom}Lar'korwi
 step
   only Druid
   talk Torwa Pathfinder##9619
@@ -253,7 +243,7 @@ step
 step
   only Druid
   note Retrieve a Putrid Vine from the guardian at the bottom of the Sunken Temple and return to Torwa Pathfinder.
-  collect Putrid Vine##22444 |q 9053 |goto Un'Goro Crater 71.64,75.96 |tip {dropsfrom}Atal'alarion
+  collect Putrid Vine##22444 |q 9053 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Atal'alarion
 step
   talk Torwa Pathfinder##9619
   turnin The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
@@ -262,6 +252,6 @@ step
   talk Torwa Pathfinder##9619
   turnin A Better Ingredient##9053 |goto Un'Goro Crater 71.64,75.96
 step
-  note {travel}Blackrock Depths - Dungeon -- Shadowforge City
-  goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1
+  note {travel}Tanaris
+  goto Tanaris 50.96,27.24
 ]])

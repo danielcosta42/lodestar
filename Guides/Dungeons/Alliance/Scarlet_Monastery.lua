@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Scarlet Monastery", {
@@ -10,7 +10,7 @@ step
   accept Down the Scarlet Path##261 |goto Desolace 66.52,7.91
 step
   note Destroy 30 Undead Ravagers, then return to Brother Anton at Nijel's Point.
-  kill Undead Ravager##11561 |q 261 |goto Desolace 63.97,90.0
+  kill Undead Ravager##11561 |q 261 |goto Desolace 63.97,90
 step
   talk Brother Anton##1182
   turnin Down the Scarlet Path##261 |goto Desolace 66.52,7.91

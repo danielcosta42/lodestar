@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Class/Alliance/Priest", {
@@ -12,12 +12,16 @@ step
   talk Deputy Willem##823
   accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
 step
+  only Gnome Priest
+  talk Sten Stoutarm##658
+  accept Hallowed Memorandum##98574 |goto Dun Morogh 29.93,71.2
+step
   talk Conservator Ilthalaine##2079
   accept The Balance of Nature##456 |goto Teldrassil 58.69,44.27
 step
-  only Draenei Priest
-  talk Zalduun##16502
-  accept Priest Training##9291 |goto Azuremyst Isle 80.13,48.89
+  only NightElf Priest
+  talk Laurna Morninglight##3600
+  accept Garments of the Moon##5621 |goto Teldrassil 55.56,56.75
 step
   only NightElf Priest
   talk Shanda##3595
@@ -27,17 +31,21 @@ step
   talk Priestess Anetta##375
   accept In Favor of the Light##5623 |goto Elwynn Forest 49.81,39.49
 step
-  only Dwarf Priest
+  only Human Priest
+  talk Priestess Josetta##377
+  accept Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
+step
+  only Priest
+  talk Maxan Anvol##1226
+  accept Garments of the Light##5625 |goto Dun Morogh 47.34,52.19
+step
+  only Priest
   talk Branstock Khalder##837
   accept In Favor of the Light##5626 |goto Dun Morogh 28.6,66.39
 step
-  only Priest
-  talk Ponaris##16276
-  accept Cleansing the Scar##9489 |goto Eversong Woods 47.85,47.97
-step
-  only Priest
-  talk Guvan##17482
-  accept Help Tavara##9586 |goto Azuremyst Isle 48.6,49.29
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  accept Stars of Elune##5627 |goto Darnassus 39.52,81.2
 step
   only NightElf Priest
   talk Priestess Josetta##377
@@ -52,26 +60,26 @@ step
   accept Returning Home##5630 |goto Dun Morogh 47.34,52.19
 step
   only NightElf Priest
-  talk Brother Joshua##5489
-  accept Returning Home##5631 |goto Stormwind City 38.54,26.85
+  talk High Priestess Laurena##376
+  accept Returning Home##5631 |goto Stormwind City 49.53,44.6
 step
   only NightElf Priest
   talk Nara Meideros##11397
-  accept Returning Home##5632 |goto Stormwind City 20.68,50.07
+  accept Returning Home##5632 |goto Stormwind City 35.68,63.18
 step
   only NightElf Priest
-  talk Braenna Flintcrag##5142
-  accept Returning Home##5633 |goto Ironforge 24.42,9.17
+  talk High Priest Rohan##11406
+  accept Returning Home##5633 |goto Ironforge 24.73,8.16
 step
-  only Priest
+  only Dwarf Priest
   talk High Priestess Laurena##376
-  accept Desperate Prayer##5634 |goto Stormwind City 38.58,26.06
+  accept Desperate Prayer##5634 |goto Stormwind City 49.53,44.6
 step
   only Priest
   talk Priestess Josetta##377
   accept Desperate Prayer##5635 |goto Elwynn Forest 43.28,65.72
 step
-  only Priest
+  only Dwarf Priest
   talk Laurna Morninglight##3600
   accept Desperate Prayer##5636 |goto Teldrassil 55.56,56.75
 step
@@ -81,11 +89,43 @@ step
 step
   only Priest
   talk Nara Meideros##11397
-  accept Desperate Prayer##5638 |goto Stormwind City 20.68,50.07
+  accept Desperate Prayer##5638 |goto Stormwind City 35.68,63.18
 step
   only Priest
   talk High Priest Rohan##11406
   accept Desperate Prayer##5639 |goto Ironforge 24.73,8.16
+step
+  only Priest
+  talk Priestess Alathea##11401
+  accept Desperate Prayer##5640 |goto Darnassus 39.52,81.2
+step
+  only Human Priest
+  talk High Priestess Laurena##376
+  accept Divine Grace##94773 |goto Stormwind City 49.53,44.6
+step
+  only Human Priest
+  talk Priestess Josetta##377
+  accept Divine Grace##94774 |goto Elwynn Forest 43.28,65.72
+step
+  only Gnome Priest
+  talk High Priestess Mims##258785
+  accept Confounding Flash##94817 |goto Ironforge 24.89,10.23
+step
+  only Gnome Priest
+  talk Maxan Anvol##1226
+  accept Confounding Flash##94824 |goto Dun Morogh 47.34,52.19
+step
+  only Dwarf Priest
+  talk High Priest Rohan##11406
+  accept A Lack of Fear##5641 |goto Ironforge 24.73,8.16
+step
+  only Dwarf Priest
+  talk High Priestess Laurena##376
+  accept A Lack of Fear##5645 |goto Stormwind City 49.53,44.6
+step
+  only Dwarf Priest
+  talk Priestess Alathea##11401
+  accept A Lack of Fear##5647 |goto Darnassus 39.52,81.2
 step
   only NightElf Priest
   talk Priestess Alathea##11401
@@ -93,7 +133,11 @@ step
 step
   only NightElf Priest
   talk High Priestess Laurena##376
-  accept Elune's Grace##5673 |goto Stormwind City 38.58,26.06
+  accept Elune's Grace##5673 |goto Stormwind City 49.53,44.6
+step
+  only NightElf Priest
+  talk Nara Meideros##11397
+  accept Elune's Grace##5674 |goto Stormwind City 35.68,63.18
 step
   only NightElf Priest
   talk High Priest Rohan##11406
@@ -101,27 +145,31 @@ step
 step
   only Human Priest
   talk High Priestess Laurena##376
-  accept Arcane Feedback##5676 |goto Stormwind City 38.58,26.06
+  accept Arcane Feedback##5676 |goto Stormwind City 49.53,44.6
 step
   only Human Priest
   talk High Priest Rohan##11406
   accept Arcane Feedback##5677 |goto Ironforge 24.73,8.16
 step
-  only Priest
-  talk High Priestess Laurena##376
-  accept Cenarion Aid##8254 |goto Stormwind City 38.58,26.06
+  only Human Priest
+  talk Priestess Alathea##11401
+  accept Arcane Feedback##5678 |goto Darnassus 39.52,81.2
 step
   only Priest
-  kill Prince Tortheldrin##11486 |goto Dire Maul - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
+  talk Malakai Cross##3045
+  accept Cenarion Aid##8254 |goto Thunder Bluff 24.56,22.57
+step
+  only Priest
+  collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept Holy Bologna: What the Light Won't Tell You##7504 |goto Dire Maul - Dungeon -1,-1
 step
   only Priest
   talk Eris Havenfire##14494
-  accept A Warning##7621 |goto Eastern Plaguelands 20.96,18.4
+  accept A Warning##7621 |goto Eastern Plaguelands 17.21,12.79
 step
   only Priest
   talk Eris Havenfire##14494
-  accept The Balance of Light and Shadow##7622 |goto Eastern Plaguelands 20.96,18.4
+  accept The Balance of Light and Shadow##7622 |goto Eastern Plaguelands 17.21,12.79
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -139,28 +187,15 @@ step
   talk Al'tabim the All-Seeing##14903
   accept Paragons of Power: The Confessor's Mantle##8071 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Priest
+  talk Zanza the Restless##15042
+  accept Prophetic Aura##8191 |goto Zul'Gurub - Dungeon -1,-1
+step
   talk Commander Mar'alith##15181
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
-  only Priest
-  talk Andorgos##15502
-  accept Tiara of the Oracle##8592 |goto Ahn'Qiraj - Raid -1,-1
-step
-  only Priest
   talk Kandrostrasz##15503
-  accept Trousers of the Oracle##8593 |goto Ahn'Qiraj - Raid -1,-1
-step
-  only Priest
-  talk Andorgos##15502
-  accept Mantle of the Oracle##8594 |goto Ahn'Qiraj - Raid -1,-1
-step
-  only Priest
-  talk Kandrostrasz##15503
-  accept Footwraps of the Oracle##8596 |goto Ahn'Qiraj - Raid -1,-1
-step
-  only Priest
-  talk Vethsera##15504
-  accept Vestments of the Oracle##8603 |goto Ahn'Qiraj - Raid -1,-1
+  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
   only Priest
   talk Keyl Swiftclaw##15500
@@ -179,7 +214,7 @@ step
   accept An Earnest Proposition##8909 |goto Ironforge 43.53,52.64
 step
   talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
+  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
 step
   note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
   collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 49.48,39.15 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
@@ -187,60 +222,49 @@ step
   note Kill 7 Young Nightsabers and 4 Young Thistle Boars and return to Conservator Ilthalaine.
   kill Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
 step
-  only Priest
-  note Cast Power Word: Fortitude on 6 Eversong Rangers in the Dead Scar.
-  kill Eversong Ranger##15938 |q 9489 |goto Eversong Woods 46.55,66.77
+  only NightElf Priest
+  note Find Sentinel Shaya and heal her wounds using Lesser Heal (Rank 2). Afterwards, grant her Power Word: Fortitude and then return to Laurna Morninglight in Dolanaar.
+  kill Sentinel Shaya##12429 |q 5621 |goto Teldrassil 57.24,63.51
+step
+  only Human Priest
+  note Find Guard Roberts and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Priestess Josetta in Goldshire.
+  kill Guard Roberts##12423 |q 5624 |goto Elwynn Forest 48.15,68.05
 step
   only Priest
-  note Guvan at Azure Watch wants you to find Tavara and heal her wounds.
-  kill Tavara##17551 |q 9586 |goto Azuremyst Isle 56.22,48.88
+  note Find Mountaineer Dolf and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Maxan Anvol in Kharanos.
+  kill Mountaineer Dolf##12427 |q 5625 |goto Dun Morogh 45.81,54.57
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Stanchion##19718 |q 8061 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Stanchion##19718 |q 8061 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Sash##19720 |q 8070 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Sash##19720 |q 8070 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
 step
   only Priest
   note Bring Al'tabim the All-Seeing a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Aegis##19724 |q 8071 |goto Zul'Gurub - Dungeon pre-cata ZG -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+  collect Primal Hakkari Aegis##19724 |q 8071 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
+step
+  only Priest
+  collect Primal Hakkari Idol##22637 |q 8191 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
-  get Dearest Natalia |q 8304 |goto Silithus 40.62,89.18
+  kill Frankal Stonebridge##15171 |q 8304 |goto Silithus 40.81,88.86
 step
-  only Priest
-  note Bring Vek'nilash's Circlet, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'nilash's Circlet##20926 |q 8592 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash
-step
-  only Priest
-  note Bring Ouro's Intact Hide, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Ouro's Intact Hide##20927 |q 8593 |goto Ahn'Qiraj - Raid -1,-1 |tip {dropsfrom}Ouro
-step
-  only Priest
-  note Bring the Qiraji Bindings of Command, 2 Idols of Rebirth, 5 Silver Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Command##20928 |q 8594 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Priest
-  note Bring the Qiraji Bindings of Command, 2 Idols of Death, 5 Bronze Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Command##20928 |q 8596 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Priest
-  note Bring the the Husk of the Old God, 2 Idols of Death, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Husk of the Old God##20933 |q 8603 |goto Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}C'Thun
+  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
 step
   only Priest
   note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
+  collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
 step
   only Priest
   note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
+  collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
 step
   only Priest
   note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Raid -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
+  collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
 step
   only Priest
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with 1 set of Devout Bracers to Deliana in Ironforge.
@@ -255,12 +279,16 @@ step
   talk Marshal McBride##197
   turnin A Threat Within##783 |goto Elwynn Forest 48.92,41.61
 step
+  only Gnome Priest
+  talk Branstock Khalder##837
+  turnin Hallowed Memorandum##98574 |goto Dun Morogh 28.6,66.39
+step
   talk Conservator Ilthalaine##2079
   turnin The Balance of Nature##456 |goto Teldrassil 58.69,44.27
 step
-  only Draenei Priest
-  talk Zalduun##16502
-  turnin Priest Training##9291 |goto Azuremyst Isle 80.13,48.89
+  only NightElf Priest
+  talk Laurna Morninglight##3600
+  turnin Garments of the Moon##5621 |goto Teldrassil 55.56,56.75
 step
   only NightElf Priest
   talk Laurna Morninglight##3600
@@ -270,17 +298,21 @@ step
   talk Priestess Josetta##377
   turnin In Favor of the Light##5623 |goto Elwynn Forest 43.28,65.72
 step
-  only Dwarf Priest
+  only Human Priest
+  talk Priestess Josetta##377
+  turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
+step
+  only Priest
+  talk Maxan Anvol##1226
+  turnin Garments of the Light##5625 |goto Dun Morogh 47.34,52.19
+step
+  only Priest
   talk Maxan Anvol##1226
   turnin In Favor of the Light##5626 |goto Dun Morogh 47.34,52.19
 step
-  only Priest
-  talk Ponaris##16276
-  turnin Cleansing the Scar##9489 |goto Eversong Woods 47.85,47.97
-step
-  only Priest
-  talk Guvan##17482
-  turnin Help Tavara##9586 |goto Azuremyst Isle 48.6,49.29
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  turnin Stars of Elune##5627 |goto Darnassus 39.52,81.2
 step
   only NightElf Priest
   talk Priestess Alathea##11401
@@ -298,29 +330,73 @@ step
   talk Priestess Alathea##11401
   turnin Returning Home##5631 |goto Darnassus 39.52,81.2
 step
-  only Priest
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  turnin Returning Home##5632 |goto Darnassus 39.52,81.2
+step
+  only NightElf Priest
+  talk Priestess Alathea##11401
+  turnin Returning Home##5633 |goto Darnassus 39.52,81.2
+step
+  only Dwarf Priest
   talk High Priestess Laurena##376
-  turnin Desperate Prayer##5634 |goto Stormwind City 38.58,26.06
+  turnin Desperate Prayer##5634 |goto Stormwind City 49.53,44.6
 step
   only Priest
   talk High Priestess Laurena##376
-  turnin Desperate Prayer##5635 |goto Stormwind City 38.58,26.06
+  turnin Desperate Prayer##5635 |goto Stormwind City 49.53,44.6
+step
+  only Dwarf Priest
+  talk High Priestess Laurena##376
+  turnin Desperate Prayer##5636 |goto Stormwind City 49.53,44.6
 step
   only Priest
   talk High Priestess Laurena##376
-  turnin Desperate Prayer##5636 |goto Stormwind City 38.58,26.06
+  turnin Desperate Prayer##5637 |goto Stormwind City 49.53,44.6
 step
   only Priest
   talk High Priestess Laurena##376
-  turnin Desperate Prayer##5637 |goto Stormwind City 38.58,26.06
+  turnin Desperate Prayer##5638 |goto Stormwind City 49.53,44.6
 step
   only Priest
   talk High Priestess Laurena##376
-  turnin Desperate Prayer##5638 |goto Stormwind City 38.58,26.06
+  turnin Desperate Prayer##5639 |goto Stormwind City 49.53,44.6
 step
   only Priest
   talk High Priestess Laurena##376
-  turnin Desperate Prayer##5639 |goto Stormwind City 38.58,26.06
+  turnin Desperate Prayer##5640 |goto Stormwind City 49.53,44.6
+step
+  only Human Priest
+  talk High Priestess Laurena##376
+  turnin Divine Grace##94773 |goto Stormwind City 49.53,44.6
+step
+  only Human Priest
+  talk High Priestess Laurena##376
+  turnin Divine Grace##94774 |goto Stormwind City 49.53,44.6
+step
+  only Gnome Priest
+  talk High Priestess Mims##258785
+  turnin Confounding Flash##94817 |goto Ironforge 24.89,10.23
+step
+  only Gnome Priest
+  talk High Priestess Mims##258785
+  turnin Confounding Flash##94822 |goto Ironforge 24.89,10.23
+step
+  only Gnome Priest
+  talk High Priestess Mims##258785
+  turnin Confounding Flash##94824 |goto Ironforge 24.89,10.23
+step
+  only Dwarf Priest
+  talk High Priest Rohan##11406
+  turnin A Lack of Fear##5641 |goto Ironforge 24.73,8.16
+step
+  only Dwarf Priest
+  talk High Priest Rohan##11406
+  turnin A Lack of Fear##5645 |goto Ironforge 24.73,8.16
+step
+  only Dwarf Priest
+  talk High Priest Rohan##11406
+  turnin A Lack of Fear##5647 |goto Ironforge 24.73,8.16
 step
   only NightElf Priest
   talk Priestess Alathea##11401
@@ -332,15 +408,27 @@ step
 step
   only NightElf Priest
   talk Priestess Alathea##11401
+  turnin Elune's Grace##5674 |goto Darnassus 39.52,81.2
+step
+  only NightElf Priest
+  talk Priestess Alathea##11401
   turnin Elune's Grace##5675 |goto Darnassus 39.52,81.2
 step
   only Human Priest
   talk High Priestess Laurena##376
-  turnin Arcane Feedback##5676 |goto Stormwind City 38.58,26.06
+  turnin Arcane Feedback##5676 |goto Stormwind City 49.53,44.6
 step
   only Human Priest
   talk High Priestess Laurena##376
-  turnin Arcane Feedback##5677 |goto Stormwind City 38.58,26.06
+  turnin Arcane Feedback##5677 |goto Stormwind City 49.53,44.6
+step
+  only Human Priest
+  talk High Priestess Laurena##376
+  turnin Arcane Feedback##5678 |goto Stormwind City 49.53,44.6
+step
+  only Gnome Priest
+  talk High Priestess Mims##258785
+  turnin Contingency Plan##94819 |goto Ironforge 24.89,10.23
 step
   only Priest
   talk Ogtinc##8405
@@ -352,11 +440,11 @@ step
 step
   only Priest
   talk Eris Havenfire##14494
-  turnin A Warning##7621 |goto Eastern Plaguelands 20.96,18.4
+  turnin A Warning##7621 |goto Eastern Plaguelands 17.21,12.79
 step
   only Priest
   talk Eris Havenfire##14494
-  turnin The Balance of Light and Shadow##7622 |goto Eastern Plaguelands 20.96,18.4
+  turnin The Balance of Light and Shadow##7622 |goto Eastern Plaguelands 17.21,12.79
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -374,28 +462,15 @@ step
   talk Al'tabim the All-Seeing##14903
   turnin Paragons of Power: The Confessor's Mantle##8071 |goto Stranglethorn Vale 15.34,16.12
 step
+  only Priest
+  talk Zanza the Restless##15042
+  turnin Prophetic Aura##8191 |goto Zul'Gurub - Dungeon -1,-1
+step
   talk Commander Mar'alith##15181
   turnin Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
-  only Priest
-  talk Andorgos##15502
-  turnin Tiara of the Oracle##8592 |goto Ahn'Qiraj - Raid -1,-1
-step
-  only Priest
   talk Kandrostrasz##15503
-  turnin Trousers of the Oracle##8593 |goto Ahn'Qiraj - Raid -1,-1
-step
-  only Priest
-  talk Andorgos##15502
-  turnin Mantle of the Oracle##8594 |goto Ahn'Qiraj - Raid -1,-1
-step
-  only Priest
-  talk Kandrostrasz##15503
-  turnin Footwraps of the Oracle##8596 |goto Ahn'Qiraj - Raid -1,-1
-step
-  only Priest
-  talk Vethsera##15504
-  turnin Vestments of the Oracle##8603 |goto Ahn'Qiraj - Raid -1,-1
+  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
   only Priest
   talk Keyl Swiftclaw##15500
@@ -414,37 +489,21 @@ step
   turnin An Earnest Proposition##8909 |goto Ironforge 43.53,52.64
 step
   talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 81.52,58.27
+  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
 step
   talk Anachronos##15192
-  turnin Frame of Atiesh##9250 |goto Tanaris 64.2,51.42
+  turnin Frame of Atiesh##9250 |goto Tanaris 65.27,50.03
 step
   only Dwarf Priest
   talk Sten Stoutarm##658
   accept Hallowed Rune##3110 |goto Dun Morogh 29.93,71.2
 step
-  only Priest
+  only NightElf Priest
   talk Conservator Ilthalaine##2079
   accept Hallowed Sigil##3119 |goto Teldrassil 58.69,44.27
 step
   talk Marshal McBride##197
   accept Kobold Camp Cleanup##7 |goto Elwynn Forest 48.92,41.61
-step
-  only NightElf Priest
-  talk Laurna Morninglight##3600
-  accept Garments of the Moon##5621 |goto Teldrassil 55.56,56.75
-step
-  only Human Priest
-  talk Priestess Josetta##377
-  accept Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
-step
-  only Dwarf Priest
-  talk Maxan Anvol##1226
-  accept Garments of the Light##5625 |goto Dun Morogh 47.34,52.19
-step
-  only Priest
-  talk Aelthalyste##4606
-  accept Touch of Weakness##10379 |goto Undercity 49.26,17.12
 step
   only Priest
   talk Ogtinc##8405
@@ -460,29 +519,37 @@ step
   talk Frankal Stonebridge##15171
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
+  only Priest
+  talk Andorgos##15502
+  accept Tiara of the Oracle##8592 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Priest
+  talk Kandrostrasz##15503
+  accept Trousers of the Oracle##8593 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Priest
+  talk Andorgos##15502
+  accept Mantle of the Oracle##8594 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Priest
+  talk Kandrostrasz##15503
+  accept Footwraps of the Oracle##8596 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Priest
+  talk Vethsera##15504
+  accept Vestments of the Oracle##8603 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
   talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 81.54,58.16
+  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
 step
   talk Anachronos##15192
-  accept Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 64.2,51.42
+  accept Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 65.27,50.03
 step
   note Kill 10 Kobold Vermin, then return to Marshal McBride.
   kill Kobold Vermin##6 |q 7 |goto Elwynn Forest 49.27,36.26
-step
-  only NightElf Priest
-  note Find Sentinel Shaya and heal her wounds using Lesser Heal (Rank 2). Afterwards, grant her Power Word: Fortitude and then return to Laurna Morninglight in Dolanaar.
-  kill Sentinel Shaya##12429 |q 5621 |goto Teldrassil 57.24,63.51
-step
-  only Human Priest
-  note Find Guard Roberts and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Priestess Josetta in Goldshire.
-  kill Guard Roberts##12423 |q 5624 |goto Elwynn Forest 48.15,68.05
-step
-  only Dwarf Priest
-  note Find Mountaineer Dolf and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Maxan Anvol in Kharanos.
-  kill Mountaineer Dolf##12427 |q 5625 |goto Dun Morogh 45.81,54.57
 step
   only Priest
   note Acquire 4 Healthy Courser Glands and bring them to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
@@ -492,43 +559,48 @@ step
   collect The Eye of Zuldazar##19591 |q 8050 |goto Stranglethorn Vale 15.34,16.12
 step
   note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 41.28,88.45
+  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 48.5,41.14 |tip {dropsfrom}Hive'Ashi Stinger, Hive'Ashi Worker, Hive'Ashi Defender
+  kill Hive'Ashi Stinger##11698 |goto Silithus 48.5,41.14 |elite
+  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 48.5,41.14
+step
+  only Priest
+  note Bring Vek'nilash's Circlet, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  collect Vek'nilash's Circlet##20926 |q 8592 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash
+step
+  only Priest
+  note Bring Ouro's Intact Hide, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
+  collect Ouro's Intact Hide##20927 |q 8593 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
+step
+  only Priest
+  note Bring the Qiraji Bindings of Command, 2 Idols of Rebirth, 5 Silver Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
+  collect Qiraji Bindings of Command##20928 |q 8594 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
+step
+  only Priest
+  note Bring the Qiraji Bindings of Command, 2 Idols of Death, 5 Bronze Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
+  collect Qiraji Bindings of Command##20928 |q 8596 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
+step
+  only Priest
+  note Bring the the Husk of the Old God, 2 Idols of Death, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
+  collect Husk of the Old God##20933 |q 8603 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
 step
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Raid -1,-1 |elite
+  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
 step
   note Anachronos at the Caverns of Time in Tanaris wants the Staff Head of Atiesh and the Base of Atiesh.
-  collect Staff Head of Atiesh##22733 |q 9251 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Kel'Thuzad
+  collect Staff Head of Atiesh##22733 |q 9251 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Kel'Thuzad
 step
   only Dwarf Priest
   talk Branstock Khalder##837
   turnin Hallowed Rune##3110 |goto Dun Morogh 28.6,66.39
 step
-  only Priest
+  only NightElf Priest
   talk Shanda##3595
   turnin Hallowed Sigil##3119 |goto Teldrassil 59.17,40.44
 step
   talk Marshal McBride##197
   turnin Kobold Camp Cleanup##7 |goto Elwynn Forest 48.92,41.61
-step
-  only NightElf Priest
-  talk Laurna Morninglight##3600
-  turnin Garments of the Moon##5621 |goto Teldrassil 55.56,56.75
-step
-  only Human Priest
-  talk Priestess Josetta##377
-  turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
-step
-  only Dwarf Priest
-  talk Maxan Anvol##1226
-  turnin Garments of the Light##5625 |goto Dun Morogh 47.34,52.19
-step
-  only Priest
-  talk Aelthalyste##4606
-  turnin Touch of Weakness##10379 |goto Undercity 49.26,17.12
 step
   only Priest
   talk Ogtinc##8405
@@ -544,14 +616,34 @@ step
   talk Frankal Stonebridge##15171
   turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
+  only Priest
+  talk Andorgos##15502
+  turnin Tiara of the Oracle##8592 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Priest
+  talk Kandrostrasz##15503
+  turnin Trousers of the Oracle##8593 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Priest
+  talk Andorgos##15502
+  turnin Mantle of the Oracle##8594 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Priest
+  talk Kandrostrasz##15503
+  turnin Footwraps of the Oracle##8596 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
+  only Priest
+  talk Vethsera##15504
+  turnin Vestments of the Oracle##8603 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
+step
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
   talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 81.54,58.16
+  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
 step
   talk Anachronos##15192
-  turnin Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 64.2,51.42
+  turnin Atiesh, the Befouled Greatstaff##9251 |goto Tanaris 65.27,50.03
 step
   only Human Priest
   talk Marshal McBride##197
@@ -573,39 +665,39 @@ step
 step
   only Priest
   talk Father Inigo Montoy##16113
-  accept Robe of Faith##9111 |goto Eastern Plaguelands 81.47,58.15
+  accept Robe of Faith##9111 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  accept Leggings of Faith##9112 |goto Eastern Plaguelands 81.47,58.15
+  accept Leggings of Faith##9112 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  accept Circlet of Faith##9113 |goto Eastern Plaguelands 81.47,58.15
+  accept Circlet of Faith##9113 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  accept Shoulderpads of Faith##9114 |goto Eastern Plaguelands 81.47,58.15
+  accept Shoulderpads of Faith##9114 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  accept Sandals of Faith##9115 |goto Eastern Plaguelands 81.47,58.15
+  accept Sandals of Faith##9115 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  accept Gloves of Faith##9116 |goto Eastern Plaguelands 81.47,58.15
+  accept Gloves of Faith##9116 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  accept Belt of Faith##9117 |goto Eastern Plaguelands 81.47,58.15
+  accept Belt of Faith##9117 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  accept Bindings of Faith##9118 |goto Eastern Plaguelands 81.47,58.15
+  accept Bindings of Faith##9118 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Anachronos##15192
-  accept Atiesh, Greatstaff of the Guardian##9257 |goto Tanaris 64.2,51.42
+  accept Atiesh, Greatstaff of the Guardian##9257 |goto Tanaris 65.27,50.03
 step
   only Priest
   note Acquire an Ichor of Undeath for Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
@@ -619,35 +711,35 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Robe of Faith if you bring him the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Robe##22351 |q 9111 |goto Eastern Plaguelands 81.47,58.15
+  collect Desecrated Robe##22351 |q 9111 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Leggings of Faith if you bring him the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Leggings##22366 |q 9112 |goto Eastern Plaguelands 81.47,58.15
+  collect Desecrated Leggings##22366 |q 9112 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Circlet of Faith if you bring him the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  collect Desecrated Circlet##22367 |q 9113 |goto Eastern Plaguelands 81.47,58.15
+  collect Desecrated Circlet##22367 |q 9113 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Shoulderpads of Faith if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9114 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect Desecrated Shoulderpads##22368 |q 9114 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Sandals of Faith if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9115 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect Desecrated Sandals##22372 |q 9115 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Gloves of Faith if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  collect Desecrated Gloves##22371 |q 9116 |goto Eastern Plaguelands 81.47,58.15
+  collect Desecrated Gloves##22371 |q 9116 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Belt of Faith if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9117 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect Desecrated Belt##22370 |q 9117 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Bindings of Faith if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9118 |goto Naxxramas - Raid -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect Desecrated Bindings##22369 |q 9118 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
 step
   only Priest
   note Anachronos at the Caverns of Time in Tanaris wants you to take Atiesh, Greatstaff of the Guardian to Stratholme and use it on Consecrated Earth. Defeat the entity that is exorcised from the staff and return to him.
@@ -673,39 +765,39 @@ step
 step
   only Priest
   talk Father Inigo Montoy##16113
-  turnin Robe of Faith##9111 |goto Eastern Plaguelands 81.47,58.15
+  turnin Robe of Faith##9111 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  turnin Leggings of Faith##9112 |goto Eastern Plaguelands 81.47,58.15
+  turnin Leggings of Faith##9112 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  turnin Circlet of Faith##9113 |goto Eastern Plaguelands 81.47,58.15
+  turnin Circlet of Faith##9113 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  turnin Shoulderpads of Faith##9114 |goto Eastern Plaguelands 81.47,58.15
+  turnin Shoulderpads of Faith##9114 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  turnin Sandals of Faith##9115 |goto Eastern Plaguelands 81.47,58.15
+  turnin Sandals of Faith##9115 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  turnin Gloves of Faith##9116 |goto Eastern Plaguelands 81.47,58.15
+  turnin Gloves of Faith##9116 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  turnin Belt of Faith##9117 |goto Eastern Plaguelands 81.47,58.15
+  turnin Belt of Faith##9117 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Father Inigo Montoy##16113
-  turnin Bindings of Faith##9118 |goto Eastern Plaguelands 81.47,58.15
+  turnin Bindings of Faith##9118 |goto Eastern Plaguelands 71.66,48.58
 step
   only Priest
   talk Anachronos##15192
-  turnin Atiesh, Greatstaff of the Guardian##9257 |goto Tanaris 64.2,51.42
+  turnin Atiesh, Greatstaff of the Guardian##9257 |goto Tanaris 65.27,50.03
 step
   only Priest
   talk Ogtinc##8405
@@ -729,7 +821,8 @@ step
   collect The Eye of Zuldazar##19593 |q 8052 |goto Stranglethorn Vale 15.34,16.12
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
-  collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 49.67,37.46 |tip {dropsfrom}Emissary Roman'khan
+  kill Emissary Roman'khan##14862 |goto Silithus 48.77,58.14 |raid
+  collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 48.77,58.14
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
   collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.76 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
@@ -769,7 +862,7 @@ step
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
-  collect Fel Elemental Rod##21939 |q 8928 |goto Tanaris 52.47,27.23
+  buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
@@ -796,34 +889,34 @@ step
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
   talk Anthion Harmon##16016
-  turnin In Search of Anthion##8929 |goto Eastern Plaguelands 30.85,16.75
+  turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Anthion Harmon##16016
-  accept Dead Man's Plea##8945 |goto Eastern Plaguelands 30.85,16.75
+  accept Dead Man's Plea##8945 |goto Eastern Plaguelands 26.11,11.3
 step
   note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
-  kill Ysida Harmon##16031 |q 8945
+  kill Ysida Harmon##16031 |q 8945 |goto Stratholme - Dungeon -1,-1
 step
   talk Ysida Harmon##16031
-  turnin Dead Man's Plea##8945
+  turnin Dead Man's Plea##8945 |goto Stratholme - Dungeon -1,-1
 step
   talk Ysida Harmon##16031
-  accept Proof of Life##8946
+  accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
   talk Anthion Harmon##16016
-  turnin Proof of Life##8946 |goto Eastern Plaguelands 30.85,16.75
+  turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Anthion Harmon##16016
-  accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
+  accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
 step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 30.85,16.75
+  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Anthion Harmon##16016
-  turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 30.85,16.75
+  turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Anthion Harmon##16016
-  accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 30.85,16.75
+  accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
@@ -850,14 +943,14 @@ step
   accept The Challenge##9015 |goto Dire Maul - Dungeon -1,-1
 step
   note Travel to the Ring of the Law in Blackrock Depths and place the Banner of Provocation in its center as you are sentenced by High Justice Grimstone. Slay Theldren and his gladiators and return to Anthion Harmon in the Eastern Plaguelands with the first piece of Lord Valthalak's amulet.
-  collect Top Piece of Lord Valthalak's Amulet##22047 |q 9015 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Theldren
+  kill Theldren##16059 |q 9015 |goto Blackrock Depths - Dungeon -1,-1 |elite
 step
   talk Anthion Harmon##16016
-  turnin The Challenge##9015 |goto Eastern Plaguelands 30.85,16.75
+  turnin The Challenge##9015 |goto Eastern Plaguelands 26.11,11.3
 step
   only Priest
   talk Anthion Harmon##16016
-  accept Anthion's Parting Words##8955 |goto Eastern Plaguelands 30.85,16.75
+  accept Anthion's Parting Words##8955 |goto Eastern Plaguelands 26.11,11.3
 step
   only Priest
   note Return to Deliana in Ironforge with a set of Devout Sandals, Devout Skirt and Devout Mantle.
@@ -871,74 +964,94 @@ step
   accept Bodley's Unfortunate Fate##8960 |goto Ironforge 43.53,52.64
 step
   talk Bodley##16033
-  turnin Bodley's Unfortunate Fate##8960
+  turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   talk Bodley##16033
-  accept Three Kings of Flame##8961
+  accept Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
-  collect Incendicite of Incendius##21987 |q 8961 |goto Blackrock Depths - Dungeon -- Shadowforge City -1,-1 |tip {dropsfrom}Lord Incendius
+  collect Incendicite of Incendius##21987 |q 8961 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Lord Incendius
 step
   talk Bodley##16033
-  turnin Three Kings of Flame##8961
+  turnin Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   talk Bodley##16033
-  accept Components of Importance##8965
-step
-  note Obtain Soul Ashes of the Banished and return them to Bodley inside Blackrock Mountain.
-  kill Cursed Paladin##7071 |goto Hillsbrad Foothills 18.45,76.6 |elite
-  collect Soul Ashes of the Banished##22229 |q 8965 |goto Hillsbrad Foothills 18.45,76.6
-step
-  talk Bodley##16033
-  turnin Components of Importance##8965
-step
-  talk Bodley##16033
-  accept More Components of Importance##8986
+  accept Components of Importance##8962 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  collect Druidical Remains##22226 |q 8986 |goto Silithus 61.05,86.89 |tip {dropsfrom}Hive'Regal Ambusher, Hive'Regal Burrower, Hive'Regal Spitfire
+  kill Hive'Regal Ambusher##11730 |goto Silithus 61.05,86.89 |elite
+  collect Druidical Remains##22226 |q 8962 |goto Silithus 61.05,86.89
 step
   talk Bodley##16033
-  turnin More Components of Importance##8986
+  turnin Components of Importance##8962 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   talk Bodley##16033
-  accept The Right Piece of Lord Valthalak's Amulet##8989
+  accept The Left Piece of Lord Valthalak's Amulet##8966 |goto Eastern Kingdoms - the continent map 48.9,63.93
+step
+  note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the Left Piece of Lord Valthalak's Amulet and the Brazier of Beckoning.
+  kill Mor Grayhoof##16080 |q 8966 |goto Blackrock Spire - Dungeon -1,-1 |elite
+step
+  talk Bodley##16033
+  turnin The Left Piece of Lord Valthalak's Amulet##8966 |goto Eastern Kingdoms - the continent map 48.9,63.93
+step
+  talk Bodley##16033
+  accept I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
+step
+  note Gather 20 Bloodkelp from the Strashaz naga and then return to Bodley inside Blackrock Mountain.
+  kill Strashaz Warrior##4364 |goto Dustwallow Marsh 75.47,18.43 |elite
+  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 75.47,18.43
+step
+  talk Bodley##16033
+  turnin I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
+step
+  talk Bodley##16033
+  accept More Components of Importance##8985 |goto Eastern Kingdoms - the continent map 48.9,63.93
+step
+  note Acquire a Starbreeze Village Relic and return it to Bodley inside Blackrock Mountain.
+  kill Frostmaul Giant##7428 |goto Winterspring 62.56,69.28 |elite
+  collect Starbreeze Village Relic##22227 |q 8985 |goto Winterspring 62.56,69.28
+step
+  talk Bodley##16033
+  turnin More Components of Importance##8985 |goto Eastern Kingdoms - the continent map 48.9,63.93
+step
+  talk Bodley##16033
+  accept The Right Piece of Lord Valthalak's Amulet##8989 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the recombined Lord Valthalak's Amulet and the Brazier of Beckoning.
-  kill Mor Grayhoof##16080 |q 8989 |elite
+  kill Mor Grayhoof##16080 |q 8989 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
   talk Bodley##16033
-  turnin The Right Piece of Lord Valthalak's Amulet##8989
+  turnin The Right Piece of Lord Valthalak's Amulet##8989 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   talk Bodley##16033
-  accept Final Preparations##8994
+  accept Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
   collect 40 Blackrock Bracer##22138 |q 8994 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Sentry, Scarshield Acolyte, Scarshield Legionnaire
 step
   talk Bodley##16033
-  turnin Final Preparations##8994
+  turnin Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   talk Bodley##16033
-  accept Mea Culpa, Lord Valthalak##8995
+  accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
-  use Lord Valthalak##16042 |q 8995 |raid |tip {useit}
+  use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |tip {useit}
 step
   talk Spirit of Lord Valthalak##16073
-  turnin Mea Culpa, Lord Valthalak##8995
+  turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Spirit of Lord Valthalak##16073
-  accept Return to Bodley##8996
+  accept Return to Bodley##8996 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Return to Bodley inside Blackrock Mountain and give him the Brazier of Beckoning.
-  collect Brazier of Beckoning##22056 |q 8996
+  collect Brazier of Beckoning##22056 |q 8996 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Bodley##16033
-  turnin Return to Bodley##8996
+  turnin Return to Bodley##8996 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   talk Bodley##16033
-  accept Back to the Beginning##8997
+  accept Back to the Beginning##8997 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   talk Deliana##16013
   turnin Back to the Beginning##8997 |goto Ironforge 43.53,52.64
@@ -949,7 +1062,7 @@ step
 step
   only Priest
   note Give Deliana your Devout Crown and Devout Robe.
-  collect Devout Crown##16693 |q 9003 |goto Ironforge 43.53,52.64 |tip {dropsfrom}Darkmaster Gandling
+  collect Devout Crown##16693 |q 9003 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
 step
   only Priest
   talk Deliana##16013

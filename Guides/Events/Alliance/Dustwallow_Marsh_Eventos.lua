@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Events/Alliance/Dustwallow Marsh (Eventos)", {
@@ -7,175 +7,88 @@ ns:RegisterGuide("Events/Alliance/Dustwallow Marsh (Eventos)", {
 }, [[
 step
   talk Thomas##4982
-  accept The Missing Diplomat##1274 |goto Stormwind City 38.72,25.9
-step
-  talk Sergeant Amelyn##23835
-  accept This Old Lighthouse##11191 |goto Dustwallow Marsh 68.25,51.81
+  accept The Missing Diplomat##1274 |goto Stormwind City 49.64,44.48
 step
   talk "Stinky" Ignatz##4880
   accept Stinky's Escape##1222 |goto Dustwallow Marsh 46.88,17.52
 step
-  talk Captain Wymor##5086
-  accept Defias in Dustwallow?##11137 |goto Dustwallow Marsh 59.67,41.08
-step
   talk Doctor Gustaf VanHowzen##12939
   accept Triage##6624 |goto Dustwallow Marsh 67.76,48.97
 step
-  note Obtain the Defias Orders from Garn Mathers and bring them to Captain Wymor at Sentry Point.
-  collect Defias Orders##33037 |q 11137 |goto Dustwallow Marsh 63.9,29.05 |tip {dropsfrom}Garn Mathers
-step
   talk Bishop DeLavey##4960
-  turnin The Missing Diplomat##1274 |goto Stormwind City 78.28,25.38
-step
-  talk Babs Fizzletorque##23892
-  turnin This Old Lighthouse##11191 |goto Dustwallow Marsh 72.11,47.05
+  turnin The Missing Diplomat##1274 |goto Stormwind City 80.24,44.07
 step
   talk Morgan Stern##4794
   turnin Stinky's Escape##1222 |goto Dustwallow Marsh 66.34,45.47
-step
-  talk Captain Wymor##5086
-  turnin Defias in Dustwallow?##11137 |goto Dustwallow Marsh 59.67,41.08
 step
   talk Doctor Gustaf VanHowzen##12939
   turnin Triage##6624 |goto Dustwallow Marsh 67.76,48.97
 step
   talk Bishop DeLavey##4960
-  accept The Missing Diplomat##1241 |goto Stormwind City 78.28,25.38
-step
-  talk Babs Fizzletorque##23892
-  accept Thresher Oil##11192 |goto Dustwallow Marsh 72.11,47.05
-step
-  talk Captain Wymor##5086
-  accept Renn McGill##11138 |goto Dustwallow Marsh 59.67,41.08
-step
-  note Bring 4 containers of Thresher Oil to Babs Fizzletorque at the lighthouse near Theramore.
-  collect 4 Thresher Oil##33126 |q 11192 |goto Dustwallow Marsh 71.13,55.44 |tip {dropsfrom}Young Murk Thresher
+  accept The Missing Diplomat##1241 |goto Stormwind City 80.24,44.07
 step
   talk Jorgen##4959
-  turnin The Missing Diplomat##1241 |goto Stormwind City 73.17,78.42
-step
-  talk Babs Fizzletorque##23892
-  turnin Thresher Oil##11192 |goto Dustwallow Marsh 72.11,47.05
-step
-  talk Renn McGill##23569
-  turnin Renn McGill##11138 |goto Dustwallow Marsh 63.74,17.04
+  turnin The Missing Diplomat##1241 |goto Stormwind City 76.29,85.12
 step
   talk Jorgen##4959
-  accept The Missing Diplomat##1242 |goto Stormwind City 73.17,78.42
-step
-  talk Babs Fizzletorque##23892
-  accept Dastardly Denizens of the Deep##11193 |goto Dustwallow Marsh 72.11,47.05
-step
-  talk Renn McGill##23569
-  accept Secondhand Diving Gear##11139 |goto Dustwallow Marsh 63.74,17.04
-step
-  note Bring the Tool Kit and Damaged Diving Gear to Renn McGill in the Dustwallow Marsh.
-  collect Damaged Diving Gear##33038 |q 11139 |goto Dustwallow Marsh 62.33,18.23
+  accept The Missing Diplomat##1242 |goto Stormwind City 76.29,85.12
 step
   talk Elling Trias##482
-  turnin The Missing Diplomat##1242 |goto Stormwind City 59.91,64.18
-step
-  talk "Dirty" Michael Crowe##23896
-  turnin Dastardly Denizens of the Deep##11193 |goto Dustwallow Marsh 69.24,51.89
-step
-  talk Renn McGill##23569
-  turnin Secondhand Diving Gear##11139 |goto Dustwallow Marsh 63.74,17.04
+  turnin The Missing Diplomat##1242 |goto Stormwind City 66.03,74.1
 step
   talk Elling Trias##482
-  accept The Missing Diplomat##1243 |goto Stormwind City 59.91,64.18
-step
-  talk "Dirty" Michael Crowe##23896
-  accept Is it Real?##11194 |goto Dustwallow Marsh 69.24,51.89
-step
-  talk Renn McGill##23569
-  accept Recover the Cargo!##11140 |goto Dustwallow Marsh 63.74,17.04
-step
-  note Bring 6 Salvaged Strongboxes to Renn McGill in Dustwallow Marsh.
-  collect 6 Salvaged Strongbox##33041 |q 11140 |goto Dustwallow Marsh 63.74,17.04
+  accept The Missing Diplomat##1243 |goto Stormwind City 66.03,74.1
 step
   talk Watcher Backus##840
   turnin The Missing Diplomat##1243 |goto Duskwood 74.83,44.22
 step
-  talk Nat Pagle##12919
-  turnin Is it Real?##11194 |goto Dustwallow Marsh 58.76,60.17
-step
-  talk Renn McGill##23569
-  turnin Recover the Cargo!##11140 |goto Dustwallow Marsh 63.74,17.04
-step
   talk Watcher Backus##840
   accept The Missing Diplomat##1244 |goto Duskwood 74.83,44.22
-step
-  talk Renn McGill##23569
-  accept Jaina Must Know##11141 |goto Dustwallow Marsh 63.74,17.04
-step
-  talk Nat Pagle##12919
-  accept Nat's Bargain##11209 |goto Dustwallow Marsh 58.76,60.17
 step
   note Find the Defias Docket and return it to Watcher Backus in Duskwood.
   collect Defias Docket##5947 |q 1244 |goto Duskwood 23.92,72.07 |tip {dropsfrom}Defias Strongbox
 step
-  note Nat Pagle at Nat's Landing wants you to test his new fish bait.
-  kill Lurking Shark##23928 |q 11209
-step
   talk Watcher Backus##840
   turnin The Missing Diplomat##1244 |goto Duskwood 74.83,44.22
-step
-  talk Lady Jaina Proudmoore##4968
-  turnin Jaina Must Know##11141 |goto Dustwallow Marsh 66.27,49.04
-step
-  talk Nat Pagle##12919
-  turnin Nat's Bargain##11209 |goto Dustwallow Marsh 58.76,60.17
 step
   talk Watcher Backus##840
   accept The Missing Diplomat##1245 |goto Duskwood 74.83,44.22
 step
-  talk Lady Jaina Proudmoore##4968
-  accept Survey Alcaz Island##11142 |goto Dustwallow Marsh 66.27,49.04
-step
-  talk Nat Pagle##12919
-  accept Oh, It's Real##11210 |goto Dustwallow Marsh 58.76,60.17
+  talk Elling Trias##482
+  turnin The Missing Diplomat##1245 |goto Stormwind City 66.03,74.1
 step
   talk Elling Trias##482
-  turnin The Missing Diplomat##1245 |goto Stormwind City 59.91,64.18
+  accept The Missing Diplomat##1246 |goto Stormwind City 66.03,74.1
 step
-  talk Lady Jaina Proudmoore##4968
-  turnin Survey Alcaz Island##11142 |goto Dustwallow Marsh 66.27,49.04
+  talk Dashel Stonefist##4961
+  turnin The Missing Diplomat##1246 |goto Stormwind City 74.26,59.17
 step
-  talk Major Mills##23905
-  turnin Oh, It's Real##11210 |goto Dustwallow Marsh 69.7,51.22
+  talk Dashel Stonefist##4961
+  accept The Missing Diplomat##1447 |goto Stormwind City 74.26,59.17
+step
+  note Defeat Dashel Stonefist in Stormwind.
+  kill Dashel Stonefist##4961 |q 1447 |goto Stormwind City 74.26,59.17
+step
+  talk Dashel Stonefist##4961
+  turnin The Missing Diplomat##1447 |goto Stormwind City 74.26,59.17
+step
+  talk Dashel Stonefist##4961
+  accept The Missing Diplomat##1247 |goto Stormwind City 74.26,59.17
 step
   talk Elling Trias##482
-  accept The Missing Diplomat##1246 |goto Stormwind City 59.91,64.18
-step
-  talk Major Mills##23905
-  accept Take Down Tethyr!##11198 |goto Dustwallow Marsh 69.7,51.22
-step
-  talk Dashel Stonefist##4961
-  turnin The Missing Diplomat##1246 |goto Stormwind City 70.55,44.89
-step
-  talk Major Mills##23905
-  turnin Take Down Tethyr!##11198 |goto Dustwallow Marsh 69.7,51.22
-step
-  talk Dashel Stonefist##4961
-  accept The Missing Diplomat##1447 |goto Stormwind City 70.55,44.89
-step
-  talk Dashel Stonefist##4961
-  turnin The Missing Diplomat##1447 |goto Stormwind City 70.55,44.89
-step
-  talk Dashel Stonefist##4961
-  accept The Missing Diplomat##1247 |goto Stormwind City 70.55,44.89
+  turnin The Missing Diplomat##1247 |goto Stormwind City 66.03,74.1
 step
   talk Elling Trias##482
-  turnin The Missing Diplomat##1247 |goto Stormwind City 59.91,64.18
-step
-  talk Elling Trias##482
-  accept The Missing Diplomat##1248 |goto Stormwind City 59.91,64.18
+  accept The Missing Diplomat##1248 |goto Stormwind City 66.03,74.1
 step
   talk Mikhail##4963
   turnin The Missing Diplomat##1248 |goto Wetlands 10.6,60.77
 step
   talk Mikhail##4963
   accept The Missing Diplomat##1249 |goto Wetlands 10.6,60.77
+step
+  note Subdue Tapoke Jahn before he escapes, and then return to Mikhail in Menethil.
+  use Tapoke "Slim" Jahn##4962 |q 1249 |goto Wetlands 10.54,60.26 |tip {useit}
 step
   talk Mikhail##4963
   turnin The Missing Diplomat##1249 |goto Wetlands 10.6,60.77
@@ -206,6 +119,9 @@ step
 step
   talk Private Hendel##4966
   accept The Missing Diplomat##1324 |goto Dustwallow Marsh 45.24,24.65
+step
+  note Defeat Private Hendel in Dustwallow Marsh.
+  kill Private Hendel##4966 |q 1324 |goto Dustwallow Marsh 45.24,24.65
 step
   talk Archmage Tervosh##4967
   turnin The Missing Diplomat##1324 |goto Dustwallow Marsh 66.42,49.26

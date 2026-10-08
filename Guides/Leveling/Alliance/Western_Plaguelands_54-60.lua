@@ -1,14 +1,11 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (54-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Winterspring (55-60)",
+	next = "Leveling/Alliance/Burning Steppes (53-60)",
 }, [[
-step
-  note {fp}Bibilfaz Featherwhistle
-  goto Western Plaguelands 42.92,85.06 |tip {vendor}
 step
   talk Janice Felstone##10778
   accept Better Late Than Never##5021 |goto Western Plaguelands 38.4,54.05
@@ -25,13 +22,10 @@ step
   click Locked Cabinet##175924
   accept Locked Away##5060 |goto Western Plaguelands 47.35,49.63
 step
-  collect Dalson Cabinet Key##12739 |q 5060 |goto Western Plaguelands 47.35,49.63 |tip {dropsfrom}Farmer Dalson
+  collect Dalson Cabinet Key##12739 |q 5060 |goto Western Plaguelands 48.23,49.67 |tip {dropsfrom}Farmer Dalson
 step
   talk Chromie##10667
   accept A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
-step
-  note Use the Temporal Displacer near one of Andorhal's silos and uncover Temporal Parasites.
-  kill Temporal Parasite##10717 |q 4971
 step
   talk Jeziba##10976
   accept Catalogue of the Wayward##5164 |goto Western Plaguelands 39.37,66.78
@@ -39,14 +33,11 @@ step
   talk Chromie##10667
   accept The Battle of Darrowshire##5721 |goto Western Plaguelands 39.46,66.76
 step
-  note Place the Relic Bundle at the Darrowshire town square.
-  kill Joseph Redpath##10936 |q 5721
-step
   talk Mulgris Deepriver##10739
   accept The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
 step
-  talk Crier Goodman##2198
-  accept Feathermoon Stronghold##7494 |goto Stormwind City 47.45,64.17
+  note Use the Temporal Displacer near one of Andorhal's silos and uncover Temporal Parasites.
+  kill Temporal Parasite##10717 |q 4971 |goto Western Plaguelands 48.26,65.86
 step
   talk Marlene Redpath##10927
   accept Little Pamela##5142 |goto Western Plaguelands 49.17,78.57
@@ -61,10 +52,7 @@ step
   accept Scarlet Subterfuge##5862 |goto Western Plaguelands 50.79,77.85
 step
   talk Pamela Redpath##10926
-  turnin Little Pamela##5142 |goto Eastern Plaguelands 36.45,90.8 |tip {turninat}Eastern Plaguelands
-step
-  talk Pamela Redpath##10926
-  turnin The Battle of Darrowshire##5721 |goto Eastern Plaguelands 36.45,90.8 |tip {turninat}Eastern Plaguelands
+  turnin Little Pamela##5142 |goto Eastern Plaguelands 31.15,77.98 |tip {turninat}Eastern Plaguelands
 step
   talk Commander Ashlam Valorfist##10838
   accept Clear the Way##5092 |goto Western Plaguelands 42.7,84.03
@@ -94,19 +82,19 @@ step
   accept Araj's Scarab##5803 |goto Western Plaguelands 42.66,83.77
 step
   note Destroy Araj the Summoner and bring Araj's Scarab to Alchemist Arbington at Chillwind Point, Western Plaguelands.
-  collect Araj's Scarab##14610 |q 5803 |goto Western Plaguelands 42.66,83.77 |tip {dropsfrom}Araj's Phylactery
+  collect Araj's Scarab##14610 |q 5803 |goto Western Plaguelands 45.27,69.21 |tip {dropsfrom}Araj's Phylactery
 step
   talk Nathaniel Dumah##11616
   accept A Plague Upon Thee##5903 |goto Western Plaguelands 43.42,84.83
 step
   note Use the Empty Termite Jar on the Termite Mounds in Eastern Plaguelands. After you've gathered 100 Plagueland Termites, return to Nathaniel Dumah at Chillwind Camp in Western Plaguelands.
-  collect Plagueland Termites##15043 |q 5903 |goto Eastern Plaguelands 34.82,29.64 |tip {dropsfrom}Large Termite Mound
+  collect Plagueland Termites##15043 |q 5903 |goto Eastern Plaguelands 29.68,22.91 |tip {dropsfrom}Large Termite Mound
 step
   talk Flint Shadowmore##12425
   accept The Eastern Plagues##6185 |goto Western Plaguelands 43.61,84.51
 step
   note Scour the Eastern Plaguelands for clues as to the "Blightcaller" and the missing SI:7 agents. If you find any SI:7 Insignias, return them to Flint Shadowmore at Chillwind Camp.
-  collect SI:7 Insignia (Rutger)##16003 |q 6185 |goto Eastern Plaguelands 28.81,79.84 |tip {dropsfrom}Mangled Human Remains
+  collect SI:7 Insignia (Rutger)##16003 |q 6185 |goto Eastern Plaguelands 24.28,68.11 |tip {dropsfrom}Mangled Human Remains
 step
   only Paladin
   talk Commander Ashlam Valorfist##10838
@@ -116,11 +104,8 @@ step
   note Collect 20 Minion's Scourgestones and bring them to High Priest Thel'danis in the Western Plaguelands.
   collect 20 Minion's Scourgestone##12840 |q 8414 |goto Western Plaguelands 38.99,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
 step
-  talk Anchorite Truuen##17238
-  accept The Mark of the Lightbringer##9474 |goto Western Plaguelands 42.91,84.5
-step
-  note Obtain the Mark of the Lightbringer and return it to Anchorite Truuen at Chillwind Camp in the Western Plaguelands.
-  collect Mark of the Lightbringer##23661 |q 9474 |goto Western Plaguelands 55.19,23.51 |tip {dropsfrom}Holy Coffer
+  note Place the Relic Bundle at the Darrowshire town square.
+  kill Joseph Redpath##10936 |q 5721 |goto Eastern Plaguelands 33.62,78.46
 step
   talk Eva Sarkhoff##11216
   accept Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
@@ -137,11 +122,17 @@ step
   note Travel to Stratholme, in the northern part of the Plaguelands. It is in the Scarlet Bastion that you will find the painting 'Of Love and Family,' hidden behind another painting depicting the twin moons of our world.
   collect Of Love and Family##14679 |q 5848 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Unfinished Painting
 step
-  talk Elder Moonstrike##15594
-  accept Moonstrike the Elder##8714 |goto Western Plaguelands 69.18,73.45
+  talk Lord Tirion Fordring##12126
+  accept Demon Dogs##5542 |goto Western Plaguelands 53.95,24.45
 step
-  talk Elder Meadowrun##15602
-  accept Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
+  talk Lord Tirion Fordring##12126
+  accept Blood Tinged Skies##5543 |goto Western Plaguelands 53.95,24.45
+step
+  talk Lord Tirion Fordring##12126
+  accept Carrion Grubbage##5544 |goto Western Plaguelands 53.95,24.45
+step
+  note Seek out the Carrion Grubs and Devourers of the region. Slay them and harvest their meat. Return to Tirion Fordring when you have gathered 15 Slabs of Carrion Worm Meat.
+  collect Slab of Carrion Worm Meat##13853 |q 5544 |goto Eastern Plaguelands 43.13,59.21 |tip {dropsfrom}Carrion Grub, Carrion Devourer
 step
   talk Kirsta Deepshadow##11610
   accept Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
@@ -154,6 +145,9 @@ step
 step
   turnin Better Late Than Never##5021 |goto Western Plaguelands 38.73,55.24
 step
+  talk Tirion Fordring##1855
+  turnin Carrion Grubbage##5544 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
+step
   talk Janice Felstone##10778
   turnin Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
 step
@@ -161,11 +155,8 @@ step
 step
   turnin Locked Away##5060 |goto Western Plaguelands 47.35,49.63
 step
-  talk Latronicus Moonspear##7877
-  turnin Feathermoon Stronghold##7494 |goto Feralas 30.38,46.17 |tip {turninat}Feralas
-step
   talk Tirion Fordring##1855
-  turnin Of Love and Family##5848 |goto Eastern Plaguelands 7.62,43.64 |tip {turninat}Eastern Plaguelands
+  turnin Of Love and Family##5848 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
 step
   click Janice's Parcel##175894
   accept Better Late Than Never##5022 |goto Western Plaguelands 38.73,55.24
@@ -197,25 +188,37 @@ step
   accept The Annals of Darrowshire##5154 |goto Western Plaguelands 39.46,66.76
 step
   note Bring the Annals of Darrowshire to Chromie in Andorhal.
-  collect Annals of Darrowshire##12900 |q 5154 |goto Western Plaguelands 39.46,66.76 |tip {dropsfrom}Musty Tome
+  collect Annals of Darrowshire##12900 |q 5154 |goto Western Plaguelands 43.46,69.51 |tip {dropsfrom}Musty Tome
 step
   click Catalogue of the Wayward##176192
   accept Breastplate of the Chromatic Flight##5166 |goto Western Plaguelands 39.35,66.6
 step
   note To forge the Breastplate of the Chromatic Flight, you will be required to bring the following items to Jeziba the 'Sculptor':
-  collect Chromatic Carapace##12871 |q 5166 |goto Western Plaguelands 39.35,66.6 |tip {dropsfrom}Gyth
+  collect Chromatic Carapace##12871 |q 5166 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Gyth
 step
   click Catalogue of the Wayward##176192
   accept Legplates of the Chromatic Defier##5167 |goto Western Plaguelands 39.35,66.6
 step
   note To forge the Legplates of the Chromatic Defier, you will be required to bring the following items to Jeziba the 'Sculptor':
-  collect Chromatic Carapace##12871 |q 5167 |goto Western Plaguelands 39.35,66.6 |tip {dropsfrom}Gyth
+  collect Chromatic Carapace##12871 |q 5167 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Gyth
+step
+  note Slay 20 Plaguehound Runts, 5 Plaguehounds and 5 Frenzied Plaguehounds. Return to Tirion Fordring when the task is complete.
+  kill Plaguehound Runt##8596 |q 5542 |goto Eastern Plaguelands 20.15,63.55
+step
+  note Slay 30 Plaguebats and return to Tirion Fordring.
+  kill Plaguebat##8600 |q 5543 |goto Eastern Plaguelands 28.83,65.7
+step
+  talk Royal Factor Bathrilor##10782
+  turnin Better Late Than Never##5022 |goto Stormwind City 57.17,48.07 |tip {turninat}Stormwind City
 step
   talk Mulgris Deepriver##10739
   turnin The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
 step
   talk Mulgris Deepriver##10739
   accept The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
+step
+  note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
+  kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.68
 step
   only Paladin
   talk High Priest Thel'danis##1854
@@ -224,9 +227,6 @@ step
   only Paladin
   talk High Priest Thel'danis##1854
   accept Inert Scourgestones##8416 |goto Western Plaguelands 52.05,83.27
-step
-  talk Anchorite Truuen##17238
-  turnin The Mark of the Lightbringer##9474 |goto Western Plaguelands 42.91,84.5
 step
   talk Argent Quartermaster Lightspark##10857
   turnin Mantles of the Dawn##5507 |goto Western Plaguelands 42.84,83.72
@@ -245,6 +245,9 @@ step
 step
   talk Alchemist Arbington##11056
   turnin Araj's Scarab##5803 |goto Western Plaguelands 42.66,83.77
+step
+  talk Pamela Redpath##10926
+  turnin The Battle of Darrowshire##5721 |goto Eastern Plaguelands 31.15,77.98 |tip {turninat}Eastern Plaguelands
 step
   talk Weldon Barov##11023
   turnin Barov Family Fortune##5343 |goto Western Plaguelands 43.45,83.73
@@ -289,9 +292,6 @@ step
   talk Eva Sarkhoff##11216
   turnin Doctor Theolen Krastinov, the Butcher##5382 |goto Western Plaguelands 70.22,73.71
 step
-  talk Elder Moonstrike##15594
-  turnin Moonstrike the Elder##8714 |goto Western Plaguelands 69.18,73.45
-step
   talk Magistrate Marduke##11286
   turnin The Lich, Ras Frostwhisper##5466 |goto Western Plaguelands 70.57,74.11
 step
@@ -301,19 +301,10 @@ step
   note Locate Jandice Barov in the Scholomance and destroy her. From her corpse recover Krastinov's Bag of Horrors. Return the bag to Eva Sarkhoff.
   collect Krastinov's Bag of Horrors##13725 |q 5515 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Jandice Barov
 step
-  talk Elder Meadowrun##15602
-  turnin Meadowrun the Elder##8722 |goto Western Plaguelands 65.97,47.82
-step
-  note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
-  kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.68
-step
-  turnin A Plague Upon Thee##5904 |goto Western Plaguelands 48.35,32.0
-step
-  talk Royal Factor Bathrilor##10782
-  turnin Better Late Than Never##5022 |goto Stormwind City 48.46,30.54 |tip {turninat}Stormwind City
+  turnin A Plague Upon Thee##5904 |goto Western Plaguelands 48.34,31.99
 step
   talk Highlord Bolvar Fordragon##1748
-  turnin The Blightcaller Cometh##6186 |goto Stormwind City 78.22,17.98 |tip {turninat}Stormwind City
+  turnin The Blightcaller Cometh##6186 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
@@ -322,10 +313,16 @@ step
   accept Unfinished Business##6023 |goto Western Plaguelands 51.92,28.06
 step
   click Termite Barrel##177491
-  accept A Plague Upon Thee##6389 |goto Western Plaguelands 48.35,32.0
+  accept A Plague Upon Thee##6389 |goto Western Plaguelands 48.34,31.99
 step
   note Kill Huntsman Radley and Cavalier Durgen before returning to Kirsta Deepshadow in Western Plaguelands.
   kill Huntsman Radley##11613 |q 6023 |goto Western Plaguelands 57.83,36.1
+step
+  talk Tirion Fordring##1855
+  turnin Demon Dogs##5542 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
+step
+  talk Tirion Fordring##1855
+  turnin Blood Tinged Skies##5543 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
 step
   talk Chromie##10667
   turnin The Annals of Darrowshire##5154 |goto Western Plaguelands 39.46,66.76
@@ -344,6 +341,9 @@ step
 step
   note Using the Beacon Torch, mark each tower in Andorhal; you will need to stand in the doorway of the tower to successfully mark it.
   kill Andorhal Tower One##10902 |q 5097 |goto Western Plaguelands 40.05,71.6
+step
+  talk Carlin Redpath##11063
+  turnin Brother Carlin##5210 |goto Eastern Plaguelands 71.7,50.04 |tip {turninat}Eastern Plaguelands
 step
   talk Mulgris Deepriver##10739
   turnin The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
@@ -374,13 +374,13 @@ step
   accept Alas, Andorhal##211 |goto Western Plaguelands 42.7,84.03
 step
   note Bring Araj's Phylactery Shard to Commander Ashlam Valorfist at Chillwind Camp, Western Plaguelands.
-  collect Araj's Phylactery Shard##17114 |q 211 |goto Western Plaguelands 42.7,84.03 |tip {dropsfrom}Araj's Phylactery
+  collect Araj's Phylactery Shard##17114 |q 211 |goto Western Plaguelands 45.27,69.21 |tip {dropsfrom}Araj's Phylactery
 step
   talk High Priestess MacDonnell##11053
   accept Target: Felstone Field##5216 |goto Western Plaguelands 42.97,84.5
 step
   note Go to Felstone Field in Western Plaguelands to locate and defeat the Cauldron Lord present there. It may have a key that will allow access to the cauldron. You must have the Empty Felstone Field Bottle with you to secure a sample of the poisons used inside the cauldron.
-  collect Felstone Field Cauldron Key##13194 |q 5216 |goto Western Plaguelands 42.97,84.5 |tip {dropsfrom}Cauldron Lord Bilemaw
+  collect Felstone Field Cauldron Key##13194 |q 5216 |goto Western Plaguelands 36.93,57.41 |tip {dropsfrom}Cauldron Lord Bilemaw
 step
   talk Commander Ashlam Valorfist##10838
   accept Scholomance##5533 |goto Western Plaguelands 42.7,84.03
@@ -388,20 +388,17 @@ step
   talk Eva Sarkhoff##11216
   turnin Krastinov's Bag of Horrors##5515 |goto Western Plaguelands 70.22,73.71
 step
-  talk Carlin Redpath##11063
-  turnin Brother Carlin##5210 |goto Eastern Plaguelands 81.52,59.77 |tip {turninat}Eastern Plaguelands
-step
   talk Eva Sarkhoff##11216
   accept Kirtonos the Herald##5384 |goto Western Plaguelands 70.22,73.71
-step
-  note Return to the Scholomance with the Blood of Innocents. Find the porch and place the Blood of Innocents in the brazier. Kirtonos will come to feast upon your soul.
-  kill Kirtonos the Herald##10506 |q 5384 |elite
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6023 |goto Western Plaguelands 51.92,28.06
 step
   talk Mathrengyl Bearwalker##4217
   turnin Glyphed Oaken Branch##4986 |goto Darnassus 35.37,8.4 |tip {turninat}Darnassus
+step
+  note Return to the Scholomance with the Blood of Innocents. Find the porch and place the Blood of Innocents in the brazier. Kirtonos will come to feast upon your soul.
+  kill Kirtonos the Herald##10506 |q 5384 |goto Scholomance - Dungeon -1,-1 |elite
 step
   turnin Target: Felstone Field##5216 |goto Western Plaguelands 37.25,56.78
 step
@@ -421,7 +418,7 @@ step
   accept Target: Dalson's Tears##5219 |goto Western Plaguelands 42.97,84.5
 step
   note Go to Dalson's Tears in Western Plaguelands to locate and defeat the Cauldron Lord present there, and use its key to gain access to the cauldron. You must have the Empty Dalson's Tears Bottle with you to secure a sample of the poisons used inside the cauldron.
-  collect Dalson's Tears Cauldron Key##13195 |q 5219 |goto Western Plaguelands 42.97,84.5 |tip {dropsfrom}Cauldron Lord Malvinious
+  collect Dalson's Tears Cauldron Key##13195 |q 5219 |goto Western Plaguelands 46.11,52.61 |tip {dropsfrom}Cauldron Lord Malvinious
 step
   talk Alchemist Arbington##11056
   accept Skeletal Fragments##5537 |goto Western Plaguelands 42.66,83.77
@@ -436,7 +433,7 @@ step
   accept The Human, Ras Frostwhisper##5461 |goto Western Plaguelands 70.57,74.11
 step
   note Travel to the Arathi Highlands, to the ruins of Stromgarde. Search Stromgarde for a Keepsake of Remembrance. If you find such an item, return with it to Magistrate Marduke.
-  collect Keepsake of Remembrance##13585 |q 5461 |goto Arathi Highlands 19.33,66.05
+  collect Keepsake of Remembrance##13585 |q 5461 |goto Arathi Highlands 20.8,65.8
 step
   turnin Target: Dalson's Tears##5219 |goto Western Plaguelands 46.18,51.9
 step
@@ -453,7 +450,7 @@ step
   accept Target: Writhing Haunt##5222 |goto Western Plaguelands 42.97,84.5
 step
   note Go to the Writhing Haunt in Western Plaguelands to locate and defeat the Cauldron Lord present there, and use its key to gain access to the cauldron. You must have the Empty Writhing Haunt Bottle with you to secure a sample of the poisons used inside the cauldron.
-  collect Writhing Haunt Cauldron Key##13197 |q 5222 |goto Western Plaguelands 42.97,84.5 |tip {dropsfrom}Cauldron Lord Razarch
+  collect Writhing Haunt Cauldron Key##13197 |q 5222 |goto Western Plaguelands 52.88,66.08 |tip {dropsfrom}Cauldron Lord Razarch
 step
   talk Alchemist Arbington##11056
   accept Mold Rhymes With...##5538 |goto Western Plaguelands 42.66,83.77
@@ -464,11 +461,11 @@ step
   talk Magistrate Marduke##11286
   accept The Dying, Ras Frostwhisper##5462 |goto Western Plaguelands 70.57,74.11
 step
-  talk Leonid Barthalomew the Revered##11036
-  turnin The Dying, Ras Frostwhisper##5462 |goto Eastern Plaguelands 81.73,57.83 |tip {turninat}Eastern Plaguelands
-step
   talk Krinkle Goodsteel##5411
   turnin Mold Rhymes With...##5538 |goto Tanaris 51.46,28.81 |tip {turninat}Tanaris
+step
+  talk Leonid Barthalomew the Revered##11036
+  turnin The Dying, Ras Frostwhisper##5462 |goto Eastern Plaguelands 71.89,48.29 |tip {turninat}Eastern Plaguelands
 step
   turnin Target: Writhing Haunt##5222 |goto Western Plaguelands 53.02,65.61
 step
@@ -482,7 +479,7 @@ step
   accept Target: Gahrron's Withering##5225 |goto Western Plaguelands 42.97,84.5
 step
   note Go to Gahrron's Withering in Western Plaguelands to locate and defeat the Cauldron Lord present there, and use its key to gain access to the cauldron. You must have the Empty Gahrron's Withering Bottle with you to secure a sample of the poisons used inside the cauldron.
-  collect Gahrron's Withering Cauldron Key##13196 |q 5225 |goto Western Plaguelands 42.97,84.5 |tip {dropsfrom}Cauldron Lord Soulwrath
+  collect Gahrron's Withering Cauldron Key##13196 |q 5225 |goto Western Plaguelands 62.18,59.06 |tip {dropsfrom}Cauldron Lord Soulwrath
 step
   turnin Target: Gahrron's Withering##5225 |goto Western Plaguelands 62.54,58.47
 step
@@ -493,11 +490,11 @@ step
   turnin Return to Chillwind Camp##5226 |goto Western Plaguelands 42.97,84.5
 step
   talk Commander Ashlam Valorfist##10838
-  accept Mission Accomplished!##5238 |goto Western Plaguelands 42.7,84.03
+  accept Mission Accomplished!##5237 |goto Western Plaguelands 42.7,84.03
 step
   talk Commander Ashlam Valorfist##10838
-  turnin Mission Accomplished!##5238 |goto Western Plaguelands 42.7,84.03
+  turnin Mission Accomplished!##5237 |goto Western Plaguelands 42.7,84.03
 step
-  note {travel}Winterspring
-  goto Winterspring 31.27,45.16
+  note {travel}Burning Steppes
+  goto Burning Steppes 65.15,23.91
 ]])

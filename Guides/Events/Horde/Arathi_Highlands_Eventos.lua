@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Events/Horde/Arathi Highlands (Eventos)", {
@@ -6,8 +6,8 @@ ns:RegisterGuide("Events/Horde/Arathi Highlands (Eventos)", {
 	author = "Lodestar Generator",
 }, [[
 step
-  talk Professor Phizzlethorpe##2768
-  accept Sunken Treasure##665 |goto Arathi Highlands 33.87,80.55
+  talk Lolo the Lookout##2766
+  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
 step
   talk Doctor Gregory Victor##12920
   accept Triage##6622 |goto Arathi Highlands 73.41,36.89
@@ -18,8 +18,8 @@ step
   talk Deathmaster Dwire##15021
   accept Take Five Bases##8122 |goto Arathi Highlands 73.25,29.73
 step
-  talk Doctor Draxlegauge##2774
-  turnin Sunken Treasure##665 |goto Arathi Highlands 33.86,80.45
+  talk Shakes O'Breen##2610
+  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
 step
   talk Doctor Gregory Victor##12920
   turnin Triage##6622 |goto Arathi Highlands 73.41,36.89
@@ -30,11 +30,17 @@ step
   talk Deathmaster Dwire##15021
   turnin Take Five Bases##8122 |goto Arathi Highlands 73.25,29.73
 step
+  talk Professor Phizzlethorpe##2768
+  accept Sunken Treasure##665 |goto Arathi Highlands 33.87,80.55
+step
+  talk Doctor Draxlegauge##2774
+  turnin Sunken Treasure##665 |goto Arathi Highlands 33.86,80.45
+step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
 step
   note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
-  collect 10 Elven Gem##4492 |q 666 |goto Arathi Highlands 22.43,89.37 |tip {dropsfrom}Calcified Elven Gem
+  collect 10 Elven Gem##4492 |q 666 |goto Arathi Highlands 23,89 |tip {dropsfrom}Calcified Elven Gem
 step
   talk Doctor Draxlegauge##2774
   turnin Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45

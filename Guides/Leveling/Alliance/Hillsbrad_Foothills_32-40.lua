@@ -1,4 +1,4 @@
--- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).
+-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (32-40)", {
@@ -7,8 +7,40 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (32-40)", {
 	next = "Leveling/Alliance/Desolace (33-42)",
 }, [[
 step
-  note {fp}Darla Harris
-  goto Hillsbrad Foothills 49.34,52.27 |tip {vendor}
+  note {fp}Wesley
+  goto Hillsbrad Foothills 50.42,58.8 |tip {vendor}
+step
+  talk Archmage Malin##2708
+  accept Malin's Request##690 |goto Stormwind City 50.5,87.47
+step
+  talk Elling Trias##482
+  accept The Missing Diplomat##1248 |goto Stormwind City 66.03,74.1
+step
+  talk Connor Rivers##5081
+  accept James Hyal##1301 |goto Stormwind City 51.12,95.52
+step
+  only Warlock
+  talk Demisette Cloyce##461
+  accept Knowledge of the Orb of Orahil##4968 |goto Stormwind City 39.24,84.96
+step
+  talk Tom "Half-fish" Wilson##254078
+  accept A Lack of Virtue##98459 |goto Hillsbrad Foothills 50.53,70.01
+step
+  talk Mikhail##4963
+  turnin The Missing Diplomat##1248 |goto Wetlands 10.6,60.77 |tip {turninat}Wetlands
+step
+  only Warlock
+  talk Menara Voidrender##6266
+  turnin Knowledge of the Orb of Orahil##4968 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  talk Skuerto##2789
+  turnin Malin's Request##690 |goto Arathi Highlands 46.65,47.01 |tip {turninat}Arathi Highlands
+step
+  talk Vincent Hyal##5082
+  turnin James Hyal##1301 |goto Wetlands 10.8,60.4 |tip {turninat}Wetlands
+step
+  talk Bart Tidewater##1481
+  turnin A Lack of Virtue##98459 |goto Wetlands 9.41,58.76 |tip {turninat}Wetlands
 step
   talk Marshal Redpath##2263
   accept Crushridge Bounty##500 |goto Hillsbrad Foothills 49.47,58.73
@@ -28,11 +60,8 @@ step
   talk Loremaster Dibbs##2277
   accept Letter to Stormpike##514 |goto Hillsbrad Foothills 50.57,57.09
 step
-  talk Magistrate Henry Maleb##2276
-  accept Baron's Demise##523 |goto Hillsbrad Foothills 48.14,59.11
-step
-  note Bring the Head of Baron Vardus to Magistrate Maleb in Southshore.
-  collect Head of Baron Vardus##3626 |q 523 |goto Alterac Mountains 47.83,17.11 |tip {dropsfrom}Baron Vardus
+  kill Shadowy Assassin##2434 |goto Hillsbrad Foothills 50.06,57.91 |tip Loot the quest item here — it starts the quest.
+  accept Assassin's Contract##522 |goto Hillsbrad Foothills 50.06,57.91
 step
   talk Lieutenant Farren Orinelle##2228
   accept Down the Coast##536 |goto Hillsbrad Foothills 51.46,58.39
@@ -59,19 +88,13 @@ step
   accept Bartolo's Yeti Fur Cloak##565 |goto Hillsbrad Foothills 49.43,55.53
 step
   note Bring Bartolo Ginsetti of Southshore a Bolt of Wool, a Hillman's Cloak, Fine Thread and 10 clumps of Yeti Fur.
-  collect Bolt of Woolen Cloth##2997 |q 565 |goto Ghostlands 14.66,26.99 |tip {dropsfrom}Tattered Chest, Battered Chest, Solid Chest
+  collect Bolt of Woolen Cloth##2997 |q 565 |goto Redridge Mountains 22.78,46.73 |tip {dropsfrom}Tattered Chest, Battered Chest, Solid Chest
 step
   talk Phin Odelic##2711
   accept Hints of a New Plague?##659 |goto Hillsbrad Foothills 50.35,59.05
 step
   talk Raleigh the Devout##3980
   accept In the Name of the Light##1053 |goto Hillsbrad Foothills 51.47,58.35
-step
-  talk Elling Trias##482
-  accept The Missing Diplomat##1248 |goto Stormwind City 59.91,64.18
-step
-  talk Connor Rivers##5081
-  accept James Hyal##1301 |goto Stormwind City 40.63,91.87
 step
   talk Roetten Stonehammer##5637
   accept Reclaimers' Business in Desolace##1453 |goto Ironforge 69.95,21.26
@@ -83,24 +106,11 @@ step
   accept Gnome Improvement##2948 |goto Ironforge 36.38,3.61
 step
   note Bring the Brilliant Gold Ring, a Silver Bar, a Moss Agate, and 30 silver coins to Talvash del Kissel in Ironforge.
-  collect Silver Bar##2842 |q 2948 |goto Azuremyst Isle 28.62,68.23 |tip {dropsfrom}Battered Chest, Tattered Chest
+  collect Silver Bar##2842 |q 2948 |goto Ironforge 36.38,3.61 |tip {dropsfrom}Battered Chest, Tattered Chest
 step
   only Warlock
   talk Briarthorn##5172
   accept Knowledge of the Orb of Orahil##4965 |goto Ironforge 50.35,5.66
-step
-  only Warlock
-  talk Zevrost##3326
-  accept Knowledge of the Orb of Orahil##4967 |goto Orgrimmar 48.47,45.43
-step
-  talk Huraan##17218
-  accept Missing Crystals##9435 |goto Hillsbrad Foothills 50.99,58.69
-step
-  note Retrieve the Shipment of Rare Crystals from the Forsaken and return it to Huraan in Southshore.
-  collect Shipment of Rare Crystals##23646 |q 9435 |goto Hillsbrad Foothills 55.57,35.22 |tip {dropsfrom}Unopened Crate
-step
-  note Kill 10 Torn Fin Tidehunters and 10 Torn Fin Oracles for Lieutenant Farren Orinelle in Southshore.
-  kill Torn Fin Tidehunter##2377 |q 536 |goto Hillsbrad Foothills 42.69,68.82
 step
   note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Raleigh the Devout in Southshore.
   kill High Inquisitor Whitemane##3977 |q 1053 |goto Scarlet Monastery - Dungeon -1,-1 |elite
@@ -109,7 +119,10 @@ step
   kill Mountain Lion##2406 |q 564 |goto Hillsbrad Foothills 38.8,24.62
 step
   note Venture to Gnomeregan and kill Mekgineer Thermaplugg. Return to High Tinker Mekkatorque when the task is complete.
-  kill Mekgineer Thermaplugg##7800 |q 2929 |goto Gnomeregan - Dungeon -1,-1
+  kill Mekgineer Thermaplugg##7800 |q 2929 |goto Gnomeregan - Dungeon -1,-1 |elite
+step
+  note Kill 10 Torn Fin Tidehunters and 10 Torn Fin Oracles for Lieutenant Farren Orinelle in Southshore.
+  kill Torn Fin Tidehunter##2377 |q 536 |goto Hillsbrad Foothills 42.69,68.82
 step
   note Kill 12 Syndicate Footpads and 8 Syndicate Thieves, then return to Magistrate Henry Maleb in Southshore.
   kill Syndicate Footpad##2240 |q 505 |goto Alterac Mountains 57.71,68.04
@@ -124,13 +137,10 @@ step
   turnin Gnome Improvement##2948 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
 step
   talk Magistrate Henry Maleb##2276
-  turnin Baron's Demise##523 |goto Hillsbrad Foothills 48.14,59.11
+  turnin Assassin's Contract##522 |goto Hillsbrad Foothills 48.14,59.11
 step
   talk Quae##2712
   turnin Hints of a New Plague?##659 |goto Arathi Highlands 60.18,53.85 |tip {turninat}Arathi Highlands
-step
-  talk Vincent Hyal##5082
-  turnin James Hyal##1301 |goto Wetlands 8.39,61.75 |tip {turninat}Wetlands
 step
   talk Lieutenant Farren Orinelle##2228
   turnin Down the Coast##536 |goto Hillsbrad Foothills 51.46,58.39
@@ -156,19 +166,9 @@ step
   talk Bartolo Ginsetti##2438
   turnin Bartolo's Yeti Fur Cloak##565 |goto Hillsbrad Foothills 49.43,55.53
 step
-  talk Huraan##17218
-  turnin Missing Crystals##9435 |goto Hillsbrad Foothills 50.99,58.69
-step
-  talk Mikhail##4963
-  turnin The Missing Diplomat##1248 |goto Wetlands 10.6,60.77 |tip {turninat}Wetlands
-step
   only Warlock
   talk Menara Voidrender##6266
   turnin Knowledge of the Orb of Orahil##4965 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
-step
-  only Warlock
-  talk Menara Voidrender##6266
-  turnin Knowledge of the Orb of Orahil##4967 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
   talk High Tinker Mekkatorque##7937
   turnin The Grand Betrayal##2929 |goto Ironforge 68.75,48.97 |tip {turninat}Ironforge
@@ -182,6 +182,12 @@ step
   talk Marshal Redpath##2263
   accept Crushridge Warmongers##504 |goto Hillsbrad Foothills 49.47,58.73
 step
+  talk Magistrate Henry Maleb##2276
+  accept Baron's Demise##523 |goto Hillsbrad Foothills 48.14,59.11
+step
+  note Bring the Head of Baron Vardus to Magistrate Maleb in Southshore.
+  collect Head of Baron Vardus##3626 |q 523 |goto Alterac Mountains 56.28,26.7 |tip {dropsfrom}Baron Vardus
+step
   talk Prospector Stormpike##1356
   accept Further Mysteries##525 |goto Ironforge 74.64,11.74
 step
@@ -194,14 +200,17 @@ step
   note Collect 10 Murloc Heads from the murlocs on the Western Strand for Lieutenant Farren Orinelle in Southshore.
   collect 10 Murloc Head##3716 |q 559 |goto Hillsbrad Foothills 25.6,72.38 |tip {dropsfrom}Torn Fin Muckdweller, Torn Fin Coastrunner, Torn Fin Oracle
 step
-  note Slay 10 Crushridge Warmongers, then return to Marshal Redpath in Southshore.
-  kill Crushridge Warmonger##2287 |q 504 |goto Alterac Mountains 36.3,53.86
+  note Slay 15 Crushridge Warmongers, then return to Marshal Redpath in Southshore.
+  kill Crushridge Warmonger##2287 |q 504 |goto Alterac Mountains 36.3,53.86 |elite
+step
+  talk Magistrate Henry Maleb##2276
+  turnin Baron's Demise##523 |goto Hillsbrad Foothills 48.14,59.11
 step
   talk Magistrate Henry Maleb##2276
   turnin Further Mysteries##525 |goto Hillsbrad Foothills 48.14,59.11
 step
   talk Milton Sheaf##1440
-  turnin Return to Milton##542 |goto Stormwind City 74.18,7.46 |tip {turninat}Stormwind City
+  turnin Return to Milton##542 |goto Stormwind City 77.07,30.21 |tip {turninat}Stormwind City
 step
   talk Lieutenant Farren Orinelle##2228
   turnin Farren's Proof##559 |goto Hillsbrad Foothills 51.46,58.39
@@ -243,7 +252,7 @@ step
   accept Reassignment##563 |goto Hillsbrad Foothills 51.46,58.39
 step
   talk Major Samuelson##2439
-  turnin Reassignment##563 |goto Stormwind City 72.57,15.88 |tip {turninat}Stormwind City
+  turnin Reassignment##563 |goto Stormwind City 75.83,36.72 |tip {turninat}Stormwind City
 step
   note {travel}Desolace
   goto Desolace 66.74,10.87
