@@ -4,24 +4,27 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Argent Dawn", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "6296fcb8",
+	rev = "d9a4f2db",
 }, [[
 step
   talk Leonid Barthalomew the Revered##267008
   accept A Righteous Cause##96896 |goto Tirisfal Glades 22.01,44.77
 step
+  note Observe the conversation between Danitha Morr and Leonid Barthalomew the Revered.
   talk Leonid Barthalomew the Revered##267008
   turnin A Righteous Cause##96896 |goto Tirisfal Glades 22.01,44.77
 step
   talk Leonid Barthalomew the Revered##267008
   accept Leonid's Letter##98545 |goto Tirisfal Glades 22.01,44.77
 step
+  note Deliver the Sealed Letter to Glix Xizzix in the Undercity.
   talk Glix Xizzix##272526
   turnin Leonid's Letter##98545 |goto Undercity 69.84,47.13
 step
   talk Deathguard Terrence##1738
   accept The Argent Emissary##96895 |goto Tirisfal Glades 63.47,56.55
 step
+  note Find the Argent Dawn member near the entrance to the Undercity.
   talk Hadric Harlson##267009
   turnin The Argent Emissary##96895 |goto Tirisfal Glades 65.88,61.13
 step
@@ -46,12 +49,14 @@ step
   talk Hadric Harlson##267009
   accept Bandarion Keep##96899 |goto Tirisfal Glades 65.88,61.13
 step
+  note Meet Leonid Barthalomew at Bandarion Keep in Tirisfal Glades.
   talk Leonid Barthalomew the Revered##267008
   turnin Bandarion Keep##96899 |goto Tirisfal Glades 22.01,44.77
 step
   talk Dawnwatcher Shaedlass##4786
   accept In Search of Thaelrid##1198 |goto Darnassus 55.36,25.03
 step
+  note Seek out Argent Guard Thaelrid in Blackfathom Deeps.
   talk Argent Guard Thaelrid##4787
   turnin In Search of Thaelrid##1198 |goto Blackfathom Deeps - Dungeon -1,-1
 step
@@ -94,6 +99,7 @@ step
   talk Tinkee Steamboil##10267
   accept Felnok Steelspring##4808 |goto Burning Steppes 65.24,24
 step
+  note Give Tinkee's Letter to Felnok Steelspring.
   talk Felnok Steelspring##10468
   turnin Felnok Steelspring##4808 |goto Winterspring 61.63,38.61
 step
@@ -109,30 +115,35 @@ step
   talk Felnok Steelspring##10468
   accept Return to Tinkee##4810 |goto Winterspring 61.63,38.61
 step
+  note Bring Felnok's Package to Tinkee Steamboil in the Burning Steppes.
   talk Tinkee Steamboil##10267
   turnin Return to Tinkee##4810 |goto Burning Steppes 65.24,24
 step
   talk Gregor Greystone##10431
   accept The Everlook Report##6029 |goto Winterspring 61.35,38.97
 step
+  note Deliver the Everlook Report to Argent Officer Garush at the Bulwark, Western Plaguelands.
   talk Argent Officer Garush##10839
   turnin The Everlook Report##6029 |goto Tirisfal Glades 83.19,68.45
 step
   talk Gregor Greystone##10431
   accept Duke Nicholas Zverenhoff##6030 |goto Winterspring 61.35,38.97
 step
+  note Deliver the book, "Studies in Spirit Speaking", to Duke Nicholas Zverenhoff at Light's Hope Chapel, Eastern Plaguelands.
   talk Duke Nicholas Zverenhoff##11039
   turnin Duke Nicholas Zverenhoff##6030 |goto Eastern Plaguelands 71.63,50.09
 step
   talk High Executor Derrington##10837
   accept Scarlet Diversions##5096 |goto Tirisfal Glades 83.13,68.94
 step
+  note Proceed to the Scarlet Crusade's base camp between Felstone Field and Dalson's Tears and destroy their command tent.
   talk High Executor Derrington##10837
   turnin Scarlet Diversions##5096 |goto Tirisfal Glades 83.13,68.94
 step
   talk High Executor Derrington##10837
   accept The Scourge Cauldrons##5228 |goto Tirisfal Glades 83.13,68.94
 step
+  note Speak with Shadow Priestess Vandis at the Bulwark, Western Plaguelands.
   talk Shadow Priestess Vandis##11055
   turnin The Scourge Cauldrons##5228 |goto Tirisfal Glades 83.04,71.91
 step
@@ -147,6 +158,7 @@ step
   click Scourge Cauldron##176361
   accept Return to the Bulwark##5230 |goto Western Plaguelands 37.25,56.78
 step
+  note Bring the Filled Felstone Field Bottle to Shadow Priestess Vandis at the Bulwark, Western Plaguelands.
   talk Shadow Priestess Vandis##11055
   turnin Return to the Bulwark##5230 |goto Tirisfal Glades 83.04,71.91
 step
@@ -178,6 +190,7 @@ step
   talk Pamela Redpath##10926
   accept Auntie Marlene##5152 |goto Eastern Plaguelands 31.15,77.98
 step
+  note Speak with Marlene, south of the Ruins of Andorhal.
   talk Marlene Redpath##10927
   turnin Auntie Marlene##5152 |goto Western Plaguelands 49.17,78.57
 step
@@ -202,6 +215,7 @@ step
   talk Chromie##10667
   accept Brother Carlin##5210 |goto Western Plaguelands 39.46,66.76
 step
+  note Bring the Extended Annals of Darrowshire to Carlin Redpath in Eastern Plaguelands.
   talk Carlin Redpath##11063
   turnin Brother Carlin##5210 |goto Eastern Plaguelands 71.7,50.04
 step
@@ -225,6 +239,7 @@ step
   click Scourge Cauldron##177289
   accept Return to the Bulwark##5232 |goto Western Plaguelands 46.18,51.9
 step
+  note Bring the Filled Dalson's Tears Bottle to Shadow Priestess Vandis at the Bulwark, Western Plaguelands.
   talk Shadow Priestess Vandis##11055
   turnin Return to the Bulwark##5232 |goto Tirisfal Glades 83.04,71.91
 step
@@ -239,6 +254,7 @@ step
   click Scourge Cauldron##176393
   accept Return to the Bulwark##5234 |goto Western Plaguelands 53.02,65.61
 step
+  note Bring the Filled Writhing Haunt Bottle to Shadow Priestess Vandis at The Bulwark, Western Plaguelands.
   talk Shadow Priestess Vandis##11055
   turnin Return to the Bulwark##5234 |goto Tirisfal Glades 83.04,71.91
 step
@@ -372,6 +388,7 @@ step
   kill Plagued Hatchling##10678 |goto Scholomance - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept Healthy Dragon Scale##5582 |goto Scholomance - Dungeon -1,-1
 step
+  note Bring the Healthy Dragon Scale to Betina Bigglezink at the Light's Hope Chapel in Eastern Plaguelands.
   talk Betina Bigglezink##11035
   turnin Healthy Dragon Scale##5582 |goto Eastern Plaguelands 71.66,49.94
 step
@@ -386,6 +403,7 @@ step
   click Scourge Cauldron##176392
   accept Return to the Bulwark##5236 |goto Western Plaguelands 62.54,58.47
 step
+  note Bring the Filled Gahrron's Withering Bottle to Shadow Priestess Vandis at the Bulwark, Western Plaguelands.
   talk Shadow Priestess Vandis##11055
   turnin Return to the Bulwark##5236 |goto Tirisfal Glades 83.04,71.91
 step
@@ -423,12 +441,14 @@ step
   talk Tinkee Steamboil##10267
   accept Leonid Barthalomew##5522 |goto Burning Steppes 65.24,24
 step
+  note Bring the Frozen Eggs to Leonid Barthalomew in the Eastern Plaguelands.
   talk Leonid Barthalomew the Revered##11036
   turnin Leonid Barthalomew##5522 |goto Eastern Plaguelands 71.89,48.29
 step
   talk Leonid Barthalomew the Revered##11036
   accept Betina Bigglezink##5531 |goto Eastern Plaguelands 71.89,48.29
 step
+  note Bring the Frozen Eggs to Betina Bigglezink.
   talk Betina Bigglezink##11035
   turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
 step
@@ -591,6 +611,7 @@ step
   talk Carlin Redpath##11063
   accept Return to Chromie##5941 |goto Eastern Plaguelands 71.7,50.04
 step
+  note Take the Bundle of Relics to Chromie in Andorhal.
   talk Chromie##10667
   turnin Return to Chromie##5941 |goto Western Plaguelands 39.46,66.76
 step
@@ -606,6 +627,7 @@ step
   talk Pamela Redpath##10926
   accept Hidden Treasures##5942 |goto Eastern Plaguelands 31.15,77.98
 step
+  note Bring Joseph's Key to Joseph's Chest.
   turnin Hidden Treasures##5942 |goto Eastern Plaguelands 30.92,77.78
 step
   talk Duke Nicholas Zverenhoff##11039
@@ -620,6 +642,7 @@ step
   kill Grand Crusader Dathrohan##10812 |goto Stratholme - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
   accept The Truth Comes Crashing Down##5262 |goto Stratholme - Dungeon -1,-1
 step
+  note Take the Head of Balnazzar to Duke Nicholas Zverenhoff in the Eastern Plaguelands.
   talk Duke Nicholas Zverenhoff##11039
   turnin The Truth Comes Crashing Down##5262 |goto Eastern Plaguelands 71.63,50.09
 step
@@ -635,12 +658,14 @@ step
   talk Duke Nicholas Zverenhoff##11039
   accept Lord Maxwell Tyrosus##5264 |goto Eastern Plaguelands 71.63,50.09
 step
+  note Speak with Lord Maxwell Tyrosus. He is inside the church.
   talk Lord Maxwell Tyrosus##11034
   turnin Lord Maxwell Tyrosus##5264 |goto Eastern Plaguelands 71.9,48.41
 step
   talk Lord Maxwell Tyrosus##11034
   accept The Argent Hold##5265 |goto Eastern Plaguelands 71.9,48.41
 step
+  note Open the Argent Hold and claim your reward.
   turnin The Argent Hold##5265 |goto Eastern Plaguelands 71.96,48.41
 step
   only not completed(5521) not completed(5524) not haveq(5521) not haveq(5524)
@@ -739,84 +764,277 @@ step
   talk Mokvar##16012
   turnin An Earnest Proposition##8913 |goto Orgrimmar 34.95,38.29
 step
+  only Hunter
+  talk Mokvar##16012
+  accept An Earnest Proposition##8914 |goto Orgrimmar 34.95,38.29
+step
+  only Hunter
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Beaststalker's Bindings to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8914 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Hunter
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8914 |goto Orgrimmar 34.95,38.29
+step
+  only Mage
+  talk Mokvar##16012
+  accept An Earnest Proposition##8915 |goto Orgrimmar 34.95,38.29
+step
+  only Mage
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Magister's Bindings to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8915 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Mage
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8915 |goto Orgrimmar 34.95,38.29
+step
+  only Priest
+  talk Mokvar##16012
+  accept An Earnest Proposition##8916 |goto Orgrimmar 34.95,38.29
+step
+  only Priest
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Devout Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8916 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Priest
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8916 |goto Orgrimmar 34.95,38.29
+step
+  only Rogue
+  talk Mokvar##16012
+  accept An Earnest Proposition##8917 |goto Orgrimmar 34.95,38.29
+step
+  only Rogue
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Shadowcraft Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8917 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Rogue
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8917 |goto Orgrimmar 34.95,38.29
+step
+  only Shaman
+  talk Mokvar##16012
+  accept An Earnest Proposition##8918 |goto Orgrimmar 34.95,38.29
+step
+  only Shaman
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Bindings of Elements to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8918 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Shaman
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8918 |goto Orgrimmar 34.95,38.29
+step
+  only Warlock
+  talk Mokvar##16012
+  accept An Earnest Proposition##8919 |goto Orgrimmar 34.95,38.29
+step
+  only Warlock
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Dreadmist Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8919 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Warlock
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8919 |goto Orgrimmar 34.95,38.29
+step
+  only Warrior
+  talk Mokvar##16012
+  accept An Earnest Proposition##8920 |goto Orgrimmar 34.95,38.29
+step
+  only Warrior
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Bracers of Valor to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8920 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Warrior
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8920 |goto Orgrimmar 34.95,38.29
+step
+  only not Paladin
   talk Mokvar##16012
   accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
 step
+  only not Paladin
+  note Take the Sealed Venom Container to Mux Manascrambler in Gadgetzan.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8923 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
   collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
   collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
   collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept Return to Mokvar##8978 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
+  note Return to Mokvar in Orgrimmar with the Extra-Dimensional Ghost Revealer.
   talk Mokvar##16012
   turnin Return to Mokvar##8978 |goto Orgrimmar 34.95,38.29
 step
-  only Druid
+  only Druid not Paladin
   talk Mokvar##16012
   accept Just Compensation##8927 |goto Orgrimmar 34.95,38.29
 step
-  only Druid
+  only Druid not Paladin
   note Bring a Wildheart Belt and a set of Wildheart Gloves to Mokvar in Orgrimmar.
   collect Wildheart Belt##16716 |q 8927 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider, Bile Spewer
 step
-  only Druid
+  only Druid not Paladin
   talk Mokvar##16012
   turnin Just Compensation##8927 |goto Orgrimmar 34.95,38.29
 step
+  only Hunter not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8938 |goto Orgrimmar 34.95,38.29
+step
+  only Hunter not Paladin
+  note Bring a Beaststalker's Belt and a set of Beaststalker's Gloves to Mokvar in Orgrimmar.
+  collect Beaststalker's Belt##16680 |q 8938 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Headhunter, Scarshield Raider, Firebrand Grunt
+step
+  only Hunter not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8938 |goto Orgrimmar 34.95,38.29
+step
+  only Mage not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8939 |goto Orgrimmar 34.95,38.29
+step
+  only Mage not Paladin
+  note Bring a Magister's Belt and a set of Magister's Gloves to Mokvar in Orgrimmar.
+  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Mystic, Thuzadin Shadowcaster, Thuzadin Necromancer
+step
+  only Mage not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8939 |goto Orgrimmar 34.95,38.29
+step
+  only Priest not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8940 |goto Orgrimmar 34.95,38.29
+step
+  only Priest not Paladin
+  note Bring a Devout Belt and a set of Devout Gloves to Mokvar in Orgrimmar.
+  collect Devout Belt##16696 |q 8940 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
+step
+  only Priest not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8940 |goto Orgrimmar 34.95,38.29
+step
+  only Rogue not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8941 |goto Orgrimmar 34.95,38.29
+step
+  only Rogue not Paladin
+  note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Mokvar in Orgrimmar.
+  collect Shadowcraft Belt##16713 |q 8941 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Legionnaire, Firebrand Grunt, Scarshield Quartermaster
+step
+  only Rogue not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8941 |goto Orgrimmar 34.95,38.29
+step
+  only Shaman not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8942 |goto Orgrimmar 34.95,38.29
+step
+  only Shaman not Paladin
+  note Bring a Cord of Elements and a set of Gauntlets of Elements to Mokvar in Orgrimmar.
+  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Warlock, Firebrand Invoker, Scarshield Quartermaster
+step
+  only Shaman not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8942 |goto Orgrimmar 34.95,38.29
+step
+  only Warlock not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8943 |goto Orgrimmar 34.95,38.29
+step
+  only Warlock not Paladin
+  note Bring a Dreadmist Belt and a set of Dreadmist Wraps to Mokvar in Orgrimmar.
+  collect Dreadmist Belt##16702 |q 8943 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Thuzadin Shadowcaster, Thuzadin Necromancer, Crimson Conjuror
+step
+  only Warlock not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8943 |goto Orgrimmar 34.95,38.29
+step
+  only Warrior not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8944 |goto Orgrimmar 34.95,38.29
+step
+  only Warrior not Paladin
+  note Bring a Belt of Valor and a set of Gauntlets of Valor to Mokvar in Orgrimmar.
+  collect Belt of Valor##16736 |q 8944 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker, Patchwork Horror, Bile Spewer
+step
+  only Warrior not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8944 |goto Orgrimmar 34.95,38.29
+step
+  only not Paladin
   talk Mokvar##16012
   accept In Search of Anthion##8930 |goto Orgrimmar 34.95,38.29
 step
+  only not Paladin
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8930 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not Paladin
   talk Anthion Harmon##16016
   accept Dead Man's Plea##8945 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not Paladin
   note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
   talk Ysida Harmon##16031 |q 8945 |goto Stratholme - Dungeon -1,-1
 step
+  only not Paladin
   talk Ysida Harmon##16031
   turnin Dead Man's Plea##8945 |goto Stratholme - Dungeon -1,-1
 step
   talk Colossus Researcher Sophia##15797
   accept Secrets of the Colossus - Zora##8859 |goto Silithus 49.47,37.3
 step
+  note Take the Colossus of Zora's Husk to Lord Maxwell Tyrosus at Light's Hope Chapel in the Eastern Plaguelands.
   talk Lord Maxwell Tyrosus##11034
   turnin Secrets of the Colossus - Zora##8859 |goto Eastern Plaguelands 71.9,48.41
 step
@@ -880,17 +1098,20 @@ step
   talk Magistrate Marduke##11286
   accept The Dying, Ras Frostwhisper##5462 |goto Western Plaguelands 70.57,74.11
 step
+  note Travel to Light's Hope in Eastern Plaguelands and seek out Leonid Barthalomew the Revered. Show him the Keepsake of Remembrance and tell him all that you have discovered.
   talk Leonid Barthalomew the Revered##11036
   turnin The Dying, Ras Frostwhisper##5462 |goto Eastern Plaguelands 71.89,48.29
 step
   talk Leonid Barthalomew the Revered##11036
   accept Menethil's Gift##5463 |goto Eastern Plaguelands 71.89,48.29
 step
+  note Travel to Stratholme and find Menethil's Gift. Place the Keepsake of Remembrance upon the unholy ground.
   turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1
 step
   click Menethil's Gift##176631
   accept Menethil's Gift##5464 |goto Stratholme - Dungeon -1,-1
 step
+  note Take the Soulbound Keepsake to Leonid Barthalomew in Eastern Plaguelands.
   talk Leonid Barthalomew the Revered##11036
   turnin Menethil's Gift##5464 |goto Eastern Plaguelands 71.89,48.29
 step
@@ -1827,6 +2048,7 @@ step
   kill Kel'Thuzad##15990 |goto Naxxramas - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.
   accept The Fall of Kel'Thuzad##9120 |goto Naxxramas - Dungeon -1,-1
 step
+  note Take the Phylactery of Kel'Thuzad to Light's Hope Chapel in the Eastern Plaguelands.
   talk Father Inigo Montoy##16113
   turnin The Fall of Kel'Thuzad##9120 |goto Eastern Plaguelands 71.66,48.58
 ]])

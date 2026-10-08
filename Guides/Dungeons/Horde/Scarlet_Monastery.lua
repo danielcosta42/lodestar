@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Scarlet Monastery", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "b5a9073b",
+	rev = "1d8d04d3",
 }, [[
 step
   talk Dorn Plainstalker##2986
@@ -41,6 +41,7 @@ step
   note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Varimathras in the Undercity.
   kill High Inquisitor Whitemane##3977 |q 1048 |goto Scarlet Monastery - Dungeon -1,-1 |elite
 step
+  note If you have faith, leap from the planks overlooking Thousand Needles.
   talk Dorn Plainstalker##2986
   turnin Test of Faith##1149 |goto Thousand Needles 53.95,41.49
 step
@@ -51,6 +52,7 @@ step
   turnin Going, Going, Guano!##1109 |goto Undercity 48.82,69.28
 step
   only Mage
+  note Speak with Tabetha.
   talk Tabetha##6546
   turnin Journey to the Marsh##1947 |goto Dustwallow Marsh 46.06,57.09
 step
@@ -84,6 +86,7 @@ step
   turnin Hearts of Zeal##1113 |goto Undercity 48.82,69.28
 step
   only Mage
+  note Speak with Magus Tirth in the Shimmering Flats.
   talk Magus Tirth##6548
   turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7
 step
@@ -120,6 +123,7 @@ step
   note Bring the book Rituals of Power to Tabetha in Dustwallow Marsh.
   collect Rituals of Power##7274 |q 1951 |goto Scarlet Monastery - Dungeon -1,-1
 step
+  note Find Braug Dimspirit near the entrance to Talondeep Path in Stonetalon Mountains.
   talk Braug Dimspirit##4489
   turnin Test of Lore##1152 |goto Stonetalon Mountains 78.8,45.69
 step
@@ -139,12 +143,14 @@ step
   talk Braug Dimspirit##4489
   accept Test of Lore##6627 |goto Stonetalon Mountains 78.8,45.69
 step
+  note Answer Braug Dimspirit's question successfully and then speak to him again. He will remain in Stonetalon Mountains when you are ready.
   talk Braug Dimspirit##4489
   turnin Test of Lore##6627 |goto Stonetalon Mountains 78.8,45.69
 step
   talk Braug Dimspirit##4489
   accept Test of Lore##1159 |goto Stonetalon Mountains 78.8,45.69
 step
+  note Find Parqual Fintallas in Undercity.
   talk Parqual Fintallas##4488
   turnin Test of Lore##1159 |goto Undercity 57.8,65.42
 step

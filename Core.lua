@@ -49,7 +49,7 @@ local function fire(event, ...)
 	if not list then return end
 	for i = 1, #list do
 		local ok, err = pcall(list[i], event, ...)
-		if not ok then ns:Print("|cffff5555erro em", event, ":|r", err) end
+		if not ok then ns:Print("|cffff5555" .. ns.L.ERR_EVENT:format(event) .. "|r", err) end
 	end
 end
 ns.fire = fire
@@ -115,6 +115,8 @@ local DB_DEFAULTS = {
 	xpHud = true,         -- painel de ritmo (XP/h, ETA, adiantado/atrasado)
 	xpHudPos = {},        -- posição destacada do HUD (se arrastado)
 	reportCard = true,    -- boletim de leveling (nota + card compartilhável)
+	cardEvery = false,    -- boletim a cada nível (desligado: só nos marcos)
+	cardAskGuild = true,  -- o boletim pergunta se manda no chat da guilda
 	ghost = {},           -- run de referência por classe (Ghost Racing)
 	coords = true,        -- coordenadas do player no minimapa/mapa
 	guideMap = true,      -- marca os pontos dos próximos passos no mapa-múndi
@@ -137,7 +139,6 @@ local CHAR_DEFAULTS = {
 	steps = {},                -- [guideKey] = índice do step (progresso por guia)
 	completedGoals = {},       -- ["guide\0step\0goal"] = true (progresso manual)
 	deaths = 0,                -- mortes deste personagem
-	dungeonRuns = {},          -- [nomeDaDungeon] = nº de clears (contador de spam)
 }
 
 local function applyDefaults(target, defaults)
@@ -199,8 +200,11 @@ SlashCmdList.LODESTAR = function(msg)
 		ns.db.debug = not ns.db.debug
 		ns:Print("debug:", ns.db.debug and "ON" or "OFF")
 	elseif cmd == "list" then
-		ns:Print("guias registrados:")
-		for key in pairs(ns.guides or {}) do print("  " .. key) end
+		ns:Print(ns.L.LIST_HEADER)
+		local keys = {}
+		for key in pairs(ns.guides or {}) do keys[#keys + 1] = key end
+		table.sort(keys)
+		for _, key in ipairs(keys) do print("  " .. key) end
 	elseif cmd == "load" and rest ~= "" then
 		local key = ns:ResolveGuideKey(rest)
 		if key then ns.char.manualPick = key; ns:LoadGuide(key) else ns:Printf(ns.L.NO_MATCH, rest) end
@@ -211,7 +215,7 @@ SlashCmdList.LODESTAR = function(msg)
 	elseif cmd == "rescan" then          -- "check" é o checklist de consumíveis (abaixo)
 		if ns.currentGuide then
 			ns:CheckProgress()
-			ns:Printf("re-varredura: passo %d/%d", ns.char.currentStep, #ns.currentGuide.steps)
+			ns:Printf(ns.L.RESCAN_AT, ns.char.currentStep, #ns.currentGuide.steps)
 		end
 	elseif cmd == "scan" then
 		local S = ns.Scan
@@ -262,7 +266,7 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Waypoint then ns.Waypoint:ClearCustom() end
 		ns:Print(ns.L.DEST_CLEARED)
 	elseif cmd == "way" then
-		if not (ns.Waypoint and ns.Waypoint:Way(rest)) then ns:Print("/ls way <x> <y> [zona]") end
+		if not (ns.Waypoint and ns.Waypoint:Way(rest)) then ns:Print(ns.L.WAY_USAGE) end
 	elseif cmd == "travel" or cmd == "viagem" then
 		if ns.TravelPanel then ns.TravelPanel:Toggle() end
 	elseif cmd == "export" then
@@ -298,7 +302,7 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Milestones then ns.Milestones:GotoProfTrainer(rest) end
 	elseif cmd == "calibrate" and rest ~= "" then
 		local v = tonumber(rest)
-		if v then ns.db.minimap.rangeMult = v; ns:Print("alcance do minimapa x", v) end
+		if v then ns.db.minimap.rangeMult = v; ns:Printf(ns.L.MM_RANGE, v) end
 	else
 		-- sem guia carregado abre o navegador; com guia, alterna a janela
 		if not ns.currentGuide and ns.GuideMenu then

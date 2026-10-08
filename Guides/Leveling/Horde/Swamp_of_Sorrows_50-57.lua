@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (50-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (55-60)",
-	rev = "8c299a06",
+	rev = "4528ab5e",
 }, [[
 step
   only Warrior
@@ -51,7 +51,7 @@ step
   collect Warchief's Orders##8463 |q 2623 |goto Swamp of Sorrows 62.4,84.6 |tip {dropsfrom}Swamp Talker
 step
   only completed(3373)
-  kill Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip Loot the quest item here — it starts the quest.
+  talk Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip They give you the item that starts the quest.
   accept The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
 step
   only completed(3373)

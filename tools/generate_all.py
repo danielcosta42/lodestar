@@ -21,7 +21,6 @@ from router import CAPITAIS, FORA_DO_LEVELING, VANILLA_RACES, Router, continente
 GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides", "Leveling")
 
 # Capitais de facção: são hubs, não zonas de leveling — fora da cadeia.
-# (Shattrath 3703 fica: é hub neutro de TBC com quests reais de 65-70.)
 SKIP_AREAS = {
     1497,  # Undercity
     1519,  # Stormwind City

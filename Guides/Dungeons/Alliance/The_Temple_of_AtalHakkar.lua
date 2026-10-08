@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Temple of Atal'Hakkar", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "ba5fbd99",
+	rev = "dfa7671b",
 }, [[
 step
   only Rogue
@@ -87,10 +87,12 @@ step
   turnin Magic Dust##8251 |goto Azshara 29.25,40.21
 step
   only Hunter
+  note Speak to Ogtinc in Azshara.
   talk Ogtinc##8405
   turnin The Hunter's Charm##8151 |goto Azshara 42.4,42.62
 step
   only Priest
+  note Seek out Ogtinc in Azshara.
   talk Ogtinc##8405
   turnin Cenarion Aid##8254 |goto Azshara 42.4,42.62
 step
@@ -116,6 +118,7 @@ step
   talk Atal'ai Exile##5598
   turnin Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
 step
+  note Place the Essence of Eranikus in the Essence Font located in this lair in the Sunken Temple.
   turnin The Essence of Eranikus##3373 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   only Rogue
@@ -201,14 +204,17 @@ step
   talk Fallen Hero of the Horde##7572
   turnin War on the Shadowsworn##8424 |goto Swamp of Sorrows 34.29,66.14
 step
+  note Take a Bloodpetal to Gregan Brewspewer in Feralas.
   talk Gregan Brewspewer##7775
   turnin A Visit to Gregan##4142 |goto Feralas 45.12,25.57
 step
   only Druid
+  note Stab a Devilsaur with the Devilsaur Barb. Return to Torwa Pathfinder in Un'Goro Crater when you have completed this task.
   talk Torwa Pathfinder##9619
   turnin Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Bring the Inert Scourgestone to Commander Ashlan Valorfist in Chillwind Point.
   talk Commander Ashlam Valorfist##10838
   turnin Inert Scourgestones##8416 |goto Western Plaguelands 42.7,84.03
 step

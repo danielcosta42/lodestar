@@ -35,7 +35,7 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - **Multiple guides open at once as tabs** — switch, add, or close routes on the fly, with a clean empty state when none is loaded.
 
 ### Automation (never get stuck)
-- **Auto-accept**, **auto-turn-in**, and **auto-reward** (picks the best reward using a class-aware gear score).
+- **Auto-accept**, **auto-turn-in**, and optional **auto-reward** (off by default; picks the best reward using a class-aware gear score).
 - Auto-selects the right gossip/quest option and auto-shares quests with your party.
 - **Auto-skips** a step whose NPC no longer offers its quest — imperfect data never stalls you.
 
@@ -58,7 +58,8 @@ what it always was: a file you hand over on purpose.
 
 ### For contributors
 - **Import / export** guides with share codes; record your own route in-game.
-- Fully localized: enUS, ptBR, deDE, esES, esMX, frFR, itIT, koKR, ruRU, zhCN, zhTW.
+- Interface in English and Brazilian Portuguese; deDE, esES, esMX, frFR, itIT, koKR, ruRU, zhCN and zhTW
+  translate the main labels and fall back to English for the rest. Translations welcome.
 
 ---
 

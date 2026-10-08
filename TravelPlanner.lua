@@ -6,10 +6,9 @@ local ADDON, ns = ...
 local TP = {}
 ns.TravelPlanner = TP
 
--- Continentes: EK = Reinos do Leste, K = Kalimdor, O = Outland
+-- Continentes: EK = Reinos do Leste, K = Kalimdor
 local CONTINENT = {
 	-- Reinos do Leste
-	["Eversong Woods"]="EK", ["Ghostlands"]="EK", ["Silvermoon City"]="EK", ["Isle of Quel'Danas"]="EK",
 	["Tirisfal Glades"]="EK", ["Silverpine Forest"]="EK", ["Western Plaguelands"]="EK",
 	["Eastern Plaguelands"]="EK", ["Hillsbrad Foothills"]="EK", ["Alterac Mountains"]="EK",
 	["Arathi Highlands"]="EK", ["The Hinterlands"]="EK", ["Undercity"]="EK",
@@ -20,14 +19,11 @@ local CONTINENT = {
 	["Swamp of Sorrows"]="EK", ["Stormwind City"]="EK",
 	-- Kalimdor
 	["Teldrassil"]="K", ["Darkshore"]="K", ["Ashenvale"]="K", ["Felwood"]="K", ["Winterspring"]="K",
-	["Moonglade"]="K", ["Darnassus"]="K", ["Azuremyst Isle"]="K", ["Bloodmyst Isle"]="K", ["The Exodar"]="K",
+	["Moonglade"]="K", ["Darnassus"]="K",
 	["Durotar"]="K", ["Azshara"]="K", ["The Barrens"]="K", ["Orgrimmar"]="K",
 	["Mulgore"]="K", ["Thousand Needles"]="K", ["Stonetalon Mountains"]="K", ["Desolace"]="K",
 	["Feralas"]="K", ["Dustwallow Marsh"]="K", ["Tanaris"]="K", ["Un'Goro Crater"]="K",
 	["Silithus"]="K", ["Thunder Bluff"]="K",
-	-- Outland
-	["Hellfire Peninsula"]="O", ["Zangarmarsh"]="O", ["Terokkar Forest"]="O", ["Nagrand"]="O",
-	["Blade's Edge Mountains"]="O", ["Netherstorm"]="O", ["Shadowmoon Valley"]="O", ["Shattrath City"]="O",
 }
 local localizedZone = ns.LocalizedZone
 

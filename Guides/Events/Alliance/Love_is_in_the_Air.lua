@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Love is in the Air", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "e3912dab",
+	rev = "61952e7f",
 }, [[
 step
   only not completed(8898) not completed(8899) not haveq(8898) not haveq(8899)
@@ -12,6 +12,7 @@ step
   accept Dearest Colara,##8897 |goto Stormwind City 63.83,70.55
 step
   only not completed(8898) not completed(8899) not haveq(8898) not haveq(8899)
+  note Deliver Lieutenant Heldric's Carefully Penned Note to Colara Dean outside the bank in Stormwind.
   talk Colara Dean##16002
   turnin Dearest Colara,##8897 |goto Stormwind City 61.71,75.48
 step

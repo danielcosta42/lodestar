@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Stockade", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "74a7ccfb",
+	rev = "b30ef47f",
 }, [[
 step
   kill Edwin VanCleef##639 |goto The Deadmines - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
@@ -40,6 +40,7 @@ step
   note Motley Garmason at Dun Modr wants you to kill 10 Dark Iron Dwarves, 5 Dark Iron Tunnelers, 5 Dark Iron Saboteurs and 5 Dark Iron Demolitionists.
   kill Dark Iron Dwarf##1051 |q 303 |goto Wetlands 59.93,23.02 |elite
 step
+  note Deliver the Letter to the City Architect to Baros Alexston in Stormwind.
   talk Baros Alexston##1646
   turnin The Unsent Letter##373 |goto Stormwind City 57.74,47.86
 step
@@ -67,6 +68,7 @@ step
   note Motley Garmason wants Kam Deepfury's head brought to him at Dun Modr.
   collect Head of Deepfury##3640 |q 378 |goto The Stockade - Dungeon -1,-1 |elite |tip {dropsfrom}Kam Deepfury
 step
+  note Speak with Warden Thelwater in the Stockade.
   talk Warden Thelwater##1719
   turnin Bazil Thredd##389 |goto Stormwind City 51.49,69.38
 step

@@ -174,6 +174,7 @@ python tools/gen_travel.py                      # voos, barcos, zepelins, bonde,
 python tools/gen_subzones.py <pasta do QuestieDB>
 python tools/gen_forever.py
 python tools/validate_guides.py
+python tools/check_special.py                  # masmorras e sintonizações, por raça x classe
 luajit tools/forever-guides.lua
 ```
 

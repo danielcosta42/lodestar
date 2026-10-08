@@ -17,18 +17,14 @@ L.QUEST_ACCEPTED="Quête acceptée"; L.QUEST_DONE="Quête terminée"
 L.LEVEL_UP="Niveau %s !"; L.LEVEL_UP_SUB="Continuez."; L.GUIDE_LOADED="Guide chargé"
 L.CHOOSE_GUIDE="Choisissez un guide"; L.MENU_HINT="Utilisez /ls menu pour parcourir"; L.QUEST_FALLBACK="Quête #%s"
 
-L.MENU_TITLE="Guides Lodestar"; L.MENU_SEARCH="Rechercher zone, donjon, synchro..."
 L.CAT_Leveling="Progression"; L.CAT_Class="Classe"; L.CAT_Dungeons="Donjons"
-L.CAT_Attunements="Synchronisations"; L.CAT_Reputation="Réputation"; L.CAT_Dailies="Quotidiennes"; L.CAT_Events="Événements"
+L.CAT_Attunements="Synchronisations"; L.CAT_Reputation="Réputation"; L.CAT_Events="Événements"
 
 L.TM_KILL="> Lodestar : cible à tuer"; L.TM_TALK="> Lodestar : cible du guide"
 L.YARDS="%d m"; L.DEST="Destination"
 
 L.PROF_USAGE="usage : /ls prof <métier> (ex : mining, alchemy, fishing)"
 L.PROF_NOTFOUND="métier '%s' introuvable."; L.PROF_NONE="aucun maître %s pour %s."
-L.MOUNT_30_T="Monture disponible !"; L.MOUNT_30_S="Apprenez Équitation (Apprenti) - 60% de vitesse."
-L.MOUNT_60_T="Monture épique !"; L.MOUNT_60_S="Équitation (Compagnon) - 100% de vitesse."
-L.MOUNT_70_T="Vol disponible !"; L.MOUNT_70_S="Apprenez Équitation (Expert) + une monture volante."
 L.TRAIN_T="Entraînez vos compétences"; L.TRAIN_S="Nouveaux sorts chez votre maître - /ls train."
 
 L.NOTE_FP="Prenez le trajet aérien auprès de %s."; L.NOTE_TRAVEL="Zone terminée ! Voyagez vers %s."
