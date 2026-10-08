@@ -143,7 +143,8 @@ function TR.Path(dados, de, para, maxExp, cederACada)
 end
 
 -- No caminho `path`, a partir do ponto mais perto do jogador: o ponto `look` jardas adiante
--- (para onde a seta aponta) e quanto falta até o fim, pelo caminho. Devolve x, y, falta.
+-- (para onde a seta aponta) e quanto falta até o fim, pelo caminho. Devolve x, y, falta, a
+-- distância do jogador ao caminho e o índice do próximo ponto.
 function TR.Ahead(path, pos, look)
 	local bi, bt, bd = 1, 0, math.huge
 	for i = 1, #path - 1 do
@@ -172,5 +173,5 @@ function TR.Ahead(path, pos, look)
 		end
 		x, y, i = nx, ny, i + 1
 	end
-	return ax or path[#path].x, ay or path[#path].y, falta
+	return ax or path[#path].x, ay or path[#path].y, falta, math.sqrt(bd), bi + 1
 end

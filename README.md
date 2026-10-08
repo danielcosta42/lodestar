@@ -28,6 +28,9 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - **Travel planner** — the fastest trip by travel time, leg by leg: walking, the flight paths you know
   (and new ones you pick up on the way), boats, zeppelins, the Deeprun Tram, your hearthstone and
   class teleports. It replans as you go, and the flight map highlights where to fly.
+- **Walks follow the terrain** — the walking part of a route goes around mountains, cliffs and
+  lakes instead of a straight line (from the game client's own terrain; enclosed cities still
+  fall back to a straight line).
 - **Boat and zeppelin times** — once Lodestar hears a zeppelin master or shipmaster announce an
   arrival (or you ride one), it learns that transport's schedule: the route uses the real wait, the
   arrow counts down ("leaves in 1m20s", "board now") and an alert sounds 30 s before it docks.

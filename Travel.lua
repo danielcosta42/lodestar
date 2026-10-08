@@ -63,7 +63,8 @@ function T.Remaining(route, pos, speed, now)
 	for i = route.leg, #route.legs do
 		local leg = route.legs[i]
 		if i == route.leg and leg.k == "walk" and pos and pos.c == leg.b.c then
-			s = s + dist(pos, leg.b) / (speed or 7)
+			local falta = leg.path and ns.Terrain and select(3, ns.Terrain.Ahead(leg.path, pos, 0))
+			s = s + (falta or dist(pos, leg.b)) / (speed or 7)
 		elseif leg.k == "ship" and leg.dep and now then
 			s = s + math.max(0, leg.dep - now) + math.max(0, (leg.ride or 0) - math.max(0, now - leg.dep))
 		else
@@ -345,6 +346,42 @@ local function onAnnounce(_, text, ...)
 end
 ns:On("CHAT_MSG_MONSTER_YELL", onAnnounce)
 ns:On("CHAT_MSG_MONSTER_SAY", onAnnounce)
+
+-- caminho a pé pelo terreno: a perna a pé atual ganha `path`, calculado em corrotina (cede a
+-- vez a cada 3000 expansões); refeito se o jogador sair dele por mais de 40 jd. Sem caminho
+-- (cidade fechada, fora da grade): fica a reta, e só tenta de novo 60 jd adiante.
+local pathCo, pathLeg
+local function pathTick()
+	if not (ns.Terrain and ns.terrain) then return end
+	local leg = route and route.legs[route.leg]
+	if not (leg and leg.k == "walk") then pathCo = nil; return end
+	if pathCo and pathLeg ~= leg then pathCo = nil end
+	if pathCo then
+		local ok, res = coroutine.resume(pathCo)
+		if not ok then
+			ns:Debug("Terrain:", res)
+			pathCo, leg.path = nil, false
+		elseif coroutine.status(pathCo) == "dead" then
+			pathCo, leg.path = nil, res or false
+		end
+		return
+	end
+	local pos = T.PlayerWorld()
+	if not (pos and pos.c == leg.b.c) then return end
+	if leg.path then
+		if select(4, ns.Terrain.Ahead(leg.path, pos, 0)) <= 40 then return end
+	elseif leg.path == false and leg.pathAt and dist(pos, leg.pathAt) < 60 then
+		return
+	end
+	pathLeg = leg
+	leg.pathAt = { c = pos.c, x = pos.x, y = pos.y }
+	local from, to = leg.pathAt, leg.b
+	pathCo = coroutine.create(function() return ns.Terrain.Path(ns.terrain, from, to, 150000, 3000) end)
+end
+ns:Every(0.05, function()
+	local ok, err = pcall(pathTick)
+	if not ok then ns:Debug("Terrain:", err); pathCo = nil end
+end)
 
 -- aviso de chegada do transporte (toast + som), uma vez por saída
 local alerted = {}

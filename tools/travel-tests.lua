@@ -561,4 +561,17 @@ local reta = math.sqrt((rat.x - cru.x) ^ 2 + (rat.y - cru.y) ^ 2)
 check(cam and comprimento(cam) > reta and comprimento(cam) < 1.6 * reta,
 	"real: Ratchet -> Encruzilhada pelo terreno (" .. (cam and math.floor(comprimento(cam)) or 0) .. " jd; reta " .. math.floor(reta) .. ")")
 
+-- a perna a pé com caminho: desenho e "quanto falta" seguem o caminho
+local RMT = load("RouteMap.lua", { Terrain = TRN }).RouteMap
+local perna = { k = "walk", a = P(0, 0, 0), b = P(0, 100, 100),
+	path = { P(0, 0, 0), P(0, 100, 0), P(0, 100, 100) } }
+pts = RMT.LegPoints(perna, P(0, 90, 2))
+check(#pts == 9 and pts[1] == 90 and pts[4] == 100 and pts[5] == 0 and pts[7] == 100 and pts[8] == 100,
+	"a pé com caminho: do jogador, o resto do caminho (sem o trecho já andado)")
+local TT = load("Travel.lua", { Journey = J, Terrain = TRN }).Travel
+check(math.abs(TT.Remaining({ leg = 1, legs = { perna } }, P(0, 90, 2), 10) - 11) < 0.01,
+	"quanto falta a pé: pelo caminho (110 jd a 10 jd/s), não em reta")
+check(math.abs(TT.Remaining({ leg = 1, legs = { { k = "walk", a = P(0, 0, 0), b = P(0, 100, 100) } } }, P(0, 90, 2), 10)
+	- math.sqrt(10 ^ 2 + 98 ^ 2) / 10) < 0.01, "sem caminho: em reta, como antes")
+
 print(("ok: %d checks"):format(checks))

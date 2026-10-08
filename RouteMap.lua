@@ -17,6 +17,11 @@ function RM.LegPoints(leg, from)
 		for i = 1, #leg.p - 1, 2 do put(leg.p[i], leg.p[i + 1], leg.a.c) end
 	elseif leg.k == "ship" and leg.p then
 		for i = 1, #leg.p - 2, 3 do put(leg.p[i], leg.p[i + 1], leg.p[i + 2]) end
+	elseif leg.k == "walk" and leg.path and from and ns.Terrain then
+		-- pelo terreno: do jogador, o resto do caminho
+		local _, _, _, _, nxt = ns.Terrain.Ahead(leg.path, from, 0)
+		put(from.x, from.y, from.c)
+		for i = nxt, #leg.path do put(leg.path[i].x, leg.path[i].y, leg.path[i].c) end
 	elseif leg.k == "walk" or leg.k == "tram" then
 		local a = from or leg.a
 		put(a.x, a.y, a.c)
@@ -111,7 +116,8 @@ local function update()
 	local w, h = canvas:GetSize()
 	if not w or w == 0 then return hideAll() end
 	local from = ns.Travel.PlayerWorld()
-	local sig = ("%s|%d|%s|%d|%d|%.0f|%.0f"):format(tostring(route), route.leg, tostring(shown), w, h,
+	local sig = ("%s|%s|%d|%s|%d|%d|%.0f|%.0f"):format(tostring(route.legs[route.leg] and route.legs[route.leg].path),
+		tostring(route), route.leg, tostring(shown), w, h,
 		from and from.x or 0, from and from.y or 0)
 	if sig == lastSig and overlay and overlay:IsShown() then return end
 	lastSig = sig

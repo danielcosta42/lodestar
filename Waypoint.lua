@@ -237,7 +237,23 @@ function WP:WorldMapPos(w, shown)
 	if pos then return pos.x, pos.y end
 end
 
+-- Perna a pé com caminho pelo terreno: a seta mira o ponto do caminho ~25 jd à frente e a
+-- distância é a que falta por ele (vale para o fim de perna e para o objetivo do guia na última).
+local function steer(goal)
+	local T = ns.Travel
+	local route = T and T:Route()
+	local leg = route and route.legs[route.leg]
+	if not (leg and leg.k == "walk" and leg.path and ns.Terrain) then return nil end
+	if not (goal._leg or (route.dest and goal == route.dest.goal)) then return nil end
+	local p = T.PlayerWorld()
+	if not (p and p.c == leg.b.c) then return nil end
+	local ax, ay, falta = ns.Terrain.Ahead(leg.path, p, 25)
+	return falta, ax - p.x, ay - p.y
+end
+
 function WP:DistanceTo(goal)
+	local sd, sx, sy = steer(goal)
+	if sd then return sd, sx, sy end
 	if goal.world then                        -- fim de perna da rota: já em coordenada de mundo
 		local p = ns.Travel and ns.Travel.PlayerWorld()
 		local w = goal.world

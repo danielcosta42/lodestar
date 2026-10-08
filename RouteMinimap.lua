@@ -63,8 +63,8 @@ local function update()
 	local facing = GetPlayerFacing and GetPlayerFacing() or 0
 	local rotate = GetCVar and GetCVar("rotateMinimap") == "1"
 	-- parado, mesma rota e mesmo zoom: o desenho de antes vale
-	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.3f"):format(tostring(route), route.leg, p.x, p.y,
-		rotate and facing or 0, ydPerPx)
+	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.3f|%s"):format(tostring(route), route.leg, p.x, p.y,
+		rotate and facing or 0, ydPerPx, tostring(route.legs[route.leg] and route.legs[route.leg].path))
 	if sig == lastSig then return end
 	hideAll()
 	lastSig = sig
