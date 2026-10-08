@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (55-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Swamp of Sorrows (57-60)",
+	next = "Leveling/Alliance/Swamp of Sorrows (55-58)",
 }, [[
 step
   talk Janice Felstone##10778

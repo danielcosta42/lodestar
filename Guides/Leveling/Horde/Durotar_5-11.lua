@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Durotar (5-11)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Silverpine Forest (11-20)",
+	next = "Leveling/Horde/Silverpine Forest (11-18)",
 }, [[
 step
   note {fp}Shoja'my

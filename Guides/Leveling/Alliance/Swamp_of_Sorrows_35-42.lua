@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (35-42)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Alterac Mountains (37-37)",
+	next = "Leveling/Alliance/Alterac Mountains (34-60)",
 }, [[
 step
   talk Magtoor##1776

@@ -40,3 +40,10 @@
       zona vira rota pela contagem total; só a faixa usa as quests sem classe e não só-Skyborne.
 - [x] Faixas vizinhas se sobrepunham no vão → disjuntas (cada leva vai do próprio início até antes da seguinte).
 - [x] Ramo "só a outra facção dá a quest" nunca disparava neste dado → removido, e o doc corrigido.
+
+## Revisão adversarial — terceira rodada
+
+- [x] Título vinha da descoberta: um grupinho de nível 60 fazia "Dustwallow Marsh (35-60)" de um guia que
+      para no 51, e o autopilot o escolhia para nível 50-60 → título = faixa das quests que o guia leva.
+- [x] Com o título fiel, a "Alterac Mountains (34-60)" de dez quests ganhava o desempate do autopilot
+      → desempate pela faixa em que o nível fica mais no meio; empate exato pela chave (determinístico).

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Dustwallow Marsh (35-60)",
+	next = "Leveling/Horde/Dustwallow Marsh (35-43)",
 }, [[
 step
   note {fp}Tharlidun

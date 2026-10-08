@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Duskwood (24-30)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Hillsbrad Foothills (32-40)",
+	next = "Leveling/Alliance/Hillsbrad Foothills (32-38)",
 }, [[
 step
   note {fp}Steven Black

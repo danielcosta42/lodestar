@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Alterac Mountains (34-36)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Desolace (33-47)",
+	next = "Leveling/Horde/Desolace (33-42)",
 }, [[
 step
   only Warrior

@@ -89,6 +89,10 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   cidade inimiga (Argent Dawn em Darnassus e Ironforge).
 - **Quest de capital** vai para o guia cuja faixa serve, preferindo a zona onde a capital fica
   (Ironforge → Dun Morogh) — e nunca para Zephras Isle.
+- **O título é a faixa do que o guia leva** (percentis 15-85 das quests dele), não a da descoberta:
+  um grupinho de quests de Onyxia fazia "Dustwallow Marsh (35-60)" de um guia que para no 51. E o
+  autopilot desempata pela faixa em que o nível do jogador fica mais no meio, não pela que começa
+  mais cedo — senão uma 34-60 de dez quests ganhava de toda zona dos níveis 45 a 60.
 - **Zephras Isle fica fora da cadeia.** O `next` dos guias pula a ilha (Dun Morogh → Westfall), e o
   autopilot só a oferece a Skyborne ou a quem já está lá.
 - **"Speak with X"** num NPC amigo sai como `talk`, não `kill`: o banco guarda o objetivo como de
@@ -157,8 +161,8 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
   ele tiver — ou quando o `/ls scan` colher no lançamento.
 - **Quest de profissão.** Fica fora porque o DSL não tem condição de profissão; com uma (`skill(171)`),
   as "Camping 101" e as entregas de Craftsman's Writ podiam entrar para quem tem a profissão.
-- **Quest de capital de nível 60** cai no primeiro guia de mediana 60 (hoje Redridge 54-60 na
-  Aliança e Eastern Plaguelands 56-60 na Horda, que fica com 135 accepts). Herdado do gerador; um
+- **Quest de capital de nível 60** cai no primeiro guia de mediana 60 (hoje Redridge Mountains
+  (60-60) na Aliança, 70 accepts, e Eastern Plaguelands na Horda, 135). Herdado do gerador; um
   guia de "capital 60" seria o lugar certo.
 - **"Welcome to Azeroth" da Aliança (94947)** — a quest que tira o Skyborne da ilha — tem quem a dá
   (Denaaris Stargale) posicionado em Alterac Mountains no QuestieDB 1.0.5, e fica fora do guia; a

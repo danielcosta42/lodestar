@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Un'Goro Crater (52-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Tanaris (47-60)",
+	next = "Leveling/Alliance/Tanaris (46-60)",
 }, [[
 step
   talk Tymor##8507
