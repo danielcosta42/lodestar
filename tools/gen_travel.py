@@ -34,6 +34,18 @@ DESCARTE = ("zzOLD", "Programmer", "Quest Path")
 CONTINENTES = {"0", "1"}
 
 # Entradas do bonde de Ironforge-Stormwind: gatilhos 2173 e 2175 da tabela AreaTrigger.
+# O transporte acelera ao sair e freia ao chegar (estimativa; o horário aprendido em jogo corrige).
+SHIP_ACCEL = 1.0                   # jd/s²
+
+
+def tempo_trecho(dist):
+    """Segundos de um trecho parado-a-parado: acelera até SHIP_SPEED, cruza, freia."""
+    pico = SHIP_SPEED ** 2 / SHIP_ACCEL               # distância gasta acelerando e freando
+    if dist >= pico:
+        return dist / SHIP_SPEED + SHIP_SPEED / SHIP_ACCEL
+    return 2 * math.sqrt(dist / SHIP_ACCEL)           # não chega à velocidade máxima
+
+
 # Títulos de quem anuncia a chegada de barco/zepelim no cais.
 ANUNCIA = {"Zeppelin Master", "Shipmaster"}
 
@@ -172,12 +184,17 @@ def construir():
             continue                      # Naxxramas: uma parada só
         zep = any(float(r["Loc_2"]) > 30 for _, r in paradas)
         pts = [(float(r["Loc_0"]), float(r["Loc_1"]), int(r["ContinentID"])) for r in rows]
+        salto = [int(r["Flags"] or 0) & 1 for r in rows]          # deste nó o transporte é teletransportado
 
         def trecho(i, j):
-            seg = pts[i:j + 1] if j > i else pts[i:] + pts[:j + 1]
-            # troca de continente no meio do trajeto é salto de coordenada, não distância
-            return sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(seg, seg[1:]) if a[2] == b[2])
-        legs = [round(trecho(paradas[k][0], paradas[(k + 1) % len(paradas)][0]) / SHIP_SPEED)
+            idx = list(range(i, j + 1)) if j > i else list(range(i, len(pts))) + list(range(0, j + 1))
+            # troca de continente, teletransporte (Flags 1) ou o fecho do laço longe do início é
+            # salto, não distância: os nós de verdade ficam a 50-200 jd um do outro
+            def d(a, b):
+                return math.hypot(pts[b][0] - pts[a][0], pts[b][1] - pts[a][1])
+            return sum(d(a, b) for a, b in zip(idx, idx[1:])
+                       if pts[a][2] == pts[b][2] and not salto[a] and d(a, b) < 1000)
+        legs = [round(tempo_trecho(trecho(paradas[k][0], paradas[(k + 1) % len(paradas)][0])))
                 for k in range(len(paradas))]
         ciclo = sum(legs) + sum(int(r["Delay"]) for _, r in paradas)
         ships.append({
@@ -307,6 +324,11 @@ def demo(d):
     # horário (parte D): espera por parada, id estável, quem anuncia a chegada
     assert all(len(s["d"]) == len(s["stops"]) and set(s["d"]) <= {30, 60} for s in d["ships"]), "espera por parada"
     assert len({s["id"] for s in d["ships"]}) == len(d["ships"]), "id de transporte repetido"
+    # o salto de teletransporte do trajeto (Flags 1) não é distância: nenhum trecho passa de 6 min,
+    # e o zepelim Grom'gol-Undercity fica na mesma ordem dos outros
+    assert all(t < 360 for sh in d["ships"] for t in sh["s"]), [sh["s"] for sh in d["ships"]]
+    # aceleração e frenagem entram no trecho: o mesmo trajeto custa mais que comprimento/velocidade
+    assert all(t > 30 for sh in d["ships"] for t in sh["s"]), [sh["s"] for sh in d["ships"]]
     anunc = {a["id"] for a in d["announcers"]}
     assert {9566, 3150, 9558, 9559} <= anunc, anunc            # Zapetta, Hin Denburg, Grimble, Grizzlowe
 

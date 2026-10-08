@@ -444,13 +444,21 @@ local h = { t0 = 840, T = 300 }
 check(SC.NextDeparture(navio, 1, 850, h) == 900 and SC.NextDeparture(navio, 1, 950, h) == 1200,
 	"próxima saída da 1ª: 900 se chegar às 850; 1200 se chegar às 950")
 check(SC.NextDeparture(navio, 1, 850, nil) == nil, "sem horário aprendido: nada")
-h = SC.Learn(nil, navio, 1, "arr", 1000)
-h = SC.Learn(h, navio, 1, "arr", 1000 + 3 * 305)
-check(near(h.T, 305) and #h.starts == 2, "duas chegadas 3 voltas depois: o período aprendido é 305 (" .. h.T .. ")")
-h = SC.Learn(h, navio, 1, "arr", 1000 + 3 * 305 + 305 + 100)
-check(#h.starts == 1 and near(h.T, 305), "100 s fora da previsão (servidor reiniciou): recomeça, o período fica")
-h = SC.Learn(h, navio, 2, "arr", h.starts[1] + 160 + 2)
-check(#h.starts == 1, "a outra parada do mesmo ciclo não conta como volta nova")
+-- aprender: uma observação dá a fase; o período sai de duas da mesma parada e evento
+local h1 = SC.Learn(nil, navio, 1, "arr", 1000)
+check(h1.T == nil and h1.t0 == 1000, "uma chegada: fase conhecida, período ainda não")
+check(SC.NextDeparture(navio, 1, 1010, h1) == 1060, "sem período aprendido, a volta atual vale (sai às 1060)")
+check(SC.NextDeparture(navio, 1, 1000 + 300 + 10, h1) == nil, "sem período aprendido, além de uma volta não se adivinha")
+local h2 = SC.Learn(h1, navio, 1, "arr", 1000 + 356)          -- estimativa 300, real 356 (+19%)
+check(h2.T and near(h2.T, 356), "duas chegadas na mesma parada: período aprendido 356 (" .. tostring(h2.T) .. ")")
+check(SC.NextDeparture(navio, 1, 1356 + 5 * 356 + 10, h2) == 1356 + 5 * 356 + 60, "com período aprendido, vale várias voltas adiante")
+local h3 = SC.Learn(h2, navio, 1, "arr", 1356 + 2 * 356 + 100)  -- 100 s fora: servidor reiniciou
+check(near(h3.T, 356) and h3.t0 == 1356 + 2 * 356 + 100, "fora da previsão: a fase recomeça, o período fica")
+check(SC.NextDeparture(navio, 1, h3.last + 13 * 3600, h3) == nil, "observação de mais de 12 h: o horário é ignorado")
+local h4 = SC.Learn(SC.Learn(nil, navio, 1, "arr", 1000), navio, 2, "arr", 1000 + 160 + 50)
+check(h4.T == nil, "parada diferente não ensina o período (só a fase)")
+local h5 = SC.Learn(SC.Learn(nil, navio, 1, "arr", 1000), navio, 1, "arr", 1000 + 10 * 356)
+check(h5.T == nil, "dez voltas depois: longe demais para saber quantas foram")
 local _, _, Tr = SC.Offsets(navio, { [1] = 90 })
 check(Tr == 290, "travessia medida (90 s) substitui a estimada no ciclo")
 

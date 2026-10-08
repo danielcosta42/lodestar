@@ -229,9 +229,12 @@ end
 -- Uma observação do transporte `sid` (parada k, "arr" | "dep", hora do servidor t); com a
 -- travessia medida (`rideFrom` -> `rideS` s), que passa a valer no ciclo. `replan`: refaz a
 -- rota com a espera nova — só fora do transporte (a bordo, a posição é o mar).
+local function shipById(sid)
+	for _, s in ipairs(ns.travel and ns.travel.ships or {}) do if s.id == sid then return s end end
+end
+
 function T:Observe(sid, k, ev, t, rideFrom, rideS, replan)
-	local ship
-	for _, s in ipairs(ns.travel and ns.travel.ships or {}) do if s.id == sid then ship = s end end
+	local ship = shipById(sid)
 	if not (ship and ns.Schedule) then return end
 	local store = transit()
 	local ride = store[sid] and store[sid].ride
@@ -341,7 +344,12 @@ local function onAnnounce(_, text, ...)
 	local guid = select(11, ...)
 	local npc = guid and tonumber((select(6, strsplit("-", guid))))
 	local sid, k = T.PickAnnounced(npc and announcerStops(npc), text)
-	if sid then T:Observe(sid, k, "arr", serverNow(), nil, nil, true) end
+	if not sid then return end
+	-- refaz a rota só se ela usa esse transporte e o jogador não está a bordo nem voando
+	local cur, usa = route and route.legs[route.leg], false
+	for _, l in ipairs(route and route.legs or {}) do if l.sid == sid then usa = true end end
+	local livre = not (cur and cur.boarded) and not (UnitOnTaxi and UnitOnTaxi("player"))
+	T:Observe(sid, k, "arr", serverNow(), nil, nil, usa and livre)
 end
 ns:On("CHAT_MSG_MONSTER_YELL", onAnnounce)
 ns:On("CHAT_MSG_MONSTER_SAY", onAnnounce)
@@ -349,7 +357,7 @@ ns:On("CHAT_MSG_MONSTER_SAY", onAnnounce)
 -- aviso de chegada do transporte (toast + som), uma vez por saída
 local alerted = {}
 local function alert(fmt, leg, tag)
-	local key = ("%s:%s:%s"):format(leg.sid, leg.dep, tag)
+	local key = ("%s:%s:%d:%s"):format(leg.sid, leg.stop, math.floor(leg.dep / 30), tag)
 	if alerted[key] then return end
 	alerted[key] = true
 	local L = ns.L
@@ -399,14 +407,24 @@ ns:Every(1, function()
 	end
 	local snow = serverNow()
 	local vNow = pos and lastPos and lastPos.c == pos.c and dist(pos, lastPos) / math.max(0.1, now - lastT)
-	-- barco/zepelim: sair do cais rápido demais para ser a pé ou montado é o embarque; o
-	-- desembarque (fim da perna, abaixo) dá a chegada e a travessia medida
+	-- barco/zepelim: embarcar é ser levado — a posição anda com o jogador parado, perto do cais
+	-- (o transporte acelera devagar: pela velocidade sozinha, só a 200 jd). Salto grande (pedra,
+	-- teleporte, soltar o espírito) não é embarque. O desembarque (fim da perna, abaixo) dá a
+	-- chegada e a travessia medida.
 	local cur = route and route.legs[route.leg]
-	if cur and cur.k == "ship" and cur.sid and not cur.boarded and vNow and vNow > 20 and not onTaxi
-		and lastPos and dist(lastPos, cur.a) < 100 then
-		cur.boarded = snow
-		T:Observe(cur.sid, cur.stop, "dep", snow)
-		cur = route and route.legs[route.leg]
+	local parado = (GetUnitSpeed and GetUnitSpeed("player") or 0) == 0
+	if cur and cur.k == "ship" and cur.sid and not cur.boarded and vNow and vNow > 1.5 and vNow < 45
+		and parado and not onTaxi and lastPos and dist(lastPos, cur.a) < 150 then
+		cur.boarded = snow - 2                         -- começou a andar ~2 s antes de dar para ver
+		T:Observe(cur.sid, cur.stop, "dep", cur.boarded)
+	end
+	-- saída passada sem embarque (perdeu o barco): a próxima, pelo horário
+	for i = route and route.leg or 1, route and math.min(route.leg + 1, #route.legs) or 0 do
+		local l = route.legs[i]
+		if l.k == "ship" and l.dep and not l.boarded and snow > l.dep + 2 then
+			local ship, hh = shipById(l.sid), transit()[l.sid]
+			l.dep = ship and hh and ns.Schedule.NextDeparture(ship, l.stop, snow, hh) or nil
+		end
 	end
 	-- indo ao cais ou esperando nele, com horário: aviso 30 s antes da chegada e na chegada
 	local sl = cur and (cur.k == "ship" and cur or (route.legs[route.leg + 1] or {}).k == "ship" and route.legs[route.leg + 1])
@@ -443,7 +461,12 @@ ns:Every(1, function()
 			if done and done.k == "ship" and done.boarded then     -- desembarcou: chegada + travessia
 				local m
 				for _, s in ipairs(ns.travel.ships) do if s.id == done.sid then m = #s.stops end end
-				if m then T:Observe(done.sid, done.stop % m + 1, "arr", snow, done.stop, snow - done.boarded) end
+				-- travessia medida só se plausível (0,5–2× a estimada): senão não foi essa viagem
+				local rideS = snow - done.boarded
+				local est = done.ride or 0
+				if m and est > 0 and rideS >= est / 2 and rideS <= est * 2 then
+					T:Observe(done.sid, done.stop % m + 1, "arr", snow, done.stop, rideS)
+				end
 			end
 			if i > #route.legs then          -- chegou
 				if kind == "manual" and ns.Destinations then ns.Destinations:Clear("manual") end
