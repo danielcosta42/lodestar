@@ -150,6 +150,26 @@ r = J.Plan(at("Sentinel Hill", 40), at("Ironforge", 30), real_ctx("A", semNo("A"
 local disc
 for _, l in ipairs(r and r.legs or {}) do if l.discover == shId then disc = true end end
 check(disc, "aceite 5: voo não descoberto no caminho é usado e marcado (" .. (r and kinds(r) or "nil") .. ")")
+-- revisão #3: barco e zepelim só por cais da sua facção
+local function porPerto(rr, prefix)
+	local _, v = node(prefix)
+	for _, l in ipairs(rr and rr.legs or {}) do
+		for _, pt in ipairs({ l.a, l.b }) do
+			if l.k == "ship" and pt.c == v.c and (pt.x - v.x) ^ 2 + (pt.y - v.y) ^ 2 < 700 ^ 2 then return true end
+		end
+	end
+end
+r = J.Plan(at("Brackenwall", 30), at("Menethil", 300), real_ctx("H", todos("H")))
+check(r and not porPerto(r, "Theramore"), "Horda em Brackenwall não vai ao cais de Theramore (" .. (r and kinds(r) or "nil") .. ")")
+r = J.Plan(at("Ratchet", 30), at("Undercity", 300), real_ctx("A", todos("A")))
+local zepA
+for _, l in ipairs(r and r.legs or {}) do if l.ship == "zeppelin" then zepA = true end end
+check(r and not zepA, "Aliança não pega zepelim da Horda (" .. (r and kinds(r) or "nil") .. ")")
+-- revisão #2: o barco diz para onde vai
+r = J.Plan(at("Auberdine", 30), at("Menethil", 30), real_ctx("A", todos("A")))
+local barco
+for _, l in ipairs(r and r.legs or {}) do if l.k == "ship" then barco = l end end
+check(barco and barco.name == "Menethil Harbor", "a perna de barco leva o nome do cais de chegada (" .. tostring(barco and barco.name) .. ")")
 
 -- ── Travel: trocar de rota, avançar de perna, quanto falta ───────────────────
 local T = load("Travel.lua", { Journey = J }).Travel
@@ -225,6 +245,7 @@ local L = setmetatable({
 	LEG_TO_FLIGHT = "FM %s", LEG_TO_NEW_FLIGHT = "NOVO %s", LEG_FLY = "VOE %s", LEG_TO_DOCK = "CAIS %s",
 	LEG_SHIP = "PEGUE %s", LEG_TO_TRAM = "BONDE", LEG_TRAM = "NO BONDE", LEG_HEARTH = "PEDRA",
 	LEG_TELEPORT = "TELE %s", SHIP_boat = "barco", SHIP_zeppelin = "zepelim",
+	LEG_SHIP_TO = "PEGUE %s PARA %s", LEG_TO_DOCK_TO = "CAIS %s PARA %s",
 }, { __index = function(_, k) return k end })
 local WPT = load("Waypoint.lua", { L = L, On = function() end, Every = function() end, zoneUiMap = {} }).Waypoint
 check(WPT.FmtTime(45) == "45s" and WPT.FmtTime(130) == "2m10s" and WPT.FmtTime(3900) == "1h05m",
@@ -238,6 +259,9 @@ local rt = { legs = {
 	{ k = "teleport", name = "Teleporte: Orgrimmar" },
 } }
 check(WPT.LegText(rt, 1, 40) == "FM Sentinel Hill · 40s", "a pé até o voo: nome do mestre e tempo (" .. WPT.LegText(rt, 1, 40) .. ")")
+local rb = { legs = { { k = "walk" }, { k = "ship", ship = "boat", name = "Menethil Harbor" }, { k = "walk" } } }
+check(WPT.LegText(rb, 1, 30) == "CAIS barco PARA Menethil Harbor · 30s" and WPT.LegText(rb, 2, 60) == "PEGUE barco PARA Menethil Harbor · 1m00s",
+	"barco: diz para onde vai (" .. WPT.LegText(rb, 1, 30) .. " | " .. WPT.LegText(rb, 2, 60) .. ")")
 check(WPT.LegText(rt, 2, 130) == "VOE Ironforge · 2m10s", "voo: destino e tempo")
 check(WPT.LegText(rt, 3, 10):find("CAIS zepelim", 1, true), "a pé até o cais: tipo do transporte")
 check(WPT.LegText(rt, 4, 60):find("PEGUE zepelim", 1, true), "no transporte")

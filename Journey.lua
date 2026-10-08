@@ -85,10 +85,13 @@ function J.Plan(from, to, ctx)
 		-- o trajeto é um laço: parada k -> k+1 (no barco de duas paradas, ida e volta); ir
 		-- "para trás" num laço de três é seguir as próximas, e a espera conta de novo
 		local m = #ship.stops
+		local function ok(st) return not st.f or st.f:find(fac, 1, true) end   -- cais da outra facção: guardas
 		for k = 1, m do
 			local nxt = k % m + 1
-			link(idx[k], idx[nxt], ship.w + (ship.s[k] or 0),
-				{ k = "ship", ship = ship.k, p = shipSlice(ship.p, ship.stops[k], ship.stops[nxt]) })
+			if ok(ship.stops[k]) and ok(ship.stops[nxt]) then
+				link(idx[k], idx[nxt], ship.w + (ship.s[k] or 0), { k = "ship", ship = ship.k,
+					name = ship.stops[nxt].n, p = shipSlice(ship.p, ship.stops[k], ship.stops[nxt]) })
+			end
 		end
 	end
 	if data.tram then

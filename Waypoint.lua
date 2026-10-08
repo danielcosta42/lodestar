@@ -96,7 +96,8 @@ function WP.LegText(route, i, secs)
 		if nxt and nxt.k == "flight" then
 			text = (nxt.discover and L.LEG_TO_NEW_FLIGHT or L.LEG_TO_FLIGHT):format(leg.name or "?")
 		elseif nxt and nxt.k == "ship" then
-			text = L.LEG_TO_DOCK:format(L["SHIP_" .. (nxt.ship or "boat")])
+			local ship = L["SHIP_" .. (nxt.ship or "boat")]
+			text = nxt.name and L.LEG_TO_DOCK_TO:format(ship, nxt.name) or L.LEG_TO_DOCK:format(ship)
 		elseif nxt and nxt.k == "tram" then
 			text = L.LEG_TO_TRAM
 		else
@@ -105,7 +106,8 @@ function WP.LegText(route, i, secs)
 	elseif leg.k == "flight" then
 		text = L.LEG_FLY:format(leg.name or "?")
 	elseif leg.k == "ship" then
-		text = L.LEG_SHIP:format(L["SHIP_" .. (leg.ship or "boat")])
+		local ship = L["SHIP_" .. (leg.ship or "boat")]
+		text = leg.name and L.LEG_SHIP_TO:format(ship, leg.name) or L.LEG_SHIP:format(ship)
 	elseif leg.k == "tram" then
 		text = L.LEG_TRAM
 	elseif leg.k == "hearth" then

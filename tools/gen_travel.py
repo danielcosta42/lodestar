@@ -164,8 +164,8 @@ def construir():
         ships.append({
             "k": "zeppelin" if zep else "boat",
             "w": round(ciclo / 2),
-            "stops": [{"c": int(r["ContinentID"]), "x": round(float(r["Loc_0"]), 1),
-                       "y": round(float(r["Loc_1"]), 1)} for _, r in paradas],
+            "stops": [cais(nodes, int(r["ContinentID"]), float(r["Loc_0"]), float(r["Loc_1"]), zep)
+                      for _, r in paradas],
             "s": legs,
             "p": [(round(x, 1), round(y, 1), c) for x, y, c in simplifica(pts)],
         })
@@ -198,6 +198,19 @@ def construir():
             "teleports": teleports, "services": services}
 
 
+def cais(nodes, c, x, y, zep):
+    """Parada de barco/zepelim: o nome do mestre de voo mais perto (até 1500 jd) e quem pode
+    usá-la — as facções dos mestres de voo a até 700 jd (Booty Bay e Ratchet: as duas). Sem
+    nenhum por perto, neutra; zepelim sem mestre por perto é da Horda (as torres são dela)."""
+    def d(v):
+        return math.hypot(v["x"] - x, v["y"] - y)
+    mesmos = [v for v in nodes.values() if v["c"] == c]
+    f = "".join(sorted(set("".join(v["f"] for v in mesmos if d(v) < 700)))) or ("H" if zep else "AH")
+    prox = min(mesmos, key=d, default=None)
+    n = prox["n"].split(",")[0] if prox and d(prox) < 1500 else None
+    return {"c": c, "x": round(x, 1), "y": round(y, 1), "f": f, "n": n}
+
+
 def lua_str(s):
     return '"%s"' % s.replace("\\", "\\\\").replace('"', '\\"')
 
@@ -224,7 +237,9 @@ def lua(d):
     for s in d["ships"]:
         L.append("\t\t{ k = %s, w = %d, s = { %s }, stops = { %s }, p = { %s } }," % (
             lua_str(s["k"]), s["w"], ", ".join(map(str, s["s"])),
-            ", ".join("{ c = %d, x = %s, y = %s }" % (p["c"], p["x"], p["y"]) for p in s["stops"]),
+            ", ".join("{ c = %d, x = %s, y = %s, f = %s%s }" % (
+                p["c"], p["x"], p["y"], lua_str(p["f"]), (", n = %s" % lua_str(p["n"])) if p["n"] else "")
+                for p in s["stops"]),
             ", ".join("%s, %s, %d" % p for p in s["p"])))
     t = d["tram"]
     L += ["\t},",
@@ -266,6 +281,19 @@ def demo(d):
     assert bb and bb[0]["k"] == "boat", "Booty Bay-Ratchet deveria ser barco"
     zep = [s for s in d["ships"] if perto("Orgrimmar", s) and perto("Undercity", s)]
     assert zep and zep[0]["k"] == "zeppelin", "Orgrimmar-Undercity deveria ser zepelim"
+
+    # cada parada diz o nome (o mestre de voo mais perto) e quem pode usá-la (as facções dos
+    # mestres de voo em volta; neutra se não há nenhum)
+    def parada(nome, s):
+        c, x, y = cais[nome]
+        return next(p for p in s["stops"] if p["c"] == c and (p["x"] - x) ** 2 + (p["y"] - y) ** 2 < 150 ** 2)
+    assert parada("Booty Bay", bb[0])["f"] == "AH", "Booty Bay é neutra"
+    assert parada("Ratchet", bb[0])["f"] == "AH", "Ratchet é neutra"
+    assert parada("Orgrimmar", zep[0])["f"] == "H", "a torre de Orgrimmar é da Horda"
+    assert parada("Booty Bay", bb[0])["n"] == "Booty Bay" and parada("Undercity", zep[0])["n"] == "Undercity"
+    theramore = [p for s in d["ships"] for p in s["stops"]
+                 if p["c"] == 1 and (p["x"] + 3825) ** 2 + (p["y"] + 4516) ** 2 < 700 ** 2]
+    assert theramore and all(p["f"] == "A" for p in theramore), "o cais de Theramore é da Aliança"
     for kind, lista in d["services"].items():
         assert lista, "serviço sem ninguém: %s" % kind
         assert all(s["zone"] and s["x"] is not None for s in lista), kind
