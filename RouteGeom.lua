@@ -47,6 +47,26 @@ function G.ToMinimap(px, py, wx, wy, facing, rotate, ydPerPx, radius)
 	return right, up, true
 end
 
+-- O pedaço do segmento (x0,y0)-(x1,y1) dentro do círculo de raio r no centro (o
+-- minimapa). nil se não cruza.
+function G.ClipCircle(x0, y0, x1, y1, r)
+	local dx, dy = x1 - x0, y1 - y0
+	local a = dx * dx + dy * dy
+	local b = 2 * (x0 * dx + y0 * dy)
+	local c = x0 * x0 + y0 * y0 - r * r
+	if a == 0 then
+		if c <= 0 then return x0, y0, x1, y1 end
+		return nil
+	end
+	local disc = b * b - 4 * a * c
+	if disc < 0 then return nil end
+	local sq = math.sqrt(disc)
+	local t0 = math.max(0, (-b - sq) / (2 * a))
+	local t1 = math.min(1, (-b + sq) / (2 * a))
+	if t0 > t1 then return nil end
+	return x0 + t0 * dx, y0 + t0 * dy, x0 + t1 * dx, y0 + t1 * dy
+end
+
 -- Posição horizontal na faixa da bússola (de -half a +half) do alvo (wx, wy), com o
 -- jogador olhando para `facing`; `fov` = abertura total da faixa. Fora dela: presa na
 -- borda e `clamped` = true.

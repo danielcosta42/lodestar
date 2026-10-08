@@ -75,7 +75,7 @@ WorldMapPin.lua
 GuideMap.lua
 RouteMap.lua
 FlightMap.lua
-Trail.lua
+RouteMinimap.lua
 Minimap.lua
 TargetMarker.lua
 Milestones.lua

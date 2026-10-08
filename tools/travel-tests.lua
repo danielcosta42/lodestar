@@ -262,4 +262,24 @@ pts = RM.LegPoints({ k = "ship", a = P(0, 0, -500), b = P(1, 0, 0), p = { 0, -50
 check(count(pts) == 2 and pts[3] == 0 and pts[6] == 1, "barco: o trajeto com o continente de cada ponto")
 check(#RM.LegPoints({ k = "hearth", a = P(0, 0, 0), b = P(1, 5, 5) }) == 0, "pedra de lar não desenha linha (é salto)")
 
+-- ── RouteGeom.ClipCircle: o pedaço do segmento dentro do minimapa ────────────
+local x0, y0, x1, y1 = G.ClipCircle(0, 0, 200, 0, 100)
+check(near(x0, 0) and near(x1, 100) and near(y1, 0), "segmento saindo do minimapa para na borda")
+x0, y0, x1, y1 = G.ClipCircle(-200, 50, 200, 50, 100)
+check(near(x0, -math.sqrt(100 ^ 2 - 50 ^ 2)) and near(x1, math.sqrt(100 ^ 2 - 50 ^ 2)), "segmento atravessando: só a corda dentro")
+check(G.ClipCircle(150, 150, 300, 300, 100) == nil, "segmento todo fora: nada")
+x0, y0, x1, y1 = G.ClipCircle(10, 10, 20, 20, 100)
+check(near(x0, 10) and near(x1, 20), "segmento todo dentro: inteiro")
+
+-- ── Waypoint.PickTarget sem rota: o destino ativo, com o tipo certo ──────────
+local objetivo = { verb = "talk", text = "Fale com X", goto_ = { zone = "Elwynn Forest", x = 1, y = 2 } }
+local wns = { L = L, On = function() end, Every = function() end, zoneUiMap = {},
+	Travel = { Route = function() return nil end },
+	Destinations = { Active = function() return { zone = "Elwynn Forest", x = 1, y = 2, goal = objetivo }, "guide" end } }
+local W2 = load("Waypoint.lua", wns).Waypoint
+check(W2:PickTarget() == objetivo, "sem rota, destino do guia: a seta usa o objetivo real do passo")
+wns.Destinations.Active = function() return { zone = "Westfall", x = 5, y = 6, label = "manual" }, "manual" end
+local g = W2:PickTarget()
+check(g and g._custom and g.goto_.zone == "Westfall", "sem rota, destino manual: alvo avulso marcado como manual")
+
 print(("ok: %d checks"):format(checks))

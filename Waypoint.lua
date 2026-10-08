@@ -113,7 +113,8 @@ function WP:PickTarget()
 		legGoal.goto_ = nil
 		return legGoal
 	end
-	local dest, kind = ns.Destinations and ns.Destinations:Active()
+	local dest, kind
+	if ns.Destinations then dest, kind = ns.Destinations:Active() end   -- `and` cortaria o kind
 	if not dest then return nil end
 	if kind == "guide" then return dest.goal end
 	return { verb = "goto_", text = dest.label, _custom = kind == "manual", _corpse = kind == "corpse",
