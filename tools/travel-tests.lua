@@ -126,6 +126,31 @@ r = J.Plan(P(ra.c, ra.x, ra.y), P(bb.c, bb.x, bb.y),
 	{ data = real, fac = "H", known = {}, speed = 7, teleports = {} })
 check(r and kinds(r):find("ship"), "real: Ratchet -> Booty Bay de barco (" .. (r and kinds(r) or "nil") .. ")")
 
+-- critérios de aceite da spec, com os dados de verdade
+local function at(prefix, dx) local _, v = node(prefix); return P(v.c, v.x + (dx or 0), v.y) end
+local function semNo(fac, id) local k = todos(fac); k[id] = nil; return k end
+local function real_ctx(fac, known, extra)
+	local c = { data = real, fac = fac, known = known, speed = 7, teleports = {} }
+	for k, v in pairs(extra or {}) do c[k] = v end
+	return c
+end
+r = J.Plan(P(0, -9460, 50), at("Ironforge", 30), real_ctx("A", todos("A")))          -- Goldshire
+check(r and (kinds(r):find("tram") or kinds(r):find("flight")), "aceite 1: Goldshire -> Ironforge de bonde ou voo (" .. (r and kinds(r) or "nil") .. ")")
+r = J.Plan(at("Auberdine", 30), at("Menethil", 30), real_ctx("A", todos("A")))
+check(r and kinds(r):find("ship"), "aceite 2: Auberdine -> Menethil de barco (" .. (r and kinds(r) or "nil") .. ")")
+r = J.Plan(at("Orgrimmar", 30), at("Undercity", 30), real_ctx("H", todos("H")))
+local zep
+for _, l in ipairs(r and r.legs or {}) do if l.ship == "zeppelin" then zep = true end end
+check(zep, "aceite 3: Orgrimmar -> Undercity de zepelim (" .. (r and kinds(r) or "nil") .. ")")
+local brill = P(0, at("Undercity").x + 600, at("Undercity").y - 100)
+r = J.Plan(at("Orgrimmar", 30), brill, real_ctx("H", todos("H"), { hearth = { c = 0, x = brill.x, y = brill.y, wait = 0 } }))
+check(r and r.legs[1].k == "hearth", "aceite 4: pedra pronta em Brill, vindo de longe: pedra (" .. (r and kinds(r) or "nil") .. ")")
+local shId = node("Sentinel Hill")
+r = J.Plan(at("Sentinel Hill", 40), at("Ironforge", 30), real_ctx("A", semNo("A", shId)))
+local disc
+for _, l in ipairs(r and r.legs or {}) do if l.discover == shId then disc = true end end
+check(disc, "aceite 5: voo não descoberto no caminho é usado e marcado (" .. (r and kinds(r) or "nil") .. ")")
+
 -- ── Travel: trocar de rota, avançar de perna, quanto falta ───────────────────
 local T = load("Travel.lua", { Journey = J }).Travel
 check(T.ShouldReplace(nil, { s = 100 }), "sem rota, qualquer rota entra")
