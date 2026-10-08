@@ -12,14 +12,12 @@ L.VERB_home="Ruhestein"; L.VERB_ding="Erreiche Stufe"; L.VERB_goto="Gehe zu"; L.
 
 L.NOW="JETZT"; L.NEXT="ALS NÄCHSTES"; L.STEP_OF="Schritt %d von %d"
 L.BACK="< Zurück"; L.SKIP="Überspringen >"; L.NO_GUIDE="Lodestar - kein Guide"
-L.NO_GUIDE_HINT="Nutze /ls menu"
 
 L.QUEST_ACCEPTED="Quest angenommen"; L.QUEST_DONE="Quest abgeschlossen"
 L.LEVEL_UP="Stufe %s!"; L.LEVEL_UP_SUB="Weiter so."; L.GUIDE_LOADED="Guide geladen"
 L.CHOOSE_GUIDE="Wähle einen Guide"; L.MENU_HINT="Nutze /ls menu zum Durchsuchen"
 L.QUEST_FALLBACK="Quest #%s"
 
-L.MENU_TITLE="Lodestar-Guides"; L.MENU_SEARCH="Zone, Dungeon, Einstimmung suchen..."
 L.CAT_Leveling="Leveln"; L.CAT_Class="Klasse"; L.CAT_Dungeons="Dungeons"
 L.CAT_Attunements="Einstimmungen"; L.CAT_Reputation="Ruf"; L.CAT_Dailies="Tägliche"; L.CAT_Events="Events"
 
@@ -28,9 +26,6 @@ L.YARDS="%d m"; L.DEST="Ziel"
 
 L.PROF_USAGE="Nutzung: /ls prof <Beruf> (z.B. mining, alchemy, fishing)"
 L.PROF_NOTFOUND="Beruf '%s' nicht gefunden."; L.PROF_NONE="kein %s-Lehrer für %s."
-L.MOUNT_30_T="Reittier verfügbar!"; L.MOUNT_30_S="Lerne Reiten (Lehrling) - 60% Tempo."
-L.MOUNT_60_T="Episches Reittier!"; L.MOUNT_60_S="Reiten (Geselle) - 100% Tempo."
-L.MOUNT_70_T="Fliegen verfügbar!"; L.MOUNT_70_S="Lerne Reiten (Experte) + ein Flugreittier."
 L.TRAIN_T="Trainiere deine Fähigkeiten"; L.TRAIN_S="Neue Zauber beim Lehrer - nutze /ls train."
 
 L.NOTE_FP="Hol den Flugpunkt bei %s."; L.NOTE_TRAVEL="Zone fertig! Reise nach %s."

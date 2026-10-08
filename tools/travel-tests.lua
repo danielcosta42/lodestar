@@ -386,6 +386,104 @@ do
 	check(#faltam == 0, "comandos sem entrada na interface: " .. table.concat(faltam, ", "))
 end
 
+-- ── Textos (#31) ─────────────────────────────────────────────────────────────
+do
+	-- arquivos do addon, pela ordem do TOC
+	local arquivos = {}
+	for linha in io.lines(ROOT .. "/Lodestar.toc") do
+		linha = linha:gsub("\r", ""):gsub("\\", "/")
+		if linha:match("%.lua$") and not linha:match("^#") then arquivos[#arquivos + 1] = linha end
+	end
+	local codigo, porArquivo = {}, {}
+	for _, f in ipairs(arquivos) do
+		local h = io.open(ROOT .. "/" .. f)
+		if h then
+			local t = h:read("*a"); h:close()
+			porArquivo[f] = t
+			if not f:match("^Locale") then codigo[#codigo + 1] = t end
+		end
+	end
+	codigo = table.concat(codigo, "\n")
+
+	-- texto ao jogador não fica fixo no código (o de depuração, sim)
+	local fixas = {}
+	local permitido = { "LODESTAR", "Lodestar", "···", "  /ls gather " }
+	for f, t in pairs(porArquivo) do
+		if not f:match("^Locale") and not f:match("^Libs/") then
+			local n, emDebug = 0, false
+			for linha in (t .. "\n"):gmatch("(.-)\n") do
+				n = n + 1
+				if linha:match("^function [%w%.:]*Debug%(") then emDebug = true
+				elseif linha:match("^end") then emDebug = false end
+				local lit = linha:match(':Printf?%("([^"]*)"') or linha:match('AddLine%("([^"]*)"')
+					or linha:match('SetText%("([^"]*)"')
+				-- cor e formato não são texto: o que sobra precisa ter palavra
+				lit = lit and lit:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):gsub("%%[sd]", "")
+				local livre = lit and lit:match("^FlightMap:")      -- diagnóstico do mapa de voo
+				for _, ok in ipairs(permitido) do if lit == ok then livre = true end end
+				if lit and lit:match("%a%a") and not livre and not emDebug
+					and not linha:match("dbg") and not linha:match("debug") then
+					fixas[#fixas + 1] = f .. ":" .. n .. " " .. lit
+				end
+			end
+		end
+	end
+	table.sort(fixas)
+	check(#fixas == 0, "texto fixo no código (vai para o ns.L): " .. table.concat(fixas, " | "))
+
+	-- toda chave do enUS é usada; nenhum idioma define chave que o enUS não tem
+	local function chaves(f)
+		local t = {}
+		for k in porArquivo[f]:gmatch("\nL%.([%w_]+)%s*=") do t[k] = true end
+		return t
+	end
+	local en = chaves("Locales/enUS.lua")
+	local tokens = {}
+	for _, xml in ipairs({ "Guides/Leveling/Leveling.xml", "Guides/Special.xml" }) do
+		local dir = xml:match("^(.*)/")
+		for rel in io.open(ROOT .. "/" .. xml):read("*a"):gmatch('file="([^"]+)"') do
+			local h = io.open(ROOT .. "/" .. dir .. "/" .. rel)
+			if h then
+				for tk in h:read("*a"):gmatch("{(%w+)}") do tokens[tk:upper()] = true end
+				h:close()
+			end
+		end
+	end
+	local nomes = {}                                 -- "x" e `x = true` no código
+	for w in codigo:gmatch('"([%w_ ]+)"') do nomes[w] = true end
+	for w in codigo:gmatch("([%w_]+)%s*=%s*true") do nomes[w] = true end
+	local DIN = { "SERVICE_", "SHIP_", "TRAVEL_KIND_", "VERB_", "CAT_", "PROF_", "COMPASS_", "CONS_" }
+	local function usada(k)
+		if codigo:find(k, 1, true) then return true end
+		local suf = k:match("^NOTE_(.+)$") or k:match("^TIP_(.+)$")
+		if suf and tokens[suf] then return true end
+		for _, pre in ipairs(DIN) do
+			if k:sub(1, #pre) == pre then
+				local s = k:sub(#pre + 1)
+				local titulo = s:lower():gsub("_", " "):gsub("(%a)(%w*)", function(a, b) return a:upper() .. b end)
+				if pre == "PROF_" or nomes[s] or nomes[s:lower()] or nomes[titulo] then return true end
+			end
+		end
+		return nomes[k] == true
+	end
+	local mortas = {}
+	for k in pairs(en) do if not usada(k) then mortas[#mortas + 1] = k end end
+	table.sort(mortas)
+	check(#mortas == 0, #mortas .. " chaves sem uso no enUS: " .. table.concat(mortas, " "))
+	local sobras = {}
+	for _, f in ipairs(arquivos) do
+		if f:match("^Locales/") and f ~= "Locales/enUS.lua" then
+			for k in pairs(chaves(f)) do if not en[k] then sobras[#sobras + 1] = f .. ":" .. k end end
+		end
+	end
+	table.sort(sobras)
+	check(#sobras == 0, "chave fora do enUS: " .. table.concat(sobras, " "))
+end
+-- nome da profissão com espaço ("First Aid") acha a chave PROF_FIRST_AID
+local Lpf = setmetatable({ PROF_FIRST_AID = "Primeiros Socorros" }, { __index = function(_, k) return "[" .. k .. "]" end })
+local TPf = load("TravelPanel.lua", { L = Lpf, On = function() end, Every = function() end, UI = {} }).TravelPanel
+check(TPf.ProfLabel("First Aid") == "Primeiros Socorros", "First Aid acha PROF_FIRST_AID (" .. TPf.ProfLabel("First Aid") .. ")")
+
 -- ── Revisão final ─────────────────────────────────────────────────────────────
 -- #1: com TomTom, o alvo de perna (sem goto_) derrubava o targetMapID
 local wns = load("Waypoint.lua", { L = L, On = function() end, Every = function() end, zoneUiMap = {}, zoneMap = {} })

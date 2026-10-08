@@ -17,7 +17,6 @@ L.QUEST_ACCEPTED="Задание взято"; L.QUEST_DONE="Задание вы�
 L.LEVEL_UP="Уровень %s!"; L.LEVEL_UP_SUB="Так держать."; L.GUIDE_LOADED="Гайд загружен"
 L.CHOOSE_GUIDE="Выберите гайд"; L.MENU_HINT="Введите /ls menu для просмотра"; L.QUEST_FALLBACK="Задание #%s"
 
-L.MENU_TITLE="Гайды Lodestar"; L.MENU_SEARCH="Поиск зоны, подземелья, допуска..."
 L.CAT_Leveling="Прокачка"; L.CAT_Class="Класс"; L.CAT_Dungeons="Подземелья"
 L.CAT_Attunements="Допуски"; L.CAT_Reputation="Репутация"; L.CAT_Dailies="Ежедневные"; L.CAT_Events="События"
 
@@ -26,9 +25,6 @@ L.YARDS="%d м"; L.DEST="Пункт назначения"
 
 L.PROF_USAGE="использование: /ls prof <профессия> (напр: mining, alchemy, fishing)"
 L.PROF_NOTFOUND="профессия '%s' не найдена."; L.PROF_NONE="нет учителя %s для %s."
-L.MOUNT_30_T="Транспорт доступен!"; L.MOUNT_30_S="Изучите Верховую езду (ученик) - 60% скорости."
-L.MOUNT_60_T="Эпический транспорт!"; L.MOUNT_60_S="Верховая езда (подмастерье) - 100% скорости."
-L.MOUNT_70_T="Полёты доступны!"; L.MOUNT_70_S="Изучите Верховую езду (эксперт) + летающий транспорт."
 L.TRAIN_T="Изучите новые умения"; L.TRAIN_S="Новые заклинания у учителя - /ls train."
 
 L.NOTE_FP="Откройте маршрут полёта у %s."; L.NOTE_TRAVEL="Зона завершена! Отправляйтесь в %s."

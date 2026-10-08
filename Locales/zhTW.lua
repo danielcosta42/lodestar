@@ -17,7 +17,6 @@ L.QUEST_ACCEPTED="已接受任務"; L.QUEST_DONE="任務完成"
 L.LEVEL_UP="%s 級！"; L.LEVEL_UP_SUB="繼續加油。"; L.GUIDE_LOADED="指南已載入"
 L.CHOOSE_GUIDE="選擇一個指南"; L.MENU_HINT="輸入 /ls menu 瀏覽"; L.QUEST_FALLBACK="任務 #%s"
 
-L.MENU_TITLE="Lodestar 指南"; L.MENU_SEARCH="搜尋地區、地城、入場資格..."
 L.CAT_Leveling="升級"; L.CAT_Class="職業"; L.CAT_Dungeons="地城"
 L.CAT_Attunements="入場資格"; L.CAT_Reputation="聲望"; L.CAT_Dailies="每日"; L.CAT_Events="節慶"
 
@@ -26,9 +25,6 @@ L.YARDS="%d 碼"; L.DEST="目的地"
 
 L.PROF_USAGE="用法：/ls prof <專業>（如 mining、alchemy、fishing）"
 L.PROF_NOTFOUND="找不到專業 '%s'。"; L.PROF_NONE="沒有 %s 訓練師（%s）。"
-L.MOUNT_30_T="可學習坐騎！"; L.MOUNT_30_S="學習騎術（學徒）- 60% 速度。"
-L.MOUNT_60_T="史詩坐騎！"; L.MOUNT_60_S="騎術（熟練）- 100% 速度。"
-L.MOUNT_70_T="可以飛行了！"; L.MOUNT_70_S="學習騎術（專家）+ 飛行坐騎。"
 L.TRAIN_T="訓練你的技能"; L.TRAIN_S="向訓練師學習新法術 - /ls train。"
 
 L.NOTE_FP="在 %s 處取得飛行點。"; L.NOTE_TRAVEL="地區完成！前往 %s。"

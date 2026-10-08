@@ -17,7 +17,6 @@ L.QUEST_ACCEPTED="Misión aceptada"; L.QUEST_DONE="Misión completada"
 L.LEVEL_UP="¡Nivel %s!"; L.LEVEL_UP_SUB="Sigue así."; L.GUIDE_LOADED="Guía cargada"
 L.CHOOSE_GUIDE="Elige una guía"; L.MENU_HINT="Usa /ls menu para explorar"; L.QUEST_FALLBACK="Misión #%s"
 
-L.MENU_TITLE="Guías de Lodestar"; L.MENU_SEARCH="Buscar zona, mazmorra, sintonización..."
 L.CAT_Leveling="Subir nivel"; L.CAT_Class="Clase"; L.CAT_Dungeons="Mazmorras"
 L.CAT_Attunements="Sintonizaciones"; L.CAT_Reputation="Reputación"; L.CAT_Dailies="Diarias"; L.CAT_Events="Eventos"
 
@@ -26,9 +25,6 @@ L.YARDS="%d m"; L.DEST="Destino"
 
 L.PROF_USAGE="uso: /ls prof <profesión> (ej: mining, alchemy, fishing)"
 L.PROF_NOTFOUND="profesión '%s' no encontrada."; L.PROF_NONE="sin entrenador de %s para %s."
-L.MOUNT_30_T="¡Montura disponible!"; L.MOUNT_30_S="Aprende Equitación (Aprendiz) - 60% de velocidad."
-L.MOUNT_60_T="¡Montura épica!"; L.MOUNT_60_S="Equitación (Oficial) - 100% de velocidad."
-L.MOUNT_70_T="¡Vuelo disponible!"; L.MOUNT_70_S="Aprende Equitación (Experto) + una montura voladora."
 L.TRAIN_T="Entrena tus habilidades"; L.TRAIN_S="Nuevos hechizos con tu entrenador - usa /ls train."
 
 L.NOTE_FP="Consigue la ruta de vuelo con %s."; L.NOTE_TRAVEL="¡Zona completada! Viaja a %s."

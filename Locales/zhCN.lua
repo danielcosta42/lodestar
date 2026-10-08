@@ -17,7 +17,6 @@ L.QUEST_ACCEPTED="已接受任务"; L.QUEST_DONE="任务完成"
 L.LEVEL_UP="%s 级！"; L.LEVEL_UP_SUB="继续加油。"; L.GUIDE_LOADED="向导已加载"
 L.CHOOSE_GUIDE="选择一个向导"; L.MENU_HINT="输入 /ls menu 浏览"; L.QUEST_FALLBACK="任务 #%s"
 
-L.MENU_TITLE="Lodestar 向导"; L.MENU_SEARCH="搜索地区、地下城、入场资格..."
 L.CAT_Leveling="升级"; L.CAT_Class="职业"; L.CAT_Dungeons="地下城"
 L.CAT_Attunements="入场资格"; L.CAT_Reputation="声望"; L.CAT_Dailies="每日"; L.CAT_Events="节日"
 
@@ -26,9 +25,6 @@ L.YARDS="%d 码"; L.DEST="目的地"
 
 L.PROF_USAGE="用法：/ls prof <专业>（如 mining、alchemy、fishing）"
 L.PROF_NOTFOUND="未找到专业 '%s'。"; L.PROF_NONE="没有 %s 训练师（%s）。"
-L.MOUNT_30_T="可学习坐骑！"; L.MOUNT_30_S="学习骑术（学徒）- 60% 速度。"
-L.MOUNT_60_T="史诗坐骑！"; L.MOUNT_60_S="骑术（熟练）- 100% 速度。"
-L.MOUNT_70_T="可以飞行了！"; L.MOUNT_70_S="学习骑术（专家）+ 飞行坐骑。"
 L.TRAIN_T="训练你的技能"; L.TRAIN_S="在训练师处学习新法术 - /ls train。"
 
 L.NOTE_FP="在 %s 处获取飞行点。"; L.NOTE_TRAVEL="地区完成！前往 %s。"

@@ -17,7 +17,6 @@ L.QUEST_ACCEPTED="Missione accettata"; L.QUEST_DONE="Missione completata"
 L.LEVEL_UP="Livello %s!"; L.LEVEL_UP_SUB="Continua così."; L.GUIDE_LOADED="Guida caricata"
 L.CHOOSE_GUIDE="Scegli una guida"; L.MENU_HINT="Usa /ls menu per sfogliare"; L.QUEST_FALLBACK="Missione #%s"
 
-L.MENU_TITLE="Guide di Lodestar"; L.MENU_SEARCH="Cerca zona, spedizione, sintonia..."
 L.CAT_Leveling="Livellamento"; L.CAT_Class="Classe"; L.CAT_Dungeons="Spedizioni"
 L.CAT_Attunements="Sintonie"; L.CAT_Reputation="Reputazione"; L.CAT_Dailies="Giornaliere"; L.CAT_Events="Eventi"
 
@@ -26,9 +25,6 @@ L.YARDS="%d m"; L.DEST="Destinazione"
 
 L.PROF_USAGE="uso: /ls prof <professione> (es: mining, alchemy, fishing)"
 L.PROF_NOTFOUND="professione '%s' non trovata."; L.PROF_NONE="nessun addestratore %s per %s."
-L.MOUNT_30_T="Cavalcatura disponibile!"; L.MOUNT_30_S="Impara Cavalcare (Apprendista) - 60% di velocità."
-L.MOUNT_60_T="Cavalcatura epica!"; L.MOUNT_60_S="Cavalcare (Esperto) - 100% di velocità."
-L.MOUNT_70_T="Volo disponibile!"; L.MOUNT_70_S="Impara Cavalcare (Perito) + una cavalcatura volante."
 L.TRAIN_T="Addestra le tue abilità"; L.TRAIN_S="Nuove magie dall'addestratore - usa /ls train."
 
 L.NOTE_FP="Prendi la via del volo da %s."; L.NOTE_TRAVEL="Zona completata! Viaggia verso %s."

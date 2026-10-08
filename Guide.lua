@@ -486,7 +486,7 @@ function ns:AdvanceStep(delta)
 		-- fim do guia: encadeia para o próximo, se houver
 		local nxt = self:NextGuideKey(guide)
 		if nxt then
-			self:Print("guia concluído, carregando o próximo...")
+			self:Print(ns.L.GUIDE_CHAINING)
 			return self:ChainGuide(guide.key, nxt)
 		end
 		idx = #guide.steps
