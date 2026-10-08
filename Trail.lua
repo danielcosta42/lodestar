@@ -1,7 +1,6 @@
 --=============================================================================
--- Trail — "caminho de formiga" contínuo até o objetivo (linha suave + brilho).
---   * minimapa: linha do centro na direção do alvo;
---   * mapa-múndi: linha do player até o alvo (coords exatas).
+-- Trail — "caminho de formiga" no minimapa: linha do centro na direção do alvo.
+-- (A rota no mapa-múndi é do RouteMap.)
 -- WoW Classic não permite desenhar no mundo 3D (sem matriz de câmera exposta).
 --=============================================================================
 local ADDON, ns = ...
@@ -126,47 +125,6 @@ local function updateMinimap()
 end
 
 --------------------------------------------------------------------------------
--- trilha no mapa-múndi (linha exata player -> alvo)
---------------------------------------------------------------------------------
-local wmFrame, wmGlow, wmCore
-local function hideWM()
-	if wmCore then wmGlow:Hide(); wmCore:Hide() end
-end
-
-local function updateWorld()
-	local WMF = WorldMapFrame
-	if not (ns.db and ns.db.trail and ns:UIShown()
-		and WMF and WMF.GetCanvas and WMF:IsShown()) then return hideWM() end
-	local WP = ns.Waypoint
-	if not WP then return hideWM() end
-	-- em qualquer mapa aberto (o da zona, o de outra zona, o do continente): alvo e
-	-- jogador projetados nele, a linha recortada na borda
-	local goal = WP:DrawContext()
-	local shown = WMF.GetMapID and WMF:GetMapID()
-	if not (goal and goal.goto_ and goal.goto_.zone and shown) then return hideWM() end
-	local gx, gy = WP:MapPos(goal.goto_.zone, goal.goto_.x, goal.goto_.y, shown)
-	local px, py = WP:PlayerMapPos(shown)
-	if not (gx and px) then return hideWM() end
-	px, py, gx, gy = WP.ClipSegment(px, py, gx, gy)
-	if not px then return hideWM() end
-	local ok, canvas = pcall(WMF.GetCanvas, WMF)
-	if not ok or not canvas then return end
-	if not wmFrame then
-		wmFrame = CreateFrame("Frame", "LodestarWMTrail", canvas)
-		wmGlow = line(wmFrame, 16, 0.16)
-		wmCore = line(wmFrame, 4, 0.6)
-		wmFrame:SetScript("OnUpdate", pulse)
-	end
-	wmFrame:SetParent(canvas); wmFrame:SetAllPoints(canvas)
-	local w, h = canvas:GetSize()
-	for _, l in ipairs({ wmGlow, wmCore }) do
-		l:SetStartPoint("TOPLEFT", canvas, px * w, -py * h)
-		l:SetEndPoint("TOPLEFT", canvas, gx * w, -gy * h)
-		l:Show()
-	end
-end
-
---------------------------------------------------------------------------------
 -- diagnóstico ( /ls tdebug )
 --------------------------------------------------------------------------------
 ns.Trail = {}
@@ -203,11 +161,10 @@ function ns.Trail.Debug()
 		local px, py = ns.Waypoint:PlayerMapPos(shown)
 		ns:Print("no mapa aberto — alvo:", tostring(gx), tostring(gy), "| jogador:", tostring(px), tostring(py))
 	end
-	ns:Print("linha:", wmCore and tostring(wmCore:IsShown()), "| pino:",
+	ns:Print("rota no mapa:", LodestarRouteMap and tostring(LodestarRouteMap:IsShown()), "| pino:",
 		LodestarMapPin and tostring(LodestarMapPin:IsShown()), "| seta:",
 		LodestarArrow and tostring(LodestarArrow:IsShown()), "| guideMap:", tostring(ns.db.guideMap))
 end
 
 --------------------------------------------------------------------------------
 ns:Every(0.1, updateMinimap)
-ns:Every(0.25, updateWorld)

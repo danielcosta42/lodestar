@@ -33,6 +33,8 @@ local function update()
 		return
 	end
 	if not ns:UIShown() then if pin then pin:Hide() end return end
+	-- com rota, o destino e as paradas são do RouteMap
+	if ns.Travel and ns.Travel:Route() then if pin then pin:Hide() end return end
 	local goal = ns.Waypoint and ns.Waypoint:PickTarget()
 	if not goal or not goal.goto_ then
 		if pin then pin:Hide() end

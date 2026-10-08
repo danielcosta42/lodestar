@@ -73,6 +73,7 @@ QuestItem.lua
 Toast.lua
 WorldMapPin.lua
 GuideMap.lua
+RouteMap.lua
 FlightMap.lua
 Trail.lua
 Minimap.lua
