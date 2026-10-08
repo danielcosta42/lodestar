@@ -424,4 +424,11 @@ check(#merged == 2, "o visto que já está no banco não duplica")
 merged = S.WithSeen(nil, seen); merged[1].w = false
 check(seen[246349].w == nil, "o cálculo da rota não grava nada no treinador salvo (SavedVariables)")
 
+-- #17: o paladino da Horda (Forever) tem treinador no banco — título vindo do cache do cliente
+local TR = load(os.getenv("TRAINERS") or "Trainers.lua", {})
+local pal = TR.classTrainers.PALADIN and TR.classTrainers.PALADIN.Horde or {}
+local temShari
+for _, t in ipairs(pal) do if t.n == "Shari Stilwell" and t.zone == "Tirisfal Glades" then temShari = true end end
+check(temShari, "Paladino da Horda: Shari Stilwell (Brill) está no banco de treinadores")
+
 print(("ok: %d checks"):format(checks))

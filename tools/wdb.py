@@ -171,6 +171,33 @@ def parse_npc(p):
     return p[NPC_NOME:NPC_NOME + max(0, n - 1)].decode("utf-8", "replace")
 
 
+def titulo_npc(p):
+    """Título da criatura ("Paladin Trainer"): a última string do registro; None se não há."""
+    if len(p) < 3 or not p.endswith(b"\0") or p[-2] == 0:
+        return None
+    t = p[p.rfind(b"\0", 0, len(p) - 1) + 1:-1]
+    return t.decode("utf-8", "replace") if len(t) >= 3 and min(t) >= 32 else None
+
+
+def titulos(pasta):
+    """{id: título} das criaturas em todos os creaturecache.wdb da pasta (e das subpastas de
+    locale). Vazio se a pasta não existe."""
+    out = {}
+    if not os.path.isdir(pasta):
+        return out
+    alvos = [pasta] + [os.path.join(pasta, s) for s in sorted(os.listdir(pasta))
+                       if os.path.isdir(os.path.join(pasta, s))]
+    for d in alvos:
+        f = os.path.join(d, "creaturecache.wdb")
+        if os.path.exists(f):
+            with open(f, "rb") as fh:
+                for ident, p in registros(fh.read()):
+                    t = titulo_npc(p)
+                    if t:
+                        out.setdefault(ident, t)
+    return out
+
+
 def parse_objeto(p):
     return p[OBJ_NOME:p.find(b"\0", OBJ_NOME)].decode("utf-8", "replace")
 

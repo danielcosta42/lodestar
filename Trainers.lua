@@ -104,6 +104,10 @@ ns.classTrainers = {
 			{ n="Brother Sammuel", id=925, zone="Elwynn Forest", x=50.43, y=42.12 },
 			{ n="Brother Wilhelm", id=927, zone="Elwynn Forest", x=41.1, y=66.04 },
 		},
+		["Horde"] = {
+			{ n="Shari Stilwell", id=246152, zone="Tirisfal Glades", x=60.25, y=52.63 },
+			{ n="Hilda the Breaker", id=246389, zone="Tirisfal Glades", x=21.92, y=47.19 },
+		},
 	},
 	["PRIEST"] = {
 		["Alliance"] = {
@@ -268,6 +272,7 @@ ns.profTrainers = {
 			{ n="Zamja", id=3399, zone="Orgrimmar", x=57.4, y=53.96 },
 			{ n="Aska Mistrunner", id=3026, zone="Thunder Bluff", x=50.72, y=53.11 },
 			{ n="Eunice Burch", id=4552, zone="Undercity", x=62.14, y=44.91 },
+			{ n="William Pickman", id=265944, zone="Tirisfal Glades", x=61.77, y=51.51 },
 		},
 	},
 	["First Aid"] = {
@@ -315,6 +320,7 @@ ns.profTrainers = {
 			{ n="Jandi", id=3404, zone="Orgrimmar", x=55.62, y=39.46 },
 			{ n="Komin Winterhoof", id=3013, zone="Thunder Bluff", x=49.95, y=40.41 },
 			{ n="Martha Alliestar", id=4614, zone="Undercity", x=54, y=49.55 },
+			{ n="Zor'la", id=267329, zone="Durotar", x=42.68, y=67.36 },
 			{ n="Ruw", id=8146, zone="Feralas", x=75.98, y=43.33 },
 		},
 	},
@@ -332,6 +338,7 @@ ns.profTrainers = {
 			{ n="Makaru", id=3357, zone="Orgrimmar", x=73.12, y=26.08 },
 			{ n="Brek Stonehoof", id=3001, zone="Thunder Bluff", x=34.37, y=57.9 },
 			{ n="Brom Killian", id=4598, zone="Undercity", x=56.03, y=37.45 },
+			{ n="Norzsh", id=267328, zone="Durotar", x=40.58, y=68.13 },
 		},
 	},
 	["Skinning"] = {
@@ -346,6 +353,7 @@ ns.profTrainers = {
 			{ n="Mooranta", id=7089, zone="Thunder Bluff", x=44.44, y=43.15 },
 			{ n="Killian Hagey", id=7087, zone="Undercity", x=70.16, y=59.18 },
 			{ n="Malux", id=12030, zone="Desolace", x=23.24, y=69.72 },
+			{ n="Kagil", id=267327, zone="Durotar", x=40.78, y=67.91 },
 			{ n="Kulleg Stonehorn", id=8144, zone="Feralas", x=74.47, y=43.04 },
 		},
 	},

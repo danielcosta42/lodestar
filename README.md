@@ -93,6 +93,9 @@ what it always was: a file you hand over on purpose.
   flavor) by the Questie team, plus what `/ls scan` collects in-game for content no database has yet.
 - Flight paths, boats and zeppelins come from the game client's own tables (TaxiNodes, TaxiPath,
   TaxiPathNode, via [wago.tools](https://wago.tools)); `tools/gen_travel.py` regenerates them.
+- Trainers the database leaves untitled (Forever's Horde paladin trainers, the junior profession
+  instructors) are recognised by the title the game client caches (`Cache/WDB`); `tools/gen_trainers.py`
+  reads it.
 - No data is scraped from any site: Wowhead's terms allow browsers only, and we intend this data
   to be reusable by anyone.
 - Code: **MIT**. Bug reports and pull requests welcome on [GitHub](https://github.com/danielcosta42/lodestar).
