@@ -5,6 +5,7 @@
 
 # Guide generator + validator + the large Questie data dumps (dev only).
 # Exceções: o gerador e o teste do port para o Forever — quem revisa precisa rodar.
+# Desde que a biblioteca inteira sai do banco do Forever, isso inclui o roteador.
 tools/*
 !tools/gen_forever.py
 !tools/wdb.py
@@ -12,6 +13,18 @@ tools/*
 !tools/import_forever.py
 !tools/forever-guides.lua
 !tools/forever-scan.lua
+!tools/questiedb.py
+!tools/build_intermediate.py
+!tools/parse_lua.py
+!tools/router.py
+!tools/generate_all.py
+!tools/gen_special.py
+!tools/gen_prereq.py
+!tools/gen_zonedata.py
+!tools/gen_trainers.py
+!tools/gen_subzones.py
+!tools/validate_guides.py
+!tools/guide_integrity.py
 
 # Internal documentation (not shipped) — specs, plans, design notes stay LOCAL
 DSL.md
