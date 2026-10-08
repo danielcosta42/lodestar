@@ -38,12 +38,36 @@ local function opponent()
 end
 RT.Opponent = opponent
 
+-- o /played que o addon pede não vai para o chat: as janelas de chat deixam de ouvir
+-- a resposta até ela chegar (10 s no máximo)
+local muted
+local function unmute()
+	if not muted then return end
+	for _, f in ipairs(muted) do f:RegisterEvent("TIME_PLAYED_MSG") end
+	muted = nil
+end
+local function requestPlayed()
+	if not RequestTimePlayed then return end
+	if not muted then
+		muted = {}
+		for i = 1, NUM_CHAT_WINDOWS or 10 do
+			local f = _G["ChatFrame" .. i]
+			if f and f:IsEventRegistered("TIME_PLAYED_MSG") then
+				f:UnregisterEvent("TIME_PLAYED_MSG"); muted[#muted + 1] = f
+			end
+		end
+		C_Timer.After(10, unmute)
+	end
+	RequestTimePlayed()
+end
+
 ns:On("PLAYER_LEVEL_UP", function(_, level)
 	pendingLevel = tonumber(level) or UnitLevel("player")
-	if RequestTimePlayed then RequestTimePlayed() end
+	requestPlayed()
 end)
 
 ns:On("TIME_PLAYED_MSG", function(_, total)
+	C_Timer.After(0, unmute)                          -- depois que esta resposta passou
 	if not total then return end
 	lastPlayed, lastAt = total, GetTime()
 	if pendingLevel then
@@ -59,7 +83,7 @@ ns:On("QUEST_TURNED_IN", function() run().quests = (run().quests or 0) + 1 end)
 
 -- sincroniza o /played uma vez ao entrar (p/ o "ao vivo" ficar preciso na sessão)
 ns:On("PLAYER_ENTERING_WORLD", function()
-	if not lastPlayed and RequestTimePlayed then RequestTimePlayed() end
+	if not lastPlayed then requestPlayed() end
 end)
 
 -- atualiza o ghost da classe se esta run foi mais longe / mais rápida no topo

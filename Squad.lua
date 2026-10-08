@@ -16,7 +16,7 @@ local lastSent, lastAt = nil, 0
 
 local function mesh() return _G.ChehulMesh end
 local function now() return (GetTime and GetTime()) or 0 end
-local function me() return (UnitName and UnitName("player")) or "?" end
+local function me() return ns.PlayerName() end
 
 -- payload do player (nil se não há guia ativo — aí não anunciamos progresso)
 local function myPayload()

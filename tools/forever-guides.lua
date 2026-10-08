@@ -385,6 +385,16 @@ check(fe.NpcID("SECRETO") == nil, "GUID secreto não é fatiado")
 check(fe.NpcID("Player-4467-0000ABCD") == nil, "GUID de jogador não vira NPC")
 check(fe.IsSecret("SECRETO") and not fe.IsSecret("x"), "IsSecret responde pelo cliente")
 
+-- Forever: o remetente das mensagens vem "Nome Sobrenome"; o próprio nome tem que bater
+local UN = UnitName
+C_PlayerInfo = { ShouldDisplaySurname = function() return true end }
+UnitFullName = function() return "Ana", "Silva" end
+UnitName = function() return "Ana" end
+check(fe.PlayerName() == "Ana Silva", "nome do jogador inclui o sobrenome no Forever")
+C_PlayerInfo.ShouldDisplaySurname = function() return false end
+check(fe.PlayerName() == "Ana", "sem sobrenome, só o nome")
+C_PlayerInfo, UnitFullName, UnitName = nil, nil, UN
+
 -- O pré-teste oficial de identidade restrita mora na LibChehulQuest, que carrega a
 -- cópia dela (não pode depender do ns): quem cobre é tools/forever-scan.lua.
 issecretvalue = nil

@@ -146,9 +146,14 @@ function RC:Show(L)
 	card:Show()
 end
 
--- chamado pelo RunTracker a cada ding (com o /played sincronizado)
+-- chamado pelo RunTracker a cada ding (com o /played sincronizado). Em combate,
+-- o cartão espera: no meio da tela, tapava a luta.
+local pendingL
 function RC:OnLevel(L, total)
 	if ns.RunTracker.MILESTONES[L] and ns.db and ns.db.reportCard ~= false then
-		self:Show(L)
+		if InCombatLockdown() then pendingL = L else self:Show(L) end
 	end
 end
+ns:On("PLAYER_REGEN_ENABLED", function()
+	if pendingL then local L = pendingL; pendingL = nil; RC:Show(L) end
+end)

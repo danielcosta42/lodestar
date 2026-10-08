@@ -61,8 +61,13 @@ local function sliderRow(page, title, desc, minV, maxV, step, get, set, fmt)
 	end)
 	sl:SetPoint("TOPLEFT", 22, -page._y - 24)
 	sl:SetPoint("RIGHT", page, "RIGHT", -22, 0)
-	sl:SetValue(get())
-	val:SetText((fmt or "%d"):format(get()))
+	local function sync()
+		local v = get()
+		if sl:GetValue() ~= v then sl:SetValue(v) end
+		val:SetText((fmt or "%d"):format(v))
+	end
+	sync()
+	sl:HookScript("OnShow", sync)                  -- valor atual, não o de quando a página nasceu
 	page._y = page._y + 48
 end
 
