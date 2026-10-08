@@ -256,6 +256,9 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Coords then ns.Coords.Update() end
 	elseif cmd == "card" then
 		if ns.ReportCard then ns.ReportCard:Show(UnitLevel("player") or 1) end
+	elseif cmd == "way" and (rest == "off" or rest == "clear") then
+		if ns.Waypoint then ns.Waypoint:ClearCustom() end
+		ns:Print(ns.L.DEST_CLEARED)
 	elseif cmd == "way" then
 		local x, y, zone = rest:match("^([%d%.]+)[%s,]+([%d%.]+)%s*(.*)$")
 		x, y = tonumber(x), tonumber(y)
@@ -280,8 +283,20 @@ SlashCmdList.LODESTAR = function(msg)
 		if rest == "off" then
 			if ns.Waypoint then ns.Waypoint:ClearCustom() end
 			ns:Print(ns.L.TRAIN_CANCEL)
-		elseif ns.Milestones then
-			ns.Milestones:GotoTrainer()
+		elseif ns.Services then
+			ns.Services:GoTo("classtrainer")
+		end
+	elseif cmd == "near" then
+		local word, arg = rest:match("^(%S*)%s*(.*)$")
+		local kind = ns.Services and ns.Services.KindFromText(word)
+		if kind == "proftrainer" then               -- "near prof mining"
+			if ns.Milestones then ns.Milestones:GotoProfTrainer(arg) end
+		elseif kind then
+			ns.Services:GoTo(kind)
+		elseif rest ~= "" and ns.Milestones then   -- só o nome: "near mining"
+			ns.Milestones:GotoProfTrainer(rest)
+		else
+			ns:Print(ns.L.NEAR_USAGE)
 		end
 	elseif cmd == "prof" then
 		if ns.Milestones then ns.Milestones:GotoProfTrainer(rest) end

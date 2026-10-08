@@ -43,6 +43,33 @@ function S.Pick(cands, planFn)
 	return best, bestS
 end
 
+-- /ls near <texto>: palavra (pt ou en) -> tipo; a exata vence, senão o começo (3+ letras)
+local ALIAS = {
+	classtrainer = { "treinador", "trainer", "train", "classe", "class" },
+	proftrainer = { "profissão", "profissao", "prof", "profession" },
+	repair = { "reparo", "reparar", "conserto", "repair" },
+	vendor = { "vendedor", "comerciante", "loja", "vendor" },
+	inn = { "estalagem", "estalajadeiro", "taverna", "inn", "innkeeper" },
+	bank = { "banco", "banqueiro", "bank" },
+	auction = { "leilão", "leilao", "auction", "ah" },
+	flight = { "voo", "vôo", "grifo", "flight", "fly", "taxi" },
+	stable = { "estábulo", "estabulo", "stable" },
+}
+function S.KindFromText(text)
+	text = (text or ""):lower():match("^%s*(.-)%s*$")
+	if text == "" then return nil end
+	for _, kind in ipairs(S.KINDS) do
+		if text == kind then return kind end
+		for _, a in ipairs(ALIAS[kind]) do if text == a then return kind end end
+	end
+	if #text < 3 then return nil end
+	for _, kind in ipairs(S.KINDS) do
+		for _, a in ipairs(ALIAS[kind]) do
+			if a:sub(1, #text) == text then return kind end
+		end
+	end
+end
+
 --------------------------------------------------------------------------------
 -- o jogo
 --------------------------------------------------------------------------------
@@ -83,10 +110,12 @@ function S:GoTo(kind, sub)
 	if not best then
 		return ns:Print(ns.L.SERVICE_NONE)
 	end
+	local title = sub or ns.L["SERVICE_" .. kind:upper()] or kind
 	ns.Destinations:Set("manual", { zone = best.zone, x = best.x, y = best.y,
-		label = ("%s — %s"):format(ns.L["SERVICE_" .. kind:upper()] or kind, best.n), service = kind })
+		label = ("%s — %s"):format(title, best.n), service = kind })
+	if ns.Waypoint then ns.Waypoint:Update() end
 	if ns.Toast then
-		ns.Toast:Show({ title = ns.L["SERVICE_" .. kind:upper()] or kind,
+		ns.Toast:Show({ title = title,
 			text = ("%s — %s"):format(best.n, best.zone), color = ns.UI.COL.tip, hold = 5 })
 	end
 end

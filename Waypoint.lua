@@ -30,8 +30,8 @@ ns:On("PLAYER_ENTERING_WORLD", rememberZone)
 --------------------------------------------------------------------------------
 -- Destino avulso (treinador, ponto arbitrário): é o destino manual do Destinations,
 -- que passa na frente do passo do guia.
-function WP:SetCustom(zone, x, y, label)
-	ns.Destinations:Set("manual", { zone = zone, x = tonumber(x), y = tonumber(y), label = label or ns.L.DEST })
+function WP:SetCustom(zone, x, y, label, map)
+	ns.Destinations:Set("manual", { zone = zone, map = map, x = tonumber(x), y = tonumber(y), label = label or ns.L.DEST })
 	self:Update()
 	if ns.Viewer then ns.Viewer:Refresh() end
 end
@@ -39,6 +39,18 @@ end
 function WP:ClearCustom()
 	ns.Destinations:Clear("manual")
 	self:Update()
+end
+
+-- Shift+clique (mapa ou minimapa) em (uiMapID, x, y 0-100): em cima do destino manual
+-- atual (`near`), limpa; senão, novo destino ali.
+function WP:ClickDest(map, x, y, near)
+	if near then
+		self:ClearCustom()
+		return ns:Print(ns.L.DEST_CLEARED)
+	end
+	self:SetCustom(nil, x, y, ns.L.WAYPOINT, map)
+	local info = C_Map.GetMapInfo(map)
+	ns:Printf("%s: %s %.1f, %.1f", ns.L.WAYPOINT, info and info.name or "?", x, y)
 end
 
 -- há destino que não é o guia (manual ou corpo): a seta aparece mesmo com o guia fechado

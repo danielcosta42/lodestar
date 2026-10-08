@@ -295,4 +295,16 @@ check(marca(cards, "N") > 0 and marca(cards, "W") < 0, "olhando para noroeste: N
 cards = CP.Cardinals(math.pi / 2, math.rad(140), 100)
 check(near(marca(cards, "W"), 0), "olhando para oeste: W no meio")
 
+-- ── Destino manual pelo minimapa e tipo de serviço por texto ─────────────────
+for _, caso in ipairs({ { 0, false }, { math.rad(73), true }, { math.rad(250), true } }) do
+	local facing, rotate = caso[1], caso[2]
+	local rx, ry = G.ToMinimap(100, 200, 160, 150, facing, rotate, 1.5, math.huge)
+	local wx, wy = G.FromMinimap(100, 200, rx, ry, facing, rotate, 1.5)
+	check(near(wx, 160) and near(wy, 150), "clique no minimapa volta ao mesmo ponto de mundo (giro " .. math.deg(facing) .. "°)")
+end
+check(S.KindFromText("reparo") == "repair" and S.KindFromText("repair") == "repair", "reparo/repair")
+check(S.KindFromText("Estalagem") == "inn" and S.KindFromText("voo") == "flight", "estalagem, voo (sem caixa)")
+check(S.KindFromText("treinador") == "classtrainer", "treinador = da classe")
+check(S.KindFromText("banana") == nil, "texto desconhecido: nada")
+
 print(("ok: %d checks"):format(checks))

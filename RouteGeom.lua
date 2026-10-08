@@ -47,6 +47,17 @@ function G.ToMinimap(px, py, wx, wy, facing, rotate, ydPerPx, radius)
 	return right, up, true
 end
 
+-- O inverso: pixels (direita, cima) do minimapa -> ponto de mundo (Shift+clique).
+function G.FromMinimap(px, py, right, up, facing, rotate, ydPerPx)
+	right, up = right * ydPerPx, up * ydPerPx
+	local east, north = right, up
+	if rotate then
+		local c, s = math.cos(facing), math.sin(facing)
+		east, north = right * c - up * s, right * s + up * c
+	end
+	return px + north, py - east
+end
+
 -- O pedaço do segmento (x0,y0)-(x1,y1) dentro do círculo de raio r no centro (o
 -- minimapa). nil se não cruza.
 function G.ClipCircle(x0, y0, x1, y1, r)

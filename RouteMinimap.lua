@@ -102,6 +102,49 @@ ns:Every(0.1, function()
 	if not ok then ns:Debug("RouteMinimap:", err); hideAll() end
 end)
 
+-- Shift+clique no minimapa: destino manual ali (cursor -> jardas -> mundo); em cima do
+-- atual, limpa. Sem Shift, o clique segue para o original (ping).
+local function shiftClick()
+	local p = ns.Travel.PlayerWorld()
+	local map = C_Map.GetBestMapForUnit("player")
+	if not (p and map) then return false end
+	local s = Minimap:GetEffectiveScale()
+	local x, y = GetCursorPosition()
+	local cx, cy = Minimap:GetCenter()
+	local right, up = x / s - cx, y / s - cy
+	local facing = GetPlayerFacing and GetPlayerFacing() or 0
+	local rotate = GetCVar and GetCVar("rotateMinimap") == "1"
+	local ydPerPx = minimapRange() / (Minimap:GetWidth() / 2)
+	local cur = ns.Destinations:Get("manual")
+	local w = cur and ns.Travel.World(cur.zone, cur.x, cur.y, cur.map)
+	if w and w.c == p.c then
+		local rx, ry = G.ToMinimap(p.x, p.y, w.x, w.y, facing, rotate, ydPerPx, math.huge)
+		if (rx - right) ^ 2 + (ry - up) ^ 2 < 100 then
+			ns.Waypoint:ClickDest(map, 0, 0, true)
+			return true
+		end
+	end
+	local wx, wy = G.FromMinimap(p.x, p.y, right, up, facing, rotate, ydPerPx)
+	local _, pos = C_Map.GetMapPosFromWorldPos(p.c, CreateVector2D(wx, wy), map)
+	if not pos then return false end
+	ns.Waypoint:ClickDest(map, pos.x * 100, pos.y * 100, false)
+	return true
+end
+
+-- no login, para embrulhar o que outro addon de minimapa já tenha posto
+ns:On("PLAYER_LOGIN", function()
+	if not Minimap then return end
+	local orig = Minimap:GetScript("OnMouseUp")
+	Minimap:SetScript("OnMouseUp", function(self, button, ...)
+		if button == "LeftButton" and IsShiftKeyDown and IsShiftKeyDown() then
+			local ok, done = pcall(shiftClick)
+			if not ok then ns:Debug("RouteMinimap click:", done) end
+			if ok and done then return end
+		end
+		if orig then return orig(self, button, ...) end
+	end)
+end)
+
 --------------------------------------------------------------------------------
 -- diagnóstico ( /ls tdebug )
 --------------------------------------------------------------------------------

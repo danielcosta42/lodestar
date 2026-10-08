@@ -129,8 +129,31 @@ local function update()
 end
 
 RM.Update = update
+
+-- Shift+clique no mapa: destino manual ali; em cima do atual, limpa
+local function onCanvasClick(map, button)
+	if button ~= "LeftButton" or not (IsShiftKeyDown and IsShiftKeyDown()) then return false end
+	local ok, done = pcall(function()
+		local shown = map:GetMapID()
+		local cx, cy = map:GetNormalizedCursorPosition()
+		-- mapa-múndi/cósmico não tem chão: deixa o clique seguir
+		if not (shown and cx and ns.Travel.World(nil, cx * 100, cy * 100, shown)) then return false end
+		local cur = ns.Destinations:Get("manual")
+		local mx, my = WP:WorldMapPos(cur and ns.Travel.World(cur.zone, cur.x, cur.y, cur.map), shown)
+		WP:ClickDest(shown, cx * 100, cy * 100, mx and math.abs(mx - cx) < 0.015 and math.abs(my - cy) < 0.015)
+		return true
+	end)
+	if not ok then ns:Debug("RouteMap click:", done) end
+	return ok and done
+end
+
+local clickHooked
 ns:Every(0.25, function()
 	if WorldMapFrame and WorldMapFrame:IsShown() then
+		if not clickHooked and WorldMapFrame.AddCanvasClickHandler then
+			clickHooked = true
+			WorldMapFrame:AddCanvasClickHandler(onCanvasClick)
+		end
 		local ok, err = pcall(update)
 		if not ok then ns:Debug("RouteMap:", err); hideAll() end
 	elseif overlay and overlay:IsShown() then
