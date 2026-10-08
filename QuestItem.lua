@@ -118,11 +118,23 @@ local function ensureButton()
 	return button
 end
 
+-- Ancorado no UIParent, na posição logo acima da janela do guia: ancorar o botão SEGURO na
+-- janela a tornaria protegida, e mexer nela em combate (altura, fechar, arrastar) seria
+-- bloqueado. Fora de combate, acompanha a janela.
+local lastX, lastY
 local function reanchor(b)
-	b:ClearAllPoints()
+	if InCombatLockdown() then return end
 	local vf = ns.Viewer and ns.Viewer.GetFrame and ns.Viewer:GetFrame()
-	if vf and vf:IsShown() then
-		b:SetPoint("BOTTOM", vf, "TOP", 0, 10)
+	local x, y
+	if vf and vf:IsShown() and vf:GetCenter() and vf:GetTop() then
+		local k = vf:GetEffectiveScale() / UIParent:GetEffectiveScale()
+		x, y = vf:GetCenter() * k, vf:GetTop() * k + 10
+	end
+	if x == lastX and y == lastY and (b:GetNumPoints() or 0) > 0 then return end
+	lastX, lastY = x, y
+	b:ClearAllPoints()
+	if x then
+		b:SetPoint("BOTTOM", UIParent, "BOTTOMLEFT", x, y)
 	else
 		b:SetPoint("TOP", UIParent, "TOP", 0, -180)
 	end
@@ -143,6 +155,7 @@ end
 local shownItem, pending
 
 local function apply(desired)
+	if not button and InCombatLockdown() then pending = true; return end   -- criar fora de combate
 	local b = ensureButton()
 	if desired == shownItem then
 		if desired then refreshMeta(b, desired) end     -- só atualiza contagem/cd
@@ -163,15 +176,27 @@ local function apply(desired)
 	shownItem = desired
 end
 
+local dirty, lastStep = true, nil
+local function marca() dirty = true end
+ns:On("QUEST_LOG_UPDATE", marca)
+ns:On("BAG_UPDATE_DELAYED", marca)
+ns:On("PLAYER_REGEN_ENABLED", marca)
+
 local function update()
 	if not (ns:UIShown() and ns.db and ns.db.questItem ~= false) then
 		if shownItem and not InCombatLockdown() then apply(nil) end
 		return
 	end
-	apply(QI:CurrentItem())
+	local step = ns:GetStep()
+	if dirty or pending or step ~= lastStep then
+		dirty, lastStep = false, step
+		apply(QI:CurrentItem())
+	elseif shownItem then
+		reanchor(button)                          -- a janela pode ter sido arrastada
+	end
 end
 
-QI.Update = update
+QI.Update = function() dirty = true; update() end
 ns:Every(0.3, update)
 ns:On("PLAYER_REGEN_ENABLED", function() if pending then update() end end)  -- flush pós-combate
 ns:On("_GUIDE_LOADED", update)
