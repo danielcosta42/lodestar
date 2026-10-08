@@ -1,7 +1,6 @@
 --=============================================================================
 -- Waypoint — alvo do passo atual: distância, proximidade, seta na tela + pin.
 -- Seta própria (textura Lodestar) com sombra e cor por proximidade.
--- Usa TomTom para a seta/pin quando presente.
 --=============================================================================
 local ADDON, ns = ...
 local WP = {}
@@ -247,28 +246,6 @@ function WP:DistanceTo(goal)
 end
 
 --------------------------------------------------------------------------------
--- TomTom bridge
---------------------------------------------------------------------------------
-local tomtomUID
-local function clearTomTom()
-	if tomtomUID and TomTom and TomTom.RemoveWaypoint then
-		pcall(TomTom.RemoveWaypoint, TomTom, tomtomUID)
-	end
-	tomtomUID = nil
-end
-local function setTomTom(goal)
-	if not (TomTom and TomTom.AddWaypoint) then return false end
-	clearTomTom()
-	local map = targetMapID(goal)
-	if not map then return false end
-	local ok, uid = pcall(TomTom.AddWaypoint, TomTom, map,
-		goal.goto_.x / 100, goal.goto_.y / 100,
-		{ title = ("Lodestar: %s"):format(goal.text or goal.verb), crazy = true })
-	if ok then tomtomUID = uid; return true end
-	return false
-end
-
---------------------------------------------------------------------------------
 -- Seta própria
 --------------------------------------------------------------------------------
 local arrow
@@ -464,17 +441,10 @@ function WP:Update()
 	local goal = self:PickTarget()
 	-- waypoint avulso (/way, treinador) aparece mesmo sem guia / com guia fechado
 	if not goal or not (ns.db and ns.db.arrow.enabled) or not (explicitDest() or ns:UIShown()) then
-		clearTomTom()
 		if arrow then arrow:Hide() end
 		return
 	end
-	-- perna da rota: a nossa seta (texto e ícone da perna); o resto pode ir ao TomTom
-	if not goal._leg and setTomTom(goal) then
-		if arrow then arrow:Hide() end
-	else
-		clearTomTom()
-		updateArrow(goal)
-	end
+	updateArrow(goal)
 end
 
 -- ticker: rotação/distância e proximidade -> conclui `goto`
@@ -482,7 +452,7 @@ ns:Every(0.1, function()
 	if not (explicitDest() or ns:UIShown()) then if arrow then arrow:Hide() end return end
 	local goal = WP:PickTarget()
 	if not goal then if arrow then arrow:Hide() end return end
-	if not tomtomUID then updateArrow(goal) end
+	updateArrow(goal)
 	if UnitOnTaxi and UnitOnTaxi("player") then return end   -- em voo: não "chega" sobrevoando
 	if goal._leg then return end                              -- perna da rota: o Travel acompanha
 	local dist = WP:DistanceTo(goal)

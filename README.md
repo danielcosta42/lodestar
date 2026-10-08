@@ -85,9 +85,6 @@ what it always was: a file you hand over on purpose.
 | `/ls near <type>` | Route to the nearest service: `trainer`, `prof <name>`, `repair`, `vendor`, `inn`, `bank`, `auction`, `flight`, `stable` |
 | `/ls way <x> <y> [zone]` · `/ls way off` | Set / clear a manual destination |
 
-### Optional
-- **TomTom** — if installed, Lodestar can hand the arrow/waypoint off to it.
-
 ---
 
 ## Credits & license
