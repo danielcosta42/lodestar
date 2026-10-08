@@ -76,6 +76,7 @@ GuideMap.lua
 RouteMap.lua
 FlightMap.lua
 RouteMinimap.lua
+Compass.lua
 Minimap.lua
 TargetMarker.lua
 Milestones.lua

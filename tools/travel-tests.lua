@@ -282,4 +282,17 @@ wns.Destinations.Active = function() return { zone = "Westfall", x = 5, y = 6, l
 local g = W2:PickTarget()
 check(g and g._custom and g.goto_.zone == "Westfall", "sem rota, destino manual: alvo avulso marcado como manual")
 
+-- ── Compass: marcas cardeais na faixa ────────────────────────────────────────
+local CP = load("Compass.lua", { RouteGeom = G }).Compass
+local function marca(list, k)
+	for _, m in ipairs(list) do if m.k == k then return m.x end end
+end
+local cards = CP.Cardinals(0, math.rad(140), 100)
+check(near(marca(cards, "N"), 0) and marca(cards, "S") == nil, "olhando para o norte: N no meio, S fora da faixa")
+check(marca(cards, "W") == nil and marca(cards, "E") == nil, "campo de 140°: oeste e leste (90°) fora da faixa")
+cards = CP.Cardinals(math.rad(45), math.rad(140), 100)
+check(marca(cards, "N") > 0 and marca(cards, "W") < 0, "olhando para noroeste: N à direita, W à esquerda")
+cards = CP.Cardinals(math.pi / 2, math.rad(140), 100)
+check(near(marca(cards, "W"), 0), "olhando para oeste: W no meio")
+
 print(("ok: %d checks"):format(checks))

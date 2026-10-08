@@ -129,6 +129,7 @@ local DB_DEFAULTS = {
 	trail = true,         -- caminho de formiga (minimapa + mapa-múndi)
 	questItem = true,     -- botão pra usar o item da missão do passo
 	corpseRoute = true,   -- fantasma: rota (vermelha) até o corpo
+	compass = { enabled = true, scale = 1, point = "TOP", x = 0, y = -14, locked = true },
 }
 local CHAR_DEFAULTS = {
 	currentGuide = nil,        -- chave do guia ativo (aba em foco)
