@@ -22,8 +22,16 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 
 ### Guidance
 - Clean step window with your current objective, checkboxes, and a preview of what's next.
-- On-screen **waypoint arrow**, minimap **ant-trail**, and world-map pins to your goal.
-- **Travel planner** — tells you the fastest flight path / portal / boat to the next zone.
+- On-screen **waypoint arrow**, a **compass strip** at the top of the screen, and the route drawn as
+  dots on the **minimap** and the **world map** — flights along their real track, boats and zeppelins
+  along their crossing.
+- **Travel planner** — the fastest trip by travel time, leg by leg: walking, the flight paths you know
+  (and new ones you pick up on the way), boats, zeppelins, the Deeprun Tram, your hearthstone and
+  class teleports. It replans as you go, and the flight map highlights where to fly.
+- **Goes where you need** — your guide step, your corpse while you're a ghost, a **Shift+click** on the
+  map or minimap, a typed coordinate, or the **nearest** class/profession trainer, repair, vendor, inn,
+  bank, auction house, flight master or stable (nearest by travel time, not straight line). All in the
+  **Travel** panel — the compass button in the guide header.
 - **Multiple guides open at once as tabs** — switch, add, or close routes on the fly, with a clean empty state when none is loaded.
 
 ### Automation (never get stuck)
@@ -59,6 +67,8 @@ what it always was: a file you hand over on purpose.
 - `/ls` (or the minimap button) opens/closes the guide window.
 - `/ls menu` browses the full library — leveling, dungeons, class quests, reputation and events.
 - `/ls config` opens the settings.
+- Everything has a place in the interface — the guide header (library, Travel, settings, ··· actions),
+  the minimap button's right-click menu, and Settings. The slash commands are shortcuts.
 
 ### Slash commands
 
@@ -71,9 +81,9 @@ what it always was: a file you hand over on purpose.
 | `/ls next` · `/ls prev` | Step forward / back |
 | `/ls export` · `/ls import` | Share or load a custom guide |
 | `/ls scan` | Ask the server about the quests only this client knows |
-
-### Optional
-- **TomTom** — if installed, Lodestar can hand the arrow/waypoint off to it.
+| `/ls travel` | Open the Travel panel |
+| `/ls near <type>` | Route to the nearest service: `trainer`, `prof <name>`, `repair`, `vendor`, `inn`, `bank`, `auction`, `flight`, `stable` |
+| `/ls way <x> <y> [zone]` · `/ls way off` | Set / clear a manual destination |
 
 ---
 
@@ -81,6 +91,8 @@ what it always was: a file you hand over on purpose.
 
 - Routes are generated from the open **[QuestieDB](https://github.com/Questie/QuestieDB)** (Forever
   flavor) by the Questie team, plus what `/ls scan` collects in-game for content no database has yet.
+- Flight paths, boats and zeppelins come from the game client's own tables (TaxiNodes, TaxiPath,
+  TaxiPathNode, via [wago.tools](https://wago.tools)); `tools/gen_travel.py` regenerates them.
 - No data is scraped from any site: Wowhead's terms allow browsers only, and we intend this data
   to be reusable by anyone.
 - Code: **MIT**. Bug reports and pull requests welcome on [GitHub](https://github.com/danielcosta42/lodestar).

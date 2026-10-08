@@ -1,60 +1,21 @@
 --=============================================================================
--- Milestones — avisos de progressão (treinar/montaria) e /ls train, /ls prof.
+-- Milestones — avisos de progressão (treinar) e /ls prof.
 --=============================================================================
 local ADDON, ns = ...
 local M = {}
 ns.Milestones = M
 
-local function pickInZone(list)
-	local cur = GetZoneText and GetZoneText() or ""
-	for _, t in ipairs(list) do
-		if t.zone == cur then return t end
-	end
-	return list[1]
-end
-
 --------------------------------------------------------------------------------
--- /ls train — treinador da classe
---------------------------------------------------------------------------------
-function M:GotoTrainer()
-	local L = ns.L
-	local class = select(2, UnitClass("player"))
-	local fac = UnitFactionGroup("player")
-	local list = ns.classTrainers and ns.classTrainers[class] and ns.classTrainers[class][fac]
-	if not list or #list == 0 then
-		return ns:Printf(L.TRAINER_NONE, class or "?", fac or "?")
-	end
-	local pick = pickInZone(list)
-	ns.Waypoint:SetCustom(pick.zone, pick.x, pick.y, L.TRAINER_LABEL:format(pick.n))
-	if ns.Toast then
-		ns.Toast:Show({ title = L.CLASS_TRAINER,
-			text = ("%s — %s"):format(pick.n, pick.zone), color = ns.UI.COL.tip, hold = 6 })
-	end
-	ns:Printf(L.TRAINER_POINT, pick.n, class or "?", pick.zone)
-end
-
---------------------------------------------------------------------------------
--- /ls prof <nome> — treinador de profissão
+-- /ls prof <nome> — treinador de profissão (o mais perto em tempo de viagem)
 --------------------------------------------------------------------------------
 function M:GotoProfTrainer(name)
 	local L = ns.L
 	if not name or name == "" then return ns:Print(L.PROF_USAGE) end
 	name = name:lower()
-	local key
 	for prof in pairs(ns.profTrainers or {}) do
-		if prof:lower():find(name, 1, true) then key = prof; break end
+		if prof:lower():find(name, 1, true) then return ns.Services:GoTo("proftrainer", prof) end
 	end
-	if not key then return ns:Printf(L.PROF_NOTFOUND, name) end
-	local fac = UnitFactionGroup("player")
-	local list = ns.profTrainers[key] and ns.profTrainers[key][fac]
-	if not list or #list == 0 then return ns:Printf(L.PROF_NONE, key, fac or "?") end
-	local pick = pickInZone(list)
-	ns.Waypoint:SetCustom(pick.zone, pick.x, pick.y, L.PROF_LABEL:format(key, pick.n))
-	if ns.Toast then
-		ns.Toast:Show({ title = L.PROF_LABEL:format(key, ""),
-			text = ("%s — %s"):format(pick.n, pick.zone), color = ns.UI.COL.tip, hold = 6 })
-	end
-	ns:Printf(L.PROF_POINT, pick.n, key, pick.zone)
+	ns:Printf(L.PROF_NOTFOUND, name)
 end
 
 --------------------------------------------------------------------------------

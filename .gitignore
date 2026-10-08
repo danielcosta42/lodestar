@@ -13,6 +13,7 @@ tools/*
 !tools/import_forever.py
 !tools/forever-guides.lua
 !tools/forever-scan.lua
+!tools/travel-tests.lua
 !tools/questiedb.py
 !tools/build_intermediate.py
 !tools/parse_lua.py
@@ -22,6 +23,7 @@ tools/*
 !tools/gen_prereq.py
 !tools/gen_zonedata.py
 !tools/gen_trainers.py
+!tools/gen_travel.py
 !tools/gen_subzones.py
 !tools/validate_guides.py
 !tools/guide_integrity.py

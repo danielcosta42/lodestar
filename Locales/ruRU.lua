@@ -24,11 +24,8 @@ L.CAT_Attunements="Допуски"; L.CAT_Reputation="Репутация"; L.CAT
 L.TM_KILL="> Lodestar: цель для убийства"; L.TM_TALK="> Lodestar: цель гайда"
 L.YARDS="%d м"; L.DEST="Пункт назначения"
 
-L.CLASS_TRAINER="Учитель класса"; L.TRAINER_NONE="нет учителя %s (%s) в индексе."
-L.TRAINER_POINT="указываю на %s (%s) в %s. /ls train off отменяет."; L.TRAINER_LABEL="Учитель: %s"
 L.PROF_USAGE="использование: /ls prof <профессия> (напр: mining, alchemy, fishing)"
 L.PROF_NOTFOUND="профессия '%s' не найдена."; L.PROF_NONE="нет учителя %s для %s."
-L.PROF_POINT="указываю на %s (%s) в %s."; L.PROF_LABEL="%s: %s"
 L.MOUNT_30_T="Транспорт доступен!"; L.MOUNT_30_S="Изучите Верховую езду (ученик) - 60% скорости."
 L.MOUNT_60_T="Эпический транспорт!"; L.MOUNT_60_S="Верховая езда (подмастерье) - 100% скорости."
 L.MOUNT_70_T="Полёты доступны!"; L.MOUNT_70_S="Изучите Верховую езду (эксперт) + летающий транспорт."

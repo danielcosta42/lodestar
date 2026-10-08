@@ -33,6 +33,8 @@ local function update()
 		return
 	end
 	if not ns:UIShown() then if pin then pin:Hide() end return end
+	-- com rota, o destino e as paradas são do RouteMap
+	if ns.Travel and ns.Travel:Route() then if pin then pin:Hide() end return end
 	local goal = ns.Waypoint and ns.Waypoint:PickTarget()
 	if not goal or not goal.goto_ then
 		if pin then pin:Hide() end
@@ -41,18 +43,10 @@ local function update()
 	local shown = WMF.GetMapID and WMF:GetMapID()
 	if not shown then if pin then pin:Hide() end return end
 
-	-- coords a marcar: o ALVO (se este é o mapa dele) ou, se o alvo está longe,
-	-- o HUB de transporte (cais/portal/torre) caso você esteja vendo a zona dele.
 	-- em 0-1 no mapa aberto: o do alvo, ou outro (zona vizinha, continente) pela
-	-- coordenada de mundo; fora dele, o HUB do plano de viagem se ele estiver ali
+	-- coordenada de mundo
 	local px, py = ns.Waypoint:MapPos(goal.goto_.zone, goal.goto_.x, goal.goto_.y, shown)
 	if px and (px < 0 or px > 1 or py < 0 or py > 1) then px = nil end
-	if not px and ns.TravelPlanner and goal.goto_.zone then
-		local _, hop = ns.TravelPlanner:Plan(goal.goto_.zone)
-		if hop and hop.zone and ns.zoneUiMap and ns.zoneUiMap[hop.zone] == shown then
-			px, py = hop.x / 100, hop.y / 100
-		end
-	end
 	if not px then if pin then pin:Hide() end return end
 
 	local ok, canvas = pcall(WMF.GetCanvas, WMF)

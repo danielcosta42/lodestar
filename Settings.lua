@@ -99,14 +99,9 @@ local function fillGeneral(p)
 		function() return ns.db.shareQuests end, function(v) ns.db.shareQuests = v end, true)
 	switchRow(p, L.SET_MOBWARN, L.SET_MOBWARN_D,
 		function() return ns.db.mobWarning end, function(v) ns.db.mobWarning = v end)
-	buttonRow(p, L.SET_LIBRARY, L.SET_LIBRARY_D,
-		L.SET_OPEN, function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
-	buttonRow(p, L.SET_SQUAD, L.SET_SQUAD_D,
-		L.SET_OPEN, function() if ns.Squad then ns.Squad:Toggle() end end)
-	buttonRow(p, L.SET_GATHER, L.SET_GATHER_D,
-		L.SET_OPEN, function() if ns.Gather then ns.Gather:Open() end end)
-	buttonRow(p, L.SET_CONS, L.SET_CONS_D,
-		L.SET_OPEN, function() if ns.Consumables then ns.Consumables:Toggle() end end)
+	switchRow(p, L.SET_QITEM, L.SET_QITEM_D,
+		function() return ns.db.questItem end,
+		function(v) ns.db.questItem = v; if ns.QuestItem then ns.QuestItem.Update() end end)
 end
 
 local function fillAppearance(p)
@@ -129,6 +124,17 @@ local function fillAppearance(p)
 		function(v) ns.db.coords = v; if ns.Coords then ns.Coords.Update() end end)
 	switchRow(p, L.SET_MAPPINS, L.SET_MAPPINS_D,
 		function() return ns.db.guideMap end, function(v) ns.db.guideMap = v end)
+	switchRow(p, L.SET_COMPASS, L.SET_COMPASS_D,
+		function() return ns.db.compass.enabled end, function(v) ns.db.compass.enabled = v end)
+	switchRow(p, L.SET_COMPASS_LOCK, L.SET_COMPASS_LOCK_D,
+		function() return ns.db.compass.locked end,
+		function(v) ns.db.compass.locked = v; if ns.Compass then ns.Compass:ApplyDisplay() end end)
+	sliderRow(p, L.SET_COMPASS_SCALE, "", 50, 200, 5,
+		function() return (ns.db.compass.scale or 1) * 100 end,
+		function(v) ns.db.compass.scale = v / 100; if ns.Compass then ns.Compass:ApplyDisplay() end end, "%d%%")
+	switchRow(p, L.SET_CORPSE, L.SET_CORPSE_D,
+		function() return ns.db.corpseRoute ~= false end,
+		function(v) ns.db.corpseRoute = v; if ns.Destinations.Sync then ns.Destinations.Sync() end end)
 	sliderRow(p, L.SET_SCALE, "", 70, 140, 5,
 		function() return (ns.db.viewer.scale or 1) * 100 end,
 		function(v) ns.db.viewer.scale = v / 100; if ns.Viewer then ns.Viewer:ApplyDisplay() end end, "%d%%")
@@ -142,10 +148,38 @@ local function fillAlerts(p)
 		function() return ns.db.toastsEnabled end, function(v) ns.db.toastsEnabled = v end)
 end
 
+-- as janelas que antes só abriam pelo /ls (a Geral não cabia mais na tela)
+local function fillPanels(p)
+	local L = ns.L
+	buttonRow(p, L.SET_LIBRARY, L.SET_LIBRARY_D,
+		L.SET_OPEN, function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
+	buttonRow(p, L.SET_SQUAD, L.SET_SQUAD_D,
+		L.SET_OPEN, function() if ns.Squad then ns.Squad:Toggle() end end)
+	buttonRow(p, L.SET_GATHER, L.SET_GATHER_D,
+		L.SET_OPEN, function() if ns.Gather then ns.Gather:Open() end end)
+	buttonRow(p, L.SET_CONS, L.SET_CONS_D,
+		L.SET_OPEN, function() if ns.Consumables then ns.Consumables:Toggle() end end)
+	buttonRow(p, L.SET_CARDNOW, L.SET_CARDNOW_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("card") end)
+	buttonRow(p, L.SET_TOUR, L.SET_TOUR_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("intro") end)
+end
+
+local function fillAdvanced(p)
+	local L = ns.L
+	switchRow(p, L.SET_DEBUG, L.SET_DEBUG_D,
+		function() return ns.db.debug end, function(v) ns.db.debug = v end)
+	buttonRow(p, L.SET_TDEBUG, L.SET_TDEBUG_D, L.SET_RUN, function() SlashCmdList.LODESTAR("tdebug") end)
+	buttonRow(p, L.SET_CHAINS, L.SET_CHAINS_D, L.SET_RUN, function() SlashCmdList.LODESTAR("chains") end)
+	sliderRow(p, L.SET_MMRANGE, L.SET_MMRANGE_D, 50, 200, 5,
+		function() return (ns.db.minimap.rangeMult or 1) * 100 end,
+		function(v) ns.db.minimap.rangeMult = v / 100 end, "%d%%")
+end
+
 local PAGES = {
 	{ key = "geral", label = ns.L.SET_TAB_GENERAL, fill = fillGeneral },
 	{ key = "aparencia", label = ns.L.SET_TAB_LOOK, fill = fillAppearance },
+	{ key = "paineis", label = ns.L.SET_TAB_PANELS, fill = fillPanels },
 	{ key = "alertas", label = ns.L.SET_TAB_ALERTS, fill = fillAlerts },
+	{ key = "avancado", label = ns.L.SET_TAB_ADV, fill = fillAdvanced },
 }
 
 --------------------------------------------------------------------------------

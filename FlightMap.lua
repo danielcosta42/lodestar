@@ -1,7 +1,7 @@
 --=============================================================================
--- FlightMap — ao abrir o mestre de voo, aponta uma seta (pulsando) sobre o
--- ponto de destino do passo atual do guia. Método baseado no TaxiFrame clássico
--- (TaxiButton{i} + TaxiNode*), como o próprio jogo/Zygor fazem.
+-- FlightMap — ao abrir o mestre de voo, aponta uma seta (pulsando) sobre o destino
+-- do voo da rota; sem voo na rota, sobre a zona dos próximos passos do guia. Pelo
+-- TaxiFrame clássico (TaxiButton{i} + TaxiNode*).
 --=============================================================================
 local ADDON, ns = ...
 local UI = ns.UI
@@ -64,13 +64,6 @@ local function destinationZones()
 	local function add(z)
 		if z and z ~= "" and not seen[z] then seen[z] = true; zones[#zones + 1] = z end
 	end
-	-- HUB de transporte do alvo atual tem PRIORIDADE: se o método exige um cais/
-	-- portal (barco, zepelim, Portal Sombrio), voe primeiro até a zona dele.
-	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
-	if tgt and tgt.goto_ and tgt.goto_.zone and ns.TravelPlanner then
-		local _, hop = ns.TravelPlanner:Plan(tgt.goto_.zone)
-		if hop and hop.zone then add(hop.zone) end
-	end
 	-- passos à frente (janela ampla)
 	local last = math.min(#guide.steps, ns.char.currentStep + 60)
 	for i = ns.char.currentStep, last do
@@ -90,14 +83,41 @@ local function destinationZones()
 	return zones
 end
 
+-- O nó de destino da perna de voo da rota, no idioma do cliente: o mapa de voo aberto
+-- lista os nós com o id (o mesmo do TravelData), e o nome dali casa com TaxiNodeName.
+local function routeFlightName()
+	local route = ns.Travel and ns.Travel:Route()
+	if not (route and C_TaxiMap and C_TaxiMap.GetAllTaxiNodes) then return nil end
+	for i = route.leg, #route.legs do
+		local leg = route.legs[i]
+		if leg.k == "flight" then
+			local mapID = (GetTaxiMapID and GetTaxiMapID()) or C_Map.GetBestMapForUnit("player")
+			local ok, list = pcall(C_TaxiMap.GetAllTaxiNodes, mapID)
+			for _, info in ipairs(ok and type(list) == "table" and list or {}) do
+				if info.nodeID == leg.to then return info.name end
+			end
+			return nil
+		end
+	end
+end
+
 --------------------------------------------------------------------------------
 local function highlight()
 	clearMarker()
 	local dbg = ns.db and ns.db.debug
-	if not (ns:UIShown() and NumTaxiNodes and TaxiNodeName and TaxiNodeGetType) then
-		if dbg then ns:Print("FlightMap: sem guia (ou fechado) ou API de taxi ausente") end
-		return
+	if not (NumTaxiNodes and TaxiNodeName and TaxiNodeGetType) then return end
+	local want = routeFlightName()
+	if want then
+		for i = 1, NumTaxiNodes() or 0 do
+			if TaxiNodeName(i) == want then
+				local btn = _G["TaxiButton" .. i]
+				if btn then place(btn) end
+				return ns:Printf("%s |cfff0c26a%s|r", ns.L.FLY_TO, want)
+			end
+		end
+		if dbg then ns:Printf("FlightMap: nó da rota '%s' não está neste mapa", want) end
 	end
+	if not ns:UIShown() then return end
 	local zones = destinationZones()
 	local n = NumTaxiNodes() or 0
 	if dbg then ns:Printf("FlightMap: %d nós | destinos: %s", n, table.concat(zones, ", ")) end

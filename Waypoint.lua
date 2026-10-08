@@ -1,7 +1,6 @@
 --=============================================================================
 -- Waypoint — alvo do passo atual: distância, proximidade, seta na tela + pin.
 -- Seta própria (textura Lodestar) com sombra e cor por proximidade.
--- Usa TomTom para a seta/pin quando presente.
 --=============================================================================
 local ADDON, ns = ...
 local WP = {}
@@ -28,35 +27,135 @@ ns:On("ZONE_CHANGED", rememberZone)
 ns:On("PLAYER_ENTERING_WORLD", rememberZone)
 
 --------------------------------------------------------------------------------
--- Waypoint customizado (treinador, ponto arbitrário): tem prioridade sobre o passo.
-function WP:SetCustom(zone, x, y, label)
-	self.custom = { verb = "goto_", text = label or ns.L.DEST, _custom = true,
-		goto_ = { zone = zone, x = tonumber(x), y = tonumber(y), radius = 6 } }
+-- Destino avulso (treinador, ponto arbitrário): é o destino manual do Destinations,
+-- que passa na frente do passo do guia.
+function WP:SetCustom(zone, x, y, label, map)
+	ns.Destinations:Set("manual", { zone = zone, map = map, x = tonumber(x), y = tonumber(y), label = label or ns.L.DEST })
 	self:Update()
 	if ns.Viewer then ns.Viewer:Refresh() end
 end
 
 function WP:ClearCustom()
-	self.custom = nil
+	ns.Destinations:Clear("manual")
 	self:Update()
 end
 
-function WP:PickTarget()
-	if self.custom then return self.custom end
-	local step = ns:GetStep()
-	if not step then return nil end
-	for _, goal in ipairs(step.goals) do
-		if goal.goto_ and ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal) then
-			return goal
+-- /ls way e o campo do painel Viagem: sem zona, vale o mapa onde o jogador está
+function WP:Way(text)
+	local x, y, zone = WP.ParseWay(text)
+	if not x then return false end
+	local map = not zone and C_Map.GetBestMapForUnit("player") or nil
+	self:SetCustom(zone, x, y, ns.L.WAYPOINT, map)
+	local info = map and C_Map.GetMapInfo(map)
+	ns:Printf("%s: %s %.1f, %.1f", ns.L.WAYPOINT, zone or info and info.name or "?", x, y)
+	return true
+end
+
+-- Shift+clique (mapa ou minimapa) em (uiMapID, x, y 0-100): em cima do destino manual
+-- atual (`near`), limpa; senão, novo destino ali.
+function WP:ClickDest(map, x, y, near)
+	if near then
+		self:ClearCustom()
+		return ns:Print(ns.L.DEST_CLEARED)
+	end
+	self:SetCustom(nil, x, y, ns.L.WAYPOINT, map)
+	local info = C_Map.GetMapInfo(map)
+	ns:Printf("%s: %s %.1f, %.1f", ns.L.WAYPOINT, info and info.name or "?", x, y)
+end
+
+-- há destino que não é o guia (manual ou corpo): a seta aparece mesmo com o guia fechado
+local function explicitDest()
+	local D = ns.Destinations
+	return D and (D:Get("corpse") or D:Get("manual")) and true or false
+end
+
+--------------------------------------------------------------------------------
+-- Texto da perna: o que fazer e quanto tempo leva
+--------------------------------------------------------------------------------
+function WP.FmtTime(s)
+	s = math.max(0, math.floor(s + 0.5))
+	if s >= 3600 then return ("%dh%02dm"):format(math.floor(s / 3600), math.floor(s % 3600 / 60)) end
+	if s >= 60 then return ("%dm%02ds"):format(math.floor(s / 60), s % 60) end
+	return ("%ds"):format(s)
+end
+
+-- "x y [zona]" (vírgula também separa) -> x, y (0-100), zona ou nil
+function WP.ParseWay(text)
+	local x, y, zone = (text or ""):match("^%s*([%d%.]+)[%s,]+([%d%.]+)%s*(.-)%s*$")
+	x, y = tonumber(x), tonumber(y)
+	if not (x and y and x <= 100 and y <= 100) then return nil end
+	return x, y, zone ~= "" and zone or nil
+end
+
+function WP.LegText(route, i, secs)
+	local L = ns.L
+	local leg, nxt = route.legs[i], route.legs[i + 1]
+	local text
+	if leg.k == "walk" then
+		if nxt and nxt.k == "flight" then
+			text = (nxt.discover and L.LEG_TO_NEW_FLIGHT or L.LEG_TO_FLIGHT):format(leg.name or "?")
+		elseif nxt and nxt.k == "ship" then
+			local ship = L["SHIP_" .. (nxt.ship or "boat")]
+			text = nxt.name and L.LEG_TO_DOCK_TO:format(ship, nxt.name) or L.LEG_TO_DOCK:format(ship)
+		elseif nxt and nxt.k == "tram" then
+			text = L.LEG_TO_TRAM
+		else
+			text = route.dest and route.dest.label or L.DEST
 		end
+	elseif leg.k == "flight" then
+		text = L.LEG_FLY:format(leg.name or "?")
+	elseif leg.k == "ship" then
+		local ship = L["SHIP_" .. (leg.ship or "boat")]
+		text = leg.name and L.LEG_SHIP_TO:format(ship, leg.name) or L.LEG_SHIP:format(ship)
+	elseif leg.k == "tram" then
+		text = L.LEG_TRAM
+	elseif leg.k == "hearth" then
+		text = L.LEG_HEARTH
+	else
+		text = L.LEG_TELEPORT:format(leg.name or "")
 	end
-	for _, goal in ipairs(step.goals) do
-		if goal.goto_ and ns:IsGoalActive(goal) then return goal end
+	return ("%s · %s"):format(text, WP.FmtTime(secs or leg.s or 0))
+end
+
+-- ícone da perna de pedra ou teleporte (o que lançar)
+local function legIcon(leg)
+	if leg.k == "hearth" then return GetItemIcon and GetItemIcon(6948) end
+	if leg.k == "teleport" and leg.spell and GetSpellTexture then return GetSpellTexture(leg.spell) end
+end
+
+-- O alvo da seta: o fim da perna atual da rota. Na última perna até um passo do guia,
+-- é o próprio objetivo (é ele que conclui o `goto` do passo). Sem rota: o destino ativo.
+local legGoal = {}
+function WP:PickTarget()
+	local T = ns.Travel
+	local route = T and T:Route()
+	local leg = route and route.legs[route.leg]
+	if leg then
+		if route.leg == #route.legs and route.kind == "guide" and route.dest and route.dest.goal then
+			return route.dest.goal
+		end
+		local secs = leg.s
+		local p = leg.k == "walk" and T.PlayerWorld()
+		if p and p.c == leg.b.c then
+			local dx, dy = leg.b.x - p.x, leg.b.y - p.y
+			secs = math.sqrt(dx * dx + dy * dy) / T:Speed()
+		end
+		legGoal.verb, legGoal._leg, legGoal.world, legGoal.legKind = "goto_", true, leg.b, leg.k
+		legGoal.text, legGoal.icon = WP.LegText(route, route.leg, secs), legIcon(leg)
+		legGoal.goto_ = nil
+		return legGoal
 	end
-	return nil
+	local dest, kind
+	if ns.Destinations then dest, kind = ns.Destinations:Active() end   -- `and` cortaria o kind
+	if not dest then return nil end
+	if kind == "guide" then return dest.goal end
+	return { verb = "goto_", text = dest.label, _custom = kind == "manual", _corpse = kind == "corpse",
+		goto_ = { zone = dest.zone, map = dest.map, x = dest.x, y = dest.y, radius = 6 } }
 end
 
 local function targetMapID(goal)
+	if not goal.goto_ then return nil end        -- alvo de perna: ponto de mundo, sem mapa
+	if goal.goto_.map then return goal.goto_.map end
 	local z = goal.goto_.zone
 	if z then
 		if ns.zoneMap[z] then return ns.zoneMap[z] end                 -- visitada
@@ -116,7 +215,21 @@ function WP.ClipSegment(x0, y0, x1, y1)
 	return x0 + t0 * dx, y0 + t0 * dy, x0 + t1 * dx, y0 + t1 * dy
 end
 
+-- Ponto de mundo { c, x, y } no mapa `shown`, em 0-1 (pode cair fora).
+function WP:WorldMapPos(w, shown)
+	if not (w and shown and GetMapPosFromWorld and mkVec) then return nil end
+	local _, pos = GetMapPosFromWorld(w.c, mkVec(w.x, w.y), shown)
+	if pos then return pos.x, pos.y end
+end
+
 function WP:DistanceTo(goal)
+	if goal.world then                        -- fim de perna da rota: já em coordenada de mundo
+		local p = ns.Travel and ns.Travel.PlayerWorld()
+		local w = goal.world
+		if not p or p.c ~= w.c then return nil end
+		local dx, dy = w.x - p.x, w.y - p.y
+		return math.sqrt(dx * dx + dy * dy), dx, dy
+	end
 	if not (GetWorldPos and GetPlayerMapPos and mkVec) then return nil end
 	local pmap = GetBestMap("player")
 	local tmap = targetMapID(goal)
@@ -130,28 +243,6 @@ function WP:DistanceTo(goal)
 	if not (pw and tw) or pc ~= tc then return nil end
 	local dx, dy = tw.x - pw.x, tw.y - pw.y
 	return math.sqrt(dx * dx + dy * dy), dx, dy
-end
-
---------------------------------------------------------------------------------
--- TomTom bridge
---------------------------------------------------------------------------------
-local tomtomUID
-local function clearTomTom()
-	if tomtomUID and TomTom and TomTom.RemoveWaypoint then
-		pcall(TomTom.RemoveWaypoint, TomTom, tomtomUID)
-	end
-	tomtomUID = nil
-end
-local function setTomTom(goal)
-	if not (TomTom and TomTom.AddWaypoint) then return false end
-	clearTomTom()
-	local map = targetMapID(goal)
-	if not map then return false end
-	local ok, uid = pcall(TomTom.AddWaypoint, TomTom, map,
-		goal.goto_.x / 100, goal.goto_.y / 100,
-		{ title = ("Lodestar: %s"):format(goal.text or goal.verb), crazy = true })
-	if ok then tomtomUID = uid; return true end
-	return false
 end
 
 --------------------------------------------------------------------------------
@@ -197,6 +288,9 @@ local function ensureArrow()
 	arrow.name:SetPoint("BOTTOM", 0, 4)
 	arrow.name:SetPoint("LEFT", 6, 0); arrow.name:SetPoint("RIGHT", -6, 0)
 	arrow.name:SetJustifyH("CENTER"); arrow.name:SetWordWrap(false)
+	-- ícone do que lançar (pedra de lar, teleporte), no lugar da seta
+	arrow.icon = arrow:CreateTexture(nil, "OVERLAY")
+	arrow.icon:SetSize(34, 34); arrow.icon:SetPoint("CENTER"); arrow.icon:Hide()
 	return arrow
 end
 
@@ -224,28 +318,6 @@ local function localizedZone(engZone)
 	return engZone
 end
 ns.localizedZone = localizedZone
-
---------------------------------------------------------------------------------
--- Contexto de desenho compartilhado (seta e trilha desenham a MESMA coisa):
---   retorna (goalParaDesenhar, viajando)
---   * na zona-alvo   -> o próprio goal, viajando=false
---   * na zona do hop -> goal sintético do cais/portal, viajando=false
---   * viajando (portal/pedra/teleporte) -> goal, viajando=true (não desenhe a pé)
---------------------------------------------------------------------------------
-function WP:DrawContext()
-	local goal = self:PickTarget()
-	if not (goal and goal.goto_ and goal.goto_.zone) then return goal, false end
-	local TP = ns.TravelPlanner
-	if not TP or TP:InZone(goal.goto_.zone) then
-		return goal, false                                  -- já na zona: caminho normal
-	end
-	local plan, hop = TP:Plan(goal.goto_.zone)
-	if hop and hop.zone and TP:InZone(hop.zone) then
-		return { verb = "goto_", _hop = true,               -- na zona do hub: aponta o ponto
-			goto_ = { zone = hop.zone, x = hop.x, y = hop.y } }, false
-	end
-	return goal, plan ~= nil                                 -- há plano -> viajando (não desenha)
-end
 
 --------------------------------------------------------------------------------
 -- Em VIAGEM (voo/táxi): a direção não importa — mostra ETA (distância restante ÷
@@ -287,28 +359,43 @@ local function showTransit(a, goal)
 	a.name:SetText(ns.L.IN_FLIGHT .. (zone and (": " .. localizedZone(zone)) or ""))
 end
 
+-- Seta de uma perna da rota: a pé aponta para o fim dela; barco, bonde, pedra e
+-- teleporte não têm direção — dizem o que fazer (e mostram o ícone do que lançar).
+local STILL = { ship = true, tram = true, hearth = true, teleport = true }
+local function legArrow(a, goal)
+	local C = UI.COL
+	a:Show()
+	if goal.icon then a.icon:SetTexture(goal.icon); a.icon:Show() else a.icon:Hide() end
+	local dist, dx, dy
+	if not STILL[goal.legKind] then dist, dx, dy = WP:DistanceTo(goal) end
+	if not dist then
+		a.tex:Hide(); a.shadow:Hide()
+		a.dist:SetText("")
+		a.name:SetTextColor(UI.unpackc(C.amber))
+		a.name:SetText(goal.text or "")
+		return
+	end
+	a.tex:Show(); a.shadow:Show()
+	local rel = math.atan2(dy, dx) - (GetPlayerFacing and GetPlayerFacing() or 0) + (ns.db.arrow.offset or 0)
+	a.tex:SetRotation(rel); a.shadow:SetRotation(rel)
+	local near = dist <= 14
+	if near then a.tex:SetVertexColor(UI.unpackc(C.done)) else a.tex:SetVertexColor(1, 1, 1, 1) end
+	a.dist:SetTextColor(UI.unpackc(near and C.done or C.amber))
+	a.dist:SetText(ns.L.YARDS:format(dist))
+	a.name:SetTextColor(UI.unpackc(C.active))
+	a.name:SetText(goal.text or "")
+end
+
 local function updateArrow(goal)
 	local a = ensureArrow()
 	local C = UI.COL
 
-	if UnitOnTaxi and UnitOnTaxi("player") then showTransit(a, goal); return end
+	if UnitOnTaxi and UnitOnTaxi("player") then a.icon:Hide(); showTransit(a, goal); return end
 	taxi.lastPW, taxi.lastT, taxi.speed = nil, nil, 0      -- fora do voo: reseta o tracking
+	if goal._leg then return legArrow(a, goal) end
+	a.icon:Hide()
 
-	-- Plano de viagem (quando fora da zona-alvo). Se o método tem um "hop" (cais/
-	-- portal/torre) e você JÁ está na zona dele, a seta passa a mirar o ponto exato.
-	local plan
-	local tz0 = goal.goto_ and goal.goto_.zone
-	local TP = ns.TravelPlanner
-	if tz0 and TP and not TP:InZone(tz0) then
-		local hop
-		plan, hop = TP:Plan(tz0)
-		if hop and hop.zone and TP:InZone(hop.zone) then
-			goal = { verb = "goto_", text = plan, _hop = true,
-				goto_ = { zone = hop.zone, x = hop.x, y = hop.y, radius = 8 } }
-			plan = nil    -- agora é navegação local precisa até o hub
-		end
-	end
-
+	-- sem rota (outro continente sem ligação, instância): "Vá para <zona>"
 	local dist, dx, dy = WP:DistanceTo(goal)
 	if not dist then
 		-- destino em outro continente: sem direção, mas mostra p/ onde viajar
@@ -316,7 +403,7 @@ local function updateArrow(goal)
 			a.tex:Hide(); a.shadow:Hide()
 			a.dist:SetText("")
 			a.name:SetTextColor(UI.unpackc(C.amber))
-			a.name:SetText(plan or ns.L.OUT_OF_ZONE:format(localizedZone(goal.goto_.zone)))
+			a.name:SetText(ns.L.OUT_OF_ZONE:format(localizedZone(goal.goto_.zone)))
 			a:Show()
 		else
 			a:Hide()
@@ -335,23 +422,11 @@ local function updateArrow(goal)
 	local outOfZone = tzone and ns.TravelPlanner and not ns.TravelPlanner:InZone(tzone)
 
 	a.dist:SetText(ns.L.YARDS:format(dist))
-	if goal._hop then
-		-- navegação precisa até o cais / portal / torre (você está na zona certa)
-		local near = dist <= 14
-		a.tex:SetVertexColor(UI.unpackc(near and C.done or C.amber))
-		a.dist:SetTextColor(UI.unpackc(near and C.done or C.amber))
-		a.name:SetTextColor(UI.unpackc(C.active))
-		a.name:SetText(goal.text or "")
-	elseif outOfZone then
+	if outOfZone then
 		a.tex:SetVertexColor(UI.unpackc(C.amber))          -- âmbar = viagem
 		a.name:SetTextColor(UI.unpackc(C.active))
-		if plan then
-			a.dist:SetText("")                             -- método claro: distância irrelevante
-			a.name:SetText(plan)
-		else
-			a.dist:SetTextColor(UI.unpackc(C.amber))       -- "Vá para X": distância ajuda (andar/voar)
-			a.name:SetText(ns.L.OUT_OF_ZONE:format(localizedZone(tzone)))
-		end
+		a.dist:SetTextColor(UI.unpackc(C.amber))           -- "Vá para X": distância ajuda (andar/voar)
+		a.name:SetText(ns.L.OUT_OF_ZONE:format(localizedZone(tzone)))
 	else
 		local near = dist <= 14                             -- modo local/preciso
 		if near then a.tex:SetVertexColor(UI.unpackc(C.done)) else a.tex:SetVertexColor(1, 1, 1, 1) end
@@ -365,25 +440,21 @@ end
 function WP:Update()
 	local goal = self:PickTarget()
 	-- waypoint avulso (/way, treinador) aparece mesmo sem guia / com guia fechado
-	if not goal or not (ns.db and ns.db.arrow.enabled) or not (self.custom or ns:UIShown()) then
-		clearTomTom()
+	if not goal or not (ns.db and ns.db.arrow.enabled) or not (explicitDest() or ns:UIShown()) then
 		if arrow then arrow:Hide() end
 		return
 	end
-	if setTomTom(goal) then
-		if arrow then arrow:Hide() end
-	else
-		updateArrow(goal)
-	end
+	updateArrow(goal)
 end
 
 -- ticker: rotação/distância e proximidade -> conclui `goto`
 ns:Every(0.1, function()
-	if not (WP.custom or ns:UIShown()) then if arrow then arrow:Hide() end return end
+	if not (explicitDest() or ns:UIShown()) then if arrow then arrow:Hide() end return end
 	local goal = WP:PickTarget()
 	if not goal then if arrow then arrow:Hide() end return end
-	if not tomtomUID then updateArrow(goal) end
+	updateArrow(goal)
 	if UnitOnTaxi and UnitOnTaxi("player") then return end   -- em voo: não "chega" sobrevoando
+	if goal._leg then return end                              -- perna da rota: o Travel acompanha
 	local dist = WP:DistanceTo(goal)
 	if dist then
 		local radius = (goal.goto_.radius or 0) > 0 and goal.goto_.radius or 12

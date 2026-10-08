@@ -26,11 +26,8 @@ L.CAT_Attunements="Einstimmungen"; L.CAT_Reputation="Ruf"; L.CAT_Dailies="Tägli
 L.TM_KILL="> Lodestar: Ziel zum Töten"; L.TM_TALK="> Lodestar: Guide-Ziel"
 L.YARDS="%d m"; L.DEST="Ziel"
 
-L.CLASS_TRAINER="Klassenlehrer"; L.TRAINER_NONE="kein %s-Lehrer (%s) im Index."
-L.TRAINER_POINT="zeige zu %s (%s) in %s. /ls train off bricht ab."; L.TRAINER_LABEL="Lehrer: %s"
 L.PROF_USAGE="Nutzung: /ls prof <Beruf> (z.B. mining, alchemy, fishing)"
 L.PROF_NOTFOUND="Beruf '%s' nicht gefunden."; L.PROF_NONE="kein %s-Lehrer für %s."
-L.PROF_POINT="zeige zu %s (%s) in %s."; L.PROF_LABEL="%s: %s"
 L.MOUNT_30_T="Reittier verfügbar!"; L.MOUNT_30_S="Lerne Reiten (Lehrling) - 60% Tempo."
 L.MOUNT_60_T="Episches Reittier!"; L.MOUNT_60_S="Reiten (Geselle) - 100% Tempo."
 L.MOUNT_70_T="Fliegen verfügbar!"; L.MOUNT_70_S="Lerne Reiten (Experte) + ein Flugreittier."

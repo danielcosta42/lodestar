@@ -305,3 +305,40 @@ function UI.CornerFlourish(frame)
 		h:SetAlpha(0.7); v:SetAlpha(0.7)
 	end
 end
+
+--------------------------------------------------------------------------------
+-- Menu: uma coluna de botões presa ao `anchor`; clicar de novo, fora ou Esc fecha.
+-- items = { { texto, função }, ... }
+--------------------------------------------------------------------------------
+local menu
+function UI.Menu(anchor, items)
+	if menu and menu:IsShown() and menu._anchor == anchor then return menu:Hide() end
+	if not menu then
+		menu = UI.Panel(UIParent, { name = "LodestarMenu" })
+		menu:SetFrameStrata("FULLSCREEN_DIALOG"); menu:SetClampedToScreen(true)
+		menu.buttons = {}
+		tinsert(UISpecialFrames, "LodestarMenu")
+		ns:On("GLOBAL_MOUSE_DOWN", function()
+			if menu:IsShown() and not menu:IsMouseOver() and not (menu._anchor and menu._anchor:IsMouseOver()) then
+				menu:Hide()
+			end
+		end)
+	end
+	menu._anchor = anchor
+	for i, it in ipairs(items) do
+		local b = menu.buttons[i]
+		if not b then
+			b = UI.Button(menu, "", 200, 20)
+			b:SetPoint("TOPLEFT", 4, -4 - (i - 1) * 22)
+			b.text:ClearAllPoints(); b.text:SetPoint("LEFT", 8, 0)
+			menu.buttons[i] = b
+		end
+		b.text:SetText(it[1])
+		b:SetScript("OnClick", function() menu:Hide(); it[2]() end)
+		b:Show()
+	end
+	for i = #items + 1, #menu.buttons do menu.buttons[i]:Hide() end
+	menu:SetSize(208, 8 + #items * 22 - 2)
+	menu:ClearAllPoints(); menu:SetPoint("TOPRIGHT", anchor, "BOTTOMRIGHT", 0, -2)
+	menu:Show()
+end

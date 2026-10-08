@@ -26,14 +26,18 @@ local function localizedZone(engZone)
 	return engZone
 end
 
--- Texto de viagem p/ o passo atual quando o alvo está fora da zona (ou nil).
+-- Texto de viagem p/ o passo atual: a perna atual da rota (antes da última, a pé);
+-- sem rota e com o alvo fora da zona, "Vá para <zona>".
 local function travelHint()
+	local route = ns.Travel and ns.Travel:Route()
+	if route then
+		return route.leg < #route.legs and ns.Waypoint.LegText(route, route.leg) or nil
+	end
 	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
-	if not (tgt and tgt.goto_ and tgt.goto_.zone) then return nil end
-	local tz = tgt.goto_.zone
+	local tz = tgt and tgt.goto_ and tgt.goto_.zone
 	local TP = ns.TravelPlanner
-	if not TP or TP:InZone(tz) then return nil end                       -- já na zona (via mapa)
-	return TP:Plan(tz) or ns.L.OUT_OF_ZONE:format(localizedZone(tz))
+	if not tz or not TP or TP:InZone(tz) then return nil end            -- já na zona (via mapa)
+	return ns.L.OUT_OF_ZONE:format(localizedZone(tz))
 end
 
 -- Nome de exibição: quests usam o nome localizado do client quando possível.
@@ -128,6 +132,12 @@ local function getTab(i)
 end
 
 --------------------------------------------------------------------------------
+StaticPopupDialogs["LODESTAR_RESET"] = {
+	text = ns.L.ACT_RESET_CONFIRM, button1 = YES, button2 = NO,
+	OnAccept = function() SlashCmdList.LODESTAR("reset") end,
+	timeout = 0, whileDead = true, hideOnEscape = true, preferredIndex = 3,
+}
+
 local function build()
 	if frame then return frame end
 	local dbv = ns.db.viewer
@@ -160,7 +170,7 @@ local function build()
 	frame.title = header:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(frame.title, 13, { color = C.active })
 	frame.title:SetPoint("LEFT", dot, "RIGHT", 7, 0)
-	frame.title:SetPoint("RIGHT", header, "RIGHT", -92, 0)
+	frame.title:SetPoint("RIGHT", header, "RIGHT", -136, 0)
 	frame.title:SetJustifyH("LEFT"); frame.title:SetText("Lodestar")
 
 	local close = UI.CloseButton(header, function() V:Hide() end)
@@ -191,6 +201,46 @@ local function build()
 	cfgBtn:SetScript("OnEnter", function() cicon:SetVertexColor(UI.unpackc(C.accent)) end)
 	cfgBtn:SetScript("OnLeave", function() cicon:SetVertexColor(UI.unpackc(C.muted)) end)
 	cfgBtn:SetScript("OnClick", function() if ns.Settings then ns.Settings:Toggle() end end)
+
+	-- bússola: o painel Viagem (rota, destino, serviços)
+	local travelBtn = CreateFrame("Button", nil, header)
+	travelBtn:SetSize(20, 18)
+	travelBtn:SetPoint("RIGHT", cfgBtn, "LEFT", -2, 0)
+	local ticon = UI.Glyph(travelBtn, "seta-rota", "OVERLAY", 64)
+	ticon:SetSize(13, 13); ticon:SetPoint("CENTER"); ticon:SetVertexColor(UI.unpackc(C.muted))
+	travelBtn:SetScript("OnEnter", function(self)
+		ticon:SetVertexColor(UI.unpackc(C.accent))
+		GameTooltip:SetOwner(self, "ANCHOR_BOTTOM"); GameTooltip:SetText(ns.L.TRAVEL_TIP); GameTooltip:Show()
+	end)
+	travelBtn:SetScript("OnLeave", function() ticon:SetVertexColor(UI.unpackc(C.muted)); GameTooltip:Hide() end)
+	travelBtn:SetScript("OnClick", function() if ns.TravelPanel then ns.TravelPanel:Toggle() end end)
+
+	-- ⋯ Ações: o que antes só existia no /ls
+	local actBtn = CreateFrame("Button", nil, header)
+	actBtn:SetSize(20, 18)
+	actBtn:SetPoint("RIGHT", travelBtn, "LEFT", -2, 0)
+	local afs = actBtn:CreateFontString(nil, "OVERLAY")
+	UI.SetFont(afs, 14, { num = true, color = C.muted })
+	afs:SetPoint("CENTER", 0, 3); afs:SetText("···")
+	actBtn:SetScript("OnEnter", function(self)
+		afs:SetTextColor(UI.unpackc(C.accent))
+		GameTooltip:SetOwner(self, "ANCHOR_BOTTOM"); GameTooltip:SetText(ns.L.ACT_TIP); GameTooltip:Show()
+	end)
+	actBtn:SetScript("OnLeave", function() afs:SetTextColor(UI.unpackc(C.muted)); GameTooltip:Hide() end)
+	actBtn:SetScript("OnClick", function(self)
+		local L, run = ns.L, SlashCmdList.LODESTAR
+		UI.Menu(self, {
+			{ L.ACT_RESET, function() StaticPopup_Show("LODESTAR_RESET") end },
+			{ L.ACT_RESCAN, function() run("rescan") end },
+			{ L.ACT_EXPORT, function() run("export") end },
+			{ L.ACT_IMPORT, function() run("import") end },
+			{ L.ACT_RECORD, function() run("record") end },
+			{ L.ACT_SCAN_START, function() run("scan") end },
+			{ L.ACT_SCAN_STOP, function() run("scan stop") end },
+			{ L.ACT_SCAN_STATUS, function() run("scan status") end },
+			{ L.ACT_SCAN_CLEAR, function() run("scan clear") end },
+		})
+	end)
 
 	-- Tira de abas (guias abertos) ----------------------------------------
 	frame.tabStrip = CreateFrame("Frame", nil, frame)

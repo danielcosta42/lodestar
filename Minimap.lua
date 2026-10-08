@@ -44,7 +44,23 @@ local function build()
 
 	btn:SetScript("OnClick", function(_, mouse)
 		if mouse == "RightButton" then
-			if ns.Viewer then ns.Viewer:ToggleCollapse() end
+			local L = ns.L
+			UI.Menu(btn, {
+				{ L.MM_TOGGLE, function() SlashCmdList.LODESTAR("") end },
+				{ L.MM_COLLAPSE, function() if ns.Viewer then ns.Viewer:ToggleCollapse() end end },
+				{ L.MM_LIBRARY, function() if ns.GuideMenu then ns.GuideMenu:Toggle() end end },
+				{ L.TRAVEL_TITLE, function() if ns.TravelPanel then ns.TravelPanel:Toggle() end end },
+				{ L.MM_NEAR, function()
+					local items = {}
+					for _, kind in ipairs(ns.Services.KINDS) do
+						if kind ~= "proftrainer" then
+							items[#items + 1] = { L["SERVICE_" .. kind:upper()], function() ns.Services:GoTo(kind) end }
+						end
+					end
+					UI.Menu(btn, items)
+				end },
+				{ L.MM_SETTINGS, function() if ns.Settings then ns.Settings:Toggle() end end },
+			})
 		elseif not ns.currentGuide and ns.GuideMenu then
 			ns.GuideMenu:Toggle()          -- sem guia carregado: abre a biblioteca
 		elseif ns.Viewer then
@@ -57,7 +73,7 @@ local function build()
 		GameTooltip:SetOwner(btn, "ANCHOR_LEFT")
 		GameTooltip:AddLine("|cfff0c26aLodestar|r")
 		GameTooltip:AddLine("Clique: abrir/fechar", 0.8, 0.8, 0.8)
-		GameTooltip:AddLine("Clique-direito: recolher", 0.8, 0.8, 0.8)
+		GameTooltip:AddLine(ns.L.MM_RIGHT, 0.8, 0.8, 0.8)
 		GameTooltip:AddLine("Arraste: mover ao redor", 0.6, 0.6, 0.6)
 		GameTooltip:Show()
 	end)

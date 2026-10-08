@@ -7,7 +7,6 @@
 ## IconTexture: Interface\AddOns\Lodestar\lodestar-icones\logo-estrela-64
 ## SavedVariables: LodestarDB
 ## SavedVariablesPerCharacter: LodestarCharDB
-## OptionalDeps: TomTom
 ## X-Curse-Project-ID: 1608165
 ## X-Wago-ID:
 ## X-License: MIT
@@ -56,9 +55,13 @@ Squad.lua
 Gather.lua
 Consumables.lua
 SubZones.lua
-TransitData.lua
-FlightData.lua
+TravelData.lua
+Journey.lua
 TravelPlanner.lua
+Travel.lua
+Destinations.lua
+Services.lua
+RouteGeom.lua
 StepTracker.lua
 DungeonRuns.lua
 Waypoint.lua
@@ -67,8 +70,11 @@ QuestItem.lua
 Toast.lua
 WorldMapPin.lua
 GuideMap.lua
+RouteMap.lua
 FlightMap.lua
-Trail.lua
+RouteMinimap.lua
+Compass.lua
+TravelPanel.lua
 Minimap.lua
 TargetMarker.lua
 Milestones.lua

@@ -128,6 +128,8 @@ local DB_DEFAULTS = {
 	markTargets = true,   -- destacar NPCs/mobs-alvo (tooltip + nameplate)
 	trail = true,         -- caminho de formiga (minimapa + mapa-múndi)
 	questItem = true,     -- botão pra usar o item da missão do passo
+	corpseRoute = true,   -- fantasma: rota (vermelha) até o corpo
+	compass = { enabled = true, scale = 1, point = "TOP", x = 0, y = -14, locked = true },
 }
 local CHAR_DEFAULTS = {
 	currentGuide = nil,        -- chave do guia ativo (aba em foco)
@@ -168,6 +170,25 @@ end)
 --------------------------------------------------------------------------------
 -- Slash command
 --------------------------------------------------------------------------------
+-- Onde cada comando mora na interface: o /ls é só atalho. A checagem em
+-- tools/travel-tests.lua falha se um `cmd == "..."` abaixo não estiver aqui.
+ns.COMMAND_UI = {
+	menu = "guia: livro", guides = "guia: livro", list = "guia: livro", load = "guia: livro",
+	next = "guia: seta >", prev = "guia: seta <",
+	config = "guia: engrenagem", options = "guia: engrenagem", settings = "guia: engrenagem",
+	travel = "guia: bússola", viagem = "guia: bússola", way = "Viagem: coordenada / Limpar",
+	near = "Viagem: Mais perto", train = "Viagem: Treinador da classe", prof = "Viagem: Treinador de profissão",
+	reset = "guia: ⋯", rescan = "guia: ⋯", export = "guia: ⋯", import = "guia: ⋯",
+	record = "guia: ⋯", scan = "guia: ⋯",
+	party = "Config. Painéis", squad = "Config. Painéis", gather = "Config. Painéis", coleta = "Config. Painéis",
+	check = "Config. Painéis", consume = "Config. Painéis", raidprep = "Config. Painéis",
+	card = "Config. Painéis", intro = "Config. Painéis", item = "Config. Geral",
+	mark = "Config. Aparência", trail = "Config. Aparência", xp = "Config. Aparência",
+	coords = "Config. Aparência",
+	debug = "Config. Avançado", tdebug = "Config. Avançado", chains = "Config. Avançado",
+	calibrate = "Config. Avançado",
+}
+
 SLASH_LODESTAR1 = "/lodestar"
 SLASH_LODESTAR2 = "/ls"
 SlashCmdList.LODESTAR = function(msg)
@@ -254,16 +275,13 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Coords then ns.Coords.Update() end
 	elseif cmd == "card" then
 		if ns.ReportCard then ns.ReportCard:Show(UnitLevel("player") or 1) end
+	elseif cmd == "way" and (rest == "off" or rest == "clear") then
+		if ns.Waypoint then ns.Waypoint:ClearCustom() end
+		ns:Print(ns.L.DEST_CLEARED)
 	elseif cmd == "way" then
-		local x, y, zone = rest:match("^([%d%.]+)[%s,]+([%d%.]+)%s*(.*)$")
-		x, y = tonumber(x), tonumber(y)
-		if x and y and ns.Waypoint then
-			zone = (zone ~= "" and zone) or (GetZoneText and GetZoneText()) or nil
-			ns.Waypoint:SetCustom(zone, x, y, ns.L.WAYPOINT)
-			ns:Printf("%s: %s %.1f, %.1f", ns.L.WAYPOINT, zone or "?", x, y)
-		else
-			ns:Print("/ls way <x> <y> [zona]")
-		end
+		if not (ns.Waypoint and ns.Waypoint:Way(rest)) then ns:Print("/ls way <x> <y> [zona]") end
+	elseif cmd == "travel" or cmd == "viagem" then
+		if ns.TravelPanel then ns.TravelPanel:Toggle() end
 	elseif cmd == "export" then
 		if ns.Share then ns.Share:ShowExport(rest ~= "" and rest or nil) end
 	elseif cmd == "import" then
@@ -278,8 +296,20 @@ SlashCmdList.LODESTAR = function(msg)
 		if rest == "off" then
 			if ns.Waypoint then ns.Waypoint:ClearCustom() end
 			ns:Print(ns.L.TRAIN_CANCEL)
-		elseif ns.Milestones then
-			ns.Milestones:GotoTrainer()
+		elseif ns.Services then
+			ns.Services:GoTo("classtrainer")
+		end
+	elseif cmd == "near" then
+		local word, arg = rest:match("^(%S*)%s*(.*)$")
+		local kind = ns.Services and ns.Services.KindFromText(word)
+		if kind == "proftrainer" then               -- "near prof mining"
+			if ns.Milestones then ns.Milestones:GotoProfTrainer(arg) end
+		elseif kind then
+			ns.Services:GoTo(kind)
+		elseif rest ~= "" and ns.Milestones then   -- só o nome: "near mining"
+			ns.Milestones:GotoProfTrainer(rest)
+		else
+			ns:Print(ns.L.NEAR_USAGE)
 		end
 	elseif cmd == "prof" then
 		if ns.Milestones then ns.Milestones:GotoProfTrainer(rest) end

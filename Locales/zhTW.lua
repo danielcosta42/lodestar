@@ -24,11 +24,8 @@ L.CAT_Attunements="入場資格"; L.CAT_Reputation="聲望"; L.CAT_Dailies="每�
 L.TM_KILL="> Lodestar：擊殺目標"; L.TM_TALK="> Lodestar：指南目標"
 L.YARDS="%d 碼"; L.DEST="目的地"
 
-L.CLASS_TRAINER="職業訓練師"; L.TRAINER_NONE="索引中沒有 %s 訓練師（%s）。"
-L.TRAINER_POINT="指向 %s（%s，%s）。/ls train off 取消。"; L.TRAINER_LABEL="訓練師：%s"
 L.PROF_USAGE="用法：/ls prof <專業>（如 mining、alchemy、fishing）"
 L.PROF_NOTFOUND="找不到專業 '%s'。"; L.PROF_NONE="沒有 %s 訓練師（%s）。"
-L.PROF_POINT="指向 %s（%s，%s）。"; L.PROF_LABEL="%s：%s"
 L.MOUNT_30_T="可學習坐騎！"; L.MOUNT_30_S="學習騎術（學徒）- 60% 速度。"
 L.MOUNT_60_T="史詩坐騎！"; L.MOUNT_60_S="騎術（熟練）- 100% 速度。"
 L.MOUNT_70_T="可以飛行了！"; L.MOUNT_70_S="學習騎術（專家）+ 飛行坐騎。"
