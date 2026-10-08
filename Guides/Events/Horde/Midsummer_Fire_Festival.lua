@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Horde/Midsummer Fire Festival", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "fb0e7d37",
 }, [[
 step
   talk Festival Talespinner##16818
@@ -27,12 +28,14 @@ step
   collect Flame of Ironforge##181333 |goto Ironforge 64.6,24.84 |tip Loot the quest item here — it starts the quest.
   accept Stealing Ironforge's Flame##9331 |goto Ironforge 64.6,24.84
 step
+  note Return the Flame of Ironforge to the Festival Talespinner.
   talk Festival Talespinner##16818
   turnin Stealing Ironforge's Flame##9331 |goto Undercity 66.47,37.76
 step
   collect Flame of Stormwind##181332 |goto Stormwind City 49.71,72.29 |tip Loot the quest item here — it starts the quest.
   accept Stealing Stormwind's Flame##9330 |goto Stormwind City 49.71,72.29
 step
+  note Return the Flame of Stormwind to the Festival Talespinner.
   talk Festival Talespinner##16818
   turnin Stealing Stormwind's Flame##9330 |goto Undercity 66.47,37.76
 step
@@ -75,6 +78,7 @@ step
   collect Flame of Darnassus##181334 |goto Teldrassil 56.6,92.12 |tip Loot the quest item here — it starts the quest.
   accept Stealing Darnassus's Flame##9332 |goto Teldrassil 56.6,92.12
 step
+  note Return the Flame of Darnassus to the Festival Talespinner.
   talk Festival Talespinner##16818
   turnin Stealing Darnassus's Flame##9332 |goto Undercity 66.47,37.76
 step

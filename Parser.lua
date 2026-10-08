@@ -7,7 +7,7 @@ local ADDON, ns = ...
 local VERBS = {
 	accept = true, turnin = true, kill = true, collect = true, talk = true,
 	click = true, use = true, buy = true, fpath = true, home = true,
-	ding = true, goto_ = true, note = true, get = true, run = true,
+	ding = true, goto_ = true, note = true, get = true,
 }
 -- "goto" é palavra reservada em Lua; no texto é "goto", mapeado abaixo.
 

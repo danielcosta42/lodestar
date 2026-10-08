@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (31-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Badlands (37-43)",
+	rev = "a919f687",
 }, [[
 step
   talk Archmage Malin##2708
@@ -109,34 +110,30 @@ step
 step
   turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
-  talk Sara Balloo##2695
-  turnin Sully Balloo's Letter##637 |goto Ironforge 63.5,67.3 |tip {turninat}Ironforge
-step
-  talk Brewmeister Bilger##2705
-  turnin MacKreel's Moonshine##647 |goto Hillsbrad Foothills 52.13,58.74 |tip {turninat}Hillsbrad Foothills
-step
   click Wanted Board##2713
   accept Wanted!  Marez Cowl##684 |goto Arathi Highlands 46.04,47.76
 step
-  click Wanted Board##2713
-  accept Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
+  talk Skuerto##2789
+  accept Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
+step
+  note Find Trelane's Wand of Invocation and return it to Skuerto at Refuge Pointe.
+  collect Trelane's Wand of Invocation##4525 |q 693 |goto Arathi Highlands 54.75,81.87 |tip {dropsfrom}Kor'gresh Coldrage
 step
   note Bring Marez's head to Captain Nials at Refuge Pointe.
   kill Marez Cowl##2783 |goto Arathi Highlands 29.47,64.14 |elite
   collect Marez's Head##4515 |q 684 |goto Arathi Highlands 29.47,64.14
 step
-  note Bring Otto's Head and Falconcrest's Head to Captain Nials at Refuge Pointe.
-  kill Otto##2599 |goto Arathi Highlands 26.22,65.55 |elite
-  collect Otto's Head##4516 |q 685 |goto Arathi Highlands 26.22,65.55
-step
   talk Captain Nials##2700
   turnin Wanted!  Marez Cowl##684 |goto Arathi Highlands 45.83,47.56
 step
-  talk Captain Nials##2700
-  turnin Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 45.83,47.56
+  talk Skuerto##2789
+  turnin Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
 step
-  talk Sara Balloo##2695
-  accept Sara Balloo's Plea##683 |goto Ironforge 63.5,67.3
+  talk Skuerto##2789
+  accept Trelane's Defenses##694 |goto Arathi Highlands 46.65,47.01
+step
+  click Wanted Board##2713
+  accept Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
 step
   talk First Mate Nilzlix##2767
   accept Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
@@ -153,8 +150,13 @@ step
   note Captain Steelgut in Faldir's Cove wants you to kill 10 Daggerspine Raiders and 3 Daggerspine Sorceresses.
   kill Daggerspine Raider##2595 |q 664 |goto Arathi Highlands 22.57,86.91
 step
-  talk King Magni Bronzebeard##2784
-  turnin Sara Balloo's Plea##683 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
+  note Bring Otto's Head and Falconcrest's Head to Captain Nials at Refuge Pointe.
+  kill Otto##2599 |goto Arathi Highlands 26.22,65.55 |elite
+  collect Otto's Head##4516 |q 685 |goto Arathi Highlands 26.22,65.55
+step
+  note Find an Azure Agate and bring it to Apprentice Kryten at Refuge Pointe.
+  kill Boulderfist Shaman##2570 |goto Arathi Highlands 19.97,67.51 |elite
+  collect Azure Agate##4527 |q 694 |goto Arathi Highlands 19.97,67.51
 step
   talk First Mate Nilzlix##2767
   turnin Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
@@ -165,97 +167,38 @@ step
   talk Doctor Draxlegauge##2774
   turnin Sunken Treasure##665 |goto Arathi Highlands 33.86,80.45
 step
-  talk King Magni Bronzebeard##2784
-  accept A King's Tribute##686 |goto Ironforge 39.09,56.2
-step
-  talk Skuerto##2789
-  accept Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
-step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
-step
-  click Stone of Inner Binding##2702
-  accept Breaking the Keystone##652 |goto Arathi Highlands 36.23,57.38
-step
-  note Find Trelane's Wand of Invocation and return it to Skuerto at Refuge Pointe.
-  collect Trelane's Wand of Invocation##4525 |q 693 |goto Arathi Highlands 54.75,81.87 |tip {dropsfrom}Kor'gresh Coldrage
 step
   note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
   collect 10 Elven Gem##4492 |q 666 |goto Arathi Highlands 23,89 |tip {dropsfrom}Calcified Elven Gem
 step
-  note Find and kill Fozruk. Bring the Rod of Order to the Keystone in the Arathi Highlands.
-  kill Fozruk##2611 |goto Arathi Highlands 63.9,30 |elite
-  collect Rod of Order##4469 |q 652 |goto Arathi Highlands 63.9,30
-step
-  talk Grand Mason Marblesten##2790
-  turnin A King's Tribute##686 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge
-step
-  talk Skuerto##2789
-  turnin Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
-step
   talk Doctor Draxlegauge##2774
   turnin Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
-step
-  turnin Breaking the Keystone##652 |goto Arathi Highlands 36.08,58.09
-step
-  only completed(659)
-  talk Phin Odelic##2711
-  turnin Hints of a New Plague?##661 |goto Hillsbrad Foothills 50.35,59.05 |tip {turninat}Hillsbrad Foothills
-step
-  talk Grand Mason Marblesten##2790
-  accept A King's Tribute##689 |goto Ironforge 39.04,88.05
-step
-  talk Skuerto##2789
-  accept Trelane's Defenses##694 |goto Arathi Highlands 46.65,47.01
-step
-  click Keystone##2688
-  accept Myzrael's Allies##653 |goto Arathi Highlands 36.08,58.09
 step
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##668 |goto Arathi Highlands 33.86,80.45
 step
-  note Grand Mason Marblesten of Ironforge wants 5 pieces of Alterac Granite.
-  collect Alterac Granite##4521 |q 689 |goto Hillsbrad Foothills 43.54,30.19
-step
-  note Find an Azure Agate and bring it to Apprentice Kryten at Refuge Pointe.
-  kill Boulderfist Shaman##2570 |goto Arathi Highlands 19.97,67.51 |elite
-  collect Azure Agate##4527 |q 694 |goto Arathi Highlands 19.97,67.51
-step
-  talk Grand Mason Marblesten##2790
-  turnin A King's Tribute##689 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge
-step
-  talk Apprentice Kryten##2788
-  turnin Trelane's Defenses##694 |goto Arathi Highlands 46.2,47.75
-step
-  talk Gerrig Bonegrip##2786
-  turnin Myzrael's Allies##653 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
-step
   talk Shakes O'Breen##2610
   turnin Sunken Treasure##668 |goto Arathi Highlands 32.28,81.38
-step
-  talk Grand Mason Marblesten##2790
-  accept A King's Tribute##700 |goto Ironforge 39.04,88.05
-step
-  talk Apprentice Kryten##2788
-  accept An Apprentice's Enchantment##695 |goto Arathi Highlands 46.2,47.75
 step
   talk Shakes O'Breen##2610
   accept Sunken Treasure##669 |goto Arathi Highlands 32.28,81.38
 step
-  talk King Magni Bronzebeard##2784
-  turnin A King's Tribute##700 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
+  talk Captain Nials##2700
+  turnin Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 45.83,47.56
+step
+  talk Apprentice Kryten##2788
+  turnin Trelane's Defenses##694 |goto Arathi Highlands 46.2,47.75
+step
+  talk Apprentice Kryten##2788
+  accept An Apprentice's Enchantment##695 |goto Arathi Highlands 46.2,47.75
 step
   talk Skuerto##2789
   turnin An Apprentice's Enchantment##695 |goto Arathi Highlands 46.65,47.01
 step
-  talk Fleet Master Seahorn##2487
-  turnin Sunken Treasure##669 |goto Stranglethorn Vale 27.17,77.01 |tip {turninat}Stranglethorn Vale
-step
   talk Skuerto##2789
   accept Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
-step
-  talk Fleet Master Seahorn##2487
-  accept Sunken Treasure##670 |goto Stranglethorn Vale 27.17,77.01
 step
   note Find Trelane's Phylactery, Trelane's Orb, and Trelane's Ember Agate, and return them to Skuerto at Refuge Pointe.
   collect Trelane's Phylactery##4530 |q 696 |goto Arathi Highlands 18.18,68.14 |tip {dropsfrom}Trelane's Footlocker
@@ -263,17 +206,75 @@ step
   talk Skuerto##2789
   turnin Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
 step
-  talk Shakes O'Breen##2610
-  turnin Sunken Treasure##670 |goto Arathi Highlands 32.28,81.38
-step
   talk Skuerto##2789
   accept Malin's Request##697 |goto Arathi Highlands 46.65,47.01
 step
+  click Stone of Inner Binding##2702
+  accept Breaking the Keystone##652 |goto Arathi Highlands 36.23,57.38
+step
+  note Find and kill Fozruk. Bring the Rod of Order to the Keystone in the Arathi Highlands.
+  kill Fozruk##2611 |goto Arathi Highlands 63.9,30 |elite
+  collect Rod of Order##4469 |q 652 |goto Arathi Highlands 63.9,30
+step
+  turnin Breaking the Keystone##652 |goto Arathi Highlands 36.08,58.09
+step
+  click Keystone##2688
+  accept Myzrael's Allies##653 |goto Arathi Highlands 36.08,58.09
+step
+  talk Sara Balloo##2695
+  turnin Sully Balloo's Letter##637 |goto Ironforge 63.5,67.3 |tip {turninat}Ironforge
+step
+  talk Brewmeister Bilger##2705
+  turnin MacKreel's Moonshine##647 |goto Hillsbrad Foothills 52.13,58.74 |tip {turninat}Hillsbrad Foothills
+step
+  talk Sara Balloo##2695
+  accept Sara Balloo's Plea##683 |goto Ironforge 63.5,67.3
+step
+  talk King Magni Bronzebeard##2784
+  turnin Sara Balloo's Plea##683 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
+step
+  talk King Magni Bronzebeard##2784
+  accept A King's Tribute##686 |goto Ironforge 39.09,56.2
+step
+  talk Grand Mason Marblesten##2790
+  turnin A King's Tribute##686 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge
+step
+  only completed(659)
+  talk Phin Odelic##2711
+  turnin Hints of a New Plague?##661 |goto Hillsbrad Foothills 50.35,59.05 |tip {turninat}Hillsbrad Foothills
+step
+  talk Gerrig Bonegrip##2786
+  turnin Myzrael's Allies##653 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
+step
+  talk Grand Mason Marblesten##2790
+  accept A King's Tribute##689 |goto Ironforge 39.04,88.05
+step
+  note Grand Mason Marblesten of Ironforge wants 5 pieces of Alterac Granite.
+  collect Alterac Granite##4521 |q 689 |goto Hillsbrad Foothills 43.54,30.19
+step
+  talk Grand Mason Marblesten##2790
+  turnin A King's Tribute##689 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge
+step
+  talk Fleet Master Seahorn##2487
+  turnin Sunken Treasure##669 |goto Stranglethorn Vale 27.17,77.01 |tip {turninat}Stranglethorn Vale
+step
+  talk Grand Mason Marblesten##2790
+  accept A King's Tribute##700 |goto Ironforge 39.04,88.05
+step
+  talk King Magni Bronzebeard##2784
+  turnin A King's Tribute##700 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
+step
+  talk Fleet Master Seahorn##2487
+  accept Sunken Treasure##670 |goto Stranglethorn Vale 27.17,77.01
+step
   talk Shakes O'Breen##2610
-  accept Death From Below##667 |goto Arathi Highlands 32.28,81.38
+  turnin Sunken Treasure##670 |goto Arathi Highlands 32.28,81.38
 step
   talk Archmage Malin##2708
   turnin Malin's Request##697 |goto Stormwind City 50.5,87.47 |tip {turninat}Stormwind City
+step
+  talk Shakes O'Breen##2610
+  accept Death From Below##667 |goto Arathi Highlands 32.28,81.38
 step
   talk Shakes O'Breen##2610
   turnin Death From Below##667 |goto Arathi Highlands 32.28,81.38

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Razorfen Downs", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "a069c183",
 }, [[
 step
   talk Myriam Moonsinger##12866
@@ -27,9 +28,11 @@ step
   talk Myriam Moonsinger##12866
   turnin A Host of Evil##6626 |goto The Barrens 49.01,94.94
 step
+  note Take the Small Scroll to Varimathras in the Undercity.
   talk Varimathras##2425
   turnin An Unholy Alliance##6522 |goto Undercity 56.25,92.2
 step
+  note If you agree to aid Belnistrasz, speak with him again and hand the Oathstone he gave you back to him.
   talk Belnistrasz##8516
   turnin Scourge of the Downs##3523 |goto Razorfen Downs - Dungeon -1,-1
 step
@@ -49,5 +52,6 @@ step
   talk Varimathras##2425
   turnin An Unholy Alliance##6521 |goto Undercity 56.25,92.2
 step
+  note Escort Belnistrasz to the Quilboar's idol in Razorfen Downs.
   turnin Extinguishing the Idol##3525 |goto Razorfen Downs - Dungeon -1,-1
 ]])

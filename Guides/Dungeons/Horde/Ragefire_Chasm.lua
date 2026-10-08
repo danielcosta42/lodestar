@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Ragefire Chasm", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "d0e49efd",
 }, [[
 step
   talk Thrall##4949
@@ -42,6 +43,7 @@ step
   talk Neeru Fireblade##3216
   turnin Slaying the Beast##5761 |goto Orgrimmar 49.47,50.59
 step
+  note Search Ragefire Chasm for Maur Grimtotem's corpse and search it for any items of interest.
   talk Maur Grimtotem##11834
   turnin Searching for the Lost Satchel##5722 |goto Ragefire Chasm - Dungeon -1,-1
 step
@@ -60,6 +62,7 @@ step
   talk Thrall##4949
   turnin Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82
 step
+  note Take the Grimtotem Satchel to Rahauro in Thunder Bluff.
   talk Rahauro##11833
   turnin Returning the Lost Satchel##5724 |goto Thunder Bluff 70.14,29.52
 step

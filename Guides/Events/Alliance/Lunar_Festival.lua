@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Lunar Festival", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "10e9ffea",
 }, [[
 step
   talk Elder Riversong##15605
@@ -161,6 +162,7 @@ step
   talk Valadar Starsong##15864
   accept Elune's Blessing##8868 |goto Moonglade 53.65,35.26
 step
+  note Summon Omen, defeat him and gain Elune's Blessing. Return to Valadar Starsong in Nighthaven
   talk Valadar Starsong##15864
   turnin Elune's Blessing##8868 |goto Moonglade 53.65,35.26
 step
@@ -267,6 +269,7 @@ step
   accept The Lunar Festival##8870 |goto Stormwind City 61.74,75.73
 step
   only not completed(8871) not completed(8872) not haveq(8871) not haveq(8872)
+  note Talk to the Lunar Festival Harbinger in the Mystic Ward of Ironforge. You can also talk to Lunar Festival Harbingers in other capital cities.
   talk Lunar Festival Harbinger##15895
   turnin The Lunar Festival##8870 |goto Undercity 65.62,36
 step
@@ -282,6 +285,7 @@ step
   talk Lunar Festival Harbinger##15895
   accept Valadar Starsong##8883 |goto Undercity 65.62,36
 step
+  note Use your Lunar Festival Invitation in the moonlight to travel to Moonglade. Speak with Valadar Starsong in Nighthaven when you arrive.
   talk Valadar Starsong##15864
   turnin Valadar Starsong##8883 |goto Moonglade 53.65,35.26
 step

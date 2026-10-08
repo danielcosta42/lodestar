@@ -28,6 +28,12 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - **Travel planner** — the fastest trip by travel time, leg by leg: walking, the flight paths you know
   (and new ones you pick up on the way), boats, zeppelins, the Deeprun Tram, your hearthstone and
   class teleports. It replans as you go, and the flight map highlights where to fly.
+- **Walks follow the terrain** — the walking part of a route goes around mountains, cliffs and
+  lakes instead of a straight line (from the game client's own terrain; enclosed cities still
+  fall back to a straight line).
+- **Boat and zeppelin times** — once Lodestar hears a zeppelin master or shipmaster announce an
+  arrival (or you ride one), it learns that transport's schedule: the route uses the real wait, the
+  arrow counts down ("leaves in 1m20s", "board now") and an alert sounds 30 s before it docks.
 - **Goes where you need** — your guide step, your corpse while you're a ghost, a **Shift+click** on the
   map or minimap, a typed coordinate, or the **nearest** class/profession trainer, repair, vendor, inn,
   bank, auction house, flight master or stable (nearest by travel time, not straight line). All in the
@@ -35,7 +41,7 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - **Multiple guides open at once as tabs** — switch, add, or close routes on the fly, with a clean empty state when none is loaded.
 
 ### Automation (never get stuck)
-- **Auto-accept**, **auto-turn-in**, and **auto-reward** (picks the best reward using a class-aware gear score).
+- **Auto-accept**, **auto-turn-in**, and optional **auto-reward** (off by default; picks the best reward using a class-aware gear score).
 - Auto-selects the right gossip/quest option and auto-shares quests with your party.
 - **Auto-skips** a step whose NPC no longer offers its quest — imperfect data never stalls you.
 
@@ -58,7 +64,8 @@ what it always was: a file you hand over on purpose.
 
 ### For contributors
 - **Import / export** guides with share codes; record your own route in-game.
-- Fully localized: enUS, ptBR, deDE, esES, esMX, frFR, itIT, koKR, ruRU, zhCN, zhTW.
+- Interface in English and Brazilian Portuguese; deDE, esES, esMX, frFR, itIT, koKR, ruRU, zhCN and zhTW
+  translate the main labels and fall back to English for the rest. Translations welcome.
 
 ---
 
@@ -93,6 +100,9 @@ what it always was: a file you hand over on purpose.
   flavor) by the Questie team, plus what `/ls scan` collects in-game for content no database has yet.
 - Flight paths, boats and zeppelins come from the game client's own tables (TaxiNodes, TaxiPath,
   TaxiPathNode, via [wago.tools](https://wago.tools)); `tools/gen_travel.py` regenerates them.
+- Trainers the database leaves untitled (Forever's Horde paladin trainers, the junior profession
+  instructors) are recognised by the title the game client caches (`Cache/WDB`); `tools/gen_trainers.py`
+  reads it.
 - No data is scraped from any site: Wowhead's terms allow browsers only, and we intend this data
   to be reusable by anyone.
 - Code: **MIT**. Bug reports and pull requests welcome on [GitHub](https://github.com/danielcosta42/lodestar).

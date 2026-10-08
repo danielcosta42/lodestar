@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Barrens (23-30)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (27-35)",
+	rev = "8f2fee4e",
 }, [[
 step
   talk Korran##3428
@@ -185,6 +186,34 @@ step
   talk Kil'hala##3484
   turnin Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
 step
+  talk Tatternack Steelforge##3433
+  accept A New Ore Sample##1153 |goto The Barrens 45.1,57.68
+step
+  talk Kadrak##8582
+  accept Horde Presence##3514 |goto The Barrens 48.12,5.42
+step
+  only Warrior completed(1824)
+  talk Thun'grim Firegaze##5878
+  accept Brutal Armor##1838 |goto The Barrens 57.23,30.34
+step
+  talk Jorn Skyseer##3387
+  accept Melor Sends Word##1130 |goto The Barrens 44.86,59.14
+step
+  talk Feegly the Exiled##3421
+  accept The Tear of the Moons##857 |goto The Barrens 48.97,86.31
+step
+  note Feegly the Exiled wants you to retrieve for him the Tear of the Moons.
+  collect Tear of the Moons##5038 |q 857 |goto The Barrens 49.13,84.25 |tip {dropsfrom}General Twinbraid's Strongbox
+step
+  talk Feegly the Exiled##3421
+  turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
+step
+  talk Regthar Deathgate##3389
+  accept The Kolkar of Desolace##1362 |goto The Barrens 45.34,28.41
+step
+  talk Korran##3428
+  accept The Swarm Grows##1145 |goto The Barrens 51.07,29.63
+step
   only Rogue completed(2458)
   talk Shenthul##3401
   turnin Mission: Possible But Not Probable##2478 |goto Orgrimmar 43.05,53.74 |tip {turninat}Orgrimmar
@@ -199,18 +228,14 @@ step
   talk Ziz Fizziks##4201
   turnin Further Instructions##1095 |goto Stonetalon Mountains 58.99,62.6 |tip {turninat}Stonetalon Mountains
 step
-  talk Feegly the Exiled##3421
-  accept The Tear of the Moons##857 |goto The Barrens 48.97,86.31
+  talk Melor Stonehoof##3441
+  turnin Melor Sends Word##1130 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
 step
-  talk Jorn Skyseer##3387
-  accept Melor Sends Word##1130 |goto The Barrens 44.86,59.14
+  talk Felgur Twocuts##5395
+  turnin The Kolkar of Desolace##1362 |goto Desolace 56.19,59.57 |tip {turninat}Desolace
 step
-  only Warrior completed(1824)
-  talk Thun'grim Firegaze##5878
-  accept Brutal Armor##1838 |goto The Barrens 57.23,30.34
-step
-  talk Regthar Deathgate##3389
-  accept The Kolkar of Desolace##1362 |goto The Barrens 45.34,28.41
+  talk Belgrom Rockmaul##4485
+  turnin The Swarm Grows##1145 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
 step
   only Warrior
   talk Torm Ragetotem##3041
@@ -219,9 +244,6 @@ step
   only Warlock
   talk Gan'rul Bloodeye##5875
   accept Seeking Strahad##2996 |goto Orgrimmar 48.25,45.28
-step
-  talk Korran##3428
-  accept The Swarm Grows##1145 |goto The Barrens 51.07,29.63
 step
   only Warlock not completed(4736) not completed(4738) not completed(4739) not haveq(4736) not haveq(4738) not haveq(4739)
   talk Zevrost##3326
@@ -238,9 +260,6 @@ step
   note Kill the shredders XT:4 and XT:9, then return to Seereth Stonebreak at the border of the Stonetalon Mountains and the Barrens.
   kill XT:4##4073 |q 1068 |goto Stonetalon Mountains 67.2,46.69
 step
-  note Feegly the Exiled wants you to retrieve for him the Tear of the Moons.
-  collect Tear of the Moons##5038 |q 857 |goto The Barrens 49.13,84.25 |tip {dropsfrom}General Twinbraid's Strongbox
-step
   only Warrior completed(1824)
   note Bring to Thun'grim Firegaze 15 Smoky Iron Ingots, 10 Powdered Azurite, 10 Iron Bars and a Vial of Phlogiston.
   collect Smoky Iron Ingot##7126 |q 1838 |goto Stonetalon Mountains 71.76,60.29 |tip {dropsfrom}Windshear Vermin, Windshear Digger, Windshear Tunnel Rat
@@ -256,18 +275,9 @@ step
   talk Seereth Stonebreak##4049
   turnin Shredding Machines##1068 |goto The Barrens 35.26,27.88
 step
-  talk Feegly the Exiled##3421
-  turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
-step
-  talk Melor Stonehoof##3441
-  turnin Melor Sends Word##1130 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
-step
   only Warrior completed(1824)
   talk Thun'grim Firegaze##5878
   turnin Brutal Armor##1838 |goto The Barrens 57.23,30.34
-step
-  talk Felgur Twocuts##5395
-  turnin The Kolkar of Desolace##1362 |goto Desolace 56.19,59.57 |tip {turninat}Desolace
 step
   only Warrior
   talk Klannoc Macleod##6236
@@ -276,9 +286,6 @@ step
   only Warlock
   talk Strahad Farsan##6251
   turnin Seeking Strahad##2996 |goto The Barrens 62.63,35.5
-step
-  talk Belgrom Rockmaul##4485
-  turnin The Swarm Grows##1145 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
 step
   only Warlock not completed(4736) not completed(4738) not completed(4739) not haveq(4736) not haveq(4738) not haveq(4739)
   talk Menara Voidrender##6266
@@ -294,12 +301,6 @@ step
   only completed(1094)
   talk Ziz Fizziks##4201
   accept Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6
-step
-  talk Tatternack Steelforge##3433
-  accept A New Ore Sample##1153 |goto The Barrens 45.1,57.68
-step
-  talk Kadrak##8582
-  accept Horde Presence##3514 |goto The Barrens 48.12,5.42
 step
   only Warrior completed(1824)
   talk Thun'grim Firegaze##5878

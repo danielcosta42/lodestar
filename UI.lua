@@ -46,19 +46,6 @@ local function unpackc(c, a)
 end
 UI.unpackc = unpackc
 
--- Gradiente compatível (API nova SetGradient; fallback SetGradientAlpha).
-function UI.Gradient(tex, orientation, c1, c2)
-	tex:SetColorTexture(1, 1, 1, 1)
-	if tex.SetGradient and CreateColor then
-		local ok = pcall(tex.SetGradient, tex, orientation,
-			CreateColor(unpackc(c1)), CreateColor(unpackc(c2)))
-		if ok then return end
-	end
-	if tex.SetGradientAlpha then
-		tex:SetGradientAlpha(orientation, unpackc(c1), unpackc(c2))
-	end
-end
-
 function UI.SetFont(fs, size, opts)
 	opts = opts or {}
 	local font = opts.title and UI.FONT_TITLE or (opts.num and UI.FONT_NUM) or UI.FONT
@@ -258,16 +245,17 @@ function UI.Slider(parent, minV, maxV, step, onChange)
 	thumb:SetTexture(UI.MEDIA .. "dot"); thumb:SetSize(16, 16)
 	thumb:SetVertexColor(0.96, 0.94, 0.86, 1)
 	s:SetThumbTexture(thumb)
-	s:SetScript("OnValueChanged", function(self, val)
+	local function paint(val)
 		local frac = (maxV > minV) and (val - minV) / (maxV - minV) or 0
 		fill:SetWidth(math.max(1, (bg:GetWidth() or 100) * frac))
+	end
+	s:SetScript("OnValueChanged", function(self, val)
+		paint(val)
 		if onChange then onChange(val) end
 	end)
-	-- reaplica ao mostrar (largura só existe após o layout)
-	s:SetScript("OnShow", function(self)
-		local h = self:GetScript("OnValueChanged")
-		if h then h(self, self:GetValue()) end
-	end)
+	-- só repinta ao mostrar (largura só existe após o layout): regravar o valor aqui
+	-- desfazia o que mudou por fora desde que a página foi montada
+	s:SetScript("OnShow", function(self) paint(self:GetValue() or minV) end)
 	return s
 end
 

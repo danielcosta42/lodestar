@@ -168,13 +168,14 @@ python tools/import_scan.py                     # opcional: o /ls scan de todos 
 python tools/import_forever.py <pasta do QuestieDB>
 python tools/generate_all.py 60
 python tools/gen_special.py
-python tools/gen_prereq.py
 python tools/gen_zonedata.py
-python tools/gen_trainers.py
+python tools/gen_trainers.py                    # + títulos do cache do cliente (Cache/WDB; LODESTAR_WDB)
 python tools/gen_travel.py                      # voos, barcos, zepelins, bonde, serviços
+python tools/gen_terrain.py                     # caminho a pé: terreno do CASC local (casc.py)
 python tools/gen_subzones.py <pasta do QuestieDB>
 python tools/gen_forever.py
 python tools/validate_guides.py
+python tools/check_special.py                  # masmorras e sintonizações, por raça x classe
 luajit tools/forever-guides.lua
 ```
 

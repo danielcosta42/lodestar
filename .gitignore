@@ -20,12 +20,12 @@ tools/*
 !tools/router.py
 !tools/generate_all.py
 !tools/gen_special.py
-!tools/gen_prereq.py
 !tools/gen_zonedata.py
 !tools/gen_trainers.py
 !tools/gen_travel.py
 !tools/gen_subzones.py
 !tools/validate_guides.py
+!tools/check_special.py
 !tools/guide_integrity.py
 
 # Internal documentation (not shipped) — specs, plans, design notes stay LOCAL
@@ -57,3 +57,5 @@ desktop.ini
 
 # relatório de auditoria (local)
 AUDIT_REPORT.html
+!tools/casc.py
+!tools/gen_terrain.py

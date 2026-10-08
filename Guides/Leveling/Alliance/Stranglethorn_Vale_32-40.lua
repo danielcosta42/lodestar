@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (32-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Alterac Mountains (34-40)",
+	rev = "6c2691f0",
 }, [[
 step
   talk Barnil Stonepot##716
@@ -298,18 +299,20 @@ step
   talk Drizzlik##2495
   turnin Excelsior##628 |goto Stranglethorn Vale 28.29,77.59
 step
-  only completed(1040)
-  talk Clerk Daltry##267
-  turnin The Caravan Road##1041 |goto Duskwood 72.54,46.87 |tip {turninat}Duskwood
+  talk Sir S. J. Erlgadin##718
+  accept Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
 step
-  turnin Crystal in the Mountains##635 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
+  talk Lieutenant Doren##469
+  accept Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
 step
-  only completed(1222)
-  talk Angus Stern##1141
-  accept Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64
+  talk Brother Nimetz##739
+  accept Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
 step
-  talk Angus Stern##1141
-  accept A Meal Served Cold##212 |goto Stormwind City 51.79,93.64
+  talk Barnil Stonepot##716
+  accept The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
+step
+  note Collect the missing pages from The Green Hills of Stranglethorn manuscript. Once all four chapters are complete, return them to Barnil.
+  collect Green Hills of Stranglethorn - Chapter I##2756 |q 338 |goto Stranglethorn Vale 35.66,10.53
 step
   talk Barnil Stonepot##716
   accept Chapter I##339 |goto Stranglethorn Vale 35.66,10.53
@@ -323,18 +326,15 @@ step
   talk Barnil Stonepot##716
   accept Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
 step
-  talk First Mate Crazz##2490
-  accept The Bloodsail Buccaneers##595 |goto Stranglethorn Vale 28.1,76.22
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to bring him the Fang of Bhag'thera.
+  kill Bhag'thera##728 |goto Stranglethorn Vale 49.4,24 |elite
+  collect Fang of Bhag'thera##3876 |q 193 |goto Stranglethorn Vale 49.4,24
 step
-  talk "Sea Wolf" MacKinley##2501
-  accept Scaring Shaky##606 |goto Stranglethorn Vale 27.78,77.07
+  note Kill 6 Kurzen Elite, 4 Kurzen Subchiefs, and bring Kurzen's Head to Lieutenant Doren at the Rebel Camp.
+  kill Kurzen Elite##939 |q 202 |goto Stranglethorn Vale 47.88,6.86
 step
-  only completed(1115)
-  note Bring 10 Specks of Dream Dust to Krazek in Booty Bay. Dream Dust is gathered from the dragon whelps of the Swamp of Sorrows.
-  collect 10 Speck of Dream Dust##5803 |q 1116 |goto Swamp of Sorrows 14.31,61.27 |tip {dropsfrom}Adolescent Whelp, Dreaming Whelp, Green Wyrmkin
-step
-  note Kill a Cold Eye Basilisk, get a Chilled Basilisk Haunch, and return it to Angus Stern in the Blue Recluse.
-  collect Chilled Basilisk Haunch##2476 |q 212 |goto Stranglethorn Vale 28.73,40.88 |tip {dropsfrom}Cold Eye Basilisk
+  note Bring 4 Skullsplitter Fetishes to Brother Nimetz at the Rebel Camp.
+  collect 4 Skullsplitter Fetish##2466 |q 205 |goto Stranglethorn Vale 45.55,42.22 |tip {dropsfrom}Skullsplitter Witch Doctor, Skullsplitter Mystic
 step
   note Bring pages 1, 4, 6, and 8 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter I.
   collect Green Hills of Stranglethorn - Page 1##2725 |q 339 |goto Stranglethorn Vale 34.04,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
@@ -348,19 +348,17 @@ step
   note Bring pages 25, 26, and 27 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter IV.
   collect Green Hills of Stranglethorn - Page 25##2749 |q 342 |goto Stranglethorn Vale 34.04,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
 step
-  note Bring 5 Mistvale Giblets to "Shaky" Phillipe in Booty Bay.
-  collect 5 Mistvale Giblets##3919 |q 606 |goto Stranglethorn Vale 33.48,65.45 |tip {dropsfrom}Elder Mistvale Gorilla
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
 step
-  only completed(1115)
-  talk Krazek##773
-  turnin Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
+  talk Lieutenant Doren##469
+  turnin Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
 step
-  only completed(1222)
-  talk Angus Stern##1141
-  turnin Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
+  talk Brother Nimetz##739
+  turnin Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
 step
-  talk Angus Stern##1141
-  turnin A Meal Served Cold##212 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
+  talk Barnil Stonepot##716
+  turnin The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
 step
   talk Barnil Stonepot##716
   turnin Chapter I##339 |goto Stranglethorn Vale 35.66,10.53
@@ -374,35 +372,102 @@ step
   talk Barnil Stonepot##716
   turnin Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
 step
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
+step
+  talk First Mate Crazz##2490
+  accept The Bloodsail Buccaneers##595 |goto Stranglethorn Vale 28.1,76.22
+step
+  talk Crank Fizzlebub##2498
+  accept Venture Company Mining##600 |goto Stranglethorn Vale 27.12,77.21
+step
+  talk "Sea Wolf" MacKinley##2501
+  accept Scaring Shaky##606 |goto Stranglethorn Vale 27.78,77.07
+step
+  note Hemet Nesingwary wants you to kill 10 Jungle Stalkers.
+  kill Jungle Stalker##687 |q 196 |goto Stranglethorn Vale 28.91,44.16
+step
+  note Bring 5 Mistvale Giblets to "Shaky" Phillipe in Booty Bay.
+  collect 5 Mistvale Giblets##3919 |q 606 |goto Stranglethorn Vale 33.48,65.45 |tip {dropsfrom}Elder Mistvale Gorilla
+step
   turnin The Bloodsail Buccaneers##595 |goto Stranglethorn Vale 27.28,69.52
 step
   talk "Shaky" Phillipe##2502
   turnin Scaring Shaky##606 |goto Stranglethorn Vale 26.9,73.59
 step
-  only completed(1040)
-  talk Clerk Daltry##267
-  accept The Carevin Family##1042 |goto Duskwood 72.54,46.87
-step
-  talk Barnil Stonepot##716
-  accept The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
-step
-  note Collect the missing pages from The Green Hills of Stranglethorn manuscript. Once all four chapters are complete, return them to Barnil.
-  collect Green Hills of Stranglethorn - Chapter I##2756 |q 338 |goto Stranglethorn Vale 35.66,10.53
-step
   click Bloodsail Correspondence##2083
   accept The Bloodsail Buccaneers##597 |goto Stranglethorn Vale 27.28,69.52
-step
-  talk Crank Fizzlebub##2498
-  accept Venture Company Mining##600 |goto Stranglethorn Vale 27.12,77.21
 step
   talk "Shaky" Phillipe##2502
   accept Return to MacKinley##607 |goto Stranglethorn Vale 26.9,73.59
 step
-  note Bring 4 loads of Lesser Bloodstone Ore to Krazek in Booty Bay.
-  collect 4 Lesser Bloodstone Ore##4278 |q 627 |goto Arathi Highlands 83.87,31.19 |tip {dropsfrom}Lesser Bloodstone Deposit
+  talk First Mate Crazz##2490
+  turnin The Bloodsail Buccaneers##597 |goto Stranglethorn Vale 28.1,76.22
+step
+  talk "Sea Wolf" MacKinley##2501
+  turnin Return to MacKinley##607 |goto Stranglethorn Vale 27.78,77.07
+step
+  talk Deeg##2488
+  accept Up to Snuff##587 |goto Stranglethorn Vale 26.92,77.35
+step
+  talk First Mate Crazz##2490
+  accept The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 28.1,76.22
+step
+  note Deeg in Booty Bay wants you to bring him 15 shares of Snuff.
+  collect Snuff##3910 |q 587 |goto Stranglethorn Vale 32.34,71.67 |tip {dropsfrom}Bloodsail Raider, Bloodsail Mage, Bloodsail Swashbuckler
+step
+  talk Deeg##2488
+  turnin Up to Snuff##587 |goto Stranglethorn Vale 26.92,77.35
+step
+  talk Fleet Master Seahorn##2487
+  turnin The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 27.17,77.01
+step
+  talk Hemet Nesingwary##715
+  turnin Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
 step
   note Bring 10 Singing Blue Crystals to Crank Fizzlebub in Booty Bay.
   collect 10 Singing Blue Crystal##3917 |q 600 |goto Stranglethorn Vale 41.55,43.48 |tip {dropsfrom}Venture Co. Strip Miner, Venture Co. Foreman, Venture Co. Surveyor
+step
+  talk Crank Fizzlebub##2498
+  turnin Venture Company Mining##600 |goto Stranglethorn Vale 27.12,77.21
+step
+  only completed(1040)
+  talk Clerk Daltry##267
+  turnin The Caravan Road##1041 |goto Duskwood 72.54,46.87 |tip {turninat}Duskwood
+step
+  turnin Crystal in the Mountains##635 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
+step
+  only completed(1222)
+  talk Angus Stern##1141
+  accept Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64
+step
+  talk Angus Stern##1141
+  accept A Meal Served Cold##212 |goto Stormwind City 51.79,93.64
+step
+  only completed(1115)
+  note Bring 10 Specks of Dream Dust to Krazek in Booty Bay. Dream Dust is gathered from the dragon whelps of the Swamp of Sorrows.
+  collect 10 Speck of Dream Dust##5803 |q 1116 |goto Swamp of Sorrows 14.31,61.27 |tip {dropsfrom}Adolescent Whelp, Dreaming Whelp, Green Wyrmkin
+step
+  note Kill a Cold Eye Basilisk, get a Chilled Basilisk Haunch, and return it to Angus Stern in the Blue Recluse.
+  collect Chilled Basilisk Haunch##2476 |q 212 |goto Stranglethorn Vale 28.73,40.88 |tip {dropsfrom}Cold Eye Basilisk
+step
+  only completed(1115)
+  talk Krazek##773
+  turnin Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
+step
+  only completed(1222)
+  talk Angus Stern##1141
+  turnin Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
+step
+  talk Angus Stern##1141
+  turnin A Meal Served Cold##212 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
+step
+  only completed(1040)
+  talk Clerk Daltry##267
+  accept The Carevin Family##1042 |goto Duskwood 72.54,46.87
+step
+  note Bring 4 loads of Lesser Bloodstone Ore to Krazek in Booty Bay.
+  collect 4 Lesser Bloodstone Ore##4278 |q 627 |goto Arathi Highlands 83.87,31.19 |tip {dropsfrom}Lesser Bloodstone Deposit
 step
   only completed(1040)
   talk Jonathan Carevin##661
@@ -411,18 +476,6 @@ step
   talk Krazek##773
   turnin Favor for Krazek##627 |goto Stranglethorn Vale 26.95,77.21
 step
-  talk Barnil Stonepot##716
-  turnin The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
-step
-  talk First Mate Crazz##2490
-  turnin The Bloodsail Buccaneers##597 |goto Stranglethorn Vale 28.1,76.22
-step
-  talk Crank Fizzlebub##2498
-  turnin Venture Company Mining##600 |goto Stranglethorn Vale 27.12,77.21
-step
-  talk "Sea Wolf" MacKinley##2501
-  turnin Return to MacKinley##607 |goto Stranglethorn Vale 27.78,77.07
-step
   only completed(1040)
   talk Jonathan Carevin##661
   accept The Scythe of Elune##1043 |goto Duskwood 75.32,49.02
@@ -430,30 +483,9 @@ step
   talk Krazek##773
   accept Return to Corporal Kaleb##622 |goto Stranglethorn Vale 26.95,77.21
 step
-  talk Lieutenant Doren##469
-  accept Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
-step
-  talk Brother Nimetz##739
-  accept Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
-step
-  talk Deeg##2488
-  accept Up to Snuff##587 |goto Stranglethorn Vale 26.92,77.35
-step
-  talk First Mate Crazz##2490
-  accept The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 28.1,76.22
-step
   only completed(1040)
   note Look for signs of the Scythe of Elune then return to Jonathan Carevin in Darkshire.
   collect Mound of Dirt##19030 |q 1043 |goto Duskwood 73.53,79.14
-step
-  note Kill 6 Kurzen Elite, 4 Kurzen Subchiefs, and bring Kurzen's Head to Lieutenant Doren at the Rebel Camp.
-  kill Kurzen Elite##939 |q 202 |goto Stranglethorn Vale 47.88,6.86
-step
-  note Bring 4 Skullsplitter Fetishes to Brother Nimetz at the Rebel Camp.
-  collect 4 Skullsplitter Fetish##2466 |q 205 |goto Stranglethorn Vale 45.55,42.22 |tip {dropsfrom}Skullsplitter Witch Doctor, Skullsplitter Mystic
-step
-  note Deeg in Booty Bay wants you to bring him 15 shares of Snuff.
-  collect Snuff##3910 |q 587 |goto Stranglethorn Vale 32.34,71.67 |tip {dropsfrom}Bloodsail Raider, Bloodsail Mage, Bloodsail Swashbuckler
 step
   only completed(1040)
   talk Jonathan Carevin##661
@@ -462,18 +494,6 @@ step
   talk Corporal Kaleb##770
   turnin Return to Corporal Kaleb##622 |goto Stranglethorn Vale 37.74,3.3
 step
-  talk Lieutenant Doren##469
-  turnin Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
-step
-  talk Brother Nimetz##739
-  turnin Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
-step
-  talk Deeg##2488
-  turnin Up to Snuff##587 |goto Stranglethorn Vale 26.92,77.35
-step
-  talk Fleet Master Seahorn##2487
-  turnin The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 27.17,77.01
-step
   talk Archmage Ansirem Runeweaver##2543
   turnin Magical Analysis##602 |goto Alterac Mountains 18.84,78.49 |tip {turninat}Alterac Mountains
 step
@@ -481,28 +501,9 @@ step
   talk Jonathan Carevin##661
   accept Answered Questions##1044 |goto Duskwood 75.32,49.02
 step
-  talk Hemet Nesingwary##715
-  accept Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
-step
-  note Hemet Nesingwary wants you to kill 10 Jungle Stalkers.
-  kill Jungle Stalker##687 |q 196 |goto Stranglethorn Vale 28.91,44.16
-step
   only completed(1040)
   talk Thyn'tel Bladeweaver##8026
   turnin Answered Questions##1044 |goto Darnassus 61.77,39.18 |tip {turninat}Darnassus
-step
-  talk Hemet Nesingwary##715
-  turnin Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
-step
-  talk Sir S. J. Erlgadin##718
-  accept Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
-step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to bring him the Fang of Bhag'thera.
-  kill Bhag'thera##728 |goto Stranglethorn Vale 49.4,24 |elite
-  collect Fang of Bhag'thera##3876 |q 193 |goto Stranglethorn Vale 49.4,24
-step
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
 step
   note {travel}Alterac Mountains
   goto Alterac Mountains 58.32,67.92

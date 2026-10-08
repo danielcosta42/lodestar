@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Shadowfang Keep", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "643e60f5",
 }, [[
 step
   talk High Executor Hadrec##1952
@@ -29,6 +30,7 @@ step
   note Kill Arugal and bring his head to Dalar Dawnweaver at the Sepulcher.
   collect Head of Arugal##5442 |q 1014 |goto Shadowfang Keep - Dungeon -1,-1 |elite |tip {dropsfrom}Archmage Arugal, Arugal
 step
+  note Find the Deathstalker Adamant and Deathstalker Vincent.
   talk Deathstalker Vincent##4444
   turnin Deathstalkers in Shadowfang##1098 |goto Shadowfang Keep - Dungeon -1,-1
 step

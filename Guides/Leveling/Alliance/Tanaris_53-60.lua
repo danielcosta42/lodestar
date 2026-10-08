@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Tanaris (53-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Felwood (52-57)",
+	rev = "67f4f02e",
 }, [[
 step
   only completed(4787)
@@ -40,6 +41,14 @@ step
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
   collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
 step
+  only completed(8922,8923)
+  talk Mux Manascrambler##16014
+  turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
+step
+  only completed(8922,8923)
+  talk Mux Manascrambler##16014
+  accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
+step
   only completed(4493,4494)
   note Bring a Gorishi Scent Gland and 5 Un'Goro Soil samples to Alchemist Pestlezugg in Gadgetzan.
   collect Gorishi Scent Gland##11837 |q 4496 |goto Un'Goro Crater 50.14,75.97 |tip {dropsfrom}Gorishi Wasp, Gorishi Worker, Gorishi Reaver
@@ -58,17 +67,9 @@ step
 step
   turnin The Super Egg-O-Matic##2741 |goto Tanaris 52.39,26.97
 step
-  only completed(8922,8923)
-  talk Mux Manascrambler##16014
-  turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
-step
   only completed(4493,4494)
   talk Alchemist Pestlezugg##5594
   accept Pawn Captures Queen##4507 |goto Tanaris 50.89,26.96
-step
-  only completed(8922,8923)
-  talk Mux Manascrambler##16014
-  accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   only completed(4493,4494)
   note Defeat the Gorishi Hive Queen once she is summoned.

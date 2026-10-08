@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Rogue", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "deb6da07",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -20,6 +21,7 @@ step
   accept Encrypted Rune##3109 |goto Dun Morogh 29.93,71.2
 step
   only Dwarf Rogue
+  note Read the Encrypted Rune and speak to Solm Hargrin in Coldridge Valley.
   talk Solm Hargrin##916
   turnin Encrypted Rune##3109 |goto Dun Morogh 28.37,67.51
 step
@@ -28,12 +30,14 @@ step
   accept Encrypted Memorandum##3113 |goto Dun Morogh 29.93,71.2
 step
   only Gnome Rogue
+  note Read the Encrypted Memorandum and speak to Solm Hargrin in Coldridge Valley.
   talk Solm Hargrin##916
   turnin Encrypted Memorandum##3113 |goto Dun Morogh 28.37,67.51
 step
   talk Deputy Willem##823
   accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
 step
+  note Speak with Marshal McBride.
   talk Marshal McBride##197
   turnin A Threat Within##783 |goto Elwynn Forest 48.92,41.61
 step
@@ -51,6 +55,7 @@ step
   accept Encrypted Letter##3102 |goto Elwynn Forest 48.92,41.61
 step
   only Human Rogue
+  note Read the Encrypted Letter and speak to Jorik Kerridan in the stable behind Northshire Abbey.
   talk Jorik Kerridan##915
   turnin Encrypted Letter##3102 |goto Elwynn Forest 50.31,39.92
 step
@@ -68,12 +73,14 @@ step
   accept Encrypted Sigil##3118 |goto Teldrassil 58.69,44.27
 step
   only NightElf Rogue
+  note Read the Encrypted Sigil and speak to Frahun Shadewhisper in Shadowglen.
   talk Frahun Shadewhisper##3594
   turnin Encrypted Sigil##3118 |goto Teldrassil 59.64,38.66
 step
   talk Ailee Farheart##251362
   accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
 step
+  note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
   turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
 step
@@ -91,6 +98,7 @@ step
   accept At Home in the Shadows##92483 |goto Zephras Isle 42.1,23.49
 step
   only Skyborne Rogue
+  note Read the Simple Note then speak with Akeri Duskblade within the watchtower in Thendal Grove.
   talk Akeri Duskblade##251389
   turnin At Home in the Shadows##92483 |goto Zephras Isle 43.71,24.3
 step
@@ -99,6 +107,7 @@ step
   accept Road to Salvation##2218 |goto Dun Morogh 47.56,52.61
 step
   only not Human not NightElf not Skyborne Rogue
+  note Speak with Hulfdan Blackbeard in Ironforge.
   talk Hulfdan Blackbeard##5165
   turnin Road to Salvation##2218 |goto Ironforge 51.96,14.84
 step
@@ -107,6 +116,7 @@ step
   accept Simple Subterfugin'##2238 |goto Ironforge 51.96,14.84
 step
   only Rogue
+  note Find Onin MacHammar by Gnomeregan.
   talk Onin MacHammar##6886
   turnin Simple Subterfugin'##2238 |goto Dun Morogh 25.16,44.45
 step
@@ -115,6 +125,7 @@ step
   accept Onin's Report##2239 |goto Dun Morogh 25.16,44.45
 step
   only not Human not NightElf not Skyborne Rogue
+  note Take Onin's Report back to Hulfdan in Ironforge.
   talk Hulfdan Blackbeard##5165
   turnin Onin's Report##2239 |goto Ironforge 51.96,14.84
 step
@@ -123,6 +134,7 @@ step
   accept Seek out SI: 7##2205 |goto Elwynn Forest 43.87,65.94
 step
   only Human Rogue
+  note Deliver Keryn Sylvius's package to Master Mathias Shaw at the Stormwind Barracks.
   talk Master Mathias Shaw##332
   turnin Seek out SI: 7##2205 |goto Stormwind City 78.31,70.74
 step
@@ -143,6 +155,7 @@ step
   accept The Apple Falls##2241 |goto Teldrassil 56.38,60.14
 step
   only NightElf Rogue
+  note Take Jannok's Rose to Syurna in Darnassus.
   talk Syurna##4163
   turnin The Apple Falls##2241 |goto Darnassus 36.99,21.91
 step
@@ -163,6 +176,7 @@ step
   accept To Hulfdan!##2299 |goto Dun Morogh 47.56,52.61
 step
   only not Human not NightElf not Skyborne Rogue
+  note Travel to Ironforge and speak with Hulfdan Blackbeard.
   talk Hulfdan Blackbeard##5165
   turnin To Hulfdan!##2299 |goto Ironforge 51.96,14.84
 step
@@ -171,6 +185,7 @@ step
   accept Kingly Shakedown##2298 |goto Ironforge 51.96,14.84
 step
   only Rogue
+  note Travel to Stormwind and seek out Renzik "The Shiv."
   talk Renzik "The Shiv"##6946
   turnin Kingly Shakedown##2298 |goto Stormwind City 78.29,71.14
 step
@@ -179,6 +194,7 @@ step
   accept SI:7##2300 |goto Elwynn Forest 43.87,65.94
 step
   only Human Rogue
+  note Travel to Stormwind and seek out Renzik "The Shiv."
   talk Renzik "The Shiv"##6946
   turnin SI:7##2300 |goto Stormwind City 78.29,71.14
 step
@@ -187,6 +203,7 @@ step
   accept Redridge Rendezvous##2281 |goto Stormwind City 78.29,71.14
 step
   only Rogue
+  note Venture forth to Lakeshire in the Redridge Mountains and speak with Lucius.
   talk Lucius##6966
   turnin Redridge Rendezvous##2281 |goto Redridge Mountains 22.97,52.04
 step
@@ -207,6 +224,7 @@ step
   accept Erion Shadewhisper##2259 |goto Teldrassil 56.38,60.14
 step
   only NightElf Rogue
+  note Contact Erion Shadewhisper in Darnassus.
   talk Erion Shadewhisper##4214
   turnin Erion Shadewhisper##2259 |goto Darnassus 34.52,25.93
 step
@@ -215,6 +233,7 @@ step
   accept Erion's Behest##2260 |goto Darnassus 34.52,25.93
 step
   only Rogue
+  note Travel to Stormwind City and seek council with Renzik "The Shiv."
   talk Renzik "The Shiv"##6946
   turnin Erion's Behest##2260 |goto Stormwind City 78.29,71.14
 step
@@ -235,6 +254,7 @@ step
   accept Mathias and the Defias##2360 |goto Stormwind City 78.31,70.74
 step
   only Rogue
+  note Travel to Westfall and find Agent Kearnen for your debriefing.
   talk Agent Kearnen##7024
   turnin Mathias and the Defias##2360 |goto Westfall 68.49,70.08
 step
@@ -255,6 +275,7 @@ step
   accept The Touch of Zanzil##2607 |goto Stormwind City 78.31,70.74
 step
   only Rogue
+  note Speak with Doc Mixilpixil in the cellar of the Barracks.
   talk Doc Mixilpixil##7207
   turnin The Touch of Zanzil##2607 |goto Stormwind City 80.06,69.9
 step
@@ -263,6 +284,7 @@ step
   accept The Touch of Zanzil##2608 |goto Stormwind City 80.06,69.9
 step
   only Rogue
+  note /Lay down to be examined by Doc Mixilpixil. How can he find the cure if he can't find the cause?
   talk Doc Mixilpixil##7207
   turnin The Touch of Zanzil##2608 |goto Stormwind City 80.06,69.9
 step
@@ -279,7 +301,7 @@ step
   turnin The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9
 step
   only Rogue
-  kill Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip Loot the quest item here — it starts the quest.
+  talk Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip They give you the item that starts the quest.
   accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
 step
   only Rogue
@@ -295,6 +317,7 @@ step
   accept A Simple Request##8233 |goto Stormwind City 77.43,65.31
 step
   only Rogue
+  note Speak with Lord Jorach Ravenholdt in Ravenholdt Manor.
   talk Lord Jorach Ravenholdt##6768
   turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88
 step
@@ -350,6 +373,7 @@ step
   accept Garona: A Study on Stealth and Treachery##7498 |goto Dire Maul - Dungeon -1,-1
 step
   only Rogue
+  note Return the book to its rightful owners.
   talk Lorekeeper Kildrath##14383
   turnin Garona: A Study on Stealth and Treachery##7498 |goto Dire Maul - Dungeon -1,-1
 step
@@ -368,6 +392,7 @@ step
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
+  note Bring the Sealed Blood Container to Mux Manascrambler inside Gadgetzan in Tanaris.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
@@ -410,6 +435,7 @@ step
   talk Mux Manascrambler##16014
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
+  note Bring the Extra-Dimensional Ghost Revealer to Deliana in Ironforge.
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
@@ -428,6 +454,7 @@ step
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -443,6 +470,7 @@ step
   talk Ysida Harmon##16031
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -458,6 +486,7 @@ step
   talk Anthion Harmon##16016
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -503,6 +532,7 @@ step
   talk Deliana##16013
   accept Bodley's Unfortunate Fate##8960 |goto Ironforge 43.53,52.64
 step
+  note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -604,6 +634,7 @@ step
   talk Bodley##16033
   accept Back to the Beginning##8997 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  note Speak with Deliana at The High Seat in Ironforge.
   talk Deliana##16013
   turnin Back to the Beginning##8997 |goto Ironforge 43.53,52.64
 step
@@ -650,6 +681,7 @@ step
   talk Rutgar Glyphshaper##15170
   accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment wants you to deliver the Glyphed Crystal Prism to Geologist Larksbane at the Cenarion Hold in Silithus.
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
@@ -670,313 +702,4 @@ step
   only Rogue
   talk Geologist Larksbane##15183
   turnin Armaments of War##8378 |goto Silithus 49.67,37.46
-step
-  only Rogue
-  talk Zanza the Restless##15042
-  accept Death's Embrace##8186 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only Rogue
-  collect Primal Hakkari Idol##22637 |q 8186 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
-step
-  only Rogue
-  talk Zanza the Restless##15042
-  turnin Death's Embrace##8186 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  accept Bonescythe Breastplate##9077 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Breastplate if you bring him the following: 1 Desecrated Breastplate, 25 Wartorn Leather Scraps, 2 Arcanite Bars and 6 Cured Rugged Hides.
-  collect Desecrated Breastplate##22349 |q 9077 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Breastplate##9077 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  accept Bonescythe Legplates##9078 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Legplates if you bring him the following: 1 Desecrated Legplates, 20 Wartorn Leather Scraps, 1 Arcanite Bar, 8 Cured Rugged Hides and 100 gold pieces.
-  collect Desecrated Legplates##22352 |q 9078 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Legplates##9078 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  accept Bonescythe Helmet##9079 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Helmet if you bring him the following: 1 Desecrated Helmet, 15 Wartorn Leather Scraps, 8 Cured Rugged Hides, 1 Nexus Crystal and 75 gold pieces.
-  collect Desecrated Helmet##22353 |q 9079 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Helmet##9079 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  accept Bonescythe Pauldrons##9080 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Pauldrons if you bring him the following: 1 Desecrated Pauldrons, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 50 gold pieces.
-  collect Desecrated Pauldrons##22354 |q 9080 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Pauldrons##9080 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  accept Bonescythe Sabatons##9081 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Sabatons if you bring him the following: 1 Desecrated Sabatons, 12 Wartorn Leather Scraps, 3 Cured Rugged Hides, 2 Nexus Crystals and 25 gold pieces.
-  collect Desecrated Sabatons##22358 |q 9081 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Sabatons##9081 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  accept Bonescythe Gauntlets##9082 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Gauntlets if you bring him the following: 1 Desecrated Gauntlets, 8 Wartorn Leather Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Gauntlets##22357 |q 9082 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Gauntlets##9082 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  accept Bonescythe Waistguard##9083 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Waistguard if you bring him the following: 1 Desecrated Waistguard, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 15 gold pieces.
-  collect Desecrated Waistguard##22356 |q 9083 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Waistguard##9083 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  accept Bonescythe Bracers##9084 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Bracers if you bring him the following: 1 Desecrated Bracers, 6 Wartorn Leather Scraps, 1 Arcanite Bar, 2 Cured Rugged Hides and 10 gold pieces.
-  collect Desecrated Bracers##22355 |q 9084 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Rogue
-  talk Rohan the Assassin##16131
-  turnin Bonescythe Bracers##9084 |goto Eastern Plaguelands 71.62,48.91
-step
-  only Rogue
-  talk Windcaller Yessendra##15498
-  accept Band of Veiled Shadows##8701 |goto Silithus 52.05,38.16
-step
-  only Rogue
-  note Bring 1 Qiraji Ceremonial Ring, 2 Onyx Idols, 5 Stone Scarabs and 5 Crystal Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8701 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
-  only Rogue
-  talk Windcaller Yessendra##15498
-  turnin Band of Veiled Shadows##8701 |goto Silithus 52.05,38.16
-step
-  only Rogue
-  talk Warden Haro##15499
-  accept Dagger of Veiled Shadows##8709 |goto Silithus 51.14,38.94
-step
-  only Rogue
-  note Bring 1 Qiraji Spiked Hilt, 2 Vermillion Idols, 5 Gold Scarabs and 5 Clay Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8709 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Rogue
-  talk Warden Haro##15499
-  turnin Dagger of Veiled Shadows##8709 |goto Silithus 51.14,38.94
-step
-  only Rogue
-  talk Keyl Swiftclaw##15500
-  accept Cloak of Veiled Shadows##8693 |goto Silithus 51.76,39.54
-step
-  only Rogue
-  note Bring 1 Qiraji Martial Drape, 2 Azure Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8693 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
-  only Rogue
-  talk Keyl Swiftclaw##15500
-  turnin Cloak of Veiled Shadows##8693 |goto Silithus 51.76,39.54
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  accept Paragons of Power: The Madcap's Bracers##8063 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  note Bring Falthir the Sightless a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Armsplint##19717 |q 8063 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  turnin Paragons of Power: The Madcap's Bracers##8063 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  accept Paragons of Power: The Madcap's Mantle##8072 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  note Bring Falthir the Sightless a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Girdle##19719 |q 8072 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  turnin Paragons of Power: The Madcap's Mantle##8072 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  accept Paragons of Power: The Madcap's Tunic##8073 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  note Bring Falthir the Sightless a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Aegis##19724 |q 8073 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  turnin Paragons of Power: The Madcap's Tunic##8073 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  accept Zandalarian Shadow Talisman##8141 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  turnin Zandalarian Shadow Talisman##8141 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  accept Zandalarian Shadow Talisman##8142 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  collect Zandalarian Shadow Talisman##19614 |q 8142 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  turnin Zandalarian Shadow Talisman##8142 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  accept Zandalarian Shadow Talisman##8143 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  collect Zandalarian Shadow Talisman##19615 |q 8143 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  turnin Zandalarian Shadow Talisman##8143 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  accept Zandalarian Shadow Mastery Talisman##8144 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  collect Zandalarian Shadow Talisman##19616 |q 8144 |goto Stranglethorn Vale 14.08,13.72
-step
-  only Rogue
-  talk Falthir the Sightless##14905
-  turnin Zandalarian Shadow Mastery Talisman##8144 |goto Stranglethorn Vale 14.08,13.72
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  talk Kandrostrasz##15503
-  accept Deathdealer's Boots##8637 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  note Bring the Qiraji Bindings of Command, 2 Idols of Strife, 5 Crystal Scarabs and 5 Bone Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Command##20928 |q 8637 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Rogue
-  talk Kandrostrasz##15503
-  turnin Deathdealer's Boots##8637 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  talk Vethsera##15504
-  accept Deathdealer's Vest##8638 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  note Bring the the Carapace of the Old God, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Carapace of the Old God##20929 |q 8638 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
-step
-  only Rogue
-  talk Vethsera##15504
-  turnin Deathdealer's Vest##8638 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  talk Andorgos##15502
-  accept Deathdealer's Helm##8639 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  note Bring Vek'lor's Diadem, 2 Idols of the War, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'lor's Diadem##20930 |q 8639 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'lor
-step
-  only Rogue
-  talk Andorgos##15502
-  turnin Deathdealer's Helm##8639 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  talk Kandrostrasz##15503
-  accept Deathdealer's Leggings##8640 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  note Bring Ouro's Intact Hide, 2 Idols of Night, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Ouro's Intact Hide##20927 |q 8640 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
-step
-  only Rogue
-  talk Kandrostrasz##15503
-  turnin Deathdealer's Leggings##8640 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  talk Andorgos##15502
-  accept Deathdealer's Spaulders##8641 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Rogue
-  note Bring the Qiraji Bindings of Command, 2 Idols of the Sun, 5 Silver Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Command##20928 |q 8641 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Rogue
-  talk Andorgos##15502
-  turnin Deathdealer's Spaulders##8641 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

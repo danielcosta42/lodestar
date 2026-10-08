@@ -24,9 +24,18 @@ function S:Deserialize(text)
 	return key, (fac ~= "" and fac or nil), body
 end
 
+-- guia importado com o nome de um que vem com o addon ganha outro nome: substituir
+-- o embutido trocaria o guia de todo mundo que segue a cadeia
+local function freeKey(key)
+	local g = ns.guides[key]
+	if g and not (g.meta and g.meta.author == "Import") then return key .. " (Import)" end
+	return key
+end
+
 function S:Import(text)
 	local key, fac, body = self:Deserialize(text)
 	if not (key and body and body:find("%S")) then return false end
+	key = freeKey(key)
 	ns.db.customGuides = ns.db.customGuides or {}
 	ns.db.customGuides[key] = { body = body, faction = fac }
 	ns:RegisterGuide(key, { faction = fac, author = "Import" }, body)
@@ -35,10 +44,26 @@ end
 
 -- re-registra os guias importados cedo (antes do restore de guia no _READY)
 ns:On("_INIT", function()
-	if ns.db and ns.db.customGuides then
-		for key, gd in pairs(ns.db.customGuides) do
-			ns:RegisterGuide(key, { faction = gd.faction, author = "Import" }, gd.body)
+	local saved = ns.db and ns.db.customGuides
+	if not saved then return end
+	local moved = {}                                -- save de antes da regra acima: renomeia
+	for key in pairs(saved) do
+		local k = freeKey(key)
+		if k ~= key then moved[key] = k end
+	end
+	-- a aba deste char segue o importado
+	-- ponytail: a de outro char fica no embutido (o SavedVariables dele não carrega aqui)
+	local c = ns.char
+	for old, new in pairs(moved) do
+		saved[new], saved[old] = saved[old], nil
+		if c then
+			for i, x in ipairs(c.openGuides or {}) do if x == old then c.openGuides[i] = new end end
+			if c.currentGuide == old then c.currentGuide = new end
+			if c.steps and c.steps[old] then c.steps[new], c.steps[old] = c.steps[old], nil end
 		end
+	end
+	for key, gd in pairs(saved) do
+		ns:RegisterGuide(key, { faction = gd.faction, author = "Import" }, gd.body)
 	end
 end)
 

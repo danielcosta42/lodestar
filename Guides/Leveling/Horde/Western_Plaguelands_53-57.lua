@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Western Plaguelands (53-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Swamp of Sorrows (50-57)",
+	rev = "192ecf97",
 }, [[
 step
   talk Janice Felstone##10778
@@ -113,6 +114,19 @@ step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6023 |goto Western Plaguelands 51.92,28.06
 step
+  talk Kirsta Deepshadow##11610
+  accept Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
+step
+  talk Kirsta Deepshadow##11610
+  turnin Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
+step
+  only completed(5162)
+  talk Jeziba##10976
+  accept Catalogue of the Wayward##5164 |goto Western Plaguelands 39.37,66.78
+step
+  only completed(5162)
+  turnin Catalogue of the Wayward##5164 |goto Western Plaguelands 39.35,66.6
+step
   only completed(5229)
   talk Shadow Priestess Vandis##11055
   turnin Return to the Bulwark##5230 |goto Tirisfal Glades 83.04,71.91 |tip {turninat}Tirisfal Glades
@@ -124,10 +138,6 @@ step
   only completed(5902)
   talk Mickey Levine##11615
   turnin A Plague Upon Thee##6390 |goto Tirisfal Glades 83.29,72.34 |tip {turninat}Tirisfal Glades
-step
-  only completed(5162)
-  talk Jeziba##10976
-  accept Catalogue of the Wayward##5164 |goto Western Plaguelands 39.37,66.78
 step
   note Slay 20 Plaguehound Runts, 5 Plaguehounds and 5 Frenzied Plaguehounds. Return to Tirion Fordring when the task is complete.
   kill Plaguehound Runt##8596 |q 5542 |goto Eastern Plaguelands 20.15,61.44
@@ -146,9 +156,6 @@ step
 step
   talk Tirion Fordring##1855
   turnin Carrion Grubbage##5544 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
-step
-  only completed(5162)
-  turnin Catalogue of the Wayward##5164 |goto Western Plaguelands 39.35,66.6
 step
   talk Royal Overseer Bauhaus##10781
   turnin Better Late Than Never##5023 |goto Undercity 69.79,43.16 |tip {turninat}Undercity
@@ -174,18 +181,12 @@ step
   click Scourge Cauldron##177289
   accept Return to the Bulwark##5232 |goto Western Plaguelands 46.18,51.9
 step
-  talk Kirsta Deepshadow##11610
-  accept Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
-step
   talk Jeremiah Payson##8403
   turnin The Jeremiah Blues##5049 |goto Undercity 67.6,44.16 |tip {turninat}Undercity
 step
   only completed(5229)
   talk Shadow Priestess Vandis##11055
   turnin Return to the Bulwark##5232 |goto Tirisfal Glades 83.04,71.91 |tip {turninat}Tirisfal Glades
-step
-  talk Kirsta Deepshadow##11610
-  turnin Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
 step
   talk Jeremiah Payson##8403
   accept Good Luck Charm##5050 |goto Undercity 67.6,44.16
@@ -248,6 +249,6 @@ step
   talk High Executor Derrington##10837
   turnin Mission Accomplished!##5238 |goto Tirisfal Glades 83.13,68.94 |tip {turninat}Tirisfal Glades
 step
-  note {travel}Thunder Bluff
-  goto Thunder Bluff 57.24,87.37
+  note {travel}Swamp of Sorrows
+  goto Swamp of Sorrows 34.29,66.14
 ]])

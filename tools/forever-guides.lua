@@ -207,7 +207,7 @@ check(zona:BestGuideForPlayer() == "Leveling/Alliance/Elwynn Forest (3-10)",
 	"nível 10 em Elwynn fica em Elwynn (abriu " .. tostring(zona:BestGuideForPlayer()) .. ")")
 -- login com aba de leveling que o nível já passou: abre o recomendado, a antiga
 -- fica na aba. No nível dela, retoma onde parou.
-local function logar(nivel)
+local function logar(nivel, manual)
 	local l = load_addon(16001)
 	for _, k in ipairs({ "Elwynn Forest (3-10)", "Westfall (11-18)", "Darkshore (11-20)" }) do
 		l:RegisterGuide("Leveling/Alliance/" .. k, { faction = "Alliance" }, "step\n  note w\n")
@@ -217,6 +217,7 @@ local function logar(nivel)
 	l.char.openGuides = { "Leveling/Alliance/Elwynn Forest (3-10)" }
 	l.char.currentGuide = "Leveling/Alliance/Elwynn Forest (3-10)"
 	l.char.steps = { ["Leveling/Alliance/Elwynn Forest (3-10)"] = 1 }
+	l.char.manualPick = manual
 	playerLevel = nivel
 	l.handlers._READY()
 	return l
@@ -227,6 +228,9 @@ check(l11.char.currentGuide == "Leveling/Alliance/Westfall (11-18)",
 check(l11:IsGuideOpen("Leveling/Alliance/Elwynn Forest (3-10)"), "a aba antiga continua aberta")
 check(logar(10).char.currentGuide == "Leveling/Alliance/Elwynn Forest (3-10)",
 	"no nível da aba salva, retoma ela")
+-- o jogador abriu essa aba de propósito (terminar as quests de Elwynn): o login não a troca
+check(logar(11, "Leveling/Alliance/Elwynn Forest (3-10)").char.currentGuide == "Leveling/Alliance/Elwynn Forest (3-10)",
+	"aba escolhida à mão não é trocada no login")
 C_Map = nil
 playerLevel = 1
 
@@ -317,12 +321,250 @@ for key in pairs(lib.guides) do
 end
 check(zephras.Alliance and zephras.Horde, "Zephras Isle tem guia nas duas facções")
 
+-- ── revisão geral: motor de guias ───────────────────────────────────────────
+-- missão com vários objetivos só conclui com todos (o passo cita o 1º alvo, a nota diz tudo)
+C_QuestLog.GetQuestObjectives = function() return { { finished = true }, { finished = false } } end
+check(not fe:IsGoalComplete({ verb = "kill", q = { id = 263 }, _gkey = "o1" }), "dois objetivos, só o 1º feito: não conclui")
+check(fe:IsGoalComplete({ verb = "kill", q = { id = 263, obj = 1 }, _gkey = "o2" }), "com o índice do objetivo: aquele basta")
+C_QuestLog.GetQuestObjectives = function() return { { finished = true }, { finished = true } } end
+check(fe:IsGoalComplete({ verb = "kill", q = { id = 263 }, _gkey = "o3" }), "todos os objetivos feitos: conclui")
+C_QuestLog.GetQuestObjectives = nil
+-- carregar o guia não injeta passos de outros guias (o gerador já esconde por condição)
+local inj = load_addon(16001)
+inj.Prereq = { InjectChains = function() error("injetou passos") end }
+inj:RegisterGuide("Leveling/Alliance/Teste (1-2)", { faction = "Alliance" }, [[
+step
+  note a
+step
+  note b
+]])
+local okInj, passos = pcall(inj.ensureParsed, inj.guides["Leveling/Alliance/Teste (1-2)"])
+check(okInj and #passos == 2, "carregar o guia não injeta pré-requisitos")
+-- "Guia concluído!" uma vez só, num guia sem next
+local fim = load_addon(16001)
+local avisos = 0
+fim.Print = function() avisos = avisos + 1 end
+fim:RegisterGuide("Leveling/Alliance/Fim (1-2)", { faction = "Alliance" }, [[
+step
+  ding 1
+]])
+fim.currentGuide = fim.guides["Leveling/Alliance/Fim (1-2)"]
+fim.ensureParsed(fim.currentGuide)
+fim.char.currentStep = 1
+for _ = 1, 5 do fim:CheckProgress() end
+check(avisos == 1, "guia concluído avisado uma vez (" .. avisos .. ")")
+-- "< Voltar" fica: o passo voltado à mão não é pulado pelo próximo evento
+local volta = load_addon(16001)
+volta:RegisterGuide("Leveling/Alliance/Volta (1-3)", { faction = "Alliance" }, [[
+step
+  ding 1
+step
+  note b
+]])
+volta.currentGuide = volta.guides["Leveling/Alliance/Volta (1-3)"]
+volta.ensureParsed(volta.currentGuide)
+volta.char.currentStep = 2
+volta:AdvanceStep(-1)
+volta:CheckProgress()
+check(volta.char.currentStep == 1, "voltou à mão: o próximo evento não o desfaz")
+volta:AdvanceStep(1)
+check(volta.char.currentStep == 2, "avançar à mão segue normal")
+
+-- missão descartada (o NPC não a oferecia e o passo foi pulado): seus passos seguintes não
+-- valem mais — senão o travamento só mudava de lugar
+fe.char.dropped = { [777] = true }
+check(not fe:IsGoalActive({ verb = "kill", q = { id = 777 } }), "objetivo de missão descartada não vale")
+check(not fe:IsGoalActive({ verb = "turnin", id = 777 }), "entrega de missão descartada não vale")
+check(fe:IsGoalActive({ verb = "kill", q = { id = 778 } }), "as outras seguem valendo")
+fe.char.dropped = nil
+-- o passo que só tinha goals da descartada está feito: o guia não para nele
+local dr = load_addon(16001)
+dr:RegisterGuide("Leveling/Alliance/Drop (1-3)", { faction = "Alliance" }, [[
+step
+  accept Q##777
+step
+  kill X##1 |q 777
+step
+  turnin Q##777
+step
+  note fim
+]])
+dr.currentGuide = dr.guides["Leveling/Alliance/Drop (1-3)"]
+dr.ensureParsed(dr.currentGuide)
+dr.char.dropped = { [777] = true }
+dr.char.currentStep = 2
+dr:CheckProgress()
+check(dr.char.currentStep == 4, "passos só da descartada são pulados (parou no " .. dr.char.currentStep .. ")")
+-- descartada, mas feita à mão depois: a entrega vale (e está feita)
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 777 end
+check(dr:IsGoalActive({ verb = "turnin", id = 777 }), "descartada e entregue à mão: a entrega vale")
+C_QuestLog.IsQuestFlaggedCompleted = function() return false end
+-- aceitá-la de novo (outro NPC, depois do RP) a tira do descarte
+dr.handlers.QUEST_ACCEPTED("QUEST_ACCEPTED", 777)
+check(not dr.char.dropped[777], "aceitar a missão a tira do descarte")
+dr.char.dropped[777] = true
+dr.handlers.QUEST_ACCEPTED("QUEST_ACCEPTED", 3, 777)          -- (índice no diário, id)
+check(not dr.char.dropped[777], "aceitar (índice, id) também")
+
+-- passo voltado à mão, mas não concluído: quando concluir, o guia segue sozinho
+local vt = load_addon(16001)
+vt:RegisterGuide("Leveling/Alliance/Vt (1-3)", { faction = "Alliance" }, [[
+step
+  turnin A##601
+step
+  note b
+]])
+vt.currentGuide = vt.guides["Leveling/Alliance/Vt (1-3)"]
+vt.ensureParsed(vt.currentGuide)
+vt.char.currentStep = 2
+vt:AdvanceStep(-1)
+vt:CheckProgress()
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 601 end
+vt:CheckProgress()
+check(vt.char.currentStep == 2, "voltado e ainda por fazer: ao concluir, avança (está no " .. vt.char.currentStep .. ")")
+C_QuestLog.IsQuestFlaggedCompleted = function() return false end
+-- "< Voltar" sem passo ativo antes: fica onde está
+local vi = load_addon(16001)
+vi:RegisterGuide("Leveling/Alliance/Vi (1-3)", { faction = "Alliance" }, [[
+step
+  only Druid
+  note a
+step
+  note b
+]])
+vi.currentGuide = vi.guides["Leveling/Alliance/Vi (1-3)"]
+vi.ensureParsed(vi.currentGuide)
+vi.char.currentStep = 2
+vi:AdvanceStep(-1)
+check(vi.char.currentStep == 2, "voltar sem passo ativo antes não cai num passo de outra classe")
+
+-- passo salvo antes da 2.4 contava os passos injetados (lista maior): recua até o último
+-- passo concluído, em vez de pular missões
+local mig = load_addon(16001)
+local MK = "Leveling/Alliance/Mig (1-3)"
+mig:RegisterGuide(MK, { faction = "Alliance" }, [[
+step
+  turnin A##501
+step
+  turnin B##502
+step
+  talk C##1
+step
+  turnin D##503
+step
+  turnin E##504
+]])
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 501 or id == 502 end
+mig.fire = function() end
+mig.char.openGuides = { MK }
+mig.char.currentGuide = MK
+mig.char.steps = { [MK] = 9 }
+mig.char.completedGoals = { [MK .. " 4 1"] = true }
+playerLevel = 1
+mig.handlers._READY()
+check(mig.char.currentStep == 3, "migração recua ao passo depois do último concluído (" .. mig.char.currentStep .. ")")
+check(next(mig.char.completedGoals) == nil, "marcas manuais com o número velho do passo saem")
+mig.char.steps[MK], mig.char.currentStep = 5, 5
+mig.handlers._READY()
+check(mig.char.currentStep == 5, "migra uma vez só")
+-- guia regerado (outra ordem): o passo salvo recua de novo, e só as marcas dele saem
+mig:RegisterGuide(MK, { faction = "Alliance" }, [[
+step
+  turnin A##501
+step
+  turnin B##502
+step
+  turnin D##503
+step
+  turnin E##504
+step
+  note fim
+]])
+mig.currentGuide = nil
+mig.char.completedGoals = { [MK .. "\0005\0001"] = true, ["Outro\0001\0001"] = true }
+mig.handlers._READY()
+check(mig.char.currentStep == 3, "conteúdo novo: recua ao passo depois do último concluído (" .. mig.char.currentStep .. ")")
+check(mig.char.completedGoals["Outro\0001\0001"] and not mig.char.completedGoals[MK .. "\0005\0001"],
+	"saem só as marcas do guia que mudou")
+C_QuestLog.IsQuestFlaggedCompleted = function() return false end
+
+-- guia aberto nesta versão guarda a assinatura: o login seguinte não mexe no passo
+local nov = load_addon(16001)
+nov.fire = function() end
+nov:RegisterGuide("Leveling/Alliance/Nov (1-3)", { faction = "Alliance" }, [[
+step
+  note a
+step
+  note b
+step
+  note c
+]])
+nov:LoadGuide("Leveling/Alliance/Nov (1-3)")
+nov.char.steps["Leveling/Alliance/Nov (1-3)"], nov.char.currentStep = 3, 3
+nov.handlers._READY()
+check(nov.char.currentStep == 3, "guia sem mudança não é migrado (" .. nov.char.currentStep .. ")")
+
+-- reordenar sem mudar o tamanho do texto: vale a revisão que o gerador grava no meta
+local ro = load_addon(16001)
+ro.fire = function() end
+local RK = "Leveling/Alliance/Ro (1-3)"
+ro:RegisterGuide(RK, { faction = "Alliance", rev = "aaaa" }, "step\n  note a\nstep\n  note b\nstep\n  note c\n")
+ro:LoadGuide(RK)
+ro.char.steps[RK], ro.char.currentStep = 3, 3
+ro:RegisterGuide(RK, { faction = "Alliance", rev = "bbbb" }, "step\n  note c\nstep\n  note b\nstep\n  note a\n")
+ro.currentGuide = nil
+ro.handlers._READY()
+check(ro.char.currentStep == 1, "revisão nova, mesmo tamanho: recua (" .. ro.char.currentStep .. ")")
+
+-- save antigo (sem assinatura): só os guias de leveling mudaram; o de reputação, com
+-- entregas repetíveis que nunca contam como feitas, fica onde estava
+local rep = load_addon(16001)
+rep.fire = function() end
+local PK = "Reputation/Argent Dawn"
+rep:RegisterGuide(PK, {}, "step\n  turnin Rep##901\nstep\n  turnin Rep##902\nstep\n  turnin Rep##903\n")
+rep.char.openGuides, rep.char.currentGuide, rep.char.steps = { PK }, PK, { [PK] = 3 }
+rep.handlers._READY()
+check(rep.char.currentStep == 3, "guia que não é de leveling não recua no save antigo (" .. rep.char.currentStep .. ")")
+
+-- guia regerado com outra faixa no título: a aba e o passo seguem para o da mesma zona
+local ren = load_addon(16001)
+ren.fire = function() end
+for _, k in ipairs({ "Leveling/Horde/Silverpine Forest (11-18)", "Leveling/Horde/Silverpine Forest (40-45)" }) do
+	ren:RegisterGuide(k, { faction = "Horde" }, "step\n  note a\nstep\n  note b\nstep\n  note c\n")
+end
+ren.char.openGuides = { "Leveling/Horde/Silverpine Forest (11-20)" }
+ren.char.currentGuide = "Leveling/Horde/Silverpine Forest (11-20)"
+ren.char.steps = { ["Leveling/Horde/Silverpine Forest (11-20)"] = 2 }
+ren.handlers._READY()
+check(ren.char.currentGuide == "Leveling/Horde/Silverpine Forest (11-18)",
+	"aba de guia renomeado segue para o da mesma zona e faixa (" .. tostring(ren.char.currentGuide) .. ")")
+check(#ren.char.openGuides == 1 and ren.char.steps["Leveling/Horde/Silverpine Forest (11-20)"] == nil,
+	"a chave velha some")
+
+-- nome da zona no idioma do cliente: uma função só, no Compat
+local zm, cm = fe.zoneUiMap, C_Map
+fe.zoneUiMap = { ["Elwynn Forest"] = 1429 }
+C_Map = { GetMapInfo = function(id) return id == 1429 and { name = "Floresta de Elwynn" } or nil end }
+check(fe.LocalizedZone("Elwynn Forest") == "Floresta de Elwynn", "zona traduzida pelo mapa do cliente")
+check(fe.LocalizedZone("Lugar Nenhum") == "Lugar Nenhum", "zona fora do mapa fica como veio")
+fe.zoneUiMap, C_Map = zm, cm
+
 -- ── identidade de unidade / Secret Values ───────────────────────────────────
 issecretvalue = function(v) return v == "SECRETO" end
 check(fe.NpcID("Creature-0-4467-0-25-6-000019B300") == 6, "GUID de criatura dá o id")
 check(fe.NpcID("SECRETO") == nil, "GUID secreto não é fatiado")
 check(fe.NpcID("Player-4467-0000ABCD") == nil, "GUID de jogador não vira NPC")
 check(fe.IsSecret("SECRETO") and not fe.IsSecret("x"), "IsSecret responde pelo cliente")
+
+-- Forever: o remetente das mensagens vem "Nome Sobrenome"; o próprio nome tem que bater
+local UN = UnitName
+C_PlayerInfo = { ShouldDisplaySurname = function() return true end }
+UnitFullName = function() return "Ana", "Silva" end
+UnitName = function() return "Ana" end
+check(fe.PlayerName() == "Ana Silva", "nome do jogador inclui o sobrenome no Forever")
+C_PlayerInfo.ShouldDisplaySurname = function() return false end
+check(fe.PlayerName() == "Ana", "sem sobrenome, só o nome")
+C_PlayerInfo, UnitFullName, UnitName = nil, nil, UN
 
 -- O pré-teste oficial de identidade restrita mora na LibChehulQuest, que carrega a
 -- cópia dela (não pode depender do ns): quem cobre é tools/forever-scan.lua.

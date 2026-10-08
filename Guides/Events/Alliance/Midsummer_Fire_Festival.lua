@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Midsummer Fire Festival", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "c5e3ac02",
 }, [[
 step
   talk Festival Loremaster##16817
@@ -27,6 +28,7 @@ step
   collect Flame of Orgrimmar##181336 |goto Orgrimmar 42.1,34.3 |tip Loot the quest item here — it starts the quest.
   accept Stealing Orgrimmar's Flame##9324 |goto Orgrimmar 42.1,34.3
 step
+  note Return the Flame of Orgrimmar to the Festival Loremaster.
   talk Festival Loremaster##16817
   turnin Stealing Orgrimmar's Flame##9324 |goto Teldrassil 56.47,92.23
 step
@@ -78,12 +80,14 @@ step
   collect Flame of Thunder Bluff##181337 |goto Thunder Bluff 20.99,26.77 |tip Loot the quest item here — it starts the quest.
   accept Stealing Thunder Bluff's Flame##9325 |goto Thunder Bluff 20.99,26.77
 step
+  note Return the Flame of Thunder Bluff to the Festival Loremaster.
   talk Festival Loremaster##16817
   turnin Stealing Thunder Bluff's Flame##9325 |goto Teldrassil 56.47,92.23
 step
   collect Flame of the Undercity##181335 |goto Undercity 66.01,36.85 |tip Loot the quest item here — it starts the quest.
   accept Stealing the Undercity's Flame##9326 |goto Undercity 66.01,36.85
 step
+  note Return the Flame of the Undercity to the Festival Loremaster.
   talk Festival Loremaster##16817
   turnin Stealing the Undercity's Flame##9326 |goto Teldrassil 56.47,92.23
 step

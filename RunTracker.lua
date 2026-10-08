@@ -9,7 +9,7 @@ local RT = {}
 ns.RunTracker = RT
 
 RT.MILESTONES = { [10] = true, [20] = true, [30] = true, [40] = true,
-                  [50] = true, [58] = true, [70] = true }
+                  [50] = true, [60] = true }
 
 local pendingLevel                       -- nível aguardando o /played chegar
 local lastPlayed, lastAt                 -- último /played sincronizado (p/ estimar ao vivo)
@@ -19,6 +19,50 @@ local function run()
 	return ns.char.run
 end
 RT.Run = run
+
+-- Registro do nível em andamento: o que mudou desde o ding (ou desde que o addon o viu).
+-- No ding vira run.levels[L] — os números do boletim daquele nível.
+local function cur()
+	local r = run()
+	if not r.cur then
+		local z = GetZoneText and GetZoneText() or ""
+		r.cur = { level = UnitLevel and UnitLevel("player") or nil, quests = 0, deaths = 0, steps = 0,
+			zones = z ~= "" and { [z] = true } or {},       -- a zona onde o nível começou conta
+			money0 = GetMoney and GetMoney() or 0, xp = UnitXPMax and UnitXPMax("player") or nil }
+	end
+	return r.cur
+end
+
+local function contaZonas(z)
+	local n = 0
+	for _ in pairs(z or {}) do n = n + 1 end
+	return n
+end
+
+-- fecha o nível que acabou (L = o nível alcançado) e começa o seguinte do zero. Registro
+-- de outro nível (addon desligado num ding, reload antes da resposta) não vira os
+-- números deste: fica só a marca de que o nível existiu.
+local function fechar(r, L, total)
+	local c = cur()
+	r.levels = r.levels or {}
+	if c.level and c.level ~= L - 1 then
+		r.levels[L] = {}
+	else
+		r.levels[L] = { time = (r.levelStart and total) and (total - r.levelStart) or nil, quests = c.quests,
+			deaths = c.deaths, steps = c.steps, zones = contaZonas(c.zones), xp = c.xp,
+			gold = (GetMoney and GetMoney() or 0) - (c.money0 or 0) }
+	end
+	r.cur, r.levelStart = nil, total
+end
+
+-- o nível em andamento, no formato de run.levels (o boletim aberto à mão usa): o XP é o
+-- já ganho nele — o do nível inteiro dividido pelo tempo até agora dava XP/h errado
+function RT:Current()
+	local r, c = run(), cur()
+	return { time = r.levelStart and (RT:LivePlayed() - r.levelStart) or nil, quests = c.quests,
+		deaths = c.deaths, steps = c.steps, zones = contaZonas(c.zones), xp = UnitXP and UnitXP("player") or nil,
+		gold = (GetMoney and GetMoney() or 0) - (c.money0 or 0) }
+end
 
 -- /played AO VIVO estimado a partir do último ding (sem spammar RequestTimePlayed)
 function RT:LivePlayed()
@@ -38,28 +82,75 @@ local function opponent()
 end
 RT.Opponent = opponent
 
+-- o /played que o addon pede não vai para o chat: as janelas de chat deixam de ouvir
+-- a resposta até ela chegar (10 s no máximo)
+local muted, gen = nil, 0
+local function unmute(g)
+	if not muted or (g and g ~= gen) then return end   -- prazo de um pedido mais velho
+	for _, f in ipairs(muted) do f:RegisterEvent("TIME_PLAYED_MSG") end
+	muted = nil
+end
+local function requestPlayed()
+	if not RequestTimePlayed then return end
+	if not muted then
+		muted = {}
+		for i = 1, NUM_CHAT_WINDOWS or 10 do
+			local f = _G["ChatFrame" .. i]
+			if f and f:IsEventRegistered("TIME_PLAYED_MSG") then
+				f:UnregisterEvent("TIME_PLAYED_MSG"); muted[#muted + 1] = f
+			end
+		end
+	end
+	gen = gen + 1
+	local g = gen
+	C_Timer.After(10, function() unmute(g) end)
+	RequestTimePlayed()
+end
+
 ns:On("PLAYER_LEVEL_UP", function(_, level)
+	if pendingLevel then           -- segundo ding antes da resposta: fecha o anterior pela estimativa
+		local t = lastPlayed and RT:LivePlayed() or nil
+		run().levelPlayed[pendingLevel] = t
+		fechar(run(), pendingLevel, t)
+	end
 	pendingLevel = tonumber(level) or UnitLevel("player")
-	if RequestTimePlayed then RequestTimePlayed() end
+	requestPlayed()
 end)
 
-ns:On("TIME_PLAYED_MSG", function(_, total)
+ns:On("TIME_PLAYED_MSG", function(_, total, levelTime)
+	C_Timer.After(0, unmute)                          -- depois que esta resposta passou
 	if not total then return end
 	lastPlayed, lastAt = total, GetTime()
+	local r = run()
 	if pendingLevel then
 		local L = pendingLevel; pendingLevel = nil
-		run().levelPlayed[L] = total
+		r.levelPlayed[L] = total
+		fechar(r, L, total)
+		cur()
 		opponent()                                    -- congela o oponente na 1ª vez
 		if ns.ReportCard then ns.ReportCard:OnLevel(L, total) end
 		RT:UpdateGhost(L)
+	elseif levelTime then
+		r.levelStart = total - levelTime              -- login: quanto do nível atual já foi
+		-- registro de outro nível (reload entre o ding e a resposta): recomeça
+		if r.cur and r.cur.level and r.cur.level ~= UnitLevel("player") then r.cur = nil end
 	end
 end)
 
-ns:On("QUEST_TURNED_IN", function() run().quests = (run().quests or 0) + 1 end)
+ns:On("QUEST_TURNED_IN", function()
+	run().quests = (run().quests or 0) + 1
+	cur().quests = cur().quests + 1
+end)
+ns:On("PLAYER_DEAD", function() cur().deaths = cur().deaths + 1 end)
+ns:On("_STEP_DONE", function() cur().steps = cur().steps + 1 end)
+ns:On("ZONE_CHANGED_NEW_AREA", function()
+	local z = GetZoneText and GetZoneText() or ""
+	if z ~= "" then cur().zones[z] = true end
+end)
 
 -- sincroniza o /played uma vez ao entrar (p/ o "ao vivo" ficar preciso na sessão)
 ns:On("PLAYER_ENTERING_WORLD", function()
-	if not lastPlayed and RequestTimePlayed then RequestTimePlayed() end
+	if not lastPlayed then requestPlayed() end
 end)
 
 -- atualiza o ghost da classe se esta run foi mais longe / mais rápida no topo

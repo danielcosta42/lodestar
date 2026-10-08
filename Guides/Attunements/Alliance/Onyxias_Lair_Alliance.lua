@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Alliance/Onyxia's Lair (Alliance)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "2ff56389",
 }, [[
 step
   talk Helendis Riverhorn##9562
@@ -18,12 +19,14 @@ step
   talk Helendis Riverhorn##9562
   accept The True Masters##4183 |goto Burning Steppes 85.82,68.95
 step
+  note Travel to Lakeshire and deliver Helendis Riverhorn's Letter to Magistrate Solomon.
   talk Magistrate Solomon##344
   turnin The True Masters##4183 |goto Redridge Mountains 24.9,44.45
 step
   talk Magistrate Solomon##344
   accept The True Masters##4184 |goto Redridge Mountains 24.9,44.45
 step
+  note Travel to Stormwind and deliver Solomon's Plea to Highlord Bolvar Fordragon.
   talk Highlord Bolvar Fordragon##1748
   turnin The True Masters##4184 |goto Stormwind City 80.21,38.35
 step
@@ -39,12 +42,14 @@ step
   talk Highlord Bolvar Fordragon##1748
   accept The True Masters##4186 |goto Stormwind City 80.21,38.35
 step
+  note Take Bolvar's Decree to Magistrate Solomon in Lakeshire.
   talk Magistrate Solomon##344
   turnin The True Masters##4186 |goto Redridge Mountains 24.9,44.45
 step
   talk Magistrate Solomon##344
   accept The True Masters##4223 |goto Redridge Mountains 24.9,44.45
 step
+  note Speak with Marshal Maxwell in the Burning Steppes.
   talk Marshal Maxwell##9560
   turnin The True Masters##4223 |goto Burning Steppes 84.74,69.02
 step
@@ -60,18 +65,21 @@ step
   talk Marshal Maxwell##9560
   accept Marshal Windsor##4241 |goto Burning Steppes 84.74,69.02
 step
+  note Travel to Blackrock Mountain in the northwest and enter Blackrock Depths. Find out what became of Marshal Windsor.
   talk Marshal Windsor##9023
   turnin Marshal Windsor##4241 |goto Blackrock Depths - Dungeon -1,-1
 step
   talk Marshal Windsor##9023
   accept Abandoned Hope##4242 |goto Blackrock Depths - Dungeon -1,-1
 step
+  note Give Marshal Maxwell the bad news.
   talk Marshal Maxwell##9560
   turnin Abandoned Hope##4242 |goto Burning Steppes 84.74,69.02
 step
   kill Anvilrage Overseer##8889 |goto Blackrock Depths - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept A Crumpled Up Note##4264 |goto Blackrock Depths - Dungeon -1,-1
 step
+  note You may have just stumbled on to something that Marshal Windsor would be interested in seeing. There may be hope, after all.
   talk Marshal Windsor##9023
   turnin A Crumpled Up Note##4264 |goto Blackrock Depths - Dungeon -1,-1
 step
@@ -87,24 +95,28 @@ step
   talk Marshal Windsor##9023
   accept Jail Break!##4322 |goto Blackrock Depths - Dungeon -1,-1
 step
+  note Help Marshal Windsor get his gear back and free his friends. Return to Marshal Maxwell if you succeed.
   talk Marshal Maxwell##9560
   turnin Jail Break!##4322 |goto Burning Steppes 84.74,69.02
 step
   talk Marshal Maxwell##9560
   accept Stormwind Rendezvous##6402 |goto Burning Steppes 84.74,69.02
 step
+  note Travel to Stormwind City and venture to the city gates. Speak with Squire Rowe so that he may let Marshal Windsor know that you have arrived.
   talk Reginald Windsor##12580
   turnin Stormwind Rendezvous##6402 |goto Stormwind City 73.61,91.05
 step
   talk Reginald Windsor##12580
   accept The Great Masquerade##6403 |goto Stormwind City 73.61,91.05
 step
+  note Follow Reginald Windsor through Stormwind. Protect him from harm!
   talk Highlord Bolvar Fordragon##1748
   turnin The Great Masquerade##6403 |goto Stormwind City 80.21,38.35
 step
   talk Highlord Bolvar Fordragon##1748
   accept The Dragon's Eye##6501 |goto Stormwind City 80.21,38.35
 step
+  note You must search the world for a being capable of restoring the power to the Fragment of the Dragon's Eye. The only information you possess about such a being is that they exist.
   talk Haleh##10929
   turnin The Dragon's Eye##6501 |goto Winterspring 54.55,51.2
 step

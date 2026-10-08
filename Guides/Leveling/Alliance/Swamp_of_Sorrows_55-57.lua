@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (55-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (55-60)",
+	rev = "10c16fb5",
 }, [[
 step
   only completed(1469)
@@ -40,7 +41,7 @@ step
   accept The Stones That Bind Us##2681 |goto Swamp of Sorrows 34.29,66.14
 step
   only completed(3373)
-  kill Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip Loot the quest item here — it starts the quest.
+  talk Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip They give you the item that starts the quest.
   accept The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
 step
   only completed(3373)

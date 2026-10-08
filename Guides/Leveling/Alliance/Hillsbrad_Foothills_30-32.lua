@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (30-32)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Hillsbrad Foothills (33-38)",
+	rev = "7077073b",
 }, [[
 step
   only completed(2745)
@@ -130,6 +131,6 @@ step
   talk Major Samuelson##2439
   turnin Reassignment##563 |goto Stormwind City 75.83,36.72 |tip {turninat}Stormwind City
 step
-  note {travel}Ironforge
-  goto Ironforge 36.38,3.61
+  note {travel}Hillsbrad Foothills
+  goto Hillsbrad Foothills 48.14,59.11
 ]])

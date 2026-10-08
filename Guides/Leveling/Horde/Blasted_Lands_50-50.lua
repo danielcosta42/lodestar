@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Blasted Lands (50-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Badlands (50-54)",
+	rev = "77f8a77c",
 }, [[
 step
   only not completed(3762) not completed(936) not haveq(3762) not haveq(936)
@@ -79,5 +80,5 @@ step
   turnin Assisting Arch Druid Runetotem##3784 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
 step
   note {travel}Undercity
-  goto Undercity 48.71,71.39
+  goto Undercity 47.45,73.35
 ]])

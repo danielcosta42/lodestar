@@ -19,12 +19,22 @@ local function IsQuestInLog(id)
 	if GetQuestLogIndexByID then return (GetQuestLogIndexByID(id) or 0) > 0 end
 	return false
 end
+ns.IsQuestInLog, ns.IsQuestDone = IsQuestInLog, IsQuestComplete
+-- `obj`: aquele objetivo. Sem índice, a quest inteira: o passo cita o 1º alvo e a nota diz o
+-- resto — concluir no 1º avançava o guia com objetivos por fazer.
 local function QuestObjectiveDone(id, obj)
 	local objectives
 	if QuestLog.GetQuestObjectives then objectives = QuestLog.GetQuestObjectives(id) end
 	if not objectives then return false end
-	local o = objectives[obj or 1]
-	return o and o.finished or false
+	if obj then
+		local o = objectives[obj]
+		return o and o.finished or false
+	end
+	if #objectives == 0 then return false end
+	for _, o in ipairs(objectives) do
+		if not o.finished then return false end
+	end
+	return true
 end
 local ItemCount = (C_Item and C_Item.GetItemCount) or GetItemCount or function() return 0 end
 
@@ -49,11 +59,11 @@ end
 --------------------------------------------------------------------------------
 local CLASSES = {
 	WARRIOR=1, PALADIN=1, HUNTER=1, ROGUE=1, PRIEST=1,
-	SHAMAN=1, MAGE=1, WARLOCK=1, DRUID=1, DEATHKNIGHT=1,
+	SHAMAN=1, MAGE=1, WARLOCK=1, DRUID=1,
 }
 local RACES = {
-	HUMAN=1, DWARF=1, NIGHTELF=1, GNOME=1, DRAENEI=1,
-	ORC=1, SCOURGE=1, TAUREN=1, TROLL=1, BLOODELF=1,
+	HUMAN=1, DWARF=1, NIGHTELF=1, GNOME=1,
+	ORC=1, SCOURGE=1, TAUREN=1, TROLL=1,
 }
 local RACE_ALIAS = { UNDEAD = "SCOURGE" }  -- fala comum -> token da API
 
@@ -99,8 +109,6 @@ local function evalToken(tok)
 		elseif op == "==" or op == "=" then result = lvl == n end
 	elseif U == "FOREVER" then
 		result = ns.Client.isForever
-	elseif U == "ANNIVERSARY" or U == "TBC" then
-		result = not ns.Client.isForever
 	elseif U == "ALLIANCE" or U == "HORDE" then
 		result = (UnitFactionGroup("player") or ""):upper() == U
 	elseif CLASSES[U] then
@@ -204,10 +212,8 @@ end
 -- evita. Então o passo inteiro sai, a menos que sobre algo que se complete
 -- sozinho (um `ding`, um `collect` com conta própria, um `goto` com coordenada).
 --
--- O passo que muda é COPIADO: o array cru fica em guide._baseSteps, de onde o
--- Prereq colhe cadeias para OUTROS guias, e mutar ali tornaria a injeção
--- dependente da ordem em que os guias foram abertos (índices e progresso salvos
--- deixariam de bater entre sessões).
+-- O passo que muda é COPIADO: o array cru fica em guide._baseSteps, intacto —
+-- índices e progresso salvos têm de bater entre sessões.
 --
 -- Roda ANTES da indexação, então _gkey/_step batem com o array devolvido.
 local function stripMissingQuests(steps)
@@ -238,7 +244,9 @@ end
 local function ensureParsed(guide)
 	if guide.steps then return guide.steps end
 	local base = getBaseSteps(guide)
-	local steps = (ns.Prereq and ns.Prereq:InjectChains(guide, base)) or base
+	-- os passos do próprio guia: o gerador já esconde (por condição) o que depende de quest
+	-- de outro guia — injetar a cadeia aqui punha passos impossíveis e travava todo caminho
+	local steps = base
 	steps = stripMissingQuests(steps)
 	guide.steps = steps
 	for si, step in ipairs(steps) do
@@ -275,6 +283,12 @@ end
 -- Abre um guia (como aba) e o ativa. Se já estiver aberto, apenas troca p/ ele
 -- retomando o passo salvo. `keepProgress` retoma em vez de zerar; `silent` evita
 -- print/toast (usado ao trocar de aba, que não deve poluir o chat).
+-- Assinatura do conteúdo do guia: a revisão que o gerador grava no meta (muda quando
+-- ele é regerado, ver migrateStep); guia importado, sem ela, usa o tamanho do texto.
+local function guideSig(guide)
+	return guide.meta and guide.meta.rev or #(guide.body or "")
+end
+
 function ns:LoadGuide(key, keepProgress, silent)
 	local guide = self.guides[key]
 	if not guide then return self:Printf(ns.L.GUIDE_NOTFOUND, key) end
@@ -286,6 +300,7 @@ function ns:LoadGuide(key, keepProgress, silent)
 	if not wasOpen then table.insert(self.char.openGuides, key) end
 	self.currentGuide = guide
 	self.char.currentGuide = key
+	self.char.hold = nil
 	if keepProgress or wasOpen then
 		self.char.currentStep = self.char.steps[key] or 1   -- retoma (troca de aba/login)
 	else
@@ -293,11 +308,15 @@ function ns:LoadGuide(key, keepProgress, silent)
 		if self.db and self.db.viewer then self.db.viewer.hidden = false end   -- mostra a UI
 	end
 	self.char.steps[key] = self.char.currentStep
+	self.char.sigs = self.char.sigs or {}
+	self.char.sigs[key] = guideSig(guide)
 	if not silent and not (keepProgress and wasOpen) then
 		self:Printf(ns.L.GUIDE_LOADED_MSG, key, #guide.steps)
 	end
 	self.fire("_GUIDE_LOADED", guide, silent)
+	self._abrindo = true                    -- o que o guia pula ao abrir não é passo feito agora
 	self:CheckProgress()
+	self._abrindo = nil
 	if self.Viewer then self.Viewer:Refresh() end
 	if self.Waypoint then self.Waypoint:Update() end
 end
@@ -366,14 +385,32 @@ end
 --------------------------------------------------------------------------------
 -- Conclusão de goals
 --------------------------------------------------------------------------------
+-- a quest do goal (objetivo `|q` ou entrega)
+local function goalQuest(goal)
+	return goal.q and goal.q.id or (goal.verb == "turnin" and goal.id) or nil
+end
+
+-- missão descartada (o NPC não a oferecia): seus passos seguintes não valem mais, a não
+-- ser que ela esteja no diário ou já entregue (o jogador a fez por conta própria)
+local function droppedGoal(char, goal)
+	local q = goalQuest(goal)
+	return q and char and char.dropped and char.dropped[q] and not IsQuestInLog(q)
+		and not IsQuestComplete(q) or false
+end
+
 function ns:IsGoalActive(goal)
+	if droppedGoal(self.char, goal) then return false end
 	return self:EvalCondition(goal.only)
 end
+
+ns:On("QUEST_ACCEPTED", function(_, a, b)       -- (id) ou (índice no diário, id)
+	local q = b or a
+	if q and ns.char and ns.char.dropped then ns.char.dropped[q] = nil end
+end)
 
 -- Um goal é "rastreável" se dá pra detectar conclusão automaticamente.
 function ns:IsGoalTrackable(goal)
 	if goal.verb == "note" then return false end
-	if goal.verb == "run" then return goal.runs ~= nil end   -- completa por nº de corridas
 	if goal.complete then return true end
 	if goal.verb == "accept" or goal.verb == "turnin" then return goal.id ~= nil end
 	if goal.verb == "ding" then return true end
@@ -391,10 +428,6 @@ function ns:IsGoalComplete(goal)
 
 	local v = goal.verb
 	if v == "note" then return true end
-	if v == "run" then   -- spam de dungeon: completo quando bater o nº de corridas
-		local n = ns.DungeonRuns and ns.DungeonRuns:CountFor(goal.dungeon) or 0
-		return goal.runs ~= nil and n >= (tonumber(goal.runs) or 0)
-	end
 	if v == "accept" then return goal.id and (IsQuestInLog(goal.id) or IsQuestComplete(goal.id)) end
 	if v == "turnin" then return goal.id and IsQuestComplete(goal.id) end
 	if v == "ding" then return UnitLevel("player") >= (tonumber(goal.text) or goal.count or 0) end
@@ -414,11 +447,14 @@ function ns:IsGoalComplete(goal)
 end
 
 -- Step completo = todos os goals ativos e rastreáveis estão completos,
--- e existe pelo menos um goal rastreável (senão avança manual).
+-- e existe pelo menos um goal rastreável (senão avança manual). Goal de missão
+-- descartada conta como feito: o passo que só tinha ela não trava o guia.
 function ns:IsStepComplete(step)
 	local anyTrackable = false
 	for _, goal in ipairs(step.goals) do
-		if self:IsGoalActive(goal) and self:IsGoalTrackable(goal) then
+		if droppedGoal(self.char, goal) then
+			anyTrackable = true
+		elseif self:IsGoalActive(goal) and self:IsGoalTrackable(goal) then
 			anyTrackable = true
 			if not self:IsGoalComplete(goal) then return false end
 		end
@@ -440,29 +476,26 @@ function ns:AdvanceStep(delta)
 	while guide.steps[idx] and not self:IsStepActive(guide.steps[idx]) do
 		idx = idx + (delta >= 0 and 1 or -1)
 	end
-	if idx < 1 then idx = 1 end
+	if idx < 1 then return end                   -- nada ativo antes: fica onde está
 	if idx > #guide.steps then
 		-- fim do guia: encadeia para o próximo, se houver
 		local nxt = self:NextGuideKey(guide)
 		if nxt then
-			self:Print("guia concluído, carregando o próximo...")
+			self:Print(ns.L.GUIDE_CHAINING)
 			return self:ChainGuide(guide.key, nxt)
 		end
 		idx = #guide.steps
-		self:Print("|cff88ff88" .. ns.L.GUIDE_DONE .. "|r")
+		if not guide._doneShown then                -- uma vez: todo evento passa por aqui de novo
+			guide._doneShown = true
+			self:Print("|cff88ff88" .. ns.L.GUIDE_DONE .. "|r")
+		end
 	end
 	self.char.currentStep = idx
 	self.char.steps[guide.key] = idx        -- persiste o passo por-guia (p/ trocar/logar)
+	-- voltar à mão segura o passo: o próximo evento não o pula de novo (até avançar à mão)
+	self.char.hold = delta < 0 and idx or nil
 	if self.Viewer then self.Viewer:Refresh() end
 	if self.Waypoint then self.Waypoint:Update() end
-end
-
--- Marca/desmarca conclusão manual de um goal.
-function ns:MarkGoal(goal, done)
-	if done == nil then done = not self.char.completedGoals[goal._gkey] end
-	self.char.completedGoals[goal._gkey] = done or nil
-	self:CheckProgress()
-	if self.Viewer then self.Viewer:Refresh() end
 end
 
 -- Chamado quando o estado do jogo muda: auto-avança por TODOS os steps já
@@ -476,7 +509,13 @@ function ns:CheckProgress()
 		if self.currentGuide ~= guide then break end   -- encadeou p/ outro guia
 		local step = self:GetStep()
 		if not step then break end
+		if self.char.hold == self.char.currentStep then        -- o jogador voltou aqui à mão
+			-- ...e o passo está por fazer: solta a trava, para seguir quando concluir
+			if self:IsStepActive(step) and not self:IsStepComplete(step) then self.char.hold = nil end
+			break
+		end
 		if self:IsStepActive(step) and not self:IsStepComplete(step) then break end
+		if self:IsStepActive(step) and not self._abrindo and self.fire then self.fire("_STEP_DONE") end
 		local before = self.char.currentStep
 		self:AdvanceStep(1)
 		if self.currentGuide == guide and self.char.currentStep == before then break end
@@ -488,9 +527,9 @@ end
 -- Zona inicial por raça (token não-localizado de UnitRace).
 local RACE_START = {
 	HUMAN = "Elwynn Forest", DWARF = "Dun Morogh", GNOME = "Dun Morogh",
-	NIGHTELF = "Teldrassil", DRAENEI = "Azuremyst Isle",
+	NIGHTELF = "Teldrassil",
 	ORC = "Durotar", TROLL = "Durotar", TAUREN = "Mulgore",
-	SCOURGE = "Tirisfal Glades", BLOODELF = "Eversong Woods",
+	SCOURGE = "Tirisfal Glades",
 }
 
 -- A ilha da raça nova (Forever): a cadeia de leveling não passa por ela, e o
@@ -558,6 +597,19 @@ function ns:BestGuideForPlayer()
 	return best
 end
 
+-- O passo salvo é um número na lista de passos do guia. Guia regerado (passos em outra
+-- ordem) ou save de antes da 2.4 (contava os passos injetados) faz o número apontar
+-- para outro lugar: recua até logo depois do último passo concluído — seguir o número
+-- velho pulava missões.
+local function migrateStep(guide, i)
+	local steps = ensureParsed(guide)
+	local j = math.min(i, #steps)
+	while j > 1 and not (ns:IsStepActive(steps[j - 1]) and ns:IsStepComplete(steps[j - 1])) do
+		j = j - 1
+	end
+	return math.max(j, 1)
+end
+
 -- Restaura as abas/guia salvos (migrando o estado antigo single-guia); senão
 -- faz onboarding de char novo.
 ns:On("_READY", function()
@@ -569,9 +621,55 @@ ns:On("_READY", function()
 		char.openGuides[1] = char.currentGuide
 		char.steps[char.currentGuide] = char.currentStep or 1
 	end
-	-- Descarta abas cujo guia não existe mais (ex.: guia importado apagado).
+	-- Guia regerado com outra faixa no título (Silverpine Forest 11-20 -> 11-18): aba e
+	-- passo seguem para o da mesma zona cuja faixa mais se sobrepõe.
+	local function renomeado(old)
+		local pre, lo, hi = old:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
+		if not pre or ns.guides[old] then return nil end
+		local best, bestOv
+		for k in pairs(ns.guides) do
+			local p2, l2, h2 = k:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
+			if p2 == pre then
+				local ov = math.min(tonumber(hi), tonumber(h2)) - math.max(tonumber(lo), tonumber(l2))
+				if ov >= 0 and (not bestOv or ov > bestOv) then best, bestOv = k, ov end
+			end
+		end
+		return best
+	end
+	local troca = {}
+	for k in pairs(char.steps) do troca[k] = renomeado(k) end
+	for _, k in ipairs(char.openGuides) do troca[k] = troca[k] or renomeado(k) end
+	for old, new in pairs(troca) do
+		if char.steps[new] == nil then char.steps[new] = char.steps[old] end
+		char.steps[old] = nil
+		if char.currentGuide == old then char.currentGuide = new end
+		if char.manualPick == old then char.manualPick = new end
+		for i, k in ipairs(char.openGuides) do if k == old then char.openGuides[i] = new end end
+	end
+	-- Descarta abas cujo guia não existe mais (ex.: guia importado apagado) e as repetidas.
+	local vistas = {}
 	for i = #char.openGuides, 1, -1 do
-		if not ns.guides[char.openGuides[i]] then table.remove(char.openGuides, i) end
+		local k = char.openGuides[i]
+		if not ns.guides[k] or vistas[k] then table.remove(char.openGuides, i) end
+		vistas[k] = true
+	end
+	char.sigs = char.sigs or {}
+	for k, i in pairs(char.steps) do
+		local g = ns.guides[k]
+		-- save de antes das assinaturas: só os guias de leveling mudaram (passos injetados
+		-- e regerados); nos outros, o passo salvo vale e só se grava a assinatura
+		if g and char.sigs[k] == nil and k:sub(1, 9) ~= "Leveling/" then
+			char.sigs[k] = guideSig(g)
+		elseif g and char.sigs[k] ~= guideSig(g) then
+			local pre = k .. "\0"                  -- marcas manuais: chave com o número velho
+			for gk in pairs(char.completedGoals) do
+				if gk:sub(1, #pre) == pre then char.completedGoals[gk] = nil end
+			end
+			char.steps[k], char.sigs[k] = migrateStep(g, i), guideSig(g)
+		end
+	end
+	if char.currentGuide and char.steps[char.currentGuide] then
+		char.currentStep = char.steps[char.currentGuide]
 	end
 	-- Restaura a aba ativa salva; senão a primeira aba válida que sobrou.
 	local key = char.currentGuide
@@ -579,8 +677,8 @@ ns:On("_READY", function()
 	if key and ns.guides[key] then
 		-- aba de leveling que o nível já passou (logou no 11 com Tirisfal 5-10 ativo,
 		-- e a primeira coisa sugerida era uma quest cinza de Deathknell): abre o guia
-		-- recomendado; a antiga fica na aba
-		local hi = key:sub(1, 9) == "Leveling/" and tonumber(key:match("%-%s*(%d+)%)$"))
+		-- recomendado; a antiga fica na aba. Aba que o jogador escolheu à mão fica.
+		local hi = key ~= char.manualPick and key:sub(1, 9) == "Leveling/" and tonumber(key:match("%-%s*(%d+)%)$"))
 		local best = hi and (UnitLevel("player") or 0) > hi and ns:BestGuideForPlayer()
 		ns:LoadGuide(best and best ~= key and best or key, true)   -- mantém o step salvo
 		return

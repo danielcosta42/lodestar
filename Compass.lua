@@ -37,6 +37,7 @@ local W, H, FADE = 360, 40, 56
 local PARCH = { 0.72, 0.67, 0.55 }      -- o tom de pergaminho das marcações do jogo
 local TICK_Y, MARK_Y = -6, -10
 local frame, ticks, markers, info, mover
+local lastSig                         -- o que está desenhado; igual = não refaz
 
 -- ícone do próprio jogo quando o cliente tem o atlas; senão, o nosso
 local function icon(t, atlas, size, fallback)
@@ -130,9 +131,15 @@ local function update()
 	local p = route and ns.Travel.PlayerWorld()
 	if not (db and db.enabled and route and p and (route.kind ~= "guide" or ns:UIShown())) then
 		if frame then frame:Hide() end
+		lastSig = nil
 		return
 	end
 	build():Show()
+	local sig = ("%s|%d|%.1f|%.1f|%.3f|%.0f|%d"):format(tostring(route), route.leg, p.x, p.y,
+		GetPlayerFacing and GetPlayerFacing() or 0, ns.Travel:Speed() * 10,
+		GetServerTime and GetServerTime() or 0)       -- o segundo: a contagem do barco anda parada
+	if sig == lastSig then return end
+	lastSig = sig
 	local C = UI.COL
 	local facing = GetPlayerFacing and GetPlayerFacing() or 0
 	for i = 0, 23 do
@@ -158,11 +165,12 @@ local function update()
 	local step = route.kind ~= "guide" and ns.Destinations and ns.Destinations.GuideTarget()
 	place(markers.step, p, step and ns.Travel.World(step.zone, step.x, step.y) or nil, facing, C.done, 0.6)
 	local d = leg and leg.b.c == p.c and math.sqrt((leg.b.x - p.x) ^ 2 + (leg.b.y - p.y) ^ 2)
+	if d and leg.k == "walk" and leg.path and ns.Terrain then d = select(3, ns.Terrain.Ahead(leg.path, p, 0)) end
 	info:SetText((d and (ns.L.YARDS:format(d) .. "  ·  ") or "") .. ns.Waypoint.FmtTime(
-		ns.Travel.Remaining(route, p, ns.Travel:Speed())))
+		ns.Travel.Remaining(route, p, ns.Travel:Speed(), GetServerTime and GetServerTime())))
 end
 
 ns:Every(0.05, function()
 	local ok, err = pcall(update)
-	if not ok then ns:Debug("Compass:", err); if frame then frame:Hide() end end
+	if not ok then ns:Debug("Compass:", err); lastSig = nil; if frame then frame:Hide() end end
 end)

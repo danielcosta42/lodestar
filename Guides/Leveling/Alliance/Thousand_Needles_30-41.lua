@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Thousand Needles (30-41)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Feralas (43-48)",
+	rev = "da3bd36f",
 }, [[
 step
   only Warrior completed(1782)
@@ -75,37 +76,42 @@ step
   talk Trackmaster Zherin##4629
   turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
 step
-  only Warrior completed(1782)
-  talk Mathiel##6142
-  turnin Sunscorched Shells##1710 |goto Darnassus 59.51,45.38 |tip {turninat}Darnassus
-step
-  talk Falfindel Waywarder##4048
-  turnin Lonebrow's Journal##1100 |goto Feralas 89.64,46.57 |tip {turninat}Feralas
-step
   talk Kravel Koalbeard##4452
   accept Wharfmaster Dizzywig##1111 |goto Thousand Needles 77.79,77.27
+step
+  talk Pozzik##4630
+  accept Goblin Sponsorship##1178 |goto Thousand Needles 80.18,75.88
 step
   only completed(1183)
   talk Pozzik##4630
   accept The Eighteenth Pilot##1186 |goto Thousand Needles 80.18,75.88
 step
-  only completed(1137)
-  talk Pozzik##4630
-  accept Keeping Pace##1190 |goto Thousand Needles 80.18,75.88
-step
-  only completed(1119) not completed(1121) not haveq(1121)
-  talk Kravel Koalbeard##4452
-  accept Get the Gnomes Drunk##1120 |goto Thousand Needles 77.79,77.27
-step
-  talk Wharfmaster Dizzywig##3453
-  turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
-step
   only completed(1183)
   talk Razzeric##4706
   turnin The Eighteenth Pilot##1186 |goto Thousand Needles 80.33,76.09
 step
+  only completed(1183)
+  talk Razzeric##4706
+  accept Razzeric's Tweaking##1187 |goto Thousand Needles 80.33,76.09
+step
+  only completed(1137)
+  talk Pozzik##4630
+  accept Keeping Pace##1190 |goto Thousand Needles 80.18,75.88
+step
   only completed(1137)
   turnin Keeping Pace##1190 |goto Thousand Needles 77.21,77.39
+step
+  only completed(1137)
+  click Rizzle's Unguarded Plans##20805
+  accept Rizzle's Schematics##1194 |goto Thousand Needles 77.21,77.39
+step
+  only completed(1137)
+  talk Pozzik##4630
+  turnin Rizzle's Schematics##1194 |goto Thousand Needles 80.18,75.88
+step
+  only completed(1119) not completed(1121) not haveq(1121)
+  talk Kravel Koalbeard##4452
+  accept Get the Gnomes Drunk##1120 |goto Thousand Needles 77.79,77.27
 step
   only completed(1119) not completed(1121) not haveq(1121)
   talk Gnome Pit Boss##4495
@@ -113,21 +119,32 @@ step
 step
   only Warrior completed(1782)
   talk Mathiel##6142
+  turnin Sunscorched Shells##1710 |goto Darnassus 59.51,45.38 |tip {turninat}Darnassus
+step
+  talk Falfindel Waywarder##4048
+  turnin Lonebrow's Journal##1100 |goto Feralas 89.64,46.57 |tip {turninat}Feralas
+step
+  talk Wharfmaster Dizzywig##3453
+  turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
+step
+  talk Talendria##11715
+  accept Vyletongue Corruption##7041 |goto Desolace 68.5,8.88
+step
+  note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
+  kill Noxxious Scion##13696 |q 7041 |goto Maraudon - Dungeon -1,-1
+step
+  talk Talendria##11715
+  turnin Vyletongue Corruption##7041 |goto Desolace 68.5,8.88 |tip {turninat}Desolace
+step
+  talk Gazlowe##3391
+  turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
+step
+  only Warrior completed(1782)
+  talk Mathiel##6142
   accept Mathiel's Armor##1711 |goto Darnassus 59.51,45.38
 step
   talk Wharfmaster Dizzywig##3453
   accept Parts for Kravel##1112 |goto The Barrens 63.35,38.45
-step
-  talk Pozzik##4630
-  accept Goblin Sponsorship##1178 |goto Thousand Needles 80.18,75.88
-step
-  only completed(1183)
-  talk Razzeric##4706
-  accept Razzeric's Tweaking##1187 |goto Thousand Needles 80.33,76.09
-step
-  only completed(1137)
-  click Rizzle's Unguarded Plans##20805
-  accept Rizzle's Schematics##1194 |goto Thousand Needles 77.21,77.39
 step
   only completed(1183)
   note Retrieve the Seaforium Booster for Razzeric in the Shimmering Flats.
@@ -140,16 +157,9 @@ step
   talk Kravel Koalbeard##4452
   turnin Parts for Kravel##1112 |goto Thousand Needles 77.79,77.27
 step
-  talk Gazlowe##3391
-  turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
-step
   only completed(1183)
   talk Razzeric##4706
   turnin Razzeric's Tweaking##1187 |goto Thousand Needles 80.33,76.09
-step
-  only completed(1137)
-  talk Pozzik##4630
-  turnin Rizzle's Schematics##1194 |goto Thousand Needles 80.18,75.88
 step
   talk Kravel Koalbeard##4452
   accept Delivery to the Gnomes##1114 |goto Thousand Needles 77.79,77.27

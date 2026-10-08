@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (35-42)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Arathi Highlands (31-40)",
+	rev = "f787844c",
 }, [[
 step
   talk Magtoor##1776

@@ -18,19 +18,14 @@ local function verbLabel(verb)
 end
 
 -- nome localizado da zona (p/ casar com GetZoneText do client)
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
+local localizedZone = ns.LocalizedZone
 
 -- Texto de viagem p/ o passo atual: a perna atual da rota (antes da última, a pé);
 -- sem rota e com o alvo fora da zona, "Vá para <zona>".
 local function travelHint()
 	local route = ns.Travel and ns.Travel:Route()
 	if route then
+		-- sem contagem: a dica só se refaz ao trocar de passo (a seta e o painel contam)
 		return route.leg < #route.legs and ns.Waypoint.LegText(route, route.leg) or nil
 	end
 	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
@@ -116,7 +111,11 @@ local function getTab(i)
 	x:SetScript("OnClick", function() if t._key then ns:CloseGuide(t._key) end end)
 	t.x = x
 
-	t:SetScript("OnClick", function() if t._key then ns:SwitchGuide(t._key) end end)
+	t:SetScript("OnClick", function()
+		if not t._key then return end
+		if not (ns.currentGuide and ns.currentGuide.key == t._key) then ns.char.manualPick = t._key end
+		ns:SwitchGuide(t._key)
+	end)
 	t:SetScript("OnEnter", function()
 		if not t._active then
 			bg:SetColorTexture(unpackc(C.panel)); label:SetTextColor(unpackc(C.active)); x:Show()
@@ -290,7 +289,7 @@ local function build()
 	frame.travel:Hide()
 
 	-- (Pré-requisitos não têm mais banner: a cadeia que falta é injetada inline
-	--  como passos nativos — ver Prereq.lua / ns.Prereq:InjectChains.)
+	--  como passos nativos.)
 
 	-- Banner de GRUPO: passo atual tem inimigo elite/chefe -> recomenda grupo/raide
 	-- e oferece "Procurar grupo" (gancho pro PartyLens; fallback: buscador nativo).
@@ -378,10 +377,6 @@ local function getRow(i)
 	row.dist = UI.Chip(row, { 0, 0, 0, 0.35 }, UI.COL.accent)
 	row.dist:SetPoint("TOPRIGHT", 0, -1)
 	row.dist:Hide()
-	-- chip de "corridas" (spam de dungeon): N/M no mesmo canto (goal de ding, sem dist)
-	row.runs = UI.Chip(row, { 0, 0, 0, 0.35 }, UI.COL.amber)
-	row.runs:SetPoint("TOPRIGHT", 0, -1)
-	row.runs:Hide()
 	rowPool[i] = row
 	return row
 end
@@ -495,8 +490,6 @@ function V:Refresh()
 	local w = frame.content:GetWidth()
 	if w <= 0 then w = (ns.db.viewer.width or 340) - 40 end
 
-	-- Pré-requisitos: sem banner. A cadeia que falta já foi injetada inline como
-	-- passos nativos no parse (Prereq.lua), então nada a desenhar aqui.
 
 	-- Banner de GRUPO: o passo atual tem um objetivo elite/chefe ainda não feito?
 	local needRaid, needGroup = false, false
@@ -576,13 +569,6 @@ function V:Refresh()
 					distRows[#distRows + 1] = { chip = row.dist, goal = goal }
 				end
 
-				-- chip de "corridas" (spam de dungeon): quantas você já limpou / meta
-				row.runs:Hide()
-				if goal.runs and goal.dungeon then
-					local n = ns.DungeonRuns and ns.DungeonRuns:CountFor(goal.dungeon) or 0
-					row.runs:Set(("%d/%s"):format(n, goal.runs))
-					row.runs:Show()
-				end
 
 				local h = math.max(16, row.text:GetStringHeight() + 4)
 				row:SetHeight(h)

@@ -19,7 +19,7 @@ function M:GotoProfTrainer(name)
 end
 
 --------------------------------------------------------------------------------
--- Avisos ao subir de nível (montaria TBC 30/60/70; treinar a cada 2 níveis)
+-- Avisos ao subir de nível (treinar a cada 2 níveis)
 --------------------------------------------------------------------------------
 ns:On("PLAYER_LEVEL_UP", function(_, level)
 	level = tonumber(level) or UnitLevel("player")
@@ -35,15 +35,9 @@ end)
 
 --------------------------------------------------------------------------------
 -- Nudge de Pedra de Lar: sugere vincular no hub onde você vai passar um tempo,
--- economizando deslocamento. Shattrath é o caso especial (hub central do TBC).
+-- economizando deslocamento.
 --------------------------------------------------------------------------------
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
+local localizedZone = ns.LocalizedZone
 
 -- Quantos dos próximos ~20 passos acontecem na zona atual (sinal de "vou ficar").
 local function upcomingHereCount(curLower)
@@ -72,17 +66,7 @@ ns:On("ZONE_CHANGED_NEW_AREA", function()
 	local z = GetZoneText and GetZoneText() or ""
 	if z == "" then return end
 
-	-- 1) Shattrath: portais p/ todas as capitais -> a melhor pedra do TBC
-	if z:find("Shattrath") then
-		if not ns.char.sawShattrath then
-			ns.char.sawShattrath = true
-			T:Show({ title = ns.L.SET_HEARTH_T, text = ns.L.SET_HEARTH_SHAT,
-				color = ns.UI.COL.tip, hold = 9, glyph = "estrela" })
-		end
-		return
-	end
-
-	-- 2) hub de leveling: >=8 dos próximos passos são aqui e a pedra está longe
+	-- hub de leveling: >=8 dos próximos passos são aqui e a pedra está longe
 	ns.char.hearthNudge = ns.char.hearthNudge or {}
 	local zl = z:lower()
 	if ns.char.hearthNudge[zl] then return end

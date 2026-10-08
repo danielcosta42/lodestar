@@ -87,7 +87,9 @@ function WP.ParseWay(text)
 	return x, y, zone ~= "" and zone or nil
 end
 
-function WP.LegText(route, i, secs)
+-- `now` (hora do servidor): com horário de barco/zepelim, diz quando ele sai, chega ou se
+-- é hora de embarcar.
+function WP.LegText(route, i, secs, now)
 	local L = ns.L
 	local leg, nxt = route.legs[i], route.legs[i + 1]
 	local text
@@ -110,15 +112,28 @@ function WP.LegText(route, i, secs)
 	elseif leg.k == "tram" then
 		text = L.LEG_TRAM
 	elseif leg.k == "hearth" then
-		text = L.LEG_HEARTH
+		text = leg.spell and L.LEG_RECALL or L.LEG_HEARTH
 	else
 		text = L.LEG_TELEPORT:format(leg.name or "")
 	end
-	return ("%s · %s"):format(text, WP.FmtTime(secs or leg.s or 0))
+	local t = WP.FmtTime(secs or leg.s or 0)
+	local sl = leg.k == "ship" and leg or (leg.k == "walk" and nxt and nxt.k == "ship" and nxt)
+	if now and sl and sl.dep then
+		local arrT = sl.dep - (sl.dock or 0)
+		if sl ~= leg then
+			t = t .. " · " .. L.SHIP_LEAVES:format(WP.FmtTime(math.max(0, sl.dep - now)))
+		elseif now < arrT then
+			t = L.SHIP_ARRIVES:format(WP.FmtTime(arrT - now))
+		elseif now < sl.dep then
+			t = L.SHIP_BOARD:format(WP.FmtTime(sl.dep - now))
+		end
+	end
+	return ("%s · %s"):format(text, t)
 end
 
 -- ícone da perna de pedra ou teleporte (o que lançar)
 local function legIcon(leg)
+	if leg.k == "hearth" and leg.spell then return GetSpellTexture and GetSpellTexture(leg.spell) end
 	if leg.k == "hearth" then return GetItemIcon and GetItemIcon(6948) end
 	if leg.k == "teleport" and leg.spell and GetSpellTexture then return GetSpellTexture(leg.spell) end
 end
@@ -138,10 +153,11 @@ function WP:PickTarget()
 		local p = leg.k == "walk" and T.PlayerWorld()
 		if p and p.c == leg.b.c then
 			local dx, dy = leg.b.x - p.x, leg.b.y - p.y
-			secs = math.sqrt(dx * dx + dy * dy) / T:Speed()
+			local falta = leg.path and ns.Terrain and select(3, ns.Terrain.Ahead(leg.path, p, 0))
+			secs = (falta or math.sqrt(dx * dx + dy * dy)) / T:Speed()
 		end
 		legGoal.verb, legGoal._leg, legGoal.world, legGoal.legKind = "goto_", true, leg.b, leg.k
-		legGoal.text, legGoal.icon = WP.LegText(route, route.leg, secs), legIcon(leg)
+		legGoal.text, legGoal.icon = WP.LegText(route, route.leg, secs, GetServerTime and GetServerTime()), legIcon(leg)
 		legGoal.goto_ = nil
 		return legGoal
 	end
@@ -222,7 +238,25 @@ function WP:WorldMapPos(w, shown)
 	if pos then return pos.x, pos.y end
 end
 
+-- Perna a pé com caminho pelo terreno: a seta mira o ponto do caminho ~25 jd à frente e a
+-- distância é a que falta por ele mais o afastamento (vale para o fim de perna e para o objetivo
+-- do guia na última).
+local function steer(goal)
+	local T = ns.Travel
+	local route = T and T:Route()
+	local leg = route and route.legs[route.leg]
+	if not (leg and leg.k == "walk" and leg.path and ns.Terrain) then return nil end
+	if not (goal._leg or (route.dest and goal == route.dest.goal)) then return nil end
+	local p = T.PlayerWorld()
+	if not (p and p.c == leg.b.c) then return nil end
+	-- o afastamento do caminho entra: a soma nunca é menor que a reta (o `goto` não conclui antes)
+	local ax, ay, falta, fora = ns.Terrain.Ahead(leg.path, p, 25)
+	return falta + fora, ax - p.x, ay - p.y
+end
+
 function WP:DistanceTo(goal)
+	local sd, sx, sy = steer(goal)
+	if sd then return sd, sx, sy end
 	if goal.world then                        -- fim de perna da rota: já em coordenada de mundo
 		local p = ns.Travel and ns.Travel.PlayerWorld()
 		local w = goal.world
@@ -237,7 +271,7 @@ function WP:DistanceTo(goal)
 	local ppos = GetPlayerMapPos(pmap, "player")
 	if not ppos then return nil end
 	-- world-pos é global do continente: comparar por continente (pc==tc),
-	-- não por mapa exato — assim funciona entre sub-zonas (ex: Shattrath).
+	-- não por mapa exato — assim funciona entre sub-zonas (ex: Stormwind City).
 	local pc, pw = GetWorldPos(pmap, ppos)
 	local tc, tw = GetWorldPos(tmap, mkVec(goal.goto_.x / 100, goal.goto_.y / 100))
 	if not (pw and tw) or pc ~= tc then return nil end
@@ -310,14 +344,7 @@ local function goalName(goal)
 end
 
 -- nome localizado da zona (para casar com GetZoneText do client)
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
-ns.localizedZone = localizedZone
+local localizedZone = ns.LocalizedZone
 
 --------------------------------------------------------------------------------
 -- Em VIAGEM (voo/táxi): a direção não importa — mostra ETA (distância restante ÷

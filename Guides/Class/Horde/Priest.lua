@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Priest", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "919a453c",
 }, [[
 step
   talk Gornek##3143
@@ -20,6 +21,7 @@ step
   accept Hallowed Tablet##3085 |goto Durotar 42.06,68.33
 step
   only Troll Priest
+  note Read the Hallowed Tablet and speak to Ken'jai outside the Den in the Valley of Trials.
   talk Ken'jai##3707
   turnin Hallowed Tablet##3085 |goto Durotar 42.36,68.81
 step
@@ -37,6 +39,7 @@ step
   accept Hallowed Scroll##3097 |goto Tirisfal Glades 30.84,66.2
 step
   only Undead Priest
+  note Read the Hallowed Scroll and speak to Dark Cleric Duesten in the church in Deathknell.
   talk Dark Cleric Duesten##2123
   turnin Hallowed Scroll##3097 |goto Tirisfal Glades 31.11,66.03
 step
@@ -45,6 +48,7 @@ step
   accept In Favor of Spirituality##5649 |goto Durotar 42.36,68.81
 step
   only Troll Priest
+  note Speak to Tai'jin in Durotar.
   talk Tai'jin##3706
   turnin In Favor of Spirituality##5649 |goto Durotar 54.26,42.93
 step
@@ -65,6 +69,7 @@ step
   accept In Favor of Darkness##5651 |goto Tirisfal Glades 31.11,66.03
 step
   only Undead Priest
+  note Speak to Dark Cleric Beryl in Tirisfal Glades.
   talk Dark Cleric Beryl##2129
   turnin In Favor of Darkness##5651 |goto Tirisfal Glades 61.57,52.19
 step
@@ -101,6 +106,7 @@ step
   accept Shadowguard##5642 |goto Thunder Bluff 25.32,15.27
 step
   only Troll Priest not completed(5643) not completed(5680) not haveq(5643) not haveq(5680)
+  note Speak to Ur'kyo in Orgrimmar.
   talk Ur'kyo##6018
   turnin Shadowguard##5642 |goto Orgrimmar 35.59,87.82
 step
@@ -109,6 +115,7 @@ step
   accept Devouring Plague##5644 |goto Thunder Bluff 25.32,15.27
 step
   only Undead Priest not completed(5646) not completed(5679) not haveq(5646) not haveq(5679)
+  note Speak to Aelthalyste in the Undercity.
   talk Aelthalyste##4606
   turnin Devouring Plague##5644 |goto Undercity 49.26,17.12
 step
@@ -117,6 +124,7 @@ step
   accept Cenarion Aid##8254 |goto Thunder Bluff 24.56,22.57
 step
   only Priest
+  note Seek out Ogtinc in Azshara.
   talk Ogtinc##8405
   turnin Cenarion Aid##8254 |goto Azshara 42.4,42.62
 step
@@ -161,6 +169,7 @@ step
   accept Holy Bologna: What the Light Won't Tell You##7504 |goto Dire Maul - Dungeon -1,-1
 step
   only Priest
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin Holy Bologna: What the Light Won't Tell You##7504 |goto Dire Maul - Dungeon -1,-1
 step
@@ -179,6 +188,7 @@ step
   talk Mokvar##16012
   accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
 step
+  note Take the Sealed Venom Container to Mux Manascrambler in Gadgetzan.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8923 |goto Tanaris 52.47,27.23
 step
@@ -221,6 +231,7 @@ step
   talk Mux Manascrambler##16014
   accept Return to Mokvar##8978 |goto Tanaris 52.47,27.23
 step
+  note Return to Mokvar in Orgrimmar with the Extra-Dimensional Ghost Revealer.
   talk Mokvar##16012
   turnin Return to Mokvar##8978 |goto Orgrimmar 34.95,38.29
 step
@@ -239,6 +250,7 @@ step
   talk Mokvar##16012
   accept In Search of Anthion##8930 |goto Orgrimmar 34.95,38.29
 step
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8930 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -254,6 +266,7 @@ step
   talk Ysida Harmon##16031
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -269,6 +282,7 @@ step
   talk Anthion Harmon##16016
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -314,6 +328,7 @@ step
   talk Mokvar##16012
   accept Bodley's Unfortunate Fate##9032 |goto Orgrimmar 34.95,38.29
 step
+  note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##9032 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -415,6 +430,7 @@ step
   talk Bodley##16033
   accept Back to the Beginning##8998 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  note Speak with Mokvar at Grommash Hold in Orgrimmar's Valley of Wisdom.
   talk Mokvar##16012
   turnin Back to the Beginning##8998 |goto Orgrimmar 34.95,38.29
 step
@@ -461,6 +477,7 @@ step
   talk Rutgar Glyphshaper##15170
   accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment wants you to deliver the Glyphed Crystal Prism to Geologist Larksbane at the Cenarion Hold in Silithus.
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
@@ -483,17 +500,6 @@ step
   turnin Armaments of War##8379 |goto Silithus 49.67,37.46
 step
   only Priest
-  talk Zanza the Restless##15042
-  accept Prophetic Aura##8191 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only Priest
-  collect Primal Hakkari Idol##22637 |q 8191 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
-step
-  only Priest
-  talk Zanza the Restless##15042
-  turnin Prophetic Aura##8191 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only Priest
   talk Eris Havenfire##14494
   accept A Warning##7621 |goto Eastern Plaguelands 17.21,12.79
 step
@@ -506,304 +512,7 @@ step
   accept The Balance of Light and Shadow##7622 |goto Eastern Plaguelands 17.21,12.79
 step
   only Priest
+  note Save 50 Peasants before 15 are slain. Speak with Eris Havenfire should you accomplish this task.
   talk Eris Havenfire##14494
   turnin The Balance of Light and Shadow##7622 |goto Eastern Plaguelands 17.21,12.79
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  accept Robe of Faith##9111 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Robe of Faith if you bring him the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Robe##22351 |q 9111 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  turnin Robe of Faith##9111 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  accept Leggings of Faith##9112 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Leggings of Faith if you bring him the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Leggings##22366 |q 9112 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  turnin Leggings of Faith##9112 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  accept Circlet of Faith##9113 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Circlet of Faith if you bring him the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  collect Desecrated Circlet##22367 |q 9113 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  turnin Circlet of Faith##9113 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  accept Shoulderpads of Faith##9114 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Shoulderpads of Faith if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9114 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  turnin Shoulderpads of Faith##9114 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  accept Sandals of Faith##9115 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Sandals of Faith if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9115 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  turnin Sandals of Faith##9115 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  accept Gloves of Faith##9116 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Gloves of Faith if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  collect Desecrated Gloves##22371 |q 9116 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  turnin Gloves of Faith##9116 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  accept Belt of Faith##9117 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Belt of Faith if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9117 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  turnin Belt of Faith##9117 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  accept Bindings of Faith##9118 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Bindings of Faith if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9118 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Priest
-  talk Father Inigo Montoy##16113
-  turnin Bindings of Faith##9118 |goto Eastern Plaguelands 71.66,48.58
-step
-  only Priest
-  talk Windcaller Yessendra##15498
-  accept Ring of Infinite Wisdom##8697 |goto Silithus 52.05,38.16
-step
-  only Priest
-  note Bring 1 Qiraji Ceremonial Ring, 2 Obsidian Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ceremonial Ring##20888 |q 8697 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
-  only Priest
-  talk Windcaller Yessendra##15498
-  turnin Ring of Infinite Wisdom##8697 |goto Silithus 52.05,38.16
-step
-  only Priest
-  talk Warden Haro##15499
-  accept Gavel of Infinite Wisdom##8705 |goto Silithus 51.14,38.94
-step
-  only Priest
-  note Bring 1 Qiraji Ornate Hilt, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8705 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Priest
-  talk Warden Haro##15499
-  turnin Gavel of Infinite Wisdom##8705 |goto Silithus 51.14,38.94
-step
-  only Priest
-  talk Keyl Swiftclaw##15500
-  accept Shroud of Infinite Wisdom##8689 |goto Silithus 51.76,39.54
-step
-  only Priest
-  note Bring 1 Qiraji Martial Drape, 2 Jasper Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8689 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
-  only Priest
-  talk Keyl Swiftclaw##15500
-  turnin Shroud of Infinite Wisdom##8689 |goto Silithus 51.76,39.54
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  accept The Eye of Zuldazar##8049 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  turnin The Eye of Zuldazar##8049 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  accept The Eye of Zuldazar##8050 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  collect The Eye of Zuldazar##19591 |q 8050 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  turnin The Eye of Zuldazar##8050 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  accept The Eye of Zuldazar##8051 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  collect The Eye of Zuldazar##19592 |q 8051 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  turnin The Eye of Zuldazar##8051 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  accept The All-Seeing Eye of Zuldazar##8052 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  collect The Eye of Zuldazar##19593 |q 8052 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  turnin The All-Seeing Eye of Zuldazar##8052 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Confessor's Wraps##8061 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Stanchion##19718 |q 8061 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Confessor's Wraps##8061 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Confessor's Bindings##8070 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Sash. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Sash##19720 |q 8070 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Confessor's Bindings##8070 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  accept Paragons of Power: The Confessor's Mantle##8071 |goto Stranglethorn Vale 15.34,16.12
-step
-  only Priest
-  note Bring Al'tabim the All-Seeing a Primal Hakkari Aegis. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Aegis##19724 |q 8071 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Priest
-  talk Al'tabim the All-Seeing##14903
-  turnin Paragons of Power: The Confessor's Mantle##8071 |goto Stranglethorn Vale 15.34,16.12
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  talk Andorgos##15502
-  accept Tiara of the Oracle##8592 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  note Bring Vek'nilash's Circlet, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'nilash's Circlet##20926 |q 8592 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash
-step
-  only Priest
-  talk Andorgos##15502
-  turnin Tiara of the Oracle##8592 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  talk Kandrostrasz##15503
-  accept Trousers of the Oracle##8593 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  note Bring Ouro's Intact Hide, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Ouro's Intact Hide##20927 |q 8593 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
-step
-  only Priest
-  talk Kandrostrasz##15503
-  turnin Trousers of the Oracle##8593 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  talk Andorgos##15502
-  accept Mantle of the Oracle##8594 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  note Bring the Qiraji Bindings of Command, 2 Idols of Rebirth, 5 Silver Scarabs and 5 Ivory Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Command##20928 |q 8594 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Priest
-  talk Andorgos##15502
-  turnin Mantle of the Oracle##8594 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  talk Kandrostrasz##15503
-  accept Footwraps of the Oracle##8596 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  note Bring the Qiraji Bindings of Command, 2 Idols of Death, 5 Bronze Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Command##20928 |q 8596 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Priest
-  talk Kandrostrasz##15503
-  turnin Footwraps of the Oracle##8596 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  talk Vethsera##15504
-  accept Vestments of the Oracle##8603 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Priest
-  note Bring the the Husk of the Old God, 2 Idols of Death, 5 Stone Scarabs and 5 Crystal Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Husk of the Old God##20933 |q 8603 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
-step
-  only Priest
-  talk Vethsera##15504
-  turnin Vestments of the Oracle##8603 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

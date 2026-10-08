@@ -40,7 +40,6 @@ function R:Toggle()
 		ns:Print(ns.L.REC_START)
 	end
 end
-function R:IsRecording() return recording end
 
 ns:On("QUEST_ACCEPTED", function(_, a1, a2)
 	if not recording then return end

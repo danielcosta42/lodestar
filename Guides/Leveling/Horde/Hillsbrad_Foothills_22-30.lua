@@ -5,7 +5,24 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (22-30)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (32-40)",
+	rev = "cdcd2f0a",
 }, [[
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  talk Carendin Halgar##5675
+  accept The Binding##1474 |goto Undercity 85.06,25.99
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  note Using the Pure Hearts, summon and subdue a succubus, then return the Pure Hearts to Carendin Halgar in the Magic Quarter of the Undercity.
+  use Summoned Succubus##5677 |q 1474 |tip {useit}
+step
+  only Troll Priest not completed(5642) not completed(5680) not haveq(5642) not haveq(5680)
+  talk Aelthalyste##4606
+  accept Shadowguard##5643 |goto Undercity 49.26,17.12
+step
+  only Undead Priest not completed(5644) not completed(5646) not haveq(5644) not haveq(5646)
+  talk Aelthalyste##4606
+  accept Devouring Plague##5679 |goto Undercity 49.26,17.12
 step
   talk Morbin Lightbane##266484
   accept Light's Justice##92421 |goto Undercity 57.78,89.34
@@ -18,6 +35,10 @@ step
 step
   note Collect the Highly Toxic Strain from Witherfang in Ruins of Lordaeron for Theodore Griffs in Undercity.
   collect Highly Toxic Strain##275443 |q 95216 |goto Undercity 46.31,71.91 |tip {dropsfrom}Witherfang
+step
+  only Shaman completed(63)
+  click Brazier of Everfount##113791
+  accept Call of Water##100 |goto Silverpine Forest 38.26,44.56
 step
   talk Deathstalker Lesh##2214
   accept Time To Strike##494 |goto Hillsbrad Foothills 20.79,47.4
@@ -151,14 +172,23 @@ step
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##532 |goto Hillsbrad Foothills 62.33,20.45
 step
+  note Kill Magistrate Burnside and 5 Hillsbrad Councilmen. Destroy the Hillsbrad Proclamation. Steal the Hillsbrad Town Registry. Report back to Darthalia in Tarren Mill afterwards.
+  talk Magistrate Burnside##2335 |q 532 |goto Hillsbrad Foothills 29.67,41.64
+step
+  talk High Executor Darthalia##2215
+  turnin Battle of Hillsbrad##532 |goto Hillsbrad Foothills 62.33,20.45
+step
   talk Apothecary Lydon##2216
   accept Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
+step
+  talk High Executor Darthalia##2215
+  accept Battle of Hillsbrad##539 |goto Hillsbrad Foothills 62.33,20.45
 step
   click Dangerous!##2008
   accept Dangerous!##567 |goto Hillsbrad Foothills 62.56,19.66
 step
-  note Kill Magistrate Burnside and 5 Hillsbrad Councilmen. Destroy the Hillsbrad Proclamation. Steal the Hillsbrad Town Registry. Report back to Darthalia in Tarren Mill afterwards.
-  talk Magistrate Burnside##2335 |q 532 |goto Hillsbrad Foothills 29.67,41.64
+  note Kill Foreman Bonds and 10 Hillsbrad Miners and report back to Darthalia in Tarren Mill.
+  talk Foreman Bonds##2305 |q 539 |goto Hillsbrad Foothills 31.21,56.01
 step
   note High Executor Darthalia of Tarren Mill is offering a bounty on Clerk Horrace Whitesteed, Citizen Wilkes, Miner Hackett and Farmer Kalaba.
   talk Clerk Horrace Whitesteed##2448 |q 567 |goto Hillsbrad Foothills 29.51,42.41
@@ -170,7 +200,7 @@ step
   turnin Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk High Executor Darthalia##2215
-  turnin Battle of Hillsbrad##532 |goto Hillsbrad Foothills 62.33,20.45
+  turnin Battle of Hillsbrad##539 |goto Hillsbrad Foothills 62.33,20.45
 step
   talk High Executor Darthalia##2215
   turnin Dangerous!##567 |goto Hillsbrad Foothills 62.33,20.45
@@ -179,13 +209,35 @@ step
   accept Elixir of Agony##513 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk High Executor Darthalia##2215
-  accept Battle of Hillsbrad##539 |goto Hillsbrad Foothills 62.33,20.45
+  accept Battle of Hillsbrad##541 |goto Hillsbrad Foothills 62.33,20.45
 step
-  note Kill Foreman Bonds and 10 Hillsbrad Miners and report back to Darthalia in Tarren Mill.
-  talk Foreman Bonds##2305 |q 539 |goto Hillsbrad Foothills 31.21,56.01
+  talk Deathguard Humbert##2419
+  accept Humbert's Sword##547 |goto Hillsbrad Foothills 62.76,20.21
+step
+  note Travel to Dun Garok and kill 8 Mountaineers, 4 Riflemen, 2 Priests and Captain Ironhill and report back to Darthalia in Tarren Mill.
+  talk Dun Garok Mountaineer##2344 |q 541 |goto Hillsbrad Foothills 71.58,79.57
+step
+  note Retrieve Deathguard Humbert's sword from Dun Garok and return it to him in Tarren Mill.
+  kill Dun Garok Mountaineer##2344 |goto Hillsbrad Foothills 71.58,79.57 |elite
+  collect Humbert's Sword##3693 |q 547 |goto Hillsbrad Foothills 71.58,79.57
 step
   talk High Executor Darthalia##2215
-  turnin Battle of Hillsbrad##539 |goto Hillsbrad Foothills 62.33,20.45
+  turnin Battle of Hillsbrad##541 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk Deathguard Humbert##2419
+  turnin Humbert's Sword##547 |goto Hillsbrad Foothills 62.76,20.21
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  talk Carendin Halgar##5675
+  turnin The Binding##1474 |goto Undercity 85.06,25.99 |tip {turninat}Undercity
+step
+  only Troll Priest not completed(5642) not completed(5680) not haveq(5642) not haveq(5680)
+  talk Ur'kyo##6018
+  turnin Shadowguard##5643 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
+step
+  only Undead Priest not completed(5644) not completed(5646) not haveq(5644) not haveq(5646)
+  talk Aelthalyste##4606
+  turnin Devouring Plague##5679 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
 step
   talk Morbin Lightbane##266484
   turnin Light's Justice##92421 |goto Undercity 57.78,89.34 |tip {turninat}Undercity
@@ -193,35 +245,45 @@ step
   talk Theodore Griffs##11835
   turnin The New Plague##95216 |goto Undercity 46.31,71.91 |tip {turninat}Undercity
 step
+  only Shaman completed(63)
+  talk Minor Manifestation of Water##5895
+  turnin Call of Water##100 |goto Silverpine Forest 38.65,44.58 |tip {turninat}Silverpine Forest
+step
   only Undead Paladin
   talk Trevan Rol##248840
   turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.4,41 |tip {turninat}Silverpine Forest
+step
+  only Undead Paladin
+  talk Trevan Rol##248840
+  accept An Underrated Talent##95111 |goto Silverpine Forest 43.4,41
+step
+  only Undead Paladin
+  talk Lumina Windsinger##259620
+  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.2,40.8
 step
   only not Orc not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
   accept Speak with Deino##1943 |goto Undercity 85.14,10.03
 step
-  talk Deathguard Humbert##2419
-  accept Humbert's Sword##547 |goto Hillsbrad Foothills 62.76,20.21
-step
   only Warlock completed(1801)
   talk Jorah Annison##6293
   accept Tome of the Cabal##1803 |goto Undercity 75.92,37.89
-step
-  note Retrieve Deathguard Humbert's sword from Dun Garok and return it to him in Tarren Mill.
-  kill Dun Garok Mountaineer##2344 |goto Hillsbrad Foothills 71.58,79.57 |elite
-  collect Humbert's Sword##3693 |q 547 |goto Hillsbrad Foothills 71.58,79.57
 step
   only Warlock completed(1801)
   note Retrieve the Moldy Tome and Tattered Manuscript for Jorah Annison in the Undercity.
   collect Moldy Tome##6931 |q 1803 |goto Hillsbrad Foothills 27.78,72.79 |tip {dropsfrom}Tome of the Cabal
 step
+  only Undead Paladin
+  talk Ott##3539
+  turnin An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Undead Paladin
+  talk Lumina Windsinger##259620
+  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.2,40.8 |tip {turninat}Silverpine Forest
+step
   only not Orc not Tauren not Skyborne Mage
   talk Deino##5885
   turnin Speak with Deino##1943 |goto Orgrimmar 38.45,86.13 |tip {turninat}Orgrimmar
-step
-  talk Deathguard Humbert##2419
-  turnin Humbert's Sword##547 |goto Hillsbrad Foothills 62.76,20.21
 step
   only Warlock completed(1801)
   talk Jorah Annison##6293
@@ -257,15 +319,6 @@ step
 step
   turnin Elixir of Agony##524 |goto Hillsbrad Foothills 62.81,18.73
 step
-  talk High Executor Darthalia##2215
-  accept Battle of Hillsbrad##541 |goto Hillsbrad Foothills 62.33,20.45
-step
-  note Travel to Dun Garok and kill 8 Mountaineers, 4 Riflemen, 2 Priests and Captain Ironhill and report back to Darthalia in Tarren Mill.
-  talk Dun Garok Mountaineer##2344 |q 541 |goto Hillsbrad Foothills 71.58,79.57
-step
-  talk High Executor Darthalia##2215
-  turnin Battle of Hillsbrad##541 |goto Hillsbrad Foothills 62.33,20.45
-step
   note {travel}Hillsbrad Foothills
-  goto Hillsbrad Foothills 62.33,20.45
+  goto Hillsbrad Foothills 61.5,20.93
 ]])

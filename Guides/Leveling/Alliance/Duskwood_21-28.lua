@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (21-29)",
+	rev = "af80e45a",
 }, [[
 step
   talk Orphan Matron Nightingale##14450
@@ -89,9 +90,16 @@ step
   talk Jitters##288
   turnin Return to Jitters##240 |goto Duskwood 18.38,56.37
 step
-  only completed(145)
-  talk Magistrate Solomon##344
-  turnin Messenger to Darkshire##146 |goto Redridge Mountains 24.9,44.45 |tip {turninat}Redridge Mountains
+  talk Sven Yorgen##311
+  accept Sven's Revenge##95 |goto Duskwood 7.78,34.07
+step
+  kill Flesh Eater##3 |goto Duskwood 23.81,39.21 |tip Loot the quest item here — it starts the quest.
+  accept An Old History Book##337 |goto Duskwood 23.81,39.21
+step
+  turnin Sven's Revenge##95 |goto Duskwood 49.85,77.71
+step
+  click Mound of loose dirt##59
+  accept Sven's Camp##230 |goto Duskwood 49.85,77.71
 step
   talk Madame Eva##265
   accept The Totem of Infliction##101 |goto Duskwood 75.79,45.32
@@ -102,8 +110,86 @@ step
   talk Viktori Prism'Antras##276
   accept Look To The Stars##174 |goto Duskwood 79.8,48.02
 step
-  kill Flesh Eater##3 |goto Duskwood 23.81,39.21 |tip Loot the quest item here — it starts the quest.
-  accept An Old History Book##337 |goto Duskwood 23.81,39.21
+  talk Commander Althea Ebonlocke##264
+  accept The Night Watch##57 |goto Duskwood 73.54,46.82
+step
+  talk Sven Yorgen##311
+  turnin Sven's Camp##230 |goto Duskwood 7.78,34.07
+step
+  talk Sven Yorgen##311
+  accept The Shadowy Figure##262 |goto Duskwood 7.78,34.07
+step
+  talk Abercrombie##289
+  turnin The Hermit##165 |goto Duskwood 28.11,31.46
+step
+  talk Abercrombie##289
+  accept Supplies from Darkshire##148 |goto Duskwood 28.11,31.46
+step
+  note Commander Althea Ebonlocke of Darkshire wants you to kill 15 Skeletal Fiends and 15 Skeletal Horrors.
+  kill Skeletal Fiend##531 |q 57 |goto Duskwood 22.39,43.04
+step
+  note Bring 10 Ghoul Fangs, 10 Skeleton Fingers and 5 Vials of Spider Venom to Madame Eva in Darkshire.
+  collect 10 Ghoul Fang##1129 |q 101 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
+step
+  talk Commander Althea Ebonlocke##264
+  turnin The Night Watch##57 |goto Duskwood 73.54,46.82
+step
+  talk Madame Eva##265
+  turnin The Totem of Infliction##101 |goto Duskwood 75.79,45.32
+step
+  talk Madame Eva##265
+  turnin Supplies from Darkshire##148 |goto Duskwood 75.79,45.32
+step
+  talk Madame Eva##265
+  turnin The Shadowy Figure##262 |goto Duskwood 75.79,45.32
+step
+  talk Madame Eva##265
+  accept Ghost Hair Thread##149 |goto Duskwood 75.79,45.32
+step
+  talk Madame Eva##265
+  accept The Shadowy Search Continues##265 |goto Duskwood 75.79,45.32
+step
+  talk Clerk Daltry##267
+  turnin The Shadowy Search Continues##265 |goto Duskwood 72.54,46.87
+step
+  talk Clerk Daltry##267
+  accept Inquire at the Inn##266 |goto Duskwood 72.54,46.87
+step
+  talk Tavernkeep Smitts##273
+  turnin Inquire at the Inn##266 |goto Duskwood 73.78,44.49
+step
+  talk Tavernkeep Smitts##273
+  accept Finding the Shadowy Figure##453 |goto Duskwood 73.78,44.49
+step
+  talk Blind Mary##302
+  turnin Ghost Hair Thread##149 |goto Duskwood 81.99,59.09
+step
+  talk Blind Mary##302
+  accept Return the Comb##154 |goto Duskwood 81.99,59.09
+step
+  talk Jitters##288
+  turnin Finding the Shadowy Figure##453 |goto Duskwood 18.38,56.37
+step
+  talk Jitters##288
+  accept Return to Sven##268 |goto Duskwood 18.38,56.37
+step
+  talk Sven Yorgen##311
+  turnin Return to Sven##268 |goto Duskwood 7.78,34.07
+step
+  talk Sven Yorgen##311
+  accept Proving Your Worth##323 |goto Duskwood 7.78,34.07
+step
+  note Kill 15 Skeletal Raiders, 3 Skeletal Healers and 3 Skeletal Warders, and then return to Sven.
+  kill Skeletal Raider##1110 |q 323 |goto Duskwood 17.56,37
+step
+  talk Sven Yorgen##311
+  turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
+step
+  talk Madame Eva##265
+  turnin Return the Comb##154 |goto Duskwood 75.79,45.32
+step
+  talk Madame Eva##265
+  accept Deliver the Thread##157 |goto Duskwood 75.79,45.32
 step
   talk Madame Eva##265
   accept The Legend of Stalvan##66 |goto Duskwood 75.79,45.32
@@ -111,34 +197,8 @@ step
   talk Calor##663
   accept Worgen in the Woods##173 |goto Duskwood 75.75,47.57
 step
-  only not Dwarf not NightElf not Skyborne Mage completed(1938)
-  talk High Sorcerer Andromath##5694
-  accept Pristine Spider Silk##1940 |goto Stormwind City 48.71,87.62
-step
-  note Bring 10 Ghoul Fangs, 10 Skeleton Fingers and 5 Vials of Spider Venom to Madame Eva in Darkshire.
-  collect 10 Ghoul Fang##1129 |q 101 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
-step
-  note Viktori Prism'Antras of Darkshire wants you to bring him a bronze tube.
-  collect Bronze Tube##4371 |q 174 |goto Westfall 41.27,66.41 |tip {dropsfrom}Box of Assorted Parts
-step
   note Kill 6 Nightbane Shadow Weaver worgen for Calor in Darkshire.
   kill Nightbane Shadow Weaver##533 |q 173 |goto Duskwood 61.94,52.05
-step
-  only not Dwarf not NightElf not Skyborne Mage completed(1938)
-  note Bring 8 Pristine Spider Silk to Wynne Larson in Stormwind.
-  collect 8 Pristine Spider Silk##7267 |q 1940 |goto Duskwood 32.82,51.72 |tip {dropsfrom}Black Widow Hatchling, Carrion Recluse
-step
-  talk Madame Eva##265
-  turnin The Totem of Infliction##101 |goto Duskwood 75.79,45.32
-step
-  talk Abercrombie##289
-  turnin The Hermit##165 |goto Duskwood 28.11,31.46
-step
-  talk Viktori Prism'Antras##276
-  turnin Look To The Stars##174 |goto Duskwood 79.8,48.02
-step
-  talk Milton Sheaf##1440
-  turnin An Old History Book##337 |goto Stormwind City 77.07,30.21 |tip {turninat}Stormwind City
 step
   talk Clerk Daltry##267
   turnin The Legend of Stalvan##66 |goto Duskwood 72.54,46.87
@@ -146,58 +206,101 @@ step
   talk Calor##663
   turnin Worgen in the Woods##173 |goto Duskwood 75.75,47.57
 step
-  only not Dwarf not NightElf not Skyborne Mage completed(1938)
-  talk Wynne Larson##1309
-  turnin Pristine Spider Silk##1940 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
-step
-  talk Abercrombie##289
-  accept Supplies from Darkshire##148 |goto Duskwood 28.11,31.46
-step
-  talk Sven Yorgen##311
-  accept Sven's Revenge##95 |goto Duskwood 7.78,34.07
-step
-  talk Viktori Prism'Antras##276
-  accept Look To The Stars##175 |goto Duskwood 79.8,48.02
-step
-  talk Commander Althea Ebonlocke##264
-  accept The Night Watch##57 |goto Duskwood 73.54,46.82
-step
   talk Clerk Daltry##267
   accept The Legend of Stalvan##67 |goto Duskwood 72.54,46.87
+step
+  talk Abercrombie##289
+  turnin Deliver the Thread##157 |goto Duskwood 28.11,31.46
+step
+  talk Abercrombie##289
+  accept Zombie Juice##158 |goto Duskwood 28.11,31.46
+step
+  talk Tavernkeep Smitts##273
+  turnin Zombie Juice##158 |goto Duskwood 73.78,44.49
+step
+  talk Tavernkeep Smitts##273
+  accept Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49
 step
   talk Calor##663
   accept Worgen in the Woods##221 |goto Duskwood 75.75,47.57
 step
-  note Commander Althea Ebonlocke of Darkshire wants you to kill 15 Skeletal Fiends and 15 Skeletal Horrors.
-  kill Skeletal Fiend##531 |q 57 |goto Duskwood 22.39,43.04
-step
   note Kill 12 Nightbane Dark Runner worgen for Calor in Darkshire.
   kill Nightbane Dark Runner##205 |q 221 |goto Duskwood 65.13,67.39
 step
-  talk Madame Eva##265
-  turnin Supplies from Darkshire##148 |goto Duskwood 75.79,45.32
+  note Gather 8 Rot Blossoms and bring them to Tavernkeep Smitts in Darkshire.
+  collect 8 Rot Blossom##1598 |q 156 |goto Duskwood 23.06,47.11 |tip {dropsfrom}Skeletal Horror, Skeletal Fiend, Skeletal Fiend (Enraged Form)
 step
-  turnin Sven's Revenge##95 |goto Duskwood 49.85,77.71
+  talk Sven Yorgen##311
+  accept Seeking Wisdom##269 |goto Duskwood 7.78,34.07
 step
-  talk Blind Mary##302
-  turnin Look To The Stars##175 |goto Duskwood 81.99,59.09
-step
-  talk Commander Althea Ebonlocke##264
-  turnin The Night Watch##57 |goto Duskwood 73.54,46.82
-step
-  turnin The Legend of Stalvan##67 |goto Westfall 41.51,66.73 |tip {turninat}Westfall
+  talk Tavernkeep Smitts##273
+  turnin Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49
 step
   talk Calor##663
   turnin Worgen in the Woods##221 |goto Duskwood 75.75,47.57
 step
-  talk Madame Eva##265
-  accept Ghost Hair Thread##149 |goto Duskwood 75.79,45.32
+  talk Tavernkeep Smitts##273
+  accept Juice Delivery##159 |goto Duskwood 73.78,44.49
+step
+  talk Abercrombie##289
+  turnin Juice Delivery##159 |goto Duskwood 28.11,31.46
+step
+  talk Abercrombie##289
+  accept Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
+step
+  note Gather 7 Ghoul Ribs and bring them to Abercrombie at his shack.
+  collect 7 Ghoul Rib##884 |q 133 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
+step
+  talk Abercrombie##289
+  turnin Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
+step
+  only completed(145)
+  talk Magistrate Solomon##344
+  turnin Messenger to Darkshire##146 |goto Redridge Mountains 24.9,44.45 |tip {turninat}Redridge Mountains
+step
+  talk Milton Sheaf##1440
+  turnin An Old History Book##337 |goto Stormwind City 77.07,30.21 |tip {turninat}Stormwind City
+step
+  only not Dwarf not NightElf not Skyborne Mage
+  talk High Sorcerer Andromath##5694
+  accept Ur's Treatise on Shadow Magic##1938 |goto Stormwind City 48.71,87.62
+step
+  note Viktori Prism'Antras of Darkshire wants you to bring him a bronze tube.
+  collect Bronze Tube##4371 |q 174 |goto Westfall 41.27,66.41 |tip {dropsfrom}Box of Assorted Parts
+step
+  only not Dwarf not NightElf not Skyborne Mage
+  note Bring Ur's Treatise on Shadow Magic to High Sorcerer Andromath in Stormwind.
+  collect Ur's Treatise on Shadow Magic##7266 |q 1938 |goto Redridge Mountains 73.77,47.61
+step
+  talk Viktori Prism'Antras##276
+  turnin Look To The Stars##174 |goto Duskwood 79.8,48.02
+step
+  only not Dwarf not NightElf not Skyborne Mage
+  talk High Sorcerer Andromath##5694
+  turnin Ur's Treatise on Shadow Magic##1938 |goto Stormwind City 48.71,87.62 |tip {turninat}Stormwind City
+step
+  turnin The Legend of Stalvan##67 |goto Westfall 41.51,66.73 |tip {turninat}Westfall
+step
+  talk Viktori Prism'Antras##276
+  accept Look To The Stars##175 |goto Duskwood 79.8,48.02
+step
+  only not Dwarf not NightElf not Skyborne Mage
+  talk High Sorcerer Andromath##5694
+  accept Pristine Spider Silk##1940 |goto Stormwind City 48.71,87.62
+step
+  only not Dwarf not NightElf not Skyborne Mage
+  note Bring 8 Pristine Spider Silk to Wynne Larson in Stormwind.
+  collect 8 Pristine Spider Silk##7267 |q 1940 |goto Duskwood 32.82,51.72 |tip {dropsfrom}Black Widow Hatchling, Carrion Recluse
+step
+  talk Blind Mary##302
+  turnin Look To The Stars##175 |goto Duskwood 81.99,59.09
+step
+  only not Dwarf not NightElf not Skyborne Mage
+  talk Wynne Larson##1309
+  turnin Pristine Spider Silk##1940 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
 step
   talk Blind Mary##302
   accept Look To The Stars##177 |goto Duskwood 81.99,59.09
-step
-  click Mound of loose dirt##59
-  accept Sven's Camp##230 |goto Duskwood 49.85,77.71
 step
   click Old Footlocker##3643
   accept The Legend of Stalvan##68 |goto Westfall 41.51,66.73
@@ -205,111 +308,21 @@ step
   note Retrieve Blind Mary's Looking Glass from the Insane Ghoul and give it to Viktori in Darkshire.
   collect Mary's Looking Glass##1946 |q 177 |goto Duskwood 80.9,71.96 |tip {dropsfrom}Insane Ghoul
 step
-  talk Blind Mary##302
-  turnin Ghost Hair Thread##149 |goto Duskwood 81.99,59.09
-step
   talk Viktori Prism'Antras##276
   turnin Look To The Stars##177 |goto Duskwood 79.8,48.02
-step
-  talk Sven Yorgen##311
-  turnin Sven's Camp##230 |goto Duskwood 7.78,34.07
 step
   talk Clerk Daltry##267
   turnin The Legend of Stalvan##68 |goto Duskwood 72.54,46.87
 step
-  talk Blind Mary##302
-  accept Return the Comb##154 |goto Duskwood 81.99,59.09
-step
-  talk Sven Yorgen##311
-  accept The Shadowy Figure##262 |goto Duskwood 7.78,34.07
-step
   talk Clerk Daltry##267
   accept The Legend of Stalvan##69 |goto Duskwood 72.54,46.87
 step
-  talk Madame Eva##265
-  turnin Return the Comb##154 |goto Duskwood 75.79,45.32
-step
-  talk Madame Eva##265
-  turnin The Shadowy Figure##262 |goto Duskwood 75.79,45.32
-step
   talk Innkeeper Farley##295
   turnin The Legend of Stalvan##69 |goto Elwynn Forest 43.77,65.8 |tip {turninat}Elwynn Forest
-step
-  talk Madame Eva##265
-  accept Deliver the Thread##157 |goto Duskwood 75.79,45.32
-step
-  talk Madame Eva##265
-  accept The Shadowy Search Continues##265 |goto Duskwood 75.79,45.32
-step
-  talk Abercrombie##289
-  turnin Deliver the Thread##157 |goto Duskwood 28.11,31.46
-step
-  talk Clerk Daltry##267
-  turnin The Shadowy Search Continues##265 |goto Duskwood 72.54,46.87
-step
-  talk Abercrombie##289
-  accept Zombie Juice##158 |goto Duskwood 28.11,31.46
-step
-  talk Clerk Daltry##267
-  accept Inquire at the Inn##266 |goto Duskwood 72.54,46.87
-step
-  talk Tavernkeep Smitts##273
-  turnin Zombie Juice##158 |goto Duskwood 73.78,44.49
-step
-  talk Tavernkeep Smitts##273
-  turnin Inquire at the Inn##266 |goto Duskwood 73.78,44.49
-step
-  talk Tavernkeep Smitts##273
-  accept Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49
-step
-  talk Tavernkeep Smitts##273
-  accept Finding the Shadowy Figure##453 |goto Duskwood 73.78,44.49
-step
-  note Gather 8 Rot Blossoms and bring them to Tavernkeep Smitts in Darkshire.
-  collect 8 Rot Blossom##1598 |q 156 |goto Duskwood 23.06,47.11 |tip {dropsfrom}Skeletal Horror, Skeletal Fiend, Skeletal Fiend (Enraged Form)
-step
-  talk Tavernkeep Smitts##273
-  turnin Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49
-step
-  talk Jitters##288
-  turnin Finding the Shadowy Figure##453 |goto Duskwood 18.38,56.37
-step
-  talk Tavernkeep Smitts##273
-  accept Juice Delivery##159 |goto Duskwood 73.78,44.49
-step
-  talk Jitters##288
-  accept Return to Sven##268 |goto Duskwood 18.38,56.37
-step
-  talk Abercrombie##289
-  turnin Juice Delivery##159 |goto Duskwood 28.11,31.46
-step
-  talk Sven Yorgen##311
-  turnin Return to Sven##268 |goto Duskwood 7.78,34.07
-step
-  talk Abercrombie##289
-  accept Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
-step
-  talk Sven Yorgen##311
-  accept Proving Your Worth##323 |goto Duskwood 7.78,34.07
-step
-  note Gather 7 Ghoul Ribs and bring them to Abercrombie at his shack.
-  collect 7 Ghoul Rib##884 |q 133 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
-step
-  note Kill 15 Skeletal Raiders, 3 Skeletal Healers and 3 Skeletal Warders, and then return to Sven.
-  kill Skeletal Raider##1110 |q 323 |goto Duskwood 17.56,37
-step
-  talk Abercrombie##289
-  turnin Ghoulish Effigy##133 |goto Duskwood 28.11,31.46
-step
-  talk Sven Yorgen##311
-  turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
-step
-  talk Sven Yorgen##311
-  accept Seeking Wisdom##269 |goto Duskwood 7.78,34.07
 step
   talk Bishop Farthing##1212
   turnin Seeking Wisdom##269 |goto Stormwind City 49.93,45.99 |tip {turninat}Stormwind City
 step
   note {travel}Wetlands
-  goto Wetlands 50.05,18.17
+  goto Wetlands 49.92,39.37
 ]])
