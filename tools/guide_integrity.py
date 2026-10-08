@@ -20,7 +20,8 @@ from collections import defaultdict
 
 ROOT = os.path.dirname(__file__)
 GUIDES = os.path.join(ROOT, "..", "Guides")
-Q = json.load(open(os.path.join(ROOT, "build", "quests.json"), encoding="utf-8"))
+from router import BUILD
+Q = json.load(open(os.path.join(BUILD, "quests.json"), encoding="utf-8"))
 
 def q_get(qid): return Q.get(str(qid))
 def qname(qid): return (q_get(qid) or {}).get("name") or "?"

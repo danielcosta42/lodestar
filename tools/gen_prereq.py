@@ -8,7 +8,7 @@ Saída: ns.questPre[qid] = { p1, p2, ... }  (só quests dos guias + fecho).
   "Bombing Run" 11010, mas o banco marca 0 prereq p/ a daily).
 """
 import json, os, re, glob
-B = "build"
+from router import BUILD as B
 Q = json.load(open(os.path.join(B, "quests.json"), encoding="utf-8"))
 N = json.load(open(os.path.join(B, "npcs.json"), encoding="utf-8"))
 Z = json.load(open(os.path.join(B, "zones.json"), encoding="utf-8"))

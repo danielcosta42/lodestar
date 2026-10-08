@@ -11,6 +11,9 @@ from collections import defaultdict
 from router import Router, load_data, esc, is_placeholder
 
 GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides")
+# Refeitas do zero a cada rodada: o Special.xml é reescrito inteiro, então guia
+# que o banco novo não gera mais ficaria no disco sem ninguém carregar.
+CATEGORIAS = ("Dungeons", "Attunements", "Class", "Reputation", "Dailies", "Events")
 
 # Attunements curados: (nome, facção A/H/N, seeds, modo). O chain-walk expande
 # os pré-requisitos automaticamente.
@@ -101,6 +104,11 @@ def out_path(category, faction, title):
 
 
 def main():
+    for cat in CATEGORIAS:
+        for raiz, _, nomes in os.walk(os.path.join(GUIDE_ROOT, cat)):
+            for nome in nomes:
+                if nome.endswith(".lua"):
+                    os.remove(os.path.join(raiz, nome))
     data = load_data()
     r = Router(data)
     Q, N, O, Z = data["quests"], data["npcs"], data["objects"], data["zones"]

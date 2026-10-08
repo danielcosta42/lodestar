@@ -3,7 +3,7 @@ import json
 import os
 from collections import defaultdict
 
-BUILD = os.path.join(os.path.dirname(__file__), "build")
+from router import BUILD
 OUT = os.path.join(os.path.dirname(__file__), "..", "Trainers.lua")
 
 N = json.load(open(os.path.join(BUILD, "npcs.json"), encoding="utf-8"))

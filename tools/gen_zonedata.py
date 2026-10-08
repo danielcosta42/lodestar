@@ -2,7 +2,7 @@
 import json
 import os
 
-BUILD = os.path.join(os.path.dirname(__file__), "build")
+from router import BUILD
 OUT = os.path.join(os.path.dirname(__file__), "..", "ZoneData.lua")
 
 zones = json.load(open(os.path.join(BUILD, "zones.json"), encoding="utf-8"))
@@ -15,7 +15,7 @@ for aid, info in zones.items():
         name_to_uimap.setdefault(name, uim)   # primeiro vence
 
 lines = [
-    "-- AUTO-GERADO (gen_zonedata.py). Nome de zona -> uiMapID (Classic/Anniversary).",
+    "-- AUTO-GERADO (gen_zonedata.py). Nome de zona -> uiMapID (WoW: Forever).",
     "local ADDON, ns = ...",
     "if not ns then return end",
     "ns.zoneUiMap = {",

@@ -13,9 +13,10 @@ from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(__file__)
 GUIDES = os.path.join(ROOT, "..", "Guides")
-Q = json.load(open(os.path.join(ROOT, "build", "quests.json"), encoding="utf-8"))
-N = json.load(open(os.path.join(ROOT, "build", "npcs.json"), encoding="utf-8"))
-O = json.load(open(os.path.join(ROOT, "build", "objects.json"), encoding="utf-8"))
+from router import BUILD
+Q = json.load(open(os.path.join(BUILD, "quests.json"), encoding="utf-8"))
+N = json.load(open(os.path.join(BUILD, "npcs.json"), encoding="utf-8"))
+O = json.load(open(os.path.join(BUILD, "objects.json"), encoding="utf-8"))
 
 def q_get(qid):
     return Q.get(str(qid))

@@ -1,10 +1,14 @@
-"""Gera ../SubZones.lua: subzona(areaID) -> zona-pai(areaID), do Questie.
-Permite resolver a zona da Pedra de Lar (GetBindLocation) via C_Map.GetAreaInfo."""
-import os
-from parse_lua import parse_db
+"""Gera ../SubZones.lua: subzona(areaID) -> zona-pai(areaID), do QuestieDB do Forever.
+Permite resolver a zona da Pedra de Lar (GetBindLocation) via C_Map.GetAreaInfo.
 
-SRC = ("e:/World of Warcraft/_anniversary_/Interface/AddOns/Questie/Database/"
-       "Zones/data/subZoneToParentZone.lua")
+    python gen_subzones.py [pasta do QuestieDB]"""
+import os
+import sys
+
+from parse_lua import parse_db
+from questiedb import PADRAO, ZONAS
+
+SRC = os.path.join(sys.argv[1] if len(sys.argv) > 1 else PADRAO, ZONAS, "subZoneToParentZone.lua")
 OUT = os.path.join(os.path.dirname(__file__), "..", "SubZones.lua")
 
 main = parse_db(SRC, "ZoneDB.private.subZoneToParentZone")
@@ -12,7 +16,7 @@ override = parse_db(SRC, "ZoneDB.private.subZoneToParentZoneOverride")
 merged = dict(main)
 merged.update(override)   # override vence (como no Questie)
 
-lines = ["-- AUTO-GERADO (gen_subzones.py). Subzona(areaID) -> zona-pai(areaID). Fonte: Questie.",
+lines = ["-- AUTO-GERADO (gen_subzones.py). Subzona(areaID) -> zona-pai(areaID). Fonte: QuestieDB do Forever.",
          "local ADDON, ns = ...", "if not ns then return end", "ns.subZoneToParent = {"]
 for sub in sorted(merged, key=int):
     parent = merged[sub]

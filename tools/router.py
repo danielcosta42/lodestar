@@ -15,7 +15,9 @@ import json
 import os
 import re
 
-BUILD = os.path.join(os.path.dirname(__file__), "build")
+# O banco do Forever (import_forever.py). O Lodestar é Forever e só; a pasta
+# build/ de cima é o Questie do Anniversary, de onde vinham as rotas antigas.
+BUILD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "build", "forever")
 
 # quests placeholder/deprecadas do banco: nunca entram num guia (o NPC não as oferece).
 # Colchetes case-insensitive; prefixos "OLD "/"BETA " só em CAIXA ALTA (não pega nomes
@@ -60,6 +62,13 @@ def is_use_quest(objtext):
         return False
     return bool(_USEQ.search(ot))
 
+# objetivo de FALAR com a criatura ("Speak with Halaan Hawk-Eye..."): o banco guarda
+# como objetivo de criatura, e "kill" mandaria matar um NPC amigo. O passo continua
+# rastreado por |q, então só o verbo muda.
+_TALKQ = re.compile(r"^\s*(?:speak|talk)\s+(?:with|to)\b", re.I)
+def is_talk_quest(objtext):
+    return bool(_TALKQ.search((objtext[0] if objtext else "") or ""))
+
 # Pré-requisitos que o BANCO NÃO codifica (0 preGroup/preSingle) mas o jogo exige —
 # geralmente um desbloqueio de área. Alimenta a ORDENAÇÃO (topo) e o DETOUR (questPre).
 # Ex.: as quests do acampamento de Ogri'la (Kronk/Khatie/Chu'a'lor) só abrem depois de
@@ -71,13 +80,26 @@ PREREQ_OVERRIDES = {
 }
 
 RACE_BIT = {1: "Human", 2: "Orc", 4: "Dwarf", 8: "NightElf", 16: "Undead",
-            32: "Tauren", 64: "Gnome", 128: "Troll", 512: "BloodElf", 1024: "Draenei"}
+            32: "Tauren", 64: "Gnome", 128: "Troll", 512: "BloodElf", 1024: "Draenei",
+            # Forever: uma raça Skyborne por facção; a facção já sai da máscara, e o
+            # Guide.lua reconhece "Skyborne" pelo id da raça (95/96).
+            1 << 32: "Skyborne", 1 << 33: "Skyborne"}
 # bitmask de classe do WoW = 1<<(classId-1): Sha=64, Mag=128, Wlk=256, Dru=1024.
 # (bit 32 = DeathKnight, inexistente no TBC.)
 CLASS_BIT = {1: "Warrior", 2: "Paladin", 4: "Hunter", 8: "Rogue", 16: "Priest",
              64: "Shaman", 128: "Mage", 256: "Warlock", 1024: "Druid"}
 
 HUB_MERGE_DIST = 6.0    # % da zona: pontos mais próximos que isso viram um hub
+
+# zoneOrSort que não é rota de leveling: feriado/evento (-22 Seasonal, -284, -364
+# Darkmoon, -365 guerra de AQ, -366, -368, -369), reputação e lendária de fim de
+# jogo (-367, -344, -1), profissão (-24, -101, -121, -181, -182, -201, -264, -304,
+# -324) e campo de batalha (AV 2597, WSG 3277, AB 3358). Têm guia próprio no
+# gen_special ou nenhum. Classe (-61, -141...) fica — sai com `only <Classe>` —, e
+# o Camping do Forever (-666) também: é o tutorial da zona inicial.
+FORA_DO_LEVELING = {-22, -284, -364, -365, -366, -367, -368, -369, -344, -1,
+                    -24, -101, -121, -181, -182, -201, -264, -304, -324,
+                    2597, 3277, 3358}
 
 
 # ---------------------------------------------------------------------------
@@ -356,6 +378,10 @@ class Router:
                 continue
             if q["questLevel"] and q["questLevel"] > level_max:
                 continue
+            if q["zoneOrSort"] in FORA_DO_LEVELING:
+                continue
+            if q.get("reqSkill"):                 # exige profissão: o NPC não oferece a quem não tem
+                continue                          # (ex.: as "Camping 101: <profissão>" do Forever)
             # âncora à zona: giver NPC OU objeto de início que spawna aqui (quest que
             # começa clicando um objeto do mundo — não tem NPC giver).
             anchored = False
@@ -609,17 +635,19 @@ class Router:
                     steps.append(("  use %s##%d |q %d%s%s |tip {useit}" % (esc(it["otarget"]["name"]),
                                   it["oid"], qid, goto_str(it["oc"]), self.group_tag(it["oid"], ql)), None))
                 else:
-                    gt = self.group_tag(it["oid"], ql) if it["okind"] == "kill" else ""
-                    steps.append(("  %s %s##%d |q %d%s%s" % (it["okind"], esc(it["otarget"]["name"]),
+                    okind = "talk" if it["okind"] == "kill" and is_talk_quest(q["objText"]) else it["okind"]
+                    gt = self.group_tag(it["oid"], ql) if okind == "kill" else ""
+                    steps.append(("  %s %s##%d |q %d%s%s" % (okind, esc(it["otarget"]["name"]),
                                   it["oid"], qid, goto_str(it["oc"]), gt), None))
             else:                            # objItems / gatilho / sem spawn: rastreado por |q
                 npc = objc and self.npc(objc[0])
                 obj = objo and self.obj(objo[0])
                 if npc and not is_marker(npc["name"]):
-                    verb = "use" if useq else "kill"
+                    verb = "use" if useq else ("talk" if is_talk_quest(q["objText"]) else "kill")
                     ut = " |tip {useit}" if useq else ""
+                    gt = self.group_tag(objc[0], ql) if verb == "kill" else ""
                     steps.append(("  %s %s##%d |q %d%s%s%s" % (verb, esc(npc["name"]), objc[0], qid,
-                                  goto_str(self.best_spawn(npc, area)), self.group_tag(objc[0], ql), ut), None))
+                                  goto_str(self.best_spawn(npc, area)), gt, ut), None))
                 elif obj and not is_marker(obj["name"]):
                     steps.append(("  collect %s##%d |q %d%s" % (esc(obj["name"]), objo[0], qid,
                                   goto_str(self.best_spawn(obj, area))), None))
@@ -948,11 +976,12 @@ class Router:
             useq = is_use_quest(q["objText"])          # "wrangle/capture/use X on" -> verbo "use"
             npc = objc and self.npc(objc[0])
             obj = objo and self.obj(objo[0])
-            if npc and not is_marker(npc["name"]):     # matar/usar criatura (goto se tiver spawn)
-                verb = "use" if useq else "kill"
+            if npc and not is_marker(npc["name"]):     # matar/usar/falar com criatura (goto se tiver spawn)
+                verb = "use" if useq else ("talk" if is_talk_quest(q["objText"]) else "kill")
                 ut = " |tip {useit}" if useq else ""
+                gt = self.group_tag(objc[0], ql) if verb == "kill" else ""
                 steps.append(("  %s %s##%d |q %d%s%s%s" % (verb, esc(npc["name"]), objc[0], qid,
-                              goto_str(self.best_spawn(npc, -1)), self.group_tag(objc[0], ql), ut), None))
+                              goto_str(self.best_spawn(npc, -1)), gt, ut), None))
             elif obj and not is_marker(obj["name"]):   # coletar de objeto no mundo
                 steps.append(("  collect %s##%d |q %d%s" % (esc(obj["name"]), objo[0], qid,
                               goto_str(self.best_spawn(obj, -1))), None))
@@ -989,7 +1018,7 @@ class Router:
             key = "%s/%s/%s" % (category, fac, esc(title))
         else:
             key = "%s/%s" % (category, esc(title))
-        L = ["-- AUTO-GERADO pelo roteador Lodestar. Fonte: Questie (dados abertos).",
+        L = ["-- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).",
              "local ADDON, ns = ...",
              "if not ns then return end",
              'ns:RegisterGuide("%s", {' % key]

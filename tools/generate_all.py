@@ -1,20 +1,22 @@
 """
-Fase 2 — Driver: gera o 1-70 completo (Aliança + Horda) a partir do JSON.
+Fase 2 — Driver: gera o 1-60 completo do Forever (Aliança + Horda) a partir do JSON.
 
 - Descobre as zonas de leveling de cada facção (áreas onde questgivers spawnam,
   com quests suficientes e nível mediano dentro da faixa).
 - Ordena as zonas por nível mediano das quests e encadeia via `next`.
 - Evita quest duplicada entre zonas (exclude acumulado por facção).
 - Escreve Guides/Leveling/<Fac>/<Zona>.lua e um Leveling.xml que carrega tudo.
+  O diretório de cada facção é refeito do zero: o título traz a faixa de nível,
+  então guia que mudou de faixa mudaria de arquivo e o antigo ficaria órfão.
 
-Uso: python generate_all.py [levelMax=70] [minQuests=6]
+Uso: python generate_all.py [levelMax=60] [minQuests=6]
 """
 import os
 import re
 import sys
 from collections import defaultdict
 
-from router import Router, load_data, esc, is_placeholder
+from router import FORA_DO_LEVELING, Router, load_data, esc, is_placeholder
 
 GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides", "Leveling")
 
@@ -30,6 +32,25 @@ SKIP_AREAS = {
     3487,  # Silvermoon City
     3557,  # The Exodar
 }
+# Capital -> a zona onde ela fica. Quest de capital vai, entre os guias cuja faixa
+# serve, para o da zona de casa — e não para a zona inicial de outra raça que só
+# tenha a mediana mais parecida (era assim que Ironforge caía em Elwynn).
+CAPITAL_HOME = {1519: 12, 1537: 1, 1657: 141, 1637: 14, 1638: 215, 1497: 85}
+# Ilha da raça nova (Forever): quem está lá não vai a capital nenhuma até sair dela.
+ISOLADAS = {16593}  # Zephras Isle
+
+# Campos de batalha: quest de BG não é rota de leveling, nem diluída como a de capital.
+BATTLEGROUNDS = {
+    2597,  # Alterac Valley
+    3277,  # Warsong Gulch
+    3358,  # Arathi Basin
+    16606, # Darkspear Islands (Forever, 15v15)
+}
+
+# Buraco de níveis sem quest que separa duas levas da mesma zona. O Forever pôs
+# conteúdo de 55-60 em Tirisfal e de 52-60 em Moonglade: num guia só, o jogador
+# de nível 5 seria mandado para quest de nível 55 no meio do caminho.
+BAND_GAP = 10
 
 
 def pct(sorted_vals, p):
@@ -51,6 +72,25 @@ def _giver_area(router, q):
     return None
 
 
+def bands(levels, min_quests):
+    """Níveis (ordenados) -> grupos, cortando onde há BAND_GAP níveis sem quest.
+    Grupo com menos de `min_quests` não vira guia sozinho: cola no vizinho."""
+    grupos = [[levels[0]]]
+    for lv in levels[1:]:
+        if lv - grupos[-1][-1] >= BAND_GAP:
+            grupos.append([lv])
+        else:
+            grupos[-1].append(lv)
+    while len(grupos) > 1:
+        i = next((i for i, g in enumerate(grupos) if len(g) < min_quests), None)
+        if i is None:
+            break
+        j = i - 1 if i > 0 else 1
+        a, b = min(i, j), max(i, j)
+        grupos[a:b + 1] = [grupos[a] + grupos[b]]
+    return grupos
+
+
 def discover_zones(router, faction, level_max, min_quests):
     """area -> {count, levels[], sA, sH}; filtra território inimigo."""
     fac_ok = {"A", "AH"} if faction == "A" else {"H", "AH"}
@@ -58,12 +98,14 @@ def discover_zones(router, faction, level_max, min_quests):
     for qid, q in router.quests.items():
         if q["specialFlags"] and (q["specialFlags"] & 1):
             continue
+        if q["zoneOrSort"] in FORA_DO_LEVELING:
+            continue
         ql = q["questLevel"] or 0
         if ql > level_max:
             continue
         area = _giver_area(router, q)
-        if area is None:
-            continue
+        if area is None or " - Dungeon" in router.zones[str(area)]["name"]:
+            continue                  # quest de masmorra tem guia próprio (gen_special)
         # contagem estrita p/ detectar território inimigo (independe de fac_ok)
         if q["faction"] == "A":
             per_area[area]["sA"] += 1
@@ -75,7 +117,7 @@ def discover_zones(router, faction, level_max, min_quests):
 
     zones = []
     for area, d in per_area.items():
-        if area in SKIP_AREAS or d["count"] < min_quests:
+        if area in SKIP_AREAS or area in BATTLEGROUNDS or d["count"] < min_quests:
             continue
         # vazamento: zona dominada pela facção oposta (poucas quests próprias)
         if faction == "A" and d["sH"] > d["sA"] and d["sA"] < 3:
@@ -85,12 +127,16 @@ def discover_zones(router, faction, level_max, min_quests):
         levels = sorted(l for l in d["levels"] if l > 0)
         if not levels:
             continue
-        median = pct(levels, 0.5)
-        lo, hi = pct(levels, 0.15), pct(levels, 0.85)
-        zones.append({
-            "area": area, "name": router.zones[str(area)]["name"],
-            "count": d["count"], "median": median, "lo": lo, "hi": hi,
-        })
+        grupos = bands(levels, min_quests)
+        for n, g in enumerate(grupos):
+            zones.append({
+                "area": area, "name": router.zones[str(area)]["name"],
+                "count": len(g), "median": pct(g, 0.5), "lo": pct(g, 0.15), "hi": pct(g, 0.85),
+                # faixas contíguas: nenhum nível da zona fica sem guia (quest sem
+                # nível vai com a primeira leva, a mais alta pega o resto)
+                "band": (grupos[n - 1][-1] + 1 if n else -999,
+                         grupos[n + 1][0] - 1 if n + 1 < len(grupos) else 999),
+            })
     zones.sort(key=lambda z: (z["median"], z["lo"], -z["count"]))
     return zones
 
@@ -110,6 +156,9 @@ def gen_faction(router, faction, level_max, min_quests):
     fac_dir = "Alliance" if faction == "A" else "Horde"
     out_dir = os.path.join(GUIDE_ROOT, fac_dir)
     os.makedirs(out_dir, exist_ok=True)
+    for velho in os.listdir(out_dir):
+        if velho.endswith(".lua"):
+            os.remove(os.path.join(out_dir, velho))
 
     # títulos, chaves e entradas (hub inicial) antecipados
     for z in zones:
@@ -130,20 +179,25 @@ def gen_faction(router, faction, level_max, min_quests):
             continue
         if is_placeholder(q["name"]) or (q["specialFlags"] and q["specialFlags"] & 3):
             continue
-        in_cap = in_zone = False
+        if q["zoneOrSort"] in FORA_DO_LEVELING or q.get("reqSkill"):
+            continue
+        caps, in_zone = set(), False
         for n in q["startNpcs"]:
             npc = router.npc(n)
             if not npc:
                 continue
             for a in npc.get("spawns", {}):
                 if int(a) in SKIP_AREAS:
-                    in_cap = True
+                    caps.add(int(a))
                 elif int(a) in zone_areas:
                     in_zone = True
-        if in_cap and not in_zone and zones:
-            tgt = min(zones, key=lambda z: (0 if z["lo"] <= ql <= z["hi"] else 1,
+        alvos = [z for z in zones if z["area"] not in ISOLADAS]
+        if caps and not in_zone and alvos:
+            casa = {CAPITAL_HOME.get(c) for c in caps}
+            tgt = min(alvos, key=lambda z: (0 if z["lo"] <= ql <= z["hi"] else 1,
+                                            0 if z["area"] in casa else 1,
                                             abs(z["median"] - ql)))
-            cap_assign[tgt["area"]].add(int(qid))
+            cap_assign[tgt["key"]].add(int(qid))     # por guia: a zona pode ter duas faixas
 
     used = set()
     files = []
@@ -151,10 +205,13 @@ def gen_faction(router, faction, level_max, min_quests):
         nxt = zones[i + 1] if i + 1 < len(zones) else None
         next_key = nxt["key"] if nxt else None
         travel = nxt["entry"] if nxt else None
+        de, ate = z["band"]
+        fora = {qid for qid, q in router.select(z["area"], faction, level_max).items()
+                if not de <= (q["questLevel"] or 0) <= ate}
         text, n, qids = router.generate_zone(
             z["area"], faction, z["title"], level_max,
-            next_key=next_key, exclude=used, travel_to=travel,
-            include=cap_assign.get(z["area"], set()) - used)
+            next_key=next_key, exclude=used | fora, travel_to=travel,
+            include=cap_assign.get(z["key"], set()) - used)
         if not text or n == 0:
             continue
         used.update(qids)
@@ -176,7 +233,8 @@ def write_xml(all_files):
         existing = open(path, encoding="utf-8").read()
         for m in re.finditer(r'file="([^"]+)"', existing):
             f = m.group(1)
-            if f not in all_files and f not in extra:
+            if (f not in all_files and f not in extra
+                    and os.path.exists(os.path.join(GUIDE_ROOT, f))):
                 extra.append(f)
     lines = ['<Ui xmlns="http://www.blizzard.com/wow/ui/">']
     for rel in all_files + extra:
@@ -188,7 +246,7 @@ def write_xml(all_files):
 
 
 def main():
-    level_max = int(sys.argv[1]) if len(sys.argv) > 1 else 70
+    level_max = int(sys.argv[1]) if len(sys.argv) > 1 else 60
     min_quests = int(sys.argv[2]) if len(sys.argv) > 2 else 6
     router = Router(load_data())
     all_files = []
