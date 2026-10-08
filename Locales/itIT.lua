@@ -24,11 +24,8 @@ L.CAT_Attunements="Sintonie"; L.CAT_Reputation="Reputazione"; L.CAT_Dailies="Gio
 L.TM_KILL="> Lodestar: bersaglio da uccidere"; L.TM_TALK="> Lodestar: bersaglio della guida"
 L.YARDS="%d m"; L.DEST="Destinazione"
 
-L.CLASS_TRAINER="Addestratore di classe"; L.TRAINER_NONE="nessun addestratore %s (%s) nell'indice."
-L.TRAINER_POINT="punto verso %s (%s) a %s. /ls train off annulla."; L.TRAINER_LABEL="Addestratore: %s"
 L.PROF_USAGE="uso: /ls prof <professione> (es: mining, alchemy, fishing)"
 L.PROF_NOTFOUND="professione '%s' non trovata."; L.PROF_NONE="nessun addestratore %s per %s."
-L.PROF_POINT="punto verso %s (%s) a %s."; L.PROF_LABEL="%s: %s"
 L.MOUNT_30_T="Cavalcatura disponibile!"; L.MOUNT_30_S="Impara Cavalcare (Apprendista) - 60% di velocità."
 L.MOUNT_60_T="Cavalcatura epica!"; L.MOUNT_60_S="Cavalcare (Esperto) - 100% di velocità."
 L.MOUNT_70_T="Volo disponibile!"; L.MOUNT_70_S="Impara Cavalcare (Perito) + una cavalcatura volante."

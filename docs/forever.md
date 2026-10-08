@@ -197,8 +197,9 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
   gêmea da Horda (95350) está em Mulgore e roteada. Conferir em jogo de onde parte o portal.
 - **Passo que começa por item de drop** sem fonte localizada (64 quests novas): falta o
   `itemDrops` do QuestieDB no `items.json`.
-- **Dado de Outland nas tabelas escritas à mão.** `FlightData`, `TransitData` e `TravelPlanner`
-  ainda trazem as zonas de TBC. É dado **inalcançável, não errado**: nenhum guia rota para lá.
+- **Dado de Outland na tabela de continentes do `TravelPlanner`.** As zonas de TBC seguem lá. É
+  dado **inalcançável, não errado**: nenhum guia rota para lá. (`FlightData` e `TransitData`
+  saíram: voos, barcos e zepelins vêm das tabelas do cliente, em `TravelData.lua`.)
   (`ZoneData`, `Trainers` e `SubZones` já saem do banco do Forever.)
 - **Níveis de montaria**, quando o jogo disser quais são. Avisar chutando é pior que calar.
 - **`ChehulNet.lua` na VERSION 7 nos quatro addons da família.** A cópia do Lodestar e a do GuildOS

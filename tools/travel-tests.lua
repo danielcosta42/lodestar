@@ -117,6 +117,9 @@ r = J.Plan(P(sh.c, sh.x + 30, sh.y), P(ifo.c, ifo.x + 30, ifo.y),
 	{ data = real, fac = "A", known = todos("A"), speed = 7, teleports = {} })
 check(r and kinds(r):find("flight"), "real: Sentinel Hill -> Ironforge voa (" .. (r and kinds(r) or "nil") .. ")")
 check(r.s < 600, "real: a viagem leva menos de 10 min (" .. math.floor(r.s) .. " s)")
+local fl
+for _, l in ipairs(r.legs) do if l.k == "flight" then fl = l end end
+check(fl and fl.to and real.nodes[fl.to].n == fl.name, "a perna de voo leva o id do nó de destino (mapa de voo casa pelo id)")
 local _, ra = node("Ratchet")
 local _, bb = node("Booty Bay")
 r = J.Plan(P(ra.c, ra.x, ra.y), P(bb.c, bb.x, bb.y),

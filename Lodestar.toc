@@ -56,8 +56,6 @@ Squad.lua
 Gather.lua
 Consumables.lua
 SubZones.lua
-TransitData.lua
-FlightData.lua
 TravelData.lua
 Journey.lua
 TravelPlanner.lua

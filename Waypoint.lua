@@ -340,28 +340,6 @@ end
 ns.localizedZone = localizedZone
 
 --------------------------------------------------------------------------------
--- Contexto de desenho compartilhado (seta e trilha desenham a MESMA coisa):
---   retorna (goalParaDesenhar, viajando)
---   * na zona-alvo   -> o próprio goal, viajando=false
---   * na zona do hop -> goal sintético do cais/portal, viajando=false
---   * viajando (portal/pedra/teleporte) -> goal, viajando=true (não desenhe a pé)
---------------------------------------------------------------------------------
-function WP:DrawContext()
-	local goal = self:PickTarget()
-	if not (goal and goal.goto_ and goal.goto_.zone) then return goal, false end
-	local TP = ns.TravelPlanner
-	if not TP or TP:InZone(goal.goto_.zone) then
-		return goal, false                                  -- já na zona: caminho normal
-	end
-	local plan, hop = TP:Plan(goal.goto_.zone)
-	if hop and hop.zone and TP:InZone(hop.zone) then
-		return { verb = "goto_", _hop = true,               -- na zona do hub: aponta o ponto
-			goto_ = { zone = hop.zone, x = hop.x, y = hop.y } }, false
-	end
-	return goal, plan ~= nil                                 -- há plano -> viajando (não desenha)
-end
-
---------------------------------------------------------------------------------
 -- Em VIAGEM (voo/táxi): a direção não importa — mostra ETA (distância restante ÷
 -- velocidade real medida por delta de posição). Detecta via UnitOnTaxi.
 --------------------------------------------------------------------------------
@@ -437,21 +415,7 @@ local function updateArrow(goal)
 	if goal._leg then return legArrow(a, goal) end
 	a.icon:Hide()
 
-	-- Plano de viagem (quando fora da zona-alvo). Se o método tem um "hop" (cais/
-	-- portal/torre) e você JÁ está na zona dele, a seta passa a mirar o ponto exato.
-	local plan
-	local tz0 = goal.goto_ and goal.goto_.zone
-	local TP = ns.TravelPlanner
-	if tz0 and TP and not TP:InZone(tz0) then
-		local hop
-		plan, hop = TP:Plan(tz0)
-		if hop and hop.zone and TP:InZone(hop.zone) then
-			goal = { verb = "goto_", text = plan, _hop = true,
-				goto_ = { zone = hop.zone, x = hop.x, y = hop.y, radius = 8 } }
-			plan = nil    -- agora é navegação local precisa até o hub
-		end
-	end
-
+	-- sem rota (outro continente sem ligação, instância): "Vá para <zona>"
 	local dist, dx, dy = WP:DistanceTo(goal)
 	if not dist then
 		-- destino em outro continente: sem direção, mas mostra p/ onde viajar
@@ -459,7 +423,7 @@ local function updateArrow(goal)
 			a.tex:Hide(); a.shadow:Hide()
 			a.dist:SetText("")
 			a.name:SetTextColor(UI.unpackc(C.amber))
-			a.name:SetText(plan or ns.L.OUT_OF_ZONE:format(localizedZone(goal.goto_.zone)))
+			a.name:SetText(ns.L.OUT_OF_ZONE:format(localizedZone(goal.goto_.zone)))
 			a:Show()
 		else
 			a:Hide()
@@ -478,23 +442,11 @@ local function updateArrow(goal)
 	local outOfZone = tzone and ns.TravelPlanner and not ns.TravelPlanner:InZone(tzone)
 
 	a.dist:SetText(ns.L.YARDS:format(dist))
-	if goal._hop then
-		-- navegação precisa até o cais / portal / torre (você está na zona certa)
-		local near = dist <= 14
-		a.tex:SetVertexColor(UI.unpackc(near and C.done or C.amber))
-		a.dist:SetTextColor(UI.unpackc(near and C.done or C.amber))
-		a.name:SetTextColor(UI.unpackc(C.active))
-		a.name:SetText(goal.text or "")
-	elseif outOfZone then
+	if outOfZone then
 		a.tex:SetVertexColor(UI.unpackc(C.amber))          -- âmbar = viagem
 		a.name:SetTextColor(UI.unpackc(C.active))
-		if plan then
-			a.dist:SetText("")                             -- método claro: distância irrelevante
-			a.name:SetText(plan)
-		else
-			a.dist:SetTextColor(UI.unpackc(C.amber))       -- "Vá para X": distância ajuda (andar/voar)
-			a.name:SetText(ns.L.OUT_OF_ZONE:format(localizedZone(tzone)))
-		end
+		a.dist:SetTextColor(UI.unpackc(C.amber))           -- "Vá para X": distância ajuda (andar/voar)
+		a.name:SetText(ns.L.OUT_OF_ZONE:format(localizedZone(tzone)))
 	else
 		local near = dist <= 14                             -- modo local/preciso
 		if near then a.tex:SetVertexColor(UI.unpackc(C.done)) else a.tex:SetVertexColor(1, 1, 1, 1) end

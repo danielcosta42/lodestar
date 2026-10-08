@@ -26,14 +26,18 @@ local function localizedZone(engZone)
 	return engZone
 end
 
--- Texto de viagem p/ o passo atual quando o alvo está fora da zona (ou nil).
+-- Texto de viagem p/ o passo atual: a perna atual da rota (antes da última, a pé);
+-- sem rota e com o alvo fora da zona, "Vá para <zona>".
 local function travelHint()
+	local route = ns.Travel and ns.Travel:Route()
+	if route then
+		return route.leg < #route.legs and ns.Waypoint.LegText(route, route.leg) or nil
+	end
 	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
-	if not (tgt and tgt.goto_ and tgt.goto_.zone) then return nil end
-	local tz = tgt.goto_.zone
+	local tz = tgt and tgt.goto_ and tgt.goto_.zone
 	local TP = ns.TravelPlanner
-	if not TP or TP:InZone(tz) then return nil end                       -- já na zona (via mapa)
-	return TP:Plan(tz) or ns.L.OUT_OF_ZONE:format(localizedZone(tz))
+	if not tz or not TP or TP:InZone(tz) then return nil end            -- já na zona (via mapa)
+	return ns.L.OUT_OF_ZONE:format(localizedZone(tz))
 end
 
 -- Nome de exibição: quests usam o nome localizado do client quando possível.

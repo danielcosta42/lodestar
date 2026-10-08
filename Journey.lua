@@ -74,7 +74,7 @@ function J.Plan(from, to, ctx)
 		for b, f in pairs(dests) do
 			local ib = fmIndex[b]
 			if ia and ib and known[b] then         -- só voa PARA voo conhecido
-				link(ia, ib, f.s + FLIGHT_OVERHEAD, { k = "flight", name = nodes[ib].name, p = f.p,
+				link(ia, ib, f.s + FLIGHT_OVERHEAD, { k = "flight", name = nodes[ib].name, to = b, p = f.p,
 					discover = not known[a] and a or nil })
 			end
 		end

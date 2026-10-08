@@ -24,11 +24,8 @@ L.CAT_Attunements="Sintonizaciones"; L.CAT_Reputation="Reputación"; L.CAT_Daili
 L.TM_KILL="> Lodestar: objetivo a matar"; L.TM_TALK="> Lodestar: objetivo de la guía"
 L.YARDS="%d m"; L.DEST="Destino"
 
-L.CLASS_TRAINER="Entrenador de clase"; L.TRAINER_NONE="sin entrenador de %s (%s) en el índice."
-L.TRAINER_POINT="apuntando a %s (%s) en %s. /ls train off cancela."; L.TRAINER_LABEL="Entrenador: %s"
 L.PROF_USAGE="uso: /ls prof <profesión> (ej: mining, alchemy, fishing)"
 L.PROF_NOTFOUND="profesión '%s' no encontrada."; L.PROF_NONE="sin entrenador de %s para %s."
-L.PROF_POINT="apuntando a %s (%s) en %s."; L.PROF_LABEL="%s: %s"
 L.MOUNT_30_T="¡Montura disponible!"; L.MOUNT_30_S="Aprende Equitación (Aprendiz) - 60% de velocidad."
 L.MOUNT_60_T="¡Montura épica!"; L.MOUNT_60_S="Equitación (Oficial) - 100% de velocidad."
 L.MOUNT_70_T="¡Vuelo disponible!"; L.MOUNT_70_S="Aprende Equitación (Experto) + una montura voladora."

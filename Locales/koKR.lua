@@ -24,11 +24,8 @@ L.CAT_Attunements="입장 자격"; L.CAT_Reputation="평판"; L.CAT_Dailies="일
 L.TM_KILL="> Lodestar: 처치 대상"; L.TM_TALK="> Lodestar: 가이드 대상"
 L.YARDS="%dyd"; L.DEST="목적지"
 
-L.CLASS_TRAINER="직업 교관"; L.TRAINER_NONE="%s 교관(%s) 없음."
-L.TRAINER_POINT="%s (%s, %s) 안내 중. /ls train off 취소."; L.TRAINER_LABEL="교관: %s"
 L.PROF_USAGE="사용법: /ls prof <전문 기술> (예: mining, alchemy, fishing)"
 L.PROF_NOTFOUND="'%s' 전문 기술을 찾을 수 없음."; L.PROF_NONE="%s 교관 없음 (%s)."
-L.PROF_POINT="%s (%s, %s) 안내 중."; L.PROF_LABEL="%s: %s"
 L.MOUNT_30_T="탈것 사용 가능!"; L.MOUNT_30_S="탈것 타기(견습) 습득 - 60% 속도."
 L.MOUNT_60_T="에픽 탈것!"; L.MOUNT_60_S="탈것 타기(숙련) - 100% 속도."
 L.MOUNT_70_T="비행 가능!"; L.MOUNT_70_S="탈것 타기(전문) + 비행 탈것 습득."
