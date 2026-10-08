@@ -174,9 +174,10 @@ Gerador: `python tools/gen_travel.py --demo`.
 
 ## Critérios de aceite (validação em jogo)
 
-1. Humano em Goldshire, alvo em Ironforge, voo de Stormwind conhecido: anda até o mestre de voo de
-   Stormwind, voa; a rota aparece em pernas no mapa e no minimapa e a seta aponta para o mestre.
-2. Night elf em Auberdine, alvo em Menethil: barco; "Espere o barco para Menethil" no cais.
+1. Humano em Goldshire, alvo em Ironforge: vai pelo meio mais rápido (hoje o bonde de Stormwind, 318 s,
+   à frente do voo); a rota aparece em pernas no mapa e no minimapa e a seta aponta para a entrada.
+2. Night elf em Auberdine, alvo em Menethil: barco; "Pegue o barco para Menethil Harbor" no cais. Barco e
+   zepelim só por cais da sua facção.
 3. Orc em Orgrimmar, alvo em Undercity: zepelim.
 4. Pedra vinculada em Brill e pronta, alvo em Brill vindo de longe: a rota usa a pedra e mostra o
    ícone dela.
