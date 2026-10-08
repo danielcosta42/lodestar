@@ -139,7 +139,7 @@ function LB:Detail(key)
 	end
 	local nextKey = ns.NextGuideKey and ns:NextGuideKey(guide)
 	local prev
-	for k, g in pairs(ns.guides) do
+	for _, g in pairs(ns.guides) do
 		if g.meta and g.meta.next == key and (not g.meta.faction or g.meta.faction == UnitFactionGroup("player")) then
 			local pm = meta(g)
 			if not prev or ordem(pm, prev) then prev = pm end
@@ -185,7 +185,8 @@ local function linha(i)
 	local r = CreateFrame("Button", nil, content)
 	r:SetHeight(ROW_H)
 	r.bg = UI.Rect(r, "BACKGROUND", { 0.165, 0.141, 0.094, 1 }); r.bg:SetAllPoints(); r.bg:Hide()
-	r.bar = UI.Rect(r, "ARTWORK", C.accent); r.bar:SetPoint("TOPLEFT"); r.bar:SetPoint("BOTTOMLEFT"); r.bar:SetWidth(3); r.bar:Hide()
+	r.bar = UI.Rect(r, "ARTWORK", C.accent)
+	r.bar:SetPoint("TOPLEFT"); r.bar:SetPoint("BOTTOMLEFT"); r.bar:SetWidth(3); r.bar:Hide()
 	r.dot = UI.Media(r, "dot", "ARTWORK"); r.dot:SetSize(7, 7); r.dot:SetPoint("LEFT", 12, 0)
 	r.star = UI.Glyph(r, "estrela", "ARTWORK", 64); r.star:SetSize(12, 12); r.star:SetPoint("CENTER", r.dot, "CENTER")
 	r.star:SetVertexColor(UI.unpackc(C.accent))
@@ -201,7 +202,9 @@ local function linha(i)
 	r.gtag = texto(r, 9.5, C.accent, { num = true }); r.gtag:SetPoint("LEFT", r.glabel, "RIGHT", 10, 0)
 	r.gline = UI.Rect(r, "ARTWORK", { C.accent[1], C.accent[2], C.accent[3], 0.25 }); r.gline:SetHeight(1)
 	r.gline:SetPoint("LEFT", r.gtag, "RIGHT", 10, 0); r.gline:SetPoint("RIGHT", -14, 0)
-	r:SetScript("OnEnter", function(self) if self._key and self._key ~= selected then self.bg:Show(); self.bg:SetAlpha(0.5) end end)
+	r:SetScript("OnEnter", function(self)
+		if self._key and self._key ~= selected then self.bg:Show(); self.bg:SetAlpha(0.5) end
+	end)
 	r:SetScript("OnLeave", function(self) if self._key ~= selected then self.bg:Hide() end end)
 	r:SetScript("OnClick", function(self) if self._key then selected = self._key; LB:Render() end end)
 	r:SetScript("OnDoubleClick", function(self) if self._key then abrir(self._key) end end)
@@ -212,10 +215,13 @@ end
 local function pintaGrupo(r, g)
 	r._key = nil
 	r:SetHeight(GROUP_H)
-	for _, k in ipairs({ "bg", "bar", "dot", "star", "name", "range", "quests", "prog", "status", "pct" }) do r[k]:Hide() end
+	for _, k in ipairs({ "bg", "bar", "dot", "star", "name", "range", "quests", "prog", "status", "pct" }) do
+		r[k]:Hide()
+	end
 	r.glabel:SetText(g.label); r.glabel:Show()
 	r.glabel:SetTextColor(UI.unpackc(g.mine and UI.COL.accent or UI.COL.muted))
-	r.gtag:SetText(g.mine and (curCat == "Class" and "" or ns.L.LIB_YOUR_BAND) or ""); r.gtag:SetShown(g.mine and true or false)
+	r.gtag:SetText(g.mine and (curCat == "Class" and "" or ns.L.LIB_YOUR_BAND) or "")
+	r.gtag:SetShown(g.mine and true or false)
 	r.gline:SetShown(g.mine and true or false)
 end
 
