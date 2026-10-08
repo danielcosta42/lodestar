@@ -314,4 +314,17 @@ wx, wy, wz = WPT.ParseWay(" 45,30 Elwynn Forest ")
 check(wx == 45 and wy == 30 and wz == "Elwynn Forest", "coordenada com vírgula e zona")
 check(WPT.ParseWay("abc") == nil and WPT.ParseWay("120 30") == nil, "texto ou fora de 0-100: nada")
 
+-- ── Todo comando do /ls tem lugar na interface (ns.COMMAND_UI no Core.lua) ────
+do
+	local src = io.open(ROOT .. "/Core.lua"):read("*a")
+	local block = src:match("ns%.COMMAND_UI = (%b{})")
+	check(block ~= nil, "Core.lua define ns.COMMAND_UI")
+	local ui = block and loadstring("return " .. block)() or {}
+	local faltam = {}
+	for cmd in src:gmatch('cmd == "([%w_]+)"') do
+		if not ui[cmd] then faltam[#faltam + 1] = cmd end
+	end
+	check(#faltam == 0, "comandos sem entrada na interface: " .. table.concat(faltam, ", "))
+end
+
 print(("ok: %d checks"):format(checks))

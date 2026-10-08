@@ -77,6 +77,7 @@ local function syncCorpse()
 	local c = corpse()
 	if c then D:Set("corpse", c) else D:Clear("corpse") end
 end
+D.Sync = syncCorpse                -- Configurações: ligar/desligar a rota até o corpo vale na hora
 ns:On("PLAYER_DEAD", syncCorpse)
 ns:On("PLAYER_ALIVE", syncCorpse)
 ns:On("PLAYER_UNGHOST", syncCorpse)

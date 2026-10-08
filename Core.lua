@@ -170,6 +170,25 @@ end)
 --------------------------------------------------------------------------------
 -- Slash command
 --------------------------------------------------------------------------------
+-- Onde cada comando mora na interface: o /ls é só atalho. A checagem em
+-- tools/travel-tests.lua falha se um `cmd == "..."` abaixo não estiver aqui.
+ns.COMMAND_UI = {
+	menu = "guia: livro", guides = "guia: livro", list = "guia: livro", load = "guia: livro",
+	next = "guia: seta >", prev = "guia: seta <",
+	config = "guia: engrenagem", options = "guia: engrenagem", settings = "guia: engrenagem",
+	travel = "guia: bússola", viagem = "guia: bússola", way = "Viagem: coordenada / Limpar",
+	near = "Viagem: Mais perto", train = "Viagem: Treinador da classe", prof = "Viagem: Treinador de profissão",
+	reset = "guia: ⋯", rescan = "guia: ⋯", export = "guia: ⋯", import = "guia: ⋯",
+	record = "guia: ⋯", scan = "guia: ⋯",
+	party = "Config. Painéis", squad = "Config. Painéis", gather = "Config. Painéis", coleta = "Config. Painéis",
+	check = "Config. Painéis", consume = "Config. Painéis", raidprep = "Config. Painéis",
+	card = "Config. Painéis", intro = "Config. Painéis", item = "Config. Geral",
+	mark = "Config. Aparência", trail = "Config. Aparência", xp = "Config. Aparência",
+	coords = "Config. Aparência",
+	debug = "Config. Avançado", tdebug = "Config. Avançado", chains = "Config. Avançado",
+	calibrate = "Config. Avançado",
+}
+
 SLASH_LODESTAR1 = "/lodestar"
 SLASH_LODESTAR2 = "/ls"
 SlashCmdList.LODESTAR = function(msg)

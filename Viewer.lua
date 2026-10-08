@@ -128,6 +128,12 @@ local function getTab(i)
 end
 
 --------------------------------------------------------------------------------
+StaticPopupDialogs["LODESTAR_RESET"] = {
+	text = ns.L.ACT_RESET_CONFIRM, button1 = YES, button2 = NO,
+	OnAccept = function() SlashCmdList.LODESTAR("reset") end,
+	timeout = 0, whileDead = true, hideOnEscape = true, preferredIndex = 3,
+}
+
 local function build()
 	if frame then return frame end
 	local dbv = ns.db.viewer
@@ -160,7 +166,7 @@ local function build()
 	frame.title = header:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(frame.title, 13, { color = C.active })
 	frame.title:SetPoint("LEFT", dot, "RIGHT", 7, 0)
-	frame.title:SetPoint("RIGHT", header, "RIGHT", -114, 0)
+	frame.title:SetPoint("RIGHT", header, "RIGHT", -136, 0)
 	frame.title:SetJustifyH("LEFT"); frame.title:SetText("Lodestar")
 
 	local close = UI.CloseButton(header, function() V:Hide() end)
@@ -204,6 +210,33 @@ local function build()
 	end)
 	travelBtn:SetScript("OnLeave", function() ticon:SetVertexColor(UI.unpackc(C.muted)); GameTooltip:Hide() end)
 	travelBtn:SetScript("OnClick", function() if ns.TravelPanel then ns.TravelPanel:Toggle() end end)
+
+	-- ⋯ Ações: o que antes só existia no /ls
+	local actBtn = CreateFrame("Button", nil, header)
+	actBtn:SetSize(20, 18)
+	actBtn:SetPoint("RIGHT", travelBtn, "LEFT", -2, 0)
+	local afs = actBtn:CreateFontString(nil, "OVERLAY")
+	UI.SetFont(afs, 14, { num = true, color = C.muted })
+	afs:SetPoint("CENTER", 0, 3); afs:SetText("···")
+	actBtn:SetScript("OnEnter", function(self)
+		afs:SetTextColor(UI.unpackc(C.accent))
+		GameTooltip:SetOwner(self, "ANCHOR_BOTTOM"); GameTooltip:SetText(ns.L.ACT_TIP); GameTooltip:Show()
+	end)
+	actBtn:SetScript("OnLeave", function() afs:SetTextColor(UI.unpackc(C.muted)); GameTooltip:Hide() end)
+	actBtn:SetScript("OnClick", function(self)
+		local L, run = ns.L, SlashCmdList.LODESTAR
+		UI.Menu(self, {
+			{ L.ACT_RESET, function() StaticPopup_Show("LODESTAR_RESET") end },
+			{ L.ACT_RESCAN, function() run("rescan") end },
+			{ L.ACT_EXPORT, function() run("export") end },
+			{ L.ACT_IMPORT, function() run("import") end },
+			{ L.ACT_RECORD, function() run("record") end },
+			{ L.ACT_SCAN_START, function() run("scan") end },
+			{ L.ACT_SCAN_STOP, function() run("scan stop") end },
+			{ L.ACT_SCAN_STATUS, function() run("scan status") end },
+			{ L.ACT_SCAN_CLEAR, function() run("scan clear") end },
+		})
+	end)
 
 	-- Tira de abas (guias abertos) ----------------------------------------
 	frame.tabStrip = CreateFrame("Frame", nil, frame)
