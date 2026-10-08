@@ -153,7 +153,8 @@ function WP:PickTarget()
 		local p = leg.k == "walk" and T.PlayerWorld()
 		if p and p.c == leg.b.c then
 			local dx, dy = leg.b.x - p.x, leg.b.y - p.y
-			secs = math.sqrt(dx * dx + dy * dy) / T:Speed()
+			local falta = leg.path and ns.Terrain and select(3, ns.Terrain.Ahead(leg.path, p, 0))
+			secs = (falta or math.sqrt(dx * dx + dy * dy)) / T:Speed()
 		end
 		legGoal.verb, legGoal._leg, legGoal.world, legGoal.legKind = "goto_", true, leg.b, leg.k
 		legGoal.text, legGoal.icon = WP.LegText(route, route.leg, secs, GetServerTime and GetServerTime()), legIcon(leg)
@@ -238,7 +239,8 @@ function WP:WorldMapPos(w, shown)
 end
 
 -- Perna a pé com caminho pelo terreno: a seta mira o ponto do caminho ~25 jd à frente e a
--- distância é a que falta por ele (vale para o fim de perna e para o objetivo do guia na última).
+-- distância é a que falta por ele mais o afastamento (vale para o fim de perna e para o objetivo
+-- do guia na última).
 local function steer(goal)
 	local T = ns.Travel
 	local route = T and T:Route()
@@ -247,8 +249,9 @@ local function steer(goal)
 	if not (goal._leg or (route.dest and goal == route.dest.goal)) then return nil end
 	local p = T.PlayerWorld()
 	if not (p and p.c == leg.b.c) then return nil end
-	local ax, ay, falta = ns.Terrain.Ahead(leg.path, p, 25)
-	return falta, ax - p.x, ay - p.y
+	-- o afastamento do caminho entra: a soma nunca é menor que a reta (o `goto` não conclui antes)
+	local ax, ay, falta, fora = ns.Terrain.Ahead(leg.path, p, 25)
+	return falta + fora, ax - p.x, ay - p.y
 end
 
 function WP:DistanceTo(goal)

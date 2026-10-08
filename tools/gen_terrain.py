@@ -118,21 +118,33 @@ def continente(c, cid, wdt):
         funda = sup - centro > FUNDO
         nociva = ruim.reshape(32, 4, 32, 4).any(axis=(1, 3))
         r0, c0 = lin * 32, col * 32
-        H[r0:r0 + 32, c0:c0 + 32] = centro
+        # na água funda, a altura que vale é a da superfície: a margem é desnível dela para a terra
+        H[r0:r0 + 32, c0:c0 + 32] = np.where(funda & ~nociva, sup, centro)
         W[r0:r0 + 32, c0:c0 + 32] = funda & ~nociva
         P[r0:r0 + 32, c0:c0 + 32] = ((~ingreme | funda) & ~buraco & ~nociva)
     return H, P, W, q
 
 
 def ligacoes(H, P, W):
-    """Byte de ligação por célula: bit d se o vizinho d também é passável e o desnível cabe."""
+    """Byte de ligação por célula: bit d se o vizinho d também é passável e o desnível cabe (na
+    água, pela superfície: não se sobe penhasco saindo dela). Diagonal só se os dois vizinhos
+    retos passam (não corta quina); nada aponta para fora da grade."""
     L = np.zeros(H.shape, np.uint8)
     for d, (dr, dc) in enumerate(DIRS):
         Hn = np.roll(np.roll(H, -dr, 0), -dc, 1)
         Pn = np.roll(np.roll(P, -dr, 0), -dc, 1)
-        Wn = np.roll(np.roll(W, -dr, 0), -dc, 1)
         dist = CEL * math.hypot(dr, dc)
-        ok = P & Pn & ((np.abs(Hn - H) / dist <= RAMPA) | W | Wn)
+        ok = P & Pn & (np.abs(Hn - H) / dist <= RAMPA)
+        if dr and dc:
+            ok &= np.roll(P, -dr, 0) & np.roll(P, -dc, 1)
+        if dr == -1:
+            ok[0, :] = False
+        if dr == 1:
+            ok[-1, :] = False
+        if dc == 1:
+            ok[:, -1] = False
+        if dc == -1:
+            ok[:, 0] = False
         L |= (ok.astype(np.uint8) << d)
     return L
 
@@ -176,7 +188,7 @@ def gera(c, cid, wdt, escrever=True):
         linhas.append("\t[%d] = %s," % (lin * 64 + col, lua_bytes(s)))
     linhas.append("}")
     if escrever:
-        with open(OUT % cid, "w", encoding="latin-1", newline="\n") as fh:
+        with open(OUT % cid, "w", encoding="utf-8", newline="\n") as fh:
             fh.write("\n".join(linhas) + "\n")
     return H, P, W, L, total
 
@@ -191,6 +203,17 @@ def demo(dados):
     assert P1[r, c], "o chão do mestre de voo de Orgrimmar devia ser passável"
     r, c = celula(-1000.0, -4000.0)                      # mar a leste do cais de Ratchet
     assert W1[r, c], "o mar ao lado de Ratchet devia ser água"
+    for H_, P_, W_, L_, _ in dados.values():
+        # nenhuma ligação para fora da grade (o np.roll daria a volta pelo outro lado)
+        bordas = (L_[0, :] & 0b10000011).any() or (L_[-1, :] & 0b00111000).any()             or (L_[:, -1] & 0b00001110).any() or (L_[:, 0] & 0b11100000).any()
+        assert not bordas, "ligação para fora da grade"
+        # diagonal só se os dois vizinhos retos passam (não corta quina)
+        for d, (dr, dc) in enumerate(DIRS):
+            if dr and dc:
+                tem = (L_ >> d) & 1 == 1
+                reto1 = np.roll(P_, -dr, 0)
+                reto2 = np.roll(P_, -dc, 1)
+                assert not (tem & ~(reto1 & reto2)).any(), "diagonal cortando quina (d=%d)" % d
     vale = P1.sum()
     assert vale > 100000, vale
     print("ok: Kalimdor %d células passáveis, %d de água" % (vale, W1.sum()))

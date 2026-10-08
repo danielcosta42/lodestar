@@ -47,91 +47,123 @@ local function info(grid, r, c)
 end
 TR.Info = info
 
--- Caminho de `de` a `para` ({c,x,y}, mesmo continente). nil se não há (fora da grade, dentro de
--- prédio, sem passagem ou busca grande demais): quem chama volta à reta. `cederACada`: numa
--- corrotina, cede a vez a cada tantas expansões (não trava o quadro).
-function TR.Path(dados, de, para, maxExp, cederACada)
-	if not (de and para and de.c == para.c and dados) then return nil end
-	local grid = dados[de.c]
-	if not grid then return nil end
-	local sr, sc = TR.Cell(de.x, de.y)
-	local gr, gc = TR.Cell(para.x, para.y)
-	if info(grid, sr, sc) == 0 or info(grid, gr, gc) == 0 then return nil end
-	local start, goal = sr * W + sc, gr * W + gc
-	local hk, hf, n = {}, {}, 0                          -- fila de prioridade (heap binário)
-	local function push(k, f)
+-- Fila de prioridade: heap 4-ário num vetor só, com o par (prioridade, chave) lado a lado.
+local function novaFila()
+	local v, n = {}, 0
+	local q = {}
+	function q.poe(f, k)
 		n = n + 1
 		local i = n
 		while i > 1 do
-			local p = floor(i / 2)
-			if hf[p] <= f then break end
-			hk[i], hf[i] = hk[p], hf[p]
-			i = p
+			local pai = math.floor((i - 2) / 4) + 1
+			if v[2 * pai - 1] <= f then break end
+			v[2 * i - 1], v[2 * i] = v[2 * pai - 1], v[2 * pai]
+			i = pai
 		end
-		hk[i], hf[i] = k, f
+		v[2 * i - 1], v[2 * i] = f, k
 	end
-	local function pop()
-		local k = hk[1]
-		local lk, lf = hk[n], hf[n]
-		hk[n], hf[n] = nil, nil
+	function q.tira()
+		local topo = v[2]
+		local f, k = v[2 * n - 1], v[2 * n]
+		v[2 * n - 1], v[2 * n] = nil, nil
 		n = n - 1
+		if n == 0 then return topo end
 		local i = 1
 		while true do
-			local c = i * 2
-			if c > n then break end
-			if c < n and hf[c + 1] < hf[c] then c = c + 1 end
-			if hf[c] >= lf then break end
-			hk[i], hf[i] = hk[c], hf[c]
-			i = c
+			local filho, ff = nil, f
+			local c0 = 4 * (i - 1) + 2
+			for c = c0, math.min(c0 + 3, n) do
+				if v[2 * c - 1] < ff then filho, ff = c, v[2 * c - 1] end
+			end
+			if not filho then break end
+			v[2 * i - 1], v[2 * i] = v[2 * filho - 1], v[2 * filho]
+			i = filho
 		end
-		if n > 0 then hk[i], hf[i] = lk, lf end
-		return k
+		v[2 * i - 1], v[2 * i] = f, k
+		return topo
 	end
+	function q.vazia() return n == 0 end
+	return q
+end
+
+-- célula passável mais perto de (r, c), até 2 células (o ponto pode cair num prédio, numa ponte)
+local function ajusta(grid, r, c)
+	if info(grid, r, c) ~= 0 then return r, c end
+	local br, bc, bd
+	for dr = -2, 2 do
+		for dc = -2, 2 do
+			local d = dr * dr + dc * dc
+			if (not bd or d < bd) and info(grid, r + dr, c + dc) ~= 0 then br, bc, bd = r + dr, c + dc, d end
+		end
+	end
+	return br, bc
+end
+
+-- Caminho de `de` a `para` ({c,x,y}, mesmo continente). nil se não há (fora da grade, longe de
+-- célula passável, sem passagem ou busca grande demais): quem chama volta à reta. `ceder`, numa
+-- corrotina: a cada tantas expansões (número) ou quando a função disser (orçamento de tempo),
+-- cede a vez — não trava o quadro.
+function TR.Path(dados, de, para, maxExp, ceder)
+	if not (de and para and de.c == para.c and dados) then return nil end
+	local grid = dados[de.c]
+	if not grid then return nil end
+	local sr, sc = ajusta(grid, TR.Cell(de.x, de.y))
+	local gr, gc = ajusta(grid, TR.Cell(para.x, para.y))
+	if not (sr and gr) then return nil end
+	local start, goal = sr * W + sc, gr * W + gc
 	local function h(r, c)
 		local dr, dc = math.abs(r - gr), math.abs(c - gc)
 		return CEL * (math.max(dr, dc) + (SQ2 - 1) * math.min(dr, dc))
 	end
-	local g, came, closed = { [start] = 0 }, {}, {}
-	push(start, h(sr, sc))
-	local exp, found = 0, start == goal
-	while n > 0 and not found do
-		local k = pop()
+	local fila = novaFila()
+	local g, came, fechado = { [start] = 0 }, {}, {}
+	fila.poe(h(sr, sc), start)
+	local exp, achou = 0, start == goal
+	local porFuncao = type(ceder) == "function"
+	while not achou and not fila.vazia() do
+		local k = fila.tira()
 		if k == goal then
-			found = true
-		elseif not closed[k] then
-			closed[k] = true
+			achou = true
+		elseif not fechado[k] then
+			fechado[k] = true
 			exp = exp + 1
 			if exp > maxExp then return nil end
-			if cederACada and exp % cederACada == 0 and coroutine.running() then coroutine.yield() end
+			if ceder and coroutine.running() then
+				if porFuncao then
+					if exp % 256 == 0 and ceder() then coroutine.yield() end
+				elseif exp % ceder == 0 then
+					coroutine.yield()
+				end
+			end
 			local r, c = floor(k / W), k % W
 			local conn = info(grid, r, c)
 			for d = 1, 8 do
-				if conn % 2 ^ d >= 2 ^ (d - 1) then
-					local nr, nc = r + DIRS[d][1], c + DIRS[d][2]
+				local nr, nc = r + DIRS[d][1], c + DIRS[d][2]
+				if conn % 2 ^ d >= 2 ^ (d - 1) and nr >= 0 and nc >= 0 and nr < W and nc < W then
 					local nk = nr * W + nc
-					if not closed[nk] then
+					if not fechado[nk] then
 						local _, agua = info(grid, nr, nc)
 						local ng = g[k] + (d % 2 == 0 and CEL * SQ2 or CEL) * (agua and NADO or 1)
 						if not g[nk] or ng < g[nk] then
 							g[nk], came[nk] = ng, k
-							push(nk, ng + h(nr, nc))
+							fila.poe(ng + h(nr, nc), nk)
 						end
 					end
 				end
 			end
 		end
 	end
-	if not found then return nil end
-	local cells, k = {}, goal
+	if not achou then return nil end
+	local inv, k = {}, goal
 	while k do
-		table.insert(cells, 1, k)
+		inv[#inv + 1] = k
 		k = came[k]
 	end
 	-- só os pontos onde a direção muda; o primeiro é o jogador, o último o destino
 	local pts = { { c = de.c, x = de.x, y = de.y } }
 	local pdr, pdc
-	for i = 2, #cells - 1 do
-		local a, b = cells[i], cells[i + 1]
+	for i = #inv - 1, 2, -1 do
+		local a, b = inv[i], inv[i - 1]
 		local dr, dc = floor(b / W) - floor(a / W), b % W - a % W
 		if dr ~= pdr or dc ~= pdc then
 			pts[#pts + 1] = TR.CellCenter(de.c, floor(a / W), a % W)

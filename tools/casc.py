@@ -87,7 +87,10 @@ class Casc:
         return b"".join(out)
 
     def le_ekey(self, ek):
-        arq, off, tam = self._indice(self._balde(ek))[ek[:9]]
+        ent = self._indice(self._balde(ek)).get(ek[:9])
+        if not ent:
+            return None                    # não está no armazenamento local (só no CDN)
+        arq, off, tam = ent
         with open(os.path.join(self.dados, "data.%03d" % arq), "rb") as fh:
             fh.seek(off)
             b = fh.read(tam)
@@ -108,6 +111,8 @@ class Casc:
             return self._enc[ck]
         import bisect
         i = bisect.bisect_right(self._enc_paginas, ck) - 1
+        if i < 0:
+            return None
         b, p = self._enc_b, self._enc_base + i * self._enc_tam
         fim = p + self._enc_tam
         while p < fim:
@@ -126,7 +131,10 @@ class Casc:
         raiz, pos = {}, 0
         if b[:4] == b"TSFM":
             hs, ver = struct.unpack_from("<II", b, 4)
-            pos = hs if ver >= 2 else 12
+            if 12 <= hs <= 64 and ver in (1, 2):     # cabeçalho v1+: tamanho e versão
+                pos = hs
+            else:                                    # o antigo: só os dois contadores
+                pos, ver = 12, 0
         else:
             ver = 0
         while pos < len(b):

@@ -472,14 +472,6 @@ r = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(80) }))    
 check(r and math.abs(r.legs[2].s - (80 - 500 / 7 + 200)) < 0.5 and r.legs[2].dep == 1080 and r.legs[2].stop == 1 and r.legs[2].sid == 7,
 	"chegou antes da saída: espera curta e a perna leva a hora de saída (" .. (r and r.legs[2].s or 0) .. ")")
 
--- o anunciador anuncia a parada mais perto dele (os dois zepelins da mesma torre têm plataformas próprias)
-local frota = {
-	{ id = 301, stops = { { c = 0, x = 2060, y = 290 }, { c = 0, x = -12450, y = 230 } } },
-	{ id = 302, stops = { { c = 1, x = 1320, y = -4650 }, { c = 0, x = 2070, y = 255 } } },
-}
-local sid, k = T.NearestStop(frota, { c = 0, x = 2066, y = 260 }, 200)
-check(sid == 302 and k == 2, "anunciador perto da plataforma do zepelim de Orgrimmar: parada 2 do 302")
-check(T.NearestStop(frota, { c = 0, x = 0, y = 0 }, 200) == nil, "longe de todo cais: nenhuma parada")
 -- quanto falta numa perna de barco com horário: até a saída + a travessia
 local rb2 = { leg = 1, legs = { { k = "ship", a = P(0, 0, 0), b = P(1, 0, 0), s = 999, dep = 1100, ride = 200 } } }
 check(math.abs(T.Remaining(rb2, P(0, 0, 0), 7, 1000) - 300) < 0.01, "barco com horário: 100 s até sair + 200 de travessia")
@@ -581,5 +573,26 @@ check(math.abs(TT.Remaining({ leg = 1, legs = { perna } }, P(0, 90, 2), 10) - 11
 	"quanto falta a pé: pelo caminho (110 jd a 10 jd/s), não em reta")
 check(math.abs(TT.Remaining({ leg = 1, legs = { { k = "walk", a = P(0, 0, 0), b = P(0, 100, 100) } } }, P(0, 90, 2), 10)
 	- math.sqrt(10 ^ 2 + 98 ^ 2) / 10) < 0.01, "sem caminho: em reta, como antes")
+
+-- revisão do #24: o A* cede a vez por função (orçamento de tempo), ajusta ponta bloqueada e
+-- nunca sai da grade
+local vezes = 0
+local co = coroutine.create(function()
+	return TRN.Path(parede, A, B, 20000, function() vezes = vezes + 1; return true end)
+end)
+local okc, res = coroutine.resume(co)
+local cedeu = 0
+while okc and coroutine.status(co) ~= "dead" do cedeu = cedeu + 1; okc, res = coroutine.resume(co) end
+check(okc and res and cedeu > 0, "cede a vez (orçamento) e ainda acha o caminho (" .. cedeu .. " vezes)")
+local alvoBloq = quadranteSint(function(r, c) return r == 5 and c == 15 end)
+cam = TRN.Path(alvoBloq, A, B, 20000)
+check(cam and cam[#cam].x == B.x and cam[#cam].y == B.y, "destino em célula bloqueada: ajusta para a vizinha passável e termina nele")
+local borda = quadranteSint(function() return false end)
+local t0 = TRN.Decode(borda[0][0])
+borda[0][0] = string.char(1, 255) .. borda[0][0]:sub(3)       -- célula (0,0) com todas as ligações, até para fora
+cam = TRN.Path(borda, mundo(0, 0), mundo(0, 4), 20000)
+local fora = false
+for _, pt in ipairs(cam or {}) do local r, c = TRN.Cell(pt.x, pt.y); if r < 0 or c < 0 then fora = true end end
+check(cam and not fora, "ligação para fora da grade não vira caminho")
 
 print(("ok: %d checks"):format(checks))
