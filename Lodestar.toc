@@ -59,6 +59,7 @@ SubZones.lua
 TransitData.lua
 FlightData.lua
 TravelData.lua
+Journey.lua
 TravelPlanner.lua
 StepTracker.lua
 DungeonRuns.lua

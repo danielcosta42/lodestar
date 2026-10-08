@@ -13,6 +13,7 @@ tools/*
 !tools/import_forever.py
 !tools/forever-guides.lua
 !tools/forever-scan.lua
+!tools/travel-tests.lua
 !tools/questiedb.py
 !tools/build_intermediate.py
 !tools/parse_lua.py
