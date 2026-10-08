@@ -334,18 +334,25 @@ wns.Destinations.Active = function() return { zone = "Westfall", x = 5, y = 6, l
 local g = W2:PickTarget()
 check(g and g._custom and g.goto_.zone == "Westfall", "sem rota, destino manual: alvo avulso marcado como manual")
 
--- ── Compass: marcas cardeais na faixa ────────────────────────────────────────
+-- ── Compass: tracinhos a cada 15°, letra nos de 90°, somem em fade nas pontas ──
 local CP = load("Compass.lua", { RouteGeom = G }).Compass
-local function marca(list, k)
-	for _, m in ipairs(list) do if m.k == k then return m.x end end
+local FOV180 = math.pi
+local function tick(list, k)
+	for _, t in ipairs(list) do if t.k == k then return t end end
 end
-local cards = CP.Cardinals(0, math.rad(140), 100)
-check(near(marca(cards, "N"), 0) and marca(cards, "S") == nil, "olhando para o norte: N no meio, S fora da faixa")
-check(marca(cards, "W") == nil and marca(cards, "E") == nil, "campo de 140°: oeste e leste (90°) fora da faixa")
-cards = CP.Cardinals(math.rad(45), math.rad(140), 100)
-check(marca(cards, "N") > 0 and marca(cards, "W") < 0, "olhando para noroeste: N à direita, W à esquerda")
-cards = CP.Cardinals(math.pi / 2, math.rad(140), 100)
-check(near(marca(cards, "W"), 0), "olhando para oeste: W no meio")
+local ts = CP.Ticks(0, FOV180, 180, 40)
+check(#ts == 13, "180° de campo: 13 tracinhos de 15° visíveis (" .. #ts .. ")")
+check(tick(ts, "N") and near(tick(ts, "N").x, 0) and tick(ts, "N").major and not tick(ts, "S"),
+	"olhando para o norte: N maior no meio, S fora")
+local meio, borda
+for _, t in ipairs(ts) do
+	if near(t.x, 0) then meio = t end
+	if near(t.x, 150) then borda = t end
+end
+check(meio and borda and borda.alpha < meio.alpha and meio.alpha > 0, "fade: o tracinho perto da ponta é mais fraco que o do meio")
+check(tick(ts, "W") and tick(ts, "W").alpha == 0, "na ponta exata, transparente")
+ts = CP.Ticks(math.rad(45), FOV180, 180, 40)
+check(tick(ts, "N").x > 0 and tick(ts, "W").x < 0, "olhando para noroeste: N à direita, W à esquerda")
 
 -- ── Destino manual pelo minimapa e tipo de serviço por texto ─────────────────
 for _, caso in ipairs({ { 0, false }, { math.rad(73), true }, { math.rad(250), true } }) do
