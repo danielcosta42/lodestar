@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Searing Gorge (48-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Blasted Lands (50-50)",
+	rev = "4ae6da5c",
 }, [[
 step
   kill Dark Iron Steamsmith##5840 |goto Searing Gorge 40.58,49.48 |tip Loot the quest item here — it starts the quest.
@@ -150,6 +151,6 @@ step
 step
   turnin Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
-  note {travel}Undercity
-  goto Undercity 67.74,37.89
+  note {travel}Blasted Lands
+  goto Blasted Lands 50.55,14.2
 ]])

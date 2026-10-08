@@ -49,13 +49,7 @@ end
 --------------------------------------------------------------------------------
 -- destinos possíveis: zonas dos próximos passos + a zona do próximo guia
 --------------------------------------------------------------------------------
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
+local localizedZone = ns.LocalizedZone
 
 local function destinationZones()
 	local zones, seen = {}, {}

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/The Barrens (14-21)",
+	rev = "1446f956",
 }, [[
 step
   only Warrior completed(1683,1678,1639)
@@ -407,6 +408,92 @@ step
   talk Onu##3616
   turnin Return to Onu##950 |goto Darkshore 43.55,76.29
 step
+  talk Terenthis##3693
+  accept A Lost Master##986 |goto Darkshore 39.37,43.48
+step
+  talk Gwennyth Bly'Leggonde##10219
+  accept Holy Diver##87760 |goto Darkshore 36.62,45.59
+step
+  talk Gelkak Gyromast##6667
+  accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
+step
+  note Find a Stormscale Beastmistress, slay her, and bring back her Rod of Deep Dominion.
+  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.6,11.8 |tip {dropsfrom}Stormscale Beastmistress
+step
+  talk Onu##3616
+  accept Mathystra Relics##951 |goto Darkshore 43.55,76.29
+step
+  talk Kerlonian Evershade##11218
+  accept The Sleeper Has Awakened##5321 |goto Darkshore 44.4,76.43
+step
+  talk Arbal##270269
+  accept Swelling Forces##98013 |goto Darkshore 43.71,76.51
+step
+  note Escort Kerlonian Evershade to Liladris Moonriver at Maestra's Post in Ashenvale.
+  collect Horn of Awakening##13536 |q 5321 |goto Darkshore 44.39,76.31 |tip {dropsfrom}Kerlonian's Chest
+step
+  note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
+  collect 5 Fine Moonstalker Pelt##5386 |q 986 |goto Darkshore 43.03,90.77 |tip {dropsfrom}Moonstalker Matriarch, Moonstalker Sire
+step
+  kill Twilight Disciple##2338 |goto Darkshore 38.21,87.21 |tip Loot the quest item here — it starts the quest.
+  accept The Powers Below##968 |goto Darkshore 38.21,87.21
+step
+  note Find and return the three pieces of Gelkak's Key to Gelkak Gyromast.
+  collect Top of Gelkak's Key##7498 |q 2098 |goto Darkshore 38.85,90.08 |tip {dropsfrom}Giant Foreststrider
+step
+  talk Terenthis##3693
+  turnin A Lost Master##986 |goto Darkshore 39.37,43.48
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Holy Diver##87760 |goto Darkshore 36.62,45.59
+step
+  talk Terenthis##3693
+  accept A Lost Master##993 |goto Darkshore 39.37,43.48
+step
+  kill Baron Marinous##270294 |goto Darkshore 59.08,22.95 |tip Loot the quest item here — it starts the quest.
+  accept Baron Marinous##98028 |goto Darkshore 59.08,22.95
+step
+  note Bring 6 Mathystra Relics to Onu at the Grove of the Ancients.
+  collect 6 Mathystra Relic##5273 |q 951 |goto Darkshore 59.95,24.02
+step
+  note Eliminate 12 Stormscale Myrmidons, 8 Stormscale Sorceresses, and 6 Stormscale Warriors for Arbal at the Grove of the Ancients.
+  kill Stormscale Myrmidon##2181 |q 98013 |goto Darkshore 58.45,21.35
+step
+  talk Gelkak Gyromast##6667
+  turnin Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
+step
+  talk Gelkak Gyromast##6667
+  accept Gyromast's Revenge##2078 |goto Darkshore 56.66,13.48
+step
+  note Find Gelkak's First Mate, the Threshwackonator 4100, and lead it back to Gelkak.
+  talk The Threshwackonator 4100##6669 |q 2078 |goto Darkshore 55.81,18.29
+step
+  talk Gelkak Gyromast##6667
+  turnin Gyromast's Revenge##2078 |goto Darkshore 56.66,13.48
+step
+  talk Onu##3616
+  turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
+step
+  talk Arbal##270269
+  turnin Swelling Forces##98013 |goto Darkshore 43.71,76.51
+step
+  talk Onu##3616
+  turnin Baron Marinous##98028 |goto Darkshore 43.55,76.29
+step
+  talk Volcor##3692
+  turnin A Lost Master##993 |goto Darkshore 45.01,85.3
+step
+  only not completed(995) not haveq(995)
+  talk Volcor##3692
+  accept Escape Through Force##994 |goto Darkshore 45.01,85.3
+step
+  only not completed(995) not haveq(995)
+  talk Terenthis##3693
+  turnin Escape Through Force##994 |goto Darkshore 39.37,43.48
+step
+  talk Sentinel Selarin##3694
+  accept Trek to Ashenvale##990 |goto Darkshore 39.28,43.46
+step
   only Warrior completed(1683,1678,1639)
   talk Elanaria##4088
   turnin The Shade of Elura##1686 |goto Darnassus 57.3,34.61 |tip {turninat}Darnassus
@@ -424,6 +511,12 @@ step
   talk Therysil##3585
   turnin Therylune's Escape##945 |goto Ashenvale 22.64,51.92 |tip {turninat}Ashenvale
 step
+  talk Gerrig Bonegrip##2786
+  turnin The Powers Below##968 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
+step
+  talk Liladris Moonriver##11219
+  turnin The Sleeper Has Awakened##5321 |goto Ashenvale 27.26,35.58 |tip {turninat}Ashenvale
+step
   talk Chief Archaeologist Greywhisker##2912
   accept Trouble In Darkshore?##730 |goto Darnassus 31.24,84.51
 step
@@ -439,38 +532,8 @@ step
   talk Erion Shadewhisper##4214
   accept Erion's Behest##2260 |goto Darnassus 34.52,25.93
 step
-  kill Twilight Disciple##2338 |goto Darkshore 38.21,87.21 |tip Loot the quest item here — it starts the quest.
-  accept The Powers Below##968 |goto Darkshore 38.21,87.21
-step
-  talk Gelkak Gyromast##6667
-  accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
-step
-  talk Kerlonian Evershade##11218
-  accept The Sleeper Has Awakened##5321 |goto Darkshore 44.4,76.43
-step
-  talk Gwennyth Bly'Leggonde##10219
-  accept Holy Diver##87760 |goto Darkshore 36.62,45.59
-step
-  talk Arbal##270269
-  accept Swelling Forces##98013 |goto Darkshore 43.71,76.51
-step
-  kill Baron Marinous##270294 |goto Darkshore 59.08,22.95 |tip Loot the quest item here — it starts the quest.
-  accept Baron Marinous##98028 |goto Darkshore 59.08,22.95
-step
   talk Gershala Nightwhisper##8997
   accept Researching the Corruption##1275 |goto Darkshore 38.33,43.04
-step
-  note Find and return the three pieces of Gelkak's Key to Gelkak Gyromast.
-  collect Top of Gelkak's Key##7498 |q 2098 |goto Darkshore 38.85,90.08 |tip {dropsfrom}Giant Foreststrider
-step
-  note Escort Kerlonian Evershade to Liladris Moonriver at Maestra's Post in Ashenvale.
-  collect Horn of Awakening##13536 |q 5321 |goto Darkshore 44.39,76.31 |tip {dropsfrom}Kerlonian's Chest
-step
-  note Find a Stormscale Beastmistress, slay her, and bring back her Rod of Deep Dominion.
-  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.6,11.8 |tip {dropsfrom}Stormscale Beastmistress
-step
-  note Eliminate 12 Stormscale Myrmidons, 8 Stormscale Sorceresses, and 6 Stormscale Warriors for Arbal at the Grove of the Ancients.
-  kill Stormscale Myrmidon##2181 |q 98013 |goto Darkshore 58.45,21.35
 step
   note Gershala Nightwhisper in Auberdine wants 8 Corrupt Brain stems.
   kill Fallenroot Satyr##4788 |goto Darkshore 31.19,92.59 |elite
@@ -491,24 +554,6 @@ step
   talk Renzik "The Shiv"##6946
   turnin Erion's Behest##2260 |goto Stormwind City 78.29,71.14 |tip {turninat}Stormwind City
 step
-  talk Gerrig Bonegrip##2786
-  turnin The Powers Below##968 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
-step
-  talk Gelkak Gyromast##6667
-  turnin Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
-step
-  talk Liladris Moonriver##11219
-  turnin The Sleeper Has Awakened##5321 |goto Ashenvale 27.26,35.58 |tip {turninat}Ashenvale
-step
-  talk Gwennyth Bly'Leggonde##10219
-  turnin Holy Diver##87760 |goto Darkshore 36.62,45.59
-step
-  talk Arbal##270269
-  turnin Swelling Forces##98013 |goto Darkshore 43.71,76.51
-step
-  talk Onu##3616
-  turnin Baron Marinous##98028 |goto Darkshore 43.55,76.29
-step
   talk Gershala Nightwhisper##8997
   turnin Researching the Corruption##1275 |goto Darkshore 38.33,43.04
 step
@@ -523,21 +568,12 @@ step
   talk Archaeologist Hollee##2913
   accept The Absent Minded Prospector##729 |goto Darkshore 37.44,41.84
 step
-  talk Gelkak Gyromast##6667
-  accept Gyromast's Revenge##2078 |goto Darkshore 56.66,13.48
-step
-  note Find Gelkak's First Mate, the Threshwackonator 4100, and lead it back to Gelkak.
-  talk The Threshwackonator 4100##6669 |q 2078 |goto Darkshore 55.81,18.29
-step
   only Warrior completed(1683,1678,1639)
   talk Mathiel##6142
   turnin Smith Mathiel##1692 |goto Darnassus 59.51,45.38 |tip {turninat}Darnassus
 step
   talk Prospector Remtravel##2917
   turnin The Absent Minded Prospector##729 |goto Darkshore 35.73,83.7
-step
-  talk Gelkak Gyromast##6667
-  turnin Gyromast's Revenge##2078 |goto Darkshore 56.66,13.48
 step
   talk Delgren the Purifier##3663
   turnin The Tower of Althalaxx##967 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale
@@ -549,12 +585,6 @@ step
   talk Prospector Remtravel##2917
   accept The Absent Minded Prospector##731 |goto Darkshore 35.73,83.7
 step
-  talk Terenthis##3693
-  accept A Lost Master##986 |goto Darkshore 39.37,43.48
-step
-  note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
-  collect 5 Fine Moonstalker Pelt##5386 |q 986 |goto Darkshore 43.03,90.77 |tip {dropsfrom}Moonstalker Matriarch, Moonstalker Sire
-step
   only Warrior completed(1683,1678,1639)
   talk Mathiel##6142
   turnin Weapons of Elunite##1693 |goto Darnassus 59.51,45.38 |tip {turninat}Darnassus
@@ -562,43 +592,14 @@ step
   talk Archaeologist Hollee##2913
   turnin The Absent Minded Prospector##731 |goto Darkshore 37.44,41.84
 step
-  talk Terenthis##3693
-  turnin A Lost Master##986 |goto Darkshore 39.37,43.48
-step
   talk Archaeologist Hollee##2913
   accept The Absent Minded Prospector##741 |goto Darkshore 37.44,41.84
-step
-  talk Terenthis##3693
-  accept A Lost Master##993 |goto Darkshore 39.37,43.48
 step
   talk Chief Archaeologist Greywhisker##2912
   turnin The Absent Minded Prospector##741 |goto Darnassus 31.24,84.51 |tip {turninat}Darnassus
 step
-  talk Volcor##3692
-  turnin A Lost Master##993 |goto Darkshore 45.01,85.3
-step
-  only not completed(995) not haveq(995)
-  talk Volcor##3692
-  accept Escape Through Force##994 |goto Darkshore 45.01,85.3
-step
-  only not completed(995) not haveq(995)
-  talk Terenthis##3693
-  turnin Escape Through Force##994 |goto Darkshore 39.37,43.48
-step
-  talk Sentinel Selarin##3694
-  accept Trek to Ashenvale##990 |goto Darkshore 39.28,43.46
-step
-  talk Onu##3616
-  accept Mathystra Relics##951 |goto Darkshore 43.55,76.29
-step
-  note Bring 6 Mathystra Relics to Onu at the Grove of the Ancients.
-  collect 6 Mathystra Relic##5273 |q 951 |goto Darkshore 59.95,24.02
-step
   talk Raene Wolfrunner##3691
   turnin Trek to Ashenvale##990 |goto Ashenvale 36.62,49.58 |tip {turninat}Ashenvale
-step
-  talk Onu##3616
-  turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
 step
   note {travel}The Barrens
   goto The Barrens 62.68,36.23

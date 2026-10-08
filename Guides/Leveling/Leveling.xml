@@ -51,7 +51,7 @@
     <Script file="Horde/Durotar_5-12.lua"/>
     <Script file="Horde/Zephras_Isle_5-12.lua"/>
     <Script file="Horde/Tirisfal_Glades_13-21.lua"/>
-    <Script file="Horde/Silverpine_Forest_11-20.lua"/>
+    <Script file="Horde/Silverpine_Forest_11-18.lua"/>
     <Script file="Horde/The_Barrens_12-20.lua"/>
     <Script file="Horde/Stonetalon_Mountains_19-26.lua"/>
     <Script file="Horde/Ashenvale_22-27.lua"/>
@@ -62,7 +62,7 @@
     <Script file="Horde/Desolace_33-39.lua"/>
     <Script file="Horde/Alterac_Mountains_34-40.lua"/>
     <Script file="Horde/Stranglethorn_Vale_34-41.lua"/>
-    <Script file="Horde/Dustwallow_Marsh_35-45.lua"/>
+    <Script file="Horde/Dustwallow_Marsh_35-43.lua"/>
     <Script file="Horde/Arathi_Highlands_34-40.lua"/>
     <Script file="Horde/Badlands_37-42.lua"/>
     <Script file="Horde/Thousand_Needles_37-41.lua"/>

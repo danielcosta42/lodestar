@@ -5,11 +5,12 @@ ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (50-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (55-60)",
+	rev = "4528ab5e",
 }, [[
 step
   only Warrior
-  talk Torm Ragetotem##3041
-  accept A Troubled Spirit##8417 |goto Thunder Bluff 57.24,87.37
+  talk Christoph Walker##4593
+  accept A Troubled Spirit##8417 |goto Undercity 46.93,15.23
 step
   only Warrior
   talk Fallen Hero of the Horde##7572
@@ -43,8 +44,14 @@ step
   talk Bengor##7643
   turnin The Missing Orders##2622 |goto Swamp of Sorrows 44.97,57.37
 step
+  talk Bengor##7643
+  accept The Swamp Talker##2623 |goto Swamp of Sorrows 44.97,57.37
+step
+  note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
+  collect Warchief's Orders##8463 |q 2623 |goto Swamp of Sorrows 62.4,84.6 |tip {dropsfrom}Swamp Talker
+step
   only completed(3373)
-  kill Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip Loot the quest item here — it starts the quest.
+  talk Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip They give you the item that starts the quest.
   accept The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
 step
   only completed(3373)
@@ -54,6 +61,21 @@ step
   only completed(3373)
   talk Itharius##5353
   turnin The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
+step
+  talk Fallen Hero of the Horde##7572
+  turnin The Swamp Talker##2623 |goto Swamp of Sorrows 34.29,66.14
+step
+  talk Fallen Hero of the Horde##7572
+  accept A Tale of Sorrow##2801 |goto Swamp of Sorrows 34.29,66.14
+step
+  note Listen to the Fallen Hero of the Horde tell his story.
+  talk Fallen Hero of the Horde##7572 |q 2801 |goto Swamp of Sorrows 34.29,66.14
+step
+  talk Fallen Hero of the Horde##7572
+  turnin A Tale of Sorrow##2801 |goto Swamp of Sorrows 34.29,66.14
+step
+  talk Fallen Hero of the Horde##7572
+  accept The Stones That Bind Us##2681 |goto Swamp of Sorrows 34.29,66.14
 step
   only Warrior
   note Kill 7 Helboar in the Blasted Lands and return to the Fallen Hero of the Horde.
@@ -74,27 +96,6 @@ step
   only Warrior
   talk Fallen Hero of the Horde##7572
   turnin War on the Shadowsworn##8424 |goto Swamp of Sorrows 34.29,66.14
-step
-  talk Bengor##7643
-  accept The Swamp Talker##2623 |goto Swamp of Sorrows 44.97,57.37
-step
-  note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
-  collect Warchief's Orders##8463 |q 2623 |goto Swamp of Sorrows 62.4,84.6 |tip {dropsfrom}Swamp Talker
-step
-  talk Fallen Hero of the Horde##7572
-  turnin The Swamp Talker##2623 |goto Swamp of Sorrows 34.29,66.14
-step
-  talk Fallen Hero of the Horde##7572
-  accept A Tale of Sorrow##2801 |goto Swamp of Sorrows 34.29,66.14
-step
-  note Listen to the Fallen Hero of the Horde tell his story.
-  talk Fallen Hero of the Horde##7572 |q 2801 |goto Swamp of Sorrows 34.29,66.14
-step
-  talk Fallen Hero of the Horde##7572
-  turnin A Tale of Sorrow##2801 |goto Swamp of Sorrows 34.29,66.14
-step
-  talk Fallen Hero of the Horde##7572
-  accept The Stones That Bind Us##2681 |goto Swamp of Sorrows 34.29,66.14
 step
   note Free nine Servants of Razelikh, three Servants of Sevine, three Servants of Allistarj, and three Servants of Grol. Return to the Fallen Hero when your task is complete. You must remain within close proximity of the stones or the process will fail.
   kill Servant of Razelikh##7668 |q 2681 |goto Blasted Lands 54.09,52.49

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warrior", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "a0f73e23",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -20,6 +21,7 @@ step
   accept Simple Rune##3106 |goto Dun Morogh 29.93,71.2
 step
   only Dwarf Warrior
+  note Read the Simple Rune and speak to Thran Khorman in Coldridge Valley.
   talk Thran Khorman##912
   turnin Simple Rune##3106 |goto Dun Morogh 28.83,67.24
 step
@@ -28,6 +30,7 @@ step
   accept Simple Memorandum##3112 |goto Dun Morogh 29.93,71.2
 step
   only Gnome Warrior
+  note Read the Simple Memorandum and speak to Thran Khorman in Coldridge Valley.
   talk Thran Khorman##912
   turnin Simple Memorandum##3112 |goto Dun Morogh 28.83,67.24
 step
@@ -36,12 +39,14 @@ step
   accept A Scribbled Letter##92479 |goto Elwynn Forest 48.92,41.61
 step
   only Human Warrior
+  note Read the Scribbled Letter and speak to Tordrin Stemblade in Northshire Abbey.
   talk Tordrin Sternblade##248415
   turnin A Scribbled Letter##92479 |goto Elwynn Forest 51.19,40.74
 step
   talk Deputy Willem##823
   accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
 step
+  note Speak with Marshal McBride.
   talk Marshal McBride##197
   turnin A Threat Within##783 |goto Elwynn Forest 48.92,41.61
 step
@@ -59,6 +64,7 @@ step
   accept Simple Letter##3100 |goto Elwynn Forest 48.92,41.61
 step
   only Human Warrior
+  note Read the Simple Letter and speak to Llane Beshere in Northshire Abbey.
   talk Llane Beshere##911
   turnin Simple Letter##3100 |goto Elwynn Forest 50.24,42.29
 step
@@ -76,12 +82,14 @@ step
   accept Simple Sigil##3116 |goto Teldrassil 58.69,44.27
 step
   only NightElf Warrior
+  note Read the Simple Sigil and speak to Alyissia in Shadowglen.
   talk Alyissia##3593
   turnin Simple Sigil##3116 |goto Teldrassil 59.64,38.44
 step
   talk Ailee Farheart##251362
   accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
 step
+  note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
   turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
 step
@@ -99,6 +107,7 @@ step
   accept The Warrior's Path##92532 |goto Zephras Isle 42.1,23.49
 step
   only Skyborne Warrior
+  note Read the Crumpled Note you've been given, then seek out Blademaster Ren inside the Thendal Village watchtower.
   talk Blademaster Ren##251964
   turnin The Warrior's Path##92532 |goto Zephras Isle 43.68,24.17
 step
@@ -107,6 +116,7 @@ step
   accept Muren Stormpike##1679 |goto Dun Morogh 47.36,52.65
 step
   only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  note Speak with Muren Stormpike.
   talk Muren Stormpike##6114
   turnin Muren Stormpike##1679 |goto Ironforge 70.77,90.27
 step
@@ -115,6 +125,7 @@ step
   accept A Warrior's Training##1638 |goto Elwynn Forest 41.09,65.77
 step
   only Warrior not completed(1639) not completed(1678) not completed(1683) not haveq(1639) not haveq(1678) not haveq(1683)
+  note Speak with Harry Burlguard.
   talk Harry Burlguard##6089
   turnin A Warrior's Training##1638 |goto Stormwind City 77.13,53.26
 step
@@ -123,6 +134,7 @@ step
   accept Elanaria##1684 |goto Teldrassil 52.91,57.2
 step
   only Warrior not completed(1639) not completed(1678) not completed(1683) not haveq(1639) not haveq(1678) not haveq(1683)
+  note Speak with Elanaria.
   talk Elanaria##4088
   turnin Elanaria##1684 |goto Darnassus 57.3,34.61
 step
@@ -137,6 +149,27 @@ step
   only NightElf Warrior not completed(1639) not completed(1678) not haveq(1639) not haveq(1678)
   talk Elanaria##4088
   turnin Vorlus Vilehoof##1683 |goto Darnassus 57.3,34.61
+step
+  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  talk Muren Stormpike##6114
+  accept Vejrek##1678 |goto Ironforge 70.77,90.27
+step
+  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  note Bring Vejrek's Head to Muren Stormpike in Ironforge.
+  collect Vejrek's Head##6799 |q 1678 |goto Dun Morogh 27.83,57.96 |tip {dropsfrom}Vejrek
+step
+  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  talk Muren Stormpike##6114
+  turnin Vejrek##1678 |goto Ironforge 70.77,90.27
+step
+  only not Dwarf not NightElf not Gnome Warrior not completed(1678) not completed(1683) not haveq(1678) not haveq(1683)
+  talk Harry Burlguard##6089
+  accept Bartleby the Drunk##1639 |goto Stormwind City 77.13,53.26
+step
+  only not Dwarf not NightElf not Gnome Warrior not completed(1678) not completed(1683) not haveq(1678) not haveq(1683)
+  note Speak with Bartleby.
+  talk Bartleby##6090
+  turnin Bartleby the Drunk##1639 |goto Stormwind City 76.76,52.55
 step
   only Warrior
   talk Elanaria##4088
@@ -155,6 +188,7 @@ step
   accept Smith Mathiel##1692 |goto Darnassus 57.3,34.61
 step
   only Warrior
+  note Bring the Case of Elunite to Smith Mathiel.
   talk Mathiel##6142
   turnin Smith Mathiel##1692 |goto Darnassus 59.51,45.38
 step
@@ -186,23 +220,12 @@ step
   talk Tormus Deepforge##6031
   turnin Grey Iron Weapons##1682 |goto Ironforge 48.64,42.48
 step
-  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
-  talk Muren Stormpike##6114
-  accept Vejrek##1678 |goto Ironforge 70.77,90.27
-step
-  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
-  note Bring Vejrek's Head to Muren Stormpike in Ironforge.
-  collect Vejrek's Head##6799 |q 1678 |goto Dun Morogh 27.83,57.96 |tip {dropsfrom}Vejrek
-step
-  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
-  talk Muren Stormpike##6114
-  turnin Vejrek##1678 |goto Ironforge 70.77,90.27
-step
   only Warrior
   talk Muren Stormpike##6114
   accept Tormus Deepforge##1680 |goto Ironforge 70.77,90.27
 step
   only Warrior
+  note Speak with Tormus Deepforge.
   talk Tormus Deepforge##6031
   turnin Tormus Deepforge##1680 |goto Ironforge 48.64,42.48
 step
@@ -223,6 +246,7 @@ step
   accept Bartleby's Mug##1665 |goto Stormwind City 76.76,52.55
 step
   only Warrior
+  note Bring Bartleby's Mug to Burlguard
   talk Harry Burlguard##6089
   turnin Bartleby's Mug##1665 |goto Stormwind City 77.13,53.26
 step
@@ -231,6 +255,7 @@ step
   accept Marshal Haggard##1666 |goto Stormwind City 77.13,53.26
 step
   only Warrior
+  note Speak with Marshal Haggard.
   talk Marshal Haggard##294
   turnin Marshal Haggard##1666 |goto Elwynn Forest 84.61,69.38
 step
@@ -245,14 +270,6 @@ step
   only Human Warrior
   talk Marshal Haggard##294
   turnin Dead-tooth Jack##1667 |goto Elwynn Forest 84.61,69.38
-step
-  only not Dwarf not NightElf not Gnome Warrior not completed(1678) not completed(1683) not haveq(1678) not haveq(1683)
-  talk Harry Burlguard##6089
-  accept Bartleby the Drunk##1639 |goto Stormwind City 77.13,53.26
-step
-  only not Dwarf not NightElf not Gnome Warrior not completed(1678) not completed(1683) not haveq(1678) not haveq(1683)
-  talk Bartleby##6090
-  turnin Bartleby the Drunk##1639 |goto Stormwind City 76.76,52.55
 step
   only Skyborne Warrior
   talk Seena Skybreaker##252377
@@ -271,6 +288,7 @@ step
   accept Yorus Barleybrew##1698 |goto Ironforge 70.34,90.65
 step
   only Warrior
+  note Speak with Yorus Barleybrew.
   talk Yorus Barleybrew##6166
   turnin Yorus Barleybrew##1698 |goto Redridge Mountains 21.49,44.72
 step
@@ -279,6 +297,7 @@ step
   accept The Rethban Gauntlet##1699 |goto Redridge Mountains 21.49,44.72
 step
   only Warrior
+  note Enter the Rethban Caverns, reach the first fork, and return to Yorus Barleybrew within the time allowed.
   talk Yorus Barleybrew##6166
   turnin The Rethban Gauntlet##1699 |goto Redridge Mountains 21.49,44.72
 step
@@ -287,6 +306,7 @@ step
   accept The Shieldsmith##1702 |goto Redridge Mountains 21.49,44.72
 step
   only Warrior
+  note Bring the Cask of Scalder to Furen Longbeard.
   talk Furen Longbeard##5413
   turnin The Shieldsmith##1702 |goto Stormwind City 64.62,37.23
 step
@@ -335,6 +355,7 @@ step
   accept Grimand Elmore##1700 |goto Stormwind City 64.62,37.23
 step
   only Human Warrior
+  note Bring Furen's Notes to Grimand Elmore.
   talk Grimand Elmore##1416
   turnin Grimand Elmore##1700 |goto Stormwind City 59.73,33.78
 step
@@ -343,6 +364,7 @@ step
   accept Mathiel##1703 |goto Stormwind City 64.62,37.23
 step
   only NightElf Warrior
+  note Bring Furen's Notes to Mathiel.
   talk Mathiel##6142
   turnin Mathiel##1703 |goto Darnassus 59.51,45.38
 step
@@ -351,6 +373,7 @@ step
   accept Klockmort Spannerspan##1704 |goto Stormwind City 64.62,37.23
 step
   only not Human not NightElf not Skyborne Warrior
+  note Bring Furen's Notes to Klockmort Spannerspan.
   talk Klockmort Spannerspan##6169
   turnin Klockmort Spannerspan##1704 |goto Ironforge 67.92,46.1
 step
@@ -399,6 +422,7 @@ step
   accept The Islander##1718 |goto Ironforge 70.34,90.65
 step
   only Warrior
+  note Speak with Klannoc Macleod.
   talk Klannoc Macleod##6236
   turnin The Islander##1718 |goto The Barrens 68.62,49.16
 step
@@ -419,6 +443,7 @@ step
   accept The Windwatcher##1791 |goto The Barrens 68.62,49.16
 step
   only Warrior
+  note Speak with Bath'rah the Windwatcher.
   talk Bath'rah the Windwatcher##6176
   turnin The Windwatcher##1791 |goto Alterac Mountains 80.5,66.92
 step
@@ -470,6 +495,7 @@ step
   accept A Troubled Spirit##8417 |goto Ironforge 70.34,90.65
 step
   only Warrior
+  note Speak with the Fallen Hero of the Horde at the entrance to the Blasted Lands.
   talk Fallen Hero of the Horde##7572
   turnin A Troubled Spirit##8417 |goto Swamp of Sorrows 34.29,66.14
 step
@@ -514,6 +540,7 @@ step
   accept Codex of Defense##7499 |goto Dire Maul - Dungeon -1,-1
 step
   only Warrior
+  note Return the book to its rightful owners.
   talk Lorekeeper Kildrath##14383
   turnin Codex of Defense##7499 |goto Dire Maul - Dungeon -1,-1
 step
@@ -532,6 +559,7 @@ step
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
+  note Bring the Sealed Blood Container to Mux Manascrambler inside Gadgetzan in Tanaris.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
@@ -574,6 +602,7 @@ step
   talk Mux Manascrambler##16014
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
+  note Bring the Extra-Dimensional Ghost Revealer to Deliana in Ironforge.
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
@@ -592,6 +621,7 @@ step
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -607,6 +637,7 @@ step
   talk Ysida Harmon##16031
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -622,6 +653,7 @@ step
   talk Anthion Harmon##16016
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -667,6 +699,7 @@ step
   talk Deliana##16013
   accept Bodley's Unfortunate Fate##8960 |goto Ironforge 43.53,52.64
 step
+  note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -768,6 +801,7 @@ step
   talk Bodley##16033
   accept Back to the Beginning##8997 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  note Speak with Deliana at The High Seat in Ironforge.
   talk Deliana##16013
   turnin Back to the Beginning##8997 |goto Ironforge 43.53,52.64
 step
@@ -814,6 +848,7 @@ step
   talk Rutgar Glyphshaper##15170
   accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment wants you to deliver the Glyphed Crystal Prism to Geologist Larksbane at the Cenarion Hold in Silithus.
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
@@ -834,313 +869,4 @@ step
   only Warrior
   talk Geologist Larksbane##15183
   turnin Armaments of War##8316 |goto Silithus 49.67,37.46
-step
-  only Warrior
-  talk Zanza the Restless##15042
-  accept Presence of Might##8184 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only Warrior
-  collect Primal Hakkari Idol##22637 |q 8184 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
-step
-  only Warrior
-  talk Zanza the Restless##15042
-  turnin Presence of Might##8184 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  accept Dreadnaught Breastplate##9034 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Breastplate if you bring him the following items: 1 Desecrated Breastplate, 25 Wartorn Plate Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Breastplate##22349 |q 9034 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  turnin Dreadnaught Breastplate##9034 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  accept Dreadnaught Legplates##9036 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Legplates if you bring him the following items: 1 Desecrated Legplates, 20 Wartorn Plate Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Legplates##22352 |q 9036 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  turnin Dreadnaught Legplates##9036 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  accept Dreadnaught Helmet##9037 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Helmet if you bring him the following items: 1 Desecrated Helmet, 15 Wartorn Plate Scraps, 5 Arcanite Bars and 1 Nexus Crystal.
-  collect Desecrated Helmet##22353 |q 9037 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  turnin Dreadnaught Helmet##9037 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  accept Dreadnaught Pauldrons##9038 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Pauldrons if you bring him the following items: 1 Desecrated Pauldrons, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Pauldrons##22354 |q 9038 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  turnin Dreadnaught Pauldrons##9038 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  accept Dreadnaught Sabatons##9039 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Sabatons if you bring him the following items: 1 Desecrated Sabatons, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Sabatons##22358 |q 9039 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  turnin Dreadnaught Sabatons##9039 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  accept Dreadnaught Gauntlets##9040 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Gauntlets if you bring him the following items: 1 Desecrated Gauntlets, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Gauntlets##22357 |q 9040 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  turnin Dreadnaught Gauntlets##9040 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  accept Dreadnaught Waistguard##9041 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Waistguard if you bring him the following items: 1 Desecrated Waistguard, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Waistguard##22356 |q 9041 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  turnin Dreadnaught Waistguard##9041 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  accept Dreadnaught Bracers##9042 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Bracers if you bring him the following items: 1 Desecrated Bracers, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 1 Nexus Crystal.
-  collect Desecrated Bracers##22355 |q 9042 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Warrior
-  talk Korfax, Champion of the Light##16112
-  turnin Dreadnaught Bracers##9042 |goto Eastern Plaguelands 71.95,48.52
-step
-  only Warrior
-  talk Windcaller Yessendra##15498
-  accept Signet of Unyielding Strength##8556 |goto Silithus 52.05,38.16
-step
-  only Warrior
-  note Bring 1 Qiraji Magisterial Ring, 2 Lambent Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8556 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
-  only Warrior
-  talk Windcaller Yessendra##15498
-  turnin Signet of Unyielding Strength##8556 |goto Silithus 52.05,38.16
-step
-  only Warrior
-  talk Warden Haro##15499
-  accept Sickle of Unyielding Strength##8558 |goto Silithus 51.14,38.94
-step
-  only Warrior
-  note Bring 1 Qiraji Spiked Hilt, 2 Alabaster Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8558 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Warrior
-  talk Warden Haro##15499
-  turnin Sickle of Unyielding Strength##8558 |goto Silithus 51.14,38.94
-step
-  only Warrior
-  talk Keyl Swiftclaw##15500
-  accept Drape of Unyielding Strength##8557 |goto Silithus 51.76,39.54
-step
-  only Warrior
-  note Bring 1 Qiraji Martial Drape, 2 Onyx Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Martial Drape##20885 |q 8557 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
-  only Warrior
-  talk Keyl Swiftclaw##15500
-  turnin Drape of Unyielding Strength##8557 |goto Silithus 51.76,39.54
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  accept Strength of Mount Mugamba##8041 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  turnin Strength of Mount Mugamba##8041 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  accept Strength of Mount Mugamba##8042 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  collect Strength of Mugamba##19574 |q 8042 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  turnin Strength of Mount Mugamba##8042 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  accept Strength of Mount Mugamba##8043 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  collect Strength of Mugamba##19575 |q 8043 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  turnin Strength of Mount Mugamba##8043 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  accept The Rage of Mugamba##8044 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  collect Strength of Mugamba##19576 |q 8044 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  turnin The Rage of Mugamba##8044 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Vindicator's Armguards##8058 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  note Bring Jin'rokh the Breaker a Primal Hakkari Armsplint. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Armsplint##19717 |q 8058 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Vindicator's Armguards##8058 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Vindicator's Belt##8078 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  note Bring Jin'rokh the Breaker a Primal Hakkari Girdle. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Girdle##19719 |q 8078 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Vindicator's Belt##8078 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Vindicator's Breastplate##8079 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Warrior
-  note Bring Jin'rokh the Breaker a Primal Hakkari Kossack. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Kossack##19723 |q 8079 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Warrior
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Vindicator's Breastplate##8079 |goto Stranglethorn Vale 15.31,14.43
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  talk Andorgos##15502
-  accept Conqueror's Spaulders##8544 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  note Bring the Qiraji Bindings of Command, 2 Idols of Night, 5 Stone Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Command##20928 |q 8544 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Warrior
-  talk Andorgos##15502
-  turnin Conqueror's Spaulders##8544 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  talk Kandrostrasz##15503
-  accept Conqueror's Greaves##8559 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  note Bring the Qiraji Bindings of Command, 2 Idols of War, 5 Ivory Scarabs and 5 Gold Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Command##20928 |q 8559 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Warrior
-  talk Kandrostrasz##15503
-  turnin Conqueror's Greaves##8559 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  talk Kandrostrasz##15503
-  accept Conqueror's Legguards##8560 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  note Bring Ouro's Intact Hide, 2 Idols of Death, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Ouro's Intact Hide##20927 |q 8560 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
-step
-  only Warrior
-  talk Kandrostrasz##15503
-  turnin Conqueror's Legguards##8560 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  talk Andorgos##15502
-  accept Conqueror's Crown##8561 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  note Bring Vek'nilash's Circlet, 2 Idols of the Sun, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'nilash's Circlet##20926 |q 8561 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'nilash
-step
-  only Warrior
-  talk Andorgos##15502
-  turnin Conqueror's Crown##8561 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  talk Vethsera##15504
-  accept Conqueror's Breastplate##8562 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Warrior
-  note Bring the the Carapace of the Old God, 2 Idols of War, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Carapace of the Old God##20929 |q 8562 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
-step
-  only Warrior
-  talk Vethsera##15504
-  turnin Conqueror's Breastplate##8562 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

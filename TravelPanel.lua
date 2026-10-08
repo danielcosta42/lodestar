@@ -32,7 +32,7 @@ end
 
 -- nome da profissão: a tradução, se houver; o ns.L devolve "[CHAVE]" para o que falta
 function TP.ProfLabel(prof)
-	return rawget(ns.L, "PROF_" .. prof:upper()) or prof
+	return rawget(ns.L, "PROF_" .. (prof:upper():gsub("%s+", "_"))) or prof
 end
 
 -- lista de profissões ao lado do painel (o botão "Treinador de profissão")

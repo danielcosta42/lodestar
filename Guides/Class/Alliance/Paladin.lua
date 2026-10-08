@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Paladin", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "f48f7b51",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -20,12 +21,14 @@ step
   accept Consecrated Rune##3107 |goto Dun Morogh 29.93,71.2
 step
   only Dwarf Paladin
+  note Read the Consecrated Rune and speak to Bromos Grummner in Coldridge Valley.
   talk Bromos Grummner##926
   turnin Consecrated Rune##3107 |goto Dun Morogh 28.83,68.33
 step
   talk Deputy Willem##823
   accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
 step
+  note Speak with Marshal McBride.
   talk Marshal McBride##197
   turnin A Threat Within##783 |goto Elwynn Forest 48.92,41.61
 step
@@ -43,6 +46,7 @@ step
   accept Consecrated Letter##3101 |goto Elwynn Forest 48.92,41.61
 step
   only Human Paladin
+  note Read the Consecrated Letter and speak to Brother Sammuel in Northshire Abbey.
   talk Brother Sammuel##925
   turnin Consecrated Letter##3101 |goto Elwynn Forest 50.43,42.12
 step
@@ -51,6 +55,7 @@ step
   accept Tome of Divinity##2997 |goto Dun Morogh 47.6,52.07
 step
   only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)
+  note Speak to Tiza Battleforge in Ironforge.
   talk Tiza Battleforge##6179
   turnin Tome of Divinity##2997 |goto Ironforge 27.63,12.18
 step
@@ -59,6 +64,7 @@ step
   accept Tome of Divinity##2998 |goto Elwynn Forest 41.1,66.04
 step
   only Human Paladin not completed(3681) not haveq(3681)
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin Tome of Divinity##2998 |goto Stormwind City 50.48,47.49
 step
@@ -75,6 +81,7 @@ step
   accept The Tome of Divinity##1646 |goto Ironforge 27.63,12.18
 step
   only Dwarf Paladin
+  note Speak to Tiza Battleforge in Ironforge.
   talk Tiza Battleforge##6179
   turnin The Tome of Divinity##1646 |goto Ironforge 27.63,12.18
 step
@@ -83,6 +90,7 @@ step
   accept The Tome of Divinity##1647 |goto Ironforge 27.63,12.18
 step
   only Dwarf Paladin
+  note Search the outer ring of Ironforge for John Turner.
   talk John Turner##6175
   turnin The Tome of Divinity##1647 |goto Ironforge 23.34,61.86
 step
@@ -103,6 +111,7 @@ step
   accept The Tome of Divinity##1778 |goto Ironforge 23.34,61.86
 step
   only Dwarf Paladin
+  note Speak to Tiza Battleforge in Ironforge.
   talk Tiza Battleforge##6179
   turnin The Tome of Divinity##1778 |goto Ironforge 27.63,12.18
 step
@@ -111,6 +120,7 @@ step
   accept The Tome of Divinity##1779 |goto Ironforge 27.63,12.18
 step
   only Dwarf Paladin
+  note Take the Symbol of Life and speak to Muiredon Battleforge in Ironforge.
   talk Muiredon Battleforge##6178
   turnin The Tome of Divinity##1779 |goto Ironforge 23.54,8.3
 step
@@ -151,6 +161,7 @@ step
   accept The Tome of Divinity##1785 |goto Ironforge 23.54,8.3
 step
   only Dwarf Paladin
+  note Speak to Tiza Battleforge in Ironforge.
   talk Tiza Battleforge##6179
   turnin The Tome of Divinity##1785 |goto Ironforge 27.63,12.18
 step
@@ -167,6 +178,7 @@ step
   accept The Tome of Divinity##1642 |goto Stormwind City 50.48,47.49
 step
   only Human Paladin
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Divinity##1642 |goto Stormwind City 50.48,47.49
 step
@@ -175,6 +187,7 @@ step
   accept The Tome of Divinity##1643 |goto Stormwind City 50.48,47.49
 step
   only Human Paladin
+  note Search the Trade District of Stormwind for Stephanie Turner.
   talk Stephanie Turner##6174
   turnin The Tome of Divinity##1643 |goto Stormwind City 63.84,72.21
 step
@@ -195,6 +208,7 @@ step
   accept The Tome of Divinity##1780 |goto Stormwind City 63.84,72.21
 step
   only Human Paladin
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Divinity##1780 |goto Stormwind City 50.48,47.49
 step
@@ -203,6 +217,7 @@ step
   accept The Tome of Divinity##1781 |goto Stormwind City 50.48,47.49
 step
   only Human Paladin
+  note Take the Symbol of Life to Gazin Tenorm in Stormwind.
   talk Gazin Tenorm##6173
   turnin The Tome of Divinity##1781 |goto Stormwind City 49.53,44.99
 step
@@ -243,6 +258,7 @@ step
   accept The Tome of Divinity##1788 |goto Stormwind City 49.53,44.99
 step
   only Human Paladin
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Divinity##1788 |goto Stormwind City 50.48,47.49
 step
@@ -292,6 +308,7 @@ step
   accept The Tome of Valor##1649 |goto Stormwind City 50.48,47.49
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Valor##1649 |goto Stormwind City 50.48,47.49
 step
@@ -300,6 +317,7 @@ step
   accept The Tome of Valor##1650 |goto Stormwind City 50.48,47.49
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Find Daphne Stilwell in Westfall.
   talk Daphne Stilwell##6182
   turnin The Tome of Valor##1650 |goto Westfall 41.69,89.24
 step
@@ -308,6 +326,7 @@ step
   accept The Tome of Valor##1651 |goto Westfall 41.69,89.24
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Defend Daphne Stilwell from the Defias attack.
   talk Daphne Stilwell##6182
   turnin The Tome of Valor##1651 |goto Westfall 41.69,89.24
 step
@@ -316,6 +335,7 @@ step
   accept The Tome of Valor##1652 |goto Westfall 41.69,89.24
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Valor##1652 |goto Stormwind City 50.48,47.49
 step
@@ -324,6 +344,7 @@ step
   accept The Test of Righteousness##1653 |goto Stormwind City 50.48,47.49
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak to Jordan Stilwell in Ironforge
   talk Jordan Stilwell##6181
   turnin The Test of Righteousness##1653 |goto Dun Morogh 52.49,36.92
 step
@@ -344,6 +365,7 @@ step
   accept The Test of Righteousness##1806 |goto Dun Morogh 52.49,36.92
 step
   only Dwarf Paladin
+  note Wait for Jordan Stilwell to finish forging a weapon for you.
   talk Jordan Stilwell##6181
   turnin The Test of Righteousness##1806 |goto Dun Morogh 52.49,36.92
 step
@@ -352,6 +374,7 @@ step
   accept The Tome of Nobility##4485 |goto Ironforge 27.63,12.18
 step
   only Dwarf Paladin not completed(1661) not completed(4486) not haveq(1661) not haveq(4486)
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Nobility##4485 |goto Stormwind City 50.48,47.49
 step
@@ -360,6 +383,7 @@ step
   accept The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
 step
   only Human Paladin not completed(4485) not completed(4486) not haveq(4485) not haveq(4486)
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
 step
@@ -368,6 +392,7 @@ step
   accept Chillwind Point##8415 |goto Stormwind City 48.43,50.22
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak to Commander Ashlam Valorfist at Chillwind Camp.
   talk Commander Ashlam Valorfist##10838
   turnin Chillwind Point##8415 |goto Western Plaguelands 42.7,84.03
 step
@@ -388,6 +413,7 @@ step
   accept Inert Scourgestones##8416 |goto Western Plaguelands 52.05,83.27
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Bring the Inert Scourgestone to Commander Ashlan Valorfist in Chillwind Point.
   talk Commander Ashlam Valorfist##10838
   turnin Inert Scourgestones##8416 |goto Western Plaguelands 42.7,84.03
 step
@@ -408,6 +434,7 @@ step
   accept The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
   only Paladin
+  note Return the book to its rightful owners.
   talk Lorekeeper Mykos##14382
   turnin The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
@@ -426,6 +453,7 @@ step
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
+  note Bring the Sealed Blood Container to Mux Manascrambler inside Gadgetzan in Tanaris.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
@@ -468,6 +496,7 @@ step
   talk Mux Manascrambler##16014
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
+  note Bring the Extra-Dimensional Ghost Revealer to Deliana in Ironforge.
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
@@ -486,6 +515,7 @@ step
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -501,6 +531,7 @@ step
   talk Ysida Harmon##16031
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -516,6 +547,7 @@ step
   talk Anthion Harmon##16016
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -561,6 +593,7 @@ step
   talk Deliana##16013
   accept Bodley's Unfortunate Fate##8960 |goto Ironforge 43.53,52.64
 step
+  note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -662,6 +695,7 @@ step
   talk Bodley##16033
   accept Back to the Beginning##8997 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  note Speak with Deliana at The High Seat in Ironforge.
   talk Deliana##16013
   turnin Back to the Beginning##8997 |goto Ironforge 43.53,52.64
 step
@@ -708,6 +742,7 @@ step
   talk Rutgar Glyphshaper##15170
   accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment wants you to deliver the Glyphed Crystal Prism to Geologist Larksbane at the Cenarion Hold in Silithus.
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
@@ -729,134 +764,6 @@ step
   talk Geologist Larksbane##15183
   turnin Armaments of War##8376 |goto Silithus 49.67,37.46
 step
-  only Paladin
-  talk Zanza the Restless##15042
-  accept Syncretist's Sigil##8185 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only Paladin
-  collect Primal Hakkari Idol##22637 |q 8185 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
-step
-  only Paladin
-  talk Zanza the Restless##15042
-  turnin Syncretist's Sigil##8185 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Tunic##9043 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Tunic if you bring him the following: 1 Desecrated Tunic, 25 Wartorn Plate Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Tunic##22350 |q 9043 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Tunic##9043 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Legguards##9044 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Legguards if you bring him the following: 1 Desecrated Legguards, 20 Wartorn Plate Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Legguards##22359 |q 9044 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Legguards##9044 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Headpiece##9045 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Headpiece if you bring him the following: 1 Desecrated Headpiece, 15 Wartorn Plate Scraps, 5 Arcanite Bars and 2 Cured Rugged Hides.
-  collect Desecrated Headpiece##22360 |q 9045 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Headpiece##9045 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Spaulders##9046 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Spaulders##22361 |q 9046 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Spaulders##9046 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Boots##9047 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Boots##22365 |q 9047 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Boots##9047 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Handguards##9048 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Handguards##22364 |q 9048 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Handguards##9048 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Girdle##9049 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9049 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Girdle##9049 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  accept Redemption Wristguards##9050 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Paladin
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9050 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Paladin
-  talk Commander Eligor Dawnbringer##16115
-  turnin Redemption Wristguards##9050 |goto Eastern Plaguelands 71.72,48.59
-step
   only not NightElf not Gnome not Skyborne Paladin
   talk Merideth Carlson##2357
   accept Manna-Enriched Horse Feed##7645 |goto Hillsbrad Foothills 52.19,55.48
@@ -874,6 +781,7 @@ step
   accept Lord Grayson Shadowbreaker##7670 |goto Ironforge 23.13,6.14
 step
   only Paladin not completed(7638) not haveq(7638)
+  note Speak with Lord Grayson Shadowbreaker in Stormwind's Cathedral District.
   talk Lord Grayson Shadowbreaker##928
   turnin Lord Grayson Shadowbreaker##7670 |goto Stormwind City 48.43,50.22
 step
@@ -882,6 +790,7 @@ step
   accept Lord Grayson Shadowbreaker##7638 |goto Stormwind City 50.48,47.49
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak with Lord Grayson Shadowbreaker in Stormwind's Cathedral District.
   talk Lord Grayson Shadowbreaker##928
   turnin Lord Grayson Shadowbreaker##7638 |goto Stormwind City 48.43,50.22
 step
@@ -890,6 +799,7 @@ step
   accept Emphasis on Sacrifice##7637 |goto Stormwind City 48.43,50.22
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Travel to Ironforge and get High Priest Rohan's Exorcism Censer. You will need to make a donation of 150 gold in order to secure it.
   talk High Priest Rohan##11406
   turnin Emphasis on Sacrifice##7637 |goto Ironforge 24.73,8.16
 step
@@ -898,6 +808,7 @@ step
   accept To Show Due Judgment##7639 |goto Ironforge 24.73,8.16
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Return the Exorcism Censer to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
   talk Lord Grayson Shadowbreaker##928
   turnin To Show Due Judgment##7639 |goto Stormwind City 48.43,50.22
 step
@@ -918,6 +829,7 @@ step
   accept The Work of Grimand Elmore##7641 |goto Stormwind City 48.43,50.22
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Speak with Grimand Elmore in Stormwind's Dwarven District.
   talk Grimand Elmore##1416
   turnin The Work of Grimand Elmore##7641 |goto Stormwind City 59.73,33.78
 step
@@ -938,44 +850,9 @@ step
   accept Grimand's Finest Work##7648 |goto Stormwind City 59.73,33.78
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Take the Arcanite Barding to Lord Grayson Shadowbreaker in Stormwind's Cathedral District for his inspection.
   talk Lord Grayson Shadowbreaker##928
   turnin Grimand's Finest Work##7648 |goto Stormwind City 48.43,50.22
-step
-  only Paladin
-  talk Windcaller Yessendra##15498
-  accept Ring of Eternal Justice##8703 |goto Silithus 52.05,38.16
-step
-  only Paladin
-  note Bring 1 Qiraji Magisterial Ring, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8703 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
-  only Paladin
-  talk Windcaller Yessendra##15498
-  turnin Ring of Eternal Justice##8703 |goto Silithus 52.05,38.16
-step
-  only Paladin
-  talk Warden Haro##15499
-  accept Blade of Eternal Justice##8711 |goto Silithus 51.14,38.94
-step
-  only Paladin
-  note Bring 1 Qiraji Spiked Hilt, 2 Amber Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Spiked Hilt##20886 |q 8711 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Paladin
-  talk Warden Haro##15499
-  turnin Blade of Eternal Justice##8711 |goto Silithus 51.14,38.94
-step
-  only Paladin
-  talk Keyl Swiftclaw##15500
-  accept Cape of Eternal Justice##8695 |goto Silithus 51.76,39.54
-step
-  only Paladin
-  note Bring 1 Qiraji Regal Drape, 2 Obsidian Idols, 5 Gold Scarabs and 5 Clay Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8695 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
-  only Paladin
-  talk Keyl Swiftclaw##15500
-  turnin Cape of Eternal Justice##8695 |goto Silithus 51.76,39.54
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk Lord Grayson Shadowbreaker##928
@@ -994,6 +871,7 @@ step
   accept Blessed Arcanite Barding##7644 |goto Dire Maul - Dungeon -1,-1
 step
   only not NightElf not Gnome not Skyborne Paladin
+  note Return with the Blessed Arcanite Barding to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
   talk Lord Grayson Shadowbreaker##928
   turnin Blessed Arcanite Barding##7644 |goto Stormwind City 48.43,50.22
 step
@@ -1028,149 +906,4 @@ step
   only not NightElf not Gnome not Skyborne Paladin
   talk Lord Grayson Shadowbreaker##928
   turnin Again Into the Great Ossuary##7666 |goto Stormwind City 48.43,50.22
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept The Heathen's Brand##8045 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin The Heathen's Brand##8045 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept The Heathen's Brand##8046 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  collect Heathen's Brand##19579 |q 8046 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin The Heathen's Brand##8046 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept The Heathen's Brand##8047 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  collect Heathen's Brand##19585 |q 8047 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin The Heathen's Brand##8047 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept The Hero's Brand##8048 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  collect Heathen's Brand##19586 |q 8048 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin The Hero's Brand##8048 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Freethinker's Armguards##8053 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  note Bring Jin'rokh the Breaker Primal Hakkari Bindings. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Bindings##19716 |q 8053 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Freethinker's Armguards##8053 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Freethinker's Belt##8054 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  note Bring Jin'rokh the Breaker a Primal Hakkari Shawl. You must also have a reputation equal to or greater than Honored with the Zandalar Tribe.
-  collect Primal Hakkari Shawl##19721 |q 8054 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Freethinker's Belt##8054 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  accept Paragons of Power: The Freethinker's Breastplate##8055 |goto Stranglethorn Vale 15.31,14.43
-step
-  only Paladin
-  note Bring Jin'rokh the Breaker a Primal Hakkari Tabard. You must also have a reputation equal to or greater than Revered with the Zandalar Tribe.
-  collect Primal Hakkari Tabard##19722 |q 8055 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Paladin
-  talk Jin'rokh the Breaker##14902
-  turnin Paragons of Power: The Freethinker's Breastplate##8055 |goto Stranglethorn Vale 15.31,14.43
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  talk Vethsera##15504
-  accept Avenger's Breastplate##8627 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  note Bring the the Carapace of the Old God, 2 Idols of the Sage, 5 Silver Scarabs and 5 Bone Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Carapace of the Old God##20929 |q 8627 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
-step
-  only Paladin
-  talk Vethsera##15504
-  turnin Avenger's Breastplate##8627 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  talk Andorgos##15502
-  accept Avenger's Crown##8628 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  note Bring Vek'lor's Diadem, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Crystal Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'lor's Diadem##20930 |q 8628 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'lor
-step
-  only Paladin
-  talk Andorgos##15502
-  turnin Avenger's Crown##8628 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  talk Kandrostrasz##15503
-  accept Avenger's Legguards##8629 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  note Bring the Skin of the Great Sandworm, 2 Idols of Strife, 5 Bronze Scarabs and 5 Ivory Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Skin of the Great Sandworm##20931 |q 8629 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
-step
-  only Paladin
-  talk Kandrostrasz##15503
-  turnin Avenger's Legguards##8629 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  talk Andorgos##15502
-  accept Avenger's Pauldrons##8630 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of Life, 5 Crystal Scarabs and 5 Gold Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Dominance##20932 |q 8630 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Paladin
-  talk Andorgos##15502
-  turnin Avenger's Pauldrons##8630 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  talk Kandrostrasz##15503
-  accept Avenger's Greaves##8655 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Paladin
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of the Sage, 5 Bronze Scarabs and 5 Clay Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Dominance##20932 |q 8655 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Paladin
-  talk Kandrostrasz##15503
-  turnin Avenger's Greaves##8655 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

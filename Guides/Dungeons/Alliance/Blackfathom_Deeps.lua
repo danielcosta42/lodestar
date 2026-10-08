@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackfathom Deeps", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "1b44dd9c",
 }, [[
 step
   talk Gerrig Bonegrip##2786
@@ -34,6 +35,7 @@ step
   talk Gershala Nightwhisper##8997
   turnin Researching the Corruption##1275 |goto Darkshore 38.33,43.04
 step
+  note Seek out Argent Guard Thaelrid in Blackfathom Deeps.
   talk Argent Guard Thaelrid##4787
   turnin In Search of Thaelrid##1198 |goto Blackfathom Deeps - Dungeon -1,-1
 step

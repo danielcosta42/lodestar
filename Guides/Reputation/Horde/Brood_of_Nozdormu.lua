@@ -4,11 +4,13 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Brood of Nozdormu", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "bb0cdef1",
 }, [[
 step
   kill Ossirian the Unscarred##15339 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.
   accept The Fall of Ossirian##8791 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Deliver the Head of Ossirian the Unscarred to Commander Mar'alith at Cenarion Hold in Silithus.
   talk Commander Mar'alith##15181
   turnin The Fall of Ossirian##8791 |goto Silithus 49.2,34.18
 step
@@ -53,17 +55,20 @@ step
   talk Baristolth of the Shifting Sands##15180
   accept Anachronos##8303 |goto Silithus 49.45,36.45
 step
+  note Seek out Anachronos at the Caverns of Time in Tanaris.
   talk Anachronos##15192
   turnin Anachronos##8303 |goto Tanaris 65.27,50.03
 step
   talk Anachronos##15192
   accept Long Forgotten Memories##8305 |goto Tanaris 65.27,50.03
 step
+  note Locate the Crystalline Tear in Silithus and gaze into its depths.
   turnin Long Forgotten Memories##8305 |goto Silithus 28.68,89.14
 step
   click Crystalline Tear##180633
   accept A Pawn on the Eternal Board##8519 |goto Silithus 28.68,89.14
 step
+  note Learn all that you can of the past, then speak with Anachronos at the Caverns of Time in Tanaris.
   talk Anachronos##15192
   turnin A Pawn on the Eternal Board##8519 |goto Tanaris 65.27,50.03
 step
@@ -76,6 +81,7 @@ step
   talk Spirit of Azuregos##15481
   accept Azuregos's Magical Ledger##8575 |goto Azshara 52.98,81.73
 step
+  note Deliver Azuregos's Magical Ledger to Narain Soothfancy in Tanaris.
   talk Narain Soothfancy##11811
   turnin Azuregos's Magical Ledger##8575 |goto Tanaris 65.24,18.58
 step
@@ -88,6 +94,7 @@ step
   talk Narain Soothfancy##11811
   accept Stewvul, Ex-B.F.F.##8577 |goto Tanaris 65.24,18.58
 step
+  note Narain Soothfancy wants you to find his ex-best friend forever (BFF), Stewvul, and take back the scrying goggles that Stewvul stole from him.
   turnin Stewvul, Ex-B.F.F.##8577 |goto Silverpine Forest 46.19,86.68
 step
   click Inconspicuous Crate##180642
@@ -111,6 +118,7 @@ step
   talk Narain Soothfancy##11811
   accept Never Ask Me About My Business##8584 |goto Tanaris 65.24,18.58
 step
+  note Narain Soothfancy in Tanaris wants you to speak with Dirge Quikcleave in Gadgetzan.
   talk Dirge Quikcleave##8125
   turnin Never Ask Me About My Business##8584 |goto Tanaris 52.63,28.11
 step
@@ -136,17 +144,20 @@ step
   talk Dirge Quikcleave##8125
   accept Return to Narain##8587 |goto Tanaris 52.63,28.11
 step
+  note Deliver the 500 Pound Chicken to Narain Soothfancy in Tanaris.
   talk Narain Soothfancy##11811
   turnin Return to Narain##8587 |goto Tanaris 65.24,18.58
 step
   talk Narain Soothfancy##11811
   accept Draconic for Dummies##8597 |goto Tanaris 65.24,18.58
 step
+  note Find Narain Soothfancy's book, buried on an island in the South Seas.
   turnin Draconic for Dummies##8597 |goto Azeroth - the world map 29.99,89.15
 step
   click Freshly Dug Dirt##180652
   accept rAnS0m##8598 |goto Azeroth - the world map 29.99,89.15
 step
+  note Return the Ransom Letter to Narain Soothfancy in Tanaris.
   talk Narain Soothfancy##11811
   turnin rAnS0m##8598 |goto Tanaris 65.24,18.58
 step
@@ -241,6 +252,7 @@ step
   talk Meridith the Mermaiden##15526
   accept Love Song for Narain##8599 |goto Tanaris 59.43,96.05
 step
+  note Take Meridith's Love Letter to Narain Soothfancy in Tanaris.
   talk Narain Soothfancy##11811
   turnin Love Song for Narain##8599 |goto Tanaris 65.24,18.58
 step
@@ -743,6 +755,7 @@ step
   kill Vekniss Soldier##15229 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
   accept Secrets of the Qiraji##8784 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Take the Ancient Qiraji Artifact to the dragons hiding near the entrance of the temple.
   talk Andorgos##15502
   turnin Secrets of the Qiraji##8784 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
@@ -767,24 +780,28 @@ step
   kill C'Thun##15727 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.
   accept C'Thun's Legacy##8801 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Take the Eye of C'Thun to Caelastrasz in the Temple of Ahn'Qiraj.
   talk Caelestrasz##15379
   turnin C'Thun's Legacy##8801 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
   talk Caelestrasz##15379
   accept The Savior of Kalimdor##8802 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Take the Eye of C'Thun to Anachronos at the Caverns of Time.
   talk Anachronos##15192
   turnin The Savior of Kalimdor##8802 |goto Tanaris 65.27,50.03
 step
   talk Malfurion Stormrage##15362
   accept Eranikus, Tyrant of the Dream##8733 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
+  note Travel to the continent of Teldrassil and find Malfurion's agent somewhere outside the walls of Darnassus.
   talk Forest Wisp##15624
   turnin Eranikus, Tyrant of the Dream##8733 |goto Teldrassil 37.55,47.92
 step
   talk Forest Wisp##15624
   accept Tyrande and Remulos##8734 |goto Teldrassil 37.55,47.92
 step
+  note Travel to the Moonglade and speak to Keeper Remulos.
   talk Keeper Remulos##11832
   turnin Tyrande and Remulos##8734 |goto Moonglade 36.18,41.79
 step
@@ -801,12 +818,14 @@ step
   talk Keeper Remulos##11832
   accept The Nightmare Manifests##8736 |goto Moonglade 36.18,41.79
 step
+  note Defend Nighthaven from Eranikus. Do not let Keeper Remulos perish. Do not slay Eranikus. Defend yourself. Await Tyrande.
   talk Keeper Remulos##11832
   turnin The Nightmare Manifests##8736 |goto Moonglade 36.18,41.79
 step
   talk Keeper Remulos##11832
   accept The Champion Returns##8741 |goto Moonglade 36.18,41.79
 step
+  note Take the Green Scepter Shard to Anachronos at the Caverns of Time in Tanaris.
   talk Anachronos##15192
   turnin The Champion Returns##8741 |goto Tanaris 65.27,50.03
 step

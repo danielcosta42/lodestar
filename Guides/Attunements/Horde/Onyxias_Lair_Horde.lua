@@ -4,9 +4,10 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Horde/Onyxia's Lair (Horde)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "6fbb3aac",
 }, [[
 step
-  kill Warlord Goretooth##9077 |goto Badlands 5.81,47.52 |tip Loot the quest item here — it starts the quest.
+  talk Warlord Goretooth##9077
   accept Warlord's Command##4903 |goto Badlands 5.81,47.52
 step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.
@@ -18,6 +19,7 @@ step
   talk Warlord Goretooth##9077
   accept Eitrigg's Wisdom##4941 |goto Badlands 5.81,47.52
 step
+  note Speak with Eitrigg in Orgrimmar. When you have discussed matters with Eitrigg, seek council from Thrall.
   talk Thrall##4949
   turnin Eitrigg's Wisdom##4941 |goto Orgrimmar 31.73,37.82
 step
@@ -33,18 +35,21 @@ step
   talk Thrall##4949
   accept What the Wind Carries##6566 |goto Orgrimmar 31.73,37.82
 step
+  note Listen to Thrall.
   talk Thrall##4949
   turnin What the Wind Carries##6566 |goto Orgrimmar 31.73,37.82
 step
   talk Thrall##4949
   accept The Champion of the Horde##6567 |goto Orgrimmar 31.73,37.82
 step
+  note Seek out Rexxar. The Warchief has instructed you as to his whereabouts. Search the paths of Desolace, between the Stonetalon Mountains and Feralas.
   talk Rexxar##10182
   turnin The Champion of the Horde##6567 |goto Desolace 54,2
 step
   talk Rexxar##10182
   accept The Testament of Rexxar##6568 |goto Desolace 54,2
 step
+  note Deliver Rexxar's Letter to Myranda the Hag in the Western Plaguelands.
   talk Myranda the Hag##11872
   turnin The Testament of Rexxar##6568 |goto Western Plaguelands 50.79,77.85
 step
@@ -60,6 +65,7 @@ step
   talk Myranda the Hag##11872
   accept Emberstrife##6570 |goto Western Plaguelands 50.79,77.85
 step
+  note Travel to the Wyrmbog in Dustwallow Marsh and seek out Emberstrife's Den. Once inside, wear the Amulet of Draconic Subversion and speak with Emberstrife.
   talk Emberstrife##10321
   turnin Emberstrife##6570 |goto Dustwallow Marsh 56.66,87.72
 step
@@ -106,6 +112,7 @@ step
   talk Emberstrife##10321
   accept Ascension...##6601 |goto Dustwallow Marsh 56.66,87.72
 step
+  note It would appear as if the charade is over. You know that the Amulet of Draconic Subversion that Myranda the Hag created for you will not function inside Blackrock Spire. Perhaps you should find Rexxar and explain your predicament. Show him the Dull Drakefire Amulet. Hopefully he will know what to do next.
   talk Rexxar##10182
   turnin Ascension...##6601 |goto Desolace 54,2
 step

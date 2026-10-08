@@ -459,7 +459,7 @@ mig.fire = function() end
 mig.char.openGuides = { MK }
 mig.char.currentGuide = MK
 mig.char.steps = { [MK] = 9 }
-mig.char.completedGoals = { ["velho 1 1"] = true }
+mig.char.completedGoals = { [MK .. " 4 1"] = true }
 playerLevel = 1
 mig.handlers._READY()
 check(mig.char.currentStep == 3, "migração recua ao passo depois do último concluído (" .. mig.char.currentStep .. ")")
@@ -467,7 +467,87 @@ check(next(mig.char.completedGoals) == nil, "marcas manuais com o número velho 
 mig.char.steps[MK], mig.char.currentStep = 5, 5
 mig.handlers._READY()
 check(mig.char.currentStep == 5, "migra uma vez só")
+-- guia regerado (outra ordem): o passo salvo recua de novo, e só as marcas dele saem
+mig:RegisterGuide(MK, { faction = "Alliance" }, [[
+step
+  turnin A##501
+step
+  turnin B##502
+step
+  turnin D##503
+step
+  turnin E##504
+step
+  note fim
+]])
+mig.currentGuide = nil
+mig.char.completedGoals = { [MK .. "\0005\0001"] = true, ["Outro\0001\0001"] = true }
+mig.handlers._READY()
+check(mig.char.currentStep == 3, "conteúdo novo: recua ao passo depois do último concluído (" .. mig.char.currentStep .. ")")
+check(mig.char.completedGoals["Outro\0001\0001"] and not mig.char.completedGoals[MK .. "\0005\0001"],
+	"saem só as marcas do guia que mudou")
 C_QuestLog.IsQuestFlaggedCompleted = function() return false end
+
+-- guia aberto nesta versão guarda a assinatura: o login seguinte não mexe no passo
+local nov = load_addon(16001)
+nov.fire = function() end
+nov:RegisterGuide("Leveling/Alliance/Nov (1-3)", { faction = "Alliance" }, [[
+step
+  note a
+step
+  note b
+step
+  note c
+]])
+nov:LoadGuide("Leveling/Alliance/Nov (1-3)")
+nov.char.steps["Leveling/Alliance/Nov (1-3)"], nov.char.currentStep = 3, 3
+nov.handlers._READY()
+check(nov.char.currentStep == 3, "guia sem mudança não é migrado (" .. nov.char.currentStep .. ")")
+
+-- reordenar sem mudar o tamanho do texto: vale a revisão que o gerador grava no meta
+local ro = load_addon(16001)
+ro.fire = function() end
+local RK = "Leveling/Alliance/Ro (1-3)"
+ro:RegisterGuide(RK, { faction = "Alliance", rev = "aaaa" }, "step\n  note a\nstep\n  note b\nstep\n  note c\n")
+ro:LoadGuide(RK)
+ro.char.steps[RK], ro.char.currentStep = 3, 3
+ro:RegisterGuide(RK, { faction = "Alliance", rev = "bbbb" }, "step\n  note c\nstep\n  note b\nstep\n  note a\n")
+ro.currentGuide = nil
+ro.handlers._READY()
+check(ro.char.currentStep == 1, "revisão nova, mesmo tamanho: recua (" .. ro.char.currentStep .. ")")
+
+-- save antigo (sem assinatura): só os guias de leveling mudaram; o de reputação, com
+-- entregas repetíveis que nunca contam como feitas, fica onde estava
+local rep = load_addon(16001)
+rep.fire = function() end
+local PK = "Reputation/Argent Dawn"
+rep:RegisterGuide(PK, {}, "step\n  turnin Rep##901\nstep\n  turnin Rep##902\nstep\n  turnin Rep##903\n")
+rep.char.openGuides, rep.char.currentGuide, rep.char.steps = { PK }, PK, { [PK] = 3 }
+rep.handlers._READY()
+check(rep.char.currentStep == 3, "guia que não é de leveling não recua no save antigo (" .. rep.char.currentStep .. ")")
+
+-- guia regerado com outra faixa no título: a aba e o passo seguem para o da mesma zona
+local ren = load_addon(16001)
+ren.fire = function() end
+for _, k in ipairs({ "Leveling/Horde/Silverpine Forest (11-18)", "Leveling/Horde/Silverpine Forest (40-45)" }) do
+	ren:RegisterGuide(k, { faction = "Horde" }, "step\n  note a\nstep\n  note b\nstep\n  note c\n")
+end
+ren.char.openGuides = { "Leveling/Horde/Silverpine Forest (11-20)" }
+ren.char.currentGuide = "Leveling/Horde/Silverpine Forest (11-20)"
+ren.char.steps = { ["Leveling/Horde/Silverpine Forest (11-20)"] = 2 }
+ren.handlers._READY()
+check(ren.char.currentGuide == "Leveling/Horde/Silverpine Forest (11-18)",
+	"aba de guia renomeado segue para o da mesma zona e faixa (" .. tostring(ren.char.currentGuide) .. ")")
+check(#ren.char.openGuides == 1 and ren.char.steps["Leveling/Horde/Silverpine Forest (11-20)"] == nil,
+	"a chave velha some")
+
+-- nome da zona no idioma do cliente: uma função só, no Compat
+local zm, cm = fe.zoneUiMap, C_Map
+fe.zoneUiMap = { ["Elwynn Forest"] = 1429 }
+C_Map = { GetMapInfo = function(id) return id == 1429 and { name = "Floresta de Elwynn" } or nil end }
+check(fe.LocalizedZone("Elwynn Forest") == "Floresta de Elwynn", "zona traduzida pelo mapa do cliente")
+check(fe.LocalizedZone("Lugar Nenhum") == "Lugar Nenhum", "zona fora do mapa fica como veio")
+fe.zoneUiMap, C_Map = zm, cm
 
 -- ── identidade de unidade / Secret Values ───────────────────────────────────
 issecretvalue = function(v) return v == "SECRETO" end

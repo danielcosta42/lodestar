@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Razorfen Kraul", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "37ca6d5c",
 }, [[
 step
   talk Mebok Mizzyrix##3446
@@ -33,6 +34,7 @@ step
   talk Mebok Mizzyrix##3446
   turnin Blueleaf Tubers##1221 |goto The Barrens 62.37,37.62
 step
+  note Escort Willix the Importer out of Razorfen Kraul.
   talk Willix the Importer##4508
   turnin Willix the Importer##1144 |goto Razorfen Kraul - Dungeon -1,-1
 step
@@ -42,6 +44,7 @@ step
   talk Auld Stonespire##4451
   turnin A Vengeful Fate##1102 |goto Thunder Bluff 35.97,59.92
 step
+  note Take the Small Scroll to Varimathras in the Undercity.
   talk Varimathras##2425
   turnin An Unholy Alliance##6522 |goto Undercity 56.25,92.2
 ]])

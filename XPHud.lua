@@ -50,17 +50,15 @@ local function fmtTime(sec)
 	return h > 0 and ("%dh%02d"):format(h, m) or ("%dm"):format(m)
 end
 
--- XP p/ passar de cada nível (1..69). 1-59 = Classic exato; 60-69 = TBC (aprox.).
+-- XP p/ passar de cada nível (1..59), Classic.
 local XP_TO_NEXT = {
 	400,900,1400,2100,2800,3600,4500,5400,6500,7600,8700,9800,11000,12300,13600,
 	15000,16400,17800,19300,20800,22400,24000,25500,27200,28900,30500,32200,33900,
 	36300,38800,41600,44600,48000,51400,55000,58700,62400,66200,70200,74300,78500,
 	82800,87100,91600,96300,101000,105800,110700,115700,120900,126100,131500,137000,
 	142500,148200,154000,159900,165800,172000,                                  -- 1..59
-	290000,322900,359600,400300,445300,494700,548800,607900,672200,742000,      -- 60..69 (TBC)
 }
--- tempo estimado até o nível máximo DESTE cliente (70 no Anniversary, o que o
--- Forever disser — o beta está capado em 30): resto do nível atual + os próximos.
+-- tempo estimado até o nível máximo do cliente: resto do nível atual + os próximos.
 local MAXLVL = ns.Client.maxLevel
 local function etaToMax(xph, lvl, curXP, curMax)
 	if not xph or xph <= 0 or lvl >= MAXLVL then return nil end

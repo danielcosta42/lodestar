@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Zul'Farrak", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "23105c6d",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -81,12 +82,14 @@ step
   talk Yeh'kinya##8579
   turnin The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36
 step
+  note Check the top of the Altar of Zul, then return to Gryphon Master Talonaxe.
   talk Gryphon Master Talonaxe##5636
   turnin The Altar of Zul##2989 |goto The Hinterlands 9.75,44.47
 step
   talk Gryphon Master Talonaxe##5636
   accept Thadius Grimshade##2990 |goto The Hinterlands 9.75,44.47
 step
+  note Bring Sharpbeak's Feather to Thadius Grimshade in the Blasted Lands.
   talk Thadius Grimshade##8022
   turnin Thadius Grimshade##2990 |goto Blasted Lands 66.9,19.47
 step

@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (53-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (55-57)",
+	rev = "6e3ca934",
 }, [[
 step
   only not completed(5090) not completed(5091) not haveq(5090) not haveq(5091)
@@ -254,13 +255,15 @@ step
   talk Commander Ashlam Valorfist##10838
   turnin Mission Accomplished!##5237 |goto Western Plaguelands 42.7,84.03
 step
-  only not completed(5601) not haveq(5601)
-  talk Pamela Redpath##10926
-  turnin Little Pamela##5142 |goto Eastern Plaguelands 31.15,77.98 |tip {turninat}Eastern Plaguelands
-step
   only completed(5162)
   talk Jeziba##10976
   accept Catalogue of the Wayward##5164 |goto Western Plaguelands 39.37,66.78
+step
+  only completed(5162)
+  turnin Catalogue of the Wayward##5164 |goto Western Plaguelands 39.35,66.6
+step
+  talk Commander Ashlam Valorfist##10838
+  accept Alas, Andorhal##211 |goto Western Plaguelands 42.7,84.03
 step
   only not completed(5504) not completed(5513) not haveq(5504) not haveq(5513)
   talk Argent Quartermaster Lightspark##10857
@@ -282,6 +285,40 @@ step
   talk Alchemist Arbington##11056
   accept Araj's Scarab##5803 |goto Western Plaguelands 42.66,83.77
 step
+  only not completed(5504) not completed(5513) not haveq(5504) not haveq(5513)
+  talk Argent Quartermaster Lightspark##10857
+  turnin Mantles of the Dawn##5507 |goto Western Plaguelands 42.84,83.72
+step
+  only not completed(5517) not completed(5524) not haveq(5517) not haveq(5524)
+  talk Argent Quartermaster Lightspark##10857
+  turnin Chromatic Mantle of the Dawn##5521 |goto Western Plaguelands 42.84,83.72
+step
+  note Bring Araj's Phylactery Shard to Commander Ashlam Valorfist at Chillwind Camp, Western Plaguelands.
+  collect Araj's Phylactery Shard##17114 |q 211 |goto Western Plaguelands 45.27,69.21 |tip {dropsfrom}Araj's Phylactery
+step
+  only completed(5801)
+  note Destroy Araj the Summoner and bring Araj's Scarab to Alchemist Arbington at Chillwind Point, Western Plaguelands.
+  collect Araj's Scarab##14610 |q 5803 |goto Western Plaguelands 45.27,69.21 |tip {dropsfrom}Araj's Phylactery
+step
+  talk Commander Ashlam Valorfist##10838
+  turnin Alas, Andorhal##211 |goto Western Plaguelands 42.7,84.03
+step
+  only completed(5801)
+  talk Alchemist Arbington##11056
+  turnin Araj's Scarab##5803 |goto Western Plaguelands 42.66,83.77
+step
+  only completed(5801)
+  talk Alchemist Arbington##11056
+  accept The Key to Scholomance##5505 |goto Western Plaguelands 42.66,83.77
+step
+  only completed(5801)
+  talk Alchemist Arbington##11056
+  turnin The Key to Scholomance##5505 |goto Western Plaguelands 42.66,83.77
+step
+  only not completed(5601) not haveq(5601)
+  talk Pamela Redpath##10926
+  turnin Little Pamela##5142 |goto Eastern Plaguelands 31.15,77.98 |tip {turninat}Eastern Plaguelands
+step
   note Use the Empty Termite Jar on the Termite Mounds in Eastern Plaguelands. After you've gathered 100 Plagueland Termites, return to Nathaniel Dumah at Chillwind Camp in Western Plaguelands.
   collect Plagueland Termites##15043 |q 5903 |goto Eastern Plaguelands 28.82,23.2 |tip {dropsfrom}Large Termite Mound
 step
@@ -293,10 +330,6 @@ step
 step
   note Seek out the Carrion Grubs and Devourers of the region. Slay them and harvest their meat. Return to Tirion Fordring when you have gathered 15 Slabs of Carrion Worm Meat.
   collect Slab of Carrion Worm Meat##13853 |q 5544 |goto Eastern Plaguelands 42.91,55.69 |tip {dropsfrom}Carrion Grub, Carrion Devourer
-step
-  only completed(5801)
-  note Destroy Araj the Summoner and bring Araj's Scarab to Alchemist Arbington at Chillwind Point, Western Plaguelands.
-  collect Araj's Scarab##14610 |q 5803 |goto Western Plaguelands 45.27,69.21 |tip {dropsfrom}Araj's Phylactery
 step
   talk Nathaniel Dumah##11616
   turnin A Plague Upon Thee##5903 |goto Western Plaguelands 43.42,84.83
@@ -310,36 +343,13 @@ step
   talk Tirion Fordring##1855
   turnin Carrion Grubbage##5544 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
 step
-  only completed(5162)
-  turnin Catalogue of the Wayward##5164 |goto Western Plaguelands 39.35,66.6
-step
-  only not completed(5504) not completed(5513) not haveq(5504) not haveq(5513)
-  talk Argent Quartermaster Lightspark##10857
-  turnin Mantles of the Dawn##5507 |goto Western Plaguelands 42.84,83.72
-step
-  only not completed(5517) not completed(5524) not haveq(5517) not haveq(5524)
-  talk Argent Quartermaster Lightspark##10857
-  turnin Chromatic Mantle of the Dawn##5521 |goto Western Plaguelands 42.84,83.72
-step
-  only completed(5801)
-  talk Alchemist Arbington##11056
-  turnin Araj's Scarab##5803 |goto Western Plaguelands 42.66,83.77
-step
   talk Royal Factor Bathrilor##10782
   turnin Better Late Than Never##5022 |goto Stormwind City 57.17,48.07 |tip {turninat}Stormwind City
 step
   talk Nathaniel Dumah##11616
   accept A Plague Upon Thee##5904 |goto Western Plaguelands 43.42,84.83
 step
-  only completed(5801)
-  talk Alchemist Arbington##11056
-  accept The Key to Scholomance##5505 |goto Western Plaguelands 42.66,83.77
-step
   turnin A Plague Upon Thee##5904 |goto Western Plaguelands 48.34,31.99
-step
-  only completed(5801)
-  talk Alchemist Arbington##11056
-  turnin The Key to Scholomance##5505 |goto Western Plaguelands 42.66,83.77
 step
   talk Mathrengyl Bearwalker##4217
   turnin Glyphed Oaken Branch##4986 |goto Darnassus 35.37,8.4 |tip {turninat}Darnassus
@@ -359,17 +369,8 @@ step
   talk Ol' Emma##3520
   accept Good Luck Charm##5050 |goto Stormwind City 60.2,57.03
 step
-  talk Commander Ashlam Valorfist##10838
-  accept Alas, Andorhal##211 |goto Western Plaguelands 42.7,84.03
-step
-  note Bring Araj's Phylactery Shard to Commander Ashlam Valorfist at Chillwind Camp, Western Plaguelands.
-  collect Araj's Phylactery Shard##17114 |q 211 |goto Western Plaguelands 45.27,69.21 |tip {dropsfrom}Araj's Phylactery
-step
   talk Janice Felstone##10778
   turnin Good Luck Charm##5050 |goto Western Plaguelands 38.4,54.05
-step
-  talk Commander Ashlam Valorfist##10838
-  turnin Alas, Andorhal##211 |goto Western Plaguelands 42.7,84.03
 step
   talk Janice Felstone##10778
   accept Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
@@ -380,6 +381,6 @@ step
   talk Janice Felstone##10778
   turnin Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
 step
-  note {travel}Stormwind City
-  goto Stormwind City 69.45,40.4
+  note {travel}Swamp of Sorrows
+  goto Swamp of Sorrows 25.98,31.4
 ]])

@@ -4,11 +4,13 @@ if not ns then return end
 ns:RegisterGuide("Events/Horde/Feast of Winter Veil", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "ce2504e0",
 }, [[
 step
   talk Wonderform Operator##15732
   accept Winter's Presents##8828 |goto Dun Morogh 53.16,35.62
 step
+  note Speak with Great-father Winter. He is located near the Smokywood Pastures vendor area in Orgrimmar.
   talk Great-father Winter##13445
   turnin Winter's Presents##8828 |goto Orgrimmar 52.49,69.18
 step
@@ -49,6 +51,7 @@ step
   talk Wonderform Operator##15732
   accept New Year Celebrations!##8861 |goto Dun Morogh 53.16,35.62
 step
+  note Bring the Smokywood Supplies to Innkeeper Pala in Thunder Bluff.
   talk Innkeeper Pala##6746
   turnin New Year Celebrations!##8861 |goto Thunder Bluff 45.81,64.71
 step
@@ -73,12 +76,14 @@ step
   talk Furmund##9550
   accept The Reason for the Season##6964 |goto Orgrimmar 50.85,65.26
 step
+  note Speak with Sagorne Creststrider in the Valley of Wisdom of Orgrimmar about the Feast of Winter Veil.
   talk Sagorne Creststrider##13417
   turnin The Reason for the Season##6964 |goto Orgrimmar 38.66,35.92
 step
   talk Sagorne Creststrider##13417
   accept The Feast of Winter Veil##7061 |goto Orgrimmar 38.66,35.92
 step
+  note Feel free to read the book, "The Feast of Winter Veil", to learn more about the holiday. When you are finished with the book, deliver it to Cairne Bloodhoof in Thunder Bluff.
   talk Cairne Bloodhoof##3057
   turnin The Feast of Winter Veil##7061 |goto Thunder Bluff 60.3,51.68
 step
@@ -87,6 +92,7 @@ step
   accept Great-father Winter is Here!##6961 |goto Orgrimmar 53.33,66.49
 step
   only not completed(7021) not completed(7024) not haveq(7021) not haveq(7024)
+  note Speak with Greatfather Winter; he is located near the Smokywood Pastures vendor area in Orgrimmar.
   talk Great-father Winter##13445
   turnin Great-father Winter is Here!##6961 |goto Orgrimmar 52.49,69.18
 step
@@ -102,6 +108,7 @@ step
   talk Kaymard Copperpinch##13418
   accept Stolen Winter Veil Treats##6963 |goto Orgrimmar 53.33,66.49
 step
+  note Locate the Smokywood Pastures investigator that has gone missing in the snowy regions of the Alterac Mountains.
   talk Strange Snowman##13636
   turnin Stolen Winter Veil Treats##6963 |goto Alterac Mountains 35.44,72.46
 step
@@ -118,6 +125,7 @@ step
   talk Kaymard Copperpinch##13418
   accept A Smokywood Pastures' Thank You!##6984 |goto Orgrimmar 53.33,66.49
 step
+  note Speak with Great-father Winter in Orgrimmar.
   talk Great-father Winter##13445
   turnin A Smokywood Pastures' Thank You!##6984 |goto Orgrimmar 52.49,69.18
 step

@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Druid", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "d4498f53",
 }, [[
 step
   talk Conservator Ilthalaine##2079
@@ -20,12 +21,14 @@ step
   accept Verdant Sigil##3120 |goto Teldrassil 58.69,44.27
 step
   only NightElf Druid
+  note Read the Verdant Sigil and speak to Mardant Strongoak, in the tree Aldrassil in Shadowglen.
   talk Mardant Strongoak##3597
   turnin Verdant Sigil##3120 |goto Teldrassil 58.63,40.29
 step
   talk Ailee Farheart##251362
   accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
 step
+  note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
   turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
 step
@@ -43,6 +46,7 @@ step
   accept A Student of Nature##92485 |goto Zephras Isle 42.1,23.49
 step
   only Skyborne Druid
+  note Read the Folded Parchment then speak with Xyton Silverwind in Thendal Grove.
   talk Xyton Silverwind##251373
   turnin A Student of Nature##92485 |goto Zephras Isle 41.72,23.38
 step
@@ -51,6 +55,7 @@ step
   accept Child of Nature##94912 |goto Alterac Mountains 18.84,78.49
 step
   only Skyborne Druid
+  note Speak with Sheldras Moontree in Stormwind.
   talk Sheldras Moontree##5504
   turnin Child of Nature##94912 |goto Stormwind City 35.84,67.38
 step
@@ -59,6 +64,7 @@ step
   accept Heeding the Call##5923 |goto Darnassus 34.77,7.37
 step
   only NightElf Druid not completed(5924) not completed(5925) not haveq(5924) not haveq(5925)
+  note Speak with Mathrengyl Bearwalker in the Cenarion Enclave, Darnassus.
   talk Mathrengyl Bearwalker##4217
   turnin Heeding the Call##5923 |goto Darnassus 35.37,8.4
 step
@@ -67,6 +73,7 @@ step
   accept Moonglade##5921 |goto Darnassus 35.37,8.4
 step
   only NightElf Druid
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##5921 |goto Moonglade 56.21,30.64
 step
@@ -87,6 +94,7 @@ step
   accept Back to Darnassus##5931 |goto Moonglade 56.21,30.64
 step
   only NightElf Druid
+  note Return to Darnassus and speak with Mathrengyl Bearwalker in the Cenarion Enclave.
   talk Mathrengyl Bearwalker##4217
   turnin Back to Darnassus##5931 |goto Darnassus 35.37,8.4
 step
@@ -107,6 +115,7 @@ step
   accept Moonglade##94914 |goto Stormwind City 35.84,67.38
 step
   only Skyborne Druid
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade.  When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##94914 |goto Moonglade 56.21,30.64
 step
@@ -115,6 +124,7 @@ step
   accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.02,75.11
 step
   only Skyborne Druid
+  note Speak with Urs'endris near the falls northeast of Valanaar.
   talk Urs'endris##255853
   turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.72,61.68
 step
@@ -135,6 +145,7 @@ step
   accept Lessons Anew##6121 |goto Darnassus 35.37,8.4
 step
   only not Human not Dwarf not Gnome Druid
+  note Travel to Moonglade and speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Lessons Anew##6121 |goto Moonglade 56.21,30.64
 step
@@ -179,6 +190,7 @@ step
   accept Power over Poison##6125 |goto Moonglade 56.21,30.64
 step
   only NightElf Druid
+  note Return to Mathrengyl Bearwalker in the Cenarion Enclave, Darnassus.
   talk Mathrengyl Bearwalker##4217
   turnin Power over Poison##6125 |goto Darnassus 35.37,8.4
 step
@@ -187,6 +199,7 @@ step
   accept A Lesson to Learn##26 |goto Darnassus 35.37,8.4
 step
   only NightElf Druid
+  note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
   talk Dendrite Starblaze##11802
   turnin A Lesson to Learn##26 |goto Moonglade 56.21,30.64
 step
@@ -219,6 +232,7 @@ step
   accept Aquatic Form##5061 |goto Moonglade 56.21,30.64
 step
   only NightElf Druid
+  note Return to Darnassus and show Mathrengyl Bearwalker the Pendant of the Sea Lion.
   talk Mathrengyl Bearwalker##4217
   turnin Aquatic Form##5061 |goto Darnassus 35.37,8.4
 step
@@ -227,6 +241,7 @@ step
   accept The Great Cat Spirit##98393 |goto Darnassus 35.37,8.4
 step
   only not Human not Dwarf not Gnome Druid
+  note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
   talk Dendrite Starblaze##11802
   turnin The Great Cat Spirit##98393 |goto Moonglade 56.21,30.64
 step
@@ -235,6 +250,7 @@ step
   accept The Great Cat Spirit##98394 |goto Moonglade 56.21,30.64
 step
   only NightElf Druid
+  note Seek out the Great Cat Spirit in southern part Moonglade and learn what it has to share with you about the nature of the cat.
   talk Great Cat Spirit##11957
   turnin The Great Cat Spirit##98394 |goto Moonglade 58.39,73.52
 step
@@ -243,6 +259,7 @@ step
   accept To Darnassus##98397 |goto Moonglade 56.21,30.64
 step
   only not Human not Dwarf not Gnome Druid
+  note Return to Darnassus and speak with Mathrengyl Bearwalker in the Cenarion Enclave.
   talk Mathrengyl Bearwalker##4217
   turnin To Darnassus##98397 |goto Darnassus 35.37,8.4
 step
@@ -271,6 +288,7 @@ step
   accept Torwa Pathfinder##9063 |goto Darnassus 35.37,8.4
 step
   only Druid
+  note Speak with Torwa Pathfinder in Un'Goro Crater.
   talk Torwa Pathfinder##9619
   turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96
 step
@@ -291,6 +309,7 @@ step
   accept Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
 step
   only Druid
+  note Stab a Devilsaur with the Devilsaur Barb. Return to Torwa Pathfinder in Un'Goro Crater when you have completed this task.
   talk Torwa Pathfinder##9619
   turnin Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
 step
@@ -311,6 +330,7 @@ step
   accept The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
 step
   only Druid
+  note Return the book to its rightful owners.
   talk Lorekeeper Javon##14381
   turnin The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
 step
@@ -329,6 +349,7 @@ step
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
+  note Bring the Sealed Blood Container to Mux Manascrambler inside Gadgetzan in Tanaris.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
@@ -371,6 +392,7 @@ step
   talk Mux Manascrambler##16014
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
+  note Bring the Extra-Dimensional Ghost Revealer to Deliana in Ironforge.
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
@@ -389,6 +411,7 @@ step
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
+  note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -404,6 +427,7 @@ step
   talk Ysida Harmon##16031
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
+  note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
@@ -419,6 +443,7 @@ step
   talk Anthion Harmon##16016
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
+  note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
@@ -464,6 +489,7 @@ step
   talk Deliana##16013
   accept Bodley's Unfortunate Fate##8960 |goto Ironforge 43.53,52.64
 step
+  note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
@@ -565,6 +591,7 @@ step
   talk Bodley##16033
   accept Back to the Beginning##8997 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  note Speak with Deliana at The High Seat in Ironforge.
   talk Deliana##16013
   turnin Back to the Beginning##8997 |goto Ironforge 43.53,52.64
 step
@@ -611,6 +638,7 @@ step
   talk Rutgar Glyphshaper##15170
   accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment wants you to deliver the Glyphed Crystal Prism to Geologist Larksbane at the Cenarion Hold in Silithus.
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
@@ -631,313 +659,4 @@ step
   only Druid
   talk Geologist Larksbane##15183
   turnin Armaments of War##8382 |goto Silithus 49.67,37.46
-step
-  only Druid
-  talk Zanza the Restless##15042
-  accept Animist's Caress##8192 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only Druid
-  collect Primal Hakkari Idol##22637 |q 8192 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir
-step
-  only Druid
-  talk Zanza the Restless##15042
-  turnin Animist's Caress##8192 |goto Zul'Gurub - Dungeon -1,-1
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  accept The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
-step
-  only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
-  talk Archmage Angela Dosantos##16116
-  turnin The Dread Citadel - Naxxramas##9121 |goto Eastern Plaguelands 71.7,48.69
-step
-  talk Commander Eligor Dawnbringer##16115
-  accept Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands wants you to slay 5 Living Monstrosities, 5 Stoneskin Gargoyles, 8 Deathknight Captains and 3 Venom Stalkers.
-  kill Deathknight Captain##16145 |q 9033 |goto Naxxramas - Dungeon -1,-1 |elite
-step
-  talk Commander Eligor Dawnbringer##16115
-  turnin Echoes of War##9033 |goto Eastern Plaguelands 71.72,48.59
-step
-  only Druid
-  talk Rayne##16135
-  accept Dreamwalker Tunic##9086 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Tunic if you bring her the following: 1 Desecrated Tunic, 25 Wartorn Leather Scraps, 6 Cured Rugged Hides and 2 Nexus Crystals.
-  collect Desecrated Tunic##22350 |q 9086 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  turnin Dreamwalker Tunic##9086 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  accept Dreamwalker Legguards##9087 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Legguards if you bring her the following: 1 Desecrated Legguards, 20 Wartorn Leather Scraps, 8 Cured Rugged Hides and 1 Nexus Crystal.
-  collect Desecrated Legguards##22359 |q 9087 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  turnin Dreamwalker Legguards##9087 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  accept Dreamwalker Headpiece##9088 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Headpiece if you bring her the following: 1 Desecrated Headpiece, 15 Wartorn Leather Scraps, 6 Cured Rugged Hides and 2 Nexus Crystals.
-  collect Desecrated Headpiece##22360 |q 9088 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  turnin Dreamwalker Headpiece##9088 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  accept Dreamwalker Spaulders##9089 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Spaulders if you bring her the following: 1 Desecrated Spaulders, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides and 1 Nexus Crystal.
-  collect Desecrated Spaulders##22361 |q 9089 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
-step
-  only Druid
-  talk Rayne##16135
-  turnin Dreamwalker Spaulders##9089 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  accept Dreamwalker Boots##9090 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Boots if you bring her the following: 1 Desecrated Boots, 12 Wartorn Leather Scraps, 3 Mooncloth and 2 Cured Rugged Hides.
-  collect Desecrated Boots##22365 |q 9090 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
-step
-  only Druid
-  talk Rayne##16135
-  turnin Dreamwalker Boots##9090 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  accept Dreamwalker Handguards##9091 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Handguards if you bring her the following: 1 Desecrated Handguards, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides and 1 Nexus Crystal.
-  collect Desecrated Handguards##22364 |q 9091 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  turnin Dreamwalker Handguards##9091 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  accept Dreamwalker Girdle##9092 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Girdle if you bring her the following: 1 Desecrated Girdle, 8 Wartorn Leather Scraps, 3 Mooncloth and 2 Cured Rugged Hides.
-  collect Desecrated Girdle##22363 |q 9092 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
-step
-  only Druid
-  talk Rayne##16135
-  turnin Dreamwalker Girdle##9092 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Rayne##16135
-  accept Dreamwalker Wristguards##9093 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Wristguards if you bring her the following: 1 Desecrated Wristguards, 6 Wartorn Leather Scraps, 1 Arcane Crystal and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9093 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
-step
-  only Druid
-  talk Rayne##16135
-  turnin Dreamwalker Wristguards##9093 |goto Eastern Plaguelands 71.41,49.35
-step
-  only Druid
-  talk Windcaller Yessendra##15498
-  accept Band of Unending Life##8700 |goto Silithus 52.05,38.16
-step
-  only Druid
-  note Bring 1 Qiraji Magisterial Ring, 2 Alabaster Idols, 5 Bronze Scarabs and 5 Ivory Scarabs to Windcaller Yessendra in Silithus. You must also attain Honored reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Magisterial Ring##20884 |q 8700 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, General Rajaxx
-step
-  only Druid
-  talk Windcaller Yessendra##15498
-  turnin Band of Unending Life##8700 |goto Silithus 52.05,38.16
-step
-  only Druid
-  talk Warden Haro##15499
-  accept Mace of Unending Life##8708 |goto Silithus 51.14,38.94
-step
-  only Druid
-  note Bring 1 Qiraji Ornate Hilt, 2 Jasper Idols, 5 Crystal Scarabs and 5 Stone Scarabs to Warden Haro in Silithus. You must also attain Exalted reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Ornate Hilt##20890 |q 8708 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ossirian the Unscarred, Moam, Ayamiss the Hunter
-step
-  only Druid
-  talk Warden Haro##15499
-  turnin Mace of Unending Life##8708 |goto Silithus 51.14,38.94
-step
-  only Druid
-  talk Keyl Swiftclaw##15500
-  accept Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
-step
-  only Druid
-  note Bring 1 Qiraji Regal Drape, 2 Vermillion Idols, 5 Silver Scarabs and 5 Bone Scarabs to Keyl Swiftclaw in Silithus. You must also obtain Revered reputation with Cenarion Circle to complete this quest.
-  collect 1 Qiraji Regal Drape##20889 |q 8692 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}General Rajaxx, Kurinnaxx, Ayamiss the Hunter
-step
-  only Druid
-  talk Keyl Swiftclaw##15500
-  turnin Cloak of Unending Life##8692 |goto Silithus 51.76,39.54
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  accept Paragons of Power: The Haruspex's Bracers##8057 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  note Bring Maywiki of Zuldazar a Primal Hakkari Stanchion. You must also have a reputation equal to or greater than Friendly with the Zandalar Tribe.
-  collect Primal Hakkari Stanchion##19718 |q 8057 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  turnin Paragons of Power: The Haruspex's Bracers##8057 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  accept Paragons of Power: The Haruspex's Belt##8064 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  note Bring Maywiki of Zuldazar a Primal Hakkari Sash. Maywiki of Zuldazar is located on Yojamba Isle, Stranglethorn Vale. You must also be Honored with Zandalar.
-  collect Primal Hakkari Sash##19720 |q 8064 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  turnin Paragons of Power: The Haruspex's Belt##8064 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  accept Paragons of Power: The Haruspex's Tunic##8065 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  note Bring Maywiki of Zuldazar a Primal Hakkari Tabard. Maywiki of Zuldazar is located on Yojamba Isle, Stranglethorn Vale. You must also be Revered with Zandalar.
-  collect Primal Hakkari Tabard##19722 |q 8065 |goto Zul'Gurub - Dungeon -1,-1 |raid |tip {dropsfrom}Jin'do the Hexxer, Bloodlord Mandokir, High Priest Venoxis
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  turnin Paragons of Power: The Haruspex's Tunic##8065 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  accept Enchanted South Seas Kelp##8110 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  turnin Enchanted South Seas Kelp##8110 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  accept Enchanted South Seas Kelp##8111 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  collect Enchanted South Seas Kelp##19610 |q 8111 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  turnin Enchanted South Seas Kelp##8111 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  accept Enchanted South Seas Kelp##8112 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  collect Enchanted South Seas Kelp##19611 |q 8112 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  turnin Enchanted South Seas Kelp##8112 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  accept Pristine Enchanted South Seas Kelp##8113 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  collect Enchanted South Seas Kelp##19612 |q 8113 |goto Stranglethorn Vale 15.3,16.02
-step
-  only Druid
-  talk Maywiki of Zuldazar##14904
-  turnin Pristine Enchanted South Seas Kelp##8113 |goto Stranglethorn Vale 15.3,16.02
-step
-  talk Kandrostrasz##15503
-  accept Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  collect Qiraji Lord's Insignia##21229 |q 8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}The Prophet Skeram, Emperor Vek'nilash, Emperor Vek'lor
-step
-  talk Kandrostrasz##15503
-  turnin Mortal Champions##8579 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  talk Kandrostrasz##15503
-  accept Genesis Boots##8665 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of Rebirth, 5 Stone Scarabs and 5 Silver Scarabs to Kandrostrasz in Ahn'Qiraj. This quest also requires Neutral faction with the Brood of Nozdormu.
-  collect Qiraji Bindings of Dominance##20932 |q 8665 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Druid
-  talk Kandrostrasz##15503
-  turnin Genesis Boots##8665 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  talk Vethsera##15504
-  accept Genesis Vest##8666 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  note Bring the the Husk of the Old God, 2 Idols of Rebirth, 5 Bronze Scarabs and 5 Ivory Scarabs to Vethsera inside Ahn'Qiraj. You must also attain Honored reputation with the Brood of Nozdormu to complete this quest.
-  collect Husk of the Old God##20933 |q 8666 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}C'Thun
-step
-  only Druid
-  talk Vethsera##15504
-  turnin Genesis Vest##8666 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  talk Andorgos##15502
-  accept Genesis Helm##8667 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  note Bring Vek'lor's Diadem, 2 Idols of Life, 5 Gold Scarabs and 5 Clay Scarabs to Andorgos in Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Vek'lor's Diadem##20930 |q 8667 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Emperor Vek'lor
-step
-  only Druid
-  talk Andorgos##15502
-  turnin Genesis Helm##8667 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  talk Kandrostrasz##15503
-  accept Genesis Trousers##8668 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  note Bring the Skin of the Great Sandworm, 2 Idols of War, 5 Stone Scarabs and 5 Crystal Scarabs to Kandrostrasz inside Ahn'Qiraj. You must also attain Friendly reputation with the Brood of Nozdormu to complete this quest.
-  collect Skin of the Great Sandworm##20931 |q 8668 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Ouro
-step
-  only Druid
-  talk Kandrostrasz##15503
-  turnin Genesis Trousers##8668 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  talk Andorgos##15502
-  accept Genesis Shoulderpads##8669 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
-step
-  only Druid
-  note Bring the Qiraji Bindings of Dominance, 2 Idols of Strife, 5 Gold Scarabs and 5 Bone Scarabs to Andorgos in Ahn'Qiraj. You must also attain Neutral reputation with the Brood of Nozdormu to complete this quest.
-  collect Qiraji Bindings of Dominance##20932 |q 8669 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip {dropsfrom}Viscidus, Princess Huhuran
-step
-  only Druid
-  talk Andorgos##15502
-  turnin Genesis Shoulderpads##8669 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 ]])

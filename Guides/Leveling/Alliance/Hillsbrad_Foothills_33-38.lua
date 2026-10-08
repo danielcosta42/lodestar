@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (33-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (23-38)",
+	rev = "e4c4e007",
 }, [[
 step
   only completed(2947)
@@ -45,15 +46,21 @@ step
   talk Marshal Redpath##2263
   accept Crushridge Bounty##500 |goto Hillsbrad Foothills 49.47,58.73
 step
+  kill Shadowy Assassin##2434 |goto Hillsbrad Foothills 50.06,57.91 |tip Loot the quest item here — it starts the quest.
+  accept Assassin's Contract##522 |goto Hillsbrad Foothills 50.06,57.91
+step
+  talk Magistrate Henry Maleb##2276
+  turnin Assassin's Contract##522 |goto Hillsbrad Foothills 48.14,59.11
+step
+  talk Magistrate Henry Maleb##2276
+  accept Baron's Demise##523 |goto Hillsbrad Foothills 48.14,59.11
+step
   talk Quae##2712
   turnin Hints of a New Plague?##659 |goto Arathi Highlands 60.18,53.85 |tip {turninat}Arathi Highlands
 step
   only completed(2947)
   talk Talvash del Kissel##6826
   turnin Gnome Improvement##2948 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
-step
-  kill Shadowy Assassin##2434 |goto Hillsbrad Foothills 50.06,57.91 |tip Loot the quest item here — it starts the quest.
-  accept Assassin's Contract##522 |goto Hillsbrad Foothills 50.06,57.91
 step
   only completed(337)
   talk Milton Sheaf##1440
@@ -71,9 +78,6 @@ step
   talk Marshal Redpath##2263
   turnin Crushridge Bounty##500 |goto Hillsbrad Foothills 49.47,58.73
 step
-  talk Magistrate Henry Maleb##2276
-  turnin Assassin's Contract##522 |goto Hillsbrad Foothills 48.14,59.11
-step
   only completed(337)
   talk Loremaster Dibbs##2277
   turnin Southshore##538 |goto Hillsbrad Foothills 50.57,57.09
@@ -84,9 +88,6 @@ step
 step
   talk Marshal Redpath##2263
   accept Crushridge Warmongers##504 |goto Hillsbrad Foothills 49.47,58.73
-step
-  talk Magistrate Henry Maleb##2276
-  accept Baron's Demise##523 |goto Hillsbrad Foothills 48.14,59.11
 step
   only completed(337)
   note Bring 5 Recovered Tomes and the Worn Leather Book containing The Arm of Gri'lek to Loremaster Dibbs in Southshore.

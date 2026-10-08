@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/The Deadmines", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "1c0cf9ea",
 }, [[
 step
   only Undead Paladin

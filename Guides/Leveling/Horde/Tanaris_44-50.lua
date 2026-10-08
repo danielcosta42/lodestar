@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tanaris (44-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Un'Goro Crater (51-55)",
+	rev = "06ece8d1",
 }, [[
 step
   note {fp}Bulkrek Ragefist
@@ -204,6 +205,10 @@ step
   talk Torta##6015
   turnin Tooga's Quest##1560 |goto Tanaris 66.58,25.67
 step
+  only completed(3380,3445)
+  talk Marvon Rivetseeker##7771
+  accept The Stone Circle##3444 |goto Tanaris 52.71,45.92
+step
   only completed(1188)
   talk Razzeric##4706
   turnin Safety First##1189 |goto Thousand Needles 80.33,76.09 |tip {turninat}Thousand Needles
@@ -222,10 +227,6 @@ step
   only completed(2440)
   talk Sage Truthseeker##3978
   accept Portents of Uldum##2965 |goto Thunder Bluff 34.4,46.87
-step
-  only completed(3380,3445)
-  talk Marvon Rivetseeker##7771
-  accept The Stone Circle##3444 |goto Tanaris 52.71,45.92
 step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}

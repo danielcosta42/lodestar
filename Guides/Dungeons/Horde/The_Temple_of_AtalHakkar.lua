@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/The Temple of Atal'Hakkar", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "bcbb1833",
 }, [[
 step
   talk Fel'zerul##1443
@@ -107,10 +108,12 @@ step
   turnin Elemental Mastery##8410 |goto Alterac Mountains 80.5,66.92
 step
   only Priest
+  note Seek out Ogtinc in Azshara.
   talk Ogtinc##8405
   turnin Cenarion Aid##8254 |goto Azshara 42.4,42.62
 step
   only Hunter
+  note Speak to Ogtinc in Azshara.
   talk Ogtinc##8405
   turnin The Hunter's Charm##8151 |goto Azshara 42.4,42.62
 step
@@ -124,6 +127,7 @@ step
   talk Atal'ai Exile##5598
   turnin Jammal'an the Prophet##1446 |goto The Hinterlands 33.75,75.21
 step
+  note Place the Essence of Eranikus in the Essence Font located in this lair in the Sunken Temple.
   turnin The Essence of Eranikus##3373 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
   talk Fel'zerul##1443
@@ -192,6 +196,7 @@ step
   note Slaughter the Shadowsworn in the Blasted Lands and return to the Fallen Hero of the Horde.
   kill Shadowsworn Adept##6006 |q 8424 |goto Blasted Lands 64.08,35.24
 step
+  note Bring the Bundle of Atal'ai Artifacts to the Atal'ai Exile in the Hinterlands.
   talk Atal'ai Exile##5598
   turnin The Atal'ai Exile##1429 |goto The Hinterlands 33.75,75.21
 step
@@ -223,10 +228,12 @@ step
   talk Fallen Hero of the Horde##7572
   turnin War on the Shadowsworn##8424 |goto Swamp of Sorrows 34.29,66.14
 step
+  note Travel to Marvon Rivetseeker's workshop in Ratchet.
   talk Liv Rizzlefix##8496
   turnin Marvon's Workshop##4147 |goto The Barrens 62.45,38.73
 step
   only Druid
+  note Stab a Devilsaur with the Devilsaur Barb. Return to Torwa Pathfinder in Un'Goro Crater when you have completed this task.
   talk Torwa Pathfinder##9619
   turnin Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
 step
@@ -303,6 +310,7 @@ step
   note Retrieve a Putrid Vine from the guardian at the bottom of the Sunken Temple and return to Torwa Pathfinder.
   collect Putrid Vine##22444 |q 9053 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Atal'alarion
 step
+  note Return to Fel'Zerul in Stonard.
   talk Fel'zerul##1443
   turnin Return to Fel'Zerul##1444 |goto Swamp of Sorrows 47.93,54.78
 step

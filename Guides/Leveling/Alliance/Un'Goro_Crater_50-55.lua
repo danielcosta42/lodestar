@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Un'Goro Crater (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Tanaris (53-60)",
+	rev = "f49b63a7",
 }, [[
 step
   talk Arch Druid Fandral Staghelm##3516
@@ -289,5 +290,5 @@ step
   turnin The Mystery of Morrowgrain##3791 |goto Feralas 32.45,43.79 |tip {turninat}Feralas
 step
   note {travel}Tanaris
-  goto Tanaris 66.99,22.36
+  goto Tanaris 51.57,26.76
 ]])

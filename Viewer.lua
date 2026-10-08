@@ -18,13 +18,7 @@ local function verbLabel(verb)
 end
 
 -- nome localizado da zona (p/ casar com GetZoneText do client)
-local function localizedZone(engZone)
-	if ns.zoneUiMap and ns.zoneUiMap[engZone] and C_Map and C_Map.GetMapInfo then
-		local info = C_Map.GetMapInfo(ns.zoneUiMap[engZone])
-		if info and info.name then return info.name end
-	end
-	return engZone
-end
+local localizedZone = ns.LocalizedZone
 
 -- Texto de viagem p/ o passo atual: a perna atual da rota (antes da última, a pé);
 -- sem rota e com o alvo fora da zona, "Vá para <zona>".
@@ -382,10 +376,6 @@ local function getRow(i)
 	row.dist = UI.Chip(row, { 0, 0, 0, 0.35 }, UI.COL.accent)
 	row.dist:SetPoint("TOPRIGHT", 0, -1)
 	row.dist:Hide()
-	-- chip de "corridas" (spam de dungeon): N/M no mesmo canto (goal de ding, sem dist)
-	row.runs = UI.Chip(row, { 0, 0, 0, 0.35 }, UI.COL.amber)
-	row.runs:SetPoint("TOPRIGHT", 0, -1)
-	row.runs:Hide()
 	rowPool[i] = row
 	return row
 end
@@ -578,13 +568,6 @@ function V:Refresh()
 					distRows[#distRows + 1] = { chip = row.dist, goal = goal }
 				end
 
-				-- chip de "corridas" (spam de dungeon): quantas você já limpou / meta
-				row.runs:Hide()
-				if goal.runs and goal.dungeon then
-					local n = ns.DungeonRuns and ns.DungeonRuns:CountFor(goal.dungeon) or 0
-					row.runs:Set(("%d/%s"):format(n, goal.runs))
-					row.runs:Show()
-				end
 
 				local h = math.max(16, row.text:GetStringHeight() + 4)
 				row:SetHeight(h)

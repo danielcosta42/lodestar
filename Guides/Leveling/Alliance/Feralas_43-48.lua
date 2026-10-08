@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Feralas (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Tanaris (44-50)",
+	rev = "ea4a2bd9",
 }, [[
 step
   talk Shandris Feathermoon##3936
@@ -199,11 +200,11 @@ step
   talk Rockbiter##7765
   turnin Wandering Shay##2845 |goto Feralas 42.39,22
 step
-  talk Daryn Lightwind##7907
-  turnin In Search of Knowledge##2939 |goto Teldrassil 55.41,92.23 |tip {turninat}Teldrassil
-step
   talk Angelas Moonbreeze##7900
   accept The Sunken Temple##3445 |goto Feralas 31.83,45.61
+step
+  talk Daryn Lightwind##7907
+  turnin In Search of Knowledge##2939 |goto Teldrassil 55.41,92.23 |tip {turninat}Teldrassil
 step
   talk Marvon Rivetseeker##7771
   turnin The Sunken Temple##3445 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris
@@ -230,5 +231,5 @@ step
   turnin Rise of the Silithid##4267 |goto Darnassus 41.83,85.62 |tip {turninat}Darnassus
 step
   note {travel}Tanaris
-  goto Tanaris 50.96,27.24
+  goto Tanaris 52.46,28.51
 ]])

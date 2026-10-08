@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Wailing Caverns", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "c07764c5",
 }, [[
 step
   talk Nalpak##5767

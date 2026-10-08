@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (34-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Arathi Highlands (34-40)",
+	rev = "8e1b7f27",
 }, [[
 step
   talk Barnil Stonepot##716

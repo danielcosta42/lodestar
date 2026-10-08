@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Un'Goro Crater (51-55)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Azshara (52-58)",
+	rev = "a89c7889",
 }, [[
 step
   talk Arch Druid Hamuul Runetotem##5769
@@ -264,6 +265,40 @@ step
   talk Thrall##4949
   turnin The Eastern Kingdom##4002 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
 step
+  only completed(4974)
+  talk Thrall##4949
+  accept What the Wind Carries##6566 |goto Orgrimmar 31.73,37.82
+step
+  only completed(6570)
+  talk Emberstrife##10321
+  accept The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72
+step
+  only completed(6570)
+  talk Emberstrife##10321
+  accept The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72
+step
+  only completed(6570)
+  note You must find the blue dragonflight drake champion, Scryer, and slay him. Pry his skull from his corpse and return it to Emberstrife.
+  kill Scryer##10664 |goto Winterspring 52.71,55.89 |elite
+  collect The Skull of Scryer##16869 |q 6582 |goto Winterspring 52.71,55.89
+step
+  only completed(6570)
+  note Guarding the Caverns of Time in the Tanaris Desert is Chronalis, child of Nozdormu. Destroy him and return his skull to Emberstrife.
+  kill Chronalis##8197 |goto Tanaris 64.16,48.49 |elite
+  collect The Skull of Chronalis##16871 |q 6584 |goto Tanaris 64.16,48.49
+step
+  only completed(4974)
+  talk Thrall##4949
+  turnin What the Wind Carries##6566 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
+step
+  only completed(6570)
+  talk Emberstrife##10321
+  turnin The Test of Skulls, Scryer##6582 |goto Dustwallow Marsh 56.66,87.72 |tip {turninat}Dustwallow Marsh
+step
+  only completed(6570)
+  talk Emberstrife##10321
+  turnin The Test of Skulls, Chronalis##6584 |goto Dustwallow Marsh 56.66,87.72 |tip {turninat}Dustwallow Marsh
+step
   talk Liv Rizzlefix##8496
   turnin Marvon's Workshop##4147 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
 step
@@ -273,8 +308,16 @@ step
   talk Arch Druid Hamuul Runetotem##5769
   accept Morrowgrain Research##3782 |goto Thunder Bluff 78.62,28.56
 step
+  only completed(4974)
+  talk Thrall##4949
+  accept The Champion of the Horde##6567 |goto Orgrimmar 31.73,37.82
+step
   talk Bashana Runetotem##9087
   turnin Morrowgrain Research##3782 |goto Thunder Bluff 71.06,34.19 |tip {turninat}Thunder Bluff
+step
+  only completed(4974)
+  talk Rexxar##10182
+  turnin The Champion of the Horde##6567 |goto Desolace 54,2 |tip {turninat}Desolace
 step
   talk Donova Snowden##9298
   turnin It's a Secret to Everybody##3908 |goto Winterspring 31.27,45.16 |tip {turninat}Winterspring
@@ -288,6 +331,6 @@ step
   talk Bashana Runetotem##9087
   turnin Morrowgrain Research##3786 |goto Thunder Bluff 71.06,34.19 |tip {turninat}Thunder Bluff
 step
-  note {travel}Thunder Bluff
-  goto Thunder Bluff 57.3,89.79
+  note {travel}Orgrimmar
+  goto Orgrimmar 75.23,34.24
 ]])

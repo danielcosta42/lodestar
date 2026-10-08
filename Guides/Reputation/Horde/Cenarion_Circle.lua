@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Cenarion Circle", {
 	faction = "Horde",
 	author = "Lodestar Generator",
+	rev = "2850b9c5",
 }, [[
 step
   only Skyborne Druid
@@ -11,6 +12,7 @@ step
   accept Moonglade##94913 |goto Thunder Bluff 76.48,27.22
 step
   only Skyborne Druid
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##94913 |goto Moonglade 56.21,30.64
 step
@@ -19,6 +21,7 @@ step
   accept Heeding the Call##5926 |goto Thunder Bluff 45.81,64.71
 step
   only Tauren Druid not completed(5927) not completed(5928) not haveq(5927) not haveq(5928)
+  note Speak with Turak Runetotem on the Elder Rise of Thunder Bluff.
   talk Turak Runetotem##3033
   turnin Heeding the Call##5926 |goto Thunder Bluff 76.48,27.22
 step
@@ -27,6 +30,7 @@ step
   accept Moonglade##5922 |goto Thunder Bluff 76.48,27.22
 step
   only Tauren Druid
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##5922 |goto Moonglade 56.21,30.64
 step
@@ -47,6 +51,7 @@ step
   accept Back to Thunder Bluff##5932 |goto Moonglade 56.21,30.64
 step
   only Tauren Druid
+  note Return to Thunder Bluff and speak with Turak Runetotem on the Elder Rise.
   talk Turak Runetotem##3033
   turnin Back to Thunder Bluff##5932 |goto Thunder Bluff 76.48,27.22
 step
@@ -67,6 +72,7 @@ step
   accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.02,75.11
 step
   only Skyborne Druid
+  note Speak with Urs'endris near the falls northeast of Valanaar.
   talk Urs'endris##255853
   turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.72,61.68
 step
@@ -75,6 +81,7 @@ step
   accept Lessons Anew##6126 |goto Thunder Bluff 76.48,27.22
 step
   only Tauren Druid
+  note Travel to Moonglade and speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Lessons Anew##6126 |goto Moonglade 56.21,30.64
 step
@@ -119,6 +126,7 @@ step
   accept Power over Poison##6130 |goto Moonglade 56.21,30.64
 step
   only Tauren Druid
+  note Return to Turak Runetotem on the Elder Rise, Thunder Bluff.
   talk Turak Runetotem##3033
   turnin Power over Poison##6130 |goto Thunder Bluff 76.48,27.22
 step
@@ -127,6 +135,7 @@ step
   accept A Lesson to Learn##27 |goto Thunder Bluff 76.48,27.22
 step
   only Tauren Druid
+  note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
   talk Dendrite Starblaze##11802
   turnin A Lesson to Learn##27 |goto Moonglade 56.21,30.64
 step
@@ -159,6 +168,7 @@ step
   accept Aquatic Form##31 |goto Moonglade 56.21,30.64
 step
   only Tauren Druid
+  note Return to Thunder Bluff and show Turak Runetotem the Pendant of the Sea Lion.
   talk Turak Runetotem##3033
   turnin Aquatic Form##31 |goto Thunder Bluff 76.48,27.22
 step
@@ -167,6 +177,7 @@ step
   accept The Great Windborne Cat Spirit##98341 |goto Moonglade 56.21,30.64
 step
   only Skyborne
+  note Seek out the Avatar of Saeyleenan in southern part Moonglade and learn what it has to share with you about the nature of the windborne cat.
   talk Avatar of Saeyleenan##272054
   turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 44,73.6
 step
@@ -175,6 +186,7 @@ step
   accept The Great Cat Spirit##98405 |goto Moonglade 56.21,30.64
 step
   only Tauren Druid
+  note Seek out the Great Cat Spirit in southern part Moonglade and learn what it has to share with you about the nature of the cat.
   talk Great Cat Spirit##11957
   turnin The Great Cat Spirit##98405 |goto Moonglade 58.39,73.52
 step
@@ -195,6 +207,7 @@ step
   accept Blessings of the Great Cat Spirit##98739 |goto Moonglade 58.39,73.52
 step
   only Tauren Druid
+  note Speak to Dendrite.
   talk Dendrite Starblaze##11802
   turnin Blessings of the Great Cat Spirit##98739 |goto Moonglade 56.21,30.64
 step
@@ -223,6 +236,7 @@ step
   accept The Great Cat Spirit##98340 |goto Thunder Bluff 76.48,27.22
 step
   only not Orc not Undead not Troll Druid
+  note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
   talk Dendrite Starblaze##11802
   turnin The Great Cat Spirit##98340 |goto Moonglade 56.21,30.64
 step
@@ -238,6 +252,7 @@ step
   talk Zaetar's Spirit##12238
   accept Seed of Life##7066 |goto Maraudon - Dungeon -1,-1
 step
+  note Seek out Remulos in Moonglade and give him the Seed of Life.
   talk Keeper Remulos##11832
   turnin Seed of Life##7066 |goto Moonglade 36.18,41.79
 step
@@ -262,6 +277,7 @@ step
   talk Cenarion Emissary Blackhoof##15188
   accept Taking Back Silithus##8276 |goto Orgrimmar 47.64,65.76
 step
+  note Talk to Windcaller Proudhorn at Cenarion Hold in Silithus.
   talk Windcaller Proudhorn##15191
   turnin Taking Back Silithus##8276 |goto Silithus 51.15,38.29
 step
@@ -315,18 +331,21 @@ step
   accept The New Frontier##1000 |goto Thunder Bluff 44.33,58.76
 step
   only not completed(1004) not completed(1018) not haveq(1004) not haveq(1018)
+  note Speak with Arch Druid Hamuul Runetotem on the Elder Rise of Thunder Bluff about the Cenarion Circle's call to explore the frontiers of Kalimdor.
   talk Arch Druid Hamuul Runetotem##5769
   turnin The New Frontier##1000 |goto Thunder Bluff 78.62,28.56
 step
   talk Arch Druid Hamuul Runetotem##5769
   accept Rabine Saturna##1123 |goto Thunder Bluff 78.62,28.56
 step
+  note Speak with Rabine Saturna in the village of Nighthaven, Moonglade. Moonglade lies between Felwood and Winterspring, accessible through a path out of Timbermaw Hold.
   talk Rabine Saturna##11801
   turnin Rabine Saturna##1123 |goto Moonglade 51.69,45.1
 step
   talk Rabine Saturna##11801
   accept Wasteland##1124 |goto Moonglade 51.69,45.1
 step
+  note Speak with Layo Starstrike near the Valor's Rest graveyard of Silithus, showing him Rabine's Letter.
   talk Layo Starstrike##13220
   turnin Wasteland##1124 |goto Silithus 81.87,18.93
 step
@@ -351,12 +370,14 @@ step
   talk Layo Starstrike##13220
   accept Umber, Archivist##6844 |goto Silithus 81.87,18.93
 step
+  note Take the Encrusted Silithid Object to Umber - the Cenarion Circle's archivist - in the village of Nighthaven, Moonglade.
   talk Umber##11939
   turnin Umber, Archivist##6844 |goto Moonglade 44.88,35.6
 step
   talk Umber##11939
   accept Uncovering Past Secrets##6845 |goto Moonglade 44.88,35.6
 step
+  note Speak with Rabine Saturna in the village of Nighthaven, Moonglade.
   talk Rabine Saturna##11801
   turnin Uncovering Past Secrets##6845 |goto Moonglade 51.69,45.1
 step
@@ -369,11 +390,13 @@ step
   talk Calandrath##15174
   accept Desert Recipe##8307 |goto Silithus 51.89,39.16
 step
+  note Look for information about cooking Sandworm Meat at the Twilight's Hammer camp west of Cenarion Hold.
   turnin Desert Recipe##8307 |goto Silithus 37.94,45.31
 step
   click Sandy Cookbook##180503
   accept Sharing the Knowledge##8313 |goto Silithus 37.94,45.31
 step
+  note Bring the Torn Recipe Page to Calandrath at the inn in Cenarion Hold.
   talk Calandrath##15174
   turnin Sharing the Knowledge##8313 |goto Silithus 51.89,39.16
 step
@@ -398,6 +421,7 @@ step
   talk Geologist Larksbane##15183
   accept The Deserter##8285 |goto Silithus 49.67,37.46
 step
+  note Take the restored tablet to Hermit Ortell in Silithus.
   talk Hermit Ortell##15194
   turnin The Deserter##8285 |goto Silithus 67.19,69.76
 step
@@ -413,6 +437,7 @@ step
   talk Hermit Ortell##15194
   accept A Terrible Purpose##8287 |goto Silithus 67.19,69.76
 step
+  note Take the Decoded Tablet Parchment to Commander Mar'alith.
   talk Commander Mar'alith##15181
   turnin A Terrible Purpose##8287 |goto Silithus 49.2,34.18
 step
@@ -492,6 +517,7 @@ step
   kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite |tip Loot the quest item here — it starts the quest.
   accept Brann Bronzebeard's Lost Letter##8308 |goto Silithus 50.21,40.97
 step
+  note Take Brann Bronzebeard's Letter to Bronzebeard's Encampment in southern Silithus.
   talk Rutgar Glyphshaper##15170
   turnin Brann Bronzebeard's Lost Letter##8308 |goto Silithus 41.28,88.45
 step
@@ -526,6 +552,7 @@ step
   talk Rutgar Glyphshaper##15170
   accept Unraveling the Mystery##8314 |goto Silithus 41.28,88.45
 step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment wants you to deliver the Glyphed Crystal Prism to Geologist Larksbane at the Cenarion Hold in Silithus.
   talk Geologist Larksbane##15183
   turnin Unraveling the Mystery##8314 |goto Silithus 49.67,37.46
 step
@@ -598,18 +625,21 @@ step
   kill Ysondre##14887 |goto Duskwood 46.5,39.6 |raid |tip Loot the quest item here — it starts the quest.
   accept Shrouded in Nightmare##8446 |goto Duskwood 46.5,39.6
 step
+  note Find someone capable of deciphering the meaning behind the Nightmare Engulfed Object.
   talk Keeper Remulos##11832
   turnin Shrouded in Nightmare##8446 |goto Moonglade 36.18,41.79
 step
   talk Keeper Remulos##11832
   accept Waking Legends##8447 |goto Moonglade 36.18,41.79
 step
+  note Wait for Keeper Remulos at the Moonglade to cleanse the Nightmare Engulfed Object.
   talk Keeper Remulos##11832
   turnin Waking Legends##8447 |goto Moonglade 36.18,41.79
 step
   kill Ossirian the Unscarred##15339 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.
   accept The Fall of Ossirian##8791 |goto Ruins of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Deliver the Head of Ossirian the Unscarred to Commander Mar'alith at Cenarion Hold in Silithus.
   talk Commander Mar'alith##15181
   turnin The Fall of Ossirian##8791 |goto Silithus 49.2,34.18
 step
@@ -625,6 +655,7 @@ step
   talk Windcaller Kaldon##15540
   accept Cenarion Battlegear##8800 |goto Silithus 49.98,36.35
 step
+  note Talk to Vargus at Cenarion Hold in Silithus.
   talk Vargus##15176
   turnin Cenarion Battlegear##8800 |goto Silithus 51.23,38.86
 step
@@ -676,17 +707,20 @@ step
   talk Baristolth of the Shifting Sands##15180
   accept Anachronos##8303 |goto Silithus 49.45,36.45
 step
+  note Seek out Anachronos at the Caverns of Time in Tanaris.
   talk Anachronos##15192
   turnin Anachronos##8303 |goto Tanaris 65.27,50.03
 step
   talk Anachronos##15192
   accept Long Forgotten Memories##8305 |goto Tanaris 65.27,50.03
 step
+  note Locate the Crystalline Tear in Silithus and gaze into its depths.
   turnin Long Forgotten Memories##8305 |goto Silithus 28.68,89.14
 step
   click Crystalline Tear##180633
   accept A Pawn on the Eternal Board##8519 |goto Silithus 28.68,89.14
 step
+  note Learn all that you can of the past, then speak with Anachronos at the Caverns of Time in Tanaris.
   talk Anachronos##15192
   turnin A Pawn on the Eternal Board##8519 |goto Tanaris 65.27,50.03
 step
@@ -699,6 +733,7 @@ step
   talk Spirit of Azuregos##15481
   accept Azuregos's Magical Ledger##8575 |goto Azshara 52.98,81.73
 step
+  note Deliver Azuregos's Magical Ledger to Narain Soothfancy in Tanaris.
   talk Narain Soothfancy##11811
   turnin Azuregos's Magical Ledger##8575 |goto Tanaris 65.24,18.58
 step
@@ -711,6 +746,7 @@ step
   talk Narain Soothfancy##11811
   accept Stewvul, Ex-B.F.F.##8577 |goto Tanaris 65.24,18.58
 step
+  note Narain Soothfancy wants you to find his ex-best friend forever (BFF), Stewvul, and take back the scrying goggles that Stewvul stole from him.
   turnin Stewvul, Ex-B.F.F.##8577 |goto Silverpine Forest 46.19,86.68
 step
   click Inconspicuous Crate##180642
@@ -771,6 +807,7 @@ step
   talk Huum Wildmane##15270
   accept Aurel Goldleaf##8331 |goto Silithus 48.62,37.87
 step
+  note Speak with Aurel Goldleaf in Cenarion Hold.
   talk Aurel Goldleaf##15282
   turnin Aurel Goldleaf##8331 |goto Silithus 51.96,38.16
 step
@@ -805,6 +842,7 @@ step
   talk Huum Wildmane##15270
   accept Goldleaf's Discovery##8343 |goto Silithus 48.62,37.87
 step
+  note Speak with Aurel Goldleaf in Cenarion Hold.
   talk Aurel Goldleaf##15282
   turnin Goldleaf's Discovery##8343 |goto Silithus 51.96,38.16
 step
@@ -839,12 +877,14 @@ step
   talk Aurel Goldleaf##15282
   accept Bor Wildmane##8349 |goto Silithus 51.96,38.16
 step
+  note Speak with Bor Wildmane in Cenarion Hold.
   talk Bor Wildmane##15306
   turnin Bor Wildmane##8349 |goto Silithus 48.57,37.78
 step
   talk Aurel Goldleaf##15282
   accept Bor Wishes to Speak##8351 |goto Silithus 51.96,38.16
 step
+  note Speak with Bor Wildmane in Cenarion Hold.
   talk Bor Wildmane##15306
   turnin Bor Wishes to Speak##8351 |goto Silithus 48.57,37.78
 step
@@ -1175,6 +1215,7 @@ step
   talk Narain Soothfancy##11811
   accept Never Ask Me About My Business##8584 |goto Tanaris 65.24,18.58
 step
+  note Narain Soothfancy in Tanaris wants you to speak with Dirge Quikcleave in Gadgetzan.
   talk Dirge Quikcleave##8125
   turnin Never Ask Me About My Business##8584 |goto Tanaris 52.63,28.11
 step
@@ -1200,17 +1241,20 @@ step
   talk Dirge Quikcleave##8125
   accept Return to Narain##8587 |goto Tanaris 52.63,28.11
 step
+  note Deliver the 500 Pound Chicken to Narain Soothfancy in Tanaris.
   talk Narain Soothfancy##11811
   turnin Return to Narain##8587 |goto Tanaris 65.24,18.58
 step
   talk Narain Soothfancy##11811
   accept Draconic for Dummies##8597 |goto Tanaris 65.24,18.58
 step
+  note Find Narain Soothfancy's book, buried on an island in the South Seas.
   turnin Draconic for Dummies##8597 |goto Azeroth - the world map 29.99,89.15
 step
   click Freshly Dug Dirt##180652
   accept rAnS0m##8598 |goto Azeroth - the world map 29.99,89.15
 step
+  note Return the Ransom Letter to Narain Soothfancy in Tanaris.
   talk Narain Soothfancy##11811
   turnin rAnS0m##8598 |goto Tanaris 65.24,18.58
 step
@@ -1269,24 +1313,28 @@ step
   kill C'Thun##15727 |goto Temple of Ahn'Qiraj - Dungeon -1,-1 |raid |tip Loot the quest item here — it starts the quest.
   accept C'Thun's Legacy##8801 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Take the Eye of C'Thun to Caelastrasz in the Temple of Ahn'Qiraj.
   talk Caelestrasz##15379
   turnin C'Thun's Legacy##8801 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
   talk Caelestrasz##15379
   accept The Savior of Kalimdor##8802 |goto Temple of Ahn'Qiraj - Dungeon -1,-1
 step
+  note Take the Eye of C'Thun to Anachronos at the Caverns of Time.
   talk Anachronos##15192
   turnin The Savior of Kalimdor##8802 |goto Tanaris 65.27,50.03
 step
   talk Malfurion Stormrage##15362
   accept Eranikus, Tyrant of the Dream##8733 |goto The Temple of Atal'Hakkar - Dungeon -1,-1
 step
+  note Travel to the continent of Teldrassil and find Malfurion's agent somewhere outside the walls of Darnassus.
   talk Forest Wisp##15624
   turnin Eranikus, Tyrant of the Dream##8733 |goto Teldrassil 37.55,47.92
 step
   talk Forest Wisp##15624
   accept Tyrande and Remulos##8734 |goto Teldrassil 37.55,47.92
 step
+  note Travel to the Moonglade and speak to Keeper Remulos.
   talk Keeper Remulos##11832
   turnin Tyrande and Remulos##8734 |goto Moonglade 36.18,41.79
 step
@@ -1303,12 +1351,14 @@ step
   talk Keeper Remulos##11832
   accept The Nightmare Manifests##8736 |goto Moonglade 36.18,41.79
 step
+  note Defend Nighthaven from Eranikus. Do not let Keeper Remulos perish. Do not slay Eranikus. Defend yourself. Await Tyrande.
   talk Keeper Remulos##11832
   turnin The Nightmare Manifests##8736 |goto Moonglade 36.18,41.79
 step
   talk Keeper Remulos##11832
   accept The Champion Returns##8741 |goto Moonglade 36.18,41.79
 step
+  note Take the Green Scepter Shard to Anachronos at the Caverns of Time in Tanaris.
   talk Anachronos##15192
   turnin The Champion Returns##8741 |goto Tanaris 65.27,50.03
 step

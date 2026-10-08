@@ -4,6 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Deadmines", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
+	rev = "69c256fb",
 }, [[
 step
   talk Wilder Thistlenettle##656
@@ -35,6 +36,7 @@ step
   talk Wilder Thistlenettle##656
   turnin Collecting Memories##168 |goto Stormwind City 70.31,40.82
 step
+  note Gryan Stoutmantle wants you to talk to Wiley in Lakeshire.
   talk Wiley the Black##266
   turnin The Defias Brotherhood##65 |goto Redridge Mountains 21.39,45.35
 step
@@ -44,24 +46,28 @@ step
   talk Wilder Thistlenettle##656
   turnin Oh Brother. . .##167 |goto Stormwind City 70.31,40.82
 step
+  note Deliver the Letter to the City Architect to Baros Alexston in Stormwind.
   talk Baros Alexston##1646
   turnin The Unsent Letter##373 |goto Stormwind City 57.74,47.86
 step
   talk Wiley the Black##266
   accept The Defias Brotherhood##132 |goto Redridge Mountains 21.39,45.35
 step
+  note Take Wiley's Note to Gryan Stoutmantle in Westfall.
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##132 |goto Westfall 56.33,47.52
 step
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##135 |goto Westfall 56.33,47.52
 step
+  note Take Wiley's Note to Mathias Shaw in Stormwind.
   talk Master Mathias Shaw##332
   turnin The Defias Brotherhood##135 |goto Stormwind City 78.31,70.74
 step
   talk Master Mathias Shaw##332
   accept The Defias Brotherhood##141 |goto Stormwind City 78.31,70.74
 step
+  note Take Shaw's report to Gryan Stoutmantle in Westfall.
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##141 |goto Westfall 56.33,47.52
 step
@@ -77,6 +83,7 @@ step
   talk The Defias Traitor##467
   accept The Defias Brotherhood##155 |goto Westfall 55.68,47.5
 step
+  note Escort the Defias Traitor to the secret hideout of the Defias Brotherhood. Once the Defias Traitor shows you where VanCleef and his men are hiding out, return to Gryan Stoutmantle with the information.
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##155 |goto Westfall 56.33,47.52
 step

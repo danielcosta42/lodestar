@@ -5,11 +5,44 @@ ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (54-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Eastern Plaguelands (56-60)",
+	rev = "d6234b7a",
 }, [[
 step
   only completed(4183)
   talk Magistrate Solomon##344
   accept The True Masters##4184 |goto Redridge Mountains 24.9,44.45
+step
+  talk Marcy Baker##256390
+  accept A Sealed Crate##91899 |goto Redridge Mountains 9.75,71.02
+step
+  collect Sealed Apprentice Crate##248765 |q 91899 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  accept A Sealed Crate##91900 |goto Redridge Mountains 9.75,71.02
+step
+  collect Sealed Journeyman Crate##248766 |q 91900 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  accept A Sealed Crate##91904 |goto Redridge Mountains 9.75,71.02
+step
+  collect Sealed Apprentice Crate##248770 |q 91904 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  accept A Sealed Crate##91905 |goto Redridge Mountains 9.75,71.02
+step
+  collect Sealed Journeyman Crate##248771 |q 91905 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91899 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91900 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91904 |goto Redridge Mountains 9.75,71.02
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91905 |goto Redridge Mountains 9.75,71.02
 step
   only completed(4183)
   talk Highlord Bolvar Fordragon##1748
@@ -37,26 +70,6 @@ step
   talk Jennea Cannon##5497
   accept Magma or Lava?##84396 |goto Stormwind City 49.56,85.8
 step
-  talk Marcy Baker##256390
-  accept A Sealed Crate##91899 |goto Redridge Mountains 9.75,71.02
-step
-  collect Sealed Apprentice Crate##248765 |q 91899 |goto Redridge Mountains 9.75,71.02
-step
-  talk Marcy Baker##256390
-  accept A Sealed Crate##91900 |goto Redridge Mountains 9.75,71.02
-step
-  collect Sealed Journeyman Crate##248766 |q 91900 |goto Redridge Mountains 9.75,71.02
-step
-  talk Marcy Baker##256390
-  accept A Sealed Crate##91904 |goto Redridge Mountains 9.75,71.02
-step
-  collect Sealed Apprentice Crate##248770 |q 91904 |goto Redridge Mountains 9.75,71.02
-step
-  talk Marcy Baker##256390
-  accept A Sealed Crate##91905 |goto Redridge Mountains 9.75,71.02
-step
-  collect Sealed Journeyman Crate##248771 |q 91905 |goto Redridge Mountains 9.75,71.02
-step
   only Rogue completed(8977)
   note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Deliana in Ironforge.
   collect Shadowcraft Belt##16713 |q 8935 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Legionnaire, Firebrand Grunt, Scarshield Quartermaster
@@ -82,18 +95,6 @@ step
   only Mage
   talk Jennea Cannon##5497
   turnin Magma or Lava?##84396 |goto Stormwind City 49.56,85.8 |tip {turninat}Stormwind City
-step
-  talk Marcy Baker##256390
-  turnin A Sealed Crate##91899 |goto Redridge Mountains 9.75,71.02
-step
-  talk Marcy Baker##256390
-  turnin A Sealed Crate##91900 |goto Redridge Mountains 9.75,71.02
-step
-  talk Marcy Baker##256390
-  turnin A Sealed Crate##91904 |goto Redridge Mountains 9.75,71.02
-step
-  talk Marcy Baker##256390
-  turnin A Sealed Crate##91905 |goto Redridge Mountains 9.75,71.02
 step
   only completed(4183)
   talk Highlord Bolvar Fordragon##1748

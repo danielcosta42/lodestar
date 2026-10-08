@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Felwood (52-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Azshara (52-58)",
+	rev = "ef1d0c1c",
 }, [[
 step
   talk Grazle##11554
@@ -187,10 +188,6 @@ step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
 step
-  only not completed(5250) not haveq(5250)
-  talk Wynd Nightchaser##11079
-  turnin To Winterspring!##5249 |goto Winterspring 51.97,30.39 |tip {turninat}Winterspring
-step
   talk Gorn One Eye##11555
   accept The Root of All Evil##8481 |goto Felwood 65.18,2.68
 step
@@ -200,11 +197,18 @@ step
   talk Gorn One Eye##11555
   turnin The Root of All Evil##8481 |goto Felwood 65.18,2.68
 step
+  talk Gorn One Eye##11555
+  accept The Brokering of Peace##8484 |goto Felwood 65.18,2.68
+step
+  only not completed(5250) not haveq(5250)
+  talk Wynd Nightchaser##11079
+  turnin To Winterspring!##5249 |goto Winterspring 51.97,30.39 |tip {turninat}Winterspring
+step
   talk Salfa##11556
   turnin Speak to Salfa##8465 |goto Winterspring 27.73,34.5 |tip {turninat}Winterspring
 step
-  talk Gorn One Eye##11555
-  accept The Brokering of Peace##8484 |goto Felwood 65.18,2.68
+  talk King Magni Bronzebeard##2784
+  turnin The Brokering of Peace##8484 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
 step
   note Travel to Darnassus and use Eridan's Vial to collect a Vial of Blessed Water from the Temple of the Moon. Return to Eridan with the filled vial.
   collect Vial of Blessed Water##5646 |q 4441 |goto Darnassus 39.18,85.59 |tip {dropsfrom}Temple of the Moon Fountain
@@ -219,9 +223,6 @@ step
   only Warlock
   talk Impsy##14470
   turnin Flawless Fel Essence##7602 |goto Felwood 41.36,45.02
-step
-  talk King Magni Bronzebeard##2784
-  turnin The Brokering of Peace##8484 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
 step
   talk Islen Waterseer##5901
   turnin Seeking Spiritual Aid##5158 |goto The Barrens 65.83,43.78 |tip {turninat}The Barrens
@@ -250,6 +251,6 @@ step
   talk Kayneth Stillwind##3848
   turnin Ancient Spirit##4261 |goto Ashenvale 85.24,44.71 |tip {turninat}Ashenvale
 step
-  note {travel}Darnassus
-  goto Darnassus 42.21,7.27
+  note {travel}Azshara
+  goto Azshara 11.37,78.17
 ]])

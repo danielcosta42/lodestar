@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Teldrassil (48-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Un'Goro Crater (50-55)",
+	rev = "c7267052",
 }, [[
 step
   note {fp}Vesprystus
@@ -26,9 +27,17 @@ step
   talk Daryn Lightwind##7907
   accept The Borrower##2941 |goto Teldrassil 55.41,92.23
 step
+  only not completed(5249) not haveq(5249)
+  talk Daryn Lightwind##7907
+  accept Starfall##5250 |goto Teldrassil 55.41,92.23
+step
   only completed(2944)
   talk Troyas Moonbreeze##7764
   turnin Return to Troyas##2943 |goto Feralas 31.78,45.5 |tip {turninat}Feralas
+step
+  only not completed(5249) not haveq(5249)
+  talk Wynd Nightchaser##11079
+  turnin Starfall##5250 |goto Winterspring 51.97,30.39 |tip {turninat}Winterspring
 step
   only not completed(3789) not completed(3790) not haveq(3789) not haveq(3790)
   talk Innkeeper Saelienne##6735
@@ -38,12 +47,8 @@ step
   talk Herald Moonstalker##10878
   accept The New Frontier##1047 |goto Darnassus 47.81,81.97
 step
-  only not completed(5249) not haveq(5249)
-  talk Daryn Lightwind##7907
-  accept Starfall##5250 |goto Teldrassil 55.41,92.23
-step
-  talk Crier Goodman##2198
-  accept Feathermoon Stronghold##7494 |goto Stormwind City 56.39,74.09
+  talk Herald Moonstalker##10878
+  accept Feathermoon Stronghold##7494 |goto Darnassus 47.81,81.97
 step
   only not completed(3789) not completed(3790) not haveq(3789) not haveq(3790)
   talk Arch Druid Fandral Staghelm##3516
@@ -52,10 +57,6 @@ step
   only not completed(1015) not completed(1019) not haveq(1015) not haveq(1019)
   talk Arch Druid Fandral Staghelm##3516
   turnin The New Frontier##1047 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
-step
-  only not completed(5249) not haveq(5249)
-  talk Wynd Nightchaser##11079
-  turnin Starfall##5250 |goto Winterspring 51.97,30.39 |tip {turninat}Winterspring
 step
   talk Latronicus Moonspear##7877
   turnin Feathermoon Stronghold##7494 |goto Feralas 30.38,46.17 |tip {turninat}Feralas

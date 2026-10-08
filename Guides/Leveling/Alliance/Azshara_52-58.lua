@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Azshara (52-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Winterspring (54-59)",
+	rev = "ee726597",
 }, [[
 step
   only Hunter
@@ -149,61 +150,13 @@ step
   talk Duke Hydraxis##13278
   accept Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
 step
-  only completed(3449)
-  talk Tymor##8507
-  turnin Return to Tymor##3461 |goto Ironforge 30.96,4.83 |tip {turninat}Ironforge
-step
-  only Druid
-  talk Torwa Pathfinder##9619
-  turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96 |tip {turninat}Un'Goro Crater
-step
-  only completed(6761)
-  talk Mathrengyl Bearwalker##4217
-  accept Rabine Saturna##6762 |goto Darnassus 35.37,8.4
-step
-  talk Rabine Saturna##11801
-  accept A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1
-step
-  note Kill 15 Dust Stormers and 15 Desert Rumblers and then return to Duke Hydraxis in Azshara.
-  kill Dust Stormer##11744 |q 6805 |goto Silithus 21.6,22.4
-step
-  note Travel to Silithus and search for a Reliquary of Purity within the ruins of Southwind Village. If you are able to find it, return with it to Rabine Saturna in Nighthaven, Moonglade.
-  collect Reliquary of Purity##22201 |q 5527 |goto Silithus 63.23,55.35 |tip {dropsfrom}Dusty Reliquary
-step
-  only completed(6761)
-  talk Rabine Saturna##11801
-  turnin Rabine Saturna##6762 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
-step
-  talk Duke Hydraxis##13278
-  turnin Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
-step
-  talk Rabine Saturna##11801
-  turnin A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
-step
-  only completed(6761)
-  talk Rabine Saturna##11801
-  accept Wasteland##1124 |goto Moonglade 51.69,45.1
-step
   only completed(2744)
   talk Loramus Thalipedes##7783
   accept Breaking the Ward##3508 |goto Azshara 60.82,66.35
 step
-  talk Rabine Saturna##11801
-  accept Shards of the Felvine##5526 |goto Moonglade 51.69,45.1
-step
-  note Find the Felvine in Dire Maul and acquire a shard from it. Chances are you'll only be able to procure one with the demise of Alzzin the Wildshaper. Use the Reliquary of Purity to securely seal the shard inside, and return it to Rabine Saturna in Nighthaven, Moonglade.
-  collect Sealed Reliquary of Purity##18540 |q 5526 |goto Moonglade 51.69,45.1
-step
-  only completed(6761)
-  talk Layo Starstrike##13220
-  turnin Wasteland##1124 |goto Silithus 81.87,18.93 |tip {turninat}Silithus
-step
   only completed(2744)
   talk Loramus Thalipedes##7783
   turnin Breaking the Ward##3508 |goto Azshara 60.82,66.35
-step
-  talk Rabine Saturna##11801
-  turnin Shards of the Felvine##5526 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
 step
   only completed(2744)
   talk Loramus Thalipedes##7783
@@ -246,6 +199,54 @@ step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35
 step
+  only completed(3449)
+  talk Tymor##8507
+  turnin Return to Tymor##3461 |goto Ironforge 30.96,4.83 |tip {turninat}Ironforge
+step
+  only Druid
+  talk Torwa Pathfinder##9619
+  turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96 |tip {turninat}Un'Goro Crater
+step
+  only completed(6761)
+  talk Mathrengyl Bearwalker##4217
+  accept Rabine Saturna##6762 |goto Darnassus 35.37,8.4
+step
+  talk Rabine Saturna##11801
+  accept A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1
+step
+  note Kill 15 Dust Stormers and 15 Desert Rumblers and then return to Duke Hydraxis in Azshara.
+  kill Dust Stormer##11744 |q 6805 |goto Silithus 21.6,22.4
+step
+  note Travel to Silithus and search for a Reliquary of Purity within the ruins of Southwind Village. If you are able to find it, return with it to Rabine Saturna in Nighthaven, Moonglade.
+  collect Reliquary of Purity##22201 |q 5527 |goto Silithus 63.23,55.35 |tip {dropsfrom}Dusty Reliquary
+step
+  only completed(6761)
+  talk Rabine Saturna##11801
+  turnin Rabine Saturna##6762 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
+step
+  talk Duke Hydraxis##13278
+  turnin Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
+step
+  talk Rabine Saturna##11801
+  turnin A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
+step
+  only completed(6761)
+  talk Rabine Saturna##11801
+  accept Wasteland##1124 |goto Moonglade 51.69,45.1
+step
+  talk Rabine Saturna##11801
+  accept Shards of the Felvine##5526 |goto Moonglade 51.69,45.1
+step
+  note Find the Felvine in Dire Maul and acquire a shard from it. Chances are you'll only be able to procure one with the demise of Alzzin the Wildshaper. Use the Reliquary of Purity to securely seal the shard inside, and return it to Rabine Saturna in Nighthaven, Moonglade.
+  collect Sealed Reliquary of Purity##18540 |q 5526 |goto Moonglade 51.69,45.1
+step
+  only completed(6761)
+  talk Layo Starstrike##13220
+  turnin Wasteland##1124 |goto Silithus 81.87,18.93 |tip {turninat}Silithus
+step
+  talk Rabine Saturna##11801
+  turnin Shards of the Felvine##5526 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
+step
   note {travel}Winterspring
-  goto Winterspring 31.27,45.16
+  goto Winterspring 51.97,30.39
 ]])

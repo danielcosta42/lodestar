@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dustwallow Marsh (35-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Thousand Needles (30-41)",
+	rev = "0d79ff11",
 }, [[
 step
   note {fp}Baldruc
@@ -199,6 +200,9 @@ step
   talk Captain Garran Vimes##4944
   turnin The Deserters##1287 |goto Dustwallow Marsh 68.21,48.62
 step
+  talk Archmage Tervosh##4967
+  accept Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
+step
   talk Shindrell Swiftfire##3845
   turnin Journey to Astranaar##1133 |goto Ashenvale 34.67,48.84 |tip {turninat}Ashenvale
 step
@@ -209,9 +213,6 @@ step
   only Warlock completed(4961)
   talk Menara Voidrender##6266
   turnin Returning the Cleansed Orb##4976 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
-step
-  talk Archmage Tervosh##4967
-  accept Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
 step
   note Bring 10 Highperch Venom Sacs to Fiora Longears in Theramore.
   collect 10 Highperch Venom Sac##5809 |q 1135 |goto Thousand Needles 11.8,37.8 |tip {dropsfrom}Highperch Wyvern, Highperch Consort, Highperch Patriarch
@@ -246,6 +247,6 @@ step
   talk Tabetha##6546
   turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step
-  note {travel}Darnassus
-  goto Darnassus 59.51,45.38
+  note {travel}Thousand Needles
+  goto Thousand Needles 78.06,77.13
 ]])

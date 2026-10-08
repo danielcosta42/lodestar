@@ -3,6 +3,7 @@ local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Attunements/Molten Core - Attunement to the Core", {
 	author = "Lodestar Generator",
+	rev = "a0830456",
 }, [[
 step
   talk Lothos Riftwaker##14387

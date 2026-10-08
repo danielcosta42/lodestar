@@ -5,6 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Burning Steppes (52-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Western Plaguelands (53-58)",
+	rev = "647de8a9",
 }, [[
 step
   talk Royal Historian Archesonus##8879
@@ -101,34 +102,44 @@ step
   talk Oralius##9177
   turnin Ogre Head On A Stick = Party##3825 |goto Burning Steppes 84.56,68.68
 step
-  only not completed(1019) not completed(1047) not haveq(1019) not haveq(1047)
-  talk Crier Goodman##2198
-  accept The New Frontier##1015 |goto Stormwind City 56.39,74.09
-step
   talk Kibler##10260
   accept Kibler's Exotic Pets##4729 |goto Burning Steppes 65.89,21.92
 step
   note Travel to Blackrock Spire and find Bloodaxe Worg Pups. Use the cage to carry the ferocious little beasts. Bring back a Caged Worg Pup to Kibler.
   collect Caged Worg Pup##12263 |q 4729 |goto Burning Steppes 65.89,21.92
 step
-  talk Count Remington Ridgewell##2285
-  accept Mayara Brightwing##4766 |goto Stormwind City 76.94,47.83
+  talk Kibler##10260
+  turnin Kibler's Exotic Pets##4729 |goto Burning Steppes 65.89,21.92
 step
   talk Ragged John##9563
   accept Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  note In the heart of Blackrock Spire you will find Mother Smolderweb. Engage her and get her to poison you. Chances are good that you will have to kill her as well. Return to Ragged John when you are poisoned so that he can 'milk' you.
+  talk Ragged John##9563 |q 4866 |goto Burning Steppes 65.01,23.76
+step
+  talk Ragged John##9563
+  turnin Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
+step
   only completed(4322)
   talk Marshal Maxwell##9560
   accept Stormwind Rendezvous##6402 |goto Burning Steppes 84.74,69.02
+step
+  only completed(4322)
+  talk Reginald Windsor##12580
+  turnin Stormwind Rendezvous##6402 |goto Stormwind City 73.61,91.05 |tip {turninat}Stormwind City
+step
+  only not completed(1019) not completed(1047) not haveq(1019) not haveq(1047)
+  talk Crier Goodman##2198
+  accept The New Frontier##1015 |goto Stormwind City 56.39,74.09
+step
+  talk Count Remington Ridgewell##2285
+  accept Mayara Brightwing##4766 |goto Stormwind City 76.94,47.83
 step
   note Slay Overmaster Pyron and return to Jalinda Sprig.
   kill Overmaster Pyron##9026 |q 4262 |goto Eastern Kingdoms - the continent map 46.82,67.7 |elite
 step
   note Listen to Royal Historian Archesonus recant the history of Thaurissan.
   talk Royal Historian Archesonus##8879 |q 3702 |goto Ironforge 38.37,55.31
-step
-  note In the heart of Blackrock Spire you will find Mother Smolderweb. Engage her and get her to poison you. Chances are good that you will have to kill her as well. Return to Ragged John when you are poisoned so that he can 'milk' you.
-  talk Ragged John##9563 |q 4866 |goto Burning Steppes 65.01,23.76
 step
   talk Jalinda Sprig##9561
   turnin Overmaster Pyron##4262 |goto Burning Steppes 85.41,70.06
@@ -140,18 +151,8 @@ step
   talk Arch Druid Fandral Staghelm##3516
   turnin The New Frontier##1015 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
 step
-  talk Kibler##10260
-  turnin Kibler's Exotic Pets##4729 |goto Burning Steppes 65.89,21.92
-step
   talk Mayara Brightwing##9565
   turnin Mayara Brightwing##4766 |goto Burning Steppes 84.84,69.12
-step
-  talk Ragged John##9563
-  turnin Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
-step
-  only completed(4322)
-  talk Reginald Windsor##12580
-  turnin Stormwind Rendezvous##6402 |goto Stormwind City 73.61,91.05 |tip {turninat}Stormwind City
 step
   talk Magistrate Solomon##344
   turnin The True Masters##4183 |goto Redridge Mountains 24.9,44.45 |tip {turninat}Redridge Mountains
@@ -165,6 +166,6 @@ step
   talk Royal Historian Archesonus##8879
   turnin The Smoldering Ruins of Thaurissan##3701 |goto Ironforge 38.37,55.31 |tip {turninat}Ironforge
 step
-  note {travel}Stormwind City
-  goto Stormwind City 60.2,57.03
+  note {travel}Western Plaguelands
+  goto Western Plaguelands 38.4,54.05
 ]])
