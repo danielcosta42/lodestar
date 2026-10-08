@@ -20,3 +20,17 @@ jobs:
         uses: BigWigsMods/packager@v2
         with:
           args: -d
+
+      # O packager não falha quando a cópia quebra: de julho a outubro todo zip
+      # saiu só com o CHANGELOG e foi assim para o CurseForge (issue #11).
+      - name: Check package contents
+        run: |
+          zip=$(ls .release/*.zip | head -n1)
+          echo "pacote: $zip ($(stat -c %s "$zip") bytes)"
+          unzip -Z1 "$zip" | grep -qx "Lodestar/Lodestar.toc" || { echo "::error::o zip não tem Lodestar/Lodestar.toc"; exit 1; }
+          n=$(unzip -Z1 "$zip" | grep -c '\.lua$')
+          echo "arquivos .lua: $n"
+          [ "$n" -ge 50 ] || { echo "::error::o zip tem só $n arquivos .lua"; exit 1; }
+          if unzip -Z1 "$zip" | grep -E '^Lodestar/(tools|docs|specs|\.github)/|\.png$'; then
+            echo "::error::arquivo de desenvolvimento dentro do pacote"; exit 1
+          fi
