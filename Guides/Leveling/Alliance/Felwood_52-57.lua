@@ -1,14 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Felwood (52-56)", {
+ns:RegisterGuide("Leveling/Alliance/Felwood (52-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Azshara (52-58)",
 }, [[
-step
-  talk Laris Geardawdle##9616
-  accept A Little Slime Goes a Long Way##4512 |goto Ironforge 75.77,23.38
 step
   talk Grazle##11554
   accept Timbermaw Ally##8460 |goto Felwood 50.93,85.01
@@ -35,9 +32,6 @@ step
 step
   note Kill 11 Jadefire Felsworns, 9 Jadefire Shadowstalkers, 9 Jadefire Rogues, and Xavathras. Return to Eridan Bluewind in Felwood when the task has been completed.
   kill Jadefire Felsworn##7109 |q 4421 |goto Felwood 38.85,83.2
-step
-  note Bring 6 Filled Cursed Ooze Jars and 6 Filled Tainted Ooze Jars to Laris Geardawdle in Ironforge.
-  collect 6 Filled Cursed Ooze Jar##11947 |q 4512 |goto Felwood 40.17,70.82 |tip {dropsfrom}Cursed Ooze
 step
   note Grazle wants you to prove yourself by killing 6 Deadwood Warriors, 6 Deadwood Pathfinders, and 6 Deadwood Gardeners. Return to him in southern Felwood near the Emerald Sanctuary when you are done.
   kill Deadwood Warrior##7153 |q 8460 |goto Felwood 48.39,91.4
@@ -193,9 +187,6 @@ step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
 step
-  talk Laris Geardawdle##9616
-  turnin A Little Slime Goes a Long Way##4512 |goto Ironforge 75.77,23.38 |tip {turninat}Ironforge
-step
   only not completed(5250) not haveq(5250)
   talk Wynd Nightchaser##11079
   turnin To Winterspring!##5249 |goto Winterspring 51.97,30.39 |tip {turninat}Winterspring
@@ -212,17 +203,11 @@ step
   talk Salfa##11556
   turnin Speak to Salfa##8465 |goto Winterspring 27.73,34.5 |tip {turninat}Winterspring
 step
-  talk Laris Geardawdle##9616
-  accept A Little Slime Goes a Long Way##4513 |goto Ironforge 75.77,23.38
-step
   talk Gorn One Eye##11555
   accept The Brokering of Peace##8484 |goto Felwood 65.18,2.68
 step
   note Travel to Darnassus and use Eridan's Vial to collect a Vial of Blessed Water from the Temple of the Moon. Return to Eridan with the filled vial.
   collect Vial of Blessed Water##5646 |q 4441 |goto Darnassus 39.18,85.59 |tip {dropsfrom}Temple of the Moon Fountain
-step
-  note Bring 10 Filled Pure Sample Jars to Laris Geardawdle in Ironforge.
-  collect 10 Filled Pure Sample Jar##11954 |q 4513 |goto Un'Goro Crater 67.9,36.37 |tip {dropsfrom}Muculent Ooze, Primal Ooze, Glutinous Ooze
 step
   only Warlock
   note Impsy in Felwood has asked that you bring him three Flawless Fel Essences originating from three distinct locations.
@@ -230,9 +215,6 @@ step
 step
   talk Eridan Bluewind##9116
   turnin Felbound Ancients##4441 |goto Felwood 51.35,81.51
-step
-  talk Laris Geardawdle##9616
-  turnin A Little Slime Goes a Long Way##4513 |goto Ironforge 75.77,23.38 |tip {turninat}Ironforge
 step
   only Warlock
   talk Impsy##14470
@@ -268,6 +250,6 @@ step
   talk Kayneth Stillwind##3848
   turnin Ancient Spirit##4261 |goto Ashenvale 85.24,44.71 |tip {turninat}Ashenvale
 step
-  note {travel}Ironforge
-  goto Ironforge 30.96,4.83
+  note {travel}Darnassus
+  goto Darnassus 42.21,7.27
 ]])

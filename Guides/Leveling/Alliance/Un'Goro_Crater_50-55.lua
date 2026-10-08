@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Un'Goro Crater (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Tanaris (53-54)",
+	next = "Leveling/Alliance/Tanaris (53-60)",
 }, [[
 step
   talk Arch Druid Fandral Staghelm##3516

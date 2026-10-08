@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Zephras Isle (5-12)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Westfall (12-18)",
+	next = "Leveling/Alliance/Loch Modan (11-18)",
 }, [[
 step
   talk Ailee Farheart##251362
@@ -882,6 +882,6 @@ step
   talk Denaaris Stargale##259084
   turnin The Magical City of Dalaran##94946 |goto Alterac Mountains 12.41,56.32 |tip {turninat}Alterac Mountains
 step
-  note {travel}Darnassus
-  goto Darnassus 36.65,85.93
+  note {travel}Ironforge
+  goto Ironforge 55.5,47.74
 ]])

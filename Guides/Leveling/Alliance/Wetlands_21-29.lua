@@ -7,10 +7,6 @@ ns:RegisterGuide("Leveling/Alliance/Wetlands (21-29)", {
 	next = "Leveling/Alliance/Elwynn Forest (21-28)",
 }, [[
 step
-  only completed(741)
-  talk Chief Archaeologist Greywhisker##2912
-  accept The Absent Minded Prospector##942 |goto Darnassus 31.24,84.51
-step
   only completed(161)
   talk Ashlan Stonesmirk##1073
   accept A Dark Threat Looms##274 |goto Wetlands 50.05,18.17
@@ -23,10 +19,6 @@ step
 step
   talk James Halloran##2094
   turnin Daily Delivery##469 |goto Wetlands 8.55,55.74
-step
-  only completed(741)
-  talk Archaeologist Flagongut##2911
-  turnin The Absent Minded Prospector##942 |goto Wetlands 10.84,60.43
 step
   talk Karl Boran##1242
   accept Claws from the Deep##279 |goto Wetlands 8.32,58.57
@@ -125,30 +117,9 @@ step
   talk Sida##2111
   accept Digging Through the Ooze##470 |goto Wetlands 11.8,57.99
 step
-  only completed(741)
+  only completed(942)
   talk Archaeologist Flagongut##2911
   accept The Absent Minded Prospector##943 |goto Wetlands 10.84,60.43
-step
-  talk Karl Boran##1242
-  accept Reclaiming Goods##281 |goto Wetlands 8.32,58.57
-step
-  turnin Reclaiming Goods##281 |goto Wetlands 13.52,41.38
-step
-  click Damaged Crate##261
-  accept The Search Continues##284 |goto Wetlands 13.52,41.38
-step
-  turnin The Search Continues##284 |goto Wetlands 13.6,38.22
-step
-  click Sealed Barrel##142151
-  accept Search More Hovels##285 |goto Wetlands 13.6,38.22
-step
-  turnin Search More Hovels##285 |goto Wetlands 13.94,34.81
-step
-  click Half-buried Barrel##259
-  accept Return the Statuette##286 |goto Wetlands 13.94,34.81
-step
-  talk Karl Boran##1242
-  turnin Return the Statuette##286 |goto Wetlands 8.32,58.57
 step
   note Kill 15 Mosshide Gnolls and 10 Mosshide Mongrels, then return to Rethiel the Greenwarden in the Wetlands.
   kill Mosshide Gnoll##1007 |q 276 |goto Wetlands 61.89,71.88
@@ -168,16 +139,13 @@ step
   talk Rethiel the Greenwarden##1244
   turnin Fire Taboo##277 |goto Wetlands 56.37,40.4
 step
-  talk Rethiel the Greenwarden##1244
-  accept Blisters on The Land##275 |goto Wetlands 56.37,40.4
-step
   talk Merrin Rockweaver##1076
   turnin In Search of The Excavation Team##305 |goto Wetlands 38.91,52.34
 step
   talk Merrin Rockweaver##1076
   accept In Search of The Excavation Team##306 |goto Wetlands 38.91,52.34
 step
-  only completed(741)
+  only completed(942)
   note Archaeologist Flagongut in Menethil Harbor wants you to bring him the Stone of Relu and Flagongut's Fossil.
   collect Stone of Relu##5233 |q 943 |goto Wetlands 23.89,47.15 |tip {dropsfrom}Mottled Raptor, Mottled Screecher, Mottled Scytheclaw
 step
@@ -187,12 +155,42 @@ step
   talk Sida##2111
   turnin Digging Through the Ooze##470 |goto Wetlands 11.8,57.99
 step
-  only completed(741)
+  only completed(942)
   talk Archaeologist Flagongut##2911
   turnin The Absent Minded Prospector##943 |goto Wetlands 10.84,60.43
 step
+  talk Karl Boran##1242
+  accept Reclaiming Goods##281 |goto Wetlands 8.32,58.57
+step
   talk James Halloran##2094
   accept Apprentice's Duties##471 |goto Wetlands 8.55,55.74
+step
+  turnin Reclaiming Goods##281 |goto Wetlands 13.52,41.38
+step
+  click Damaged Crate##261
+  accept The Search Continues##284 |goto Wetlands 13.52,41.38
+step
+  turnin The Search Continues##284 |goto Wetlands 13.6,38.22
+step
+  click Sealed Barrel##142151
+  accept Search More Hovels##285 |goto Wetlands 13.6,38.22
+step
+  turnin Search More Hovels##285 |goto Wetlands 13.94,34.81
+step
+  click Half-buried Barrel##259
+  accept Return the Statuette##286 |goto Wetlands 13.94,34.81
+step
+  talk Karl Boran##1242
+  turnin Return the Statuette##286 |goto Wetlands 8.32,58.57
+step
+  note Collect 6 Giant Crocolisk Skins and bring them to James Halloran in Menethil Harbor.
+  collect 6 Giant Crocolisk Skin##3348 |q 471 |goto Wetlands 19.03,24.79 |tip {dropsfrom}Giant Wetlands Crocolisk
+step
+  talk Rethiel the Greenwarden##1244
+  accept Blisters on The Land##275 |goto Wetlands 56.37,40.4
+step
+  talk James Halloran##2094
+  turnin Apprentice's Duties##471 |goto Wetlands 8.55,55.74
 step
   talk First Mate Fitzsimmons##1239
   accept The Third Fleet##288 |goto Wetlands 10.9,59.64
@@ -208,9 +206,6 @@ step
 step
   talk Longbraid the Grim##1071
   turnin Fall of Dun Modr##472 |goto Wetlands 49.8,18.26
-step
-  note Collect 6 Giant Crocolisk Skins and bring them to James Halloran in Menethil Harbor.
-  collect 6 Giant Crocolisk Skin##3348 |q 471 |goto Wetlands 19.03,24.79 |tip {dropsfrom}Giant Wetlands Crocolisk
 step
   note Kill 12 Fen Creepers, then return to Rethiel the Greenwarden in the Wetlands.
   kill Fen Creeper##1040 |q 275 |goto Wetlands 35.56,33.45
@@ -235,9 +230,6 @@ step
 step
   talk Prospector Whelgar##1077
   turnin Uncovering the Past##299 |goto Wetlands 38.81,52.39
-step
-  talk James Halloran##2094
-  turnin Apprentice's Duties##471 |goto Wetlands 8.55,55.74
 step
   only completed(455)
   talk Valstag Ironjaw##2086

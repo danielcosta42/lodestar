@@ -1,10 +1,10 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Durotar (5-11)", {
+ns:RegisterGuide("Leveling/Horde/Durotar (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/The Barrens (13-20)",
+	next = "Leveling/Horde/The Barrens (12-20)",
 }, [[
 step
   talk Kaltunk##10176
@@ -239,6 +239,10 @@ step
   talk Orgnil Soulscar##3142
   accept Threat from Below##99052 |goto Durotar 52.24,43.15
 step
+  only Skyborne completed(95350)
+  talk Thrall##4949
+  accept Exploring the Horde##93739 |goto Orgrimmar 31.73,37.82
+step
   only not Orc not Tauren not Skyborne Mage
   talk Un'Thuwa##5880
   accept Report to Anastasia##1959 |goto Durotar 56.31,75.11
@@ -324,6 +328,10 @@ step
 step
   note Kill the sea giant along Durotar's north coast and bring back proof of your accomplishment.
   collect Aggor's Belt##286009 |q 99052 |goto Durotar 58.6,16.34 |tip {dropsfrom}Aggor the Young
+step
+  only Skyborne completed(95350)
+  note Speak with Nazgrel in Grommash Hold to receive further instructions. Use the instructions received to locate and speak with Vol'jin, Cairne Bloodhoof, and Lady Sylvanas Windrunner.
+  talk Nazgrel##3230 |q 93739 |goto Orgrimmar 32.3,35.75
 step
   talk Gornek##3143
   turnin The New Horde##787 |goto Durotar 42.06,68.33
@@ -491,6 +499,10 @@ step
   talk Orgnil Soulscar##3142
   turnin Threat from Below##99052 |goto Durotar 52.24,43.15
 step
+  only Skyborne completed(95350)
+  talk Thrall##4949
+  turnin Exploring the Horde##93739 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
+step
   only not Orc not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
   turnin Report to Anastasia##1959 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
@@ -535,6 +547,9 @@ step
   talk Un'Thuwa##5880
   accept Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
+  talk Thrall##4949
+  accept Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82
+step
   only not Undead not Tauren not Skyborne Hunter
   talk Thotar##3171
   accept Taming the Beast##6062 |goto Durotar 51.85,43.49
@@ -568,6 +583,9 @@ step
   only not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
   note Destroy 4 Ju-Ju Heaps, then return to Un'thuwa in Sen'jin Village.
   collect Ju-Ju Heap##102986 |q 1884 |goto Durotar 67.79,83.37
+step
+  note Take the Lieutenant's Insignia to Neeru Fireblade and speak to him. Gauge if he believes you are a member of the Burning Blade and then return to Thrall in Orgrimmar.
+  talk Neeru Fireblade##3216 |q 5727 |goto Orgrimmar 49.47,50.59
 step
   only not Undead not Tauren not Skyborne Hunter
   note Use the Taming Rod to tame a Dire Mottled Boar. Practice your skills, then return the Taming Rod to Thotar in Razor Hill.
@@ -612,6 +630,9 @@ step
   only not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
   talk Un'Thuwa##5880
   turnin Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
+step
+  talk Thrall##4949
+  turnin Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
 step
   only not Undead not Tauren not Skyborne Hunter
   talk Thotar##3171

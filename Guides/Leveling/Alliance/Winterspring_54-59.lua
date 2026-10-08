@@ -1,7 +1,7 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Winterspring (54-60)", {
+ns:RegisterGuide("Leveling/Alliance/Winterspring (54-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Silithus (57-60)",
@@ -97,44 +97,8 @@ step
   talk Haleh##10929
   accept Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
-  only completed(6403)
-  talk Highlord Bolvar Fordragon##1748
-  accept The Dragon's Eye##6501 |goto Stormwind City 80.21,38.35
-step
   talk Harlo Wigglesworth##11755
   accept A Little Luck##6606 |goto Winterspring 61.12,38.43
-step
-  only Druid
-  talk Deliana##16013
-  accept An Earnest Proposition##8905 |goto Ironforge 43.53,52.64
-step
-  only Hunter
-  talk Deliana##16013
-  accept An Earnest Proposition##8906 |goto Ironforge 43.53,52.64
-step
-  only Mage
-  talk Deliana##16013
-  accept An Earnest Proposition##8907 |goto Ironforge 43.53,52.64
-step
-  only Paladin
-  talk Deliana##16013
-  accept An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
-step
-  only Priest
-  talk Deliana##16013
-  accept An Earnest Proposition##8909 |goto Ironforge 43.53,52.64
-step
-  only Rogue
-  talk Deliana##16013
-  accept An Earnest Proposition##8910 |goto Ironforge 43.53,52.64
-step
-  only Warlock
-  talk Deliana##16013
-  accept An Earnest Proposition##8911 |goto Ironforge 43.53,52.64
-step
-  only Warrior
-  talk Deliana##16013
-  accept An Earnest Proposition##8912 |goto Ironforge 43.53,52.64
 step
   only completed(3908)
   note Seek out Gregan Brewspewer in northern Feralas. From him, learn how you may acquire the Videre Elixir, then return to Donova Snowden in Winterspring.
@@ -142,38 +106,6 @@ step
 step
   note Salfa wants you to kill 8 Winterfall Shaman, 8 Winterfall Den Watchers, and 8 Winterfall Ursa. Salfa is located just outside the entrance to Timbermaw Hold in Winterspring.
   kill Winterfall Shaman##7439 |q 8464 |goto Winterspring 67.86,38.06
-step
-  only Druid
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Wildheart Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 8905 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only Hunter
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Beaststalker's Bindings to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 8906 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only Mage
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Magister's Bindings to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 8907 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only Paladin
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 8908 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only Priest
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with 1 set of Devout Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 8909 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only Rogue
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Shadowcraft Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 8910 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only Warlock
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Dreadmist Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 8911 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only Warrior
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Bracers of Valor to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 8912 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
 step
   only completed(3908)
   talk Donova Snowden##9298
@@ -197,44 +129,8 @@ step
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
-  only completed(6403)
-  talk Haleh##10929
-  turnin The Dragon's Eye##6501 |goto Winterspring 54.55,51.2
-step
   talk Witch Doctor Mau'ari##10307
   turnin A Little Luck##6606 |goto Winterspring 61.92,38.3
-step
-  only Druid
-  talk Deliana##16013
-  turnin An Earnest Proposition##8905 |goto Ironforge 43.53,52.64 |tip {turninat}Ironforge
-step
-  only Hunter
-  talk Deliana##16013
-  turnin An Earnest Proposition##8906 |goto Ironforge 43.53,52.64 |tip {turninat}Ironforge
-step
-  only Mage
-  talk Deliana##16013
-  turnin An Earnest Proposition##8907 |goto Ironforge 43.53,52.64 |tip {turninat}Ironforge
-step
-  only Paladin
-  talk Deliana##16013
-  turnin An Earnest Proposition##8908 |goto Ironforge 43.53,52.64 |tip {turninat}Ironforge
-step
-  only Priest
-  talk Deliana##16013
-  turnin An Earnest Proposition##8909 |goto Ironforge 43.53,52.64 |tip {turninat}Ironforge
-step
-  only Rogue
-  talk Deliana##16013
-  turnin An Earnest Proposition##8910 |goto Ironforge 43.53,52.64 |tip {turninat}Ironforge
-step
-  only Warlock
-  talk Deliana##16013
-  turnin An Earnest Proposition##8911 |goto Ironforge 43.53,52.64 |tip {turninat}Ironforge
-step
-  only Warrior
-  talk Deliana##16013
-  turnin An Earnest Proposition##8912 |goto Ironforge 43.53,52.64 |tip {turninat}Ironforge
 step
   turnin Falling to Corruption##5084 |goto Felwood 60.2,5.84 |tip {turninat}Felwood
 step
@@ -258,9 +154,6 @@ step
 step
   talk Witch Doctor Mau'ari##10307
   accept Luck Be With You##969 |goto Winterspring 61.92,38.3
-step
-  talk Deliana##16013
-  accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
   note Collect 2 Pristine Yeti Horns for Umi Rumplesnicker in Everlook.
   collect 2 Pristine Yeti Horn##12367 |q 977 |goto Winterspring 70.01,41.24 |tip {dropsfrom}Ice Thistle Matriarch, Ice Thistle Patriarch
@@ -288,9 +181,6 @@ step
   talk Witch Doctor Mau'ari##10307
   turnin Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
-  talk Mux Manascrambler##16014
-  turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23 |tip {turninat}Tanaris
-step
   only completed(3908)
   talk Gaeriyan##9299
   accept A Grave Situation##3913 |goto Tanaris 53.92,23.33
@@ -306,12 +196,6 @@ step
 step
   talk Witch Doctor Mau'ari##10307
   accept Cache of Mau'ari##975 |goto Winterspring 61.92,38.3
-step
-  talk Mux Manascrambler##16014
-  accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
-step
-  note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
 step
   note Take Umi's Mechanical Yeti and scare her friends with it:
   talk Legacki##10978 |q 5163 |goto Winterspring 61.54,38.61
@@ -330,9 +214,6 @@ step
   talk Witch Doctor Mau'ari##10307
   turnin Cache of Mau'ari##975 |goto Winterspring 61.92,38.3
 step
-  talk Mux Manascrambler##16014
-  turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23 |tip {turninat}Tanaris
-step
   only completed(3908)
   click A Conspicuous Gravestone##148504
   accept Linken's Sword##3914 |goto Tanaris 53.81,29.06
@@ -343,17 +224,11 @@ step
   click Jaron's Wagon##175586
   accept Enraged Wildkin##4864 |goto Winterspring 61.44,60.68
 step
-  talk Mux Manascrambler##16014
-  accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
-step
   note Collect 3 Toxic Horror Droplets for Donova Snowden in Winterspring.
   collect 3 Toxic Horror Droplet##12822 |q 5086 |goto Felwood 48.91,24.66 |tip {dropsfrom}Toxic Horror
 step
   note Pick up Jaron's Supplies from the snow, then find the wildkin that stole the amulet Jaron spoke of.
   collect Jaron's Supplies##12525 |q 4864 |goto Winterspring 61.41,60.73
-step
-  note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
   only completed(3908)
   talk Linken##8737
@@ -364,9 +239,6 @@ step
 step
   talk Jaron Stoneshaper##10301
   turnin Enraged Wildkin##4864 |goto Winterspring 52.14,30.43
-step
-  talk Mux Manascrambler##16014
-  turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23 |tip {turninat}Tanaris
 step
   only completed(3908)
   talk Linken##8737
@@ -458,6 +330,6 @@ step
   talk Linken##8737
   turnin It's Dangerous to Go Alone##3962 |goto Un'Goro Crater 44.66,8.1 |tip {turninat}Un'Goro Crater
 step
-  note {travel}Ironforge
-  goto Ironforge 58.54,47.32
+  note {travel}Silithus
+  goto Silithus 81.87,18.93
 ]])

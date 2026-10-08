@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Mulgore (4-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/The Barrens (13-20)",
+	next = "Leveling/Horde/The Barrens (12-20)",
 }, [[
 step
   talk Grull Hawkwind##2980

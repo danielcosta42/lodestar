@@ -398,6 +398,6 @@ step
   talk Raene Wolfrunner##3691
   turnin Raene's Cleansing##1046 |goto Ashenvale 36.62,49.58
 step
-  note {travel}Ironforge
-  goto Ironforge 69.95,21.26
+  note {travel}Desolace
+  goto Desolace 60.86,61.86
 ]])

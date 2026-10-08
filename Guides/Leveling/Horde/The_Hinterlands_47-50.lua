@@ -10,28 +10,20 @@ step
   talk Oran Snakewrithe##7825
   accept Lines of Communication##2995 |goto Undercity 73.06,32.85
 step
-  only completed(649)
-  talk Malton Droffers##6987
-  accept Ripple Recovery##650 |goto Orgrimmar 59.65,36.94
-step
-  only completed(649)
-  talk Gilveradin Sunchaser##7801
-  turnin Ripple Recovery##650 |goto The Hinterlands 26.71,48.59
-step
   click Venom Bottle##142702
   accept Venom Bottles##2933 |goto The Hinterlands 23.54,58.8
 step
   talk Rin'ji##7780
   accept Rin'ji is Trapped!##2742 |goto The Hinterlands 30.73,46.9
 step
-  only completed(649)
+  only completed(650)
   talk Gilveradin Sunchaser##7801
   accept A Sticky Situation##77 |goto The Hinterlands 26.71,48.59
 step
   note Oran Snakewrithe in Undercity wants you to travel to the Hinterlands and burn the Highvale Records, Highvale Report, and Highvale Notes.
   collect Highvale Records##144071 |q 2995 |goto The Hinterlands 31.99,46.82
 step
-  only completed(649)
+  only completed(650)
   note Recover 10 bottles of Hinterlands Honey Ripple from the crates located around the abandoned Horde base in Skulk Rock.
   collect Hinterlands Honey Ripple##8684 |q 77 |goto The Hinterlands 57.27,41.09 |tip {dropsfrom}Horde Supply Crate
 step
@@ -81,11 +73,11 @@ step
   talk Katoom the Angler##14740
   turnin Gammerita, Mon!##7816 |goto The Hinterlands 80.33,81.54
 step
-  only completed(649)
+  only completed(650)
   talk Gilveradin Sunchaser##7801
   turnin A Sticky Situation##77 |goto The Hinterlands 26.71,48.59
 step
-  only completed(649)
+  only completed(650)
   talk Gilveradin Sunchaser##7801
   accept Ripple Delivery##81 |goto The Hinterlands 26.71,48.59
 step
@@ -149,6 +141,12 @@ step
   talk Primal Torntusk##14736
   accept Dark Vessels##7850 |goto The Hinterlands 78.2,81.18
 step
+  note Katoom the Angler at Revantusk Village in the Hinterlands wants you to kill 15 Saltwater Snapjaw turtles. Return to him when you have completed this task.
+  talk Saltwater Snapjaw##2505 |q 7815 |goto The Hinterlands 81.48,60.46
+step
+  talk Katoom the Angler##14740
+  turnin Snapjaws, Mon!##7815 |goto The Hinterlands 80.33,81.54
+step
   talk Primal Torntusk##14736
   accept Kidnapped Elder Torntusk!##7845 |goto The Hinterlands 78.2,81.18
 step
@@ -157,12 +155,6 @@ step
 step
   click Call to Arms!##179913
   accept Job Opening: Guard Captain of Revantusk Village##7862 |goto The Hinterlands 79.08,78.99
-step
-  note Katoom the Angler at Revantusk Village in the Hinterlands wants you to kill 15 Saltwater Snapjaw turtles. Return to him when you have completed this task.
-  talk Saltwater Snapjaw##2505 |q 7815 |goto The Hinterlands 81.48,60.46
-step
-  talk Katoom the Angler##14740
-  turnin Snapjaws, Mon!##7815 |goto The Hinterlands 80.33,81.54
 step
   talk Elder Torntusk##14757
   turnin Kidnapped Elder Torntusk!##7845 |goto The Hinterlands 59.69,77.84
@@ -220,6 +212,10 @@ step
   talk Oran Snakewrithe##7825
   turnin Rin'ji's Secret##2782 |goto Undercity 73.06,32.85 |tip {turninat}Undercity
 step
+  only completed(650)
+  talk Dran Droffers##6986
+  turnin Ripple Delivery##81 |goto Orgrimmar 59.49,36.57 |tip {turninat}Orgrimmar
+step
   talk Oglethorpe Obnoticus##7406
   turnin Rescue OOX-09/HL!##836 |goto Stranglethorn Vale 28.36,76.35 |tip {turninat}Stranglethorn Vale
 step
@@ -237,10 +233,6 @@ step
 step
   talk Otho Moji'ko##14738
   turnin Another Message to the Wildhammer##7842 |goto The Hinterlands 79.38,79.08
-step
-  only completed(649)
-  talk Dran Droffers##6986
-  turnin Ripple Delivery##81 |goto Orgrimmar 59.49,36.57 |tip {turninat}Orgrimmar
 step
   talk Oran Snakewrithe##7825
   accept Oran's Gratitude##8273 |goto Undercity 73.06,32.85

@@ -7,18 +7,12 @@ ns:RegisterGuide("Leveling/Alliance/Silithus (57-60)", {
 	next = "Leveling/Alliance/Stranglethorn Vale (55-60)",
 }, [[
 step
-  talk Cenarion Emissary Jademoon##15187
-  accept Taking Back Silithus##8275 |goto Ironforge 58.54,47.32
-step
   only completed(1124)
   talk Layo Starstrike##13220
   accept The Spirits of Southwind##1125 |goto Silithus 81.87,18.93
 step
   note {fp}Cloud Skydancer
   goto Silithus 50.58,34.45 |tip {vendor}
-step
-  talk Windcaller Proudhorn##15191
-  turnin Taking Back Silithus##8275 |goto Silithus 51.15,38.29
 step
   talk Beetix Ficklespragg##15189
   accept Deadly Desert Venom##8277 |goto Silithus 51.61,38.63
@@ -96,6 +90,24 @@ step
   talk Noggle Ficklespragg##15190
   accept Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
 step
+  only completed(1124)
+  note Scale the tower of Southwind Village and locate a means to stir the silithid hive into activity. Bring back anything unusual you may uncover when doing so to Layo Starstrike at the Valor's Rest graveyard of Silithus.
+  collect Encrusted Silithid Object##17346 |q 1126 |goto Silithus 60.2,52.6 |tip {dropsfrom}Hive'Ashi Ambusher
+step
+  note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
+  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
+step
+  only completed(1124)
+  talk Layo Starstrike##13220
+  turnin Hive in the Tower##1126 |goto Silithus 81.87,18.93
+step
+  only completed(1124)
+  talk Layo Starstrike##13220
+  accept Umber, Archivist##6844 |goto Silithus 81.87,18.93
+step
+  talk Noggle Ficklespragg##15190
+  turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
+step
   talk Commander Mar'alith##15181
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
@@ -110,10 +122,6 @@ step
 step
   talk Rifleman Torrig##17082
   accept Report to Marshal Bluewall##9415 |goto Silithus 50.68,34.71
-step
-  only completed(1124)
-  note Scale the tower of Southwind Village and locate a means to stir the silithid hive into activity. Bring back anything unusual you may uncover when doing so to Layo Starstrike at the Valor's Rest graveyard of Silithus.
-  collect Encrusted Silithid Object##17346 |q 1126 |goto Silithus 60.2,52.6 |tip {dropsfrom}Hive'Ashi Ambusher
 step
   note Bring 10 Encrypted Twilight Texts to Bor Wildmane in Cenarion Hold.
   collect 10 Encrypted Twilight Text##20404 |q 8318 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth, Twilight Avenger, Twilight Geolord
@@ -140,25 +148,11 @@ step
   talk Rutgar Glyphshaper##15170
   turnin Brann Bronzebeard's Lost Letter##8308 |goto Silithus 41.28,88.45
 step
-  note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
-  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
-step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
   talk Frankal Stonebridge##15171 |q 8304 |goto Silithus 40.81,88.86
 step
   talk Hermit Ortell##15194
   accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
-step
-  only completed(1124)
-  talk Layo Starstrike##13220
-  turnin Hive in the Tower##1126 |goto Silithus 81.87,18.93
-step
-  only completed(1124)
-  talk Layo Starstrike##13220
-  accept Umber, Archivist##6844 |goto Silithus 81.87,18.93
-step
-  talk Noggle Ficklespragg##15190
-  turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
 step
   talk Commander Mar'alith##15181
   turnin Dearest Natalia##8304 |goto Silithus 49.2,34.18

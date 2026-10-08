@@ -174,6 +174,9 @@ step
   note Destroy the flying machine at Bael Modan and return to Gann Stonespire.
   collect Bael Modan Flying Machine##3644 |q 849 |goto The Barrens 46.97,85.63
 step
+  talk Gann Stonespire##3341
+  turnin Revenge of Gann##849 |goto The Barrens 45.89,77
+step
   only not Orc not Tauren not Skyborne Mage completed(1945)
   talk Kil'hala##3484
   accept Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
@@ -181,9 +184,6 @@ step
   only not Orc not Tauren not Skyborne Mage completed(1945)
   talk Kil'hala##3484
   turnin Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
-step
-  talk Gann Stonespire##3341
-  turnin Revenge of Gann##849 |goto The Barrens 45.89,77
 step
   only Rogue completed(2458)
   talk Shenthul##3401
@@ -220,10 +220,6 @@ step
   talk Gan'rul Bloodeye##5875
   accept Seeking Strahad##2996 |goto Orgrimmar 48.25,45.28
 step
-  only Warlock
-  talk Carendin Halgar##5675
-  accept Seeking Strahad##3001 |goto Undercity 85.06,25.99
-step
   talk Korran##3428
   accept The Swarm Grows##1145 |goto The Barrens 51.07,29.63
 step
@@ -233,10 +229,6 @@ step
 step
   talk Myriam Moonsinger##12866
   accept A Host of Evil##6626 |goto The Barrens 49.01,94.94
-step
-  only completed(6522)
-  talk Varimathras##2425
-  accept An Unholy Alliance##6521 |goto Undercity 56.25,92.2
 step
   only Warlock completed(4782)
   talk Menara Voidrender##6266
@@ -255,11 +247,6 @@ step
 step
   note Kill 8 Razorfen Battleguard, 8 Razorfen Thornweavers, and 8 Death's Head Cultists and return to Myriam Moonsinger near the entrance to Razorfen Downs.
   kill Razorfen Battleguard##7873 |q 6626 |goto The Barrens 47.3,89.89 |elite
-step
-  only completed(6522)
-  note Bring Ambassador Malcin's Head to Varimathras in the Undercity.
-  kill Ambassador Malcin##12865 |goto The Barrens 48.4,95.4 |elite
-  collect Ambassador Malcin's Head##17009 |q 6521 |goto The Barrens 48.4,95.4
 step
   only Warlock completed(4782)
   note Bring 10 Vials of Hatefury Blood and 1 Lesser Infernal Stone to Menara Voidrender in the Barrens.
@@ -290,10 +277,6 @@ step
   talk Strahad Farsan##6251
   turnin Seeking Strahad##2996 |goto The Barrens 62.63,35.5
 step
-  only Warlock
-  talk Strahad Farsan##6251
-  turnin Seeking Strahad##3001 |goto The Barrens 62.63,35.5
-step
   talk Belgrom Rockmaul##4485
   turnin The Swarm Grows##1145 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
 step
@@ -303,10 +286,6 @@ step
 step
   talk Myriam Moonsinger##12866
   turnin A Host of Evil##6626 |goto The Barrens 49.01,94.94
-step
-  only completed(6522)
-  talk Varimathras##2425
-  turnin An Unholy Alliance##6521 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
 step
   only Warlock completed(4782)
   talk Menara Voidrender##6266

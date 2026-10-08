@@ -1,15 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (13-13)", {
+ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (13-21)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silverpine Forest (11-20)",
 }, [[
-step
-  only Skyborne completed(95350)
-  talk Thrall##4949
-  accept Exploring the Horde##93739 |goto Orgrimmar 31.73,37.82
 step
   only Undead Paladin
   talk Tanis Alderwood##257648
@@ -82,23 +78,70 @@ step
   talk Glix Xizzix##272526
   turnin Leonid's Letter##98545 |goto Undercity 69.84,47.13 |tip {turninat}Undercity
 step
+  talk Master Apothecary Faranell##2055
+  accept Unending Torment##97289 |goto Undercity 48.82,69.28
+step
+  talk Unfinished Abomination##271613
+  accept Unending Torment##97290 |goto Undercity 47.52,65.9
+step
+  talk Master Apothecary Faranell##2055
+  accept Unending Torment##97291 |goto Undercity 48.82,69.28
+step
+  note Collect a Toxic Skullcap from Tawny Grisette in the Trade Quarter, Blisterweed near the Herbalism Trainer, and Essence of Agony from the poison vendor in the Rogues' Quarter for Master Apothecary Faranell in Undercity.
+  buy Toxic Skullcap##281246 |q 97291 |goto Undercity 65.19,49.84
+step
+  talk Master Apothecary Faranell##2055
+  accept Unending Torment##97292 |goto Undercity 48.82,69.28
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept Diplomatic Incident##91858 |goto Tirisfal Glades 22.05,44.7
+step
   talk Deathguard Kristof##251001
   accept The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.22,60.19
 step
   note Kill Rath'mael in the Ruins of Lordaeron for Deathguard Kristof in Brill.
   kill Rath'mael##250657 |q 92422
 step
-  only Skyborne completed(95350)
-  note Speak with Nazgrel in Grommash Hold to receive further instructions. Use the instructions received to locate and speak with Vol'jin, Cairne Bloodhoof, and Lady Sylvanas Windrunner.
-  talk Nazgrel##3230 |q 93739 |goto Orgrimmar 32.3,35.75
+  only Warrior completed(1848)
+  talk Velora Nitely##6411
+  accept Dragonmaw Shinbones##1846 |goto Undercity 62.14,39.14
 step
-  only Skyborne completed(95350)
-  talk Thrall##4949
-  turnin Exploring the Horde##93739 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
+  only Warrior completed(1848)
+  note Bring 8 Sturdy Dragonmaw Shinbones to Velora Nitely in the Undercity.
+  collect 8 Sturdy Dragonmaw Shinbone##7134 |q 1846 |goto Wetlands 45.83,45.42 |tip {dropsfrom}Dragonmaw Raider, Dragonmaw Swamprunner, Dragonmaw Centurion
+step
+  talk Unfinished Abomination##271613
+  turnin Unending Torment##97289 |goto Undercity 47.52,65.9 |tip {turninat}Undercity
+step
+  talk Master Apothecary Faranell##2055
+  turnin Unending Torment##97290 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
+step
+  talk Master Apothecary Faranell##2055
+  turnin Unending Torment##97291 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
+step
+  talk Master Apothecary Faranell##2055
+  turnin Unending Torment##97292 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
+step
+  only Undead Paladin
+  talk Trevan Rol##248840
+  turnin Diplomatic Incident##91858 |goto Silverpine Forest 43.4,41 |tip {turninat}Silverpine Forest
 step
   talk Deathguard Kristof##251001
   turnin The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.22,60.19
 step
-  note {travel}Orgrimmar
-  goto Orgrimmar 31.73,37.82
+  only Warrior completed(1848)
+  talk Velora Nitely##6411
+  turnin Dragonmaw Shinbones##1846 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
+step
+  only Warrior completed(1848)
+  talk Velora Nitely##6411
+  accept Brutal Legguards##1847 |goto Undercity 62.14,39.14
+step
+  only Warrior completed(1848)
+  talk Velora Nitely##6411
+  turnin Brutal Legguards##1847 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
+step
+  note {travel}Undercity
+  goto Undercity 63.25,48.56
 ]])

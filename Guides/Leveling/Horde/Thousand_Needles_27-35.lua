@@ -46,6 +46,12 @@ step
   talk Hagar Lightninghoof##10539
   accept Serpent Wild##4865 |goto Thousand Needles 44.64,50.29
 step
+  talk Elu##10377
+  accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
+step
+  click Wanted Poster - Arnak Grimtotem##176115
+  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
+step
   talk Dorn Plainstalker##2986
   accept Test of Faith##1149 |goto Thousand Needles 53.95,41.49
 step
@@ -58,6 +64,9 @@ step
   talk Lakota Windsong##10646
   accept Free at Last##4904 |goto Thousand Needles 37.95,26.45
 step
+  note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
+  collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
+step
   talk Motega Firemane##10428
   turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
 step
@@ -67,6 +76,12 @@ step
   talk Pao'ka Swiftmountain##10427
   accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
 step
+  note Bring 10 Highperch Wyvern Eggs to Elu in Freewind Post.
+  collect 10 Highperch Wyvern Egg##12356 |q 4767 |goto Thousand Needles 12.56,37.37
+step
+  talk Elu##10377
+  turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
+step
   talk Cliffwatcher Longhorn##10537
   turnin Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
 step
@@ -74,22 +89,31 @@ step
   turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
 step
   talk Cliffwatcher Longhorn##10537
+  turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
+step
+  talk Cliffwatcher Longhorn##10537
   accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
-  talk Elu##10377
-  accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
+  talk Dorn Plainstalker##2986
+  accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
 step
-  click Wanted Poster - Arnak Grimtotem##176115
-  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
+  talk Fizzle Brassbolts##4454
+  accept Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
+step
+  talk Wizzle Brassbolts##4453
+  accept Hardened Shells##1105 |goto Thousand Needles 78.14,77.12
+step
+  note Bring 6 Salty Scorpid Venoms to Fizzle Brassbolts in the Shimmering Flats.
+  collect 6 Salty Scorpid Venom##5794 |q 1104 |goto Thousand Needles 82.76,79.73 |tip {dropsfrom}Scorpid Terror, Scorpid Reaver, Vile Sting
+step
+  talk Fizzle Brassbolts##4454
+  turnin Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
 step
   note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
   collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.47,35.43
 step
   note Locate and retrieve the three Secret Notes in Darkcloud Pinnacle.
   collect Secret Note #1##12765 |q 5064 |goto Thousand Needles 31.79,32.58 |tip {dropsfrom}Document Chest
-step
-  note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
-  collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
 step
   talk Motega Firemane##10428
   turnin Homeward Bound##4770 |goto Thousand Needles 21.54,32.35
@@ -104,53 +128,11 @@ step
   talk Wizlo Bearingshiner##10941
   turnin Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
 step
-  note Bring 10 Highperch Wyvern Eggs to Elu in Freewind Post.
-  collect 10 Highperch Wyvern Egg##12356 |q 4767 |goto Thousand Needles 12.56,37.37
-step
-  talk Elu##10377
-  turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
+  note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
+  collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.8 |tip {dropsfrom}Grenka Bloodscreech
 step
   talk Cliffwatcher Longhorn##10537
   turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
-step
-  talk Cliffwatcher Longhorn##10537
-  turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
-step
-  talk Dorn Plainstalker##2986
-  accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
-step
-  talk Fizzle Brassbolts##4454
-  accept Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
-step
-  talk Wizzle Brassbolts##4453
-  accept Hardened Shells##1105 |goto Thousand Needles 78.14,77.12
-step
-  talk Kravel Koalbeard##4452
-  accept Rocket Car Parts##1110 |goto Thousand Needles 77.79,77.27
-step
-  talk Pozzik##4630
-  accept Load Lightening##1176 |goto Thousand Needles 80.18,75.88
-step
-  note Bring 6 Salty Scorpid Venoms to Fizzle Brassbolts in the Shimmering Flats.
-  collect 6 Salty Scorpid Venom##5794 |q 1104 |goto Thousand Needles 82.76,79.73 |tip {dropsfrom}Scorpid Terror, Scorpid Reaver, Vile Sting
-step
-  note Bring 30 Rocket Car Parts to Kravel Koalbeard in the Shimmering Flats.
-  collect 30 Rocket Car Parts##5798 |q 1110 |goto Thousand Needles 72.52,72.34 |tip {dropsfrom}Rocket Car Rubble
-step
-  note Get 10 Hollow Vulture Bones for Pozzik in the Shimmering Flats.
-  collect Hollow Vulture Bone##5848 |q 1176 |goto Thousand Needles 87.4,64.92 |tip {dropsfrom}Salt Flats Scavenger, Salt Flats Vulture
-step
-  talk Fizzle Brassbolts##4454
-  turnin Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
-step
-  talk Kravel Koalbeard##4452
-  turnin Rocket Car Parts##1110 |goto Thousand Needles 77.79,77.27
-step
-  talk Pozzik##4630
-  turnin Load Lightening##1176 |goto Thousand Needles 80.18,75.88
-step
-  note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
-  collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.8 |tip {dropsfrom}Grenka Bloodscreech
 step
   talk Dorn Plainstalker##2986
   turnin Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
@@ -163,6 +145,24 @@ step
 step
   talk Wizzle Brassbolts##4453
   turnin Hardened Shells##1105 |goto Thousand Needles 78.14,77.12
+step
+  talk Kravel Koalbeard##4452
+  accept Rocket Car Parts##1110 |goto Thousand Needles 77.79,77.27
+step
+  talk Pozzik##4630
+  accept Load Lightening##1176 |goto Thousand Needles 80.18,75.88
+step
+  note Bring 30 Rocket Car Parts to Kravel Koalbeard in the Shimmering Flats.
+  collect 30 Rocket Car Parts##5798 |q 1110 |goto Thousand Needles 72.52,72.34 |tip {dropsfrom}Rocket Car Rubble
+step
+  note Get 10 Hollow Vulture Bones for Pozzik in the Shimmering Flats.
+  collect Hollow Vulture Bone##5848 |q 1176 |goto Thousand Needles 87.4,64.92 |tip {dropsfrom}Salt Flats Scavenger, Salt Flats Vulture
+step
+  talk Kravel Koalbeard##4452
+  turnin Rocket Car Parts##1110 |goto Thousand Needles 77.79,77.27
+step
+  talk Pozzik##4630
+  turnin Load Lightening##1176 |goto Thousand Needles 80.18,75.88
 step
   note Bring Fragments of Rok'Alim to Dorn Plainstalker in Thousand Needles.
   kill Rok'Alim the Pounder##4499 |goto Thousand Needles 17.1,38.1 |elite
@@ -184,14 +184,6 @@ step
   only Warrior completed(1844)
   talk Orm Stonehoof##6410
   accept Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98
-step
-  only Warrior completed(1846)
-  talk Velora Nitely##6411
-  accept Brutal Legguards##1847 |goto Undercity 62.14,39.14
-step
-  only completed(1160)
-  talk Parqual Fintallas##4488
-  accept Test of Lore##6628 |goto Undercity 57.8,65.42
 step
   talk Craven Drok##5639
   accept Alliance Relations##1431 |goto Orgrimmar 51.3,45.9
@@ -229,14 +221,6 @@ step
   only Warrior completed(1844)
   talk Orm Stonehoof##6410
   turnin Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
-step
-  only Warrior completed(1846)
-  talk Velora Nitely##6411
-  turnin Brutal Legguards##1847 |goto Undercity 62.14,39.14 |tip {turninat}Undercity
-step
-  only completed(1160)
-  talk Parqual Fintallas##4488
-  turnin Test of Lore##6628 |goto Undercity 57.8,65.42 |tip {turninat}Undercity
 step
   talk Keldran##5640
   turnin Alliance Relations##1431 |goto Orgrimmar 22.56,52.63 |tip {turninat}Orgrimmar

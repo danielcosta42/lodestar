@@ -344,6 +344,6 @@ step
   talk Draz'Zilb##4501
   turnin Challenge Overlord Mok'Morokk##1173 |goto Dustwallow Marsh 37.15,33.09
 step
-  note {travel}Undercity
-  goto Undercity 57.8,65.42
+  note {travel}Thousand Needles
+  goto Thousand Needles 80.18,75.88
 ]])

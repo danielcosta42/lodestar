@@ -186,21 +186,6 @@ step
   talk Nathanos Blightcaller##11878
   accept The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
 step
-  only Shaman
-  talk Sagorne Creststrider##13417
-  accept Material Assistance##7667 |goto Orgrimmar 38.66,35.92
-step
-  talk Kruban Darkblade##14843
-  accept The Darkmoon Faire##7926 |goto Orgrimmar 52.9,66.56
-step
-  only Rogue completed(8978)
-  talk Mokvar##16012
-  accept Just Compensation##8941 |goto Orgrimmar 34.95,38.29
-step
-  only Shaman completed(8978)
-  talk Mokvar##16012
-  accept Just Compensation##8942 |goto Orgrimmar 34.95,38.29
-step
   only completed(8946)
   talk Anthion Harmon##16016
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
@@ -235,18 +220,6 @@ step
 step
   note Travel to the northern borders of the Eastern Plaguelands and recover the Quel'Thalas Registry. The item is somewhere in the Quel'Lithien lodge.
   talk Pathstrider##8565 |q 6133 |goto Eastern Plaguelands 46.74,13.01
-step
-  only Shaman
-  note If you are interested in helping Sagorne Crestrider in Orgrimmar's Valley of Wisdom, bring him an Azerothian Diamond and a Pristine Black Diamond.
-  collect Azerothian Diamond##12800 |q 7667 |goto Eastern Plaguelands 50.95,51.13 |tip {dropsfrom}Cliff Breaker, Anubisath Guardian, Small Thorium Vein
-step
-  only Rogue completed(8978)
-  note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Mokvar in Orgrimmar.
-  collect Shadowcraft Belt##16713 |q 8941 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Legionnaire, Firebrand Grunt, Scarshield Quartermaster
-step
-  only Shaman completed(8978)
-  note Bring a Cord of Elements and a set of Gauntlets of Elements to Mokvar in Orgrimmar.
-  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Warlock, Firebrand Invoker, Scarshield Quartermaster
 step
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
   collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
@@ -288,21 +261,6 @@ step
   talk Nathanos Blightcaller##11878
   turnin The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
 step
-  only Shaman
-  talk Sagorne Creststrider##13417
-  turnin Material Assistance##7667 |goto Orgrimmar 38.66,35.92 |tip {turninat}Orgrimmar
-step
-  talk Gelvas Grimegate##14828
-  turnin The Darkmoon Faire##7926 |goto Elwynn Forest 41.5,68.87 |tip {turninat}Elwynn Forest
-step
-  only Rogue completed(8978)
-  talk Mokvar##16012
-  turnin Just Compensation##8941 |goto Orgrimmar 34.95,38.29 |tip {turninat}Orgrimmar
-step
-  only Shaman completed(8978)
-  talk Mokvar##16012
-  turnin Just Compensation##8942 |goto Orgrimmar 34.95,38.29 |tip {turninat}Orgrimmar
-step
   only completed(8946)
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
@@ -335,10 +293,6 @@ step
   talk Nathanos Blightcaller##11878
   accept The Corpulent One##6136 |goto Eastern Plaguelands 22.23,63.51
 step
-  only completed(8978)
-  talk Mokvar##16012
-  accept In Search of Anthion##8930 |goto Orgrimmar 34.95,38.29
-step
   note Find Duskwing and slay him. From the corpse, recover a Patch of Duskwing's Fur and return it to Nathanos Blightcaller.
   kill Duskwing##11897 |goto Eastern Plaguelands 26.08,59.03 |elite
   collect Patch of Duskwing's Fur##15850 |q 6135 |goto Eastern Plaguelands 26.08,59.03
@@ -355,10 +309,6 @@ step
 step
   talk Nathanos Blightcaller##11878
   turnin The Corpulent One##6136 |goto Eastern Plaguelands 22.23,63.51
-step
-  only completed(8978)
-  talk Anthion Harmon##16016
-  turnin In Search of Anthion##8930 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Marlene Redpath##10927
   accept A Strange Historian##5153 |goto Western Plaguelands 49.17,78.57

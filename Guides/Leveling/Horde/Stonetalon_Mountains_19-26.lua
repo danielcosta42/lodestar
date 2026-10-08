@@ -7,21 +7,6 @@ ns:RegisterGuide("Leveling/Horde/Stonetalon Mountains (19-26)", {
 	next = "Leveling/Horde/Ashenvale (22-27)",
 }, [[
 step
-  talk Master Apothecary Faranell##2055
-  accept Unending Torment##97289 |goto Undercity 48.82,69.28
-step
-  talk Unfinished Abomination##271613
-  accept Unending Torment##97290 |goto Undercity 47.52,65.9
-step
-  talk Master Apothecary Faranell##2055
-  accept Unending Torment##97291 |goto Undercity 48.82,69.28
-step
-  note Collect a Toxic Skullcap from Tawny Grisette in the Trade Quarter, Blisterweed near the Herbalism Trainer, and Essence of Agony from the poison vendor in the Rogues' Quarter for Master Apothecary Faranell in Undercity.
-  buy Toxic Skullcap##281246 |q 97291 |goto Undercity 65.19,49.84
-step
-  talk Master Apothecary Faranell##2055
-  accept Unending Torment##97292 |goto Undercity 48.82,69.28
-step
   note {fp}Tharm
   goto Stonetalon Mountains 45.12,59.84 |tip {vendor}
 step
@@ -116,18 +101,6 @@ step
 step
   talk Kadrak##8582
   turnin Report to Kadrak##6542 |goto The Barrens 48.12,5.42 |tip {turninat}The Barrens
-step
-  talk Unfinished Abomination##271613
-  turnin Unending Torment##97289 |goto Undercity 47.52,65.9 |tip {turninat}Undercity
-step
-  talk Master Apothecary Faranell##2055
-  turnin Unending Torment##97290 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
-step
-  talk Master Apothecary Faranell##2055
-  turnin Unending Torment##97291 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
-step
-  talk Master Apothecary Faranell##2055
-  turnin Unending Torment##97292 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   only Warlock completed(1510) not completed(1472) not haveq(1472)
   talk Grunt Logmar##5911

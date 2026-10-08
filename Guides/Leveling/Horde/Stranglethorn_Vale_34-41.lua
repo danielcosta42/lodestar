@@ -7,9 +7,6 @@ ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (34-41)", {
 	next = "Leveling/Horde/Arathi Highlands (34-40)",
 }, [[
 step
-  talk Sovik##3413
-  accept Chief Engineer Scooty##2842 |goto Orgrimmar 75.49,25.36
-step
   talk Barnil Stonepot##716
   accept Welcome to the Jungle##583 |goto Stranglethorn Vale 35.66,10.53
 step
@@ -127,9 +124,6 @@ step
   talk Commander Aggro'gosh##2464
   turnin The Defense of Grom'gol##569 |goto Stranglethorn Vale 32.17,28.9
 step
-  talk Scooty##7853
-  turnin Chief Engineer Scooty##2842 |goto Stranglethorn Vale 27.6,77.48
-step
   talk Drizzlik##2495
   accept Supply and Demand##575 |goto Stranglethorn Vale 28.29,77.59
 step
@@ -142,6 +136,7 @@ step
   talk Crank Fizzlebub##2498
   accept Singing Blue Shards##605 |goto Stranglethorn Vale 27.12,77.21
 step
+  only completed(2842)
   talk Scooty##7853
   accept Gnomer-gooooone!##2843 |goto Stranglethorn Vale 27.6,77.48
 step
@@ -156,6 +151,7 @@ step
   talk Wharfmaster Lozgil##4631
   accept Goblin Sponsorship##1181 |goto Stranglethorn Vale 26.35,73.56
 step
+  only completed(2842)
   note Wait for Scooty to calibrate the Goblin Transponder.
   talk Scooty##7853 |q 2843 |goto Stranglethorn Vale 27.6,77.48
 step
@@ -166,6 +162,7 @@ step
   talk Baron Revilgaz##2496
   turnin Goblin Sponsorship##1181 |goto Stranglethorn Vale 27.23,76.87
 step
+  only completed(2842)
   talk Scooty##7853
   turnin Gnomer-gooooone!##2843 |goto Stranglethorn Vale 27.6,77.48
 step

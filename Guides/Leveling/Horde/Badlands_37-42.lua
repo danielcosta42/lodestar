@@ -125,9 +125,6 @@ step
   talk Helgrum the Swift##1442
   turnin Report to Helgrum##1420 |goto Swamp of Sorrows 47.74,55.2 |tip {turninat}Swamp of Sorrows
 step
-  talk Dran Droffers##6986
-  accept Necklace Recovery##2283 |goto Orgrimmar 59.49,36.57
-step
   only completed(2318)
   talk Jarkal Mossmeld##6868
   accept Translating the Journal##2338 |goto Badlands 2.42,46.06
@@ -144,9 +141,6 @@ step
   note Bring 4 Buzzard Wings to Rigglefuzz.
   collect 4 Buzzard Wing##3404 |q 703 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Young Mesa Buzzard, Mesa Buzzard
 step
-  note Look for a valuable necklace within the Uldaman dig site and bring it back to Dran Droffers in Orgrimmar. The necklace may be damaged.
-  collect Shattered Necklace##7666 |q 2283 |goto Badlands 48.2,11 |tip {dropsfrom}Shadowforge Surveyor, Shadowforge Ruffian, Shadowforge Digger
-step
   note Kill Boss Tho'grun and bring the Sign of the Earth to Gorn in Kargath.
   collect Sign of the Earth##4640 |q 782 |goto Badlands 12.62,75.49 |tip {dropsfrom}Boss Tho'grun
 step
@@ -158,9 +152,6 @@ step
 step
   talk Rigglefuzz##2817
   turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
-step
-  talk Dran Droffers##6986
-  turnin Necklace Recovery##2283 |goto Orgrimmar 59.49,36.57 |tip {turninat}Orgrimmar
 step
   only completed(2318)
   talk Jarkal Mossmeld##6868

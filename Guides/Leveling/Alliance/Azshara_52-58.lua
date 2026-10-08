@@ -4,24 +4,12 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Azshara (52-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Winterspring (54-60)",
+	next = "Leveling/Alliance/Winterspring (54-59)",
 }, [[
-step
-  only completed(3448)
-  talk Tymor##8507
-  accept Arcane Runes##3449 |goto Ironforge 30.96,4.83
 step
   only Hunter
   talk Dorion##4205
   accept The Hunter's Charm##8151 |goto Darnassus 42.21,7.27
-step
-  only Mage
-  talk Maginor Dumas##331
-  accept Magecraft##8250 |goto Stormwind City 49.25,87.77
-step
-  only Priest
-  talk Brother Joshua##5489
-  accept Cenarion Aid##8254 |goto Stormwind City 49.5,45.21
 step
   only Druid
   talk Mathrengyl Bearwalker##4217
@@ -39,19 +27,14 @@ step
   note Destroy 6 Highborne Apparitions and 6 Highborne Lichlings before returning to Loh'atu in Azshara.
   kill Highborne Apparition##6116 |q 5535 |goto Azshara 17.27,70.71
 step
+  note Kill 6 Haldarr Satyr, 2 Haldarr Tricksters, 2 Haldarr Felsworn and then return to Loh'atu on the border of Ashenvale.
+  kill Haldarr Satyr##6125 |q 5536 |goto Azshara 20.99,61.79
+step
   talk Loh'atu##11548
   turnin Spiritual Unrest##5535 |goto Azshara 11.37,78.17
 step
-  only Mage
-  talk Sanath Lim-yo##8395
-  turnin Magecraft##8250 |goto Azshara 28.11,50.09
-step
-  only completed(3448)
-  note Using the Drawing Kit, make rubbings of the Rune of Beth'Amara, the Rune of Jin'yael, the Rune of Markri, and the Rune of Sael'hai before heading to the small island off of the southern peninsula of Azshara and signaling Pilot Xiggs Fuselighter to pick them up.
-  collect Rubbing: Rune of Beth'Amara##10563 |q 3449 |goto Azshara 36.91,53.17 |tip {dropsfrom}Rune of Beth'Amara
-step
-  note Kill 6 Haldarr Satyr, 2 Haldarr Tricksters, 2 Haldarr Felsworn and then return to Loh'atu on the border of Ashenvale.
-  kill Haldarr Satyr##6125 |q 5536 |goto Azshara 20.99,61.79
+  talk Loh'atu##11548
+  turnin A Land Filled with Hatred##5536 |goto Azshara 11.37,78.17
 step
   only Rogue completed(8234)
   talk Archmage Xylem##8379
@@ -65,15 +48,11 @@ step
   talk Ogtinc##8405
   turnin The Hunter's Charm##8151 |goto Azshara 42.4,42.62
 step
-  only Priest
-  talk Ogtinc##8405
-  turnin Cenarion Aid##8254 |goto Azshara 42.4,42.62
-step
   only Hunter
   talk Ogtinc##8405
   accept Courser Antlers##8153 |goto Azshara 42.4,42.62
 step
-  only Priest
+  only Priest completed(8254)
   talk Ogtinc##8405
   accept Of Coursers We Know##8255 |goto Azshara 42.4,42.62
 step
@@ -101,20 +80,13 @@ step
   note Bring a pair of Perfect Courser Antlers to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast of the Ruins of Eldarath.
   collect Perfect Courser Antler##20017 |q 8153 |goto Azshara 50.78,75.64 |tip {dropsfrom}Mosshoof Courser
 step
-  only Priest
+  only Priest completed(8254)
   note Acquire 4 Healthy Courser Glands and bring them to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
   collect 4 Healthy Courser Gland##20027 |q 8255 |goto Azshara 50.78,75.64 |tip {dropsfrom}Mosshoof Courser
 step
-  only completed(3448)
-  talk Pilot Xiggs Fuselighter##8392
-  turnin Arcane Runes##3449 |goto Azshara 77.81,91.4
-step
-  only completed(3448)
+  only completed(3449)
   talk Pilot Xiggs Fuselighter##8392
   accept Return to Tymor##3461 |goto Azshara 77.81,91.4
-step
-  talk Loh'atu##11548
-  turnin A Land Filled with Hatred##5536 |goto Azshara 11.37,78.17
 step
   only Rogue completed(8234)
   talk Archmage Xylem##8379
@@ -132,7 +104,7 @@ step
   talk Ogtinc##8405
   turnin Courser Antlers##8153 |goto Azshara 42.4,42.62
 step
-  only Priest
+  only Priest completed(8254)
   talk Ogtinc##8405
   turnin Of Coursers We Know##8255 |goto Azshara 42.4,42.62
 step
@@ -154,6 +126,14 @@ step
   note Bring 6 Wavethrasher Scales to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
   collect 6 Wavethrasher Scales##20087 |q 8231 |goto Azshara 86.31,12.61 |tip {dropsfrom}Young Wavethrasher, Wavethrasher, Great Wavethrasher
 step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin The Siren's Coral##8252 |goto Azshara 29.25,40.21
+step
+  only Hunter
+  talk Ogtinc##8405
+  turnin Wavethrashing##8231 |goto Azshara 42.4,42.62
+step
   only completed(2744)
   talk Loramus Thalipedes##7783
   accept Loramus##3141 |goto Azshara 60.82,66.35
@@ -169,13 +149,9 @@ step
   talk Duke Hydraxis##13278
   accept Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
 step
-  only Mage
-  talk Archmage Xylem##8379
-  turnin The Siren's Coral##8252 |goto Azshara 29.25,40.21
-step
-  only Hunter
-  talk Ogtinc##8405
-  turnin Wavethrashing##8231 |goto Azshara 42.4,42.62
+  only completed(3449)
+  talk Tymor##8507
+  turnin Return to Tymor##3461 |goto Ironforge 30.96,4.83 |tip {turninat}Ironforge
 step
   only Druid
   talk Torwa Pathfinder##9619
@@ -203,10 +179,6 @@ step
 step
   talk Rabine Saturna##11801
   turnin A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
-step
-  only completed(3448)
-  talk Tymor##8507
-  turnin Return to Tymor##3461 |goto Ironforge 30.96,4.83 |tip {turninat}Ironforge
 step
   only completed(6761)
   talk Rabine Saturna##11801

@@ -242,6 +242,9 @@ step
   talk Barithras Moonshade##3583
   accept Cave Mushrooms##947 |goto Darkshore 37.32,43.64
 step
+  talk Gorbold Steelhand##6301
+  accept Deep Ocean, Vast Sea##982 |goto Darkshore 38.11,41.17
+step
   talk Gubber Blump##10216
   accept Fruit of the Sea##1138 |goto Darkshore 36.1,44.93
 step
@@ -250,6 +253,9 @@ step
 step
   talk Asterion##3650
   turnin Bashal'Aran##957 |goto Darkshore 44.17,36.29
+step
+  note Recover the Silver Dawning's Lockbox and the Mist Veil's Lockbox for Gorbold Steelhand in Auberdine. Both items should be found aboard the wreckage of the ships to the north of the village.
+  collect Silver Dawning's Lockbox##12191 |q 982 |goto Darkshore 38.24,28.8
 step
   turnin Buzzbox 323##1002 |goto Darkshore 51.29,24.57
 step
@@ -286,6 +292,9 @@ step
 step
   talk Cerellean Whiteclaw##3644
   turnin For Love Eternal##963 |goto Darkshore 35.74,43.71
+step
+  talk Gorbold Steelhand##6301
+  turnin Deep Ocean, Vast Sea##982 |goto Darkshore 38.11,41.17
 step
   talk Gubber Blump##10216
   turnin Fruit of the Sea##1138 |goto Darkshore 36.1,44.93
@@ -363,23 +372,6 @@ step
   talk Therylune##3584
   accept Therylune's Escape##945 |goto Darkshore 38.64,87.33
 step
-  turnin The Twilight Camp##949 |goto Darkshore 38.54,86.05
-step
-  click Twilight Tome##12666
-  accept Return to Onu##950 |goto Darkshore 38.54,86.05
-step
-  talk Tharnariun Treetender##3701
-  turnin Tharnariun's Hope##2139 |goto Darkshore 38.84,43.42
-step
-  talk Sentinel Glynda Nal'Shea##2930
-  turnin WANTED: Murkdeep!##4740 |goto Darkshore 37.7,43.41
-step
-  talk Thundris Windweaver##3649
-  turnin The Blackwood Corrupted##4763 |goto Darkshore 37.4,40.13
-step
-  talk Onu##3616
-  turnin Return to Onu##950 |goto Darkshore 43.55,76.29
-step
   click Beached Sea Turtle##176198
   accept Beached Sea Turtle##4731 |goto Darkshore 31.67,83.68
 step
@@ -389,6 +381,14 @@ step
   click Beached Sea Creature##175230
   accept Beached Sea Creature##4733 |goto Darkshore 31.26,87.44
 step
+  turnin The Twilight Camp##949 |goto Darkshore 38.54,86.05
+step
+  click Twilight Tome##12666
+  accept Return to Onu##950 |goto Darkshore 38.54,86.05
+step
+  talk Tharnariun Treetender##3701
+  turnin Tharnariun's Hope##2139 |goto Darkshore 38.84,43.42
+step
   talk Gwennyth Bly'Leggonde##10219
   turnin Beached Sea Turtle##4731 |goto Darkshore 36.62,45.59
 step
@@ -397,6 +397,15 @@ step
 step
   talk Gwennyth Bly'Leggonde##10219
   turnin Beached Sea Creature##4733 |goto Darkshore 36.62,45.59
+step
+  talk Sentinel Glynda Nal'Shea##2930
+  turnin WANTED: Murkdeep!##4740 |goto Darkshore 37.7,43.41
+step
+  talk Thundris Windweaver##3649
+  turnin The Blackwood Corrupted##4763 |goto Darkshore 37.4,40.13
+step
+  talk Onu##3616
+  turnin Return to Onu##950 |goto Darkshore 43.55,76.29
 step
   only Warrior completed(1683,1678,1639)
   talk Elanaria##4088
@@ -421,12 +430,6 @@ step
   only completed(940)
   talk Arch Druid Fandral Staghelm##3516
   accept Grove of the Ancients##952 |goto Darnassus 34.81,9.26
-step
-  talk Borgus Steelhand##7232
-  accept Business in Auberdine##97894 |goto Stormwind City 59.4,34.26
-step
-  talk Baros Alexston##1646
-  accept Making Do##97926 |goto Stormwind City 57.74,47.86
 step
   only NightElf Druid
   talk Mathrengyl Bearwalker##4217
@@ -454,8 +457,8 @@ step
   kill Baron Marinous##270294 |goto Darkshore 59.08,22.95 |tip Loot the quest item here — it starts the quest.
   accept Baron Marinous##98028 |goto Darkshore 59.08,22.95
 step
-  talk Argos Nightwhisper##4984
-  accept The Corruption Abroad##3765 |goto Stormwind City 36.24,67.61
+  talk Gershala Nightwhisper##8997
+  accept Researching the Corruption##1275 |goto Darkshore 38.33,43.04
 step
   note Find and return the three pieces of Gelkak's Key to Gelkak Gyromast.
   collect Top of Gelkak's Key##7498 |q 2098 |goto Darkshore 38.85,90.08 |tip {dropsfrom}Giant Foreststrider
@@ -469,18 +472,16 @@ step
   note Eliminate 12 Stormscale Myrmidons, 8 Stormscale Sorceresses, and 6 Stormscale Warriors for Arbal at the Grove of the Ancients.
   kill Stormscale Myrmidon##2181 |q 98013 |goto Darkshore 58.45,21.35
 step
+  note Gershala Nightwhisper in Auberdine wants 8 Corrupt Brain stems.
+  kill Fallenroot Satyr##4788 |goto Darkshore 31.19,92.59 |elite
+  collect Corrupted Brain Stem##5952 |q 1275 |goto Darkshore 31.19,92.59
+step
   talk Archaeologist Hollee##2913
   turnin Trouble In Darkshore?##730 |goto Darkshore 37.44,41.84
 step
   only completed(940)
   talk Onu##3616
   turnin Grove of the Ancients##952 |goto Darkshore 43.55,76.29
-step
-  talk Gorbold Steelhand##6301
-  turnin Business in Auberdine##97894 |goto Darkshore 38.11,41.17
-step
-  talk Thundris Windweaver##3649
-  turnin Making Do##97926 |goto Darkshore 37.4,40.13
 step
   only NightElf Druid
   talk Dendrite Starblaze##11802
@@ -509,7 +510,7 @@ step
   turnin Baron Marinous##98028 |goto Darkshore 43.55,76.29
 step
   talk Gershala Nightwhisper##8997
-  turnin The Corruption Abroad##3765 |goto Darkshore 38.33,43.04
+  turnin Researching the Corruption##1275 |goto Darkshore 38.33,43.04
 step
   only NightElf Druid completed(6122)
   talk Dendrite Starblaze##11802
@@ -519,43 +520,24 @@ step
   talk Elanaria##4088
   accept Smith Mathiel##1692 |goto Darnassus 57.3,34.61
 step
-  talk Gorbold Steelhand##6301
-  accept Deep Ocean, Vast Sea##982 |goto Darkshore 38.11,41.17
-step
   talk Archaeologist Hollee##2913
   accept The Absent Minded Prospector##729 |goto Darkshore 37.44,41.84
 step
   talk Gelkak Gyromast##6667
   accept Gyromast's Revenge##2078 |goto Darkshore 56.66,13.48
 step
-  talk Gershala Nightwhisper##8997
-  accept Researching the Corruption##1275 |goto Darkshore 38.33,43.04
-step
-  note Recover the Silver Dawning's Lockbox and the Mist Veil's Lockbox for Gorbold Steelhand in Auberdine. Both items should be found aboard the wreckage of the ships to the north of the village.
-  collect Silver Dawning's Lockbox##12191 |q 982 |goto Darkshore 38.24,28.8
-step
   note Find Gelkak's First Mate, the Threshwackonator 4100, and lead it back to Gelkak.
   talk The Threshwackonator 4100##6669 |q 2078 |goto Darkshore 55.81,18.29
-step
-  note Gershala Nightwhisper in Auberdine wants 8 Corrupt Brain stems.
-  kill Fallenroot Satyr##4788 |goto Darkshore 31.19,92.59 |elite
-  collect Corrupted Brain Stem##5952 |q 1275 |goto Darkshore 31.19,92.59
 step
   only Warrior completed(1683,1678,1639)
   talk Mathiel##6142
   turnin Smith Mathiel##1692 |goto Darnassus 59.51,45.38 |tip {turninat}Darnassus
-step
-  talk Gorbold Steelhand##6301
-  turnin Deep Ocean, Vast Sea##982 |goto Darkshore 38.11,41.17
 step
   talk Prospector Remtravel##2917
   turnin The Absent Minded Prospector##729 |goto Darkshore 35.73,83.7
 step
   talk Gelkak Gyromast##6667
   turnin Gyromast's Revenge##2078 |goto Darkshore 56.66,13.48
-step
-  talk Gershala Nightwhisper##8997
-  turnin Researching the Corruption##1275 |goto Darkshore 38.33,43.04
 step
   talk Delgren the Purifier##3663
   turnin The Tower of Althalaxx##967 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale

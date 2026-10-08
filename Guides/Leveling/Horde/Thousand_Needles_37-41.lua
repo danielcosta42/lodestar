@@ -7,10 +7,6 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (37-41)", {
 	next = "Leveling/Horde/Feralas (43-48)",
 }, [[
 step
-  only completed(6628)
-  talk Parqual Fintallas##4488
-  accept Final Passage##1394 |goto Undercity 57.8,65.42
-step
   only completed(1176)
   talk Pozzik##4630
   accept Goblin Sponsorship##1178 |goto Thousand Needles 80.18,75.88
@@ -22,10 +18,6 @@ step
   only completed(1183)
   talk Razzeric##4706
   turnin The Eighteenth Pilot##1186 |goto Thousand Needles 80.33,76.09
-step
-  only completed(6628)
-  talk Dorn Plainstalker##2986
-  turnin Final Passage##1394 |goto Thousand Needles 53.95,41.49
 step
   only completed(1176)
   talk Gazlowe##3391

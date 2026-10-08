@@ -32,10 +32,6 @@ step
   talk Krusk##2229
   turnin Blackmoore's Legacy##506 |goto Hillsbrad Foothills 63.24,20.66 |tip {turninat}Hillsbrad Foothills
 step
-  only completed(1131)
-  talk Melor Stonehoof##3441
-  accept Frostmaw##1136 |goto Thunder Bluff 61.54,80.92
-step
   only Warrior completed(1791)
   talk Bath'rah the Windwatcher##6176
   accept Cyclonian##1712 |goto Alterac Mountains 80.5,66.92
@@ -48,10 +44,6 @@ step
   note Defeat 7 Defias Night Blades and 7 Defias Enchanters in Addle's Stead then return to Sirra Von'Indi in Darkshire for more information.
   kill Defias Night Blade##909 |q 79363 |goto Duskwood 23.37,73.31
 step
-  only completed(1131)
-  note Bring Frostmaw's Mane to Melor Stonehoof in Thunder Bluff.
-  collect Frostmaw's Mane##5811 |q 1136 |goto Alterac Mountains 37.51,67.2 |tip {dropsfrom}Frostmaw
-step
   only Warrior completed(1791)
   note Bring the items on Bath'rah's Parchment to Bath'rah the Windwatcher in Alterac.
   collect Liferoot##3357 |q 1712 |goto Alterac Mountains 25.95,43.98
@@ -63,10 +55,6 @@ step
   only not Undead not Skyborne Shaman
   talk Bath'rah the Windwatcher##6176
   turnin Silvia's Sword##79363 |goto Alterac Mountains 80.5,66.92
-step
-  only completed(1131)
-  talk Melor Stonehoof##3441
-  turnin Frostmaw##1136 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
 step
   only Warrior completed(1791)
   talk Bath'rah the Windwatcher##6176
@@ -113,6 +101,6 @@ step
   talk Bath'rah the Windwatcher##6176
   turnin Whirlwind Weapon##1792 |goto Alterac Mountains 80.5,66.92
 step
-  note {travel}Orgrimmar
-  goto Orgrimmar 75.49,25.36
+  note {travel}Stranglethorn Vale
+  goto Stranglethorn Vale 35.66,10.53
 ]])

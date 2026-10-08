@@ -7,15 +7,9 @@ ns:RegisterGuide("Leveling/Alliance/Thousand Needles (30-41)", {
 	next = "Leveling/Alliance/Feralas (43-48)",
 }, [[
 step
-  talk Pilot Longbeard##2092
-  accept The Brassbolts Brothers##1179 |goto Ironforge 72.73,94.01
-step
   only Warrior completed(1782)
   talk Mathiel##6142
   accept Sunscorched Shells##1710 |goto Darnassus 59.51,45.38
-step
-  talk Wizzle Brassbolts##4453
-  turnin The Brassbolts Brothers##1179 |goto Thousand Needles 78.14,77.12
 step
   talk Fizzle Brassbolts##4454
   accept Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
@@ -95,10 +89,6 @@ step
   talk Pozzik##4630
   accept The Eighteenth Pilot##1186 |goto Thousand Needles 80.18,75.88
 step
-  only Warlock not completed(4967) not completed(4968) not completed(4969) not haveq(4967) not haveq(4968) not haveq(4969)
-  talk Briarthorn##5172
-  accept Knowledge of the Orb of Orahil##4965 |goto Ironforge 50.35,5.66
-step
   only completed(1137)
   talk Pozzik##4630
   accept Keeping Pace##1190 |goto Thousand Needles 80.18,75.88
@@ -107,9 +97,6 @@ step
   talk Kravel Koalbeard##4452
   accept Get the Gnomes Drunk##1120 |goto Thousand Needles 77.79,77.27
 step
-  talk Klockmort Spannerspan##6169
-  accept The Brassbolts Brothers##2769 |goto Ironforge 67.92,46.1
-step
   talk Wharfmaster Dizzywig##3453
   turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
 step
@@ -117,19 +104,12 @@ step
   talk Razzeric##4706
   turnin The Eighteenth Pilot##1186 |goto Thousand Needles 80.33,76.09
 step
-  only Warlock not completed(4967) not completed(4968) not completed(4969) not haveq(4967) not haveq(4968) not haveq(4969)
-  talk Menara Voidrender##6266
-  turnin Knowledge of the Orb of Orahil##4965 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
-step
   only completed(1137)
   turnin Keeping Pace##1190 |goto Thousand Needles 77.21,77.39
 step
   only completed(1119) not completed(1121) not haveq(1121)
   talk Gnome Pit Boss##4495
   turnin Get the Gnomes Drunk##1120 |goto Thousand Needles 77.56,76.94
-step
-  talk Wizzle Brassbolts##4453
-  turnin The Brassbolts Brothers##2769 |goto Thousand Needles 78.14,77.12
 step
   only Warrior completed(1782)
   talk Mathiel##6142

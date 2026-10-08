@@ -1,7 +1,7 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/The Barrens (13-20)", {
+ns:RegisterGuide("Leveling/Horde/The Barrens (12-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stonetalon Mountains (19-26)",
@@ -30,10 +30,6 @@ step
   talk Thrall##4949
   accept Journey to the Crossroads##98024 |goto Orgrimmar 31.73,37.82
 step
-  only completed(1359)
-  talk Apothecary Zinge##5204
-  accept Sample for Helbrim##1358 |goto Undercity 50.14,67.97
-step
   only completed(5728)
   talk Thrall##4949
   accept Hidden Enemies##5729 |goto Orgrimmar 31.73,37.82
@@ -59,10 +55,6 @@ step
 step
   talk Tonga Runetotem##3448
   turnin The Barrens Oases##886 |goto The Barrens 52.26,31.93
-step
-  only completed(1359)
-  talk Apothecary Helbrim##3390
-  turnin Sample for Helbrim##1358 |goto The Barrens 51.44,30.15
 step
   only Skyborne completed(95350)
   talk Thork##3429
@@ -1100,6 +1092,6 @@ step
   talk Jorn Skyseer##3387
   turnin Cry of the Thunderhawk##913 |goto The Barrens 44.86,59.14
 step
-  note {travel}Undercity
-  goto Undercity 48.82,69.28
+  note {travel}Stonetalon Mountains
+  goto Stonetalon Mountains 47.22,64.04
 ]])

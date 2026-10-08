@@ -4,12 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Westfall (12-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Loch Modan (11-18)",
+	next = "Leveling/Alliance/Redridge Mountains (15-23)",
 }, [[
-step
-  only completed(2518)
-  talk Priestess A'moora##7313
-  accept Sathrah's Sacrifice##2520 |goto Darnassus 36.65,85.93
 step
   talk Gilbert Gray##267118
   accept Fishin' Time##95065 |goto Stormwind City 26.29,47.15
@@ -198,47 +194,6 @@ step
   talk Scout Galiaan##878
   turnin Red Leather Bandanas##153 |goto Westfall 53.98,52.98
 step
-  talk Alba Fairmoon##253092
-  accept Moonbrook Espionage##92747 |goto Westfall 52.49,53.06
-step
-  talk Alba Fairmoon##253092
-  accept Explosive Consultation##92748 |goto Westfall 52.49,53.06
-step
-  talk Captain Grayson##392
-  accept Keeper of the Flame##103 |goto Westfall 30.01,86.02
-step
-  note Collect 8 Suspicious Industrial Supplies from Moonbrook.
-  collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 42.5,68.7 |tip {dropsfrom}Suspicious Crate
-step
-  kill Murloc Coastrunner##126 |goto Westfall 45.02,8.89 |tip Loot the quest item here — it starts the quest.
-  accept Captain Sander's Hidden Treasure##136 |goto Westfall 45.02,8.89
-step
-  note Bring 5 Flasks of Oil to Captain Grayson at the Westfall Lighthouse.
-  collect 5 Flask of Oil##814 |q 103 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
-step
-  talk Alba Fairmoon##253092
-  turnin Moonbrook Espionage##92747 |goto Westfall 52.49,53.06
-step
-  talk Captain Grayson##392
-  turnin Keeper of the Flame##103 |goto Westfall 30.01,86.02
-step
-  turnin Captain Sander's Hidden Treasure##136 |goto Westfall 25.91,47.75
-step
-  click Captain's Footlocker##35
-  accept Captain Sander's Hidden Treasure##138 |goto Westfall 25.91,47.75
-step
-  turnin Captain Sander's Hidden Treasure##138 |goto Westfall 40.52,47.79
-step
-  click Broken Barrel##36
-  accept Captain Sander's Hidden Treasure##139 |goto Westfall 40.52,47.79
-step
-  turnin Captain Sander's Hidden Treasure##139 |goto Westfall 40.63,17.03
-step
-  click Old Jug##34
-  accept Captain Sander's Hidden Treasure##140 |goto Westfall 40.63,17.03
-step
-  turnin Captain Sander's Hidden Treasure##140 |goto Westfall 25.97,16.91
-step
   talk Gilbert Gray##267118
   turnin Fishin' Time##95065 |goto Stormwind City 26.29,47.15 |tip {turninat}Stormwind City
 step
@@ -258,9 +213,6 @@ step
   talk Duthorian Rall##6171
   turnin Tome of Divinity##3681 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
 step
-  talk Sprite Jumpsprocket##11026
-  turnin Explosive Consultation##92748 |goto Stormwind City 61.88,30.56 |tip {turninat}Stormwind City
-step
   talk Baros Alexston##1646
   accept Humble Beginnings##399 |goto Stormwind City 57.74,47.86
 step
@@ -269,6 +221,18 @@ step
 step
   talk Elaine Trias##483
   accept Gatehouse Goods##97222 |goto Stormwind City 66.56,73.37
+step
+  talk Captain Grayson##392
+  accept Keeper of the Flame##103 |goto Westfall 30.01,86.02
+step
+  kill Murloc Coastrunner##126 |goto Westfall 45.02,8.89 |tip Loot the quest item here — it starts the quest.
+  accept Captain Sander's Hidden Treasure##136 |goto Westfall 45.02,8.89
+step
+  talk Alba Fairmoon##253092
+  accept Moonbrook Espionage##92747 |goto Westfall 52.49,53.06
+step
+  talk Alba Fairmoon##253092
+  accept Explosive Consultation##92748 |goto Westfall 52.49,53.06
 step
   talk Sprite Jumpsprocket##11026
   accept A Dynamite Plan##92749 |goto Stormwind City 61.88,30.56
@@ -337,16 +301,18 @@ step
   click Forgotten Shrine##619896
   accept Call of Water##94503 |goto Westfall 45.45,59.89
 step
-  only completed(2518)
-  note Priestess A'moora wants you to place Lady Sathrah's silvery spinnerets at the fountain inside the temple, and then return to her.
-  collect Temple of the Moon Fountain##138498 |q 2520 |goto Darnassus 39.18,85.59
-step
   only Skyborne completed(94947)
   note Speak with Randal Emerson in Stormwind Keep to receive further instructions. Use the instructions received to locate and speak with King Magni Bronzebeard, High Tinker Mekkatorque, and Tyrande Whisperwind.
   talk Randal Emerson##275491 |q 93963 |goto Stormwind City 79.05,44.78
 step
   note Go to Baros Alexston's house in Westfall and search for his compass, then return it to him in Cathedral Square of Stormwind.
   collect A Simple Compass##2998 |q 399 |goto Westfall 36.24,54.52 |tip {dropsfrom}Alexston's Chest
+step
+  note Bring 5 Flasks of Oil to Captain Grayson at the Westfall Lighthouse.
+  collect 5 Flask of Oil##814 |q 103 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
+step
+  note Collect 8 Suspicious Industrial Supplies from Moonbrook.
+  collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 42.5,68.7 |tip {dropsfrom}Suspicious Crate
 step
   note Retrieve 4 Miners' Union Cards and return them to Wilder Thistlenettle in Stormwind.
   kill Skeletal Miner##623 |goto Westfall 41.61,81.67 |elite
@@ -370,10 +336,6 @@ step
   note Bring Dust Devil Debris to Collin Mauren in Stormwind.
   collect Dust Devil Debris##5669 |q 1076 |goto Westfall 45.61,49.32 |tip {dropsfrom}Dust Devil
 step
-  only completed(2518)
-  talk Priestess A'moora##7313
-  turnin Sathrah's Sacrifice##2520 |goto Darnassus 36.65,85.93 |tip {turninat}Darnassus
-step
   only Skyborne completed(94947)
   talk Highlord Bolvar Fordragon##1748
   turnin Exploring the Alliance##93963 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
@@ -386,6 +348,17 @@ step
 step
   talk Elaine Trias##483
   turnin Gatehouse Goods##97222 |goto Stormwind City 66.56,73.37 |tip {turninat}Stormwind City
+step
+  talk Captain Grayson##392
+  turnin Keeper of the Flame##103 |goto Westfall 30.01,86.02
+step
+  turnin Captain Sander's Hidden Treasure##136 |goto Westfall 25.91,47.75
+step
+  talk Alba Fairmoon##253092
+  turnin Moonbrook Espionage##92747 |goto Westfall 52.49,53.06
+step
+  talk Sprite Jumpsprocket##11026
+  turnin Explosive Consultation##92748 |goto Stormwind City 61.88,30.56 |tip {turninat}Stormwind City
 step
   talk Sprite Jumpsprocket##11026
   turnin A Dynamite Plan##92749 |goto Stormwind City 61.88,30.56 |tip {turninat}Stormwind City
@@ -455,6 +428,13 @@ step
   talk Stephanie Turner##6174
   accept The Tome of Divinity##1644 |goto Stormwind City 63.84,72.21
 step
+  only Dwarf Paladin completed(1646)
+  talk John Turner##6175
+  accept The Tome of Divinity##1648 |goto Ironforge 23.34,61.86
+step
+  click Captain's Footlocker##35
+  accept Captain Sander's Hidden Treasure##138 |goto Westfall 25.91,47.75
+step
   only not Dwarf not NightElf not Skyborne Mage
   talk Jennea Cannon##5497
   accept Gathering Materials##1921 |goto Stormwind City 49.56,85.8
@@ -471,6 +451,10 @@ step
   note Bring 10 Linen Cloth to Stephanie Turner in Stormwind.
   collect 10 Linen Cloth##2589 |q 1644 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
 step
+  only Dwarf Paladin completed(1646)
+  note Bring 10 Linen Cloth to John Turner in Ironforge.
+  collect 10 Linen Cloth##2589 |q 1648 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
+step
   only not Dwarf not NightElf not Skyborne Mage
   note Bring 10 Linen Cloth and the 6 Charged Rift Gems to Wynne Larson in Stormwind.
   collect 10 Linen Cloth##2589 |q 1921 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
@@ -482,6 +466,12 @@ step
   only Human Paladin completed(1642)
   talk Stephanie Turner##6174
   turnin The Tome of Divinity##1644 |goto Stormwind City 63.84,72.21 |tip {turninat}Stormwind City
+step
+  only Dwarf Paladin completed(1646)
+  talk John Turner##6175
+  turnin The Tome of Divinity##1648 |goto Ironforge 23.34,61.86 |tip {turninat}Ironforge
+step
+  turnin Captain Sander's Hidden Treasure##138 |goto Westfall 40.52,47.79
 step
   only not Dwarf not NightElf not Skyborne Mage
   talk Wynne Larson##1309
@@ -499,9 +489,16 @@ step
   talk Osric Strang##1323
   accept Dungar Longdrink##6261 |goto Stormwind City 77.17,60.99
 step
+  only Dwarf Paladin completed(1646)
+  talk John Turner##6175
+  accept The Tome of Divinity##1778 |goto Ironforge 23.34,61.86
+step
   only Human Paladin completed(1642)
   talk Stephanie Turner##6174
   accept The Tome of Divinity##1780 |goto Stormwind City 63.84,72.21
+step
+  click Broken Barrel##36
+  accept Captain Sander's Hidden Treasure##139 |goto Westfall 40.52,47.79
 step
   talk Gryan Stoutmantle##234
   accept The People's Militia##14 |goto Westfall 56.33,47.52
@@ -521,9 +518,15 @@ step
   talk Dungar Longdrink##352
   turnin Dungar Longdrink##6261 |goto Stormwind City 70.95,72.51 |tip {turninat}Stormwind City
 step
+  only Dwarf Paladin completed(1646)
+  talk Tiza Battleforge##6179
+  turnin The Tome of Divinity##1778 |goto Ironforge 27.63,12.18 |tip {turninat}Ironforge
+step
   only Human Paladin completed(1642)
   talk Duthorian Rall##6171
   turnin The Tome of Divinity##1780 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
+step
+  turnin Captain Sander's Hidden Treasure##139 |goto Westfall 40.63,17.03
 step
   talk Gryan Stoutmantle##234
   turnin The People's Militia##14 |goto Westfall 56.33,47.52
@@ -540,50 +543,103 @@ step
   talk Dungar Longdrink##352
   accept Return to Lewis##6285 |goto Stormwind City 70.95,72.51
 step
+  only Dwarf Paladin completed(1646)
+  talk Tiza Battleforge##6179
+  accept The Tome of Divinity##1779 |goto Ironforge 27.63,12.18
+step
   only Human Paladin completed(1642)
   talk Duthorian Rall##6171
   accept The Tome of Divinity##1781 |goto Stormwind City 50.48,47.49
+step
+  click Old Jug##34
+  accept Captain Sander's Hidden Treasure##140 |goto Westfall 40.63,17.03
+step
+  only not NightElf not Gnome not Skyborne Paladin completed(1649)
+  talk Duthorian Rall##6171
+  accept The Test of Righteousness##1653 |goto Stormwind City 50.48,47.49
 step
   only Human
   talk Quartermaster Lewis##491
   turnin Return to Lewis##6285 |goto Westfall 57,47.17
 step
+  only Dwarf Paladin completed(1646)
+  talk Muiredon Battleforge##6178
+  turnin The Tome of Divinity##1779 |goto Ironforge 23.54,8.3 |tip {turninat}Ironforge
+step
   only Human Paladin completed(1642)
   talk Gazin Tenorm##6173
   turnin The Tome of Divinity##1781 |goto Stormwind City 49.53,44.99 |tip {turninat}Stormwind City
+step
+  turnin Captain Sander's Hidden Treasure##140 |goto Westfall 25.97,16.91
+step
+  only not NightElf not Gnome not Skyborne Paladin completed(1649)
+  talk Jordan Stilwell##6181
+  turnin The Test of Righteousness##1653 |goto Dun Morogh 52.49,36.92 |tip {turninat}Dun Morogh
+step
+  only Dwarf Paladin completed(1646)
+  talk Muiredon Battleforge##6178
+  accept The Tome of Divinity##1783 |goto Ironforge 23.54,8.3
 step
   only Human Paladin completed(1642)
   talk Gazin Tenorm##6173
   accept The Tome of Divinity##1786 |goto Stormwind City 49.53,44.99
 step
+  only Dwarf Paladin completed(1646)
+  note Take the Symbol of Life and resurrect Narm Faulk in Dun Morogh.
+  talk Narm Faulk##6177 |q 1783 |goto Dun Morogh 78.32,58.09
+step
   only Human Paladin completed(1642)
   note Take the Symbol of Life and resurrect Henze Faulk in Elwynn.
   talk Henze Faulk##6172 |q 1786 |goto Elwynn Forest 72.6,51.41
+step
+  only Dwarf Paladin completed(1646)
+  talk Narm Faulk##6177
+  turnin The Tome of Divinity##1783 |goto Dun Morogh 78.32,58.09 |tip {turninat}Dun Morogh
 step
   only Human Paladin completed(1642)
   talk Henze Faulk##6172
   turnin The Tome of Divinity##1786 |goto Elwynn Forest 72.6,51.41 |tip {turninat}Elwynn Forest
 step
+  only Dwarf Paladin completed(1646)
+  talk Narm Faulk##6177
+  accept The Tome of Divinity##1784 |goto Dun Morogh 78.32,58.09
+step
   only Human Paladin completed(1642)
   talk Henze Faulk##6172
   accept The Tome of Divinity##1787 |goto Elwynn Forest 72.6,51.41
+step
+  only Dwarf Paladin completed(1646)
+  note Retrieve a Dark Iron Script from the Dark Iron dwarves near Helm's Bed, and return to Muiredon Battleforge in Ironforge.
+  collect Dark Iron Script##6847 |q 1784 |goto Dun Morogh 77.36,61.31 |tip {dropsfrom}Dark Iron Spy
 step
   only Human Paladin completed(1642)
   note Retrieve a Defias Script from the Defias Rogue Wizards in Elwynn, and return to Gazin Tenorm in Stormwind.
   collect Defias Script##6846 |q 1787 |goto Elwynn Forest 73.38,52.48 |tip {dropsfrom}Defias Rogue Wizard, Defias Bodyguard
 step
+  only Dwarf Paladin completed(1646)
+  talk Muiredon Battleforge##6178
+  turnin The Tome of Divinity##1784 |goto Ironforge 23.54,8.3 |tip {turninat}Ironforge
+step
   only Human Paladin completed(1642)
   talk Gazin Tenorm##6173
   turnin The Tome of Divinity##1787 |goto Stormwind City 49.53,44.99 |tip {turninat}Stormwind City
+step
+  only Dwarf Paladin completed(1646)
+  talk Muiredon Battleforge##6178
+  accept The Tome of Divinity##1785 |goto Ironforge 23.54,8.3
 step
   only Human Paladin completed(1642)
   talk Gazin Tenorm##6173
   accept The Tome of Divinity##1788 |goto Stormwind City 49.53,44.99
 step
+  only Dwarf Paladin completed(1646)
+  talk Tiza Battleforge##6179
+  turnin The Tome of Divinity##1785 |goto Ironforge 27.63,12.18 |tip {turninat}Ironforge
+step
   only Human Paladin completed(1642)
   talk Duthorian Rall##6171
   turnin The Tome of Divinity##1788 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
 step
-  note {travel}Ironforge
-  goto Ironforge 55.5,47.74
+  note {travel}Redridge Mountains
+  goto Redridge Mountains 21.39,43.96
 ]])

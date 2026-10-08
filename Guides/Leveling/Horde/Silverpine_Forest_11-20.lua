@@ -7,10 +7,6 @@ ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-20)", {
 	next = "Leveling/Horde/Hillsbrad Foothills (22-30)",
 }, [[
 step
-  only completed(5726)
-  talk Thrall##4949
-  accept Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82
-step
   only Undead Rogue
   talk Mennet Carkad##6467
   accept The Deathstalkers##1886 |goto Undercity 83.51,69.11
@@ -227,9 +223,6 @@ step
   talk Tanis Alderwood##257648
   accept A Lesson in Divinity##94434 |goto Undercity 65.62,37.94
 step
-  talk Clarice Foster##5543
-  accept Until Death Do Us Part##264 |goto Thunder Bluff 27.2,24.4
-step
   talk Alessandro Luca##7683
   accept Prompt Potion Runner##97891 |goto Undercity 58.61,54.68
 step
@@ -318,10 +311,6 @@ step
   talk Lumina Windsinger##259620
   accept Old Fire-Eye##95140 |goto Silverpine Forest 43.2,40.8
 step
-  only completed(5726)
-  note Take the Lieutenant's Insignia to Neeru Fireblade and speak to him. Gauge if he believes you are a member of the Burning Blade and then return to Thrall in Orgrimmar.
-  talk Neeru Fireblade##3216 |q 5727 |goto Orgrimmar 49.47,50.59
-step
   note Gather 3 murloc eyes and bring them to Apothecary Renferrel at the Sepulcher.
   collect 3 Murloc Eye##730 |q 91920 |goto Wetlands 18.07,39.84 |tip {dropsfrom}Gobbler, Bluegill Raider, Murloc Tidehunter
 step
@@ -349,18 +338,12 @@ step
   note Find the Offering Stone in Beren's Peril in Silverpine Forest.
   collect Note Scrap##271343 |q 95884 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
 step
-  only completed(5726)
-  talk Thrall##4949
-  turnin Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
-step
   talk Apothecary Renferrel##1937
   turnin Wild Eyes##91920 |goto Silverpine Forest 42.8,40.86
 step
   only Undead Paladin
   talk Tanis Alderwood##257648
   turnin A Lesson in Divinity##94434 |goto Undercity 65.62,37.94 |tip {turninat}Undercity
-step
-  turnin Until Death Do Us Part##264 |goto Silverpine Forest 44.19,42.67
 step
   talk Doctor Martin Felben##11044
   turnin Prompt Potion Runner##97891 |goto Undercity 46.61,74.09 |tip {turninat}Undercity
@@ -610,6 +593,6 @@ step
   talk High Executor Hadrec##1952
   turnin Assault on Fenris Isle##442 |goto Silverpine Forest 43.42,40.86
 step
-  note {travel}Thunder Bluff
-  goto Thunder Bluff 22.81,20.89
+  note {travel}Undercity
+  goto Undercity 57.78,89.34
 ]])

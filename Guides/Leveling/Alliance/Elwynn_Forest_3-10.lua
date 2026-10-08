@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (3-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Westfall (12-18)",
+	next = "Leveling/Alliance/Loch Modan (11-18)",
 }, [[
 step
   talk Deputy Willem##823
@@ -891,6 +891,6 @@ step
   talk Sara Timberlain##278
   turnin Cloth and Leather Armor##59 |goto Elwynn Forest 79.46,68.79
 step
-  note {travel}Darnassus
-  goto Darnassus 36.65,85.93
+  note {travel}Ironforge
+  goto Ironforge 55.5,47.74
 ]])

@@ -86,6 +86,9 @@ step
   talk Captain Garran Vimes##4944
   accept The Black Shield##1319 |goto Dustwallow Marsh 68.21,48.62
 step
+  talk Morgan Stern##4794
+  accept Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
+step
   talk Captain Garran Vimes##4944
   turnin Captain Vimes##1220 |goto Dustwallow Marsh 68.21,48.62
 step
@@ -97,6 +100,10 @@ step
 step
   talk Captain Garran Vimes##4944
   turnin The Black Shield##1320 |goto Dustwallow Marsh 68.21,48.62
+step
+  only Mage completed(1947)
+  talk Tabetha##6546
+  accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Mudcrush Durtfeet##4503
   turnin Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
@@ -121,8 +128,14 @@ step
   note Bring a Moonsteel Broadsword to Jarl in Dustwallow Marsh.
   collect Moonsteel Broadsword##3853 |q 1203 |goto Dustwallow Marsh 55.44,26.27
 step
+  note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
+  collect 8 Forked Mudrock Tongue##5883 |q 1204 |goto Dustwallow Marsh 62,24.8 |tip {dropsfrom}Mudrock Tortoise, Mudrock Spikeshell, Mudrock Burrower
+step
   talk "Swamp Eye" Jarl##4792
   turnin Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
+step
+  talk Morgan Stern##4794
+  turnin Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
 step
   only completed(1264)
   talk Archmage Tervosh##4967
@@ -136,66 +149,7 @@ step
   talk Lady Jaina Proudmoore##4968
   turnin The Missing Diplomat##1267 |goto Dustwallow Marsh 66.27,49.04
 step
-  talk Shindrell Swiftfire##3845
-  turnin Journey to Astranaar##1133 |goto Ashenvale 34.67,48.84 |tip {turninat}Ashenvale
-step
-  talk Angus Stern##1141
-  accept Morgan Stern##1260 |goto Stormwind City 51.79,93.64
-step
-  only Mage
-  talk Bink##5144
-  accept Journey to the Marsh##1947 |goto Ironforge 27.25,8.3
-step
-  only Mage
-  talk Bink##5144
-  accept Return to the Marsh##1953 |goto Ironforge 27.25,8.3
-step
-  only Warlock completed(4961)
-  talk Tabetha##6546
-  accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
-step
-  talk Archmage Tervosh##4967
-  accept Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
-step
-  note Bring 10 Highperch Venom Sacs to Fiora Longears in Theramore.
-  collect 10 Highperch Venom Sac##5809 |q 1135 |goto Thousand Needles 11.8,37.8 |tip {dropsfrom}Highperch Wyvern, Highperch Consort, Highperch Patriarch
-step
-  note Collect 10 Shadowshard Fragments from Maraudon and return them to Archmage Tervosh in Theramore on the coast of Dustwallow Marsh.
-  kill Shadowshard Rumbler##11777 |goto Desolace 27.23,57.68 |elite
-  collect 10 Shadowshard Fragment##17756 |q 7070 |goto Desolace 27.23,57.68
-step
-  talk Fiora Longears##4456
-  turnin Highperch Venom##1135 |goto Dustwallow Marsh 66.46,45.15
-step
-  talk Morgan Stern##4794
-  turnin Morgan Stern##1260 |goto Dustwallow Marsh 66.34,45.47
-step
-  only Mage
-  talk Tabetha##6546
-  turnin Journey to the Marsh##1947 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Tabetha##6546
-  turnin Return to the Marsh##1953 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Warlock completed(4961)
-  talk Menara Voidrender##6266
-  turnin Returning the Cleansed Orb##4976 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
-step
-  talk Archmage Tervosh##4967
-  turnin Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
-step
-  talk Morgan Stern##4794
-  accept Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
-step
-  only Mage
-  talk Tabetha##6546
-  accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
-step
-  click Theramore Guard Badge##21042
-  accept Lieutenant Paval Reethe##1252 |goto Dustwallow Marsh 29.83,48.24
-step
-  only Mage
+  only Mage completed(1947)
   talk Tabetha##6546
   accept Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
@@ -203,52 +157,25 @@ step
   talk Tabetha##6546
   accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
-  note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
-  collect 8 Forked Mudrock Tongue##5883 |q 1204 |goto Dustwallow Marsh 62,24.8 |tip {dropsfrom}Mudrock Tortoise, Mudrock Spikeshell, Mudrock Burrower
+  only Warlock completed(4961)
+  talk Tabetha##6546
+  accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Mage
+  click Theramore Guard Badge##21042
+  accept Lieutenant Paval Reethe##1252 |goto Dustwallow Marsh 29.83,48.24
+step
+  only Mage completed(1947)
   note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
   collect 1 Jade##1529 |q 1948 |goto Dustwallow Marsh 30.92,65.84 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
-step
-  only Mage
-  note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
-  collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
-step
-  talk Morgan Stern##4794
-  turnin Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
-step
-  only Mage
-  talk Magus Tirth##6548
-  turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
 step
   talk Captain Garran Vimes##4944
   turnin Lieutenant Paval Reethe##1252 |goto Dustwallow Marsh 68.21,48.62
 step
-  only Mage
-  talk Tabetha##6546
-  turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  talk Tabetha##6546
-  turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
-step
   talk Captain Garran Vimes##4944
   accept Lieutenant Paval Reethe##1259 |goto Dustwallow Marsh 68.21,48.62
 step
-  only Mage
-  talk Tabetha##6546
-  accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Mage
-  note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 1955 |goto Dustwallow Marsh 45.79,56.97 |elite
-step
   talk Adjutant Tesoran##4948
   turnin Lieutenant Paval Reethe##1259 |goto Dustwallow Marsh 68.05,48.11
-step
-  only Mage
-  talk Tabetha##6546
-  turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Adjutant Tesoran##4948
   accept Daelin's Men##1285 |goto Dustwallow Marsh 68.05,48.11
@@ -259,6 +186,10 @@ step
   talk Captain Garran Vimes##4944
   accept The Deserters##1286 |goto Dustwallow Marsh 68.21,48.62
 step
+  only Mage completed(1947)
+  talk Tabetha##6546
+  turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
+step
   talk Balos Jacken##5089
   turnin The Deserters##1286 |goto Dustwallow Marsh 36.09,54.31
 step
@@ -268,6 +199,53 @@ step
   talk Captain Garran Vimes##4944
   turnin The Deserters##1287 |goto Dustwallow Marsh 68.21,48.62
 step
-  note {travel}Ironforge
-  goto Ironforge 72.73,94.01
+  talk Shindrell Swiftfire##3845
+  turnin Journey to Astranaar##1133 |goto Ashenvale 34.67,48.84 |tip {turninat}Ashenvale
+step
+  only Mage completed(1947)
+  talk Magus Tirth##6548
+  turnin Hidden Secrets##1949 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
+step
+  only Warlock completed(4961)
+  talk Menara Voidrender##6266
+  turnin Returning the Cleansed Orb##4976 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  talk Archmage Tervosh##4967
+  accept Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
+step
+  note Bring 10 Highperch Venom Sacs to Fiora Longears in Theramore.
+  collect 10 Highperch Venom Sac##5809 |q 1135 |goto Thousand Needles 11.8,37.8 |tip {dropsfrom}Highperch Wyvern, Highperch Consort, Highperch Patriarch
+step
+  only Mage
+  note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
+  collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
+step
+  note Collect 10 Shadowshard Fragments from Maraudon and return them to Archmage Tervosh in Theramore on the coast of Dustwallow Marsh.
+  kill Shadowshard Rumbler##11777 |goto Desolace 27.23,57.68 |elite
+  collect 10 Shadowshard Fragment##17756 |q 7070 |goto Desolace 27.23,57.68
+step
+  talk Fiora Longears##4456
+  turnin Highperch Venom##1135 |goto Dustwallow Marsh 66.46,45.15
+step
+  only Mage
+  talk Tabetha##6546
+  turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
+step
+  talk Archmage Tervosh##4967
+  turnin Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
+step
+  only Mage
+  talk Tabetha##6546
+  accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Mage
+  note Kill the Demon of the Orb, then speak with Tabetha.
+  kill Demon of the Orb##6549 |q 1955 |goto Dustwallow Marsh 45.79,56.97 |elite
+step
+  only Mage
+  talk Tabetha##6546
+  turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
+step
+  note {travel}Darnassus
+  goto Darnassus 59.51,45.38
 ]])

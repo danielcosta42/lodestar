@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Feralas (43-48)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Tanaris (45-50)",
+	next = "Leveling/Horde/Tanaris (44-50)",
 }, [[
 step
   talk Belgrom Rockmaul##4485
@@ -247,6 +247,6 @@ step
   talk Zilzibin Drumlore##7010
   turnin Zukk'ash Report##7732 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
 step
-  note {travel}Undercity
-  goto Undercity 50.14,67.97
+  note {travel}Tanaris
+  goto Tanaris 50.96,27.24
 ]])

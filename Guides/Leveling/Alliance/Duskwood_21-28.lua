@@ -108,10 +108,6 @@ step
   talk Madame Eva##265
   accept The Legend of Stalvan##66 |goto Duskwood 75.79,45.32
 step
-  only completed(68)
-  talk Clerk Daltry##267
-  accept The Legend of Stalvan##69 |goto Duskwood 72.54,46.87
-step
   talk Calor##663
   accept Worgen in the Woods##173 |goto Duskwood 75.75,47.57
 step
@@ -146,10 +142,6 @@ step
 step
   talk Clerk Daltry##267
   turnin The Legend of Stalvan##66 |goto Duskwood 72.54,46.87
-step
-  only completed(68)
-  talk Innkeeper Farley##295
-  turnin The Legend of Stalvan##69 |goto Elwynn Forest 43.77,65.8 |tip {turninat}Elwynn Forest
 step
   talk Calor##663
   turnin Worgen in the Woods##173 |goto Duskwood 75.75,47.57
@@ -207,6 +199,9 @@ step
   click Mound of loose dirt##59
   accept Sven's Camp##230 |goto Duskwood 49.85,77.71
 step
+  click Old Footlocker##3643
+  accept The Legend of Stalvan##68 |goto Westfall 41.51,66.73
+step
   note Retrieve Blind Mary's Looking Glass from the Insane Ghoul and give it to Viktori in Darkshire.
   collect Mary's Looking Glass##1946 |q 177 |goto Duskwood 80.9,71.96 |tip {dropsfrom}Insane Ghoul
 step
@@ -219,17 +214,26 @@ step
   talk Sven Yorgen##311
   turnin Sven's Camp##230 |goto Duskwood 7.78,34.07
 step
+  talk Clerk Daltry##267
+  turnin The Legend of Stalvan##68 |goto Duskwood 72.54,46.87
+step
   talk Blind Mary##302
   accept Return the Comb##154 |goto Duskwood 81.99,59.09
 step
   talk Sven Yorgen##311
   accept The Shadowy Figure##262 |goto Duskwood 7.78,34.07
 step
+  talk Clerk Daltry##267
+  accept The Legend of Stalvan##69 |goto Duskwood 72.54,46.87
+step
   talk Madame Eva##265
   turnin Return the Comb##154 |goto Duskwood 75.79,45.32
 step
   talk Madame Eva##265
   turnin The Shadowy Figure##262 |goto Duskwood 75.79,45.32
+step
+  talk Innkeeper Farley##295
+  turnin The Legend of Stalvan##69 |goto Elwynn Forest 43.77,65.8 |tip {turninat}Elwynn Forest
 step
   talk Madame Eva##265
   accept Deliver the Thread##157 |goto Duskwood 75.79,45.32
@@ -306,6 +310,6 @@ step
   talk Bishop Farthing##1212
   turnin Seeking Wisdom##269 |goto Stormwind City 49.93,45.99 |tip {turninat}Stormwind City
 step
-  note {travel}Darnassus
-  goto Darnassus 31.24,84.51
+  note {travel}Wetlands
+  goto Wetlands 50.05,18.17
 ]])

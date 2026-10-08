@@ -288,6 +288,6 @@ step
   talk Bashana Runetotem##9087
   turnin Morrowgrain Research##3786 |goto Thunder Bluff 71.06,34.19 |tip {turninat}Thunder Bluff
 step
-  note {travel}Undercity
-  goto Undercity 48.71,71.39
+  note {travel}Thunder Bluff
+  goto Thunder Bluff 57.3,89.79
 ]])

@@ -202,14 +202,8 @@ step
   talk Daryn Lightwind##7907
   turnin In Search of Knowledge##2939 |goto Teldrassil 55.41,92.23 |tip {turninat}Teldrassil
 step
-  talk Bink##5144
-  accept Tabetha's Task##2861 |goto Ironforge 27.25,8.3
-step
   talk Angelas Moonbreeze##7900
   accept The Sunken Temple##3445 |goto Feralas 31.83,45.61
-step
-  talk Tabetha##6546
-  turnin Tabetha's Task##2861 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
 step
   talk Marvon Rivetseeker##7771
   turnin The Sunken Temple##3445 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris

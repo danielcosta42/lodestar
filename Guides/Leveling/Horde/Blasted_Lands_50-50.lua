@@ -11,10 +11,6 @@ step
   talk Innkeeper Norman##6741
   accept Assisting Arch Druid Runetotem##3784 |goto Undercity 67.74,37.89
 step
-  only Shaman not completed(8411) not haveq(8411)
-  talk Beram Skychaser##3032
-  accept Elemental Mastery##8410 |goto Thunder Bluff 21.99,18.8
-step
   talk Bloodmage Drazial##7505
   accept Snickerfang Jowls##2581 |goto Blasted Lands 50.55,14.2
 step
@@ -81,14 +77,6 @@ step
   only not completed(3762) not completed(936) not haveq(3762) not haveq(936)
   talk Arch Druid Hamuul Runetotem##5769
   turnin Assisting Arch Druid Runetotem##3784 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
-step
-  only Shaman not completed(8411) not haveq(8411)
-  note Collect a sample of air, fire, earth and water for Bath'rah the Windwatcher.
-  collect Elemental Air##7069 |q 8410 |goto Westfall 45.61,49.32 |tip {dropsfrom}Dust Devil, Thundering Exile, Cyclonian
-step
-  only Shaman not completed(8411) not haveq(8411)
-  talk Bath'rah the Windwatcher##6176
-  turnin Elemental Mastery##8410 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
 step
   note {travel}Undercity
   goto Undercity 48.71,71.39

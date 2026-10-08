@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (5-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Tirisfal Glades (13-13)",
+	next = "Leveling/Horde/Tirisfal Glades (13-21)",
 }, [[
 step
   only Undead

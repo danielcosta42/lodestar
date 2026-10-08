@@ -1,22 +1,14 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Tanaris (45-50)", {
+ns:RegisterGuide("Leveling/Horde/Tanaris (44-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Un'Goro Crater (51-55)",
 }, [[
 step
-  only completed(238)
-  talk Apothecary Zinge##5204
-  accept Into the Field##243 |goto Undercity 50.14,67.97
-step
   note {fp}Bulkrek Ragefist
   goto Tanaris 51.6,25.44 |tip {vendor}
-step
-  only completed(238)
-  talk Chief Engineer Bilgewhizzle##7407
-  turnin Into the Field##243 |goto Tanaris 52.46,28.51
 step
   only completed(1188)
   talk Shreev##4708
@@ -28,7 +20,7 @@ step
   talk Spigot Operator Luglunket##7408
   accept Water Pouch Bounty##1707 |goto Tanaris 52.49,28.45
 step
-  only completed(238)
+  only completed(243)
   talk Chief Engineer Bilgewhizzle##7407
   accept Slake That Thirst##379 |goto Tanaris 52.46,28.51
 step
@@ -72,7 +64,7 @@ step
   note Bring five Centipaar insect parts from the Noxious Lair to Alchemist Pestlezugg in Gadgetzan.
   collect Centipaar Insect Parts##8587 |q 82 |goto Tanaris 33.28,44.39 |tip {dropsfrom}Centipaar Wasp, Centipaar Stinger, Centipaar Swarmer
 step
-  only completed(238)
+  only completed(243)
   note Bring 5 Wastewander Water Pouches to Chief Engineer Bilgewhizzle in Gadgetzan.
   collect 5 Wastewander Water Pouch##8483 |q 379 |goto Tanaris 61.71,38.21 |tip {dropsfrom}Wastewander Rogue, Wastewander Thief, Wastewander Shadow Mage
 step
@@ -97,7 +89,7 @@ step
   talk Alchemist Pestlezugg##5594
   turnin Noxious Lair Investigation##82 |goto Tanaris 50.89,26.96
 step
-  only completed(238)
+  only completed(243)
   talk Chief Engineer Bilgewhizzle##7407
   turnin Slake That Thirst##379 |goto Tanaris 52.46,28.51
 step

@@ -149,17 +149,32 @@ step
   talk Alchemist Pestlezugg##5594
   accept Insect Part Analysis##113 |goto Tanaris 50.89,26.96
 step
+  talk Tran'rek##7876
+  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
+step
   talk Senior Surveyor Fizzledowser##7724
   turnin Insect Part Analysis##113 |goto Tanaris 50.21,27.48
 step
   talk Senior Surveyor Fizzledowser##7724
   accept Rise of the Silithid##162 |goto Tanaris 50.21,27.48
 step
-  talk Tran'rek##7876
-  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
-step
   note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
   kill Dunemaul Brute##5474 |q 5863 |goto Tanaris 40.65,54.35
+step
+  only completed(2946,2966)
+  talk Stone Watcher of Norgannon##7918
+  accept The Stone Watcher##2954 |goto Tanaris 37.6,81.4
+step
+  only completed(2946,2966)
+  note Learn the purpose of the Stone Watcher of Norgannon, and then interact with the Uldum Pedestal in the Tanaris desert.
+  talk Stone Watcher of Norgannon##7918 |q 2954 |goto Tanaris 37.6,81.4
+step
+  only completed(2946,2966)
+  turnin The Stone Watcher##2954 |goto Tanaris 37.63,81.4
+step
+  only completed(2946,2966)
+  click Uldum Pedestal##142343
+  accept Return to Ironforge##2977 |goto Tanaris 37.63,81.4
 step
   talk Tooga##5955
   accept Tooga's Quest##1560 |goto Tanaris 30,70
@@ -202,10 +217,6 @@ step
   talk Erelas Ambersky##7916
   turnin Handle With Care##3022 |goto Teldrassil 55.5,92.05 |tip {turninat}Teldrassil
 step
-  only completed(2963)
-  talk Historian Karnik##2916
-  accept Seeing What Happens##2946 |goto Ironforge 77.54,11.82
-step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
 step
@@ -216,29 +227,11 @@ step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
 step
-  only completed(2963)
-  turnin Seeing What Happens##2946 |goto Tanaris 37.63,81.4
-step
   only completed(3380,3445)
   talk Marvon Rivetseeker##7771
   turnin The Stone Circle##3444 |goto Tanaris 52.71,45.92
 step
-  only completed(2963)
-  talk Stone Watcher of Norgannon##7918
-  accept The Stone Watcher##2954 |goto Tanaris 37.6,81.4
-step
-  only completed(2963)
-  note Learn the purpose of the Stone Watcher of Norgannon, and then interact with the Uldum Pedestal in the Tanaris desert.
-  talk Stone Watcher of Norgannon##7918 |q 2954 |goto Tanaris 37.6,81.4
-step
-  only completed(2963)
-  turnin The Stone Watcher##2954 |goto Tanaris 37.63,81.4
-step
-  only completed(2963)
-  click Uldum Pedestal##142343
-  accept Return to Ironforge##2977 |goto Tanaris 37.63,81.4
-step
-  only completed(2963)
+  only completed(2946,2966)
   talk Historian Karnik##2916
   turnin Return to Ironforge##2977 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
 step

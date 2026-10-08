@@ -426,10 +426,6 @@ step
   talk Mydrannul##4241
   accept Nessa Shadowsong##6344 |goto Darnassus 70.68,45.38
 step
-  only Skyborne Druid
-  talk Sheldras Moontree##5504
-  accept Moonglade##94914 |goto Stormwind City 35.84,67.38
-step
   talk Sentinel Arynia Cloudsbreak##3519
   accept Darkness in the Glade##98392 |goto Teldrassil 38.32,34.36
 step
@@ -525,10 +521,6 @@ step
   only NightElf
   talk Nessa Shadowsong##10118
   turnin Nessa Shadowsong##6344 |goto Teldrassil 56.26,92.44
-step
-  only Skyborne Druid
-  talk Dendrite Starblaze##11802
-  turnin Moonglade##94914 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
 step
   talk Sentinel Arynia Cloudsbreak##3519
   turnin Darkness in the Glade##98392 |goto Teldrassil 38.32,34.36
@@ -643,6 +635,9 @@ step
   click Sprouted Frond##7510
   accept The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
 step
+  talk Priestess A'moora##7313
+  accept Sathrah's Sacrifice##2520 |goto Darnassus 36.65,85.93
+step
   only NightElf Hunter
   talk Dazalar##3601
   accept Taming the Beast##6101 |goto Teldrassil 56.68,59.49
@@ -657,6 +652,9 @@ step
   note Bring 5 Mossy Tumors to Rellian Greenspyre in Darnassus.
   collect 5 Mossy Tumor##5170 |q 923 |goto Teldrassil 43.91,42.69 |tip {dropsfrom}Timberling Trampler, Timberling Mire Beast, Elder Timberling
 step
+  note Priestess A'moora wants you to place Lady Sathrah's silvery spinnerets at the fountain inside the temple, and then return to her.
+  collect Temple of the Moon Fountain##138498 |q 2520 |goto Darnassus 39.18,85.59
+step
   only NightElf Hunter
   note Use the Taming Rod to tame a Nightsaber Stalker. Practice your skills, then return the Taming Rod to Dazalar in Dolanaar.
   use Nightsaber Stalker##2043 |q 6101 |goto Teldrassil 46.59,71.34 |tip {useit}
@@ -668,6 +666,9 @@ step
   turnin Tumors##923 |goto Darnassus 38.18,21.64 |tip {turninat}Darnassus
 step
   turnin The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
+step
+  talk Priestess A'moora##7313
+  turnin Sathrah's Sacrifice##2520 |goto Darnassus 36.65,85.93 |tip {turninat}Darnassus
 step
   only NightElf Hunter
   talk Dazalar##3601

@@ -111,6 +111,6 @@ step
   talk Lotwil Veriatus##2921
   turnin The Rise of the Machines##4062 |goto Badlands 25.95,44.87
 step
-  note {travel}Orgrimmar
-  goto Orgrimmar 37.68,75.16
+  note {travel}Undercity
+  goto Undercity 63.9,44.08
 ]])

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Dun Morogh (5-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Westfall (12-18)",
+	next = "Leveling/Alliance/Loch Modan (11-18)",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -777,6 +777,6 @@ step
   talk Belia Thundergranite##10090
   turnin Training the Beast##6086 |goto Ironforge 70.86,85.83 |tip {turninat}Ironforge
 step
-  note {travel}Darnassus
-  goto Darnassus 36.65,85.93
+  note {travel}Ironforge
+  goto Ironforge 55.5,47.74
 ]])

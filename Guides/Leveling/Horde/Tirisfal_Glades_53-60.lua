@@ -7,13 +7,13 @@ ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (53-60)", {
 	next = "Leveling/Horde/Western Plaguelands (53-57)",
 }, [[
 step
-  only not completed(5094) not completed(5095) not haveq(5094) not haveq(5095)
-  talk Warcaller Gorlach##10880
-  accept A Call to Arms: The Plaguelands!##5093 |goto Orgrimmar 37.68,75.16
+  only not completed(5093) not completed(5095) not haveq(5093) not haveq(5095)
+  talk Harbinger Balthazad##10879
+  accept A Call to Arms: The Plaguelands!##5094 |goto Undercity 63.9,44.08
 step
-  only not completed(5094) not completed(5095) not haveq(5094) not haveq(5095)
+  only not completed(5093) not completed(5095) not haveq(5093) not haveq(5095)
   talk High Executor Derrington##10837
-  turnin A Call to Arms: The Plaguelands!##5093 |goto Tirisfal Glades 83.13,68.94
+  turnin A Call to Arms: The Plaguelands!##5094 |goto Tirisfal Glades 83.13,68.94
 step
   talk High Executor Derrington##10837
   accept Scarlet Diversions##5096 |goto Tirisfal Glades 83.13,68.94

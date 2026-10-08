@@ -7,9 +7,6 @@ ns:RegisterGuide("Leveling/Alliance/Desolace (33-39)", {
 	next = "Leveling/Alliance/Dustwallow Marsh (35-38)",
 }, [[
 step
-  talk Roetten Stonehammer##5637
-  accept Reclaimers' Business in Desolace##1453 |goto Ironforge 69.95,21.26
-step
   talk Smeed Scrabblescrew##11596
   accept Kodo Roundup##5561 |goto Desolace 60.86,61.86
 step
@@ -25,15 +22,13 @@ step
   note {fp}Baritanas Skyriver
   goto Desolace 64.66,10.54 |tip {vendor}
 step
-  talk Kreldig Ungor##5638
-  turnin Reclaimers' Business in Desolace##1453 |goto Desolace 66.2,9.63
-step
   talk Corporal Melkins##5752
   accept Centaur Bounty##1387 |goto Desolace 66.74,10.87
 step
   talk Vahlarriel Demonslayer##5642
   accept Vahlarriel's Search##1437 |goto Desolace 66.44,11.82
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1458 |goto Desolace 66.2,9.63
 step
@@ -43,12 +38,15 @@ step
   talk Captain Pentigast##5396
   accept Brutal Politics##1385 |goto Desolace 66.66,10.93
 step
+  only completed(1453)
   note Bring 10 Hatefury Claws, and 10 Hatefury Horns to Kreldig Ungor in Desolace.
   collect 10 Hatefury Claw##6246 |q 1458 |goto Desolace 73.55,19.11 |tip {dropsfrom}Hatefury Rogue, Hatefury Trickster, Hatefury Felsworn
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   turnin Reagents for Reclaimers Inc.##1458 |goto Desolace 66.2,9.63
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1459 |goto Desolace 66.2,9.63
 step
@@ -81,6 +79,7 @@ step
   click Malem Chest##50961
   accept Vahlarriel's Search##1465 |goto Desolace 56.52,17.84
 step
+  only completed(1453)
   note Bring 7 vials of Scorpashi Venom and 3 Aged Kodo Hides to Kreldig Ungor in Desolace.
   collect 7 Scorpashi Venom##6248 |q 1459 |goto Desolace 65.46,27.9 |tip {dropsfrom}Scorpashi Snapper, Scorpashi Lasher, Scorpashi Venomlash
 step
@@ -96,6 +95,7 @@ step
   talk Corporal Melkins##5752
   turnin Centaur Bounty##1387 |goto Desolace 66.74,10.87
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   turnin Reagents for Reclaimers Inc.##1459 |goto Desolace 66.2,9.63
 step
@@ -161,9 +161,6 @@ step
   note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
   collect 3 Broken Tears##6083 |q 1369 |goto Desolace 39.65,93.3 |tip {dropsfrom}Tear of Theradras
 step
-  talk Hornizz Brimbuzzle##6019
-  accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
-step
   talk Smeed Scrabblescrew##11596
   turnin Gizelton Caravan##5943 |goto Desolace 60.86,61.86
 step
@@ -188,20 +185,24 @@ step
   talk Melizza Brimbuzzle##12277
   accept Get Me Out of Here!##6132 |goto Desolace 33.95,53.5
 step
+  talk Brother Anton##1182
+  accept Down the Scarlet Path##261 |goto Desolace 66.52,7.91
+step
+  only completed(1453)
   talk Kreldig Ungor##5638
   accept The Karnitol Shipwreck##1454 |goto Desolace 66.2,9.63
 step
+  note Destroy 30 Undead Ravagers, then return to Brother Anton at Nijel's Point.
+  kill Undead Ravager##11561 |q 261 |goto Desolace 64.24,90.37
+step
   note Maintain your reputation with the Magram, and bring the Head of Khan Shaka to Warug in the Magram Village in Desolace.
   collect Khan Shaka's Head##6073 |q 1375 |goto Desolace 40.49,95.49 |tip {dropsfrom}Khan Shaka
-step
-  note Bring 8 Ghost-o-plasms and the Crate of Ghost Magnets to Hornizz Brimbuzzle in Desolace.
-  collect 8 Ghost-o-plasm##15849 |q 6134 |goto Desolace 64.18,91.63 |tip {dropsfrom}Magrami Spectre
 step
   talk Hornizz Brimbuzzle##6019
   turnin Get Me Out of Here!##6132 |goto Desolace 47.83,61.83
 step
   talk Hornizz Brimbuzzle##6019
-  turnin Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
+  accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
 step
   note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
   collect 10 Kodo Bone##13703 |q 5501 |goto Desolace 53.26,61.24 |tip {dropsfrom}Kodo Bones
@@ -212,44 +213,57 @@ step
   talk Bibbly F'utzbuckle##11438
   turnin Bone Collector##5501 |goto Desolace 62.33,38.99
 step
+  only completed(1453)
   turnin The Karnitol Shipwreck##1454 |goto Desolace 36.11,30.45
 step
+  only completed(1453)
   click Karnitol's Chest##35251
   accept The Karnitol Shipwreck##1455 |goto Desolace 36.11,30.45
 step
+  talk Brother Anton##1182
+  turnin Down the Scarlet Path##261 |goto Desolace 66.52,7.91
+step
+  only completed(1453)
   talk Kreldig Ungor##5638
   turnin The Karnitol Shipwreck##1455 |goto Desolace 66.2,9.63
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   accept The Karnitol Shipwreck##1456 |goto Desolace 66.2,9.63
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1466 |goto Desolace 66.2,9.63
 step
+  note Bring 8 Ghost-o-plasms and the Crate of Ghost Magnets to Hornizz Brimbuzzle in Desolace.
+  collect 8 Ghost-o-plasm##15849 |q 6134 |goto Desolace 64.18,91.63 |tip {dropsfrom}Magrami Spectre
+step
+  talk Hornizz Brimbuzzle##6019
+  turnin Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
+step
+  only completed(1453)
   note Bring 10 Felhound Brains, 10 Nether Wings, and 10 vials of Doomwarder Blood to Kreldig Ungor in Desolace.
   collect 10 Felhound Brain##6250 |q 1466 |goto Desolace 52.91,68.14 |tip {dropsfrom}Mana Eater, Mage Hunter, Ley Hunter
 step
+  only completed(1453)
   note Find Karnitol's Satchel and return it to Kreldig Ungor in Desolace.
   collect Karnitol's Satchel##6245 |q 1456 |goto Desolace 28.58,11.06 |tip {dropsfrom}Slitherblade Tidehunter, Slitherblade Sea Witch
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   turnin The Karnitol Shipwreck##1456 |goto Desolace 66.2,9.63
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   turnin Reagents for Reclaimers Inc.##1466 |goto Desolace 66.2,9.63
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   accept The Karnitol Shipwreck##1457 |goto Desolace 66.2,9.63
 step
+  only completed(1453)
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1467 |goto Desolace 66.2,9.63
-step
-  talk Brother Crowley##12336
-  accept Brother Anton##6141 |goto Stormwind City 52.62,43.18
-step
-  only Warlock not completed(3631) not completed(4488) not completed(4489) not haveq(3631) not haveq(4488) not haveq(4489)
-  talk Briarthorn##5172
-  accept Summon Felsteed##4487 |goto Ironforge 50.35,5.66
 step
   talk Talendria##11715
   accept Vyletongue Corruption##7041 |goto Desolace 68.5,8.88
@@ -263,31 +277,17 @@ step
   note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
   kill Noxxious Scion##13696 |q 7041 |goto Maraudon - Dungeon -1,-1
 step
-  talk Brother Anton##1182
-  turnin Brother Anton##6141 |goto Desolace 66.52,7.91
-step
-  only Warlock not completed(3631) not completed(4488) not completed(4489) not haveq(3631) not haveq(4488) not haveq(4489)
-  talk Strahad Farsan##6251
-  turnin Summon Felsteed##4487 |goto The Barrens 62.63,35.5 |tip {turninat}The Barrens
-step
   talk Talendria##11715
   turnin Vyletongue Corruption##7041 |goto Desolace 68.5,8.88
 step
   talk Centaur Pariah##13717
   turnin The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
 step
-  talk Brother Anton##1182
-  accept Down the Scarlet Path##261 |goto Desolace 66.52,7.91
-step
-  note Destroy 30 Undead Ravagers, then return to Brother Anton at Nijel's Point.
-  kill Undead Ravager##11561 |q 261 |goto Desolace 64.24,90.37
-step
-  talk Brother Anton##1182
-  turnin Down the Scarlet Path##261 |goto Desolace 66.52,7.91
-step
+  only completed(1453)
   talk Roetten Stonehammer##5637
   turnin The Karnitol Shipwreck##1457 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
 step
+  only completed(1453)
   talk Roetten Stonehammer##5637
   turnin Reagents for Reclaimers Inc.##1467 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
 step

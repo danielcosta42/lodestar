@@ -219,6 +219,6 @@ step
   talk Myriam Moonsinger##12866
   turnin A Host of Evil##6626 |goto The Barrens 49.01,94.94
 step
-  note {travel}Ironforge
-  goto Ironforge 72.08,51.88
+  note {travel}Stonetalon Mountains
+  goto Stonetalon Mountains 59.9,66.85
 ]])
