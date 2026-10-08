@@ -129,17 +129,89 @@ end
 
 local LONGE, VERTICES = 40, 10           -- até onde o fio tenta alcançar: células (~670 jd), vértices
 
--- Caminho de `de` a `para` ({c,x,y}, mesmo continente). nil se não há (fora da grade, longe de
--- célula passável, sem passagem ou busca grande demais): quem chama volta à reta. `ceder`, numa
--- corrotina: a cada tantas expansões (número) ou quando a função disser (orçamento de tempo),
--- cede a vez — não trava o quadro.
+-- Ilha: região fechada pequena da grade — vila, morro de prédio, cais —, que no jogo se liga
+-- ao resto por rampa, ponte ou porta, construções que o terreno não tem. Quase metade dos
+-- mestres de voo cai numa. O caminho sai dela (ou chega nela) saltando em reta o pedaço que
+-- falta, até SALTO células.
+local ILHA, SALTO, PARADO = 3000, 20, 3000   -- células; células; expansões sem chegar mais perto
+
+-- as células ligadas a (r, c) e se a região acaba antes de `ILHA` (é ilha)
+local function regiao(grid, r, c)
+	local k0 = r * W + c
+	local set, q, i = { [k0] = true }, { k0 }, 1
+	while q[i] do
+		if #q >= ILHA then return set, false end
+		local k = q[i]
+		i = i + 1
+		local kr, kc = floor(k / W), k % W
+		local conn = info(grid, kr, kc)
+		for d = 1, 8 do
+			local nr, nc = kr + DIRS[d][1], kc + DIRS[d][2]
+			local nk = nr * W + nc
+			if conn % 2 ^ d >= 2 ^ (d - 1) and nr >= 0 and nc >= 0 and nr < W and nc < W and not set[nk] then
+				set[nk] = true
+				q[#q + 1] = nk
+			end
+		end
+	end
+	return set, true
+end
+
+-- a célula passável fora de `set` mais perto de (r, c), até SALTO
+local function saida(grid, r, c, set)
+	local br, bc, bd
+	for raio = 1, SALTO do
+		for dr = -raio, raio do
+			for dc = -raio, raio do
+				local d = dr * dr + dc * dc
+				if math.max(math.abs(dr), math.abs(dc)) == raio and (not bd or d < bd)
+					and not set[(r + dr) * W + c + dc] and info(grid, r + dr, c + dc) ~= 0 then
+					br, bc, bd = r + dr, c + dc, d
+				end
+			end
+		end
+		if bd and bd <= raio * raio then return br, bc end   -- os anéis seguintes ficam mais longe
+	end
+	return br, bc
+end
+
+-- saindo da ilha de (r, c): a célula livre mais perto que não seja outra ilha (vilas em
+-- platôs vizinhos), ou a da região do destino `goal`
+local function sai(grid, r, c, set, goal)
+	for _ = 1, 6 do
+		local er, ec = saida(grid, r, c, set)
+		if not er then return nil end
+		local s2, ilha = regiao(grid, er, ec)
+		if not ilha or s2[goal] then return er, ec end
+		for k in pairs(s2) do set[k] = true end
+	end
+end
+
+-- Caminho de `de` a `para` ({c,x,y}, mesmo continente). nil se não há (fora da grade, sem
+-- passagem entre regiões grandes ou busca grande demais): quem chama volta à reta. Ponta
+-- numa ilha salta em reta até a borda dela. `ceder`, numa corrotina: a cada tantas
+-- expansões (número) ou quando a função disser (orçamento de tempo), cede a vez — não trava
+-- o quadro.
 function TR.Path(dados, de, para, maxExp, ceder)
 	if not (de and para and de.c == para.c and dados) then return nil end
 	local grid = dados[de.c]
 	if not grid then return nil end
-	local sr, sc = ajusta(grid, TR.Cell(de.x, de.y))
-	local gr, gc = ajusta(grid, TR.Cell(para.x, para.y))
-	if not (sr and gr) then return nil end
+	local sr0, sc0 = TR.Cell(de.x, de.y)
+	local gr0, gc0 = TR.Cell(para.x, para.y)
+	local sr, sc = ajusta(grid, sr0, sc0)
+	local gr, gc = ajusta(grid, gr0, gc0)
+	sr, sc, gr, gc = sr or sr0, sc or sc0, gr or gr0, gc or gc0   -- bloqueada de tudo: ilha vazia
+	-- ilhas: o jogador sai da dele pela célula livre mais perto; para a do destino, a busca
+	-- fica com a célula que mais chegou perto
+	local doIni, ilhaIni = regiao(grid, sr, sc)
+	local ilhaFim = false
+	if not doIni[gr * W + gc] then
+		if ilhaIni then
+			sr, sc = sai(grid, sr, sc, doIni, gr * W + gc)
+			if not sr then return nil end
+		end
+		ilhaFim = select(2, regiao(grid, gr, gc))
+	end
 	local start, goal = sr * W + sc, gr * W + gc
 	local function h(r, c)
 		local dr, dc = math.abs(r - gr), math.abs(c - gc)
@@ -149,6 +221,7 @@ function TR.Path(dados, de, para, maxExp, ceder)
 	local g, came, fechado = { [start] = 0 }, {}, {}
 	fila.poe(h(sr, sc), start)
 	local exp, achou = 0, start == goal
+	local perto, pertoH, parado = start, h(sr, sc), 0
 	local porFuncao = type(ceder) == "function"
 	while not achou and not fila.vazia() do
 		local k = fila.tira()
@@ -157,7 +230,17 @@ function TR.Path(dados, de, para, maxExp, ceder)
 		elseif not fechado[k] then
 			fechado[k] = true
 			exp = exp + 1
-			if exp > maxExp then return nil end
+			if exp > maxExp then break end
+			local r, c = floor(k / W), k % W
+			if ilhaFim then                              -- já na borda da ilha e sem avançar: chega
+				local hk = h(r, c)
+				if hk < pertoH then
+					perto, pertoH, parado = k, hk, 0
+				else
+					parado = parado + 1
+					if parado > PARADO and pertoH <= SALTO * CEL then break end
+				end
+			end
 			if ceder and coroutine.running() then
 				if porFuncao then
 					if exp % 256 == 0 and ceder() then coroutine.yield() end
@@ -165,7 +248,6 @@ function TR.Path(dados, de, para, maxExp, ceder)
 					coroutine.yield()
 				end
 			end
-			local r, c = floor(k / W), k % W
 			local conn = info(grid, r, c)
 			for d = 1, 8 do
 				local nr, nc = r + DIRS[d][1], c + DIRS[d][2]
@@ -183,8 +265,12 @@ function TR.Path(dados, de, para, maxExp, ceder)
 			end
 		end
 	end
-	if not achou then return nil end
-	local inv, k = {}, goal
+	local fim = goal
+	if not achou then
+		if not (ilhaFim and pertoH <= SALTO * CEL) then return nil end
+		fim = perto
+	end
+	local inv, k = {}, fim
 	while k do
 		inv[#inv + 1] = k
 		k = came[k]
@@ -224,8 +310,9 @@ function TR.Path(dados, de, para, maxExp, ceder)
 	local r, c = TR.Cell(de.x, de.y)
 	if r ~= sr or c ~= sc then pts[2] = TR.CellCenter(de.c, sr, sc) end
 	for n = 2, #v - 1 do pts[#pts + 1] = TR.CellCenter(de.c, floor(cel[v[n]] / W), cel[v[n]] % W) end
+	local fr, fc = floor(fim / W), fim % W
 	r, c = TR.Cell(para.x, para.y)
-	if #cel > 1 and (r ~= gr or c ~= gc) then pts[#pts + 1] = TR.CellCenter(de.c, gr, gc) end
+	if #cel > 1 and (r ~= fr or c ~= fc) then pts[#pts + 1] = TR.CellCenter(de.c, fr, fc) end
 	pts[#pts + 1] = { c = para.c, x = para.x, y = para.y }
 	return pts
 end

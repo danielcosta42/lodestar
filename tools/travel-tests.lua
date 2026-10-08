@@ -642,29 +642,37 @@ check(select(1, T.PickAnnounced(cands, "Zepelim chegou!")) == 285, "sem o nome n
 local TRN = load("Terrain.lua", {}).Terrain
 local DIRS8 = { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } }
 -- quadrante 0 sintético: `bloq(r, c)` diz o que é parede, `agua(r, c)` o que é lago
-local function quadranteSint(bloq, agua)
-	local by, wb = {}, {}
-	for r = 0, 31 do
-		for c = 0, 31 do
-			local v = 0
-			if not bloq(r, c) then
-				for d, rc in ipairs(DIRS8) do
-					local nr, nc = r + rc[1], c + rc[2]
-					if nr >= 0 and nr < 32 and nc >= 0 and nc < 32 and not bloq(nr, nc) then v = v + 2 ^ (d - 1) end
+-- `tq` quadrantes por lado (1 se omitido)
+local function quadranteSint(bloq, agua, tq)
+	tq = tq or 1
+	local lado, grade = 32 * tq, {}
+	for qr = 0, tq - 1 do
+		for qc = 0, tq - 1 do
+			local by, wb = {}, {}
+			for r = qr * 32, qr * 32 + 31 do
+				for c = qc * 32, qc * 32 + 31 do
+					local v = 0
+					if not bloq(r, c) then
+						for d, rc in ipairs(DIRS8) do
+							local nr, nc = r + rc[1], c + rc[2]
+							if nr >= 0 and nr < lado and nc >= 0 and nc < lado and not bloq(nr, nc) then v = v + 2 ^ (d - 1) end
+						end
+					end
+					by[#by + 1] = string.char(1, v)
 				end
 			end
-			by[#by + 1] = string.char(1, v)
+			for i = 0, 127 do
+				local v = 0
+				for k = 0, 7 do
+					local cel = i * 8 + k
+					if agua and agua(qr * 32 + math.floor(cel / 32), qc * 32 + cel % 32) then v = v + 2 ^ k end
+				end
+				wb[#wb + 1] = string.char(1, v)
+			end
+			grade[qr * 64 + qc] = table.concat(by) .. table.concat(wb)
 		end
 	end
-	for i = 0, 127 do
-		local v = 0
-		for k = 0, 7 do
-			local cel = i * 8 + k
-			if agua and agua(math.floor(cel / 32), cel % 32) then v = v + 2 ^ k end
-		end
-		wb[#wb + 1] = string.char(1, v)
-	end
-	return { [0] = { [0] = table.concat(by) .. table.concat(wb) } }
+	return { [0] = grade }
 end
 local function mundo(r, c) return TRN.CellCenter(0, r, c) end
 local function comprimento(pts)
@@ -679,8 +687,9 @@ local cam = TRN.Path(parede, A, B, 20000)
 check(cam and #cam >= 2, "há caminho pela brecha da parede")
 check(cam and comprimento(cam) > 2.5 * math.sqrt((A.x - B.x) ^ 2 + (A.y - B.y) ^ 2), "o caminho contorna a parede (bem mais longo que a reta)")
 check(cam and math.abs(cam[#cam].x - B.x) < 0.01 and math.abs(cam[1].x - A.x) < 0.01, "começa no jogador e termina no destino")
-local fechada = quadranteSint(function(r, c) return c == 10 end)
-check(TRN.Path(fechada, A, B, 20000) == nil, "parede inteira: sem caminho (volta a reta)")
+-- parede inteira entre duas regiões grandes (não ilhas): sem caminho, volta à reta
+local fechada = quadranteSint(function(r, c) return c == 48 end, nil, 3)
+check(TRN.Path(fechada, mundo(5, 40), mundo(5, 56), 20000) == nil, "parede inteira: sem caminho (volta a reta)")
 -- lago no meio: contorna se a volta for curta
 local lago = quadranteSint(function() return false end, function(r, c) return c >= 9 and c <= 11 and r >= 3 and r <= 7 end)
 cam = TRN.Path(lago, A, B, 20000)
@@ -725,6 +734,23 @@ check(cam and #cam == 2, "campo aberto, perna de ~2600 jd: reta (" .. (cam and #
 cam = TRN.Path(parede, mundo(5, 10), mundo(5, 15), 20000)
 check(cam and not atravessa(cam, function(lin, col) return col == 10 and lin < 26 and lin ~= 5 end),
 	"começo dentro da parede: o caminho não corre por dentro dela")
+-- destino numa ilha da grade (morro de prédio, rampa que o terreno não tem): vai pelo
+-- terreno até a borda mais perto e só o fim salta em reta
+local function ilhaEm(r0, c0)
+	return function(lin, col) return math.max(math.abs(lin - r0), math.abs(col - c0)) == 2 end
+end
+local CEL_ = TRN.CellCenter(0, 0, 0).y - TRN.CellCenter(0, 0, 1).y
+cam = TRN.Path(quadranteSint(ilhaEm(11, 21)), mundo(11, 5), mundo(11, 21), 20000)
+local penult = cam and cam[#cam - 1]
+check(cam and cam[#cam].x == mundo(11, 21).x and cam[1].x == mundo(11, 5).x
+	and math.sqrt((penult.x - mundo(11, 21).x) ^ 2 + (penult.y - mundo(11, 21).y) ^ 2) <= 3.5 * CEL_,
+	"destino ilhado: caminho até a borda da ilha, depois reta curta até ele")
+cam = TRN.Path(quadranteSint(ilhaEm(11, 5)), mundo(11, 5), mundo(11, 25), 20000)
+check(cam and cam[1].x == mundo(11, 5).x and cam[#cam].y == mundo(11, 25).y,
+	"jogador ilhado (dentro da vila): sai pela célula livre mais perto e segue")
+local bloco = quadranteSint(function(lin, col) return math.abs(lin - 11) <= 3 and math.abs(col - 5) <= 3 end)
+cam = TRN.Path(bloco, mundo(11, 5), mundo(11, 25), 20000)
+check(cam and cam[#cam].y == mundo(11, 25).y, "jogador no meio de um bloco (prédio grande): sai dele e segue")
 
 -- a seta mira o ponto do caminho ~25 jd à frente; o que falta é pelo caminho
 local L_ = { { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 0, x = 100, y = 100 } }   -- 100 norte, 100 oeste
