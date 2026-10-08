@@ -153,6 +153,7 @@ function WP:PickTarget()
 end
 
 local function targetMapID(goal)
+	if not goal.goto_ then return nil end        -- alvo de perna: ponto de mundo, sem mapa
 	if goal.goto_.map then return goal.goto_.map end
 	local z = goal.goto_.zone
 	if z then
@@ -465,9 +466,11 @@ function WP:Update()
 		if arrow then arrow:Hide() end
 		return
 	end
-	if setTomTom(goal) then
+	-- perna da rota: a nossa seta (texto e ícone da perna); o resto pode ir ao TomTom
+	if not goal._leg and setTomTom(goal) then
 		if arrow then arrow:Hide() end
 	else
+		clearTomTom()
 		updateArrow(goal)
 	end
 end

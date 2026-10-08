@@ -355,4 +355,10 @@ do
 	check(#faltam == 0, "comandos sem entrada na interface: " .. table.concat(faltam, ", "))
 end
 
+-- ── Revisão final ─────────────────────────────────────────────────────────────
+-- #1: com TomTom, o alvo de perna (sem goto_) derrubava o targetMapID
+local wns = load("Waypoint.lua", { L = L, On = function() end, Every = function() end, zoneUiMap = {}, zoneMap = {} })
+check(pcall(wns.TargetMapID, { verb = "goto_", _leg = true, world = { c = 0, x = 1, y = 1 } }),
+	"alvo de perna (sem goto_) não quebra o mapa do alvo")
+
 print(("ok: %d checks"):format(checks))
