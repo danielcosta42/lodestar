@@ -55,11 +55,12 @@ local function fechar(r, L, total)
 	r.cur, r.levelStart = nil, total
 end
 
--- o nível em andamento, no formato de run.levels (o boletim aberto à mão usa)
+-- o nível em andamento, no formato de run.levels (o boletim aberto à mão usa): o XP é o
+-- já ganho nele — o do nível inteiro dividido pelo tempo até agora dava XP/h errado
 function RT:Current()
 	local r, c = run(), cur()
 	return { time = r.levelStart and (RT:LivePlayed() - r.levelStart) or nil, quests = c.quests,
-		deaths = c.deaths, steps = c.steps, zones = contaZonas(c.zones), xp = c.xp,
+		deaths = c.deaths, steps = c.steps, zones = contaZonas(c.zones), xp = UnitXP and UnitXP("player") or nil,
 		gold = (GetMoney and GetMoney() or 0) - (c.money0 or 0) }
 end
 
