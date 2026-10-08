@@ -285,6 +285,12 @@ end
 -- Abre um guia (como aba) e o ativa. Se já estiver aberto, apenas troca p/ ele
 -- retomando o passo salvo. `keepProgress` retoma em vez de zerar; `silent` evita
 -- print/toast (usado ao trocar de aba, que não deve poluir o chat).
+-- Assinatura do conteúdo do guia: muda quando ele é regerado (ver migrateStep).
+-- ponytail: tamanho do texto; troca por um hash se um guia mudar sem mudar de tamanho
+local function guideSig(guide)
+	return #(guide.body or "")
+end
+
 function ns:LoadGuide(key, keepProgress, silent)
 	local guide = self.guides[key]
 	if not guide then return self:Printf(ns.L.GUIDE_NOTFOUND, key) end
@@ -304,6 +310,8 @@ function ns:LoadGuide(key, keepProgress, silent)
 		if self.db and self.db.viewer then self.db.viewer.hidden = false end   -- mostra a UI
 	end
 	self.char.steps[key] = self.char.currentStep
+	self.char.sigs = self.char.sigs or {}
+	self.char.sigs[key] = guideSig(guide)
 	if not silent and not (keepProgress and wasOpen) then
 		self:Printf(ns.L.GUIDE_LOADED_MSG, key, #guide.steps)
 	end
@@ -602,9 +610,10 @@ function ns:BestGuideForPlayer()
 	return best
 end
 
--- 2.4: os passos injetados (pré-requisitos de outros guias) saíram, e o passo salvo
--- contava com eles (lista maior). Recua até logo depois do último passo concluído —
--- seguir o número velho pulava missões.
+-- O passo salvo é um número na lista de passos do guia. Guia regerado (passos em outra
+-- ordem) ou save de antes da 2.4 (contava os passos injetados) faz o número apontar
+-- para outro lugar: recua até logo depois do último passo concluído — seguir o número
+-- velho pulava missões.
 local function migrateStep(guide, i)
 	local steps = ensureParsed(guide)
 	local j = math.min(i, #steps)
@@ -625,19 +634,51 @@ ns:On("_READY", function()
 		char.openGuides[1] = char.currentGuide
 		char.steps[char.currentGuide] = char.currentStep or 1
 	end
-	-- Descarta abas cujo guia não existe mais (ex.: guia importado apagado).
-	for i = #char.openGuides, 1, -1 do
-		if not ns.guides[char.openGuides[i]] then table.remove(char.openGuides, i) end
+	-- Guia regerado com outra faixa no título (Silverpine Forest 11-20 -> 11-18): aba e
+	-- passo seguem para o da mesma zona cuja faixa mais se sobrepõe.
+	local function renomeado(old)
+		local pre, lo, hi = old:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
+		if not pre or ns.guides[old] then return nil end
+		local best, bestOv
+		for k in pairs(ns.guides) do
+			local p2, l2, h2 = k:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
+			if p2 == pre then
+				local ov = math.min(tonumber(hi), tonumber(h2)) - math.max(tonumber(lo), tonumber(l2))
+				if ov >= 0 and (not bestOv or ov > bestOv) then best, bestOv = k, ov end
+			end
+		end
+		return best
 	end
-	if (char.stepsVer or 1) < 2 then
-		char.completedGoals = {}                 -- marcas manuais: chave com o número velho
-		for k, i in pairs(char.steps) do
-			if ns.guides[k] then char.steps[k] = migrateStep(ns.guides[k], i) end
+	local troca = {}
+	for k in pairs(char.steps) do troca[k] = renomeado(k) end
+	for _, k in ipairs(char.openGuides) do troca[k] = troca[k] or renomeado(k) end
+	for old, new in pairs(troca) do
+		if char.steps[new] == nil then char.steps[new] = char.steps[old] end
+		char.steps[old] = nil
+		if char.currentGuide == old then char.currentGuide = new end
+		if char.manualPick == old then char.manualPick = new end
+		for i, k in ipairs(char.openGuides) do if k == old then char.openGuides[i] = new end end
+	end
+	-- Descarta abas cujo guia não existe mais (ex.: guia importado apagado) e as repetidas.
+	local vistas = {}
+	for i = #char.openGuides, 1, -1 do
+		local k = char.openGuides[i]
+		if not ns.guides[k] or vistas[k] then table.remove(char.openGuides, i) end
+		vistas[k] = true
+	end
+	char.sigs = char.sigs or {}
+	for k, i in pairs(char.steps) do
+		local g = ns.guides[k]
+		if g and char.sigs[k] ~= guideSig(g) then
+			local pre = k .. "\0"                  -- marcas manuais: chave com o número velho
+			for gk in pairs(char.completedGoals) do
+				if gk:sub(1, #pre) == pre then char.completedGoals[gk] = nil end
+			end
+			char.steps[k], char.sigs[k] = migrateStep(g, i), guideSig(g)
 		end
-		if char.currentGuide and char.steps[char.currentGuide] then
-			char.currentStep = char.steps[char.currentGuide]
-		end
-		char.stepsVer = 2
+	end
+	if char.currentGuide and char.steps[char.currentGuide] then
+		char.currentStep = char.steps[char.currentGuide]
 	end
 	-- Restaura a aba ativa salva; senão a primeira aba válida que sobrou.
 	local key = char.currentGuide
