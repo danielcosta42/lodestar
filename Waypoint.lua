@@ -211,23 +211,23 @@ end
 
 -- Recorta o segmento (x0,y0)-(x1,y1) ao quadrado 0-1 do mapa (Liang-Barsky): a
 -- linha até um alvo fora do mapa para na borda, na direção certa. nil se não cruza.
-function WP.ClipSegment(x0, y0, x1, y1)
-	local t0, t1, dx, dy = 0, 1, x1 - x0, y1 - y0
-	for _, pq in ipairs({ { -dx, x0 }, { dx, 1 - x0 }, { -dy, y0 }, { dy, 1 - y0 } }) do
-		local p, q = pq[1], pq[2]
-		if p == 0 then
-			if q < 0 then return nil end
-		else
-			local r = q / p
-			if p < 0 then
-				if r > t1 then return nil end
-				if r > t0 then t0 = r end
-			else
-				if r < t0 then return nil end
-				if r < t1 then t1 = r end
-			end
-		end
+local t0, t1                          -- do recorte em curso (sem tabela por chamada: o mapa
+local function lado(p, q)              -- recorta milhares de segmentos por segundo andando)
+	if p == 0 then return q >= 0 end
+	local r = q / p
+	if p < 0 then
+		if r > t1 then return false end
+		if r > t0 then t0 = r end
+	else
+		if r < t0 then return false end
+		if r < t1 then t1 = r end
 	end
+	return true
+end
+function WP.ClipSegment(x0, y0, x1, y1)
+	local dx, dy = x1 - x0, y1 - y0
+	t0, t1 = 0, 1
+	if not (lado(-dx, x0) and lado(dx, 1 - x0) and lado(-dy, y0) and lado(dy, 1 - y0)) then return nil end
 	return x0 + t0 * dx, y0 + t0 * dy, x0 + t1 * dx, y0 + t1 * dy
 end
 
