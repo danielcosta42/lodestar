@@ -4,10 +4,10 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Horde/Onyxia's Lair (Horde)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "9ce4c922",
+	rev = "0d7394ea",
 }, [[
 step
-  kill Warlord Goretooth##9077 |goto Badlands 5.81,47.52 |tip Loot the quest item here — it starts the quest.
+  talk Warlord Goretooth##9077 |goto Badlands 5.81,47.52 |tip They give you the item that starts the quest.
   accept Warlord's Command##4903 |goto Badlands 5.81,47.52
 step
   note Slay Highlord Omokk, War Master Voone, and Overlord Wyrmthalak. Recover Important Blackrock Documents. Return to Warlord Goretooth in Kargath when the mission has been accomplished.

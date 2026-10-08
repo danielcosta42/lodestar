@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Shaman", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "e487fb35",
+	rev = "f98d845d",
 }, [[
 step
   talk Gornek##3143
@@ -84,6 +84,30 @@ step
   talk Windshaper Boro##251374
   turnin Call of Earth##92466 |goto Zephras Isle 42.76,23.58
 step
+  only not Undead not Tauren not Skyborne Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
+  talk Canaga Earthcaller##5887
+  accept Call of Earth##1516 |goto Durotar 42.4,69.17
+step
+  only not Undead not Tauren not Skyborne Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
+  note Bring 2 Felstalker Hooves to Canaga Earthcaller in the Valley of Trials.
+  collect 2 Felstalker Hoof##6640 |q 1516 |goto Durotar 44.29,54.19 |tip {dropsfrom}Felstalker
+step
+  only not Undead not Tauren not Skyborne Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
+  talk Canaga Earthcaller##5887
+  turnin Call of Earth##1516 |goto Durotar 42.4,69.17
+step
+  only Tauren Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
+  talk Seer Ravenfeather##5888
+  accept Call of Earth##1519 |goto Mulgore 44.35,76.77
+step
+  only Tauren Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
+  note Bring 2 applications of Ritual Salve to Seer Ravenfeather in Camp Narache.
+  collect 2 Ritual Salve##6634 |q 1519 |goto Mulgore 61.05,78.16 |tip {dropsfrom}Bristleback Shaman
+step
+  only Tauren Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
+  talk Seer Ravenfeather##5888
+  turnin Call of Earth##1519 |goto Mulgore 44.35,76.77
+step
   only Skyborne Shaman
   talk Windshaper Boro##251374
   accept Call of Earth##92467 |goto Zephras Isle 42.76,23.58
@@ -99,18 +123,6 @@ step
   only Skyborne Shaman
   talk Windshaper Boro##251374
   turnin Call of Earth##92468 |goto Zephras Isle 42.76,23.58
-step
-  only not Undead not Tauren not Skyborne Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
-  talk Canaga Earthcaller##5887
-  accept Call of Earth##1516 |goto Durotar 42.4,69.17
-step
-  only not Undead not Tauren not Skyborne Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
-  note Bring 2 Felstalker Hooves to Canaga Earthcaller in the Valley of Trials.
-  collect 2 Felstalker Hoof##6640 |q 1516 |goto Durotar 44.29,54.19 |tip {dropsfrom}Felstalker
-step
-  only not Undead not Tauren not Skyborne Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
-  talk Canaga Earthcaller##5887
-  turnin Call of Earth##1516 |goto Durotar 42.4,69.17
 step
   only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
   talk Canaga Earthcaller##5887
@@ -135,18 +147,6 @@ step
   only Shaman not completed(92466) not haveq(92466)
   talk Canaga Earthcaller##5887
   turnin Call of Earth##1518 |goto Durotar 42.4,69.17
-step
-  only Tauren Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
-  talk Seer Ravenfeather##5888
-  accept Call of Earth##1519 |goto Mulgore 44.35,76.77
-step
-  only Tauren Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
-  note Bring 2 applications of Ritual Salve to Seer Ravenfeather in Camp Narache.
-  collect 2 Ritual Salve##6634 |q 1519 |goto Mulgore 61.05,78.16 |tip {dropsfrom}Bristleback Shaman
-step
-  only Tauren Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
-  talk Seer Ravenfeather##5888
-  turnin Call of Earth##1519 |goto Mulgore 44.35,76.77
 step
   only Tauren Shaman not completed(92466) not haveq(92466)
   talk Seer Ravenfeather##5888

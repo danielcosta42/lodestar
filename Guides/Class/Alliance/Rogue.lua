@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Rogue", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "dc0b309b",
+	rev = "50ec5222",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -280,7 +280,7 @@ step
   turnin The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9
 step
   only Rogue
-  kill Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip Loot the quest item here — it starts the quest.
+  talk Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip They give you the item that starts the quest.
   accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
 step
   only Rogue

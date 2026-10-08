@@ -1,5 +1,5 @@
 """
-Fase 4 — Gera guias de Masmorras, Attunements e Eventos a partir do JSON.
+Fase 4 — Gera guias de Masmorras, Attunements, Classe, Reputação e Eventos a partir do JSON.
 Escreve Guides/{Dungeons,Attunements,Events}/** e Guides/Special.xml.
 
 Uso: python gen_special.py
@@ -12,7 +12,7 @@ from router import Router, load_data, is_placeholder
 GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides")
 # Refeitas do zero a cada rodada: o Special.xml é reescrito inteiro, então guia
 # que o banco novo não gera mais ficaria no disco sem ninguém carregar.
-CATEGORIAS = ("Dungeons", "Attunements", "Class", "Reputation", "Dailies", "Events")
+CATEGORIAS = ("Dungeons", "Attunements", "Class", "Reputation", "Events")
 # Feriados (zoneOrSort): têm guia próprio em Events e ficam fora de masmorra,
 # reputação e classe. Não há mais "Eventos por zona": o bit 2 de specialFlags é
 # escolta/script, não feriado — aqueles guias eram leveling misturado.
@@ -21,33 +21,35 @@ FERIADOS = {-22, -284, -364, -365, -366, -368, -369}
 # Attunements curados: (nome, facção A/H/N, seeds, modo). O chain-walk expande
 # os pré-requisitos automaticamente.
 ATTUNEMENTS = [
-    # seeds = quest FINAL da cadeia; walk_chain volta pelos pré-req. Se semear no
-    # meio, a cauda (fragmentos etc.) fica de fora — foi o bug de Kara/Onyxia-H.
-    ("Karazhan",                              "N", [9838, 10296],               "chain"),
-    ("Caverns of Time - Black Morass",        "N", [10297],                     "chain"),
-    ("Arcatraz Key",                          "N", [10704],                     "chain"),
     ("Molten Core - Attunement to the Core",  "N", [7848],                      "chain"),
     ("Onyxia's Lair (Alliance)",              "A", [6502],                      "chain"),
     ("Onyxia's Lair (Horde)",                 "H", [6602],                      "chain"),
     ("Upper Blackrock Spire - Seal of Ascension", "N", [4743],                  "chain"),
     ("Maraudon - Scepter of Celebras",        "N", [7046],                      "chain"),
-    ("Heroic Dungeons - Trial of the Naaru",  "N", [10884, 10885, 10886, 10888], "chain"),
-    ("Hyjal Summit - Vials of Eternity",      "N", [10445],                     "chain"),
-    ("Black Temple - Cudgel of Kar'desh",     "N", [10901],                     "chain"),
+    ("Blackwing Lair - Blackhand's Command",  "N", [7761],                      "chain"),
+    # as três variantes por reputação (Honrado/Reverenciado/Exaltado): a Angela só
+    # oferece a do nível do jogador, e o passo das outras é pulado no NPC
+    ("Naxxramas - The Dread Citadel",         "N", [9121, 9122, 9123],          "chain"),
+    # abertura de Ahn'Qiraj: as três pontas da cadeia
+    ("Ahn'Qiraj - Scepter of the Shifting Sands", "N", [8743, 8745],            "chain"),
+    # set de masmorra 2 (T0.5): Saving the Best for Last de cada classe
+    ("Dungeon Set 2 (Alliance)",              "A", list(range(8999, 9015)),     "chain"),
+    ("Dungeon Set 2 (Horde)",                 "H", list(range(8999, 9015)),     "chain"),
 ]
 
 
-# Facções de grind curadas (TBC + Classic) — ID -> nome.
+# Facções de grind curadas — ID -> nome.
 GRIND_FACTIONS = {
-    946: "Honor Hold", 947: "Thrallmar", 942: "Cenarion Expedition",
-    935: "The Sha'tar", 932: "The Aldor", 934: "The Scryers",
-    1011: "Lower City", 989: "Keepers of Time", 933: "The Consortium",
-    967: "The Violet Eye", 970: "Sporeggar", 1015: "Netherwing",
-    1031: "Sha'tari Skyguard", 1038: "Ogri'la", 1077: "Shattered Sun Offensive",
     529: "Argent Dawn", 576: "Timbermaw Hold", 609: "Cenarion Circle",
     59: "Thorium Brotherhood", 749: "Hydraxian Waterlords", 270: "Zandalar Tribe",
     910: "Brood of Nozdormu", 349: "Ravenholdt",
 }
+
+# Raide: a quest de classe é troca de token por peça de set (os de T3, as capas de AQ,
+# Paragons of Power) — o passo só conclui com drop de vários chefes, e o guia parava
+# nele. Fica a cadeia de classe que começa por item do raid (The Ancient Leaf).
+RAIDS = {"Molten Core", "Onyxia's Lair", "Blackwing Lair", "Zul'Gurub", "Ruins of Ahn'Qiraj",
+         "Temple of Ahn'Qiraj", "Naxxramas"}
 
 
 def walk_chain(Q, seeds):
@@ -122,13 +124,14 @@ def main():
     data = load_data()
     # um roteador por lado: quest das duas facções fica com quem dá/recebe do lado amigo
     routers = {f: Router(data, f) for f in ("A", "H", "N")}
-    Q, N, Z = data["quests"], data["npcs"], data["zones"]
+    Q, Z = data["quests"], data["zones"]
     files = []
 
-    def emit(category, faction, title, ids, mode, min_n=1):
+    def emit(category, faction, title, ids, mode, min_n=1, exclude=()):
         if category != "Events":           # feriado tem guia próprio, não entra em masmorra/reputação
             ids = [i for i in ids if Q[str(i)]["zoneOrSort"] not in FERIADOS]
-        text, n, _ = routers[faction].generate_linear(ids, faction, title, category, mode=mode)
+        text, n, _ = routers[faction].generate_linear(ids, faction, title, category, mode=mode,
+                                                      exclude=exclude)
         if not text or n < min_n:
             return 0
         path, rel = out_path(category, faction, title)
@@ -138,14 +141,25 @@ def main():
         return n
 
     # -- Masmorras ----------------------------------------------------------
+    # Fora do guia da masmorra: repetível (troca de reputação/token, não conclui numa
+    # corrida), troca de peça de classe no raide, e o que já tem guia de sintonização.
     print("=== Dungeons ===")
     dA = dungeon_areas(Z)
     dq = dungeon_quests(routers["N"], dA)
+    sintonia = {q for _, _, seeds, _ in ATTUNEMENTS for q in walk_chain(Q, seeds)}
+    repetivel = {int(k) for k, v in Q.items() if (v.get("specialFlags") or 0) & 1}
+
+    def fica(name, q):
+        v = Q[str(q)]
+        if (v.get("specialFlags") or 0) & 1 or q in sintonia:
+            return False
+        return not (name in RAIDS and v["classes"] and not v["startItems"])
     for name, qids in sorted(dq.items(), key=lambda kv: -len(kv[1])):
-        if len(qids) < 3:
+        qids = [q for q in qids if fica(name, q)]
+        if len(qids) < (1 if name in RAIDS else 3):    # raide: a da cabeça do chefe já vale
             continue
         for fac in ("A", "H"):
-            n = emit("Dungeons", fac, name, qids, "phase")
+            n = emit("Dungeons", fac, name, qids, "phase", exclude=sintonia | repetivel)
             if n:
                 print("  [%s] %-28s %d quests" % (fac, name, n))
 
@@ -190,40 +204,6 @@ def main():
             n = emit("Reputation", fac, name, qids, "chain", min_n=3)
             if n:
                 print("  [%s] %-28s %d quests" % (fac, name, n))
-
-    # -- Dailies de 70 (repetíveis, nível >= 65) -----------------------------
-    print("=== Dailies ===")
-    daily_by_zone = defaultdict(list)
-    for qid, q in Q.items():
-        if not ((q["specialFlags"] or 0) & 1 and (q["questLevel"] or 0) >= 65):
-            continue
-        for nid in q["startNpcs"]:
-            npc = N.get(str(nid))
-            if npc and npc.get("spawns"):
-                area = int(next(iter(npc["spawns"])))
-                if str(area) in Z:
-                    daily_by_zone[area].append(int(qid))
-                break
-    for area, qids in sorted(daily_by_zone.items(), key=lambda kv: -len(kv[1])):
-        if len(qids) < 3:
-            continue
-        zname = Z[str(area)]["name"]
-        for fac in ("A", "H"):
-            n = emit("Dailies", fac, "%s (Dailies)" % zname, qids, "phase", min_n=3)
-            if n:
-                print("  [%s] %-24s %d" % (fac, zname, n))
-
-    # -- Dailies de PROFISSÃO (Cozinha, Pesca) — guias dedicados ------------
-    # (já existiam enfiadas nas dailies de zona; aqui viram guias próprios)
-    print("=== Profession Dailies ===")
-    PROF_DAILY = {24393: "Cooking", 25580: "Fishing"}   # The Rokk / Old Man Barlo
-    for npc_id, prof in PROF_DAILY.items():
-        qids = [int(qid) for qid, q in Q.items()
-                if (q.get("specialFlags") or 0) & 1 and npc_id in (q.get("startNpcs") or [])]
-        if qids:
-            n = emit("Dailies", "N", "%s (Dailies)" % prof, qids, "phase", min_n=1)
-            if n:
-                print("  %-10s %d dailies" % (prof, n))
 
     # -- Eventos SAZONAIS (holidays) — por holiday, não por zona ------------
     # sorts dedicados são limpos; o -22 ("Seasonal") é um balde misto -> split

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warlock", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "ddda4515",
+	rev = "b644386c",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -422,14 +422,6 @@ step
   talk Strahad Farsan##6251
   turnin Summon Felsteed##4487 |goto The Barrens 62.63,35.5
 step
-  only Warlock
-  talk Strahad Farsan##6251
-  accept Summon Felsteed##4490 |goto The Barrens 62.63,35.5
-step
-  only Warlock
-  talk Strahad Farsan##6251
-  turnin Summon Felsteed##4490 |goto The Barrens 62.63,35.5
-step
   only not Dwarf not NightElf not Gnome Warlock not completed(3631) not completed(4487) not completed(4489) not haveq(3631) not haveq(4487) not haveq(4489)
   talk Demisette Cloyce##461
   accept Summon Felsteed##4488 |goto Stormwind City 39.24,84.96
@@ -437,6 +429,14 @@ step
   only not Dwarf not NightElf not Gnome Warlock not completed(3631) not completed(4487) not completed(4489) not haveq(3631) not haveq(4487) not haveq(4489)
   talk Strahad Farsan##6251
   turnin Summon Felsteed##4488 |goto The Barrens 62.63,35.5
+step
+  only Warlock
+  talk Strahad Farsan##6251
+  accept Summon Felsteed##4490 |goto The Barrens 62.63,35.5
+step
+  only Warlock
+  talk Strahad Farsan##6251
+  turnin Summon Felsteed##4490 |goto The Barrens 62.63,35.5
 step
   only Warlock
   talk Niby the Almighty##14469

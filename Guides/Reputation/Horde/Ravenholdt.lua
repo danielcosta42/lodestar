@@ -4,11 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Ravenholdt", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "da2ed7a2",
+	rev = "5f5b9e94",
 }, [[
 step
   only Rogue
-  kill Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip Loot the quest item here — it starts the quest.
+  talk Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip They give you the item that starts the quest.
   accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
 step
   only Rogue

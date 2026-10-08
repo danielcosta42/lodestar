@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Rogue", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "45b925bd",
+	rev = "0a8f89f6",
 }, [[
 step
   talk Gornek##3143
@@ -270,7 +270,7 @@ step
   turnin Hinott's Assistance##2480 |goto Hillsbrad Foothills 61.63,19.19
 step
   only Rogue
-  kill Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip Loot the quest item here — it starts the quest.
+  talk Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip They give you the item that starts the quest.
   accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
 step
   only Rogue

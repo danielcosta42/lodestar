@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Thorium Brotherhood", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "9cf5df5a",
+	rev = "26e60148",
 }, [[
 step
   click Wanted/Missing/Lost & Found##179827
@@ -211,7 +211,7 @@ step
   talk Lokhtos Darkbargainer##12944
   turnin Favor Amongst the Brotherhood, Blood of the Mountain##6646 |goto Blackrock Depths - Dungeon -1,-1
 step
-  kill Lokhtos Darkbargainer##12944 |goto Blackrock Depths - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
+  talk Lokhtos Darkbargainer##12944 |goto Blackrock Depths - Dungeon -1,-1 |tip They give you the item that starts the quest.
   accept A Binding Contract##7604 |goto Blackrock Depths - Dungeon -1,-1
 step
   note Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.

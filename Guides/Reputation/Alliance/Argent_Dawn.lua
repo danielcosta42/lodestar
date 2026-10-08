@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Argent Dawn", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "4f51e778",
+	rev = "75a2767f",
 }, [[
 step
   talk Dawnwatcher Shaedlass##4786
@@ -741,78 +741,267 @@ step
   talk Deliana##16013
   turnin An Earnest Proposition##8905 |goto Ironforge 43.53,52.64
 step
+  only Hunter
+  talk Deliana##16013
+  accept An Earnest Proposition##8906 |goto Ironforge 43.53,52.64
+step
+  only Hunter
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Beaststalker's Bindings to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 8906 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  only Hunter
+  talk Deliana##16013
+  turnin An Earnest Proposition##8906 |goto Ironforge 43.53,52.64
+step
+  only Mage
+  talk Deliana##16013
+  accept An Earnest Proposition##8907 |goto Ironforge 43.53,52.64
+step
+  only Mage
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Magister's Bindings to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 8907 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  only Mage
+  talk Deliana##16013
+  turnin An Earnest Proposition##8907 |goto Ironforge 43.53,52.64
+step
+  only Paladin
+  talk Deliana##16013
+  accept An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
+step
+  only Paladin
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 8908 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  only Paladin
+  talk Deliana##16013
+  turnin An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
+step
+  only Priest
+  talk Deliana##16013
+  accept An Earnest Proposition##8909 |goto Ironforge 43.53,52.64
+step
+  only Priest
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with 1 set of Devout Bracers to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 8909 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  only Priest
+  talk Deliana##16013
+  turnin An Earnest Proposition##8909 |goto Ironforge 43.53,52.64
+step
+  only Rogue
+  talk Deliana##16013
+  accept An Earnest Proposition##8910 |goto Ironforge 43.53,52.64
+step
+  only Rogue
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Shadowcraft Bracers to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 8910 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  only Rogue
+  talk Deliana##16013
+  turnin An Earnest Proposition##8910 |goto Ironforge 43.53,52.64
+step
+  only Warlock
+  talk Deliana##16013
+  accept An Earnest Proposition##8911 |goto Ironforge 43.53,52.64
+step
+  only Warlock
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Dreadmist Bracers to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 8911 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  only Warlock
+  talk Deliana##16013
+  turnin An Earnest Proposition##8911 |goto Ironforge 43.53,52.64
+step
+  only Warrior
+  talk Deliana##16013
+  accept An Earnest Proposition##8912 |goto Ironforge 43.53,52.64
+step
+  only Warrior
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Bracers of Valor to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 8912 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  only Warrior
+  talk Deliana##16013
+  turnin An Earnest Proposition##8912 |goto Ironforge 43.53,52.64
+step
+  only not Shaman
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
   collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
   collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
   collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   talk Mux Manascrambler##16014
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
+  only not Shaman
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
-  only Druid
+  only Druid not Shaman
   talk Deliana##16013
   accept Just Compensation##8926 |goto Ironforge 43.53,52.64
 step
-  only Druid
+  only Druid not Shaman
   note Bring a Wildheart Belt and a set of Wildheart Gloves Deliana in Ironforge.
   collect Wildheart Belt##16716 |q 8926 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider, Bile Spewer
 step
-  only Druid
+  only Druid not Shaman
   talk Deliana##16013
   turnin Just Compensation##8926 |goto Ironforge 43.53,52.64
 step
+  only Hunter not Shaman
+  talk Deliana##16013
+  accept Just Compensation##8931 |goto Ironforge 43.53,52.64
+step
+  only Hunter not Shaman
+  note Bring a Beaststalker's Belt and a set of Beaststalker's Gloves to Deliana in Ironforge.
+  collect Beaststalker's Belt##16680 |q 8931 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Headhunter, Scarshield Raider, Firebrand Grunt
+step
+  only Hunter not Shaman
+  talk Deliana##16013
+  turnin Just Compensation##8931 |goto Ironforge 43.53,52.64
+step
+  only Mage not Shaman
+  talk Deliana##16013
+  accept Just Compensation##8932 |goto Ironforge 43.53,52.64
+step
+  only Mage not Shaman
+  note Bring a Magister's Belt and a set of Magister's Gloves to Deliana in Ironforge.
+  collect Magister's Belt##16685 |q 8932 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Mystic, Thuzadin Shadowcaster, Thuzadin Necromancer
+step
+  only Mage not Shaman
+  talk Deliana##16013
+  turnin Just Compensation##8932 |goto Ironforge 43.53,52.64
+step
+  only Paladin not Shaman
+  talk Deliana##16013
+  accept Just Compensation##8933 |goto Ironforge 43.53,52.64
+step
+  only Paladin not Shaman
+  note Bring a Lightforge Belt and a set of Lightforge Gauntlets to Deliana in Ironforge.
+  collect Lightforge Belt##16723 |q 8933 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
+step
+  only Paladin not Shaman
+  talk Deliana##16013
+  turnin Just Compensation##8933 |goto Ironforge 43.53,52.64
+step
+  only Priest not Shaman
+  talk Deliana##16013
+  accept Just Compensation##8934 |goto Ironforge 43.53,52.64
+step
+  only Priest not Shaman
+  note Bring a Devout Belt and a set of Devout Gloves to Deliana in Ironforge.
+  collect Devout Belt##16696 |q 8934 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
+step
+  only Priest not Shaman
+  talk Deliana##16013
+  turnin Just Compensation##8934 |goto Ironforge 43.53,52.64
+step
+  only Rogue not Shaman
+  talk Deliana##16013
+  accept Just Compensation##8935 |goto Ironforge 43.53,52.64
+step
+  only Rogue not Shaman
+  note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Deliana in Ironforge.
+  collect Shadowcraft Belt##16713 |q 8935 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Legionnaire, Firebrand Grunt, Scarshield Quartermaster
+step
+  only Rogue not Shaman
+  talk Deliana##16013
+  turnin Just Compensation##8935 |goto Ironforge 43.53,52.64
+step
+  only Warlock not Shaman
+  talk Deliana##16013
+  accept Just Compensation##8936 |goto Ironforge 43.53,52.64
+step
+  only Warlock not Shaman
+  note Bring a Dreadmist Belt and a set of Dreadmist Wraps to Deliana in Ironforge.
+  collect Dreadmist Belt##16702 |q 8936 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Thuzadin Shadowcaster, Thuzadin Necromancer, Crimson Conjuror
+step
+  only Warlock not Shaman
+  talk Deliana##16013
+  turnin Just Compensation##8936 |goto Ironforge 43.53,52.64
+step
+  only Warrior not Shaman
+  talk Deliana##16013
+  accept Just Compensation##8937 |goto Ironforge 43.53,52.64
+step
+  only Warrior not Shaman
+  note Bring a Belt of Valor and a set of Gauntlets of Valor to Deliana in Ironforge.
+  collect Belt of Valor##16736 |q 8937 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker, Patchwork Horror, Bile Spewer
+step
+  only Warrior not Shaman
+  talk Deliana##16013
+  turnin Just Compensation##8937 |goto Ironforge 43.53,52.64
+step
+  only not Shaman
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
+  only not Shaman
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not Shaman
   talk Anthion Harmon##16016
   accept Dead Man's Plea##8945 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not Shaman
   note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
   talk Ysida Harmon##16031 |q 8945 |goto Stratholme - Dungeon -1,-1
 step
+  only not Shaman
   talk Ysida Harmon##16031
   turnin Dead Man's Plea##8945 |goto Stratholme - Dungeon -1,-1
 step

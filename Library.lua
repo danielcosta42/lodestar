@@ -8,7 +8,7 @@ ns.Library = LB
 ns.GuideMenu = LB          -- alias: referências antigas continuam funcionando
 local UI = ns.UI
 
-local CAT_ORDER = { "Leveling", "Class", "Dungeons", "Attunements", "Reputation", "Dailies", "Events" }
+local CAT_ORDER = { "Leveling", "Class", "Dungeons", "Attunements", "Reputation", "Events" }
 local COLS, GAP, CARD_H = 3, 12, 118
 
 local frame, scroll, content, cards, catTabs

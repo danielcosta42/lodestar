@@ -43,7 +43,6 @@ L.CAT_Class       = "Classe"
 L.CAT_Dungeons    = "Masmorras"
 L.CAT_Attunements = "Sintonizações"
 L.CAT_Reputation  = "Reputação"
-L.CAT_Dailies     = "Diárias"
 L.CAT_Events      = "Eventos"
 
 L.TM_KILL = "> Lodestar: alvo a derrotar"
@@ -90,8 +89,6 @@ L.NOTE_FP       = "Pegue o ponto de voo com %s."
 L.NOTE_TRAVEL   = "Zona concluída! Viaje para %s."
 L.TIP_VENDOR    = "Aproveite p/ reparar e vender lixo na cidade."
 L.TIP_TURNINAT  = "Entregar em %s"
-
--- Raid Ready — Boosted 60-70 (rota de spam de dungeon)
 
 L.LIB_TITLE     = "Biblioteca de Guias"
 L.LIB_SUBTITLE  = "Escolha sua jornada"

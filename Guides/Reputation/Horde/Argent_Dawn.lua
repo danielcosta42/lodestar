@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Argent Dawn", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "6296fcb8",
+	rev = "1ced2dc3",
 }, [[
 step
   talk Leonid Barthalomew the Revered##267008
@@ -739,78 +739,267 @@ step
   talk Mokvar##16012
   turnin An Earnest Proposition##8913 |goto Orgrimmar 34.95,38.29
 step
+  only Hunter
+  talk Mokvar##16012
+  accept An Earnest Proposition##8914 |goto Orgrimmar 34.95,38.29
+step
+  only Hunter
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Beaststalker's Bindings to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8914 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Hunter
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8914 |goto Orgrimmar 34.95,38.29
+step
+  only Mage
+  talk Mokvar##16012
+  accept An Earnest Proposition##8915 |goto Orgrimmar 34.95,38.29
+step
+  only Mage
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Magister's Bindings to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8915 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Mage
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8915 |goto Orgrimmar 34.95,38.29
+step
+  only Priest
+  talk Mokvar##16012
+  accept An Earnest Proposition##8916 |goto Orgrimmar 34.95,38.29
+step
+  only Priest
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Devout Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8916 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Priest
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8916 |goto Orgrimmar 34.95,38.29
+step
+  only Rogue
+  talk Mokvar##16012
+  accept An Earnest Proposition##8917 |goto Orgrimmar 34.95,38.29
+step
+  only Rogue
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Shadowcraft Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8917 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Rogue
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8917 |goto Orgrimmar 34.95,38.29
+step
+  only Shaman
+  talk Mokvar##16012
+  accept An Earnest Proposition##8918 |goto Orgrimmar 34.95,38.29
+step
+  only Shaman
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Bindings of Elements to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8918 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Shaman
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8918 |goto Orgrimmar 34.95,38.29
+step
+  only Warlock
+  talk Mokvar##16012
+  accept An Earnest Proposition##8919 |goto Orgrimmar 34.95,38.29
+step
+  only Warlock
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Dreadmist Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8919 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Warlock
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8919 |goto Orgrimmar 34.95,38.29
+step
+  only Warrior
+  talk Mokvar##16012
+  accept An Earnest Proposition##8920 |goto Orgrimmar 34.95,38.29
+step
+  only Warrior
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Bracers of Valor to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 8920 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  only Warrior
+  talk Mokvar##16012
+  turnin An Earnest Proposition##8920 |goto Orgrimmar 34.95,38.29
+step
+  only not Paladin
   talk Mokvar##16012
   accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8923 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
   collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
   collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
   collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mux Manascrambler##16014
   accept Return to Mokvar##8978 |goto Tanaris 52.47,27.23
 step
+  only not Paladin
   talk Mokvar##16012
   turnin Return to Mokvar##8978 |goto Orgrimmar 34.95,38.29
 step
-  only Druid
+  only Druid not Paladin
   talk Mokvar##16012
   accept Just Compensation##8927 |goto Orgrimmar 34.95,38.29
 step
-  only Druid
+  only Druid not Paladin
   note Bring a Wildheart Belt and a set of Wildheart Gloves to Mokvar in Orgrimmar.
   collect Wildheart Belt##16716 |q 8927 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider, Bile Spewer
 step
-  only Druid
+  only Druid not Paladin
   talk Mokvar##16012
   turnin Just Compensation##8927 |goto Orgrimmar 34.95,38.29
 step
+  only Hunter not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8938 |goto Orgrimmar 34.95,38.29
+step
+  only Hunter not Paladin
+  note Bring a Beaststalker's Belt and a set of Beaststalker's Gloves to Mokvar in Orgrimmar.
+  collect Beaststalker's Belt##16680 |q 8938 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Headhunter, Scarshield Raider, Firebrand Grunt
+step
+  only Hunter not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8938 |goto Orgrimmar 34.95,38.29
+step
+  only Mage not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8939 |goto Orgrimmar 34.95,38.29
+step
+  only Mage not Paladin
+  note Bring a Magister's Belt and a set of Magister's Gloves to Mokvar in Orgrimmar.
+  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Mystic, Thuzadin Shadowcaster, Thuzadin Necromancer
+step
+  only Mage not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8939 |goto Orgrimmar 34.95,38.29
+step
+  only Priest not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8940 |goto Orgrimmar 34.95,38.29
+step
+  only Priest not Paladin
+  note Bring a Devout Belt and a set of Devout Gloves to Mokvar in Orgrimmar.
+  collect Devout Belt##16696 |q 8940 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
+step
+  only Priest not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8940 |goto Orgrimmar 34.95,38.29
+step
+  only Rogue not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8941 |goto Orgrimmar 34.95,38.29
+step
+  only Rogue not Paladin
+  note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Mokvar in Orgrimmar.
+  collect Shadowcraft Belt##16713 |q 8941 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Legionnaire, Firebrand Grunt, Scarshield Quartermaster
+step
+  only Rogue not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8941 |goto Orgrimmar 34.95,38.29
+step
+  only Shaman not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8942 |goto Orgrimmar 34.95,38.29
+step
+  only Shaman not Paladin
+  note Bring a Cord of Elements and a set of Gauntlets of Elements to Mokvar in Orgrimmar.
+  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Warlock, Firebrand Invoker, Scarshield Quartermaster
+step
+  only Shaman not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8942 |goto Orgrimmar 34.95,38.29
+step
+  only Warlock not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8943 |goto Orgrimmar 34.95,38.29
+step
+  only Warlock not Paladin
+  note Bring a Dreadmist Belt and a set of Dreadmist Wraps to Mokvar in Orgrimmar.
+  collect Dreadmist Belt##16702 |q 8943 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Thuzadin Shadowcaster, Thuzadin Necromancer, Crimson Conjuror
+step
+  only Warlock not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8943 |goto Orgrimmar 34.95,38.29
+step
+  only Warrior not Paladin
+  talk Mokvar##16012
+  accept Just Compensation##8944 |goto Orgrimmar 34.95,38.29
+step
+  only Warrior not Paladin
+  note Bring a Belt of Valor and a set of Gauntlets of Valor to Mokvar in Orgrimmar.
+  collect Belt of Valor##16736 |q 8944 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker, Patchwork Horror, Bile Spewer
+step
+  only Warrior not Paladin
+  talk Mokvar##16012
+  turnin Just Compensation##8944 |goto Orgrimmar 34.95,38.29
+step
+  only not Paladin
   talk Mokvar##16012
   accept In Search of Anthion##8930 |goto Orgrimmar 34.95,38.29
 step
+  only not Paladin
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8930 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not Paladin
   talk Anthion Harmon##16016
   accept Dead Man's Plea##8945 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not Paladin
   note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
   talk Ysida Harmon##16031 |q 8945 |goto Stratholme - Dungeon -1,-1
 step
+  only not Paladin
   talk Ysida Harmon##16031
   turnin Dead Man's Plea##8945 |goto Stratholme - Dungeon -1,-1
 step

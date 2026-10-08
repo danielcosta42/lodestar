@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warrior", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "244a6a10",
+	rev = "63c6fe82",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -139,6 +139,26 @@ step
   talk Elanaria##4088
   turnin Vorlus Vilehoof##1683 |goto Darnassus 57.3,34.61
 step
+  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  talk Muren Stormpike##6114
+  accept Vejrek##1678 |goto Ironforge 70.77,90.27
+step
+  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  note Bring Vejrek's Head to Muren Stormpike in Ironforge.
+  collect Vejrek's Head##6799 |q 1678 |goto Dun Morogh 27.83,57.96 |tip {dropsfrom}Vejrek
+step
+  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  talk Muren Stormpike##6114
+  turnin Vejrek##1678 |goto Ironforge 70.77,90.27
+step
+  only not Dwarf not NightElf not Gnome Warrior not completed(1678) not completed(1683) not haveq(1678) not haveq(1683)
+  talk Harry Burlguard##6089
+  accept Bartleby the Drunk##1639 |goto Stormwind City 77.13,53.26
+step
+  only not Dwarf not NightElf not Gnome Warrior not completed(1678) not completed(1683) not haveq(1678) not haveq(1683)
+  talk Bartleby##6090
+  turnin Bartleby the Drunk##1639 |goto Stormwind City 76.76,52.55
+step
   only Warrior
   talk Elanaria##4088
   accept The Shade of Elura##1686 |goto Darnassus 57.3,34.61
@@ -187,18 +207,6 @@ step
   talk Tormus Deepforge##6031
   turnin Grey Iron Weapons##1682 |goto Ironforge 48.64,42.48
 step
-  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
-  talk Muren Stormpike##6114
-  accept Vejrek##1678 |goto Ironforge 70.77,90.27
-step
-  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
-  note Bring Vejrek's Head to Muren Stormpike in Ironforge.
-  collect Vejrek's Head##6799 |q 1678 |goto Dun Morogh 27.83,57.96 |tip {dropsfrom}Vejrek
-step
-  only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
-  talk Muren Stormpike##6114
-  turnin Vejrek##1678 |goto Ironforge 70.77,90.27
-step
   only Warrior
   talk Muren Stormpike##6114
   accept Tormus Deepforge##1680 |goto Ironforge 70.77,90.27
@@ -246,14 +254,6 @@ step
   only Human Warrior
   talk Marshal Haggard##294
   turnin Dead-tooth Jack##1667 |goto Elwynn Forest 84.61,69.38
-step
-  only not Dwarf not NightElf not Gnome Warrior not completed(1678) not completed(1683) not haveq(1678) not haveq(1683)
-  talk Harry Burlguard##6089
-  accept Bartleby the Drunk##1639 |goto Stormwind City 77.13,53.26
-step
-  only not Dwarf not NightElf not Gnome Warrior not completed(1678) not completed(1683) not haveq(1678) not haveq(1683)
-  talk Bartleby##6090
-  turnin Bartleby the Drunk##1639 |goto Stormwind City 76.76,52.55
 step
   only Skyborne Warrior
   talk Seena Skybreaker##252377

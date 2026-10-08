@@ -18,7 +18,7 @@ L.LEVEL_UP="%s 級！"; L.LEVEL_UP_SUB="繼續加油。"; L.GUIDE_LOADED="指南
 L.CHOOSE_GUIDE="選擇一個指南"; L.MENU_HINT="輸入 /ls menu 瀏覽"; L.QUEST_FALLBACK="任務 #%s"
 
 L.CAT_Leveling="升級"; L.CAT_Class="職業"; L.CAT_Dungeons="地城"
-L.CAT_Attunements="入場資格"; L.CAT_Reputation="聲望"; L.CAT_Dailies="每日"; L.CAT_Events="節慶"
+L.CAT_Attunements="入場資格"; L.CAT_Reputation="聲望"; L.CAT_Events="節慶"
 
 L.TM_KILL="> Lodestar：擊殺目標"; L.TM_TALK="> Lodestar：指南目標"
 L.YARDS="%d 碼"; L.DEST="目的地"

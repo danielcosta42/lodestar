@@ -18,7 +18,7 @@ L.LEVEL_UP="Livello %s!"; L.LEVEL_UP_SUB="Continua così."; L.GUIDE_LOADED="Guid
 L.CHOOSE_GUIDE="Scegli una guida"; L.MENU_HINT="Usa /ls menu per sfogliare"; L.QUEST_FALLBACK="Missione #%s"
 
 L.CAT_Leveling="Livellamento"; L.CAT_Class="Classe"; L.CAT_Dungeons="Spedizioni"
-L.CAT_Attunements="Sintonie"; L.CAT_Reputation="Reputazione"; L.CAT_Dailies="Giornaliere"; L.CAT_Events="Eventi"
+L.CAT_Attunements="Sintonie"; L.CAT_Reputation="Reputazione"; L.CAT_Events="Eventi"
 
 L.TM_KILL="> Lodestar: bersaglio da uccidere"; L.TM_TALK="> Lodestar: bersaglio della guida"
 L.YARDS="%d m"; L.DEST="Destinazione"

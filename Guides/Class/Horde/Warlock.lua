@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Warlock", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "12556a90",
+	rev = "4bc67ba8",
 }, [[
 step
   talk Gornek##3143
@@ -61,14 +61,6 @@ step
   talk Venya Marthand##5667
   turnin Piercing the Veil##1470 |goto Tirisfal Glades 30.98,66.41
 step
-  only not Undead not Tauren not Skyborne Warlock
-  talk Ruzan##5765
-  accept Vile Familiars##1499 |goto Durotar 42.59,69
-step
-  only not Undead not Tauren not Skyborne Warlock
-  talk Zureetha Fargaze##3145
-  turnin Vile Familiars##1499 |goto Durotar 42.85,69.15
-step
   only not Undead not Tauren not Skyborne Warlock not completed(1470) not haveq(1470)
   talk Ruzan##5765
   accept Vile Familiars##1485 |goto Durotar 42.59,69
@@ -80,6 +72,14 @@ step
   only not Undead not Tauren not Skyborne Warlock not completed(1470) not haveq(1470)
   talk Ruzan##5765
   turnin Vile Familiars##1485 |goto Durotar 42.59,69
+step
+  only not Undead not Tauren not Skyborne Warlock
+  talk Ruzan##5765
+  accept Vile Familiars##1499 |goto Durotar 42.59,69
+step
+  only not Undead not Tauren not Skyborne Warlock
+  talk Zureetha Fargaze##3145
+  turnin Vile Familiars##1499 |goto Durotar 42.85,69.15
 step
   only not Undead not Tauren not Skyborne Warlock
   talk Ophek##3294
@@ -377,14 +377,6 @@ step
   talk Strahad Farsan##6251
   turnin Summon Felsteed##3631 |goto The Barrens 62.63,35.5
 step
-  only Warlock
-  talk Strahad Farsan##6251
-  accept Summon Felsteed##4490 |goto The Barrens 62.63,35.5
-step
-  only Warlock
-  talk Strahad Farsan##6251
-  turnin Summon Felsteed##4490 |goto The Barrens 62.63,35.5
-step
   only Undead Warlock not completed(3631) not completed(4487) not completed(4488) not haveq(3631) not haveq(4487) not haveq(4488)
   talk Kaal Soulreaper##4563
   accept Summon Felsteed##4489 |goto Undercity 86.21,15.93
@@ -392,6 +384,14 @@ step
   only Undead Warlock not completed(3631) not completed(4487) not completed(4488) not haveq(3631) not haveq(4487) not haveq(4488)
   talk Strahad Farsan##6251
   turnin Summon Felsteed##4489 |goto The Barrens 62.63,35.5
+step
+  only Warlock
+  talk Strahad Farsan##6251
+  accept Summon Felsteed##4490 |goto The Barrens 62.63,35.5
+step
+  only Warlock
+  talk Strahad Farsan##6251
+  turnin Summon Felsteed##4490 |goto The Barrens 62.63,35.5
 step
   only Warlock
   talk Niby the Almighty##14469

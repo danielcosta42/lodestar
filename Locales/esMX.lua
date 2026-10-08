@@ -18,7 +18,7 @@ L.LEVEL_UP="¡Nivel %s!"; L.LEVEL_UP_SUB="Sigue así."; L.GUIDE_LOADED="Guía ca
 L.CHOOSE_GUIDE="Elige una guía"; L.MENU_HINT="Usa /ls menu para explorar"; L.QUEST_FALLBACK="Misión #%s"
 
 L.CAT_Leveling="Subir nivel"; L.CAT_Class="Clase"; L.CAT_Dungeons="Mazmorras"
-L.CAT_Attunements="Sintonizaciones"; L.CAT_Reputation="Reputación"; L.CAT_Dailies="Diarias"; L.CAT_Events="Eventos"
+L.CAT_Attunements="Sintonizaciones"; L.CAT_Reputation="Reputación"; L.CAT_Events="Eventos"
 
 L.TM_KILL="> Lodestar: objetivo a matar"; L.TM_TALK="> Lodestar: objetivo de la guía"
 L.YARDS="%d m"; L.DEST="Destino"

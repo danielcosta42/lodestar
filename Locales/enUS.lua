@@ -47,7 +47,6 @@ L.CAT_Class       = "Class"
 L.CAT_Dungeons    = "Dungeons"
 L.CAT_Attunements = "Attunements"
 L.CAT_Reputation  = "Reputation"
-L.CAT_Dailies     = "Dailies"
 L.CAT_Events      = "Events"
 
 -- Target markers (tooltip)
@@ -98,8 +97,6 @@ L.NOTE_FP       = "Get the flight path from %s."
 L.NOTE_TRAVEL   = "Zone complete! Travel to %s."
 L.TIP_VENDOR    = "Repair and sell junk while in town."
 L.TIP_TURNINAT  = "Turn in at %s"
-
--- Raid Ready — Boosted 60-70 (rota de spam de dungeon)
 
 -- Guide library
 L.LIB_TITLE     = "Guide Library"
