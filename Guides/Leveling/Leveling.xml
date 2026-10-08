@@ -37,7 +37,6 @@
     <Script file="Alliance/Eastern_Plaguelands_56-60.lua"/>
     <Script file="Alliance/Moonglade_57-60.lua"/>
     <Script file="Alliance/Silithus_60-60.lua"/>
-    <Script file="Alliance/Eastern_Kingdoms_-_the_continent_map_60-60.lua"/>
     <Script file="Horde/Durotar_2-11.lua"/>
     <Script file="Horde/Mulgore_4-10.lua"/>
     <Script file="Horde/Tirisfal_Glades_4-12.lua"/>
@@ -68,5 +67,4 @@
     <Script file="Horde/Eastern_Plaguelands_57-60.lua"/>
     <Script file="Horde/Moonglade_57-60.lua"/>
     <Script file="Horde/Silithus_60-60.lua"/>
-    <Script file="Horde/Eastern_Kingdoms_-_the_continent_map_60-60.lua"/>
 </Ui>

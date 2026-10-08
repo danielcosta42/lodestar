@@ -4,7 +4,6 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Silithus (60-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Eastern Kingdoms - the continent map (60-60)",
 }, [[
 step
   note {fp}Squire Leoren Mal'derath

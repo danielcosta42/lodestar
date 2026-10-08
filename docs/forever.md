@@ -92,7 +92,7 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 
 | | |
 |---|---|
-| Guias | 156 (70 de leveling, 85 especiais, 1 exemplo) |
+| Guias | 154 (68 de leveling, 85 especiais, 1 exemplo) |
 | Quests novas do Forever em guia | **454 de 760** |
 | — fora: entrega de Craftsman's Writ | 150 |
 | — fora: exigem profissão | 80 |

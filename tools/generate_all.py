@@ -39,12 +39,17 @@ CAPITAL_HOME = {1519: 12, 1537: 1, 1657: 141, 1637: 14, 1638: 215, 1497: 85}
 # Ilha da raça nova (Forever): quem está lá não vai a capital nenhuma até sair dela.
 ISOLADAS = {16593}  # Zephras Isle
 
-# Campos de batalha: quest de BG não é rota de leveling, nem diluída como a de capital.
-BATTLEGROUNDS = {
+# Área que não é zona de leveling, nem recebe quest de capital: campo de batalha,
+# e mapa sintético de continente — onde o banco põe NPC de divisa, como o Bodley
+# na entrada de Blackrock Mountain (as quests dele são de masmorra).
+NAO_E_ZONA = {
     2597,  # Alterac Valley
     3277,  # Warsong Gulch
     3358,  # Arathi Basin
     16606, # Darkspear Islands (Forever, 15v15)
+    10073, # Kalimdor - the continent map
+    10074, # Eastern Kingdoms - the continent map
+    10089, # Azeroth - the world map
 }
 
 # Buraco de níveis sem quest que separa duas levas da mesma zona. O Forever pôs
@@ -117,7 +122,7 @@ def discover_zones(router, faction, level_max, min_quests):
 
     zones = []
     for area, d in per_area.items():
-        if area in SKIP_AREAS or area in BATTLEGROUNDS or d["count"] < min_quests:
+        if area in SKIP_AREAS or area in NAO_E_ZONA or d["count"] < min_quests:
             continue
         # vazamento: zona dominada pela facção oposta (poucas quests próprias)
         if faction == "A" and d["sH"] > d["sA"] and d["sA"] < 3:
