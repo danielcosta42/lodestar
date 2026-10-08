@@ -179,7 +179,7 @@ function TP.Refresh()
 	noRoute:SetShown(n == 0)
 	for i, row in ipairs(legRows) do
 		if i <= n then
-			row:SetText(("%d. %s"):format(i, ns.Waypoint.LegText(route, i)))
+			row:SetText(("%d. %s"):format(i, ns.Waypoint.LegText(route, i, nil, GetServerTime and GetServerTime())))
 			local col = i == route.leg and C.accent or C.active
 			row:SetTextColor(col[1], col[2], col[3], i < route.leg and 0.4 or 1)
 			row:Show()
@@ -188,7 +188,7 @@ function TP.Refresh()
 		end
 	end
 	local p = route and T.PlayerWorld()
-	totalText:SetText(p and ns.Waypoint.FmtTime(T.Remaining(route, p, T:Speed())) or "")
+	totalText:SetText(p and ns.Waypoint.FmtTime(T.Remaining(route, p, T:Speed(), GetServerTime and GetServerTime())) or "")
 	frame:SetHeight(legTop + math.max(1, n) * ROW + PAD)
 end
 
