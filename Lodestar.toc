@@ -82,6 +82,8 @@ Milestones.lua
 Vendor.lua
 GearAdvisor.lua
 RunTracker.lua
+RaceMilestones.lua
+Race.lua
 ReportCard.lua
 XPHud.lua
 Coords.lua

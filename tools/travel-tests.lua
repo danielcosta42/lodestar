@@ -503,7 +503,7 @@ do
 	local nomes = {}                                 -- "x" e `x = true` no código
 	for w in codigo:gmatch('"([%w_ ]+)"') do nomes[w] = true end
 	for w in codigo:gmatch("([%w_]+)%s*=%s*true") do nomes[w] = true end
-	local DIN = { "SERVICE_", "SHIP_", "TRAVEL_KIND_", "VERB_", "CAT_", "PROF_", "COMPASS_", "CONS_", "CONT_" }
+	local DIN = { "SERVICE_", "SHIP_", "TRAVEL_KIND_", "VERB_", "CAT_", "PROF_", "COMPASS_", "CONS_", "CONT_", "RACE_MS_" }
 	local function usada(k)
 		if codigo:find(k, 1, true) then return true end
 		local suf = k:match("^NOTE_(.+)$") or k:match("^TIP_(.+)$")

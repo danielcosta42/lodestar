@@ -64,6 +64,9 @@ function RT:Current()
 		gold = (GetMoney and GetMoney() or 0) - (c.money0 or 0) }
 end
 
+-- já chegou um /played nesta sessão (o "ao vivo" é confiável)
+function RT:HasPlayed() return lastPlayed ~= nil end
+
 -- /played AO VIVO estimado a partir do último ding (sem spammar RequestTimePlayed)
 function RT:LivePlayed()
 	if lastPlayed then return lastPlayed + (GetTime() - lastAt) end
@@ -130,6 +133,7 @@ ns:On("TIME_PLAYED_MSG", function(_, total, levelTime)
 		opponent()                                    -- congela o oponente na 1ª vez
 		if ns.ReportCard then ns.ReportCard:OnLevel(L, total) end
 		RT:UpdateGhost(L)
+		ns.fire("_LEVEL_PLAYED", L, total)
 	elseif levelTime then
 		r.levelStart = total - levelTime              -- login: quanto do nível atual já foi
 		-- registro de outro nível (reload entre o ding e a resposta): recomeça
