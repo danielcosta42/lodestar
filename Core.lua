@@ -120,6 +120,8 @@ local DB_DEFAULTS = {
 	raceChat = true,      -- corrida: marcos e liderança no chat da guilda (os próprios)
 	raceToasts = true,    -- corrida: toast de ultrapassagem no placar da guilda
 	race = {},            -- corrida: registros por realm (specs/corrida)
+	splits = { enabled = false, cmp = "pb", scale = 1 },   -- painel de splits (specs/splits)
+	bestSeg = {},         -- splits: melhor tempo de cada nível, por classe
 	ghost = {},           -- run de referência por classe (Ghost Racing)
 	coords = true,        -- coordenadas do player no minimapa/mapa
 	guideMap = true,      -- marca os pontos dos próximos passos no mapa-múndi
@@ -184,6 +186,7 @@ ns.COMMAND_UI = {
 	reset = "guia: ⋯", rescan = "guia: ⋯", export = "guia: ⋯", import = "guia: ⋯",
 	record = "guia: ⋯", scan = "guia: ⋯",
 	party = "guia: estrela", squad = "guia: estrela", corrida = "guia: estrela", race = "guia: estrela",
+	splits = "Config. Aparência",
 	gather = "Config. Painéis", coleta = "Config. Painéis",
 	check = "Config. Painéis", consume = "Config. Painéis", raidprep = "Config. Painéis",
 	card = "Config. Painéis", intro = "Config. Painéis", item = "Config. Geral",
@@ -239,6 +242,8 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.GuideMenu then ns.GuideMenu:Toggle() end
 	elseif cmd == "config" or cmd == "options" or cmd == "settings" then
 		if ns.Settings then ns.Settings:Toggle() end
+	elseif cmd == "splits" then
+		if ns.Splits then ns.Splits:Toggle() end
 	elseif cmd == "party" or cmd == "squad" or cmd == "corrida" or cmd == "race" then
 		if ns.RacePanel then ns.RacePanel:Toggle() end
 	elseif cmd == "gather" or cmd == "coleta" then

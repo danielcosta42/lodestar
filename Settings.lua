@@ -157,6 +157,12 @@ local function fillHud(p)
 	switchRow(p, L.SET_XPHUD, L.SET_XPHUD_D,
 		function() return ns.db.xpHud end,
 		function(v) ns.db.xpHud = v; if ns.XPHud then ns.XPHud:Update() end end)
+	switchRow(p, L.SET_SPLITS, L.SET_SPLITS_D,
+		function() return ns.db.splits.enabled end,
+		function(v) if v ~= ns.db.splits.enabled and ns.Splits then ns.Splits:Toggle() end end)
+	sliderRow(p, L.SET_SPLITS_SCALE, "", 70, 160, 5,
+		function() return (ns.db.splits.scale or 1) * 100 end,
+		function(v) ns.db.splits.scale = v / 100; if ns.Splits then ns.Splits:ApplyScale() end end, "%d%%")
 	switchRow(p, L.SET_COORDS, L.SET_COORDS_D,
 		function() return ns.db.coords end,
 		function(v) ns.db.coords = v; if ns.Coords then ns.Coords.Update() end end)

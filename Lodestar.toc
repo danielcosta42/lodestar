@@ -85,6 +85,7 @@ RunTracker.lua
 RaceMilestones.lua
 Race.lua
 RacePanel.lua
+Splits.lua
 ReportCard.lua
 XPHud.lua
 Coords.lua
