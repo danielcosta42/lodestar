@@ -12,21 +12,25 @@ nível. É também o momento em que o jogador mais quer mostrar a conquista (Dis
 
 Um pôster da jornada inteira, feito para print e para postar:
 
-- personagem, classe, raça e /played total até o 60 (ou até agora, se aberto antes);
-- um gráfico de barras com o tempo de cada nível (1→60), com os marcos e o nível mais rápido e o
-  mais lento destacados;
+- personagem, classe, raça e /played total até o nível máximo do servidor (ou até agora, se aberto
+  antes);
+- um gráfico de barras com o tempo de cada nível, com os marcos e o melhor e o pior ritmo
+  destacados — contra o tempo esperado de cada nível (em tempo bruto ou XP/h, nível baixo sempre
+  "ganharia" ou "perderia"); teto de 2,5× a mediana, para um nível empacado não achatar o resto;
 - totais: quests, mortes, zonas, ouro ganho, passos de guia feitos;
 - a corrida: posição na guilda e no realm no 60 (quando há) e os marcos batidos;
 - rodapé com "Guiado pelo Lodestar" e o link do addon.
 
 ## Quando
 
-- Abre sozinho ao chegar no 60 (depois do card do nível).
+- Abre sozinho ao chegar no nível máximo: fora de combate, depois do card do nível e da janela de
+  copiar (se abertos). No ding, um retrato de mortes e zonas: raide e PvP depois não mudam a jornada.
 - `/ls jornada` (e `retro`) abre a qualquer momento, com os números até agora e "em andamento".
 
 ## Ações (fora do print)
 
-- Mandar um resumo de uma linha no chat da guilda (manual, com o link).
+- Mandar um resumo de uma linha no chat da guilda (manual, com o link; respeita a opção de não
+  perguntar pela guilda do boletim).
 - Copiar o texto; tirar o print (a barra de ações some na hora da captura, como no card).
 
 ## Dados

@@ -67,6 +67,8 @@ end
 -- o que a retrospectiva (Retro.lua) reaproveita
 RC.URL, RC.FmtDur, RC.FmtGold = URL, fmtDur, fmtGold
 function RC.Grade(L, played, deaths) return grade(L, played, deaths) end
+-- tempo esperado (s) só do nível L: do ding de L-1 ao de L, pelo par
+function RC.ParSeg(L) return (parHours(L) - parHours(L - 1)) * 3600 end
 
 --------------------------------------------------------------------------------
 -- números do card

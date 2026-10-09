@@ -10,23 +10,29 @@ local ADDON, ns = ...
 local RE = {}
 ns.Retro = RE
 
--- Agregados até o nível `level`; `live` = /played agora (jornada em andamento).
--- Destaques pelo ritmo (XP/h): em tempo bruto o nível baixo sempre ganharia.
-function RE.Summary(run, level, live)
+-- Agregados até o nível `level`. `live` = /played agora (nil antes de chegar); `max` = o nível
+-- máximo do servidor; `par(L)` = tempo esperado do nível L (s). Destaques pelo tempo contra o
+-- esperado de cada nível: em tempo bruto ou XP/h, o nível baixo sempre "ganharia" ou "perderia".
+-- O teto do gráfico é 2,5× a mediana dos níveis medidos: um nível empacado não achata o resto.
+-- Jornada completa: o /played do ding do máximo e o retrato tirado nele (run.final: mortes e
+-- zonas) — raide e PvP depois do máximo não mudam a jornada.
+function RE.Summary(run, level, live, max, par)
+	max = max or 60
 	local levels, lp = run.levels or {}, run.levelPlayed or {}
-	local s = { bars = {}, quests = 0, deaths = 0, gold = 0, steps = 0, max = 0, level = level }
-	local medidos = 0
+	local s = { bars = {}, quests = 0, deaths = 0, gold = 0, steps = 0, level = level, maxLevel = max }
+	local medidos, tempos = 0, {}
 	for L = 2, level do
 		local rec = levels[L]
 		if rec and rec.time and rec.time > 0 then
 			s.bars[L] = rec.time
 			s.first = s.first or L
-			s.max = math.max(s.max, rec.time)
-			if rec.xp and rec.xp > 0 then
+			tempos[#tempos + 1] = rec.time
+			local esperado = par and par(L)
+			if esperado and esperado > 0 then
 				medidos = medidos + 1
-				local xph = rec.xp / rec.time * 3600
-				if not s.best or xph > s.best.xph then s.best = { level = L, xph = xph, t = rec.time } end
-				if not s.worst or xph < s.worst.xph then s.worst = { level = L, xph = xph, t = rec.time } end
+				local r = rec.time / esperado
+				if not s.best or r < s.best.r then s.best = { level = L, r = r, t = rec.time } end
+				if not s.worst or r > s.worst.r then s.worst = { level = L, r = r, t = rec.time } end
 			end
 		end
 		if rec then
@@ -37,9 +43,14 @@ function RE.Summary(run, level, live)
 		end
 	end
 	if medidos < 3 then s.best, s.worst = nil, nil end
-	s.done = level >= 60
-	s.played = lp[level] or live
-	if run.zonesSeen then
+	table.sort(tempos)
+	s.cap = #tempos > 0 and math.min(tempos[#tempos], 2.5 * tempos[math.floor((#tempos + 1) / 2)]) or 1
+	s.done = level >= max
+	if s.done then s.played = lp[max] or live else s.played = live or lp[level] end
+	local final = s.done and run.final
+	if final then
+		s.zones, s.finalDeaths = final.zones, final.deaths
+	elseif run.zonesSeen then
 		s.zones = 0
 		for _ in pairs(run.zonesSeen) do s.zones = s.zones + 1 end
 	end
@@ -89,6 +100,7 @@ local function build()
 	poster:SetFrameStrata("DIALOG"); poster:SetToplevel(true)
 	poster:EnableMouse(true); poster:SetMovable(true); poster:RegisterForDrag("LeftButton")
 	poster:SetScript("OnDragStart", poster.StartMoving); poster:SetScript("OnDragStop", poster.StopMovingOrSizing)
+	if UISpecialFrames then table.insert(UISpecialFrames, "LodestarRetro") end      -- ESC fecha
 	local fio = UI.Rect(poster, "ARTWORK", C.accent); fio:SetPoint("TOPLEFT"); fio:SetPoint("TOPRIGHT"); fio:SetHeight(2)
 
 	-- quem
@@ -207,9 +219,10 @@ function RE:Show()
 	local C, L, RC = UI.COL, ns.L, ns.ReportCard
 	local RT = ns.RunTracker
 	local nivel = UnitLevel("player") or 1
-	local s = RE.Summary(RT.Run(), nivel, RT:LivePlayed())
-	s.deaths = math.max(s.deaths, ns.char.deaths or 0)
-	local letter, gcol = RC.Grade(nivel, s.played, s.deaths)
+	local s = RE.Summary(RT.Run(), nivel, RT:HasPlayed() and RT:LivePlayed() or nil, maxNivel(), RC.ParSeg)
+	s.deaths = s.finalDeaths or math.max(s.deaths, ns.char.deaths or 0)
+	local letter, gcol
+	if s.played then letter, gcol = RC.Grade(nivel, s.played, s.deaths) end
 
 	local className, class = UnitClass("player")
 	local cc = RAID_CLASS_COLORS and RAID_CLASS_COLORS[class or ""]
@@ -225,20 +238,22 @@ function RE:Show()
 	poster.name:SetText(ns.PlayerName())
 	poster.who:SetText(("%s %s"):format(UnitRace("player") or "", className or ""))
 	poster.who:SetTextColor(ccor[1], ccor[2], ccor[3], 1)
-	poster.kind:SetText(s.done and L.RETRO_KIND_DONE or L.RETRO_KIND_SOFAR)
+	poster.kind:SetText(s.done and L.RETRO_KIND_DONE:format(s.maxLevel) or L.RETRO_KIND_SOFAR)
 	poster.level:SetText(tostring(nivel))
-	poster.played:SetText(RC.FmtDur(s.played))
+	poster.played:SetText(s.played and RC.FmtDur(s.played) or "—")
 	poster.gradeTxt:SetText(L.RETRO_GRADE:format(letter or "-"))
 	if gcol then poster.gradeTxt:SetTextColor(UI.unpackc(gcol)) end
 
-	-- barras: altura pelo tempo do nível; melhor e pior ritmo destacados; sem dado, um traço
+	-- barras: altura pelo tempo do nível (acima do teto, cheia e mais clara); melhor e pior
+	-- ritmo destacados; sem dado, um traço
 	poster.since:SetText(s.first and s.first > 2 and L.RETRO_SINCE:format(s.first) or "")
 	for L2, b in pairs(poster.bars) do
 		local t = s.bars[L2]
-		local h = t and math.max(2, t / math.max(1, s.max) * CHART_H) or 2
+		local h = t and math.max(2, math.min(t, s.cap) / math.max(1, s.cap) * CHART_H) or 2
 		b:SetSize(b._w, h)
 		b.best = s.best and s.best.level == L2 or nil
 		local cor = b.best and C.done or (s.worst and s.worst.level == L2 and C.amber)
+			or (t and t > s.cap and C.accentBright)
 		if cor then b:SetColorTexture(cor[1], cor[2], cor[3], 1)
 		elseif t then b:SetColorTexture(C.accent[1], C.accent[2], C.accent[3], 0.6)
 		else b:SetColorTexture(1, 1, 1, L2 <= nivel and 0.12 or 0.05) end
@@ -258,16 +273,17 @@ function RE:Show()
 	end
 	local raceTxt, msTxt = corrida()
 	poster.race:SetText(raceTxt or ""); poster.ms:SetText(msTxt or "")
+	poster.ms:ClearAllPoints(); poster.ms:SetPoint("TOPLEFT", 20, raceTxt and -476 or -456)   -- sem linha vazia
 
 	-- compartilhar: só no clique
 	local function copiar()
 		poster:Hide()
 		local texto2 = L.RETRO_TEXT:format(ns.PlayerName(), ("%s %s"):format(UnitRace("player") or "", className or ""),
-			nivel, RC.FmtDur(s.played), letter or "-", s.quests, s.deaths, s.zones and tostring(s.zones) or "—",
-			RC.FmtGold(s.gold), msTxt or "", RC.URL)
+			nivel, s.played and RC.FmtDur(s.played) or "—", letter or "-", s.quests, s.deaths,
+			s.zones and tostring(s.zones) or "—", (RC.FmtGold(s.gold):gsub("^%+", "")), msTxt or "", RC.URL)
 		if ns.Share then ns.Share:ShowText(L.CARD_COPYTXT, L.CARD_COPYTXT_H, texto2, false) end
 	end
-	local guilda = IsInGuild and IsInGuild() and true or false
+	local guilda = IsInGuild and IsInGuild() and ns.db.cardAskGuild ~= false and s.played and true or false
 	poster.guild:SetShown(guilda); poster.copy:SetShown(not guilda)
 	poster.guild:SetScript("OnClick", function()
 		send(RE.ChatLine(L, s, letter, RC.URL, RC.FmtDur))
@@ -281,24 +297,36 @@ function RE:Show()
 	poster:Show()
 end
 
--- No nível máximo, a jornada abre sozinha: depois do boletim do nível (se aberto) e fora de
--- combate.
-local pendente, ganchoCard = false, false
-local function tentar()
-	if not pendente then return end
-	if InCombatLockdown and InCombatLockdown() then return end
-	local card = _G.LodestarCard
-	if card and card:IsShown() then
-		if not ganchoCard then
-			ganchoCard = true
-			card:HookScript("OnHide", function() if pendente then pendente = false; RE:Show() end end)
-		end
-		return
+-- No nível máximo, a jornada abre sozinha: fora de combate e depois do boletim do nível e da
+-- janela de copiar (se abertos — os dois no centro da tela). No ding, o retrato de mortes e
+-- zonas: o que vier depois (raide, PvP) não muda a jornada.
+local pendente, ganchos = false, {}
+local tentar
+local function espera(nome)
+	local f = _G[nome]
+	if not (f and f:IsShown()) then return false end
+	if not ganchos[nome] then
+		ganchos[nome] = true
+		f:HookScript("OnHide", function() if C_Timer then C_Timer.After(0.2, tentar) else tentar() end end)
 	end
+	return true
+end
+function tentar()
+	if not pendente then return end
+	if InCombatLockdown and InCombatLockdown() then return end        -- o fim do combate tenta de novo
+	if espera("LodestarCard") or espera("LodestarShare") then return end
 	pendente = false
 	RE:Show()
 end
 ns:On("_LEVEL_PLAYED", function(_, L)
-	if L >= maxNivel() then pendente = true; tentar() end
+	if L < maxNivel() then return end
+	local run = ns.RunTracker.Run()
+	if not run.final then
+		local z = 0
+		for _ in pairs(run.zonesSeen or {}) do z = z + 1 end
+		run.final = { deaths = ns.char.deaths or 0, zones = z }
+	end
+	pendente = true
+	tentar()
 end)
 ns:On("PLAYER_REGEN_ENABLED", function() if pendente and C_Timer then C_Timer.After(1, tentar) end end)
