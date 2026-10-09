@@ -64,6 +64,10 @@ local function fmtNum(n)
 	return (s:gsub("^%" .. sep, ""))
 end
 
+-- o que a retrospectiva (Retro.lua) reaproveita
+RC.URL, RC.FmtDur, RC.FmtGold = URL, fmtDur, fmtGold
+function RC.Grade(L, played, deaths) return grade(L, played, deaths) end
+
 --------------------------------------------------------------------------------
 -- números do card
 --------------------------------------------------------------------------------

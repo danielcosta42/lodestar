@@ -86,6 +86,7 @@ RaceMilestones.lua
 Race.lua
 RacePanel.lua
 Splits.lua
+Retro.lua
 ReportCard.lua
 XPHud.lua
 Coords.lua
