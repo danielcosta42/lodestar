@@ -206,7 +206,9 @@ function R.Expire(store, now)
 end
 
 -- Placar. q = { kind = "alto" | id do marco, guild = nome (nil: realm), roster = { [nome] =
--- true } (nil: sem filtro), me = { name, rec } (sempre entra, ao vivo), now }
+-- true } (nil: sem filtro), me = { name, rec } (sempre entra, ao vivo), now, extra }. `extra`:
+-- quem só tem o nível (roster da guilda, peers da ChehulNet) — { name, class, level, online,
+-- seen, src } —, só no Mais alto e sem duplicar quem tem registro (casa pelo primeiro nome).
 function R.Board(store, q)
 	local rows = {}
 	local function add(name, rec, eu)
@@ -226,6 +228,17 @@ function R.Board(store, q)
 		end
 	end
 	if q.me then add(meName, q.me.rec, true) end
+	if q.kind == "alto" and q.extra then
+		local tem = {}
+		for _, row in ipairs(rows) do tem[row.name] = true; tem[row.name:match("^%S+")] = true end
+		for _, e in ipairs(q.extra) do
+			if e.name and e.level and not (tem[e.name] or tem[e.name:match("^%S+")]) then
+				tem[e.name] = true
+				rows[#rows + 1] = { name = e.name, class = e.class, level = e.level, xp = 0, own = false, src = e.src,
+					online = e.online or false, seen = e.seen }
+			end
+		end
+	end
 	if q.kind == "alto" then
 		table.sort(rows, function(a, b)
 			if a.level ~= b.level then return a.level > b.level end
@@ -241,6 +254,29 @@ function R.Board(store, q)
 		end)
 	end
 	return rows
+end
+
+-- quantos do placar usam o Lodestar (registro próprio, repassado ou eu)
+function R.Lodestar(rows)
+	local n = 0
+	for _, row in ipairs(rows) do if not row.src then n = n + 1 end end
+	return n
+end
+
+-- O placar para o chat da guilda (botão "Postar placar"): o top 5 do placar aberto e o link,
+-- até 255.
+function R.BoardText(L, kind, rows, url)
+	local titulo = kind == "alto" and L.RACE_POST_HIGH or L.RACE_POST_FAST:format(R.Label(L, byId[kind] or { id = kind }))
+	local itens, txt = {}, nil
+	for i = 1, math.min(5, #rows) do
+		local row = rows[i]
+		itens[#itens + 1] = kind == "alto" and L.RACE_POST_LV:format(i, row.name, row.level)
+			or L.RACE_POST_T:format(i, row.name, R.Dur(row.val))
+		local tenta = L.RACE_POST:format(titulo, table.concat(itens, " · "), url)
+		if #tenta > 255 then break end
+		txt = tenta
+	end
+	return txt
 end
 
 function R.Position(rows, name)
@@ -330,26 +366,54 @@ end
 -- Os membros da guilda (nome curto e primeiro nome). nil: o roster ainda não chegou; false:
 -- chegou, mas sem os offline (opção da janela da guilda) — aí não filtra, senão quem desloga
 -- some do placar.
-local rosterSet
-local function roster()
-	if rosterSet ~= nil or not (minhaGuilda() and GetNumGuildMembers and GetGuildRosterInfo) then return rosterSet end
+-- O roster também dá o nível e a classe de todo membro (#53): quem não usa o Lodestar entra no
+-- Mais alto só com o nível.
+local rosterSet, rosterNivel
+local function leRoster()
+	rosterNivel = {}
 	local n = GetNumGuildMembers() or 0
 	if n == 0 then return nil end
-	if GetGuildRosterShowOffline and not GetGuildRosterShowOffline() then
-		rosterSet = false
-		return false
-	end
-	rosterSet = {}
+	local set = {}
 	for i = 1, n do
-		local nome = curto(GetGuildRosterInfo(i))
+		local nome, _, _, nivel, _, _, _, _, online, _, classe = GetGuildRosterInfo(i)
+		nome = curto(nome)
 		if nome then
-			rosterSet[nome] = true
-			rosterSet[nome:match("^%S+")] = true
+			set[nome] = true
+			set[nome:match("^%S+")] = true
+			if nivel and nivel > 0 then
+				rosterNivel[#rosterNivel + 1] = { name = nome, class = classe, level = nivel, online = online and true or false,
+					src = "roster" }
+			end
 		end
 	end
+	if GetGuildRosterShowOffline and not GetGuildRosterShowOffline() then return false end
+	return set
+end
+local function roster()
+	if rosterSet ~= nil or not (minhaGuilda() and GetNumGuildMembers and GetGuildRosterInfo) then return rosterSet end
+	rosterSet = leRoster()
 	return rosterSet
 end
-ns:On("GUILD_ROSTER_UPDATE", function() rosterSet = nil end)
+ns:On("GUILD_ROSTER_UPDATE", function() rosterSet, rosterNivel = nil, nil end)
+
+-- quem só tem o nível: o roster (guilda) e, no realm, também os peers da ChehulNet (o nível que
+-- todo addon da família anuncia no HELLO)
+local function soNivel(scope)
+	roster()
+	local t = {}
+	for _, e in ipairs(rosterNivel or {}) do t[#t + 1] = e end
+	local CN = _G.ChehulNet
+	if scope == "realm" and CN and CN.peers then
+		local now = agora()
+		for nome, p in pairs(CN.peers) do
+			if p.level and p.level > 0 then
+				t[#t + 1] = { name = nome, class = p.class, level = p.level, online = p.ts and now - p.ts <= R.ONLINE or false,
+					seen = p.ts, src = "rede" }
+			end
+		end
+	end
+	return t
+end
 
 -- Os marcos (não de nível) do personagem. Na primeira vez, quem já passou da idade de
 -- masmorra começa sem o "primeira masmorra" (false): o próximo chefe não é o primeiro.
@@ -384,7 +448,7 @@ function R:Rows(scope, kind)
 	local guild = scope == "guild" and minhaGuilda() or nil
 	if scope == "guild" and not guild then return {} end
 	return R.Board(store(), { kind = kind, guild = guild, roster = guild and roster() or nil, now = agora(),
-		me = { name = meuNome(), rec = R.MyRecord() } })
+		me = { name = meuNome(), rec = R.MyRecord() }, extra = kind == "alto" and soNivel(scope) or nil })
 end
 
 R.URL = "curseforge.com/wow/addons/lodestar"
@@ -403,6 +467,16 @@ end
 function R:Invite()
 	if not minhaGuilda() or not R.Allow(limites(), "invite", agora(), 600) then return false end
 	chat(L.RACE_INVITE_MSG:format(R.URL))
+	return true
+end
+
+-- postar o placar aberto no chat da guilda (botão do painel): manual, no máximo um a cada 10 min.
+-- nil: nada a postar; false: no limite
+function R:Post(kind)
+	local txt = minhaGuilda() and R.BoardText(L, kind, R:Rows("guild", kind), R.URL)
+	if not txt then return nil end
+	if not R.Allow(limites(), "post", agora(), 600) then return false end
+	chat(txt)
 	return true
 end
 

@@ -1,6 +1,6 @@
 # Corrida: marcos, placar da guilda e ranking do realm
 
-Issues: #45 (marcos + guilda), #46 (realm).
+Issues: #45 (marcos + guilda), #46 (realm), #53 (guilda inteira, rede ChehulNet, postar o placar).
 
 ## Problema
 
@@ -55,6 +55,11 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
   Forever o roster pode trazer só o primeiro nome: casa também por ele. Com a janela da guilda
   escondendo os offline, o roster não filtra (senão quem desloga some).
 - **Realm (#46):** todos os registros do realm.
+- **Só o nível (#53):** no Mais alto, entra também quem não usa o Lodestar — da guilda, pelo roster
+  (todo membro, online e offline); no realm, também os peers da malha ChehulNet (o nível que todo
+  addon da família anuncia). Aparecem só com o nível, marcados "sem Lodestar", sem duplicar quem tem
+  registro (casa pelo primeiro nome). Liderança e ultrapassagens passam a valer contra a guilda
+  inteira. O Mais rápido segue só com quem tem tempo de marco.
 - Em cada um, **Mais alto** (nível, depois XP, desempate por menos /played) e **Mais rápido** (menor
   /played até o marco escolhido; só quem tem tempo naquele marco).
 - O jogador sempre aparece, ao vivo.
@@ -82,6 +87,8 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
   explica que só aparece quem usa o Lodestar.
 - Abre por `/ls corrida` (e `race`), e pelas entradas do antigo "Na rota" (`/ls squad`, `/ls party`,
   Configurações › Painéis).
+- Rodapé da guilda: "X de Y com Lodestar"; botões "Postar placar" (o top 5 do placar aberto no chat
+  da guilda, com o link; manual, no máximo 1 a cada 10 min) e "Chamar a guilda".
 - Configurações › Grupo: "Avisos da corrida no chat da guilda" e "Avisos de ultrapassagem".
 
 ## Fora desta versão
