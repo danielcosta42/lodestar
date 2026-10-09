@@ -25,7 +25,9 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
 - v1: níveis 10, 20, 30, 40, 50, 60; primeira masmorra; profissão 300; sintonização do Núcleo
   Derretido (quest 7848); sintonização de Onyxia (6502 Aliança, 6602 Horda).
 - O tempo de um marco é o /played no momento em que foi batido. Nada é preenchido para trás:
-  marco batido antes do addon (ou do marco existir) fica sem tempo.
+  marco batido antes do addon (ou do marco existir) fica sem tempo. Quem instala o addon a partir
+  do nível 15 começa sem "primeira masmorra" (o próximo chefe não é o primeiro). Marco batido antes
+  de o /played chegar (logo depois de entrar) espera por ele.
 - Id desconhecido (vindo de versão mais nova) é guardado e não aparece no painel.
 
 ## Registro e protocolo
@@ -44,7 +46,9 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
 
 ## Placares
 
-- **Guilda:** quem anunciou pela guilda (ou foi repassado pela guilda) e ainda está no roster.
+- **Guilda:** quem anunciou pela guilda (ou foi repassado pela guilda) e ainda está no roster. No
+  Forever o roster pode trazer só o primeiro nome: casa também por ele. Com a janela da guilda
+  escondendo os offline, o roster não filtra (senão quem desloga some).
 - **Realm (#46):** todos os registros do realm.
 - Em cada um, **Mais alto** (nível, depois XP, desempate por menos /played) e **Mais rápido** (menor
   /played até o marco escolhido; só quem tem tempo naquele marco).
@@ -54,9 +58,13 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
 ## Avisos
 
 - **Chat da guilda** (ligado, com opção de desligar), só os eventos do próprio jogador:
-  - assumiu o 1º lugar de "Mais alto" na guilda (com pelo menos 3 no placar);
-  - bateu um marco: a posição na guilda e, com o #46, no realm;
-  - primeiro 60 da guilda.
+  - assumiu o 1º lugar de "Mais alto" na guilda: passou quem era o 1º (que segue no placar), está à
+    frente dele por nível (não pelo XP, que vai e volta entre quem upa junto), com pelo menos 3 no
+    placar; uma vez por nível;
+  - bateu um marco: a posição na guilda (só com 3+ no placar; senão, o marco sem posição) e, com o
+    #46, no realm;
+  - primeiro 60 da guilda (com 3+ no placar).
+  - Antes de o roster da guilda chegar, nada se decide.
   - No máximo uma mensagem a cada 10 minutos; o que passar do limite é descartado.
   - Sempre começando por "[Lodestar]".
 - **Toast privado** (ligado, com opção de desligar): alguém passou você, ou você passou alguém,

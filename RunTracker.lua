@@ -115,6 +115,7 @@ ns:On("PLAYER_LEVEL_UP", function(_, level)
 		local t = lastPlayed and RT:LivePlayed() or nil
 		run().levelPlayed[pendingLevel] = t
 		fechar(run(), pendingLevel, t)
+		if t then ns.fire("_LEVEL_PLAYED", pendingLevel, t) end
 	end
 	pendingLevel = tonumber(level) or UnitLevel("player")
 	requestPlayed()

@@ -41,8 +41,9 @@ alguém repassou nos últimos 10 min (supressão).
 ## Armazenamento
 
 `ns.db.race[realm] = { recs = { [nome] = { class, level, xp, played, ms = {id=t}, own, seen,
-relSeen, g } } }`; `ns.char.raceMs[id] = t` (marcos não-nível do personagem), `ns.char.raceBase`
-(linha de base das perícias), `ns.char.raceLead` (já era 1º). Os marcos de nível vêm de
+relSeen, g } } }`; `ns.char.raceMs[id] = t | false` (marcos não-nível do personagem; false = sem
+tempo, batido antes), `ns.char.raceSkill` (linha de base das perícias), `ns.char.raceLead` (o nível
+em que já anunciou a liderança), `ns.char.raceLim` (limites de frequência). Os marcos de nível vêm de
 `run.levelPlayed`. Expira em 30 dias (`max(seen, relSeen)`).
 
 ## Eventos

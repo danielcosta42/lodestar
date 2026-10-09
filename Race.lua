@@ -13,6 +13,7 @@ ns.Race = R
 R.MAX_LEVEL = 60
 R.ONLINE = 300                         -- s desde o último anúncio para contar como online
 R.EXPIRE = 30 * 86400                  -- s sem notícia até o registro sair
+local TETO, MAX_IDS = 1e8, 32            -- /played máximo aceito (~3 anos); marcos por mensagem
 
 local byId = {}
 for _, m in ipairs(ns.RACE_MILESTONES or {}) do byId[m.id] = m end
@@ -65,12 +66,14 @@ function R.Decode(s)
 	local f = campos(s, "|")
 	if f[1] ~= "R1" or f[2] ~= "R" or #f ~= 7 then return nil end
 	local rec = { class = f[3], level = inteiro(f[4], 1, R.MAX_LEVEL), xp = inteiro(f[5], 0, 100),
-		played = inteiro(f[6], 0), ms = {} }
+		played = inteiro(f[6], 0, TETO), ms = {} }
 	if not (rec.class:match("^%u+$") and rec.level and rec.xp and rec.played) then return nil end
 	if f[7] ~= "" then
-		for _, par in ipairs(campos(f[7], ";")) do
+		local pares = campos(f[7], ";")
+		if #pares > MAX_IDS then return nil end
+		for _, par in ipairs(pares) do
 			local id, t = par:match("^(%w+)=(%d+)$")
-			t = id and inteiro(t, 0)
+			t = id and #id <= 12 and inteiro(t, 0, TETO)
 			if not t then return nil end
 			rec.ms[id] = t
 		end
@@ -105,8 +108,10 @@ function R.Board(store, q)
 			online = rec.own and rec.seen and q.now - rec.seen <= R.ONLINE or false }
 	end
 	local meName = q.me and q.me.name
+	-- no roster do Forever o nome pode vir sem o sobrenome: casa também pelo primeiro nome
+	local function noRoster(name) return q.roster[name] or q.roster[name:match("^%S+")] end
 	for name, rec in pairs(store.recs) do
-		if name ~= meName and (not q.guild or (rec.g == q.guild and (not q.roster or q.roster[name]))) then
+		if name ~= meName and (not q.guild or (rec.g == q.guild and (not q.roster or noRoster(name)))) then
 			add(name, rec, false)
 		end
 	end
@@ -145,12 +150,13 @@ function R.Label(L, m)
 	return L["RACE_MS_" .. m.id] or m.id
 end
 
--- A mensagem do marco no chat da guilda; nil sem posição nenhuma.
+-- A mensagem do marco no chat da guilda. Sem posição (pouca gente no placar para dizer "1º"),
+-- só o marco e o tempo.
 function R.MilestoneText(L, m, gpos, rpos, played)
 	if m.kind == "level" and m.v == R.MAX_LEVEL and gpos == 1 then return L.RACE_MSG_FIRST60:format(R.Dur(played)) end
 	local pos = gpos and rpos and L.RACE_POS_BOTH:format(gpos, rpos) or gpos and L.RACE_POS_GUILD:format(gpos)
 		or rpos and L.RACE_POS_REALM:format(rpos)
-	if not pos then return nil end
+	if not pos then return L.RACE_MSG_SOLO:format(R.Label(L, m), R.Dur(played)) end
 	return L.RACE_MSG_MS:format(R.Label(L, m), pos, R.Dur(played))
 end
 
@@ -211,20 +217,41 @@ local function limites()
 	return ns.char.raceLim
 end
 
--- os membros da guilda (nomes curtos); nil enquanto o roster não chegou
+-- Os membros da guilda (nome curto e primeiro nome). nil: o roster ainda não chegou; false:
+-- chegou, mas sem os offline (opção da janela da guilda) — aí não filtra, senão quem desloga
+-- some do placar.
 local rosterSet
 local function roster()
-	if rosterSet or not (minhaGuilda() and GetNumGuildMembers and GetGuildRosterInfo) then return rosterSet end
+	if rosterSet ~= nil or not (minhaGuilda() and GetNumGuildMembers and GetGuildRosterInfo) then return rosterSet end
 	local n = GetNumGuildMembers() or 0
 	if n == 0 then return nil end
+	if GetGuildRosterShowOffline and not GetGuildRosterShowOffline() then
+		rosterSet = false
+		return false
+	end
 	rosterSet = {}
 	for i = 1, n do
 		local nome = curto(GetGuildRosterInfo(i))
-		if nome then rosterSet[nome] = true end
+		if nome then
+			rosterSet[nome] = true
+			rosterSet[nome:match("^%S+")] = true
+		end
 	end
 	return rosterSet
 end
 ns:On("GUILD_ROSTER_UPDATE", function() rosterSet = nil end)
+
+-- Os marcos (não de nível) do personagem. Na primeira vez, quem já passou da idade de
+-- masmorra começa sem o "primeira masmorra" (false): o próximo chefe não é o primeiro.
+local function marcosDoChar()
+	if not ns.char.raceMs then
+		ns.char.raceMs = {}
+		if (UnitLevel("player") or 1) >= 15 then
+			for _, m in ipairs(MS) do if m.kind == "dungeon" then ns.char.raceMs[m.id] = false end end
+		end
+	end
+	return ns.char.raceMs
+end
 
 -- o meu registro, ao vivo: marcos de nível pelo /played de cada ding, os outros salvos
 function R.MyRecord()
@@ -232,7 +259,7 @@ function R.MyRecord()
 	local max = UnitXPMax and UnitXPMax("player") or 0
 	local RT = ns.RunTracker
 	local ms = {}
-	for id, t in pairs(ns.char.raceMs or {}) do ms[id] = t end
+	for id, t in pairs(marcosDoChar()) do if type(t) == "number" then ms[id] = t end end
 	local lp = RT and RT.Run().levelPlayed or {}
 	for _, m in ipairs(MS) do
 		if m.kind == "level" and lp[m.v] then ms[m.id] = math.floor(lp[m.v]) end
@@ -246,7 +273,7 @@ end
 function R:Rows(scope, kind)
 	local guild = scope == "guild" and minhaGuilda() or nil
 	if scope == "guild" and not guild then return {} end
-	return R.Board(store(), { kind = kind, guild = guild, roster = guild and roster(), now = agora(),
+	return R.Board(store(), { kind = kind, guild = guild, roster = guild and roster() or nil, now = agora(),
 		me = { name = meuNome(), rec = R.MyRecord() } })
 end
 
@@ -291,7 +318,7 @@ ns:On("GROUP_ROSTER_UPDATE", function() grupoPendente = true end)
 local ordem
 local function reavalia()
 	local guild = minhaGuilda()
-	if not guild then ordem = nil; return end
+	if not guild or roster() == nil then ordem = nil; return end      -- sem roster ainda, não decide
 	local rows = R:Rows("guild", "alto")
 	local nova = {}
 	for i, row in ipairs(rows) do nova[i] = row.name end
@@ -304,7 +331,15 @@ local function reavalia()
 		ns.Toast:Show({ title = L.RACE_TOAST_T,
 			text = (p[1].mine and L.RACE_TOAST_PASSED or L.RACE_TOAST_PASSED_ME):format(p[1].name) })
 	end
-	if antes[1] ~= eu and R.Lead(rows, eu) then avisa(L.RACE_MSG_LEAD:format(rows[1].level)) end
+	-- liderança: passei quem era o 1º (e ele segue no placar), à frente dele por nível — não
+	-- pelo XP, que vai e volta entre quem upa junto —, uma vez por nível
+	local lider = antes[1]
+	local passei = false
+	for _, x in ipairs(p) do if x.mine and x.name == lider then passei = true end end
+	if passei and R.Lead(rows, eu) and rows[1].level > rows[2].level and ns.char.raceLead ~= rows[1].level then
+		ns.char.raceLead = rows[1].level
+		avisa(L.RACE_MSG_LEAD:format(rows[1].level))
+	end
 end
 
 local function marco(id)
@@ -314,14 +349,20 @@ local function marco(id)
 	local rows = R:Rows("guild", id)
 	local eu = meuNome()
 	local pos = R.Position(rows, eu)
-	avisa(pos and R.MilestoneText(L, R.ById(id), pos, nil, rows[pos].val))
+	if not pos then return end
+	-- "1º da guilda" só com gente para comparar (3+ no placar); senão, o marco sem posição
+	avisa(R.MilestoneText(L, R.ById(id), #rows >= 3 and pos or nil, nil, rows[pos].val))
 end
 
--- marco que não é de nível: o /played do momento (sem /played ainda, o tempo é desconhecido)
+-- Marco que não é de nível: o /played do momento. Antes de o /played chegar (logo depois de
+-- entrar), fica na fila e entra quando ele chega.
+local pendentes = {}
 local function bateu(id)
-	ns.char.raceMs = ns.char.raceMs or {}
-	if ns.char.raceMs[id] or not (ns.RunTracker and ns.RunTracker:HasPlayed()) then return end
-	ns.char.raceMs[id] = math.floor(ns.RunTracker:LivePlayed())
+	local ms = marcosDoChar()
+	if ms[id] ~= nil then return end
+	if not (ns.RunTracker and ns.RunTracker:HasPlayed()) then pendentes[id] = true; return end
+	pendentes[id] = nil
+	ms[id] = math.floor(ns.RunTracker:LivePlayed())
 	marco(id)
 end
 
@@ -374,10 +415,13 @@ end
 do local M = mesh(); if M and M.Register then M:Register(PREFIX, onRecv) end end
 
 ns:On("PLAYER_ENTERING_WORLD", function()
+	marcosDoChar()
 	R.Expire(store(), agora())
 	if C_GuildInfo and C_GuildInfo.GuildRoster then C_GuildInfo.GuildRoster() elseif GuildRoster then GuildRoster() end
 end)
 ns:Every(10, function()
+	for id in pairs(pendentes) do bateu(id) end
 	anuncia(false)
 	reavalia()
+	if R.OnChange then R.OnChange() end
 end)
