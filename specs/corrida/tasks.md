@@ -11,5 +11,5 @@
 
 ## #46 — realm
 
-- [ ] T7 Codec do repasse, merge do repasse (dono vence), digest do top 5, rotação, supressão. Teste. (depende de T3)
-- [ ] T8 No jogo: registro e repasse pelo YELL, repasse pela guilda, aba Realm, posição no realm na mensagem. Harness. (depende de T6, T7)
+- [x] T7 Codec do repasse, merge do repasse (dono vence), digest do top 5, rotação, supressão. Teste. (depende de T3)
+- [x] T8 No jogo: registro e repasse pelo YELL, repasse pela guilda, aba Realm, posição no realm na mensagem. Harness. (depende de T6, T7)

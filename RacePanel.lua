@@ -74,9 +74,10 @@ local function fillRow(r, d, pos, now)
 	else r.value:SetText(R.Dur(d.val)) end
 	r.mine:SetShown(d.me); r.mineBar:SetShown(d.me)
 	r.dot:SetShown(d.online and not d.me or false)
-	local longe = not d.me and not d.online and d.seen
-	r.seen:SetShown(longe and true or false)
-	if longe then r.seen:SetText(L.RACE_SEEN:format(R.Dur(now - d.seen))) end
+	-- fora do ar: há quanto tempo anunciou; repassado: veio pela rede, não do dono
+	local longe = not d.me and not d.online
+	r.seen:SetShown(longe)
+	if longe then r.seen:SetText(d.own and d.seen and L.RACE_SEEN:format(R.Dur(now - d.seen)) or L.RACE_RELAYED) end
 	r:Show()
 end
 

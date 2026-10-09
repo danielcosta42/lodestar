@@ -379,14 +379,17 @@ local function reavalia()
 	if antes[1] ~= eu and R.Lead(rows, eu) then avisa(L.RACE_MSG_LEAD:format(rows[1].level)) end
 end
 
+-- A posição no realm só entra quando a rede já conhece gente de fora da guilda (5+ no
+-- placar): "1º do realm" com só a guilda à vista seria mentira.
 local function marco(id)
 	anuncia(true)
 	local guild = minhaGuilda()
 	if not guild then return end
-	local rows = R:Rows("guild", id)
+	local rows, realm = R:Rows("guild", id), R:Rows("realm", id)
 	local eu = meuNome()
 	local pos = R.Position(rows, eu)
-	avisa(pos and R.MilestoneText(L, R.ById(id), pos, nil, rows[pos].val))
+	local rpos = #realm >= 5 and #realm > #rows and R.Position(realm, eu) or nil
+	avisa(pos and R.MilestoneText(L, R.ById(id), pos, rpos, rows[pos].val))
 end
 
 -- marco que não é de nível: o /played do momento (sem /played ainda, o tempo é desconhecido)
@@ -435,11 +438,47 @@ ns:On("SKILL_LINES_CHANGED", function()
 	end
 end)
 
+-- repasse (#46): pelo YELL da malha, o meu registro e um placar do realm por vez; pela
+-- guilda, um placar por vez de cada escopo, pulando o que alguém repassou há pouco
+local ouvido, rotRealm, rotGuilda = {}, {}, {}
+local function digest(scope, board)
+	local rows = R:Rows(scope == "G" and "guild" or "realm", board)
+	if #rows == 0 then return nil end
+	local top = {}
+	for i = 1, math.min(5, #rows) do top[i] = rows[i] end
+	return R.EncodeDigest(scope, board, top)
+end
+local function repassa()
+	local M = mesh()
+	if not (M and ns.RunTracker and ns.RunTracker:HasPlayed()) then return end
+	if M.Realm then
+		M:Realm(PREFIX, R.EncodeRecord(R.MyRecord()), "LSRace:R")
+		local d = digest("R", R.NextBoard(rotRealm))
+		if d then M:Realm(PREFIX, d, "LSRace:T") end
+	end
+	if minhaGuilda() and M.Guild then
+		local board, now = R.NextBoard(rotGuilda), agora()
+		for _, sc in ipairs({ "G", "R" }) do
+			local d = R.ShouldRelay(ouvido, sc, board, now, 600) and digest(sc, board)
+			if d then
+				M:Guild(PREFIX, d)
+				R.Heard(ouvido, sc, board, now)
+			end
+		end
+	end
+end
+
 local function onRecv(payload, sender, dist)
-	local kind, rec = R.Decode(payload)
+	local kind, data = R.Decode(payload)
 	local nome = curto(sender)
-	if kind ~= "R" or not nome or nome == "" or nome == meuNome() then return end
-	R.MergeOwn(store(), nome, rec, agora(), dist == "GUILD" and minhaGuilda() or nil)
+	if not kind or not nome or nome == "" or nome == meuNome() then return end
+	local guild = dist == "GUILD" and minhaGuilda() or nil
+	if kind == "R" then
+		R.MergeOwn(store(), nome, data, agora(), guild)
+	else
+		R.MergeRelay(store(), data, agora(), guild, meuNome())
+		if dist == "GUILD" then R.Heard(ouvido, data.scope, data.board, agora()) end
+	end
 	reavalia()
 	if R.OnChange then R.OnChange() end
 end
@@ -453,3 +492,4 @@ ns:Every(10, function()
 	anuncia(false)
 	reavalia()
 end)
+ns:Every(60, repassa)
