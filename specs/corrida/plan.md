@@ -27,15 +27,16 @@ recorde mundial: falso positivo de trapaça é pior que deixar passar).
 ## Protocolo (prefixo `LSRace`, pela `ChehulMesh`)
 
 - Registro: `R1|R|CLASSE|nível|xp|played|id=t;id=t` (xp 0–100 inteiro, tempos em segundos inteiros).
-- Repasse (#46): `R1|T|escopo|placar|nome,CLASSE,nível,valor;…` — escopo `G` (guilda) ou `R`
-  (realm); placar `alto` (valor = /played) ou id de marco (valor = tempo do marco).
+- Repasse (#46): `R1|T|escopo|placar|nome,CLASSE,nível,xp,valor,idade;…` — escopo `G` (guilda) ou
+  `R` (realm); placar `alto` (valor = /played) ou id de marco (valor = tempo do marco); idade = s
+  desde a última notícia real; até 5 entradas e 250 bytes (um YELL, sem dividir).
 - Campo inválido derruba a mensagem inteira; marco implausível cai sozinho.
 - Versão nova = `R2`; quem não conhece ignora.
 
 Envio: registro pela guilda (no login, ao mudar — com 10 s de espera — e a cada 5 min) e pelo grupo
 (ao mudar e ao entrar no grupo). #46: `M:Realm(prefixo, registro, "LSRace:R")` e
-`M:Realm(prefixo, repasse do próximo placar, "LSRace:T")` a cada 60 s — duas chaves fixas, o
-limite de YELL da malha fica respeitado; pela guilda, cada placar a cada 10 min, pulando o que
+`M:Realm(prefixo, repasse do próximo placar, "LSRace:T")` — o registro só quando muda (ou a cada 5
+min), o repasse a cada 3 min: duas chaves fixas, sem tomar o YELL da família; pela guilda, cada placar a cada 10 min, pulando o que
 alguém repassou nos últimos 10 min (supressão).
 
 ## Armazenamento

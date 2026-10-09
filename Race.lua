@@ -52,32 +52,57 @@ local function limpa(rec)
 end
 
 local NOME = "^[^,;|]+$"
+local NOME_MAX, PLACAR_MAX, TOP, DIGEST_MAX = 48, 12, 5, 250   -- bytes; bytes; entradas; bytes (1 YELL)
 
--- O repasse do top de um placar: escopo "G" (guilda) ou "R" (realm), placar "alto" (valor =
--- /played) ou id de marco (valor = tempo do marco). rows = linhas do R.Board.
-function R.EncodeDigest(scope, board, rows)
-	local t = {}
-	for i, row in ipairs(rows) do
-		local val = board == "alto" and row.played or row.val
-		t[i] = ("%s,%s,%d,%d,%d"):format(row.name, row.class, row.level, math.floor(row.xp or 0), math.floor(val or 0))
+-- o menor /played para estar no nível L: o piso do marco de nível mais alto até ele
+local function pisoNivel(level)
+	local p = 0
+	for _, m in ipairs(ns.RACE_MILESTONES or {}) do
+		if m.kind == "level" and m.v <= level and m.min > p then p = m.min end
 	end
-	return ("R1|T|%s|%s|%s"):format(scope, board, table.concat(t, ";"))
+	return p
 end
 
+-- O repasse do top de um placar: escopo "G" (guilda) ou "R" (realm), placar "alto" (valor =
+-- /played) ou id de marco (valor = tempo do marco), e a idade da notícia de cada um (s) — o
+-- repasse não rejuvenesce ninguém. rows = linhas do R.Board. Sem valor conhecido, a linha
+-- fica de fora; o todo cabe numa mensagem (o YELL não se divide). nil se não sobra nada.
+function R.EncodeDigest(scope, board, rows, now)
+	local head = ("R1|T|%s|%s|"):format(scope, board)
+	local t, len = {}, #head
+	for _, row in ipairs(rows) do
+		local val = board == "alto" and row.played or row.val
+		if val and val > 0 then
+			local age = row.news and math.max(0, now - row.news) or 0
+			local e = ("%s,%s,%d,%d,%d,%d"):format(row.name, row.class, row.level, math.floor(row.xp or 0),
+				math.floor(val), math.floor(age))
+			if #t >= TOP or len + #e + 1 > DIGEST_MAX then break end
+			t[#t + 1] = e
+			len = len + #e + 1
+		end
+	end
+	if #t == 0 then return nil end
+	return head .. table.concat(t, ";")
+end
+
+-- entrada inválida ou implausível cai sozinha; cabeçalho inválido derruba a mensagem
 local function decodeDigest(f)
 	local scope, board = f[3], f[4]
-	if (scope ~= "G" and scope ~= "R") or not board:match("^%w+$") then return nil end
+	if (scope ~= "G" and scope ~= "R") or not board:match("^%w+$") or #board > PLACAR_MAX then return nil end
 	local m, entries, lista = byId[board], {}, campos(f[5], ";")
 	if #lista > 10 then return nil end
 	for _, e in ipairs(lista) do
 		local c = campos(e, ",")
-		if #c ~= 5 then return nil end
-		local x = { name = c[1], class = c[2], level = inteiro(c[3], 1, R.MAX_LEVEL), xp = inteiro(c[4], 0, 100),
-			val = inteiro(c[5], 0, TETO) }
-		if not (x.name:match(NOME) and #x.name <= 24 and x.class:match("^%u+$") and x.level and x.xp and x.val) then
-			return nil
+		local x = #c == 6 and { name = c[1], class = c[2], level = inteiro(c[3], 1, R.MAX_LEVEL),
+			xp = inteiro(c[4], 0, 100), val = inteiro(c[5], 1, TETO), age = inteiro(c[6], 0, R.EXPIRE) }
+		local ok = x and x.name:match(NOME) and #x.name <= NOME_MAX and x.class:match("^%u+$")
+			and x.level and x.xp and x.val and x.age
+		if ok and board == "alto" then
+			ok = x.val >= pisoNivel(x.level)
+		elseif ok and m then
+			ok = x.val >= m.min and not (m.kind == "level" and m.v > x.level)
 		end
-		if not (m and (x.val < m.min or (m.kind == "level" and m.v > x.level))) then entries[#entries + 1] = x end
+		if ok then entries[#entries + 1] = x end
 	end
 	return "T", { scope = scope, board = board, entries = entries }
 end
@@ -114,9 +139,12 @@ function R.Decode(s)
 end
 
 -- O que chegou repassado. O dono vence: registro do próprio dono com notícia nas últimas 6 h
--- não muda; mais velho que isso, o repasse só adianta (nível maior, marco que faltava).
-local FRESCO = 6 * 3600
-function R.MergeRelay(store, d, now, guild, me)
+-- não muda; mais velho que isso, o repasse só adianta (nível maior, marco que faltava). A
+-- notícia vale pela idade dela (`relSeen`), não pela chegada. Por repasse, só vira da guilda
+-- quem está no roster (`roster`, nil se não se sabe). No máximo RELAY_MAX registros só de
+-- repasse: sai o de notícia mais velha.
+local FRESCO, RELAY_MAX = 6 * 3600, 300
+function R.MergeRelay(store, d, now, guild, me, roster)
 	for _, e in ipairs(d.entries) do
 		local rec = store.recs[e.name]
 		if e.name ~= me and not (rec and rec.own and now - (rec.seen or 0) < FRESCO) then
@@ -128,13 +156,21 @@ function R.MergeRelay(store, d, now, guild, me)
 				if e.level > rec.level or (e.level == rec.level and e.xp >= (rec.xp or 0)) then
 					rec.level, rec.xp, rec.played = e.level, e.xp, e.val
 				end
-			else
-				rec.level = math.max(rec.level, e.level)
+			elseif not (rec.played and e.val > rec.played) then      -- marco depois do /played: incoerente
+				if e.level > rec.level then rec.level, rec.xp = e.level, e.xp end
 				rec.ms[d.board] = rec.ms[d.board] or e.val
 			end
-			rec.relSeen = math.max(rec.relSeen or 0, now)
-			if guild and d.scope == "G" then rec.g = guild end
+			rec.relSeen = math.max(rec.relSeen or 0, now - e.age)
+			if guild and d.scope == "G" and roster and (roster[e.name] or roster[e.name:match("^%S+")]) then
+				rec.g = guild
+			end
 		end
+	end
+	local soRepasse = {}
+	for name, rec in pairs(store.recs) do if not rec.own then soRepasse[#soRepasse + 1] = name end end
+	if #soRepasse > RELAY_MAX then
+		table.sort(soRepasse, function(a, b) return (store.recs[a].relSeen or 0) < (store.recs[b].relSeen or 0) end)
+		for i = 1, #soRepasse - RELAY_MAX do store.recs[soRepasse[i]] = nil end
 	end
 end
 
@@ -176,8 +212,9 @@ function R.Board(store, q)
 	local function add(name, rec, eu)
 		local val = q.kind ~= "alto" and rec.ms and rec.ms[q.kind] or nil
 		if q.kind ~= "alto" and not val then return end
+		local news = (rec.seen or rec.relSeen) and math.max(rec.seen or 0, rec.relSeen or 0) or nil
 		rows[#rows + 1] = { name = name, class = rec.class, level = rec.level, xp = rec.xp or 0,
-			played = rec.played, val = val, own = rec.own, seen = rec.seen, me = eu,
+			played = rec.played, val = val, own = rec.own, seen = rec.seen, relSeen = rec.relSeen, news = news, me = eu,
 			online = rec.own and rec.seen and q.now - rec.seen <= R.ONLINE or false }
 	end
 	local meName = q.me and q.me.name
@@ -484,19 +521,26 @@ end)
 -- guilda, um placar por vez de cada escopo, pulando o que alguém repassou há pouco
 local ouvido, rotRealm, rotGuilda = {}, {}, {}
 local function digest(scope, board)
-	local rows = R:Rows(scope == "G" and "guild" or "realm", board)
-	if #rows == 0 then return nil end
-	local top = {}
-	for i = 1, math.min(5, #rows) do top[i] = rows[i] end
-	return R.EncodeDigest(scope, board, top)
+	return R.EncodeDigest(scope, board, R:Rows(scope == "G" and "guild" or "realm", board), agora())
 end
+-- o YELL é dividido com a família toda: o meu registro só quando muda (ou a cada 5 min), um
+-- placar a cada 3 min
+local yellSig, yellAt, digestAt = nil, 0, 0
 local function repassa()
 	local M = mesh()
 	if not (M and ns.RunTracker and ns.RunTracker:HasPlayed()) then return end
 	if M.Realm then
-		M:Realm(PREFIX, R.EncodeRecord(R.MyRecord()), "LSRace:R")
-		local d = digest("R", R.NextBoard(rotRealm))
-		if d then M:Realm(PREFIX, d, "LSRace:T") end
+		local p = R.EncodeRecord(R.MyRecord())
+		local sig = p:gsub("^R1|R|%u+|(%d+)|%d+|%d+|", "%1|")
+		if sig ~= yellSig or agora() - yellAt >= 300 then
+			yellSig, yellAt = sig, agora()
+			M:Realm(PREFIX, p, "LSRace:R")
+		end
+		if agora() - digestAt >= 180 then
+			digestAt = agora()
+			local d = digest("R", R.NextBoard(rotRealm))
+			if d then M:Realm(PREFIX, d, "LSRace:T") end
+		end
 	end
 	if minhaGuilda() and M.Guild then
 		local board, now = R.NextBoard(rotGuilda), agora()
@@ -518,7 +562,7 @@ local function onRecv(payload, sender, dist)
 	if kind == "R" then
 		R.MergeOwn(store(), nome, data, agora(), guild)
 	else
-		R.MergeRelay(store(), data, agora(), guild, meuNome())
+		R.MergeRelay(store(), data, agora(), guild, meuNome(), roster() or nil)
 		if dist == "GUILD" then R.Heard(ouvido, data.scope, data.board, agora()) end
 	end
 	reavalia()

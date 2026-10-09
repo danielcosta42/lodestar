@@ -142,51 +142,93 @@ check(R.Allow(lim, "chat", 100, 600) and not R.Allow(lim, "chat", 650, 600) and 
 
 -- ── T7 (#46): repasse do top ────────────────────────────────────────────────
 local top = { { name = "Ana", class = "MAGE", level = 30, xp = 10, played = 20 * H, val = 1 * H },
-	{ name = "Bia", class = "ROGUE", level = 28, xp = 0, played = 19 * H, val = 2 * H } }
-local d = R.EncodeDigest("R", "l10", top)
-check(d == "R1|T|R|l10|Ana,MAGE,30,10,3600;Bia,ROGUE,28,0,7200", "repasse codificado: " .. d)
+	{ name = "Bia", class = "ROGUE", level = 28, xp = 0, played = 19 * H, val = 2 * H, news = 900 } }
+local d = R.EncodeDigest("R", "l10", top, 1000)
+check(d == "R1|T|R|l10|Ana,MAGE,30,10,3600,0;Bia,ROGUE,28,0,7200,100", "repasse codificado, com a idade da notícia: " .. d)
 local k2, dg = R.Decode(d)
 check(k2 == "T" and dg.scope == "R" and dg.board == "l10" and #dg.entries == 2 and dg.entries[2].name == "Bia"
-	and dg.entries[2].val == 7200, "ida e volta do repasse")
-check(R.EncodeDigest("G", "alto", top):find("^R1|T|G|alto|Ana,MAGE,30,10,72000;") ~= nil, "no Mais alto, o valor é o /played")
-check(R.Decode("R1|T|X|l10|Ana,MAGE,30,10,3600") == nil and R.Decode("R1|T|R|l10|Ana,MAGE,99,10,3600") == nil
-	and R.Decode("R1|T|R|l10|A;na,MAGE,30,10,3600") == nil, "escopo, nível ou nome inválido: descartado")
-check(R.Decode("R1|T|R|alto|Ana,MAGE,30,10,1e400") == nil, "valor absurdo no repasse: descartado")
+	and dg.entries[2].val == 7200 and dg.entries[2].age == 100, "ida e volta do repasse")
+check(R.EncodeDigest("G", "alto", top, 1000):find("^R1|T|G|alto|Ana,MAGE,30,10,72000,0;") ~= nil, "no Mais alto, o valor é o /played")
+check(R.EncodeDigest("G", "alto", { { name = "Zé", class = "MAGE", level = 60, xp = 0 } }, 1000) == nil,
+	"Mais alto sem /played conhecido: não se repassa")
+check(R.Decode("R1|T|X|l10|Ana,MAGE,30,10,3600,0") == nil and R.Decode("R1|T|R|" .. string.rep("a", 13) .. "|Ana,MAGE,30,10,3600,0") == nil,
+	"escopo ou placar inválido: descartado")
+_, dg = R.Decode("R1|T|R|l10|Ana,MAGE,99,10,3600,0;A;Gil Souza,DRUID,30,0,4000,0;" .. string.rep("x", 49) .. ",MAGE,30,0,4000,0")
+check(dg and #dg.entries == 1 and dg.entries[1].name == "Gil Souza", "entrada ruim cai sozinha; nome com sobrenome passa")
+_, dg = R.Decode("R1|T|R|l10|" .. string.rep("é", 20) .. ",MAGE,30,0,4000,0")
+check(dg and #dg.entries == 1, "nome de 40 bytes (acentos) passa")
+check(R.Decode("R1|T|R|alto|Ana,MAGE,30,10,1e400,0") ~= nil and #select(2, R.Decode("R1|T|R|alto|Ana,MAGE,30,10,1e400,0")).entries == 0,
+	"valor absurdo no repasse: a entrada cai")
 local longo = {}
-for i = 1, 11 do longo[i] = "N" .. i .. ",MAGE,30,0,72000" end
+for i = 1, 11 do longo[i] = "N" .. i .. ",MAGE,30,0,72000,0" end
 check(R.Decode("R1|T|R|alto|" .. table.concat(longo, ";")) == nil, "repasse com mais de 10 entradas: descartado")
-_, dg = R.Decode("R1|T|R|l10|Ana,MAGE,30,10,60;Bia,ROGUE,28,0,7200")
+_, dg = R.Decode("R1|T|R|l10|Ana,MAGE,30,10,60,0;Bia,ROGUE,28,0,7200,0")
 check(#dg.entries == 1 and dg.entries[1].name == "Bia", "entrada implausível cai sozinha")
-_, dg = R.Decode("R1|T|R|l30|Ana,MAGE,25,0,30000")
+_, dg = R.Decode("R1|T|R|l30|Ana,MAGE,25,0,30000,0")
 check(#dg.entries == 0, "marco de nível acima do nível: cai")
+_, dg = R.Decode("R1|T|R|alto|Rui,DRUID,60,0,1000,0;Lia,MAGE,40,0,0,0")
+check(#dg.entries == 0, "Mais alto com /played abaixo do piso do nível (ou zero): cai")
+_, dg = R.Decode("R1|T|R|l10|Ana,MAGE,30,10,3600," .. (31 * 86400))
+check(#dg.entries == 0, "notícia de mais de 30 dias: cai")
+d = R.EncodeDigest("R", "alto", (function()
+	local t = {}
+	for i = 1, 10 do t[i] = { name = ("Nome Comprido Demais%02d"):format(i), class = "WARRIOR", level = 60, xp = 100, played = 99999999 } end
+	return t
+end)(), 1000)
+check(#d <= 250, "o repasse cabe numa mensagem só (" .. #d .. " bytes): o YELL não se divide")
 
 local st = { recs = {} }
 R.MergeOwn(st, "Ana", r("MAGE", 30, 10, 20 * H, { l10 = 1 * H }), 1000, nil)
-local _, rel = R.Decode("R1|T|R|l10|Ana,MAGE,30,10,9000;Bia,ROGUE,28,0,7200;Eu,PALADIN,9,0,1000")
+local _, rel = R.Decode("R1|T|R|l10|Ana,MAGE,30,10,9000,0;Bia,ROGUE,28,0,7200,0;Eu,PALADIN,9,0,1000,0")
 R.MergeRelay(st, rel, 1500, nil, "Eu")
 check(st.recs.Ana.ms.l10 == 1 * H and st.recs.Bia and not st.recs.Bia.own and st.recs.Bia.ms.l10 == 7200,
 	"o dono vence o repasse; quem eu não conhecia entra como repassado")
+check(st.recs.Bia.played == nil, "repasse de marco não inventa /played")
 check(st.recs.Eu == nil, "repasse sobre mim é ignorado")
-_, rel = R.Decode("R1|T|R|alto|Bia,ROGUE,31,40,80000")
+_, rel = R.Decode("R1|T|R|alto|Bia,ROGUE,31,40,80000,0")
 R.MergeRelay(st, rel, 1600, nil, "Eu")
 check(st.recs.Bia.level == 31 and st.recs.Bia.xp == 40 and st.recs.Bia.played == 80000 and st.recs.Bia.ms.l10 == 7200,
 	"repasse do Mais alto atualiza nível sem perder os marcos")
-_, rel = R.Decode("R1|T|R|alto|Bia,ROGUE,29,0,70000")
+_, rel = R.Decode("R1|T|R|alto|Bia,ROGUE,29,0,70000,0")
 R.MergeRelay(st, rel, 1700, nil, "Eu")
 check(st.recs.Bia.level == 31, "repasse mais velho (nível menor) não rebaixa")
+_, rel = R.Decode("R1|T|R|l30|Bia,ROGUE,33,5,70000,0")
+R.MergeRelay(st, rel, 1700, nil, "Eu")
+check(st.recs.Bia.level == 33 and st.recs.Bia.xp == 5, "marco que sobe o nível leva o XP junto")
 R.MergeOwn(st, "Caio", r("WARRIOR", 20, 0, 9 * H), 1000, nil)
-_, rel = R.Decode("R1|T|R|alto|Caio,WARRIOR,40,0,40000")
+_, rel = R.Decode("R1|T|R|alto|Caio,WARRIOR,40,0,50000,0")
 R.MergeRelay(st, rel, 1000 + 7 * H, nil, "Eu")
 check(st.recs.Caio.level == 40 and st.recs.Caio.own, "dono sem notícia há mais de 6 h: o repasse adianta o nível")
-_, rel = R.Decode("R1|T|G|l10|Davi,PRIEST,12,0,5000")
-R.MergeRelay(st, rel, 2000, "Guilda", "Eu")
-check(st.recs.Davi.g == "Guilda", "repasse da guilda, ouvido pela guilda, entra no placar da guilda")
-_, rel = R.Decode("R1|T|G|l10|Eva,HUNTER,12,0,5000")
-R.MergeRelay(st, rel, 2000, nil, "Eu")
-check(st.recs.Eva.g == nil, "repasse da guilda ouvido fora da guilda não marca guilda")
+_, rel = R.Decode("R1|T|G|l10|Davi,PRIEST,12,0,5000,0;Gil Souza,DRUID,12,0,5000,0;Eva,HUNTER,12,0,5000,0")
+R.MergeRelay(st, rel, 2000, "Guilda", "Eu", { Davi = true, Gil = true })
+check(st.recs.Davi.g == "Guilda" and st.recs["Gil Souza"].g == "Guilda", "repasse da guilda marca quem está no roster")
+check(st.recs.Eva.g == nil, "nome fora do roster não vira da guilda por repasse")
+_, rel = R.Decode("R1|T|G|l10|Fil,HUNTER,12,0,5000,0")
+R.MergeRelay(st, rel, 2000, "Guilda", "Eu", nil)
+check(st.recs.Fil.g == nil, "sem roster conhecido, repasse não marca guilda")
 local bia = R.Board(st, { kind = "alto", now = 2000, me = me })
 bia = bia[R.Position(bia, "Bia")]
 check(bia.online == false and not bia.own, "repassado nunca aparece online")
+
+-- a idade viaja: o repasse não renova o registro; sem notícia real há 30 dias, sai
+local velho = { recs = {} }
+_, rel = R.Decode("R1|T|R|l10|Ugo,MAGE,20,0,5000," .. (29 * 86400))
+R.MergeRelay(velho, rel, 100 * 86400, nil, "Eu")
+check(velho.recs.Ugo and velho.recs.Ugo.relSeen == 71 * 86400, "a notícia vale pelo tempo dela, não pela chegada")
+local ida = R.EncodeDigest("R", "l10", R.Board(velho, { kind = "l10", now = 100 * 86400 }), 100 * 86400)
+check(ida:find(",Ugo,") == nil and ida:find("Ugo,MAGE,20,0,5000," .. (29 * 86400)) ~= nil, "e é repassada com a idade de verdade")
+R.Expire(velho, 102 * 86400)
+check(velho.recs.Ugo == nil, "dois dias depois, com 31 dias de notícia: sai")
+
+-- no máximo 300 registros só de repasse: sai o de notícia mais velha
+local cheio = { recs = {} }
+for i = 1, 310 do
+	local _, x = R.Decode(("R1|T|R|l10|P%03d,MAGE,20,0,5000,%d"):format(i, 400 - i))
+	R.MergeRelay(cheio, x, 1000, nil, "Eu")
+end
+local n = 0
+for _ in pairs(cheio.recs) do n = n + 1 end
+check(n == 300 and cheio.recs.P001 == nil and cheio.recs.P310, "300 repassados no máximo; sai o mais velho")
 
 local boards = R.Boards()
 check(boards[1] == "alto" and boards[2] == "l10" and #boards == #MS + 1, "placares: Mais alto e um por marco")
