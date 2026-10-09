@@ -50,6 +50,36 @@ local function limpa(rec)
 	return rec
 end
 
+local NOME = "^[^,;|]+$"
+
+-- O repasse do top de um placar: escopo "G" (guilda) ou "R" (realm), placar "alto" (valor =
+-- /played) ou id de marco (valor = tempo do marco). rows = linhas do R.Board.
+function R.EncodeDigest(scope, board, rows)
+	local t = {}
+	for i, row in ipairs(rows) do
+		local val = board == "alto" and row.played or row.val
+		t[i] = ("%s,%s,%d,%d,%d"):format(row.name, row.class, row.level, math.floor(row.xp or 0), math.floor(val or 0))
+	end
+	return ("R1|T|%s|%s|%s"):format(scope, board, table.concat(t, ";"))
+end
+
+local function decodeDigest(f)
+	local scope, board = f[3], f[4]
+	if (scope ~= "G" and scope ~= "R") or not board:match("^%w+$") then return nil end
+	local m, entries = byId[board], {}
+	for _, e in ipairs(campos(f[5], ";")) do
+		local c = campos(e, ",")
+		if #c ~= 5 then return nil end
+		local x = { name = c[1], class = c[2], level = inteiro(c[3], 1, R.MAX_LEVEL), xp = inteiro(c[4], 0, 100),
+			val = inteiro(c[5], 0) }
+		if not (x.name:match(NOME) and #x.name <= 24 and x.class:match("^%u+$") and x.level and x.xp and x.val) then
+			return nil
+		end
+		if not (m and (x.val < m.min or (m.kind == "level" and m.v > x.level))) then entries[#entries + 1] = x end
+	end
+	return "T", { scope = scope, board = board, entries = entries }
+end
+
 function R.EncodeRecord(rec)
 	local ids = {}
 	for id in pairs(rec.ms or {}) do ids[#ids + 1] = id end
@@ -63,6 +93,7 @@ end
 function R.Decode(s)
 	if type(s) ~= "string" then return nil end
 	local f = campos(s, "|")
+	if f[1] == "R1" and f[2] == "T" and #f == 5 then return decodeDigest(f) end
 	if f[1] ~= "R1" or f[2] ~= "R" or #f ~= 7 then return nil end
 	local rec = { class = f[3], level = inteiro(f[4], 1, R.MAX_LEVEL), xp = inteiro(f[5], 0, 100),
 		played = inteiro(f[6], 0), ms = {} }
@@ -76,6 +107,47 @@ function R.Decode(s)
 		end
 	end
 	return "R", limpa(rec)
+end
+
+-- O que chegou repassado. O dono vence: registro do próprio dono com notícia nas últimas 6 h
+-- não muda; mais velho que isso, o repasse só adianta (nível maior, marco que faltava).
+local FRESCO = 6 * 3600
+function R.MergeRelay(store, d, now, guild, me)
+	for _, e in ipairs(d.entries) do
+		local rec = store.recs[e.name]
+		if e.name ~= me and not (rec and rec.own and now - (rec.seen or 0) < FRESCO) then
+			if not rec then
+				rec = { class = e.class, level = e.level, xp = e.xp, ms = {} }
+				store.recs[e.name] = rec
+			end
+			if d.board == "alto" then
+				if e.level > rec.level or (e.level == rec.level and e.xp >= (rec.xp or 0)) then
+					rec.level, rec.xp, rec.played = e.level, e.xp, e.val
+				end
+			else
+				rec.level = math.max(rec.level, e.level)
+				rec.ms[d.board] = rec.ms[d.board] or e.val
+			end
+			rec.relSeen = math.max(rec.relSeen or 0, now)
+			if guild and d.scope == "G" then rec.g = guild end
+		end
+	end
+end
+
+-- os placares que se repassam, e a rotação entre eles
+local boards = { "alto" }
+for _, m in ipairs(ns.RACE_MILESTONES or {}) do boards[#boards + 1] = m.id end
+function R.Boards() return boards end
+function R.NextBoard(state)
+	state.i = (state.i or 0) % #boards + 1
+	return boards[state.i]
+end
+
+-- supressão: quem acabou de ouvir (ou mandar) um placar não o repassa de novo tão cedo
+function R.Heard(state, scope, board, now) state[scope .. board] = now end
+function R.ShouldRelay(state, scope, board, now, gap)
+	local t = state[scope .. board]
+	return not t or now - t >= gap
 end
 
 -- o registro que veio do próprio dono; `guild`: chegou pela guilda (nome dela)
