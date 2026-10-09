@@ -56,10 +56,14 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
   escondendo os offline, o roster não filtra (senão quem desloga some).
 - **Realm (#46):** todos os registros do realm.
 - **Só o nível (#53):** no Mais alto, entra também quem não usa o Lodestar — da guilda, pelo roster
-  (todo membro, online e offline); no realm, também os peers da malha ChehulNet (o nível que todo
-  addon da família anuncia). Aparecem só com o nível, marcados "sem Lodestar", sem duplicar quem tem
-  registro (casa pelo primeiro nome). Liderança e ultrapassagens passam a valer contra a guilda
-  inteira. O Mais rápido segue só com quem tem tempo de marco.
+  (todo membro; os offline quando a janela da guilda os mostra), pedido a cada minuto; no realm,
+  também os peers da malha ChehulNet (o nível que todo addon da família anuncia; a malha guarda o
+  nome sem o realm, então quem veio de outro realm por grupo pode aparecer). Aparecem só com o
+  nível, marcados "sem Lodestar", sem duplicar quem tem registro: pelo nome; pelo primeiro nome só
+  quando um dos dois não tem sobrenome (Forever). Roster mais novo que um registro velho vale. No
+  mesmo nível, quem só tem o nível fica à frente (XP desconhecido: alcançar não é passar).
+  Liderança e ultrapassagens valem contra a guilda inteira. O Mais rápido segue só com quem tem
+  tempo de marco. Filtro no painel: Todos / Só Lodestar.
 - Em cada um, **Mais alto** (nível, depois XP, desempate por menos /played) e **Mais rápido** (menor
   /played até o marco escolhido; só quem tem tempo naquele marco).
 - O jogador sempre aparece, ao vivo.

@@ -203,7 +203,8 @@ local function corrida()
 	local L, eu = ns.L, ns.PlayerName()
 	local g, r = R:Rows("guild", "alto"), R:Rows("realm", "alto")
 	local gpos = #g >= 3 and R.Position(g, eu) or nil
-	local rpos = #r >= 5 and #r > #g and R.Position(r, eu) or nil
+	local nr, ng = R.Lodestar(r), R.Lodestar(g)            -- realm: só com quem corre, de fora da guilda
+	local rpos = nr >= 5 and nr > ng and R.Position(r, eu) or nil
 	local pos = gpos and rpos and L.RACE_POS_BOTH:format(gpos, rpos) or gpos and L.RACE_POS_GUILD:format(gpos)
 		or rpos and L.RACE_POS_REALM:format(rpos)
 	local nomes = {}

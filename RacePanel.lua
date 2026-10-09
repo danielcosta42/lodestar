@@ -33,8 +33,10 @@ local function tooltip(row)
 	local L = ns.L
 	GameTooltip:SetOwner(row, "ANCHOR_RIGHT")
 	GameTooltip:SetText(d.name, corClasse(d.class))
-	GameTooltip:AddLine(L.RACE_TIP_LEVEL:format(d.level or 0, d.xp or 0), 1, 1, 1)
+	if d.src then GameTooltip:AddLine(L.RACE_LEVEL:format(d.level or 0), 1, 1, 1)
+	else GameTooltip:AddLine(L.RACE_TIP_LEVEL:format(d.level or 0, d.xp or 0), 1, 1, 1) end
 	if d.played then GameTooltip:AddLine(L.RACE_TIP_PLAYED:format(R.Dur(d.played)), 0.8, 0.8, 0.8) end
+	if d.src then GameTooltip:AddLine(L.RACE_NOADDON, 0.6, 0.6, 0.6) end
 	local peer = ns.Squad and ns.Squad.Peer and ns.Squad:Peer(d.name)
 	if peer and peer.guide then
 		GameTooltip:AddLine(L.RACE_TIP_GUIDE:format(peer.guide, peer.step or ""), 0.5, 0.7, 0.9)
@@ -91,12 +93,14 @@ function RP:Refresh()
 	for k, t in pairs(frame.scopeTabs) do t:SetActive(k == scope) end
 	frame.kindTabs.high:SetActive(kind == "alto"); frame.kindTabs.fast:SetActive(kind ~= "alto")
 	local rapido = kind ~= "alto"
+	local soLs = ns.db.raceOnlyLs and true or false
 	frame.msBar:SetShown(rapido)
+	frame.filterBar:SetShown(not rapido)
+	frame.filterAll:SetActive(not soLs); frame.filterLs:SetActive(soLs)
 	if rapido then frame.msLabel:SetText(R.Label(L, MS[msIdx])) end
-	frame.list:SetPoint("TOPLEFT", 0, rapido and -(HEAD_H + 74) or -(HEAD_H + 44))
 
 	local semGuilda = scope == "guild" and not (IsInGuild and IsInGuild())
-	local rows = semGuilda and {} or R:Rows(scope, kind)
+	local rows = semGuilda and {} or R:Rows(scope, kind, soLs)
 	local mostrar = {}
 	for i = 1, math.min(#rows, MAX_ROWS) do mostrar[i] = i end
 	local eu = R.Position(rows, ns.PlayerName())
@@ -185,8 +189,17 @@ local function build()
 	frame.msLabel = bar:CreateFontString(nil, "OVERLAY"); UI.SetFont(frame.msLabel, 13, { color = C.accent })
 	frame.msLabel:SetPoint("CENTER")
 
+	-- filtro do Mais alto: todos (a guilda inteira) ou só quem usa o Lodestar (os que correm)
+	local fbar = CreateFrame("Frame", nil, frame)
+	fbar:SetPoint("TOPLEFT", 12, -(HEAD_H + 42)); fbar:SetPoint("TOPRIGHT", -12, -(HEAD_H + 42)); fbar:SetHeight(26)
+	frame.filterBar = fbar
+	frame.filterAll = UI.Tab(fbar, L.RACE_FILTER_ALL, function() ns.db.raceOnlyLs = false; RP:Refresh() end)
+	frame.filterAll:SetPoint("LEFT")
+	frame.filterLs = UI.Tab(fbar, L.RACE_FILTER_LS, function() ns.db.raceOnlyLs = true; RP:Refresh() end)
+	frame.filterLs:SetPoint("LEFT", frame.filterAll, "RIGHT", 2, 0)
+
 	frame.list = CreateFrame("Frame", nil, frame)
-	frame.list:SetPoint("TOPLEFT", 0, -(HEAD_H + 44)); frame.list:SetPoint("BOTTOMRIGHT", 0, 48)
+	frame.list:SetPoint("TOPLEFT", 0, -(HEAD_H + 74)); frame.list:SetPoint("BOTTOMRIGHT", 0, 48)
 	frame.rows = {}
 	for i = 1, MAX_ROWS do frame.rows[i] = makeRow(frame.list) end
 
@@ -203,7 +216,9 @@ local function build()
 	frame.invite = UI.Button(frame, L.RACE_INVITE, 128, 26); frame.invite:SetPoint("BOTTOMRIGHT", -12, 12)
 	frame.invite:SetScript("OnClick", function() if not R:Invite() then ns:Print(L.RACE_INVITE_WAIT) end end)
 	frame.post = UI.Button(frame, L.RACE_POST_BTN, 128, 26); frame.post:SetPoint("RIGHT", frame.invite, "LEFT", -6, 0)
-	frame.post:SetScript("OnClick", function() if R:Post(kind) == false then ns:Print(L.RACE_POST_WAIT) end end)
+	frame.post:SetScript("OnClick", function()
+		if R:Post(kind, ns.db.raceOnlyLs) == false then ns:Print(L.RACE_POST_WAIT) end
+	end)
 
 	frame:SetScript("OnShow", function() RP:Refresh() end)
 	R.OnChange = function() RP:Refresh() end

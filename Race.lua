@@ -229,19 +229,36 @@ function R.Board(store, q)
 	end
 	if q.me then add(meName, q.me.rec, true) end
 	if q.kind == "alto" and q.extra then
-		local tem = {}
-		for _, row in ipairs(rows) do tem[row.name] = true; tem[row.name:match("^%S+")] = true end
+		-- casa com quem tem registro pelo nome; pelo primeiro nome só quando um dos dois não tem
+		-- sobrenome (Forever: "Ana Silva" não é "Ana Costa"). Roster mais novo que o registro (velho
+		-- ou repassado): vale o nível dele.
+		local exato, porPrimeiro, semSobrenome = {}, {}, {}
+		for _, row in ipairs(rows) do
+			exato[row.name] = row
+			local p = row.name:match("^%S+")
+			if p ~= row.name then porPrimeiro[p] = porPrimeiro[p] or row else semSobrenome[p] = row end
+		end
 		for _, e in ipairs(q.extra) do
-			if e.name and e.level and not (tem[e.name] or tem[e.name:match("^%S+")]) then
-				tem[e.name] = true
-				rows[#rows + 1] = { name = e.name, class = e.class, level = e.level, xp = 0, own = false, src = e.src,
-					online = e.online or false, seen = e.seen }
+			if e.name and e.level then
+				local p = e.name:match("^%S+")
+				local row = exato[e.name] or (p == e.name and porPrimeiro[p]) or (p ~= e.name and semSobrenome[p])
+				if row then
+					if e.level > row.level then row.level, row.xp, row.played = e.level, 0, nil end
+				else
+					row = { name = e.name, class = e.class, level = e.level, xp = 0, own = false, src = e.src,
+						online = e.online or false, seen = e.seen }
+					rows[#rows + 1] = row
+					exato[e.name] = row
+				end
 			end
 		end
 	end
 	if q.kind == "alto" then
+		-- no mesmo nível, quem só tem o nível (XP desconhecido) fica à frente: chegar no nível dele
+		-- não é passar
 		table.sort(rows, function(a, b)
 			if a.level ~= b.level then return a.level > b.level end
+			if (a.src ~= nil) ~= (b.src ~= nil) then return a.src ~= nil end
 			if a.xp ~= b.xp then return a.xp > b.xp end
 			local pa, pb = a.played or math.huge, b.played or math.huge
 			if pa ~= pb then return pa < pb end
@@ -443,12 +460,13 @@ function R.MyRecord()
 		played = math.floor(RT and RT:LivePlayed() or 0), ms = ms }
 end
 
--- linhas do placar para o painel: escopo "guild" | "realm", kind "alto" | id do marco
-function R:Rows(scope, kind)
+-- linhas do placar: escopo "guild" | "realm", kind "alto" | id do marco; `soLodestar`: sem quem
+-- só tem o nível (filtro do painel)
+function R:Rows(scope, kind, soLodestar)
 	local guild = scope == "guild" and minhaGuilda() or nil
 	if scope == "guild" and not guild then return {} end
 	return R.Board(store(), { kind = kind, guild = guild, roster = guild and roster() or nil, now = agora(),
-		me = { name = meuNome(), rec = R.MyRecord() }, extra = kind == "alto" and soNivel(scope) or nil })
+		me = { name = meuNome(), rec = R.MyRecord() }, extra = kind == "alto" and not soLodestar and soNivel(scope) or nil })
 end
 
 R.URL = "curseforge.com/wow/addons/lodestar"
@@ -472,8 +490,8 @@ end
 
 -- postar o placar aberto no chat da guilda (botão do painel): manual, no máximo um a cada 10 min.
 -- nil: nada a postar; false: no limite
-function R:Post(kind)
-	local txt = minhaGuilda() and R.BoardText(L, kind, R:Rows("guild", kind), R.URL)
+function R:Post(kind, soLodestar)
+	local txt = minhaGuilda() and R.BoardText(L, kind, R:Rows("guild", kind, soLodestar), R.URL)
 	if not txt then return nil end
 	if not R.Allow(limites(), "post", agora(), 600) then return false end
 	chat(txt)
@@ -639,7 +657,8 @@ local function onRecv(payload, sender, dist)
 		R.MergeRelay(store(), data, agora(), guild, meuNome(), roster() or nil)
 		if dist == "GUILD" then R.Heard(ouvido, data.scope, data.board, agora()) end
 	end
-	reavalia()
+	-- ultrapassagens e liderança: no tique de 10 s (o roster inteiro a cada mensagem pesa); o
+	-- painel, se aberto, já
 	if R.OnChange then R.OnChange() end
 end
 do local M = mesh(); if M and M.Register then M:Register(PREFIX, onRecv) end end
@@ -656,3 +675,8 @@ ns:Every(10, function()
 	if R.OnChange then R.OnChange() end
 end)
 ns:Every(60, repassa)
+-- o roster só se renova a pedido (o servidor segura em ~10 s): os níveis da guilda não envelhecem
+ns:Every(60, function()
+	if not minhaGuilda() then return end
+	if C_GuildInfo and C_GuildInfo.GuildRoster then C_GuildInfo.GuildRoster() elseif GuildRoster then GuildRoster() end
+end)

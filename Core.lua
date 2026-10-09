@@ -120,6 +120,7 @@ local DB_DEFAULTS = {
 	raceChat = true,      -- corrida: marcos e liderança no chat da guilda (os próprios)
 	raceToasts = true,    -- corrida: toast de ultrapassagem no placar da guilda
 	race = {},            -- corrida: registros por realm (specs/corrida)
+	raceOnlyLs = false,   -- corrida: Mais alto só com quem usa o Lodestar (filtro do painel)
 	splits = { enabled = false, cmp = "pb", scale = 1 },   -- painel de splits (specs/splits)
 	bestSeg = {},         -- splits: melhor tempo de cada nível, por classe
 	ghost = {},           -- run de referência por classe (Ghost Racing)
