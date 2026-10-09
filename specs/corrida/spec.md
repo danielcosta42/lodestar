@@ -36,11 +36,16 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
   tempo. Pela guilda e pelo grupo (invisível a quem não tem o addon); no realm, também pelo YELL da
   malha ChehulNet (#46).
 - O que chega fica salvo por realm, com a guilda de quem anunciou pela guilda e quando foi visto.
-- Repasse (#46): cada cliente repassa o top 5 de cada placar que conhece. Pelo YELL, um placar por
-  vez, rotativo; pela guilda, pulando o placar que alguém já repassou há pouco.
-- O registro vindo do próprio dono vence o repassado.
+- Repasse (#46): cada cliente repassa o top 5 de cada placar que conhece. Pelo YELL, um placar a
+  cada 3 min, rotativo, e o próprio registro só quando muda (ou a cada 5 min) — o YELL é dividido
+  com a família de addons; pela guilda, pulando o placar que alguém já repassou há pouco.
+- Cada entrada repassada leva a idade da notícia: repasse não rejuvenesce ninguém, e o registro
+  sem notícia real há 30 dias sai mesmo circulando.
+- O registro vindo do próprio dono vence o repassado. Por repasse, só vira "da guilda" quem está
+  no roster. No máximo 300 registros só de repasse (sai o de notícia mais velha).
 - Descarte do implausível: marco abaixo do piso, nível fora de 1–60, XP fora de 0–100, marco de
-  nível acima do nível do registro, /played total menor que o tempo de um marco.
+  nível acima do nível do registro, /played total menor que o tempo de um marco, /played abaixo do
+  piso do nível. No repasse, a entrada ruim cai sozinha (o resto da mensagem vale).
 - Sem garantia contra trapaça: o painel diz "placar da rede, não oficial".
 - Registro sem notícia há 30 dias sai.
 
