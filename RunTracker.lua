@@ -115,7 +115,7 @@ ns:On("PLAYER_LEVEL_UP", function(_, level)
 		local t = lastPlayed and RT:LivePlayed() or nil
 		run().levelPlayed[pendingLevel] = t
 		fechar(run(), pendingLevel, t)
-		if t then ns.fire("_LEVEL_PLAYED", pendingLevel, t) end
+		if t then ns.fire("_LEVEL_PLAYED", pendingLevel, t, true) end          -- estimativa
 	end
 	pendingLevel = tonumber(level) or UnitLevel("player")
 	requestPlayed()
@@ -136,6 +136,15 @@ ns:On("TIME_PLAYED_MSG", function(_, total, levelTime)
 		RT:UpdateGhost(L)
 		ns.fire("_LEVEL_PLAYED", L, total)
 	elseif levelTime then
+		-- personagem apagado e refeito com o mesmo nome herda o que é salvo por nome: /played ou
+		-- nível menores que os já vistos são outra run — começa do zero
+		local maxT, maxL = 0, 0
+		for lv, t in pairs(r.levelPlayed) do maxT, maxL = math.max(maxT, t), math.max(maxL, lv) end
+		if total < maxT - 60 or (UnitLevel("player") or maxL) < maxL then
+			ns.char.run, ns.char.raceMs, ns.char.raceSkill, ns.char.raceLead = nil, nil, nil, nil
+			ns.char.deaths = 0
+			r = run()
+		end
 		r.levelStart = total - levelTime              -- login: quanto do nível atual já foi
 		-- registro de outro nível (reload entre o ding e a resposta): recomeça
 		if r.cur and r.cur.level and r.cur.level ~= UnitLevel("player") then r.cur = nil end
