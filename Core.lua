@@ -183,7 +183,8 @@ ns.COMMAND_UI = {
 	near = "Viagem: Mais perto", train = "Viagem: Treinador da classe", prof = "Viagem: Treinador de profissão",
 	reset = "guia: ⋯", rescan = "guia: ⋯", export = "guia: ⋯", import = "guia: ⋯",
 	record = "guia: ⋯", scan = "guia: ⋯",
-	party = "Config. Painéis", squad = "Config. Painéis", gather = "Config. Painéis", coleta = "Config. Painéis",
+	party = "guia: estrela", squad = "guia: estrela", corrida = "guia: estrela", race = "guia: estrela",
+	gather = "Config. Painéis", coleta = "Config. Painéis",
 	check = "Config. Painéis", consume = "Config. Painéis", raidprep = "Config. Painéis",
 	card = "Config. Painéis", intro = "Config. Painéis", item = "Config. Geral",
 	mark = "Config. Aparência", trail = "Config. Aparência", xp = "Config. Aparência",
@@ -238,8 +239,8 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.GuideMenu then ns.GuideMenu:Toggle() end
 	elseif cmd == "config" or cmd == "options" or cmd == "settings" then
 		if ns.Settings then ns.Settings:Toggle() end
-	elseif cmd == "party" or cmd == "squad" then
-		if ns.Squad then ns.Squad:Toggle() end
+	elseif cmd == "party" or cmd == "squad" or cmd == "corrida" or cmd == "race" then
+		if ns.RacePanel then ns.RacePanel:Toggle() end
 	elseif cmd == "gather" or cmd == "coleta" then
 		if ns.Gather then ns.Gather:Open(rest) end
 	elseif cmd == "check" or cmd == "consume" or cmd == "raidprep" then

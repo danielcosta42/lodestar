@@ -22,5 +22,6 @@ ns.RACE_MILESTONES = {
 	{ id = "dg", kind = "dungeon", min = 1 * H },
 	{ id = "p300", kind = "skill", v = 300, min = 10 * H },
 	{ id = "mc", kind = "quest", v = { 7848 }, min = 25 * H },          -- Attunement to the Core
-	{ id = "ony", kind = "quest", v = { 6502, 6602 }, min = 25 * H },   -- Drakefire Amulet / Blood of the Black Dragon Champion
+	-- Drakefire Amulet (Aliança) / Blood of the Black Dragon Champion (Horda)
+	{ id = "ony", kind = "quest", v = { 6502, 6602 }, min = 25 * H },
 }

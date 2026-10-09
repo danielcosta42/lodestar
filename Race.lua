@@ -250,6 +250,8 @@ function R:Rows(scope, kind)
 		me = { name = meuNome(), rec = R.MyRecord() } })
 end
 
+R.URL = "curseforge.com/wow/addons/lodestar"
+
 local function chat(msg)
 	local f = (C_ChatInfo and C_ChatInfo.SendChatMessage) or SendChatMessage
 	if f then f(msg, "GUILD") end
@@ -258,6 +260,13 @@ end
 -- mensagem ao chat da guilda: só com a opção ligada, no máximo uma a cada 10 min
 local function avisa(msg)
 	if msg and ns.db.raceChat ~= false and minhaGuilda() and R.Allow(limites(), "chat", agora(), 600) then chat(msg) end
+end
+
+-- o convite à guilda (botão do painel): manual, no máximo um a cada 10 min
+function R:Invite()
+	if not minhaGuilda() or not R.Allow(limites(), "invite", agora(), 600) then return false end
+	chat(L.RACE_INVITE_MSG:format(R.URL))
+	return true
 end
 
 -- anúncio do meu registro: na hora quando muda o nível ou um marco, senão a cada 5 min

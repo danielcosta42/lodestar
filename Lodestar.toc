@@ -84,6 +84,7 @@ GearAdvisor.lua
 RunTracker.lua
 RaceMilestones.lua
 Race.lua
+RacePanel.lua
 ReportCard.lua
 XPHud.lua
 Coords.lua
