@@ -1,14 +1,14 @@
 --=============================================================================
 -- RacePanel — o painel da corrida (specs/corrida): Guilda / Realm, Mais alto / Mais rápido
 -- (com o marco escolhido), a minha linha sempre visível e destacada, e o convite à guilda
--- quando o placar está vazio. Os dados vêm de ns.Race:Rows.
+-- (sempre na aba Guilda; o texto do vazio chama para ele). Os dados vêm de ns.Race:Rows.
 --=============================================================================
 local ADDON, ns = ...
 local RP = {}
 ns.RacePanel = RP
 local UI, R = ns.UI, ns.Race
 
-local W, H, HEAD_H, ROW_H, MAX_ROWS = 420, 470, 44, 24, 13
+local W, H, HEAD_H, ROW_H, MAX_ROWS = 420, 470, 44, 24, 12
 local MS = ns.RACE_MILESTONES
 local frame
 local scope, kind, msIdx = "guild", "alto", nil
@@ -195,7 +195,7 @@ local function build()
 	frame.count = frame:CreateFontString(nil, "OVERLAY"); UI.SetFont(frame.count, 11, { color = C.muted })
 	frame.count:SetPoint("BOTTOMLEFT", 16, 18)
 	frame.invite = UI.Button(frame, L.RACE_INVITE, 150, 26); frame.invite:SetPoint("BOTTOMRIGHT", -12, 12)
-	frame.invite:SetScript("OnClick", function() R:Invite() end)
+	frame.invite:SetScript("OnClick", function() if not R:Invite() then ns:Print(L.RACE_INVITE_WAIT) end end)
 
 	frame:SetScript("OnShow", function() RP:Refresh() end)
 	R.OnChange = function() RP:Refresh() end
