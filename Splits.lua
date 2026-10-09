@@ -4,8 +4,10 @@
 -- o painel.
 --
 -- lp = /played no ding de cada nível (RunTracker: run.levelPlayed). Segmento do nível L = o
--- tempo do ding de L-1 ao de L. Comparações congeladas no início da run, como o fantasma:
--- o recorde da classe (Opponent) e os melhores segmentos de então (run.bestAtStart).
+-- tempo no nível L-1 até o ding de L (run.levels[L].time: o RunTracker já deixa vazio o que
+-- não mediu direito — ding duplo, nível começado sem o addon). Comparações congeladas no início
+-- da run, como o fantasma: o recorde da classe (Opponent) e os melhores segmentos de então
+-- (run.bestAtStart). O ouro compara com o melhor de agora (ns.db.bestSeg).
 --=============================================================================
 local ADDON, ns = ...
 local SP = {}
@@ -21,16 +23,14 @@ end
 
 function SP.Delta(d) return (d < 0 and "-" or "+") .. SP.Clock(d) end
 
-function SP.Segment(lp, L)
-	if lp[L] and lp[L - 1] then return lp[L] - lp[L - 1] end
-end
-
--- ouro: mais rápido que o melhor anterior (sem anterior, nada a bater)
-function SP.IsGold(best, seg) return best ~= nil and seg ~= nil and seg < best end
+-- ouro: mais rápido que o melhor anterior (sem anterior, nada a bater; tempo inválido não conta)
+function SP.IsGold(best, seg) return best ~= nil and seg ~= nil and seg > 0 and seg < best end
 
 -- Linhas do painel: os 5 últimos níveis feitos, o atual ao vivo (rumo a cur+1) e o seguinte.
--- o = { lp, cmp (lp do recorde), best (melhores segmentos), gold = { [L] = true }, cur, live
--- (/played agora), mode = "pb" | "seg", max }
+-- o = { lp, segs (tempo de cada nível), cmp (lp do recorde), best (melhores segmentos), gold =
+-- { [L] = true }, cur, live (/played agora; nil antes de chegar), levelStart (/played no começo
+-- do nível atual), mode = "pb" | "seg", max }. Ao vivo, a diferença só aparece quando piora:
+-- contra o recorde, além da do último ding; por segmento, passando do melhor.
 function SP.Rows(o)
 	local rows, max = {}, o.max or 60
 	local function delta(L, t, seg)
@@ -38,13 +38,16 @@ function SP.Rows(o)
 		return seg and o.best[L] and seg - o.best[L] or nil
 	end
 	for L = math.max(2, o.cur - 4), o.cur do
-		local t, seg = o.lp[L], SP.Segment(o.lp, L)
+		local t, seg = o.lp[L], o.segs[L]
 		rows[#rows + 1] = { level = L, t = t, seg = seg, delta = delta(L, t, seg), gold = o.gold and o.gold[L] }
 	end
 	if o.cur < max then
 		local L = o.cur + 1
-		local seg = o.lp[o.cur] and o.live - o.lp[o.cur] or nil
-		rows[#rows + 1] = { level = L, t = o.live, seg = seg, delta = delta(L, o.live, seg), live = true }
+		local inicio = o.levelStart or o.lp[o.cur]
+		local seg = o.live and inicio and o.live - inicio or nil
+		local d = o.live and delta(L, o.live, seg)
+		local antes = o.mode == "pb" and rows[#rows] and rows[#rows].delta or 0
+		rows[#rows + 1] = { level = L, t = o.live, seg = seg, delta = d and d > antes and d or nil, live = true }
 		if L < max then
 			rows[#rows + 1] = { level = L + 1, t = o.mode == "pb" and o.cmp[L + 1] or nil, future = true }
 		end
@@ -71,13 +74,23 @@ local function melhores()
 	return ns.db.bestSeg[classe()]
 end
 
-ns:On("_LEVEL_PLAYED", function(_, L)
+-- o tempo de cada nível medido nesta run
+local function segmentos(run)
+	local t = {}
+	for L, rec in pairs(run.levels or {}) do if rec.time and rec.time > 0 then t[L] = rec.time end end
+	return t
+end
+
+-- no ding: ouro contra o melhor de agora; o melhor só muda com tempo medido de verdade (não a
+-- estimativa do ding duplo)
+ns:On("_LEVEL_PLAYED", function(_, L, _, estimado)
 	local run = ns.RunTracker.Run()
 	local bs = melhores()
 	run.bestAtStart = run.bestAtStart or CopyTable(bs)
-	local seg = SP.Segment(run.levelPlayed, L)
-	if not seg then return end
-	if SP.IsGold(run.bestAtStart[L], seg) then
+	local rec = run.levels and run.levels[L]
+	local seg = rec and rec.time
+	if estimado or not seg or seg <= 0 then return SP:Update() end
+	if SP.IsGold(bs[L], seg) then
 		run.gold = run.gold or {}
 		run.gold[L] = true
 	end
@@ -110,6 +123,7 @@ local function pinta(r, d)
 	local C, L = UI.COL, ns.L
 	r.gold, r.live = d.gold, d.live
 	r.lv:SetText(L.SPLITS_LV:format(d.level))
+	r.lv:SetTextColor(UI.unpackc(d.gold and C.accentBright or C.muted))      -- ouro à vista mesmo sem diferença
 	r.t:SetText(d.t and SP.Clock(d.t) or "—")
 	r.t:SetTextColor(UI.unpackc(d.future and C.dim or d.live and C.accent or C.active))
 	r.delta:SetText(d.delta and SP.Delta(d.delta) or "")
@@ -127,17 +141,17 @@ function SP:Update()
 	local L, RT = ns.L, ns.RunTracker
 	local run = RT.Run()
 	local modo, opp = comparacao()
-	local live = RT:LivePlayed()
-	local rows = SP.Rows({ lp = run.levelPlayed, cmp = opp and opp.levelPlayed or {}, best = run.bestAtStart or melhores(),
-		gold = run.gold, cur = UnitLevel("player") or 1, live = live, mode = modo, max = ns.Client and ns.Client.maxLevel })
+	local live = RT:HasPlayed() and RT:LivePlayed() or nil          -- antes do /played, nada ao vivo
+	local rows = SP.Rows({ lp = run.levelPlayed, segs = segmentos(run), cmp = opp and opp.levelPlayed or {},
+		best = run.bestAtStart or melhores(), gold = run.gold, cur = UnitLevel("player") or 1, live = live,
+		levelStart = run.levelStart, mode = modo, max = ns.Client and ns.Client.maxLevel })
 	for i = 1, MAX_ROWS do
 		local r = frame.rows[i]
 		if rows[i] then pinta(r, rows[i]) else r:Hide() end
 	end
 	frame.vs:SetText(modo == "pb" and L.SPLITS_VS_PB:format(opp.name or "?") or L.SPLITS_VS_SEG)
-	local cur = UnitLevel("player") or 1
-	local noNivel = run.levelPlayed[cur] and live - run.levelPlayed[cur]
-		or (run.levelStart and live - run.levelStart) or nil
+	local inicio = run.levelStart or run.levelPlayed[UnitLevel("player") or 1]
+	local noNivel = live and inicio and live - inicio or nil
 	frame.clock:SetText(noNivel and L.SPLITS_ON_LEVEL:format(SP.Clock(noNivel)) or "")
 end
 
@@ -169,6 +183,7 @@ local function build()
 	UI.SetFont(frame.vs, 10.5, { color = C.muted })
 	frame.vs:SetPoint("RIGHT", -8, -1)
 	frame.head:SetScript("OnClick", function()
+		if not ns.RunTracker:Opponent() then return end              -- sem recorde, só há uma comparação
 		ns.db.splits.cmp = ns.db.splits.cmp == "seg" and "pb" or "seg"
 		SP:Update()
 	end)
@@ -178,7 +193,7 @@ local function build()
 	frame.head:SetScript("OnLeave", function() GameTooltip:Hide() end)
 	frame.head:RegisterForDrag("LeftButton")
 	frame.head:SetScript("OnDragStart", function() frame:StartMoving() end)
-	frame.head:SetScript("OnDragStop", frame:GetScript("OnDragStop"))
+	frame.head:SetScript("OnDragStop", function() frame:GetScript("OnDragStop")(frame) end)
 
 	frame.rows = {}
 	for i = 1, MAX_ROWS do
