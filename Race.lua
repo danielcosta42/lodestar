@@ -67,12 +67,13 @@ end
 local function decodeDigest(f)
 	local scope, board = f[3], f[4]
 	if (scope ~= "G" and scope ~= "R") or not board:match("^%w+$") then return nil end
-	local m, entries = byId[board], {}
-	for _, e in ipairs(campos(f[5], ";")) do
+	local m, entries, lista = byId[board], {}, campos(f[5], ";")
+	if #lista > 10 then return nil end
+	for _, e in ipairs(lista) do
 		local c = campos(e, ",")
 		if #c ~= 5 then return nil end
 		local x = { name = c[1], class = c[2], level = inteiro(c[3], 1, R.MAX_LEVEL), xp = inteiro(c[4], 0, 100),
-			val = inteiro(c[5], 0) }
+			val = inteiro(c[5], 0, TETO) }
 		if not (x.name:match(NOME) and #x.name <= 24 and x.class:match("^%u+$") and x.level and x.xp and x.val) then
 			return nil
 		end

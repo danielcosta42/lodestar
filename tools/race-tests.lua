@@ -151,6 +151,10 @@ check(k2 == "T" and dg.scope == "R" and dg.board == "l10" and #dg.entries == 2 a
 check(R.EncodeDigest("G", "alto", top):find("^R1|T|G|alto|Ana,MAGE,30,10,72000;") ~= nil, "no Mais alto, o valor é o /played")
 check(R.Decode("R1|T|X|l10|Ana,MAGE,30,10,3600") == nil and R.Decode("R1|T|R|l10|Ana,MAGE,99,10,3600") == nil
 	and R.Decode("R1|T|R|l10|A;na,MAGE,30,10,3600") == nil, "escopo, nível ou nome inválido: descartado")
+check(R.Decode("R1|T|R|alto|Ana,MAGE,30,10,1e400") == nil, "valor absurdo no repasse: descartado")
+local longo = {}
+for i = 1, 11 do longo[i] = "N" .. i .. ",MAGE,30,0,72000" end
+check(R.Decode("R1|T|R|alto|" .. table.concat(longo, ";")) == nil, "repasse com mais de 10 entradas: descartado")
 _, dg = R.Decode("R1|T|R|l10|Ana,MAGE,30,10,60;Bia,ROGUE,28,0,7200")
 check(#dg.entries == 1 and dg.entries[1].name == "Bia", "entrada implausível cai sozinha")
 _, dg = R.Decode("R1|T|R|l30|Ana,MAGE,25,0,30000")
