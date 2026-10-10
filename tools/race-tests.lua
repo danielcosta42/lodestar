@@ -241,4 +241,60 @@ R.Heard(ouv, "G", "l10", 100)
 check(not R.ShouldRelay(ouv, "G", "l10", 400, 600) and R.ShouldRelay(ouv, "G", "l10", 701, 600)
 	and R.ShouldRelay(ouv, "R", "l10", 400, 600), "supressão: pula o placar que alguém repassou há pouco")
 
+-- ── #53: a guilda inteira (roster) e a rede (ChehulNet) no Mais alto ────────
+local base = { recs = {} }
+R.MergeOwn(base, "Ana", r("MAGE", 30, 10, 20 * H, { l10 = 1 * H }), 1000, "Guilda")
+R.MergeOwn(base, "Gil Souza", r("DRUID", 25, 0, 15 * H), 1000, "Guilda")
+local extra = {
+	{ name = "Ana", class = "MAGE", level = 30, online = true, src = "roster" },      -- já tem registro
+	{ name = "Gil", class = "DRUID", level = 25, online = false, src = "roster" },    -- é o Gil Souza
+	{ name = "Leo", class = "PRIEST", level = 33, online = true, src = "roster" },
+	{ name = "Eu", class = "PALADIN", level = 31, online = true, src = "roster" },
+	{ name = "Mia", class = "SHAMAN", level = 12, online = false, src = "roster" },
+}
+local gb = R.Board(base, { kind = "alto", guild = "Guilda", me = me, now = 1000, extra = extra })
+check(nomes(gb) == "Leo,Eu,Ana,Gil Souza,Mia", "guilda inteira, sem duplicar quem tem registro (" .. nomes(gb) .. ")")
+local leo = gb[1]
+check(leo.src == "roster" and not leo.own and leo.online and leo.played == nil, "membro sem Lodestar: só o nível, marcado")
+check(#R.Board(base, { kind = "l10", guild = "Guilda", me = me, now = 1000, extra = extra }) == 2,
+	"Mais rápido: só quem tem tempo de marco (Ana e eu)")
+check(R.Lodestar(gb) == 3, "quantos do placar usam o Lodestar (eu, Ana, Gil)")
+
+-- registro velho não vence o roster: o nível do roster, se maior, vale
+local velho2 = { recs = {} }
+R.MergeOwn(velho2, "Zeca", r("WARRIOR", 25, 50, 20 * H), 1000, "Guilda")
+local zb = R.Board(velho2, { kind = "alto", guild = "Guilda", now = 1000,
+	extra = { { name = "Zeca", class = "WARRIOR", level = 40, src = "roster" } } })
+check(#zb == 1 and zb[1].level == 40 and zb[1].played == nil, "roster mais novo que o registro: vale o nível do roster")
+-- no mesmo nível, quem não tem o Lodestar (XP desconhecido) fica à frente: chegar no nível dele
+-- não é passar
+local mesmo = R.Board({ recs = {} }, { kind = "alto", now = 1000, me = { name = "Eu", rec = r("PALADIN", 31, 90, 30 * H) },
+	extra = { { name = "Leo", class = "PRIEST", level = 31, src = "roster" } } })
+check(nomes(mesmo) == "Leo,Eu", "mesmo nível: o sem Lodestar à frente (" .. nomes(mesmo) .. ")")
+-- Forever: "Ana Silva" (registro) não esconde "Ana Costa" (roster); "Gil" casa com "Gil Souza"
+local col = { recs = {} }
+R.MergeOwn(col, "Ana Silva", r("MAGE", 20, 0, 10 * H), 1000, "Guilda")
+R.MergeOwn(col, "Gil", r("DRUID", 20, 0, 10 * H), 1000, "Guilda")
+local cb = R.Board(col, { kind = "alto", guild = "Guilda", now = 1000, extra = {
+	{ name = "Ana Costa", class = "MAGE", level = 22, src = "roster" },
+	{ name = "Ana", class = "MAGE", level = 20, src = "roster" },
+	{ name = "Gil Souza", class = "DRUID", level = 20, src = "roster" } } })
+check(nomes(cb) == "Ana Costa,Ana Silva,Gil", "primeiro nome só casa quando um dos dois não tem sobrenome (" .. nomes(cb) .. ")")
+-- só quem usa o Lodestar (filtro do painel): sem as linhas de só nível
+check(nomes(R.Board(base, { kind = "alto", guild = "Guilda", me = me, now = 1000 })) == "Eu,Ana,Gil Souza",
+	"sem extra: só quem tem registro")
+
+-- postar o placar no chat da guilda: top 5, com o link, até 255
+local LP = { RACE_POST = "[Lodestar] %s: %s · %s", RACE_POST_HIGH = "Corrida da guilda (mais alto)",
+	RACE_POST_FAST = "Corrida da guilda (%s mais rápido)", RACE_POST_LV = "%d. %s Nv %d", RACE_POST_T = "%d. %s %s",
+	RACE_LEVEL = "Nível %d" }
+local txt = R.BoardText(LP, "alto", gb, "curseforge.com/wow/addons/lodestar")
+check(txt == "[Lodestar] Corrida da guilda (mais alto): 1. Leo Nv 33 · 2. Eu Nv 31 · 3. Ana Nv 30 · 4. Gil Souza Nv 25"
+	.. " · 5. Mia Nv 12 · curseforge.com/wow/addons/lodestar", "texto do placar: " .. txt)
+txt = R.BoardText(LP, "l10", R.Board(base, { kind = "l10", guild = "Guilda", me = me, now = 1000 }), "x.y")
+check(txt == "[Lodestar] Corrida da guilda (Nível 10 mais rápido): 1. Eu 30m · 2. Ana 1h 0m · x.y", "placar de marco: " .. txt)
+local muitos2 = {}
+for i = 1, 5 do muitos2[i] = { name = string.rep("N", 45) .. i, level = 60 } end
+check(#R.BoardText(LP, "alto", muitos2, "curseforge.com/wow/addons/lodestar") <= 255, "nomes longos: cabe em 255")
+
 print(("ok: %d checks"):format(checks))
