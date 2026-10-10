@@ -15,6 +15,8 @@ tools/*
 !tools/forever-scan.lua
 !tools/travel-tests.lua
 !tools/race-tests.lua
+!tools/splits-tests.lua
+!tools/retro-tests.lua
 !tools/questiedb.py
 !tools/build_intermediate.py
 !tools/parse_lua.py

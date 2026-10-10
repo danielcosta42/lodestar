@@ -33,8 +33,10 @@ local function tooltip(row)
 	local L = ns.L
 	GameTooltip:SetOwner(row, "ANCHOR_RIGHT")
 	GameTooltip:SetText(d.name, corClasse(d.class))
-	GameTooltip:AddLine(L.RACE_TIP_LEVEL:format(d.level or 0, d.xp or 0), 1, 1, 1)
+	if d.src then GameTooltip:AddLine(L.RACE_LEVEL:format(d.level or 0), 1, 1, 1)
+	else GameTooltip:AddLine(L.RACE_TIP_LEVEL:format(d.level or 0, d.xp or 0), 1, 1, 1) end
 	if d.played then GameTooltip:AddLine(L.RACE_TIP_PLAYED:format(R.Dur(d.played)), 0.8, 0.8, 0.8) end
+	if d.src then GameTooltip:AddLine(L.RACE_NOADDON, 0.6, 0.6, 0.6) end
 	local peer = ns.Squad and ns.Squad.Peer and ns.Squad:Peer(d.name)
 	if peer and peer.guide then
 		GameTooltip:AddLine(L.RACE_TIP_GUIDE:format(peer.guide, peer.step or ""), 0.5, 0.7, 0.9)
@@ -70,15 +72,18 @@ local function fillRow(r, d, pos, now)
 	r._data = d
 	r.pos:SetText(pos)
 	r.name:SetText(d.name); r.name:SetTextColor(corClasse(d.class))
-	if kind == "alto" then r.value:SetText(L.RACE_VAL_LEVEL:format(d.level or 0, d.xp or 0))
+	if kind == "alto" and d.src then r.value:SetText(L.RACE_VAL_LV:format(d.level or 0))     -- XP desconhecido
+	elseif kind == "alto" then r.value:SetText(L.RACE_VAL_LEVEL:format(d.level or 0, d.xp or 0))
 	else r.value:SetText(R.Dur(d.val)) end
 	r.mine:SetShown(d.me); r.mineBar:SetShown(d.me)
 	r.dot:SetShown(d.online and not d.me or false)
-	-- fora do ar: há quanto tempo anunciou; repassado (ou adiantado por repasse): veio pela rede
+	-- sem Lodestar (roster, rede): só o nível; fora do ar: há quanto tempo anunciou; repassado (ou
+	-- adiantado por repasse): veio pela rede
 	local longe = not d.me and not d.online
 	local doDono = d.own and d.seen and not (d.relSeen and d.relSeen > d.seen)
-	r.seen:SetShown(longe)
-	if longe then r.seen:SetText(doDono and L.RACE_SEEN:format(R.Dur(now - d.seen)) or L.RACE_RELAYED) end
+	r.seen:SetShown(d.src and true or longe)
+	if d.src then r.seen:SetText(L.RACE_NOADDON)
+	elseif longe then r.seen:SetText(doDono and L.RACE_SEEN:format(R.Dur(now - d.seen)) or L.RACE_RELAYED) end
 	r:Show()
 end
 
@@ -88,12 +93,14 @@ function RP:Refresh()
 	for k, t in pairs(frame.scopeTabs) do t:SetActive(k == scope) end
 	frame.kindTabs.high:SetActive(kind == "alto"); frame.kindTabs.fast:SetActive(kind ~= "alto")
 	local rapido = kind ~= "alto"
+	local soLs = ns.db.raceOnlyLs and true or false
 	frame.msBar:SetShown(rapido)
+	frame.filterBar:SetShown(not rapido)
+	frame.filterAll:SetActive(not soLs); frame.filterLs:SetActive(soLs)
 	if rapido then frame.msLabel:SetText(R.Label(L, MS[msIdx])) end
-	frame.list:SetPoint("TOPLEFT", 0, rapido and -(HEAD_H + 74) or -(HEAD_H + 44))
 
 	local semGuilda = scope == "guild" and not (IsInGuild and IsInGuild())
-	local rows = semGuilda and {} or R:Rows(scope, kind)
+	local rows = semGuilda and {} or R:Rows(scope, kind, soLs)
 	local mostrar = {}
 	for i = 1, math.min(#rows, MAX_ROWS) do mostrar[i] = i end
 	local eu = R.Position(rows, ns.PlayerName())
@@ -113,7 +120,9 @@ function RP:Refresh()
 	frame.empty:SetText(semGuilda and L.RACE_NOGUILD or (rapido and L.RACE_EMPTY_FAST)
 		or (scope == "guild" and L.RACE_EMPTY) or L.RACE_EMPTY_REALM)
 	frame.invite:SetShown(scope == "guild" and not semGuilda)
-	frame.count:SetText(L.RACE_COUNT:format(#rows))
+	frame.post:SetShown(scope == "guild" and not semGuilda and #rows > 1)
+	frame.count:SetText(scope == "guild" and kind == "alto" and L.RACE_COUNT_LS:format(R.Lodestar(rows), #rows)
+		or L.RACE_COUNT:format(#rows))
 end
 
 local function build()
@@ -180,8 +189,17 @@ local function build()
 	frame.msLabel = bar:CreateFontString(nil, "OVERLAY"); UI.SetFont(frame.msLabel, 13, { color = C.accent })
 	frame.msLabel:SetPoint("CENTER")
 
+	-- filtro do Mais alto: todos (a guilda inteira) ou só quem usa o Lodestar (os que correm)
+	local fbar = CreateFrame("Frame", nil, frame)
+	fbar:SetPoint("TOPLEFT", 12, -(HEAD_H + 42)); fbar:SetPoint("TOPRIGHT", -12, -(HEAD_H + 42)); fbar:SetHeight(26)
+	frame.filterBar = fbar
+	frame.filterAll = UI.Tab(fbar, L.RACE_FILTER_ALL, function() ns.db.raceOnlyLs = false; RP:Refresh() end)
+	frame.filterAll:SetPoint("LEFT")
+	frame.filterLs = UI.Tab(fbar, L.RACE_FILTER_LS, function() ns.db.raceOnlyLs = true; RP:Refresh() end)
+	frame.filterLs:SetPoint("LEFT", frame.filterAll, "RIGHT", 2, 0)
+
 	frame.list = CreateFrame("Frame", nil, frame)
-	frame.list:SetPoint("TOPLEFT", 0, -(HEAD_H + 44)); frame.list:SetPoint("BOTTOMRIGHT", 0, 48)
+	frame.list:SetPoint("TOPLEFT", 0, -(HEAD_H + 74)); frame.list:SetPoint("BOTTOMRIGHT", 0, 48)
 	frame.rows = {}
 	for i = 1, MAX_ROWS do frame.rows[i] = makeRow(frame.list) end
 
@@ -195,8 +213,12 @@ local function build()
 	foot:SetPoint("BOTTOMLEFT", 12, 44); foot:SetPoint("BOTTOMRIGHT", -12, 44); foot:SetHeight(1)
 	frame.count = frame:CreateFontString(nil, "OVERLAY"); UI.SetFont(frame.count, 11, { color = C.muted })
 	frame.count:SetPoint("BOTTOMLEFT", 16, 18)
-	frame.invite = UI.Button(frame, L.RACE_INVITE, 150, 26); frame.invite:SetPoint("BOTTOMRIGHT", -12, 12)
+	frame.invite = UI.Button(frame, L.RACE_INVITE, 128, 26); frame.invite:SetPoint("BOTTOMRIGHT", -12, 12)
 	frame.invite:SetScript("OnClick", function() if not R:Invite() then ns:Print(L.RACE_INVITE_WAIT) end end)
+	frame.post = UI.Button(frame, L.RACE_POST_BTN, 128, 26); frame.post:SetPoint("RIGHT", frame.invite, "LEFT", -6, 0)
+	frame.post:SetScript("OnClick", function()
+		if R:Post(kind, ns.db.raceOnlyLs) == false then ns:Print(L.RACE_POST_WAIT) end
+	end)
 
 	frame:SetScript("OnShow", function() RP:Refresh() end)
 	R.OnChange = function() RP:Refresh() end
