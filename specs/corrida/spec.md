@@ -1,6 +1,6 @@
 # Corrida: marcos, placar da guilda e ranking do realm
 
-Issues: #45 (marcos + guilda), #46 (realm).
+Issues: #45 (marcos + guilda), #46 (realm), #53 (guilda inteira, rede ChehulNet, postar o placar).
 
 ## Problema
 
@@ -36,11 +36,16 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
   tempo. Pela guilda e pelo grupo (invisível a quem não tem o addon); no realm, também pelo YELL da
   malha ChehulNet (#46).
 - O que chega fica salvo por realm, com a guilda de quem anunciou pela guilda e quando foi visto.
-- Repasse (#46): cada cliente repassa o top 5 de cada placar que conhece. Pelo YELL, um placar por
-  vez, rotativo; pela guilda, pulando o placar que alguém já repassou há pouco.
-- O registro vindo do próprio dono vence o repassado.
+- Repasse (#46): cada cliente repassa o top 5 de cada placar que conhece. Pelo YELL, um placar a
+  cada 3 min, rotativo, e o próprio registro só quando muda (ou a cada 5 min) — o YELL é dividido
+  com a família de addons; pela guilda, pulando o placar que alguém já repassou há pouco.
+- Cada entrada repassada leva a idade da notícia: repasse não rejuvenesce ninguém, e o registro
+  sem notícia real há 30 dias sai mesmo circulando.
+- O registro vindo do próprio dono vence o repassado. Por repasse, só vira "da guilda" quem está
+  no roster. No máximo 300 registros só de repasse (sai o de notícia mais velha).
 - Descarte do implausível: marco abaixo do piso, nível fora de 1–60, XP fora de 0–100, marco de
-  nível acima do nível do registro, /played total menor que o tempo de um marco.
+  nível acima do nível do registro, /played total menor que o tempo de um marco, /played abaixo do
+  piso do nível. No repasse, a entrada ruim cai sozinha (o resto da mensagem vale).
 - Sem garantia contra trapaça: o painel diz "placar da rede, não oficial".
 - Registro sem notícia há 30 dias sai.
 
@@ -50,6 +55,15 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
   Forever o roster pode trazer só o primeiro nome: casa também por ele. Com a janela da guilda
   escondendo os offline, o roster não filtra (senão quem desloga some).
 - **Realm (#46):** todos os registros do realm.
+- **Só o nível (#53):** no Mais alto, entra também quem não usa o Lodestar — da guilda, pelo roster
+  (todo membro; os offline quando a janela da guilda os mostra), pedido a cada minuto; no realm,
+  também os peers da malha ChehulNet (o nível que todo addon da família anuncia; a malha guarda o
+  nome sem o realm, então quem veio de outro realm por grupo pode aparecer). Aparecem só com o
+  nível, marcados "sem Lodestar", sem duplicar quem tem registro: pelo nome; pelo primeiro nome só
+  quando um dos dois não tem sobrenome (Forever). Roster mais novo que um registro velho vale. No
+  mesmo nível, quem só tem o nível fica à frente (XP desconhecido: alcançar não é passar).
+  Liderança e ultrapassagens valem contra a guilda inteira. O Mais rápido segue só com quem tem
+  tempo de marco. Filtro no painel: Todos / Só Lodestar.
 - Em cada um, **Mais alto** (nível, depois XP, desempate por menos /played) e **Mais rápido** (menor
   /played até o marco escolhido; só quem tem tempo naquele marco).
 - O jogador sempre aparece, ao vivo.
@@ -77,6 +91,8 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
   explica que só aparece quem usa o Lodestar.
 - Abre por `/ls corrida` (e `race`), e pelas entradas do antigo "Na rota" (`/ls squad`, `/ls party`,
   Configurações › Painéis).
+- Rodapé da guilda: "X de Y com Lodestar"; botões "Postar placar" (o top 5 do placar aberto no chat
+  da guilda, com o link; manual, no máximo 1 a cada 10 min) e "Chamar a guilda".
 - Configurações › Grupo: "Avisos da corrida no chat da guilda" e "Avisos de ultrapassagem".
 
 ## Fora desta versão

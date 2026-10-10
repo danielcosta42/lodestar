@@ -51,6 +51,62 @@ local function limpa(rec)
 	return rec
 end
 
+local NOME = "^[^,;|]+$"
+local NOME_MAX, PLACAR_MAX, TOP, DIGEST_MAX = 48, 12, 5, 250   -- bytes; bytes; entradas; bytes (1 YELL)
+
+-- o menor /played para estar no nível L: o piso do marco de nível mais alto até ele
+local function pisoNivel(level)
+	local p = 0
+	for _, m in ipairs(ns.RACE_MILESTONES or {}) do
+		if m.kind == "level" and m.v <= level and m.min > p then p = m.min end
+	end
+	return p
+end
+
+-- O repasse do top de um placar: escopo "G" (guilda) ou "R" (realm), placar "alto" (valor =
+-- /played) ou id de marco (valor = tempo do marco), e a idade da notícia de cada um (s) — o
+-- repasse não rejuvenesce ninguém. rows = linhas do R.Board. Sem valor conhecido, a linha
+-- fica de fora; o todo cabe numa mensagem (o YELL não se divide). nil se não sobra nada.
+function R.EncodeDigest(scope, board, rows, now)
+	local head = ("R1|T|%s|%s|"):format(scope, board)
+	local t, len = {}, #head
+	for _, row in ipairs(rows) do
+		local val = board == "alto" and row.played or row.val
+		if val and val > 0 then
+			local age = row.news and math.max(0, now - row.news) or 0
+			local e = ("%s,%s,%d,%d,%d,%d"):format(row.name, row.class, row.level, math.floor(row.xp or 0),
+				math.floor(val), math.floor(age))
+			if #t >= TOP or len + #e + 1 > DIGEST_MAX then break end
+			t[#t + 1] = e
+			len = len + #e + 1
+		end
+	end
+	if #t == 0 then return nil end
+	return head .. table.concat(t, ";")
+end
+
+-- entrada inválida ou implausível cai sozinha; cabeçalho inválido derruba a mensagem
+local function decodeDigest(f)
+	local scope, board = f[3], f[4]
+	if (scope ~= "G" and scope ~= "R") or not board:match("^%w+$") or #board > PLACAR_MAX then return nil end
+	local m, entries, lista = byId[board], {}, campos(f[5], ";")
+	if #lista > 10 then return nil end
+	for _, e in ipairs(lista) do
+		local c = campos(e, ",")
+		local x = #c == 6 and { name = c[1], class = c[2], level = inteiro(c[3], 1, R.MAX_LEVEL),
+			xp = inteiro(c[4], 0, 100), val = inteiro(c[5], 1, TETO), age = inteiro(c[6], 0, R.EXPIRE) }
+		local ok = x and x.name:match(NOME) and #x.name <= NOME_MAX and x.class:match("^%u+$")
+			and x.level and x.xp and x.val and x.age
+		if ok and board == "alto" then
+			ok = x.val >= pisoNivel(x.level)
+		elseif ok and m then
+			ok = x.val >= m.min and not (m.kind == "level" and m.v > x.level)
+		end
+		if ok then entries[#entries + 1] = x end
+	end
+	return "T", { scope = scope, board = board, entries = entries }
+end
+
 function R.EncodeRecord(rec)
 	local ids = {}
 	for id in pairs(rec.ms or {}) do ids[#ids + 1] = id end
@@ -64,6 +120,7 @@ end
 function R.Decode(s)
 	if type(s) ~= "string" then return nil end
 	local f = campos(s, "|")
+	if f[1] == "R1" and f[2] == "T" and #f == 5 then return decodeDigest(f) end
 	if f[1] ~= "R1" or f[2] ~= "R" or #f ~= 7 then return nil end
 	local rec = { class = f[3], level = inteiro(f[4], 1, R.MAX_LEVEL), xp = inteiro(f[5], 0, 100),
 		played = inteiro(f[6], 0, TETO), ms = {} }
@@ -79,6 +136,58 @@ function R.Decode(s)
 		end
 	end
 	return "R", limpa(rec)
+end
+
+-- O que chegou repassado. O dono vence: registro do próprio dono com notícia nas últimas 6 h
+-- não muda; mais velho que isso, o repasse só adianta (nível maior, marco que faltava). A
+-- notícia vale pela idade dela (`relSeen`), não pela chegada. Por repasse, só vira da guilda
+-- quem está no roster (`roster`, nil se não se sabe). No máximo RELAY_MAX registros só de
+-- repasse: sai o de notícia mais velha.
+local FRESCO, RELAY_MAX = 6 * 3600, 300
+function R.MergeRelay(store, d, now, guild, me, roster)
+	for _, e in ipairs(d.entries) do
+		local rec = store.recs[e.name]
+		if e.name ~= me and not (rec and rec.own and now - (rec.seen or 0) < FRESCO) then
+			if not rec then
+				rec = { class = e.class, level = e.level, xp = e.xp, ms = {} }
+				store.recs[e.name] = rec
+			end
+			if d.board == "alto" then
+				if e.level > rec.level or (e.level == rec.level and e.xp >= (rec.xp or 0)) then
+					rec.level, rec.xp, rec.played = e.level, e.xp, e.val
+				end
+			elseif not (rec.played and e.val > rec.played) then      -- marco depois do /played: incoerente
+				if e.level > rec.level then rec.level, rec.xp = e.level, e.xp end
+				rec.ms[d.board] = rec.ms[d.board] or e.val
+			end
+			rec.relSeen = math.max(rec.relSeen or 0, now - e.age)
+			if guild and d.scope == "G" and roster and (roster[e.name] or roster[e.name:match("^%S+")]) then
+				rec.g = guild
+			end
+		end
+	end
+	local soRepasse = {}
+	for name, rec in pairs(store.recs) do if not rec.own then soRepasse[#soRepasse + 1] = name end end
+	if #soRepasse > RELAY_MAX then
+		table.sort(soRepasse, function(a, b) return (store.recs[a].relSeen or 0) < (store.recs[b].relSeen or 0) end)
+		for i = 1, #soRepasse - RELAY_MAX do store.recs[soRepasse[i]] = nil end
+	end
+end
+
+-- os placares que se repassam, e a rotação entre eles
+local boards = { "alto" }
+for _, m in ipairs(ns.RACE_MILESTONES or {}) do boards[#boards + 1] = m.id end
+function R.Boards() return boards end
+function R.NextBoard(state)
+	state.i = (state.i or 0) % #boards + 1
+	return boards[state.i]
+end
+
+-- supressão: quem acabou de ouvir (ou mandar) um placar não o repassa de novo tão cedo
+function R.Heard(state, scope, board, now) state[scope .. board] = now end
+function R.ShouldRelay(state, scope, board, now, gap)
+	local t = state[scope .. board]
+	return not t or now - t >= gap
 end
 
 -- o registro que veio do próprio dono; `guild`: chegou pela guilda (nome dela)
@@ -97,14 +206,17 @@ function R.Expire(store, now)
 end
 
 -- Placar. q = { kind = "alto" | id do marco, guild = nome (nil: realm), roster = { [nome] =
--- true } (nil: sem filtro), me = { name, rec } (sempre entra, ao vivo), now }
+-- true } (nil: sem filtro), me = { name, rec } (sempre entra, ao vivo), now, extra }. `extra`:
+-- quem só tem o nível (roster da guilda, peers da ChehulNet) — { name, class, level, online,
+-- seen, src } —, só no Mais alto e sem duplicar quem tem registro (casa pelo primeiro nome).
 function R.Board(store, q)
 	local rows = {}
 	local function add(name, rec, eu)
 		local val = q.kind ~= "alto" and rec.ms and rec.ms[q.kind] or nil
 		if q.kind ~= "alto" and not val then return end
+		local news = (rec.seen or rec.relSeen) and math.max(rec.seen or 0, rec.relSeen or 0) or nil
 		rows[#rows + 1] = { name = name, class = rec.class, level = rec.level, xp = rec.xp or 0,
-			played = rec.played, val = val, own = rec.own, seen = rec.seen, me = eu,
+			played = rec.played, val = val, own = rec.own, seen = rec.seen, relSeen = rec.relSeen, news = news, me = eu,
 			online = rec.own and rec.seen and q.now - rec.seen <= R.ONLINE or false }
 	end
 	local meName = q.me and q.me.name
@@ -116,9 +228,37 @@ function R.Board(store, q)
 		end
 	end
 	if q.me then add(meName, q.me.rec, true) end
+	if q.kind == "alto" and q.extra then
+		-- casa com quem tem registro pelo nome; pelo primeiro nome só quando um dos dois não tem
+		-- sobrenome (Forever: "Ana Silva" não é "Ana Costa"). Roster mais novo que o registro (velho
+		-- ou repassado): vale o nível dele.
+		local exato, porPrimeiro, semSobrenome = {}, {}, {}
+		for _, row in ipairs(rows) do
+			exato[row.name] = row
+			local p = row.name:match("^%S+")
+			if p ~= row.name then porPrimeiro[p] = porPrimeiro[p] or row else semSobrenome[p] = row end
+		end
+		for _, e in ipairs(q.extra) do
+			if e.name and e.level then
+				local p = e.name:match("^%S+")
+				local row = exato[e.name] or (p == e.name and porPrimeiro[p]) or (p ~= e.name and semSobrenome[p])
+				if row then
+					if e.level > row.level then row.level, row.xp, row.played = e.level, 0, nil end
+				else
+					row = { name = e.name, class = e.class, level = e.level, xp = 0, own = false, src = e.src,
+						online = e.online or false, seen = e.seen }
+					rows[#rows + 1] = row
+					exato[e.name] = row
+				end
+			end
+		end
+	end
 	if q.kind == "alto" then
+		-- no mesmo nível, quem só tem o nível (XP desconhecido) fica à frente: chegar no nível dele
+		-- não é passar
 		table.sort(rows, function(a, b)
 			if a.level ~= b.level then return a.level > b.level end
+			if (a.src ~= nil) ~= (b.src ~= nil) then return a.src ~= nil end
 			if a.xp ~= b.xp then return a.xp > b.xp end
 			local pa, pb = a.played or math.huge, b.played or math.huge
 			if pa ~= pb then return pa < pb end
@@ -131,6 +271,29 @@ function R.Board(store, q)
 		end)
 	end
 	return rows
+end
+
+-- quantos do placar usam o Lodestar (registro próprio, repassado ou eu)
+function R.Lodestar(rows)
+	local n = 0
+	for _, row in ipairs(rows) do if not row.src then n = n + 1 end end
+	return n
+end
+
+-- O placar para o chat da guilda (botão "Postar placar"): o top 5 do placar aberto e o link,
+-- até 255.
+function R.BoardText(L, kind, rows, url)
+	local titulo = kind == "alto" and L.RACE_POST_HIGH or L.RACE_POST_FAST:format(R.Label(L, byId[kind] or { id = kind }))
+	local itens, txt = {}, nil
+	for i = 1, math.min(5, #rows) do
+		local row = rows[i]
+		itens[#itens + 1] = kind == "alto" and L.RACE_POST_LV:format(i, row.name, row.level)
+			or L.RACE_POST_T:format(i, row.name, R.Dur(row.val))
+		local tenta = L.RACE_POST:format(titulo, table.concat(itens, " · "), url)
+		if #tenta > 255 then break end
+		txt = tenta
+	end
+	return txt
 end
 
 function R.Position(rows, name)
@@ -220,26 +383,54 @@ end
 -- Os membros da guilda (nome curto e primeiro nome). nil: o roster ainda não chegou; false:
 -- chegou, mas sem os offline (opção da janela da guilda) — aí não filtra, senão quem desloga
 -- some do placar.
-local rosterSet
-local function roster()
-	if rosterSet ~= nil or not (minhaGuilda() and GetNumGuildMembers and GetGuildRosterInfo) then return rosterSet end
+-- O roster também dá o nível e a classe de todo membro (#53): quem não usa o Lodestar entra no
+-- Mais alto só com o nível.
+local rosterSet, rosterNivel
+local function leRoster()
+	rosterNivel = {}
 	local n = GetNumGuildMembers() or 0
 	if n == 0 then return nil end
-	if GetGuildRosterShowOffline and not GetGuildRosterShowOffline() then
-		rosterSet = false
-		return false
-	end
-	rosterSet = {}
+	local set = {}
 	for i = 1, n do
-		local nome = curto(GetGuildRosterInfo(i))
+		local nome, _, _, nivel, _, _, _, _, online, _, classe = GetGuildRosterInfo(i)
+		nome = curto(nome)
 		if nome then
-			rosterSet[nome] = true
-			rosterSet[nome:match("^%S+")] = true
+			set[nome] = true
+			set[nome:match("^%S+")] = true
+			if nivel and nivel > 0 then
+				rosterNivel[#rosterNivel + 1] = { name = nome, class = classe, level = nivel, online = online and true or false,
+					src = "roster" }
+			end
 		end
 	end
+	if GetGuildRosterShowOffline and not GetGuildRosterShowOffline() then return false end
+	return set
+end
+local function roster()
+	if rosterSet ~= nil or not (minhaGuilda() and GetNumGuildMembers and GetGuildRosterInfo) then return rosterSet end
+	rosterSet = leRoster()
 	return rosterSet
 end
-ns:On("GUILD_ROSTER_UPDATE", function() rosterSet = nil end)
+ns:On("GUILD_ROSTER_UPDATE", function() rosterSet, rosterNivel = nil, nil end)
+
+-- quem só tem o nível: o roster (guilda) e, no realm, também os peers da ChehulNet (o nível que
+-- todo addon da família anuncia no HELLO)
+local function soNivel(scope)
+	roster()
+	local t = {}
+	for _, e in ipairs(rosterNivel or {}) do t[#t + 1] = e end
+	local CN = _G.ChehulNet
+	if scope == "realm" and CN and CN.peers then
+		local now = agora()
+		for nome, p in pairs(CN.peers) do
+			if p.level and p.level > 0 then
+				t[#t + 1] = { name = nome, class = p.class, level = p.level, online = p.ts and now - p.ts <= R.ONLINE or false,
+					seen = p.ts, src = "rede" }
+			end
+		end
+	end
+	return t
+end
 
 -- Os marcos (não de nível) do personagem. Na primeira vez, quem já passou da idade de
 -- masmorra começa sem o "primeira masmorra" (false): o próximo chefe não é o primeiro.
@@ -269,12 +460,13 @@ function R.MyRecord()
 		played = math.floor(RT and RT:LivePlayed() or 0), ms = ms }
 end
 
--- linhas do placar para o painel: escopo "guild" | "realm", kind "alto" | id do marco
-function R:Rows(scope, kind)
+-- linhas do placar: escopo "guild" | "realm", kind "alto" | id do marco; `soLodestar`: sem quem
+-- só tem o nível (filtro do painel)
+function R:Rows(scope, kind, soLodestar)
 	local guild = scope == "guild" and minhaGuilda() or nil
 	if scope == "guild" and not guild then return {} end
 	return R.Board(store(), { kind = kind, guild = guild, roster = guild and roster() or nil, now = agora(),
-		me = { name = meuNome(), rec = R.MyRecord() } })
+		me = { name = meuNome(), rec = R.MyRecord() }, extra = kind == "alto" and not soLodestar and soNivel(scope) or nil })
 end
 
 R.URL = "curseforge.com/wow/addons/lodestar"
@@ -293,6 +485,16 @@ end
 function R:Invite()
 	if not minhaGuilda() or not R.Allow(limites(), "invite", agora(), 600) then return false end
 	chat(L.RACE_INVITE_MSG:format(R.URL))
+	return true
+end
+
+-- postar o placar aberto no chat da guilda (botão do painel): manual, no máximo um a cada 10 min.
+-- nil: nada a postar; false: no limite
+function R:Post(kind, soLodestar)
+	local txt = minhaGuilda() and R.BoardText(L, kind, R:Rows("guild", kind, soLodestar), R.URL)
+	if not txt then return nil end
+	if not R.Allow(limites(), "post", agora(), 600) then return false end
+	chat(txt)
 	return true
 end
 
@@ -342,16 +544,19 @@ local function reavalia()
 	end
 end
 
+-- A posição no realm só entra quando a rede já conhece gente de fora da guilda (5+ no
+-- placar): "1º do realm" com só a guilda à vista seria mentira.
 local function marco(id)
 	anuncia(true)
 	local guild = minhaGuilda()
 	if not guild then return end
-	local rows = R:Rows("guild", id)
+	local rows, realm = R:Rows("guild", id), R:Rows("realm", id)
 	local eu = meuNome()
 	local pos = R.Position(rows, eu)
 	if not pos then return end
 	-- "1º da guilda" só com gente para comparar (3+ no placar); senão, o marco sem posição
-	avisa(R.MilestoneText(L, R.ById(id), #rows >= 3 and pos or nil, nil, rows[pos].val))
+	local rpos = #realm >= 5 and #realm > #rows and R.Position(realm, eu) or nil
+	avisa(R.MilestoneText(L, R.ById(id), #rows >= 3 and pos or nil, rpos, rows[pos].val))
 end
 
 -- Marco que não é de nível: o /played do momento. Antes de o /played chegar (logo depois de
@@ -404,12 +609,56 @@ ns:On("SKILL_LINES_CHANGED", function()
 	end
 end)
 
+-- repasse (#46): pelo YELL da malha, o meu registro e um placar do realm por vez; pela
+-- guilda, um placar por vez de cada escopo, pulando o que alguém repassou há pouco
+local ouvido, rotRealm, rotGuilda = {}, {}, {}
+local function digest(scope, board)
+	return R.EncodeDigest(scope, board, R:Rows(scope == "G" and "guild" or "realm", board), agora())
+end
+-- o YELL é dividido com a família toda: o meu registro só quando muda (ou a cada 5 min), um
+-- placar a cada 3 min
+local yellSig, yellAt, digestAt = nil, 0, 0
+local function repassa()
+	local M = mesh()
+	if not (M and ns.RunTracker and ns.RunTracker:HasPlayed()) then return end
+	if M.Realm then
+		local p = R.EncodeRecord(R.MyRecord())
+		local sig = p:gsub("^R1|R|%u+|(%d+)|%d+|%d+|", "%1|")
+		if sig ~= yellSig or agora() - yellAt >= 300 then
+			yellSig, yellAt = sig, agora()
+			M:Realm(PREFIX, p, "LSRace:R")
+		end
+		if agora() - digestAt >= 180 then
+			digestAt = agora()
+			local d = digest("R", R.NextBoard(rotRealm))
+			if d then M:Realm(PREFIX, d, "LSRace:T") end
+		end
+	end
+	if minhaGuilda() and M.Guild then
+		local board, now = R.NextBoard(rotGuilda), agora()
+		for _, sc in ipairs({ "G", "R" }) do
+			local d = R.ShouldRelay(ouvido, sc, board, now, 600) and digest(sc, board)
+			if d then
+				M:Guild(PREFIX, d)
+				R.Heard(ouvido, sc, board, now)
+			end
+		end
+	end
+end
+
 local function onRecv(payload, sender, dist)
-	local kind, rec = R.Decode(payload)
+	local kind, data = R.Decode(payload)
 	local nome = curto(sender)
-	if kind ~= "R" or not nome or nome == "" or nome == meuNome() then return end
-	R.MergeOwn(store(), nome, rec, agora(), dist == "GUILD" and minhaGuilda() or nil)
-	reavalia()
+	if not kind or not nome or nome == "" or nome == meuNome() then return end
+	local guild = dist == "GUILD" and minhaGuilda() or nil
+	if kind == "R" then
+		R.MergeOwn(store(), nome, data, agora(), guild)
+	else
+		R.MergeRelay(store(), data, agora(), guild, meuNome(), roster() or nil)
+		if dist == "GUILD" then R.Heard(ouvido, data.scope, data.board, agora()) end
+	end
+	-- ultrapassagens e liderança: no tique de 10 s (o roster inteiro a cada mensagem pesa); o
+	-- painel, se aberto, já
 	if R.OnChange then R.OnChange() end
 end
 do local M = mesh(); if M and M.Register then M:Register(PREFIX, onRecv) end end
@@ -424,4 +673,10 @@ ns:Every(10, function()
 	anuncia(false)
 	reavalia()
 	if R.OnChange then R.OnChange() end
+end)
+ns:Every(60, repassa)
+-- o roster só se renova a pedido (o servidor segura em ~10 s): os níveis da guilda não envelhecem
+ns:Every(60, function()
+	if not minhaGuilda() then return end
+	if C_GuildInfo and C_GuildInfo.GuildRoster then C_GuildInfo.GuildRoster() elseif GuildRoster then GuildRoster() end
 end)
