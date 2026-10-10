@@ -157,6 +157,12 @@ local function fillHud(p)
 	switchRow(p, L.SET_XPHUD, L.SET_XPHUD_D,
 		function() return ns.db.xpHud end,
 		function(v) ns.db.xpHud = v; if ns.XPHud then ns.XPHud:Update() end end)
+	switchRow(p, L.SET_SPLITS, L.SET_SPLITS_D,
+		function() return ns.db.splits.enabled end,
+		function(v) if v ~= ns.db.splits.enabled and ns.Splits then ns.Splits:Toggle() end end)
+	sliderRow(p, L.SET_SPLITS_SCALE, "", 70, 160, 5,
+		function() return (ns.db.splits.scale or 1) * 100 end,
+		function(v) ns.db.splits.scale = v / 100; if ns.Splits then ns.Splits:ApplyScale() end end, "%d%%")
 	switchRow(p, L.SET_COORDS, L.SET_COORDS_D,
 		function() return ns.db.coords end,
 		function(v) ns.db.coords = v; if ns.Coords then ns.Coords.Update() end end)
@@ -186,6 +192,10 @@ local function fillGroup(p)
 		function() return ns.db.cardEvery end, function(v) ns.db.cardEvery = v end)
 	switchRow(p, L.SET_CARD_GUILD, L.SET_CARD_GUILD_D,
 		function() return ns.db.cardAskGuild ~= false end, function(v) ns.db.cardAskGuild = v end)
+	switchRow(p, L.SET_RACE_CHAT, L.SET_RACE_CHAT_D,
+		function() return ns.db.raceChat ~= false end, function(v) ns.db.raceChat = v end)
+	switchRow(p, L.SET_RACE_TOAST, L.SET_RACE_TOAST_D,
+		function() return ns.db.raceToasts ~= false end, function(v) ns.db.raceToasts = v end)
 end
 
 -- as janelas que só abriam pelo /ls
@@ -193,8 +203,10 @@ local function fillTools(p)
 	local L = ns.L
 	buttonRow(p, L.SET_LIBRARY, L.SET_LIBRARY_D,
 		L.SET_OPEN, function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
-	buttonRow(p, L.SET_SQUAD, L.SET_SQUAD_D,
-		L.SET_OPEN, function() if ns.Squad then ns.Squad:Toggle() end end)
+	buttonRow(p, L.SET_RETRO, L.SET_RETRO_D,
+		L.SET_OPEN, function() if ns.Retro then ns.Retro:Show() end end)
+	buttonRow(p, L.SET_RACE, L.SET_RACE_D,
+		L.SET_OPEN, function() if ns.RacePanel then ns.RacePanel:Toggle() end end)
 	buttonRow(p, L.SET_GATHER, L.SET_GATHER_D,
 		L.SET_OPEN, function() if ns.Gather then ns.Gather:Open() end end)
 	buttonRow(p, L.SET_CONS, L.SET_CONS_D,

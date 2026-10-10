@@ -117,6 +117,12 @@ local DB_DEFAULTS = {
 	reportCard = true,    -- boletim de leveling (nota + card compartilhável)
 	cardEvery = false,    -- boletim a cada nível (desligado: só nos marcos)
 	cardAskGuild = true,  -- o boletim pergunta se manda no chat da guilda
+	raceChat = true,      -- corrida: marcos e liderança no chat da guilda (os próprios)
+	raceToasts = true,    -- corrida: toast de ultrapassagem no placar da guilda
+	race = {},            -- corrida: registros por realm (specs/corrida)
+	raceOnlyLs = false,   -- corrida: Mais alto só com quem usa o Lodestar (filtro do painel)
+	splits = { enabled = false, cmp = "pb", scale = 1 },   -- painel de splits (specs/splits)
+	bestSeg = {},         -- splits: melhor tempo de cada nível, por classe
 	ghost = {},           -- run de referência por classe (Ghost Racing)
 	coords = true,        -- coordenadas do player no minimapa/mapa
 	guideMap = true,      -- marca os pontos dos próximos passos no mapa-múndi
@@ -180,7 +186,9 @@ ns.COMMAND_UI = {
 	near = "Viagem: Mais perto", train = "Viagem: Treinador da classe", prof = "Viagem: Treinador de profissão",
 	reset = "guia: ⋯", rescan = "guia: ⋯", export = "guia: ⋯", import = "guia: ⋯",
 	record = "guia: ⋯", scan = "guia: ⋯",
-	party = "Config. Painéis", squad = "Config. Painéis", gather = "Config. Painéis", coleta = "Config. Painéis",
+	party = "guia: estrela", squad = "guia: estrela", corrida = "guia: estrela", race = "guia: estrela",
+	splits = "Config. Aparência", jornada = "Config. Painéis", retro = "Config. Painéis",
+	gather = "Config. Painéis", coleta = "Config. Painéis",
 	check = "Config. Painéis", consume = "Config. Painéis", raidprep = "Config. Painéis",
 	card = "Config. Painéis", intro = "Config. Painéis", item = "Config. Geral",
 	mark = "Config. Aparência", trail = "Config. Aparência", xp = "Config. Aparência",
@@ -235,8 +243,12 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.GuideMenu then ns.GuideMenu:Toggle() end
 	elseif cmd == "config" or cmd == "options" or cmd == "settings" then
 		if ns.Settings then ns.Settings:Toggle() end
-	elseif cmd == "party" or cmd == "squad" then
-		if ns.Squad then ns.Squad:Toggle() end
+	elseif cmd == "jornada" or cmd == "retro" then
+		if ns.Retro then ns.Retro:Show() end
+	elseif cmd == "splits" then
+		if ns.Splits then ns.Splits:Toggle() end
+	elseif cmd == "party" or cmd == "squad" or cmd == "corrida" or cmd == "race" then
+		if ns.RacePanel then ns.RacePanel:Toggle() end
 	elseif cmd == "gather" or cmd == "coleta" then
 		if ns.Gather then ns.Gather:Open(rest) end
 	elseif cmd == "check" or cmd == "consume" or cmd == "raidprep" then

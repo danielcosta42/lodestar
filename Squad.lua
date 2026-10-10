@@ -1,13 +1,12 @@
 --=============================================================================
 -- Squad — "quem está na rota" (Onda 2a). Publica o progresso de leveling na
--- malha ChehulNet (prefixo LSGuide) e mostra guild/party que roda o Lodestar,
--- com nível + guia + passo. Consome PartyLens (layer) quando presente.
--- Standalone-safe: sem a malha, é um no-op silencioso (o painel fica vazio).
+-- malha ChehulNet (prefixo LSGuide): nível + guia + passo de guild/party que roda
+-- o Lodestar (a Corrida mostra o guia no tooltip). Consome PartyLens (layer).
+-- Standalone-safe: sem a malha, é um no-op silencioso.
 --=============================================================================
 local ADDON, ns = ...
 local S = {}
 ns.Squad = S
-local UI = ns.UI
 
 local PREFIX   = "LSGuide"   -- protocolo aberto: LS1|P|class|level|guideShort|step/total|mapID
 local PEER_TTL = 300         -- s até esquecer um peer silencioso
@@ -50,7 +49,6 @@ local function onRecv(payload, sender)
 	local short = (Ambiguate and Ambiguate(sender or "", "short")) or sender
 	if not short or short == "" or short == me() then return end
 	peers[short] = { class = class, level = tonumber(lvl) or 0, guide = guide or "?", step = step or "", ts = now() }
-	if S._frame and S._frame:IsShown() then S:Refresh() end
 end
 
 -- peers ativos (aplica TTL), mais alto nível primeiro
@@ -67,73 +65,15 @@ function S:List()
 	return out
 end
 
---------------------------------------------------------------------------------
-local frame, rows
-local ROW_H = 30
-
-local function makeRow(parent)
-	local C = UI.COL
-	local r = CreateFrame("Frame", nil, parent); r:SetHeight(ROW_H)
-	r.name = r:CreateFontString(nil, "OVERLAY"); UI.SetFont(r.name, 13, { color = C.active })
-	r.name:SetPoint("LEFT", 12, 0)
-	r.lvl = r:CreateFontString(nil, "OVERLAY"); UI.SetFont(r.lvl, 11, { num = true, color = C.muted })
-	r.lvl:SetPoint("LEFT", r.name, "RIGHT", 8, 0)
-	r.where = r:CreateFontString(nil, "OVERLAY"); UI.SetFont(r.where, 11.5, { color = C.tip })
-	r.where:SetPoint("RIGHT", -12, 0); r.where:SetJustifyH("RIGHT")
-	return r
+-- o que se sabe de um peer (guia, passo) pelo nome curto; nil se não anunciou há pouco
+function S:Peer(name)
+	local p = peers[name]
+	if p and now() - (p.ts or 0) <= PEER_TTL then return p end
 end
 
-function S:Refresh()
-	if not frame then return end
-	local list = self:List()
-	rows = rows or {}
-	local y = -52
-	for i, p in ipairs(list) do
-		local r = rows[i] or makeRow(frame); rows[i] = r
-		r:ClearAllPoints(); r:SetPoint("TOPLEFT", 8, y); r:SetPoint("TOPRIGHT", -8, y)
-		local col = RAID_CLASS_COLORS and RAID_CLASS_COLORS[p.class or ""]
-		r.name:SetText(p.name)
-		if col then r.name:SetTextColor(col.r, col.g, col.b) else r.name:SetTextColor(UI.unpackc(UI.COL.active)) end
-		r.lvl:SetText("L" .. (p.level or "?"))
-		r.where:SetText(p.guide .. (p.step ~= "" and ("  " .. p.step) or ""))
-		r:Show(); y = y - ROW_H
-	end
-	for i = #list + 1, #rows do rows[i]:Hide() end
-	frame.empty:SetShown(#list == 0)
-	frame:SetHeight(52 + math.max(1, #list) * ROW_H + 14)
-end
-
-local function build()
-	if frame then return frame end
-	local C = UI.COL
-	frame = UI.Panel(UIParent, { name = "LodestarSquad" }); S._frame = frame
-	frame:SetSize(320, 200); frame:SetPoint("CENTER")
-	frame:SetFrameStrata("DIALOG"); frame:SetToplevel(true)
-	frame:SetMovable(true); frame:EnableMouse(true); frame:SetClampedToScreen(true)
-	UI.CornerFlourish(frame)
-
-	local header = UI.Panel(frame, { color = C.header, border = false })
-	header:SetPoint("TOPLEFT", 1, -1); header:SetPoint("TOPRIGHT", -1, -1); header:SetHeight(44)
-	header:EnableMouse(true); header:RegisterForDrag("LeftButton")
-	header:SetScript("OnDragStart", function() frame:StartMoving() end)
-	header:SetScript("OnDragStop", function() frame:StopMovingOrSizing() end)
-	local line = UI.Rect(header, "ARTWORK", C.accent)
-	line:SetPoint("TOPLEFT"); line:SetPoint("TOPRIGHT"); line:SetHeight(2)
-	local title = header:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(title, 15, { title = true, color = C.active })
-	title:SetPoint("LEFT", 14, 0); title:SetText(ns.L.SQUAD_TITLE)
-	local close = UI.CloseButton(header, function() frame:Hide() end); close:SetPoint("RIGHT", -8, 0)
-
-	frame.empty = frame:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.empty, 12, { color = C.muted }); frame.empty:SetPoint("TOP", 0, -64)
-	frame.empty:SetText(ns.L.SQUAD_EMPTY)
-
-	frame:SetScript("OnShow", function() broadcast(true); S:Refresh() end)
-	return frame
-end
-
-function S:Show() build(); frame:Show() end
-function S:Toggle() build(); if frame:IsShown() then frame:Hide() else frame:Show() end end
+-- o painel "Na rota" virou a Corrida (RacePanel): as entradas antigas abrem ela
+function S:Show() if ns.RacePanel then ns.RacePanel:Show() end end
+function S:Toggle() if ns.RacePanel then ns.RacePanel:Toggle() end end
 
 --------------------------------------------------------------------------------
 -- Contexto de "grupo para esta quest": varre o step atual pelo goal elite/chefe
