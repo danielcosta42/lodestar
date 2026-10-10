@@ -159,7 +159,20 @@ ns:On("PLAYER_DEAD", function() cur().deaths = cur().deaths + 1 end)
 ns:On("_STEP_DONE", function() cur().steps = cur().steps + 1 end)
 ns:On("ZONE_CHANGED_NEW_AREA", function()
 	local z = GetZoneText and GetZoneText() or ""
-	if z ~= "" then cur().zones[z] = true end
+	if z ~= "" then
+		cur().zones[z] = true
+		local r = run()
+		r.zonesSeen = r.zonesSeen or {}
+		if (UnitLevel("player") or 1) < (ns.Client and ns.Client.maxLevel or 60) then r.zonesSeen[z] = true end
+	end
+end)
+ns:On("PLAYER_ENTERING_WORLD", function()                -- a zona do login também conta
+	local z = GetZoneText and GetZoneText() or ""
+	local r = run()
+	if z ~= "" and (UnitLevel("player") or 1) < (ns.Client and ns.Client.maxLevel or 60) then
+		r.zonesSeen = r.zonesSeen or {}
+		r.zonesSeen[z] = true
+	end
 end)
 
 -- sincroniza o /played uma vez ao entrar (p/ o "ao vivo" ficar preciso na sessão)

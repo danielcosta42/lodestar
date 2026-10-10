@@ -203,6 +203,8 @@ local function fillTools(p)
 	local L = ns.L
 	buttonRow(p, L.SET_LIBRARY, L.SET_LIBRARY_D,
 		L.SET_OPEN, function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
+	buttonRow(p, L.SET_RETRO, L.SET_RETRO_D,
+		L.SET_OPEN, function() if ns.Retro then ns.Retro:Show() end end)
 	buttonRow(p, L.SET_RACE, L.SET_RACE_D,
 		L.SET_OPEN, function() if ns.RacePanel then ns.RacePanel:Toggle() end end)
 	buttonRow(p, L.SET_GATHER, L.SET_GATHER_D,
