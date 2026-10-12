@@ -4,17 +4,9 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Loch Modan (11-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Dun Morogh (13-26)",
-	rev = "e6d30788",
+	next = "Leveling/Alliance/Redridge Mountains (15-24)",
+	rev = "75f29125",
 }, [[
-step
-  only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)
-  talk Azar Stronghammer##1232
-  accept Tome of Divinity##2997 |goto Dun Morogh 47.6,52.07
-step
-  only Human Paladin not completed(3681) not haveq(3681)
-  talk Brother Wilhelm##927
-  accept Tome of Divinity##2998 |goto Elwynn Forest 41.1,66.04
 step
   note {fp}Thorgrum Borrelson
   goto Loch Modan 33.94,50.95 |tip {vendor}
@@ -30,10 +22,10 @@ step
   accept Honor Students##6387 |goto Loch Modan 37.02,47.81
 step
   talk Grenhild Darktalon##49808
-  accept Snowbound##86667 |goto Loch Modan 36.49,48.29
+  accept Snowbound##86667 |goto Loch Modan 36.57,48.41
 step
   note Deliver a Jar of Snow to Norric Lochthane at his house on the northwest coast of the Loch.
-  collect Jar of Snow##279379 |q 86667 |goto Loch Modan 36.49,48.29
+  collect Jar of Snow##279379 |q 86667 |goto Loch Modan 36.57,48.41
 step
   only not Human not NightElf not Skyborne
   talk Thorgrum Borrelson##1572
@@ -44,18 +36,14 @@ step
   accept Ride to Ironforge##6391 |goto Loch Modan 33.94,50.95
 step
   talk Norric Lochthane##258043
-  turnin Snowbound##86667 |goto Loch Modan 41.89,19.03
+  turnin Snowbound##86667 |goto Loch Modan 41.86,19.02
 step
   note Bring 12 Tunnel Rat Ears to Mountaineer Kadrell in Thelsamar.
   collect 12 Tunnel Rat Ear##3110 |q 416 |goto Loch Modan 35.84,26.76 |tip {dropsfrom}Tunnel Rat Vermin, Tunnel Rat Scout, Tunnel Rat Geomancer
 step
-  only Shaman
+  only Shaman completed(94465)
   talk Braldir Ashmantle##257808
-  accept Fire Sapta##94473 |goto Loch Modan 32.05,66.06
-step
-  only Shaman
-  talk Braldir Ashmantle##257808
-  turnin Fire Sapta##94473 |goto Loch Modan 32.05,66.06
+  accept Call of Fire##94466 |goto Loch Modan 32.17,65.97
 step
   talk Mountaineer Cobbleflint##1089
   accept In Defense of the King's Lands##224 |goto Loch Modan 22.07,73.13
@@ -63,14 +51,37 @@ step
   talk Captain Rugelfuss##1092
   accept The Trogg Threat##267 |goto Loch Modan 23.23,73.68
 step
+  only Shaman completed(94465)
+  note Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan.
+  collect 1 Reagent Pouch##6652 |q 94466 |goto Loch Modan 35.3,82.56 |tip {dropsfrom}Burning Blade Cultist, Stonesplinter Seer
+step
   talk Mountaineer Kadrell##1340
   turnin Rat Catching##416 |goto Loch Modan 32.63,49.74
+step
+  only Shaman completed(94465)
+  talk Braldir Ashmantle##257808
+  turnin Call of Fire##94466 |goto Loch Modan 32.17,65.97
+step
+  only Shaman completed(94465)
+  talk Braldir Ashmantle##257808
+  accept Call of Fire##94467 |goto Loch Modan 32.17,65.97
 step
   note Mountaineer Cobbleflint of the southern guard tower wants you to kill 10 Stonesplinter Troggs and 10 Stonesplinter Scouts.
   kill Stonesplinter Trogg##1161 |q 224 |goto Loch Modan 32.37,72.36
 step
   note Bring 8 Trogg Stone Teeth to Captain Rugelfuss in the southern guard tower.
   collect 8 Trogg Stone Tooth##2536 |q 267 |goto Loch Modan 32.37,72.36 |tip {dropsfrom}Stonesplinter Trogg, Stonesplinter Scout, Stonesplinter Skullthumper
+step
+  only Shaman completed(94465)
+  note Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame.
+  collect Glowing Ember##6655 |q 94467 |goto Loch Modan 31.96,64.42 |tip {dropsfrom}Minor Manifestation of Fire, Manifestation of Flames
+step
+  only Shaman completed(94465)
+  turnin Call of Fire##94467 |goto Loch Modan 31.79,64.52
+step
+  only Shaman completed(94465)
+  click Brazier of the Dormant Flame##61934
+  accept Call of Fire##94468 |goto Loch Modan 31.79,64.52
 step
   talk Mountaineer Cobbleflint##1089
   turnin In Defense of the King's Lands##224 |goto Loch Modan 22.07,73.13
@@ -115,7 +126,7 @@ step
   turnin A Hunter's Boast##257 |goto Loch Modan 83.47,65.46
 step
   note Find and defeat the crocolisk Daggerfang and bring back Marek's knife.
-  collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 63,46.65 |tip {dropsfrom}Daggerfang
+  collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 62.78,46.8 |tip {dropsfrom}Daggerfang
 step
   talk Jern Hornhelm##1105
   turnin Excavation Progress Report##298 |goto Loch Modan 37.24,47.38
@@ -148,13 +159,13 @@ step
   accept In Defense of the King's Lands##217 |goto Loch Modan 23.23,73.68
 step
   talk Mountaineer Ylva##269153
-  accept Banner of the Fallen##86585 |goto Loch Modan 31.76,86.21
+  accept Banner of the Fallen##86585 |goto Loch Modan 31.79,86.45
 step
   note Kill the Trogg leader, Grawmug, and his two guards, Gnasher and Brawler then report back to Captain Rugelfuss in the southern guard tower.
   kill Grawmug##1205 |q 217 |goto Loch Modan 34.77,90.45
 step
   note Raise the standard of Ironforge, call out the trogg Headsplitter and kill it, then report to Captain Rugelfuss.
-  kill Headsplitter##269185 |q 86585 |goto Loch Modan 31.7,86.14
+  kill Headsplitter##269185 |q 86585 |goto Loch Modan 31.82,86.59
 step
   talk Daryl the Youngling##1187
   accept A Hunter's Challenge##258 |goto Loch Modan 83.47,65.46
@@ -167,6 +178,15 @@ step
 step
   talk Captain Rugelfuss##1092
   turnin Banner of the Fallen##86585 |goto Loch Modan 23.23,73.68
+step
+  collect Excavation Tools##665282 |goto Loch Modan 69.4,67.5 |tip Loot the quest item here — it starts the quest.
+  accept Excavation Tools##86613 |goto Loch Modan 69.4,67.5
+step
+  note Return 6 Excavation Tools to Magmar Fellhew.
+  collect Excavation Tools##278398 |q 86613 |goto Loch Modan 69.4,67.5
+step
+  talk Prospector Ironband##1344
+  turnin Excavation Tools##86613 |goto Loch Modan 65.93,65.62
 step
   talk Daryl the Youngling##1187
   turnin A Hunter's Challenge##258 |goto Loch Modan 83.47,65.46
@@ -209,14 +229,14 @@ step
   talk Magistrate Bluntnose##1139
   turnin Mercenaries##255 |goto Loch Modan 34.6,44.47
 step
-  talk Vyrin Swiftwind##1156
-  accept Vyrin's Revenge##271 |goto Loch Modan 81.73,64.14
-step
   click Discarded Fishing Toolbox##665289
-  accept Silver of the Waves##86614 |goto Loch Modan 50.58,53.29
+  accept Silver of the Waves##86614 |goto Loch Modan 45.75,43.39
 step
   talk Khara Deepwater##1684
   turnin Silver of the Waves##86614 |goto Loch Modan 40.28,39.28
+step
+  talk Vyrin Swiftwind##1156
+  accept Vyrin's Revenge##271 |goto Loch Modan 81.73,64.14
 step
   note Kill Ol' Sooty then show your handiwork to Daryl the Youngling at the Farstrider Lodge.
   kill Ol' Sooty##1225 |goto Loch Modan 37.92,63.38 |elite
@@ -240,19 +260,40 @@ step
   talk Mountaineer Rockgar##1342
   accept The Algaz Gauntlet##455 |goto Loch Modan 25.44,10.38
 step
-  only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)
-  talk Tiza Battleforge##6179
-  turnin Tome of Divinity##2997 |goto Ironforge 27.63,12.18 |tip {turninat}Ironforge
-step
-  only Human Paladin not completed(3681) not haveq(3681)
-  talk Duthorian Rall##6171
-  turnin Tome of Divinity##2998 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
-step
   talk Grimand Elmore##1416
   accept Stormpike's Delivery##353 |goto Stormwind City 59.73,33.78
 step
   talk Gnoarn##6569
   accept Find Bingles##2039 |goto Ironforge 69.18,50.55
+step
+  talk Sprite Jumpsprocket##11026
+  accept A Dynamite Plan##92749 |goto Stormwind City 61.88,30.56
+step
+  note Obtain 10 Coarse Dynamite from crafting, trading, or the auction house, then return to Sprite Jumpsprocket in the Dwarven District of Stormwind.
+  collect 10 Rough Dynamite##4358 |q 92749 |goto Stormwind City 61.88,30.56
+step
+  talk Sprite Jumpsprocket##11026
+  accept Detonation at a Distance##92750 |goto Stormwind City 61.88,30.56
+step
+  talk Jasper Fel##1325
+  accept Detonation at a Distance##92751 |goto Stormwind City 80.28,70.07
+step
+  only not Dwarf not NightElf Mage
+  talk Jennea Cannon##5497
+  accept Investigate the Blue Recluse##1920 |goto Stormwind City 49.56,85.8
+step
+  only not Dwarf not NightElf Mage
+  note Obtain a Cantation of Manifestation and a Chest of Containment coffers from behind Jennea Cannon. Bring 3 Filled Containment Coffers to Jennea at the Wizard's Sanctum.
+  collect 3 Filled Containment Coffer##7292 |q 1920 |goto Stormwind City 49.56,85.8
+step
+  talk Roy Lewells##268568
+  accept Reading Room##97234 |goto Stormwind City 38.71,62.29
+step
+  talk Donyal Tovald##2504
+  accept Shelf Picked##97237 |goto Stormwind City 75.05,30.12
+step
+  note Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park.
+  collect Field Accounts of Horde Razings##277196 |q 97237 |goto Stormwind City 75.05,30.12
 step
   note Bring 3 pieces of Bear Meat, 3 Boar Intestines, and 3 Spider Ichor to Vidra Hearthstove in Thelsamar.
   collect 3 Boar Intestines##3172 |q 418 |goto Westfall 44.71,56.93 |tip {dropsfrom}Goretusk, Bellygrub, Young Goretusk
@@ -272,6 +313,25 @@ step
   talk Bingles Blastenheimer##6577
   turnin Find Bingles##2039 |goto Loch Modan 63.56,47.92
 step
+  talk Sprite Jumpsprocket##11026
+  turnin A Dynamite Plan##92749 |goto Stormwind City 61.88,30.56 |tip {turninat}Stormwind City
+step
+  talk Jasper Fel##1325
+  turnin Detonation at a Distance##92750 |goto Stormwind City 80.28,70.07 |tip {turninat}Stormwind City
+step
+  talk Sprite Jumpsprocket##11026
+  turnin Detonation at a Distance##92751 |goto Stormwind City 61.88,30.56 |tip {turninat}Stormwind City
+step
+  only not Dwarf not NightElf Mage
+  talk Jennea Cannon##5497
+  turnin Investigate the Blue Recluse##1920 |goto Stormwind City 49.56,85.8 |tip {turninat}Stormwind City
+step
+  talk Donyal Tovald##2504
+  turnin Reading Room##97234 |goto Stormwind City 75.05,30.12 |tip {turninat}Stormwind City
+step
+  talk Roy Lewells##268568
+  turnin Shelf Picked##97237 |goto Stormwind City 38.71,62.29 |tip {turninat}Stormwind City
+step
   only not Human not NightElf not Skyborne
   talk Golnir Bouldertoe##4256
   turnin Ride to Ironforge##6391 |goto Ironforge 51.52,26.31 |tip {turninat}Ironforge
@@ -285,8 +345,16 @@ step
   talk Bingles Blastenheimer##6577
   accept Bingles' Missing Supplies##2038 |goto Loch Modan 63.56,47.92
 step
+  only not Dwarf not NightElf not Skyborne Mage
+  talk Jennea Cannon##5497
+  accept Gathering Materials##1921 |goto Stormwind City 49.56,85.8
+step
   note Find and return Bingles' supplies:
   collect Bingles' Wrench##7343 |q 2038 |goto Loch Modan 48.73,30.09 |tip {dropsfrom}Bingles's Toolbucket
+step
+  only not Dwarf not NightElf not Skyborne Mage
+  note Bring 10 Linen Cloth and the 6 Charged Rift Gems to Wynne Larson in Stormwind.
+  collect 10 Linen Cloth##2589 |q 1921 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
 step
   note Traverse Dun Algaz.
   kill Dragonmaw Scout##2103 |q 455 |goto Wetlands 47.89,77.19
@@ -294,8 +362,16 @@ step
   talk Bingles Blastenheimer##6577
   turnin Bingles' Missing Supplies##2038 |goto Loch Modan 63.56,47.92
 step
+  only not Dwarf not NightElf not Skyborne Mage
+  talk Wynne Larson##1309
+  turnin Gathering Materials##1921 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
+step
   talk Valstag Ironjaw##2086
   turnin The Algaz Gauntlet##455 |goto Wetlands 10.1,56.9 |tip {turninat}Wetlands
+step
+  only Shaman completed(94465)
+  talk Bruegs Kindleborn##257597
+  turnin Call of Fire##94468 |goto Dun Morogh 87.94,44.8 |tip {turninat}Dun Morogh
 step
   talk Ashlan Stonesmirk##1073
   turnin A Dark Threat Looms##161 |goto Wetlands 50.05,18.17 |tip {turninat}Wetlands
@@ -307,12 +383,20 @@ step
   talk Prospector Stormpike##1356
   accept Powder to Ironband##302 |goto Ironforge 74.64,11.74
 step
+  only not Dwarf not NightElf not Skyborne Mage
+  talk Wynne Larson##1309
+  accept Manaweave Robe##1941 |goto Stormwind City 51.84,83.51
+step
   only not Human not NightElf not Skyborne
   talk Gryth Thurden##1573
   turnin Gryth Thurden##6388 |goto Ironforge 55.5,47.74 |tip {turninat}Ironforge
 step
   talk Jern Hornhelm##1105
   turnin Powder to Ironband##302 |goto Loch Modan 37.24,47.38
+step
+  only not Dwarf not NightElf not Skyborne Mage
+  talk Wynne Larson##1309
+  turnin Manaweave Robe##1941 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
 step
   only not Human not NightElf not Skyborne
   talk Gryth Thurden##1573
@@ -340,6 +424,6 @@ step
   talk Prospector Ironband##1344
   turnin Protecting the Shipment##309 |goto Loch Modan 65.93,65.62
 step
-  note {travel}Ironforge
-  goto Ironforge 33.34,47.82
+  note {travel}Redridge Mountains
+  goto Redridge Mountains 21.39,43.96
 ]])

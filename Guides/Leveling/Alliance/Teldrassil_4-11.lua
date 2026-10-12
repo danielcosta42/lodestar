@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Teldrassil (4-11)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Darkshore (13-20)",
-	rev = "bbbf103e",
+	rev = "df528570",
 }, [[
 step
   talk Conservator Ilthalaine##2079
@@ -14,34 +14,17 @@ step
   talk Melithar Staghelm##2077
   accept The Woodland Protector##458 |goto Teldrassil 59.92,42.47
 step
-  talk Tarindrella##1992
-  accept Nature's Call##97977 |goto Teldrassil 57.83,45.21
-step
-  only NightElf
-  talk Shanda##3595
-  accept The Goddess Provides##97979 |goto Teldrassil 59.17,40.44
-step
   talk Dirania Silvershine##8583
   accept A Good Friend##4495 |goto Teldrassil 60.9,41.96
 step
   note Kill 7 Young Nightsabers and 4 Young Thistle Boars and return to Conservator Ilthalaine.
   talk Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
 step
-  note Collect 4  Gnarlpine Totems and bring them to Tarindrella.
-  collect 4 Gnarlpine Totem##279082 |q 97977 |goto Teldrassil 55.1,39.7
-step
   talk Conservator Ilthalaine##2079
   turnin The Balance of Nature##456 |goto Teldrassil 58.69,44.27
 step
   talk Tarindrella##1992
   turnin The Woodland Protector##458 |goto Teldrassil 57.83,45.21
-step
-  talk Tarindrella##1992
-  turnin Nature's Call##97977 |goto Teldrassil 57.83,45.21
-step
-  only NightElf
-  talk Shanda##3595
-  turnin The Goddess Provides##97979 |goto Teldrassil 59.17,40.44
 step
   talk Conservator Ilthalaine##2079
   accept The Balance of Nature##457 |goto Teldrassil 58.69,44.27
@@ -69,11 +52,21 @@ step
   talk Conservator Ilthalaine##2079
   accept Verdant Sigil##3120 |goto Teldrassil 58.69,44.27
 step
+  talk Tarindrella##1992
+  accept Nature's Call##97977 |goto Teldrassil 57.83,45.21
+step
+  only NightElf
+  talk Shanda##3595
+  accept The Goddess Provides##97979 |goto Teldrassil 59.17,40.44
+step
   note Conservator Ilthalaine needs you to kill 7 Mangy Nightsabers and 7 Thistle Boars.
   talk Mangy Nightsaber##2032 |q 457 |goto Teldrassil 62.04,36.87
 step
   note Collect 8 Fel Moss and bring them to Tarindrella.
   collect 8 Fel Moss##3297 |q 459 |goto Teldrassil 55.97,45.97 |tip {dropsfrom}Grell, Grellkin, Gremlin
+step
+  note Collect 4  Gnarlpine Totems and bring them to Tarindrella.
+  collect 4 Gnarlpine Totem##279082 |q 97977 |goto Teldrassil 55.1,39.7
 step
   talk Conservator Ilthalaine##2079
   turnin The Balance of Nature##457 |goto Teldrassil 58.69,44.27
@@ -100,6 +93,13 @@ step
   only NightElf Druid
   talk Mardant Strongoak##3597
   turnin Verdant Sigil##3120 |goto Teldrassil 58.63,40.29
+step
+  talk Tarindrella##1992
+  turnin Nature's Call##97977 |goto Teldrassil 57.83,45.21
+step
+  only NightElf
+  talk Shanda##3595
+  turnin The Goddess Provides##97979 |goto Teldrassil 59.17,40.44
 step
   talk Gilshalan Windwalker##2082
   accept Webwood Venom##916 |goto Teldrassil 57.81,41.65
@@ -171,7 +171,7 @@ step
   accept A Troubling Breeze##475 |goto Teldrassil 55.96,57.27
 step
   talk Zenn Foulhoof##2150
-  accept Zenn's Bidding##488 |goto Teldrassil 60.46,56.3
+  accept Zenn's Bidding##488 |goto Teldrassil 60.35,56.16
 step
   talk Syral Bladeleaf##2083
   accept Denalan's Earth##997 |goto Teldrassil 56.08,57.72
@@ -199,7 +199,7 @@ step
 step
   only not completed(96627) not completed(96628) not completed(96638) not completed(96652) not completed(96656) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96638) not haveq(96652) not haveq(96656) not haveq(96659)
   click Lost Journal##654846
-  accept The Adventurer##96630 |goto Teldrassil 59.1,39.49
+  accept The Adventurer##96630 |goto Teldrassil 59.07,39.55
 step
   note Bring Zenn Foulhoof outside of Dolanaar 3 Nightsaber Fangs, 3 Strigid Owl Feathers and 3 swatches of Webwood Spider Silk.
   collect Nightsaber Fang##3409 |q 488 |goto Teldrassil 44.57,37.67 |tip {dropsfrom}Elder Nightsaber, Feral Nightsaber, Nightsaber
@@ -208,7 +208,7 @@ step
   turnin Gnarlpine Corruption##476 |goto Teldrassil 55.96,57.27
 step
   talk Zenn Foulhoof##2150
-  turnin Zenn's Bidding##488 |goto Teldrassil 60.46,56.3
+  turnin Zenn's Bidding##488 |goto Teldrassil 60.35,56.16
 step
   talk Corithras Moonrage##3515
   turnin Crown of the Earth##928 |goto Teldrassil 56.14,61.71
@@ -218,14 +218,14 @@ step
 step
   only not completed(96627) not completed(96628) not completed(96638) not completed(96652) not completed(96656) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96638) not haveq(96652) not haveq(96656) not haveq(96659)
   talk Lyreena Duskblade##265811
-  turnin The Adventurer##96630 |goto Teldrassil 57.57,56.73
+  turnin The Adventurer##96630 |goto Teldrassil 57.58,56.64
 step
   talk Corithras Moonrage##3515
   accept Crown of the Earth##929 |goto Teldrassil 56.14,61.71
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96607) not haveq(96608)
   talk Lyreena Duskblade##265811
-  accept The Great Outdoors##96606 |goto Teldrassil 57.57,56.73
+  accept The Great Outdoors##96606 |goto Teldrassil 57.58,56.64
 step
   talk Sentinel Kyra Starsong##2081
   accept Seek Redemption!##489 |goto Teldrassil 56,59.52
@@ -240,22 +240,22 @@ step
   collect 6 Soft Nightsaber Pelt##280087 |q 87288 |goto Teldrassil 52.86,58.53 |tip {dropsfrom}Nightsaber
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96607) not haveq(96608)
-  note Sit near Lyreena's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
-  collect Basic Campfire##450007 |q 96606 |goto Teldrassil 57.66,56.74
+  note Sit near Lyreena's Basic Campfire and wait until you receive the Boosted Rest buff.
+  collect Basic Campfire##460003 |q 96606 |goto Teldrassil 57.66,56.74
 step
   talk Zenn Foulhoof##2150
-  turnin Seek Redemption!##489 |goto Teldrassil 60.46,56.3
+  turnin Seek Redemption!##489 |goto Teldrassil 60.35,56.16
 step
   talk Aldia##3608
   turnin Soft Saber Pelts##87288 |goto Teldrassil 55.51,57.15
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96607) not haveq(96608)
   talk Lyreena Duskblade##265811
-  turnin The Great Outdoors##96606 |goto Teldrassil 57.57,56.73
+  turnin The Great Outdoors##96606 |goto Teldrassil 57.58,56.64
 step
   only not completed(96626) not completed(96629) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
   talk Lyreena Duskblade##265811
-  accept Camping 101: Cooking##96634 |goto Teldrassil 57.57,56.73
+  accept Camping 101: Cooking##96634 |goto Teldrassil 57.58,56.64
 step
   only not completed(96626) not completed(96629) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
   note Speak with Zarrin in Dolanaar to learn to become a cook.
@@ -312,26 +312,8 @@ step
   talk Laurna Morninglight##3600
   turnin Garments of the Moon##5621 |goto Teldrassil 55.56,56.75
 step
-  talk Moon Priestess Amara##2151
-  accept The Road to Darnassus##487 |goto Teldrassil 52.91,57.2
-step
-  talk Tallonkai Swiftroot##3567
-  accept Twisted Hatred##932 |goto Teldrassil 55.57,56.95
-step
-  talk Tallonkai Swiftroot##3567
-  accept Ferocitas the Dream Eater##2459 |goto Teldrassil 55.57,56.95
-step
-  note Kill Lord Melenas and bring his head to Tallonkai Swiftroot in Dolanaar.
-  collect Melenas' Head##5221 |q 932 |goto Teldrassil 51.31,50.19 |tip {dropsfrom}Lord Melenas
-step
-  talk Tallonkai Swiftroot##3567
-  turnin Twisted Hatred##932 |goto Teldrassil 55.57,56.95
-step
-  note Tallonkai Swiftroot in Dolanaar wants you to kill 7 Gnarlpine Mystics and find the Missing Jewel.
-  kill Gnarlpine Mystic##7235 |q 2459 |goto Teldrassil 68.64,52.3
-step
-  note Slay 6 Gnarlpine Ambushers and return to Sentinel Amara Nightwalker outside of Dolanaar.
-  kill Gnarlpine Ambusher##2152 |q 487 |goto Teldrassil 46.47,53.42
+  talk Sentinel Shayla Nightbreeze##2155
+  accept Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 42.22,51.27
 step
   talk Oben Rageclaw##7317
   accept The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
@@ -342,23 +324,20 @@ step
   talk Oben Rageclaw##7317
   turnin The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
 step
-  talk Moon Priestess Amara##2151
-  turnin The Road to Darnassus##487 |goto Teldrassil 52.91,57.2
-step
-  talk Tallonkai Swiftroot##3567
-  turnin Ferocitas the Dream Eater##2459 |goto Teldrassil 55.57,56.95
-step
-  talk Sentinel Eralya Leafshadow##275683
-  accept Not Dead Yet##99047 |goto Teldrassil 37.56,36.93
-step
   talk Sentinel Lynessa Duskblossom##275744
-  accept Escaping Ban'ethil##99053 |goto Teldrassil 44.64,58.98
-step
-  talk Byancie##6094
-  turnin Not Dead Yet##99047 |goto Teldrassil 55.29,56.82
+  accept Escaping Ban'ethil##99053 |goto Teldrassil 44.68,58.92
 step
   talk Sentinel Kyra Starsong##2081
   turnin Escaping Ban'ethil##99053 |goto Teldrassil 56,59.52
+step
+  talk Moon Priestess Amara##2151
+  accept The Road to Darnassus##487 |goto Teldrassil 52.91,57.2
+step
+  talk Tallonkai Swiftroot##3567
+  accept Twisted Hatred##932 |goto Teldrassil 55.57,56.95
+step
+  talk Tallonkai Swiftroot##3567
+  accept Ferocitas the Dream Eater##2459 |goto Teldrassil 55.57,56.95
 step
   talk Athridas Bearmantle##2078
   accept The Relics of Wakening##483 |goto Teldrassil 55.96,57.27
@@ -369,8 +348,29 @@ step
   talk Sentinel Kyra Starsong##2081
   accept The Lost Runner##99046 |goto Teldrassil 56,59.52
 step
+  note Kill Lord Melenas and bring his head to Tallonkai Swiftroot in Dolanaar.
+  collect Melenas' Head##5221 |q 932 |goto Teldrassil 51.31,50.19 |tip {dropsfrom}Lord Melenas
+step
+  talk Tallonkai Swiftroot##3567
+  turnin Twisted Hatred##932 |goto Teldrassil 55.57,56.95
+step
+  note Shayla Nightbreeze on the road outside of Darnassus wants you to bring her 15 Gnarlpine Fangs.
+  collect Gnarlpine Fang##5220 |q 490 |goto Teldrassil 66.7,63.34 |tip {dropsfrom}Gnarlpine Ursa, Gnarlpine Gardener, Gnarlpine Warrior
+step
+  note Tallonkai Swiftroot in Dolanaar wants you to kill 7 Gnarlpine Mystics and find the Missing Jewel.
+  kill Gnarlpine Mystic##7235 |q 2459 |goto Teldrassil 68.64,52.3
+step
   talk Sentinel Eralya Leafshadow##275683
-  turnin The Lost Runner##99046 |goto Teldrassil 37.56,36.93
+  turnin The Lost Runner##99046 |goto Teldrassil 37.54,36.81
+step
+  talk Sentinel Eralya Leafshadow##275683
+  accept Not Dead Yet##99047 |goto Teldrassil 37.54,36.81
+step
+  talk Sentinel Shayla Nightbreeze##2155
+  turnin Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 42.22,51.27
+step
+  note Slay 6 Gnarlpine Ambushers and return to Sentinel Amara Nightwalker outside of Dolanaar.
+  kill Gnarlpine Ambusher##2152 |q 487 |goto Teldrassil 46.47,53.42
 step
   note Retrieve the Relics of Wakening and bring them to Athridas Bearmantle in Dolanaar.
   collect Raven Claw Talisman##3405 |q 483 |goto Teldrassil 45.65,57.44 |tip {dropsfrom}Chest of the Raven Claw
@@ -381,8 +381,17 @@ step
   talk Athridas Bearmantle##2078
   turnin The Relics of Wakening##483 |goto Teldrassil 55.96,57.27
 step
+  talk Moon Priestess Amara##2151
+  turnin The Road to Darnassus##487 |goto Teldrassil 52.91,57.2
+step
   talk Corithras Moonrage##3515
   turnin Crown of the Earth##933 |goto Teldrassil 56.14,61.71
+step
+  talk Tallonkai Swiftroot##3567
+  turnin Ferocitas the Dream Eater##2459 |goto Teldrassil 55.57,56.95
+step
+  talk Byancie##6094
+  turnin Not Dead Yet##99047 |goto Teldrassil 55.29,56.82
 step
   talk Laurna Morninglight##3600
   accept The Sisterhood of Elune##98391 |goto Teldrassil 55.56,56.75
@@ -390,14 +399,8 @@ step
   talk Byancie##6094
   accept The Great Tree Provides##99050 |goto Teldrassil 55.29,56.82
 step
-  talk Byancie##6094
-  accept Easing Suffering##99073 |goto Teldrassil 55.29,56.82
-step
   note Collect 6 Dewy Lasher Fronds, an Empty Vial, and a Refreshing Spring Water for Byancie in Dolanaar.
-  collect 6 Dewy Lasher Frond##286017 |q 99050 |goto Teldrassil 57.73,65.76 |tip {dropsfrom}Lasher Sproutling, Blooming Lasher, Wrathvine
-step
-  talk Sentinel Eralya Leafshadow##275683
-  turnin Easing Suffering##99073 |goto Teldrassil 37.56,36.93
+  collect 6 Dewy Lasher Frond##286017 |q 99050 |goto Teldrassil 57.91,66.56 |tip {dropsfrom}Lasher Sproutling, Blooming Lasher, Wrathvine
 step
   click Strange Fronded Plant##6752
   accept The Shimmering Frond##931 |goto Teldrassil 34.61,28.76
@@ -417,6 +420,9 @@ step
   talk Byancie##6094
   turnin The Great Tree Provides##99050 |goto Teldrassil 55.29,56.82
 step
+  talk Byancie##6094
+  accept Easing Suffering##99073 |goto Teldrassil 55.29,56.82
+step
   talk Denalan##2080
   turnin The Glowing Fruit##930 |goto Teldrassil 60.9,68.49
 step
@@ -428,6 +434,9 @@ step
 step
   turnin The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
 step
+  talk Sentinel Eralya Leafshadow##275683
+  turnin Easing Suffering##99073 |goto Teldrassil 37.54,36.81
+step
   talk Sentinel Arynia Cloudsbreak##3519
   accept The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
 step
@@ -436,9 +445,6 @@ step
 step
   talk Sentinel Arynia Cloudsbreak##3519
   turnin The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
-step
-  talk Sentinel Arynia Cloudsbreak##3519
-  accept Teldrassil##940 |goto Teldrassil 38.32,34.36
 step
   talk Corithras Moonrage##3515
   accept Crown of the Earth##7383 |goto Teldrassil 56.14,61.71
@@ -462,16 +468,19 @@ step
   talk Sentinel Arynia Cloudsbreak##3519
   accept Darkness in the Glade##98392 |goto Teldrassil 38.32,34.36
 step
-  talk Sentinel Arynia Cloudsbreak##3519
-  accept The Oracle Tree##98398 |goto Teldrassil 38.32,34.36
-step
   note Collect Hatescreech's Amulet, Windmistress Gaedress' Amulet, and Witchmother Arysa's Amulet for Sentinel Arynia Cloudsbreak in the Oracle Glade.
-  collect Hatescreech's Amulet##280831 |q 98392 |goto Teldrassil 35.12,38.81 |tip {dropsfrom}Hatescreech
+  collect Hatescreech's Amulet##280831 |q 98392 |goto Teldrassil 35.05,39.29 |tip {dropsfrom}Hatescreech
 step
   talk Sentinel Arynia Cloudsbreak##3519
   turnin Darkness in the Glade##98392 |goto Teldrassil 38.32,34.36
 step
-  turnin The Oracle Tree##98398 |goto Teldrassil 37.03,34.1
+  talk Sentinel Arynia Cloudsbreak##3519
+  accept The Oracle Tree##98398 |goto Teldrassil 38.32,34.36
+step
+  turnin The Oracle Tree##98398 |goto Teldrassil 37.02,34.11
+step
+  click Oracle Tree Bark##673378
+  accept Teldrassil##940 |goto Teldrassil 37.02,34.11
 step
   talk Mist##3568
   accept Mist##938 |goto Teldrassil 31.54,31.61
@@ -531,7 +540,7 @@ step
   turnin Planting the Heart##941 |goto Teldrassil 60.77,68.63
 step
   note Kill 8 Befouled Webwoods and bring Xethorr the Wicked's Mature Fel Moss to Tallonkai Swiftroot in Dolanaar.
-  kill Befouled Webwood##272096 |q 98403 |goto Teldrassil 49.81,44.22
+  kill Befouled Webwood##272096 |q 98403 |goto Teldrassil 49.61,45.07
 step
   talk Sentinel Arynia Cloudsbreak##3519
   turnin Mist##938 |goto Teldrassil 38.32,34.36
@@ -592,17 +601,11 @@ step
   talk Mathrengyl Bearwalker##4217
   turnin Heeding the Call##5925 |goto Darnassus 35.37,8.4 |tip {turninat}Darnassus
 step
-  talk Sister Aquinne##7316
-  accept The Temple of the Moon##2519 |goto Darnassus 28.94,45.8
-step
-  talk Arch Druid Fandral Staghelm##3516
-  accept Crown of the Earth##98046 |goto Darnassus 34.81,9.26
-step
-  talk Lariia##4092
-  accept Crown of the Earth##98065 |goto Darnassus 40.35,88.68
-step
   talk Sentinel Dalia Sunblade##8396
   accept Eyes of the Sentinels##98067 |goto Darnassus 39.65,89.54
+step
+  note Place Sentinel Owls at the entrance to the Cenarion Hold depths, the Darnassus Bank, the Craftsman's Terrace Inn, and the City Gate for Sentinel Dalia Sunblade in the Temple of the Moon in Darnassus.
+  get Eyes of the Sentinels |q 98067 |goto Darnassus 39.65,89.54
 step
   only Human Priest not completed(5634) not completed(5635) not completed(5636) not completed(5637) not completed(5638) not completed(5639) not haveq(5634) not haveq(5635) not haveq(5636) not haveq(5637) not haveq(5638) not haveq(5639)
   talk Priestess Alathea##11401
@@ -619,15 +622,6 @@ step
   only NightElf
   talk Mydrannul##4241
   accept Nessa Shadowsong##6344 |goto Darnassus 70.68,45.38
-step
-  talk Priestess A'moora##7313
-  turnin The Temple of the Moon##2519 |goto Darnassus 36.65,85.93 |tip {turninat}Darnassus
-step
-  talk Lariia##4092
-  turnin Crown of the Earth##98046 |goto Darnassus 40.35,88.68 |tip {turninat}Darnassus
-step
-  talk Tyrande Whisperwind##7999
-  turnin Crown of the Earth##98065 |goto Darnassus 39.1,81.59 |tip {turninat}Darnassus
 step
   talk Sentinel Dalia Sunblade##8396
   turnin Eyes of the Sentinels##98067 |goto Darnassus 39.65,89.54 |tip {turninat}Darnassus
@@ -647,8 +641,8 @@ step
   talk Rellian Greenspyre##3517
   turnin Rellian Greenspyre##922 |goto Darnassus 38.18,21.64 |tip {turninat}Darnassus
 step
-  talk Arch Druid Fandral Staghelm##3516
-  turnin Teldrassil##940 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
+  talk Sister Aquinne##7316
+  accept The Temple of the Moon##2519 |goto Darnassus 28.94,45.8
 step
   only Warrior not completed(1639) not completed(1678) not haveq(1639) not haveq(1678)
   talk Elanaria##4088
@@ -657,9 +651,6 @@ step
   only Rogue
   talk Syurna##4163
   accept Destiny Calls##2242 |goto Darnassus 36.99,21.91
-step
-  talk Priestess A'moora##7313
-  accept Tears of the Moon##2518 |goto Darnassus 36.65,85.93
 step
   only NightElf Druid
   talk Mathrengyl Bearwalker##4217
@@ -677,8 +668,8 @@ step
   note Find Sethir the Ancient and bring back any clues that you may discover to Syurna.
   collect Sethir's Journal##7737 |q 2242 |goto Teldrassil 37.11,22.83 |tip {dropsfrom}Sethir the Ancient
 step
-  note Priestess A'moora in the Temple of the Moon at Darnassus wants you to bring her Lady Sathrah's Silvery Spinnerets.
-  collect Silvery Spinnerets##8344 |q 2518 |goto Teldrassil 42,25.4 |tip {dropsfrom}Lady Sathrah
+  talk Priestess A'moora##7313
+  turnin The Temple of the Moon##2519 |goto Darnassus 36.65,85.93 |tip {turninat}Darnassus
 step
   only Warrior not completed(1639) not completed(1678) not haveq(1639) not haveq(1678)
   talk Elanaria##4088
@@ -687,9 +678,6 @@ step
   only Rogue
   talk Syurna##4163
   turnin Destiny Calls##2242 |goto Darnassus 36.99,21.91 |tip {turninat}Darnassus
-step
-  talk Priestess A'moora##7313
-  turnin Tears of the Moon##2518 |goto Darnassus 36.65,85.93 |tip {turninat}Darnassus
 step
   only NightElf Druid
   talk Dendrite Starblaze##11802
@@ -703,7 +691,7 @@ step
   accept Tumors##923 |goto Darnassus 38.18,21.64
 step
   talk Priestess A'moora##7313
-  accept Sathrah's Sacrifice##2520 |goto Darnassus 36.65,85.93
+  accept Tears of the Moon##2518 |goto Darnassus 36.65,85.93
 step
   only NightElf
   talk Vesprystus##3838
@@ -712,24 +700,36 @@ step
   note Bring 5 Mossy Tumors to Rellian Greenspyre in Darnassus.
   collect 5 Mossy Tumor##5170 |q 923 |goto Teldrassil 43.91,42.69 |tip {dropsfrom}Timberling Trampler, Timberling Mire Beast, Elder Timberling
 step
-  note Priestess A'moora wants you to place Lady Sathrah's silvery spinnerets at the fountain inside the temple, and then return to her.
-  collect Temple of the Moon Fountain##138498 |q 2520 |goto Darnassus 39.18,85.59
+  note Priestess A'moora in the Temple of the Moon at Darnassus wants you to bring her Lady Sathrah's Silvery Spinnerets.
+  collect Silvery Spinnerets##8344 |q 2518 |goto Teldrassil 42,25.4 |tip {dropsfrom}Lady Sathrah
 step
   talk Rellian Greenspyre##3517
   turnin Tumors##923 |goto Darnassus 38.18,21.64 |tip {turninat}Darnassus
 step
   talk Priestess A'moora##7313
-  turnin Sathrah's Sacrifice##2520 |goto Darnassus 36.65,85.93 |tip {turninat}Darnassus
+  turnin Tears of the Moon##2518 |goto Darnassus 36.65,85.93 |tip {turninat}Darnassus
 step
   only NightElf
   talk Laird##4200
   turnin Flight to Auberdine##6342 |goto Darkshore 36.77,44.28 |tip {turninat}Darkshore
 step
+  talk Arch Druid Fandral Staghelm##3516
+  turnin Teldrassil##940 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
+step
   talk Rellian Greenspyre##3517
   accept Return to Denalan##2498 |goto Darnassus 38.18,21.64
 step
+  talk Priestess A'moora##7313
+  accept Sathrah's Sacrifice##2520 |goto Darnassus 36.65,85.93
+step
+  note Priestess A'moora wants you to place Lady Sathrah's silvery spinnerets at the fountain inside the temple, and then return to her.
+  collect Temple of the Moon Fountain##138498 |q 2520 |goto Darnassus 39.18,85.59
+step
   talk Denalan##2080
   turnin Return to Denalan##2498 |goto Teldrassil 60.9,68.49
+step
+  talk Priestess A'moora##7313
+  turnin Sathrah's Sacrifice##2520 |goto Darnassus 36.65,85.93 |tip {turninat}Darnassus
 step
   only NightElf Hunter
   talk Jocaste##4146
@@ -747,6 +747,18 @@ step
 step
   talk Arch Druid Fandral Staghelm##3516
   turnin Crown of the Earth##935 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
+step
+  talk Arch Druid Fandral Staghelm##3516
+  accept Crown of the Earth##98046 |goto Darnassus 34.81,9.26
+step
+  talk Lariia##4092
+  turnin Crown of the Earth##98046 |goto Darnassus 40.35,88.68 |tip {turninat}Darnassus
+step
+  talk Lariia##4092
+  accept Crown of the Earth##98065 |goto Darnassus 40.35,88.68
+step
+  talk Tyrande Whisperwind##7999
+  turnin Crown of the Earth##98065 |goto Darnassus 39.1,81.59 |tip {turninat}Darnassus
 step
   note {travel}Darkshore
   goto Darkshore 36.97,44.13

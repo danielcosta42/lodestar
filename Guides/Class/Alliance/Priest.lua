@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Priest", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "a0c8f78e",
+	rev = "64d8762c",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -155,7 +155,7 @@ step
   only Gnome Priest
   note Speak to High Priestess Mims in Ironforge.
   talk High Priestess Mims##258785
-  turnin Confounding Flash##94824 |goto Ironforge 24.89,10.23
+  turnin Confounding Flash##94824 |goto Ironforge 24.84,10.16
 step
   only Human Priest not completed(5634) not completed(5636) not completed(5637) not completed(5638) not completed(5639) not completed(5640) not haveq(5634) not haveq(5636) not haveq(5637) not haveq(5638) not haveq(5639) not haveq(5640)
   talk Priestess Josetta##377
@@ -177,11 +177,11 @@ step
 step
   only Gnome Priest
   talk High Priestess Mims##258785
-  accept Confounding Flash##94817 |goto Ironforge 24.89,10.23
+  accept Confounding Flash##94817 |goto Ironforge 24.84,10.16
 step
   only Gnome Priest
   talk High Priestess Mims##258785
-  turnin Confounding Flash##94817 |goto Ironforge 24.89,10.23
+  turnin Confounding Flash##94817 |goto Ironforge 24.84,10.16
 step
   only Dwarf Priest not completed(5635) not completed(5636) not completed(5637) not completed(5638) not completed(5639) not completed(5640) not haveq(5635) not haveq(5636) not haveq(5637) not haveq(5638) not haveq(5639) not haveq(5640)
   talk High Priestess Laurena##376
@@ -222,6 +222,15 @@ step
   only Human Priest not completed(5677) not completed(5678) not haveq(5677) not haveq(5678)
   talk High Priestess Laurena##376
   turnin Arcane Feedback##5676 |goto Stormwind City 49.53,44.6
+step
+  only Gnome Priest
+  talk High Priestess Laurena##376
+  accept Contingency Plan##94819 |goto Stormwind City 49.53,44.6
+step
+  only Gnome Priest
+  note Speak to High Priestess Mims in Ironforge.
+  talk High Priestess Mims##258785
+  turnin Contingency Plan##94819 |goto Ironforge 24.84,10.16
 step
   only Priest
   talk Brother Joshua##5489

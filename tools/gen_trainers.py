@@ -115,7 +115,9 @@ def demo():
     assert chave_titulo("Instrutora Júnior de Herborismo") == "Herbalism"
     assert chave_titulo("Junior Mining Trainer") == "Mining"          # cliente em inglês
     assert chave_titulo("Mestre de Estábulo") is None and chave_titulo(None) is None
-    assert 246152 in CANDIDATOS and 2131 not in CANDIDATOS, "sem título no banco entra; com título, não"
+    # Marshal McBride não tem título nem no jogo original. Shari Stilwell (246152) servia aqui
+    # até o QuestieDB 1.0.6 dar a ela "Paladin Trainer".
+    assert 197 in CANDIDATOS and 2131 not in CANDIDATOS, "sem título no banco entra; com título, não"
     if TITULOS:                     # cache do cliente presente: o paladino da Horda aparece
         nomes = {t["n"] for t in cls["PALADIN"].get("Horde", [])}
         assert "Shari Stilwell" in nomes, nomes

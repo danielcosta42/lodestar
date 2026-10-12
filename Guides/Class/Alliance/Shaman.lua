@@ -4,8 +4,17 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Shaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "4b177035",
+	rev = "2d5fee9b",
 }, [[
+step
+  talk Sten Stoutarm##658
+  accept Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
+step
+  note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
+  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 49.41,37.75 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
+step
+  talk Sten Stoutarm##658
+  turnin Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
 step
   only Dwarf Shaman
   talk Sten Stoutarm##658
@@ -14,27 +23,27 @@ step
   only Dwarf Shaman
   note Read the Archaic Rune and speak to Teo Hammerstorm in Anvilmar.
   talk Teo Hammerstorm##257446
-  turnin Archaic Rune##98581 |goto Dun Morogh 28.84,66.23
+  turnin Archaic Rune##98581 |goto Dun Morogh 28.79,66.18
 step
   talk Ailee Farheart##251362
   accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.71,26.43
+  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   only not Human not NightElf not Skyborne Shaman
   talk Teo Hammerstorm##257446
-  accept Call of Earth##94373 |goto Dun Morogh 28.84,66.23
+  accept Call of Earth##94373 |goto Dun Morogh 28.79,66.18
 step
   only not Human not NightElf not Skyborne Shaman
   note Bring 2 Frostmane Bear Pendants to Teo Hammerstorm in Anvilmar.
@@ -42,86 +51,77 @@ step
 step
   only not Human not NightElf not Skyborne Shaman
   talk Teo Hammerstorm##257446
-  turnin Call of Earth##94373 |goto Dun Morogh 28.84,66.23
+  turnin Call of Earth##94373 |goto Dun Morogh 28.79,66.18
 step
   only not Human not NightElf not Skyborne Shaman
   talk Teo Hammerstorm##257446
-  accept Call of Earth##94374 |goto Dun Morogh 28.84,66.23
+  accept Call of Earth##94374 |goto Dun Morogh 28.79,66.18
 step
   only not Human not NightElf not Skyborne Shaman
   note Find the Spirit Stone and drink the Earth Sapta.
   talk Minor Manifestation of Earth##5891
-  turnin Call of Earth##94374 |goto Durotar 44.03,76.2
-step
-  only not Human not NightElf not Skyborne Shaman
-  talk Teo Hammerstorm##257446
-  accept Earth Sapta##94472 |goto Dun Morogh 28.84,66.23
-step
-  only not Human not NightElf not Skyborne Shaman
-  note Speak to Teo Hammerstorm for another Earth Sapta.
-  talk Teo Hammerstorm##257446
-  turnin Earth Sapta##94472 |goto Dun Morogh 28.84,66.23
+  turnin Call of Earth##94374 |goto Dun Morogh 24.84,61.86
 step
   only Shaman
   talk Minor Manifestation of Earth##5891
-  accept Call of Earth##94375 |goto Durotar 44.03,76.2
+  accept Call of Earth##94375 |goto Dun Morogh 24.84,61.86
 step
   only Shaman
   note Bring the Rough Quartz to Teo Hammerstorm in Anvilmar.
   talk Teo Hammerstorm##257446
-  turnin Call of Earth##94375 |goto Dun Morogh 28.84,66.23
+  turnin Call of Earth##94375 |goto Dun Morogh 28.79,66.18
+step
+  only not Human not NightElf not Skyborne Shaman
+  talk Teo Hammerstorm##257446
+  accept Earth Sapta##94472 |goto Dun Morogh 28.79,66.18
+step
+  only not Human not NightElf not Skyborne Shaman
+  note Speak to Teo Hammerstorm for another Earth Sapta.
+  talk Teo Hammerstorm##257446
+  turnin Earth Sapta##94472 |goto Dun Morogh 28.79,66.18
 step
   only not Human not NightElf not Skyborne Shaman
   talk Bruegs Kindleborn##257597
-  accept Call of Fire##94465 |goto Dun Morogh 87.62,43.77
+  accept Call of Fire##94465 |goto Dun Morogh 87.94,44.8
 step
   only not Human not NightElf not Skyborne Shaman
   note Bring the Torch of the Dormant Flame to Braldir Ashmantle in Loch Modan.
   talk Braldir Ashmantle##257808
-  turnin Call of Fire##94465 |goto Loch Modan 32.05,66.06
-step
-  only Shaman
-  talk Eldrun Stormbreaker##258098
-  accept Call of Fire##94449 |goto Ironforge 47.43,13.5
-step
-  only Shaman
-  note Find Bruegs Kindleborn in Dun Morogh.
-  talk Bruegs Kindleborn##257597
-  turnin Call of Fire##94449 |goto Dun Morogh 87.62,43.77
+  turnin Call of Fire##94465 |goto Loch Modan 32.17,65.97
 step
   only Shaman
   talk Braldir Ashmantle##257808
-  accept Fire Sapta##94473 |goto Loch Modan 32.05,66.06
+  accept Call of Fire##94466 |goto Loch Modan 32.17,65.97
+step
+  only Shaman
+  note Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan.
+  collect 1 Reagent Pouch##6652 |q 94466 |goto Durotar 52.67,25.36 |tip {dropsfrom}Burning Blade Cultist, Stonesplinter Seer
+step
+  only Shaman
+  talk Braldir Ashmantle##257808
+  turnin Call of Fire##94466 |goto Loch Modan 32.17,65.97
+step
+  only Shaman
+  talk Braldir Ashmantle##257808
+  accept Fire Sapta##94473 |goto Loch Modan 32.17,65.97
 step
   only Shaman
   note Speak to Braldir Ashmantle for another Fire Sapta
   talk Braldir Ashmantle##257808
-  turnin Fire Sapta##94473 |goto Loch Modan 32.05,66.06
+  turnin Fire Sapta##94473 |goto Loch Modan 32.17,65.97
 step
   only Shaman
-  click Brazier of the Dormant Flame##61934
-  accept Call of Fire##94468 |goto Durotar 38.96,58.22
+  talk Eldrun Stormbreaker##258098
+  accept Call of Fire##94449 |goto Ironforge 47.38,13.48
 step
   only Shaman
-  note Bring the Torch of Eternal Flame to Bruegs Kindleborn in Dun Morogh.
+  note Find Bruegs Kindleborn in Dun Morogh.
   talk Bruegs Kindleborn##257597
-  turnin Call of Fire##94468 |goto Dun Morogh 87.62,43.77
+  turnin Call of Fire##94449 |goto Dun Morogh 87.94,44.8
 step
   only Shaman
   talk Braldir Ashmantle##257808
-  accept Call of Fire##94466 |goto Loch Modan 32.05,66.06
-step
-  only Shaman
-  note Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan.
-  collect 1 Fire Tar##5026 |q 94466 |goto The Barrens 54.94,26.74 |tip {dropsfrom}Razormane Water Seeker, Razormane Thornweaver, Razormane Geomancer
-step
-  only Shaman
-  talk Braldir Ashmantle##257808
-  turnin Call of Fire##94466 |goto Loch Modan 32.05,66.06
-step
-  only Shaman
-  talk Braldir Ashmantle##257808
-  accept Call of Fire##94467 |goto Loch Modan 32.05,66.06
+  accept Call of Fire##94467 |goto Loch Modan 32.17,65.97
 step
   only Shaman
   note Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame.
@@ -131,54 +131,74 @@ step
   turnin Call of Fire##94467 |goto Durotar 38.96,58.22
 step
   only Shaman
+  click Brazier of the Dormant Flame##61934
+  accept Call of Fire##94468 |goto Durotar 38.96,58.22
+step
+  only Shaman
+  note Bring the Torch of Eternal Flame to Bruegs Kindleborn in Dun Morogh.
+  talk Bruegs Kindleborn##257597
+  turnin Call of Fire##94468 |goto Dun Morogh 87.94,44.8
+step
+  only Shaman
   talk Eldrun Stormbreaker##258098
-  accept Call of Water##94494 |goto Ironforge 47.43,13.5
+  accept Call of Water##94494 |goto Ironforge 47.38,13.48
 step
   only Shaman
   note Find Norric Lochthane in Loch Modan.
   talk Norric Lochthane##258043
-  turnin Call of Water##94494 |goto Loch Modan 41.89,19.03
+  turnin Call of Water##94494 |goto Loch Modan 41.86,19.02
 step
   only Shaman
   talk Norric Lochthane##258043
-  accept Call of Water##94495 |goto Loch Modan 41.89,19.03
+  accept Call of Water##94495 |goto Loch Modan 41.86,19.02
 step
   only Shaman
   note Find Hervdana Saegrund in the Wetlands.
   talk Hervdana Saegrund##258203
-  turnin Call of Water##94495 |goto Wetlands 65.73,76.43
+  turnin Call of Water##94495 |goto Wetlands 65.75,76.45
 step
   only Shaman
   talk Norric Lochthane##258043
-  accept Water Sapta##94616 |goto Loch Modan 41.89,19.03
+  accept Water Sapta##94616 |goto Loch Modan 41.86,19.02
 step
   only Shaman
   talk Norric Lochthane##258043
-  turnin Water Sapta##94616 |goto Loch Modan 41.89,19.03
+  turnin Water Sapta##94616 |goto Loch Modan 41.86,19.02
 step
   only Shaman
   talk Hervdana Saegrund##258203
-  accept Call of Water##94497 |goto Wetlands 65.73,76.43
+  accept Call of Water##94497 |goto Wetlands 65.75,76.45
 step
   only Shaman
   note Fill the Empty Brown Waterskin at the bottom of the waterfalls below Hervdana's cave and return it to her in the Wetlands.
-  collect Full Brown Waterskin##265734 |q 94497 |goto Wetlands 65.73,76.43
+  collect Full Brown Waterskin##265734 |q 94497 |goto Wetlands 65.75,76.45
 step
   only Shaman
   talk Hervdana Saegrund##258203
-  turnin Call of Water##94497 |goto Wetlands 65.73,76.43
+  turnin Call of Water##94497 |goto Wetlands 65.75,76.45
 step
   only Shaman
   talk Hervdana Saegrund##258203
-  accept Call of Water##94499 |goto Wetlands 65.73,76.43
+  accept Call of Water##94499 |goto Wetlands 65.75,76.45
 step
   only Shaman
   note Fill the Empty Red Waterskin at Stonewatch Falls near the Nightcrawler Murlocs and return to Hervdana Saegrund in the Wetlands.
-  collect Full Red Waterskin##265748 |q 94499 |goto Wetlands 65.73,76.43
+  collect Full Red Waterskin##265748 |q 94499 |goto Wetlands 65.75,76.45
 step
   only Shaman
   talk Hervdana Saegrund##258203
-  turnin Call of Water##94499 |goto Wetlands 65.73,76.43
+  turnin Call of Water##94499 |goto Wetlands 65.75,76.45
+step
+  only Shaman
+  talk Norric Lochthane##258043
+  accept Call of Water##94502 |goto Loch Modan 41.86,19.02
+step
+  only Shaman
+  note Cleanse the corruption at Stendel's Pond in Westfall.
+  collect Corrupt Manifestation's Bracers##7812 |q 94502 |goto Silverpine Forest 38.78,44.26 |tip {dropsfrom}Corrupt Minor Manifestation of Water
+step
+  only Shaman
+  turnin Call of Water##94502 |goto Westfall 45.57,59.88
 step
   only Shaman
   talk Minor Manifestation of Water##5895
@@ -187,11 +207,11 @@ step
   only Shaman
   note Bring the Shard of Water to Norric Lochthane in Loch Modan.
   talk Norric Lochthane##258043
-  turnin Call of Water##94505 |goto Loch Modan 41.89,19.03
+  turnin Call of Water##94505 |goto Loch Modan 41.86,19.02
 step
   only Shaman
   click Forgotten Shrine##619896
-  accept Call of Water##94503 |goto Westfall 45.45,59.89
+  accept Call of Water##94503 |goto Westfall 45.57,59.88
 step
   only Shaman
   note Speak to the Minor Manifestation of Water in Westfall.
@@ -200,24 +220,78 @@ step
 step
   only Shaman
   talk Hervdana Saegrund##258203
-  accept Call of Water##94500 |goto Wetlands 65.73,76.43
+  accept Call of Water##94500 |goto Wetlands 65.75,76.45
 step
   only Shaman
   note Fill the Unfilled Blue Waterskin at the waters of Astranaar in Ashenvale and return to Hervdana Saegrund in the Wetlands.
-  collect Full Blue Waterskin##265773 |q 94500 |goto Wetlands 65.73,76.43
+  collect Full Blue Waterskin##265773 |q 94500 |goto Wetlands 65.75,76.45
 step
   only Shaman
   talk Hervdana Saegrund##258203
-  turnin Call of Water##94500 |goto Wetlands 65.73,76.43
+  turnin Call of Water##94500 |goto Wetlands 65.75,76.45
 step
   only Shaman
   talk Hervdana Saegrund##258203
-  accept Call of Water##94501 |goto Wetlands 65.73,76.43
+  accept Call of Water##94501 |goto Wetlands 65.75,76.45
 step
   only Shaman
   note Bring the Vial of Purest Water to Norric Lochthane in Loch Modan.
   talk Norric Lochthane##258043
-  turnin Call of Water##94501 |goto Loch Modan 41.89,19.03
+  turnin Call of Water##94501 |goto Loch Modan 41.86,19.02
+step
+  only Shaman
+  talk Eldrun Stormbreaker##258098
+  accept Call of Air##94789 |goto Ironforge 47.38,13.48
+step
+  only Shaman
+  note Find Veyric Thundervein in Arathi Highlands.
+  talk Veyric Thunderhame##259023
+  turnin Call of Air##94789 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept Elemental Aid##96264 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  note Defeat Charlga Razorflank in Razorfen Kraul and collect information on the quilboar's plans.
+  collect Tattered Note##274463 |q 96264 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Charlga Razorflank
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  turnin Elemental Aid##96264 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Veyric Thunderhame in Arathi Highlands.
+  collect 5 Twisted Fire Totem##274044 |q 79358 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Skullthumper, Stonevault Bonesnapper, Stonevault Shaman
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  turnin Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept The Tempest's Weapons##96016 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  note Deliver the Eye of the Tempest to Bath'rah the Windwatcher in Alterac Mountains.
+  talk Bath'rah the Windwatcher##6176
+  turnin The Tempest's Weapons##96016 |goto Alterac Mountains 80.5,66.92
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept Heed My Call##96135 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  note Use the Twisted Totems to put an end to the quilboar ritual.
+  collect Eye of the Tempest##212792 |q 96135 |goto Thousand Needles 36.8,39.17 |tip {dropsfrom}Ravaging Tempest
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  turnin Heed My Call##96135 |goto Arathi Highlands 59.77,27.6
 step
   only Shaman
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.

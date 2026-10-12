@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (54-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Eastern Plaguelands (56-60)",
-	rev = "d6234b7a",
+	rev = "6ce109a2",
 }, [[
 step
   only completed(4183)
@@ -13,36 +13,45 @@ step
   accept The True Masters##4184 |goto Redridge Mountains 24.9,44.45
 step
   talk Marcy Baker##256390
-  accept A Sealed Crate##91899 |goto Redridge Mountains 9.75,71.02
+  accept A Sealed Crate##91899 |goto Redridge Mountains 9.86,71
 step
-  collect Sealed Apprentice Crate##248765 |q 91899 |goto Redridge Mountains 9.75,71.02
-step
-  talk Marcy Baker##256390
-  accept A Sealed Crate##91900 |goto Redridge Mountains 9.75,71.02
-step
-  collect Sealed Journeyman Crate##248766 |q 91900 |goto Redridge Mountains 9.75,71.02
+  collect Sealed Apprentice Crate##248765 |q 91899 |goto Redridge Mountains 9.86,71
 step
   talk Marcy Baker##256390
-  accept A Sealed Crate##91904 |goto Redridge Mountains 9.75,71.02
+  accept A Sealed Crate##91900 |goto Redridge Mountains 9.86,71
 step
-  collect Sealed Apprentice Crate##248770 |q 91904 |goto Redridge Mountains 9.75,71.02
-step
-  talk Marcy Baker##256390
-  accept A Sealed Crate##91905 |goto Redridge Mountains 9.75,71.02
-step
-  collect Sealed Journeyman Crate##248771 |q 91905 |goto Redridge Mountains 9.75,71.02
+  collect Sealed Journeyman Crate##248766 |q 91900 |goto Redridge Mountains 9.86,71
 step
   talk Marcy Baker##256390
-  turnin A Sealed Crate##91899 |goto Redridge Mountains 9.75,71.02
+  accept A Sealed Crate##91904 |goto Redridge Mountains 9.86,71
+step
+  collect Sealed Apprentice Crate##248770 |q 91904 |goto Redridge Mountains 9.86,71
 step
   talk Marcy Baker##256390
-  turnin A Sealed Crate##91900 |goto Redridge Mountains 9.75,71.02
+  accept A Sealed Crate##91905 |goto Redridge Mountains 9.86,71
+step
+  collect Sealed Journeyman Crate##248771 |q 91905 |goto Redridge Mountains 9.86,71
+step
+  buy Tamelyn Aldridge##256389 |goto Redridge Mountains 10.64,71.24 |tip Loot the quest item here — it starts the quest.
+  accept Sign Me Up!##95816 |goto Redridge Mountains 10.64,71.24
+step
+  note Bring the completed form to Elaine Compton in Redridge Mountains.
+  collect Massive Pile of Completed Forms##270897 |q 95816 |goto Redridge Mountains 10.64,71.24
 step
   talk Marcy Baker##256390
-  turnin A Sealed Crate##91904 |goto Redridge Mountains 9.75,71.02
+  turnin A Sealed Crate##91899 |goto Redridge Mountains 9.86,71
 step
   talk Marcy Baker##256390
-  turnin A Sealed Crate##91905 |goto Redridge Mountains 9.75,71.02
+  turnin A Sealed Crate##91900 |goto Redridge Mountains 9.86,71
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91904 |goto Redridge Mountains 9.86,71
+step
+  talk Marcy Baker##256390
+  turnin A Sealed Crate##91905 |goto Redridge Mountains 9.86,71
+step
+  talk Elaine Compton##256391
+  turnin Sign Me Up!##95816 |goto Redridge Mountains 10.32,70.99
 step
   only completed(4183)
   talk Highlord Bolvar Fordragon##1748

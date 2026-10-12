@@ -7,7 +7,8 @@ Para cada guia e cada raça x classe da facção, anda pelos passos respeitando 
   - quest repetível (troca de reputação/token: o passo não conclui numa corrida);
   - em raid, troca de peça de classe (token de set) — fica a cadeia que começa por item;
   - quest de sintonização repetida no guia da masmorra;
-  - "kill" num NPC amigo para lootar o item que inicia a quest.
+  - "kill" num NPC amigo para lootar o item que inicia a quest;
+  - quest de masmorra nova (sem mapa) ou de battleground no leveling.
 
 Uso: python tools/check_special.py   (sai com 1 se achar algo)
 """
@@ -159,6 +160,23 @@ def main():
                                     probs.append("%s [%s %s]: entrega fora do diário %d" % (chave, race, cls, qid))
                                 st["inlog"].discard(qid)
                                 st["turned"].add(qid)
+    # quest de masmorra sem mapa (Power Overwhelming, chefe dentro de City of Dalaran; Earthen
+    # Echo, que nem lista o objetivo) e de battleground (Conflict at Darkspear Island) é do guia
+    # próprio, não do leveling
+    leveling = set()
+    for f in glob.glob(os.path.join(RAIZ, "Leveling", "**", "*.lua"), recursive=True):
+        leveling |= {int(x) for x in re.findall(r"accept [^\n]*?##(\d+)", open(f, encoding="utf-8").read())}
+    masmorras = {qid for cat, _, ps in guias if cat == "Dungeons"
+                 for _, goals in ps for v, qid, _ in goals if v == "accept"}
+    for qid, fora_de_masmorra in ((92489, False), (98823, False), (98887, True)):
+        if qid in leveling or (qid in masmorras) == fora_de_masmorra:
+            probs.append("quest %d fora do lugar (leveling: %s, masmorra: %s)"
+                         % (qid, qid in leveling, qid in masmorras))
+    # objeto em capital inimiga não é início: a Aliança pega Deviate Hides com o Nalpak, não na
+    # caixa de correio de Orgrimmar
+    wc = open(os.path.join(RAIZ, "Dungeons", "Alliance", "Wailing_Caverns.lua"), encoding="utf-8").read()
+    if re.search(r"accept [^\n]*##1486 [^\n]*Orgrimmar", wc):
+        probs.append("Wailing Caverns da Aliança: Deviate Hides começa em Orgrimmar")
     # um aviso por (guia, problema), não um por combinação
     vistos = []
     for p in probs:

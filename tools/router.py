@@ -91,12 +91,13 @@ HUB_MERGE_DIST = 6.0    # % da zona: pontos mais próximos que isso viram um hub
 # zoneOrSort que não é rota de leveling: feriado/evento (-22 Seasonal, -284, -364
 # Darkmoon, -365 guerra de AQ, -366, -368, -369), reputação e lendária de fim de
 # jogo (-367, -344, -1), profissão (-24, -101, -121, -181, -182, -201, -264, -304,
-# -324) e campo de batalha (AV 2597, WSG 3277, AB 3358). Têm guia próprio no
-# gen_special ou nenhum. Classe (-61, -141...) fica — sai com `only <Classe>` —, e
-# o Camping do Forever (-666) também: é o tutorial da zona inicial.
+# -324) e campo de batalha (AV 2597, WSG 3277, AB 3358, Darkspear Islands 16606, o
+# 15v15 do Forever). Têm guia próprio no gen_special ou nenhum. Classe (-61, -141...)
+# fica — sai com `only <Classe>` —, e o Camping do Forever (-666) também: é o
+# tutorial da zona inicial.
 FORA_DO_LEVELING = {-22, -284, -364, -365, -366, -367, -368, -369, -344, -1,
                     -24, -101, -121, -181, -182, -201, -264, -304, -324,
-                    2597, 3277, 3358}
+                    2597, 3277, 3358, 16606}
 # entregar marca de campo de batalha ou doar pano é reputação, não rota: Concerted
 # Efforts fazia do Alterac da Aliança um guia "34-60"
 SO_REPUTACAO = {20558, 20559, 20560, 2592, 4306, 4338, 14047}
@@ -532,7 +533,19 @@ class Router:
             src = self.item_source(iid)
             if src and src[3]:
                 rota.add(src[3][0])
-        return dentro(alvo) or dentro(rota) or dentro(self._areas(q["endNpcs"], self.npc))
+        fim = self._areas(q["endNpcs"], self.npc)
+        if dentro(alvo) or dentro(rota) or dentro(fim):
+            return True
+        # Classificada na masmorra e sem nada posicionado fora — o alvo, ou quem recebe se
+        # não há objetivo — é de masmorra. Na masmorra nova do Forever, sem mapa (City of
+        # Dalaran, Ruins of Lordaeron...), o QuestieDB não posiciona nada lá dentro e às
+        # vezes nem lista o objetivo ("Bring the Titan Relic", Earthen Echo): ali basta o
+        # objetivo não estar posicionado fora; quem recebe fora é só o fim da cadeia.
+        zona = self.zones.get(str(q["zoneOrSort"])) or {}
+        if " - Dungeon" not in zona.get("name", ""):
+            return False
+        objetivo = q["objCreatures"] or q["objObjects"] or q["objItems"]
+        return not (alvo | rota if objetivo or not zona.get("uiMapId") else fim)
 
     def group_tag(self, nid, quest_level):
         """ ' |elite' / ' |raid' se o alvo (NPC) exige grupo/raide, senão ''.
@@ -564,9 +577,17 @@ class Router:
         if str(prefer_area) in spawns:
             pts = spawns[str(prefer_area)]
             return prefer_area, self._centroid(pts)
-        # senão: a zona com mais spawns (mais provável de ser "a" casa dele)
-        best_area, best_pts = max(spawns.items(), key=lambda kv: len(kv[1]))
+        # senão: a zona com mais spawns (mais provável de ser "a" casa dele), fora da
+        # capital inimiga quando houver outra (o Incubus do bruxo nasce em Undercity,
+        # Stormwind e Orgrimmar: a Aliança vai a Stormwind)
+        best_area, best_pts = max(spawns.items(),
+                                  key=lambda kv: (int(kv[0]) not in self._inimigas, len(kv[1])))
         return int(best_area), self._centroid(best_pts)
+
+    @property
+    def _inimigas(self):
+        """Capitais da outra facção (nenhuma para o roteador neutro)."""
+        return CAPITAIS.get({"A": "H", "H": "A"}.get(self.faction), set())
 
     @staticmethod
     def _centroid(pts):
@@ -826,7 +847,9 @@ class Router:
             if giver is None:                       # início por OBJETO (clicar p/ pegar)
                 for o in q["startObjects"]:
                     cand = self.obj(o)
-                    if cand and self.best_spawn(cand, area):
+                    sp = self.best_spawn(cand, area)
+                    # a caixa de correio de Orgrimmar também dá Deviate Hides: não para a Aliança
+                    if sp and sp[0] not in self._inimigas:
                         giver, giver_id, giver_kind = cand, o, "object"
                         break
             if giver is None:                       # início por ITEM (lootar a fonte)

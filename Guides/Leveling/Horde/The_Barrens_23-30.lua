@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Barrens (23-30)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (27-35)",
-	rev = "8f2fee4e",
+	rev = "9e6d66dc",
 }, [[
 step
   talk Korran##3428
@@ -59,7 +59,7 @@ step
   accept The Harvester##897 |goto The Barrens 42,70
 step
   click Burned-Out Remains##415106
-  accept Stepping Stones##79192 |goto The Barrens 46.34,73.96
+  accept Stepping Stones##79192 |goto The Barrens 46.41,73.96
 step
   kill Washte Pawne##3472 |goto The Barrens 44.81,78.88 |tip Loot the quest item here — it starts the quest.
   accept Washte Pawne##885 |goto The Barrens 44.81,78.88
@@ -82,7 +82,7 @@ step
   collect Filled Brown Waterskin##7769 |q 1535 |goto The Barrens 44.28,76.75 |tip {dropsfrom}Quilboar Watering Hole
 step
   note Slay Alliance soldiers encroaching into the Barrens at the border to Dustwallow Marsh, then return to Grunt Logmar at Camp Taurajo.
-  kill Encroaching Soldier##268622 |q 97250 |goto The Barrens 48.7,77.49
+  kill Encroaching Soldier##268622 |q 97250 |goto The Barrens 48.77,77.21
 step
   only Shaman
   talk Brine##5899
@@ -129,10 +129,6 @@ step
   talk Mangletooth##3430
   accept Betrayal from Within##906 |goto The Barrens 44.55,59.26
 step
-  only completed(913)
-  talk Jorn Skyseer##3387
-  accept Mahren Skyseer##874 |goto The Barrens 44.86,59.14
-step
   talk Gann Stonespire##3341
   turnin Gann's Reclamation##843 |goto The Barrens 45.89,77
 step
@@ -151,6 +147,19 @@ step
   accept Further Instructions##1095 |goto The Barrens 62.98,37.22
 step
   only completed(913)
+  talk Jorn Skyseer##3387
+  accept Mahren Skyseer##874 |goto The Barrens 44.86,59.14
+step
+  talk Gann Stonespire##3341
+  turnin Revenge of Gann##846 |goto The Barrens 45.89,77
+step
+  talk Gann Stonespire##3341
+  accept Revenge of Gann##849 |goto The Barrens 45.89,77
+step
+  note Destroy the flying machine at Bael Modan and return to Gann Stonespire.
+  collect Bael Modan Flying Machine##3644 |q 849 |goto The Barrens 46.97,85.63
+step
+  only completed(913)
   talk Mahren Skyseer##3388
   turnin Mahren Skyseer##874 |goto The Barrens 65.84,43.86
 step
@@ -167,24 +176,7 @@ step
   turnin Isha Awak##873 |goto The Barrens 65.84,43.86
 step
   talk Gann Stonespire##3341
-  turnin Revenge of Gann##846 |goto The Barrens 45.89,77
-step
-  talk Gann Stonespire##3341
-  accept Revenge of Gann##849 |goto The Barrens 45.89,77
-step
-  note Destroy the flying machine at Bael Modan and return to Gann Stonespire.
-  collect Bael Modan Flying Machine##3644 |q 849 |goto The Barrens 46.97,85.63
-step
-  talk Gann Stonespire##3341
   turnin Revenge of Gann##849 |goto The Barrens 45.89,77
-step
-  only not Orc not Tauren not Skyborne Mage completed(1945)
-  talk Kil'hala##3484
-  accept Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
-step
-  only not Orc not Tauren not Skyborne Mage completed(1945)
-  talk Kil'hala##3484
-  turnin Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
 step
   talk Tatternack Steelforge##3433
   accept A New Ore Sample##1153 |goto The Barrens 45.1,57.68
@@ -218,7 +210,7 @@ step
   talk Shenthul##3401
   turnin Mission: Possible But Not Probable##2478 |goto Orgrimmar 43.05,53.74 |tip {turninat}Orgrimmar
 step
-  turnin Stepping Stones##79192 |goto Stonetalon Mountains 40.79,52.61 |tip {turninat}Stonetalon Mountains
+  turnin Stepping Stones##79192 |goto Stonetalon Mountains 40.76,52.57 |tip {turninat}Stonetalon Mountains
 step
   only completed(6981)
   talk Arch Druid Hamuul Runetotem##5769
@@ -236,6 +228,10 @@ step
 step
   talk Belgrom Rockmaul##4485
   turnin The Swarm Grows##1145 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
+step
+  only not Orc not Tauren not Skyborne Mage completed(1944)
+  talk Deino##5885
+  accept Laughing Sisters##1945 |goto Orgrimmar 38.45,86.13
 step
   only Warrior
   talk Torm Ragetotem##3041
@@ -260,6 +256,10 @@ step
   note Kill the shredders XT:4 and XT:9, then return to Seereth Stonebreak at the border of the Stonetalon Mountains and the Barrens.
   kill XT:4##4073 |q 1068 |goto Stonetalon Mountains 67.2,46.69
 step
+  only not Orc not Tauren not Skyborne Mage completed(1944)
+  note Bring 12 Laughing Sister's Hairs to Kil'hala at the Crossroads.
+  collect 12 Laughing Sister's Hair##7270 |q 1945 |goto Ashenvale 59.79,55.37 |tip {dropsfrom}Laughing Sister
+step
   only Warrior completed(1824)
   note Bring to Thun'grim Firegaze 15 Smoky Iron Ingots, 10 Powdered Azurite, 10 Iron Bars and a Vial of Phlogiston.
   collect Smoky Iron Ingot##7126 |q 1838 |goto Stonetalon Mountains 71.76,60.29 |tip {dropsfrom}Windshear Vermin, Windshear Digger, Windshear Tunnel Rat
@@ -274,6 +274,10 @@ step
   only completed(1062)
   talk Seereth Stonebreak##4049
   turnin Shredding Machines##1068 |goto The Barrens 35.26,27.88
+step
+  only not Orc not Tauren not Skyborne Mage completed(1944)
+  talk Kil'hala##3484
+  turnin Laughing Sisters##1945 |goto The Barrens 52.2,31.7
 step
   only Warrior completed(1824)
   talk Thun'grim Firegaze##5878
@@ -301,6 +305,10 @@ step
   only completed(1094)
   talk Ziz Fizziks##4201
   accept Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6
+step
+  only not Orc not Tauren not Skyborne Mage completed(1944)
+  talk Kil'hala##3484
+  accept Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
 step
   only Warrior completed(1824)
   talk Thun'grim Firegaze##5878
@@ -339,6 +347,10 @@ step
   only completed(1094)
   talk Ziz Fizziks##4201
   turnin Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6 |tip {turninat}Stonetalon Mountains
+step
+  only not Orc not Tauren not Skyborne Mage completed(1944)
+  talk Kil'hala##3484
+  turnin Nether-lace Garment##1946 |goto The Barrens 52.2,31.7
 step
   talk Tatternack Steelforge##3433
   turnin A New Ore Sample##1153 |goto The Barrens 45.1,57.68

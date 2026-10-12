@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-23)", {
+ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-24)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (21-28)",
-	rev = "da1732b2",
+	rev = "d8c6114c",
 }, [[
 step
   talk Barkeep Daniels##346
@@ -120,8 +120,8 @@ step
   talk Marshal Marris##382
   accept Blackrock Blockade##98387 |goto Redridge Mountains 28.41,48.97
 step
-  note Bring 10 Battleworn Axes to Marshal Marris in Lakeshire.
-  collect 10 Stolen Supplies##280839 |q 98387 |goto Redridge Mountains 28.41,48.97 |tip {dropsfrom}Water Barrel, Grain Sack
+  note Bring 8 Stolen Weapons and 10 Blackrock Supplies to Marshal Marris in Lakeshire.
+  collect 8 Stolen Weapon##280841 |q 98387 |goto Redridge Mountains 28.41,48.97 |tip {dropsfrom}Weapon Rack, Stolen Weapon
 step
   note Bring 10 Spotted Sunfish to Dockmaster Baren in Lakeshire.
   collect 10 Spotted Sunfish##1467 |q 127 |goto Redridge Mountains 50.2,61.74 |tip {dropsfrom}Murloc Flesheater, Murloc Nightcrawler, Murloc Tidecaller
@@ -202,12 +202,21 @@ step
   talk Guard Howe##903
   accept Blackrock Bounty##128 |goto Redridge Mountains 26.45,57.85
 step
+  click Wanted: Incinerator Gar'im##649051
+  accept WANTED: Incinerator Gar'im##95999 |goto Redridge Mountains 24.45,46.11
+step
   note Bring Tharil'zun's Head to Marshal Marris in Redridge.
   kill Tharil'zun##486 |goto Redridge Mountains 64.36,59.41 |elite
   collect Tharil'zun's Head##1260 |q 19 |goto Redridge Mountains 64.36,59.41
 step
+  note Deliver the Broken Staff of Incinerator Gar'im to Magistrate Solomon in Lakeshire.
+  collect Broken Staff of Incinerator Gar'im##271872 |q 95999 |goto Redridge Mountains 71.61,84.4 |tip {dropsfrom}Incinerator Gar'im
+step
   talk Marshal Marris##382
   turnin Tharil'zun##19 |goto Redridge Mountains 28.41,48.97
+step
+  talk Magistrate Solomon##344
+  turnin WANTED: Incinerator Gar'im##95999 |goto Redridge Mountains 24.9,44.45
 step
   talk Corporal Keeshan##349
   accept Missing In Action##219 |goto Redridge Mountains 23.3,12.55
@@ -257,18 +266,9 @@ step
   talk Renzik "The Shiv"##6946
   accept Redridge Rendezvous##2281 |goto Stormwind City 78.29,71.14
 step
-  talk Roy Lewells##268568
-  accept Reading Room##97234 |goto Stormwind City 38.75,62.15
-step
-  talk Donyal Tovald##2504
-  accept Shelf Picked##97237 |goto Stormwind City 75.05,30.12
-step
-  note Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park.
-  collect The Forsaken Ally##277195 |q 97237 |goto Stormwind City 75.05,30.12
-step
   only Mage
   talk Garion Wendell##211033
-  accept Research Access##97286 |goto Stormwind City 49,86.44
+  accept Research Access##97286 |goto Stormwind City 49.05,86.37
 step
   only Warrior
   talk Kelv Sternhammer##5113
@@ -282,9 +282,9 @@ step
   note Using the Heartswood Core, summon and subdue a succubus, then return the Heartswood Core to Gakin the Darkbinder in the Slaughtered Lamb.
   use Summoned Succubus##5677 |q 1739 |tip {useit}
 step
-  only Rogue
+  only Rogue completed(2359)
   talk Master Mathias Shaw##332
-  accept Mathias and the Defias##2360 |goto Stormwind City 78.31,70.74
+  accept The Touch of Zanzil##2607 |goto Stormwind City 78.31,70.74
 step
   only Dwarf Priest not completed(5641) not completed(5647) not haveq(5641) not haveq(5647)
   talk High Priestess Laurena##376
@@ -298,27 +298,41 @@ step
   talk High Priestess Laurena##376
   accept Arcane Feedback##5676 |goto Stormwind City 49.53,44.6
 step
-  only not NightElf not Gnome not Skyborne Paladin completed(1649)
-  talk Duthorian Rall##6171
-  accept The Tome of Valor##1650 |goto Stormwind City 50.48,47.49
+  only Warlock completed(65602)
+  talk Gakin the Darkbinder##6122
+  accept The Binding##65603 |goto Stormwind City 39.22,85.23
 step
   only Shaman
-  click Forgotten Shrine##619896
-  accept Call of Water##94503 |goto Westfall 45.45,59.89
+  talk Eldrun Stormbreaker##258098
+  accept Call of Water##94494 |goto Ironforge 47.38,13.48
+step
+  only Shaman
+  talk Norric Lochthane##258043
+  accept Water Sapta##94616 |goto Loch Modan 41.86,19.02
+step
+  only Gnome Priest
+  talk High Priestess Laurena##376
+  accept Contingency Plan##94819 |goto Stormwind City 49.53,44.6
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Ursula Deline##5495
+  accept Earning Your Salt##78091 |goto Stormwind City 39.89,84.19
+step
+  only Warlock completed(65602)
+  note Using the Wooden Figurine, summon and subdue an incubus, then return the Wooden Figurine to Gakin the Darkbinder in the Slaughtered Lamb.
+  use Summoned Incubus##185335 |q 65603 |goto Stormwind City 39.35,84.74 |tip {useit}
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  note Collect 14 Summoner's Salt from Blackrock Summoners in Redridge Mountains, then return to Ursula Deline in Stormwind.
+  collect 14 Summoner's Salt##209778 |q 78091 |goto Redridge Mountains 24.25,12.05 |tip {dropsfrom}Gath'Ilzogg, Blackrock Champion, Blackrock Shadowcaster
 step
   only Rogue
   talk Lucius##6966
   turnin Redridge Rendezvous##2281 |goto Redridge Mountains 22.97,52.04
 step
-  talk Donyal Tovald##2504
-  turnin Reading Room##97234 |goto Stormwind City 75.05,30.12 |tip {turninat}Stormwind City
-step
-  talk Roy Lewells##268568
-  turnin Shelf Picked##97237 |goto Stormwind City 38.75,62.15 |tip {turninat}Stormwind City
-step
   only Mage
   talk Garion Wendell##211033
-  turnin Research Access##97286 |goto Stormwind City 49,86.44 |tip {turninat}Stormwind City
+  turnin Research Access##97286 |goto Stormwind City 49.05,86.37 |tip {turninat}Stormwind City
 step
   only Warrior
   talk Yorus Barleybrew##6166
@@ -328,9 +342,9 @@ step
   talk Gakin the Darkbinder##6122
   turnin The Binding##1739 |goto Stormwind City 39.22,85.23 |tip {turninat}Stormwind City
 step
-  only Rogue
-  talk Agent Kearnen##7024
-  turnin Mathias and the Defias##2360 |goto Westfall 68.49,70.08 |tip {turninat}Westfall
+  only Rogue completed(2359)
+  talk Doc Mixilpixil##7207
+  turnin The Touch of Zanzil##2607 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
 step
   only Dwarf Priest not completed(5641) not completed(5647) not haveq(5641) not haveq(5647)
   talk High Priest Rohan##11406
@@ -344,13 +358,25 @@ step
   talk High Priestess Laurena##376
   turnin Arcane Feedback##5676 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
 step
-  only not NightElf not Gnome not Skyborne Paladin completed(1649)
-  talk Daphne Stilwell##6182
-  turnin The Tome of Valor##1650 |goto Westfall 41.69,89.24 |tip {turninat}Westfall
+  only Warlock completed(65602)
+  talk Gakin the Darkbinder##6122
+  turnin The Binding##65603 |goto Stormwind City 39.22,85.23 |tip {turninat}Stormwind City
 step
   only Shaman
-  talk Minor Manifestation of Water##5895
-  turnin Call of Water##94503 |goto Silverpine Forest 38.65,44.58 |tip {turninat}Silverpine Forest
+  talk Norric Lochthane##258043
+  turnin Call of Water##94494 |goto Loch Modan 41.86,19.02 |tip {turninat}Loch Modan
+step
+  only Shaman
+  talk Norric Lochthane##258043
+  turnin Water Sapta##94616 |goto Loch Modan 41.86,19.02 |tip {turninat}Loch Modan
+step
+  only Gnome Priest
+  talk High Priestess Mims##258785
+  turnin Contingency Plan##94819 |goto Ironforge 24.84,10.16 |tip {turninat}Ironforge
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Ursula Deline##5495
+  turnin Earning Your Salt##78091 |goto Stormwind City 39.89,84.19 |tip {turninat}Stormwind City
 step
   talk General Marcus Jonathan##466
   accept Messenger to Stormwind##121 |goto Stormwind City 69.17,82.72
@@ -367,21 +393,13 @@ step
   talk Yorus Barleybrew##6166
   accept The Rethban Gauntlet##1699 |goto Redridge Mountains 21.49,44.72
 step
-  only Rogue
-  talk Agent Kearnen##7024
-  accept Klaven's Tower##2359 |goto Westfall 68.49,70.08
-step
-  only not NightElf not Gnome not Skyborne Paladin completed(1649)
-  talk Daphne Stilwell##6182
-  accept The Tome of Valor##1651 |goto Westfall 41.69,89.24
+  only Rogue completed(2359)
+  talk Doc Mixilpixil##7207
+  accept The Touch of Zanzil##2608 |goto Stormwind City 80.06,69.9
 step
   only Rogue
   note Open Lucius's Lockbox, recover the Token of Thievery and return it to Lucius in Lakeshire.
   collect Token of Thievery##7871 |q 2282 |goto Redridge Mountains 46.95,44.69 |tip {dropsfrom}Lucius's Lockbox
-step
-  only Rogue
-  note Steal the Defias Tower Key, break into the Defias Tower and uncover the contents of the Duskwood Chest. Take whatever information you find back to Mathias Shaw in Stormwind. Read Kearnen's Journal to gain insight about the tower.
-  collect Klaven Mortwake's Journal##7908 |q 2359 |goto Westfall 70.41,73.93 |tip {dropsfrom}Duskwood Chest
 step
   talk Magistrate Solomon##344
   turnin Messenger to Stormwind##121 |goto Redridge Mountains 24.9,44.45
@@ -398,13 +416,9 @@ step
   talk Yorus Barleybrew##6166
   turnin The Rethban Gauntlet##1699 |goto Redridge Mountains 21.49,44.72
 step
-  only Rogue
-  talk Master Mathias Shaw##332
-  turnin Klaven's Tower##2359 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
-step
-  only not NightElf not Gnome not Skyborne Paladin completed(1649)
-  talk Daphne Stilwell##6182
-  turnin The Tome of Valor##1651 |goto Westfall 41.69,89.24 |tip {turninat}Westfall
+  only Rogue completed(2359)
+  talk Doc Mixilpixil##7207
+  turnin The Touch of Zanzil##2608 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
 step
   talk Magistrate Solomon##344
   accept Messenger to Westfall##143 |goto Redridge Mountains 24.9,44.45
@@ -417,13 +431,13 @@ step
   talk Yorus Barleybrew##6166
   accept The Shieldsmith##1702 |goto Redridge Mountains 21.49,44.72
 step
-  only Rogue
-  talk Master Mathias Shaw##332
-  accept The Touch of Zanzil##2607 |goto Stormwind City 78.31,70.74
+  only Rogue completed(2359)
+  talk Doc Mixilpixil##7207
+  accept The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9
 step
-  only not NightElf not Gnome not Skyborne Paladin completed(1649)
-  talk Daphne Stilwell##6182
-  accept The Tome of Valor##1652 |goto Westfall 41.69,89.24
+  only Rogue completed(2359)
+  note Bring Doc Mixilpixil one bundle of Simple Wildflowers, one Leaded Vial, one Bronze Tube, and one Spool of Light Chartreuse Silk Thread. The 'itis' doesn't cure itself, young <fella/lady>.
+  collect Simple Wildflowers##3421 |q 2609 |goto Stormwind City 69.24,71.84 |tip {dropsfrom}Bernard Gump, Felicia Gump
 step
   talk Gryan Stoutmantle##234
   turnin Messenger to Westfall##143 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
@@ -436,13 +450,9 @@ step
   talk Furen Longbeard##5413
   turnin The Shieldsmith##1702 |goto Stormwind City 64.62,37.23 |tip {turninat}Stormwind City
 step
-  only Rogue
+  only Rogue completed(2359)
   talk Doc Mixilpixil##7207
-  turnin The Touch of Zanzil##2607 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
-step
-  only not NightElf not Gnome not Skyborne Paladin completed(1649)
-  talk Duthorian Rall##6171
-  turnin The Tome of Valor##1652 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
+  turnin The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
 step
   talk Gryan Stoutmantle##234
   accept Messenger to Westfall##144 |goto Westfall 56.33,47.52
@@ -450,14 +460,6 @@ step
   only completed(65)
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##142 |goto Westfall 56.33,47.52
-step
-  only not NightElf not Gnome not Skyborne Paladin completed(1649)
-  talk Duthorian Rall##6171
-  accept The Test of Righteousness##1653 |goto Stormwind City 50.48,47.49
-step
-  only Rogue
-  talk Doc Mixilpixil##7207
-  accept The Touch of Zanzil##2608 |goto Stormwind City 80.06,69.9
 step
   only completed(65)
   note Track down the Defias Messenger in Westfall and bring his message to Stoutmantle.
@@ -470,14 +472,6 @@ step
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##142 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
 step
-  only not NightElf not Gnome not Skyborne Paladin completed(1649)
-  talk Jordan Stilwell##6181
-  turnin The Test of Righteousness##1653 |goto Dun Morogh 52.49,36.92 |tip {turninat}Dun Morogh
-step
-  only Rogue
-  talk Doc Mixilpixil##7207
-  turnin The Touch of Zanzil##2608 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
-step
   only completed(65)
   talk The Defias Traitor##467
   accept The Defias Brotherhood##155 |goto Westfall 55.68,47.5
@@ -485,24 +479,12 @@ step
   talk Magistrate Solomon##344
   accept Messenger to Darkshire##145 |goto Redridge Mountains 24.9,44.45
 step
-  only Rogue
-  talk Doc Mixilpixil##7207
-  accept The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9
-step
-  only Rogue
-  note Bring Doc Mixilpixil one bundle of Simple Wildflowers, one Leaded Vial, one Bronze Tube, and one Spool of Light Chartreuse Silk Thread. The 'itis' doesn't cure itself, young <fella/lady>.
-  collect Simple Wildflowers##3421 |q 2609 |goto Stormwind City 69.24,71.84 |tip {dropsfrom}Bernard Gump, Felicia Gump
-step
   only completed(65)
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##155 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
 step
   talk Lord Ello Ebonlocke##263
   turnin Messenger to Darkshire##145 |goto Duskwood 71.93,46.42 |tip {turninat}Duskwood
-step
-  only Rogue
-  talk Doc Mixilpixil##7207
-  turnin The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
 step
   note {travel}Stormwind City
   goto Stormwind City 56.31,53.99

@@ -1,15 +1,35 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (32-40)", {
+ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (32-39)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Alterac Mountains (34-40)",
-	rev = "f371048e",
+	rev = "de361adc",
 }, [[
+step
+  only completed(513)
+  talk Master Apothecary Faranell##2055
+  accept Elixir of Agony##515 |goto Undercity 48.82,69.28
+step
+  only completed(513)
+  note Bring the Mudsnout Mixture, a Strong Troll's Blood Potion, 5 Daggerspine Scales and 5 Torn Fin Eyes to Apothecary Lydon in Tarren Mill.
+  collect Strong Troll's Blood Potion##3388 |q 515 |goto Undercity 48.82,69.28
+step
+  only Warlock completed(1801)
+  talk Jorah Annison##6293
+  accept Tome of the Cabal##1803 |goto Undercity 75.92,37.89
 step
   note {fp}Zarise
   goto Hillsbrad Foothills 60.14,18.62 |tip {vendor}
+step
+  only completed(513)
+  talk Apothecary Lydon##2216
+  turnin Elixir of Agony##515 |goto Hillsbrad Foothills 61.44,19.06
+step
+  only completed(513)
+  talk Apothecary Lydon##2216
+  accept Elixir of Agony##517 |goto Hillsbrad Foothills 61.44,19.06
 step
   only completed(541)
   talk High Executor Darthalia##2215
@@ -24,6 +44,15 @@ step
   talk Novice Thaivand##2429
   accept Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
 step
+  talk Magus Wordeen Voidglare##2410
+  accept Key to the City##93680 |goto Hillsbrad Foothills 61.6,20.85
+step
+  note Acquire the Dalaran Sewer Key for Magus Wordeen Voidglare in Tarren Mill.
+  collect Grimy Key##279469 |q 93680 |goto Hillsbrad Foothills 61.6,20.85
+step
+  talk Magus Wordeen Voidglare##2410
+  accept Shrewd Negotiations##97287 |goto Hillsbrad Foothills 61.6,20.85
+step
   only completed(498)
   talk Krusk##2229
   accept Infiltration##533 |goto Hillsbrad Foothills 63.24,20.66
@@ -31,17 +60,42 @@ step
   talk Magus Wordeen Voidglare##2410
   accept Prison Break In##544 |goto Hillsbrad Foothills 61.6,20.85
 step
+  talk Magus Wordeen Voidglare##2410
+  accept Blood in the Streets##92434 |goto Hillsbrad Foothills 61.6,20.85
+step
+  only completed(513)
+  note Bring a keg of Shindigger Stout to Apothecary Lydon in Tarren Mill.
+  collect Keg of Shindigger Stout##3517 |q 517 |goto Hillsbrad Foothills 72.02,81.16
+step
   note Retrieve Helcular's Rod from the Yeti and bring it back to Novice Thaivand in Tarren Mill.
   collect Helcular's Rod##3708 |q 552 |goto Hillsbrad Foothills 45.28,31.24 |tip {dropsfrom}Cave Yeti, Ferocious Yeti, Mountain Yeti
 step
+  only Warlock completed(1801)
+  note Retrieve the Moldy Tome and Tattered Manuscript for Jorah Annison in the Undercity.
+  collect Moldy Tome##6931 |q 1803 |goto Hillsbrad Foothills 27.78,72.79 |tip {dropsfrom}Tome of the Cabal
+step
+  only completed(513)
+  talk Apothecary Lydon##2216
+  turnin Elixir of Agony##517 |goto Hillsbrad Foothills 61.44,19.06
+step
   talk Novice Thaivand##2429
   turnin Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
+step
+  talk Magus Wordeen Voidglare##2410
+  turnin Key to the City##93680 |goto Hillsbrad Foothills 61.6,20.85
+step
+  only completed(513)
+  talk Apothecary Lydon##2216
+  accept Elixir of Agony##524 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk Novice Thaivand##2429
   accept Helcular's Revenge##553 |goto Hillsbrad Foothills 63.88,19.66
 step
   note Charge the Rod of Helcular with the powers of the Flame of Azel, Flame of Veraz and the Flame of Uzel.
   collect Flame of Azel##1768 |q 553 |goto Hillsbrad Foothills 43.89,28.06
+step
+  only completed(513)
+  turnin Elixir of Agony##524 |goto Hillsbrad Foothills 62.81,18.73
 step
   turnin Helcular's Revenge##553 |goto Hillsbrad Foothills 52.75,53.37
 step
@@ -52,6 +106,16 @@ step
   only completed(541)
   talk Varimathras##2425
   turnin Battle of Hillsbrad##550 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
+step
+  only Warlock completed(1801)
+  talk Jorah Annison##6293
+  turnin Tome of the Cabal##1803 |goto Undercity 75.92,37.89 |tip {turninat}Undercity
+step
+  talk Archmage Celindra##252085
+  turnin Shrewd Negotiations##97287 |goto Alterac Mountains 14.27,60.07 |tip {turninat}Alterac Mountains
+step
+  talk Image of Archmage Modera##269127
+  turnin Blood in the Streets##92434 |goto Silverpine Forest 68.6,45.18 |tip {turninat}Silverpine Forest
 step
   talk Sharlindra##2227
   accept The Crown of Will##495 |goto Undercity 57.63,93.8

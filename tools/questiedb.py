@@ -196,10 +196,17 @@ def zonas(pasta):
         for area in [int(m.group(1))] + [int(a) for a in re.findall(r"\d+", m.group(3))]:
             if uimap.get(area) and uimap[area] not in abertos:
                 nomes.setdefault(area, nome)
+        # Masmorra nova do Forever ainda sem mapa no QuestieDB (City of Dalaran 16544,
+        # Excavation Site: Wetlands 16732, Ruins of Lordaeron 16611, The Hall of Thanes 16919,
+        # no 1.0.6): entra com o nome e uiMapId 0, que o gen_zonedata e o import_scan ignoram,
+        # para o roteador e o gen_special a verem. As de outras expansões que o dungeons.lua
+        # lista entram junto, sem quest nenhuma.
+        if int(m.group(1)) not in uimap:
+            nomes.setdefault(int(m.group(1)), nome)
     for area, nome in SINTETICAS.items():
         if area in uimap:
             nomes[area] = nome
-    return {a: {"uiMapId": uimap[a], "name": n} for a, n in nomes.items()}
+    return {a: {"uiMapId": uimap.get(a, 0), "name": n} for a, n in nomes.items()}
 
 
 def itens(raw, quests):
@@ -276,6 +283,7 @@ def demo(pasta=PADRAO):
 
     assert zonas_["16593"] == {"uiMapId": 2521, "name": "Zephras Isle"}, zonas_["16593"]
     assert zonas_["2017"]["name"] == "Stratholme - Dungeon", zonas_["2017"]
+    assert zonas_["16544"] == {"uiMapId": 0, "name": "City of Dalaran - Dungeon"}, zonas_["16544"]
     assert "16622" not in zonas_, "subzona virou zona"
     assert zonas_["10074"] == {"uiMapId": 1415, "name": "Eastern Kingdoms - the continent map"}
     sem_nome = [i for i, e in npcs.items() if (e["questStarts"] or e["questEnds"]) and not e["name"]]

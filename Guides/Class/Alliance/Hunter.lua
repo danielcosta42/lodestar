@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Hunter", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "c49ffd6e",
+	rev = "6a3c341f",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -24,6 +24,31 @@ step
   note Read the Etched Rune and speak to Thorgas Grimson in Coldridge Valley.
   talk Thorgas Grimson##895
   turnin Etched Rune##3108 |goto Dun Morogh 29.18,67.45
+step
+  talk Deputy Willem##823
+  accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
+step
+  note Speak with Marshal McBride.
+  talk Marshal McBride##197
+  turnin A Threat Within##783 |goto Elwynn Forest 48.92,41.61
+step
+  talk Marshal McBride##197
+  accept Kobold Camp Cleanup##7 |goto Elwynn Forest 48.92,41.61
+step
+  note Kill 10 Kobold Vermin, then return to Marshal McBride.
+  kill Kobold Vermin##6 |q 7 |goto Elwynn Forest 49.17,36.55
+step
+  talk Marshal McBride##197
+  turnin Kobold Camp Cleanup##7 |goto Elwynn Forest 48.92,41.61
+step
+  only Human Hunter
+  talk Marshal McBride##197
+  accept A Scribbled Letter##92479 |goto Elwynn Forest 48.92,41.61
+step
+  only Human Hunter
+  note Read the Scribbled Letter and speak to Tordrin Stemblade in Northshire Abbey.
+  talk Tordrin Sternblade##248415
+  turnin A Scribbled Letter##92479 |goto Elwynn Forest 51.21,40.8
 step
   talk Conservator Ilthalaine##2079
   accept The Balance of Nature##456 |goto Teldrassil 58.69,44.27
@@ -48,25 +73,25 @@ step
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.71,26.43
+  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Hunter
   talk Rorian the Dayseeker##251361
-  accept The Way of the Hunter##92482 |goto Zephras Isle 42.1,23.49
+  accept The Way of the Hunter##92482 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Hunter
   note Read the Scribbled Note and then speak with Tai'ree Farsight in Thendal Grove.
   talk Tai'ree Farsight##251376
-  turnin The Way of the Hunter##92482 |goto Zephras Isle 42.44,23.68
+  turnin The Way of the Hunter##92482 |goto Zephras Isle 42.46,23.67
 step
   only NightElf Hunter not completed(6072) not completed(6073) not completed(6721) not completed(6722) not haveq(6072) not haveq(6073) not haveq(6721) not haveq(6722)
   talk Jocaste##4146
@@ -124,39 +149,48 @@ step
 step
   only Human Hunter
   talk Josephine Carson##251507
-  accept Taming the Beast##94792 |goto Elwynn Forest 41.21,66.34
+  accept Taming the Beast##94792 |goto Elwynn Forest 41.18,66.3
 step
   only Human Hunter
   note Use the Taming Rod to tame a Rockhide Boar. Practice your skills, then return the Taming Rod to Josephine Carson.
-  talk Josephine Carson##251507
-  turnin Taming the Beast##94792 |goto Elwynn Forest 41.21,66.34
+  use Rockhide Boar##524 |q 94792 |goto Elwynn Forest 57.17,76.38 |tip {useit}
 step
   only Human Hunter
   talk Josephine Carson##251507
-  accept Training the Beast##94793 |goto Elwynn Forest 41.21,66.34
+  turnin Taming the Beast##94792 |goto Elwynn Forest 41.18,66.3
+step
+  only Human Hunter
+  talk Josephine Carson##251507
+  accept Taming the Beast##94863 |goto Elwynn Forest 41.18,66.3
+step
+  only Human Hunter
+  note Use the Taming Rod to tame a Gray Forest Wolf. Practice your skills, then return the Taming Rod to Josephine Carson.
+  use Gray Forest Wolf##1922 |q 94863 |goto Elwynn Forest 65.11,64.36 |tip {useit}
+step
+  only Human Hunter
+  talk Josephine Carson##251507
+  turnin Taming the Beast##94863 |goto Elwynn Forest 41.18,66.3
+step
+  only Human Hunter
+  talk Josephine Carson##251507
+  accept Taming the Beast##94864 |goto Elwynn Forest 41.18,66.3
+step
+  only Human Hunter
+  note Use the Taming Rod to tame a Young Forest Bear. Practice your skills, then return the Taming Rod to Josephine Carson.
+  use Young Forest Bear##822 |q 94864 |goto Elwynn Forest 63.4,76.8 |tip {useit}
+step
+  only Human Hunter
+  talk Josephine Carson##251507
+  turnin Taming the Beast##94864 |goto Elwynn Forest 41.18,66.3
+step
+  only Human Hunter
+  talk Josephine Carson##251507
+  accept Training the Beast##94793 |goto Elwynn Forest 41.18,66.3
 step
   only Human Hunter
   note Speak to Isaac Chan in Goldshire.
   talk Isaac Chan##258930
   turnin Training the Beast##94793 |goto Elwynn Forest 41.72,66.39
-step
-  only Human Hunter
-  talk Josephine Carson##251507
-  accept Taming the Beast##94863 |goto Elwynn Forest 41.21,66.34
-step
-  only Human Hunter
-  note Use the Taming Rod to tame a Gray Forest Wolf. Practice your skills, then return the Taming Rod to Josephine Carson.
-  talk Josephine Carson##251507
-  turnin Taming the Beast##94863 |goto Elwynn Forest 41.21,66.34
-step
-  only Human Hunter
-  talk Josephine Carson##251507
-  accept Taming the Beast##94864 |goto Elwynn Forest 41.21,66.34
-step
-  only Human Hunter
-  note Use the Taming Rod to tame a Young Forest Bear. Practice your skills, then return the Taming Rod to Josephine Carson.
-  talk Josephine Carson##251507
-  turnin Taming the Beast##94864 |goto Elwynn Forest 41.21,66.34
 step
   only Dwarf Hunter not completed(6075) not completed(6076) not haveq(6075) not haveq(6076)
   talk Olmin Burningbeard##5116
@@ -214,7 +248,7 @@ step
 step
   only Skyborne Hunter
   talk Elayaa Easewind##254084
-  accept Taming the Beast##94007 |goto Zephras Isle 45.14,44.94
+  accept Taming the Beast##94007 |goto Zephras Isle 45.26,44.24
 step
   only Skyborne Hunter
   note Report to Quel'ana Quickgale in Valanaar.
@@ -226,8 +260,8 @@ step
   accept Taming the Beast##94978 |goto Zephras Isle 59.61,72.65
 step
   only Skyborne Hunter
-  note Use the Taming Rod to tame a Windsong Crawler found near bodies of water. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
-  use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 50.91,60.4 |tip {useit}
+  note Use the Taming Rod to tame a Windsong Crawler found near bodies of water.
+  use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 52.11,60.7 |tip {useit}
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
@@ -238,8 +272,8 @@ step
   accept Taming the Beast##94979 |goto Zephras Isle 59.61,72.65
 step
   only Skyborne Hunter
-  note Use the Taming Rod to tame an Ornery Galestrider in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
-  use Vuldren Alpha##250874 |q 94979 |goto Zephras Isle 53.85,73.83 |tip {useit}
+  note Use the Taming Rod to tame an Ornery Galestrider in the Gustberry Lowlands.
+  use Ornery Galestrider##251707 |q 94979 |goto Zephras Isle 51.23,75.8 |tip {useit}
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
@@ -251,7 +285,7 @@ step
 step
   only Skyborne Hunter
   note Use the Taming Rod to tame a Vuldren Alpha in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
-  use Ornery Galestrider##251707 |q 94013 |goto Zephras Isle 50.86,77.44 |tip {useit}
+  use Vuldren Alpha##250874 |q 94013 |goto Zephras Isle 53.9,75.63 |tip {useit}
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
@@ -264,7 +298,7 @@ step
   only Skyborne Hunter
   note Speak to Quel'dora Quickgale in Valanaar.
   talk Quel'dora Quickgale##254411
-  turnin Training the Beast##94050 |goto Zephras Isle 59.62,72.6
+  turnin Training the Beast##94050 |goto Zephras Isle 59.62,72.59
 step
   only Hunter
   talk Dorion##4205

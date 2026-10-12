@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Cenarion Circle", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "63b90266",
+	rev = "b35bbefd",
 }, [[
 step
   only NightElf Druid not completed(5924) not completed(5925) not haveq(5924) not haveq(5925)
@@ -63,18 +63,18 @@ step
   accept Moonglade##94914 |goto Stormwind City 35.84,67.38
 step
   only Skyborne Druid
-  note Use the spell "Teleport: Moonglade" to travel to Moonglade.  When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##94914 |goto Moonglade 56.21,30.64
 step
   only Skyborne Druid
   talk Lotheluum Starbreeze##252359
-  accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.02,75.11
+  accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.01,75.1
 step
   only Skyborne Druid
   note Speak with Urs'endris near the falls northeast of Valanaar.
   talk Urs'endris##255853
-  turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.72,61.68
+  turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.83,61.67
 step
   only not Human not Dwarf not Gnome Druid
   talk Mathrengyl Bearwalker##4217
@@ -103,7 +103,7 @@ step
 step
   only NightElf Druid
   note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
-  collect 5 Earthroot##2449 |q 6123 |goto Teldrassil 57.73,65.76 |tip {dropsfrom}Lasher Sproutling, Wrathvine, Earthroot
+  collect 5 Earthroot##2449 |q 6123 |goto Teldrassil 57.91,66.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine, Earthroot
 step
   only NightElf Druid
   talk Alanndarian Nightsong##3702
@@ -151,23 +151,23 @@ step
   talk Tajarri##11799
   turnin Trial of the Lake##29 |goto Moonglade 36.52,40.1
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid not Skyborne
   talk Tajarri##11799
   accept Trial of the Sea Lion##272 |goto Moonglade 36.52,40.1
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid not Skyborne
   note Find the Half Pendant of Aquatic Agility and the Half Pendant of Aquatic Endurance. Speak with the residents of Moonglade to learn clues as to where these items may be located.
   collect Pendant of the Sea Lion##15885 |q 272 |goto Moonglade 36,41.42 |tip {dropsfrom}Shrine Of Remulos
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid not Skyborne
   talk Dendrite Starblaze##11802
   turnin Trial of the Sea Lion##272 |goto Moonglade 56.21,30.64
 step
-  only NightElf Druid
+  only NightElf Druid not Skyborne
   talk Dendrite Starblaze##11802
   accept Aquatic Form##5061 |goto Moonglade 56.21,30.64
 step
-  only NightElf Druid
+  only NightElf Druid not Skyborne
   note Return to Darnassus and show Mathrengyl Bearwalker the Pendant of the Sea Lion.
   talk Mathrengyl Bearwalker##4217
   turnin Aquatic Form##5061 |goto Darnassus 35.37,8.4
@@ -188,7 +188,7 @@ step
   only Skyborne
   note Seek out the Avatar of Saeyleenan in southern part Moonglade and learn what it has to share with you about the nature of the windborne cat.
   talk Avatar of Saeyleenan##272054
-  turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 44,73.6
+  turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 44.01,73.48
 step
   only NightElf Druid
   talk Dendrite Starblaze##11802
@@ -199,13 +199,33 @@ step
   talk Great Cat Spirit##11957
   turnin The Great Cat Spirit##98394 |goto Moonglade 58.39,73.52
 step
+  only Skyborne
+  talk Avatar of Saeyleenan##272054
+  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 44.01,73.48
+step
+  only Skyborne
+  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
+  collect Relic of the Fang##280502 |q 98404 |goto Moonglade 72.6,66.1
+step
+  only Skyborne
+  talk Avatar of Saeyleenan##272054
+  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 44.01,73.48
+step
+  only Skyborne
+  talk Avatar of Saeyleenan##272054
+  accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 44.01,73.48
+step
+  only Skyborne
+  talk Dendrite Starblaze##11802
+  turnin Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 56.21,30.64
+step
   only NightElf Druid
   talk Great Cat Spirit##11957
   accept The Great Cat Spirit##98396 |goto Moonglade 58.39,73.52
 step
   only NightElf Druid
   note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
-  collect Relic of the Fang##280502 |q 98396 |goto Moonglade 58.39,73.52
+  collect Relic of the Fang##280502 |q 98396 |goto Moonglade 72.6,66.1
 step
   only NightElf Druid
   talk Great Cat Spirit##11957
@@ -218,26 +238,6 @@ step
   only NightElf Druid
   talk Dendrite Starblaze##11802
   turnin Blessings of the Great Cat Spirit##98731 |goto Moonglade 56.21,30.64
-step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 44,73.6
-step
-  only Skyborne
-  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
-  collect Relic of the Fang##280502 |q 98404 |goto Moonglade 44,73.6
-step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 44,73.6
-step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 44,73.6
-step
-  only Skyborne
-  talk Dendrite Starblaze##11802
-  turnin Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 56.21,30.64
 step
   talk Keeper Marandis##13698
   accept Corruption of Earth and Seed##7065 |goto Desolace 63.83,10.67

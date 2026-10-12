@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Alterac Mountains (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (34-41)",
-	rev = "3ba1be50",
+	rev = "ba6df0ab",
 }, [[
 step
   only not Undead not Skyborne Shaman
@@ -15,6 +15,21 @@ step
   only not Undead not Skyborne Shaman
   talk Bath'rah the Windwatcher##6176
   accept Silvia's Sword##79363 |goto Alterac Mountains 80.5,66.92
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept A Way In##96783 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  turnin A Way In##96783 |goto Alterac Mountains 84.93,80.38
 step
   talk Henchman Valik##2333
   accept Valik##535 |goto Alterac Mountains 57.17,69.51
@@ -28,6 +43,15 @@ step
   only completed(503)
   talk Gol'dir##2316
   accept Blackmoore's Legacy##506 |goto Alterac Mountains 59.96,43.74
+step
+  only Rogue
+  note Steal Barton's Scouting Report by pickpocketing it from him. Then, bring the report to Myrokos Silentform at Ravenholdt Manor.
+  kill Barton##266357 |goto Alterac Mountains 62.59,46.86
+  collect Barton's Scouting Report##275482 |q 96781 |goto Alterac Mountains 62.59,46.86
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
 step
   only Warrior completed(1791)
   talk Bath'rah the Windwatcher##6176
@@ -74,6 +98,10 @@ step
   note Defeat 7 Defias Night Blades and 7 Defias Enchanters in Addle's Stead then return to Sirra Von'Indi in Darkshire for more information.
   kill Defias Night Blade##909 |q 79363 |goto Duskwood 23.37,73.31
 step
+  only Rogue
+  note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
+  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.32,46.24
+step
   only not Undead not Skyborne Shaman
   talk Bath'rah the Windwatcher##6176
   turnin Grant's Shield##79362 |goto Alterac Mountains 80.5,66.92
@@ -81,6 +109,10 @@ step
   only not Undead not Skyborne Shaman
   talk Bath'rah the Windwatcher##6176
   turnin Silvia's Sword##79363 |goto Alterac Mountains 80.5,66.92
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
 step
   only completed(503)
   talk Krusk##2229

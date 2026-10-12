@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Deadmines", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "69c256fb",
+	rev = "7301f5b2",
 }, [[
 step
   talk Wilder Thistlenettle##656
@@ -12,6 +12,9 @@ step
 step
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##65 |goto Westfall 56.33,47.52
+step
+  talk Alba Fairmoon##253092
+  accept Destruction in Deadmines##92753 |goto Westfall 52.48,53.05
 step
   talk Shoni the Shilent##6579
   accept Underground Assault##2040 |goto Stormwind City 62.63,34.11
@@ -39,6 +42,10 @@ step
   note Gryan Stoutmantle wants you to talk to Wiley in Lakeshire.
   talk Wiley the Black##266
   turnin The Defias Brotherhood##65 |goto Redridge Mountains 21.39,45.35
+step
+  note Find the forge hidden in the Deadmines, and plant the Extra-Destructive Explosives nearby. Then, meet up with Alba Fairmoon at the Deadmines exit.
+  talk Alba Fairmoon##253279
+  turnin Destruction in Deadmines##92753 |goto Westfall 38.72,83.65
 step
   talk Shoni the Shilent##6579
   turnin Underground Assault##2040 |goto Stormwind City 62.63,34.11

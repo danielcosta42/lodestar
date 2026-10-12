@@ -1,4 +1,4 @@
--- AUTO-GERADO (gen_terrain.py) do terreno do cliente 1.60.1.70245 (CASC local).
+-- AUTO-GERADO (gen_terrain.py) do terreno do cliente 1.60.1.70338 (CASC local).
 -- Por quadrante (linha*64+coluna): RLE de 1024 bytes de ligação + 128 de água.
 local ADDON, ns = ...
 if not ns then return end

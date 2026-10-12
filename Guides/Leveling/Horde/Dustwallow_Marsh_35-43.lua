@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-43)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (37-41)",
-	rev = "120d844d",
+	rev = "19393960",
 }, [[
 step
   note {fp}Shardi
@@ -110,6 +110,10 @@ step
   talk Krog##4926
   turnin The Black Shield##1323 |goto Dustwallow Marsh 36.42,31.88
 step
+  only completed(1261)
+  talk Nazeer Bloodpike##4791
+  accept Report to Zor##1262 |goto Dustwallow Marsh 35.21,30.66
+step
   talk "Swamp Eye" Jarl##4792
   turnin Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
 step
@@ -143,10 +147,6 @@ step
 step
   talk Nazeer Bloodpike##4791
   turnin The Severed Head##1239 |goto Dustwallow Marsh 35.21,30.66
-step
-  only completed(1261)
-  talk Nazeer Bloodpike##4791
-  accept Report to Zor##1262 |goto Dustwallow Marsh 35.21,30.66
 step
   talk Overlord Mok'Morokk##4500
   accept Overlord Mok'Morokk's Concern##1166 |goto Dustwallow Marsh 36.29,31.41
@@ -223,14 +223,8 @@ step
   talk Deino##5885
   accept Tabetha's Task##2861 |goto Orgrimmar 38.45,86.13
 step
-  talk Vark Battlescar##11823
-  accept Vyletongue Corruption##7029 |goto Desolace 23.22,70.33
-step
   note Bring Deadmire's Tooth to Melor in Thunder Bluff.
   collect Deadmire's Tooth##5945 |q 1205 |goto Dustwallow Marsh 50.2,52.7 |tip {dropsfrom}Deadmire
-step
-  note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
-  kill Noxxious Scion##13696 |q 7029 |goto Maraudon - Dungeon -1,-1
 step
   only Mage
   talk Tabetha##6546
@@ -245,9 +239,6 @@ step
 step
   talk Tabetha##6546
   turnin Tabetha's Task##2861 |goto Dustwallow Marsh 46.06,57.09
-step
-  talk Vark Battlescar##11823
-  turnin Vyletongue Corruption##7029 |goto Desolace 23.22,70.33 |tip {turninat}Desolace
 step
   only Warlock completed(1799) completed(4962)
   talk Menara Voidrender##6266

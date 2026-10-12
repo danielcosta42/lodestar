@@ -5,11 +5,15 @@ ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (31-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Badlands (37-43)",
-	rev = "a919f687",
+	rev = "3e7b7289",
 }, [[
 step
   talk Archmage Malin##2708
   accept Malin's Request##690 |goto Stormwind City 50.5,87.47
+step
+  only Shaman
+  talk Eldrun Stormbreaker##258098
+  accept Call of Air##94789 |goto Ironforge 47.38,13.48
 step
   collect Waterlogged Letter##2656 |goto Arathi Highlands 44.29,92.88 |tip Loot the quest item here — it starts the quest.
   accept Sully Balloo's Letter##637 |goto Arathi Highlands 44.29,92.88
@@ -33,7 +37,7 @@ step
   accept Northfold Manor##681 |goto Arathi Highlands 45.83,47.56
 step
   click Messenger Bag##406918
-  accept This Must Be The Place##79976 |goto Arathi Highlands 22.48,24.23
+  accept This Must Be The Place##79976 |goto Arathi Highlands 22.54,24.14
 step
   talk Apprentice Kryten##2788
   accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
@@ -50,7 +54,7 @@ step
   talk Apprentice Kryten##2788
   turnin Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
 step
-  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.47,24.23
+  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.55,24.14
 step
   talk Captain Nials##2700
   accept Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
@@ -59,17 +63,9 @@ step
   talk Quae##2712
   accept Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
 step
-  click Shards of Myzrael##138492
-  accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
-step
-  note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
-  collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
-step
   only completed(659)
   note Find the Forsaken Courier and bring back her Sealed Folder to Quae near the Go'Shek Farm.
   collect Sealed Folder##4482 |q 658 |goto Arathi Highlands 52.47,61.53 |tip {dropsfrom}Forsaken Courier, Alterac Granite
-step
-  turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
 step
   only completed(659)
   talk Quae##2712
@@ -78,9 +74,6 @@ step
   only completed(659)
   talk Quae##2712
   accept Hints of a New Plague?##657 |goto Arathi Highlands 60.18,53.85
-step
-  click Iridescent Shards##2701
-  accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
 step
   only completed(659)
   talk Kinelory##2713
@@ -97,6 +90,25 @@ step
   only completed(659)
   talk Quae##2712
   accept Hints of a New Plague?##661 |goto Arathi Highlands 60.18,53.85
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  turnin Call of Air##94789 |goto Arathi Highlands 59.77,27.6
+step
+  click Shards of Myzrael##138492
+  accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
+step
+  note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
+  collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
+step
+  turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
+step
+  click Iridescent Shards##2701
+  accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
 step
   note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
   kill Syndicate Prowler##2588 |goto Arathi Highlands 28.33,63.36 |elite
@@ -134,6 +146,10 @@ step
 step
   click Wanted Board##2713
   accept Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept The Tempest's Weapons##96016 |goto Arathi Highlands 59.77,27.6
 step
   talk First Mate Nilzlix##2767
   accept Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
@@ -226,6 +242,18 @@ step
 step
   talk Brewmeister Bilger##2705
   turnin MacKreel's Moonshine##647 |goto Hillsbrad Foothills 52.13,58.74 |tip {turninat}Hillsbrad Foothills
+step
+  only Shaman
+  talk Bath'rah the Windwatcher##6176
+  turnin The Tempest's Weapons##96016 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
+step
+  only Shaman
+  note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Veyric Thunderhame in Arathi Highlands.
+  collect 5 Twisted Fire Totem##274044 |q 79358 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Skullthumper, Stonevault Bonesnapper, Stonevault Shaman
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  turnin Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
 step
   talk Sara Balloo##2695
   accept Sara Balloo's Plea##683 |goto Ironforge 63.5,67.3

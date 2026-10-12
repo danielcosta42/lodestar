@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Razorfen Kraul", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "69e88d35",
+	rev = "20b300fa",
 }, [[
 step
   talk Mebok Mizzyrix##3446
@@ -16,6 +16,10 @@ step
   talk Willix the Importer##4508
   accept Willix the Importer##1144 |goto Razorfen Kraul - Dungeon -1,-1
 step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept Elemental Aid##96264 |goto Arathi Highlands 59.77,27.6
+step
   collect Henrig Lonebrow's Journal##19861 |goto Thousand Needles 30.73,24.35 |tip Loot the quest item here — it starts the quest.
   accept Lonebrow's Journal##1100 |goto Thousand Needles 30.73,24.35
 step
@@ -24,6 +28,10 @@ step
 step
   note Find and return Treshala's Pendant to Treshala Fallowbrook in Darnassus.
   collect Treshala's Pendant##5825 |q 1142 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Overlord Ramtusk, Charlga Razorflank, Aggem Thorncurse
+step
+  only Shaman
+  note Defeat Charlga Razorflank in Razorfen Kraul and collect information on the quilboar's plans.
+  collect Tattered Note##274463 |q 96264 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Charlga Razorflank
 step
   talk Mebok Mizzyrix##3446
   turnin Blueleaf Tubers##1221 |goto The Barrens 62.37,37.62
@@ -34,6 +42,10 @@ step
   note Escort Willix the Importer out of Razorfen Kraul.
   talk Willix the Importer##4508
   turnin Willix the Importer##1144 |goto Razorfen Kraul - Dungeon -1,-1
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  turnin Elemental Aid##96264 |goto Arathi Highlands 59.77,27.6
 step
   note Read Henrig Lonebrow's Journal.
   talk Falfindel Waywarder##4048

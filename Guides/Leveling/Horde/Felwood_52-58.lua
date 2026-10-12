@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Felwood (52-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Winterspring (54-59)",
-	rev = "b37bb42c",
+	rev = "221d6c71",
 }, [[
 step
   only Druid
@@ -27,10 +27,6 @@ step
 step
   talk Maybess Riverbreeze##9529
   accept Cleansing Felwood##4102 |goto Felwood 46.75,83.13
-step
-  only completed(5159)
-  talk Greta Mosshoof##10922
-  accept Dousing the Flames of Protection##5165 |goto Felwood 51.21,82.11
 step
   note Grazle wants you to prove yourself by killing 6 Deadwood Warriors, 6 Deadwood Pathfinders, and 6 Deadwood Gardeners. Return to him in southern Felwood near the Emerald Sanctuary when you are done.
   kill Deadwood Warrior##7153 |q 8460 |goto Felwood 48.39,91.4
@@ -58,10 +54,6 @@ step
 step
   note Enter Jaedenar and slay 4 Jaedenar Hounds, 4 Jaedenar Guardsmen, 6 Jaedenar Adepts, and 6 Jaedenar Cultists before returning to Greta Mosshoof in Felwood.
   kill Jaedenar Hound##7125 |q 5155 |goto Felwood 38.83,60.38
-step
-  only completed(5159)
-  note Using the Purified Moon Well Water, douse the flames of the four braziers of protection within Shadow Hold in Felwood, then return to Greta Mosshoof in the Emerald Sanctuary.
-  collect Brazier of Pain##176158 |q 5165 |goto Felwood 36.27,56.3
 step
   talk Winna Hazzard##9996
   turnin Well of Corruption##4505 |goto Felwood 34.21,52.34
@@ -123,10 +115,6 @@ step
   talk Taronn Redfeather##10921
   turnin Verifying the Corruption##5156 |goto Felwood 50.89,81.62
 step
-  only completed(5159)
-  talk Greta Mosshoof##10922
-  turnin Dousing the Flames of Protection##5165 |goto Felwood 51.21,82.11
-step
   talk Greta Mosshoof##10922
   accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
 step
@@ -165,10 +153,6 @@ step
   talk Jessir Moonbow##11019
   accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
 step
-  only completed(5159)
-  talk Greta Mosshoof##10922
-  accept A Final Blow##5242 |goto Felwood 51.21,82.11
-step
   note Return to Jaedenar and kill the succubus Rakaiah before finding the Remains of Trey Lightforge.
   kill Rakaiah##9518 |q 5204 |goto Felwood 38.3,50.51
 step
@@ -177,14 +161,6 @@ step
 step
   talk Remains of Trey Lightforge##11020
   accept The Remains of Trey Lightforge##5385 |goto Felwood 38.5,50.41
-step
-  only completed(5159)
-  note Kill Moora and Salia, and bring Shadow Lord Fel'dan's Head to Greta Mosshoof in Felwood.
-  kill Moora##9861 |q 5242 |goto Felwood 38.81,46.87
-step
-  only completed(5159)
-  talk Greta Mosshoof##10922
-  turnin A Final Blow##5242 |goto Felwood 51.21,82.11
 step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01

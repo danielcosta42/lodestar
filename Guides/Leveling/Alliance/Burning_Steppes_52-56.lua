@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Burning Steppes (52-59)", {
+ns:RegisterGuide("Leveling/Alliance/Burning Steppes (52-56)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Western Plaguelands (53-58)",
-	rev = "647de8a9",
+	rev = "4190ef5c",
 }, [[
 step
   talk Royal Historian Archesonus##8879
@@ -101,15 +101,6 @@ step
 step
   talk Oralius##9177
   turnin Ogre Head On A Stick = Party##3825 |goto Burning Steppes 84.56,68.68
-step
-  talk Kibler##10260
-  accept Kibler's Exotic Pets##4729 |goto Burning Steppes 65.89,21.92
-step
-  note Travel to Blackrock Spire and find Bloodaxe Worg Pups. Use the cage to carry the ferocious little beasts. Bring back a Caged Worg Pup to Kibler.
-  collect Caged Worg Pup##12263 |q 4729 |goto Burning Steppes 65.89,21.92
-step
-  talk Kibler##10260
-  turnin Kibler's Exotic Pets##4729 |goto Burning Steppes 65.89,21.92
 step
   talk Ragged John##9563
   accept Mother's Milk##4866 |goto Burning Steppes 65.01,23.76

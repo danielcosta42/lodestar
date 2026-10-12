@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Eastern Plaguelands (56-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silithus (57-60)",
-	rev = "fa2277e2",
+	rev = "5f294a53",
 }, [[
 step
   talk Lady Sylvanas Windrunner##10181
@@ -177,10 +177,6 @@ step
   talk Caretaker Alen##11038
   accept The Restless Souls##5281 |goto Eastern Plaguelands 69.93,53.72
 step
-  only completed(5462)
-  talk Leonid Barthalomew the Revered##11036
-  accept Menethil's Gift##5463 |goto Eastern Plaguelands 71.89,48.29
-step
   only completed(5464)
   talk Leonid Barthalomew the Revered##11036
   accept Soulbound Keepsake##5465 |goto Eastern Plaguelands 71.89,48.29
@@ -279,9 +275,6 @@ step
 step
   talk Nathanos Blightcaller##11878
   accept The Call to Command##6144 |goto Eastern Plaguelands 22.23,63.51
-step
-  only completed(5462)
-  turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1 |tip {turninat}Stratholme - Dungeon
 step
   only completed(5464)
   talk Magistrate Marduke##11286

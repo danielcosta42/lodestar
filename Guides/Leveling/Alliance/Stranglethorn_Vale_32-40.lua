@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (32-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Alterac Mountains (34-40)",
-	rev = "6c2691f0",
+	rev = "cf7cd39c",
 }, [[
 step
   talk Barnil Stonepot##716
@@ -437,10 +437,6 @@ step
 step
   turnin Crystal in the Mountains##635 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
 step
-  only completed(1222)
-  talk Angus Stern##1141
-  accept Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64
-step
   talk Angus Stern##1141
   accept A Meal Served Cold##212 |goto Stormwind City 51.79,93.64
 step
@@ -454,10 +450,6 @@ step
   only completed(1115)
   talk Krazek##773
   turnin Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
-step
-  only completed(1222)
-  talk Angus Stern##1141
-  turnin Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
 step
   talk Angus Stern##1141
   turnin A Meal Served Cold##212 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City

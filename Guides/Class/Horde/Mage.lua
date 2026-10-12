@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Mage", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "ec55b5e1",
+	rev = "b153e05f",
 }, [[
 step
   talk Gornek##3143
@@ -57,22 +57,22 @@ step
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.71,26.43
+  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
-  only not Orc not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
+  only Mage not completed(1882) not haveq(1882)
   talk Thurston Xane##3049
   accept Speak with Un'thuwa##1883 |goto Thunder Bluff 25.18,20.96
 step
-  only not Orc not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
+  only Mage not completed(1882) not haveq(1882)
   note Speak with Un'thuwa.
   talk Un'Thuwa##5880
   turnin Speak with Un'thuwa##1883 |goto Durotar 56.31,75.11

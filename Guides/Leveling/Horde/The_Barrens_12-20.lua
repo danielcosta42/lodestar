@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/The Barrens (12-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Stonetalon Mountains (19-26)",
-	rev = "1f402fa6",
+	next = "Leveling/Horde/Ashenvale (22-27)",
+	rev = "5e6c1c18",
 }, [[
 step
   only completed(861)
@@ -39,7 +39,7 @@ step
   accept Yelmak's Medley##97242 |goto Orgrimmar 56.05,34.12
 step
   talk Thatog##268701
-  accept Meal Appeal##97246 |goto Orgrimmar 55.69,72.08
+  accept Meal Appeal##97246 |goto Orgrimmar 55.86,72.33
 step
   talk Borstan##3368
   accept Favorite Food##97249 |goto Orgrimmar 57.2,53.32
@@ -48,7 +48,7 @@ step
   accept Whuut's the Rush##97275 |goto Orgrimmar 56.84,33.03
 step
   talk Thra##268684
-  accept Rocks to Rests##97326 |goto Orgrimmar 37,28.81
+  accept Rocks to Rests##97326 |goto Orgrimmar 37.2,28.6
 step
   only completed(861)
   talk Sergra Darkthorn##3338
@@ -391,6 +391,18 @@ step
   talk Sergra Darkthorn##3338
   accept Prowlers of the Barrens##903 |goto The Barrens 52.23,31.01
 step
+  talk Regthar Deathgate##3389
+  accept Verog the Dervish##851 |goto The Barrens 45.34,28.41
+step
+  talk Gazrog##3464
+  accept Stolen Silver##3281 |goto The Barrens 51.93,30.32
+step
+  note Bring Verog's Head to Regthar Deathgate, west of the Crossroads.
+  collect Verog's Head##5023 |q 851 |goto The Barrens 53.06,41.74 |tip {dropsfrom}Verog the Dervish
+step
+  talk Makaba Flathoof##11857
+  accept Avenge My Village##6548 |goto The Barrens 35.19,27.76
+step
   note Collect 7 Prowler Claws from Savannah Prowlers for Sergra Darkthorn in the Crossroads.
   collect 7 Prowler Claws##5096 |q 903 |goto The Barrens 42,23.51 |tip {dropsfrom}Savannah Prowler
 step
@@ -403,29 +415,29 @@ step
   talk Vrang Wildgore##3682
   accept Bruised Pride and Lion Hides##95494 |goto The Barrens 43.8,12.21
 step
-  talk Vrang Wildgore##3682
-  accept The Hermit Tanner##95495 |goto The Barrens 43.8,12.21
-step
-  talk Vrang Wildgore##3682
-  accept Vrang's Game##95507 |goto The Barrens 43.8,12.21
-step
-  talk Walton##261366
-  accept Unwelcome Guests##95508 |goto The Barrens 42.01,11.44
-step
   note Collect 6 Savannah Lion Hides from the Savannah Matriarchs and Savannah Patriarchs in the Barrens.
   collect 6 Savannah Lion Hide##269715 |q 95494 |goto The Barrens 44.42,15.78 |tip {dropsfrom}Savannah Patriarch, Savannah Matriarch
 step
-  note Collect 8 Trapped Game from traps found in Sprung Traps in the Barrens.
-  collect 8 Trapped Game##269719 |q 95507 |goto The Barrens 45.3,14 |tip {dropsfrom}Sprung Trap
-step
   talk Vrang Wildgore##3682
   turnin Bruised Pride and Lion Hides##95494 |goto The Barrens 43.8,12.21
+step
+  talk Vrang Wildgore##3682
+  accept The Hermit Tanner##95495 |goto The Barrens 43.8,12.21
 step
   talk Walton##261366
   turnin The Hermit Tanner##95495 |goto The Barrens 42.01,11.44
 step
   talk Vrang Wildgore##3682
+  accept Vrang's Game##95507 |goto The Barrens 43.8,12.21
+step
+  note Collect 8 Trapped Game from traps found in Sprung Traps in the Barrens.
+  collect 8 Trapped Game##269719 |q 95507 |goto The Barrens 45.3,14 |tip {dropsfrom}Sprung Trap
+step
+  talk Vrang Wildgore##3682
   turnin Vrang's Game##95507 |goto The Barrens 43.8,12.21
+step
+  talk Walton##261366
+  accept Unwelcome Guests##95508 |goto The Barrens 42.01,11.44
 step
   talk Walton##261366
   turnin Unwelcome Guests##95508 |goto The Barrens 42.01,11.44
@@ -434,7 +446,7 @@ step
   accept Trouble in the Valley##95621 |goto The Barrens 42.01,11.44
 step
   note Travel to the wrecked caravan and learn more about why the Kul Tirans are here.
-  collect Benedict's Orders##270151 |q 95621 |goto The Barrens 42.12,15.85 |tip {dropsfrom}Corporal Adamore
+  collect Benedict's Orders##270151 |q 95621 |goto The Barrens 41.87,15.43 |tip {dropsfrom}Corporal Adamore
 step
   talk Walton##261366
   turnin Trouble in the Valley##95621 |goto The Barrens 42.01,11.44
@@ -472,20 +484,20 @@ step
   talk Crane Operator Bigglefuzz##3665
   accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
 step
+  note Bring the Stolen Silver to Gazrog in the Crossroads.
+  collect Stolen Silver##5061 |q 3281 |goto The Barrens 58.04,53.87
+step
+  talk Regthar Deathgate##3389
+  turnin Verog the Dervish##851 |goto The Barrens 45.34,28.41
+step
   talk Sergra Darkthorn##3338
   turnin Prowlers of the Barrens##903 |goto The Barrens 52.23,31.01
 step
+  talk Gazrog##3464
+  turnin Stolen Silver##3281 |goto The Barrens 51.93,30.32
+step
   talk Sergra Darkthorn##3338
   accept Echeyakee##881 |goto The Barrens 52.23,31.01
-step
-  talk Regthar Deathgate##3389
-  accept Verog the Dervish##851 |goto The Barrens 45.34,28.41
-step
-  talk Gazrog##3464
-  accept Stolen Silver##3281 |goto The Barrens 51.93,30.32
-step
-  note Bring Verog's Head to Regthar Deathgate, west of the Crossroads.
-  collect Verog's Head##5023 |q 851 |goto The Barrens 53.06,41.74 |tip {dropsfrom}Verog the Dervish
 step
   note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
   collect 5 Intact Raptor Horn##5055 |q 865 |goto The Barrens 52.58,45.99 |tip {dropsfrom}Sunscale Scytheclaw, Ishamuhale, Takk the Leaper
@@ -493,9 +505,6 @@ step
   note Crane Operator Bigglefuzz in Ratchet wants you to retrieve the bottle of 99-Year-Old Port from Mad Magglish who is hiding in the Wailing Caverns.
   kill Mad Magglish##3655 |goto The Barrens 46.83,34.66 |elite
   collect 99-Year-Old Port##5334 |q 959 |goto The Barrens 46.83,34.66
-step
-  talk Makaba Flathoof##11857
-  accept Avenge My Village##6548 |goto The Barrens 35.19,27.76
 step
   talk Wenikee Boltbucket##9316
   turnin Nugget Slugs##3922 |goto The Barrens 49.05,11.17
@@ -518,17 +527,8 @@ step
   talk Crane Operator Bigglefuzz##3665
   turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61
 step
-  note Bring the Stolen Silver to Gazrog in the Crossroads.
-  collect Stolen Silver##5061 |q 3281 |goto The Barrens 58.04,53.87
-step
-  talk Regthar Deathgate##3389
-  turnin Verog the Dervish##851 |goto The Barrens 45.34,28.41
-step
   talk Sergra Darkthorn##3338
   turnin Echeyakee##881 |goto The Barrens 52.23,31.01
-step
-  talk Gazrog##3464
-  turnin Stolen Silver##3281 |goto The Barrens 51.93,30.32
 step
   talk Sergra Darkthorn##3338
   accept The Angry Scytheclaws##905 |goto The Barrens 52.23,31.01
@@ -627,7 +627,7 @@ step
   talk Beaten Corpse##10668 |q 4921 |goto The Barrens 49.33,50.32
 step
   note Slay quilboars and collect 4 of Olgra's Adornments for Mankrik's memorial.
-  collect 4 Olgra's Adornments##277277 |q 95774 |goto The Barrens 50.65,50.79 |tip {dropsfrom}Razormane Raider
+  collect 4 Olgra's Adornments##277277 |q 95774 |goto The Barrens 49.58,51.06 |tip {dropsfrom}Razormane Raider
 step
   talk Darsok Swiftdagger##3449
   turnin Serena Bloodfeather##876 |goto The Barrens 51.62,30.9
@@ -651,7 +651,7 @@ step
   accept WANTED: Bruuz##92706 |goto The Barrens 62.59,37.47
 step
   note Bring Bruuz's Dorsal Fin to Gazlowe in Ratchet.
-  collect Bruuz's Dorsal Fin##253710 |q 92706 |goto The Barrens 63.67,38.66 |tip {dropsfrom}Bruuz
+  collect Bruuz's Dorsal Fin##253710 |q 92706 |goto The Barrens 64.38,39.21 |tip {dropsfrom}Bruuz
 step
   talk Gazlowe##3391
   turnin WANTED: Bruuz##92706 |goto The Barrens 62.68,36.23
@@ -672,13 +672,13 @@ step
   turnin Free From the Hold##898 |goto The Barrens 62.29,39.03
 step
   talk Gur'ak##267310
-  accept Chol'aruk the Ravener##97003 |goto The Barrens 52.63,29.06
+  accept Chol'aruk the Ravener##97003 |goto The Barrens 52.64,29.05
 step
   note Bring the head of Chol'aruk to Gur'ak in the Barrens.
-  collect Chol'aruk's Head##276070 |q 97003 |goto The Barrens 57.76,27.42 |tip {dropsfrom}Chol'aruk
+  collect Chol'aruk's Head##276070 |q 97003 |goto The Barrens 57.64,27.37 |tip {dropsfrom}Chol'aruk
 step
   talk Gur'ak##267310
-  turnin Chol'aruk the Ravener##97003 |goto The Barrens 52.63,29.06
+  turnin Chol'aruk the Ravener##97003 |goto The Barrens 52.64,29.05
 step
   talk Sputtervalve##3442
   accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
@@ -717,7 +717,7 @@ step
   turnin Meal Appeal##97246 |goto Orgrimmar 57.2,53.32 |tip {turninat}Orgrimmar
 step
   talk Migi##268682
-  turnin Favorite Food##97249 |goto Orgrimmar 36.77,29.08 |tip {turninat}Orgrimmar
+  turnin Favorite Food##97249 |goto Orgrimmar 36.62,29.07 |tip {turninat}Orgrimmar
 step
   talk Whuut##11046
   turnin Whuut's the Rush##97275 |goto Orgrimmar 55.79,32.9 |tip {turninat}Orgrimmar
@@ -727,10 +727,6 @@ step
 step
   talk Zor Lonetree##4047
   accept The Spirits of Stonetalon##1061 |goto Orgrimmar 38.93,38.4
-step
-  only not Orc not Tauren not Skyborne Mage
-  talk Thurston Xane##3049
-  accept Report to Anastasia##1959 |goto Thunder Bluff 25.18,20.96
 step
   only Tauren Druid
   talk Turak Runetotem##3033
@@ -806,14 +802,10 @@ step
   turnin Yelmak's Medley##97242 |goto Orgrimmar 56.05,34.12 |tip {turninat}Orgrimmar
 step
   talk Thra##268684
-  turnin Rocks to Rests##97326 |goto Orgrimmar 37,28.81 |tip {turninat}Orgrimmar
+  turnin Rocks to Rests##97326 |goto Orgrimmar 37.2,28.6 |tip {turninat}Orgrimmar
 step
   talk Seereth Stonebreak##4049
   turnin The Spirits of Stonetalon##1061 |goto The Barrens 35.26,27.88
-step
-  only not Orc not Tauren not Skyborne Mage
-  talk Anastasia Hartwell##4568
-  turnin Report to Anastasia##1959 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
 step
   only Tauren Druid
   talk Dendrite Starblaze##11802
@@ -1101,6 +1093,6 @@ step
   talk Senani Thunderheart##12696
   turnin The Ashenvale Hunt##6382 |goto Ashenvale 73.78,61.46 |tip {turninat}Ashenvale
 step
-  note {travel}Stonetalon Mountains
-  goto Stonetalon Mountains 47.22,64.04
+  note {travel}Ashenvale
+  goto Ashenvale 11.69,34.91
 ]])

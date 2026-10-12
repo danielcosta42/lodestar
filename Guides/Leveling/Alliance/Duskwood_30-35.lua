@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Duskwood (30-35)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Wetlands (30-33)",
-	rev = "b53da317",
+	next = "Leveling/Alliance/Hillsbrad Foothills (29-32)",
+	rev = "c002d5ed",
 }, [[
 step
   only completed(322)
@@ -22,6 +22,10 @@ step
   only Warrior completed(1708)
   talk Klockmort Spannerspan##6169
   accept Klockmort's Creation##1709 |goto Ironforge 67.92,46.1
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Katherine the Pure##5492
+  accept A Second Opinion##78090 |goto Stormwind City 48.48,49.09
 step
   only completed(133)
   talk Abercrombie##289
@@ -218,6 +222,10 @@ step
   talk Klockmort Spannerspan##6169
   turnin Klockmort's Creation##1709 |goto Ironforge 67.92,46.1 |tip {turninat}Ironforge
 step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Ursula Deline##5495
+  turnin A Second Opinion##78090 |goto Stormwind City 39.89,84.19 |tip {turninat}Stormwind City
+step
   only completed(1243)
   talk Elling Trias##482
   turnin The Missing Diplomat##1245 |goto Stormwind City 66.03,74.1 |tip {turninat}Stormwind City
@@ -236,6 +244,6 @@ step
   talk Zggi##1733
   turnin You Have Served Us Well##397 |goto Stormwind City 40.21,85.31 |tip {turninat}Stormwind City
 step
-  note {travel}Wetlands
-  goto Wetlands 49.67,18.23
+  note {travel}Hillsbrad Foothills
+  goto Hillsbrad Foothills 51.2,66.45
 ]])

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Paladin", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "f48f7b51",
+	rev = "3ee39b4a",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -368,6 +368,56 @@ step
   note Wait for Jordan Stilwell to finish forging a weapon for you.
   talk Jordan Stilwell##6181
   turnin The Test of Righteousness##1806 |goto Dun Morogh 52.49,36.92
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Delgren the Purifier##3663
+  accept Advice From Stormwind##78089 |goto Ashenvale 26.2,38.7
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  note Bring the Althalaxx Orb to Katherine the Pure in Stormwind.
+  talk Katherine the Pure##5492
+  turnin Advice From Stormwind##78089 |goto Stormwind City 48.48,49.09
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  click Shattered Orb##409315
+  accept Return to Delgren##78093 |goto Ashenvale 89.5,77
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  note Return the Orb Shards to Delgren.
+  talk Delgren the Purifier##3663
+  turnin Return to Delgren##78093 |goto Ashenvale 26.2,38.7
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Katherine the Pure##5492
+  accept A Second Opinion##78090 |goto Stormwind City 48.48,49.09
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  note Find the warlock sanctum within Stormwind and seek advice on the orb.
+  talk Ursula Deline##5495
+  turnin A Second Opinion##78090 |goto Stormwind City 39.89,84.19
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Ursula Deline##5495
+  accept Earning Your Salt##78091 |goto Stormwind City 39.89,84.19
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  note Collect 14 Summoner's Salt from Blackrock Summoners in Redridge Mountains, then return to Ursula Deline in Stormwind.
+  collect 14 Summoner's Salt##209778 |q 78091 |goto Redridge Mountains 24.25,12.05 |tip {dropsfrom}Gath'Ilzogg, Blackrock Champion, Blackrock Shadowcaster
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Ursula Deline##5495
+  turnin Earning Your Salt##78091 |goto Stormwind City 39.89,84.19
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Ursula Deline##5495
+  accept It Must Be Destroyed##78092 |goto Stormwind City 39.89,84.19
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  note Gather 12 Motes of Mannoroth from demons in Ashenvale. Bring them along with the Orb of Althalaxx to the Spear of Mannoroth at Demon Fall Canyon.
+  collect 12 Mote of Mannoroth##209779 |q 78092 |goto Ashenvale 78.48,81.61 |tip {dropsfrom}Legion Hound, Searing Infernal, Felguard
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  turnin It Must Be Destroyed##78092 |goto Ashenvale 89.4,77.1
 step
   only Dwarf Paladin not completed(1661) not completed(4486) not haveq(1661) not haveq(4486)
   talk Tiza Battleforge##6179

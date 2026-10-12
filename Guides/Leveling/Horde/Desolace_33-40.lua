@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Desolace (33-39)", {
+ns:RegisterGuide("Leveling/Horde/Desolace (33-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Dustwallow Marsh (35-43)",
-	rev = "7ebff011",
+	rev = "945ae899",
 }, [[
 step
   only completed(1431)
@@ -102,9 +102,6 @@ step
   note Bring 6 bags of Crudely Dried Meat to Uthek the Wise in the Gelkis Village.
   collect 6 Crudely Dried Meat##6069 |q 1370 |goto Desolace 72.43,78.51 |tip {dropsfrom}Sack of Meat
 step
-  note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
-  collect 3 Broken Tears##6083 |q 1369 |goto Desolace 39.65,93.3 |tip {dropsfrom}Tear of Theradras
-step
   talk Felgur Twocuts##5395
   turnin Khan Dez'hepah##1365 |goto Desolace 56.19,59.57
 step
@@ -132,20 +129,17 @@ step
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1481 |goto Desolace 52.25,53.44
 step
-  talk Nataka Longhorn##11259
-  accept Catch of the Day##5386 |goto Desolace 55.41,55.81
-step
   talk Uthek the Wise##5397
   turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
+step
+  note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
+  collect 3 Broken Tears##6083 |q 1369 |goto Desolace 39.65,93.3 |tip {dropsfrom}Tear of Theradras
 step
   talk Mai'Lahii##12031
   turnin Clam Bait##6142 |goto Desolace 22.64,71.97
 step
   talk Drulzegar Skraghook##12340
   accept Other Fish to Fry##6143 |goto Desolace 23.32,72.87
-step
-  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
-  collect Bloodbelly Fish##13546 |q 5386 |goto Desolace 22.45,73.12 |tip {dropsfrom}Jinar'Zillen
 step
   talk Azore Aldamort##11863
   turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
@@ -177,29 +171,35 @@ step
   talk Warug##5398
   accept Khan Shaka##1375 |goto Desolace 74.97,68.16
 step
-  note Maintain your reputation with the Magram, and bring the Head of Khan Shaka to Warug in the Magram Village in Desolace.
-  collect Khan Shaka's Head##6073 |q 1375 |goto Desolace 40.49,95.49 |tip {dropsfrom}Khan Shaka
-step
   talk Felgur Twocuts##5395
   turnin Centaur Bounty##1366 |goto Desolace 56.19,59.57
 step
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1481 |goto Desolace 52.25,53.44
 step
-  talk Nataka Longhorn##11259
-  turnin Catch of the Day##5386 |goto Desolace 55.41,55.81
-step
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1482 |goto Desolace 52.25,53.44
 step
+  talk Nataka Longhorn##11259
+  accept Catch of the Day##5386 |goto Desolace 55.41,55.81
+step
   talk Rigger Gizelton##11626
   accept Gizelton Caravan##5943 |goto Desolace 45.4,75.29
+step
+  talk Uthek the Wise##5397
+  accept Valley of Bones##93034 |goto Desolace 36.22,79.25
+step
+  note Maintain your reputation with the Magram, and bring the Head of Khan Shaka to Warug in the Magram Village in Desolace.
+  collect Khan Shaka's Head##6073 |q 1375 |goto Desolace 40.49,95.49 |tip {dropsfrom}Khan Shaka
 step
   talk Drulzegar Skraghook##12340
   turnin Other Fish to Fry##6143 |goto Desolace 23.32,72.87
 step
   talk Taiga Wisemane##11624
   accept Hand of Iruxos##5381 |goto Desolace 25.82,68.21
+step
+  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
+  collect Bloodbelly Fish##13546 |q 5386 |goto Desolace 22.45,73.12 |tip {dropsfrom}Jinar'Zillen
 step
   note Find Rackmore's Silver Key. Find Rackmore's Golden Key. Find and open Rackmore's Chest.
   collect Rackmore's Silver Key##15878 |q 6161 |goto Desolace 24.7,78.72 |tip {dropsfrom}Drysnap Crawler, Drysnap Pincer
@@ -218,9 +218,6 @@ step
   talk Azore Aldamort##11863
   turnin Book of the Ancients##6027 |goto Desolace 38.88,27.16
 step
-  talk Bibbly F'utzbuckle##11438
-  accept Bone Collector##5501 |goto Desolace 62.33,38.99
-step
   note Retrieve the Demon Box from Thunder Axe Fortress, and return it, along with the Demon Pick to Taiga Wisemane in Shadowprey Village.
   collect Demon Box##13542 |q 5381 |goto Desolace 55,26.6 |tip {dropsfrom}Demon Spirit
 step
@@ -229,6 +226,9 @@ step
 step
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1482 |goto Desolace 52.25,53.44
+step
+  talk Nataka Longhorn##11259
+  turnin Catch of the Day##5386 |goto Desolace 55.41,55.81
 step
   talk Smeed Scrabblescrew##11596
   turnin Gizelton Caravan##5943 |goto Desolace 60.86,61.86
@@ -239,17 +239,8 @@ step
   talk Takata Steelblade##5641
   turnin The Corrupter##1484 |goto Desolace 52.57,54.39
 step
-  talk Takata Steelblade##5641
-  accept The Corrupter##1488 |goto Desolace 52.57,54.39
-step
   talk Hornizz Brimbuzzle##6019
   accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
-step
-  note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
-  collect 10 Kodo Bone##13703 |q 5501 |goto Desolace 53.26,61.24 |tip {dropsfrom}Kodo Bones
-step
-  note Slay Lord Azrethoc and Jugkar Grim'rod and return to Takata Steelblade in Desolace.
-  kill Lord Azrethoc##5760 |q 1488 |goto Desolace 56.95,75.74 |elite
 step
   talk Taiga Wisemane##11624
   turnin Hand of Iruxos##5381 |goto Desolace 25.82,68.21
@@ -261,13 +252,10 @@ step
   accept Get Me Out of Here!##6132 |goto Desolace 33.95,53.5
 step
   talk Bibbly F'utzbuckle##11438
-  turnin Bone Collector##5501 |goto Desolace 62.33,38.99
+  accept Bone Collector##5501 |goto Desolace 62.33,38.99
 step
   note Bring 8 Ghost-o-plasms and the Crate of Ghost Magnets to Hornizz Brimbuzzle in Desolace.
   collect 8 Ghost-o-plasm##15849 |q 6134 |goto Desolace 64.18,91.63 |tip {dropsfrom}Magrami Spectre
-step
-  talk Takata Steelblade##5641
-  turnin The Corrupter##1488 |goto Desolace 52.57,54.39
 step
   talk Hornizz Brimbuzzle##6019
   turnin Get Me Out of Here!##6132 |goto Desolace 47.83,61.83
@@ -275,11 +263,41 @@ step
   talk Hornizz Brimbuzzle##6019
   turnin Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
 step
+  note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
+  collect 10 Kodo Bone##13703 |q 5501 |goto Desolace 53.26,61.24 |tip {dropsfrom}Kodo Bones
+step
   note Banish 6 Portals at Mannoroc Coven and return to Taiga Wisemane at Shadowprey Village.
   kill Demon Portal Guardian##11937 |q 5581 |goto Desolace 52.6,77.4
 step
   talk Taiga Wisemane##11624
   turnin Portals of the Legion##5581 |goto Desolace 25.82,68.21
+step
+  talk Bibbly F'utzbuckle##11438
+  turnin Bone Collector##5501 |goto Desolace 62.33,38.99
+step
+  talk Warug##5398
+  accept A Conqueror's Crown##92743 |goto Desolace 74.97,68.16
+step
+  talk Warug##5398
+  turnin A Conqueror's Crown##92743 |goto Desolace 74.97,68.16
+step
+  talk Takata Steelblade##5641
+  accept The Corrupter##1488 |goto Desolace 52.57,54.39
+step
+  talk Gurda Wildmane##5412
+  accept Carved Centaur Totems##93225 |goto Desolace 56.29,59.68
+step
+  note Acquire 5 Carved Centaur Totems by slaying centaur of any clan throughout Desolace, then return them to Gurda Wildmane at Ghost Walker Post.
+  collect 5 Carved Centaur Totem##254432 |q 93225 |goto Desolace 30.67,61.13 |tip {dropsfrom}Maraudine Scout, Maraudine Wrangler, Maraudine Mauler
+step
+  note Slay Lord Azrethoc and Jugkar Grim'rod and return to Takata Steelblade in Desolace.
+  kill Lord Azrethoc##5760 |q 1488 |goto Desolace 56.95,75.74 |elite
+step
+  talk Takata Steelblade##5641
+  turnin The Corrupter##1488 |goto Desolace 52.57,54.39
+step
+  talk Gurda Wildmane##5412
+  turnin Carved Centaur Totems##93225 |goto Desolace 56.29,59.68
 step
   talk Warug##5398
   accept Khan Hratha##1381 |goto Desolace 74.97,68.16
@@ -295,6 +313,9 @@ step
   talk Nogg##3412
   turnin Nogg's Ring Redo##2950 |goto Orgrimmar 75.99,25.41 |tip {turninat}Orgrimmar
 step
+  talk Nerlokh##253177
+  turnin Valley of Bones##93034 |goto Shen'dralas 21.2,23.2 |tip {turninat}Shen'dralas
+step
   only Warlock not completed(4965) not completed(4968) not completed(4969) not haveq(4965) not haveq(4968) not haveq(4969)
   talk Zevrost##3326
   accept Knowledge of the Orb of Orahil##4967 |goto Orgrimmar 48.47,45.43
@@ -306,11 +327,14 @@ step
   talk Uthel'nay##7311
   accept Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27
 step
-  talk Centaur Pariah##13717
-  accept The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
+  talk Gurda Wildmane##5412
+  accept Buying Friendship: Magram##94872 |goto Desolace 56.29,59.68
 step
-  note Read the Pariah's Instructions. Afterwards, obtain the Amulet of Union from Maraudon and return it to the Centaur Pariah in southern Desolace.
-  collect Amulet of Union##17758 |q 7067 |goto Desolace 50.42,86.65
+  talk Gurda Wildmane##5412
+  accept Buying Friendship: Gelkis##94873 |goto Desolace 56.29,59.68
+step
+  talk Vark Battlescar##11823
+  accept Vyletongue Corruption##7029 |goto Desolace 23.22,70.33
 step
   only Warlock not completed(4963) not haveq(4963)
   note Take the Felhas Ruby and use it on one of the Felhounds found in Desolace. After successful, bring the Felhas Ruby and the Imprisoned Felhound Spirit back to Menara Voidrender in the Barrens.
@@ -319,6 +343,9 @@ step
   note Collect 10 Shadowshard Fragments from Maraudon and return them to Uthel'nay in Orgrimmar.
   kill Shadowshard Rumbler##11777 |goto Desolace 27.23,57.68 |elite
   collect 10 Shadowshard Fragment##17756 |q 7068 |goto Desolace 27.23,57.68
+step
+  note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
+  kill Noxxious Scion##13696 |q 7029 |goto Maraudon - Dungeon -1,-1
 step
   only Warlock not completed(4965) not completed(4968) not completed(4969) not haveq(4965) not haveq(4968) not haveq(4969)
   talk Menara Voidrender##6266
@@ -331,8 +358,14 @@ step
   talk Uthel'nay##7311
   turnin Shadowshard Fragments##7068 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
 step
-  talk Centaur Pariah##13717
-  turnin The Pariah's Instructions##7067 |goto Desolace 50.42,86.65
+  talk Gorhak##253139
+  turnin Buying Friendship: Magram##94872 |goto Desolace 66.21,79.36
+step
+  talk Molkar##253140
+  turnin Buying Friendship: Gelkis##94873
+step
+  talk Vark Battlescar##11823
+  turnin Vyletongue Corruption##7029 |goto Desolace 23.22,70.33
 step
   only Warlock
   talk Menara Voidrender##6266

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Druid", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "d4498f53",
+	rev = "2d7e25ee",
 }, [[
 step
   talk Conservator Ilthalaine##2079
@@ -30,25 +30,25 @@ step
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.71,26.43
+  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Druid
   talk Rorian the Dayseeker##251361
-  accept A Student of Nature##92485 |goto Zephras Isle 42.1,23.49
+  accept A Student of Nature##92485 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Druid
   note Read the Folded Parchment then speak with Xyton Silverwind in Thendal Grove.
   talk Xyton Silverwind##251373
-  turnin A Student of Nature##92485 |goto Zephras Isle 41.72,23.38
+  turnin A Student of Nature##92485 |goto Zephras Isle 41.71,23.36
 step
   only Skyborne Druid
   talk Archmage Ansirem Runeweaver##2543
@@ -115,30 +115,30 @@ step
   accept Moonglade##94914 |goto Stormwind City 35.84,67.38
 step
   only Skyborne Druid
-  note Use the spell "Teleport: Moonglade" to travel to Moonglade.  When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##94914 |goto Moonglade 56.21,30.64
 step
   only Skyborne Druid
   talk Lotheluum Starbreeze##252359
-  accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.02,75.11
+  accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.01,75.1
 step
   only Skyborne Druid
   note Speak with Urs'endris near the falls northeast of Valanaar.
   talk Urs'endris##255853
-  turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.72,61.68
+  turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.83,61.67
 step
   only Skyborne Druid
   talk Urs'endris##255853
-  accept Strength and Mercy##94638 |goto Zephras Isle 69.72,61.68
+  accept Strength and Mercy##94638 |goto Zephras Isle 69.83,61.67
 step
   only Skyborne Druid
   note Find and kill Ur'endra in the Shen'dar Highlands.
-  kill Ur'endra##258443 |q 94638 |goto Zephras Isle 53.89,65.34
+  kill Ur'endra##258443 |q 94638 |goto Zephras Isle 53.78,65.21
 step
   only Skyborne Druid
   talk Urs'endris##255853
-  turnin Strength and Mercy##94638 |goto Zephras Isle 69.72,61.68
+  turnin Strength and Mercy##94638 |goto Zephras Isle 69.83,61.67
 step
   only not Human not Dwarf not Gnome Druid
   talk Mathrengyl Bearwalker##4217
@@ -167,7 +167,7 @@ step
 step
   only NightElf Druid
   note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
-  collect 5 Earthroot##2449 |q 6123 |goto Teldrassil 57.73,65.76 |tip {dropsfrom}Lasher Sproutling, Wrathvine, Earthroot
+  collect 5 Earthroot##2449 |q 6123 |goto Teldrassil 57.91,66.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine, Earthroot
 step
   only NightElf Druid
   talk Alanndarian Nightsong##3702
@@ -215,23 +215,23 @@ step
   talk Tajarri##11799
   turnin Trial of the Lake##29 |goto Moonglade 36.52,40.1
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid not Skyborne
   talk Tajarri##11799
   accept Trial of the Sea Lion##272 |goto Moonglade 36.52,40.1
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid not Skyborne
   note Find the Half Pendant of Aquatic Agility and the Half Pendant of Aquatic Endurance. Speak with the residents of Moonglade to learn clues as to where these items may be located.
   collect Pendant of the Sea Lion##15885 |q 272 |goto Moonglade 36,41.42 |tip {dropsfrom}Shrine Of Remulos
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid not Skyborne
   talk Dendrite Starblaze##11802
   turnin Trial of the Sea Lion##272 |goto Moonglade 56.21,30.64
 step
-  only NightElf Druid
+  only NightElf Druid not Skyborne
   talk Dendrite Starblaze##11802
   accept Aquatic Form##5061 |goto Moonglade 56.21,30.64
 step
-  only NightElf Druid
+  only NightElf Druid not Skyborne
   note Return to Darnassus and show Mathrengyl Bearwalker the Pendant of the Sea Lion.
   talk Mathrengyl Bearwalker##4217
   turnin Aquatic Form##5061 |goto Darnassus 35.37,8.4
@@ -269,7 +269,7 @@ step
 step
   only NightElf Druid
   note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
-  collect Relic of the Fang##280502 |q 98396 |goto Moonglade 58.39,73.52
+  collect Relic of the Fang##280502 |q 98396 |goto Moonglade 72.6,66.1
 step
   only NightElf Druid
   talk Great Cat Spirit##11957

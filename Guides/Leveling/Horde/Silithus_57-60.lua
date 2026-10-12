@@ -4,7 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Silithus (57-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "a02dcee4",
+	next = "Leveling/Horde/The Barrens (55-60)",
+	rev = "71262cfa",
 }, [[
 step
   talk Cenarion Emissary Blackhoof##15188
@@ -434,4 +435,7 @@ step
   only completed(1124)
   talk Umber##11939
   turnin Under the Chitin Was...##1185 |goto Moonglade 44.88,35.6 |tip {turninat}Moonglade
+step
+  note {travel}The Barrens
+  goto The Barrens 62.45,38.73
 ]])

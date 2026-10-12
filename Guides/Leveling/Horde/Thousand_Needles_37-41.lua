@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (37-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Feralas (43-48)",
-	rev = "0dcea16f",
+	rev = "8f0aeae3",
 }, [[
 step
   only completed(1176)
@@ -19,6 +19,17 @@ step
   only completed(1183)
   talk Razzeric##4706
   turnin The Eighteenth Pilot##1186 |goto Thousand Needles 80.33,76.09
+step
+  note {fp}Nyse
+  goto Thousand Needles 45.14,49.11 |tip {vendor}
+step
+  only Shaman
+  talk Rau Cliffrunner##4722
+  accept Heed My Call##79366 |goto Thousand Needles 46.14,51.71
+step
+  only Shaman
+  talk Rau Cliffrunner##4722
+  turnin Heed My Call##79366 |goto Thousand Needles 46.14,51.71
 step
   only completed(1183)
   talk Razzeric##4706

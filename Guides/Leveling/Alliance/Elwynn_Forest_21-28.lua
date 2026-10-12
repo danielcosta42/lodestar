@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Duskwood (30-35)",
-	rev = "44b4adcf",
+	next = "Leveling/Alliance/Wetlands (21-29)",
+	rev = "55e9235e",
 }, [[
 step
   only completed(373)
@@ -60,12 +60,11 @@ step
   talk Brother Kristoff##1444
   accept Speaking of Fortitude##343 |goto Stormwind City 55.04,54.16
 step
+  talk Highlord Bolvar Fordragon##1748
+  accept A Friend of the Family##98191 |goto Stormwind City 80.21,38.35
+step
   talk Brother Sarno##7917
   accept Tinkmaster Overspark##2923 |goto Stormwind City 51.05,48.39
-step
-  only Warrior completed(1701)
-  talk Furen Longbeard##5413
-  accept Furen's Armor##1782 |goto Stormwind City 64.62,37.23
 step
   only not Dwarf not NightElf not Skyborne Mage
   talk Bink##5144
@@ -81,12 +80,11 @@ step
   talk Milton Sheaf##1440
   turnin Speaking of Fortitude##343 |goto Stormwind City 77.07,30.21 |tip {turninat}Stormwind City
 step
+  talk Lord Grayson Shadowbreaker##928
+  turnin A Friend of the Family##98191 |goto Stormwind City 48.43,50.22 |tip {turninat}Stormwind City
+step
   talk Tinkmaster Overspark##7944
   turnin Tinkmaster Overspark##2923 |goto Ironforge 69.55,50.33 |tip {turninat}Ironforge
-step
-  only Warrior completed(1701)
-  talk Furen Longbeard##5413
-  turnin Furen's Armor##1782 |goto Stormwind City 64.62,37.23 |tip {turninat}Stormwind City
 step
   only not Dwarf not NightElf not Skyborne Mage
   talk High Sorcerer Andromath##5694
@@ -121,26 +119,6 @@ step
   talk Caretaker Folsom##297
   accept The Legend of Stalvan##72 |goto Stormwind City 42.53,72.36
 step
-  only Human Warrior completed(1701)
-  talk Furen Longbeard##5413
-  accept Grimand Elmore##1700 |goto Stormwind City 64.62,37.23
-step
-  only NightElf Warrior completed(1701)
-  talk Furen Longbeard##5413
-  accept Mathiel##1703 |goto Stormwind City 64.62,37.23
-step
-  only not Human not NightElf not Skyborne Warrior completed(1701)
-  talk Furen Longbeard##5413
-  accept Klockmort Spannerspan##1704 |goto Stormwind City 64.62,37.23
-step
-  only Warrior completed(1701)
-  talk Grimand Elmore##1416
-  accept Burning Blood##1705 |goto Stormwind City 59.73,33.78
-step
-  only Warrior completed(1701)
-  talk Klockmort Spannerspan##6169
-  accept Iron Coral##1708 |goto Ironforge 67.92,46.1
-step
   talk Bishop DeLavey##4960
   accept The Missing Diplomat##1241 |goto Stormwind City 80.24,44.07
 step
@@ -151,14 +129,6 @@ step
   only completed(118)
   note Kill 10 Redridge Brutes and 8 Redridge Mystics, then return to Verner Osgood.
   kill Redridge Brute##426 |q 124 |goto Redridge Mountains 18.91,34.91
-step
-  only Warrior completed(1701)
-  note Bring 20 vials of Burning Blood and 1 Burning Rock to Grimand Elmore in Stormwind.
-  collect 20 Burning Blood##6844 |q 1705 |goto Duskwood 65.13,67.39 |tip {dropsfrom}Nightbane Dark Runner, Nightbane Vile Fang, Nightbane Shadow Weaver
-step
-  only Warrior completed(1701)
-  note Bring 20 loads of Searing Coral to Klockmort Spannerspan in Ironforge.
-  collect 20 Searing Coral##6848 |q 1708 |goto Wetlands 8.92,70.18 |tip {dropsfrom}Iron Coral
 step
   only completed(118)
   talk Verner Osgood##415
@@ -175,26 +145,6 @@ step
 step
   only completed(69)
   turnin The Legend of Stalvan##72 |goto Stormwind City 42.47,72.05 |tip {turninat}Stormwind City
-step
-  only Human Warrior completed(1701)
-  talk Grimand Elmore##1416
-  turnin Grimand Elmore##1700 |goto Stormwind City 59.73,33.78 |tip {turninat}Stormwind City
-step
-  only NightElf Warrior completed(1701)
-  talk Mathiel##6142
-  turnin Mathiel##1703 |goto Darnassus 59.51,45.38 |tip {turninat}Darnassus
-step
-  only not Human not NightElf not Skyborne Warrior completed(1701)
-  talk Klockmort Spannerspan##6169
-  turnin Klockmort Spannerspan##1704 |goto Ironforge 67.92,46.1 |tip {turninat}Ironforge
-step
-  only Warrior completed(1701)
-  talk Grimand Elmore##1416
-  turnin Burning Blood##1705 |goto Stormwind City 59.73,33.78 |tip {turninat}Stormwind City
-step
-  only Warrior completed(1701)
-  talk Klockmort Spannerspan##6169
-  turnin Iron Coral##1708 |goto Ironforge 67.92,46.1 |tip {turninat}Ironforge
 step
   talk Jorgen##4959
   turnin The Missing Diplomat##1241 |goto Stormwind City 76.29,85.12 |tip {turninat}Stormwind City
@@ -278,6 +228,6 @@ step
   talk Commander Althea Ebonlocke##264
   turnin The Legend of Stalvan##97 |goto Duskwood 73.54,46.82 |tip {turninat}Duskwood
 step
-  note {travel}Stormwind City
-  goto Stormwind City 40.14,85.31
+  note {travel}Wetlands
+  goto Wetlands 49.92,39.37
 ]])
