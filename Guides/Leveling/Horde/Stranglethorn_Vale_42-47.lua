@@ -1,15 +1,48 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (43-47)", {
+ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (42-47)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Hinterlands (47-50)",
-	rev = "5b6342cb",
+	rev = "2834ede9",
 }, [[
+step
+  only completed(728)
+  talk Keeper Bel'dugur##2934
+  accept The Star, the Hand and the Heart##736 |goto Undercity 53.74,54.46
 step
   talk Apothecary Zinge##5204
   accept Errand for Apothecary Zinge##232 |goto Undercity 50.14,67.97
+step
+  note {fp}Thysta
+  goto Stranglethorn Vale 32.54,29.35 |tip {vendor}
+step
+  only completed(596) completed(629)
+  talk Kin'weelay##2519
+  accept Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
+step
+  talk Nimboya##2497
+  accept Grim Message##2932 |goto Stranglethorn Vale 32.16,27.72
+step
+  only completed(571)
+  talk Far Seer Mok'thardin##2465
+  accept Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
+step
+  only completed(596) completed(629)
+  note Bring 25 Split Bone Necklaces to Kin'weelay at the Grom'gol Base camp.
+  collect 25 Split Bone Necklace##3916 |q 598 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
+step
+  only completed(596) completed(629)
+  talk Kin'weelay##2519
+  turnin Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
+step
+  talk Nimboya##2497
+  turnin Grim Message##2932 |goto Stranglethorn Vale 32.16,27.72
+step
+  only completed(196)
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
 step
   only completed(189)
   talk Kebok##737
@@ -41,6 +74,10 @@ step
 step
   note Seek out Witch Doctor Unbagwa and have him summon Mokk the Savage. Bring the Heart of Mokk to Fin Fizracket.
   collect Heart of Mokk##2797 |q 348 |goto Stranglethorn Vale 35.05,60.88 |tip {dropsfrom}Mokk the Savage
+step
+  only completed(571)
+  note Far Seer Mok'thardin of Grom'gol needs Holy Spring Water. He also wants you to kill 10 Naga Explorers.
+  kill Naga Explorer##1907 |q 573 |goto Stranglethorn Vale 26.2,62.42
 step
   only completed(597)
   note Dizzy One-Eye in Booty Bay wants you to retrieve his eye from the Bloodsail Buccaneers.
@@ -81,23 +118,18 @@ step
   note Fleet-Master Seahorn in Booty Bay wants you to kill Captain Stillwater, Captain Keelhaul and Fleet Master Firallon.
   kill Captain Stillwater##2550 |q 608 |goto Stranglethorn Vale 32.87,88.2
 step
-  note {fp}Thysta
-  goto Stranglethorn Vale 32.54,29.35 |tip {vendor}
-step
-  only completed(596) completed(629)
-  talk Kin'weelay##2519
-  accept Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Nimboya##2497
-  accept Grim Message##2932 |goto Stranglethorn Vale 32.16,27.72
-step
   only completed(571)
   talk Far Seer Mok'thardin##2465
-  accept Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
+  turnin Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
 step
   only completed(584)
   click Bubbling Cauldron##2076
   accept Speaking with Gan'zulah##586 |goto Stranglethorn Vale 32.22,27.6
+step
+  only completed(196)
+  note Hemet Nesingwary wants you to kill Tethis, an elusive, dangerous raptor in Stranglethorn.
+  kill Tethis##730 |goto Stranglethorn Vale 32.2,42.8 |elite
+  collect Talon of Tethis##3877 |q 197 |goto Stranglethorn Vale 32.2,42.8
 step
   only completed(189)
   note Acquire 18 Skullsplitter Tusks and return them to Kebok.
@@ -107,23 +139,12 @@ step
   note Kill 8 Skullsplitter Hunters, 6 Skullsplitter Headhunters, and 4 Skullsplitter Berserkers.
   kill Skullsplitter Hunter##669 |q 586 |goto Stranglethorn Vale 45.93,42.4
 step
-  only completed(596) completed(629)
-  note Bring 25 Split Bone Necklaces to Kin'weelay at the Grom'gol Base camp.
-  collect 25 Split Bone Necklace##3916 |q 598 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
-step
   only completed(607)
   note Bring Maury's Clubbed Foot, Jon-Jon's Golden Spyglass, and Chucky's Huge Ring to "Sea Wolf" MacKinley in Booty Bay.
   collect Maury's Clubbed Foot##3924 |q 609 |goto Stranglethorn Vale 35.26,51.27 |tip {dropsfrom}Maury "Club Foot" Wilkins
 step
   only completed(584)
   turnin Speaking with Gan'zulah##586 |goto Stranglethorn Vale 32.22,27.6
-step
-  only completed(596) completed(629)
-  talk Kin'weelay##2519
-  turnin Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Nimboya##2497
-  turnin Grim Message##2932 |goto Stranglethorn Vale 32.16,27.72
 step
   only completed(584) completed(585)
   click Bubbling Cauldron##2076
@@ -164,7 +185,11 @@ step
 step
   only completed(196)
   talk Hemet Nesingwary##715
-  accept Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
+  turnin Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
+step
+  only completed(188) completed(193) completed(196)
+  talk Hemet Nesingwary##715
+  accept Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
 step
   only completed(189)
   talk Kebok##737
@@ -185,10 +210,6 @@ step
   talk Captain Hecklebury Smotts##2500
   accept The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
 step
-  only completed(571)
-  note Far Seer Mok'thardin of Grom'gol needs Holy Spring Water. He also wants you to kill 10 Naga Explorers.
-  kill Naga Explorer##1907 |q 573 |goto Stranglethorn Vale 26.2,62.42
-step
   only completed(584) completed(585)
   note Bring the Filled Soul Gem to Nimboya.
   collect Filled Soul Gem##3913 |q 592 |goto Stranglethorn Vale 39.02,58.35 |tip {dropsfrom}Yenniku
@@ -203,31 +224,23 @@ step
   talk Princess Poobah##2634
   turnin Message in a Bottle##594 |goto Stranglethorn Vale 38.53,80.58
 step
-  only completed(571)
-  talk Far Seer Mok'thardin##2465
-  turnin Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
-step
   only completed(584) completed(585)
   talk Nimboya##2497
   turnin Saving Yenniku##592 |goto Stranglethorn Vale 32.16,27.72
 step
-  only completed(196)
-  note Hemet Nesingwary wants you to kill Tethis, an elusive, dangerous raptor in Stranglethorn.
-  kill Tethis##730 |goto Stranglethorn Vale 32.2,42.8 |elite
-  collect Talon of Tethis##3877 |q 197 |goto Stranglethorn Vale 32.2,42.8
+  only completed(188) completed(193) completed(196)
+  note Hemet Nesingwary wants you to bring him the head of King Bangalash, the great white tiger.
+  kill King Bangalash##731 |goto Stranglethorn Vale 38.21,35.58 |elite
+  collect Head of Bangalash##3880 |q 208 |goto Stranglethorn Vale 38.21,35.58
 step
   only completed(607)
   note Bring Maury's Key to "Sea Wolf" Mackinley in Booty Bay.
   kill Mosh'Ogg Mauler##678 |goto Stranglethorn Vale 51.48,27.13 |elite
   collect Maury's Key##3930 |q 613 |goto Stranglethorn Vale 51.48,27.13
 step
-  only completed(196)
-  talk Hemet Nesingwary##715
-  turnin Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
-step
   only completed(188) completed(193) completed(196)
   talk Hemet Nesingwary##715
-  accept Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
+  turnin Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
 step
   only completed(607)
   talk "Sea Wolf" MacKinley##2501
@@ -254,6 +267,13 @@ step
   talk Sprogger##2594
   accept Facing Negolash##8554 |goto Stranglethorn Vale 26.66,73.64
 step
+  note Bring 10 Barbecued Buzzard Wings and 5 bottles of Junglevine Wine to Captain Smotts' Lifeboat.
+  kill Negolash##1494 |goto Stranglethorn Vale 32.45,81.57 |elite
+  collect 10 Smotts' Cutlass##3935 |q 8554 |goto Stranglethorn Vale 32.45,81.57
+step
+  talk Captain Hecklebury Smotts##2500
+  turnin Facing Negolash##8554 |goto Stranglethorn Vale 26.69,73.61
+step
   talk Princess Poobah##2634
   accept Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
 step
@@ -261,38 +281,38 @@ step
   kill King Mukla##1559 |goto Stranglethorn Vale 40.95,83.9 |elite
   collect Shackle Key##4103 |q 630 |goto Stranglethorn Vale 40.95,83.9
 step
-  note Bring 10 Barbecued Buzzard Wings and 5 bottles of Junglevine Wine to Captain Smotts' Lifeboat.
-  kill Negolash##1494 |goto Stranglethorn Vale 32.45,81.57 |elite
-  collect 10 Smotts' Cutlass##3935 |q 8554 |goto Stranglethorn Vale 32.45,81.57
-step
   talk Princess Poobah##2634
   turnin Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
-step
-  only completed(188) completed(193) completed(196)
-  note Hemet Nesingwary wants you to bring him the head of King Bangalash, the great white tiger.
-  kill King Bangalash##731 |goto Stranglethorn Vale 38.21,35.58 |elite
-  collect Head of Bangalash##3880 |q 208 |goto Stranglethorn Vale 38.21,35.58
-step
-  only completed(188) completed(193) completed(196)
-  talk Hemet Nesingwary##715
-  turnin Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
-step
-  talk Captain Hecklebury Smotts##2500
-  turnin Facing Negolash##8554 |goto Stranglethorn Vale 26.69,73.61
 step
   turnin Cortello's Riddle##624 |goto Swamp of Sorrows 22.87,48.19 |tip {turninat}Swamp of Sorrows
 step
   talk Alessandro Luca##7683
   turnin Errand for Apothecary Zinge##232 |goto Undercity 58.61,54.68 |tip {turninat}Undercity
 step
+  only completed(728)
+  note Bring the items on Bel'dugur's Note to Keeper Bel'dugur in the Undercity.
+  collect Star of Xil'yeh##4646 |q 736 |goto Alterac Mountains 35.58,54.42 |tip {dropsfrom}Grel'borg the Miser
+step
   note Whiskey Slim in Booty Bay wants you to bring him the bottles of Pupellyverbos Port he lost.
   collect Pupellyverbos Port##3900 |q 580 |goto The Hinterlands 78.7,70.64
+step
+  only completed(728)
+  talk Keeper Bel'dugur##2934
+  turnin The Star, the Hand and the Heart##736 |goto Undercity 53.74,54.46 |tip {turninat}Undercity
 step
   talk Whiskey Slim##2491
   turnin Whiskey Slim's Lost Grog##580 |goto Stranglethorn Vale 27.14,77.45
 step
+  only completed(728)
+  talk Keeper Bel'dugur##2934
+  accept Forbidden Knowledge##737 |goto Undercity 53.74,54.46
+step
   talk Alessandro Luca##7683
   accept Errand for Apothecary Zinge##238 |goto Undercity 58.61,54.68
+step
+  only completed(728)
+  talk Theldurin the Lost##2785
+  turnin Forbidden Knowledge##737 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
 step
   talk Apothecary Zinge##5204
   turnin Errand for Apothecary Zinge##238 |goto Undercity 50.14,67.97 |tip {turninat}Undercity

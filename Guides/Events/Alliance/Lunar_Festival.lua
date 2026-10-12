@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Lunar Festival", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "10e9ffea",
+	rev = "e0cbea55",
 }, [[
 step
   talk Elder Riversong##15605
@@ -271,19 +271,19 @@ step
   only not completed(8871) not completed(8872) not haveq(8871) not haveq(8872)
   note Talk to the Lunar Festival Harbinger in the Mystic Ward of Ironforge. You can also talk to Lunar Festival Harbingers in other capital cities.
   talk Lunar Festival Harbinger##15895
-  turnin The Lunar Festival##8870 |goto Undercity 65.62,36
+  turnin The Lunar Festival##8870 |goto Stormwind City 37.65,65.63
 step
   talk Lunar Festival Harbinger##15895
-  accept Lunar Fireworks##8867 |goto Undercity 65.62,36
+  accept Lunar Fireworks##8867 |goto Stormwind City 37.65,65.63
 step
   note Launch 8 Lunar Fireworks and 2 Cluster Fireworks and return to a Lunar Festival Harbinger at any capital city.
   collect Firework Launcher##180771 |q 8867 |goto Moonglade 37.15,57.88
 step
   talk Lunar Festival Harbinger##15895
-  turnin Lunar Fireworks##8867 |goto Undercity 65.62,36
+  turnin Lunar Fireworks##8867 |goto Stormwind City 37.65,65.63
 step
   talk Lunar Festival Harbinger##15895
-  accept Valadar Starsong##8883 |goto Undercity 65.62,36
+  accept Valadar Starsong##8883 |goto Stormwind City 37.65,65.63
 step
   note Use your Lunar Festival Invitation in the moonlight to travel to Moonglade. Speak with Valadar Starsong in Nighthaven when you arrive.
   talk Valadar Starsong##15864

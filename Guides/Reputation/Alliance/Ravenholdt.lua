@@ -4,8 +4,20 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Ravenholdt", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "911bee28",
+	rev = "fdbd8609",
 }, [[
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
+  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.32,46.24
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
 step
   only Rogue
   talk Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip They give you the item that starts the quest.
@@ -18,6 +30,19 @@ step
   only Rogue
   talk Fahrad##6707
   turnin The Manor, Ravenholdt##6681 |goto Alterac Mountains 84.45,80.32
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  note Steal Barton's Scouting Report by pickpocketing it from him. Then, bring the report to Myrokos Silentform at Ravenholdt Manor.
+  kill Barton##266357 |goto Alterac Mountains 62.59,46.86
+  collect Barton's Scouting Report##275482 |q 96781 |goto Alterac Mountains 62.59,46.86
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
 step
   only Rogue
   talk Osborne the Night Man##918

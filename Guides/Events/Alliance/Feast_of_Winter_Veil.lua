@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Feast of Winter Veil", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "836ab3a4",
+	rev = "ca4d0966",
 }, [[
 step
   talk Wonderform Operator##15732
@@ -162,7 +162,15 @@ step
   note Bring 1 Deeprock Salt and 5 gold coins to any Holly Preserver machine, upon which you will receive 5 Preserved Holly.
   collect 1 Deeprock Salt##8150 |q 8763 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Felhunter, Stone Fury
 step
-  turnin The Hero of the Day##8763 |goto Undercity 67.33,38
+  turnin The Hero of the Day##8763 |goto Stormwind City 62.13,69.52
+step
+  talk Kwee Q. Peddlefeet##16075
+  accept Gift Giving##8993 |goto Stormwind City 80.55,37.94
+step
+  collect Alliance Gift Collection##22262 |q 8993 |goto Stormwind City 80.55,37.94
+step
+  talk Kwee Q. Peddlefeet##16075
+  turnin Gift Giving##8993 |goto Stormwind City 80.55,37.94
 step
   talk Jesper##15310
   accept Hallow's End Treats for Jesper!##8311 |goto Stormwind City 56.53,51.76
@@ -181,12 +189,4 @@ step
 step
   talk Innkeeper Allison##6740
   turnin Flexing for Nougat##8356 |goto Stormwind City 60.39,75.27
-step
-  talk Kwee Q. Peddlefeet##16075
-  accept Gift Giving##8993 |goto Undercity 55.2,89.95
-step
-  collect Alliance Gift Collection##22262 |q 8993 |goto Undercity 55.2,89.95
-step
-  talk Kwee Q. Peddlefeet##16075
-  turnin Gift Giving##8993 |goto Undercity 55.2,89.95
 ]])

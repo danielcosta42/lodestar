@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Stonetalon Mountains (19-26)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Ashenvale (22-27)",
-	rev = "03a4b4cd",
+	next = "Leveling/Horde/The Barrens (23-30)",
+	rev = "acb39006",
 }, [[
 step
   note {fp}Tharm
@@ -98,9 +98,9 @@ step
   turnin Cycle of Rebirth##6301 |goto Stonetalon Mountains 47.46,58.38
 step
   click Pocket Litter##424005
-  accept Scramble##79980 |goto Stonetalon Mountains 40.79,52.61
+  accept Scramble##79980 |goto Stonetalon Mountains 40.76,52.57
 step
-  turnin Scramble##79980 |goto Stonetalon Mountains 39.6,49.91
+  turnin Scramble##79980 |goto Stonetalon Mountains 39.62,49.86
 step
   talk Braelyn Firehand##4198
   accept Cenarius' Legacy##1087 |goto Stonetalon Mountains 45.94,60.42
@@ -132,11 +132,20 @@ step
   talk Maggran Earthbinder##11860
   accept Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
 step
+  talk Maggran Earthbinder##11860
+  accept Bloodfury Trinkets##86576 |goto Stonetalon Mountains 47.2,61.16
+step
   note Maggran Earthbinder in Sun Rock Retreat wants you to slay 7 Bloodfury Harpies, 7 Bloodfury Ambushers, 7 Bloodfury Slayers and 7 Bloodfury Roguefeathers.
   kill Bloodfury Harpy##4022 |q 6282 |goto Stonetalon Mountains 32.57,60.66
 step
+  note Bring 15 Glittering Sunstones to Mor'rogal.
+  collect 15 Glittering Sunstone##277936 |q 86576 |goto Stonetalon Mountains 32.57,60.66 |tip {dropsfrom}Bloodfury Harpy, Bloodfury Roguefeather, Bloodfury Slayer
+step
   talk Maggran Earthbinder##11860
   turnin Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
+step
+  talk Mor'rogal##11861
+  turnin Bloodfury Trinkets##86576 |goto Stonetalon Mountains 47.22,64.04
 step
   talk Maggran Earthbinder##11860
   accept Bloodfury Bloodline##6283 |goto Stonetalon Mountains 47.2,61.16
@@ -179,13 +188,14 @@ step
   talk Grish Longrunner##12576
   turnin Calling in the Reserves##5881 |goto Thousand Needles 31.86,21.66 |tip {turninat}Thousand Needles
 step
-  only completed(1067)
-  talk Apothecary Zamah##3419
-  accept The Flying Machine Airport##1086 |goto Thunder Bluff 22.81,20.89
+  talk Tah Winterhoof##3024
+  accept Pigments for Paints##97538 |goto Thunder Bluff 54.14,47.05
 step
-  only completed(1067)
-  talk Apothecary Zamah##3419
-  turnin The Flying Machine Airport##1086 |goto Thunder Bluff 22.81,20.89 |tip {turninat}Thunder Bluff
+  note Tah Winterhoof in Thunder Bluff wants 30 Mirkweed Pods from Mirkfallon Lake.
+  collect Mirkweed Pods##278201 |q 97538 |goto Stonetalon Mountains 47.5,41 |tip {dropsfrom}Mirkweed, Dried Mirkweed Pile
+step
+  talk Tah Winterhoof##3024
+  turnin Pigments for Paints##97538 |goto Thunder Bluff 54.14,47.05 |tip {turninat}Thunder Bluff
 step
   talk Sputtervalve##3442
   turnin Further Instructions##1094 |goto The Barrens 62.98,37.22 |tip {turninat}The Barrens
@@ -197,6 +207,9 @@ step
   talk Grunt Logmar##5911
   accept Dogran's Captivity##1515 |goto The Barrens 44.62,59.27
 step
+  kill Blackfathom Tide Priestess##4802 |goto Ashenvale 13.55,12.06 |elite |tip Loot the quest item here — it starts the quest.
+  accept Allegiance to the Old Gods##6564 |goto Ashenvale 13.55,12.06
+step
   note Bring Ordanus' head to Braelyn Firehand near Sun Rock Retreat.
   collect Ordanus' Head##5686 |q 1088 |goto Ashenvale 62.05,51.37 |tip {dropsfrom}Keeper Ordanus
 step
@@ -206,6 +219,9 @@ step
   only Warlock completed(1510) not completed(1472) not haveq(1472)
   talk Grunt Dogran##5908
   turnin Dogran's Captivity##1515 |goto The Barrens 43.3,47.89 |tip {turninat}The Barrens
+step
+  talk Je'neu Sancrea##12736
+  turnin Allegiance to the Old Gods##6564 |goto Ashenvale 11.56,34.29 |tip {turninat}Ashenvale
 step
   talk Braelyn Firehand##4198
   turnin Ordanus##1088 |goto Stonetalon Mountains 45.94,60.42
@@ -238,6 +254,6 @@ step
   talk Gan'rul Bloodeye##5875
   turnin The Binding##1513 |goto Orgrimmar 48.25,45.28 |tip {turninat}Orgrimmar
 step
-  note {travel}Ashenvale
-  goto Ashenvale 11.69,34.91
+  note {travel}The Barrens
+  goto The Barrens 51.07,29.63
 ]])

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Thousand Needles (30-41)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Feralas (43-48)",
-	rev = "da3bd36f",
+	next = "Leveling/Alliance/Desolace (33-40)",
+	rev = "a51b3bc6",
 }, [[
 step
   only Warrior completed(1782)
@@ -127,15 +127,6 @@ step
   talk Wharfmaster Dizzywig##3453
   turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
 step
-  talk Talendria##11715
-  accept Vyletongue Corruption##7041 |goto Desolace 68.5,8.88
-step
-  note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
-  kill Noxxious Scion##13696 |q 7041 |goto Maraudon - Dungeon -1,-1
-step
-  talk Talendria##11715
-  turnin Vyletongue Corruption##7041 |goto Desolace 68.5,8.88 |tip {turninat}Desolace
-step
   talk Gazlowe##3391
   turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
 step
@@ -175,6 +166,6 @@ step
   talk Shreev##4708
   turnin Safety First##1188 |goto Tanaris 50.96,27.24 |tip {turninat}Tanaris
 step
-  note {travel}Feralas
-  goto Feralas 30.28,46.17
+  note {travel}Desolace
+  goto Desolace 60.86,61.86
 ]])

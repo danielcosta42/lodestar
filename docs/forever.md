@@ -1,8 +1,9 @@
 # WoW: Forever — o que o Lodestar faz, e por quê
 
 Beta aberto em 2026-09-17, até 2026-10-21; lançamento em **2026-11-04**. Build corrente
-**1.60.1.70245** (`wow_classic_beta`, **Interface 16001**, token de TOC `Camelot`). O beta está
-capado no nível 30 e sem raides.
+**1.60.1.70338** (`wow_classic_beta`, **Interface 16001**, token de TOC `Camelot`); as tabelas do
+cliente (`QuestV2`, voos) ainda são as do 70245 — o wago estava fora do ar quando o 70338 entrou. O
+beta está capado no nível 30 e sem raides.
 
 O Lodestar é **Forever e só**. O suporte a TBC/Anniversary saiu na v2.0.0, e desde a #9 a biblioteca
 inteira de guias é gerada do banco do Forever.
@@ -36,8 +37,10 @@ quest só conta como removida quando o Anniversary **tem** e o Forever **não te
 
 **1. QuestieDB do Forever — a base.** Desde a 1.0.5 (2026-10, "Add Forever base data") o QuestieDB,
 o addon de dados que o Questie 12 exige, traz a base inteira do Forever: 5.010 quests, **760 delas
-novas**, 13.311 NPCs (3.110 novos), objetos, itens e o mapa de zonas do Forever. É GPL e aberto, como
-o banco do Questie de onde as rotas do Lodestar sempre vieram.
+novas**, 13.311 NPCs (3.110 novos), objetos, itens e o mapa de zonas do Forever. A 1.0.6
+(2026-10-12) refez a base de um snapshot de 10/10: 5.226 quests (+216, nenhuma removida), 13.392
+NPCs, e cadeia corrigida em quest que já existia (51 pré-requisitos, 43 quem recebe, 42
+`nextInChain`). É GPL e aberto, como o banco do Questie de onde as rotas do Lodestar sempre vieram.
 
 O dado mora no próprio `.toc`, em modo *baked*: `## X-Quest-<id>-S: <base64 de CBOR>` com os campos
 escalares e uma máscara de quais campos-tabela existem, `## X-Quest-<id>-<campo>` para cada tabela,
@@ -80,7 +83,17 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   (10-20)" na cadeia de todo mundo. Abaixo da primeira leva, o guia só leva quest até 10 níveis menor.
 - **Fica fora do leveling:** quest que exige profissão (as onze "Camping 101: <profissão>" de cada
   zona inicial), entrega de Craftsman's Writ, e categoria que não é rota — feriado, Darkmoon, guerra
-  de AQ, reputação de fim de jogo, profissão e campo de batalha. Classe fica, com `only <Classe>`.
+  de AQ, reputação de fim de jogo, profissão e campo de batalha (Darkspear Islands incluído: as
+  quests dela saem do battlemaster da capital). Classe fica, com `only <Classe>`.
+- **Masmorra nova do Forever** (City of Dalaran, Excavation Site: Wetlands, Ruins of Lordaeron, The
+  Hall of Thanes) não tem mapa nem spawn lá dentro no QuestieDB. A zona entra com o nome do
+  `dungeons.lua` e uiMapId 0; quest classificada nela sem objetivo posicionado fora vai para o guia
+  da masmorra em vez de virar passo sem seta no leveling — inclusive a que o banco nem lista o
+  objetivo ("Bring the Titan Relic"). Em masmorra antiga, quest sem objetivo só vai se quem recebe
+  também não estiver fora: "Speak with Hamuul Runetotem" segue no leveling.
+- **Capital inimiga só se não houver outra.** Spawn em várias zonas escolhe fora da capital da outra
+  facção (o Incubus do bruxo: Stormwind para a Aliança), e objeto que dá quest numa capital inimiga
+  não serve de início (a caixa de correio de Orgrimmar dá Deviate Hides; a Aliança pega com o Nalpak).
 - **Cada facção com o seu lado.** Quest das duas facções lista quem dá e quem recebe dos dois lados
   (The Hunter's Charm: Thunder Bluff e Darnassus); no guia de uma facção fica só o lado dela, pelo
   `friendlyToFaction` do NPC — o que as correções por facção do QuestieDB fazem em Lua. Viagem a
@@ -128,33 +141,37 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   ainda não é público: o `Guide.lua` reconhece a raça pelo id, e o guia inicial dela é Zephras Isle.
   Zona inicial com duas faixas começa pela mais baixa.
 
-## Números (QuestieDB 1.0.5, build 70245)
+## Números (QuestieDB 1.0.6, `QuestV2` do 70245)
 
 | | |
 |---|---|
-| Guias | 182 (86 de leveling, 95 especiais, 1 exemplo) |
-| Quests distintas em guia | 3693 |
-| Quests novas do Forever em guia | **442 de 760** |
+| Guias | 196 (88 de leveling, 108 especiais) |
+| Quests distintas em guia | 3781 |
+| Quests novas do Forever em guia | **548 de 993** |
 | — fora: entrega de Craftsman's Writ | 150 |
-| — fora: exigem profissão | 80 |
-| — fora: começam por item ou giver sem posição | 68 |
-| — fora: evento/repetível/campo de batalha | 8 |
-| — fora: outro | 12 |
+| — fora: começam por item ou giver sem posição | 145 |
+| — fora: exigem profissão | 86 |
+| — fora: outro | 35 |
+| — fora: evento/repetível/campo de batalha | 29 |
 | `validate_guides.py` — ocorrências | **0** (antes da revisão: 10 bloqueios, 244 pré-req ausentes) |
-| Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos |
-| `guide_integrity.py` — passo sem coordenada | 2 |
+| Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos, toda raça×classe |
+| `guide_integrity.py` — passo sem coordenada | 3, todos chefe de masmorra nova (sem spawn no banco); 0 no leveling |
 
 `gen_forever.py` imprime essa conta a cada rodada.
 
 ## As zonas novas
 
-| zona | areaID / uiMapID | nível | no QuestieDB 1.0.5 |
+| zona | areaID / uiMapID | nível | no QuestieDB 1.0.6 |
 |---|---|---|---|
 | Zephras Isle | 16593 / 2521 | 1-12 | zona inicial da raça nova; **guia nas duas facções** |
 | Riverglades | 16591 / 2548 | 36-44 | 181 NPCs com spawn, **nenhuma quest** — fora do beta |
 | Mount Hyjal | 616 / 2482 | — | NPCs, nenhuma quest |
-| Shen'dralas | 16651 / 2652 | — | NPCs, nenhuma quest |
-| Darkspear Islands | 16606 / 2524 | 30-60 | **Battleground 15v15**, não zona de quest |
+| Shen'dralas | 16651 / 2652 | 38-43 | 19 quests; 6 no guia de Desolace da Aliança (1 também no da Horda); 12 sem quem dá posicionado |
+| Darkspear Islands | 16606 / 2524 | 30-60 | **Battleground 15v15**; as quests dela ficam fora do leveling |
+| City of Dalaran | 16544 / — | 33 | masmorra nova (entrada em Alterac); guia de masmorra |
+| Excavation Site: Wetlands | 16732 / — | 28-31 | masmorra nova (entrada em Wetlands); guia de masmorra |
+| Ruins of Lordaeron | 16611 / — | 21-22 | masmorra nova; guia de masmorra da Horda |
+| The Hall of Thanes | 16919 / — | 15-16 | masmorra nova; guia de masmorra da Aliança |
 
 ## Regerar
 
@@ -185,8 +202,14 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
 
 ## Em aberto
 
-- **Riverglades, Hyjal e Shen'dralas.** O QuestieDB 1.0.5 tem os NPCs, não as quests. Entram quando
-  ele tiver — ou quando o `/ls scan` colher no lançamento.
+- **Riverglades e Hyjal.** O QuestieDB 1.0.6 tem os NPCs, não as quests. Entram quando ele tiver —
+  ou quando o `/ls scan` colher no lançamento. Em Shen'dralas, 12 das 19 quests esperam quem as dá.
+- **`QuestV2` do 70338.** O wago devolvia 503 quando o build entrou; ao voltar, subir `FOREVER` em
+  `tools/import_forever.py` e rodar o "Regerar" (as tabelas de voo vêm do mesmo build).
+- **Masmorra nova sem mapa.** O QuestieDB não posiciona nada dentro de City of Dalaran, Excavation
+  Site, Ruins of Lordaeron e Hall of Thanes: o guia delas lista as quests, mas o chefe sai sem seta,
+  e item sem fonte conhecida aponta para quem dá a quest (Fel Infused Blossom → Stormwind). As da
+  Aliança em Ruins of Lordaeron começam por item sem fonte e ficam sem guia.
 - **Quest de profissão.** Fica fora porque o DSL não tem condição de profissão; com uma (`skill(171)`),
   as "Camping 101" e as entregas de Craftsman's Writ podiam entrar para quem tem a profissão.
 - **A cadeia é por continente.** Quem começa em Elwynn fica nos Reinos do Leste até o 60 e só
@@ -194,7 +217,7 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
   continente e não aparece para esse jogador. Quest entre continentes (Thousand Needles → Booty
   Bay) fica fora.
 - **"Welcome to Azeroth" da Aliança (94947)** — a quest que tira o Skyborne da ilha — tem quem a dá
-  (Denaaris Stargale) posicionado em Alterac Mountains no QuestieDB 1.0.5, e fica fora do guia; a
+  (Denaaris Stargale) posicionado em Alterac Mountains no QuestieDB 1.0.5 e 1.0.6, e fica fora do guia; a
   gêmea da Horda (95350) está em Mulgore e roteada. Conferir em jogo de onde parte o portal.
 - **Passo que começa por item de drop** sem fonte localizada (64 quests novas): falta o
   `itemDrops` do QuestieDB no `items.json`.

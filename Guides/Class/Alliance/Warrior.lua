@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warrior", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "a0f73e23",
+	rev = "6c3b9c18",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -33,15 +33,6 @@ step
   note Read the Simple Memorandum and speak to Thran Khorman in Coldridge Valley.
   talk Thran Khorman##912
   turnin Simple Memorandum##3112 |goto Dun Morogh 28.83,67.24
-step
-  only Human Warrior
-  talk Marshal McBride##197
-  accept A Scribbled Letter##92479 |goto Elwynn Forest 48.92,41.61
-step
-  only Human Warrior
-  note Read the Scribbled Letter and speak to Tordrin Stemblade in Northshire Abbey.
-  talk Tordrin Sternblade##248415
-  turnin A Scribbled Letter##92479 |goto Elwynn Forest 51.19,40.74
 step
   talk Deputy Willem##823
   accept A Threat Within##783 |goto Elwynn Forest 48.17,42.94
@@ -91,25 +82,25 @@ step
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.71,26.43
+  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Warrior
   talk Rorian the Dayseeker##251361
-  accept The Warrior's Path##92532 |goto Zephras Isle 42.1,23.49
+  accept The Warrior's Path##92532 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Warrior
   note Read the Crumpled Note you've been given, then seek out Blademaster Ren inside the Thendal Village watchtower.
   talk Blademaster Ren##251964
-  turnin The Warrior's Path##92532 |goto Zephras Isle 43.68,24.17
+  turnin The Warrior's Path##92532 |goto Zephras Isle 43.65,24.17
 step
   only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
   talk Granis Swiftaxe##1229
@@ -273,7 +264,7 @@ step
 step
   only Skyborne Warrior
   talk Seena Skybreaker##252377
-  accept The Skybreaker Bulwark##94003 |goto Zephras Isle 59.87,72.82
+  accept The Skybreaker Bulwark##94003 |goto Zephras Isle 59.86,72.82
 step
   only Skyborne Warrior
   note Reclaim the Skybreaker Bulwark from Zaal Stormshield at the Shrine of Akir.
@@ -281,7 +272,7 @@ step
 step
   only Skyborne Warrior
   talk Seena Skybreaker##252377
-  turnin The Skybreaker Bulwark##94003 |goto Zephras Isle 59.87,72.82
+  turnin The Skybreaker Bulwark##94003 |goto Zephras Isle 59.86,72.82
 step
   only Warrior
   talk Kelv Sternhammer##5113

@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-18)", {
+ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Hillsbrad Foothills (22-30)",
-	rev = "29a142af",
+	next = "Leveling/Horde/Hillsbrad Foothills (22-28)",
+	rev = "dad522ce",
 }, [[
 step
   only Undead Rogue
@@ -129,14 +129,14 @@ step
   talk Shadow Priest Allister##2121
   accept Dalar's Analysis##481 |goto Silverpine Forest 43.98,40.93
 step
-  talk Apothecary Renferrel##1937
-  accept Zinge's Delivery##1359 |goto Silverpine Forest 42.8,40.86
-step
   talk Dalar Dawnweaver##1938
   turnin Dalar's Analysis##481 |goto Silverpine Forest 44.2,39.81
 step
   talk Dalar Dawnweaver##1938
   accept Dalaran's Intentions##482 |goto Silverpine Forest 44.2,39.81
+step
+  talk Apothecary Renferrel##1937
+  accept Zinge's Delivery##1359 |goto Silverpine Forest 42.8,40.86
 step
   talk Shadow Priest Allister##2121
   turnin Dalaran's Intentions##482 |goto Silverpine Forest 43.98,40.93
@@ -273,25 +273,30 @@ step
 step
   only Undead Paladin
   talk Trevan Rol##248840
-  accept A Curious Pair##91859 |goto Silverpine Forest 43.4,41
-step
-  talk Tabitha Heartweaver##250686
-  accept A Frightened Request##92401 |goto Silverpine Forest 44.57,42.94
+  accept A Curious Pair##91859 |goto Silverpine Forest 43.34,41.12
 step
   only Undead Paladin
   talk Deathguard Baldren##259611
-  turnin A Curious Pair##91859 |goto Silverpine Forest 44.43,40.87
+  accept A Grim Fate##91860 |goto Silverpine Forest 45.77,41.94
 step
-  talk Tabitha Heartweaver##250686
-  turnin A Frightened Request##92401 |goto Silverpine Forest 44.57,42.94
+  only Undead Paladin
+  talk Deathguard Baldren##259611
+  turnin A Curious Pair##91859 |goto Silverpine Forest 45.77,41.94
+step
+  only Undead Paladin
+  turnin A Grim Fate##91860 |goto Silverpine Forest 64.93,34.34
+step
+  only Undead Paladin
+  click Charred Remains##566037
+  accept Into Fenris Keep##91861 |goto Silverpine Forest 64.93,34.34
 step
   only Undead Paladin
   talk Lumina Windsinger##248755
-  accept Lumina Windsinger##91862 |goto Silverpine Forest 65.8,28.6
+  accept Lumina Windsinger##91862 |goto Silverpine Forest 65.63,23.36
 step
   only Undead Paladin
   talk Lumina Windsinger##248755
-  accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.8,28.6
+  accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.63,23.36
 step
   only Undead Paladin
   note Retrieve the Fenris Isle Key from the Rot Hide Gnolls and use it to free Lumina Windsinger.
@@ -299,17 +304,65 @@ step
 step
   only Undead Paladin
   talk Lumina Windsinger##248755
-  turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.8,28.6
+  turnin Into Fenris Keep##91861 |goto Silverpine Forest 65.63,23.36
+step
+  only Undead Paladin
+  talk Lumina Windsinger##248755
+  turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.63,23.36
+step
+  click Offering Stone##645153
+  accept The Tortured Soul##95883 |goto Silverpine Forest 58.22,69.88
+step
+  kill Ravenclaw Guardian##1973 |goto Silverpine Forest 58.66,71.29 |tip Loot the quest item here — it starts the quest.
+  accept The Offering Stone##95884 |goto Silverpine Forest 58.66,71.29
+step
+  click Offering Stone##645153
+  accept The Offering of Blood##95885 |goto Silverpine Forest 58.22,69.88
 step
   note Kill the Dalaran archmage, then retrieve his staff for Shadow Priest Allister at the Sepulcher.
   collect Ataeric's Staff##3515 |q 480 |goto Silverpine Forest 63.4,64.27 |tip {dropsfrom}Archmage Ataeric
+step
+  note Collect a Tortured Soul from the nearby undead in Beren's Peril in Silverpine Forest.
+  collect Tortured Soul##271350 |q 95883 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
+step
+  note Find the Offering Stone in Beren's Peril in Silverpine Forest.
+  collect Note Scrap##271343 |q 95884 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
+step
+  note Use the Tortured Soul to give an offering of blood at the Offering Stone in Beren's Peril.
+  kill Tortured Soul##212753 |q 95885 |goto Silverpine Forest 58.06,70.07
+step
+  turnin The Tortured Soul##95883 |goto Silverpine Forest 58.22,69.88
+step
+  turnin The Offering Stone##95884 |goto Silverpine Forest 58.22,69.88
+step
+  turnin The Offering of Blood##95885 |goto Silverpine Forest 58.22,69.88
 step
   talk Shadow Priest Allister##2121
   turnin The Weaver##480 |goto Silverpine Forest 43.98,40.93
 step
   only Undead Paladin
   talk Lumina Windsinger##259620
-  turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.2,40.8
+  turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.33,40.97
+step
+  only Shaman completed(63)
+  click Brazier of Everfount##113791
+  accept Call of Water##100 |goto Silverpine Forest 38.26,44.56
+step
+  only Shaman completed(63)
+  talk Minor Manifestation of Water##5895
+  turnin Call of Water##100 |goto Silverpine Forest 38.65,44.58
+step
+  only Undead Paladin
+  talk Lumina Windsinger##259620
+  accept The Debt##95034 |goto Silverpine Forest 43.33,40.97
+step
+  only Undead Paladin
+  talk Lumina Windsinger##259620
+  turnin The Debt##95034 |goto Silverpine Forest 43.33,40.97
+step
+  only Undead Paladin
+  talk Trevan Rol##248840
+  accept An Underrated Talent##95111 |goto Silverpine Forest 43.34,41.12
 step
   talk Master Apothecary Faranell##2055
   turnin A Recipe For Death##447 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
@@ -322,19 +375,19 @@ step
   turnin Journey to Hillsbrad Foothills##493 |goto Hillsbrad Foothills 61.44,19.06 |tip {turninat}Hillsbrad Foothills
 step
   only Undead Paladin
+  talk Ott##3539
+  turnin An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.18 |tip {turninat}Hillsbrad Foothills
+step
+  only Undead Paladin
   talk Tanis Alderwood##257648
-  accept A Lesson in Divinity##94434 |goto Undercity 65.62,37.94
+  accept A Lesson in Divinity##94434 |goto Undercity 65.68,37.74
 step
   talk Alessandro Luca##7683
   accept Prompt Potion Runner##97891 |goto Undercity 58.61,54.68
 step
   only not Orc not Tauren not Skyborne Mage
-  talk Anastasia Hartwell##4568
-  accept Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03
-step
-  only not Orc not Tauren not Skyborne Mage
-  note Obtain a Cantation of Manifestation and a Chest of Containment Coffers from behind Anastasia Hartwell. Bring 3 Filled Containment Coffers, the Chest of Containment Coffers and the Cantation of Manifestation to Anastasia in the Undercity.
-  collect 3 Filled Containment Coffer##7292 |q 1960 |goto Undercity 85.14,10.03
+  talk Cain Firesong##2128
+  accept Report to Anastasia##1959 |goto Tirisfal Glades 61.97,52.47
 step
   only Undead Rogue
   talk Mennet Carkad##6467
@@ -344,9 +397,35 @@ step
   talk Mennet Carkad##6467
   accept Find the Shattered Hand##2378 |goto Undercity 83.51,69.11
 step
+  talk Unfinished Abomination##271613
+  accept Unending Torment##97290 |goto Undercity 46.03,61.97
+step
+  talk Master Apothecary Faranell##2055
+  accept Unending Torment##97291 |goto Undercity 48.82,69.28
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  talk Carendin Halgar##5675
+  accept The Binding##1474 |goto Undercity 85.06,25.99
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  note Using the Pure Hearts, summon and subdue a succubus, then return the Pure Hearts to Carendin Halgar in the Magic Quarter of the Undercity.
+  use Summoned Succubus##5677 |q 1474 |tip {useit}
+step
+  only Troll Priest not completed(5642) not completed(5680) not haveq(5642) not haveq(5680)
+  talk Aelthalyste##4606
+  accept Shadowguard##5643 |goto Undercity 49.26,17.12
+step
+  only Undead Priest not completed(5644) not completed(5646) not haveq(5644) not haveq(5646)
+  talk Aelthalyste##4606
+  accept Devouring Plague##5679 |goto Undercity 49.26,17.12
+step
+  only Warlock completed(65593) not completed(1507) not haveq(1507)
+  talk Carendin Halgar##5675
+  accept The Binding##65597 |goto Undercity 85.06,25.99
+step
   only Undead Paladin
   talk Lumina Windsinger##259620
-  accept The Debt##95034 |goto Silverpine Forest 43.2,40.8
+  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.33,40.97
 step
   note Gather 3 murloc eyes and bring them to Apothecary Renferrel at the Sepulcher.
   collect 3 Murloc Eye##730 |q 91920 |goto Wetlands 18.07,39.84 |tip {dropsfrom}Gobbler, Bluegill Raider, Murloc Tidehunter
@@ -359,19 +438,30 @@ step
   note Kill Fenwick Thatros and bring his head back to Mennet Carkad in the Rogues' Quarter of the Undercity.
   collect Fenwick's Head##7306 |q 1998 |goto Silverpine Forest 59.58,33.94 |tip {dropsfrom}Fenwick Thatros
 step
+  note Collect a Toxic Skullcap from Tawny Grisette in the Trade Quarter, Blisterweed near the Herbalism Trainer, and Essence of Agony from the poison vendor in the Rogues' Quarter for Master Apothecary Faranell in Undercity.
+  collect Blisterweed##281300 |q 97291 |goto Undercity 54.1,49.5
+step
+  only Warlock completed(65593) not completed(1507) not haveq(1507)
+  note Using the Lovers' Hearts, summon and subdue an incubus, then return the Lovers' Hearts to Carendin Halgar in the Magic Quarter of the Undercity.
+  use Summoned Incubus##185335 |q 65597 |goto Orgrimmar 49.59,50.66 |tip {useit}
+step
+  only Undead Paladin
+  note Use the Moonsilver Blade to destroy Old-Fire Eye in Silverpine Forest.
+  kill Old Fire-Eye##259897 |q 95140 |goto Silverpine Forest 49.56,85.2
+step
   talk Apothecary Renferrel##1937
   turnin Wild Eyes##91920 |goto Silverpine Forest 42.8,40.86
 step
   only Undead Paladin
   talk Tanis Alderwood##257648
-  turnin A Lesson in Divinity##94434 |goto Undercity 65.62,37.94 |tip {turninat}Undercity
+  turnin A Lesson in Divinity##94434 |goto Undercity 65.68,37.74 |tip {turninat}Undercity
 step
   talk Doctor Martin Felben##11044
   turnin Prompt Potion Runner##97891 |goto Undercity 46.61,74.09 |tip {turninat}Undercity
 step
   only not Orc not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
-  turnin Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
+  turnin Report to Anastasia##1959 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
 step
   only Undead Rogue
   talk Mennet Carkad##6467
@@ -381,9 +471,31 @@ step
   talk Shenthul##3401
   turnin Find the Shattered Hand##2378 |goto Orgrimmar 43.05,53.74 |tip {turninat}Orgrimmar
 step
+  talk Master Apothecary Faranell##2055
+  turnin Unending Torment##97290 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
+step
+  talk Master Apothecary Faranell##2055
+  turnin Unending Torment##97291 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  talk Carendin Halgar##5675
+  turnin The Binding##1474 |goto Undercity 85.06,25.99 |tip {turninat}Undercity
+step
+  only Troll Priest not completed(5642) not completed(5680) not haveq(5642) not haveq(5680)
+  talk Ur'kyo##6018
+  turnin Shadowguard##5643 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
+step
+  only Undead Priest not completed(5644) not completed(5646) not haveq(5644) not haveq(5646)
+  talk Aelthalyste##4606
+  turnin Devouring Plague##5679 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
+step
+  only Warlock completed(65593) not completed(1507) not haveq(1507)
+  talk Carendin Halgar##5675
+  turnin The Binding##65597 |goto Undercity 85.06,25.99 |tip {turninat}Undercity
+step
   only Undead Paladin
   talk Lumina Windsinger##259620
-  turnin The Debt##95034 |goto Silverpine Forest 43.2,40.8
+  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.33,40.97
 step
   only Undead
   talk Gordon Wendham##4556
@@ -396,9 +508,13 @@ step
   talk Master Apothecary Faranell##2055
   accept A Recipe For Death##450 |goto Undercity 48.82,69.28
 step
-  only not Tauren not Skyborne Mage not Orc
+  only not Orc not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
-  accept Gathering Materials##1961 |goto Undercity 85.14,10.03
+  accept Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03
+step
+  only not Orc not Tauren not Skyborne Mage
+  note Obtain a Cantation of Manifestation and a Chest of Containment Coffers from behind Anastasia Hartwell. Bring 3 Filled Containment Coffers, the Chest of Containment Coffers and the Cantation of Manifestation to Anastasia in the Undercity.
+  collect 3 Filled Containment Coffer##7292 |q 1960 |goto Undercity 85.14,10.03
 step
   only Undead Rogue
   talk Mennet Carkad##6467
@@ -406,10 +522,6 @@ step
 step
   note Retrieve Apothecary Berard's journal from Pyrewood Village and take it to Apothecary Renferrel at the Sepulcher.
   collect Berard's Journal##3255 |q 450 |goto Silverpine Forest 42.98,73.18 |tip {dropsfrom}Berard's Bookshelf
-step
-  only not Tauren not Skyborne Mage not Orc
-  note Bring 10 Linen Cloth and 6 Dalaran Mana Gems to Josef Gregorian.
-  collect 10 Linen Cloth##2589 |q 1961 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
 step
   only Undead Rogue
   note Find the Dalaran Status Report and return it to Mennet Carkad in the Rogues' Quarter of the Undercity.
@@ -422,9 +534,9 @@ step
   talk Apothecary Renferrel##1937
   turnin A Recipe For Death##450 |goto Silverpine Forest 42.8,40.86
 step
-  only not Tauren not Skyborne Mage not Orc
-  talk Josef Gregorian##4576
-  turnin Gathering Materials##1961 |goto Undercity 70.76,30.69 |tip {turninat}Undercity
+  only not Orc not Tauren not Skyborne Mage
+  talk Anastasia Hartwell##4568
+  turnin Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03 |tip {turninat}Undercity
 step
   only Undead Rogue
   talk Mennet Carkad##6467
@@ -441,9 +553,9 @@ step
   talk Andron Gant##6522
   accept The Deathstalkers##1899 |goto Undercity 54.81,76.33
 step
-  only not Orc not Tauren not Skyborne Mage
-  talk Josef Gregorian##4576
-  accept Spellfire Robes##1962 |goto Undercity 70.76,30.69
+  only not Tauren not Skyborne Mage not Orc
+  talk Anastasia Hartwell##4568
+  accept Gathering Materials##1961 |goto Undercity 85.14,10.03
 step
   talk Apothecary Renferrel##1937
   accept A Recipe For Death##451 |goto Silverpine Forest 42.8,40.86
@@ -451,6 +563,10 @@ step
   only Undead Rogue
   note Bring Andron's Ledger to Mennet Carkad in the Rogues' Quarter of Undercity.
   collect Andron's Ledger##7294 |q 1899 |goto Undercity 55.4,76.96 |tip {dropsfrom}Andron's Bookshelf
+step
+  only not Tauren not Skyborne Mage not Orc
+  note Bring 10 Linen Cloth and 6 Dalaran Mana Gems to Josef Gregorian.
+  collect 10 Linen Cloth##2589 |q 1961 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
 step
   note Bring 6 samples of Lake Creeper Moss, 6 samples of Lake Skulker Moss and a Hardened Tumor to Master Apothecary Faranell in the Undercity.
   collect 6 Lake Skulker Moss##3256 |q 451 |goto Silverpine Forest 71.53,36 |tip {dropsfrom}Lake Skulker, Elder Lake Skulker
@@ -463,9 +579,9 @@ step
   talk Mennet Carkad##6467
   turnin The Deathstalkers##1899 |goto Undercity 83.51,69.11 |tip {turninat}Undercity
 step
-  only not Orc not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage not Orc
   talk Josef Gregorian##4576
-  turnin Spellfire Robes##1962 |goto Undercity 70.76,30.69 |tip {turninat}Undercity
+  turnin Gathering Materials##1961 |goto Undercity 70.76,30.69 |tip {turninat}Undercity
 step
   talk Master Apothecary Faranell##2055
   turnin A Recipe For Death##451 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
@@ -484,6 +600,10 @@ step
   talk Mennet Carkad##6467
   accept The Deathstalkers##1978 |goto Undercity 83.51,69.11
 step
+  only not Orc not Tauren not Skyborne Mage
+  talk Josef Gregorian##4576
+  accept Spellfire Robes##1962 |goto Undercity 70.76,30.69
+step
   only Undead
   talk Deathguard Podrig##6389
   turnin Return to Podrig##6324 |goto Silverpine Forest 43.42,41.68
@@ -491,6 +611,10 @@ step
   only Undead Rogue
   talk Varimathras##2425
   turnin The Deathstalkers##1978 |goto Undercity 56.25,92.2 |tip {turninat}Undercity
+step
+  only not Orc not Tauren not Skyborne Mage
+  talk Josef Gregorian##4576
+  turnin Spellfire Robes##1962 |goto Undercity 70.76,30.69 |tip {turninat}Undercity
 step
   talk Bethor Iceshard##1498
   turnin Rot Hide Origins##444 |goto Undercity 84.07,17.45 |tip {turninat}Undercity
@@ -532,6 +656,6 @@ step
   talk High Executor Hadrec##1952
   turnin Assault on Fenris Isle##442 |goto Silverpine Forest 43.42,40.86
 step
-  note {travel}Undercity
-  goto Undercity 57.78,89.34
+  note {travel}Hillsbrad Foothills
+  goto Hillsbrad Foothills 20.79,47.4
 ]])

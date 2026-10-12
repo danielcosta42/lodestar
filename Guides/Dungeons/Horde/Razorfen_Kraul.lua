@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Razorfen Kraul", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "37ca6d5c",
+	rev = "abe19475",
 }, [[
 step
   talk Mebok Mizzyrix##3446
@@ -12,6 +12,10 @@ step
 step
   talk Willix the Importer##4508
   accept Willix the Importer##1144 |goto Razorfen Kraul - Dungeon -1,-1
+step
+  only Shaman
+  talk Rau Cliffrunner##4722
+  accept Elemental Aid##79360 |goto Thousand Needles 46.14,51.71
 step
   talk Master Apothecary Faranell##2055
   accept Going, Going, Guano!##1109 |goto Undercity 48.82,69.28
@@ -25,6 +29,10 @@ step
   note Grab a Crate with Holes.
   collect Blueleaf Tuber##5876 |q 1221 |goto Razorfen Kraul - Dungeon -1,-1
 step
+  only Shaman
+  note Defeat Charlga Razorflank in Razorfen Kraul and collect information on the quilboar's plans.
+  collect Tattered Note##274463 |q 79360 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Charlga Razorflank
+step
   note Bring 1 pile of Kraul Guano to Master Apothecary Faranell in the Undercity.
   collect 1 Kraul Guano##5801 |q 1109 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Kraul Bat, Greater Kraul Bat, Blind Hunter
 step
@@ -37,6 +45,10 @@ step
   note Escort Willix the Importer out of Razorfen Kraul.
   talk Willix the Importer##4508
   turnin Willix the Importer##1144 |goto Razorfen Kraul - Dungeon -1,-1
+step
+  only Shaman
+  talk Bath'rah the Windwatcher##6176
+  turnin Elemental Aid##79360 |goto Alterac Mountains 80.5,66.92
 step
   talk Master Apothecary Faranell##2055
   turnin Going, Going, Guano!##1109 |goto Undercity 48.82,69.28

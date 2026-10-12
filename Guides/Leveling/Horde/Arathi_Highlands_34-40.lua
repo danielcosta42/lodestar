@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Badlands (37-42)",
-	rev = "c6e05acb",
+	rev = "b71d6060",
 }, [[
 step
   talk Genavie Callow##4486
@@ -17,40 +17,40 @@ step
   talk Drum Fel##2771
   accept Call to Arms##677 |goto Arathi Highlands 74.24,33.92
 step
-  click Messenger Bag##406918
-  accept This Must Be The Place##79976 |goto Arathi Highlands 22.48,24.23
-step
   talk Tor'gan##2706
   accept Foul Magics##671 |goto Arathi Highlands 74.72,36.29
 step
   talk Gor'mul##2792
   accept Hammerfall##655 |goto Arathi Highlands 72.64,33.93
 step
-  note Get 10 Bloodstone Amulets for Tor'gan in Hammerfall.
-  collect Bloodstone Amulet##4495 |q 671 |goto Arathi Highlands 30.97,29.79 |tip {dropsfrom}Syndicate Highwayman, Syndicate Pathstalker, Syndicate Mercenary
-step
   note Slay 10 Witherbark Axe Throwers, 10 Headhunters and 8 Witch Doctors, and return to Drum Fel in the Hammerfall outpost.
   kill Witherbark Axe Thrower##2554 |q 677 |goto Arathi Highlands 65.25,67.59
-step
-  note Bring Kenata, Fardel, and Marcel Dabyrie's Heads to Genavie Callow in Undercity.
-  collect Kenata's Head##5830 |q 1164 |goto Arathi Highlands 56.38,36.09 |tip {dropsfrom}Kenata Dabyrie
 step
   talk Tor'gan##2706
   turnin Hammerfall##655 |goto Arathi Highlands 74.72,36.29
 step
-  talk Tor'gan##2706
-  turnin Foul Magics##671 |goto Arathi Highlands 74.72,36.29
-step
   talk Drum Fel##2771
   turnin Call to Arms##677 |goto Arathi Highlands 74.24,33.92
-step
-  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.47,24.23
 step
   talk Tor'gan##2706
   accept Raising Spirits##672 |goto Arathi Highlands 74.72,36.29
 step
+  click Messenger Bag##406918
+  accept This Must Be The Place##79976 |goto Arathi Highlands 22.54,24.14
+step
+  note Get 10 Bloodstone Amulets for Tor'gan in Hammerfall.
+  collect Bloodstone Amulet##4495 |q 671 |goto Arathi Highlands 30.97,29.79 |tip {dropsfrom}Syndicate Highwayman, Syndicate Pathstalker, Syndicate Mercenary
+step
   note Acquire 10 Highland Raptor Eyes from Highland Striders and Highland Thrashers for Tor'gan in Hammerfall.
   collect 10 Highland Raptor Eye##4512 |q 672 |goto Arathi Highlands 46.76,41.11 |tip {dropsfrom}Highland Strider, Highland Thrasher
+step
+  note Bring Kenata, Fardel, and Marcel Dabyrie's Heads to Genavie Callow in Undercity.
+  collect Kenata's Head##5830 |q 1164 |goto Arathi Highlands 56.38,36.09 |tip {dropsfrom}Kenata Dabyrie
+step
+  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.55,24.14
+step
+  talk Tor'gan##2706
+  turnin Foul Magics##671 |goto Arathi Highlands 74.72,36.29
 step
   talk Tor'gan##2706
   turnin Raising Spirits##672 |goto Arathi Highlands 74.72,36.29
@@ -60,14 +60,6 @@ step
 step
   talk Zengu##2703
   accept Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
-step
-  click Shards of Myzrael##138492
-  accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
-step
-  note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
-  collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
-step
-  turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
 step
   talk Gor'mul##2792
   turnin Raising Spirits##674 |goto Arathi Highlands 72.64,33.93
@@ -80,6 +72,9 @@ step
 step
   talk Tor'gan##2706
   accept Guile of the Raptor##701 |goto Arathi Highlands 74.72,36.29
+step
+  click Shards of Myzrael##138492
+  accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
 step
   talk Lolo the Lookout##2766
   accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
@@ -103,14 +98,13 @@ step
   talk Tor'gan##2706
   accept Guile of the Raptor##702 |goto Arathi Highlands 74.72,36.29
 step
-  click Iridescent Shards##2701
-  accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
-step
   talk Drum Fel##2771
   accept Call to Arms##678 |goto Arathi Highlands 74.24,33.92
 step
-  note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
-  collect Burning Key##4483 |q 651 |goto Arathi Highlands 25.46,30.11 |tip {dropsfrom}Stone of West Binding
+  note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
+  collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
+step
+  turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
 step
   talk Gor'mul##2792
   turnin Guile of the Raptor##702 |goto Arathi Highlands 72.64,33.93
@@ -118,8 +112,18 @@ step
   talk Gor'mul##2792
   accept Guile of the Raptor##847 |goto Arathi Highlands 72.64,33.93
 step
+  click Iridescent Shards##2701
+  accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
+step
   talk Tor'gan##2706
   turnin Guile of the Raptor##847 |goto Arathi Highlands 74.72,36.29
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
+step
+  note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
+  collect Burning Key##4483 |q 651 |goto Arathi Highlands 25.46,30.11 |tip {dropsfrom}Stone of West Binding
 step
   turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
@@ -267,6 +271,14 @@ step
 step
   talk Genavie Callow##4486
   turnin To Steal From Thieves##1164 |goto Undercity 63.83,49.45 |tip {turninat}Undercity
+step
+  only Shaman
+  note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Veyric Thunderhame in Arathi Highlands.
+  collect 5 Twisted Fire Totem##274044 |q 79358 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Skullthumper, Stonevault Bonesnapper, Stonevault Shaman
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  turnin Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
 step
   talk Fleet Master Seahorn##2487
   turnin Sunken Treasure##669 |goto Stranglethorn Vale 27.17,77.01 |tip {turninat}Stranglethorn Vale

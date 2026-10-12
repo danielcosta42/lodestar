@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (23-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (32-40)",
-	rev = "f3a8e4fa",
+	rev = "012458fd",
 }, [[
 step
   note {fp}Thorgrum Borrelson
@@ -19,7 +19,11 @@ step
 step
   only Shaman
   talk Norric Lochthane##258043
-  accept Call of Water##94495 |goto Loch Modan 41.89,19.03
+  accept Call of Water##94495 |goto Loch Modan 41.86,19.02
+step
+  only Shaman
+  talk Norric Lochthane##258043
+  accept Call of Water##94502 |goto Loch Modan 41.86,19.02
 step
   note Kill Chok'sul and bring his head to Magistrate Bluntnose of Thelsamar.
   kill Chok'sul##1210 |goto Loch Modan 79.59,14.7 |elite
@@ -38,25 +42,32 @@ step
   turnin Ingredients for the Forge##86776 |goto Loch Modan 34.02,46.54
 step
   click Carved Figurine##424007
-  accept Eagle's Fist##79975 |goto Loch Modan 49.42,12.78
+  accept Eagle's Fist##79975 |goto Loch Modan 49.49,13.05
 step
   talk Ghak Healtouch##1470
   accept Badlands Reagent Run##2500 |goto Loch Modan 37.07,49.38
 step
   only Shaman
   talk Hervdana Saegrund##258203
-  turnin Call of Water##94495 |goto Wetlands 65.73,76.43 |tip {turninat}Wetlands
+  turnin Call of Water##94495 |goto Wetlands 65.75,76.45 |tip {turninat}Wetlands
 step
   talk Pilot Stonegear##1377
   turnin Stonegear's Search##467 |goto Dun Morogh 49.62,48.61 |tip {turninat}Dun Morogh
 step
-  turnin Eagle's Fist##79975 |goto Arathi Highlands 22.48,24.23 |tip {turninat}Arathi Highlands
+  turnin Eagle's Fist##79975 |goto Arathi Highlands 22.54,24.14 |tip {turninat}Arathi Highlands
 step
   talk Prospector Stormpike##1356
   accept Ironband Wants You!##707 |goto Ironforge 74.64,11.74
 step
+  only Shaman
+  note Cleanse the corruption at Stendel's Pond in Westfall.
+  collect Corrupt Manifestation's Bracers##7812 |q 94502 |goto Silverpine Forest 38.78,44.26 |tip {dropsfrom}Corrupt Minor Manifestation of Water
+step
   note Acquire the reagents Ghak Healtouch needs from the Badlands, then return to him in Thelsamar.
   collect Buzzard Gizzard##7847 |q 2500 |goto Badlands 57.46,28.59 |tip {dropsfrom}Starving Buzzard, Buzzard, Giant Buzzard
+step
+  only Shaman
+  turnin Call of Water##94502 |goto Westfall 45.57,59.88 |tip {turninat}Westfall
 step
   talk Prospector Ironband##1344
   turnin Ironband Wants You!##707 |goto Loch Modan 65.93,65.62

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/The Barrens (14-21)",
-	rev = "1446f956",
+	rev = "d3616cde",
 }, [[
 step
   only Warrior completed(1683,1678,1639)
@@ -183,7 +183,7 @@ step
   use Rabid Thistle Bear##2164 |q 2118 |goto Darkshore 40.09,58.31 |tip {useit}
 step
   note Find and slay the owl known as Jai'vhanel and take one of her feathers. The black owl was last seen north of the Ameth'Aran ruins near the mountain base. Report the death of Jai'vhanel to Sentinel Glynda Nal'Shea in Auberdine.
-  collect Feather of Jai'vhanel##281038 |q 98025 |goto Darkshore 45.15,58.25 |tip {dropsfrom}Jai'vhanel
+  collect Feather of Jai'vhanel##281038 |q 98025 |goto Darkshore 45.15,58.44 |tip {dropsfrom}Jai'vhanel
 step
   talk Sentinel Tysha Moonblade##3639
   turnin The Fall of Ameth'Aran##953 |goto Darkshore 40.3,59.73
@@ -418,7 +418,7 @@ step
   accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
 step
   note Find a Stormscale Beastmistress, slay her, and bring back her Rod of Deep Dominion.
-  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.6,11.8 |tip {dropsfrom}Stormscale Beastmistress
+  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.21,12.77 |tip {dropsfrom}Stormscale Beastmistress
 step
   talk Onu##3616
   accept Mathystra Relics##951 |goto Darkshore 43.55,76.29
@@ -427,7 +427,7 @@ step
   accept The Sleeper Has Awakened##5321 |goto Darkshore 44.4,76.43
 step
   talk Arbal##270269
-  accept Swelling Forces##98013 |goto Darkshore 43.71,76.51
+  accept Swelling Forces##98013 |goto Darkshore 43.71,76.49
 step
   note Escort Kerlonian Evershade to Liladris Moonriver at Maestra's Post in Ashenvale.
   collect Horn of Awakening##13536 |q 5321 |goto Darkshore 44.39,76.31 |tip {dropsfrom}Kerlonian's Chest
@@ -450,8 +450,8 @@ step
   talk Terenthis##3693
   accept A Lost Master##993 |goto Darkshore 39.37,43.48
 step
-  kill Baron Marinous##270294 |goto Darkshore 59.08,22.95 |tip Loot the quest item here — it starts the quest.
-  accept Baron Marinous##98028 |goto Darkshore 59.08,22.95
+  kill Baron Marinous##270294 |goto Darkshore 59.14,22.81 |tip Loot the quest item here — it starts the quest.
+  accept Baron Marinous##98028 |goto Darkshore 59.14,22.81
 step
   note Bring 6 Mathystra Relics to Onu at the Grove of the Ancients.
   collect 6 Mathystra Relic##5273 |q 951 |goto Darkshore 59.95,24.02
@@ -475,7 +475,7 @@ step
   turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
 step
   talk Arbal##270269
-  turnin Swelling Forces##98013 |goto Darkshore 43.71,76.51
+  turnin Swelling Forces##98013 |goto Darkshore 43.71,76.49
 step
   talk Onu##3616
   turnin Baron Marinous##98028 |goto Darkshore 43.55,76.29

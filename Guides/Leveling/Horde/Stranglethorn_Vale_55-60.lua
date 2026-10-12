@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (55-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Eastern Plaguelands (56-60)",
-	rev = "75a64fb4",
+	rev = "5bbfda6f",
 }, [[
 step
   collect Arena Treasure Chest##179697 |goto Stranglethorn Vale 30.52,47.87 |tip Loot the quest item here — it starts the quest.
@@ -45,17 +45,8 @@ step
   talk Fleet Master Firallon##2546
   accept Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
 step
-  talk Exzhal##14910
-  accept A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
-step
-  note String 5 Channeler's Heads, then return the Collection of Troll Heads to Exzhal on Yojamba Isle.
-  collect Gurubashi Head Collection##19880 |q 8201 |goto Stranglethorn Vale 15.26,15.5
-step
   talk Vinchaxa##15070
   accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
-step
-  talk Exzhal##14910
-  turnin A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
 step
   talk Vinchaxa##15070
   turnin A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83

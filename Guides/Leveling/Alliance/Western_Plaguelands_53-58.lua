@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (53-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (55-57)",
-	rev = "6e3ca934",
+	rev = "41e513da",
 }, [[
 step
   only not completed(5090) not completed(5091) not haveq(5090) not haveq(5091)
@@ -382,5 +382,5 @@ step
   turnin Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
 step
   note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 25.98,31.4
+  goto Swamp of Sorrows 22.16,50.23
 ]])

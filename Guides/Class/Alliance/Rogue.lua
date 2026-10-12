@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Rogue", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "deb6da07",
+	rev = "872da946",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -82,25 +82,25 @@ step
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.71,26.43
+  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Rogue
   talk Rorian the Dayseeker##251361
-  accept At Home in the Shadows##92483 |goto Zephras Isle 42.1,23.49
+  accept At Home in the Shadows##92483 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Rogue
   note Read the Simple Note then speak with Akeri Duskblade within the watchtower in Thendal Grove.
   talk Akeri Duskblade##251389
-  turnin At Home in the Shadows##92483 |goto Zephras Isle 43.71,24.3
+  turnin At Home in the Shadows##92483 |goto Zephras Isle 43.73,24.3
 step
   only not Human not NightElf not Skyborne Rogue
   talk Hogral Bakkan##1234
@@ -301,6 +301,18 @@ step
   turnin The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9
 step
   only Rogue
+  talk Myrokos Silentform##13085
+  accept Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
+  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.32,46.24
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
   talk Master Mathias Shaw##332 |goto Stormwind City 78.31,70.74 |tip They give you the item that starts the quest.
   accept The Manor, Ravenholdt##6681 |goto Stormwind City 78.31,70.74
 step
@@ -311,6 +323,35 @@ step
   only Rogue
   talk Fahrad##6707
   turnin The Manor, Ravenholdt##6681 |goto Alterac Mountains 84.45,80.32
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept A Way In##96783 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  note Steal a Syndicate uniform from Northfold Manor to infiltrate Stromgarde Keep.
+  turnin A Way In##96783 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  click Dead Drop##410369
+  accept The Eye of Bhossca##78676 |goto Silverpine Forest 47.1,70.95
+step
+  only Rogue
+  note Find The Eye of Bhossca inside of the Scarlet Monastery. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone.
+  turnin The Eye of Bhossca##78676 |goto Silverpine Forest 47.1,70.95
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  note Steal Barton's Scouting Report by pickpocketing it from him. Then, bring the report to Myrokos Silentform at Ravenholdt Manor.
+  kill Barton##266357 |goto Alterac Mountains 62.59,46.86
+  collect Barton's Scouting Report##275482 |q 96781 |goto Alterac Mountains 62.59,46.86
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
 step
   only Rogue
   talk Osborne the Night Man##918

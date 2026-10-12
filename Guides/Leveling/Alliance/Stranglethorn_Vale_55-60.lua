@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (55-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Redridge Mountains (54-60)",
-	rev = "00d1e7f9",
+	rev = "615806c7",
 }, [[
 step
   collect Arena Treasure Chest##179697 |goto Stranglethorn Vale 30.52,47.87 |tip Loot the quest item here — it starts the quest.
@@ -45,17 +45,8 @@ step
   talk Fleet Master Firallon##2546
   accept Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
 step
-  talk Exzhal##14910
-  accept A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
-step
-  note String 5 Channeler's Heads, then return the Collection of Troll Heads to Exzhal on Yojamba Isle.
-  collect Gurubashi Head Collection##19880 |q 8201 |goto Stranglethorn Vale 15.26,15.5
-step
   talk Vinchaxa##15070
   accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
-step
-  talk Exzhal##14910
-  turnin A Collection of Heads##8201 |goto Stranglethorn Vale 15.26,15.5
 step
   talk Vinchaxa##15070
   turnin A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
@@ -100,5 +91,5 @@ step
   turnin You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
 step
   note {travel}Redridge Mountains
-  goto Redridge Mountains 9.75,71.02
+  goto Redridge Mountains 9.86,71
 ]])

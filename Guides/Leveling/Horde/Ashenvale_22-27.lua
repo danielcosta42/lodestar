@@ -4,17 +4,17 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Ashenvale (22-27)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/The Barrens (23-30)",
-	rev = "325f3c50",
+	next = "Leveling/Horde/Stonetalon Mountains (19-26)",
+	rev = "9420ef6f",
 }, [[
 step
   only not completed(6382) not completed(742) not haveq(6382) not haveq(742)
   talk Warcaller Gorlach##10880
   accept The Ashenvale Hunt##235 |goto Orgrimmar 37.68,75.16
 step
-  only Warlock completed(65601) not completed(1472) not haveq(1472)
-  talk Magar##3363
-  accept Wish You Were Here##65610 |goto Orgrimmar 63.65,49.93
+  only completed(1067)
+  talk Apothecary Zamah##3419
+  accept The Flying Machine Airport##1086 |goto Thunder Bluff 22.81,20.89
 step
   note {fp}Andruk
   goto Ashenvale 12.24,33.8 |tip {vendor}
@@ -24,10 +24,6 @@ step
 step
   talk Je'neu Sancrea##12736
   accept The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
-step
-  only completed(6562)
-  kill Blackfathom Tide Priestess##4802 |goto Ashenvale 13.55,12.06 |elite |tip Loot the quest item here — it starts the quest.
-  accept Allegiance to the Old Gods##6564 |goto Ashenvale 13.55,12.06
 step
   talk Muglash##12717
   accept Vorsha the Lasher##6641 |goto Ashenvale 12.06,34.63
@@ -50,10 +46,6 @@ step
   talk Je'neu Sancrea##12736
   turnin The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
 step
-  only completed(6562)
-  talk Je'neu Sancrea##12736
-  turnin Allegiance to the Old Gods##6564 |goto Ashenvale 11.56,34.29
-step
   talk Warsong Runner##12863
   turnin Vorsha the Lasher##6641 |goto Ashenvale 12.22,34.22
 step
@@ -65,6 +57,21 @@ step
 step
   note Bring 8 Troll Charms to Mitsuwa at the Zoram'gar Outpost.
   collect 8 Troll Charm##16602 |q 6462 |goto Ashenvale 40.86,33.64 |tip {dropsfrom}Troll Chest
+step
+  talk Va'xug Firefure##267214
+  accept Never Coming Back##98251 |goto Ashenvale 40.43,61.48
+step
+  talk Va'xug Firefure##267214
+  accept A Void Path##98252 |goto Ashenvale 40.43,61.48
+step
+  note Kill 6 Shadowhorn Stag and 6 Ashenvale Bear and return to Va'xug Firefure northwest of Fallen Sky Lake.
+  talk Shadowhorn Stag##3817 |q 98251 |goto Ashenvale 46.5,61.25
+step
+  talk Va'xug Firefure##267214
+  turnin Never Coming Back##98251 |goto Ashenvale 40.43,61.48
+step
+  talk Eye of Kilrogg##271181
+  turnin A Void Path##98252 |goto Ashenvale 42.49,57.06
 step
   only not completed(6382) not completed(742) not haveq(6382) not haveq(742)
   talk Senani Thunderheart##12696
@@ -88,10 +95,6 @@ step
   note Kill 9 Ashenvale Outrunners, then return to Kuray'bin at Splintertree Outpost.
   talk Ashenvale Outrunner##12856 |q 6503 |goto Ashenvale 74.54,72.44
 step
-  only Warlock completed(65601) not completed(1472) not haveq(1472)
-  note Investigate Fallen Sky Lake in Ashenvale and report your findings to Gan'rul Bloodeye in Orgrimmar.
-  collect Withered Scarf##190232 |q 65610 |goto Ashenvale 65.56,65.53 |tip {dropsfrom}Shadethicket Stone Mover, Shadethicket Bark Ripper, Shadethicket Oracle
-step
   talk Senani Thunderheart##12696
   turnin The Ashenvale Hunt##6383 |goto Ashenvale 73.78,61.46
 step
@@ -109,7 +112,7 @@ step
 step
   only Paladin
   talk Ulric Frostveil##259649
-  accept Seeking the Kor Gem##95042 |goto Ashenvale 11.8,34.4
+  accept Seeking the Kor Gem##95042 |goto Ashenvale 11.88,34.5
 step
   talk Karang Amakkar##12757
   accept King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
@@ -120,7 +123,7 @@ step
 step
   only Paladin
   talk Ulric Frostveil##259649
-  turnin Seeking the Kor Gem##95042 |goto Ashenvale 11.8,34.4
+  turnin Seeking the Kor Gem##95042 |goto Ashenvale 11.88,34.5
 step
   kill Ursangous##12678 |goto Ashenvale 39.76,65.21 |tip Loot the quest item here — it starts the quest.
   accept Ursangous's Paw##23 |goto Ashenvale 39.76,65.21
@@ -215,12 +218,16 @@ step
   talk Senani Thunderheart##12696
   turnin The Hunt Completed##247 |goto Ashenvale 73.78,61.46
 step
-  only Warlock completed(65601) not completed(1472) not haveq(1472)
-  talk Gan'rul Bloodeye##5875
-  turnin Wish You Were Here##65610 |goto Orgrimmar 48.25,45.28 |tip {turninat}Orgrimmar
+  only completed(1067)
+  talk Apothecary Zamah##3419
+  turnin The Flying Machine Airport##1086 |goto Thunder Bluff 22.81,20.89 |tip {turninat}Thunder Bluff
 step
   talk Zangen Stonehoof##4721
   accept The Sacred Flame##1195 |goto Thunder Bluff 54.97,51.41
+step
+  only Warlock completed(65601) not completed(1472) not haveq(1472)
+  talk Magar##3363
+  accept Wish You Were Here##65610 |goto Orgrimmar 63.65,49.93
 step
   only not Orc not Tauren not Skyborne Mage
   talk Deino##5885
@@ -229,6 +236,10 @@ step
   note Return a Filled Etched Phial to Zangen Stonehoof in Thunder Bluff.
   collect Filled Etched Phial##5868 |q 1195 |goto Ashenvale 60.2,72.91 |tip {dropsfrom}Ashenvale Moonwell
 step
+  only Warlock completed(65601) not completed(1472) not haveq(1472)
+  note Investigate Fallen Sky Lake in Ashenvale and report your findings to Gan'rul Bloodeye in Orgrimmar.
+  collect Withered Scarf##190232 |q 65610 |goto Ashenvale 65.56,65.53 |tip {dropsfrom}Shadethicket Stone Mover, Shadethicket Bark Ripper, Shadethicket Oracle
+step
   only not Orc not Tauren not Skyborne Mage
   note Bring the Xavian Water Sample to Deino in Orgrimmar.
   collect Xavian Water Sample##7268 |q 1944 |goto Ashenvale 76.29,41.49 |tip {dropsfrom}Xavian Waterfall
@@ -236,22 +247,14 @@ step
   talk Zangen Stonehoof##4721
   turnin The Sacred Flame##1195 |goto Thunder Bluff 54.97,51.41 |tip {turninat}Thunder Bluff
 step
+  only Warlock completed(65601) not completed(1472) not haveq(1472)
+  talk Gan'rul Bloodeye##5875
+  turnin Wish You Were Here##65610 |goto Orgrimmar 48.25,45.28 |tip {turninat}Orgrimmar
+step
   only not Orc not Tauren not Skyborne Mage
   talk Deino##5885
   turnin Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13 |tip {turninat}Orgrimmar
 step
-  only not Orc not Tauren not Skyborne Mage
-  talk Deino##5885
-  accept Laughing Sisters##1945 |goto Orgrimmar 38.45,86.13
-step
-  only not Orc not Tauren not Skyborne Mage
-  note Bring 12 Laughing Sister's Hairs to Kil'hala at the Crossroads.
-  collect 12 Laughing Sister's Hair##7270 |q 1945 |goto Ashenvale 59.79,55.37 |tip {dropsfrom}Laughing Sister
-step
-  only not Orc not Tauren not Skyborne Mage
-  talk Kil'hala##3484
-  turnin Laughing Sisters##1945 |goto The Barrens 52.2,31.7 |tip {turninat}The Barrens
-step
-  note {travel}The Barrens
-  goto The Barrens 51.07,29.63
+  note {travel}Stonetalon Mountains
+  goto Stonetalon Mountains 47.22,64.04
 ]])

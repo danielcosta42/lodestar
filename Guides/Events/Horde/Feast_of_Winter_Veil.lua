@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Horde/Feast of Winter Veil", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "ce2504e0",
+	rev = "aa051900",
 }, [[
 step
   talk Wonderform Operator##15732
@@ -16,37 +16,37 @@ step
 step
   only not Priest not Shaman not Mage not Warlock not Druid not completed(8788) not haveq(8788)
   click Gently Shaken Gift##180746
-  accept A Gently Shaken Gift##8767 |goto Ironforge 33.46,65.57
+  accept A Gently Shaken Gift##8767 |goto Orgrimmar 52.33,69.42
 step
   only not Priest not Shaman not Mage not Warlock not Druid not completed(8788) not haveq(8788)
-  turnin A Gently Shaken Gift##8767 |goto Ironforge 33.46,65.57
+  turnin A Gently Shaken Gift##8767 |goto Orgrimmar 52.33,69.42
 step
   only not Warrior not Paladin not Hunter not Rogue not completed(8767) not haveq(8767)
   click Gently Shaken Gift##180746
-  accept A Gently Shaken Gift##8788 |goto Ironforge 33.46,65.57
+  accept A Gently Shaken Gift##8788 |goto Orgrimmar 52.33,69.42
 step
   only not Warrior not Paladin not Hunter not Rogue not completed(8767) not haveq(8767)
-  turnin A Gently Shaken Gift##8788 |goto Ironforge 33.46,65.57
+  turnin A Gently Shaken Gift##8788 |goto Orgrimmar 52.33,69.42
 step
   click Carefully Wrapped Present##180743
-  accept A Carefully Wrapped Present##8744 |goto Ironforge 33.86,65.69
+  accept A Carefully Wrapped Present##8744 |goto Orgrimmar 52.39,69.52
 step
-  turnin A Carefully Wrapped Present##8744 |goto Ironforge 33.86,65.69
+  turnin A Carefully Wrapped Present##8744 |goto Orgrimmar 52.39,69.52
 step
   click Festive Gift##180793
-  accept A Festive Gift##8803 |goto Ironforge 33.96,65.86
+  accept A Festive Gift##8803 |goto Orgrimmar 52.42,69.32
 step
-  turnin A Festive Gift##8803 |goto Ironforge 33.96,65.86
+  turnin A Festive Gift##8803 |goto Orgrimmar 52.42,69.32
 step
   click Gaily Wrapped Present##180747
-  accept A Gaily Wrapped Present##8768 |goto Ironforge 33.78,66.4
+  accept A Gaily Wrapped Present##8768 |goto Orgrimmar 52.3,69.18
 step
-  turnin A Gaily Wrapped Present##8768 |goto Ironforge 33.78,66.4
+  turnin A Gaily Wrapped Present##8768 |goto Orgrimmar 52.3,69.18
 step
   click Ticking Present##180748
-  accept A Ticking Present##8769 |goto Ironforge 33.9,66.68
+  accept A Ticking Present##8769 |goto Orgrimmar 52.28,69.29
 step
-  turnin A Ticking Present##8769 |goto Ironforge 33.9,66.68
+  turnin A Ticking Present##8769 |goto Orgrimmar 52.28,69.29
 step
   talk Wonderform Operator##15732
   accept New Year Celebrations!##8861 |goto Dun Morogh 53.16,35.62

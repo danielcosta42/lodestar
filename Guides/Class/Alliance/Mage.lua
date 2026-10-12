@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Mage", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "522d3f4b",
+	rev = "ae67bd06",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -55,25 +55,25 @@ step
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.1,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.71,26.43
+  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.1,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Mage
   talk Rorian the Dayseeker##251361
-  accept A Student of the Arcane##92481 |goto Zephras Isle 42.1,23.49
+  accept A Student of the Arcane##92481 |goto Zephras Isle 42.09,23.49
 step
   only Skyborne Mage
   note Examine the Glowing Recall Crystal, then speak with Dorii Brightwhisper in Thendal Grove.
   talk Dorii Brightwhisper##251379
-  turnin A Student of the Arcane##92481 |goto Zephras Isle 41.59,23.66
+  turnin A Student of the Arcane##92481 |goto Zephras Isle 41.57,23.65
 step
   only Gnome Mage not completed(1861) not haveq(1861)
   talk Magis Sparkmantle##1228
@@ -119,24 +119,12 @@ step
 step
   only Skyborne Mage
   talk Anathamaas Aetherwind##252373
-  accept Speak with Belann##93791 |goto Zephras Isle 65.97,80.46
+  accept Speak with Belann##93791 |goto Zephras Isle 65.93,80.52
 step
   only Skyborne Mage
   note Speak with Belann Windwood in Valanaar.
   talk Belann Windwood##256507
-  turnin Speak with Belann##93791 |goto Zephras Isle 62.91,77.38
-step
-  only Skyborne Mage
-  talk Belann Windwood##256507
-  accept Boughs in the Wind##93797 |goto Zephras Isle 62.91,77.38
-step
-  only Skyborne Mage
-  note Bring a Wind-Infused Bough to Belann Windwood in Valanaar.
-  collect Wind-Infused Bough##262668 |q 93797 |goto Zephras Isle 48.7,67.7
-step
-  only Skyborne Mage
-  talk Belann Windwood##256507
-  turnin Boughs in the Wind##93797 |goto Zephras Isle 62.91,77.38
+  turnin Speak with Belann##93791 |goto Zephras Isle 62.91,77.39
 step
   only not Dwarf not NightElf not Skyborne Mage
   talk Zaldimar Wefhellt##328
@@ -147,15 +135,15 @@ step
   talk Jennea Cannon##5497
   turnin Report to Jennea##1919 |goto Stormwind City 49.56,85.8
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   talk Jennea Cannon##5497
   accept Investigate the Blue Recluse##1920 |goto Stormwind City 49.56,85.8
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   note Obtain a Cantation of Manifestation and a Chest of Containment coffers from behind Jennea Cannon. Bring 3 Filled Containment Coffers to Jennea at the Wizard's Sanctum.
   collect 3 Filled Containment Coffer##7292 |q 1920 |goto Stormwind City 49.56,85.8
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   talk Jennea Cannon##5497
   turnin Investigate the Blue Recluse##1920 |goto Stormwind City 49.56,85.8
 step
@@ -181,11 +169,11 @@ step
 step
   only Mage
   talk Garion Wendell##211033
-  accept Research Access##97286 |goto Stormwind City 49,86.44
+  accept Research Access##97286 |goto Stormwind City 49.05,86.37
 step
   only Mage
   talk Garion Wendell##211033
-  turnin Research Access##97286 |goto Stormwind City 49,86.44
+  turnin Research Access##97286 |goto Stormwind City 49.05,86.37
 step
   only not Dwarf not NightElf not Skyborne Mage
   talk Bink##5144

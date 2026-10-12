@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Stonetalon Mountains (21-27)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Ashenvale (21-30)",
-	rev = "a3bccf6e",
+	next = "Leveling/Alliance/Ashenvale (20-28)",
+	rev = "cd8b7e1e",
 }, [[
 step
   talk Kaela Shadowspear##4080
@@ -57,9 +57,21 @@ step
   accept Further Instructions##1094 |goto Stonetalon Mountains 58.99,62.6
 step
   click Pocket Litter##424005
-  accept Scramble##79980 |goto Stonetalon Mountains 40.79,52.61
+  accept Scramble##79980 |goto Stonetalon Mountains 40.76,52.57
 step
-  turnin Scramble##79980 |goto Stonetalon Mountains 39.6,49.91
+  talk Night Elf Courier##268925
+  accept Stonetalon Supply Run##86574 |goto Stonetalon Mountains 48.73,39.85
+step
+  turnin Scramble##79980 |goto Stonetalon Mountains 39.62,49.86
+step
+  note Collect 6 Stonetalon Supplies from Pridewing Wyverns and deliver them to Innkeeper Faralia.
+  collect 6 Stonetalon Supply Bundle##277917 |q 86574 |goto Stonetalon Mountains 63.51,59.21 |tip {dropsfrom}Young Pridewing, Pridewing Wyvern, Pridewing Skyhunter
+step
+  note {fp}Teloren
+  goto Stonetalon Mountains 36.44,7.18 |tip {vendor}
+step
+  talk Innkeeper Faralia##16458
+  turnin Stonetalon Supply Run##86574 |goto Stonetalon Mountains 35.79,5.74
 step
   only completed(1091)
   talk Kaela Shadowspear##4080
@@ -72,9 +84,6 @@ step
   only completed(1091)
   talk Kaela Shadowspear##4080
   turnin Enraged Spirits##1083 |goto Stonetalon Mountains 59.9,66.85
-step
-  note {fp}Teloren
-  goto Stonetalon Mountains 36.44,7.18 |tip {vendor}
 step
   talk Keeper Albagorm##3994
   accept Reclaiming the Charred Vale##1057 |goto Stonetalon Mountains 37.1,8.1

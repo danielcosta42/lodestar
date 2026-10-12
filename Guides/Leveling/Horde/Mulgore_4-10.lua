@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Mulgore (4-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-20)",
-	rev = "e67aa81e",
+	rev = "d940e60f",
 }, [[
 step
   talk Grull Hawkwind##2980
@@ -88,7 +88,7 @@ step
   note Grull Hawkwind in Camp Narache wants you to bring him 10 Mountain Cougar Pelts.
   collect Mountain Cougar Pelt##4742 |q 750 |goto Mulgore 47.51,88.11 |tip {dropsfrom}Mountain Cougar
 step
-  turnin Grace of An'she and Mu'sha##95805 |goto Mulgore 56.57,88.69
+  turnin Grace of An'she and Mu'sha##95805 |goto Mulgore 56.6,88.81
 step
   talk Grull Hawkwind##2980
   turnin The Hunt Continues##750 |goto Mulgore 44.47,77.5
@@ -143,7 +143,7 @@ step
 step
   only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96652) not completed(96656) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96656)
   talk Kaga Wildhoof##265810
-  turnin The Adventurer##96659 |goto Mulgore 46.19,67.21
+  turnin The Adventurer##96659 |goto Mulgore 46.2,67.23
 step
   only Tauren
   talk Mull Thunderhorn##2948
@@ -155,9 +155,12 @@ step
   talk Baine Bloodhoof##2993
   accept Rite of Vision##767 |goto Mulgore 46.67,63.38
 step
+  talk Yaw Sharpmane##3065
+  accept Chakuyak##96130 |goto Mulgore 46.93,59.65
+step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Kaga Wildhoof##265810
-  accept The Great Outdoors##96605 |goto Mulgore 46.19,67.21
+  accept The Great Outdoors##96605 |goto Mulgore 46.2,67.23
 step
   talk Krang Stonehoof##3063
   accept Sparring Match##99108 |goto Mulgore 48.35,63.74
@@ -171,7 +174,7 @@ step
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96606) not haveq(96607) not haveq(96608)
   note Sit near Kaga's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
-  collect Basic Campfire##450006 |q 96605 |goto Mulgore 46.21,67.31
+  collect Basic Campfire##460003 |q 96605 |goto Mulgore 46.21,67.31
 step
   only Tauren
   talk Mull Thunderhorn##2948
@@ -185,7 +188,7 @@ step
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Kaga Wildhoof##265810
-  turnin The Great Outdoors##96605 |goto Mulgore 46.19,67.21
+  turnin The Great Outdoors##96605 |goto Mulgore 46.2,67.23
 step
   talk Krang Stonehoof##3063
   turnin Sparring Match##99108 |goto Mulgore 48.35,63.74
@@ -196,13 +199,10 @@ step
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658)
   talk Kaga Wildhoof##265810
-  accept Camping 101: Cooking##96661 |goto Mulgore 46.19,67.21
+  accept Camping 101: Cooking##96661 |goto Mulgore 46.2,67.23
 step
   talk Zarlman Two-Moons##3054
   accept Rite of Vision##771 |goto Mulgore 46.88,61.19
-step
-  talk Yaw Sharpmane##3065
-  accept Chakuyak##96130 |goto Mulgore 46.93,59.65
 step
   note Collect 2 Well Stones and 2 Ambercorn and bring them back to Zarlman Two-Moons in Bloodhoof Village.
   collect 2 Well Stone##4808 |q 771 |goto Mulgore 44.4,51.29 |tip {dropsfrom}Razorlash, Well Stone
@@ -305,7 +305,7 @@ step
   turnin Call of Earth##1521 |goto Mulgore 44.35,76.77
 step
   talk Perith Stormhoof##272203
-  accept The Longwalkers##98430 |goto Mulgore 33.1,65.93
+  accept The Longwalkers##98430 |goto Mulgore 33.13,65.93
 step
   note Kill 10 Palemane Tanners, 8 Palemane Skinners, and 5 Palemane Poachers, then return to Baine Bloodhoof in Bloodhoof Village.
   kill Palemane Tanner##2949 |q 745 |goto Mulgore 36.76,66.12
@@ -314,7 +314,7 @@ step
   collect 5 Broken Tools##4703 |q 746 |goto Mulgore 33.1,54.8 |tip {dropsfrom}Forge
 step
   note Defeat Chakuyak and bring back her pelt.
-  collect Chakuyak's Pelt##270302 |q 96130 |goto Mulgore 39.29,66.21 |tip {dropsfrom}Chakuyak
+  collect Chakuyak's Pelt##270302 |q 96130 |goto Mulgore 39.44,65.47 |tip {dropsfrom}Chakuyak
 step
   talk Ruul Eagletalon##2985
   turnin Dangers of the Windfury##743 |goto Mulgore 46.54,64.94
@@ -353,10 +353,10 @@ step
   turnin Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
 step
   talk Malah Longwind##275789
-  turnin Longwalker Malah##99079 |goto Mulgore 57.65,63.27
+  turnin Longwalker Malah##99079 |goto Mulgore 57.6,63.2
 step
   talk Malah Longwind##275789
-  accept Grim Tidings##99081 |goto Mulgore 57.65,63.27
+  accept Grim Tidings##99081 |goto Mulgore 57.6,63.2
 step
   note Kill 6 Galak Centaurs, 4 Galak Outrunners, and bring the head of Herak the Pillager to Baine Bloodhoof.
   kill Galak Centaur##2967 |q 99080 |goto Mulgore 64.05,61.68
@@ -461,7 +461,7 @@ step
 step
   only Skyborne Druid
   talk Muln Earthfury##259118
-  accept Child of Nature##94911 |goto Mulgore 33.4,22.5
+  accept Child of Nature##94911 |goto Mulgore 33.42,22.52
 step
   note Kill Supervisor Fizsprocket and return his clipboard to Morin Cloudstalker at Bloodhoof Village.
   collect Fizsprocket's Clipboard##4819 |q 765 |goto Mulgore 61.19,49.32 |tip {dropsfrom}Supervisor Fizsprocket
@@ -471,7 +471,7 @@ step
   collect 4 Flatland Prowler Claw##5203 |q 861 |goto Mulgore 48.56,28.22 |tip {dropsfrom}Flatland Prowler
 step
   note Bring the Clearcutter Key to Morin Cloudstalker outside Bloodhoof Village.
-  collect Clearcutter Key##281048 |q 98427 |goto Mulgore 56.79,43.23 |tip {dropsfrom}Venture Co. Clearclutter
+  collect Clearcutter Key##281048 |q 98427 |goto Mulgore 56.76,43.07 |tip {dropsfrom}Venture Co. Clearclutter
 step
   talk Skorn Whitecloud##3052
   turnin The Demon Scarred Cloak##770 |goto Mulgore 46.03,63.44
@@ -533,10 +533,10 @@ step
 step
   only not Undead not Skyborne not Paladin not Hunter not Rogue not Priest not Mage not Warlock
   talk Boarton Shadetotem##205729
-  accept Stalk With The Earthmother##76156 |goto Thunder Bluff 39.6,65.85
+  accept Stalk With The Earthmother##76156 |goto Thunder Bluff 39.6,65.84
 step
   talk Eylah Sunhorn##269068
-  accept Traditions of the Bluff##97485 |goto Thunder Bluff 38.1,56.25
+  accept Traditions of the Bluff##97485 |goto Thunder Bluff 38,55.9
 step
   talk Eyahn Eagletalon##2987
   accept Preparation for Ceremony##744 |goto Thunder Bluff 37.75,59.57
@@ -557,15 +557,18 @@ step
   talk Turak Runetotem##3033
   accept Moonglade##94913 |goto Thunder Bluff 76.48,27.22
 step
+  note Purchase a Bundle of Herbs from Nida the herbalist, a Bundle of Ceder Twigs from Nata the enchanting supplier, and Sinew Thread from Mahu the leatherworking supplier and Ceremonial Flint and Tinder from Naal the cooking supplier.
+  collect Incense Burner##665373 |q 97485 |goto Thunder Bluff 53.02,87.84
+step
   note Collect 6 Azure Feathers and 6 Bronze Feathers, and bring them to Eyahn Eagletalon in Thunder Bluff.
   collect 6 Azure Feather##4752 |q 744 |goto Mulgore 36.23,24.57 |tip {dropsfrom}Windfury Sorceress
 step
   only not Undead not Skyborne not Paladin not Hunter not Rogue not Priest not Mage not Warlock
   talk Boarton Shadetotem##205729
-  turnin Stalk With The Earthmother##76156 |goto Thunder Bluff 39.6,65.85 |tip {turninat}Thunder Bluff
+  turnin Stalk With The Earthmother##76156 |goto Thunder Bluff 39.6,65.84 |tip {turninat}Thunder Bluff
 step
   talk Eylah Sunhorn##269068
-  turnin Traditions of the Bluff##97485 |goto Thunder Bluff 38.1,56.25 |tip {turninat}Thunder Bluff
+  turnin Traditions of the Bluff##97485 |goto Thunder Bluff 38,55.9 |tip {turninat}Thunder Bluff
 step
   talk Eyahn Eagletalon##2987
   turnin Preparation for Ceremony##744 |goto Thunder Bluff 37.75,59.57 |tip {turninat}Thunder Bluff

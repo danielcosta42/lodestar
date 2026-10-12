@@ -61,3 +61,42 @@ certa e as quests novas roteadas, incluindo a zona inicial da raça nova.
   reexecutável e a versão usada fica registrada no cabeçalho dos arquivos gerados.
 - Licença: Questie/QuestieDB são GPL-3.0; o Lodestar já deriva rotas do Questie e registra a
   procedência (README, `docs/forever.md`).
+
+## QuestieDB 1.0.6 e build 70338 (#55, 2026-10-12)
+
+A 1.0.6 refez a base de um snapshot de 10/10: +216 quests (Shen'dralas, Desolace, Wetlands, quatro
+masmorras novas, o battleground de Darkspear Islands) e cadeia corrigida em quest que já existia.
+
+- [x] Masmorra nova sem mapa no QuestieDB (City of Dalaran 16544, Excavation Site: Wetlands 16732,
+      Ruins of Lordaeron 16611, The Hall of Thanes 16919) não tinha nome em `zones.json`, e as quests
+      dela caíam no leveling: chefe sem seta, e quest de Alterac dada em Stormwind → a zona entra com
+      o nome do `dungeons.lua` e uiMapId 0; quest classificada na masmorra sem nada posicionado fora
+      vai para o guia da masmorra (`em_masmorra`).
+- [x] Quest do battleground Darkspear Islands (16606), dada pelo battlemaster da capital, entrava no
+      leveling de The Barrens e Ashenvale → 16606 em `FORA_DO_LEVELING`, como AV, WSG e AB.
+- [x] `gen_trainers.py` usava Shari Stilwell como exemplo de NPC sem título; a 1.0.6 deu a ela
+      "Paladin Trainer" → o exemplo passa a ser o Marshal McBride.
+
+Revisão independente:
+
+- [x] Earthen Echo ("Bring the Titan Relic", relíquia de dentro da Excavation Site) não tem objetivo
+      no banco e ficava no leveling de Mulgore — accept que nunca entrega; idem A Frightened Request
+      e Unending Torment em Silverpine (já no main) → em masmorra sem mapa, sem objetivo posicionado
+      fora basta; quem recebe fora é só o fim da cadeia.
+- [x] A 1.0.6 pôs uma caixa de correio de Orgrimmar como início de Deviate Hides, e o guia de
+      Wailing Caverns da Aliança mandava a Orgrimmar → objeto em capital inimiga não serve de início.
+- [x] The Binding (65603) ganhou nível na 1.0.6, e o Incubus nasce em Undercity, Stormwind e
+      Orgrimmar: o bruxo da Aliança ia a Orgrimmar → `best_spawn` prefere zona fora da capital inimiga.
+- [ ] Item sem fonte na masmorra nova aponta para quem dá a quest; as quests da Aliança em Ruins of
+      Lordaeron começam por item sem fonte — dado que falta no QuestieDB.
+- [ ] `QuestV2` do 70338: o wago devolvia 503; `FOREVER` segue no 70245 até ele voltar.
+
+Medido contra a v2.6.0 (simulação da cadeia `next` por raça×classe, 8 caminhos): 0 accept que trava,
+pico do log 17 nos dois, 10 aceites acima do teto do guia nos dois, 0 quest perdida por ordem, 0
+pendurada. Passo sem coordenada no leveling: 2 → 0 (os 3 que sobram são chefes das masmorras novas,
+no guia delas).
+
+Salto grande na mesma zona (`guide_integrity` JUMP) no leveling: 218 → 234, com 3% mais passos.
+Em passo de conteúdo que não mudou, 201 → 201; os +16 são todos de passo com quest que a 1.0.6
+criou ou alterou (nova, cadeia corrigida, NPC que mudou de lugar) — o vai e volta hub ↔ campo de
+Desolace, Wetlands e Silverpine, que ganharam quests. A ordenação do roteador não mudou.

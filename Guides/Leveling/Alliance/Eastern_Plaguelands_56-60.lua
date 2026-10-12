@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (56-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "75113e2d",
+	rev = "dfb54410",
 }, [[
 step
   talk Pamela Redpath##10926
@@ -127,10 +127,6 @@ step
   talk Caretaker Alen##11038
   accept The Restless Souls##5281 |goto Eastern Plaguelands 69.93,53.72
 step
-  only completed(5462)
-  talk Leonid Barthalomew the Revered##11036
-  accept Menethil's Gift##5463 |goto Eastern Plaguelands 71.89,48.29
-step
   only completed(5464)
   talk Leonid Barthalomew the Revered##11036
   accept Soulbound Keepsake##5465 |goto Eastern Plaguelands 71.89,48.29
@@ -223,9 +219,6 @@ step
 step
   talk Huntsman Leopold##16132
   turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
-step
-  only completed(5462)
-  turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1 |tip {turninat}Stratholme - Dungeon
 step
   only completed(5464)
   talk Magistrate Marduke##11286

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (33-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (23-38)",
-	rev = "e4c4e007",
+	rev = "f1e4d7ea",
 }, [[
 step
   only completed(2947)
@@ -24,6 +24,12 @@ step
 step
   talk Phin Odelic##2711
   accept Hints of a New Plague?##659 |goto Hillsbrad Foothills 50.35,59.05
+step
+  talk Emissary Jacques##247264
+  accept An Alarming Request##92432 |goto Hillsbrad Foothills 48.32,60
+step
+  talk Barkeep Kelly##2366
+  accept Talk of the Town##98463 |goto Hillsbrad Foothills 51.57,58.57
 step
   talk Darren Malvew##2382
   accept Costly Menace##564 |goto Hillsbrad Foothills 52.42,55.96
@@ -57,6 +63,12 @@ step
 step
   talk Quae##2712
   turnin Hints of a New Plague?##659 |goto Arathi Highlands 60.18,53.85 |tip {turninat}Arathi Highlands
+step
+  talk Image of Archmage Modera##269127
+  turnin An Alarming Request##92432 |goto Silverpine Forest 68.6,45.18 |tip {turninat}Silverpine Forest
+step
+  talk Nixxrax Fillamug##2832
+  turnin Talk of the Town##98463 |goto Stranglethorn Vale 27.04,77.17 |tip {turninat}Stranglethorn Vale
 step
   only completed(2947)
   talk Talvash del Kissel##6826

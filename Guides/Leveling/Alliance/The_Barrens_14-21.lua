@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Barrens (14-21)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
-	rev = "b9fa1829",
+	rev = "a3dda383",
 }, [[
 step
   note {fp}Bragok
@@ -137,25 +137,29 @@ step
   accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
 step
   talk Bainham##267309
-  accept Chol'aruk the Ravener##97005 |goto The Barrens 61.8,39.4
+  accept Chol'aruk the Ravener##97005 |goto The Barrens 61.91,39.42
 step
   note Bring Chol'aruk's Head to Bainham in the Barrens.
-  collect Chol'aruk's Head##276070 |q 97005 |goto The Barrens 57.76,27.42 |tip {dropsfrom}Chol'aruk
+  collect Chol'aruk's Head##276070 |q 97005 |goto The Barrens 57.64,27.37 |tip {dropsfrom}Chol'aruk
 step
   talk Bainham##267309
-  turnin Chol'aruk the Ravener##97005 |goto The Barrens 61.8,39.4
+  turnin Chol'aruk the Ravener##97005 |goto The Barrens 61.91,39.42
 step
   only Warlock completed(1716)
   talk Takar the Seer##6244
   accept Heartswood##1738 |goto The Barrens 49.31,57.1
 step
+  only Warlock completed(1716)
+  talk Takar the Seer##6244
+  accept What Is Love?##65602 |goto The Barrens 49.31,57.1
+step
   click Burned-Out Remains##415106
-  accept Stepping Stones##79192 |goto The Barrens 46.34,73.96
+  accept Stepping Stones##79192 |goto The Barrens 46.41,73.96
 step
   talk Ziz Fizziks##4201
   turnin Ziz Fizziks##1483 |goto Stonetalon Mountains 58.99,62.6 |tip {turninat}Stonetalon Mountains
 step
-  turnin Stepping Stones##79192 |goto Stonetalon Mountains 40.79,52.61 |tip {turninat}Stonetalon Mountains
+  turnin Stepping Stones##79192 |goto Stonetalon Mountains 40.76,52.57 |tip {turninat}Stonetalon Mountains
 step
   only Dwarf Priest not completed(5641) not completed(5645) not haveq(5641) not haveq(5645)
   talk Priestess Alathea##11401
@@ -184,6 +188,10 @@ step
   note Retrieve the Heartswood from Ashenvale and bring it to Gakin the Darkbinder in the Mage Quarter of Stormwind.
   collect Heartswood##6912 |q 1738 |goto Ashenvale 31.55,31.57
 step
+  only Warlock completed(1716)
+  note Retrieve the Wooden Figurine and bring it to Gakin the Darkbinder in the Mage Quarter of Stormwind.
+  collect Wooden Figurine##190309 |q 65602 |goto Ashenvale 26.61,22.03
+step
   talk Mebok Mizzyrix##3446
   turnin Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
 step
@@ -202,6 +210,10 @@ step
   only Human Priest not completed(5676) not completed(5677) not haveq(5676) not haveq(5677)
   talk High Priestess Laurena##376
   turnin Arcane Feedback##5678 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
+step
+  only Warlock completed(1716)
+  talk Gakin the Darkbinder##6122
+  turnin What Is Love?##65602 |goto Stormwind City 39.22,85.23 |tip {turninat}Stormwind City
 step
   only not Human not Dwarf not Gnome Druid
   talk Dendrite Starblaze##11802

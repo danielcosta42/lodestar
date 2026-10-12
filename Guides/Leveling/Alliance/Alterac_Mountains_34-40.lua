@@ -4,15 +4,39 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Alterac Mountains (34-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Swamp of Sorrows (35-42)",
-	rev = "947ce85f",
+	next = "Leveling/Alliance/Swamp of Sorrows (35-39)",
+	rev = "1c9db10a",
 }, [[
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept A Way In##96783 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  turnin A Way In##96783 |goto Alterac Mountains 84.93,80.38
 step
   click Syndicate Documents##1740
   accept Foreboding Plans##510 |goto Alterac Mountains 58.32,67.92
 step
   click Syndicate Documents##1740
   accept Encrypted Letter##511 |goto Alterac Mountains 58.32,67.92
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  note Steal Barton's Scouting Report by pickpocketing it from him. Then, bring the report to Myrokos Silentform at Ravenholdt Manor.
+  kill Barton##266357 |goto Alterac Mountains 62.59,46.86
+  collect Barton's Scouting Report##275482 |q 96781 |goto Alterac Mountains 62.59,46.86
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
 step
   only completed(602)
   talk Archmage Ansirem Runeweaver##2543
@@ -67,12 +91,28 @@ step
   talk Loremaster Dibbs##2277
   turnin The Ensorcelled Parchment##551 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
 step
+  only completed(1222)
+  talk Angus Stern##1141
+  accept Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64
+step
   talk Count Remington Ridgewell##2285
   accept The Perenolde Tiara##543 |goto Stormwind City 76.94,47.83
+step
+  only Rogue
+  note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
+  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.32,46.24
 step
   note Bring the Perenolde Tiara to Remington Ridgewell in Stormwind.
   kill Grel'borg the Miser##2417 |goto Alterac Mountains 35.58,54.42 |elite
   collect Perenolde Tiara##3684 |q 543 |goto Alterac Mountains 35.58,54.42
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+step
+  only completed(1222)
+  talk Angus Stern##1141
+  turnin Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
 step
   talk Count Remington Ridgewell##2285
   turnin The Perenolde Tiara##543 |goto Stormwind City 76.94,47.83 |tip {turninat}Stormwind City

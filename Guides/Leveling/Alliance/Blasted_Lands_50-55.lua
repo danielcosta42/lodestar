@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Blasted Lands (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Burning Steppes (52-59)",
-	rev = "1b506a09",
+	next = "Leveling/Alliance/Burning Steppes (52-56)",
+	rev = "904308f1",
 }, [[
 step
   talk Bloodmage Drazial##7505
@@ -104,10 +104,6 @@ step
   talk Tymor##8507
   accept An Easy Pickup##3450 |goto Ironforge 30.96,4.83
 step
-  only Rogue
-  talk Osborne the Night Man##918
-  accept A Simple Request##8233 |goto Stormwind City 77.43,65.31
-step
   only completed(2439)
   talk Historian Karnik##2916
   turnin Portents of Uldum##2963 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
@@ -125,10 +121,6 @@ step
 step
   talk Xiggs Fuselighter##8517
   turnin An Easy Pickup##3450 |goto Ironforge 70.87,94.56 |tip {turninat}Ironforge
-step
-  only Rogue
-  talk Lord Jorach Ravenholdt##6768
-  turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88 |tip {turninat}Alterac Mountains
 step
   talk Xiggs Fuselighter##8517
   accept Signal for Pickup##3451 |goto Ironforge 70.87,94.56

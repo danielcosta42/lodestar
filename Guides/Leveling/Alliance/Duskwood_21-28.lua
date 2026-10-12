@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Duskwood (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Wetlands (21-29)",
-	rev = "af80e45a",
+	next = "Leveling/Alliance/Elwynn Forest (21-28)",
+	rev = "203e7d24",
 }, [[
 step
   talk Orphan Matron Nightingale##14450
@@ -72,17 +72,26 @@ step
   talk Commander Althea Ebonlocke##264
   accept The Night Watch##56 |goto Duskwood 73.54,46.82
 step
+  kill Lost Stalker##272260 |goto Duskwood 60.2,25.74 |tip Loot the quest item here — it starts the quest.
+  accept Ira's Dagger##96137 |goto Duskwood 60.2,25.74
+step
   note Commander Althea Ebonlocke of Darkshire wants you to kill 8 Skeletal Warriors and 6 Skeletal Mages.
   kill Skeletal Warrior##48 |q 56 |goto Duskwood 80.57,70.2
 step
   note Gather 6 Gooey Spider Legs and bring them to Chef Grual in Darkshire.
   collect 6 Gooey Spider Leg##2251 |q 93 |goto Duskwood 41.79,20.83 |tip {dropsfrom}Venom Web Spider, Pygmy Venom Web Spider, Green Recluse
 step
+  note Defeat 10 Young Black Ravagers and 7 Black Ravagers then return to Sirra Von'Indi in Darkshire for more information.
+  kill Young Black Ravager##923 |q 96137 |goto Duskwood 48.99,65.24
+step
   talk Commander Althea Ebonlocke##264
   turnin The Night Watch##56 |goto Duskwood 73.54,46.82
 step
   talk Chef Grual##272
   turnin Dusky Crab Cakes##93 |goto Duskwood 73.75,43.48
+step
+  talk Sirra Von'Indi##268
+  turnin Ira's Dagger##96137 |goto Duskwood 72.62,47.62
 step
   talk Chef Grual##272
   accept Return to Jitters##240 |goto Duskwood 73.75,43.48
@@ -185,8 +194,17 @@ step
   talk Sven Yorgen##311
   turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
 step
+  kill Lost Watcher##272273 |goto Duskwood 62.42,63.5 |tip Loot the quest item here — it starts the quest.
+  accept Merrick's Bow##96138 |goto Duskwood 62.42,63.5
+step
+  note Defeat 8 Splint Fist Warriors and 4 Splint Fist Taskmasters then return to Sirra Von'Indi in Darkshire for more information.
+  kill Splinter Fist Warrior##212 |q 96138 |goto Duskwood 33.67,76.02
+step
   talk Madame Eva##265
   turnin Return the Comb##154 |goto Duskwood 75.79,45.32
+step
+  talk Sirra Von'Indi##268
+  turnin Merrick's Bow##96138 |goto Duskwood 72.62,47.62
 step
   talk Madame Eva##265
   accept Deliver the Thread##157 |goto Duskwood 75.79,45.32
@@ -323,6 +341,6 @@ step
   talk Bishop Farthing##1212
   turnin Seeking Wisdom##269 |goto Stormwind City 49.93,45.99 |tip {turninat}Stormwind City
 step
-  note {travel}Wetlands
-  goto Wetlands 49.92,39.37
+  note {travel}Elwynn Forest
+  goto Elwynn Forest 65.22,69.71
 ]])
