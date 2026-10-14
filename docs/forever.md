@@ -133,7 +133,20 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 - **Zephras Isle fica fora da cadeia.** O `next` dos guias pula a ilha (Dun Morogh → Westfall), e o
   autopilot só a oferece a Skyborne ou a quem já está lá.
 - **"Speak with X"** num NPC amigo sai como `talk`, não `kill`: o banco guarda o objetivo como de
-  criatura.
+  criatura. Mas o Forever marca `AH` em mob hostil (Mindless Zombie, Mottled Boar): objetivo cujo
+  texto manda matar (kill, slay, hunt, bounty…) sai `kill` qualquer que seja o `faction`. Se o alvo
+  é NPC com quem se fala (gossip, dá ou recebe quest), a palavra tem de estar na frase do nome dele:
+  o "kill her" de Mother's Milk é a aranha, não Ragged John.
+- **O nível mínimo é trava.** A quest espera o nível estimado alcançar o `reqLevel` — sem folga: no
+  nível 1 o NPC mostra o "!" cinza da The Damned (`reqLevel` 2) e não a entrega. A folga de +1 fica
+  para o nível da quest. A estimativa conta só as quests de todo mundo (as de classe diluíam a
+  fração) e sobe em curva, `fração ** 0,7` (`CURVA_NIVEL`): o nível 2 sai com duas quests, o 10
+  pede dezenas, e em reta a trava deixava Camp Narache e Coldridge com quest por pegar.
+- **Anteriores pelo `nextInChain` são caminhos alternativos** quando servem ao mesmo público:
+  Cutting Teeth vem de Your Place In The World (no vale) ou de The New Horde (Eitrigg, em
+  Orgrimmar), e esperar as duas jogava o vale de Durotar para o fim do guia. Variante de público
+  diferente é de outro jogador e a dependente espera a de cada um — no guia de classe, onde a raça
+  da zona inicial estreita a Call of Fire de cada zona.
 - **Pré-requisito em ciclo** (a própria quest, ou a versão dela de outra raça — "Call of Earth" 1516
   pedia `[1516, 1519, 92466]`) é retirado no import.
 - **Skyborne** são as raças 95 (Aliança) e 96 (Horda), máscaras `2^32` e `2^33` (enum do QuestieDB,
@@ -193,6 +206,7 @@ python tools/gen_subzones.py <pasta do QuestieDB>
 python tools/gen_forever.py
 python tools/validate_guides.py
 python tools/check_special.py                  # masmorras e sintonizações, por raça x classe
+python tools/router.py                          # Deathknell e Valley of Trials (#57)
 luajit tools/forever-guides.lua
 ```
 

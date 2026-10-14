@@ -58,7 +58,7 @@ _USEQ = re.compile(
     r"\buse\s+(?:the\s+|your\s+|a\s+)?[\w' ]{2,28}?\s+on\b", re.I)
 # se o texto MANDA MATAR, a criatura é kill e o "use ... on" é num objeto à parte
 # (ex.: "Kill Zuluhed... Use the Key on the Chains") — não marcar a criatura como "use".
-_KILLQ = re.compile(r"\b(kill|slay|slaughter|destroy|defeat|assassinate|eliminate)\b", re.I)
+_KILLQ = re.compile(r"\b(kill|slay|slaughter|destroy|defeat|assassinate|eliminate|hunt|bounty)\b", re.I)
 def is_use_quest(objtext):
     ot = (objtext[0] if objtext else "") or ""
     if _KILLQ.search(ot):
@@ -74,6 +74,12 @@ PREREQ_OVERRIDES = {
     11065: 11009,   # Wrangle Some Aether Rays! (Khatie) -> Ogre Heaven
     11091: 11009,   # A Special Thank You (Chu'a'lor)    -> Ogre Heaven
 }
+
+# Curva do nível estimado no guia de zona: ini + (teto-ini) * fração_entregue ** CURVA.
+# Abaixo de 1 o nível sobe depressa no começo, como a XP. Calibrado nas zonas iniciais
+# (#57): sem quest de reqLevel 2 antes da segunda entrega em Deathknell, e Camp Narache,
+# Northshire e Coldridge fechadas antes de sair.
+CURVA_NIVEL = 0.7
 
 RACE_BIT = {1: "Human", 2: "Orc", 4: "Dwarf", 8: "NightElf", 16: "Undead",
             32: "Tauren", 64: "Gnome", 128: "Troll", 512: "BloodElf", 1024: "Draenei"}
@@ -147,6 +153,26 @@ def npc_amigo(npc):
     npc = npc or {}
     return bool(npc.get("faction") and ((npc.get("npcFlags") or 0) & 1
                                         or npc.get("questStarts") or npc.get("questEnds")))
+
+
+def manda_matar(texto, alvo):
+    """O objetivo manda matar este alvo. Se é NPC com quem se fala, a palavra de matar
+    tem de estar na frase do nome dele: o "kill her" de Mother's Milk é a aranha, não o
+    Ragged John que dá a quest."""
+    if not npc_amigo(alvo):
+        return bool(_KILLQ.search(texto))
+    nome = alvo["name"].lower()
+    return any(nome in f.lower() and _KILLQ.search(f) for f in re.split(r"(?<=[.;!?])\s+", texto))
+
+
+def cobre(a, b):
+    """O público da quest `a` (raças e classes; 0 = todas) contém o da `b`."""
+    return all(not a[k] or (b[k] and b[k] & a[k] == b[k]) for k in ("races", "classes"))
+
+
+def antes_ok(grupos, feitas):
+    """Os grupos do `_antes`: de cada um, basta uma entregue."""
+    return all(any(p in feitas for p in g) for g in grupos)
 
 
 def dist2(a, b):
@@ -496,17 +522,25 @@ class Router:
 
     @staticmethod
     def _antes(sel):
-        """{quest: o que tem de ser entregue antes dela} além do pré-req do banco: a
-        breadcrumb (fecha quando a quest entra no log) e, para quest sem pré-req, a
-        anterior pelo nextInChain (a que dá o item que a inicia)."""
-        antes = defaultdict(list)
+        """{quest: grupos do que tem de ser entregue antes dela — basta uma de cada grupo}
+        além do pré-req do banco: a breadcrumb (fecha quando a quest entra no log) e, para
+        quest sem pré-req, a anterior pelo nextInChain (a que dá o item que a inicia).
+        Várias anteriores são caminhos alternativos quando servem ao mesmo público:
+        Cutting Teeth vem de Your Place In The World (no vale) ou de The New Horde (em
+        Orgrimmar), e esperar as duas a jogava para o fim de Durotar. Variante de público
+        diferente é de outro jogador: a dependente espera a de cada um (a Call of Fire de
+        cada zona inicial no guia de classe, depois que a raça da zona a estreita)."""
+        antes, cadeia = defaultdict(list), defaultdict(list)
         for b, q in sel.items():
             for x in q["exclusiveTo"]:
                 if x in sel and b not in sel[x]["exclusiveTo"]:
-                    antes[x].append(b)
+                    antes[x].append((b,))
             x = q.get("nextInChain")
             if x in sel and not any(p in sel for p in sel[x]["preSingle"] + sel[x]["preGroup"]):
-                antes[x].append(b)
+                cadeia[x].append(b)
+        for x, ps in cadeia.items():
+            for b in ps:
+                antes[x].append(tuple(p for p in ps if cobre(sel[p], sel[b])))
         return antes
 
     def _areas(self, ids, tabela):
@@ -802,8 +836,11 @@ class Router:
                 oid, okind, oc = it.get("oid"), it.get("okind"), it.get("oc")
             if alvo is not None and okind == "kill":
                 # NPC amigo não se mata: "Speak with", "Listen to", alimentar, curar —
-                # o objetivo é de criatura no banco, o passo é falar com ela
-                verb = "use" if useq else ("talk" if alvo.get("faction") else "kill")
+                # o objetivo é de criatura no banco, o passo é falar com ela. Mas o
+                # Forever marca "AH" em mob hostil (Mindless Zombie): texto que manda
+                # matar vence o `faction`
+                fala = alvo.get("faction") and not manda_matar(" ".join(q["objText"]), alvo)
+                verb = "use" if useq else ("talk" if fala else "kill")
                 gt = self.group_tag(oid, ql) if verb != "talk" else ""
                 ut = " |tip {useit}" if useq else ""
                 steps.append(("  %s %s##%d |q %d%s%s%s" % (verb, esc(alvo["name"]), oid, qid,
@@ -1075,9 +1112,18 @@ class Router:
         # As entregas sozinhas subestimam o nível: o guia leva as de todas as classes e
         # raças, e a fração entregue de Durotar parava em 7 de 98 (nível 2,7) — o resto
         # caía no bloco de sobras, aceito de uma vez.
+        # A folga de +1 é para o nível da quest; o reqLevel é trava do servidor — no
+        # nível 1 o NPC mostra o "!" cinza da The Damned (reqLevel 2) e não a entrega.
+        # A conta é só das quests de todo mundo: as de classe, que o jogador faz uma ou
+        # duas, diluíam a fração e o nível ficava para trás. E o começo é rápido (o nível
+        # 2 sai com duas quests, o 10 pede dezenas): em reta, Camp Narache, Northshire e
+        # Coldridge se deixavam com quest de nível 3-4 por pegar, e o guia voltava lá.
+        geral = {qid for qid, q in sel.items() if not q["classes"]} or set(sel)
+
         def nivel_ok(q):
-            est = ini + (teto - ini) * len(turned) / len(sel) + subiu[0]
-            return precisa(q) <= min(est, teto) + 1
+            frac = len(turned & geral) / len(geral)
+            est = min(ini + (teto - ini) * frac ** CURVA_NIVEL + subiu[0], teto)
+            return (q.get("reqLevel") or 0) <= est and (q.get("questLevel") or 0) - 2 <= est + 1
 
         all_ids = set(sel)
         antes = self._antes(sel)
@@ -1085,7 +1131,7 @@ class Router:
         def prereqs_ok(q, qid):
             preG = [p for p in q["preGroup"] if p in all_ids]
             ok = all(p in turned for p in preG) and self._opcoes_ok(sel, qid, turned) \
-                and all(b in turned for b in antes[qid])
+                and antes_ok(antes[qid], turned)
             ov = PREREQ_OVERRIDES.get(qid)                     # gate que o banco não codifica
             if ok and ov and ov in all_ids:
                 ok = ov in turned
@@ -1320,7 +1366,7 @@ class Router:
             for q in sorted(pend, key=lambda q: (sel[q]["questLevel"] or 0, q)):
                 preG = [p for p in sel[q]["preGroup"] if p in ids]
                 ok = all(p in done for p in preG) and Router._opcoes_ok(sel, q, done) \
-                    and all(b in done for b in antes[q])
+                    and antes_ok(antes[q], done)
                 if ok and (sel[q].get("specialFlags") or 0) & 1:   # daily: espera o habilitador
                     cp = chain_pred.get(q)
                     if cp:
@@ -1410,12 +1456,12 @@ class Router:
 
             def segue(q):                    # continua a cadeia que acabou de fechar
                 return ult is not None and chave(q)[0] <= chave(ult)[0] + 2 and \
-                    (ult in sel[q]["preSingle"] + sel[q]["preGroup"] or ult in antes[q])
+                    (ult in sel[q]["preSingle"] + sel[q]["preGroup"] or any(ult in g for g in antes[q]))
             while pend:
                 livres = [q for q in pend
                           if all(p in feitas for p in sel[q]["preGroup"] if p in sel)
                           and self._opcoes_ok(sel, q, feitas)
-                          and all(b in feitas for b in antes[q])]
+                          and antes_ok(antes[q], feitas)]
                 qid = ult = min(livres or pend, key=lambda q: (not segue(q),) + chave(q))
                 emit_accept(qid)
                 emit_do(qid)
@@ -1463,3 +1509,46 @@ class Router:
         L += corpo
         L.append("]])")
         return "\n".join(L) + "\n"
+
+
+def demo():
+    """`python tools/router.py`: os casos do #57, no lógico e nos guias gerados."""
+    def q(races=0, classes=0, nxt=None):
+        return {"races": races, "classes": classes, "exclusiveTo": [], "nextInChain": nxt,
+                "preSingle": [], "preGroup": []}
+    horda, orc, tauren, xama = 8589934770, 2, 32, 64
+    # Cutting Teeth: as duas anteriores servem a toda a Horda — basta uma
+    a = Router._antes({4641: q(horda, nxt=788), 787: q(horda, nxt=788), 788: q(horda)})
+    assert antes_ok(a[788], {4641}) and not antes_ok(a[788], set()), a
+    # Call of Fire no guia de classe, já estreitada pela raça da zona — espera as duas
+    a = Router._antes({1522: q(orc, xama, 1524), 1523: q(tauren, xama, 1524), 1524: q(horda, xama)})
+    assert antes_ok(a[1524], {1522, 1523}) and not antes_ok(a[1524], {1522}), a
+    # a de todos basta; a só do orc deixa o troll sem a dele
+    a = Router._antes({1: q(horda, nxt=3), 2: q(orc, nxt=3), 3: q(horda)})
+    assert antes_ok(a[3], {1}) and not antes_ok(a[3], {2}), a
+    # verbo: mob hostil com `faction` mata; o "kill her" de Mother's Milk não é o Ragged John
+    assert manda_matar("Kill 8 Mindless Zombies.", {"name": "Mindless Zombie", "faction": "AH", "npcFlags": 0})
+    ragged = {"name": "Ragged John", "faction": "AH", "npcFlags": 3, "questStarts": [4866]}
+    assert not manda_matar("Ragged John wants milk. Chances are you will have to kill her.", ragged)
+    assert manda_matar("Slay Fleet Master Seahorn and Ragged John.", ragged)
+
+    guias = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Guides", "Leveling", "Horde")
+    quests = json.load(open(os.path.join(BUILD, "quests.json"), encoding="utf-8"))
+
+    def passos(nome):
+        txt = open(os.path.join(guias, nome), encoding="utf-8").read()
+        return re.findall(r"^  (\w+) [^\n]*?##(\d+)", txt, re.M), txt
+    ps, txt = passos("Tirisfal_Glades_5-12.lua")
+    assert "  kill Mindless Zombie##1501 |q 364" in txt, "mob de matar virou talk"
+    # Deathknell no nível 1: nada de reqLevel 2 antes de entregar The Mindless Ones
+    ate = ps.index(("turnin", "364"))
+    cedo = [i for v, i in ps[:ate] if v == "accept" and (quests[i]["reqLevel"] or 0) > 1]
+    assert not cedo, "accept acima do nível em Deathknell: %s" % cedo
+    # Durotar: Cutting Teeth e Sting of the Scorpid antes de ir a Razor Hill
+    ps, _ = passos("Durotar_5-12.lua")
+    assert ps.index(("turnin", "789")) < ps.index(("turnin", "2161")), "o vale ficou para trás"
+    print("ok: router — antecessores alternativos, verbo kill e nível de Deathknell e Durotar")
+
+
+if __name__ == "__main__":
+    demo()
