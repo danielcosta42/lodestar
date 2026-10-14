@@ -146,7 +146,15 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   Cutting Teeth vem de Your Place In The World (no vale) ou de The New Horde (Eitrigg, em
   Orgrimmar), e esperar as duas jogava o vale de Durotar para o fim do guia. Variante de público
   diferente é de outro jogador e a dependente espera a de cada um — no guia de classe, onde a raça
-  da zona inicial estreita a Call of Fire de cada zona.
+  da zona inicial estreita a Call of Fire de cada zona. A alternativa que nasce fora sai do guia
+  quando uma da zona cobre o mesmo público: The New Horde não manda mais a Orgrimmar.
+- **A rota vai ao hub mais próximo com o que fazer agora.** Hub é vila (quem dá e quem recebe) e,
+  à parte, lugar de objetivo longe de toda vila — a Burning Blade Coven é hub próprio, não pedaço
+  de Razor Hill. Sem nada a fazer em hub nenhum, o nível estimado sobe um. Antes a rota varria todos
+  os hubs em ordem fixa e ia a qualquer um com uma entrega só, longe.
+- **Tarefa sem objetivo no banco** ("Free 6 Webbed Victims", "Heal 5 Injured Deathguard"): o alvo
+  sai do nome no texto ou de `OBJETIVO_MANUAL`; sem alvo, o passo é `note` + `get … |q`, que o addon
+  conclui quando o cliente marca a quest completa.
 - **Pré-requisito em ciclo** (a própria quest, ou a versão dela de outra raça — "Call of Earth" 1516
   pedia `[1516, 1519, 92466]`) é retirado no import.
 - **Skyborne** são as raças 95 (Aliança) e 96 (Horda), máscaras `2^32` e `2^33` (enum do QuestieDB,
@@ -206,7 +214,7 @@ python tools/gen_subzones.py <pasta do QuestieDB>
 python tools/gen_forever.py
 python tools/validate_guides.py
 python tools/check_special.py                  # masmorras e sintonizações, por raça x classe
-python tools/router.py                          # Deathknell e Valley of Trials (#57)
+python tools/router.py                          # zonas iniciais (#57, #59)
 luajit tools/forever-guides.lua
 ```
 

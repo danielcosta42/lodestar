@@ -155,6 +155,23 @@ def npc_amigo(npc):
                                         or npc.get("questStarts") or npc.get("questEnds")))
 
 
+# Tarefa com contagem no texto e nenhum objetivo no QuestieDB (8 nos guias, #59). O alvo
+# sai do nome no texto; esta tabela é para o nome que não bate com o do NPC.
+OBJETIVO_MANUAL = {
+    98389: 271961,   # A Light in the Darkness: "Free 6 Webbed Victims" -> Webbed Forsaken
+    2969: 7997,      # Freedom for All Creatures: as do cercado, não o Sprite Darter solto (5278)
+}
+_TAREFA = re.compile(r"\b(free|kill|slay|collect|gather|destroy|rescue|burn|use|place|plant|"
+                     r"light|search|investigate|defeat|cleanse|capture|heal)\b", re.I)
+_ALVO = re.compile(r"\b\d+\s+([A-Z][\w'-]*(?:\s+[A-Z][\w'-]*)*)")
+
+
+def tarefa_sem_alvo(q):
+    t = " ".join(q["objText"])
+    return not (q["objCreatures"] or q["objItems"] or q["objObjects"]) \
+        and bool(re.search(r"\b\d+\b", t) and _TAREFA.search(t))
+
+
 def manda_matar(texto, alvo):
     """O objetivo manda matar este alvo. Se é NPC com quem se fala, a palavra de matar
     tem de estar na frase do nome dele: o "kill her" de Mother's Milk é a aranha, não o
@@ -240,6 +257,16 @@ class Router:
             nm = n.get("name")
             if nm and n.get("spawns"):
                 self._npc_by_name.setdefault(nm.lower(), int(nid))
+        # Tarefa sem objetivo no banco: o alvo pelo nome no texto ("slay 6 Undead
+        # Ravagers"), ou da tabela; sem ele, o passo de fazer espera a quest (`_emissores`)
+        for k, q in self.quests.items():
+            if tarefa_sem_alvo(q):
+                m = _ALVO.search(" ".join(q["objText"]))
+                nome = m.group(1).lower() if m else ""
+                n = OBJETIVO_MANUAL.get(int(k)) or self._npc_by_name.get(nome) \
+                    or self._npc_by_name.get(nome[:-1] if nome.endswith("s") else None)
+                if n:
+                    self.quests[k] = dict(q, objCreatures=[n], objDoTexto=True)
 
     def _lado(self, q, faction):
         """Quest das duas facções lista quem dá/recebe dos dois lados (The Hunter's
@@ -726,15 +753,20 @@ class Router:
         return sel
 
     # -- clustering de hubs -------------------------------------------------
-    def build_hubs(self, sel, area):
+    def build_hubs(self, sel, area, objetivos=()):
+        """Hubs das vilas (quem dá e quem recebe) e, à parte, dos lugares de objetivo
+        longe de toda vila: juntos, a cadeia de pontos de objetivo emendava vilas."""
         pts = []
         for qid, q in sel.items():
             for n in q["startNpcs"] + q["endNpcs"]:
                 npc = self.npc(n)
                 if npc and str(area) in npc.get("spawns", {}):
                     pts.append(self._centroid(npc["spawns"][str(area)]))
-        if not pts:
-            return []
+        vilas = self._agrupa(pts)
+        longe = [p for p in objetivos if all(dist2(p, h) > HUB_MERGE_DIST ** 2 for h in vilas)]
+        return vilas + self._agrupa(longe)
+
+    def _agrupa(self, pts):
         # union-find por proximidade
         parent = list(range(len(pts)))
 
@@ -758,18 +790,6 @@ class Router:
         if coord is None or not hubs:
             return None
         return min(range(len(hubs)), key=lambda h: dist2(coord, hubs[h]))
-
-    @staticmethod
-    def hub_path(hubs, start):
-        # vizinho-mais-próximo a partir do hub inicial
-        remaining = set(range(len(hubs)))
-        path = []
-        cur = start
-        while remaining:
-            cur = min(remaining, key=lambda h: dist2(hubs[cur], hubs[h]))
-            path.append(cur)
-            remaining.discard(cur)
-        return path
 
     # -- passos -------------------------------------------------------------
     def _emissores(self, info, steps, area, faction):
@@ -811,12 +831,16 @@ class Router:
         def do(qid):
             it = info[qid]; q = it["q"]
             objc, obji, objo = q["objCreatures"], q["objItems"], q["objObjects"]
-            if not (objc or obji or objo):
+            tarefa = tarefa_sem_alvo(q)
+            if not (objc or obji or objo or tarefa):
                 return                       # sem objetivo (entrega/talk): o turnin já leva lá
             ql = q["questLevel"] or q["reqLevel"] or 0
             abre(q)
             if q["objText"]:                 # SEMPRE mostra "como fazer"
                 steps.append(("  note " + esc(q["objText"][0]), None))
+            if tarefa:                       # o cliente sabe o objetivo; o passo espera a quest
+                steps.append(("  get %s |q %d" % (esc(q["name"]), qid), None))
+                return
             if is_craft_quest(q["name"]) and obji:     # fabricar item, não lootar
                 iname = (self.items.get(str(obji[0])) or {}).get("name") or q["name"]
                 steps.append(("  get %s##%d |q %d |tip Craft this (or buy it), then deliver it." %
@@ -838,8 +862,10 @@ class Router:
                 # NPC amigo não se mata: "Speak with", "Listen to", alimentar, curar —
                 # o objetivo é de criatura no banco, o passo é falar com ela. Mas o
                 # Forever marca "AH" em mob hostil (Mindless Zombie): texto que manda
-                # matar vence o `faction`
-                fala = alvo.get("faction") and not manda_matar(" ".join(q["objText"]), alvo)
+                # matar vence o `faction`. Alvo achado pelo texto só se mata se ele mandar
+                # ("free the Sprite Darters" não é matar)
+                fala = (alvo.get("faction") or q.get("objDoTexto")) \
+                    and not manda_matar(" ".join(q["objText"]), alvo)
                 verb = "use" if useq else ("talk" if fala else "kill")
                 gt = self.group_tag(oid, ql) if verb != "talk" else ""
                 ut = " |tip {useit}" if useq else ""
@@ -857,7 +883,8 @@ class Router:
             if not (it["ender"] or it["eobj"]):
                 return False
             abre(q)
-            if area == -1 and q["objText"] and not (q["objCreatures"] or q["objItems"] or q["objObjects"]):
+            if area == -1 and q["objText"] and not (q["objCreatures"] or q["objItems"] or q["objObjects"]
+                                                    or tarefa_sem_alvo(q)):
                 steps.append(("  note " + esc(q["objText"][0]), None))
             if it["ender"]:
                 steps.append(("  talk %s##%d" % (esc(it["ender"]["name"]), it["ender_id"]), None))
@@ -1060,10 +1087,19 @@ class Router:
             return any(str(area) in ((self.npc(n) or {}).get("spawns") or {}) for n in q["startNpcs"])
         self._tira(sel, self._exclusivas(
             sel, lambda q: (not nasce_aqui(sel[q]), sel[q]["reqLevel"] or 0, q), faction))
+        # Anterior alternativa (`_antes`) que nasce fora, quando uma daqui cobre o mesmo
+        # público: The New Horde era ida a Orgrimmar para entregar no vale a quest de
+        # nível 1 que Your Place In The World já leva a Cutting Teeth.
+        cadeia = defaultdict(list)
+        for b, q in sel.items():
+            x = q.get("nextInChain")
+            if x in sel and not any(p in sel for p in sel[x]["preSingle"] + sel[x]["preGroup"]):
+                cadeia[x].append(b)
+        self._tira(sel, {b for ps in cadeia.values() for b in ps if not nasce_aqui(sel[b])
+                         and any(a != b and nasce_aqui(sel[a]) and cobre(sel[a], sel[b]) for a in ps)})
         if not sel:
             return None, 0, []
         zname = self.zone_name(area)
-        hubs = self.build_hubs(sel, area)
         info = self._info(sel, area)
         self._sem_giver(sel, info)
 
@@ -1084,6 +1120,11 @@ class Router:
         for qid, tokens in self._portoes(sel, faction).items():
             if tokens:
                 info[qid]["q"] = sel[qid] = dict(sel[qid], portao=tokens)
+
+        # Hub é onde se dá, recebe e também onde se faz: com só os dois primeiros, a
+        # Burning Blade Coven caía no hub de Razor Hill e o guia ia à vila antes da caverna
+        hubs = self.build_hubs(sel, area, [p[1] for it in info.values() for p in [it["oc"] or it["ic"]]
+                                           if p and int(p[0]) == area])
 
         # hub só para ponto DENTRO da zona: Thurman, de Stormwind, não pode cair no
         # hub da fazenda Stonefield só porque a coordenada crua é parecida
@@ -1141,7 +1182,7 @@ class Router:
         emit_accept, emit_do, emit_turnin = self._emissores(info, steps, area, faction)
 
         def tem_objetivo(q):
-            return bool(q["objCreatures"] or q["objItems"] or q["objObjects"])
+            return bool(q["objCreatures"] or q["objItems"] or q["objObjects"]) or tarefa_sem_alvo(q)
 
         # Diário do Classic: 20. O guia leva as de todas as raças, então a conta é
         # folgada; as de classe ficam fora dela (uma ou duas por vez, de cada classe).
@@ -1191,14 +1232,33 @@ class Router:
                 algo = algo or mexeu
             return algo
 
+        def tem_trabalho(h):                 # o que a `visita` faria em h agora
+            for qid in accepted:
+                it = info[qid]
+                if qid in done and qid not in turned and it["ehub"] == h and (it["ender"] or it["eobj"]):
+                    return True
+                if qid not in done and it["ohub"] == h:
+                    return True
+            return any(info[qid]["ghub"] == h and qid not in accepted and qid not in turned
+                       and (sel[qid]["classes"] or aberto() < DIARIO)
+                       and prereqs_ok(sel[qid], qid) and nivel_ok(sel[qid]) for qid in sel)
+
+        # Vai ao hub mais próximo com o que fazer agora. A varredura em ordem fixa ia a
+        # todo hub com qualquer coisa — uma entrega só, longe —, e Durotar subia a Razor
+        # Hill no meio do vale. Nada em hub nenhum: o jogador sobe um nível matando no
+        # caminho, e o nível novo abre quest.
+        # ponytail: guloso. Testados na #59: hub só de pegar quest pesando mais (−7% contra
+        # −10%) e olhar um hub adiante (−7 a −9%) andam mais; subir um nível antes de
+        # viagem longa anda −17%, mas o nível estimado passa do real (aceite acima do nível
+        # 188 → 582+) — e voltar a pé sai mais barato que moer um nível.
         lowest = min(sel, key=lambda q: (precisa(sel[q]), q))
-        start = info[lowest]["ghub"] or 0
-        path = self.hub_path(hubs, start) if hubs else []
-        while True:
-            for _ in range(16):
-                if not any([visita(h) for h in path]):
-                    break
-            # travou: o jogador sobe matando no caminho — mais um nível e volta aos hubs
+        cur = info[lowest]["ghub"] or 0
+        while hubs:
+            cands = [h for h in range(len(hubs)) if tem_trabalho(h)]
+            if cands:
+                cur = min(cands, key=lambda h: (dist2(hubs[cur], hubs[h]), h))
+                assert visita(cur), "tem_trabalho e visita discordam no hub %d" % cur
+                continue
             if ini + subiu[0] >= teto:
                 break
             subiu[0] += 1
@@ -1544,10 +1604,26 @@ def demo():
     ate = ps.index(("turnin", "364"))
     cedo = [i for v, i in ps[:ate] if v == "accept" and (quests[i]["reqLevel"] or 0) > 1]
     assert not cedo, "accept acima do nível em Deathknell: %s" % cedo
-    # Durotar: Cutting Teeth e Sting of the Scorpid antes de ir a Razor Hill
+    # tarefa sem objetivo no banco (#59): as Webbed Victims antes de entregar
+    assert ps.index(("talk", "271961")) < ps.index(("turnin", "98389")), "A Light in the Darkness sem passo"
+    # Durotar: Cutting Teeth e Sting of the Scorpid antes de ir a Razor Hill; The New Horde fora
     ps, _ = passos("Durotar_5-12.lua")
     assert ps.index(("turnin", "789")) < ps.index(("turnin", "2161")), "o vale ficou para trás"
-    print("ok: router — antecessores alternativos, verbo kill e nível de Deathknell e Durotar")
+    assert ("accept", "787") not in ps, "The New Horde: ida a Orgrimmar por quest de nível 1"
+    # Elwynn (#59): nada a pegar em Northshire depois de Goldshire, fora quest de classe
+    # (entregar lá é do dado: Rare Books sai de Goldshire para a abadia)
+    txt = open(os.path.join(guias, "..", "Alliance", "Elwynn_Forest_3-10.lua"), encoding="utf-8").read()
+    lugar = []
+    for st in txt.split("\nstep\n")[1:]:
+        m = re.search(r"\|goto Elwynn Forest ([\d.]+),([\d.]+)", st)
+        if m:
+            x, y = float(m.group(1)), float(m.group(2))
+            lugar.append(("N" if dist2((x, y), (49, 41)) < 100 else "G" if dist2((x, y), (43, 65)) < 49 else "",
+                          "  accept " in st and not re.search(r"^  only .*\b(Warrior|Paladin|Hunter|Rogue|"
+                                                              r"Priest|Shaman|Mage|Warlock|Druid)\b", st, re.M)))
+    g = next(i for i, (lg, _) in enumerate(lugar) if lg == "G")
+    assert not [i for i, (lg, pega) in enumerate(lugar) if i > g and lg == "N" and pega], "Northshire deixado para trás"
+    print("ok: router — antecessores alternativos, verbo kill, nível, tarefa sem objetivo e rota das zonas iniciais")
 
 
 if __name__ == "__main__":

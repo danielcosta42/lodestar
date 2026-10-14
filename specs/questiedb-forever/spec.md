@@ -122,10 +122,9 @@ estavam na v2.6.0.
       `_antes`, anterior pelo `nextInChain` basta uma entre as que cobrem o mesmo público. No dado
       as quatro Call of Fire têm a máscara de toda a Horda; só no guia de classe, onde a raça da
       zona inicial estreita o público, cada raça espera a sua.
-- [ ] O vai e volta depois do vale (Razor Hill → Burning Blade Coven → Sen'jin → vale): o objetivo
-      vai para o hub mais próximo, e a Coven cai no de Razor Hill. É o desenho dos hubs; fica para
-      outra issue.
-- [ ] The New Horde segue como ida a Orgrimmar e volta ao vale para entregar quest de nível 1.
+- [x] O vai e volta depois do vale (Razor Hill → Burning Blade Coven → Sen'jin → vale): o objetivo
+      vai para o hub mais próximo, e a Coven cai no de Razor Hill → #59, abaixo.
+- [x] The New Horde segue como ida a Orgrimmar e volta ao vale para entregar quest de nível 1 → #59.
 
 `python tools/router.py` confere os três (falha no `main`). Medido contra a v2.7.0:
 
@@ -146,3 +145,58 @@ O modelo de XP é de validação, não verdade: XP de quest `20·nível^1,5+60`,
 "!" cinza de Deathknell, 1,0 deixa Camp Narache e Coldridge para trás. Nos 80 primeiros passos,
 Durotar 578 → 353 e Elwynn 352 → 293; Dun Morogh 360 → 433 e Teldrassil 409 → 451 seguem com o vai
 e volta entre a zona inicial e a vila, que o `main` também tem (desenho dos hubs, acima).
+
+## Hubs, The New Horde e tarefa sem objetivo (#59, 2026-10-14)
+
+O que a #57 deixou e a revisão independente achou.
+
+- [x] Hub era só onde se dá e recebe quest; o objetivo ia para o hub mais próximo (a Burning Blade
+      Coven no de Razor Hill), e a rota varria todos os hubs em ordem fixa, indo a qualquer um que
+      tivesse algo — uma entrega só, longe → lugar de objetivo longe de toda vila vira hub (à parte:
+      junto com as vilas, a cadeia de pontos emendava vilas), e a rota vai ao hub mais próximo com o
+      que fazer agora; sem nada, o nível sobe. Testados e descartados: hub só de pegar quest
+      pesando o dobro (−7,3% contra −10,5%), olhar um hub adiante (−6,9% a −9,5%) e subir um nível
+      antes de viagem longa — anda −17%, mas cada viagem evitada sobe o nível estimado de vez e o
+      aceite acima do nível vai de 188 a 582–845; e voltar a pé custa menos que moer um nível.
+- [x] The New Horde: anterior alternativa que nasce fora sai quando uma da zona cobre o mesmo
+      público. Único caso no leveling.
+- [x] 8 quests com tarefa no texto e sem objetivo no QuestieDB eram aceitas e entregues sem passo de
+      fazer → o alvo sai do nome no texto (Undead Ravager, Injured Deathguard) ou de
+      `OBJETIVO_MANUAL` (Webbed Victims = Webbed Forsaken; Captured Sprite Darter, não o solto que o
+      nome achava); sem alvo, `note` + `get … |q`, que o addon conclui quando o cliente marca a quest
+      completa. Alvo achado pelo texto só vira `kill` se o texto manda matar.
+
+Revisão independente: o laço termina e o `assert` não dispara (variando `DIARIO`, `HUB_MERGE_DIST`,
+`CURVA_NIVEL` e nível máximo); nenhuma quest sumiu de guia além de The New Horde; a regeneração
+reproduz os guias byte a byte. Ficam:
+
+- [ ] Mulgore sai de Camp Narache e volta por The Adventurer (nível 6), que o nível estimado só abre
+      depois: ~28 de desvio. O `main` a pegava antes de sair.
+- [ ] Durotar deixa Vile Familiars por fazer ao sair do vale (o Ukor, a 10, ganha da Coven, a 14) e
+      volta ao vale 4 vezes contra 2; ainda anda menos (478 contra 504 nos 120 primeiros passos).
+- [ ] Na simulação por raça×classe, −10,8% no total, mas Hillsbrad 33-38 (+13%), The Hinterlands
+      (+10%), Silithus (+9%) e Azshara (+8%) da Aliança andam mais: o guloso volta à vila para uma
+      entrega entre dois objetivos pendentes.
+- [ ] A Light in the Darkness tem passo em Night Web's Hollow, mas antes de Night Web's Hollow (que
+      espera The Damned): duas idas ao mesmo lugar. Juntar pede olhar adiante.
+- [ ] Os 4 passos `get … |q` sem alvo não têm seta; From the Ashes (Wetlands) manda de Menethil à
+      Angerfang só pela nota.
+
+`python tools/router.py` confere The New Horde, A Light in the Darkness e Northshire sem quest
+deixada para trás (falha no `main`). Medido contra a v2.7.1:
+
+| | v2.7.1 | #59 |
+|---|---|---|
+| simulação da cadeia `next`, accept que trava | 0 | 0 |
+| pico do log | 18 | 17 |
+| aceites acima do teto do guia | 10 | 10 |
+| pendurada / perdida por ordem | 0 / 0 | 0 / 0 |
+| `guide_integrity --full` JUMP | 355 | **298** |
+| guias de classe, accept sem pré-req (os mesmos) | 35 | 35 |
+| accept acima do nível, modelo de XP | 198 | **188** |
+| — dentro da zona inicial | 9 | 9 (Zephras Isle) |
+| distância percorrida no leveling | 78.027 | **69.846 (−10,5%)** |
+| quests novas do Forever em guia | 548 | 548 |
+
+Nos 80 primeiros passos: Durotar 353 → 234, Tirisfal 296 → 279, Mulgore 415 → 323, Elwynn 293 → 240,
+Dun Morogh 433 → 345, Teldrassil 451 → 310, Zephras Isle 263 → 190 (H) e 248 → 213 (A).
