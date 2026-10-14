@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (3-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Westfall (12-18)",
-	rev = "9752b404",
+	rev = "bef4c32e",
 }, [[
 step
   talk Deputy Willem##823
@@ -32,47 +32,17 @@ step
   talk Deputy Willem##823
   accept Eagan Peltskinner##5261 |goto Elwynn Forest 48.17,42.94
 step
-  talk Deputy Willem##823
-  accept Brotherhood of Thieves##18 |goto Elwynn Forest 48.17,42.94
-step
-  note Bring 12 Red Burlap Bandanas to Deputy Willem outside the Northshire Abbey.
-  collect 12 Red Burlap Bandana##752 |q 18 |goto Elwynn Forest 54.14,47.84 |tip {dropsfrom}Defias Thug
-step
-  talk Deputy Willem##823
-  turnin Brotherhood of Thieves##18 |goto Elwynn Forest 48.17,42.94
-step
   talk Eagan Peltskinner##196
   turnin Eagan Peltskinner##5261 |goto Elwynn Forest 48.94,40.16
 step
   talk Eagan Peltskinner##196
   accept Wolves Across the Border##33 |goto Elwynn Forest 48.94,40.16
 step
-  talk Deputy Willem##823
-  accept Milly Osworth##3903 |goto Elwynn Forest 48.17,42.94
-step
-  talk Milly Osworth##9296
-  accept Milly's Harvest##3904 |goto Elwynn Forest 50.69,39.35
-step
   note Bring 8 pieces of Tough Wolf Meat to Eagan Peltskinner outside Northshire Abbey.
   collect 8 Tough Wolf Meat##750 |q 33 |goto Elwynn Forest 49.41,37.75 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
 step
-  note Bring 8 crates of Milly's Harvest to Milly Osworth at Northshire Abbey.
-  collect 8 Milly's Harvest##11119 |q 3904 |goto Elwynn Forest 53.93,48.78
-step
   talk Eagan Peltskinner##196
   turnin Wolves Across the Border##33 |goto Elwynn Forest 48.94,40.16
-step
-  talk Milly Osworth##9296
-  turnin Milly Osworth##3903 |goto Elwynn Forest 50.69,39.35
-step
-  talk Milly Osworth##9296
-  turnin Milly's Harvest##3904 |goto Elwynn Forest 50.69,39.35
-step
-  talk Milly Osworth##9296
-  accept Grape Manifest##3905 |goto Elwynn Forest 50.69,39.35
-step
-  talk Brother Neals##952
-  turnin Grape Manifest##3905 |goto Elwynn Forest 49.47,41.59
 step
   kill Kobold Vermin##6 |goto Elwynn Forest 49.17,36.55 |tip Loot the quest item here — it starts the quest.
   accept Nibbled-On Book##91741 |goto Elwynn Forest 49.17,36.55
@@ -120,6 +90,18 @@ step
   talk Marshal McBride##197
   accept A Scribbled Letter##92479 |goto Elwynn Forest 48.92,41.61
 step
+  talk Deputy Willem##823
+  accept Brotherhood of Thieves##18 |goto Elwynn Forest 48.17,42.94
+step
+  talk Falkhaan Isenstrider##6774
+  accept Rest and Relaxation##2158 |goto Elwynn Forest 45.56,47.74
+step
+  note Bring 12 Red Burlap Bandanas to Deputy Willem outside the Northshire Abbey.
+  collect 12 Red Burlap Bandana##752 |q 18 |goto Elwynn Forest 54.14,47.84 |tip {dropsfrom}Defias Thug
+step
+  talk Deputy Willem##823
+  turnin Brotherhood of Thieves##18 |goto Elwynn Forest 48.17,42.94
+step
   only Human Warrior
   talk Llane Beshere##911
   turnin Simple Letter##3100 |goto Elwynn Forest 50.24,42.29
@@ -155,16 +137,34 @@ step
   accept Rascally Rodents##91743 |goto Elwynn Forest 49.61,40.41
 step
   talk Deputy Willem##823
-  accept Bounty on Garrick Padfoot##6 |goto Elwynn Forest 48.17,42.94
+  accept Milly Osworth##3903 |goto Elwynn Forest 48.17,42.94
 step
-  talk Falkhaan Isenstrider##6774
-  accept Rest and Relaxation##2158 |goto Elwynn Forest 45.56,47.74
+  talk Milly Osworth##9296
+  accept Milly's Harvest##3904 |goto Elwynn Forest 50.69,39.35
+step
+  talk Deputy Willem##823
+  accept Bounty on Garrick Padfoot##6 |goto Elwynn Forest 48.17,42.94
 step
   note Kill Garrick Padfoot and bring his head to Deputy Willem at Northshire Abbey.
   collect Garrick's Head##182 |q 6 |goto Elwynn Forest 57.52,48.25 |tip {dropsfrom}Garrick Padfoot
 step
+  note Bring 8 crates of Milly's Harvest to Milly Osworth at Northshire Abbey.
+  collect 8 Milly's Harvest##11119 |q 3904 |goto Elwynn Forest 53.93,48.78
+step
   talk Deputy Willem##823
   turnin Bounty on Garrick Padfoot##6 |goto Elwynn Forest 48.17,42.94
+step
+  talk Milly Osworth##9296
+  turnin Milly Osworth##3903 |goto Elwynn Forest 50.69,39.35
+step
+  talk Milly Osworth##9296
+  turnin Milly's Harvest##3904 |goto Elwynn Forest 50.69,39.35
+step
+  talk Milly Osworth##9296
+  accept Grape Manifest##3905 |goto Elwynn Forest 50.69,39.35
+step
+  talk Brother Neals##952
+  turnin Grape Manifest##3905 |goto Elwynn Forest 49.47,41.59
 step
   note Kill 10 Kobold Workers, then report back to Marshal McBride.
   kill Kobold Worker##257 |q 15 |goto Elwynn Forest 48.09,34.03
@@ -232,49 +232,6 @@ step
   talk Sam Sarsaparilla##263399
   accept The Great Outdoors##95998 |goto Elwynn Forest 44.9,63.36
 step
-  note Follow the kobold tracks and report to Marshal Dughan in Goldshire with your findings and the Kobold Tracking Kit.
-  collect Kobold Tracks##563442 |q 91772 |goto Elwynn Forest 45.76,56.45
-step
-  only not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
-  note Sit near Sam's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
-  collect Basic Campfire##460003 |q 95998 |goto Elwynn Forest 44.94,63.2
-step
-  talk Marshal Dughan##240
-  turnin Shhh! We're Hunting Kobolds##91772 |goto Elwynn Forest 42.11,65.93
-step
-  only not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
-  talk Sam Sarsaparilla##263399
-  turnin The Great Outdoors##95998 |goto Elwynn Forest 44.9,63.36
-step
-  talk Marshal Dughan##240
-  accept Book Return##91775 |goto Elwynn Forest 42.11,65.93
-step
-  only not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
-  talk Sam Sarsaparilla##263399
-  accept Camping 101: Cooking##96626 |goto Elwynn Forest 44.9,63.36
-step
-  only not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
-  note Speak with Tomas in Goldshire to learn to become a cook.
-  talk Tomas##1430 |q 96626 |goto Elwynn Forest 44.37,65.99
-step
-  only not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
-  talk Tomas##1430
-  turnin Camping 101: Cooking##96626 |goto Elwynn Forest 44.37,65.99
-step
-  note Find 6 Lost Books and "Fun with Elementals" and return them to Marshal Dughan.
-  collect 6 Picture Book: Fun with Elementals##248002 |q 91775 |goto Elwynn Forest 41.62,79.9 |tip {dropsfrom}Nimsy
-step
-  talk Marshal Dughan##240
-  turnin Book Return##91775 |goto Elwynn Forest 42.11,65.93
-step
-  only Human Priest
-  talk Priestess Anetta##375
-  accept In Favor of the Light##5623 |goto Elwynn Forest 49.81,39.49
-step
-  only Human Priest
-  talk Priestess Josetta##377
-  turnin In Favor of the Light##5623 |goto Elwynn Forest 43.28,65.72
-step
   talk Remy "Two Times"##241
   accept Gold Dust Exchange##47 |goto Elwynn Forest 42.14,67.26
 step
@@ -284,22 +241,18 @@ step
   talk Marshal Dughan##240
   accept The Fargodeep Mine##62 |goto Elwynn Forest 42.11,65.93
 step
-  only Human Priest
-  talk Priestess Josetta##377
-  accept Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
-step
-  talk Marshal Dughan##240
-  accept Rare Books##91777 |goto Elwynn Forest 42.11,65.93
-step
   talk Jason Mathers##383
   accept A Net Disaster##99127 |goto Elwynn Forest 47.46,62.18
 step
   talk Lee Brown##1651
   accept Bottles and Baubles##99143 |goto Elwynn Forest 47.61,62.32
 step
-  only Human Priest
-  note Find Guard Roberts and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Priestess Josetta in Goldshire.
-  talk Guard Roberts##12423 |q 5624 |goto Elwynn Forest 48.15,68.05
+  note Follow the kobold tracks and report to Marshal Dughan in Goldshire with your findings and the Kobold Tracking Kit.
+  collect Kobold Tracks##563442 |q 91772 |goto Elwynn Forest 45.76,56.45
+step
+  only not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
+  note Sit near Sam's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
+  collect Basic Campfire##460003 |q 95998 |goto Elwynn Forest 44.94,63.2
 step
   note Check the fishing traps in Crystal Lake.
   collect Half-Eaten Fish##286205 |q 99127 |goto Elwynn Forest 48.8,64.7 |tip {dropsfrom}Fishing Trap
@@ -307,18 +260,36 @@ step
   talk Marshal Dughan##240
   turnin The Fargodeep Mine##62 |goto Elwynn Forest 42.11,65.93
 step
-  only Human Priest
-  talk Priestess Josetta##377
-  turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
+  talk Marshal Dughan##240
+  turnin Shhh! We're Hunting Kobolds##91772 |goto Elwynn Forest 42.11,65.93
+step
+  only not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
+  talk Sam Sarsaparilla##263399
+  turnin The Great Outdoors##95998 |goto Elwynn Forest 44.9,63.36
 step
   talk Jason Mathers##383
   turnin A Net Disaster##99127 |goto Elwynn Forest 47.46,62.18
 step
+  talk Marshal Dughan##240
+  accept Book Return##91775 |goto Elwynn Forest 42.11,65.93
+step
+  only not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
+  talk Sam Sarsaparilla##263399
+  accept Camping 101: Cooking##96626 |goto Elwynn Forest 44.9,63.36
+step
   talk Jason Mathers##383
   accept Slimy Menace##99128 |goto Elwynn Forest 47.46,62.18
 step
+  only not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
+  note Speak with Tomas in Goldshire to learn to become a cook.
+  talk Tomas##1430 |q 96626 |goto Elwynn Forest 44.37,65.99
+step
   note Kill the murlocs at Crystal Lake.
   kill Murloc Streamrunner##735 |q 99128 |goto Elwynn Forest 51.98,66.25
+step
+  only not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
+  talk Tomas##1430
+  turnin Camping 101: Cooking##96626 |goto Elwynn Forest 44.37,65.99
 step
   talk Jason Mathers##383
   turnin Slimy Menace##99128 |goto Elwynn Forest 47.46,62.18
@@ -344,6 +315,9 @@ step
   talk Maybell Maclure##251
   accept Young Lovers##106 |goto Elwynn Forest 43.15,89.62
 step
+  note Find 6 Lost Books and "Fun with Elementals" and return them to Marshal Dughan.
+  collect 6 Picture Book: Fun with Elementals##248002 |q 91775 |goto Elwynn Forest 41.62,79.9 |tip {dropsfrom}Nimsy
+step
   note Collect ingredients for murloc bait.
   collect Duskweed Petal##286214 |q 99130 |goto Elwynn Forest 41.2,86.1 |tip {dropsfrom}Overgrown Duskweed
 step
@@ -356,17 +330,22 @@ step
   note Collect 6 pieces of shiny junk from the nearby Murloc camp.
   collect 6 Shiny Junk##286209 |q 99143 |goto Elwynn Forest 56.6,67.3 |tip {dropsfrom}Junk Pile
 step
-  note Recover "Geomancy for Curious Young Wizards" and "Arcane Explainer: Magical Stuff in Simple Words" and return them to Brother Paxton inside Northshire's Abbey.
-  collect Geomancy for Curious Young Wizards##248003 |q 91777 |goto Elwynn Forest 61.38,48.93 |tip {dropsfrom}Geosculptor Yip
-step
-  talk Brother Paxton##951
-  turnin Rare Books##91777 |goto Elwynn Forest 49.61,40.41
+  only Human Priest
+  talk Priestess Anetta##375
+  accept In Favor of the Light##5623 |goto Elwynn Forest 49.81,39.49
 step
   talk Remy "Two Times"##241
   turnin Gold Dust Exchange##47 |goto Elwynn Forest 42.14,67.26
 step
   talk William Pestle##253
   turnin Kobold Candles##60 |goto Elwynn Forest 43.32,65.7
+step
+  only Human Priest
+  talk Priestess Josetta##377
+  turnin In Favor of the Light##5623 |goto Elwynn Forest 43.28,65.72
+step
+  talk Marshal Dughan##240
+  turnin Book Return##91775 |goto Elwynn Forest 42.11,65.93
 step
   talk Remy "Two Times"##241
   turnin An Enticing Offer##99130 |goto Elwynn Forest 42.14,67.26
@@ -377,8 +356,23 @@ step
   talk William Pestle##253
   accept Shipment to Stormwind##61 |goto Elwynn Forest 43.32,65.7
 step
+  only Human Priest
+  talk Priestess Josetta##377
+  accept Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
+step
+  talk Marshal Dughan##240
+  accept Rare Books##91777 |goto Elwynn Forest 42.11,65.93
+step
   talk Remy "Two Times"##241
   accept Baited for Success##99131 |goto Elwynn Forest 42.14,67.26
+step
+  only Human Priest
+  note Find Guard Roberts and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Priestess Josetta in Goldshire.
+  talk Guard Roberts##12423 |q 5624 |goto Elwynn Forest 48.15,68.05
+step
+  only Human Priest
+  talk Priestess Josetta##377
+  turnin Garments of the Light##5624 |goto Elwynn Forest 43.28,65.72
 step
   talk Jason Mathers##383
   turnin Baited for Success##99131 |goto Elwynn Forest 47.46,62.18
@@ -388,6 +382,9 @@ step
 step
   talk Tommy Joe Stonefield##252
   accept Speak with Gramma##111 |goto Elwynn Forest 29.84,86
+step
+  talk Ma Stonefield##244
+  accept Princess Must Die!##88 |goto Elwynn Forest 34.66,84.48
 step
   note Bring 4 Chunks of Boar Meat to Auntie Bernice Stonefield at the Stonefield's Farm.
   collect 4 Chunk of Boar Meat##769 |q 86 |goto Elwynn Forest 38.56,86.16 |tip {dropsfrom}Stonetusk Boar, Longsnout, Goretusk
@@ -403,9 +400,6 @@ step
 step
   talk Gramma Stonefield##248
   accept Note to William##107 |goto Elwynn Forest 34.94,83.86
-step
-  talk Ma Stonefield##244
-  accept Princess Must Die!##88 |goto Elwynn Forest 34.66,84.48
 step
   talk Billy Maclure##247
   turnin Back to Billy##84 |goto Elwynn Forest 43.13,85.72
@@ -431,6 +425,12 @@ step
   talk Supervisor Raelen##10616
   turnin A Bundle of Trouble##5545 |goto Elwynn Forest 81.38,66.11
 step
+  note Recover "Geomancy for Curious Young Wizards" and "Arcane Explainer: Magical Stuff in Simple Words" and return them to Brother Paxton inside Northshire's Abbey.
+  collect Geomancy for Curious Young Wizards##248003 |q 91777 |goto Elwynn Forest 61.38,48.93 |tip {dropsfrom}Geosculptor Yip
+step
+  talk Brother Paxton##951
+  turnin Rare Books##91777 |goto Elwynn Forest 49.61,40.41
+step
   talk William Pestle##253
   turnin Note to William##107 |goto Elwynn Forest 43.32,65.7
 step
@@ -446,20 +446,56 @@ step
   talk Ma Stonefield##244
   turnin Princess Must Die!##88 |goto Elwynn Forest 34.66,84.48
 step
+  talk Hamish Bergwort##248242
+  accept Delicate Instruments##91723 |goto Elwynn Forest 65.1,69.84
+step
+  talk Blixie Fitzwink##248248
+  accept Stolen Enchanting Supplies##91725 |goto Elwynn Forest 63.2,72.6
+step
   note Bring 4 Crystal Kelp Fronds to William Pestle in Goldshire.
   collect 4 Crystal Kelp Frond##1256 |q 112 |goto Elwynn Forest 54.9,66.75 |tip {dropsfrom}Murloc, Murloc Streamrunner
+step
+  note Kill 8 Kobold Geomancers in Jasperlode Mine, then return to Hamish Bergwort in the Tower of Azora.
+  kill Kobold Geomancer##476 |q 91723 |goto Elwynn Forest 64.49,56.55
+step
+  talk Hamish Bergwort##248242
+  turnin Delicate Instruments##91723 |goto Elwynn Forest 65.1,69.84
+step
+  talk Hamish Bergwort##248242
+  accept Delicate Instruments##91724 |goto Elwynn Forest 65.1,69.84
+step
+  note Kill 6 Defias Rogue Wizards at Stone Cairn Lake, then return to Hamish Bergwort in the Tower of Azora.
+  kill Defias Rogue Wizard##474 |q 91724 |goto Elwynn Forest 73.38,52.48
+step
+  talk Hamish Bergwort##248242
+  turnin Delicate Instruments##91724 |goto Elwynn Forest 65.1,69.84
 step
   talk Sara Timberlain##278
   turnin Red Linen Goods##83 |goto Elwynn Forest 79.46,68.79
 step
-  talk William Pestle##253
-  turnin Collecting Kelp##112 |goto Elwynn Forest 43.32,65.7
+  talk Guard Thomas##261
+  accept Protect the Frontier##52 |goto Elwynn Forest 73.97,72.18
 step
-  talk William Pestle##253
-  accept The Escape##114 |goto Elwynn Forest 43.32,65.7
+  talk Hagar Lowe##248266
+  accept Good Steel##91732 |goto Elwynn Forest 82.47,63.83
 step
-  talk Maybell Maclure##251
-  turnin The Escape##114 |goto Elwynn Forest 43.15,89.62
+  talk Ormin Pelford##248265
+  accept Downstream##91733 |goto Elwynn Forest 76.54,71.92
+step
+  note Kill 8 Prowlers and 5 Young Forest Bears, and then return to Guard Thomas at the east Elwynn bridge.
+  kill Prowler##118 |q 52 |goto Elwynn Forest 83.83,71.99
+step
+  talk Guard Thomas##261
+  turnin Protect the Frontier##52 |goto Elwynn Forest 73.97,72.18
+step
+  kill Croaky##248278 |goto Elwynn Forest 76.57,86.06 |tip Loot the quest item here — it starts the quest.
+  accept Croaky's Head##91740 |goto Elwynn Forest 76.57,86.06
+step
+  note Collect the Waterlogged Axe, Waterlogged Saw, and Waterlogged Toolbox that have washed downstream from Eastvale Logging Camp, then return to Ormin Pelford.
+  collect Waterlogged Axe##247817 |q 91733 |goto Elwynn Forest 76.7,82.5
+step
+  talk Merell Ross##248277
+  turnin Croaky's Head##91740 |goto Elwynn Forest 84.75,79.3
 step
   kill Riverpaw Runt##97 |goto Elwynn Forest 67.83,46.44 |tip Loot the quest item here — it starts the quest.
   accept The Collector##123 |goto Elwynn Forest 67.83,46.44
@@ -467,11 +503,23 @@ step
   kill Elmpaw##248299 |goto Elwynn Forest 74.66,40.77 |tip Loot the quest item here — it starts the quest.
   accept Elmpaw's Head##91746 |goto Elwynn Forest 74.66,40.77
 step
+  note Collect 5 Stolen Enchanting Supplies from gnoll camps around Stone Cairn Lake, then return to Blixie Fitzwink near the Tower of Azora.
+  collect 5 Stolen Enchanting Supplies##247805 |q 91725 |goto Elwynn Forest 68,41.6
+step
+  note Collect 4 Mining Tools from Jasperlode Mine, then return to Hagar Lowe in Eastvale Logging Camp.
+  collect 4 Mining Tools##247816 |q 91732 |goto Elwynn Forest 61.5,51.5
+step
+  talk William Pestle##253
+  turnin Collecting Kelp##112 |goto Elwynn Forest 43.32,65.7
+step
   talk Marshal Dughan##240
   turnin The Collector##123 |goto Elwynn Forest 42.11,65.93
 step
   talk Helene Peltskinner##6306
   turnin Elmpaw's Head##91746 |goto Elwynn Forest 46.24,62.24
+step
+  talk William Pestle##253
+  accept The Escape##114 |goto Elwynn Forest 43.32,65.7
 step
   talk Remy "Two Times"##241
   accept A Fishy Peril##40 |goto Elwynn Forest 42.14,67.26
@@ -481,9 +529,6 @@ step
 step
   talk Marshal Dughan##240
   accept Manhunt##147 |goto Elwynn Forest 42.11,65.93
-step
-  kill Defias Bandit##116 |goto Elwynn Forest 47.48,74.13 |tip Loot the quest item here — it starts the quest.
-  accept Furlbrow's Deed##184 |goto Elwynn Forest 47.48,74.13
 step
   talk Marshal Dughan##240
   turnin A Fishy Peril##40 |goto Elwynn Forest 42.11,65.93
@@ -496,9 +541,6 @@ step
 step
   talk Marshal Dughan##240
   accept Westbrook Garrison Needs Help!##239 |goto Elwynn Forest 42.11,65.93
-step
-  talk Marshal Dughan##240
-  accept Report to Gryan Stoutmantle##109 |goto Elwynn Forest 42.11,65.93
 step
   talk Deputy Rainer##963
   turnin Westbrook Garrison Needs Help!##239 |goto Elwynn Forest 24.23,74.45
@@ -521,68 +563,29 @@ step
   kill Hogger##448 |goto Elwynn Forest 25.02,92.9 |elite
   collect Huge Gnoll Claw##1931 |q 176 |goto Elwynn Forest 25.02,92.9
 step
-  talk Hamish Bergwort##248242
-  accept Delicate Instruments##91723 |goto Elwynn Forest 65.1,69.84
+  talk Maybell Maclure##251
+  turnin The Escape##114 |goto Elwynn Forest 43.15,89.62
 step
   talk Blixie Fitzwink##248248
-  accept Stolen Enchanting Supplies##91725 |goto Elwynn Forest 63.2,72.6
-step
-  note Kill 8 Kobold Geomancers in Jasperlode Mine, then return to Hamish Bergwort in the Tower of Azora.
-  kill Kobold Geomancer##476 |q 91723 |goto Elwynn Forest 64.49,56.55
-step
-  talk Hamish Bergwort##248242
-  turnin Delicate Instruments##91723 |goto Elwynn Forest 65.1,69.84
-step
-  talk Hamish Bergwort##248242
-  accept Delicate Instruments##91724 |goto Elwynn Forest 65.1,69.84
-step
-  note Kill 6 Defias Rogue Wizards at Stone Cairn Lake, then return to Hamish Bergwort in the Tower of Azora.
-  kill Defias Rogue Wizard##474 |q 91724 |goto Elwynn Forest 73.38,52.48
-step
-  talk Hamish Bergwort##248242
-  turnin Delicate Instruments##91724 |goto Elwynn Forest 65.1,69.84
+  turnin Stolen Enchanting Supplies##91725 |goto Elwynn Forest 63.2,72.6
 step
   talk Guard Thomas##261
   turnin Further Concerns##35 |goto Elwynn Forest 73.97,72.18
 step
-  talk Guard Thomas##261
-  accept Find the Lost Guards##37 |goto Elwynn Forest 73.97,72.18
-step
-  talk Guard Thomas##261
-  accept Protect the Frontier##52 |goto Elwynn Forest 73.97,72.18
-step
   talk Hagar Lowe##248266
-  accept Good Steel##91732 |goto Elwynn Forest 82.47,63.83
+  turnin Good Steel##91732 |goto Elwynn Forest 82.47,63.83
 step
   talk Ormin Pelford##248265
-  accept Downstream##91733 |goto Elwynn Forest 76.54,71.92
+  turnin Downstream##91733 |goto Elwynn Forest 76.54,71.92
 step
-  note Kill 8 Prowlers and 5 Young Forest Bears, and then return to Guard Thomas at the east Elwynn bridge.
-  kill Prowler##118 |q 52 |goto Elwynn Forest 83.83,71.99
+  talk Guard Thomas##261
+  accept Find the Lost Guards##37 |goto Elwynn Forest 73.97,72.18
 step
   note Find and kill "the Collector" then return to Marshal Dughan with The Collector's Ring.
   collect The Collector's Ring##2239 |q 147 |goto Elwynn Forest 71.09,80.65 |tip {dropsfrom}Morgan the Collector
 step
-  talk Guard Thomas##261
-  turnin Protect the Frontier##52 |goto Elwynn Forest 73.97,72.18
-step
-  kill Croaky##248278 |goto Elwynn Forest 76.57,86.06 |tip Loot the quest item here — it starts the quest.
-  accept Croaky's Head##91740 |goto Elwynn Forest 76.57,86.06
-step
-  note Collect the Waterlogged Axe, Waterlogged Saw, and Waterlogged Toolbox that have washed downstream from Eastvale Logging Camp, then return to Ormin Pelford.
-  collect Waterlogged Axe##247817 |q 91733 |goto Elwynn Forest 76.7,82.5
-step
-  talk Merell Ross##248277
-  turnin Croaky's Head##91740 |goto Elwynn Forest 84.75,79.3
-step
   note Bring 8 Painted Gnoll Armbands to Deputy Rainer at the Barracks.
   collect 8 Painted Gnoll Armband##782 |q 11 |goto Elwynn Forest 67.83,46.44 |tip {dropsfrom}Riverpaw Runt, Riverpaw Outrunner
-step
-  note Collect 5 Stolen Enchanting Supplies from gnoll camps around Stone Cairn Lake, then return to Blixie Fitzwink near the Tower of Azora.
-  collect 5 Stolen Enchanting Supplies##247805 |q 91725 |goto Elwynn Forest 68,41.6
-step
-  note Collect 4 Mining Tools from Jasperlode Mine, then return to Hagar Lowe in Eastvale Logging Camp.
-  collect 4 Mining Tools##247816 |q 91732 |goto Elwynn Forest 61.5,51.5
 step
   talk Marshal Dughan##240
   turnin Manhunt##147 |goto Elwynn Forest 42.11,65.93
@@ -590,24 +593,18 @@ step
   talk Marshal Dughan##240
   turnin Wanted:  "Hogger"##176 |goto Elwynn Forest 42.11,65.93
 step
+  kill Defias Bandit##116 |goto Elwynn Forest 47.48,74.13 |tip Loot the quest item here — it starts the quest.
+  accept Furlbrow's Deed##184 |goto Elwynn Forest 47.48,74.13
+step
   talk Deputy Rainer##963
   turnin Riverpaw Gnoll Bounty##11 |goto Elwynn Forest 24.23,74.45
 step
   turnin Find the Lost Guards##37 |goto Elwynn Forest 72.66,60.34
 step
-  talk Blixie Fitzwink##248248
-  turnin Stolen Enchanting Supplies##91725 |goto Elwynn Forest 63.2,72.6
-step
   click A half-eaten body##55
   accept Discover Rolf's Fate##45 |goto Elwynn Forest 72.66,60.34
 step
   turnin Discover Rolf's Fate##45 |goto Elwynn Forest 79.8,55.5
-step
-  talk Hagar Lowe##248266
-  turnin Good Steel##91732 |goto Elwynn Forest 82.47,63.83
-step
-  talk Ormin Pelford##248265
-  turnin Downstream##91733 |goto Elwynn Forest 76.54,71.92
 step
   click Rolf's corpse##56
   accept Report to Thomas##71 |goto Elwynn Forest 79.8,55.5
@@ -623,6 +620,21 @@ step
 step
   talk Marshal Dughan##240
   accept Cloth and Leather Armor##59 |goto Elwynn Forest 42.11,65.93
+step
+  talk Marshal Dughan##240
+  accept Report to Gryan Stoutmantle##109 |goto Elwynn Forest 42.11,65.93
+step
+  talk Sara Timberlain##278
+  turnin Cloth and Leather Armor##59 |goto Elwynn Forest 79.46,68.79
+step
+  talk Guard Thomas##261
+  accept Bounty on Murlocs##46 |goto Elwynn Forest 73.97,72.18
+step
+  note Bring 8 Torn Murloc Fins to Guard Thomas at the east Elwynn bridge.
+  collect 8 Torn Murloc Fin##780 |q 46 |goto Elwynn Forest 78.45,56.16 |tip {dropsfrom}Murloc Forager, Murloc Lurker, Croaky
+step
+  talk Guard Thomas##261
+  turnin Bounty on Murlocs##46 |goto Elwynn Forest 73.97,72.18
 step
   only Warrior not completed(1639) not completed(1678) not completed(1683) not haveq(1639) not haveq(1678) not haveq(1683)
   talk Lyria Du Lac##913
@@ -659,18 +671,6 @@ step
   only Hunter
   note Use the Taming Rod to tame a Rockhide Boar. Practice your skills, then return the Taming Rod to Josephine Carson.
   use Rockhide Boar##524 |q 94792 |goto Elwynn Forest 57.17,76.38 |tip {useit}
-step
-  talk Sara Timberlain##278
-  turnin Cloth and Leather Armor##59 |goto Elwynn Forest 79.46,68.79
-step
-  talk Guard Thomas##261
-  accept Bounty on Murlocs##46 |goto Elwynn Forest 73.97,72.18
-step
-  note Bring 8 Torn Murloc Fins to Guard Thomas at the east Elwynn bridge.
-  collect 8 Torn Murloc Fin##780 |q 46 |goto Elwynn Forest 78.45,56.16 |tip {dropsfrom}Murloc Forager, Murloc Lurker, Croaky
-step
-  talk Guard Thomas##261
-  turnin Bounty on Murlocs##46 |goto Elwynn Forest 73.97,72.18
 step
   only Hunter
   talk Josephine Carson##251507

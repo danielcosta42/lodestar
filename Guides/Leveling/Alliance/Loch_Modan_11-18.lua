@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (11-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Redridge Mountains (15-24)",
-	rev = "75f29125",
+	rev = "b6344171",
 }, [[
 step
   note {fp}Thorgrum Borrelson
@@ -58,6 +58,18 @@ step
   talk Mountaineer Kadrell##1340
   turnin Rat Catching##416 |goto Loch Modan 32.63,49.74
 step
+  talk Mountaineer Kadrell##1340
+  accept Mountaineer Stormpike's Task##1339 |goto Loch Modan 32.63,49.74
+step
+  talk Mountaineer Stormpike##1343
+  turnin Mountaineer Stormpike's Task##1339 |goto Loch Modan 24.76,18.4
+step
+  talk Mountaineer Stormpike##1343
+  accept Stormpike's Order##1338 |goto Loch Modan 24.76,18.4
+step
+  talk Mountaineer Stormpike##1343
+  accept Filthy Paws##307 |goto Loch Modan 24.76,18.4
+step
   only Shaman completed(94465)
   talk Braldir Ashmantle##257808
   turnin Call of Fire##94466 |goto Loch Modan 32.17,65.97
@@ -89,18 +101,6 @@ step
   talk Captain Rugelfuss##1092
   turnin The Trogg Threat##267 |goto Loch Modan 23.23,73.68
 step
-  talk Mountaineer Kadrell##1340
-  accept Mountaineer Stormpike's Task##1339 |goto Loch Modan 32.63,49.74
-step
-  talk Mountaineer Stormpike##1343
-  turnin Mountaineer Stormpike's Task##1339 |goto Loch Modan 24.76,18.4
-step
-  talk Mountaineer Stormpike##1343
-  accept Stormpike's Order##1338 |goto Loch Modan 24.76,18.4
-step
-  talk Mountaineer Stormpike##1343
-  accept Filthy Paws##307 |goto Loch Modan 24.76,18.4
-step
   talk Mountaineer Gravelgaw##1091
   accept In Defense of the King's Lands##237 |goto Loch Modan 23.54,76.4
 step
@@ -112,21 +112,6 @@ step
 step
   talk Marek Ironheart##1154
   accept Crocolisk Hunting##385 |goto Loch Modan 81.76,61.66
-step
-  talk Daryl the Youngling##1187
-  accept A Hunter's Boast##257 |goto Loch Modan 83.47,65.46
-step
-  talk Marek Ironheart##1154
-  accept Twisting the Knife##86758 |goto Loch Modan 81.76,61.66
-step
-  note Kill 6 Mountain Buzzards and return to Daryl the Youngling in the Farstrider Lodge within 15 minutes.
-  kill Mountain Buzzard##1194 |q 257 |goto Loch Modan 75.79,70.46
-step
-  talk Daryl the Youngling##1187
-  turnin A Hunter's Boast##257 |goto Loch Modan 83.47,65.46
-step
-  note Find and defeat the crocolisk Daggerfang and bring back Marek's knife.
-  collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 62.78,46.8 |tip {dropsfrom}Daggerfang
 step
   talk Jern Hornhelm##1105
   turnin Excavation Progress Report##298 |goto Loch Modan 37.24,47.38
@@ -149,11 +134,26 @@ step
   note Mountaineer Wallbang in the southern guard tower wants you to kill 10 Stonesplinter Shaman and 10 Stonesplinter Bonesnappers.
   kill Stonesplinter Shaman##1197 |q 263 |goto Loch Modan 37.52,90.07
 step
+  talk Daryl the Youngling##1187
+  accept A Hunter's Boast##257 |goto Loch Modan 83.47,65.46
+step
   talk Marek Ironheart##1154
-  turnin Twisting the Knife##86758 |goto Loch Modan 81.76,61.66
+  accept Twisting the Knife##86758 |goto Loch Modan 81.76,61.66
+step
+  note Kill 6 Mountain Buzzards and return to Daryl the Youngling in the Farstrider Lodge within 15 minutes.
+  kill Mountain Buzzard##1194 |q 257 |goto Loch Modan 75.79,70.46
+step
+  talk Daryl the Youngling##1187
+  turnin A Hunter's Boast##257 |goto Loch Modan 83.47,65.46
+step
+  note Find and defeat the crocolisk Daggerfang and bring back Marek's knife.
+  collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 62.78,46.8 |tip {dropsfrom}Daggerfang
 step
   talk Mountaineer Wallbang##1090
   turnin In Defense of the King's Lands##263 |goto Loch Modan 23.47,74.51
+step
+  talk Marek Ironheart##1154
+  turnin Twisting the Knife##86758 |goto Loch Modan 81.76,61.66
 step
   talk Captain Rugelfuss##1092
   accept In Defense of the King's Lands##217 |goto Loch Modan 23.23,73.68
@@ -171,7 +171,7 @@ step
   accept A Hunter's Challenge##258 |goto Loch Modan 83.47,65.46
 step
   note Kill 5 Elder Mountain Boars and return to Daryl the Youngling in the Farstrider Lodge within 12 minutes.
-  talk Elder Mountain Boar##1192 |q 258 |goto Loch Modan 64.94,38.83
+  kill Elder Mountain Boar##1192 |q 258 |goto Loch Modan 64.94,38.83
 step
   talk Captain Rugelfuss##1092
   turnin In Defense of the King's Lands##217 |goto Loch Modan 23.23,73.68
@@ -194,20 +194,6 @@ step
   talk Jern Hornhelm##1105
   accept Ironband's Excavation##436 |goto Loch Modan 37.24,47.38
 step
-  talk Chief Engineer Hinderweir VII##1093
-  accept A Dark Threat Looms##250 |goto Loch Modan 46.05,13.61
-step
-  turnin A Dark Threat Looms##250 |goto Loch Modan 56.05,13.24
-step
-  click Suspicious Barrel##257
-  accept A Dark Threat Looms##199 |goto Loch Modan 56.05,13.24
-step
-  talk Chief Engineer Hinderweir VII##1093
-  turnin A Dark Threat Looms##199 |goto Loch Modan 46.05,13.61
-step
-  talk Chief Engineer Hinderweir VII##1093
-  accept A Dark Threat Looms##161 |goto Loch Modan 46.05,13.61
-step
   talk Magmar Fellhew##1345
   turnin Ironband's Excavation##436 |goto Loch Modan 64.9,66.66
 step
@@ -222,6 +208,20 @@ step
 step
   talk Magistrate Bluntnose##1139
   accept Mercenaries##255 |goto Loch Modan 34.6,44.47
+step
+  talk Chief Engineer Hinderweir VII##1093
+  accept A Dark Threat Looms##250 |goto Loch Modan 46.05,13.61
+step
+  turnin A Dark Threat Looms##250 |goto Loch Modan 56.05,13.24
+step
+  click Suspicious Barrel##257
+  accept A Dark Threat Looms##199 |goto Loch Modan 56.05,13.24
+step
+  talk Chief Engineer Hinderweir VII##1093
+  turnin A Dark Threat Looms##199 |goto Loch Modan 46.05,13.61
+step
+  talk Chief Engineer Hinderweir VII##1093
+  accept A Dark Threat Looms##161 |goto Loch Modan 46.05,13.61
 step
   note Magistrate Bluntnose of Thelsamar has hired you to kill 4 Mo'grosh Ogres, 4 Mo'grosh Brutes and 4 Mo'grosh Enforcers.
   kill Mo'grosh Ogre##1178 |q 255 |goto Loch Modan 69.67,25.54 |elite
@@ -250,15 +250,6 @@ step
 step
   talk Vyrin Swiftwind##1156
   turnin Vyrin's Revenge##531 |goto Loch Modan 81.73,64.14
-step
-  talk Mountaineer Kadrell##1340
-  accept Report to Mountaineer Rockgar##468 |goto Loch Modan 32.63,49.74
-step
-  talk Mountaineer Rockgar##1342
-  turnin Report to Mountaineer Rockgar##468 |goto Loch Modan 25.44,10.38
-step
-  talk Mountaineer Rockgar##1342
-  accept The Algaz Gauntlet##455 |goto Loch Modan 25.44,10.38
 step
   talk Grimand Elmore##1416
   accept Stormpike's Delivery##353 |goto Stormwind City 59.73,33.78
@@ -294,6 +285,9 @@ step
 step
   note Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park.
   collect Field Accounts of Horde Razings##277196 |q 97237 |goto Stormwind City 75.05,30.12
+step
+  talk Mountaineer Kadrell##1340
+  accept Report to Mountaineer Rockgar##468 |goto Loch Modan 32.63,49.74
 step
   note Bring 3 pieces of Bear Meat, 3 Boar Intestines, and 3 Spider Ichor to Vidra Hearthstove in Thelsamar.
   collect 3 Boar Intestines##3172 |q 418 |goto Westfall 44.71,56.93 |tip {dropsfrom}Goretusk, Bellygrub, Young Goretusk
@@ -332,6 +326,9 @@ step
   talk Roy Lewells##268568
   turnin Shelf Picked##97237 |goto Stormwind City 38.71,62.29 |tip {turninat}Stormwind City
 step
+  talk Mountaineer Rockgar##1342
+  turnin Report to Mountaineer Rockgar##468 |goto Loch Modan 25.44,10.38
+step
   only not Human not NightElf not Skyborne
   talk Golnir Bouldertoe##4256
   turnin Ride to Ironforge##6391 |goto Ironforge 51.52,26.31 |tip {turninat}Ironforge
@@ -348,6 +345,9 @@ step
   only not Dwarf not NightElf not Skyborne Mage
   talk Jennea Cannon##5497
   accept Gathering Materials##1921 |goto Stormwind City 49.56,85.8
+step
+  talk Mountaineer Rockgar##1342
+  accept The Algaz Gauntlet##455 |goto Loch Modan 25.44,10.38
 step
   note Find and return Bingles' supplies:
   collect Bingles' Wrench##7343 |q 2038 |goto Loch Modan 48.73,30.09 |tip {dropsfrom}Bingles's Toolbucket

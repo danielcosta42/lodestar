@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Barrens (14-21)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
-	rev = "a3dda383",
+	rev = "8891191a",
 }, [[
 step
   note {fp}Bragok
@@ -41,6 +41,15 @@ step
   talk Wharfmaster Dizzywig##3453
   accept The Missing Shipment##892 |goto The Barrens 63.35,38.45
 step
+  talk Mebok Mizzyrix##3446
+  accept Raptor Horns##865 |goto The Barrens 62.37,37.62
+step
+  talk Wharfmaster Dizzywig##3453
+  accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
+step
+  talk Crane Operator Bigglefuzz##3665
+  accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
+step
   talk Gazlowe##3391
   turnin The Missing Shipment##892 |goto The Barrens 62.68,36.23
 step
@@ -56,12 +65,19 @@ step
   talk Nalpak##5767
   accept Deviate Hides##1486 |goto The Barrens 45.99,35.66
 step
+  note Crane Operator Bigglefuzz in Ratchet wants you to retrieve the bottle of 99-Year-Old Port from Mad Magglish who is hiding in the Wailing Caverns.
+  kill Mad Magglish##3655 |goto The Barrens 46.83,34.66 |elite
+  collect 99-Year-Old Port##5334 |q 959 |goto The Barrens 46.83,34.66
+step
   note Nalpak in the Wailing Caverns wants 20 Deviate Hides.
   kill Deviate Coiler##3630 |goto The Barrens 46,36.4 |elite
   collect Deviate Hide##6443 |q 1486 |goto The Barrens 46,36.4
 step
   talk Nalpak##5767
   turnin Deviate Hides##1486 |goto The Barrens 45.99,35.66
+step
+  note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
+  collect 5 Intact Raptor Horn##5055 |q 865 |goto The Barrens 52.58,45.99 |tip {dropsfrom}Sunscale Scytheclaw, Ishamuhale, Takk the Leaper
 step
   turnin Samophlange##894 |goto The Barrens 52.4,11.65
 step
@@ -73,6 +89,9 @@ step
 step
   note Get the Ignition Key and bring it to Wizzlecrank.
   collect Ignition Key##5050 |q 858 |goto The Barrens 56.27,8.58 |tip {dropsfrom}Supervisor Lugwizzle
+step
+  note Retrieve the Cats Eye Emerald from one of the Venture Co. Overseers or Enforcers for Wharfmaster Dizzywig at Ratchet.
+  collect Cats Eye Emerald##5097 |q 896 |goto The Barrens 60.81,3.79 |tip {dropsfrom}Venture Co. Enforcer, Venture Co. Overseer, Boss Copperplug
 step
   note Close off the Fuel Control Valve, the Regulator Valve and the Main Control Valve then use the control console again.
   collect Main Control Valve##4072 |q 900 |goto The Barrens 52.33,11.56
@@ -99,33 +118,14 @@ step
   talk Sputtervalve##3442
   turnin The Escape##863 |goto The Barrens 62.98,37.22
 step
-  talk Sputtervalve##3442
-  turnin Samophlange##902 |goto The Barrens 62.98,37.22
-step
-  talk Mebok Mizzyrix##3446
-  accept Raptor Horns##865 |goto The Barrens 62.37,37.62
-step
-  talk Wharfmaster Dizzywig##3453
-  accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
-step
-  talk Crane Operator Bigglefuzz##3665
-  accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
-step
-  note Crane Operator Bigglefuzz in Ratchet wants you to retrieve the bottle of 99-Year-Old Port from Mad Magglish who is hiding in the Wailing Caverns.
-  kill Mad Magglish##3655 |goto The Barrens 46.83,34.66 |elite
-  collect 99-Year-Old Port##5334 |q 959 |goto The Barrens 46.83,34.66
-step
-  note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
-  collect 5 Intact Raptor Horn##5055 |q 865 |goto The Barrens 52.58,45.99 |tip {dropsfrom}Sunscale Scytheclaw, Ishamuhale, Takk the Leaper
-step
-  note Retrieve the Cats Eye Emerald from one of the Venture Co. Overseers or Enforcers for Wharfmaster Dizzywig at Ratchet.
-  collect Cats Eye Emerald##5097 |q 896 |goto The Barrens 60.81,3.79 |tip {dropsfrom}Venture Co. Enforcer, Venture Co. Overseer, Boss Copperplug
-step
   talk Mebok Mizzyrix##3446
   turnin Raptor Horns##865 |goto The Barrens 62.37,37.62
 step
   talk Wharfmaster Dizzywig##3453
   turnin Miner's Fortune##896 |goto The Barrens 63.35,38.45
+step
+  talk Sputtervalve##3442
+  turnin Samophlange##902 |goto The Barrens 62.98,37.22
 step
   talk Crane Operator Bigglefuzz##3665
   turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61

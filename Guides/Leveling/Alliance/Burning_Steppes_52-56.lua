@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Burning Steppes (52-56)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Western Plaguelands (53-58)",
-	rev = "4190ef5c",
+	rev = "877d5d83",
 }, [[
 step
   talk Royal Historian Archesonus##8879
@@ -54,8 +54,14 @@ step
   talk Helendis Riverhorn##9562
   accept Dragonkin Menace##4182 |goto Burning Steppes 85.82,68.95
 step
+  talk Oralius##9177
+  accept FIFTY! YEP!##4283 |goto Burning Steppes 84.56,68.68
+step
   note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
   collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 63.78,57.27
+step
+  note Oralius wants 50 Blackrock Medallions. Chances are high that these medallions can be found on the orcs in the Burning Steppes.
+  collect Blackrock Medallion##11467 |q 4283 |goto Burning Steppes 45.02,56.8 |tip {dropsfrom}Blackrock Soldier, Blackrock Sorcerer, Blackrock Slayer
 step
   talk Tinkee Steamboil##10267
   turnin Broodling Essence##4726 |goto Burning Steppes 65.24,24
@@ -73,25 +79,19 @@ step
   turnin Dragonkin Menace##4182 |goto Burning Steppes 85.82,68.95
 step
   talk Oralius##9177
+  turnin FIFTY! YEP!##4283 |goto Burning Steppes 84.56,68.68
+step
+  talk Oralius##9177
   accept Gor'tesh the Brute Lord##3824 |goto Burning Steppes 84.56,68.68
 step
   talk Helendis Riverhorn##9562
   accept The True Masters##4183 |goto Burning Steppes 85.82,68.95
 step
-  talk Oralius##9177
-  accept FIFTY! YEP!##4283 |goto Burning Steppes 84.56,68.68
-step
   note Find Gor'tesh, somewhere to the west of Dreadmaul Rock. Kill Gor'tesh and then take Gor'tesh's Lopped Off Head back to Oralius in Burning Steppes.
   collect Gor'tesh's Lopped Off Head##11080 |q 3824 |goto Burning Steppes 39.33,55.3 |tip {dropsfrom}Gor'tesh, Grubbub
 step
-  note Oralius wants 50 Blackrock Medallions. Chances are high that these medallions can be found on the orcs in the Burning Steppes.
-  collect Blackrock Medallion##11467 |q 4283 |goto Burning Steppes 45.02,56.8 |tip {dropsfrom}Blackrock Soldier, Blackrock Sorcerer, Blackrock Slayer
-step
   talk Oralius##9177
   turnin Gor'tesh the Brute Lord##3824 |goto Burning Steppes 84.56,68.68
-step
-  talk Oralius##9177
-  turnin FIFTY! YEP!##4283 |goto Burning Steppes 84.56,68.68
 step
   talk Oralius##9177
   accept Ogre Head On A Stick = Party##3825 |goto Burning Steppes 84.56,68.68

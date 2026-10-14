@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tanaris (44-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Un'Goro Crater (51-55)",
-	rev = "06ece8d1",
+	rev = "5d702b6b",
 }, [[
 step
   note {fp}Bulkrek Ragefist
@@ -157,6 +157,9 @@ step
   talk Andi Lynn##11758
   accept The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
 step
+  talk Tran'rek##7876
+  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
+step
   talk Alchemist Pestlezugg##5594
   turnin Insect Part Analysis##110 |goto Tanaris 50.89,26.96
 step
@@ -172,11 +175,20 @@ step
   note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
   kill Dunemaul Brute##5474 |q 5863 |goto Tanaris 40.65,54.35
 step
+  talk Tooga##5955
+  accept Tooga's Quest##1560 |goto Tanaris 30,70
+step
   note Collect a Laden Dew Gland and bring it to Marin Noggenfogger in Gadgetzan.
   collect Laden Dew Gland##8428 |q 2605 |goto Tanaris 29.36,66.28 |tip {dropsfrom}Thistleshrub Dew Collector
 step
+  note Tran'rek in Gadgetzan wants you to kill 8 Gnarled Thistleshrubs and 8 Thistleshrub Rootshapers.
+  kill Gnarled Thistleshrub##5490 |q 3362 |goto Tanaris 29.65,66.4
+step
   talk Marin Noggenfogger##7564
   turnin The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
+step
+  talk Tran'rek##7876
+  turnin Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
 step
   talk Andi Lynn##11758
   turnin The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
@@ -184,20 +196,8 @@ step
   talk Marin Noggenfogger##7564
   accept In Good Taste##2606 |goto Tanaris 51.81,28.66
 step
-  talk Tran'rek##7876
-  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
-step
   talk Sprinkle##7583
   turnin In Good Taste##2606 |goto Tanaris 51.06,26.87
-step
-  talk Tooga##5955
-  accept Tooga's Quest##1560 |goto Tanaris 30,70
-step
-  note Tran'rek in Gadgetzan wants you to kill 8 Gnarled Thistleshrubs and 8 Thistleshrub Rootshapers.
-  kill Gnarled Thistleshrub##5490 |q 3362 |goto Tanaris 29.65,66.4
-step
-  talk Tran'rek##7876
-  turnin Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
 step
   note Show Tooga the way back to his wife, Torta.
   talk Torta##6015 |q 1560 |goto Tanaris 66.58,25.67

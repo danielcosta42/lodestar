@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Hinterlands (47-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Searing Gorge (48-50)",
-	rev = "713bd1f5",
+	rev = "0588ac62",
 }, [[
 step
   talk Oran Snakewrithe##7825
@@ -83,7 +83,7 @@ step
   accept Ripple Delivery##81 |goto The Hinterlands 26.71,48.59
 step
   note Otho Moji'ko at Revantusk Village in the Hinterlands wants you to slaughter 15 Highvale Outrunners, 15 Highvale Scouts, 15 Highvale Marksman and 15 Highvale Rangers. Return to him when this task is complete.
-  talk Highvale Scout##2692 |q 7841 |goto The Hinterlands 31.92,49.51
+  kill Highvale Scout##2692 |q 7841 |goto The Hinterlands 31.92,49.51
 step
   talk Homing Robot OOX-09/HL##7806
   turnin Find OOX-09/HL!##485 |goto The Hinterlands 49.35,37.66
@@ -142,12 +142,6 @@ step
   talk Primal Torntusk##14736
   accept Dark Vessels##7850 |goto The Hinterlands 78.2,81.18
 step
-  note Katoom the Angler at Revantusk Village in the Hinterlands wants you to kill 15 Saltwater Snapjaw turtles. Return to him when you have completed this task.
-  talk Saltwater Snapjaw##2505 |q 7815 |goto The Hinterlands 81.48,60.46
-step
-  talk Katoom the Angler##14740
-  turnin Snapjaws, Mon!##7815 |goto The Hinterlands 80.33,81.54
-step
   talk Primal Torntusk##14736
   accept Kidnapped Elder Torntusk!##7845 |goto The Hinterlands 78.2,81.18
 step
@@ -156,6 +150,12 @@ step
 step
   click Call to Arms!##179913
   accept Job Opening: Guard Captain of Revantusk Village##7862 |goto The Hinterlands 79.08,78.99
+step
+  note Katoom the Angler at Revantusk Village in the Hinterlands wants you to kill 15 Saltwater Snapjaw turtles. Return to him when you have completed this task.
+  kill Saltwater Snapjaw##2505 |q 7815 |goto The Hinterlands 81.48,60.46
+step
+  talk Katoom the Angler##14740
+  turnin Snapjaws, Mon!##7815 |goto The Hinterlands 80.33,81.54
 step
   talk Elder Torntusk##14757
   turnin Kidnapped Elder Torntusk!##7845 |goto The Hinterlands 59.69,77.84

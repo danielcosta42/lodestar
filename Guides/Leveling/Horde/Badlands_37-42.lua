@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Badlands (37-42)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Swamp of Sorrows (35-44)",
-	rev = "47d5c49e",
+	rev = "f64cc781",
 }, [[
 step
   talk Rigglefuzz##2817
@@ -61,6 +61,15 @@ step
   talk Jarkal Mossmeld##6868
   accept Badlands Reagent Run##2258 |goto Badlands 2.42,46.06
 step
+  talk Neeka Bloodscar##5394
+  accept Coyote Thieves##1419 |goto Badlands 6.49,47.2
+step
+  talk Neeka Bloodscar##5394
+  accept Report to Helgrum##1420 |goto Badlands 6.49,47.2
+step
+  talk Theldurin the Lost##2785
+  accept Solution to Doom##709 |goto Badlands 51.39,76.87
+step
   note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
   collect 3 Large Stone Slab##4627 |q 711 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental
 step
@@ -78,32 +87,23 @@ step
   talk Rigglefuzz##2817
   accept Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
 step
+  note Bring 30 Coyote Jawbones to Neeka Bloodscar in Kargath.
+  collect 30 Coyote Jawbone##6166 |q 1419 |goto Badlands 49.87,41.92 |tip {dropsfrom}Crag Coyote, Feral Crag Coyote, Elder Crag Coyote
+step
   note Bring 5 Buzzard Gizzards, 10 Crag Coyote Fangs, and 5 Rock Elemental Shards to Jarkal Mossmeld in Kargath, Badlands.
   collect 5 Buzzard Gizzard##7847 |q 2258 |goto Badlands 57.46,28.59 |tip {dropsfrom}Starving Buzzard, Buzzard, Giant Buzzard
 step
   talk Lotwil Veriatus##2921
   turnin Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
-  talk Jarkal Mossmeld##6868
-  turnin Badlands Reagent Run##2258 |goto Badlands 2.42,46.06
-step
-  talk Neeka Bloodscar##5394
-  accept Coyote Thieves##1419 |goto Badlands 6.49,47.2
-step
-  talk Neeka Bloodscar##5394
-  accept Report to Helgrum##1420 |goto Badlands 6.49,47.2
-step
-  talk Theldurin the Lost##2785
-  accept Solution to Doom##709 |goto Badlands 51.39,76.87
-step
-  note Bring 30 Coyote Jawbones to Neeka Bloodscar in Kargath.
-  collect 30 Coyote Jawbone##6166 |q 1419 |goto Badlands 49.87,41.92 |tip {dropsfrom}Crag Coyote, Feral Crag Coyote, Elder Crag Coyote
-step
   note Bring the Tablet of Ryun'eh to Theldurin the Lost.
   collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
 step
   talk Neeka Bloodscar##5394
   turnin Coyote Thieves##1419 |goto Badlands 6.49,47.2
+step
+  talk Jarkal Mossmeld##6868
+  turnin Badlands Reagent Run##2258 |goto Badlands 2.42,46.06
 step
   talk Theldurin the Lost##2785
   turnin Solution to Doom##709 |goto Badlands 51.39,76.87

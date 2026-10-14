@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (29-32)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (30-33)",
-	rev = "e8be1352",
+	rev = "a50e790c",
 }, [[
 step
   only completed(391)
@@ -127,7 +127,7 @@ step
 step
   only completed(1245)
   note Defeat Dashel Stonefist in Stormwind.
-  talk Dashel Stonefist##4961 |q 1447 |goto Stormwind City 74.26,59.17
+  kill Dashel Stonefist##4961 |q 1447 |goto Stormwind City 74.26,59.17
 step
   only completed(391)
   talk Master Mathias Shaw##332
@@ -182,7 +182,7 @@ step
 step
   only completed(391)
   note Remain in the garden until Lord Gregor Lescovar and Marzon the Silent Blade have had their conversation. Afterwards, kill them both before returning to Elling Trias in Stormwind.
-  talk Lord Gregor Lescovar##1754 |q 434 |goto Stormwind City 72.36,35.12
+  kill Lord Gregor Lescovar##1754 |q 434 |goto Stormwind City 72.36,35.12
 step
   only completed(391)
   talk Elling Trias##482

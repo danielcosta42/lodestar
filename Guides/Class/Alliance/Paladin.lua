@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Paladin", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "3ee39b4a",
+	rev = "28914200",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -58,23 +58,6 @@ step
   note Speak to Tiza Battleforge in Ironforge.
   talk Tiza Battleforge##6179
   turnin Tome of Divinity##2997 |goto Ironforge 27.63,12.18
-step
-  only Human Paladin not completed(3681) not haveq(3681)
-  talk Brother Wilhelm##927
-  accept Tome of Divinity##2998 |goto Elwynn Forest 41.1,66.04
-step
-  only Human Paladin not completed(3681) not haveq(3681)
-  note Speak to Duthorian Rall in Stormwind.
-  talk Duthorian Rall##6171
-  turnin Tome of Divinity##2998 |goto Stormwind City 50.48,47.49
-step
-  only Dwarf Paladin
-  talk Tiza Battleforge##6179
-  accept The Tome of Divinity##1645 |goto Ironforge 27.63,12.18
-step
-  only Dwarf Paladin
-  talk Tiza Battleforge##6179
-  turnin The Tome of Divinity##1645 |goto Ironforge 27.63,12.18
 step
   only Dwarf Paladin
   use Tome of Divinity##6916 |tip The previous quest gave you this item — it starts the quest.
@@ -136,42 +119,14 @@ step
   talk Narm Faulk##6177
   turnin The Tome of Divinity##1783 |goto Dun Morogh 78.32,58.09
 step
-  only Dwarf Paladin not completed(1784) not haveq(1784)
-  talk Tiza Battleforge##6179
-  accept The Symbol of Life##1789 |goto Ironforge 27.63,12.18
+  only Human Paladin not completed(3681) not haveq(3681)
+  talk Brother Wilhelm##927
+  accept Tome of Divinity##2998 |goto Elwynn Forest 41.1,66.04
 step
-  only Dwarf Paladin not completed(1784) not haveq(1784)
-  talk Tiza Battleforge##6179
-  turnin The Symbol of Life##1789 |goto Ironforge 27.63,12.18
-step
-  only Dwarf Paladin
-  talk Narm Faulk##6177
-  accept The Tome of Divinity##1784 |goto Dun Morogh 78.32,58.09
-step
-  only Dwarf Paladin
-  note Retrieve a Dark Iron Script from the Dark Iron dwarves near Helm's Bed, and return to Muiredon Battleforge in Ironforge.
-  collect Dark Iron Script##6847 |q 1784 |goto Dun Morogh 77.36,61.31 |tip {dropsfrom}Dark Iron Spy
-step
-  only Dwarf Paladin
-  talk Muiredon Battleforge##6178
-  turnin The Tome of Divinity##1784 |goto Ironforge 23.54,8.3
-step
-  only Dwarf Paladin
-  talk Muiredon Battleforge##6178
-  accept The Tome of Divinity##1785 |goto Ironforge 23.54,8.3
-step
-  only Dwarf Paladin
-  note Speak to Tiza Battleforge in Ironforge.
-  talk Tiza Battleforge##6179
-  turnin The Tome of Divinity##1785 |goto Ironforge 27.63,12.18
-step
-  only Human Paladin
+  only Human Paladin not completed(3681) not haveq(3681)
+  note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
-  accept The Tome of Divinity##1641 |goto Stormwind City 50.48,47.49
-step
-  only Human Paladin
-  talk Duthorian Rall##6171
-  turnin The Tome of Divinity##1641 |goto Stormwind City 50.48,47.49
+  turnin Tome of Divinity##2998 |goto Stormwind City 50.48,47.49
 step
   only Human Paladin
   use Tome of Divinity##6775 |tip The previous quest gave you this item — it starts the quest.
@@ -233,6 +188,51 @@ step
   talk Henze Faulk##6172
   turnin The Tome of Divinity##1786 |goto Elwynn Forest 72.6,51.41
 step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  accept The Tome of Divinity##1645 |goto Ironforge 27.63,12.18
+step
+  only Dwarf Paladin
+  talk Tiza Battleforge##6179
+  turnin The Tome of Divinity##1645 |goto Ironforge 27.63,12.18
+step
+  only Dwarf Paladin not completed(1784) not haveq(1784)
+  talk Tiza Battleforge##6179
+  accept The Symbol of Life##1789 |goto Ironforge 27.63,12.18
+step
+  only Dwarf Paladin not completed(1784) not haveq(1784)
+  talk Tiza Battleforge##6179
+  turnin The Symbol of Life##1789 |goto Ironforge 27.63,12.18
+step
+  only Dwarf Paladin
+  talk Narm Faulk##6177
+  accept The Tome of Divinity##1784 |goto Dun Morogh 78.32,58.09
+step
+  only Dwarf Paladin
+  note Retrieve a Dark Iron Script from the Dark Iron dwarves near Helm's Bed, and return to Muiredon Battleforge in Ironforge.
+  collect Dark Iron Script##6847 |q 1784 |goto Dun Morogh 77.36,61.31 |tip {dropsfrom}Dark Iron Spy
+step
+  only Dwarf Paladin
+  talk Muiredon Battleforge##6178
+  turnin The Tome of Divinity##1784 |goto Ironforge 23.54,8.3
+step
+  only Dwarf Paladin
+  talk Muiredon Battleforge##6178
+  accept The Tome of Divinity##1785 |goto Ironforge 23.54,8.3
+step
+  only Dwarf Paladin
+  note Speak to Tiza Battleforge in Ironforge.
+  talk Tiza Battleforge##6179
+  turnin The Tome of Divinity##1785 |goto Ironforge 27.63,12.18
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  accept The Tome of Divinity##1641 |goto Stormwind City 50.48,47.49
+step
+  only Human Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Divinity##1641 |goto Stormwind City 50.48,47.49
+step
   only Human Paladin not completed(1787) not haveq(1787)
   talk Duthorian Rall##6171
   accept The Symbol of Life##1790 |goto Stormwind City 50.48,47.49
@@ -282,26 +282,6 @@ step
   only not NightElf not Gnome not Skyborne Paladin
   talk Tiza Battleforge##6179
   turnin The Tome of Valor##1794 |goto Ironforge 27.63,12.18
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Bailor Stonehand##6241
-  accept Bailor's Ore Shipment##1655 |goto Loch Modan 35.95,44.91
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Bring Jordan's Ore Shipment to Bailor Stonehand in Loch Modan.
-  collect Jordan's Ore Shipment##6992 |q 1655 |goto Loch Modan 71.6,21.61 |tip {dropsfrom}Bailor's Ore
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Bailor Stonehand##6241
-  turnin Bailor's Ore Shipment##1655 |goto Loch Modan 35.95,44.91
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Duthorian Rall##6171
-  accept The Tome of Valor##1793 |goto Stormwind City 50.48,47.49
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Duthorian Rall##6171
-  turnin The Tome of Valor##1793 |goto Stormwind City 50.48,47.49
 step
   only not NightElf not Gnome not Skyborne Paladin
   use Tome of Valor##6776 |tip The previous quest gave you this item — it starts the quest.
@@ -368,6 +348,26 @@ step
   note Wait for Jordan Stilwell to finish forging a weapon for you.
   talk Jordan Stilwell##6181
   turnin The Test of Righteousness##1806 |goto Dun Morogh 52.49,36.92
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Bailor Stonehand##6241
+  accept Bailor's Ore Shipment##1655 |goto Loch Modan 35.95,44.91
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  note Bring Jordan's Ore Shipment to Bailor Stonehand in Loch Modan.
+  collect Jordan's Ore Shipment##6992 |q 1655 |goto Loch Modan 71.6,21.61 |tip {dropsfrom}Bailor's Ore
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Bailor Stonehand##6241
+  turnin Bailor's Ore Shipment##1655 |goto Loch Modan 35.95,44.91
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Duthorian Rall##6171
+  accept The Tome of Valor##1793 |goto Stormwind City 50.48,47.49
+step
+  only not NightElf not Gnome not Skyborne Paladin
+  talk Duthorian Rall##6171
+  turnin The Tome of Valor##1793 |goto Stormwind City 50.48,47.49
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk Delgren the Purifier##3663

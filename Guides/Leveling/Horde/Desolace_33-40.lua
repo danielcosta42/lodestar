@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Desolace (33-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Dustwallow Marsh (35-43)",
-	rev = "945ae899",
+	rev = "9ffcc40e",
 }, [[
 step
   only completed(1431)
@@ -67,11 +67,20 @@ step
   talk Mai'Lahii##12031
   accept Clam Bait##6142 |goto Desolace 22.64,71.97
 step
+  talk Drulzegar Skraghook##12340
+  accept Other Fish to Fry##6143 |goto Desolace 23.32,72.87
+step
   talk Azore Aldamort##11863
   accept Sceptre of Light##5741 |goto Desolace 38.88,27.16
 step
+  click Rackmore's Log##177787
+  accept Claim Rackmore's Treasure!##6161 |goto Desolace 36.07,30.41
+step
   note Find 10 pieces of Soft-shelled Clam Meat and bring it back to Mai'Lahii at Shadowprey Village.
   collect 10 Soft-shelled Clam Meat##15924 |q 6142 |goto Desolace 34.48,29.06 |tip {dropsfrom}Enraged Reef Crawler, Giant Softshell Clam
+step
+  note Slay 7 Slitherblade Myrmidon, 7 Slitherblade Naga, and 5 Slitherblade Sorceresses, and then talk to Drulzegar at Shadowprey in Desolace.
+  kill Slitherblade Myrmidon##4714 |q 6143 |goto Desolace 32.74,14.68
 step
   kill Burning Blade Augur##4663 |goto Desolace 55.95,27.4 |tip Loot the quest item here — it starts the quest.
   accept The Corrupter##1480 |goto Desolace 55.95,27.4
@@ -129,8 +138,14 @@ step
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1481 |goto Desolace 52.25,53.44
 step
+  talk Nataka Longhorn##11259
+  accept Catch of the Day##5386 |goto Desolace 55.41,55.81
+step
   talk Uthek the Wise##5397
   turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
+step
+  talk Uthek the Wise##5397
+  accept Valley of Bones##93034 |goto Desolace 36.22,79.25
 step
   note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
   collect 3 Broken Tears##6083 |q 1369 |goto Desolace 39.65,93.3 |tip {dropsfrom}Tear of Theradras
@@ -139,22 +154,42 @@ step
   turnin Clam Bait##6142 |goto Desolace 22.64,71.97
 step
   talk Drulzegar Skraghook##12340
-  accept Other Fish to Fry##6143 |goto Desolace 23.32,72.87
+  turnin Other Fish to Fry##6143 |goto Desolace 23.32,72.87
+step
+  talk Taiga Wisemane##11624
+  accept Hand of Iruxos##5381 |goto Desolace 25.82,68.21
+step
+  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
+  collect Bloodbelly Fish##13546 |q 5386 |goto Desolace 22.45,73.12 |tip {dropsfrom}Jinar'Zillen
+step
+  note Find Rackmore's Silver Key. Find Rackmore's Golden Key. Find and open Rackmore's Chest.
+  collect Rackmore's Silver Key##15878 |q 6161 |goto Desolace 24.7,78.72 |tip {dropsfrom}Drysnap Crawler, Drysnap Pincer
 step
   talk Azore Aldamort##11863
   turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
 step
-  click Rackmore's Log##177787
-  accept Claim Rackmore's Treasure!##6161 |goto Desolace 36.07,30.41
+  turnin Claim Rackmore's Treasure!##6161 |goto Desolace 30,8.71
 step
-  note Slay 7 Slitherblade Myrmidon, 7 Slitherblade Naga, and 5 Slitherblade Sorceresses, and then talk to Drulzegar at Shadowprey in Desolace.
-  kill Slitherblade Myrmidon##4714 |q 6143 |goto Desolace 32.74,14.68
+  talk Azore Aldamort##11863
+  accept Book of the Ancients##6027 |goto Desolace 38.88,27.16
+step
+  note Get the Book of the Ancients and return it to Azore Aldamort at the tower in Ethel Rethor.
+  collect Book of the Ancients##15803 |q 6027 |goto Desolace 28.24,6.67 |tip {dropsfrom}Lord Kragaru
+step
+  talk Azore Aldamort##11863
+  turnin Book of the Ancients##6027 |goto Desolace 38.88,27.16
+step
+  talk Bibbly F'utzbuckle##11438
+  accept Bone Collector##5501 |goto Desolace 62.33,38.99
 step
   note Bring 15 Centaur Ears to Felgur Twocuts in Desolace.
   collect 15 Centaur Ear##6067 |q 1366 |goto Desolace 69.35,46.87 |tip {dropsfrom}Kolkar Centaur, Kolkar Scout, Kolkar Mauler
 step
   note Bring a Shadowstalker Scalp to Maurin Bonesplitter in Desolace.
   collect Shadowstalker Scalp##6441 |q 1481 |goto Desolace 75.33,21.26 |tip {dropsfrom}Hatefury Shadowstalker
+step
+  note Retrieve the Demon Box from Thunder Axe Fortress, and return it, along with the Demon Pick to Taiga Wisemane in Shadowprey Village.
+  collect Demon Box##13542 |q 5381 |goto Desolace 55,26.6 |tip {dropsfrom}Demon Spirit
 step
   talk Warug##5398
   turnin Broken Tears##1369 |goto Desolace 74.97,68.16
@@ -177,70 +212,26 @@ step
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1481 |goto Desolace 52.25,53.44
 step
+  talk Nataka Longhorn##11259
+  turnin Catch of the Day##5386 |goto Desolace 55.41,55.81
+step
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1482 |goto Desolace 52.25,53.44
 step
-  talk Nataka Longhorn##11259
-  accept Catch of the Day##5386 |goto Desolace 55.41,55.81
+  talk Gurda Wildmane##5412
+  accept Carved Centaur Totems##93225 |goto Desolace 56.29,59.68
+step
+  talk Hornizz Brimbuzzle##6019
+  accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
+step
+  note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
+  collect 10 Kodo Bone##13703 |q 5501 |goto Desolace 53.26,61.24 |tip {dropsfrom}Kodo Bones
 step
   talk Rigger Gizelton##11626
   accept Gizelton Caravan##5943 |goto Desolace 45.4,75.29
 step
-  talk Uthek the Wise##5397
-  accept Valley of Bones##93034 |goto Desolace 36.22,79.25
-step
   note Maintain your reputation with the Magram, and bring the Head of Khan Shaka to Warug in the Magram Village in Desolace.
   collect Khan Shaka's Head##6073 |q 1375 |goto Desolace 40.49,95.49 |tip {dropsfrom}Khan Shaka
-step
-  talk Drulzegar Skraghook##12340
-  turnin Other Fish to Fry##6143 |goto Desolace 23.32,72.87
-step
-  talk Taiga Wisemane##11624
-  accept Hand of Iruxos##5381 |goto Desolace 25.82,68.21
-step
-  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
-  collect Bloodbelly Fish##13546 |q 5386 |goto Desolace 22.45,73.12 |tip {dropsfrom}Jinar'Zillen
-step
-  note Find Rackmore's Silver Key. Find Rackmore's Golden Key. Find and open Rackmore's Chest.
-  collect Rackmore's Silver Key##15878 |q 6161 |goto Desolace 24.7,78.72 |tip {dropsfrom}Drysnap Crawler, Drysnap Pincer
-step
-  turnin Claim Rackmore's Treasure!##6161 |goto Desolace 30,8.71
-step
-  talk Azore Aldamort##11863
-  accept Book of the Ancients##6027 |goto Desolace 38.88,27.16
-step
-  note Bring an Oracle Crystal to Maurin Bonesplitter in Desolace.
-  collect Oracle Crystal##6442 |q 1482 |goto Desolace 33.89,10.15 |tip {dropsfrom}Slitherblade Oracle
-step
-  note Get the Book of the Ancients and return it to Azore Aldamort at the tower in Ethel Rethor.
-  collect Book of the Ancients##15803 |q 6027 |goto Desolace 28.24,6.67 |tip {dropsfrom}Lord Kragaru
-step
-  talk Azore Aldamort##11863
-  turnin Book of the Ancients##6027 |goto Desolace 38.88,27.16
-step
-  note Retrieve the Demon Box from Thunder Axe Fortress, and return it, along with the Demon Pick to Taiga Wisemane in Shadowprey Village.
-  collect Demon Box##13542 |q 5381 |goto Desolace 55,26.6 |tip {dropsfrom}Demon Spirit
-step
-  talk Warug##5398
-  turnin Khan Shaka##1375 |goto Desolace 74.97,68.16
-step
-  talk Maurin Bonesplitter##4498
-  turnin The Corrupter##1482 |goto Desolace 52.25,53.44
-step
-  talk Nataka Longhorn##11259
-  turnin Catch of the Day##5386 |goto Desolace 55.41,55.81
-step
-  talk Smeed Scrabblescrew##11596
-  turnin Gizelton Caravan##5943 |goto Desolace 60.86,61.86
-step
-  talk Maurin Bonesplitter##4498
-  accept The Corrupter##1484 |goto Desolace 52.25,53.44
-step
-  talk Takata Steelblade##5641
-  turnin The Corrupter##1484 |goto Desolace 52.57,54.39
-step
-  talk Hornizz Brimbuzzle##6019
-  accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
 step
   talk Taiga Wisemane##11624
   turnin Hand of Iruxos##5381 |goto Desolace 25.82,68.21
@@ -251,29 +242,17 @@ step
   talk Melizza Brimbuzzle##12277
   accept Get Me Out of Here!##6132 |goto Desolace 33.95,53.5
 step
-  talk Bibbly F'utzbuckle##11438
-  accept Bone Collector##5501 |goto Desolace 62.33,38.99
+  note Acquire 5 Carved Centaur Totems by slaying centaur of any clan throughout Desolace, then return them to Gurda Wildmane at Ghost Walker Post.
+  collect 5 Carved Centaur Totem##254432 |q 93225 |goto Desolace 30.67,61.13 |tip {dropsfrom}Maraudine Scout, Maraudine Wrangler, Maraudine Mauler
 step
-  note Bring 8 Ghost-o-plasms and the Crate of Ghost Magnets to Hornizz Brimbuzzle in Desolace.
-  collect 8 Ghost-o-plasm##15849 |q 6134 |goto Desolace 64.18,91.63 |tip {dropsfrom}Magrami Spectre
-step
-  talk Hornizz Brimbuzzle##6019
-  turnin Get Me Out of Here!##6132 |goto Desolace 47.83,61.83
-step
-  talk Hornizz Brimbuzzle##6019
-  turnin Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
-step
-  note Bring 10 Kodo Bones from the Kodo Graveyard to Bibbly F'utzbuckle at Kormek's Hut.
-  collect 10 Kodo Bone##13703 |q 5501 |goto Desolace 53.26,61.24 |tip {dropsfrom}Kodo Bones
-step
-  note Banish 6 Portals at Mannoroc Coven and return to Taiga Wisemane at Shadowprey Village.
-  kill Demon Portal Guardian##11937 |q 5581 |goto Desolace 52.6,77.4
-step
-  talk Taiga Wisemane##11624
-  turnin Portals of the Legion##5581 |goto Desolace 25.82,68.21
+  note Bring an Oracle Crystal to Maurin Bonesplitter in Desolace.
+  collect Oracle Crystal##6442 |q 1482 |goto Desolace 33.89,10.15 |tip {dropsfrom}Slitherblade Oracle
 step
   talk Bibbly F'utzbuckle##11438
   turnin Bone Collector##5501 |goto Desolace 62.33,38.99
+step
+  talk Warug##5398
+  turnin Khan Shaka##1375 |goto Desolace 74.97,68.16
 step
   talk Warug##5398
   accept A Conqueror's Crown##92743 |goto Desolace 74.97,68.16
@@ -281,23 +260,44 @@ step
   talk Warug##5398
   turnin A Conqueror's Crown##92743 |goto Desolace 74.97,68.16
 step
+  note Bring 8 Ghost-o-plasms and the Crate of Ghost Magnets to Hornizz Brimbuzzle in Desolace.
+  collect 8 Ghost-o-plasm##15849 |q 6134 |goto Desolace 64.18,91.63 |tip {dropsfrom}Magrami Spectre
+step
+  talk Maurin Bonesplitter##4498
+  turnin The Corrupter##1482 |goto Desolace 52.25,53.44
+step
+  talk Smeed Scrabblescrew##11596
+  turnin Gizelton Caravan##5943 |goto Desolace 60.86,61.86
+step
+  talk Gurda Wildmane##5412
+  turnin Carved Centaur Totems##93225 |goto Desolace 56.29,59.68
+step
+  talk Maurin Bonesplitter##4498
+  accept The Corrupter##1484 |goto Desolace 52.25,53.44
+step
+  talk Takata Steelblade##5641
+  turnin The Corrupter##1484 |goto Desolace 52.57,54.39
+step
   talk Takata Steelblade##5641
   accept The Corrupter##1488 |goto Desolace 52.57,54.39
 step
-  talk Gurda Wildmane##5412
-  accept Carved Centaur Totems##93225 |goto Desolace 56.29,59.68
+  talk Hornizz Brimbuzzle##6019
+  turnin Get Me Out of Here!##6132 |goto Desolace 47.83,61.83
 step
-  note Acquire 5 Carved Centaur Totems by slaying centaur of any clan throughout Desolace, then return them to Gurda Wildmane at Ghost Walker Post.
-  collect 5 Carved Centaur Totem##254432 |q 93225 |goto Desolace 30.67,61.13 |tip {dropsfrom}Maraudine Scout, Maraudine Wrangler, Maraudine Mauler
+  talk Hornizz Brimbuzzle##6019
+  turnin Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
+step
+  note Banish 6 Portals at Mannoroc Coven and return to Taiga Wisemane at Shadowprey Village.
+  kill Demon Portal Guardian##11937 |q 5581 |goto Desolace 52.6,77.4
+step
+  talk Taiga Wisemane##11624
+  turnin Portals of the Legion##5581 |goto Desolace 25.82,68.21
 step
   note Slay Lord Azrethoc and Jugkar Grim'rod and return to Takata Steelblade in Desolace.
   kill Lord Azrethoc##5760 |q 1488 |goto Desolace 56.95,75.74 |elite
 step
   talk Takata Steelblade##5641
   turnin The Corrupter##1488 |goto Desolace 52.57,54.39
-step
-  talk Gurda Wildmane##5412
-  turnin Carved Centaur Totems##93225 |goto Desolace 56.29,59.68
 step
   talk Warug##5398
   accept Khan Hratha##1381 |goto Desolace 74.97,68.16

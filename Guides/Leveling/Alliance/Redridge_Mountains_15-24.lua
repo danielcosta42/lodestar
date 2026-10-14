@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-24)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (21-28)",
-	rev = "d8c6114c",
+	rev = "75fda501",
 }, [[
 step
   talk Barkeep Daniels##346
@@ -26,14 +26,8 @@ step
   talk Magistrate Solomon##344
   accept Messenger to Stormwind##120 |goto Redridge Mountains 24.9,44.45
 step
-  talk Foreman Oslow##341
-  accept The Lost Tools##125 |goto Redridge Mountains 27.05,48.64
-step
   talk Deputy Feldon##1070
   accept Show of Force##98407 |goto Redridge Mountains 25.64,60
-step
-  note Foreman Oslow of Lakeshire wants you to retrieve his toolbox from the bottom of Lake Everstill.
-  collect Oslow's Toolbox##1309 |q 125 |goto Redridge Mountains 36.43,54.66 |tip {dropsfrom}Sunken Chest
 step
   note Find Hilary's Necklace, and return it to Hilary in Lakeshire.
   collect Hilary's Necklace##10958 |q 3741 |goto Redridge Mountains 24.43,53.72 |tip {dropsfrom}Glinting Mud
@@ -41,11 +35,33 @@ step
   talk Barkeep Daniels##346
   turnin Dry Times##116 |goto Redridge Mountains 21.39,43.96
 step
-  talk Foreman Oslow##341
-  turnin The Lost Tools##125 |goto Redridge Mountains 27.05,48.64
-step
   talk Hilary##8962
   turnin Hilary's Necklace##3741 |goto Redridge Mountains 24.15,53.63
+step
+  talk Foreman Oslow##341
+  accept The Lost Tools##125 |goto Redridge Mountains 27.05,48.64
+step
+  talk Chef Breanna##343
+  accept Redridge Goulash##92 |goto Redridge Mountains 17.59,43.84
+step
+  talk Verner Osgood##415
+  accept The Price of Shoes##118 |goto Redridge Mountains 25.88,47.27
+step
+  only completed(65)
+  talk Wiley the Black##266
+  accept The Defias Brotherhood##132 |goto Redridge Mountains 21.39,45.35
+step
+  note Chef Breanna of Lakeshire wants five pieces of Tough Condor Meat, five Great Goretusk Snouts and five helpings of Crisp Spider Meat.
+  collect Great Goretusk Snout##2296 |q 92 |goto Redridge Mountains 10.59,49.31 |tip {dropsfrom}Bellygrub, Great Goretusk, Snort
+step
+  note Foreman Oslow of Lakeshire wants you to retrieve his toolbox from the bottom of Lake Everstill.
+  collect Oslow's Toolbox##1309 |q 125 |goto Redridge Mountains 36.43,54.66 |tip {dropsfrom}Sunken Chest
+step
+  talk Chef Breanna##343
+  turnin Redridge Goulash##92 |goto Redridge Mountains 17.59,43.84
+step
+  talk Foreman Oslow##341
+  turnin The Lost Tools##125 |goto Redridge Mountains 27.05,48.64
 step
   talk Guard Parker##464
   turnin A Free Lunch##129 |goto Redridge Mountains 10.18,71.46
@@ -74,21 +90,14 @@ step
   talk Deputy Feldon##1070
   accept Assessing the Threat##246 |goto Redridge Mountains 25.64,60
 step
-  talk Chef Breanna##343
-  accept Redridge Goulash##92 |goto Redridge Mountains 17.59,43.84
+  talk Foreman Oslow##341
+  accept The Everstill Bridge##89 |goto Redridge Mountains 27.05,48.64
 step
-  talk Verner Osgood##415
-  accept The Price of Shoes##118 |goto Redridge Mountains 25.88,47.27
+  note Bring 5 Iron Pikes and 5 Iron Rivets to Foreman Oslow in Lakeshire.
+  collect 5 Iron Pike##2856 |q 89 |goto Redridge Mountains 18.91,34.91 |tip {dropsfrom}Redridge Brute, Redridge Mystic, Redridge Basher
 step
-  only completed(65)
-  talk Wiley the Black##266
-  accept The Defias Brotherhood##132 |goto Redridge Mountains 21.39,45.35
-step
-  note Chef Breanna of Lakeshire wants five pieces of Tough Condor Meat, five Great Goretusk Snouts and five helpings of Crisp Spider Meat.
-  collect Great Goretusk Snout##2296 |q 92 |goto Redridge Mountains 10.59,49.31 |tip {dropsfrom}Bellygrub, Great Goretusk, Snort
-step
-  talk Chef Breanna##343
-  turnin Redridge Goulash##92 |goto Redridge Mountains 17.59,43.84
+  talk Foreman Oslow##341
+  turnin The Everstill Bridge##89 |goto Redridge Mountains 27.05,48.64
 step
   talk Darcy##379
   turnin Delivering Daffodils##131 |goto Redridge Mountains 21.53,44.3
@@ -98,15 +107,6 @@ step
 step
   talk Deputy Feldon##1070
   turnin Assessing the Threat##246 |goto Redridge Mountains 25.64,60
-step
-  talk Foreman Oslow##341
-  accept The Everstill Bridge##89 |goto Redridge Mountains 27.05,48.64
-step
-  note Bring 5 Iron Pikes and 5 Iron Rivets to Foreman Oslow in Lakeshire.
-  collect 5 Iron Pike##2856 |q 89 |goto Redridge Mountains 18.91,34.91 |tip {dropsfrom}Redridge Brute, Redridge Mystic, Redridge Basher
-step
-  talk Foreman Oslow##341
-  turnin The Everstill Bridge##89 |goto Redridge Mountains 27.05,48.64
 step
   talk Marshal Marris##382
   accept Blackrock Menace##20 |goto Redridge Mountains 28.41,48.97
@@ -138,18 +138,9 @@ step
   talk Marshal Marris##382
   turnin Blackrock Blockade##98387 |goto Redridge Mountains 28.41,48.97
 step
-  talk Dockmaster Baren##381
-  accept Murloc Poachers##150 |goto Redridge Mountains 22.63,47.38
-step
   only Rogue
   talk Arantir##7009
   accept Horns of Nez'ra##2358 |goto Redridge Mountains 22.97,52.32
-step
-  note Bring 8 Murloc Fins to Dockmaster Baren in Lakeshire.
-  collect 8 Murloc Fin##1468 |q 150 |goto Redridge Mountains 50.2,61.74 |tip {dropsfrom}Murloc Flesheater, Murloc Nightcrawler, Murloc Tidecaller
-step
-  talk Dockmaster Baren##381
-  turnin Murloc Poachers##150 |goto Redridge Mountains 22.63,47.38
 step
   note Bring 10 Battleworn Axes to Marshal Marris in Lakeshire.
   collect 10 Battleworn Axe##3014 |q 20 |goto Redridge Mountains 24.25,12.05 |tip {dropsfrom}Blackrock Champion, Blackrock Shadowcaster, Blackrock Renegade
@@ -164,6 +155,9 @@ step
   only Rogue
   talk Arantir##7009
   turnin Horns of Nez'ra##2358 |goto Redridge Mountains 22.97,52.32
+step
+  talk Dockmaster Baren##381
+  accept Murloc Poachers##150 |goto Redridge Mountains 22.63,47.38
 step
   talk Bailiff Conacher##900
   accept Solomon's Law##91 |goto Redridge Mountains 24.63,44.26
@@ -181,11 +175,17 @@ step
   kill Blackrock Shadowcaster##436 |goto Redridge Mountains 63.08,54.64 |elite
   collect 3 Midnight Orb##1261 |q 115 |goto Redridge Mountains 63.08,54.64
 step
+  note Bring 8 Murloc Fins to Dockmaster Baren in Lakeshire.
+  collect 8 Murloc Fin##1468 |q 150 |goto Redridge Mountains 50.2,61.74 |tip {dropsfrom}Murloc Flesheater, Murloc Nightcrawler, Murloc Tidecaller
+step
   talk Bailiff Conacher##900
   turnin Solomon's Law##91 |goto Redridge Mountains 24.63,44.26
 step
   talk Marshal Marris##382
   turnin Shadow Magic##115 |goto Redridge Mountains 28.41,48.97
+step
+  talk Dockmaster Baren##381
+  turnin Murloc Poachers##150 |goto Redridge Mountains 22.63,47.38
 step
   talk Martie Jainrose##342
   accept An Unwelcome Guest##34 |goto Redridge Mountains 16.77,46.33
@@ -218,18 +218,6 @@ step
   talk Magistrate Solomon##344
   turnin WANTED: Incinerator Gar'im##95999 |goto Redridge Mountains 24.9,44.45
 step
-  talk Corporal Keeshan##349
-  accept Missing In Action##219 |goto Redridge Mountains 23.3,12.55
-step
-  note Kill 15 Blackrock Champions and Guard Howe in Lakeshire will reward you.
-  kill Blackrock Champion##435 |q 128 |goto Redridge Mountains 24.25,12.05
-step
-  talk Guard Howe##903
-  turnin Blackrock Bounty##128 |goto Redridge Mountains 26.45,57.85
-step
-  talk Marshal Marris##382
-  turnin Missing In Action##219 |goto Redridge Mountains 28.41,48.97
-step
   click Wanted: Gath'Ilzogg##60
   accept Wanted: Gath'Ilzogg##169 |goto Redridge Mountains 24.53,46.16
 step
@@ -248,6 +236,18 @@ step
 step
   talk Magistrate Solomon##344
   turnin Wanted: Lieutenant Fangore##180 |goto Redridge Mountains 24.9,44.45
+step
+  talk Corporal Keeshan##349
+  accept Missing In Action##219 |goto Redridge Mountains 23.3,12.55
+step
+  note Kill 15 Blackrock Champions and Guard Howe in Lakeshire will reward you.
+  kill Blackrock Champion##435 |q 128 |goto Redridge Mountains 24.25,12.05
+step
+  talk Guard Howe##903
+  turnin Blackrock Bounty##128 |goto Redridge Mountains 26.45,57.85
+step
+  talk Marshal Marris##382
+  turnin Missing In Action##219 |goto Redridge Mountains 28.41,48.97
 step
   talk General Marcus Jonathan##466
   turnin Messenger to Stormwind##120 |goto Stormwind City 69.17,82.72 |tip {turninat}Stormwind City

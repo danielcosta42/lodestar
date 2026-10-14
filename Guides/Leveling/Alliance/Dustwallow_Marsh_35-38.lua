@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dustwallow Marsh (35-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Thousand Needles (30-41)",
-	rev = "0d79ff11",
+	rev = "40590f90",
 }, [[
 step
   note {fp}Baldruc
@@ -35,6 +35,13 @@ step
   talk Archmage Tervosh##4967
   accept The Missing Diplomat##1266 |goto Dustwallow Marsh 66.42,49.26
 step
+  talk Morgan Stern##4794
+  accept Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
+step
+  only Mage completed(1947)
+  talk Tabetha##6546
+  accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
+step
   click Black Shield##20992
   accept The Black Shield##1253 |goto Dustwallow Marsh 29.63,48.62
 step
@@ -47,6 +54,14 @@ step
   only completed(1264)
   talk Private Hendel##4966
   turnin The Missing Diplomat##1266 |goto Dustwallow Marsh 45.24,24.65
+step
+  only completed(1264)
+  talk Private Hendel##4966
+  accept The Missing Diplomat##1324 |goto Dustwallow Marsh 45.24,24.65
+step
+  only completed(1264)
+  note Defeat Private Hendel in Dustwallow Marsh.
+  kill Private Hendel##4966 |q 1324 |goto Dustwallow Marsh 45.24,24.65
 step
   talk "Stinky" Ignatz##4880
   accept Stinky's Escape##1222 |goto Dustwallow Marsh 46.88,17.52
@@ -63,11 +78,17 @@ step
   click Loose Dirt##20985
   accept The Orc Report##1219 |goto Dustwallow Marsh 55.44,25.92
 step
+  note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
+  collect 8 Forked Mudrock Tongue##5883 |q 1204 |goto Dustwallow Marsh 62,24.8 |tip {dropsfrom}Mudrock Tortoise, Mudrock Spikeshell, Mudrock Burrower
+step
   talk "Swamp Eye" Jarl##4792
   turnin Soothing Spices##1218 |goto Dustwallow Marsh 55.44,26.27
 step
   talk "Swamp Eye" Jarl##4792
   accept Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
+step
+  talk Morgan Stern##4794
+  turnin Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
 step
   talk Theramore Lieutenant##4947
   turnin The Orc Report##1219 |goto Dustwallow Marsh 68,48
@@ -81,17 +102,26 @@ step
   talk Captain Garran Vimes##4944
   turnin Suspicious Hoofprints##1284 |goto Dustwallow Marsh 68.21,48.62
 step
+  only completed(1264)
+  talk Archmage Tervosh##4967
+  turnin The Missing Diplomat##1324 |goto Dustwallow Marsh 66.42,49.26
+step
   talk Theramore Lieutenant##4947
   accept Captain Vimes##1220 |goto Dustwallow Marsh 68,48
 step
   talk Captain Garran Vimes##4944
   accept The Black Shield##1319 |goto Dustwallow Marsh 68.21,48.62
 step
-  talk Morgan Stern##4794
-  accept Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
+  only completed(1264)
+  talk Lady Jaina Proudmoore##4968
+  accept The Missing Diplomat##1267 |goto Dustwallow Marsh 66.27,49.04
 step
   talk Captain Garran Vimes##4944
   turnin Captain Vimes##1220 |goto Dustwallow Marsh 68.21,48.62
+step
+  only completed(1264)
+  talk Lady Jaina Proudmoore##4968
+  turnin The Missing Diplomat##1267 |goto Dustwallow Marsh 66.27,49.04
 step
   talk Caz Twosprocket##4941
   turnin The Black Shield##1319 |goto Dustwallow Marsh 64.75,50.43
@@ -101,54 +131,6 @@ step
 step
   talk Captain Garran Vimes##4944
   turnin The Black Shield##1320 |goto Dustwallow Marsh 68.21,48.62
-step
-  only Mage completed(1947)
-  talk Tabetha##6546
-  accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
-step
-  talk Mudcrush Durtfeet##4503
-  turnin Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
-step
-  only completed(1264)
-  talk Private Hendel##4966
-  accept The Missing Diplomat##1324 |goto Dustwallow Marsh 45.24,24.65
-step
-  note Bring 40 Unpopped Darkmist Eyes to "Swamp Eye" Jarl at the Swamplight Manor.
-  collect 40 Unpopped Darkmist Eye##5884 |q 1206 |goto Dustwallow Marsh 32.32,22.29 |tip {dropsfrom}Darkmist Spider, Darkmist Lurker, Darkmist Recluse
-step
-  only completed(1264)
-  note Defeat Private Hendel in Dustwallow Marsh.
-  talk Private Hendel##4966 |q 1324 |goto Dustwallow Marsh 45.24,24.65
-step
-  talk "Swamp Eye" Jarl##4792
-  turnin Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
-step
-  talk "Swamp Eye" Jarl##4792
-  accept Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
-step
-  note Bring a Moonsteel Broadsword to Jarl in Dustwallow Marsh.
-  collect Moonsteel Broadsword##3853 |q 1203 |goto Dustwallow Marsh 55.44,26.27
-step
-  note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
-  collect 8 Forked Mudrock Tongue##5883 |q 1204 |goto Dustwallow Marsh 62,24.8 |tip {dropsfrom}Mudrock Tortoise, Mudrock Spikeshell, Mudrock Burrower
-step
-  talk "Swamp Eye" Jarl##4792
-  turnin Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
-step
-  talk Morgan Stern##4794
-  turnin Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
-step
-  only completed(1264)
-  talk Archmage Tervosh##4967
-  turnin The Missing Diplomat##1324 |goto Dustwallow Marsh 66.42,49.26
-step
-  only completed(1264)
-  talk Lady Jaina Proudmoore##4968
-  accept The Missing Diplomat##1267 |goto Dustwallow Marsh 66.27,49.04
-step
-  only completed(1264)
-  talk Lady Jaina Proudmoore##4968
-  turnin The Missing Diplomat##1267 |goto Dustwallow Marsh 66.27,49.04
 step
   only Mage completed(1947)
   talk Tabetha##6546
@@ -169,6 +151,24 @@ step
   note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
   collect 1 Jade##1529 |q 1948 |goto Dustwallow Marsh 30.92,65.84 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
 step
+  talk Mudcrush Durtfeet##4503
+  turnin Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
+step
+  note Bring 40 Unpopped Darkmist Eyes to "Swamp Eye" Jarl at the Swamplight Manor.
+  collect 40 Unpopped Darkmist Eye##5884 |q 1206 |goto Dustwallow Marsh 32.32,22.29 |tip {dropsfrom}Darkmist Spider, Darkmist Lurker, Darkmist Recluse
+step
+  talk "Swamp Eye" Jarl##4792
+  turnin Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
+step
+  talk "Swamp Eye" Jarl##4792
+  accept Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
+step
+  note Bring a Moonsteel Broadsword to Jarl in Dustwallow Marsh.
+  collect Moonsteel Broadsword##3853 |q 1203 |goto Dustwallow Marsh 55.44,26.27
+step
+  talk "Swamp Eye" Jarl##4792
+  turnin Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
+step
   talk Captain Garran Vimes##4944
   turnin Lieutenant Paval Reethe##1252 |goto Dustwallow Marsh 68.21,48.62
 step
@@ -187,6 +187,9 @@ step
   talk Captain Garran Vimes##4944
   accept The Deserters##1286 |goto Dustwallow Marsh 68.21,48.62
 step
+  talk Archmage Tervosh##4967
+  accept Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
+step
   only Mage completed(1947)
   talk Tabetha##6546
   turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
@@ -199,9 +202,6 @@ step
 step
   talk Captain Garran Vimes##4944
   turnin The Deserters##1287 |goto Dustwallow Marsh 68.21,48.62
-step
-  talk Archmage Tervosh##4967
-  accept Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
 step
   talk Shindrell Swiftfire##3845
   turnin Journey to Astranaar##1133 |goto Ashenvale 34.67,48.84 |tip {turninat}Ashenvale

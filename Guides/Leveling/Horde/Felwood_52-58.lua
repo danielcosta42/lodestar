@@ -5,16 +5,12 @@ ns:RegisterGuide("Leveling/Horde/Felwood (52-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Winterspring (54-59)",
-	rev = "221d6c71",
+	rev = "d7419f87",
 }, [[
 step
   only Druid
   talk Turak Runetotem##3033
   accept Torwa Pathfinder##9063 |goto Thunder Bluff 76.48,27.22
-step
-  only not completed(1004) not completed(1018) not haveq(1004) not haveq(1018)
-  talk Bluff Runner Windstrider##10881
-  accept The New Frontier##1000 |goto Thunder Bluff 44.33,58.76
 step
   talk Grazle##11554
   accept Timbermaw Ally##8460 |goto Felwood 50.93,85.01
@@ -182,8 +178,8 @@ step
   turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96 |tip {turninat}Un'Goro Crater
 step
   only not completed(1004) not completed(1018) not haveq(1004) not haveq(1018)
-  talk Arch Druid Hamuul Runetotem##5769
-  turnin The New Frontier##1000 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
+  talk Bluff Runner Windstrider##10881
+  accept The New Frontier##1000 |goto Thunder Bluff 44.33,58.76
 step
   talk Rabine Saturna##11801
   accept A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1
@@ -193,6 +189,10 @@ step
 step
   note Travel to Silithus and search for a Reliquary of Purity within the ruins of Southwind Village. If you are able to find it, return with it to Rabine Saturna in Nighthaven, Moonglade.
   collect Reliquary of Purity##22201 |q 5527 |goto Silithus 63.23,55.35 |tip {dropsfrom}Dusty Reliquary
+step
+  only not completed(1004) not completed(1018) not haveq(1004) not haveq(1018)
+  talk Arch Druid Hamuul Runetotem##5769
+  turnin The New Frontier##1000 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
 step
   talk Trull Failbane##10306
   turnin Wild Guardians##4521 |goto Felwood 34.73,52.79

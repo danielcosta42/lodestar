@@ -5,23 +5,11 @@ ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (50-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (55-60)",
-	rev = "4528ab5e",
+	rev = "a7cfbbea",
 }, [[
-step
-  only Warrior
-  talk Christoph Walker##4593
-  accept A Troubled Spirit##8417 |goto Undercity 46.93,15.23
-step
-  only Warrior
-  talk Fallen Hero of the Horde##7572
-  turnin A Troubled Spirit##8417 |goto Swamp of Sorrows 34.29,66.14
 step
   talk Fallen Hero of the Horde##7572
   accept Fall From Grace##2784 |goto Swamp of Sorrows 34.29,66.14
-step
-  only Warrior
-  talk Fallen Hero of the Horde##7572
-  accept Warrior Kinship##8423 |goto Swamp of Sorrows 34.29,66.14
 step
   note Listen to the Fallen Hero of the Horde tell his story.
   talk Fallen Hero of the Horde##7572 |q 2784 |goto Swamp of Sorrows 34.29,66.14
@@ -76,6 +64,18 @@ step
 step
   talk Fallen Hero of the Horde##7572
   accept The Stones That Bind Us##2681 |goto Swamp of Sorrows 34.29,66.14
+step
+  only Warrior
+  talk Christoph Walker##4593
+  accept A Troubled Spirit##8417 |goto Undercity 46.93,15.23
+step
+  only Warrior
+  talk Fallen Hero of the Horde##7572
+  turnin A Troubled Spirit##8417 |goto Swamp of Sorrows 34.29,66.14
+step
+  only Warrior
+  talk Fallen Hero of the Horde##7572
+  accept Warrior Kinship##8423 |goto Swamp of Sorrows 34.29,66.14
 step
   only Warrior
   note Kill 7 Helboar in the Blasted Lands and return to the Fallen Hero of the Horde.

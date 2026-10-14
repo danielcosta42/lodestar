@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Argent Dawn", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "7b17e716",
+	rev = "4069fb71",
 }, [[
 step
   talk Leonid Barthalomew the Revered##267008
@@ -456,7 +456,7 @@ step
   accept Dawn's Gambit##4771 |goto Eastern Plaguelands 71.66,49.94
 step
   note Place Dawn's Gambit in the Viewing Room of the Scholomance. Defeat Vectus, then return to Betina Bigglezink.
-  talk Vectus##10432 |q 4771 |goto Scholomance - Dungeon -1,-1
+  kill Vectus##10432 |q 4771 |goto Scholomance - Dungeon -1,-1 |elite
 step
   talk Betina Bigglezink##11035
   turnin Dawn's Gambit##4771 |goto Eastern Plaguelands 71.66,49.94

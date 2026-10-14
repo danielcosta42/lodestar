@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Paladin", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "62c66fd8",
+	rev = "db986612",
 }, [[
 step
   only Undead Paladin
@@ -91,7 +91,7 @@ step
 step
   only Undead Paladin
   note Slay 8 Tarnished Drudges, 6 Tarnished Zealots, and collect the head of Commander Rudolph Gelhardt in Tirisfal Glades.
-  talk Tarnished Drudge##259434 |q 91317 |goto Tirisfal Glades 13.03,63.87
+  kill Tarnished Drudge##259434 |q 91317 |goto Tirisfal Glades 13.03,63.87
 step
   only Undead Paladin
   talk Danitha Morr##246378

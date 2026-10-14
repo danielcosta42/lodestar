@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (35-44)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (42-47)",
-	rev = "f93ebd2b",
+	rev = "58ddaa0a",
 }, [[
 step
   talk Magtoor##1776
@@ -29,6 +29,9 @@ step
   note Find the missing courier, and ensure Dar's shipment is delivered to the Harborage.
   collect Courier's Shipment##260452 |q 93663 |goto Swamp of Sorrows 44.7,57.21
 step
+  talk Galen Goodward##5391
+  accept Galen's Escape##1393 |goto Swamp of Sorrows 65.47,18.16
+step
   note Bring 6 Draenethyst crystals to Magtoor at The Harborage in the Swamp of Sorrows.
   collect 6 Draenethyst Crystal##6071 |q 1389 |goto Swamp of Sorrows 62.08,22.45 |tip {dropsfrom}Draenethyst Crystals
 step
@@ -38,15 +41,6 @@ step
   talk Magtoor##1776
   turnin Lost in Transit##93663 |goto Swamp of Sorrows 25.98,31.4
 step
-  talk Galen Goodward##5391
-  accept Galen's Escape##1393 |goto Swamp of Sorrows 65.47,18.16
-step
-  kill Noboru the Cudgel##5477 |goto Swamp of Sorrows 54.9,34.1 |tip Loot the quest item here — it starts the quest.
-  accept Noboru the Cudgel##1392 |goto Swamp of Sorrows 54.9,34.1
-step
-  talk Magtoor##1776
-  turnin Noboru the Cudgel##1392 |goto Swamp of Sorrows 25.98,31.4
-step
   turnin Galen's Escape##1393 |goto Swamp of Sorrows 47.81,39.76
 step
   talk Dar##5591
@@ -55,8 +49,14 @@ step
   note Bring 8 Unprepared Sawtooth Flanks to Tok'Kar in Swamp of Sorrows.
   collect 8 Unprepared Sawtooth Flank##6169 |q 698 |goto Swamp of Sorrows 55.17,41.34 |tip {dropsfrom}Sawtooth Crocolisk, Sawtooth Snapper
 step
+  kill Noboru the Cudgel##5477 |goto Swamp of Sorrows 54.9,34.1 |tip Loot the quest item here — it starts the quest.
+  accept Noboru the Cudgel##1392 |goto Swamp of Sorrows 54.9,34.1
+step
   talk Tok'Kar##5592
   turnin Lack of Surplus##698 |goto Swamp of Sorrows 81.32,80.97
+step
+  talk Magtoor##1776
+  turnin Noboru the Cudgel##1392 |goto Swamp of Sorrows 25.98,31.4
 step
   talk Tok'Kar##5592
   accept Lack of Surplus##699 |goto Swamp of Sorrows 81.32,80.97

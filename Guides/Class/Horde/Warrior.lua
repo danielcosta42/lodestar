@@ -4,14 +4,14 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Warrior", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "898c59d6",
+	rev = "172eeb1f",
 }, [[
 step
   talk Gornek##3143
   accept Cutting Teeth##788 |goto Durotar 42.06,68.33
 step
   note Kill 10 Mottled Boars then return to Gornek at the Den.
-  talk Mottled Boar##3098 |q 788 |goto Durotar 44.49,65.1
+  kill Mottled Boar##3098 |q 788 |goto Durotar 44.49,65.1
 step
   talk Gornek##3143
   turnin Cutting Teeth##788 |goto Durotar 42.06,68.33
@@ -56,7 +56,7 @@ step
   accept The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
 step
   note Shadow Priest Sarvis wants you to kill 8 Mindless Zombies and 8 Wretched Zombies.
-  talk Mindless Zombie##1501 |q 364 |goto Tirisfal Glades 32.28,63.63
+  kill Mindless Zombie##1501 |q 364 |goto Tirisfal Glades 32.28,63.63
 step
   talk Shadow Priest Sarvis##1569
   turnin The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
@@ -81,7 +81,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
@@ -339,7 +339,7 @@ step
 step
   only Warrior
   note Kill Big Will, then speak to Klannoc Macleod on Fray Island.
-  talk Big Will##6238 |q 1719 |goto The Barrens 68.61,48.72
+  kill Big Will##6238 |q 1719 |goto The Barrens 68.61,48.72
 step
   only Warrior
   talk Klannoc Macleod##6236

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Mage", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "ae67bd06",
+	rev = "30c2d49c",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -61,7 +61,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
@@ -697,7 +697,7 @@ step
 step
   only Mage
   note Polymorph the Spitelash of Azshara and kill the clones that appear several seconds later. When you have slain 50 Polymorph Clones, return to Archmage Xylem in Azshara.
-  talk Polymorph Clone##16479 |q 9364 |goto Azshara 36.16,54.59
+  kill Polymorph Clone##16479 |q 9364 |goto Azshara 36.16,54.59
 step
   only Mage
   talk Archmage Xylem##8379

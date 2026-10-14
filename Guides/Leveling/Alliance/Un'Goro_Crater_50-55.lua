@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Un'Goro Crater (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Tanaris (53-60)",
-	rev = "f49b63a7",
+	rev = "2bdc411f",
 }, [[
 step
   talk Arch Druid Fandral Staghelm##3516
@@ -191,6 +191,15 @@ step
   talk Torwa Pathfinder##9619
   turnin The Scent of Lar'korwi##4291 |goto Un'Goro Crater 71.64,75.96
 step
+  talk Torwa Pathfinder##9619
+  accept The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
+step
+  note Using the contents of Torwa's Pouch, summon Lar'korwi and defeat him. Then bring Lar'korwi's Head to Torwa Pathfinder near the entrance to Un'Goro Crater.
+  collect Lar'korwi's Head##11510 |q 4292 |goto Un'Goro Crater 79.65,49.83 |tip {dropsfrom}Lar'korwi
+step
+  talk Torwa Pathfinder##9619
+  turnin The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
+step
   talk J.D. Collie##9117
   turnin The Northern Pylon##4285 |goto Un'Goro Crater 41.92,2.7
 step
@@ -229,15 +238,6 @@ step
 step
   talk Torwa Pathfinder##9619
   accept The Mighty U'cha##4301 |goto Un'Goro Crater 71.64,75.96
-step
-  talk Torwa Pathfinder##9619
-  accept The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
-step
-  note Using the contents of Torwa's Pouch, summon Lar'korwi and defeat him. Then bring Lar'korwi's Head to Torwa Pathfinder near the entrance to Un'Goro Crater.
-  collect Lar'korwi's Head##11510 |q 4292 |goto Un'Goro Crater 79.65,49.83 |tip {dropsfrom}Lar'korwi
-step
-  talk Torwa Pathfinder##9619
-  turnin The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
 step
   note Bring U'cha's Pelt to Torwa Pathfinder at the entrance of Un'Goro Crater.
   collect U'cha's Pelt##11476 |q 4301 |goto Un'Goro Crater 68.14,12.56 |tip {dropsfrom}U'cha

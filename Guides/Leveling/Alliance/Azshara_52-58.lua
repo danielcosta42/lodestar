@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Azshara (52-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Winterspring (54-59)",
-	rev = "ee726597",
+	rev = "ca9098ae",
 }, [[
 step
   only Hunter
@@ -147,9 +147,6 @@ step
   talk Loramus Thalipedes##7783
   turnin Loramus##3141 |goto Azshara 60.82,66.35
 step
-  talk Duke Hydraxis##13278
-  accept Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
-step
   only completed(2744)
   talk Loramus Thalipedes##7783
   accept Breaking the Ward##3508 |goto Azshara 60.82,66.35
@@ -161,6 +158,9 @@ step
   only completed(2744)
   talk Loramus Thalipedes##7783
   accept The Name of the Beast##3509 |goto Azshara 60.82,66.35
+step
+  talk Duke Hydraxis##13278
+  accept Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
 step
   only completed(2744)
   talk Lord Arkkoroc##6134

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Felwood (52-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Azshara (52-58)",
-	rev = "ef1d0c1c",
+	rev = "c39967d6",
 }, [[
 step
   talk Grazle##11554
@@ -129,6 +129,10 @@ step
   talk Arathandris Silversky##9528
   accept Salve via Hunting##5882 |goto Felwood 54.15,86.83
 step
+  only completed(5159)
+  talk Greta Mosshoof##10922
+  accept A Final Blow##5242 |goto Felwood 51.21,82.11
+step
   note Bring the Flute of Xavaric and 5 Jadefire Felbind samples to Eridan Bluewind in southern Felwood.
   collect Jadefire Felbind##11674 |q 939 |goto Felwood 41.61,85.68 |tip {dropsfrom}Jadefire Satyr, Jadefire Rogue, Jadefire Trickster
 step
@@ -152,21 +156,25 @@ step
   note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
   collect Corrupt Moonwell Water##12907 |q 5157 |goto Felwood 35.17,59.79 |tip {dropsfrom}Corrupt Jaedenar Moonwell
 step
+  only completed(5159)
+  note Kill Moora and Salia, and bring Shadow Lord Fel'dan's Head to Greta Mosshoof in Felwood.
+  kill Moora##9861 |q 5242 |goto Felwood 38.81,46.87
+step
   talk Greta Mosshoof##10922
   turnin Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
 step
   talk Jessir Moonbow##11019
   turnin Rescue From Jaedenar##5203 |goto Felwood 51.35,82.01
 step
+  only completed(5159)
+  talk Greta Mosshoof##10922
+  turnin A Final Blow##5242 |goto Felwood 51.21,82.11
+step
   talk Greta Mosshoof##10922
   accept Seeking Spiritual Aid##5158 |goto Felwood 51.21,82.11
 step
   talk Jessir Moonbow##11019
   accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
-step
-  only completed(5159)
-  talk Greta Mosshoof##10922
-  accept A Final Blow##5242 |goto Felwood 51.21,82.11
 step
   note Return to Jaedenar and kill the succubus Rakaiah before finding the Remains of Trey Lightforge.
   kill Rakaiah##9518 |q 5204 |goto Felwood 38.3,50.51
@@ -176,14 +184,6 @@ step
 step
   talk Remains of Trey Lightforge##11020
   accept The Remains of Trey Lightforge##5385 |goto Felwood 38.5,50.41
-step
-  only completed(5159)
-  note Kill Moora and Salia, and bring Shadow Lord Fel'dan's Head to Greta Mosshoof in Felwood.
-  kill Moora##9861 |q 5242 |goto Felwood 38.81,46.87
-step
-  only completed(5159)
-  talk Greta Mosshoof##10922
-  turnin A Final Blow##5242 |goto Felwood 51.21,82.11
 step
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01

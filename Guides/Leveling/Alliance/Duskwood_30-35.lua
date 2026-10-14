@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (30-35)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Hillsbrad Foothills (29-32)",
-	rev = "c002d5ed",
+	rev = "9ced9b93",
 }, [[
 step
   only completed(322)
@@ -129,6 +129,18 @@ step
   talk Sirra Von'Indi##268
   accept Translation to Ello##252 |goto Duskwood 72.62,47.62
 step
+  only completed(97)
+  talk Commander Althea Ebonlocke##264
+  accept The Legend of Stalvan##98 |goto Duskwood 73.54,46.82
+step
+  only completed(97)
+  note Kill Stalvan Mistmantle and show Madame Eva his family ring.
+  collect Mistmantle Family Ring##3629 |q 98 |goto Duskwood 77.35,36.19 |tip {dropsfrom}Stalvan Mistmantle
+step
+  only completed(97)
+  talk Madame Eva##265
+  turnin The Legend of Stalvan##98 |goto Duskwood 75.79,45.32
+step
   only completed(133)
   talk Lord Ello Ebonlocke##263
   turnin Translation to Ello##252 |goto Duskwood 71.93,46.42
@@ -136,6 +148,9 @@ step
   only completed(133)
   talk Lord Ello Ebonlocke##263
   accept Bride of the Embalmer##253 |goto Duskwood 71.93,46.42
+step
+  click A Weathered Grave##61
+  accept The Weathered Grave##225 |goto Duskwood 17.73,29.08
 step
   only completed(57)
   note Commander Althea Ebonlocke of Darkshire wants you to kill 20 Plague Spreaders in the eastern Raven Hill mausoleum.
@@ -154,6 +169,9 @@ step
   talk Commander Althea Ebonlocke##264
   turnin The Night Watch##58 |goto Duskwood 73.54,46.82
 step
+  talk Sirra Von'Indi##268
+  turnin The Weathered Grave##225 |goto Duskwood 72.62,47.62
+step
   only completed(133)
   talk Lord Ello Ebonlocke##263
   turnin Bride of the Embalmer##253 |goto Duskwood 71.93,46.42
@@ -165,24 +183,6 @@ step
   only completed(1243)
   talk Watcher Backus##840
   accept The Missing Diplomat##1245 |goto Duskwood 74.83,44.22
-step
-  only completed(97)
-  talk Commander Althea Ebonlocke##264
-  accept The Legend of Stalvan##98 |goto Duskwood 73.54,46.82
-step
-  only completed(97)
-  note Kill Stalvan Mistmantle and show Madame Eva his family ring.
-  collect Mistmantle Family Ring##3629 |q 98 |goto Duskwood 77.35,36.19 |tip {dropsfrom}Stalvan Mistmantle
-step
-  only completed(97)
-  talk Madame Eva##265
-  turnin The Legend of Stalvan##98 |goto Duskwood 75.79,45.32
-step
-  click A Weathered Grave##61
-  accept The Weathered Grave##225 |goto Duskwood 17.73,29.08
-step
-  talk Sirra Von'Indi##268
-  turnin The Weathered Grave##225 |goto Duskwood 72.62,47.62
 step
   talk Sirra Von'Indi##268
   accept Morgan Ladimore##227 |goto Duskwood 72.62,47.62

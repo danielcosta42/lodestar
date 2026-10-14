@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (56-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "dfb54410",
+	rev = "697846fa",
 }, [[
 step
   talk Pamela Redpath##10926
@@ -121,6 +121,10 @@ step
   talk Tirion Fordring##1855
   accept Of Love and Family##5846 |goto Eastern Plaguelands 5.16,35.57
 step
+  only completed(5848)
+  talk Tirion Fordring##1855
+  accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
+step
   click Torn Scroll##177667
   accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
 step
@@ -190,6 +194,20 @@ step
   talk Emmisary Whitebeard##17069
   turnin Establishing New Outposts##9664 |goto Eastern Plaguelands 71.51,49.66
 step
+  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
+  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
+step
+  talk Egan##11140
+  turnin The Restless Souls##5281 |goto Eastern Plaguelands 11.36,26.6
+step
+  note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
+  collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
+step
+  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
+step
+  talk Huntsman Leopold##16132
+  turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
+step
   only completed(8946)
   talk Anthion Harmon##16016
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
@@ -198,27 +216,9 @@ step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
   collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
 step
-  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
-  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
-step
   only completed(8946)
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
-step
-  talk Egan##11140
-  turnin The Restless Souls##5281 |goto Eastern Plaguelands 11.36,26.6
-step
-  note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
-  collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
-step
-  only completed(5848)
-  talk Tirion Fordring##1855
-  accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
-step
-  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
-step
-  talk Huntsman Leopold##16132
-  turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
 step
   only completed(5464)
   talk Magistrate Marduke##11286
