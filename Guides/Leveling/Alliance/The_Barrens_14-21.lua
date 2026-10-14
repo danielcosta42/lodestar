@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Barrens (14-21)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
-	rev = "8891191a",
+	rev = "a0c78b8d",
 }, [[
 step
   note {fp}Bragok
@@ -59,8 +59,8 @@ step
   note Retrieve the Shipment of Boots and Telescopic Lens for Gazlowe in Ratchet.
   collect Shipment of Boots##5076 |q 888 |goto The Barrens 62.63,49.63 |tip {dropsfrom}Drizzlik's Emporium
 step
-  talk Gazlowe##3391
-  turnin Stolen Booty##888 |goto The Barrens 62.68,36.23
+  note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
+  collect 5 Intact Raptor Horn##5055 |q 865 |goto The Barrens 52.58,45.99 |tip {dropsfrom}Sunscale Scytheclaw, Ishamuhale, Takk the Leaper
 step
   talk Nalpak##5767
   accept Deviate Hides##1486 |goto The Barrens 45.99,35.66
@@ -76,8 +76,17 @@ step
   talk Nalpak##5767
   turnin Deviate Hides##1486 |goto The Barrens 45.99,35.66
 step
-  note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
-  collect 5 Intact Raptor Horn##5055 |q 865 |goto The Barrens 52.58,45.99 |tip {dropsfrom}Sunscale Scytheclaw, Ishamuhale, Takk the Leaper
+  talk Mebok Mizzyrix##3446
+  turnin Raptor Horns##865 |goto The Barrens 62.37,37.62
+step
+  talk Gazlowe##3391
+  turnin Stolen Booty##888 |goto The Barrens 62.68,36.23
+step
+  talk Crane Operator Bigglefuzz##3665
+  turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61
+step
+  talk Mebok Mizzyrix##3446
+  accept Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
 step
   turnin Samophlange##894 |goto The Barrens 52.4,11.65
 step
@@ -118,20 +127,11 @@ step
   talk Sputtervalve##3442
   turnin The Escape##863 |goto The Barrens 62.98,37.22
 step
-  talk Mebok Mizzyrix##3446
-  turnin Raptor Horns##865 |goto The Barrens 62.37,37.62
-step
   talk Wharfmaster Dizzywig##3453
   turnin Miner's Fortune##896 |goto The Barrens 63.35,38.45
 step
   talk Sputtervalve##3442
   turnin Samophlange##902 |goto The Barrens 62.98,37.22
-step
-  talk Crane Operator Bigglefuzz##3665
-  turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61
-step
-  talk Mebok Mizzyrix##3446
-  accept Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
 step
   talk Sputtervalve##3442
   accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22

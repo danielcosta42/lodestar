@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stonetalon Mountains (19-26)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (23-30)",
-	rev = "f1b14edb",
+	rev = "71068e2f",
 }, [[
 step
   note {fp}Tharm
@@ -27,14 +27,14 @@ step
   kill Besseleth##11921 |goto Stonetalon Mountains 52.8,72.6 |elite
   collect Besseleth's Fang##16192 |q 6284 |goto Stonetalon Mountains 52.8,72.6
 step
+  talk Maggran Earthbinder##11860
+  turnin Arachnophobia##6284 |goto Stonetalon Mountains 47.2,61.16
+step
   talk Piznik##4276
   accept Gerenzo's Orders##1090 |goto Stonetalon Mountains 71.87,60
 step
   note Get the mysterious ore from Piznik after he finishes mining it.
   talk Piznik##4276 |q 1090 |goto Stonetalon Mountains 71.87,60
-step
-  note Get the Super Reaper 6000 Blueprints for Ziz Fizziks in the Stonetalon Mountains.
-  collect Super Reaper 6000 Blueprints##5734 |q 1093 |goto Stonetalon Mountains 71.8,50.03 |tip {dropsfrom}Venture Co. Operator
 step
   talk Piznik##4276
   turnin Gerenzo's Orders##1090 |goto Stonetalon Mountains 71.87,60
@@ -42,35 +42,8 @@ step
   talk Piznik##4276
   accept Gerenzo's Orders##1092 |goto Stonetalon Mountains 71.87,60
 step
-  talk Kaya Flathoof##11856
-  accept Protect Kaya##6523 |goto Stonetalon Mountains 73.48,85.59
-step
-  talk Xen'Zilla##12816
-  accept Blood Feeders##6461 |goto Stonetalon Mountains 71.25,95.02
-step
-  talk Darn Talongrip##11821
-  accept Report to Kadrak##6542 |goto Stonetalon Mountains 73.25,94.89
-step
-  note Explore deep into the cave at Boulderslide Ravine and bring back 10 Resonite Crystals for Mor'rogal at Sun Rock Retreat to investigate.
-  collect Resonite Crystal##16581 |q 6421 |goto Stonetalon Mountains 59.61,90.93
-step
-  talk Maggran Earthbinder##11860
-  turnin Arachnophobia##6284 |goto Stonetalon Mountains 47.2,61.16
-step
-  talk Mor'rogal##11861
-  turnin Boulderslide Ravine##6421 |goto Stonetalon Mountains 47.22,64.04
-step
-  talk Mor'rogal##11861
-  accept Earthen Arise##6481 |goto Stonetalon Mountains 47.22,64.04
-step
-  talk Tammra Windfield##11864
-  accept Cycle of Rebirth##6301 |goto Stonetalon Mountains 47.46,58.38
-step
-  note Tammra Windfield at Sun Rock Retreat wants you to gather 10 Gaea Seeds.
-  collect 10 Gaea Seed##16205 |q 6301 |goto Stonetalon Mountains 48.05,39.76
-step
-  talk Tammra Windfield##11864
-  turnin Cycle of Rebirth##6301 |goto Stonetalon Mountains 47.46,58.38
+  note Get the Super Reaper 6000 Blueprints for Ziz Fizziks in the Stonetalon Mountains.
+  collect Super Reaper 6000 Blueprints##5734 |q 1093 |goto Stonetalon Mountains 71.8,50.03 |tip {dropsfrom}Venture Co. Operator
 step
   talk Ziz Fizziks##4201
   turnin Gerenzo's Orders##1092 |goto Stonetalon Mountains 58.99,62.6
@@ -81,8 +54,44 @@ step
   talk Ziz Fizziks##4201
   accept Further Instructions##1094 |goto Stonetalon Mountains 58.99,62.6
 step
+  talk Tammra Windfield##11864
+  accept Cycle of Rebirth##6301 |goto Stonetalon Mountains 47.46,58.38
+step
+  note Tammra Windfield at Sun Rock Retreat wants you to gather 10 Gaea Seeds.
+  collect 10 Gaea Seed##16205 |q 6301 |goto Stonetalon Mountains 48.05,39.76
+step
+  talk Tammra Windfield##11864
+  turnin Cycle of Rebirth##6301 |goto Stonetalon Mountains 47.46,58.38
+step
+  click Pocket Litter##424005
+  accept Scramble##79980 |goto Stonetalon Mountains 40.76,52.57
+step
+  turnin Scramble##79980 |goto Stonetalon Mountains 39.62,49.86
+step
+  note Explore deep into the cave at Boulderslide Ravine and bring back 10 Resonite Crystals for Mor'rogal at Sun Rock Retreat to investigate.
+  collect Resonite Crystal##16581 |q 6421 |goto Stonetalon Mountains 59.61,90.93
+step
+  talk Xen'Zilla##12816
+  accept Blood Feeders##6461 |goto Stonetalon Mountains 71.25,95.02
+step
+  talk Darn Talongrip##11821
+  accept Report to Kadrak##6542 |goto Stonetalon Mountains 73.25,94.89
+step
+  only Warlock completed(1510) not completed(1472) not haveq(1472)
+  talk Ken'zigla##4197
+  accept Ken'zigla's Draught##1511 |goto Stonetalon Mountains 73.25,95.13
+step
+  talk Kaya Flathoof##11856
+  accept Protect Kaya##6523 |goto Stonetalon Mountains 73.48,85.59
+step
   note Xen'zilla at Malaka'Jin needs you to kill 10 Deepmoss Creepers and 7 Deepmoss Venomspitters.
   kill Deepmoss Creeper##4005 |q 6461 |goto Stonetalon Mountains 58.94,75.66
+step
+  talk Mor'rogal##11861
+  turnin Boulderslide Ravine##6421 |goto Stonetalon Mountains 47.22,64.04
+step
+  talk Mor'rogal##11861
+  accept Earthen Arise##6481 |goto Stonetalon Mountains 47.22,64.04
 step
   note Open the Resonite cask with the Enchanted Resonite Crystal, and then slay Goggeroc. Return to Mor'rogal with the news and Enchanted Resonite Crystal.
   kill Goggeroc##11920 |q 6481 |goto Stonetalon Mountains 57.4,89.4 |elite
@@ -90,15 +99,8 @@ step
   talk Xen'Zilla##12816
   turnin Blood Feeders##6461 |goto Stonetalon Mountains 71.25,95.02
 step
-  only Warlock completed(1510) not completed(1472) not haveq(1472)
-  talk Ken'zigla##4197
-  accept Ken'zigla's Draught##1511 |goto Stonetalon Mountains 73.25,95.13
-step
   talk Mor'rogal##11861
   turnin Earthen Arise##6481 |goto Stonetalon Mountains 47.22,64.04
-step
-  click Pocket Litter##424005
-  accept Scramble##79980 |goto Stonetalon Mountains 40.76,52.57
 step
   talk Braelyn Firehand##4198
   accept Cenarius' Legacy##1087 |goto Stonetalon Mountains 45.94,60.42
@@ -109,25 +111,23 @@ step
   talk Tsunaman##11862
   accept Elemental War##6393 |goto Stonetalon Mountains 47.36,64.25
 step
-  note Kill 4 Sons of Cenarius, 4 Daughters of Cenarius and 4 Cenarion Botanists for Braelyn Firehand near Sun Rock Retreat.
-  kill Son of Cenarius##4057 |q 1087 |goto Stonetalon Mountains 35.82,12.59
-step
-  note Plant 10 Gaea Seeds in Gaea Dirt Mounds, and then return the remaining Enchanted Gaea Seeds to Tammra at Sun Rock Retreat.
-  collect Gaea Dirt Mound##177929 |q 6381 |goto Stonetalon Mountains 33.61,68.96
-step
   note Bring 10 Incendrites to Tsunaman at Sun Rock Retreat.
   collect 10 Incendrites##16312 |q 6393 |goto Stonetalon Mountains 36.55,51.37 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
-step
-  talk Braelyn Firehand##4198
-  turnin Cenarius' Legacy##1087 |goto Stonetalon Mountains 45.94,60.42
-step
-  talk Tammra Windfield##11864
-  turnin New Life##6381 |goto Stonetalon Mountains 47.46,58.38
 step
   talk Tsunaman##11862
   turnin Elemental War##6393 |goto Stonetalon Mountains 47.36,64.25
 step
-  turnin Scramble##79980 |goto Stonetalon Mountains 39.62,49.86
+  note Plant 10 Gaea Seeds in Gaea Dirt Mounds, and then return the remaining Enchanted Gaea Seeds to Tammra at Sun Rock Retreat.
+  collect Gaea Dirt Mound##177929 |q 6381 |goto Stonetalon Mountains 33.61,68.96
+step
+  talk Tammra Windfield##11864
+  turnin New Life##6381 |goto Stonetalon Mountains 47.46,58.38
+step
+  note Kill 4 Sons of Cenarius, 4 Daughters of Cenarius and 4 Cenarion Botanists for Braelyn Firehand near Sun Rock Retreat.
+  kill Son of Cenarius##4057 |q 1087 |goto Stonetalon Mountains 35.82,12.59
+step
+  talk Braelyn Firehand##4198
+  turnin Cenarius' Legacy##1087 |goto Stonetalon Mountains 45.94,60.42
 step
   talk Maggran Earthbinder##11860
   accept Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16

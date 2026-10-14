@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (32-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Alterac Mountains (34-40)",
-	rev = "4da8da07",
+	rev = "5fdfa317",
 }, [[
 step
   talk Barnil Stonepot##716
@@ -14,29 +14,8 @@ step
   talk Sergeant Yohwa##733
   accept The Second Rebellion##203 |goto Stranglethorn Vale 38.02,3.33
 step
-  talk Private Thorsen##738
-  accept Jungle Secrets##215 |goto Stranglethorn Vale 40.34,8.44
-step
   talk Sergeant Yohwa##733
   accept Bad Medicine##204 |goto Stranglethorn Vale 38.02,3.33
-step
-  kill Bloodscalp Warrior##587 |goto Stranglethorn Vale 34.04,16.78 |tip Loot the quest item here — it starts the quest.
-  accept Crystal in the Mountains##635 |goto Stranglethorn Vale 34.04,16.78
-step
-  note Kill 15 Kurzen Jungle Fighters.
-  kill Kurzen Jungle Fighter##937 |q 203 |goto Stranglethorn Vale 44.64,9.98
-step
-  note Bring 7 Jungle Remedies and 1 Venom Fern Extract to Sergeant Yohwa at the Rebel Camp.
-  collect 7 Jungle Remedy##2633 |q 204 |goto Stranglethorn Vale 44.45,9.79 |tip {dropsfrom}Kurzen Medicine Man, Kurzen Headshrinker, Kurzen Witch Doctor
-step
-  talk Sergeant Yohwa##733
-  turnin The Second Rebellion##203 |goto Stranglethorn Vale 38.02,3.33
-step
-  talk Sergeant Yohwa##733
-  turnin Bad Medicine##204 |goto Stranglethorn Vale 38.02,3.33
-step
-  talk Lieutenant Doren##469
-  turnin Jungle Secrets##215 |goto Stranglethorn Vale 38.04,3.01
 step
   talk Hemet Nesingwary##715
   turnin Welcome to the Jungle##583 |goto Stranglethorn Vale 35.66,10.81
@@ -50,78 +29,83 @@ step
   talk Hemet Nesingwary##715
   accept Raptor Mastery##194 |goto Stranglethorn Vale 35.66,10.81
 step
-  talk Lieutenant Doren##469
-  accept Bookie Herod##200 |goto Stranglethorn Vale 38.04,3.01
-step
   note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Young Stranglethorn Tigers.
   kill Young Stranglethorn Tiger##681 |q 185 |goto Stranglethorn Vale 35.65,12.14
 step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Young Panthers.
-  kill Young Panther##683 |q 190 |goto Stranglethorn Vale 41.35,12.82
+  talk Ajeck Rouack##717
+  turnin Tiger Mastery##185 |goto Stranglethorn Vale 35.62,10.62
+step
+  talk Ajeck Rouack##717
+  accept Tiger Mastery##186 |goto Stranglethorn Vale 35.62,10.62
+step
+  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Stranglethorn Tigers.
+  kill Stranglethorn Tiger##682 |q 186 |goto Stranglethorn Vale 37.4,12.8
+step
+  talk Ajeck Rouack##717
+  turnin Tiger Mastery##186 |goto Stranglethorn Vale 35.62,10.62
+step
+  talk Ajeck Rouack##717
+  accept Tiger Mastery##187 |goto Stranglethorn Vale 35.62,10.62
+step
+  kill Bloodscalp Warrior##587 |goto Stranglethorn Vale 34.04,16.78 |tip Loot the quest item here — it starts the quest.
+  accept Crystal in the Mountains##635 |goto Stranglethorn Vale 34.04,16.78
+step
+  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Elder Stranglethorn Tigers.
+  kill Elder Stranglethorn Tiger##1085 |q 187 |goto Stranglethorn Vale 33.53,18.31
 step
   note Hemet Nesingwary wants you to kill 10 Stranglethorn Raptors.
   kill Stranglethorn Raptor##685 |q 194 |goto Stranglethorn Vale 25.72,15.81
 step
   talk Ajeck Rouack##717
-  turnin Tiger Mastery##185 |goto Stranglethorn Vale 35.62,10.62
-step
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##190 |goto Stranglethorn Vale 35.55,10.55
+  turnin Tiger Mastery##187 |goto Stranglethorn Vale 35.62,10.62
 step
   talk Hemet Nesingwary##715
   turnin Raptor Mastery##194 |goto Stranglethorn Vale 35.66,10.81
 step
-  turnin Bookie Herod##200 |goto Stranglethorn Vale 43.67,9.37
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
 step
-  talk Ajeck Rouack##717
-  accept Tiger Mastery##186 |goto Stranglethorn Vale 35.62,10.62
+  talk Private Thorsen##738
+  accept Jungle Secrets##215 |goto Stranglethorn Vale 40.34,8.44
+step
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Young Panthers.
+  kill Young Panther##683 |q 190 |goto Stranglethorn Vale 41.35,12.82
+step
+  note Kill 15 Kurzen Jungle Fighters.
+  kill Kurzen Jungle Fighter##937 |q 203 |goto Stranglethorn Vale 44.64,9.98
+step
+  note Bring 7 Jungle Remedies and 1 Venom Fern Extract to Sergeant Yohwa at the Rebel Camp.
+  collect 7 Jungle Remedy##2633 |q 204 |goto Stranglethorn Vale 44.45,9.79 |tip {dropsfrom}Kurzen Medicine Man, Kurzen Headshrinker, Kurzen Witch Doctor
+step
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##190 |goto Stranglethorn Vale 35.55,10.55
+step
+  talk Sergeant Yohwa##733
+  turnin The Second Rebellion##203 |goto Stranglethorn Vale 38.02,3.33
+step
+  talk Sergeant Yohwa##733
+  turnin Bad Medicine##204 |goto Stranglethorn Vale 38.02,3.33
+step
+  talk Lieutenant Doren##469
+  turnin Jungle Secrets##215 |goto Stranglethorn Vale 38.04,3.01
 step
   talk Sir S. J. Erlgadin##718
   accept Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
 step
-  talk Hemet Nesingwary##715
-  accept Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
-step
-  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Stranglethorn Tigers.
-  kill Stranglethorn Tiger##682 |q 186 |goto Stranglethorn Vale 37.4,12.8
-step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Panthers.
-  kill Panther##736 |q 191 |goto Stranglethorn Vale 30.4,12.4
-step
-  note Hemet Nesingwary wants you to kill 10 Lashtail Raptors.
-  kill Lashtail Raptor##686 |q 195 |goto Stranglethorn Vale 33.4,24.55
-step
-  talk Ajeck Rouack##717
-  turnin Tiger Mastery##186 |goto Stranglethorn Vale 35.62,10.62
-step
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
-step
-  talk Hemet Nesingwary##715
-  turnin Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
-step
-  talk Ajeck Rouack##717
-  accept Tiger Mastery##187 |goto Stranglethorn Vale 35.62,10.62
-step
-  talk Corporal Kaleb##770
-  accept Krazek's Cookery##210 |goto Stranglethorn Vale 37.74,3.3
-step
-  click Bookie Herod's Records##287
-  accept The Hidden Key##328 |goto Stranglethorn Vale 43.67,9.37
-step
-  note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Elder Stranglethorn Tigers.
-  kill Elder Stranglethorn Tiger##1085 |q 187 |goto Stranglethorn Vale 33.53,18.31
-step
-  talk Ajeck Rouack##717
-  turnin Tiger Mastery##187 |goto Stranglethorn Vale 35.62,10.62
-step
-  turnin The Hidden Key##328 |goto Stranglethorn Vale 49.62,7.56
+  talk Lieutenant Doren##469
+  accept Bookie Herod##200 |goto Stranglethorn Vale 38.04,3.01
 step
   talk Ajeck Rouack##717
   accept Tiger Mastery##188 |goto Stranglethorn Vale 35.62,10.62
 step
-  click Bookie Herod's Strongbox##288
-  accept The Spy Revealed!##329 |goto Stranglethorn Vale 49.62,7.56
+  talk Corporal Kaleb##770
+  accept Krazek's Cookery##210 |goto Stranglethorn Vale 37.74,3.3
+step
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Panthers.
+  kill Panther##736 |q 191 |goto Stranglethorn Vale 30.4,12.4
+step
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
 step
   note Ajeck Rouack of Nesingwary's Expedition wants you to kill Sin'Dall and return with her paw.
   collect Paw of Sin'Dall##3879 |q 188 |goto Stranglethorn Vale 32.21,17.39 |tip {dropsfrom}Sin'Dall
@@ -129,11 +113,27 @@ step
   talk Ajeck Rouack##717
   turnin Tiger Mastery##188 |goto Stranglethorn Vale 35.62,10.62
 step
+  turnin Bookie Herod##200 |goto Stranglethorn Vale 43.67,9.37
+step
+  click Bookie Herod's Records##287
+  accept The Hidden Key##328 |goto Stranglethorn Vale 43.67,9.37
+step
+  turnin The Hidden Key##328 |goto Stranglethorn Vale 49.62,7.56
+step
+  click Bookie Herod's Strongbox##288
+  accept The Spy Revealed!##329 |goto Stranglethorn Vale 49.62,7.56
+step
   talk Lieutenant Doren##469
   turnin The Spy Revealed!##329 |goto Stranglethorn Vale 38.04,3.01
 step
   talk Lieutenant Doren##469
   accept Patrol Schedules##330 |goto Stranglethorn Vale 38.04,3.01
+step
+  talk Corporal Sethman##1422
+  turnin Patrol Schedules##330 |goto Stranglethorn Vale 37.66,3.39
+step
+  talk Corporal Sethman##1422
+  accept Report to Doren##331 |goto Stranglethorn Vale 37.66,3.39
 step
   talk Sir S. J. Erlgadin##718
   accept Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
@@ -144,32 +144,32 @@ step
   talk Sergeant Yohwa##733
   accept Special Forces##574 |goto Stranglethorn Vale 38.02,3.33
 step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Shadowmaw Panthers.
-  kill Shadowmaw Panther##684 |q 192 |goto Stranglethorn Vale 41.3,34.76
+  talk Lieutenant Doren##469
+  turnin Report to Doren##331 |goto Stranglethorn Vale 38.04,3.01
 step
   note Find the 4 tablets and bring their legends back to Brother Nimetz.
   collect The First Troll Legend##2005 |q 207 |goto Stranglethorn Vale 29.48,19.14 |tip {dropsfrom}Moon Over the Vale
 step
-  note Kill 10 Kurzen Commandoes and 6 Kurzen Headshrinkers.
-  kill Kurzen Commando##938 |q 574 |goto Stranglethorn Vale 45.93,7.9
-step
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
-step
   talk Brother Nimetz##739
   turnin Kurzen's Mystery##207 |goto Stranglethorn Vale 37.83,3.56
 step
-  talk Corporal Sethman##1422
-  turnin Patrol Schedules##330 |goto Stranglethorn Vale 37.66,3.39
+  note Kill 10 Kurzen Commandoes and 6 Kurzen Headshrinkers.
+  kill Kurzen Commando##938 |q 574 |goto Stranglethorn Vale 45.93,7.9
 step
   talk Lieutenant Doren##469
   turnin Special Forces##574 |goto Stranglethorn Vale 38.04,3.01
 step
-  talk Corporal Sethman##1422
-  accept Report to Doren##331 |goto Stranglethorn Vale 37.66,3.39
+  note Hemet Nesingwary wants you to kill 10 Lashtail Raptors.
+  kill Lashtail Raptor##686 |q 195 |goto Stranglethorn Vale 33.4,24.55
 step
-  talk Lieutenant Doren##469
-  turnin Report to Doren##331 |goto Stranglethorn Vale 38.04,3.01
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Shadowmaw Panthers.
+  kill Shadowmaw Panther##684 |q 192 |goto Stranglethorn Vale 41.3,34.76
+step
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
+step
+  talk Hemet Nesingwary##715
+  turnin Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
 step
   note {fp}Gyll
   goto Stranglethorn Vale 27.53,77.79 |tip {vendor}
@@ -236,23 +236,23 @@ step
   talk Baron Revilgaz##2496
   accept Water Elementals##601 |goto Stranglethorn Vale 27.23,76.87
 step
-  talk Private Thorsen##738
-  turnin Supplies to Private Thorsen##198 |goto Stranglethorn Vale 40.34,8.44
+  note Acquire 6 Water Elemental Bracers for Baron Revilgaz in Booty Bay.
+  collect 6 Water Elemental Bracers##3923 |q 601 |goto Stranglethorn Vale 21.01,23.12 |tip {dropsfrom}Lesser Water Elemental
 step
   note Acquire 15 Bloodscalp Ears and return them to Kebok in Booty Bay.
   collect 15 Bloodscalp Ear##1519 |q 189 |goto Stranglethorn Vale 34.04,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
 step
-  note Retrieve 8 Tumbled Crystals and return them to Kebok in Booty Bay.
-  collect 8 Tumbled Crystal##4106 |q 213 |goto Stranglethorn Vale 44.23,20.09 |tip {dropsfrom}Venture Co. Geologist
-step
   note Bring 2 Large River Crocolisk Skins to Drizzlik in Booty Bay.
   collect 2 Large River Crocolisk Skin##4053 |q 575 |goto Stranglethorn Vale 36.85,10.51 |tip {dropsfrom}River Crocolisk
 step
-  note Acquire 6 Water Elemental Bracers for Baron Revilgaz in Booty Bay.
-  collect 6 Water Elemental Bracers##3923 |q 601 |goto Stranglethorn Vale 21.01,23.12 |tip {dropsfrom}Lesser Water Elemental
-step
   note Bring 10 Singing Crystal Shards to Crank Fizzlebub.
   collect 10 Singing Crystal Shard##3918 |q 605 |goto Stranglethorn Vale 34.68,6.74 |tip {dropsfrom}Stone Maw Basilisk, Crystal Spine Basilisk, Cold Eye Basilisk
+step
+  talk Private Thorsen##738
+  turnin Supplies to Private Thorsen##198 |goto Stranglethorn Vale 40.34,8.44
+step
+  note Retrieve 8 Tumbled Crystals and return them to Kebok in Booty Bay.
+  collect 8 Tumbled Crystal##4106 |q 213 |goto Stranglethorn Vale 44.23,20.09 |tip {dropsfrom}Venture Co. Geologist
 step
   only completed(1180)
   note Bring the Fuel Regulator Blueprints to Baron Revilgaz in Booty Bay.
@@ -283,6 +283,9 @@ step
   talk Baron Revilgaz##2496
   accept Magical Analysis##602 |goto Stranglethorn Vale 27.23,76.87
 step
+  note Bring 5 Snapjaw Crocolisks Skins to Drizzlik in Booty Bay.
+  collect 5 Snapjaw Crocolisk Skin##4104 |q 577 |goto Stranglethorn Vale 40.74,22.18 |tip {dropsfrom}Snapjaw Crocolisk
+step
   talk Sir S. J. Erlgadin##718
   accept Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
 step
@@ -310,15 +313,8 @@ step
   talk Barnil Stonepot##716
   accept Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
 step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to bring him the Fang of Bhag'thera.
-  kill Bhag'thera##728 |goto Stranglethorn Vale 49.4,24 |elite
-  collect Fang of Bhag'thera##3876 |q 193 |goto Stranglethorn Vale 49.4,24
-step
-  note Kill 6 Kurzen Elite, 4 Kurzen Subchiefs, and bring Kurzen's Head to Lieutenant Doren at the Rebel Camp.
-  kill Kurzen Elite##939 |q 202 |goto Stranglethorn Vale 47.88,6.86
-step
-  note Bring 4 Skullsplitter Fetishes to Brother Nimetz at the Rebel Camp.
-  collect 4 Skullsplitter Fetish##2466 |q 205 |goto Stranglethorn Vale 45.55,42.22 |tip {dropsfrom}Skullsplitter Witch Doctor, Skullsplitter Mystic
+  talk Barnil Stonepot##716
+  turnin The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
 step
   note Bring pages 1, 4, 6, and 8 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter I.
   collect Green Hills of Stranglethorn - Page 1##2725 |q 339 |goto Stranglethorn Vale 34.04,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
@@ -332,21 +328,6 @@ step
   note Bring pages 25, 26, and 27 of Nesingwary's The Green Hills of Stranglethorn to Barnil Stonepot in order to complete Chapter IV.
   collect Green Hills of Stranglethorn - Page 25##2749 |q 342 |goto Stranglethorn Vale 34.04,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
 step
-  note Bring 5 Snapjaw Crocolisks Skins to Drizzlik in Booty Bay.
-  collect 5 Snapjaw Crocolisk Skin##4104 |q 577 |goto Stranglethorn Vale 40.74,22.18 |tip {dropsfrom}Snapjaw Crocolisk
-step
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
-step
-  talk Lieutenant Doren##469
-  turnin Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
-step
-  talk Brother Nimetz##739
-  turnin Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
-step
-  talk Barnil Stonepot##716
-  turnin The Green Hills of Stranglethorn##338 |goto Stranglethorn Vale 35.66,10.53
-step
   talk Barnil Stonepot##716
   turnin Chapter I##339 |goto Stranglethorn Vale 35.66,10.53
 step
@@ -359,8 +340,30 @@ step
   talk Barnil Stonepot##716
   turnin Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
 step
+  note Kill 6 Kurzen Elite, 4 Kurzen Subchiefs, and bring Kurzen's Head to Lieutenant Doren at the Rebel Camp.
+  kill Kurzen Elite##939 |q 202 |goto Stranglethorn Vale 47.88,6.86
+step
+  talk Lieutenant Doren##469
+  turnin Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
+step
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to bring him the Fang of Bhag'thera.
+  kill Bhag'thera##728 |goto Stranglethorn Vale 49.4,24 |elite
+  collect Fang of Bhag'thera##3876 |q 193 |goto Stranglethorn Vale 49.4,24
+step
+  note Bring 4 Skullsplitter Fetishes to Brother Nimetz at the Rebel Camp.
+  collect 4 Skullsplitter Fetish##2466 |q 205 |goto Stranglethorn Vale 45.55,42.22 |tip {dropsfrom}Skullsplitter Witch Doctor, Skullsplitter Mystic
+step
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
+step
+  talk Brother Nimetz##739
+  turnin Troll Witchery##205 |goto Stranglethorn Vale 37.83,3.56
+step
   talk Hemet Nesingwary##715
   accept Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
+step
+  note Hemet Nesingwary wants you to kill 10 Jungle Stalkers.
+  kill Jungle Stalker##687 |q 196 |goto Stranglethorn Vale 28.91,44.16
 step
   talk Drizzlik##2495
   turnin Some Assembly Required##577 |goto Stranglethorn Vale 28.29,77.59
@@ -377,28 +380,19 @@ step
   talk "Sea Wolf" MacKinley##2501
   accept Scaring Shaky##606 |goto Stranglethorn Vale 27.78,77.07
 step
-  note Hemet Nesingwary wants you to kill 10 Jungle Stalkers.
-  kill Jungle Stalker##687 |q 196 |goto Stranglethorn Vale 28.91,44.16
-step
-  note Bring 5 Mistvale Giblets to "Shaky" Phillipe in Booty Bay.
-  collect 5 Mistvale Giblets##3919 |q 606 |goto Stranglethorn Vale 33.48,65.45 |tip {dropsfrom}Elder Mistvale Gorilla
-step
   turnin The Bloodsail Buccaneers##595 |goto Stranglethorn Vale 27.28,69.52
-step
-  talk "Shaky" Phillipe##2502
-  turnin Scaring Shaky##606 |goto Stranglethorn Vale 26.9,73.59
 step
   click Bloodsail Correspondence##2083
   accept The Bloodsail Buccaneers##597 |goto Stranglethorn Vale 27.28,69.52
 step
-  talk "Shaky" Phillipe##2502
-  accept Return to MacKinley##607 |goto Stranglethorn Vale 26.9,73.59
+  note Bring 5 Mistvale Giblets to "Shaky" Phillipe in Booty Bay.
+  collect 5 Mistvale Giblets##3919 |q 606 |goto Stranglethorn Vale 33.48,65.45 |tip {dropsfrom}Elder Mistvale Gorilla
 step
   talk First Mate Crazz##2490
   turnin The Bloodsail Buccaneers##597 |goto Stranglethorn Vale 28.1,76.22
 step
-  talk "Sea Wolf" MacKinley##2501
-  turnin Return to MacKinley##607 |goto Stranglethorn Vale 27.78,77.07
+  talk "Shaky" Phillipe##2502
+  turnin Scaring Shaky##606 |goto Stranglethorn Vale 26.9,73.59
 step
   talk Deeg##2488
   accept Up to Snuff##587 |goto Stranglethorn Vale 26.92,77.35
@@ -406,17 +400,20 @@ step
   talk First Mate Crazz##2490
   accept The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 28.1,76.22
 step
+  talk "Shaky" Phillipe##2502
+  accept Return to MacKinley##607 |goto Stranglethorn Vale 26.9,73.59
+step
+  talk Fleet Master Seahorn##2487
+  turnin The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 27.17,77.01
+step
+  talk "Sea Wolf" MacKinley##2501
+  turnin Return to MacKinley##607 |goto Stranglethorn Vale 27.78,77.07
+step
   note Deeg in Booty Bay wants you to bring him 15 shares of Snuff.
   collect Snuff##3910 |q 587 |goto Stranglethorn Vale 32.34,71.67 |tip {dropsfrom}Bloodsail Raider, Bloodsail Mage, Bloodsail Swashbuckler
 step
   talk Deeg##2488
   turnin Up to Snuff##587 |goto Stranglethorn Vale 26.92,77.35
-step
-  talk Fleet Master Seahorn##2487
-  turnin The Bloodsail Buccaneers##599 |goto Stranglethorn Vale 27.17,77.01
-step
-  talk Hemet Nesingwary##715
-  turnin Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
 step
   note Bring 10 Singing Blue Crystals to Crank Fizzlebub in Booty Bay.
   collect 10 Singing Blue Crystal##3917 |q 600 |goto Stranglethorn Vale 41.55,43.48 |tip {dropsfrom}Venture Co. Strip Miner, Venture Co. Foreman, Venture Co. Surveyor
@@ -424,6 +421,9 @@ step
   note Bring an Elder Crocolisk Skin to Drizzlik in Booty Bay.
   kill Elder Saltwater Crocolisk##2635 |goto Stranglethorn Vale 29.83,25.48 |elite
   collect Elder Crocolisk Skin##4105 |q 628 |goto Stranglethorn Vale 29.83,25.48
+step
+  talk Hemet Nesingwary##715
+  turnin Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
 step
   talk Crank Fizzlebub##2498
   turnin Venture Company Mining##600 |goto Stranglethorn Vale 27.12,77.21

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (55-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Eastern Plaguelands (56-60)",
-	rev = "24f6a42e",
+	rev = "9272c3ac",
 }, [[
 step
   collect Arena Treasure Chest##179697 |goto Stranglethorn Vale 30.52,47.87 |tip Loot the quest item here — it starts the quest.
@@ -13,12 +13,6 @@ step
 step
   talk Short John Mithril##14508
   turnin Arena Master##7810 |goto Stranglethorn Vale 29.59,47.38
-step
-  talk Fleet Master Firallon##2546
-  accept Dressing the Part##9272 |goto Stranglethorn Vale 30.58,90.63
-step
-  talk Fleet Master Firallon##2546
-  turnin Dressing the Part##9272 |goto Stranglethorn Vale 30.58,90.63
 step
   only completed(3621)
   talk Galvan the Ancient##7802
@@ -36,6 +30,12 @@ step
   talk Galvan the Ancient##7802
   accept Return to the Blasted Lands##3626 |goto Stranglethorn Vale 50.62,20.48
 step
+  talk Fleet Master Firallon##2546
+  accept Dressing the Part##9272 |goto Stranglethorn Vale 30.58,90.63
+step
+  talk Fleet Master Firallon##2546
+  turnin Dressing the Part##9272 |goto Stranglethorn Vale 30.58,90.63
+step
   talk "Pretty Boy" Duncan##2545
   accept Avast Ye, Scallywag##1036 |goto Stranglethorn Vale 27.39,69.42
 step
@@ -45,17 +45,17 @@ step
   talk Fleet Master Firallon##2546
   accept Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
 step
-  talk Vinchaxa##15070
-  accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
-step
-  talk Vinchaxa##15070
-  turnin A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
-step
   note Slay Fleet Master Seahorn and Baron Revilgaz of Booty Bay, and then return to Fleet Master Firallon aboard the Crimson Veil off the coast of Stranglethorn Vale.
   kill Baron Revilgaz##2496 |q 4621 |goto Stranglethorn Vale 27.23,76.87
 step
   talk Fleet Master Firallon##2546
   turnin Avast Ye, Admiral!##4621 |goto Stranglethorn Vale 30.58,90.63
+step
+  talk Vinchaxa##15070
+  accept A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
+step
+  talk Vinchaxa##15070
+  turnin A Bijou for Zanza##8240 |goto Stranglethorn Vale 14.5,15.83
 step
   only completed(3621)
   talk Fallen Hero of the Horde##7572

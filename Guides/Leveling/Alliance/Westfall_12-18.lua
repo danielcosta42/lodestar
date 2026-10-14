@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Westfall (12-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dun Morogh (13-26)",
-	rev = "60a84ac0",
+	rev = "ced70219",
 }, [[
 step
   talk Gilbert Gray##267118
@@ -42,6 +42,42 @@ step
   note Verna Furlbrow in Westfall wants you to bring her 8 Handfuls of Oats.
   collect Handful of Oats##1528 |q 151 |goto Westfall 48.96,34.17 |tip {dropsfrom}Sack of Oats, Noggle's Satchel
 step
+  talk Verna Furlbrow##238
+  turnin Poor Old Blanchy##151 |goto Westfall 59.92,19.42
+step
+  talk Farmer Saldean##233
+  accept The Killing Fields##9 |goto Westfall 56.04,31.23
+step
+  talk Ozwin Ironsprocket##253395
+  accept Harvesting the Harvesters##92909 |goto Westfall 51.58,32.23
+step
+  kill Harvest Golem##36 |goto Westfall 47.88,33.47 |tip Loot the quest item here — it starts the quest.
+  accept Harvesting the Harvesters##92910 |goto Westfall 47.88,33.47
+step
+  talk Ozwin Ironsprocket##253395
+  accept Harvesting the Harvesters##92911 |goto Westfall 51.58,32.23
+step
+  note Farmer Saldean wants you to kill 20 Harvest Watchers.
+  kill Harvest Watcher##114 |q 9 |goto Westfall 45.9,36.14
+step
+  note Ozwin Ironsprocket at Saldean's Farm wants you to bring him 14 Golem Isosprings and 5 Harvester Gyrostabilizers.
+  collect Golem Isospring##255007 |q 92909 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
+step
+  note Ozwin Ironsprocket at Saldean's Farm wants you to bring him 8 Golem Isosprings, 4 Copper Modulators, and a Crude Scope.
+  collect Golem Isospring##255007 |q 92911 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
+step
+  talk Ozwin Ironsprocket##253395
+  turnin Harvesting the Harvesters##92909 |goto Westfall 51.58,32.23
+step
+  talk Ozwin Ironsprocket##253395
+  turnin Harvesting the Harvesters##92910 |goto Westfall 51.58,32.23
+step
+  talk Ozwin Ironsprocket##253395
+  turnin Harvesting the Harvesters##92911 |goto Westfall 51.58,32.23
+step
+  talk Farmer Saldean##233
+  turnin The Killing Fields##9 |goto Westfall 56.04,31.23
+step
   note {fp}Thor
   goto Westfall 56.55,52.64 |tip {vendor}
 step
@@ -77,17 +113,11 @@ step
   talk Alba Fairmoon##253092
   accept Moonbrook Espionage##92747 |goto Westfall 52.48,53.05
 step
-  note Salma Saldean needs 8 Goretusk livers to make a Goretusk Liver Pie.
-  collect Goretusk Liver##723 |q 22 |goto Westfall 44.71,56.93 |tip {dropsfrom}Goretusk, Bellygrub, Young Goretusk
+  talk Alba Fairmoon##253092
+  accept Explosive Consultation##92748 |goto Westfall 52.48,53.05
 step
   note Salma Saldean wants 3 Stringy Vulture Meat, 3 Goretusk Snouts, 3 Murloc Eyes, 3 Okra.
   collect Stringy Vulture Meat##729 |q 38 |goto Westfall 61.14,54.85 |tip {dropsfrom}Greater Fleshripper, Young Fleshripper, Vultros
-step
-  note Bring 8 Gnoll Paws to Captain Danuvin on Sentinel Hill.
-  collect 8 Gnoll Paw##725 |q 102 |goto Westfall 62.67,75.93 |tip {dropsfrom}Riverpaw Taskmaster, Riverpaw Gnoll, Riverpaw Mongrel
-step
-  talk Captain Danuvin##821
-  turnin Patrolling Westfall##102 |goto Westfall 56.42,47.62
 step
   only Human
   talk Thor##523
@@ -100,38 +130,14 @@ step
   talk Thor##523
   accept Continue to Stormwind##6281 |goto Westfall 56.55,52.64
 step
+  note Salma Saldean needs 8 Goretusk livers to make a Goretusk Liver Pie.
+  collect Goretusk Liver##723 |q 22 |goto Westfall 44.71,56.93 |tip {dropsfrom}Goretusk, Bellygrub, Young Goretusk
+step
   note Collect 8 Suspicious Industrial Supplies from Moonbrook.
   collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 42.5,68.7 |tip {dropsfrom}Suspicious Crate
 step
-  talk Verna Furlbrow##238
-  turnin Poor Old Blanchy##151 |goto Westfall 59.92,19.42
-step
-  note Alba Fairmoon wants you to collect 7 Longshore Murloc Gills along the shoreline of Westfall.
-  collect 7 Longshore Murloc Gill##254548 |q 92744 |goto Westfall 45.02,8.89 |tip {dropsfrom}Murloc Coastrunner, Murloc Tidehunter, Murloc Warrior
-step
-  note Slay 4 Kobold Diggers in the Jangolode Mine and 6 Riverpaw Miners in the Gold Coast Quarry.
-  kill Kobold Digger##1236 |q 92745 |goto Westfall 45.32,20.46
-step
-  talk Salma Saldean##235
-  turnin Goretusk Liver Pie##22 |goto Westfall 56.42,30.52
-step
-  talk Salma Saldean##235
-  turnin Westfall Stew##38 |goto Westfall 56.42,30.52
-step
-  talk Farmer Saldean##233
-  accept The Killing Fields##9 |goto Westfall 56.04,31.23
-step
-  talk Ozwin Ironsprocket##253395
-  accept Harvesting the Harvesters##92909 |goto Westfall 51.58,32.23
-step
-  kill Harvest Golem##36 |goto Westfall 47.88,33.47 |tip Loot the quest item here — it starts the quest.
-  accept Harvesting the Harvesters##92910 |goto Westfall 47.88,33.47
-step
-  talk Ozwin Ironsprocket##253395
-  accept Harvesting the Harvesters##92911 |goto Westfall 51.58,32.23
-step
-  note Farmer Saldean wants you to kill 20 Harvest Watchers.
-  kill Harvest Watcher##114 |q 9 |goto Westfall 45.9,36.14
+  talk Alba Fairmoon##253092
+  turnin Moonbrook Espionage##92747 |goto Westfall 52.48,53.05
 step
   note Gryan Stoutmantle wants you to kill 15 Defias Trappers and 15 Defias Smugglers then return to him on Sentinel Hill.
   kill Defias Trapper##504 |q 12 |goto Westfall 47.39,36.32
@@ -139,23 +145,20 @@ step
   note Bring 15 Red Leather Bandanas to Scout Galiaan at Sentinel Hill.
   collect 15 Red Leather Bandana##829 |q 153 |goto Westfall 45.8,26.58 |tip {dropsfrom}Defias Smuggler, Defias Pathstalker, Defias Highwayman
 step
-  note Ozwin Ironsprocket at Saldean's Farm wants you to bring him 14 Golem Isosprings and 5 Harvester Gyrostabilizers.
-  collect Golem Isospring##255007 |q 92909 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
+  note Slay 4 Kobold Diggers in the Jangolode Mine and 6 Riverpaw Miners in the Gold Coast Quarry.
+  kill Kobold Digger##1236 |q 92745 |goto Westfall 45.32,20.46
 step
-  note Ozwin Ironsprocket at Saldean's Farm wants you to bring him 8 Golem Isosprings, 4 Copper Modulators, and a Crude Scope.
-  collect Golem Isospring##255007 |q 92911 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
+  kill Murloc Coastrunner##126 |goto Westfall 45.02,8.89 |tip Loot the quest item here — it starts the quest.
+  accept Captain Sander's Hidden Treasure##136 |goto Westfall 45.02,8.89
 step
-  talk Farmer Saldean##233
-  turnin The Killing Fields##9 |goto Westfall 56.04,31.23
+  note Alba Fairmoon wants you to collect 7 Longshore Murloc Gills along the shoreline of Westfall.
+  collect 7 Longshore Murloc Gill##254548 |q 92744 |goto Westfall 45.02,8.89 |tip {dropsfrom}Murloc Coastrunner, Murloc Tidehunter, Murloc Warrior
 step
-  talk Ozwin Ironsprocket##253395
-  turnin Harvesting the Harvesters##92909 |goto Westfall 51.58,32.23
+  talk Salma Saldean##235
+  turnin Goretusk Liver Pie##22 |goto Westfall 56.42,30.52
 step
-  talk Ozwin Ironsprocket##253395
-  turnin Harvesting the Harvesters##92910 |goto Westfall 51.58,32.23
-step
-  talk Ozwin Ironsprocket##253395
-  turnin Harvesting the Harvesters##92911 |goto Westfall 51.58,32.23
+  talk Salma Saldean##235
+  turnin Westfall Stew##38 |goto Westfall 56.42,30.52
 step
   talk Gryan Stoutmantle##234
   turnin The People's Militia##12 |goto Westfall 56.33,47.52
@@ -169,26 +172,21 @@ step
   talk Alba Fairmoon##253092
   turnin The State of the Mines##92745 |goto Westfall 52.48,53.05
 step
-  talk Alba Fairmoon##253092
-  turnin Moonbrook Espionage##92747 |goto Westfall 52.48,53.05
-step
   talk Gryan Stoutmantle##234
   accept The People's Militia##13 |goto Westfall 56.33,47.52
 step
-  talk Alba Fairmoon##253092
-  accept Explosive Consultation##92748 |goto Westfall 52.48,53.05
+  turnin Captain Sander's Hidden Treasure##136 |goto Westfall 25.91,47.75
+step
+  click Captain's Footlocker##35
+  accept Captain Sander's Hidden Treasure##138 |goto Westfall 25.91,47.75
+step
+  turnin Captain Sander's Hidden Treasure##138 |goto Westfall 40.52,47.79
+step
+  click Broken Barrel##36
+  accept Captain Sander's Hidden Treasure##139 |goto Westfall 40.52,47.79
 step
   note Gryan Stoutmantle wants you to kill 15 Defias Pillagers and 15 Defias Looters and return to him on Sentinel Hill.
   kill Defias Pillager##589 |q 13 |goto Westfall 38.76,69.61
-step
-  talk Captain Grayson##392
-  accept Keeper of the Flame##103 |goto Westfall 30.01,86.02
-step
-  kill Murloc Coastrunner##126 |goto Westfall 45.02,8.89 |tip Loot the quest item here — it starts the quest.
-  accept Captain Sander's Hidden Treasure##136 |goto Westfall 45.02,8.89
-step
-  note Bring 5 Flasks of Oil to Captain Grayson at the Westfall Lighthouse.
-  collect 5 Flask of Oil##814 |q 103 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
 step
   talk Gryan Stoutmantle##234
   turnin The People's Militia##13 |goto Westfall 56.33,47.52
@@ -196,42 +194,41 @@ step
   talk Gryan Stoutmantle##234
   accept The People's Militia##14 |goto Westfall 56.33,47.52
 step
-  turnin Captain Sander's Hidden Treasure##136 |goto Westfall 25.91,47.75
-step
-  click Captain's Footlocker##35
-  accept Captain Sander's Hidden Treasure##138 |goto Westfall 25.91,47.75
-step
-  talk Mouse##6271
-  accept Of Mice and Milk##93928 |goto Westfall 35.91,76.59
-step
-  talk Alba Fairmoon##253279
-  accept Destruction in Deadmines##92819 |goto Westfall 38.72,83.65
-step
-  note Gryan Stoutmantle wants you to kill 15 Defias Highwaymen, 5 Defias Pathstalkers and 5 Defias Knuckledusters then return to him on Sentinel Hill.
-  kill Defias Highwayman##122 |q 14 |goto Westfall 48.14,77.25
-step
-  talk Alba Fairmoon##253279
-  turnin Destruction in Deadmines##92819 |goto Westfall 38.72,83.65
-step
-  talk Captain Grayson##392
-  turnin Keeper of the Flame##103 |goto Westfall 30.01,86.02
-step
-  talk Gryan Stoutmantle##234
-  turnin The People's Militia##14 |goto Westfall 56.33,47.52
-step
-  turnin Captain Sander's Hidden Treasure##138 |goto Westfall 40.52,47.79
-step
-  click Broken Barrel##36
-  accept Captain Sander's Hidden Treasure##139 |goto Westfall 40.52,47.79
-step
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##65 |goto Westfall 56.33,47.52
 step
   talk Alba Fairmoon##253092
   accept Destruction in Deadmines##92753 |goto Westfall 52.48,53.05
 step
+  note Bring 8 Gnoll Paws to Captain Danuvin on Sentinel Hill.
+  collect 8 Gnoll Paw##725 |q 102 |goto Westfall 62.67,75.93 |tip {dropsfrom}Riverpaw Taskmaster, Riverpaw Gnoll, Riverpaw Mongrel
+step
+  note Gryan Stoutmantle wants you to kill 15 Defias Highwaymen, 5 Defias Pathstalkers and 5 Defias Knuckledusters then return to him on Sentinel Hill.
+  kill Defias Highwayman##122 |q 14 |goto Westfall 48.14,77.25
+step
   talk Alba Fairmoon##253279
   turnin Destruction in Deadmines##92753 |goto Westfall 38.72,83.65
+step
+  talk Alba Fairmoon##253279
+  accept Destruction in Deadmines##92819 |goto Westfall 38.72,83.65
+step
+  talk Alba Fairmoon##253279
+  turnin Destruction in Deadmines##92819 |goto Westfall 38.72,83.65
+step
+  talk Mouse##6271
+  accept Of Mice and Milk##93928 |goto Westfall 35.91,76.59
+step
+  talk Captain Grayson##392
+  accept Keeper of the Flame##103 |goto Westfall 30.01,86.02
+step
+  talk Gryan Stoutmantle##234
+  turnin The People's Militia##14 |goto Westfall 56.33,47.52
+step
+  talk Captain Danuvin##821
+  turnin Patrolling Westfall##102 |goto Westfall 56.42,47.62
+step
+  note Bring 5 Flasks of Oil to Captain Grayson at the Westfall Lighthouse.
+  collect 5 Flask of Oil##814 |q 103 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
 step
   turnin Captain Sander's Hidden Treasure##139 |goto Westfall 40.63,17.03
 step
@@ -239,6 +236,9 @@ step
   accept Captain Sander's Hidden Treasure##140 |goto Westfall 40.63,17.03
 step
   turnin Captain Sander's Hidden Treasure##140 |goto Westfall 25.97,16.91
+step
+  talk Captain Grayson##392
+  turnin Keeper of the Flame##103 |goto Westfall 30.01,86.02
 step
   talk Captain Grayson##392
   accept The Coast Isn't Clear##152 |goto Westfall 30.01,86.02

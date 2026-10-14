@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (32-39)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Alterac Mountains (34-40)",
-	rev = "921bf73d",
+	rev = "e76f5de3",
 }, [[
 step
   only completed(513)
@@ -63,30 +63,14 @@ step
   talk Magus Wordeen Voidglare##2410
   accept Blood in the Streets##92434 |goto Hillsbrad Foothills 61.6,20.85
 step
-  only completed(513)
-  note Bring a keg of Shindigger Stout to Apothecary Lydon in Tarren Mill.
-  collect Keg of Shindigger Stout##3517 |q 517 |goto Hillsbrad Foothills 72.02,81.16
+  talk Magus Wordeen Voidglare##2410
+  turnin Key to the City##93680 |goto Hillsbrad Foothills 61.6,20.85
 step
   note Retrieve Helcular's Rod from the Yeti and bring it back to Novice Thaivand in Tarren Mill.
   collect Helcular's Rod##3708 |q 552 |goto Hillsbrad Foothills 45.28,31.24 |tip {dropsfrom}Cave Yeti, Ferocious Yeti, Mountain Yeti
 step
-  only Warlock completed(1801)
-  note Retrieve the Moldy Tome and Tattered Manuscript for Jorah Annison in the Undercity.
-  collect Moldy Tome##6931 |q 1803 |goto Hillsbrad Foothills 27.78,72.79 |tip {dropsfrom}Tome of the Cabal
-step
-  only completed(513)
-  talk Apothecary Lydon##2216
-  turnin Elixir of Agony##517 |goto Hillsbrad Foothills 61.44,19.06
-step
   talk Novice Thaivand##2429
   turnin Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
-step
-  talk Magus Wordeen Voidglare##2410
-  turnin Key to the City##93680 |goto Hillsbrad Foothills 61.6,20.85
-step
-  only completed(513)
-  talk Apothecary Lydon##2216
-  accept Elixir of Agony##524 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk Novice Thaivand##2429
   accept Helcular's Revenge##553 |goto Hillsbrad Foothills 63.88,19.66
@@ -94,10 +78,26 @@ step
   note Charge the Rod of Helcular with the powers of the Flame of Azel, Flame of Veraz and the Flame of Uzel.
   collect Flame of Azel##1768 |q 553 |goto Hillsbrad Foothills 43.89,28.06
 step
+  turnin Helcular's Revenge##553 |goto Hillsbrad Foothills 52.75,53.37
+step
+  only Warlock completed(1801)
+  note Retrieve the Moldy Tome and Tattered Manuscript for Jorah Annison in the Undercity.
+  collect Moldy Tome##6931 |q 1803 |goto Hillsbrad Foothills 27.78,72.79 |tip {dropsfrom}Tome of the Cabal
+step
+  only completed(513)
+  note Bring a keg of Shindigger Stout to Apothecary Lydon in Tarren Mill.
+  collect Keg of Shindigger Stout##3517 |q 517 |goto Hillsbrad Foothills 72.02,81.16
+step
+  only completed(513)
+  talk Apothecary Lydon##2216
+  turnin Elixir of Agony##517 |goto Hillsbrad Foothills 61.44,19.06
+step
+  only completed(513)
+  talk Apothecary Lydon##2216
+  accept Elixir of Agony##524 |goto Hillsbrad Foothills 61.44,19.06
+step
   only completed(513)
   turnin Elixir of Agony##524 |goto Hillsbrad Foothills 62.81,18.73
-step
-  turnin Helcular's Revenge##553 |goto Hillsbrad Foothills 52.75,53.37
 step
   only completed(549)
   click WANTED##1763

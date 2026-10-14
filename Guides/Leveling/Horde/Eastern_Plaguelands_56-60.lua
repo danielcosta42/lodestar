@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Eastern Plaguelands (56-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silithus (57-60)",
-	rev = "72a2523c",
+	rev = "d740d63f",
 }, [[
 step
   talk Lady Sylvanas Windrunner##10181
@@ -66,6 +66,9 @@ step
   talk Augustus the Touched##12384
   turnin Augustus' Receipt Book##6164 |goto Eastern Plaguelands 11.36,26.37
 step
+  note Slay 20 Noxious Plaguebats and 10 Monstrous Plaguebats. Return to Nathanos Blightcaller when you are finished.
+  kill Noxious Plaguebat##8601 |q 6042 |goto Eastern Plaguelands 53.15,51.14
+step
   note {fp}Georgia
   goto Eastern Plaguelands 70.53,47.55 |tip {vendor}
 step
@@ -88,9 +91,6 @@ step
   note Smokey LaRue wants you to get 2 Thorium Bars, 1 Golden Rod, 8 Hi-Explosive Bombs, and 8 Unstable Triggers.
   collect Thorium Bar##12359 |q 6026 |goto Eastern Plaguelands 70.88,48.43
 step
-  note Slay 20 Noxious Plaguebats and 10 Monstrous Plaguebats. Return to Nathanos Blightcaller when you are finished.
-  kill Noxious Plaguebat##8601 |q 6042 |goto Eastern Plaguelands 53.15,51.14
-step
   only not completed(5401) not completed(5405) not haveq(5401) not haveq(5405)
   talk Duke Nicholas Zverenhoff##11039
   turnin Argent Dawn Commission##5503 |goto Eastern Plaguelands 71.63,50.09
@@ -101,12 +101,18 @@ step
   talk Smokey LaRue##11033
   accept When Smokey Sings, I Get Violent##6041 |goto Eastern Plaguelands 70.88,48.43
 step
-  only completed(5542) completed(5543) completed(5544)
-  note Travel to the Undercroft - at the southernmost section of the Eastern Plaguelands - and recover Taelan's Hammer. Return to Tirion Fordring upon completion of your objective.
-  collect Taelan's Hammer##14613 |q 5781 |goto Eastern Plaguelands 23.85,74.22 |tip {dropsfrom}Mercutio Filthgorger
+  note Free 15 Darrowshire Spirits and return to Carlin Redpath.
+  talk Darrowshire Spirit##11064 |q 5211 |goto Eastern Plaguelands 32.51,29.19
+step
+  note Travel to Plaguewood, northwest of Light's Hope. Destroy 8 Scourge Structures by using Smokey's Special Compound at the Mark of Detonation planted inside each building. Smokey has had the Ziggurats and Slaughterhouses marked.
+  kill Scourge Structure##12247 |q 6041 |goto Eastern Plaguelands 28.01,17.75
 step
   talk Nathanos Blightcaller##11878
   turnin Un-Life's Little Annoyances##6042 |goto Eastern Plaguelands 22.23,63.51
+step
+  only completed(5542) completed(5543) completed(5544)
+  note Travel to the Undercroft - at the southernmost section of the Eastern Plaguelands - and recover Taelan's Hammer. Return to Tirion Fordring upon completion of your objective.
+  collect Taelan's Hammer##14613 |q 5781 |goto Eastern Plaguelands 23.85,74.22 |tip {dropsfrom}Mercutio Filthgorger
 step
   note Bring Zaeldarr's Head to Caretaker Alen at Light's Hope Chapel.
   collect Zaeldarr's Head##15785 |q 6021 |goto Eastern Plaguelands 23.07,72.63 |tip {dropsfrom}Zaeldarr the Outcast
@@ -119,11 +125,9 @@ step
   talk Tirion Fordring##1855
   accept Of Lost Honor##5845 |goto Eastern Plaguelands 5.16,35.57
 step
-  note Free 15 Darrowshire Spirits and return to Carlin Redpath.
-  talk Darrowshire Spirit##11064 |q 5211 |goto Eastern Plaguelands 32.51,29.19
-step
-  note Travel to Plaguewood, northwest of Light's Hope. Destroy 8 Scourge Structures by using Smokey's Special Compound at the Mark of Detonation planted inside each building. Smokey has had the Ziggurats and Slaughterhouses marked.
-  kill Scourge Structure##12247 |q 6041 |goto Eastern Plaguelands 28.01,17.75
+  only completed(5542) completed(5543) completed(5544)
+  note Travel to Northdale, in the northeastern region of the Eastern Plaguelands, and recover the Symbol of Lost Honor. Return to Tirion Fordring upon completion of your objective.
+  collect Symbol of Lost Honor##14625 |q 5845 |goto Eastern Plaguelands 62.53,26.81
 step
   talk Carlin Redpath##11063
   turnin Defenders of Darrowshire##5211 |goto Eastern Plaguelands 71.7,50.04
@@ -182,10 +186,6 @@ step
   note Capture Crown Guard Tower, Eastwall Tower, Northpass Tower and Plaguewood Tower in the Eastern Plaguelands, then return to Emmisary Gormok at Light's Hope Chapel.
   get Bolstering Our Defenses |q 9665 |goto Eastern Plaguelands 70.37,47.94
 step
-  only completed(5542) completed(5543) completed(5544)
-  note Travel to Northdale, in the northeastern region of the Eastern Plaguelands, and recover the Symbol of Lost Honor. Return to Tirion Fordring upon completion of your objective.
-  collect Symbol of Lost Honor##14625 |q 5845 |goto Eastern Plaguelands 62.53,26.81
-step
   only not completed(5504) not completed(5507) not haveq(5504) not haveq(5507)
   talk Quartermaster Miranda Breechlock##11536
   turnin Mantles of the Dawn##5513 |goto Eastern Plaguelands 71.79,50.25
@@ -204,11 +204,11 @@ step
   talk Emmisary Gormok##17072
   turnin Bolstering Our Defenses##9665 |goto Eastern Plaguelands 70.37,47.94
 step
-  click Torn Scroll##177667
-  accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
-step
   talk Nathanos Blightcaller##11878
   accept The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
+step
+  click Torn Scroll##177667
+  accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
 step
   only completed(5542) completed(5543) completed(5544)
   talk Tirion Fordring##1855
@@ -228,16 +228,14 @@ step
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
   collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
 step
-  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
-  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
-step
   note Travel to the northern borders of the Eastern Plaguelands and recover the Quel'Thalas Registry. The item is somewhere in the Quel'Lithien lodge.
   kill Pathstrider##8565 |q 6133 |goto Eastern Plaguelands 46.74,13.01
 step
+  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
+  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
+step
   talk Huntsman Leopold##16132
   turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
-step
-  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
 step
   talk Nathanos Blightcaller##11878
   turnin The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
@@ -255,6 +253,11 @@ step
   talk Nathanos Blightcaller##11878
   turnin Duskwing, Oh How I Hate Thee...##6135 |goto Eastern Plaguelands 22.23,63.51
 step
+  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
+step
+  note Find Borelgore in the northern wastes of Eastern Plaguelands and destroy him. Return to Nathanos Blightcaller when the mission is complete.
+  kill Borelgore##11896 |q 6136 |goto Eastern Plaguelands 47.69,24.87 |elite
+step
   only completed(8946)
   talk Anthion Harmon##16016
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
@@ -262,9 +265,6 @@ step
   only completed(8946)
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
   collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
-step
-  note Find Borelgore in the northern wastes of Eastern Plaguelands and destroy him. Return to Nathanos Blightcaller when the mission is complete.
-  kill Borelgore##11896 |q 6136 |goto Eastern Plaguelands 47.69,24.87 |elite
 step
   only completed(8946)
   talk Anthion Harmon##16016

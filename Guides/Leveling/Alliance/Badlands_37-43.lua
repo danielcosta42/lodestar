@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Badlands (37-43)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (43-50)",
-	rev = "ededd553",
+	rev = "9f84d6c3",
 }, [[
 step
   talk Rigglefuzz##2817
@@ -21,20 +21,14 @@ step
   talk Prospector Ryedol##2910
   accept A Dwarf and His Tools##719 |goto Badlands 53.42,43.39
 step
-  click Crumpled Map##2868
-  accept A Sign of Hope##720 |goto Badlands 53.03,33.94
-step
   talk Sigrun Ironhew##2860
   accept Mirages##718 |goto Badlands 53.8,43.3
 step
-  note Retrieve the Supply Crate for Sigrun Ironhew.
-  collect Supply Crate##4629 |q 718 |goto Badlands 66.6,22 |tip {dropsfrom}Excavation Supply Crate
+  click Crumpled Map##2868
+  accept A Sign of Hope##720 |goto Badlands 53.03,33.94
 step
   note Find Ryedol's Lucky Pick and return it to Prospector Ryedol south of Hammertoe's Dig Site.
   collect Ryedol's Lucky Pick##4616 |q 719 |goto Badlands 53.33,32.7 |tip {dropsfrom}Shadowforge Tunneler, Shadowforge Darkweaver, Shadowforge Chanter
-step
-  talk Sigrun Ironhew##2860
-  turnin Mirages##718 |goto Badlands 53.8,43.3
 step
   talk Prospector Ryedol##2910
   turnin A Dwarf and His Tools##719 |goto Badlands 53.42,43.39
@@ -45,18 +39,28 @@ step
   talk Prospector Ryedol##2910
   accept A Sign of Hope##721 |goto Badlands 53.42,43.39
 step
-  talk Sigrun Ironhew##2860
-  accept Scrounging##733 |goto Badlands 53.8,43.3
+  note Retrieve the Supply Crate for Sigrun Ironhew.
+  collect Supply Crate##4629 |q 718 |goto Badlands 66.6,22 |tip {dropsfrom}Excavation Supply Crate
 step
-  talk Theldurin the Lost##2785
-  accept Solution to Doom##709 |goto Badlands 51.39,76.87
+  note Bring 8 Dentrium Power Stones and 8 An'Alleum Power Stones to Rigglefuzz in the Badlands.
+  kill Shadowforge Surveyor##4844 |goto Badlands 48.2,11 |elite
+  collect 8 Dentrium Power Stone##8009 |q 2418 |goto Badlands 48.2,11
 step
-  note Get 7 pieces of Scrap Metal for Sigrun.
-  collect Scrap Metal##4630 |q 733 |goto Badlands 62.52,68.44 |tip {dropsfrom}Dustbelcher Ogre, Dustbelcher Brute, Dustbelcher Wyrmhunter
+  talk Hammertoe Grez##2909
+  turnin A Sign of Hope##721 |goto Badlands 37.9,10.59
 step
-  only completed(1106)
-  note Bring 10 Indurium Flakes to Martek the Exiled in the Badlands.
-  collect 10 Indurium Flake##5797 |q 1108 |goto Badlands 49.89,68.38 |tip {dropsfrom}Stonevault Basher, Stonevault Shaman, Stonevault Bonesnapper
+  talk Hammertoe Grez##2909
+  accept Amulet of Secrets##722 |goto Badlands 37.9,10.59
+step
+  note Find Hammertoe's Amulet and return it to him in Uldaman.
+  kill Magregan Deepshadow##2932 |goto Badlands 38.99,19.73 |elite
+  collect Hammertoe's Amulet##4635 |q 722 |goto Badlands 38.99,19.73
+step
+  talk Hammertoe Grez##2909
+  turnin Amulet of Secrets##722 |goto Badlands 37.9,10.59
+step
+  talk Hammertoe Grez##2909
+  accept Prospect of Faith##723 |goto Badlands 37.9,10.59
 step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##710 |goto Badlands 25.95,44.87
@@ -66,12 +70,6 @@ step
 step
   note Find Frost Oil and bring it to Lotwil Veriatus in Badlands.
   collect Frost Oil##3829 |q 713 |goto Badlands 25.95,44.87
-step
-  note Find 10 Small Stone Shards and bring them to Lotwil Veriatus in the Badlands.
-  collect 10 Small Stone Shard##4626 |q 710 |goto Badlands 18.81,42.99 |tip {dropsfrom}Lesser Rock Elemental
-step
-  talk Lotwil Veriatus##2921
-  turnin Study of the Elements: Rock##710 |goto Badlands 25.95,44.87
 step
   talk Lotwil Veriatus##2921
   turnin Coolant Heads Prevail##713 |goto Badlands 25.95,44.87
@@ -83,43 +81,19 @@ step
   buy Gyrochronatom##4389 |q 714 |goto Ironforge 67.84,42.5
 step
   talk Lotwil Veriatus##2921
-  accept Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
-step
-  talk Lotwil Veriatus##2921
   turnin Gyro... What?##714 |goto Badlands 25.95,44.87
 step
   talk Lucien Tosselwrench##2920
   accept Liquid Stone##715 |goto Badlands 25.82,44.24
 step
-  talk Hammertoe Grez##2909
-  turnin A Sign of Hope##721 |goto Badlands 37.9,10.59
+  note Find 10 Small Stone Shards and bring them to Lotwil Veriatus in the Badlands.
+  collect 10 Small Stone Shard##4626 |q 710 |goto Badlands 18.81,42.99 |tip {dropsfrom}Lesser Rock Elemental
 step
-  talk Hammertoe Grez##2909
-  accept Amulet of Secrets##722 |goto Badlands 37.9,10.59
+  talk Lotwil Veriatus##2921
+  turnin Study of the Elements: Rock##710 |goto Badlands 25.95,44.87
 step
-  note Bring the Tablet of Ryun'eh to Theldurin the Lost.
-  collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
-step
-  note Find Hammertoe's Amulet and return it to him in Uldaman.
-  kill Magregan Deepshadow##2932 |goto Badlands 38.99,19.73 |elite
-  collect Hammertoe's Amulet##4635 |q 722 |goto Badlands 38.99,19.73
-step
-  note Bring 8 Dentrium Power Stones and 8 An'Alleum Power Stones to Rigglefuzz in the Badlands.
-  kill Shadowforge Surveyor##4844 |goto Badlands 48.2,11 |elite
-  collect 8 Dentrium Power Stone##8009 |q 2418 |goto Badlands 48.2,11
-step
-  talk Hammertoe Grez##2909
-  turnin Amulet of Secrets##722 |goto Badlands 37.9,10.59
-step
-  talk Hammertoe Grez##2909
-  accept Prospect of Faith##723 |goto Badlands 37.9,10.59
-step
-  kill Shadowforge Surveyor##4844 |goto Badlands 48.2,11 |tip Loot the quest item here — it starts the quest.
-  accept The Shattered Necklace##2198 |goto Badlands 48.2,11
-step
-  only completed(1106)
-  talk Martek the Exiled##4618
-  turnin Indurium##1108 |goto Badlands 42.22,52.69
+  talk Lotwil Veriatus##2921
+  accept Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
   talk Rigglefuzz##2817
   turnin Power Stones##2418 |goto Badlands 42.39,52.93
@@ -127,29 +101,63 @@ step
   talk Rigglefuzz##2817
   accept Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
 step
+  talk Sigrun Ironhew##2860
+  turnin Mirages##718 |goto Badlands 53.8,43.3
+step
   talk Prospector Ryedol##2910
   turnin Prospect of Faith##723 |goto Badlands 53.42,43.39
-step
-  talk Sigrun Ironhew##2860
-  turnin Scrounging##733 |goto Badlands 53.8,43.3
 step
   talk Prospector Ryedol##2910
   accept Prospect of Faith##724 |goto Badlands 53.42,43.39
 step
-  talk Theldurin the Lost##2785
-  turnin Solution to Doom##709 |goto Badlands 51.39,76.87
+  talk Sigrun Ironhew##2860
+  accept Scrounging##733 |goto Badlands 53.8,43.3
+step
+  only completed(1106)
+  note Bring 10 Indurium Flakes to Martek the Exiled in the Badlands.
+  collect 10 Indurium Flake##5797 |q 1108 |goto Badlands 49.89,68.38 |tip {dropsfrom}Stonevault Basher, Stonevault Shaman, Stonevault Bonesnapper
 step
   talk Theldurin the Lost##2785
-  accept To Ironforge for Yagyin's Digest##727 |goto Badlands 51.39,76.87
+  accept Solution to Doom##709 |goto Badlands 51.39,76.87
 step
   note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
   collect 3 Large Stone Slab##4627 |q 711 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental
+step
+  note Get 7 pieces of Scrap Metal for Sigrun.
+  collect Scrap Metal##4630 |q 733 |goto Badlands 62.52,68.44 |tip {dropsfrom}Dustbelcher Ogre, Dustbelcher Brute, Dustbelcher Wyrmhunter
+step
+  only completed(1106)
+  talk Martek the Exiled##4618
+  turnin Indurium##1108 |goto Badlands 42.22,52.69
+step
+  talk Sigrun Ironhew##2860
+  turnin Scrounging##733 |goto Badlands 53.8,43.3
+step
+  note Bring the Tablet of Ryun'eh to Theldurin the Lost.
+  collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
+step
+  kill Shadowforge Surveyor##4844 |goto Badlands 48.2,11 |tip Loot the quest item here — it starts the quest.
+  accept The Shattered Necklace##2198 |goto Badlands 48.2,11
 step
   talk Lotwil Veriatus##2921
   turnin Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
+step
+  only completed(738)
+  click Battered Dwarven Skeleton##2875
+  accept Murdaloc##739 |goto Badlands 50.89,62.4
+step
+  only completed(738)
+  note Slay Agmond's killer, Murdaloc.
+  kill Murdaloc##2945 |q 739 |goto Badlands 49.63,66.31
+step
+  talk Theldurin the Lost##2785
+  turnin Solution to Doom##709 |goto Badlands 51.39,76.87
+step
+  talk Theldurin the Lost##2785
+  accept To Ironforge for Yagyin's Digest##727 |goto Badlands 51.39,76.87
 step
   note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
   collect 5 Bracers of Rock Binding##4628 |q 712 |goto Badlands 5.48,82.27 |tip {dropsfrom}Greater Rock Elemental
@@ -178,14 +186,6 @@ step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##777 |goto Badlands 25.95,44.87
 step
-  only completed(738)
-  click Battered Dwarven Skeleton##2875
-  accept Murdaloc##739 |goto Badlands 50.89,62.4
-step
-  only completed(738)
-  note Slay Agmond's killer, Murdaloc.
-  kill Murdaloc##2945 |q 739 |goto Badlands 49.63,66.31
-step
   talk Garek##2888
   accept Tremors of the Earth##732 |goto Badlands 61.94,54.26
 step
@@ -201,6 +201,9 @@ step
   note Acquire a Black Drake's Heart for Sigrun Ironhew.
   collect Black Drake's Heart##4612 |q 706 |goto Badlands 80.66,37.38 |tip {dropsfrom}Scalding Whelp, Scorched Guardian
 step
+  talk Sigrun Ironhew##2860
+  turnin Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
+step
   talk Lotwil Veriatus##2921
   accept This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
 step
@@ -209,9 +212,6 @@ step
 step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##778 |goto Badlands 25.95,44.87
-step
-  talk Sigrun Ironhew##2860
-  turnin Fiery Blaze Enchantments##706 |goto Badlands 53.8,43.3
 step
   talk Talvash del Kissel##6826
   turnin The Shattered Necklace##2198 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge

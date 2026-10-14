@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Hinterlands (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Searing Gorge (48-50)",
-	rev = "65348afb",
+	rev = "28ed7f5f",
 }, [[
 step
   only completed(1448)
@@ -41,14 +41,8 @@ step
   talk Rhapsody Shindigger##5634
   turnin Rhapsody Shindigger##1451 |goto The Hinterlands 26.94,48.59
 step
-  note Bring 5 Troll Tribal Necklaces to Fraggar Thundermantle in Aerie Peak.
-  collect 5 Troll Tribal Necklace##9259 |q 2880 |goto The Hinterlands 46.28,66.93 |tip {dropsfrom}Vilebranch Axe Thrower, Vilebranch Witch Doctor, Vilebranch Headhunter
-step
   note Check the cages at the two Witherbark villages, then return to Gryphon Master Talonaxe.
   collect First Witherbark Cage##144066 |q 2988 |goto The Hinterlands 23.28,58.81
-step
-  talk Fraggar Thundermantle##7884
-  turnin Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
 step
   talk Gryphon Master Talonaxe##5636
   turnin Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
@@ -57,9 +51,15 @@ step
   talk Agnar Beastamer##9660
   accept Food for Baby##4297 |goto The Hinterlands 14.16,43.62
 step
+  note Bring 5 Troll Tribal Necklaces to Fraggar Thundermantle in Aerie Peak.
+  collect 5 Troll Tribal Necklace##9259 |q 2880 |goto The Hinterlands 46.28,66.93 |tip {dropsfrom}Vilebranch Axe Thrower, Vilebranch Witch Doctor, Vilebranch Headhunter
+step
   only completed(3843)
   note Bring 5 Silvermane Stalker Flanks to Agnar Beastamer in Hinterlands.
   collect 5 Silvermane Stalker Flank##11472 |q 4297 |goto The Hinterlands 68,52.86 |tip {dropsfrom}Silvermane Stalker
+step
+  talk Fraggar Thundermantle##7884
+  turnin Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
 step
   only completed(3843)
   talk Agnar Beastamer##9660
@@ -85,11 +85,11 @@ step
   talk Gryphon Master Talonaxe##5636
   accept Thadius Grimshade##2990 |goto The Hinterlands 9.75,44.47
 step
-  kill Saltwater Snapjaw##2505 |goto The Hinterlands 81.48,60.46 |tip Loot the quest item here — it starts the quest.
-  accept Find OOX-09/HL!##485 |goto The Hinterlands 81.48,60.46
-step
   note Kill 10 Green Sludges and 10 Jade Oozes, and then report back to Fraggar Thundermantle in Aerie Peak.
   kill Green Sludge##2655 |q 2877 |goto The Hinterlands 47.98,42.25
+step
+  kill Saltwater Snapjaw##2505 |goto The Hinterlands 81.48,60.46 |tip Loot the quest item here — it starts the quest.
+  accept Find OOX-09/HL!##485 |goto The Hinterlands 81.48,60.46
 step
   talk Homing Robot OOX-09/HL##7806
   turnin Find OOX-09/HL!##485 |goto The Hinterlands 49.35,37.66

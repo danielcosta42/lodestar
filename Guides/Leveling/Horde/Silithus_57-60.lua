@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Silithus (57-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (55-60)",
-	rev = "759b8ece",
+	rev = "d3bafd1d",
 }, [[
 step
   talk Cenarion Emissary Blackhoof##15188
@@ -39,17 +39,11 @@ step
   note Windcaller Proudhorn at Cenarion Hold in Silithus wants you to kill 15 Dredge Strikers.
   kill Dredge Striker##11740 |q 8280 |goto Silithus 55.73,28.63
 step
-  note Geologist Larksbane at Cenarion Hold in Silithus wants you to collect 8 Twilight Tablet Fragments.
-  collect 8 Twilight Tablet Fragment##20378 |q 8284 |goto Silithus 20.72,10.25
-step
   talk Beetix Ficklespragg##15189
   turnin Deadly Desert Venom##8277 |goto Silithus 51.61,38.63
 step
   talk Windcaller Proudhorn##15191
   turnin Securing the Supply Lines##8280 |goto Silithus 51.15,38.29
-step
-  talk Geologist Larksbane##15183
-  turnin The Twilight Mystery##8284 |goto Silithus 49.67,37.46
 step
   talk Beetix Ficklespragg##15189
   accept Noggle's Last Hope##8278 |goto Silithus 51.61,38.63
@@ -57,17 +51,11 @@ step
   talk Windcaller Proudhorn##15191
   accept Stepping Up Security##8281 |goto Silithus 51.15,38.29
 step
-  talk Geologist Larksbane##15183
-  accept The Deserter##8285 |goto Silithus 49.67,37.46
-step
   note Windcaller Proudhorn at Cenarion Hold in Silithus wants you to slay 20 Dredge Crushers.
   kill Dredge Crusher##11741 |q 8281 |goto Silithus 38.71,54.21
 step
-  talk Hermit Ortell##15194
-  turnin The Deserter##8285 |goto Silithus 67.19,69.76
-step
-  talk Hermit Ortell##15194
-  accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
+  talk Windcaller Proudhorn##15191
+  turnin Stepping Up Security##8281 |goto Silithus 51.15,38.29
 step
   only completed(1124)
   note Free the spirits of 8 Tortured Druids and 8 Tortured Sentinels in Southwind Village, and then return to Layo Starstrike at the Valor's Rest graveyard of Silithus.
@@ -80,19 +68,8 @@ step
   kill Deathclasp##15196 |goto Silithus 45.07,92.31 |elite
   collect Deathclasp's Pincer##20385 |q 8283 |goto Silithus 45.07,92.31
 step
-  only completed(1124)
-  talk Layo Starstrike##13220
-  turnin The Spirits of Southwind##1125 |goto Silithus 81.87,18.93
-step
-  only completed(1124)
-  talk Layo Starstrike##13220
-  accept Hive in the Tower##1126 |goto Silithus 81.87,18.93
-step
   talk Beetix Ficklespragg##15189
   turnin Noggle's Last Hope##8278 |goto Silithus 51.61,38.63
-step
-  talk Windcaller Proudhorn##15191
-  turnin Stepping Up Security##8281 |goto Silithus 51.15,38.29
 step
   talk Vish Kozus##15182
   turnin Wanted - Deathclasp, Terror of the Sands##8283 |goto Silithus 50.75,33.65
@@ -105,13 +82,6 @@ step
 step
   talk Scout Bloodfist##17081
   accept Report to General Kirika##9416 |goto Silithus 48.95,36.69
-step
-  only completed(1124)
-  note Scale the tower of Southwind Village and locate a means to stir the silithid hive into activity. Bring back anything unusual you may uncover when doing so to Layo Starstrike at the Valor's Rest graveyard of Silithus.
-  collect Encrusted Silithid Object##17346 |q 1126 |goto Silithus 60.2,52.6 |tip {dropsfrom}Hive'Ashi Ambusher
-step
-  note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
-  collect Twilight Lexicon - Chapter 1##20394 |q 8279 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
 step
   note Bring 10 Encrypted Twilight Texts to Bor Wildmane in Cenarion Hold.
   collect 10 Encrypted Twilight Text##20404 |q 8318 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth, Twilight Avenger, Twilight Geolord
@@ -131,17 +101,23 @@ step
   talk General Kirika##17079
   turnin Scouring the Desert##9422 |goto Silithus 50.75,69.54
 step
-  talk Hermit Ortell##15194
-  turnin The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
-step
-  talk Hermit Ortell##15194
-  accept True Believers##8323 |goto Silithus 67.19,69.76
-step
-  talk Hermit Ortell##15194
-  accept A Terrible Purpose##8287 |goto Silithus 67.19,69.76
-step
   note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
   collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
+step
+  talk Noggle Ficklespragg##15190
+  turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
+step
+  only completed(1124)
+  talk Layo Starstrike##13220
+  turnin The Spirits of Southwind##1125 |goto Silithus 81.87,18.93
+step
+  only completed(1124)
+  talk Layo Starstrike##13220
+  accept Hive in the Tower##1126 |goto Silithus 81.87,18.93
+step
+  only completed(1124)
+  note Scale the tower of Southwind Village and locate a means to stir the silithid hive into activity. Bring back anything unusual you may uncover when doing so to Layo Starstrike at the Valor's Rest graveyard of Silithus.
+  collect Encrusted Silithid Object##17346 |q 1126 |goto Silithus 60.2,52.6 |tip {dropsfrom}Hive'Ashi Ambusher
 step
   only completed(1124)
   talk Layo Starstrike##13220
@@ -150,12 +126,6 @@ step
   only completed(1124)
   talk Layo Starstrike##13220
   accept Umber, Archivist##6844 |goto Silithus 81.87,18.93
-step
-  talk Noggle Ficklespragg##15190
-  turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
-step
-  talk Commander Mar'alith##15181
-  turnin A Terrible Purpose##8287 |goto Silithus 49.2,34.18
 step
   talk Commander Mar'alith##15181
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
@@ -166,9 +136,6 @@ step
   talk Aurel Goldleaf##15282
   accept A Humble Offering##9248 |goto Silithus 51.96,38.16
 step
-  note Hermit Ortell wants you to bring him 10 Encrypted Twilight Texts
-  collect Encrypted Twilight Text##20404 |q 8323 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth, Twilight Avenger, Twilight Geolord
-step
   note Aurel Goldleaf at Cenarion Hold in Silithus wants you to bring her 1 Abyssal Scepter. You must also be Honored with the Cenarion Circle.
   kill Prince Skaldrenox##15203 |goto Silithus 25.56,34.04 |raid
   collect Abyssal Scepter##20515 |q 9248 |goto Silithus 25.56,34.04
@@ -176,8 +143,20 @@ step
   talk Aurel Goldleaf##15282
   turnin A Humble Offering##9248 |goto Silithus 51.96,38.16
 step
+  note Geologist Larksbane at Cenarion Hold in Silithus wants you to collect 8 Twilight Tablet Fragments.
+  collect 8 Twilight Tablet Fragment##20378 |q 8284 |goto Silithus 20.72,10.25
+step
+  talk Geologist Larksbane##15183
+  turnin The Twilight Mystery##8284 |goto Silithus 49.67,37.46
+step
+  talk Geologist Larksbane##15183
+  accept The Deserter##8285 |goto Silithus 49.67,37.46
+step
   talk Hermit Ortell##15194
-  turnin True Believers##8323 |goto Silithus 67.19,69.76
+  turnin The Deserter##8285 |goto Silithus 67.19,69.76
+step
+  talk Hermit Ortell##15194
+  accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
 step
   talk Rutgar Glyphshaper##15170
   turnin Brann Bronzebeard's Lost Letter##8308 |goto Silithus 41.28,88.45
@@ -191,18 +170,39 @@ step
   talk Commander Mar'alith##15181
   accept Into The Maw of Madness##8306 |goto Silithus 49.2,34.18
 step
+  note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
+  collect Twilight Lexicon - Chapter 1##20394 |q 8279 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
+step
+  talk Hermit Ortell##15194
+  turnin The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
+step
+  talk Hermit Ortell##15194
+  accept True Believers##8323 |goto Silithus 67.19,69.76
+step
+  talk Hermit Ortell##15194
+  accept A Terrible Purpose##8287 |goto Silithus 67.19,69.76
+step
   talk Rutgar Glyphshaper##15170
   accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
 step
   talk Frankal Stonebridge##15171
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
-  note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  note Hermit Ortell wants you to bring him 10 Encrypted Twilight Texts
+  collect Encrypted Twilight Text##20404 |q 8323 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth, Twilight Avenger, Twilight Geolord
+step
+  talk Commander Mar'alith##15181
+  turnin A Terrible Purpose##8287 |goto Silithus 49.2,34.18
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
   kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite
   collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 50.21,40.97
+step
+  note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
+  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+step
+  talk Hermit Ortell##15194
+  turnin True Believers##8323 |goto Silithus 67.19,69.76
 step
   talk Rutgar Glyphshaper##15170
   turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45

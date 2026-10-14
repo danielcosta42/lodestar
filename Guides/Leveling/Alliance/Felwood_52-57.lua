@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Felwood (52-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Azshara (52-58)",
-	rev = "c39967d6",
+	rev = "ccbe3b0c",
 }, [[
 step
   talk Grazle##11554
@@ -31,11 +31,11 @@ step
   talk Ivy Leafrunner##10924
   accept To Winterspring!##5249 |goto Felwood 50.96,81.58
 step
-  note Kill 11 Jadefire Felsworns, 9 Jadefire Shadowstalkers, 9 Jadefire Rogues, and Xavathras. Return to Eridan Bluewind in Felwood when the task has been completed.
-  kill Jadefire Felsworn##7109 |q 4421 |goto Felwood 38.85,83.2
-step
   note Grazle wants you to prove yourself by killing 6 Deadwood Warriors, 6 Deadwood Pathfinders, and 6 Deadwood Gardeners. Return to him in southern Felwood near the Emerald Sanctuary when you are done.
   kill Deadwood Warrior##7153 |q 8460 |goto Felwood 48.39,91.4
+step
+  note Kill 11 Jadefire Felsworns, 9 Jadefire Shadowstalkers, 9 Jadefire Rogues, and Xavathras. Return to Eridan Bluewind in Felwood when the task has been completed.
+  kill Jadefire Felsworn##7109 |q 4421 |goto Felwood 38.85,83.2
 step
   talk Eridan Bluewind##9116
   turnin The Corruption of the Jadefire##4421 |goto Felwood 51.35,81.51
@@ -74,11 +74,71 @@ step
   talk Impsy##14470
   accept Flawless Fel Essence##7602 |goto Felwood 41.36,45.02
 step
+  talk Captured Arko'narin##11016
+  turnin A Strange Red Key##5202 |goto Felwood 36.21,55.47
+step
+  talk Captured Arko'narin##11016
+  accept Rescue From Jaedenar##5203 |goto Felwood 36.21,55.47
+step
+  talk Greta Mosshoof##10922
+  turnin Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
+step
+  talk Taronn Redfeather##10921
+  turnin Verifying the Corruption##5156 |goto Felwood 50.89,81.62
+step
+  only completed(5159)
+  talk Greta Mosshoof##10922
+  turnin Dousing the Flames of Protection##5165 |goto Felwood 51.21,82.11
+step
+  talk Jessir Moonbow##11019
+  turnin Rescue From Jaedenar##5203 |goto Felwood 51.35,82.01
+step
+  talk Greta Mosshoof##10922
+  accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
+step
+  talk Jessir Moonbow##11019
+  accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
+step
+  note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
+  collect Corrupt Moonwell Water##12907 |q 5157 |goto Felwood 35.17,59.79 |tip {dropsfrom}Corrupt Jaedenar Moonwell
+step
+  note Return to Jaedenar and kill the succubus Rakaiah before finding the Remains of Trey Lightforge.
+  kill Rakaiah##9518 |q 5204 |goto Felwood 38.3,50.51
+step
+  talk Remains of Trey Lightforge##11020
+  turnin Retribution of the Light##5204 |goto Felwood 38.5,50.41
+step
+  talk Remains of Trey Lightforge##11020
+  accept The Remains of Trey Lightforge##5385 |goto Felwood 38.5,50.41
+step
+  talk Greta Mosshoof##10922
+  turnin Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
+step
+  talk Jessir Moonbow##11019
+  turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
+step
+  talk Greta Mosshoof##10922
+  accept Seeking Spiritual Aid##5158 |goto Felwood 51.21,82.11
+step
+  only completed(5159)
+  talk Greta Mosshoof##10922
+  accept A Final Blow##5242 |goto Felwood 51.21,82.11
+step
+  only completed(5159)
+  note Kill Moora and Salia, and bring Shadow Lord Fel'dan's Head to Greta Mosshoof in Felwood.
+  kill Moora##9861 |q 5242 |goto Felwood 38.81,46.87
+step
   kill Xavaric##10648 |goto Felwood 39.07,22.35 |tip Loot the quest item here — it starts the quest.
   accept Flute of Xavaric##939 |goto Felwood 39.07,22.35
 step
   note Eridan Bluewind in Felwood wants you to kill 8 Jadefire Hellcallers, 8 Jadefire Betrayers, 8 Jadefire Tricksters, and Xavaric. Return to Eridan when the task is completed.
   kill Jadefire Hellcaller##7111 |q 4906 |goto Felwood 41.21,20.64
+step
+  note {fp}Mishellena
+  goto Felwood 62.49,24.24 |tip {vendor}
+step
+  note Bring 15 Blood Amber to Arathandris Silversky in Felwood.
+  collect 15 Blood Amber##11503 |q 4101 |goto Felwood 57.16,18.28 |tip {dropsfrom}Warpwood Moss Flayer, Warpwood Shredder, Dessecus
 step
   talk Nafien##15395
   turnin Speak to Nafien##8462 |goto Felwood 64.77,8.13
@@ -88,12 +148,6 @@ step
 step
   kill Deadwood Den Watcher##7156 |goto Felwood 62.76,8.01 |tip Loot the quest item here — it starts the quest.
   accept Deadwood Ritual Totem##8470 |goto Felwood 62.76,8.01
-step
-  note {fp}Mishellena
-  goto Felwood 62.49,24.24 |tip {vendor}
-step
-  note Bring 15 Blood Amber to Arathandris Silversky in Felwood.
-  collect 15 Blood Amber##11503 |q 4101 |goto Felwood 57.16,18.28 |tip {dropsfrom}Warpwood Moss Flayer, Warpwood Shredder, Dessecus
 step
   note Nafien would like you to kill 6 Deadwood Den Watchers, 6 Deadwood Avengers, and 6 Deadwood Shamans. Return to him in northern Felwood near the entrance to Timbermaw Hold.
   kill Deadwood Den Watcher##7156 |q 8461 |goto Felwood 62.76,8.01
@@ -113,80 +167,26 @@ step
   talk Eridan Bluewind##9116
   turnin Further Corruption##4906 |goto Felwood 51.35,81.51
 step
-  talk Greta Mosshoof##10922
-  turnin Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
-step
-  talk Taronn Redfeather##10921
-  turnin Verifying the Corruption##5156 |goto Felwood 50.89,81.62
-step
-  only completed(5159)
-  talk Greta Mosshoof##10922
-  turnin Dousing the Flames of Protection##5165 |goto Felwood 51.21,82.11
-step
-  talk Greta Mosshoof##10922
-  accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
-step
-  talk Arathandris Silversky##9528
-  accept Salve via Hunting##5882 |goto Felwood 54.15,86.83
-step
-  only completed(5159)
-  talk Greta Mosshoof##10922
-  accept A Final Blow##5242 |goto Felwood 51.21,82.11
-step
-  note Bring the Flute of Xavaric and 5 Jadefire Felbind samples to Eridan Bluewind in southern Felwood.
-  collect Jadefire Felbind##11674 |q 939 |goto Felwood 41.61,85.68 |tip {dropsfrom}Jadefire Satyr, Jadefire Rogue, Jadefire Trickster
-step
-  collect Corrupted Soul Shard##11515 |q 5882 |goto Felwood 40.17,70.82 |tip {dropsfrom}Cursed Ooze, Tainted Ooze, Vile Ooze
-step
-  talk Eridan Bluewind##9116
-  turnin Flute of Xavaric##939 |goto Felwood 51.35,81.51
-step
-  talk Arathandris Silversky##9528
-  turnin Salve via Hunting##5882 |goto Felwood 54.15,86.83
-step
-  talk Eridan Bluewind##9116
-  accept Felbound Ancients##4441 |goto Felwood 51.35,81.51
-step
-  talk Captured Arko'narin##11016
-  turnin A Strange Red Key##5202 |goto Felwood 36.21,55.47
-step
-  talk Captured Arko'narin##11016
-  accept Rescue From Jaedenar##5203 |goto Felwood 36.21,55.47
-step
-  note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
-  collect Corrupt Moonwell Water##12907 |q 5157 |goto Felwood 35.17,59.79 |tip {dropsfrom}Corrupt Jaedenar Moonwell
-step
-  only completed(5159)
-  note Kill Moora and Salia, and bring Shadow Lord Fel'dan's Head to Greta Mosshoof in Felwood.
-  kill Moora##9861 |q 5242 |goto Felwood 38.81,46.87
-step
-  talk Greta Mosshoof##10922
-  turnin Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
-step
-  talk Jessir Moonbow##11019
-  turnin Rescue From Jaedenar##5203 |goto Felwood 51.35,82.01
-step
   only completed(5159)
   talk Greta Mosshoof##10922
   turnin A Final Blow##5242 |goto Felwood 51.21,82.11
 step
-  talk Greta Mosshoof##10922
-  accept Seeking Spiritual Aid##5158 |goto Felwood 51.21,82.11
+  talk Arathandris Silversky##9528
+  accept Salve via Hunting##5882 |goto Felwood 54.15,86.83
 step
-  talk Jessir Moonbow##11019
-  accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
+  note Bring the Flute of Xavaric and 5 Jadefire Felbind samples to Eridan Bluewind in southern Felwood.
+  collect Jadefire Felbind##11674 |q 939 |goto Felwood 41.61,85.68 |tip {dropsfrom}Jadefire Satyr, Jadefire Rogue, Jadefire Trickster
 step
-  note Return to Jaedenar and kill the succubus Rakaiah before finding the Remains of Trey Lightforge.
-  kill Rakaiah##9518 |q 5204 |goto Felwood 38.3,50.51
+  talk Eridan Bluewind##9116
+  turnin Flute of Xavaric##939 |goto Felwood 51.35,81.51
 step
-  talk Remains of Trey Lightforge##11020
-  turnin Retribution of the Light##5204 |goto Felwood 38.5,50.41
+  talk Eridan Bluewind##9116
+  accept Felbound Ancients##4441 |goto Felwood 51.35,81.51
 step
-  talk Remains of Trey Lightforge##11020
-  accept The Remains of Trey Lightforge##5385 |goto Felwood 38.5,50.41
+  collect Corrupted Soul Shard##11515 |q 5882 |goto Felwood 40.17,70.82 |tip {dropsfrom}Cursed Ooze, Tainted Ooze, Vile Ooze
 step
-  talk Jessir Moonbow##11019
-  turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
+  talk Arathandris Silversky##9528
+  turnin Salve via Hunting##5882 |goto Felwood 54.15,86.83
 step
   talk Gorn One Eye##11555
   accept The Root of All Evil##8481 |goto Felwood 65.18,2.68

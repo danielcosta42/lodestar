@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Felwood (52-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Winterspring (54-59)",
-	rev = "d7419f87",
+	rev = "bffcff3f",
 }, [[
 step
   only Druid
@@ -36,6 +36,9 @@ step
   note {fp}Brakkar
   goto Felwood 34.44,53.96 |tip {vendor}
 step
+  note Enter Jaedenar and slay 4 Jaedenar Hounds, 4 Jaedenar Guardsmen, 6 Jaedenar Adepts, and 6 Jaedenar Cultists before returning to Greta Mosshoof in Felwood.
+  kill Jaedenar Hound##7125 |q 5155 |goto Felwood 38.83,60.38
+step
   talk Dreka'Sur##9620
   accept A Husband's Last Battle##6162 |goto Felwood 34.8,52.73
 step
@@ -44,21 +47,6 @@ step
 step
   talk Trull Failbane##10306
   accept Wild Guardians##4521 |goto Felwood 34.73,52.79
-step
-  note Collect a sample of corrupted water from the Jadefire Satyrs' moonwell and bring it to Winna Hazzard at Bloodvenom Post.
-  collect Filled Flasket##12567 |q 4505 |goto Felwood 32.32,66.56 |tip {dropsfrom}Corrupted Moonwell Spell Focus (DND)
-step
-  note Enter Jaedenar and slay 4 Jaedenar Hounds, 4 Jaedenar Guardsmen, 6 Jaedenar Adepts, and 6 Jaedenar Cultists before returning to Greta Mosshoof in Felwood.
-  kill Jaedenar Hound##7125 |q 5155 |goto Felwood 38.83,60.38
-step
-  talk Winna Hazzard##9996
-  turnin Well of Corruption##4505 |goto Felwood 34.21,52.34
-step
-  talk Winna Hazzard##9996
-  accept Corrupted Sabers##4506 |goto Felwood 34.21,52.34
-step
-  talk Winna Hazzard##9996
-  turnin Corrupted Sabers##4506 |goto Felwood 34.21,52.34
 step
   only Warlock
   talk Niby the Almighty##14469
@@ -78,6 +66,69 @@ step
   talk Impsy##14470
   accept Flawless Fel Essence##7602 |goto Felwood 41.36,45.02
 step
+  talk Captured Arko'narin##11016
+  turnin A Strange Red Key##5202 |goto Felwood 36.21,55.47
+step
+  talk Captured Arko'narin##11016
+  accept Rescue From Jaedenar##5203 |goto Felwood 36.21,55.47
+step
+  note Collect a sample of corrupted water from the Jadefire Satyrs' moonwell and bring it to Winna Hazzard at Bloodvenom Post.
+  collect Filled Flasket##12567 |q 4505 |goto Felwood 32.32,66.56 |tip {dropsfrom}Corrupted Moonwell Spell Focus (DND)
+step
+  talk Winna Hazzard##9996
+  turnin Well of Corruption##4505 |goto Felwood 34.21,52.34
+step
+  talk Winna Hazzard##9996
+  accept Corrupted Sabers##4506 |goto Felwood 34.21,52.34
+step
+  talk Winna Hazzard##9996
+  turnin Corrupted Sabers##4506 |goto Felwood 34.21,52.34
+step
+  talk Greta Mosshoof##10922
+  turnin Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
+step
+  talk Taronn Redfeather##10921
+  turnin Verifying the Corruption##5156 |goto Felwood 50.89,81.62
+step
+  talk Jessir Moonbow##11019
+  turnin Rescue From Jaedenar##5203 |goto Felwood 51.35,82.01
+step
+  talk Greta Mosshoof##10922
+  accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
+step
+  talk Jessir Moonbow##11019
+  accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
+step
+  note Kill Overlord Ror and return his claw to Dreka'Sur at Bloodvenom Post in Felwood.
+  collect Overlord Ror's Claw##15879 |q 6162 |goto Felwood 48.23,94.28 |tip {dropsfrom}Overlord Ror
+step
+  note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
+  collect Corrupt Moonwell Water##12907 |q 5157 |goto Felwood 35.17,59.79 |tip {dropsfrom}Corrupt Jaedenar Moonwell
+step
+  talk Dreka'Sur##9620
+  turnin A Husband's Last Battle##6162 |goto Felwood 34.8,52.73
+step
+  note Return to Jaedenar and kill the succubus Rakaiah before finding the Remains of Trey Lightforge.
+  kill Rakaiah##9518 |q 5204 |goto Felwood 38.3,50.51
+step
+  talk Remains of Trey Lightforge##11020
+  turnin Retribution of the Light##5204 |goto Felwood 38.5,50.41
+step
+  talk Remains of Trey Lightforge##11020
+  accept The Remains of Trey Lightforge##5385 |goto Felwood 38.5,50.41
+step
+  talk Greta Mosshoof##10922
+  turnin Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
+step
+  talk Jessir Moonbow##11019
+  turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
+step
+  talk Greta Mosshoof##10922
+  accept Seeking Spiritual Aid##5158 |goto Felwood 51.21,82.11
+step
+  note Bring 15 Blood Amber to Maybess Riverbreeze in Felwood.
+  collect 15 Blood Amber##11503 |q 4102 |goto Felwood 57.16,18.28 |tip {dropsfrom}Warpwood Moss Flayer, Warpwood Shredder, Dessecus
+step
   talk Nafien##15395
   turnin Speak to Nafien##8462 |goto Felwood 64.77,8.13
 step
@@ -86,9 +137,6 @@ step
 step
   kill Deadwood Den Watcher##7156 |goto Felwood 62.76,8.01 |tip Loot the quest item here — it starts the quest.
   accept Deadwood Ritual Totem##8470 |goto Felwood 62.76,8.01
-step
-  note Bring 15 Blood Amber to Maybess Riverbreeze in Felwood.
-  collect 15 Blood Amber##11503 |q 4102 |goto Felwood 57.16,18.28 |tip {dropsfrom}Warpwood Moss Flayer, Warpwood Shredder, Dessecus
 step
   note Nafien would like you to kill 6 Deadwood Den Watchers, 6 Deadwood Avengers, and 6 Deadwood Shamans. Return to him in northern Felwood near the entrance to Timbermaw Hold.
   kill Deadwood Den Watcher##7156 |q 8461 |goto Felwood 62.76,8.01
@@ -105,61 +153,13 @@ step
   talk Maybess Riverbreeze##9529
   turnin Cleansing Felwood##4102 |goto Felwood 46.75,83.13
 step
-  talk Greta Mosshoof##10922
-  turnin Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
-step
-  talk Taronn Redfeather##10921
-  turnin Verifying the Corruption##5156 |goto Felwood 50.89,81.62
-step
-  talk Greta Mosshoof##10922
-  accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
-step
   talk Maybess Riverbreeze##9529
   accept Salve via Hunting##5887 |goto Felwood 46.75,83.13
 step
   collect Corrupted Soul Shard##11515 |q 5887 |goto Felwood 40.17,70.82 |tip {dropsfrom}Cursed Ooze, Tainted Ooze, Vile Ooze
 step
-  note Kill Overlord Ror and return his claw to Dreka'Sur at Bloodvenom Post in Felwood.
-  collect Overlord Ror's Claw##15879 |q 6162 |goto Felwood 48.23,94.28 |tip {dropsfrom}Overlord Ror
-step
   talk Maybess Riverbreeze##9529
   turnin Salve via Hunting##5887 |goto Felwood 46.75,83.13
-step
-  talk Captured Arko'narin##11016
-  turnin A Strange Red Key##5202 |goto Felwood 36.21,55.47
-step
-  talk Dreka'Sur##9620
-  turnin A Husband's Last Battle##6162 |goto Felwood 34.8,52.73
-step
-  talk Captured Arko'narin##11016
-  accept Rescue From Jaedenar##5203 |goto Felwood 36.21,55.47
-step
-  note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
-  collect Corrupt Moonwell Water##12907 |q 5157 |goto Felwood 35.17,59.79 |tip {dropsfrom}Corrupt Jaedenar Moonwell
-step
-  talk Greta Mosshoof##10922
-  turnin Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
-step
-  talk Jessir Moonbow##11019
-  turnin Rescue From Jaedenar##5203 |goto Felwood 51.35,82.01
-step
-  talk Greta Mosshoof##10922
-  accept Seeking Spiritual Aid##5158 |goto Felwood 51.21,82.11
-step
-  talk Jessir Moonbow##11019
-  accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
-step
-  note Return to Jaedenar and kill the succubus Rakaiah before finding the Remains of Trey Lightforge.
-  kill Rakaiah##9518 |q 5204 |goto Felwood 38.3,50.51
-step
-  talk Remains of Trey Lightforge##11020
-  turnin Retribution of the Light##5204 |goto Felwood 38.5,50.41
-step
-  talk Remains of Trey Lightforge##11020
-  accept The Remains of Trey Lightforge##5385 |goto Felwood 38.5,50.41
-step
-  talk Jessir Moonbow##11019
-  turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01
 step
   talk Gorn One Eye##11555
   accept The Root of All Evil##8481 |goto Felwood 65.18,2.68

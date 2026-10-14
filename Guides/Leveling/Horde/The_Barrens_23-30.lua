@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Barrens (23-30)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (27-35)",
-	rev = "fe4c5cb5",
+	rev = "e9e9686f",
 }, [[
 step
   talk Korran##3428
@@ -14,6 +14,18 @@ step
   only completed(6981)
   talk Falla Sagewind##8418
   accept In Nightmares##3369 |goto The Barrens 48.18,32.78
+step
+  only completed(1062)
+  talk Seereth Stonebreak##4049
+  accept Shredding Machines##1068 |goto The Barrens 35.26,27.88
+step
+  only Rogue completed(2458)
+  talk Taskmaster Fizzule##7233
+  accept Mission: Possible But Not Probable##2478 |goto The Barrens 55.44,5.56
+step
+  only Rogue completed(2458)
+  note Steal Silixiz's Tower Key from Foreman Silixiz, then kill two Mutated Venture Co. Drones, two Venture Co. Patrollers, and two Venture Co. Lookouts.
+  kill Mutated Venture Co. Drone##7310 |q 2478 |goto The Barrens 54.72,5.75
 step
   only Shaman
   talk Islen Waterseer##5901
@@ -91,27 +103,26 @@ step
   note Gann Stonespire wants you to kill 15 Bael'dun Excavators and 5 Bael'dun Foremen.
   kill Bael'dun Excavator##3374 |q 843 |goto The Barrens 47.61,85.33
 step
-  only completed(1062)
-  talk Seereth Stonebreak##4049
-  accept Shredding Machines##1068 |goto The Barrens 35.26,27.88
+  talk Gann Stonespire##3341
+  turnin Gann's Reclamation##843 |goto The Barrens 45.89,77
 step
-  talk Kadrak##8582
-  turnin The Runed Scroll##3513 |goto The Barrens 48.12,5.42
+  talk Gann Stonespire##3341
+  accept Revenge of Gann##846 |goto The Barrens 45.89,77
 step
-  only Rogue completed(2458)
-  talk Taskmaster Fizzule##7233
-  accept Mission: Possible But Not Probable##2478 |goto The Barrens 55.44,5.56
+  note Gann Stonespire wants you to bring him 6 vials of Nitroglycerin, 6 bundles of Wood Pulp, and 6 samples of Sodium Nitrate.
+  collect Nitroglycerin##5017 |q 846 |goto The Barrens 49.18,84.13 |tip {dropsfrom}Bael'dun Soldier, Bael'dun Rifleman, Bael'dun Officer
 step
-  only Rogue completed(2458)
-  note Steal Silixiz's Tower Key from Foreman Silixiz, then kill two Mutated Venture Co. Drones, two Venture Co. Patrollers, and two Venture Co. Lookouts.
-  kill Mutated Venture Co. Drone##7310 |q 2478 |goto The Barrens 54.72,5.75
+  talk Gann Stonespire##3341
+  turnin Revenge of Gann##846 |goto The Barrens 45.89,77
 step
-  talk Korran##3428
-  turnin Egg Hunt##868 |goto The Barrens 51.07,29.63
+  talk Gann Stonespire##3341
+  accept Revenge of Gann##849 |goto The Barrens 45.89,77
 step
-  only completed(1094)
-  talk Sputtervalve##3442
-  accept Further Instructions##1095 |goto The Barrens 62.98,37.22
+  note Destroy the flying machine at Bael Modan and return to Gann Stonespire.
+  collect Bael Modan Flying Machine##3644 |q 849 |goto The Barrens 46.97,85.63
+step
+  talk Gann Stonespire##3341
+  turnin Revenge of Gann##849 |goto The Barrens 45.89,77
 step
   only completed(5052)
   talk Mangletooth##3430
@@ -137,19 +148,6 @@ step
   talk Jorn Skyseer##3387
   accept Mahren Skyseer##874 |goto The Barrens 44.86,59.14
 step
-  talk Gann Stonespire##3341
-  turnin Gann's Reclamation##843 |goto The Barrens 45.89,77
-step
-  talk Gann Stonespire##3341
-  accept Revenge of Gann##846 |goto The Barrens 45.89,77
-step
-  note Gann Stonespire wants you to bring him 6 vials of Nitroglycerin, 6 bundles of Wood Pulp, and 6 samples of Sodium Nitrate.
-  collect Nitroglycerin##5017 |q 846 |goto The Barrens 49.18,84.13 |tip {dropsfrom}Bael'dun Soldier, Bael'dun Rifleman, Bael'dun Officer
-step
-  only completed(5052)
-  talk Thork##3429
-  turnin Betrayal from Within##906 |goto The Barrens 51.5,30.87
-step
   only completed(913)
   talk Mahren Skyseer##3388
   turnin Mahren Skyseer##874 |goto The Barrens 65.84,43.86
@@ -166,39 +164,41 @@ step
   talk Mahren Skyseer##3388
   turnin Isha Awak##873 |goto The Barrens 65.84,43.86
 step
+  only completed(1094)
+  talk Sputtervalve##3442
+  accept Further Instructions##1095 |goto The Barrens 62.98,37.22
+step
+  talk Korran##3428
+  turnin Egg Hunt##868 |goto The Barrens 51.07,29.63
+step
+  only completed(5052)
+  talk Thork##3429
+  turnin Betrayal from Within##906 |goto The Barrens 51.5,30.87
+step
+  only Warrior completed(1824)
+  talk Thun'grim Firegaze##5878
+  accept Brutal Armor##1838 |goto The Barrens 57.23,30.34
+step
+  talk Kadrak##8582
+  turnin The Runed Scroll##3513 |goto The Barrens 48.12,5.42
+step
+  talk Kadrak##8582
+  accept Horde Presence##3514 |goto The Barrens 48.12,5.42
+step
   talk Tatternack Steelforge##3433
   accept A New Ore Sample##1153 |goto The Barrens 45.1,57.68
 step
-  talk Gann Stonespire##3341
-  turnin Revenge of Gann##846 |goto The Barrens 45.89,77
-step
-  talk Gann Stonespire##3341
-  accept Revenge of Gann##849 |goto The Barrens 45.89,77
+  talk Jorn Skyseer##3387
+  accept Melor Sends Word##1130 |goto The Barrens 44.86,59.14
 step
   talk Feegly the Exiled##3421
   accept The Tear of the Moons##857 |goto The Barrens 48.97,86.31
-step
-  note Destroy the flying machine at Bael Modan and return to Gann Stonespire.
-  collect Bael Modan Flying Machine##3644 |q 849 |goto The Barrens 46.97,85.63
 step
   note Feegly the Exiled wants you to retrieve for him the Tear of the Moons.
   collect Tear of the Moons##5038 |q 857 |goto The Barrens 49.13,84.25 |tip {dropsfrom}General Twinbraid's Strongbox
 step
   talk Feegly the Exiled##3421
   turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
-step
-  talk Kadrak##8582
-  accept Horde Presence##3514 |goto The Barrens 48.12,5.42
-step
-  only Warrior completed(1824)
-  talk Thun'grim Firegaze##5878
-  accept Brutal Armor##1838 |goto The Barrens 57.23,30.34
-step
-  talk Jorn Skyseer##3387
-  accept Melor Sends Word##1130 |goto The Barrens 44.86,59.14
-step
-  talk Gann Stonespire##3341
-  turnin Revenge of Gann##849 |goto The Barrens 45.89,77
 step
   talk Regthar Deathgate##3389
   accept The Kolkar of Desolace##1362 |goto The Barrens 45.34,28.41

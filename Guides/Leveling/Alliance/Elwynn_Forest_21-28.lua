@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (21-29)",
-	rev = "55e9235e",
+	rev = "6da15402",
 }, [[
 step
   only completed(373)
@@ -18,14 +18,6 @@ step
 step
   talk Theocritus##313
   accept A Watchful Eye##94 |goto Elwynn Forest 65.22,69.71
-step
-  only completed(69)
-  talk Innkeeper Farley##295
-  accept The Legend of Stalvan##70 |goto Elwynn Forest 43.77,65.8
-step
-  only completed(69)
-  note Retrieve Stalvan's Undelivered Letter from the chest and deliver it to the Canal District in Stormwind.
-  collect An Undelivered Letter##910 |q 70 |goto Elwynn Forest 44.3,65.82 |tip {dropsfrom}Storage Chest
 step
   only completed(74)
   talk Marshal Haggard##294
@@ -42,6 +34,14 @@ step
   only completed(74)
   talk Marshal Haggard##294
   accept The Legend of Stalvan##78 |goto Elwynn Forest 84.61,69.38
+step
+  only completed(69)
+  talk Innkeeper Farley##295
+  accept The Legend of Stalvan##70 |goto Elwynn Forest 43.77,65.8
+step
+  only completed(69)
+  note Retrieve Stalvan's Undelivered Letter from the chest and deliver it to the Canal District in Stormwind.
+  collect An Undelivered Letter##910 |q 70 |goto Elwynn Forest 44.3,65.82 |tip {dropsfrom}Storage Chest
 step
   only completed(118)
   talk Verner Osgood##415

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Searing Gorge (48-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Blasted Lands (50-55)",
-	rev = "1f88ba30",
+	rev = "bb87b803",
 }, [[
 step
   kill Dark Iron Steamsmith##5840 |goto Searing Gorge 40.58,49.48 |tip Loot the quest item here — it starts the quest.
@@ -47,12 +47,6 @@ step
   talk Master Smith Burninate##14624
   accept What the Flux?##7722 |goto Searing Gorge 38.8,28.51
 step
-  note Hansel Heavyhands wants you to kill 20 Incendosaurs.
-  kill Incendosaur##9318 |q 7727 |goto Searing Gorge 48.46,26.48
-step
-  talk Hansel Heavyhands##14627
-  turnin Incendosaurs? Whateverosaur is More Like It##7727 |goto Searing Gorge 38.58,27.81
-step
   talk Zamael Lunthistle##8436
   accept Prayer to Elune##3377 |goto Searing Gorge 29.57,26.29
 step
@@ -69,23 +63,6 @@ step
   kill Twilight Dark Shaman##5860 |goto Searing Gorge 23.52,36.55 |elite
   collect Prayer to Elune##10458 |q 3378 |goto Searing Gorge 23.52,36.55
 step
-  turnin The Key to Freedom##4451 |goto Searing Gorge 65.59,62.17
-step
-  kill Margol the Rager##5833 |goto Searing Gorge 73.52,82.31 |elite |tip Loot the quest item here — it starts the quest.
-  accept The Horn of the Beast##3181 |goto Searing Gorge 73.52,82.31
-step
-  talk Dorius Stonetender##8284
-  accept Suntara Stones##3367 |goto Searing Gorge 63.92,60.99
-step
-  note Collect 4 Hearts of Flame and 4 globes of Golem Oil and return the items to Kalaran Windblade.
-  collect 4 Heart of Flame##10509 |q 3442 |goto Searing Gorge 57.56,46.7 |tip {dropsfrom}Blazing Elemental, Inferno Elemental, Magma Elemental
-step
-  talk Kalaran Windblade##8479
-  turnin The Flawless Flame##3442 |goto Searing Gorge 39.06,38.99
-step
-  talk Kalaran Windblade##8479
-  accept Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
-step
   note Deep within the Slag Pit of the Cauldron, in the Searing Gorge, you will find the traitorous Dark Iron dwarf named Overseer Maltorius.
   kill Overseer Maltorius##14621 |goto Searing Gorge 40.77,35.89 |elite
   collect Head of Overseer Maltorius##18946 |q 7701 |goto Searing Gorge 40.77,35.89
@@ -96,16 +73,31 @@ step
   note Hansel Heavyhands wants you to kill 20 Heavy War Golems.
   kill Heavy War Golem##5854 |q 7723 |goto Searing Gorge 39.86,44.17
 step
-  note Hansel Heavyhands wants you to kill 20 Greater Lava Spiders in the Searing Gorge. You can find Greater Lava Spiders in the plateaus and lava pools of the Searing Gorge.
-  kill Greater Lava Spider##5858 |q 7724 |goto Searing Gorge 29.31,62.39
+  note Slay 15 Dark Iron Taskmasters and 15 Dark Iron Slavers. Return to Taskmaster Scrange in the Searing Gorge once you have accomplished this task.
+  kill Dark Iron Taskmaster##5846 |q 7729 |goto Searing Gorge 43.12,40.37
 step
   note Find and return the Smithing Tuyere and Lookout's Spyglass to Taskmaster Scrange in the Searing Gorge.
   collect Smithing Tuyere##18959 |q 7728 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith
 step
-  note Slay 15 Dark Iron Taskmasters and 15 Dark Iron Slavers. Return to Taskmaster Scrange in the Searing Gorge once you have accomplished this task.
-  kill Dark Iron Taskmaster##5846 |q 7729 |goto Searing Gorge 43.12,40.37
+  note Hansel Heavyhands wants you to kill 20 Greater Lava Spiders in the Searing Gorge. You can find Greater Lava Spiders in the plateaus and lava pools of the Searing Gorge.
+  kill Greater Lava Spider##5858 |q 7724 |goto Searing Gorge 29.31,62.39
 step
-  turnin Suntara Stones##3367 |goto Searing Gorge 74.45,19.29
+  note Collect 4 Hearts of Flame and 4 globes of Golem Oil and return the items to Kalaran Windblade.
+  collect 4 Heart of Flame##10509 |q 3442 |goto Searing Gorge 57.56,46.7 |tip {dropsfrom}Blazing Elemental, Inferno Elemental, Magma Elemental
+step
+  turnin The Key to Freedom##4451 |goto Searing Gorge 65.59,62.17
+step
+  kill Margol the Rager##5833 |goto Searing Gorge 73.52,82.31 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Horn of the Beast##3181 |goto Searing Gorge 73.52,82.31
+step
+  talk Dorius Stonetender##8284
+  accept Suntara Stones##3367 |goto Searing Gorge 63.92,60.99
+step
+  talk Kalaran Windblade##8479
+  turnin The Flawless Flame##3442 |goto Searing Gorge 39.06,38.99
+step
+  talk Kalaran Windblade##8479
+  accept Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
 step
   talk Lookout Captain Lolo Longstriker##14634
   turnin WANTED: Overseer Maltorius##7701 |goto Searing Gorge 37.74,26.56
@@ -125,8 +117,16 @@ step
   talk Taskmaster Scrange##14626
   turnin JOB OPPORTUNITY: Culling the Competition##7729 |goto Searing Gorge 38.97,27.51
 step
+  turnin Suntara Stones##3367 |goto Searing Gorge 74.45,19.29
+step
   click Singed Letter##175704
   accept Suntara Stones##3368 |goto Searing Gorge 74.45,19.29
+step
+  note Hansel Heavyhands wants you to kill 20 Incendosaurs.
+  kill Incendosaur##9318 |q 7727 |goto Searing Gorge 48.46,26.48
+step
+  talk Hansel Heavyhands##14627
+  turnin Incendosaurs? Whateverosaur is More Like It##7727 |goto Searing Gorge 38.58,27.81
 step
   note Bring 8 Thorium Plated Daggers to Kalaran Windblade.
   collect 8 Thorium Plated Dagger##10551 |q 3443 |goto Searing Gorge 63.66,59.26 |tip {dropsfrom}Dark Iron Geologist, Dark Iron Steamsmith, Slave Worker

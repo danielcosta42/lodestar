@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (56-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "697846fa",
+	rev = "a483c06f",
 }, [[
 step
   talk Pamela Redpath##10926
@@ -92,15 +92,6 @@ step
   note Bring Zaeldarr's Head to Caretaker Alen at Light's Hope Chapel.
   collect Zaeldarr's Head##15785 |q 6021 |goto Eastern Plaguelands 23.07,72.63 |tip {dropsfrom}Zaeldarr the Outcast
 step
-  talk Carlin Redpath##11063
-  turnin Defenders of Darrowshire##5211 |goto Eastern Plaguelands 71.7,50.04
-step
-  talk Caretaker Alen##11038
-  turnin Zaeldarr the Outcast##6021 |goto Eastern Plaguelands 69.93,53.72
-step
-  talk Smokey LaRue##11033
-  turnin When Smokey Sings, I Get Violent##6041 |goto Eastern Plaguelands 70.88,48.43
-step
   only completed(5542) completed(5543) completed(5544)
   talk Tirion Fordring##1855
   turnin Of Forgotten Memories##5781 |goto Eastern Plaguelands 5.16,35.57
@@ -112,6 +103,15 @@ step
   only completed(5542) completed(5543) completed(5544)
   note Travel to Northdale, in the northeastern region of the Eastern Plaguelands, and recover the Symbol of Lost Honor. Return to Tirion Fordring upon completion of your objective.
   collect Symbol of Lost Honor##14625 |q 5845 |goto Eastern Plaguelands 62.53,26.81
+step
+  talk Carlin Redpath##11063
+  turnin Defenders of Darrowshire##5211 |goto Eastern Plaguelands 71.7,50.04
+step
+  talk Caretaker Alen##11038
+  turnin Zaeldarr the Outcast##6021 |goto Eastern Plaguelands 69.93,53.72
+step
+  talk Smokey LaRue##11033
+  turnin When Smokey Sings, I Get Violent##6041 |goto Eastern Plaguelands 70.88,48.43
 step
   only completed(5542) completed(5543) completed(5544)
   talk Tirion Fordring##1855

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (55-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (55-60)",
-	rev = "10c16fb5",
+	rev = "deb0824c",
 }, [[
 step
   only completed(1469)
@@ -23,10 +23,6 @@ step
   only completed(2623,2783)
   talk Fallen Hero of the Horde##7572
   accept A Tale of Sorrow##2801 |goto Swamp of Sorrows 34.29,66.14
-step
-  only completed(1469)
-  note Gather 10 Atal'ai Tablets for Brohann Caskbelly in Stormwind.
-  collect 10 Atal'ai Tablet##6288 |q 1475 |goto Swamp of Sorrows 76.07,47.44
 step
   only completed(2623,2783)
   note Listen to the Fallen Hero of the Horde tell his story.
@@ -51,6 +47,10 @@ step
   only completed(3373)
   talk Itharius##5353
   turnin The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
+step
+  only completed(1469)
+  note Gather 10 Atal'ai Tablets for Brohann Caskbelly in Stormwind.
+  collect 10 Atal'ai Tablet##6288 |q 1475 |goto Swamp of Sorrows 76.07,47.44
 step
   only completed(1469)
   talk Brohann Caskbelly##5384

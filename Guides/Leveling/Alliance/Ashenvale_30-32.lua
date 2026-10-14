@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Ashenvale (30-32)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dustwallow Marsh (35-38)",
-	rev = "c2441306",
+	rev = "051d704c",
 }, [[
 step
   talk Mathiel##6142
@@ -38,10 +38,6 @@ step
   talk Krolg##3897
   accept Raene's Cleansing##1045 |goto Ashenvale 50.84,75.08
 step
-  only completed(1034)
-  note Retrieve a Fallen Moonstone from the Shadethicket Oracle, then bring it to Pelturas in Astranaar.
-  collect Fallen Moonstone##5508 |q 1035 |goto Ashenvale 66.66,82.17 |tip {dropsfrom}Shadethicket Oracle
-step
   only completed(1030)
   note Kill Ran Bloodtooth and 4 Bloodtooth Guards and return to Krolg near Lake Mystral.
   kill Ran Bloodtooth##3696 |q 1045 |goto Ashenvale 54.75,79.62
@@ -58,18 +54,16 @@ step
   note Bring Ran Bloodtooth's Skull and Dartol's Rod of Transformation to Raene Wolfrunner in Astranaar.
   collect Ran Bloodtooth's Skull##5388 |q 1046 |goto Ashenvale 54.75,79.62 |tip {dropsfrom}Ran Bloodtooth
 step
-  talk Anilia##3920
-  turnin Vile Satyr! Dryads in Danger!##1021 |goto Ashenvale 78.33,44.82
-step
-  talk Anilia##3920
-  accept The Branch of Cenarius##1031 |goto Ashenvale 78.33,44.82
-step
-  note Kill Geltharis and return the Branch of Cenarius to Illiyana at Forest Song.
-  collect Branch of Cenarius##5461 |q 1031 |goto Ashenvale 77.99,42.42 |tip {dropsfrom}Geltharis
+  only completed(1034)
+  note Retrieve a Fallen Moonstone from the Shadethicket Oracle, then bring it to Pelturas in Astranaar.
+  collect Fallen Moonstone##5508 |q 1035 |goto Ashenvale 66.66,82.17 |tip {dropsfrom}Shadethicket Oracle
 step
   only not NightElf not Gnome not Skyborne Paladin
   click Shattered Orb##409315
   accept Return to Delgren##78093 |goto Ashenvale 89.5,77
+step
+  note Bring 6 Jagged Orc Swords and 4 Curved Orc Daggers to Shandrina.
+  collect 6 Jagged Orcish Sword##279505 |q 86757 |goto Ashenvale 88.6,57.66 |tip {dropsfrom}Horde Grunt
 step
   talk Maseara Autumnmoon##221269
   accept Vengeful Trail##98417 |goto Ashenvale 86.25,45.81
@@ -84,11 +78,38 @@ step
   talk Kayneth Stillwind##3848
   accept Insane Druids##1012 |goto Ashenvale 85.24,44.71
 step
-  note Bring 6 Jagged Orc Swords and 4 Curved Orc Daggers to Shandrina.
-  collect 6 Jagged Orcish Sword##279505 |q 86757 |goto Ashenvale 88.6,57.66 |tip {dropsfrom}Horde Grunt
-step
   talk Maseara Autumnmoon##221269
   turnin Vengeful Trail##98417 |goto Ashenvale 86.25,45.81
+step
+  talk Anilia##3920
+  turnin Vile Satyr! Dryads in Danger!##1021 |goto Ashenvale 78.33,44.82
+step
+  talk Anilia##3920
+  accept The Branch of Cenarius##1031 |goto Ashenvale 78.33,44.82
+step
+  note Kill Geltharis and return the Branch of Cenarius to Illiyana at Forest Song.
+  collect Branch of Cenarius##5461 |q 1031 |goto Ashenvale 77.99,42.42 |tip {dropsfrom}Geltharis
+step
+  note Kill 5 Xavian Rogues, 5 Felsworn, 5 Betrayers, and 5 Hellcallers.
+  kill Xavian Felsworn##3755 |q 98418 |goto Ashenvale 78.92,45.78
+step
+  talk Maseara Autumnmoon##221269
+  turnin Shared Fury##98418 |goto Ashenvale 86.25,45.81
+step
+  only completed(1011)
+  note Kill the druids: Taneel Darkwood, Uthil Mooncall, Mavoris Cloudsbreak; then return to Kayneth Stillwind in Forest Song.
+  kill Taneel Darkwood##3940 |q 1012 |goto Ashenvale 77.18,73.99
+step
+  talk Shandrina##3955
+  turnin Slowing the Orc Advance##86757 |goto Ashenvale 49.48,67.09
+step
+  only completed(1034)
+  talk Pelturas Whitemoon##3894
+  turnin Fallen Sky Lake##1035 |goto Ashenvale 37.37,51.79
+step
+  only completed(1030)
+  talk Raene Wolfrunner##3691
+  turnin Raene's Cleansing##1046 |goto Ashenvale 36.62,49.58
 step
   talk Sentinel Melyria Frostshadow##3880
   turnin The Howling Vale##1022 |goto Ashenvale 22.23,52.98
@@ -106,33 +127,12 @@ step
   talk Delgren the Purifier##3663
   turnin Return to Delgren##78093 |goto Ashenvale 26.2,38.7
 step
-  only completed(1034)
-  talk Pelturas Whitemoon##3894
-  turnin Fallen Sky Lake##1035 |goto Ashenvale 37.37,51.79
-step
-  only completed(1030)
-  talk Raene Wolfrunner##3691
-  turnin Raene's Cleansing##1046 |goto Ashenvale 36.62,49.58
-step
-  talk Shandrina##3955
-  turnin Slowing the Orc Advance##86757 |goto Ashenvale 49.48,67.09
-step
-  only completed(1011)
-  note Kill the druids: Taneel Darkwood, Uthil Mooncall, Mavoris Cloudsbreak; then return to Kayneth Stillwind in Forest Song.
-  kill Taneel Darkwood##3940 |q 1012 |goto Ashenvale 77.18,73.99
-step
   note Bring 16 Satyr Horns to Illiyana in Forest Song.
   collect 16 Satyr Horns##5481 |q 1032 |goto Ashenvale 78.4,45.12 |tip {dropsfrom}Xavian Rogue, Xavian Betrayer, Xavian Felsworn
-step
-  note Kill 5 Xavian Rogues, 5 Felsworn, 5 Betrayers, and 5 Hellcallers.
-  kill Xavian Felsworn##3755 |q 98418 |goto Ashenvale 78.92,45.78
 step
   only completed(1011)
   talk Kayneth Stillwind##3848
   turnin Insane Druids##1012 |goto Ashenvale 85.24,44.71
-step
-  talk Maseara Autumnmoon##221269
-  turnin Shared Fury##98418 |goto Ashenvale 86.25,45.81
 step
   talk Illiyana##3901
   turnin Satyr Slaying!##1032 |goto Ashenvale 21.73,53.34

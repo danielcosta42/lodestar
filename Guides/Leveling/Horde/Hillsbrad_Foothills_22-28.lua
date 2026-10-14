@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (22-28)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (32-39)",
-	rev = "9bbc5f64",
+	rev = "08204db2",
 }, [[
 step
   talk Deathstalker Lesh##2214
@@ -44,19 +44,6 @@ step
   talk Serge Hinott##2391
   turnin Hinott's Assistance##2480 |goto Hillsbrad Foothills 61.63,19.19
 step
-  note Krusk in Tarren Mill needs you to free Drull and Tog'thar from Durnholde Keep.
-  collect Locked ball and chain##1721 |q 498 |goto Hillsbrad Foothills 75.33,41.5
-step
-  note Kill 10 Syndicate Rogues and 10 Syndicate Watchmen. Return to High Executor Darthalia in Tarren Mill for your reward.
-  kill Syndicate Rogue##2260 |q 549 |goto Hillsbrad Foothills 79.28,46.37
-step
-  only completed(1065)
-  note Bring 5 Vials of Innocent Blood to Apothecary Lydon in Tarren Mill.
-  collect 5 Vial of Innocent Blood##5620 |q 1066 |goto Hillsbrad Foothills 78.73,43.51 |tip {dropsfrom}Syndicate Shadow Mage
-step
-  note Kill 6 Hillsbrad Farmhands, 6 Hillsbrad Farmers, Farmer Ray and Farmer Getz and report back to Darthalia in Tarren Mill.
-  kill Hillsbrad Farmer##2266 |q 527 |goto Hillsbrad Foothills 34.79,38.52
-step
   note Apothecary Lydon of Tarren Mill wants 10 Gray Bear Tongues and some Creeper Ichor.
   collect Gray Bear Tongue##3476 |q 496 |goto Hillsbrad Foothills 59.07,32.75 |tip {dropsfrom}Gray Bear, Vicious Gray Bear, Elder Gray Bear
 step
@@ -66,61 +53,20 @@ step
   talk Apothecary Lydon##2216
   turnin Elixir of Suffering##496 |goto Hillsbrad Foothills 61.44,19.06
 step
-  talk Krusk##2229
-  turnin The Rescue##498 |goto Hillsbrad Foothills 63.24,20.66
-step
   talk Apothecary Lydon##2216
   turnin Elixir of Pain##501 |goto Hillsbrad Foothills 61.44,19.06
-step
-  talk High Executor Darthalia##2215
-  turnin Battle of Hillsbrad##527 |goto Hillsbrad Foothills 62.33,20.45
-step
-  talk High Executor Darthalia##2215
-  turnin WANTED: Syndicate Personnel##549 |goto Hillsbrad Foothills 62.33,20.45
-step
-  only completed(1065)
-  talk Apothecary Lydon##2216
-  turnin Blood of Innocents##1066 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk Apothecary Lydon##2216
   accept Elixir of Suffering##499 |goto Hillsbrad Foothills 61.44,19.06
 step
-  only completed(1065)
-  talk Apothecary Lydon##2216
-  accept Return to Thunder Bluff##1067 |goto Hillsbrad Foothills 61.44,19.06
-step
   talk Apothecary Lydon##2216
   accept Elixir of Pain##502 |goto Hillsbrad Foothills 61.44,19.06
-step
-  talk High Executor Darthalia##2215
-  accept Battle of Hillsbrad##528 |goto Hillsbrad Foothills 62.33,20.45
-step
-  talk Deathguard Samsa##2418
-  accept Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
 step
   talk High Executor Darthalia##2215
   accept Scout Support##98094 |goto Hillsbrad Foothills 62.33,20.45
 step
   talk Umpi##2230
   turnin Elixir of Suffering##499 |goto Hillsbrad Foothills 61.55,19.14
-step
-  talk Deathstalker Masoj##270438
-  turnin Scout Support##98094 |goto Hillsbrad Foothills 64.05,53.84
-step
-  talk Deathstalker Masoj##270438
-  accept Valuable Vantages##98095 |goto Hillsbrad Foothills 64.05,53.84
-step
-  talk Deathstalker Masoj##270438
-  turnin Valuable Vantages##98095 |goto Hillsbrad Foothills 64.05,53.84
-step
-  talk Stanley##2274
-  turnin Elixir of Pain##502 |goto Hillsbrad Foothills 32.66,35.32
-step
-  note Kill 15 Hillsbrad Peasants and report back to Darthalia in Tarren Mill.
-  kill Hillsbrad Peasant##2267 |q 528 |goto Hillsbrad Foothills 34.06,45.69
-step
-  note Deathguard Samsa of Tarren Mill wants 30 Hillsbrad Human Skulls.
-  collect Hillsbrad Human Skull##3692 |q 546 |goto Hillsbrad Foothills 33.22,34.76 |tip {dropsfrom}Farmer Ray, Syndicate Shadow Mage, Syndicate Rogue
 step
   only Undead Paladin
   talk Ott##3539
@@ -134,14 +80,53 @@ step
   talk Ott##3539
   turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
 step
+  note Krusk in Tarren Mill needs you to free Drull and Tog'thar from Durnholde Keep.
+  collect Locked ball and chain##1721 |q 498 |goto Hillsbrad Foothills 75.33,41.5
+step
+  note Kill 10 Syndicate Rogues and 10 Syndicate Watchmen. Return to High Executor Darthalia in Tarren Mill for your reward.
+  kill Syndicate Rogue##2260 |q 549 |goto Hillsbrad Foothills 79.28,46.37
+step
+  only completed(1065)
+  note Bring 5 Vials of Innocent Blood to Apothecary Lydon in Tarren Mill.
+  collect 5 Vial of Innocent Blood##5620 |q 1066 |goto Hillsbrad Foothills 78.73,43.51 |tip {dropsfrom}Syndicate Shadow Mage
+step
+  talk Deathstalker Masoj##270438
+  turnin Scout Support##98094 |goto Hillsbrad Foothills 64.05,53.84
+step
+  talk Deathstalker Masoj##270438
+  accept Valuable Vantages##98095 |goto Hillsbrad Foothills 64.05,53.84
+step
+  talk Deathstalker Masoj##270438
+  turnin Valuable Vantages##98095 |goto Hillsbrad Foothills 64.05,53.84
+step
+  talk Krusk##2229
+  turnin The Rescue##498 |goto Hillsbrad Foothills 63.24,20.66
+step
   talk High Executor Darthalia##2215
-  turnin Battle of Hillsbrad##528 |goto Hillsbrad Foothills 62.33,20.45
+  turnin WANTED: Syndicate Personnel##549 |goto Hillsbrad Foothills 62.33,20.45
+step
+  only completed(1065)
+  talk Apothecary Lydon##2216
+  turnin Blood of Innocents##1066 |goto Hillsbrad Foothills 61.44,19.06
+step
+  only completed(1065)
+  talk Apothecary Lydon##2216
+  accept Return to Thunder Bluff##1067 |goto Hillsbrad Foothills 61.44,19.06
+step
+  talk Stanley##2274
+  turnin Elixir of Pain##502 |goto Hillsbrad Foothills 32.66,35.32
+step
+  note Kill 6 Hillsbrad Farmhands, 6 Hillsbrad Farmers, Farmer Ray and Farmer Getz and report back to Darthalia in Tarren Mill.
+  kill Hillsbrad Farmer##2266 |q 527 |goto Hillsbrad Foothills 34.79,38.52
+step
+  talk High Executor Darthalia##2215
+  turnin Battle of Hillsbrad##527 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk High Executor Darthalia##2215
+  accept Battle of Hillsbrad##528 |goto Hillsbrad Foothills 62.33,20.45
 step
   talk Deathguard Samsa##2418
-  turnin Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
-step
-  talk High Executor Darthalia##2215
-  accept Battle of Hillsbrad##529 |goto Hillsbrad Foothills 62.33,20.45
+  accept Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
 step
   talk Apothecary Lydon##2216
   accept Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
@@ -149,29 +134,44 @@ step
   click Dangerous!##2008
   accept Dangerous!##567 |goto Hillsbrad Foothills 62.56,19.66
 step
-  note Bring 6 Mudsnout Blossoms to Apothecary Lydon in Tarren Mill.
-  collect 6 Mudsnout Blossoms##3502 |q 509 |goto Hillsbrad Foothills 64.56,61.25 |tip {dropsfrom}Mudsnout Blossom
+  note Deathguard Samsa of Tarren Mill wants 30 Hillsbrad Human Skulls.
+  collect Hillsbrad Human Skull##3692 |q 546 |goto Hillsbrad Foothills 33.22,34.76 |tip {dropsfrom}Farmer Ray, Syndicate Shadow Mage, Syndicate Rogue
 step
-  note Kill Blacksmith Verringtan and 4 Hillsbrad Apprentice Blacksmiths.
-  kill Blacksmith Verringtan##2404 |q 529 |goto Hillsbrad Foothills 32.11,44.42
+  note Kill 15 Hillsbrad Peasants and report back to Darthalia in Tarren Mill.
+  kill Hillsbrad Peasant##2267 |q 528 |goto Hillsbrad Foothills 34.06,45.69
 step
   note High Executor Darthalia of Tarren Mill is offering a bounty on Clerk Horrace Whitesteed, Citizen Wilkes, Miner Hackett and Farmer Kalaba.
   kill Clerk Horrace Whitesteed##2448 |q 567 |goto Hillsbrad Foothills 29.51,42.41
+step
+  note Bring 6 Mudsnout Blossoms to Apothecary Lydon in Tarren Mill.
+  collect 6 Mudsnout Blossoms##3502 |q 509 |goto Hillsbrad Foothills 64.56,61.25 |tip {dropsfrom}Mudsnout Blossom
 step
   talk Apothecary Lydon##2216
   turnin Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk High Executor Darthalia##2215
-  turnin Battle of Hillsbrad##529 |goto Hillsbrad Foothills 62.33,20.45
+  turnin Battle of Hillsbrad##528 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk Deathguard Samsa##2418
+  turnin Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
 step
   talk High Executor Darthalia##2215
   turnin Dangerous!##567 |goto Hillsbrad Foothills 62.33,20.45
 step
   talk High Executor Darthalia##2215
-  accept Battle of Hillsbrad##532 |goto Hillsbrad Foothills 62.33,20.45
+  accept Battle of Hillsbrad##529 |goto Hillsbrad Foothills 62.33,20.45
 step
   talk Apothecary Lydon##2216
   accept Elixir of Agony##513 |goto Hillsbrad Foothills 61.44,19.06
+step
+  note Kill Blacksmith Verringtan and 4 Hillsbrad Apprentice Blacksmiths.
+  kill Blacksmith Verringtan##2404 |q 529 |goto Hillsbrad Foothills 32.11,44.42
+step
+  talk High Executor Darthalia##2215
+  turnin Battle of Hillsbrad##529 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk High Executor Darthalia##2215
+  accept Battle of Hillsbrad##532 |goto Hillsbrad Foothills 62.33,20.45
 step
   note Kill Magistrate Burnside and 5 Hillsbrad Councilmen. Destroy the Hillsbrad Proclamation. Steal the Hillsbrad Town Registry. Report back to Darthalia in Tarren Mill afterwards.
   kill Magistrate Burnside##2335 |q 532 |goto Hillsbrad Foothills 29.67,41.64

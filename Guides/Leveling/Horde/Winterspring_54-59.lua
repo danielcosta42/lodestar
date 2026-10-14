@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Winterspring (54-59)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silithus (57-60)",
-	rev = "0818844d",
+	rev = "e32fda6c",
 }, [[
 step
   only completed(3908)
@@ -51,6 +51,13 @@ step
   talk Storm Shadowhoof##10303
   turnin Ursius of the Shardtooth##5054 |goto Winterspring 61.93,38.38
 step
+  note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
+  collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 43.59,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti
+step
+  only completed(4808)
+  note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
+  collect 8 Uncracked Chillwind Horn##12444 |q 4809 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
+step
   talk Donova Snowden##9298
   turnin Winterfall Firewater##5083 |goto Winterspring 31.27,45.16
 step
@@ -63,15 +70,11 @@ step
   talk Donova Snowden##9298
   accept Falling to Corruption##5084 |goto Winterspring 31.27,45.16
 step
-  note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
-  collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 43.59,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti
-step
   note Donova Snowden in Winterspring wants you to kill 8 Winterfall Pathfinders, 8 Winterfall Den Watchers, and 8 Winterfall Totemics.
   kill Winterfall Pathfinder##7442 |q 5082 |goto Winterspring 34.72,36.96
 step
-  only completed(4808)
-  note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
-  collect 8 Uncracked Chillwind Horn##12444 |q 4809 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
+  talk Donova Snowden##9298
+  turnin Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
 step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
@@ -79,12 +82,6 @@ step
   only completed(4808)
   talk Felnok Steelspring##10468
   turnin Chillwind Horns##4809 |goto Winterspring 61.63,38.61
-step
-  talk Donova Snowden##9298
-  turnin Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
-step
-  talk Salfa##11556
-  accept Winterfall Activity##8464 |goto Winterspring 27.73,34.5
 step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
@@ -94,9 +91,6 @@ step
 step
   note Collect 2 Pristine Yeti Horns for Umi Rumplesnicker in Everlook.
   collect 2 Pristine Yeti Horn##12367 |q 977 |goto Winterspring 70.01,41.24 |tip {dropsfrom}Ice Thistle Matriarch, Ice Thistle Patriarch
-step
-  note Salfa wants you to kill 8 Winterfall Shaman, 8 Winterfall Den Watchers, and 8 Winterfall Ursa. Salfa is located just outside the entrance to Timbermaw Hold in Winterspring.
-  kill Winterfall Shaman##7439 |q 8464 |goto Winterspring 67.86,38.06
 step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
@@ -110,18 +104,36 @@ step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##5163 |goto Winterspring 60.88,37.62
 step
-  talk Salfa##11556
-  turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
-step
   note Storm Shadowhoof at Everlook in Winterspring wants you to kill Brumeran.
   kill Brumeran##10807 |q 5055 |goto Winterspring 62.54,57.9 |elite
 step
   talk Storm Shadowhoof##10303
   turnin Brumeran of the Chillwind##5055 |goto Winterspring 61.93,38.38
 step
+  talk Salfa##11556
+  accept Winterfall Activity##8464 |goto Winterspring 27.73,34.5
+step
+  note Salfa wants you to kill 8 Winterfall Shaman, 8 Winterfall Den Watchers, and 8 Winterfall Ursa. Salfa is located just outside the entrance to Timbermaw Hold in Winterspring.
+  kill Winterfall Shaman##7439 |q 8464 |goto Winterspring 67.86,38.06
+step
+  talk Salfa##11556
+  turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
+step
   only completed(4741)
   kill Crazed Owlbeast##7452 |goto Winterspring 64.3,24.98 |tip Loot the quest item here — it starts the quest.
   accept Guarding Secrets##4882 |goto Winterspring 64.3,24.98
+step
+  talk Storm Shadowhoof##10303
+  accept Shy-Rotam##5056 |goto Winterspring 61.93,38.38
+step
+  talk Harlo Wigglesworth##11755
+  accept A Little Luck##6606 |goto Winterspring 61.12,38.43
+step
+  talk Witch Doctor Mau'ari##10307
+  turnin A Little Luck##6606 |goto Winterspring 61.92,38.3
+step
+  talk Witch Doctor Mau'ari##10307
+  accept Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
   only completed(5160)
   talk Haleh##10929
@@ -130,30 +142,6 @@ step
   only completed(5160)
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
-step
-  talk Storm Shadowhoof##10303
-  accept Shy-Rotam##5056 |goto Winterspring 61.93,38.38
-step
-  talk Harlo Wigglesworth##11755
-  accept A Little Luck##6606 |goto Winterspring 61.12,38.43
-step
-  note Storm Shadowhoof at Everlook in Winterspring wants you to defeat Shy-Rotam.
-  kill Shy-Rotam##10737 |q 5056 |goto Winterspring 49.81,9.8 |elite
-step
-  talk Storm Shadowhoof##10303
-  turnin Shy-Rotam##5056 |goto Winterspring 61.93,38.38
-step
-  talk Witch Doctor Mau'ari##10307
-  turnin A Little Luck##6606 |goto Winterspring 61.92,38.3
-step
-  talk Witch Doctor Mau'ari##10307
-  accept Luck Be With You##969 |goto Winterspring 61.92,38.3
-step
-  talk Storm Shadowhoof##10303
-  accept Past Endeavors##5057 |goto Winterspring 61.93,38.38
-step
-  talk Storm Shadowhoof##10303
-  turnin Past Endeavors##5057 |goto Winterspring 61.93,38.38
 step
   note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
   collect 4 Frostmaul Shards##12334 |q 969 |goto Winterspring 61.84,67.99 |tip {dropsfrom}Frostmaul Giant, Frostmaul Preserver, Kashoch the Reaver
@@ -166,6 +154,18 @@ step
 step
   talk Witch Doctor Mau'ari##10307
   turnin Cache of Mau'ari##975 |goto Winterspring 61.92,38.3
+step
+  note Storm Shadowhoof at Everlook in Winterspring wants you to defeat Shy-Rotam.
+  kill Shy-Rotam##10737 |q 5056 |goto Winterspring 49.81,9.8 |elite
+step
+  talk Storm Shadowhoof##10303
+  turnin Shy-Rotam##5056 |goto Winterspring 61.93,38.38
+step
+  talk Storm Shadowhoof##10303
+  accept Past Endeavors##5057 |goto Winterspring 61.93,38.38
+step
+  talk Storm Shadowhoof##10303
+  turnin Past Endeavors##5057 |goto Winterspring 61.93,38.38
 step
   talk Winna Hazzard##9996
   turnin A Strange One##6605 |goto Felwood 34.21,52.34 |tip {turninat}Felwood

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Blasted Lands (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Burning Steppes (52-56)",
-	rev = "904308f1",
+	rev = "0dbf7aaf",
 }, [[
 step
   talk Bloodmage Drazial##7505
@@ -35,14 +35,14 @@ step
   talk Bloodmage Drazial##7505
   turnin The Decisive Striker##2585 |goto Blasted Lands 50.55,14.2
 step
+  note Bring three Blasted Boar Lungs, two Scorpok Pincers, and one Basilisk Brain to Bloodmage Drazial.
+  collect Blasted Boar Lung##8392 |q 2583 |goto Blasted Lands 58.22,30.36 |tip {dropsfrom}Ashmane Boar, Helboar, Grunter
+step
   note {fp}Alexandra Constantine
   goto Blasted Lands 65.54,24.34 |tip {vendor}
 step
   note Bring ten Basilisk Brains and two Vulture Gizzards to Bloodmage Lynnore.
   collect Basilisk Brain##8394 |q 2601 |goto Blasted Lands 60.94,27.83 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide, Deatheye
-step
-  note Bring three Blasted Boar Lungs, two Scorpok Pincers, and one Basilisk Brain to Bloodmage Drazial.
-  collect Blasted Boar Lung##8392 |q 2583 |goto Blasted Lands 58.22,30.36 |tip {dropsfrom}Ashmane Boar, Helboar, Grunter
 step
   note Bring ten Vulture Gizzards and two Snickerfang Jowls to Bloodmage Lynnore.
   collect Vulture Gizzard##8396 |q 2603 |goto Blasted Lands 57.6,28.4 |tip {dropsfrom}Black Slayer, Bonepicker

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Western Plaguelands (53-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Swamp of Sorrows (50-57)",
-	rev = "192ecf97",
+	rev = "1caabe1f",
 }, [[
 step
   talk Janice Felstone##10778
@@ -15,6 +15,11 @@ step
   click Scourge Cauldron##176361
   accept Return to the Bulwark##5230 |goto Western Plaguelands 37.25,56.78
 step
+  turnin Better Late Than Never##5021 |goto Western Plaguelands 38.73,55.24
+step
+  click Janice's Parcel##175894
+  accept Better Late Than Never##5023 |goto Western Plaguelands 38.73,55.24
+step
   click Mrs. Dalson's Diary##175926
   accept Mrs. Dalson's Diary##5058 |goto Western Plaguelands 47.8,50.67
 step
@@ -23,23 +28,30 @@ step
 step
   collect Dalson Cabinet Key##12739 |q 5060 |goto Western Plaguelands 48.23,49.67 |tip {dropsfrom}Farmer Dalson
 step
-  turnin Better Late Than Never##5021 |goto Western Plaguelands 38.73,55.24
-step
   turnin Mrs. Dalson's Diary##5058 |goto Western Plaguelands 47.8,50.67
 step
   turnin Locked Away##5060 |goto Western Plaguelands 47.35,49.63
 step
-  click Janice's Parcel##175894
-  accept Better Late Than Never##5023 |goto Western Plaguelands 38.73,55.24
+  talk Mulgris Deepriver##10739
+  accept The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
 step
   talk Chromie##10667
   accept A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
 step
-  talk Mulgris Deepriver##10739
-  accept The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
-step
   note Use the Temporal Displacer near one of Andorhal's silos and uncover Temporal Parasites.
   kill Temporal Parasite##10717 |q 4971 |goto Western Plaguelands 48.26,65.77
+step
+  talk Chromie##10667
+  turnin A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
+step
+  talk Chromie##10667
+  accept Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
+step
+  note Locate 5 Andorhal Watches, found in lockboxes amongst the rubble of the city. Return with them to Chromie in the Andorhal Inn, Western Plaguelands.
+  collect Andorhal Watch##12638 |q 4972 |goto Western Plaguelands 42.69,69.6 |tip {dropsfrom}Small Lockbox
+step
+  talk Chromie##10667
+  turnin Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
 step
   only not completed(5601) not haveq(5601)
   talk Marlene Redpath##10927
@@ -52,6 +64,24 @@ step
   only not completed(5405) not completed(5503) not haveq(5405) not haveq(5503)
   talk Argent Officer Pureheart##10840
   turnin Argent Dawn Commission##5401 |goto Western Plaguelands 42.97,83.55
+step
+  note Destroy 8 Diseased Wolves, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
+  kill Diseased Wolf##1817 |q 4984 |goto Western Plaguelands 46.52,44.91
+step
+  talk Mulgris Deepriver##10739
+  turnin The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
+step
+  talk Mulgris Deepriver##10739
+  accept The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
+step
+  note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
+  kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.61
+step
+  talk Mulgris Deepriver##10739
+  turnin The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
+step
+  talk Mulgris Deepriver##10739
+  accept Glyphed Oaken Branch##4987 |goto Western Plaguelands 53.73,64.66
 step
   only completed(5902)
   click Termite Barrel##177491
@@ -69,38 +99,8 @@ step
   talk Kirsta Deepshadow##11610
   accept Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
 step
-  note Destroy 8 Diseased Wolves, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
-  kill Diseased Wolf##1817 |q 4984 |goto Western Plaguelands 46.52,44.91
-step
   note Kill 2 Scarlet Medics, 2 Scarlet Hunters, 2 Scarlet Magi and 2 Scarlet Knights before returning to Kirsta Deepshadow in Western Plaguelands.
   kill Scarlet Medic##10605 |q 6004 |goto Western Plaguelands 41.03,51.91
-step
-  talk Chromie##10667
-  turnin A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
-step
-  talk Chromie##10667
-  accept Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
-step
-  note Locate 5 Andorhal Watches, found in lockboxes amongst the rubble of the city. Return with them to Chromie in the Andorhal Inn, Western Plaguelands.
-  collect Andorhal Watch##12638 |q 4972 |goto Western Plaguelands 42.69,69.6 |tip {dropsfrom}Small Lockbox
-step
-  talk Chromie##10667
-  turnin Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
-step
-  talk Mulgris Deepriver##10739
-  turnin The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
-step
-  talk Mulgris Deepriver##10739
-  accept The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
-step
-  note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
-  kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.61
-step
-  talk Mulgris Deepriver##10739
-  turnin The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
-step
-  talk Mulgris Deepriver##10739
-  accept Glyphed Oaken Branch##4987 |goto Western Plaguelands 53.73,64.66
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06

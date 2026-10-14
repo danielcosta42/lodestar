@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Ashenvale (22-27)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stonetalon Mountains (19-26)",
-	rev = "7763936c",
+	rev = "70e836dc",
 }, [[
 step
   only not completed(6382) not completed(742) not haveq(6382) not haveq(742)
@@ -34,6 +34,9 @@ step
   talk Mitsuwa##12721
   accept Troll Charm##6462 |goto Ashenvale 11.65,34.85
 step
+  talk Warsong Runner##12863
+  turnin Vorsha the Lasher##6641 |goto Ashenvale 12.22,34.22
+step
   note Bring 20 Wrathtail Heads to Marukai along the Zoram Strand.
   collect 20 Wrathtail Head##5490 |q 6442 |goto Ashenvale 7.21,14.28 |tip {dropsfrom}Wrathtail Myrmidon, Wrathtail Razortail, Wrathtail Wave Rider
 step
@@ -45,9 +48,6 @@ step
 step
   talk Je'neu Sancrea##12736
   turnin The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
-step
-  talk Warsong Runner##12863
-  turnin Vorsha the Lasher##6641 |goto Ashenvale 12.22,34.22
 step
   only Paladin
   talk Ulric Frostveil##259649
@@ -76,14 +76,14 @@ step
   talk Va'xug Firefure##267214
   accept A Void Path##98252 |goto Ashenvale 40.43,61.48
 step
+  talk Eye of Kilrogg##271181
+  turnin A Void Path##98252 |goto Ashenvale 42.49,57.06
+step
   note Kill 6 Shadowhorn Stag and 6 Ashenvale Bear and return to Va'xug Firefure northwest of Fallen Sky Lake.
   kill Shadowhorn Stag##3817 |q 98251 |goto Ashenvale 46.5,61.25
 step
   talk Va'xug Firefure##267214
   turnin Never Coming Back##98251 |goto Ashenvale 40.43,61.48
-step
-  talk Eye of Kilrogg##271181
-  turnin A Void Path##98252 |goto Ashenvale 42.49,57.06
 step
   talk Alonso##210995
   accept Dragonslayer's Helm##78132 |goto Ashenvale 43.4,70.4
@@ -103,6 +103,18 @@ step
   talk Alonso##210995
   turnin Dragonslayer's Lance##78134 |goto Ashenvale 43.4,70.4
 step
+  talk Kuray'bin##12867
+  accept Ashenvale Outrunners##6503 |goto Ashenvale 71.11,68.12
+step
+  talk Torek##12858
+  accept Torek's Assault##6544 |goto Ashenvale 68.34,75.3
+step
+  note Kill 9 Ashenvale Outrunners, then return to Kuray'bin at Splintertree Outpost.
+  kill Ashenvale Outrunner##12856 |q 6503 |goto Ashenvale 74.54,72.44
+step
+  talk Kuray'bin##12867
+  turnin Ashenvale Outrunners##6503 |goto Ashenvale 71.11,68.12
+step
   only not completed(6382) not completed(742) not haveq(6382) not haveq(742)
   talk Senani Thunderheart##12696
   turnin The Ashenvale Hunt##235 |goto Ashenvale 73.78,61.46
@@ -110,14 +122,11 @@ step
   talk Yama Snowhoof##12837
   turnin Freedom to Ruul##6482 |goto Ashenvale 74.11,60.92
 step
+  talk Ertog Ragetusk##12877
+  turnin Torek's Assault##6544 |goto Ashenvale 73.03,62.47
+step
   talk Senani Thunderheart##12696
   accept The Ashenvale Hunt##6383 |goto Ashenvale 73.78,61.46
-step
-  talk Kuray'bin##12867
-  accept Ashenvale Outrunners##6503 |goto Ashenvale 71.11,68.12
-step
-  talk Torek##12858
-  accept Torek's Assault##6544 |goto Ashenvale 68.34,75.3
 step
   talk Mastok Wrilehiss##12737
   accept Stonetalon Standstill##25 |goto Ashenvale 73.67,60
@@ -125,26 +134,8 @@ step
   talk Pixel##12724
   accept Satyr Horns##6441 |goto Ashenvale 73.06,61.48
 step
-  note Collect 16 Satyr Horns for Pixel in Splintertree Post.
-  collect 16 Satyr Horns##5481 |q 6441 |goto Ashenvale 78.4,45.12 |tip {dropsfrom}Xavian Rogue, Xavian Betrayer, Xavian Felsworn
-step
-  note Kill 9 Ashenvale Outrunners, then return to Kuray'bin at Splintertree Outpost.
-  kill Ashenvale Outrunner##12856 |q 6503 |goto Ashenvale 74.54,72.44
-step
   talk Senani Thunderheart##12696
   turnin The Ashenvale Hunt##6383 |goto Ashenvale 73.78,61.46
-step
-  talk Pixel##12724
-  turnin Satyr Horns##6441 |goto Ashenvale 73.06,61.48
-step
-  talk Kuray'bin##12867
-  turnin Ashenvale Outrunners##6503 |goto Ashenvale 71.11,68.12
-step
-  talk Ertog Ragetusk##12877
-  turnin Torek's Assault##6544 |goto Ashenvale 73.03,62.47
-step
-  kill Shadumbra##12677 |goto Ashenvale 57.5,56.05 |tip Loot the quest item here — it starts the quest.
-  accept Shadumbra's Head##24 |goto Ashenvale 57.5,56.05
 step
   talk Locke Okarr##11820
   accept Warsong Supplies##6571 |goto Ashenvale 71.4,67.63
@@ -152,23 +143,11 @@ step
   note Collect the Warsong Supplies: Warsong Saw Blades, Logging Rope, Warsong Oil, and the Warsong Axe Shipment for Locke Okarr in Splintertree Post.
   collect Warsong Saw Blades##16742 |q 6571 |goto Ashenvale 73.06,61.48 |tip {dropsfrom}Pixel
 step
-  talk Senani Thunderheart##12696
-  turnin Shadumbra's Head##24 |goto Ashenvale 73.78,61.46
-step
   talk Locke Okarr##11820
   turnin Warsong Supplies##6571 |goto Ashenvale 71.4,67.63
 step
-  talk Karang Amakkar##12757
-  turnin Between a Rock and a Thistlefur##216 |goto Ashenvale 11.9,34.54
-step
-  talk Mitsuwa##12721
-  turnin Troll Charm##6462 |goto Ashenvale 11.65,34.85
-step
-  talk Karang Amakkar##12757
-  accept King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
-step
-  kill Ursangous##12678 |goto Ashenvale 39.76,65.21 |tip Loot the quest item here — it starts the quest.
-  accept Ursangous's Paw##23 |goto Ashenvale 39.76,65.21
+  kill Shadumbra##12677 |goto Ashenvale 57.5,56.05 |tip Loot the quest item here — it starts the quest.
+  accept Shadumbra's Head##24 |goto Ashenvale 57.5,56.05
 step
   kill Tideress##12759 |goto Ashenvale 46,70 |tip Loot the quest item here — it starts the quest.
   accept The Befouled Element##1918 |goto Ashenvale 46,70
@@ -176,11 +155,14 @@ step
   note Dispatch 12 Befouled Water Elementals at Mystral Lake, due east of the Talondeep Path and southwest of Splintertree Post.
   kill Befouled Water Elemental##3917 |q 25 |goto Ashenvale 49.36,69.85
 step
-  note Place Karang's Banner on the Foulweald Totem Mound. Do not let the furbolgs destroy the banner. Defeat Chief Murgut and bring Murgut's Totem to Karang Amakkar at Zoram'gar.
-  collect Murgut's Totem##16976 |q 6621 |goto Ashenvale 56.43,63.5 |tip {dropsfrom}Chief Murgut, Murgut's Totem Basket
+  kill Ursangous##12678 |goto Ashenvale 39.76,65.21 |tip Loot the quest item here — it starts the quest.
+  accept Ursangous's Paw##23 |goto Ashenvale 39.76,65.21
 step
   talk Senani Thunderheart##12696
   turnin Ursangous's Paw##23 |goto Ashenvale 73.78,61.46
+step
+  talk Senani Thunderheart##12696
+  turnin Shadumbra's Head##24 |goto Ashenvale 73.78,61.46
 step
   talk Mastok Wrilehiss##12737
   turnin Stonetalon Standstill##25 |goto Ashenvale 73.67,60
@@ -191,8 +173,26 @@ step
   talk Mastok Wrilehiss##12737
   accept Je'neu of the Earthen Ring##824 |goto Ashenvale 73.67,60
 step
+  note Collect 16 Satyr Horns for Pixel in Splintertree Post.
+  collect 16 Satyr Horns##5481 |q 6441 |goto Ashenvale 78.4,45.12 |tip {dropsfrom}Xavian Rogue, Xavian Betrayer, Xavian Felsworn
+step
+  talk Pixel##12724
+  turnin Satyr Horns##6441 |goto Ashenvale 73.06,61.48
+step
+  talk Karang Amakkar##12757
+  turnin Between a Rock and a Thistlefur##216 |goto Ashenvale 11.9,34.54
+step
   talk Je'neu Sancrea##12736
   turnin Je'neu of the Earthen Ring##824 |goto Ashenvale 11.56,34.29
+step
+  talk Mitsuwa##12721
+  turnin Troll Charm##6462 |goto Ashenvale 11.65,34.85
+step
+  talk Karang Amakkar##12757
+  accept King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
+step
+  note Place Karang's Banner on the Foulweald Totem Mound. Do not let the furbolgs destroy the banner. Defeat Chief Murgut and bring Murgut's Totem to Karang Amakkar at Zoram'gar.
+  collect Murgut's Totem##16976 |q 6621 |goto Ashenvale 56.43,63.5 |tip {dropsfrom}Chief Murgut, Murgut's Totem Basket
 step
   talk Karang Amakkar##12757
   turnin King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
@@ -206,11 +206,11 @@ step
   note Find the 12 missing pages of the Shredder Operating Manual, and put them together to form Chapters 1, 2, and 3. Return the pages to Gurda Ragescar near Splintertree Post.
   collect Shredder Operating Manual - Chapter 1##16642 |q 6504 |goto Ashenvale 70.01,71.16
 step
-  talk Senani Thunderheart##12696
-  turnin Sharptalon's Claw##2 |goto Ashenvale 73.78,61.46
-step
   talk Gurda Ragescar##12718
   turnin The Lost Pages##6504 |goto Ashenvale 70.01,71.16
+step
+  talk Senani Thunderheart##12696
+  turnin Sharptalon's Claw##2 |goto Ashenvale 73.78,61.46
 step
   talk Senani Thunderheart##12696
   accept The Hunt Completed##247 |goto Ashenvale 73.78,61.46

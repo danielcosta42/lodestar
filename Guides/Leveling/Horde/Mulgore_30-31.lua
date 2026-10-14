@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Mulgore (30-31)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Desolace (33-40)",
-	rev = "f34b5f7b",
+	rev = "3a2abdc8",
 }, [[
 step
   only Warrior completed(1844)
@@ -21,11 +21,11 @@ step
   talk Yorn Grimtotem##264072
   accept Stronger than Steel##96260 |goto Mulgore 32.51,20.06
 step
-  kill Broodmother Valraxx##264082 |goto Mulgore 33.51,7.33 |tip Loot the quest item here — it starts the quest.
-  accept A Darker Truth##96294 |goto Mulgore 33.51,7.33
-step
   talk Muln Earthfury##259118
   accept The Broodmother##96261 |goto Mulgore 33.42,22.52
+step
+  kill Broodmother Valraxx##264082 |goto Mulgore 33.51,7.33 |tip Loot the quest item here — it starts the quest.
+  accept A Darker Truth##96294 |goto Mulgore 33.51,7.33
 step
   note Use the Toxin Extractor to gather 5 Gloomrise Toxin Samples from the Gnawed Corpses at Gloomrise.
   collect 5 Gloomrise Toxin Sample##273001 |q 96241 |goto Mulgore 33.33,10.16 |tip {dropsfrom}Gnawed Corpse

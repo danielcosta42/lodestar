@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Paladin", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "db986612",
+	rev = "96edb519",
 }, [[
 step
   only Undead Paladin
@@ -22,6 +22,9 @@ step
 step
   only Undead Paladin
   note Heal 5 Injured Deathguard with your Holy Light ability.
+  talk Injured Deathguard##259377 |q 90902 |goto Tirisfal Glades 31.99,63.83
+step
+  only Undead Paladin
   talk Aramis Hammerhand##244808
   turnin Rediscovering the Light##90902 |goto Tirisfal Glades 31.04,66.45
 step

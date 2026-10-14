@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Winterspring (54-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Silithus (57-60)",
-	rev = "bbb6d035",
+	rev = "2489802b",
 }, [[
 step
   only completed(3908)
@@ -36,14 +36,17 @@ step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
 step
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Firewater##5083 |goto Winterspring 66.66,37.07
-step
   talk Meggi Peppinrocker##11754
   accept Trouble in Winterspring!##6603 |goto Winterspring 60.66,38.17
 step
   kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
+  accept Winterfall Firewater##5083 |goto Winterspring 66.66,37.07
+step
+  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
   accept Winterfall Ritual Totem##8471 |goto Winterspring 66.66,37.07
+step
+  note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
+  collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 43.59,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti
 step
   only completed(4808)
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
@@ -64,8 +67,8 @@ step
   note Donova Snowden in Winterspring wants you to kill 8 Winterfall Pathfinders, 8 Winterfall Den Watchers, and 8 Winterfall Totemics.
   kill Winterfall Pathfinder##7442 |q 5082 |goto Winterspring 34.72,36.96
 step
-  note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
-  collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 43.59,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti
+  talk Donova Snowden##9298
+  turnin Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
 step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
@@ -74,20 +77,23 @@ step
   talk Felnok Steelspring##10468
   turnin Chillwind Horns##4809 |goto Winterspring 61.63,38.61
 step
-  talk Donova Snowden##9298
-  turnin Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
-step
-  talk Salfa##11556
-  accept Winterfall Activity##8464 |goto Winterspring 27.73,34.5
-step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
 step
+  only completed(5248)
+  talk Remorseful Highborne##10684
+  accept Remorseful Highborne##5252 |goto Winterspring 56.14,44.36
+step
+  only completed(5248)
+  talk Wynd Nightchaser##11079
+  turnin Remorseful Highborne##5252 |goto Winterspring 51.97,30.39
+step
+  only completed(5248)
+  talk Wynd Nightchaser##11079
+  accept The Crystal of Zin-Malor##5253 |goto Winterspring 51.97,30.39
+step
   note Collect 2 Pristine Yeti Horns for Umi Rumplesnicker in Everlook.
   collect 2 Pristine Yeti Horn##12367 |q 977 |goto Winterspring 70.01,41.24 |tip {dropsfrom}Ice Thistle Matriarch, Ice Thistle Patriarch
-step
-  note Salfa wants you to kill 8 Winterfall Shaman, 8 Winterfall Den Watchers, and 8 Winterfall Ursa. Salfa is located just outside the entrance to Timbermaw Hold in Winterspring.
-  kill Winterfall Shaman##7439 |q 8464 |goto Winterspring 67.86,38.06
 step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
@@ -95,44 +101,35 @@ step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##5163 |goto Winterspring 60.88,37.62
 step
+  talk Harlo Wigglesworth##11755
+  accept Enraged Wildkin##6604 |goto Winterspring 61.12,38.43
+step
   note Take Umi's Mechanical Yeti and scare her friends with it:
   talk Legacki##10978 |q 5163 |goto Winterspring 61.54,38.61
 step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##5163 |goto Winterspring 60.88,37.62
 step
-  talk Harlo Wigglesworth##11755
-  accept Enraged Wildkin##6604 |goto Winterspring 61.12,38.43
-step
-  only completed(5248)
-  talk Remorseful Highborne##10684
-  accept Remorseful Highborne##5252 |goto Winterspring 56.14,44.36
-step
-  only completed(979)
-  talk Ranshalla##10300
-  accept Guardians of the Altar##4901 |goto Winterspring 63.07,59.48
-step
-  talk Salfa##11556
-  turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
-step
-  only completed(5248)
-  talk Wynd Nightchaser##11079
-  turnin Remorseful Highborne##5252 |goto Winterspring 51.97,30.39
-step
   talk Jaron Stoneshaper##10301
   turnin Enraged Wildkin##6604 |goto Winterspring 52.14,30.43
 step
-  only completed(5248)
-  talk Wynd Nightchaser##11079
-  accept The Crystal of Zin-Malor##5253 |goto Winterspring 51.97,30.39
-step
   talk Jaron Stoneshaper##10301
   accept Enraged Wildkin##4861 |goto Winterspring 52.14,30.43
+step
+  talk Salfa##11556
+  accept Winterfall Activity##8464 |goto Winterspring 27.73,34.5
+step
+  note Salfa wants you to kill 8 Winterfall Shaman, 8 Winterfall Den Watchers, and 8 Winterfall Ursa. Salfa is located just outside the entrance to Timbermaw Hold in Winterspring.
+  kill Winterfall Shaman##7439 |q 8464 |goto Winterspring 67.86,38.06
 step
   turnin Enraged Wildkin##4861 |goto Winterspring 58.99,59.79
 step
   click Damaged Crate##175587
   accept Enraged Wildkin##4863 |goto Winterspring 58.99,59.79
+step
+  only completed(979)
+  talk Ranshalla##10300
+  accept Guardians of the Altar##4901 |goto Winterspring 63.07,59.48
 step
   turnin Enraged Wildkin##4863 |goto Winterspring 61.44,60.68
 step
@@ -145,14 +142,8 @@ step
   talk Jaron Stoneshaper##10301
   turnin Enraged Wildkin##4864 |goto Winterspring 52.14,30.43
 step
-  talk Harlo Wigglesworth##11755
-  accept A Little Luck##6606 |goto Winterspring 61.12,38.43
-step
-  talk Witch Doctor Mau'ari##10307
-  turnin A Little Luck##6606 |goto Winterspring 61.92,38.3
-step
-  talk Witch Doctor Mau'ari##10307
-  accept Luck Be With You##969 |goto Winterspring 61.92,38.3
+  talk Salfa##11556
+  turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
 step
   only completed(5160)
   talk Haleh##10929
@@ -161,6 +152,15 @@ step
   only completed(5160)
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
+step
+  talk Harlo Wigglesworth##11755
+  accept A Little Luck##6606 |goto Winterspring 61.12,38.43
+step
+  talk Witch Doctor Mau'ari##10307
+  turnin A Little Luck##6606 |goto Winterspring 61.92,38.3
+step
+  talk Witch Doctor Mau'ari##10307
+  accept Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
   note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
   collect 4 Frostmaul Shards##12334 |q 969 |goto Winterspring 61.84,67.99 |tip {dropsfrom}Frostmaul Giant, Frostmaul Preserver, Kashoch the Reaver

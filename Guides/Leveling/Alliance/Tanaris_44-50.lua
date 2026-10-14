@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Tanaris (44-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Teldrassil (48-55)",
-	rev = "ad4a5486",
+	rev = "29d5b10e",
 }, [[
 step
   note {fp}Bera Stonehammer
@@ -36,6 +36,9 @@ step
   talk Senior Surveyor Fizzledowser##7724
   accept Noxious Lair Investigation##82 |goto Tanaris 50.21,27.48
 step
+  note Take down 10 Wastewander Bandits and Thieves east of Gadgetzan, then report back to Chief Engineer Bilgewhizzle.
+  kill Wastewander Bandit##5618 |q 1690 |goto Tanaris 63.79,29.78
+step
   talk Yeh'kinya##8579
   accept Screecher Spirits##3520 |goto Tanaris 66.99,22.36
 step
@@ -53,12 +56,6 @@ step
 step
   click Wanted Poster##142122
   accept WANTED: Caliph Scorpidsting##2781 |goto Tanaris 66.82,22.29
-step
-  note Take down 10 Wastewander Bandits and Thieves east of Gadgetzan, then report back to Chief Engineer Bilgewhizzle.
-  kill Wastewander Bandit##5618 |q 1690 |goto Tanaris 63.79,29.78
-step
-  note Bring five Centipaar insect parts from the Noxious Lair to Alchemist Pestlezugg in Gadgetzan.
-  collect Centipaar Insect Parts##8587 |q 82 |goto Tanaris 33.28,44.39 |tip {dropsfrom}Centipaar Wasp, Centipaar Stinger, Centipaar Swarmer
 step
   note Bring 5 Wastewander Water Pouches to Spigot Operator Luglunket in Gadgetzan.
   collect 5 Wastewander Water Pouch##8483 |q 1707 |goto Tanaris 61.71,38.21 |tip {dropsfrom}Wastewander Rogue, Wastewander Thief, Wastewander Shadow Mage
@@ -78,8 +75,17 @@ step
   note Security Chief Bilgewhizzle of Steamwheedle Port in Tanaris wants you to kill 10 Southsea Pirates, 10 Southsea Freebooters, 10 Southsea Dock Workers and 10 Southsea Swashbucklers.
   kill Southsea Pirate##7855 |q 8366 |goto Tanaris 72.95,46.18
 step
-  talk Alchemist Pestlezugg##5594
-  turnin Noxious Lair Investigation##82 |goto Tanaris 50.89,26.96
+  talk Stoley##7881
+  turnin Stoley's Shipment##2873 |goto Tanaris 67.11,23.98
+step
+  talk Security Chief Bilgewhizzle##7882
+  turnin WANTED: Andre Firebeard##2875 |goto Tanaris 67.06,23.89
+step
+  talk Haughty Modiste##15165
+  turnin Pirate Hats Ahoy!##8365 |goto Tanaris 66.56,22.27
+step
+  talk Security Chief Bilgewhizzle##7882
+  turnin Southsea Shakedown##8366 |goto Tanaris 67.06,23.89
 step
   talk Chief Engineer Bilgewhizzle##7407
   turnin Wastewander Justice##1690 |goto Tanaris 52.46,28.51
@@ -93,35 +99,47 @@ step
   talk Chief Engineer Bilgewhizzle##7407
   accept More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
 step
-  talk Senior Surveyor Fizzledowser##7724
-  accept The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
-step
   kill Glasshide Basilisk##5419 |goto Tanaris 45.64,32.27 |tip Loot the quest item here — it starts the quest.
   accept Find OOX-17/TN!##351 |goto Tanaris 45.64,32.27
 step
-  talk Stoley##7881
-  turnin Stoley's Shipment##2873 |goto Tanaris 67.11,23.98
+  talk Marin Noggenfogger##7564
+  accept The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
 step
-  talk Security Chief Bilgewhizzle##7882
-  turnin WANTED: Andre Firebeard##2875 |goto Tanaris 67.06,23.89
-step
-  talk Haughty Modiste##15165
-  turnin Pirate Hats Ahoy!##8365 |goto Tanaris 66.56,22.27
-step
-  talk Security Chief Bilgewhizzle##7882
-  turnin Southsea Shakedown##8366 |goto Tanaris 67.06,23.89
-step
-  talk Marvon Rivetseeker##7771
-  accept Gahz'ridian##3161 |goto Tanaris 52.71,45.92
+  talk Andi Lynn##11758
+  accept The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
 step
   note Take down 10 Wastewander Shadow Mages, 8 Wastewander Rogues, and 6 Wastewander Assassins for Chief Engineer Bilgewhizzle in Gadgetzan.
   kill Wastewander Rogue##5615 |q 1691 |goto Tanaris 61.71,38.21
 step
+  talk Marvon Rivetseeker##7771
+  accept Gahz'ridian##3161 |goto Tanaris 52.71,45.92
+step
   note Marvon Rivetseeker in Tanaris wants you to collect 30 Gahz'ridian Ornaments.
   collect 30 Gahz'ridian Ornament##8443 |q 3161 |goto Tanaris 47.6,57.2 |tip {dropsfrom}Gahz'ridian
 step
+  note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
+  kill Dunemaul Brute##5474 |q 5863 |goto Tanaris 40.65,54.35
+step
+  note Bring five Centipaar insect parts from the Noxious Lair to Alchemist Pestlezugg in Gadgetzan.
+  collect Centipaar Insect Parts##8587 |q 82 |goto Tanaris 33.28,44.39 |tip {dropsfrom}Centipaar Wasp, Centipaar Stinger, Centipaar Swarmer
+step
   talk Marvon Rivetseeker##7771
   turnin Gahz'ridian##3161 |goto Tanaris 52.71,45.92
+step
+  talk Alchemist Pestlezugg##5594
+  turnin Noxious Lair Investigation##82 |goto Tanaris 50.89,26.96
+step
+  talk Chief Engineer Bilgewhizzle##7407
+  turnin More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
+step
+  talk Andi Lynn##11758
+  turnin The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
+step
+  talk Senior Surveyor Fizzledowser##7724
+  accept The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
+step
+  talk Tran'rek##7876
+  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
 step
   talk Homing Robot OOX-17/TN##7784
   turnin Find OOX-17/TN!##351 |goto Tanaris 60.23,64.72
@@ -147,26 +165,32 @@ step
   talk Tooga##5955
   accept Tooga's Quest##1560 |goto Tanaris 30,70
 step
+  note Collect a Laden Dew Gland and bring it to Marin Noggenfogger in Gadgetzan.
+  collect Laden Dew Gland##8428 |q 2605 |goto Tanaris 29.36,66.28 |tip {dropsfrom}Thistleshrub Dew Collector
+step
+  note Tran'rek in Gadgetzan wants you to kill 8 Gnarled Thistleshrubs and 8 Thistleshrub Rootshapers.
+  kill Gnarled Thistleshrub##5490 |q 3362 |goto Tanaris 29.65,66.4
+step
   talk Senior Surveyor Fizzledowser##7724
   turnin The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
 step
-  talk Chief Engineer Bilgewhizzle##7407
-  turnin More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
+  talk Marin Noggenfogger##7564
+  turnin The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
+step
+  talk Tran'rek##7876
+  turnin Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
 step
   talk Senior Surveyor Fizzledowser##7724
   accept Insect Part Analysis##110 |goto Tanaris 50.21,27.48
 step
   talk Marin Noggenfogger##7564
-  accept The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
-step
-  talk Andi Lynn##11758
-  accept The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
-step
-  talk Tran'rek##7876
-  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
+  accept In Good Taste##2606 |goto Tanaris 51.81,28.66
 step
   talk Alchemist Pestlezugg##5594
   turnin Insect Part Analysis##110 |goto Tanaris 50.89,26.96
+step
+  talk Sprinkle##7583
+  turnin In Good Taste##2606 |goto Tanaris 51.06,26.87
 step
   talk Alchemist Pestlezugg##5594
   accept Insect Part Analysis##113 |goto Tanaris 50.89,26.96
@@ -186,30 +210,6 @@ step
   only completed(3380,3445)
   talk Marvon Rivetseeker##7771
   accept The Stone Circle##3444 |goto Tanaris 52.71,45.92
-step
-  note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
-  kill Dunemaul Brute##5474 |q 5863 |goto Tanaris 40.65,54.35
-step
-  note Collect a Laden Dew Gland and bring it to Marin Noggenfogger in Gadgetzan.
-  collect Laden Dew Gland##8428 |q 2605 |goto Tanaris 29.36,66.28 |tip {dropsfrom}Thistleshrub Dew Collector
-step
-  note Tran'rek in Gadgetzan wants you to kill 8 Gnarled Thistleshrubs and 8 Thistleshrub Rootshapers.
-  kill Gnarled Thistleshrub##5490 |q 3362 |goto Tanaris 29.65,66.4
-step
-  talk Marin Noggenfogger##7564
-  turnin The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
-step
-  talk Tran'rek##7876
-  turnin Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
-step
-  talk Andi Lynn##11758
-  turnin The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
-step
-  talk Marin Noggenfogger##7564
-  accept In Good Taste##2606 |goto Tanaris 51.81,28.66
-step
-  talk Sprinkle##7583
-  turnin In Good Taste##2606 |goto Tanaris 51.06,26.87
 step
   only completed(1188)
   talk Razzeric##4706

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (33-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (23-38)",
-	rev = "f1e4d7ea",
+	rev = "80b6171e",
 }, [[
 step
   only completed(2947)
@@ -37,17 +37,17 @@ step
   talk Bartolo Ginsetti##2438
   accept Bartolo's Yeti Fur Cloak##565 |goto Hillsbrad Foothills 49.43,55.53
 step
-  note Darren Malvew of Southshore wants you to kill 8 Mountain Lions and 10 Hulking Mountain Lions.
-  kill Mountain Lion##2406 |q 564 |goto Hillsbrad Foothills 38.8,24.62
-step
   note Bring Bartolo Ginsetti of Southshore a Bolt of Wool, a Hillman's Cloak, Fine Thread and 10 clumps of Yeti Fur.
   collect Bolt of Woolen Cloth##2997 |q 565 |goto Hillsbrad Foothills 77.35,38.8 |tip {dropsfrom}Tattered Chest, Battered Chest, Solid Chest
 step
-  talk Darren Malvew##2382
-  turnin Costly Menace##564 |goto Hillsbrad Foothills 52.42,55.96
-step
   talk Bartolo Ginsetti##2438
   turnin Bartolo's Yeti Fur Cloak##565 |goto Hillsbrad Foothills 49.43,55.53
+step
+  note Darren Malvew of Southshore wants you to kill 8 Mountain Lions and 10 Hulking Mountain Lions.
+  kill Mountain Lion##2406 |q 564 |goto Hillsbrad Foothills 38.8,24.62
+step
+  talk Darren Malvew##2382
+  turnin Costly Menace##564 |goto Hillsbrad Foothills 52.42,55.96
 step
   talk Marshal Redpath##2263
   accept Crushridge Bounty##500 |goto Hillsbrad Foothills 49.47,58.73

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dustwallow Marsh (35-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Thousand Needles (30-41)",
-	rev = "40590f90",
+	rev = "6e7e02e7",
 }, [[
 step
   note {fp}Baldruc
@@ -66,9 +66,6 @@ step
   talk "Stinky" Ignatz##4880
   accept Stinky's Escape##1222 |goto Dustwallow Marsh 46.88,17.52
 step
-  note Mudcrush Durtfeet in northern Dustwallow wants 12 Mirefin Heads.
-  collect Mirefin Head##5847 |q 1177 |goto Dustwallow Marsh 59.6,9.48 |tip {dropsfrom}Mirefin Oracle, Mirefin Coastrunner, Mirefin Warrior
-step
   talk "Swamp Eye" Jarl##4792
   accept Soothing Spices##1218 |goto Dustwallow Marsh 55.44,26.27
 step
@@ -78,14 +75,35 @@ step
   click Loose Dirt##20985
   accept The Orc Report##1219 |goto Dustwallow Marsh 55.44,25.92
 step
-  note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
-  collect 8 Forked Mudrock Tongue##5883 |q 1204 |goto Dustwallow Marsh 62,24.8 |tip {dropsfrom}Mudrock Tortoise, Mudrock Spikeshell, Mudrock Burrower
-step
   talk "Swamp Eye" Jarl##4792
   turnin Soothing Spices##1218 |goto Dustwallow Marsh 55.44,26.27
 step
   talk "Swamp Eye" Jarl##4792
   accept Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
+step
+  note Bring 8 Forked Mudrock Tongues to Morgan Stern in Theramore.
+  collect 8 Forked Mudrock Tongue##5883 |q 1204 |goto Dustwallow Marsh 62,24.8 |tip {dropsfrom}Mudrock Tortoise, Mudrock Spikeshell, Mudrock Burrower
+step
+  note Mudcrush Durtfeet in northern Dustwallow wants 12 Mirefin Heads.
+  collect Mirefin Head##5847 |q 1177 |goto Dustwallow Marsh 59.6,9.48 |tip {dropsfrom}Mirefin Oracle, Mirefin Coastrunner, Mirefin Warrior
+step
+  note Bring 40 Unpopped Darkmist Eyes to "Swamp Eye" Jarl at the Swamplight Manor.
+  collect 40 Unpopped Darkmist Eye##5884 |q 1206 |goto Dustwallow Marsh 32.32,22.29 |tip {dropsfrom}Darkmist Spider, Darkmist Lurker, Darkmist Recluse
+step
+  talk Mudcrush Durtfeet##4503
+  turnin Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
+step
+  talk "Swamp Eye" Jarl##4792
+  turnin Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
+step
+  talk "Swamp Eye" Jarl##4792
+  accept Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
+step
+  note Bring a Moonsteel Broadsword to Jarl in Dustwallow Marsh.
+  collect Moonsteel Broadsword##3853 |q 1203 |goto Dustwallow Marsh 55.44,26.27
+step
+  talk "Swamp Eye" Jarl##4792
+  turnin Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
 step
   talk Morgan Stern##4794
   turnin Mudrock Soup and Bugs##1204 |goto Dustwallow Marsh 66.34,45.47
@@ -151,23 +169,9 @@ step
   note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
   collect 1 Jade##1529 |q 1948 |goto Dustwallow Marsh 30.92,65.84 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
 step
-  talk Mudcrush Durtfeet##4503
-  turnin Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
-step
-  note Bring 40 Unpopped Darkmist Eyes to "Swamp Eye" Jarl at the Swamplight Manor.
-  collect 40 Unpopped Darkmist Eye##5884 |q 1206 |goto Dustwallow Marsh 32.32,22.29 |tip {dropsfrom}Darkmist Spider, Darkmist Lurker, Darkmist Recluse
-step
-  talk "Swamp Eye" Jarl##4792
-  turnin Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
-step
-  talk "Swamp Eye" Jarl##4792
-  accept Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
-step
-  note Bring a Moonsteel Broadsword to Jarl in Dustwallow Marsh.
-  collect Moonsteel Broadsword##3853 |q 1203 |goto Dustwallow Marsh 55.44,26.27
-step
-  talk "Swamp Eye" Jarl##4792
-  turnin Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
+  only Mage completed(1947)
+  talk Tabetha##6546
+  turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Captain Garran Vimes##4944
   turnin Lieutenant Paval Reethe##1252 |goto Dustwallow Marsh 68.21,48.62
@@ -189,10 +193,6 @@ step
 step
   talk Archmage Tervosh##4967
   accept Shadowshard Fragments##7070 |goto Dustwallow Marsh 66.42,49.26
-step
-  only Mage completed(1947)
-  talk Tabetha##6546
-  turnin Items of Power##1948 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Balos Jacken##5089
   turnin The Deserters##1286 |goto Dustwallow Marsh 36.09,54.31

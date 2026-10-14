@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (11-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Redridge Mountains (15-24)",
-	rev = "b6344171",
+	rev = "0cade658",
 }, [[
 step
   note {fp}Thorgrum Borrelson
@@ -35,12 +35,6 @@ step
   talk Thorgrum Borrelson##1572
   accept Ride to Ironforge##6391 |goto Loch Modan 33.94,50.95
 step
-  talk Norric Lochthane##258043
-  turnin Snowbound##86667 |goto Loch Modan 41.86,19.02
-step
-  note Bring 12 Tunnel Rat Ears to Mountaineer Kadrell in Thelsamar.
-  collect 12 Tunnel Rat Ear##3110 |q 416 |goto Loch Modan 35.84,26.76 |tip {dropsfrom}Tunnel Rat Vermin, Tunnel Rat Scout, Tunnel Rat Geomancer
-step
   only Shaman completed(94465)
   talk Braldir Ashmantle##257808
   accept Call of Fire##94466 |goto Loch Modan 32.17,65.97
@@ -51,49 +45,11 @@ step
   talk Captain Rugelfuss##1092
   accept The Trogg Threat##267 |goto Loch Modan 23.23,73.68
 step
-  only Shaman completed(94465)
-  note Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan.
-  collect 1 Reagent Pouch##6652 |q 94466 |goto Loch Modan 35.3,82.56 |tip {dropsfrom}Burning Blade Cultist, Stonesplinter Seer
-step
-  talk Mountaineer Kadrell##1340
-  turnin Rat Catching##416 |goto Loch Modan 32.63,49.74
-step
-  talk Mountaineer Kadrell##1340
-  accept Mountaineer Stormpike's Task##1339 |goto Loch Modan 32.63,49.74
-step
-  talk Mountaineer Stormpike##1343
-  turnin Mountaineer Stormpike's Task##1339 |goto Loch Modan 24.76,18.4
-step
-  talk Mountaineer Stormpike##1343
-  accept Stormpike's Order##1338 |goto Loch Modan 24.76,18.4
-step
-  talk Mountaineer Stormpike##1343
-  accept Filthy Paws##307 |goto Loch Modan 24.76,18.4
-step
-  only Shaman completed(94465)
-  talk Braldir Ashmantle##257808
-  turnin Call of Fire##94466 |goto Loch Modan 32.17,65.97
-step
-  only Shaman completed(94465)
-  talk Braldir Ashmantle##257808
-  accept Call of Fire##94467 |goto Loch Modan 32.17,65.97
-step
   note Mountaineer Cobbleflint of the southern guard tower wants you to kill 10 Stonesplinter Troggs and 10 Stonesplinter Scouts.
   kill Stonesplinter Trogg##1161 |q 224 |goto Loch Modan 32.37,72.36
 step
   note Bring 8 Trogg Stone Teeth to Captain Rugelfuss in the southern guard tower.
   collect 8 Trogg Stone Tooth##2536 |q 267 |goto Loch Modan 32.37,72.36 |tip {dropsfrom}Stonesplinter Trogg, Stonesplinter Scout, Stonesplinter Skullthumper
-step
-  only Shaman completed(94465)
-  note Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame.
-  collect Glowing Ember##6655 |q 94467 |goto Loch Modan 31.96,64.42 |tip {dropsfrom}Minor Manifestation of Fire, Manifestation of Flames
-step
-  only Shaman completed(94465)
-  turnin Call of Fire##94467 |goto Loch Modan 31.79,64.52
-step
-  only Shaman completed(94465)
-  click Brazier of the Dormant Flame##61934
-  accept Call of Fire##94468 |goto Loch Modan 31.79,64.52
 step
   talk Mountaineer Cobbleflint##1089
   turnin In Defense of the King's Lands##224 |goto Loch Modan 22.07,73.13
@@ -107,23 +63,9 @@ step
   note Mountaineer Gravelgaw in the southern guard tower wants you to kill 10 Stonesplinter Skullthumpers and 10 Stonesplinter Seers and report back to him.
   kill Stonesplinter Skullthumper##1163 |q 237 |goto Loch Modan 35.91,84.2
 step
-  talk Prospector Ironband##1344
-  accept Excavation Progress Report##298 |goto Loch Modan 65.93,65.62
-step
-  talk Marek Ironheart##1154
-  accept Crocolisk Hunting##385 |goto Loch Modan 81.76,61.66
-step
-  talk Jern Hornhelm##1105
-  turnin Excavation Progress Report##298 |goto Loch Modan 37.24,47.38
-step
-  talk Jern Hornhelm##1105
-  accept Report to Ironforge##301 |goto Loch Modan 37.24,47.38
-step
-  note Go to the Silver Stream Mine and collect 4 loads of Miners' Gear.
-  collect 4 Miners' Gear##2640 |q 307 |goto Loch Modan 35.3,24.38 |tip {dropsfrom}Miners' League Crates
-step
-  talk Mountaineer Stormpike##1343
-  turnin Filthy Paws##307 |goto Loch Modan 24.76,18.4
+  only Shaman completed(94465)
+  note Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan.
+  collect 1 Reagent Pouch##6652 |q 94466 |goto Loch Modan 35.3,82.56 |tip {dropsfrom}Burning Blade Cultist, Stonesplinter Seer
 step
   talk Mountaineer Gravelgaw##1091
   turnin In Defense of the King's Lands##237 |goto Loch Modan 23.54,76.4
@@ -131,8 +73,57 @@ step
   talk Mountaineer Wallbang##1090
   accept In Defense of the King's Lands##263 |goto Loch Modan 23.47,74.51
 step
-  note Mountaineer Wallbang in the southern guard tower wants you to kill 10 Stonesplinter Shaman and 10 Stonesplinter Bonesnappers.
-  kill Stonesplinter Shaman##1197 |q 263 |goto Loch Modan 37.52,90.07
+  only Shaman completed(94465)
+  talk Braldir Ashmantle##257808
+  turnin Call of Fire##94466 |goto Loch Modan 32.17,65.97
+step
+  only Shaman completed(94465)
+  talk Braldir Ashmantle##257808
+  accept Call of Fire##94467 |goto Loch Modan 32.17,65.97
+step
+  only Shaman completed(94465)
+  note Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame.
+  collect Glowing Ember##6655 |q 94467 |goto Loch Modan 31.96,64.42 |tip {dropsfrom}Minor Manifestation of Fire, Manifestation of Flames
+step
+  only Shaman completed(94465)
+  turnin Call of Fire##94467 |goto Loch Modan 31.79,64.52
+step
+  only Shaman completed(94465)
+  click Brazier of the Dormant Flame##61934
+  accept Call of Fire##94468 |goto Loch Modan 31.79,64.52
+step
+  talk Mountaineer Kadrell##1340
+  accept Mountaineer Stormpike's Task##1339 |goto Loch Modan 32.63,49.74
+step
+  note Bring 12 Tunnel Rat Ears to Mountaineer Kadrell in Thelsamar.
+  collect 12 Tunnel Rat Ear##3110 |q 416 |goto Loch Modan 35.84,26.76 |tip {dropsfrom}Tunnel Rat Vermin, Tunnel Rat Scout, Tunnel Rat Geomancer
+step
+  talk Norric Lochthane##258043
+  turnin Snowbound##86667 |goto Loch Modan 41.86,19.02
+step
+  talk Mountaineer Stormpike##1343
+  turnin Mountaineer Stormpike's Task##1339 |goto Loch Modan 24.76,18.4
+step
+  talk Mountaineer Stormpike##1343
+  accept Stormpike's Order##1338 |goto Loch Modan 24.76,18.4
+step
+  talk Mountaineer Stormpike##1343
+  accept Filthy Paws##307 |goto Loch Modan 24.76,18.4
+step
+  note Go to the Silver Stream Mine and collect 4 loads of Miners' Gear.
+  collect 4 Miners' Gear##2640 |q 307 |goto Loch Modan 35.3,24.38 |tip {dropsfrom}Miners' League Crates
+step
+  talk Mountaineer Stormpike##1343
+  turnin Filthy Paws##307 |goto Loch Modan 24.76,18.4
+step
+  talk Mountaineer Kadrell##1340
+  turnin Rat Catching##416 |goto Loch Modan 32.63,49.74
+step
+  talk Prospector Ironband##1344
+  accept Excavation Progress Report##298 |goto Loch Modan 65.93,65.62
+step
+  talk Marek Ironheart##1154
+  accept Crocolisk Hunting##385 |goto Loch Modan 81.76,61.66
 step
   talk Daryl the Youngling##1187
   accept A Hunter's Boast##257 |goto Loch Modan 83.47,65.46
@@ -149,11 +140,20 @@ step
   note Find and defeat the crocolisk Daggerfang and bring back Marek's knife.
   collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 62.78,46.8 |tip {dropsfrom}Daggerfang
 step
-  talk Mountaineer Wallbang##1090
-  turnin In Defense of the King's Lands##263 |goto Loch Modan 23.47,74.51
-step
   talk Marek Ironheart##1154
   turnin Twisting the Knife##86758 |goto Loch Modan 81.76,61.66
+step
+  talk Jern Hornhelm##1105
+  turnin Excavation Progress Report##298 |goto Loch Modan 37.24,47.38
+step
+  talk Jern Hornhelm##1105
+  accept Report to Ironforge##301 |goto Loch Modan 37.24,47.38
+step
+  note Mountaineer Wallbang in the southern guard tower wants you to kill 10 Stonesplinter Shaman and 10 Stonesplinter Bonesnappers.
+  kill Stonesplinter Shaman##1197 |q 263 |goto Loch Modan 37.52,90.07
+step
+  talk Mountaineer Wallbang##1090
+  turnin In Defense of the King's Lands##263 |goto Loch Modan 23.47,74.51
 step
   talk Captain Rugelfuss##1092
   accept In Defense of the King's Lands##217 |goto Loch Modan 23.23,73.68
@@ -161,35 +161,17 @@ step
   talk Mountaineer Ylva##269153
   accept Banner of the Fallen##86585 |goto Loch Modan 31.79,86.45
 step
-  note Kill the Trogg leader, Grawmug, and his two guards, Gnasher and Brawler then report back to Captain Rugelfuss in the southern guard tower.
-  kill Grawmug##1205 |q 217 |goto Loch Modan 34.77,90.45
-step
   note Raise the standard of Ironforge, call out the trogg Headsplitter and kill it, then report to Captain Rugelfuss.
   kill Headsplitter##269185 |q 86585 |goto Loch Modan 31.82,86.59
 step
-  talk Daryl the Youngling##1187
-  accept A Hunter's Challenge##258 |goto Loch Modan 83.47,65.46
-step
-  note Kill 5 Elder Mountain Boars and return to Daryl the Youngling in the Farstrider Lodge within 12 minutes.
-  kill Elder Mountain Boar##1192 |q 258 |goto Loch Modan 64.94,38.83
+  note Kill the Trogg leader, Grawmug, and his two guards, Gnasher and Brawler then report back to Captain Rugelfuss in the southern guard tower.
+  kill Grawmug##1205 |q 217 |goto Loch Modan 34.77,90.45
 step
   talk Captain Rugelfuss##1092
   turnin In Defense of the King's Lands##217 |goto Loch Modan 23.23,73.68
 step
   talk Captain Rugelfuss##1092
   turnin Banner of the Fallen##86585 |goto Loch Modan 23.23,73.68
-step
-  collect Excavation Tools##665282 |goto Loch Modan 69.4,67.5 |tip Loot the quest item here — it starts the quest.
-  accept Excavation Tools##86613 |goto Loch Modan 69.4,67.5
-step
-  note Return 6 Excavation Tools to Magmar Fellhew.
-  collect Excavation Tools##278398 |q 86613 |goto Loch Modan 69.4,67.5
-step
-  talk Prospector Ironband##1344
-  turnin Excavation Tools##86613 |goto Loch Modan 65.93,65.62
-step
-  talk Daryl the Youngling##1187
-  turnin A Hunter's Challenge##258 |goto Loch Modan 83.47,65.46
 step
   talk Jern Hornhelm##1105
   accept Ironband's Excavation##436 |goto Loch Modan 37.24,47.38
@@ -200,11 +182,29 @@ step
   talk Magmar Fellhew##1345
   accept Gathering Idols##297 |goto Loch Modan 64.9,66.66
 step
+  collect Excavation Tools##665282 |goto Loch Modan 69.4,67.5 |tip Loot the quest item here — it starts the quest.
+  accept Excavation Tools##86613 |goto Loch Modan 69.4,67.5
+step
+  note Return 6 Excavation Tools to Magmar Fellhew.
+  collect Excavation Tools##278398 |q 86613 |goto Loch Modan 69.4,67.5
+step
+  talk Prospector Ironband##1344
+  turnin Excavation Tools##86613 |goto Loch Modan 65.93,65.62
+step
   note Bring Magmar Fellhew 8 Carved Stone Idols.
   collect Carved Stone Idol##2636 |q 297 |goto Loch Modan 70.03,62.68 |tip {dropsfrom}Stonesplinter Geomancer, Stonesplinter Digger, Berserk Trogg
 step
   talk Magmar Fellhew##1345
   turnin Gathering Idols##297 |goto Loch Modan 64.9,66.66
+step
+  talk Daryl the Youngling##1187
+  accept A Hunter's Challenge##258 |goto Loch Modan 83.47,65.46
+step
+  note Kill 5 Elder Mountain Boars and return to Daryl the Youngling in the Farstrider Lodge within 12 minutes.
+  kill Elder Mountain Boar##1192 |q 258 |goto Loch Modan 64.94,38.83
+step
+  talk Daryl the Youngling##1187
+  turnin A Hunter's Challenge##258 |goto Loch Modan 83.47,65.46
 step
   talk Magistrate Bluntnose##1139
   accept Mercenaries##255 |goto Loch Modan 34.6,44.47

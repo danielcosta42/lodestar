@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (50-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (55-60)",
-	rev = "a7cfbbea",
+	rev = "dec5f9d2",
 }, [[
 step
   talk Fallen Hero of the Horde##7572
@@ -38,6 +38,9 @@ step
   note Retrieve the Warchief's Orders and return them to the Fallen Hero of the Horde.
   collect Warchief's Orders##8463 |q 2623 |goto Swamp of Sorrows 62.4,84.6 |tip {dropsfrom}Swamp Talker
 step
+  talk Fallen Hero of the Horde##7572
+  turnin The Swamp Talker##2623 |goto Swamp of Sorrows 34.29,66.14
+step
   only completed(3373)
   talk Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip They give you the item that starts the quest.
   accept The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
@@ -49,9 +52,6 @@ step
   only completed(3373)
   talk Itharius##5353
   turnin The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
-step
-  talk Fallen Hero of the Horde##7572
-  turnin The Swamp Talker##2623 |goto Swamp of Sorrows 34.29,66.14
 step
   talk Fallen Hero of the Horde##7572
   accept A Tale of Sorrow##2801 |goto Swamp of Sorrows 34.29,66.14
