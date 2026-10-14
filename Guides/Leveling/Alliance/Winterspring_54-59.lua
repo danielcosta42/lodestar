@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Winterspring (54-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Silithus (57-60)",
-	rev = "07f20acc",
+	rev = "bbb6d035",
 }, [[
 step
   only completed(3908)
@@ -101,9 +101,16 @@ step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##5163 |goto Winterspring 60.88,37.62
 step
+  talk Harlo Wigglesworth##11755
+  accept Enraged Wildkin##6604 |goto Winterspring 61.12,38.43
+step
   only completed(5248)
   talk Remorseful Highborne##10684
   accept Remorseful Highborne##5252 |goto Winterspring 56.14,44.36
+step
+  only completed(979)
+  talk Ranshalla##10300
+  accept Guardians of the Altar##4901 |goto Winterspring 63.07,59.48
 step
   talk Salfa##11556
   turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
@@ -112,19 +119,12 @@ step
   talk Wynd Nightchaser##11079
   turnin Remorseful Highborne##5252 |goto Winterspring 51.97,30.39
 step
+  talk Jaron Stoneshaper##10301
+  turnin Enraged Wildkin##6604 |goto Winterspring 52.14,30.43
+step
   only completed(5248)
   talk Wynd Nightchaser##11079
   accept The Crystal of Zin-Malor##5253 |goto Winterspring 51.97,30.39
-step
-  talk Harlo Wigglesworth##11755
-  accept Enraged Wildkin##6604 |goto Winterspring 61.12,38.43
-step
-  only completed(979)
-  talk Ranshalla##10300
-  accept Guardians of the Altar##4901 |goto Winterspring 63.07,59.48
-step
-  talk Jaron Stoneshaper##10301
-  turnin Enraged Wildkin##6604 |goto Winterspring 52.14,30.43
 step
   talk Jaron Stoneshaper##10301
   accept Enraged Wildkin##4861 |goto Winterspring 52.14,30.43

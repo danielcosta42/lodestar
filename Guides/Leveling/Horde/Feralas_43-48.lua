@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Feralas (43-48)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Tanaris (44-50)",
-	rev = "5fec973f",
+	rev = "cd330367",
 }, [[
 step
   talk Belgrom Rockmaul##4485
@@ -173,12 +173,6 @@ step
   talk Jangdor Swiftstrider##7854
   accept Improved Quality##7734 |goto Feralas 74.43,42.91
 step
-  note Bring 10 Rage Scar Yeti Hides to Jangdor Swiftstrider at Camp Mojache, Feralas.
-  collect 10 Rage Scar Yeti Hide##18947 |q 7734 |goto Feralas 53.28,31.85 |tip {dropsfrom}Rage Scar Yeti, Elder Rage Scar, Ferocious Rage Scar
-step
-  talk Jangdor Swiftstrider##7854
-  turnin Improved Quality##7734 |goto Feralas 74.43,42.91
-step
   talk Talo Thornhoof##7776
   accept Dark Heart##3062 |goto Feralas 76.18,43.83
 step
@@ -192,11 +186,17 @@ step
   note Talo Thornhoof wants you to kill 4 Northspring Harpies, 4 Northspring Roguefeathers, 4 Northspring Windcallers, and 4 Northspring Slayers.
   kill Northspring Harpy##5362 |q 3063 |goto Feralas 40.02,14.34
 step
+  note Bring 10 Rage Scar Yeti Hides to Jangdor Swiftstrider at Camp Mojache, Feralas.
+  collect 10 Rage Scar Yeti Hide##18947 |q 7734 |goto Feralas 53.28,31.85 |tip {dropsfrom}Rage Scar Yeti, Elder Rage Scar, Ferocious Rage Scar
+step
   talk Talo Thornhoof##7776
   turnin Dark Heart##3062 |goto Feralas 76.18,43.83
 step
   talk Talo Thornhoof##7776
   turnin Vengeance on the Northspring##3063 |goto Feralas 76.18,43.83
+step
+  talk Jangdor Swiftstrider##7854
+  turnin Improved Quality##7734 |goto Feralas 74.43,42.91
 step
   talk Witch Doctor Uzer'i##8115
   accept The Sunken Temple##3380 |goto Feralas 74.42,43.36

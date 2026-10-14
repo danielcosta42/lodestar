@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Barrens (12-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Ashenvale (22-27)",
-	rev = "5e6c1c18",
+	rev = "1ee70146",
 }, [[
 step
   only completed(861)
@@ -96,10 +96,6 @@ step
   talk Darsok Swiftdagger##3449
   accept Harpy Raiders##867 |goto The Barrens 51.62,30.9
 step
-  only Tauren Druid completed(6127)
-  talk Tonga Runetotem##3448
-  accept Gathering the Cure##6128 |goto The Barrens 52.26,31.93
-step
   note Bring 15 Centaur Bracers to Regthar Deathgate, west of the Crossroads.
   collect 15 Centaur Bracers##5030 |q 855 |goto The Barrens 45.7,25.99 |tip {dropsfrom}Kolkar Wrangler, Kolkar Stormer, Kolkar Pack Runner
 step
@@ -146,8 +142,22 @@ step
   talk Tonga Runetotem##3448
   accept The Stagnant Oasis##877 |goto The Barrens 52.26,31.93
 step
+  only Tauren Druid completed(6127)
+  talk Tonga Runetotem##3448
+  accept Gathering the Cure##6128 |goto The Barrens 52.26,31.93
+step
+  talk Nalpak##5767
+  accept Deviate Hides##1486 |goto The Barrens 45.99,35.66
+step
   note Bring 4 Fungal Spores to Apothecary Helbrim at the Crossroads.
   collect 4 Fungal Spores##5012 |q 848 |goto The Barrens 46.68,38.76 |tip {dropsfrom}Laden Mushroom
+step
+  note Nalpak in the Wailing Caverns wants 20 Deviate Hides.
+  kill Deviate Coiler##3630 |goto The Barrens 46,36.4 |elite
+  collect Deviate Hide##6443 |q 1486 |goto The Barrens 46,36.4
+step
+  talk Nalpak##5767
+  turnin Deviate Hides##1486 |goto The Barrens 45.99,35.66
 step
   note Bring Barak's Head to Regthar Deathgate, west of the Crossroads.
   collect Barak's Head##5022 |q 850 |goto The Barrens 42.8,23.52 |tip {dropsfrom}Barak Kodobane
@@ -277,22 +287,27 @@ step
   talk Tonga Runetotem##3448
   accept Curing the Sick##6129 |goto The Barrens 52.26,31.93
 step
+  talk Regthar Deathgate##3389
+  accept Verog the Dervish##851 |goto The Barrens 45.34,28.41
+step
+  talk Gazrog##3464
+  accept Stolen Silver##3281 |goto The Barrens 51.93,30.32
+step
   only Tauren Druid completed(6127)
   note Use the Curative Animal Salve on 10 Sickly Gazelles that are located throughout the northern part of the Barrens; doing so should cure them. Sickly Gazelles have been reported north of the east-west road that runs through the Crossroads.
   use Sickly Gazelle##12296 |q 6129 |goto The Barrens 54.25,24.17 |tip {useit}
 step
-  talk Nalpak##5767
-  accept Deviate Hides##1486 |goto The Barrens 45.99,35.66
+  note Bring Verog's Head to Regthar Deathgate, west of the Crossroads.
+  collect Verog's Head##5023 |q 851 |goto The Barrens 53.06,41.74 |tip {dropsfrom}Verog the Dervish
 step
   note Bring 8 Altered Snapjaw Shells to Tonga Runetotem at the Crossroads.
   collect 8 Altered Snapjaw Shell##5098 |q 880 |goto The Barrens 47.74,40.22 |tip {dropsfrom}Oasis Snapjaw
 step
-  note Nalpak in the Wailing Caverns wants 20 Deviate Hides.
-  kill Deviate Coiler##3630 |goto The Barrens 46,36.4 |elite
-  collect Deviate Hide##6443 |q 1486 |goto The Barrens 46,36.4
+  talk Makaba Flathoof##11857
+  accept Avenge My Village##6548 |goto The Barrens 35.19,27.76
 step
-  talk Nalpak##5767
-  turnin Deviate Hides##1486 |goto The Barrens 45.99,35.66
+  talk Vrang Wildgore##3682
+  accept Bruised Pride and Lion Hides##95494 |goto The Barrens 43.8,12.21
 step
   note Bring 5 Savannah Lion Tusks, 5 Plainstrider Kidneys, and 1 Thunder Lizard Horn to Brewmaster Drohn in Ratchet.
   collect 5 Savannah Lion Tusk##4893 |q 821 |goto The Barrens 44.42,15.78 |tip {dropsfrom}Savannah Patriarch, Savannah Highmane, Savannah Huntress
@@ -303,117 +318,6 @@ step
   only completed(829)
   note Grab a Flawed Power Stone. Bring it to the Altar of Fire before the stone expires, then return to Ak'Zeloth.
   collect The Altar of Fire##3525 |q 924 |goto The Barrens 47.98,19.07
-step
-  turnin Samophlange##894 |goto The Barrens 52.4,11.65
-step
-  click Control Console##4141
-  accept Samophlange##900 |goto The Barrens 52.4,11.65
-step
-  note Close off the Fuel Control Valve, the Regulator Valve and the Main Control Valve then use the control console again.
-  collect Main Control Valve##4072 |q 900 |goto The Barrens 52.33,11.56
-step
-  turnin Samophlange##900 |goto The Barrens 52.4,11.65
-step
-  click Control Console##4141
-  accept Samophlange##901 |goto The Barrens 52.4,11.65
-step
-  note Get the Console Key from Tinkerer Sniggles to use on the control console.
-  collect Console Key##5089 |q 901 |goto The Barrens 52.84,10.39 |tip {dropsfrom}Tinkerer Sniggles
-step
-  turnin Samophlange##901 |goto The Barrens 52.4,11.65
-step
-  click Control Console##4141
-  accept Samophlange##902 |goto The Barrens 52.4,11.65
-step
-  only completed(829)
-  talk Ak'Zeloth##3521
-  turnin The Demon Seed##924 |goto The Barrens 62.34,20.07
-step
-  talk Brewmaster Drohn##3292
-  turnin Chen's Empty Keg##821 |goto The Barrens 62.26,38.39
-step
-  talk Sputtervalve##3442
-  turnin Samophlange##902 |goto The Barrens 62.98,37.22
-step
-  talk Sputtervalve##3442
-  accept Wenikee Boltbucket##3921 |goto The Barrens 62.98,37.22
-step
-  talk Gazlowe##3391
-  accept Stolen Booty##888 |goto The Barrens 62.68,36.23
-step
-  click WANTED##3972
-  accept WANTED: Baron Longshore##895 |goto The Barrens 62.59,37.47
-step
-  note Retrieve the Shipment of Boots and Telescopic Lens for Gazlowe in Ratchet.
-  collect Shipment of Boots##5076 |q 888 |goto The Barrens 62.63,49.63 |tip {dropsfrom}Drizzlik's Emporium
-step
-  note Bring the head of Baron Longshore to Gazlowe in Ratchet.
-  collect Baron Longshore's Head##5084 |q 895 |goto The Barrens 63.3,49 |tip {dropsfrom}Baron Longshore
-step
-  note {fp}Omusa Thunderhorn
-  goto The Barrens 44.45,59.15 |tip {vendor}
-step
-  only Tauren not completed(844) not haveq(844)
-  talk Kirge Sternhorn##3418
-  accept Journey to the Crossroads##854 |goto The Barrens 44.88,58.61
-step
-  only Tauren not completed(844) not haveq(844)
-  talk Thork##3429
-  turnin Journey to the Crossroads##854 |goto The Barrens 51.5,30.87
-step
-  talk Darsok Swiftdagger##3449
-  turnin Harpy Lieutenants##875 |goto The Barrens 51.62,30.9
-step
-  talk Tonga Runetotem##3448
-  turnin Altered Beings##880 |goto The Barrens 52.26,31.93
-step
-  talk Sergra Darkthorn##3338
-  accept Plainstrider Menace##844 |goto The Barrens 52.23,31.01
-step
-  talk Tonga Runetotem##3448
-  accept Hamuul Runetotem##1489 |goto The Barrens 52.26,31.93
-step
-  note Collect 7 Plainstrider Beaks and return them to Sergra Darkthorn in the Crossroads.
-  collect 7 Plainstrider Beak##5087 |q 844 |goto The Barrens 51.33,23.04 |tip {dropsfrom}Greater Plainstrider, Ornery Plainstrider, Fleeting Plainstrider
-step
-  talk Sergra Darkthorn##3338
-  turnin Plainstrider Menace##844 |goto The Barrens 52.23,31.01
-step
-  talk Sergra Darkthorn##3338
-  accept The Zhevra##845 |goto The Barrens 52.23,31.01
-step
-  note Slay Zhevra Runners to collect 4 Zhevra Hooves for Sergra Darkthorn in the Crossroads.
-  collect 4 Zhevra Hooves##5086 |q 845 |goto The Barrens 53.99,33.04 |tip {dropsfrom}Zhevra Runner, Zhevra Charger, Zhevra Courser
-step
-  talk Sergra Darkthorn##3338
-  turnin The Zhevra##845 |goto The Barrens 52.23,31.01
-step
-  talk Sergra Darkthorn##3338
-  accept Prowlers of the Barrens##903 |goto The Barrens 52.23,31.01
-step
-  talk Regthar Deathgate##3389
-  accept Verog the Dervish##851 |goto The Barrens 45.34,28.41
-step
-  talk Gazrog##3464
-  accept Stolen Silver##3281 |goto The Barrens 51.93,30.32
-step
-  note Bring Verog's Head to Regthar Deathgate, west of the Crossroads.
-  collect Verog's Head##5023 |q 851 |goto The Barrens 53.06,41.74 |tip {dropsfrom}Verog the Dervish
-step
-  talk Makaba Flathoof##11857
-  accept Avenge My Village##6548 |goto The Barrens 35.19,27.76
-step
-  note Collect 7 Prowler Claws from Savannah Prowlers for Sergra Darkthorn in the Crossroads.
-  collect 7 Prowler Claws##5096 |q 903 |goto The Barrens 42,23.51 |tip {dropsfrom}Savannah Prowler
-step
-  talk Wenikee Boltbucket##9316
-  turnin Wenikee Boltbucket##3921 |goto The Barrens 49.05,11.17
-step
-  talk Wenikee Boltbucket##9316
-  accept Nugget Slugs##3922 |goto The Barrens 49.05,11.17
-step
-  talk Vrang Wildgore##3682
-  accept Bruised Pride and Lion Hides##95494 |goto The Barrens 43.8,12.21
 step
   note Collect 6 Savannah Lion Hides from the Savannah Matriarchs and Savannah Patriarchs in the Barrens.
   collect 6 Savannah Lion Hide##269715 |q 95494 |goto The Barrens 44.42,15.78 |tip {dropsfrom}Savannah Patriarch, Savannah Matriarch
@@ -451,38 +355,69 @@ step
   talk Walton##261366
   turnin Trouble in the Valley##95621 |goto The Barrens 42.01,11.44
 step
+  turnin Samophlange##894 |goto The Barrens 52.4,11.65
+step
+  click Control Console##4141
+  accept Samophlange##900 |goto The Barrens 52.4,11.65
+step
   talk Wizzlecrank's Shredder##3439
   accept Ignition##858 |goto The Barrens 56.52,7.45
 step
   note Get the Ignition Key and bring it to Wizzlecrank.
   collect Ignition Key##5050 |q 858 |goto The Barrens 56.27,8.58 |tip {dropsfrom}Supervisor Lugwizzle
 step
-  note Bring 15 Nugget Slugs to Wenikee Boltbucket in the Barrens.
-  collect 15 Nugget Slug##11143 |q 3922 |goto The Barrens 56.33,8.57 |tip {dropsfrom}Tool Bucket
+  note Close off the Fuel Control Valve, the Regulator Valve and the Main Control Valve then use the control console again.
+  collect Main Control Valve##4072 |q 900 |goto The Barrens 52.33,11.56
 step
   talk Wizzlecrank's Shredder##3439
   turnin Ignition##858 |goto The Barrens 56.52,7.45
 step
+  turnin Samophlange##900 |goto The Barrens 52.4,11.65
+step
+  click Control Console##4141
+  accept Samophlange##901 |goto The Barrens 52.4,11.65
+step
   talk Wizzlecrank's Shredder##3439
   accept The Escape##863 |goto The Barrens 56.52,7.45
+step
+  note Get the Console Key from Tinkerer Sniggles to use on the control console.
+  collect Console Key##5089 |q 901 |goto The Barrens 52.84,10.39 |tip {dropsfrom}Tinkerer Sniggles
+step
+  turnin Samophlange##901 |goto The Barrens 52.4,11.65
+step
+  click Control Console##4141
+  accept Samophlange##902 |goto The Barrens 52.4,11.65
+step
+  only completed(829)
+  talk Ak'Zeloth##3521
+  turnin The Demon Seed##924 |goto The Barrens 62.34,20.07
+step
+  talk Brewmaster Drohn##3292
+  turnin Chen's Empty Keg##821 |goto The Barrens 62.26,38.39
 step
   talk Sputtervalve##3442
   turnin The Escape##863 |goto The Barrens 62.98,37.22
 step
-  talk Gazlowe##3391
-  turnin Stolen Booty##888 |goto The Barrens 62.68,36.23
+  talk Sputtervalve##3442
+  turnin Samophlange##902 |goto The Barrens 62.98,37.22
+step
+  talk Sputtervalve##3442
+  accept Wenikee Boltbucket##3921 |goto The Barrens 62.98,37.22
 step
   talk Gazlowe##3391
-  turnin WANTED: Baron Longshore##895 |goto The Barrens 62.68,36.23
+  accept Stolen Booty##888 |goto The Barrens 62.68,36.23
+step
+  click WANTED##3972
+  accept WANTED: Baron Longshore##895 |goto The Barrens 62.59,37.47
 step
   talk Mebok Mizzyrix##3446
   accept Raptor Horns##865 |goto The Barrens 62.37,37.62
 step
-  talk Wharfmaster Dizzywig##3453
-  accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
+  note Retrieve the Shipment of Boots and Telescopic Lens for Gazlowe in Ratchet.
+  collect Shipment of Boots##5076 |q 888 |goto The Barrens 62.63,49.63 |tip {dropsfrom}Drizzlik's Emporium
 step
-  talk Crane Operator Bigglefuzz##3665
-  accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
+  note Bring the head of Baron Longshore to Gazlowe in Ratchet.
+  collect Baron Longshore's Head##5084 |q 895 |goto The Barrens 63.3,49 |tip {dropsfrom}Baron Longshore
 step
   note Bring the Stolen Silver to Gazrog in the Crossroads.
   collect Stolen Silver##5061 |q 3281 |goto The Barrens 58.04,53.87
@@ -490,69 +425,110 @@ step
   talk Regthar Deathgate##3389
   turnin Verog the Dervish##851 |goto The Barrens 45.34,28.41
 step
-  talk Sergra Darkthorn##3338
-  turnin Prowlers of the Barrens##903 |goto The Barrens 52.23,31.01
+  talk Darsok Swiftdagger##3449
+  turnin Harpy Lieutenants##875 |goto The Barrens 51.62,30.9
+step
+  talk Tonga Runetotem##3448
+  turnin Altered Beings##880 |goto The Barrens 52.26,31.93
 step
   talk Gazrog##3464
   turnin Stolen Silver##3281 |goto The Barrens 51.93,30.32
 step
-  talk Sergra Darkthorn##3338
-  accept Echeyakee##881 |goto The Barrens 52.23,31.01
+  talk Tonga Runetotem##3448
+  accept Hamuul Runetotem##1489 |goto The Barrens 52.26,31.93
+step
+  talk Regthar Deathgate##3389
+  accept Hezrul Bloodmark##852 |goto The Barrens 45.34,28.41
+step
+  note Bring Hezrul's Head to Regthar Deathgate, west of the Crossroads.
+  collect Hezrul's Head##5025 |q 852 |goto The Barrens 46.04,41.14 |tip {dropsfrom}Hezrul Bloodmark
 step
   note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
   collect 5 Intact Raptor Horn##5055 |q 865 |goto The Barrens 52.58,45.99 |tip {dropsfrom}Sunscale Scytheclaw, Ishamuhale, Takk the Leaper
+step
+  talk Wenikee Boltbucket##9316
+  turnin Wenikee Boltbucket##3921 |goto The Barrens 49.05,11.17
+step
+  talk Wenikee Boltbucket##9316
+  accept Nugget Slugs##3922 |goto The Barrens 49.05,11.17
+step
+  note Bring 15 Nugget Slugs to Wenikee Boltbucket in the Barrens.
+  collect 15 Nugget Slug##11143 |q 3922 |goto The Barrens 56.33,8.57 |tip {dropsfrom}Tool Bucket
+step
+  talk Mebok Mizzyrix##3446
+  turnin Raptor Horns##865 |goto The Barrens 62.37,37.62
+step
+  talk Gazlowe##3391
+  turnin Stolen Booty##888 |goto The Barrens 62.68,36.23
+step
+  talk Gazlowe##3391
+  turnin WANTED: Baron Longshore##895 |goto The Barrens 62.68,36.23
+step
+  talk Wharfmaster Dizzywig##3453
+  accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
+step
+  talk Crane Operator Bigglefuzz##3665
+  accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61
+step
+  note {fp}Omusa Thunderhorn
+  goto The Barrens 44.45,59.15 |tip {vendor}
+step
+  only Tauren not completed(844) not haveq(844)
+  talk Kirge Sternhorn##3418
+  accept Journey to the Crossroads##854 |goto The Barrens 44.88,58.61
+step
+  talk Regthar Deathgate##3389
+  turnin Hezrul Bloodmark##852 |goto The Barrens 45.34,28.41
+step
+  only Tauren not completed(844) not haveq(844)
+  talk Thork##3429
+  turnin Journey to the Crossroads##854 |goto The Barrens 51.5,30.87
+step
+  talk Sergra Darkthorn##3338
+  accept Plainstrider Menace##844 |goto The Barrens 52.23,31.01
+step
+  talk Thork##3429
+  accept Report to Kadrak##6541 |goto The Barrens 51.5,30.87
+step
+  talk Darsok Swiftdagger##3449
+  accept Serena Bloodfeather##876 |goto The Barrens 51.62,30.9
+step
+  talk Mankrik##3432
+  accept Consumed by Hatred##899 |goto The Barrens 51.95,31.58
+step
+  note Collect 7 Plainstrider Beaks and return them to Sergra Darkthorn in the Crossroads.
+  collect 7 Plainstrider Beak##5087 |q 844 |goto The Barrens 51.33,23.04 |tip {dropsfrom}Greater Plainstrider, Ornery Plainstrider, Fleeting Plainstrider
+step
+  talk Sergra Darkthorn##3338
+  turnin Plainstrider Menace##844 |goto The Barrens 52.23,31.01
+step
+  talk Sergra Darkthorn##3338
+  accept The Zhevra##845 |goto The Barrens 52.23,31.01
+step
+  note Slay Zhevra Runners to collect 4 Zhevra Hooves for Sergra Darkthorn in the Crossroads.
+  collect 4 Zhevra Hooves##5086 |q 845 |goto The Barrens 53.99,33.04 |tip {dropsfrom}Zhevra Runner, Zhevra Charger, Zhevra Courser
+step
+  talk Sergra Darkthorn##3338
+  turnin The Zhevra##845 |goto The Barrens 52.23,31.01
+step
+  talk Sergra Darkthorn##3338
+  accept Prowlers of the Barrens##903 |goto The Barrens 52.23,31.01
 step
   note Crane Operator Bigglefuzz in Ratchet wants you to retrieve the bottle of 99-Year-Old Port from Mad Magglish who is hiding in the Wailing Caverns.
   kill Mad Magglish##3655 |goto The Barrens 46.83,34.66 |elite
   collect 99-Year-Old Port##5334 |q 959 |goto The Barrens 46.83,34.66
 step
+  note Collect 7 Prowler Claws from Savannah Prowlers for Sergra Darkthorn in the Crossroads.
+  collect 7 Prowler Claws##5096 |q 903 |goto The Barrens 42,23.51 |tip {dropsfrom}Savannah Prowler
+step
   talk Wenikee Boltbucket##9316
   turnin Nugget Slugs##3922 |goto The Barrens 49.05,11.17
 step
-  talk Wenikee Boltbucket##9316
-  accept Rilli Greasygob##3923 |goto The Barrens 49.05,11.17
-step
-  note Retrieve the Cats Eye Emerald from one of the Venture Co. Overseers or Enforcers for Wharfmaster Dizzywig at Ratchet.
-  collect Cats Eye Emerald##5097 |q 896 |goto The Barrens 60.81,3.79 |tip {dropsfrom}Venture Co. Enforcer, Venture Co. Overseer, Boss Copperplug
-step
-  note Bring Echeyakee's Hide to Sergra Darkthorn at the Crossroads.
-  collect Echeyakee's Hide##5100 |q 881 |goto The Barrens 55.86,17.19 |tip {dropsfrom}Echeyakee
-step
-  talk Mebok Mizzyrix##3446
-  turnin Raptor Horns##865 |goto The Barrens 62.37,37.62
-step
-  talk Wharfmaster Dizzywig##3453
-  turnin Miner's Fortune##896 |goto The Barrens 63.35,38.45
-step
-  talk Crane Operator Bigglefuzz##3665
-  turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61
-step
-  talk Sergra Darkthorn##3338
-  turnin Echeyakee##881 |goto The Barrens 52.23,31.01
-step
-  talk Sergra Darkthorn##3338
-  accept The Angry Scytheclaws##905 |goto The Barrens 52.23,31.01
-step
-  note Kill Sunscale raptors and collect their feathers. Use the feathers on the 3 Scytheclaw nests. Return to Sergra Darkthorn in the Crossroads.
-  collect Blue Raptor Nest##6907 |q 905 |goto The Barrens 52.6,46.11
-step
-  talk Sergra Darkthorn##3338
-  turnin The Angry Scytheclaws##905 |goto The Barrens 52.23,31.01
-step
-  talk Sergra Darkthorn##3338
-  accept Jorn Skyseer##3261 |goto The Barrens 52.23,31.01
-step
-  talk Regthar Deathgate##3389
-  accept Hezrul Bloodmark##852 |goto The Barrens 45.34,28.41
-step
-  talk Thork##3429
-  accept Report to Kadrak##6541 |goto The Barrens 51.5,30.87
-step
-  note Bring Hezrul's Head to Regthar Deathgate, west of the Crossroads.
-  collect Hezrul's Head##5025 |q 852 |goto The Barrens 46.04,41.14 |tip {dropsfrom}Hezrul Bloodmark
-step
   talk Kadrak##8582
   turnin Report to Kadrak##6541 |goto The Barrens 48.12,5.42
+step
+  talk Wenikee Boltbucket##9316
+  accept Rilli Greasygob##3923 |goto The Barrens 49.05,11.17
 step
   talk Kadrak##8582
   accept The Warsong Reports##6543 |goto The Barrens 48.12,5.42
@@ -560,17 +536,146 @@ step
   note Open the Bundle of Reports. Take the Warsong Reports to the Warsong Scout, Warsong Runner, and Warsong Outrider. Bring back the updates they give you to Kadrak at the northern watch tower in the barrens.
   buy Warsong Scout Update##16764 |q 6543 |goto Ashenvale 71.05,68.36
 step
+  note Slay Serena Bloodfeather and return her head to Darsok Swiftdagger at the Crossroads.
+  collect Serena's Head##5067 |q 876 |goto The Barrens 39.16,12.17 |tip {dropsfrom}Serena Bloodfeather
+step
   talk Kadrak##8582
   turnin The Warsong Reports##6543 |goto The Barrens 48.12,5.42
+step
+  note Retrieve the Cats Eye Emerald from one of the Venture Co. Overseers or Enforcers for Wharfmaster Dizzywig at Ratchet.
+  collect Cats Eye Emerald##5097 |q 896 |goto The Barrens 60.81,3.79 |tip {dropsfrom}Venture Co. Enforcer, Venture Co. Overseer, Boss Copperplug
+step
+  talk Wharfmaster Dizzywig##3453
+  turnin Miner's Fortune##896 |goto The Barrens 63.35,38.45
+step
+  talk Crane Operator Bigglefuzz##3665
+  turnin Trouble at the Docks##959 |goto The Barrens 63.09,37.61
+step
+  talk Captain Thalo'thas Brightsun##3339
+  accept The Guns of Northwatch##891 |goto The Barrens 62.29,39.03
+step
+  talk Mebok Mizzyrix##3446
+  accept Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
+step
+  click WANTED##3972
+  accept WANTED: Bruuz##92706 |goto The Barrens 62.59,37.47
+step
+  note Bring Bruuz's Dorsal Fin to Gazlowe in Ratchet.
+  collect Bruuz's Dorsal Fin##253710 |q 92706 |goto The Barrens 64.38,39.21 |tip {dropsfrom}Bruuz
+step
+  talk Gazlowe##3391
+  turnin WANTED: Bruuz##92706 |goto The Barrens 62.68,36.23
+step
+  talk Gilthares Firebough##3465
+  accept Free From the Hold##898 |goto The Barrens 61.96,54.96
+step
+  note Captain Thalo'thas Brightsun of Ratchet wants you to collect 10 Theramore Medals and slay Captain Fairmount, Cannoneer Whessan and Cannoneer Smythe.
+  kill Captain Fairmount##3393 |q 891 |goto The Barrens 61.85,54.65
+step
+  note Bring 60 Bristleback Quilboar Tusks to Mankrik at the Crossroads.
+  collect 60 Bristleback Quilboar Tusk##5085 |q 899 |goto The Barrens 44.47,52.32 |tip {dropsfrom}Bristleback Hunter, Bristleback Water Seeker, Bristleback Thornweaver
+step
+  talk Darsok Swiftdagger##3449
+  turnin Serena Bloodfeather##876 |goto The Barrens 51.62,30.9
+step
+  talk Mankrik##3432
+  turnin Consumed by Hatred##899 |goto The Barrens 51.95,31.58
+step
+  talk Sergra Darkthorn##3338
+  turnin Prowlers of the Barrens##903 |goto The Barrens 52.23,31.01
+step
+  talk Sergra Darkthorn##3338
+  accept Echeyakee##881 |goto The Barrens 52.23,31.01
+step
+  talk Darsok Swiftdagger##3449
+  accept Letter to Jin'Zil##1060 |goto The Barrens 51.62,30.9
+step
+  talk Regthar Deathgate##3389
+  accept Counterattack!##4021 |goto The Barrens 45.34,28.41
+step
+  note Bring a Piece of Krom'zar's Banner to Regthar Deathgate, west of the Crossroads.
+  collect Piece of Krom'zar's Banner##11227 |q 4021 |goto The Barrens 45.34,28.41 |tip {dropsfrom}Krom'zar's Banner
+step
+  talk Regthar Deathgate##3389
+  turnin Counterattack!##4021 |goto The Barrens 45.34,28.41
+step
+  talk Mankrik##3432
+  accept Lost in Battle##4921 |goto The Barrens 51.95,31.58
+step
+  note Bring Echeyakee's Hide to Sergra Darkthorn at the Crossroads.
+  collect Echeyakee's Hide##5100 |q 881 |goto The Barrens 55.86,17.19 |tip {dropsfrom}Echeyakee
+step
+  talk Captain Thalo'thas Brightsun##3339
+  turnin The Guns of Northwatch##891 |goto The Barrens 62.29,39.03
+step
+  talk Captain Thalo'thas Brightsun##3339
+  turnin Free From the Hold##898 |goto The Barrens 62.29,39.03
+step
+  note Find Mankrik's wife and then return to him in the Crossroads.
+  talk Beaten Corpse##10668 |q 4921 |goto The Barrens 49.33,50.32
+step
+  talk Sergra Darkthorn##3338
+  turnin Echeyakee##881 |goto The Barrens 52.23,31.01
+step
+  talk Mankrik##3432
+  turnin Lost in Battle##4921 |goto The Barrens 51.95,31.58
+step
+  talk Sergra Darkthorn##3338
+  accept The Angry Scytheclaws##905 |goto The Barrens 52.23,31.01
+step
+  talk Mankrik##3432
+  accept Her Name Is Olgra##95774 |goto The Barrens 51.95,31.58
+step
+  talk Gur'ak##267310
+  accept Chol'aruk the Ravener##97003 |goto The Barrens 52.64,29.05
+step
+  note Bring the head of Chol'aruk to Gur'ak in the Barrens.
+  collect Chol'aruk's Head##276070 |q 97003 |goto The Barrens 57.64,27.37 |tip {dropsfrom}Chol'aruk
+step
+  talk Gur'ak##267310
+  turnin Chol'aruk the Ravener##97003 |goto The Barrens 52.64,29.05
+step
+  note Kill Sunscale raptors and collect their feathers. Use the feathers on the 3 Scytheclaw nests. Return to Sergra Darkthorn in the Crossroads.
+  collect Blue Raptor Nest##6907 |q 905 |goto The Barrens 52.6,46.11
+step
+  talk Sputtervalve##3442
+  accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
+step
+  talk Mangletooth##3430
+  accept Tribes at War##878 |goto The Barrens 44.55,59.26
+step
+  note Kill 6 Bristleback Water Seekers, 12 Bristleback Thornweavers and 12 Bristleback Geomancers and return to Mangletooth at Camp Taurajo in the Barrens.
+  kill Bristleback Water Seeker##3260 |q 878 |goto The Barrens 46.46,54.17
+step
+  note Slay quilboars and collect 4 of Olgra's Adornments for Mankrik's memorial.
+  collect 4 Olgra's Adornments##277277 |q 95774 |goto The Barrens 49.58,51.06 |tip {dropsfrom}Razormane Raider
+step
+  talk Mangletooth##3430
+  turnin Tribes at War##878 |goto The Barrens 44.55,59.26
+step
+  talk Mangletooth##3430
+  accept Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
+step
+  note Bring a Blood Shard to Mangletooth in Camp Taurajo in the Barrens.
+  collect Blood Shard##5075 |q 5052 |goto The Barrens 44.47,52.32 |tip {dropsfrom}Bristleback Hunter, Bristleback Water Seeker, Bristleback Thornweaver
+step
+  talk Mangletooth##3430
+  turnin Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
+step
+  talk Sergra Darkthorn##3338
+  turnin The Angry Scytheclaws##905 |goto The Barrens 52.23,31.01
+step
+  talk Mankrik##3432
+  turnin Her Name Is Olgra##95774 |goto The Barrens 51.95,31.58
+step
+  talk Sergra Darkthorn##3338
+  accept Jorn Skyseer##3261 |goto The Barrens 52.23,31.01
 step
   talk Jorn Skyseer##3387
   turnin Jorn Skyseer##3261 |goto The Barrens 44.86,59.14
 step
   talk Jorn Skyseer##3387
   accept Ishamuhale##882 |goto The Barrens 44.86,59.14
-step
-  talk Regthar Deathgate##3389
-  turnin Hezrul Bloodmark##852 |goto The Barrens 45.34,28.41
 step
   note Bring Ishamuhale's Fang to Jorn at Camp Taurajo.
   collect Ishamuhale's Fang##5101 |q 882 |goto The Barrens 59.8,30.6 |tip {dropsfrom}Ishamuhale
@@ -587,78 +692,6 @@ step
   talk Jorn Skyseer##3387
   turnin Enraged Thunder Lizards##907 |goto The Barrens 44.86,59.14
 step
-  talk Darsok Swiftdagger##3449
-  accept Serena Bloodfeather##876 |goto The Barrens 51.62,30.9
-step
-  talk Mankrik##3432
-  accept Consumed by Hatred##899 |goto The Barrens 51.95,31.58
-step
-  talk Regthar Deathgate##3389
-  accept Counterattack!##4021 |goto The Barrens 45.34,28.41
-step
-  note Bring a Piece of Krom'zar's Banner to Regthar Deathgate, west of the Crossroads.
-  collect Piece of Krom'zar's Banner##11227 |q 4021 |goto The Barrens 45.34,28.41 |tip {dropsfrom}Krom'zar's Banner
-step
-  talk Mankrik##3432
-  accept Lost in Battle##4921 |goto The Barrens 51.95,31.58
-step
-  talk Mankrik##3432
-  accept Her Name Is Olgra##95774 |goto The Barrens 51.95,31.58
-step
-  talk Regthar Deathgate##3389
-  turnin Counterattack!##4021 |goto The Barrens 45.34,28.41
-step
-  note Slay Serena Bloodfeather and return her head to Darsok Swiftdagger at the Crossroads.
-  collect Serena's Head##5067 |q 876 |goto The Barrens 39.16,12.17 |tip {dropsfrom}Serena Bloodfeather
-step
-  talk Captain Thalo'thas Brightsun##3339
-  accept The Guns of Northwatch##891 |goto The Barrens 62.29,39.03
-step
-  talk Mebok Mizzyrix##3446
-  accept Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
-step
-  note Captain Thalo'thas Brightsun of Ratchet wants you to collect 10 Theramore Medals and slay Captain Fairmount, Cannoneer Whessan and Cannoneer Smythe.
-  talk Captain Fairmount##3393 |q 891 |goto The Barrens 61.85,54.65
-step
-  note Bring 60 Bristleback Quilboar Tusks to Mankrik at the Crossroads.
-  collect 60 Bristleback Quilboar Tusk##5085 |q 899 |goto The Barrens 44.47,52.32 |tip {dropsfrom}Bristleback Hunter, Bristleback Water Seeker, Bristleback Thornweaver
-step
-  note Find Mankrik's wife and then return to him in the Crossroads.
-  talk Beaten Corpse##10668 |q 4921 |goto The Barrens 49.33,50.32
-step
-  note Slay quilboars and collect 4 of Olgra's Adornments for Mankrik's memorial.
-  collect 4 Olgra's Adornments##277277 |q 95774 |goto The Barrens 49.58,51.06 |tip {dropsfrom}Razormane Raider
-step
-  talk Darsok Swiftdagger##3449
-  turnin Serena Bloodfeather##876 |goto The Barrens 51.62,30.9
-step
-  talk Mankrik##3432
-  turnin Consumed by Hatred##899 |goto The Barrens 51.95,31.58
-step
-  talk Mankrik##3432
-  turnin Lost in Battle##4921 |goto The Barrens 51.95,31.58
-step
-  talk Mankrik##3432
-  turnin Her Name Is Olgra##95774 |goto The Barrens 51.95,31.58
-step
-  talk Darsok Swiftdagger##3449
-  accept Letter to Jin'Zil##1060 |goto The Barrens 51.62,30.9
-step
-  talk Captain Thalo'thas Brightsun##3339
-  turnin The Guns of Northwatch##891 |goto The Barrens 62.29,39.03
-step
-  click WANTED##3972
-  accept WANTED: Bruuz##92706 |goto The Barrens 62.59,37.47
-step
-  note Bring Bruuz's Dorsal Fin to Gazlowe in Ratchet.
-  collect Bruuz's Dorsal Fin##253710 |q 92706 |goto The Barrens 64.38,39.21 |tip {dropsfrom}Bruuz
-step
-  talk Gazlowe##3391
-  turnin WANTED: Bruuz##92706 |goto The Barrens 62.68,36.23
-step
-  talk Gilthares Firebough##3465
-  accept Free From the Hold##898 |goto The Barrens 61.96,54.96
-step
   talk Jorn Skyseer##3387
   accept Cry of the Thunderhawk##913 |goto The Barrens 44.86,59.14
 step
@@ -667,39 +700,6 @@ step
 step
   talk Jorn Skyseer##3387
   turnin Cry of the Thunderhawk##913 |goto The Barrens 44.86,59.14
-step
-  talk Captain Thalo'thas Brightsun##3339
-  turnin Free From the Hold##898 |goto The Barrens 62.29,39.03
-step
-  talk Gur'ak##267310
-  accept Chol'aruk the Ravener##97003 |goto The Barrens 52.64,29.05
-step
-  note Bring the head of Chol'aruk to Gur'ak in the Barrens.
-  collect Chol'aruk's Head##276070 |q 97003 |goto The Barrens 57.64,27.37 |tip {dropsfrom}Chol'aruk
-step
-  talk Gur'ak##267310
-  turnin Chol'aruk the Ravener##97003 |goto The Barrens 52.64,29.05
-step
-  talk Sputtervalve##3442
-  accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
-step
-  talk Mangletooth##3430
-  accept Tribes at War##878 |goto The Barrens 44.55,59.26
-step
-  note Kill 6 Bristleback Water Seekers, 12 Bristleback Thornweavers and 12 Bristleback Geomancers and return to Mangletooth at Camp Taurajo in the Barrens.
-  kill Bristleback Water Seeker##3260 |q 878 |goto The Barrens 46.46,54.17
-step
-  talk Mangletooth##3430
-  turnin Tribes at War##878 |goto The Barrens 44.55,59.26
-step
-  talk Mangletooth##3430
-  accept Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
-step
-  note Bring a Blood Shard to Mangletooth in Camp Taurajo in the Barrens.
-  collect Blood Shard##5075 |q 5052 |goto The Barrens 44.47,52.32 |tip {dropsfrom}Bristleback Hunter, Bristleback Water Seeker, Bristleback Thornweaver
-step
-  talk Mangletooth##3430
-  turnin Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
 step
   only not completed(235) not completed(742) not haveq(235) not haveq(742)
   talk Jorn Skyseer##3387

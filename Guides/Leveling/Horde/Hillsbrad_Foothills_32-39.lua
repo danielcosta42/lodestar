@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (32-39)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Alterac Mountains (34-40)",
-	rev = "de361adc",
+	rev = "921bf73d",
 }, [[
 step
   only completed(513)
@@ -174,7 +174,7 @@ step
   collect 4 Bracers of Earth Binding##3715 |q 557 |goto Alterac Mountains 21.78,64.34 |tip {dropsfrom}Elemental Slave
 step
   note Kill 6 Dalaran Summoners and 12 Elemental Slaves, then return to Magus Voidglare in Tarren Mill.
-  talk Dalaran Summoner##2358 |q 545 |goto Alterac Mountains 18.88,74.92
+  kill Dalaran Summoner##2358 |q 545 |goto Alterac Mountains 18.88,74.92
 step
   only completed(498)
   note Free Gol'dir then return to Krusk in Tarren Mill.

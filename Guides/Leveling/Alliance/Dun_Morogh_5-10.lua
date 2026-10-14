@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dun Morogh (5-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Westfall (12-18)",
-	rev = "f87cf2a3",
+	rev = "8c86c2ad",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -28,7 +28,7 @@ step
   kill Frostmane Troll Whelp##706 |q 182 |goto Dun Morogh 26.84,79.92
 step
   note Talin Keeneye would like you to kill 12 Small Crag Boars.
-  talk Small Crag Boar##708 |q 183 |goto Dun Morogh 21.95,71.26
+  kill Small Crag Boar##708 |q 183 |goto Dun Morogh 21.95,71.26
 step
   only Warlock not completed(1598) not haveq(1598)
   note Bring 3 Feather Charms to Alamar Grimm in Anvilmar.
@@ -97,6 +97,9 @@ step
   talk Sten Stoutarm##658
   accept Archaic Rune##98581 |goto Dun Morogh 29.93,71.2
 step
+  talk Hands Springsprocket##6782
+  accept Supplies to Tannok##2160 |goto Dun Morogh 33.85,72.24
+step
   only Dwarf Warrior
   talk Thran Khorman##912
   turnin Simple Rune##3106 |goto Dun Morogh 28.83,67.24
@@ -141,12 +144,6 @@ step
   talk Teo Hammerstorm##257446
   turnin Archaic Rune##98581 |goto Dun Morogh 28.79,66.18
 step
-  talk Hands Springsprocket##6782
-  accept Supplies to Tannok##2160 |goto Dun Morogh 33.85,72.24
-step
-  talk Felix Whindlebolt##8416
-  accept A Refugee's Quandary##3361 |goto Dun Morogh 28.55,67.64
-step
   talk Talin Keeneye##714
   turnin Coldridge Valley Mail Delivery##233 |goto Dun Morogh 22.6,71.43
 step
@@ -157,13 +154,10 @@ step
   accept The Stolen Journal##218 |goto Dun Morogh 25.08,75.71
 step
   note Balir Frosthammer wants you to kill 6 Rockjaw Troggs and 6 Burly Rockjaw Troggs.
-  talk Rockjaw Trogg##707 |q 170 |goto Dun Morogh 30.68,75.71
+  kill Rockjaw Trogg##707 |q 170 |goto Dun Morogh 30.68,75.71
 step
   note Grelin Whitebeard wants you to kill Grik'nir the Cold, and retrieve his journal.
   collect Grelin Whitebeard's Journal##2004 |q 218 |goto Dun Morogh 30.48,80.15 |tip {dropsfrom}Grik'nir the Cold
-step
-  note Bring Felix's Box, Felix's Chest and Felix's Bucket of Bolts to Felix Whindlebolt in Anvilmar.
-  collect Felix's Box##10438 |q 3361 |goto Dun Morogh 20.88,76.07
 step
   talk Grelin Whitebeard##786
   turnin The Stolen Journal##218 |goto Dun Morogh 25.08,75.71
@@ -181,11 +175,11 @@ step
   talk Tharek Blackstone##1872
   accept Tools for Steelgrill##400 |goto Dun Morogh 46.02,51.68
 step
-  talk Beldin Steelgrill##1376
-  turnin Tools for Steelgrill##400 |goto Dun Morogh 50.44,49.09
-step
   talk Pilot Bellowfiz##1378
   accept Stocking Jetsteam##317 |goto Dun Morogh 49.43,48.41
+step
+  talk Beldin Steelgrill##1376
+  turnin Tools for Steelgrill##400 |goto Dun Morogh 50.44,49.09
 step
   talk Marleth Barleybrew##1375
   accept Bitter Rivals##310 |goto Dun Morogh 30.19,45.53
@@ -197,12 +191,48 @@ step
   talk Mountaineer Thalos##1965
   turnin Senir's Observations##282 |goto Dun Morogh 33.48,71.84
 step
-  talk Felix Whindlebolt##8416
-  turnin A Refugee's Quandary##3361 |goto Dun Morogh 28.55,67.64
-step
   only not completed(287) not haveq(287)
   talk Mountaineer Thalos##1965
   accept Senir's Observations##420 |goto Dun Morogh 33.48,71.84
+step
+  talk Felix Whindlebolt##8416
+  accept A Refugee's Quandary##3361 |goto Dun Morogh 28.55,67.64
+step
+  note Bring Felix's Box, Felix's Chest and Felix's Bucket of Bolts to Felix Whindlebolt in Anvilmar.
+  collect Felix's Box##10438 |q 3361 |goto Dun Morogh 20.88,76.07
+step
+  turnin Bitter Rivals##310 |goto Dun Morogh 47.72,52.7
+step
+  only not completed(287) not haveq(287)
+  talk Senir Whitebeard##1252
+  turnin Senir's Observations##420 |goto Dun Morogh 46.73,53.83
+step
+  click Unguarded Thunder Ale Barrel##270
+  accept Return to Marleth##311 |goto Dun Morogh 47.72,52.7
+step
+  talk Pilot Stonegear##1377
+  accept The Grizzled Den##313 |goto Dun Morogh 49.62,48.61
+step
+  talk Tognus Flintfire##1241
+  accept Flintfire's Shipment##98321 |goto Dun Morogh 45.34,51.94
+step
+  note Gather 8 Wendigo Manes and bring them to Pilot Stonegear.
+  collect 8 Wendigo Mane##2671 |q 313 |goto Dun Morogh 42.49,54.97 |tip {dropsfrom}Young Wendigo, Wendigo, Edan the Howler
+step
+  note Collect 8 Flintfire Shipments from the Grizzled Den for Tongus Flintfire in Kharanos.
+  collect 8 Flintfire's Shipment##280413 |q 98321 |goto Dun Morogh 42.3,47.5
+step
+  talk Pilot Stonegear##1377
+  turnin The Grizzled Den##313 |goto Dun Morogh 49.62,48.61
+step
+  talk Tognus Flintfire##1241
+  turnin Flintfire's Shipment##98321 |goto Dun Morogh 45.34,51.94
+step
+  talk Marleth Barleybrew##1375
+  turnin Return to Marleth##311 |goto Dun Morogh 30.19,45.53
+step
+  talk Felix Whindlebolt##8416
+  turnin A Refugee's Quandary##3361 |goto Dun Morogh 28.55,67.64
 step
   only Shaman
   talk Teo Hammerstorm##257446
@@ -221,6 +251,10 @@ step
   talk Grund Drokda##2756
   turnin Grund and Gozwin##97277 |goto Dun Morogh 28.67,67.52
 step
+  only not Human not NightElf not Skyborne Priest
+  talk Branstock Khalder##837
+  accept In Favor of the Light##5626 |goto Dun Morogh 28.6,66.39
+step
   talk Nori Pridedrift##12738
   accept Scalding Mornbrew Delivery##3364 |goto Dun Morogh 24.98,75.96
 step
@@ -228,11 +262,9 @@ step
   note Bring 2 Frostmane Bear Pendants to Teo Hammerstorm in Anvilmar.
   collect 2 Iceclaw Bear Pendant##264356 |q 94373 |goto Dun Morogh 26.84,79.92 |tip {dropsfrom}Frostmane Troll Whelp, Frostmane Novice
 step
-  turnin Bitter Rivals##310 |goto Dun Morogh 47.72,52.7
-step
-  only not completed(287) not haveq(287)
-  talk Senir Whitebeard##1252
-  turnin Senir's Observations##420 |goto Dun Morogh 46.73,53.83
+  only not Human not NightElf not Skyborne Priest
+  talk Maxan Anvol##1226
+  turnin In Favor of the Light##5626 |goto Dun Morogh 47.34,52.19
 step
   only not completed(287) not completed(96627) not completed(96630) not completed(96638) not completed(96652) not completed(96656) not completed(96659) not haveq(287) not haveq(96627) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96656) not haveq(96659)
   talk Eric Brighthammer##265813
@@ -242,25 +274,97 @@ step
   talk Eric Brighthammer##265813
   accept The Great Outdoors##96608 |goto Dun Morogh 46.69,53.92
 step
+  talk Loslor Rudge##1694
+  accept Ammo for Rumbleshot##5541 |goto Dun Morogh 50.08,49.42
+step
+  only not Human not NightElf not Skyborne Priest
+  talk Maxan Anvol##1226
+  accept Garments of the Light##5625 |goto Dun Morogh 47.34,52.19
+step
+  talk Senir Whitebeard##1252
+  accept Secure the Mountain##98322 |goto Dun Morogh 46.73,53.83
+step
+  talk Maxan Anvol##1226
+  accept Dawn in the Mountains##99158 |goto Dun Morogh 47.34,52.19
+step
+  note Bring Rumbleshot's Ammo to Hegnar Rumbleshot in Dun Morogh.
+  collect Rumbleshot's Ammo##13850 |q 5541 |goto Dun Morogh 44.13,56.95 |tip {dropsfrom}Ammo Crate
+step
+  only not Human not NightElf not Skyborne Priest
+  note Find Mountaineer Dolf and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Maxan Anvol in Kharanos.
+  talk Mountaineer Dolf##12427 |q 5625 |goto Dun Morogh 45.81,54.57
+step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607)
   note Sit near Eric's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
   collect Basic Campfire##460003 |q 96608 |goto Dun Morogh 46.68,53.84
+step
+  only not Human not NightElf not Skyborne Priest
+  talk Maxan Anvol##1226
+  turnin Garments of the Light##5625 |goto Dun Morogh 47.34,52.19
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607)
   talk Eric Brighthammer##265813
   turnin The Great Outdoors##96608 |goto Dun Morogh 46.69,53.92
 step
+  talk Mountaineer Gretchen##271546
+  turnin Secure the Mountain##98322 |goto Dun Morogh 44.1,57.07
+step
   only not completed(96626) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96626) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
   talk Eric Brighthammer##265813
   accept Camping 101: Cooking##96629 |goto Dun Morogh 46.69,53.92
+step
+  talk Mountaineer Gretchen##271546
+  accept Secure the Mountain##98319 |goto Dun Morogh 44.1,57.07
 step
   only not completed(96626) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96626) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
   note Speak with Gremlock Pilsnor in Kharanos to learn to become a cook.
   talk Gremlock Pilsnor##1699 |q 96629 |goto Dun Morogh 47.67,52.31
 step
+  note Find Mountaineer Cornelius in the Grizzled Den for Mountaineer Gretchen.
+  collect Mountaineer Cornelius##460004 |q 98319 |goto Dun Morogh 43.03,49.62
+step
   only not completed(96626) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96626) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
   talk Gremlock Pilsnor##1699
   turnin Camping 101: Cooking##96629 |goto Dun Morogh 47.67,52.31
+step
+  talk Mountaineer Gretchen##271546
+  turnin Secure the Mountain##98319 |goto Dun Morogh 44.1,57.07
+step
+  talk Mountaineer Gretchen##271546
+  accept Secure the Mountain##98323 |goto Dun Morogh 44.1,57.07
+step
+  talk Senir Whitebeard##1252
+  turnin Secure the Mountain##98323 |goto Dun Morogh 46.73,53.83
+step
+  talk Rejold Barleybrew##1374
+  accept The Perfect Stout##315 |goto Dun Morogh 30.19,45.73
+step
+  talk Gretta Ganter##8508
+  accept Frosthowl##98326 |goto Dun Morogh 31.53,44.65
+step
+  note Bring 6 Shimmerweeds to Rejold Barleybrew in the Brewnall Village.
+  collect 6 Shimmerweed##2676 |q 315 |goto Dun Morogh 41.85,35.84 |tip {dropsfrom}Frostmane Seer, Shimmerweed Basket
+step
+  talk Rejold Barleybrew##1374
+  turnin The Perfect Stout##315 |goto Dun Morogh 30.19,45.73
+step
+  talk Father Gavin##1253
+  turnin Dawn in the Mountains##99158 |goto Dun Morogh 57.73,44.88
+step
+  talk Father Gavin##1253
+  accept Finding Warmth##99159 |goto Dun Morogh 57.73,44.88
+step
+  note Collect 14 pieces of firewood.
+  collect 14 Mostly Dry Firewood##286339 |q 99159 |goto Dun Morogh 56,52.2 |tip {dropsfrom}Fallen Log
+step
+  talk Foreman Stonebrow##1254
+  accept Those Blasted Troggs!##432 |goto Dun Morogh 69.08,56.33
+step
+  note Kill 6 Rockjaw Skullthumpers for Foreman Stonebrow at the Gol'Bolar quarry.
+  kill Rockjaw Skullthumper##1115 |q 432 |goto Dun Morogh 70.49,57.12
+step
+  talk Foreman Stonebrow##1254
+  turnin Those Blasted Troggs!##432 |goto Dun Morogh 69.08,56.33
 step
   talk Durnan Furcutter##836
   turnin Scalding Mornbrew Delivery##3364 |goto Dun Morogh 28.77,66.37
@@ -275,10 +379,6 @@ step
   only Shaman
   talk Teo Hammerstorm##257446
   accept Call of Earth##94374 |goto Dun Morogh 28.79,66.18
-step
-  only not Human not NightElf not Skyborne Priest
-  talk Branstock Khalder##837
-  accept In Favor of the Light##5626 |goto Dun Morogh 28.6,66.39
 step
   only Shaman
   talk Minor Manifestation of Earth##5891
@@ -295,87 +395,14 @@ step
   talk Nori Pridedrift##12738
   turnin Bring Back the Mug##3365 |goto Dun Morogh 24.98,75.96
 step
-  only not Human not NightElf not Skyborne Priest
-  talk Maxan Anvol##1226
-  turnin In Favor of the Light##5626 |goto Dun Morogh 47.34,52.19
-step
-  click Unguarded Thunder Ale Barrel##270
-  accept Return to Marleth##311 |goto Dun Morogh 47.72,52.7
-step
-  talk Pilot Stonegear##1377
-  accept The Grizzled Den##313 |goto Dun Morogh 49.62,48.61
-step
-  talk Loslor Rudge##1694
-  accept Ammo for Rumbleshot##5541 |goto Dun Morogh 50.08,49.42
-step
-  only not Human not NightElf not Skyborne Priest
-  talk Maxan Anvol##1226
-  accept Garments of the Light##5625 |goto Dun Morogh 47.34,52.19
-step
-  talk Tognus Flintfire##1241
-  accept Flintfire's Shipment##98321 |goto Dun Morogh 45.34,51.94
-step
-  note Gather 8 Wendigo Manes and bring them to Pilot Stonegear.
-  collect 8 Wendigo Mane##2671 |q 313 |goto Dun Morogh 42.49,54.97 |tip {dropsfrom}Young Wendigo, Wendigo, Edan the Howler
-step
-  note Bring Rumbleshot's Ammo to Hegnar Rumbleshot in Dun Morogh.
-  collect Rumbleshot's Ammo##13850 |q 5541 |goto Dun Morogh 44.13,56.95 |tip {dropsfrom}Ammo Crate
-step
-  only not Human not NightElf not Skyborne Priest
-  note Find Mountaineer Dolf and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Maxan Anvol in Kharanos.
-  talk Mountaineer Dolf##12427 |q 5625 |goto Dun Morogh 45.81,54.57
-step
-  note Collect 8 Flintfire Shipments from the Grizzled Den for Tongus Flintfire in Kharanos.
-  collect 8 Flintfire's Shipment##280413 |q 98321 |goto Dun Morogh 42.3,47.5
-step
-  talk Pilot Stonegear##1377
-  turnin The Grizzled Den##313 |goto Dun Morogh 49.62,48.61
-step
-  only not Human not NightElf not Skyborne Priest
-  talk Maxan Anvol##1226
-  turnin Garments of the Light##5625 |goto Dun Morogh 47.34,52.19
-step
-  talk Tognus Flintfire##1241
-  turnin Flintfire's Shipment##98321 |goto Dun Morogh 45.34,51.94
-step
-  talk Marleth Barleybrew##1375
-  turnin Return to Marleth##311 |goto Dun Morogh 30.19,45.53
-step
   talk Hegnar Rumbleshot##1243
   turnin Ammo for Rumbleshot##5541 |goto Dun Morogh 40.68,65.13
 step
-  talk Senir Whitebeard##1252
-  accept Secure the Mountain##98322 |goto Dun Morogh 46.73,53.83
+  note Slay Frosthowl and collect the Sack of Fish for Gretta Ganter in Brewnall Village
+  collect Sack of Fish##280426 |q 98326 |goto Dun Morogh 39.33,48.79 |tip {dropsfrom}Frosthowl
 step
-  talk Maxan Anvol##1226
-  accept Dawn in the Mountains##99158 |goto Dun Morogh 47.34,52.19
-step
-  talk Mountaineer Gretchen##271546
-  turnin Secure the Mountain##98322 |goto Dun Morogh 44.1,57.07
-step
-  talk Mountaineer Gretchen##271546
-  accept Secure the Mountain##98319 |goto Dun Morogh 44.1,57.07
-step
-  note Find Mountaineer Cornelius in the Grizzled Den for Mountaineer Gretchen.
-  collect Mountaineer Cornelius##460004 |q 98319 |goto Dun Morogh 43.03,49.62
-step
-  talk Mountaineer Gretchen##271546
-  turnin Secure the Mountain##98319 |goto Dun Morogh 44.1,57.07
-step
-  talk Mountaineer Gretchen##271546
-  accept Secure the Mountain##98323 |goto Dun Morogh 44.1,57.07
-step
-  talk Senir Whitebeard##1252
-  turnin Secure the Mountain##98323 |goto Dun Morogh 46.73,53.83
-step
-  talk Father Gavin##1253
-  turnin Dawn in the Mountains##99158 |goto Dun Morogh 57.73,44.88
-step
-  talk Father Gavin##1253
-  accept Finding Warmth##99159 |goto Dun Morogh 57.73,44.88
-step
-  note Collect 14 pieces of firewood.
-  collect 14 Mostly Dry Firewood##286339 |q 99159 |goto Dun Morogh 56,52.2 |tip {dropsfrom}Fallen Log
+  talk Gretta Ganter##8508
+  turnin Frosthowl##98326 |goto Dun Morogh 31.53,44.65
 step
   talk Father Gavin##1253
   turnin Finding Warmth##99159 |goto Dun Morogh 57.73,44.88
@@ -401,53 +428,17 @@ step
   talk Father Gavin##1253
   turnin Rime's Wrath##99161 |goto Dun Morogh 57.73,44.88
 step
-  note Collect the rifles of fallen mountaineers.
-  collect Stoneanvil's Rifle##286360 |q 99162 |goto Dun Morogh 53.16,58.78
-step
-  talk Father Gavin##1253
-  turnin Treacherous Cold##99162 |goto Dun Morogh 57.73,44.88
-step
-  talk Senir Whitebeard##1252
-  accept Frostmane Hold##287 |goto Dun Morogh 46.73,53.83
-step
-  talk Rejold Barleybrew##1374
-  accept The Perfect Stout##315 |goto Dun Morogh 30.19,45.73
-step
-  talk Gretta Ganter##8508
-  accept Frosthowl##98326 |goto Dun Morogh 31.53,44.65
-step
-  note Explore Frostmane Hold, and kill 5 Frostmane Headhunters for Senir Whitebeard in Kharanos.
-  kill Frostmane Headhunter##1123 |q 287 |goto Dun Morogh 23.42,51.4
-step
-  note Bring 6 Shimmerweeds to Rejold Barleybrew in the Brewnall Village.
-  collect 6 Shimmerweed##2676 |q 315 |goto Dun Morogh 41.85,35.84 |tip {dropsfrom}Frostmane Seer, Shimmerweed Basket
-step
-  talk Rejold Barleybrew##1374
-  turnin The Perfect Stout##315 |goto Dun Morogh 30.19,45.73
-step
-  talk Rejold Barleybrew##1374
-  accept Shimmer Stout##413 |goto Dun Morogh 30.19,45.73
-step
   talk Rudra Amberstill##1265
   accept Never Saddle on Quality##95212 |goto Dun Morogh 63.08,49.85
 step
-  talk Foreman Stonebrow##1254
-  accept Those Blasted Troggs!##432 |goto Dun Morogh 69.08,56.33
-step
   kill Rockjaw Ambusher##1116 |goto Dun Morogh 73.41,55.08 |tip Loot the quest item here — it starts the quest.
   accept Stolen Blasting Powder##95213 |goto Dun Morogh 73.41,55.08
-step
-  note Kill 6 Rockjaw Skullthumpers for Foreman Stonebrow at the Gol'Bolar quarry.
-  kill Rockjaw Skullthumper##1115 |q 432 |goto Dun Morogh 70.49,57.12
 step
   note Collect 6 Pristine Leopard Pelts and deliver them to Amberstill Ranch.
   collect 6 Pristine Leopard Pelt##267414 |q 95212 |goto Dun Morogh 75.2,57.04 |tip {dropsfrom}Elder Snow Leopard
 step
   note Bring the Empty Powder Keg to Quarrymaster Thesten at Gol'Bolar Quarry.
   collect Empty Powder Keg##268548 |q 95213 |goto Dun Morogh 73.41,55.08 |tip {dropsfrom}Rockjaw Ambusher, Rockjaw Backbreaker
-step
-  talk Foreman Stonebrow##1254
-  turnin Those Blasted Troggs!##432 |goto Dun Morogh 69.08,56.33
 step
   talk Quarrymaster Thesten##1256
   turnin Stolen Blasting Powder##95213 |goto Dun Morogh 69.16,54.8
@@ -461,6 +452,54 @@ step
   talk Quarrymaster Thesten##1256
   turnin Stolen Blasting Powder##95214 |goto Dun Morogh 69.16,54.8
 step
+  talk Senir Whitebeard##1252
+  accept Frostmane Hold##287 |goto Dun Morogh 46.73,53.83
+step
+  talk Razzle Sprysprocket##1269
+  accept Operation Recombobulation##412 |goto Dun Morogh 45.85,49.37
+step
+  note Collect the rifles of fallen mountaineers.
+  collect Stoneanvil's Rifle##286360 |q 99162 |goto Dun Morogh 53.16,58.78
+step
+  note Explore Frostmane Hold, and kill 5 Frostmane Headhunters for Senir Whitebeard in Kharanos.
+  kill Frostmane Headhunter##1123 |q 287 |goto Dun Morogh 23.42,51.4
+step
+  note Bring Razzle Sprysprocket in Kharanos 8 Restabilization Cogs and 8 Gyromechanic Gears.
+  collect Restabilization Cog##3083 |q 412 |goto Dun Morogh 26.04,40.76 |tip {dropsfrom}Leper Gnome, Gibblewilt
+step
+  talk Father Gavin##1253
+  turnin Treacherous Cold##99162 |goto Dun Morogh 57.73,44.88
+step
+  talk Rudra Amberstill##1265
+  turnin Never Saddle on Quality##95212 |goto Dun Morogh 63.08,49.85
+step
+  talk Senir Whitebeard##1252
+  turnin Frostmane Hold##287 |goto Dun Morogh 46.73,53.83
+step
+  talk Razzle Sprysprocket##1269
+  turnin Operation Recombobulation##412 |goto Dun Morogh 45.85,49.37
+step
+  talk Senir Whitebeard##1252
+  accept The Reports##291 |goto Dun Morogh 46.73,53.83
+step
+  talk Pilot Bellowfiz##1378
+  accept Rejold's New Brew##415 |goto Dun Morogh 49.43,48.41
+step
+  talk Rejold Barleybrew##1374
+  turnin Rejold's New Brew##415 |goto Dun Morogh 30.19,45.73
+step
+  talk Rejold Barleybrew##1374
+  accept Shimmer Stout##413 |goto Dun Morogh 30.19,45.73
+step
+  talk Senator Mehr Stonehallow##1977
+  accept The Public Servant##433 |goto Dun Morogh 68.67,55.97
+step
+  note Kill 10 Rockjaw Bonesnappers for Senator Mehr Stonehallow at the Gol'Bolar quarry.
+  kill Rockjaw Bonesnapper##1117 |q 433 |goto Dun Morogh 72.41,52.9
+step
+  talk Senator Mehr Stonehallow##1977
+  turnin The Public Servant##433 |goto Dun Morogh 68.67,55.97
+step
   talk Mountaineer Barleybrew##1959
   turnin Shimmer Stout##413 |goto Dun Morogh 86.28,48.81
 step
@@ -472,45 +511,6 @@ step
 step
   turnin The Lost Pilot##419 |goto Dun Morogh 79.67,36.17
 step
-  talk Senir Whitebeard##1252
-  turnin Frostmane Hold##287 |goto Dun Morogh 46.73,53.83
-step
-  talk Senir Whitebeard##1252
-  accept The Reports##291 |goto Dun Morogh 46.73,53.83
-step
-  talk Razzle Sprysprocket##1269
-  accept Operation Recombobulation##412 |goto Dun Morogh 45.85,49.37
-step
-  talk Pilot Bellowfiz##1378
-  accept Rejold's New Brew##415 |goto Dun Morogh 49.43,48.41
-step
-  note Slay Frosthowl and collect the Sack of Fish for Gretta Ganter in Brewnall Village
-  collect Sack of Fish##280426 |q 98326 |goto Dun Morogh 39.33,48.79 |tip {dropsfrom}Frosthowl
-step
-  talk Rejold Barleybrew##1374
-  turnin Rejold's New Brew##415 |goto Dun Morogh 30.19,45.73
-step
-  talk Gretta Ganter##8508
-  turnin Frosthowl##98326 |goto Dun Morogh 31.53,44.65
-step
-  note Bring Razzle Sprysprocket in Kharanos 8 Restabilization Cogs and 8 Gyromechanic Gears.
-  collect Restabilization Cog##3083 |q 412 |goto Dun Morogh 26.04,40.76 |tip {dropsfrom}Leper Gnome, Gibblewilt
-step
-  talk Rudra Amberstill##1265
-  turnin Never Saddle on Quality##95212 |goto Dun Morogh 63.08,49.85
-step
-  talk Razzle Sprysprocket##1269
-  turnin Operation Recombobulation##412 |goto Dun Morogh 45.85,49.37
-step
-  talk Senator Mehr Stonehallow##1977
-  accept The Public Servant##433 |goto Dun Morogh 68.67,55.97
-step
-  note Kill 10 Rockjaw Bonesnappers for Senator Mehr Stonehallow at the Gol'Bolar quarry.
-  kill Rockjaw Bonesnapper##1117 |q 433 |goto Dun Morogh 72.41,52.9
-step
-  talk Senator Mehr Stonehallow##1977
-  turnin The Public Servant##433 |goto Dun Morogh 68.67,55.97
-step
   click A Dwarven Corpse##2059
   accept A Pilot's Revenge##417 |goto Dun Morogh 79.67,36.17
 step
@@ -519,34 +519,6 @@ step
 step
   talk Pilot Hammerfoot##1960
   turnin A Pilot's Revenge##417 |goto Dun Morogh 83.89,39.19
-step
-  only Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
-  talk Granis Swiftaxe##1229
-  accept Muren Stormpike##1679 |goto Dun Morogh 47.36,52.65
-step
-  only not Dwarf not NightElf not Skyborne Mage not completed(1861) not haveq(1861)
-  talk Magis Sparkmantle##1228
-  accept Speak with Bink##1879 |goto Dun Morogh 47.5,52.08
-step
-  only Rogue
-  talk Hogral Bakkan##1234
-  accept Road to Salvation##2218 |goto Dun Morogh 47.56,52.61
-step
-  only NightElf Priest not completed(5627) not completed(5628) not completed(5629) not completed(5631) not completed(5632) not completed(5633) not haveq(5627) not haveq(5628) not haveq(5629) not haveq(5631) not haveq(5632) not haveq(5633)
-  talk Maxan Anvol##1226
-  accept Returning Home##5630 |goto Dun Morogh 47.34,52.19
-step
-  only not NightElf not Gnome not Skyborne Priest not completed(5634) not completed(5635) not completed(5636) not completed(5638) not completed(5639) not completed(5640) not haveq(5634) not haveq(5635) not haveq(5636) not haveq(5638) not haveq(5639) not haveq(5640)
-  talk Maxan Anvol##1226
-  accept Desperate Prayer##5637 |goto Dun Morogh 47.34,52.19
-step
-  only Shaman
-  talk Ingrid Dunwald##258113
-  accept Call of Fire##94449 |goto Dun Morogh 47.58,51.95
-step
-  only Gnome Priest
-  talk Maxan Anvol##1226
-  accept Confounding Flash##94824 |goto Dun Morogh 47.34,52.19
 step
   talk Tundra MacGrann##1266
   accept Tundra MacGrann's Stolen Stash##312 |goto Dun Morogh 34.57,51.65
@@ -573,19 +545,43 @@ step
 step
   only Shaman
   talk Bruegs Kindleborn##257597
-  turnin Call of Fire##94449 |goto Dun Morogh 87.94,44.8
-step
-  only Shaman
-  talk Bruegs Kindleborn##257597
   accept Call of Fire##94465 |goto Dun Morogh 87.94,44.8
 step
   only Dwarf Hunter not completed(6074) not completed(6076) not haveq(6074) not haveq(6076)
   talk Grif Wildheart##1231
   turnin The Hunter's Path##6075 |goto Dun Morogh 45.81,53.04
 step
+  only Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  talk Granis Swiftaxe##1229
+  accept Muren Stormpike##1679 |goto Dun Morogh 47.36,52.65
+step
+  only not Dwarf not NightElf not Skyborne Mage not completed(1861) not haveq(1861)
+  talk Magis Sparkmantle##1228
+  accept Speak with Bink##1879 |goto Dun Morogh 47.5,52.08
+step
+  only Rogue
+  talk Hogral Bakkan##1234
+  accept Road to Salvation##2218 |goto Dun Morogh 47.56,52.61
+step
+  only NightElf Priest not completed(5627) not completed(5628) not completed(5629) not completed(5631) not completed(5632) not completed(5633) not haveq(5627) not haveq(5628) not haveq(5629) not haveq(5631) not haveq(5632) not haveq(5633)
+  talk Maxan Anvol##1226
+  accept Returning Home##5630 |goto Dun Morogh 47.34,52.19
+step
+  only not NightElf not Gnome not Skyborne Priest not completed(5634) not completed(5635) not completed(5636) not completed(5638) not completed(5639) not completed(5640) not haveq(5634) not haveq(5635) not haveq(5636) not haveq(5638) not haveq(5639) not haveq(5640)
+  talk Maxan Anvol##1226
+  accept Desperate Prayer##5637 |goto Dun Morogh 47.34,52.19
+step
   only Dwarf Hunter
   talk Grif Wildheart##1231
   accept Taming the Beast##6064 |goto Dun Morogh 45.81,53.04
+step
+  only Shaman
+  talk Ingrid Dunwald##258113
+  accept Call of Fire##94449 |goto Dun Morogh 47.58,51.95
+step
+  only Gnome Priest
+  talk Maxan Anvol##1226
+  accept Confounding Flash##94824 |goto Dun Morogh 47.34,52.19
 step
   only Dwarf Hunter
   note Use the Taming Rod to tame a Large Crag Boar. Practice your skills, then return the Taming Rod to Grif Wildheart in Kharanos.
@@ -614,6 +610,10 @@ step
   only Dwarf Hunter
   note Use the Taming Rod to tame an Ice Claw Bear. Practice your skills, then return the Taming Rod to Grif Wildheart in Kharanos.
   use Ice Claw Bear##1196 |q 6085 |goto Dun Morogh 35.9,46.93 |tip {useit}
+step
+  only Shaman
+  talk Bruegs Kindleborn##257597
+  turnin Call of Fire##94449 |goto Dun Morogh 87.94,44.8
 step
   only Dwarf Hunter
   talk Grif Wildheart##1231

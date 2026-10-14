@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Thousand Needles (30-41)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Desolace (33-40)",
-	rev = "a51b3bc6",
+	rev = "dccc48da",
 }, [[
 step
   only Warrior completed(1782)
@@ -24,10 +24,6 @@ step
   talk Pozzik##4630
   accept Load Lightening##1176 |goto Thousand Needles 80.18,75.88
 step
-  only Mage completed(1949)
-  talk Magus Tirth##6548
-  accept Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
-step
   note Bring 6 Salty Scorpid Venoms to Fizzle Brassbolts in the Shimmering Flats.
   collect 6 Salty Scorpid Venom##5794 |q 1104 |goto Thousand Needles 82.76,79.73 |tip {dropsfrom}Scorpid Terror, Scorpid Reaver, Vile Sting
 step
@@ -44,10 +40,6 @@ step
   note Bring 20 Sunscorched Shells to Mathiel in Darnassus.
   collect 20 Sunscorched Shell##6849 |q 1710 |goto Thousand Needles 11.41,36.76
 step
-  only Mage completed(1949)
-  note Find the phrase to Tirth's strongbox, then return to Tirth.
-  talk "Plucky" Johnson##6626 |q 1950 |goto Thousand Needles 79.61,75.63
-step
   talk Fizzle Brassbolts##4454
   turnin Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
 step
@@ -62,7 +54,7 @@ step
 step
   only Mage completed(1949)
   talk Magus Tirth##6548
-  turnin Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
+  accept Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
 step
   talk Trackmaster Zherin##4629
   accept A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
@@ -70,14 +62,22 @@ step
   collect Henrig Lonebrow's Journal##19861 |goto Thousand Needles 30.73,24.35 |tip Loot the quest item here — it starts the quest.
   accept Lonebrow's Journal##1100 |goto Thousand Needles 30.73,24.35
 step
+  talk Kravel Koalbeard##4452
+  accept Wharfmaster Dizzywig##1111 |goto Thousand Needles 77.79,77.27
+step
   note Kill 10 Saltstone Basilisks, 10 Saltstone Crystalhides and 6 Saltstone Gazers for Trackmaster Zherin on the Shimmering Flats.
   kill Saltstone Basilisk##4147 |q 1175 |goto Thousand Needles 73.64,59.44
+step
+  only Mage completed(1949)
+  note Find the phrase to Tirth's strongbox, then return to Tirth.
+  talk "Plucky" Johnson##6626 |q 1950 |goto Thousand Needles 79.61,75.63
 step
   talk Trackmaster Zherin##4629
   turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
 step
-  talk Kravel Koalbeard##4452
-  accept Wharfmaster Dizzywig##1111 |goto Thousand Needles 77.79,77.27
+  only Mage completed(1949)
+  talk Magus Tirth##6548
+  turnin Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
 step
   talk Pozzik##4630
   accept Goblin Sponsorship##1178 |goto Thousand Needles 80.18,75.88

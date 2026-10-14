@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (34-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Arathi Highlands (34-40)",
-	rev = "8e1b7f27",
+	rev = "a8af63c6",
 }, [[
 step
   talk Barnil Stonepot##716
@@ -77,6 +77,9 @@ step
   talk Ajeck Rouack##717
   accept Tiger Mastery##188 |goto Stranglethorn Vale 35.62,10.62
 step
+  talk Sir S. J. Erlgadin##718
+  accept Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
+step
   note Ajeck Rouack of Nesingwary's Expedition wants you to kill Sin'Dall and return with her paw.
   collect Paw of Sin'Dall##3879 |q 188 |goto Stranglethorn Vale 32.21,17.39 |tip {dropsfrom}Sin'Dall
 step
@@ -101,17 +104,29 @@ step
   talk Nimboya##2497
   accept Trollbane##638 |goto Stranglethorn Vale 32.16,27.72
 step
+  talk Far Seer Mok'thardin##2465
+  accept Mok'thardin's Enchantment##570 |goto Stranglethorn Vale 32.12,29.24
+step
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Shadowmaw Panthers.
+  kill Shadowmaw Panther##684 |q 192 |goto Stranglethorn Vale 41.3,34.76
+step
   note Hemet Nesingwary wants you to kill 10 Lashtail Raptors.
   kill Lashtail Raptor##686 |q 195 |goto Stranglethorn Vale 33.4,24.55
 step
   note Commander Aggro'gosh of the Grom'gol base camp wants you to kill 15 Lashtail Raptors.
   kill Lashtail Raptor##686 |q 568 |goto Stranglethorn Vale 33.4,24.55
 step
+  note Far Seer Mok'thardin at the Grom'gol base camp wants 8 Shadowmaw Claws and a Pristine Tigress Fang.
+  collect Shadowmaw Claw##3838 |q 570 |goto Stranglethorn Vale 41.3,34.76 |tip {dropsfrom}Shadowmaw Panther, Elder Shadowmaw Panther
+step
   note Bring a Tablet Shard to Kin'weelay at the Grom'gol Base Camp.
   collect Tablet Shard##4094 |q 629 |goto Stranglethorn Vale 24.82,23.03 |tip {dropsfrom}Gri'lek the Wanderer
 step
   talk Commander Aggro'gosh##2464
   turnin The Defense of Grom'gol##568 |goto Stranglethorn Vale 32.17,28.9
+step
+  talk Far Seer Mok'thardin##2465
+  turnin Mok'thardin's Enchantment##570 |goto Stranglethorn Vale 32.12,29.24
 step
   talk Kin'weelay##2519
   turnin The Vile Reef##629 |goto Stranglethorn Vale 32.27,27.71
@@ -171,11 +186,11 @@ step
   talk Baron Revilgaz##2496
   accept Goblin Sponsorship##1182 |goto Stranglethorn Vale 27.23,76.87
 step
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
+step
   talk Hemet Nesingwary##715
   turnin Raptor Mastery##195 |goto Stranglethorn Vale 35.66,10.81
-step
-  talk Sir S. J. Erlgadin##718
-  accept Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
 step
   note Acquire 15 Bloodscalp Ears and return them to Kebok in Booty Bay.
   collect 15 Bloodscalp Ear##1519 |q 189 |goto Stranglethorn Vale 34.04,16.78 |tip {dropsfrom}Bloodscalp Warrior, Bloodscalp Scout, Bloodscalp Hunter
@@ -208,18 +223,6 @@ step
   talk Nimboya##2497
   accept Headhunting##582 |goto Stranglethorn Vale 32.16,27.72
 step
-  talk Far Seer Mok'thardin##2465
-  accept Mok'thardin's Enchantment##570 |goto Stranglethorn Vale 32.12,29.24
-step
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Shadowmaw Panthers.
-  kill Shadowmaw Panther##684 |q 192 |goto Stranglethorn Vale 41.3,34.76
-step
-  note Far Seer Mok'thardin at the Grom'gol base camp wants 8 Shadowmaw Claws and a Pristine Tigress Fang.
-  collect Shadowmaw Claw##3838 |q 570 |goto Stranglethorn Vale 41.3,34.76 |tip {dropsfrom}Shadowmaw Panther, Elder Shadowmaw Panther
-step
-  talk Far Seer Mok'thardin##2465
-  turnin Mok'thardin's Enchantment##570 |goto Stranglethorn Vale 32.12,29.24
-step
   talk Kebok##737
   turnin Bloodscalp Ears##189 |goto Stranglethorn Vale 27,77.13
 step
@@ -238,9 +241,6 @@ step
 step
   talk Drizzlik##2495
   accept Some Assembly Required##577 |goto Stranglethorn Vale 28.29,77.59
-step
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##192 |goto Stranglethorn Vale 35.55,10.55
 step
   talk Sir S. J. Erlgadin##718
   accept Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
@@ -293,6 +293,9 @@ step
   talk Barnil Stonepot##716
   turnin Chapter IV##342 |goto Stranglethorn Vale 35.66,10.53
 step
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
+step
   talk Nimboya##2497
   turnin Headhunting##582 |goto Stranglethorn Vale 32.16,27.72
 step
@@ -305,6 +308,9 @@ step
   note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to bring him the Fang of Bhag'thera.
   kill Bhag'thera##728 |goto Stranglethorn Vale 49.4,24 |elite
   collect Fang of Bhag'thera##3876 |q 193 |goto Stranglethorn Vale 49.4,24
+step
+  note Hemet Nesingwary wants you to kill 10 Jungle Stalkers.
+  kill Jungle Stalker##687 |q 196 |goto Stranglethorn Vale 28.91,44.16
 step
   note Bring 10 Jungle Stalker Feathers to Far Seer Mok'thardin at the Grom'gol base camp.
   collect 10 Jungle Stalker Feather##3863 |q 572 |goto Stranglethorn Vale 28.91,44.16 |tip {dropsfrom}Jungle Stalker
@@ -375,7 +381,7 @@ step
   turnin Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
 step
   talk Hemet Nesingwary##715
-  accept Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
+  turnin Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
 step
   note Bring Gan'zulah's Head and Nezzliok's Head to the bubbling cauldron at the Grom'gol Base Camp.
   collect Gan'zulah's Head##3904 |q 584 |goto Stranglethorn Vale 23.44,8.12 |tip {dropsfrom}Gan'zulah
@@ -387,9 +393,6 @@ step
 step
   click Bubbling Cauldron##2076
   accept Speaking with Nezzliok##585 |goto Stranglethorn Vale 32.22,27.6
-step
-  note Hemet Nesingwary wants you to kill 10 Jungle Stalkers.
-  kill Jungle Stalker##687 |q 196 |goto Stranglethorn Vale 28.91,44.16
 step
   note Bring a Balia'mah Trophy, a Ziata'jai Trophy and a Zul'Mamwe Trophy to the Bubbling Cauldron at the Grom'gol Base Camp.
   collect Balia'mah Trophy##3906 |q 585 |goto Stranglethorn Vale 46.13,32.33 |tip {dropsfrom}Balia'mah Trophy Skulls
@@ -408,9 +411,6 @@ step
 step
   talk Drizzlik##2495
   turnin Excelsior##628 |goto Stranglethorn Vale 28.29,77.59
-step
-  talk Hemet Nesingwary##715
-  turnin Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
 step
   turnin Crystal in the Mountains##635 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
 step

@@ -4,14 +4,14 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Priest", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "919a453c",
+	rev = "2d5e634f",
 }, [[
 step
   talk Gornek##3143
   accept Cutting Teeth##788 |goto Durotar 42.06,68.33
 step
   note Kill 10 Mottled Boars then return to Gornek at the Den.
-  talk Mottled Boar##3098 |q 788 |goto Durotar 44.49,65.1
+  kill Mottled Boar##3098 |q 788 |goto Durotar 44.49,65.1
 step
   talk Gornek##3143
   turnin Cutting Teeth##788 |goto Durotar 42.06,68.33
@@ -29,7 +29,7 @@ step
   accept The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
 step
   note Shadow Priest Sarvis wants you to kill 8 Mindless Zombies and 8 Wretched Zombies.
-  talk Mindless Zombie##1501 |q 364 |goto Tirisfal Glades 32.28,63.63
+  kill Mindless Zombie##1501 |q 364 |goto Tirisfal Glades 32.28,63.63
 step
   talk Shadow Priest Sarvis##1569
   turnin The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2

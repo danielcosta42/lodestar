@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Hunter", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "6a3c341f",
+	rev = "11359971",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -54,7 +54,7 @@ step
   accept The Balance of Nature##456 |goto Teldrassil 58.69,44.27
 step
   note Kill 7 Young Nightsabers and 4 Young Thistle Boars and return to Conservator Ilthalaine.
-  talk Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
+  kill Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
 step
   talk Conservator Ilthalaine##2079
   turnin The Balance of Nature##456 |goto Teldrassil 58.69,44.27
@@ -79,7 +79,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49

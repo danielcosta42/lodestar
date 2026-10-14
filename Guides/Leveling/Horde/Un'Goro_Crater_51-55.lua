@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Un'Goro Crater (51-55)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Azshara (52-58)",
-	rev = "a89c7889",
+	rev = "60db0269",
 }, [[
 step
   talk Arch Druid Hamuul Runetotem##5769
@@ -59,7 +59,7 @@ step
   collect Crate of Foodstuffs##11113 |q 3881 |goto Un'Goro Crater 68.54,36.54
 step
   note Hunt 5 Bloodpetal Lashers, 5 Bloodpetal Threshers, 5 Bloodpetal Flayers and 5 Bloodpetal Trappers for Larion at Marshal's Refuge.
-  talk Bloodpetal Lasher##6509 |q 4145 |goto Un'Goro Crater 67.79,31.77
+  kill Bloodpetal Lasher##6509 |q 4145 |goto Un'Goro Crater 67.79,31.77
 step
   note Collect 8 Webbed Diemetradon Scales and 8 Webbed Pterrordax Scales for Shizzle in Marshal's Refuge.
   collect 8 Webbed Diemetradon Scale##11830 |q 4503 |goto Un'Goro Crater 65.42,35.31 |tip {dropsfrom}Young Diemetradon, Diemetradon, Elder Diemetradon
@@ -201,6 +201,15 @@ step
   talk Torwa Pathfinder##9619
   turnin The Scent of Lar'korwi##4291 |goto Un'Goro Crater 71.64,75.96
 step
+  talk Torwa Pathfinder##9619
+  accept The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
+step
+  note Using the contents of Torwa's Pouch, summon Lar'korwi and defeat him. Then bring Lar'korwi's Head to Torwa Pathfinder near the entrance to Un'Goro Crater.
+  collect Lar'korwi's Head##11510 |q 4292 |goto Un'Goro Crater 79.65,49.83 |tip {dropsfrom}Lar'korwi
+step
+  talk Torwa Pathfinder##9619
+  turnin The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
+step
   talk J.D. Collie##9117
   turnin The Northern Pylon##4285 |goto Un'Goro Crater 41.92,2.7
 step
@@ -239,15 +248,6 @@ step
 step
   talk Torwa Pathfinder##9619
   accept The Mighty U'cha##4301 |goto Un'Goro Crater 71.64,75.96
-step
-  talk Torwa Pathfinder##9619
-  accept The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
-step
-  note Using the contents of Torwa's Pouch, summon Lar'korwi and defeat him. Then bring Lar'korwi's Head to Torwa Pathfinder near the entrance to Un'Goro Crater.
-  collect Lar'korwi's Head##11510 |q 4292 |goto Un'Goro Crater 79.65,49.83 |tip {dropsfrom}Lar'korwi
-step
-  talk Torwa Pathfinder##9619
-  turnin The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
 step
   note Bring U'cha's Pelt to Torwa Pathfinder at the entrance of Un'Goro Crater.
   collect U'cha's Pelt##11476 |q 4301 |goto Un'Goro Crater 68.14,12.56 |tip {dropsfrom}U'cha

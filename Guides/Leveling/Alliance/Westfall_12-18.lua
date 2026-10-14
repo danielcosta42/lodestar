@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Westfall (12-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dun Morogh (13-26)",
-	rev = "aafa7bc1",
+	rev = "60a84ac0",
 }, [[
 step
   talk Gilbert Gray##267118
@@ -14,22 +14,6 @@ step
   only Skyborne completed(94947)
   talk Highlord Bolvar Fordragon##1748
   accept Journey to Sentinel Hill##98021 |goto Stormwind City 80.21,38.35
-step
-  only Human Paladin completed(1642)
-  talk Duthorian Rall##6171
-  accept The Tome of Divinity##1643 |goto Stormwind City 50.48,47.49
-step
-  only Dwarf Paladin completed(1646)
-  talk Tiza Battleforge##6179
-  accept The Tome of Divinity##1647 |goto Ironforge 27.63,12.18
-step
-  only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)
-  talk Azar Stronghammer##1232
-  accept Tome of Divinity##2997 |goto Dun Morogh 47.6,52.07
-step
-  only Human Paladin not completed(3681) not haveq(3681)
-  talk Brother Wilhelm##927
-  accept Tome of Divinity##2998 |goto Elwynn Forest 41.1,66.04
 step
   talk Verna Furlbrow##238
   accept Westfall Stew##36 |goto Westfall 59.92,19.42
@@ -87,6 +71,12 @@ step
   talk Alba Fairmoon##253092
   accept The State of the Mines##92745 |goto Westfall 52.48,53.05
 step
+  talk Scout Galiaan##878
+  accept Red Leather Bandanas##153 |goto Westfall 53.98,52.98
+step
+  talk Alba Fairmoon##253092
+  accept Moonbrook Espionage##92747 |goto Westfall 52.48,53.05
+step
   note Salma Saldean needs 8 Goretusk livers to make a Goretusk Liver Pie.
   collect Goretusk Liver##723 |q 22 |goto Westfall 44.71,56.93 |tip {dropsfrom}Goretusk, Bellygrub, Young Goretusk
 step
@@ -109,6 +99,9 @@ step
   only Human
   talk Thor##523
   accept Continue to Stormwind##6281 |goto Westfall 56.55,52.64
+step
+  note Collect 8 Suspicious Industrial Supplies from Moonbrook.
+  collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 42.5,68.7 |tip {dropsfrom}Suspicious Crate
 step
   talk Verna Furlbrow##238
   turnin Poor Old Blanchy##151 |goto Westfall 59.92,19.42
@@ -143,6 +136,9 @@ step
   note Gryan Stoutmantle wants you to kill 15 Defias Trappers and 15 Defias Smugglers then return to him on Sentinel Hill.
   kill Defias Trapper##504 |q 12 |goto Westfall 47.39,36.32
 step
+  note Bring 15 Red Leather Bandanas to Scout Galiaan at Sentinel Hill.
+  collect 15 Red Leather Bandana##829 |q 153 |goto Westfall 45.8,26.58 |tip {dropsfrom}Defias Smuggler, Defias Pathstalker, Defias Highwayman
+step
   note Ozwin Ironsprocket at Saldean's Farm wants you to bring him 14 Golem Isosprings and 5 Harvester Gyrostabilizers.
   collect Golem Isospring##255007 |q 92909 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
 step
@@ -164,29 +160,26 @@ step
   talk Gryan Stoutmantle##234
   turnin The People's Militia##12 |goto Westfall 56.33,47.52
 step
+  talk Scout Galiaan##878
+  turnin Red Leather Bandanas##153 |goto Westfall 53.98,52.98
+step
   talk Alba Fairmoon##253092
   turnin Murloc Gills##92744 |goto Westfall 52.48,53.05
 step
   talk Alba Fairmoon##253092
   turnin The State of the Mines##92745 |goto Westfall 52.48,53.05
 step
+  talk Alba Fairmoon##253092
+  turnin Moonbrook Espionage##92747 |goto Westfall 52.48,53.05
+step
   talk Gryan Stoutmantle##234
   accept The People's Militia##13 |goto Westfall 56.33,47.52
-step
-  talk Scout Galiaan##878
-  accept Red Leather Bandanas##153 |goto Westfall 53.98,52.98
-step
-  talk Alba Fairmoon##253092
-  accept Moonbrook Espionage##92747 |goto Westfall 52.48,53.05
 step
   talk Alba Fairmoon##253092
   accept Explosive Consultation##92748 |goto Westfall 52.48,53.05
 step
   note Gryan Stoutmantle wants you to kill 15 Defias Pillagers and 15 Defias Looters and return to him on Sentinel Hill.
   kill Defias Pillager##589 |q 13 |goto Westfall 38.76,69.61
-step
-  note Collect 8 Suspicious Industrial Supplies from Moonbrook.
-  collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 42.5,68.7 |tip {dropsfrom}Suspicious Crate
 step
   talk Captain Grayson##392
   accept Keeper of the Flame##103 |goto Westfall 30.01,86.02
@@ -197,49 +190,39 @@ step
   note Bring 5 Flasks of Oil to Captain Grayson at the Westfall Lighthouse.
   collect 5 Flask of Oil##814 |q 103 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Harvest Reaper
 step
-  note Bring 15 Red Leather Bandanas to Scout Galiaan at Sentinel Hill.
-  collect 15 Red Leather Bandana##829 |q 153 |goto Westfall 45.8,26.58 |tip {dropsfrom}Defias Smuggler, Defias Pathstalker, Defias Highwayman
-step
   talk Gryan Stoutmantle##234
   turnin The People's Militia##13 |goto Westfall 56.33,47.52
 step
-  talk Scout Galiaan##878
-  turnin Red Leather Bandanas##153 |goto Westfall 53.98,52.98
-step
-  talk Alba Fairmoon##253092
-  turnin Moonbrook Espionage##92747 |goto Westfall 52.48,53.05
+  talk Gryan Stoutmantle##234
+  accept The People's Militia##14 |goto Westfall 56.33,47.52
 step
   turnin Captain Sander's Hidden Treasure##136 |goto Westfall 25.91,47.75
 step
   click Captain's Footlocker##35
   accept Captain Sander's Hidden Treasure##138 |goto Westfall 25.91,47.75
 step
+  talk Mouse##6271
+  accept Of Mice and Milk##93928 |goto Westfall 35.91,76.59
+step
+  talk Alba Fairmoon##253279
+  accept Destruction in Deadmines##92819 |goto Westfall 38.72,83.65
+step
+  note Gryan Stoutmantle wants you to kill 15 Defias Highwaymen, 5 Defias Pathstalkers and 5 Defias Knuckledusters then return to him on Sentinel Hill.
+  kill Defias Highwayman##122 |q 14 |goto Westfall 48.14,77.25
+step
+  talk Alba Fairmoon##253279
+  turnin Destruction in Deadmines##92819 |goto Westfall 38.72,83.65
+step
   talk Captain Grayson##392
   turnin Keeper of the Flame##103 |goto Westfall 30.01,86.02
+step
+  talk Gryan Stoutmantle##234
+  turnin The People's Militia##14 |goto Westfall 56.33,47.52
 step
   turnin Captain Sander's Hidden Treasure##138 |goto Westfall 40.52,47.79
 step
   click Broken Barrel##36
   accept Captain Sander's Hidden Treasure##139 |goto Westfall 40.52,47.79
-step
-  talk Gryan Stoutmantle##234
-  accept The People's Militia##14 |goto Westfall 56.33,47.52
-step
-  talk Mouse##6271
-  accept Of Mice and Milk##93928 |goto Westfall 35.91,76.59
-step
-  note Gryan Stoutmantle wants you to kill 15 Defias Highwaymen, 5 Defias Pathstalkers and 5 Defias Knuckledusters then return to him on Sentinel Hill.
-  kill Defias Highwayman##122 |q 14 |goto Westfall 48.14,77.25
-step
-  turnin Captain Sander's Hidden Treasure##139 |goto Westfall 40.63,17.03
-step
-  click Old Jug##34
-  accept Captain Sander's Hidden Treasure##140 |goto Westfall 40.63,17.03
-step
-  turnin Captain Sander's Hidden Treasure##140 |goto Westfall 25.97,16.91
-step
-  talk Gryan Stoutmantle##234
-  turnin The People's Militia##14 |goto Westfall 56.33,47.52
 step
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##65 |goto Westfall 56.33,47.52
@@ -250,11 +233,12 @@ step
   talk Alba Fairmoon##253279
   turnin Destruction in Deadmines##92753 |goto Westfall 38.72,83.65
 step
-  talk Alba Fairmoon##253279
-  accept Destruction in Deadmines##92819 |goto Westfall 38.72,83.65
+  turnin Captain Sander's Hidden Treasure##139 |goto Westfall 40.63,17.03
 step
-  talk Alba Fairmoon##253279
-  turnin Destruction in Deadmines##92819 |goto Westfall 38.72,83.65
+  click Old Jug##34
+  accept Captain Sander's Hidden Treasure##140 |goto Westfall 40.63,17.03
+step
+  turnin Captain Sander's Hidden Treasure##140 |goto Westfall 25.97,16.91
 step
   talk Captain Grayson##392
   accept The Coast Isn't Clear##152 |goto Westfall 30.01,86.02
@@ -274,22 +258,6 @@ step
   talk Captain Grayson##392
   turnin The Coastal Menace##104 |goto Westfall 30.01,86.02
 step
-  only Human Paladin completed(1642)
-  talk Stephanie Turner##6174
-  turnin The Tome of Divinity##1643 |goto Stormwind City 63.84,72.21 |tip {turninat}Stormwind City
-step
-  only Dwarf Paladin completed(1646)
-  talk John Turner##6175
-  turnin The Tome of Divinity##1647 |goto Ironforge 23.34,61.86 |tip {turninat}Ironforge
-step
-  only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)
-  talk Tiza Battleforge##6179
-  turnin Tome of Divinity##2997 |goto Ironforge 27.63,12.18 |tip {turninat}Ironforge
-step
-  only Human Paladin not completed(3681) not haveq(3681)
-  talk Duthorian Rall##6171
-  turnin Tome of Divinity##2998 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
-step
   talk Sprite Jumpsprocket##11026
   turnin Explosive Consultation##92748 |goto Stormwind City 61.88,30.56 |tip {turninat}Stormwind City
 step
@@ -298,6 +266,22 @@ step
 step
   talk Wiley the Black##266
   turnin The Defias Brotherhood##65 |goto Redridge Mountains 21.39,45.35 |tip {turninat}Redridge Mountains
+step
+  only Human Paladin completed(1642)
+  talk Duthorian Rall##6171
+  accept The Tome of Divinity##1643 |goto Stormwind City 50.48,47.49
+step
+  only Dwarf Paladin completed(1646)
+  talk Tiza Battleforge##6179
+  accept The Tome of Divinity##1647 |goto Ironforge 27.63,12.18
+step
+  only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)
+  talk Azar Stronghammer##1232
+  accept Tome of Divinity##2997 |goto Dun Morogh 47.6,52.07
+step
+  only Human Paladin not completed(3681) not haveq(3681)
+  talk Brother Wilhelm##927
+  accept Tome of Divinity##2998 |goto Elwynn Forest 41.1,66.04
 step
   talk Baros Alexston##1646
   accept Humble Beginnings##399 |goto Stormwind City 57.74,47.86
@@ -349,6 +333,22 @@ step
 step
   talk Gilbert Gray##267118
   turnin Fishin' Time##95065 |goto Stormwind City 26.27,47.08 |tip {turninat}Stormwind City
+step
+  only Human Paladin completed(1642)
+  talk Stephanie Turner##6174
+  turnin The Tome of Divinity##1643 |goto Stormwind City 63.84,72.21 |tip {turninat}Stormwind City
+step
+  only Dwarf Paladin completed(1646)
+  talk John Turner##6175
+  turnin The Tome of Divinity##1647 |goto Ironforge 23.34,61.86 |tip {turninat}Ironforge
+step
+  only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)
+  talk Tiza Battleforge##6179
+  turnin Tome of Divinity##2997 |goto Ironforge 27.63,12.18 |tip {turninat}Ironforge
+step
+  only Human Paladin not completed(3681) not haveq(3681)
+  talk Duthorian Rall##6171
+  turnin Tome of Divinity##2998 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
 step
   talk Baros Alexston##1646
   turnin Humble Beginnings##399 |goto Stormwind City 57.74,47.86 |tip {turninat}Stormwind City

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stonetalon Mountains (21-27)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Ashenvale (20-28)",
-	rev = "cd8b7e1e",
+	rev = "e5ff7284",
 }, [[
 step
   talk Kaela Shadowspear##4080
@@ -38,6 +38,14 @@ step
   talk Piznik##4276
   accept Gerenzo's Orders##1092 |goto Stonetalon Mountains 71.87,60
 step
+  click Pocket Litter##424005
+  accept Scramble##79980 |goto Stonetalon Mountains 40.76,52.57
+step
+  talk Night Elf Courier##268925
+  accept Stonetalon Supply Run##86574 |goto Stonetalon Mountains 48.73,39.85
+step
+  turnin Scramble##79980 |goto Stonetalon Mountains 39.62,49.86
+step
   talk Gaxim Rustfizzle##4077
   turnin A Gnome's Respite##1071 |goto Stonetalon Mountains 59.52,67.15
 step
@@ -56,30 +64,22 @@ step
   talk Ziz Fizziks##4201
   accept Further Instructions##1094 |goto Stonetalon Mountains 58.99,62.6
 step
-  click Pocket Litter##424005
-  accept Scramble##79980 |goto Stonetalon Mountains 40.76,52.57
-step
-  talk Night Elf Courier##268925
-  accept Stonetalon Supply Run##86574 |goto Stonetalon Mountains 48.73,39.85
-step
-  turnin Scramble##79980 |goto Stonetalon Mountains 39.62,49.86
+  only completed(1091)
+  talk Kaela Shadowspear##4080
+  accept Enraged Spirits##1083 |goto Stonetalon Mountains 59.9,66.85
 step
   note Collect 6 Stonetalon Supplies from Pridewing Wyverns and deliver them to Innkeeper Faralia.
   collect 6 Stonetalon Supply Bundle##277917 |q 86574 |goto Stonetalon Mountains 63.51,59.21 |tip {dropsfrom}Young Pridewing, Pridewing Wyvern, Pridewing Skyhunter
+step
+  only completed(1091)
+  note Bring 8 Smoldering Embers from any of the fire elementals in the Charred Vale to Kaela Shadowspear in Stonetalon.
+  collect 8 Smoldering Embers##5659 |q 1083 |goto Stonetalon Mountains 36.55,51.37 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
 step
   note {fp}Teloren
   goto Stonetalon Mountains 36.44,7.18 |tip {vendor}
 step
   talk Innkeeper Faralia##16458
   turnin Stonetalon Supply Run##86574 |goto Stonetalon Mountains 35.79,5.74
-step
-  only completed(1091)
-  talk Kaela Shadowspear##4080
-  accept Enraged Spirits##1083 |goto Stonetalon Mountains 59.9,66.85
-step
-  only completed(1091)
-  note Bring 8 Smoldering Embers from any of the fire elementals in the Charred Vale to Kaela Shadowspear in Stonetalon.
-  collect 8 Smoldering Embers##5659 |q 1083 |goto Stonetalon Mountains 36.55,51.37 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
 step
   only completed(1091)
   talk Kaela Shadowspear##4080

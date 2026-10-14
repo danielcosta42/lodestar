@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (22-28)",
-	rev = "dad522ce",
+	rev = "166e8ee5",
 }, [[
 step
   only Undead Rogue
@@ -79,9 +79,6 @@ step
   talk High Executor Hadrec##1952
   accept Speak with Renferrel##3221 |goto Silverpine Forest 43.42,40.86
 step
-  talk Apothecary Renferrel##1937
-  turnin Speak with Renferrel##3221 |goto Silverpine Forest 42.8,40.86
-step
   talk Dalar Dawnweaver##1938
   accept Prove Your Worth##421 |goto Silverpine Forest 44.2,39.81
 step
@@ -90,6 +87,12 @@ step
 step
   talk Shadow Priest Allister##2121
   accept Border Crossings##477 |goto Silverpine Forest 43.98,40.93
+step
+  talk Apothecary Renferrel##1937
+  turnin Speak with Renferrel##3221 |goto Silverpine Forest 42.8,40.86
+step
+  talk Apothecary Renferrel##1937
+  accept Zinge's Delivery##1359 |goto Silverpine Forest 42.8,40.86
 step
   note Dalar Dawnweaver at the Sepulcher wants you to kill 5 Moonrage Whitescalps.
   kill Moonrage Whitescalp##1769 |q 421 |goto Silverpine Forest 53,26.69
@@ -114,6 +117,12 @@ step
   click Dalaran Crate##1627
   accept Maps and Runes##478 |goto Silverpine Forest 49.89,60.33
 step
+  talk Deathstalker Faerleia##2058
+  accept Pyrewood Ambush##452 |goto Silverpine Forest 46.5,74.39
+step
+  talk Deathstalker Faerleia##2058
+  turnin Pyrewood Ambush##452 |goto Silverpine Forest 46.5,74.39
+step
   talk Dalar Dawnweaver##1938
   turnin Prove Your Worth##421 |goto Silverpine Forest 44.2,39.81
 step
@@ -129,32 +138,71 @@ step
   talk Shadow Priest Allister##2121
   accept Dalar's Analysis##481 |goto Silverpine Forest 43.98,40.93
 step
+  talk High Executor Hadrec##1952
+  accept The Decrepit Ferry##438 |goto Silverpine Forest 43.42,40.86
+step
+  talk Dalar Dawnweaver##1938
+  accept Arugal's Folly##98298 |goto Silverpine Forest 44.2,39.81
+step
   talk Dalar Dawnweaver##1938
   turnin Dalar's Analysis##481 |goto Silverpine Forest 44.2,39.81
 step
   talk Dalar Dawnweaver##1938
   accept Dalaran's Intentions##482 |goto Silverpine Forest 44.2,39.81
 step
-  talk Apothecary Renferrel##1937
-  accept Zinge's Delivery##1359 |goto Silverpine Forest 42.8,40.86
-step
   talk Shadow Priest Allister##2121
   turnin Dalaran's Intentions##482 |goto Silverpine Forest 43.98,40.93
+step
+  talk Shadow Priest Allister##2121
+  accept Ambermill Investigations##479 |goto Silverpine Forest 43.98,40.93
+step
+  turnin The Decrepit Ferry##438 |goto Silverpine Forest 58.44,34.9
+step
+  click Corpse Laden Boat##1593
+  accept Rot Hide Clues##439 |goto Silverpine Forest 58.44,34.9
+step
+  kill Rot Hide Brute##1939 |goto Silverpine Forest 67.6,31 |tip Loot the quest item here — it starts the quest.
+  accept Resting in Pieces##460 |goto Silverpine Forest 67.6,31
 step
   note Retrieve the Remedy of Arugal for Dalar Dawnweaver at the Sepulcher.
   collect Remedy of Arugal##3155 |q 422 |goto Silverpine Forest 52.83,28.58 |tip {dropsfrom}Dusty Spellbooks
 step
-  talk Deathstalker Faerleia##2058
-  accept Pyrewood Ambush##452 |goto Silverpine Forest 46.5,74.39
+  turnin Resting in Pieces##460 |goto Silverpine Forest 67.87,24.85
 step
-  talk Deathstalker Faerleia##2058
-  turnin Pyrewood Ambush##452 |goto Silverpine Forest 46.5,74.39
+  click Shallow Grave##1599
+  accept The Hidden Niche##461 |goto Silverpine Forest 67.87,24.85
+step
+  turnin The Hidden Niche##461 |goto Silverpine Forest 65.36,24.81
+step
+  click Dusty Shelf##112888
+  accept Wand to Bethor##491 |goto Silverpine Forest 65.36,24.81
+step
+  note Obtain 8 Dalaran Pendants for Shadow Priest Allister at the Sepulcher.
+  collect 8 Dalaran Pendant##3354 |q 479 |goto Silverpine Forest 58.65,63.2 |tip {dropsfrom}Dalaran Protector, Dalaran Mage, Dalaran Conjuror
+step
+  note Bring 6 Worgen Bits to Dalar Dawnweaver in The Sepulcher.
+  collect 6 Worgen Bits##280375 |q 98298 |goto Silverpine Forest 51.74,78.86 |tip {dropsfrom}Moonrage Bloodhowler
 step
   talk Dalar Dawnweaver##1938
   turnin Arugal's Folly##422 |goto Silverpine Forest 44.2,39.81
 step
+  talk High Executor Hadrec##1952
+  turnin Rot Hide Clues##439 |goto Silverpine Forest 43.42,40.86
+step
+  talk Shadow Priest Allister##2121
+  turnin Ambermill Investigations##479 |goto Silverpine Forest 43.98,40.93
+step
+  talk Dalar Dawnweaver##1938
+  turnin Arugal's Folly##98298 |goto Silverpine Forest 44.2,39.81
+step
   talk Dalar Dawnweaver##1938
   accept Arugal's Folly##423 |goto Silverpine Forest 44.2,39.81
+step
+  talk High Executor Hadrec##1952
+  accept The Engraved Ring##440 |goto Silverpine Forest 43.42,40.86
+step
+  talk High Executor Hadrec##1952
+  accept Rot Hide Ichor##443 |goto Silverpine Forest 43.42,40.86
 step
   note Bring 6 Glutton Shackles and 3 Darksoul Shackles to Dalar Dawnweaver at the Sepulcher.
   collect 6 Glutton Shackle##3156 |q 423 |goto Silverpine Forest 46.63,28.36 |tip {dropsfrom}Moonrage Glutton
@@ -174,6 +222,9 @@ step
   talk Dalar Dawnweaver##1938
   accept Arugal's Folly##99 |goto Silverpine Forest 44.2,39.81
 step
+  note Bring 8 bottles of rot hide ichor to Apothecary Renferrel at the Sepulcher.
+  collect 8 Rot Hide Ichor##3236 |q 443 |goto Silverpine Forest 67.6,31 |tip {dropsfrom}Rot Hide Brute, Rot Hide Plague Weaver, Rot Hide Savage
+step
   note Bring 6 Pyrewood Shackles to Dalar Dawnweaver at the Sepulcher.
   kill Pyrewood Watcher##1891 |goto Silverpine Forest 45.35,72.52 |elite
   collect 6 Pyrewood Shackle##3218 |q 99 |goto Silverpine Forest 45.35,72.52
@@ -181,62 +232,11 @@ step
   talk Dalar Dawnweaver##1938
   turnin Arugal's Folly##99 |goto Silverpine Forest 44.2,39.81
 step
-  talk High Executor Hadrec##1952
-  accept The Decrepit Ferry##438 |goto Silverpine Forest 43.42,40.86
-step
-  talk Shadow Priest Allister##2121
-  accept Ambermill Investigations##479 |goto Silverpine Forest 43.98,40.93
-step
-  talk Dalar Dawnweaver##1938
-  accept Arugal's Folly##98298 |goto Silverpine Forest 44.2,39.81
-step
-  turnin The Decrepit Ferry##438 |goto Silverpine Forest 58.44,34.9
-step
-  click Corpse Laden Boat##1593
-  accept Rot Hide Clues##439 |goto Silverpine Forest 58.44,34.9
-step
-  note Obtain 8 Dalaran Pendants for Shadow Priest Allister at the Sepulcher.
-  collect 8 Dalaran Pendant##3354 |q 479 |goto Silverpine Forest 58.65,63.2 |tip {dropsfrom}Dalaran Protector, Dalaran Mage, Dalaran Conjuror
-step
-  note Bring 6 Worgen Bits to Dalar Dawnweaver in The Sepulcher.
-  collect 6 Worgen Bits##280375 |q 98298 |goto Silverpine Forest 51.74,78.86 |tip {dropsfrom}Moonrage Bloodhowler
-step
-  talk High Executor Hadrec##1952
-  turnin Rot Hide Clues##439 |goto Silverpine Forest 43.42,40.86
-step
-  talk Shadow Priest Allister##2121
-  turnin Ambermill Investigations##479 |goto Silverpine Forest 43.98,40.93
-step
-  talk Dalar Dawnweaver##1938
-  turnin Arugal's Folly##98298 |goto Silverpine Forest 44.2,39.81
-step
-  talk High Executor Hadrec##1952
-  accept The Engraved Ring##440 |goto Silverpine Forest 43.42,40.86
-step
-  talk High Executor Hadrec##1952
-  accept Rot Hide Ichor##443 |goto Silverpine Forest 43.42,40.86
-step
-  kill Rot Hide Brute##1939 |goto Silverpine Forest 67.6,31 |tip Loot the quest item here — it starts the quest.
-  accept Resting in Pieces##460 |goto Silverpine Forest 67.6,31
-step
-  note Bring 8 bottles of rot hide ichor to Apothecary Renferrel at the Sepulcher.
-  collect 8 Rot Hide Ichor##3236 |q 443 |goto Silverpine Forest 67.6,31 |tip {dropsfrom}Rot Hide Brute, Rot Hide Plague Weaver, Rot Hide Savage
-step
-  turnin Resting in Pieces##460 |goto Silverpine Forest 67.87,24.85
-step
   talk Apothecary Renferrel##1937
   turnin Rot Hide Ichor##443 |goto Silverpine Forest 42.8,40.86
 step
   talk Apothecary Renferrel##1937
   accept Rot Hide Origins##444 |goto Silverpine Forest 42.8,40.86
-step
-  click Shallow Grave##1599
-  accept The Hidden Niche##461 |goto Silverpine Forest 67.87,24.85
-step
-  turnin The Hidden Niche##461 |goto Silverpine Forest 65.36,24.81
-step
-  click Dusty Shelf##112888
-  accept Wand to Bethor##491 |goto Silverpine Forest 65.36,24.81
 step
   talk Shadow Priest Allister##2121
   accept Watching the Roads##95981 |goto Silverpine Forest 43.98,40.93
@@ -245,19 +245,16 @@ step
   accept Stop the Spread##98299 |goto Silverpine Forest 44.2,39.81
 step
   note Slay 8 Dalaran Wizards and 8 Dalaran Watchers for Shadow Priest Allister in the Sepulcher.
-  talk Dalaran Watcher##1888 |q 95981 |goto Silverpine Forest 62.66,75.43
+  kill Dalaran Watcher##1888 |q 95981 |goto Silverpine Forest 62.66,75.43
 step
   note Slay 5 Sickly Refugees and 5 Haggard Refugees for Dalar Dawnweaver in The Sepulcher.
-  talk Haggard Refugee##2053 |q 98299 |goto Silverpine Forest 46.08,85.63
+  kill Haggard Refugee##2053 |q 98299 |goto Silverpine Forest 46.08,85.63
 step
   talk Shadow Priest Allister##2121
   turnin Watching the Roads##95981 |goto Silverpine Forest 43.98,40.93
 step
   talk Dalar Dawnweaver##1938
   turnin Stop the Spread##98299 |goto Silverpine Forest 44.2,39.81
-step
-  talk Apothecary Renferrel##1937
-  accept Journey to Hillsbrad Foothills##493 |goto Silverpine Forest 42.8,40.86
 step
   talk Shadow Priest Allister##2121
   accept Beren's Peril##516 |goto Silverpine Forest 43.98,40.93
@@ -267,6 +264,9 @@ step
 step
   talk Shadow Priest Allister##2121
   turnin Beren's Peril##516 |goto Silverpine Forest 43.98,40.93
+step
+  talk Apothecary Renferrel##1937
+  accept Journey to Hillsbrad Foothills##493 |goto Silverpine Forest 42.8,40.86
 step
   talk Shadow Priest Allister##2121
   accept The Weaver##480 |goto Silverpine Forest 43.98,40.93
@@ -310,32 +310,8 @@ step
   talk Lumina Windsinger##248755
   turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.63,23.36
 step
-  click Offering Stone##645153
-  accept The Tortured Soul##95883 |goto Silverpine Forest 58.22,69.88
-step
-  kill Ravenclaw Guardian##1973 |goto Silverpine Forest 58.66,71.29 |tip Loot the quest item here — it starts the quest.
-  accept The Offering Stone##95884 |goto Silverpine Forest 58.66,71.29
-step
-  click Offering Stone##645153
-  accept The Offering of Blood##95885 |goto Silverpine Forest 58.22,69.88
-step
   note Kill the Dalaran archmage, then retrieve his staff for Shadow Priest Allister at the Sepulcher.
   collect Ataeric's Staff##3515 |q 480 |goto Silverpine Forest 63.4,64.27 |tip {dropsfrom}Archmage Ataeric
-step
-  note Collect a Tortured Soul from the nearby undead in Beren's Peril in Silverpine Forest.
-  collect Tortured Soul##271350 |q 95883 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
-step
-  note Find the Offering Stone in Beren's Peril in Silverpine Forest.
-  collect Note Scrap##271343 |q 95884 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
-step
-  note Use the Tortured Soul to give an offering of blood at the Offering Stone in Beren's Peril.
-  kill Tortured Soul##212753 |q 95885 |goto Silverpine Forest 58.06,70.07
-step
-  turnin The Tortured Soul##95883 |goto Silverpine Forest 58.22,69.88
-step
-  turnin The Offering Stone##95884 |goto Silverpine Forest 58.22,69.88
-step
-  turnin The Offering of Blood##95885 |goto Silverpine Forest 58.22,69.88
 step
   talk Shadow Priest Allister##2121
   turnin The Weaver##480 |goto Silverpine Forest 43.98,40.93
@@ -351,6 +327,30 @@ step
   only Shaman completed(63)
   talk Minor Manifestation of Water##5895
   turnin Call of Water##100 |goto Silverpine Forest 38.65,44.58
+step
+  click Offering Stone##645153
+  accept The Tortured Soul##95883 |goto Silverpine Forest 58.22,69.88
+step
+  kill Ravenclaw Guardian##1973 |goto Silverpine Forest 58.66,71.29 |tip Loot the quest item here — it starts the quest.
+  accept The Offering Stone##95884 |goto Silverpine Forest 58.66,71.29
+step
+  click Offering Stone##645153
+  accept The Offering of Blood##95885 |goto Silverpine Forest 58.22,69.88
+step
+  note Collect a Tortured Soul from the nearby undead in Beren's Peril in Silverpine Forest.
+  collect Tortured Soul##271350 |q 95883 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
+step
+  note Find the Offering Stone in Beren's Peril in Silverpine Forest.
+  collect Note Scrap##271343 |q 95884 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
+step
+  note Use the Tortured Soul to give an offering of blood at the Offering Stone in Beren's Peril.
+  kill Tortured Soul##212753 |q 95885 |goto Silverpine Forest 58.06,70.07
+step
+  turnin The Tortured Soul##95883 |goto Silverpine Forest 58.22,69.88
+step
+  turnin The Offering Stone##95884 |goto Silverpine Forest 58.22,69.88
+step
+  turnin The Offering of Blood##95885 |goto Silverpine Forest 58.22,69.88
 step
   only Undead Paladin
   talk Lumina Windsinger##259620

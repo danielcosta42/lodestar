@@ -5,23 +5,11 @@ ns:RegisterGuide("Leveling/Alliance/Ashenvale (30-32)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dustwallow Marsh (35-38)",
-	rev = "834ed7fa",
+	rev = "c2441306",
 }, [[
 step
   talk Mathiel##6142
   accept Klockmort's Essentials##2925 |goto Darnassus 59.51,45.38
-step
-  only Warrior completed(1718)
-  talk Klannoc Macleod##6236
-  accept The Affray##1719 |goto The Barrens 68.62,49.16
-step
-  only Warlock
-  talk Strahad Farsan##6251
-  accept Tome of the Cabal##1758 |goto The Barrens 62.63,35.5
-step
-  only Warlock completed(1805,1804)
-  talk Strahad Farsan##6251
-  accept The Binding##1795 |goto The Barrens 62.63,35.5
 step
   talk Sentinel Melyria Frostshadow##3880
   accept The Howling Vale##1022 |goto Ashenvale 22.23,52.98
@@ -131,7 +119,7 @@ step
 step
   only completed(1011)
   note Kill the druids: Taneel Darkwood, Uthil Mooncall, Mavoris Cloudsbreak; then return to Kayneth Stillwind in Forest Song.
-  talk Taneel Darkwood##3940 |q 1012 |goto Ashenvale 77.18,73.99
+  kill Taneel Darkwood##3940 |q 1012 |goto Ashenvale 77.18,73.99
 step
   note Bring 16 Satyr Horns to Illiyana in Forest Song.
   collect 16 Satyr Horns##5481 |q 1032 |goto Ashenvale 78.4,45.12 |tip {dropsfrom}Xavian Rogue, Xavian Betrayer, Xavian Felsworn
@@ -156,9 +144,17 @@ step
   talk Katherine the Pure##5492
   turnin Advice From Stormwind##78089 |goto Stormwind City 48.48,49.09 |tip {turninat}Stormwind City
 step
+  only Warrior completed(1718)
+  talk Klannoc Macleod##6236
+  accept The Affray##1719 |goto The Barrens 68.62,49.16
+step
   only Warlock
-  talk Krom Stoutarm##6294
-  turnin Tome of the Cabal##1758 |goto Ironforge 74.19,9.39 |tip {turninat}Ironforge
+  talk Strahad Farsan##6251
+  accept Tome of the Cabal##1758 |goto The Barrens 62.63,35.5
+step
+  only Warlock completed(1805,1804)
+  talk Strahad Farsan##6251
+  accept The Binding##1795 |goto The Barrens 62.63,35.5
 step
   only Warlock
   talk Menara Voidrender##6266
@@ -174,7 +170,7 @@ step
 step
   only Warrior completed(1718)
   note Kill Big Will, then speak to Klannoc Macleod on Fray Island.
-  talk Big Will##6238 |q 1719 |goto The Barrens 68.61,48.72
+  kill Big Will##6238 |q 1719 |goto The Barrens 68.61,48.72
 step
   only Warlock completed(1805,1804)
   note Using the Tome of the Cabal, summon and subdue a felhunter, then return the Tome of the Cabal to Strahad Farsan in Ratchet.
@@ -187,6 +183,10 @@ step
   only Warrior completed(1718)
   talk Klannoc Macleod##6236
   turnin The Affray##1719 |goto The Barrens 68.62,49.16 |tip {turninat}The Barrens
+step
+  only Warlock
+  talk Krom Stoutarm##6294
+  turnin Tome of the Cabal##1758 |goto Ironforge 74.19,9.39 |tip {turninat}Ironforge
 step
   only Warlock completed(1805,1804)
   talk Strahad Farsan##6251

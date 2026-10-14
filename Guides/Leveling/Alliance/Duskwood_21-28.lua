@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Elwynn Forest (21-28)",
-	rev = "203e7d24",
+	rev = "500473d1",
 }, [[
 step
   talk Orphan Matron Nightingale##14450
@@ -75,11 +75,40 @@ step
   kill Lost Stalker##272260 |goto Duskwood 60.2,25.74 |tip Loot the quest item here — it starts the quest.
   accept Ira's Dagger##96137 |goto Duskwood 60.2,25.74
 step
+  talk Madame Eva##265
+  accept The Totem of Infliction##101 |goto Duskwood 75.79,45.32
+step
+  talk Elaine Carevin##633
+  accept The Hermit##165 |goto Duskwood 75.34,48.75
+step
+  talk Viktori Prism'Antras##276
+  accept Look To The Stars##174 |goto Duskwood 79.8,48.02
+step
   note Commander Althea Ebonlocke of Darkshire wants you to kill 8 Skeletal Warriors and 6 Skeletal Mages.
   kill Skeletal Warrior##48 |q 56 |goto Duskwood 80.57,70.2
 step
+  talk Sven Yorgen##311
+  accept Sven's Revenge##95 |goto Duskwood 7.78,34.07
+step
+  talk Abercrombie##289
+  turnin The Hermit##165 |goto Duskwood 28.11,31.46
+step
+  talk Abercrombie##289
+  accept Supplies from Darkshire##148 |goto Duskwood 28.11,31.46
+step
+  kill Flesh Eater##3 |goto Duskwood 23.81,39.21 |tip Loot the quest item here — it starts the quest.
+  accept An Old History Book##337 |goto Duskwood 23.81,39.21
+step
   note Gather 6 Gooey Spider Legs and bring them to Chef Grual in Darkshire.
   collect 6 Gooey Spider Leg##2251 |q 93 |goto Duskwood 41.79,20.83 |tip {dropsfrom}Venom Web Spider, Pygmy Venom Web Spider, Green Recluse
+step
+  note Bring 10 Ghoul Fangs, 10 Skeleton Fingers and 5 Vials of Spider Venom to Madame Eva in Darkshire.
+  collect 10 Ghoul Fang##1129 |q 101 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
+step
+  turnin Sven's Revenge##95 |goto Duskwood 49.85,77.71
+step
+  click Mound of loose dirt##59
+  accept Sven's Camp##230 |goto Duskwood 49.85,77.71
 step
   note Defeat 10 Young Black Ravagers and 7 Black Ravagers then return to Sirra Von'Indi in Darkshire for more information.
   kill Young Black Ravager##923 |q 96137 |goto Duskwood 48.99,65.24
@@ -90,37 +119,32 @@ step
   talk Chef Grual##272
   turnin Dusky Crab Cakes##93 |goto Duskwood 73.75,43.48
 step
+  talk Madame Eva##265
+  turnin The Totem of Infliction##101 |goto Duskwood 75.79,45.32
+step
+  talk Madame Eva##265
+  turnin Supplies from Darkshire##148 |goto Duskwood 75.79,45.32
+step
   talk Sirra Von'Indi##268
   turnin Ira's Dagger##96137 |goto Duskwood 72.62,47.62
 step
   talk Chef Grual##272
   accept Return to Jitters##240 |goto Duskwood 73.75,43.48
 step
-  talk Jitters##288
-  turnin Return to Jitters##240 |goto Duskwood 18.38,56.37
-step
-  talk Sven Yorgen##311
-  accept Sven's Revenge##95 |goto Duskwood 7.78,34.07
-step
-  kill Flesh Eater##3 |goto Duskwood 23.81,39.21 |tip Loot the quest item here — it starts the quest.
-  accept An Old History Book##337 |goto Duskwood 23.81,39.21
-step
-  turnin Sven's Revenge##95 |goto Duskwood 49.85,77.71
-step
-  click Mound of loose dirt##59
-  accept Sven's Camp##230 |goto Duskwood 49.85,77.71
-step
   talk Madame Eva##265
-  accept The Totem of Infliction##101 |goto Duskwood 75.79,45.32
-step
-  talk Elaine Carevin##633
-  accept The Hermit##165 |goto Duskwood 75.34,48.75
-step
-  talk Viktori Prism'Antras##276
-  accept Look To The Stars##174 |goto Duskwood 79.8,48.02
+  accept Ghost Hair Thread##149 |goto Duskwood 75.79,45.32
 step
   talk Commander Althea Ebonlocke##264
   accept The Night Watch##57 |goto Duskwood 73.54,46.82
+step
+  talk Blind Mary##302
+  turnin Ghost Hair Thread##149 |goto Duskwood 81.99,59.09
+step
+  talk Blind Mary##302
+  accept Return the Comb##154 |goto Duskwood 81.99,59.09
+step
+  talk Jitters##288
+  turnin Return to Jitters##240 |goto Duskwood 18.38,56.37
 step
   talk Sven Yorgen##311
   turnin Sven's Camp##230 |goto Duskwood 7.78,34.07
@@ -128,32 +152,20 @@ step
   talk Sven Yorgen##311
   accept The Shadowy Figure##262 |goto Duskwood 7.78,34.07
 step
-  talk Abercrombie##289
-  turnin The Hermit##165 |goto Duskwood 28.11,31.46
-step
-  talk Abercrombie##289
-  accept Supplies from Darkshire##148 |goto Duskwood 28.11,31.46
-step
   note Commander Althea Ebonlocke of Darkshire wants you to kill 15 Skeletal Fiends and 15 Skeletal Horrors.
   kill Skeletal Fiend##531 |q 57 |goto Duskwood 22.39,43.04
-step
-  note Bring 10 Ghoul Fangs, 10 Skeleton Fingers and 5 Vials of Spider Venom to Madame Eva in Darkshire.
-  collect 10 Ghoul Fang##1129 |q 101 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Bone Chewer, Brain Eater
 step
   talk Commander Althea Ebonlocke##264
   turnin The Night Watch##57 |goto Duskwood 73.54,46.82
 step
   talk Madame Eva##265
-  turnin The Totem of Infliction##101 |goto Duskwood 75.79,45.32
-step
-  talk Madame Eva##265
-  turnin Supplies from Darkshire##148 |goto Duskwood 75.79,45.32
+  turnin Return the Comb##154 |goto Duskwood 75.79,45.32
 step
   talk Madame Eva##265
   turnin The Shadowy Figure##262 |goto Duskwood 75.79,45.32
 step
   talk Madame Eva##265
-  accept Ghost Hair Thread##149 |goto Duskwood 75.79,45.32
+  accept Deliver the Thread##157 |goto Duskwood 75.79,45.32
 step
   talk Madame Eva##265
   accept The Shadowy Search Continues##265 |goto Duskwood 75.79,45.32
@@ -169,45 +181,6 @@ step
 step
   talk Tavernkeep Smitts##273
   accept Finding the Shadowy Figure##453 |goto Duskwood 73.78,44.49
-step
-  talk Blind Mary##302
-  turnin Ghost Hair Thread##149 |goto Duskwood 81.99,59.09
-step
-  talk Blind Mary##302
-  accept Return the Comb##154 |goto Duskwood 81.99,59.09
-step
-  talk Jitters##288
-  turnin Finding the Shadowy Figure##453 |goto Duskwood 18.38,56.37
-step
-  talk Jitters##288
-  accept Return to Sven##268 |goto Duskwood 18.38,56.37
-step
-  talk Sven Yorgen##311
-  turnin Return to Sven##268 |goto Duskwood 7.78,34.07
-step
-  talk Sven Yorgen##311
-  accept Proving Your Worth##323 |goto Duskwood 7.78,34.07
-step
-  note Kill 15 Skeletal Raiders, 3 Skeletal Healers and 3 Skeletal Warders, and then return to Sven.
-  kill Skeletal Raider##1110 |q 323 |goto Duskwood 17.56,37
-step
-  talk Sven Yorgen##311
-  turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
-step
-  kill Lost Watcher##272273 |goto Duskwood 62.42,63.5 |tip Loot the quest item here — it starts the quest.
-  accept Merrick's Bow##96138 |goto Duskwood 62.42,63.5
-step
-  note Defeat 8 Splint Fist Warriors and 4 Splint Fist Taskmasters then return to Sirra Von'Indi in Darkshire for more information.
-  kill Splinter Fist Warrior##212 |q 96138 |goto Duskwood 33.67,76.02
-step
-  talk Madame Eva##265
-  turnin Return the Comb##154 |goto Duskwood 75.79,45.32
-step
-  talk Sirra Von'Indi##268
-  turnin Merrick's Bow##96138 |goto Duskwood 72.62,47.62
-step
-  talk Madame Eva##265
-  accept Deliver the Thread##157 |goto Duskwood 75.79,45.32
 step
   talk Madame Eva##265
   accept The Legend of Stalvan##66 |goto Duskwood 75.79,45.32
@@ -227,14 +200,41 @@ step
   talk Clerk Daltry##267
   accept The Legend of Stalvan##67 |goto Duskwood 72.54,46.87
 step
+  talk Jitters##288
+  turnin Finding the Shadowy Figure##453 |goto Duskwood 18.38,56.37
+step
+  talk Jitters##288
+  accept Return to Sven##268 |goto Duskwood 18.38,56.37
+step
+  talk Sven Yorgen##311
+  turnin Return to Sven##268 |goto Duskwood 7.78,34.07
+step
+  talk Sven Yorgen##311
+  accept Proving Your Worth##323 |goto Duskwood 7.78,34.07
+step
+  note Kill 15 Skeletal Raiders, 3 Skeletal Healers and 3 Skeletal Warders, and then return to Sven.
+  kill Skeletal Raider##1110 |q 323 |goto Duskwood 17.56,37
+step
+  talk Sven Yorgen##311
+  turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
+step
   talk Abercrombie##289
   turnin Deliver the Thread##157 |goto Duskwood 28.11,31.46
 step
   talk Abercrombie##289
   accept Zombie Juice##158 |goto Duskwood 28.11,31.46
 step
+  kill Lost Watcher##272273 |goto Duskwood 62.42,63.5 |tip Loot the quest item here — it starts the quest.
+  accept Merrick's Bow##96138 |goto Duskwood 62.42,63.5
+step
+  note Defeat 8 Splint Fist Warriors and 4 Splint Fist Taskmasters then return to Sirra Von'Indi in Darkshire for more information.
+  kill Splinter Fist Warrior##212 |q 96138 |goto Duskwood 33.67,76.02
+step
   talk Tavernkeep Smitts##273
   turnin Zombie Juice##158 |goto Duskwood 73.78,44.49
+step
+  talk Sirra Von'Indi##268
+  turnin Merrick's Bow##96138 |goto Duskwood 72.62,47.62
 step
   talk Tavernkeep Smitts##273
   accept Gather Rot Blossoms##156 |goto Duskwood 73.78,44.49

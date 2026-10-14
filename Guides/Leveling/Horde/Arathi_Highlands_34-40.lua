@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Badlands (37-42)",
-	rev = "b71d6060",
+	rev = "7490c1b5",
 }, [[
 step
   talk Genavie Callow##4486
@@ -35,8 +35,14 @@ step
   talk Tor'gan##2706
   accept Raising Spirits##672 |goto Arathi Highlands 74.72,36.29
 step
+  talk Zengu##2703
+  accept Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
+step
   click Messenger Bag##406918
   accept This Must Be The Place##79976 |goto Arathi Highlands 22.54,24.14
+step
+  click Shards of Myzrael##138492
+  accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
 step
   note Get 10 Bloodstone Amulets for Tor'gan in Hammerfall.
   collect Bloodstone Amulet##4495 |q 671 |goto Arathi Highlands 30.97,29.79 |tip {dropsfrom}Syndicate Highwayman, Syndicate Pathstalker, Syndicate Mercenary
@@ -49,6 +55,13 @@ step
 step
   turnin This Must Be The Place##79976 |goto Arathi Highlands 22.55,24.14
 step
+  note Get the Sigil of Strom for Zengu in Hammerfall.
+  kill Syndicate Prowler##2588 |goto Arathi Highlands 28.33,63.36 |elite
+  collect Sigil of Strom##4440 |q 639 |goto Arathi Highlands 28.33,63.36
+step
+  talk Zengu##2703
+  turnin Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
+step
   talk Tor'gan##2706
   turnin Foul Magics##671 |goto Arathi Highlands 74.72,36.29
 step
@@ -57,46 +70,6 @@ step
 step
   talk Tor'gan##2706
   accept Raising Spirits##674 |goto Arathi Highlands 74.72,36.29
-step
-  talk Zengu##2703
-  accept Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
-step
-  talk Gor'mul##2792
-  turnin Raising Spirits##674 |goto Arathi Highlands 72.64,33.93
-step
-  talk Gor'mul##2792
-  accept Raising Spirits##675 |goto Arathi Highlands 72.64,33.93
-step
-  talk Tor'gan##2706
-  turnin Raising Spirits##675 |goto Arathi Highlands 74.72,36.29
-step
-  talk Tor'gan##2706
-  accept Guile of the Raptor##701 |goto Arathi Highlands 74.72,36.29
-step
-  click Shards of Myzrael##138492
-  accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
-step
-  talk Lolo the Lookout##2766
-  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
-step
-  note Get the Sigil of Strom for Zengu in Hammerfall.
-  kill Syndicate Prowler##2588 |goto Arathi Highlands 28.33,63.36 |elite
-  collect Sigil of Strom##4440 |q 639 |goto Arathi Highlands 28.33,63.36
-step
-  note Acquire 12 Raptor Hearts from Highland Fleshstalkers for Tor'gan.
-  collect 12 Raptor Heart##4513 |q 701 |goto Arathi Highlands 49.61,69.12 |tip {dropsfrom}Highland Fleshstalker
-step
-  talk Shakes O'Breen##2610
-  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
-step
-  talk Zengu##2703
-  turnin Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
-step
-  talk Tor'gan##2706
-  turnin Guile of the Raptor##701 |goto Arathi Highlands 74.72,36.29
-step
-  talk Tor'gan##2706
-  accept Guile of the Raptor##702 |goto Arathi Highlands 74.72,36.29
 step
   talk Drum Fel##2771
   accept Call to Arms##678 |goto Arathi Highlands 74.24,33.92
@@ -107,16 +80,19 @@ step
   turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
 step
   talk Gor'mul##2792
-  turnin Guile of the Raptor##702 |goto Arathi Highlands 72.64,33.93
+  turnin Raising Spirits##674 |goto Arathi Highlands 72.64,33.93
 step
   talk Gor'mul##2792
-  accept Guile of the Raptor##847 |goto Arathi Highlands 72.64,33.93
+  accept Raising Spirits##675 |goto Arathi Highlands 72.64,33.93
 step
   click Iridescent Shards##2701
   accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
 step
   talk Tor'gan##2706
-  turnin Guile of the Raptor##847 |goto Arathi Highlands 74.72,36.29
+  turnin Raising Spirits##675 |goto Arathi Highlands 74.72,36.29
+step
+  talk Tor'gan##2706
+  accept Guile of the Raptor##701 |goto Arathi Highlands 74.72,36.29
 step
   only Shaman
   talk Veyric Thunderhame##259023
@@ -127,11 +103,32 @@ step
 step
   turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
+  talk Lolo the Lookout##2766
+  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
+step
   note Kill 10 Boulderfist Brutes and 4 Boulderfist Magi, and return to Drum Fel in the Hammerfall outpost.
   kill Boulderfist Brute##2566 |q 678 |goto Arathi Highlands 53.1,75.93
 step
+  note Acquire 12 Raptor Hearts from Highland Fleshstalkers for Tor'gan.
+  collect 12 Raptor Heart##4513 |q 701 |goto Arathi Highlands 49.61,69.12 |tip {dropsfrom}Highland Fleshstalker
+step
+  talk Shakes O'Breen##2610
+  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
+step
   talk Drum Fel##2771
   turnin Call to Arms##678 |goto Arathi Highlands 74.24,33.92
+step
+  talk Tor'gan##2706
+  turnin Guile of the Raptor##701 |goto Arathi Highlands 74.72,36.29
+step
+  talk Tor'gan##2706
+  accept Guile of the Raptor##702 |goto Arathi Highlands 74.72,36.29
+step
+  talk Gor'mul##2792
+  turnin Guile of the Raptor##702 |goto Arathi Highlands 72.64,33.93
+step
+  talk Gor'mul##2792
+  accept Guile of the Raptor##847 |goto Arathi Highlands 72.64,33.93
 step
   talk Zengu##2703
   accept The Broken Sigil##640 |goto Arathi Highlands 73.8,33.96
@@ -144,6 +141,9 @@ step
 step
   talk Korin Fel##2772
   accept The Real Threat##680 |goto Arathi Highlands 74.04,33.07
+step
+  talk Tor'gan##2706
+  turnin Guile of the Raptor##847 |goto Arathi Highlands 74.72,36.29
 step
   talk First Mate Nilzlix##2767
   accept Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48

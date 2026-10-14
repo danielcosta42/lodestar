@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Wetlands (30-33)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Hillsbrad Foothills (33-38)",
-	rev = "ca78c238",
+	rev = "f04d53bb",
 }, [[
 step
   note {fp}Shellei Brondir
@@ -146,6 +146,9 @@ step
   talk Rhag Garmason##1075
   accept The Thandol Span##633 |goto Wetlands 49.9,18.24
 step
+  talk Longbraid the Grim##1071
+  accept A Grim Task##304 |goto Wetlands 49.8,18.26
+step
   only completed(289)
   talk Glorin Steelbrow##1217
   turnin The Eye of Paleth##292 |goto Wetlands 10.58,60.59
@@ -182,21 +185,18 @@ step
   talk Rethiel the Greenwarden##1244
   turnin Horrors in the Highland##95646 |goto Wetlands 56.37,40.4
 step
-  note Kill the Subdued Dragonspawn at the Dragonmaw Gates for Howin Kindfeather.
-  kill Subdued Dragonspawn##271373 |q 98297 |goto Wetlands 77.05,45.56
-step
-  talk Longbraid the Grim##1071
-  accept A Grim Task##304 |goto Wetlands 49.8,18.26
-step
-  talk Howin Kindfeather##270637
-  turnin Stopping the Cycle##98297 |goto Wetlands 49.36,42.05
-step
   note Kill Balgaras the Foul and bring his ear to Longbraid the Grim outside of Dun Modr.
   kill Balgaras the Foul##1364 |goto Wetlands 62.49,28.42 |elite
   collect Ear of Balgaras##3639 |q 304 |goto Wetlands 62.49,28.42
 step
+  note Kill the Subdued Dragonspawn at the Dragonmaw Gates for Howin Kindfeather.
+  kill Subdued Dragonspawn##271373 |q 98297 |goto Wetlands 77.05,45.56
+step
   talk Longbraid the Grim##1071
   turnin A Grim Task##304 |goto Wetlands 49.8,18.26
+step
+  talk Howin Kindfeather##270637
+  turnin Stopping the Cycle##98297 |goto Wetlands 49.36,42.05
 step
   talk Historian Karnik##2916
   turnin For Further Study##98313 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge

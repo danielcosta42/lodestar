@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Badlands (37-43)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (43-50)",
-	rev = "cbd83e71",
+	rev = "ededd553",
 }, [[
 step
   talk Rigglefuzz##2817
@@ -44,6 +44,15 @@ step
 step
   talk Prospector Ryedol##2910
   accept A Sign of Hope##721 |goto Badlands 53.42,43.39
+step
+  talk Sigrun Ironhew##2860
+  accept Scrounging##733 |goto Badlands 53.8,43.3
+step
+  talk Theldurin the Lost##2785
+  accept Solution to Doom##709 |goto Badlands 51.39,76.87
+step
+  note Get 7 pieces of Scrap Metal for Sigrun.
+  collect Scrap Metal##4630 |q 733 |goto Badlands 62.52,68.44 |tip {dropsfrom}Dustbelcher Ogre, Dustbelcher Brute, Dustbelcher Wyrmhunter
 step
   only completed(1106)
   note Bring 10 Indurium Flakes to Martek the Exiled in the Badlands.
@@ -88,6 +97,9 @@ step
   talk Hammertoe Grez##2909
   accept Amulet of Secrets##722 |goto Badlands 37.9,10.59
 step
+  note Bring the Tablet of Ryun'eh to Theldurin the Lost.
+  collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
+step
   note Find Hammertoe's Amulet and return it to him in Uldaman.
   kill Magregan Deepshadow##2932 |goto Badlands 38.99,19.73 |elite
   collect Hammertoe's Amulet##4635 |q 722 |goto Badlands 38.99,19.73
@@ -102,6 +114,9 @@ step
   talk Hammertoe Grez##2909
   accept Prospect of Faith##723 |goto Badlands 37.9,10.59
 step
+  kill Shadowforge Surveyor##4844 |goto Badlands 48.2,11 |tip Loot the quest item here — it starts the quest.
+  accept The Shattered Necklace##2198 |goto Badlands 48.2,11
+step
   only completed(1106)
   talk Martek the Exiled##4618
   turnin Indurium##1108 |goto Badlands 42.22,52.69
@@ -115,29 +130,11 @@ step
   talk Prospector Ryedol##2910
   turnin Prospect of Faith##723 |goto Badlands 53.42,43.39
 step
-  talk Prospector Ryedol##2910
-  accept Prospect of Faith##724 |goto Badlands 53.42,43.39
-step
-  talk Sigrun Ironhew##2860
-  accept Scrounging##733 |goto Badlands 53.8,43.3
-step
-  talk Theldurin the Lost##2785
-  accept Solution to Doom##709 |goto Badlands 51.39,76.87
-step
-  note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
-  collect 3 Large Stone Slab##4627 |q 711 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental
-step
-  note Get 7 pieces of Scrap Metal for Sigrun.
-  collect Scrap Metal##4630 |q 733 |goto Badlands 62.52,68.44 |tip {dropsfrom}Dustbelcher Ogre, Dustbelcher Brute, Dustbelcher Wyrmhunter
-step
-  talk Lotwil Veriatus##2921
-  turnin Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
-step
-  note Bring the Tablet of Ryun'eh to Theldurin the Lost.
-  collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
-step
   talk Sigrun Ironhew##2860
   turnin Scrounging##733 |goto Badlands 53.8,43.3
+step
+  talk Prospector Ryedol##2910
+  accept Prospect of Faith##724 |goto Badlands 53.42,43.39
 step
   talk Theldurin the Lost##2785
   turnin Solution to Doom##709 |goto Badlands 51.39,76.87
@@ -145,16 +142,11 @@ step
   talk Theldurin the Lost##2785
   accept To Ironforge for Yagyin's Digest##727 |goto Badlands 51.39,76.87
 step
-  kill Shadowforge Surveyor##4844 |goto Badlands 48.2,11 |tip Loot the quest item here — it starts the quest.
-  accept The Shattered Necklace##2198 |goto Badlands 48.2,11
+  note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
+  collect 3 Large Stone Slab##4627 |q 711 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental
 step
-  only completed(738)
-  click Battered Dwarven Skeleton##2875
-  accept Murdaloc##739 |goto Badlands 50.89,62.4
-step
-  only completed(738)
-  note Slay Agmond's killer, Murdaloc.
-  kill Murdaloc##2945 |q 739 |goto Badlands 49.63,66.31
+  talk Lotwil Veriatus##2921
+  turnin Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
@@ -185,6 +177,14 @@ step
 step
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##777 |goto Badlands 25.95,44.87
+step
+  only completed(738)
+  click Battered Dwarven Skeleton##2875
+  accept Murdaloc##739 |goto Badlands 50.89,62.4
+step
+  only completed(738)
+  note Slay Agmond's killer, Murdaloc.
+  kill Murdaloc##2945 |q 739 |goto Badlands 49.63,66.31
 step
   talk Garek##2888
   accept Tremors of the Earth##732 |goto Badlands 61.94,54.26

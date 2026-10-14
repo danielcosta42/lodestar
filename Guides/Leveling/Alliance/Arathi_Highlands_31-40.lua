@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (31-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Badlands (37-43)",
-	rev = "3e7b7289",
+	rev = "8646adb6",
 }, [[
 step
   talk Archmage Malin##2708
@@ -20,12 +20,6 @@ step
 step
   talk Foggy MacKreel##2696
   accept MacKreel's Moonshine##647 |goto Arathi Highlands 43.24,92.64
-step
-  talk Lolo the Lookout##2766
-  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
-step
-  talk Shakes O'Breen##2610
-  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
 step
   note {fp}Cedrik Prose
   goto Arathi Highlands 45.73,46.1 |tip {vendor}
@@ -110,23 +104,29 @@ step
   click Iridescent Shards##2701
   accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
 step
+  talk Lolo the Lookout##2766
+  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
+step
   note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
   kill Syndicate Prowler##2588 |goto Arathi Highlands 28.33,63.36 |elite
   collect 7 Stromgarde Badge##4506 |q 682 |goto Arathi Highlands 28.33,63.36
 step
+  talk Shakes O'Breen##2610
+  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
+step
   talk Captain Nials##2700
   turnin Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
-step
-  note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
-  collect Burning Key##4483 |q 651 |goto Arathi Highlands 25.46,30.11 |tip {dropsfrom}Stone of West Binding
-step
-  turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
   click Wanted Board##2713
   accept Wanted!  Marez Cowl##684 |goto Arathi Highlands 46.04,47.76
 step
   talk Skuerto##2789
   accept Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
+step
+  note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
+  collect Burning Key##4483 |q 651 |goto Arathi Highlands 25.46,30.11 |tip {dropsfrom}Stone of West Binding
+step
+  turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
   note Find Trelane's Wand of Invocation and return it to Skuerto at Refuge Pointe.
   collect Trelane's Wand of Invocation##4525 |q 693 |goto Arathi Highlands 54.75,81.87 |tip {dropsfrom}Kor'gresh Coldrage
@@ -144,8 +144,24 @@ step
   talk Skuerto##2789
   accept Trelane's Defenses##694 |goto Arathi Highlands 46.65,47.01
 step
+  note Find an Azure Agate and bring it to Apprentice Kryten at Refuge Pointe.
+  kill Boulderfist Shaman##2570 |goto Arathi Highlands 19.97,67.51 |elite
+  collect Azure Agate##4527 |q 694 |goto Arathi Highlands 19.97,67.51
+step
+  talk Apprentice Kryten##2788
+  turnin Trelane's Defenses##694 |goto Arathi Highlands 46.2,47.75
+step
+  talk Apprentice Kryten##2788
+  accept An Apprentice's Enchantment##695 |goto Arathi Highlands 46.2,47.75
+step
   click Wanted Board##2713
   accept Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
+step
+  talk Skuerto##2789
+  turnin An Apprentice's Enchantment##695 |goto Arathi Highlands 46.65,47.01
+step
+  talk Skuerto##2789
+  accept Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
 step
   only Shaman
   talk Veyric Thunderhame##259023
@@ -170,9 +186,8 @@ step
   kill Otto##2599 |goto Arathi Highlands 26.22,65.55 |elite
   collect Otto's Head##4516 |q 685 |goto Arathi Highlands 26.22,65.55
 step
-  note Find an Azure Agate and bring it to Apprentice Kryten at Refuge Pointe.
-  kill Boulderfist Shaman##2570 |goto Arathi Highlands 19.97,67.51 |elite
-  collect Azure Agate##4527 |q 694 |goto Arathi Highlands 19.97,67.51
+  note Find Trelane's Phylactery, Trelane's Orb, and Trelane's Ember Agate, and return them to Skuerto at Refuge Pointe.
+  collect Trelane's Phylactery##4530 |q 696 |goto Arathi Highlands 18.18,68.14 |tip {dropsfrom}Trelane's Footlocker
 step
   talk First Mate Nilzlix##2767
   turnin Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
@@ -203,21 +218,6 @@ step
 step
   talk Captain Nials##2700
   turnin Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 45.83,47.56
-step
-  talk Apprentice Kryten##2788
-  turnin Trelane's Defenses##694 |goto Arathi Highlands 46.2,47.75
-step
-  talk Apprentice Kryten##2788
-  accept An Apprentice's Enchantment##695 |goto Arathi Highlands 46.2,47.75
-step
-  talk Skuerto##2789
-  turnin An Apprentice's Enchantment##695 |goto Arathi Highlands 46.65,47.01
-step
-  talk Skuerto##2789
-  accept Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
-step
-  note Find Trelane's Phylactery, Trelane's Orb, and Trelane's Ember Agate, and return them to Skuerto at Refuge Pointe.
-  collect Trelane's Phylactery##4530 |q 696 |goto Arathi Highlands 18.18,68.14 |tip {dropsfrom}Trelane's Footlocker
 step
   talk Skuerto##2789
   turnin Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Scholomance", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "f3cb6fc0",
+	rev = "596bb140",
 }, [[
 step
   talk Tinkee Steamboil##10267
@@ -289,7 +289,7 @@ step
   accept The Divination Scryer##7646 |goto Stormwind City 48.43,50.22
 step
   note Place Dawn's Gambit in the Viewing Room of the Scholomance. Defeat Vectus, then return to Betina Bigglezink.
-  talk Vectus##10432 |q 4771 |goto Scholomance - Dungeon -1,-1
+  kill Vectus##10432 |q 4771 |goto Scholomance - Dungeon -1,-1 |elite
 step
   note Find Ras Frostwhisper in the Scholomance. When you have found him, use the Soulbound Keepsake on his undead visage. Should you succeed in reverting him to a mortal, strike him down and recover the Human Head of Ras Frostwhisper. Take the head back to Magistrate Marduke.
   collect Human Head of Ras Frostwhisper##13626 |q 5466 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Ras Frostwhisper

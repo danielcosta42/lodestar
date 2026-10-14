@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dun Morogh (13-26)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (11-18)",
-	rev = "bbe96e72",
+	rev = "bc279883",
 }, [[
 step
   only Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
@@ -55,9 +55,6 @@ step
   note Slay 10 Dark Iron Spies in Dun Morogh.
   kill Dark Iron Spy##6123 |q 96390 |goto Dun Morogh 77.36,61.31
 step
-  talk Earthseer Farsen##264936
-  turnin Nip 'Em in the Bud##96390 |goto Dun Morogh 64.87,58.47
-step
   only not Dwarf not NightElf not Skyborne Mage
   talk Magis Sparkmantle##1228
   accept Report to Jennea##1919 |goto Dun Morogh 47.5,52.08
@@ -65,6 +62,9 @@ step
   only Rogue
   talk Hogral Bakkan##1234
   accept To Hulfdan!##2299 |goto Dun Morogh 47.56,52.61
+step
+  talk Earthseer Farsen##264936
+  turnin Nip 'Em in the Bud##96390 |goto Dun Morogh 64.87,58.47
 step
   talk Pilot Stonegear##1377
   accept Search for Incendicite##466 |goto Dun Morogh 49.62,48.61

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/The Temple of Atal'Hakkar", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "bcbb1833",
+	rev = "4fc82949",
 }, [[
 step
   talk Fel'zerul##1443
@@ -75,7 +75,7 @@ step
   collect Elemental Air##7069 |q 8410 |goto Westfall 45.61,49.32 |tip {dropsfrom}Dust Devil, Thundering Exile, Cyclonian
 step
   note Hunt 5 Bloodpetal Lashers, 5 Bloodpetal Threshers, 5 Bloodpetal Flayers and 5 Bloodpetal Trappers for Larion at Marshal's Refuge.
-  talk Bloodpetal Lasher##6509 |q 4145 |goto Un'Goro Crater 67.79,31.77
+  kill Bloodpetal Lasher##6509 |q 4145 |goto Un'Goro Crater 67.79,31.77
 step
   only Druid
   note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.

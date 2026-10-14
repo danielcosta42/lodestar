@@ -100,3 +100,49 @@ Salto grande na mesma zona (`guide_integrity` JUMP) no leveling: 218 → 234, co
 Em passo de conteúdo que não mudou, 201 → 201; os +16 são todos de passo com quest que a 1.0.6
 criou ou alterou (nova, cadeia corrigida, NPC que mudou de lugar) — o vai e volta hub ↔ campo de
 Desolace, Wetlands e Silverpine, que ganharam quests. A ordenação do roteador não mudou.
+
+## Rotas das zonas iniciais (#57, 2026-10-13)
+
+Feedback do beta: o troll saía do Valley of Trials quase de cara, deixando quest para trás, e o
+morto-vivo em Deathknell era mandado aceitar quest cinza e "falar" com o mob de matar. Os três já
+estavam na v2.6.0.
+
+- [x] Objetivo de criatura saía `talk` quando o NPC tinha `faction` — e o Forever marca `AH` em mob
+      hostil: 307 passos `talk |q`, 132 com alvo sem gossip → texto que manda matar sai `kill`; se o
+      alvo é NPC com quem se fala, a palavra de matar tem de estar na frase do nome dele (o "kill
+      her" de Mother's Milk é a aranha, não Ragged John; em The Battle of Darrowshire o "Defeat" é
+      do Redpath the Corrupted). Sobram 207, e os 18 alvos sem gossip são curar, alimentar, falar,
+      investigar.
+- [x] `nivel_ok` dava folga de +1 ao `reqLevel` → o `reqLevel` é trava; a folga fica no nível da
+      quest. A estimativa conta só as quests sem classe e sobe em curva (`fração ** 0,7`): em reta,
+      a trava fazia Camp Narache, Northshire e Coldridge serem deixadas com quest de nível 3-4 por
+      pegar, e o guia voltava lá (revisão independente).
+- [x] Cutting Teeth (788) esperava Your Place In The World **e** The New Horde (Orgrimmar), e ela e
+      o que pede ela (Sting of the Scorpid, Galgar, os tablets) iam para o fim de Durotar → no
+      `_antes`, anterior pelo `nextInChain` basta uma entre as que cobrem o mesmo público. No dado
+      as quatro Call of Fire têm a máscara de toda a Horda; só no guia de classe, onde a raça da
+      zona inicial estreita o público, cada raça espera a sua.
+- [ ] O vai e volta depois do vale (Razor Hill → Burning Blade Coven → Sen'jin → vale): o objetivo
+      vai para o hub mais próximo, e a Coven cai no de Razor Hill. É o desenho dos hubs; fica para
+      outra issue.
+- [ ] The New Horde segue como ida a Orgrimmar e volta ao vale para entregar quest de nível 1.
+
+`python tools/router.py` confere os três (falha no `main`). Medido contra a v2.7.0:
+
+| | v2.7.0 | #57 |
+|---|---|---|
+| simulação da cadeia `next`, accept que trava | 0 | 0 |
+| pico do log | 17 | 18 |
+| aceites acima do teto do guia | 10 | 10 |
+| pendurada / perdida por ordem | 0 / 0 | 0 / 0 |
+| `guide_integrity --full` JUMP | 376 | **355** |
+| guias de classe, accept sem pré-req (os mesmos) | 35 | 35 |
+| accept acima do nível, modelo de XP até o 20, raça nativa × 9 classes | 348 | **198** |
+| — dentro da zona inicial | 177 | 9 (Zephras Isle) |
+| distância percorrida no leveling | 81.528 | 78.027 (−4,3%) |
+
+O modelo de XP é de validação, não verdade: XP de quest `20·nível^1,5+60`, dobrada se tem objetivo
+(os mobs), e a tabela de XP por nível do vanilla. A curva 0,7 saiu de varrer 0,5–1,0: 0,5 devolve o
+"!" cinza de Deathknell, 1,0 deixa Camp Narache e Coldridge para trás. Nos 80 primeiros passos,
+Durotar 578 → 353 e Elwynn 352 → 293; Dun Morogh 360 → 433 e Teldrassil 409 → 451 seguem com o vai
+e volta entre a zona inicial e a vila, que o `main` também tem (desenho dos hubs, acima).

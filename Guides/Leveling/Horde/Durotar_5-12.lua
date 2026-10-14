@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Durotar (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-20)",
-	rev = "a45c5203",
+	rev = "d12f552f",
 }, [[
 step
   talk Kaltunk##10176
@@ -14,17 +14,9 @@ step
   talk Gornek##3143
   accept Wayward Weapons##97279 |goto Durotar 42.06,68.33
 step
-  only not Warlock
-  talk Zureetha Fargaze##3145
-  accept Vile Familiars##792 |goto Durotar 42.85,69.15
-step
   only Warlock not completed(1470) not haveq(1470)
   talk Ruzan##5765
   accept Vile Familiars##1485 |goto Durotar 42.59,69
-step
-  only not Warlock
-  note Kill 12 Vile Familiars.
-  kill Vile Familiar##3101 |q 792 |goto Durotar 44.24,55.26
 step
   only Warlock not completed(1470) not haveq(1470)
   note Bring 6 Vile Familiar Heads to Ruzan.
@@ -32,10 +24,6 @@ step
 step
   note Collect 6 Abandoned Training Weapons, then return to Kzan Thornslash in the Den.
   collect 6 Abandoned Training Weapon##277653 |q 97279 |goto Durotar 44.4,64.6
-step
-  only not Warlock
-  talk Zureetha Fargaze##3145
-  turnin Vile Familiars##792 |goto Durotar 42.85,69.15
 step
   only Warlock not completed(1470) not haveq(1470)
   talk Ruzan##5765
@@ -47,55 +35,213 @@ step
   talk Kzan Thornslash##3159
   turnin Wayward Weapons##97279 |goto Durotar 40.47,68
 step
+  talk Gornek##3143
+  accept Cutting Teeth##788 |goto Durotar 42.06,68.33
+step
   only Warlock
   talk Ruzan##5765
   accept Vile Familiars##1499 |goto Durotar 42.59,69
+step
+  note Kill 10 Mottled Boars then return to Gornek at the Den.
+  kill Mottled Boar##3098 |q 788 |goto Durotar 44.49,65.1
+step
+  talk Gornek##3143
+  turnin Cutting Teeth##788 |goto Durotar 42.06,68.33
 step
   only Warlock
   talk Zureetha Fargaze##3145
   turnin Vile Familiars##1499 |goto Durotar 42.85,69.15
 step
-  talk Ukor##6786
-  accept A Peon's Burden##2161 |goto Durotar 52.06,68.31
+  talk Gornek##3143
+  accept Sting of the Scorpid##789 |goto Durotar 42.06,68.33
+step
+  only Orc Warrior
+  talk Gornek##3143
+  accept Simple Parchment##2383 |goto Durotar 42.06,68.33
+step
+  only Troll Warrior
+  talk Gornek##3143
+  accept Simple Tablet##3065 |goto Durotar 42.06,68.33
+step
+  only Troll Hunter
+  talk Gornek##3143
+  accept Etched Tablet##3082 |goto Durotar 42.06,68.33
+step
+  only Troll Rogue
+  talk Gornek##3143
+  accept Encrypted Tablet##3083 |goto Durotar 42.06,68.33
+step
+  only Troll Shaman
+  talk Gornek##3143
+  accept Rune-Inscribed Tablet##3084 |goto Durotar 42.06,68.33
+step
+  only Troll Priest
+  talk Gornek##3143
+  accept Hallowed Tablet##3085 |goto Durotar 42.06,68.33
+step
+  only Troll Mage
+  talk Gornek##3143
+  accept Glyphic Tablet##3086 |goto Durotar 42.06,68.33
+step
+  only Orc Hunter
+  talk Gornek##3143
+  accept Etched Parchment##3087 |goto Durotar 42.06,68.33
+step
+  only Orc Rogue
+  talk Gornek##3143
+  accept Encrypted Parchment##3088 |goto Durotar 42.06,68.33
+step
+  only Orc Shaman
+  talk Gornek##3143
+  accept Rune-Inscribed Parchment##3089 |goto Durotar 42.06,68.33
+step
+  only Orc Warlock
+  talk Gornek##3143
+  accept Tainted Parchment##3090 |goto Durotar 42.06,68.33
+step
+  talk Galgar##9796
+  accept Galgar's Cactus Apple Surprise##4402 |goto Durotar 42.73,67.23
+step
+  only Troll Warlock
+  talk Gornek##3143
+  accept Tainted Tablet##98575 |goto Durotar 42.06,68.33
+step
+  only Orc Mage
+  talk Gornek##3143
+  accept Glyphic Parchment##98576 |goto Durotar 42.06,68.33
+step
+  only not Warlock
+  talk Zureetha Fargaze##3145
+  accept Vile Familiars##792 |goto Durotar 42.85,69.15
 step
   talk Hana'zua##3287
   accept Sarkoth##790 |goto Durotar 40.6,62.58
 step
-  talk Zureetha Fargaze##3145
-  accept Burning Blade Medallion##794 |goto Durotar 42.85,69.15
-step
-  talk Foreman Thazz'ril##11378
-  accept Lazy Peons##5441 |goto Durotar 44.63,68.65
+  note Get 10 Scorpid Worker Tails for Gornek in the Den.
+  collect Scorpid Worker Tail##4862 |q 789 |goto Durotar 41.37,63.37 |tip {dropsfrom}Scorpid Worker, Sarkoth
 step
   note Kill Sarkoth and bring his claw back to Hana'zua.
   collect Sarkoth's Mangled Claw##4905 |q 790 |goto Durotar 40.5,66.83 |tip {dropsfrom}Sarkoth
 step
-  note Use the Foreman's Blackjack on Lazy Peons when they're sleeping. Wake up 5 peons, then return the Foreman's Blackjack to Foreman Thazz'ril in the Valley of Trials.
-  use Lazy Peon##10556 |q 5441 |goto Durotar 45.65,65.7 |tip {useit}
+  only not Warlock
+  note Kill 12 Vile Familiars.
+  kill Vile Familiar##3101 |q 792 |goto Durotar 44.24,55.26
+step
+  note Bring Galgar 10 Cactus Apples. You remember him saying that they could be found near cactuses.
+  collect Cactus Apple##11583 |q 4402 |goto Durotar 43.81,62.83
+step
+  talk Gornek##3143
+  turnin Sting of the Scorpid##789 |goto Durotar 42.06,68.33
 step
   talk Hana'zua##3287
   turnin Sarkoth##790 |goto Durotar 40.6,62.58
 step
-  talk Foreman Thazz'ril##11378
-  turnin Lazy Peons##5441 |goto Durotar 44.63,68.65
+  only not Warlock
+  talk Zureetha Fargaze##3145
+  turnin Vile Familiars##792 |goto Durotar 42.85,69.15
+step
+  only Orc Warrior
+  talk Frang##3153
+  turnin Simple Parchment##2383 |goto Durotar 42.89,69.44
+step
+  only Troll Warrior
+  talk Frang##3153
+  turnin Simple Tablet##3065 |goto Durotar 42.89,69.44
+step
+  only Troll Hunter
+  talk Jen'shan##3154
+  turnin Etched Tablet##3082 |goto Durotar 42.84,69.33
+step
+  only Troll Rogue
+  talk Rwag##3155
+  turnin Encrypted Tablet##3083 |goto Durotar 41.28,68
+step
+  only Troll Shaman
+  talk Shikrik##3157
+  turnin Rune-Inscribed Tablet##3084 |goto Durotar 42.39,69
+step
+  only Troll Priest
+  talk Ken'jai##3707
+  turnin Hallowed Tablet##3085 |goto Durotar 42.36,68.81
+step
+  only Troll Mage
+  talk Mai'ah##5884
+  turnin Glyphic Tablet##3086 |goto Durotar 42.51,69.04
+step
+  only Orc Hunter
+  talk Jen'shan##3154
+  turnin Etched Parchment##3087 |goto Durotar 42.84,69.33
+step
+  only Orc Rogue
+  talk Rwag##3155
+  turnin Encrypted Parchment##3088 |goto Durotar 41.28,68
+step
+  only Orc Shaman
+  talk Shikrik##3157
+  turnin Rune-Inscribed Parchment##3089 |goto Durotar 42.39,69
+step
+  only Orc Warlock
+  talk Nartok##3156
+  turnin Tainted Parchment##3090 |goto Durotar 40.65,68.52
+step
+  talk Galgar##9796
+  turnin Galgar's Cactus Apple Surprise##4402 |goto Durotar 42.73,67.23
+step
+  only Troll Warlock
+  talk Nartok##3156
+  turnin Tainted Tablet##98575 |goto Durotar 40.65,68.52
+step
+  only Orc Mage
+  talk Mai'ah##5884
+  turnin Glyphic Parchment##98576 |goto Durotar 42.51,69.04
+step
+  talk Zureetha Fargaze##3145
+  accept Burning Blade Medallion##794 |goto Durotar 42.85,69.15
 step
   talk Hana'zua##3287
   accept Sarkoth##804 |goto Durotar 40.6,62.58
 step
   talk Foreman Thazz'ril##11378
-  accept Thazz'ril's Pick##6394 |goto Durotar 44.63,68.65
+  accept Lazy Peons##5441 |goto Durotar 44.63,68.65
+step
+  note Use the Foreman's Blackjack on Lazy Peons when they're sleeping. Wake up 5 peons, then return the Foreman's Blackjack to Foreman Thazz'ril in the Valley of Trials.
+  use Lazy Peon##10556 |q 5441 |goto Durotar 45.65,65.7 |tip {useit}
 step
   talk Gornek##3143
   turnin Sarkoth##804 |goto Durotar 42.06,68.33
 step
-  talk Innkeeper Grosk##6928
-  turnin A Peon's Burden##2161 |goto Durotar 51.51,41.64
+  talk Foreman Thazz'ril##11378
+  turnin Lazy Peons##5441 |goto Durotar 44.63,68.65
+step
+  talk Foreman Thazz'ril##11378
+  accept Thazz'ril's Pick##6394 |goto Durotar 44.63,68.65
+step
+  talk Turroc##266940
+  accept For Honor##96822 |goto Durotar 53.95,42.59
+step
+  talk Cook Torka##3191
+  accept This Fruit Could Bite Back##96825 |goto Durotar 51.11,42.45
 step
   note Bring the Burning Blade Medallion to Zureetha Fargaze, outside The Den.
   collect Burning Blade Medallion##4859 |q 794 |goto Durotar 42.71,52.95 |tip {dropsfrom}Yarrog Baneshadow
 step
   note Bring Thazz'ril's Pick to Foreman Thazz'ril.
   collect Thazz'ril's Pick##16332 |q 6394 |goto Durotar 43.73,53.79
+step
+  note Cook Torka in Razor Hill wants you to collect 8 Prickly Pear Fruit from the Razormane Grounds west of town.
+  collect 8 Prickly Pear Fruit##275718 |q 96825 |goto Durotar 47.1,49.9
+step
+  talk Cook Torka##3191
+  turnin This Fruit Could Bite Back##96825 |goto Durotar 51.11,42.45
+step
+  talk Ukor##6786
+  accept A Peon's Burden##2161 |goto Durotar 52.06,68.31
+step
+  note Collect the Raider's Battleaxe, Raider's Bow, and Raider's Shield from the Tiragarde Keep outskirts, then return them to Turroc in Razor Hill.
+  collect Raider's Bow##275713 |q 96822 |goto Durotar 59.39,56.41
+step
+  talk Vel'rin Fang##3194
+  accept Legging It##96821 |goto Durotar 55.96,73.93
 step
   talk Zureetha Fargaze##3145
   turnin Burning Blade Medallion##794 |goto Durotar 42.85,69.15
@@ -114,19 +260,25 @@ step
   click Lost Journal##654925
   accept The Adventurer##96652 |goto Durotar 42.79,69.12
 step
+  talk Innkeeper Grosk##6928
+  turnin A Peon's Burden##2161 |goto Durotar 51.51,41.64
+step
   only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96656) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96656) not haveq(96659)
   talk Brakk##265809
   turnin The Adventurer##96652 |goto Durotar 52.05,47.32
+step
+  talk Turroc##266940
+  turnin For Honor##96822 |goto Durotar 53.95,42.59
 step
   only not completed(95998) not completed(96101) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Brakk##265809
   accept The Great Outdoors##96604 |goto Durotar 52.05,47.32
 step
-  talk Turroc##266940
-  accept For Honor##96822 |goto Durotar 53.95,42.59
+  talk Gar'Thok##3139
+  accept Vanquish the Betrayers##784 |goto Durotar 51.95,43.5
 step
-  talk Cook Torka##3191
-  accept This Fruit Could Bite Back##96825 |goto Durotar 51.11,42.45
+  talk Furl Scornbrow##3147
+  accept Carry Your Weight##791 |goto Durotar 49.88,40.39
 step
   only Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
   note Bring 2 Felstalker Hooves to Canaga Earthcaller in the Valley of Trials.
@@ -136,15 +288,9 @@ step
   note Sit near Brakk's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
   collect Basic Campfire##460003 |q 96604 |goto Durotar 52.09,47.39
 step
-  note Cook Torka in Razor Hill wants you to collect 8 Prickly Pear Fruit from the Razormane Grounds west of town.
-  collect 8 Prickly Pear Fruit##275718 |q 96825 |goto Durotar 47.1,49.9
-step
   only not completed(95998) not completed(96101) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Brakk##265809
   turnin The Great Outdoors##96604 |goto Durotar 52.05,47.32
-step
-  talk Cook Torka##3191
-  turnin This Fruit Could Bite Back##96825 |goto Durotar 51.11,42.45
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96658) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96658) not haveq(96661)
   talk Brakk##265809
@@ -158,14 +304,65 @@ step
   talk Cook Torka##3191
   turnin Camping 101: Cooking##96655 |goto Durotar 51.11,42.45
 step
-  note Collect the Raider's Battleaxe, Raider's Bow, and Raider's Shield from the Tiragarde Keep outskirts, then return them to Turroc in Razor Hill.
-  collect Raider's Bow##275713 |q 96822 |goto Durotar 59.39,56.41
+  collect Benedict's Chest##3239 |goto Durotar 59.26,57.65 |tip Loot the quest item here — it starts the quest.
+  accept The Admiral's Orders##830 |goto Durotar 59.26,57.65
+step
+  kill Ukorsbane##266851 |goto Durotar 50.8,56.57 |tip Loot the quest item here — it starts the quest.
+  accept Ukor's Lost Pack##96876 |goto Durotar 50.8,56.57
+step
+  note Kill 10 Kul Tiras Sailors, 8 Kul Tiras Marines and Lieutenant Benedict and return to Gar'Thok in Razor Hill.
+  kill Kul Tiras Sailor##3128 |q 784 |goto Durotar 57.11,57.24
+step
+  note Kill 6 Ridgeshade Creepers and 6 Ridgeshade Lurkers in southern Durotar, then report to Gar'thok in Razor Hill.
+  kill Ridgeshade Lurker##266849 |q 96821 |goto Durotar 51.59,59.21
+step
+  talk Ukor##6786
+  turnin Ukor's Lost Pack##96876 |goto Durotar 52.06,68.31
 step
   talk Master Gadrin##3188
   turnin Report to Sen'jin Village##805 |goto Durotar 55.95,74.72
 step
+  talk Master Vornal##3304
+  accept A Solvent Spirit##818 |goto Durotar 55.94,74.39
+step
+  talk Master Gadrin##3188
+  accept Report to Orgnil##823 |goto Durotar 55.95,74.72
+step
+  talk Lar Prowltusk##3140
+  accept Thwarting Kolkar Aggression##786 |goto Durotar 54.44,74.35
+step
   talk Vel'rin Fang##3194
-  accept Legging It##96821 |goto Durotar 55.96,73.93
+  accept Practical Prey##817 |goto Durotar 55.96,73.93
+step
+  talk Xar'Ti##7953
+  accept Bloodtalon Matriarch##97223 |goto Durotar 55.28,75.49
+step
+  note Bring 4 Durotar Tiger Furs to Vel'rin Fang in Sen'jin Village.
+  collect 4 Durotar Tiger Fur##4892 |q 817 |goto Durotar 64.64,84.97 |tip {dropsfrom}Durotar Tiger, Shal'ma
+step
+  note Bring 4 Intact Makrura Eyes and 8 vials of Crawler Mucus to Master Vornal in Sen'jin Village.
+  collect 4 Intact Makrura Eye##4887 |q 818 |goto Durotar 61.06,72.51 |tip {dropsfrom}Makrura Clacker, Makrura Shellhide, Makrura Snapclaw
+step
+  note Bring Eggs of the Bloodtalon Matriarch to Xar'Ti in Sen'jin Village.
+  collect Bloodtalon Martriarch Eggs##277128 |q 97223 |goto Durotar 68.81,71.78 |tip {dropsfrom}Bloodtalon Matriarch
+step
+  talk Vel'rin Fang##3194
+  turnin Practical Prey##817 |goto Durotar 55.96,73.93
+step
+  talk Master Vornal##3304
+  turnin A Solvent Spirit##818 |goto Durotar 55.94,74.39
+step
+  talk Xar'Ti##7953
+  turnin Bloodtalon Matriarch##97223 |goto Durotar 55.28,75.49
+step
+  talk Pal'juh##275811
+  accept Lost in the Shadows##99123 |goto Durotar 46.3,78.64
+step
+  note Lar Prowltusk outside of Sen'jin Village wants you to destroy the 3 sets of Attack Plans held within Kolkar Crag.
+  collect Attack Plan: Valley of Trials##3189 |q 786 |goto Durotar 49.81,81.29
+step
+  note Furl Scornbrow in the Razor Hill watchtower wants 8 Canvas Scraps.
+  collect Canvas Scraps##4870 |q 791 |goto Durotar 49.89,80.03 |tip {dropsfrom}Kolkar Drudge, Kolkar Outrunner, Kul Tiras Sailor
 step
   only Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
   talk Canaga Earthcaller##5887
@@ -175,65 +372,9 @@ step
   talk Canaga Earthcaller##5887
   accept Call of Earth##1517 |goto Durotar 42.4,69.17
 step
-  talk Turroc##266940
-  turnin For Honor##96822 |goto Durotar 53.95,42.59
-step
-  note Kill 6 Ridgeshade Creepers and 6 Ridgeshade Lurkers in southern Durotar, then report to Gar'thok in Razor Hill.
-  kill Ridgeshade Lurker##266849 |q 96821 |goto Durotar 51.59,59.21
-step
-  only Shaman not completed(92466) not haveq(92466)
-  talk Minor Manifestation of Earth##5891
-  turnin Call of Earth##1517 |goto Durotar 44.03,76.2
-step
   only Troll Priest
   talk Ken'jai##3707
   accept In Favor of Spirituality##5649 |goto Durotar 42.36,68.81
-step
-  only Troll Priest
-  talk Tai'jin##3706
-  turnin In Favor of Spirituality##5649 |goto Durotar 54.26,42.93
-step
-  talk Gar'Thok##3139
-  turnin Legging It##96821 |goto Durotar 51.95,43.5
-step
-  talk Gar'Thok##3139
-  accept Vanquish the Betrayers##784 |goto Durotar 51.95,43.5
-step
-  talk Furl Scornbrow##3147
-  accept Carry Your Weight##791 |goto Durotar 49.88,40.39
-step
-  only Troll Priest
-  talk Tai'jin##3706
-  accept Garments of Spirituality##5648 |goto Durotar 54.26,42.93
-step
-  only Troll Priest
-  note Find Grunt Kor'ja and heal her wounds using Lesser Heal (Rank 2). Afterwards, grant her Power Word: Fortitude and then return to Tai'jin at Razor Hill.
-  talk Grunt Kor'ja##12430 |q 5648 |goto Durotar 53.1,46.46
-step
-  only Troll Priest
-  talk Tai'jin##3706
-  turnin Garments of Spirituality##5648 |goto Durotar 54.26,42.93
-step
-  collect Benedict's Chest##3239 |goto Durotar 59.26,57.65 |tip Loot the quest item here — it starts the quest.
-  accept The Admiral's Orders##830 |goto Durotar 59.26,57.65
-step
-  note Kill 10 Kul Tiras Sailors, 8 Kul Tiras Marines and Lieutenant Benedict and return to Gar'Thok in Razor Hill.
-  talk Kul Tiras Sailor##3128 |q 784 |goto Durotar 57.11,57.24
-step
-  talk Master Vornal##3304
-  accept A Solvent Spirit##818 |goto Durotar 55.94,74.39
-step
-  talk Master Gadrin##3188
-  accept Report to Orgnil##823 |goto Durotar 55.95,74.72
-step
-  note Bring 4 Intact Makrura Eyes and 8 vials of Crawler Mucus to Master Vornal in Sen'jin Village.
-  collect 4 Intact Makrura Eye##4887 |q 818 |goto Durotar 61.06,72.51 |tip {dropsfrom}Makrura Clacker, Makrura Shellhide, Makrura Snapclaw
-step
-  talk Master Vornal##3304
-  turnin A Solvent Spirit##818 |goto Durotar 55.94,74.39
-step
-  note Furl Scornbrow in the Razor Hill watchtower wants 8 Canvas Scraps.
-  collect Canvas Scraps##4870 |q 791 |goto Durotar 49.89,80.03 |tip {dropsfrom}Kolkar Drudge, Kolkar Outrunner, Kul Tiras Sailor
 step
   talk Gar'Thok##3139
   turnin Vanquish the Betrayers##784 |goto Durotar 51.95,43.5
@@ -247,8 +388,19 @@ step
   talk Gar'Thok##3139
   turnin The Admiral's Orders##830 |goto Durotar 51.95,43.5
 step
+  only Troll Priest
+  talk Tai'jin##3706
+  turnin In Favor of Spirituality##5649 |goto Durotar 54.26,42.93
+step
+  talk Gar'Thok##3139
+  turnin Legging It##96821 |goto Durotar 51.95,43.5
+step
   talk Gar'Thok##3139
   accept The Admiral's Orders##831 |goto Durotar 51.95,43.5
+step
+  only Troll Priest
+  talk Tai'jin##3706
+  accept Garments of Spirituality##5648 |goto Durotar 54.26,42.93
 step
   talk Cook Torka##3191
   accept Break a Few Eggs##815 |goto Durotar 51.11,42.45
@@ -259,23 +411,22 @@ step
   note Gar'Thok of Razor Hill wants you to retrieve 3 Gnomish Tools from the wreckage off the coast.
   collect 3 Gnomish Tools##4863 |q 825 |goto Durotar 63.81,53.01 |tip {dropsfrom}Gnomish Toolbox
 step
+  only Troll Priest
+  note Find Grunt Kor'ja and heal her wounds using Lesser Heal (Rank 2). Afterwards, grant her Power Word: Fortitude and then return to Tai'jin at Razor Hill.
+  talk Grunt Kor'ja##12430 |q 5648 |goto Durotar 53.1,46.46
+step
   talk Gar'Thok##3139
   turnin From The Wreckage....##825 |goto Durotar 51.95,43.5
 step
-  kill Ukorsbane##266851 |goto Durotar 50.8,56.57 |tip Loot the quest item here — it starts the quest.
-  accept Ukor's Lost Pack##96876 |goto Durotar 50.8,56.57
-step
-  talk Ukor##6786
-  turnin Ukor's Lost Pack##96876 |goto Durotar 52.06,68.31
+  only Troll Priest
+  talk Tai'jin##3706
+  turnin Garments of Spirituality##5648 |goto Durotar 54.26,42.93
 step
   talk Lar Prowltusk##3140
-  accept Thwarting Kolkar Aggression##786 |goto Durotar 54.44,74.35
+  turnin Thwarting Kolkar Aggression##786 |goto Durotar 54.44,74.35
 step
-  talk Vel'rin Fang##3194
-  accept Practical Prey##817 |goto Durotar 55.96,73.93
-step
-  talk Xar'Ti##7953
-  accept Bloodtalon Matriarch##97223 |goto Durotar 55.28,75.49
+  talk Master Vornal##3304
+  turnin Lost in the Shadows##99123 |goto Durotar 55.94,74.39
 step
   talk Master Gadrin##3188
   accept Minshina's Skull##808 |goto Durotar 55.95,74.72
@@ -283,17 +434,17 @@ step
   talk Master Vornal##3304
   accept Forgotten Loa Idols##97225 |goto Durotar 55.94,74.39
 step
+  talk Master Gadrin##3188
+  accept Zalazane##826 |goto Durotar 55.95,74.72
+step
   note Retrieve Minshina's skull from the circle of power on the Echo Isles.
   collect Minshina's Skull##4864 |q 808 |goto Durotar 67.45,87.81 |tip {dropsfrom}Imprisoned Darkspear
 step
   note Bring 3 Taillasher Eggs to Cook Torka in Razor Hill.
   collect 3 Taillasher Egg##4890 |q 815 |goto Durotar 68.01,80.41 |tip {dropsfrom}Taillasher Eggs
 step
-  note Bring 4 Durotar Tiger Furs to Vel'rin Fang in Sen'jin Village.
-  collect 4 Durotar Tiger Fur##4892 |q 817 |goto Durotar 64.64,84.97 |tip {dropsfrom}Durotar Tiger, Shal'ma
-step
-  note Bring Eggs of the Bloodtalon Matriarch to Xar'Ti in Sen'jin Village.
-  collect Bloodtalon Martriarch Eggs##277128 |q 97223 |goto Durotar 68.81,71.78 |tip {dropsfrom}Bloodtalon Matriarch
+  note Defeat Zalazane.
+  kill Hexed Troll##3207 |q 826 |goto Durotar 67.7,83.67
 step
   note Collect 8 Forgotten Loa Idols from the Echo Isles. Bring them to Master Gadrin in Sen'jin Village.
   collect 8 Forgotten Loa Idol##277135 |q 97225 |goto Durotar 67.1,83.5
@@ -301,20 +452,15 @@ step
   talk Master Gadrin##3188
   turnin Minshina's Skull##808 |goto Durotar 55.95,74.72
 step
-  talk Vel'rin Fang##3194
-  turnin Practical Prey##817 |goto Durotar 55.96,73.93
-step
-  talk Xar'Ti##7953
-  turnin Bloodtalon Matriarch##97223 |goto Durotar 55.28,75.49
+  talk Master Gadrin##3188
+  turnin Zalazane##826 |goto Durotar 55.95,74.72
 step
   talk Master Gadrin##3188
   turnin Forgotten Loa Idols##97225 |goto Durotar 55.95,74.72
 step
-  talk Pal'juh##275811
-  accept Lost in the Shadows##99123 |goto Durotar 46.3,78.64
-step
-  note Lar Prowltusk outside of Sen'jin Village wants you to destroy the 3 sets of Attack Plans held within Kolkar Crag.
-  collect Attack Plan: Valley of Trials##3189 |q 786 |goto Durotar 49.81,81.29
+  only Shaman not completed(92466) not haveq(92466)
+  talk Minor Manifestation of Earth##5891
+  turnin Call of Earth##1517 |goto Durotar 44.03,76.2
 step
   talk Rezlak##3293
   accept Winds in the Desert##834 |goto Durotar 46.37,22.94
@@ -328,15 +474,6 @@ step
   talk Cook Torka##3191
   turnin Break a Few Eggs##815 |goto Durotar 51.11,42.45
 step
-  talk Lar Prowltusk##3140
-  turnin Thwarting Kolkar Aggression##786 |goto Durotar 54.44,74.35
-step
-  talk Master Vornal##3304
-  turnin Lost in the Shadows##99123 |goto Durotar 55.94,74.39
-step
-  talk Rezlak##3293
-  turnin Winds in the Desert##834 |goto Durotar 46.37,22.94
-step
   talk Gar'Thok##3139
   accept Encroachment##837 |goto Durotar 51.95,43.5
 step
@@ -346,41 +483,8 @@ step
   talk Gar'Thok##3139
   turnin Encroachment##837 |goto Durotar 51.95,43.5
 step
-  talk Orgnil Soulscar##3142
-  accept A Missing Hand##99048 |goto Durotar 52.24,43.15
-step
-  talk Heglan Shadeeye##275657
-  turnin A Missing Hand##99048 |goto Durotar 58.6,45.6
-step
-  talk Heglan Shadeeye##275657
-  accept Threat from Below##99049 |goto Durotar 58.6,45.6
-step
-  note Find signs of what attacked Heglan Shadeeye.
-  collect Orcish Dagger##286012 |q 99049 |goto Durotar 58.85,44.35 |tip {dropsfrom}Abandoned Dagger
-step
-  talk Orgnil Soulscar##3142
-  turnin Threat from Below##99049 |goto Durotar 52.24,43.15
-step
-  talk Orgnil Soulscar##3142
-  accept Threat from Below##99051 |goto Durotar 52.24,43.15
-step
-  kill Dustwind Storm Witch##3118 |goto Durotar 51.56,21.65 |tip Loot the quest item here — it starts the quest.
-  accept A Simmering Storm##97281 |goto Durotar 51.56,21.65
-step
-  note Collect 9 Naga Spinefins.
-  collect 9 Naga Spinefin##286008 |q 99051 |goto Durotar 58.88,26.19 |tip {dropsfrom}Spitelash Scout, Spitelash Attendant
-step
-  talk Master Gadrin##3188
-  accept Zalazane##826 |goto Durotar 55.95,74.72
-step
-  note Defeat Zalazane.
-  kill Hexed Troll##3207 |q 826 |goto Durotar 67.7,83.67
-step
-  talk Master Gadrin##3188
-  turnin Zalazane##826 |goto Durotar 55.95,74.72
-step
   talk Rezlak##3293
-  turnin A Simmering Storm##97281 |goto Durotar 46.37,22.94
+  turnin Winds in the Desert##834 |goto Durotar 46.37,22.94
 step
   talk Rezlak##3293
   accept Securing the Lines##835 |goto Durotar 46.37,22.94
@@ -400,8 +504,8 @@ step
   talk Misha Tor'kren##3193
   turnin Lost But Not Forgotten##816 |goto Durotar 43.1,30.24
 step
-  talk Orgnil Soulscar##3142
-  turnin Threat from Below##99051 |goto Durotar 52.24,43.15
+  kill Dustwind Storm Witch##3118 |goto Durotar 51.56,21.65 |tip Loot the quest item here — it starts the quest.
+  accept A Simmering Storm##97281 |goto Durotar 51.56,21.65
 step
   note Kill 12 Dustwind Savages and 8 Dustwind Storm Witches for Rezlak near Drygulch Ravine.
   kill Dustwind Savage##3117 |q 835 |goto Durotar 54.03,23.56
@@ -410,13 +514,52 @@ step
   turnin Securing the Lines##835 |goto Durotar 46.37,22.94
 step
   talk Rezlak##3293
+  turnin A Simmering Storm##97281 |goto Durotar 46.37,22.94
+step
+  talk Rezlak##3293
   turnin Stormy Potential##97282 |goto Durotar 46.37,22.94
 step
   kill Halikor##266852 |goto Durotar 41.77,25.1 |tip Loot the quest item here — it starts the quest.
   accept Halikor's Hoof##96877 |goto Durotar 41.77,25.1
 step
   talk Orgnil Soulscar##3142
+  accept A Missing Hand##99048 |goto Durotar 52.24,43.15
+step
+  talk Orgnil Soulscar##3142
   accept Dark Storms##806 |goto Durotar 52.24,43.15
+step
+  talk Heglan Shadeeye##275657
+  turnin A Missing Hand##99048 |goto Durotar 58.6,45.6
+step
+  talk Heglan Shadeeye##275657
+  accept Threat from Below##99049 |goto Durotar 58.6,45.6
+step
+  note Find signs of what attacked Heglan Shadeeye.
+  collect Orcish Dagger##286012 |q 99049 |goto Durotar 58.85,44.35 |tip {dropsfrom}Abandoned Dagger
+step
+  talk Orgnil Soulscar##3142
+  turnin Threat from Below##99049 |goto Durotar 52.24,43.15
+step
+  talk Orgnil Soulscar##3142
+  accept Threat from Below##99051 |goto Durotar 52.24,43.15
+step
+  kill Gazz'uz##3204 |goto Durotar 52.61,8.82 |tip Loot the quest item here — it starts the quest.
+  accept Burning Shadows##832 |goto Durotar 52.61,8.82
+step
+  note Collect 9 Naga Spinefins.
+  collect 9 Naga Spinefin##286008 |q 99051 |goto Durotar 58.88,26.19 |tip {dropsfrom}Spitelash Scout, Spitelash Attendant
+step
+  note Bring Fizzle's Claw to Orgnil Soulscar in Razor Hill.
+  collect Fizzle's Claw##4869 |q 806 |goto Durotar 42.12,26.66 |tip {dropsfrom}Fizzle Darkstorm
+step
+  talk Orgnil Soulscar##3142
+  turnin Dark Storms##806 |goto Durotar 52.24,43.15
+step
+  talk Orgnil Soulscar##3142
+  turnin Threat from Below##99051 |goto Durotar 52.24,43.15
+step
+  talk Orgnil Soulscar##3142
+  accept Margoz##828 |goto Durotar 52.24,43.15
 step
   talk Takrin Pathseeker##3336
   accept Conscript of the Horde##840 |goto Durotar 50.84,43.59
@@ -448,8 +591,11 @@ step
   talk Orgnil Soulscar##3142
   accept Threat from Below##99052 |goto Durotar 52.24,43.15
 step
-  kill Gazz'uz##3204 |goto Durotar 52.61,8.82 |tip Loot the quest item here — it starts the quest.
-  accept Burning Shadows##832 |goto Durotar 52.61,8.82
+  talk Margoz##3208
+  turnin Margoz##828 |goto Durotar 56.41,20.04
+step
+  talk Margoz##3208
+  accept Skull Rock##827 |goto Durotar 56.41,20.04
 step
   note Kill the sea giant along Durotar's north coast and bring back proof of your accomplishment.
   collect Aggor's Belt##286009 |q 99052 |goto Durotar 59.22,17.6 |tip {dropsfrom}Aggor the Young
@@ -458,11 +604,8 @@ step
   talk Kali Remik##11814
   accept The Hunter's Path##6069 |goto Durotar 56.13,74.24
 step
-  note Bring Fizzle's Claw to Orgnil Soulscar in Razor Hill.
-  collect Fizzle's Claw##4869 |q 806 |goto Durotar 42.12,26.66 |tip {dropsfrom}Fizzle Darkstorm
-step
-  talk Orgnil Soulscar##3142
-  turnin Dark Storms##806 |goto Durotar 52.24,43.15
+  note Gather Searing Collars from the cultists in Skull Rock.
+  collect Searing Collar##4871 |q 827 |goto Durotar 53.15,29.14 |tip {dropsfrom}Burning Blade Thug, Burning Blade Neophyte, Burning Blade Fanatic
 step
   only not Undead not Tauren not Skyborne Hunter not completed(6068) not completed(6070) not haveq(6068) not haveq(6070)
   talk Thotar##3171
@@ -470,9 +613,6 @@ step
 step
   talk Orgnil Soulscar##3142
   turnin Threat from Below##99052 |goto Durotar 52.24,43.15
-step
-  talk Orgnil Soulscar##3142
-  accept Margoz##828 |goto Durotar 52.24,43.15
 step
   only not Undead not Tauren not Skyborne Hunter
   talk Thotar##3171
@@ -491,17 +631,14 @@ step
   accept Taming the Beast##6083 |goto Durotar 51.85,43.49
 step
   talk Margoz##3208
-  turnin Margoz##828 |goto Durotar 56.41,20.04
+  turnin Skull Rock##827 |goto Durotar 56.41,20.04
 step
   talk Margoz##3208
-  accept Skull Rock##827 |goto Durotar 56.41,20.04
+  accept Neeru Fireblade##829 |goto Durotar 56.41,20.04
 step
   only not Undead not Tauren not Skyborne Hunter
   note Use the Taming Rod to tame a Surf Crawler. Practice your skills, then return the Taming Rod to Thotar at Razor Hill.
   use Surf Crawler##3107 |q 6083 |goto Durotar 64.15,78.85 |tip {useit}
-step
-  note Gather Searing Collars from the cultists in Skull Rock.
-  collect Searing Collar##4871 |q 827 |goto Durotar 53.15,29.14 |tip {dropsfrom}Burning Blade Thug, Burning Blade Neophyte, Burning Blade Fanatic
 step
   only not Undead not Tauren not Skyborne Hunter
   talk Thotar##3171
@@ -510,12 +647,6 @@ step
   only not Undead not Tauren not Skyborne Hunter
   talk Thotar##3171
   accept Taming the Beast##6082 |goto Durotar 51.85,43.49
-step
-  talk Margoz##3208
-  turnin Skull Rock##827 |goto Durotar 56.41,20.04
-step
-  talk Margoz##3208
-  accept Neeru Fireblade##829 |goto Durotar 56.41,20.04
 step
   only not Undead not Tauren not Skyborne Hunter
   note Use the Taming Rod to tame an Armored Scorpid. Practice your skills, then return to Thotar at Razor Hill.
@@ -630,9 +761,6 @@ step
   talk Nazgrel##3230
   turnin The Admiral's Orders##831 |goto Orgrimmar 32.3,35.75 |tip {turninat}Orgrimmar
 step
-  talk Gornek##3143
-  accept Cutting Teeth##788 |goto Durotar 42.06,68.33
-step
   only Orc Warlock
   talk Gan'rul Bloodeye##5875
   accept Creature of the Void##1501 |goto Orgrimmar 48.25,45.28
@@ -643,9 +771,6 @@ step
 step
   talk Thrall##4949
   accept Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82
-step
-  note Kill 10 Mottled Boars then return to Gornek at the Den.
-  talk Mottled Boar##3098 |q 788 |goto Durotar 44.49,65.1
 step
   only Orc Warlock
   note Retrieve the Tablet of Verga for Gan'rul Bloodeye in Orgrimmar.
@@ -658,9 +783,6 @@ step
   note Take the Lieutenant's Insignia to Neeru Fireblade and speak to him. Gauge if he believes you are a member of the Burning Blade and then return to Thrall in Orgrimmar.
   talk Neeru Fireblade##3216 |q 5727 |goto Orgrimmar 49.47,50.59
 step
-  talk Gornek##3143
-  turnin Cutting Teeth##788 |goto Durotar 42.06,68.33
-step
   only Orc Warlock
   talk Gan'rul Bloodeye##5875
   turnin Creature of the Void##1501 |goto Orgrimmar 48.25,45.28 |tip {turninat}Orgrimmar
@@ -672,64 +794,6 @@ step
   talk Thrall##4949
   turnin Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
 step
-  talk Gornek##3143
-  accept Sting of the Scorpid##789 |goto Durotar 42.06,68.33
-step
-  only Orc Warrior
-  talk Gornek##3143
-  accept Simple Parchment##2383 |goto Durotar 42.06,68.33
-step
-  only Troll Warrior
-  talk Gornek##3143
-  accept Simple Tablet##3065 |goto Durotar 42.06,68.33
-step
-  only Troll Hunter
-  talk Gornek##3143
-  accept Etched Tablet##3082 |goto Durotar 42.06,68.33
-step
-  only Troll Rogue
-  talk Gornek##3143
-  accept Encrypted Tablet##3083 |goto Durotar 42.06,68.33
-step
-  only Troll Shaman
-  talk Gornek##3143
-  accept Rune-Inscribed Tablet##3084 |goto Durotar 42.06,68.33
-step
-  only Troll Priest
-  talk Gornek##3143
-  accept Hallowed Tablet##3085 |goto Durotar 42.06,68.33
-step
-  only Troll Mage
-  talk Gornek##3143
-  accept Glyphic Tablet##3086 |goto Durotar 42.06,68.33
-step
-  only Orc Hunter
-  talk Gornek##3143
-  accept Etched Parchment##3087 |goto Durotar 42.06,68.33
-step
-  only Orc Rogue
-  talk Gornek##3143
-  accept Encrypted Parchment##3088 |goto Durotar 42.06,68.33
-step
-  only Orc Shaman
-  talk Gornek##3143
-  accept Rune-Inscribed Parchment##3089 |goto Durotar 42.06,68.33
-step
-  only Orc Warlock
-  talk Gornek##3143
-  accept Tainted Parchment##3090 |goto Durotar 42.06,68.33
-step
-  talk Galgar##9796
-  accept Galgar's Cactus Apple Surprise##4402 |goto Durotar 42.73,67.23
-step
-  only Troll Warlock
-  talk Gornek##3143
-  accept Tainted Tablet##98575 |goto Durotar 42.06,68.33
-step
-  only Orc Mage
-  talk Gornek##3143
-  accept Glyphic Parchment##98576 |goto Durotar 42.06,68.33
-step
   only Orc Warlock
   talk Gan'rul Bloodeye##5875
   accept The Binding##1504 |goto Orgrimmar 48.25,45.28
@@ -737,70 +801,6 @@ step
   only Orc Warlock
   note Using the Glyphs of Summoning, summon and subdue a voidwalker, then return the Glyphs of Summoning to Gan'rul Bloodeye in Orgrimmar.
   use Summoned Voidwalker##5676 |q 1504 |tip {useit}
-step
-  note Get 10 Scorpid Worker Tails for Gornek in the Den.
-  collect Scorpid Worker Tail##4862 |q 789 |goto Durotar 41.37,63.37 |tip {dropsfrom}Scorpid Worker, Sarkoth
-step
-  note Bring Galgar 10 Cactus Apples. You remember him saying that they could be found near cactuses.
-  collect Cactus Apple##11583 |q 4402 |goto Durotar 43.81,62.83
-step
-  talk Gornek##3143
-  turnin Sting of the Scorpid##789 |goto Durotar 42.06,68.33
-step
-  only Orc Warrior
-  talk Frang##3153
-  turnin Simple Parchment##2383 |goto Durotar 42.89,69.44
-step
-  only Troll Warrior
-  talk Frang##3153
-  turnin Simple Tablet##3065 |goto Durotar 42.89,69.44
-step
-  only Troll Hunter
-  talk Jen'shan##3154
-  turnin Etched Tablet##3082 |goto Durotar 42.84,69.33
-step
-  only Troll Rogue
-  talk Rwag##3155
-  turnin Encrypted Tablet##3083 |goto Durotar 41.28,68
-step
-  only Troll Shaman
-  talk Shikrik##3157
-  turnin Rune-Inscribed Tablet##3084 |goto Durotar 42.39,69
-step
-  only Troll Priest
-  talk Ken'jai##3707
-  turnin Hallowed Tablet##3085 |goto Durotar 42.36,68.81
-step
-  only Troll Mage
-  talk Mai'ah##5884
-  turnin Glyphic Tablet##3086 |goto Durotar 42.51,69.04
-step
-  only Orc Hunter
-  talk Jen'shan##3154
-  turnin Etched Parchment##3087 |goto Durotar 42.84,69.33
-step
-  only Orc Rogue
-  talk Rwag##3155
-  turnin Encrypted Parchment##3088 |goto Durotar 41.28,68
-step
-  only Orc Shaman
-  talk Shikrik##3157
-  turnin Rune-Inscribed Parchment##3089 |goto Durotar 42.39,69
-step
-  only Orc Warlock
-  talk Nartok##3156
-  turnin Tainted Parchment##3090 |goto Durotar 40.65,68.52
-step
-  talk Galgar##9796
-  turnin Galgar's Cactus Apple Surprise##4402 |goto Durotar 42.73,67.23
-step
-  only Troll Warlock
-  talk Nartok##3156
-  turnin Tainted Tablet##98575 |goto Durotar 40.65,68.52
-step
-  only Orc Mage
-  talk Mai'ah##5884
-  turnin Glyphic Parchment##98576 |goto Durotar 42.51,69.04
 step
   only Orc Warlock
   talk Gan'rul Bloodeye##5875

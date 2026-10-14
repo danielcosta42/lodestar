@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-35)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Mulgore (30-31)",
-	rev = "3c4a699f",
+	rev = "f0d1b4e6",
 }, [[
 step
   talk Brave Moonhorn##10079
@@ -26,6 +26,9 @@ step
   talk Kanati Greycloud##10638
   turnin Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
 step
+  talk Pao'ka Swiftmountain##10427
+  accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
+step
   note {fp}Nyse
   goto Thousand Needles 45.14,49.11 |tip {vendor}
 step
@@ -37,6 +40,12 @@ step
 step
   talk Hagar Lightninghoof##10539
   accept Alien Egg##4821 |goto Thousand Needles 44.64,50.29
+step
+  talk Elu##10377
+  accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
+step
+  click Wanted Poster - Arnak Grimtotem##176115
+  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
 step
   note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
   collect Alien Egg##12467 |q 4821 |goto Thousand Needles 52.34,55.25
@@ -56,44 +65,23 @@ step
   talk Dorn Plainstalker##2986
   turnin Test of Faith##1149 |goto Thousand Needles 53.95,41.49
 step
+  talk Dorn Plainstalker##2986
+  accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
+step
   talk Lakota Windsong##10646
   accept Free at Last##4904 |goto Thousand Needles 37.95,26.45
-step
-  talk Motega Firemane##10428
-  turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
-step
-  talk Motega Firemane##10428
-  accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
-step
-  talk Pao'ka Swiftmountain##10427
-  accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
-step
-  talk Cliffwatcher Longhorn##10537
-  turnin Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
-step
-  talk Thalia Amberhide##10645
-  turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
-step
-  talk Cliffwatcher Longhorn##10537
-  accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
-step
-  talk Elu##10377
-  accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
-step
-  click Wanted Poster - Arnak Grimtotem##176115
-  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
-step
-  note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
-  collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.47,35.43
-step
-  note Locate and retrieve the three Secret Notes in Darkcloud Pinnacle.
-  collect Secret Note #1##12765 |q 5064 |goto Thousand Needles 31.79,32.58 |tip {dropsfrom}Document Chest
 step
   note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
   collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
 step
   talk Motega Firemane##10428
   turnin Homeward Bound##4770 |goto Thousand Needles 21.54,32.35
+step
+  talk Motega Firemane##10428
+  turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
+step
+  talk Motega Firemane##10428
+  accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
 step
   talk Wizlo Bearingshiner##10941
   accept Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
@@ -105,6 +93,9 @@ step
   talk Wizlo Bearingshiner##10941
   turnin Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
 step
+  note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
+  collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.8 |tip {dropsfrom}Grenka Bloodscreech
+step
   note Bring 10 Highperch Wyvern Eggs to Elu in Freewind Post.
   collect 10 Highperch Wyvern Egg##12356 |q 4767 |goto Thousand Needles 12.56,37.37
 step
@@ -112,10 +103,16 @@ step
   turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
   talk Cliffwatcher Longhorn##10537
-  turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
+  turnin Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
+step
+  talk Thalia Amberhide##10645
+  turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
 step
   talk Cliffwatcher Longhorn##10537
   turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
+step
+  talk Cliffwatcher Longhorn##10537
+  accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
   talk Jandia##4877
   accept Stolen Freewind Supplies##98069 |goto Thousand Needles 46.21,51.51
@@ -130,7 +127,10 @@ step
   turnin Stolen Freewind Supplies##98069 |goto Thousand Needles 46.21,51.51
 step
   talk Dorn Plainstalker##2986
-  accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
+  turnin Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
+step
+  talk Dorn Plainstalker##2986
+  accept Test of Strength##1151 |goto Thousand Needles 53.95,41.49
 step
   talk Fizzle Brassbolts##4454
   accept Salt Flat Venom##1104 |goto Thousand Needles 78.06,77.13
@@ -162,50 +162,50 @@ step
   talk Pozzik##4630
   turnin Load Lightening##1176 |goto Thousand Needles 80.18,75.88
 step
-  note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
-  collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.8 |tip {dropsfrom}Grenka Bloodscreech
+  talk Trackmaster Zherin##4629
+  accept A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
 step
-  note Slay 5 Screeching Harpies, 5 Screeching Roguefeather Harpies and 5 Screeching Windcaller Harpies.
-  kill Screeching Harpy##4100 |q 98070 |goto Thousand Needles 26.49,52.26
+  note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
+  collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.47,35.43
 step
-  talk Jandia##4877
-  turnin Stop the Screeching##98070 |goto Thousand Needles 46.21,51.51
-step
-  talk Dorn Plainstalker##2986
-  turnin Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
-step
-  talk Dorn Plainstalker##2986
-  accept Test of Strength##1151 |goto Thousand Needles 53.95,41.49
-step
-  note Bring 9 Hardened Tortoise Shells to Wizzle Brassbolts in the Shimmering Flats.
-  collect 9 Hardened Tortoise Shell##5795 |q 1105 |goto Thousand Needles 74.69,56.36 |tip {dropsfrom}Sparkleshell Tortoise, Sparkleshell Snapper, Sparkleshell Borer
-step
-  talk Wizzle Brassbolts##4453
-  turnin Hardened Shells##1105 |goto Thousand Needles 78.14,77.12
+  note Locate and retrieve the three Secret Notes in Darkcloud Pinnacle.
+  collect Secret Note #1##12765 |q 5064 |goto Thousand Needles 31.79,32.58 |tip {dropsfrom}Document Chest
 step
   note Bring Fragments of Rok'Alim to Dorn Plainstalker in Thousand Needles.
   kill Rok'Alim the Pounder##4499 |goto Thousand Needles 17.1,38.1 |elite
   collect Fragments of Rok'Alim##5844 |q 1151 |goto Thousand Needles 17.1,38.1
 step
-  talk Dorn Plainstalker##2986
-  turnin Test of Strength##1151 |goto Thousand Needles 53.95,41.49
+  note Slay 5 Screeching Harpies, 5 Screeching Roguefeather Harpies and 5 Screeching Windcaller Harpies.
+  kill Screeching Harpy##4100 |q 98070 |goto Thousand Needles 26.49,52.26
 step
-  talk Dorn Plainstalker##2986
-  accept Test of Lore##1152 |goto Thousand Needles 53.95,41.49
+  talk Cliffwatcher Longhorn##10537
+  turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
-  talk Trackmaster Zherin##4629
-  accept A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
+  talk Jandia##4877
+  turnin Stop the Screeching##98070 |goto Thousand Needles 46.21,51.51
 step
   only Shaman
   talk Rau Cliffrunner##4722
   accept Eyes on the Sky##79364 |goto Thousand Needles 46.14,51.71
 step
+  talk Dorn Plainstalker##2986
+  turnin Test of Strength##1151 |goto Thousand Needles 53.95,41.49
+step
   only Shaman
   talk Prate Cloudseer##5905
   turnin Eyes on the Sky##79364 |goto Thousand Needles 53.54,42.65
 step
+  talk Dorn Plainstalker##2986
+  accept Test of Lore##1152 |goto Thousand Needles 53.95,41.49
+step
+  note Bring 9 Hardened Tortoise Shells to Wizzle Brassbolts in the Shimmering Flats.
+  collect 9 Hardened Tortoise Shell##5795 |q 1105 |goto Thousand Needles 74.69,56.36 |tip {dropsfrom}Sparkleshell Tortoise, Sparkleshell Snapper, Sparkleshell Borer
+step
   note Kill 10 Saltstone Basilisks, 10 Saltstone Crystalhides and 6 Saltstone Gazers for Trackmaster Zherin on the Shimmering Flats.
   kill Saltstone Basilisk##4147 |q 1175 |goto Thousand Needles 73.64,59.44
+step
+  talk Wizzle Brassbolts##4453
+  turnin Hardened Shells##1105 |goto Thousand Needles 78.14,77.12
 step
   talk Trackmaster Zherin##4629
   turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Azshara (52-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Tanaris (53-54)",
-	rev = "725138ef",
+	rev = "581948d8",
 }, [[
 step
   only Hunter
@@ -123,6 +123,12 @@ step
   talk Kim'jael##8420
   accept Kim'jael's "Missing" Equipment##5534 |goto Azshara 53.45,21.82
 step
+  click Kaldorei Tome of Summoning##151286
+  accept Betrayed##3506 |goto Azshara 59.51,31.3
+step
+  note Destroy the arcane focusing crystal tied to Magus Rimtori and then slay her. Afterwards, take the Head of Magus Rimtori to Ag'tor Bloodfist in Azshara.
+  collect Head of Magus Rimtori##10597 |q 3506 |goto Azshara 59.51,31.37 |tip {dropsfrom}Magus Rimtori
+step
   only Rogue completed(8234)
   note Bring 10 Encoded Fragments to Archmage Xylem in Azshara.
   collect 10 Encoded Fragment##20023 |q 8235 |goto Azshara 71.73,29.47 |tip {dropsfrom}Forest Ooze
@@ -138,8 +144,14 @@ step
   talk Loh'atu##11548
   turnin A Land Filled with Hatred##5536 |goto Azshara 11.37,78.17
 step
+  talk Ag'tor Bloodfist##8576
+  turnin Betrayed##3506 |goto Azshara 22.26,51.48
+step
   talk Jediga##8587
   turnin Xylem's Payment to Jediga##3565 |goto Azshara 22.56,51.42
+step
+  talk Ag'tor Bloodfist##8576
+  accept Betrayed##3507 |goto Azshara 22.26,51.48
 step
   only Rogue completed(8234)
   talk Archmage Xylem##8379
@@ -175,12 +187,6 @@ step
   talk Kim'jael##8420
   turnin Kim'jael's "Missing" Equipment##5534 |goto Azshara 53.45,21.82
 step
-  click Kaldorei Tome of Summoning##151286
-  accept Betrayed##3506 |goto Azshara 59.51,31.3
-step
-  note Destroy the arcane focusing crystal tied to Magus Rimtori and then slay her. Afterwards, take the Head of Magus Rimtori to Ag'tor Bloodfist in Azshara.
-  collect Head of Magus Rimtori##10597 |q 3506 |goto Azshara 59.51,31.37 |tip {dropsfrom}Magus Rimtori
-step
   only Hunter
   note Bring 6 Wavethrasher Scales to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
   collect 6 Wavethrasher Scales##20087 |q 8231 |goto Azshara 86.31,12.61 |tip {dropsfrom}Young Wavethrasher, Wavethrasher, Great Wavethrasher
@@ -197,23 +203,6 @@ step
   talk Loramus Thalipedes##7783
   turnin Loramus##3141 |goto Azshara 60.82,66.35
 step
-  talk Duke Hydraxis##13278
-  accept Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
-step
-  talk Ag'tor Bloodfist##8576
-  turnin Betrayed##3506 |goto Azshara 22.26,51.48
-step
-  talk Ag'tor Bloodfist##8576
-  accept Betrayed##3507 |goto Azshara 22.26,51.48
-step
-  only Mage
-  talk Archmage Xylem##8379
-  turnin The Siren's Coral##8252 |goto Azshara 29.25,40.21
-step
-  only Hunter
-  talk Ogtinc##8405
-  turnin Wavethrashing##8231 |goto Azshara 42.4,42.62
-step
   only completed(2744)
   talk Loramus Thalipedes##7783
   accept Breaking the Ward##3508 |goto Azshara 60.82,66.35
@@ -225,6 +214,17 @@ step
   only completed(2744)
   talk Loramus Thalipedes##7783
   accept The Name of the Beast##3509 |goto Azshara 60.82,66.35
+step
+  talk Duke Hydraxis##13278
+  accept Stormers and Rumblers##6805 |goto Azshara 79.28,73.7
+step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin The Siren's Coral##8252 |goto Azshara 29.25,40.21
+step
+  only Hunter
+  talk Ogtinc##8405
+  turnin Wavethrashing##8231 |goto Azshara 42.4,42.62
 step
   only completed(2744)
   talk Lord Arkkoroc##6134

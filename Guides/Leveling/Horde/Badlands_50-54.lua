@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Badlands (50-54)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Tirisfal Glades (53-60)",
-	rev = "48089a28",
+	rev = "619d324c",
 }, [[
 step
   only completed(3568)
@@ -14,10 +14,6 @@ step
 step
   talk Chemist Fuely##10136
   accept A Sample of Slime...##4293 |goto Undercity 47.45,73.35
-step
-  only Rogue
-  talk Miles Dexter##4583
-  accept A Simple Request##8233 |goto Undercity 85.21,71.57
 step
   only completed(692)
   talk Theldurin the Lost##2785
@@ -59,13 +55,13 @@ step
   talk Sha'ni Proudtusk##9136
   turnin Dreadmaul Rock##3821 |goto Burning Steppes 79.95,45.4 |tip {turninat}Burning Steppes
 step
-  only Rogue
-  talk Lord Jorach Ravenholdt##6768
-  turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88 |tip {turninat}Alterac Mountains
-step
   only completed(4082)
   talk Grark Lorkrub##9520
   turnin Grark Lorkrub##4122 |goto Burning Steppes 40.2,34.24 |tip {turninat}Burning Steppes
+step
+  only Rogue
+  talk Miles Dexter##4583
+  accept A Simple Request##8233 |goto Undercity 85.21,71.57
 step
   talk Apothecary Zinge##5204
   accept Vivian Lagrave##4133 |goto Undercity 50.14,67.97
@@ -91,6 +87,10 @@ step
 step
   talk Chemist Fuely##10136
   turnin A Sample of Slime...##4293 |goto Undercity 47.45,73.35 |tip {turninat}Undercity
+step
+  only Rogue
+  talk Lord Jorach Ravenholdt##6768
+  turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88 |tip {turninat}Alterac Mountains
 step
   talk Hierophant Theodora Mulvadania##9079
   turnin The Rise of the Machines##4061 |goto Badlands 3.02,47.81

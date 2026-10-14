@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Barrens (23-30)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (27-35)",
-	rev = "9e6d66dc",
+	rev = "fe4c5cb5",
 }, [[
 step
   talk Korran##3428
@@ -89,7 +89,7 @@ step
   turnin Call of Water##1535 |goto The Barrens 43.42,77.41
 step
   note Gann Stonespire wants you to kill 15 Bael'dun Excavators and 5 Bael'dun Foremen.
-  talk Bael'dun Excavator##3374 |q 843 |goto The Barrens 47.61,85.33
+  kill Bael'dun Excavator##3374 |q 843 |goto The Barrens 47.61,85.33
 step
   only completed(1062)
   talk Seereth Stonebreak##4049
@@ -108,6 +108,10 @@ step
 step
   talk Korran##3428
   turnin Egg Hunt##868 |goto The Barrens 51.07,29.63
+step
+  only completed(1094)
+  talk Sputtervalve##3442
+  accept Further Instructions##1095 |goto The Barrens 62.98,37.22
 step
   only completed(5052)
   talk Mangletooth##3430
@@ -129,6 +133,10 @@ step
   talk Mangletooth##3430
   accept Betrayal from Within##906 |goto The Barrens 44.55,59.26
 step
+  only completed(913)
+  talk Jorn Skyseer##3387
+  accept Mahren Skyseer##874 |goto The Barrens 44.86,59.14
+step
   talk Gann Stonespire##3341
   turnin Gann's Reclamation##843 |goto The Barrens 45.89,77
 step
@@ -141,23 +149,6 @@ step
   only completed(5052)
   talk Thork##3429
   turnin Betrayal from Within##906 |goto The Barrens 51.5,30.87
-step
-  only completed(1094)
-  talk Sputtervalve##3442
-  accept Further Instructions##1095 |goto The Barrens 62.98,37.22
-step
-  only completed(913)
-  talk Jorn Skyseer##3387
-  accept Mahren Skyseer##874 |goto The Barrens 44.86,59.14
-step
-  talk Gann Stonespire##3341
-  turnin Revenge of Gann##846 |goto The Barrens 45.89,77
-step
-  talk Gann Stonespire##3341
-  accept Revenge of Gann##849 |goto The Barrens 45.89,77
-step
-  note Destroy the flying machine at Bael Modan and return to Gann Stonespire.
-  collect Bael Modan Flying Machine##3644 |q 849 |goto The Barrens 46.97,85.63
 step
   only completed(913)
   talk Mahren Skyseer##3388
@@ -175,11 +166,26 @@ step
   talk Mahren Skyseer##3388
   turnin Isha Awak##873 |goto The Barrens 65.84,43.86
 step
-  talk Gann Stonespire##3341
-  turnin Revenge of Gann##849 |goto The Barrens 45.89,77
-step
   talk Tatternack Steelforge##3433
   accept A New Ore Sample##1153 |goto The Barrens 45.1,57.68
+step
+  talk Gann Stonespire##3341
+  turnin Revenge of Gann##846 |goto The Barrens 45.89,77
+step
+  talk Gann Stonespire##3341
+  accept Revenge of Gann##849 |goto The Barrens 45.89,77
+step
+  talk Feegly the Exiled##3421
+  accept The Tear of the Moons##857 |goto The Barrens 48.97,86.31
+step
+  note Destroy the flying machine at Bael Modan and return to Gann Stonespire.
+  collect Bael Modan Flying Machine##3644 |q 849 |goto The Barrens 46.97,85.63
+step
+  note Feegly the Exiled wants you to retrieve for him the Tear of the Moons.
+  collect Tear of the Moons##5038 |q 857 |goto The Barrens 49.13,84.25 |tip {dropsfrom}General Twinbraid's Strongbox
+step
+  talk Feegly the Exiled##3421
+  turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
 step
   talk Kadrak##8582
   accept Horde Presence##3514 |goto The Barrens 48.12,5.42
@@ -191,14 +197,8 @@ step
   talk Jorn Skyseer##3387
   accept Melor Sends Word##1130 |goto The Barrens 44.86,59.14
 step
-  talk Feegly the Exiled##3421
-  accept The Tear of the Moons##857 |goto The Barrens 48.97,86.31
-step
-  note Feegly the Exiled wants you to retrieve for him the Tear of the Moons.
-  collect Tear of the Moons##5038 |q 857 |goto The Barrens 49.13,84.25 |tip {dropsfrom}General Twinbraid's Strongbox
-step
-  talk Feegly the Exiled##3421
-  turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
+  talk Gann Stonespire##3341
+  turnin Revenge of Gann##849 |goto The Barrens 45.89,77
 step
   talk Regthar Deathgate##3389
   accept The Kolkar of Desolace##1362 |goto The Barrens 45.34,28.41
@@ -338,11 +338,11 @@ step
   collect Unrefined Ore Sample##5842 |q 1153 |goto Thousand Needles 11.85,21.31 |tip {dropsfrom}Gravelsnout Digger, Gravelsnout Surveyor, Gibblesnik
 step
   note Kill the leader of the Talon Den, Rynthariel the Keymaster.
-  talk Rynthariel the Keymaster##8518 |q 3514 |goto Stonetalon Mountains 29.71,16.91
+  kill Rynthariel the Keymaster##8518 |q 3514 |goto Stonetalon Mountains 29.71,16.91 |elite
 step
   only Warrior
   note Kill Big Will, then speak to Klannoc Macleod on Fray Island.
-  talk Big Will##6238 |q 1719 |goto The Barrens 68.61,48.72
+  kill Big Will##6238 |q 1719 |goto The Barrens 68.61,48.72
 step
   only completed(1094)
   talk Ziz Fizziks##4201

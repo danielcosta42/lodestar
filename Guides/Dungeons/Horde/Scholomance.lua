@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Scholomance", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "fe426c3d",
+	rev = "986dac2a",
 }, [[
 step
   talk Tinkee Steamboil##10267
@@ -228,7 +228,7 @@ step
   accept The Lich, Ras Frostwhisper##5466 |goto Western Plaguelands 70.57,74.11
 step
   note Place Dawn's Gambit in the Viewing Room of the Scholomance. Defeat Vectus, then return to Betina Bigglezink.
-  talk Vectus##10432 |q 4771 |goto Scholomance - Dungeon -1,-1
+  kill Vectus##10432 |q 4771 |goto Scholomance - Dungeon -1,-1 |elite
 step
   note Find Ras Frostwhisper in the Scholomance. When you have found him, use the Soulbound Keepsake on his undead visage. Should you succeed in reverting him to a mortal, strike him down and recover the Human Head of Ras Frostwhisper. Take the head back to Magistrate Marduke.
   collect Human Head of Ras Frostwhisper##13626 |q 5466 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Ras Frostwhisper

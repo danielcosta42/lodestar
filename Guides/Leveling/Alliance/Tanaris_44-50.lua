@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Tanaris (44-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Teldrassil (48-55)",
-	rev = "528ef721",
+	rev = "ad4a5486",
 }, [[
 step
   note {fp}Bera Stonehammer
@@ -129,39 +129,6 @@ step
   note Discover the fate of Junior Surveyor Scrimshank, and bring either him or his surveying equipment to Senior Surveyor Fizzledowser in Gadgetzan.
   collect Scrimshank's Surveying Gear##8593 |q 10 |goto Tanaris 55.96,71.17
 step
-  talk Senior Surveyor Fizzledowser##7724
-  turnin The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
-step
-  talk Chief Engineer Bilgewhizzle##7407
-  turnin More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
-step
-  talk Senior Surveyor Fizzledowser##7724
-  accept Insect Part Analysis##110 |goto Tanaris 50.21,27.48
-step
-  talk Marin Noggenfogger##7564
-  accept The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
-step
-  talk Andi Lynn##11758
-  accept The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
-step
-  talk Alchemist Pestlezugg##5594
-  turnin Insect Part Analysis##110 |goto Tanaris 50.89,26.96
-step
-  talk Alchemist Pestlezugg##5594
-  accept Insect Part Analysis##113 |goto Tanaris 50.89,26.96
-step
-  talk Tran'rek##7876
-  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
-step
-  talk Senior Surveyor Fizzledowser##7724
-  turnin Insect Part Analysis##113 |goto Tanaris 50.21,27.48
-step
-  talk Senior Surveyor Fizzledowser##7724
-  accept Rise of the Silithid##162 |goto Tanaris 50.21,27.48
-step
-  note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
-  kill Dunemaul Brute##5474 |q 5863 |goto Tanaris 40.65,54.35
-step
   only completed(2946,2966)
   talk Stone Watcher of Norgannon##7918
   accept The Stone Watcher##2954 |goto Tanaris 37.6,81.4
@@ -179,6 +146,49 @@ step
 step
   talk Tooga##5955
   accept Tooga's Quest##1560 |goto Tanaris 30,70
+step
+  talk Senior Surveyor Fizzledowser##7724
+  turnin The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
+step
+  talk Chief Engineer Bilgewhizzle##7407
+  turnin More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
+step
+  talk Senior Surveyor Fizzledowser##7724
+  accept Insect Part Analysis##110 |goto Tanaris 50.21,27.48
+step
+  talk Marin Noggenfogger##7564
+  accept The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
+step
+  talk Andi Lynn##11758
+  accept The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
+step
+  talk Tran'rek##7876
+  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
+step
+  talk Alchemist Pestlezugg##5594
+  turnin Insect Part Analysis##110 |goto Tanaris 50.89,26.96
+step
+  talk Alchemist Pestlezugg##5594
+  accept Insect Part Analysis##113 |goto Tanaris 50.89,26.96
+step
+  talk Senior Surveyor Fizzledowser##7724
+  turnin Insect Part Analysis##113 |goto Tanaris 50.21,27.48
+step
+  talk Senior Surveyor Fizzledowser##7724
+  accept Rise of the Silithid##162 |goto Tanaris 50.21,27.48
+step
+  note Show Tooga the way back to his wife, Torta.
+  talk Torta##6015 |q 1560 |goto Tanaris 66.58,25.67
+step
+  talk Torta##6015
+  turnin Tooga's Quest##1560 |goto Tanaris 66.58,25.67
+step
+  only completed(3380,3445)
+  talk Marvon Rivetseeker##7771
+  accept The Stone Circle##3444 |goto Tanaris 52.71,45.92
+step
+  note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
+  kill Dunemaul Brute##5474 |q 5863 |goto Tanaris 40.65,54.35
 step
   note Collect a Laden Dew Gland and bring it to Marin Noggenfogger in Gadgetzan.
   collect Laden Dew Gland##8428 |q 2605 |goto Tanaris 29.36,66.28 |tip {dropsfrom}Thistleshrub Dew Collector
@@ -200,16 +210,6 @@ step
 step
   talk Sprinkle##7583
   turnin In Good Taste##2606 |goto Tanaris 51.06,26.87
-step
-  note Show Tooga the way back to his wife, Torta.
-  talk Torta##6015 |q 1560 |goto Tanaris 66.58,25.67
-step
-  talk Torta##6015
-  turnin Tooga's Quest##1560 |goto Tanaris 66.58,25.67
-step
-  only completed(3380,3445)
-  talk Marvon Rivetseeker##7771
-  accept The Stone Circle##3444 |goto Tanaris 52.71,45.92
 step
   only completed(1188)
   talk Razzeric##4706

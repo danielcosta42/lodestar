@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Mulgore (4-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-20)",
-	rev = "d940e60f",
+	rev = "dd5369f3",
 }, [[
 step
   talk Grull Hawkwind##2980
@@ -76,6 +76,9 @@ step
   talk Chief Hawkwind##2981
   accept Rites of the Earthmother##755 |goto Mulgore 43.89,76.66
 step
+  talk Antur Fallow##6775
+  accept A Task Unfinished##1656 |goto Mulgore 39.16,81.24
+step
   talk Seer Graytongue##2982
   turnin Rites of the Earthmother##755 |goto Mulgore 42.54,90.13
 step
@@ -89,6 +92,9 @@ step
   collect Mountain Cougar Pelt##4742 |q 750 |goto Mulgore 47.51,88.11 |tip {dropsfrom}Mountain Cougar
 step
   turnin Grace of An'she and Mu'sha##95805 |goto Mulgore 56.6,88.81
+step
+  talk Innkeeper Kauth##6747
+  turnin A Task Unfinished##1656 |goto Mulgore 45.93,64.16
 step
   talk Grull Hawkwind##2980
   turnin The Hunt Continues##750 |goto Mulgore 44.47,77.5
@@ -108,14 +114,14 @@ step
   talk Chief Hawkwind##2981
   accept Rites of the Earthmother##763 |goto Mulgore 43.89,76.66
 step
-  talk Antur Fallow##6775
-  accept A Task Unfinished##1656 |goto Mulgore 39.16,81.24
-step
   talk Baine Bloodhoof##2993
   turnin Rites of the Earthmother##763 |goto Mulgore 46.67,63.38
 step
-  talk Innkeeper Kauth##6747
-  turnin A Task Unfinished##1656 |goto Mulgore 45.93,64.16
+  talk Baine Bloodhoof##2993
+  accept Rite of Vision##767 |goto Mulgore 46.67,63.38
+step
+  talk Zarlman Two-Moons##3054
+  turnin Rite of Vision##767 |goto Mulgore 46.88,61.19
 step
   note Grull Hawkwind in Camp Narache wants you to kill Battleboars and bring back 8 Battleboar Snouts and 8 Battleboar Flanks.
   collect Battleboar Snout##4848 |q 780 |goto Mulgore 60.2,78.63 |tip {dropsfrom}Bristleback Battleboar, Battleboar
@@ -152,9 +158,6 @@ step
   talk Harken Windtotem##2947
   accept Swoop Hunting##761 |goto Mulgore 47.67,62.68
 step
-  talk Baine Bloodhoof##2993
-  accept Rite of Vision##767 |goto Mulgore 46.67,63.38
-step
   talk Yaw Sharpmane##3065
   accept Chakuyak##96130 |goto Mulgore 46.93,59.65
 step
@@ -165,12 +168,18 @@ step
   talk Krang Stonehoof##3063
   accept Sparring Match##99108 |goto Mulgore 48.35,63.74
 step
+  talk Zarlman Two-Moons##3054
+  accept Rite of Vision##771 |goto Mulgore 46.88,61.19
+step
   only Tauren
   note Bring 6 Prairie Wolf Paws and 4 Plainstrider Talons to Mull Thunderhorn in Bloodhoof.
   collect 6 Prairie Wolf Paw##4758 |q 748 |goto Mulgore 40.99,68.63 |tip {dropsfrom}Prairie Wolf, Prairie Stalker, Prairie Wolf Alpha
 step
   note Bring 8 Trophy Swoop Quills to Harken Windtotem in Bloodhoof Village.
   collect 8 Trophy Swoop Quill##4769 |q 761 |goto Mulgore 41.23,68.49 |tip {dropsfrom}Wiry Swoop, Swoop, Taloned Swoop
+step
+  note Collect 2 Well Stones and 2 Ambercorn and bring them back to Zarlman Two-Moons in Bloodhoof Village.
+  collect 2 Well Stone##4808 |q 771 |goto Mulgore 44.4,51.29 |tip {dropsfrom}Razorlash, Well Stone
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96606) not haveq(96607) not haveq(96608)
   note Sit near Kaga's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
@@ -184,7 +193,7 @@ step
   turnin Swoop Hunting##761 |goto Mulgore 47.67,62.68
 step
   talk Zarlman Two-Moons##3054
-  turnin Rite of Vision##767 |goto Mulgore 46.88,61.19
+  turnin Rite of Vision##771 |goto Mulgore 46.88,61.19
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Kaga Wildhoof##265810
@@ -202,10 +211,19 @@ step
   accept Camping 101: Cooking##96661 |goto Mulgore 46.2,67.23
 step
   talk Zarlman Two-Moons##3054
-  accept Rite of Vision##771 |goto Mulgore 46.88,61.19
+  accept Rite of Vision##772 |goto Mulgore 46.88,61.19
 step
-  note Collect 2 Well Stones and 2 Ambercorn and bring them back to Zarlman Two-Moons in Bloodhoof Village.
-  collect 2 Well Stone##4808 |q 771 |goto Mulgore 44.4,51.29 |tip {dropsfrom}Razorlash, Well Stone
+  talk Ruul Eagletalon##2985
+  accept Dangers of the Windfury##743 |goto Mulgore 46.54,64.94
+step
+  talk Baine Bloodhoof##2993
+  accept Sharing the Land##745 |goto Mulgore 46.67,63.38
+step
+  talk Maur Raincaller##3055
+  accept Mazzranache##766 |goto Mulgore 46.23,60.8
+step
+  note Bring a Prairie Wolf Heart, Flatland Cougar Femur, Plainstrider Scale and Swoop Gizzard to Maur Raincaller at Bloodhoof Village.
+  collect Prairie Wolf Heart##4804 |q 766 |goto Mulgore 40.99,68.63 |tip {dropsfrom}Prairie Wolf, Prairie Stalker, Prairie Wolf Alpha
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658)
   note Speak with Pyall Silentstride in Bloodhoof Village to learn to become a cook.
@@ -215,8 +233,8 @@ step
   talk Mull Thunderhorn##2948
   turnin Winterhoof Cleansing##754 |goto Mulgore 47.52,63.58
 step
-  talk Zarlman Two-Moons##3054
-  turnin Rite of Vision##771 |goto Mulgore 46.88,61.19
+  talk Maur Raincaller##3055
+  turnin Mazzranache##766 |goto Mulgore 46.23,60.8
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658)
   talk Pyall Silentstride##3067
@@ -226,9 +244,6 @@ step
   talk Mull Thunderhorn##2948
   accept Thunderhorn Totem##756 |goto Mulgore 47.52,63.58
 step
-  talk Zarlman Two-Moons##3054
-  accept Rite of Vision##772 |goto Mulgore 46.88,61.19
-step
   only Tauren
   note Bring 6 Stalker Claws and 6 Cougar Claws to Mull Thunderhorn.
   collect 6 Stalker Claws##4801 |q 756 |goto Mulgore 49.46,50.77 |tip {dropsfrom}Prairie Stalker
@@ -237,34 +252,40 @@ step
   talk Mull Thunderhorn##2948
   turnin Thunderhorn Totem##756 |goto Mulgore 47.52,63.58
 step
-  talk Ruul Eagletalon##2985
-  accept Dangers of the Windfury##743 |goto Mulgore 46.54,64.94
-step
-  talk Baine Bloodhoof##2993
-  accept Sharing the Land##745 |goto Mulgore 46.67,63.38
-step
-  talk Baine Bloodhoof##2993
-  accept Dwarven Digging##746 |goto Mulgore 46.67,63.38
-step
   only Tauren
   talk Mull Thunderhorn##2948
   accept Thunderhorn Cleansing##758 |goto Mulgore 47.52,63.58
-step
-  talk Maur Raincaller##3055
-  accept Mazzranache##766 |goto Mulgore 46.23,60.8
-step
-  note Bring a Prairie Wolf Heart, Flatland Cougar Femur, Plainstrider Scale and Swoop Gizzard to Maur Raincaller at Bloodhoof Village.
-  collect Prairie Wolf Heart##4804 |q 766 |goto Mulgore 40.99,68.63 |tip {dropsfrom}Prairie Wolf, Prairie Stalker, Prairie Wolf Alpha
 step
   only Tauren
   talk Mull Thunderhorn##2948
   turnin Thunderhorn Cleansing##758 |goto Mulgore 47.52,63.58
 step
-  talk Maur Raincaller##3055
-  turnin Mazzranache##766 |goto Mulgore 46.23,60.8
+  talk Baine Bloodhoof##2993
+  accept Dwarven Digging##746 |goto Mulgore 46.67,63.38
+step
+  talk Brave Wildrunner##3222
+  accept Longwalker Malah##99079 |goto Mulgore 46.68,63.83
+step
+  talk Baine Bloodhoof##2993
+  accept Drive Them Out##99080 |goto Mulgore 46.67,63.38
+step
+  talk Baine Bloodhoof##2993
+  accept The High Chieftain##99082 |goto Mulgore 46.67,63.38
+step
+  talk Brave Wildrunner##3222
+  accept Our Ancient Enemy##99101 |goto Mulgore 46.68,63.83
+step
+  talk Baine Bloodhoof##2993
+  turnin Our Ancient Enemy##99101 |goto Mulgore 46.67,63.38
+step
+  talk Malah Longwind##275789
+  turnin Longwalker Malah##99079 |goto Mulgore 57.6,63.2
 step
   talk Morin Cloudstalker##2988
   accept The Ravaged Caravan##749 |goto Mulgore 54.76,64.27
+step
+  talk Malah Longwind##275789
+  accept Grim Tidings##99081 |goto Mulgore 57.6,63.2
 step
   note Bring 8 Windfury Talons to Ruul Eagletalon in Bloodhoof Village.
   collect 8 Windfury Talon##4751 |q 743 |goto Mulgore 59.55,72.03 |tip {dropsfrom}Windfury Harpy, Windfury Wind Witch
@@ -272,6 +293,9 @@ step
   only Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
   note Bring 2 applications of Ritual Salve to Seer Ravenfeather in Camp Narache.
   collect 2 Ritual Salve##6634 |q 1519 |goto Mulgore 61.05,78.16 |tip {dropsfrom}Bristleback Shaman
+step
+  note Kill 6 Galak Centaurs, 4 Galak Outrunners, and bring the head of Herak the Pillager to Baine Bloodhoof.
+  kill Galak Centaur##2967 |q 99080 |goto Mulgore 64.05,61.68
 step
   turnin The Ravaged Caravan##749 |goto Mulgore 51.87,53.37
 step
@@ -328,44 +352,14 @@ step
   talk Yaw Sharpmane##3065
   turnin Chakuyak##96130 |goto Mulgore 46.93,59.65
 step
-  talk Brave Wildrunner##3222
-  accept Longwalker Malah##99079 |goto Mulgore 46.68,63.83
-step
-  talk Baine Bloodhoof##2993
-  accept Drive Them Out##99080 |goto Mulgore 46.67,63.38
-step
-  talk Baine Bloodhoof##2993
-  accept The High Chieftain##99082 |goto Mulgore 46.67,63.38
-step
-  talk Brave Wildrunner##3222
-  accept Our Ancient Enemy##99101 |goto Mulgore 46.68,63.83
-step
-  talk Ahab Wheathoof##277182
-  accept Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
-step
-  note Ahab Wheathoof at Bloodhoof Village in Mulgore wants you to feed his prized puppy, Kyle the Frenzied.
-  talk Kyle the Frenzied##277154 |q 99411 |goto Mulgore 46.82,63.84
-step
-  talk Baine Bloodhoof##2993
-  turnin Our Ancient Enemy##99101 |goto Mulgore 46.67,63.38
-step
-  talk Ahab Wheathoof##277182
-  turnin Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
-step
-  talk Malah Longwind##275789
-  turnin Longwalker Malah##99079 |goto Mulgore 57.6,63.2
-step
-  talk Malah Longwind##275789
-  accept Grim Tidings##99081 |goto Mulgore 57.6,63.2
-step
-  note Kill 6 Galak Centaurs, 4 Galak Outrunners, and bring the head of Herak the Pillager to Baine Bloodhoof.
-  kill Galak Centaur##2967 |q 99080 |goto Mulgore 64.05,61.68
-step
   talk Baine Bloodhoof##2993
   turnin Drive Them Out##99080 |goto Mulgore 46.67,63.38
 step
   talk Brave Wildrunner##3222
   turnin Grim Tidings##99081 |goto Mulgore 46.68,63.83
+step
+  talk Ahab Wheathoof##277182
+  accept Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
 step
   only Tauren
   talk Mull Thunderhorn##2948
@@ -373,6 +367,12 @@ step
 step
   talk Mull Thunderhorn##2948
   accept Thunderhorn's Report##98435 |goto Mulgore 47.52,63.58
+step
+  note Ahab Wheathoof at Bloodhoof Village in Mulgore wants you to feed his prized puppy, Kyle the Frenzied.
+  talk Kyle the Frenzied##277154 |q 99411 |goto Mulgore 46.82,63.84
+step
+  talk Ahab Wheathoof##277182
+  turnin Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
 step
   talk Morin Cloudstalker##2988
   accept The Venture Co.##764 |goto Mulgore 54.76,64.27
@@ -426,6 +426,30 @@ step
   talk Morin Cloudstalker##2988
   turnin Fizsprocket's Notes##98424 |goto Mulgore 54.76,64.27
 step
+  talk Morin Cloudstalker##2988
+  accept Supervisor Fizsprocket##765 |goto Mulgore 54.76,64.27
+step
+  talk Morin Cloudstalker##2988
+  accept Ceasing Operations##98427 |goto Mulgore 54.76,64.27
+step
+  kill Ghost Howl##3056 |goto Mulgore 46.7,25.48 |tip Loot the quest item here — it starts the quest.
+  accept The Demon Scarred Cloak##770 |goto Mulgore 46.7,25.48
+step
+  note Kill Supervisor Fizsprocket and return his clipboard to Morin Cloudstalker at Bloodhoof Village.
+  collect Fizsprocket's Clipboard##4819 |q 765 |goto Mulgore 61.19,49.32 |tip {dropsfrom}Supervisor Fizsprocket
+step
+  note Bring the Clearcutter Key to Morin Cloudstalker outside Bloodhoof Village.
+  collect Clearcutter Key##281048 |q 98427 |goto Mulgore 56.76,43.07 |tip {dropsfrom}Venture Co. Clearclutter
+step
+  talk Skorn Whitecloud##3052
+  turnin The Demon Scarred Cloak##770 |goto Mulgore 46.03,63.44
+step
+  talk Morin Cloudstalker##2988
+  turnin Supervisor Fizsprocket##765 |goto Mulgore 54.76,64.27
+step
+  talk Morin Cloudstalker##2988
+  turnin Ceasing Operations##98427 |goto Mulgore 54.76,64.27
+step
   only not completed(844) not haveq(844)
   talk Skorn Whitecloud##3052
   accept The Hunter's Way##861 |goto Mulgore 46.03,63.44
@@ -450,41 +474,17 @@ step
   talk Gennia Runetotem##3064
   accept Heeding the Call##5928 |goto Mulgore 47.48,62.95
 step
-  talk Morin Cloudstalker##2988
-  accept Supervisor Fizsprocket##765 |goto Mulgore 54.76,64.27
-step
-  talk Morin Cloudstalker##2988
-  accept Ceasing Operations##98427 |goto Mulgore 54.76,64.27
-step
-  kill Ghost Howl##3056 |goto Mulgore 46.7,25.48 |tip Loot the quest item here — it starts the quest.
-  accept The Demon Scarred Cloak##770 |goto Mulgore 46.7,25.48
-step
   only Skyborne Druid
   talk Muln Earthfury##259118
   accept Child of Nature##94911 |goto Mulgore 33.42,22.52
 step
-  note Kill Supervisor Fizsprocket and return his clipboard to Morin Cloudstalker at Bloodhoof Village.
-  collect Fizsprocket's Clipboard##4819 |q 765 |goto Mulgore 61.19,49.32 |tip {dropsfrom}Supervisor Fizsprocket
+  only Skyborne
+  talk Alaana Stormwalker##259119
+  accept Welcome to Azeroth##95350 |goto Mulgore 33.4,22.5
 step
   only not completed(844) not haveq(844)
   note Bring 4 Flatland Prowler Claws to Melor Stonehoof in Thunder Bluff.
   collect 4 Flatland Prowler Claw##5203 |q 861 |goto Mulgore 48.56,28.22 |tip {dropsfrom}Flatland Prowler
-step
-  note Bring the Clearcutter Key to Morin Cloudstalker outside Bloodhoof Village.
-  collect Clearcutter Key##281048 |q 98427 |goto Mulgore 56.76,43.07 |tip {dropsfrom}Venture Co. Clearclutter
-step
-  talk Skorn Whitecloud##3052
-  turnin The Demon Scarred Cloak##770 |goto Mulgore 46.03,63.44
-step
-  talk Morin Cloudstalker##2988
-  turnin Supervisor Fizsprocket##765 |goto Mulgore 54.76,64.27
-step
-  talk Morin Cloudstalker##2988
-  turnin Ceasing Operations##98427 |goto Mulgore 54.76,64.27
-step
-  only Skyborne
-  talk Alaana Stormwalker##259119
-  accept Welcome to Azeroth##95350 |goto Mulgore 33.4,22.5
 step
   only Shaman completed(1517)
   talk Canaga Earthcaller##5887

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (22-28)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (32-39)",
-	rev = "249aad70",
+	rev = "9bbc5f64",
 }, [[
 step
   talk Deathstalker Lesh##2214
@@ -55,7 +55,7 @@ step
   collect 5 Vial of Innocent Blood##5620 |q 1066 |goto Hillsbrad Foothills 78.73,43.51 |tip {dropsfrom}Syndicate Shadow Mage
 step
   note Kill 6 Hillsbrad Farmhands, 6 Hillsbrad Farmers, Farmer Ray and Farmer Getz and report back to Darthalia in Tarren Mill.
-  talk Hillsbrad Farmer##2266 |q 527 |goto Hillsbrad Foothills 34.79,38.52
+  kill Hillsbrad Farmer##2266 |q 527 |goto Hillsbrad Foothills 34.79,38.52
 step
   note Apothecary Lydon of Tarren Mill wants 10 Gray Bear Tongues and some Creeper Ichor.
   collect Gray Bear Tongue##3476 |q 496 |goto Hillsbrad Foothills 59.07,32.75 |tip {dropsfrom}Gray Bear, Vicious Gray Bear, Elder Gray Bear
@@ -117,7 +117,7 @@ step
   turnin Elixir of Pain##502 |goto Hillsbrad Foothills 32.66,35.32
 step
   note Kill 15 Hillsbrad Peasants and report back to Darthalia in Tarren Mill.
-  talk Hillsbrad Peasant##2267 |q 528 |goto Hillsbrad Foothills 34.06,45.69
+  kill Hillsbrad Peasant##2267 |q 528 |goto Hillsbrad Foothills 34.06,45.69
 step
   note Deathguard Samsa of Tarren Mill wants 30 Hillsbrad Human Skulls.
   collect Hillsbrad Human Skull##3692 |q 546 |goto Hillsbrad Foothills 33.22,34.76 |tip {dropsfrom}Farmer Ray, Syndicate Shadow Mage, Syndicate Rogue
@@ -153,10 +153,10 @@ step
   collect 6 Mudsnout Blossoms##3502 |q 509 |goto Hillsbrad Foothills 64.56,61.25 |tip {dropsfrom}Mudsnout Blossom
 step
   note Kill Blacksmith Verringtan and 4 Hillsbrad Apprentice Blacksmiths.
-  talk Blacksmith Verringtan##2404 |q 529 |goto Hillsbrad Foothills 32.11,44.42
+  kill Blacksmith Verringtan##2404 |q 529 |goto Hillsbrad Foothills 32.11,44.42
 step
   note High Executor Darthalia of Tarren Mill is offering a bounty on Clerk Horrace Whitesteed, Citizen Wilkes, Miner Hackett and Farmer Kalaba.
-  talk Clerk Horrace Whitesteed##2448 |q 567 |goto Hillsbrad Foothills 29.51,42.41
+  kill Clerk Horrace Whitesteed##2448 |q 567 |goto Hillsbrad Foothills 29.51,42.41
 step
   talk Apothecary Lydon##2216
   turnin Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
@@ -174,7 +174,7 @@ step
   accept Elixir of Agony##513 |goto Hillsbrad Foothills 61.44,19.06
 step
   note Kill Magistrate Burnside and 5 Hillsbrad Councilmen. Destroy the Hillsbrad Proclamation. Steal the Hillsbrad Town Registry. Report back to Darthalia in Tarren Mill afterwards.
-  talk Magistrate Burnside##2335 |q 532 |goto Hillsbrad Foothills 29.67,41.64
+  kill Magistrate Burnside##2335 |q 532 |goto Hillsbrad Foothills 29.67,41.64
 step
   talk High Executor Darthalia##2215
   turnin Battle of Hillsbrad##532 |goto Hillsbrad Foothills 62.33,20.45
@@ -183,7 +183,7 @@ step
   accept Battle of Hillsbrad##539 |goto Hillsbrad Foothills 62.33,20.45
 step
   note Kill Foreman Bonds and 10 Hillsbrad Miners and report back to Darthalia in Tarren Mill.
-  talk Foreman Bonds##2305 |q 539 |goto Hillsbrad Foothills 31.21,56.01
+  kill Foreman Bonds##2305 |q 539 |goto Hillsbrad Foothills 31.21,56.01
 step
   talk High Executor Darthalia##2215
   turnin Battle of Hillsbrad##539 |goto Hillsbrad Foothills 62.33,20.45
@@ -195,7 +195,7 @@ step
   accept Humbert's Sword##547 |goto Hillsbrad Foothills 62.76,20.21
 step
   note Travel to Dun Garok and kill 8 Mountaineers, 4 Riflemen, 2 Priests and Captain Ironhill and report back to Darthalia in Tarren Mill.
-  talk Dun Garok Mountaineer##2344 |q 541 |goto Hillsbrad Foothills 71.58,79.57
+  kill Dun Garok Mountaineer##2344 |q 541 |goto Hillsbrad Foothills 71.58,79.57 |elite
 step
   note Retrieve Deathguard Humbert's sword from Dun Garok and return it to him in Tarren Mill.
   kill Dun Garok Mountaineer##2344 |goto Hillsbrad Foothills 71.58,79.57 |elite

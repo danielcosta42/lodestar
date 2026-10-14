@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Priest", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "64d8762c",
+	rev = "20b29771",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -63,7 +63,7 @@ step
   accept The Balance of Nature##456 |goto Teldrassil 58.69,44.27
 step
   note Kill 7 Young Nightsabers and 4 Young Thistle Boars and return to Conservator Ilthalaine.
-  talk Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
+  kill Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
 step
   talk Conservator Ilthalaine##2079
   turnin The Balance of Nature##456 |goto Teldrassil 58.69,44.27

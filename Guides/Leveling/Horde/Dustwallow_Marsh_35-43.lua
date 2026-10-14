@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-43)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (37-41)",
-	rev = "19393960",
+	rev = "dab1e4a1",
 }, [[
 step
   note {fp}Shardi
@@ -27,7 +27,7 @@ step
   accept Lieutenant Paval Reethe##1269 |goto Dustwallow Marsh 29.83,48.24
 step
   note Kill 9 Theramore Infiltrators, then return to Nazeer Bloodpike in Brackenwall Village.
-  talk Theramore Infiltrator##4834 |q 1201 |goto Dustwallow Marsh 38.95,26.4
+  kill Theramore Infiltrator##4834 |q 1201 |goto Dustwallow Marsh 38.95,26.4
 step
   talk Nazeer Bloodpike##4791
   turnin Theramore Spies##1201 |goto Dustwallow Marsh 35.21,30.66
@@ -62,6 +62,10 @@ step
   talk Do'gol##5087
   accept The Black Shield##1322 |goto Dustwallow Marsh 36.53,30.79
 step
+  only completed(1261)
+  talk Nazeer Bloodpike##4791
+  accept Report to Zor##1262 |goto Dustwallow Marsh 35.21,30.66
+step
   talk "Stinky" Ignatz##4880
   accept Stinky's Escape##1270 |goto Dustwallow Marsh 46.88,17.52
 step
@@ -83,11 +87,27 @@ step
   talk "Swamp Eye" Jarl##4792
   accept Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
 step
+  only Warlock completed(1799) completed(4962)
+  talk Tabetha##6546
+  accept Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
+step
   note Bring the Captain's Documents to Nazeer Bloodpike in Brackenwall Village.
   collect Captain's Documents##5882 |q 1202 |goto Dustwallow Marsh 71.53,51.19 |tip {dropsfrom}Captain's Footlocker
 step
   note Acquire 6 Acidic Venom Sacs for Do'gol in Brackenwall Village.
   collect 6 Acidic Venom Sac##5959 |q 1322 |goto Dustwallow Marsh 40.82,48.32 |tip {dropsfrom}Darkfang Lurker, Darkfang Creeper, Darkfang Spider
+step
+  only Warlock completed(1799) completed(4962)
+  note Kill the Demon of the Orb, then speak with Tabetha.
+  kill Demon of the Orb##6549 |q 4961 |goto Dustwallow Marsh 45.79,56.97 |elite
+step
+  only Warlock completed(1799) completed(4962)
+  talk Tabetha##6546
+  turnin Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Warlock completed(1799) completed(4962)
+  talk Tabetha##6546
+  accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Mudcrush Durtfeet##4503
   turnin Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
@@ -110,10 +130,6 @@ step
   talk Krog##4926
   turnin The Black Shield##1323 |goto Dustwallow Marsh 36.42,31.88
 step
-  only completed(1261)
-  talk Nazeer Bloodpike##4791
-  accept Report to Zor##1262 |goto Dustwallow Marsh 35.21,30.66
-step
   talk "Swamp Eye" Jarl##4792
   turnin Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
 step
@@ -128,22 +144,6 @@ step
 step
   talk "Swamp Eye" Jarl##4792
   turnin Jarl Needs a Blade##1203 |goto Dustwallow Marsh 55.44,26.27
-step
-  only Warlock completed(1799) completed(4962)
-  talk Tabetha##6546
-  accept Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Warlock completed(1799) completed(4962)
-  note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 4961 |goto Dustwallow Marsh 45.79,56.97 |elite
-step
-  only Warlock completed(1799) completed(4962)
-  talk Tabetha##6546
-  turnin Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Warlock completed(1799) completed(4962)
-  talk Tabetha##6546
-  accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Nazeer Bloodpike##4791
   turnin The Severed Head##1239 |goto Dustwallow Marsh 35.21,30.66

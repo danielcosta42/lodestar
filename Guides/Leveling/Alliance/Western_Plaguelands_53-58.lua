@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (53-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (55-57)",
-	rev = "41e513da",
+	rev = "273d3b66",
 }, [[
 step
   only not completed(5090) not completed(5091) not haveq(5090) not haveq(5091)
@@ -169,6 +169,12 @@ step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6023 |goto Western Plaguelands 51.92,28.06
 step
+  talk Kirsta Deepshadow##11610
+  accept Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
+step
+  talk Kirsta Deepshadow##11610
+  turnin Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
+step
   note Go to Felstone Field in Western Plaguelands to locate and defeat the Cauldron Lord present there. It may have a key that will allow access to the cauldron. You must have the Empty Felstone Field Bottle with you to secure a sample of the poisons used inside the cauldron.
   collect Felstone Field Cauldron Key##13194 |q 5216 |goto Western Plaguelands 36.93,57.41 |tip {dropsfrom}Cauldron Lord Bilemaw
 step
@@ -197,12 +203,6 @@ step
 step
   talk Alchemist Arbington##11056
   accept Skeletal Fragments##5537 |goto Western Plaguelands 42.66,83.77
-step
-  talk Kirsta Deepshadow##11610
-  accept Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
-step
-  talk Kirsta Deepshadow##11610
-  turnin Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
 step
   note Go to Dalson's Tears in Western Plaguelands to locate and defeat the Cauldron Lord present there, and use its key to gain access to the cauldron. You must have the Empty Dalson's Tears Bottle with you to secure a sample of the poisons used inside the cauldron.
   collect Dalson's Tears Cauldron Key##13195 |q 5219 |goto Western Plaguelands 46.11,52.61 |tip {dropsfrom}Cauldron Lord Malvinious

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warrior", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "6c3b9c18",
+	rev = "cc3e1d42",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -63,7 +63,7 @@ step
   accept The Balance of Nature##456 |goto Teldrassil 58.69,44.27
 step
   note Kill 7 Young Nightsabers and 4 Young Thistle Boars and return to Conservator Ilthalaine.
-  talk Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
+  kill Young Nightsaber##2031 |q 456 |goto Teldrassil 61.58,44.19
 step
   talk Conservator Ilthalaine##2079
   turnin The Balance of Nature##456 |goto Teldrassil 58.69,44.27
@@ -88,7 +88,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  talk Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
@@ -423,7 +423,7 @@ step
 step
   only Warrior
   note Kill Big Will, then speak to Klannoc Macleod on Fray Island.
-  talk Big Will##6238 |q 1719 |goto The Barrens 68.61,48.72
+  kill Big Will##6238 |q 1719 |goto The Barrens 68.61,48.72
 step
   only Warrior
   talk Klannoc Macleod##6236

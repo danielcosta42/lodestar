@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Stratholme", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "11346ea1",
+	rev = "d8c789f1",
 }, [[
 step
   talk Tirion Fordring##1855
@@ -81,7 +81,7 @@ step
   kill Archivist Galford##10811 |q 5251 |goto Stratholme - Dungeon -1,-1 |elite
 step
   note Travel to the northern borders of the Eastern Plaguelands and recover the Quel'Thalas Registry. The item is somewhere in the Quel'Lithien lodge.
-  talk Pathstrider##8565 |q 6133 |goto Eastern Plaguelands 46.74,13.01
+  kill Pathstrider##8565 |q 6133 |goto Eastern Plaguelands 46.74,13.01
 step
   collect Medallion of Faith##12845 |q 5122 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Malor's Strongbox
 step
