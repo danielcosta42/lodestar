@@ -118,8 +118,16 @@ def main():
                 has_goto = "x" in g
                 # NOGOTO: alvo rastreável sem coordenada nenhuma
                 if v in TRACKABLE and not has_goto:
-                    # talk/turnin às vezes herdam o local do accept anterior; só marca kill/collect/accept
-                    if v in ("kill", "collect", "accept"):
+                    # talk/turnin às vezes herdam o local do accept anterior; só marca kill/collect/accept.
+                    # O `kill` sem `|q` do NPC de antes (Samuel Fipps) não leva seta de propósito: ela
+                    # não sairia dele; o `goto` do passo é que leva lá
+                    lugar_do_passo = any(o["verb"] == "goto" for o in st)
+                    # item sem lugar no banco vai sem seta de propósito, com a dica do que fazer
+                    # (material de profissão; tecido, que cai de humanoide)
+                    sem_lugar = v == "collect" and ("|tip Crafted or bought." in g["line"]
+                                                    or "{dropsfrom}humanoids" in g["line"])
+                    if v in ("kill", "collect", "accept") and not (v == "kill" and lugar_do_passo) \
+                            and not sem_lugar:
                         add("NOGOTO", key, "s%d: %s sem |goto (%s)" % (si, v, g["line"][:48]), "LOW")
                 if has_goto:
                     if g["x"] == -1 and g["y"] == -1:

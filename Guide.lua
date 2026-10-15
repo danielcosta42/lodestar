@@ -431,7 +431,9 @@ function ns:IsGoalComplete(goal)
 	if v == "accept" then return goal.id and (IsQuestInLog(goal.id) or IsQuestComplete(goal.id)) end
 	if v == "turnin" then return goal.id and IsQuestComplete(goal.id) end
 	if v == "ding" then return UnitLevel("player") >= (tonumber(goal.text) or goal.count or 0) end
-	if v == "buy" then return goal.id and ItemCount(goal.id) >= (goal.count or 1) end
+	-- compra de objetivo de quest (`buy … |q`) conclui pelo objetivo: pela bolsa, 1 Nightcrawlers
+	-- fechava o passo de Fishin' Time, que pede 3 e um Shiny Bauble
+	if v == "buy" and not goal.q then return goal.id and ItemCount(goal.id) >= (goal.count or 1) end
 
 	-- Objetivo ligado a quest: se a quest já foi entregue, o objetivo está feito
 	-- (GetQuestObjectives devolve nil para quests fora do log => ficava travado).

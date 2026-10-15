@@ -12,7 +12,7 @@ navegador, e o robots.txt deles bloqueia coletor automatico por nome — dataset
 que a gente quer que os outros reusem nao pode nascer daquilo. O QuestieDB é
 GPL e aberto; o que o servidor responde ao nosso próprio cliente é nosso.
 
-Saída: build/forever/{quests,npcs,objects,zones,items,fonte}.json. O roteador lê
+Saída: build/forever/{quests,npcs,objects,zones,items,xp,fonte}.json. O roteador lê
 essa pasta (`router.BUILD`).
 
     python import_forever.py [pasta do QuestieDB]
@@ -106,6 +106,18 @@ def main(argv):
             ciclos += len(q[campo]) - len(limpo)
             q[campo] = limpo
 
+    # A ordem dos objetivos é a do cliente (`wdb.json`, o cache que o jogo gravou), quando ele
+    # tem a quest: o guia aponta `|q N/i`, e o QuestieDB troca às vezes (Storm, Earth, and
+    # Fire: Air primeiro no banco, Water no cliente). Só reordena — conjunto diferente fica.
+    wdb = (carrega("wdb") or {}).get("quests") or {}
+    reordenadas = 0
+    for qid, c in wdb.items():
+        q = quests.get(qid)
+        for campo in ("objCreatures", "objObjects", "objItems"):
+            if q and len(q[campo]) > 1 and q[campo] != c.get(campo) and sorted(q[campo]) == sorted(c.get(campo) or []):
+                q[campo] = list(c[campo])
+                reordenadas += 1
+
     # 2. o scan do cliente só preenche o que a base não tem: nome e texto da
     # base são enUS e estáveis; o scan pode vir de um cliente ptBR.
     inv = inverte(zonas)
@@ -130,7 +142,7 @@ def main(argv):
             "races": 0, "classes": 0, "faction": "AH", "startNpcs": [], "startObjects": [],
             "startItems": [], "endNpcs": [], "endObjects": [], "preSingle": [], "preGroup": [],
             "exclusiveTo": [], "nextInChain": None, "zoneOrSort": 0, "specialFlags": 0,
-            "objCreatures": [], "objObjects": [], "objItems": [],
+            "objCreatures": [], "objObjects": [], "objItems": [], "trigger": None, "sourceItem": None,
             "objText": [o["text"] for o in q.get("obj") or [] if o.get("text")],
             "repReward": [],
         }
@@ -182,14 +194,14 @@ def main(argv):
     fonte = {"questiedb": banco["versao"], "forever": FOREVER, "anniversary": ANNIV}
     os.makedirs(OUT, exist_ok=True)
     for nome, dado in (("quests", quests), ("npcs", npcs), ("objects", objetos),
-                       ("zones", zonas), ("items", itens), ("fonte", fonte)):
+                       ("zones", zonas), ("items", itens), ("xp", banco["xp"]), ("fonte", fonte)):
         with open(os.path.join(OUT, "%s.json" % nome), "w", encoding="utf-8") as fh:
             json.dump(dado, fh, ensure_ascii=False, sort_keys=True)
     novas = sum(1 for q in quests if int(q) >= 30000)
     print("gravado em", os.path.normpath(OUT))
     print("  QuestieDB %s: %d quests (%d novas do Forever) | tiradas (Anniversary tem, "
           "Forever %s não): %d" % (banco["versao"], len(quests), novas, FOREVER, len(tiradas)))
-    print("  pré-requisitos em ciclo retirados:", ciclos)
+    print("  pré-requisitos em ciclo retirados:", ciclos, "| objetivos na ordem do cliente:", reordenadas)
     print("  só o cliente conhecia:", do_cliente, "| com waypoint do servidor:", com_wp)
     if sem_area:
         print("  givers/enders sem areaID (zona fora do zones.json):", sem_area)
