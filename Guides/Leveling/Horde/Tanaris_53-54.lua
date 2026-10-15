@@ -4,9 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Tanaris (53-54)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Felwood (52-58)",
-	rev = "b82def05",
+	next = "Leveling/Horde/Felwood (52-56)",
+	rev = "6f831ebd",
 }, [[
+step
+  ding 51
 step
   only completed(4787)
   talk Yeh'kinya##8579
@@ -35,25 +37,26 @@ step
 step
   only completed(4493,4494)
   note Bring a Gorishi Scent Gland and 5 Un'Goro Soil samples to Alchemist Pestlezugg in Gadgetzan.
-  collect Gorishi Scent Gland##11837 |q 4496 |goto Un'Goro Crater 50.14,75.97 |tip {dropsfrom}Gorishi Wasp, Gorishi Worker, Gorishi Reaver
+  collect Gorishi Scent Gland##11837 |q 4496/1 |goto Un'Goro Crater 50.14,75.97 |tip {dropsfrom}Gorishi Wasp, Gorishi Worker, Gorishi Reaver
+  collect 5 Un'Goro Soil##11018 |q 4496 |goto Un'Goro Crater 47,52.9 |tip {dropsfrom}Un'Goro Dirt Pile
 step
   note Collect 12 samples of Super Sticky Tar for Tran'rek in Gadgetzan.
   collect 12 Super Sticky Tar##11834 |q 4504 |goto Un'Goro Crater 58.98,31.38 |tip {dropsfrom}Tar Beast, Tar Lurker, Tar Lord
-step
-  collect Hippogryph Egg##8564 |q 2741 |goto Feralas 56.65,75.89
 step
   only completed(4493,4494)
   talk Alchemist Pestlezugg##5594
   turnin Bungle in the Jungle##4496 |goto Tanaris 50.89,26.96
 step
-  talk Tran'rek##7876
-  turnin Super Sticky##4504 |goto Tanaris 51.57,26.76
-step
-  turnin The Super Egg-O-Matic##2741 |goto Tanaris 52.39,26.97
-step
   only completed(4493,4494)
   talk Alchemist Pestlezugg##5594
   accept Pawn Captures Queen##4507 |goto Tanaris 50.89,26.96
+step
+  talk Tran'rek##7876
+  turnin Super Sticky##4504 |goto Tanaris 51.57,26.76
+step
+  collect Hippogryph Egg##8564 |q 2741 |goto Feralas 56.65,75.89
+step
+  turnin The Super Egg-O-Matic##2741 |goto Tanaris 52.39,26.97
 step
   only completed(4493,4494)
   note Defeat the Gorishi Hive Queen once she is summoned.
@@ -68,6 +71,7 @@ step
   accept Calm Before the Storm##4509 |goto Tanaris 50.89,26.96
 step
   only completed(4493,4494)
+  note Bring Pestlezugg's Un'Goro Report to Zilzibin Drumlore in Orgrimmar.
   talk Zilzibin Drumlore##7010
   turnin Calm Before the Storm##4509 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
 step
@@ -76,6 +80,7 @@ step
   accept Calm Before the Storm##4511 |goto Orgrimmar 56.26,46.68
 step
   only completed(4493,4494)
+  note Bring the Bank Voucher to Karus in the bank of Orgrimmar.
   talk Karus##3309
   turnin Calm Before the Storm##4511 |goto Orgrimmar 49.58,69.12 |tip {turninat}Orgrimmar
 step

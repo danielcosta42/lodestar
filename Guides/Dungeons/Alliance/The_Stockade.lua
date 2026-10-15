@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Stockade", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "b30ef47f",
+	rev = "129fccb7",
 }, [[
 step
   kill Edwin VanCleef##639 |goto The Deadmines - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
@@ -38,7 +38,10 @@ step
   kill Defias Prisoner##1706 |q 387 |goto The Stockade - Dungeon -1,-1 |elite
 step
   note Motley Garmason at Dun Modr wants you to kill 10 Dark Iron Dwarves, 5 Dark Iron Tunnelers, 5 Dark Iron Saboteurs and 5 Dark Iron Demolitionists.
-  kill Dark Iron Dwarf##1051 |q 303 |goto Wetlands 59.93,23.02 |elite
+  kill Dark Iron Dwarf##1051 |q 303/1 |goto Wetlands 59.93,23.02 |elite
+  kill Dark Iron Demolitionist##1054 |q 303/4 |goto Wetlands 60.1,24.36 |elite
+  kill Dark Iron Saboteur##1052 |q 303/3 |goto Wetlands 48.1,18.09 |elite
+  kill Dark Iron Tunneler##1053 |q 303 |goto Wetlands 47.11,17.92 |elite
 step
   note Deliver the Letter to the City Architect to Baros Alexston in Stormwind.
   talk Baros Alexston##1646

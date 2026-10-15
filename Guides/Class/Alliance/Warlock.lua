@@ -4,14 +4,14 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warlock", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "af6edd55",
+	rev = "f309841f",
 }, [[
 step
   talk Sten Stoutarm##658
   accept Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
 step
   note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
-  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 49.41,37.75 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
+  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 46.66,43.74 |tip {dropsfrom}Young Wolf, Timber Wolf
 step
   talk Sten Stoutarm##658
   turnin Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
@@ -198,7 +198,8 @@ step
   accept A Noble Brew##335 |goto Stormwind City 40.14,85.31
 step
   note Zardeth the Black Claw wants you to bring him a Tear of Tilloa from Darkshire and a Musquash Root from the Wetlands.
-  collect Tear of Tilloa##2779 |q 335 |goto Duskwood 78.35,35.95
+  collect Tear of Tilloa##2779 |q 335/1 |goto Duskwood 78.35,35.95
+  collect Musquash Root##2784 |q 335 |goto Wetlands 64.78,75.32
 step
   talk Zardeth of the Black Claw##1435
   turnin A Noble Brew##335 |goto Stormwind City 40.14,85.31
@@ -243,7 +244,8 @@ step
 step
   only Warlock
   note Retrieve the Moldy Tome and Tattered Manuscript for Krom Stoutarm in Ironforge.
-  collect Moldy Tome##6931 |q 1802 |goto Hillsbrad Foothills 27.78,72.79 |tip {dropsfrom}Tome of the Cabal
+  collect Moldy Tome##6931 |q 1802/1 |goto Hillsbrad Foothills 27.78,72.79 |tip {dropsfrom}Tome of the Cabal
+  collect Tattered Manuscript##6997 |q 1802 |goto Thousand Needles 43.44,32.69 |tip {dropsfrom}Damaged Chest
 step
   only Warlock
   talk Krom Stoutarm##6294
@@ -255,7 +257,7 @@ step
 step
   only Warlock
   note Bring the Reconstructed Tome and 3 Rods of Channeling to Strahad Farsan in Ratchet.
-  collect Rod of Channeling##6930 |q 1804 |goto Wetlands 53.7,54.36 |tip {dropsfrom}Dragonmaw Shadowwarder, Dragonmaw Bonewarder, Dragonmaw Thaumaturgist
+  collect 3 Rod of Channeling##6930 |q 1804 |goto Wetlands 53.7,54.36 |tip {dropsfrom}Dragonmaw Shadowwarder, Dragonmaw Bonewarder
 step
   only Warlock
   talk Strahad Farsan##6251
@@ -297,7 +299,7 @@ step
 step
   only Warlock
   note Bring Robes of the Arcana to Menara Voidrender in the Barrens.
-  collect Robes of Arcana##5770 |q 1796 |goto The Barrens 62.51,35.45
+  collect Robes of Arcana##5770 |q 1796 |goto The Barrens 62.51,35.45 |tip Crafted or bought.
 step
   only Warlock
   talk Menara Voidrender##6266
@@ -309,7 +311,7 @@ step
 step
   only Warlock
   note Bring a Gold Bar to Xizk Goodstitch in Stranglethorn Vale.
-  collect Gold Bar##3577 |q 4781 |goto Redridge Mountains 15.87,36.18 |tip {dropsfrom}Battered Chest, Solid Chest
+  collect Gold Bar##3577 |q 4781 |goto Redridge Mountains 15.87,36.18 |tip {dropsfrom}Battered Chest
 step
   only Warlock
   talk Xizk Goodstitch##2670
@@ -348,7 +350,8 @@ step
 step
   only Warlock
   note Bring 10 Vials of Hatefury Blood and 1 Lesser Infernal Stone to Menara Voidrender in the Barrens.
-  collect 10 Vial of Hatefury Blood##6989 |q 4783 |goto Desolace 73.55,19.11 |tip {dropsfrom}Hatefury Rogue, Hatefury Trickster, Hatefury Felsworn
+  collect 10 Vial of Hatefury Blood##6989 |q 4783/1 |goto Desolace 73.55,19.11 |tip {dropsfrom}Hatefury Rogue, Hatefury Trickster, Hatefury Felsworn
+  collect 1 Lesser Infernal Stone##6990 |q 4783 |goto Desolace 51.45,75.61 |tip {dropsfrom}Lesser Infernal, Demon Portal Guardian
 step
   only Warlock
   talk Menara Voidrender##6266
@@ -368,7 +371,9 @@ step
 step
   only Warlock
   note Bring some Fine Gold Thread, 2 Smoldering Coals, and a Soul Shard to Menara Voidrender in the Barrens.
-  collect Fine Gold Thread##12293 |q 4784 |goto Stranglethorn Vale 28.71,76.89 |tip {dropsfrom}Xizk Goodstitch
+  collect Fine Gold Thread##12293 |q 4784/1 |goto Stranglethorn Vale 28.71,76.89 |tip {dropsfrom}Xizk Goodstitch
+  collect 2 Smoldering Coal##6991 |q 4784/2 |goto Arathi Highlands 25.81,30.65 |tip {dropsfrom}Burning Exile
+  collect Soul Shard##6265 |q 4784 |tip Crafted or bought.
 step
   only Warlock
   talk Menara Voidrender##6266
@@ -473,7 +478,7 @@ step
 step
   only Warlock not completed(8420) not haveq(8420)
   note Bring a piece of felcloth to Impsy in Felwood.
-  collect Felcloth##14256 |q 8419 |goto Blasted Lands 57.73,50.62 |tip {dropsfrom}Felhunter, Felguard Sentry, Legashi Satyr
+  collect Felcloth##14256 |q 8419 |goto Azshara 61.79,23.59 |tip {dropsfrom}Legashi Satyr, Legashi Rogue, Legashi Hellcaller
 step
   only Warlock not completed(8420) not haveq(8420)
   talk Impsy##14470
@@ -485,7 +490,8 @@ step
 step
   only Warlock
   note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
-  collect 10 Rotting Wood##20613 |q 8421 |goto Felwood 46.58,23.75 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
+  collect 10 Rotting Wood##20613 |q 8421/1 |goto Felwood 46.58,23.75 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
+  collect 4 Bloodvenom Essence##20614 |q 8421 |goto Felwood 41.4,50.23 |tip {dropsfrom}Tainted Ooze
 step
   only Warlock
   talk Impsy##14470
@@ -509,7 +515,9 @@ step
 step
   only Warlock
   note Impsy in Felwood has asked that you bring him three Flawless Fel Essences originating from three distinct locations.
-  collect Flawless Fel Essence (Azshara)##18624 |q 7602 |goto Azshara 61.79,23.59 |tip {dropsfrom}Legashi Satyr, Legashi Rogue, Legashi Hellcaller
+  collect Flawless Fel Essence (Azshara)##18624 |q 7602/1 |goto Azshara 61.79,23.59 |tip {dropsfrom}Legashi Satyr, Legashi Rogue, Legashi Hellcaller
+  collect Flawless Fel Essence (Jaedenar)##18622 |q 7602/2 |goto Felwood 38.6,50.88 |tip {dropsfrom}Jaedenar Legionnaire
+  collect Flawless Fel Essence (Dark Portal)##18623 |q 7602 |goto Blasted Lands 57.73,50.62 |tip {dropsfrom}Felguard Sentry
 step
   only Warlock
   talk Impsy##14470
@@ -559,7 +567,10 @@ step
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
+  collect 1 Delicate Arcanite Converter##16006 |q 8921/1 |tip Crafted or bought.
+  collect 4 Greater Eternal Essence##16203 |q 8921/2 |tip Crafted or bought.
+  collect 10 Stonescale Oil##13423 |q 8921/3 |tip Crafted or bought.
+  collect 25 Volcanic Ash##22338 |q 8921 |goto Burning Steppes 60.12,40.36
 step
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
@@ -568,7 +579,9 @@ step
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Scorched Ectoplasm##21937 |q 8924/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Frozen Ectoplasm##21936 |q 8924/2 |goto Winterspring 53.58,43.48 |tip {dropsfrom}Suffering Highborne, Anguished Highborne
+  collect 12 Stable Ectoplasm##21935 |q 8924 |goto Eastern Plaguelands 52.9,55.8 |tip {dropsfrom}Unseen Servant, Eyeless Watcher, Torn Screamer
 step
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
@@ -586,6 +599,7 @@ step
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
+  talk Vi'el##16015
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
   talk Mux Manascrambler##16014
@@ -637,7 +651,11 @@ step
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
 step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
+  collect 3 Dark Iron Bar##11371 |q 8947/1 |tip Crafted or bought.
+  talk Lhara##14846
+  collect 20 Enchanted Leather##12810 |q 8947/2 |goto Elwynn Forest 41.2,69.9
+  collect 3 Mooncloth##14342 |q 8947/3 |tip Crafted or bought.
+  collect 4 Cured Rugged Hide##15407 |q 8947 |tip Crafted or bought.
 step
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
@@ -653,7 +671,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Feralas 59.7,42.73 |tip {dropsfrom}Gordok Enforcer, Gordok Mauler, Gordok Ogre-Mage
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -662,7 +680,9 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 1 Jeering Spectre's Essence##22224 |q 8950/1 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 4 Dark Rune##20520 |q 8950/2 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Scholomance Necromancer, Lady Illucia Barov, Instructor Malicia
+  collect 8 Large Brilliant Shard##14344 |q 8950 |tip Crafted or bought.
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -699,7 +719,12 @@ step
   accept Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
-  collect Incendicite of Incendius##21987 |q 8961 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Lord Incendius
+  collect Incendicite of Incendius##21987 |q 8961/1 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Incendius
+  collect Ember of Emberseer##21988 |q 8961/2 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Pyroguard Emberseer
+  kill The Duke of Cynders##15206 |q 8961/3 |goto Silithus 24.7,32.65 |elite
+  collect Cinder of Cynders##21989 |q 8961/3 |goto Silithus 24.7,32.65
+  talk Argent Quartermaster Hasana##10856
+  buy Hallowed Brazier##22014 |q 8961 |goto Tirisfal Glades 83.26,68.14
 step
   talk Bodley##16033
   turnin Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -710,7 +735,7 @@ step
 step
   only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  kill Hive'Regal Ambusher##11730 |goto Silithus 58.08,86.89 |elite
+  kill Hive'Regal Ambusher##11730 |q 8962 |goto Silithus 58.08,86.89 |elite
   collect Druidical Remains##22226 |q 8962 |goto Silithus 58.08,86.89
 step
   only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
@@ -733,7 +758,7 @@ step
   accept I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 20 Bloodkelp from the Strashaz naga and then return to Bodley inside Blackrock Mountain.
-  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Strashaz Warrior, Strashaz Serpent Guard, Strashaz Myrmidon
+  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Basket of Bloodkelp, Strashaz Warrior, Strashaz Serpent Guard
 step
   talk Bodley##16033
   turnin I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -744,7 +769,7 @@ step
 step
   only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
   note Acquire a Starbreeze Village Relic and return it to Bodley inside Blackrock Mountain.
-  kill Frostmaul Giant##7428 |goto Winterspring 62.56,69.55 |elite
+  kill Frostmaul Giant##7428 |q 8985 |goto Winterspring 62.56,69.55 |elite
   collect Starbreeze Village Relic##22227 |q 8985 |goto Winterspring 62.56,69.55
 step
   only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
@@ -767,7 +792,8 @@ step
   accept Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
-  collect 40 Blackrock Bracer##22138 |q 8994 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Sentry, Scarshield Acolyte, Scarshield Legionnaire
+  collect 40 Blackrock Bracer##22138 |q 8994/1 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Blackhand Incarcerator, Scarshield Acolyte, Scarshield Legionnaire
+  collect Flask of Supreme Power##13512 |q 8994 |tip Crafted or bought.
 step
   talk Bodley##16033
   turnin Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -815,7 +841,7 @@ step
 step
   only Warlock
   note Travel to Dire Maul in Feralas and recover 15 Satyr Blood from the Wildspawn Satyr that inhabit the Warpwood Quarter. Return to Daio in the Tainted Scar when this is done.
-  collect Satyr Blood##18603 |q 7581 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Wildspawn Satyr, Wildspawn Rogue, Wildspawn Trickster
+  collect 15 Satyr Blood##18603 |q 7581 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Wildspawn Satyr, Wildspawn Rogue, Wildspawn Trickster
 step
   only Warlock
   talk Daio the Decrepit##14463
@@ -827,8 +853,8 @@ step
 step
   only Warlock
   note Travel to Darkwhisper Gorge in Winterspring and recover 5 Tears of the Hederine from the Hederine demons that occupy the gorge. Return to Daio in the Tainted Scar when you have completed this task.
-  kill Hederine Initiate##7461 |goto Winterspring 59.06,83.85 |elite
-  collect Tears of the Hederine##18604 |q 7582 |goto Winterspring 59.06,83.85
+  kill Hederine Initiate##7461 |q 7582 |goto Winterspring 59.06,83.85 |elite
+  collect 5 Tears of the Hederine##18604 |q 7582 |goto Winterspring 59.06,83.85
 step
   only Warlock
   talk Daio the Decrepit##14463
@@ -873,6 +899,7 @@ step
 step
   only Warlock
   note Purchase Xorothian Stardust from Ur'dan. Bring it to Gorzeeki Wildeyes in the Burning Steppes.
+  talk Ur'dan##14522
   buy Xorothian Stardust##18687 |q 7625 |goto Felwood 36.18,44.46
 step
   only Warlock
@@ -927,7 +954,7 @@ step
 step
   only Warlock
   note Bring 10 Elixirs of Shadow Power to Gorzeeki Wildeyes in the Burning Steppes.
-  collect 10 Elixir of Shadow Power##9264 |q 7626 |goto Burning Steppes 12.69,31.64
+  collect 10 Elixir of Shadow Power##9264 |q 7626 |goto Burning Steppes 12.69,31.64 |tip Crafted or bought.
 step
   only Warlock
   talk Gorzeeki Wildeyes##14437
@@ -939,7 +966,8 @@ step
 step
   only Warlock
   note Bring 6 Large Brilliant Shards and 25 Dark Iron Ore to Gorzeeki in the Burning Steppes.
-  collect 6 Large Brilliant Shard##14344 |q 7627 |goto Burning Steppes 12.69,31.64
+  collect 6 Large Brilliant Shard##14344 |q 7627/1 |tip Crafted or bought.
+  collect 25 Dark Iron Ore##11370 |q 7627 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Dark Iron Deposit
 step
   only Warlock
   talk Gorzeeki Wildeyes##14437
@@ -951,7 +979,7 @@ step
 step
   only Warlock
   note Bring 35 Black Dragonscales to Gorzeeki Wildeyes in the Burning Steppes.
-  collect 35 Black Dragonscale##15416 |q 7628 |goto Burning Steppes 90.47,52.28 |tip {dropsfrom}Black Dragonspawn, Black Wyrmkin, Flamescale Dragonspawn
+  collect 35 Black Dragonscale##15416 |q 7628 |goto Burning Steppes 91.67,35.54 |tip {dropsfrom}Black Broodling, Black Dragonspawn, Black Wyrmkin
 step
   only Warlock
   talk Gorzeeki Wildeyes##14437
@@ -963,7 +991,7 @@ step
 step
   only Warlock
   note Bring 3 Arcanite Bar to Gorzeeki in the Burning Steppes.
-  collect 3 Arcanite Bar##12360 |q 7630 |goto Burning Steppes 12.44,31.63
+  collect 3 Arcanite Bar##12360 |q 7630 |goto Burning Steppes 12.44,31.63 |tip Crafted or bought.
 step
   only Warlock
   talk Gorzeeki Wildeyes##14437

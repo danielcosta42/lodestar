@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Scholomance", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "596bb140",
+	rev = "5d148df3",
 }, [[
 step
   talk Tinkee Steamboil##10267
@@ -120,6 +120,7 @@ step
 step
   only Warlock
   note Purchase Xorothian Stardust from Ur'dan. Bring it to Gorzeeki Wildeyes in the Burning Steppes.
+  talk Ur'dan##14522
   buy Xorothian Stardust##18687 |q 7625 |goto Felwood 36.18,44.46
 step
   talk Felnok Steelspring##10468
@@ -188,7 +189,7 @@ step
   accept The Work of Grimand Elmore##7641 |goto Stormwind City 48.43,50.22
 step
   note Use the Eggscilloscope Prototype on an egg in the Rookery.
-  collect Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
+  click Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Tinkee Steamboil##10267
   turnin Egg Freezing##4734 |goto Burning Steppes 65.24,24
@@ -213,11 +214,14 @@ step
   accept Collection of Goods##7642 |goto Stormwind City 59.73,33.78
 step
   note Bring 8 Collected Dragon Eggs and the Collectronic Module to Tinkee Steamboil at Flame Crest in the Burning Steppes.
-  collect Rookery Egg##175124 |q 4735 |goto Blackrock Spire - Dungeon -1,-1
+  click Rookery Egg##175124 |q 4735 |goto Blackrock Spire - Dungeon -1,-1
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Bring 40 Runecloth, 6 Arcanite Bars, 10 Arthas' Tears, 5 Stratholme Holy Water vials, and 150 gold to Grimand Elmore in the Dwarven District of Stormwind.
-  collect 40 Stratholme Holy Water##13180 |q 7642 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 5 Stratholme Holy Water##13180 |q 7642/1 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 10 Arthas' Tears##8836 |q 7642/2 |goto Western Plaguelands 47.76,60.95
+  collect 40 Runecloth##14047 |q 7642/3 |tip {dropsfrom}humanoids
+  collect 6 Arcanite Bar##12360 |q 7642 |tip Crafted or bought.
 step
   talk Tinkee Steamboil##10267
   turnin Egg Collection##4735 |goto Burning Steppes 65.24,24
@@ -296,7 +300,8 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Bring an Azerothian Diamond and a Pristine Black Diamond to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
-  collect Azerothian Diamond##12800 |q 7646 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Cliff Breaker, Anubisath Guardian, Small Thorium Vein
+  collect Azerothian Diamond##12800 |q 7646/1 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect Pristine Black Diamond##18335 |q 7646 |goto Alterac Valley 52.39,7.78 |tip {dropsfrom}Morloch, Frostwolf Legionnaire, Lieutenant Rugba
 step
   talk Betina Bigglezink##11035
   turnin Dawn's Gambit##4771 |goto Eastern Plaguelands 71.66,49.94
@@ -314,7 +319,8 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Use the Divination Scryer in the heart of the Great Ossuary's basement in the Scholomance. Doing so will bring forth the spirits you must judge. Defeating these spirits will summon forth Death Knight Darkreaver. Defeat him and reclaim the lost soul of the fallen charger.
-  collect Charger's Redeemed Soul##18799 |q 7647 |goto Stormwind City 48.43,50.22
+  collect Charger's Redeemed Soul##18799 |q 7647/1
+  collect Blessed Arcanite Barding##18792 |q 7647 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Risen Construct
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk Darkreaver's Fallen Charger##14568

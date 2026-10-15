@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Excavation Site: Wetlands", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "887b5073",
+	rev = "dcc4328d",
 }, [[
 step
   talk James Halloran##2094
@@ -20,7 +20,7 @@ step
   accept Prehistoric Prism##98824 |goto Wetlands 38.81,52.39
 step
   note Return 4 Thicket Raptor Hides to James Halloran, the tanner, in Menethil Harbor.
-  collect Thicket Raptor Hide##284845 |q 98815 |goto Wetlands 8.55,55.74 |tip {dropsfrom}Shadetooth, Thicket Lurker, Thicket Hunter
+  collect 4 Thicket Raptor Hide##284845 |q 98815 |goto Wetlands 8.55,55.74 |tip {dropsfrom}Shadetooth, Thicket Lurker, Thicket Hunter
 step
   note Kill a Highland Horror within Excavation Sites and bring its root core to Rethiel the Greenwarden in the Wetlands.
   collect Horrible Rootcore##270180 |q 95646 |goto Wetlands 49.49,59.69 |tip {dropsfrom}Highland Horror

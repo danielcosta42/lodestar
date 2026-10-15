@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Zandalar Tribe", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "6c86b8e2",
+	rev = "537d0df4",
 }, [[
 step
   talk Exzhal##14910
@@ -19,7 +19,7 @@ step
   talk Vinchaxa##15070
   accept Zulian, Razzashi, and Hakkari Coins##8195 |goto Stranglethorn Vale 14.5,15.83
 step
-  collect Zulian Coin##19698 |q 8195 |goto Zul'Gurub - Dungeon -1,-1 |elite |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
+  collect Zulian Coin##19698 |q 8195 |goto Zul'Gurub - Dungeon -1,-1 |elite |tip {dropsfrom}Sandfury Speaker, Gurubashi Axe Thrower, Gurubashi Headhunter
 step
   talk Vinchaxa##15070
   turnin Zulian, Razzashi, and Hakkari Coins##8195 |goto Stranglethorn Vale 14.5,15.83
@@ -27,7 +27,7 @@ step
   talk Vinchaxa##15070
   accept Gurubashi, Vilebranch, and Witherbark Coins##8238 |goto Stranglethorn Vale 14.5,15.83
 step
-  collect Gurubashi Coin##19701 |q 8238 |goto Zul'Gurub - Dungeon -1,-1 |elite |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
+  collect Gurubashi Coin##19701 |q 8238 |goto Zul'Gurub - Dungeon -1,-1 |elite |tip {dropsfrom}Sandfury Speaker, Gurubashi Axe Thrower, Gurubashi Headhunter
 step
   talk Vinchaxa##15070
   turnin Gurubashi, Vilebranch, and Witherbark Coins##8238 |goto Stranglethorn Vale 14.5,15.83
@@ -35,7 +35,7 @@ step
   talk Vinchaxa##15070
   accept Sandfury, Skullsplitter, and Bloodscalp Coins##8239 |goto Stranglethorn Vale 14.5,15.83
 step
-  collect Sandfury Coin##19704 |q 8239 |goto Zul'Gurub - Dungeon -1,-1 |elite |tip {dropsfrom}Hakkari Shadowcaster, Hakkari Shadow Hunter, Hakkari Blood Priest
+  collect Sandfury Coin##19704 |q 8239 |goto Zul'Gurub - Dungeon -1,-1 |elite |tip {dropsfrom}Sandfury Speaker, Gurubashi Axe Thrower, Gurubashi Headhunter
 step
   talk Vinchaxa##15070
   turnin Sandfury, Skullsplitter, and Bloodscalp Coins##8239 |goto Stranglethorn Vale 14.5,15.83
@@ -227,7 +227,7 @@ step
   accept Zandalarian Shadow Talisman##8142 |goto Stranglethorn Vale 14.08,13.72
 step
   only Rogue
-  collect Zandalarian Shadow Talisman##19614 |q 8142 |goto Stranglethorn Vale 14.08,13.72
+  collect Zandalarian Shadow Talisman##19614 |q 8142 |goto Stranglethorn Vale 14.08,13.72 |tip Crafted or bought.
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -238,7 +238,7 @@ step
   accept Zandalarian Shadow Talisman##8143 |goto Stranglethorn Vale 14.08,13.72
 step
   only Rogue
-  collect Zandalarian Shadow Talisman##19615 |q 8143 |goto Stranglethorn Vale 14.08,13.72
+  collect Zandalarian Shadow Talisman##19615 |q 8143 |goto Stranglethorn Vale 14.08,13.72 |tip Crafted or bought.
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -249,7 +249,7 @@ step
   accept Zandalarian Shadow Mastery Talisman##8144 |goto Stranglethorn Vale 14.08,13.72
 step
   only Rogue
-  collect Zandalarian Shadow Talisman##19616 |q 8144 |goto Stranglethorn Vale 14.08,13.72
+  collect Zandalarian Shadow Talisman##19616 |q 8144 |goto Stranglethorn Vale 14.08,13.72 |tip Crafted or bought.
 step
   only Rogue
   talk Falthir the Sightless##14905
@@ -268,7 +268,7 @@ step
   accept The Maelstrom's Tendril##8146 |goto Stranglethorn Vale 14.08,13.72
 step
   only Hunter
-  collect Maelstrom's Tendril##19618 |q 8146 |goto Stranglethorn Vale 14.08,13.72
+  collect Maelstrom's Tendril##19618 |q 8146 |goto Stranglethorn Vale 14.08,13.72 |tip Crafted or bought.
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -279,7 +279,7 @@ step
   accept The Maelstrom's Tendril##8147 |goto Stranglethorn Vale 14.08,13.72
 step
   only Hunter
-  collect Maelstrom's Tendril##19619 |q 8147 |goto Stranglethorn Vale 14.08,13.72
+  collect Maelstrom's Tendril##19619 |q 8147 |goto Stranglethorn Vale 14.08,13.72 |tip Crafted or bought.
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -290,7 +290,7 @@ step
   accept Maelstrom's Wrath##8148 |goto Stranglethorn Vale 14.08,13.72
 step
   only Hunter
-  collect Maelstrom's Tendril##19620 |q 8148 |goto Stranglethorn Vale 14.08,13.72
+  collect Maelstrom's Tendril##19620 |q 8148 |goto Stranglethorn Vale 14.08,13.72 |tip Crafted or bought.
 step
   only Hunter
   talk Falthir the Sightless##14905
@@ -309,7 +309,7 @@ step
   accept Strength of Mount Mugamba##8042 |goto Stranglethorn Vale 15.31,14.43
 step
   only Warrior
-  collect Strength of Mugamba##19574 |q 8042 |goto Stranglethorn Vale 15.31,14.43
+  collect Strength of Mugamba##19574 |q 8042 |goto Stranglethorn Vale 15.31,14.43 |tip Crafted or bought.
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -320,7 +320,7 @@ step
   accept Strength of Mount Mugamba##8043 |goto Stranglethorn Vale 15.31,14.43
 step
   only Warrior
-  collect Strength of Mugamba##19575 |q 8043 |goto Stranglethorn Vale 15.31,14.43
+  collect Strength of Mugamba##19575 |q 8043 |goto Stranglethorn Vale 15.31,14.43 |tip Crafted or bought.
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -331,7 +331,7 @@ step
   accept The Rage of Mugamba##8044 |goto Stranglethorn Vale 15.31,14.43
 step
   only Warrior
-  collect Strength of Mugamba##19576 |q 8044 |goto Stranglethorn Vale 15.31,14.43
+  collect Strength of Mugamba##19576 |q 8044 |goto Stranglethorn Vale 15.31,14.43 |tip Crafted or bought.
 step
   only Warrior
   talk Jin'rokh the Breaker##14902
@@ -350,7 +350,7 @@ step
   accept The Heathen's Brand##8046 |goto Stranglethorn Vale 15.31,14.43
 step
   only Paladin
-  collect Heathen's Brand##19579 |q 8046 |goto Stranglethorn Vale 15.31,14.43
+  collect Heathen's Brand##19579 |q 8046 |goto Stranglethorn Vale 15.31,14.43 |tip Crafted or bought.
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -361,7 +361,7 @@ step
   accept The Heathen's Brand##8047 |goto Stranglethorn Vale 15.31,14.43
 step
   only Paladin
-  collect Heathen's Brand##19585 |q 8047 |goto Stranglethorn Vale 15.31,14.43
+  collect Heathen's Brand##19585 |q 8047 |goto Stranglethorn Vale 15.31,14.43 |tip Crafted or bought.
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -372,7 +372,7 @@ step
   accept The Hero's Brand##8048 |goto Stranglethorn Vale 15.31,14.43
 step
   only Paladin
-  collect Heathen's Brand##19586 |q 8048 |goto Stranglethorn Vale 15.31,14.43
+  collect Heathen's Brand##19586 |q 8048 |goto Stranglethorn Vale 15.31,14.43 |tip Crafted or bought.
 step
   only Paladin
   talk Jin'rokh the Breaker##14902
@@ -535,7 +535,7 @@ step
   accept Enchanted South Seas Kelp##8111 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  collect Enchanted South Seas Kelp##19610 |q 8111 |goto Stranglethorn Vale 15.3,16.02
+  collect Enchanted South Seas Kelp##19610 |q 8111 |goto Stranglethorn Vale 15.3,16.02 |tip Crafted or bought.
 step
   only Druid
   talk Maywiki of Zuldazar##14904
@@ -546,7 +546,7 @@ step
   accept Enchanted South Seas Kelp##8112 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  collect Enchanted South Seas Kelp##19611 |q 8112 |goto Stranglethorn Vale 15.3,16.02
+  collect Enchanted South Seas Kelp##19611 |q 8112 |goto Stranglethorn Vale 15.3,16.02 |tip Crafted or bought.
 step
   only Druid
   talk Maywiki of Zuldazar##14904
@@ -557,7 +557,7 @@ step
   accept Pristine Enchanted South Seas Kelp##8113 |goto Stranglethorn Vale 15.3,16.02
 step
   only Druid
-  collect Enchanted South Seas Kelp##19612 |q 8113 |goto Stranglethorn Vale 15.3,16.02
+  collect Enchanted South Seas Kelp##19612 |q 8113 |goto Stranglethorn Vale 15.3,16.02 |tip Crafted or bought.
 step
   only Druid
   talk Maywiki of Zuldazar##14904
@@ -576,7 +576,7 @@ step
   accept The Eye of Zuldazar##8050 |goto Stranglethorn Vale 15.34,16.12
 step
   only Priest
-  collect The Eye of Zuldazar##19591 |q 8050 |goto Stranglethorn Vale 15.34,16.12
+  collect The Eye of Zuldazar##19591 |q 8050 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -587,7 +587,7 @@ step
   accept The Eye of Zuldazar##8051 |goto Stranglethorn Vale 15.34,16.12
 step
   only Priest
-  collect The Eye of Zuldazar##19592 |q 8051 |goto Stranglethorn Vale 15.34,16.12
+  collect The Eye of Zuldazar##19592 |q 8051 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -598,7 +598,7 @@ step
   accept The All-Seeing Eye of Zuldazar##8052 |goto Stranglethorn Vale 15.34,16.12
 step
   only Priest
-  collect The Eye of Zuldazar##19593 |q 8052 |goto Stranglethorn Vale 15.34,16.12
+  collect The Eye of Zuldazar##19593 |q 8052 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Priest
   talk Al'tabim the All-Seeing##14903
@@ -725,7 +725,7 @@ step
   accept The Pebble of Kajaro##8102 |goto Stranglethorn Vale 15.34,16.12
 step
   only Mage
-  collect Pebble of Kajaro##19598 |q 8102 |goto Stranglethorn Vale 15.34,16.12
+  collect Pebble of Kajaro##19598 |q 8102 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Mage
   talk Al'tabim the All-Seeing##14903
@@ -736,7 +736,7 @@ step
   accept The Pebble of Kajaro##8103 |goto Stranglethorn Vale 15.34,16.12
 step
   only Mage
-  collect Pebble of Kajaro##19599 |q 8103 |goto Stranglethorn Vale 15.34,16.12
+  collect Pebble of Kajaro##19599 |q 8103 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Mage
   talk Al'tabim the All-Seeing##14903
@@ -747,7 +747,7 @@ step
   accept The Jewel of Kajaro##8104 |goto Stranglethorn Vale 15.34,16.12
 step
   only Mage
-  collect Pebble of Kajaro##19600 |q 8104 |goto Stranglethorn Vale 15.34,16.12
+  collect Pebble of Kajaro##19600 |q 8104 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Mage
   talk Al'tabim the All-Seeing##14903
@@ -766,7 +766,7 @@ step
   accept Kezan's Taint##8107 |goto Stranglethorn Vale 15.34,16.12
 step
   only Warlock
-  collect Kezan's Taint##19602 |q 8107 |goto Stranglethorn Vale 15.34,16.12
+  collect Kezan's Taint##19602 |q 8107 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -777,7 +777,7 @@ step
   accept Kezan's Taint##8108 |goto Stranglethorn Vale 15.34,16.12
 step
   only Warlock
-  collect Kezan's Taint##19603 |q 8108 |goto Stranglethorn Vale 15.34,16.12
+  collect Kezan's Taint##19603 |q 8108 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903
@@ -788,7 +788,7 @@ step
   accept Kezan's Unstoppable Taint##8109 |goto Stranglethorn Vale 15.34,16.12
 step
   only Warlock
-  collect Kezan's Taint##19604 |q 8109 |goto Stranglethorn Vale 15.34,16.12
+  collect Kezan's Taint##19604 |q 8109 |goto Stranglethorn Vale 15.34,16.12 |tip Crafted or bought.
 step
   only Warlock
   talk Al'tabim the All-Seeing##14903

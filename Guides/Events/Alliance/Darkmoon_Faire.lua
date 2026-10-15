@@ -4,13 +4,13 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Darkmoon Faire", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "b41b70b5",
+	rev = "5547182a",
 }, [[
 step
   talk Gelvas Grimegate##14828
   accept 5 Tickets - Darkmoon Flower##7930 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7930 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7930 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 5 Tickets - Darkmoon Flower##7930 |goto Elwynn Forest 41.5,68.87
@@ -18,7 +18,7 @@ step
   talk Gelvas Grimegate##14828
   accept 5 Tickets - Minor Darkmoon Prize##7931 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7931 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7931 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 5 Tickets - Minor Darkmoon Prize##7931 |goto Elwynn Forest 41.5,68.87
@@ -26,7 +26,7 @@ step
   talk Gelvas Grimegate##14828
   accept 12 Tickets - Lesser Darkmoon Prize##7932 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7932 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7932 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 12 Tickets - Lesser Darkmoon Prize##7932 |goto Elwynn Forest 41.5,68.87
@@ -34,7 +34,7 @@ step
   talk Gelvas Grimegate##14828
   accept 40 Tickets - Greater Darkmoon Prize##7933 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7933 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7933 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 40 Tickets - Greater Darkmoon Prize##7933 |goto Elwynn Forest 41.5,68.87
@@ -42,7 +42,7 @@ step
   talk Gelvas Grimegate##14828
   accept 50 Tickets - Darkmoon Storage Box##7934 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7934 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7934 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 50 Tickets - Darkmoon Storage Box##7934 |goto Elwynn Forest 41.5,68.87
@@ -50,7 +50,7 @@ step
   talk Gelvas Grimegate##14828
   accept 10 Tickets - Last Month's Mutton##7935 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7935 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7935 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 10 Tickets - Last Month's Mutton##7935 |goto Elwynn Forest 41.5,68.87
@@ -58,7 +58,7 @@ step
   talk Gelvas Grimegate##14828
   accept 50 Tickets - Last Year's Mutton##7936 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7936 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7936 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 50 Tickets - Last Year's Mutton##7936 |goto Elwynn Forest 41.5,68.87
@@ -66,7 +66,7 @@ step
   talk Gelvas Grimegate##14828
   accept 1200 Tickets - Orb of the Darkmoon##7940 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7940 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7940 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 1200 Tickets - Orb of the Darkmoon##7940 |goto Elwynn Forest 41.5,68.87
@@ -74,7 +74,7 @@ step
   talk Gelvas Grimegate##14828
   accept 1200 Tickets - Amulet of the Darkmoon##7981 |goto Elwynn Forest 41.5,68.87
 step
-  collect Darkmoon Faire Prize Ticket##19182 |q 7981 |goto Elwynn Forest 41.5,68.87
+  collect Darkmoon Faire Prize Ticket##19182 |q 7981 |goto Elwynn Forest 41.5,68.87 |tip Crafted or bought.
 step
   talk Gelvas Grimegate##14828
   turnin 1200 Tickets - Amulet of the Darkmoon##7981 |goto Elwynn Forest 41.5,68.87
@@ -130,7 +130,7 @@ step
   talk Yebb Neblegear##14829
   accept Vibrant Plumes##7902 |goto Elwynn Forest 40.17,69.53
 step
-  collect Vibrant Plume##5117 |q 7902 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Vicious Owlbeast, Primitive Owlbeast
+  collect Vibrant Plume##5117 |q 7902 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture
 step
   talk Yebb Neblegear##14829
   turnin Vibrant Plumes##7902 |goto Elwynn Forest 40.17,69.53
@@ -154,7 +154,7 @@ step
   talk Yebb Neblegear##14829
   accept Glowing Scorpid Blood##8222 |goto Elwynn Forest 40.17,69.53
 step
-  collect Glowing Scorpid Blood##19933 |q 8222 |goto Blasted Lands 47.8,22.4 |tip {dropsfrom}Scorpok Stinger, Deep Stinger, Clack the Reaver
+  collect Glowing Scorpid Blood##19933 |q 8222 |goto Blasted Lands 47.8,22.4 |tip {dropsfrom}Scorpok Stinger, Clack the Reaver
 step
   talk Yebb Neblegear##14829
   turnin Glowing Scorpid Blood##8222 |goto Elwynn Forest 40.17,69.53
@@ -162,7 +162,7 @@ step
   talk Yebb Neblegear##14829
   accept More Glowing Scorpid Blood##8223 |goto Elwynn Forest 40.17,69.53
 step
-  collect Glowing Scorpid Blood##19933 |q 8223 |goto Blasted Lands 47.8,22.4 |tip {dropsfrom}Scorpok Stinger, Deep Stinger, Clack the Reaver
+  collect Glowing Scorpid Blood##19933 |q 8223 |goto Blasted Lands 47.8,22.4 |tip {dropsfrom}Scorpok Stinger, Clack the Reaver
 step
   talk Yebb Neblegear##14829
   turnin More Glowing Scorpid Blood##8223 |goto Elwynn Forest 40.17,69.53
@@ -170,7 +170,7 @@ step
   talk Kerri Hicks##14832
   accept Coarse Weightstone##7889 |goto Elwynn Forest 40.49,69.93
 step
-  collect Coarse Weightstone##3240 |q 7889 |goto Elwynn Forest 40.49,69.93
+  collect Coarse Weightstone##3240 |q 7889 |goto Elwynn Forest 40.49,69.93 |tip Crafted or bought.
 step
   talk Kerri Hicks##14832
   turnin Coarse Weightstone##7889 |goto Elwynn Forest 40.49,69.93
@@ -178,7 +178,7 @@ step
   talk Kerri Hicks##14832
   accept Heavy Grinding Stone##7890 |goto Elwynn Forest 40.49,69.93
 step
-  collect Heavy Grinding Stone##3486 |q 7890 |goto Elwynn Forest 40.49,69.93
+  collect Heavy Grinding Stone##3486 |q 7890 |goto Elwynn Forest 40.49,69.93 |tip Crafted or bought.
 step
   talk Kerri Hicks##14832
   turnin Heavy Grinding Stone##7890 |goto Elwynn Forest 40.49,69.93
@@ -186,7 +186,7 @@ step
   talk Kerri Hicks##14832
   accept Green Iron Bracers##7891 |goto Elwynn Forest 40.49,69.93
 step
-  collect Green Iron Bracers##3835 |q 7891 |goto Elwynn Forest 40.49,69.93
+  collect Green Iron Bracers##3835 |q 7891 |goto Elwynn Forest 40.49,69.93 |tip Crafted or bought.
 step
   talk Kerri Hicks##14832
   turnin Green Iron Bracers##7891 |goto Elwynn Forest 40.49,69.93
@@ -194,7 +194,7 @@ step
   talk Kerri Hicks##14832
   accept Big Black Mace##7892 |goto Elwynn Forest 40.49,69.93
 step
-  collect Big Black Mace##7945 |q 7892 |goto Elwynn Forest 40.49,69.93
+  collect Big Black Mace##7945 |q 7892 |goto Elwynn Forest 40.49,69.93 |tip Crafted or bought.
 step
   talk Kerri Hicks##14832
   turnin Big Black Mace##7892 |goto Elwynn Forest 40.49,69.93
@@ -202,7 +202,7 @@ step
   talk Kerri Hicks##14832
   accept Rituals of Strength##7893 |goto Elwynn Forest 40.49,69.93
 step
-  collect Dense Grinding Stone##12644 |q 7893 |goto Elwynn Forest 40.49,69.93
+  collect Dense Grinding Stone##12644 |q 7893 |goto Elwynn Forest 40.49,69.93 |tip Crafted or bought.
 step
   talk Kerri Hicks##14832
   turnin Rituals of Strength##7893 |goto Elwynn Forest 40.49,69.93
@@ -210,7 +210,7 @@ step
   talk Kerri Hicks##14832
   accept More Dense Grinding Stones##7939 |goto Elwynn Forest 40.49,69.93
 step
-  collect Dense Grinding Stone##12644 |q 7939 |goto Elwynn Forest 40.49,69.93
+  collect Dense Grinding Stone##12644 |q 7939 |goto Elwynn Forest 40.49,69.93 |tip Crafted or bought.
 step
   talk Kerri Hicks##14832
   turnin More Dense Grinding Stones##7939 |goto Elwynn Forest 40.49,69.93
@@ -218,7 +218,7 @@ step
   talk Morja##14871
   accept Spawn of Jubjub##7946 |goto Elwynn Forest 43.34,70.28
 step
-  collect Dark Iron Ale Mug##11325 |q 7946 |goto Duskwood 78.99,44.35 |tip {dropsfrom}Whit Wantmal, Anvilrage Officer, Grim Patron
+  collect Dark Iron Ale Mug##11325 |q 7946 |goto Duskwood 78.99,44.35 |tip {dropsfrom}Whit Wantmal
 step
   talk Morja##14871
   turnin Spawn of Jubjub##7946 |goto Elwynn Forest 43.34,70.28
@@ -234,7 +234,7 @@ step
   talk Rinling##14841
   accept Whirring Bronze Gizmo##7895 |goto Elwynn Forest 41.71,70.72
 step
-  collect Whirring Bronze Gizmo##4375 |q 7895 |goto Redridge Mountains 30.44,9.92 |tip {dropsfrom}Blackrock Tracker, Scarlet Paladin, Narillasanz
+  collect Whirring Bronze Gizmo##4375 |q 7895 |goto Redridge Mountains 30.44,9.92 |tip {dropsfrom}Blackrock Tracker
 step
   talk Rinling##14841
   turnin Whirring Bronze Gizmo##7895 |goto Elwynn Forest 41.71,70.72
@@ -242,7 +242,8 @@ step
   talk Rinling##14841
   accept Green Fireworks##7896 |goto Elwynn Forest 41.71,70.72
 step
-  collect Green Firework##9313 |q 7896 |goto Elwynn Forest 41.71,70.72
+  talk Wagner Hammerstrike##15011
+  buy Green Firework##9313 |q 7896 |goto Dun Morogh 52.6,36.03
 step
   talk Rinling##14841
   turnin Green Fireworks##7896 |goto Elwynn Forest 41.71,70.72
@@ -250,7 +251,7 @@ step
   talk Rinling##14841
   accept Mechanical Repair Kits##7897 |goto Elwynn Forest 41.71,70.72
 step
-  collect Mechanical Repair Kit##11590 |q 7897 |goto Elwynn Forest 41.71,70.72
+  collect Mechanical Repair Kit##11590 |q 7897 |goto Elwynn Forest 41.71,70.72 |tip Crafted or bought.
 step
   talk Rinling##14841
   turnin Mechanical Repair Kits##7897 |goto Elwynn Forest 41.71,70.72
@@ -258,7 +259,7 @@ step
   talk Rinling##14841
   accept Thorium Widget##7898 |goto Elwynn Forest 41.71,70.72
 step
-  collect Thorium Widget##15994 |q 7898 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
+  collect Thorium Widget##15994 |q 7898 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Anvilrage Marshal
 step
   talk Rinling##14841
   turnin Thorium Widget##7898 |goto Elwynn Forest 41.71,70.72
@@ -266,7 +267,7 @@ step
   talk Rinling##14841
   accept More Thorium Widgets##7942 |goto Elwynn Forest 41.71,70.72
 step
-  collect Thorium Widget##15994 |q 7942 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Anvilrage Marshal, Rage Talon Dragonspawn, Blackhand Iron Guard
+  collect Thorium Widget##15994 |q 7942 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Anvilrage Marshal
 step
   talk Rinling##14841
   turnin More Thorium Widgets##7942 |goto Elwynn Forest 41.71,70.72
@@ -274,7 +275,7 @@ step
   talk Chronos##14833
   accept Carnival Boots##7881 |goto Elwynn Forest 43.61,70.84
 step
-  collect Embossed Leather Boots##2309 |q 7881 |goto Elwynn Forest 43.61,70.84
+  collect Embossed Leather Boots##2309 |q 7881 |goto Elwynn Forest 43.61,70.84 |tip Crafted or bought.
 step
   talk Chronos##14833
   turnin Carnival Boots##7881 |goto Elwynn Forest 43.61,70.84
@@ -282,7 +283,7 @@ step
   talk Chronos##14833
   accept Carnival Jerkins##7882 |goto Elwynn Forest 43.61,70.84
 step
-  collect Toughened Leather Armor##2314 |q 7882 |goto Elwynn Forest 43.61,70.84
+  collect Toughened Leather Armor##2314 |q 7882 |goto Elwynn Forest 43.61,70.84 |tip Crafted or bought.
 step
   talk Chronos##14833
   turnin Carnival Jerkins##7882 |goto Elwynn Forest 43.61,70.84
@@ -290,7 +291,7 @@ step
   talk Chronos##14833
   accept The World's Largest Gnome!##7883 |goto Elwynn Forest 43.61,70.84
 step
-  collect Barbaric Harness##5739 |q 7883 |goto Elwynn Forest 43.61,70.84
+  collect Barbaric Harness##5739 |q 7883 |goto Elwynn Forest 43.61,70.84 |tip Crafted or bought.
 step
   talk Chronos##14833
   turnin The World's Largest Gnome!##7883 |goto Elwynn Forest 43.61,70.84
@@ -298,7 +299,7 @@ step
   talk Chronos##14833
   accept Crocolisk Boy and the Bearded Murloc##7884 |goto Elwynn Forest 43.61,70.84
 step
-  collect Turtle Scale Leggings##8185 |q 7884 |goto Elwynn Forest 43.61,70.84
+  collect Turtle Scale Leggings##8185 |q 7884 |goto Elwynn Forest 43.61,70.84 |tip Crafted or bought.
 step
   talk Chronos##14833
   turnin Crocolisk Boy and the Bearded Murloc##7884 |goto Elwynn Forest 43.61,70.84
@@ -306,7 +307,7 @@ step
   talk Chronos##14833
   accept Armor Kits##7885 |goto Elwynn Forest 43.61,70.84
 step
-  collect Rugged Armor Kit##15564 |q 7885 |goto Tanaris 40.18,63.89 |tip {dropsfrom}Rabid Blisterpaw, Scorching Elemental, Larion
+  collect Rugged Armor Kit##15564 |q 7885 |goto Tanaris 40.18,63.89 |tip {dropsfrom}Rabid Blisterpaw
 step
   talk Chronos##14833
   turnin Armor Kits##7885 |goto Elwynn Forest 43.61,70.84
@@ -314,7 +315,7 @@ step
   talk Chronos##14833
   accept More Armor Kits##7941 |goto Elwynn Forest 43.61,70.84
 step
-  collect Rugged Armor Kit##15564 |q 7941 |goto Tanaris 40.18,63.89 |tip {dropsfrom}Rabid Blisterpaw, Scorching Elemental, Larion
+  collect Rugged Armor Kit##15564 |q 7941 |goto Tanaris 40.18,63.89 |tip {dropsfrom}Rabid Blisterpaw
 step
   talk Chronos##14833
   turnin More Armor Kits##7941 |goto Elwynn Forest 43.61,70.84

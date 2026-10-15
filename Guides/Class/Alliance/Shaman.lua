@@ -4,14 +4,14 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Shaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "6d1dc369",
+	rev = "27259704",
 }, [[
 step
   talk Sten Stoutarm##658
   accept Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
 step
   note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
-  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 49.41,37.75 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
+  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 46.66,43.74 |tip {dropsfrom}Young Wolf, Timber Wolf
 step
   talk Sten Stoutarm##658
   turnin Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
@@ -95,7 +95,8 @@ step
 step
   only Shaman
   note Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan.
-  collect 1 Reagent Pouch##6652 |q 94466 |goto Durotar 52.67,25.36 |tip {dropsfrom}Burning Blade Cultist, Stonesplinter Seer
+  collect 1 Reagent Pouch##6652 |q 94466/1 |goto Durotar 52.67,25.36 |tip {dropsfrom}Burning Blade Cultist
+  collect 1 Fire Tar##5026 |q 94466 |goto The Barrens 54.94,26.74 |tip {dropsfrom}Razormane Water Seeker, Razormane Thornweaver, Razormane Geomancer
 step
   only Shaman
   talk Braldir Ashmantle##257808
@@ -125,7 +126,7 @@ step
 step
   only Shaman
   note Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame.
-  collect Glowing Ember##6655 |q 94467 |goto Durotar 38.72,58.29 |tip {dropsfrom}Minor Manifestation of Fire, Manifestation of Flames
+  collect Glowing Ember##6655 |q 94467 |goto Durotar 38.72,58.29 |tip {dropsfrom}Minor Manifestation of Fire
 step
   only Shaman
   turnin Call of Fire##94467 |goto Durotar 38.96,58.22
@@ -260,26 +261,20 @@ step
   talk Veyric Thunderhame##259023
   turnin Elemental Aid##96264 |goto Arathi Highlands 59.77,27.6
 step
-  only Shaman
+  only Shaman not completed(79361) not haveq(79361)
   talk Veyric Thunderhame##259023
   accept Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
 step
-  only Shaman
+  only Shaman not completed(79361) not haveq(79361)
   note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Veyric Thunderhame in Arathi Highlands.
-  collect 5 Twisted Fire Totem##274044 |q 79358 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Skullthumper, Stonevault Bonesnapper, Stonevault Shaman
+  collect 5 Twisted Fire Totem##274044 |q 79358/1 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Bonesnapper, Stonevault Shaman
+  collect 5 Twisted Air Totem##274047 |q 79358/2 |goto Desolace 35.28,61.41 |tip {dropsfrom}Maraudine Wrangler, Maraudine Mauler, Maraudine Windchaser
+  collect 5 Twisted Earth Totem##274045 |q 79358/3 |goto Swamp of Sorrows 49,31.9 |tip {dropsfrom}Lost One Mudlurker, Lost One Fisherman, Lost One Hunter
+  collect 5 Twisted Water Totem##274046 |q 79358 |goto Dustwallow Marsh 57.6,21.6 |tip {dropsfrom}Mirefin Puddlejumper, Mirefin Murloc, Mirefin Warrior
 step
-  only Shaman
+  only Shaman not completed(79361) not haveq(79361)
   talk Veyric Thunderhame##259023
   turnin Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
-step
-  only Shaman
-  talk Veyric Thunderhame##259023
-  accept The Tempest's Weapons##96016 |goto Arathi Highlands 59.77,27.6
-step
-  only Shaman
-  note Deliver the Eye of the Tempest to Bath'rah the Windwatcher in Alterac Mountains.
-  talk Bath'rah the Windwatcher##6176
-  turnin The Tempest's Weapons##96016 |goto Alterac Mountains 80.5,66.92
 step
   only Shaman
   talk Veyric Thunderhame##259023
@@ -292,6 +287,15 @@ step
   only Shaman
   talk Veyric Thunderhame##259023
   turnin Heed My Call##96135 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  talk Veyric Thunderhame##259023
+  accept The Tempest's Weapons##96016 |goto Arathi Highlands 59.77,27.6
+step
+  only Shaman
+  note Deliver the Eye of the Tempest to Bath'rah the Windwatcher in Alterac Mountains.
+  talk Bath'rah the Windwatcher##6176
+  turnin The Tempest's Weapons##96016 |goto Alterac Mountains 80.5,66.92
 step
   only Shaman
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
@@ -413,7 +417,10 @@ step
 step
   only not Shaman
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
+  collect 1 Delicate Arcanite Converter##16006 |q 8921/1 |tip Crafted or bought.
+  collect 4 Greater Eternal Essence##16203 |q 8921/2 |tip Crafted or bought.
+  collect 10 Stonescale Oil##13423 |q 8921/3 |tip Crafted or bought.
+  collect 25 Volcanic Ash##22338 |q 8921 |goto Burning Steppes 60.12,40.36
 step
   only not Shaman
   talk Mux Manascrambler##16014
@@ -425,7 +432,9 @@ step
 step
   only not Shaman
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Scorched Ectoplasm##21937 |q 8924/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Frozen Ectoplasm##21936 |q 8924/2 |goto Winterspring 53.58,43.48 |tip {dropsfrom}Suffering Highborne, Anguished Highborne
+  collect 12 Stable Ectoplasm##21935 |q 8924 |goto Eastern Plaguelands 52.9,55.8 |tip {dropsfrom}Unseen Servant, Eyeless Watcher, Torn Screamer
 step
   only not Shaman
   talk Mux Manascrambler##16014
@@ -449,6 +458,7 @@ step
 step
   only not Shaman
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
+  talk Vi'el##16015
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
   only not Shaman
@@ -470,7 +480,7 @@ step
 step
   only Druid not Shaman
   note Bring a Wildheart Belt and a set of Wildheart Gloves Deliana in Ironforge.
-  collect Wildheart Belt##16716 |q 8926 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider, Bile Spewer
+  collect Wildheart Belt##16716 |q 8926 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider
 step
   only Druid not Shaman
   talk Deliana##16013
@@ -494,7 +504,7 @@ step
 step
   only Mage not Shaman
   note Bring a Magister's Belt and a set of Magister's Gloves to Deliana in Ironforge.
-  collect Magister's Belt##16685 |q 8932 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Mystic, Thuzadin Shadowcaster, Thuzadin Necromancer
+  collect Magister's Belt##16685 |q 8932 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Mystic
 step
   only Mage not Shaman
   talk Deliana##16013
@@ -518,7 +528,7 @@ step
 step
   only Priest not Shaman
   note Bring a Devout Belt and a set of Devout Gloves to Deliana in Ironforge.
-  collect Devout Belt##16696 |q 8934 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
+  collect Devout Belt##16696 |q 8934 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
 step
   only Priest not Shaman
   talk Deliana##16013
@@ -530,7 +540,7 @@ step
 step
   only Rogue not Shaman
   note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Deliana in Ironforge.
-  collect Shadowcraft Belt##16713 |q 8935 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Legionnaire, Firebrand Grunt, Scarshield Quartermaster
+  collect Shadowcraft Belt##16713 |q 8935 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
 step
   only Rogue not Shaman
   talk Deliana##16013
@@ -554,7 +564,7 @@ step
 step
   only Warrior not Shaman
   note Bring a Belt of Valor and a set of Gauntlets of Valor to Deliana in Ironforge.
-  collect Belt of Valor##16736 |q 8937 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker, Patchwork Horror, Bile Spewer
+  collect Belt of Valor##16736 |q 8937 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker
 step
   only Warrior not Shaman
   talk Deliana##16013
@@ -596,7 +606,11 @@ step
 step
   only not Shaman
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
+  collect 3 Dark Iron Bar##11371 |q 8947/1 |tip Crafted or bought.
+  talk Lhara##14846
+  collect 20 Enchanted Leather##12810 |q 8947/2 |goto Elwynn Forest 41.2,69.9
+  collect 3 Mooncloth##14342 |q 8947/3 |tip Crafted or bought.
+  collect 4 Cured Rugged Hide##15407 |q 8947 |tip Crafted or bought.
 step
   only not Shaman
   talk Anthion Harmon##16016
@@ -617,7 +631,7 @@ step
 step
   only not Shaman
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Feralas 59.7,42.73 |tip {dropsfrom}Gordok Enforcer, Gordok Mauler, Gordok Ogre-Mage
 step
   only not Shaman
   talk Falrin Treeshaper##16032
@@ -629,7 +643,9 @@ step
 step
   only not Shaman
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 1 Jeering Spectre's Essence##22224 |q 8950/1 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 4 Dark Rune##20520 |q 8950/2 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Scholomance Necromancer, Lady Illucia Barov, Instructor Malicia
+  collect 8 Large Brilliant Shard##14344 |q 8950 |tip Crafted or bought.
 step
   only not Shaman
   talk Falrin Treeshaper##16032
@@ -651,7 +667,8 @@ step
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
-  talk Frankal Stonebridge##15171 |q 8304 |goto Silithus 40.81,88.86
+  talk Frankal Stonebridge##15171 |q 8304/1 |goto Silithus 40.81,88.86
+  talk Rutgar Glyphshaper##15170 |q 8304 |goto Silithus 41.28,88.45
 step
   talk Commander Mar'alith##15181
   turnin Dearest Natalia##8304 |goto Silithus 49.2,34.18
@@ -660,7 +677,9 @@ step
   accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
 step
   note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Zora Rubbing##20454 |q 8309/2 |goto Silithus 37.27,62.5 |tip {dropsfrom}Hive'Zora Glyphed Crystal
+  collect Hive'Ashi Rubbing##20455 |q 8309/1 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Regal Rubbing##20456 |q 8309 |goto Kalimdor - the continent map 44.4,86.1 |tip {dropsfrom}Hive'Regal Glyphed Crystal
 step
   talk Rutgar Glyphshaper##15170
   turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
@@ -669,8 +688,10 @@ step
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite
-  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 50.21,40.97
+  kill Hive'Regal Ambusher##11730 |q 8310/3 |goto Silithus 58.08,86.89 |elite
+  collect Hive'Regal Silithid Brain##20459 |q 8310/3 |goto Silithus 58.08,86.89
+  collect Hive'Ashi Silithid Brain##20457 |q 8310/1 |goto Silithus 61.73,52.51 |tip {dropsfrom}Hive'Ashi Drone, Hive'Ashi Stinger, Hive'Ashi Worker
+  collect Hive'Zora Silithid Brain##20458 |q 8310 |goto Silithus 27.87,61.78 |tip {dropsfrom}Hive'Zora Wasp, Hive'Zora Waywatcher, Hive'Zora Tunneler
 step
   talk Frankal Stonebridge##15171
   turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
@@ -686,7 +707,7 @@ step
   accept The Calling##8315 |goto Silithus 49.67,37.46
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
-  kill Emissary Roman'khan##14862 |goto Silithus 48.77,58.14 |raid
+  kill Emissary Roman'khan##14862 |q 8315 |goto Silithus 48.77,58.14 |raid
   collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 48.77,58.14
 step
   talk Geologist Larksbane##15183

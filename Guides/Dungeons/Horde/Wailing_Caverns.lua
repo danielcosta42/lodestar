@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Wailing Caverns", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "08d1a5cf",
+	rev = "1bed79c5",
 }, [[
 step
   talk Tonga Runetotem##3448
@@ -28,12 +28,15 @@ step
   kill Mutanus the Devourer##3654 |goto Wailing Caverns - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept The Glowing Shard##6981 |goto Wailing Caverns - Dungeon -1,-1
 step
+  note Report back to Tonga Runetotem with your findings.
+  goto The Barrens 45.06,22.53 |tip Explore the waters of the Forgotten Pools
+step
   note Nalpak in the Wailing Caverns wants 20 Deviate Hides.
-  kill Deviate Coiler##3630 |goto The Barrens 46,36.4 |elite
-  collect Deviate Hide##6443 |q 1486 |goto The Barrens 46,36.4
+  kill Deviate Coiler##3630 |q 1486 |goto The Barrens 46,36.4 |elite
+  collect 20 Deviate Hide##6443 |q 1486 |goto The Barrens 46,36.4
 step
   note Crane Operator Bigglefuzz in Ratchet wants you to retrieve the bottle of 99-Year-Old Port from Mad Magglish who is hiding in the Wailing Caverns.
-  kill Mad Magglish##3655 |goto The Barrens 46.83,34.66 |elite
+  kill Mad Magglish##3655 |q 959 |goto The Barrens 46.83,34.66 |elite
   collect 99-Year-Old Port##5334 |q 959 |goto The Barrens 46.83,34.66
 step
   note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
@@ -48,7 +51,6 @@ step
   note Travel to Ratchet to find someone that can tell you more about the glowing shard.
   talk Sputtervalve##3442 |q 6981 |goto The Barrens 62.98,37.22
 step
-  note Report back to Tonga Runetotem with your findings.
   talk Tonga Runetotem##3448
   turnin The Forgotten Pools##870 |goto The Barrens 52.26,31.93
 step
@@ -77,10 +79,10 @@ step
   accept Smart Drinks##1491 |goto The Barrens 62.37,37.62
 step
   note Return to Tonga at The Crossroads, after investigating the Stagnant Oasis.
-  collect Bubbling Fissure##3737 |q 877 |goto The Barrens 55.61,42.75
+  click Bubbling Fissure##3737 |q 877 |goto The Barrens 55.61,42.75
 step
   note Bring 6 portions of Wailing Essence to Mebok Mizzyrix in Ratchet.
-  collect 6 Wailing Essence##6464 |q 1491 |goto Wailing Caverns - Dungeon -1,-1 |tip {dropsfrom}Devouring Ectoplasm, Evolving Ectoplasm, Nightmare Ectoplasm
+  collect 6 Wailing Essence##6464 |q 1491 |goto Wailing Caverns - Dungeon -1,-1 |elite |tip {dropsfrom}Nightmare Ectoplasm, Evolving Ectoplasm
 step
   talk Tonga Runetotem##3448
   turnin The Stagnant Oasis##877 |goto The Barrens 52.26,31.93
@@ -115,7 +117,10 @@ step
   accept Leaders of the Fang##914 |goto Thunder Bluff 75.65,31.61
 step
   note Bring the Gems of Cobrahn, Anacondra, Pythas and Serpentis to Nara Wildmane in Thunder Bluff.
-  collect Gem of Cobrahn##9738 |q 914 |goto Wailing Caverns - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Cobrahn, Cobrahn Snake Form
+  collect Gem of Cobrahn##9738 |q 914/1 |goto Wailing Caverns - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Cobrahn
+  collect Gem of Anacondra##9739 |q 914/2 |elite |tip {dropsfrom}Lady Anacondra
+  collect Gem of Pythas##9740 |q 914/3 |goto Wailing Caverns - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Pythas
+  collect Gem of Serpentis##9741 |q 914 |goto Wailing Caverns - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Serpentis
 step
   talk Nara Wildmane##5770
   turnin Leaders of the Fang##914 |goto Thunder Bluff 75.65,31.61

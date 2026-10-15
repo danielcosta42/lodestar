@@ -4,9 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Mulgore (30-31)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Desolace (33-40)",
-	rev = "3a2abdc8",
+	next = "Leveling/Horde/Desolace (33-39)",
+	rev = "19e50dba",
 }, [[
+step
+  ding 24
 step
   only Warrior completed(1844)
   talk Orm Stonehoof##6410
@@ -31,6 +33,7 @@ step
   collect 5 Gloomrise Toxin Sample##273001 |q 96241 |goto Mulgore 33.33,10.16 |tip {dropsfrom}Gnawed Corpse
 step
   note Kill 10 Gloomrise Hatchlings and 5 Gloomrise Soldiers.
+  kill Gloomrise Hatchling##264079 |q 96259/2 |goto Mulgore 33.18,9.43
   kill Gloomrise Soldier##264083 |q 96259 |goto Mulgore 33.41,11.1
 step
   note Gather 3 strands of Crystalline Silk from Gloomrise Spinners.
@@ -51,22 +54,26 @@ step
   talk Muln Earthfury##259118
   turnin The Broodmother##96261 |goto Mulgore 33.42,22.52
 step
+  note Bring the letter you recovered from Broodmother Valraxx to Muln Earthfury at Skywatcher Plateau.
   talk Muln Earthfury##259118
   turnin A Darker Truth##96294 |goto Mulgore 33.42,22.52
+step
+  only level>=30
+  talk Mazu'kon##264074
+  accept Ancient Gurubashi Idol##96774 |goto Mulgore 32.54,20.67
+step
+  only haveq(96774)
+  note Recover an Ancient Gurubashi Idol from the Drowned City.
+  collect Ancient Gurubashi Idol##276894 |q 96774 |goto Mulgore 32.54,20.67
+step
+  only haveq(96774)
+  talk Mazu'kon##264074
+  turnin Ancient Gurubashi Idol##96774 |goto Mulgore 32.54,20.67
 step
   only Warrior completed(1844)
   talk Orm Stonehoof##6410
   turnin Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
 step
-  talk Mazu'kon##264074
-  accept Ancient Gurubashi Idol##96774 |goto Mulgore 32.54,20.67
-step
-  note Recover an Ancient Gurubashi Idol from the Drowned City.
-  collect Ancient Gurubashi Idol##276894 |q 96774 |goto Mulgore 32.54,20.67
-step
-  talk Mazu'kon##264074
-  turnin Ancient Gurubashi Idol##96774 |goto Mulgore 32.54,20.67
-step
   note {travel}Desolace
-  goto Desolace 56.29,59.68
+  goto Desolace 60.86,61.86
 ]])

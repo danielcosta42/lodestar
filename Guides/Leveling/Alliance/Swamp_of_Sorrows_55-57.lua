@@ -4,9 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (55-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Stranglethorn Vale (55-60)",
-	rev = "deb0824c",
+	next = "Leveling/Alliance/Tanaris (53-54)",
+	rev = "bf9a311e",
 }, [[
+step
+  ding 51
 step
   only completed(1469)
   talk Brohann Caskbelly##5384
@@ -16,7 +18,13 @@ step
   talk Kelv Sternhammer##5113
   accept A Troubled Spirit##8417 |goto Ironforge 70.34,90.65
 step
+  only haveq(2783)
+  note Speak with the Fallen Hero of the Horde at the border of the Blasted Lands and the swamp.
+  talk Fallen Hero of the Horde##7572
+  turnin Petty Squabbles##2783 |goto Swamp of Sorrows 34.29,66.14
+step
   only Warrior
+  note Speak with the Fallen Hero of the Horde at the entrance to the Blasted Lands.
   talk Fallen Hero of the Horde##7572
   turnin A Troubled Spirit##8417 |goto Swamp of Sorrows 34.29,66.14
 step
@@ -42,7 +50,7 @@ step
 step
   only completed(3373)
   note Bring the Oathstone of Ysera's Dragonflight and the Chained Essence of Eranikus to Itharius in the Swamp of Sorrows. It is there that you will make your choice to aid Ysera's Dragonflight or not.
-  collect Chained Essence of Eranikus##10455 |q 3374 |goto Swamp of Sorrows 13.67,71.72
+  collect Chained Essence of Eranikus##10455 |q 3374 |goto Swamp of Sorrows 13.67,71.72 |tip Crafted or bought.
 step
   only completed(3373)
   talk Itharius##5353
@@ -58,7 +66,10 @@ step
 step
   only completed(2623,2783)
   note Free nine Servants of Razelikh, three Servants of Sevine, three Servants of Allistarj, and three Servants of Grol. Return to the Fallen Hero when your task is complete. You must remain within close proximity of the stones or the process will fail.
-  kill Servant of Razelikh##7668 |q 2681 |goto Blasted Lands 54.09,52.49
+  kill Servant of Razelikh##7668 |q 2681/1 |goto Blasted Lands 54.09,52.49
+  kill Servant of Allistarj##7670 |q 2681/3 |goto Blasted Lands 63.33,40.83
+  kill Servant of Sevine##7671 |q 2681/4 |goto Blasted Lands 40.99,40.09
+  kill Servant of Grol##7669 |q 2681 |goto Blasted Lands 41.22,14.43
 step
   only completed(2623,2783)
   talk Fallen Hero of the Horde##7572
@@ -69,6 +80,7 @@ step
   accept Heroes of Old##2702 |goto Swamp of Sorrows 34.29,66.14
 step
   only completed(2623,2783)
+  note Speak to Corporal Thund Splithoof.
   talk Corporal Thund Splithoof##7750
   turnin Heroes of Old##2702 |goto Swamp of Sorrows 33.49,65.99
 step
@@ -77,6 +89,7 @@ step
   accept Heroes of Old##2701 |goto Swamp of Sorrows 33.49,65.99
 step
   only completed(2623,2783)
+  note Open the chest and claim your reward.
   turnin Heroes of Old##2701 |goto Swamp of Sorrows 33.26,66.22
 step
   only completed(2623,2783)
@@ -84,6 +97,7 @@ step
   accept Kirith##2721 |goto Swamp of Sorrows 34.29,66.14
 step
   only completed(2623,2783)
+  note Find out what became of Lieutenant Kirith.
   talk Spirit of Kirith##7729
   turnin Kirith##2721 |goto Blasted Lands 68.8,31.07 |tip {turninat}Blasted Lands
 step
@@ -92,9 +106,10 @@ step
   accept The Cover of Darkness##2743 |goto Blasted Lands 68.8,31.07
 step
   only completed(2623,2783)
+  note Return to the Fallen Hero of the Horde with your findings.
   talk Fallen Hero of the Horde##7572
   turnin The Cover of Darkness##2743 |goto Swamp of Sorrows 34.29,66.14
 step
-  note {travel}Stranglethorn Vale
-  goto Stranglethorn Vale 30.52,47.87
+  note {travel}Tanaris
+  goto Tanaris 51.57,26.76
 ]])

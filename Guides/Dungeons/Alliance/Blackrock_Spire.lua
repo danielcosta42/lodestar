@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackrock Spire", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "cce2a9dd",
+	rev = "a27138c4",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -40,6 +40,9 @@ step
   kill Overlord Wyrmthalak##9568 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip Loot the quest item here — it starts the quest.
   accept General Drakkisath's Command##5089 |goto Blackrock Spire - Dungeon -1,-1
 step
+  click Human Remains##176090
+  accept Hot Fiery Death##5103 |goto Blackrock Spire - Dungeon -1,-1
+step
   talk Awbee##10740
   accept The Matron Protectorate##5160 |goto Blackrock Spire - Dungeon -1,-1
 step
@@ -66,7 +69,8 @@ step
   collect 12 Discordant Bracers##17309 |q 6804 |goto Eastern Plaguelands 54.91,68.84 |tip {dropsfrom}Blighted Surge, Plague Ravager, Blighted Horror
 step
   note Kill 15 Dust Stormers and 15 Desert Rumblers and then return to Duke Hydraxis in Azshara.
-  kill Dust Stormer##11744 |q 6805 |goto Silithus 21.6,22.4
+  kill Dust Stormer##11744 |q 6805/1 |goto Silithus 21.6,22.4
+  kill Desert Rumbler##11746 |q 6805 |goto Silithus 22.6,14.2
 step
   note Find Bijou's Belongings and return them to her. Good luck!
   collect Bijou's Belongings##12345 |q 5001 |goto Blackrock Spire - Dungeon -1,-1
@@ -128,6 +132,10 @@ step
   talk Marshal Maxwell##9560
   turnin General Drakkisath's Command##5089 |goto Burning Steppes 84.74,69.02
 step
+  note Someone in this world must know what to do with these gauntlets. Good luck!
+  talk Malyfous Darkhammer##10637
+  turnin Hot Fiery Death##5103 |goto Winterspring 60.99,38.78
+step
   note Travel to Winterspring and find Haleh. Give her Awbee's scale.
   talk Haleh##10929
   turnin The Matron Protectorate##5160 |goto Winterspring 54.55,51.2
@@ -164,6 +172,9 @@ step
   talk Mayara Brightwing##9565
   accept Doomrigger's Clasp##4764 |goto Burning Steppes 84.84,69.12
 step
+  talk Malyfous Darkhammer##10637
+  accept Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
+step
   talk Haleh##10929
   accept Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
@@ -172,7 +183,7 @@ step
   accept The Demon Forge##5127 |goto Winterspring 63.79,73.76
 step
   note Bring the First and Second Mosh'aru Tablets to Yeh'kinya in Tanaris.
-  collect First Mosh'aru Tablet##10660 |q 3527 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Theka the Martyr, Theka the Martyr Shapeshift
+  collect First Mosh'aru Tablet##10660 |q 3527 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Theka the Martyr
 step
   note Bring the Eye of the Emberseer to Duke Hydraxis in Azshara.
   collect Eye of the Emberseer##17322 |q 6821 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Pyroguard Emberseer
@@ -182,6 +193,12 @@ step
 step
   note Bring Doomrigger's Clasp to Mayara Brightwing in the Burning Steppes.
   collect Doomrigger's Clasp##12352 |q 4764 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Doomrigger's Coffer
+step
+  note Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.
+  collect Unfired Plate Gauntlets##12812 |q 5124/1 |goto Blackrock Spire - Dungeon -1,-1
+  collect 6 Enchanted Thorium Bar##12655 |q 5124/2 |tip Crafted or bought.
+  collect 2 Essence of Fire##7078 |q 5124/3 |goto Un'Goro Crater 55.1,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Blazerunner
+  collect Star Ruby##7910 |q 5124 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Mithril Deposit, Truesilver Deposit
 step
   only not Druid not Hunter not Mage not Priest not Rogue not Warlock
   note Travel to Blackrock Spire and find Goraluk Anvilcrack. Slay him and then use the Blood Stained Pike upon his corpse. After his soul has been siphoned, the pike will be Soul Stained.
@@ -206,6 +223,9 @@ step
 step
   talk Mayara Brightwing##9565
   turnin Doomrigger's Clasp##4764 |goto Burning Steppes 84.84,69.12
+step
+  talk Malyfous Darkhammer##10637
+  turnin Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
 step
   note Speak with Haleh if you wish to continue.
   talk Haleh##10929
@@ -294,16 +314,17 @@ step
   accept Tinkee Steamboil##4907 |goto Winterspring 61.63,38.61
 step
   note Bring the Third and Fourth Mosh'aru Tablets to Prospector Ironboot in Tanaris.
-  collect Third Mosh'aru Tablet##12411 |q 5065 |goto Eastern Plaguelands 63.43,7.84
+  collect Third Mosh'aru Tablet##12411 |q 5065/1 |goto Eastern Plaguelands 63.43,7.84
+  collect Fourth Mosh'aru Tablet##12412 |q 5065 |goto Eastern Plaguelands 63.76,10.22
 step
   note Use the Eggscilloscope Prototype on an egg in the Rookery.
-  collect Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
+  click Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
 step
   note To forge the Breastplate of the Chromatic Flight, you will be required to bring the following items to Jeziba the 'Sculptor':
-  collect Chromatic Carapace##12871 |q 5166 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Gyth
+  collect 1 Chromatic Carapace##12871 |q 5166 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Gyth
 step
   note To forge the Legplates of the Chromatic Defier, you will be required to bring the following items to Jeziba the 'Sculptor':
-  collect Chromatic Carapace##12871 |q 5167 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Gyth
+  collect 1 Chromatic Carapace##12871 |q 5167 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Gyth
 step
   talk Prospector Ironboot##10460
   turnin The Lost Tablets of Mosh'aru##5065 |goto Tanaris 66.89,24.03
@@ -331,7 +352,7 @@ step
   collect Fifth Mosh'aru Tablet##12740 |q 4788 |goto Blackrock Spire - Dungeon -1,-1
 step
   note Bring 8 Collected Dragon Eggs and the Collectronic Module to Tinkee Steamboil at Flame Crest in the Burning Steppes.
-  collect Rookery Egg##175124 |q 4735 |goto Blackrock Spire - Dungeon -1,-1
+  click Rookery Egg##175124 |q 4735 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Prospector Ironboot##10460
   turnin The Final Tablets##4788 |goto Tanaris 66.89,24.03

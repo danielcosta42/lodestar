@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Gnomeregan", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "0fcb7684",
+	rev = "78f7693f",
 }, [[
 step
   only not completed(4601) not completed(4602) not haveq(4601) not haveq(4602)
@@ -19,7 +19,7 @@ step
 step
   only not completed(4601) not completed(4602) not haveq(4601) not haveq(4602)
   note Insert a Grime-Encrusted Item into the Sparklematic 5200, and be sure to have three silver coins to start the machine.
-  collect Grime-Encrusted Object##9308 |q 2951 |goto Gnomeregan - Dungeon -1,-1 |tip {dropsfrom}Caverndeep Burrower, Caverndeep Ambusher, Caverndeep Invader
+  collect Grime-Encrusted Object##9308 |q 2951 |goto Gnomeregan - Dungeon -1,-1 |elite |tip {dropsfrom}Caverndeep Ambusher, Caverndeep Burrower, Caverndeep Reaver
 step
   note Retrieve the Rig Blueprints and Thermaplugg's Safe Combination from Gnomeregan and bring them to Nogg in Orgrimmar.
   collect Rig Blueprints##9153 |q 2841 |goto Gnomeregan - Dungeon -1,-1 |tip {dropsfrom}Thermaplugg's Safe

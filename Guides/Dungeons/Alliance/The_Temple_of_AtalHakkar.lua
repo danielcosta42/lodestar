@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Temple of Atal'Hakkar", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "dfa7671b",
+	rev = "5af10424",
 }, [[
 step
   only Rogue
@@ -50,15 +50,15 @@ step
 step
   only Rogue
   note Retrieve the Sealed Azure Bag from the Timbermaw Shaman in Azshara. Then take the bag to Archmage Xylem, also found in Azshara.
-  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.78,22.51 |tip {dropsfrom}Timbermaw Shaman, Blackmaw Shaman
+  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.78,22.51 |tip {dropsfrom}Timbermaw Shaman
 step
   only Mage
   note Bring 10 Glittering Dust to Archmage Xylem.
-  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Defender
+  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer
 step
   only Warlock not completed(8420) not haveq(8420)
   note Bring a piece of felcloth to Impsy in Felwood.
-  collect Felcloth##14256 |q 8419 |goto Blasted Lands 57.73,50.62 |tip {dropsfrom}Felhunter, Felguard Sentry, Legashi Satyr
+  collect Felcloth##14256 |q 8419 |goto Azshara 61.79,23.59 |tip {dropsfrom}Legashi Satyr, Legashi Rogue, Legashi Hellcaller
 step
   only Warrior
   note Kill 7 Helboar in the Blasted Lands and return to the Fallen Hero of the Horde.
@@ -69,11 +69,12 @@ step
 step
   only Druid
   note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.
+  collect 8 Bloodcap##22434 |q 9052/2 |goto Un'Goro Crater 44.62,42.45 |tip {dropsfrom}Bloodpetal Sprout
   collect 8 Gorishi Sting##22435 |q 9052 |goto Un'Goro Crater 50.14,75.97 |tip {dropsfrom}Gorishi Wasp, Gorishi Stinger
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Collect 20 Minion's Scourgestones and bring them to High Priest Thel'danis in the Western Plaguelands.
-  collect 20 Minion's Scourgestone##12840 |q 8414 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
+  collect 20 Minion's Scourgestone##12840 |q 8414 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Slavering Ghoul
 step
   note The Atal'ai Exile in The Hinterlands wants the Head of Jammal'an.
   collect Head of Jammal'an##6212 |q 1446 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Jammal'an the Prophet
@@ -174,11 +175,14 @@ step
 step
   only Warlock
   note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
-  collect 10 Rotting Wood##20613 |q 8421 |goto Felwood 46.58,23.75 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
+  collect 10 Rotting Wood##20613 |q 8421/1 |goto Felwood 46.58,23.75 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
+  collect 4 Bloodvenom Essence##20614 |q 8421 |goto Felwood 41.4,50.23 |tip {dropsfrom}Tainted Ooze
 step
   only Warrior
   note Slaughter the Shadowsworn in the Blasted Lands and return to the Fallen Hero of the Horde.
-  kill Shadowsworn Adept##6006 |q 8424 |goto Blasted Lands 64.08,35.24
+  kill Shadowsworn Adept##6006 |q 8424/1 |goto Blasted Lands 64.08,35.24
+  kill Shadowsworn Cultist##6004 |q 8424/2 |goto Blasted Lands 64.77,33.72
+  kill Shadowsworn Thug##6005 |q 8424 |goto Blasted Lands 64.69,32.93
 step
   only Rogue
   talk Archmage Xylem##8379
@@ -267,14 +271,14 @@ step
 step
   only Priest
   note Acquire an Ichor of Undeath for Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
-  collect Ichor of Undeath##7972 |q 8256 |goto Stranglethorn Vale 38.89,57.62 |tip {dropsfrom}Zanzil Zombie, Zanzil Hunter, Skeletal Flayer
+  collect Ichor of Undeath##7972 |q 8256 |goto Stranglethorn Vale 38.89,57.62 |tip {dropsfrom}Zanzil Zombie, Zanzil Hunter
 step
   only Warlock
   note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
   collect Amber Voodoo Feather##20606 |q 8422 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Gasher, Zul'Lor
 step
   note Collect 5 samples of Atal'ai Haze, then return to Muigin in Un'Goro Crater.
-  collect 5 Atal'ai Haze##11318 |q 4143 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Murk Worm, Saturated Ooze, Deep Lurker
+  collect 5 Atal'ai Haze##11318 |q 4143 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Murk Worm, Saturated Ooze, Deep Lurker
 step
   only Warrior
   note Bring the Voodoo Feathers from the trolls in the Sunken Temple to the Fallen Hero of the Horde.

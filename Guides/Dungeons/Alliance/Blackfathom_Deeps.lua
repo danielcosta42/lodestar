@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackfathom Deeps", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "1b44dd9c",
+	rev = "18acd0e8",
 }, [[
 step
   talk Gerrig Bonegrip##2786
@@ -23,7 +23,7 @@ step
   collect Lorgalis Manuscript##5359 |q 971 |goto Blackfathom Deeps - Dungeon -1,-1 |tip {dropsfrom}Pitted Iron Chest
 step
   note Gershala Nightwhisper in Auberdine wants 8 Corrupt Brain stems.
-  kill Fallenroot Satyr##4788 |goto Ashenvale 13.52,12.22 |elite
+  kill Fallenroot Satyr##4788 |q 1275 |goto Ashenvale 13.52,12.22 |elite
   collect Corrupted Brain Stem##5952 |q 1275 |goto Ashenvale 13.52,12.22
 step
   note Bring 10 Twilight Pendants to Argent Guard Manados in Darnassus.

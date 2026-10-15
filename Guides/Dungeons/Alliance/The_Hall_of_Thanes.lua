@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Hall of Thanes", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "64f87c69",
+	rev = "a52a3520",
 }, [[
 step
   kill Dark Iron Spy##6123 |goto Dun Morogh 77.36,61.31 |tip Loot the quest item here — it starts the quest.
@@ -43,7 +43,7 @@ step
   accept Old Ironforge Incursion##96393 |goto Dun Morogh 64.87,58.47
 step
   note Enter the Hall of Thanes beneath Old Ironforge and claim the Head of Durgen Dirgehammer.
-  collect Durgen Dirgehammer's Head##274286 |q 96393 |goto The Hall of Thanes - Dungeon -1,-1 |tip {dropsfrom}Durgen Dirgehammer
+  collect Durgen Dirgehammer's Head##274286 |q 96393 |goto The Hall of Thanes - Dungeon -1,-1 |elite |tip {dropsfrom}Durgen Dirgehammer
 step
   talk King Magni Bronzebeard##2784
   turnin Old Ironforge Incursion##96393 |goto Ironforge 39.09,56.2

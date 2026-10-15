@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Uldaman", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "962ff785",
+	rev = "5643bea4",
 }, [[
 step
   only Mage
@@ -17,9 +17,6 @@ step
   talk Jangdor Swiftstrider##7854
   accept Wild Leather Armor##2854 |goto Feralas 74.43,42.91
 step
-  click Human Remains##176090
-  accept Hot Fiery Death##5103 |goto Blackrock Spire - Dungeon -1,-1
-step
   only Mage
   note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
   collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
@@ -28,7 +25,8 @@ step
   collect Shattered Necklace##7666 |q 2283 |goto Badlands 48.2,11 |tip {dropsfrom}Shadowforge Surveyor, Shadowforge Ruffian, Shadowforge Digger
 step
   note Bring 10 Thick Leather to Jangdor Swiftstrider in Camp Mojache.
-  buy 10 Thick Leather##4304 |q 2854 |goto Elwynn Forest 41.2,69.9
+  talk Lhara##14846
+  collect 10 Thick Leather##4304 |q 2854 |goto Elwynn Forest 41.2,69.9
 step
   only Mage
   talk Tabetha##6546
@@ -40,10 +38,6 @@ step
   talk Jangdor Swiftstrider##7854
   turnin Wild Leather Armor##2854 |goto Feralas 74.43,42.91
 step
-  note Someone in this world must know what to do with these gauntlets. Good luck!
-  talk Malyfous Darkhammer##10637
-  turnin Hot Fiery Death##5103 |goto Winterspring 60.99,38.78
-step
   only Mage
   talk Tabetha##6546
   accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
@@ -54,18 +48,12 @@ step
   talk Jangdor Swiftstrider##7854
   accept Wild Leather Shoulders##2855 |goto Feralas 74.43,42.91
 step
-  talk Malyfous Darkhammer##10637
-  accept Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
-step
   only Mage
   note Kill the Demon of the Orb, then speak with Tabetha.
   kill Demon of the Orb##6549 |q 1955 |goto Dustwallow Marsh 45.79,56.97 |elite
 step
   note Bring 6 Thick Armor Kits and a Wildvine to Jangdor Swiftstrider in Camp Mojache.
-  collect 6 Thick Armor Kit##8173 |q 2855 |goto Uldaman - Dungeon -1,-1 |tip {dropsfrom}Olaf
-step
-  note Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.
-  collect Unfired Plate Gauntlets##12812 |q 5124 |goto Blackrock Spire - Dungeon -1,-1
+  collect 6 Thick Armor Kit##8173 |q 2855 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Olaf
 step
   only Mage
   talk Tabetha##6546
@@ -77,9 +65,6 @@ step
 step
   talk Jangdor Swiftstrider##7854
   turnin Wild Leather Shoulders##2855 |goto Feralas 74.43,42.91
-step
-  talk Malyfous Darkhammer##10637
-  turnin Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
 step
   only Mage
   talk Tabetha##6546

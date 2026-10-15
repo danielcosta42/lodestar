@@ -4,14 +4,17 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (31-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Badlands (37-43)",
-	rev = "2730fac6",
+	next = "Leveling/Alliance/Swamp of Sorrows (35-42)",
+	rev = "1736187b",
 }, [[
 step
+  ding 30
+step
+  only level>=30
   talk Archmage Malin##2708
   accept Malin's Request##690 |goto Stormwind City 50.5,87.47
 step
-  only Shaman
+  only Shaman level>=30
   talk Eldrun Stormbreaker##258098
   accept Call of Air##94789 |goto Ironforge 47.38,13.48
 step
@@ -21,106 +24,95 @@ step
   talk Foggy MacKreel##2696
   accept MacKreel's Moonshine##647 |goto Arathi Highlands 43.24,92.64
 step
-  only completed(659)
-  talk Quae##2712
-  accept Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
-step
-  only completed(659)
-  note Find the Forsaken Courier and bring back her Sealed Folder to Quae near the Go'Shek Farm.
-  collect Sealed Folder##4482 |q 658 |goto Arathi Highlands 52.47,61.53 |tip {dropsfrom}Forsaken Courier, Alterac Granite
-step
-  only completed(659)
-  talk Quae##2712
-  turnin Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
-step
-  only completed(659)
-  talk Quae##2712
-  accept Hints of a New Plague?##657 |goto Arathi Highlands 60.18,53.85
-step
-  only completed(659)
-  talk Kinelory##2713
-  turnin Hints of a New Plague?##657 |goto Arathi Highlands 60.24,53.92
-step
-  only completed(659)
-  talk Kinelory##2713
-  accept Hints of a New Plague?##660 |goto Arathi Highlands 60.24,53.92
-step
-  only completed(659)
-  talk Quae##2712
-  turnin Hints of a New Plague?##660 |goto Arathi Highlands 60.18,53.85
-step
-  only completed(659)
-  talk Quae##2712
-  accept Hints of a New Plague?##661 |goto Arathi Highlands 60.18,53.85
-step
   note {fp}Cedrik Prose
   goto Arathi Highlands 45.73,46.1 |tip {vendor}
 step
+  only haveq(690)
+  note Find Skuerto at Refuge Pointe in the Arathi Highlands.
   talk Skuerto##2789
   turnin Malin's Request##690 |goto Arathi Highlands 46.65,47.01
 step
+  only level>=30
   talk Captain Nials##2700
   accept Northfold Manor##681 |goto Arathi Highlands 45.83,47.56
-step
-  talk Apprentice Kryten##2788
-  accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
-step
-  note Find 10 Witherbark Tusks, 4 Witherbark Medicine Pouches and a Shadow Hunter Knife for Apprentice Kryten at Refuge Pointe.
-  collect 10 Witherbark Tusk##4503 |q 691 |goto Arathi Highlands 35.1,46.16 |tip {dropsfrom}Witherbark Troll, Witherbark Shadowcaster, Witherbark Axe Thrower
-step
-  talk Apprentice Kryten##2788
-  turnin Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
 step
   click Messenger Bag##406918
   accept This Must Be The Place##79976 |goto Arathi Highlands 22.54,24.14
 step
+  only haveq(681)
   note Kill 10 Syndicate Highwaymen and 6 Syndicate Mercenaries.
+  kill Syndicate Mercenary##2589 |q 681/2 |goto Arathi Highlands 31.02,28.75
   kill Syndicate Highwayman##2586 |q 681 |goto Arathi Highlands 30.97,29.79
 step
+  note Whoever was here, you just missed them.
   turnin This Must Be The Place##79976 |goto Arathi Highlands 22.55,24.14
 step
+  only haveq(681)
   talk Captain Nials##2700
   turnin Northfold Manor##681 |goto Arathi Highlands 45.83,47.56
 step
-  talk Captain Nials##2700
-  accept Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
-step
-  note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
-  kill Syndicate Prowler##2588 |goto Arathi Highlands 28.33,63.36 |elite
-  collect 7 Stromgarde Badge##4506 |q 682 |goto Arathi Highlands 28.33,63.36
-step
-  talk Lolo the Lookout##2766
-  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
-step
-  talk Shakes O'Breen##2610
-  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
-step
-  talk Captain Nials##2700
-  turnin Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
-step
-  click Wanted Board##2713
-  accept Wanted!  Marez Cowl##684 |goto Arathi Highlands 46.04,47.76
-step
-  talk Skuerto##2789
-  accept Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
-step
-  note Bring Marez's head to Captain Nials at Refuge Pointe.
-  kill Marez Cowl##2783 |goto Arathi Highlands 29.47,64.14 |elite
-  collect Marez's Head##4515 |q 684 |goto Arathi Highlands 29.47,64.14
-step
-  talk Captain Nials##2700
-  turnin Wanted!  Marez Cowl##684 |goto Arathi Highlands 45.83,47.56
-step
-  only Shaman
+  only Shaman haveq(94789)
+  note Find Veyric Thundervein in Arathi Highlands.
   talk Veyric Thunderhame##259023
   turnin Call of Air##94789 |goto Arathi Highlands 59.77,27.6
 step
+  only level>=30
+  talk Apprentice Kryten##2788
+  accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
+step
+  only haveq(691)
+  note Find 10 Witherbark Tusks, 4 Witherbark Medicine Pouches and a Shadow Hunter Knife for Apprentice Kryten at Refuge Pointe.
+  collect 10 Witherbark Tusk##4503 |q 691/1 |goto Arathi Highlands 35.1,46.16 |tip {dropsfrom}Witherbark Troll, Witherbark Shadowcaster, Witherbark Axe Thrower
+  collect 4 Witherbark Medicine Pouch##4522 |q 691/2 |goto Arathi Highlands 69.34,68.69 |tip {dropsfrom}Witherbark Witch Doctor
+  collect Shadow Hunter Knife##5040 |q 691 |goto Arathi Highlands 67.53,80.51 |tip {dropsfrom}Witherbark Shadow Hunter
+step
+  only haveq(691)
+  talk Apprentice Kryten##2788
+  turnin Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
+step
+  only completed(681) level>=37
+  talk Captain Nials##2700
+  accept Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
+step
+  only completed(659) level>=30
+  talk Quae##2712
+  accept Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
+step
+  only completed(659) haveq(658)
+  note Find the Forsaken Courier and bring back her Sealed Folder to Quae near the Go'Shek Farm.
+  collect Sealed Folder##4482 |q 658 |goto Arathi Highlands 52.47,61.53 |tip {dropsfrom}Forsaken Courier
+step
+  only completed(659) haveq(658)
+  talk Quae##2712
+  turnin Hints of a New Plague?##658 |goto Arathi Highlands 60.18,53.85
+step
+  only completed(659) completed(658) level>=30
+  talk Quae##2712
+  accept Hints of a New Plague?##657 |goto Arathi Highlands 60.18,53.85
+step
+  only completed(659) haveq(657)
+  note Speak to Kinelory.
+  talk Kinelory##2713
+  turnin Hints of a New Plague?##657 |goto Arathi Highlands 60.24,53.92
+step
+  only completed(659) completed(657) level>=30
+  talk Kinelory##2713
+  accept Hints of a New Plague?##660 |goto Arathi Highlands 60.24,53.92
+step
+  only completed(659) haveq(660)
+  note Protect Kinelory until she returns to Quae.
+  goto Arathi Highlands 60.1,53.83 |tip Protect Kinelory
+step
+  only completed(659) haveq(660)
+  talk Quae##2712
+  turnin Hints of a New Plague?##660 |goto Arathi Highlands 60.18,53.85
+step
+  only completed(659) completed(660)
+  talk Quae##2712
+  accept Hints of a New Plague?##661 |goto Arathi Highlands 60.18,53.85
+step
   click Shards of Myzrael##138492
   accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
-step
-  only Shaman
-  talk Veyric Thunderhame##259023
-  accept Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
 step
   note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
   collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
@@ -131,151 +123,225 @@ step
   accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
 step
   note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
+  collect Cresting Key##4484 |q 651/2 |goto Arathi Highlands 66.7,29.72 |tip {dropsfrom}Stone of East Binding
+  collect Thundering Key##4485 |q 651/3 |goto Arathi Highlands 52.04,50.73 |tip {dropsfrom}Stone of Outer Binding
   collect Burning Key##4483 |q 651 |goto Arathi Highlands 25.46,30.11 |tip {dropsfrom}Stone of West Binding
 step
   turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
+  only haveq(682)
+  note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
+  kill Syndicate Prowler##2588 |q 682 |goto Arathi Highlands 28.33,63.36 |elite
+  collect 7 Stromgarde Badge##4506 |q 682 |goto Arathi Highlands 28.33,63.36
+step
+  only haveq(682)
+  talk Captain Nials##2700
+  turnin Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
+step
+  only level>=39
+  click Wanted Board##2713
+  accept Wanted!  Marez Cowl##684 |goto Arathi Highlands 46.04,47.76
+step
+  only completed(691)
+  talk Skuerto##2789
+  accept Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
+step
+  only haveq(693)
   note Find Trelane's Wand of Invocation and return it to Skuerto at Refuge Pointe.
   collect Trelane's Wand of Invocation##4525 |q 693 |goto Arathi Highlands 54.75,81.87 |tip {dropsfrom}Kor'gresh Coldrage
 step
+  only haveq(693)
   talk Skuerto##2789
   turnin Wand over Fist##693 |goto Arathi Highlands 46.65,47.01
 step
+  only completed(693) level>=39
   talk Skuerto##2789
   accept Trelane's Defenses##694 |goto Arathi Highlands 46.65,47.01
 step
+  only haveq(684)
+  note Bring Marez's head to Captain Nials at Refuge Pointe.
+  kill Marez Cowl##2783 |q 684 |goto Arathi Highlands 29.47,64.14 |elite
+  collect Marez's Head##4515 |q 684 |goto Arathi Highlands 29.47,64.14
+step
+  only haveq(694)
   note Find an Azure Agate and bring it to Apprentice Kryten at Refuge Pointe.
-  kill Boulderfist Shaman##2570 |goto Arathi Highlands 19.97,67.51 |elite
+  kill Boulderfist Shaman##2570 |q 694 |goto Arathi Highlands 19.97,67.51 |elite
   collect Azure Agate##4527 |q 694 |goto Arathi Highlands 19.97,67.51
 step
+  only haveq(684)
+  talk Captain Nials##2700
+  turnin Wanted!  Marez Cowl##684 |goto Arathi Highlands 45.83,47.56
+step
+  only haveq(694)
   talk Apprentice Kryten##2788
   turnin Trelane's Defenses##694 |goto Arathi Highlands 46.2,47.75
 step
+  only completed(694)
   talk Apprentice Kryten##2788
   accept An Apprentice's Enchantment##695 |goto Arathi Highlands 46.2,47.75
 step
-  click Wanted Board##2713
-  accept Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
-step
+  only haveq(695)
+  note Speak to Skuerto.
   talk Skuerto##2789
   turnin An Apprentice's Enchantment##695 |goto Arathi Highlands 46.65,47.01
 step
+  only completed(695)
   talk Skuerto##2789
   accept Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
 step
+  only level>=40
+  click Wanted Board##2713
+  accept Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
+step
+  only haveq(685)
   note Bring Otto's Head and Falconcrest's Head to Captain Nials at Refuge Pointe.
-  kill Otto##2599 |goto Arathi Highlands 26.22,65.55 |elite
-  collect Otto's Head##4516 |q 685 |goto Arathi Highlands 26.22,65.55
+  kill Otto##2599 |q 685/1 |goto Arathi Highlands 26.22,65.55 |elite
+  collect Otto's Head##4516 |q 685/1 |goto Arathi Highlands 26.22,65.55
+  kill Lord Falconcrest##2597 |q 685 |goto Arathi Highlands 26.03,65.68 |elite
+  collect Falconcrest's Head##4517 |q 685 |goto Arathi Highlands 26.03,65.68
 step
+  only haveq(696)
   note Find Trelane's Phylactery, Trelane's Orb, and Trelane's Ember Agate, and return them to Skuerto at Refuge Pointe.
-  collect Trelane's Phylactery##4530 |q 696 |goto Arathi Highlands 18.18,68.14 |tip {dropsfrom}Trelane's Footlocker
+  collect Trelane's Phylactery##4530 |q 696/1 |goto Arathi Highlands 18.18,68.14 |tip {dropsfrom}Trelane's Footlocker
+  collect Trelane's Ember Agate##4532 |q 696/3 |goto Arathi Highlands 18.03,67.87 |tip {dropsfrom}Trelane's Lockbox
+  collect Trelane's Orb##4531 |q 696 |goto Arathi Highlands 18.17,69.15 |tip {dropsfrom}Trelane's Chest
 step
+  only level>=35
+  talk Lolo the Lookout##2766
+  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
+step
+  only haveq(663)
+  note Talk to Captain O'Breen in Faldir's Cove.
+  talk Shakes O'Breen##2610
+  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
+step
+  only completed(663) level>=35
   talk First Mate Nilzlix##2767
   accept Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
 step
+  only completed(663) level>=35
   talk Captain Steelgut##2769
   accept Drowned Sorrows##664 |goto Arathi Highlands 34,80.8
 step
+  only completed(663) level>=35
   talk Professor Phizzlethorpe##2768
   accept Sunken Treasure##665 |goto Arathi Highlands 33.87,80.55
 step
+  only haveq(665)
+  note Escort Professor Phizzlethorpe to the cave and back.
+  goto Arathi Highlands 33.87,80.6 |tip Defend Professor Phizzlethorpe
+step
+  only haveq(665)
   talk Doctor Draxlegauge##2774
   turnin Sunken Treasure##665 |goto Arathi Highlands 33.86,80.45
 step
+  only completed(665) level>=35
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
 step
+  only haveq(662)
   note First Mate Nilzlix wants you to retrieve the Charts and Logs from the Maiden's Folly and the Spirit of Silverpine.
-  collect Maiden's Folly Charts##4487 |q 662 |goto Arathi Highlands 23.05,84.51
+  collect Maiden's Folly Log##4489 |q 662/2 |goto Arathi Highlands 23.39,85.09
+  collect Maiden's Folly Charts##4487 |q 662/1 |goto Arathi Highlands 23.05,84.51
+  collect Spirit of Silverpine Log##4490 |q 662/4 |goto Arathi Highlands 20.65,85.1
+  collect Spirit of Silverpine Charts##4488 |q 662 |goto Arathi Highlands 20.46,85.61
 step
+  only haveq(664)
   note Captain Steelgut in Faldir's Cove wants you to kill 10 Daggerspine Raiders and 3 Daggerspine Sorceresses.
+  kill Daggerspine Sorceress##2596 |q 664/2 |goto Arathi Highlands 22.45,84.35
   kill Daggerspine Raider##2595 |q 664 |goto Arathi Highlands 22.57,86.91
 step
+  only haveq(666)
   note Doctor Draxlegauge in Faldir's Cove wants you to collect 10 Elven Gems and return the Goggles of Gem Hunting once you are done.
   collect 10 Elven Gem##4492 |q 666 |goto Arathi Highlands 23,89 |tip {dropsfrom}Calcified Elven Gem
 step
+  only haveq(662)
   talk First Mate Nilzlix##2767
   turnin Deep Sea Salvage##662 |goto Arathi Highlands 32.8,81.48
 step
+  only haveq(664)
   talk Captain Steelgut##2769
   turnin Drowned Sorrows##664 |goto Arathi Highlands 34,80.8
 step
+  only haveq(666)
   talk Doctor Draxlegauge##2774
   turnin Sunken Treasure##666 |goto Arathi Highlands 33.86,80.45
 step
+  only completed(666) level>=35
   talk Doctor Draxlegauge##2774
   accept Sunken Treasure##668 |goto Arathi Highlands 33.86,80.45
 step
+  only haveq(668)
+  note Take the Elven Gems to Captain O'Breen.
   talk Shakes O'Breen##2610
   turnin Sunken Treasure##668 |goto Arathi Highlands 32.28,81.38
 step
+  only completed(668) level>=35
   talk Shakes O'Breen##2610
   accept Sunken Treasure##669 |goto Arathi Highlands 32.28,81.38
 step
+  only haveq(685)
   talk Captain Nials##2700
   turnin Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 45.83,47.56
 step
+  only haveq(696)
   talk Skuerto##2789
   turnin Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
 step
+  only completed(696)
   talk Skuerto##2789
   accept Malin's Request##697 |goto Arathi Highlands 46.65,47.01
 step
-  only Shaman
-  talk Veyric Thunderhame##259023
-  accept The Tempest's Weapons##96016 |goto Arathi Highlands 59.77,27.6
-step
+  only level>=42
   click Stone of Inner Binding##2702
   accept Breaking the Keystone##652 |goto Arathi Highlands 36.23,57.38
 step
+  only haveq(652)
   note Find and kill Fozruk. Bring the Rod of Order to the Keystone in the Arathi Highlands.
-  kill Fozruk##2611 |goto Arathi Highlands 63.9,30 |elite
+  kill Fozruk##2611 |q 652 |goto Arathi Highlands 63.9,30 |elite
   collect Rod of Order##4469 |q 652 |goto Arathi Highlands 63.9,30
 step
+  only haveq(652)
   turnin Breaking the Keystone##652 |goto Arathi Highlands 36.08,58.09
 step
+  only completed(652)
   click Keystone##2688
   accept Myzrael's Allies##653 |goto Arathi Highlands 36.08,58.09
 step
+  note Deliver Sully Balloo's Letter to Sara Balloo.
   talk Sara Balloo##2695
   turnin Sully Balloo's Letter##637 |goto Ironforge 63.5,67.3 |tip {turninat}Ironforge
-step
-  talk Brewmeister Bilger##2705
-  turnin MacKreel's Moonshine##647 |goto Hillsbrad Foothills 52.13,58.74 |tip {turninat}Hillsbrad Foothills
-step
-  only Shaman
-  talk Bath'rah the Windwatcher##6176
-  turnin The Tempest's Weapons##96016 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
-step
-  only Shaman
-  note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Veyric Thunderhame in Arathi Highlands.
-  collect 5 Twisted Fire Totem##274044 |q 79358 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Skullthumper, Stonevault Bonesnapper, Stonevault Shaman
-step
-  only Shaman
-  talk Veyric Thunderhame##259023
-  turnin Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
 step
   talk Sara Balloo##2695
   accept Sara Balloo's Plea##683 |goto Ironforge 63.5,67.3
 step
+  note Take Sara Balloo's note to King Magni Bronzebeard of Ironforge.
   talk King Magni Bronzebeard##2784
   turnin Sara Balloo's Plea##683 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
 step
   talk King Magni Bronzebeard##2784
   accept A King's Tribute##686 |goto Ironforge 39.09,56.2
 step
+  note King Magni Bronzebeard wants you to speak with Grand Mason Marblesten.
   talk Grand Mason Marblesten##2790
   turnin A King's Tribute##686 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge
 step
-  only completed(659)
-  talk Phin Odelic##2711
-  turnin Hints of a New Plague?##661 |goto Hillsbrad Foothills 50.35,59.05 |tip {turninat}Hillsbrad Foothills
+  talk Grand Mason Marblesten##2790
+  accept A King's Tribute##689 |goto Ironforge 39.04,88.05
 step
+  only haveq(653)
+  note Speak with Gerrig Bonegrip in the Forlorn Cavern of Ironforge.
   talk Gerrig Bonegrip##2786
   turnin Myzrael's Allies##653 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
 step
-  talk Grand Mason Marblesten##2790
-  accept A King's Tribute##689 |goto Ironforge 39.04,88.05
+  note Take MacKreel's Moonshine to Brewmeister Bilger in Southshore.
+  talk Brewmeister Bilger##2705
+  turnin MacKreel's Moonshine##647 |goto Hillsbrad Foothills 52.13,58.74 |tip {turninat}Hillsbrad Foothills
+step
+  only completed(659) haveq(661)
+  note Find Phin Odelic in Southshore.
+  talk Phin Odelic##2711
+  turnin Hints of a New Plague?##661 |goto Hillsbrad Foothills 50.35,59.05 |tip {turninat}Hillsbrad Foothills
 step
   note Grand Mason Marblesten of Ironforge wants 5 pieces of Alterac Granite.
   collect Alterac Granite##4521 |q 689 |goto Hillsbrad Foothills 43.54,30.19
@@ -283,30 +349,44 @@ step
   talk Grand Mason Marblesten##2790
   turnin A King's Tribute##689 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge
 step
-  talk Fleet Master Seahorn##2487
-  turnin Sunken Treasure##669 |goto Stranglethorn Vale 27.17,77.01 |tip {turninat}Stranglethorn Vale
-step
   talk Grand Mason Marblesten##2790
   accept A King's Tribute##700 |goto Ironforge 39.04,88.05
 step
+  note Report to King Magni Bronzebeard.
   talk King Magni Bronzebeard##2784
   turnin A King's Tribute##700 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
 step
+  only haveq(669)
+  note Take the Sample Elven Gem to Fleet Master Seahorn in Booty Bay.
+  talk Fleet Master Seahorn##2487
+  turnin Sunken Treasure##669 |goto Stranglethorn Vale 27.17,77.01 |tip {turninat}Stranglethorn Vale
+step
+  only completed(669) level>=35
   talk Fleet Master Seahorn##2487
   accept Sunken Treasure##670 |goto Stranglethorn Vale 27.17,77.01
 step
+  only haveq(670)
+  note Deliver Seahorn's Letter to Shakes O'Breen in Arathi Highlands.
   talk Shakes O'Breen##2610
   turnin Sunken Treasure##670 |goto Arathi Highlands 32.28,81.38
 step
-  talk Archmage Malin##2708
-  turnin Malin's Request##697 |goto Stormwind City 50.5,87.47 |tip {turninat}Stormwind City
-step
+  only completed(670) level>=35
   talk Shakes O'Breen##2610
   accept Death From Below##667 |goto Arathi Highlands 32.28,81.38
 step
+  only haveq(667)
+  note Protect Shakes O'Breen during the attack.
+  goto Arathi Highlands 31.93,81.82 |tip Defend Shakes O'Breen
+step
+  only haveq(667)
   talk Shakes O'Breen##2610
   turnin Death From Below##667 |goto Arathi Highlands 32.28,81.38
 step
-  note {travel}Badlands
-  goto Badlands 42.39,52.93
+  only haveq(697)
+  note Take the Sealed Letter to Archmage Malin in the Mage Quarter of Stormwind.
+  talk Archmage Malin##2708
+  turnin Malin's Request##697 |goto Stormwind City 50.5,87.47 |tip {turninat}Stormwind City
+step
+  note {travel}Swamp of Sorrows
+  goto Swamp of Sorrows 25.98,31.4
 ]])

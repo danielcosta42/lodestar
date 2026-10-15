@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackrock Depths", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "c452361a",
+	rev = "a6476d73",
 }, [[
 step
   talk Kalaran Windblade##8479
@@ -50,12 +50,17 @@ step
   kill Overmaster Pyron##9026 |q 3906 |goto Eastern Kingdoms - the continent map 46.82,67.7 |elite
 step
   note Venture to the Burning Steppes and recover 10 Fractured Elemental Shards for Hierophant Theodora Mulvadania.
-  collect Fractured Elemental Shard##11266 |q 4061 |goto Burning Steppes 55.47,49.02 |tip {dropsfrom}Greater Obsidian Elemental, War Reaver, Malfunctioning Reaver
+  collect 10 Fractured Elemental Shard##11266 |q 4061 |goto Burning Steppes 59.4,37.85 |tip {dropsfrom}War Reaver, Greater Obsidian Elemental, Malfunctioning Reaver
 step
   note Bring 4 Gromsblood, 10 Giant Silver Veins and Nagmara's Filled Vial to Mistress Nagmara in Blackrock Depths.
-  collect 4 Gromsblood##8846 |q 4201 |goto Felwood 38.83,49.24 |tip {dropsfrom}Razorlash, Gromsblood
+  collect 4 Gromsblood##8846 |q 4201/1 |goto Felwood 38.83,49.24
+  kill Cliff Breaker##6146 |q 4201/2 |goto Azshara 60.29,81.68 |elite
+  collect 10 Giant Silver Vein##11405 |q 4201/2 |goto Azshara 60.29,81.68
+  collect Nagmara's Filled Vial##11413 |q 4201 |goto Un'Goro Crater 31.96,49.63 |tip {dropsfrom}Golakka Crater
 step
-  collect Star Ruby##7910 |q 4083 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Mithril Deposit, Truesilver Deposit
+  collect Star Ruby##7910 |q 4083/1 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Mithril Deposit, Truesilver Deposit
+  collect Gold Bar##3577 |q 4083/2 |goto Redridge Mountains 15.87,36.18 |tip {dropsfrom}Battered Chest
+  collect Truesilver Bar##6037 |q 4083 |goto Stranglethorn Vale 41.52,49.61 |tip {dropsfrom}Solid Chest
 step
   note Bring the Heart of the Mountain to Maxwort Uberglint in the Burning Steppes.
   collect The Heart of the Mountain##11309 |q 4123 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Heart of the Mountain
@@ -126,7 +131,8 @@ step
   accept Disharmony of Fire##3907 |goto Badlands 3.33,48.26
 step
   note Collect 4 Hearts of Flame and 4 globes of Golem Oil and return the items to Kalaran Windblade.
-  collect 4 Heart of Flame##10509 |q 3442 |goto Searing Gorge 57.56,46.7 |tip {dropsfrom}Blazing Elemental, Inferno Elemental, Magma Elemental
+  collect 4 Heart of Flame##10509 |q 3442/1 |goto Searing Gorge 57.56,46.7 |tip {dropsfrom}Blazing Elemental, Inferno Elemental, Magma Elemental
+  collect Golem Oil##10511 |q 3442 |goto Searing Gorge 62.56,59.8 |tip {dropsfrom}Tempered War Golem, Heavy War Golem, Magma Elemental
 step
   note Slay Fineous Darkvire and recover the great hammer, Ironfel. Take Ironfel to the Shrine of Thaurissan and place it on the statue of Franclorn Forgewright.
   collect Ironfel##10999 |q 3802 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Fineous Darkvire
@@ -138,7 +144,7 @@ step
   kill Anvilrage Medic##8894 |q 4082 |goto Blackrock Depths - Dungeon -1,-1 |elite
 step
   note Travel to Blackrock Depths and recover 10 Essence of the Elements. Your first inclination is to search the golems and golem makers. You remember Vivian Lagrave also muttering something about elementals.
-  collect Essence of the Elements##11129 |q 7201 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Molten War Golem, Ragereaver Golem, Warbringer Construct
+  collect 10 Essence of the Elements##11129 |q 7201 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Ragereaver Golem, Warbringer Construct, Fireguard
 step
   note Bring the Lost Thunderbrew Recipe to Vivian Lagrave in Kargath.
   collect Lost Thunderbrew Recipe##11312 |q 4134 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Hurley Blackbreath, Blackbreath Crony
@@ -193,7 +199,7 @@ step
   talk Commander Gor'shak##9020 |q 3982 |goto Blackrock Depths - Dungeon -1,-1
 step
   note Find and slay Golem Lord Argelmach. Return his head to Lotwil. You will also need to collect 10 Intact Elemental Cores from the Ragereaver Golems and Warbringer Constructs protecting Argelmach. You know this because you are psychic.
-  collect 10 Head of Argelmach##11268 |q 4063 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Golem Lord Argelmach
+  collect Head of Argelmach##11268 |q 4063 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Golem Lord Argelmach
 step
   talk Kalaran Windblade##8479
   turnin Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
@@ -218,7 +224,7 @@ step
   accept Precarious Predicament##4121 |goto Burning Steppes 40.2,34.24
 step
   note Find and return a Symbol of Ragnaros to Kalaran Windblade.
-  kill Twilight Dark Shaman##5860 |goto Searing Gorge 23.52,36.55 |elite
+  kill Twilight Dark Shaman##5860 |q 3452 |goto Searing Gorge 23.52,36.55 |elite
   collect Symbol of Ragnaros##10552 |q 3452 |goto Searing Gorge 23.52,36.55
 step
   note Speak with Kharan Mighthammer and gather information about Princess Moira Bronzebeard's kidnapping. Take that information to Thrall in Orgrimmar.
@@ -294,7 +300,10 @@ step
   accept Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
 step
   note Set the North, South, East, and West Sentry Towers on fire by using the Torch of Retribution inside each of the buildings.
-  collect Sentry Brazier##149025 |q 3463 |goto Searing Gorge 35.67,60.68
+  click Sentry Brazier##149032 |q 3463/4 |goto Searing Gorge 33.3,54.48
+  click Sentry Brazier##149025 |q 3463/1 |goto Searing Gorge 35.67,60.68
+  click Sentry Brazier##149030 |q 3463/2 |goto Searing Gorge 44.03,60.91
+  click Sentry Brazier##149031 |q 3463 |goto Searing Gorge 50.07,54.74
 step
   talk Squire Maltrake##8509
   turnin Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
@@ -311,7 +320,7 @@ step
 step
   only not completed(4023) not haveq(4023)
   note Show Cyrus Therepentous the Black Dragonflight Molt you received from Kalaran Windblade.
-  kill Frenzied Black Drake##9461 |goto Burning Steppes 94.4,31.8 |elite
+  kill Frenzied Black Drake##9461 |q 4022 |goto Burning Steppes 94.4,31.8 |elite
   collect Black Dragonflight Molt##10575 |q 4022 |goto Burning Steppes 94.4,31.8
 step
   only not completed(4023) not haveq(4023)
@@ -322,7 +331,7 @@ step
   accept A Taste of Flame##4024 |goto Burning Steppes 95.09,31.56
 step
   note Travel to Blackrock Depths and slay Bael'Gar.
-  collect Encased Fiery Essence##11230 |q 4024 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Bael'Gar
+  collect Encased Fiery Essence##11230 |q 4024 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Bael'Gar
 step
   talk Cyrus Therepentous##9459
   turnin A Taste of Flame##4024 |goto Burning Steppes 95.09,31.56

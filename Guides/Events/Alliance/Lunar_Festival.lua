@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Lunar Festival", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "e0cbea55",
+	rev = "62904f39",
 }, [[
 step
   talk Elder Riversong##15605
@@ -163,6 +163,8 @@ step
   accept Elune's Blessing##8868 |goto Moonglade 53.65,35.26
 step
   note Summon Omen, defeat him and gain Elune's Blessing. Return to Valadar Starsong in Nighthaven
+  goto Moonglade 63.89,62.5 |tip Receive Elune's Blessing.
+step
   talk Valadar Starsong##15864
   turnin Elune's Blessing##8868 |goto Moonglade 53.65,35.26
 step
@@ -277,7 +279,8 @@ step
   accept Lunar Fireworks##8867 |goto Stormwind City 37.65,65.63
 step
   note Launch 8 Lunar Fireworks and 2 Cluster Fireworks and return to a Lunar Festival Harbinger at any capital city.
-  collect Firework Launcher##180771 |q 8867 |goto Moonglade 37.15,57.88
+  click Firework Launcher##180771 |q 8867/1 |goto Moonglade 37.15,57.88
+  click Cluster Launcher##180772 |q 8867 |goto Moonglade 37.15,57.61
 step
   talk Lunar Festival Harbinger##15895
   turnin Lunar Fireworks##8867 |goto Stormwind City 37.65,65.63

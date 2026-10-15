@@ -4,9 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Tanaris (44-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Un'Goro Crater (51-55)",
-	rev = "60644332",
+	next = "Leveling/Horde/Stranglethorn Vale (43-50)",
+	rev = "edfd03b2",
 }, [[
+step
+  ding 43
 step
   note {fp}Bulkrek Ragefist
   goto Tanaris 51.6,25.44 |tip {vendor}
@@ -21,27 +23,8 @@ step
   talk Spigot Operator Luglunket##7408
   accept Water Pouch Bounty##1707 |goto Tanaris 52.49,28.45
 step
-  only completed(243)
-  talk Chief Engineer Bilgewhizzle##7407
-  accept Slake That Thirst##379 |goto Tanaris 52.46,28.51
-step
-  only completed(654)
-  talk Chief Engineer Bilgewhizzle##7407
-  accept Return to Apothecary Zinge##864 |goto Tanaris 52.46,28.51
-step
-  talk Senior Surveyor Fizzledowser##7724
-  accept Gadgetzan Water Survey##992 |goto Tanaris 50.21,27.48
-step
-  note Use the untapped dowsing widget near the pool of water by Sandsorrow Watch. Once you have collected the sample, return the tapped dowsing widget to Senior Surveyor Fizzledowser in Gadgetzan.
-  collect Tapped Dowsing Widget##8585 |q 992 |goto Tanaris 39,29 |tip {dropsfrom}Sandsorrow Watch Water Hole
-step
-  talk Senior Surveyor Fizzledowser##7724
-  turnin Gadgetzan Water Survey##992 |goto Tanaris 50.21,27.48
-step
-  talk Senior Surveyor Fizzledowser##7724
-  accept Noxious Lair Investigation##82 |goto Tanaris 50.21,27.48
-step
   note Take down 10 Wastewander Bandits and Thieves east of Gadgetzan, then report back to Chief Engineer Bilgewhizzle.
+  kill Wastewander Thief##5616 |q 1690/2 |goto Tanaris 63.56,31.07
   kill Wastewander Bandit##5618 |q 1690 |goto Tanaris 63.79,29.78
 step
   talk Yeh'kinya##8579
@@ -59,18 +42,8 @@ step
   talk Security Chief Bilgewhizzle##7882
   accept Southsea Shakedown##8366 |goto Tanaris 67.06,23.89
 step
-  click Wanted Poster##142122
-  accept WANTED: Caliph Scorpidsting##2781 |goto Tanaris 66.82,22.29
-step
-  only completed(243)
-  note Bring 5 Wastewander Water Pouches to Chief Engineer Bilgewhizzle in Gadgetzan.
-  collect 5 Wastewander Water Pouch##8483 |q 379 |goto Tanaris 61.71,38.21 |tip {dropsfrom}Wastewander Rogue, Wastewander Thief, Wastewander Shadow Mage
-step
   note Bring 5 Wastewander Water Pouches to Spigot Operator Luglunket in Gadgetzan.
   collect 5 Wastewander Water Pouch##8483 |q 1707 |goto Tanaris 61.71,38.21 |tip {dropsfrom}Wastewander Rogue, Wastewander Thief, Wastewander Shadow Mage
-step
-  note Bring the head of Caliph Scorpidsting to Chief Engineer Bilgewhizzle in Gadgetzan.
-  collect Caliph Scorpidsting's Head##8723 |q 2781 |goto Tanaris 61.77,38.17 |tip {dropsfrom}Caliph Scorpidsting
 step
   note Bring Stoley's Shipment to Stoley in Steamwheedle Port.
   collect Stoley's Shipment##9244 |q 2873 |goto Tanaris 72.17,46.76 |tip {dropsfrom}Stolen Cargo
@@ -82,7 +55,10 @@ step
   collect 20 Southsea Pirate Hat##20519 |q 8365 |goto Tanaris 72.95,46.18 |tip {dropsfrom}Southsea Pirate, Southsea Freebooter, Southsea Dock Worker
 step
   note Security Chief Bilgewhizzle of Steamwheedle Port in Tanaris wants you to kill 10 Southsea Pirates, 10 Southsea Freebooters, 10 Southsea Dock Workers and 10 Southsea Swashbucklers.
-  kill Southsea Pirate##7855 |q 8366 |goto Tanaris 72.95,46.18
+  kill Southsea Pirate##7855 |q 8366/1 |goto Tanaris 72.95,46.18
+  kill Southsea Freebooter##7856 |q 8366/2 |goto Tanaris 72.79,45.34
+  kill Southsea Swashbuckler##7858 |q 8366/4 |goto Tanaris 75.28,45.69
+  kill Southsea Dock Worker##7857 |q 8366 |goto Tanaris 74.42,47.71
 step
   talk Stoley##7881
   turnin Stoley's Shipment##2873 |goto Tanaris 67.11,23.98
@@ -96,9 +72,8 @@ step
   talk Security Chief Bilgewhizzle##7882
   turnin Southsea Shakedown##8366 |goto Tanaris 67.06,23.89
 step
-  only completed(243)
-  talk Chief Engineer Bilgewhizzle##7407
-  turnin Slake That Thirst##379 |goto Tanaris 52.46,28.51
+  click Wanted Poster##142122
+  accept WANTED: Caliph Scorpidsting##2781 |goto Tanaris 66.82,22.29
 step
   talk Chief Engineer Bilgewhizzle##7407
   turnin Wastewander Justice##1690 |goto Tanaris 52.46,28.51
@@ -107,22 +82,68 @@ step
   turnin Water Pouch Bounty##1707 |goto Tanaris 52.49,28.45
 step
   talk Chief Engineer Bilgewhizzle##7407
-  turnin WANTED: Caliph Scorpidsting##2781 |goto Tanaris 52.46,28.51
+  accept More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
+step
+  only completed(243)
+  talk Chief Engineer Bilgewhizzle##7407
+  accept Slake That Thirst##379 |goto Tanaris 52.46,28.51
+step
+  only completed(654)
+  talk Chief Engineer Bilgewhizzle##7407
+  accept Return to Apothecary Zinge##864 |goto Tanaris 52.46,28.51
+step
+  talk Senior Surveyor Fizzledowser##7724
+  accept Gadgetzan Water Survey##992 |goto Tanaris 50.21,27.48
+step
+  note Use the untapped dowsing widget near the pool of water by Sandsorrow Watch. Once you have collected the sample, return the tapped dowsing widget to Senior Surveyor Fizzledowser in Gadgetzan.
+  collect Tapped Dowsing Widget##8585 |q 992 |goto Tanaris 39,29 |tip {dropsfrom}Sandsorrow Watch Water Hole
+step
+  only completed(243)
+  note Bring 5 Wastewander Water Pouches to Chief Engineer Bilgewhizzle in Gadgetzan.
+  collect 5 Wastewander Water Pouch##8483 |q 379 |goto Tanaris 61.71,38.21 |tip {dropsfrom}Wastewander Rogue, Wastewander Thief, Wastewander Shadow Mage
+step
+  note Take down 10 Wastewander Shadow Mages, 8 Wastewander Rogues, and 6 Wastewander Assassins for Chief Engineer Bilgewhizzle in Gadgetzan.
+  kill Wastewander Rogue##5615 |q 1691/1 |goto Tanaris 61.71,38.21
+  kill Wastewander Assassin##5623 |q 1691/2 |goto Tanaris 60.52,38.55
+  kill Wastewander Shadow Mage##5617 |q 1691 |goto Tanaris 61.97,35.46
+step
+  note Bring the head of Caliph Scorpidsting to Chief Engineer Bilgewhizzle in Gadgetzan.
+  collect Caliph Scorpidsting's Head##8723 |q 2781 |goto Tanaris 61.77,38.17 |tip {dropsfrom}Caliph Scorpidsting
+step
+  only completed(243)
+  talk Chief Engineer Bilgewhizzle##7407
+  turnin Slake That Thirst##379 |goto Tanaris 52.46,28.51
+step
+  talk Senior Surveyor Fizzledowser##7724
+  turnin Gadgetzan Water Survey##992 |goto Tanaris 50.21,27.48
 step
   talk Chief Engineer Bilgewhizzle##7407
-  accept More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
+  turnin More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
+step
+  talk Chief Engineer Bilgewhizzle##7407
+  turnin WANTED: Caliph Scorpidsting##2781 |goto Tanaris 52.46,28.51
+step
+  talk Senior Surveyor Fizzledowser##7724
+  accept Noxious Lair Investigation##82 |goto Tanaris 50.21,27.48
+step
+  note Bring five Centipaar insect parts from the Noxious Lair to Alchemist Pestlezugg in Gadgetzan.
+  collect Centipaar Insect Parts##8587 |q 82 |goto Tanaris 33.28,44.39 |tip {dropsfrom}Centipaar Wasp, Centipaar Tunneler, Centipaar Stinger
+step
+  talk Alchemist Pestlezugg##5594
+  turnin Noxious Lair Investigation##82 |goto Tanaris 50.89,26.96
+step
+  talk Senior Surveyor Fizzledowser##7724
+  accept The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
 step
   kill Glasshide Basilisk##5419 |goto Tanaris 45.64,32.27 |tip Loot the quest item here — it starts the quest.
   accept Find OOX-17/TN!##351 |goto Tanaris 45.64,32.27
 step
-  talk Marin Noggenfogger##7564
-  accept The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
+  note Bring the distress beacon to Oglethorpe's homing robot.
+  talk Homing Robot OOX-17/TN##7784
+  turnin Find OOX-17/TN!##351 |goto Tanaris 60.23,64.72
 step
-  talk Andi Lynn##11758
-  accept The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
-step
-  note Take down 10 Wastewander Shadow Mages, 8 Wastewander Rogues, and 6 Wastewander Assassins for Chief Engineer Bilgewhizzle in Gadgetzan.
-  kill Wastewander Rogue##5615 |q 1691 |goto Tanaris 61.71,38.21
+  note Discover the fate of Junior Surveyor Scrimshank, and bring either him or his surveying equipment to Senior Surveyor Fizzledowser in Gadgetzan.
+  collect Scrimshank's Surveying Gear##8593 |q 10 |goto Tanaris 55.96,71.17
 step
   talk Marvon Rivetseeker##7771
   accept Gahz'ridian##3161 |goto Tanaris 52.71,45.92
@@ -130,74 +151,79 @@ step
   note Marvon Rivetseeker in Tanaris wants you to collect 30 Gahz'ridian Ornaments.
   collect 30 Gahz'ridian Ornament##8443 |q 3161 |goto Tanaris 47.6,57.2 |tip {dropsfrom}Gahz'ridian
 step
-  note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
-  kill Dunemaul Brute##5474 |q 5863 |goto Tanaris 40.65,54.35
-step
-  note Bring five Centipaar insect parts from the Noxious Lair to Alchemist Pestlezugg in Gadgetzan.
-  collect Centipaar Insect Parts##8587 |q 82 |goto Tanaris 33.28,44.39 |tip {dropsfrom}Centipaar Wasp, Centipaar Stinger, Centipaar Swarmer
-step
   talk Marvon Rivetseeker##7771
   turnin Gahz'ridian##3161 |goto Tanaris 52.71,45.92
-step
-  talk Alchemist Pestlezugg##5594
-  turnin Noxious Lair Investigation##82 |goto Tanaris 50.89,26.96
-step
-  talk Chief Engineer Bilgewhizzle##7407
-  turnin More Wastewander Justice##1691 |goto Tanaris 52.46,28.51
-step
-  talk Andi Lynn##11758
-  turnin The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
-step
-  talk Senior Surveyor Fizzledowser##7724
-  accept The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
-step
-  talk Tran'rek##7876
-  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
-step
-  talk Homing Robot OOX-17/TN##7784
-  turnin Find OOX-17/TN!##351 |goto Tanaris 60.23,64.72
-step
-  note Discover the fate of Junior Surveyor Scrimshank, and bring either him or his surveying equipment to Senior Surveyor Fizzledowser in Gadgetzan.
-  collect Scrimshank's Surveying Gear##8593 |q 10 |goto Tanaris 55.96,71.17
-step
-  talk Tooga##5955
-  accept Tooga's Quest##1560 |goto Tanaris 30,70
-step
-  note Collect a Laden Dew Gland and bring it to Marin Noggenfogger in Gadgetzan.
-  collect Laden Dew Gland##8428 |q 2605 |goto Tanaris 29.36,66.28 |tip {dropsfrom}Thistleshrub Dew Collector
-step
-  note Tran'rek in Gadgetzan wants you to kill 8 Gnarled Thistleshrubs and 8 Thistleshrub Rootshapers.
-  kill Gnarled Thistleshrub##5490 |q 3362 |goto Tanaris 29.65,66.4
 step
   talk Senior Surveyor Fizzledowser##7724
   turnin The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
 step
-  talk Marin Noggenfogger##7564
-  turnin The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
-step
-  talk Tran'rek##7876
-  turnin Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
-step
   talk Senior Surveyor Fizzledowser##7724
   accept Insect Part Analysis##110 |goto Tanaris 50.21,27.48
 step
-  talk Marin Noggenfogger##7564
-  accept In Good Taste##2606 |goto Tanaris 51.81,28.66
-step
+  note Check in Gadgetzan for Alchemist Pestlezugg and his analysis of the insect parts.
   talk Alchemist Pestlezugg##5594
   turnin Insect Part Analysis##110 |goto Tanaris 50.89,26.96
-step
-  talk Sprinkle##7583
-  turnin In Good Taste##2606 |goto Tanaris 51.06,26.87
 step
   talk Alchemist Pestlezugg##5594
   accept Insect Part Analysis##113 |goto Tanaris 50.89,26.96
 step
+  note Deliver the report to Senior Surveyor Fizzledowser in Gadgetzan. Be sure he gives you a copy of the report, as Alchemist Pestlezugg has requested.
   talk Senior Surveyor Fizzledowser##7724
   turnin Insect Part Analysis##113 |goto Tanaris 50.21,27.48
 step
   talk Senior Surveyor Fizzledowser##7724
   accept Rise of the Silithid##32 |goto Tanaris 50.21,27.48
+step
+  only level>=44
+  talk Marin Noggenfogger##7564
+  accept The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
+step
+  only level>=44
+  talk Andi Lynn##11758
+  accept The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
+step
+  only haveq(5863)
+  note Andi Lynn in Gadgetzan wants you to destroy the Dunemaul Compound by killing 10 Dunemaul Brutes, 10 Dunemaul Enforcers, and Gor'marok the Ravager.
+  kill Dunemaul Brute##5474 |q 5863/1 |goto Tanaris 40.65,54.35
+  kill Dunemaul Enforcer##5472 |q 5863/2 |goto Tanaris 40.73,56.87
+  kill Gor'marok the Ravager##12046 |q 5863 |goto Tanaris 41.5,57.81
+step
+  only haveq(2605)
+  note Collect a Laden Dew Gland and bring it to Marin Noggenfogger in Gadgetzan.
+  collect Laden Dew Gland##8428 |q 2605 |goto Tanaris 29.36,66.28 |tip {dropsfrom}Thistleshrub Dew Collector
+step
+  only haveq(2605)
+  talk Marin Noggenfogger##7564
+  turnin The Thirsty Goblin##2605 |goto Tanaris 51.81,28.66
+step
+  only haveq(5863)
+  talk Andi Lynn##11758
+  turnin The Dunemaul Compound##5863 |goto Tanaris 52.82,27.4
+step
+  only completed(2605) level>=44
+  talk Marin Noggenfogger##7564
+  accept In Good Taste##2606 |goto Tanaris 51.81,28.66
+step
+  only haveq(2606)
+  note Marin Noggenfogger wants you to speak with Sprinkle in Gadgetzan.
+  talk Sprinkle##7583
+  turnin In Good Taste##2606 |goto Tanaris 51.06,26.87
+step
+  only level>=45
+  talk Tran'rek##7876
+  accept Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
+step
+  talk Tooga##5955
+  accept Tooga's Quest##1560 |goto Tanaris 30,70
+step
+  only haveq(3362)
+  note Tran'rek in Gadgetzan wants you to kill 8 Gnarled Thistleshrubs and 8 Thistleshrub Rootshapers.
+  kill Gnarled Thistleshrub##5490 |q 3362/1 |goto Tanaris 29.65,66.4
+  kill Thistleshrub Rootshaper##5485 |q 3362 |goto Tanaris 29.69,66.35
+step
+  only haveq(3362)
+  talk Tran'rek##7876
+  turnin Thistleshrub Valley##3362 |goto Tanaris 51.57,26.76
 step
   note Show Tooga the way back to his wife, Torta.
   talk Torta##6015 |q 1560 |goto Tanaris 66.58,25.67
@@ -205,97 +231,104 @@ step
   talk Torta##6015
   turnin Tooga's Quest##1560 |goto Tanaris 66.58,25.67
 step
-  only completed(3380,3445)
+  only completed(3380,3445) level>=46
   talk Marvon Rivetseeker##7771
   accept The Stone Circle##3444 |goto Tanaris 52.71,45.92
 step
   only completed(1188)
+  note Return the Modified Seaforium Booster to Razzeric on the Shimmering Flats.
   talk Razzeric##4706
   turnin Safety First##1189 |goto Thousand Needles 80.33,76.09 |tip {turninat}Thousand Needles
-step
-  only completed(654)
-  talk Apothecary Zinge##5204
-  turnin Return to Apothecary Zinge##864 |goto Undercity 50.14,67.97 |tip {turninat}Undercity
-step
-  talk Dran Droffers##6986
-  accept Ripple Recovery##649 |goto Orgrimmar 59.49,36.57
-step
-  only not completed(3762) not completed(3784) not haveq(3762) not haveq(3784)
-  talk Innkeeper Gryshka##6929
-  accept Assisting Arch Druid Runetotem##936 |goto Orgrimmar 54.1,68.41
-step
-  only completed(2440)
-  talk Sage Truthseeker##3978
-  accept Portents of Uldum##2965 |goto Thunder Bluff 34.4,46.87
 step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
 step
-  only completed(3380,3445)
-  note Retrieve the Stone Circle from Marvon Rivetseeker's workshop in Ratchet.
-  collect Stone Circle##10556 |q 3444 |goto The Barrens 62.5,38.54 |tip {dropsfrom}Marvon's Chest
-step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
 step
-  talk Malton Droffers##6987
-  turnin Ripple Recovery##649 |goto Orgrimmar 59.65,36.94 |tip {turninat}Orgrimmar
-step
-  only not completed(3762) not completed(3784) not haveq(3762) not haveq(3784)
-  talk Arch Druid Hamuul Runetotem##5769
-  turnin Assisting Arch Druid Runetotem##936 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
-step
-  only completed(2440)
-  talk Nara Wildmane##5770
-  turnin Portents of Uldum##2965 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
-step
-  only completed(3380,3445)
-  talk Marvon Rivetseeker##7771
-  turnin The Stone Circle##3444 |goto Tanaris 52.71,45.92
-step
-  only completed(2440)
-  talk Nara Wildmane##5770
-  accept Seeing What Happens##2966 |goto Thunder Bluff 75.65,31.61
-step
-  only completed(2440)
-  turnin Seeing What Happens##2966 |goto Tanaris 37.63,81.4
-step
-  only completed(2440)
-  talk Stone Watcher of Norgannon##7918
-  accept The Stone Watcher##2954 |goto Tanaris 37.6,81.4
-step
-  only completed(2440)
-  note Learn the purpose of the Stone Watcher of Norgannon, and then interact with the Uldum Pedestal in the Tanaris desert.
-  talk Stone Watcher of Norgannon##7918 |q 2954 |goto Tanaris 37.6,81.4
-step
-  only completed(2440)
-  turnin The Stone Watcher##2954 |goto Tanaris 37.63,81.4
-step
-  only completed(2440)
-  click Uldum Pedestal##142343
-  accept Return to Thunder Bluff##2967 |goto Tanaris 37.63,81.4
-step
-  only completed(2440)
-  talk Nara Wildmane##5770
-  turnin Return to Thunder Bluff##2967 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
-step
-  only completed(2440)
-  talk Nara Wildmane##5770
-  accept A Future Task##2968 |goto Thunder Bluff 75.65,31.61
-step
-  only completed(2440)
-  talk Sage Truthseeker##3978
-  turnin A Future Task##2968 |goto Thunder Bluff 34.4,46.87 |tip {turninat}Thunder Bluff
-step
+  note Take the report to Zilzibin Drumlore in Orgrimmar.
   talk Zilzibin Drumlore##7010
   turnin Rise of the Silithid##32 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
 step
+  only level>=50
   talk Zilzibin Drumlore##7010
   accept March of the Silithid##4494 |goto Orgrimmar 56.26,46.68
 step
+  talk Dran Droffers##6986
+  accept Ripple Recovery##649 |goto Orgrimmar 59.49,36.57
+step
+  note Talk to Malton Droffers in Orgrimmar.
+  talk Malton Droffers##6987
+  turnin Ripple Recovery##649 |goto Orgrimmar 59.65,36.94 |tip {turninat}Orgrimmar
+step
+  only not completed(3762) not completed(3784) not haveq(3762) not haveq(3784) level>=47
+  talk Innkeeper Gryshka##6929
+  accept Assisting Arch Druid Runetotem##936 |goto Orgrimmar 54.1,68.41
+step
+  only not completed(3762) not completed(3784) not haveq(3762) not haveq(3784) haveq(936)
+  note Speak with Arch Druid Hamuul Runetotem in Thunder Bluff.
+  talk Arch Druid Hamuul Runetotem##5769
+  turnin Assisting Arch Druid Runetotem##936 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
+step
+  only completed(2440) level>=45
+  talk Sage Truthseeker##3978
+  accept Portents of Uldum##2965 |goto Thunder Bluff 34.4,46.87
+step
+  only completed(2440) haveq(2965)
+  note Speak with Nara Wildmane on the Elder Rise in Thunder Bluff.
+  talk Nara Wildmane##5770
+  turnin Portents of Uldum##2965 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
+step
+  only completed(2440) completed(2965) level>=45
+  talk Nara Wildmane##5770
+  accept Seeing What Happens##2966 |goto Thunder Bluff 75.65,31.61
+step
+  only completed(3380,3445) haveq(3444)
+  note Retrieve the Stone Circle from Marvon Rivetseeker's workshop in Ratchet.
+  collect Stone Circle##10556 |q 3444 |goto The Barrens 62.5,38.54 |tip {dropsfrom}Marvon's Chest
+step
+  only completed(3380,3445) haveq(3444)
+  talk Marvon Rivetseeker##7771
+  turnin The Stone Circle##3444 |goto Tanaris 52.71,45.92
+step
+  only haveq(4494)
+  note Speak to Alchemist Pestlezugg in Gadgetzan.
   talk Alchemist Pestlezugg##5594
   turnin March of the Silithid##4494 |goto Tanaris 50.89,26.96
 step
-  note {travel}Thunder Bluff
-  goto Thunder Bluff 78.62,28.56
+  only completed(2440) haveq(2966)
+  note Bring the miniature platinum discs to the gates of Uldum in Tanaris and look for clues as to the connection between the two.
+  turnin Seeing What Happens##2966 |goto Tanaris 37.63,81.4
+step
+  only completed(2440) completed(2966) level>=45
+  talk Stone Watcher of Norgannon##7918
+  accept The Stone Watcher##2954 |goto Tanaris 37.6,81.4
+step
+  only completed(2440) haveq(2954)
+  note Learn the purpose of the Stone Watcher of Norgannon, and then interact with the Uldum Pedestal in the Tanaris desert.
+  talk Stone Watcher of Norgannon##7918 |q 2954 |goto Tanaris 37.6,81.4
+step
+  only completed(2440) haveq(2954)
+  turnin The Stone Watcher##2954 |goto Tanaris 37.63,81.4
+step
+  only completed(2440) completed(2954) level>=45
+  click Uldum Pedestal##142343
+  accept Return to Thunder Bluff##2967 |goto Tanaris 37.63,81.4
+step
+  only completed(2440) haveq(2967)
+  note Speak with Nara Wildmane in Thunder Bluff.
+  talk Nara Wildmane##5770
+  turnin Return to Thunder Bluff##2967 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
+step
+  only completed(2440) completed(2967) level>=45
+  talk Nara Wildmane##5770
+  accept A Future Task##2968 |goto Thunder Bluff 75.65,31.61
+step
+  only completed(2440) haveq(2968)
+  note Speak with Sage Truthseeker in Thunder Bluff.
+  talk Sage Truthseeker##3978
+  turnin A Future Task##2968 |goto Thunder Bluff 34.4,46.87 |tip {turninat}Thunder Bluff
+step
+  note {travel}Stranglethorn Vale
+  goto Stranglethorn Vale 26.76,76.38
 ]])

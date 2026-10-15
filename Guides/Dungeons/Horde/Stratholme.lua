@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Stratholme", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "d8c789f1",
+	rev = "af047793",
 }, [[
 step
   talk Tirion Fordring##1855
@@ -54,28 +54,31 @@ step
   accept Corruption##5307 |goto Winterspring 61.33,37.19
 step
   note Slay 20 Plaguehound Runts, 5 Plaguehounds and 5 Frenzied Plaguehounds. Return to Tirion Fordring when the task is complete.
-  kill Plaguehound Runt##8596 |q 5542 |goto Eastern Plaguelands 20.15,61.44
+  kill Plaguehound Runt##8596 |q 5542/1 |goto Eastern Plaguelands 20.15,61.44
+  kill Frenzied Plaguehound##8598 |q 5542/3 |goto Eastern Plaguelands 45.86,30.91
+  kill Plaguehound##8597 |q 5542 |goto Eastern Plaguelands 59.53,53.87
 step
   note Slay 30 Plaguebats and return to Tirion Fordring.
   kill Plaguebat##8600 |q 5543 |goto Eastern Plaguelands 28.22,64.82
 step
   note Seek out the Carrion Grubs and Devourers of the region. Slay them and harvest their meat. Return to Tirion Fordring when you have gathered 15 Slabs of Carrion Worm Meat.
-  collect Slab of Carrion Worm Meat##13853 |q 5544 |goto Eastern Plaguelands 42.91,55.69 |tip {dropsfrom}Carrion Grub, Carrion Devourer
+  collect 15 Slab of Carrion Worm Meat##13853 |q 5544 |goto Eastern Plaguelands 42.91,55.69 |tip {dropsfrom}Carrion Grub, Carrion Devourer
 step
   note Travel to Corin's Crossing to the east and slaughter the Scourge that inhabit the town. Collect 7 pieces of Living Rot in under 10 minutes. Use the Mortar and Pestle to grind the Living Rot into Coagulated Rot.
   collect 7 Coagulated Rot##15448 |q 6022 |goto Eastern Plaguelands 22.23,63.51
 step
   note Slay 20 Noxious Plaguebats and 10 Monstrous Plaguebats. Return to Nathanos Blightcaller when you are finished.
-  kill Noxious Plaguebat##8601 |q 6042 |goto Eastern Plaguelands 53.15,51.14
+  kill Noxious Plaguebat##8601 |q 6042/1 |goto Eastern Plaguelands 53.15,51.14
+  kill Monstrous Plaguebat##8602 |q 6042 |goto Eastern Plaguelands 43.93,29.08
 step
   note Travel to Stratholme, in the north. Search the supply crates that litter the city and recover 5 Stratholme Holy Water. Return to Leonid Barthalomew the Revered when you have collected enough of the blessed fluid.
-  collect Stratholme Holy Water##13180 |q 5243 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 5 Stratholme Holy Water##13180 |q 5243 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
 step
   note Find Ezra Grimm's smoke shop in Stratholme and recover a box of Grimm's Premium Tobacco. Return to Smokey LaRue when the job is done.
   collect Grimm's Premium Tobacco##13172 |q 5214 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Ezra Grimm
 step
   note Recover 10 Plagued Flesh Samples from Stratholme and return them to Betina Bigglezink. You suspect that any creature in Stratholme would have said flesh sample.
-  collect Plagued Flesh Sample##13174 |q 5212 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Ravaged Cadaver, Mangled Cadaver, Plague Ghoul
+  collect 10 Plagued Flesh Sample##13174 |q 5212 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Ravaged Cadaver, Mangled Cadaver, Plague Ghoul
 step
   note Travel to Stratholme and find Archivist Galford of the Scarlet Crusade. Destroy him and burn down the Scarlet Archive.
   kill Archivist Galford##10811 |q 5251 |goto Stratholme - Dungeon -1,-1 |elite
@@ -176,7 +179,7 @@ step
   collect Scourge Data##13176 |q 5213 |goto Stratholme - Dungeon -1,-1
 step
   note Find Duskwing and slay him. From the corpse, recover a Patch of Duskwing's Fur and return it to Nathanos Blightcaller.
-  kill Duskwing##11897 |goto Eastern Plaguelands 26.08,59.03 |elite
+  kill Duskwing##11897 |q 6135 |goto Eastern Plaguelands 26.08,59.03 |elite
   collect Patch of Duskwing's Fur##15850 |q 6135 |goto Eastern Plaguelands 26.08,59.03
 step
   note Find Borelgore in the northern wastes of Eastern Plaguelands and destroy him. Return to Nathanos Blightcaller when the mission is complete.

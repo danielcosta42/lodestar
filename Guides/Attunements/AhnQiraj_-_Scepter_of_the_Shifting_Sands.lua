@@ -3,7 +3,7 @@ local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Attunements/Ahn'Qiraj - Scepter of the Shifting Sands", {
 	author = "Lodestar Generator",
-	rev = "1f8e6aa7",
+	rev = "500807ce",
 }, [[
 step
   talk Baristolth of the Shifting Sands##15180
@@ -28,8 +28,7 @@ step
   accept The Path of the Righteous##8301 |goto Silithus 49.45,36.45
 step
   note Collect 200 Silithid Carapace Fragments and return to Baristolth.
-  kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite
-  collect 200 Silithid Carapace Fragment##20384 |q 8301 |goto Silithus 50.21,40.97
+  collect 200 Silithid Carapace Fragment##20384 |q 8301 |goto Silithus 27.87,61.78 |tip {dropsfrom}Hive'Zora Wasp, Hive'Ashi Stinger, Hive'Ashi Worker
 step
   talk Baristolth of the Shifting Sands##15180
   turnin The Path of the Righteous##8301 |goto Silithus 49.45,36.45
@@ -51,6 +50,8 @@ step
   accept A Pawn on the Eternal Board##8519 |goto Silithus 28.68,89.14
 step
   note Learn all that you can of the past, then speak with Anachronos at the Caverns of Time in Tanaris.
+  goto Silithus 29.04,92.09 |tip The War of the Shifting Sands
+step
   talk Anachronos##15192
   turnin A Pawn on the Eternal Board##8519 |goto Tanaris 65.27,50.03
 step
@@ -108,8 +109,10 @@ step
   accept The Isle of Dread!##8585 |goto Tanaris 52.63,28.11
 step
   note Recover Lakmaeran's Carcass and 20 Chimaerok Tenderloins for Dirge Quikcleave in Tanaris.
-  kill Lord Lakmaeran##12803 |goto Feralas 29.34,72.63 |elite
-  collect Lakmaeran's Carcass##21027 |q 8585 |goto Feralas 29.34,72.63
+  kill Lord Lakmaeran##12803 |q 8585/1 |goto Feralas 29.34,72.63 |elite
+  collect Lakmaeran's Carcass##21027 |q 8585/1 |goto Feralas 29.34,72.63
+  kill Chimaerok##12800 |q 8585 |goto Feralas 29.82,80.93 |elite
+  collect 20 Chimaerok Tenderloin##21024 |q 8585 |goto Feralas 29.82,80.93
 step
   talk Dirge Quikcleave##8125
   turnin The Isle of Dread!##8585 |goto Tanaris 52.63,28.11
@@ -118,7 +121,8 @@ step
   accept Dirge's Kickin' Chimaerok Chops##8586 |goto Tanaris 52.63,28.11
 step
   note Dirge Quikcleave in Gadgetzan wants you to bring him 20 Goblin Rocket Fuel and 20 Deeprock Salt.
-  collect Goblin Rocket Fuel##9061 |q 8586 |goto Silithus 62.65,52.84 |tip {dropsfrom}Clunk, Spirestone Ogre Magus, Tortured Druid
+  collect 20 Goblin Rocket Fuel##9061 |q 8586/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Hive'Ashi Drone
+  collect 20 Deeprock Salt##8150 |q 8586 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Stone Golem, Lesser Rock Elemental
 step
   talk Dirge Quikcleave##8125
   turnin Dirge's Kickin' Chimaerok Chops##8586 |goto Tanaris 52.63,28.11
@@ -165,7 +169,10 @@ step
   accept The Good News and The Bad News##8728 |goto Tanaris 65.24,18.58
 step
   note Narain Soothfancy in Tanaris wants you to bring him 20 Arcanite Bars, 10 Elementium Ore, 10 Azerothian Diamonds, and 10 Blue Sapphires.
-  collect Arcanite Bar##12360 |q 8728 |goto Tanaris 65.24,18.58
+  collect 20 Arcanite Bar##12360 |q 8728/1 |tip Crafted or bought.
+  collect 10 Elementium Ore##18562 |q 8728/2 |goto Blackwing Lair - Dungeon -1,-1 |elite |tip {dropsfrom}Blackwing Technician
+  collect 10 Azerothian Diamond##12800 |q 8728/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 10 Blue Sapphire##12361 |q 8728 |goto Western Plaguelands 47.11,50.51 |tip {dropsfrom}Skeletal Terror, Scarlet Worker, Blighted Zombie
 step
   talk Narain Soothfancy##11811
   turnin The Good News and The Bad News##8728 |goto Tanaris 65.24,18.58
@@ -174,7 +181,7 @@ step
   accept The Wrath of Neptulon##8729 |goto Tanaris 65.24,18.58
 step
   note Use the Arcanite Buoy at the Swirling Maelstrom at the Bay of Storms in Azshara.
-  collect Blue Scepter Shard##21137 |q 8729 |goto Tanaris 65.24,18.58 |tip {dropsfrom}Maws
+  collect Blue Scepter Shard##21137 |q 8729 |goto Tanaris 65.24,18.58 |raid |tip {dropsfrom}Maws
 step
   talk Anachronos##15192
   turnin The Wrath of Neptulon##8729 |goto Tanaris 65.27,50.03
@@ -197,8 +204,14 @@ step
   accept The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
 step
   note Travel to the four Emerald Dream portals in Azeroth and collect a Fragment of the Nightmare's Corruption from each. Return to Keeper Remulos in the Moonglade when you have completed this task.
-  kill Emeraldon Boughguard##12474 |goto Ashenvale 94.98,39.79 |elite
-  collect Fragment of the Nightmare's Corruption##21147 |q 8735 |goto Ashenvale 94.98,39.79
+  kill Emeraldon Tree Warder##12475 |q 8735/1 |goto Ashenvale 92.83,39.48 |elite
+  collect Fragment of the Nightmare's Corruption##21147 |q 8735/1 |goto Ashenvale 92.83,39.48
+  kill Twilight Corrupter##15625 |q 8735/2 |goto Duskwood 48.6,40 |raid
+  collect Fragment of the Nightmare's Corruption##21149 |q 8735/2 |goto Duskwood 48.6,40
+  kill Jademir Tree Warder##5319 |q 8735/3 |goto Feralas 50.65,10.6 |elite
+  collect Fragment of the Nightmare's Corruption##21148 |q 8735/3 |goto Feralas 50.65,10.6
+  kill Verdantine Tree Warder##12479 |q 8735 |goto The Hinterlands 65.36,24.9 |elite
+  collect Fragment of the Nightmare's Corruption##21146 |q 8735 |goto The Hinterlands 65.36,24.9
 step
   talk Keeper Remulos##11832
   turnin The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
@@ -207,6 +220,8 @@ step
   accept The Nightmare Manifests##8736 |goto Moonglade 36.18,41.79
 step
   note Defend Nighthaven from Eranikus. Do not let Keeper Remulos perish. Do not slay Eranikus. Defend yourself. Await Tyrande.
+  goto Moonglade 51.8,36.4 |tip The Redemption of Eranikus
+step
   talk Keeper Remulos##11832
   turnin The Nightmare Manifests##8736 |goto Moonglade 36.18,41.79
 step
@@ -226,7 +241,7 @@ step
   click The Scarab Gong##180717
   accept Bang a Gong!##8743 |goto Silithus 25.72,90.86
 step
-  collect The Scepter of the Shifting Sands##21175 |q 8743 |goto Silithus 25.72,90.86
+  collect The Scepter of the Shifting Sands##21175 |q 8743 |goto Silithus 25.72,90.86 |tip Crafted or bought.
 step
   turnin Bang a Gong!##8743 |goto Silithus 25.72,90.86
 step

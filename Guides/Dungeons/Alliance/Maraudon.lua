@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Maraudon", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "dabee2a2",
+	rev = "e9682d9d",
 }, [[
 step
   talk Archmage Tervosh##4967
@@ -26,14 +26,14 @@ step
   accept Seed of Life##7066 |goto Maraudon - Dungeon -1,-1
 step
   note Collect 10 Shadowshard Fragments from Maraudon and return them to Archmage Tervosh in Theramore on the coast of Dustwallow Marsh.
-  kill Shadowshard Rumbler##11777 |goto Desolace 27.23,57.68 |elite
+  kill Shadowshard Rumbler##11777 |q 7070 |goto Desolace 27.23,57.68 |elite
   collect 10 Shadowshard Fragment##17756 |q 7070 |goto Desolace 27.23,57.68
 step
   note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
   kill Noxxious Scion##13696 |q 7041 |goto Maraudon - Dungeon -1,-1
 step
   note Collect 15 Theradric Crystal Carvings for Willow in Desolace.
-  collect 15 Theradric Crystal Carving##17684 |q 7028 |goto Maraudon - Dungeon -1,-1 |elite |tip {dropsfrom}Putridus Satyr, Putridus Trickster, Cursed Centaur
+  collect 15 Theradric Crystal Carving##17684 |q 7028 |goto Maraudon - Dungeon -1,-1 |elite |tip {dropsfrom}Poison Sprite, Putridus Satyr, Putridus Trickster
 step
   note Read the Pariah's Instructions. Afterwards, obtain the Amulet of Union from Maraudon and return it to the Centaur Pariah in southern Desolace.
   collect Amulet of Union##17758 |q 7067 |goto Desolace 50.42,86.65

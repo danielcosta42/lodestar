@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Wailing Caverns", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "c07764c5",
+	rev = "6e65eebb",
 }, [[
 step
   talk Nalpak##5767
@@ -23,11 +23,11 @@ step
   accept The Glowing Shard##6981 |goto Wailing Caverns - Dungeon -1,-1
 step
   note Nalpak in the Wailing Caverns wants 20 Deviate Hides.
-  kill Deviate Coiler##3630 |goto The Barrens 46,36.4 |elite
-  collect Deviate Hide##6443 |q 1486 |goto The Barrens 46,36.4
+  kill Deviate Coiler##3630 |q 1486 |goto The Barrens 46,36.4 |elite
+  collect 20 Deviate Hide##6443 |q 1486 |goto The Barrens 46,36.4
 step
   note Crane Operator Bigglefuzz in Ratchet wants you to retrieve the bottle of 99-Year-Old Port from Mad Magglish who is hiding in the Wailing Caverns.
-  kill Mad Magglish##3655 |goto The Barrens 46.83,34.66 |elite
+  kill Mad Magglish##3655 |q 959 |goto The Barrens 46.83,34.66 |elite
   collect 99-Year-Old Port##5334 |q 959 |goto The Barrens 46.83,34.66
 step
   note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
@@ -58,7 +58,7 @@ step
   accept Smart Drinks##1491 |goto The Barrens 62.37,37.62
 step
   note Bring 6 portions of Wailing Essence to Mebok Mizzyrix in Ratchet.
-  collect 6 Wailing Essence##6464 |q 1491 |goto Wailing Caverns - Dungeon -1,-1 |tip {dropsfrom}Devouring Ectoplasm, Evolving Ectoplasm, Nightmare Ectoplasm
+  collect 6 Wailing Essence##6464 |q 1491 |goto Wailing Caverns - Dungeon -1,-1 |elite |tip {dropsfrom}Nightmare Ectoplasm, Evolving Ectoplasm
 step
   talk Mebok Mizzyrix##3446
   turnin Smart Drinks##1491 |goto The Barrens 62.37,37.62

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Love is in the Air", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "61952e7f",
+	rev = "8be5a852",
 }, [[
 step
   only not completed(8898) not completed(8899) not haveq(8898) not haveq(8899)
@@ -20,7 +20,7 @@ step
   accept Dangerous Love##8903 |goto Stormwind City 61.92,74.96
 step
   note Get a Stormwind Guard's Card and return it to Aristan Mottar in Stormwind.
-  kill Stormwind Guard##1423 |goto Elwynn Forest 25.59,72.88
+  talk Stormwind Guard##1423
   collect Stormwind Guard's Card##22143 |q 8903 |goto Elwynn Forest 25.59,72.88
 step
   talk Aristan Mottar##16105

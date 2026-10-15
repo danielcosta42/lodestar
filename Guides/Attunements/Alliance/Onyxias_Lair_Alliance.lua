@@ -4,13 +4,16 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Alliance/Onyxia's Lair (Alliance)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "2ff56389",
+	rev = "68ea0a67",
 }, [[
 step
   talk Helendis Riverhorn##9562
   accept Dragonkin Menace##4182 |goto Burning Steppes 85.82,68.95
 step
   note Slay 15 Black Broodlings, 10 Black Dragonspawn, 4 Black Wyrmkin and 1 Black Drake. Return to Helendis Riverhorn when the task is complete.
+  kill Black Wyrmkin##7041 |q 4182/4 |goto Burning Steppes 91.38,55.93 |elite
+  kill Black Dragonspawn##7040 |q 4182/2 |goto Burning Steppes 90.47,52.28 |elite
+  kill Black Drake##7044 |q 4182/3 |goto Burning Steppes 89.94,43.86 |elite
   kill Black Broodling##7047 |q 4182 |goto Burning Steppes 91.67,35.54
 step
   talk Helendis Riverhorn##9562
@@ -76,7 +79,7 @@ step
   talk Marshal Maxwell##9560
   turnin Abandoned Hope##4242 |goto Burning Steppes 84.74,69.02
 step
-  kill Anvilrage Overseer##8889 |goto Blackrock Depths - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
+  kill Shadowforge Peasant##8896 |goto Blackrock Depths - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept A Crumpled Up Note##4264 |goto Blackrock Depths - Dungeon -1,-1
 step
   note You may have just stumbled on to something that Marshal Windsor would be interested in seeing. There may be hope, after all.

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Scarlet Monastery", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "1d8d04d3",
+	rev = "4f5bb394",
 }, [[
 step
   talk Dorn Plainstalker##2986
@@ -27,8 +27,11 @@ step
   talk Varimathras##2425
   accept Into The Scarlet Monastery##1048 |goto Undercity 56.25,92.2
 step
+  note If you have faith, leap from the planks overlooking Thousand Needles.
+  goto Thousand Needles 26.43,32.93
+step
   note Return Vorrel Sengutz's wedding ring to Monika Sengutz in Tarren Mill.
-  kill Nancy Vishas##3984 |goto Alterac Mountains 32.33,32.78 |elite
+  kill Nancy Vishas##3984 |q 1051 |goto Alterac Mountains 32.33,32.78 |elite
   collect Vorrel's Wedding Ring##5538 |q 1051 |goto Alterac Mountains 32.33,32.78
 step
   note Bring 1 pile of Kraul Guano to Master Apothecary Faranell in the Undercity.
@@ -41,7 +44,6 @@ step
   note Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Varimathras in the Undercity.
   kill High Inquisitor Whitemane##3977 |q 1048 |goto Scarlet Monastery - Dungeon -1,-1 |elite
 step
-  note If you have faith, leap from the planks overlooking Thousand Needles.
   talk Dorn Plainstalker##2986
   turnin Test of Faith##1149 |goto Thousand Needles 53.95,41.49
 step
@@ -77,7 +79,8 @@ step
   collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.8 |tip {dropsfrom}Grenka Bloodscreech
 step
   note Master Apothecary Faranell in the Undercity wants 20 Hearts of Zeal.
-  collect Heart of Zeal##5805 |q 1113 |goto Scarlet Monastery - Dungeon -1,-1 |elite |tip {dropsfrom}Houndmaster Loksey, Herod, Scarlet Commander Mograine
+  kill Scarlet Preserver##4280 |q 1113 |goto Tirisfal Glades 82.89,30.86 |elite
+  collect 20 Heart of Zeal##5805 |q 1113 |goto Tirisfal Glades 82.89,30.86
 step
   talk Dorn Plainstalker##2986
   turnin Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
@@ -98,7 +101,7 @@ step
   accept Get the Scoop##1950 |goto Thousand Needles 78.29,75.7
 step
   note Bring Fragments of Rok'Alim to Dorn Plainstalker in Thousand Needles.
-  kill Rok'Alim the Pounder##4499 |goto Thousand Needles 17.1,38.1 |elite
+  kill Rok'Alim the Pounder##4499 |q 1151 |goto Thousand Needles 17.1,38.1 |elite
   collect Fragments of Rok'Alim##5844 |q 1151 |goto Thousand Needles 17.1,38.1
 step
   only Mage
