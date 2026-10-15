@@ -5,11 +5,10 @@ ns:RegisterGuide("Leveling/Alliance/Searing Gorge (48-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Blasted Lands (50-55)",
-	rev = "1f88ba30",
+	rev = "89310198",
 }, [[
 step
-  kill Dark Iron Steamsmith##5840 |goto Searing Gorge 40.58,49.48 |tip Loot the quest item here — it starts the quest.
-  accept The Key to Freedom##4451 |goto Searing Gorge 40.58,49.48
+  ding 46
 step
   talk Kalaran Windblade##8479
   accept Divine Retribution##3441 |goto Searing Gorge 39.06,38.99
@@ -22,6 +21,31 @@ step
 step
   talk Kalaran Windblade##8479
   accept The Flawless Flame##3442 |goto Searing Gorge 39.06,38.99
+step
+  kill Dark Iron Steamsmith##5840 |goto Searing Gorge 40.58,49.48 |tip Loot the quest item here — it starts the quest.
+  accept The Key to Freedom##4451 |goto Searing Gorge 40.58,49.48
+step
+  note Search Searing Gorge and find a use for the Grimesilt Outhouse Key you have found.
+  turnin The Key to Freedom##4451 |goto Searing Gorge 65.59,62.17
+step
+  only level>=48
+  kill Margol the Rager##5833 |goto Searing Gorge 73.52,82.31 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Horn of the Beast##3181 |goto Searing Gorge 73.52,82.31
+step
+  talk Dorius Stonetender##8284
+  accept Suntara Stones##3367 |goto Searing Gorge 63.92,60.99
+step
+  note Help Dorius get back to Ironforge.
+  goto Searing Gorge 74.47,19.44 |tip Dorius Escort
+step
+  turnin Suntara Stones##3367 |goto Searing Gorge 74.45,19.29
+step
+  click Singed Letter##175704
+  accept Suntara Stones##3368 |goto Searing Gorge 74.45,19.29
+step
+  note Collect 4 Hearts of Flame and 4 globes of Golem Oil and return the items to Kalaran Windblade.
+  collect 4 Heart of Flame##10509 |q 3442/1 |goto Searing Gorge 57.56,46.7 |tip {dropsfrom}Blazing Elemental, Inferno Elemental, Magma Elemental
+  collect Golem Oil##10511 |q 3442 |goto Searing Gorge 62.56,59.8 |tip {dropsfrom}Tempered War Golem, Heavy War Golem, Magma Elemental
 step
   note {fp}Lanie Reed
   goto Searing Gorge 37.94,30.86 |tip {vendor}
@@ -41,44 +65,11 @@ step
   talk Hansel Heavyhands##14627
   accept Incendosaurs? Whateverosaur is More Like It##7727 |goto Searing Gorge 38.58,27.81
 step
-  click Wanted/Missing/Lost & Found##179827
-  accept WANTED: Overseer Maltorius##7701 |goto Searing Gorge 37.65,26.47
-step
-  talk Master Smith Burninate##14624
-  accept What the Flux?##7722 |goto Searing Gorge 38.8,28.51
-step
   note Hansel Heavyhands wants you to kill 20 Incendosaurs.
   kill Incendosaur##9318 |q 7727 |goto Searing Gorge 48.46,26.48
 step
   talk Hansel Heavyhands##14627
   turnin Incendosaurs? Whateverosaur is More Like It##7727 |goto Searing Gorge 38.58,27.81
-step
-  talk Zamael Lunthistle##8436
-  accept Prayer to Elune##3377 |goto Searing Gorge 29.57,26.29
-step
-  note Hear Zamael tell his tale.
-  talk Zamael Lunthistle##8436 |q 3377 |goto Searing Gorge 29.57,26.29
-step
-  talk Zamael Lunthistle##8436
-  turnin Prayer to Elune##3377 |goto Searing Gorge 29.57,26.29
-step
-  talk Zamael Lunthistle##8436
-  accept Prayer to Elune##3378 |goto Searing Gorge 29.57,26.29
-step
-  note Find the Prayer to Elune and take it to Astarii Starseeker in Darnassus.
-  kill Twilight Dark Shaman##5860 |goto Searing Gorge 23.52,36.55 |elite
-  collect Prayer to Elune##10458 |q 3378 |goto Searing Gorge 23.52,36.55
-step
-  turnin The Key to Freedom##4451 |goto Searing Gorge 65.59,62.17
-step
-  kill Margol the Rager##5833 |goto Searing Gorge 73.52,82.31 |elite |tip Loot the quest item here — it starts the quest.
-  accept The Horn of the Beast##3181 |goto Searing Gorge 73.52,82.31
-step
-  talk Dorius Stonetender##8284
-  accept Suntara Stones##3367 |goto Searing Gorge 63.92,60.99
-step
-  note Collect 4 Hearts of Flame and 4 globes of Golem Oil and return the items to Kalaran Windblade.
-  collect 4 Heart of Flame##10509 |q 3442 |goto Searing Gorge 57.56,46.7 |tip {dropsfrom}Blazing Elemental, Inferno Elemental, Magma Elemental
 step
   talk Kalaran Windblade##8479
   turnin The Flawless Flame##3442 |goto Searing Gorge 39.06,38.99
@@ -86,32 +77,29 @@ step
   talk Kalaran Windblade##8479
   accept Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
 step
-  note Deep within the Slag Pit of the Cauldron, in the Searing Gorge, you will find the traitorous Dark Iron dwarf named Overseer Maltorius.
-  kill Overseer Maltorius##14621 |goto Searing Gorge 40.77,35.89 |elite
-  collect Head of Overseer Maltorius##18946 |q 7701 |goto Searing Gorge 40.77,35.89
-step
-  note Somewhere in the Slag Pit of the Cauldron you will find the Secret Plans: Fiery Flux that Overseer Maltorius stole. Find those plans and return them to Master Smith Burninate in the Searing Gorge.
-  collect Secret Plans: Fiery Flux##18922 |q 7722 |goto Searing Gorge 40.45,35.74
-step
   note Hansel Heavyhands wants you to kill 20 Heavy War Golems.
   kill Heavy War Golem##5854 |q 7723 |goto Searing Gorge 39.86,44.17
+step
+  note Slay 15 Dark Iron Taskmasters and 15 Dark Iron Slavers. Return to Taskmaster Scrange in the Searing Gorge once you have accomplished this task.
+  kill Dark Iron Slaver##5844 |q 7729/2 |goto Searing Gorge 41.01,43.82
+  kill Dark Iron Taskmaster##5846 |q 7729 |goto Searing Gorge 43.12,40.37
+step
+  note Find and return the Smithing Tuyere and Lookout's Spyglass to Taskmaster Scrange in the Searing Gorge.
+  collect Smithing Tuyere##18959 |q 7728/1 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith
+  collect Lookout's Spyglass##18960 |q 7728 |goto Searing Gorge 42.72,62.57 |tip {dropsfrom}Dark Iron Lookout
 step
   note Hansel Heavyhands wants you to kill 20 Greater Lava Spiders in the Searing Gorge. You can find Greater Lava Spiders in the plateaus and lava pools of the Searing Gorge.
   kill Greater Lava Spider##5858 |q 7724 |goto Searing Gorge 29.31,62.39
 step
-  note Find and return the Smithing Tuyere and Lookout's Spyglass to Taskmaster Scrange in the Searing Gorge.
-  collect Smithing Tuyere##18959 |q 7728 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith
+  note Bring 8 Thorium Plated Daggers to Kalaran Windblade.
+  collect 8 Thorium Plated Dagger##10551 |q 3443 |goto Searing Gorge 63.66,59.26 |tip {dropsfrom}Dark Iron Geologist, Dark Iron Steamsmith, Slave Worker
 step
-  note Slay 15 Dark Iron Taskmasters and 15 Dark Iron Slavers. Return to Taskmaster Scrange in the Searing Gorge once you have accomplished this task.
-  kill Dark Iron Taskmaster##5846 |q 7729 |goto Searing Gorge 43.12,40.37
+  talk Kalaran Windblade##8479
+  turnin Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
 step
-  turnin Suntara Stones##3367 |goto Searing Gorge 74.45,19.29
-step
-  talk Lookout Captain Lolo Longstriker##14634
-  turnin WANTED: Overseer Maltorius##7701 |goto Searing Gorge 37.74,26.56
-step
-  talk Master Smith Burninate##14624
-  turnin What the Flux?##7722 |goto Searing Gorge 38.8,28.51
+  only level>=50
+  talk Kalaran Windblade##8479
+  accept The Flame's Casing##3452 |goto Searing Gorge 39.06,38.99
 step
   talk Hansel Heavyhands##14627
   turnin Curse These Fat Fingers##7723 |goto Searing Gorge 38.58,27.81
@@ -125,83 +113,143 @@ step
   talk Taskmaster Scrange##14626
   turnin JOB OPPORTUNITY: Culling the Competition##7729 |goto Searing Gorge 38.97,27.51
 step
-  click Singed Letter##175704
-  accept Suntara Stones##3368 |goto Searing Gorge 74.45,19.29
+  only level>=50
+  click Wanted/Missing/Lost & Found##179827
+  accept WANTED: Overseer Maltorius##7701 |goto Searing Gorge 37.65,26.47
 step
-  note Bring 8 Thorium Plated Daggers to Kalaran Windblade.
-  collect 8 Thorium Plated Dagger##10551 |q 3443 |goto Searing Gorge 63.66,59.26 |tip {dropsfrom}Dark Iron Geologist, Dark Iron Steamsmith, Slave Worker
+  talk Master Smith Burninate##14624
+  accept What the Flux?##7722 |goto Searing Gorge 38.8,28.51
 step
-  talk Kalaran Windblade##8479
-  turnin Forging the Shaft##3443 |goto Searing Gorge 39.06,38.99
+  talk Zamael Lunthistle##8436
+  accept Prayer to Elune##3377 |goto Searing Gorge 29.57,26.29
 step
-  talk Kalaran Windblade##8479
-  accept The Flame's Casing##3452 |goto Searing Gorge 39.06,38.99
+  note Hear Zamael tell his tale.
+  talk Zamael Lunthistle##8436 |q 3377 |goto Searing Gorge 29.57,26.29
 step
+  talk Zamael Lunthistle##8436
+  turnin Prayer to Elune##3377 |goto Searing Gorge 29.57,26.29
+step
+  only level>=50
+  talk Zamael Lunthistle##8436
+  accept Prayer to Elune##3378 |goto Searing Gorge 29.57,26.29
+step
+  only haveq(3378)
+  note Find the Prayer to Elune and take it to Astarii Starseeker in Darnassus.
+  kill Twilight Dark Shaman##5860 |q 3378 |goto Searing Gorge 23.52,36.55 |elite
+  collect Prayer to Elune##10458 |q 3378 |goto Searing Gorge 23.52,36.55
+step
+  only haveq(3452)
   note Find and return a Symbol of Ragnaros to Kalaran Windblade.
-  kill Twilight Dark Shaman##5860 |goto Searing Gorge 23.52,36.55 |elite
+  kill Twilight Dark Shaman##5860 |q 3452 |goto Searing Gorge 23.52,36.55 |elite
   collect Symbol of Ragnaros##10552 |q 3452 |goto Searing Gorge 23.52,36.55
 step
+  only haveq(3452)
   talk Kalaran Windblade##8479
   turnin The Flame's Casing##3452 |goto Searing Gorge 39.06,38.99
 step
+  only completed(3452)
   talk Kalaran Windblade##8479
   accept The Torch of Retribution##3453 |goto Searing Gorge 39.06,38.99
 step
+  only haveq(3453)
   note Wait for Kalaran Windblade to complete the Torch of Retribution.
   talk Kalaran Windblade##8479 |q 3453 |goto Searing Gorge 39.06,38.99
 step
+  only haveq(7701)
+  note Deep within the Slag Pit of the Cauldron, in the Searing Gorge, you will find the traitorous Dark Iron dwarf named Overseer Maltorius.
+  kill Overseer Maltorius##14621 |q 7701 |goto Searing Gorge 40.77,35.89 |elite
+  collect Head of Overseer Maltorius##18946 |q 7701 |goto Searing Gorge 40.77,35.89
+step
+  note Somewhere in the Slag Pit of the Cauldron you will find the Secret Plans: Fiery Flux that Overseer Maltorius stole. Find those plans and return them to Master Smith Burninate in the Searing Gorge.
+  collect Secret Plans: Fiery Flux##18922 |q 7722 |goto Searing Gorge 40.45,35.74
+step
+  only haveq(3453)
   talk Kalaran Windblade##8479
   turnin The Torch of Retribution##3453 |goto Searing Gorge 39.06,38.99
 step
+  only completed(3453)
   talk Kalaran Windblade##8479
   accept The Torch of Retribution##3454 |goto Searing Gorge 39.06,38.99
 step
+  only haveq(3454)
+  note Take the Torch of Retribution.
   turnin The Torch of Retribution##3454 |goto Searing Gorge 39.06,39.07
 step
+  only completed(3454)
   talk Kalaran Windblade##8479
   accept Squire Maltrake##3462 |goto Searing Gorge 39.06,38.99
 step
+  only haveq(3462)
+  note Speak with Squire Maltrake.
   talk Squire Maltrake##8509
   turnin Squire Maltrake##3462 |goto Searing Gorge 39.17,39
 step
+  only haveq(7701)
+  talk Lookout Captain Lolo Longstriker##14634
+  turnin WANTED: Overseer Maltorius##7701 |goto Searing Gorge 37.74,26.56
+step
+  talk Master Smith Burninate##14624
+  turnin What the Flux?##7722 |goto Searing Gorge 38.8,28.51
+step
+  only completed(3462)
   talk Squire Maltrake##8509
   accept Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
 step
+  only haveq(3463)
   note Set the North, South, East, and West Sentry Towers on fire by using the Torch of Retribution inside each of the buildings.
-  collect Sentry Brazier##149025 |q 3463 |goto Searing Gorge 35.67,60.68
+  click Sentry Brazier##149032 |q 3463/4 |goto Searing Gorge 33.3,54.48
+  click Sentry Brazier##149025 |q 3463/1 |goto Searing Gorge 35.67,60.68
+  click Sentry Brazier##149030 |q 3463/2 |goto Searing Gorge 44.03,60.91
+  click Sentry Brazier##149031 |q 3463 |goto Searing Gorge 50.07,54.74
 step
+  only haveq(3463)
   talk Squire Maltrake##8509
   turnin Set Them Ablaze!##3463 |goto Searing Gorge 39.17,39
 step
+  only completed(3463)
   click Hoard of the Black Dragonflight##149502
   accept Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
+  only haveq(3481)
+  note Open the chest.
   turnin Trinkets...##3481 |goto Searing Gorge 38.85,38.99
 step
+  only haveq(3181)
+  note Take Margol's Gigantic Horn to Mountaineer Pebblebitty.
   talk Mountaineer Pebblebitty##3836
   turnin The Horn of the Beast##3181 |goto Loch Modan 18.18,84.01 |tip {turninat}Loch Modan
 step
-  talk Curator Thorius##8256
-  turnin Suntara Stones##3368 |goto Ironforge 71.5,15.74 |tip {turninat}Ironforge
-step
-  talk Astarii Starseeker##4090
-  turnin Prayer to Elune##3378 |goto Darnassus 38.33,80.95 |tip {turninat}Darnassus
-step
+  only completed(3181)
   talk Mountaineer Pebblebitty##3836
   accept Proof of Deed##3182 |goto Loch Modan 18.18,84.01
 step
+  only haveq(2977)
+  note Speak with Historian Karnik in Ironforge.
+  talk Historian Karnik##2916
+  turnin Return to Ironforge##2977 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
+step
+  only haveq(3182)
+  note Take Margol's Gigantic Horn to Curator Thorius in Ironforge.
   talk Curator Thorius##8256
   turnin Proof of Deed##3182 |goto Ironforge 71.5,15.74 |tip {turninat}Ironforge
 step
+  note Take the Singed Letter to Thorius in Ironforge. He is in the Hall of Explorers.
+  talk Curator Thorius##8256
+  turnin Suntara Stones##3368 |goto Ironforge 71.5,15.74 |tip {turninat}Ironforge
+step
+  only completed(3182)
   talk Curator Thorius##8256
   accept At Last!##3201 |goto Ironforge 71.5,15.74
 step
   talk Curator Thorius##8256
   accept Dwarven Justice##3371 |goto Ironforge 71.5,15.74
 step
+  only haveq(3201)
+  note Take the Proof of Deed back to Mountaineer Pebblebitty.
   talk Mountaineer Pebblebitty##3836
   turnin At Last!##3201 |goto Loch Modan 18.18,84.01 |tip {turninat}Loch Modan
 step
+  note Return to the Searing Gorge and find Dorius's archaeology unit.
   talk Dying Archaeologist##8417
   turnin Dwarven Justice##3371 |goto Searing Gorge 41.14,25.56
 step
@@ -213,13 +261,18 @@ step
 step
   turnin Release Them##3372 |goto Searing Gorge 41.25,25.41
 step
+  only level>=52
   talk Dying Archaeologist##8417
   accept Rise, Obsidion!##3566 |goto Searing Gorge 41.14,25.56
 step
+  only haveq(3566)
   note Slay Lathoric the Black and Obsidion, and return to Thorius in Ironforge with the Head of Lathoric the Black and the Heart of Obsidion.
-  kill Lathoric the Black##8391 |goto Searing Gorge 41.32,25.53 |elite
-  collect Head of Lathoric the Black##10447 |q 3566 |goto Searing Gorge 41.32,25.53
+  kill Lathoric the Black##8391 |q 3566/1 |goto Searing Gorge 41.32,25.53 |elite
+  collect Head of Lathoric the Black##10447 |q 3566/1 |goto Searing Gorge 41.32,25.53
+  kill Obsidion##8400 |q 3566 |goto Searing Gorge 41.76,24.33 |elite
+  collect Heart of Obsidion##10446 |q 3566 |goto Searing Gorge 41.76,24.33
 step
+  only haveq(3566)
   talk Curator Thorius##8256
   turnin Rise, Obsidion!##3566 |goto Ironforge 71.5,15.74 |tip {turninat}Ironforge
 step

@@ -3,7 +3,7 @@ local ADDON, ns = ...
 if not ns then return end
 ns:RegisterGuide("Attunements/Maraudon - Scepter of Celebras", {
 	author = "Lodestar Generator",
-	rev = "cc18ad98",
+	rev = "48f73f34",
 }, [[
 step
   talk Cavindra##13697
@@ -19,7 +19,7 @@ step
   accept The Scepter of Celebras##7046 |goto Maraudon - Dungeon -1,-1
 step
   note Assist Celebras the Redeemed while he creates the Scepter of Celebras.
-  collect Incantation of Celebras##178965 |q 7046 |goto Maraudon - Dungeon -1,-1
+  click Incantation of Celebras##178965 |q 7046 |goto Maraudon - Dungeon -1,-1
 step
   talk Celebras the Redeemed##13716
   turnin The Scepter of Celebras##7046 |goto Maraudon - Dungeon -1,-1

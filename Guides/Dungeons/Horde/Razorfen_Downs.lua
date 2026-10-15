@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Razorfen Downs", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "a069c183",
+	rev = "adc33b0f",
 }, [[
 step
   talk Myriam Moonsinger##12866
@@ -20,7 +20,9 @@ step
   accept Bring the End##3341 |goto Undercity 74.05,33.31
 step
   note Kill 8 Razorfen Battleguard, 8 Razorfen Thornweavers, and 8 Death's Head Cultists and return to Myriam Moonsinger near the entrance to Razorfen Downs.
-  kill Razorfen Battleguard##7873 |q 6626 |goto The Barrens 47.3,89.89 |elite
+  kill Razorfen Battleguard##7873 |q 6626/1 |goto The Barrens 47.3,89.89 |elite
+  kill Death's Head Cultist##7872 |q 6626/3 |goto The Barrens 47.86,90.73 |elite
+  kill Razorfen Thornweaver##7874 |q 6626 |goto The Barrens 48.12,92.23 |elite
 step
   note Andrew Brownell wants you to kill Amnennar the Coldbringer and return his skull.
   collect Skull of the Coldbringer##10420 |q 3341 |goto Razorfen Downs - Dungeon -1,-1 |elite |tip {dropsfrom}Amnennar the Coldbringer
@@ -46,12 +48,14 @@ step
   accept Extinguishing the Idol##3525 |goto Razorfen Downs - Dungeon -1,-1
 step
   note Bring Ambassador Malcin's Head to Varimathras in the Undercity.
-  kill Ambassador Malcin##12865 |goto The Barrens 48.4,95.4 |elite
+  kill Ambassador Malcin##12865 |q 6521 |goto The Barrens 48.4,95.4 |elite
   collect Ambassador Malcin's Head##17009 |q 6521 |goto The Barrens 48.4,95.4
+step
+  note Escort Belnistrasz to the Quilboar's idol in Razorfen Downs.
+  goto The Barrens 50.86,92.87 |tip Protect Belnistrasz while he performs the ritual to shut down the idol
 step
   talk Varimathras##2425
   turnin An Unholy Alliance##6521 |goto Undercity 56.25,92.2
 step
-  note Escort Belnistrasz to the Quilboar's idol in Razorfen Downs.
   turnin Extinguishing the Idol##3525 |goto Razorfen Downs - Dungeon -1,-1
 ]])

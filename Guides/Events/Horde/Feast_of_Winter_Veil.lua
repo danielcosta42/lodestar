@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Horde/Feast of Winter Veil", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "aa051900",
+	rev = "14307d95",
 }, [[
 step
   talk Wonderform Operator##15732
@@ -68,7 +68,10 @@ step
   accept Hallow's End Treats for Spoops!##8312 |goto Orgrimmar 71.44,22.81
 step
   note Speak with the innkeepers of Orgrimmar, Undercity, and Thunder Bluff, as well as Kali Remik in Sen'jin Village. Perform the tricks they ask of you in exchange for the treats they offer.
-  collect Orgrimmar Nougat##20493 |q 8312 |goto Orgrimmar 54.1,68.41 |tip {dropsfrom}Innkeeper Gryshka
+  collect Orgrimmar Nougat##20493 |q 8312/1 |goto Orgrimmar 54.1,68.41 |tip {dropsfrom}Innkeeper Gryshka
+  collect Darkspear Gumdrop##20495 |q 8312/2 |goto Durotar 56.13,74.24 |tip {dropsfrom}Kali Remik
+  collect Undercity Mint##20491 |q 8312/3 |goto Undercity 67.74,37.89 |tip {dropsfrom}Innkeeper Norman
+  collect Thunder Bluff Marzipan##20497 |q 8312 |goto Thunder Bluff 45.81,64.71 |tip {dropsfrom}Innkeeper Pala
 step
   talk Spoops##15309
   turnin Hallow's End Treats for Spoops!##8312 |goto Orgrimmar 71.44,22.81
@@ -100,7 +103,8 @@ step
   accept Treats for Great-father Winter##6962 |goto Orgrimmar 52.49,69.18
 step
   note Bring 5 Gingerbread Cookies and an Ice Cold Milk to Greatfather Winter in Orgrimmar.
-  collect 5 Gingerbread Cookie##17197 |q 6962 |goto Orgrimmar 52.49,69.18
+  collect 5 Gingerbread Cookie##17197 |q 6962/1 |tip Crafted or bought.
+  collect Ice Cold Milk##1179 |q 6962 |goto Westfall 45.8,26.58 |tip {dropsfrom}Defias Smuggler, Riverpaw Taskmaster, Harvest Watcher
 step
   talk Great-father Winter##13445
   turnin Treats for Great-father Winter##6962 |goto Orgrimmar 52.49,69.18
@@ -116,7 +120,7 @@ step
   accept You're a Mean One...##6983 |goto Alterac Mountains 35.44,72.46
 step
   note Locate and return the Stolen Treats to Kaymard Copperpinch in Orgrimmar. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains.
-  kill The Abominable Greench##13602 |goto Alterac Mountains 39.61,62.91 |elite
+  kill The Abominable Greench##13602 |q 6983 |goto Alterac Mountains 39.61,62.91 |elite
   collect Stolen Treats##17662 |q 6983 |goto Alterac Mountains 39.61,62.91
 step
   talk Kaymard Copperpinch##13418
@@ -142,7 +146,7 @@ step
   accept The Hero of the Day##8799 |goto Orgrimmar 53.33,66.49
 step
   note Bring 1 Deeprock Salt and 5 gold coins to the Holly Preserver machine, upon which you will receive 5 Preserved Holly.
-  collect 1 Deeprock Salt##8150 |q 8799 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Felhunter, Stone Fury
+  collect 1 Deeprock Salt##8150 |q 8799 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Stone Golem, Lesser Rock Elemental
 step
   turnin The Hero of the Day##8799 |goto Undercity 67.33,38
 step
@@ -176,7 +180,7 @@ step
   talk Kwee Q. Peddlefeet##16075
   accept Gift Giving##8981 |goto Undercity 55.2,89.95
 step
-  collect Horde Gift Collection##22263 |q 8981 |goto Undercity 55.2,89.95
+  collect Horde Gift Collection##22263 |q 8981 |goto Undercity 55.2,89.95 |tip Crafted or bought.
 step
   talk Kwee Q. Peddlefeet##16075
   turnin Gift Giving##8981 |goto Undercity 55.2,89.95

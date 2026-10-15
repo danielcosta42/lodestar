@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Ruins of Lordaeron", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "bfe99f7c",
+	rev = "aac7f844",
 }, [[
 step
   talk Master Apothecary Faranell##2055
@@ -31,6 +31,9 @@ step
   note Collect a Toxic Skullcap from Tawny Grisette in the Trade Quarter, Blisterweed near the Herbalism Trainer, and Essence of Agony from the poison vendor in the Rogues' Quarter for Master Apothecary Faranell in Undercity.
   collect Blisterweed##281300 |q 97291 |goto Undercity 54.1,49.5
 step
+  note Investigate the disappearance of Edward Heartweaver in the Ruins of Lordaeron.
+  goto Undercity 67.69,13.55
+step
   note Kill Rath'mael in the Ruins of Lordaeron for Deathguard Kristof in Brill.
   kill Rath'mael##250657 |q 92422
 step
@@ -51,7 +54,6 @@ step
   talk Master Apothecary Faranell##2055
   turnin Unending Torment##97292 |goto Undercity 48.82,69.28
 step
-  note Investigate the disappearance of Edward Heartweaver in the Ruins of Lordaeron.
   talk Tabitha Heartweaver##250686
   turnin A Frightened Request##92401 |goto Silverpine Forest 44.54,42.96
 step

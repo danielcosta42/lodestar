@@ -104,14 +104,31 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   faixa serve — "Feralas: A History", de Darnassus, é pega antes de ir a Feralas —; senão para o
   guia cuja faixa serve, preferindo a zona onde a capital fica (Ironforge → Dun Morogh). Sempre no
   continente da capital e do destino, nunca em Zephras Isle; breadcrumb de capital para outro
-  continente ("Reclaimers' Business in Desolace", de Ironforge) fica fora — a trilha é por
-  continente e não passa na capital do outro.
+  continente ("Reclaimers' Business in Desolace", de Ironforge) fica fora — o guia é de um
+  continente, e a capital do outro não está nele. Vale para quest que começa em objeto da capital
+  (o Sealed Crate de Stormwind, no meio de The Legend of Stalvan). "Fale com" de capital no nível de
+  sair da zona inicial, num guia cuja gente não nasce na casa dela, é só da raça da capital e do
+  Skyborne (Sergra Darkthorn e The Barrens Oases, de Thunder Bluff, levavam o orc de Durotar a pé até
+  lá no começo de The Barrens 12-20).
 - **Pré-requisito de fora do guia vira condição do passo**: `only completed(p)` (com várias opções,
   `completed(a,b)` = qualquer uma). O passo só aparece para quem já entregou; antes, ou o guia
   cortava a quest, ou mandava a um NPC que não a abre e travava. Quem depende dela no guia herda.
+- **A cadeia intercala os continentes por nível.** Uma só por facção: depois da zona inicial, o
+  primeiro guia do próprio continente, e daí todos os guias dos dois, em ordem de nível; troca de
+  continente quando o próximo daqui passa 3 níveis (`FICA_NIVEIS`) do próximo de lá — 7 a 9
+  travessias por cadeia. Por continente, o morto-vivo ia de Hillsbrad 22-28 a Hillsbrad 32-39 no
+  nível 23 (o conteúdo de 28-32 da Horda é de Kalimdor) e a cadeia não dava XP para o 60. O custo:
+  a cadeia é a mesma para todas as raças, e o humano passa por Darkshore 13-20 e The Barrens 14-21
+  já no 22-25, com boa parte das quests cinza (o modelo do revisor dá ~65% da XP ali).
 - **Cadeia que atravessa zonas** (The Defias Brotherhood: Westfall → Redridge → Westfall): a quest
   cujo pré-req fica num guia mais adiante da trilha do continente vai para ele, no bloco final
-  ("volte a Sentinel Hill"). Guia que fica com menos de 6 quests se dissolve no vizinho da trilha.
+  ("volte a Sentinel Hill"); pré-req noutro continente, mais adiante na cadeia, leva a quest ao
+  primeiro guia daqui depois dele (Devils in Westfall espera a de Stonetalon). A quest de nível
+  acima da zona onde começa que continua cadeia de nível maior não sai como "poluente" dali: é ela
+  que vai ao guia do pré-req (The Legend of Stalvan do baú de Westfall, req 22, vai a Duskwood;
+  tirada, a cadeia de Stalvan sumia). Guia que fica com
+  menos de 6 quests se dissolve no vizinho da trilha. Entrega noutra zona de que nada depende vai
+  para o fim do guia (Flight to Auberdine, na chegada a Darkshore).
 - **Exclusivas.** Todo passo de quest com `exclusiveTo` leva `not completed(x) not haveq(x)`: feita
   uma variante, a outra some em vez de travar — inclusive em guias diferentes do mesmo caminho
   (Call of Fire em Durotar e a de Orgrimmar em The Barrens). No mesmo guia, de par que se lista dos
@@ -120,9 +137,21 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   classe, a variante dada só numa zona inicial é da raça de lá (Call of Earth em Durotar, Mulgore e
   Zephras), e entre capitais a raça da casa desempata (Devourer of Souls).
 - **Fica fora também:** entrega de marca de campo de batalha e doação de pano (Concerted Efforts
-  fazia do Alterac da Aliança um "34-60"), quest cujo objetivo ou entrega fica noutro continente,
-  e quest que ninguém dá (giver sem spawn, item sem fonte). Item que a quest anterior dá
-  (Tome of Divinity) começa onde ela é entregue.
+  fazia do Alterac da Aliança um "34-60"), quest cujo objetivo ou entrega fica noutro continente — a
+  de classe também, e com qualquer ponta noutro continente, capital incluída: a cadeia inteira está
+  no guia de classe (Tome of the Cabal, do bruxo, com um tomo em Hillsbrad e outro em Thousand
+  Needles, fazia 15 travessias; Storm, Earth, and Fire, duas voltas de totem; Erion's Behest, do
+  ladino, ia de Darnassus a Stormwind no meio de Darkshore; as variantes das quests de magia do
+  sacerdote para quem está na capital de outra raça) —, e quest que ninguém dá (giver sem spawn,
+  item sem fonte). Item que a quest anterior dá (Tome of Divinity) começa onde ela é entregue. É de
+  masmorra também a quest com um objetivo que só existe lá dentro (Vyletongue Corruption, com o
+  frasco cheio no poço da entrada; Fire Hardened Mail, com o frasco do Roogug em Razorfen Kraul), a
+  da masmorra cujo alvo fora dela é só elite (Hearts of Zeal: o QuestieDB põe os elites de Scarlet
+  Monastery no mapa de Tirisfal) e, sem objetivo no banco, a que o texto manda à masmorra
+  (Destruction in Deadmines, A Bijou for Zanza). E a de raide: alvo chefe de raide (A Humble
+  Offering, The Calling) ou elite acima do nível máximo (Order Must Be Restored: "a full assault on
+  Nathanos Blightcaller", 62; The Root of All Evil: Xandivious, 62), e o que só abre depois dela
+  (The Brokering of Peace; Ascension..., depois do Axtroz).
 - **O título é a faixa do que o guia leva** (percentis 15-85 das quests dele), não a da descoberta:
   um grupinho de quests de Onyxia fazia "Dustwallow Marsh (35-60)" de um guia que para no 51.
 - **Autopilot: o nível manda.** Guia já passado pesa 3 por nível, guia ainda acima 2 por nível,
@@ -132,11 +161,30 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   nível, abre o recomendado; a antiga continua na aba.
 - **Zephras Isle fica fora da cadeia.** O `next` dos guias pula a ilha (Dun Morogh → Westfall), e o
   autopilot só a oferece a Skyborne ou a quem já está lá.
+- **Quest com tempo** ("within 12 minutes", "five minutes", "1 hour", "timer runs out", "before the
+  stone expires") é como a escolta: aceita por último no lugar, feita logo depois e entregue em
+  seguida (A Hunter's Challenge tinha a ida a Thelsamar no meio; The Demon Seed, a de Thunder Bluff).
+  A que se entrega noutra zona é pega nas sobras, na ida para lá: Apothecary Zamah ia a Thunder Bluff
+  300 passos depois, já falha, e depois de pega nos Crossroads a ida a Thunder Bluff junta Serpentbloom,
+  Hamuul Runetotem e Nara Wildmane.
+- **O que o banco não liga, ligado pelo dado:** quest que manda entregar um item que só outra quest
+  dá depende dela ("Deliver the Eye of the Tempest" só depois de Heed My Call, que traz o olho — no
+  guia de classe do xamã vinha antes); a mesma quest de classe dada por dois NPCs, com os mesmos itens
+  (Storm, Earth, and Fire: a de Bath'rah, em Alterac, para orc, tauren e troll, e a de Veyric, em
+  Arathi), é uma ou outra — a das raças primeiro, a outra para quem ela não cobre.
+  Objetivo de vários itens com um sem lugar ganha um passo por item (Gathering Materials, do mago: o
+  Linen Cloth e as Dalaran Mana Gems; antes só o tecido). As "Legacy Reward" (brinde de conta, sem
+  texto nem objetivo) ficam fora.
+- **Zona nova dentro de outra** (`ZONA_MAE`): Shen'dralas, o Valley of Bones ao sul de Desolace, vai
+  no guia de Desolace — sozinha virava guia quando tinha 6 quests e sumia com menos.
+- **Giver em duas capitais**: a da gente da zona antes (Speak with Un'thuwa, de Durotar, em
+  Orgrimmar, não em Thunder Bluff).
 - **"Speak with X"** num NPC amigo sai como `talk`, não `kill`: o banco guarda o objetivo como de
   criatura. Mas o Forever marca `AH` em mob hostil (Mindless Zombie, Mottled Boar): objetivo cujo
   texto manda matar (kill, slay, hunt, bounty…) sai `kill` qualquer que seja o `faction`. Se o alvo
   é NPC com quem se fala (gossip, dá ou recebe quest), a palavra tem de estar na frase do nome dele:
-  o "kill her" de Mother's Milk é a aranha, não Ragged John.
+  o "kill her" de Mother's Milk é a aranha, não Ragged John. NPC da outra facção não conversa: "a
+  full assault on Nathanos Blightcaller" é `kill` no guia da Aliança.
 - **O nível mínimo é trava.** A quest espera o nível estimado alcançar o `reqLevel` — sem folga: no
   nível 1 o NPC mostra o "!" cinza da The Damned (`reqLevel` 2) e não a entrega. A folga de +1 fica
   para o nível da quest. A estimativa conta só as quests de todo mundo (as de classe diluíam a
@@ -146,7 +194,147 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   Cutting Teeth vem de Your Place In The World (no vale) ou de The New Horde (Eitrigg, em
   Orgrimmar), e esperar as duas jogava o vale de Durotar para o fim do guia. Variante de público
   diferente é de outro jogador e a dependente espera a de cada um — no guia de classe, onde a raça
-  da zona inicial estreita a Call of Fire de cada zona.
+  da zona inicial estreita a Call of Fire de cada zona. A alternativa que nasce fora sai do guia
+  quando uma da zona cobre o mesmo público: The New Horde não manda mais a Orgrimmar.
+- **A rota escolhe o próximo hub simulando.** Hub é vila (quem dá e quem recebe) e, à parte, lugar de
+  objetivo longe de toda vila — a Burning Blade Coven é hub próprio. Entre os dois hubs mais perto com
+  trabalho (o que só tem quest nova conta 1,2× a distância), fica o que dá o menor caminho total
+  simulando o mesmo guloso até acabar o trabalho que se sabe. Na zona inicial, a rota fica nos hubs
+  das quests da subzona de partida (o `zoneOrSort`) enquanto eles tiverem trabalho.
+- **O nível estimado é o maior entre a XP e a fração do guia.** A XP é a do QuestieDB (`xp.json`, do
+  `support/Forever/QuestXP`; quest nova do Forever segue a mediana do dado) mais os mobs do
+  objetivo, na tabela do vanilla — ela sabe que o começo é rápido. A fração entregue, em curva, sabe
+  que fora da zona inicial o jogador intercala zonas. A XP vale meio nível a menos (`XP_FOLGA`: a
+  conta é aproximada), e quest só entra até 2 níveis acima (`LV_ACIMA`; +3 é mob vermelho). A faixa
+  que a curva usa é a do que todo jogador do guia faz: sem quest de classe, herdada ou que espera
+  pré-requisito de fora (a cadeia de Felbane, 58-60, puxava o teto de Stranglethorn 43-51 para 58 e
+  Vital Supplies, de 45, saía como cinza). Quest de classe, de masmorra ou "fale com" que pede nível
+  acima da faixa do guia sai dele: tem o guia de classe ou de masmorra.
+- **Aceite acima do nível da XP é opcional.** O `reqLevel` acima do nível que só a XP dá, com a
+  mesma folga de meio nível (a curva da fração adianta o nível; Deadmire, req 35, saía sem gate para
+  quem tinha 34,99 no fim de Dustwallow), leva `only level>=N` no aceite; fazer e entregar levam
+  `haveq`, e quem depende dela no guia pelo banco (pré-requisito, não breadcrumb), `completed`, em
+  cascata. O NPC não dá a quest a quem não tem o nível, e o passo some em vez de travar. Quest de
+  grupo (alvo hostil elite perto do nível dela: Araj the Summoner, 61, em Alas, Andorhal; os
+  Irradiated Invaders de Gnogaine) pede o nível da quest. Antes era um `ding N` no meio do guia, que
+  parava tudo por uma quest (8 níveis em Ironforge por A Host of Evil). Quest que pede nível acima
+  do topo do guia vai ao guia seguinte da trilha que chega lá, sem tolerância de +1 (com a folga,
+  The Algaz Gauntlet, 19, ficava no fim de Loch Modan 11-18 e a cadeia de Menethil sumia); a de
+  grupo, pelo nível dela, só para outra faixa da mesma zona que comece perto dela — senão fica,
+  opcional (Gnogaine, elite de 27, ia de Dun Morogh 13-26 para Duskwood 21-28).
+- **O guia começa com `ding` no nível de entrada**: o de baixo das quests que ele leva, menos 1 (não
+  o da descoberta, a zona inteira: Tanaris 53-60 supunha o 56), até o `reqLevel` das 6 primeiras
+  quests sem gate que ele dá (`ENTRADA_QUESTS`), e subindo até toda quest sem gate caber no nível
+  que a XP dá a partir dali, com a folga — o gate supõe o nível do guia, e Stranglethorn 34-41
+  entrava no 28 com The Defense of Grom'gol, de 33, sem gate; sem a folga, a Chromie dava The Battle
+  of Darrowshire (req 55) a quem entrava no Eastern Plaguelands no 54 e tinha 54,6. Conclui sozinho
+  para quem já tem o nível.
+- **Item de objetivo: todas as fontes.** O import guardava só as 3 primeiras de cada item, e a
+  fonte da zona do guia sumia: Boar Intestines mandava de Loch Modan a Westfall, Murloc Eye de
+  Silverpine aos Wetlands, Flagon of Mead a Booty Bay (167 de 1.209 coletas fora da zona). Com todas,
+  a ordem é: o nó da zona que tem o nome do item (as 75 plantas de Bloodpetal Sprout, não o Ravasaur
+  que derruba um); mob comum até 4 níveis acima da quest, preferindo o que não passa do nível dela
+  (Small Egg em Zephras: os Hippogryph de nível 6-7, não o Shadowgale Ursera de 11); objeto; a loja
+  do continente contra elite, raro ou mob muito acima (Fishin' Time mandava matar o Foreman
+  Thistlenettle, elite de 20, por Nightcrawlers); o elite; e, sem nada, o NPC do nome do item
+  ("Dillinger's Report": Deathguard Dillinger, pelo sobrenome, só na zona do guia), a quem se pede.
+  Masmorra só vence o mundo aberto se o mundo tiver menos de 20 spawns (`FONTE_MUNDO`). A dica "cai
+  de" começa pela fonte da seta e só cita as da zona dela, e some quando a seta está no nó do item.
+  Na compra, o passo diz quem vende (`talk`, sem seta); quem não é vendedor entrega o item (os
+  mensageiros de The Warsong Reports). `buy … |q` conclui pelo objetivo da quest, não pela bolsa
+  (1 Nightcrawlers fechava o passo de Fishin' Time, que pede 3 e um Shiny Bauble). Item que vem de
+  um NPC que o banco não liga à quest: `OBJETIVO_ANTES` (os restos de Samuel Fipps antes da lápide
+  de Marla, Araj antes do filactério, Xandivious antes da essência), num passo próprio — `kill`
+  sem seta e um `goto` até ele. Item noutra zona junto com um daqui: o passo, que só fecha com os
+  dois, vai para as sobras (A Noble Brew: a Tear of Tilloa de Duskwood e a Musquash Root dos
+  Wetlands travavam o meio de Duskwood 30-35).
+- **Seta que não sai do lugar.** Goal sem `|q` (`talk`, `kill`) não conclui, e com `goto` prendia a
+  seta nele: A Dark Threat Looms nunca chegava à Crocolisk Tear, Marla's Grave nunca recebia a seta.
+  O `kill` do mob que dá o item leva o `|q` do item; o resto vai sem seta. O `python
+  tools/router.py` confere em todos os guias de leveling.
+- **Objetivo com vários alvos** sai um goal por alvo no mesmo passo, cada um com a sua seta: NPCs de
+  conversa na ordem do texto (Exploring the Alliance: Randal, Magni, Mekkatorque, Tyrande), e, em
+  mais de um lugar, objetivo só de itens, só de objetos ou só de mobs, na ordem do vizinho mais
+  perto a partir de onde o jogador está (The Warsong Reports cruzava Ashenvale duas vezes na ordem
+  do texto; The Coast Isn't Clear apontava só os murlocs do norte); o verbo de cada mob segue a
+  regra do passo de um alvo, e alvo marcador ("Credit") fica no passo de um alvo só. O índice `|q N/i` é a posição no
+  banco, a ordem do servidor — reordenada pelo cache do cliente (`wdb.json`) quando ele tem a quest
+  (Storm, Earth, and Fire); o último goal espera a quest inteira, e depois de um NPC da outra facção
+  (Desperate Times) também, porque ali a posição no cliente pode mudar. A conta de cada item sai do
+  texto ("1 Shiny Bauble and 3 Nightcrawlers"). Ouvir quem dá a quest (Blood Tithe) é uma linha sem
+  `|q` no passo do aceite. Objetivo de objeto é `click` (Marla's Grave, as torres). Objetivo
+  misturado (criatura + item) fica com o primeiro alvo e a nota: lá a ordem no cliente não se sabe.
+- **Explorar um lugar** (The Fargodeep Mine, The Forgotten Pools, escoltas): o `triggerEnd` do
+  QuestieDB (o import agora o guarda) dá o ponto, e o passo é a nota da quest mais um `goto` com o
+  nome do gatilho na dica, que conclui ao chegar — não depende do cliente listar o objetivo. Ponto
+  dentro de instância (-1,-1) ou em cima de quem recebe (Ak'Zeloth) não conta — a não ser de escolta.
+  Escolta e evento que começa no aceite ("Escort", "Protect", "Keep Muglash safe", com ou sem
+  objetivo de matar) vêm logo depois do aceite e por último no hub (Free From the Hold saía da
+  fortaleza antes de Guns of Northwatch; Protect Kanati mandava pular da prancha no meio), e a que
+  termina em quem recebe é entregue ali (The Sleeper Has Awakened, em Maestra's Post). Quest sem
+  objetivo e sem ponto (Falling With Style, eventos) leva a nota do que fazer no passo da entrega.
+- **Entrega numa zona que um guia mais adiante visita espera por ele.** Se o guia não vai lá por
+  outra quest (nem para pegar esta), nenhum guia do meio pede a quest, ela não é de classe e o guia
+  de lá começa no máximo 4 níveis acima dela (a entrega não fica cinza), a entrega vai para o
+  primeiro guia da cadeia — o seguinte também — que pega, entrega ou faz quest naquela zona, capital
+  incluída (It's a Secret to Everybody e The New Springs, de Un'Goro, são entregues no guia de
+  Felwood; Prayer to Elune, de Searing Gorge, em Darnassus durante Tanaris 44-50; Journey to
+  Sentinel Hill no guia de Westfall). O guia de lá a recebe com `haveq` — na capital do começo, junto
+  com as quests de lá —, quem depende dela ali leva `completed` (o elfo noturno chega a Elwynn 21-28
+  sem passar por Redridge), e a XP conta lá. O `generate_all` para se uma adiada não sair no destino.
+  A da zona onde o guia seguinte começa fica no fim deste (Flight to Auberdine). A visita conta
+  também a entrega que o guia faz lá e não adia, e a decisão roda de novo até parar de mudar: sem
+  isso Darkshore atravessava o mar por The Powers Below, e Stonetalon ia a Ironforge e Stormwind por
+  três entregas logo antes de Duskwood 21-28 começar em Stormwind. Noutro continente basta o guia de
+  lá não começar acima do topo deste: entregar agora custa o mar e dá a mesma XP.
+- **E fica fora:** quem entrega sem spawn no banco (Buying Friendship: Gelkis — a entrega saía sem
+  seta); entrega ou objetivo numa zona cuja parte mais fácil está 10+ níveis acima da quest (Of Mice
+  and Milk, nível 15, entregava ao Nesingwary entre tigres de 30; classe e a ilha têm transporte);
+  falar com NPCs em duas zonas que não são capital (o Mechanical Yeti de Everlook a Gadgetzan e
+  Un'Goro); item de objetivo noutro continente (Warsong Supplies ia a Booty Bay); de capital a
+  capital do outro continente (Assisting Arch Druid Runetotem: Undercity → Thunder Bluff por 470 de
+  XP no meio de Blasted Lands); as Valor Tokens da Argent Dawn (They Call Me "The Rooster" e as
+  Mantles of the Dawn) e os Core of Elements de The Elemental Equation, que estão no guia de
+  reputação; as amostras de Fuely (A Sample of Slime, ...and a Batch of Ooze), de Undercity com
+  objetivo em Felwood e Un'Goro — breadcrumb de capital para outro continente; item que só se
+  fabrica, se colhe com profissão ou se compra no leilão: sem mob, objeto nem vendedor com spawn
+  (para item de ofício, baú de saque aleatório — Battered Chest, Dented Footlocker — não conta: a
+  Silver Bar de Lore for a Price mandava a um baú qualquer de Redridge; tecido cai de humanoide e o
+  banco não lista: Linen Cloth não tem lugar, a dica diz "cai de humanoides", e não é de profissão)
+  e sem ser recompensa de um pré-requisito dela (Chained Essence of Eranikus vem de The Essence of
+  Eranikus), com nível de item acima de 1 e sem ser item de quest (Moonsteel Broadsword, Frost Oil,
+  a Thorium Bar de That's Asking A Lot) — ou que só sai de veio de minério, seja qual for (Lesser
+  Bloodstone Ore, Incendicite Ore). Quem depende dela fica para quem a fez (`completed`), também
+  quando ela entraria como pré-req de outra (Gyro... What? espera Coolant Heads Prevail). Nível de
+  item 1 é o que a própria quest faz e fica: Pamela's Doll, montada dos pedaços (a seta vai a eles,
+  "Combine Pamela's Doll's Head…"), Resonating Skull, Thunder Applejack. Fica fora também a
+  reputação contra Booty Bay (os Bloodsail de Avast Ye, Admiral!: o jogador perde o voo e os
+  vendedores de Booty Bay, Gadgetzan, Ratchet e Everlook); a quest que começa por item de mob raro,
+  que espera o spawn (Blackmoss the Fetid, Silithid Harvester; no leveling, também o raro elite de
+  mundo aberto, Aean Swiftriver; o elite de masmorra fica no guia especial: Scarshield
+  Quartermaster, da sintonização de Blackwing Lair); a que pede item ou morte que o banco não tem
+  nem o nome acha (as de reputação dos centauros de Desolace no Forever: Mountain of Bones, Outing
+  Outcasts; My Little Friends; Stalk With The Earthmother do xamã orc e troll; Khan Jehn, que o
+  texto escreve "Khan Jhen", vai pela tabela, e Outcast Necromancers acha o NPC pelo nome) — trazer
+  o item que a própria quest dá no aceite (`sourceItem`: "Bring a Timberling Seed") é entrega e
+  fica; a sem texto nenhum e com item que o banco não sabe de onde vem (as A Sealed Crate); Arena
+  Master (o baú do evento de PvP da arena de Gurubashi); e quest cinza (10+ níveis abaixo de quem
+  chega) de que nada depende, sem ser de classe (Journey to Astranaar, 20, mandava de Theramore a
+  Astranaar no 35).
+- **As sobras vão por lugar.** O que fica para o fim do guia (entrega na capital, objetivo noutra
+  zona) segue o que dá para fazer na zona onde o jogador está, do mais perto; acabada a zona, a
+  ação mais cedo na ordem das cadeias, no mesmo continente antes; no mesmo lugar, entrega antes de
+  pegar. Em ondas, o fim de
+  Un'Goro ia Darnassus, Feralas, Darnassus, Winterspring...; trocas de zona nos guias: 647 no
+  `main`, 289 agora.
+- **A saída da ilha vai com o guia dela.** A quest só de Skyborne que quem recebe a última de
+  Zephras dá (Welcome to Azeroth: Denaaris em Dalaran, Alaana em Mulgore) e a cadeia que segue
+  (Exploring the Alliance/Horde) fecham o guia da ilha. A da Horda estava em Mulgore 4-10, que o
+  Skyborne não segue, e Journey to the Crossroads nunca abria.
+- **Tarefa sem objetivo no banco** ("Free 6 Webbed Victims", "Heal 5 Injured Deathguard"): o alvo
+  sai do nome no texto ou de `OBJETIVO_MANUAL`; sem alvo, o passo é `note` + `get … |q`, que o addon
+  conclui quando o cliente marca a quest completa; a seta vai ao NPC que mora no lugar do texto
+  (`OBJETIVO_LUGAR`).
 - **Pré-requisito em ciclo** (a própria quest, ou a versão dela de outra raça — "Call of Earth" 1516
   pedia `[1516, 1519, 92466]`) é retirado no import.
 - **Skyborne** são as raças 95 (Aliança) e 96 (Horda), máscaras `2^32` e `2^33` (enum do QuestieDB,
@@ -158,17 +346,17 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 
 | | |
 |---|---|
-| Guias | 196 (88 de leveling, 108 especiais) |
-| Quests distintas em guia | 3781 |
-| Quests novas do Forever em guia | **548 de 993** |
+| Guias | 194 (86 de leveling, 108 especiais) |
+| Quests distintas em guia | 3710 |
+| Quests novas do Forever em guia | **532 de 993** |
 | — fora: entrega de Craftsman's Writ | 150 |
 | — fora: começam por item ou giver sem posição | 145 |
 | — fora: exigem profissão | 86 |
-| — fora: outro | 35 |
+| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão...) | 51 |
 | — fora: evento/repetível/campo de batalha | 29 |
 | `validate_guides.py` — ocorrências | **0** (antes da revisão: 10 bloqueios, 244 pré-req ausentes) |
 | Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos, toda raça×classe |
-| `guide_integrity.py` — passo sem coordenada | 3, todos chefe de masmorra nova (sem spawn no banco); 0 no leveling |
+| `guide_integrity.py` — passo sem coordenada | 79: item de quest que o banco não sabe de onde vem (páginas de Green Hills of Stranglethorn, Stolen Weapon), sem seta em vez da de quem deu a quest; material de profissão e tecido saem sem seta de propósito, com a dica, e não contam |
 
 `gen_forever.py` imprime essa conta a cada rodada.
 
@@ -206,7 +394,7 @@ python tools/gen_subzones.py <pasta do QuestieDB>
 python tools/gen_forever.py
 python tools/validate_guides.py
 python tools/check_special.py                  # masmorras e sintonizações, por raça x classe
-python tools/router.py                          # Deathknell e Valley of Trials (#57)
+python tools/router.py                          # zonas iniciais (#57, #59)
 luajit tools/forever-guides.lua
 ```
 
@@ -226,13 +414,14 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
   Aliança em Ruins of Lordaeron começam por item sem fonte e ficam sem guia.
 - **Quest de profissão.** Fica fora porque o DSL não tem condição de profissão; com uma (`skill(171)`),
   as "Camping 101" e as entregas de Craftsman's Writ podiam entrar para quem tem a profissão.
-- **A cadeia é por continente.** Quem começa em Elwynn fica nos Reinos do Leste até o 60 e só
-  atravessa no fim; parte dos passos condicionados (~10% em cada caminho) é de cadeia do outro
-  continente e não aparece para esse jogador. Quest entre continentes (Thousand Needles → Booty
-  Bay) fica fora.
-- **"Welcome to Azeroth" da Aliança (94947)** — a quest que tira o Skyborne da ilha — tem quem a dá
-  (Denaaris Stargale) posicionado em Alterac Mountains no QuestieDB 1.0.5 e 1.0.6, e fica fora do guia; a
-  gêmea da Horda (95350) está em Mulgore e roteada. Conferir em jogo de onde parte o portal.
+- **Pegar quest de capital no começo de um guia de várias raças.** The Barrens 12-20 da Horda
+  começava por Thunder Bluff (The Barrens Oases) e Orgrimmar: natural para quem vem de cada uma,
+  desvio para quem vem da outra. O "fale com" de capital nesse nível agora é só da raça da capital e
+  do Skyborne (`only not Orc not Undead not Troll`); a quest com objetivo segue para todos. Quest
+  entre continentes (Thousand Needles → Booty Bay) fica fora.
+- **A chegada do Skyborne a Dalaran (Alterac) e o portal para Stormwind** estão no QuestieDB 1.0.5 e
+  1.0.6 (Denaaris Stargale e o Skyborne Portal to Stormwind no mesmo ponto) e agora no guia da ilha;
+  conferir em jogo que o navio deixa lá.
 - **Passo que começa por item de drop** sem fonte localizada (64 quests novas): falta o
   `itemDrops` do QuestieDB no `items.json`.
 - **Dado de Outland na tabela de continentes do `TravelPlanner`.** As zonas de TBC seguem lá. É

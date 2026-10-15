@@ -97,16 +97,23 @@ def dungeon_quests(r, dA):
         areas = set()
         if r.em_masmorra(q):
             areas = r._areas(q["objCreatures"] + q["endNpcs"], r.npc) | r._areas(q["objObjects"], r.obj)
+            # do item, a fonte que o passo aponta — não todas: material comum (Ironweb
+            # Spider Silk, 31 fontes) cai em meia dúzia de masmorras e levava as de
+            # Naxxramas para Blackrock Spire
             for iid in q["objItems"]:
-                it = r.items.get(str(iid)) or {}
-                areas |= r._areas(it.get("npc") or [], r.npc) | r._areas(it.get("obj") or [], r.obj)
-        if q["zoneOrSort"] in dA:
-            areas.add(q["zoneOrSort"])
+                src = r.item_source(iid)
+                if src and src[3]:
+                    areas.add(int(src[3][0]))
+        inicio = None
         for iid in q["startItems"]:
             src = r.item_source(iid)
             if src and src[3] and int(src[3][0]) in dA:
                 areas.add(int(src[3][0]))
-        dung = next((dA[a] for a in sorted(int(a) for a in areas) if a in dA), None)
+                inicio = inicio or dA[int(src[3][0])]
+        # onde a quest se pega vence (An Unholy Alliance cai da Charlga, em Razorfen Kraul, e o
+        # zoneOrSort é Razorfen Downs); depois a masmorra do zoneOrSort; senão, a de menor área
+        dung = inicio or dA.get(q["zoneOrSort"]) \
+            or next((dA[a] for a in sorted(int(a) for a in areas) if a in dA), None)
         if dung:
             dq[dung].append(int(qid))
     return dq

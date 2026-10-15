@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Cenarion Circle", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "f879e014",
+	rev = "ebb6d34b",
 }, [[
 step
   only Skyborne Druid
@@ -103,7 +103,8 @@ step
 step
   only Tauren Druid
   note Bring 5 Earthroot and 5 Kodo Horns to Tonga Runetotem at the Crossroads so he may make a curative salve.
-  collect 5 Earthroot##2449 |q 6128 |goto Teldrassil 57.91,66.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine, Earthroot
+  collect 5 Kodo Horn##15852 |q 6128/2 |goto The Barrens 54.06,41.46 |tip {dropsfrom}Lost Barrens Kodo, Barrens Kodo
+  collect 5 Earthroot##2449 |q 6128 |goto Teldrassil 57.91,66.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine
 step
   only Tauren Druid
   talk Tonga Runetotem##3448
@@ -145,7 +146,7 @@ step
 step
   only Tauren Druid
   note Find a Shrine Bauble in Lake Elune'ara, and take it to the Shrine of Remulos in northwestern Moonglade. Once there, use the Shrine Bauble.
-  collect Shrine Of Remulos##15885 |q 28 |goto Moonglade 36,41.42
+  click Shrine Of Remulos##15885 |q 28 |goto Moonglade 36,41.42
 step
   only Tauren Druid
   talk Tajarri##11799
@@ -196,7 +197,9 @@ step
 step
   only Skyborne
   note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
-  collect Relic of the Fang##280502 |q 98404 |goto Moonglade 72.6,66.1
+  collect Relic of the Fang##280502 |q 98404/1 |goto Moonglade 72.6,66.1
+  collect Relic of the Silent Shadow##280680 |q 98404/3 |goto Moonglade 74.5,65.5
+  collect Relic of the Claw##280679 |q 98404 |goto Moonglade 75.2,67.2
 step
   only Skyborne
   talk Avatar of Saeyleenan##272054
@@ -216,7 +219,9 @@ step
 step
   only Tauren Druid
   note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
-  collect Relic of the Fang##280502 |q 98342 |goto Moonglade 72.6,66.1
+  collect Relic of the Fang##280502 |q 98342/1 |goto Moonglade 72.6,66.1
+  collect Relic of the Silent Shadow##280680 |q 98342/3 |goto Moonglade 74.5,65.5
+  collect Relic of the Claw##280679 |q 98342 |goto Moonglade 75.2,67.2
 step
   only Tauren Druid
   talk Great Cat Spirit##11957
@@ -303,6 +308,7 @@ step
   accept Deadly Desert Venom##8277 |goto Silithus 51.61,38.63
 step
   note Beetix Ficklespragg at Cenarion Hold in Silithus wants you to gather 8 Stonelash Scorpid Stingers and 8 Sand Skitterer Fangs. Return to her when you have completed the task.
+  collect 8 Sand Skitterer Fang##20376 |q 8277/2 |goto Silithus 58.46,27.73 |tip {dropsfrom}Sand Skitterer
   collect 8 Stonelash Scorpid Stinger##20373 |q 8277 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid
 step
   talk Beetix Ficklespragg##15189
@@ -312,6 +318,8 @@ step
   accept Noggle's Last Hope##8278 |goto Silithus 51.61,38.63
 step
   note Beetix Ficklespragg at Cenarion Hold in Silithus wants you to gather 3 Stonelash Pincer Stingers, 3 Stonelash Flayer Stingers and 3 Rock Stalker Fangs.
+  collect 3 Stonelash Pincer Stinger##20374 |q 8278/2 |goto Silithus 38.44,55.6 |tip {dropsfrom}Stonelash Pincer
+  collect 3 Rock Stalker Fang##20377 |q 8278/3 |goto Silithus 38.53,75.75 |tip {dropsfrom}Rock Stalker
   collect 3 Stonelash Flayer Stinger##20375 |q 8278 |goto Silithus 36.03,78.08 |tip {dropsfrom}Stonelash Flayer
 step
   talk Beetix Ficklespragg##15189
@@ -353,6 +361,7 @@ step
   accept The Spirits of Southwind##1125 |goto Silithus 81.87,18.93
 step
   note Free the spirits of 8 Tortured Druids and 8 Tortured Sentinels in Southwind Village, and then return to Layo Starstrike at the Valor's Rest graveyard of Silithus.
+  kill Tortured Sentinel##12179 |q 1125/2 |goto Silithus 63.59,52.79
   kill Tortured Druid##12178 |q 1125 |goto Silithus 62.65,52.84
 step
   talk Layo Starstrike##13220
@@ -404,7 +413,7 @@ step
   accept Kitchen Assistance##8317 |goto Silithus 51.89,39.16
 step
   note Calandrath at Cenarion Hold needs a batch of 10 Smoked Desert Dumplings.
-  collect Smoked Desert Dumplings##20452 |q 8317 |goto Silithus 51.89,39.16
+  collect 10 Smoked Desert Dumplings##20452 |q 8317 |goto Silithus 51.89,39.16 |tip Crafted or bought.
 step
   talk Calandrath##15174
   turnin Kitchen Assistance##8317 |goto Silithus 51.89,39.16
@@ -429,7 +438,9 @@ step
   accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
 step
   note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
-  collect Twilight Lexicon - Chapter 1##20394 |q 8279 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
+  collect Twilight Lexicon - Chapter 3##20396 |q 8279/3 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth
+  collect Twilight Lexicon - Chapter 1##20394 |q 8279/1 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
+  collect Twilight Lexicon - Chapter 2##20395 |q 8279 |goto Silithus 16.09,86.37 |tip {dropsfrom}Twilight Keeper Exeter
 step
   talk Hermit Ortell##15194
   turnin The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
@@ -445,7 +456,7 @@ step
   accept Wanted - Deathclasp, Terror of the Sands##8283 |goto Silithus 51.35,38.27
 step
   note Bring Deathclasp's Pincer to Vish Kozus, Captain of the Guard.
-  kill Deathclasp##15196 |goto Silithus 45.07,92.31 |elite
+  kill Deathclasp##15196 |q 8283 |goto Silithus 45.07,92.31 |elite
   collect Deathclasp's Pincer##20385 |q 8283 |goto Silithus 45.07,92.31
 step
   talk Vish Kozus##15182
@@ -473,7 +484,8 @@ step
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
-  talk Frankal Stonebridge##15171 |q 8304 |goto Silithus 40.81,88.86
+  talk Frankal Stonebridge##15171 |q 8304/1 |goto Silithus 40.81,88.86
+  talk Rutgar Glyphshaper##15170 |q 8304 |goto Silithus 41.28,88.45
 step
   talk Commander Mar'alith##15181
   turnin Dearest Natalia##8304 |goto Silithus 49.2,34.18
@@ -508,14 +520,14 @@ step
   accept A Humble Offering##9248 |goto Silithus 51.96,38.16
 step
   note Aurel Goldleaf at Cenarion Hold in Silithus wants you to bring her 1 Abyssal Scepter. You must also be Honored with the Cenarion Circle.
-  kill Prince Skaldrenox##15203 |goto Silithus 25.56,34.04 |raid
-  collect Abyssal Scepter##20515 |q 9248 |goto Silithus 25.56,34.04
+  kill Prince Skaldrenox##15203 |q 9248 |goto Silithus 25.56,34.04 |raid
+  collect 1 Abyssal Scepter##20515 |q 9248 |goto Silithus 25.56,34.04
 step
   talk Aurel Goldleaf##15282
   turnin A Humble Offering##9248 |goto Silithus 51.96,38.16
 step
-  kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite |tip Loot the quest item here — it starts the quest.
-  accept Brann Bronzebeard's Lost Letter##8308 |goto Silithus 50.21,40.97
+  kill Hive'Zora Wasp##11727 |goto Silithus 27.87,61.78 |tip Loot the quest item here — it starts the quest.
+  accept Brann Bronzebeard's Lost Letter##8308 |goto Silithus 27.87,61.78
 step
   note Take Brann Bronzebeard's Letter to Bronzebeard's Encampment in southern Silithus.
   talk Rutgar Glyphshaper##15170
@@ -525,7 +537,7 @@ step
   accept Scouring the Desert##9422 |goto Silithus 50.75,69.54
 step
   note Find and deliver Silithyst to the Silithyst Extractor then speak with General Kirika at the Horde encampment near Hive'Regal.
-  get Scouring the Desert |q 9422 |goto Silithus 50.75,69.54
+  get Scouring the Desert |q 9422
 step
   talk General Kirika##17079
   turnin Scouring the Desert##9422 |goto Silithus 50.75,69.54
@@ -534,7 +546,9 @@ step
   accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
 step
   note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Zora Rubbing##20454 |q 8309/2 |goto Silithus 37.27,62.5 |tip {dropsfrom}Hive'Zora Glyphed Crystal
+  collect Hive'Ashi Rubbing##20455 |q 8309/1 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Regal Rubbing##20456 |q 8309 |goto Kalimdor - the continent map 44.4,86.1 |tip {dropsfrom}Hive'Regal Glyphed Crystal
 step
   talk Rutgar Glyphshaper##15170
   turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
@@ -543,8 +557,10 @@ step
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite
-  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 50.21,40.97
+  kill Hive'Regal Ambusher##11730 |q 8310/3 |goto Silithus 58.08,86.89 |elite
+  collect Hive'Regal Silithid Brain##20459 |q 8310/3 |goto Silithus 58.08,86.89
+  collect Hive'Ashi Silithid Brain##20457 |q 8310/1 |goto Silithus 61.73,52.51 |tip {dropsfrom}Hive'Ashi Drone, Hive'Ashi Stinger, Hive'Ashi Worker
+  collect Hive'Zora Silithid Brain##20458 |q 8310 |goto Silithus 27.87,61.78 |tip {dropsfrom}Hive'Zora Wasp, Hive'Zora Waywatcher, Hive'Zora Tunneler
 step
   talk Frankal Stonebridge##15171
   turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
@@ -560,7 +576,7 @@ step
   accept The Calling##8315 |goto Silithus 49.67,37.46
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
-  kill Emissary Roman'khan##14862 |goto Silithus 48.77,58.14 |raid
+  kill Emissary Roman'khan##14862 |q 8315 |goto Silithus 48.77,58.14 |raid
   collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 48.77,58.14
 step
   talk Geologist Larksbane##15183
@@ -633,6 +649,8 @@ step
   accept Waking Legends##8447 |goto Moonglade 36.18,41.79
 step
   note Wait for Keeper Remulos at the Moonglade to cleanse the Nightmare Engulfed Object.
+  goto Moonglade 40,48.6 |tip Waking Legends.
+step
   talk Keeper Remulos##11832
   turnin Waking Legends##8447 |goto Moonglade 36.18,41.79
 step
@@ -663,7 +681,9 @@ step
   accept Volunteer's Battlegear##8548 |goto Silithus 51.23,38.86
 step
   note Bring 5 Cenarion Combat Badges, 3 Cenarion Logistics Badges and 7 Cenarion Tactical Badges to Vargus at Cenarion Hold in Silithus. You must also attain Friendly reputation with Cenarion Circle to be able to complete this quest.
-  collect 5 Cenarion Combat Badge##20802 |q 8548 |goto Silithus 51.23,38.86
+  collect 5 Cenarion Combat Badge##20802 |q 8548/1
+  collect 3 Cenarion Logistics Badge##20800 |q 8548/2
+  collect 7 Cenarion Tactical Badge##20801 |q 8548
 step
   talk Vargus##15176
   turnin Volunteer's Battlegear##8548 |goto Silithus 51.23,38.86
@@ -671,7 +691,9 @@ step
   talk Windcaller Kaldon##15540
   accept Allegiance to Cenarion Circle##9338 |goto Silithus 49.98,36.35
 step
-  collect Cenarion Combat Badge##20802 |q 9338 |goto Silithus 49.98,36.35
+  collect Cenarion Combat Badge##20802 |q 9338/1
+  collect Cenarion Logistics Badge##20800 |q 9338/2
+  collect Cenarion Tactical Badge##20801 |q 9338
 step
   talk Windcaller Kaldon##15540
   turnin Allegiance to Cenarion Circle##9338 |goto Silithus 49.98,36.35
@@ -698,8 +720,7 @@ step
   accept The Path of the Righteous##8301 |goto Silithus 49.45,36.45
 step
   note Collect 200 Silithid Carapace Fragments and return to Baristolth.
-  kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite
-  collect 200 Silithid Carapace Fragment##20384 |q 8301 |goto Silithus 50.21,40.97
+  collect 200 Silithid Carapace Fragment##20384 |q 8301 |goto Silithus 27.87,61.78 |tip {dropsfrom}Hive'Zora Wasp, Hive'Ashi Stinger, Hive'Ashi Worker
 step
   talk Baristolth of the Shifting Sands##15180
   turnin The Path of the Righteous##8301 |goto Silithus 49.45,36.45
@@ -721,6 +742,8 @@ step
   accept A Pawn on the Eternal Board##8519 |goto Silithus 28.68,89.14
 step
   note Learn all that you can of the past, then speak with Anachronos at the Caverns of Time in Tanaris.
+  goto Silithus 29.04,92.09 |tip The War of the Shifting Sands
+step
   talk Anachronos##15192
   turnin A Pawn on the Eternal Board##8519 |goto Tanaris 65.27,50.03
 step
@@ -771,7 +794,7 @@ step
   accept Abyssal Contacts##8361 |goto Silithus 48.57,37.78
 step
   note Bor Wildmane at Cenarion Hold in Silithus wants you to destroy an Abyssal Templar and bring him an Abyssal Crest as proof of the deed.
-  kill Crimson Templar##15209 |goto Silithus 38.29,46.46 |elite
+  kill Crimson Templar##15209 |q 8361 |goto Silithus 38.29,46.46 |elite
   collect Abyssal Crest##20513 |q 8361 |goto Silithus 38.29,46.46
 step
   talk Bor Wildmane##15306
@@ -780,7 +803,7 @@ step
   talk Bor Wildmane##15306
   accept Abyssal Crests##8362 |goto Silithus 48.57,37.78
 step
-  kill Crimson Templar##15209 |goto Silithus 38.29,46.46 |elite
+  kill Crimson Templar##15209 |q 8362 |goto Silithus 38.29,46.46 |elite
   collect Abyssal Crest##20513 |q 8362 |goto Silithus 38.29,46.46
 step
   talk Bor Wildmane##15306
@@ -815,7 +838,9 @@ step
   accept Dukes of the Council##8332 |goto Silithus 51.96,38.16
 step
   note Bring 1 Large Brilliant Shard and 3 Abyssal Crests to Aurel Goldleaf in Cenarion Hold.
-  collect 1 Large Brilliant Shard##14344 |q 8332 |goto Silithus 51.96,38.16
+  kill Crimson Templar##15209 |q 8332/2 |goto Silithus 38.29,46.46 |elite
+  collect 3 Abyssal Crest##20513 |q 8332/2 |goto Silithus 38.29,46.46
+  collect 1 Large Brilliant Shard##14344 |q 8332 |tip Crafted or bought.
 step
   talk Aurel Goldleaf##15282
   turnin Dukes of the Council##8332 |goto Silithus 51.96,38.16
@@ -824,7 +849,7 @@ step
   accept Signet of the Dukes##8348 |goto Silithus 48.57,37.78
 step
   note Bring the Abyssal Signet to Bor Wildmane in Cenarion Hold.
-  kill The Duke of Cynders##15206 |goto Silithus 24.7,32.65 |elite
+  kill The Duke of Cynders##15206 |q 8348 |goto Silithus 24.7,32.65 |elite
   collect Abyssal Signet##20514 |q 8348 |goto Silithus 24.7,32.65
 step
   talk Bor Wildmane##15306
@@ -833,7 +858,7 @@ step
   talk Bor Wildmane##15306
   accept Abyssal Signets##8363 |goto Silithus 48.57,37.78
 step
-  kill The Duke of Cynders##15206 |goto Silithus 24.7,32.65 |elite
+  kill The Duke of Cynders##15206 |q 8363 |goto Silithus 24.7,32.65 |elite
   collect Abyssal Signet##20514 |q 8363 |goto Silithus 24.7,32.65
 step
   talk Bor Wildmane##15306
@@ -850,7 +875,9 @@ step
   accept Lords of the Council##8341 |goto Silithus 51.96,38.16
 step
   note Bring 5 Large Brilliant Shards and 3 Abyssal Signets to Aurel Goldleaf in Cenarion Hold.
-  collect 5 Large Brilliant Shard##14344 |q 8341 |goto Silithus 51.96,38.16
+  kill The Duke of Cynders##15206 |q 8341/2 |goto Silithus 24.7,32.65 |elite
+  collect 3 Abyssal Signet##20514 |q 8341/2 |goto Silithus 24.7,32.65
+  collect 5 Large Brilliant Shard##14344 |q 8341 |tip Crafted or bought.
 step
   talk Aurel Goldleaf##15282
   turnin Lords of the Council##8341 |goto Silithus 51.96,38.16
@@ -859,7 +886,7 @@ step
   accept Scepter of the Council##8352 |goto Silithus 48.57,37.78
 step
   note Bring an Abyssal Scepter to Bor Wildmane in Cenarion Hold.
-  kill Prince Skaldrenox##15203 |goto Silithus 25.56,34.04 |raid
+  kill Prince Skaldrenox##15203 |q 8352 |goto Silithus 25.56,34.04 |raid
   collect Abyssal Scepter##20515 |q 8352 |goto Silithus 25.56,34.04
 step
   talk Bor Wildmane##15306
@@ -868,7 +895,7 @@ step
   talk Bor Wildmane##15306
   accept Abyssal Scepters##8364 |goto Silithus 48.57,37.78
 step
-  kill Prince Skaldrenox##15203 |goto Silithus 25.56,34.04 |raid
+  kill Prince Skaldrenox##15203 |q 8364 |goto Silithus 25.56,34.04 |raid
   collect Abyssal Scepter##20515 |q 8364 |goto Silithus 25.56,34.04
 step
   talk Bor Wildmane##15306
@@ -988,7 +1015,9 @@ step
   accept Veteran's Battlegear##8572 |goto Silithus 51.23,38.86
 step
   note Bring 7 Cenarion Combat Badges, 4 Cenarion Logistics Badges and 4 Cenarion Tactical Badges to Vargus at Cenarion Hold in Silithus. You must also attain Honored reputation with Cenarion Circle to be able to complete this quest.
-  collect 7 Cenarion Combat Badge##20802 |q 8572 |goto Silithus 51.23,38.86
+  collect 7 Cenarion Combat Badge##20802 |q 8572/1
+  collect 4 Cenarion Logistics Badge##20800 |q 8572/2
+  collect 4 Cenarion Tactical Badge##20801 |q 8572
 step
   talk Vargus##15176
   turnin Veteran's Battlegear##8572 |goto Silithus 51.23,38.86
@@ -997,7 +1026,10 @@ step
   accept Champion's Battlegear##8573 |goto Silithus 51.23,38.86
 step
   note Bring 15 Cenarion Combat Badges, 20 Cenarion Logistics Badges, 20 Cenarion Tactical Badges and 1 Mark of Cenarius to Vargus at Cenarion Hold in Silithus. You must also attain Exalted reputation with Cenarion Circle to be able to complete this quest.
-  collect 15 Cenarion Combat Badge##20802 |q 8573 |goto Silithus 51.23,38.86
+  collect 15 Cenarion Combat Badge##20802 |q 8573/1
+  collect 20 Cenarion Logistics Badge##20800 |q 8573/2
+  collect 20 Cenarion Tactical Badge##20801 |q 8573/3
+  collect 1 Mark of Cenarius##21508 |q 8573
 step
   talk Vargus##15176
   turnin Champion's Battlegear##8573 |goto Silithus 51.23,38.86
@@ -1006,7 +1038,10 @@ step
   accept Stalwart's Battlegear##8574 |goto Silithus 51.23,38.86
 step
   note Bring 15 Cenarion Combat Badges, 20 Cenarion Logistics Badges, 17 Cenarion Tactical Badges and 1 Mark of Remulos to Vargus at Cenarion Hold in Silithus. You must also attain Revered reputation with Cenarion Circle to be able to complete this quest.
-  collect 15 Cenarion Combat Badge##20802 |q 8574 |goto Silithus 51.23,38.86
+  collect 15 Cenarion Combat Badge##20802 |q 8574/1
+  collect 20 Cenarion Logistics Badge##20800 |q 8574/2
+  collect 17 Cenarion Tactical Badge##20801 |q 8574/3
+  collect 1 Mark of Remulos##21515 |q 8574
 step
   talk Vargus##15176
   turnin Stalwart's Battlegear##8574 |goto Silithus 51.23,38.86
@@ -1223,8 +1258,10 @@ step
   accept The Isle of Dread!##8585 |goto Tanaris 52.63,28.11
 step
   note Recover Lakmaeran's Carcass and 20 Chimaerok Tenderloins for Dirge Quikcleave in Tanaris.
-  kill Lord Lakmaeran##12803 |goto Feralas 29.34,72.63 |elite
-  collect Lakmaeran's Carcass##21027 |q 8585 |goto Feralas 29.34,72.63
+  kill Lord Lakmaeran##12803 |q 8585/1 |goto Feralas 29.34,72.63 |elite
+  collect Lakmaeran's Carcass##21027 |q 8585/1 |goto Feralas 29.34,72.63
+  kill Chimaerok##12800 |q 8585 |goto Feralas 29.82,80.93 |elite
+  collect 20 Chimaerok Tenderloin##21024 |q 8585 |goto Feralas 29.82,80.93
 step
   talk Dirge Quikcleave##8125
   turnin The Isle of Dread!##8585 |goto Tanaris 52.63,28.11
@@ -1233,7 +1270,8 @@ step
   accept Dirge's Kickin' Chimaerok Chops##8586 |goto Tanaris 52.63,28.11
 step
   note Dirge Quikcleave in Gadgetzan wants you to bring him 20 Goblin Rocket Fuel and 20 Deeprock Salt.
-  collect Goblin Rocket Fuel##9061 |q 8586 |goto Silithus 62.65,52.84 |tip {dropsfrom}Clunk, Spirestone Ogre Magus, Tortured Druid
+  collect 20 Goblin Rocket Fuel##9061 |q 8586/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Hive'Ashi Drone
+  collect 20 Deeprock Salt##8150 |q 8586 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Stone Golem, Lesser Rock Elemental
 step
   talk Dirge Quikcleave##8125
   turnin Dirge's Kickin' Chimaerok Chops##8586 |goto Tanaris 52.63,28.11
@@ -1280,7 +1318,10 @@ step
   accept The Good News and The Bad News##8728 |goto Tanaris 65.24,18.58
 step
   note Narain Soothfancy in Tanaris wants you to bring him 20 Arcanite Bars, 10 Elementium Ore, 10 Azerothian Diamonds, and 10 Blue Sapphires.
-  collect Arcanite Bar##12360 |q 8728 |goto Tanaris 65.24,18.58
+  collect 20 Arcanite Bar##12360 |q 8728/1 |tip Crafted or bought.
+  collect 10 Elementium Ore##18562 |q 8728/2 |goto Blackwing Lair - Dungeon -1,-1 |elite |tip {dropsfrom}Blackwing Technician
+  collect 10 Azerothian Diamond##12800 |q 8728/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 10 Blue Sapphire##12361 |q 8728 |goto Western Plaguelands 47.11,50.51 |tip {dropsfrom}Skeletal Terror, Scarlet Worker, Blighted Zombie
 step
   talk Narain Soothfancy##11811
   turnin The Good News and The Bad News##8728 |goto Tanaris 65.24,18.58
@@ -1289,7 +1330,7 @@ step
   accept The Wrath of Neptulon##8729 |goto Tanaris 65.24,18.58
 step
   note Use the Arcanite Buoy at the Swirling Maelstrom at the Bay of Storms in Azshara.
-  collect Blue Scepter Shard##21137 |q 8729 |goto Tanaris 65.24,18.58 |tip {dropsfrom}Maws
+  collect Blue Scepter Shard##21137 |q 8729 |goto Tanaris 65.24,18.58 |raid |tip {dropsfrom}Maws
 step
   talk Anachronos##15192
   turnin The Wrath of Neptulon##8729 |goto Tanaris 65.27,50.03
@@ -1342,8 +1383,14 @@ step
   accept The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
 step
   note Travel to the four Emerald Dream portals in Azeroth and collect a Fragment of the Nightmare's Corruption from each. Return to Keeper Remulos in the Moonglade when you have completed this task.
-  kill Emeraldon Boughguard##12474 |goto Ashenvale 94.98,39.79 |elite
-  collect Fragment of the Nightmare's Corruption##21147 |q 8735 |goto Ashenvale 94.98,39.79
+  kill Emeraldon Tree Warder##12475 |q 8735/1 |goto Ashenvale 92.83,39.48 |elite
+  collect Fragment of the Nightmare's Corruption##21147 |q 8735/1 |goto Ashenvale 92.83,39.48
+  kill Twilight Corrupter##15625 |q 8735/2 |goto Duskwood 48.6,40 |raid
+  collect Fragment of the Nightmare's Corruption##21149 |q 8735/2 |goto Duskwood 48.6,40
+  kill Jademir Tree Warder##5319 |q 8735/3 |goto Feralas 50.65,10.6 |elite
+  collect Fragment of the Nightmare's Corruption##21148 |q 8735/3 |goto Feralas 50.65,10.6
+  kill Verdantine Tree Warder##12479 |q 8735 |goto The Hinterlands 65.36,24.9 |elite
+  collect Fragment of the Nightmare's Corruption##21146 |q 8735 |goto The Hinterlands 65.36,24.9
 step
   talk Keeper Remulos##11832
   turnin The Nightmare's Corruption##8735 |goto Moonglade 36.18,41.79
@@ -1352,6 +1399,8 @@ step
   accept The Nightmare Manifests##8736 |goto Moonglade 36.18,41.79
 step
   note Defend Nighthaven from Eranikus. Do not let Keeper Remulos perish. Do not slay Eranikus. Defend yourself. Await Tyrande.
+  goto Moonglade 51.8,36.4 |tip The Redemption of Eranikus
+step
   talk Keeper Remulos##11832
   turnin The Nightmare Manifests##8736 |goto Moonglade 36.18,41.79
 step
@@ -1371,7 +1420,7 @@ step
   click The Scarab Gong##180717
   accept Bang a Gong!##8743 |goto Silithus 25.72,90.86
 step
-  collect The Scepter of the Shifting Sands##21175 |q 8743 |goto Silithus 25.72,90.86
+  collect The Scepter of the Shifting Sands##21175 |q 8743 |goto Silithus 25.72,90.86 |tip Crafted or bought.
 step
   turnin Bang a Gong!##8743 |goto Silithus 25.72,90.86
 ]])

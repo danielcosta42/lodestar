@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Maraudon", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "38ec0e28",
+	rev = "6f1aed73",
 }, [[
 step
   talk Uthel'nay##7311
@@ -26,11 +26,11 @@ step
   accept Seed of Life##7066 |goto Maraudon - Dungeon -1,-1
 step
   note Collect 10 Shadowshard Fragments from Maraudon and return them to Uthel'nay in Orgrimmar.
-  kill Shadowshard Rumbler##11777 |goto Desolace 27.23,57.68 |elite
+  kill Shadowshard Rumbler##11777 |q 7068 |goto Desolace 27.23,57.68 |elite
   collect 10 Shadowshard Fragment##17756 |q 7068 |goto Desolace 27.23,57.68
 step
   note Collect 15 Theradric Crystal Carvings for Willow in Desolace.
-  collect 15 Theradric Crystal Carving##17684 |q 7028 |goto Maraudon - Dungeon -1,-1 |elite |tip {dropsfrom}Putridus Satyr, Putridus Trickster, Cursed Centaur
+  collect 15 Theradric Crystal Carving##17684 |q 7028 |goto Maraudon - Dungeon -1,-1 |elite |tip {dropsfrom}Poison Sprite, Putridus Satyr, Putridus Trickster
 step
   note Fill the Coated Cerulean Vial at the orange crystal pool in Maraudon.
   kill Noxxious Scion##13696 |q 7029 |goto Maraudon - Dungeon -1,-1

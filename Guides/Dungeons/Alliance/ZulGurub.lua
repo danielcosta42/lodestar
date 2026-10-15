@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Zul'Gurub", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "237169c5",
+	rev = "3827cd6f",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -59,7 +59,7 @@ step
   accept The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36
 step
   note Bring the First and Second Mosh'aru Tablets to Yeh'kinya in Tanaris.
-  collect First Mosh'aru Tablet##10660 |q 3527 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Theka the Martyr, Theka the Martyr Shapeshift
+  collect First Mosh'aru Tablet##10660 |q 3527 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Theka the Martyr
 step
   talk Yeh'kinya##8579
   turnin The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36
@@ -86,7 +86,8 @@ step
   accept The Lost Tablets of Mosh'aru##5065 |goto Tanaris 66.89,24.03
 step
   note Bring the Third and Fourth Mosh'aru Tablets to Prospector Ironboot in Tanaris.
-  collect Third Mosh'aru Tablet##12411 |q 5065 |goto Eastern Plaguelands 63.43,7.84
+  collect Third Mosh'aru Tablet##12411 |q 5065/1 |goto Eastern Plaguelands 63.43,7.84
+  collect Fourth Mosh'aru Tablet##12412 |q 5065 |goto Eastern Plaguelands 63.76,10.22
 step
   talk Prospector Ironboot##10460
   turnin The Lost Tablets of Mosh'aru##5065 |goto Tanaris 66.89,24.03

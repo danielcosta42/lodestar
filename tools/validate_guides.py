@@ -59,6 +59,8 @@ def parse_steps(body):
                     "q": int(qm.group(1)) if qm else None, "line": line})
     return steps
 
+ACEITAS = set()        # as quests que algum guia aceita (a entrega herdada vale se outro aceita)
+
 # --- validação de um guia ------------------------------------------------------
 def validate(path):
     key, faction, body = parse_guide(path)
@@ -115,7 +117,10 @@ def validate(path):
                 # NOACCEPT só é real p/ quests iniciadas por NPC (item/objeto = implícito)
                 started_by_npc = bool(q.get("startNpcs"))
                 started_by_item_obj = bool(q.get("startItems") or q.get("startObjects"))
-                if qid not in accepted and started_by_npc and not started_by_item_obj:
+                # entrega de quest pega num guia de antes (a do guia que espera a zona dela) vem
+                # com `only haveq(q)`: só para quem a tem — é por desenho, se outro guia a aceita
+                herdada = qid in ACEITAS and any("haveq(%d)" % qid in g["line"] for g in step if g["verb"] == "only")
+                if qid not in accepted and started_by_npc and not started_by_item_obj and not herdada:
                     issues.append(("NOACCEPT", qid, si, "turnin sem accept no guia"))
                 completed.add(qid)
     return key, faction, issues
@@ -152,6 +157,9 @@ def validate_leveling_chain(fac_folder):
 
 
 def main():
+    for f in glob.glob(os.path.join(GUIDES, "**", "*.lua"), recursive=True):
+        ACEITAS.update(int(x) for x in re.findall(r"^\s*accept [^#\n]+##(\d+)", open(f, encoding="utf-8").read(),
+                                                      re.M))
     if "--chain" in sys.argv:
         for fac in ("Alliance", "Horde"):
             iss = validate_leveling_chain(fac)

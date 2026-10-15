@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Paladin", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "db986612",
+	rev = "4d3914a7",
 }, [[
 step
   only Undead Paladin
@@ -22,6 +22,9 @@ step
 step
   only Undead Paladin
   note Heal 5 Injured Deathguard with your Holy Light ability.
+  talk Injured Deathguard##259377 |q 90902 |goto Tirisfal Glades 31.99,63.83
+step
+  only Undead Paladin
   talk Aramis Hammerhand##244808
   turnin Rediscovering the Light##90902 |goto Tirisfal Glades 31.04,66.45
 step
@@ -61,6 +64,7 @@ step
 step
   only Undead Paladin
   note Slay 8 Vile Fin Attackers and 8 Vile Fin Seers and report back to Breton Samuels when it is done.
+  kill Vile Fin Seer##250282 |q 91285/2 |goto Tirisfal Glades 17.33,53.3
   kill Vile Fin Attacker##250283 |q 91285 |goto Tirisfal Glades 16.52,56.32
 step
   only Undead Paladin
@@ -148,7 +152,7 @@ step
 step
   only Undead Paladin
   note Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Tyr's Watch.
-  collect Scarlet Crusade Attack Plans##264693 |q 94440 |goto Tirisfal Glades 78.38,56.03 |tip {dropsfrom}Scarlet Zealot, Scarlet Friar, Tarnished Exemplar
+  collect Scarlet Crusade Attack Plans##264693 |q 94440 |goto Tirisfal Glades 78.38,56.03 |tip {dropsfrom}Scarlet Zealot, Scarlet Friar, Tarnished Zealot
 step
   only Undead Paladin
   talk Deathguard Billmuth##257655
@@ -160,7 +164,7 @@ step
 step
   only Undead Paladin
   note Bring 10 Linen Cloth to Tanis Alderwood in the Undercity.
-  collect 10 Linen Cloth##2589 |q 94434 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
+  collect 10 Linen Cloth##2589 |q 94434 |goto Undercity 65.68,37.74 |tip {dropsfrom}humanoids
 step
   only Undead Paladin
   talk Tanis Alderwood##257648
@@ -246,7 +250,7 @@ step
 step
   only Paladin
   note Bring a Kor Gem to Ulric Frostveil in Ashenvale.
-  collect Corrupted Kor Gem##6995 |q 95042 |goto Ashenvale 13.55,12.06 |tip {dropsfrom}Blackfathom Tide Priestess, Blackfathom Oracle, Blackfathom Sea Witch
+  collect Corrupted Kor Gem##6995 |q 95042 |goto Ashenvale 13.55,12.06 |tip {dropsfrom}Blackfathom Tide Priestess
 step
   only Paladin
   talk Ulric Frostveil##259649
@@ -276,7 +280,8 @@ step
 step
   only Undead Paladin
   note Speak with Trevan Rol in the Sepulcher and bring him the materials he requires.
-  collect Whitestone Oak Lumber##6994 |q 95036 |goto The Deadmines - Dungeon -1,-1 |tip {dropsfrom}Goblin Woodcarver
+  collect Whitestone Oak Lumber##6994 |q 95036/1 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Goblin Woodcarver
+  collect Enchanted Silver Ingot##267361 |q 95036
 step
   only Undead Paladin
   talk Trevan Rol##248840
@@ -423,7 +428,10 @@ step
 step
   only not Paladin
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
+  collect 1 Delicate Arcanite Converter##16006 |q 8921/1 |tip Crafted or bought.
+  collect 4 Greater Eternal Essence##16203 |q 8921/2 |tip Crafted or bought.
+  collect 10 Stonescale Oil##13423 |q 8921/3 |tip Crafted or bought.
+  collect 25 Volcanic Ash##22338 |q 8921 |goto Burning Steppes 60.12,40.36
 step
   only not Paladin
   talk Mux Manascrambler##16014
@@ -435,7 +443,9 @@ step
 step
   only not Paladin
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Scorched Ectoplasm##21937 |q 8924/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Frozen Ectoplasm##21936 |q 8924/2 |goto Winterspring 53.58,43.48 |tip {dropsfrom}Suffering Highborne, Anguished Highborne
+  collect 12 Stable Ectoplasm##21935 |q 8924 |goto Eastern Plaguelands 52.9,55.8 |tip {dropsfrom}Unseen Servant, Eyeless Watcher, Torn Screamer
 step
   only not Paladin
   talk Mux Manascrambler##16014
@@ -459,6 +469,7 @@ step
 step
   only not Paladin
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
+  talk Vi'el##16015
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
   only not Paladin
@@ -480,7 +491,7 @@ step
 step
   only Druid not Paladin
   note Bring a Wildheart Belt and a set of Wildheart Gloves to Mokvar in Orgrimmar.
-  collect Wildheart Belt##16716 |q 8927 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider, Bile Spewer
+  collect Wildheart Belt##16716 |q 8927 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider
 step
   only Druid not Paladin
   talk Mokvar##16012
@@ -504,7 +515,7 @@ step
 step
   only Mage not Paladin
   note Bring a Magister's Belt and a set of Magister's Gloves to Mokvar in Orgrimmar.
-  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Mystic, Thuzadin Shadowcaster, Thuzadin Necromancer
+  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Mystic
 step
   only Mage not Paladin
   talk Mokvar##16012
@@ -516,7 +527,7 @@ step
 step
   only Priest not Paladin
   note Bring a Devout Belt and a set of Devout Gloves to Mokvar in Orgrimmar.
-  collect Devout Belt##16696 |q 8940 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
+  collect Devout Belt##16696 |q 8940 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
 step
   only Priest not Paladin
   talk Mokvar##16012
@@ -528,7 +539,7 @@ step
 step
   only Rogue not Paladin
   note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Mokvar in Orgrimmar.
-  collect Shadowcraft Belt##16713 |q 8941 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Legionnaire, Firebrand Grunt, Scarshield Quartermaster
+  collect Shadowcraft Belt##16713 |q 8941 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
 step
   only Rogue not Paladin
   talk Mokvar##16012
@@ -540,7 +551,7 @@ step
 step
   only Shaman not Paladin
   note Bring a Cord of Elements and a set of Gauntlets of Elements to Mokvar in Orgrimmar.
-  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Warlock, Firebrand Invoker, Scarshield Quartermaster
+  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
 step
   only Shaman not Paladin
   talk Mokvar##16012
@@ -564,7 +575,7 @@ step
 step
   only Warrior not Paladin
   note Bring a Belt of Valor and a set of Gauntlets of Valor to Mokvar in Orgrimmar.
-  collect Belt of Valor##16736 |q 8944 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker, Patchwork Horror, Bile Spewer
+  collect Belt of Valor##16736 |q 8944 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker
 step
   only Warrior not Paladin
   talk Mokvar##16012
@@ -606,7 +617,11 @@ step
 step
   only not Paladin
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
+  collect 3 Dark Iron Bar##11371 |q 8947/1 |tip Crafted or bought.
+  talk Lhara##14846
+  collect 20 Enchanted Leather##12810 |q 8947/2 |goto Elwynn Forest 41.2,69.9
+  collect 3 Mooncloth##14342 |q 8947/3 |tip Crafted or bought.
+  collect 4 Cured Rugged Hide##15407 |q 8947 |tip Crafted or bought.
 step
   only not Paladin
   talk Anthion Harmon##16016
@@ -627,7 +642,7 @@ step
 step
   only not Paladin
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Feralas 59.7,42.73 |tip {dropsfrom}Gordok Enforcer, Gordok Mauler, Gordok Ogre-Mage
 step
   only not Paladin
   talk Falrin Treeshaper##16032
@@ -639,7 +654,9 @@ step
 step
   only not Paladin
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 1 Jeering Spectre's Essence##22224 |q 8950/1 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 4 Dark Rune##20520 |q 8950/2 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Scholomance Necromancer, Lady Illucia Barov, Instructor Malicia
+  collect 8 Large Brilliant Shard##14344 |q 8950 |tip Crafted or bought.
 step
   only not Paladin
   talk Falrin Treeshaper##16032
@@ -661,7 +678,8 @@ step
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
-  talk Frankal Stonebridge##15171 |q 8304 |goto Silithus 40.81,88.86
+  talk Frankal Stonebridge##15171 |q 8304/1 |goto Silithus 40.81,88.86
+  talk Rutgar Glyphshaper##15170 |q 8304 |goto Silithus 41.28,88.45
 step
   talk Commander Mar'alith##15181
   turnin Dearest Natalia##8304 |goto Silithus 49.2,34.18
@@ -670,7 +688,9 @@ step
   accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
 step
   note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Zora Rubbing##20454 |q 8309/2 |goto Silithus 37.27,62.5 |tip {dropsfrom}Hive'Zora Glyphed Crystal
+  collect Hive'Ashi Rubbing##20455 |q 8309/1 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Regal Rubbing##20456 |q 8309 |goto Kalimdor - the continent map 44.4,86.1 |tip {dropsfrom}Hive'Regal Glyphed Crystal
 step
   talk Rutgar Glyphshaper##15170
   turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
@@ -679,8 +699,10 @@ step
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite
-  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 50.21,40.97
+  kill Hive'Regal Ambusher##11730 |q 8310/3 |goto Silithus 58.08,86.89 |elite
+  collect Hive'Regal Silithid Brain##20459 |q 8310/3 |goto Silithus 58.08,86.89
+  collect Hive'Ashi Silithid Brain##20457 |q 8310/1 |goto Silithus 61.73,52.51 |tip {dropsfrom}Hive'Ashi Drone, Hive'Ashi Stinger, Hive'Ashi Worker
+  collect Hive'Zora Silithid Brain##20458 |q 8310 |goto Silithus 27.87,61.78 |tip {dropsfrom}Hive'Zora Wasp, Hive'Zora Waywatcher, Hive'Zora Tunneler
 step
   talk Frankal Stonebridge##15171
   turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
@@ -696,7 +718,7 @@ step
   accept The Calling##8315 |goto Silithus 49.67,37.46
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
-  kill Emissary Roman'khan##14862 |goto Silithus 48.77,58.14 |raid
+  kill Emissary Roman'khan##14862 |q 8315 |goto Silithus 48.77,58.14 |raid
   collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 48.77,58.14
 step
   talk Geologist Larksbane##15183

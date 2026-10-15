@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Mage", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "af2a10c9",
+	rev = "d2ca00d1",
 }, [[
 step
   talk Gornek##3143
@@ -38,7 +38,8 @@ step
   accept The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
 step
   note Shadow Priest Sarvis wants you to kill 8 Mindless Zombies and 8 Wretched Zombies.
-  kill Mindless Zombie##1501 |q 364 |goto Tirisfal Glades 32.28,63.63
+  kill Mindless Zombie##1501 |q 364/1 |goto Tirisfal Glades 32.28,63.63
+  kill Wretched Zombie##1502 |q 364 |goto Tirisfal Glades 32.87,63.55
 step
   talk Shadow Priest Sarvis##1569
   turnin The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
@@ -92,7 +93,7 @@ step
 step
   only not Undead not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
   note Destroy 4 Ju-Ju Heaps, then return to Un'thuwa in Sen'jin Village.
-  collect Ju-Ju Heap##102986 |q 1884 |goto Durotar 67.79,83.37
+  click Ju-Ju Heap##102986 |q 1884 |goto Durotar 67.79,83.37
 step
   only not Undead not Tauren not Skyborne Mage not completed(1882) not haveq(1882)
   talk Un'Thuwa##5880
@@ -125,7 +126,9 @@ step
 step
   only not Orc not Tauren not Skyborne Mage
   note Obtain a Cantation of Manifestation and a Chest of Containment Coffers from behind Anastasia Hartwell. Bring 3 Filled Containment Coffers, the Chest of Containment Coffers and the Cantation of Manifestation to Anastasia in the Undercity.
-  collect 3 Filled Containment Coffer##7292 |q 1960 |goto Undercity 85.14,10.03
+  collect 3 Filled Containment Coffer##7292 |q 1960/1
+  collect Chest of Containment Coffers##7247 |q 1960/2 |goto Undercity 85.58,9.95
+  collect Cantation of Manifestation##7308 |q 1960 |goto Undercity 85.7,10.11
 step
   only not Orc not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
@@ -137,7 +140,8 @@ step
 step
   only not Tauren not Skyborne Mage not Orc
   note Bring 10 Linen Cloth and 6 Dalaran Mana Gems to Josef Gregorian.
-  collect 10 Linen Cloth##2589 |q 1961 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
+  collect 10 Linen Cloth##2589 |q 1961/1 |tip {dropsfrom}humanoids
+  collect 6 Dalaran Mana Gem##7293 |q 1961 |goto Silverpine Forest 51.58,64.26 |tip {dropsfrom}Dalaran Apprentice, Dalaran Protector, Dalaran Mage
 step
   only not Tauren not Skyborne Mage not Orc
   talk Josef Gregorian##4576
@@ -228,7 +232,8 @@ step
 step
   only Mage
   note Bring 1 Jade and the Bolt Charged Bramble to Tabetha in Dustwallow Marsh.
-  collect 1 Jade##1529 |q 1948 |goto Arathi Highlands 48.32,64.36 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
+  collect 1 Jade##1529 |q 1948/1 |goto Arathi Highlands 48.32,64.36 |tip {dropsfrom}Tin Vein, Gold Vein, Iron Deposit
+  collect Bolt Charged Bramble##7272 |q 1948 |goto Arathi Highlands 52,50.8
 step
   only Mage
   talk Tabetha##6546
@@ -326,7 +331,7 @@ step
 step
   only Mage
   note Bring 10 Glittering Dust to Archmage Xylem.
-  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Defender
+  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer
 step
   only Mage
   talk Archmage Xylem##8379
@@ -397,7 +402,10 @@ step
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
+  collect 1 Delicate Arcanite Converter##16006 |q 8921/1 |tip Crafted or bought.
+  collect 4 Greater Eternal Essence##16203 |q 8921/2 |tip Crafted or bought.
+  collect 10 Stonescale Oil##13423 |q 8921/3 |tip Crafted or bought.
+  collect 25 Volcanic Ash##22338 |q 8921 |goto Burning Steppes 60.12,40.36
 step
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
@@ -406,7 +414,9 @@ step
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Scorched Ectoplasm##21937 |q 8924/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Frozen Ectoplasm##21936 |q 8924/2 |goto Winterspring 53.58,43.48 |tip {dropsfrom}Suffering Highborne, Anguished Highborne
+  collect 12 Stable Ectoplasm##21935 |q 8924 |goto Eastern Plaguelands 52.9,55.8 |tip {dropsfrom}Unseen Servant, Eyeless Watcher, Torn Screamer
 step
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
@@ -424,6 +434,7 @@ step
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
+  talk Vi'el##16015
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
   talk Mux Manascrambler##16014
@@ -442,7 +453,7 @@ step
 step
   only Mage
   note Bring a Magister's Belt and a set of Magister's Gloves to Mokvar in Orgrimmar.
-  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Mystic, Thuzadin Shadowcaster, Thuzadin Necromancer
+  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Mystic
 step
   only Mage
   talk Mokvar##16012
@@ -475,7 +486,11 @@ step
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
 step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
+  collect 3 Dark Iron Bar##11371 |q 8947/1 |tip Crafted or bought.
+  talk Lhara##14846
+  collect 20 Enchanted Leather##12810 |q 8947/2 |goto Elwynn Forest 41.2,69.9
+  collect 3 Mooncloth##14342 |q 8947/3 |tip Crafted or bought.
+  collect 4 Cured Rugged Hide##15407 |q 8947 |tip Crafted or bought.
 step
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
@@ -491,7 +506,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Feralas 59.7,42.73 |tip {dropsfrom}Gordok Enforcer, Gordok Mauler, Gordok Ogre-Mage
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -500,7 +515,9 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 1 Jeering Spectre's Essence##22224 |q 8950/1 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 4 Dark Rune##20520 |q 8950/2 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Scholomance Necromancer, Lady Illucia Barov, Instructor Malicia
+  collect 8 Large Brilliant Shard##14344 |q 8950 |tip Crafted or bought.
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -520,7 +537,9 @@ step
 step
   only Mage
   note Return to Mokvar in Orgimmar with a set of Magister's Boots, Magister's Leggings and Magister's Mantle.
-  collect Magister's Boots##16682 |q 9018 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Hearthsinger Forresten
+  collect Magister's Boots##16682 |q 9018/1 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Hearthsinger Forresten
+  collect Magister's Leggings##16687 |q 9018/2 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Baron Rivendare
+  collect Magister's Mantle##16689 |q 9018 |tip Crafted or bought.
 step
   only Mage
   talk Mokvar##16012
@@ -537,7 +556,12 @@ step
   accept Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
-  collect Incendicite of Incendius##21987 |q 8961 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Lord Incendius
+  collect Incendicite of Incendius##21987 |q 8961/1 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Incendius
+  collect Ember of Emberseer##21988 |q 8961/2 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Pyroguard Emberseer
+  kill The Duke of Cynders##15206 |q 8961/3 |goto Silithus 24.7,32.65 |elite
+  collect Cinder of Cynders##21989 |q 8961/3 |goto Silithus 24.7,32.65
+  talk Argent Quartermaster Hasana##10856
+  buy Hallowed Brazier##22014 |q 8961 |goto Tirisfal Glades 83.26,68.14
 step
   talk Bodley##16033
   turnin Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -548,7 +572,7 @@ step
 step
   only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  kill Hive'Regal Ambusher##11730 |goto Silithus 58.08,86.89 |elite
+  kill Hive'Regal Ambusher##11730 |q 8962 |goto Silithus 58.08,86.89 |elite
   collect Druidical Remains##22226 |q 8962 |goto Silithus 58.08,86.89
 step
   only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
@@ -571,7 +595,7 @@ step
   accept I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 20 Bloodkelp from the Strashaz naga and then return to Bodley inside Blackrock Mountain.
-  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Strashaz Warrior, Strashaz Serpent Guard, Strashaz Myrmidon
+  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Basket of Bloodkelp, Strashaz Warrior, Strashaz Serpent Guard
 step
   talk Bodley##16033
   turnin I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -582,7 +606,7 @@ step
 step
   only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
   note Acquire a Starbreeze Village Relic and return it to Bodley inside Blackrock Mountain.
-  kill Frostmaul Giant##7428 |goto Winterspring 62.56,69.55 |elite
+  kill Frostmaul Giant##7428 |q 8985 |goto Winterspring 62.56,69.55 |elite
   collect Starbreeze Village Relic##22227 |q 8985 |goto Winterspring 62.56,69.55
 step
   only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
@@ -605,7 +629,8 @@ step
   accept Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
-  collect 40 Blackrock Bracer##22138 |q 8994 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Sentry, Scarshield Acolyte, Scarshield Legionnaire
+  collect 40 Blackrock Bracer##22138 |q 8994/1 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Blackhand Incarcerator, Scarshield Acolyte, Scarshield Legionnaire
+  collect Flask of Supreme Power##13512 |q 8994 |tip Crafted or bought.
 step
   talk Bodley##16033
   turnin Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -665,7 +690,7 @@ step
 step
   only Mage
   note Polymorph the Spitelash of Azshara and kill the clones that appear several seconds later. When you have slain 50 Polymorph Clones, return to Archmage Xylem in Azshara.
-  kill Polymorph Clone##16479 |q 9364 |goto Azshara 36.16,54.59
+  talk Polymorph Clone##16479 |q 9364 |goto Azshara 36.16,54.59
 step
   only Mage
   talk Archmage Xylem##8379

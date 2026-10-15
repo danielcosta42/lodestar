@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Uldaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "50dc9c21",
+	rev = "f357b1d6",
 }, [[
 step
   click Crumpled Map##2868
@@ -23,15 +23,13 @@ step
   talk Pratt McGrubben##7852
   accept Wild Leather Armor##2847 |goto Feralas 30.63,42.71
 step
-  click Human Remains##176090
-  accept Hot Fiery Death##5103 |goto Blackrock Spire - Dungeon -1,-1
-step
   only Mage
   note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
   collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
 step
   note Bring 10 Thick Leather to Pratt McGrubben in Feathermoon Stronghold.
-  buy 10 Thick Leather##4304 |q 2847 |goto Elwynn Forest 41.2,69.9
+  talk Lhara##14846
+  collect 10 Thick Leather##4304 |q 2847 |goto Elwynn Forest 41.2,69.9
 step
   note Find Prospector Ryedol and let him know Hammertoe Grez is alive.
   talk Prospector Ryedol##2910
@@ -52,10 +50,6 @@ step
   talk Pratt McGrubben##7852
   turnin Wild Leather Armor##2847 |goto Feralas 30.63,42.71
 step
-  note Someone in this world must know what to do with these gauntlets. Good luck!
-  talk Malyfous Darkhammer##10637
-  turnin Hot Fiery Death##5103 |goto Winterspring 60.99,38.78
-step
   talk Prospector Ryedol##2910
   accept A Sign of Hope##721 |goto Badlands 53.42,43.39
 step
@@ -69,21 +63,15 @@ step
   talk Pratt McGrubben##7852
   accept Wild Leather Shoulders##2848 |goto Feralas 30.63,42.71
 step
-  talk Malyfous Darkhammer##10637
-  accept Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
-step
   only Mage
   note Kill the Demon of the Orb, then speak with Tabetha.
   kill Demon of the Orb##6549 |q 1955 |goto Dustwallow Marsh 45.79,56.97 |elite
 step
   note Bring five silver bars to Talvash del Kissel in Ironforge.
-  collect Silver Bar##2842 |q 2199 |goto Ironforge 36.38,3.61 |tip {dropsfrom}Battered Chest, Tattered Chest
+  collect Silver Bar##2842 |q 2199 |goto Redridge Mountains 15.87,36.18 |tip {dropsfrom}Battered Chest
 step
   note Bring 6 Thick Armor Kits and a Wildvine to Pratt McGrubben in Feathermoon Stronghold.
-  collect 6 Thick Armor Kit##8173 |q 2848 |goto Uldaman - Dungeon -1,-1 |tip {dropsfrom}Olaf
-step
-  note Bring Malyfous Darkhammer 6 Enchanted Thorium Bars, 2 Essence of Fire, and 4 Star Rubies. You will also need to turn in your Unfired Plate Gauntlets.
-  collect Unfired Plate Gauntlets##12812 |q 5124 |goto Blackrock Spire - Dungeon -1,-1
+  collect 6 Thick Armor Kit##8173 |q 2848 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Olaf
 step
   note Find Hammertoe Grez in Uldaman.
   talk Hammertoe Grez##2909
@@ -99,9 +87,6 @@ step
   talk Pratt McGrubben##7852
   turnin Wild Leather Shoulders##2848 |goto Feralas 30.63,42.71
 step
-  talk Malyfous Darkhammer##10637
-  turnin Fiery Plate Gauntlets##5124 |goto Winterspring 60.99,38.78
-step
   talk Hammertoe Grez##2909
   accept Amulet of Secrets##722 |goto Badlands 37.9,10.59
 step
@@ -113,7 +98,7 @@ step
   accept Back to Uldaman##2200 |goto Ironforge 36.38,3.61
 step
   note Find Hammertoe's Amulet and return it to him in Uldaman.
-  kill Magregan Deepshadow##2932 |goto Badlands 38.99,19.73 |elite
+  kill Magregan Deepshadow##2932 |q 722 |goto Badlands 38.99,19.73 |elite
   collect Hammertoe's Amulet##4635 |q 722 |goto Badlands 38.99,19.73
 step
   only Mage
@@ -180,7 +165,7 @@ step
   accept An Ambassador of Evil##762 |goto Ironforge 77.54,11.82
 step
   note Kill Ambassador Infernus in Angor Fortress and bring proof of his death to Advisor Belgrum in Ironforge.
-  kill Ambassador Infernus##2745 |goto Badlands 42.1,28.88 |elite
+  kill Ambassador Infernus##2745 |q 762 |goto Badlands 42.1,28.88 |elite
   collect Ambassador Infernus' Bracer##4621 |q 762 |goto Badlands 42.1,28.88
 step
   talk Advisor Belgrum##2918

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Argent Dawn", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "4069fb71",
+	rev = "c5cf4577",
 }, [[
 step
   talk Leonid Barthalomew the Revered##267008
@@ -32,7 +32,9 @@ step
   accept The Cult of the Damned##96897 |goto Tirisfal Glades 65.88,61.1
 step
   note Kill 8 Dark Neophytes and 8 Dark Enforcers in Tirisfal Glades.
-  kill Dark Neophyte##267006 |q 96897 |goto Tirisfal Glades 67.98,64.57
+  kill Dark Enforcer##275437 |q 96897/2 |goto Tirisfal Glades 68.03,64.52
+  kill Dark Neophyte##267006 |q 96897/1 |goto Tirisfal Glades 67.98,64.57
+  kill Decrepit Darkhound##1547 |q 96897 |goto Tirisfal Glades 57.81,52.71
 step
   talk Hadric Harlson##267009
   turnin The Cult of the Damned##96897 |goto Tirisfal Glades 65.88,61.1
@@ -137,6 +139,8 @@ step
   accept Scarlet Diversions##5096 |goto Tirisfal Glades 83.13,68.94
 step
   note Proceed to the Scarlet Crusade's base camp between Felstone Field and Dalson's Tears and destroy their command tent.
+  goto Western Plaguelands 40.72,52.04 |tip Destroy the command tent and plant the Scourge banner in the camp
+step
   talk High Executor Derrington##10837
   turnin Scarlet Diversions##5096 |goto Tirisfal Glades 83.13,68.94
 step
@@ -165,7 +169,10 @@ step
   click Scourge Cauldron##176361
   accept Felstone Field Cauldron##5218 |goto Western Plaguelands 37.25,56.78
 step
-  buy Arcane Quickener##13320 |q 5218 |goto Western Plaguelands 42.66,83.77
+  collect Osseous Agitator##13357 |q 5218/2 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
+  talk Apothecary Dithers##11057
+  buy Arcane Quickener##13320 |q 5218/1 |goto Tirisfal Glades 83.28,69.23
+  collect Runecloth##14047 |q 5218 |tip {dropsfrom}humanoids
 step
   turnin Felstone Field Cauldron##5218 |goto Western Plaguelands 37.25,56.78
 step
@@ -182,7 +189,7 @@ step
   accept Pamela's Doll##5149 |goto Eastern Plaguelands 31.15,77.98
 step
   note Find Pamela's doll.
-  collect Pamela's Doll##12885 |q 5149 |goto Eastern Plaguelands 31.15,77.98
+  collect Pamela's Doll##12885 |q 5149 |goto Eastern Plaguelands 32.58,79.56 |tip Combine Pamela's Doll's Head, Pamela's Doll's Left Side, Pamela's Doll's Right Side.
 step
   talk Pamela Redpath##10926
   turnin Pamela's Doll##5149 |goto Eastern Plaguelands 31.15,77.98
@@ -223,7 +230,8 @@ step
   accept Heroes of Darrowshire##5168 |goto Eastern Plaguelands 71.7,50.04
 step
   note Bring Davil's Libram and Redpath's Shield to Carlin Redpath.
-  collect Davil's Libram##12954 |q 5168 |goto Western Plaguelands 42.52,18.99
+  collect Davil's Libram##12954 |q 5168/1 |goto Western Plaguelands 42.52,18.99
+  collect Redpath's Shield##12955 |q 5168 |goto Western Plaguelands 63.79,57.19
 step
   talk Carlin Redpath##11063
   turnin Heroes of Darrowshire##5168 |goto Eastern Plaguelands 71.7,50.04
@@ -261,14 +269,20 @@ step
   click Scourge Cauldron##176393
   accept Writhing Haunt Cauldron##5224 |goto Western Plaguelands 53.02,65.61
 step
-  buy Arcane Quickener##13320 |q 5224 |goto Western Plaguelands 42.66,83.77
+  collect Somatic Intensifier##13356 |q 5224/2 |goto Western Plaguelands 49.93,76.67 |tip {dropsfrom}Slavering Ghoul, Rotting Ghoul, Soulless Ghoul
+  talk Apothecary Dithers##11057
+  buy Arcane Quickener##13320 |q 5224/1 |goto Tirisfal Glades 83.28,69.23
+  collect Runecloth##14047 |q 5224 |tip {dropsfrom}humanoids
 step
   turnin Writhing Haunt Cauldron##5224 |goto Western Plaguelands 53.02,65.61
 step
   click Scourge Cauldron##177289
   accept Dalson's Tears Cauldron##5221 |goto Western Plaguelands 46.18,51.9
 step
-  buy Arcane Quickener##13320 |q 5221 |goto Western Plaguelands 42.66,83.77
+  collect Somatic Intensifier##13356 |q 5221/2 |goto Western Plaguelands 49.93,76.67 |tip {dropsfrom}Slavering Ghoul, Rotting Ghoul, Soulless Ghoul
+  talk Apothecary Dithers##11057
+  buy Arcane Quickener##13320 |q 5221/1 |goto Tirisfal Glades 83.28,69.23
+  collect Runecloth##14047 |q 5221 |tip {dropsfrom}humanoids
 step
   turnin Dalson's Tears Cauldron##5221 |goto Western Plaguelands 46.18,51.9
 step
@@ -283,7 +297,7 @@ step
   talk Duke Nicholas Zverenhoff##11039
   accept Corruptor's Scourgestones##5508 |goto Eastern Plaguelands 71.63,50.09
 step
-  kill Putridius##1850 |goto Western Plaguelands 48.05,67.39 |elite
+  kill Putridius##1850 |q 5508 |goto Western Plaguelands 48.05,67.39 |elite
   collect Corruptor's Scourgestone##12843 |q 5508 |goto Western Plaguelands 48.05,67.39
 step
   talk Duke Nicholas Zverenhoff##11039
@@ -292,8 +306,7 @@ step
   talk Duke Nicholas Zverenhoff##11039
   accept Invader's Scourgestones##5509 |goto Eastern Plaguelands 71.63,50.09
 step
-  kill Skeletal Warlord##1788 |goto Western Plaguelands 45.15,69.56 |elite
-  collect Invader's Scourgestone##12841 |q 5509 |goto Western Plaguelands 45.15,69.56
+  collect Invader's Scourgestone##12841 |q 5509 |goto Eastern Plaguelands 25.86,21.21 |tip {dropsfrom}Necromancer, Eyeless Watcher, Diseased Flayer
 step
   talk Duke Nicholas Zverenhoff##11039
   turnin Invader's Scourgestones##5509 |goto Eastern Plaguelands 71.63,50.09
@@ -309,7 +322,7 @@ step
   talk Argent Officer Garush##10839
   accept Corruptor's Scourgestones##5406 |goto Tirisfal Glades 83.19,68.45
 step
-  kill Putridius##1850 |goto Western Plaguelands 48.05,67.39 |elite
+  kill Putridius##1850 |q 5406 |goto Western Plaguelands 48.05,67.39 |elite
   collect Corruptor's Scourgestone##12843 |q 5406 |goto Western Plaguelands 48.05,67.39
 step
   talk Argent Officer Garush##10839
@@ -318,8 +331,7 @@ step
   talk Argent Officer Garush##10839
   accept Invader's Scourgestones##5407 |goto Tirisfal Glades 83.19,68.45
 step
-  kill Skeletal Warlord##1788 |goto Western Plaguelands 45.15,69.56 |elite
-  collect Invader's Scourgestone##12841 |q 5407 |goto Western Plaguelands 45.15,69.56
+  collect Invader's Scourgestone##12841 |q 5407 |goto Eastern Plaguelands 25.86,21.21 |tip {dropsfrom}Necromancer, Eyeless Watcher, Diseased Flayer
 step
   talk Argent Officer Garush##10839
   turnin Invader's Scourgestones##5407 |goto Tirisfal Glades 83.19,68.45
@@ -343,8 +355,7 @@ step
   talk Argent Officer Pureheart##10840
   accept Invader's Scourgestones##5403 |goto Western Plaguelands 42.97,83.55
 step
-  kill Skeletal Warlord##1788 |goto Western Plaguelands 45.15,69.56 |elite
-  collect Invader's Scourgestone##12841 |q 5403 |goto Western Plaguelands 45.15,69.56
+  collect Invader's Scourgestone##12841 |q 5403 |goto Eastern Plaguelands 25.86,21.21 |tip {dropsfrom}Necromancer, Eyeless Watcher, Diseased Flayer
 step
   talk Argent Officer Pureheart##10840
   turnin Invader's Scourgestones##5403 |goto Western Plaguelands 42.97,83.55
@@ -352,7 +363,7 @@ step
   talk Argent Officer Pureheart##10840
   accept Corruptor's Scourgestones##5404 |goto Western Plaguelands 42.97,83.55
 step
-  kill Putridius##1850 |goto Western Plaguelands 48.05,67.39 |elite
+  kill Putridius##1850 |q 5404 |goto Western Plaguelands 48.05,67.39 |elite
   collect Corruptor's Scourgestone##12843 |q 5404 |goto Western Plaguelands 48.05,67.39
 step
   talk Argent Officer Pureheart##10840
@@ -362,7 +373,10 @@ step
   accept All Along the Watchtowers##5098 |goto Tirisfal Glades 83.13,68.94
 step
   note Using the Beacon Torch, mark each tower in Andorhal; you will need to stand in the doorway of the tower to successfully mark it.
-  talk Andorhal Tower One##10902 |q 5098 |goto Western Plaguelands 40.05,71.6
+  use Andorhal Tower One##10902 |q 5098/1 |goto Western Plaguelands 40.05,71.6 |tip {useit}
+  use Andorhal Tower Two##10903 |q 5098/2 |goto Western Plaguelands 42.33,66.24 |tip {useit}
+  use Andorhal Tower Three##10904 |q 5098/3 |goto Western Plaguelands 44.3,63.25 |tip {useit}
+  use Andorhal Tower Four##10905 |q 5098 |goto Western Plaguelands 46.62,71.05 |tip {useit}
 step
   talk High Executor Derrington##10837
   turnin All Along the Watchtowers##5098 |goto Tirisfal Glades 83.13,68.94
@@ -371,6 +385,7 @@ step
   accept Villains of Darrowshire##5181 |goto Eastern Plaguelands 71.7,50.04
 step
   note Bring the Skull of Horgus and the Shattered Sword of Marduk to Carlin Redpath at Light's Hope Chapel.
+  collect Shattered Sword of Marduk##12957 |q 5181/2 |goto Eastern Plaguelands 46.86,55.43
   collect Skull of Horgus##12956 |q 5181 |goto Eastern Plaguelands 44.34,41.18 |tip {dropsfrom}Horgus' Skull
 step
   talk Carlin Redpath##11063
@@ -416,7 +431,10 @@ step
   click Scourge Cauldron##176392
   accept Gahrron's Withering Cauldron##5227 |goto Western Plaguelands 62.54,58.47
 step
-  buy Arcane Quickener##13320 |q 5227 |goto Western Plaguelands 42.66,83.77
+  collect Ectoplasmic Resonator##13354 |q 5227/2 |goto Western Plaguelands 64.4,58.61 |tip {dropsfrom}Hungering Wraith, Wailing Death, Haunting Vision
+  talk Apothecary Dithers##11057
+  buy Arcane Quickener##13320 |q 5227/1 |goto Tirisfal Glades 83.28,69.23
+  collect Runecloth##14047 |q 5227 |tip {dropsfrom}humanoids
 step
   turnin Gahrron's Withering Cauldron##5227 |goto Western Plaguelands 62.54,58.47
 step
@@ -424,7 +442,7 @@ step
   accept Egg Freezing##4734 |goto Burning Steppes 65.24,24
 step
   note Use the Eggscilloscope Prototype on an egg in the Rookery.
-  collect Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
+  click Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Tinkee Steamboil##10267
   turnin Egg Freezing##4734 |goto Burning Steppes 65.24,24
@@ -433,7 +451,7 @@ step
   accept Egg Collection##4735 |goto Burning Steppes 65.24,24
 step
   note Bring 8 Collected Dragon Eggs and the Collectronic Module to Tinkee Steamboil at Flame Crest in the Burning Steppes.
-  collect Rookery Egg##175124 |q 4735 |goto Blackrock Spire - Dungeon -1,-1
+  click Rookery Egg##175124 |q 4735 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Tinkee Steamboil##10267
   turnin Egg Collection##4735 |goto Burning Steppes 65.24,24
@@ -491,7 +509,7 @@ step
   accept Houses of the Holy##5243 |goto Eastern Plaguelands 71.89,48.29
 step
   note Travel to Stratholme, in the north. Search the supply crates that litter the city and recover 5 Stratholme Holy Water. Return to Leonid Barthalomew the Revered when you have collected enough of the blessed fluid.
-  collect Stratholme Holy Water##13180 |q 5243 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 5 Stratholme Holy Water##13180 |q 5243 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
 step
   talk Leonid Barthalomew the Revered##11036
   turnin Houses of the Holy##5243 |goto Eastern Plaguelands 71.89,48.29
@@ -500,7 +518,7 @@ step
   accept Binding the Dreadnaught##9131 |goto Eastern Plaguelands 71.95,48.52
 step
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands wants 30 Dark Iron Scraps.
-  collect Dark Iron Scraps##22528 |q 9131 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith, Dark Iron Slaver, Dark Iron Taskmaster
+  collect 30 Dark Iron Scraps##22528 |q 9131 |goto Searing Gorge 40.58,49.48 |tip {dropsfrom}Dark Iron Steamsmith, Dark Iron Slaver, Dark Iron Taskmaster
 step
   talk Korfax, Champion of the Light##16112
   turnin Binding the Dreadnaught##9131 |goto Eastern Plaguelands 71.95,48.52
@@ -517,7 +535,7 @@ step
   accept The Elemental Equation##9128 |goto Eastern Plaguelands 71.7,48.69
 step
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 30 Core of Elements.
-  collect Core of Elements##22527 |q 9128 |goto Un'Goro Crater 55.1,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Obsidian Elemental
+  collect 30 Core of Elements##22527 |q 9128 |goto Un'Goro Crater 55.1,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Blazing Invader
 step
   talk Archmage Angela Dosantos##16116
   turnin The Elemental Equation##9128 |goto Eastern Plaguelands 71.7,48.69
@@ -525,7 +543,7 @@ step
   talk Archmage Angela Dosantos##16116
   accept Core of Elements##9129 |goto Eastern Plaguelands 71.7,48.69
 step
-  collect Core of Elements##22527 |q 9129 |goto Un'Goro Crater 55.1,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Obsidian Elemental
+  collect Core of Elements##22527 |q 9129 |goto Un'Goro Crater 55.1,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Blazing Invader
 step
   talk Archmage Angela Dosantos##16116
   turnin Core of Elements##9129 |goto Eastern Plaguelands 71.7,48.69
@@ -534,7 +552,7 @@ step
   accept Bonescythe Digs##9126 |goto Eastern Plaguelands 71.62,48.91
 step
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands wants 30 Bone Fragments.
-  collect Bone Fragments##22526 |q 9126 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
+  collect 30 Bone Fragments##22526 |q 9126 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
 step
   talk Rohan the Assassin##16131
   turnin Bonescythe Digs##9126 |goto Eastern Plaguelands 71.62,48.91
@@ -551,7 +569,7 @@ step
   accept Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
 step
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
-  collect Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
+  collect 30 Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
 step
   talk Huntsman Leopold##16132
   turnin Cryptstalker Armor Doesn't Make Itself...##9124 |goto Eastern Plaguelands 71.69,48.94
@@ -568,7 +586,7 @@ step
   accept Savage Flora##9136 |goto Eastern Plaguelands 71.41,49.35
 step
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands wants 30 Savage Fronds.
-  collect Savage Frond##22529 |q 9136 |goto Feralas 56.82,74.86 |tip {dropsfrom}Cursed Sycamore, Bloodpetal Lasher, Bloodpetal Flayer
+  collect 30 Savage Frond##22529 |q 9136 |goto Feralas 56.82,74.86 |tip {dropsfrom}Cursed Sycamore
 step
   talk Rayne##16135
   turnin Savage Flora##9136 |goto Eastern Plaguelands 71.41,49.35
@@ -576,7 +594,7 @@ step
   talk Rayne##16135
   accept Savage Fronds##9137 |goto Eastern Plaguelands 71.41,49.35
 step
-  collect Savage Frond##22529 |q 9137 |goto Feralas 56.82,74.86 |tip {dropsfrom}Cursed Sycamore, Bloodpetal Lasher, Bloodpetal Flayer
+  collect Savage Frond##22529 |q 9137 |goto Feralas 56.82,74.86 |tip {dropsfrom}Cursed Sycamore
 step
   talk Rayne##16135
   turnin Savage Fronds##9137 |goto Eastern Plaguelands 71.41,49.35
@@ -585,7 +603,7 @@ step
   accept The Flesh Does Not Lie##5212 |goto Eastern Plaguelands 71.66,49.94
 step
   note Recover 10 Plagued Flesh Samples from Stratholme and return them to Betina Bigglezink. You suspect that any creature in Stratholme would have said flesh sample.
-  collect Plagued Flesh Sample##13174 |q 5212 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Ravaged Cadaver, Mangled Cadaver, Plague Ghoul
+  collect 10 Plagued Flesh Sample##13174 |q 5212 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Ravaged Cadaver, Mangled Cadaver, Plague Ghoul
 step
   talk Betina Bigglezink##11035
   turnin The Flesh Does Not Lie##5212 |goto Eastern Plaguelands 71.66,49.94
@@ -603,7 +621,7 @@ step
   accept Marauders of Darrowshire##5206 |goto Eastern Plaguelands 71.7,50.04
 step
   note Bring 5 Resonating Skulls and the Mystic Crystal to Carlin Redpath in Eastern Plaguelands.
-  collect 5 Resonating Skull##13155 |q 5206 |goto Eastern Plaguelands 71.7,50.04
+  collect 5 Resonating Skull##13155 |q 5206 |goto Eastern Plaguelands 71.7,50.04 |tip Crafted or bought.
 step
   talk Carlin Redpath##11063
   turnin Marauders of Darrowshire##5206 |goto Eastern Plaguelands 71.7,50.04
@@ -668,23 +686,12 @@ step
   note Open the Argent Hold and claim your reward.
   turnin The Argent Hold##5265 |goto Eastern Plaguelands 71.96,48.41
 step
-  only not completed(5521) not completed(5524) not haveq(5521) not haveq(5524)
-  talk Quartermaster Miranda Breechlock##11536
-  accept Chromatic Mantle of the Dawn##5517 |goto Eastern Plaguelands 71.79,50.25
-step
-  only not completed(5521) not completed(5524) not haveq(5521) not haveq(5524)
-  note Bring 25 Argent Dawn Valor Tokens to Quartermaster Breechlock at Light's Hope Chapel, Eastern Plaguelands.
-  collect 25 Argent Dawn Valor Token##12844 |q 5517 |goto Eastern Plaguelands 71.79,50.25
-step
-  only not completed(5521) not completed(5524) not haveq(5521) not haveq(5524)
-  talk Quartermaster Miranda Breechlock##11536
-  turnin Chromatic Mantle of the Dawn##5517 |goto Eastern Plaguelands 71.79,50.25
-step
   talk Quartermaster Miranda Breechlock##11536
   accept Superior Armaments of Battle - Friend of the Dawn##9221 |goto Eastern Plaguelands 71.79,50.25
 step
   note For 30 Insignias of the Dawn and 30 Insignias of the Crusade you may choose an item from the Argent Dawn's treasure cache.
-  collect Insignia of the Dawn##22523 |q 9221 |goto Eastern Plaguelands 71.79,50.25
+  collect 30 Insignia of the Dawn##22523 |q 9221/1 |tip Crafted or bought.
+  collect 30 Insignia of the Crusade##22524 |q 9221 |tip Crafted or bought.
 step
   talk Quartermaster Miranda Breechlock##11536
   turnin Superior Armaments of Battle - Friend of the Dawn##9221 |goto Eastern Plaguelands 71.79,50.25
@@ -693,7 +700,8 @@ step
   accept Epic Armaments of Battle - Friend of the Dawn##9222 |goto Eastern Plaguelands 71.79,50.25
 step
   note For 110 Insignias of the Dawn and 110 Insignias of the Crusade you may choose an item from the Argent Dawn's treasure cache.
-  collect Insignia of the Dawn##22523 |q 9222 |goto Eastern Plaguelands 71.79,50.25
+  collect 110 Insignia of the Dawn##22523 |q 9222/1 |tip Crafted or bought.
+  collect 110 Insignia of the Crusade##22524 |q 9222 |tip Crafted or bought.
 step
   talk Quartermaster Miranda Breechlock##11536
   turnin Epic Armaments of Battle - Friend of the Dawn##9222 |goto Eastern Plaguelands 71.79,50.25
@@ -702,7 +710,8 @@ step
   accept Superior Armaments of Battle - Honored Amongst the Dawn##9223 |goto Eastern Plaguelands 71.79,50.25
 step
   note For 20 Insignias of the Dawn and 20 Insignias of the Crusade you may choose an item from the Argent Dawn's treasure cache.
-  collect Insignia of the Dawn##22523 |q 9223 |goto Eastern Plaguelands 71.79,50.25
+  collect 20 Insignia of the Dawn##22523 |q 9223/1 |tip Crafted or bought.
+  collect 20 Insignia of the Crusade##22524 |q 9223 |tip Crafted or bought.
 step
   talk Quartermaster Miranda Breechlock##11536
   turnin Superior Armaments of Battle - Honored Amongst the Dawn##9223 |goto Eastern Plaguelands 71.79,50.25
@@ -711,7 +720,8 @@ step
   accept Epic Armaments of Battle - Honored Amongst the Dawn##9224 |goto Eastern Plaguelands 71.79,50.25
 step
   note For 75 Insignias of the Dawn and 75 Insignias of the Crusade you may choose an item from the Argent Dawn's treasure cache.
-  collect Insignia of the Dawn##22523 |q 9224 |goto Eastern Plaguelands 71.79,50.25
+  collect 75 Insignia of the Dawn##22523 |q 9224/1 |tip Crafted or bought.
+  collect 75 Insignia of the Crusade##22524 |q 9224 |tip Crafted or bought.
 step
   talk Quartermaster Miranda Breechlock##11536
   turnin Epic Armaments of Battle - Honored Amongst the Dawn##9224 |goto Eastern Plaguelands 71.79,50.25
@@ -720,7 +730,8 @@ step
   accept Epic Armaments of Battle - Revered Amongst the Dawn##9225 |goto Eastern Plaguelands 71.79,50.25
 step
   note For 45 Insignias of the Dawn and 45 Insignias of the Crusade you may choose an item from the Argent Dawn's treasure cache.
-  collect Insignia of the Dawn##22523 |q 9225 |goto Eastern Plaguelands 71.79,50.25
+  collect 45 Insignia of the Dawn##22523 |q 9225/1 |tip Crafted or bought.
+  collect 45 Insignia of the Crusade##22524 |q 9225 |tip Crafted or bought.
 step
   talk Quartermaster Miranda Breechlock##11536
   turnin Epic Armaments of Battle - Revered Amongst the Dawn##9225 |goto Eastern Plaguelands 71.79,50.25
@@ -729,7 +740,8 @@ step
   accept Superior Armaments of Battle - Revered Amongst the Dawn##9226 |goto Eastern Plaguelands 71.79,50.25
 step
   note For 7 Insignias of the Dawn and 7 Insignias of the Crusade you may choose an item from the Argent Dawn's treasure cache.
-  collect Insignia of the Dawn##22523 |q 9226 |goto Eastern Plaguelands 71.79,50.25
+  collect 7 Insignia of the Dawn##22523 |q 9226/1 |tip Crafted or bought.
+  collect 7 Insignia of the Crusade##22524 |q 9226 |tip Crafted or bought.
 step
   talk Quartermaster Miranda Breechlock##11536
   turnin Superior Armaments of Battle - Revered Amongst the Dawn##9226 |goto Eastern Plaguelands 71.79,50.25
@@ -738,7 +750,8 @@ step
   accept Superior Armaments of Battle - Exalted Amongst the Dawn##9227 |goto Eastern Plaguelands 71.79,50.25
 step
   note For 6 Insignias of the Dawn and 6 Insignias of the Crusade you may choose an item from the Argent Dawn's treasure cache.
-  collect Insignia of the Dawn##22523 |q 9227 |goto Eastern Plaguelands 71.79,50.25
+  collect 6 Insignia of the Dawn##22523 |q 9227/1 |tip Crafted or bought.
+  collect 6 Insignia of the Crusade##22524 |q 9227 |tip Crafted or bought.
 step
   talk Quartermaster Miranda Breechlock##11536
   turnin Superior Armaments of Battle - Exalted Amongst the Dawn##9227 |goto Eastern Plaguelands 71.79,50.25
@@ -747,7 +760,8 @@ step
   accept Epic Armaments of Battle - Exalted Amongst the Dawn##9228 |goto Eastern Plaguelands 71.79,50.25
 step
   note For 27 Insignias of the Dawn and 27 Insignias of the Crusade you may choose an item from the Argent Dawn's treasure cache.
-  collect Insignia of the Dawn##22523 |q 9228 |goto Eastern Plaguelands 71.79,50.25
+  collect 27 Insignia of the Dawn##22523 |q 9228/1 |tip Crafted or bought.
+  collect 27 Insignia of the Crusade##22524 |q 9228 |tip Crafted or bought.
 step
   talk Quartermaster Miranda Breechlock##11536
   turnin Epic Armaments of Battle - Exalted Amongst the Dawn##9228 |goto Eastern Plaguelands 71.79,50.25
@@ -863,7 +877,10 @@ step
 step
   only not Paladin
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
+  collect 1 Delicate Arcanite Converter##16006 |q 8921/1 |tip Crafted or bought.
+  collect 4 Greater Eternal Essence##16203 |q 8921/2 |tip Crafted or bought.
+  collect 10 Stonescale Oil##13423 |q 8921/3 |tip Crafted or bought.
+  collect 25 Volcanic Ash##22338 |q 8921 |goto Burning Steppes 60.12,40.36
 step
   only not Paladin
   talk Mux Manascrambler##16014
@@ -875,7 +892,9 @@ step
 step
   only not Paladin
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Stable Ectoplasm##21935 |q 8924/3 |goto Eastern Plaguelands 52.9,55.8 |tip {dropsfrom}Unseen Servant, Eyeless Watcher, Torn Screamer
+  collect 12 Scorched Ectoplasm##21937 |q 8924/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Frozen Ectoplasm##21936 |q 8924 |goto Winterspring 53.58,43.48 |tip {dropsfrom}Suffering Highborne, Anguished Highborne
 step
   only not Paladin
   talk Mux Manascrambler##16014
@@ -899,6 +918,7 @@ step
 step
   only not Paladin
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
+  talk Vi'el##16015
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
   only not Paladin
@@ -920,7 +940,7 @@ step
 step
   only Druid not Paladin
   note Bring a Wildheart Belt and a set of Wildheart Gloves to Mokvar in Orgrimmar.
-  collect Wildheart Belt##16716 |q 8927 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider, Bile Spewer
+  collect Wildheart Belt##16716 |q 8927 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider
 step
   only Druid not Paladin
   talk Mokvar##16012
@@ -944,7 +964,7 @@ step
 step
   only Mage not Paladin
   note Bring a Magister's Belt and a set of Magister's Gloves to Mokvar in Orgrimmar.
-  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Smolderthorn Mystic, Thuzadin Shadowcaster, Thuzadin Necromancer
+  collect Magister's Belt##16685 |q 8939 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Mystic
 step
   only Mage not Paladin
   talk Mokvar##16012
@@ -956,7 +976,7 @@ step
 step
   only Priest not Paladin
   note Bring a Devout Belt and a set of Devout Gloves to Mokvar in Orgrimmar.
-  collect Devout Belt##16696 |q 8940 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
+  collect Devout Belt##16696 |q 8940 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
 step
   only Priest not Paladin
   talk Mokvar##16012
@@ -968,7 +988,7 @@ step
 step
   only Rogue not Paladin
   note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Mokvar in Orgrimmar.
-  collect Shadowcraft Belt##16713 |q 8941 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Legionnaire, Firebrand Grunt, Scarshield Quartermaster
+  collect Shadowcraft Belt##16713 |q 8941 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
 step
   only Rogue not Paladin
   talk Mokvar##16012
@@ -980,7 +1000,7 @@ step
 step
   only Shaman not Paladin
   note Bring a Cord of Elements and a set of Gauntlets of Elements to Mokvar in Orgrimmar.
-  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Warlock, Firebrand Invoker, Scarshield Quartermaster
+  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
 step
   only Shaman not Paladin
   talk Mokvar##16012
@@ -1004,7 +1024,7 @@ step
 step
   only Warrior not Paladin
   note Bring a Belt of Valor and a set of Gauntlets of Valor to Mokvar in Orgrimmar.
-  collect Belt of Valor##16736 |q 8944 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker, Patchwork Horror, Bile Spewer
+  collect Belt of Valor##16736 |q 8944 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker
 step
   only Warrior not Paladin
   talk Mokvar##16012
@@ -1050,8 +1070,24 @@ step
   talk Argent Quartermaster Hasana##10856
   turnin Mantles of the Dawn##5504 |goto Tirisfal Glades 83.26,68.14
 step
+  only not completed(5517) not completed(5521) not haveq(5517) not haveq(5521)
+  talk Argent Quartermaster Hasana##10856
+  accept Chromatic Mantle of the Dawn##5524 |goto Tirisfal Glades 83.26,68.14
+step
+  only not completed(5517) not completed(5521) not haveq(5517) not haveq(5521)
+  note Bring 25 Argent Dawn Valor Tokens to Quartermaster Hasana at the Bulwark, Western Plaguelands.
+  collect 25 Argent Dawn Valor Token##12844 |q 5524 |goto Tirisfal Glades 83.26,68.14
+step
+  only not completed(5517) not completed(5521) not haveq(5517) not haveq(5521)
+  talk Argent Quartermaster Hasana##10856
+  turnin Chromatic Mantle of the Dawn##5524 |goto Tirisfal Glades 83.26,68.14
+step
   talk High Executor Derrington##10837
   accept Alas, Andorhal##105 |goto Tirisfal Glades 83.13,68.94
+step
+  note Bring Araj's Phylactery Shard to High Executor Derrington at the Bulwark, Western Plaguelands.
+  kill Araj the Summoner##1852 |elite
+  goto Western Plaguelands 45.27,69.21
 step
   note Bring Araj's Phylactery Shard to High Executor Derrington at the Bulwark, Western Plaguelands.
   collect Araj's Phylactery Shard##17114 |q 105 |goto Western Plaguelands 45.27,69.21 |tip {dropsfrom}Araj's Phylactery
@@ -1119,7 +1155,7 @@ step
   accept The Ice Guard##9211 |goto Eastern Plaguelands 71.58,48.65
 step
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands wants 10 Insignia of the Crusade and 30 gold.
-  collect Insignia of the Crusade##22524 |q 9211 |goto Eastern Plaguelands 71.58,48.65
+  collect 10 Insignia of the Crusade##22524 |q 9211 |goto Eastern Plaguelands 71.58,48.65 |tip Crafted or bought.
 step
   talk Mataus the Wrathcaster##16133
   turnin The Ice Guard##9211 |goto Eastern Plaguelands 71.58,48.65
@@ -1128,7 +1164,7 @@ step
   accept The Shadow Guard##9213 |goto Eastern Plaguelands 71.58,48.65
 step
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands wants 10 Insignia of the Crusade and 30 gold.
-  collect Insignia of the Crusade##22524 |q 9213 |goto Eastern Plaguelands 71.58,48.65
+  collect 10 Insignia of the Crusade##22524 |q 9213 |goto Eastern Plaguelands 71.58,48.65 |tip Crafted or bought.
 step
   talk Mataus the Wrathcaster##16133
   turnin The Shadow Guard##9213 |goto Eastern Plaguelands 71.58,48.65
@@ -1139,7 +1175,9 @@ step
 step
   only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands wants 5 Arcane Crystals, 2 Nexus Crystals, 1 Righteous Orb and 60 gold pieces. You must also be Honored with the Argent Dawn.
-  collect Arcane Crystal##12363 |q 9121 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Ooze Covered Thorium Vein
+  collect 5 Arcane Crystal##12363 |q 9121/1 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 2 Nexus Crystal##20725 |q 9121/2 |tip Crafted or bought.
+  collect 1 Righteous Orb##12811 |q 9121 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Crimson Guardsman, Crimson Conjuror, Crimson Initiate
 step
   only not completed(9122) not completed(9123) not haveq(9122) not haveq(9123)
   talk Archmage Angela Dosantos##16116
@@ -1160,7 +1198,10 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Breastplate if you bring him the following items: 1 Desecrated Breastplate, 25 Wartorn Plate Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Breastplate##22349 |q 9034 |goto Eastern Plaguelands 71.95,48.52
+  collect 1 Desecrated Breastplate##22349 |q 9034/1 |tip Crafted or bought.
+  collect 25 Wartorn Plate Scrap##22375 |q 9034/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Arcanite Bar##12360 |q 9034/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9034 |tip Crafted or bought.
 step
   only Warrior
   talk Korfax, Champion of the Light##16112
@@ -1172,7 +1213,10 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Legplates if you bring him the following items: 1 Desecrated Legplates, 20 Wartorn Plate Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Legplates##22352 |q 9036 |goto Eastern Plaguelands 71.95,48.52
+  collect 1 Desecrated Legplates##22352 |q 9036/1 |tip Crafted or bought.
+  collect 20 Wartorn Plate Scrap##22375 |q 9036/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Arcanite Bar##12360 |q 9036/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9036 |tip Crafted or bought.
 step
   only Warrior
   talk Korfax, Champion of the Light##16112
@@ -1184,7 +1228,10 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Helmet if you bring him the following items: 1 Desecrated Helmet, 15 Wartorn Plate Scraps, 5 Arcanite Bars and 1 Nexus Crystal.
-  collect Desecrated Helmet##22353 |q 9037 |goto Eastern Plaguelands 71.95,48.52
+  collect 1 Desecrated Helmet##22353 |q 9037/1 |tip Crafted or bought.
+  collect 15 Wartorn Plate Scrap##22375 |q 9037/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 5 Arcanite Bar##12360 |q 9037/3 |tip Crafted or bought.
+  collect 1 Nexus Crystal##20725 |q 9037 |tip Crafted or bought.
 step
   only Warrior
   talk Korfax, Champion of the Light##16112
@@ -1196,7 +1243,10 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Pauldrons if you bring him the following items: 1 Desecrated Pauldrons, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Pauldrons##22354 |q 9038 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Pauldrons##22354 |q 9038/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Plate Scrap##22375 |q 9038/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcanite Bar##12360 |q 9038/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9038 |tip Crafted or bought.
 step
   only Warrior
   talk Korfax, Champion of the Light##16112
@@ -1208,7 +1258,10 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Sabatons if you bring him the following items: 1 Desecrated Sabatons, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Sabatons##22358 |q 9039 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Sabatons##22358 |q 9039/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Plate Scrap##22375 |q 9039/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcanite Bar##12360 |q 9039/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9039 |tip Crafted or bought.
 step
   only Warrior
   talk Korfax, Champion of the Light##16112
@@ -1220,7 +1273,10 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Gauntlets if you bring him the following items: 1 Desecrated Gauntlets, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Gauntlets##22357 |q 9040 |goto Eastern Plaguelands 71.95,48.52
+  collect 1 Desecrated Gauntlets##22357 |q 9040/1 |tip Crafted or bought.
+  collect 8 Wartorn Plate Scrap##22375 |q 9040/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9040/3 |tip Crafted or bought.
+  collect 5 Cured Rugged Hide##15407 |q 9040 |tip Crafted or bought.
 step
   only Warrior
   talk Korfax, Champion of the Light##16112
@@ -1232,7 +1288,10 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make a Dreadnaught Waistguard if you bring him the following items: 1 Desecrated Waistguard, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Waistguard##22356 |q 9041 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Waistguard##22356 |q 9041/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Plate Scrap##22375 |q 9041/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9041/3 |tip Crafted or bought.
+  collect 5 Cured Rugged Hide##15407 |q 9041 |tip Crafted or bought.
 step
   only Warrior
   talk Korfax, Champion of the Light##16112
@@ -1244,7 +1303,10 @@ step
 step
   only Warrior
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands will make Dreadnaught Bracers if you bring him the following items: 1 Desecrated Bracers, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 1 Nexus Crystal.
-  collect Desecrated Bracers##22355 |q 9042 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Bracers##22355 |q 9042/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Plate Scrap##22375 |q 9042/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9042/3 |tip Crafted or bought.
+  collect 1 Nexus Crystal##20725 |q 9042 |tip Crafted or bought.
 step
   only Warrior
   talk Korfax, Champion of the Light##16112
@@ -1254,7 +1316,7 @@ step
   accept The Fate of Ramaladni##9229 |goto Eastern Plaguelands 71.95,48.52
 step
   note Enter Naxxramas and uncover the Fate of Ramaladni.
-  collect Fate of Ramaladni##22708 |q 9229 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Dread Creeper, Carrion Spinner, Venom Stalker
+  collect Fate of Ramaladni##22708 |q 9229 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Deathknight Understudy, Dread Creeper
 step
   talk Korfax, Champion of the Light##16112
   turnin The Fate of Ramaladni##9229 |goto Eastern Plaguelands 71.95,48.52
@@ -1263,7 +1325,9 @@ step
   accept Ramaladni's Icy Grasp##9230 |goto Eastern Plaguelands 71.95,48.52
 step
   note Korfax at Light's Hope Chapel in the Eastern Plaguelands wants you to bring him 1 Frozen Rune, 1 Blue Sapphire and 1 Arcanite Bar.
-  collect Frozen Rune##22682 |q 9230 |goto Naxxramas - Dungeon -1,-1
+  collect 1 Frozen Rune##22682 |q 9230/1 |goto Naxxramas - Dungeon -1,-1
+  collect 1 Blue Sapphire##12361 |q 9230/2 |goto Western Plaguelands 47.11,50.51 |tip {dropsfrom}Skeletal Terror, Scarlet Worker, Blighted Zombie
+  collect 1 Arcanite Bar##12360 |q 9230 |tip Crafted or bought.
 step
   talk Korfax, Champion of the Light##16112
   turnin Ramaladni's Icy Grasp##9230 |goto Eastern Plaguelands 71.95,48.52
@@ -1274,7 +1338,10 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Robe of Faith if you bring him the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Robe##22351 |q 9111 |goto Eastern Plaguelands 71.66,48.58
+  collect 1 Desecrated Robe##22351 |q 9111/1 |tip Crafted or bought.
+  collect 25 Wartorn Cloth Scrap##22376 |q 9111/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9111/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9111 |tip Crafted or bought.
 step
   only Priest
   talk Father Inigo Montoy##16113
@@ -1286,7 +1353,10 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Leggings of Faith if you bring him the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Leggings##22366 |q 9112 |goto Eastern Plaguelands 71.66,48.58
+  collect 1 Desecrated Leggings##22366 |q 9112/1 |tip Crafted or bought.
+  collect 20 Wartorn Cloth Scrap##22376 |q 9112/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9112/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9112 |tip Crafted or bought.
 step
   only Priest
   talk Father Inigo Montoy##16113
@@ -1298,7 +1368,10 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Circlet of Faith if you bring him the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  collect Desecrated Circlet##22367 |q 9113 |goto Eastern Plaguelands 71.66,48.58
+  collect 1 Desecrated Circlet##22367 |q 9113/1 |tip Crafted or bought.
+  collect 15 Wartorn Cloth Scrap##22376 |q 9113/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 3 Mooncloth##14342 |q 9113/3 |tip Crafted or bought.
+  collect 3 Nexus Crystal##20725 |q 9113 |tip Crafted or bought.
 step
   only Priest
   talk Father Inigo Montoy##16113
@@ -1310,7 +1383,10 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Shoulderpads of Faith if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9114 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Shoulderpads##22368 |q 9114/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Cloth Scrap##22376 |q 9114/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Mooncloth##14342 |q 9114/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9114 |tip Crafted or bought.
 step
   only Priest
   talk Father Inigo Montoy##16113
@@ -1322,7 +1398,10 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Sandals of Faith if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9115 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Sandals##22372 |q 9115/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Cloth Scrap##22376 |q 9115/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Mooncloth##14342 |q 9115/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9115 |tip Crafted or bought.
 step
   only Priest
   talk Father Inigo Montoy##16113
@@ -1334,7 +1413,9 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Gloves of Faith if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  collect Desecrated Gloves##22371 |q 9116 |goto Eastern Plaguelands 71.66,48.58
+  collect 1 Desecrated Gloves##22371 |q 9116/1 |tip Crafted or bought.
+  collect 8 Wartorn Cloth Scrap##22376 |q 9116/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9116 |tip Crafted or bought.
 step
   only Priest
   talk Father Inigo Montoy##16113
@@ -1346,7 +1427,10 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make a Belt of Faith if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9117 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Belt##22370 |q 9117/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Cloth Scrap##22376 |q 9117/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcane Crystal##12363 |q 9117/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 2 Mooncloth##14342 |q 9117 |tip Crafted or bought.
 step
   only Priest
   talk Father Inigo Montoy##16113
@@ -1358,7 +1442,10 @@ step
 step
   only Priest
   note Father Inigo Montoy at Light's Hope Chapel in the Eastern Plaguelands will make Bindings of Faith if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9118 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Bindings##22369 |q 9118/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Cloth Scrap##22376 |q 9118/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcane Crystal##12363 |q 9118/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 1 Nexus Crystal##20725 |q 9118 |tip Crafted or bought.
 step
   only Priest
   talk Father Inigo Montoy##16113
@@ -1370,7 +1457,10 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Tunic if you bring him the following: 1 Desecrated Tunic, 25 Wartorn Plate Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Tunic##22350 |q 9043 |goto Eastern Plaguelands 71.72,48.59
+  collect 1 Desecrated Tunic##22350 |q 9043/1 |tip Crafted or bought.
+  collect 25 Wartorn Plate Scrap##22375 |q 9043/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Arcanite Bar##12360 |q 9043/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9043 |tip Crafted or bought.
 step
   only Paladin
   talk Commander Eligor Dawnbringer##16115
@@ -1382,7 +1472,10 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Legguards if you bring him the following: 1 Desecrated Legguards, 20 Wartorn Plate Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Legguards##22359 |q 9044 |goto Eastern Plaguelands 71.72,48.59
+  collect 1 Desecrated Legguards##22359 |q 9044/1 |tip Crafted or bought.
+  collect 20 Wartorn Plate Scrap##22375 |q 9044/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Arcanite Bar##12360 |q 9044/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9044 |tip Crafted or bought.
 step
   only Paladin
   talk Commander Eligor Dawnbringer##16115
@@ -1394,7 +1487,10 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Headpiece if you bring him the following: 1 Desecrated Headpiece, 15 Wartorn Plate Scraps, 5 Arcanite Bars and 2 Cured Rugged Hides.
-  collect Desecrated Headpiece##22360 |q 9045 |goto Eastern Plaguelands 71.72,48.59
+  collect 1 Desecrated Headpiece##22360 |q 9045/1 |tip Crafted or bought.
+  collect 15 Wartorn Plate Scrap##22375 |q 9045/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 5 Arcanite Bar##12360 |q 9045/3 |tip Crafted or bought.
+  collect 2 Cured Rugged Hide##15407 |q 9045 |tip Crafted or bought.
 step
   only Paladin
   talk Commander Eligor Dawnbringer##16115
@@ -1406,7 +1502,10 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a pair of Redemption Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Spaulders##22361 |q 9046 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Spaulders##22361 |q 9046/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Plate Scrap##22375 |q 9046/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcanite Bar##12360 |q 9046/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9046 |tip Crafted or bought.
 step
   only Paladin
   talk Commander Eligor Dawnbringer##16115
@@ -1418,7 +1517,10 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Plate Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Boots##22365 |q 9047 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Boots##22365 |q 9047/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Plate Scrap##22375 |q 9047/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcanite Bar##12360 |q 9047/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9047 |tip Crafted or bought.
 step
   only Paladin
   talk Commander Eligor Dawnbringer##16115
@@ -1430,7 +1532,10 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Handguards##22364 |q 9048 |goto Eastern Plaguelands 71.72,48.59
+  collect 1 Desecrated Handguards##22364 |q 9048/1 |tip Crafted or bought.
+  collect 8 Wartorn Plate Scrap##22375 |q 9048/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9048/3 |tip Crafted or bought.
+  collect 5 Cured Rugged Hide##15407 |q 9048 |tip Crafted or bought.
 step
   only Paladin
   talk Commander Eligor Dawnbringer##16115
@@ -1442,7 +1547,10 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make a Redemption Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Plate Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9049 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Girdle##22363 |q 9049/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Plate Scrap##22375 |q 9049/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9049/3 |tip Crafted or bought.
+  collect 3 Nexus Crystal##20725 |q 9049 |tip Crafted or bought.
 step
   only Paladin
   talk Commander Eligor Dawnbringer##16115
@@ -1454,7 +1562,10 @@ step
 step
   only Paladin
   note Commander Eligor Dawnbringer at Light's Hope Chapel in the Eastern Plaguelands will make Redemption Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Plate Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9050 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Wristguards##22362 |q 9050/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Plate Scrap##22375 |q 9050/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9050/3 |tip Crafted or bought.
+  collect 2 Cured Rugged Hide##15407 |q 9050 |tip Crafted or bought.
 step
   only Paladin
   talk Commander Eligor Dawnbringer##16115
@@ -1466,7 +1577,10 @@ step
 step
   only Warlock
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Robe if you bring him the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Robe##22351 |q 9103 |goto Eastern Plaguelands 71.58,48.65
+  collect 1 Desecrated Robe##22351 |q 9103/1 |tip Crafted or bought.
+  collect 25 Wartorn Cloth Scrap##22376 |q 9103/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9103/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9103 |tip Crafted or bought.
 step
   only Warlock
   talk Mataus the Wrathcaster##16133
@@ -1478,7 +1592,10 @@ step
 step
   only Warlock
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Leggings if you bring him the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Leggings##22366 |q 9104 |goto Eastern Plaguelands 71.58,48.65
+  collect 1 Desecrated Leggings##22366 |q 9104/1 |tip Crafted or bought.
+  collect 20 Wartorn Cloth Scrap##22376 |q 9104/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9104/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9104 |tip Crafted or bought.
 step
   only Warlock
   talk Mataus the Wrathcaster##16133
@@ -1490,7 +1607,10 @@ step
 step
   only Warlock
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Circlet if you bring him the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  collect Desecrated Circlet##22367 |q 9105 |goto Eastern Plaguelands 71.58,48.65
+  collect 1 Desecrated Circlet##22367 |q 9105/1 |tip Crafted or bought.
+  collect 15 Wartorn Cloth Scrap##22376 |q 9105/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 3 Mooncloth##14342 |q 9105/3 |tip Crafted or bought.
+  collect 3 Nexus Crystal##20725 |q 9105 |tip Crafted or bought.
 step
   only Warlock
   talk Mataus the Wrathcaster##16133
@@ -1502,7 +1622,10 @@ step
 step
   only Warlock
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Shoulderpads if you bring him the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9106 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Shoulderpads##22368 |q 9106/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Cloth Scrap##22376 |q 9106/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Mooncloth##14342 |q 9106/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9106 |tip Crafted or bought.
 step
   only Warlock
   talk Mataus the Wrathcaster##16133
@@ -1514,7 +1637,10 @@ step
 step
   only Warlock
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Sandals if you bring him the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9107 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Sandals##22372 |q 9107/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Cloth Scrap##22376 |q 9107/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Mooncloth##14342 |q 9107/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9107 |tip Crafted or bought.
 step
   only Warlock
   talk Mataus the Wrathcaster##16133
@@ -1526,7 +1652,9 @@ step
 step
   only Warlock
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Gloves if you bring him the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  collect Desecrated Gloves##22371 |q 9108 |goto Eastern Plaguelands 71.58,48.65
+  collect 1 Desecrated Gloves##22371 |q 9108/1 |tip Crafted or bought.
+  collect 8 Wartorn Cloth Scrap##22376 |q 9108/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9108 |tip Crafted or bought.
 step
   only Warlock
   talk Mataus the Wrathcaster##16133
@@ -1538,7 +1666,10 @@ step
 step
   only Warlock
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make a Plagueheart Belt if you bring him the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9109 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Belt##22370 |q 9109/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Cloth Scrap##22376 |q 9109/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcane Crystal##12363 |q 9109/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 2 Mooncloth##14342 |q 9109 |tip Crafted or bought.
 step
   only Warlock
   talk Mataus the Wrathcaster##16133
@@ -1550,7 +1681,10 @@ step
 step
   only Warlock
   note Mataus the Wrathcaster at Light's Hope Chapel in the Eastern Plaguelands will make Plagueheart Bindings if you bring him the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9110 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Bindings##22369 |q 9110/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Cloth Scrap##22376 |q 9110/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcane Crystal##12363 |q 9110/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 1 Nexus Crystal##20725 |q 9110 |tip Crafted or bought.
 step
   only Warlock
   talk Mataus the Wrathcaster##16133
@@ -1562,7 +1696,10 @@ step
 step
   only Mage
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Robe if you bring her the following: 1 Desecrated Robe, 25 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Robe##22351 |q 9095 |goto Eastern Plaguelands 71.7,48.69
+  collect 1 Desecrated Robe##22351 |q 9095/1 |tip Crafted or bought.
+  collect 25 Wartorn Cloth Scrap##22376 |q 9095/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9095/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9095 |tip Crafted or bought.
 step
   only Mage
   talk Archmage Angela Dosantos##16116
@@ -1574,7 +1711,10 @@ step
 step
   only Mage
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Leggings if you bring her the following: 1 Desecrated Leggings, 20 Wartorn Cloth Scraps, 4 Mooncloth and 2 Nexus Crystals.
-  collect Desecrated Leggings##22366 |q 9096 |goto Eastern Plaguelands 71.7,48.69
+  collect 1 Desecrated Leggings##22366 |q 9096/1 |tip Crafted or bought.
+  collect 20 Wartorn Cloth Scrap##22376 |q 9096/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9096/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9096 |tip Crafted or bought.
 step
   only Mage
   talk Archmage Angela Dosantos##16116
@@ -1586,7 +1726,10 @@ step
 step
   only Mage
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Circlet if you bring her the following: 1 Desecrated Circlet, 15 Wartorn Cloth Scraps, 3 Mooncloth and 3 Nexus Crystals.
-  collect Desecrated Circlet##22367 |q 9097 |goto Eastern Plaguelands 71.7,48.69
+  collect 1 Desecrated Circlet##22367 |q 9097/1 |tip Crafted or bought.
+  collect 15 Wartorn Cloth Scrap##22376 |q 9097/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 3 Mooncloth##14342 |q 9097/3 |tip Crafted or bought.
+  collect 3 Nexus Crystal##20725 |q 9097 |tip Crafted or bought.
 step
   only Mage
   talk Archmage Angela Dosantos##16116
@@ -1598,7 +1741,10 @@ step
 step
   only Mage
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Shoulderpads if you bring her the following: 1 Desecrated Shoulderpads, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Shoulderpads##22368 |q 9098 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Shoulderpads##22368 |q 9098/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Cloth Scrap##22376 |q 9098/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Mooncloth##14342 |q 9098/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9098 |tip Crafted or bought.
 step
   only Mage
   talk Archmage Angela Dosantos##16116
@@ -1610,7 +1756,10 @@ step
 step
   only Mage
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Sandals if you bring her the following: 1 Desecrated Sandals, 12 Wartorn Cloth Scraps, 2 Mooncloth and 3 Cured Rugged Hides.
-  collect Desecrated Sandals##22372 |q 9099 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Sandals##22372 |q 9099/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Cloth Scrap##22376 |q 9099/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Mooncloth##14342 |q 9099/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9099 |tip Crafted or bought.
 step
   only Mage
   talk Archmage Angela Dosantos##16116
@@ -1622,7 +1771,9 @@ step
 step
   only Mage
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Gloves if you bring her the following: 1 Desecrated Gloves, 8 Wartorn Cloth Scraps and 4 Mooncloth.
-  collect Desecrated Gloves##22371 |q 9100 |goto Eastern Plaguelands 71.7,48.69
+  collect 1 Desecrated Gloves##22371 |q 9100/1 |tip Crafted or bought.
+  collect 8 Wartorn Cloth Scrap##22376 |q 9100/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Mooncloth##14342 |q 9100 |tip Crafted or bought.
 step
   only Mage
   talk Archmage Angela Dosantos##16116
@@ -1634,7 +1785,10 @@ step
 step
   only Mage
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make a Frostfire Belt if you bring her the following: 1 Desecrated Belt, 8 Wartorn Cloth Scraps, 2 Arcane Crystals and 2 Mooncloth.
-  collect Desecrated Belt##22370 |q 9101 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Belt##22370 |q 9101/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Cloth Scrap##22376 |q 9101/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcane Crystal##12363 |q 9101/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 2 Mooncloth##14342 |q 9101 |tip Crafted or bought.
 step
   only Mage
   talk Archmage Angela Dosantos##16116
@@ -1646,7 +1800,10 @@ step
 step
   only Mage
   note Archmage Angela Dosantos at Light's Hope Chapel in the Eastern Plaguelands will make Frostfire Bindings if you bring her the following: 1 Desecrated Bindings, 6 Wartorn Cloth Scraps, 1 Arcane Crystal and 1 Nexus Crystal.
-  collect Desecrated Bindings##22369 |q 9102 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Bindings##22369 |q 9102/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Cloth Scrap##22376 |q 9102/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcane Crystal##12363 |q 9102/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 1 Nexus Crystal##20725 |q 9102 |tip Crafted or bought.
 step
   only Mage
   talk Archmage Angela Dosantos##16116
@@ -1658,7 +1815,10 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Breastplate if you bring him the following: 1 Desecrated Breastplate, 25 Wartorn Leather Scraps, 2 Arcanite Bars and 6 Cured Rugged Hides.
-  collect Desecrated Breastplate##22349 |q 9077 |goto Eastern Plaguelands 71.62,48.91
+  collect 1 Desecrated Breastplate##22349 |q 9077/1 |tip Crafted or bought.
+  collect 25 Wartorn Leather Scrap##22373 |q 9077/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcanite Bar##12360 |q 9077/3 |tip Crafted or bought.
+  collect 6 Cured Rugged Hide##15407 |q 9077 |tip Crafted or bought.
 step
   only Rogue
   talk Rohan the Assassin##16131
@@ -1670,7 +1830,10 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Legplates if you bring him the following: 1 Desecrated Legplates, 20 Wartorn Leather Scraps, 1 Arcanite Bar, 8 Cured Rugged Hides and 100 gold pieces.
-  collect Desecrated Legplates##22352 |q 9078 |goto Eastern Plaguelands 71.62,48.91
+  collect 1 Desecrated Legplates##22352 |q 9078/1 |tip Crafted or bought.
+  collect 20 Wartorn Leather Scrap##22373 |q 9078/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9078/3 |tip Crafted or bought.
+  collect 8 Cured Rugged Hide##15407 |q 9078 |tip Crafted or bought.
 step
   only Rogue
   talk Rohan the Assassin##16131
@@ -1682,7 +1845,10 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Helmet if you bring him the following: 1 Desecrated Helmet, 15 Wartorn Leather Scraps, 8 Cured Rugged Hides, 1 Nexus Crystal and 75 gold pieces.
-  collect Desecrated Helmet##22353 |q 9079 |goto Eastern Plaguelands 71.62,48.91
+  collect 1 Desecrated Helmet##22353 |q 9079/1 |tip Crafted or bought.
+  collect 15 Wartorn Leather Scrap##22373 |q 9079/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 8 Cured Rugged Hide##15407 |q 9079/3 |tip Crafted or bought.
+  collect 1 Nexus Crystal##20725 |q 9079 |tip Crafted or bought.
 step
   only Rogue
   talk Rohan the Assassin##16131
@@ -1694,7 +1860,10 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Pauldrons if you bring him the following: 1 Desecrated Pauldrons, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 50 gold pieces.
-  collect Desecrated Pauldrons##22354 |q 9080 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Pauldrons##22354 |q 9080/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Leather Scrap##22373 |q 9080/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 5 Cured Rugged Hide##15407 |q 9080/3 |tip Crafted or bought.
+  collect 1 Nexus Crystal##20725 |q 9080 |tip Crafted or bought.
 step
   only Rogue
   talk Rohan the Assassin##16131
@@ -1706,7 +1875,10 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Sabatons if you bring him the following: 1 Desecrated Sabatons, 12 Wartorn Leather Scraps, 3 Cured Rugged Hides, 2 Nexus Crystals and 25 gold pieces.
-  collect Desecrated Sabatons##22358 |q 9081 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Sabatons##22358 |q 9081/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Leather Scrap##22373 |q 9081/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 3 Cured Rugged Hide##15407 |q 9081/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9081 |tip Crafted or bought.
 step
   only Rogue
   talk Rohan the Assassin##16131
@@ -1718,7 +1890,10 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Gauntlets if you bring him the following: 1 Desecrated Gauntlets, 8 Wartorn Leather Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Gauntlets##22357 |q 9082 |goto Eastern Plaguelands 71.62,48.91
+  collect 1 Desecrated Gauntlets##22357 |q 9082/1 |tip Crafted or bought.
+  collect 8 Wartorn Leather Scrap##22373 |q 9082/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9082/3 |tip Crafted or bought.
+  collect 5 Cured Rugged Hide##15407 |q 9082 |tip Crafted or bought.
 step
   only Rogue
   talk Rohan the Assassin##16131
@@ -1730,7 +1905,10 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make a Bonescythe Waistguard if you bring him the following: 1 Desecrated Waistguard, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides, 1 Nexus Crystal and 15 gold pieces.
-  collect Desecrated Waistguard##22356 |q 9083 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Waistguard##22356 |q 9083/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Leather Scrap##22373 |q 9083/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 5 Cured Rugged Hide##15407 |q 9083/3 |tip Crafted or bought.
+  collect 1 Nexus Crystal##20725 |q 9083 |tip Crafted or bought.
 step
   only Rogue
   talk Rohan the Assassin##16131
@@ -1742,7 +1920,10 @@ step
 step
   only Rogue
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands will make Bonescythe Bracers if you bring him the following: 1 Desecrated Bracers, 6 Wartorn Leather Scraps, 1 Arcanite Bar, 2 Cured Rugged Hides and 10 gold pieces.
-  collect Desecrated Bracers##22355 |q 9084 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Bracers##22355 |q 9084/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Leather Scrap##22373 |q 9084/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9084/3 |tip Crafted or bought.
+  collect 2 Cured Rugged Hide##15407 |q 9084 |tip Crafted or bought.
 step
   only Rogue
   talk Rohan the Assassin##16131
@@ -1754,7 +1935,10 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make a Cryptstalker Tunic if you bring him the following: 1 Desecrated Tunic, 25 Wartorn Chain Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Tunic##22350 |q 9054 |goto Eastern Plaguelands 71.69,48.94
+  collect 1 Desecrated Tunic##22350 |q 9054/1 |tip Crafted or bought.
+  collect 25 Wartorn Chain Scrap##22374 |q 9054/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Arcanite Bar##12360 |q 9054/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9054 |tip Crafted or bought.
 step
   only Hunter
   talk Huntsman Leopold##16132
@@ -1766,7 +1950,10 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Legguards if you bring him the following: 1 Desecrated Legguards, 20 Wartorn Chain Scraps, 3 Arcanite Bars and 5 Cured Rugged Hides.
-  collect Desecrated Legguards##22359 |q 9055 |goto Eastern Plaguelands 71.69,48.94
+  collect 1 Desecrated Legguards##22359 |q 9055/1 |tip Crafted or bought.
+  collect 20 Wartorn Chain Scrap##22374 |q 9055/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 3 Arcanite Bar##12360 |q 9055/3 |tip Crafted or bought.
+  collect 5 Cured Rugged Hide##15407 |q 9055 |tip Crafted or bought.
 step
   only Hunter
   talk Huntsman Leopold##16132
@@ -1778,7 +1965,10 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make a Cryptstalker Headpiece if you bring him the following: 1 Desecrated Headpiece, 15 Wartorn Chain Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Headpiece##22360 |q 9056 |goto Eastern Plaguelands 71.69,48.94
+  collect 1 Desecrated Headpiece##22360 |q 9056/1 |tip Crafted or bought.
+  collect 15 Wartorn Chain Scrap##22374 |q 9056/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Arcanite Bar##12360 |q 9056/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9056 |tip Crafted or bought.
 step
   only Hunter
   talk Huntsman Leopold##16132
@@ -1790,7 +1980,10 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Chain Scraps, 2 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Spaulders##22361 |q 9057 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Spaulders##22361 |q 9057/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Chain Scrap##22374 |q 9057/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcanite Bar##12360 |q 9057/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9057 |tip Crafted or bought.
 step
   only Hunter
   talk Huntsman Leopold##16132
@@ -1802,7 +1995,10 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Boots##22365 |q 9058 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Boots##22365 |q 9058/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Chain Scrap##22374 |q 9058/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9058/3 |tip Crafted or bought.
+  collect 3 Nexus Crystal##20725 |q 9058 |tip Crafted or bought.
 step
   only Hunter
   talk Huntsman Leopold##16132
@@ -1814,7 +2010,10 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Handguards##22364 |q 9059 |goto Eastern Plaguelands 71.69,48.94
+  collect 1 Desecrated Handguards##22364 |q 9059/1 |tip Crafted or bought.
+  collect 8 Wartorn Chain Scrap##22374 |q 9059/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9059/3 |tip Crafted or bought.
+  collect 5 Cured Rugged Hide##15407 |q 9059 |tip Crafted or bought.
 step
   only Hunter
   talk Huntsman Leopold##16132
@@ -1826,7 +2025,10 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make a Cryptstalker Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9060 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Girdle##22363 |q 9060/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Chain Scrap##22374 |q 9060/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9060/3 |tip Crafted or bought.
+  collect 3 Nexus Crystal##20725 |q 9060 |tip Crafted or bought.
 step
   only Hunter
   talk Huntsman Leopold##16132
@@ -1838,7 +2040,10 @@ step
 step
   only Hunter
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands will make Cryptstalker Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Chain Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9061 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Wristguards##22362 |q 9061/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Chain Scrap##22374 |q 9061/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9061/3 |tip Crafted or bought.
+  collect 2 Cured Rugged Hide##15407 |q 9061 |tip Crafted or bought.
 step
   only Hunter
   talk Huntsman Leopold##16132
@@ -1850,7 +2055,10 @@ step
 step
   only Druid
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Tunic if you bring her the following: 1 Desecrated Tunic, 25 Wartorn Leather Scraps, 6 Cured Rugged Hides and 2 Nexus Crystals.
-  collect Desecrated Tunic##22350 |q 9086 |goto Eastern Plaguelands 71.41,49.35
+  collect 1 Desecrated Tunic##22350 |q 9086/1 |tip Crafted or bought.
+  collect 25 Wartorn Leather Scrap##22373 |q 9086/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 6 Cured Rugged Hide##15407 |q 9086/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9086 |tip Crafted or bought.
 step
   only Druid
   talk Rayne##16135
@@ -1862,7 +2070,10 @@ step
 step
   only Druid
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Legguards if you bring her the following: 1 Desecrated Legguards, 20 Wartorn Leather Scraps, 8 Cured Rugged Hides and 1 Nexus Crystal.
-  collect Desecrated Legguards##22359 |q 9087 |goto Eastern Plaguelands 71.41,49.35
+  collect 1 Desecrated Legguards##22359 |q 9087/1 |tip Crafted or bought.
+  collect 20 Wartorn Leather Scrap##22373 |q 9087/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 8 Cured Rugged Hide##15407 |q 9087/3 |tip Crafted or bought.
+  collect 1 Nexus Crystal##20725 |q 9087 |tip Crafted or bought.
 step
   only Druid
   talk Rayne##16135
@@ -1874,7 +2085,10 @@ step
 step
   only Druid
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Headpiece if you bring her the following: 1 Desecrated Headpiece, 15 Wartorn Leather Scraps, 6 Cured Rugged Hides and 2 Nexus Crystals.
-  collect Desecrated Headpiece##22360 |q 9088 |goto Eastern Plaguelands 71.41,49.35
+  collect 1 Desecrated Headpiece##22360 |q 9088/1 |tip Crafted or bought.
+  collect 15 Wartorn Leather Scrap##22373 |q 9088/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 6 Cured Rugged Hide##15407 |q 9088/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9088 |tip Crafted or bought.
 step
   only Druid
   talk Rayne##16135
@@ -1886,7 +2100,10 @@ step
 step
   only Druid
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Spaulders if you bring her the following: 1 Desecrated Spaulders, 12 Wartorn Leather Scraps, 5 Cured Rugged Hides and 1 Nexus Crystal.
-  collect Desecrated Spaulders##22361 |q 9089 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Spaulders##22361 |q 9089/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Leather Scrap##22373 |q 9089/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 5 Cured Rugged Hide##15407 |q 9089/3 |tip Crafted or bought.
+  collect 1 Nexus Crystal##20725 |q 9089 |tip Crafted or bought.
 step
   only Druid
   talk Rayne##16135
@@ -1898,7 +2115,10 @@ step
 step
   only Druid
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Boots if you bring her the following: 1 Desecrated Boots, 12 Wartorn Leather Scraps, 3 Mooncloth and 2 Cured Rugged Hides.
-  collect Desecrated Boots##22365 |q 9090 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Boots##22365 |q 9090/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Leather Scrap##22373 |q 9090/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 3 Mooncloth##14342 |q 9090/3 |tip Crafted or bought.
+  collect 2 Cured Rugged Hide##15407 |q 9090 |tip Crafted or bought.
 step
   only Druid
   talk Rayne##16135
@@ -1910,7 +2130,10 @@ step
 step
   only Druid
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Handguards if you bring her the following: 1 Desecrated Handguards, 8 Wartorn Leather Scraps, 5 Cured Rugged Hides and 1 Nexus Crystal.
-  collect Desecrated Handguards##22364 |q 9091 |goto Eastern Plaguelands 71.41,49.35
+  collect 1 Desecrated Handguards##22364 |q 9091/1 |tip Crafted or bought.
+  collect 8 Wartorn Leather Scrap##22373 |q 9091/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 5 Cured Rugged Hide##15407 |q 9091/3 |tip Crafted or bought.
+  collect 1 Nexus Crystal##20725 |q 9091 |tip Crafted or bought.
 step
   only Druid
   talk Rayne##16135
@@ -1922,7 +2145,10 @@ step
 step
   only Druid
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make a Dreamwalker Girdle if you bring her the following: 1 Desecrated Girdle, 8 Wartorn Leather Scraps, 3 Mooncloth and 2 Cured Rugged Hides.
-  collect Desecrated Girdle##22363 |q 9092 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Girdle##22363 |q 9092/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Leather Scrap##22373 |q 9092/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 3 Mooncloth##14342 |q 9092/3 |tip Crafted or bought.
+  collect 2 Cured Rugged Hide##15407 |q 9092 |tip Crafted or bought.
 step
   only Druid
   talk Rayne##16135
@@ -1934,7 +2160,10 @@ step
 step
   only Druid
   note Rayne at Light's Hope Chapel in the Eastern Plaguelands will make Dreamwalker Wristguards if you bring her the following: 1 Desecrated Wristguards, 6 Wartorn Leather Scraps, 1 Arcane Crystal and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9093 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Wristguards##22362 |q 9093/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Leather Scrap##22373 |q 9093/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcane Crystal##12363 |q 9093/3 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect 2 Cured Rugged Hide##15407 |q 9093 |tip Crafted or bought.
 step
   only Druid
   talk Rayne##16135
@@ -1946,7 +2175,10 @@ step
 step
   only Shaman
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make an Earthshatter Tunic if you bring him the following: 1 Desecrated Tunic, 25 Wartorn Chain Scraps, 4 Arcanite Bars and 3 Cured Rugged Hides.
-  collect Desecrated Tunic##22350 |q 9068 |goto Eastern Plaguelands 71.34,49.36
+  collect 1 Desecrated Tunic##22350 |q 9068/1 |tip Crafted or bought.
+  collect 25 Wartorn Chain Scrap##22374 |q 9068/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Arcanite Bar##12360 |q 9068/3 |tip Crafted or bought.
+  collect 3 Cured Rugged Hide##15407 |q 9068 |tip Crafted or bought.
 step
   only Shaman
   talk Rimblat Earthshatter##16134
@@ -1958,7 +2190,10 @@ step
 step
   only Shaman
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Legguards if you bring him the following: 1 Desecrated Legguards, 20 Wartorn Chain Scraps, 3 Arcanite Bars and 5 Cured Rugged Hides.
-  collect Desecrated Legguards##22359 |q 9069 |goto Eastern Plaguelands 71.34,49.36
+  collect 1 Desecrated Legguards##22359 |q 9069/1 |tip Crafted or bought.
+  collect 20 Wartorn Chain Scrap##22374 |q 9069/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 3 Arcanite Bar##12360 |q 9069/3 |tip Crafted or bought.
+  collect 5 Cured Rugged Hide##15407 |q 9069 |tip Crafted or bought.
 step
   only Shaman
   talk Rimblat Earthshatter##16134
@@ -1970,7 +2205,10 @@ step
 step
   only Shaman
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make an Earthshatter Headpiece if you bring him the following: 1 Desecrated Headpiece, 15 Wartorn Chain Scraps, 4 Arcanite Bars and 2 Nexus Crystals.
-  collect Desecrated Headpiece##22360 |q 9070 |goto Eastern Plaguelands 71.34,49.36
+  collect 1 Desecrated Headpiece##22360 |q 9070/1 |tip Crafted or bought.
+  collect 15 Wartorn Chain Scrap##22374 |q 9070/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 4 Arcanite Bar##12360 |q 9070/3 |tip Crafted or bought.
+  collect 2 Nexus Crystal##20725 |q 9070 |tip Crafted or bought.
 step
   only Shaman
   talk Rimblat Earthshatter##16134
@@ -1982,7 +2220,10 @@ step
 step
   only Shaman
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Spaulders if you bring him the following: 1 Desecrated Spaulders, 12 Wartorn Chain Scraps, 2 Arcanite Bars and 2 Mooncloth.
-  collect Desecrated Spaulders##22361 |q 9071 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 1 Desecrated Spaulders##22361 |q 9071/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Grobbulus, Gluth, Patchwerk
+  collect 12 Wartorn Chain Scrap##22374 |q 9071/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 2 Arcanite Bar##12360 |q 9071/3 |tip Crafted or bought.
+  collect 2 Mooncloth##14342 |q 9071 |tip Crafted or bought.
 step
   only Shaman
   talk Rimblat Earthshatter##16134
@@ -1994,7 +2235,10 @@ step
 step
   only Shaman
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Boots if you bring him the following: 1 Desecrated Boots, 12 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Boots##22365 |q 9072 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 1 Desecrated Boots##22365 |q 9072/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Gothik the Harvester, Instructor Razuvious
+  collect 12 Wartorn Chain Scrap##22374 |q 9072/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9072/3 |tip Crafted or bought.
+  collect 3 Nexus Crystal##20725 |q 9072 |tip Crafted or bought.
 step
   only Shaman
   talk Rimblat Earthshatter##16134
@@ -2006,7 +2250,10 @@ step
 step
   only Shaman
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Handguards if you bring him the following: 1 Desecrated Handguards, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 5 Cured Rugged Hides.
-  collect Desecrated Handguards##22364 |q 9073 |goto Eastern Plaguelands 71.34,49.36
+  collect 1 Desecrated Handguards##22364 |q 9073/1 |tip Crafted or bought.
+  collect 8 Wartorn Chain Scrap##22374 |q 9073/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9073/3 |tip Crafted or bought.
+  collect 5 Cured Rugged Hide##15407 |q 9073 |tip Crafted or bought.
 step
   only Shaman
   talk Rimblat Earthshatter##16134
@@ -2018,7 +2265,10 @@ step
 step
   only Shaman
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make an Earthshatter Girdle if you bring him the following: 1 Desecrated Girdle, 8 Wartorn Chain Scraps, 1 Arcanite Bar and 3 Nexus Crystals.
-  collect Desecrated Girdle##22363 |q 9074 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 1 Desecrated Girdle##22363 |q 9074/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Heigan the Unclean, Noth the Plaguebringer
+  collect 8 Wartorn Chain Scrap##22374 |q 9074/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9074/3 |tip Crafted or bought.
+  collect 3 Nexus Crystal##20725 |q 9074 |tip Crafted or bought.
 step
   only Shaman
   talk Rimblat Earthshatter##16134
@@ -2030,7 +2280,10 @@ step
 step
   only Shaman
   note Rimblat Earthshatter at Light's Hope Chapel in the Eastern Plaguelands will make Earthshatter Wristguards if you bring him the following: 1 Desecrated Wristguards, 6 Wartorn Chain Scraps, 1 Arcanite Bar and 2 Cured Rugged Hides.
-  collect Desecrated Wristguards##22362 |q 9075 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 1 Desecrated Wristguards##22362 |q 9075/1 |goto Naxxramas - Dungeon -1,-1 |raid |tip {dropsfrom}Gluth, Grand Widow Faerlina, Anub'Rekhan
+  collect 6 Wartorn Chain Scrap##22374 |q 9075/2 |goto Naxxramas - Dungeon -1,-1 |elite |tip {dropsfrom}Surgical Assistant, Dread Creeper, Carrion Spinner
+  collect 1 Arcanite Bar##12360 |q 9075/3 |tip Crafted or bought.
+  collect 2 Cured Rugged Hide##15407 |q 9075 |tip Crafted or bought.
 step
   only Shaman
   talk Rimblat Earthshatter##16134
@@ -2040,7 +2293,9 @@ step
   accept The Only Song I Know...##9232 |goto Eastern Plaguelands 71.24,49.9
 step
   note Craftsman Wilhelm at Light's Hope Chapel in the Eastern Plaguelands wants you to bring him 2 Frozen Runes, 2 Essence of Water, 2 Blue Sapphires and 30 gold pieces.
-  collect Frozen Rune##22682 |q 9232 |goto Naxxramas - Dungeon -1,-1
+  collect 2 Frozen Rune##22682 |q 9232/1 |goto Naxxramas - Dungeon -1,-1
+  collect 2 Essence of Water##7080 |q 9232/2 |goto Felwood 48.91,24.66 |tip {dropsfrom}Toxic Horror
+  collect 2 Blue Sapphire##12361 |q 9232 |goto Western Plaguelands 47.11,50.51 |tip {dropsfrom}Skeletal Terror, Scarlet Worker, Blighted Zombie
 step
   talk Craftsman Wilhelm##16376
   turnin The Only Song I Know...##9232 |goto Eastern Plaguelands 71.24,49.9

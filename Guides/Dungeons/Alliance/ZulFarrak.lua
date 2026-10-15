@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Zul'Farrak", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "23105c6d",
+	rev = "3cafd5d1",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -32,13 +32,15 @@ step
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
 step
   note Bring 5 Uncracked Scarab Shells to Tran'rek in Gadgetzan.
-  collect 5 Uncracked Scarab Shell##9238 |q 2865 |goto Zul'Farrak - Dungeon -1,-1 |tip {dropsfrom}Scarab
+  collect 5 Uncracked Scarab Shell##9238 |q 2865 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Scarab
 step
   note Bring 20 Vials of Troll Temper to Trenton Lighthammer in Gadgetzan.
-  collect 20 Troll Temper##9523 |q 3042 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Sandfury Shadowcaster, Sandfury Blood Drinker, Sandfury Witch Doctor
+  collect 20 Troll Temper##9523 |q 3042 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Zul'Farrak Dead Hero, Sandfury Shadowcaster, Sandfury Blood Drinker
 step
   note Check the cages at the two Witherbark villages, then return to Gryphon Master Talonaxe.
-  collect First Witherbark Cage##144066 |q 2988 |goto The Hinterlands 23.28,58.81
+  click First Witherbark Cage##144066 |q 2988/1 |goto The Hinterlands 23.28,58.81
+  click Second Witherbark Cage##144067 |q 2988/2 |goto The Hinterlands 23.13,58.82
+  click Third Witherbark Cage##144068 |q 2988 |goto The Hinterlands 31.99,57.31
 step
   note Bring the Tiara of the Deep to Tabetha in Dustwallow Marsh.
   collect Tiara of the Deep##9234 |q 2846 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Hydromancer Velratha
@@ -47,7 +49,7 @@ step
   collect Divino-matic Rod##8548 |q 2768 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Sergeant Bly
 step
   note Bring Gahz'rilla's Electrified Scale to Wizzle Brassbolts in the Shimmering Flats.
-  collect Gahz'rilla's Electrified Scale##8707 |q 2770 |goto Zul'Farrak - Dungeon -1,-1 |tip {dropsfrom}Gahz'rilla
+  collect Gahz'rilla's Electrified Scale##8707 |q 2770 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Gahz'rilla
 step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
@@ -77,12 +79,14 @@ step
   accept The Altar of Zul##2989 |goto The Hinterlands 9.75,44.47
 step
   note Bring the First and Second Mosh'aru Tablets to Yeh'kinya in Tanaris.
-  collect First Mosh'aru Tablet##10660 |q 3527 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Theka the Martyr, Theka the Martyr Shapeshift
+  collect First Mosh'aru Tablet##10660 |q 3527 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Theka the Martyr
+step
+  note Check the top of the Altar of Zul, then return to Gryphon Master Talonaxe.
+  goto The Hinterlands 48.98,68.66 |tip Search the Altar of Zul
 step
   talk Yeh'kinya##8579
   turnin The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36
 step
-  note Check the top of the Altar of Zul, then return to Gryphon Master Talonaxe.
   talk Gryphon Master Talonaxe##5636
   turnin The Altar of Zul##2989 |goto The Hinterlands 9.75,44.47
 step

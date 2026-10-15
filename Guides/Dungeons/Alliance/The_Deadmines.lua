@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Deadmines", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "7301f5b2",
+	rev = "0a63880f",
 }, [[
 step
   talk Wilder Thistlenettle##656
@@ -26,14 +26,14 @@ step
   accept The Unsent Letter##373 |goto The Deadmines - Dungeon -1,-1
 step
   note Retrieve 4 Miners' Union Cards and return them to Wilder Thistlenettle in Stormwind.
-  kill Skeletal Miner##623 |goto Westfall 41.61,81.67 |elite
+  kill Skeletal Miner##623 |q 168 |goto Westfall 41.61,81.67 |elite
   collect 4 Miners' Union Card##1894 |q 168 |goto Westfall 41.61,81.67
 step
   note Retrieve the Gnoam Sprecklesprocket from the Deadmines and return it to Shoni the Shilent in Stormwind.
   collect Gnoam Sprecklesprocket##7365 |q 2040 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Sneed's Shredder
 step
   note Bring Foreman Thistlenettle's Explorers' League Badge to Wilder Thistlenettle in Stormwind.
-  kill Foreman Thistlenettle##626 |goto Westfall 42.22,82.61 |elite
+  kill Foreman Thistlenettle##626 |q 167 |goto Westfall 42.22,82.61 |elite
   collect Thistlenettle's Badge##1875 |q 167 |goto Westfall 42.22,82.61
 step
   talk Wilder Thistlenettle##656
@@ -91,6 +91,8 @@ step
   accept The Defias Brotherhood##155 |goto Westfall 55.68,47.5
 step
   note Escort the Defias Traitor to the secret hideout of the Defias Brotherhood. Once the Defias Traitor shows you where VanCleef and his men are hiding out, return to Gryan Stoutmantle with the information.
+  goto Westfall 42.55,71.53 |tip Escort The Defias Traitor to discover where VanCleef is hiding
+step
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##155 |goto Westfall 56.33,47.52
 step
@@ -101,7 +103,7 @@ step
   accept The Defias Brotherhood##166 |goto Westfall 56.33,47.52
 step
   note Scout Riell at the Sentinel Hill Tower wants you to bring her 10 Red Silk Bandanas.
-  collect Red Silk Bandana##915 |q 214 |goto The Deadmines - Dungeon -1,-1 |tip {dropsfrom}Defias Henchman, Defias Miner, Defias Conjurer
+  collect 10 Red Silk Bandana##915 |q 214 |goto Westfall 42.82,76.47 |tip {dropsfrom}Defias Digger, Defias Henchman, Defias Conjurer
 step
   note Kill Edwin VanCleef and bring his head to Gryan Stoutmantle.
   collect Head of VanCleef##3637 |q 166 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Edwin VanCleef

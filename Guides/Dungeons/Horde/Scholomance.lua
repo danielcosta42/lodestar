@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Scholomance", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "986dac2a",
+	rev = "0ae345c1",
 }, [[
 step
   talk Tinkee Steamboil##10267
@@ -35,7 +35,8 @@ step
 step
   only Shaman
   note If you are interested in helping Sagorne Crestrider in Orgrimmar's Valley of Wisdom, bring him an Azerothian Diamond and a Pristine Black Diamond.
-  collect Azerothian Diamond##12800 |q 7667 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Cliff Breaker, Anubisath Guardian, Small Thorium Vein
+  collect Azerothian Diamond##12800 |q 7667/1 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect Pristine Black Diamond##18335 |q 7667 |goto Alterac Valley 52.39,7.78 |tip {dropsfrom}Morloch, Frostwolf Legionnaire, Lieutenant Rugba
 step
   note Venture to the Scholomance and recover the Barov family fortune. Four deeds make up this fortune: The Deed to Caer Darrow; The Deed to Brill; The Deed to Tarren Mill; and The Deed to Southshore. Return to Alexi Barov when you have completed this task.
   collect The Deed to Brill##13471 |q 5341 |goto Scholomance - Dungeon -1,-1
@@ -122,6 +123,7 @@ step
 step
   only Warlock
   note Purchase Xorothian Stardust from Ur'dan. Bring it to Gorzeeki Wildeyes in the Burning Steppes.
+  talk Ur'dan##14522
   buy Xorothian Stardust##18687 |q 7625 |goto Felwood 36.18,44.46
 step
   talk Felnok Steelspring##10468
@@ -169,7 +171,7 @@ step
   accept The Dying, Ras Frostwhisper##5462 |goto Western Plaguelands 70.57,74.11
 step
   note Use the Eggscilloscope Prototype on an egg in the Rookery.
-  collect Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
+  click Rookery Egg##175124 |q 4734 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Tinkee Steamboil##10267
   turnin Egg Freezing##4734 |goto Burning Steppes 65.24,24
@@ -185,7 +187,7 @@ step
   accept Menethil's Gift##5463 |goto Eastern Plaguelands 71.89,48.29
 step
   note Bring 8 Collected Dragon Eggs and the Collectronic Module to Tinkee Steamboil at Flame Crest in the Burning Steppes.
-  collect Rookery Egg##175124 |q 4735 |goto Blackrock Spire - Dungeon -1,-1
+  click Rookery Egg##175124 |q 4735 |goto Blackrock Spire - Dungeon -1,-1
 step
   talk Tinkee Steamboil##10267
   turnin Egg Collection##4735 |goto Burning Steppes 65.24,24

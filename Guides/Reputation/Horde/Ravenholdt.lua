@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Ravenholdt", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "01ac3868",
+	rev = "709e2404",
 }, [[
 step
   only Rogue
@@ -37,7 +37,7 @@ step
 step
   only Rogue
   note Steal Barton's Scouting Report by pickpocketing it from him. Then, bring the report to Myrokos Silentform at Ravenholdt Manor.
-  kill Barton##266357 |goto Alterac Mountains 62.59,46.86
+  kill Barton##266357 |q 96781 |goto Alterac Mountains 62.59,46.86
   collect Barton's Scouting Report##275482 |q 96781 |goto Alterac Mountains 62.59,46.86
 step
   only Rogue
@@ -59,7 +59,7 @@ step
 step
   only Rogue
   note Retrieve the Sealed Azure Bag from the Timbermaw Shaman in Azshara. Then take the bag to Archmage Xylem, also found in Azshara.
-  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.78,22.51 |tip {dropsfrom}Timbermaw Shaman, Blackmaw Shaman
+  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.78,22.51 |tip {dropsfrom}Timbermaw Shaman
 step
   only Rogue
   talk Archmage Xylem##8379
@@ -94,7 +94,7 @@ step
   accept Syndicate Emblems##6701 |goto Alterac Mountains 84.59,78.71
 step
   only Rogue
-  collect Syndicate Emblem##17124 |q 6701 |goto Alterac Mountains 39.62,15.8 |tip {dropsfrom}Syndicate Assassin, Syndicate Conjuror, Syndicate Footpad
+  collect Syndicate Emblem##17124 |q 6701 |goto Alterac Mountains 39.62,15.8 |tip {dropsfrom}Syndicate Assassin, Syndicate Footpad, Syndicate Spy
 step
   only Rogue
   talk Ravenholdt Guard##6766
@@ -103,7 +103,7 @@ step
   talk Fahrad##6707
   accept Junkboxes Needed##8249 |goto Alterac Mountains 84.45,80.32
 step
-  collect Heavy Junkbox##16885 |q 8249 |goto Dustwallow Marsh 66.82,50.1 |tip {dropsfrom}Theramore Guard, Irondeep Trogg, Irondeep Skullthumper
+  collect Heavy Junkbox##16885 |q 8249 |goto Dustwallow Marsh 66.82,50.1 |tip {dropsfrom}Theramore Guard
 step
   talk Fahrad##6707
   turnin Junkboxes Needed##8249 |goto Alterac Mountains 84.45,80.32

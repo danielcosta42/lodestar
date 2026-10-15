@@ -217,21 +217,55 @@ def itens(raw, quests):
     for q in quests.values():
         precisa.update(q["objItems"])
         precisa.update(q["startItems"])
+        if q.get("sourceItem"):          # o nome: "Bring a Timberling Seed" é entregar o que ela dá
+            precisa.add(q["sourceItem"])
+    # item montado de pedaços: Pamela's Doll sai de "Pamela's Doll's Head", "...'s Left Side"...
+    possessivos = [(v.get(1), k) for k, v in raw.items() if "'s " in (v.get(1) or "")]
     out = {}
-    for iid in sorted(precisa):
+
+    def le(iid):
         it = raw.get(iid)
         if not it:
-            continue
-        e = {"name": it.get(1)}
+            return None
+        # 12 = item de quest; 7, 2, 0... de ofício. 9 = nível do item: 1 é o que a quest faz
+        # (montado, convertido, recompensa), não o que se fabrica (Bronze Bar 20, Frost Oil 40)
+        e = {"name": it.get(1), "class": it.get(12, 0), "nivel": it.get(9, 0)}
         npc, obj, ven = ids(it.get(2)), ids(it.get(3)), ids(it.get(14))
+        # todas as fontes: com só as 3 primeiras, Boar Intestines não caía em Loch Modan e o
+        # guia de lá mandava a Westfall (o roteador escolhe a fonte da zona do guia)
         if npc:
-            e["npc"] = npc[:3]
+            e["npc"] = npc
         if obj:
-            e["obj"] = obj[:3]
+            e["obj"] = obj
         if ven:
-            e["vendor"] = ven[:2]
+            e["vendor"] = ven
+        rec = ids(it.get(6))           # quests que dão o item de recompensa
+        if rec:
+            e["recompensa"] = rec
+        return e
+
+    for iid in sorted(precisa):
+        e = le(iid)
+        if not e:
+            continue
+        if not (e.get("npc") or e.get("obj") or e.get("vendor")) and e["name"]:
+            partes = sorted(k for n, k in possessivos if n.startswith(e["name"] + "'s "))
+            for p in partes:
+                if p not in out:
+                    out[p] = le(p)
+            partes = [p for p in partes if out[p].get("npc") or out[p].get("obj") or out[p].get("vendor")]
+            if partes:
+                e["partes"] = partes
         out[iid] = e
     return out
+
+
+def xp(pasta=PADRAO):
+    """XP-base de cada quest, {id: [nível, xp]}: o `support/Forever/QuestXP` que o QuestieDB
+    gera do cliente (o Questie mostra a XP com ele). Quest nova do Forever quase não tem."""
+    p = os.path.join(pasta, "support", "Forever", "QuestXP", "xpDB-classic.lua")
+    txt = open(p, encoding="utf-8").read()
+    return {int(i): [int(n), int(x)] for i, n, x in re.findall(r"^\s*\[(\d+)\] = \{(\d+), (\d+)\}", txt, re.M)}
 
 
 def carrega(pasta=PADRAO):
@@ -246,6 +280,7 @@ def carrega(pasta=PADRAO):
         "objects": build_objects(raw["Object"]),
         "items": itens(raw["Item"], quests),
         "zones": zonas(pasta),
+        "xp": xp(pasta),
     }
     banco["versao"] = meta.get("Version", "?")
     # Ida e volta pelo JSON: chave vira string em todos os níveis, como no
@@ -273,6 +308,8 @@ def demo(pasta=PADRAO):
     assert k["objCreatures"] == [6] and k["preSingle"] == [783], k
     assert k["faction"] == "A" and k["zoneOrSort"] == 9, k     # Northshire Valley
     assert npcs["197"]["spawns"] == {"12": [[48.92, 41.61]]}, npcs["197"]
+    assert k["trigger"] is None and q["62"]["trigger"] == ["Scout through the Fargodeep Mine",
+                                                           {"12": [[40.56, 82.26]]}], q["62"]["trigger"]
 
     w = q["94489"]                                    # The Wounds of Betrayal
     assert w["zoneOrSort"] == 16593 and w["startNpcs"] == [257944], w
@@ -282,6 +319,7 @@ def demo(pasta=PADRAO):
     assert s["faction"] == "H", s["faction"]          # Horda + Skyborne da Horda (2^33)
 
     assert zonas_["16593"] == {"uiMapId": 2521, "name": "Zephras Isle"}, zonas_["16593"]
+    assert b["xp"]["7"] == [2, 170] and b["xp"]["363"] == [1, 40], "XP de quest"   # Kobold Camp Cleanup, Rude Awakening
     assert zonas_["2017"]["name"] == "Stratholme - Dungeon", zonas_["2017"]
     assert zonas_["16544"] == {"uiMapId": 0, "name": "City of Dalaran - Dungeon"}, zonas_["16544"]
     assert "16622" not in zonas_, "subzona virou zona"

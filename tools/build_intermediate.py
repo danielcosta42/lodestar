@@ -61,6 +61,13 @@ def first_of_each(tbl):
     return out
 
 
+def trigger_of(tbl):
+    """{1: texto, 2: {[zona]={{x,y},...}}} -> [texto, {zona: [[x,y],...]}] ou None."""
+    if not isinstance(tbl, dict) or not spawns_of(tbl.get(2)):
+        return None
+    return [tbl.get(1) if isinstance(tbl.get(1), str) else "", spawns_of(tbl.get(2))]
+
+
 def spawns_of(tbl):
     """{[zoneID]={{x,y},...}} -> {zoneID: [[x,y],...]}"""
     out = {}
@@ -107,6 +114,12 @@ def build_quests(raw):
             "objObjects": first_of_each(objectives.get(2)),
             "objItems": first_of_each(objectives.get(3)),
             "objText": [t for t in (q.get(8) or {}).values() if isinstance(t, str)],
+            # triggerEnd: explorar/escoltar um lugar — [texto, {zona: [[x,y],...]}]; sem
+            # objetivo de criatura/item/objeto, é o único "onde" da quest
+            "trigger": trigger_of(q.get(9)),
+            # o item que a quest entrega no aceite ("Bring a Timberling Seed to..."): trazer esse
+            # é entrega, não coleta
+            "sourceItem": q.get(11) if isinstance(q.get(11), int) else None,
             # profissão exigida [skillId, valor] — nem todo jogador pode pegar
             "reqSkill": [q[18].get(1), q[18].get(2)] if isinstance(q.get(18), dict) else None,
             "repReward": [[o.get(1), o.get(2)] for o in (q.get(26) or {}).values()

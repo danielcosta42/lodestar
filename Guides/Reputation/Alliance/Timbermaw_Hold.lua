@@ -4,13 +4,15 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Timbermaw Hold", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "6512177d",
+	rev = "0c69a8cc",
 }, [[
 step
   talk Grazle##11554
   accept Timbermaw Ally##8460 |goto Felwood 50.93,85.01
 step
   note Grazle wants you to prove yourself by killing 6 Deadwood Warriors, 6 Deadwood Pathfinders, and 6 Deadwood Gardeners. Return to him in southern Felwood near the Emerald Sanctuary when you are done.
+  kill Deadwood Pathfinder##7155 |q 8460/2 |goto Felwood 48.3,89.46
+  kill Deadwood Gardener##7154 |q 8460/3 |goto Felwood 48.42,89.84
   kill Deadwood Warrior##7153 |q 8460 |goto Felwood 48.39,91.4
 step
   talk Grazle##11554
@@ -20,7 +22,7 @@ step
   accept Runecloth##6031 |goto Felwood 65.69,2.81
 step
   note Bring 30 Runecloth to Meilosh in Timbermaw Hold.
-  collect 30 Runecloth##14047 |q 6031 |goto Felwood 65.69,2.81 |tip {dropsfrom}Heavy Fel Iron Chest, Adamantite Bound Chest, Felsteel Chest
+  collect 30 Runecloth##14047 |q 6031 |goto Felwood 65.69,2.81 |tip {dropsfrom}humanoids
 step
   talk Meilosh##11557
   turnin Runecloth##6031 |goto Felwood 65.69,2.81
@@ -29,7 +31,7 @@ step
   accept Sacred Cloth##6032 |goto Felwood 65.69,2.81
 step
   note Bring 2 Mooncloth to Meilosh in Timbermaw Hold.
-  collect 2 Mooncloth##14342 |q 6032 |goto Felwood 65.69,2.81
+  collect 2 Mooncloth##14342 |q 6032 |goto Felwood 65.69,2.81 |tip Crafted or bought.
 step
   talk Meilosh##11557
   turnin Sacred Cloth##6032 |goto Felwood 65.69,2.81
@@ -45,7 +47,9 @@ step
   accept Deadwood of the North##8461 |goto Felwood 64.77,8.13
 step
   note Nafien would like you to kill 6 Deadwood Den Watchers, 6 Deadwood Avengers, and 6 Deadwood Shamans. Return to him in northern Felwood near the entrance to Timbermaw Hold.
-  kill Deadwood Den Watcher##7156 |q 8461 |goto Felwood 62.76,8.01
+  kill Deadwood Den Watcher##7156 |q 8461/1 |goto Felwood 62.76,8.01
+  kill Deadwood Avenger##7157 |q 8461/2 |goto Felwood 62.67,8.45
+  kill Deadwood Shaman##7158 |q 8461 |goto Felwood 62.63,11.22
 step
   talk Nafien##15395
   turnin Deadwood of the North##8461 |goto Felwood 64.77,8.13
@@ -91,6 +95,8 @@ step
   accept Winterfall Activity##8464 |goto Winterspring 27.73,34.5
 step
   note Salfa wants you to kill 8 Winterfall Shaman, 8 Winterfall Den Watchers, and 8 Winterfall Ursa. Salfa is located just outside the entrance to Timbermaw Hold in Winterspring.
+  kill Winterfall Den Watcher##7440 |q 8464/2 |goto Winterspring 66.54,35.92
+  kill Winterfall Ursa##7438 |q 8464/3 |goto Winterspring 66.66,37.07
   kill Winterfall Shaman##7439 |q 8464 |goto Winterspring 67.86,38.06
 step
   talk Salfa##11556
@@ -99,7 +105,7 @@ step
   talk Salfa##11556
   accept Beads for Salfa##8469 |goto Winterspring 27.73,34.5
 step
-  collect Winterfall Spirit Beads##21383 |q 8469 |goto Winterspring 66.66,37.07 |tip {dropsfrom}Winterfall Ursa, Winterfall Shaman, Winterfall Den Watcher
+  collect Winterfall Spirit Beads##21383 |q 8469 |goto Winterspring 67.86,38.06 |tip {dropsfrom}Winterfall Shaman, Winterfall Den Watcher, Winterfall Totemic
 step
   talk Salfa##11556
   turnin Beads for Salfa##8469 |goto Winterspring 27.73,34.5
@@ -108,7 +114,11 @@ step
   accept The Root of All Evil##8481 |goto Felwood 65.18,2.68
 step
   note Plant the Demon Summoning Torch in the mouth of High Chief Winterfall's cave in the Winterfall furbolg village. Defeat the demon and retrieve the Essence of Xandivious for Gorn One Eye in Timbermaw Hold.
-  collect Essence of Xandivious##21145 |q 8481 |goto Felwood 65.18,2.68 |tip {dropsfrom}Xandivious' Demon Bag
+  kill Xandivious##15623 |elite
+  goto Winterspring 69.56,38.31
+step
+  note Plant the Demon Summoning Torch in the mouth of High Chief Winterfall's cave in the Winterfall furbolg village. Defeat the demon and retrieve the Essence of Xandivious for Gorn One Eye in Timbermaw Hold.
+  collect Essence of Xandivious##21145 |q 8481 |goto Winterspring 69.56,38.31 |tip {dropsfrom}Xandivious' Demon Bag
 step
   talk Gorn One Eye##11555
   turnin The Root of All Evil##8481 |goto Felwood 65.18,2.68

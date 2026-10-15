@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Shaman", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "73e6ac06",
+	rev = "8dab069c",
 }, [[
 step
   talk Gornek##3143
@@ -225,7 +225,8 @@ step
 step
   only not Undead not Tauren not Skyborne Shaman
   note Bring 1 Fire Tar and 1 Reagent Pouch to Telf Joolam in Durotar.
-  collect 1 Fire Tar##5026 |q 1525 |goto The Barrens 54.94,26.74 |tip {dropsfrom}Razormane Water Seeker, Razormane Thornweaver, Razormane Geomancer
+  collect 1 Fire Tar##5026 |q 1525/1 |goto The Barrens 54.94,26.74 |tip {dropsfrom}Razormane Water Seeker, Razormane Thornweaver, Razormane Geomancer
+  collect 1 Reagent Pouch##6652 |q 1525 |goto Durotar 52.67,25.36 |tip {dropsfrom}Burning Blade Cultist
 step
   only not Undead not Tauren not Skyborne Shaman
   talk Telf Joolam##5900
@@ -278,7 +279,8 @@ step
 step
   only Skyborne Shaman
   note Wait for Olariaan to begin the ritual at the Brazier of Offering and follow his instructions.
-  talk Brazier of Offering##268762 |q 97257 |goto Zephras Isle 51.2,85.9
+  talk Brazier of Offering##268762 |q 97257/1 |goto Zephras Isle 51.2,85.9
+  talk Brazier of Eternal Flame##268679 |q 97257 |goto Zephras Isle 58.35,78.84
 step
   only Skyborne Shaman
   talk Sessaria Skystride##252382
@@ -290,7 +292,7 @@ step
 step
   only not Undead not Tauren not Skyborne Shaman
   note Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame.
-  collect Glowing Ember##6655 |q 1526 |goto Durotar 38.72,58.29 |tip {dropsfrom}Minor Manifestation of Fire, Manifestation of Flames
+  collect Glowing Ember##6655 |q 1526 |goto Durotar 38.72,58.29 |tip {dropsfrom}Minor Manifestation of Fire
 step
   only not Undead not Tauren not Skyborne Shaman
   turnin Call of Fire##1526 |goto Durotar 38.96,58.22
@@ -401,7 +403,8 @@ step
 step
   only Shaman
   note Bring a Water Sapta to Tiev Mordune in Silverpine Forest if you failed to speak to the Minor Manifestation of Water.
-  buy Water Sapta##6637 |q 1103 |goto The Barrens 65.83,43.78
+  talk Islen Waterseer##5901
+  collect Water Sapta##6637 |q 1103 |goto The Barrens 65.83,43.78
 step
   only Shaman
   talk Tiev Mordune##7007
@@ -443,7 +446,8 @@ step
 step
   only not Undead not Skyborne Shaman
   note Defeat 7 Defias Night Blades and 7 Defias Enchanters in Addle's Stead then return to Sirra Von'Indi in Darkshire for more information.
-  kill Defias Night Blade##909 |q 79363 |goto Duskwood 23.37,73.31
+  kill Defias Night Blade##909 |q 79363/1 |goto Duskwood 23.37,73.31
+  kill Defias Enchanter##910 |q 79363 |goto Duskwood 23.65,71.95
 step
   only not Undead not Skyborne Shaman
   talk Bath'rah the Windwatcher##6176
@@ -488,27 +492,33 @@ step
   talk Prate Cloudseer##5905
   turnin Eyes on the Sky##79364 |goto Thousand Needles 53.54,42.65
 step
-  only not Undead not Skyborne Shaman
+  only not Undead not Skyborne Shaman not completed(79358) not haveq(79358)
   talk Bath'rah the Windwatcher##6176
   accept Storm, Earth, and Fire##79361 |goto Alterac Mountains 80.5,66.92
 step
-  only not Undead not Skyborne Shaman
+  only not Undead not Skyborne Shaman not completed(79358) not haveq(79358)
   note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Prate Cloudseer in Thousand Needles.
+  collect 5 Twisted Water Totem##274046 |q 79361/1 |goto Dustwallow Marsh 57.6,21.6 |tip {dropsfrom}Mirefin Puddlejumper, Mirefin Murloc, Mirefin Warrior
+  collect 5 Twisted Earth Totem##274045 |q 79361/2 |goto Swamp of Sorrows 49,31.9 |tip {dropsfrom}Lost One Mudlurker, Lost One Fisherman, Lost One Hunter
+  collect 5 Twisted Fire Totem##274044 |q 79361/3 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Bonesnapper, Stonevault Shaman
   collect 5 Twisted Air Totem##274047 |q 79361 |goto Desolace 35.28,61.41 |tip {dropsfrom}Maraudine Wrangler, Maraudine Mauler, Maraudine Windchaser
 step
-  only not Undead not Skyborne Shaman
+  only not Undead not Skyborne Shaman not completed(79358) not haveq(79358)
   talk Bath'rah the Windwatcher##6176
   turnin Storm, Earth, and Fire##79361 |goto Alterac Mountains 80.5,66.92
 step
-  only Shaman
+  only not Orc not Tauren not Troll Shaman not completed(79361) not haveq(79361)
   talk Veyric Thunderhame##259023
   accept Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.77,27.6
 step
-  only Shaman
+  only not Orc not Tauren not Troll Shaman not completed(79361) not haveq(79361)
   note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Veyric Thunderhame in Arathi Highlands.
-  collect 5 Twisted Fire Totem##274044 |q 79358 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Skullthumper, Stonevault Bonesnapper, Stonevault Shaman
+  collect 5 Twisted Fire Totem##274044 |q 79358/1 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Bonesnapper, Stonevault Shaman
+  collect 5 Twisted Air Totem##274047 |q 79358/2 |goto Desolace 35.28,61.41 |tip {dropsfrom}Maraudine Wrangler, Maraudine Mauler, Maraudine Windchaser
+  collect 5 Twisted Earth Totem##274045 |q 79358/3 |goto Swamp of Sorrows 49,31.9 |tip {dropsfrom}Lost One Mudlurker, Lost One Fisherman, Lost One Hunter
+  collect 5 Twisted Water Totem##274046 |q 79358 |goto Dustwallow Marsh 57.6,21.6 |tip {dropsfrom}Mirefin Puddlejumper, Mirefin Murloc, Mirefin Warrior
 step
-  only Shaman
+  only not Orc not Tauren not Troll Shaman not completed(79361) not haveq(79361)
   talk Rau Cliffrunner##4722
   turnin Storm, Earth, and Fire##79358 |goto Thousand Needles 46.14,51.71
 step
@@ -536,7 +546,10 @@ step
 step
   only Shaman not completed(8411) not haveq(8411)
   note Collect a sample of air, fire, earth and water for Bath'rah the Windwatcher.
-  collect Elemental Air##7069 |q 8410 |goto Westfall 45.61,49.32 |tip {dropsfrom}Dust Devil, Thundering Exile, Cyclonian
+  collect Elemental Air##7069 |q 8410/1 |goto Westfall 45.61,49.32 |tip {dropsfrom}Dust Devil
+  collect Elemental Fire##7068 |q 8410/2 |goto Arathi Highlands 25.81,30.65 |tip {dropsfrom}Burning Exile
+  collect Elemental Earth##7067 |q 8410/3 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Lesser Rock Elemental, Greater Rock Elemental
+  collect Elemental Water##7070 |q 8410 |goto Stranglethorn Vale 21.01,23.12 |tip {dropsfrom}Lesser Water Elemental
 step
   only Shaman not completed(8411) not haveq(8411)
   talk Bath'rah the Windwatcher##6176
@@ -581,7 +594,8 @@ step
 step
   only Shaman
   note If you are interested in helping Sagorne Crestrider in Orgrimmar's Valley of Wisdom, bring him an Azerothian Diamond and a Pristine Black Diamond.
-  collect Azerothian Diamond##12800 |q 7667 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Cliff Breaker, Anubisath Guardian, Small Thorium Vein
+  collect Azerothian Diamond##12800 |q 7667/1 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect Pristine Black Diamond##18335 |q 7667 |goto Alterac Valley 52.39,7.78 |tip {dropsfrom}Morloch, Frostwolf Legionnaire, Lieutenant Rugba
 step
   only Shaman
   talk Sagorne Creststrider##13417
@@ -630,7 +644,10 @@ step
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
+  collect 1 Delicate Arcanite Converter##16006 |q 8921/1 |tip Crafted or bought.
+  collect 4 Greater Eternal Essence##16203 |q 8921/2 |tip Crafted or bought.
+  collect 10 Stonescale Oil##13423 |q 8921/3 |tip Crafted or bought.
+  collect 25 Volcanic Ash##22338 |q 8921 |goto Burning Steppes 60.12,40.36
 step
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
@@ -639,7 +656,9 @@ step
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Scorched Ectoplasm##21937 |q 8924/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Frozen Ectoplasm##21936 |q 8924/2 |goto Winterspring 53.58,43.48 |tip {dropsfrom}Suffering Highborne, Anguished Highborne
+  collect 12 Stable Ectoplasm##21935 |q 8924 |goto Eastern Plaguelands 52.9,55.8 |tip {dropsfrom}Unseen Servant, Eyeless Watcher, Torn Screamer
 step
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
@@ -657,6 +676,7 @@ step
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
+  talk Vi'el##16015
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
   talk Mux Manascrambler##16014
@@ -675,7 +695,7 @@ step
 step
   only Shaman
   note Bring a Cord of Elements and a set of Gauntlets of Elements to Mokvar in Orgrimmar.
-  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Warlock, Firebrand Invoker, Scarshield Quartermaster
+  collect Cord of Elements##16673 |q 8942 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
 step
   only Shaman
   talk Mokvar##16012
@@ -708,7 +728,11 @@ step
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
 step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
+  collect 3 Dark Iron Bar##11371 |q 8947/1 |tip Crafted or bought.
+  talk Lhara##14846
+  collect 20 Enchanted Leather##12810 |q 8947/2 |goto Elwynn Forest 41.2,69.9
+  collect 3 Mooncloth##14342 |q 8947/3 |tip Crafted or bought.
+  collect 4 Cured Rugged Hide##15407 |q 8947 |tip Crafted or bought.
 step
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
@@ -724,7 +748,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Feralas 59.7,42.73 |tip {dropsfrom}Gordok Enforcer, Gordok Mauler, Gordok Ogre-Mage
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -733,7 +757,9 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 1 Jeering Spectre's Essence##22224 |q 8950/1 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 4 Dark Rune##20520 |q 8950/2 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Scholomance Necromancer, Lady Illucia Barov, Instructor Malicia
+  collect 8 Large Brilliant Shard##14344 |q 8950 |tip Crafted or bought.
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -770,7 +796,12 @@ step
   accept Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
-  collect Incendicite of Incendius##21987 |q 8961 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Lord Incendius
+  collect Incendicite of Incendius##21987 |q 8961/1 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Incendius
+  collect Ember of Emberseer##21988 |q 8961/2 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Pyroguard Emberseer
+  kill The Duke of Cynders##15206 |q 8961/3 |goto Silithus 24.7,32.65 |elite
+  collect Cinder of Cynders##21989 |q 8961/3 |goto Silithus 24.7,32.65
+  talk Argent Quartermaster Hasana##10856
+  buy Hallowed Brazier##22014 |q 8961 |goto Tirisfal Glades 83.26,68.14
 step
   talk Bodley##16033
   turnin Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -781,7 +812,7 @@ step
 step
   only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  kill Hive'Regal Ambusher##11730 |goto Silithus 58.08,86.89 |elite
+  kill Hive'Regal Ambusher##11730 |q 8962 |goto Silithus 58.08,86.89 |elite
   collect Druidical Remains##22226 |q 8962 |goto Silithus 58.08,86.89
 step
   only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
@@ -804,7 +835,7 @@ step
   accept I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 20 Bloodkelp from the Strashaz naga and then return to Bodley inside Blackrock Mountain.
-  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Strashaz Warrior, Strashaz Serpent Guard, Strashaz Myrmidon
+  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Basket of Bloodkelp, Strashaz Warrior, Strashaz Serpent Guard
 step
   talk Bodley##16033
   turnin I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -815,7 +846,7 @@ step
 step
   only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
   note Acquire a Starbreeze Village Relic and return it to Bodley inside Blackrock Mountain.
-  kill Frostmaul Giant##7428 |goto Winterspring 62.56,69.55 |elite
+  kill Frostmaul Giant##7428 |q 8985 |goto Winterspring 62.56,69.55 |elite
   collect Starbreeze Village Relic##22227 |q 8985 |goto Winterspring 62.56,69.55
 step
   only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
@@ -838,7 +869,8 @@ step
   accept Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
-  collect 40 Blackrock Bracer##22138 |q 8994 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Sentry, Scarshield Acolyte, Scarshield Legionnaire
+  collect 40 Blackrock Bracer##22138 |q 8994/1 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Blackhand Incarcerator, Scarshield Acolyte, Scarshield Legionnaire
+  collect Flask of Supreme Power##13512 |q 8994 |tip Crafted or bought.
 step
   talk Bodley##16033
   turnin Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -884,7 +916,8 @@ step
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
-  talk Frankal Stonebridge##15171 |q 8304 |goto Silithus 40.81,88.86
+  talk Frankal Stonebridge##15171 |q 8304/1 |goto Silithus 40.81,88.86
+  talk Rutgar Glyphshaper##15170 |q 8304 |goto Silithus 41.28,88.45
 step
   talk Commander Mar'alith##15181
   turnin Dearest Natalia##8304 |goto Silithus 49.2,34.18
@@ -893,7 +926,9 @@ step
   accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
 step
   note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Zora Rubbing##20454 |q 8309/2 |goto Silithus 37.27,62.5 |tip {dropsfrom}Hive'Zora Glyphed Crystal
+  collect Hive'Ashi Rubbing##20455 |q 8309/1 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Regal Rubbing##20456 |q 8309 |goto Kalimdor - the continent map 44.4,86.1 |tip {dropsfrom}Hive'Regal Glyphed Crystal
 step
   talk Rutgar Glyphshaper##15170
   turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
@@ -902,8 +937,10 @@ step
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite
-  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 50.21,40.97
+  kill Hive'Regal Ambusher##11730 |q 8310/3 |goto Silithus 58.08,86.89 |elite
+  collect Hive'Regal Silithid Brain##20459 |q 8310/3 |goto Silithus 58.08,86.89
+  collect Hive'Ashi Silithid Brain##20457 |q 8310/1 |goto Silithus 61.73,52.51 |tip {dropsfrom}Hive'Ashi Drone, Hive'Ashi Stinger, Hive'Ashi Worker
+  collect Hive'Zora Silithid Brain##20458 |q 8310 |goto Silithus 27.87,61.78 |tip {dropsfrom}Hive'Zora Wasp, Hive'Zora Waywatcher, Hive'Zora Tunneler
 step
   talk Frankal Stonebridge##15171
   turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
@@ -919,7 +956,7 @@ step
   accept The Calling##8315 |goto Silithus 49.67,37.46
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
-  kill Emissary Roman'khan##14862 |goto Silithus 48.77,58.14 |raid
+  kill Emissary Roman'khan##14862 |q 8315 |goto Silithus 48.77,58.14 |raid
   collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 48.77,58.14
 step
   talk Geologist Larksbane##15183

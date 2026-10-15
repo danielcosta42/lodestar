@@ -4,14 +4,14 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Paladin", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "28914200",
+	rev = "dcdf39d0",
 }, [[
 step
   talk Sten Stoutarm##658
   accept Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
 step
   note Sten Stoutarm would like 8 pieces of Tough Wolf Meat.
-  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 49.41,37.75 |tip {dropsfrom}Timber Wolf, Young Wolf, Ragged Timber Wolf
+  collect Tough Wolf Meat##750 |q 179 |goto Elwynn Forest 46.66,43.74 |tip {dropsfrom}Young Wolf, Timber Wolf
 step
   talk Sten Stoutarm##658
   turnin Dwarven Outfitters##179 |goto Dun Morogh 29.93,71.2
@@ -83,7 +83,7 @@ step
 step
   only Dwarf Paladin
   note Bring 10 Linen Cloth to John Turner in Ironforge.
-  collect 10 Linen Cloth##2589 |q 1648 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
+  collect 10 Linen Cloth##2589 |q 1648 |goto Ironforge 23.34,61.86 |tip {dropsfrom}humanoids
 step
   only Dwarf Paladin
   talk John Turner##6175
@@ -152,7 +152,7 @@ step
 step
   only Human Paladin
   note Bring 10 Linen Cloth to Stephanie Turner in Stormwind.
-  collect 10 Linen Cloth##2589 |q 1644 |goto Alterac Mountains 21.33,64.35 |tip {dropsfrom}Hidden Strongbox, Battered Chest, Tattered Chest
+  collect 10 Linen Cloth##2589 |q 1644 |goto Stormwind City 63.84,72.21 |tip {dropsfrom}humanoids
 step
   only Human Paladin
   talk Stephanie Turner##6174
@@ -268,7 +268,7 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Bring a Kor Gem to Thundris Windweaver in Darkshore.
-  kill Blackfathom Tide Priestess##4802 |goto Ashenvale 13.55,12.06 |elite
+  kill Blackfathom Tide Priestess##4802 |q 1442 |goto Ashenvale 13.55,12.06 |elite
   collect Corrupted Kor Gem##6995 |q 1442 |goto Ashenvale 13.55,12.06
 step
   only not NightElf not Gnome not Skyborne Paladin
@@ -307,6 +307,9 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Defend Daphne Stilwell from the Defias attack.
+  goto Westfall 42.15,88.44 |tip Protect Daphne Stilwell
+step
+  only not NightElf not Gnome not Skyborne Paladin
   talk Daphne Stilwell##6182
   turnin The Tome of Valor##1651 |goto Westfall 41.69,89.24
 step
@@ -334,7 +337,10 @@ step
 step
   only Dwarf Paladin
   note Using Jordan's Weapon Notes, find some Whitestone Oak Lumber, Bailor's Refined Ore Shipment, Jordan's Smithing Hammer, and a Kor Gem, and return them to Jordan Stilwell in Ironforge.
-  collect Whitestone Oak Lumber##6994 |q 1654 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Goblin Woodcarver
+  collect Whitestone Oak Lumber##6994 |q 1654/1 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Goblin Woodcarver
+  collect Jordan's Refined Ore Shipment##6993 |q 1654/2 |goto Loch Modan 35.95,44.91 |tip {dropsfrom}Bailor Stonehand
+  collect Jordan's Smithing Hammer##6895 |q 1654/3 |goto Shadowfang Keep - Dungeon -1,-1 |tip {dropsfrom}Jordan's Hammer
+  collect Purified Kor Gem##7083 |q 1654 |goto Darkshore 37.4,40.13 |tip {dropsfrom}Thundris Windweaver
 step
   only Dwarf Paladin
   talk Jordan Stilwell##6181
@@ -402,7 +408,7 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Collect 14 Summoner's Salt from Blackrock Summoners in Redridge Mountains, then return to Ursula Deline in Stormwind.
-  collect 14 Summoner's Salt##209778 |q 78091 |goto Redridge Mountains 24.25,12.05 |tip {dropsfrom}Gath'Ilzogg, Blackrock Champion, Blackrock Shadowcaster
+  collect 14 Summoner's Salt##209778 |q 78091 |goto Redridge Mountains 24.25,12.05 |tip {dropsfrom}Blackrock Champion, Gath'Ilzogg, Blackrock Shadowcaster
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk Ursula Deline##5495
@@ -452,7 +458,7 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Collect 20 Minion's Scourgestones and bring them to High Priest Thel'danis in the Western Plaguelands.
-  collect 20 Minion's Scourgestone##12840 |q 8414 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
+  collect 20 Minion's Scourgestone##12840 |q 8414 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Slavering Ghoul
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk High Priest Thel'danis##1854
@@ -511,7 +517,10 @@ step
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
-  collect Delicate Arcanite Converter##16006 |q 8921 |goto Tanaris 52.47,27.23
+  collect 1 Delicate Arcanite Converter##16006 |q 8921/1 |tip Crafted or bought.
+  collect 4 Greater Eternal Essence##16203 |q 8921/2 |tip Crafted or bought.
+  collect 10 Stonescale Oil##13423 |q 8921/3 |tip Crafted or bought.
+  collect 25 Volcanic Ash##22338 |q 8921 |goto Burning Steppes 60.12,40.36
 step
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
@@ -520,7 +529,9 @@ step
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
-  collect 12 Scorched Ectoplasm##21937 |q 8924 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Scorched Ectoplasm##21937 |q 8924/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
+  collect 12 Frozen Ectoplasm##21936 |q 8924/2 |goto Winterspring 53.58,43.48 |tip {dropsfrom}Suffering Highborne, Anguished Highborne
+  collect 12 Stable Ectoplasm##21935 |q 8924 |goto Eastern Plaguelands 52.9,55.8 |tip {dropsfrom}Unseen Servant, Eyeless Watcher, Torn Screamer
 step
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
@@ -538,6 +549,7 @@ step
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
+  talk Vi'el##16015
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
   talk Mux Manascrambler##16014
@@ -589,7 +601,11 @@ step
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
 step
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
-  collect 3 Dark Iron Bar##11371 |q 8947 |goto Eastern Plaguelands 26.11,11.3
+  collect 3 Dark Iron Bar##11371 |q 8947/1 |tip Crafted or bought.
+  talk Lhara##14846
+  collect 20 Enchanted Leather##12810 |q 8947/2 |goto Elwynn Forest 41.2,69.9
+  collect 3 Mooncloth##14342 |q 8947/3 |tip Crafted or bought.
+  collect 4 Cured Rugged Hide##15407 |q 8947 |tip Crafted or bought.
 step
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
@@ -605,7 +621,7 @@ step
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
-  collect 25 Ogre Warbeads##21982 |q 8949 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk, Spirestone Battle Mage, Spirestone Mystic
+  collect 25 Ogre Warbeads##21982 |q 8949 |goto Feralas 59.7,42.73 |tip {dropsfrom}Gordok Enforcer, Gordok Mauler, Gordok Ogre-Mage
 step
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
@@ -614,7 +630,9 @@ step
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
-  collect Jeering Spectre's Essence##22224 |q 8950 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 1 Jeering Spectre's Essence##22224 |q 8950/1 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
+  collect 4 Dark Rune##20520 |q 8950/2 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Scholomance Necromancer, Lady Illucia Barov, Instructor Malicia
+  collect 8 Large Brilliant Shard##14344 |q 8950 |tip Crafted or bought.
 step
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
@@ -651,7 +669,12 @@ step
   accept Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
-  collect Incendicite of Incendius##21987 |q 8961 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Lord Incendius
+  collect Incendicite of Incendius##21987 |q 8961/1 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Incendius
+  collect Ember of Emberseer##21988 |q 8961/2 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Pyroguard Emberseer
+  kill The Duke of Cynders##15206 |q 8961/3 |goto Silithus 24.7,32.65 |elite
+  collect Cinder of Cynders##21989 |q 8961/3 |goto Silithus 24.7,32.65
+  talk Argent Quartermaster Hasana##10856
+  buy Hallowed Brazier##22014 |q 8961 |goto Tirisfal Glades 83.26,68.14
 step
   talk Bodley##16033
   turnin Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -662,7 +685,7 @@ step
 step
   only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
-  kill Hive'Regal Ambusher##11730 |goto Silithus 58.08,86.89 |elite
+  kill Hive'Regal Ambusher##11730 |q 8962 |goto Silithus 58.08,86.89 |elite
   collect Druidical Remains##22226 |q 8962 |goto Silithus 58.08,86.89
 step
   only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
@@ -685,7 +708,7 @@ step
   accept I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 20 Bloodkelp from the Strashaz naga and then return to Bodley inside Blackrock Mountain.
-  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Strashaz Warrior, Strashaz Serpent Guard, Strashaz Myrmidon
+  collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Basket of Bloodkelp, Strashaz Warrior, Strashaz Serpent Guard
 step
   talk Bodley##16033
   turnin I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -696,7 +719,7 @@ step
 step
   only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
   note Acquire a Starbreeze Village Relic and return it to Bodley inside Blackrock Mountain.
-  kill Frostmaul Giant##7428 |goto Winterspring 62.56,69.55 |elite
+  kill Frostmaul Giant##7428 |q 8985 |goto Winterspring 62.56,69.55 |elite
   collect Starbreeze Village Relic##22227 |q 8985 |goto Winterspring 62.56,69.55
 step
   only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
@@ -719,7 +742,8 @@ step
   accept Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
-  collect 40 Blackrock Bracer##22138 |q 8994 |goto Blackrock Spire - Dungeon -1,-1 |tip {dropsfrom}Scarshield Sentry, Scarshield Acolyte, Scarshield Legionnaire
+  collect 40 Blackrock Bracer##22138 |q 8994/1 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Blackhand Incarcerator, Scarshield Acolyte, Scarshield Legionnaire
+  collect Flask of Supreme Power##13512 |q 8994 |tip Crafted or bought.
 step
   talk Bodley##16033
   turnin Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
@@ -765,7 +789,8 @@ step
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
 step
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
-  talk Frankal Stonebridge##15171 |q 8304 |goto Silithus 40.81,88.86
+  talk Frankal Stonebridge##15171 |q 8304/1 |goto Silithus 40.81,88.86
+  talk Rutgar Glyphshaper##15170 |q 8304 |goto Silithus 41.28,88.45
 step
   talk Commander Mar'alith##15181
   turnin Dearest Natalia##8304 |goto Silithus 49.2,34.18
@@ -774,7 +799,9 @@ step
   accept Glyph Chasing##8309 |goto Silithus 41.28,88.45
 step
   note Rutgar Glyphshaper at Bronzebeard's Encampment in Silithus wants you to venture to Hive'Ashi, Hive'Zora, and Hive'Regal and recover Glyphed Rubbings from the Glyphed Crystals of each hive.
-  collect Hive'Ashi Rubbing##20455 |q 8309 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Zora Rubbing##20454 |q 8309/2 |goto Silithus 37.27,62.5 |tip {dropsfrom}Hive'Zora Glyphed Crystal
+  collect Hive'Ashi Rubbing##20455 |q 8309/1 |goto Silithus 50.87,26.76 |tip {dropsfrom}Hive'Ashi Glyphed Crystal
+  collect Hive'Regal Rubbing##20456 |q 8309 |goto Kalimdor - the continent map 44.4,86.1 |tip {dropsfrom}Hive'Regal Glyphed Crystal
 step
   talk Rutgar Glyphshaper##15170
   turnin Glyph Chasing##8309 |goto Silithus 41.28,88.45
@@ -783,8 +810,10 @@ step
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
-  kill Hive'Ashi Stinger##11698 |goto Silithus 50.21,40.97 |elite
-  collect Hive'Ashi Silithid Brain##20457 |q 8310 |goto Silithus 50.21,40.97
+  kill Hive'Regal Ambusher##11730 |q 8310/3 |goto Silithus 58.08,86.89 |elite
+  collect Hive'Regal Silithid Brain##20459 |q 8310/3 |goto Silithus 58.08,86.89
+  collect Hive'Ashi Silithid Brain##20457 |q 8310/1 |goto Silithus 61.73,52.51 |tip {dropsfrom}Hive'Ashi Drone, Hive'Ashi Stinger, Hive'Ashi Worker
+  collect Hive'Zora Silithid Brain##20458 |q 8310 |goto Silithus 27.87,61.78 |tip {dropsfrom}Hive'Zora Wasp, Hive'Zora Waywatcher, Hive'Zora Tunneler
 step
   talk Frankal Stonebridge##15171
   turnin Breaking the Code##8310 |goto Silithus 40.81,88.86
@@ -800,7 +829,7 @@ step
   accept The Calling##8315 |goto Silithus 49.67,37.46
 step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to recover the Crystal Unlocking Mechanism from the Qiraji Emissary.
-  kill Emissary Roman'khan##14862 |goto Silithus 48.77,58.14 |raid
+  kill Emissary Roman'khan##14862 |q 8315 |goto Silithus 48.77,58.14 |raid
   collect Crystal Unlocking Mechanism##20465 |q 8315 |goto Silithus 48.77,58.14
 step
   talk Geologist Larksbane##15183
@@ -820,6 +849,7 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Retrieve 20 Enriched Manna Biscuits - the key ingredient in making Manna-Enriched Horse Feed - for Merideth Carlson at Southshore in the Hillsbrad Foothills. The Argent Dawn is known as the sole purveyor of the biscuits.
+  talk Argent Quartermaster Hasana##10856
   buy 20 Enriched Manna Biscuit##13724 |q 7645 |goto Tirisfal Glades 83.26,68.14
 step
   only not NightElf not Gnome not Skyborne Paladin
@@ -889,7 +919,10 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Bring 40 Runecloth, 6 Arcanite Bars, 10 Arthas' Tears, 5 Stratholme Holy Water vials, and 150 gold to Grimand Elmore in the Dwarven District of Stormwind.
-  collect 40 Stratholme Holy Water##13180 |q 7642 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 5 Stratholme Holy Water##13180 |q 7642/1 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 10 Arthas' Tears##8836 |q 7642/2 |goto Western Plaguelands 47.76,60.95
+  collect 40 Runecloth##14047 |q 7642/3 |tip {dropsfrom}humanoids
+  collect 6 Arcanite Bar##12360 |q 7642 |tip Crafted or bought.
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk Grimand Elmore##1416
@@ -931,7 +964,8 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Bring an Azerothian Diamond and a Pristine Black Diamond to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
-  collect Azerothian Diamond##12800 |q 7646 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Cliff Breaker, Anubisath Guardian, Small Thorium Vein
+  collect Azerothian Diamond##12800 |q 7646/1 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect Pristine Black Diamond##18335 |q 7646 |goto Alterac Valley 52.39,7.78 |tip {dropsfrom}Morloch, Frostwolf Legionnaire, Lieutenant Rugba
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk Lord Grayson Shadowbreaker##928
@@ -943,7 +977,8 @@ step
 step
   only not NightElf not Gnome not Skyborne Paladin
   note Use the Divination Scryer in the heart of the Great Ossuary's basement in the Scholomance. Doing so will bring forth the spirits you must judge. Defeating these spirits will summon forth Death Knight Darkreaver. Defeat him and reclaim the lost soul of the fallen charger.
-  collect Charger's Redeemed Soul##18799 |q 7647 |goto Stormwind City 48.43,50.22
+  collect Charger's Redeemed Soul##18799 |q 7647/1
+  collect Blessed Arcanite Barding##18792 |q 7647 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Risen Construct
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk Darkreaver's Fallen Charger##14568

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/The Temple of Atal'Hakkar", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "4fc82949",
+	rev = "8d8b324c",
 }, [[
 step
   talk Fel'zerul##1443
@@ -56,15 +56,15 @@ step
 step
   only Rogue
   note Retrieve the Sealed Azure Bag from the Timbermaw Shaman in Azshara. Then take the bag to Archmage Xylem, also found in Azshara.
-  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.78,22.51 |tip {dropsfrom}Timbermaw Shaman, Blackmaw Shaman
+  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.78,22.51 |tip {dropsfrom}Timbermaw Shaman
 step
   only Mage
   note Bring 10 Glittering Dust to Archmage Xylem.
-  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Defender
+  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer
 step
   only Warlock not completed(8420) not haveq(8420)
   note Bring a piece of felcloth to Impsy in Felwood.
-  collect Felcloth##14256 |q 8419 |goto Blasted Lands 57.73,50.62 |tip {dropsfrom}Felhunter, Felguard Sentry, Legashi Satyr
+  collect Felcloth##14256 |q 8419 |goto Azshara 61.79,23.59 |tip {dropsfrom}Legashi Satyr, Legashi Rogue, Legashi Hellcaller
 step
   only Warrior
   note Kill 7 Helboar in the Blasted Lands and return to the Fallen Hero of the Horde.
@@ -72,13 +72,20 @@ step
 step
   only Shaman not completed(8411) not haveq(8411)
   note Collect a sample of air, fire, earth and water for Bath'rah the Windwatcher.
-  collect Elemental Air##7069 |q 8410 |goto Westfall 45.61,49.32 |tip {dropsfrom}Dust Devil, Thundering Exile, Cyclonian
+  collect Elemental Air##7069 |q 8410/1 |goto Westfall 45.61,49.32 |tip {dropsfrom}Dust Devil
+  collect Elemental Fire##7068 |q 8410/2 |goto Arathi Highlands 25.81,30.65 |tip {dropsfrom}Burning Exile
+  collect Elemental Earth##7067 |q 8410/3 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Lesser Rock Elemental, Greater Rock Elemental
+  collect Elemental Water##7070 |q 8410 |goto Stranglethorn Vale 21.01,23.12 |tip {dropsfrom}Lesser Water Elemental
 step
   note Hunt 5 Bloodpetal Lashers, 5 Bloodpetal Threshers, 5 Bloodpetal Flayers and 5 Bloodpetal Trappers for Larion at Marshal's Refuge.
-  kill Bloodpetal Lasher##6509 |q 4145 |goto Un'Goro Crater 67.79,31.77
+  kill Bloodpetal Lasher##6509 |q 4145/1 |goto Un'Goro Crater 67.79,31.77
+  kill Bloodpetal Thresher##6511 |q 4145/4 |goto Un'Goro Crater 66.89,38.85
+  kill Bloodpetal Flayer##6510 |q 4145/3 |goto Un'Goro Crater 57.19,49.67
+  kill Bloodpetal Trapper##6512 |q 4145 |goto Un'Goro Crater 35.65,43.71
 step
   only Druid
   note Collect 8 Bloodcap and 8 Gorishi Stings, and return to Torwa Pathfinder in Un'Goro Crater.
+  collect 8 Bloodcap##22434 |q 9052/2 |goto Un'Goro Crater 44.62,42.45 |tip {dropsfrom}Bloodpetal Sprout
   collect 8 Gorishi Sting##22435 |q 9052 |goto Un'Goro Crater 50.14,75.97 |tip {dropsfrom}Gorishi Wasp, Gorishi Stinger
 step
   note The Atal'ai Exile in The Hinterlands wants the Head of Jammal'an.
@@ -190,11 +197,14 @@ step
 step
   only Warlock
   note Bring 10 Rotting Wood and 4 Bloodvenom Essence to Impsy in Felwood.
-  collect 10 Rotting Wood##20613 |q 8421 |goto Felwood 46.58,23.75 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
+  collect 10 Rotting Wood##20613 |q 8421/1 |goto Felwood 46.58,23.75 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
+  collect 4 Bloodvenom Essence##20614 |q 8421 |goto Felwood 41.4,50.23 |tip {dropsfrom}Tainted Ooze
 step
   only Warrior
   note Slaughter the Shadowsworn in the Blasted Lands and return to the Fallen Hero of the Horde.
-  kill Shadowsworn Adept##6006 |q 8424 |goto Blasted Lands 64.08,35.24
+  kill Shadowsworn Adept##6006 |q 8424/1 |goto Blasted Lands 64.08,35.24
+  kill Shadowsworn Cultist##6004 |q 8424/2 |goto Blasted Lands 64.77,33.72
+  kill Shadowsworn Thug##6005 |q 8424 |goto Blasted Lands 64.69,32.93
 step
   note Bring the Bundle of Atal'ai Artifacts to the Atal'ai Exile in the Hinterlands.
   talk Atal'ai Exile##5598
@@ -293,7 +303,7 @@ step
 step
   only Priest
   note Acquire an Ichor of Undeath for Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
-  collect Ichor of Undeath##7972 |q 8256 |goto Stranglethorn Vale 38.89,57.62 |tip {dropsfrom}Zanzil Zombie, Zanzil Hunter, Skeletal Flayer
+  collect Ichor of Undeath##7972 |q 8256 |goto Stranglethorn Vale 38.89,57.62 |tip {dropsfrom}Zanzil Zombie, Zanzil Hunter
 step
   only Warlock
   note Bring a total of 6 Voodoo Feathers from the trolls in sunken temple.
@@ -304,7 +314,7 @@ step
   collect Amber Voodoo Feather##20606 |q 8425 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Gasher, Zul'Lor
 step
   note Deliver the Unloaded Zapper and 5 samples of Atal'ai Haze to Larion in Marshal's Refuge.
-  collect Atal'ai Haze##11318 |q 4146 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |tip {dropsfrom}Murk Worm, Saturated Ooze, Deep Lurker
+  collect Atal'ai Haze##11318 |q 4146 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Murk Worm, Saturated Ooze, Deep Lurker
 step
   only Druid
   note Retrieve a Putrid Vine from the guardian at the bottom of the Sunken Temple and return to Torwa Pathfinder.
@@ -361,7 +371,7 @@ step
   accept Blood of Morphaz##8257 |goto Azshara 42.4,42.62
 step
   note Collect 20 Fetishes of Hakkar and bring them to Fel'Zerul in Stonard.
-  collect 20 Fetish of Hakkar##6181 |q 1445 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Cursed Atal'ai, Atal'ai Warrior, Atal'ai Witch Doctor
+  collect 20 Fetish of Hakkar##6181 |q 1445 |goto The Temple of Atal'Hakkar - Dungeon -1,-1 |elite |tip {dropsfrom}Atal'ai Warrior, Atal'ai Witch Doctor, Mummified Atal'ai
 step
   only Hunter
   note Bring the Tooth of Morphaz to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.

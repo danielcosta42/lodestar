@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Feast of Winter Veil", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "ca4d0966",
+	rev = "6da60812",
 }, [[
 step
   talk Wonderform Operator##15732
@@ -68,7 +68,7 @@ step
   accept The Power of Pine##8373 |goto Hillsbrad Foothills 50,57.35
 step
   note Use a Stink Bomb Cleaner to remove any Forsaken Stink Bomb that's been dropped on Southshore. Return to Sergeant Hartman in Southshore when you're done.
-  collect Forsaken Stink Bomb##180449 |q 8373 |goto Hillsbrad Foothills 49.91,57.45
+  click Forsaken Stink Bomb##180449 |q 8373 |goto Hillsbrad Foothills 49.91,57.45
 step
   talk Sergeant Hartman##15199
   turnin The Power of Pine##8373 |goto Hillsbrad Foothills 50,57.35
@@ -109,7 +109,8 @@ step
   accept Treats for Greatfather Winter##7025 |goto Ironforge 33.2,65.41
 step
   note Bring 5 Gingerbread Cookies and an Ice Cold Milk to Greatfather Winter in Ironforge.
-  collect 5 Gingerbread Cookie##17197 |q 7025 |goto Ironforge 33.2,65.41
+  collect 5 Gingerbread Cookie##17197 |q 7025/1 |tip Crafted or bought.
+  collect Ice Cold Milk##1179 |q 7025 |goto Westfall 45.8,26.58 |tip {dropsfrom}Defias Smuggler, Riverpaw Taskmaster, Harvest Watcher
 step
   talk Greatfather Winter##13444
   turnin Treats for Greatfather Winter##7025 |goto Ironforge 33.2,65.41
@@ -134,7 +135,7 @@ step
   accept You're a Mean One...##7043 |goto Alterac Mountains 35.44,72.46
 step
   note Locate and return the Stolen Treats to Wulmort Jinglepocket in Ironforge. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains.
-  kill The Abominable Greench##13602 |goto Alterac Mountains 39.61,62.91 |elite
+  kill The Abominable Greench##13602 |q 7043 |goto Alterac Mountains 39.61,62.91 |elite
   collect Stolen Treats##17662 |q 7043 |goto Alterac Mountains 39.61,62.91
 step
   talk Wulmort Jinglepocket##13433
@@ -160,14 +161,14 @@ step
   accept The Hero of the Day##8763 |goto Ironforge 33.7,67.23
 step
   note Bring 1 Deeprock Salt and 5 gold coins to any Holly Preserver machine, upon which you will receive 5 Preserved Holly.
-  collect 1 Deeprock Salt##8150 |q 8763 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Felhunter, Stone Fury
+  collect 1 Deeprock Salt##8150 |q 8763 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Stone Golem, Lesser Rock Elemental
 step
   turnin The Hero of the Day##8763 |goto Stormwind City 62.13,69.52
 step
   talk Kwee Q. Peddlefeet##16075
   accept Gift Giving##8993 |goto Stormwind City 80.55,37.94
 step
-  collect Alliance Gift Collection##22262 |q 8993 |goto Stormwind City 80.55,37.94
+  collect Alliance Gift Collection##22262 |q 8993 |goto Stormwind City 80.55,37.94 |tip Crafted or bought.
 step
   talk Kwee Q. Peddlefeet##16075
   turnin Gift Giving##8993 |goto Stormwind City 80.55,37.94
@@ -176,7 +177,10 @@ step
   accept Hallow's End Treats for Jesper!##8311 |goto Stormwind City 56.53,51.76
 step
   note Speak with the innkeepers of Stormwind, Ironforge, and Darnassus, as well as Talvash del Kissel in Ironforge. Perform the tricks they ask of you in exchange for the treats they offer.
-  collect Stormwind Nougat##20492 |q 8311 |goto Stormwind City 60.39,75.27 |tip {dropsfrom}Innkeeper Allison
+  collect Stormwind Nougat##20492 |q 8311/1 |goto Stormwind City 60.39,75.27 |tip {dropsfrom}Innkeeper Allison
+  collect Gnomeregan Gumdrop##20494 |q 8311/2 |goto Ironforge 36.38,3.61 |tip {dropsfrom}Talvash del Kissel
+  collect Ironforge Mint##20490 |q 8311/3 |goto Ironforge 18.15,51.45 |tip {dropsfrom}Innkeeper Firebrew
+  collect Darnassus Marzipan##20496 |q 8311 |goto Darnassus 67.42,15.65 |tip {dropsfrom}Innkeeper Saelienne
 step
   talk Jesper##15310
   turnin Hallow's End Treats for Jesper!##8311 |goto Stormwind City 56.53,51.76

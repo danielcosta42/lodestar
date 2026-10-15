@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Dire Maul", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "478df5ef",
+	rev = "d5290d0e",
 }, [[
 step
   talk Harbinger Balthazad##10879
@@ -91,7 +91,12 @@ step
   collect Book of Incantations##18261 |q 7441 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Pusillin
 step
   note Bring 4 Bolts of Runecloth, 8 Rugged Leather, 2 Rune Threads, and Ogre Tannin to Knot Thimblejack. He is currently chained inside the Gordok wing of Dire Maul.
-  collect 4 Bolt of Runecloth##14048 |q 5518 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Felsteel Chest
+  collect 4 Bolt of Runecloth##14048 |q 5518/1 |tip Crafted or bought.
+  talk Lhara##14846
+  collect 8 Rugged Leather##8170 |q 5518/2 |goto Elwynn Forest 41.2,69.9
+  talk Banalash##989
+  buy 2 Rune Thread##14341 |q 5518/3 |goto Swamp of Sorrows 44.77,56.63
+  collect Ogre Tannin##18240 |q 5518 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Ogre Tannin Basket
 step
   collect Gordok Shackle Key##18250 |q 5525 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Gordok Brute, Gordok Mage-Lord, Gordok Captain
 step
@@ -102,11 +107,11 @@ step
   collect Gauntlet of Gordok Might##18336 |q 7703 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}The Prince's Chest
 step
   note Search Dire Maul for Telmius Dreamseeker. Report back to Sage Korolusk at Camp Mojache with whatever information that you may find.
-  collect Skeletal Remains of Telmius Dreamseeker##179544 |q 7481 |goto Dire Maul - Dungeon -1,-1
+  click Skeletal Remains of Telmius Dreamseeker##179544 |q 7481 |goto Dire Maul - Dungeon -1,-1
 step
   only Warlock
   note Travel to Dire Maul in Feralas and recover 15 Satyr Blood from the Wildspawn Satyr that inhabit the Warpwood Quarter. Return to Daio in the Tainted Scar when this is done.
-  collect Satyr Blood##18603 |q 7581 |goto Dire Maul - Dungeon -1,-1 |tip {dropsfrom}Wildspawn Satyr, Wildspawn Rogue, Wildspawn Trickster
+  collect 15 Satyr Blood##18603 |q 7581 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Wildspawn Satyr, Wildspawn Rogue, Wildspawn Trickster
 step
   only Warlock
   note Bring 30 bottles of Raging Beast's Blood to Mor'zul Bloodbringer in the Burning Steppes.
@@ -271,18 +276,20 @@ step
 step
   only Warlock
   note Bring 10 Elixirs of Shadow Power to Gorzeeki Wildeyes in the Burning Steppes.
-  collect 10 Elixir of Shadow Power##9264 |q 7626 |goto Burning Steppes 12.69,31.64
+  collect 10 Elixir of Shadow Power##9264 |q 7626 |goto Burning Steppes 12.69,31.64 |tip Crafted or bought.
 step
   only Warlock
   note Bring 6 Large Brilliant Shards and 25 Dark Iron Ore to Gorzeeki in the Burning Steppes.
-  collect 6 Large Brilliant Shard##14344 |q 7627 |goto Burning Steppes 12.69,31.64
+  collect 6 Large Brilliant Shard##14344 |q 7627/1 |tip Crafted or bought.
+  collect 25 Dark Iron Ore##11370 |q 7627 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Dark Iron Deposit
 step
   only Warlock
   note Bring 35 Black Dragonscales to Gorzeeki Wildeyes in the Burning Steppes.
-  collect 35 Black Dragonscale##15416 |q 7628 |goto Burning Steppes 90.47,52.28 |tip {dropsfrom}Black Dragonspawn, Black Wyrmkin, Flamescale Dragonspawn
+  collect 35 Black Dragonscale##15416 |q 7628 |goto Burning Steppes 91.67,35.54 |tip {dropsfrom}Black Broodling, Black Dragonspawn, Black Wyrmkin
 step
   only Warlock
   note Purchase Xorothian Stardust from Ur'dan. Bring it to Gorzeeki Wildeyes in the Burning Steppes.
+  talk Ur'dan##14522
   buy Xorothian Stardust##18687 |q 7625 |goto Felwood 36.18,44.46
 step
   only Warlock
@@ -315,7 +322,7 @@ step
 step
   only Warlock
   note Bring 3 Arcanite Bar to Gorzeeki in the Burning Steppes.
-  collect 3 Arcanite Bar##12360 |q 7630 |goto Burning Steppes 12.44,31.63
+  collect 3 Arcanite Bar##12360 |q 7630 |goto Burning Steppes 12.44,31.63 |tip Crafted or bought.
 step
   only Warlock
   talk Gorzeeki Wildeyes##14437

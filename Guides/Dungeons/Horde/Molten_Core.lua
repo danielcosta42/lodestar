@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Molten Core", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "2390b097",
+	rev = "fe807141",
 }, [[
 step
   talk Duke Hydraxis##13278
@@ -24,7 +24,8 @@ step
   collect 12 Discordant Bracers##17309 |q 6804 |goto Eastern Plaguelands 54.91,68.84 |tip {dropsfrom}Blighted Surge, Plague Ravager, Blighted Horror
 step
   note Kill 15 Dust Stormers and 15 Desert Rumblers and then return to Duke Hydraxis in Azshara.
-  kill Dust Stormer##11744 |q 6805 |goto Silithus 21.6,22.4
+  kill Dust Stormer##11744 |q 6805/1 |goto Silithus 21.6,22.4
+  kill Desert Rumbler##11746 |q 6805 |goto Silithus 22.6,14.2
 step
   talk Duke Hydraxis##13278
   turnin Poisoned Water##6804 |goto Azshara 79.28,73.7
@@ -51,7 +52,10 @@ step
   collect Eye of the Emberseer##17322 |q 6821 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Pyroguard Emberseer
 step
   note To free Thunderaan the Windseeker from his prison, you must present the right and left halves of the Bindings of the Windseeker, 10 bars of Elementium, and the Essence of the Firelord to Highlord Demitrian in Silithus.
-  collect Elementium Bar##17771 |q 7786 |goto Silithus 21.71,8.57
+  collect Elementium Bar##17771 |q 7786/1 |tip Crafted or bought.
+  collect Essence of the Firelord##19017 |q 7786/2 |goto Molten Core - Dungeon -1,-1 |raid |tip {dropsfrom}Ragnaros
+  collect Bindings of the Windseeker##18563 |q 7786/3 |goto Molten Core - Dungeon -1,-1 |raid |tip {dropsfrom}Baron Geddon
+  collect Bindings of the Windseeker##18564 |q 7786 |goto Molten Core - Dungeon -1,-1 |raid |tip {dropsfrom}Garr
 step
   talk Duke Hydraxis##13278
   turnin Eye of the Emberseer##6821 |goto Azshara 79.28,73.7
