@@ -556,7 +556,7 @@ noutro continente ou 10+ níveis acima.
 | pendurada / perdida por ordem | 0 / 0 | 0 / 0 |
 | pico do log | 18 | 16 |
 | aceites com `reqLevel` acima do teto do guia | 10 | **0** |
-| `guide_integrity --full` JUMP | 355 | **238** |
+| `guide_integrity --full` JUMP | 355 | **237** |
 | guias de classe, accept sem pré-req (os mesmos) | 35 | 35 |
 | distância do esqueleto da rota, todos os guias (só aceite e entrega) | 52.053 | 44.917 (−13,7%) |
 | trocas de zona nos guias (zona diferente entre `goto` seguidos, sem os passos com `haveq`, `completed` ou classe) | 647 | **289** |
