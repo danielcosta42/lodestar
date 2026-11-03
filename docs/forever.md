@@ -393,7 +393,7 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 | — fora: evento/repetível/campo de batalha | 37 |
 | `validate_guides.py` — ocorrências | **0** (antes da revisão: 10 bloqueios, 244 pré-req ausentes) |
 | Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos, toda raça×classe |
-| `guide_integrity.py` — passo sem coordenada | 79: item de quest que o banco não sabe de onde vem (páginas de Green Hills of Stranglethorn, Stolen Weapon), sem seta em vez da de quem deu a quest; material de profissão e tecido saem sem seta de propósito, com a dica, e não contam |
+| `guide_integrity.py` — passo sem coordenada | 113, 34 deles aceites de drop com o item na bolsa, e o resto: item de quest que o banco não sabe de onde vem (páginas de Green Hills of Stranglethorn, Stolen Weapon), sem seta em vez da de quem deu a quest; material de profissão e tecido saem sem seta de propósito, com a dica, e não contam |
 
 `gen_forever.py` imprime essa conta a cada rodada.
 

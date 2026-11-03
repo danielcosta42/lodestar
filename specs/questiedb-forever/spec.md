@@ -584,6 +584,12 @@ travavam. Cada causa virou regra, com trava no autoteste do `router.py`:
 | `guide_integrity --full`: saltos | 237 | **235** |
 | Accept/turnin em lugar errado | 1 de 6.104 | 1 de 6042 |
 
-Fora de escopo, ainda aberto: as quests do Season of Discovery com classe marcada (xamã, 79358-79366)
-seguem nos guias, só para a classe; nelas o NPC cobre o pulo automático.
+Ainda aberto:
+
+- Quem acha o item depois do passo não vê o aceite, e a entrega já passou: o passo não pula a entrega
+  da quest. Não trava, mas perde a cadeia: `Winterfall Firewater` em Winterspring, 8 quests, e outras
+  em Desolace, Dun Morogh, Durotar, Searing Gorge, Elwynn e Tirisfal. O conserto é mover o aceite junto
+  com os passos que dependem dele.
+- As quests do Season of Discovery com classe marcada (xamã, 79358-79366) seguem nos guias, só para a
+  classe; nelas o NPC cobre o pulo automático.
 
