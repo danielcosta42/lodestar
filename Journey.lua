@@ -19,6 +19,8 @@ ns.Journey = J
 
 local FLIGHT_OVERHEAD = 10     -- falar com o mestre de voo e decolar
 local HEARTH_CAST = 10
+-- pedra e teleporte gastam recarga ou reagente: só valem se pouparem isto (s) a mais
+local GASTO = 300
 
 local function dist(a, b)
 	local dx, dy = a.x - b.x, a.y - b.y
@@ -104,6 +106,7 @@ function J.Plan(from, to, ctx)
 					-- (esperar nunca faz chegar antes: o Dijkstra segue valendo)
 					link(idx[k], idx[nxt], nil, leg, function(at)
 						local dep = SC.NextDeparture(ship, k, ctx.now + at, h)
+						if not dep then return ship.w + ride end       -- horário vencido: como quem não tem
 						return dep - (ctx.now + at) + ride, dep
 					end)
 				else
@@ -120,16 +123,18 @@ function J.Plan(from, to, ctx)
 	end
 	if ctx.hearth then
 		local h = add({ c = ctx.hearth.c, x = ctx.hearth.x, y = ctx.hearth.y }, "hearth")
-		link(START, h, HEARTH_CAST + (ctx.hearth.wait or 0), { k = "hearth", spell = ctx.hearth.spell })
+		link(START, h, HEARTH_CAST + (ctx.hearth.wait or 0) + GASTO,
+			{ k = "hearth", spell = ctx.hearth.spell, gasto = GASTO })
 	end
 	for _, t in ipairs(ctx.teleports or {}) do
 		local h = add({ c = t.c, x = t.x, y = t.y }, "teleport")
-		link(START, h, t.cast or 10, { k = "teleport", name = t.label, spell = t.spell })
+		link(START, h, (t.cast or 10) + GASTO, { k = "teleport", name = t.label, spell = t.spell, gasto = GASTO })
 	end
 
 	-- Dijkstra O(n²): ~120 nós, a pé entre todo par do mesmo continente
 	local n = #nodes
 	local best, prev, via, done = {}, {}, {}, {}
+	local gastou = {}                         -- [nó] = o `gasto` embutido em best: tempo que não passa
 	for i = 1, n do best[i] = math.huge end
 	best[START] = 0
 	for _ = 1, n do
@@ -143,20 +148,22 @@ function J.Plan(from, to, ctx)
 		for v = 1, n do
 			if not done[v] and v ~= START and nodes[v].pt.c == pu.c then
 				local s = bu + dist(pu, nodes[v].pt) / speed
-				if s < best[v] then best[v], prev[v], via[v] = s, u, { k = "walk" } end
+				if s < best[v] then best[v], prev[v], via[v], gastou[v] = s, u, { k = "walk" }, gastou[u] end
 			end
 		end
 		for _, e in ipairs(special[u] or {}) do
 			local es, leg = e.s, e.leg
 			if e.fn then
 				local dep
-				es, dep = e.fn(bu)
+				es, dep = e.fn(bu - (gastou[u] or 0))
 				leg = {}
 				for kk, vv in pairs(e.leg) do leg[kk] = vv end
 				leg.dep = dep
 			end
 			local s = bu + es
-			if not done[e.j] and s < best[e.j] then best[e.j], prev[e.j], via[e.j] = s, u, leg end
+			if not done[e.j] and s < best[e.j] then
+				best[e.j], prev[e.j], via[e.j], gastou[e.j] = s, u, leg, (gastou[u] or 0) + (leg.gasto or 0)
+			end
 		end
 	end
 	if best[GOAL] == math.huge then return nil end
@@ -166,7 +173,7 @@ function J.Plan(from, to, ctx)
 		local u = prev[v]
 		local leg = {}
 		for k, val in pairs(via[v]) do leg[k] = val end
-		leg.a, leg.b, leg.s = nodes[u].pt, nodes[v].pt, best[v] - best[u]
+		leg.a, leg.b, leg.s = nodes[u].pt, nodes[v].pt, best[v] - best[u] - (leg.gasto or 0)
 		if leg.k == "walk" and nodes[v].kind == "fm" then leg.name = nodes[v].name end
 		table.insert(legs, 1, leg)
 		v = u
