@@ -570,4 +570,144 @@ C_PlayerInfo, UnitFullName, UnitName = nil, nil, UN
 -- cópia dela (não pode depender do ns): quem cobre é tools/forever-scan.lua.
 issecretvalue = nil
 
+-- ── o que o cliente não tem mais ───────────────────────────────────────────
+-- Estes globais saíram com o Blizzard_DeprecatedItemScript: chamar dá erro e, com guarda, o
+-- recurso morre calado (a venda de lixo, o Gear Advisor e a pedra de lar morreram assim, e
+-- nenhum teste viu porque os stubs não têm o que o cliente não tem). Só o Compat.lua fala
+-- com a API; lá é C_Item e companhia.
+local REMOVIDOS = { "GetItemInfo", "GetItemInfoInstant", "GetItemCount", "GetItemIcon", "GetItemStats",
+	"IsEquippableItem", "GetSpellInfo", "GetSpellCooldown", "GetSpellTexture", "GetCoinTextureString",
+	"GetNumSkillLines", "GetSkillLineInfo" }
+local toc = assert(io.open(ROOT .. "/Lodestar.toc"))
+local arquivos = 0
+for linha in toc:lines() do
+	linha = linha:gsub("%s+$", "")
+	if linha:match("%.lua$") and not linha:match("^Libs") and not linha:match("^#") and linha ~= "Compat.lua" then
+		arquivos = arquivos + 1
+		local n = 0
+		for texto in assert(io.open(ROOT .. "/" .. linha:gsub("\\", "/"))):lines() do
+			n = n + 1
+			local codigo = texto:gsub("%-%-.*$", ""):gsub('"[^"]*"', '""')
+			for _, nome in ipairs(REMOVIDOS) do
+				local i = codigo:find("%f[%w_.:]" .. nome .. "%f[^%w_]")
+				if i then
+					local resto = codigo:sub(i + #nome)
+					check(not (resto:match("^%s*%(") or resto:match("^%s+and%s")),
+						("%s:%d chama %s, que o cliente não tem"):format(linha, n, nome))
+				end
+			end
+		end
+	end
+end
+toc:close()
+check(arquivos >= 50, "a varredura leu os arquivos do .toc (" .. arquivos .. ")")
+
+-- o Compat responde pelos namespaces, e recarga secreta não vira conta
+C_Item = {
+	GetItemInfo = function(id) return "Pedra", nil, 1, 20, nil, nil, nil, nil, nil, nil, 7 end,
+	GetItemCount = function(id) return id == 6948 and 1 or 0 end,
+	GetItemIconByID = function() return 134414 end,
+}
+C_Spell = {
+	GetSpellInfo = function(id) return id == 8690 and { name = "Hearthstone" } or nil end,
+	GetSpellCooldown = function(id)
+		if id == 1 then return { startTime = 100, duration = 30 } end
+		if id == 2 then return { startTime = "segredo", duration = 30 } end
+		return nil
+	end,
+	GetSpellTexture = function() return 134414 end,
+}
+C_CurrencyInfo = { GetCoinTextureString = function(v) return v .. "c" end }
+C_SkillInfo = {
+	GetNumSkillLines = function() return 1 end,
+	GetSkillLineInfo = function() return { name = "Mining", isHeader = false, rank = 300, isAbandonable = true } end,
+}
+C_SpellBook = { IsSpellKnown = function(id) return id == 556 end }
+issecretvalue = function(v) return v == "segredo" end
+local api = load_addon(16001)
+check(select(11, api.ItemInfo(6948)) == 7, "ItemInfo: o valor de venda continua no 11º retorno")
+check(api.ItemCount(6948) == 1 and api.ItemCount(1) == 0, "ItemCount pelo C_Item")
+check(api.ItemIcon(6948) == 134414 and api.SpellIcon(8690) == 134414, "ícones pelos namespaces")
+check(api.SpellName(8690) == "Hearthstone" and api.SpellName(1) == nil, "SpellName lê o campo da tabela")
+local ini, dur = api.SpellCooldown(1)
+check(ini == 100 and dur == 30, "SpellCooldown devolve início e duração, como o global antigo")
+check(api.SpellCooldown(2) == nil, "recarga secreta não sai do Compat")
+check(api.SpellCooldown(3) == nil, "magia que não existe: sem resposta")
+check(api.CoinText(150) == "150c", "CoinText pelo C_CurrencyInfo")
+check(api.NumSkillLines() == 1 and api.SkillLine(1).name == "Mining", "perícias pelo C_SkillInfo")
+check(api.IsSpellKnown(556) and not api.IsSpellKnown(1), "IsSpellKnown pelo C_SpellBook")
+C_Item, C_Spell, C_CurrencyInfo, C_SkillInfo, C_SpellBook, issecretvalue = nil, nil, nil, nil, nil, nil
+local vazio = load_addon(16001)
+check(vazio.ItemCount(1) == 0 and vazio.ItemInfo(1) == nil and vazio.SpellCooldown(1) == nil and vazio.CoinText(5) == "5",
+	"sem o namespace: resposta vazia, nunca erro")
+
+-- ── Gear Advisor ───────────────────────────────────────────────────────────
+-- Nunca tinha rodado neste cliente. O aviso só vale para o que a classe usa, no nível dela e
+-- no lugar certo: com a mão esquerda "vazia", toda arma de uma mão virava melhoria.
+local ITENS = {
+	cajado = { id = 1, loc = "INVTYPE_2HWEAPON", cl = 2, sub = 10, ilvl = 10, min = 1 },
+	adaga = { id = 2, loc = "INVTYPE_WEAPON", cl = 2, sub = 15, ilvl = 5, min = 1 },
+	adagaBoa = { id = 3, loc = "INVTYPE_WEAPON", cl = 2, sub = 15, ilvl = 30, min = 1 },
+	machado = { id = 4, loc = "INVTYPE_WEAPON", cl = 2, sub = 0, ilvl = 30, min = 1 },
+	escudo = { id = 5, loc = "INVTYPE_SHIELD", cl = 4, sub = 6, ilvl = 30, min = 1 },
+	orbe = { id = 6, loc = "INVTYPE_HOLDABLE", cl = 4, sub = 0, ilvl = 30, min = 1 },
+	alto = { id = 7, loc = "INVTYPE_CLOAK", cl = 4, sub = 1, ilvl = 30, min = 20 },
+	semDado = { id = 8, loc = "INVTYPE_CLOAK", cl = 4, sub = 1, ilvl = 30 },
+	capa = { id = 9, loc = "INVTYPE_CLOAK", cl = 4, sub = 1, ilvl = 30, min = 1 },
+	capaVelha = { id = 10, loc = "INVTYPE_CLOAK", cl = 4, sub = 1, ilvl = 1, min = 1 },
+}
+local function aviso(class, level, equipado, bolsa)
+	local avisou
+	local gs = { db = { gearAdvisor = true }, currentGuide = {}, L = {}, UI = { COL = {} }, Debug = function() end,
+		On = function() end, Toast = { Show = function(_, t) avisou = t.text end },
+		ItemInfo = function(l) local i = ITENS[l]; if i.min then return l, nil, nil, i.ilvl, i.min end end,
+		ItemInfoInstant = function(l) local i = ITENS[l]; return i.id, nil, nil, i.loc, nil, i.cl, i.sub end,
+		ItemStats = function() return {} end, IsEquippable = function(l) return ITENS[l] ~= nil end }
+	C_Container = { GetContainerNumSlots = function(b) return b == 0 and #bolsa or 0 end,
+		GetContainerItemLink = function(_, s) return bolsa[s] end }
+	GetInventoryItemLink = function(_, s) return equipado[s] end
+	UnitClass = function() return "x", class end
+	UnitLevel = function() return level end
+	assert(loadfile(ROOT .. "/GearAdvisor.lua"))("Lodestar", gs)
+	gs.GearAdvisor.Scan()
+	C_Container, GetInventoryItemLink = nil, nil
+	return avisou
+end
+check(aviso("MAGE", 5, { [16] = "cajado" }, { "adaga" }) == nil, "cajado equipado: adaga fraca não é melhoria pela mão vazia")
+check(aviso("MAGE", 5, { [16] = "cajado" }, { "adagaBoa" }) == "adagaBoa", "adaga melhor que o cajado: avisa")
+check(aviso("MAGE", 5, { [16] = "adagaBoa" }, { "adaga" }) == nil, "arma de uma mão pior que a da direita: esquerda vazia não conta")
+check(aviso("PRIEST", 5, {}, { "machado" }) == nil and aviso("WARRIOR", 5, {}, { "machado" }) == "machado",
+	"arma que a classe não treina não vira aviso")
+check(aviso("MAGE", 5, {}, { "escudo" }) == nil and aviso("WARRIOR", 5, {}, { "escudo" }) == "escudo",
+	"escudo só para quem usa")
+check(aviso("MAGE", 5, { [16] = "cajado" }, { "orbe" }) == nil, "duas mãos: a esquerda está ocupada")
+check(aviso("MAGE", 5, { [16] = "adaga" }, { "orbe" }) == "orbe", "uma mão: a esquerda está livre")
+check(aviso("MAGE", 5, {}, { "alto" }) == nil and aviso("MAGE", 20, {}, { "alto" }) == "alto", "nível abaixo do exigido: espera")
+check(aviso("MAGE", 5, {}, { "semDado" }) == nil, "item ainda sem dado na bolsa: fica para depois")
+check(aviso("MAGE", 5, { [15] = "semDado" }, { "capa" }) == nil, "equipado ainda sem dado: não compara")
+check(aviso("MAGE", 5, { [15] = "capaVelha" }, { "capa" }) == "capa", "equipado com dado e pior: avisa")
+
+-- ── raceChat opt-in ────────────────────────────────────────────────────────
+-- O padrão antigo (ligado) ficou gravado em todo save: desliga uma vez e depois respeita.
+local function corePronto(db)
+	_G.LodestarDB, _G.LodestarCharDB = db, {}
+	local onEvent
+	CreateFrame = function()
+		return { RegisterEvent = function() end,
+			SetScript = function(_, nome, fn) if nome == "OnEvent" then onEvent = fn end end }
+	end
+	C_AddOns, C_Timer = { GetAddOnMetadata = function() return "dev" end }, {}
+	SlashCmdList = {}
+	local core = { L = setmetatable({}, { __index = function(_, k) return k end }) }
+	assert(loadfile(ROOT .. "/Compat.lua"))("Lodestar", core)
+	assert(loadfile(ROOT .. "/Core.lua"))("Lodestar", core)
+	onEvent(nil, "ADDON_LOADED", "Lodestar")
+	return core.db
+end
+local antigo = corePronto({ raceChat = true })
+check(antigo.raceChat == false, "save com o padrão antigo gravado: desliga")
+antigo.raceChat = true
+check(corePronto(antigo).raceChat == true, "quem ligou depois da migração continua ligado")
+check(corePronto({}).raceChat == false, "instalação nova nasce desligada")
+
 print(("ok: %d checks"):format(checks))

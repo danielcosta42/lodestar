@@ -26,7 +26,7 @@ local CATS = {
 
 local function count(items)
 	local n = 0
-	for _, id in ipairs(items) do n = n + ((GetItemCount and GetItemCount(id)) or 0) end
+	for _, id in ipairs(items) do n = n + ns.ItemCount(id) end
 	return n
 end
 
@@ -83,7 +83,7 @@ function C:Refresh()
 		else
 			r.mark:SetText("|cffe0796e–|r")
 			local txt = st.have .. "/" .. st.need
-			if st.price and GetCoinTextureString then txt = txt .. "   " .. GetCoinTextureString(st.price * st.need) end
+			if st.price then txt = txt .. "   " .. ns.CoinText(st.price * st.need) end
 			r.right:SetText(txt); r.right:SetTextColor(UI.unpackc(UI.COL.amber))
 		end
 		r:Show(); y = y - ROW_H

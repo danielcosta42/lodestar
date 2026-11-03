@@ -83,6 +83,44 @@ function ns.NpcID(guid)
 end
 
 --------------------------------------------------------------------------------
+-- Item, magia, perícia e dinheiro: neste cliente só nos namespaces. Os globais antigos
+-- (GetItemInfo, GetItemCount, GetSpellInfo...) saíram junto com o
+-- Blizzard_DeprecatedItemScript, e a guarda `GetItemCount and` só desliga o recurso calada.
+-- tools/forever-guides.lua reprova quem chamar os nomes antigos.
+--------------------------------------------------------------------------------
+local function nada() end
+local Item, Spell, Skill, Book = C_Item or {}, C_Spell or {}, C_SkillInfo or {}, C_SpellBook or {}
+
+ns.ItemInfo        = Item.GetItemInfo or nada         -- mesmos retornos do GetItemInfo antigo
+ns.ItemInfoInstant = Item.GetItemInfoInstant or nada
+ns.ItemStats       = Item.GetItemStats or nada
+ns.ItemIcon        = Item.GetItemIconByID or nada
+ns.IsEquippable    = Item.IsEquippableItem or nada
+ns.ItemCount       = Item.GetItemCount or function() return 0 end
+ns.SpellIcon       = Spell.GetSpellTexture or nada
+ns.IsSpellKnown    = Book.IsSpellKnown or IsSpellKnown or nada
+ns.NumSkillLines   = Skill.GetNumSkillLines or function() return 0 end
+ns.SkillLine       = Skill.GetSkillLineInfo or nada   -- tabela: name, isHeader, rank, isAbandonable
+
+function ns.SpellName(id)
+	local info = Spell.GetSpellInfo and Spell.GetSpellInfo(id)
+	return info and info.name
+end
+
+-- Início e duração da recarga, como o GetSpellCooldown antigo. Com as recargas restritas o
+-- valor chega secreto e a conta estouraria: fica sem resposta, que é o mesmo que pronta.
+function ns.SpellCooldown(id)
+	local info = Spell.GetSpellCooldown and Spell.GetSpellCooldown(id)
+	if not info or ns.IsSecret(info.startTime, info.duration) then return nil end
+	return info.startTime, info.duration
+end
+
+function ns.CoinText(copper)
+	local f = C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString
+	return f and f(copper) or tostring(copper)
+end
+
+--------------------------------------------------------------------------------
 -- Tooltip: aqui é o de retail, entrada pelo TooltipDataProcessor — um registro
 -- por tipo de dado, servindo todos os tooltips de uma vez.
 --------------------------------------------------------------------------------
