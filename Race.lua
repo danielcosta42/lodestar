@@ -14,6 +14,8 @@ R.MAX_LEVEL = 60
 R.ONLINE = 300                         -- s desde o último anúncio para contar como online
 R.EXPIRE = 30 * 86400                  -- s sem notícia até o registro sair
 local TETO, MAX_IDS = 1e8, 32            -- /played máximo aceito (~3 anos); marcos por mensagem
+R.LAUNCH = 1793833200                  -- 2026-11-04 15:00 PST: ninguém jogou antes disso
+local FOLGA_RELOGIO = 3600               -- s: de sobra, se os servidores abrirem um pouco antes
 
 local byId = {}
 for _, m in ipairs(ns.RACE_MILESTONES or {}) do byId[m.id] = m end
@@ -51,8 +53,19 @@ local function limpa(rec)
 	return rec
 end
 
-local NOME = "^[^,;|]+$"
-local NOME_MAX, PLACAR_MAX, TOP, DIGEST_MAX = 48, 12, 5, 250   -- bytes; bytes; entradas; bytes (1 YELL)
+local NOME_MAX, PLACAR_MAX, TOP, DIGEST_MAX = 73, 12, 5, 250   -- bytes; bytes; entradas; bytes (1 YELL)
+
+-- nome de personagem que chega repassado: só letras, de qualquer alfabeto, e no máximo um
+-- espaço ou hífen entre nome e sobrenome (73 bytes: 12 + 12 letras de 3 bytes). Barra
+-- propaganda no placar e o espaço na ponta, que derrubava o placar inteiro.
+local function nomeOk(s)
+	return #s <= NOME_MAX and (s:match("^[%a\128-\255]+$") or s:match("^[%a\128-\255]+[ %-][%a\128-\255]+$")) ~= nil
+end
+
+-- /played maior que o tempo desde o lançamento é mentira. `now`: hora do servidor; sem ela, não se sabe.
+local function cabe(played, now)
+	return not now or played <= now - R.LAUNCH + FOLGA_RELOGIO
+end
 
 -- o menor /played para estar no nível L: o piso do marco de nível mais alto até ele
 local function pisoNivel(level)
@@ -86,7 +99,7 @@ function R.EncodeDigest(scope, board, rows, now)
 end
 
 -- entrada inválida ou implausível cai sozinha; cabeçalho inválido derruba a mensagem
-local function decodeDigest(f)
+local function decodeDigest(f, now)
 	local scope, board = f[3], f[4]
 	if (scope ~= "G" and scope ~= "R") or not board:match("^%w+$") or #board > PLACAR_MAX then return nil end
 	local m, entries, lista = byId[board], {}, campos(f[5], ";")
@@ -95,8 +108,8 @@ local function decodeDigest(f)
 		local c = campos(e, ",")
 		local x = #c == 6 and { name = c[1], class = c[2], level = inteiro(c[3], 1, R.MAX_LEVEL),
 			xp = inteiro(c[4], 0, 100), val = inteiro(c[5], 1, TETO), age = inteiro(c[6], 0, R.EXPIRE) }
-		local ok = x and x.name:match(NOME) and #x.name <= NOME_MAX and x.class:match("^%u+$")
-			and x.level and x.xp and x.val and x.age
+		local ok = x and nomeOk(x.name) and x.class:match("^%u+$")
+			and x.level and x.xp and x.val and x.age and cabe(x.val, now)
 		if ok and board == "alto" then
 			ok = x.val >= pisoNivel(x.level)
 		elseif ok and m then
@@ -116,15 +129,17 @@ function R.EncodeRecord(rec)
 		math.floor(rec.played or 0), table.concat(ids, ";"))
 end
 
--- mensagem da rede -> "R", registro; nil se não é nossa ou tem campo inválido
-function R.Decode(s)
+-- mensagem da rede -> "R", registro; nil se não é nossa, tem campo inválido ou é implausível.
+-- `now`: a hora do servidor, para o teto do /played
+function R.Decode(s, now)
 	if type(s) ~= "string" then return nil end
 	local f = campos(s, "|")
-	if f[1] == "R1" and f[2] == "T" and #f == 5 then return decodeDigest(f) end
+	if f[1] == "R1" and f[2] == "T" and #f == 5 then return decodeDigest(f, now) end
 	if f[1] ~= "R1" or f[2] ~= "R" or #f ~= 7 then return nil end
 	local rec = { class = f[3], level = inteiro(f[4], 1, R.MAX_LEVEL), xp = inteiro(f[5], 0, 100),
 		played = inteiro(f[6], 0, TETO), ms = {} }
 	if not (rec.class:match("^%u+$") and rec.level and rec.xp and rec.played) then return nil end
+	if rec.played < pisoNivel(rec.level) or not cabe(rec.played, now) then return nil end
 	if f[7] ~= "" then
 		local pares = campos(f[7], ";")
 		if #pares > MAX_IDS then return nil end
@@ -235,7 +250,7 @@ function R.Board(store, q)
 		local exato, porPrimeiro, semSobrenome = {}, {}, {}
 		for _, row in ipairs(rows) do
 			exato[row.name] = row
-			local p = row.name:match("^%S+")
+			local p = row.name:match("^%S+") or row.name    -- só espaços: registro velho de antes do filtro
 			if p ~= row.name then porPrimeiro[p] = porPrimeiro[p] or row else semSobrenome[p] = row end
 		end
 		for _, e in ipairs(q.extra) do
@@ -594,12 +609,12 @@ end)
 -- profissão: pontos por perícia abandonável; a primeira vez que se vê uma é só a linha de base
 -- (quem já tinha 300 antes não ganha o marco agora)
 ns:On("SKILL_LINES_CHANGED", function()
-	if not (GetNumSkillLines and GetSkillLineInfo) then return end
 	ns.char.raceSkill = ns.char.raceSkill or {}
 	local base = ns.char.raceSkill
-	for i = 1, GetNumSkillLines() do
-		local nome, header, _, rank, _, _, _, abandonavel = GetSkillLineInfo(i)
-		if nome and not header and abandonavel and rank then
+	for i = 1, ns.NumSkillLines() do
+		local s = ns.SkillLine(i)
+		if s and s.name and not s.isHeader and s.isAbandonable and s.rank then
+			local nome, rank = s.name, s.rank
 			local antes = base[nome]
 			base[nome] = rank
 			for _, m in ipairs(MS) do
@@ -647,7 +662,7 @@ local function repassa()
 end
 
 local function onRecv(payload, sender, dist)
-	local kind, data = R.Decode(payload)
+	local kind, data = R.Decode(payload, GetServerTime and GetServerTime() or agora())
 	local nome = curto(sender)
 	if not kind or not nome or nome == "" or nome == meuNome() then return end
 	local guild = dist == "GUILD" and minhaGuilda() or nil
