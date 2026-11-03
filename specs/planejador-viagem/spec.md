@@ -88,7 +88,7 @@ bonde, o lugar da pedra e os teleportes conhecidos; Dijkstra.
 | voo | `s` + 10 | origem conhecida, ou não descoberta alcançada a pé (vira `discover`); destino conhecido |
 | barco/zepelim | `wait` + `s` | — |
 | bonde | fixo | — |
-| pedra de lar / Astral Recall | 10 + recarga restante | item ou feitiço disponível; destino = posição gravada ao vincular, senão a estalagem da cidade de `GetBindLocation()` |
+| pedra de lar / Astral Recall (nunca para fantasma, e só se poupar 5 min: gasta recarga, #61; o lugar é aprendido: o cliente só dá o nome, que é o da subzona, e o ponto se grava ao vincular ou ao pisar nela, então o personagem novo já nasce sabendo) | 10 + recarga restante | item ou feitiço disponível; destino = posição gravada ao vincular, senão a estalagem da cidade de `GetBindLocation()` |
 | teleporte de mago / druida | conjuração | feitiço conhecido |
 
 A velocidade a pé é medida enquanto o jogador anda (montaria e buffs entram sozinhos). Voos

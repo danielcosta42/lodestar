@@ -82,9 +82,16 @@ for _, leg in ipairs(r.legs) do
 end
 
 r = J.Plan(P(0, 0, 0), P(0, 3000, 0), ctx({ hearth = { c = 0, x = 3000, y = 10, wait = 0 } }))
-check(r.legs[1].k == "hearth", "pedra pronta perto do alvo: usa a pedra (" .. kinds(r) .. ")")
+check(r.legs[1].k == "walk", "voo poupa quase o mesmo: guarda a pedra (" .. kinds(r) .. ")")
+r = J.Plan(P(0, 0, 0), P(0, 3000, 0), ctx({ known = {}, hearth = { c = 0, x = 3000, y = 10, wait = 0 } }))
+check(r.legs[1].k == "hearth", "sem voo, pedra pronta perto do alvo: usa a pedra (" .. kinds(r) .. ")")
+check(r.legs[1].s == 10 and r.legs[1].gasto == 300 and r.s > 300, "a perna diz o tempo real; o plano conta o gasto da pedra")
 r = J.Plan(P(0, 0, 0), P(0, 3000, 0), ctx({ hearth = { c = 0, x = 3000, y = 10, wait = 900 } }))
 check(r.legs[1].k ~= "hearth", "pedra com 15 min de recarga: não usa (" .. kinds(r) .. ")")
+r = J.Plan(P(0, 0, 0), P(0, 1000, 0), ctx({ hearth = { c = 0, x = 1000, y = 5, wait = 0 } }))
+check(r.legs[1].k == "walk", "a pé em 2 min: não gasta 1 h de pedra para poupar 1 min (" .. kinds(r) .. ")")
+r = J.Plan(P(0, 0, 0), P(0, 1000, 0), ctx({ teleports = { { c = 0, x = 1000, y = 5, cast = 10, spell = 1 } } }))
+check(r.legs[1].k == "walk", "teleporte gasta reagente: mesma conta (" .. kinds(r) .. ")")
 
 r = J.Plan(P(0, 0, -400), P(1, 0, 100), ctx())
 check(r and kinds(r) == "walk,ship,walk", "outro continente: barco (" .. (r and kinds(r) or "nil") .. ")")
@@ -96,8 +103,8 @@ check(J.Plan(P(0, 0, 0), P(5, 0, 0), ctx()) == nil, "continente sem ligação: s
 r = J.Plan(P(0, 9000, 8990), P(0, 12000, 12010), ctx())
 check(kinds(r) == "walk,tram,walk", "bonde quando compensa (" .. kinds(r) .. ")")
 
-r = J.Plan(P(0, 0, 0), P(0, 3000, 0), ctx({ teleports = { { c = 0, x = 3000, y = 0, cast = 10, label = "Teleporte" } } }))
-check(r.legs[1].k == "teleport", "teleporte conhecido ao lado do alvo vence (" .. kinds(r) .. ")")
+r = J.Plan(P(0, 0, 0), P(0, 3000, 0), ctx({ known = {}, teleports = { { c = 0, x = 3000, y = 0, cast = 10, label = "Teleporte" } } }))
+check(r.legs[1].k == "teleport", "sem voo, teleporte conhecido ao lado do alvo vence (" .. kinds(r) .. ")")
 
 -- com os dados de verdade (TravelData.lua): o formato gerado encaixa no planejador
 local real = load("TravelData.lua", {}).travel
@@ -197,16 +204,56 @@ check(math.abs(T.Remaining(rota, P(0, 0, 0), 7) - (100 + 60 + 2)) < 0.01,
 	"quanto falta = a pé até o fim da perna + as próximas")
 check(math.abs(T.Remaining(rota, P(0, 350, 0), 7) - (50 + 60 + 2)) < 0.01, "andando, a perna atual encolhe")
 
-local inns = {
-	{ n = "Renee", zone = "Tirisfal Glades", x = 61.7, y = 52.0, f = "H" },
-	{ n = "Aliada", zone = "Tirisfal Glades", x = 10, y = 10, f = "A" },
-	{ n = "Farley", zone = "Elwynn Forest", x = 43.7, y = 65.8, f = "A" },
-	{ n = "Outra", zone = "Elwynn Forest", x = 90, y = 90, f = "A" },
-}
-local inn = T.SingleInn(inns, "Tirisfal Glades", "H")
-check(inn and inn.n == "Renee", "pedra sem posição: a única estalagem da facção na zona")
-check(T.SingleInn(inns, "Elwynn Forest", "A") == nil, "duas estalagens na zona: não chuta")
-check(T.SingleInn(inns, "Durotar", "H") == nil, "zona sem estalagem: nada")
+-- o que entra no plano. Pedra sem lugar gravado não entra: o personagem novo está vinculado ao
+-- início, e o palpite da estalagem da zona o mandava de volta para lá com a pedra em recarga.
+local function contexto(bind, fantasma)
+	UnitFactionGroup = function() return "Horde" end
+	UnitIsGhost = function() return fantasma end
+	GetRealmName = function() return "Reino" end
+	C_Container = { GetItemCooldown = function() return 0, 0, 1 end }
+	local c = load("Travel.lua", { Journey = J, char = { bind = bind, taxi = { [1] = true } }, db = {},
+		travel = { nodes = { [1] = { c = 1, x = 5, y = 5, f = "H" } }, teleports = { { spell = 18960, node = 1 } } },
+		ItemCount = function() return 1 end, IsSpellKnown = function() return true end,
+		SpellCooldown = function() return nil end, SpellName = function() return "Teleporte" end,
+	}).Travel:Context()
+	UnitFactionGroup, UnitIsGhost, GetRealmName, C_Container = nil, nil, nil, nil
+	return c
+end
+local comPedra = { leg = 1, legs = { { k = "hearth", s = 10, gasto = 300, a = P(0, 0, 0), b = P(0, 3000, 0) } } }
+check(T.Remaining(comPedra, P(0, 0, 0), 7) == 10, "o tempo mostrado é o real")
+check(T.Remaining(comPedra, P(0, 0, 0), 7, nil, true) == 310, "a comparação com rota nova conta o gasto, como o plano")
+check(T.ShouldReplace({ s = T.Remaining(comPedra, P(0, 0, 0), 7, nil, true) }, { s = 250 }),
+	"quem recusou a pedra e foi a pé: a rota a pé assume quando compensa")
+local gravada = { name = "Razor Hill", c = 1, x = 10, y = 20 }
+local c1 = contexto(gravada, false)
+check(c1.hearth and c1.hearth.x == 10 and c1.hearth.wait == 0, "pedra num lugar gravado entra no plano")
+check(#c1.teleports == 1 and c1.teleports[1].label == "Teleporte", "teleporte conhecido entra no plano")
+check(contexto({ name = "Deathknell" }, false).hearth == nil, "sem lugar gravado: sem pedra")
+local aqui, ali = P(0, 100, 200), P(0, 900, 900)
+local b = T.LearnBind(nil, "Shadow Grave", "Shadow Grave", aqui)
+check(b.c == 0 and b.x == 100 and b.y == 200, "personagem novo: nasce na subzona da pedra, o ponto é onde ele está")
+b = T.LearnBind(nil, "Razor Hill", "Valley of Trials", aqui)
+check(b.name == "Razor Hill" and b.c == nil, "primeiro login longe da pedra: só o nome")
+b = T.LearnBind(b, "Razor Hill", "Durotar Sands", ali)
+check(b.c == nil, "fora da subzona dela: segue sem ponto")
+b = T.LearnBind(b, "Razor Hill", "Razor Hill", ali)
+check(b.x == 900, "quem vinculou antes do addon aprende ao pisar na subzona")
+b = T.LearnBind(b, "Razor Hill", "Razor Hill", aqui)
+check(b.x == 900, "o ponto aprendido não anda com o jogador")
+b = T.LearnBind(b, "Colina", "Barrens", aqui)
+check(b.name == "Colina" and b.c == nil, "nome mudou sem vincular (idioma, addon desligado): esquece o ponto")
+b = T.LearnBind(b, "Brill", "Valley of Trials", aqui, true)
+check(b.name == "Brill" and b.x == 100, "acabou de vincular: é onde ele está, mesmo com outra subzona")
+b = T.LearnBind(b, "Brill", "Brill", ali, true)
+check(b.x == 900, "vincular de novo na mesma estalagem atualiza o ponto")
+b = T.LearnBind(b, "Brill", "Brill", aqui)
+check(T.LearnBind(b, nil, "Brill", aqui) == b and T.LearnBind(b, "", "Brill", aqui) == b, "cliente sem resposta: não mexe")
+check(T.LearnBind(b, "Brill", "Brill", nil) == b, "sem posição: não mexe")
+check(T.LearnBind(nil, "Brill", "", aqui).c == nil, "subzona vazia não casa com nada")
+check(contexto(nil, false).hearth == nil, "sem pedra vinculada: nada")
+local c2 = contexto(gravada, true)
+check(c2.hearth == nil and c2.teleports == nil, "fantasma não usa pedra nem teleporte")
+check(c1.known[1] and next(c2.known) == nil, "nem voo, que vale para quem está vivo")
 
 -- ── Destinations: corpo > manual > guia ──────────────────────────────────────
 local D = load("Destinations.lua", {}).Destinations
@@ -619,6 +666,25 @@ check(r and r.legs[2].k == "ship" and math.abs(r.legs[2].s - (1500 - 1000 - 500 
 r = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(80) }))       -- sai aos 80 s
 check(r and math.abs(r.legs[2].s - (80 - 500 / 7 + 200)) < 0.5 and r.legs[2].dep == 1080 and r.legs[2].stop == 1 and r.legs[2].sid == 7,
 	"chegou antes da saída: espera curta e a perna leva a hora de saída (" .. (r and r.legs[2].s or 0) .. ")")
+-- pedra até o cais e barco com horário: o gasto da pedra não é tempo que passa, então a saída
+-- vale pela chegada de verdade ao cais, não um barco depois
+r = J.Plan(P(0, 3500, 0), P(1, 0, 10), ctx({ now = 1000, sched = barcoH(80), known = {},
+	hearth = { c = 0, x = 0, y = -500, wait = 0 } }))
+local barcoDaPedra
+for _, l in ipairs(r and r.legs or {}) do if l.k == "ship" then barcoDaPedra = l end end
+check(r and r.legs[1].k == "hearth", "longe do cais: vai de pedra (" .. (r and kinds(r) or "sem rota") .. ")")
+check(barcoDaPedra and barcoDaPedra.dep == 1080, "a pedra leva ao cais a tempo do barco das " .. tostring(barcoDaPedra and barcoDaPedra.dep))
+-- horário vencido: NextDeparture dá nil e a conta estourava. O plano sai pela espera estimada.
+local semHorario = J.Plan(P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000 }))
+local vencidos = {
+	{ { [7] = { t0 = 200, last = 200 } }, "sem período aprendido, passou uma volta" },
+	{ { [7] = { t0 = 1000 - 13 * 3600, last = 1000 - 13 * 3600, T = 440 } }, "observação de mais de 12 h" },
+}
+for _, v in ipairs(vencidos) do
+	local ok, plano = pcall(J.Plan, P(0, 0, 0), P(1, 0, 10), ctx({ now = 1000, sched = v[1] }))
+	check(ok and plano and plano.legs[2].k == "ship" and plano.legs[2].dep == nil, v[2] .. ": não estoura (" .. tostring(plano) .. ")")
+	check(math.abs(plano.legs[2].s - semHorario.legs[2].s) < 0.5, v[2] .. ": igual a quem não tem horário")
+end
 
 -- quanto falta numa perna de barco com horário: até a saída + a travessia
 local rb2 = { leg = 1, legs = { { k = "ship", a = P(0, 0, 0), b = P(1, 0, 0), s = 999, dep = 1100, ride = 200 } } }

@@ -32,7 +32,7 @@ período sai deles: `n = round((último − primeiro) / T)`, `T = (último − p
 
 - Observação que diverge da previsão em mais de 30 s (o servidor reiniciou, a estimativa estava
   longe) recomeça a lista a partir dela.
-- Observação com mais de 12 h é descartada.
+- Observação com mais de 12 h é descartada. Horário que vence no meio do plano vale como quem não tem horário: a perna sai pela espera estimada (#61).
 
 ## Uso
 

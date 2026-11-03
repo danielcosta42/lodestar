@@ -47,7 +47,7 @@ local SLOTS = {
 	INVTYPE_HEAD=1, INVTYPE_NECK=2, INVTYPE_SHOULDER=3, INVTYPE_CLOAK=15,
 	INVTYPE_CHEST=5, INVTYPE_ROBE=5, INVTYPE_WAIST=6, INVTYPE_LEGS=7, INVTYPE_FEET=8,
 	INVTYPE_WRIST=9, INVTYPE_HAND=10, INVTYPE_FINGER={11,12}, INVTYPE_TRINKET={13,14},
-	INVTYPE_WEAPON={16,17}, INVTYPE_2HWEAPON=16, INVTYPE_WEAPONMAINHAND=16,
+	INVTYPE_WEAPON=16, INVTYPE_2HWEAPON=16, INVTYPE_WEAPONMAINHAND=16,
 	INVTYPE_WEAPONOFFHAND=17, INVTYPE_SHIELD=17, INVTYPE_HOLDABLE=17,
 	INVTYPE_RANGED=18, INVTYPE_RANGEDRIGHT=18, INVTYPE_THROWN=18, INVTYPE_RELIC=18,
 }
@@ -59,13 +59,38 @@ local function maxArmor(class, level)
 	if class=="WARRIOR" or class=="PALADIN" then return level>=40 and 4 or 3 end
 	return 4
 end
+-- Enum.ItemArmorSubclass só de algumas classes: escudo, libram, ídolo, totem
+local ARMOR_ONLY = {
+	[6] = { WARRIOR=true, PALADIN=true, SHAMAN=true }, [7] = { PALADIN=true },
+	[8] = { DRUID=true }, [9] = { SHAMAN=true },
+}
+-- Enum.ItemWeaponSubclass que cada classe pode treinar (o resto do jogo não diz antes de equipar)
+local function set(...)
+	local t = {}
+	for _, id in ipairs({ ... }) do t[id] = true end
+	return t
+end
+local WEAPONS = {
+	WARRIOR = set(0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 15, 16, 18),
+	PALADIN = set(0, 1, 4, 5, 6, 7, 8),
+	HUNTER  = set(0, 1, 2, 3, 6, 7, 8, 10, 13, 15, 16, 18),
+	ROGUE   = set(2, 3, 4, 7, 13, 15, 16, 18),
+	PRIEST  = set(4, 10, 15, 19),
+	SHAMAN  = set(0, 1, 4, 5, 10, 13, 15),
+	MAGE    = set(7, 10, 15, 19),
+	WARLOCK = set(7, 10, 15, 19),
+	DRUID   = set(4, 5, 6, 10, 13, 15),
+}
 local function usable(class, level, classID, subClassID)
 	if classID == 4 then                       -- Armadura
+		local only = ARMOR_ONLY[subClassID]
+		if only then return only[class] or false end
 		local r = ARMOR_RANK[subClassID]
-		if not r then return true end          -- escudo/miscelânea: permite
+		if not r then return true end          -- miscelânea: permite
 		return r <= maxArmor(class, level)
 	end
-	return true                                -- armas etc.: aproxima como usável
+	if classID == 2 then return WEAPONS[class] and WEAPONS[class][subClassID] or false end
+	return true
 end
 
 --------------------------------------------------------------------------------
@@ -73,20 +98,26 @@ function GA:Score(link, class)
 	class = class or select(2, UnitClass("player"))
 	local w = W[class]; if not (w and link) then return 0 end
 	local s = 0
-	local stats = GetItemStats and GetItemStats(link)
+	local stats = ns.ItemStats(link)
 	if stats then
 		for k, v in pairs(stats) do
 			local c = CANON[k]
 			if c and w[c] then s = s + v * w[c] end
 		end
 	end
-	local ilvl = select(4, GetItemInfo(link)) or 0
+	local ilvl = select(4, ns.ItemInfo(link)) or 0
 	return s + ilvl * 0.5
 end
 
 local function slotScore(invSlot, class)
 	local link = GetInventoryItemLink("player", invSlot)
-	if not link then return -1 end             -- slot vazio: qualquer coisa é upgrade
+	if not link then
+		-- mão esquerda com arma de duas mãos na direita não está vazia, está ocupada
+		local main = invSlot == 17 and GetInventoryItemLink("player", 16)
+		if main and select(4, ns.ItemInfoInstant(main)) == "INVTYPE_2HWEAPON" then return math.huge end
+		return -1                              -- slot vazio: qualquer coisa é upgrade
+	end
+	if not ns.ItemInfo(link) then return math.huge end   -- ainda sem dado: não dá para comparar
 	return GA:Score(link, class)
 end
 
@@ -96,7 +127,6 @@ end
 local advised = {}          -- [itemID] = true (uma vez por sessão)
 local function scan()
 	if not (ns.db and ns.db.gearAdvisor and ns.currentGuide) then return end
-	if not GetItemInfoInstant then return end
 	local class = select(2, UnitClass("player"))
 	local level = UnitLevel("player") or 1
 	if not W[class] then return end
@@ -105,10 +135,12 @@ local function scan()
 	for bag = 0, 4 do
 		for slot = 1, bagSlots(bag) do
 			local link = bagLink(bag, slot)
-			if link and IsEquippableItem and IsEquippableItem(link) then
-				local itemID, _, _, equipLoc, _, classID, subClassID = GetItemInfoInstant(link)
+			if link and ns.IsEquippable(link) then
+				local itemID, _, _, equipLoc, _, classID, subClassID = ns.ItemInfoInstant(link)
 				local dest = equipLoc and SLOTS[equipLoc]
-				if dest and itemID and not advised[itemID] and usable(class, level, classID, subClassID) then
+				local minLevel = select(5, ns.ItemInfo(link))        -- nil: ainda sem dado, fica para depois
+				if dest and itemID and minLevel and minLevel <= level and not advised[itemID]
+					and usable(class, level, classID, subClassID) then
 					local sc = GA:Score(link, class)
 					local eqScore = math.huge
 					if type(dest) == "table" then

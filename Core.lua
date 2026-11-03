@@ -117,7 +117,7 @@ local DB_DEFAULTS = {
 	reportCard = true,    -- boletim de leveling (nota + card compartilhável)
 	cardEvery = false,    -- boletim a cada nível (desligado: só nos marcos)
 	cardAskGuild = true,  -- o boletim pergunta se manda no chat da guilda
-	raceChat = true,      -- corrida: marcos e liderança no chat da guilda (os próprios)
+	raceChat = false,     -- OPT-IN: marcos e liderança no chat da guilda (os próprios)
 	raceToasts = true,    -- corrida: toast de ultrapassagem no placar da guilda
 	race = {},            -- corrida: registros por realm (specs/corrida)
 	raceOnlyLs = false,   -- corrida: Mais alto só com quem usa o Lodestar (filtro do painel)
@@ -165,6 +165,8 @@ ns:On("ADDON_LOADED", function(_, name)
 	_G.LodestarCharDB = applyDefaults(_G.LodestarCharDB or {}, CHAR_DEFAULTS)
 	ns.db = _G.LodestarDB
 	ns.char = _G.LodestarCharDB
+	-- o raceChat nasceu ligado e o padrão ficou gravado em todo save: vira opt-in uma vez só
+	if not ns.db.raceChatOptIn then ns.db.raceChat, ns.db.raceChatOptIn = false, true end
 	fire("_INIT")               -- módulos que dependem da config inicializam aqui
 end)
 

@@ -133,9 +133,9 @@ end
 
 -- ícone da perna de pedra ou teleporte (o que lançar)
 local function legIcon(leg)
-	if leg.k == "hearth" and leg.spell then return GetSpellTexture and GetSpellTexture(leg.spell) end
-	if leg.k == "hearth" then return GetItemIcon and GetItemIcon(6948) end
-	if leg.k == "teleport" and leg.spell and GetSpellTexture then return GetSpellTexture(leg.spell) end
+	if leg.k == "hearth" and leg.spell then return ns.SpellIcon(leg.spell) end
+	if leg.k == "hearth" then return ns.ItemIcon(6948) end
+	if leg.k == "teleport" and leg.spell then return ns.SpellIcon(leg.spell) end
 end
 
 -- O alvo da seta: o fim da perna atual da rota. Na última perna até um passo do guia,
@@ -386,9 +386,10 @@ local function showTransit(a, goal)
 	a.name:SetText(ns.L.IN_FLIGHT .. (zone and (": " .. localizedZone(zone)) or ""))
 end
 
--- Seta de uma perna da rota: a pé aponta para o fim dela; barco, bonde, pedra e
--- teleporte não têm direção — dizem o que fazer (e mostram o ícone do que lançar).
-local STILL = { ship = true, tram = true, hearth = true, teleport = true }
+-- Seta de uma perna da rota: a pé aponta para o fim dela; barco e bonde não têm direção —
+-- dizem o que fazer. Pedra e teleporte dizem e seguem apontando (com o ícone do que lançar):
+-- são opcionais, e quem prefere ir a pé não fica sem seta.
+local STILL = { ship = true, tram = true }
 local function legArrow(a, goal)
 	local C = UI.COL
 	a:Show()

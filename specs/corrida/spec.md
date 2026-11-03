@@ -13,8 +13,8 @@ e nada no jogo mostra quem está na frente.
 Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
 
 - dá a quem usa um motivo para seguir usando (competição, ultrapassagens, marcos);
-- aparece, em mensagens curtas e raras no chat da guilda, para quem ainda não usa, com o nome do
-  addon — a propaganda é o próprio uso.
+- aparece, em mensagens curtas e raras no chat da guilda de quem ligou o aviso, para quem ainda não
+  usa, com o nome do addon — a propaganda é o próprio uso.
 
 ## Marcos
 
@@ -45,7 +45,10 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
   no roster. No máximo 300 registros só de repasse (sai o de notícia mais velha).
 - Descarte do implausível: marco abaixo do piso, nível fora de 1–60, XP fora de 0–100, marco de
   nível acima do nível do registro, /played total menor que o tempo de um marco, /played abaixo do
-  piso do nível. No repasse, a entrada ruim cai sozinha (o resto da mensagem vale).
+  piso do nível, /played maior que o tempo desde o lançamento (`R.LAUNCH`, com 1 h de folga para o
+  relógio; a hora é a do servidor), nome repassado que não seja só letras com no máximo um espaço
+  ou hífen entre nome e sobrenome. No repasse, a entrada ruim cai sozinha (o resto da mensagem vale). Vale para o registro do
+  próprio dono também: o piso do nível e o teto do /played não dependem de quem manda (#61).
 - Sem garantia contra trapaça: o painel diz "placar da rede, não oficial".
 - Registro sem notícia há 30 dias sai.
 
@@ -71,7 +74,10 @@ Um placar de leveling entre quem usa o Lodestar, na guilda e no realm, que:
 
 ## Avisos
 
-- **Chat da guilda** (ligado, com opção de desligar), só os eventos do próprio jogador:
+- **Chat da guilda** (desligado; quem quer liga nas Configurações), só os eventos do próprio
+  jogador. Nasceu ligado, mas o limite é por personagem: 100 pessoas no mesmo marco davam cerca de
+  100 mensagens no dia do lançamento. O padrão antigo ficou gravado nos saves, então a mudança
+  desliga uma vez e depois respeita a escolha (#61):
   - assumiu o 1º lugar de "Mais alto" na guilda: passou quem era o 1º (que segue no placar), está à
     frente dele por nível (não pelo XP, que vai e volta entre quem upa junto), com pelo menos 3 no
     placar; uma vez por nível;

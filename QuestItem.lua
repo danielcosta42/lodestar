@@ -77,7 +77,9 @@ local function ensureButton()
 	button = CreateFrame("Button", "LodestarQuestItem", UIParent, "SecureActionButtonTemplate")
 	button:SetSize(42, 42)
 	button:SetFrameStrata("MEDIUM")
-	button:RegisterForClicks("AnyUp")
+	-- os dois: com ActionButtonUseKeyDown ligado (o padrão) a ação segura sai na descida e
+	-- SecureActionButton_OnClick ignora a subida
+	button:RegisterForClicks("AnyUp", "AnyDown")
 	button:SetAttribute("type", "item")
 
 	-- halo pulsante (destaque quando aparece)

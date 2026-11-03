@@ -42,23 +42,11 @@ function T.AdvanceLeg(route, pos, onTaxi)
 	return i
 end
 
--- A estalagem da zona, quando a zona tem uma só da facção: é onde a pedra está quando o
--- lugar exato não foi gravado (vinculou antes do Lodestar). Duas ou mais: não chuta.
-function T.SingleInn(inns, zone, fac)
-	local found
-	for _, inn in ipairs(inns or {}) do
-		if inn.zone == zone and inn.f:find(fac, 1, true) then
-			if found then return nil end
-			found = inn
-		end
-	end
-	return found
-end
-
 -- Segundos que faltam: a perna a pé atual pela distância que sobra, as próximas inteiras.
 -- `now` (hora do servidor): perna de barco com horário conta até a saída mais a travessia
 -- (já a bordo, o que falta dela); sem `now`, o custo com que a rota foi planejada. `reta`: a
--- pé em linha reta mesmo com caminho — para comparar com uma rota nova, que é custada assim.
+-- pé em linha reta mesmo com caminho e com o `gasto` da pedra — para comparar com uma rota
+-- nova, que é custada assim.
 function T.Remaining(route, pos, speed, now, reta)
 	local s = 0
 	for i = route.leg, #route.legs do
@@ -69,7 +57,7 @@ function T.Remaining(route, pos, speed, now, reta)
 		elseif leg.k == "ship" and leg.dep and now then
 			s = s + math.max(0, leg.dep - now) + math.max(0, (leg.ride or 0) - math.max(0, now - leg.dep))
 		else
-			s = s + leg.s
+			s = s + leg.s + (reta and leg.gasto or 0)
 		end
 	end
 	return s
@@ -139,35 +127,29 @@ local function cooldownLeft(start, duration)
 	return math.max(0, start + duration - GetTime())
 end
 
--- nome localizado da zona -> inglês (a pedra diz o nome no idioma do cliente)
-local engZone
-local function toEnglish(loc)
-	if not engZone then
-		engZone = {}
-		for eng, id in pairs(ns.zoneUiMap or {}) do
-			local info = C_Map and C_Map.GetMapInfo and C_Map.GetMapInfo(id)
-			if info and info.name then engZone[info.name:lower()] = eng end
-		end
-	end
-	return loc and engZone[loc:lower()]
+-- Onde a pedra está. O cliente só dá o nome do lugar, que é o nome da subzona, em qualquer idioma;
+-- o ponto se aprende: quem acabou de vincular (`bound`) está lá, e quem pisa na subzona de mesmo
+-- nome também. O personagem novo nasce nela (Shadow Grave, Valley of Trials), e quem vinculou
+-- antes do Lodestar aprende ao chegar. Nome que muda sem vincular (o idioma do cliente, ou
+-- vinculou com o addon desligado) esquece o ponto. Sem ponto a pedra fica fora da rota: a zona
+-- não diz o lugar, e chutar a estalagem mandava o personagem novo de volta ao início.
+function T.LearnBind(bind, name, subzone, pos, bound)
+	if not (pos and name and name ~= "") then return bind end
+	if not bind or bind.name ~= name then bind = { name = name } end
+	if bound or (not bind.c and subzone == name) then bind.c, bind.x, bind.y = pos.c, pos.x, pos.y end
+	return bind
 end
 
 local function hearth()
 	local bind = ns.char and ns.char.bind
-	if bind and not bind.c then                 -- lugar não gravado: a estalagem única da zona
-		local zone = toEnglish(ns.TravelPlanner and ns.TravelPlanner:HearthZone())
-		local inn = zone and T.SingleInn(ns.travel and ns.travel.services.inn, zone, faction())
-		local w = inn and T.World(inn.zone, inn.x, inn.y)
-		if w then bind = { name = bind.name, c = w.c, x = w.x, y = w.y } else bind = nil end
-	end
 	if not (bind and bind.c) then return nil end
 	local wait, spell
-	if GetItemCount and GetItemCount(HEARTH_ITEM) > 0 then
+	if ns.ItemCount(HEARTH_ITEM) > 0 then
 		local getCd = (C_Container and C_Container.GetItemCooldown) or GetItemCooldown
 		wait = cooldownLeft(getCd(HEARTH_ITEM))
 	end
-	if IsSpellKnown and IsSpellKnown(ASTRAL_RECALL) and GetSpellCooldown then
-		local w = cooldownLeft(GetSpellCooldown(ASTRAL_RECALL))
+	if ns.IsSpellKnown(ASTRAL_RECALL) then
+		local w = cooldownLeft(ns.SpellCooldown(ASTRAL_RECALL))
 		if not wait or w < wait then wait, spell = w, ASTRAL_RECALL end   -- o Retorno sai antes
 	end
 	if not wait then return nil end
@@ -184,14 +166,13 @@ end
 local function teleports()
 	local out = {}
 	local data = ns.travel
-	if not (data and IsSpellKnown) then return out end
-	local hasRune = GetItemCount and GetItemCount(RUNE_TELEPORT) > 0
+	if not data then return out end
+	local hasRune = ns.ItemCount(RUNE_TELEPORT) > 0
 	for _, t in ipairs(data.teleports or {}) do
 		local pt = T.TeleportPoint(t, data.nodes, ns.db and ns.db.teleportArrival)
 		local mage = t.spell ~= 18960
-		if pt and IsSpellKnown(t.spell) and (not mage or hasRune) then
-			local name = GetSpellInfo and GetSpellInfo(t.spell) or nil
-			out[#out + 1] = { c = pt.c, x = pt.x, y = pt.y, cast = 10, label = name, spell = t.spell }
+		if pt and ns.IsSpellKnown(t.spell) and (not mage or hasRune) then
+			out[#out + 1] = { c = pt.c, x = pt.x, y = pt.y, cast = 10, label = ns.SpellName(t.spell), spell = t.spell }
 		end
 	end
 	return out
@@ -210,8 +191,10 @@ local function serverNow() return GetServerTime and GetServerTime() or 0 end
 
 function T:Context()
 	local fac = faction()
-	return { data = ns.travel, fac = fac, known = knownTaxi(fac), speed = speed,
-		hearth = hearth(), teleports = teleports(), now = serverNow(), sched = transit() }
+	local ghost = UnitIsGhost and UnitIsGhost("player")      -- fantasma só anda: sem pedra, teleporte ou voo
+	return { data = ns.travel, fac = fac, known = ghost and {} or knownTaxi(fac), speed = speed,
+		hearth = not ghost and hearth() or nil, teleports = not ghost and teleports() or nil,
+		now = serverNow(), sched = transit() }
 end
 
 -- Uma observação do transporte `sid` (parada k, "arr" | "dep", hora do servidor t); com a
@@ -287,6 +270,9 @@ end
 -- eventos e ticker (só no jogo)
 --------------------------------------------------------------------------------
 if not ns.On then return end
+
+local vinculou = false                 -- HEARTHSTONE_BOUND: a pedra acabou de vir para cá
+ns:On("HEARTHSTONE_BOUND", function() vinculou = true end)
 
 -- voos conhecidos: o mapa de voo é a fonte (C_TaxiMap dá o id do nó e se você o conhece)
 ns:On("TAXIMAP_OPENED", function()
@@ -492,16 +478,9 @@ ns:Every(1, function()
 		speed = T.NextSpeed(speed, v, leg and leg.k)
 	end
 	lastPos, lastT = pos, now
-	-- pedra vinculada num lugar novo: é onde o jogador está agora (acabou de falar com o
-	-- estalajadeiro)
-	local bindName = GetBindLocation and GetBindLocation()
-	if bindName and pos and (not ns.char.bind or ns.char.bind.name ~= bindName) then
-		if ns.char.bind then                     -- mudou com o jogo aberto: está na estalagem
-			ns.char.bind = { name = bindName, c = pos.c, x = pos.x, y = pos.y }
-		else
-			ns.char.bind = { name = bindName }  -- primeiro login: lugar desconhecido
-		end
-	end
+	ns.char.bind = T.LearnBind(ns.char.bind, GetBindLocation and GetBindLocation(),
+		GetSubZoneText and GetSubZoneText(), pos, vinculou)
+	if pos then vinculou = false end
 	-- destino mudou (passo novo, manual, corpo): rota nova já
 	local dest, kind = destination()
 	if keyOf(dest, kind) ~= routeKey then return T:Replan(true) end

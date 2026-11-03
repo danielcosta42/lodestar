@@ -244,11 +244,11 @@ end)
 -- inteligente); senão o valor de venda desempata.
 local function rewardScore(link)
 	if not link then return 0 end
-	if IsEquippableItem and IsEquippableItem(link) then
+	if ns.IsEquippable(link) then
 		local s = ns.GearAdvisor and ns.GearAdvisor:Score(link) or 0
 		return 1000 + s          -- qualquer equipável domina itens de valor
 	end
-	local price = select(11, GetItemInfo(link))
+	local price = select(11, ns.ItemInfo(link))
 	return (price or 0) / 10000
 end
 local function bestRewardIndex(n)

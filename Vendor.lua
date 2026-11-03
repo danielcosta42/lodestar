@@ -22,7 +22,7 @@ local function useContainer(bag, slot)
 	local f = (Container and Container.UseContainerItem) or UseContainerItem
 	if f then f(bag, slot) end
 end
-local function coin(v) return GetCoinTextureString and GetCoinTextureString(v) or tostring(v) end
+local coin = ns.CoinText
 
 --------------------------------------------------------------------------------
 local function autoRepair()
@@ -53,7 +53,7 @@ local function autoSell()
 		for slot = 1, bagSlots(bag) do
 			local quality, link, noValue, count = bagInfo(bag, slot)
 			if link and quality == 0 and not noValue then      -- cinza (Poor) e vendável
-				local price = select(11, GetItemInfo(link))
+				local price = select(11, ns.ItemInfo(link))
 				total = total + (price or 0) * (count or 1)
 				useContainer(bag, slot)
 			end

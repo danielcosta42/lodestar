@@ -153,7 +153,7 @@ check(R.EncodeDigest("G", "alto", { { name = "Zé", class = "MAGE", level = 60, 
 	"Mais alto sem /played conhecido: não se repassa")
 check(R.Decode("R1|T|X|l10|Ana,MAGE,30,10,3600,0") == nil and R.Decode("R1|T|R|" .. string.rep("a", 13) .. "|Ana,MAGE,30,10,3600,0") == nil,
 	"escopo ou placar inválido: descartado")
-_, dg = R.Decode("R1|T|R|l10|Ana,MAGE,99,10,3600,0;A;Gil Souza,DRUID,30,0,4000,0;" .. string.rep("x", 49) .. ",MAGE,30,0,4000,0")
+_, dg = R.Decode("R1|T|R|l10|Ana,MAGE,99,10,3600,0;A;Gil Souza,DRUID,30,0,4000,0;" .. string.rep("x", 74) .. ",MAGE,30,0,4000,0")
 check(dg and #dg.entries == 1 and dg.entries[1].name == "Gil Souza", "entrada ruim cai sozinha; nome com sobrenome passa")
 _, dg = R.Decode("R1|T|R|l10|" .. string.rep("é", 20) .. ",MAGE,30,0,4000,0")
 check(dg and #dg.entries == 1, "nome de 40 bytes (acentos) passa")
@@ -221,14 +221,17 @@ R.Expire(velho, 102 * 86400)
 check(velho.recs.Ugo == nil, "dois dias depois, com 31 dias de notícia: sai")
 
 -- no máximo 300 registros só de repasse: sai o de notícia mais velha
-local cheio = { recs = {} }
+local cheio, primeiro, ultimo = { recs = {} }
 for i = 1, 310 do
-	local _, x = R.Decode(("R1|T|R|l10|P%03d,MAGE,20,0,5000,%d"):format(i, 400 - i))
+	local nome = "P" .. string.char(97 + math.floor(i / 26), 97 + i % 26, 97 + i % 7)
+	local _, x = R.Decode(("R1|T|R|l10|%s,MAGE,20,0,5000,%d"):format(nome, 400 - i))
 	R.MergeRelay(cheio, x, 1000, nil, "Eu")
+	if i == 1 then primeiro = nome end
+	ultimo = nome
 end
 local n = 0
 for _ in pairs(cheio.recs) do n = n + 1 end
-check(n == 300 and cheio.recs.P001 == nil and cheio.recs.P310, "300 repassados no máximo; sai o mais velho")
+check(n == 300 and cheio.recs[primeiro] == nil and cheio.recs[ultimo], "300 repassados no máximo; sai o mais velho")
 
 local boards = R.Boards()
 check(boards[1] == "alto" and boards[2] == "l10" and #boards == #MS + 1, "placares: Mais alto e um por marco")
@@ -296,5 +299,48 @@ check(txt == "[Lodestar] Corrida da guilda (Nível 10 mais rápido): 1. Eu 30m �
 local muitos2 = {}
 for i = 1, 5 do muitos2[i] = { name = string.rep("N", 45) .. i, level = 60 } end
 check(#R.BoardText(LP, "alto", muitos2, "curseforge.com/wow/addons/lodestar") <= 255, "nomes longos: cabe em 255")
+
+-- nome forjado no repasse: o espaço na ponta derrubava o placar (table index is nil) e o
+-- texto de propaganda ia para o ranking; os dois eram repassados adiante
+local function entradas(nome)
+	local _, d = R.Decode("R1|T|R|l10|" .. nome .. ",MAGE,30,10,3600,0")
+	return #d.entries
+end
+for _, bom in ipairs({ "Ana", "Ana Costa", "Ana-Costa", "José", "Conceição Araújo", "Лена", "小明",
+	string.rep("д", 12) .. " " .. string.rep("д", 12), string.rep("明", 12) .. " " .. string.rep("明", 12) }) do
+	check(entradas(bom) == 1, "nome de personagem passa: " .. bom)
+end
+for _, ruim in ipairs({ " x", "x ", "  ", " ", "Ana  Costa", "Ana - Costa", "-Ana", "Ana-", "Ana Maria Costa",
+	"Compre ouro agora", "Buy-Gold-Now", "Compre ouro em evil.example", "evil.example", "Ana2", "[Ana]", "<GM>",
+	string.rep("a", 74) }) do
+	check(entradas(ruim) == 0, "nome inválido cai: '" .. ruim .. "'")
+end
+check(R.Decode("R1|T|R|l10|a|b,MAGE,30,10,3600,0") == nil, "o separador no nome não passa na contagem de campos")
+
+-- registro envenenado de antes do filtro, salvo: o placar segue de pé
+local velho = { recs = { [" x"] = { class = "WARRIOR", level = 10, xp = 0, played = 900, ms = {} },
+	["  "] = { class = "WARRIOR", level = 10, xp = 0, played = 900, ms = {} } } }
+local okBoard, linhas = pcall(R.Board, velho, { kind = "alto", me = me, now = 1000,
+	extra = { { name = "Ana Costa", level = 20, class = "MAGE" }, { name = " y", level = 5, class = "MAGE" } } })
+check(okBoard and #linhas >= 2, "placar com nome envenenado salvo não estoura: " .. tostring(linhas))
+
+-- ninguém jogou antes do lançamento: /played maior que o tempo desde ele é mentira
+local L0 = R.LAUNCH
+check(L0 == 1793833200, "lançamento: 2026-11-04 23:00 UTC")
+local depois = L0 + 2 * 3600                        -- duas horas de jogo
+check(R.Decode("R1|R|MAGE|5|0|3600|", depois) ~= nil, "uma hora de /played em duas de jogo: vale")
+check(R.Decode("R1|R|MAGE|5|0|10000|", depois) ~= nil, "a folga do relógio cobre uma hora a mais")
+check(R.Decode("R1|R|MAGE|60|0|108000|", depois) == nil, "nível 60 com 30 h na segunda hora: cai")
+check(R.Decode("R1|R|MAGE|5|0|20000|", depois) == nil, "/played acima do tempo desde o lançamento: cai")
+check(R.Decode("R1|R|MAGE|60|0|108000|", L0 + 40 * 3600) ~= nil, "nível 60 com 30 h no segundo dia: vale")
+local _, dd = R.Decode("R1|T|R|alto|Ana,MAGE,60,0,108000,0;Bia,MAGE,5,0,3600,0", depois)
+check(#dd.entries == 1 and dd.entries[1].name == "Bia", "no repasse, a entrada impossível cai e o resto vale")
+_, dd = R.Decode("R1|T|R|l10|Ana,MAGE,30,10,50000,0;Bia,MAGE,30,10,3600,0", depois)
+check(#dd.entries == 1 and dd.entries[1].name == "Bia", "marco repassado segue o mesmo teto")
+
+-- nível sem o piso de /played: o dono não burla o que o repasse já barrava
+check(R.Decode("R1|R|MAGE|60|0|100|") == nil, "nível 60 com 100 s de /played: cai")
+check(R.Decode("R1|R|MAGE|10|0|899|") == nil and R.Decode("R1|R|MAGE|10|0|900|") ~= nil, "o piso do nível 10 é o do marco")
+check(R.Decode("R1|R|MAGE|5|0|0|") ~= nil, "abaixo do primeiro marco não há piso")
 
 print(("ok: %d checks"):format(checks))
