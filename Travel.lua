@@ -127,10 +127,21 @@ local function cooldownLeft(start, duration)
 	return math.max(0, start + duration - GetTime())
 end
 
+-- Onde a pedra está. O cliente só dá o nome do lugar, que é o nome da subzona, em qualquer idioma;
+-- o ponto se aprende: quem acabou de vincular (`bound`) está lá, e quem pisa na subzona de mesmo
+-- nome também. O personagem novo nasce nela (Shadow Grave, Valley of Trials), e quem vinculou
+-- antes do Lodestar aprende ao chegar. Nome que muda sem vincular (o idioma do cliente, ou
+-- vinculou com o addon desligado) esquece o ponto. Sem ponto a pedra fica fora da rota: a zona
+-- não diz o lugar, e chutar a estalagem mandava o personagem novo de volta ao início.
+function T.LearnBind(bind, name, subzone, pos, bound)
+	if not (pos and name and name ~= "") then return bind end
+	if not bind or bind.name ~= name then bind = { name = name } end
+	if bound or (not bind.c and subzone == name) then bind.c, bind.x, bind.y = pos.c, pos.x, pos.y end
+	return bind
+end
+
 local function hearth()
 	local bind = ns.char and ns.char.bind
-	-- sem lugar gravado não há pedra na rota: o personagem novo está vinculado ao início (Deathknell,
-	-- Valley of Trials), não à estalagem da zona, e usá-la o mandaria de volta para lá
 	if not (bind and bind.c) then return nil end
 	local wait, spell
 	if ns.ItemCount(HEARTH_ITEM) > 0 then
@@ -259,6 +270,9 @@ end
 -- eventos e ticker (só no jogo)
 --------------------------------------------------------------------------------
 if not ns.On then return end
+
+local vinculou = false                 -- HEARTHSTONE_BOUND: a pedra acabou de vir para cá
+ns:On("HEARTHSTONE_BOUND", function() vinculou = true end)
 
 -- voos conhecidos: o mapa de voo é a fonte (C_TaxiMap dá o id do nó e se você o conhece)
 ns:On("TAXIMAP_OPENED", function()
@@ -464,16 +478,9 @@ ns:Every(1, function()
 		speed = T.NextSpeed(speed, v, leg and leg.k)
 	end
 	lastPos, lastT = pos, now
-	-- pedra vinculada num lugar novo: é onde o jogador está agora (acabou de falar com o
-	-- estalajadeiro)
-	local bindName = GetBindLocation and GetBindLocation()
-	if bindName and pos and (not ns.char.bind or ns.char.bind.name ~= bindName) then
-		if ns.char.bind then                     -- mudou com o jogo aberto: está na estalagem
-			ns.char.bind = { name = bindName, c = pos.c, x = pos.x, y = pos.y }
-		else
-			ns.char.bind = { name = bindName }  -- primeiro login: lugar desconhecido
-		end
-	end
+	ns.char.bind = T.LearnBind(ns.char.bind, GetBindLocation and GetBindLocation(),
+		GetSubZoneText and GetSubZoneText(), pos, vinculou)
+	if pos then vinculou = false end
 	-- destino mudou (passo novo, manual, corpo): rota nova já
 	local dest, kind = destination()
 	if keyOf(dest, kind) ~= routeKey then return T:Replan(true) end
