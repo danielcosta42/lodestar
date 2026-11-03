@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Durotar (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "2fc1b03e",
+	rev = "60cd151b",
 }, [[
 step
   only level>=1
@@ -553,8 +553,8 @@ step
   collect 9 Naga Spinefin##286008 |q 99051 |goto Durotar 59.38,25.92 |tip {dropsfrom}Spitelash Scout, Spitelash Attendant
 step
   only hasitem(277661)
-  kill Dustwind Storm Witch##3118 |goto Durotar 51.56,21.65 |tip Loot the quest item here — it starts the quest.
-  accept A Simmering Storm##97281 |goto Durotar 51.56,21.65
+  use Dull Storm Orb##277661 |tip It starts the quest.
+  accept A Simmering Storm##97281
 step
   only haveq(97281)
   note Bring the Dull Stormy Orb to Rezlak near Drygulch Ravine.

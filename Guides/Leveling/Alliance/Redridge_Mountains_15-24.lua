@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-24)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Darkshore (13-20)",
-	rev = "63d55533",
+	rev = "ef66b5d0",
 }, [[
 step
   ding 14
@@ -226,10 +226,6 @@ step
   kill Blackrock Shadowcaster##436 |q 115 |goto Redridge Mountains 63.08,54.64 |elite
   collect 3 Midnight Orb##1261 |q 115 |goto Redridge Mountains 63.08,54.64
 step
-  only hasitem(1962)
-  kill Shadowhide Darkweaver##429 |goto Redridge Mountains 75.2,49.48 |tip Loot the quest item here — it starts the quest.
-  accept Theocritus' Retrieval##178 |goto Redridge Mountains 75.2,49.48
-step
   only haveq(91)
   note Bring 10 Shadowhide Pendants to Bailiff Conacher in the Lakeshire Town Hall.
   collect 10 Shadowhide Pendant##1075 |q 91 |goto Redridge Mountains 73.87,40.45 |tip {dropsfrom}Shadowhide Brute, Shadowhide Gnoll, Rabid Shadowhide Gnoll
@@ -318,6 +314,10 @@ step
 step
   note Kill Lieutenant Fangore and return to Magistrate Solomon in Lakeshire with his paw.
   collect Fangore's Paw##3632 |q 180 |goto Redridge Mountains 75.09,37.06 |tip {dropsfrom}Lieutenant Fangore
+step
+  only hasitem(1962)
+  use Glowing Shadowhide Pendant##1962 |tip It starts the quest.
+  accept Theocritus' Retrieval##178
 step
   only haveq(169)
   talk Magistrate Solomon##344

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silverpine Forest (11-20)",
-	rev = "606a6717",
+	rev = "c12b82ef",
 }, [[
 step
   only Undead level>=1
@@ -235,8 +235,8 @@ step
   collect Tirisfal Pumpkin##2846 |q 365 |goto Tirisfal Glades 35.86,50.49
 step
   only hasitem(2839)
-  kill Rattlecage Soldier##1520 |goto Tirisfal Glades 45.84,40.43 |tip Loot the quest item here — it starts the quest.
-  accept A Letter Undelivered##361 |goto Tirisfal Glades 45.84,40.43
+  use A Letter to Yvette##2839 |tip It starts the quest.
+  accept A Letter Undelivered##361
 step
   only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96652) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96659)
   note Speak to Eleanor Shackleton near Brill.

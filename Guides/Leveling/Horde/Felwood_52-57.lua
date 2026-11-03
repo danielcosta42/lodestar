@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Felwood (52-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Moonglade (55-60)",
-	rev = "1b266b33",
+	rev = "8e52b1f6",
 }, [[
 step
   ding 51
@@ -119,8 +119,8 @@ step
   accept The Wrong Stuff##8421 |goto Felwood 41.36,45.02
 step
   only hasitem(13140)
-  kill Jaedenar Enforcer##7114 |goto Felwood 39.65,49.47 |tip Loot the quest item here — it starts the quest.
-  accept A Strange Red Key##5202 |goto Felwood 39.65,49.47
+  use Blood Red Key##13140 |tip It starts the quest.
+  accept A Strange Red Key##5202
 step
   note Seek out and destroy 2 Entropic Beasts and 2 Entropic Horrors while exploring Shatter Scar Vale. After checking to see if the craters there are still filled with corrupt fel water, return to Taronn Redfeather in Felwood.
   kill Entropic Beast##9878 |q 5156 |goto Felwood 41.73,40.15
@@ -140,14 +140,14 @@ step
   talk Nafien##15395
   accept Deadwood of the North##8461 |goto Felwood 64.77,8.13
 step
-  only hasitem(20741)
-  kill Deadwood Den Watcher##7156 |goto Felwood 62.76,8.01 |tip Loot the quest item here — it starts the quest.
-  accept Deadwood Ritual Totem##8470 |goto Felwood 62.76,8.01
-step
   note Nafien would like you to kill 6 Deadwood Den Watchers, 6 Deadwood Avengers, and 6 Deadwood Shamans. Return to him in northern Felwood near the entrance to Timbermaw Hold.
   kill Deadwood Den Watcher##7156 |q 8461/1 |goto Felwood 62.76,8.01
   kill Deadwood Avenger##7157 |q 8461/2 |goto Felwood 62.67,8.45
   kill Deadwood Shaman##7158 |q 8461 |goto Felwood 62.63,11.22
+step
+  only hasitem(20741)
+  use Deadwood Ritual Totem##20741 |tip It starts the quest.
+  accept Deadwood Ritual Totem##8470
 step
   talk Nafien##15395
   turnin Deadwood of the North##8461 |goto Felwood 64.77,8.13

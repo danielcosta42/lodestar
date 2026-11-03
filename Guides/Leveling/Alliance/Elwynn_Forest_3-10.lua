@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (3-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Westfall (10-16)",
-	rev = "8647372d",
+	rev = "2a7f959a",
 }, [[
 step
   only level>=1
@@ -86,13 +86,13 @@ step
   talk Milly Osworth##9296
   turnin Milly Osworth##3903 |goto Elwynn Forest 50.69,39.35
 step
-  only hasitem(247834)
-  kill Kobold Vermin##6 |goto Elwynn Forest 49.17,36.55 |tip Loot the quest item here — it starts the quest.
-  accept Nibbled-On Book##91741 |goto Elwynn Forest 49.17,36.55
-step
   only haveq(7)
   note Kill 10 Kobold Vermin, then return to Marshal McBride.
   kill Kobold Vermin##6 |q 7 |goto Elwynn Forest 49.17,36.55
+step
+  only hasitem(247834)
+  use Nibbled-On Book##247834 |tip It starts the quest.
+  accept Nibbled-On Book##91741
 step
   only haveq(7)
   talk Marshal McBride##197
@@ -508,10 +508,6 @@ step
   note Bring Bernice's Necklace to "Auntie" Bernice Stonefield at the Stonefield Farm.
   collect Bernice's Necklace##981 |q 87 |goto Elwynn Forest 41.71,78.03 |tip {dropsfrom}Goldtooth
 step
-  only hasitem(1972)
-  kill Defias Bandit##116 |goto Elwynn Forest 47.48,74.13 |tip Loot the quest item here — it starts the quest.
-  accept Furlbrow's Deed##184 |goto Elwynn Forest 47.48,74.13
-step
   talk Remy "Two Times"##241
   turnin An Enticing Offer##99130 |goto Elwynn Forest 42.14,67.26
 step
@@ -540,8 +536,8 @@ step
   turnin Rare Books##91777 |goto Elwynn Forest 49.61,40.41
 step
   only hasitem(1307)
-  kill Riverpaw Runt##97 |goto Elwynn Forest 67.83,46.44 |tip Loot the quest item here — it starts the quest.
-  accept The Collector##123 |goto Elwynn Forest 67.83,46.44
+  use Gold Pickup Schedule##1307 |tip It starts the quest.
+  accept The Collector##123
 step
   only level>=10
   kill Elmpaw##248299 |goto Elwynn Forest 75.91,41.57 |elite |tip Loot the quest item here — it starts the quest.
@@ -966,6 +962,10 @@ step
   only Rogue
   note Find the Defias Dockmaster and recover the Shipping Schedule for Master Mathias Shaw.
   collect Defias Shipping Schedule##7675 |q 2206 |goto Elwynn Forest 48.06,86.96 |tip {dropsfrom}Defias Dockmaster
+step
+  only hasitem(1972)
+  use Westfall Deed##1972 |tip It starts the quest.
+  accept Furlbrow's Deed##184
 step
   only not Dwarf not NightElf Mage not completed(1880) not haveq(1880)
   note Bring a Mirror Lake sample to Jennea Cannon in Stormwind.

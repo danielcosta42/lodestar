@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Westfall (10-16)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dun Morogh (13-26)",
-	rev = "00fe7466",
+	rev = "07475ec0",
 }, [[
 step
   ding 9
@@ -206,8 +206,8 @@ step
   collect 5 Flask of Oil##814 |q 103 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Rusty Harvest Golem
 step
   only hasitem(1357)
-  kill Murloc Coastrunner##126 |goto Westfall 45.02,8.89 |tip Loot the quest item here — it starts the quest.
-  accept Captain Sander's Hidden Treasure##136 |goto Westfall 45.02,8.89
+  use Captain Sander's Treasure Map##1357 |tip It starts the quest.
+  accept Captain Sander's Hidden Treasure##136
 step
   only haveq(136)
   note Find Captain Sanders' footlocker and search it for the next clue.

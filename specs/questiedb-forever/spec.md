@@ -573,15 +573,17 @@ travavam. Cada causa virou regra, com trava no autoteste do `router.py`:
   bibliotecário com o livro na bolsa.
 - Season of Discovery (76000-85999, sem classe no banco): fora do leveling. A caça de ladino parava
   todo mundo num objeto desde antes da v2.7.2.
-- Item que começa a quest e cai de vários mobs: `only hasitem(...)` e cascata de `haveq`/`completed`.
-- `Starving Arcane` é de masmorra: o giver novo em Alterac a trazia para a rota principal.
+- Item que começa a quest e é drop incerto (vários mobs, ou mob comum com mais de 4 spawns):
+  `only hasitem(...)` e cascata de `haveq`/`completed`. O aceite vai para depois do último passo que
+  mata quem dá o item, sem passar do primeiro que depende da quest (`_depois_do_drop`).
+- `Starving Arcane` e `The Damp Note` são de masmorra: `FORA_QUESTS` tira da rota, e seguem no guia dela.
 
 | | v2.7.2 sob o 1.0.10 | regenerado |
 |---|---|---|
 | `validate_guides`: bloqueios | 31 | **0** |
-| `guide_integrity --full`: saltos | 237 | **233** |
+| `guide_integrity --full`: saltos | 237 | **235** |
 | Accept/turnin em lugar errado | 1 de 6.104 | 1 de 6042 |
 
 Fora de escopo, ainda aberto: as quests do Season of Discovery com classe marcada (xamã, 79358-79366)
-seguem nos guias de classe; quem ficar parado neles tem o botão de avançar.
+seguem nos guias, só para a classe; nelas o NPC cobre o pulo automático.
 

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dun Morogh (4-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Westfall (10-16)",
-	rev = "463c0851",
+	rev = "f9e8c908",
 }, [[
 step
   only level>=1
@@ -498,8 +498,8 @@ step
   accept Never Saddle on Quality##95212 |goto Dun Morogh 63.08,49.85
 step
   only hasitem(268548)
-  kill Rockjaw Ambusher##1116 |goto Dun Morogh 73.41,55.08 |tip Loot the quest item here — it starts the quest.
-  accept Stolen Blasting Powder##95213 |goto Dun Morogh 73.41,55.08
+  use Empty Powder Keg##268548 |tip It starts the quest.
+  accept Stolen Blasting Powder##95213
 step
   note Collect 6 Pristine Leopard Pelts and deliver them to Amberstill Ranch.
   collect 6 Pristine Leopard Pelt##267414 |q 95212 |goto Dun Morogh 75.89,56.59 |tip {dropsfrom}Elder Snow Leopard

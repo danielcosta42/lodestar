@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (32-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (20-38)",
-	rev = "3204f04c",
+	rev = "8d67703a",
 }, [[
 step
   ding 31
@@ -115,10 +115,6 @@ step
 step
   talk Sir S. J. Erlgadin##718
   turnin Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
-step
-  only hasitem(4614)
-  kill Bloodscalp Warrior##587 |goto Stranglethorn Vale 34.04,16.78 |tip Loot the quest item here — it starts the quest.
-  accept Crystal in the Mountains##635 |goto Stranglethorn Vale 34.04,16.78
 step
   note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Elder Stranglethorn Tigers.
   kill Elder Stranglethorn Tiger##1085 |q 187 |goto Stranglethorn Vale 33.53,18.31
@@ -493,6 +489,10 @@ step
   only haveq(587)
   note Deeg in Booty Bay wants you to bring him 15 shares of Snuff.
   collect Snuff##3910 |q 587 |goto Stranglethorn Vale 32.34,71.67 |tip {dropsfrom}Bloodsail Raider, Bloodsail Mage, "Pretty Boy" Duncan
+step
+  only hasitem(4614)
+  use Pendant of Myzrael##4614 |tip It starts the quest.
+  accept Crystal in the Mountains##635
 step
   only haveq(587)
   talk Deeg##2488

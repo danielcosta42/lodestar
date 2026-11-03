@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (21-29)",
-	rev = "61d281e8",
+	rev = "37cc990e",
 }, [[
 step
   ding 20
@@ -88,8 +88,9 @@ step
   kill Skeletal Warrior##48 |q 56/1 |goto Duskwood 80.57,70.2
   kill Skeletal Mage##203 |q 56 |goto Duskwood 79.54,71.24
 step
-  kill Lost Stalker##272260 |goto Duskwood 60.2,25.74 |tip Loot the quest item here — it starts the quest.
-  accept Ira's Dagger##96137 |goto Duskwood 60.2,25.74
+  only hasitem(281143)
+  use Ira's Dagger##281143 |tip It starts the quest.
+  accept Ira's Dagger##96137
 step
   note Gather 6 Gooey Spider Legs and bring them to Chef Grual in Darkshire.
   collect 6 Gooey Spider Leg##2251 |q 93 |goto Duskwood 41.79,20.83 |tip {dropsfrom}Venom Web Spider, Pygmy Venom Web Spider, Green Recluse
@@ -101,6 +102,7 @@ step
   talk Lars##893
   turnin Wolves at Our Heels##226 |goto Duskwood 7.71,33.2
 step
+  only haveq(96137)
   note Defeat 10 Young Black Ravagers and 7 Black Ravagers then return to Sirra Von'Indi in Darkshire for more information.
   kill Young Black Ravager##923 |q 96137/1 |goto Duskwood 48.99,65.24
   kill Black Ravager##628 |q 96137 |goto Duskwood 68.37,33.3
@@ -111,6 +113,7 @@ step
   talk Chef Grual##272
   turnin Dusky Crab Cakes##93 |goto Duskwood 73.75,43.48
 step
+  only haveq(96137)
   talk Sirra Von'Indi##268
   turnin Ira's Dagger##96137 |goto Duskwood 72.62,47.62
 step
@@ -125,10 +128,6 @@ step
 step
   talk Viktori Prism'Antras##276
   accept Look To The Stars##174 |goto Duskwood 79.8,48.02
-step
-  only hasitem(2794)
-  kill Flesh Eater##3 |goto Duskwood 23.81,39.21 |tip Loot the quest item here — it starts the quest.
-  accept An Old History Book##337 |goto Duskwood 23.81,39.21
 step
   note Bring 10 Ghoul Fangs, 10 Skeleton Fingers and 5 Vials of Spider Venom to Madame Eva in Darkshire.
   collect 10 Ghoul Fang##1129 |q 101/1 |goto Duskwood 23.81,39.21 |tip {dropsfrom}Flesh Eater, Rotted One, Bone Chewer
@@ -275,13 +274,16 @@ step
   talk Sven Yorgen##311
   turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
 step
-  kill Lost Watcher##272273 |goto Duskwood 44.59,65.62 |tip Loot the quest item here — it starts the quest.
-  accept Merrick's Bow##96138 |goto Duskwood 44.59,65.62
+  only hasitem(281142)
+  use Merrick's Bow##281142 |tip It starts the quest.
+  accept Merrick's Bow##96138
 step
+  only haveq(96138)
   note Defeat 8 Splint Fist Warriors and 4 Splint Fist Taskmasters then return to Sirra Von'Indi in Darkshire for more information.
   kill Splinter Fist Taskmaster##892 |q 96138/2 |goto Duskwood 36.57,72.44
   kill Splinter Fist Warrior##212 |q 96138 |goto Duskwood 33.67,76.02
 step
+  only haveq(96138)
   talk Sirra Von'Indi##268
   turnin Merrick's Bow##96138 |goto Duskwood 72.62,47.62
 step
@@ -358,6 +360,10 @@ step
 step
   note Retrieve Blind Mary's Looking Glass from the Insane Ghoul and give it to Viktori in Darkshire.
   collect Mary's Looking Glass##1946 |q 177 |goto Duskwood 80.9,71.96 |tip {dropsfrom}Insane Ghoul
+step
+  only hasitem(2794)
+  use An Old History Book##2794 |tip It starts the quest.
+  accept An Old History Book##337
 step
   talk Viktori Prism'Antras##276
   turnin Look To The Stars##177 |goto Duskwood 79.8,48.02

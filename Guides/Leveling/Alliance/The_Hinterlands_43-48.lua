@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Hinterlands (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Feralas (43-48)",
-	rev = "ff4ec209",
+	rev = "b2eb1883",
 }, [[
 step
   ding 41
@@ -95,8 +95,8 @@ step
   goto The Hinterlands 48.98,68.66 |tip Search the Altar of Zul
 step
   only level>=43 hasitem(8704)
-  kill Saltwater Snapjaw##2505 |goto The Hinterlands 81.48,60.46 |tip Loot the quest item here — it starts the quest.
-  accept Find OOX-09/HL!##485 |goto The Hinterlands 81.48,60.46
+  use OOX-09/HL Distress Beacon##8704 |tip It starts the quest.
+  accept Find OOX-09/HL!##485
 step
   only haveq(485)
   note Take the distress beacon to Oglethorpe's homing robot at the head of the river in the Hinterlands, near Skulk Rock.

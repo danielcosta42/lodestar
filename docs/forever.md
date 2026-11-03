@@ -59,9 +59,11 @@ quebrariam guias sem nenhum validador acusar:
 - **Season of Discovery.** As quests de lá (ids 76000-85999) estão no cliente, mas sem classe no banco:
   a caça de ladino (`Stepping Stones`, `Scramble`) mandava todo mundo clicar num objeto que não dá
   nada, e já estava na v2.7.2. Sem classe, essa faixa sai do leveling; dos 86000 em diante é Forever.
-- **Drop raro.** Quest que começa por item que cai de vários mobs agora tem `only hasitem(...)`: o
-  passo esperava o drop (`Crystal in the Mountains` cai de 287 mobs). O item de um mob só, o chefe, é
-  certo e continua com passo.
+- **Drop incerto.** Quest que começa por item que cai de vários mobs, ou de mob comum com muitos
+  spawns, agora tem `only hasitem(...)`: o passo esperava o drop (`Crystal in the Mountains` cai de 287
+  mobs). O aceite vai para depois do último passo que mata quem dá o item, senão seria avaliado antes
+  de o item existir e a cadeia sumiria (`Nibbled-On Book`, em Elwynn). Chefe e mob raro seguem com
+  passo próprio.
 
 Parado num objeto, o guia não sai sozinho: o `skipIfUnavailable` só age no gossip de NPC. Quando o
 banco trouxer campo novo, confira as quests que **entram**, não só as que saem: `validate_guides`

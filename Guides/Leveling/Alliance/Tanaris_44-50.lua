@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Tanaris (44-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Teldrassil (48-55)",
-	rev = "4ec782a1",
+	rev = "59056e9e",
 }, [[
 step
   ding 43
@@ -113,10 +113,6 @@ step
   talk Curgle Cranklehop##7763
   accept Handle With Care##3022 |goto Tanaris 52.36,26.91
 step
-  only hasitem(8623)
-  kill Glasshide Basilisk##5419 |goto Tanaris 45.64,32.27 |tip Loot the quest item here — it starts the quest.
-  accept Find OOX-17/TN!##351 |goto Tanaris 45.64,32.27
-step
   talk Marvon Rivetseeker##7771
   accept Gahz'ridian##3161 |goto Tanaris 52.71,45.92
 step
@@ -128,6 +124,10 @@ step
 step
   note Bring five Centipaar insect parts from the Noxious Lair to Alchemist Pestlezugg in Gadgetzan.
   collect Centipaar Insect Parts##8587 |q 82 |goto Tanaris 33.28,44.39 |tip {dropsfrom}Centipaar Wasp, Centipaar Tunneler, Centipaar Stinger
+step
+  only hasitem(8623)
+  use OOX-17/TN Distress Beacon##8623 |tip It starts the quest.
+  accept Find OOX-17/TN!##351
 step
   talk Alchemist Pestlezugg##5594
   turnin Noxious Lair Investigation##82 |goto Tanaris 50.89,26.96

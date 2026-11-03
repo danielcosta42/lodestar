@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Hinterlands (47-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Searing Gorge (48-50)",
-	rev = "f181a151",
+	rev = "7b99c44d",
 }, [[
 step
   ding 46
@@ -39,10 +39,6 @@ step
 step
   click Rin'ji's Secret##142127
   accept Rin'ji's Secret##2782 |goto The Hinterlands 86.3,59.01
-step
-  only hasitem(8704)
-  kill Saltwater Snapjaw##2505 |goto The Hinterlands 81.48,60.46 |tip Loot the quest item here — it starts the quest.
-  accept Find OOX-09/HL!##485 |goto The Hinterlands 81.48,60.46
 step
   note {fp}Gorkas
   goto The Hinterlands 81.7,81.76 |tip {vendor}
@@ -85,6 +81,10 @@ step
   note Mystic Yayo'jin at Revantusk Village in the Hinterlands wants you to kill 30 Vilebranch Scalpers and 15 Vilebranch Soothsayers. Return to her when this task is complete.
   kill Vilebranch Scalper##4466 |q 7844/1 |goto The Hinterlands 53.11,40.14
   kill Vilebranch Soothsayer##4467 |q 7844 |goto The Hinterlands 48.04,65.62
+step
+  only hasitem(8704)
+  use OOX-09/HL Distress Beacon##8704 |tip It starts the quest.
+  accept Find OOX-09/HL!##485
 step
   only haveq(485)
   note Take the distress beacon to Oglethorpe's homing robot at the head of the river in the Hinterlands, near Skulk Rock.

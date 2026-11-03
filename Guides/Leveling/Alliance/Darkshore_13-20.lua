@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/The Barrens (14-20)",
-	rev = "1b617cda",
+	rev = "2478e45d",
 }, [[
 step
   ding 12
@@ -493,8 +493,8 @@ step
   turnin One Shot.  One Kill.##5713 |goto Ashenvale 26.6,36.73 |tip {turninat}Ashenvale
 step
   only hasitem(5352)
-  kill Twilight Disciple##2338 |goto Darkshore 38.21,87.21 |tip Loot the quest item here — it starts the quest.
-  accept The Powers Below##968 |goto Darkshore 38.21,87.21
+  use Book: The Powers Below##5352 |tip It starts the quest.
+  accept The Powers Below##968
 step
   note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
   collect 5 Fine Moonstalker Pelt##5386 |q 986 |goto Darkshore 43.03,90.77 |tip {dropsfrom}Moonstalker Matriarch, Moonstalker Sire

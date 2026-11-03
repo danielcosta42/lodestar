@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Winterspring (54-59)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silithus (55-60)",
-	rev = "3627584a",
+	rev = "71cd0466",
 }, [[
 step
   ding 53
@@ -39,16 +39,12 @@ step
   talk Storm Shadowhoof##10303
   accept Ursius of the Shardtooth##5054 |goto Winterspring 61.93,38.38
 step
-  only hasitem(12771)
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Firewater##5083 |goto Winterspring 66.66,37.07
-step
   talk Meggi Peppinrocker##11754
   accept Trouble in Winterspring!##6603 |goto Winterspring 60.66,38.17
 step
-  only hasitem(20742)
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Ritual Totem##8471 |goto Winterspring 66.66,37.07
+  only hasitem(12771)
+  use Empty Firewater Flask##12771 |tip It starts the quest.
+  accept Winterfall Firewater##5083
 step
   only haveq(5054)
   note Storm Shadowhoof at Everlook in Winterspring wants you to kill Ursius.
@@ -122,6 +118,10 @@ step
   kill Winterfall Ursa##7438 |q 8464/3 |goto Winterspring 66.66,37.07
   kill Winterfall Den Watcher##7440 |q 8464 |goto Winterspring 66.54,35.92
 step
+  only hasitem(20742)
+  use Winterfall Ritual Totem##20742 |tip It starts the quest.
+  accept Winterfall Ritual Totem##8471
+step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
 step
@@ -130,8 +130,8 @@ step
   turnin Brumeran of the Chillwind##5055 |goto Winterspring 61.93,38.38
 step
   only completed(4741) hasitem(12558)
-  kill Crazed Owlbeast##7452 |goto Winterspring 64.3,24.98 |tip Loot the quest item here — it starts the quest.
-  accept Guarding Secrets##4882 |goto Winterspring 64.3,24.98
+  use Blue-feathered Necklace##12558 |tip It starts the quest.
+  accept Guarding Secrets##4882
 step
   talk Salfa##11556
   turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5

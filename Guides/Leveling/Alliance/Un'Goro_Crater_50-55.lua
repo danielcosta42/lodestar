@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Un'Goro Crater (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Searing Gorge (48-50)",
-	rev = "663546f9",
+	rev = "2afbc2bb",
 }, [[
 step
   ding 49
@@ -33,8 +33,8 @@ step
   collect 20 Un'Goro Soil##11018 |q 3764 |goto Un'Goro Crater 47,52.9 |tip {dropsfrom}Un'Goro Dirt Pile
 step
   only hasitem(11116)
-  kill Ravasaur##6505 |goto Un'Goro Crater 64.16,74.25 |tip Loot the quest item here — it starts the quest.
-  accept Williden's Journal##3884 |goto Un'Goro Crater 64.16,74.25
+  use A Mangled Journal##11116 |tip It starts the quest.
+  accept Williden's Journal##3884
 step
   only haveq(3882)
   note Bring 8 Dinosaur Bones to Spark Nilminer in Un'Goro Crater.

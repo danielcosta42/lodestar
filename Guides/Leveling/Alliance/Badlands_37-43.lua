@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Badlands (37-43)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stranglethorn Vale (43-51)",
-	rev = "f2052623",
+	rev = "fe0e62c9",
 }, [[
 step
   ding 36
@@ -147,8 +147,8 @@ step
   accept Prospect of Faith##723 |goto Badlands 37.9,10.59
 step
   only level>=37 hasitem(7666)
-  kill Shadowforge Surveyor##4844 |goto Badlands 48.2,11 |tip Loot the quest item here — it starts the quest.
-  accept The Shattered Necklace##2198 |goto Badlands 48.2,11
+  use Shattered Necklace##7666 |tip It starts the quest.
+  accept The Shattered Necklace##2198
 step
   only haveq(723)
   note Take Hammertoe's Amulet to Prospector Ryedol in the Badlands.

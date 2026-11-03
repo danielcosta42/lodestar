@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Desolace (33-39)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Dustwallow Marsh (35-43)",
-	rev = "c0928730",
+	rev = "a9b0d65e",
 }, [[
 step
   ding 32
@@ -22,8 +22,8 @@ step
   turnin Kodo Roundup##5561 |goto Desolace 60.86,61.86
 step
   only hasitem(20310)
-  kill Burning Blade Augur##4663 |goto Desolace 55.95,27.4 |tip Loot the quest item here — it starts the quest.
-  accept The Corrupter##1480 |goto Desolace 55.95,27.4
+  use Flayed Demon Skin##20310 |tip It starts the quest.
+  accept The Corrupter##1480
 step
   only haveq(1362)
   note Speak with Felgur Twocuts at Ghost Walker Post in Desolace.

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-33)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Mulgore (30-31)",
-	rev = "421ddf0b",
+	rev = "ccbc081e",
 }, [[
 step
   ding 26
@@ -454,8 +454,8 @@ step
   kill Silithid Invader##4131 |q 1147 |goto Thousand Needles 65.31,86.73
 step
   only completed(1146) level>=28 hasitem(5877)
-  kill Silithid Searcher##4130 |goto Thousand Needles 69.91,82.48 |tip Loot the quest item here — it starts the quest.
-  accept Parts of the Swarm##1148 |goto Thousand Needles 69.91,82.48
+  use Cracked Silithid Carapace##5877 |tip It starts the quest.
+  accept Parts of the Swarm##1148
 step
   only haveq(1148)
   note Bring 1 Silithid Heart, 5 Silithid Talons, and 3 Intact Silithid Carapaces, to Korran at the Crossroads.

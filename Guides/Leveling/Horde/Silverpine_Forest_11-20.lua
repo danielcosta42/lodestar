@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "b071e52a",
+	rev = "4bd0ca44",
 }, [[
 step
   ding 10
@@ -244,12 +244,12 @@ step
   talk High Executor Hadrec##1952
   accept Rot Hide Ichor##443 |goto Silverpine Forest 43.42,40.86
 step
-  only level>=12 hasitem(3317)
-  kill Rot Hide Brute##1939 |goto Silverpine Forest 67.6,31 |tip Loot the quest item here — it starts the quest.
-  accept Resting in Pieces##460 |goto Silverpine Forest 67.6,31
-step
   note Bring 8 bottles of rot hide ichor to Apothecary Renferrel at the Sepulcher.
   collect 8 Rot Hide Ichor##3236 |q 443 |goto Silverpine Forest 67.6,31 |tip {dropsfrom}Rot Hide Brute, Rot Hide Plague Weaver, Rot Hide Savage
+step
+  only level>=12 hasitem(3317)
+  use A Talking Head##3317 |tip It starts the quest.
+  accept Resting in Pieces##460
 step
   only haveq(460)
   note Bring Alaric's Head to his grave.
@@ -435,8 +435,8 @@ step
   collect Tortured Soul##271350 |q 95883 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
 step
   only level>=20 hasitem(271343)
-  kill Ravenclaw Guardian##1973 |goto Silverpine Forest 58.66,71.29 |tip Loot the quest item here — it starts the quest.
-  accept The Offering Stone##95884 |goto Silverpine Forest 58.66,71.29
+  use Note Scrap##271343 |tip It starts the quest.
+  accept The Offering Stone##95884
 step
   only haveq(95884)
   note Find the Offering Stone in Beren's Peril in Silverpine Forest.

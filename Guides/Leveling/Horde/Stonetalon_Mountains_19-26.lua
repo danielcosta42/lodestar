@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stonetalon Mountains (19-26)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (22-27)",
-	rev = "183b6ade",
+	rev = "7ba768a2",
 }, [[
 step
   ding 18
@@ -125,22 +125,6 @@ step
   note Bring 10 Incendrites to Tsunaman at Sun Rock Retreat.
   collect 10 Incendrites##16312 |q 6393 |goto Stonetalon Mountains 36.55,51.37 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
 step
-  note Plant 10 Gaea Seeds in Gaea Dirt Mounds, and then return the remaining Enchanted Gaea Seeds to Tammra at Sun Rock Retreat.
-  click Gaea Dirt Mound##177929 |q 6381 |goto Stonetalon Mountains 33.61,68.96
-step
-  only haveq(1087)
-  note Kill 4 Sons of Cenarius, 4 Daughters of Cenarius and 4 Cenarion Botanists for Braelyn Firehand near Sun Rock Retreat.
-  kill Cenarion Botanist##4051 |q 1087/3 |goto Stonetalon Mountains 35.96,14.57
-  kill Daughter of Cenarius##4053 |q 1087/2 |goto Stonetalon Mountains 36.45,13.09
-  kill Son of Cenarius##4057 |q 1087 |goto Stonetalon Mountains 35.82,12.59
-step
-  only haveq(1087)
-  talk Braelyn Firehand##4198
-  turnin Cenarius' Legacy##1087 |goto Stonetalon Mountains 45.94,60.42
-step
-  talk Tammra Windfield##11864
-  turnin New Life##6381 |goto Stonetalon Mountains 47.46,58.38
-step
   only haveq(6393)
   talk Tsunaman##11862
   turnin Elemental War##6393 |goto Stonetalon Mountains 47.36,64.25
@@ -150,6 +134,18 @@ step
 step
   talk Maggran Earthbinder##11860
   accept Bloodfury Trinkets##86576 |goto Stonetalon Mountains 47.2,61.16
+step
+  note Maggran Earthbinder in Sun Rock Retreat wants you to slay 7 Bloodfury Harpies, 7 Bloodfury Ambushers, 7 Bloodfury Slayers and 7 Bloodfury Roguefeathers.
+  kill Bloodfury Harpy##4022 |q 6282/1 |goto Stonetalon Mountains 32.57,60.66
+  kill Bloodfury Ambusher##4025 |q 6282/2 |goto Stonetalon Mountains 30.8,61.32
+  kill Bloodfury Slayer##4024 |q 6282/3 |goto Stonetalon Mountains 30.24,69.58
+  kill Bloodfury Roguefeather##4023 |q 6282 |goto Stonetalon Mountains 34.86,69.12
+step
+  note Bring 15 Glittering Sunstones to Mor'rogal.
+  collect 15 Glittering Sunstone##277936 |q 86576 |goto Stonetalon Mountains 32.57,60.66 |tip {dropsfrom}Bloodfury Harpy, Bloodfury Roguefeather, Bloodfury Slayer
+step
+  note Plant 10 Gaea Seeds in Gaea Dirt Mounds, and then return the remaining Enchanted Gaea Seeds to Tammra at Sun Rock Retreat.
+  click Gaea Dirt Mound##177929 |q 6381 |goto Stonetalon Mountains 33.61,68.96
 step
   only level>=20
   talk Witch Doctor Jin'Zil##3995
@@ -162,17 +158,21 @@ step
   collect Stonetalon Sap##5582 |q 1058/1 |goto Stonetalon Mountains 34.78,17.41 |tip {dropsfrom}Sap Beast
   collect 5 Twilight Whisker##5584 |q 1058 |goto Stonetalon Mountains 33.28,9.93 |tip {dropsfrom}Twilight Runner
 step
-  note Maggran Earthbinder in Sun Rock Retreat wants you to slay 7 Bloodfury Harpies, 7 Bloodfury Ambushers, 7 Bloodfury Slayers and 7 Bloodfury Roguefeathers.
-  kill Bloodfury Harpy##4022 |q 6282/1 |goto Stonetalon Mountains 32.57,60.66
-  kill Bloodfury Ambusher##4025 |q 6282/2 |goto Stonetalon Mountains 30.8,61.32
-  kill Bloodfury Slayer##4024 |q 6282/3 |goto Stonetalon Mountains 30.24,69.58
-  kill Bloodfury Roguefeather##4023 |q 6282 |goto Stonetalon Mountains 34.86,69.12
+  only haveq(1087)
+  note Kill 4 Sons of Cenarius, 4 Daughters of Cenarius and 4 Cenarion Botanists for Braelyn Firehand near Sun Rock Retreat.
+  kill Son of Cenarius##4057 |q 1087/1 |goto Stonetalon Mountains 35.82,12.59
+  kill Daughter of Cenarius##4053 |q 1087/2 |goto Stonetalon Mountains 36.45,13.09
+  kill Cenarion Botanist##4051 |q 1087 |goto Stonetalon Mountains 35.96,14.57
 step
-  note Bring 15 Glittering Sunstones to Mor'rogal.
-  collect 15 Glittering Sunstone##277936 |q 86576 |goto Stonetalon Mountains 32.57,60.66 |tip {dropsfrom}Bloodfury Harpy, Bloodfury Roguefeather, Bloodfury Slayer
+  only haveq(1087)
+  talk Braelyn Firehand##4198
+  turnin Cenarius' Legacy##1087 |goto Stonetalon Mountains 45.94,60.42
 step
   talk Maggran Earthbinder##11860
   turnin Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
+step
+  talk Tammra Windfield##11864
+  turnin New Life##6381 |goto Stonetalon Mountains 47.46,58.38
 step
   talk Mor'rogal##11861
   turnin Bloodfury Trinkets##86576 |goto Stonetalon Mountains 47.22,64.04
@@ -237,15 +237,6 @@ step
   note Speak to Je'neu Sancrea in Ashenvale.
   talk Je'neu Sancrea##12736
   turnin Trouble in the Deeps##6562 |goto Ashenvale 11.56,34.29 |tip {turninat}Ashenvale
-step
-  only level>=22
-  kill Blackfathom Tide Priestess##4802 |goto Ashenvale 13.55,12.06 |elite |tip Loot the quest item here — it starts the quest.
-  accept Allegiance to the Old Gods##6564 |goto Ashenvale 13.55,12.06
-step
-  only haveq(6564)
-  note Bring the Damp Note to Je'neu Sancrea in Ashenvale.
-  talk Je'neu Sancrea##12736
-  turnin Allegiance to the Old Gods##6564 |goto Ashenvale 11.56,34.29 |tip {turninat}Ashenvale
 step
   only haveq(1088)
   note Bring Ordanus' head to Braelyn Firehand near Sun Rock Retreat.

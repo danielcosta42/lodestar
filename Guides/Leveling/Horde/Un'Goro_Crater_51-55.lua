@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Un'Goro Crater (51-55)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Azshara (52-58)",
-	rev = "2a625eea",
+	rev = "c2da77a2",
 }, [[
 step
   ding 50
@@ -72,12 +72,12 @@ step
   collect 8 Gorishi Sting##22435 |q 9052/1 |goto Un'Goro Crater 50.14,75.97 |tip {dropsfrom}Gorishi Wasp, Gorishi Stinger
   collect 8 Bloodcap##22434 |q 9052 |goto Un'Goro Crater 44.62,42.45 |tip {dropsfrom}Bloodpetal Sprout
 step
-  only hasitem(11116)
-  kill Ravasaur##6505 |goto Un'Goro Crater 64.16,74.25 |tip Loot the quest item here — it starts the quest.
-  accept Williden's Journal##3884 |goto Un'Goro Crater 64.16,74.25
-step
   note Bring 8 White Ravasaur Claws to Jes'rimon in Orgrimmar.
   collect 8 White Ravasaur Claw##11477 |q 4300 |goto Un'Goro Crater 64.16,74.25 |tip {dropsfrom}Ravasaur, Ravasaur Runner, Ravasaur Hunter
+step
+  only hasitem(11116)
+  use A Mangled Journal##11116 |tip It starts the quest.
+  accept Williden's Journal##3884
 step
   only Druid haveq(9052)
   talk Torwa Pathfinder##9619

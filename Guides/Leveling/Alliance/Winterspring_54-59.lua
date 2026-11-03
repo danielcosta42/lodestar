@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Winterspring (54-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Silithus (57-60)",
-	rev = "840c86f1",
+	rev = "0c3b05fe",
 }, [[
 step
   ding 53
@@ -62,16 +62,12 @@ step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
 step
-  only hasitem(12771)
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Firewater##5083 |goto Winterspring 66.66,37.07
-step
   talk Meggi Peppinrocker##11754
   accept Trouble in Winterspring!##6603 |goto Winterspring 60.66,38.17
 step
-  only hasitem(20742)
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Ritual Totem##8471 |goto Winterspring 66.66,37.07
+  only hasitem(12771)
+  use Empty Firewater Flask##12771 |tip It starts the quest.
+  accept Winterfall Firewater##5083
 step
   note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
   collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 43.59,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti
@@ -136,6 +132,10 @@ step
   kill Winterfall Shaman##7439 |q 8464/1 |goto Winterspring 67.86,38.06
   kill Winterfall Ursa##7438 |q 8464/3 |goto Winterspring 66.66,37.07
   kill Winterfall Den Watcher##7440 |q 8464 |goto Winterspring 66.54,35.92
+step
+  only hasitem(20742)
+  use Winterfall Ritual Totem##20742 |tip It starts the quest.
+  accept Winterfall Ritual Totem##8471
 step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
