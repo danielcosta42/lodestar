@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-24)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Darkshore (13-20)",
-	rev = "cabcdfb7",
+	rev = "ef66b5d0",
 }, [[
 step
   ding 14
@@ -57,29 +57,38 @@ step
   talk Deputy Feldon##1070
   accept Show of Force##98407 |goto Redridge Mountains 25.64,60
 step
-  note Bring Parker's lunch to Guard Parker. He patrols the road leading to Darkshire.
-  talk Guard Parker##464
-  turnin A Free Lunch##129 |goto Redridge Mountains 10.18,71.46
+  only haveq(125)
+  note Foreman Oslow of Lakeshire wants you to retrieve his toolbox from the bottom of Lake Everstill.
+  collect Oslow's Toolbox##1309 |q 125 |goto Redridge Mountains 36.43,54.66 |tip {dropsfrom}Sunken Chest
 step
-  talk Guard Parker##464
-  accept Visit the Herbalist##130 |goto Redridge Mountains 10.18,71.46
+  only haveq(125)
+  talk Foreman Oslow##341
+  turnin The Lost Tools##125 |goto Redridge Mountains 27.05,48.64
 step
-  talk Guard Parker##464
-  accept Encroaching Gnolls##244 |goto Redridge Mountains 10.18,71.46
+  only level>=14
+  talk Verner Osgood##415
+  accept The Price of Shoes##118 |goto Redridge Mountains 25.88,47.27
 step
-  note Collect 5 Spiked Collars from Gnoll Thrashers for Deputy Feldon near Lakeshire.
-  collect 5 Spiked Collar##280911 |q 98407 |goto Redridge Mountains 10.37,66.29 |tip {dropsfrom}Redridge Thrasher
-step
-  note Speak with the Redridge Herbalist, Martie Jainrose.
-  talk Martie Jainrose##342
-  turnin Visit the Herbalist##130 |goto Redridge Mountains 16.77,46.33
-step
-  talk Martie Jainrose##342
-  accept Delivering Daffodils##131 |goto Redridge Mountains 16.77,46.33
+  only completed(65) level>=14
+  talk Wiley the Black##266
+  accept The Defias Brotherhood##132 |goto Redridge Mountains 21.39,45.35
 step
   only level>=15
   talk Chef Breanna##343
   accept Redridge Goulash##92 |goto Redridge Mountains 17.59,43.84
+step
+  note Bring Parker's lunch to Guard Parker. He patrols the road leading to Darkshire.
+  talk Guard Parker##464
+  turnin A Free Lunch##129 |goto Redridge Mountains 10.37,71.26
+step
+  talk Guard Parker##464
+  accept Visit the Herbalist##130 |goto Redridge Mountains 10.37,71.26
+step
+  talk Guard Parker##464
+  accept Encroaching Gnolls##244 |goto Redridge Mountains 10.37,71.26
+step
+  note Collect 5 Spiked Collars from Redridge Thrashers for Deputy Feldon near Lakeshire.
+  collect 5 Spiked Collar##280911 |q 98407 |goto Redridge Mountains 10.37,66.29 |tip {dropsfrom}Redridge Thrasher
 step
   note Report to Deputy Feldon.
   talk Deputy Feldon##1070
@@ -97,35 +106,27 @@ step
   collect Crisp Spider Meat##1081 |q 92/3 |goto Redridge Mountains 7.32,76.98 |tip {dropsfrom}Tarantula, Greater Tarantula, Chatter
   collect Tough Condor Meat##1080 |q 92 |goto Redridge Mountains 50.17,73.4 |tip {dropsfrom}Dire Condor
 step
-  only haveq(92)
-  talk Chef Breanna##343
-  turnin Redridge Goulash##92 |goto Redridge Mountains 17.59,43.84
-step
-  only haveq(125)
-  note Foreman Oslow of Lakeshire wants you to retrieve his toolbox from the bottom of Lake Everstill.
-  collect Oslow's Toolbox##1309 |q 125 |goto Redridge Mountains 36.43,54.66 |tip {dropsfrom}Sunken Chest
-step
   note Kill 10 Redridge Mongrels and 6 Redridge Poachers, then report back to Deputy Feldon in Lakeshire.
-  kill Redridge Mongrel##423 |q 246/1 |goto Redridge Mountains 25.26,81.2
-  kill Redridge Poacher##424 |q 246 |goto Redridge Mountains 27.19,82.28
+  kill Redridge Poacher##424 |q 246/2 |goto Redridge Mountains 27.19,82.28
+  kill Redridge Mongrel##423 |q 246 |goto Redridge Mountains 25.26,81.2
 step
   talk Deputy Feldon##1070
   turnin Assessing the Threat##246 |goto Redridge Mountains 25.64,60
 step
-  only haveq(125)
-  talk Foreman Oslow##341
-  turnin The Lost Tools##125 |goto Redridge Mountains 27.05,48.64
+  only haveq(92)
+  talk Chef Breanna##343
+  turnin Redridge Goulash##92 |goto Redridge Mountains 17.59,43.84
+step
+  note Speak with the Redridge Herbalist, Martie Jainrose.
+  talk Martie Jainrose##342
+  turnin Visit the Herbalist##130 |goto Redridge Mountains 16.77,46.33
+step
+  talk Martie Jainrose##342
+  accept Delivering Daffodils##131 |goto Redridge Mountains 16.77,46.33
 step
   note Give Darcy the Daffodil Bouquet.
   talk Darcy##379
   turnin Delivering Daffodils##131 |goto Redridge Mountains 21.53,44.3
-step
-  talk Verner Osgood##415
-  accept The Price of Shoes##118 |goto Redridge Mountains 25.88,47.27
-step
-  only completed(65)
-  talk Wiley the Black##266
-  accept The Defias Brotherhood##132 |goto Redridge Mountains 21.39,45.35
 step
   only completed(125) level>=15
   talk Foreman Oslow##341
@@ -147,7 +148,7 @@ step
   talk Dockmaster Baren##381
   accept Selling Fish##127 |goto Redridge Mountains 22.63,47.38
 step
-  only level>=15
+  only completed(89) level>=15
   talk Foreman Oslow##341
   accept Alther's Mill##98386 |goto Redridge Mountains 27.05,48.64
 step
@@ -155,18 +156,9 @@ step
   talk Marshal Marris##382
   accept Blackrock Blockade##98387 |goto Redridge Mountains 28.41,48.97
 step
-  only haveq(98387)
-  note Bring 8 Stolen Weapons and 10 Blackrock Supplies to Marshal Marris in Lakeshire.
-  collect 8 Stolen Weapon##280841 |q 98387/1 |tip {dropsfrom}Weapon Rack
-  collect 10 Blackrock Supplies##280839 |q 98387 |tip {dropsfrom}Meat Haunch, Water Barrel
-step
-  only haveq(98387)
-  talk Marshal Marris##382
-  turnin Blackrock Blockade##98387 |goto Redridge Mountains 28.41,48.97
-step
   only haveq(98386)
   note Slay 12 Greater Tarantulas and destroy 6 Tarantula Eggs in Alther's Mill for Foreman Oslow in Redridge.
-  kill Greater Tarantula##505 |q 98386 |goto Redridge Mountains 48.79,43.18
+  click Tarantula Egg##673101 |q 98386 |goto Redridge Mountains 46.5,40.6
 step
   only haveq(20)
   note Bring 10 Battleworn Axes to Marshal Marris in Lakeshire.
@@ -175,6 +167,11 @@ step
   only haveq(127)
   note Bring 10 Spotted Sunfish to Dockmaster Baren in Lakeshire.
   collect 10 Spotted Sunfish##1467 |q 127 |goto Redridge Mountains 50.2,61.74 |tip {dropsfrom}Murloc Flesheater, Murloc Nightcrawler, Murloc Tidecaller
+step
+  only haveq(98387)
+  note Bring 8 Stolen Weapons and 10 Blackrock Supplies to Marshal Marris in Lakeshire.
+  collect 10 Blackrock Supplies##280839 |q 98387/2 |goto Redridge Mountains 70.7,78.7
+  collect 8 Stolen Weapon##280841 |q 98387 |goto Redridge Mountains 70.7,81.4 |tip {dropsfrom}Weapon Rack
 step
   only haveq(20)
   talk Marshal Marris##382
@@ -187,6 +184,10 @@ step
   only haveq(98386)
   talk Foreman Oslow##341
   turnin Alther's Mill##98386 |goto Redridge Mountains 27.05,48.64
+step
+  only haveq(98387)
+  talk Marshal Marris##382
+  turnin Blackrock Blockade##98387 |goto Redridge Mountains 28.41,48.97
 step
   only Rogue level>=16
   talk Arantir##7009
@@ -216,7 +217,7 @@ step
   talk Bailiff Conacher##900
   accept Solomon's Law##91 |goto Redridge Mountains 24.63,44.26
 step
-  only completed(20) level>=23
+  only completed(20) completed(98387) level>=23
   talk Marshal Marris##382
   accept Shadow Magic##115 |goto Redridge Mountains 28.41,48.97
 step
@@ -224,9 +225,6 @@ step
   note Bring 3 Midnight Orbs to Marshal Marris in Lakeshire.
   kill Blackrock Shadowcaster##436 |q 115 |goto Redridge Mountains 63.08,54.64 |elite
   collect 3 Midnight Orb##1261 |q 115 |goto Redridge Mountains 63.08,54.64
-step
-  kill Shadowhide Darkweaver##429 |goto Redridge Mountains 75.2,49.48 |tip Loot the quest item here — it starts the quest.
-  accept Theocritus' Retrieval##178 |goto Redridge Mountains 75.2,49.48
 step
   only haveq(91)
   note Bring 10 Shadowhide Pendants to Bailiff Conacher in the Lakeshire Town Hall.
@@ -256,12 +254,13 @@ step
   talk Guard Howe##903
   accept Blackrock Bounty##128 |goto Redridge Mountains 26.45,57.85
 step
-  only completed(20) level>=25
+  only completed(20) completed(98387) level>=25
   talk Marshal Marris##382
   accept Tharil'zun##19 |goto Redridge Mountains 28.41,48.97
 step
+  only level>=25
   click Wanted: Incinerator Gar'im##649051
-  accept WANTED: Incinerator Gar'im##95999 |goto Redridge Mountains 24.45,46.11
+  accept WANTED: Incinerator Gar'im##95999 |goto Redridge Mountains 24.29,46.18
 step
   only haveq(128)
   note Kill 15 Blackrock Champions and Guard Howe in Lakeshire will reward you.
@@ -284,8 +283,10 @@ step
   kill Tharil'zun##486 |q 19 |goto Redridge Mountains 64.36,59.41 |elite
   collect Tharil'zun's Head##1260 |q 19 |goto Redridge Mountains 64.36,59.41
 step
+  only haveq(95999)
   note Deliver the Broken Staff of Incinerator Gar'im to Magistrate Solomon in Lakeshire.
-  collect Broken Staff of Incinerator Gar'im##271872 |q 95999 |goto Redridge Mountains 71.61,84.4 |tip {dropsfrom}Incinerator Gar'im
+  kill Incinerator Gar'im##214519 |q 95999 |goto Redridge Mountains 72.82,86.33 |elite
+  collect Broken Staff of Incinerator Gar'im##271872 |q 95999 |goto Redridge Mountains 72.82,86.33
 step
   only haveq(128)
   talk Guard Howe##903
@@ -295,15 +296,16 @@ step
   talk Marshal Marris##382
   turnin Tharil'zun##19 |goto Redridge Mountains 28.41,48.97
 step
+  only haveq(95999)
   talk Magistrate Solomon##344
   turnin WANTED: Incinerator Gar'im##95999 |goto Redridge Mountains 24.9,44.45
 step
   only level>=26
   click Wanted: Gath'Ilzogg##60
-  accept Wanted: Gath'Ilzogg##169 |goto Redridge Mountains 24.53,46.16
+  accept WANTED: Gath'Ilzogg##169 |goto Redridge Mountains 24.53,46.16
 step
   click Wanted: Lieutenant Fangore##47
-  accept Wanted: Lieutenant Fangore##180 |goto Redridge Mountains 21.66,46.44
+  accept WANTED: Lieutenant Fangore##180 |goto Redridge Mountains 21.66,46.44
 step
   only haveq(169)
   note Kill Gath'Ilzogg and bring his head to Magistrate Solomon in Lakeshire for the reward.
@@ -313,12 +315,16 @@ step
   note Kill Lieutenant Fangore and return to Magistrate Solomon in Lakeshire with his paw.
   collect Fangore's Paw##3632 |q 180 |goto Redridge Mountains 75.09,37.06 |tip {dropsfrom}Lieutenant Fangore
 step
+  only hasitem(1962)
+  use Glowing Shadowhide Pendant##1962 |tip It starts the quest.
+  accept Theocritus' Retrieval##178
+step
   only haveq(169)
   talk Magistrate Solomon##344
-  turnin Wanted: Gath'Ilzogg##169 |goto Redridge Mountains 24.9,44.45
+  turnin WANTED: Gath'Ilzogg##169 |goto Redridge Mountains 24.9,44.45
 step
   talk Magistrate Solomon##344
-  turnin Wanted: Lieutenant Fangore##180 |goto Redridge Mountains 24.9,44.45
+  turnin WANTED: Lieutenant Fangore##180 |goto Redridge Mountains 24.9,44.45
 step
   only haveq(120)
   note Magistrate Solomon has given you a report which must be delivered to General Marcus Jonathan in Stormwind. The judge wants you to return to him as soon as the delivery has been made.
@@ -368,17 +374,21 @@ step
   talk Doc Mixilpixil##7207
   turnin The Touch of Zanzil##2609 |goto Stormwind City 80.06,69.9 |tip {turninat}Stormwind City
 step
-  only Mage
-  talk Garion Wendell##211033
-  accept Research Access##97286 |goto Stormwind City 49.05,86.37
+  only Dwarf Priest not completed(5641) not completed(5647) not haveq(5641) not haveq(5647) level>=20
+  talk High Priestess Laurena##376
+  accept A Lack of Fear##5645 |goto Stormwind City 49.53,44.6
 step
-  only Mage
-  talk Garion Wendell##211033
-  turnin Research Access##97286 |goto Stormwind City 49.05,86.37 |tip {turninat}Stormwind City
+  only Human Priest not completed(5677) not completed(5678) not haveq(5677) not haveq(5678) level>=20
+  talk High Priestess Laurena##376
+  accept Arcane Feedback##5676 |goto Stormwind City 49.53,44.6
 step
-  only not NightElf not Gnome not Skyborne Paladin level>=22
-  talk Ursula Deline##5495
-  accept Earning Your Salt##78091 |goto Stormwind City 39.89,84.19
+  only Human Priest not completed(5677) not completed(5678) not haveq(5677) not haveq(5678) haveq(5676)
+  talk High Priestess Laurena##376
+  turnin Arcane Feedback##5676 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
+step
+  only Gnome Priest level>=20
+  talk High Priestess Laurena##376
+  accept Contingency Plan##94819 |goto Stormwind City 49.53,44.6
 step
   only Warlock completed(1738) level>=20
   talk Gakin the Darkbinder##6122
@@ -398,32 +408,18 @@ step
 step
   only Warlock completed(65602) haveq(65603)
   note Using the Wooden Figurine, summon and subdue an incubus, then return the Wooden Figurine to Gakin the Darkbinder in the Slaughtered Lamb.
-  use Summoned Incubus##185335 |q 65603 |goto Stormwind City 39.35,84.74 |tip {useit}
+  use Summoned Incubus##185335 |q 65603 |goto Stormwind City 39.04,84.64 |tip {useit}
 step
   only Warlock completed(65602) haveq(65603)
   talk Gakin the Darkbinder##6122
   turnin The Binding##65603 |goto Stormwind City 39.22,85.23 |tip {turninat}Stormwind City
 step
-  only Dwarf Priest not completed(5641) not completed(5647) not haveq(5641) not haveq(5647) level>=20
-  talk High Priestess Laurena##376
-  accept A Lack of Fear##5645 |goto Stormwind City 49.53,44.6
-step
-  only Human Priest not completed(5677) not completed(5678) not haveq(5677) not haveq(5678) level>=20
-  talk High Priestess Laurena##376
-  accept Arcane Feedback##5676 |goto Stormwind City 49.53,44.6
-step
-  only Human Priest not completed(5677) not completed(5678) not haveq(5677) not haveq(5678) haveq(5676)
-  talk High Priestess Laurena##376
-  turnin Arcane Feedback##5676 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
-step
-  only Gnome Priest level>=20
-  talk High Priestess Laurena##376
-  accept Contingency Plan##94819 |goto Stormwind City 49.53,44.6
-step
+  only haveq(118)
   note Take Verner's Note to Smith Argus in Goldshire.
   talk Smith Argus##514
   turnin The Price of Shoes##118 |goto Elwynn Forest 41.71,65.54 |tip {turninat}Elwynn Forest
 step
+  only haveq(178)
   note Bring the Faded Shadowhide Pendant to Theocritus the Mage.
   talk Theocritus##313
   turnin Theocritus' Retrieval##178 |goto Elwynn Forest 65.22,69.71 |tip {turninat}Elwynn Forest
@@ -459,21 +455,17 @@ step
   talk Lucius##6966
   turnin Alther's Mill##2282 |goto Redridge Mountains 22.97,52.04
 step
-  only not NightElf not Gnome not Skyborne Paladin haveq(78091)
-  note Collect 14 Summoner's Salt from Blackrock Summoners in Redridge Mountains, then return to Ursula Deline in Stormwind.
-  collect 14 Summoner's Salt##209778 |q 78091 |goto Redridge Mountains 24.25,12.05 |tip {dropsfrom}Blackrock Champion, Gath'Ilzogg, Blackrock Shadowcaster
-step
   only level>=19
   talk Mountaineer Kadrell##1340
   accept Report to Mountaineer Rockgar##468 |goto Loch Modan 32.63,49.74
 step
   only Shaman level>=20
   talk Norric Lochthane##258043
-  accept Water Sapta##94616 |goto Loch Modan 41.86,19.02
+  accept Water Sapta##94616 |goto Loch Modan 41.76,19.05
 step
   only Shaman haveq(94616)
   talk Norric Lochthane##258043
-  turnin Water Sapta##94616 |goto Loch Modan 41.86,19.02 |tip {turninat}Loch Modan
+  turnin Water Sapta##94616 |goto Loch Modan 41.76,19.05 |tip {turninat}Loch Modan
 step
   only haveq(468)
   note Speak with Mountaineer Rockgar.
@@ -492,11 +484,11 @@ step
   only Gnome Priest haveq(94819)
   note Speak to High Priestess Mims in Ironforge.
   talk High Priestess Mims##258785
-  turnin Contingency Plan##94819 |goto Ironforge 24.84,10.16 |tip {turninat}Ironforge
+  turnin Contingency Plan##94819 |goto Ironforge 24.59,10 |tip {turninat}Ironforge
 step
   only Shaman level>=20
   talk Eldrun Stormbreaker##258098
-  accept Call of Water##94494 |goto Ironforge 47.38,13.48
+  accept Call of Water##94494 |goto Ironforge 47.1,13.79
 step
   only Warrior level>=20
   talk Kelv Sternhammer##5113
@@ -526,18 +518,9 @@ step
   only Shaman haveq(94494)
   note Find Norric Lochthane in Loch Modan.
   talk Norric Lochthane##258043
-  turnin Call of Water##94494 |goto Loch Modan 41.86,19.02 |tip {turninat}Loch Modan
+  turnin Call of Water##94494 |goto Loch Modan 41.76,19.05 |tip {turninat}Loch Modan
 step
-  only not NightElf not Gnome not Skyborne Paladin haveq(78091)
-  talk Ursula Deline##5495
-  turnin Earning Your Salt##78091 |goto Stormwind City 39.89,84.19 |tip {turninat}Stormwind City
-step
-  only Warrior haveq(1702)
-  note Bring the Cask of Scalder to Furen Longbeard.
-  talk Furen Longbeard##5413
-  turnin The Shieldsmith##1702 |goto Stormwind City 64.62,37.23 |tip {turninat}Stormwind City
-step
-  only completed(65)
+  only completed(65) haveq(132)
   note Take Wiley's Note to Gryan Stoutmantle in Westfall.
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##132 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
@@ -547,7 +530,7 @@ step
   talk Gryan Stoutmantle##234
   turnin Messenger to Westfall##143 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
 step
-  only completed(65)
+  only completed(65) completed(132)
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##135 |goto Westfall 56.33,47.52
 step
@@ -564,14 +547,19 @@ step
   talk Valstag Ironjaw##2086
   turnin The Algaz Gauntlet##455 |goto Wetlands 10.1,56.9 |tip {turninat}Wetlands
 step
-  only completed(65)
+  only completed(65) haveq(135)
   note Take Wiley's Note to Mathias Shaw in Stormwind.
   talk Master Mathias Shaw##332
   turnin The Defias Brotherhood##135 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
 step
-  only completed(65)
+  only completed(65) completed(135)
   talk Master Mathias Shaw##332
   accept The Defias Brotherhood##141 |goto Stormwind City 78.31,70.74
+step
+  only Warrior haveq(1702)
+  note Bring the Cask of Scalder to Furen Longbeard.
+  talk Furen Longbeard##5413
+  turnin The Shieldsmith##1702 |goto Stormwind City 64.62,37.23 |tip {turninat}Stormwind City
 step
   only haveq(144)
   note Return to Magistrate Solomon with Gryan Stoutmantle's response.
@@ -582,44 +570,44 @@ step
   talk Magistrate Solomon##344
   accept Messenger to Darkshire##145 |goto Redridge Mountains 24.9,44.45
 step
-  only completed(65)
+  only completed(65) haveq(141)
   note Take Shaw's report to Gryan Stoutmantle in Westfall.
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##141 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
 step
-  only completed(65)
+  only completed(65) completed(141)
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##142 |goto Westfall 56.33,47.52
 step
-  only completed(65)
+  only completed(65) haveq(142)
   note Track down the Defias Messenger in Westfall and bring his message to Stoutmantle.
   collect A Mysterious Message##1381 |q 142 |goto Westfall 45.1,69.33 |tip {dropsfrom}Defias Messenger
 step
-  only completed(65)
+  only completed(65) haveq(142)
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##142 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
 step
-  only completed(65)
+  only completed(65) completed(142)
   talk The Defias Traitor##467
   accept The Defias Brotherhood##155 |goto Westfall 55.68,47.5
 step
-  only completed(65)
+  only completed(65) haveq(155)
   note Escort the Defias Traitor to the secret hideout of the Defias Brotherhood. Once the Defias Traitor shows you where VanCleef and his men are hiding out, return to Gryan Stoutmantle with the information.
   goto Westfall 42.55,71.53 |tip Escort The Defias Traitor to discover where VanCleef is hiding
 step
-  only completed(65)
+  only completed(65) haveq(155)
   talk Gryan Stoutmantle##234
   turnin The Defias Brotherhood##155 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
 step
-  only completed(65)
+  only completed(65) completed(155)
   talk Scout Riell##820
   accept Red Silk Bandanas##214 |goto Westfall 56.67,47.35
 step
-  only completed(65)
+  only completed(65) haveq(214)
   note Scout Riell at the Sentinel Hill Tower wants you to bring her 10 Red Silk Bandanas.
   collect 10 Red Silk Bandana##915 |q 214 |goto Westfall 42.82,76.47 |tip {dropsfrom}Defias Digger, Defias Henchman, Defias Conjurer
 step
-  only completed(65)
+  only completed(65) haveq(214)
   talk Scout Riell##820
   turnin Red Silk Bandanas##214 |goto Westfall 56.67,47.35 |tip {turninat}Westfall
 step

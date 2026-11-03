@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Ruins of Lordaeron", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "aac7f844",
+	rev = "3e00453f",
 }, [[
 step
   talk Master Apothecary Faranell##2055
@@ -17,19 +17,23 @@ step
   accept Unending Torment##97292 |goto Undercity 48.82,69.28
 step
   talk Tabitha Heartweaver##250686
-  accept A Frightened Request##92401 |goto Silverpine Forest 44.54,42.96
+  accept A Frightened Request##92401 |goto Silverpine Forest 44.52,43.02
 step
   talk Deathguard Kristof##251001
-  accept The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.3,60.26
+  accept The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.25,60.2
 step
   talk Theodore Griffs##11835
   accept The New Plague##95216 |goto Undercity 46.31,71.91
 step
   talk Morbin Lightbane##266484
-  accept Light's Justice##92421 |goto Undercity 57.94,89.38
+  accept Light's Justice##92421 |goto Undercity 58.08,89.51
 step
   note Collect a Toxic Skullcap from Tawny Grisette in the Trade Quarter, Blisterweed near the Herbalism Trainer, and Essence of Agony from the poison vendor in the Rogues' Quarter for Master Apothecary Faranell in Undercity.
-  collect Blisterweed##281300 |q 97291 |goto Undercity 54.1,49.5
+  collect Blisterweed##281300 |q 97291/2 |goto Undercity 54.1,49.5
+  talk Tawny Grisette##4554
+  buy Toxic Skullcap##281246 |q 97291/1 |goto Undercity 65.19,49.84
+  talk Sly Garrett##2622
+  buy Essence of Agony##8923 |q 97291 |goto Stranglethorn Vale 28.41,76.83
 step
   note Investigate the disappearance of Edward Heartweaver in the Ruins of Lordaeron.
   goto Undercity 67.69,13.55
@@ -41,11 +45,11 @@ step
   collect Highly Toxic Strain##275443 |q 95216 |goto Undercity 46.31,71.91 |tip {dropsfrom}Witherfang
 step
   note Collect 25 Intact Limbs within The Ruins of Lordaeron for Morbin Lightbane in the Undercity.
-  collect 25 Intact Limbs##268580 |q 92421 |goto Undercity 57.94,89.38 |tip {dropsfrom}Skeleton, Cadaver, Ragged Ghoul
+  collect 25 Intact Limbs##268580 |q 92421 |goto Undercity 58.08,89.51 |tip {dropsfrom}Skeleton, Cadaver, Ragged Ghoul
 step
   note Bring the Head of the Baron to the body of Othmar in the Undercity.
   talk Unfinished Abomination##271613
-  turnin Unending Torment##97289 |goto Undercity 46.03,61.97
+  turnin Unending Torment##97289 |goto Undercity 45.88,61.7
 step
   talk Master Apothecary Faranell##2055
   turnin Unending Torment##97291 |goto Undercity 48.82,69.28
@@ -55,14 +59,14 @@ step
   turnin Unending Torment##97292 |goto Undercity 48.82,69.28
 step
   talk Tabitha Heartweaver##250686
-  turnin A Frightened Request##92401 |goto Silverpine Forest 44.54,42.96
+  turnin A Frightened Request##92401 |goto Silverpine Forest 44.52,43.02
 step
   talk Deathguard Kristof##251001
-  turnin The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.3,60.26
+  turnin The Wrath of Rath'mael##92422 |goto Tirisfal Glades 65.25,60.2
 step
   talk Theodore Griffs##11835
   turnin The New Plague##95216 |goto Undercity 46.31,71.91
 step
   talk Morbin Lightbane##266484
-  turnin Light's Justice##92421 |goto Undercity 57.94,89.38
+  turnin Light's Justice##92421 |goto Undercity 58.08,89.51
 ]])

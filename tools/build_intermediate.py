@@ -128,14 +128,20 @@ def build_quests(raw):
     return quests
 
 
+def nivel(v):
+    """Nível de NPC. 9999 é o sentinela de "escala com o jogador", não um nível: como número, o
+    elite amigo de Zephras Isle virava elite acima do nível máximo e a cadeia da ilha saía."""
+    return 0 if not v or v >= 9999 else v
+
+
 def build_npcs(raw):
     npcs = {}
     for nid, n in raw.items():
         sp = spawns_of(n.get(7))
         npcs[nid] = {
             "name": n.get(1),
-            "minLevel": n.get(4) or 0,
-            "maxLevel": n.get(5) or 0,
+            "minLevel": nivel(n.get(4)),
+            "maxLevel": nivel(n.get(5)),
             "rank": n.get(6) or 0,        # 0=normal 1=elite 2=rare-elite 3=worldboss 4=rare
             "spawns": sp,
             "zoneID": n.get(9),

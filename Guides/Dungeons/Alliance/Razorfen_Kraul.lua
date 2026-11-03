@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Razorfen Kraul", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "b54c511d",
+	rev = "7063b07b",
 }, [[
 step
   only Warrior
@@ -22,7 +22,7 @@ step
 step
   only Shaman
   talk Veyric Thunderhame##259023
-  accept Elemental Aid##96264 |goto Arathi Highlands 59.77,27.6
+  accept Elemental Aid##96264 |goto Arathi Highlands 59.84,27.57
 step
   collect Henrig Lonebrow's Journal##19861 |goto Thousand Needles 30.73,24.35 |tip Loot the quest item here — it starts the quest.
   accept Lonebrow's Journal##1100 |goto Thousand Needles 30.73,24.35
@@ -60,7 +60,7 @@ step
 step
   only Shaman
   talk Veyric Thunderhame##259023
-  turnin Elemental Aid##96264 |goto Arathi Highlands 59.77,27.6
+  turnin Elemental Aid##96264 |goto Arathi Highlands 59.84,27.57
 step
   note Read Henrig Lonebrow's Journal.
   talk Falfindel Waywarder##4048

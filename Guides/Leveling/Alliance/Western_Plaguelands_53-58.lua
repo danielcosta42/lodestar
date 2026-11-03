@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (53-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (55-57)",
-	rev = "2eecaa83",
+	rev = "d77928b6",
 }, [[
 step
   ding 52
@@ -17,11 +17,6 @@ step
   only not NightElf not Gnome not Skyborne Paladin
   talk Lord Grayson Shadowbreaker##928
   accept Chillwind Point##8415 |goto Stormwind City 48.43,50.22
-step
-  only haveq(6402)
-  note Travel to Stormwind City and venture to the city gates. Speak with Squire Rowe so that he may let Marshal Windsor know that you have arrived.
-  talk Reginald Windsor##12580
-  turnin Stormwind Rendezvous##6402 |goto Stormwind City 73.61,91.05 |tip {turninat}Stormwind City
 step
   talk Janice Felstone##10778
   accept Better Late Than Never##5021 |goto Western Plaguelands 38.4,54.05
@@ -77,10 +72,6 @@ step
   talk High Priest Thel'danis##1854
   accept Inert Scourgestones##8416 |goto Western Plaguelands 52.05,83.27
 step
-  only not completed(5601) not haveq(5601)
-  talk Marlene Redpath##10927
-  accept Little Pamela##5142 |goto Western Plaguelands 49.17,78.57
-step
   talk Commander Ashlam Valorfist##10838
   turnin Clear the Way##5092 |goto Western Plaguelands 42.7,84.03
 step
@@ -110,13 +101,9 @@ step
   talk High Priestess MacDonnell##11053
   accept Target: Felstone Field##5216 |goto Western Plaguelands 42.97,84.5
 step
-  note Go to Felstone Field in Western Plaguelands to locate and defeat the Cauldron Lord present there. It may have a key that will allow access to the cauldron. You must have the Empty Felstone Field Bottle with you to secure a sample of the poisons used inside the cauldron.
-  collect Felstone Field Cauldron Key##13194 |q 5216 |goto Western Plaguelands 36.93,57.41 |tip {dropsfrom}Cauldron Lord Bilemaw
-step
-  turnin Target: Felstone Field##5216 |goto Western Plaguelands 37.25,56.78
-step
-  click Scourge Cauldron##176361
-  accept Return to Chillwind Camp##5217 |goto Western Plaguelands 37.25,56.78
+  only not completed(5601) not haveq(5601)
+  talk Marlene Redpath##10927
+  accept Little Pamela##5142 |goto Western Plaguelands 49.17,78.57
 step
   only level>=52
   click Mrs. Dalson's Diary##175926
@@ -135,12 +122,13 @@ step
   only haveq(5060)
   turnin Locked Away##5060 |goto Western Plaguelands 47.35,49.63
 step
-  talk Mulgris Deepriver##10739
-  accept The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
+  note Go to Felstone Field in Western Plaguelands to locate and defeat the Cauldron Lord present there. It may have a key that will allow access to the cauldron. You must have the Empty Felstone Field Bottle with you to secure a sample of the poisons used inside the cauldron.
+  collect Felstone Field Cauldron Key##13194 |q 5216 |goto Western Plaguelands 36.93,57.41 |tip {dropsfrom}Cauldron Lord Bilemaw
 step
-  only level>=53
-  talk Chromie##10667
-  accept A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
+  turnin Target: Felstone Field##5216 |goto Western Plaguelands 37.25,56.78
+step
+  click Scourge Cauldron##176361
+  accept Return to Chillwind Camp##5217 |goto Western Plaguelands 37.25,56.78
 step
   note Bring the Filled Felstone Field Bottle to High Priestess MacDonnell at Chillwind Camp, Western Plaguelands.
   talk High Priestess MacDonnell##11053
@@ -152,9 +140,25 @@ step
   talk Commander Ashlam Valorfist##10838
   accept All Along the Watchtowers##5097 |goto Western Plaguelands 42.7,84.03
 step
+  only level>=53
+  talk Chromie##10667
+  accept A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
+step
+  note Using the Beacon Torch, mark each tower in Andorhal; you will need to stand in the doorway of the tower to successfully mark it.
+  use Andorhal Tower One##10902 |q 5097/1 |goto Western Plaguelands 40.05,71.6 |tip {useit}
+  use Andorhal Tower Two##10903 |q 5097/2 |goto Western Plaguelands 42.33,66.24 |tip {useit}
+  use Andorhal Tower Three##10904 |q 5097/3 |goto Western Plaguelands 44.3,63.25 |tip {useit}
+  use Andorhal Tower Four##10905 |q 5097 |goto Western Plaguelands 46.62,71.05 |tip {useit}
+step
   only haveq(4971)
   note Use the Temporal Displacer near one of Andorhal's silos and uncover Temporal Parasites.
   kill Temporal Parasite##10717 |q 4971 |goto Western Plaguelands 48.26,65.77
+step
+  talk Mulgris Deepriver##10739
+  accept The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
+step
+  note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
+  kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.61
 step
   note Go to Dalson's Tears in Western Plaguelands to locate and defeat the Cauldron Lord present there, and use its key to gain access to the cauldron. You must have the Empty Dalson's Tears Bottle with you to secure a sample of the poisons used inside the cauldron.
   collect Dalson's Tears Cauldron Key##13195 |q 5219 |goto Western Plaguelands 46.11,52.61 |tip {dropsfrom}Cauldron Lord Malvinious
@@ -163,9 +167,6 @@ step
 step
   click Scourge Cauldron##177289
   accept Return to Chillwind Camp##5220 |goto Western Plaguelands 46.18,51.9
-step
-  note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
-  kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.61
 step
   talk Mulgris Deepriver##10739
   turnin The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
@@ -180,12 +181,6 @@ step
   only completed(4971) level>=53
   talk Chromie##10667
   accept Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
-step
-  note Using the Beacon Torch, mark each tower in Andorhal; you will need to stand in the doorway of the tower to successfully mark it.
-  use Andorhal Tower One##10902 |q 5097/1 |goto Western Plaguelands 40.05,71.6 |tip {useit}
-  use Andorhal Tower Two##10903 |q 5097/2 |goto Western Plaguelands 42.33,66.24 |tip {useit}
-  use Andorhal Tower Three##10904 |q 5097/3 |goto Western Plaguelands 44.3,63.25 |tip {useit}
-  use Andorhal Tower Four##10905 |q 5097 |goto Western Plaguelands 46.62,71.05 |tip {useit}
 step
   only haveq(4972)
   note Locate 5 Andorhal Watches, found in lockboxes amongst the rubble of the city. Return with them to Chromie in the Andorhal Inn, Western Plaguelands.
@@ -205,6 +200,18 @@ step
   talk High Priestess MacDonnell##11053
   accept Target: Writhing Haunt##5222 |goto Western Plaguelands 42.97,84.5
 step
+  note Go to the Writhing Haunt in Western Plaguelands to locate and defeat the Cauldron Lord present there, and use its key to gain access to the cauldron. You must have the Empty Writhing Haunt Bottle with you to secure a sample of the poisons used inside the cauldron.
+  collect Writhing Haunt Cauldron Key##13197 |q 5222 |goto Western Plaguelands 52.88,66.08 |tip {dropsfrom}Cauldron Lord Razarch
+step
+  turnin Target: Writhing Haunt##5222 |goto Western Plaguelands 53.02,65.61
+step
+  click Scourge Cauldron##176393
+  accept Return to Chillwind Camp##5223 |goto Western Plaguelands 53.02,65.61
+step
+  note Bring the Filled Writhing Haunt Bottle to High Priestess MacDonnell at Chillwind Camp, Western Plaguelands.
+  talk High Priestess MacDonnell##11053
+  turnin Return to Chillwind Camp##5223 |goto Western Plaguelands 42.97,84.5
+step
   only level>=55
   talk Commander Ashlam Valorfist##10838
   accept Scholomance##5533 |goto Western Plaguelands 42.7,84.03
@@ -218,18 +225,6 @@ step
   talk Alchemist Arbington##11056
   accept Skeletal Fragments##5537 |goto Western Plaguelands 42.66,83.77
 step
-  note Go to the Writhing Haunt in Western Plaguelands to locate and defeat the Cauldron Lord present there, and use its key to gain access to the cauldron. You must have the Empty Writhing Haunt Bottle with you to secure a sample of the poisons used inside the cauldron.
-  collect Writhing Haunt Cauldron Key##13197 |q 5222 |goto Western Plaguelands 52.88,66.08 |tip {dropsfrom}Cauldron Lord Razarch
-step
-  turnin Target: Writhing Haunt##5222 |goto Western Plaguelands 53.02,65.61
-step
-  click Scourge Cauldron##176393
-  accept Return to Chillwind Camp##5223 |goto Western Plaguelands 53.02,65.61
-step
-  only haveq(5537)
-  note Bring 15 Skeletal Fragments to Alchemist Arbington at Chillwind Point, Western Plaguelands.
-  collect 15 Skeletal Fragments##14619 |q 5537 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
-step
   talk Lord Tirion Fordring##12126
   accept Demon Dogs##5542 |goto Western Plaguelands 53.95,24.45
 step
@@ -242,11 +237,15 @@ step
   talk Kirsta Deepshadow##11610
   accept Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
 step
+  only haveq(5537)
+  note Bring 15 Skeletal Fragments to Alchemist Arbington at Chillwind Point, Western Plaguelands.
+  collect 15 Skeletal Fragments##14619 |q 5537 |goto Western Plaguelands 37.61,58.49 |tip {dropsfrom}Skeletal Flayer, Skeletal Sorcerer, Skeletal Terror
+step
   note Kill 2 Scarlet Medics, 2 Scarlet Hunters, 2 Scarlet Magi and 2 Scarlet Knights before returning to Kirsta Deepshadow in Western Plaguelands.
-  kill Scarlet Knight##1833 |q 6004/4 |goto Western Plaguelands 53.18,36.97
-  kill Scarlet Mage##1826 |q 6004/3 |goto Western Plaguelands 52.77,37.56
+  kill Scarlet Medic##10605 |q 6004/1 |goto Western Plaguelands 41.03,51.91
   kill Scarlet Hunter##1831 |q 6004/2 |goto Western Plaguelands 47.33,51.38
-  kill Scarlet Medic##10605 |q 6004 |goto Western Plaguelands 41.03,51.91
+  kill Scarlet Mage##1826 |q 6004/3 |goto Western Plaguelands 52.77,37.56
+  kill Scarlet Knight##1833 |q 6004 |goto Western Plaguelands 53.18,36.97
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
@@ -260,10 +259,6 @@ step
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6023 |goto Western Plaguelands 51.92,28.06
-step
-  note Bring the Filled Writhing Haunt Bottle to High Priestess MacDonnell at Chillwind Camp, Western Plaguelands.
-  talk High Priestess MacDonnell##11053
-  turnin Return to Chillwind Camp##5223 |goto Western Plaguelands 42.97,84.5
 step
   only haveq(5537)
   talk Alchemist Arbington##11056
@@ -437,5 +432,5 @@ step
   turnin Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
 step
   note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 22.16,50.23
+  goto Swamp of Sorrows 22.22,50.23
 ]])

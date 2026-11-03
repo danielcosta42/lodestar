@@ -4,14 +4,14 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Wailing Caverns", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "1bed79c5",
+	rev = "b5a876b9",
 }, [[
 step
   talk Tonga Runetotem##3448
   accept The Forgotten Pools##870 |goto The Barrens 52.26,31.93
 step
-  click Mailbox##659159
-  accept Deviate Hides##1486 |goto Orgrimmar 50.87,70.89
+  talk Nalpak##5767
+  accept Deviate Hides##1486 |goto The Barrens 45.99,35.66
 step
   talk Crane Operator Bigglefuzz##3665
   accept Trouble at the Docks##959 |goto The Barrens 63.09,37.61

@@ -228,10 +228,23 @@ OBJETIVO_ANTES = {
 # Bones, ao sul de Desolace) virava guia próprio quando tinha 6 quests e sumia quando tinha menos
 # (na Horda, Ravaging Ravagers e Khan Jehn não iam a guia nenhum)
 ZONA_MAE = {16651: 405}
-# Fora do leveling por nome: Arena Master começa no baú do evento de PvP da arena de Gurubashi
-FORA_QUESTS = {7810}
+# Fora do leveling por nome: Arena Master começa no baú do evento de PvP da arena de Gurubashi;
+# 78089-78093 e 78676 são as cadeias de paladino e ladino do Season of Discovery que terminam em
+# objeto; Starving Arcane é de masmorra, e o giver novo em Alterac a trazia para a rota principal;
+# The Damp Note começa num drop de elite dentro de Blackfathom Deeps: fica no guia da masmorra
+FORA_QUESTS = {6564, 7810, 78089, 78090, 78091, 78092, 78093, 78676, 92457}
+# Season of Discovery: as quests de lá estão no cliente, mas sem classe no banco. Runa de ladino,
+# Dragonslayer's: o guia mandava todo mundo clicar num objeto que não dá nada e parava ali. Só esta
+# faixa: dos 86000 em diante é conteúdo do Forever, e os Library Books caem aqui também.
+SEASON_OF_DISCOVERY = range(76000, 86000)
 # e as "Legacy Reward" (brinde de conta: sem texto nem objetivo, só para quem tem direito)
 FORA_NOME = re.compile(r"^Legacy Reward:")
+# Livros da biblioteca: o objeto no mundo dá um item, e a quest só abre no bibliotecário com o livro
+# na bolsa. O banco lista o objeto como quem dá a quest, então o `accept` ia para o lugar do livro e
+# nunca completava (Silverpine parava na Dalaran Digest). Sem XP, não é rota de ninguém. Os dois
+# bibliotecários só dão isso; os dois outros são treinadores, e só o que nasce de objeto é livro.
+BIBLIOTECARIOS = {211022, 211033}
+TREINADORES_DE_LIVRO = {5497, 7825}
 # Veio de minério: só quem tem Mining colhe
 VEIO = re.compile(r"\b(Vein|Deposit)$")
 # Baú de saque aleatório (Battered Chest, Dented Footlocker, Kolkar's Booty): para item de ofício não
@@ -460,7 +473,7 @@ class Router:
                          for e in q["endNpcs"] for z, pts in ((self.npc(e) or {}).get("spawns") or {}).items()):
                 self.quests[k] = dict(q, trigger=None)
         for k, q in self.quests.items():
-            if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or ""):
+            if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or "") or set(q["startNpcs"]) & BIBLIOTECARIOS                     or (q["startObjects"] and q["startNpcs"] and set(q["startNpcs"]) <= TREINADORES_DE_LIVRO)                     or (int(k) in SEASON_OF_DISCOVERY and not q["classes"]):
                 self.quests[k] = dict(q, fora=True)
         # Tarefa sem objetivo no banco: o alvo pelo nome no texto ("slay 6 Undead
         # Ravagers", "slay Outcast Necromancers"), ou da tabela; sem ele, o passo de fazer
@@ -1981,6 +1994,11 @@ class Router:
             # saía sem portão para quem tinha 34,99 no fim de Dustwallow — a conta passava por 7 mil
             if req > min(nivel_por_xp(ini, real.xp) - XP_FOLGA, teto):
                 marca(qid, "level>=%d" % req)
+            # o item que começa a quest é drop incerto, e o passo ficava esperando (Crystal in the
+            # Mountains cai de 287 mobs): só vê a quest quem já tem o item
+            if info[qid].get("giver_kind") == "item" and info[qid].get("item_verb") == "kill" \
+                    and self.drop_incerto(sel[qid]["startItems"][0]):
+                marca(qid, "hasitem(%d)" % sel[qid]["startItems"][0])
 
         aceitas = []                         # na ordem do guia: o `ding` da entrada olha as primeiras
         # (pré-requisito de qualquer quest do banco, não só deste guia: a de outro guia que
@@ -2570,7 +2588,60 @@ class Router:
 
         return self._render(category, faction, title, steps, next_key), len(sel), list(sel.keys())
 
+    def drop_incerto(self, iid):
+        """O item cai de vários mobs, ou de um mob comum com muitos spawns (Lost Stalker, 35). O de
+        um mob só, raro ou chefe, é o que o passo pode esperar: Sharptalon sempre dá a garra."""
+        ids = (self.items.get(str(iid)) or {}).get("npc") or []
+        if len(ids) != 1:
+            return len(ids) > 1
+        npc = self.npc(ids[0]) or {}
+        return not npc.get("rank") and sum(len(p) for p in (npc.get("spawns") or {}).values()) > 4
+
+    def _depois_do_drop(self, steps):
+        """O aceite com `only hasitem` vai para depois do último passo que mata quem dá o item, sem
+        passar do primeiro que depende da quest. Antes disso ninguém tem o item: o passo era pulado
+        e a cadeia sumia (Nibbled-On Book, em Elwynn). Quem chega lá com o item só precisa usá-lo."""
+        blocos = []
+        for s in steps:
+            if s[0] == "step":
+                blocos.append([s])
+            else:
+                blocos[-1].append(s)
+
+        def linhas(b):
+            return "\n".join(s[0] for s in b[1:]).split("\n")
+        for bloco in [b for b in blocos if "hasitem(" in (b[0][1] or "")]:
+            iid = int(re.search(r"hasitem\((\d+)\)", bloco[0][1]).group(1))
+            acc = re.search(r"^  accept [^\n]*##(\d+)", "\n".join(s[0] for s in bloco[1:]), re.M)
+            if not acc:
+                continue
+            qid = acc.group(1)
+            ids = {str(n) for n in (self.items.get(str(iid)) or {}).get("npc") or []}
+            nomes = {(self.npc(n) or {}).get("name") or "?" for n in ids}
+            ate = len(blocos)
+            i = next(n for n, b in enumerate(blocos) if b is bloco)
+            pede = re.compile(r"##%s\b|(?:haveq|completed)\([\d,]*\b%s\b" % (qid, qid))
+            for j in range(i + 1, len(blocos)):
+                if pede.search((blocos[j][0][1] or "") + "\n" + "\n".join(linhas(blocos[j]))):
+                    ate = j
+                    break
+            ultimo = None
+            for j in range(i + 1, ate):
+                for ln in linhas(blocos[j]):
+                    m = re.match(r"\s+kill [^\n]*?##(\d+)", ln)
+                    if (m and m.group(1) in ids) or ("{dropsfrom}" in ln and any(x in ln for x in nomes)):
+                        ultimo = j
+            # com o item na bolsa, é só usar onde estiver: a seta não volta ao lugar do mob
+            bloco[1:] = [("  use %s##%d |tip It starts the quest." % (
+                esc((self.items.get(str(iid)) or {}).get("name") or "?"), iid), None)
+                if re.match(r"\s+kill ", s[0]) else (re.sub(r" \|goto [^|\n]*", " ", s[0]).rstrip(), s[1])
+                for s in bloco[1:]]
+            if ultimo is not None:
+                blocos.insert(ultimo, blocos.pop(i))      # sem o bloco, `ultimo` é a casa logo depois dele
+        return [s for b in blocos for s in b]
+
     def _render(self, category, faction, title, steps, next_key=None):
+        steps = self._depois_do_drop(steps)
         fac = {"A": "Alliance", "H": "Horde"}.get(faction)   # nil = neutro
         if fac:
             key = "%s/%s/%s" % (category, fac, esc(title))
@@ -2709,6 +2780,37 @@ def demo():
                      r"\|q 93963/3 [^\n]*\n  talk High Tinker Mekkatorque##7937 \|q 93963/2 [^\n]*\n"
                      r"  talk Tyrande Whisperwind##7999 \|q 93963 ", zeph_a), "Exploring the Alliance só com o Randal"
     r = Router(load_data(), "A")
+    # 9999 é "escala com o jogador", não nível: a elite amiga de Zephras tirava a cadeia da ilha
+    assert not r.npc(252475)["minLevel"] and not r.quests["92640"].get("fora"), "nível sentinela virou chefe"
+    # livro da biblioteca não é rota: o `accept` no objeto nunca completa
+    assert all(r.quests[q].get("fora") for q in ("78127", "78150", "84396")), "livro da biblioteca na rota"
+    assert not any(r.quests[q].get("fora") for q in ("249", "2954", "7632")), "objeto e NPC que dão quest de verdade"
+    # Season of Discovery sem classe sai; conteúdo do Forever com id vizinho fica
+    assert all(r.quests[q].get("fora") for q in ("79192", "76156", "78132", "78261")), "quest do Season of Discovery na rota"
+    assert not any(r.quests[q].get("fora") for q in ("86784", "87288")), "quest do Forever fora da rota"
+    # drop de vários mobs: o aceite só para quem tem o item; de um chefe, o passo fica
+    elwynn = ler(guias, "..", "Alliance", "Elwynn_Forest_3-10.lua")
+    assert re.search(r"only hasitem\(1972\)\n(  [^\n]*\n)*?  accept Furlbrow's Deed##184", elwynn), "drop raro sem portão"
+    assert "hasitem(16305)" not in ler(guias, "..", "Horde", "Ashenvale_20-27.lua"), "item de chefe com portão"
+    # o aceite do drop vem depois do último passo que mata quem dá o item, e pede para usá-lo
+    passos = elwynn.split("\nstep\n")
+    livro = next(i for i, b in enumerate(passos) if "accept Nibbled-On Book##91741" in b)
+    assert "hasitem(247834)" in passos[livro] and "  use " in passos[livro], passos[livro]
+    assert not any("##6 " in b and "  kill " in b for b in passos[livro + 1:livro + 6]), "aceite antes do Kobold Vermin"
+    assert r.drop_incerto(4614) and not r.drop_incerto(16305), "drop de vários mobs é incerto; o do chefe, não"
+    r.items["999999"] = {"npc": [6], "name": "Livro"}
+    feito = r._depois_do_drop([("step", None), ("  talk X##2", None),
+                               ("step", "hasitem(999999)"), ("  kill Kobold Vermin##6 |tip x", None), ("  accept Q##77", None),
+                               ("step", None), ("  kill Kobold Vermin##6 |q 1", None),
+                               ("step", None), ("  collect 3 Cauda##5 |q 2 |tip {dropsfrom}Kobold Vermin", None),
+                               ("step", None), ("  talk Y##3", None),
+                               ("step", "haveq(77)"), ("  turnin Q##77", None),
+                               ("step", None), ("  kill Kobold Vermin##6 |q 3", None)])
+    ordem = [s[0].strip().split(" |")[0] for s in feito if s[0] != "step"]
+    assert ordem == ["talk X##2", "kill Kobold Vermin##6", "collect 3 Cauda##5", "use Livro##999999", "accept Q##77",
+                     "talk Y##3", "turnin Q##77", "kill Kobold Vermin##6"], ordem
+    assert ("step", "hasitem(999999)") in feito, "o passo perdeu a condição ao mudar de lugar"
+    del r.items["999999"]
     fake = {"objText": ["Speak with Valennia, Ayessa, Elaadrin."], "objCreatures": [252383, 251968, 252475]}
     assert [f[2] for f in r.falas(fake)] == [1, None], r.falas(fake)
     # a saída da ilha vai com o guia dela: entrega a 94946 a Denaaris, portal, Bolvar, o tour

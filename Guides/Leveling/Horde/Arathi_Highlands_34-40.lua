@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Badlands (37-42)",
-	rev = "19537b8e",
+	rev = "7777acaa",
 }, [[
 step
   ding 31
@@ -32,14 +32,8 @@ step
   note Acquire 10 Highland Raptor Eyes from Highland Striders and Highland Thrashers for Tor'gan in Hammerfall.
   collect 10 Highland Raptor Eye##4512 |q 672 |goto Arathi Highlands 46.76,41.11 |tip {dropsfrom}Highland Strider, Highland Thrasher
 step
-  click Messenger Bag##406918
-  accept This Must Be The Place##79976 |goto Arathi Highlands 22.54,24.14
-step
   note Get 10 Bloodstone Amulets for Tor'gan in Hammerfall.
   collect 10 Bloodstone Amulet##4495 |q 671 |goto Arathi Highlands 30.97,29.79 |tip {dropsfrom}Syndicate Highwayman, Syndicate Pathstalker, Syndicate Mercenary
-step
-  note Whoever was here, you just missed them.
-  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.55,24.14
 step
   talk Tor'gan##2706
   turnin Foul Magics##671 |goto Arathi Highlands 74.72,36.29
@@ -57,13 +51,13 @@ step
   talk Gor'mul##2792
   accept Raising Spirits##675 |goto Arathi Highlands 72.64,33.93
 step
-  only level>=37
-  talk Zengu##2703
-  accept Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
-step
   note Speak with Tor'gan.
   talk Tor'gan##2706
   turnin Raising Spirits##675 |goto Arathi Highlands 74.72,36.29
+step
+  only level>=37
+  talk Zengu##2703
+  accept Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
 step
   talk Tor'gan##2706
   accept Guile of the Raptor##701 |goto Arathi Highlands 74.72,36.29
@@ -97,9 +91,6 @@ step
   talk Tor'gan##2706
   accept Guile of the Raptor##702 |goto Arathi Highlands 74.72,36.29
 step
-  talk Drum Fel##2771
-  accept Call to Arms##678 |goto Arathi Highlands 74.24,33.92
-step
   note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
   collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
 step
@@ -114,6 +105,9 @@ step
 step
   click Iridescent Shards##2701
   accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
+step
+  talk Drum Fel##2771
+  accept Call to Arms##678 |goto Arathi Highlands 74.24,33.92
 step
   note Speak with Tor'gan.
   talk Tor'gan##2706

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-33)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Mulgore (30-31)",
-	rev = "c1394a5f",
+	rev = "ccbc081e",
 }, [[
 step
   ding 26
@@ -50,7 +50,7 @@ step
   accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
   click Wanted Poster - Arnak Grimtotem##176115
-  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
+  accept WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
 step
   note Kill 12 Galak Scouts, 10 Galak Wranglers, and 6 Galak Windchasers, and then return to Cliffwatcher Longhorn in Freewind Post.
   kill Galak Wrangler##4093 |q 4841/2 |goto Thousand Needles 43.65,39.34
@@ -124,7 +124,7 @@ step
   turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
 step
   talk Cliffwatcher Longhorn##10537
-  turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
+  turnin WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
 step
   talk Cliffwatcher Longhorn##10537
   accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
@@ -453,9 +453,9 @@ step
   kill Silithid Hive Drone##4133 |q 1147/2 |goto Thousand Needles 68.88,85.88
   kill Silithid Invader##4131 |q 1147 |goto Thousand Needles 65.31,86.73
 step
-  only completed(1146) level>=28
-  kill Silithid Searcher##4130 |goto Thousand Needles 69.91,82.48 |tip Loot the quest item here — it starts the quest.
-  accept Parts of the Swarm##1148 |goto Thousand Needles 69.91,82.48
+  only completed(1146) level>=28 hasitem(5877)
+  use Cracked Silithid Carapace##5877 |tip It starts the quest.
+  accept Parts of the Swarm##1148
 step
   only haveq(1148)
   note Bring 1 Silithid Heart, 5 Silithid Talons, and 3 Intact Silithid Carapaces, to Korran at the Crossroads.
@@ -539,5 +539,5 @@ step
   accept Test of Lore##1159 |goto Stonetalon Mountains 78.8,45.69
 step
   note {travel}Mulgore
-  goto Mulgore 32.54,20.67
+  goto Mulgore 32.5,20.66
 ]])

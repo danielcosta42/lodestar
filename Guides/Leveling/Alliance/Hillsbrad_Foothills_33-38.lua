@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (33-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Stranglethorn Vale (32-40)",
-	rev = "3bbf1728",
+	next = "Leveling/Alliance/Alterac Mountains (34-40)",
+	rev = "145b54a5",
 }, [[
 step
   ding 31
@@ -20,7 +20,7 @@ step
   accept Hints of a New Plague?##659 |goto Hillsbrad Foothills 50.35,59.05
 step
   talk Emissary Jacques##247264
-  accept An Alarming Request##92432 |goto Hillsbrad Foothills 48.32,60
+  accept An Alarming Request##92432 |goto Hillsbrad Foothills 48.34,60.04
 step
   talk Barkeep Kelly##2366
   accept Talk of the Town##98463 |goto Hillsbrad Foothills 51.57,58.57
@@ -77,7 +77,11 @@ step
 step
   note Report to the Image of Archmage Modera near the City of Dalaran.
   talk Image of Archmage Modera##269127
-  turnin An Alarming Request##92432 |goto Silverpine Forest 68.6,45.18 |tip {turninat}Silverpine Forest
+  turnin An Alarming Request##92432 |goto Silverpine Forest 68.62,45.13 |tip {turninat}Silverpine Forest
+step
+  note Visit Nixxrax Fillamug in the Salty Sailor Tavern in Booty Bay in Stranglethorn.
+  talk Nixxrax Fillamug##2832
+  turnin Talk of the Town##98463 |goto Stranglethorn Vale 27.04,77.17 |tip {turninat}Stranglethorn Vale
 step
   only completed(337)
   talk Milton Sheaf##1440
@@ -118,10 +122,6 @@ step
   talk Milton Sheaf##1440
   turnin Return to Milton##542 |goto Stormwind City 77.07,30.21 |tip {turninat}Stormwind City
 step
-  note Visit Nixxrax Fillamug in the Salty Sailor Tavern in Booty Bay in Stranglethorn.
-  talk Nixxrax Fillamug##2832
-  turnin Talk of the Town##98463 |goto Stranglethorn Vale 27.04,77.17 |tip {turninat}Stranglethorn Vale
-step
-  note {travel}Stranglethorn Vale
-  goto Stranglethorn Vale 35.66,10.53
+  note {travel}Alterac Mountains
+  goto Alterac Mountains 58.32,67.92
 ]])

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Winterspring (54-59)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silithus (55-60)",
-	rev = "9d4e6de8",
+	rev = "71cd0466",
 }, [[
 step
   ding 53
@@ -39,14 +39,12 @@ step
   talk Storm Shadowhoof##10303
   accept Ursius of the Shardtooth##5054 |goto Winterspring 61.93,38.38
 step
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Firewater##5083 |goto Winterspring 66.66,37.07
-step
   talk Meggi Peppinrocker##11754
   accept Trouble in Winterspring!##6603 |goto Winterspring 60.66,38.17
 step
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Ritual Totem##8471 |goto Winterspring 66.66,37.07
+  only hasitem(12771)
+  use Empty Firewater Flask##12771 |tip It starts the quest.
+  accept Winterfall Firewater##5083
 step
   only haveq(5054)
   note Storm Shadowhoof at Everlook in Winterspring wants you to kill Ursius.
@@ -59,6 +57,7 @@ step
   note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
   collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 43.59,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti
 step
+  only haveq(5083)
   note Bring the Empty Firewater Flask to Donova Snowden in Winterspring.
   talk Donova Snowden##9298
   turnin Winterfall Firewater##5083 |goto Winterspring 31.27,45.16
@@ -74,6 +73,7 @@ step
   talk Donova Snowden##9298
   accept Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
 step
+  only completed(5083)
   talk Donova Snowden##9298
   accept Falling to Corruption##5084 |goto Winterspring 31.27,45.16
 step
@@ -118,6 +118,10 @@ step
   kill Winterfall Ursa##7438 |q 8464/3 |goto Winterspring 66.66,37.07
   kill Winterfall Den Watcher##7440 |q 8464 |goto Winterspring 66.54,35.92
 step
+  only hasitem(20742)
+  use Winterfall Ritual Totem##20742 |tip It starts the quest.
+  accept Winterfall Ritual Totem##8471
+step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
 step
@@ -125,9 +129,9 @@ step
   talk Storm Shadowhoof##10303
   turnin Brumeran of the Chillwind##5055 |goto Winterspring 61.93,38.38
 step
-  only completed(4741)
-  kill Crazed Owlbeast##7452 |goto Winterspring 64.3,24.98 |tip Loot the quest item here — it starts the quest.
-  accept Guarding Secrets##4882 |goto Winterspring 64.3,24.98
+  only completed(4741) hasitem(12558)
+  use Blue-feathered Necklace##12558 |tip It starts the quest.
+  accept Guarding Secrets##4882
 step
   talk Salfa##11556
   turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
@@ -207,21 +211,24 @@ step
   talk Winna Hazzard##9996
   turnin A Strange One##6605 |goto Felwood 34.21,52.34 |tip {turninat}Felwood
 step
-  only completed(4741)
+  only completed(4741) haveq(4882)
   note Take the Blue-feathered Necklace to Trull Failbane at Bloodvenom Post.
   talk Trull Failbane##10306
   turnin Guarding Secrets##4882 |goto Felwood 34.73,52.79 |tip {turninat}Felwood
 step
-  only completed(4741)
+  only completed(4741) completed(4882)
   talk Trull Failbane##10306
   accept Guarding Secrets##4883 |goto Felwood 34.73,52.79
 step
+  only haveq(5084)
   note Search the Deadwood furbolg camp in northern Felwood for a clue.
   turnin Falling to Corruption##5084 |goto Felwood 60.2,5.84 |tip {turninat}Felwood
 step
+  only completed(5084)
   click Deadwood Cauldron##176091
   accept Mystery Goo##5085 |goto Felwood 60.2,5.84
 step
+  only haveq(8471)
   note Take the Winterfall Ritual Totem inside Timbermaw Hold and see if one of the furbolgs there will find a use for the item. The Timbermaw will not speak with you unless you are of Neutral reputation or greater with them.
   talk Kernda##11558
   turnin Winterfall Ritual Totem##8471 |goto Felwood 65.5,3.52 |tip {turninat}Felwood
@@ -257,15 +264,17 @@ step
   click A Conspicuous Gravestone##148504
   accept Linken's Sword##3914 |goto Tanaris 53.81,29.06
 step
-  only completed(4741)
+  only completed(4741) haveq(4883)
   note Take the Blue-feathered Necklace to Nara Wildmane.
   talk Nara Wildmane##5770
   turnin Guarding Secrets##4883 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
+  only haveq(5085)
   note Report back to Donova Snowden with your findings.
   talk Donova Snowden##9298
   turnin Mystery Goo##5085 |goto Winterspring 31.27,45.16
 step
+  only completed(5085)
   talk Donova Snowden##9298
   accept Toxic Horrors##5086 |goto Winterspring 31.27,45.16
 step
@@ -309,22 +318,27 @@ step
   talk Eridan Bluewind##9116
   accept Aquementas##4005 |goto Felwood 51.35,81.51
 step
+  only haveq(5086)
   note Collect 3 Toxic Horror Droplets for Donova Snowden in Winterspring.
   collect 3 Toxic Horror Droplet##12822 |q 5086 |goto Felwood 48.91,24.66 |tip {dropsfrom}Toxic Horror
 step
+  only haveq(5086)
   talk Donova Snowden##9298
   turnin Toxic Horrors##5086 |goto Winterspring 31.27,45.16
 step
+  only completed(5086)
   talk Donova Snowden##9298
   accept Winterfall Runners##5087 |goto Winterspring 31.27,45.16
 step
+  only haveq(5087)
   note Find the Winterfall Runners and stop them from delivering their shipment to Winterfall Village.
   collect Winterfall Crate##12829 |q 5087 |goto Winterspring 27.96,34.52 |tip {dropsfrom}Winterfall Runner
 step
+  only haveq(5087)
   talk Donova Snowden##9298
   turnin Winterfall Runners##5087 |goto Winterspring 31.27,45.16
 step
-  only level>=59
+  only completed(5087) level>=59
   talk Donova Snowden##9298
   accept High Chief Winterfall##5121 |goto Winterspring 31.27,45.16
 step
@@ -332,7 +346,7 @@ step
   note Donova Snowden in Winterspring wants you to defeat High Chief Winterfall.
   kill High Chief Winterfall##10738 |q 5121 |goto Winterspring 69.56,38.31 |elite
 step
-  only level>=59
+  only completed(5087) level>=59
   kill High Chief Winterfall##10738 |goto Winterspring 69.56,38.31 |elite |tip Loot the quest item here — it starts the quest.
   accept The Final Piece##5123 |goto Winterspring 69.56,38.31
 step

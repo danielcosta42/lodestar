@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (32-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Alterac Mountains (34-40)",
-	rev = "24651b4e",
+	rev = "3b50b3e0",
 }, [[
 step
   ding 31
@@ -109,7 +109,7 @@ step
 step
   note Speak with Archmage Celindra in the City of Dalaran.
   talk Archmage Celindra##252085
-  turnin Shrewd Negotiations##97287 |goto Alterac Mountains 14.27,60.07 |tip {turninat}Alterac Mountains
+  turnin Shrewd Negotiations##97287 |goto Alterac Mountains 14.15,60.05 |tip {turninat}Alterac Mountains
 step
   note Bring 10 Worn Stone Tokens to Keeper Bel'varil in Tarren Mill.
   collect 10 Worn Stone Token##3714 |q 556 |goto Alterac Mountains 19,84.35 |tip {dropsfrom}Dalaran Shield Guard, Dalaran Theurgist, Dalaran Summoner
@@ -170,7 +170,7 @@ step
 step
   note Find a way into Dalaran along the Lordamere Lake.
   talk Image of Archmage Modera##269127
-  turnin Blood in the Streets##92434 |goto Silverpine Forest 68.6,45.18 |tip {turninat}Silverpine Forest
+  turnin Blood in the Streets##92434 |goto Silverpine Forest 68.62,45.13 |tip {turninat}Silverpine Forest
 step
   note Bring 4 Bracers of Earth Binding to Keeper Bel'varil in Tarren Mill.
   collect 4 Bracers of Earth Binding##3715 |q 557 |goto Alterac Mountains 21.78,64.34 |tip {dropsfrom}Elemental Slave

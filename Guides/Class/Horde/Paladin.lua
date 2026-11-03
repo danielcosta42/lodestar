@@ -4,8 +4,18 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Paladin", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "4d3914a7",
+	rev = "5f4b402b",
 }, [[
+step
+  talk Shadow Priest Sarvis##1569
+  accept The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
+step
+  note Shadow Priest Sarvis wants you to kill 8 Mindless Zombies and 8 Wretched Zombies.
+  kill Mindless Zombie##1501 |q 364/1 |goto Tirisfal Glades 32.28,63.63
+  kill Wretched Zombie##1502 |q 364 |goto Tirisfal Glades 32.87,63.55
+step
+  talk Shadow Priest Sarvis##1569
+  turnin The Mindless Ones##364 |goto Tirisfal Glades 30.84,66.2
 step
   only Undead Paladin
   talk Shadow Priest Sarvis##1569
@@ -14,41 +24,75 @@ step
   only Undead Paladin
   note Read the Consecrated Scroll and speak to Aramis Hammerhand in the church in Deathknell.
   talk Aramis Hammerhand##244808
-  turnin A Difficult Path##98601 |goto Tirisfal Glades 31.04,66.45
+  turnin A Difficult Path##98601 |goto Tirisfal Glades 31.1,66.41
 step
   only Undead Paladin
   talk Aramis Hammerhand##244808
-  accept Rediscovering the Light##90902 |goto Tirisfal Glades 31.04,66.45
+  accept Rediscovering the Light##90902 |goto Tirisfal Glades 31.1,66.41
 step
   only Undead Paladin
   note Heal 5 Injured Deathguard with your Holy Light ability.
-  talk Injured Deathguard##259377 |q 90902 |goto Tirisfal Glades 31.99,63.83
+  talk Injured Deathguard##259377 |q 90902 |goto Tirisfal Glades 32.57,64.21
 step
   only Undead Paladin
   talk Aramis Hammerhand##244808
-  turnin Rediscovering the Light##90902 |goto Tirisfal Glades 31.04,66.45
+  turnin Rediscovering the Light##90902 |goto Tirisfal Glades 31.1,66.41
 step
   only Undead Paladin
   talk Aramis Hammerhand##244808
-  accept Coming to Terms##91208 |goto Tirisfal Glades 31.04,66.45
+  accept Coming to Terms##91208 |goto Tirisfal Glades 31.1,66.41
 step
   only Undead Paladin
   note Find the Frightened Paladin in Deathknell.
-  talk Aramis Hammerhand##244808
-  turnin Coming to Terms##91208 |goto Tirisfal Glades 31.04,66.45
+  talk Frightened Paladin##246143 |q 91208 |goto Tirisfal Glades 27.69,63.82
 step
   only Undead Paladin
   talk Aramis Hammerhand##244808
-  accept Continue Your Training##91209 |goto Tirisfal Glades 31.04,66.45
+  turnin Coming to Terms##91208 |goto Tirisfal Glades 31.1,66.41
+step
+  only Undead Paladin
+  talk Aramis Hammerhand##244808
+  accept Continue Your Training##91209 |goto Tirisfal Glades 31.1,66.41
 step
   only Undead Paladin
   note Follow the road east out of Deathknell to find the town of Brill. Report to Shari Stilwell to continue your training.
+  talk Shari Stilwell##246152 |q 91209 |goto Tirisfal Glades 60.22,52.66
+step
+  only Undead Paladin
   talk Shari Stilwell##246152
-  turnin Continue Your Training##91209 |goto Tirisfal Glades 60.25,52.62
+  turnin Continue Your Training##91209 |goto Tirisfal Glades 60.22,52.66
+step
+  only Undead Paladin
+  talk Breton Samuels##246349
+  accept Murlocs at the Gates##91285 |goto Tirisfal Glades 21.85,45.23
+step
+  only Undead Paladin
+  note Slay 8 Vile Fin Attackers and 8 Vile Fin Seers and report back to Breton Samuels when it is done.
+  kill Vile Fin Attacker##250283 |q 91285/1 |goto Tirisfal Glades 17.04,55.58
+  kill Vile Fin Seer##250282 |q 91285 |goto Tirisfal Glades 17.06,54.28
+step
+  only Undead Paladin
+  talk Breton Samuels##246349
+  turnin Murlocs at the Gates##91285 |goto Tirisfal Glades 21.85,45.23
+step
+  only Undead Paladin
+  talk Breton Samuels##246349
+  accept Touring the Grounds##91294 |goto Tirisfal Glades 21.85,45.23
+step
+  only Undead Paladin
+  note Speak to the residents of Bandarion Keep.
+  talk Hilda the Breaker##246389 |q 91294/1 |goto Tirisfal Glades 21.96,47.25
+  talk Jorin Croge##246393 |q 91294/2 |goto Tirisfal Glades 22.69,44.7
+  talk Ander Solliden##246394 |q 91294/3 |goto Tirisfal Glades 25.41,50.41
+  talk Danitha Morr##246378 |q 91294 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  turnin Touring the Grounds##91294 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
   talk Jorin Croge##246393
-  accept Making Repairs##91316 |goto Tirisfal Glades 22.66,44.76
+  accept Making Repairs##91316 |goto Tirisfal Glades 22.69,44.7
 step
   only Undead Paladin
   note Collect 12 pieces of Sturdy Lumber from Shadowvale in Tirisfal Glades.
@@ -56,54 +100,32 @@ step
 step
   only Undead Paladin
   talk Jorin Croge##246393
-  turnin Making Repairs##91316 |goto Tirisfal Glades 22.66,44.76
-step
-  only Undead Paladin
-  talk Breton Samuels##246349
-  accept Murlocs at the Gates##91285 |goto Tirisfal Glades 21.85,45.3
-step
-  only Undead Paladin
-  note Slay 8 Vile Fin Attackers and 8 Vile Fin Seers and report back to Breton Samuels when it is done.
-  kill Vile Fin Seer##250282 |q 91285/2 |goto Tirisfal Glades 17.33,53.3
-  kill Vile Fin Attacker##250283 |q 91285 |goto Tirisfal Glades 16.52,56.32
-step
-  only Undead Paladin
-  talk Breton Samuels##246349
-  turnin Murlocs at the Gates##91285 |goto Tirisfal Glades 21.85,45.3
-step
-  only Undead Paladin
-  talk Breton Samuels##246349
-  accept Touring the Grounds##91294 |goto Tirisfal Glades 21.85,45.3
-step
-  only Undead Paladin
-  note Speak to the residents of Bandarion Keep.
-  talk Danitha Morr##246378
-  turnin Touring the Grounds##91294 |goto Tirisfal Glades 22.06,44.72
+  turnin Making Repairs##91316 |goto Tirisfal Glades 22.69,44.7
 step
   only Undead Paladin
   talk Shari Stilwell##246152
-  accept A Second Home##91282 |goto Tirisfal Glades 60.25,52.62
+  accept A Second Home##91282 |goto Tirisfal Glades 60.22,52.66
 step
   only Undead Paladin
   note Find the fortress of Bandarion Keep and report to Breton Samuels there.
   talk Breton Samuels##246349
-  turnin A Second Home##91282 |goto Tirisfal Glades 21.85,45.3
+  turnin A Second Home##91282 |goto Tirisfal Glades 21.85,45.23
 step
   only Undead Paladin
   talk Danitha Morr##246378
-  accept The Tarnished##91317 |goto Tirisfal Glades 22.06,44.72
+  accept The Tarnished##91317 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
   note Slay 8 Tarnished Drudges, 6 Tarnished Zealots, and collect the head of Commander Rudolph Gelhardt in Tirisfal Glades.
-  kill Tarnished Drudge##259434 |q 91317 |goto Tirisfal Glades 13.03,63.87
+  kill Tarnished Drudge##259434 |q 91317 |goto Tirisfal Glades 13.38,63.13
 step
   only Undead Paladin
   talk Danitha Morr##246378
-  turnin The Tarnished##91317 |goto Tirisfal Glades 22.06,44.72
+  turnin The Tarnished##91317 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
   talk Danitha Morr##246378
-  accept A Token of Good Faith##95803 |goto Tirisfal Glades 22.06,44.72
+  accept A Token of Good Faith##95803 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
   note Bring the head of Rudolph Gelhardt to Sylvanas Windrunner in the Undercity.
@@ -111,77 +133,77 @@ step
   turnin A Token of Good Faith##95803 |goto Undercity 58.05,91.79
 step
   only Undead Paladin
-  talk Deathguard Billmuth##257655
-  accept A Lesson in Divinity##94438 |goto Tirisfal Glades 21.95,44.54
-step
-  only Undead Paladin
-  note Take the Symbol of Life and use it to resurrect Deathguard Falgan at Venomweb Vale.
-  talk Deathguard Falgan##257663
-  turnin A Lesson in Divinity##94438 |goto Tirisfal Glades 86.68,47.69
-step
-  only Undead Paladin
-  talk Deathguard Billmuth##257655
-  accept A Lesson in Divinity##94441 |goto Tirisfal Glades 21.95,44.54
-step
-  only Undead Paladin
-  note Speak with Danitha Morr in the keep at Bandarion Keep.
   talk Danitha Morr##246378
-  turnin A Lesson in Divinity##94441 |goto Tirisfal Glades 22.06,44.72
-step
-  only Undead Paladin
-  talk Danitha Morr##246378
-  accept A Lesson in Divinity##94427 |goto Tirisfal Glades 22.06,44.72
+  accept A Lesson in Divinity##94427 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
   note Speak to Tanis Alderwood in the Undercity.
   talk Tanis Alderwood##257648
-  turnin A Lesson in Divinity##94427 |goto Undercity 65.68,37.74
-step
-  only Undead Paladin
-  talk Danitha Morr##246378
-  accept A Lesson in Divinity##94436 |goto Tirisfal Glades 22.06,44.72
-step
-  only Undead Paladin
-  note Speak with Deathguard Billmuth at Bandarion Keep.
-  talk Deathguard Billmuth##257655
-  turnin A Lesson in Divinity##94436 |goto Tirisfal Glades 21.95,44.54
-step
-  only Undead Paladin
-  talk Deathguard Falgan##257663
-  accept A Lesson in Divinity##94440 |goto Tirisfal Glades 86.68,47.69
-step
-  only Undead Paladin
-  note Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Tyr's Watch.
-  collect Scarlet Crusade Attack Plans##264693 |q 94440 |goto Tirisfal Glades 78.38,56.03 |tip {dropsfrom}Scarlet Zealot, Scarlet Friar, Tarnished Zealot
-step
-  only Undead Paladin
-  talk Deathguard Billmuth##257655
-  turnin A Lesson in Divinity##94440 |goto Tirisfal Glades 21.95,44.54
+  turnin A Lesson in Divinity##94427 |goto Undercity 65.48,37.49
 step
   only Undead Paladin
   talk Tanis Alderwood##257648
-  accept A Lesson in Divinity##94434 |goto Undercity 65.68,37.74
+  accept A Lesson in Divinity##94434 |goto Undercity 65.48,37.49
 step
   only Undead Paladin
   note Bring 10 Linen Cloth to Tanis Alderwood in the Undercity.
-  collect 10 Linen Cloth##2589 |q 94434 |goto Undercity 65.68,37.74 |tip {dropsfrom}humanoids
+  collect 10 Linen Cloth##2589 |q 94434 |goto Undercity 65.48,37.49 |tip {dropsfrom}humanoids
 step
   only Undead Paladin
   talk Tanis Alderwood##257648
-  turnin A Lesson in Divinity##94434 |goto Undercity 65.68,37.74
+  turnin A Lesson in Divinity##94434 |goto Undercity 65.48,37.49
 step
   only Undead Paladin
   talk Tanis Alderwood##257648
-  accept A Lesson in Divinity##94435 |goto Undercity 65.68,37.74
+  accept A Lesson in Divinity##94435 |goto Undercity 65.48,37.49
 step
   only Undead Paladin
   note Return to Danitha Morr at Bandarion Keep.
   talk Danitha Morr##246378
-  turnin A Lesson in Divinity##94435 |goto Tirisfal Glades 22.06,44.72
+  turnin A Lesson in Divinity##94435 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept A Lesson in Divinity##94436 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  note Speak with Deathguard Billmuth at Bandarion Keep.
+  talk Deathguard Billmuth##257655
+  turnin A Lesson in Divinity##94436 |goto Tirisfal Glades 21.92,44.5
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  accept A Lesson in Divinity##94438 |goto Tirisfal Glades 21.92,44.5
+step
+  only Undead Paladin
+  note Take the Symbol of Life and use it to resurrect Deathguard Falgan at Venomweb Vale.
+  talk Deathguard Falgan##257663
+  turnin A Lesson in Divinity##94438 |goto Tirisfal Glades 86.73,47.72
+step
+  only Undead Paladin
+  talk Deathguard Falgan##257663
+  accept A Lesson in Divinity##94440 |goto Tirisfal Glades 86.73,47.72
+step
+  only Undead Paladin
+  note Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Bandarion Keep.
+  collect Scarlet Crusade Attack Plans##264693 |q 94440 |goto Tirisfal Glades 78.38,56.03 |tip {dropsfrom}Scarlet Zealot, Scarlet Friar, Tarnished Zealot
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  turnin A Lesson in Divinity##94440 |goto Tirisfal Glades 21.92,44.5
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  accept A Lesson in Divinity##94441 |goto Tirisfal Glades 21.92,44.5
+step
+  only Undead Paladin
+  note Speak with Danitha Morr in the keep at Bandarion Keep.
+  talk Danitha Morr##246378
+  turnin A Lesson in Divinity##94441 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
   talk Lumina Windsinger##248755
-  accept Lumina Windsinger##91862 |goto Silverpine Forest 65.63,23.36
+  accept Lumina Windsinger##91862 |goto Silverpine Forest 65.55,23.27
 step
   only Undead Paladin
   note Retrieve the Fenris Isle Key from the Rot Hide Gnolls and use it to free Lumina Windsinger.
@@ -189,64 +211,64 @@ step
 step
   only Undead Paladin
   talk Lumina Windsinger##248755
-  turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.63,23.36
+  turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.55,23.27
 step
   only Undead Paladin
   talk Lumina Windsinger##248755
-  accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.63,23.36
+  accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.55,23.27
 step
   only Undead Paladin
   note Accompany Lumina Windsinger and help her escape Fenris Keep.
   talk Lumina Windsinger##259620
-  turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.33,40.97
+  turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.4,40.99
 step
   only Undead Paladin
   click Charred Remains##566037
-  accept Into Fenris Keep##91861 |goto Silverpine Forest 64.93,34.34
+  accept Into Fenris Keep##91861 |goto Silverpine Forest 65.02,34.1
 step
   only Undead Paladin
   note Investigate Fenris Keep to the north and attempt to locate the missing member of the Earthen Ring party.
   talk Lumina Windsinger##248755
-  turnin Into Fenris Keep##91861 |goto Silverpine Forest 65.63,23.36
+  turnin Into Fenris Keep##91861 |goto Silverpine Forest 65.55,23.27
 step
   only Undead Paladin
   talk Trevan Rol##248840
-  accept A Curious Pair##91859 |goto Silverpine Forest 43.34,41.12
+  accept A Curious Pair##91859 |goto Silverpine Forest 43.4,41.1
 step
   only Undead Paladin
   note Speak with Deathguard Baldren about the mysterious Earthen Ring travelers who recently passed through The Sepulcher.
   talk Deathguard Baldren##259611
-  turnin A Curious Pair##91859 |goto Silverpine Forest 45.77,41.94
+  turnin A Curious Pair##91859 |goto Silverpine Forest 45.81,41.88
 step
   only Undead Paladin
   talk Deathguard Baldren##259611
-  accept A Grim Fate##91860 |goto Silverpine Forest 45.77,41.94
+  accept A Grim Fate##91860 |goto Silverpine Forest 45.81,41.88
 step
   only Undead Paladin
   note Investigate Fenris Isle to the east and learn the fate of the Earthen Ring traveling party.
-  turnin A Grim Fate##91860 |goto Silverpine Forest 64.93,34.34
+  turnin A Grim Fate##91860 |goto Silverpine Forest 65.02,34.1
 step
   only Undead Paladin
   talk Danitha Morr##246378
-  accept Diplomatic Incident##91858 |goto Tirisfal Glades 22.06,44.72
+  accept Diplomatic Incident##91858 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
   note Travel to The Sepulcher in Silverpine Forest and speak with Trevan Rol about the missing Earthen Ring travelers.
   talk Trevan Rol##248840
-  turnin Diplomatic Incident##91858 |goto Silverpine Forest 43.34,41.12
+  turnin Diplomatic Incident##91858 |goto Silverpine Forest 43.4,41.1
 step
   only Undead Paladin
   talk Lumina Windsinger##259620
-  accept The Debt##95034 |goto Silverpine Forest 43.33,40.97
+  accept The Debt##95034 |goto Silverpine Forest 43.4,40.99
 step
   only Undead Paladin
   note Speak with Lumina Windsinger in the Sepulcher.
   talk Lumina Windsinger##259620
-  turnin The Debt##95034 |goto Silverpine Forest 43.33,40.97
+  turnin The Debt##95034 |goto Silverpine Forest 43.4,40.99
 step
   only Paladin
   talk Ulric Frostveil##259649
-  accept Seeking the Kor Gem##95042 |goto Ashenvale 11.88,34.5
+  accept Seeking the Kor Gem##95042 |goto Ashenvale 11.87,34.41
 step
   only Paladin
   note Bring a Kor Gem to Ulric Frostveil in Ashenvale.
@@ -254,7 +276,7 @@ step
 step
   only Paladin
   talk Ulric Frostveil##259649
-  turnin Seeking the Kor Gem##95042 |goto Ashenvale 11.88,34.5
+  turnin Seeking the Kor Gem##95042 |goto Ashenvale 11.87,34.41
 step
   only Undead Paladin
   talk Ott##3539
@@ -272,24 +294,26 @@ step
   only Undead Paladin
   note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
   talk Trevan Rol##248840
-  turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.34,41.12
+  turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.4,41.1
 step
   only Undead Paladin
   talk Lumina Windsinger##259620
-  accept A Moon-Kissed Blade##95036 |goto Silverpine Forest 43.33,40.97
+  accept A Moon-Kissed Blade##95036 |goto Silverpine Forest 43.4,40.99
 step
   only Undead Paladin
   note Speak with Trevan Rol in the Sepulcher and bring him the materials he requires.
-  collect Whitestone Oak Lumber##6994 |q 95036/1 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Goblin Woodcarver
-  collect Enchanted Silver Ingot##267361 |q 95036
+  collect Trevan's Weapon Notes##267454 |q 95036/1
+  collect Whitestone Oak Lumber##6994 |q 95036/2 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Goblin Woodcarver
+  collect Enchanted Silver Ingot##267361 |q 95036/3
+  collect Purified Kor Gem##272448 |q 95036
 step
   only Undead Paladin
   talk Trevan Rol##248840
-  turnin A Moon-Kissed Blade##95036 |goto Silverpine Forest 43.34,41.12
+  turnin A Moon-Kissed Blade##95036 |goto Silverpine Forest 43.4,41.1
 step
   only Undead Paladin
   talk Trevan Rol##248840
-  accept An Underrated Talent##95111 |goto Silverpine Forest 43.34,41.12
+  accept An Underrated Talent##95111 |goto Silverpine Forest 43.4,41.1
 step
   only Undead Paladin
   note Speak with Ott and ask him to forge your blade.
@@ -298,15 +322,12 @@ step
 step
   only Undead Paladin
   talk Lumina Windsinger##259620
-  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.33,40.97
+  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
 step
   only Undead Paladin
   note Use the Moonsilver Blade to destroy Old-Fire Eye in Silverpine Forest.
-  kill Old Fire-Eye##259897 |q 95140 |goto Silverpine Forest 49.56,85.2
-step
-  only Undead Paladin
   talk Lumina Windsinger##259620
-  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.33,40.97
+  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
 step
   only Paladin
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.

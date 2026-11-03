@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Cenarion Circle", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "ebb6d34b",
+	rev = "9b41acd2",
 }, [[
 step
   only Skyborne Druid
@@ -69,12 +69,12 @@ step
 step
   only Skyborne Druid
   talk Lotheluum Starbreeze##252359
-  accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.01,75.1
+  accept The Great Ursera Spirit##94006 |goto Zephras Isle 63.99,75.08
 step
   only Skyborne Druid
   note Speak with Urs'endris near the falls northeast of Valanaar.
   talk Urs'endris##255853
-  turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.83,61.67
+  turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.81,61.71
 step
   only Tauren Druid
   talk Turak Runetotem##3033
@@ -104,7 +104,7 @@ step
   only Tauren Druid
   note Bring 5 Earthroot and 5 Kodo Horns to Tonga Runetotem at the Crossroads so he may make a curative salve.
   collect 5 Kodo Horn##15852 |q 6128/2 |goto The Barrens 54.06,41.46 |tip {dropsfrom}Lost Barrens Kodo, Barrens Kodo
-  collect 5 Earthroot##2449 |q 6128 |goto Teldrassil 57.91,66.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine
+  collect 5 Earthroot##2449 |q 6128 |goto Teldrassil 57.09,69.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine
 step
   only Tauren Druid
   talk Tonga Runetotem##3448
@@ -178,9 +178,9 @@ step
   accept The Great Windborne Cat Spirit##98341 |goto Moonglade 56.21,30.64
 step
   only Skyborne
-  note Seek out the Avatar of Saeyleenan in southern part Moonglade and learn what it has to share with you about the nature of the windborne cat.
+  note Seek out the Avatar of Saeyleenan in the southern part Moonglade and learn what it has to share with you about the nature of the windborne cat.
   talk Avatar of Saeyleenan##272054
-  turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 44.01,73.48
+  turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 43.92,73.44
 step
   only Tauren Druid
   talk Dendrite Starblaze##11802
@@ -193,7 +193,7 @@ step
 step
   only Skyborne
   talk Avatar of Saeyleenan##272054
-  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 44.01,73.48
+  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
 step
   only Skyborne
   note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
@@ -203,11 +203,11 @@ step
 step
   only Skyborne
   talk Avatar of Saeyleenan##272054
-  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 44.01,73.48
+  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
 step
   only Skyborne
   talk Avatar of Saeyleenan##272054
-  accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 44.01,73.48
+  accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 43.92,73.44
 step
   only Skyborne
   talk Dendrite Starblaze##11802

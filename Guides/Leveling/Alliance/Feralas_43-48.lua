@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Feralas (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Tanaris (44-50)",
-	rev = "48c913d1",
+	rev = "7163105d",
 }, [[
 step
   ding 41
@@ -112,9 +112,6 @@ step
   talk Falfindel Waywarder##4048
   turnin Thalanaar Delivery##4281 |goto Feralas 89.64,46.57
 step
-  kill Gordunni Ogre##5229 |goto Feralas 75.21,29.62 |tip Loot the quest item here — it starts the quest.
-  accept Find OOX-22/FE!##2766 |goto Feralas 75.21,29.62
-step
   talk Pratt McGrubben##7852
   turnin The Mark of Quality##2821 |goto Feralas 30.63,42.71
 step
@@ -204,12 +201,17 @@ step
   kill Grimtotem Shaman##7727 |q 2970/3 |goto Feralas 68.09,46.12
   kill Grimtotem Naturalist##7726 |q 2970 |goto Feralas 68.74,39.25
 step
+  only hasitem(8705)
+  use OOX-22/FE Distress Beacon##8705 |tip It starts the quest.
+  accept Find OOX-22/FE!##2766
+step
   talk Jer'kai Moonweaver##7957
   turnin Doling Justice##2970 |goto Feralas 65.95,45.61
 step
   talk Jer'kai Moonweaver##7957
   accept Doling Justice##2972 |goto Feralas 65.95,45.61
 step
+  only haveq(2766)
   note Take the distress beacon to Oglethorpe's homing robot in a cave near Feral Scar Vale.
   talk Homing Robot OOX-22/FE##7807
   turnin Find OOX-22/FE!##2766 |goto Feralas 53.35,55.7

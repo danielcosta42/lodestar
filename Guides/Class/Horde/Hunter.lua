@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Hunter", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "73b41c76",
+	rev = "4ba26466",
 }, [[
 step
   talk Gornek##3143
@@ -53,29 +53,29 @@ step
   turnin Etched Note##3092 |goto Mulgore 43.96,76.35
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.05,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Hunter
   talk Rorian the Dayseeker##251361
-  accept The Way of the Hunter##92482 |goto Zephras Isle 42.09,23.49
+  accept The Way of the Hunter##92482 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Hunter
   note Read the Scribbled Note and then speak with Tai'ree Farsight in Thendal Grove.
   talk Tai'ree Farsight##251376
-  turnin The Way of the Hunter##92482 |goto Zephras Isle 42.46,23.67
+  turnin The Way of the Hunter##92482 |goto Zephras Isle 42.49,23.79
 step
   only not Undead not Tauren not Skyborne Hunter not completed(6069) not completed(6070) not haveq(6069) not haveq(6070)
   talk Sian'dur##3407
@@ -192,52 +192,52 @@ step
   only Skyborne Hunter
   note Report to Quel'ana Quickgale in Valanaar.
   talk Quel'ana Quickgale##252389
-  turnin Taming the Beast##94007 |goto Zephras Isle 59.61,72.65
+  turnin Taming the Beast##94007 |goto Zephras Isle 59.56,72.63
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
-  accept Taming the Beast##94978 |goto Zephras Isle 59.61,72.65
+  accept Taming the Beast##94978 |goto Zephras Isle 59.56,72.63
 step
   only Skyborne Hunter
   note Use the Taming Rod to tame a Windsong Crawler found near bodies of water.
-  use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 52.11,60.7 |tip {useit}
+  use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 52.75,59.49 |tip {useit}
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
-  turnin Taming the Beast##94978 |goto Zephras Isle 59.61,72.65
+  turnin Taming the Beast##94978 |goto Zephras Isle 59.56,72.63
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
-  accept Taming the Beast##94979 |goto Zephras Isle 59.61,72.65
+  accept Taming the Beast##94979 |goto Zephras Isle 59.56,72.63
 step
   only Skyborne Hunter
   note Use the Taming Rod to tame an Ornery Galestrider in the Gustberry Lowlands.
-  use Ornery Galestrider##251707 |q 94979 |goto Zephras Isle 51.23,75.8 |tip {useit}
+  use Ornery Galestrider##251707 |q 94979 |goto Zephras Isle 55.34,72.96 |tip {useit}
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
-  turnin Taming the Beast##94979 |goto Zephras Isle 59.61,72.65
+  turnin Taming the Beast##94979 |goto Zephras Isle 59.56,72.63
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
-  accept Taming the Beast##94013 |goto Zephras Isle 59.61,72.65
+  accept Taming the Beast##94013 |goto Zephras Isle 59.56,72.63
 step
   only Skyborne Hunter
   note Use the Taming Rod to tame a Vuldren Alpha in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
-  use Vuldren Alpha##250874 |q 94013 |goto Zephras Isle 53.9,75.63 |tip {useit}
+  use Vuldren Alpha##250874 |q 94013 |goto Zephras Isle 53.7,74.53 |tip {useit}
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
-  turnin Taming the Beast##94013 |goto Zephras Isle 59.61,72.65
+  turnin Taming the Beast##94013 |goto Zephras Isle 59.56,72.63
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
-  accept Training the Beast##94050 |goto Zephras Isle 59.61,72.65
+  accept Training the Beast##94050 |goto Zephras Isle 59.56,72.63
 step
   only Skyborne Hunter
   note Speak to Quel'dora Quickgale in Valanaar.
   talk Quel'dora Quickgale##254411
-  turnin Training the Beast##94050 |goto Zephras Isle 59.62,72.59
+  turnin Training the Beast##94050 |goto Zephras Isle 59.92,72.87
 step
   only Hunter
   talk Holt Thunderhorn##3039

@@ -4,11 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Scarlet Monastery", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "4c34439c",
+	rev = "0f02765f",
 }, [[
 step
   talk Magus Olvek##264265
-  accept Past Due##96800 |goto Alterac Mountains 10.72,64.07
+  accept Past Due##96800 |goto Alterac Mountains 9.75,63.36
 step
   only Mage
   talk Bink##5144
@@ -21,7 +21,7 @@ step
   accept Down the Scarlet Path##261 |goto Desolace 66.52,7.91
 step
   note Retrieve the book The Lost Magic of the Runemasters from the Scarlet Monastery.
-  collect The Lost Magic of the Runemasters##273169 |q 96800 |goto Alterac Mountains 10.72,64.07
+  collect The Lost Magic of the Runemasters##273169 |q 96800 |goto Alterac Mountains 9.75,63.36
 step
   note Retrieve Mythology of the Titans from the Monastery and bring it to Librarian Mae Paledust in Ironforge.
   collect Mythology of the Titans##5536 |q 1050 |goto Scarlet Monastery - Dungeon -1,-1
@@ -30,7 +30,7 @@ step
   kill Undead Ravager##11561 |q 261 |goto Desolace 64.24,90.37
 step
   talk Magus Olvek##264265
-  turnin Past Due##96800 |goto Alterac Mountains 10.72,64.07
+  turnin Past Due##96800 |goto Alterac Mountains 9.75,63.36
 step
   only Mage
   note Speak with Tabetha.

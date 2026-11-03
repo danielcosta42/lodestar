@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Ravenholdt", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "709e2404",
+	rev = "31c0d0e7",
 }, [[
 step
   only Rogue
@@ -13,7 +13,7 @@ step
 step
   only Rogue
   note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
-  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.32,46.24
+  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.1,45.73
 step
   only Rogue
   talk Myrokos Silentform##13085

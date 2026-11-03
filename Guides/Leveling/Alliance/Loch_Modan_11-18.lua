@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (11-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Redridge Mountains (15-24)",
-	rev = "faee0c18",
+	rev = "9a1c5759",
 }, [[
 step
   ding 10
@@ -31,11 +31,11 @@ step
 step
   only level>=10
   talk Grenhild Darktalon##49808
-  accept Snowbound##86667 |goto Loch Modan 36.57,48.41
+  accept Snowbound##86667 |goto Loch Modan 36.5,48.29
 step
   only haveq(86667)
   note Deliver a Jar of Snow to Norric Lochthane at his house on the northwest coast of the Loch.
-  collect Jar of Snow##279379 |q 86667 |goto Loch Modan 36.57,48.41
+  collect Jar of Snow##279379 |q 86667 |goto Loch Modan 36.5,48.29
 step
   only not Human not NightElf not Skyborne haveq(6387)
   note Bring Brock's List to Thorgrum Borrelson in Thelsamar.
@@ -57,7 +57,7 @@ step
 step
   only haveq(86667)
   talk Norric Lochthane##258043
-  turnin Snowbound##86667 |goto Loch Modan 41.86,19.02
+  turnin Snowbound##86667 |goto Loch Modan 41.76,19.05
 step
   only haveq(416)
   talk Mountaineer Kadrell##1340
@@ -91,7 +91,7 @@ step
 step
   only Shaman completed(94465)
   note Bring 1 Fire Tar and 1 Reagent Pouch to Braldir Ashmantle in Loch Modan.
-  collect 1 Reagent Pouch##6652 |q 94466/1 |goto Loch Modan 35.3,82.56 |tip {dropsfrom}Stonesplinter Seer
+  collect 1 Reagent Pouch##6652 |q 94466/2 |goto Loch Modan 35.3,82.56 |tip {dropsfrom}Stonesplinter Seer
   collect 1 Fire Tar##5026 |q 94466 |goto Loch Modan 35.15,23.93 |tip {dropsfrom}Tunnel Rat Geomancer
 step
   only Shaman completed(94465)
@@ -173,7 +173,7 @@ step
 step
   only haveq(86758)
   note Find and defeat the crocolisk Daggerfang and bring back Marek's knife.
-  collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 62.78,46.8 |tip {dropsfrom}Daggerfang
+  collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 62.19,44.96 |tip {dropsfrom}Daggerfang
 step
   note Get 5 pieces of Crocolisk Meat and 6 Crocolisk Skins for Marek Ironheart at the Farstrider Lodge.
   collect Crocolisk Meat##2924 |q 385 |goto Loch Modan 56.87,39.12 |tip {dropsfrom}Loch Crocolisk, Daggerfang, Large Loch Crocolisk
@@ -209,10 +209,10 @@ step
   accept In Defense of the King's Lands##217 |goto Loch Modan 23.23,73.68
 step
   talk Mountaineer Ylva##269153
-  accept Banner of the Fallen##86585 |goto Loch Modan 31.79,86.45
+  accept Banner of the Fallen##86585 |goto Loch Modan 31.77,86.31
 step
   note Raise the standard of Ironforge, call out the trogg Headsplitter and kill it, then report to Captain Rugelfuss.
-  kill Headsplitter##269185 |q 86585 |goto Loch Modan 31.82,86.59
+  kill Headsplitter##269185 |q 86585 |goto Loch Modan 32.48,87.48
 step
   note Kill the Trogg leader, Grawmug, and his two guards, Gnasher and Brawler then report back to Captain Rugelfuss in the southern guard tower.
   kill Grawmug##1205 |q 217/1 |goto Loch Modan 34.77,90.45
@@ -270,7 +270,7 @@ step
   accept A Dark Threat Looms##161 |goto Loch Modan 46.05,13.61
 step
   click Discarded Fishing Toolbox##665289
-  accept Silver of the Waves##86614 |goto Loch Modan 45.75,43.39
+  accept Silver of the Waves##86614 |goto Loch Modan 48.06,39.7
 step
   note Return the Monogrammed Silver Hair clip to its owner.
   talk Khara Deepwater##1684
@@ -283,24 +283,12 @@ step
   talk Grimand Elmore##1416
   accept Stormpike's Delivery##353 |goto Stormwind City 59.73,33.78
 step
+  only completed(92748)
   talk Sprite Jumpsprocket##11026
   accept Detonation at a Distance##92750 |goto Stormwind City 61.88,30.56
 step
-  talk Donyal Tovald##2504
-  accept Shelf Picked##97237 |goto Stormwind City 75.05,30.12
-step
-  note Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park.
-  collect Field Accounts of Horde Razings##277196 |q 97237/1
-  collect Trollbane Conquests##277194 |q 97237/2
-  collect The Forsaken Ally##277195 |q 97237/3
-  collect Cycles of Morality##277197 |q 97237
-step
-  note Talk to someone in Stormwind Intelligence about acquiring a remote detonator.
-  talk Jasper Fel##1325
-  turnin Detonation at a Distance##92750 |goto Stormwind City 80.28,70.07 |tip {turninat}Stormwind City
-step
-  talk Jasper Fel##1325
-  accept Detonation at a Distance##92751 |goto Stormwind City 80.28,70.07
+  talk Roy Lewells##268568
+  accept Reading Room##97234 |goto Stormwind City 38.84,62.35
 step
   only not Dwarf not NightElf Mage level>=15
   talk Jennea Cannon##5497
@@ -337,19 +325,35 @@ step
   talk Wynne Larson##1309
   turnin Manaweave Robe##1941 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
 step
-  talk Roy Lewells##268568
-  turnin Shelf Picked##97237 |goto Stormwind City 38.71,62.29 |tip {turninat}Stormwind City
+  only completed(92748)
+  note Talk to someone in Stormwind Intelligence about acquiring a remote detonator.
+  talk Jasper Fel##1325
+  turnin Detonation at a Distance##92750 |goto Stormwind City 80.28,70.07 |tip {turninat}Stormwind City
 step
-  talk Roy Lewells##268568
-  accept Reading Room##97234 |goto Stormwind City 38.71,62.29
-step
-  note Bring the Remote Detonator Kit to Sprite Jumpsprocket in the Dwarven District of Stormwind.
-  talk Sprite Jumpsprocket##11026
-  turnin Detonation at a Distance##92751 |goto Stormwind City 61.88,30.56 |tip {turninat}Stormwind City
+  only completed(92748)
+  talk Jasper Fel##1325
+  accept Detonation at a Distance##92751 |goto Stormwind City 80.28,70.07
 step
   note Bring the wrapped reading material to the Stormwind library.
   talk Donyal Tovald##2504
   turnin Reading Room##97234 |goto Stormwind City 75.05,30.12 |tip {turninat}Stormwind City
+step
+  talk Donyal Tovald##2504
+  accept Shelf Picked##97237 |goto Stormwind City 75.05,30.12
+step
+  note Find each of the reading materials located somewhere in the library and then return to Roy Lewells in Stormwind's Park.
+  collect Trollbane Conquests##277194 |q 97237/2 |goto Stormwind City 75.62,30.49
+  collect Field Accounts of Horde Razings##277196 |q 97237/1 |goto Stormwind City 76.02,31.01
+  collect The Forsaken Ally##277195 |q 97237/3 |goto Stormwind City 76.48,30.4
+  collect Cycles of Morality##277197 |q 97237 |goto Stormwind City 76.25,29.19
+step
+  only completed(92748)
+  note Bring the Remote Detonator Kit to Sprite Jumpsprocket in the Dwarven District of Stormwind.
+  talk Sprite Jumpsprocket##11026
+  turnin Detonation at a Distance##92751 |goto Stormwind City 61.88,30.56 |tip {turninat}Stormwind City
+step
+  talk Roy Lewells##268568
+  turnin Shelf Picked##97237 |goto Stormwind City 38.84,62.35 |tip {turninat}Stormwind City
 step
   note Deliver the Package for Stormpike to Mountaineer Stormpike in Loch Modan.
   talk Mountaineer Stormpike##1343

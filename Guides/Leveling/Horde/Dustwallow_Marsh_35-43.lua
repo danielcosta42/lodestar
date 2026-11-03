@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-43)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (32-40)",
-	rev = "b7c1cceb",
+	rev = "86c1b683",
 }, [[
 step
   ding 33
@@ -98,12 +98,6 @@ step
   talk Do'gol##5087
   accept The Black Shield##1322 |goto Dustwallow Marsh 36.53,30.79
 step
-  talk Ogron##4983
-  accept Questioning Reethe##1273 |goto Dustwallow Marsh 40.96,36.69
-step
-  note Go with Ogron to speak with Reethe, then return to Krog in Brackenwall Village.
-  goto Dustwallow Marsh 42.47,38.07 |tip Question Reethe with Ogron
-step
   talk "Swamp Eye" Jarl##4792
   turnin Jarl Needs Eyes##1206 |goto Dustwallow Marsh 55.44,26.27
 step
@@ -112,6 +106,28 @@ step
 step
   note Acquire 6 Acidic Venom Sacs for Do'gol in Brackenwall Village.
   collect 6 Acidic Venom Sac##5959 |q 1322 |goto Dustwallow Marsh 56.01,23.25 |tip {dropsfrom}Darkfang Spider, Darkfang Venomspitter, Darkfang Creeper
+step
+  talk Ogron##4983
+  accept Questioning Reethe##1273 |goto Dustwallow Marsh 40.96,36.69
+step
+  note Go with Ogron to speak with Reethe, then return to Krog in Brackenwall Village.
+  talk Paval Reethe##4980 |q 1273 |goto Dustwallow Marsh 42.65,38.07
+step
+  only Warlock completed(1799) completed(4962) level>=40
+  talk Tabetha##6546
+  accept Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Warlock completed(1799) completed(4962) haveq(4961)
+  note Kill the Demon of the Orb, then speak with Tabetha.
+  kill Demon of the Orb##6549 |q 4961 |goto Dustwallow Marsh 45.79,56.97 |elite
+step
+  only Warlock completed(1799) completed(4962) haveq(4961)
+  talk Tabetha##6546
+  turnin Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
+step
+  only Warlock completed(1799) completed(4962) completed(4961) level>=35
+  talk Tabetha##6546
+  accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
 step
   note Bring the Captain's Documents to Nazeer Bloodpike in Brackenwall Village.
   collect Captain's Documents##5882 |q 1202 |goto Dustwallow Marsh 71.53,51.19 |tip {dropsfrom}Captain's Footlocker
@@ -129,15 +145,15 @@ step
   talk Do'gol##5087
   turnin The Black Shield##1322 |goto Dustwallow Marsh 36.53,30.79
 step
-  talk Krog##4926
-  accept The Black Shield##1276 |goto Dustwallow Marsh 36.42,31.88
-step
   talk Do'gol##5087
   accept The Black Shield##1323 |goto Dustwallow Marsh 36.53,30.79
 step
   note Talk with Krog in Brackenwall Village.
   talk Krog##4926
   turnin The Black Shield##1323 |goto Dustwallow Marsh 36.42,31.88
+step
+  talk Krog##4926
+  accept The Black Shield##1276 |goto Dustwallow Marsh 36.42,31.88
 step
   only level>=38
   talk Overlord Mok'Morokk##4500
@@ -166,22 +182,6 @@ step
   only haveq(1169)
   note Draz'Zilb in Brackenwall Village would like you to bring him 15 Searing Tongues and 15 Searing Hearts.
   collect 15 Searing Tongue##5840 |q 1169 |goto Dustwallow Marsh 45.4,73 |tip {dropsfrom}Searing Hatchling, Searing Whelp
-step
-  only Warlock completed(1799) completed(4962) level>=40
-  talk Tabetha##6546
-  accept Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Warlock completed(1799) completed(4962) haveq(4961)
-  note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 4961 |goto Dustwallow Marsh 45.79,56.97 |elite
-step
-  only Warlock completed(1799) completed(4962) haveq(4961)
-  talk Tabetha##6546
-  turnin Cleansing of the Orb of Orahil##4961 |goto Dustwallow Marsh 46.06,57.09
-step
-  only Warlock completed(1799) completed(4962) completed(4961) level>=35
-  talk Tabetha##6546
-  accept Returning the Cleansed Orb##4976 |goto Dustwallow Marsh 46.06,57.09
 step
   only haveq(1166)
   talk Overlord Mok'Morokk##4500

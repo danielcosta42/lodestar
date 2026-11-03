@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Alterac Mountains (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (34-41)",
-	rev = "d4a852f8",
+	rev = "fa1dce49",
 }, [[
 step
   ding 31
@@ -88,7 +88,7 @@ step
 step
   only Rogue
   note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
-  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.32,46.24
+  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.1,45.73
 step
   only Rogue
   talk Myrokos Silentform##13085

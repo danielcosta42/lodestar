@@ -1,33 +1,73 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/The Barrens (23-27)", {
+ns:RegisterGuide("Leveling/Horde/The Barrens (22-27)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (22-28)",
-	rev = "5e9c24e4",
+	rev = "6698d257",
 }, [[
 step
-  ding 22
+  ding 21
+step
+  click WANTED##3972
+  accept WANTED: Bruuz##92706 |goto The Barrens 62.59,37.47
+step
+  note Bring Bruuz's Dorsal Fin to Gazlowe in Ratchet.
+  kill Bruuz##209797 |q 92706 |goto The Barrens 64.37,39.47 |elite
+  collect Bruuz's Dorsal Fin##253710 |q 92706 |goto The Barrens 64.37,39.47
+step
+  talk Gazlowe##3391
+  turnin WANTED: Bruuz##92706 |goto The Barrens 62.68,36.23
+step
+  only level>=21
+  talk Gur'ak##267310
+  accept Chol'aruk the Ravener##97003 |goto The Barrens 52.65,29.06
 step
   talk Korran##3428
   accept Egg Hunt##868 |goto The Barrens 51.07,29.63
 step
-  only completed(1062)
-  talk Seereth Stonebreak##4049
-  accept Shredding Machines##1068 |goto The Barrens 35.26,27.88
+  only haveq(97003)
+  note Bring the head of Chol'aruk to Gur'ak in the Barrens.
+  kill Chol'aruk##267307 |q 97003 |goto The Barrens 58.06,26.72 |elite
+  collect Chol'aruk's Head##276070 |q 97003 |goto The Barrens 58.06,26.72
 step
-  only Rogue completed(2458) level>=24
-  talk Taskmaster Fizzule##7233
-  accept Mission: Possible But Not Probable##2478 |goto The Barrens 55.44,5.56
-step
-  only Rogue completed(2458) haveq(2478)
-  note Steal Silixiz's Tower Key from Foreman Silixiz, then kill two Mutated Venture Co. Drones, two Venture Co. Patrollers, and two Venture Co. Lookouts.
-  kill Mutated Venture Co. Drone##7310 |q 2478 |goto The Barrens 54.72,5.75
+  only haveq(97003)
+  talk Gur'ak##267310
+  turnin Chol'aruk the Ravener##97003 |goto The Barrens 52.65,29.06
 step
   only Shaman
   talk Islen Waterseer##5901
   accept Call of Water##1530 |goto The Barrens 65.83,43.78
+step
+  only Shaman
+  note Find Brine in Southern Barrens.
+  talk Brine##5899
+  turnin Call of Water##1530 |goto The Barrens 43.42,77.41
+step
+  only Shaman
+  talk Brine##5899
+  accept Call of Water##1535 |goto The Barrens 43.42,77.41
+step
+  talk Gann Stonespire##3341
+  accept Gann's Reclamation##843 |goto The Barrens 45.89,77
+step
+  note Bring 12 Silithid Eggs and the Digging Claw to Korran at the Crossroads.
+  collect 12 Silithid Egg##5058 |q 868 |goto The Barrens 45.1,72.18 |tip {dropsfrom}Silithid Mound
+step
+  only Shaman
+  note Fill the Empty Brown Waterskin at the watering hole below Brine's hut and return it to her in the Barrens.
+  collect Filled Brown Waterskin##7769 |q 1535 |goto The Barrens 44.28,76.75 |tip {dropsfrom}Quilboar Watering Hole
+step
+  only Shaman
+  talk Brine##5899
+  turnin Call of Water##1535 |goto The Barrens 43.42,77.41
+step
+  note Gann Stonespire wants you to kill 15 Bael'dun Excavators and 5 Bael'dun Foremen.
+  kill Bael'dun Excavator##3374 |q 843 |goto The Barrens 47.61,85.33
+step
+  talk Gann Stonespire##3341
+  turnin Gann's Reclamation##843 |goto The Barrens 45.89,77
 step
   kill Lakota'mani##3474 |goto The Barrens 47.41,51.29 |tip Loot the quest item here — it starts the quest.
   accept Lakota'mani##883 |goto The Barrens 47.41,51.29
@@ -35,6 +75,7 @@ step
   note {fp}Omusa Thunderhorn
   goto The Barrens 44.45,59.15 |tip {vendor}
 step
+  only level>=23
   talk Grunt Logmar##5911
   accept Wrongly Blamed, Justly Corrected##97250 |goto The Barrens 44.62,59.27
 step
@@ -56,26 +97,8 @@ step
   talk Mangletooth##3430
   accept Betrayal from Within##879 |goto The Barrens 44.55,59.26
 step
-  only Shaman
-  note Find Brine in Southern Barrens.
-  talk Brine##5899
-  turnin Call of Water##1530 |goto The Barrens 43.42,77.41
-step
-  only Shaman
-  talk Brine##5899
-  accept Call of Water##1535 |goto The Barrens 43.42,77.41
-step
-  talk Gann Stonespire##3341
-  accept Gann's Reclamation##843 |goto The Barrens 45.89,77
-step
-  click Burned-Out Remains##415106
-  accept Stepping Stones##79192 |goto The Barrens 46.41,73.96
-step
   kill Washte Pawne##3472 |goto The Barrens 44.81,78.88 |tip Loot the quest item here — it starts the quest.
   accept Washte Pawne##885 |goto The Barrens 44.81,78.88
-step
-  note Bring 12 Silithid Eggs and the Digging Claw to Korran at the Crossroads.
-  collect 12 Silithid Egg##5058 |q 868 |goto The Barrens 45.1,72.18 |tip {dropsfrom}Silithid Mound
 step
   only completed(5052)
   note Kill Nak, Kuz, and Lok Orcbane and bring their skulls to Mangletooth at Camp Taurajo in the Barrens.
@@ -88,23 +111,10 @@ step
   collect Charred Razormane Wand##5092 |q 893/2 |goto The Barrens 42.05,81.53 |tip {dropsfrom}Razormane Seer
   collect Razormane Backstabber##5093 |q 893 |goto The Barrens 43.97,80.51 |tip {dropsfrom}Razormane Pathfinder, Razormane Stalker
 step
-  only Shaman
-  note Fill the Empty Brown Waterskin at the watering hole below Brine's hut and return it to her in the Barrens.
-  collect Filled Brown Waterskin##7769 |q 1535 |goto The Barrens 44.28,76.75 |tip {dropsfrom}Quilboar Watering Hole
-step
+  only haveq(97250)
   note Slay Alliance soldiers encroaching into the Barrens at the border to Dustwallow Marsh, then return to Grunt Logmar at Camp Taurajo.
-  kill Encroaching Soldier##268622 |q 97250/1 |goto The Barrens 48.77,77.21
-  kill Outraged Pillager##268623 |q 97250 |goto The Barrens 48.86,77.29
-step
-  only Shaman
-  talk Brine##5899
-  turnin Call of Water##1535 |goto The Barrens 43.42,77.41
-step
-  note Gann Stonespire wants you to kill 15 Bael'dun Excavators and 5 Bael'dun Foremen.
-  kill Bael'dun Excavator##3374 |q 843 |goto The Barrens 47.61,85.33
-step
-  talk Gann Stonespire##3341
-  turnin Gann's Reclamation##843 |goto The Barrens 45.89,77
+  kill Outraged Pillager##268623 |q 97250/2 |goto The Barrens 48.9,77.19 |elite
+  kill Encroaching Soldier##268622 |q 97250 |goto The Barrens 48.9,77.16
 step
   only completed(5052)
   talk Mangletooth##3430
@@ -117,16 +127,13 @@ step
   talk Tatternack Steelforge##3433
   turnin Weapons of Choice##893 |goto The Barrens 45.1,57.68
 step
+  only haveq(97250)
   talk Grunt Logmar##5911
   turnin Wrongly Blamed, Justly Corrected##97250 |goto The Barrens 44.62,59.27
 step
   only completed(5052)
   talk Mangletooth##3430
   accept Betrayal from Within##906 |goto The Barrens 44.55,59.26
-step
-  only completed(913)
-  talk Jorn Skyseer##3387
-  accept Mahren Skyseer##874 |goto The Barrens 44.86,59.14
 step
   talk Gann Stonespire##3341
   accept Revenge of Gann##846 |goto The Barrens 45.89,77
@@ -145,6 +152,34 @@ step
 step
   talk Gann Stonespire##3341
   turnin Revenge of Gann##849 |goto The Barrens 45.89,77
+step
+  only completed(1062)
+  talk Seereth Stonebreak##4049
+  accept Shredding Machines##1068 |goto The Barrens 35.26,27.88
+step
+  only Rogue completed(2458) level>=24
+  talk Taskmaster Fizzule##7233
+  accept Mission: Possible But Not Probable##2478 |goto The Barrens 55.44,5.56
+step
+  only Rogue completed(2458) haveq(2478)
+  note Steal Silixiz's Tower Key from Foreman Silixiz, then kill two Mutated Venture Co. Drones, two Venture Co. Patrollers, and two Venture Co. Lookouts.
+  kill Mutated Venture Co. Drone##7310 |q 2478 |goto The Barrens 54.72,5.75
+step
+  talk Korran##3428
+  turnin Egg Hunt##868 |goto The Barrens 51.07,29.63
+step
+  only completed(5052)
+  note Bring Lok's Skull to Thork at the Crossroads in the Barrens.
+  talk Thork##3429
+  turnin Betrayal from Within##906 |goto The Barrens 51.5,30.87
+step
+  only completed(6981)
+  talk Falla Sagewind##8418
+  accept In Nightmares##3369 |goto The Barrens 48.18,32.78
+step
+  only completed(913)
+  talk Jorn Skyseer##3387
+  accept Mahren Skyseer##874 |goto The Barrens 44.86,59.14
 step
   only completed(913)
   note Speak with Mahren Skyseer.
@@ -167,18 +202,6 @@ step
   talk Sputtervalve##3442
   accept Further Instructions##1095 |goto The Barrens 62.98,37.22
 step
-  talk Korran##3428
-  turnin Egg Hunt##868 |goto The Barrens 51.07,29.63
-step
-  only completed(5052)
-  note Bring Lok's Skull to Thork at the Crossroads in the Barrens.
-  talk Thork##3429
-  turnin Betrayal from Within##906 |goto The Barrens 51.5,30.87
-step
-  only completed(6981)
-  talk Falla Sagewind##8418
-  accept In Nightmares##3369 |goto The Barrens 48.18,32.78
-step
   only level>=25
   talk Tatternack Steelforge##3433
   accept A New Ore Sample##1153 |goto The Barrens 45.1,57.68
@@ -186,17 +209,17 @@ step
   talk Jorn Skyseer##3387
   accept Melor Sends Word##1130 |goto The Barrens 44.86,59.14
 step
+  only level>=22
   talk Feegly the Exiled##3421
   accept The Tear of the Moons##857 |goto The Barrens 48.97,86.31
 step
+  only haveq(857)
   note Feegly the Exiled wants you to retrieve for him the Tear of the Moons.
   collect Tear of the Moons##5038 |q 857 |goto The Barrens 49.13,84.25 |tip {dropsfrom}General Twinbraid's Strongbox
 step
+  only haveq(857)
   talk Feegly the Exiled##3421
   turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
-step
-  note You tear the note from the plank and read the scrawled writing.
-  turnin Stepping Stones##79192 |goto Stonetalon Mountains 40.76,52.57 |tip {turninat}Stonetalon Mountains
 step
   only completed(1094)
   note Bring the new orders to Ziz Fizziks in the Stonetalon Mountains.

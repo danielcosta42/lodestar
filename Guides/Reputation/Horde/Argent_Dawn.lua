@@ -4,56 +4,55 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Argent Dawn", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "c5cf4577",
+	rev = "2d7a3949",
 }, [[
 step
-  talk Leonid Barthalomew the Revered##267008
-  accept A Righteous Cause##96896 |goto Tirisfal Glades 21.97,44.87
-step
-  note Observe the conversation between Danitha Morr and Leonid Barthalomew the Revered.
-  talk Leonid Barthalomew the Revered##267008
-  turnin A Righteous Cause##96896 |goto Tirisfal Glades 21.97,44.87
-step
-  talk Leonid Barthalomew the Revered##267008
-  accept Leonid's Letter##98545 |goto Tirisfal Glades 21.97,44.87
-step
-  note Deliver the Sealed Letter to Glix Xizzix in the Undercity.
-  talk Glix Xizzix##272526
-  turnin Leonid's Letter##98545 |goto Undercity 69.92,46.99
-step
   talk Deathguard Terrence##1738
-  accept The Argent Emissary##96895 |goto Tirisfal Glades 63.47,56.55
+  accept The Argent Emissary##96895 |goto Tirisfal Glades 61.5,53.5
 step
   note Find the Argent Dawn member near the entrance to the Undercity.
   talk Hadric Harlson##267009
-  turnin The Argent Emissary##96895 |goto Tirisfal Glades 65.88,61.1
+  turnin The Argent Emissary##96895 |goto Tirisfal Glades 65.93,61.13
 step
   talk Hadric Harlson##267009
-  accept The Cult of the Damned##96897 |goto Tirisfal Glades 65.88,61.1
+  accept The Cult of the Damned##96897 |goto Tirisfal Glades 65.93,61.13
 step
   note Kill 8 Dark Neophytes and 8 Dark Enforcers in Tirisfal Glades.
-  kill Dark Enforcer##275437 |q 96897/2 |goto Tirisfal Glades 68.03,64.52
-  kill Dark Neophyte##267006 |q 96897/1 |goto Tirisfal Glades 67.98,64.57
-  kill Decrepit Darkhound##1547 |q 96897 |goto Tirisfal Glades 57.81,52.71
+  kill Dark Enforcer##275437 |q 96897/2 |goto Tirisfal Glades 68.13,64.19
+  kill Dark Neophyte##267006 |q 96897 |goto Tirisfal Glades 68.05,64.25
 step
   talk Hadric Harlson##267009
-  turnin The Cult of the Damned##96897 |goto Tirisfal Glades 65.88,61.1
+  turnin The Cult of the Damned##96897 |goto Tirisfal Glades 65.93,61.13
 step
   talk Hadric Harlson##267009
-  accept Remnants of War##96898 |goto Tirisfal Glades 65.88,61.1
+  accept Remnants of War##96898 |goto Tirisfal Glades 65.93,61.13
 step
   note Gather 12 Necrotic Crystal Fragments in Tirisfal Glades.
-  collect 12 Necrotic Crystal Fragment##275851 |q 96898 |goto Tirisfal Glades 67.98,64.57 |tip {dropsfrom}Dark Neophyte, Dark Enforcer, Naxxramas Crystal Fragment
+  collect 12 Necrotic Crystal Fragment##275851 |q 96898 |goto Tirisfal Glades 68.05,64.25 |tip {dropsfrom}Dark Neophyte, Dark Enforcer, Naxxramas Crystal Fragment
 step
   talk Hadric Harlson##267009
-  turnin Remnants of War##96898 |goto Tirisfal Glades 65.88,61.1
+  turnin Remnants of War##96898 |goto Tirisfal Glades 65.93,61.13
 step
   talk Hadric Harlson##267009
-  accept Bandarion Keep##96899 |goto Tirisfal Glades 65.88,61.1
+  accept Bandarion Keep##96899 |goto Tirisfal Glades 65.93,61.13
 step
   note Meet Leonid Barthalomew at Bandarion Keep in Tirisfal Glades.
   talk Leonid Barthalomew the Revered##267008
-  turnin Bandarion Keep##96899 |goto Tirisfal Glades 21.97,44.87
+  turnin Bandarion Keep##96899 |goto Tirisfal Glades 22.03,44.73
+step
+  talk Leonid Barthalomew the Revered##267008
+  accept A Righteous Cause##96896 |goto Tirisfal Glades 22.03,44.73
+step
+  note Observe the conversation between Danitha Morr and Leonid Barthalomew the Revered.
+  talk Leonid Barthalomew the Revered##267008
+  turnin A Righteous Cause##96896 |goto Tirisfal Glades 22.03,44.73
+step
+  talk Leonid Barthalomew the Revered##267008
+  accept Leonid's Letter##98545 |goto Tirisfal Glades 22.03,44.73
+step
+  note Deliver the Sealed Letter to Glix Xizzix in the Undercity.
+  talk Glix Xizzix##272526
+  turnin Leonid's Letter##98545 |goto Undercity 70.03,47.31
 step
   talk Dawnwatcher Shaedlass##4786
   accept In Search of Thaelrid##1198 |goto Darnassus 55.36,25.03

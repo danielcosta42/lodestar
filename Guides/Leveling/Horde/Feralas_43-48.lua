@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Feralas (43-48)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Tanaris (44-50)",
-	rev = "41ac63b2",
+	rev = "13f11e35",
 }, [[
 step
   ding 41
@@ -64,9 +64,6 @@ step
 step
   collect Gordunni Scroll##143980 |goto Feralas 75.13,29.73 |tip Loot the quest item here — it starts the quest.
   accept The Gordunni Scroll##2978 |goto Feralas 75.13,29.73
-step
-  kill Gordunni Ogre##5229 |goto Feralas 75.21,29.62 |tip Loot the quest item here — it starts the quest.
-  accept Find OOX-22/FE!##2766 |goto Feralas 75.21,29.62
 step
   note Rok Orhan in Camp Mojache wants you to kill 10 Gordunni Ogres, 10 Gordunni Ogre-Magi, and 5 Gordunni Brutes.
   kill Gordunni Ogre##5229 |q 2975/1 |goto Feralas 75.21,29.62
@@ -128,6 +125,11 @@ step
   kill Gordunni Warlock##5240 |q 2980/2 |goto Feralas 59.55,64.55
   kill Gordunni Mauler##5234 |q 2980 |goto Feralas 61.11,57.53
 step
+  only hasitem(8705)
+  use OOX-22/FE Distress Beacon##8705 |tip It starts the quest.
+  accept Find OOX-22/FE!##2766
+step
+  only haveq(2766)
   note Take the distress beacon to Oglethorpe's homing robot in a cave near Feral Scar Vale.
   talk Homing Robot OOX-22/FE##7807
   turnin Find OOX-22/FE!##2766 |goto Feralas 53.35,55.7

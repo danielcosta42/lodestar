@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Rogue", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "10be8b67",
+	rev = "be0b2d43",
 }, [[
 step
   talk Gornek##3143
@@ -54,29 +54,29 @@ step
   turnin Encrypted Scroll##3096 |goto Tirisfal Glades 32.53,65.65
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.05,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Rogue
   talk Rorian the Dayseeker##251361
-  accept At Home in the Shadows##92483 |goto Zephras Isle 42.09,23.49
+  accept At Home in the Shadows##92483 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Rogue
   note Read the Simple Note then speak with Akeri Duskblade within the watchtower in Thendal Grove.
   talk Akeri Duskblade##251389
-  turnin At Home in the Shadows##92483 |goto Zephras Isle 43.73,24.3
+  turnin At Home in the Shadows##92483 |goto Zephras Isle 43.74,24.36
 step
   only Orc Rogue not completed(1885) not haveq(1885)
   talk Kaplak##3170
@@ -292,7 +292,7 @@ step
 step
   only Rogue
   note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
-  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.32,46.24
+  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.1,45.73
 step
   only Rogue
   talk Myrokos Silentform##13085
@@ -317,14 +317,6 @@ step
   only Rogue
   note Steal a Syndicate uniform from Northfold Manor to infiltrate Stromgarde Keep.
   turnin A Way In##96783 |goto Alterac Mountains 84.93,80.38
-step
-  only Rogue
-  click Dead Drop##410369
-  accept The Eye of Bhossca##78676 |goto Silverpine Forest 47.1,70.95
-step
-  only Rogue
-  note Find The Eye of Bhossca inside of the Scarlet Monastery. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone.
-  turnin The Eye of Bhossca##78676 |goto Silverpine Forest 47.1,70.95
 step
   only Rogue
   talk Myrokos Silentform##13085

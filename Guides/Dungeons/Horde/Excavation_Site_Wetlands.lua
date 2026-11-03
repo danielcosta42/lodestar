@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Excavation Site: Wetlands", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "2de3a972",
+	rev = "2081f8b0",
 }, [[
 step
   talk Borstan##3368
@@ -21,5 +21,5 @@ step
 step
   note Bring the Titan Relic to Muln Earthfury at the Skywatcher Plateau in northwest Mulgore.
   talk Muln Earthfury##259118
-  turnin Earthen Echo##98823 |goto Mulgore 33.42,22.52
+  turnin Earthen Echo##98823 |goto Mulgore 33.41,22.58
 ]])

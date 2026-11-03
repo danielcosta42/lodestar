@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (22-28)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (27-33)",
-	rev = "f2f1b423",
+	rev = "3f6df189",
 }, [[
 step
   ding 21
@@ -98,6 +98,19 @@ step
   talk High Executor Darthalia##2215
   accept Scout Support##98094 |goto Hillsbrad Foothills 62.33,20.45
 step
+  only Undead Paladin
+  talk Ott##3539
+  accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Undead Paladin
+  talk Ott##3539
+  accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Undead Paladin
+  note Watch as Ott forges your blade.
+  talk Ott##3539
+  turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+step
   note Krusk in Tarren Mill needs you to free Drull and Tog'thar from Durnholde Keep.
   click Locked ball and chain##1721 |q 498/1 |goto Hillsbrad Foothills 75.33,41.5
   click Locked ball and chain##1722 |q 498 |goto Hillsbrad Foothills 79.79,39.65
@@ -112,14 +125,14 @@ step
 step
   note High Executor Darthalia wants you to deliver updated orders to Deathstalker Masoj, south of Tarren Mill, outside of Dun Garok.
   talk Deathstalker Masoj##270438
-  turnin Scout Support##98094 |goto Hillsbrad Foothills 64.05,53.84
+  turnin Scout Support##98094 |goto Hillsbrad Foothills 63.58,53.11
 step
   talk Deathstalker Masoj##270438
-  accept Valuable Vantages##98095 |goto Hillsbrad Foothills 64.05,53.84
+  accept Valuable Vantages##98095 |goto Hillsbrad Foothills 63.58,53.11
 step
   note Deathstalker Masoj needs you to place the three Apothecary Vials on peaks around Hillsbrad Foothills and return to him.
   talk Deathstalker Masoj##270438
-  turnin Valuable Vantages##98095 |goto Hillsbrad Foothills 64.05,53.84
+  turnin Valuable Vantages##98095 |goto Hillsbrad Foothills 63.58,53.11
 step
   note Kill 15 Hillsbrad Peasants and report back to Darthalia in Tarren Mill.
   kill Hillsbrad Peasant##2267 |q 528 |goto Hillsbrad Foothills 34.06,45.69
@@ -154,19 +167,6 @@ step
 step
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##529 |goto Hillsbrad Foothills 62.33,20.45
-step
-  only Undead Paladin
-  talk Ott##3539
-  accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Undead Paladin
-  talk Ott##3539
-  accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Undead Paladin
-  note Watch as Ott forges your blade.
-  talk Ott##3539
-  turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
 step
   note Kill Blacksmith Verringtan and 4 Hillsbrad Apprentice Blacksmiths.
   kill Blacksmith Verringtan##2404 |q 529 |goto Hillsbrad Foothills 32.11,44.42
@@ -244,7 +244,7 @@ step
   only Undead Paladin
   note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
   talk Trevan Rol##248840
-  turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.34,41.12 |tip {turninat}Silverpine Forest
+  turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.4,41.1 |tip {turninat}Silverpine Forest
 step
   only haveq(513)
   note Take the Mudsnout Composite to Master Apothecary Faranell in the Undercity.

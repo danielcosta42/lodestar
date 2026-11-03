@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (34-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Arathi Highlands (34-40)",
-	rev = "ce7e7d7a",
+	rev = "2bc41fa6",
 }, [[
 step
   ding 33
@@ -46,9 +46,6 @@ step
 step
   note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to kill 10 Young Panthers.
   kill Young Panther##683 |q 190 |goto Stranglethorn Vale 41.35,12.82
-step
-  kill Bloodscalp Warrior##587 |goto Stranglethorn Vale 34.04,16.78 |tip Loot the quest item here — it starts the quest.
-  accept Crystal in the Mountains##635 |goto Stranglethorn Vale 34.04,16.78
 step
   note Ajeck Rouack of Nesingwary's Expedition wants you to kill 10 Elder Stranglethorn Tigers.
   kill Elder Stranglethorn Tiger##1085 |q 187 |goto Stranglethorn Vale 33.53,18.31
@@ -438,6 +435,10 @@ step
   note Deeg in Booty Bay wants you to bring him 15 shares of Snuff.
   collect Snuff##3910 |q 587 |goto Stranglethorn Vale 32.34,71.67 |tip {dropsfrom}Bloodsail Raider, Bloodsail Mage, "Pretty Boy" Duncan
 step
+  only hasitem(4614)
+  use Pendant of Myzrael##4614 |tip It starts the quest.
+  accept Crystal in the Mountains##635
+step
   only haveq(587)
   talk Deeg##2488
   turnin Up to Snuff##587 |goto Stranglethorn Vale 26.92,77.35
@@ -459,6 +460,7 @@ step
   talk Krazek##773
   turnin Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
 step
+  only haveq(635)
   note Find the crystal from your vision.
   turnin Crystal in the Mountains##635 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
 step

@@ -45,6 +45,30 @@ quest só conta como removida quando o Anniversary **tem** e o Forever **não te
 | ids ≥ 30000 no `QuestV2` do 70245 | **2.853** |
 | ids que o `QuestV2` do **Classic Era 1.15.9.69722** não tem | 1.795 (no 69913) |
 
+## O que o QuestieDB 1.0.10 ensinou (2026-11-02)
+
+A biblioteca sai do 1.0.10 desde a #63: 256 quests corrigidas e os ranks de NPC. Dois dados novos
+quebrariam guias sem nenhum validador acusar:
+
+- **`minLevel` 9999 é "escala com o jogador", não nível.** Com os ranks novos, elite amiga de Zephras
+  com 9999 virou "elite acima do nível máximo", e `Desperate Times` saiu do leveling com toda a saída
+  da ilha. O `build_intermediate.py` zera o sentinela.
+- **Library Books.** O banco passou a listar o objeto do livro como quem dá a quest, mas o livro é um
+  item: a quest só abre no bibliotecário de Undercity ou Stormwind, com ele na bolsa. O `accept` no
+  objeto nunca completa e o guia para ali. Sem XP, os livros ficam fora de todo guia.
+- **Season of Discovery.** As quests de lá (ids 76000-85999) estão no cliente, mas sem classe no banco:
+  a caça de ladino (`Stepping Stones`, `Scramble`) mandava todo mundo clicar num objeto que não dá
+  nada, e já estava na v2.7.2. Sem classe, essa faixa sai do leveling; dos 86000 em diante é Forever.
+- **Drop incerto.** Quest que começa por item que cai de vários mobs, ou de mob comum com muitos
+  spawns, agora tem `only hasitem(...)`: o passo esperava o drop (`Crystal in the Mountains` cai de 287
+  mobs). O aceite vai para depois do último passo que mata quem dá o item, senão seria avaliado antes
+  de o item existir e a cadeia sumiria (`Nibbled-On Book`, em Elwynn). Chefe e mob raro seguem com
+  passo próprio.
+
+Parado num objeto, o guia não sai sozinho: o `skipIfUnavailable` só age no gossip de NPC. Quando o
+banco trouxer campo novo, confira as quests que **entram**, não só as que saem: `validate_guides`
+aprova objeto como quem dá a quest.
+
 ## De onde vêm as rotas
 
 **1. QuestieDB do Forever — a base.** Desde a 1.0.5 (2026-10, "Add Forever base data") o QuestieDB,
@@ -356,21 +380,20 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   ainda não é público: o `Guide.lua` reconhece a raça pelo id, e o guia inicial dela é Zephras Isle.
   Zona inicial com duas faixas começa pela mais baixa.
 
-## Números (QuestieDB 1.0.6, `QuestV2` do 70245)
+## Números (QuestieDB 1.0.10, `QuestV2` do 70245)
 
 | | |
 |---|---|
-| Guias | 194 (86 de leveling, 108 especiais) |
-| Quests distintas em guia | 3710 |
-| Quests novas do Forever em guia | **532 de 993** |
+| Guias | 193 (85 de leveling, 108 especiais) |
+| Quests novas do Forever em guia | **513 de 995** |
 | — fora: entrega de Craftsman's Writ | 150 |
-| — fora: começam por item ou giver sem posição | 145 |
-| — fora: exigem profissão | 86 |
-| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão...) | 51 |
-| — fora: evento/repetível/campo de batalha | 29 |
+| — fora: começam por item ou giver sem posição | 110 |
+| — fora: exigem profissão | 90 |
+| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão, Library Books, Season of Discovery...) | 95 |
+| — fora: evento/repetível/campo de batalha | 37 |
 | `validate_guides.py` — ocorrências | **0** (antes da revisão: 10 bloqueios, 244 pré-req ausentes) |
 | Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos, toda raça×classe |
-| `guide_integrity.py` — passo sem coordenada | 79: item de quest que o banco não sabe de onde vem (páginas de Green Hills of Stranglethorn, Stolen Weapon), sem seta em vez da de quem deu a quest; material de profissão e tecido saem sem seta de propósito, com a dica, e não contam |
+| `guide_integrity.py` — passo sem coordenada | 113, 34 deles aceites de drop com o item na bolsa, e o resto: item de quest que o banco não sabe de onde vem (páginas de Green Hills of Stranglethorn, Stolen Weapon), sem seta em vez da de quem deu a quest; material de profissão e tecido saem sem seta de propósito, com a dica, e não contam |
 
 `gen_forever.py` imprime essa conta a cada rodada.
 
@@ -418,12 +441,6 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
 
 ## Em aberto
 
-- **QuestieDB 1.0.10 (2026-11-02) ainda não entrou.** Numa cópia isolada, a regeneração muda 129
-  arquivos, e os guias de Zephras Isle viram 5-11 e perdem o fim da ilha (`The Fate of Zephras`,
-  `Confront Lorthuna`, `Welcome to Azeroth`, `Journey to the Crossroads`), embora os dados dessas
-  quests não tenham mudado: é reação do roteador, ainda sem causa. O autoteste do `router.py` também
-  falha (`Exploring the Alliance`). Ficar no 1.0.6 custa 31 quests fora de ordem sob os dados novos,
-  puladas no NPC em vez de travar; só 1 de 6.104 aceites e entregas aponta lugar errado.
 
 - **Riverglades e Hyjal.** O QuestieDB 1.0.6 tem os NPCs, não as quests. Entram quando ele tiver —
   ou quando o `/ls scan` colher no lançamento. Em Shen'dralas, 12 das 19 quests esperam quem as dá.

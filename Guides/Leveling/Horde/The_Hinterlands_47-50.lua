@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Hinterlands (47-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Searing Gorge (48-50)",
-	rev = "f4792cd5",
+	rev = "7b99c44d",
 }, [[
 step
   ding 46
@@ -39,9 +39,6 @@ step
 step
   click Rin'ji's Secret##142127
   accept Rin'ji's Secret##2782 |goto The Hinterlands 86.3,59.01
-step
-  kill Saltwater Snapjaw##2505 |goto The Hinterlands 81.48,60.46 |tip Loot the quest item here — it starts the quest.
-  accept Find OOX-09/HL!##485 |goto The Hinterlands 81.48,60.46
 step
   note {fp}Gorkas
   goto The Hinterlands 81.7,81.76 |tip {vendor}
@@ -85,13 +82,20 @@ step
   kill Vilebranch Scalper##4466 |q 7844/1 |goto The Hinterlands 53.11,40.14
   kill Vilebranch Soothsayer##4467 |q 7844 |goto The Hinterlands 48.04,65.62
 step
+  only hasitem(8704)
+  use OOX-09/HL Distress Beacon##8704 |tip It starts the quest.
+  accept Find OOX-09/HL!##485
+step
+  only haveq(485)
   note Take the distress beacon to Oglethorpe's homing robot at the head of the river in the Hinterlands, near Skulk Rock.
   talk Homing Robot OOX-09/HL##7806
   turnin Find OOX-09/HL!##485 |goto The Hinterlands 49.35,37.66
 step
+  only completed(485)
   talk Homing Robot OOX-09/HL##7806
   accept Rescue OOX-09/HL!##836 |goto The Hinterlands 49.35,37.66
 step
+  only haveq(836)
   note Escort OOX-09/HL to the shoreline beyond Overlook Cliff, then report to Oglethorpe Obnoticus in Booty Bay.
   goto The Hinterlands 79.14,61.36 |tip Escort OOX-09/HL to the shoreline beyond Overlook Cliff
 step
@@ -283,6 +287,7 @@ step
   talk Apothecary Lydon##2216
   turnin Undamaged Venom Sac##2934 |goto Hillsbrad Foothills 61.44,19.06 |tip {turninat}Hillsbrad Foothills
 step
+  only haveq(836)
   talk Oglethorpe Obnoticus##7406
   turnin Rescue OOX-09/HL!##836 |goto Stranglethorn Vale 28.36,76.35 |tip {turninat}Stranglethorn Vale
 step

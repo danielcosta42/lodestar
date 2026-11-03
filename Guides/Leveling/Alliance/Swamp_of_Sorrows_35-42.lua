@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (35-42)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Badlands (37-43)",
-	rev = "29247ec8",
+	next = "Leveling/Alliance/Arathi Highlands (31-40)",
+	rev = "2489c815",
 }, [[
 step
   ding 31
@@ -78,6 +78,6 @@ step
   talk Brohann Caskbelly##5384
   turnin In Search of The Temple##1448 |goto Stormwind City 69.45,40.4 |tip {turninat}Stormwind City
 step
-  note {travel}Badlands
-  goto Badlands 53.42,43.39
+  note {travel}Arathi Highlands
+  goto Arathi Highlands 44.29,92.88
 ]])

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Silithus (55-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Swamp of Sorrows (50-57)",
-	rev = "aab691d1",
+	rev = "06b62efc",
 }, [[
 step
   ding 54
@@ -211,9 +211,9 @@ step
   note Hermit Ortell wants you to bring him 10 Encrypted Twilight Texts
   collect 10 Encrypted Twilight Text##20404 |q 8323 |goto Silithus 26.31,37.02 |tip {dropsfrom}Twilight Avenger, Twilight Geolord, Twilight Stonecaller
 step
-  only level>=58
-  kill Hive'Zora Wasp##11727 |goto Silithus 27.87,61.78 |tip Loot the quest item here — it starts the quest.
-  accept Brann Bronzebeard's Lost Letter##8308 |goto Silithus 27.87,61.78
+  only level>=58 hasitem(20461)
+  use Brann Bronzebeard's Lost Letter##20461 |tip It starts the quest.
+  accept Brann Bronzebeard's Lost Letter##8308
 step
   only haveq(8308)
   note Take Brann Bronzebeard's Letter to Bronzebeard's Encampment in southern Silithus.

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Desolace (33-39)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Dustwallow Marsh (35-43)",
-	rev = "3343c82c",
+	rev = "a9b0d65e",
 }, [[
 step
   ding 32
@@ -21,8 +21,9 @@ step
   talk Smeed Scrabblescrew##11596
   turnin Kodo Roundup##5561 |goto Desolace 60.86,61.86
 step
-  kill Burning Blade Augur##4663 |goto Desolace 55.95,27.4 |tip Loot the quest item here — it starts the quest.
-  accept The Corrupter##1480 |goto Desolace 55.95,27.4
+  only hasitem(20310)
+  use Flayed Demon Skin##20310 |tip It starts the quest.
+  accept The Corrupter##1480
 step
   only haveq(1362)
   note Speak with Felgur Twocuts at Ghost Walker Post in Desolace.
@@ -34,6 +35,7 @@ step
   talk Takata Steelblade##5641
   turnin Alliance Relations##1432 |goto Desolace 52.57,54.39
 step
+  only haveq(1480)
   note Bring the Flayed Demon Skin to Maurin Bonesplitter in Desolace.
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1480 |goto Desolace 52.25,53.44
@@ -57,6 +59,7 @@ step
   talk Takata Steelblade##5641
   accept Befouled by Satyr##1434 |goto Desolace 52.57,54.39
 step
+  only completed(1480)
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1481 |goto Desolace 52.25,53.44
 step
@@ -89,6 +92,7 @@ step
   kill Hatefury Hellcaller##4675 |q 1434/4 |goto Desolace 76.02,19.85
   kill Hatefury Betrayer##4673 |q 1434 |goto Desolace 77.63,17.94
 step
+  only haveq(1481)
   note Bring a Shadowstalker Scalp to Maurin Bonesplitter in Desolace.
   collect Shadowstalker Scalp##6441 |q 1481 |goto Desolace 75.33,21.26 |tip {dropsfrom}Hatefury Shadowstalker
 step
@@ -106,6 +110,7 @@ step
   talk Maurin Bonesplitter##4498
   turnin The Burning of Spirits##1435 |goto Desolace 52.25,53.44
 step
+  only haveq(1481)
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1481 |goto Desolace 52.25,53.44
 step
@@ -116,6 +121,7 @@ step
   talk Takata Steelblade##5641
   accept Alliance Relations##1436 |goto Desolace 52.57,54.39
 step
+  only completed(1481)
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1482 |goto Desolace 52.25,53.44
 step
@@ -142,6 +148,7 @@ step
   click Rackmore's Log##177787
   accept Claim Rackmore's Treasure!##6161 |goto Desolace 36.07,30.41
 step
+  only haveq(1482)
   note Bring an Oracle Crystal to Maurin Bonesplitter in Desolace.
   collect Oracle Crystal##6442 |q 1482 |goto Desolace 33.89,10.15 |tip {dropsfrom}Slitherblade Oracle
 step
@@ -151,15 +158,18 @@ step
   talk Felgur Twocuts##5395
   turnin Centaur Bounty##1366 |goto Desolace 56.19,59.57
 step
+  only haveq(1482)
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1482 |goto Desolace 52.25,53.44
 step
+  only completed(1482)
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1484 |goto Desolace 52.25,53.44
 step
   talk Nataka Longhorn##11259
   accept Catch of the Day##5386 |goto Desolace 55.41,55.81
 step
+  only haveq(1484)
   note Speak to Takata Steelblade in Desolace.
   talk Takata Steelblade##5641
   turnin The Corrupter##1484 |goto Desolace 52.57,54.39
@@ -301,7 +311,7 @@ step
   talk Bibbly F'utzbuckle##11438
   turnin Bone Collector##5501 |goto Desolace 62.33,38.99
 step
-  only level>=40
+  only completed(1484) level>=40
   talk Takata Steelblade##5641
   accept The Corrupter##1488 |goto Desolace 52.57,54.39
 step

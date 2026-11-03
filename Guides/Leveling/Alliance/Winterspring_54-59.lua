@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Winterspring (54-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Silithus (57-60)",
-	rev = "d8d5b14c",
+	rev = "0c3b05fe",
 }, [[
 step
   ding 53
@@ -62,14 +62,12 @@ step
   talk Umi Rumplesnicker##10305
   accept Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
 step
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Firewater##5083 |goto Winterspring 66.66,37.07
-step
   talk Meggi Peppinrocker##11754
   accept Trouble in Winterspring!##6603 |goto Winterspring 60.66,38.17
 step
-  kill Winterfall Ursa##7438 |goto Winterspring 66.66,37.07 |tip Loot the quest item here — it starts the quest.
-  accept Winterfall Ritual Totem##8471 |goto Winterspring 66.66,37.07
+  only hasitem(12771)
+  use Empty Firewater Flask##12771 |tip It starts the quest.
+  accept Winterfall Firewater##5083
 step
   note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
   collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 43.59,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti
@@ -78,6 +76,7 @@ step
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
   collect 8 Uncracked Chillwind Horn##12444 |q 4809 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
 step
+  only haveq(5083)
   note Bring the Empty Firewater Flask to Donova Snowden in Winterspring.
   talk Donova Snowden##9298
   turnin Winterfall Firewater##5083 |goto Winterspring 31.27,45.16
@@ -89,6 +88,7 @@ step
   talk Donova Snowden##9298
   accept Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
 step
+  only completed(5083)
   talk Donova Snowden##9298
   accept Falling to Corruption##5084 |goto Winterspring 31.27,45.16
 step
@@ -132,6 +132,10 @@ step
   kill Winterfall Shaman##7439 |q 8464/1 |goto Winterspring 67.86,38.06
   kill Winterfall Ursa##7438 |q 8464/3 |goto Winterspring 66.66,37.07
   kill Winterfall Den Watcher##7440 |q 8464 |goto Winterspring 66.54,35.92
+step
+  only hasitem(20742)
+  use Winterfall Ritual Totem##20742 |tip It starts the quest.
+  accept Winterfall Ritual Totem##8471
 step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##977 |goto Winterspring 60.88,37.62
@@ -233,13 +237,16 @@ step
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
 step
+  only haveq(8471)
   note Take the Winterfall Ritual Totem inside Timbermaw Hold and see if one of the furbolgs there will find a use for the item. The Timbermaw will not speak with you unless you are of Neutral reputation or greater with them.
   talk Kernda##11558
   turnin Winterfall Ritual Totem##8471 |goto Felwood 65.5,3.52 |tip {turninat}Felwood
 step
+  only haveq(5084)
   note Search the Deadwood furbolg camp in northern Felwood for a clue.
   turnin Falling to Corruption##5084 |goto Felwood 60.2,5.84 |tip {turninat}Felwood
 step
+  only completed(5084)
   click Deadwood Cauldron##176091
   accept Mystery Goo##5085 |goto Felwood 60.2,5.84
 step
@@ -259,6 +266,7 @@ step
   talk Donova Snowden##9298
   turnin The Videre Elixir##3909 |goto Winterspring 31.27,45.16
 step
+  only haveq(5085)
   note Report back to Donova Snowden with your findings.
   talk Donova Snowden##9298
   turnin Mystery Goo##5085 |goto Winterspring 31.27,45.16
@@ -267,6 +275,7 @@ step
   talk Donova Snowden##9298
   accept Meet at the Grave##3912 |goto Winterspring 31.27,45.16
 step
+  only completed(5085)
   talk Donova Snowden##9298
   accept Toxic Horrors##5086 |goto Winterspring 31.27,45.16
 step
@@ -297,22 +306,27 @@ step
   click A Conspicuous Gravestone##148504
   accept Linken's Sword##3914 |goto Tanaris 53.81,29.06
 step
+  only haveq(5086)
   note Collect 3 Toxic Horror Droplets for Donova Snowden in Winterspring.
   collect 3 Toxic Horror Droplet##12822 |q 5086 |goto Felwood 48.91,24.66 |tip {dropsfrom}Toxic Horror
 step
+  only haveq(5086)
   talk Donova Snowden##9298
   turnin Toxic Horrors##5086 |goto Winterspring 31.27,45.16
 step
+  only completed(5086)
   talk Donova Snowden##9298
   accept Winterfall Runners##5087 |goto Winterspring 31.27,45.16
 step
+  only haveq(5087)
   note Find the Winterfall Runners and stop them from delivering their shipment to Winterfall Village.
   collect Winterfall Crate##12829 |q 5087 |goto Winterspring 27.96,34.52 |tip {dropsfrom}Winterfall Runner
 step
+  only haveq(5087)
   talk Donova Snowden##9298
   turnin Winterfall Runners##5087 |goto Winterspring 31.27,45.16
 step
-  only level>=59
+  only completed(5087) level>=59
   talk Donova Snowden##9298
   accept High Chief Winterfall##5121 |goto Winterspring 31.27,45.16
 step
@@ -320,7 +334,7 @@ step
   note Donova Snowden in Winterspring wants you to defeat High Chief Winterfall.
   kill High Chief Winterfall##10738 |q 5121 |goto Winterspring 69.56,38.31 |elite
 step
-  only level>=59
+  only completed(5087) level>=59
   kill High Chief Winterfall##10738 |goto Winterspring 69.56,38.31 |elite |tip Loot the quest item here — it starts the quest.
   accept The Final Piece##5123 |goto Winterspring 69.56,38.31
 step

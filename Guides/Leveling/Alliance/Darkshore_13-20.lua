@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/The Barrens (14-21)",
-	rev = "f6926df4",
+	next = "Leveling/Alliance/The Barrens (14-20)",
+	rev = "2478e45d",
 }, [[
 step
   ding 12
@@ -144,7 +144,7 @@ step
   use Rabid Thistle Bear##2164 |q 2118 |goto Darkshore 40.09,58.31 |tip {useit}
 step
   note Find and slay the owl known as Jai'vhanel and take one of her feathers. The black owl was last seen north of the Ameth'Aran ruins near the mountain base. Report the death of Jai'vhanel to Sentinel Glynda Nal'Shea in Auberdine.
-  collect Feather of Jai'vhanel##281038 |q 98025 |goto Darkshore 45.15,58.44 |tip {dropsfrom}Jai'vhanel
+  collect Feather of Jai'vhanel##281038 |q 98025 |goto Darkshore 44.37,58.77 |tip {dropsfrom}Jai'vhanel
 step
   talk Sentinel Tysha Moonblade##3639
   turnin The Fall of Ameth'Aran##953 |goto Darkshore 40.3,59.73
@@ -365,7 +365,7 @@ step
   turnin Buzzbox 525##1003 |goto Darkshore 41.39,80.56
 step
   talk Sentinel Aynasha##11711
-  accept One Shot. One Kill.##5713 |goto Darkshore 45.94,90.29
+  accept One Shot.  One Kill.##5713 |goto Darkshore 45.94,90.29
 step
   note Protect Sentinel Aynasha, then speak with Onaeya at Maestra's Post in Ashenvale.
   goto Darkshore 45.87,90.42 |tip Protect Aynasha
@@ -455,7 +455,7 @@ step
   accept Holy Diver##87760 |goto Darkshore 36.62,45.59
 step
   note Find a Stormscale Beastmistress, slay her, and bring back her Rod of Deep Dominion.
-  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.21,12.77 |tip {dropsfrom}Stormscale Beastmistress
+  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.05,12.93 |tip {dropsfrom}Stormscale Beastmistress
 step
   talk Gelkak Gyromast##6667
   accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
@@ -471,7 +471,7 @@ step
   accept Mathystra Relics##951 |goto Darkshore 43.55,76.29
 step
   talk Arbal##270269
-  accept Swelling Forces##98013 |goto Darkshore 43.71,76.49
+  accept Swelling Forces##98013 |goto Darkshore 43.75,76.5
 step
   only level>=17
   talk Kerlonian Evershade##11218
@@ -490,10 +490,11 @@ step
   turnin The Tower of Althalaxx##967 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale
 step
   talk Sentinel Onaeya##11806
-  turnin One Shot. One Kill.##5713 |goto Ashenvale 26.6,36.73 |tip {turninat}Ashenvale
+  turnin One Shot.  One Kill.##5713 |goto Ashenvale 26.6,36.73 |tip {turninat}Ashenvale
 step
-  kill Twilight Disciple##2338 |goto Darkshore 38.21,87.21 |tip Loot the quest item here — it starts the quest.
-  accept The Powers Below##968 |goto Darkshore 38.21,87.21
+  only hasitem(5352)
+  use Book: The Powers Below##5352 |tip It starts the quest.
+  accept The Powers Below##968
 step
   note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
   collect 5 Fine Moonstalker Pelt##5386 |q 986 |goto Darkshore 43.03,90.77 |tip {dropsfrom}Moonstalker Matriarch, Moonstalker Sire
@@ -533,15 +534,15 @@ step
   turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
 step
   talk Arbal##270269
-  turnin Swelling Forces##98013 |goto Darkshore 43.71,76.49
+  turnin Swelling Forces##98013 |goto Darkshore 43.75,76.5
 step
   note Find Volcor in Darkshore and give him the Enchanted Moonstalker Cloak.
   talk Volcor##3692
   turnin A Lost Master##993 |goto Darkshore 45.01,85.3
 step
-  only level>=17
-  kill Baron Marinous##270294 |goto Darkshore 59.14,22.81 |tip Loot the quest item here — it starts the quest.
-  accept Baron Marinous##98028 |goto Darkshore 59.14,22.81
+  only level>=21
+  kill Baron Marinous##270294 |goto Darkshore 59.13,22.83 |elite |tip Loot the quest item here — it starts the quest.
+  accept Baron Marinous##98028 |goto Darkshore 59.13,22.83
 step
   only haveq(98028)
   note Bring the Clouded Water Globe to Onu at the Grove of the Ancients in Darkshore.

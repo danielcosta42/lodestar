@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Mage", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "81ce3299",
+	rev = "1aaf46ae",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -51,29 +51,29 @@ step
   turnin Glyphic Letter##3104 |goto Elwynn Forest 49.66,39.4
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.05,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Mage
   talk Rorian the Dayseeker##251361
-  accept A Student of the Arcane##92481 |goto Zephras Isle 42.09,23.49
+  accept A Student of the Arcane##92481 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Mage
   note Examine the Glowing Recall Crystal, then speak with Dorii Brightwhisper in Thendal Grove.
   talk Dorii Brightwhisper##251379
-  turnin A Student of the Arcane##92481 |goto Zephras Isle 41.57,23.65
+  turnin A Student of the Arcane##92481 |goto Zephras Isle 41.55,23.68
 step
   only Gnome Mage not completed(1861) not haveq(1861)
   talk Magis Sparkmantle##1228
@@ -119,12 +119,12 @@ step
 step
   only Skyborne Mage
   talk Anathamaas Aetherwind##252373
-  accept Speak with Belann##93791 |goto Zephras Isle 65.93,80.52
+  accept Speak with Belann##93791 |goto Zephras Isle 65.91,80.57
 step
   only Skyborne Mage
   note Speak with Belann Windwood in Valanaar.
   talk Belann Windwood##256507
-  turnin Speak with Belann##93791 |goto Zephras Isle 62.91,77.39
+  turnin Speak with Belann##93791 |goto Zephras Isle 62.89,77.44
 step
   only not Dwarf not NightElf not Skyborne Mage
   talk Zaldimar Wefhellt##328
@@ -169,14 +169,6 @@ step
   only not Dwarf not NightElf not Skyborne Mage
   talk Wynne Larson##1309
   turnin Manaweave Robe##1941 |goto Stormwind City 51.84,83.51
-step
-  only Mage
-  talk Garion Wendell##211033
-  accept Research Access##97286 |goto Stormwind City 49.05,86.37
-step
-  only Mage
-  talk Garion Wendell##211033
-  turnin Research Access##97286 |goto Stormwind City 49.05,86.37
 step
   only not Dwarf not NightElf not Skyborne Mage
   talk Bink##5144
@@ -694,14 +686,6 @@ step
   only Mage
   talk Deliana##16013
   turnin Saving the Best for Last##9001 |goto Ironforge 43.53,52.64
-step
-  only Mage
-  talk Jennea Cannon##5497
-  accept Magma or Lava?##84396 |goto Stormwind City 49.56,85.8
-step
-  only Mage
-  talk Jennea Cannon##5497
-  turnin Magma or Lava?##84396 |goto Stormwind City 49.56,85.8
 step
   only Mage
   talk Archmage Xylem##8379

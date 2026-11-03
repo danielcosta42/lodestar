@@ -561,3 +561,35 @@ noutro continente ou 10+ níveis acima.
 | distância do esqueleto da rota, todos os guias (só aceite e entrega) | 52.053 | 44.917 (−13,7%) |
 | trocas de zona nos guias (zona diferente entre `goto` seguidos, sem os passos com `haveq`, `completed` ou classe) | 647 | **289** |
 | guias de leveling / quests em guia / novas do Forever | 88 / 3.781 / 548 | 86 / 3.710 / 532 |
+
+## QuestieDB 1.0.10 (#63, 2026-11-02)
+
+Regenerar direto tirava de Zephras Isle a saída da ilha, e os validadores aprovavam guias que
+travavam. Cada causa virou regra, com trava no autoteste do `router.py`:
+
+- `minLevel` 9999 é o sentinela de "escala com o jogador": `build_intermediate.nivel` o zera. Com os
+  ranks novos, a elite amiga virava "elite acima do nível máximo".
+- Library Books: fora de todo guia. Objeto listado como quem dá a quest, mas ela só abre no
+  bibliotecário com o livro na bolsa.
+- Season of Discovery (76000-85999, sem classe no banco): fora do leveling. A caça de ladino parava
+  todo mundo num objeto desde antes da v2.7.2.
+- Item que começa a quest e é drop incerto (vários mobs, ou mob comum com mais de 4 spawns):
+  `only hasitem(...)` e cascata de `haveq`/`completed`. O aceite vai para depois do último passo que
+  mata quem dá o item, sem passar do primeiro que depende da quest (`_depois_do_drop`).
+- `Starving Arcane` e `The Damp Note` são de masmorra: `FORA_QUESTS` tira da rota, e seguem no guia dela.
+
+| | v2.7.2 sob o 1.0.10 | regenerado |
+|---|---|---|
+| `validate_guides`: bloqueios | 31 | **0** |
+| `guide_integrity --full`: saltos | 237 | **235** |
+| Accept/turnin em lugar errado | 1 de 6.104 | 1 de 6042 |
+
+Ainda aberto:
+
+- Quem acha o item depois do passo não vê o aceite, e a entrega já passou: o passo não pula a entrega
+  da quest. Não trava, mas perde a cadeia: `Winterfall Firewater` em Winterspring, 8 quests, e outras
+  em Desolace, Dun Morogh, Durotar, Searing Gorge, Elwynn e Tirisfal. O conserto é mover o aceite junto
+  com os passos que dependem dele.
+- As quests do Season of Discovery com classe marcada (xamã, 79358-79366) seguem nos guias, só para a
+  classe; nelas o NPC cobre o pulo automático.
+

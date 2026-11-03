@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Searing Gorge (48-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Blasted Lands (50-55)",
-	rev = "89310198",
+	rev = "b8c1c1f7",
 }, [[
 step
   ding 46
@@ -22,9 +22,11 @@ step
   talk Kalaran Windblade##8479
   accept The Flawless Flame##3442 |goto Searing Gorge 39.06,38.99
 step
-  kill Dark Iron Steamsmith##5840 |goto Searing Gorge 40.58,49.48 |tip Loot the quest item here — it starts the quest.
-  accept The Key to Freedom##4451 |goto Searing Gorge 40.58,49.48
+  only hasitem(11818)
+  use Grimesilt Outhouse Key##11818 |tip It starts the quest.
+  accept The Key to Freedom##4451
 step
+  only haveq(4451)
   note Search Searing Gorge and find a use for the Grimesilt Outhouse Key you have found.
   turnin The Key to Freedom##4451 |goto Searing Gorge 65.59,62.17
 step

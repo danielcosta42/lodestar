@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Stonetalon Mountains (19-26)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/The Barrens (23-27)",
-	rev = "0e314c1b",
+	next = "Leveling/Horde/The Barrens (22-27)",
+	rev = "7ba768a2",
 }, [[
 step
   ding 18
@@ -109,12 +109,6 @@ step
   only Warlock completed(1510) not completed(1472) not haveq(1472) level>=20
   talk Ken'zigla##4197
   accept Ken'zigla's Draught##1511 |goto Stonetalon Mountains 73.25,95.13
-step
-  click Pocket Litter##424005
-  accept Scramble##79980 |goto Stonetalon Mountains 40.76,52.57
-step
-  note Find what awaits you.
-  turnin Scramble##79980 |goto Stonetalon Mountains 39.62,49.86
 step
   only level>=20
   talk Braelyn Firehand##4198
@@ -244,15 +238,6 @@ step
   talk Je'neu Sancrea##12736
   turnin Trouble in the Deeps##6562 |goto Ashenvale 11.56,34.29 |tip {turninat}Ashenvale
 step
-  only level>=22
-  kill Blackfathom Tide Priestess##4802 |goto Ashenvale 13.55,12.06 |elite |tip Loot the quest item here — it starts the quest.
-  accept Allegiance to the Old Gods##6564 |goto Ashenvale 13.55,12.06
-step
-  only haveq(6564)
-  note Bring the Damp Note to Je'neu Sancrea in Ashenvale.
-  talk Je'neu Sancrea##12736
-  turnin Allegiance to the Old Gods##6564 |goto Ashenvale 11.56,34.29 |tip {turninat}Ashenvale
-step
   only haveq(1088)
   note Bring Ordanus' head to Braelyn Firehand near Sun Rock Retreat.
   collect Ordanus' Head##5686 |q 1088 |goto Ashenvale 62.05,51.37 |tip {dropsfrom}Keeper Ordanus
@@ -317,5 +302,5 @@ step
   turnin The Binding##1513 |goto Orgrimmar 48.25,45.28 |tip {turninat}Orgrimmar
 step
   note {travel}The Barrens
-  goto The Barrens 51.07,29.63
+  goto The Barrens 62.59,37.47
 ]])

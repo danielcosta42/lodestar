@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Un'Goro Crater (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Searing Gorge (48-50)",
-	rev = "744ef74b",
+	rev = "2afbc2bb",
 }, [[
 step
   ding 49
@@ -32,8 +32,9 @@ step
   note Bring 20 Un'Goro Soil samples to Jenal at the Cenarion Enclave in Darnassus.
   collect 20 Un'Goro Soil##11018 |q 3764 |goto Un'Goro Crater 47,52.9 |tip {dropsfrom}Un'Goro Dirt Pile
 step
-  kill Ravasaur##6505 |goto Un'Goro Crater 64.16,74.25 |tip Loot the quest item here — it starts the quest.
-  accept Williden's Journal##3884 |goto Un'Goro Crater 64.16,74.25
+  only hasitem(11116)
+  use A Mangled Journal##11116 |tip It starts the quest.
+  accept Williden's Journal##3884
 step
   only haveq(3882)
   note Bring 8 Dinosaur Bones to Spark Nilminer in Un'Goro Crater.
@@ -43,6 +44,7 @@ step
   talk Spark Nilminer##9272
   turnin Roll the Bones##3882 |goto Un'Goro Crater 43.5,7.42
 step
+  only haveq(3884)
   note Return the journal to Williden Marshal somewhere in Un'Goro Crater.
   talk Williden Marshal##9270
   turnin Williden's Journal##3884 |goto Un'Goro Crater 43.95,7.14
