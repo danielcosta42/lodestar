@@ -1,9 +1,9 @@
 # WoW: Forever — o que o Lodestar faz, e por quê
 
-Beta aberto em 2026-09-17, até 2026-10-21; lançamento em **2026-11-04**. Build corrente
-**1.60.1.70338** (`wow_classic_beta`, **Interface 16001**, token de TOC `Camelot`); as tabelas do
-cliente (`QuestV2`, voos) ainda são as do 70245 — o wago estava fora do ar quando o 70338 entrou. O
-beta está capado no nível 30 e sem raides.
+Beta de 2026-09-17 a 2026-10-21; lançamento em **2026-11-04, 15:00 PST**. Build mais novo no wago em
+2026-11-02: **1.60.1.70753** (produto `wowf`, **Interface 16001**); as tabelas do cliente (`QuestV2`,
+voos) ainda são as do 70245. Do 70245 ao 70753 nenhuma quest saiu, 7 entraram e a tabela de voos
+ganhou um nó.
 
 O Lodestar é **Forever e só**. O suporte a TBC/Anniversary saiu na v2.0.0, e desde a #9 a biblioteca
 inteira de guias é gerada do banco do Forever.
@@ -15,6 +15,18 @@ inteira de guias é gerada do banco do Forever.
   colhemos id e nome de quest giver sem problema. Ainda assim perguntamos antes, via
   `C_Secrets.ShouldUnitIdentityBeSecret`, porque a doc gerada marca `UnitGUID`/`UnitName` com
   predicado condicional e a regra pode apertar.
+
+## O que saiu da API
+
+Os globais `GetItemInfo`, `GetItemCount`, `GetItemIcon`, `GetItemStats`, `GetItemInfoInstant`,
+`IsEquippableItem`, `GetSpellInfo`, `GetSpellCooldown`, `GetSpellTexture`, `GetCoinTextureString`,
+`GetNumSkillLines` e `GetSkillLineInfo` não existem neste cliente: o `Blizzard_DeprecatedItemScript`
+que os mantinha saiu no 12.1.5, e o Forever segue essa base. Em `GetItemCount` isso foi visto em jogo
+(GuildOS #43). `C_Spell.GetSpellCooldown` pode devolver valor secreto e `C_SkillInfo.GetSkillLineInfo`
+devolve tabela. Tudo passa pelo `Compat.lua`, e `tools/forever-guides.lua` reprova chamada direta. Os
+stubs dos testes não têm como pegar isso sozinhos, porque não sabem o que o cliente não tem. Para
+conferir um nome, o espelho [`Gethe/wow-ui-source`](https://github.com/Gethe/wow-ui-source/tree/forever),
+branch `forever`, traz a UI do build corrente.
 
 ## O cliente só entrega ids
 
@@ -62,10 +74,12 @@ QuestieDB não conhece.
 
 ### O bug que obriga o desenho do coletor
 
-**SavedVariables não volta no login neste cliente.** A tabela nasce vazia, então o logout sobrescreve
-o arquivo com apenas aquela sessão. Por isso `tools/import_scan.py` varre **muitos** arquivos e
-mescla de forma aditiva, incluindo os `.bak` que o cliente mantém — e por isso o WDB, que o addon não
-escreve, é o canal mais confiável que existe neste cliente.
+**SavedVariables não voltava no login** quando reproduzimos, em 2026-09-20: a tabela nascia vazia e o
+logout sobrescrevia o arquivo com apenas aquela sessão. Por isso `tools/import_scan.py` varre
+**muitos** arquivos e mescla de forma aditiva, incluindo os `.bak` que o cliente mantém, e por isso o
+WDB, que o addon não escreve, é o canal mais confiável. O bug parece ter saído: um save do beta de
+2026-10-19 guarda, no mesmo personagem, chaves de guia de duas versões do addon. Falta um relog no
+cliente do lançamento para fechar.
 
 ### O que não raspamos
 
@@ -403,6 +417,13 @@ cada build é baixado do wago uma vez e fica em `tools/build/`; build que não e
 vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretórios de guia do zero.
 
 ## Em aberto
+
+- **QuestieDB 1.0.10 (2026-11-02) ainda não entrou.** Numa cópia isolada, a regeneração muda 129
+  arquivos, e os guias de Zephras Isle viram 5-11 e perdem o fim da ilha (`The Fate of Zephras`,
+  `Confront Lorthuna`, `Welcome to Azeroth`, `Journey to the Crossroads`), embora os dados dessas
+  quests não tenham mudado: é reação do roteador, ainda sem causa. O autoteste do `router.py` também
+  falha (`Exploring the Alliance`). Ficar no 1.0.6 custa 31 quests fora de ordem sob os dados novos,
+  puladas no NPC em vez de travar; só 1 de 6.104 aceites e entregas aponta lugar errado.
 
 - **Riverglades e Hyjal.** O QuestieDB 1.0.6 tem os NPCs, não as quests. Entram quando ele tiver —
   ou quando o `/ls scan` colher no lançamento. Em Shen'dralas, 12 das 19 quests esperam quem as dá.
