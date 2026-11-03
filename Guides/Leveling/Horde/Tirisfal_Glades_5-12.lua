@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silverpine Forest (11-20)",
-	rev = "d2674387",
+	rev = "606a6717",
 }, [[
 step
   only Undead level>=1
@@ -234,6 +234,7 @@ step
   note Steal 10 pumpkins from the farm to the west, just north of Deathknell and take them to Apothecary Johaan in Brill.
   collect Tirisfal Pumpkin##2846 |q 365 |goto Tirisfal Glades 35.86,50.49
 step
+  only hasitem(2839)
   kill Rattlecage Soldier##1520 |goto Tirisfal Glades 45.84,40.43 |tip Loot the quest item here — it starts the quest.
   accept A Letter Undelivered##361 |goto Tirisfal Glades 45.84,40.43
 step
@@ -265,6 +266,7 @@ step
   talk Innkeeper Renee##5688
   turnin A Rogue's Deal##8 |goto Tirisfal Glades 61.72,52.05
 step
+  only haveq(361)
   note Find Yvette Farthing, and deliver to her the letter from Thurman Agamand.
   talk Yvette Farthing##1560
   turnin A Letter Undelivered##361 |goto Tirisfal Glades 61.58,52.6

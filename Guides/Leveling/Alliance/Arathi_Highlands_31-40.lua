@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (31-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Swamp of Sorrows (35-42)",
-	rev = "6ea6141c",
+	next = "Leveling/Alliance/Badlands (37-43)",
+	rev = "3a0d5d6d",
 }, [[
 step
   ding 30
@@ -36,16 +36,10 @@ step
   talk Captain Nials##2700
   accept Northfold Manor##681 |goto Arathi Highlands 45.83,47.56
 step
-  click Messenger Bag##406918
-  accept This Must Be The Place##79976 |goto Arathi Highlands 22.48,24.19
-step
   only haveq(681)
   note Kill 10 Syndicate Highwaymen and 6 Syndicate Mercenaries.
-  kill Syndicate Mercenary##2589 |q 681/2 |goto Arathi Highlands 31.02,28.75
-  kill Syndicate Highwayman##2586 |q 681 |goto Arathi Highlands 30.97,29.79
-step
-  note Whoever was here, you just missed them.
-  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.47,24.2
+  kill Syndicate Highwayman##2586 |q 681/1 |goto Arathi Highlands 30.97,29.79
+  kill Syndicate Mercenary##2589 |q 681 |goto Arathi Highlands 31.02,28.75
 step
   only haveq(681)
   talk Captain Nials##2700
@@ -55,24 +49,6 @@ step
   note Find Veyric Thundervein in Arathi Highlands.
   talk Veyric Thunderhame##259023
   turnin Call of Air##94789 |goto Arathi Highlands 59.84,27.57
-step
-  only level>=30
-  talk Apprentice Kryten##2788
-  accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
-step
-  only haveq(691)
-  note Find 10 Witherbark Tusks, 4 Witherbark Medicine Pouches and a Shadow Hunter Knife for Apprentice Kryten at Refuge Pointe.
-  collect 10 Witherbark Tusk##4503 |q 691/1 |goto Arathi Highlands 35.1,46.16 |tip {dropsfrom}Witherbark Troll, Witherbark Shadowcaster, Witherbark Axe Thrower
-  collect 4 Witherbark Medicine Pouch##4522 |q 691/2 |goto Arathi Highlands 69.34,68.69 |tip {dropsfrom}Witherbark Witch Doctor
-  collect Shadow Hunter Knife##5040 |q 691 |goto Arathi Highlands 67.53,80.51 |tip {dropsfrom}Witherbark Shadow Hunter
-step
-  only haveq(691)
-  talk Apprentice Kryten##2788
-  turnin Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
-step
-  only completed(681) level>=37
-  talk Captain Nials##2700
-  accept Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
 step
   only completed(659) level>=30
   talk Quae##2712
@@ -107,9 +83,36 @@ step
   talk Quae##2712
   turnin Hints of a New Plague?##660 |goto Arathi Highlands 60.18,53.85
 step
-  only completed(659) completed(660)
+  only completed(659) completed(660) level>=30
   talk Quae##2712
   accept Hints of a New Plague?##661 |goto Arathi Highlands 60.18,53.85
+step
+  only level>=30
+  talk Apprentice Kryten##2788
+  accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
+step
+  only completed(681) level>=37
+  talk Captain Nials##2700
+  accept Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
+step
+  only haveq(682)
+  note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
+  kill Syndicate Prowler##2588 |q 682 |goto Arathi Highlands 28.33,63.36 |elite
+  collect 7 Stromgarde Badge##4506 |q 682 |goto Arathi Highlands 28.33,63.36
+step
+  only haveq(691)
+  note Find 10 Witherbark Tusks, 4 Witherbark Medicine Pouches and a Shadow Hunter Knife for Apprentice Kryten at Refuge Pointe.
+  collect 10 Witherbark Tusk##4503 |q 691/1 |goto Arathi Highlands 35.1,46.16 |tip {dropsfrom}Witherbark Troll, Witherbark Shadowcaster, Witherbark Axe Thrower
+  collect 4 Witherbark Medicine Pouch##4522 |q 691/2 |goto Arathi Highlands 69.34,68.69 |tip {dropsfrom}Witherbark Witch Doctor
+  collect Shadow Hunter Knife##5040 |q 691 |goto Arathi Highlands 67.53,80.51 |tip {dropsfrom}Witherbark Shadow Hunter
+step
+  only haveq(682)
+  talk Captain Nials##2700
+  turnin Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
+step
+  only haveq(691)
+  talk Apprentice Kryten##2788
+  turnin Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
 step
   click Shards of Myzrael##138492
   accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
@@ -129,14 +132,14 @@ step
 step
   turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
-  only haveq(682)
-  note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
-  kill Syndicate Prowler##2588 |q 682 |goto Arathi Highlands 28.33,63.36 |elite
-  collect 7 Stromgarde Badge##4506 |q 682 |goto Arathi Highlands 28.33,63.36
+  only level>=35
+  talk Lolo the Lookout##2766
+  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
 step
-  only haveq(682)
-  talk Captain Nials##2700
-  turnin Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
+  only haveq(663)
+  note Talk to Captain O'Breen in Faldir's Cove.
+  talk Shakes O'Breen##2610
+  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
 step
   only level>=39
   click Wanted Board##2713
@@ -180,6 +183,10 @@ step
   talk Apprentice Kryten##2788
   accept An Apprentice's Enchantment##695 |goto Arathi Highlands 46.2,47.75
 step
+  only level>=40
+  click Wanted Board##2713
+  accept WANTED: Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
+step
   only haveq(695)
   note Speak to Skuerto.
   talk Skuerto##2789
@@ -188,10 +195,6 @@ step
   only completed(695)
   talk Skuerto##2789
   accept Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
-step
-  only level>=40
-  click Wanted Board##2713
-  accept WANTED: Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
 step
   only haveq(685)
   note Bring Otto's Head and Falconcrest's Head to Captain Nials at Refuge Pointe.
@@ -205,15 +208,6 @@ step
   collect Trelane's Phylactery##4530 |q 696/1 |goto Arathi Highlands 18.18,68.14 |tip {dropsfrom}Trelane's Footlocker
   collect Trelane's Ember Agate##4532 |q 696/3 |goto Arathi Highlands 18.03,67.87 |tip {dropsfrom}Trelane's Lockbox
   collect Trelane's Orb##4531 |q 696 |goto Arathi Highlands 18.17,69.15 |tip {dropsfrom}Trelane's Chest
-step
-  only level>=35
-  talk Lolo the Lookout##2766
-  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
-step
-  only haveq(663)
-  note Talk to Captain O'Breen in Faldir's Cove.
-  talk Shakes O'Breen##2610
-  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
 step
   only completed(663) level>=35
   talk First Mate Nilzlix##2767
@@ -387,6 +381,6 @@ step
   talk Archmage Malin##2708
   turnin Malin's Request##697 |goto Stormwind City 50.5,87.47 |tip {turninat}Stormwind City
 step
-  note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 25.98,31.4
+  note {travel}Badlands
+  goto Badlands 53.42,43.39
 ]])

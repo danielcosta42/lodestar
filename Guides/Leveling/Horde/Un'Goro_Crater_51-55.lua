@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Un'Goro Crater (51-55)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Azshara (52-58)",
-	rev = "fd297119",
+	rev = "2a625eea",
 }, [[
 step
   ding 50
@@ -72,6 +72,7 @@ step
   collect 8 Gorishi Sting##22435 |q 9052/1 |goto Un'Goro Crater 50.14,75.97 |tip {dropsfrom}Gorishi Wasp, Gorishi Stinger
   collect 8 Bloodcap##22434 |q 9052 |goto Un'Goro Crater 44.62,42.45 |tip {dropsfrom}Bloodpetal Sprout
 step
+  only hasitem(11116)
   kill Ravasaur##6505 |goto Un'Goro Crater 64.16,74.25 |tip Loot the quest item here — it starts the quest.
   accept Williden's Journal##3884 |goto Un'Goro Crater 64.16,74.25
 step
@@ -106,6 +107,7 @@ step
   talk Hol'anyee Marshal##9271
   turnin Alien Ecology##3883 |goto Un'Goro Crater 43.89,7.24
 step
+  only haveq(3884)
   note Return the journal to Williden Marshal somewhere in Un'Goro Crater.
   talk Williden Marshal##9270
   turnin Williden's Journal##3884 |goto Un'Goro Crater 43.95,7.14

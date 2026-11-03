@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/The Barrens (14-21)",
-	rev = "678da2e1",
+	next = "Leveling/Alliance/The Barrens (14-20)",
+	rev = "1b617cda",
 }, [[
 step
   ding 12
@@ -492,6 +492,7 @@ step
   talk Sentinel Onaeya##11806
   turnin One Shot.  One Kill.##5713 |goto Ashenvale 26.6,36.73 |tip {turninat}Ashenvale
 step
+  only hasitem(5352)
   kill Twilight Disciple##2338 |goto Darkshore 38.21,87.21 |tip Loot the quest item here — it starts the quest.
   accept The Powers Below##968 |goto Darkshore 38.21,87.21
 step

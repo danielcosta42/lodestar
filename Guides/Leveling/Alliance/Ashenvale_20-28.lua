@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Ashenvale (20-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (21-28)",
-	rev = "7c88a24e",
+	rev = "841c47aa",
 }, [[
 step
   ding 19
@@ -99,13 +99,13 @@ step
   talk Pelturas Whitemoon##3894
   accept Elune's Tear##1033 |goto Ashenvale 37.37,51.79
 step
-  note Find Shael'dryn at the moonwell to the northeast.
-  talk Shael'dryn##3916
-  turnin Raene's Cleansing##1024 |goto Ashenvale 53.54,46.22
-step
   only haveq(1033)
   note Bring Elune's Tear to Pelturas in Astranaar.
   collect Elune's Tear##5493 |q 1033 |goto Ashenvale 46.07,46.56
+step
+  note Find Shael'dryn at the moonwell to the northeast.
+  talk Shael'dryn##3916
+  turnin Raene's Cleansing##1024 |goto Ashenvale 53.54,46.22
 step
   only haveq(1033)
   talk Pelturas Whitemoon##3894
@@ -164,24 +164,6 @@ step
   talk Raene Wolfrunner##3691
   turnin Culling the Threat##1054 |goto Ashenvale 36.62,49.58
 step
-  talk Alonso##210995
-  accept Dragonslayer's Helm##78132 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  accept Dragonslayer's Shield##78133 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  accept Dragonslayer's Lance##78134 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  turnin Dragonslayer's Helm##78132 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  turnin Dragonslayer's Shield##78133 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  turnin Dragonslayer's Lance##78134 |goto Ashenvale 43.4,70.4
-step
   only completed(1016) level>=20
   talk Sentinel Velene Starstrike##3885
   accept Mage Summoner##1017 |goto Ashenvale 49.8,67.21
@@ -235,9 +217,27 @@ step
   click Circle of Imprisonment##19901 |q 1140/1 |goto Ashenvale 66.62,57
   click Circle of Imprisonment##20352 |q 1140 |goto Ashenvale 81.6,48.57
 step
-  only completed(1082)
-  talk Sentinel Thenysil##4079
-  accept Reception from Tyrande##1081 |goto Ashenvale 34.89,49.79
+  note Find the final piece of Dartol's Rod and return to Shael'dryn at the moonwell.
+  collect Iron Pommel##5519 |q 1027 |goto Ashenvale 74.41,73.38 |tip {dropsfrom}Rusty Chest
+step
+  talk Shael'dryn##3916
+  turnin Raene's Cleansing##1027 |goto Ashenvale 53.54,46.22
+step
+  talk Shael'dryn##3916
+  accept Raene's Cleansing##1028 |goto Ashenvale 53.54,46.22
+step
+  note Find the hidden shrine and re-enchant Dartol's Rod.
+  turnin Raene's Cleansing##1028 |goto Ashenvale 56.35,49.2
+step
+  click Hidden Shrine##19024
+  accept Raene's Cleansing##1055 |goto Ashenvale 56.35,49.2
+step
+  note Return to Shael'dryn at the moonwell.
+  talk Shael'dryn##3916
+  turnin Raene's Cleansing##1055 |goto Ashenvale 53.54,46.22
+step
+  talk Shael'dryn##3916
+  accept Raene's Cleansing##1029 |goto Ashenvale 53.54,46.22
 step
   only completed(967)
   talk Delgren the Purifier##3663
@@ -246,6 +246,17 @@ step
   only completed(967)
   talk Delgren the Purifier##3663
   accept The Tower of Althalaxx##1167 |goto Ashenvale 26.2,38.7
+step
+  note Return to Raene Wolfrunner in Astranaar.
+  talk Raene Wolfrunner##3691
+  turnin Raene's Cleansing##1029 |goto Ashenvale 36.62,49.58
+step
+  talk Raene Wolfrunner##3691
+  accept Raene's Cleansing##1030 |goto Ashenvale 36.62,49.58
+step
+  only completed(1082)
+  talk Sentinel Thenysil##4079
+  accept Reception from Tyrande##1081 |goto Ashenvale 34.89,49.79
 step
   only level>=24
   talk Shindrell Swiftfire##3845
@@ -268,47 +279,18 @@ step
   note Bring a Bottle of Disease to Kayneth Stillwind in Forest Song.
   collect Bottle of Disease##5440 |q 1011 |goto Ashenvale 75.31,71.93
 step
-  note Find the final piece of Dartol's Rod and return to Shael'dryn at the moonwell.
-  collect Iron Pommel##5519 |q 1027 |goto Ashenvale 74.41,73.38 |tip {dropsfrom}Rusty Chest
-step
-  only haveq(1011)
-  talk Kayneth Stillwind##3848
-  turnin Forsaken Diseases##1011 |goto Ashenvale 85.24,44.71
-step
-  talk Shael'dryn##3916
-  turnin Raene's Cleansing##1027 |goto Ashenvale 53.54,46.22
-step
-  talk Shael'dryn##3916
-  accept Raene's Cleansing##1028 |goto Ashenvale 53.54,46.22
-step
-  note Find the hidden shrine and re-enchant Dartol's Rod.
-  turnin Raene's Cleansing##1028 |goto Ashenvale 56.35,49.2
-step
-  click Hidden Shrine##19024
-  accept Raene's Cleansing##1055 |goto Ashenvale 56.35,49.2
-step
-  note Return to Shael'dryn at the moonwell.
-  talk Shael'dryn##3916
-  turnin Raene's Cleansing##1055 |goto Ashenvale 53.54,46.22
-step
-  talk Shael'dryn##3916
-  accept Raene's Cleansing##1029 |goto Ashenvale 53.54,46.22
-step
-  note Return to Raene Wolfrunner in Astranaar.
-  talk Raene Wolfrunner##3691
-  turnin Raene's Cleansing##1029 |goto Ashenvale 36.62,49.58
+  note Find an uncorrupted furbolg, and using the power of Dartol's Rod of Transformation, speak to him.
+  talk Krolg##3897
+  turnin Raene's Cleansing##1030 |goto Ashenvale 50.84,75.08
 step
   only haveq(98027)
   note Deliver the Crescent Necklace to Maliynn in Astranaar.
   talk Maliynn##3961
   turnin Gleaming Crescent Necklace##98027 |goto Ashenvale 36.62,49.98
 step
-  talk Raene Wolfrunner##3691
-  accept Raene's Cleansing##1030 |goto Ashenvale 36.62,49.58
-step
-  note Find an uncorrupted furbolg, and using the power of Dartol's Rod of Transformation, speak to him.
-  talk Krolg##3897
-  turnin Raene's Cleansing##1030 |goto Ashenvale 50.84,75.08
+  only haveq(1011)
+  talk Kayneth Stillwind##3848
+  turnin Forsaken Diseases##1011 |goto Ashenvale 85.24,44.71
 step
   note Travel to Keeper Albagorm on Stonetalon Peak.
   talk Keeper Albagorm##3994

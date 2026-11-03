@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Alterac Mountains (33-40)", {
+ns:RegisterGuide("Leveling/Alliance/Alterac Mountains (34-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Hillsbrad Foothills (33-40)",
-	rev = "56f0c416",
+	next = "Leveling/Alliance/Stranglethorn Vale (32-40)",
+	rev = "11245e8f",
 }, [[
 step
   ding 31
@@ -29,20 +29,11 @@ step
   accept Encrypted Letter##511 |goto Alterac Mountains 58.32,67.92
 step
   talk Image of Archmage Modera##269127
-  accept Starving Arcane##92457 |goto Alterac Mountains 14.3,59.57
-step
-  talk Image of Archmage Modera##269127
   accept Friend of the Kirin Tor##92459 |goto Alterac Mountains 14.3,59.57
 step
   note Speak to Archmage Celindra in the City of Dalaran.
   talk Archmage Celindra##252085
   turnin Friend of the Kirin Tor##92459 |goto Alterac Mountains 14.15,60.05
-step
-  note Defeat 8 Seeking Remnants, 8 Saturated Remnants, and 8 Mana Echoes inside the City of Dalaran for Archmage Modera outside of Dalaran.
-  kill Saturated Remnant##247001 |q 92457 |goto Alterac Mountains 14.2,68.4
-step
-  talk Image of Archmage Modera##269127
-  turnin Starving Arcane##92457 |goto Alterac Mountains 14.3,59.57
 step
   only Rogue
   talk Myrokos Silentform##13085
@@ -64,6 +55,27 @@ step
   collect Worn Wooden Chest##1765 |goto Alterac Mountains 39.18,14.66 |tip Loot the quest item here — it starts the quest.
   accept The Ensorcelled Parchment##551 |goto Alterac Mountains 39.18,14.66
 step
+  note Bring the Foreboding Plans to Magistrate Maleb in Southshore.
+  talk Magistrate Henry Maleb##2276
+  turnin Foreboding Plans##510 |goto Hillsbrad Foothills 48.14,59.11 |tip {turninat}Hillsbrad Foothills
+step
+  talk Magistrate Henry Maleb##2276
+  accept Noble Deaths##512 |goto Hillsbrad Foothills 48.14,59.11
+step
+  note Bring the Encrypted Letter to Loremaster Dibbs in Southshore.
+  talk Loremaster Dibbs##2277
+  turnin Encrypted Letter##511 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
+step
+  note Take the Ensorcelled Parchment to Loremaster Dibbs in Southshore.
+  talk Loremaster Dibbs##2277
+  turnin The Ensorcelled Parchment##551 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
+step
+  talk Loremaster Dibbs##2277
+  accept Letter to Stormpike##514 |goto Hillsbrad Foothills 50.57,57.09
+step
+  talk Loremaster Dibbs##2277
+  accept Stormpike's Deciphering##554 |goto Hillsbrad Foothills 50.57,57.09
+step
   only Rogue
   note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
   kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.1,45.73
@@ -71,6 +83,40 @@ step
   only Rogue
   talk Myrokos Silentform##13085
   turnin Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+step
+  note Bring 7 Alterac Signet Rings to Magistrate Maleb in Southshore.
+  collect 7 Alterac Signet Ring##3505 |q 512 |goto Alterac Mountains 60.76,43.88 |tip {dropsfrom}Syndicate Spy, Syndicate Sentry, Syndicate Wizard
+step
+  only haveq(98313)
+  note Bring the Whelgar Relic Package to Historian Karnik in Ironforge.
+  talk Historian Karnik##2916
+  turnin For Further Study##98313 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
+step
+  note Take the Cleverly Encrypted Letter to Prospector Stormpike in Ironforge.
+  talk Prospector Stormpike##1356
+  turnin Letter to Stormpike##514 |goto Ironforge 74.64,11.74 |tip {turninat}Ironforge
+step
+  note Take the Ensorcelled Parchment to Prospector Stormpike in Ironforge.
+  talk Prospector Stormpike##1356
+  turnin Stormpike's Deciphering##554 |goto Ironforge 74.64,11.74 |tip {turninat}Ironforge
+step
+  talk Prospector Stormpike##1356
+  accept Further Mysteries##525 |goto Ironforge 74.64,11.74
+step
+  only haveq(1457)
+  note Bring Karnitol's Satchel to Roetten Stonehammer in Ironforge.
+  talk Roetten Stonehammer##5637
+  turnin The Karnitol Shipwreck##1457 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+step
+  only haveq(1467)
+  note Bring Leftwitch's Package back to Roetten Stonehammer in Ironforge.
+  talk Roetten Stonehammer##5637
+  turnin Reagents for Reclaimers Inc.##1467 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+step
+  only haveq(98300)
+  note Deliver Howin's Missive to King Magni Bronzebeard in Ironforge.
+  talk King Magni Bronzebeard##2784
+  turnin Word to Ironforge##98300 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
 step
   only completed(1222)
   talk Angus Stern##1141
@@ -124,18 +170,22 @@ step
   talk Bath'rah the Windwatcher##6176
   turnin Whirlwind Weapon##1792 |goto Alterac Mountains 80.5,66.92
 step
-  note Bring the Foreboding Plans to Magistrate Maleb in Southshore.
   talk Magistrate Henry Maleb##2276
-  turnin Foreboding Plans##510 |goto Hillsbrad Foothills 48.14,59.11 |tip {turninat}Hillsbrad Foothills
+  turnin Noble Deaths##512 |goto Hillsbrad Foothills 48.14,59.11 |tip {turninat}Hillsbrad Foothills
 step
-  note Bring the Encrypted Letter to Loremaster Dibbs in Southshore.
-  talk Loremaster Dibbs##2277
-  turnin Encrypted Letter##511 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
+  note Bring the Decrypted Letter to Magistrate Maleb in Southshore.
+  talk Magistrate Henry Maleb##2276
+  turnin Further Mysteries##525 |goto Hillsbrad Foothills 48.14,59.11 |tip {turninat}Hillsbrad Foothills
 step
-  note Take the Ensorcelled Parchment to Loremaster Dibbs in Southshore.
-  talk Loremaster Dibbs##2277
-  turnin The Ensorcelled Parchment##551 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
+  talk Magistrate Henry Maleb##2276
+  accept Dark Council##537 |goto Hillsbrad Foothills 48.14,59.11
 step
-  note {travel}Hillsbrad Foothills
-  goto Hillsbrad Foothills 48.14,59.11
+  note Kill 4 Argus Shadow Mages.
+  kill Argus Shadow Mage##2318 |q 537 |goto Alterac Mountains 62.34,40.58
+step
+  talk Magistrate Henry Maleb##2276
+  turnin Dark Council##537 |goto Hillsbrad Foothills 48.14,59.11 |tip {turninat}Hillsbrad Foothills
+step
+  note {travel}Stranglethorn Vale
+  goto Stranglethorn Vale 35.66,10.53
 ]])

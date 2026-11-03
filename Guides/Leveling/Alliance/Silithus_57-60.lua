@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Silithus (57-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Eastern Plaguelands (56-60)",
-	rev = "caf0115d",
+	rev = "8d344593",
 }, [[
 step
   ding 55
@@ -150,7 +150,7 @@ step
   talk Marshal Bluewall##17080
   turnin Report to Marshal Bluewall##9415 |goto Silithus 33.29,51.06
 step
-  only level>=58
+  only level>=58 hasitem(20461)
   kill Hive'Zora Wasp##11727 |goto Silithus 27.87,61.78 |tip Loot the quest item here — it starts the quest.
   accept Brann Bronzebeard's Lost Letter##8308 |goto Silithus 27.87,61.78
 step

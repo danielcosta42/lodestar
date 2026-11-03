@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Rogue", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "d5edd4a0",
+	rev = "6b71ac72",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -338,14 +338,6 @@ step
   only Rogue
   note Steal a Syndicate uniform from Northfold Manor to infiltrate Stromgarde Keep.
   turnin A Way In##96783 |goto Alterac Mountains 84.93,80.38
-step
-  only Rogue
-  click Dead Drop##410369
-  accept The Eye of Bhossca##78676 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  note Find The Eye of Bhossca inside of the Scarlet Monastery. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone.
-  turnin The Eye of Bhossca##78676 |goto Silverpine Forest 47.12,70.99
 step
   only Rogue
   talk Myrokos Silentform##13085

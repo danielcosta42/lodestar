@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Ashenvale (20-27)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stonetalon Mountains (19-26)",
-	rev = "a0f5b0ed",
+	rev = "36585ca6",
 }, [[
 step
   ding 19
@@ -32,13 +32,6 @@ step
   talk Eye of Kilrogg##271181
   turnin A Void Path##98252 |goto Ashenvale 38.27,58.41
 step
-  note Kill 6 Shadowhorn Stag and 6 Ashenvale Bear and return to Va'xug Firefure northwest of Fallen Sky Lake.
-  kill Ashenvale Bear##3809 |q 98251/2 |goto Ashenvale 45.14,61.34
-  kill Shadowhorn Stag##3817 |q 98251 |goto Ashenvale 46.5,61.25
-step
-  talk Va'xug Firefure##267214
-  turnin Never Coming Back##98251 |goto Ashenvale 40.46,61.42
-step
   talk Je'neu Sancrea##12736
   accept The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
 step
@@ -54,77 +47,44 @@ step
   talk Warsong Runner##12863
   turnin Vorsha the Lasher##6641 |goto Ashenvale 12.22,34.22
 step
+  note Bring 20 Sapphires of Aku'Mai to Je'neu Sancrea in Ashenvale.
+  collect 20 Sapphire of Aku'Mai##16784 |q 6563 |goto Ashenvale 13.59,13.14
+step
+  talk Je'neu Sancrea##12736
+  turnin The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
+step
   only level>=21
   talk Karang Amakkar##12757
   accept Between a Rock and a Thistlefur##216 |goto Ashenvale 11.9,34.54
 step
+  only level>=19
   talk Mitsuwa##12721
   accept Troll Charm##6462 |goto Ashenvale 11.65,34.85
-step
-  note Bring 20 Sapphires of Aku'Mai to Je'neu Sancrea in Ashenvale.
-  collect 20 Sapphire of Aku'Mai##16784 |q 6563 |goto Ashenvale 13.59,13.14
 step
   only haveq(216)
   note Take down 8 Thistlefur Avengers and 8 Thistlefur Shaman; most are located east of Zoram Strand in Thistlefur Village. Once completed, return to Karang Amakkar at Zoram'gar Outpost, Ashenvale.
   kill Thistlefur Shaman##3924 |q 216/2 |goto Ashenvale 34.08,38.44
   kill Thistlefur Avenger##3925 |q 216 |goto Ashenvale 36.71,36.96
 step
+  only haveq(6462)
   note Bring 8 Troll Charms to Mitsuwa at the Zoram'gar Outpost.
   collect 8 Troll Charm##16602 |q 6462 |goto Ashenvale 40.86,33.64 |tip {dropsfrom}Troll Chest
 step
+  only level>=19
   talk Ruul Snowhoof##12818
   accept Freedom to Ruul##6482 |goto Ashenvale 41.53,34.49
 step
+  only haveq(6482)
   note Escort Ruul, then speak with Yama Snowhoof in Splintertree Post.
   goto Ashenvale 38.53,37.32 |tip Escort Ruul from the Thistlefurs.
 step
-  only haveq(216)
-  talk Karang Amakkar##12757
-  turnin Between a Rock and a Thistlefur##216 |goto Ashenvale 11.9,34.54
+  note Kill 6 Shadowhorn Stag and 6 Ashenvale Bear and return to Va'xug Firefure northwest of Fallen Sky Lake.
+  kill Ashenvale Bear##3809 |q 98251/2 |goto Ashenvale 45.14,61.34
+  kill Shadowhorn Stag##3817 |q 98251 |goto Ashenvale 46.5,61.25
 step
-  talk Mitsuwa##12721
-  turnin Troll Charm##6462 |goto Ashenvale 11.65,34.85
-step
-  talk Je'neu Sancrea##12736
-  turnin The Essence of Aku'Mai##6563 |goto Ashenvale 11.56,34.29
-step
-  only Paladin level>=20
-  talk Ulric Frostveil##259649
-  accept Seeking the Kor Gem##95042 |goto Ashenvale 11.87,34.41
-step
-  only Paladin haveq(95042)
-  note Bring a Kor Gem to Ulric Frostveil in Ashenvale.
-  collect Corrupted Kor Gem##6995 |q 95042 |goto Ashenvale 13.55,12.06 |tip {dropsfrom}Blackfathom Tide Priestess
-step
-  only Paladin haveq(95042)
-  talk Ulric Frostveil##259649
-  turnin Seeking the Kor Gem##95042 |goto Ashenvale 11.87,34.41
-step
-  talk Alonso##210995
-  accept Dragonslayer's Helm##78132 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  accept Dragonslayer's Shield##78133 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  accept Dragonslayer's Lance##78134 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  turnin Dragonslayer's Helm##78132 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  turnin Dragonslayer's Shield##78133 |goto Ashenvale 43.4,70.4
-step
-  talk Alonso##210995
-  turnin Dragonslayer's Lance##78134 |goto Ashenvale 43.4,70.4
-step
-  only level>=20
-  talk Torek##12858
-  accept Torek's Assault##6544 |goto Ashenvale 68.34,75.3
-step
-  only haveq(6544)
-  note Escort Torek on his attack against Silverwing Outpost and Duriel Moonfire, then report to Ertog Ragetusk at Splintertree Post.
-  goto Ashenvale 64.65,75.35 |tip Take Silverwing Outpost.
+  only haveq(6482)
+  talk Yama Snowhoof##12837
+  turnin Freedom to Ruul##6482 |goto Ashenvale 74.11,60.92
 step
   talk Kuray'bin##12867
   accept Ashenvale Outrunners##6503 |goto Ashenvale 71.11,68.12
@@ -135,12 +95,44 @@ step
   talk Kuray'bin##12867
   turnin Ashenvale Outrunners##6503 |goto Ashenvale 71.11,68.12
 step
-  talk Yama Snowhoof##12837
-  turnin Freedom to Ruul##6482 |goto Ashenvale 74.11,60.92
+  only level>=20
+  talk Torek##12858
+  accept Torek's Assault##6544 |goto Ashenvale 68.34,75.3
+step
+  only haveq(6544)
+  note Escort Torek on his attack against Silverwing Outpost and Duriel Moonfire, then report to Ertog Ragetusk at Splintertree Post.
+  goto Ashenvale 64.65,75.35 |tip Take Silverwing Outpost.
 step
   only haveq(6544)
   talk Ertog Ragetusk##12877
   turnin Torek's Assault##6544 |goto Ashenvale 73.03,62.47
+step
+  only haveq(216)
+  talk Karang Amakkar##12757
+  turnin Between a Rock and a Thistlefur##216 |goto Ashenvale 11.9,34.54
+step
+  only haveq(6462)
+  talk Mitsuwa##12721
+  turnin Troll Charm##6462 |goto Ashenvale 11.65,34.85
+step
+  only Paladin level>=20
+  talk Ulric Frostveil##259649
+  accept Seeking the Kor Gem##95042 |goto Ashenvale 11.87,34.41
+step
+  only completed(216) level>=21
+  talk Karang Amakkar##12757
+  accept King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
+step
+  only Paladin haveq(95042)
+  note Bring a Kor Gem to Ulric Frostveil in Ashenvale.
+  collect Corrupted Kor Gem##6995 |q 95042 |goto Ashenvale 13.55,12.06 |tip {dropsfrom}Blackfathom Tide Priestess
+step
+  talk Va'xug Firefure##267214
+  turnin Never Coming Back##98251 |goto Ashenvale 40.46,61.42
+step
+  only haveq(6621)
+  note Place Karang's Banner on the Foulweald Totem Mound. Do not let the furbolgs destroy the banner. Defeat Chief Murgut and bring Murgut's Totem to Karang Amakkar at Zoram'gar.
+  collect Murgut's Totem##16976 |q 6621 |goto Ashenvale 56.43,63.5 |tip {dropsfrom}Chief Murgut, Murgut's Totem Basket
 step
   only level>=23
   talk Mastok Wrilehiss##12737
@@ -150,33 +142,25 @@ step
   talk Pixel##12724
   accept Satyr Horns##6441 |goto Ashenvale 73.06,61.48
 step
+  only haveq(25)
+  note Dispatch 12 Befouled Water Elementals at Mystral Lake, due east of the Talondeep Path and southwest of Splintertree Post.
+  kill Befouled Water Elemental##3917 |q 25 |goto Ashenvale 49.36,69.85
+step
   only haveq(6441)
   note Collect 16 Satyr Horns for Pixel in Splintertree Post.
   collect 16 Satyr Horns##5481 |q 6441 |goto Ashenvale 66.8,52.57 |tip {dropsfrom}Felmusk Satyr, Felmusk Rogue, Felmusk Felsworn
+step
+  only haveq(25)
+  talk Mastok Wrilehiss##12737
+  turnin Stonetalon Standstill##25 |goto Ashenvale 73.67,60
 step
   only haveq(6441)
   talk Pixel##12724
   turnin Satyr Horns##6441 |goto Ashenvale 73.06,61.48
 step
-  only completed(216) level>=21
-  talk Karang Amakkar##12757
-  accept King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
-step
   only level>=23
   kill Tideress##12759 |goto Ashenvale 46,70 |tip Loot the quest item here — it starts the quest.
   accept The Befouled Element##1918 |goto Ashenvale 46,70
-step
-  only haveq(25)
-  note Dispatch 12 Befouled Water Elementals at Mystral Lake, due east of the Talondeep Path and southwest of Splintertree Post.
-  kill Befouled Water Elemental##3917 |q 25 |goto Ashenvale 49.36,69.85
-step
-  only haveq(6621)
-  note Place Karang's Banner on the Foulweald Totem Mound. Do not let the furbolgs destroy the banner. Defeat Chief Murgut and bring Murgut's Totem to Karang Amakkar at Zoram'gar.
-  collect Murgut's Totem##16976 |q 6621 |goto Ashenvale 56.43,63.5 |tip {dropsfrom}Chief Murgut, Murgut's Totem Basket
-step
-  only haveq(25)
-  talk Mastok Wrilehiss##12737
-  turnin Stonetalon Standstill##25 |goto Ashenvale 73.67,60
 step
   only haveq(1918)
   note Bring the Befouled Water Globe to Mastok Wrilehiss at Splintertree Post, Ashenvale.
@@ -195,6 +179,10 @@ step
   only haveq(6621)
   talk Karang Amakkar##12757
   turnin King of the Foulweald##6621 |goto Ashenvale 11.9,34.54
+step
+  only Paladin haveq(95042)
+  talk Ulric Frostveil##259649
+  turnin Seeking the Kor Gem##95042 |goto Ashenvale 11.87,34.41
 step
   only level>=23
   talk Gurda Ragescar##12718

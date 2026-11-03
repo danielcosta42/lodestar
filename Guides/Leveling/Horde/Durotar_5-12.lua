@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Durotar (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "712b6670",
+	rev = "2fc1b03e",
 }, [[
 step
   only level>=1
@@ -552,9 +552,11 @@ step
   note Collect 9 Naga Spinefins.
   collect 9 Naga Spinefin##286008 |q 99051 |goto Durotar 59.38,25.92 |tip {dropsfrom}Spitelash Scout, Spitelash Attendant
 step
+  only hasitem(277661)
   kill Dustwind Storm Witch##3118 |goto Durotar 51.56,21.65 |tip Loot the quest item here — it starts the quest.
   accept A Simmering Storm##97281 |goto Durotar 51.56,21.65
 step
+  only haveq(97281)
   note Bring the Dull Stormy Orb to Rezlak near Drygulch Ravine.
   talk Rezlak##3293
   turnin A Simmering Storm##97281 |goto Durotar 46.37,22.94
@@ -562,6 +564,7 @@ step
   talk Rezlak##3293
   accept Winds in the Desert##834 |goto Durotar 46.37,22.94
 step
+  only completed(97281)
   talk Rezlak##3293
   accept Stormy Potential##97282 |goto Durotar 46.37,22.94
 step
@@ -571,6 +574,7 @@ step
   talk Misha Tor'kren##3193
   accept Lost But Not Forgotten##816 |goto Durotar 43.1,30.24
 step
+  only haveq(97282)
   note Bring 5 Charged Thunder Lizard Organs to Rezlak near Drygulch Ravine.
   collect 5 Charged Thunder Lizard Organ##277665 |q 97282 |goto Durotar 39.15,29.29 |tip {dropsfrom}Thunder Lizard, Lightning Hide
 step
@@ -580,6 +584,7 @@ step
   talk Rezlak##3293
   turnin Winds in the Desert##834 |goto Durotar 46.37,22.94
 step
+  only haveq(97282)
   talk Rezlak##3293
   turnin Stormy Potential##97282 |goto Durotar 46.37,22.94
 step
@@ -804,23 +809,6 @@ step
   talk Un'Thuwa##5880
   turnin Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
-  only Tauren Druid not completed(5926) not completed(5928) not haveq(5926) not haveq(5928)
-  note Speak with Turak Runetotem on the Elder Rise of Thunder Bluff.
-  talk Turak Runetotem##3033
-  turnin Heeding the Call##5927 |goto Thunder Bluff 76.48,27.22 |tip {turninat}Thunder Bluff
-step
-  only completed(76160)
-  talk Boarton Shadetotem##205729
-  accept Stalk With The Earthmother##76240 |goto Thunder Bluff 39.44,65.82
-step
-  only completed(76160)
-  note Buy or catch a Raw Brilliant Smallfish, then use the Knife Set to fillet it in front of Boarton Shadetotem in Thunder Bluff.
-  collect Fish Chunks##206345 |q 76240 |goto Thunder Bluff 39.44,65.82
-step
-  only completed(76160)
-  talk Boarton Shadetotem##205729
-  turnin Stalk With The Earthmother##76240 |goto Thunder Bluff 39.44,65.82 |tip {turninat}Thunder Bluff
-step
   talk Thrall##4949
   turnin Hidden Enemies##5726 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
 step
@@ -848,6 +836,11 @@ step
 step
   talk Thrall##4949
   turnin Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
+step
+  only Tauren Druid not completed(5926) not completed(5928) not haveq(5926) not haveq(5928)
+  note Speak with Turak Runetotem on the Elder Rise of Thunder Bluff.
+  talk Turak Runetotem##3033
+  turnin Heeding the Call##5927 |goto Thunder Bluff 76.48,27.22 |tip {turninat}Thunder Bluff
 step
   only Tauren Hunter not completed(6065) not completed(6066) not haveq(6065) not haveq(6066)
   note Speak with Yaw Sharpmane in Bloodhoof Village.

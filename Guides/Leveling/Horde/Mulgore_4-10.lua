@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Mulgore (4-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "6373c007",
+	rev = "95a85727",
 }, [[
 step
   only level>=1
@@ -575,19 +575,16 @@ step
   talk Eyahn Eagletalon##2987
   accept Preparation for Ceremony##744 |goto Thunder Bluff 37.75,59.57
 step
-  talk Boarton Shadetotem##205729
-  accept Stalk With The Earthmother##76156 |goto Thunder Bluff 39.44,65.82
-step
-  note Purchase a Bundle of Herbs from Nida the herbalist, a Bundle of Ceder Twigs from Nata the enchanting supplier, and Sinew Thread from Mahu the leatherworking supplier and Ceremonial Flint and Tinder from Naal the cooking supplier.
-  click Incense Burner##665373 |q 97485 |goto Thunder Bluff 53.02,87.84
+  only not completed(844) not haveq(844)
+  talk Melor Stonehoof##3441
+  turnin The Hunter's Way##861 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
 step
   only Tauren Hunter not completed(6066) not completed(6067) not haveq(6066) not haveq(6067)
   talk Kary Thunderhorn##3038
   accept The Hunter's Path##6065 |goto Thunder Bluff 58.49,88.33
 step
-  only not completed(844) not haveq(844)
-  talk Melor Stonehoof##3441
-  turnin The Hunter's Way##861 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
+  note Purchase a Bundle of Herbs from Nida the herbalist, a Bundle of Ceder Twigs from Nata the enchanting supplier, and Sinew Thread from Mahu the leatherworking supplier and Ceremonial Flint and Tinder from Naal the cooking supplier.
+  click Incense Burner##665373 |q 97485 |goto Thunder Bluff 53.02,87.84
 step
   talk Eylah Sunhorn##269068
   turnin Traditions of the Bluff##97485 |goto Thunder Bluff 38,55.9 |tip {turninat}Thunder Bluff
@@ -672,21 +669,12 @@ step
   talk Yaw Sharpmane##3065
   accept Training the Beast##6089 |goto Mulgore 46.93,59.65
 step
-  note Sneak into the Venture Company mine southeast of Thunder Bluff and collect 5 Seaforium Mining Charges from carts of blasting supplies, then return them to Boarton Shadetotem in Thunder Bluff.
-  collect 5 Seaforium Mining Charge##206157 |q 76156 |goto Mulgore 59.5,49 |tip {dropsfrom}Blasting Supplies
-step
   note Cairne Bloodhoof in Thunder Bluff wants you to bring him the Horn of Arra'chea.
   collect Horn of Arra'chea##4841 |q 776 |goto Mulgore 51.25,24.82 |tip {dropsfrom}Arra'chea
 step
   note Collect 6 Azure Feathers and 6 Bronze Feathers, and bring them to Eyahn Eagletalon in Thunder Bluff.
   collect 6 Bronze Feather##4753 |q 744/2 |goto Mulgore 36.38,23.86 |tip {dropsfrom}Windfury Matriarch
   collect 6 Azure Feather##4752 |q 744 |goto Mulgore 36.23,24.57 |tip {dropsfrom}Windfury Sorceress
-step
-  talk Boarton Shadetotem##205729
-  turnin Stalk With The Earthmother##76156 |goto Thunder Bluff 39.44,65.82 |tip {turninat}Thunder Bluff
-step
-  talk Boarton Shadetotem##205729
-  accept Stalk With The Earthmother##76160 |goto Thunder Bluff 39.44,65.82
 step
   talk Eyahn Eagletalon##2987
   turnin Preparation for Ceremony##744 |goto Thunder Bluff 37.75,59.57 |tip {turninat}Thunder Bluff
@@ -713,12 +701,6 @@ step
   note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##5922 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
-step
-  note Gather 8 Windfury Cones north of Thunder Bluff, use them with the Mortar and Pestle, then return to Boarton Shadetotem in Thunder Bluff with the result.
-  collect 8 Pine Salve##206175 |q 76160 |goto Mulgore 36.23,24.57
-step
-  talk Boarton Shadetotem##205729
-  turnin Stalk With The Earthmother##76160 |goto Thunder Bluff 39.44,65.82 |tip {turninat}Thunder Bluff
 step
   only Warrior not completed(1819) not haveq(1819)
   note Speak with Uzzek at Far Watch Post.

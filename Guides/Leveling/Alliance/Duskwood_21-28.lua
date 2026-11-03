@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (21-29)",
-	rev = "e3acb905",
+	rev = "61d281e8",
 }, [[
 step
   ding 20
@@ -126,6 +126,7 @@ step
   talk Viktori Prism'Antras##276
   accept Look To The Stars##174 |goto Duskwood 79.8,48.02
 step
+  only hasitem(2794)
   kill Flesh Eater##3 |goto Duskwood 23.81,39.21 |tip Loot the quest item here — it starts the quest.
   accept An Old History Book##337 |goto Duskwood 23.81,39.21
 step
@@ -361,6 +362,7 @@ step
   talk Viktori Prism'Antras##276
   turnin Look To The Stars##177 |goto Duskwood 79.8,48.02
 step
+  only haveq(337)
   note Return the book: The History of Stormwind, to the Stormwind Library.
   talk Milton Sheaf##1440
   turnin An Old History Book##337 |goto Stormwind City 77.07,30.21 |tip {turninat}Stormwind City

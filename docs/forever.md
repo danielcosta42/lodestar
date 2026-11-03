@@ -55,10 +55,16 @@ quebrariam guias sem nenhum validador acusar:
   da ilha. O `build_intermediate.py` zera o sentinela.
 - **Library Books.** O banco passou a listar o objeto do livro como quem dá a quest, mas o livro é um
   item: a quest só abre no bibliotecário de Undercity ou Stormwind, com ele na bolsa. O `accept` no
-  objeto nunca completa e o guia para ali. Sem XP, os livros ficam fora de todo guia. Mesmo cuidado com
-  as quests do Season of Discovery sem classe no banco (`The Horn of Xelthos`, de ladino).
+  objeto nunca completa e o guia para ali. Sem XP, os livros ficam fora de todo guia.
+- **Season of Discovery.** As quests de lá (ids 76000-85999) estão no cliente, mas sem classe no banco:
+  a caça de ladino (`Stepping Stones`, `Scramble`) mandava todo mundo clicar num objeto que não dá
+  nada, e já estava na v2.7.2. Sem classe, essa faixa sai do leveling; dos 86000 em diante é Forever.
+- **Drop raro.** Quest que começa por item que cai de vários mobs agora tem `only hasitem(...)`: o
+  passo esperava o drop (`Crystal in the Mountains` cai de 287 mobs). O item de um mob só, o chefe, é
+  certo e continua com passo.
 
-Quando o banco trouxer campo novo, confira as quests que **entram**, não só as que saem: `validate_guides`
+Parado num objeto, o guia não sai sozinho: o `skipIfUnavailable` só age no gossip de NPC. Quando o
+banco trouxer campo novo, confira as quests que **entram**, não só as que saem: `validate_guides`
 aprova objeto como quem dá a quest.
 
 ## De onde vêm as rotas
@@ -376,14 +382,13 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 
 | | |
 |---|---|
-| Guias | 194 (86 de leveling, 108 especiais) |
-| Quests distintas em guia | 3710 |
-| Quests novas do Forever em guia | **532 de 993** |
+| Guias | 193 (85 de leveling, 108 especiais) |
+| Quests novas do Forever em guia | **513 de 995** |
 | — fora: entrega de Craftsman's Writ | 150 |
-| — fora: começam por item ou giver sem posição | 145 |
-| — fora: exigem profissão | 86 |
-| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão...) | 51 |
-| — fora: evento/repetível/campo de batalha | 29 |
+| — fora: começam por item ou giver sem posição | 110 |
+| — fora: exigem profissão | 90 |
+| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão, Library Books, Season of Discovery...) | 95 |
+| — fora: evento/repetível/campo de batalha | 37 |
 | `validate_guides.py` — ocorrências | **0** (antes da revisão: 10 bloqueios, 244 pré-req ausentes) |
 | Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos, toda raça×classe |
 | `guide_integrity.py` — passo sem coordenada | 79: item de quest que o banco não sabe de onde vem (páginas de Green Hills of Stranglethorn, Stolen Weapon), sem seta em vez da de quem deu a quest; material de profissão e tecido saem sem seta de propósito, com a dica, e não contam |

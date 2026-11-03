@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (30-35)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Hillsbrad Foothills (29-32)",
-	rev = "289f4650",
+	rev = "a57d277e",
 }, [[
 step
   ding 29
@@ -24,10 +24,6 @@ step
   only Warrior completed(1708)
   talk Klockmort Spannerspan##6169
   accept Klockmort's Creation##1709 |goto Ironforge 67.92,46.1
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Katherine the Pure##5492
-  accept A Second Opinion##78090 |goto Stormwind City 48.48,49.09
 step
   only completed(133)
   talk Abercrombie##289
@@ -237,11 +233,6 @@ step
 step
   talk Zardeth of the Black Claw##1435
   accept A Noble Brew##336 |goto Stormwind City 40.14,85.31
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Find the warlock sanctum within Stormwind and seek advice on the orb.
-  talk Ursula Deline##5495
-  turnin A Second Opinion##78090 |goto Stormwind City 39.89,84.19 |tip {turninat}Stormwind City
 step
   only completed(1243)
   note Bring the Defias Docket to Elling Trias in Stormwind.

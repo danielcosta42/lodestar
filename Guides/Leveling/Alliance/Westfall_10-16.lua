@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Westfall (10-16)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dun Morogh (13-26)",
-	rev = "46373de2",
+	rev = "00fe7466",
 }, [[
 step
   ding 9
@@ -205,30 +205,38 @@ step
   note Bring 5 Flasks of Oil to Captain Grayson at the Westfall Lighthouse.
   collect 5 Flask of Oil##814 |q 103 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Rusty Harvest Golem
 step
+  only hasitem(1357)
   kill Murloc Coastrunner##126 |goto Westfall 45.02,8.89 |tip Loot the quest item here — it starts the quest.
   accept Captain Sander's Hidden Treasure##136 |goto Westfall 45.02,8.89
 step
+  only haveq(136)
   note Find Captain Sanders' footlocker and search it for the next clue.
   turnin Captain Sander's Hidden Treasure##136 |goto Westfall 25.91,47.75
 step
+  only completed(136)
   click Captain's Footlocker##35
   accept Captain Sander's Hidden Treasure##138 |goto Westfall 25.91,47.75
 step
+  only haveq(138)
   note Find the old barrel near the ruined chimney and search it for your next clue.
   turnin Captain Sander's Hidden Treasure##138 |goto Westfall 40.52,47.79
 step
+  only completed(138)
   click Broken Barrel##36
   accept Captain Sander's Hidden Treasure##139 |goto Westfall 40.52,47.79
 step
   talk Captain Grayson##392
   turnin Keeper of the Flame##103 |goto Westfall 30.01,86.02
 step
+  only haveq(139)
   note Search the empty jug next to the windmill for the next clue.
   turnin Captain Sander's Hidden Treasure##139 |goto Westfall 40.63,17.03
 step
+  only completed(139)
   click Old Jug##34
   accept Captain Sander's Hidden Treasure##140 |goto Westfall 40.63,17.03
 step
+  only haveq(140)
   note Locate Captain Sanders' chest and open it for your reward.
   turnin Captain Sander's Hidden Treasure##140 |goto Westfall 25.97,16.91
 step

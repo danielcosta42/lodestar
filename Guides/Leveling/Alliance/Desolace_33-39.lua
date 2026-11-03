@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Desolace (33-39)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Alterac Mountains (33-40)",
-	rev = "6a28b5d8",
+	next = "Leveling/Alliance/Hillsbrad Foothills (33-38)",
+	rev = "3d1885aa",
 }, [[
 step
   ding 32
@@ -354,6 +354,6 @@ step
   talk Nerlokh##253177
   turnin Ravaging Ravagers##93035 |goto Shen'dralas 21.2,23.2 |tip {turninat}Shen'dralas
 step
-  note {travel}Alterac Mountains
-  goto Alterac Mountains 58.32,67.92
+  note {travel}Hillsbrad Foothills
+  goto Hillsbrad Foothills 48.14,59.11
 ]])

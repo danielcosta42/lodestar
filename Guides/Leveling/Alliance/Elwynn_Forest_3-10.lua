@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (3-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Westfall (10-16)",
-	rev = "733efbb3",
+	rev = "8647372d",
 }, [[
 step
   only level>=1
@@ -86,6 +86,7 @@ step
   talk Milly Osworth##9296
   turnin Milly Osworth##3903 |goto Elwynn Forest 50.69,39.35
 step
+  only hasitem(247834)
   kill Kobold Vermin##6 |goto Elwynn Forest 49.17,36.55 |tip Loot the quest item here — it starts the quest.
   accept Nibbled-On Book##91741 |goto Elwynn Forest 49.17,36.55
 step
@@ -97,6 +98,7 @@ step
   talk Marshal McBride##197
   turnin Kobold Camp Cleanup##7 |goto Elwynn Forest 48.92,41.61
 step
+  only haveq(91741)
   note Return the book to Brother Paxton.
   talk Brother Paxton##951
   turnin Nibbled-On Book##91741 |goto Elwynn Forest 49.61,40.41
@@ -129,6 +131,7 @@ step
   talk Marshal McBride##197
   accept Tainted Letter##3105 |goto Elwynn Forest 48.92,41.61
 step
+  only completed(91741)
   talk Brother Paxton##951
   accept Book Inventory##92124 |goto Elwynn Forest 49.61,40.41
 step
@@ -166,6 +169,7 @@ step
   talk Drusilla La Salle##459
   turnin Tainted Letter##3105 |goto Elwynn Forest 49.87,42.65
 step
+  only haveq(92124)
   note Speak to Daniel, Brother Paxton's assistant in the library.
   talk Daniel##247229
   turnin Book Inventory##92124 |goto Elwynn Forest 49.48,40.67
@@ -175,6 +179,7 @@ step
   talk Tordrin Sternblade##248415
   turnin A Scribbled Letter##92479 |goto Elwynn Forest 51.21,40.8
 step
+  only completed(92124)
   talk Brother Paxton##951
   accept Rascally Rodents##91743 |goto Elwynn Forest 49.61,40.41
 step
@@ -182,6 +187,7 @@ step
   note Kill 10 Kobold Workers, then report back to Marshal McBride.
   kill Kobold Worker##257 |q 15 |goto Elwynn Forest 48.09,34.03
 step
+  only haveq(91743)
   note Retrieve 8 Stolen Books from kobolds in Northshire Valley and return them to Brother Paxton.
   collect 8 Stolen Book##247839 |q 91743 |goto Elwynn Forest 49.17,36.55 |tip {dropsfrom}Kobold Vermin, Kobold Worker, Kobold Laborer
 step
@@ -189,9 +195,11 @@ step
   talk Marshal McBride##197
   turnin Investigate Echo Ridge##15 |goto Elwynn Forest 48.92,41.61
 step
+  only haveq(91743)
   talk Brother Paxton##951
   turnin Rascally Rodents##91743 |goto Elwynn Forest 49.61,40.41
 step
+  only completed(91743)
   talk Brother Paxton##951
   accept Mining Consultant##91745 |goto Elwynn Forest 49.61,40.41
 step
@@ -199,10 +207,12 @@ step
   talk Marshal McBride##197
   accept Skirmish at Echo Ridge##21 |goto Elwynn Forest 48.92,41.61
 step
+  only haveq(91745)
   note Talk to Kelsey Fargo outside the Echo Ridge Mine in Northshire Valley.
   talk Kelsey Fargo##247226
   turnin Mining Consultant##91745 |goto Elwynn Forest 47.18,32.16
 step
+  only completed(91745)
   talk Kelsey Fargo##247226
   accept The Big Picture##91752 |goto Elwynn Forest 47.18,32.16
 step
@@ -210,6 +220,7 @@ step
   note Kill 12 Kobold Laborers, then return to Marshal McBride at Northshire Abbey.
   kill Kobold Laborer##80 |q 21 |goto Elwynn Forest 48.47,28.05
 step
+  only haveq(91752)
   note Retrieve a Sack of "Picture" Books from Shinyfinder Narf. Bring the sack to Marshal McBride just inside Northshire's Abbey.
   kill Shinyfinder Narf##248362 |q 91752 |goto Elwynn Forest 49.22,28.01 |elite
   collect Sack of "Picture" Books##247886 |q 91752 |goto Elwynn Forest 49.22,28.01
@@ -218,9 +229,11 @@ step
   talk Marshal McBride##197
   turnin Skirmish at Echo Ridge##21 |goto Elwynn Forest 48.92,41.61
 step
+  only haveq(91752)
   talk Marshal McBride##197
   turnin The Big Picture##91752 |goto Elwynn Forest 48.92,41.61
 step
+  only completed(91752)
   talk Marshal McBride##197
   accept Follow That Kobold!##91758 |goto Elwynn Forest 48.92,41.61
 step
@@ -236,10 +249,12 @@ step
   talk Priestess Anetta##375
   accept In Favor of the Light##5623 |goto Elwynn Forest 49.81,39.49
 step
+  only haveq(91758)
   note Speak to Tordrin Sternblade near the stable behind Northshire's Abbey.
   talk Tordrin Sternblade##248415
   turnin Follow That Kobold!##91758 |goto Elwynn Forest 51.21,40.8
 step
+  only completed(91758)
   talk Tordrin Sternblade##248415
   accept Shhh! We're Hunting Kobolds##91772 |goto Elwynn Forest 51.21,40.8
 step
@@ -271,6 +286,7 @@ step
   talk Jason Mathers##383
   accept A Net Disaster##99127 |goto Elwynn Forest 47.46,62.18
 step
+  only haveq(91772)
   note Follow the kobold tracks and report to Marshal Dughan in Goldshire with your findings and the Kobold Tracking Kit.
   click Kobold Tracks##563442 |q 91772 |goto Elwynn Forest 45.76,56.45
 step
@@ -288,6 +304,7 @@ step
   talk Priestess Josetta##377
   turnin In Favor of the Light##5623 |goto Elwynn Forest 43.28,65.72
 step
+  only haveq(91772)
   talk Marshal Dughan##240
   turnin Shhh! We're Hunting Kobolds##91772 |goto Elwynn Forest 42.11,65.93
 step
@@ -296,7 +313,7 @@ step
   talk Sam Sarsaparilla##263399
   turnin The Adventurer##96627 |goto Elwynn Forest 44.9,63.36
 step
-  only level>=6
+  only completed(91772) level>=6
   talk Marshal Dughan##240
   accept Book Return##91775 |goto Elwynn Forest 42.11,65.93
 step
@@ -491,6 +508,7 @@ step
   note Bring Bernice's Necklace to "Auntie" Bernice Stonefield at the Stonefield Farm.
   collect Bernice's Necklace##981 |q 87 |goto Elwynn Forest 41.71,78.03 |tip {dropsfrom}Goldtooth
 step
+  only hasitem(1972)
   kill Defias Bandit##116 |goto Elwynn Forest 47.48,74.13 |tip Loot the quest item here — it starts the quest.
   accept Furlbrow's Deed##184 |goto Elwynn Forest 47.48,74.13
 step
@@ -521,6 +539,7 @@ step
   talk Brother Paxton##951
   turnin Rare Books##91777 |goto Elwynn Forest 49.61,40.41
 step
+  only hasitem(1307)
   kill Riverpaw Runt##97 |goto Elwynn Forest 67.83,46.44 |tip Loot the quest item here — it starts the quest.
   accept The Collector##123 |goto Elwynn Forest 67.83,46.44
 step
@@ -639,6 +658,7 @@ step
   talk Marshal Dughan##240
   turnin The Jasperlode Mine##76 |goto Elwynn Forest 42.11,65.93
 step
+  only haveq(123)
   note Go to Marshal Dughan in Goldshire and give him The Collector's Schedule.
   talk Marshal Dughan##240
   turnin The Collector##123 |goto Elwynn Forest 42.11,65.93
@@ -651,6 +671,7 @@ step
   talk Marshal Dughan##240
   accept Cloth and Leather Armor##59 |goto Elwynn Forest 42.11,65.93
 step
+  only completed(123)
   talk Marshal Dughan##240
   accept Manhunt##147 |goto Elwynn Forest 42.11,65.93
 step
@@ -759,6 +780,7 @@ step
   note Kill Princess, grab her collar, then bring it back to Ma Stonefield at the Stonefield Farm.
   collect Brass Collar##1006 |q 88 |goto Elwynn Forest 69.66,79.25 |tip {dropsfrom}Princess
 step
+  only haveq(147)
   note Find and kill "the Collector" then return to Marshal Dughan with The Collector's Ring.
   collect The Collector's Ring##2239 |q 147 |goto Elwynn Forest 71.09,80.65 |tip {dropsfrom}Morgan the Collector
 step
@@ -769,6 +791,7 @@ step
   note Use the Taming Rod to tame a Gray Forest Wolf. Practice your skills, then return the Taming Rod to Josephine Carson.
   use Gray Forest Wolf##1922 |q 94863 |goto Elwynn Forest 65.11,64.36 |tip {useit}
 step
+  only haveq(147)
   talk Marshal Dughan##240
   turnin Manhunt##147 |goto Elwynn Forest 42.11,65.93
 step
@@ -976,6 +999,7 @@ step
   talk Gryan Stoutmantle##234
   turnin Report to Gryan Stoutmantle##109 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
 step
+  only haveq(184)
   note Bring Furlbrow's Deed to Farmer Furlbrow.
   talk Farmer Furlbrow##237
   turnin Furlbrow's Deed##184 |goto Westfall 59.95,19.36 |tip {turninat}Westfall

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-24)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Darkshore (13-20)",
-	rev = "bc220a79",
+	rev = "63d55533",
 }, [[
 step
   ding 14
@@ -226,6 +226,7 @@ step
   kill Blackrock Shadowcaster##436 |q 115 |goto Redridge Mountains 63.08,54.64 |elite
   collect 3 Midnight Orb##1261 |q 115 |goto Redridge Mountains 63.08,54.64
 step
+  only hasitem(1962)
   kill Shadowhide Darkweaver##429 |goto Redridge Mountains 75.2,49.48 |tip Loot the quest item here — it starts the quest.
   accept Theocritus' Retrieval##178 |goto Redridge Mountains 75.2,49.48
 step
@@ -389,10 +390,6 @@ step
   talk High Priestess Laurena##376
   accept Contingency Plan##94819 |goto Stormwind City 49.53,44.6
 step
-  only not NightElf not Gnome not Skyborne Paladin level>=22
-  talk Ursula Deline##5495
-  accept Earning Your Salt##78091 |goto Stormwind City 39.89,84.19
-step
   only Warlock completed(1738) level>=20
   talk Gakin the Darkbinder##6122
   accept The Binding##1739 |goto Stormwind City 39.22,85.23
@@ -422,6 +419,7 @@ step
   talk Smith Argus##514
   turnin The Price of Shoes##118 |goto Elwynn Forest 41.71,65.54 |tip {turninat}Elwynn Forest
 step
+  only haveq(178)
   note Bring the Faded Shadowhide Pendant to Theocritus the Mage.
   talk Theocritus##313
   turnin Theocritus' Retrieval##178 |goto Elwynn Forest 65.22,69.71 |tip {turninat}Elwynn Forest
@@ -456,10 +454,6 @@ step
   only Rogue
   talk Lucius##6966
   turnin Alther's Mill##2282 |goto Redridge Mountains 22.97,52.04
-step
-  only not NightElf not Gnome not Skyborne Paladin haveq(78091)
-  note Collect 14 Summoner's Salt from Blackrock Summoners in Redridge Mountains, then return to Ursula Deline in Stormwind.
-  collect 14 Summoner's Salt##209778 |q 78091 |goto Redridge Mountains 24.25,12.05 |tip {dropsfrom}Blackrock Champion, Gath'Ilzogg, Blackrock Shadowcaster
 step
   only level>=19
   talk Mountaineer Kadrell##1340
@@ -526,15 +520,6 @@ step
   talk Norric Lochthane##258043
   turnin Call of Water##94494 |goto Loch Modan 41.76,19.05 |tip {turninat}Loch Modan
 step
-  only not NightElf not Gnome not Skyborne Paladin haveq(78091)
-  talk Ursula Deline##5495
-  turnin Earning Your Salt##78091 |goto Stormwind City 39.89,84.19 |tip {turninat}Stormwind City
-step
-  only Warrior haveq(1702)
-  note Bring the Cask of Scalder to Furen Longbeard.
-  talk Furen Longbeard##5413
-  turnin The Shieldsmith##1702 |goto Stormwind City 64.62,37.23 |tip {turninat}Stormwind City
-step
   only completed(65) haveq(132)
   note Take Wiley's Note to Gryan Stoutmantle in Westfall.
   talk Gryan Stoutmantle##234
@@ -570,6 +555,11 @@ step
   only completed(65) completed(135)
   talk Master Mathias Shaw##332
   accept The Defias Brotherhood##141 |goto Stormwind City 78.31,70.74
+step
+  only Warrior haveq(1702)
+  note Bring the Cask of Scalder to Furen Longbeard.
+  talk Furen Longbeard##5413
+  turnin The Shieldsmith##1702 |goto Stormwind City 64.62,37.23 |tip {turninat}Stormwind City
 step
   only haveq(144)
   note Return to Magistrate Solomon with Gryan Stoutmantle's response.

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dun Morogh (4-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Westfall (10-16)",
-	rev = "6a5507bf",
+	rev = "463c0851",
 }, [[
 step
   only level>=1
@@ -497,21 +497,25 @@ step
   talk Rudra Amberstill##1265
   accept Never Saddle on Quality##95212 |goto Dun Morogh 63.08,49.85
 step
+  only hasitem(268548)
   kill Rockjaw Ambusher##1116 |goto Dun Morogh 73.41,55.08 |tip Loot the quest item here — it starts the quest.
   accept Stolen Blasting Powder##95213 |goto Dun Morogh 73.41,55.08
 step
   note Collect 6 Pristine Leopard Pelts and deliver them to Amberstill Ranch.
   collect 6 Pristine Leopard Pelt##267414 |q 95212 |goto Dun Morogh 75.89,56.59 |tip {dropsfrom}Elder Snow Leopard
 step
+  only haveq(95213)
   note Bring the Empty Powder Keg to Quarrymaster Thesten at Gol'Bolar Quarry.
   collect Empty Powder Keg##268548 |q 95213 |goto Dun Morogh 73.41,55.08 |tip {dropsfrom}Rockjaw Ambusher, Rockjaw Skullthumper, Rockjaw Bonesnapper
 step
+  only haveq(95213)
   talk Quarrymaster Thesten##1256
   turnin Stolen Blasting Powder##95213 |goto Dun Morogh 69.16,54.8
 step
   talk Foreman Stonebrow##1254
   accept Those Blasted Troggs!##432 |goto Dun Morogh 69.08,56.33
 step
+  only completed(95213)
   talk Quarrymaster Thesten##1256
   accept Stolen Blasting Powder##95214 |goto Dun Morogh 69.16,54.8
 step
@@ -521,9 +525,11 @@ step
   talk Foreman Stonebrow##1254
   turnin Those Blasted Troggs!##432 |goto Dun Morogh 69.08,56.33
 step
+  only haveq(95214)
   note Recover 16 Stolen Blasting Powder from the troggs east of Gol'Bolar Quarry, then return to Quarrymaster Thesten.
   collect 16 Stolen Blasting Powder##267415 |q 95214 |goto Dun Morogh 73.41,55.08 |tip {dropsfrom}Rockjaw Ambusher, Rockjaw Backbreaker
 step
+  only haveq(95214)
   talk Quarrymaster Thesten##1256
   turnin Stolen Blasting Powder##95214 |goto Dun Morogh 69.16,54.8
 step

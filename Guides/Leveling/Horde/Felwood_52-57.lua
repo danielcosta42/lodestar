@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Felwood (52-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Moonglade (55-60)",
-	rev = "b1923eed",
+	rev = "1b266b33",
 }, [[
 step
   ding 51
@@ -118,6 +118,7 @@ step
   talk Impsy##14470
   accept The Wrong Stuff##8421 |goto Felwood 41.36,45.02
 step
+  only hasitem(13140)
   kill Jaedenar Enforcer##7114 |goto Felwood 39.65,49.47 |tip Loot the quest item here — it starts the quest.
   accept A Strange Red Key##5202 |goto Felwood 39.65,49.47
 step
@@ -139,6 +140,7 @@ step
   talk Nafien##15395
   accept Deadwood of the North##8461 |goto Felwood 64.77,8.13
 step
+  only hasitem(20741)
   kill Deadwood Den Watcher##7156 |goto Felwood 62.76,8.01 |tip Loot the quest item here — it starts the quest.
   accept Deadwood Ritual Totem##8470 |goto Felwood 62.76,8.01
 step
@@ -150,6 +152,7 @@ step
   talk Nafien##15395
   turnin Deadwood of the North##8461 |goto Felwood 64.77,8.13
 step
+  only haveq(8470)
   note Take the Deadwood Ritual Totem inside Timbermaw Hold and see if one of the furbolgs there will find a use for the item. The Timbermaw will not speak with you unless you are of Neutral reputation or greater with them.
   talk Kernda##11558
   turnin Deadwood Ritual Totem##8470 |goto Felwood 65.5,3.52
@@ -176,6 +179,7 @@ step
 step
   collect Corrupted Soul Shard##11515 |q 5887 |goto Felwood 40.17,70.82 |tip {dropsfrom}Cursed Ooze, Tainted Ooze, Vile Ooze
 step
+  only haveq(5202)
   note Search through Jaedenar to discover what the Blood Red Key is used for.
   talk Captured Arko'narin##11016
   turnin A Strange Red Key##5202 |goto Felwood 36.21,55.47
@@ -184,30 +188,38 @@ step
   talk Trull Failbane##10306
   accept Wild Guardians##4521 |goto Felwood 34.73,52.79
 step
+  only completed(5202)
   talk Captured Arko'narin##11016
   accept Rescue From Jaedenar##5203 |goto Felwood 36.21,55.47
 step
+  only haveq(5203)
   note Escort Arko'narin to where Lightforge and her equipment are being held, and then protect her as you escape Shadow Hold. Afterwards, seek out Jessir Moonbow in Felwood to let her know what's happened to her friends.
   goto Felwood 35.45,59.06 |tip Protect Arko'narin out of Shadow Hold
 step
+  only haveq(5203)
   talk Jessir Moonbow##11019
   turnin Rescue From Jaedenar##5203 |goto Felwood 51.35,82.01
 step
   talk Maybess Riverbreeze##9529
   turnin Salve via Hunting##5887 |goto Felwood 46.75,83.13
 step
+  only completed(5203)
   talk Jessir Moonbow##11019
   accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
 step
+  only haveq(5204)
   note Return to Jaedenar and kill the succubus Rakaiah before finding the Remains of Trey Lightforge.
   kill Rakaiah##9518 |q 5204 |goto Felwood 38.3,50.51
 step
+  only haveq(5204)
   talk Remains of Trey Lightforge##11020
   turnin Retribution of the Light##5204 |goto Felwood 38.5,50.41
 step
+  only completed(5204)
   talk Remains of Trey Lightforge##11020
   accept The Remains of Trey Lightforge##5385 |goto Felwood 38.5,50.41
 step
+  only haveq(5385)
   note Return the Remains of Trey Lightforge to Jessir Moonbow in Felwood.
   talk Jessir Moonbow##11019
   turnin The Remains of Trey Lightforge##5385 |goto Felwood 51.35,82.01

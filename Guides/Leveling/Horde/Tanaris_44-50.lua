@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tanaris (44-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (43-50)",
-	rev = "edfd03b2",
+	rev = "ae7c4fa7",
 }, [[
 step
   ding 43
@@ -135,9 +135,11 @@ step
   talk Senior Surveyor Fizzledowser##7724
   accept The Scrimshank Redemption##10 |goto Tanaris 50.21,27.48
 step
+  only hasitem(8623)
   kill Glasshide Basilisk##5419 |goto Tanaris 45.64,32.27 |tip Loot the quest item here — it starts the quest.
   accept Find OOX-17/TN!##351 |goto Tanaris 45.64,32.27
 step
+  only haveq(351)
   note Bring the distress beacon to Oglethorpe's homing robot.
   talk Homing Robot OOX-17/TN##7784
   turnin Find OOX-17/TN!##351 |goto Tanaris 60.23,64.72

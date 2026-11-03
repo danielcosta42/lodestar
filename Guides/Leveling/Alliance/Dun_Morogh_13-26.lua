@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dun Morogh (13-26)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (11-18)",
-	rev = "dbcf0447",
+	rev = "26ff6860",
 }, [[
 step
   ding 12
@@ -66,6 +66,7 @@ step
   talk Earthseer Farsen##264936
   accept Nip 'Em in the Bud##96390 |goto Dun Morogh 64.87,58.47
 step
+  only hasitem(274268)
   kill Dark Iron Spy##6123 |goto Dun Morogh 77.36,61.31 |tip Loot the quest item here — it starts the quest.
   accept Underground Map##96391 |goto Dun Morogh 77.36,61.31
 step
@@ -75,6 +76,7 @@ step
   talk Earthseer Farsen##264936
   turnin Nip 'Em in the Bud##96390 |goto Dun Morogh 64.87,58.47
 step
+  only haveq(96391)
   note Deliver the Dark Iron Map to Earthseer Farsen in Dun Morogh.
   talk Earthseer Farsen##264936
   turnin Underground Map##96391 |goto Dun Morogh 64.87,58.47

@@ -7,7 +7,7 @@
     <Script file="Alliance/Westfall_10-16.lua"/>
     <Script file="Alliance/Loch_Modan_11-18.lua"/>
     <Script file="Alliance/Darkshore_13-20.lua"/>
-    <Script file="Alliance/The_Barrens_14-21.lua"/>
+    <Script file="Alliance/The_Barrens_14-20.lua"/>
     <Script file="Alliance/Redridge_Mountains_15-24.lua"/>
     <Script file="Alliance/Stonetalon_Mountains_21-27.lua"/>
     <Script file="Alliance/Elwynn_Forest_21-28.lua"/>
@@ -20,8 +20,8 @@
     <Script file="Alliance/Wetlands_30-33.lua"/>
     <Script file="Alliance/Thousand_Needles_30-41.lua"/>
     <Script file="Alliance/Dustwallow_Marsh_35-38.lua"/>
-    <Script file="Alliance/Hillsbrad_Foothills_33-40.lua"/>
-    <Script file="Alliance/Alterac_Mountains_33-40.lua"/>
+    <Script file="Alliance/Hillsbrad_Foothills_33-38.lua"/>
+    <Script file="Alliance/Alterac_Mountains_34-40.lua"/>
     <Script file="Alliance/Stranglethorn_Vale_32-40.lua"/>
     <Script file="Alliance/Swamp_of_Sorrows_35-42.lua"/>
     <Script file="Alliance/Loch_Modan_20-38.lua"/>

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Loch Modan (20-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Arathi Highlands (31-40)",
-	rev = "0e6fac67",
+	next = "Leveling/Alliance/Swamp of Sorrows (35-42)",
+	rev = "053d1c96",
 }, [[
 step
   ding 16
@@ -74,9 +74,6 @@ step
   talk Magistrate Bluntnose##1139
   turnin WANTED: Chok'sul##256 |goto Loch Modan 34.6,44.47
 step
-  click Carved Figurine##424007
-  accept Eagle's Fist##79975 |goto Loch Modan 49.44,12.87
-step
   only level>=36
   talk Ghak Healtouch##1470
   accept Badlands Reagent Run##2500 |goto Loch Modan 37.07,49.38
@@ -133,9 +130,6 @@ step
   talk Ghak Healtouch##1470
   turnin Uldaman Reagent Run##17 |goto Loch Modan 37.07,49.38
 step
-  note Water spray dampens the air, the view is incredible.
-  turnin Eagle's Fist##79975 |goto Arathi Highlands 22.48,24.19 |tip {turninat}Arathi Highlands
-step
-  note {travel}Arathi Highlands
-  goto Arathi Highlands 44.29,92.88
+  note {travel}Swamp of Sorrows
+  goto Swamp of Sorrows 25.98,31.4
 ]])

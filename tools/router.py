@@ -229,8 +229,13 @@ OBJETIVO_ANTES = {
 # (na Horda, Ravaging Ravagers e Khan Jehn não iam a guia nenhum)
 ZONA_MAE = {16651: 405}
 # Fora do leveling por nome: Arena Master começa no baú do evento de PvP da arena de Gurubashi;
-# The Horn of Xelthos e Goblin Lockpicks são de ladino do Season of Discovery, sem classe no banco
-FORA_QUESTS = {7810, 78261, 78270}
+# 78089-78093 e 78676 são as cadeias de paladino e ladino do Season of Discovery que terminam em
+# objeto; Starving Arcane é de masmorra, e o giver novo em Alterac a trazia para a rota principal
+FORA_QUESTS = {7810, 78089, 78090, 78091, 78092, 78093, 78676, 92457}
+# Season of Discovery: as quests de lá estão no cliente, mas sem classe no banco. Runa de ladino,
+# Dragonslayer's: o guia mandava todo mundo clicar num objeto que não dá nada e parava ali. Só esta
+# faixa: dos 86000 em diante é conteúdo do Forever, e os Library Books caem aqui também.
+SEASON_OF_DISCOVERY = range(76000, 86000)
 # e as "Legacy Reward" (brinde de conta: sem texto nem objetivo, só para quem tem direito)
 FORA_NOME = re.compile(r"^Legacy Reward:")
 # Livros da biblioteca: o objeto no mundo dá um item, e a quest só abre no bibliotecário com o livro
@@ -467,7 +472,7 @@ class Router:
                          for e in q["endNpcs"] for z, pts in ((self.npc(e) or {}).get("spawns") or {}).items()):
                 self.quests[k] = dict(q, trigger=None)
         for k, q in self.quests.items():
-            if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or "") or set(q["startNpcs"]) & BIBLIOTECARIOS                     or (q["startObjects"] and q["startNpcs"] and set(q["startNpcs"]) <= TREINADORES_DE_LIVRO):
+            if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or "") or set(q["startNpcs"]) & BIBLIOTECARIOS                     or (q["startObjects"] and q["startNpcs"] and set(q["startNpcs"]) <= TREINADORES_DE_LIVRO)                     or (int(k) in SEASON_OF_DISCOVERY and not q["classes"]):
                 self.quests[k] = dict(q, fora=True)
         # Tarefa sem objetivo no banco: o alvo pelo nome no texto ("slay 6 Undead
         # Ravagers", "slay Outcast Necromancers"), ou da tabela; sem ele, o passo de fazer
@@ -1988,6 +1993,13 @@ class Router:
             # saía sem portão para quem tinha 34,99 no fim de Dustwallow — a conta passava por 7 mil
             if req > min(nivel_por_xp(ini, real.xp) - XP_FOLGA, teto):
                 marca(qid, "level>=%d" % req)
+            # o item que começa a quest cai de vários mobs: drop raro, e o passo ficava esperando
+            # (Crystal in the Mountains cai de 287). Só vê a quest quem já tem o item; de um mob só
+            # (o chefe, Sharptalon) é certo e o passo fica
+            if info[qid].get("giver_kind") == "item" and info[qid].get("item_verb") == "kill":
+                iid = sel[qid]["startItems"][0]
+                if len((self.items.get(str(iid)) or {}).get("npc") or []) > 1:
+                    marca(qid, "hasitem(%d)" % iid)
 
         aceitas = []                         # na ordem do guia: o `ding` da entrada olha as primeiras
         # (pré-requisito de qualquer quest do banco, não só deste guia: a de outro guia que
@@ -2721,6 +2733,13 @@ def demo():
     # livro da biblioteca não é rota: o `accept` no objeto nunca completa
     assert all(r.quests[q].get("fora") for q in ("78127", "78150", "84396")), "livro da biblioteca na rota"
     assert not any(r.quests[q].get("fora") for q in ("249", "2954", "7632")), "objeto e NPC que dão quest de verdade"
+    # Season of Discovery sem classe sai; conteúdo do Forever com id vizinho fica
+    assert all(r.quests[q].get("fora") for q in ("79192", "76156", "78132", "78261")), "quest do Season of Discovery na rota"
+    assert not any(r.quests[q].get("fora") for q in ("86784", "87288")), "quest do Forever fora da rota"
+    # drop de vários mobs: o aceite só para quem tem o item; de um chefe, o passo fica
+    elwynn = ler(guias, "..", "Alliance", "Elwynn_Forest_3-10.lua")
+    assert re.search(r"only hasitem\(1972\)\n(  [^\n]*\n)*?  accept Furlbrow's Deed##184", elwynn), "drop raro sem portão"
+    assert "hasitem(16305)" not in ler(guias, "..", "Horde", "Ashenvale_20-27.lua"), "item de chefe com portão"
     fake = {"objText": ["Speak with Valennia, Ayessa, Elaadrin."], "objCreatures": [252383, 251968, 252475]}
     assert [f[2] for f in r.falas(fake)] == [1, None], r.falas(fake)
     # a saída da ilha vai com o guia dela: entrega a 94946 a Denaaris, portal, Bolvar, o tour

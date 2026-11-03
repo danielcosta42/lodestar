@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-33)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Mulgore (30-31)",
-	rev = "3141369a",
+	rev = "421ddf0b",
 }, [[
 step
   ding 26
@@ -453,7 +453,7 @@ step
   kill Silithid Hive Drone##4133 |q 1147/2 |goto Thousand Needles 68.88,85.88
   kill Silithid Invader##4131 |q 1147 |goto Thousand Needles 65.31,86.73
 step
-  only completed(1146) level>=28
+  only completed(1146) level>=28 hasitem(5877)
   kill Silithid Searcher##4130 |goto Thousand Needles 69.91,82.48 |tip Loot the quest item here — it starts the quest.
   accept Parts of the Swarm##1148 |goto Thousand Needles 69.91,82.48
 step

@@ -7,7 +7,7 @@ Uso: python gen_special.py
 import os
 from collections import defaultdict
 
-from router import BIBLIOTECARIOS, Router, load_data, is_placeholder
+from router import BIBLIOTECARIOS, FORA_QUESTS, Router, load_data, is_placeholder
 
 GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides")
 # Refeitas do zero a cada rodada: o Special.xml é reescrito inteiro, então guia
@@ -197,7 +197,7 @@ def main():
         # single-bit de classe -> guia da classe. SEM filtro de questLevel: quase toda
         # quest de classe tem questLevel=-1 (é gated por classe, não por nível).
         # sem o que sai do bibliotecário: Research Access pede os livros, e o guia ia atrás deles
-        if c in CLASS_BIT and (c & (c - 1)) == 0 and not is_placeholder(q.get("name"))                 and not set(q["startNpcs"]) & BIBLIOTECARIOS:
+        if c in CLASS_BIT and (c & (c - 1)) == 0 and not is_placeholder(q.get("name"))                 and not set(q["startNpcs"]) & BIBLIOTECARIOS and int(qid) not in FORA_QUESTS:
             byc[CLASS_BIT[c]].append(int(qid))
     trocas = {q for name, qs in dq.items() for q in qs if troca_de_raide(Q, name, q)}
     for cls, qids in sorted(byc.items()):

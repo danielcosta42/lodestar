@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Ashenvale (30-32)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dustwallow Marsh (35-38)",
-	rev = "8dee4430",
+	rev = "e4c86aef",
 }, [[
 step
   ding 28
@@ -19,6 +19,10 @@ step
 step
   talk Shandrina##3955
   accept Slowing the Orc Advance##86757 |goto Ashenvale 49.48,67.09
+step
+  only completed(1034)
+  note Retrieve a Fallen Moonstone from the Shadethicket Oracle, then bring it to Pelturas in Astranaar.
+  collect Fallen Moonstone##5508 |q 1035 |goto Ashenvale 66.66,82.17 |tip {dropsfrom}Shadethicket Oracle
 step
   only completed(1030)
   talk Krolg##3897
@@ -43,21 +47,6 @@ step
   collect Dartol's Rod of Transformation##5462 |q 1046
 step
   only completed(1034)
-  note Retrieve a Fallen Moonstone from the Shadethicket Oracle, then bring it to Pelturas in Astranaar.
-  collect Fallen Moonstone##5508 |q 1035 |goto Ashenvale 66.66,82.17 |tip {dropsfrom}Shadethicket Oracle
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  click Shattered Orb##409315
-  accept Return to Delgren##78093 |goto Ashenvale 89.5,77
-step
-  note Bring 6 Jagged Orc Swords and 4 Curved Orc Daggers to Shandrina.
-  collect Curved Orcish Dagger##279507 |q 86757/2 |goto Ashenvale 86.31,60.42 |tip {dropsfrom}Horde Scout
-  collect Jagged Orcish Sword##279505 |q 86757 |goto Ashenvale 88.6,57.66 |tip {dropsfrom}Horde Grunt
-step
-  talk Shandrina##3955
-  turnin Slowing the Orc Advance##86757 |goto Ashenvale 49.48,67.09
-step
-  only completed(1034)
   talk Pelturas Whitemoon##3894
   turnin Fallen Sky Lake##1035 |goto Ashenvale 37.37,51.79
 step
@@ -68,16 +57,17 @@ step
   talk Sentinel Melyria Frostshadow##3880
   accept The Howling Vale##1022 |goto Ashenvale 22.23,52.98
 step
-  talk Illiyana##3901
-  accept Vile Satyr! Dryads in Danger!##1021 |goto Ashenvale 21.73,53.34
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Return the Orb Shards to Delgren.
-  talk Delgren the Purifier##3663
-  turnin Return to Delgren##78093 |goto Ashenvale 26.2,38.7
-step
   note Go to the Howling Vale and study the Tome of Mel'Thandris, then return to Sentinel Melyria Frostshadow at Forest Song.
   click Tome of Mel'Thandris##19027 |q 1022 |goto Ashenvale 50.49,39.13
+step
+  talk Sentinel Melyria Frostshadow##3880
+  turnin The Howling Vale##1022 |goto Ashenvale 22.23,52.98
+step
+  talk Sentinel Melyria Frostshadow##3880
+  accept Velinde Starsong##1037 |goto Ashenvale 22.23,52.98
+step
+  talk Illiyana##3901
+  accept Vile Satyr! Dryads in Danger!##1021 |goto Ashenvale 21.73,53.34
 step
   note Find Anilia in Xavian.
   talk Anilia##3920
@@ -105,39 +95,40 @@ step
   talk Maseara Autumnmoon##221269
   turnin Vengeful Trail##98417 |goto Ashenvale 86.24,45.86
 step
+  note Kill 5 Xavian Rogues, 5 Felsworn, 5 Betrayers, and 5 Hellcallers.
+  kill Xavian Felsworn##3755 |q 98418/2 |goto Ashenvale 78.92,45.78
+  kill Xavian Rogue##3752 |q 98418/4 |goto Ashenvale 78.4,45.12
+  kill Xavian Hellcaller##3757 |q 98418/3 |goto Ashenvale 78.23,44.8
+  kill Xavian Betrayer##3754 |q 98418 |goto Ashenvale 78.27,46.4
+step
+  talk Maseara Autumnmoon##221269
+  turnin Shared Fury##98418 |goto Ashenvale 86.24,45.86
+step
+  note Bring 6 Jagged Orc Swords and 4 Curved Orc Daggers to Shandrina.
+  collect Jagged Orcish Sword##279505 |q 86757/1 |goto Ashenvale 88.6,57.66 |tip {dropsfrom}Horde Grunt
+  collect Curved Orcish Dagger##279507 |q 86757 |goto Ashenvale 86.31,60.42 |tip {dropsfrom}Horde Scout
+step
   only completed(1011)
   note Kill the druids: Taneel Darkwood, Uthil Mooncall, Mavoris Cloudsbreak; then return to Kayneth Stillwind in Forest Song.
   kill Uthil Mooncall##3941 |q 1012/2 |goto Ashenvale 77.96,72.74
   kill Taneel Darkwood##3940 |q 1012/1 |goto Ashenvale 77.18,73.99
   kill Mavoris Cloudsbreak##3942 |q 1012 |goto Ashenvale 75.05,74.2
 step
-  note Kill 5 Xavian Rogues, 5 Felsworn, 5 Betrayers, and 5 Hellcallers.
-  kill Xavian Betrayer##3754 |q 98418/1 |goto Ashenvale 78.27,46.4
-  kill Xavian Felsworn##3755 |q 98418/2 |goto Ashenvale 78.92,45.78
-  kill Xavian Rogue##3752 |q 98418/4 |goto Ashenvale 78.4,45.12
-  kill Xavian Hellcaller##3757 |q 98418 |goto Ashenvale 78.23,44.8
-step
-  only completed(1011)
-  talk Kayneth Stillwind##3848
-  turnin Insane Druids##1012 |goto Ashenvale 85.24,44.71
-step
-  talk Maseara Autumnmoon##221269
-  turnin Shared Fury##98418 |goto Ashenvale 86.24,45.86
-step
-  talk Sentinel Melyria Frostshadow##3880
-  turnin The Howling Vale##1022 |goto Ashenvale 22.23,52.98
+  talk Shandrina##3955
+  turnin Slowing the Orc Advance##86757 |goto Ashenvale 49.48,67.09
 step
   talk Illiyana##3901
   turnin The Branch of Cenarius##1031 |goto Ashenvale 21.73,53.34
-step
-  talk Sentinel Melyria Frostshadow##3880
-  accept Velinde Starsong##1037 |goto Ashenvale 22.23,52.98
 step
   talk Illiyana##3901
   accept Satyr Slaying!##1032 |goto Ashenvale 21.73,53.34
 step
   note Bring 16 Satyr Horns to Illiyana in Forest Song.
   collect 16 Satyr Horns##5481 |q 1032 |goto Ashenvale 78.4,45.12 |tip {dropsfrom}Xavian Rogue, Xavian Betrayer, Xavian Felsworn
+step
+  only completed(1011)
+  talk Kayneth Stillwind##3848
+  turnin Insane Druids##1012 |goto Ashenvale 85.24,44.71
 step
   talk Illiyana##3901
   turnin Satyr Slaying!##1032 |goto Ashenvale 21.73,53.34

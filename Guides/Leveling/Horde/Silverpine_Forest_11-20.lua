@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "60b0eac3",
+	rev = "b071e52a",
 }, [[
 step
   ding 10
@@ -244,7 +244,7 @@ step
   talk High Executor Hadrec##1952
   accept Rot Hide Ichor##443 |goto Silverpine Forest 43.42,40.86
 step
-  only level>=12
+  only level>=12 hasitem(3317)
   kill Rot Hide Brute##1939 |goto Silverpine Forest 67.6,31 |tip Loot the quest item here — it starts the quest.
   accept Resting in Pieces##460 |goto Silverpine Forest 67.6,31
 step
@@ -434,7 +434,7 @@ step
   note Collect a Tortured Soul from the nearby undead in Beren's Peril in Silverpine Forest.
   collect Tortured Soul##271350 |q 95883 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
 step
-  only level>=20
+  only level>=20 hasitem(271343)
   kill Ravenclaw Guardian##1973 |goto Silverpine Forest 58.66,71.29 |tip Loot the quest item here — it starts the quest.
   accept The Offering Stone##95884 |goto Silverpine Forest 58.66,71.29
 step

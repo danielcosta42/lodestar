@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/The Barrens (22-27)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (22-28)",
-	rev = "17dceae8",
+	rev = "6698d257",
 }, [[
 step
   ding 21
@@ -51,9 +51,6 @@ step
 step
   talk Gann Stonespire##3341
   accept Gann's Reclamation##843 |goto The Barrens 45.89,77
-step
-  click Burned-Out Remains##415106
-  accept Stepping Stones##79192 |goto The Barrens 46.35,73.89
 step
   note Bring 12 Silithid Eggs and the Digging Claw to Korran at the Crossroads.
   collect 12 Silithid Egg##5058 |q 868 |goto The Barrens 45.1,72.18 |tip {dropsfrom}Silithid Mound
@@ -223,9 +220,6 @@ step
   only haveq(857)
   talk Feegly the Exiled##3421
   turnin The Tear of the Moons##857 |goto The Barrens 48.97,86.31
-step
-  note You tear the note from the plank and read the scrawled writing.
-  turnin Stepping Stones##79192 |goto Stonetalon Mountains 40.76,52.57 |tip {turninat}Stonetalon Mountains
 step
   only completed(1094)
   note Bring the new orders to Ziz Fizziks in the Stonetalon Mountains.

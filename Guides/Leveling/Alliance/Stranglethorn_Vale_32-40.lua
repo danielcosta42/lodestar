@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (32-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (20-38)",
-	rev = "d15817e5",
+	rev = "3204f04c",
 }, [[
 step
   ding 31
@@ -116,6 +116,7 @@ step
   talk Sir S. J. Erlgadin##718
   turnin Panther Mastery##191 |goto Stranglethorn Vale 35.55,10.55
 step
+  only hasitem(4614)
   kill Bloodscalp Warrior##587 |goto Stranglethorn Vale 34.04,16.78 |tip Loot the quest item here — it starts the quest.
   accept Crystal in the Mountains##635 |goto Stranglethorn Vale 34.04,16.78
 step
@@ -527,6 +528,7 @@ step
   talk Jonathan Carevin##661
   accept Answered Questions##1044 |goto Duskwood 75.32,49.02
 step
+  only haveq(635)
   note Find the crystal from your vision.
   turnin Crystal in the Mountains##635 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
 step
@@ -594,5 +596,5 @@ step
   turnin Answered Questions##1044 |goto Darnassus 61.77,39.18 |tip {turninat}Darnassus
 step
   note {travel}Loch Modan
-  goto Loch Modan 49.44,12.87
+  goto Loch Modan 32.63,49.74
 ]])
