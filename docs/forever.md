@@ -45,6 +45,22 @@ quest só conta como removida quando o Anniversary **tem** e o Forever **não te
 | ids ≥ 30000 no `QuestV2` do 70245 | **2.853** |
 | ids que o `QuestV2` do **Classic Era 1.15.9.69722** não tem | 1.795 (no 69913) |
 
+## O que o QuestieDB 1.0.10 ensinou (2026-11-02)
+
+A biblioteca sai do 1.0.10 desde a #63: 256 quests corrigidas e os ranks de NPC. Dois dados novos
+quebrariam guias sem nenhum validador acusar:
+
+- **`minLevel` 9999 é "escala com o jogador", não nível.** Com os ranks novos, elite amiga de Zephras
+  com 9999 virou "elite acima do nível máximo", e `Desperate Times` saiu do leveling com toda a saída
+  da ilha. O `build_intermediate.py` zera o sentinela.
+- **Library Books.** O banco passou a listar o objeto do livro como quem dá a quest, mas o livro é um
+  item: a quest só abre no bibliotecário de Undercity ou Stormwind, com ele na bolsa. O `accept` no
+  objeto nunca completa e o guia para ali. Sem XP, os livros ficam fora de todo guia. Mesmo cuidado com
+  as quests do Season of Discovery sem classe no banco (`The Horn of Xelthos`, de ladino).
+
+Quando o banco trouxer campo novo, confira as quests que **entram**, não só as que saem: `validate_guides`
+aprova objeto como quem dá a quest.
+
 ## De onde vêm as rotas
 
 **1. QuestieDB do Forever — a base.** Desde a 1.0.5 (2026-10, "Add Forever base data") o QuestieDB,
@@ -356,7 +372,7 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   ainda não é público: o `Guide.lua` reconhece a raça pelo id, e o guia inicial dela é Zephras Isle.
   Zona inicial com duas faixas começa pela mais baixa.
 
-## Números (QuestieDB 1.0.6, `QuestV2` do 70245)
+## Números (QuestieDB 1.0.10, `QuestV2` do 70245)
 
 | | |
 |---|---|
@@ -418,12 +434,6 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
 
 ## Em aberto
 
-- **QuestieDB 1.0.10 (2026-11-02) ainda não entrou.** Numa cópia isolada, a regeneração muda 129
-  arquivos, e os guias de Zephras Isle viram 5-11 e perdem o fim da ilha (`The Fate of Zephras`,
-  `Confront Lorthuna`, `Welcome to Azeroth`, `Journey to the Crossroads`), embora os dados dessas
-  quests não tenham mudado: é reação do roteador, ainda sem causa. O autoteste do `router.py` também
-  falha (`Exploring the Alliance`). Ficar no 1.0.6 custa 31 quests fora de ordem sob os dados novos,
-  puladas no NPC em vez de travar; só 1 de 6.104 aceites e entregas aponta lugar errado.
 
 - **Riverglades e Hyjal.** O QuestieDB 1.0.6 tem os NPCs, não as quests. Entram quando ele tiver —
   ou quando o `/ls scan` colher no lançamento. Em Shen'dralas, 12 das 19 quests esperam quem as dá.

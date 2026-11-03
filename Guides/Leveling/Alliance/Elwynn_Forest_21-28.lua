@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (30-35)",
-	rev = "4628afc2",
+	rev = "dc533a37",
 }, [[
 step
   ding 20
@@ -303,7 +303,7 @@ step
   only Warrior completed(1701)
   note Bring 20 vials of Burning Blood and 1 Burning Rock to Grimand Elmore in Stormwind.
   collect Burning Blood##6844 |q 1705/1 |goto Duskwood 65.13,67.39 |tip {dropsfrom}Nightbane Dark Runner, Nightbane Shadow Weaver, Nightbane Worgen
-  collect 1 Burning Rock##6845 |q 1705 |goto Silverpine Forest 49.56,85.2 |tip {dropsfrom}Old Fire-Eye
+  collect 1 Burning Rock##6845 |q 1705 |goto Duskwood 73.89,77.17 |tip {dropsfrom}Gutspill
 step
   only Warrior completed(1701)
   talk Grimand Elmore##1416

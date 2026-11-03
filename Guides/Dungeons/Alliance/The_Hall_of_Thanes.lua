@@ -4,17 +4,17 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Hall of Thanes", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "a52a3520",
+	rev = "3b709019",
 }, [[
 step
   kill Dark Iron Spy##6123 |goto Dun Morogh 77.36,61.31 |tip Loot the quest item here — it starts the quest.
   accept Underground Map##96391 |goto Dun Morogh 77.36,61.31
 step
   talk Thom Filch##265003
-  accept Important Heirlooms##96403 |goto Ironforge 32.29,44.93
+  accept Important Heirlooms##96403 |goto Ironforge 32.18,44.5
 step
   talk Afadra Dunwall##264943
-  accept The Restless Dead##96394 |goto Ironforge 33.1,47.9
+  accept The Restless Dead##96394 |goto Ironforge 33.18,47.94
 step
   collect Treaty of Understanding##673474 |goto The Hall of Thanes - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept The Treaty of Understanding##98423 |goto The Hall of Thanes - Dungeon -1,-1
@@ -30,10 +30,10 @@ step
   turnin Underground Map##96391 |goto Dun Morogh 64.87,58.47
 step
   talk Thom Filch##265003
-  turnin Important Heirlooms##96403 |goto Ironforge 32.29,44.93
+  turnin Important Heirlooms##96403 |goto Ironforge 32.18,44.5
 step
   talk Afadra Dunwall##264943
-  turnin The Restless Dead##96394 |goto Ironforge 33.1,47.9
+  turnin The Restless Dead##96394 |goto Ironforge 33.18,47.94
 step
   note Deliver the Treaty of Understanding to Magni Bronzebeard in Ironforge.
   talk King Magni Bronzebeard##2784

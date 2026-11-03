@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Warlock", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "c325e6ab",
+	rev = "6389a602",
 }, [[
 step
   talk Gornek##3143
@@ -1064,7 +1064,7 @@ step
 step
   only Warlock not completed(1472) not haveq(1472)
   note Using the Withered Scarf, summon and subdue an incubus, then return the Withered Scarf to Gan'rul Bloodeye in Orgrimmar.
-  use Summoned Incubus##185335 |q 65604 |goto Orgrimmar 49.59,50.66 |tip {useit}
+  use Summoned Incubus##185335 |q 65604 |goto Undercity 87.16,27.6 |tip {useit}
 step
   only Warlock not completed(1472) not haveq(1472)
   talk Gan'rul Bloodeye##5875
@@ -1110,7 +1110,8 @@ step
 step
   only Warlock not completed(1507) not haveq(1507)
   note Bring the hearts of Avelina Lilly and Isaac Pearson to Carendin Halgar in the Temple of the Damned.
-  collect Isaac's Heart##190180 |q 65593 |goto The Barrens 61.84,38.56 |tip {dropsfrom}Isaac Pearson
+  collect Avelina's Heart##190179 |q 65593/1 |goto Silverpine Forest 63.12,65.27 |tip {dropsfrom}Avelina Lilly
+  collect Isaac's Heart##190180 |q 65593 |goto The Barrens 62.38,38.19 |tip {dropsfrom}Isaac Pearson
 step
   only Warlock not completed(1507) not haveq(1507)
   talk Carendin Halgar##5675
@@ -1122,7 +1123,7 @@ step
 step
   only Warlock not completed(1507) not haveq(1507)
   note Using the Lovers' Hearts, summon and subdue an incubus, then return the Lovers' Hearts to Carendin Halgar in the Magic Quarter of the Undercity.
-  use Summoned Incubus##185335 |q 65597 |goto Orgrimmar 49.59,50.66 |tip {useit}
+  use Summoned Incubus##185335 |q 65597 |goto Undercity 87.16,27.6 |tip {useit}
 step
   only Warlock not completed(1507) not haveq(1507)
   talk Carendin Halgar##5675

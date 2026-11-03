@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Badlands (37-42)",
-	rev = "19537b8e",
+	rev = "fae5849b",
 }, [[
 step
   ding 31
@@ -33,13 +33,13 @@ step
   collect 10 Highland Raptor Eye##4512 |q 672 |goto Arathi Highlands 46.76,41.11 |tip {dropsfrom}Highland Strider, Highland Thrasher
 step
   click Messenger Bag##406918
-  accept This Must Be The Place##79976 |goto Arathi Highlands 22.54,24.14
+  accept This Must Be The Place##79976 |goto Arathi Highlands 22.48,24.19
 step
   note Get 10 Bloodstone Amulets for Tor'gan in Hammerfall.
   collect 10 Bloodstone Amulet##4495 |q 671 |goto Arathi Highlands 30.97,29.79 |tip {dropsfrom}Syndicate Highwayman, Syndicate Pathstalker, Syndicate Mercenary
 step
   note Whoever was here, you just missed them.
-  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.55,24.14
+  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.47,24.2
 step
   talk Tor'gan##2706
   turnin Foul Magics##671 |goto Arathi Highlands 74.72,36.29

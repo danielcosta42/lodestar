@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warlock", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "f309841f",
+	rev = "ef5109c0",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -176,7 +176,7 @@ step
 step
   only Warlock
   note Using the Wooden Figurine, summon and subdue an incubus, then return the Wooden Figurine to Gakin the Darkbinder in the Slaughtered Lamb.
-  use Summoned Incubus##185335 |q 65603 |goto Stormwind City 39.35,84.74 |tip {useit}
+  use Summoned Incubus##185335 |q 65603 |goto Stormwind City 39.04,84.64 |tip {useit}
 step
   only Warlock
   talk Gakin the Darkbinder##6122

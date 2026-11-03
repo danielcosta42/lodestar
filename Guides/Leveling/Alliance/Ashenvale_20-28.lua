@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Ashenvale (20-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (21-28)",
-	rev = "2362c360",
+	rev = "7c88a24e",
 }, [[
 step
   ding 19
@@ -262,7 +262,7 @@ step
 step
   only level>=25
   click Gleaming Crescent Pendant##669176
-  accept Gleaming Crescent Necklace##98027 |goto Ashenvale 62.96,71.55
+  accept Gleaming Crescent Necklace##98027 |goto Ashenvale 62.99,71.54
 step
   only haveq(1011)
   note Bring a Bottle of Disease to Kayneth Stillwind in Forest Song.
@@ -358,6 +358,6 @@ step
   talk Delgren the Purifier##3663
   turnin The Tower of Althalaxx##981 |goto Ashenvale 26.2,38.7
 step
-  note {travel}Stormwind City
-  goto Stormwind City 56.31,53.99
+  note {travel}Duskwood
+  goto Duskwood 45.12,67.03
 ]])

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stonetalon Mountains (21-27)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Ashenvale (20-28)",
-	rev = "17017eaa",
+	rev = "cb85d5f3",
 }, [[
 step
   ding 20
@@ -69,7 +69,7 @@ step
 step
   only level>=20
   talk Night Elf Courier##268925
-  accept Stonetalon Supply Run##86574 |goto Stonetalon Mountains 48.73,39.85
+  accept Stonetalon Supply Run##86574 |goto Stonetalon Mountains 48.71,39.85
 step
   only haveq(86574)
   note Collect 6 Stonetalon Supplies from Pridewing Wyverns and deliver them to Innkeeper Faralia.

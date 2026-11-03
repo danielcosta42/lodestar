@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Barrens (14-21)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
-	rev = "f1c2f0fe",
+	rev = "786a18e3",
 }, [[
 step
   ding 13
@@ -137,24 +137,25 @@ step
   talk Sputtervalve##3442
   accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
 step
-  only level>=15
+  only level>=21
   talk Bainham##267309
-  accept Chol'aruk the Ravener##97005 |goto The Barrens 61.91,39.42
+  accept Chol'aruk the Ravener##97005 |goto The Barrens 61.88,39.44
 step
   only haveq(97005)
   note Bring Chol'aruk's Head to Bainham in the Barrens.
-  collect Chol'aruk's Head##276070 |q 97005 |goto The Barrens 57.64,27.37 |tip {dropsfrom}Chol'aruk
+  kill Chol'aruk##267307 |q 97005 |goto The Barrens 58.06,26.72 |elite
+  collect Chol'aruk's Head##276070 |q 97005 |goto The Barrens 58.06,26.72
 step
   only haveq(97005)
   talk Bainham##267309
-  turnin Chol'aruk the Ravener##97005 |goto The Barrens 61.91,39.42
+  turnin Chol'aruk the Ravener##97005 |goto The Barrens 61.88,39.44
 step
   only completed(6981) level>=15
   talk Falla Sagewind##8418
   accept In Nightmares##3370 |goto The Barrens 48.18,32.78
 step
   click Burned-Out Remains##415106
-  accept Stepping Stones##79192 |goto The Barrens 46.41,73.96
+  accept Stepping Stones##79192 |goto The Barrens 46.35,73.89
 step
   only haveq(1069)
   note Bring 15 Deepmoss Eggs to Mebok Mizzyrix in Ratchet.

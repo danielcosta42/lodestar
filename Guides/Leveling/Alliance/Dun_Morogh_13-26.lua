@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dun Morogh (13-26)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Loch Modan (11-18)",
-	rev = "f79699ed",
+	rev = "dbcf0447",
 }, [[
 step
   ding 12
@@ -70,8 +70,7 @@ step
   accept Underground Map##96391 |goto Dun Morogh 77.36,61.31
 step
   note Slay 10 Dark Iron Spies in Dun Morogh.
-  kill Dark Iron Spy##6123 |q 96390/1 |goto Dun Morogh 77.36,61.31
-  kill Rockjaw Bonesnapper##1117 |q 96390 |goto Dun Morogh 72.41,52.9
+  kill Dark Iron Spy##6123 |q 96390 |goto Dun Morogh 77.36,61.31
 step
   talk Earthseer Farsen##264936
   turnin Nip 'Em in the Bud##96390 |goto Dun Morogh 64.87,58.47
@@ -243,7 +242,7 @@ step
 step
   only Shaman level>=20
   click Forgotten Shrine##619896
-  accept Call of Water##94503 |goto Westfall 45.57,59.88
+  accept Call of Water##94503 |goto Westfall 45.6,59.92
 step
   only not NightElf not Gnome not Skyborne Paladin completed(1649) haveq(1650)
   note Find Daphne Stilwell in Westfall.

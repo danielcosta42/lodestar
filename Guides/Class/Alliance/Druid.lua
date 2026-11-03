@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Druid", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "26d62ea7",
+	rev = "e19ab3fa",
 }, [[
 step
   talk Conservator Ilthalaine##2079
@@ -27,29 +27,29 @@ step
   turnin Verdant Sigil##3120 |goto Teldrassil 58.63,40.29
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.05,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Druid
   talk Rorian the Dayseeker##251361
-  accept A Student of Nature##92485 |goto Zephras Isle 42.09,23.49
+  accept A Student of Nature##92485 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Druid
   note Read the Folded Parchment then speak with Xyton Silverwind in Thendal Grove.
   talk Xyton Silverwind##251373
-  turnin A Student of Nature##92485 |goto Zephras Isle 41.71,23.36
+  turnin A Student of Nature##92485 |goto Zephras Isle 41.66,23.33
 step
   only Skyborne Druid
   talk Archmage Ansirem Runeweaver##2543
@@ -122,24 +122,24 @@ step
 step
   only Skyborne Druid
   talk Lotheluum Starbreeze##252359
-  accept The Great Ursera Spirit##94006 |goto Zephras Isle 64.01,75.1
+  accept The Great Ursera Spirit##94006 |goto Zephras Isle 63.99,75.08
 step
   only Skyborne Druid
   note Speak with Urs'endris near the falls northeast of Valanaar.
   talk Urs'endris##255853
-  turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.83,61.67
+  turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.81,61.71
 step
   only Skyborne Druid
   talk Urs'endris##255853
-  accept Strength and Mercy##94638 |goto Zephras Isle 69.83,61.67
+  accept Strength and Mercy##94638 |goto Zephras Isle 69.81,61.71
 step
   only Skyborne Druid
   note Find and kill Ur'endra in the Shen'dar Highlands.
-  kill Ur'endra##258443 |q 94638 |goto Zephras Isle 53.78,65.21
+  kill Ur'endra##258443 |q 94638 |goto Zephras Isle 53.9,64.69
 step
   only Skyborne Druid
   talk Urs'endris##255853
-  turnin Strength and Mercy##94638 |goto Zephras Isle 69.83,61.67
+  turnin Strength and Mercy##94638 |goto Zephras Isle 69.81,61.71
 step
   only not Human not Dwarf not Gnome Druid
   talk Mathrengyl Bearwalker##4217
@@ -168,7 +168,7 @@ step
 step
   only NightElf Druid
   note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
-  collect 5 Earthroot##2449 |q 6123/1 |goto Teldrassil 57.91,66.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine
+  collect 5 Earthroot##2449 |q 6123/1 |goto Teldrassil 57.09,69.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine
   collect 12 Lunar Fungus##15851 |q 6123 |goto Darkshore 43.8,50.23 |tip {dropsfrom}Lunar Fungal Bloom
 step
   only NightElf Druid

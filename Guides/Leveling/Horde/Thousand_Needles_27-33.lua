@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-33)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Mulgore (30-31)",
-	rev = "c1394a5f",
+	rev = "3141369a",
 }, [[
 step
   ding 26
@@ -50,7 +50,7 @@ step
   accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
   click Wanted Poster - Arnak Grimtotem##176115
-  accept Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
+  accept WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
 step
   note Kill 12 Galak Scouts, 10 Galak Wranglers, and 6 Galak Windchasers, and then return to Cliffwatcher Longhorn in Freewind Post.
   kill Galak Wrangler##4093 |q 4841/2 |goto Thousand Needles 43.65,39.34
@@ -124,7 +124,7 @@ step
   turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
 step
   talk Cliffwatcher Longhorn##10537
-  turnin Wanted - Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
+  turnin WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
 step
   talk Cliffwatcher Longhorn##10537
   accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
@@ -539,5 +539,5 @@ step
   accept Test of Lore##1159 |goto Stonetalon Mountains 78.8,45.69
 step
   note {travel}Mulgore
-  goto Mulgore 32.54,20.67
+  goto Mulgore 32.5,20.66
 ]])

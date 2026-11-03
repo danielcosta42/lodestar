@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (20-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Arathi Highlands (31-40)",
-	rev = "3c8afc0f",
+	rev = "0e6fac67",
 }, [[
 step
   ding 16
@@ -64,18 +64,18 @@ step
 step
   only Shaman level>=20
   talk Norric Lochthane##258043
-  accept Call of Water##94495 |goto Loch Modan 41.86,19.02
+  accept Call of Water##94495 |goto Loch Modan 41.76,19.05
 step
   only Shaman level>=20
   talk Norric Lochthane##258043
-  accept Call of Water##94502 |goto Loch Modan 41.86,19.02
+  accept Call of Water##94502 |goto Loch Modan 41.76,19.05
 step
   only haveq(256)
   talk Magistrate Bluntnose##1139
   turnin WANTED: Chok'sul##256 |goto Loch Modan 34.6,44.47
 step
   click Carved Figurine##424007
-  accept Eagle's Fist##79975 |goto Loch Modan 49.49,13.05
+  accept Eagle's Fist##79975 |goto Loch Modan 49.44,12.87
 step
   only level>=36
   talk Ghak Healtouch##1470
@@ -84,7 +84,7 @@ step
   only Shaman haveq(94495)
   note Find Hervdana Saegrund in the Wetlands.
   talk Hervdana Saegrund##258203
-  turnin Call of Water##94495 |goto Wetlands 65.75,76.45 |tip {turninat}Wetlands
+  turnin Call of Water##94495 |goto Wetlands 65.76,76.52 |tip {turninat}Wetlands
 step
   only haveq(467)
   note Speak with Pilot Stonegear.
@@ -96,7 +96,7 @@ step
   collect Corrupt Manifestation's Bracers##7812 |q 94502 |goto Silverpine Forest 38.78,44.26 |tip {dropsfrom}Corrupt Minor Manifestation of Water
 step
   only Shaman haveq(94502)
-  turnin Call of Water##94502 |goto Westfall 45.57,59.88 |tip {turninat}Westfall
+  turnin Call of Water##94502 |goto Westfall 45.6,59.92 |tip {turninat}Westfall
 step
   only level>=30
   talk Prospector Stormpike##1356
@@ -134,7 +134,7 @@ step
   turnin Uldaman Reagent Run##17 |goto Loch Modan 37.07,49.38
 step
   note Water spray dampens the air, the view is incredible.
-  turnin Eagle's Fist##79975 |goto Arathi Highlands 22.54,24.14 |tip {turninat}Arathi Highlands
+  turnin Eagle's Fist##79975 |goto Arathi Highlands 22.48,24.19 |tip {turninat}Arathi Highlands
 step
   note {travel}Arathi Highlands
   goto Arathi Highlands 44.29,92.88

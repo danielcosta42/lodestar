@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Dun Morogh (4-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Westfall (12-16)",
-	rev = "7e5c9640",
+	next = "Leveling/Alliance/Westfall (10-16)",
+	rev = "6a5507bf",
 }, [[
 step
   only level>=1
@@ -297,7 +297,7 @@ step
   only not completed(287) not completed(96627) not completed(96630) not completed(96638) not completed(96652) not completed(96656) not completed(96659) not haveq(287) not haveq(96627) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96656) not haveq(96659)
   note Deliver the Supply Bundle to Eric Brighthammer near Kharanos.
   talk Eric Brighthammer##265813
-  turnin The Adventurer##96628 |goto Dun Morogh 46.69,53.92
+  turnin The Adventurer##96628 |goto Dun Morogh 46.7,53.94
 step
   talk Tharek Blackstone##1872
   accept Tools for Steelgrill##400 |goto Dun Morogh 46.02,51.68
@@ -307,7 +307,7 @@ step
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607)
   talk Eric Brighthammer##265813
-  accept The Great Outdoors##96608 |goto Dun Morogh 46.69,53.92
+  accept The Great Outdoors##96608 |goto Dun Morogh 46.7,53.94
 step
   talk Pilot Stonegear##1377
   accept The Grizzled Den##313 |goto Dun Morogh 49.62,48.61
@@ -340,11 +340,11 @@ step
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607)
   talk Eric Brighthammer##265813
-  turnin The Great Outdoors##96608 |goto Dun Morogh 46.69,53.92
+  turnin The Great Outdoors##96608 |goto Dun Morogh 46.7,53.94
 step
   only not completed(96626) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96626) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
   talk Eric Brighthammer##265813
-  accept Camping 101: Cooking##96629 |goto Dun Morogh 46.69,53.92
+  accept Camping 101: Cooking##96629 |goto Dun Morogh 46.7,53.94
 step
   only not completed(96626) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not completed(96661) not haveq(96626) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658) not haveq(96661)
   note Speak with Gremlock Pilsnor in Kharanos to learn to become a cook.
@@ -405,7 +405,7 @@ step
   accept Treacherous Cold##99162 |goto Dun Morogh 57.73,44.88
 step
   note Destroy 10 minor ice elementals.
-  kill Minor Ice Elemental##276003 |q 99160 |goto Dun Morogh 55.85,44.68
+  kill Minor Ice Elemental##276003 |q 99160 |goto Dun Morogh 55.29,45.11
 step
   talk Father Gavin##1253
   turnin Rime's Wrath##99160 |goto Dun Morogh 57.73,44.88
@@ -441,7 +441,7 @@ step
   turnin Treacherous Cold##99162 |goto Dun Morogh 57.73,44.88
 step
   note Find Mountaineer Cornelius in the Grizzled Den for Mountaineer Gretchen.
-  click Mountaineer Cornelius##460004 |q 98319 |goto Dun Morogh 43.03,49.62
+  talk Mountaineer Cornelius##278166 |q 98319 |goto Dun Morogh 43.03,49.62
 step
   note Get a cask of Evershine from Rejold Barleybrew in Brewnall Village.
   talk Rejold Barleybrew##1374
@@ -467,7 +467,7 @@ step
   kill Elder Crag Boar##1127 |q 319/2 |goto Dun Morogh 40.46,47.22
   kill Snow Leopard##1201 |q 319 |goto Dun Morogh 48.29,56.53
 step
-  note Slay Frosthowl and collect the Sack of Fish for Gretta Ganter in Brewnall Village
+  note Slay Frosthowl and collect the Sack of Fish for Gretta Ganter in Brewnall Village.
   collect Sack of Fish##280426 |q 98326 |goto Dun Morogh 39.33,48.79 |tip {dropsfrom}Frosthowl
 step
   note Bring 6 Shimmerweeds to Rejold Barleybrew in the Brewnall Village.
@@ -501,10 +501,10 @@ step
   accept Stolen Blasting Powder##95213 |goto Dun Morogh 73.41,55.08
 step
   note Collect 6 Pristine Leopard Pelts and deliver them to Amberstill Ranch.
-  collect 6 Pristine Leopard Pelt##267414 |q 95212 |goto Dun Morogh 75.2,57.04 |tip {dropsfrom}Elder Snow Leopard
+  collect 6 Pristine Leopard Pelt##267414 |q 95212 |goto Dun Morogh 75.89,56.59 |tip {dropsfrom}Elder Snow Leopard
 step
   note Bring the Empty Powder Keg to Quarrymaster Thesten at Gol'Bolar Quarry.
-  collect Empty Powder Keg##268548 |q 95213 |goto Dun Morogh 73.41,55.08 |tip {dropsfrom}Rockjaw Ambusher, Rockjaw Backbreaker
+  collect Empty Powder Keg##268548 |q 95213 |goto Dun Morogh 73.41,55.08 |tip {dropsfrom}Rockjaw Ambusher, Rockjaw Skullthumper, Rockjaw Bonesnapper
 step
   talk Quarrymaster Thesten##1256
   turnin Stolen Blasting Powder##95213 |goto Dun Morogh 69.16,54.8
@@ -589,6 +589,10 @@ step
   talk Maxan Anvol##1226
   accept Confounding Flash##94824 |goto Dun Morogh 47.34,52.19
 step
+  only Shaman
+  talk Ingrid Dunwald##258113
+  accept Call of Earth##96243 |goto Dun Morogh 47.58,51.95
+step
   talk Tundra MacGrann##1266
   accept Tundra MacGrann's Stolen Stash##312 |goto Dun Morogh 34.57,51.65
 step
@@ -612,6 +616,11 @@ step
 step
   note Bring Razzle Sprysprocket in Kharanos 8 Restabilization Cogs and 8 Gyromechanic Gears.
   collect 8 Restabilization Cog##3083 |q 412 |goto Dun Morogh 26.04,40.76 |tip {dropsfrom}Leper Gnome, Gibblewilt
+step
+  only Shaman
+  note Find Teo Hammerstorm in Dun Morogh.
+  talk Teo Hammerstorm##257446
+  turnin Call of Earth##96243 |goto Dun Morogh 28.79,66.18
 step
   talk Razzle Sprysprocket##1269
   turnin Operation Recombobulation##412 |goto Dun Morogh 45.85,49.37
@@ -703,7 +712,7 @@ step
   turnin Training the Beast##6086 |goto Ironforge 70.86,85.83 |tip {turninat}Ironforge
 step
   click Misplaced Packages##660964
-  accept Your Package Has Arrived##97263 |goto Ironforge 72.32,48.62
+  accept Your Package Has Arrived##97263 |goto Ironforge 72.32,48.64
 step
   talk Jemma Quikswitch##11028
   accept Data Hoarders##95041 |goto Ironforge 67.66,44.21
@@ -711,6 +720,14 @@ step
   note Deliver Senir's report to Senator Barin Redstone in Ironforge.
   talk Senator Barin Redstone##1274
   turnin The Reports##291 |goto Ironforge 39.55,57.49 |tip {turninat}Ironforge
+step
+  note Deliver Eldrun's misplaced package.
+  talk Eldrun Stormbreaker##258098
+  turnin Your Package Has Arrived##97263 |goto Ironforge 47.1,13.79 |tip {turninat}Ironforge
+step
+  only Warlock not completed(1688) not haveq(1688)
+  talk Lago Blackwrench##6120
+  accept The Slaughtered Lamb##1715 |goto Ironforge 47.63,9.26
 step
   only Rogue
   note Speak with Hulfdan Blackbeard in Ironforge.
@@ -720,14 +737,6 @@ step
   only Rogue
   talk Hulfdan Blackbeard##5165
   accept Simple Subterfugin'##2238 |goto Ironforge 51.96,14.84
-step
-  note Deliver Eldrun's misplaced package.
-  talk Eldrun Stormbreaker##258098
-  turnin Your Package Has Arrived##97263 |goto Ironforge 47.38,13.48 |tip {turninat}Ironforge
-step
-  only Warlock not completed(1688) not haveq(1688)
-  talk Lago Blackwrench##6120
-  accept The Slaughtered Lamb##1715 |goto Ironforge 47.63,9.26
 step
   only not Dwarf not NightElf not Skyborne Mage not completed(1861) not haveq(1861)
   note Speak with Bink in Ironforge.
@@ -741,15 +750,15 @@ step
   only Gnome Priest
   note Speak to High Priestess Mims in Ironforge.
   talk High Priestess Mims##258785
-  turnin Confounding Flash##94824 |goto Ironforge 24.84,10.16 |tip {turninat}Ironforge
+  turnin Confounding Flash##94824 |goto Ironforge 24.59,10 |tip {turninat}Ironforge
 step
   only Gnome Priest
   talk High Priestess Mims##258785
-  accept Confounding Flash##94817 |goto Ironforge 24.84,10.16
+  accept Confounding Flash##94817 |goto Ironforge 24.59,10
 step
   only Gnome Priest
   talk High Priestess Mims##258785
-  turnin Confounding Flash##94817 |goto Ironforge 24.84,10.16 |tip {turninat}Ironforge
+  turnin Confounding Flash##94817 |goto Ironforge 24.59,10 |tip {turninat}Ironforge
 step
   only Rogue
   note Find Onin MacHammar by Gnomeregan.
@@ -779,11 +788,6 @@ step
   talk Bink##5144
   turnin Mage-tastic Gizmonitor##1880 |goto Ironforge 27.25,8.3 |tip {turninat}Ironforge
 step
-  only Shaman
-  note Bring the Torch of the Dormant Flame to Braldir Ashmantle in Loch Modan.
-  talk Braldir Ashmantle##257808
-  turnin Call of Fire##94465 |goto Loch Modan 32.17,65.97 |tip {turninat}Loch Modan
-step
   only Warlock not completed(1688) not haveq(1688)
   note Report to Gakin the Darkbinder in the Mage Quarter of Stormwind.
   talk Gakin the Darkbinder##6122
@@ -794,6 +798,11 @@ step
   talk High Priestess Laurena##376
   turnin Desperate Prayer##5637 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
 step
-  note {travel}Stormwind City
-  goto Stormwind City 26.27,47.08
+  only Shaman
+  note Bring the Torch of the Dormant Flame to Braldir Ashmantle in Loch Modan.
+  talk Braldir Ashmantle##257808
+  turnin Call of Fire##94465 |goto Loch Modan 32.17,65.97 |tip {turninat}Loch Modan
+step
+  note {travel}Westfall
+  goto Westfall 56.42,47.62
 ]])

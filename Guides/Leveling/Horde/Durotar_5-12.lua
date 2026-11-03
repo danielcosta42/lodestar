@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Durotar (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/The Barrens (12-20)",
-	rev = "ec7c58bd",
+	next = "Leveling/Horde/The Barrens (12-19)",
+	rev = "712b6670",
 }, [[
 step
   only level>=1
@@ -294,20 +294,20 @@ step
   accept Legging It##96821 |goto Durotar 55.96,73.93
 step
   note Kill 6 Ridgeshade Creepers and 6 Ridgeshade Lurkers in southern Durotar, then report to Gar'thok in Razor Hill.
-  kill Ridgeshade Lurker##266849 |q 96821/2 |goto Durotar 51.59,59.21
-  kill Ridgeshade Creeper##266850 |q 96821 |goto Durotar 51.53,56.63
+  kill Ridgeshade Lurker##266849 |q 96821/2 |goto Durotar 51.82,58.16
+  kill Ridgeshade Creeper##266850 |q 96821 |goto Durotar 51.91,57.85
 step
   only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96656) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96656) not haveq(96659)
   note Bring the journal to Brakk near Razor Hill.
   talk Brakk##265809
-  turnin The Adventurer##96652 |goto Durotar 52.05,47.32
+  turnin The Adventurer##96652 |goto Durotar 51.98,47.27
 step
   talk Gar'Thok##3139
   turnin Legging It##96821 |goto Durotar 51.95,43.5
 step
   only not completed(95998) not completed(96101) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Brakk##265809
-  accept The Great Outdoors##96604 |goto Durotar 52.05,47.32
+  accept The Great Outdoors##96604 |goto Durotar 51.98,47.27
 step
   talk Turroc##266940
   accept For Honor##96822 |goto Durotar 53.95,42.59
@@ -327,11 +327,11 @@ step
 step
   only not completed(95998) not completed(96101) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Brakk##265809
-  turnin The Great Outdoors##96604 |goto Durotar 52.05,47.32
+  turnin The Great Outdoors##96604 |goto Durotar 51.98,47.27
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96658) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96658) not haveq(96661)
   talk Brakk##265809
-  accept Camping 101: Cooking##96655 |goto Durotar 52.05,47.32
+  accept Camping 101: Cooking##96655 |goto Durotar 51.98,47.27
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96658) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96658) not haveq(96661)
   note Speak with Cook Torka in Razor Hill to learn to become a cook.
@@ -385,13 +385,15 @@ step
   talk Gar'Thok##3139
   turnin From The Wreckage....##825 |goto Durotar 51.95,43.5
 step
-  kill Ukorsbane##266851 |goto Durotar 50.8,56.57 |tip Loot the quest item here — it starts the quest.
-  accept Ukor's Lost Pack##96876 |goto Durotar 50.8,56.57
+  only level>=8
+  kill Ukorsbane##266851 |goto Durotar 50.74,56.52 |elite |tip Loot the quest item here — it starts the quest.
+  accept Ukor's Lost Pack##96876 |goto Durotar 50.74,56.52
 step
   only Troll Priest
   talk Ken'jai##3707
   accept In Favor of Spirituality##5649 |goto Durotar 42.36,68.81
 step
+  only haveq(96876)
   note Return the pack to Ukor in southern Durotar.
   talk Ukor##6786
   turnin Ukor's Lost Pack##96876 |goto Durotar 52.06,68.31
@@ -454,7 +456,7 @@ step
   collect 8 Forgotten Loa Idol##277135 |q 97225 |goto Durotar 67.1,83.5
 step
   note Bring Eggs of the Bloodtalon Matriarch to Xar'Ti in Sen'jin Village.
-  collect Bloodtalon Martriarch Eggs##277128 |q 97223 |goto Durotar 68.81,71.78 |tip {dropsfrom}Bloodtalon Matriarch
+  collect Bloodtalon Matriarch Eggs##277128 |q 97223 |goto Durotar 68.81,71.78 |tip {dropsfrom}Bloodtalon Matriarch
 step
   talk Lar Prowltusk##3140
   turnin Thwarting Kolkar Aggression##786 |goto Durotar 54.44,74.35
@@ -548,7 +550,14 @@ step
   accept Threat from Below##99051 |goto Durotar 52.24,43.15
 step
   note Collect 9 Naga Spinefins.
-  collect 9 Naga Spinefin##286008 |q 99051 |goto Durotar 58.88,26.19 |tip {dropsfrom}Spitelash Scout, Spitelash Attendant
+  collect 9 Naga Spinefin##286008 |q 99051 |goto Durotar 59.38,25.92 |tip {dropsfrom}Spitelash Scout, Spitelash Attendant
+step
+  kill Dustwind Storm Witch##3118 |goto Durotar 51.56,21.65 |tip Loot the quest item here — it starts the quest.
+  accept A Simmering Storm##97281 |goto Durotar 51.56,21.65
+step
+  note Bring the Dull Stormy Orb to Rezlak near Drygulch Ravine.
+  talk Rezlak##3293
+  turnin A Simmering Storm##97281 |goto Durotar 46.37,22.94
 step
   talk Rezlak##3293
   accept Winds in the Desert##834 |goto Durotar 46.37,22.94
@@ -576,23 +585,6 @@ step
 step
   talk Rezlak##3293
   accept Securing the Lines##835 |goto Durotar 46.37,22.94
-step
-  kill Dustwind Storm Witch##3118 |goto Durotar 51.56,21.65 |tip Loot the quest item here — it starts the quest.
-  accept A Simmering Storm##97281 |goto Durotar 51.56,21.65
-step
-  note Kill 12 Dustwind Savages and 8 Dustwind Storm Witches for Rezlak near Drygulch Ravine.
-  kill Dustwind Storm Witch##3118 |q 835/2 |goto Durotar 51.56,21.65
-  kill Dustwind Savage##3117 |q 835 |goto Durotar 54.03,23.56
-step
-  talk Rezlak##3293
-  turnin Securing the Lines##835 |goto Durotar 46.37,22.94
-step
-  note Bring the Dull Stormy Orb to Rezlak near Drygulch Ravine.
-  talk Rezlak##3293
-  turnin A Simmering Storm##97281 |goto Durotar 46.37,22.94
-step
-  kill Halikor##266852 |goto Durotar 41.77,25.1 |tip Loot the quest item here — it starts the quest.
-  accept Halikor's Hoof##96877 |goto Durotar 41.77,25.1
 step
   talk Orgnil Soulscar##3142
   turnin Threat from Below##99051 |goto Durotar 52.24,43.15
@@ -623,6 +615,7 @@ step
   talk Thotar##3171
   accept The Hunter's Path##6067 |goto Durotar 51.85,43.49
 step
+  only level>=12
   talk Orgnil Soulscar##3142
   accept Threat from Below##99052 |goto Durotar 52.24,43.15
 step
@@ -631,6 +624,10 @@ step
 step
   talk Misha Tor'kren##3193
   turnin Lost But Not Forgotten##816 |goto Durotar 43.1,30.24
+step
+  only level>=12
+  kill Halikor##266852 |goto Durotar 41.85,25.86 |elite |tip Loot the quest item here — it starts the quest.
+  accept Halikor's Hoof##96877 |goto Durotar 41.85,25.86
 step
   note Bring Fizzle's Claw to Orgnil Soulscar in Razor Hill.
   collect Fizzle's Claw##4869 |q 806 |goto Durotar 42.12,26.66 |tip {dropsfrom}Fizzle Darkstorm
@@ -648,14 +645,23 @@ step
   talk Margoz##3208
   accept Skull Rock##827 |goto Durotar 56.41,20.04
 step
-  note Kill the sea giant along Durotar's north coast and bring back proof of your accomplishment.
-  collect Aggor's Belt##286009 |q 99052 |goto Durotar 59.22,17.6 |tip {dropsfrom}Aggor the Young
+  note Kill 12 Dustwind Savages and 8 Dustwind Storm Witches for Rezlak near Drygulch Ravine.
+  kill Dustwind Savage##3117 |q 835/1 |goto Durotar 54.03,23.56
+  kill Dustwind Storm Witch##3118 |q 835 |goto Durotar 51.56,21.65
 step
-  kill Gazz'uz##3204 |goto Durotar 52.61,8.82 |tip Loot the quest item here — it starts the quest.
-  accept Burning Shadows##832 |goto Durotar 52.61,8.82
+  only haveq(99052)
+  note Kill the sea giant along Durotar's north coast and bring back proof of your accomplishment.
+  kill Aggor the Young##275666 |q 99052 |goto Durotar 59.22,17.6 |elite
+  collect Aggor's Belt##286009 |q 99052 |goto Durotar 59.22,17.6
 step
   note Gather Searing Collars from the cultists in Skull Rock.
   collect Searing Collar##4871 |q 827 |goto Durotar 53.15,29.14 |tip {dropsfrom}Burning Blade Thug, Burning Blade Neophyte, Burning Blade Fanatic
+step
+  talk Rezlak##3293
+  turnin Securing the Lines##835 |goto Durotar 46.37,22.94
+step
+  kill Gazz'uz##3204 |goto Durotar 52.61,8.82 |tip Loot the quest item here — it starts the quest.
+  accept Burning Shadows##832 |goto Durotar 52.61,8.82
 step
   talk Margoz##3208
   turnin Skull Rock##827 |goto Durotar 56.41,20.04
@@ -672,6 +678,7 @@ step
   talk Thotar##3171
   turnin The Hunter's Path##6069 |goto Durotar 51.85,43.49
 step
+  only haveq(99052)
   talk Orgnil Soulscar##3142
   turnin Threat from Below##99052 |goto Durotar 52.24,43.15
 step
@@ -740,6 +747,7 @@ step
   talk Gan'rul Bloodeye##5875
   accept Creature of the Void##1501 |goto Orgrimmar 48.25,45.28
 step
+  only haveq(96877)
   note Deliver Halikor's Hoof to Orgrimmar.
   talk Kamari##5811
   turnin Halikor's Hoof##96877 |goto Orgrimmar 63.28,44.75 |tip {turninat}Orgrimmar
@@ -796,6 +804,23 @@ step
   talk Un'Thuwa##5880
   turnin Ju-Ju Heaps##1884 |goto Durotar 56.31,75.11
 step
+  only Tauren Druid not completed(5926) not completed(5928) not haveq(5926) not haveq(5928)
+  note Speak with Turak Runetotem on the Elder Rise of Thunder Bluff.
+  talk Turak Runetotem##3033
+  turnin Heeding the Call##5927 |goto Thunder Bluff 76.48,27.22 |tip {turninat}Thunder Bluff
+step
+  only completed(76160)
+  talk Boarton Shadetotem##205729
+  accept Stalk With The Earthmother##76240 |goto Thunder Bluff 39.44,65.82
+step
+  only completed(76160)
+  note Buy or catch a Raw Brilliant Smallfish, then use the Knife Set to fillet it in front of Boarton Shadetotem in Thunder Bluff.
+  collect Fish Chunks##206345 |q 76240 |goto Thunder Bluff 39.44,65.82
+step
+  only completed(76160)
+  talk Boarton Shadetotem##205729
+  turnin Stalk With The Earthmother##76240 |goto Thunder Bluff 39.44,65.82 |tip {turninat}Thunder Bluff
+step
   talk Thrall##4949
   turnin Hidden Enemies##5726 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
 step
@@ -823,11 +848,6 @@ step
 step
   talk Thrall##4949
   turnin Hidden Enemies##5727 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
-step
-  only Tauren Druid not completed(5926) not completed(5928) not haveq(5926) not haveq(5928)
-  note Speak with Turak Runetotem on the Elder Rise of Thunder Bluff.
-  talk Turak Runetotem##3033
-  turnin Heeding the Call##5927 |goto Thunder Bluff 76.48,27.22 |tip {turninat}Thunder Bluff
 step
   only Tauren Hunter not completed(6065) not completed(6066) not haveq(6065) not haveq(6066)
   note Speak with Yaw Sharpmane in Bloodhoof Village.

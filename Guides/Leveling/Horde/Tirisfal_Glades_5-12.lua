@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silverpine Forest (11-20)",
-	rev = "ba6e5a1c",
+	rev = "d2674387",
 }, [[
 step
   only Undead level>=1
@@ -15,10 +15,6 @@ step
   only Warlock not completed(1485) not haveq(1485) level>=1
   talk Venya Marthand##5667
   accept Piercing the Veil##1470 |goto Tirisfal Glades 30.98,66.41
-step
-  only Undead Paladin level>=1
-  talk Shadow Priest Sarvis##1569
-  accept A Difficult Path##98601 |goto Tirisfal Glades 30.84,66.2
 step
   only Warlock not completed(1485) not haveq(1485) haveq(1470)
   note Bring Venya Marthand 3 Rattlecage Skulls.
@@ -32,11 +28,6 @@ step
   only Warlock not completed(1485) not haveq(1485) haveq(1470)
   talk Venya Marthand##5667
   turnin Piercing the Veil##1470 |goto Tirisfal Glades 30.98,66.41
-step
-  only Undead Paladin haveq(98601)
-  note Read the Consecrated Scroll and speak to Aramis Hammerhand in the church in Deathknell.
-  talk Aramis Hammerhand##244808
-  turnin A Difficult Path##98601 |goto Tirisfal Glades 31.04,66.45
 step
   only level>=1
   talk Shadow Priest Sarvis##1569
@@ -75,15 +66,19 @@ step
   talk Shadow Priest Sarvis##1569
   accept Rattling the Rattlecages##3901 |goto Tirisfal Glades 30.84,66.2
 step
+  only Undead Paladin completed(364)
+  talk Shadow Priest Sarvis##1569
+  accept A Difficult Path##98601 |goto Tirisfal Glades 30.84,66.2
+step
   talk Novice Elreth##1661
   accept The Damned##376 |goto Tirisfal Glades 30.86,66.05
 step
-  only Undead Paladin
+  only Undead Paladin completed(364)
   talk Aramis Hammerhand##244808
-  accept Rediscovering the Light##90902 |goto Tirisfal Glades 31.04,66.45
+  accept Rediscovering the Light##90902 |goto Tirisfal Glades 31.1,66.41
 step
   talk Aramis Hammerhand##244808
-  accept A Light in the Darkness##98389 |goto Tirisfal Glades 31.04,66.45
+  accept A Light in the Darkness##98389 |goto Tirisfal Glades 31.1,66.41
 step
   note Novice Elreth requires 6 Scavenger Paws and 6 Duskbat Wings.
   collect 6 Duskbat Wing##3264 |q 376/2 |goto Tirisfal Glades 29.94,66.22 |tip {dropsfrom}Duskbat, Mangy Duskbat
@@ -93,9 +88,9 @@ step
   note Kill 12 Rattlecage Skeletons, and then return to Shadow Priest Sarvis in Deathknell when you are done.
   kill Rattlecage Skeleton##1890 |q 3901 |goto Tirisfal Glades 32.91,61.62
 step
-  only Undead Paladin
+  only Undead Paladin haveq(90902)
   note Heal 5 Injured Deathguard with your Holy Light ability.
-  talk Injured Deathguard##259377 |q 90902 |goto Tirisfal Glades 31.99,63.83
+  talk Injured Deathguard##259377 |q 90902 |goto Tirisfal Glades 32.57,64.21
 step
   talk Novice Elreth##1661
   turnin The Damned##376 |goto Tirisfal Glades 30.86,66.05
@@ -129,9 +124,14 @@ step
   talk Shadow Priest Sarvis##1569
   turnin Rattling the Rattlecages##3901 |goto Tirisfal Glades 30.84,66.2
 step
-  only Undead Paladin
+  only Undead Paladin haveq(90902)
   talk Aramis Hammerhand##244808
-  turnin Rediscovering the Light##90902 |goto Tirisfal Glades 31.04,66.45
+  turnin Rediscovering the Light##90902 |goto Tirisfal Glades 31.1,66.41
+step
+  only Undead Paladin haveq(98601)
+  note Read the Consecrated Scroll and speak to Aramis Hammerhand in the church in Deathknell.
+  talk Aramis Hammerhand##244808
+  turnin A Difficult Path##98601 |goto Tirisfal Glades 31.1,66.41
 step
   talk Executor Arren##1570
   accept Night Web's Hollow##380 |goto Tirisfal Glades 32.15,66.01
@@ -163,7 +163,7 @@ step
   kill Night Web Spider##1505 |q 380 |goto Tirisfal Glades 24.8,59.69
 step
   note Free 6 Webbed Victims in Night's Web Hollow for Aramis Hammerhand in Deathknell.
-  talk Webbed Forsaken##271961 |q 98389 |goto Tirisfal Glades 24.5,59.75
+  talk Webbed Forsaken##271961 |q 98389 |goto Tirisfal Glades 24.9,59.43
 step
   talk Executor Arren##1570
   turnin Night Web's Hollow##380 |goto Tirisfal Glades 32.15,66.01
@@ -172,27 +172,26 @@ step
   turnin Marla's Last Wish##6395 |goto Tirisfal Glades 30.86,66.05
 step
   talk Aramis Hammerhand##244808
-  turnin A Light in the Darkness##98389 |goto Tirisfal Glades 31.04,66.45
+  turnin A Light in the Darkness##98389 |goto Tirisfal Glades 31.1,66.41
 step
   talk Executor Arren##1570
   accept The Scarlet Crusade##381 |goto Tirisfal Glades 32.15,66.01
 step
+  only Undead Paladin completed(90902)
+  talk Aramis Hammerhand##244808
+  accept Coming to Terms##91208 |goto Tirisfal Glades 31.1,66.41
+step
   only Undead Paladin
   talk Aramis Hammerhand##244808
-  accept Coming to Terms##91208 |goto Tirisfal Glades 31.04,66.45
+  accept Continue Your Training##91209 |goto Tirisfal Glades 31.1,66.41
 step
-  only Undead Paladin
-  talk Aramis Hammerhand##244808
-  accept Continue Your Training##91209 |goto Tirisfal Glades 31.04,66.45
-step
-  only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96652) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96659)
-  talk Executor Arren##1570
-  accept The Adventurer##96656 |goto Tirisfal Glades 32.15,66.01
-step
-  only Undead Paladin
+  only Undead Paladin haveq(91208)
   note Find the Frightened Paladin in Deathknell.
+  talk Frightened Paladin##246143 |q 91208 |goto Tirisfal Glades 27.69,63.82
+step
+  only Undead Paladin haveq(91208)
   talk Aramis Hammerhand##244808
-  turnin Coming to Terms##91208 |goto Tirisfal Glades 31.04,66.45
+  turnin Coming to Terms##91208 |goto Tirisfal Glades 31.1,66.41
 step
   note Bring Executor Arren 12 Scarlet Armbands from Scarlet Converts and Scarlet Initiates.
   collect 12 Scarlet Armband##3266 |q 381 |goto Tirisfal Glades 37.58,67.98 |tip {dropsfrom}Scarlet Convert, Scarlet Initiate, Meven Korgal
@@ -216,20 +215,36 @@ step
   talk Executor Arren##1570
   accept Vital Intelligence##383 |goto Tirisfal Glades 32.15,66.01
 step
+  only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96652) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96659)
+  talk Executor Arren##1570
+  accept The Adventurer##96656 |goto Tirisfal Glades 32.15,66.01
+step
   talk Deathguard Simmer##1519
   accept Fields of Grief##365 |goto Tirisfal Glades 40.91,54.17
 step
   talk Gordo##10666
   accept Gordo's Task##5481 |goto Tirisfal Glades 43.06,54.69
 step
+  talk Bareth Dawnstone##275954
+  accept Seeking Refuge##99144 |goto Tirisfal Glades 31.96,46.33
+step
+  note Help Bareth Dawnstone escape Crusader's Outpost, and report his safety to Shari Stilwell in Brill.
+  goto Tirisfal Glades 39,48.75 |tip Escort Bareth Dawnstone out of Crusader's Outpost
+step
+  note Steal 10 pumpkins from the farm to the west, just north of Deathknell and take them to Apothecary Johaan in Brill.
+  collect Tirisfal Pumpkin##2846 |q 365 |goto Tirisfal Glades 35.86,50.49
+step
+  kill Rattlecage Soldier##1520 |goto Tirisfal Glades 45.84,40.43 |tip Loot the quest item here — it starts the quest.
+  accept A Letter Undelivered##361 |goto Tirisfal Glades 45.84,40.43
+step
   only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96652) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96659)
   note Speak to Eleanor Shackleton near Brill.
   talk Eleanor Shackleton##265812
-  turnin The Adventurer##96656 |goto Tirisfal Glades 57.23,55.47
+  turnin The Adventurer##96656 |goto Tirisfal Glades 57.28,55.49
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96608)
   talk Eleanor Shackleton##265812
-  accept The Great Outdoors##96607 |goto Tirisfal Glades 57.23,55.47
+  accept The Great Outdoors##96607 |goto Tirisfal Glades 57.28,55.49
 step
   note Collect 3 Gloom Weed and deliver them to Junior Apothecary Holland in the Brill graveyard.
   collect 3 Gloom Weed##12737 |q 5481 |goto Tirisfal Glades 48.7,54.9
@@ -240,15 +255,22 @@ step
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96605) not completed(96606) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96608)
   talk Eleanor Shackleton##265812
-  turnin The Great Outdoors##96607 |goto Tirisfal Glades 57.23,55.47
+  turnin The Great Outdoors##96607 |goto Tirisfal Glades 57.28,55.49
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96661)
   talk Eleanor Shackleton##265812
-  accept Camping 101: Cooking##96658 |goto Tirisfal Glades 57.23,55.47
+  accept Camping 101: Cooking##96658 |goto Tirisfal Glades 57.28,55.49
 step
   note Deliver the Nondescript Letter to Innkeeper Renee in Tirisfal Glades.
   talk Innkeeper Renee##5688
   turnin A Rogue's Deal##8 |goto Tirisfal Glades 61.72,52.05
+step
+  note Find Yvette Farthing, and deliver to her the letter from Thurman Agamand.
+  talk Yvette Farthing##1560
+  turnin A Letter Undelivered##361 |goto Tirisfal Glades 61.58,52.6
+step
+  talk Apothecary Johaan##1518
+  turnin Fields of Grief##365 |goto Tirisfal Glades 59.45,52.4
 step
   note Deliver the Scarlet Crusade Documents to Executor Zygand in Brill.
   talk Executor Zygand##1515
@@ -262,10 +284,8 @@ step
   talk Dark Cleric Beryl##2129
   turnin In Favor of Darkness##5651 |goto Tirisfal Glades 61.57,52.19
 step
-  only Undead Paladin
-  note Follow the road east out of Deathknell to find the town of Brill. Report to Shari Stilwell to continue your training.
   talk Shari Stilwell##246152
-  turnin Continue Your Training##91209 |goto Tirisfal Glades 60.25,52.62
+  turnin Seeking Refuge##99144 |goto Tirisfal Glades 60.22,52.66
 step
   talk Deathguard Dillinger##1496
   accept A Putrid Task##404 |goto Tirisfal Glades 58.2,51.45
@@ -275,6 +295,9 @@ step
 step
   talk Executor Zygand##1515
   accept Patience##99141 |goto Tirisfal Glades 60.59,51.76
+step
+  talk Apothecary Johaan##1518
+  accept Fields of Grief##407 |goto Tirisfal Glades 59.45,52.4
 step
   talk Junior Apothecary Holland##10665
   accept Doom Weed##5482 |goto Tirisfal Glades 57.44,48.85
@@ -298,24 +321,33 @@ step
   note Apothecary Johaan in the town of Brill wants you to collect 5 Vials of Darkhound Blood.
   collect 5 Darkhound Blood##2858 |q 367 |goto Tirisfal Glades 57.81,52.71 |tip {dropsfrom}Decrepit Darkhound, Cursed Darkhound, Ravenous Darkhound
 step
+  only Undead Paladin
+  note Follow the road east out of Deathknell to find the town of Brill. Report to Shari Stilwell to continue your training.
+  talk Shari Stilwell##246152 |q 91209 |goto Tirisfal Glades 60.22,52.66
+step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96661)
   note Speak with William Pickman in Brill to learn to become a cook.
-  talk William Pickman##265944 |q 96658 |goto Tirisfal Glades 61.77,51.5
+  talk William Pickman##265944 |q 96658 |goto Tirisfal Glades 61.75,51.44
 step
   note Obtain reports from Deathguard Dillinger, Deathguard Kristof, and Gordo for Executor Zygand.
-  talk Deathguard Dillinger##1496
-  collect Dillinger's Report##286200 |q 99141/1 |goto Tirisfal Glades 58.2,51.45
-  talk Deathguard Kristof##251001
-  collect Kristof's Report##286201 |q 99141/2 |goto Tirisfal Glades 65.3,60.26
-  talk Gordo##10666
-  collect Gordo's Report##286202 |q 99141 |goto Tirisfal Glades 43.06,54.69
+  collect Dillinger's Report##286200 |q 99141/1 |goto Tirisfal Glades 58.2,51.45 |tip {dropsfrom}Deathguard Dillinger
+  collect Kristof's Report##286201 |q 99141/2 |goto Tirisfal Glades 65.25,60.2 |tip {dropsfrom}Deathguard Kristof
+  collect Gordo's Report##286202 |q 99141 |goto Tirisfal Glades 43.06,54.69 |tip {dropsfrom}Gordo
 step
   talk Apothecary Johaan##1518
   turnin A New Plague##367 |goto Tirisfal Glades 59.45,52.4
 step
+  note Take the Laced Pumpkin to the Captured Scarlet Zealot who is being held in the cellar of the Gallow's End Tavern.
+  talk Captured Scarlet Zealot##1931
+  turnin Fields of Grief##407 |goto Tirisfal Glades 61.97,51.29
+step
+  only Undead Paladin
+  talk Shari Stilwell##246152
+  turnin Continue Your Training##91209 |goto Tirisfal Glades 60.22,52.66
+step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96661)
   talk William Pickman##265944
-  turnin Camping 101: Cooking##96658 |goto Tirisfal Glades 61.77,51.5
+  turnin Camping 101: Cooking##96658 |goto Tirisfal Glades 61.75,51.44
 step
   note Punish 5 Deathguards for Executor Zygand.
   talk Executor Zygand##1515
@@ -324,6 +356,17 @@ step
   talk Executor Zygand##1515
   turnin Patience##99141 |goto Tirisfal Glades 60.59,51.76
 step
+  talk Apothecary Johaan##1518
+  accept A New Plague##368 |goto Tirisfal Glades 59.45,52.4
+step
+  talk Gretchen Dedmar##1521
+  accept The Chill of Death##375 |goto Tirisfal Glades 61.89,52.73
+step
+  note Bring five Duskbat Pelts and some Coarse Thread to Gretchen Dedmar in Brill.
+  talk Abigail Shiel##2118
+  buy Coarse Thread##2320 |q 375/2 |goto Tirisfal Glades 61.03,52.37
+  collect Duskbat Pelt##2876 |q 375 |goto Tirisfal Glades 57.09,54.21 |tip {dropsfrom}Greater Duskbat, Vampiric Duskbat
+step
   note Bring 7 Putrid Claws to Deathguard Dillinger in Brill.
   collect 7 Putrid Claw##2855 |q 404 |goto Tirisfal Glades 53.16,54.23 |tip {dropsfrom}Rotting Dead, Ravaged Corpse
 step
@@ -331,7 +374,16 @@ step
   collect 6 Dry Branch##279991 |q 86784 |goto Tirisfal Glades 56.1,53.4
 step
   talk Eleanor Shackleton##265812
-  turnin Sticks and Bones##86784 |goto Tirisfal Glades 57.23,55.47
+  turnin Sticks and Bones##86784 |goto Tirisfal Glades 57.28,55.49
+step
+  talk Gretchen Dedmar##1521
+  turnin The Chill of Death##375 |goto Tirisfal Glades 61.89,52.73
+step
+  talk Deathguard Dillinger##1496
+  turnin A Putrid Task##404 |goto Tirisfal Glades 58.2,51.45
+step
+  talk Deathguard Dillinger##1496
+  accept The Mills Overrun##426 |goto Tirisfal Glades 58.2,51.45
 step
   note Kill Rot Hide Graverobbers and Rot Hide Mongrels.
   kill Rot Hide Graverobber##1941 |q 358 |goto Tirisfal Glades 55.78,42.27
@@ -343,39 +395,18 @@ step
   note Find Deathguard Kel and heal his wounds using Lesser Heal (Rank 2). Afterwards, grant him Power Word: Fortitude and then return to Dark Cleric Beryl in Brill.
   talk Deathguard Kel##12428 |q 5650 |goto Tirisfal Glades 59.18,46.5
 step
-  kill Rattlecage Soldier##1520 |goto Tirisfal Glades 45.84,40.43 |tip Loot the quest item here — it starts the quest.
-  accept A Letter Undelivered##361 |goto Tirisfal Glades 45.84,40.43
-step
-  talk Bareth Dawnstone##275954
-  accept Seeking Refuge##99144 |goto Tirisfal Glades 31.96,46.32
-step
-  note Steal 10 pumpkins from the farm to the west, just north of Deathknell and take them to Apothecary Johaan in Brill.
-  collect Tirisfal Pumpkin##2846 |q 365 |goto Tirisfal Glades 35.86,50.49
+  note Gather 5 Notched Ribs and 3 Blackened Skulls, then return to Deathguard Dillinger in Brill.
+  collect 5 Notched Rib##3162 |q 426/1 |goto Tirisfal Glades 45.84,40.43 |tip {dropsfrom}Rattlecage Soldier, Cracked Skull Soldier
+  collect 3 Blackened Skull##3163 |q 426 |goto Tirisfal Glades 46.91,34.88 |tip {dropsfrom}Darkeye Bonecaster, Shadowvale Mystic
 step
   note Executor Zygand of Brill wants you to kill 10 Scarlet Warriors.
   kill Scarlet Warrior##1535 |q 427 |goto Tirisfal Glades 32.08,47.4
 step
-  talk Calvin Montague##6784
-  accept A Rogue's Deal##590 |goto Tirisfal Glades 38.23,56.79
-step
-  note Defeat Calvin Montague in Deathknell.
-  kill Calvin Montague##6784 |q 590 |goto Tirisfal Glades 38.23,56.79
-step
-  talk Calvin Montague##6784
-  turnin A Rogue's Deal##590 |goto Tirisfal Glades 38.23,56.79
-step
   talk Magistrate Sevren##1499
   turnin Graverobbers##358 |goto Tirisfal Glades 61.26,50.84
 step
-  note Find Yvette Farthing, and deliver to her the letter from Thurman Agamand.
-  talk Yvette Farthing##1560
-  turnin A Letter Undelivered##361 |goto Tirisfal Glades 61.58,52.6
-step
-  talk Apothecary Johaan##1518
-  turnin Fields of Grief##365 |goto Tirisfal Glades 59.45,52.4
-step
   talk Deathguard Dillinger##1496
-  turnin A Putrid Task##404 |goto Tirisfal Glades 58.2,51.45
+  turnin The Mills Overrun##426 |goto Tirisfal Glades 58.2,51.45
 step
   talk Executor Zygand##1515
   turnin At War With The Scarlet Crusade##427 |goto Tirisfal Glades 60.59,51.76
@@ -387,104 +418,37 @@ step
   talk Dark Cleric Beryl##2129
   turnin Garments of Darkness##5650 |goto Tirisfal Glades 61.57,52.19
 step
-  note Help Bareth Dawnstone escape Crusader's Outpost, and report his safety to Shari Stilwell in Brill.
-  talk Shari Stilwell##246152
-  turnin Seeking Refuge##99144 |goto Tirisfal Glades 60.25,52.62
-step
   talk Deathguard Burgess##1652
   accept Proof of Demise##374 |goto Tirisfal Glades 60.93,52.01
-step
-  talk Apothecary Johaan##1518
-  accept Fields of Grief##407 |goto Tirisfal Glades 59.45,52.4
 step
   talk Magistrate Sevren##1499
   accept The Prodigal Lich##405 |goto Tirisfal Glades 61.26,50.84
 step
-  talk Deathguard Dillinger##1496
-  accept The Mills Overrun##426 |goto Tirisfal Glades 58.2,51.45
-step
   talk Magistrate Sevren##1499
   accept Forsaken Duties##359 |goto Tirisfal Glades 61.26,50.84
 step
-  talk Apothecary Johaan##1518
-  accept A New Plague##368 |goto Tirisfal Glades 59.45,52.4
-step
   talk Executor Zygand##1515
   accept At War With The Scarlet Crusade##370 |goto Tirisfal Glades 60.59,51.76
-step
-  talk Gretchen Dedmar##1521
-  accept The Chill of Death##375 |goto Tirisfal Glades 61.89,52.73
 step
   talk Coleman Farthing##1500
   accept The Haunted Mills##362 |goto Tirisfal Glades 61.72,52.29
 step
   click Wanted!##711
-  accept Wanted: Maggot Eye##398 |goto Tirisfal Glades 60.74,51.5
+  accept WANTED: Maggot Eye##398 |goto Tirisfal Glades 60.74,51.5
 step
   talk Carolai Anise##2132
   accept That Shadowvale Green Elixir##95314 |goto Tirisfal Glades 59.43,52.19
 step
-  note Take the Laced Pumpkin to the Captured Scarlet Zealot who is being held in the cellar of the Gallow's End Tavern.
-  talk Captured Scarlet Zealot##1931
-  turnin Fields of Grief##407 |goto Tirisfal Glades 61.97,51.29
+  note Slay Devlin Agamand, and bring Devlin's Remains to Coleman Farthing in Brill.
+  collect Devlin's Remains##2831 |q 362 |goto Tirisfal Glades 47.23,40.02 |tip {dropsfrom}Devlin Agamand
 step
-  note Bring five Duskbat Pelts and some Coarse Thread to Gretchen Dedmar in Brill.
-  talk Abigail Shiel##2118
-  buy Coarse Thread##2320 |q 375/2 |goto Tirisfal Glades 61.03,52.37
-  collect Duskbat Pelt##2876 |q 375 |goto Tirisfal Glades 57.09,54.21 |tip {dropsfrom}Greater Duskbat, Vampiric Duskbat
+  note Bring 10 Scarlet Insignia Rings to Deathguard Burgess in Brill.
+  collect 10 Scarlet Insignia Ring##2875 |q 374 |goto Tirisfal Glades 32.08,47.4 |tip {dropsfrom}Scarlet Warrior, Scarlet Missionary, Scarlet Bodyguard
 step
   note Executor Zygand in Brill wants you to kill Captain Perrine, 3 Scarlet Zealots and 3 Scarlet Missionaries.
   kill Scarlet Missionary##1536 |q 370/3 |goto Tirisfal Glades 50.23,66.93
   kill Captain Perrine##1662 |q 370/1 |goto Tirisfal Glades 51.14,67.8
   kill Scarlet Zealot##1537 |q 370 |goto Tirisfal Glades 78.38,56.03
-step
-  note Speak with Deathguard Linnea.
-  talk Deathguard Linnea##1495
-  turnin Forsaken Duties##359 |goto Tirisfal Glades 65.49,60.25
-step
-  talk Deathguard Linnea##1495
-  accept Return to the Magistrate##360 |goto Tirisfal Glades 65.49,60.25
-step
-  note Slay Devlin Agamand, and bring Devlin's Remains to Coleman Farthing in Brill.
-  collect Devlin's Remains##2831 |q 362 |goto Tirisfal Glades 47.34,40.78 |tip {dropsfrom}Devlin Agamand
-step
-  note Gather 5 Notched Ribs and 3 Blackened Skulls, then return to Deathguard Dillinger in Brill.
-  collect 5 Notched Rib##3162 |q 426/1 |goto Tirisfal Glades 45.84,40.43 |tip {dropsfrom}Rattlecage Soldier, Cracked Skull Soldier
-  collect 3 Blackened Skull##3163 |q 426 |goto Tirisfal Glades 46.91,34.88 |tip {dropsfrom}Darkeye Bonecaster, Shadowvale Mystic
-step
-  note Bring 10 Scarlet Insignia Rings to Deathguard Burgess in Brill.
-  collect 10 Scarlet Insignia Ring##2875 |q 374 |goto Tirisfal Glades 32.08,47.4 |tip {dropsfrom}Scarlet Warrior, Scarlet Missionary, Scarlet Bodyguard
-step
-  talk Hilda the Breaker##246389
-  accept As Above, So Below##99152 |goto Tirisfal Glades 21.95,46.94
-step
-  talk Ephram Barbaro##259190
-  accept The One That Got Away##99153 |goto Tirisfal Glades 20.22,46.53
-step
-  kill Whispering Horror##260396 |goto Tirisfal Glades 9.52,60.28 |tip Loot the quest item here — it starts the quest.
-  accept Whispering Horror Residue##95328 |goto Tirisfal Glades 9.52,60.28
-step
-  note Collect 8 Bottles of Whispering Elixir from Shadowvale, then return to Carolai Anise in Brill.
-  collect 8 Bottle of Whispering Elixir##268801 |q 95314 |goto Tirisfal Glades 9.5,62 |tip {dropsfrom}Bottle
-step
-  note Deliver Whispering Horror Residue to Father Lankester in the War Quarter of Undercity.
-  collect Whispering Horror Residue##268812 |q 95328 |goto Tirisfal Glades 9.52,60.28 |tip {dropsfrom}Whispering Horror
-step
-  note Collect 6 Faintly Glowing Bones for Hilda the Breaker.
-  collect 6 Faintly Glowing Bone##286259 |q 99152 |goto Tirisfal Glades 9.76,66.41 |tip {dropsfrom}Shadowvale Lurcher, Shadowvale Mystic
-step
-  note Find the Hidden Crystal Fragment beneath Shadowvale for Ephram Barbaro.
-  collect Glowing Crystal Fragment##286269 |q 99153 |goto Tirisfal Glades 9.8,69.3
-step
-  talk Hilda the Breaker##246389
-  turnin As Above, So Below##99152 |goto Tirisfal Glades 21.95,46.94
-step
-  talk Ephram Barbaro##259190
-  turnin The One That Got Away##99153 |goto Tirisfal Glades 20.22,46.53
-step
-  note Return to Magistrate Sevren in Brill.
-  talk Magistrate Sevren##1499
-  turnin Return to the Magistrate##360 |goto Tirisfal Glades 61.26,50.84
 step
   talk Coleman Farthing##1500
   turnin The Haunted Mills##362 |goto Tirisfal Glades 61.72,52.29
@@ -494,15 +458,6 @@ step
 step
   talk Deathguard Burgess##1652
   turnin Proof of Demise##374 |goto Tirisfal Glades 60.93,52.01
-step
-  talk Gretchen Dedmar##1521
-  turnin The Chill of Death##375 |goto Tirisfal Glades 61.89,52.73
-step
-  talk Deathguard Dillinger##1496
-  turnin The Mills Overrun##426 |goto Tirisfal Glades 58.2,51.45
-step
-  talk Carolai Anise##2132
-  turnin That Shadowvale Green Elixir##95314 |goto Tirisfal Glades 59.43,52.19
 step
   talk Executor Zygand##1515
   accept At War With The Scarlet Crusade##371 |goto Tirisfal Glades 60.59,51.76
@@ -515,10 +470,17 @@ step
 step
   only Undead Paladin
   talk Shari Stilwell##246152
-  accept A Second Home##91282 |goto Tirisfal Glades 60.25,52.62
+  accept A Second Home##91282 |goto Tirisfal Glades 60.22,52.66
 step
   talk Junior Apothecary Holland##10665
   accept Tomb Weed##99142 |goto Tirisfal Glades 57.44,48.85
+step
+  note Speak with Deathguard Linnea.
+  talk Deathguard Linnea##1495
+  turnin Forsaken Duties##359 |goto Tirisfal Glades 65.49,60.25
+step
+  talk Deathguard Linnea##1495
+  accept Return to the Magistrate##360 |goto Tirisfal Glades 65.49,60.25
 step
   talk Deathguard Linnea##1495
   accept Rear Guard Patrol##356 |goto Tirisfal Glades 65.49,60.25
@@ -526,9 +488,13 @@ step
   talk Shelene Rhobart##3549
   accept Hides for the Forsaken##97558 |goto Tirisfal Glades 65.43,60.12
 step
+  note Return to Magistrate Sevren in Brill.
+  talk Magistrate Sevren##1499
+  turnin Return to the Magistrate##360 |goto Tirisfal Glades 61.26,50.84
+step
   note Bring Shelene Rhobart 8 Duskbat Wing Membranes, 6 Darkhound Hides and 3 Vile Fin Murloc Skin.
-  collect 8 Duskbat Wing Membrane##278242 |q 97558/1 |goto Tirisfal Glades 57.09,54.21 |tip {dropsfrom}Greater Duskbat, Vampiric Duskbat
   collect 6 Darkhound Hide##278243 |q 97558/2 |goto Tirisfal Glades 57.81,52.71 |tip {dropsfrom}Decrepit Darkhound, Cursed Darkhound
+  collect 8 Duskbat Wing Membrane##278242 |q 97558/1 |goto Tirisfal Glades 57.09,54.21 |tip {dropsfrom}Greater Duskbat, Vampiric Duskbat
   collect 3 Vile Fin Murloc Skin##278244 |q 97558 |goto Tirisfal Glades 59.43,29.07 |tip {dropsfrom}Vile Fin Minor Oracle, Vile Fin Muckdweller
 step
   talk Shelene Rhobart##3549
@@ -548,37 +514,11 @@ step
   talk Deathguard Linnea##1495
   turnin Rear Guard Patrol##356 |goto Tirisfal Glades 65.49,60.25
 step
-  note Apothecary Johaan of the town of Brill needs 5 Vile Fin Scales from Murlocs in Tirisfal Glades.
-  collect 5 Vile Fin Scale##2859 |q 368 |goto Tirisfal Glades 62.63,30.69 |tip {dropsfrom}Vile Fin Puddlejumper, Vile Fin Minor Oracle, Vile Fin Muckdweller
-step
-  note Kill Maggot Eye and return to Executor Zygand in Brill with his paw for a reward.
-  collect Maggot Eye's Paw##3635 |q 398 |goto Tirisfal Glades 58.66,30.77 |tip {dropsfrom}Maggot Eye
-step
-  note Bring Gregor's Remains, Nissa's Remains and Thurman's Remains to Coleman Farthing in Brill.
-  collect Nissa's Remains##2828 |q 354/2 |goto Tirisfal Glades 49.74,36.34 |tip {dropsfrom}Nissa Agamand
-  collect Thurman's Remains##2830 |q 354/3 |goto Tirisfal Glades 44,33.64 |tip {dropsfrom}Thurman Agamand
-  collect Gregor's Remains##2829 |q 354 |goto Tirisfal Glades 46.74,29.31 |tip {dropsfrom}Gregor Agamand
-step
-  talk Coleman Farthing##1500
-  turnin Deaths in the Family##354 |goto Tirisfal Glades 61.72,52.29
-step
-  talk Apothecary Johaan##1518
-  turnin A New Plague##368 |goto Tirisfal Glades 59.45,52.4
-step
   talk Executor Zygand##1515
   turnin At War With The Scarlet Crusade##371 |goto Tirisfal Glades 60.59,51.76
 step
-  talk Executor Zygand##1515
-  turnin Wanted: Maggot Eye##398 |goto Tirisfal Glades 60.59,51.76
-step
   talk Junior Apothecary Holland##10665
   turnin Tomb Weed##99142 |goto Tirisfal Glades 57.44,48.85
-step
-  talk Coleman Farthing##1500
-  accept Speak with Sevren##355 |goto Tirisfal Glades 61.72,52.29
-step
-  talk Apothecary Johaan##1518
-  accept A New Plague##369 |goto Tirisfal Glades 59.45,52.4
 step
   talk Executor Zygand##1515
   accept At War With The Scarlet Crusade##372 |goto Tirisfal Glades 60.59,51.76
@@ -599,13 +539,6 @@ step
   talk Marion Call##2130
   accept Mennet Carkad##1885 |goto Tirisfal Glades 61.75,52
 step
-  talk Deathguard Terrence##1738
-  accept The Argent Emissary##96895 |goto Tirisfal Glades 63.47,56.55
-step
-  note Speak with Magistrate Sevren in Brill.
-  talk Magistrate Sevren##1499
-  turnin Speak with Sevren##355 |goto Tirisfal Glades 61.26,50.84
-step
   only Warrior not completed(1498) not haveq(1498)
   note Speak with Deathguard Dillinger in Brill.
   talk Deathguard Dillinger##1496
@@ -614,9 +547,6 @@ step
   only Warrior not completed(1498) not haveq(1498)
   talk Deathguard Dillinger##1496
   accept Ulag the Cleaver##1819 |goto Tirisfal Glades 58.2,51.45
-step
-  talk Magistrate Sevren##1499
-  accept The Family Crypt##408 |goto Tirisfal Glades 61.26,50.84
 step
   only Warrior not completed(1498) not haveq(1498)
   note Kill Ulag the Cleaver, then speak with Deathguard Dillinger.
@@ -639,55 +569,61 @@ step
   talk Coleman Farthing##1500
   turnin Speak with Coleman##1820 |goto Tirisfal Glades 61.72,52.29
 step
-  note Find the Argent Dawn member near the entrance to the Undercity.
-  talk Hadric Harlson##267009
-  turnin The Argent Emissary##96895 |goto Tirisfal Glades 65.88,61.1
+  note Apothecary Johaan of the town of Brill needs 5 Vile Fin Scales from Murlocs in Tirisfal Glades.
+  collect 5 Vile Fin Scale##2859 |q 368 |goto Tirisfal Glades 62.63,30.69 |tip {dropsfrom}Vile Fin Puddlejumper, Vile Fin Minor Oracle, Vile Fin Muckdweller
 step
-  talk Hadric Harlson##267009
-  accept The Cult of the Damned##96897 |goto Tirisfal Glades 65.88,61.1
+  note Kill Maggot Eye and return to Executor Zygand in Brill with his paw for a reward.
+  collect Maggot Eye's Paw##3635 |q 398 |goto Tirisfal Glades 58.66,30.77 |tip {dropsfrom}Maggot Eye
 step
-  talk Hadric Harlson##267009
-  accept Remnants of War##96898 |goto Tirisfal Glades 65.88,61.1
+  only Warrior
+  note Bring Coleman Farthing the Agamand Family Axe, the Agamand Family Sword, the Agamand Family Mace and the Agamand Family dagger.
+  collect Agamand Family Mace##7569 |q 1821/3 |goto Tirisfal Glades 52.66,27.04 |tip {dropsfrom}Agamand Weapon Rack
+  collect Agamand Family Dagger##7568 |q 1821/2 |goto Tirisfal Glades 51.88,27.14 |tip {dropsfrom}Agamand Weapon Rack
+  collect Agamand Family Axe##7567 |q 1821/1 |goto Tirisfal Glades 51.68,25.69 |tip {dropsfrom}Agamand Weapon Rack
+  collect Agamand Family Sword##7566 |q 1821 |goto Tirisfal Glades 52.66,25.85 |tip {dropsfrom}Agamand Weapon Rack
 step
-  talk Hadric Harlson##267009
-  accept Bandarion Keep##96899 |goto Tirisfal Glades 65.88,61.1
+  note Bring Gregor's Remains, Nissa's Remains and Thurman's Remains to Coleman Farthing in Brill.
+  collect Nissa's Remains##2828 |q 354/2 |goto Tirisfal Glades 49.74,36.34 |tip {dropsfrom}Nissa Agamand
+  collect Thurman's Remains##2830 |q 354/3 |goto Tirisfal Glades 42.84,32.54 |tip {dropsfrom}Thurman Agamand
+  collect Gregor's Remains##2829 |q 354 |goto Tirisfal Glades 45.79,29.39 |tip {dropsfrom}Gregor Agamand
 step
-  talk Deathguard Linnea##1495
-  accept Rear Guard Patrol##99156 |goto Tirisfal Glades 65.49,60.25
+  talk Coleman Farthing##1500
+  turnin Deaths in the Family##354 |goto Tirisfal Glades 61.72,52.29
 step
-  note Kill 8 Dark Neophytes and 8 Dark Enforcers in Tirisfal Glades.
-  kill Dark Enforcer##275437 |q 96897/2 |goto Tirisfal Glades 68.03,64.52
-  kill Dark Neophyte##267006 |q 96897/1 |goto Tirisfal Glades 67.98,64.57
-  kill Decrepit Darkhound##1547 |q 96897 |goto Tirisfal Glades 57.81,52.71
+  talk Apothecary Johaan##1518
+  turnin A New Plague##368 |goto Tirisfal Glades 59.45,52.4
 step
-  note Gather 12 Necrotic Crystal Fragments in Tirisfal Glades.
-  collect 12 Necrotic Crystal Fragment##275851 |q 96898 |goto Tirisfal Glades 67.98,64.57 |tip {dropsfrom}Dark Neophyte, Dark Enforcer, Naxxramas Crystal Fragment
+  talk Executor Zygand##1515
+  turnin WANTED: Maggot Eye##398 |goto Tirisfal Glades 60.59,51.76
 step
-  talk Hadric Harlson##267009
-  turnin The Cult of the Damned##96897 |goto Tirisfal Glades 65.88,61.1
+  only Warrior
+  talk Coleman Farthing##1500
+  turnin Agamand Heirlooms##1821 |goto Tirisfal Glades 61.72,52.29
 step
-  talk Hadric Harlson##267009
-  turnin Remnants of War##96898 |goto Tirisfal Glades 65.88,61.1
+  talk Coleman Farthing##1500
+  accept Speak with Sevren##355 |goto Tirisfal Glades 61.72,52.29
+step
+  talk Apothecary Johaan##1518
+  accept A New Plague##369 |goto Tirisfal Glades 59.45,52.4
+step
+  only Warrior
+  talk Coleman Farthing##1500
+  accept Heirloom Weapon##1822 |goto Tirisfal Glades 61.72,52.29
+step
+  note Speak with Magistrate Sevren in Brill.
+  talk Magistrate Sevren##1499
+  turnin Speak with Sevren##355 |goto Tirisfal Glades 61.26,50.84
+step
+  only Warrior
+  talk Coleman Farthing##1500
+  turnin Heirloom Weapon##1822 |goto Tirisfal Glades 61.72,52.29
 step
   note Apothecary Johaan in the town of Brill wants you to bring him 4 samples of venom from a Vicious Night Web Spider.
   collect Vicious Night Web Spider Venom##2872 |q 369 |goto Tirisfal Glades 86.74,53.2 |tip {dropsfrom}Vicious Night Web Spider
 step
-  note Bring Riptear's Heart to Deathguard Linnea.
-  collect Riptear's Heart##286326 |q 99156 |goto Tirisfal Glades 83.69,44.83 |tip {dropsfrom}Riptear
-step
   note Executor Zygand in the town of Brill wants you to assassinate Captain Melrache and his two bodyguards.
   kill Scarlet Bodyguard##1660 |q 372/2 |goto Tirisfal Glades 79.46,25.25
   kill Captain Melrache##1665 |q 372 |goto Tirisfal Glades 79.52,25.15
-step
-  note Kill 8 Wailing Ancestors and 8 Rotting Ancestors.
-  kill Wailing Ancestor##1534 |q 408 |goto Tirisfal Glades 51.87,28.76
-step
-  only Warrior
-  note Bring Coleman Farthing the Agamand Family Axe, the Agamand Family Sword, the Agamand Family Mace and the Agamand Family dagger.
-  collect Agamand Family Dagger##7568 |q 1821/2 |goto Tirisfal Glades 51.88,27.14 |tip {dropsfrom}Agamand Weapon Rack
-  collect Agamand Family Mace##7569 |q 1821/3 |goto Tirisfal Glades 52.66,27.04 |tip {dropsfrom}Agamand Weapon Rack
-  collect Agamand Family Sword##7566 |q 1821/4 |goto Tirisfal Glades 52.66,25.85 |tip {dropsfrom}Agamand Weapon Rack
-  collect Agamand Family Axe##7567 |q 1821 |goto Tirisfal Glades 51.68,25.69 |tip {dropsfrom}Agamand Weapon Rack
 step
   talk Apothecary Johaan##1518
   turnin A New Plague##369 |goto Tirisfal Glades 59.45,52.4
@@ -695,117 +631,131 @@ step
   talk Executor Zygand##1515
   turnin At War With The Scarlet Crusade##372 |goto Tirisfal Glades 60.59,51.76
 step
-  talk Magistrate Sevren##1499
-  turnin The Family Crypt##408 |goto Tirisfal Glades 61.26,50.84
-step
-  only Warrior
-  talk Coleman Farthing##1500
-  turnin Agamand Heirlooms##1821 |goto Tirisfal Glades 61.72,52.29
-step
   talk Apothecary Johaan##1518
   accept A New Plague##492 |goto Tirisfal Glades 59.45,52.4
-step
-  only Warrior
-  talk Coleman Farthing##1500
-  accept Heirloom Weapon##1822 |goto Tirisfal Glades 61.72,52.29
 step
   note Bring Johaan's Special Drink to the Captured Mountaineer.
   talk Captured Mountaineer##2211
   turnin A New Plague##492 |goto Tirisfal Glades 61.94,51.4
 step
-  only Warrior
-  talk Coleman Farthing##1500
-  turnin Heirloom Weapon##1822 |goto Tirisfal Glades 61.72,52.29
+  talk Magistrate Sevren##1499
+  accept The Family Crypt##408 |goto Tirisfal Glades 61.26,50.84
 step
-  only Undead Paladin
-  talk Deathguard Falgan##257663
-  accept A Lesson in Divinity##94440 |goto Tirisfal Glades 86.68,47.69
+  talk Deathguard Terrence##1738
+  accept The Argent Emissary##96895 |goto Tirisfal Glades 61.5,53.5
 step
-  only Undead Paladin
-  note Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Tyr's Watch.
-  collect Scarlet Crusade Attack Plans##264693 |q 94440 |goto Tirisfal Glades 78.38,56.03 |tip {dropsfrom}Scarlet Zealot, Scarlet Friar, Tarnished Zealot
+  note Find the Argent Dawn member near the entrance to the Undercity.
+  talk Hadric Harlson##267009
+  turnin The Argent Emissary##96895 |goto Tirisfal Glades 65.93,61.13
 step
+  talk Hadric Harlson##267009
+  accept The Cult of the Damned##96897 |goto Tirisfal Glades 65.93,61.13
+step
+  talk Hadric Harlson##267009
+  accept Remnants of War##96898 |goto Tirisfal Glades 65.93,61.13
+step
+  only level>=13
+  talk Deathguard Linnea##1495
+  accept Rear Guard Patrol##99156 |goto Tirisfal Glades 65.49,60.25
+step
+  note Kill 8 Dark Neophytes and 8 Dark Enforcers in Tirisfal Glades.
+  kill Dark Enforcer##275437 |q 96897/2 |goto Tirisfal Glades 68.13,64.19
+  kill Dark Neophyte##267006 |q 96897 |goto Tirisfal Glades 68.05,64.25
+step
+  note Gather 12 Necrotic Crystal Fragments in Tirisfal Glades.
+  collect 12 Necrotic Crystal Fragment##275851 |q 96898 |goto Tirisfal Glades 68.05,64.25 |tip {dropsfrom}Dark Neophyte, Dark Enforcer, Naxxramas Crystal Fragment
+step
+  talk Hadric Harlson##267009
+  turnin The Cult of the Damned##96897 |goto Tirisfal Glades 65.93,61.13
+step
+  talk Hadric Harlson##267009
+  turnin Remnants of War##96898 |goto Tirisfal Glades 65.93,61.13
+step
+  talk Hadric Harlson##267009
+  accept Bandarion Keep##96899 |goto Tirisfal Glades 65.93,61.13
+step
+  only haveq(99156)
+  note Bring Riptear's Heart to Deathguard Linnea.
+  kill Riptear##276020 |q 99156 |goto Tirisfal Glades 83.66,44.19 |elite
+  collect Riptear's Heart##286326 |q 99156 |goto Tirisfal Glades 83.66,44.19
+step
+  only haveq(99156)
   talk Deathguard Linnea##1495
   turnin Rear Guard Patrol##99156 |goto Tirisfal Glades 65.49,60.25
+step
+  talk Calvin Montague##6784
+  accept A Rogue's Deal##590 |goto Tirisfal Glades 38.23,56.79
+step
+  note Defeat Calvin Montague in Deathknell.
+  kill Calvin Montague##6784 |q 590 |goto Tirisfal Glades 38.23,56.79
+step
+  talk Calvin Montague##6784
+  turnin A Rogue's Deal##590 |goto Tirisfal Glades 38.23,56.79
 step
   only Undead Paladin
   note Find the fortress of Bandarion Keep and report to Breton Samuels there.
   talk Breton Samuels##246349
-  turnin A Second Home##91282 |goto Tirisfal Glades 21.85,45.3
-step
-  only Undead Paladin
-  talk Deathguard Billmuth##257655
-  turnin A Lesson in Divinity##94440 |goto Tirisfal Glades 21.95,44.54
+  turnin A Second Home##91282 |goto Tirisfal Glades 21.85,45.23
 step
   note Meet Leonid Barthalomew at Bandarion Keep in Tirisfal Glades.
   talk Leonid Barthalomew the Revered##267008
-  turnin Bandarion Keep##96899 |goto Tirisfal Glades 21.97,44.87
+  turnin Bandarion Keep##96899 |goto Tirisfal Glades 22.03,44.73
 step
   only Undead Paladin
   talk Breton Samuels##246349
-  accept Murlocs at the Gates##91285 |goto Tirisfal Glades 21.85,45.3
-step
-  only Undead Paladin
-  talk Breton Samuels##246349
-  accept Touring the Grounds##91294 |goto Tirisfal Glades 21.85,45.3
-step
-  only Undead Paladin
-  talk Jorin Croge##246393
-  accept Making Repairs##91316 |goto Tirisfal Glades 22.66,44.76
-step
-  only Undead Paladin
-  talk Danitha Morr##246378
-  accept The Tarnished##91317 |goto Tirisfal Glades 22.06,44.72
-step
-  only Undead Paladin
-  talk Danitha Morr##246378
-  accept A Token of Good Faith##95803 |goto Tirisfal Glades 22.06,44.72
+  accept Murlocs at the Gates##91285 |goto Tirisfal Glades 21.85,45.23
 step
   talk Leonid Barthalomew the Revered##267008
-  accept A Righteous Cause##96896 |goto Tirisfal Glades 21.97,44.87
-step
-  talk Leonid Barthalomew the Revered##267008
-  accept Leonid's Letter##98545 |goto Tirisfal Glades 21.97,44.87
-step
-  only Undead Paladin
-  talk Danitha Morr##246378
-  accept A Lesson in Divinity##94427 |goto Tirisfal Glades 22.06,44.72
-step
-  only Undead Paladin
-  talk Danitha Morr##246378
-  accept A Lesson in Divinity##94436 |goto Tirisfal Glades 22.06,44.72
-step
-  only Undead Paladin
-  talk Deathguard Billmuth##257655
-  accept A Lesson in Divinity##94438 |goto Tirisfal Glades 21.95,44.54
-step
-  only Undead Paladin
-  talk Deathguard Billmuth##257655
-  accept A Lesson in Divinity##94441 |goto Tirisfal Glades 21.95,44.54
-step
-  only Undead Paladin
-  note Speak to the residents of Bandarion Keep.
-  talk Danitha Morr##246378
-  turnin Touring the Grounds##91294 |goto Tirisfal Glades 22.06,44.72
-step
-  only Undead Paladin
-  note Speak with Deathguard Billmuth at Bandarion Keep.
-  talk Deathguard Billmuth##257655
-  turnin A Lesson in Divinity##94436 |goto Tirisfal Glades 21.95,44.54
-step
-  only Undead Paladin
-  note Speak with Danitha Morr in the keep at Bandarion Keep.
-  talk Danitha Morr##246378
-  turnin A Lesson in Divinity##94441 |goto Tirisfal Glades 22.06,44.72
+  accept A Righteous Cause##96896 |goto Tirisfal Glades 22.03,44.73
 step
   note Observe the conversation between Danitha Morr and Leonid Barthalomew the Revered.
   talk Leonid Barthalomew the Revered##267008
-  turnin A Righteous Cause##96896 |goto Tirisfal Glades 21.97,44.87
+  turnin A Righteous Cause##96896 |goto Tirisfal Glades 22.03,44.73
+step
+  talk Hilda the Breaker##246389
+  accept As Above, So Below##99152 |goto Tirisfal Glades 21.96,47.25
+step
+  talk Ephram Barbaro##259190
+  accept The One That Got Away##99153 |goto Tirisfal Glades 20.17,46.49
+step
+  talk Leonid Barthalomew the Revered##267008
+  accept Leonid's Letter##98545 |goto Tirisfal Glades 22.03,44.73
 step
   only Undead Paladin
   note Slay 8 Vile Fin Attackers and 8 Vile Fin Seers and report back to Breton Samuels when it is done.
-  kill Vile Fin Seer##250282 |q 91285/2 |goto Tirisfal Glades 17.33,53.3
-  kill Vile Fin Attacker##250283 |q 91285 |goto Tirisfal Glades 16.52,56.32
+  kill Vile Fin Seer##250282 |q 91285/2 |goto Tirisfal Glades 17.06,54.28
+  kill Vile Fin Attacker##250283 |q 91285 |goto Tirisfal Glades 17.04,55.58
+step
+  only Undead Paladin
+  talk Breton Samuels##246349
+  turnin Murlocs at the Gates##91285 |goto Tirisfal Glades 21.85,45.23
+step
+  only Undead Paladin
+  talk Breton Samuels##246349
+  accept Touring the Grounds##91294 |goto Tirisfal Glades 21.85,45.23
+step
+  only Undead Paladin
+  note Speak to the residents of Bandarion Keep.
+  talk Hilda the Breaker##246389 |q 91294/1 |goto Tirisfal Glades 21.96,47.25
+  talk Jorin Croge##246393 |q 91294/2 |goto Tirisfal Glades 22.69,44.7
+  talk Ander Solliden##246394 |q 91294/3 |goto Tirisfal Glades 25.41,50.41
+  talk Danitha Morr##246378 |q 91294 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  turnin Touring the Grounds##91294 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  talk Jorin Croge##246393
+  accept Making Repairs##91316 |goto Tirisfal Glades 22.69,44.7
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept The Tarnished##91317 |goto Tirisfal Glades 22.09,44.66
+step
+  only level>=13
+  kill Whispering Horror##260396 |goto Tirisfal Glades 9.49,60.17 |elite |tip Loot the quest item here — it starts the quest.
+  accept Whispering Horror Residue##95328 |goto Tirisfal Glades 9.49,60.17
 step
   only Undead Paladin
   note Collect 12 pieces of Sturdy Lumber from Shadowvale in Tirisfal Glades.
@@ -813,48 +763,52 @@ step
 step
   only Undead Paladin
   note Slay 8 Tarnished Drudges, 6 Tarnished Zealots, and collect the head of Commander Rudolph Gelhardt in Tirisfal Glades.
-  kill Tarnished Drudge##259434 |q 91317 |goto Tirisfal Glades 13.03,63.87
+  kill Tarnished Drudge##259434 |q 91317 |goto Tirisfal Glades 13.38,63.13
 step
-  only Undead Paladin
-  talk Breton Samuels##246349
-  turnin Murlocs at the Gates##91285 |goto Tirisfal Glades 21.85,45.3
+  note Collect 8 Bottles of Whispering Elixir from Shadowvale, then return to Carolai Anise in Brill.
+  collect 8 Bottle of Whispering Elixir##268801 |q 95314 |goto Tirisfal Glades 9.5,62 |tip {dropsfrom}Bottle
+step
+  only haveq(95328)
+  note Deliver Whispering Horror Residue to Father Lankester in the War Quarter of Undercity.
+  kill Whispering Horror##260396 |q 95328 |goto Tirisfal Glades 9.49,60.17 |elite
+  collect Whispering Horror Residue##268812 |q 95328 |goto Tirisfal Glades 9.49,60.17
+step
+  note Collect 6 Faintly Glowing Bones for Hilda the Breaker.
+  collect 6 Faintly Glowing Bone##286259 |q 99152 |goto Tirisfal Glades 9.59,65.67 |tip {dropsfrom}Shadowvale Lurcher, Shadowvale Mystic
+step
+  note Find the Hidden Crystal Fragment beneath Shadowvale for Ephram Barbaro.
+  collect Glowing Crystal Fragment##286269 |q 99153 |goto Tirisfal Glades 9.74,69.43
 step
   only Undead Paladin
   talk Jorin Croge##246393
-  turnin Making Repairs##91316 |goto Tirisfal Glades 22.66,44.76
+  turnin Making Repairs##91316 |goto Tirisfal Glades 22.69,44.7
 step
   only Undead Paladin
   talk Danitha Morr##246378
-  turnin The Tarnished##91317 |goto Tirisfal Glades 22.06,44.72
+  turnin The Tarnished##91317 |goto Tirisfal Glades 22.09,44.66
+step
+  talk Hilda the Breaker##246389
+  turnin As Above, So Below##99152 |goto Tirisfal Glades 21.96,47.25
+step
+  talk Ephram Barbaro##259190
+  turnin The One That Got Away##99153 |goto Tirisfal Glades 20.17,46.49
 step
   only Undead Paladin
-  note Take the Symbol of Life and use it to resurrect Deathguard Falgan at Venomweb Vale.
-  talk Deathguard Falgan##257663
-  turnin A Lesson in Divinity##94438 |goto Tirisfal Glades 86.68,47.69
-step
-  talk Father Lankester##4607
-  turnin Whispering Horror Residue##95328 |goto Undercity 49.14,14.61 |tip {turninat}Undercity
-step
-  only Undead Priest not completed(5660) not completed(5661) not completed(5662) not completed(5663) not haveq(5660) not haveq(5661) not haveq(5662) not haveq(5663)
-  talk Aelthalyste##4606
-  accept Touch of Weakness##5658 |goto Undercity 49.26,17.12
-step
-  only Undead Priest not completed(5660) not completed(5661) not completed(5662) not completed(5663) not haveq(5660) not haveq(5661) not haveq(5662) not haveq(5663)
-  talk Aelthalyste##4606
-  turnin Touch of Weakness##5658 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
+  talk Danitha Morr##246378
+  accept A Token of Good Faith##95803 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
-  note Speak to Tanis Alderwood in the Undercity.
-  talk Tanis Alderwood##257648
-  turnin A Lesson in Divinity##94427 |goto Undercity 65.68,37.74 |tip {turninat}Undercity
+  talk Danitha Morr##246378
+  accept A Lesson in Divinity##94427 |goto Tirisfal Glades 22.09,44.66
 step
-  only Undead Paladin
-  talk Tanis Alderwood##257648
-  accept A Lesson in Divinity##94435 |goto Undercity 65.68,37.74
+  note Kill 8 Wailing Ancestors and 8 Rotting Ancestors.
+  kill Wailing Ancestor##1534 |q 408 |goto Tirisfal Glades 51.87,28.76
 step
-  note Deliver the Sealed Letter to Glix Xizzix in the Undercity.
-  talk Glix Xizzix##272526
-  turnin Leonid's Letter##98545 |goto Undercity 69.92,46.99 |tip {turninat}Undercity
+  talk Magistrate Sevren##1499
+  turnin The Family Crypt##408 |goto Tirisfal Glades 61.26,50.84
+step
+  talk Carolai Anise##2132
+  turnin That Shadowvale Green Elixir##95314 |goto Tirisfal Glades 59.43,52.19
 step
   only Warlock
   note Speak with Carendin Halgar in the Undercity.
@@ -881,6 +835,31 @@ step
   talk Anastasia Hartwell##4568
   accept The Balnir Farmstead##1882 |goto Undercity 85.14,10.03
 step
+  only Undead Paladin
+  note Speak to Tanis Alderwood in the Undercity.
+  talk Tanis Alderwood##257648
+  turnin A Lesson in Divinity##94427 |goto Undercity 65.48,37.49 |tip {turninat}Undercity
+step
+  only Undead Paladin
+  talk Tanis Alderwood##257648
+  accept A Lesson in Divinity##94434 |goto Undercity 65.48,37.49
+step
+  only Undead Paladin
+  note Bring 10 Linen Cloth to Tanis Alderwood in the Undercity.
+  collect 10 Linen Cloth##2589 |q 94434 |goto Undercity 65.48,37.49 |tip {dropsfrom}humanoids
+step
+  only Undead Paladin
+  talk Tanis Alderwood##257648
+  turnin A Lesson in Divinity##94434 |goto Undercity 65.48,37.49 |tip {turninat}Undercity
+step
+  only Undead Paladin
+  talk Tanis Alderwood##257648
+  accept A Lesson in Divinity##94435 |goto Undercity 65.48,37.49
+step
+  note Deliver the Sealed Letter to Glix Xizzix in the Undercity.
+  talk Glix Xizzix##272526
+  turnin Leonid's Letter##98545 |goto Undercity 70.03,47.31 |tip {turninat}Undercity
+step
   only Undead Rogue not completed(1859) not haveq(1859)
   note Speak with Mennet Carkad in the Rogues' Quarter of the Undercity.
   talk Mennet Carkad##6467
@@ -891,10 +870,35 @@ step
   talk Lady Sylvanas Windrunner##10181
   turnin A Token of Good Faith##95803 |goto Undercity 58.05,91.79 |tip {turninat}Undercity
 step
+  only Undead Priest not completed(5660) not completed(5661) not completed(5662) not completed(5663) not haveq(5660) not haveq(5661) not haveq(5662) not haveq(5663)
+  talk Aelthalyste##4606
+  accept Touch of Weakness##5658 |goto Undercity 49.26,17.12
+step
+  only Undead Priest not completed(5660) not completed(5661) not completed(5662) not completed(5663) not haveq(5660) not haveq(5661) not haveq(5662) not haveq(5663)
+  talk Aelthalyste##4606
+  turnin Touch of Weakness##5658 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
+step
+  only haveq(95328)
+  talk Father Lankester##4607
+  turnin Whispering Horror Residue##95328 |goto Undercity 49.14,14.61 |tip {turninat}Undercity
+step
   only Undead Paladin
   note Return to Danitha Morr at Bandarion Keep.
   talk Danitha Morr##246378
-  turnin A Lesson in Divinity##94435 |goto Tirisfal Glades 22.06,44.72
+  turnin A Lesson in Divinity##94435 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept A Lesson in Divinity##94436 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  note Speak with Deathguard Billmuth at Bandarion Keep.
+  talk Deathguard Billmuth##257655
+  turnin A Lesson in Divinity##94436 |goto Tirisfal Glades 21.92,44.5
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  accept A Lesson in Divinity##94438 |goto Tirisfal Glades 21.92,44.5
 step
   only Undead Warlock
   note Recover Egalin's Grimoire and bring it to Carendin Halgar in the Temple of the Damned.
@@ -904,8 +908,34 @@ step
   note Bring Balnir Snapdragons to Anastasia Hartwell in the Mage Quarter of the Undercity.
   collect Balnir Snapdragons##7227 |q 1882 |goto Tirisfal Glades 77.59,62.01
 step
+  only Undead Paladin
+  note Take the Symbol of Life and use it to resurrect Deathguard Falgan at Venomweb Vale.
+  talk Deathguard Falgan##257663
+  turnin A Lesson in Divinity##94438 |goto Tirisfal Glades 86.73,47.72
+step
+  only Undead Paladin
+  talk Deathguard Falgan##257663
+  accept A Lesson in Divinity##94440 |goto Tirisfal Glades 86.73,47.72
+step
+  only Undead Paladin
+  note Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Bandarion Keep.
+  collect Scarlet Crusade Attack Plans##264693 |q 94440 |goto Tirisfal Glades 78.38,56.03 |tip {dropsfrom}Scarlet Zealot, Scarlet Friar, Tarnished Zealot
+step
   note Bring the Lich's Spellbook to Bethor Iceshard in the Undercity.
   collect The Lich's Spellbook##2833 |q 357 |goto Tirisfal Glades 67.96,42.09 |tip {dropsfrom}Gunther's Books
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  turnin A Lesson in Divinity##94440 |goto Tirisfal Glades 21.92,44.5
+step
+  only Undead Paladin
+  talk Deathguard Billmuth##257655
+  accept A Lesson in Divinity##94441 |goto Tirisfal Glades 21.92,44.5
+step
+  only Undead Paladin
+  note Speak with Danitha Morr in the keep at Bandarion Keep.
+  talk Danitha Morr##246378
+  turnin A Lesson in Divinity##94441 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Warlock
   talk Carendin Halgar##5675

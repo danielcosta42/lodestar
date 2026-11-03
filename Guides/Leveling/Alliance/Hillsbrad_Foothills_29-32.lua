@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (29-32)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (30-33)",
-	rev = "6c6386fa",
+	rev = "966655c2",
 }, [[
 step
   ding 28
@@ -30,21 +30,19 @@ step
   talk Brewmeister Bilger##2705
   accept Brewer's Trade##98071 |goto Hillsbrad Foothills 52.13,58.74
 step
-  note Deliver the bottles of Fallrook Varietal to Dun Garok in southeast Hillsbrad Foothills, and bring back a sack of their Homebrew Hops.
-  collect Sack of Homebrew Hops##279389 |q 98071 |goto Hillsbrad Foothills 52.13,58.74
-step
   talk Lieutenant Farren Orinelle##2228
   accept Down the Coast##536 |goto Hillsbrad Foothills 51.46,58.39
 step
+  note Deliver the bottles of Fallrook Varietal to Dun Garok in southeast Hillsbrad Foothills, and bring back a sack of their Homebrew Hops.
   talk Brewmeister Bilger##2705
   turnin Brewer's Trade##98071 |goto Hillsbrad Foothills 52.13,58.74
 step
   talk Captain McManus##251493
-  accept Hillsbrad's Hoard##98059 |goto Hillsbrad Foothills 46.47,50.13
+  accept Hillsbrad's Hoard##98059 |goto Hillsbrad Foothills 46.43,50.2
 step
   note Place the Sealed Company Request you were given on the bookkeeping table within Hillsbrad's town hall.
   talk Captain McManus##251493
-  turnin Hillsbrad's Hoard##98059 |goto Hillsbrad Foothills 46.47,50.13
+  turnin Hillsbrad's Hoard##98059 |goto Hillsbrad Foothills 46.43,50.2
 step
   note Kill 10 Torn Fin Tidehunters and 10 Torn Fin Oracles for Lieutenant Farren Orinelle in Southshore.
   kill Torn Fin Tidehunter##2377 |q 536/1 |goto Hillsbrad Foothills 43.36,68.2
@@ -224,8 +222,8 @@ step
 step
   note Deliver Tom's Gift to Bart Tidewater in Menethil Harbor in the Wetlands.
   talk Bart Tidewater##1481
-  turnin A Lack of Virtue##98459 |goto Wetlands 9.41,58.76 |tip {turninat}Wetlands
+  turnin A Lack of Virtue##98459 |goto Wetlands 8.66,58.12 |tip {turninat}Wetlands
 step
   note {travel}Wetlands
-  goto Wetlands 49.36,42.05
+  goto Wetlands 53.48,54.53
 ]])

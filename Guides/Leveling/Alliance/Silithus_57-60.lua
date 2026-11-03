@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Silithus (57-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Eastern Plaguelands (55-60)",
+	next = "Leveling/Alliance/Eastern Plaguelands (56-60)",
 	rev = "caf0115d",
 }, [[
 step

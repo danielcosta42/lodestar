@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Teldrassil (4-11)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Darkshore (13-20)",
-	rev = "fd4a5794",
+	rev = "14ef4bf1",
 }, [[
 step
   only level>=1
@@ -363,14 +363,14 @@ step
   talk Sentinel Kyra Starsong##2081
   accept The Lost Runner##99046 |goto Teldrassil 56,59.52
 step
+  note Slay 6 Gnarlpine Ambushers and return to Sentinel Amara Nightwalker outside of Dolanaar.
+  kill Gnarlpine Ambusher##2152 |q 487 |goto Teldrassil 46.47,53.42
+step
   note Kill Lord Melenas and bring his head to Tallonkai Swiftroot in Dolanaar.
   collect Melenas' Head##5221 |q 932 |goto Teldrassil 51.31,50.19 |tip {dropsfrom}Lord Melenas
 step
   talk Sentinel Shayla Nightbreeze##2155
-  accept Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 42.22,51.27
-step
-  note Slay 6 Gnarlpine Ambushers and return to Sentinel Amara Nightwalker outside of Dolanaar.
-  kill Gnarlpine Ambusher##2152 |q 487 |goto Teldrassil 46.47,53.42
+  accept Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 40.46,50.73
 step
   talk Oben Rageclaw##7317
   accept The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
@@ -467,8 +467,8 @@ step
   note Acquire 6 Bloodfeather Belts and bring them to Sentinel Arynia Cloudsbreak in the Oracle Glade.
   collect 6 Bloodfeather Belt##5204 |q 937 |goto Teldrassil 37.73,41.07 |tip {dropsfrom}Bloodfeather Harpy, Bloodfeather Rogue, Bloodfeather Sorceress
 step
-  talk Sentinel Shayla Nightbreeze##2155
-  turnin Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 42.22,51.27
+  talk Sentinel Arynia Cloudsbreak##3519
+  turnin The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
 step
   note Seek aid from Byancie in Dolaanar for Sentinel Eralya Leafshadow.
   talk Byancie##6094
@@ -483,19 +483,19 @@ step
   talk Corithras Moonrage##3515
   accept Crown of the Earth##935 |goto Teldrassil 56.14,61.71
 step
-  note Collect 6 Dewy Lasher Fronds, an Empty Vial, and a Refreshing Spring Water for Byancie in Dolanaar.
-  talk Narret Shadowgrove##3614
-  buy Empty Vial##3371 |q 99050/2 |goto Teldrassil 55.27,57.15
-  collect 6 Dewy Lasher Frond##286017 |q 99050/1 |goto Teldrassil 57.91,66.56 |tip {dropsfrom}Lasher Sproutling, Blooming Lasher, Wrathvine
-  talk Lyrai##3587
-  buy Refreshing Spring Water##159 |q 99050 |goto Teldrassil 59.52,40.91
-step
   note Bring a Shimmering Frond to Denalan at Lake Al'Ameth
   talk Denalan##2080
   turnin The Shimmering Frond##931 |goto Teldrassil 60.9,68.49
 step
   click Sprouted Frond##7510
   accept The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
+step
+  note Collect 6 Dewy Lasher Fronds, an Empty Vial, and a Refreshing Spring Water for Byancie in Dolanaar.
+  collect 6 Dewy Lasher Frond##286017 |q 99050/1 |goto Teldrassil 57.09,69.56 |tip {dropsfrom}Lasher Sproutling, Blooming Lasher, Wrathvine
+  talk Narret Shadowgrove##3614
+  buy Empty Vial##3371 |q 99050/2 |goto Teldrassil 55.27,57.15
+  talk Lyrai##3587
+  buy Refreshing Spring Water##159 |q 99050 |goto Teldrassil 59.52,40.91
 step
   turnin The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
 step
@@ -505,8 +505,8 @@ step
   talk Byancie##6094
   accept Easing Suffering##99073 |goto Teldrassil 55.29,56.82
 step
-  talk Sentinel Arynia Cloudsbreak##3519
-  turnin The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
+  talk Sentinel Shayla Nightbreeze##2155
+  turnin Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 40.46,50.73
 step
   note Take the Lashwater Salve to Sentinel Eralya Leafshadow on the road to the Oracle Tree.
   talk Sentinel Eralya Leafshadow##275683
@@ -536,10 +536,10 @@ step
   accept The Oracle Tree##98398 |goto Teldrassil 38.32,34.36
 step
   note Find the Oracle Tree Bark nearby to receive its message.
-  turnin The Oracle Tree##98398 |goto Teldrassil 37.02,34.11
+  turnin The Oracle Tree##98398 |goto Teldrassil 36.97,34.04
 step
   click Oracle Tree Bark##673378
-  accept Teldrassil##940 |goto Teldrassil 37.02,34.11
+  accept Teldrassil##940 |goto Teldrassil 36.97,34.04
 step
   only NightElf Hunter not completed(6071) not completed(6073) not completed(6721) not completed(6722) not haveq(6071) not haveq(6073) not haveq(6721) not haveq(6722)
   talk Ayanna Everstride##3596
@@ -569,6 +569,7 @@ step
   talk Dazalar##3601
   accept Taming the Beast##6063 |goto Teldrassil 56.68,59.49
 step
+  only level>=12
   talk Tallonkai Swiftroot##3567
   accept Twisted Hatred##98403 |goto Teldrassil 55.57,56.95
 step
@@ -580,13 +581,15 @@ step
   note Use the Taming Rod to tame a Webwood Lurker. Practice your skills, then return the Taming Rod to Dazalar in Dolanaar.
   use Webwood Lurker##1998 |q 6063 |goto Teldrassil 60.14,60.26 |tip {useit}
 step
+  only haveq(98403)
   note Kill 8 Befouled Webwoods and bring Xethorr the Wicked's Mature Fel Moss to Tallonkai Swiftroot in Dolanaar.
-  kill Befouled Webwood##272096 |q 98403 |goto Teldrassil 49.61,45.07
+  kill Befouled Webwood##272096 |q 98403 |goto Teldrassil 49.56,45.34
 step
   only NightElf Hunter
   talk Dazalar##3601
   turnin Taming the Beast##6063 |goto Teldrassil 56.68,59.49
 step
+  only haveq(98403)
   talk Tallonkai Swiftroot##3567
   turnin Twisted Hatred##98403 |goto Teldrassil 55.57,56.95
 step

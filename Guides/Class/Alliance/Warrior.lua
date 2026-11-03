@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warrior", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "3a614203",
+	rev = "2aebde70",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -79,29 +79,29 @@ step
   turnin Simple Sigil##3116 |goto Teldrassil 59.64,38.44
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
-  turnin Coming of Age##92460 |goto Zephras Isle 42.09,23.49
+  turnin Coming of Age##92460 |goto Zephras Isle 42.05,23.49
 step
   talk Rorian the Dayseeker##251361
-  accept Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 44.85,26.33
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
 step
   talk Rorian the Dayseeker##251361
-  turnin Harmony in Balance##92461 |goto Zephras Isle 42.09,23.49
+  turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Warrior
   talk Rorian the Dayseeker##251361
-  accept The Warrior's Path##92532 |goto Zephras Isle 42.09,23.49
+  accept The Warrior's Path##92532 |goto Zephras Isle 42.05,23.49
 step
   only Skyborne Warrior
   note Read the Crumpled Note you've been given, then seek out Blademaster Ren inside the Thendal Village watchtower.
   talk Blademaster Ren##251964
-  turnin The Warrior's Path##92532 |goto Zephras Isle 43.65,24.17
+  turnin The Warrior's Path##92532 |goto Zephras Isle 43.65,24.11
 step
   only not Human not NightElf not Skyborne Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
   talk Granis Swiftaxe##1229
@@ -266,15 +266,15 @@ step
 step
   only Skyborne Warrior
   talk Seena Skybreaker##252377
-  accept The Skybreaker Bulwark##94003 |goto Zephras Isle 59.86,72.82
+  accept The Skybreaker Bulwark##94003 |goto Zephras Isle 59.89,72.87
 step
   only Skyborne Warrior
   note Reclaim the Skybreaker Bulwark from Zaal Stormshield at the Shrine of Akir.
-  collect Skybreaker Bulwark##263993 |q 94003 |goto Zephras Isle 36.05,33.53 |tip {dropsfrom}Zaal Stormshield
+  collect Skybreaker Bulwark##263993 |q 94003 |goto Zephras Isle 56.63,50.37 |tip {dropsfrom}Zaal Stormshield
 step
   only Skyborne Warrior
   talk Seena Skybreaker##252377
-  turnin The Skybreaker Bulwark##94003 |goto Zephras Isle 59.86,72.82
+  turnin The Skybreaker Bulwark##94003 |goto Zephras Isle 59.89,72.87
 step
   only Warrior
   talk Kelv Sternhammer##5113
@@ -336,7 +336,7 @@ step
   only Warrior
   note Bring 20 vials of Burning Blood and 1 Burning Rock to Grimand Elmore in Stormwind.
   collect Burning Blood##6844 |q 1705/1 |goto Duskwood 65.13,67.39 |tip {dropsfrom}Nightbane Dark Runner, Nightbane Shadow Weaver, Nightbane Worgen
-  collect 1 Burning Rock##6845 |q 1705 |goto Silverpine Forest 49.56,85.2 |tip {dropsfrom}Old Fire-Eye
+  collect 1 Burning Rock##6845 |q 1705 |goto Duskwood 73.89,77.17 |tip {dropsfrom}Gutspill
 step
   only Warrior
   talk Grimand Elmore##1416

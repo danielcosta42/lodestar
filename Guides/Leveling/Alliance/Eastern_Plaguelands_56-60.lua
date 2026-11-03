@@ -1,14 +1,13 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (55-60)", {
+ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (56-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Redridge Mountains (54-60)",
-	rev = "05a8db9c",
+	rev = "8d1820b3",
 }, [[
 step
-  ding 53
+  ding 55
 step
   talk Pamela Redpath##10926
   accept Pamela's Doll##5149 |goto Eastern Plaguelands 31.15,77.98
@@ -85,31 +84,27 @@ step
   talk Tirion Fordring##1855
   turnin Of Forgotten Memories##5781 |goto Eastern Plaguelands 5.16,35.57
 step
+  only completed(5542) completed(5543) completed(5544)
+  talk Tirion Fordring##1855
+  accept Of Lost Honor##5845 |goto Eastern Plaguelands 5.16,35.57
+step
   talk Carlin Redpath##11063
   turnin Defenders of Darrowshire##5211 |goto Eastern Plaguelands 71.7,50.04
 step
   talk Caretaker Alen##11038
   turnin Zaeldarr the Outcast##6021 |goto Eastern Plaguelands 69.93,53.72
 step
-  only completed(6026) level>=54
+  only completed(6026)
   talk Smokey LaRue##11033
   accept When Smokey Sings, I Get Violent##6041 |goto Eastern Plaguelands 70.88,48.43
-step
-  only completed(5542) completed(5543) completed(5544)
-  talk Tirion Fordring##1855
-  accept Of Lost Honor##5845 |goto Eastern Plaguelands 5.16,35.57
-step
-  only completed(6026) haveq(6041)
-  note Travel to Plaguewood, northwest of Light's Hope. Destroy 8 Scourge Structures by using Smokey's Special Compound at the Mark of Detonation planted inside each building. Smokey has had the Ziggurats and Slaughterhouses marked.
-  kill Scourge Structure##12247 |q 6041 |goto Eastern Plaguelands 28.01,17.75
 step
   only completed(5542) completed(5543) completed(5544)
   note Travel to Northdale, in the northeastern region of the Eastern Plaguelands, and recover the Symbol of Lost Honor. Return to Tirion Fordring upon completion of your objective.
   collect Symbol of Lost Honor##14625 |q 5845 |goto Eastern Plaguelands 62.53,26.81
 step
-  only completed(6026) haveq(6041)
-  talk Smokey LaRue##11033
-  turnin When Smokey Sings, I Get Violent##6041 |goto Eastern Plaguelands 70.88,48.43
+  only completed(6026)
+  note Travel to Plaguewood, northwest of Light's Hope. Destroy 8 Scourge Structures by using Smokey's Special Compound at the Mark of Detonation planted inside each building. Smokey has had the Ziggurats and Slaughterhouses marked.
+  kill Scourge Structure##12247 |q 6041 |goto Eastern Plaguelands 28.01,17.75
 step
   only completed(5542) completed(5543) completed(5544)
   talk Tirion Fordring##1855
@@ -119,13 +114,9 @@ step
   talk Tirion Fordring##1855
   accept Of Love and Family##5846 |goto Eastern Plaguelands 5.16,35.57
 step
-  only completed(5848)
-  talk Tirion Fordring##1855
-  accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
-step
-  only level>=54
-  click Torn Scroll##177667
-  accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
+  only completed(6026)
+  talk Smokey LaRue##11033
+  turnin When Smokey Sings, I Get Violent##6041 |goto Eastern Plaguelands 70.88,48.43
 step
   only level>=55
   talk Caretaker Alen##11038
@@ -158,13 +149,16 @@ step
   talk Emmisary Whitebeard##17069
   turnin Establishing New Outposts##9664 |goto Eastern Plaguelands 71.51,49.66
 step
-  only haveq(6024)
-  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
-  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
+  click Torn Scroll##177667
+  accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
 step
   only haveq(9126)
   note Rohan the Assassin at Light's Hope Chapel in the Eastern Plaguelands wants 30 Bone Fragments.
   collect 30 Bone Fragments##22526 |q 9126 |goto Eastern Plaguelands 23.27,27.39 |tip {dropsfrom}Scourge Soldier, Cursed Mage, Scourge Warder
+step
+  only completed(5848)
+  talk Tirion Fordring##1855
+  accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
 step
   only haveq(5281)
   note Find Egan. You only know that he was last seen around Stratholme.
@@ -175,8 +169,8 @@ step
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
   collect 30 Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
 step
-  only haveq(6024)
-  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
+  note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
+  collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
 step
   only haveq(9124)
   talk Huntsman Leopold##16132
@@ -199,6 +193,8 @@ step
   talk Betina Bigglezink##11035
   turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
 step
+  turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
+step
   only haveq(3461)
   note Return Tymor's Drawing Kit to him in Ironforge.
   talk Tymor##8507
@@ -207,6 +203,9 @@ step
   only completed(8926,8931,8932,8933,8934,8935,8936,8937) level>=58
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
+step
+  talk Melnan Darkstone##14842
+  accept The Darkmoon Faire##7905 |goto Ironforge 29.65,75.25
 step
   only completed(5464) haveq(5465)
   note Return to Magistrate Marduke in Caer Darrow. Show him the Soulbound Keepsake.
@@ -265,6 +264,41 @@ step
   note Escort Taelan Fordring out of Hearthglen.
   goto Western Plaguelands 53.86,24.32 |tip Redemption?
 step
+  only level>=56
+  talk Highlord Bolvar Fordragon##1748
+  accept The First and the Last##6182 |goto Stormwind City 80.21,38.35
+step
+  only haveq(6182)
+  note Speak with Mathias Shaw in Old Town Stormwind. He resides in the Barracks.
+  talk Master Mathias Shaw##332
+  turnin The First and the Last##6182 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
+step
+  only completed(6182) level>=56
+  talk Master Mathias Shaw##332
+  accept Honor the Dead##6183 |goto Stormwind City 78.31,70.74
+step
+  only haveq(6183)
+  note Speak with Mathias Shaw again if you wish to accept his task.
+  talk Master Mathias Shaw##332
+  turnin Honor the Dead##6183 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
+step
+  only completed(6183) level>=56
+  talk Master Mathias Shaw##332
+  accept Flint Shadowmore##6184 |goto Stormwind City 78.31,70.74
+step
+  only completed(6402)
+  talk Reginald Windsor##12580
+  accept The Great Masquerade##6403 |goto Stormwind City 73.61,91.05
+step
+  only completed(6402)
+  note Follow Reginald Windsor through Stormwind. Protect him from harm!
+  talk Highlord Bolvar Fordragon##1748
+  turnin The Great Masquerade##6403 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
+step
+  note Deliver the Free Ticket Voucher to Gelvas Grimgate, located inside the Darkmoon Faire carnival.
+  talk Gelvas Grimegate##14828
+  turnin The Darkmoon Faire##7905 |goto Elwynn Forest 41.5,68.87 |tip {turninat}Elwynn Forest
+step
   only completed(8926,8931,8932,8933,8934,8935,8936,8937) haveq(8929)
   note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
@@ -299,9 +333,18 @@ step
   talk Korfax, Champion of the Light##16112
   turnin Binding the Dreadnaught##9131 |goto Eastern Plaguelands 71.95,48.52
 step
+  only haveq(6184)
+  note Travel to Chillwind Camp in the Western Plaguelands and meet up with your contact, Flint Shadowmore.
+  talk Flint Shadowmore##12425
+  turnin Flint Shadowmore##6184 |goto Western Plaguelands 43.61,84.51 |tip {turninat}Western Plaguelands
+step
+  only completed(6184) level>=56
+  talk Flint Shadowmore##12425
+  accept The Eastern Plagues##6185 |goto Western Plaguelands 43.61,84.51
+step
   note Bring Davil's Libram and Redpath's Shield to Carlin Redpath.
-  collect Davil's Libram##12954 |q 5168/1 |goto Western Plaguelands 42.52,18.99
-  collect Redpath's Shield##12955 |q 5168 |goto Western Plaguelands 63.79,57.19
+  collect Redpath's Shield##12955 |q 5168/2 |goto Western Plaguelands 63.79,57.19
+  collect Davil's Libram##12954 |q 5168 |goto Western Plaguelands 42.52,18.99
 step
   talk Carlin Redpath##11063
   turnin Heroes of Darrowshire##5168 |goto Eastern Plaguelands 71.7,50.04
@@ -318,30 +361,41 @@ step
   talk Carlin Redpath##11063
   accept Return to Chromie##5941 |goto Eastern Plaguelands 71.7,50.04
 step
+  only haveq(6185)
+  note Scour the Eastern Plaguelands for clues as to the "Blightcaller" and the missing SI:7 agents. If you find any SI:7 Insignias, return them to Flint Shadowmore at Chillwind Camp.
+  collect SI:7 Insignia (Turyen)##16002 |q 6185/3 |goto Eastern Plaguelands 24.28,63.65 |tip {dropsfrom}Mangled Human Remains
+  collect SI:7 Insignia (Fredo)##16001 |q 6185/2 |goto Eastern Plaguelands 22.79,63.72 |tip {dropsfrom}Mangled Human Remains
+  collect SI:7 Insignia (Rutger)##16003 |q 6185 |goto Eastern Plaguelands 24.28,68.11 |tip {dropsfrom}Mangled Human Remains
+step
+  only haveq(6185)
+  talk Flint Shadowmore##12425
+  turnin The Eastern Plagues##6185 |goto Western Plaguelands 43.61,84.51 |tip {turninat}Western Plaguelands
+step
+  only completed(6185) level>=56
+  talk Flint Shadowmore##12425
+  accept The Blightcaller Cometh##6186 |goto Western Plaguelands 43.61,84.51
+step
   note Take the Bundle of Relics to Chromie in Andorhal.
   talk Chromie##10667
   turnin Return to Chromie##5941 |goto Western Plaguelands 39.46,66.76 |tip {turninat}Western Plaguelands
 step
-  only level>=55
   talk Chromie##10667
   accept The Battle of Darrowshire##5721 |goto Western Plaguelands 39.46,66.76
 step
-  only haveq(5721)
+  only haveq(6186)
+  note Return to Stormwind and inform Highlord Bolvar Fordragon of the fate of Nathanos Marris.
+  talk Highlord Bolvar Fordragon##1748
+  turnin The Blightcaller Cometh##6186 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
+step
   note Place the Relic Bundle at the Darrowshire town square.
   talk Joseph Redpath##10936 |q 5721 |goto Eastern Plaguelands 33.62,78.46
 step
-  only haveq(5721)
   talk Pamela Redpath##10926
   turnin The Battle of Darrowshire##5721 |goto Eastern Plaguelands 31.15,77.98
 step
-  only completed(5721)
   talk Pamela Redpath##10926
   accept Hidden Treasures##5942 |goto Eastern Plaguelands 31.15,77.98
 step
-  only haveq(5942)
   note Bring Joseph's Key to Joseph's Chest.
   turnin Hidden Treasures##5942 |goto Eastern Plaguelands 30.92,77.78
-step
-  note {travel}Redridge Mountains
-  goto Redridge Mountains 10.64,71.24
 ]])

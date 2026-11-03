@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (3-10)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Westfall (12-16)",
-	rev = "c600e087",
+	next = "Leveling/Alliance/Westfall (10-16)",
+	rev = "733efbb3",
 }, [[
 step
   only level>=1
@@ -211,7 +211,8 @@ step
   kill Kobold Laborer##80 |q 21 |goto Elwynn Forest 48.47,28.05
 step
   note Retrieve a Sack of "Picture" Books from Shinyfinder Narf. Bring the sack to Marshal McBride just inside Northshire's Abbey.
-  collect Sack of "Picture" Books##247886 |q 91752 |goto Elwynn Forest 49.22,28.01 |tip {dropsfrom}Shinyfinder Narf
+  kill Shinyfinder Narf##248362 |q 91752 |goto Elwynn Forest 49.22,28.01 |elite
+  collect Sack of "Picture" Books##247886 |q 91752 |goto Elwynn Forest 49.22,28.01
 step
   only haveq(21)
   talk Marshal McBride##197
@@ -295,6 +296,7 @@ step
   talk Sam Sarsaparilla##263399
   turnin The Adventurer##96627 |goto Elwynn Forest 44.9,63.36
 step
+  only level>=6
   talk Marshal Dughan##240
   accept Book Return##91775 |goto Elwynn Forest 42.11,65.93
 step
@@ -338,8 +340,10 @@ step
   note Explore the Fargodeep Mine, then return to Marshal Dughan in Goldshire.
   goto Elwynn Forest 40.56,82.26 |tip Scout through the Fargodeep Mine
 step
+  only haveq(91775)
   note Find 6 Lost Books and "Fun with Elementals" and return them to Marshal Dughan.
-  collect Picture Book: Fun with Elementals##248002 |q 91775/1 |goto Elwynn Forest 41.62,79.9 |tip {dropsfrom}Nimsy
+  kill Nimsy##248464 |q 91775/1 |goto Elwynn Forest 41.62,79.9 |elite
+  collect Picture Book: Fun with Elementals##248002 |q 91775/1 |goto Elwynn Forest 41.62,79.9
   collect 6 Lost Book##248001 |q 91775 |goto Elwynn Forest 60.91,59.71 |tip {dropsfrom}Kobold Miner, Kobold Tunneler
 step
   talk "Auntie" Bernice Stonefield##246
@@ -385,12 +389,14 @@ step
   talk William Pestle##253
   turnin Note to William##107 |goto Elwynn Forest 43.32,65.7
 step
+  only haveq(91775)
   talk Marshal Dughan##240
   turnin Book Return##91775 |goto Elwynn Forest 42.11,65.93
 step
   talk William Pestle##253
   accept Collecting Kelp##112 |goto Elwynn Forest 43.32,65.7
 step
+  only completed(91775) level>=7
   talk Marshal Dughan##240
   accept Rare Books##91777 |goto Elwynn Forest 42.11,65.93
 step
@@ -435,8 +441,10 @@ step
   note Bring 8 Large Candles to William Pestle in Goldshire.
   collect 8 Large Candle##772 |q 60 |goto Elwynn Forest 60.91,59.71 |tip {dropsfrom}Kobold Miner, Kobold Tunneler, Kobold Geomancer
 step
+  only haveq(91777)
   note Recover "Geomancy for Curious Young Wizards" and "Arcane Explainer: Magical Stuff in Simple Words" and return them to Brother Paxton inside Northshire's Abbey.
-  collect Geomancy for Curious Young Wizards##248003 |q 91777/1 |goto Elwynn Forest 61.38,48.93 |tip {dropsfrom}Geosculptor Yip
+  kill Geosculptor Yip##248474 |q 91777/1 |goto Elwynn Forest 61.38,48.93 |elite
+  collect Geomancy for Curious Young Wizards##248003 |q 91777/1 |goto Elwynn Forest 61.38,48.93
   collect Arcane Explainer: Magical Stuff in Simple Words##248004 |q 91777 |goto Elwynn Forest 62.14,48.05 |tip {dropsfrom}Mother Fang
 step
   note Kill the murlocs at Crystal Lake.
@@ -509,14 +517,16 @@ step
   talk Jason Mathers##383
   turnin Baited for Success##99131 |goto Elwynn Forest 47.46,62.18
 step
+  only haveq(91777)
   talk Brother Paxton##951
   turnin Rare Books##91777 |goto Elwynn Forest 49.61,40.41
 step
   kill Riverpaw Runt##97 |goto Elwynn Forest 67.83,46.44 |tip Loot the quest item here — it starts the quest.
   accept The Collector##123 |goto Elwynn Forest 67.83,46.44
 step
-  kill Elmpaw##248299 |goto Elwynn Forest 74.66,40.77 |tip Loot the quest item here — it starts the quest.
-  accept Elmpaw's Head##91746 |goto Elwynn Forest 74.66,40.77
+  only level>=10
+  kill Elmpaw##248299 |goto Elwynn Forest 75.91,41.57 |elite |tip Loot the quest item here — it starts the quest.
+  accept Elmpaw's Head##91746 |goto Elwynn Forest 75.91,41.57
 step
   note Explore the Jasperlode Mine, then report back to Marshal Dughan in Goldshire.
   goto Elwynn Forest 61.93,53.16 |tip Scout through the Jasperlode Mine
@@ -581,14 +591,16 @@ step
   talk Guard Thomas##261
   accept Deliver Thomas' Report##39 |goto Elwynn Forest 73.97,72.18
 step
-  kill Croaky##248278 |goto Elwynn Forest 76.57,86.06 |tip Loot the quest item here — it starts the quest.
-  accept Croaky's Head##91740 |goto Elwynn Forest 76.57,86.06
+  only level>=10
+  kill Croaky##248278 |goto Elwynn Forest 76.79,85.67 |elite |tip Loot the quest item here — it starts the quest.
+  accept Croaky's Head##91740 |goto Elwynn Forest 76.79,85.67
 step
   note Collect the Waterlogged Axe, Waterlogged Saw, and Waterlogged Toolbox that have washed downstream from Eastvale Logging Camp, then return to Ormin Pelford.
   collect Waterlogged Toolbox##247818 |q 91733/3 |goto Elwynn Forest 77.3,86.7
   collect Waterlogged Axe##247817 |q 91733/1 |goto Elwynn Forest 76.7,82.5
   collect Waterlogged Saw##247813 |q 91733 |goto Elwynn Forest 74.2,76.5
 step
+  only haveq(91740)
   note Deliver Croaky's Head to Merell Ross at Ridgepoint Tower.
   talk Merell Ross##248277
   turnin Croaky's Head##91740 |goto Elwynn Forest 84.75,79.3
@@ -631,6 +643,7 @@ step
   talk Marshal Dughan##240
   turnin The Collector##123 |goto Elwynn Forest 42.11,65.93
 step
+  only haveq(91746)
   note Deliver Elmpaw's Head to Helene Peltskinner near Goldshire.
   talk Helene Peltskinner##6306
   turnin Elmpaw's Head##91746 |goto Elwynn Forest 46.24,62.24
@@ -661,7 +674,7 @@ step
 step
   only level>=11
   click Wanted Poster##68
-  accept Wanted:  "Hogger"##176 |goto Elwynn Forest 24.55,74.69
+  accept WANTED: "Hogger"##176 |goto Elwynn Forest 24.55,74.69
 step
   talk Sergeant De Vries##955
   turnin An Apple Treat##91738 |goto Elwynn Forest 24.08,73.2
@@ -679,7 +692,7 @@ step
 step
   only haveq(176)
   talk Marshal Dughan##240
-  turnin Wanted:  "Hogger"##176 |goto Elwynn Forest 42.11,65.93
+  turnin WANTED: "Hogger"##176 |goto Elwynn Forest 42.11,65.93
 step
   only Warrior not completed(1639) not completed(1678) not completed(1683) not haveq(1639) not haveq(1678) not haveq(1683)
   talk Lyria Du Lac##913
@@ -707,7 +720,7 @@ step
 step
   only Hunter
   talk Josephine Carson##251507
-  accept Taming the Beast##94792 |goto Elwynn Forest 41.18,66.3
+  accept Taming the Beast##94792 |goto Elwynn Forest 41.15,66.23
 step
   only Hunter
   note Use the Taming Rod to tame a Rockhide Boar. Practice your skills, then return the Taming Rod to Josephine Carson.
@@ -715,11 +728,11 @@ step
 step
   only Hunter
   talk Josephine Carson##251507
-  turnin Taming the Beast##94792 |goto Elwynn Forest 41.18,66.3
+  turnin Taming the Beast##94792 |goto Elwynn Forest 41.15,66.23
 step
   only Hunter
   talk Josephine Carson##251507
-  accept Taming the Beast##94863 |goto Elwynn Forest 41.18,66.3
+  accept Taming the Beast##94863 |goto Elwynn Forest 41.15,66.23
 step
   note Bring 8 Painted Gnoll Armbands to Deputy Rainer at the Barracks.
   collect 8 Painted Gnoll Armband##782 |q 11 |goto Elwynn Forest 67.83,46.44 |tip {dropsfrom}Riverpaw Runt, Riverpaw Outrunner
@@ -761,11 +774,11 @@ step
 step
   only Hunter
   talk Josephine Carson##251507
-  turnin Taming the Beast##94863 |goto Elwynn Forest 41.18,66.3
+  turnin Taming the Beast##94863 |goto Elwynn Forest 41.15,66.23
 step
   only Hunter
   talk Josephine Carson##251507
-  accept Taming the Beast##94864 |goto Elwynn Forest 41.18,66.3
+  accept Taming the Beast##94864 |goto Elwynn Forest 41.15,66.23
 step
   talk Deputy Rainer##963
   turnin Riverpaw Gnoll Bounty##11 |goto Elwynn Forest 24.23,74.45
@@ -779,16 +792,16 @@ step
 step
   only Hunter
   talk Josephine Carson##251507
-  turnin Taming the Beast##94864 |goto Elwynn Forest 41.18,66.3
+  turnin Taming the Beast##94864 |goto Elwynn Forest 41.15,66.23
 step
   only Hunter
   talk Josephine Carson##251507
-  accept Training the Beast##94793 |goto Elwynn Forest 41.18,66.3
+  accept Training the Beast##94793 |goto Elwynn Forest 41.15,66.23
 step
   only Hunter
   note Speak to Isaac Chan in Goldshire.
   talk Isaac Chan##258930
-  turnin Training the Beast##94793 |goto Elwynn Forest 41.72,66.39
+  turnin Training the Beast##94793 |goto Elwynn Forest 41.79,66.37
 step
   talk Smith Argus##514
   accept Elmore's Task##1097 |goto Elwynn Forest 41.71,65.54
@@ -959,6 +972,14 @@ step
   talk Master Mathias Shaw##332
   turnin Snatch and Grab##2206 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
 step
-  note {travel}Stormwind City
-  goto Stormwind City 26.27,47.08
+  note Talk to Gryan Stoutmantle. He usually can be found in the stone tower on Sentinel Hill, just off the road, in the middle of Westfall.
+  talk Gryan Stoutmantle##234
+  turnin Report to Gryan Stoutmantle##109 |goto Westfall 56.33,47.52 |tip {turninat}Westfall
+step
+  note Bring Furlbrow's Deed to Farmer Furlbrow.
+  talk Farmer Furlbrow##237
+  turnin Furlbrow's Deed##184 |goto Westfall 59.95,19.36 |tip {turninat}Westfall
+step
+  note {travel}Westfall
+  goto Westfall 56.42,47.62
 ]])

@@ -228,10 +228,17 @@ OBJETIVO_ANTES = {
 # Bones, ao sul de Desolace) virava guia próprio quando tinha 6 quests e sumia quando tinha menos
 # (na Horda, Ravaging Ravagers e Khan Jehn não iam a guia nenhum)
 ZONA_MAE = {16651: 405}
-# Fora do leveling por nome: Arena Master começa no baú do evento de PvP da arena de Gurubashi
-FORA_QUESTS = {7810}
+# Fora do leveling por nome: Arena Master começa no baú do evento de PvP da arena de Gurubashi;
+# The Horn of Xelthos e Goblin Lockpicks são de ladino do Season of Discovery, sem classe no banco
+FORA_QUESTS = {7810, 78261, 78270}
 # e as "Legacy Reward" (brinde de conta: sem texto nem objetivo, só para quem tem direito)
 FORA_NOME = re.compile(r"^Legacy Reward:")
+# Livros da biblioteca: o objeto no mundo dá um item, e a quest só abre no bibliotecário com o livro
+# na bolsa. O banco lista o objeto como quem dá a quest, então o `accept` ia para o lugar do livro e
+# nunca completava (Silverpine parava na Dalaran Digest). Sem XP, não é rota de ninguém. Os dois
+# bibliotecários só dão isso; os dois outros são treinadores, e só o que nasce de objeto é livro.
+BIBLIOTECARIOS = {211022, 211033}
+TREINADORES_DE_LIVRO = {5497, 7825}
 # Veio de minério: só quem tem Mining colhe
 VEIO = re.compile(r"\b(Vein|Deposit)$")
 # Baú de saque aleatório (Battered Chest, Dented Footlocker, Kolkar's Booty): para item de ofício não
@@ -460,7 +467,7 @@ class Router:
                          for e in q["endNpcs"] for z, pts in ((self.npc(e) or {}).get("spawns") or {}).items()):
                 self.quests[k] = dict(q, trigger=None)
         for k, q in self.quests.items():
-            if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or ""):
+            if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or "") or set(q["startNpcs"]) & BIBLIOTECARIOS                     or (q["startObjects"] and q["startNpcs"] and set(q["startNpcs"]) <= TREINADORES_DE_LIVRO):
                 self.quests[k] = dict(q, fora=True)
         # Tarefa sem objetivo no banco: o alvo pelo nome no texto ("slay 6 Undead
         # Ravagers", "slay Outcast Necromancers"), ou da tabela; sem ele, o passo de fazer
@@ -2709,6 +2716,11 @@ def demo():
                      r"\|q 93963/3 [^\n]*\n  talk High Tinker Mekkatorque##7937 \|q 93963/2 [^\n]*\n"
                      r"  talk Tyrande Whisperwind##7999 \|q 93963 ", zeph_a), "Exploring the Alliance só com o Randal"
     r = Router(load_data(), "A")
+    # 9999 é "escala com o jogador", não nível: a elite amiga de Zephras tirava a cadeia da ilha
+    assert not r.npc(252475)["minLevel"] and not r.quests["92640"].get("fora"), "nível sentinela virou chefe"
+    # livro da biblioteca não é rota: o `accept` no objeto nunca completa
+    assert all(r.quests[q].get("fora") for q in ("78127", "78150", "84396")), "livro da biblioteca na rota"
+    assert not any(r.quests[q].get("fora") for q in ("249", "2954", "7632")), "objeto e NPC que dão quest de verdade"
     fake = {"objText": ["Speak with Valennia, Ayessa, Elaadrin."], "objCreatures": [252383, 251968, 252475]}
     assert [f[2] for f in r.falas(fake)] == [1, None], r.falas(fake)
     # a saída da ilha vai com o guia dela: entrega a 94946 a Denaaris, portal, Bolvar, o tour

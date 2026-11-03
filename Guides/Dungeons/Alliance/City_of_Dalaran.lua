@@ -4,14 +4,14 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/City of Dalaran", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "f460b473",
+	rev = "6eb2396e",
 }, [[
 step
   talk Image of Archmage Modera##269127
-  accept Starving Arcane##92457 |goto Silverpine Forest 68.6,45.18
+  accept Starving Arcane##92457 |goto Silverpine Forest 68.62,45.13
 step
   talk Image of Archmage Modera##269127
-  accept Heart of Disruption##92458 |goto Silverpine Forest 68.6,45.18
+  accept Heart of Disruption##92458 |goto Silverpine Forest 68.62,45.13
 step
   talk Shylamiir##5502
   accept A Green Sample##92456 |goto Stormwind City 31.5,62.61
@@ -23,7 +23,7 @@ step
   kill Saturated Remnant##247001 |q 92457 |goto Alterac Mountains 14.2,68.4
 step
   note Collect the Arcane Mote for the Image of Archmage Modera near the City of Dalaran.
-  collect Arcane Mote##251961 |q 92458 |goto Silverpine Forest 68.6,45.18 |tip {dropsfrom}Shade of the Archmage, Rath'mael
+  collect Arcane Mote##251961 |q 92458 |goto Silverpine Forest 68.62,45.13 |tip {dropsfrom}Shade of the Archmage, Rath'mael
 step
   note Collect a Fel Infused Blossom from the City of Dalaran for Shylamiir in Stormwind City.
   collect Fel Infused Blossom##251983 |q 92456 |goto Stormwind City 31.5,62.61
@@ -32,10 +32,10 @@ step
   kill Arcanic Enigma##246016 |q 92489
 step
   talk Image of Archmage Modera##269127
-  turnin Starving Arcane##92457 |goto Silverpine Forest 68.6,45.18
+  turnin Starving Arcane##92457 |goto Silverpine Forest 68.62,45.13
 step
   talk Image of Archmage Modera##269127
-  turnin Heart of Disruption##92458 |goto Silverpine Forest 68.6,45.18
+  turnin Heart of Disruption##92458 |goto Silverpine Forest 68.62,45.13
 step
   talk Shylamiir##5502
   turnin A Green Sample##92456 |goto Stormwind City 31.5,62.61

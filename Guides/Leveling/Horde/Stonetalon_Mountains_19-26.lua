@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Stonetalon Mountains (19-26)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/The Barrens (23-27)",
-	rev = "0e314c1b",
+	next = "Leveling/Horde/The Barrens (22-27)",
+	rev = "4553a0f6",
 }, [[
 step
   ding 18
@@ -317,5 +317,5 @@ step
   turnin The Binding##1513 |goto Orgrimmar 48.25,45.28 |tip {turninat}Orgrimmar
 step
   note {travel}The Barrens
-  goto The Barrens 51.07,29.63
+  goto The Barrens 62.59,37.47
 ]])

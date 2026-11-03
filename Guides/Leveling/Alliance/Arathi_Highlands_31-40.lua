@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (31-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (35-42)",
-	rev = "1736187b",
+	rev = "6ea6141c",
 }, [[
 step
   ding 30
@@ -16,7 +16,7 @@ step
 step
   only Shaman level>=30
   talk Eldrun Stormbreaker##258098
-  accept Call of Air##94789 |goto Ironforge 47.38,13.48
+  accept Call of Air##94789 |goto Ironforge 47.1,13.79
 step
   collect Waterlogged Letter##2656 |goto Arathi Highlands 44.29,92.88 |tip Loot the quest item here — it starts the quest.
   accept Sully Balloo's Letter##637 |goto Arathi Highlands 44.29,92.88
@@ -37,7 +37,7 @@ step
   accept Northfold Manor##681 |goto Arathi Highlands 45.83,47.56
 step
   click Messenger Bag##406918
-  accept This Must Be The Place##79976 |goto Arathi Highlands 22.54,24.14
+  accept This Must Be The Place##79976 |goto Arathi Highlands 22.48,24.19
 step
   only haveq(681)
   note Kill 10 Syndicate Highwaymen and 6 Syndicate Mercenaries.
@@ -45,7 +45,7 @@ step
   kill Syndicate Highwayman##2586 |q 681 |goto Arathi Highlands 30.97,29.79
 step
   note Whoever was here, you just missed them.
-  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.55,24.14
+  turnin This Must Be The Place##79976 |goto Arathi Highlands 22.47,24.2
 step
   only haveq(681)
   talk Captain Nials##2700
@@ -54,7 +54,7 @@ step
   only Shaman haveq(94789)
   note Find Veyric Thundervein in Arathi Highlands.
   talk Veyric Thunderhame##259023
-  turnin Call of Air##94789 |goto Arathi Highlands 59.77,27.6
+  turnin Call of Air##94789 |goto Arathi Highlands 59.84,27.57
 step
   only level>=30
   talk Apprentice Kryten##2788
@@ -140,7 +140,7 @@ step
 step
   only level>=39
   click Wanted Board##2713
-  accept Wanted!  Marez Cowl##684 |goto Arathi Highlands 46.04,47.76
+  accept WANTED: Marez Cowl##684 |goto Arathi Highlands 46.04,47.76
 step
   only completed(691)
   talk Skuerto##2789
@@ -170,7 +170,7 @@ step
 step
   only haveq(684)
   talk Captain Nials##2700
-  turnin Wanted!  Marez Cowl##684 |goto Arathi Highlands 45.83,47.56
+  turnin WANTED: Marez Cowl##684 |goto Arathi Highlands 45.83,47.56
 step
   only haveq(694)
   talk Apprentice Kryten##2788
@@ -191,7 +191,7 @@ step
 step
   only level>=40
   click Wanted Board##2713
-  accept Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
+  accept WANTED: Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
 step
   only haveq(685)
   note Bring Otto's Head and Falconcrest's Head to Captain Nials at Refuge Pointe.
@@ -282,7 +282,7 @@ step
 step
   only haveq(685)
   talk Captain Nials##2700
-  turnin Wanted!  Otto and Falconcrest##685 |goto Arathi Highlands 45.83,47.56
+  turnin WANTED: Otto and Falconcrest##685 |goto Arathi Highlands 45.83,47.56
 step
   only haveq(696)
   talk Skuerto##2789

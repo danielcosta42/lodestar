@@ -5,11 +5,12 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (21-29)",
-	rev = "f0d4f593",
+	rev = "e3acb905",
 }, [[
 step
   ding 20
 step
+  only completed(92415)
   talk Orphan Matron Nightingale##14450
   accept Remember That I Love You##95161 |goto Stormwind City 56.31,53.99
 step
@@ -29,6 +30,7 @@ step
   note {fp}Felicia Maline
   goto Duskwood 77.49,44.29 |tip {vendor}
 step
+  only completed(92415)
   note Deliver the Blood-Stained Letter to Avette Fellwood in Duskwood.
   talk Avette Fellwood##228
   turnin Remember That I Love You##95161 |goto Duskwood 73.03,44.42
@@ -272,6 +274,16 @@ step
   talk Sven Yorgen##311
   turnin Proving Your Worth##323 |goto Duskwood 7.78,34.07
 step
+  kill Lost Watcher##272273 |goto Duskwood 44.59,65.62 |tip Loot the quest item here — it starts the quest.
+  accept Merrick's Bow##96138 |goto Duskwood 44.59,65.62
+step
+  note Defeat 8 Splint Fist Warriors and 4 Splint Fist Taskmasters then return to Sirra Von'Indi in Darkshire for more information.
+  kill Splinter Fist Taskmaster##892 |q 96138/2 |goto Duskwood 36.57,72.44
+  kill Splinter Fist Warrior##212 |q 96138 |goto Duskwood 33.67,76.02
+step
+  talk Sirra Von'Indi##268
+  turnin Merrick's Bow##96138 |goto Duskwood 72.62,47.62
+step
   talk Madame Eva##265
   accept The Legend of Stalvan##66 |goto Duskwood 75.79,45.32
 step
@@ -293,16 +305,6 @@ step
   only haveq(173)
   talk Calor##663
   turnin Worgen in the Woods##173 |goto Duskwood 75.75,47.57
-step
-  kill Lost Watcher##272273 |goto Duskwood 62.42,63.5 |tip Loot the quest item here — it starts the quest.
-  accept Merrick's Bow##96138 |goto Duskwood 62.42,63.5
-step
-  note Defeat 8 Splint Fist Warriors and 4 Splint Fist Taskmasters then return to Sirra Von'Indi in Darkshire for more information.
-  kill Splinter Fist Taskmaster##892 |q 96138/2 |goto Duskwood 36.57,72.44
-  kill Splinter Fist Warrior##212 |q 96138 |goto Duskwood 33.67,76.02
-step
-  talk Sirra Von'Indi##268
-  turnin Merrick's Bow##96138 |goto Duskwood 72.62,47.62
 step
   only completed(173) level>=23
   talk Calor##663

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Excavation Site: Wetlands", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "dcc4328d",
+	rev = "aaf106a5",
 }, [[
 step
   talk James Halloran##2094
@@ -23,7 +23,8 @@ step
   collect 4 Thicket Raptor Hide##284845 |q 98815 |goto Wetlands 8.55,55.74 |tip {dropsfrom}Shadetooth, Thicket Lurker, Thicket Hunter
 step
   note Kill a Highland Horror within Excavation Sites and bring its root core to Rethiel the Greenwarden in the Wetlands.
-  collect Horrible Rootcore##270180 |q 95646 |goto Wetlands 49.49,59.69 |tip {dropsfrom}Highland Horror
+  kill Highland Horror##260808 |q 95646 |goto Wetlands 49.49,59.69 |elite
+  collect Horrible Rootcore##270180 |q 95646 |goto Wetlands 49.49,59.69
 step
   note Bring the Titan Relic to High Explorer Magellas in Ironforge's Hall of Explorers.
   collect Titan Relic##270865 |q 98824 |goto Wetlands 38.81,52.39 |tip {dropsfrom}Relic Guardian

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Silverpine Forest (11-20)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/The Barrens (12-20)",
-	rev = "63938a68",
+	next = "Leveling/Horde/The Barrens (12-19)",
+	rev = "60b0eac3",
 }, [[
 step
   ding 10
@@ -351,33 +351,33 @@ step
 step
   only Undead Paladin level>=18
   talk Trevan Rol##248840
-  accept A Curious Pair##91859 |goto Silverpine Forest 43.34,41.12
+  accept A Curious Pair##91859 |goto Silverpine Forest 43.4,41.1
 step
   only Undead Paladin level>=18
   talk Deathguard Baldren##259611
-  accept A Grim Fate##91860 |goto Silverpine Forest 45.77,41.94
+  accept A Grim Fate##91860 |goto Silverpine Forest 45.81,41.88
 step
   only Undead Paladin haveq(91859)
   note Speak with Deathguard Baldren about the mysterious Earthen Ring travelers who recently passed through The Sepulcher.
   talk Deathguard Baldren##259611
-  turnin A Curious Pair##91859 |goto Silverpine Forest 45.77,41.94
+  turnin A Curious Pair##91859 |goto Silverpine Forest 45.81,41.88
 step
   only Undead Paladin haveq(91860)
   note Investigate Fenris Isle to the east and learn the fate of the Earthen Ring traveling party.
-  turnin A Grim Fate##91860 |goto Silverpine Forest 64.93,34.34
+  turnin A Grim Fate##91860 |goto Silverpine Forest 65.02,34.1
 step
   only Undead Paladin level>=18
   click Charred Remains##566037
-  accept Into Fenris Keep##91861 |goto Silverpine Forest 64.93,34.34
+  accept Into Fenris Keep##91861 |goto Silverpine Forest 65.02,34.1
 step
   only Undead Paladin haveq(91861)
   note Investigate Fenris Keep to the north and attempt to locate the missing member of the Earthen Ring party.
   talk Lumina Windsinger##248755
-  turnin Into Fenris Keep##91861 |goto Silverpine Forest 65.63,23.36
+  turnin Into Fenris Keep##91861 |goto Silverpine Forest 65.55,23.27
 step
   only Undead Paladin level>=18
   talk Lumina Windsinger##248755
-  accept Lumina Windsinger##91862 |goto Silverpine Forest 65.63,23.36
+  accept Lumina Windsinger##91862 |goto Silverpine Forest 65.55,23.27
 step
   only Undead Paladin haveq(91862)
   note Retrieve the Fenris Isle Key from the Rot Hide Gnolls and use it to free Lumina Windsinger.
@@ -385,33 +385,29 @@ step
 step
   only Undead Paladin haveq(91862)
   talk Lumina Windsinger##248755
-  turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.63,23.36
+  turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.55,23.27
 step
   only Undead Paladin level>=18
   talk Lumina Windsinger##248755
-  accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.63,23.36
+  accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.55,23.27
 step
   only Undead Paladin haveq(96204)
   note Accompany Lumina Windsinger and help her escape Fenris Keep.
   talk Lumina Windsinger##259620
-  turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.33,40.97
+  turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.4,40.99
 step
   only Undead Paladin level>=18
   talk Lumina Windsinger##259620
-  accept The Debt##95034 |goto Silverpine Forest 43.33,40.97
+  accept The Debt##95034 |goto Silverpine Forest 43.4,40.99
 step
   only Undead Paladin haveq(95034)
   note Speak with Lumina Windsinger in the Sepulcher.
   talk Lumina Windsinger##259620
-  turnin The Debt##95034 |goto Silverpine Forest 43.33,40.97
-step
-  only Undead Paladin level>=20
-  talk Lumina Windsinger##259620
-  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.33,40.97
+  turnin The Debt##95034 |goto Silverpine Forest 43.4,40.99
 step
   only Undead Paladin level>=20
   talk Trevan Rol##248840
-  accept An Underrated Talent##95111 |goto Silverpine Forest 43.34,41.12
+  accept An Underrated Talent##95111 |goto Silverpine Forest 43.4,41.1
 step
   only Shaman completed(63) level>=20
   click Brazier of Everfount##113791
@@ -424,18 +420,15 @@ step
 step
   only level>=20
   click Offering Stone##645153
-  accept The Tortured Soul##95883 |goto Silverpine Forest 58.22,69.88
+  accept The Tortured Soul##95883 |goto Silverpine Forest 58.12,69.77
 step
   only level>=20
   click Offering Stone##645153
-  accept The Offering of Blood##95885 |goto Silverpine Forest 58.22,69.88
+  accept The Offering of Blood##95885 |goto Silverpine Forest 58.12,69.77
 step
   only haveq(95885)
   note Use the Tortured Soul to give an offering of blood at the Offering Stone in Beren's Peril.
-  kill Tortured Soul##212753 |q 95885 |goto Silverpine Forest 58.06,70.07
-step
-  only haveq(95885)
-  turnin The Offering of Blood##95885 |goto Silverpine Forest 58.22,69.88
+  turnin The Offering of Blood##95885 |goto Silverpine Forest 58.12,69.77
 step
   only haveq(95883)
   note Collect a Tortured Soul from the nearby undead in Beren's Peril in Silverpine Forest.
@@ -450,18 +443,10 @@ step
   collect Note Scrap##271343 |q 95884 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
 step
   only haveq(95883)
-  turnin The Tortured Soul##95883 |goto Silverpine Forest 58.22,69.88
+  turnin The Tortured Soul##95883 |goto Silverpine Forest 58.12,69.77
 step
   only haveq(95884)
-  turnin The Offering Stone##95884 |goto Silverpine Forest 58.22,69.88
-step
-  only Undead Paladin haveq(95140)
-  note Use the Moonsilver Blade to destroy Old-Fire Eye in Silverpine Forest.
-  kill Old Fire-Eye##259897 |q 95140 |goto Silverpine Forest 49.56,85.2
-step
-  only Undead Paladin haveq(95140)
-  talk Lumina Windsinger##259620
-  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.33,40.97
+  turnin The Offering Stone##95884 |goto Silverpine Forest 58.12,69.77
 step
   talk Master Apothecary Faranell##2055
   turnin A Recipe For Death##447 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
@@ -469,6 +454,18 @@ step
   only level>=16
   talk Master Apothecary Faranell##2055
   accept Unending Torment##97291 |goto Undercity 48.82,69.28
+step
+  only haveq(97291)
+  note Collect a Toxic Skullcap from Tawny Grisette in the Trade Quarter, Blisterweed near the Herbalism Trainer, and Essence of Agony from the poison vendor in the Rogues' Quarter for Master Apothecary Faranell in Undercity.
+  collect Blisterweed##281300 |q 97291/2 |goto Undercity 54.1,49.5
+  talk Tawny Grisette##4554
+  buy Toxic Skullcap##281246 |q 97291/1 |goto Undercity 65.19,49.84
+  talk Patrice Dwyer##3551
+  buy Essence of Agony##8923 |q 97291 |goto Silverpine Forest 42.91,41.81
+step
+  only haveq(97291)
+  talk Master Apothecary Faranell##2055
+  turnin Unending Torment##97291 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   talk Master Apothecary Faranell##2055
   accept A Recipe For Death##450 |goto Undercity 48.82,69.28
@@ -480,7 +477,7 @@ step
 step
   only level>=16
   talk Unfinished Abomination##271613
-  accept Unending Torment##97290 |goto Undercity 46.03,61.97
+  accept Unending Torment##97290 |goto Undercity 45.88,61.7
 step
   only haveq(97290)
   note Report your findings to Master Apothecary Faranell in Undercity.
@@ -494,10 +491,6 @@ step
   talk Doctor Martin Felben##11044
   turnin Prompt Potion Runner##97891 |goto Undercity 46.61,74.09 |tip {turninat}Undercity
 step
-  only haveq(97291)
-  note Collect a Toxic Skullcap from Tawny Grisette in the Trade Quarter, Blisterweed near the Herbalism Trainer, and Essence of Agony from the poison vendor in the Rogues' Quarter for Master Apothecary Faranell in Undercity.
-  collect Blisterweed##281300 |q 97291 |goto Undercity 54.1,49.5
-step
   only Undead haveq(6323)
   note Buy a bat ride to the Undercity from the bat master Karos Razok, then take Podrig's Order to Gordon Wendham in the Undercity.
   talk Gordon Wendham##4556
@@ -507,18 +500,6 @@ step
   talk Gordon Wendham##4556
   accept Michael Garrett##6322 |goto Undercity 61.49,41.79
 step
-  only Undead Paladin
-  talk Tanis Alderwood##257648
-  accept A Lesson in Divinity##94434 |goto Undercity 65.68,37.74
-step
-  only Undead Paladin
-  note Bring 10 Linen Cloth to Tanis Alderwood in the Undercity.
-  collect 10 Linen Cloth##2589 |q 94434 |goto Undercity 65.68,37.74 |tip {dropsfrom}humanoids
-step
-  only Undead Paladin
-  talk Tanis Alderwood##257648
-  turnin A Lesson in Divinity##94434 |goto Undercity 65.68,37.74 |tip {turninat}Undercity
-step
   only Undead haveq(6322)
   note Bring Gordon's Crate to Michael Garrett.
   talk Michael Garrett##4551
@@ -527,10 +508,6 @@ step
   only Undead completed(6322)
   talk Michael Garrett##4551
   accept Return to Podrig##6324 |goto Undercity 63.25,48.56
-step
-  only haveq(97291)
-  talk Master Apothecary Faranell##2055
-  turnin Unending Torment##97291 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   only Undead Rogue
   talk Mennet Carkad##6467
