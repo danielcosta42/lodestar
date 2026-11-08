@@ -41,3 +41,16 @@ CN:Register("ls", function()
 	end
 	return table.concat(parts, ",")
 end, nil)
+
+-- O que o DIAG do backoffice (ChehulNet v11) recebe do Lodestar: versão, quantos da rota o Squad
+-- ouve, e o coletor de quest (registros na fila de repasse, e se há host ligado nesta sessão).
+if CN.RegisterDiag then
+	CN:RegisterDiag("ls", function()
+		local q = LibStub and LibStub("LibChehulQuest-1.0", true)
+		local buf = 0
+		if q and q.buffer then for _ in pairs(q.buffer) do buf = buf + 1 end end
+		local squad = (ns.Squad and ns.Squad.List) and #ns.Squad:List() or 0
+		return table.concat({ "v=" .. tostring(ns.version or "0"), "squad=" .. squad, "qbuf=" .. buf,
+			"qhost=" .. ((q and q.host) and 1 or 0) }, ";")
+	end)
+end
