@@ -18,6 +18,8 @@ tools/*
 !tools/splits-tests.lua
 !tools/retro-tests.lua
 !tools/questiedb.py
+# O verificador das cópias da lib ChehulNet (vem de danielcosta42/chehulnet pelo sync; o CI roda).
+!tools/chehulnet-lock.sh
 !tools/build_intermediate.py
 !tools/parse_lua.py
 !tools/router.py

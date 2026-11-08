@@ -32,5 +32,7 @@ ignore:
   - "PACKAGING.md"
   - ".pkgmeta"
   - ".gitignore"
+  # a trava das cópias da lib ChehulNet (só o CI lê)
+  - "chehulnet.lock"
   # workflows de CI/deploy
   - ".github"

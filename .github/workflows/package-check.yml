@@ -16,6 +16,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      # As cópias da lib ChehulNet vêm de danielcosta42/chehulnet pelo tools/sync.sh de lá e são idênticas em
+      # todo addon da família: uma cópia editada à mão aqui se perde no próximo sync e nunca chega aos outros.
+      - name: ChehulNet copies match chehulnet.lock
+        run: bash tools/chehulnet-lock.sh
+
       - name: Build package (dry run, no upload)
         uses: BigWigsMods/packager@v2
         with:
