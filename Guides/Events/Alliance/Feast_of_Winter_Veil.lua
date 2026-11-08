@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Feast of Winter Veil", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "6da60812",
+	rev = "8f619129",
 }, [[
 step
   talk Wonderform Operator##15732
@@ -56,13 +56,6 @@ step
 step
   talk Innkeeper Saelienne##6735
   turnin Dancing for Marzipan##8357 |goto Darnassus 67.42,15.65
-step
-  talk Wonderform Operator##15732
-  accept New Year Celebrations!##8860 |goto Dun Morogh 53.16,35.62
-step
-  note Bring the Smokywood Supplies to Innkeeper Allison in Stormwind.
-  talk Innkeeper Allison##6740
-  turnin New Year Celebrations!##8860 |goto Stormwind City 60.39,75.27
 step
   talk Sergeant Hartman##15199
   accept The Power of Pine##8373 |goto Hillsbrad Foothills 50,57.35
@@ -163,7 +156,7 @@ step
   note Bring 1 Deeprock Salt and 5 gold coins to any Holly Preserver machine, upon which you will receive 5 Preserved Holly.
   collect 1 Deeprock Salt##8150 |q 8763 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Stone Golem, Lesser Rock Elemental
 step
-  turnin The Hero of the Day##8763 |goto Stormwind City 62.13,69.52
+  turnin The Hero of the Day##8763 |goto Ironforge 35,68.16
 step
   talk Kwee Q. Peddlefeet##16075
   accept Gift Giving##8993 |goto Stormwind City 80.55,37.94
@@ -184,6 +177,13 @@ step
 step
   talk Jesper##15310
   turnin Hallow's End Treats for Jesper!##8311 |goto Stormwind City 56.53,51.76
+step
+  talk Wonderform Operator##15732
+  accept New Year Celebrations!##8860 |goto Stormwind City 67.87,71.43
+step
+  note Bring the Smokywood Supplies to Innkeeper Allison in Stormwind.
+  talk Innkeeper Allison##6740
+  turnin New Year Celebrations!##8860 |goto Stormwind City 60.39,75.27
 step
   talk Innkeeper Allison##6740
   accept Flexing for Nougat##8356 |goto Stormwind City 60.39,75.27

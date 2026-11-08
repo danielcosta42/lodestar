@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (56-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "8d1820b3",
+	rev = "ff2ca9e4",
 }, [[
 step
   ding 55
@@ -149,6 +149,19 @@ step
   talk Emmisary Whitebeard##17069
   turnin Establishing New Outposts##9664 |goto Eastern Plaguelands 71.51,49.66
 step
+  only completed(5464) level>=57
+  talk Leonid Barthalomew the Revered##11036
+  accept Soulbound Keepsake##5465 |goto Eastern Plaguelands 71.89,48.29
+step
+  only completed(5522) level>=57
+  talk Leonid Barthalomew the Revered##11036
+  accept Betina Bigglezink##5531 |goto Eastern Plaguelands 71.89,48.29
+step
+  only completed(5522) haveq(5531)
+  note Bring the Frozen Eggs to Betina Bigglezink.
+  talk Betina Bigglezink##11035
+  turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
+step
   click Torn Scroll##177667
   accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
 step
@@ -180,19 +193,6 @@ step
   talk Rohan the Assassin##16131
   turnin Bonescythe Digs##9126 |goto Eastern Plaguelands 71.62,48.91
 step
-  only completed(5464) level>=57
-  talk Leonid Barthalomew the Revered##11036
-  accept Soulbound Keepsake##5465 |goto Eastern Plaguelands 71.89,48.29
-step
-  only completed(5522) level>=57
-  talk Leonid Barthalomew the Revered##11036
-  accept Betina Bigglezink##5531 |goto Eastern Plaguelands 71.89,48.29
-step
-  only completed(5522) haveq(5531)
-  note Bring the Frozen Eggs to Betina Bigglezink.
-  talk Betina Bigglezink##11035
-  turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
-step
   turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
 step
   only haveq(3461)
@@ -203,9 +203,6 @@ step
   only completed(8926,8931,8932,8933,8934,8935,8936,8937) level>=58
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
-step
-  talk Melnan Darkstone##14842
-  accept The Darkmoon Faire##7905 |goto Ironforge 29.65,75.25
 step
   only completed(5464) haveq(5465)
   note Return to Magistrate Marduke in Caer Darrow. Show him the Soulbound Keepsake.
@@ -294,10 +291,6 @@ step
   note Follow Reginald Windsor through Stormwind. Protect him from harm!
   talk Highlord Bolvar Fordragon##1748
   turnin The Great Masquerade##6403 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
-step
-  note Deliver the Free Ticket Voucher to Gelvas Grimgate, located inside the Darkmoon Faire carnival.
-  talk Gelvas Grimegate##14828
-  turnin The Darkmoon Faire##7905 |goto Elwynn Forest 41.5,68.87 |tip {turninat}Elwynn Forest
 step
   only completed(8926,8931,8932,8933,8934,8935,8936,8937) haveq(8929)
   note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.

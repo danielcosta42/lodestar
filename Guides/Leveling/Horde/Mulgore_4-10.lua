@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Mulgore (4-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "95a85727",
+	rev = "19e95033",
 }, [[
 step
   only level>=1
@@ -146,10 +146,6 @@ step
   only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96652) not completed(96656) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96656) completed(757)
   talk Chief Hawkwind##2981
   accept The Adventurer##96659 |goto Mulgore 43.89,76.66
-step
-  only Shaman completed(1517)
-  talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1518 |goto Mulgore 51.99,80.4
 step
   only haveq(780)
   note Grull Hawkwind in Camp Narache wants you to kill Battleboars and bring back 8 Battleboar Snouts and 8 Battleboar Flanks.
@@ -549,11 +545,6 @@ step
   only not Orc not Skyborne not Troll not Undead
   talk Mull Thunderhorn##2948
   accept Thunderhorn's Report##98435 |goto Mulgore 47.52,63.58
-step
-  only Shaman completed(1517)
-  note Bring the Rough Quartz to Canaga Earthcaller in the Valley of Trials.
-  talk Canaga Earthcaller##5887
-  turnin Call of Earth##1518 |goto Durotar 42.4,69.17 |tip {turninat}Durotar
 step
   talk Cairne Bloodhoof##3057
   turnin The Longwalkers##98430 |goto Thunder Bluff 60.3,51.68 |tip {turninat}Thunder Bluff
