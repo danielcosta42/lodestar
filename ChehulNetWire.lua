@@ -26,6 +26,17 @@ if CN.EnableAlerts then
 	})
 end
 
+-- LibChehulMesh v7: os clientes Chehul que a malha ouviu sobrevivem ao /reload e começam a troca de pares do
+-- próximo login (LodestarDB.meshPeers, nome -> time()).
+local Mesh = _G.ChehulMesh
+if Mesh and Mesh.PeerStore then
+	Mesh:PeerStore(function()
+		_G.LodestarDB = _G.LodestarDB or {}
+		_G.LodestarDB.meshPeers = _G.LodestarDB.meshPeers or {}
+		return _G.LodestarDB.meshPeers
+	end)
+end
+
 -- Tag "ls" + caps de progresso. Registrar já basta: liga o guard de announce, agenda
 -- o 1º HELLO e faz o "ls" aparecer no `addons` de todo peer e no painel. caps NUNCA
 -- pode conter '|' (separador de campo do HELLO); usamos só ',', '=', '/', ':'.
