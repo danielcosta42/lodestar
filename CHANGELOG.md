@@ -1,7 +1,7 @@
-## [2.9.0](https://github.com/danielcosta42/lodestar/compare/v2.8.2...v2.9.0) (2026-11-08)
+## [2.9.1](https://github.com/danielcosta42/lodestar/compare/v2.9.0...v2.9.1) (2026-11-09)
 
 
-### Features
+### Bug Fixes
 
-* **rede:** a lib ChehulNet vem de um repo só, com lock no CI; ChehulNet v12 ([#71](https://github.com/danielcosta42/lodestar/issues/71)) ([70064e6](https://github.com/danielcosta42/lodestar/commit/70064e68759257705d35b3e7d0f13418d1917eff))
+* **rede:** lib ChehulNet v1.1.0, a rede volta a alcançar outras guildas sem o canal recusado ([#73](https://github.com/danielcosta42/lodestar/issues/73)) ([bcbcd9b](https://github.com/danielcosta42/lodestar/commit/bcbcd9b1f9648b29bd6bbf539e9efdef02efc18e))
 
