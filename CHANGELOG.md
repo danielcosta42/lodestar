@@ -1,7 +1,7 @@
-## [2.12.0](https://github.com/danielcosta42/lodestar/compare/v2.11.0...v2.12.0) (2026-11-10)
+## [2.13.0](https://github.com/danielcosta42/lodestar/compare/v2.12.0...v2.13.0) (2026-11-10)
 
 
 ### Features
 
-* **rede:** mapa de perigo, mortes compartilhadas avisam onde está perigoso ([#81](https://github.com/danielcosta42/lodestar/issues/81)) ([bda5e71](https://github.com/danielcosta42/lodestar/commit/bda5e71901b3f9a44c9c41c6327e78452b7fb784)), closes [#79](https://github.com/danielcosta42/lodestar/issues/79)
+* **rede:** parceiro de quest elite, quem está na mesma quest de grupo na zona se encontra ([#82](https://github.com/danielcosta42/lodestar/issues/82)) ([31a3f17](https://github.com/danielcosta42/lodestar/commit/31a3f175339b06d668e95fc7597596b798523e30)), closes [#80](https://github.com/danielcosta42/lodestar/issues/80)
 
