@@ -1,7 +1,7 @@
-## [2.11.0](https://github.com/danielcosta42/lodestar/compare/v2.10.0...v2.11.0) (2026-11-10)
+## [2.12.0](https://github.com/danielcosta42/lodestar/compare/v2.11.0...v2.12.0) (2026-11-10)
 
 
 ### Features
 
-* **net:** lib ChehulNet v1.3.0, menos chance de bloqueio do diretório ([#77](https://github.com/danielcosta42/lodestar/issues/77)) ([5ba9ccd](https://github.com/danielcosta42/lodestar/commit/5ba9ccd591306aea3634768e889bf4fdb1e2b6aa))
+* **rede:** mapa de perigo, mortes compartilhadas avisam onde está perigoso ([#81](https://github.com/danielcosta42/lodestar/issues/81)) ([bda5e71](https://github.com/danielcosta42/lodestar/commit/bda5e71901b3f9a44c9c41c6327e78452b7fb784)), closes [#79](https://github.com/danielcosta42/lodestar/issues/79)
 
