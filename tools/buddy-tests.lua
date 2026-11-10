@@ -77,18 +77,26 @@ check(B.Allow(st, "k", 0, 60) and not B.Allow(st, "k", 59, 60) and B.Allow(st, "
 
 -- ── no jogo ──────────────────────────────────────────────────────────────────
 local clock, handlers, tickers, whispers, toasts, invites, registered = 50000, {}, {}, {}, {}, {}, {}
-local world = { map = 1413, instance = false, members = 0, raid = false, onQuest = { [824] = true, [10] = true },
-	objective = nil, lockdown = false, grouped = false, leader = false, inGroup = {} }
+local world = { map = 1413, instance = false, raid = false, onQuest = { [824] = true, [10] = true },
+	objective = nil, lockdown = false, grouped = false, leader = false, units = {} }
 function time() return clock end
 function GetTime() return clock end
 function IsInInstance() return world.instance end
-function GetNumGroupMembers() return world.members end
+-- o grupo de verdade: tokens de unidade com nome e sobrenome (o nome do jogo é só o primeiro)
+function GetNumGroupMembers()
+	local n = 0
+	for _ in pairs(world.units) do n = n + 1 end
+	return n > 0 and n + 1 or 0
+end
 function IsInRaid() return world.raid end
-function IsInGroup() return world.grouped end
+function IsInGroup() return world.grouped or next(world.units) ~= nil end
 function UnitIsGroupLeader() return world.leader end
 function UnitIsGroupAssistant() return false end
-function UnitInParty(n) return world.inGroup[n] or false end
-function UnitInRaid() return nil end
+function UnitExists(u) return world.units[u] ~= nil end
+function UnitFullName(u) local x = world.units[u]; if x then return x[1], x[2] end end
+function UnitInParty() error("UnitInParty com nome não casa no Forever: use os tokens") end
+function UnitInRaid() error("UnitInRaid com nome não casa no Forever: use os tokens") end
+C_PlayerInfo = { ShouldDisplaySurname = function() return true end }
 C_ChatInfo = { InChatMessagingLockdown = function() return world.lockdown end }
 C_Map = { GetBestMapForUnit = function() return world.map end,
 	GetMapInfo = function(m) if m == 1500 then return { mapType = 5, parentMapID = 1413 } end return { mapType = 3, parentMapID = 12 } end }
@@ -105,7 +113,13 @@ _G.ChehulNet = { peers = {
 	["Ana Lima"] = { addons = { ls = true }, mapID = 1413, ts = clock },
 	["Bia Rocha"] = { addons = { ls = true }, mapID = 1413, ts = clock },  -- "No player named" há pouco
 	["Caio Nunes"] = { addons = { ls = true }, mapID = 1500, ts = clock }, -- caverna dentro da zona
+	["Gil Paz"] = { addons = { ls = true }, mapID = 1413, ts = clock },    -- já no meu grupo (abaixo)
+	["Ivo Reis"] = { addons = { pl = true }, mapID = 1413, ts = clock },   -- sem Lodestar
 } }
+local function setGroup(list)
+	world.units = {}
+	for i, nm in ipairs(list) do world.units["party" .. i] = nm end
+end
 local g = {}
 g.On = function(_, ev, fn) handlers[ev] = fn end
 g.Every = function(_, s, fn) tickers[#tickers + 1] = fn end
@@ -127,35 +141,51 @@ g.db.eliteBuddy = true
 world.objective = nil
 tick()
 check(#whispers == 0, "sem quest de grupo no passo: nada sai")
+world.objective = { questID = 10, needGroup = true }
+tick()
+check(#whispers == 0, "objetivo elite sem quest: nada sai (nunca a primeira quest do passo)")
 world.objective = { questID = 10, eliteQuestID = 824, needGroup = true }
 world.lockdown = true
 tick()
 check(#whispers == 0, "lockdown de chat: nada sai")
 world.lockdown = false
+setGroup({ { "Gil", "Paz" } })
 tick()
 local to = {}
 for _, w in ipairs(whispers) do to[w[3]] = w[2] end
-check(#whispers == 2 and to["Ana Lima"] == "LB1|Q|824|1413" and to["Caio Nunes"] and not to["Bia Rocha"],
-	"avisa a quest ELITE do passo (não a primeira) aos Lodestar da zona, subzona incluída, sem quem não responde ("
+check(#whispers == 2 and to["Ana Lima"] == "LB1|Q|824|1413" and to["Caio Nunes"] and not to["Bia Rocha"]
+	and not to["Gil Paz"],
+	"avisa a quest elite aos Lodestar da zona (subzona incluída), sem quem não responde nem quem já está no meu grupo ("
 	.. #whispers .. ")")
 check(_G.ChehulMesh.dir.tried["Ana Lima"] == clock + 30, "o nome sussurrado entra em dir.tried: o 'No player named' some do chat")
+setGroup({})
+world.map = 1500
+clock = clock + B.ANNOUNCE_GAP
+whispers = {}
 tick()
-check(#whispers == 2, "não repete antes de ANNOUNCE_GAP")
+check(#whispers >= 1 and whispers[1][2] == "LB1|Q|824|1413", "de dentro da caverna, anuncia a zona, não a subzona exata")
+world.map = 1413
+local nw = #whispers
+tick()
+check(#whispers == nw, "não repete antes de ANNOUNCE_GAP")
 clock = clock + B.ANNOUNCE_GAP
 world.instance = true
 tick()
-check(#whispers == 2, "nada sai de instância")
-world.instance, world.members = false, 5
+check(#whispers == nw, "nada sai de instância")
+world.instance = false
+setGroup({ { "A", "1" }, { "B", "2" }, { "C", "3" }, { "D", "4" } })
 tick()
-check(#whispers == 2, "grupo cheio: nada sai")
-world.members, world.raid = 5, true
+check(#whispers == nw, "grupo de 5: nada sai")
+world.raid = true
 tick()
-check(#whispers == 4, "raide com 5 não está cheia")
-world.members, world.raid = 0, false
+check(#whispers > nw, "raide com 5 não está cheia")
+world.raid = false
+setGroup({})
 clock = clock + B.ANNOUNCE_GAP
+nw = #whispers
 world.onQuest[824] = false
 tick()
-check(#whispers == 4, "a quest fora do log: nada sai")
+check(#whispers == nw, "a quest fora do log: nada sai")
 world.onQuest[824] = true
 
 -- recebe
@@ -168,37 +198,75 @@ registered.LSBuddy("LB1|Q|824|1414", "Ana Lima", "WHISPER")
 check(#toasts == 0, "outra zona: nada")
 registered.LSBuddy("LB1|Q|824|1413", "Eu Mesmo", "WHISPER")
 check(#toasts == 0, "eu mesmo: nada")
-world.inGroup["Ana Lima"] = true
+setGroup({ { "Ana", "Lima" } })
 registered.LSBuddy("LB1|Q|824|1413", "Ana Lima-Realm", "WHISPER")
-check(#toasts == 0 and #whispers == 0, "quem já está no meu grupo: nada")
-world.inGroup["Ana Lima"] = nil
+check(#toasts == 0 and #whispers == 0, "quem já está no meu grupo (pelo token de unidade): nada")
+setGroup({})
 g.db.toastsEnabled = false
 registered.LSBuddy("LB1|Q|824|1413", "Ana Lima-Realm", "WHISPER")
 check(#toasts == 0 and #whispers == 0, "toasts desligados: sem oferta e sem resposta")
 g.db.toastsEnabled = nil
-registered.LSBuddy("LB1|Q|824|1500", "Ana Lima-Realm", "WHISPER")
+world.map = 1500
+registered.LSBuddy("LB1|Q|824|1413", "Ana Lima-Realm", "WHISPER")
 check(#toasts == 1 and toasts[1].title == "Convidar Ana Lima?" and toasts[1].text == "Mesma quest: Desaparecidos"
-	and type(toasts[1].onClick) == "function", "mesma quest e zona (subzona dela): toast clicável, curto")
-check(#whispers == 1 and whispers[1][3] == "Ana Lima", "apresenta-se de volta uma vez, pelo nome de sussurro")
+	and type(toasts[1].onClick) == "function", "mesma quest e zona (eu na caverna dela): toast clicável, curto")
+check(#whispers == 1 and whispers[1][3] == "Ana Lima" and whispers[1][2] == "LB1|Q|824|1413",
+	"apresenta-se de volta uma vez, pelo nome de sussurro e com a zona, não a caverna")
+world.map = 1413
 registered.LSBuddy("LB1|Q|824|1413", "Ana Lima", "WHISPER")
 check(#toasts == 1 and #whispers == 1, "a mesma pessoa e quest não repetem dentro da janela")
 check(#invites == 0, "nenhum convite sem clique")
+
+-- o clique reconfere o mundo
+setGroup({ { "Ana", "Lima" } })
+world.leader = true   -- sou líder: só o "já está no grupo" barra
 toasts[1].onClick()
-check(#invites == 1 and invites[1] == "Ana Lima", "o clique convida pelo nome de sussurro")
+check(#invites == 0, "ela entrou no meu grupo antes do clique: sem convite")
+world.leader = false
+setGroup({})
+world.instance = true
+toasts[1].onClick()
+world.instance = false
+world.lockdown = true
+toasts[1].onClick()
+world.lockdown = false
+check(#invites == 0, "em instância ou lockdown no clique: sem convite")
+world.grouped = true
+toasts[1].onClick()
+check(#invites == 0, "virou membro sem poder convidar: sem convite")
+world.grouped = false
+setGroup({ { "A", "1" }, { "B", "2" }, { "C", "3" }, { "D", "4" } })
+toasts[1].onClick()
+check(#invites == 0, "o grupo encheu: sem convite")
+setGroup({})
+toasts[1].onClick()
+check(#invites == 1 and invites[1] == "Ana Lima", "tudo certo: o clique convida pelo nome de sussurro")
+
+-- quem responde e a quem
 world.grouped = true
 registered.LSBuddy("LB1|Q|824|1413", "Caio Nunes", "WHISPER")
 check(#toasts == 1 and #whispers == 2, "em grupo sem ser líder: responde (o outro pode convidar), sem toast")
 world.leader = true
-registered.LSBuddy("LB1|Q|824|1413", "Davi Melo", "WHISPER")
-check(#toasts == 2, "líder do grupo: oferta")
+registered.LSBuddy("LB1|Q|824|1413", "Estranho Qualquer", "WHISPER")
+check(#toasts == 2 and #whispers == 2, "um estranho fora da família recebe a oferta mas nenhuma resposta (não sonda a minha quest)")
 world.grouped, world.leader = false, false
-world.members = 5
-registered.LSBuddy("LB1|Q|824|1413", "Eva Dias", "WHISPER")
-check(#toasts == 2, "grupo cheio: sem oferta")
-world.members = 0
+for i = 1, B.REPLY_BUDGET + 3 do
+	local nm = ("Peer%02d Ls"):format(i)
+	_G.ChehulNet.peers[nm] = { addons = { ls = true }, mapID = 1413, ts = clock }
+	registered.LSBuddy("LB1|Q|824|1413", nm, "WHISPER")
+end
+check(#whispers == B.REPLY_BUDGET, "no máximo REPLY_BUDGET respostas por minuto, contando as de antes (" .. #whispers .. ")")
+clock = clock + 60
+_G.ChehulNet.peers["Novo Ls"] = { addons = { ls = true }, mapID = 1413, ts = clock }
+registered.LSBuddy("LB1|Q|824|1413", "Novo Ls", "WHISPER")
+check(#whispers == 1 + B.REPLY_BUDGET, "no minuto seguinte volta a responder")
+local nt = #toasts
 world.objective = { questID = 10, eliteQuestID = 824, needGroup = false }
 registered.LSBuddy("LB1|Q|824|1413", "Fabi Reis", "WHISPER")
-check(#toasts == 2, "o objetivo de grupo já concluído: sem oferta")
+check(#toasts == nt, "o objetivo de grupo já concluído: sem oferta")
+world.objective = { questID = 10, eliteQuestID = 824, needGroup = true }
+registered.LSBuddy("LB1|Q|824|1413", "Fabi Reis", "WHISPER")
+check(#toasts == nt + 1, "com o objetivo de volta, a oferta sai")
 
 -- ── a quest do objetivo elite no CurrentObjective (Squad.lua) ────────────────
 _G.ChehulMesh = nil
@@ -213,6 +281,13 @@ sq.IsGoalComplete = function() return false end
 assert(loadfile(ROOT .. "/Squad.lua"))("Lodestar", sq)
 local obj = sq.API.CurrentObjective()
 check(obj.questID == 10 and obj.eliteQuestID == 824 and obj.needGroup, "o objetivo diz a quest elite, não só a primeira do passo")
+sq.GetStep = function() return { goals = {
+	{ q = { id = 10 } },
+	{ q = { id = 900 }, raid = true, text = "Raide" },  -- objetivo de raide: não é parceiro de quest elite
+	{ elite = true, text = "Elite sem quest" },          -- elite sem quest
+} } end
+obj = sq.API.CurrentObjective()
+check(obj.needGroup and obj.eliteQuestID == nil, "raide não vira eliteQuestID; elite sem quest deixa nil (sem cair na 1ª do passo)")
 
 -- ── toast clicável (Toast.lua) ───────────────────────────────────────────────
 local function frame()

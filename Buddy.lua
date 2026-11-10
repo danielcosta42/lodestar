@@ -20,6 +20,8 @@ B.ANNOUNCE_GAP = 120        -- um aviso por quest a cada 2 min
 B.OFFER_GAP    = 10 * 60    -- uma oferta por pessoa e quest a cada 10 min
 B.REPLY_GAP    = 10 * 60    -- uma apresentação de volta por pessoa e quest a cada 10 min
 B.TRIED_SECONDS = 30        -- o "No player named" de um nome sussurrado fica fora do chat por tanto tempo
+B.REPLY_BUDGET = 6          -- apresentações de volta por minuto, no total
+B.ASKED_TTL    = 10 * 60    -- quem eu avisei há até tanto pode receber a minha resposta
 
 --------------------------------------------------------------------------------
 -- núcleo puro (testado em tools/buddy-tests.lua)
@@ -99,7 +101,8 @@ if not ns.On then return end
 --------------------------------------------------------------------------------
 -- no jogo
 --------------------------------------------------------------------------------
-local announced, offered, replied = {}, {}, {}
+local announced, offered, replied, announcedTo = {}, {}, {}, {}
+local replyWindow = { at = -math.huge, n = 0 }
 
 local function mesh() return _G.ChehulMesh end
 local function inInstance() return IsInInstance and IsInInstance() and true or false end
@@ -143,14 +146,35 @@ local function canInvite()
 		or false
 end
 
-local function inMyGroup(name)
-	return (UnitInParty and UnitInParty(name)) or (UnitInRaid and UnitInRaid(name)) or false
+-- O nome de uma unidade como o sussurro o escreve: no Forever "Nome Sobrenome" (o nome do jogo é só o
+-- primeiro), a mesma regra do ns.PlayerName.
+local function unitName(unit)
+	if not (UnitExists and UnitExists(unit) and UnitFullName) then return nil end
+	local first, second = UnitFullName(unit)
+	if type(first) ~= "string" or ns.IsSecret(first, second) then return nil end
+	local surnames = C_PlayerInfo and C_PlayerInfo.ShouldDisplaySurname and C_PlayerInfo.ShouldDisplaySurname()
+	if surnames and type(second) == "string" and second ~= "" then return first .. " " .. second end
+	return first
 end
+
+-- quem está no meu grupo agora, pelos tokens de unidade (UnitInParty("Nome Sobrenome") nunca casa no Forever)
+local function groupNames()
+	local set = {}
+	if not (IsInGroup and IsInGroup()) then return set end
+	local raid = IsInRaid and IsInRaid()
+	for i = 1, raid and 40 or 4 do
+		local n = unitName((raid and "raid" or "party") .. i)
+		if n then set[n] = true end
+	end
+	return set
+end
+
+local function inMyGroup(name) return groupNames()[name] == true end
 
 -- a quest de grupo do passo atual, ou nil
 local function myEliteQuest()
 	local o = ns.API and ns.API.CurrentObjective and ns.API.CurrentObjective()
-	local qid = o and o.needGroup and (o.eliteQuestID or o.questID)
+	local qid = o and o.needGroup and o.eliteQuestID   -- sem a quest do objetivo elite, nada (nunca a 1ª do passo)
 	if not qid then return nil end
 	if C_QuestLog and C_QuestLog.IsOnQuest and not C_QuestLog.IsOnQuest(qid) then return nil end
 	return qid
@@ -176,6 +200,15 @@ local function usable(name)
 	return not (bad and time() <= bad)
 end
 
+-- a quem eu respondo: quem eu avisei há pouco, ou um peer que a ChehulNet ouviu com Lodestar. Um estranho
+-- que sussurra LB1 não descobre a minha quest nem a minha zona.
+local function knownBuddy(name, now)
+	if announcedTo[name] and now - announcedTo[name] <= B.ASKED_TTL then return true end
+	local CN = _G.ChehulNet
+	local p = CN and CN.peers and CN.peers[name]
+	return type(p) == "table" and p.addons and p.addons.ls and true or false
+end
+
 local function whisper(target, qid, map)
 	local M = mesh()
 	if not (M and M.Whisper) then return end
@@ -192,8 +225,14 @@ local function announce()
 	local now = time()
 	if not B.Allow(announced, qid, now, B.ANNOUNCE_GAP) then return end
 	local CN = _G.ChehulNet
-	local targets = B.Targets(CN and CN.peers, map, now, me(), myGuideStep(), sameZone, usable, math.random)
-	for _, name in ipairs(targets) do whisper(B.WhisperName(name), qid, map) end
+	local group = groupNames()
+	local function ok(name) return usable(name) and not group[B.WhisperName(name)] end
+	local targets = B.Targets(CN and CN.peers, map, now, me(), myGuideStep(), sameZone, ok, math.random)
+	for _, name in ipairs(targets) do
+		local w = B.WhisperName(name)
+		announcedTo[w] = now
+		whisper(w, qid, zoneOf(map))   -- a zona, não a subzona exata
+	end
 end
 
 local function invite(name)
@@ -214,12 +253,23 @@ local function onRecv(payload, sender, dist)
 	if myEliteQuest() ~= qid or not (mine and sameZone(mine, map)) or groupFull() then return end
 	local now = time()
 	if not B.Allow(offered, who .. ":" .. qid, now, B.OFFER_GAP) then return end
-	-- apresenta-se de volta uma vez: quem me avisou também me vê (e pode convidar se eu não puder)
-	if B.Allow(replied, who .. ":" .. qid, now, B.REPLY_GAP) then whisper(who, qid, mine) end
+	-- apresenta-se de volta uma vez, só a quem é da família e no máximo REPLY_BUDGET por minuto: quem me
+	-- avisou também me vê (e pode convidar se eu não puder)
+	if knownBuddy(who, now) and B.Allow(replied, who .. ":" .. qid, now, B.REPLY_GAP) then
+		if now - replyWindow.at >= 60 then replyWindow.at, replyWindow.n = now, 0 end
+		if replyWindow.n < B.REPLY_BUDGET then
+			replyWindow.n = replyWindow.n + 1
+			whisper(who, qid, zoneOf(mine))
+		end
+	end
 	if canInvite() and ns.Toast then
 		ns.Toast:Show({ title = ns.L.BUDDY_TITLE:format(who), text = ns.L.BUDDY_TEXT:format(questName(qid)),
 			color = ns.UI.COL.tip, hold = 15, glyph = "estrela",
-			onClick = function() invite(who) end })
+			onClick = function()
+				-- o toast fica na tela 15 s: o mundo pode ter mudado até o clique
+				if inInstance() or lockdown() or not canInvite() or groupFull() or inMyGroup(who) then return end
+				invite(who)
+			end })
 	end
 end
 
