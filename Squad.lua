@@ -145,6 +145,8 @@ function ns.API.CurrentObjective()
 				o.label = o.label or goal.text
 				if goal.goto_ then o.zone = o.zone or goal.goto_.zone end
 				if goal.raid then o.needRaid = true else o.needGroup = true end
+				-- a quest do objetivo elite (o questID acima é a primeira quest do passo, que pode ser outra)
+				if goal.q and goal.q.id and not o.eliteQuestID then o.eliteQuestID = goal.q.id end
 			end
 		end
 	end
