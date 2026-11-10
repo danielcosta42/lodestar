@@ -92,6 +92,7 @@ XPHud.lua
 Coords.lua
 MobWarn.lua
 Deaths.lua
+Danger.lua
 Library.lua
 Settings.lua
 Share.lua

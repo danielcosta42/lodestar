@@ -136,6 +136,8 @@ local DB_DEFAULTS = {
 	trail = true,         -- caminho de formiga (minimapa + mapa-múndi)
 	questItem = true,     -- botão pra usar o item da missão do passo
 	corpseRoute = true,   -- fantasma: rota (vermelha) até o corpo
+	dangerWarn = true,    -- mapa de perigo: avisa ao entrar onde muitos morreram (specs/perigo)
+	dangerShare = true,   -- mapa de perigo: manda as próprias mortes (mapa, célula, nível) pela rede
 	compass = { enabled = true, scale = 1, point = "TOP", x = 0, y = -14, locked = true },
 }
 local CHAR_DEFAULTS = {
