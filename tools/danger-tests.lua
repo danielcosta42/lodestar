@@ -98,8 +98,14 @@ check(D.ShouldWarn({}, m3, 1436, 5, 5, 1) == nil, "2 mortes (abaixo de HOT): sem
 
 -- ── marcas no mapa ───────────────────────────────────────────────────────────
 local hot = D.Hot(m2, 1436, 10)
-check(#hot == 1 and hot[1].cx == 5 and hot[1].cy == 5 and hot[1].n == 2,
-	"só a célula com PIN_MIN+ mortes vira marca (" .. #hot .. ")")
+check(#hot == 0, "2 mortes de uma pessoa só na célula: sem marca (" .. #hot .. ")")
+D.Add(m2, "Caio", r(5, 5, "1"), 6)
+hot = D.Hot(m2, 1436, 10)
+check(#hot == 1 and hot[1].cx == 5 and hot[1].cy == 5 and hot[1].n == 3,
+	"com um segundo remetente real a célula vira marca (" .. #hot .. ")")
+local mp = D.NewMemory()
+for i = 1, 5 do D.Add(mp, "Alt" .. i, r(7, 7, "1"), 0, "Forjador") end
+check(#D.Hot(mp, 1436, 1) == 0, "um remetente com 5 ids (ou alts que ele entrega) não marca o mapa")
 check(#D.Hot(m2, 1437, 10) == 0 and #D.Hot(m2, 1436, 10 + D.TTL) == 0, "outro mapa ou passado o TTL: sem marca")
 local m4 = D.NewMemory()
 for i = 0, 29 do

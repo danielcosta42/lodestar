@@ -111,18 +111,28 @@ function D.Around(mem, map, cx, cy, now)
 	return n, senders
 end
 
--- células do mapa com PIN_MIN+ mortes no TTL, mais mortas primeiro (até PIN_MAX)
+-- células do mapa com PIN_MIN+ mortes de ORIGINS+ remetentes reais no TTL (a regra do aviso: um só
+-- remetente com vários ids não marca nada), mais mortas primeiro (até PIN_MAX)
 function D.Hot(mem, map, now)
 	local by = {}
 	for _, d in ipairs(mem.list) do
 		if d.map == map and now - d.at <= D.TTL then
 			local k = d.cx * D.CELLS + d.cy
-			by[k] = by[k] or { cx = d.cx, cy = d.cy, n = 0 }
-			by[k].n = by[k].n + 1
+			local c = by[k]
+			if not c then
+				c = { cx = d.cx, cy = d.cy, n = 0, senders = 0, seen = {} }
+				by[k] = c
+			end
+			c.n = c.n + 1
+			if not c.seen[d.s] then c.seen[d.s], c.senders = true, c.senders + 1 end
 		end
 	end
 	local out = {}
-	for _, c in pairs(by) do if c.n >= D.PIN_MIN then out[#out + 1] = c end end
+	for _, c in pairs(by) do
+		if c.n >= D.PIN_MIN and c.senders >= D.ORIGINS then
+			out[#out + 1] = { cx = c.cx, cy = c.cy, n = c.n }
+		end
+	end
 	table.sort(out, function(a, b)
 		if a.n ~= b.n then return a.n > b.n end
 		return a.cx * D.CELLS + a.cy < b.cx * D.CELLS + b.cy

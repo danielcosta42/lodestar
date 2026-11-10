@@ -21,5 +21,6 @@ difícil: elite que patrulha, caverna lotada, mob que chama ajuda. Hoje o Lodest
 - **R5 Aviso.** A cada 5 s, fora de instância, vivo, fora de taxi e com "Avisar áreas perigosas" ligado: se a célula e
   as 8 vizinhas somam pelo menos `HOT` (3) mortes de pelo menos `ORIGINS` (2) remetentes reais no TTL, um toast. Uma
   vez por célula a cada 30 min, e um aviso de perigo qualquer a cada `TOAST_GAP` (3 min).
-- **R6 Mapa.** Com o mapa-múndi aberto e o aviso ligado, uma marca por célula do mapa exibido com 2+ mortes (até 20).
+- **R6 Mapa.** Com o mapa-múndi aberto e o aviso ligado, uma marca por célula do mapa exibido com 2+ mortes de 2+
+  remetentes reais (a regra do aviso), até 20.
 - **R7 Sem nomes, sem chat.**
