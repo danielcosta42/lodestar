@@ -182,6 +182,8 @@ end
 
 local function fillGroup(p)
 	local L = ns.L
+	switchRow(p, L.SET_BUDDY, L.SET_BUDDY_D,
+		function() return ns.db.eliteBuddy ~= false end, function(v) ns.db.eliteBuddy = v end)
 	switchRow(p, L.SET_SHARE, L.SET_SHARE_D,
 		function() return ns.db.autoShareQuest end, function(v) ns.db.autoShareQuest = v end, true)
 	switchRow(p, L.SET_SHAREQ, L.SET_SHAREQ_D,

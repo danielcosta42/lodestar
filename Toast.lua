@@ -45,6 +45,15 @@ local function makeToast()
 	f.sub:SetPoint("TOPLEFT", f.title, "BOTTOMLEFT", 0, -2)
 	f.sub:SetPoint("RIGHT", -10, 0)
 	f.sub:SetJustifyH("LEFT"); f.sub:SetWordWrap(false)
+	-- toast clicável (data.onClick): o clique é evento de hardware, então pode convidar
+	f:SetScript("OnMouseUp", function(self)
+		local fn = self._onClick
+		if not fn then return end
+		self._onClick = nil
+		self:EnableMouse(false)
+		self._state, self._t = "out", 0
+		fn()
+	end)
 	return f
 end
 
@@ -108,6 +117,8 @@ function T:_spawn(data)
 	f.sub:SetText(data.text or "")
 	f._state, f._t, f._slide = "in", 0, 12
 	f._hold = data.hold or HOLD_DUR
+	f._onClick = data.onClick
+	f:EnableMouse(data.onClick ~= nil)   -- sem ação, o toast não segura o clique
 	f:SetAlpha(0); f:Show()
 	active[#active + 1] = f
 	driver:Show()
