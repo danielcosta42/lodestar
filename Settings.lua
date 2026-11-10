@@ -189,7 +189,7 @@ local function fillGroup(p)
 	switchRow(p, L.SET_DANGER, L.SET_DANGER_D,
 		function() return ns.db.dangerWarn ~= false end, function(v) ns.db.dangerWarn = v end)
 	switchRow(p, L.SET_DANGER_SHARE, L.SET_DANGER_SHARE_D,
-		function() return ns.db.dangerShare ~= false end, function(v) ns.db.dangerShare = v end)
+		function() return ns.db.dangerShare == true end, function(v) ns.db.dangerShare = v end, true)
 	switchRow(p, L.SET_CARD, L.SET_CARD_D,
 		function() return ns.db.reportCard end, function(v) ns.db.reportCard = v end)
 	switchRow(p, L.SET_CARD_EVERY, L.SET_CARD_EVERY_D,

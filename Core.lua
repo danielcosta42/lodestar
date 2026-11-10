@@ -137,7 +137,7 @@ local DB_DEFAULTS = {
 	questItem = true,     -- botão pra usar o item da missão do passo
 	corpseRoute = true,   -- fantasma: rota (vermelha) até o corpo
 	dangerWarn = true,    -- mapa de perigo: avisa ao entrar onde muitos morreram (specs/perigo)
-	dangerShare = true,   -- mapa de perigo: manda as próprias mortes (mapa, célula, nível) pela rede
+	dangerShare = false,  -- OPT-IN: mapa de perigo, manda as próprias mortes (mapa e célula) pela família
 	compass = { enabled = true, scale = 1, point = "TOP", x = 0, y = -14, locked = true },
 }
 local CHAR_DEFAULTS = {
