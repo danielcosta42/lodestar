@@ -39,6 +39,10 @@ L.GUIDE_LOADED   = "Guide loaded"
 L.CHOOSE_GUIDE   = "Choose a guide"
 L.MENU_HINT      = "Use /ls menu to browse"
 L.QUEST_FALLBACK = "Quest #%s"
+L.SET_BUDDY     = "Find a partner for elite quests"
+L.SET_BUDDY_D   = "On a group or elite quest step, Lodestar tells a few Lodestar players in the same zone (your name goes as the sender), and shows you who is on the same quest nearby. Click the notice to invite. Nothing goes to chat."
+L.BUDDY_TITLE   = "Invite %s?"
+L.BUDDY_TEXT    = "Same quest: %s"
 
 -- Guide menu
 L.CAT_Leveling    = "Leveling"

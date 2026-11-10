@@ -50,6 +50,7 @@ Parser.lua
 ForeverData.lua
 Guide.lua
 Squad.lua
+Buddy.lua
 Gather.lua
 Consumables.lua
 SubZones.lua
