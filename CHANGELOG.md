@@ -1,7 +1,7 @@
-## [2.13.0](https://github.com/danielcosta42/lodestar/compare/v2.12.0...v2.13.0) (2026-11-10)
+## [2.14.0](https://github.com/danielcosta42/lodestar/compare/v2.13.0...v2.14.0) (2026-11-12)
 
 
 ### Features
 
-* **rede:** parceiro de quest elite, quem está na mesma quest de grupo na zona se encontra ([#82](https://github.com/danielcosta42/lodestar/issues/82)) ([31a3f17](https://github.com/danielcosta42/lodestar/commit/31a3f175339b06d668e95fc7597596b798523e30)), closes [#80](https://github.com/danielcosta42/lodestar/issues/80)
+* **rede:** lib ChehulNet v1.4.0, o Lodestar repassa os acampamentos do Warmth ([#83](https://github.com/danielcosta42/lodestar/issues/83)) ([ef851ce](https://github.com/danielcosta42/lodestar/commit/ef851ced9163588e82766cca4c02dcd9d98604ba))
 
