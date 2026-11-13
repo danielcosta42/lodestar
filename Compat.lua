@@ -41,8 +41,10 @@ ns.Client.maxLevel = askedMaxLevel(GetMaxLevelForPlayerExpansion)
 -- Na prática, neste cliente, o que é secreto é estado de COMBATE (vida, auras,
 -- cast, ameaça). Identidade de NPC vem limpa — colhemos id e nome de quest giver
 -- sem problema. Mas a doc gerada marca UnitGUID/UnitName com os predicados
--- SecretWhenUnitIdentityRestricted / SecretWhenUnitNameIdentityRestricted, então
--- perguntamos antes em vez de depender de um comportamento que pode apertar.
+-- SecretWhenUnitIdentityRestricted / SecretWhenUnitNameIdentityRestricted — e
+-- já pegou: o token do tooltip de mundo vem do UnitTokenFromGUID, com o mesmo
+-- predicado, e pode chegar secreto (ver HookUnitTooltip). Então perguntamos
+-- antes em vez de depender de um comportamento que pode apertar.
 --------------------------------------------------------------------------------
 function ns.IsSecret(...)
 	if not issecretvalue then return false end
@@ -129,8 +131,10 @@ function ns.HookUnitTooltip(fn)          -- fn(tooltip, unit)
 		and Enum.TooltipDataType and Enum.TooltipDataType.Unit
 		and TooltipUtil and TooltipUtil.GetDisplayedUnit then
 		TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, function(tt)
+			-- O token do tooltip de mundo (mouseover) pode chegar secreto, e UnitGUID
+			-- recusa argumento secreto vindo de addon: estoura a cada frame do mouse.
 			local _, unit = TooltipUtil.GetDisplayedUnit(tt)
-			if unit then fn(tt, unit) end
+			if unit and not ns.IsSecret(unit) then fn(tt, unit) end
 		end)
 		return true
 	end

@@ -7,7 +7,8 @@
 -- resposta do servidor vira nome; título VAZIO não gruda (o bug clássico: "" é
 -- verdadeiro em Lua); a colheita no gossip rende o NPC inteiro sem aceitar; e o
 -- repasse pela malha só sai com consentimento, só para quem anuncia `qsink` e
--- só com o "onde" — nunca com quem mandou.
+-- só com o "onde" — nunca com quem mandou. De quebra: token de unidade secreto
+-- no tooltip não chega ao gancho de HookUnitTooltip (UnitGUID estouraria).
 --
 --   luajit tools/forever-scan.lua
 --
@@ -153,6 +154,19 @@ fe.fire("QUEST_DETAIL")
 check(fe.db.scan.givers[80122], "com identidade secreta o ponto ainda é gravado")
 check(fe.db.scan.givers[80122].name == nil, "mas o nome secreto não entra no banco")
 issecretvalue, npcName = nil, "Agent Keanna"
+
+-- tooltip de unidade com token secreto (mouseover no mundo): não chega ao gancho
+local postCall, tokenTooltip, recebeu
+TooltipDataProcessor = { AddTooltipPostCall = function(_, fn) postCall = fn end }
+Enum = { TooltipDataType = { Unit = 2 } }
+TooltipUtil = { GetDisplayedUnit = function() return nil, tokenTooltip end }
+fe.HookUnitTooltip(function(_, unit) recebeu = unit end)
+issecretvalue = function(v) return v == secreto end
+tokenTooltip = secreto; postCall({})
+check(recebeu == nil, "token de unidade secreto não chega ao gancho do tooltip")
+tokenTooltip = "mouseover"; postCall({})
+check(recebeu == "mouseover", "token limpo chega ao gancho do tooltip")
+issecretvalue, TooltipDataProcessor, Enum, TooltipUtil = nil, nil, nil, nil
 
 -- a resposta do servidor para um id perguntado vira nome
 fe.fire("QUEST_DATA_LOAD_RESULT", 90002, true)
