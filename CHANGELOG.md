@@ -1,7 +1,7 @@
-## [2.14.0](https://github.com/danielcosta42/lodestar/compare/v2.13.0...v2.14.0) (2026-11-12)
+## [2.14.1](https://github.com/danielcosta42/lodestar/compare/v2.14.0...v2.14.1) (2026-11-13)
 
 
-### Features
+### Bug Fixes
 
-* **rede:** lib ChehulNet v1.4.0, o Lodestar repassa os acampamentos do Warmth ([#83](https://github.com/danielcosta42/lodestar/issues/83)) ([ef851ce](https://github.com/danielcosta42/lodestar/commit/ef851ced9163588e82766cca4c02dcd9d98604ba))
+* **tooltip:** token de unidade secreto no mouseover não estoura o UnitGUID ([#87](https://github.com/danielcosta42/lodestar/issues/87)) ([9e3887a](https://github.com/danielcosta42/lodestar/commit/9e3887a563686b7aa348fddc66a989130dd82393))
 
