@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Durotar (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "60cd151b",
+	rev = "18710e15",
 }, [[
 step
   only level>=1
@@ -174,14 +174,6 @@ step
   talk Mai'ah##5884
   turnin Glyphic Parchment##98576 |goto Durotar 42.51,69.04
 step
-  only not Warlock
-  note Kill 12 Vile Familiars.
-  kill Vile Familiar##3101 |q 792 |goto Durotar 44.24,55.26
-step
-  only Warlock not completed(1470) not haveq(1470)
-  note Bring 6 Vile Familiar Heads to Ruzan.
-  collect 6 Vile Familiar Head##6487 |q 1485 |goto Durotar 44.24,55.26 |tip {dropsfrom}Vile Familiar
-step
   only haveq(789)
   note Get 10 Scorpid Worker Tails for Gornek in the Den.
   collect 10 Scorpid Worker Tail##4862 |q 789 |goto Durotar 41.37,63.37 |tip {dropsfrom}Scorpid Worker, Sarkoth
@@ -194,24 +186,67 @@ step
   talk Gornek##3143
   turnin Sting of the Scorpid##789 |goto Durotar 42.06,68.33
 step
+  only haveq(4402)
+  talk Galgar##9796
+  turnin Galgar's Cactus Apple Surprise##4402 |goto Durotar 42.73,67.23
+step
+  talk Foreman Thazz'ril##11378
+  accept Lazy Peons##5441 |goto Durotar 44.63,68.65
+step
+  talk Hana'zua##3287
+  accept Sarkoth##790 |goto Durotar 40.6,62.58
+step
+  note Use the Foreman's Blackjack on Lazy Peons when they're sleeping. Wake up 5 peons, then return the Foreman's Blackjack to Foreman Thazz'ril in the Valley of Trials.
+  use Lazy Peon##10556 |q 5441 |goto Durotar 45.65,65.7 |tip {useit}
+step
+  talk Foreman Thazz'ril##11378
+  turnin Lazy Peons##5441 |goto Durotar 44.63,68.65
+step
+  talk Foreman Thazz'ril##11378
+  accept Thazz'ril's Pick##6394 |goto Durotar 44.63,68.65
+step
+  note Kill Sarkoth and bring his claw back to Hana'zua.
+  collect Sarkoth's Mangled Claw##4905 |q 790 |goto Durotar 40.5,66.83 |tip {dropsfrom}Sarkoth
+step
+  only not Warlock
+  note Kill 12 Vile Familiars.
+  kill Vile Familiar##3101 |q 792 |goto Durotar 44.24,55.26
+step
+  only Warlock not completed(1470) not haveq(1470)
+  note Bring 6 Vile Familiar Heads to Ruzan.
+  collect 6 Vile Familiar Head##6487 |q 1485 |goto Durotar 44.24,55.26 |tip {dropsfrom}Vile Familiar
+step
+  note Bring Thazz'ril's Pick to Foreman Thazz'ril.
+  collect Thazz'ril's Pick##16332 |q 6394 |goto Durotar 43.73,53.79
+step
+  talk Hana'zua##3287
+  turnin Sarkoth##790 |goto Durotar 40.6,62.58
+step
+  talk Hana'zua##3287
+  accept Sarkoth##804 |goto Durotar 40.6,62.58
+step
   only not Warlock
   talk Zureetha Fargaze##3145
   turnin Vile Familiars##792 |goto Durotar 42.85,69.15
+step
+  note Bring the news of Hana'zua's plight to Gornek at the Den.
+  talk Gornek##3143
+  turnin Sarkoth##804 |goto Durotar 42.06,68.33
 step
   only Warlock not completed(1470) not haveq(1470)
   talk Ruzan##5765
   turnin Vile Familiars##1485 |goto Durotar 42.59,69
 step
-  only haveq(4402)
-  talk Galgar##9796
-  turnin Galgar's Cactus Apple Surprise##4402 |goto Durotar 42.73,67.23
+  talk Foreman Thazz'ril##11378
+  turnin Thazz'ril's Pick##6394 |goto Durotar 44.63,68.65
 step
   only Warlock
   talk Ruzan##5765
   accept Vile Familiars##1499 |goto Durotar 42.59,69
 step
-  talk Foreman Thazz'ril##11378
-  accept Lazy Peons##5441 |goto Durotar 44.63,68.65
+  only Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
+  talk Canaga Earthcaller##5887
+  accept Call of Earth##1516 |goto Durotar 42.4,69.17
 step
   only Warlock
   note Speak with Zureetha Fargaze.
@@ -224,67 +259,44 @@ step
   note Bring the Burning Blade Medallion to Zureetha Fargaze, outside The Den.
   collect Burning Blade Medallion##4859 |q 794 |goto Durotar 42.71,52.95 |tip {dropsfrom}Yarrog Baneshadow
 step
-  talk Hana'zua##3287
-  accept Sarkoth##790 |goto Durotar 40.6,62.58
-step
-  note Use the Foreman's Blackjack on Lazy Peons when they're sleeping. Wake up 5 peons, then return the Foreman's Blackjack to Foreman Thazz'ril in the Valley of Trials.
-  use Lazy Peon##10556 |q 5441 |goto Durotar 45.65,65.7 |tip {useit}
-step
-  talk Zureetha Fargaze##3145
-  turnin Burning Blade Medallion##794 |goto Durotar 42.85,69.15
-step
-  talk Foreman Thazz'ril##11378
-  turnin Lazy Peons##5441 |goto Durotar 44.63,68.65
-step
-  talk Zureetha Fargaze##3145
-  accept Report to Sen'jin Village##805 |goto Durotar 42.85,69.15
-step
-  talk Foreman Thazz'ril##11378
-  accept Thazz'ril's Pick##6394 |goto Durotar 44.63,68.65
-step
-  only Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
-  talk Canaga Earthcaller##5887
-  accept Call of Earth##1516 |goto Durotar 42.4,69.17
-step
-  only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96656) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96656) not haveq(96659)
-  click Lost Journal##654925
-  accept The Adventurer##96652 |goto Durotar 42.79,69.12
-step
-  note Kill Sarkoth and bring his claw back to Hana'zua.
-  collect Sarkoth's Mangled Claw##4905 |q 790 |goto Durotar 40.5,66.83 |tip {dropsfrom}Sarkoth
-step
-  talk Hana'zua##3287
-  turnin Sarkoth##790 |goto Durotar 40.6,62.58
-step
-  talk Hana'zua##3287
-  accept Sarkoth##804 |goto Durotar 40.6,62.58
-step
-  note Bring the news of Hana'zua's plight to Gornek at the Den.
-  talk Gornek##3143
-  turnin Sarkoth##804 |goto Durotar 42.06,68.33
-step
   only Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
   note Bring 2 Felstalker Hooves to Canaga Earthcaller in the Valley of Trials.
   collect 2 Felstalker Hoof##6640 |q 1516 |goto Durotar 44.29,54.19 |tip {dropsfrom}Felstalker
 step
-  note Bring Thazz'ril's Pick to Foreman Thazz'ril.
-  collect Thazz'ril's Pick##16332 |q 6394 |goto Durotar 43.73,53.79
+  talk Zureetha Fargaze##3145
+  turnin Burning Blade Medallion##794 |goto Durotar 42.85,69.15
 step
   only Shaman not completed(1519) not completed(92466) not haveq(1519) not haveq(92466)
   talk Canaga Earthcaller##5887
   turnin Call of Earth##1516 |goto Durotar 42.4,69.17
 step
-  talk Foreman Thazz'ril##11378
-  turnin Thazz'ril's Pick##6394 |goto Durotar 44.63,68.65
+  talk Zureetha Fargaze##3145
+  accept Report to Sen'jin Village##805 |goto Durotar 42.85,69.15
 step
   only Shaman not completed(92466) not haveq(92466)
   talk Canaga Earthcaller##5887
   accept Call of Earth##1517 |goto Durotar 42.4,69.17
 step
+  only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96656) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96656) not haveq(96659)
+  click Lost Journal##654925
+  accept The Adventurer##96652 |goto Durotar 42.79,69.12
+step
   only Shaman not completed(92466) not haveq(92466)
   note Find Spirit Rock and drink the Earth Sapta.
   talk Minor Manifestation of Earth##5891
   turnin Call of Earth##1517 |goto Durotar 44.03,76.2
+step
+  only Shaman not completed(92466) not haveq(92466)
+  talk Minor Manifestation of Earth##5891
+  accept Call of Earth##1518 |goto Durotar 44.03,76.2
+step
+  only Shaman not completed(92466) not haveq(92466)
+  note Bring the Rough Quartz to Canaga Earthcaller in the Valley of Trials.
+  talk Canaga Earthcaller##5887
+  turnin Call of Earth##1518 |goto Durotar 42.4,69.17
+step
+  talk Ukor##6786
+  accept A Peon's Burden##2161 |goto Durotar 52.06,68.31
 step
   note Speak with Master Gadrin in Sen'jin Village.
   talk Master Gadrin##3188
@@ -293,17 +305,14 @@ step
   talk Vel'rin Fang##3194
   accept Legging It##96821 |goto Durotar 55.96,73.93
 step
-  note Kill 6 Ridgeshade Creepers and 6 Ridgeshade Lurkers in southern Durotar, then report to Gar'thok in Razor Hill.
-  kill Ridgeshade Lurker##266849 |q 96821/2 |goto Durotar 51.82,58.16
-  kill Ridgeshade Creeper##266850 |q 96821 |goto Durotar 51.91,57.85
+  note Bring Ukor's Burden to Innkeeper Grosk in Razor Hill.
+  talk Innkeeper Grosk##6928
+  turnin A Peon's Burden##2161 |goto Durotar 51.51,41.64
 step
   only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96656) not completed(96659) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96656) not haveq(96659)
   note Bring the journal to Brakk near Razor Hill.
   talk Brakk##265809
   turnin The Adventurer##96652 |goto Durotar 51.98,47.27
-step
-  talk Gar'Thok##3139
-  turnin Legging It##96821 |goto Durotar 51.95,43.5
 step
   only not completed(95998) not completed(96101) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Brakk##265809
@@ -352,6 +361,10 @@ step
   kill Kul Tiras Marine##3129 |q 784/2 |goto Durotar 59.59,56.75
   kill Kul Tiras Sailor##3128 |q 784 |goto Durotar 57.11,57.24
 step
+  note Kill 6 Ridgeshade Creepers and 6 Ridgeshade Lurkers in southern Durotar, then report to Gar'thok in Razor Hill.
+  kill Ridgeshade Creeper##266850 |q 96821/1 |goto Durotar 51.91,57.85
+  kill Ridgeshade Lurker##266849 |q 96821 |goto Durotar 51.82,58.16
+step
   note Collect the Raider's Battleaxe, Raider's Bow, and Raider's Shield from the Tiragarde Keep outskirts, then return them to Turroc in Razor Hill.
   collect Raider's Battleaxe##275716 |q 96822/2 |goto Durotar 57.37,56.43
   collect Raider's Bow##275713 |q 96822/1 |goto Durotar 59.39,56.41
@@ -363,6 +376,9 @@ step
   note Take Admiral Proudmoore's Orders to Gar'Thok in Razor Hill.
   talk Gar'Thok##3139
   turnin The Admiral's Orders##830 |goto Durotar 51.95,43.5
+step
+  talk Gar'Thok##3139
+  turnin Legging It##96821 |goto Durotar 51.95,43.5
 step
   talk Turroc##266940
   turnin For Honor##96822 |goto Durotar 53.95,42.59
@@ -385,21 +401,18 @@ step
   talk Gar'Thok##3139
   turnin From The Wreckage....##825 |goto Durotar 51.95,43.5
 step
-  only level>=8
-  kill Ukorsbane##266851 |goto Durotar 50.74,56.52 |elite |tip Loot the quest item here — it starts the quest.
-  accept Ukor's Lost Pack##96876 |goto Durotar 50.74,56.52
-step
   only Troll Priest
   talk Ken'jai##3707
   accept In Favor of Spirituality##5649 |goto Durotar 42.36,68.81
 step
-  only haveq(96876)
-  note Return the pack to Ukor in southern Durotar.
-  talk Ukor##6786
-  turnin Ukor's Lost Pack##96876 |goto Durotar 52.06,68.31
+  talk Pal'juh##275811
+  accept Lost in the Shadows##99123 |goto Durotar 46.3,78.64
 step
-  talk Ukor##6786
-  accept A Peon's Burden##2161 |goto Durotar 52.06,68.31
+  note Help Pal'juh escape Kolkar Crag and bring news of your success to Master Vornal in Sen'jin Village.
+  goto Durotar 51.41,79.29 |tip Escort Pal'juh out of Kolkar Crag.
+step
+  talk Master Vornal##3304
+  turnin Lost in the Shadows##99123 |goto Durotar 55.94,74.39
 step
   talk Master Vornal##3304
   accept A Solvent Spirit##818 |goto Durotar 55.94,74.39
@@ -437,12 +450,6 @@ step
   note Furl Scornbrow in the Razor Hill watchtower wants 8 Canvas Scraps.
   collect 8 Canvas Scraps##4870 |q 791 |goto Durotar 49.89,80.03 |tip {dropsfrom}Kolkar Drudge, Kolkar Outrunner, Kul Tiras Sailor
 step
-  talk Pal'juh##275811
-  accept Lost in the Shadows##99123 |goto Durotar 46.3,78.64
-step
-  note Help Pal'juh escape Kolkar Crag and bring news of your success to Master Vornal in Sen'jin Village.
-  goto Durotar 51.41,79.29 |tip Escort Pal'juh out of Kolkar Crag.
-step
   note Retrieve Minshina's skull from the circle of power on the Echo Isles.
   collect Minshina's Skull##4864 |q 808 |goto Durotar 67.45,87.81 |tip {dropsfrom}Imprisoned Darkspear
 step
@@ -473,9 +480,6 @@ step
   talk Master Gadrin##3188
   turnin Forgotten Loa Idols##97225 |goto Durotar 55.95,74.72
 step
-  talk Master Vornal##3304
-  turnin Lost in the Shadows##99123 |goto Durotar 55.94,74.39
-step
   talk Master Gadrin##3188
   accept Zalazane##826 |goto Durotar 55.95,74.72
 step
@@ -494,10 +498,6 @@ step
   note Speak with Orgnil Soulscar in Razor Hill.
   talk Orgnil Soulscar##3142
   turnin Report to Orgnil##823 |goto Durotar 52.24,43.15
-step
-  note Bring Ukor's Burden to Innkeeper Grosk in Razor Hill.
-  talk Innkeeper Grosk##6928
-  turnin A Peon's Burden##2161 |goto Durotar 51.51,41.64
 step
   only Troll Priest
   note Speak to Tai'jin in Durotar.
@@ -519,9 +519,12 @@ step
   talk Tai'jin##3706
   turnin Garments of Spirituality##5648 |goto Durotar 54.26,42.93
 step
+  kill Ukorsbane##266851 |goto Durotar 50.74,56.52 |elite |tip Loot the quest item here — it starts the quest.
+  accept Ukor's Lost Pack##96876 |goto Durotar 50.74,56.52
+step
   note Kill 4 Razormane Quilboars, 4 Razormane Scouts, 4 Razormane Dustrunners and 4 Razormane Battleguards for Gar'Thok at Razor Hill.
-  kill Razormane Quilboar##3111 |q 837/1 |goto Durotar 47.6,48.6
   kill Razormane Scout##3112 |q 837/2 |goto Durotar 47.4,49.4
+  kill Razormane Quilboar##3111 |q 837/1 |goto Durotar 47.6,48.6
   kill Razormane Battleguard##3114 |q 837/4 |goto Durotar 42.4,40.6
   kill Razormane Dustrunner##3113 |q 837 |goto Durotar 42,40.4
 step
@@ -673,6 +676,10 @@ step
 step
   talk Margoz##3208
   accept Neeru Fireblade##829 |goto Durotar 56.41,20.04
+step
+  note Return the pack to Ukor in southern Durotar.
+  talk Ukor##6786
+  turnin Ukor's Lost Pack##96876 |goto Durotar 52.06,68.31
 step
   only not Undead not Tauren not Skyborne Hunter not completed(6068) not completed(6070) not haveq(6068) not haveq(6070)
   talk Kali Remik##11814

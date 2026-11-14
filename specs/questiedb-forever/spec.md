@@ -593,3 +593,32 @@ Ainda aberto:
 - As quests do Season of Discovery com classe marcada (xamã, 79358-79366) seguem nos guias, só para a
   classe; nelas o NPC cobre o pulo automático.
 
+
+## Spawn da outra ponta (#65, 2026-11-07)
+
+O scan de um xamã da Horda achou o guia de classe mandando a Dun Morogh. Quem dá ou recebe a quest
+pode nascer em várias zonas: com as raças novas do Forever, o Minor Manifestation of Earth existe em
+Durotar, Mulgore e Dun Morogh, e o Brazier of the Dormant Flame em Durotar e Loch Modan. Sem spawn na
+zona do guia, `best_spawn` ficava com a zona de mais spawns, e no guia de classe (sem zona) o empate
+caía na primeira.
+
+- [x] NPC ou objeto de várias zonas fica na zona da outra ponta da quest, quando ela é uma delas;
+      senão, no continente dela (`_na_quest`). Vale na âncora do guia, no giver e no ender. Call of
+      Earth 1517/1518 em Durotar, 1520/1521 em Mulgore, a 1518 sai de Mulgore 4-10; Call of Fire do
+      anão em Loch Modan; nos eventos, a Horda deixa Dun Morogh e Teldrassil (Winter Veil,
+      Midsummer). Quem tem cópia numa capital amiga não muda de continente: o Harbinger do Lunar
+      Festival segue dando a Valadar Starsong em Stormwind e Undercity.
+- [x] A raça da quest de classe sai da zona do giver já filtrado: a 1518 fica só para orc e troll,
+      a 1521 só para tauren, a 94375 só para quem nasce em Dun Morogh. Antes o tauren chegava ao
+      Manifestation de Durotar e o NPC não oferecia nada.
+- [x] The Darkmoon Faire (7905, 7926) sai do leveling (`FORA_QUESTS`): o banco a classifica na
+      capital, não no -364, e com a entrega no continente certo a da Horda entrava em Dustwallow. A
+      da Aliança já estava em Eastern Plaguelands.
+- [x] Autoteste do `router.py`: as cadeias acima, e nenhum accept/turnin de leveling ou classe na
+      zona inicial da outra facção. Falha nos guias da v2.8.0.
+
+Regerado com o mesmo QuestieDB 1.0.10: só 8 guias mudam; `validate_guides` 0 bloqueios,
+`check_special` 0 problemas, `guide_integrity` igual (1233).
+
+Ainda aberto: o objetivo segue a regra antiga. No guia do xamã anão, a Glowing Ember ainda aponta
+para o Minor Manifestation of Fire de Durotar; a fonte do item (`item_source`) não sabe de que quest é.

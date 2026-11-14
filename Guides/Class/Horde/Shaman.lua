@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Shaman", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "1051777e",
+	rev = "868103ec",
 }, [[
 step
   talk Gornek##3143
@@ -138,16 +138,7 @@ step
   only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
   note Find Spirit Rock and drink the Earth Sapta.
   talk Minor Manifestation of Earth##5891
-  turnin Call of Earth##1517 |goto Dun Morogh 24.84,61.86
-step
-  only Shaman not completed(92466) not haveq(92466)
-  talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1518 |goto Dun Morogh 24.84,61.86
-step
-  only Shaman not completed(92466) not haveq(92466)
-  note Bring the Rough Quartz to Canaga Earthcaller in the Valley of Trials.
-  talk Canaga Earthcaller##5887
-  turnin Call of Earth##1518 |goto Durotar 42.4,69.17
+  turnin Call of Earth##1517 |goto Durotar 44.03,76.2
 step
   only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
   talk Canaga Earthcaller##5887
@@ -157,6 +148,15 @@ step
   talk Canaga Earthcaller##5887
   turnin Earth Sapta##1463 |goto Durotar 42.4,69.17
 step
+  only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
+  talk Minor Manifestation of Earth##5891
+  accept Call of Earth##1518 |goto Durotar 44.03,76.2
+step
+  only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
+  note Bring the Rough Quartz to Canaga Earthcaller in the Valley of Trials.
+  talk Canaga Earthcaller##5887
+  turnin Call of Earth##1518 |goto Durotar 42.4,69.17
+step
   only Tauren Shaman not completed(92466) not haveq(92466)
   talk Seer Ravenfeather##5888
   accept Call of Earth##1520 |goto Mulgore 44.35,76.77
@@ -164,16 +164,7 @@ step
   only Tauren Shaman not completed(92466) not haveq(92466)
   note Find Kodo Rock and drink the Earth Sapta.
   talk Minor Manifestation of Earth##5891
-  turnin Call of Earth##1520 |goto Dun Morogh 24.84,61.86
-step
-  only Shaman not completed(92466) not haveq(92466)
-  talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1521 |goto Dun Morogh 24.84,61.86
-step
-  only Shaman not completed(92466) not haveq(92466)
-  note Bring the Rough Quartz to Seer Ravenfeather in Camp Narache.
-  talk Seer Ravenfeather##5888
-  turnin Call of Earth##1521 |goto Mulgore 44.35,76.77
+  turnin Call of Earth##1520 |goto Mulgore 51.99,80.4
 step
   only Tauren Shaman not completed(92466) not haveq(92466)
   talk Seer Ravenfeather##5888
@@ -182,6 +173,15 @@ step
   only Tauren Shaman not completed(92466) not haveq(92466)
   talk Seer Ravenfeather##5888
   turnin Earth Sapta##1462 |goto Mulgore 44.35,76.77
+step
+  only Tauren Shaman not completed(92466) not haveq(92466)
+  talk Minor Manifestation of Earth##5891
+  accept Call of Earth##1521 |goto Mulgore 51.99,80.4
+step
+  only Tauren Shaman not completed(92466) not haveq(92466)
+  note Bring the Rough Quartz to Seer Ravenfeather in Camp Narache.
+  talk Seer Ravenfeather##5888
+  turnin Call of Earth##1521 |goto Mulgore 44.35,76.77
 step
   only not Undead not Tauren Shaman not completed(1523) not completed(2983) not completed(2984) not haveq(1523) not haveq(2983) not haveq(2984)
   talk Searn Firewarder##5892
