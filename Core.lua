@@ -155,6 +155,13 @@ local DB_DEFAULTS = {
 	dungeonDoors = {},    -- Masmorras: a entrada de cada uma, aprendida ao entrar (por instância)
 	alts = {},            -- Legado: classe, nível e profissões de cada personagem da conta
 	rewards = {},         -- recompensas de quest vistas no jogo (Equipamento)
+	-- issue #92
+	nearby = true,        -- Enquanto está aqui: objetivos dos próximos passos quando perto
+	targetButton = true,  -- botão de alvo do passo
+	markTarget = true,    -- o botão de alvo marca com ícone de raide
+	npcNames = {},        -- nome de cada NPC do guia no idioma do cliente (aprendido ao ver)
+	partySync = true,     -- contagem dos membros do grupo que usam o Lodestar (só o grupo, mensagem escondida)
+	rareAlerts = true,    -- aviso de raro perto
 }
 local CHAR_DEFAULTS = {
 	currentGuide = nil,        -- chave do guia ativo (aba em foco)

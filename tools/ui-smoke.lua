@@ -272,7 +272,8 @@ step("SkipQuest + Undo", function()
 end)
 step("Viewer empty", function() local k = ns.currentGuide.key; ns:CloseGuide(k); ns.Viewer:Refresh(); ns:LoadGuide(k, true) end)
 step("TravelPanel", function() ns.TravelPanel:Toggle(); ns.TravelPanel.Refresh(); ns.TravelPanel.MeasureServices() end)
-for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "class", "dungeonguides", "reputation",
+for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "rares", "characters",
+	"class", "dungeonguides", "reputation",
 	"attunements", "events" }) do
 	step("Hub:" .. id, function() ns.Hub:Show(id); ns.Hub:Show(id) end)
 end
@@ -280,6 +281,13 @@ step("GuideMenu = Hub", function() assert(ns.GuideMenu == ns.Hub, "ns.GuideMenu 
 step("Dungeons:GoToDoor", function() ns.Dungeons:GoToDoor(ns.dungeonData[3]) end)
 step("Collections:GuideTo", function() ns.Collections:GuideTo(ns.Collections:Mounts()[2]) end)
 step("Tidy", function() ns.QuestLogTidy:Toggle() end)
+step("Nearby", function() ns.Nearby.Scan(); ns.Viewer:Refresh() end)
+step("TargetButton", function() ns.TargetButton.Apply() end)
+step("PartySync", function()
+	ns.fire("CHAT_MSG_ADDON", "LSParty", "LS3|S|22:c,153:3/15", "PARTY", "Ana-Reino")
+	ns.PartySync.Broadcast(true); ns.Viewer:Refresh()
+end)
+step("Rares", function() ns.Rares:GoTo(ns.rareData["Elwynn Forest"][1], "Elwynn Forest") end)
 step("Report", function() ns.Report:Show() end)
 step("Settings", function() ns.Settings:Toggle() end)
 step("Menu", function() ns.UI.Menu(ns.Viewer:GetFrame(), { { "a", noop }, { "b", noop } }) end)

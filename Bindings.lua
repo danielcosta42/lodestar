@@ -13,6 +13,7 @@ BINDING_NAME_LODESTAR_TRAVEL = L.BIND_TRAVEL
 BINDING_NAME_LODESTAR_TIDY = L.BIND_TIDY
 BINDING_NAME_LODESTAR_REPORT = L.BIND_REPORT
 _G["BINDING_NAME_CLICK LodestarQuestItem:LeftButton"] = L.BIND_QITEM
+_G["BINDING_NAME_CLICK LodestarTarget:LeftButton"] = L.BIND_TARGET
 
 -- toggle: com guia, a janela; sem, a biblioteca (o mesmo que /ls sem nada)
 function Lodestar_Binding(action)

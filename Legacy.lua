@@ -78,11 +78,15 @@ local function saveMe()
 		end
 	end
 	ns.db.alts[name .. "-" .. realm] = { class = select(2, UnitClass("player")), level = UnitLevel("player"),
-		profs = profs, t = time() }
+		profs = profs, t = time(), money = GetMoney and GetMoney() or nil,
+		zone = GetZoneText and GetZoneText() or nil, faction = UnitFactionGroup("player") }
 end
 ns:On("PLAYER_LOGIN", function() C_Timer.After(5, saveMe) end)
 ns:On("PLAYER_LEVEL_UP", function() C_Timer.After(1, saveMe) end)
 ns:On("SKILL_LINES_CHANGED", function() C_Timer.After(1, saveMe) end)
+ns:On("PLAYER_MONEY", function() C_Timer.After(2, saveMe) end)
+ns:On("PLAYER_LOGOUT", saveMe)
+LG.SaveMe = saveMe
 
 function LG:Available()
 	return GetCategoryList and GetCategoryInfo and GetCategoryNumAchievements and GetAchievementInfo and true or false

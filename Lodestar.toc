@@ -106,6 +106,14 @@ GearPlan.lua
 Dungeons.lua
 Collections.lua
 Legacy.lua
+# Utilidades de corrida (issue #92)
+RareData.lua
+Rares.lua
+Characters.lua
+Nearby.lua
+TargetButton.lua
+PartySync.lua
+Updates.lua
 Settings.lua
 Share.lua
 Intro.lua

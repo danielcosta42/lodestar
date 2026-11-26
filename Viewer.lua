@@ -119,6 +119,13 @@ local function rowText(goal, done)
 			txt = txt .. ("\n|cff%s• %s|r"):format(UI.Hex("tip"), ns:LocalizeText(tip))
 		end
 	end
+	-- o grupo (PartySync): a contagem de cada membro que usa o Lodestar nesta quest
+	local q = QS and goal.verb ~= "note" and QS.QuestOf(goal)
+	local PS = ns.PartySync
+	if q and PS then
+		local line = PS.Line(PS:For(q), ns.L)
+		if line ~= "" then txt = txt .. ("\n|cff%s%s|r"):format(UI.Hex("tip"), line) end
+	end
 	return txt, timed
 end
 
@@ -217,6 +224,9 @@ function V:RowClick(row, button)
 	local L, QS, qid = ns.L, ns.QuestState, rowQuest(row)
 	if button == "RightButton" and qid and QS then
 		local items = { { L.Q_MENU_SKIP, function() QS:SkipQuest(qid) end } }
+		if ns.PartySync and ns.PartySync:CanShare(qid) then
+			items[#items + 1] = { L.PS_SHARE, function() ns.PartySync.Share(qid) end }
+		end
 		if ns.IsQuestInLog(qid) then
 			items[#items + 1] = { L.Q_MENU_LOG, function() QS.ShowInLog(qid) end }
 			items[#items + 1] = { L.Q_MENU_ABANDON, function() QS.Abandon(qid) end }
@@ -339,6 +349,8 @@ local function build()
 	frame.notice = makeBanner(frame.body, "gold")
 	frame.group = makeBanner(frame.body, "warn")
 	frame.group.a:SetScript("OnClick", function() ns:FindGroup(frame._groupRaid) end)
+	frame.grind = makeBanner(frame.body, "ok")          -- passo de grind: a masmorra que cabe agora (issue #92)
+	frame.grind.a:SetScript("OnClick", function() if ns.Hub then ns.Hub:Show("dungeons") end end)
 	frame.travel = makeBanner(frame.body, "info")
 	frame.travel:EnableMouse(true)
 	frame.travel:SetScript("OnMouseUp", function() if ns.TravelPanel then ns.TravelPanel:Toggle() end end)
@@ -375,6 +387,32 @@ local function build()
 
 	frame.nextLabel = UI.Text(frame.body, 11, C.dim, { num = true })
 	frame.nextLabel:SetText(L.NEXT)
+
+	-- Enquanto está aqui (Nearby.lua): o que dos passos à frente dá para fazer perto de você
+	frame.nearLabel = UI.Text(frame.body, 11, C.dim, { num = true })
+	frame.nearLabel:SetText(L.NB_TITLE)
+	frame.nearRows = {}
+	for i = 1, 3 do
+		local r = CreateFrame("Button", nil, frame.body)
+		r:SetHeight(30)
+		local bg = UI.Card(r, { radius = 6, color = C.doneSoft, lineColor = UI.dark and C.done or C.doneSoft })
+		bg:SetAllPoints(); bg:SetFrameLevel(r:GetFrameLevel())
+		r.icon = UI.Glyph(r, "estrela", "OVERLAY", 64); r.icon:SetSize(13, 13); r.icon:SetPoint("LEFT", 9, 0)
+		r.icon:SetVertexColor(unpackc(C.done))
+		r.text = UI.Text(r, 12.5, C.active, { wrap = false })
+		r.text:SetPoint("LEFT", r.icon, "RIGHT", 7, 0); r.text:SetPoint("RIGHT", r, "RIGHT", -56, 0)
+		r.dist = UI.Badge(r, "", "ok"); r.dist:SetPoint("RIGHT", -6, 0)
+		r:SetScript("OnClick", function(self) if self._c and ns.Nearby then ns.Nearby:GoTo(self._c) end end)
+		r:SetScript("OnEnter", function(self)
+			if not self._c then return end
+			GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+			GameTooltip:SetText(ns.Nearby.Label(self._c), 1, 1, 1)
+			GameTooltip:AddLine(L.NB_TIP:format(self._c.step), 0.62, 0.66, 0.72, true)
+			GameTooltip:Show()
+		end)
+		r:SetScript("OnLeave", function() GameTooltip:Hide() end)
+		frame.nearRows[i] = r
+	end
 
 	-- Rodapé --------------------------------------------------------------
 	frame.prev = UI.Button(frame, L.BACK, 84, 30)
@@ -583,6 +621,27 @@ function V:Refresh()
 		gb:Hide()
 	end
 
+	-- passo de grind: a masmorra que cabe agora, como alternativa
+	local gr = frame.grind
+	local grindGoal
+	for _, goal in ipairs(step and step.goals or {}) do
+		if goal.verb == "ding" and ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal) then grindGoal = goal end
+	end
+	local dun = grindGoal and ns.Dungeons and ns.Dungeons:BestNow()
+	if dun then
+		local quests = ns.Dungeons:QuestsFor(dun)
+		local todo = 0
+		for _, q in ipairs(quests) do if not ns.IsQuestDone(q.id) then todo = todo + 1 end end
+		gr.text:SetText(L.NB_GRIND:format(dun.key, dun.lo, dun.hi))
+		gr.sub:SetText(todo > 0 and L.NB_GRIND_Q:format(todo) or "")
+		gr.a.text:SetText(L.V3_SEE_DUNGEON); gr.a:Show(); gr.b:Hide()
+		gr:ClearAllPoints(); gr:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+		by = by + gr:Layout(inner, true) + 8
+		gr:Show()
+	else
+		gr:Hide()
+	end
+
 	-- a perna de viagem (clicável: abre a Navegação)
 	local thint = travelHint()
 	local tb = frame.travel
@@ -680,6 +739,30 @@ function V:Refresh()
 	end
 	card:SetHeight(math.max(40, cy + 4))
 	by = by + card:GetHeight() + 10
+
+	-- enquanto está aqui
+	local near = ns.Nearby and ns.Nearby:List() or {}
+	frame.nearLabel:SetShown(#near > 0)
+	if #near > 0 then
+		frame.nearLabel:ClearAllPoints(); frame.nearLabel:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+		by = by + 16
+	end
+	for ni, r in ipairs(frame.nearRows) do
+		local c = near[ni]
+		r._c = c
+		if c then
+			r.text:SetText(ns.Nearby.Label(c))
+			r.icon:SetTexture(UI.GLYPH .. (c.kind == "turnin" and "check" or c.kind == "accept" and "bandeira" or "alvo") .. "-64")
+			r.dist:Set(L.V3_YARDS:format(c.dist))
+			r:ClearAllPoints(); r:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by); r:SetWidth(inner)
+			distRows[#distRows + 1] = { chip = r.dist, goal = c.goal }
+			r:Show()
+			by = by + 34
+		else
+			r:Hide()
+		end
+	end
+	if #near > 0 then by = by + 6 end
 
 	-- ações rápidas
 	frame.quick:ClearAllPoints(); frame.quick:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)

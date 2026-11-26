@@ -179,4 +179,79 @@ for _, d in ipairs(dns.dungeonData) do
 	end
 end
 
+-- ── issue #92: enquanto está aqui ────────────────────────────────────────────
+local N = loadPure("Nearby.lua").Nearby
+local near = N.Pick({ { q = 1, dist = 50, kind = "objective" }, { q = 1, dist = 30, kind = "turnin" },
+	{ q = 2, dist = 300, kind = "accept" }, { q = 3, dist = 100, kind = "accept" }, { q = 4, dist = 10, kind = "objective" },
+	{ q = 5, dist = 150, kind = "objective" } }, 220, 3)
+check(#near == 3 and near[1].q == 4 and near[2].q == 1 and near[2].dist == 30 and near[3].q == 3,
+	"enquanto está aqui: no raio, uma por quest (a mais perto), do mais perto, até 3")
+check(N.Signature(near) == "objective:4,turnin:1,accept:3", "assinatura do que mostrar")
+check(#N.Pick({}, 100, 3) == 0 and #N.Pick({ { q = 1 } }, 100, 3) == 0, "sem distância: fora")
+
+-- ── botão de alvo ────────────────────────────────────────────────────────────
+local TB = loadPure("TargetButton.lua").TargetButton
+local tg = TB.Targets({ { verb = "kill", id = 5, text = "Boar" }, { verb = "talk", id = 6, text = "Gryan" },
+	{ verb = "kill", id = 5, text = "Boar" }, { verb = "collect", id = 7, text = "Tusk" }, { verb = "kill", id = 8, text = "Done" } },
+	nil, function(g) return g.id == 8 end, { [6] = "Gryan Mantoforte" })
+check(#tg == 2 and tg[1].id == 5 and tg[1].enemy and tg[2].name == "Gryan Mantoforte" and not tg[2].enemy,
+	"alvos: mata e fala, um por id, sem os feitos, com o nome aprendido")
+check(TB.Macro("Mother Fang") == "/targetexact Mother Fang" and TB.Macro("a\n/run x") == "/targetexact a /run x",
+	"macro: quebra de linha não vira outro comando")
+check(TB.Icon(true) == 8 and TB.Icon(false) == 1, "caveira no inimigo, estrela no NPC")
+
+-- ── grupo sincronizado ───────────────────────────────────────────────────────
+local PS = loadPure("PartySync.lua").PartySync
+local enc = PS.Encode({ [153] = "3/15", [22] = "c", [109] = "x" })
+check(enc == "LS3|S|22:c,109:x,153:3/15", "codec: ids em ordem")
+local dec = PS.Decode(enc)
+check(dec and dec[22] == "c" and dec[109] == "x" and dec[153][1] == 3 and dec[153][2] == 15, "ida e volta")
+for _, bad in ipairs({ "lixo", "LS3|X|1:c", "LS3|S|1:9/5", "LS3|S|abc:c", "LS3|S|1:z", "LS3|S|1:0/0",
+	"LS3|S|" .. string.rep("1:c,", 70) }) do
+	check(PS.Decode(bad) == nil, "descartado: " .. bad:sub(1, 30))
+end
+check(PS.Decode("LS3|S|") and next(PS.Decode("LS3|S|")) == nil, "vazio é válido (nada a dizer)")
+local big = {}
+for i = 1, 200 do big[100000 + i] = "12/15" end
+check(#PS.Encode(big) <= 255 and PS.Decode(PS.Encode(big)), "muitas quests: corta no limite e continua válido")
+check(PS.Line({ { name = "Ana", state = { 5, 8 } }, { name = "Bia", state = "c" }, { name = "Caio", state = "x" } },
+	{ PS_READY = "%s pronta", PS_MISSING = "%s não tem" }) == "Ana 5/8 · Bia pronta · Caio não tem", "a linha sob o objetivo")
+
+-- ── raros ────────────────────────────────────────────────────────────────────
+local RR = loadPure("Rares.lua").Rares
+local rares = { { id = 1, name = "A", pts = { { 10, 10 }, { 50, 50 } } }, { id = 2, name = "B", pts = { { 90, 90 } } } }
+local nearR = RR.Near(rares, function(x, y) return math.sqrt((x - 48) ^ 2 + (y - 48) ^ 2) * 10 end, 160)
+check(#nearR == 1 and nearR[1].rare.id == 1 and nearR[1].x == 50, "raro perto: o ponto mais perto dentro do raio")
+local last = {}
+check(RR.ShouldAlert(last, 1, 100) and not RR.ShouldAlert(last, 1, 200) and RR.ShouldAlert(last, 1, 100 + RR.COOLDOWN),
+	"um aviso por raro a cada 15 min")
+local rdns = {}
+assert(loadfile(ROOT .. "/ZoneData.lua"))("Lodestar", rdns)
+assert(loadfile(ROOT .. "/RareData.lua"))("Lodestar", rdns)
+local nr = 0
+for zone, list in pairs(rdns.rareData) do
+	check(rdns.zoneUiMap[zone], "raros: a zona existe (" .. zone .. ")")
+	for _, r in ipairs(list) do
+		nr = nr + 1
+		check(type(r.id) == "number" and r.name ~= "" and #r.pts >= 1 and #r.pts <= 6, "raro " .. r.name .. ": id, nome, pontos")
+		for _, p in ipairs(r.pts) do check(p[1] >= 0 and p[1] <= 100 and p[2] >= 0 and p[2] <= 100, "ponto no mapa") end
+	end
+end
+check(nr > 200, "raros do mundo (" .. nr .. ")")
+
+-- ── personagens e versão ─────────────────────────────────────────────────────
+local CH = loadPure("Characters.lua").Characters
+local chars, gold = CH.Sorted({ ["Ana-R"] = { level = 30, money = 100, t = 5 }, ["Bia-R"] = { level = 60, money = 50, t = 1 },
+	["Caio-R"] = { level = 30, money = 0, t = 9 } })
+check(chars[1].name == "Bia" and chars[2].name == "Caio" and chars[3].name == "Ana" and gold == 150,
+	"personagens: nível, depois o mais recente; ouro total")
+check(CH.Ago(1000, 1030) == "now" and CH.Ago(0, 600) == "10 min ago" and CH.Ago(0, 3 * 86400) == "3 days ago",
+	"há quanto tempo")
+local U = loadPure("Updates.lua").Updates
+check(U.Compare("2.15.0", "2.14.1") == 1 and U.Compare("2.14.1", "2.15.0") == -1 and U.Compare("v3.0", "3.0.0") == 0,
+	"comparação de versão")
+check(U.Compare("dev", "2.0.0") == nil and U.Parse("@project-version@") == nil, "dev e token: não é versão")
+check(U.FromCaps("v=2.16.0,lvl=17,guide=Westfall,step=3/80,v=1.2") == "2.16.0", "a versão do Lodestar nas caps da rede")
+check(U.FromCaps("v=1.2,mode=x") == nil, "caps de outro addon sem lvl: não confunde")
+
 print(("ok: %d checks"):format(checks))

@@ -189,6 +189,16 @@ local function fillHud(p)
 		function() return ns.db.mobWarning end, function(v) ns.db.mobWarning = v end)
 	switchRow(p, L.SET_GEAR, L.SET_GEAR_D,
 		function() return ns.db.gearAdvisor end, function(v) ns.db.gearAdvisor = v end)
+	switchRow(p, L.SET_NEARBY, L.SET_NEARBY_D,
+		function() return ns.db.nearby ~= false end,
+		function(v) ns.db.nearby = v; if ns.Nearby then ns.Nearby.Scan() end end)
+	switchRow(p, L.SET_TARGETBTN, L.SET_TARGETBTN_D,
+		function() return ns.db.targetButton ~= false end,
+		function(v) ns.db.targetButton = v; if ns.TargetButton then ns.TargetButton.Apply() end end)
+	switchRow(p, L.SET_MARKTARGET, L.SET_MARKTARGET_D,
+		function() return ns.db.markTarget ~= false end, function(v) ns.db.markTarget = v end)
+	switchRow(p, L.SET_RARES, L.SET_RARES_D,
+		function() return ns.db.rareAlerts ~= false end, function(v) ns.db.rareAlerts = v end)
 	switchRow(p, L.SET_GEARTIPS, L.SET_GEARTIPS_D,
 		function() return ns.db.gearTips ~= false end, function(v) ns.db.gearTips = v end)
 	switchRow(p, L.SET_TOASTS, L.SET_TOASTS_D,
@@ -201,6 +211,8 @@ local function fillGroup(p)
 		function() return ns.db.eliteBuddy == true end, function(v) ns.db.eliteBuddy = v end, true)
 	switchRow(p, L.SET_SHARE, L.SET_SHARE_D,
 		function() return ns.db.autoShareQuest end, function(v) ns.db.autoShareQuest = v end, true)
+	switchRow(p, L.SET_PARTYSYNC, L.SET_PARTYSYNC_D,
+		function() return ns.db.partySync ~= false end, function(v) ns.db.partySync = v end)
 	switchRow(p, L.SET_PARTYTELL, L.SET_PARTYTELL_D,
 		function() return ns.db.partyTell == true end, function(v) ns.db.partyTell = v end, true)
 	switchRow(p, L.SET_SHAREQ, L.SET_SHAREQ_D,
