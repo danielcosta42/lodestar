@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackrock Spire", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "5ada8ae2",
+	rev = "672afa02",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -31,6 +31,9 @@ step
   talk Kibler##10260
   accept En-Ay-Es-Tee-Why##4862 |goto Burning Steppes 65.89,21.92
 step
+  talk Warlord Goretooth##9077
+  accept Blood and Thunder##98325 |goto Badlands 5.81,47.52
+step
   talk Warosh##10799
   accept Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
 step
@@ -55,6 +58,9 @@ step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   talk Lorax##10918
   accept Lorax's Tale##5126 |goto Winterspring 63.79,73.76
+step
+  talk Pix Xizzix##227853
+  accept In Demand - Blackrock Legal Records##96075 |goto Stranglethorn Vale 28.52,75.86
 step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
@@ -91,6 +97,9 @@ step
   note Speak with Lorax. Listen to what he has to say.
   talk Lorax##10918 |q 5126 |goto Winterspring 63.79,73.76
 step
+  note Acquire Nefarian's Remit from General Drakkisath in Blackrock Spire, Overseer's License from Overlord Wyrmthalak in Blackrock Spire, and Bronzebeard Wedding Contract from Emperor Thaurissan in Blackrock Depths, and bring them to Pix Xizzix in Booty Bay.
+  collect Nefarion's Remit##272017 |q 96075 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
+step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
 step
@@ -115,6 +124,10 @@ step
 step
   talk Kibler##10260
   turnin En-Ay-Es-Tee-Why##4862 |goto Burning Steppes 65.89,21.92
+step
+  note Speak to Warlord Goretooth to serve the Kargath Expeditionary Force.
+  talk Warlord Goretooth##9077
+  turnin Blood and Thunder##98325 |goto Badlands 5.81,47.52
 step
   talk Warosh##10799
   turnin Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
@@ -144,6 +157,9 @@ step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   talk Lorax##10918
   turnin Lorax's Tale##5126 |goto Winterspring 63.79,73.76
+step
+  talk Pix Xizzix##227853
+  turnin In Demand - Blackrock Legal Records##96075 |goto Stranglethorn Vale 28.52,75.86
 step
   talk Yeh'kinya##8579
   accept The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36

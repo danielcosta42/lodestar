@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Priest", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "750e673e",
+	rev = "83b95a15",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -149,40 +149,13 @@ step
   talk Priestess Alathea##11401
   turnin Stars of Elune##5627 |goto Darnassus 39.52,81.2
 step
-  only Gnome Priest
-  talk Maxan Anvol##1226
-  accept Confounding Flash##94824 |goto Dun Morogh 47.34,52.19
-step
-  only Gnome Priest
-  note Speak to High Priestess Mims in Ironforge.
+  only Gnome Priest not completed(94821) not completed(94822) not completed(94823) not completed(94824) not completed(94825) not completed(94826) not haveq(94821) not haveq(94822) not haveq(94823) not haveq(94824) not haveq(94825) not haveq(94826)
   talk High Priestess Mims##258785
-  turnin Confounding Flash##94824 |goto Ironforge 24.59,10
+  accept Confounding Flash##94817 |goto Dun Morogh 55.05,22.38
 step
-  only Human Priest not completed(5634) not completed(5636) not completed(5637) not completed(5638) not completed(5639) not completed(5640) not haveq(5634) not haveq(5636) not haveq(5637) not haveq(5638) not haveq(5639) not haveq(5640)
-  talk Priestess Josetta##377
-  accept Desperate Prayer##5635 |goto Elwynn Forest 43.28,65.72
-step
-  only Human Priest not completed(5634) not completed(5636) not completed(5637) not completed(5638) not completed(5639) not completed(5640) not haveq(5634) not haveq(5636) not haveq(5637) not haveq(5638) not haveq(5639) not haveq(5640)
-  note Speak to High Priestess Laurena in Stormwind.
-  talk High Priestess Laurena##376
-  turnin Desperate Prayer##5635 |goto Stormwind City 49.53,44.6
-step
-  only Human Priest
-  talk Priestess Josetta##377
-  accept Divine Grace##94774 |goto Elwynn Forest 43.28,65.72
-step
-  only Human Priest
-  note Speak to High Priestess Laurena in Stormwind.
-  talk High Priestess Laurena##376
-  turnin Divine Grace##94774 |goto Stormwind City 49.53,44.6
-step
-  only Gnome Priest
+  only Gnome Priest not completed(94821) not completed(94822) not completed(94823) not completed(94824) not completed(94825) not completed(94826) not haveq(94821) not haveq(94822) not haveq(94823) not haveq(94824) not haveq(94825) not haveq(94826)
   talk High Priestess Mims##258785
-  accept Confounding Flash##94817 |goto Ironforge 24.59,10
-step
-  only Gnome Priest
-  talk High Priestess Mims##258785
-  turnin Confounding Flash##94817 |goto Ironforge 24.59,10
+  turnin Confounding Flash##94817 |goto Dun Morogh 55.05,22.38
 step
   only Dwarf Priest not completed(5635) not completed(5636) not completed(5637) not completed(5638) not completed(5639) not completed(5640) not haveq(5635) not haveq(5636) not haveq(5637) not haveq(5638) not haveq(5639) not haveq(5640)
   talk High Priestess Laurena##376
@@ -192,11 +165,11 @@ step
   talk High Priestess Laurena##376
   turnin Desperate Prayer##5634 |goto Stormwind City 49.53,44.6
 step
-  only Human Priest
+  only Human Priest not completed(94774) not completed(94775) not completed(94776) not completed(94777) not completed(94778) not completed(94779) not haveq(94774) not haveq(94775) not haveq(94776) not haveq(94777) not haveq(94778) not haveq(94779)
   talk High Priestess Laurena##376
   accept Divine Grace##94773 |goto Stormwind City 49.53,44.6
 step
-  only Human Priest
+  only Human Priest not completed(94774) not completed(94775) not completed(94776) not completed(94777) not completed(94778) not completed(94779) not haveq(94774) not haveq(94775) not haveq(94776) not haveq(94777) not haveq(94778) not haveq(94779)
   talk High Priestess Laurena##376
   turnin Divine Grace##94773 |goto Stormwind City 49.53,44.6
 step
@@ -207,6 +180,14 @@ step
   only NightElf Priest not completed(5673) not completed(5674) not completed(5675) not haveq(5673) not haveq(5674) not haveq(5675)
   talk Priestess Alathea##11401
   turnin Elune's Grace##5672 |goto Darnassus 39.52,81.2
+step
+  only Gnome Priest not completed(94819) not completed(94820) not haveq(94819) not haveq(94820)
+  talk High Priestess Mims##258785
+  accept Contingency Plan##94818 |goto Dun Morogh 55.05,22.38
+step
+  only Gnome Priest not completed(94819) not completed(94820) not haveq(94819) not haveq(94820)
+  talk High Priestess Mims##258785
+  turnin Contingency Plan##94818 |goto Dun Morogh 55.05,22.38
 step
   only Dwarf Priest not completed(5645) not completed(5647) not haveq(5645) not haveq(5647)
   talk High Priest Rohan##11406
@@ -223,15 +204,6 @@ step
   only Human Priest not completed(5677) not completed(5678) not haveq(5677) not haveq(5678)
   talk High Priestess Laurena##376
   turnin Arcane Feedback##5676 |goto Stormwind City 49.53,44.6
-step
-  only Gnome Priest
-  talk High Priestess Laurena##376
-  accept Contingency Plan##94819 |goto Stormwind City 49.53,44.6
-step
-  only Gnome Priest
-  note Speak to High Priestess Mims in Ironforge.
-  talk High Priestess Mims##258785
-  turnin Contingency Plan##94819 |goto Ironforge 24.59,10
 step
   only Priest
   talk Brother Joshua##5489

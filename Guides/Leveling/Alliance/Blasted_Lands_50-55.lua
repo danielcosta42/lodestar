@@ -4,27 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Blasted Lands (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Burning Steppes (52-54)",
-	rev = "9817534f",
+	next = "Leveling/Alliance/Azshara (51-58)",
+	rev = "5d86de27",
 }, [[
 step
-  ding 46
-step
-  only completed(2439)
-  talk High Explorer Magellas##5387
-  accept Portents of Uldum##2963 |goto Ironforge 69.93,18.55
-step
-  only completed(2977)
-  talk Historian Karnik##2916
-  accept A Future Task##2964 |goto Ironforge 77.54,11.82
-step
-  note {fp}Alexandra Constantine
-  goto Blasted Lands 65.54,24.34 |tip {vendor}
-step
-  only haveq(2990)
-  note Bring Sharpbeak's Feather to Thadius Grimshade in the Blasted Lands.
-  talk Thadius Grimshade##8022
-  turnin Thadius Grimshade##2990 |goto Blasted Lands 66.9,19.47
+  ding 49
 step
   talk Bloodmage Drazial##7505
   accept Snickerfang Jowls##2581 |goto Blasted Lands 50.55,14.2
@@ -40,6 +24,9 @@ step
 step
   talk Bloodmage Lynnore##7506
   accept Vulture's Vigor##2603 |goto Blasted Lands 50.64,14.3
+step
+  note {fp}Alexandra Constantine
+  goto Blasted Lands 65.54,24.34 |tip {vendor}
 step
   note Bring three Blasted Boar Lungs, two Scorpok Pincers, and one Basilisk Brain to Bloodmage Drazial.
   collect Scorpok Pincer##8393 |q 2583/2 |goto Blasted Lands 47.8,22.4 |tip {dropsfrom}Scorpok Stinger, Clack the Reaver
@@ -79,9 +66,49 @@ step
   talk Bloodmage Lynnore##7506
   turnin Vulture's Vigor##2603 |goto Blasted Lands 50.64,14.3
 step
+  talk Bernie Heisten##3546
+  accept Deflective Surface##87295 |goto Blasted Lands 63.51,17.01
+step
+  note Bring 10 Redstone Basilisk Scales to Bernie Heisten.
+  collect 10 Redstone Basilisk Scale##280181 |q 87295 |goto Blasted Lands 60.94,27.83 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide
+step
+  talk Bernie Heisten##3546
+  turnin Deflective Surface##87295 |goto Blasted Lands 63.51,17.01
+step
+  only completed(96797)
+  talk Lieutenant Connar##266524
+  accept Into the Darkness##96798 |goto Blasted Lands 66.07,19.4
+step
+  only completed(96797)
+  note Find Sergeant Danneth somewhere in the Serpent's Coil caverns southeast of Nethergarde Keep.
+  talk Sergeant Danneth##266508
+  turnin Into the Darkness##96798 |goto Blasted Lands 66.73,31.67
+step
+  only completed(96797)
+  talk Sergeant Danneth##266508
+  accept Escaping the Shadows##96811 |goto Blasted Lands 66.73,31.67
+step
+  only completed(96797)
+  note Escort Sergeant Danneth out of the Serpent's Coil caves and back to Nethergarde Keep.
+  talk Lieutenant Connar##266524
+  turnin Escaping the Shadows##96811 |goto Blasted Lands 66.07,19.4
+step
+  only completed(96797)
+  talk Lieutenant Connar##266524
+  accept A Heavy Responsibility##96799 |goto Blasted Lands 66.07,19.4
+step
   only level>=50
   talk Enohar Thunderbrew##9540
   accept Ragnar Thunderbrew##4128 |goto Blasted Lands 63.63,20.63
+step
+  only completed(96797)
+  note Speak with Sergeant Danneth at Nethergarde Keep.
+  talk Sergeant Danneth##266593
+  turnin A Heavy Responsibility##96799 |goto Blasted Lands 65.23,15.33
+step
+  only completed(96797)
+  talk Sergeant Danneth##266593
+  accept Thicker Than Water##96812 |goto Blasted Lands 65.23,15.33
 step
   talk Kum'isha the Collector##7363
   accept To Serve Kum'isha##2521 |goto Blasted Lands 51.98,35.65
@@ -105,42 +132,44 @@ step
   talk Ambassador Ardalan##7826
   accept Petty Squabbles##2783 |goto Blasted Lands 67.57,19.29
 step
-  only completed(2439)
-  note Speak with Historian Karnik in the Hall of Explorers within Ironforge.
-  talk Historian Karnik##2916
-  turnin Portents of Uldum##2963 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
+  only level>=50
+  talk Royal Historian Archesonus##8879
+  accept The Smoldering Ruins of Thaurissan##3702 |goto Ironforge 38.37,55.31
 step
-  talk Historian Karnik##2916
-  accept Passing the Burden##3448 |goto Ironforge 77.54,11.82
+  only haveq(3702)
+  note Listen to Royal Historian Archesonus recant the history of Thaurissan.
+  talk Royal Historian Archesonus##8879 |q 3702 |goto Ironforge 38.37,55.31
 step
-  only completed(2977)
-  note Speak with High Explorer Magellas in Ironforge.
-  talk High Explorer Magellas##5387
-  turnin A Future Task##2964 |goto Ironforge 69.93,18.55 |tip {turninat}Ironforge
+  only haveq(3702)
+  talk Royal Historian Archesonus##8879
+  turnin The Smoldering Ruins of Thaurissan##3702 |goto Ironforge 38.37,55.31 |tip {turninat}Ironforge
 step
-  note Speak to Tymor in Ironforge.
-  talk Tymor##8507
-  turnin Passing the Burden##3448 |goto Ironforge 30.96,4.83 |tip {turninat}Ironforge
+  only completed(4184)
+  talk Highlord Bolvar Fordragon##1748
+  accept The True Masters##4185 |goto Stormwind City 80.21,38.35
 step
-  talk Tymor##8507
-  accept An Easy Pickup##3450 |goto Ironforge 30.96,4.83
+  only completed(4184)
+  note Speak with Highlord Bolvar Fordragon after speaking with Lady Katrana Prestor.
+  talk Lady Katrana Prestor##1749 |q 4185 |goto Stormwind City 80.1,38.17
 step
-  note Speak to Xiggs Fuselighter in Ironforge.
-  talk Xiggs Fuselighter##8517
-  turnin An Easy Pickup##3450 |goto Ironforge 70.87,94.56 |tip {turninat}Ironforge
+  only completed(4184)
+  talk Highlord Bolvar Fordragon##1748
+  turnin The True Masters##4185 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
 step
-  talk Xiggs Fuselighter##8517
-  accept Signal for Pickup##3451 |goto Ironforge 70.87,94.56
-step
-  note Speak to Xiggs Fuselighter and get a Standard Issue Flare Gun from him in Ironforge.
-  talk Xiggs Fuselighter##8517
-  turnin Signal for Pickup##3451 |goto Ironforge 70.87,94.56 |tip {turninat}Ironforge
+  only completed(4184)
+  talk Highlord Bolvar Fordragon##1748
+  accept The True Masters##4186 |goto Stormwind City 80.21,38.35
 step
   only haveq(4128)
   note Speak with Ragnar Thunderbrew.
   talk Ragnar Thunderbrew##1267
   turnin Ragnar Thunderbrew##4128 |goto Dun Morogh 46.83,52.36 |tip {turninat}Dun Morogh
 step
-  note {travel}Burning Steppes
-  goto Burning Steppes 28.96,28.93
+  only completed(96797)
+  note Return to Orphan Matron Aria in Dalaran and inform her of Sergeant Danneth's intentions to take in Randal.
+  talk Orphan Matron Aria##34365
+  turnin Thicker Than Water##96812 |goto Alterac Mountains 21.62,73.18 |tip {turninat}Alterac Mountains
+step
+  note {travel}Azshara
+  goto Azshara 11.37,78.17
 ]])

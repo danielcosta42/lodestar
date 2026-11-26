@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Westfall (10-16)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Dun Morogh (13-26)",
-	rev = "07475ec0",
+	rev = "2e1974d6",
 }, [[
 step
   ding 9
@@ -126,12 +126,6 @@ step
   note Bring 8 Gnoll Paws to Captain Danuvin on Sentinel Hill.
   collect 8 Gnoll Paw##725 |q 102 |goto Westfall 52.16,14.11 |tip {dropsfrom}Riverpaw Gnoll, Riverpaw Mongrel, Riverpaw Scout
 step
-  note Verna Furlbrow in Westfall wants you to bring her 8 Handfuls of Oats.
-  collect 8 Handful of Oats##1528 |q 151 |goto Westfall 48.96,34.17 |tip {dropsfrom}Sack of Oats
-step
-  talk Verna Furlbrow##238
-  turnin Poor Old Blanchy##151 |goto Westfall 59.92,19.42
-step
   talk Captain Danuvin##821
   turnin Patrolling Westfall##102 |goto Westfall 56.42,47.62
 step
@@ -153,16 +147,14 @@ step
   talk Farmer Saldean##233
   accept The Killing Fields##9 |goto Westfall 56.04,31.23
 step
-  only haveq(92745)
-  note Slay 4 Kobold Diggers in the Jangolode Mine and 6 Riverpaw Miners in the Gold Coast Quarry.
-  kill Kobold Digger##1236 |q 92745/1 |goto Westfall 45.32,20.46
-  kill Riverpaw Miner##1426 |q 92745 |goto Westfall 30.27,49.65
-step
   talk Ozwin Ironsprocket##253395
   accept Harvesting the Harvesters##92909 |goto Westfall 51.53,32.31
 step
   note Farmer Saldean wants you to kill 20 Harvest Watchers.
   kill Harvest Watcher##114 |q 9 |goto Westfall 45.9,36.14
+step
+  note Verna Furlbrow in Westfall wants you to bring her 8 Handfuls of Oats.
+  collect 8 Handful of Oats##1528 |q 151 |goto Westfall 48.96,34.17 |tip {dropsfrom}Sack of Oats
 step
   note Bring 15 Red Leather Bandanas to Scout Galiaan at Sentinel Hill.
   collect 15 Red Leather Bandana##829 |q 153 |goto Westfall 45.8,26.58 |tip {dropsfrom}Defias Smuggler, Defias Pathstalker, Defias Footpad
@@ -172,6 +164,14 @@ step
 step
   talk Ozwin Ironsprocket##253395
   turnin Harvesting the Harvesters##92909 |goto Westfall 51.53,32.31
+step
+  only haveq(92745)
+  note Slay 4 Kobold Diggers in the Jangolode Mine and 6 Riverpaw Miners in the Gold Coast Quarry.
+  kill Kobold Digger##1236 |q 92745/1 |goto Westfall 45.32,20.46
+  kill Riverpaw Miner##1426 |q 92745 |goto Westfall 30.27,49.65
+step
+  talk Verna Furlbrow##238
+  turnin Poor Old Blanchy##151 |goto Westfall 59.92,19.42
 step
   talk Farmer Saldean##233
   turnin The Killing Fields##9 |goto Westfall 56.04,31.23
@@ -187,9 +187,12 @@ step
   talk Alba Fairmoon##253092
   accept Moonbrook Espionage##92747 |goto Westfall 52.48,52.97
 step
+  talk Captain Grayson##392
+  accept Keeper of the Flame##103 |goto Westfall 30.01,86.02
+step
   only haveq(92747)
   note Collect 8 Suspicious Industrial Supplies from Moonbrook.
-  collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 42.5,68.7 |tip {dropsfrom}Suspicious Crate
+  collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 43.67,68.12 |tip {dropsfrom}Suspicious Crate
 step
   only haveq(92747)
   talk Alba Fairmoon##253092
@@ -198,9 +201,6 @@ step
   only completed(92747)
   talk Alba Fairmoon##253092
   accept Explosive Consultation##92748 |goto Westfall 52.48,52.97
-step
-  talk Captain Grayson##392
-  accept Keeper of the Flame##103 |goto Westfall 30.01,86.02
 step
   note Bring 5 Flasks of Oil to Captain Grayson at the Westfall Lighthouse.
   collect 5 Flask of Oil##814 |q 103 |goto Westfall 47.88,33.47 |tip {dropsfrom}Harvest Golem, Harvest Watcher, Rusty Harvest Golem
@@ -297,16 +297,6 @@ step
   only Human Paladin completed(1642)
   talk Duthorian Rall##6171
   accept The Tome of Divinity##1643 |goto Stormwind City 50.48,47.49
-step
-  talk Gilbert Gray##267118
-  accept Fishin' Time##95065 |goto Stormwind City 26.12,47.06
-step
-  note Bring 1 Shiny Bauble and 3 Nightcrawlers to Gilbert Gray at the harbor in Stormwind.
-  talk Gina MacGregor##843
-  buy 1 Shiny Bauble##6529 |q 95065 |goto Westfall 57.64,54.05
-step
-  talk Gilbert Gray##267118
-  turnin Fishin' Time##95065 |goto Stormwind City 26.12,47.06 |tip {turninat}Stormwind City
 step
   talk Manifest Clerk Philmor##268511
   accept Philmor's Favor##97220 |goto Stormwind City 30.49,28.75

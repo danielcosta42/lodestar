@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Wailing Caverns", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "b5a876b9",
+	rev = "6ef58771",
 }, [[
 step
   talk Tonga Runetotem##3448
@@ -94,7 +94,7 @@ step
   accept Altered Beings##880 |goto The Barrens 52.26,31.93
 step
   note Bring 8 Altered Snapjaw Shells to Tonga Runetotem at the Crossroads.
-  collect 8 Altered Snapjaw Shell##5098 |q 880 |goto The Barrens 47.74,40.22 |tip {dropsfrom}Oasis Snapjaw
+  collect 8 Altered Snapjaw Shell##5098 |q 880 |goto The Barrens 47.74,40.22 |tip {dropsfrom}Oasis Snapjaw, Oasis Snapjaw Hatchling
 step
   talk Tonga Runetotem##3448
   turnin Altered Beings##880 |goto The Barrens 52.26,31.93

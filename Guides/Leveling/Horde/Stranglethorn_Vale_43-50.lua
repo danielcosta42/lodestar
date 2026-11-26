@@ -4,11 +4,61 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (43-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/The Hinterlands (47-50)",
-	rev = "17fa5241",
+	next = "Leveling/Horde/The Hinterlands (47-51)",
+	rev = "f1060c0f",
 }, [[
 step
   ding 41
+step
+  note {fp}Thysta
+  goto Stranglethorn Vale 32.54,29.35 |tip {vendor}
+step
+  only completed(596) completed(629)
+  talk Kin'weelay##2519
+  accept Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
+step
+  talk Nimboya##2497
+  accept Grim Message##2932 |goto Stranglethorn Vale 32.16,27.72
+step
+  only completed(571)
+  talk Far Seer Mok'thardin##2465
+  accept Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
+step
+  only completed(569) level>=44
+  talk Commander Aggro'gosh##2464
+  accept The Offense of Grom'gol##97386 |goto Stranglethorn Vale 32.17,28.9
+step
+  only completed(596) completed(629)
+  note Bring 25 Split Bone Necklaces to Kin'weelay at the Grom'gol Base camp.
+  collect 25 Split Bone Necklace##3916 |q 598 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
+step
+  only completed(569) haveq(97386)
+  note Commander Aggro'gosh of the Grom'gol base camp wants you to kill ogres at the Mosh'Ogg Ogre Mount.
+  kill Mosh'Ogg Warmonger##709 |q 97386/2 |goto Stranglethorn Vale 48.85,30.08 |elite
+  kill Mosh'Ogg Shaman##679 |q 97386/4 |goto Stranglethorn Vale 50.14,27.94 |elite
+  kill Mosh'Ogg Spellcrafter##710 |q 97386/1 |goto Stranglethorn Vale 51.37,27.89 |elite
+  kill Mosh'Ogg Mauler##678 |q 97386 |goto Stranglethorn Vale 51.48,27.13 |elite
+step
+  only completed(196) level>=43
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
+step
+  only completed(596) completed(629)
+  talk Kin'weelay##2519
+  turnin Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
+step
+  only completed(569) haveq(97386)
+  talk Commander Aggro'gosh##2464
+  turnin The Offense of Grom'gol##97386 |goto Stranglethorn Vale 32.17,28.9
+step
+  only completed(196) haveq(197)
+  note Hemet Nesingwary wants you to kill Tethis, an elusive, dangerous raptor in Stranglethorn.
+  kill Tethis##730 |q 197 |goto Stranglethorn Vale 32.2,42.8 |elite
+  collect Talon of Tethis##3877 |q 197 |goto Stranglethorn Vale 32.2,42.8
+step
+  only completed(571)
+  note Far Seer Mok'thardin of Grom'gol needs Holy Spring Water. He also wants you to kill 10 Naga Explorers.
+  kill Naga Explorer##1907 |q 573 |goto Stranglethorn Vale 26.2,62.42
 step
   only completed(189)
   talk Kebok##737
@@ -32,6 +82,9 @@ step
   talk Crank Fizzlebub##2498
   accept Zanzil's Secret##621 |goto Stranglethorn Vale 27.12,77.21
 step
+  talk Fin Fizracket##2486
+  accept Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
+step
   only completed(599)
   note Fleet Master Seahorn in Booty Bay wants you to kill 10 Bloodsail Swashbucklers and bring back the Bloodsail Charts and the Bloodsail Orders.
   kill Bloodsail Swashbuckler##1563 |q 604 |goto Stranglethorn Vale 26.67,82.84
@@ -40,9 +93,16 @@ step
   talk Fleet Master Seahorn##2487
   turnin The Bloodsail Buccaneers##604 |goto Stranglethorn Vale 27.17,77.01
 step
+  only completed(599)
+  talk Fleet Master Seahorn##2487
+  accept The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
+step
   only completed(597)
   note Dizzy One-Eye in Booty Bay wants you to retrieve his eye from the Bloodsail Buccaneers.
   collect Dizzy's Eye##3897 |q 576 |goto Stranglethorn Vale 32.34,71.67 |tip {dropsfrom}Bloodsail Raider, Bloodsail Mage, Bloodsail Swashbuckler
+step
+  note Seek out Witch Doctor Unbagwa and have him summon Mokk the Savage. Bring the Heart of Mokk to Fin Fizracket.
+  collect Heart of Mokk##2797 |q 348 |goto Stranglethorn Vale 35.05,60.88 |tip {dropsfrom}Mokk the Savage
 step
   note Bring 12 samples of Zanzil's Mixture to Crank Fizzlebub in Booty Bay.
   collect 12 Zanzil's Mixture##4016 |q 621 |goto Stranglethorn Vale 38.89,57.62 |tip {dropsfrom}Zanzil Zombie, Zanzil Hunter, Zanzil Witch Doctor
@@ -54,11 +114,27 @@ step
   collect Maury's Clubbed Foot##3924 |q 609 |goto Stranglethorn Vale 35.26,51.27 |tip {dropsfrom}Maury "Club Foot" Wilkins
 step
   note Bring 10 Bundles of Akiris Reed to Privateer Bloads in Booty Bay.
-  collect 10 Akiris Reed##4029 |q 617 |goto Stranglethorn Vale 26.2,62.42 |tip {dropsfrom}Naga Explorer, Brinescale Skirmisher
+  collect 10 Akiris Reed##4029 |q 617 |goto Stranglethorn Vale 26.2,62.42 |tip {dropsfrom}Naga Explorer
+step
+  collect Cortello's Riddle##2554 |goto Stranglethorn Vale 29.19,88.6 |tip Loot the quest item here — it starts the quest.
+  accept Cortello's Riddle##624 |goto Stranglethorn Vale 29.19,88.6
+step
+  only completed(599)
+  note Fleet-Master Seahorn in Booty Bay wants you to kill Captain Stillwater, Captain Keelhaul and Fleet Master Firallon.
+  kill Captain Keelhaul##2548 |q 608/2 |goto Stranglethorn Vale 29.32,88.29
+  kill Fleet Master Firallon##2546 |q 608/3 |goto Stranglethorn Vale 30.58,90.63
+  kill Captain Stillwater##2550 |q 608 |goto Stranglethorn Vale 32.87,88.2
+step
+  talk Fin Fizracket##2486
+  turnin Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
 step
   only completed(597)
   talk Dizzy One-Eye##2493
   turnin Keep An Eye Out##576 |goto Stranglethorn Vale 28.59,75.9
+step
+  only completed(599)
+  talk Fleet Master Seahorn##2487
+  turnin The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
 step
   only completed(607)
   talk "Sea Wolf" MacKinley##2501
@@ -74,59 +150,39 @@ step
   talk "Sea Wolf" MacKinley##2501
   accept Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
 step
-  talk Fin Fizracket##2486
-  accept Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
+  only not completed(614) not haveq(614) level>=47
+  talk Captain Hecklebury Smotts##2500
+  accept The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
 step
-  only completed(599)
-  talk Fleet Master Seahorn##2487
-  accept The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
+  only level>=45
+  collect Half-Buried Bottle##2560 |goto Stranglethorn Vale 36.56,77.09 |tip Loot the quest item here — it starts the quest.
+  accept Message in a Bottle##594 |goto Stranglethorn Vale 36.56,77.09
 step
-  note Seek out Witch Doctor Unbagwa and have him summon Mokk the Savage. Bring the Heart of Mokk to Fin Fizracket.
-  collect Heart of Mokk##2797 |q 348 |goto Stranglethorn Vale 35.05,60.88 |tip {dropsfrom}Mokk the Savage
+  only haveq(594)
+  note Find the author of the message in a bottle.
+  talk Princess Poobah##2634
+  turnin Message in a Bottle##594 |goto Stranglethorn Vale 38.53,80.58
 step
   only completed(189)
   note Acquire 18 Skullsplitter Tusks and return them to Kebok.
   collect 18 Skullsplitter Tusk##1524 |q 209 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
 step
-  only completed(607) haveq(613)
-  note Bring Maury's Key to "Sea Wolf" Mackinley in Booty Bay.
-  kill Mosh'Ogg Mauler##678 |q 613 |goto Stranglethorn Vale 51.48,27.13 |elite
-  collect Maury's Key##3930 |q 613 |goto Stranglethorn Vale 51.48,27.13
-step
-  only completed(196) level>=43
-  talk Hemet Nesingwary##715
-  accept Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
-step
-  note {fp}Thysta
-  goto Stranglethorn Vale 32.54,29.35 |tip {vendor}
-step
-  only completed(596) completed(629)
-  talk Kin'weelay##2519
-  accept Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
-step
-  talk Nimboya##2497
-  accept Grim Message##2932 |goto Stranglethorn Vale 32.16,27.72
-step
   only completed(571)
   talk Far Seer Mok'thardin##2465
-  accept Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
+  turnin Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
 step
   only completed(584)
   click Bubbling Cauldron##2076
   accept Speaking with Gan'zulah##586 |goto Stranglethorn Vale 32.22,27.6
 step
-  only completed(196) haveq(197)
-  note Hemet Nesingwary wants you to kill Tethis, an elusive, dangerous raptor in Stranglethorn.
-  kill Tethis##730 |q 197 |goto Stranglethorn Vale 32.2,42.8 |elite
-  collect Talon of Tethis##3877 |q 197 |goto Stranglethorn Vale 32.2,42.8
-step
   only completed(584)
   note Kill 8 Skullsplitter Hunters, 6 Skullsplitter Headhunters, and 4 Skullsplitter Berserkers.
   kill Skullsplitter Hunter##669 |q 586 |goto Stranglethorn Vale 45.93,42.4
 step
-  only completed(596) completed(629)
-  note Bring 25 Split Bone Necklaces to Kin'weelay at the Grom'gol Base camp.
-  collect 25 Split Bone Necklace##3916 |q 598 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
+  only completed(607) haveq(613)
+  note Bring Maury's Key to "Sea Wolf" Mackinley in Booty Bay.
+  kill Mosh'Ogg Mauler##678 |q 613 |goto Stranglethorn Vale 51.48,27.13 |elite
+  collect Maury's Key##3930 |q 613 |goto Stranglethorn Vale 51.48,27.13
 step
   only completed(196) haveq(197)
   talk Hemet Nesingwary##715
@@ -138,10 +194,6 @@ step
 step
   only completed(584)
   turnin Speaking with Gan'zulah##586 |goto Stranglethorn Vale 32.22,27.6
-step
-  only completed(596) completed(629)
-  talk Kin'weelay##2519
-  turnin Split Bone Necklace##598 |goto Stranglethorn Vale 32.27,27.71
 step
   only completed(584) completed(585)
   click Bubbling Cauldron##2076
@@ -194,59 +246,22 @@ step
   note Bring the Filled Soul Gem to Nimboya.
   collect Filled Soul Gem##3913 |q 592 |goto Stranglethorn Vale 39.02,58.35 |tip {dropsfrom}Yenniku
 step
+  only not completed(614) not haveq(614) haveq(8551)
+  note Bring Smotts' Chest to Hecklebury Smotts in Booty Bay.
+  kill Gorlash##1492 |q 8551 |goto Stranglethorn Vale 36.95,69.73 |elite
+  collect Smotts' Chest##3932 |q 8551 |goto Stranglethorn Vale 36.95,69.73
+step
   only completed(189)
   talk Kebok##737
   turnin Skullsplitter Tusks##209 |goto Stranglethorn Vale 27,77.13
-step
-  talk Fin Fizracket##2486
-  turnin Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
 step
   only completed(607) haveq(613)
   talk "Sea Wolf" MacKinley##2501
   turnin Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
 step
-  only level>=47
-  talk Captain Hecklebury Smotts##2500
-  accept The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
-step
-  collect Cortello's Riddle##2554 |goto Stranglethorn Vale 29.19,88.6 |tip Loot the quest item here — it starts the quest.
-  accept Cortello's Riddle##624 |goto Stranglethorn Vale 29.19,88.6
-step
-  only completed(599)
-  note Fleet-Master Seahorn in Booty Bay wants you to kill Captain Stillwater, Captain Keelhaul and Fleet Master Firallon.
-  kill Captain Keelhaul##2548 |q 608/2 |goto Stranglethorn Vale 29.32,88.29
-  kill Fleet Master Firallon##2546 |q 608/3 |goto Stranglethorn Vale 30.58,90.63
-  kill Captain Stillwater##2550 |q 608 |goto Stranglethorn Vale 32.87,88.2
-step
-  only level>=45
-  collect Half-Buried Bottle##2560 |goto Stranglethorn Vale 36.56,77.09 |tip Loot the quest item here — it starts the quest.
-  accept Message in a Bottle##594 |goto Stranglethorn Vale 36.56,77.09
-step
-  only haveq(594)
-  note Find the author of the message in a bottle.
-  talk Princess Poobah##2634
-  turnin Message in a Bottle##594 |goto Stranglethorn Vale 38.53,80.58
-step
-  only haveq(8551)
-  note Bring Smotts' Chest to Hecklebury Smotts in Booty Bay.
-  kill Gorlash##1492 |q 8551 |goto Stranglethorn Vale 36.95,69.73 |elite
-  collect Smotts' Chest##3932 |q 8551 |goto Stranglethorn Vale 36.95,69.73
-step
-  only completed(599)
-  talk Fleet Master Seahorn##2487
-  turnin The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
-step
-  only haveq(8551)
+  only not completed(614) not haveq(614) haveq(8551)
   talk Captain Hecklebury Smotts##2500
   turnin The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
-step
-  only completed(571)
-  note Far Seer Mok'thardin of Grom'gol needs Holy Spring Water. He also wants you to kill 10 Naga Explorers.
-  kill Naga Explorer##1907 |q 573 |goto Stranglethorn Vale 26.2,62.42
-step
-  only completed(571)
-  talk Far Seer Mok'thardin##2465
-  turnin Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
 step
   only completed(584) completed(585) haveq(592)
   talk Nimboya##2497
@@ -264,25 +279,25 @@ step
   talk Captain Hecklebury Smotts##2500
   turnin The Monogrammed Sash##8552 |goto Stranglethorn Vale 26.69,73.61
 step
-  only completed(8552)
+  only not completed(615) not haveq(615) completed(8552)
   talk Captain Hecklebury Smotts##2500
   accept The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.69,73.61
 step
-  only haveq(8553)
+  only not completed(615) not haveq(615) haveq(8553)
   note Speak with Sprogger.
   talk Sprogger##2594
   turnin The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.66,73.64
 step
-  only completed(8553) level>=50
+  only not completed(618) not haveq(618) completed(8553) level>=50
   talk Sprogger##2594
   accept Facing Negolash##8554 |goto Stranglethorn Vale 26.66,73.64
 step
-  only haveq(8554)
+  only not completed(618) not haveq(618) haveq(8554)
   note Bring 10 Barbecued Buzzard Wings and 5 bottles of Junglevine Wine to Captain Smotts' Lifeboat.
   kill Negolash##1494 |q 8554 |goto Stranglethorn Vale 32.45,81.57 |elite
   collect 10 Smotts' Cutlass##3935 |q 8554 |goto Stranglethorn Vale 32.45,81.57
 step
-  only haveq(8554)
+  only not completed(618) not haveq(618) haveq(8554)
   talk Captain Hecklebury Smotts##2500
   turnin Facing Negolash##8554 |goto Stranglethorn Vale 26.69,73.61
 step
@@ -299,21 +314,21 @@ step
   talk Princess Poobah##2634
   turnin Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
 step
-  only completed(3621) level>=45
-  talk Galvan the Ancient##7802
-  accept Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
+  only not completed(96376) not completed(96377) not haveq(96376) not haveq(96377) level>=48
+  talk Rix Xizzix##214954
+  accept State Secrets##96379 |goto Stranglethorn Vale 28.51,75.77
 step
-  only completed(3621) haveq(3625)
-  note Wait for Galvan to finish forging the weaponry.
-  talk Galvan the Ancient##7802 |q 3625 |goto Stranglethorn Vale 50.62,20.48
+  only not completed(96376) not completed(96377) not haveq(96376) not haveq(96377) haveq(96379)
+  talk Rix Xizzix##214954
+  turnin State Secrets##96379 |goto Stranglethorn Vale 28.51,75.77
 step
-  only completed(3621) haveq(3625)
-  talk Galvan the Ancient##7802
-  turnin Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
+  only haveq(1420)
+  note Bring Neeka's Report to Helgrum the Swift in Stonard.
+  talk Helgrum the Swift##1442
+  turnin Report to Helgrum##1420 |goto Swamp of Sorrows 47.74,55.2 |tip {turninat}Swamp of Sorrows
 step
-  only completed(3621) completed(3625) level>=45
-  talk Galvan the Ancient##7802
-  accept Return to the Blasted Lands##3626 |goto Stranglethorn Vale 50.62,20.48
+  note Solve the riddle!
+  turnin Cortello's Riddle##624 |goto Swamp of Sorrows 22.87,48.19 |tip {turninat}Swamp of Sorrows
 step
   only haveq(1429)
   note Bring the Bundle of Atal'ai Artifacts to the Atal'ai Exile in the Hinterlands.
@@ -331,18 +346,6 @@ step
 step
   talk Whiskey Slim##2491
   turnin Whiskey Slim's Lost Grog##580 |goto Stranglethorn Vale 27.14,77.45
-step
-  note Solve the riddle!
-  turnin Cortello's Riddle##624 |goto Swamp of Sorrows 22.87,48.19 |tip {turninat}Swamp of Sorrows
-step
-  only completed(3621) haveq(3626)
-  note Return to the Fallen Hero of the Horde.
-  talk Fallen Hero of the Horde##7572
-  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
-step
-  only completed(3621) completed(3626) level>=60
-  talk Fallen Hero of the Horde##7572
-  accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
 step
   only haveq(864)
   note Bring the Sealed Field Testing Kit to Apothecary Zinge in the Undercity.
@@ -363,31 +366,40 @@ step
   talk Apothecary Zinge##5204
   turnin Errand for Apothecary Zinge##238 |goto Undercity 50.14,67.97 |tip {turninat}Undercity
 step
-  only completed(3621) haveq(3627)
-  note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
-  kill Archmage Allistarj##7666 |q 3627/1 |goto Blasted Lands 66.69,29.24 |elite
-  collect Amulet of Allistarj##10755 |q 3627/1 |goto Blasted Lands 66.69,29.24
-  kill Lady Sevine##7667 |q 3627/3 |goto Blasted Lands 40.75,29.97 |elite
-  collect Amulet of Sevine##10754 |q 3627/3 |goto Blasted Lands 40.75,29.97
-  kill Grol the Destroyer##7665 |q 3627 |goto Blasted Lands 42.57,13.01 |elite
-  collect Amulet of Grol##10753 |q 3627 |goto Blasted Lands 42.57,13.01
+  only Shaman not completed(8410) not haveq(8410) level>=50
+  talk Bath'rah the Windwatcher##6176
+  accept Mastering the Elements##8411 |goto Alterac Mountains 80.5,66.92
 step
-  only completed(3621) haveq(3627)
-  talk Fallen Hero of the Horde##7572
-  turnin Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
+  only level>=50
+  talk Fahrad##6707
+  accept Junkboxes Needed##98529 |goto Alterac Mountains 84.45,80.32
 step
-  only completed(3621) completed(3627) level>=60
-  talk Fallen Hero of the Horde##7572
-  accept You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14
+  only haveq(98529)
+  talk Fahrad##6707
+  turnin Junkboxes Needed##98529 |goto Alterac Mountains 84.45,80.32 |tip {turninat}Alterac Mountains
 step
-  only completed(3621) haveq(3628)
-  note Destroy Razelikh the Defiler and return the Severed Horn of the Defiler to the Fallen Hero of the Horde. You will also need to return the Ward of the Defiler so that the Fallen Hero can destroy it, preventing it from ever falling into the wrong hands.
-  kill Razelikh the Defiler##7664 |q 3628 |goto Blasted Lands 47.64,29.83 |elite
-  collect Severed Horn of the Defiler##10759 |q 3628 |goto Blasted Lands 47.64,29.83
+  only Shaman not completed(8410) not haveq(8410) haveq(8411)
+  note Bring the elements earth, air, fire and water to Bath'rah the Windwatcher.
+  collect Elemental Air##7069 |q 8411/1 |goto Westfall 45.61,49.32 |tip {dropsfrom}Dust Devil
+  collect Elemental Earth##7067 |q 8411/2 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Lesser Rock Elemental, Greater Rock Elemental
+  collect Elemental Fire##7068 |q 8411/3 |goto Arathi Highlands 25.81,30.65 |tip {dropsfrom}Burning Exile
+  collect Elemental Water##7070 |q 8411 |goto Stranglethorn Vale 21.01,23.12 |tip {dropsfrom}Lesser Water Elemental
 step
-  only completed(3621) haveq(3628)
-  talk Fallen Hero of the Horde##7572
-  turnin You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
+  only Shaman not completed(8410) not haveq(8410) haveq(8411)
+  talk Bath'rah the Windwatcher##6176
+  turnin Mastering the Elements##8411 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
+step
+  only Shaman completed(8411) level>=50
+  talk Bath'rah the Windwatcher##6176
+  accept Spirit Totem##8412 |goto Alterac Mountains 80.5,66.92
+step
+  only Shaman haveq(8412)
+  note Bring the pieces for the spirit totem to Bath'rah the Windwatcher.
+  collect Bloodshot Spider Eye##20610 |q 8412 |goto Western Plaguelands 32.26,62.39 |tip {dropsfrom}Carrion Vulture, Carrion Lurker, Venom Mist Lurker
+step
+  only Shaman haveq(8412)
+  talk Bath'rah the Windwatcher##6176
+  turnin Spirit Totem##8412 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
 step
   note {travel}Undercity
   goto Undercity 73.06,32.85

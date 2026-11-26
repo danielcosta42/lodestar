@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Argent Dawn", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "2d7a3949",
+	rev = "d1b3ced1",
 }, [[
 step
   talk Deathguard Terrence##1738
@@ -18,8 +18,8 @@ step
   accept The Cult of the Damned##96897 |goto Tirisfal Glades 65.93,61.13
 step
   note Kill 8 Dark Neophytes and 8 Dark Enforcers in Tirisfal Glades.
-  kill Dark Enforcer##275437 |q 96897/2 |goto Tirisfal Glades 68.13,64.19
-  kill Dark Neophyte##267006 |q 96897 |goto Tirisfal Glades 68.05,64.25
+  kill Dark Enforcer##275437 |q 96897/2 |goto Tirisfal Glades 68.05,64.22
+  kill Dark Neophyte##267006 |q 96897 |goto Tirisfal Glades 68.11,64.2
 step
   talk Hadric Harlson##267009
   turnin The Cult of the Damned##96897 |goto Tirisfal Glades 65.93,61.13
@@ -28,7 +28,7 @@ step
   accept Remnants of War##96898 |goto Tirisfal Glades 65.93,61.13
 step
   note Gather 12 Necrotic Crystal Fragments in Tirisfal Glades.
-  collect 12 Necrotic Crystal Fragment##275851 |q 96898 |goto Tirisfal Glades 68.05,64.25 |tip {dropsfrom}Dark Neophyte, Dark Enforcer, Naxxramas Crystal Fragment
+  collect 12 Necrotic Crystal Fragment##275851 |q 96898 |goto Tirisfal Glades 68.11,64.2 |tip {dropsfrom}Dark Neophyte, Dark Enforcer, Naxxramas Crystal Fragment
 step
   talk Hadric Harlson##267009
   turnin Remnants of War##96898 |goto Tirisfal Glades 65.93,61.13
@@ -40,16 +40,20 @@ step
   talk Leonid Barthalomew the Revered##267008
   turnin Bandarion Keep##96899 |goto Tirisfal Glades 22.03,44.73
 step
+  only Undead
   talk Leonid Barthalomew the Revered##267008
   accept A Righteous Cause##96896 |goto Tirisfal Glades 22.03,44.73
 step
+  only Undead
   note Observe the conversation between Danitha Morr and Leonid Barthalomew the Revered.
   talk Leonid Barthalomew the Revered##267008
   turnin A Righteous Cause##96896 |goto Tirisfal Glades 22.03,44.73
 step
+  only not Tauren not Troll not Skyborne not Orc
   talk Leonid Barthalomew the Revered##267008
   accept Leonid's Letter##98545 |goto Tirisfal Glades 22.03,44.73
 step
+  only not Tauren not Troll not Skyborne not Orc
   note Deliver the Sealed Letter to Glix Xizzix in the Undercity.
   talk Glix Xizzix##272526
   turnin Leonid's Letter##98545 |goto Undercity 70.03,47.31

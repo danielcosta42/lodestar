@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Dun Morogh (13-26)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Loch Modan (11-18)",
-	rev = "2f0320a4",
+	next = "Leveling/Alliance/Loch Modan (12-18)",
+	rev = "be44788e",
 }, [[
 step
   ding 12
@@ -50,6 +50,10 @@ step
   talk Magis Sparkmantle##1228
   accept Report to Jennea##1919 |goto Dun Morogh 47.5,52.08
 step
+  only Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
+  note Bring Vejrek's Head to Muren Stormpike in Ironforge.
+  collect Vejrek's Head##6799 |q 1678 |goto Dun Morogh 27.83,57.96 |tip {dropsfrom}Vejrek
+step
   note Investigate the campsite overlooking the Gol'Bolar Quarry.
   talk Earthseer Farsen##264936
   turnin A Visitor to Dun Morogh##96408 |goto Dun Morogh 64.87,58.47
@@ -57,7 +61,7 @@ step
   talk Earthseer Farsen##264936
   accept Farsen's Watch##96392 |goto Dun Morogh 64.87,58.47
 step
-  note Speak with Earthseer Farsen's and ask him to lend you his farsight to observe the Dark Iron threat.
+  note Speak with Earthseer Farsen and ask him to lend you his far sight to observe the Dark Iron threat.
   talk Earthseer Farsen##264936 |q 96392 |goto Dun Morogh 64.87,58.47
 step
   talk Earthseer Farsen##264936
@@ -85,9 +89,17 @@ step
   talk Hogral Bakkan##1234
   accept To Hulfdan!##2299 |goto Dun Morogh 47.56,52.61
 step
-  only Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
-  note Bring Vejrek's Head to Muren Stormpike in Ironforge.
-  collect Vejrek's Head##6799 |q 1678 |goto Dun Morogh 27.83,57.96 |tip {dropsfrom}Vejrek
+  only Shaman level>=20
+  talk Ingrid Dunwald##258113
+  accept Call of Water##94494 |goto Dun Morogh 47.58,51.95
+step
+  only Gnome Priest not completed(94819) not completed(94820) not haveq(94819) not haveq(94820) level>=20
+  talk High Priestess Mims##258785
+  accept Contingency Plan##94818 |goto Dun Morogh 55.05,22.38
+step
+  only Gnome Priest not completed(94819) not completed(94820) not haveq(94819) not haveq(94820) haveq(94818)
+  talk High Priestess Mims##258785
+  turnin Contingency Plan##94818 |goto Dun Morogh 55.05,22.38
 step
   only Warrior not completed(1639) not completed(1683) not haveq(1639) not haveq(1683)
   talk Muren Stormpike##6114
@@ -242,10 +254,6 @@ step
   collect Klaven Mortwake's Journal##7908 |q 2359/1 |goto Westfall 70.41,73.93 |tip {dropsfrom}Duskwood Chest
   collect Defias Tower Key##7923 |q 2359 |goto Westfall 69.47,73.99 |tip {dropsfrom}Malformed Defias Drone
 step
-  only Shaman level>=20
-  click Forgotten Shrine##619896
-  accept Call of Water##94503 |goto Westfall 45.6,59.92
-step
   only not NightElf not Gnome not Skyborne Paladin completed(1649) haveq(1650)
   note Find Daphne Stilwell in Westfall.
   talk Daphne Stilwell##6182
@@ -266,11 +274,6 @@ step
   only not NightElf not Gnome not Skyborne Paladin completed(1649) completed(1651) level>=20
   talk Daphne Stilwell##6182
   accept The Tome of Valor##1652 |goto Westfall 41.69,89.24
-step
-  only Shaman haveq(94503)
-  note Speak to the Minor Manifestation of Water in Westfall.
-  talk Minor Manifestation of Water##5895
-  turnin Call of Water##94503 |goto Silverpine Forest 38.65,44.58 |tip {turninat}Silverpine Forest
 step
   only haveq(2927)
   note Speak with Ozzie Togglevolt in Kharanos.
@@ -390,6 +393,11 @@ step
   note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Divinity##1788 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
+step
+  only Shaman haveq(94494)
+  note Find Norric Lochthane in Loch Modan.
+  talk Norric Lochthane##258043
+  turnin Call of Water##94494 |goto Loch Modan 41.77,19.05 |tip {turninat}Loch Modan
 step
   note {travel}Loch Modan
   goto Loch Modan 34.83,49.28

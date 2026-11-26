@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Zul'Farrak", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "3cafd5d1",
+	rev = "599f2c29",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -18,6 +18,9 @@ step
 step
   talk Gryphon Master Talonaxe##5636
   accept Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
+step
+  talk Archmage Lan'dalock##20735
+  accept The Witch Doctor's Head##96770 |goto Alterac Mountains 15.3,73.93
 step
   talk Tabetha##6546
   accept Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
@@ -42,6 +45,9 @@ step
   click Second Witherbark Cage##144067 |q 2988/2 |goto The Hinterlands 23.13,58.82
   click Third Witherbark Cage##144068 |q 2988 |goto The Hinterlands 31.99,57.31
 step
+  note Slay Witch Doctor Zum'rah and bring Zum'rah's Head to Archmage Lan'dalock in Dalaran.
+  collect Zum'rah's Head##277112 |q 96770 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Witch Doctor Zum'rah
+step
   note Bring the Tiara of the Deep to Tabetha in Dustwallow Marsh.
   collect Tiara of the Deep##9234 |q 2846 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Hydromancer Velratha
 step
@@ -62,6 +68,9 @@ step
 step
   talk Gryphon Master Talonaxe##5636
   turnin Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
+step
+  talk Archmage Lan'dalock##20735
+  turnin The Witch Doctor's Head##96770 |goto Alterac Mountains 15.3,73.93
 step
   talk Tabetha##6546
   turnin Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09

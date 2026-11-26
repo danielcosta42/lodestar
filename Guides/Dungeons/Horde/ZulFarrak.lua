@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Zul'Farrak", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "5aafc7bc",
+	rev = "203bbe12",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -18,6 +18,9 @@ step
 step
   talk Tabetha##6546
   accept Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
+step
+  talk Mazu'kon##264074
+  accept Zum'rah's Head##96775 |goto Mulgore 32.5,20.66
 step
   talk Chief Engineer Bilgewhizzle##7407
   accept Divino-matic Rod##2768 |goto Tanaris 52.46,28.51
@@ -37,6 +40,9 @@ step
   note Bring the Tiara of the Deep to Tabetha in Dustwallow Marsh.
   collect Tiara of the Deep##9234 |q 2846 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Hydromancer Velratha
 step
+  note Slay Witch Doctor Zum'rah and bring Zum'rah's Head to Mazu'kon in Mulgore.
+  collect Zum'rah's Head##277112 |q 96775 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Witch Doctor Zum'rah
+step
   note Bring the Divino-matic Rod to Chief Engineer Bilgewhizzle in Gadgetzan.
   collect Divino-matic Rod##8548 |q 2768 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Sergeant Bly
 step
@@ -54,6 +60,9 @@ step
 step
   talk Tabetha##6546
   turnin Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
+step
+  talk Mazu'kon##264074
+  turnin Zum'rah's Head##96775 |goto Mulgore 32.5,20.66
 step
   talk Chief Engineer Bilgewhizzle##7407
   turnin Divino-matic Rod##2768 |goto Tanaris 52.46,28.51

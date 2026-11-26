@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/The Barrens (14-20)",
-	rev = "2478e45d",
+	rev = "48d118e3",
 }, [[
 step
   ding 12
@@ -144,7 +144,7 @@ step
   use Rabid Thistle Bear##2164 |q 2118 |goto Darkshore 40.09,58.31 |tip {useit}
 step
   note Find and slay the owl known as Jai'vhanel and take one of her feathers. The black owl was last seen north of the Ameth'Aran ruins near the mountain base. Report the death of Jai'vhanel to Sentinel Glynda Nal'Shea in Auberdine.
-  collect Feather of Jai'vhanel##281038 |q 98025 |goto Darkshore 44.37,58.77 |tip {dropsfrom}Jai'vhanel
+  collect Feather of Jai'vhanel##281038 |q 98025 |goto Darkshore 44.64,58.61 |tip {dropsfrom}Jai'vhanel
 step
   talk Sentinel Tysha Moonblade##3639
   turnin The Fall of Ameth'Aran##953 |goto Darkshore 40.3,59.73
@@ -187,7 +187,7 @@ step
   talk Tharnariun Treetender##3701
   accept Cleansing of the Infected##2138 |goto Darkshore 38.84,43.42
 step
-  only NightElf Druid completed(6122) level>=14
+  only not Human not Dwarf not Gnome Druid completed(6122) level>=14
   talk Alanndarian Nightsong##3702
   accept Gathering the Cure##6123 |goto Darkshore 37.69,40.66
 step
@@ -341,7 +341,7 @@ step
   talk Onu##3616
   accept The Master's Glaive##944 |goto Darkshore 43.55,76.29
 step
-  only NightElf Druid completed(6122) haveq(6123)
+  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6123)
   note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
   collect 5 Earthroot##2449 |q 6123/1 |goto Darkshore 42.59,71.93
   collect 12 Lunar Fungus##15851 |q 6123 |goto Darkshore 43.8,50.23 |tip {dropsfrom}Lunar Fungal Bloom
@@ -356,31 +356,11 @@ step
   click Beached Sea Creature##175227
   accept Beached Sea Creature##4730 |goto Darkshore 32.69,80.79
 step
-  click Twilight Tome##12666
-  accept It's All Fun and Games Until...##98042 |goto Darkshore 38.54,86.05
-step
-  note Collect 4 Grizzled Scalps from Grizzled Thistle Bears to the south of Auberdine and place them in Buzzbox 525.
-  collect 4 Grizzled Scalp##5414 |q 1003 |goto Darkshore 39.3,81.36 |tip {dropsfrom}Grizzled Thistle Bear, Den Mother
-step
-  turnin Buzzbox 525##1003 |goto Darkshore 41.39,80.56
-step
-  talk Sentinel Aynasha##11711
-  accept One Shot.  One Kill.##5713 |goto Darkshore 45.94,90.29
-step
-  note Protect Sentinel Aynasha, then speak with Onaeya at Maestra's Post in Ashenvale.
-  goto Darkshore 45.87,90.42 |tip Protect Aynasha
-step
   note Gather information, then use the Phial of Scrying to create a Scrying Bowl. Use the bowl to speak with Onu.
   goto Darkshore 38.48,86.45 |tip Enter the Master's Glaive
 step
-  note Obtain a Peerless Eye from a Twilight Disciple or Thug at the Master's Glaive in Darkshore and find someone in Auberdine who is willing to take it.
-  collect Peerless Eye##279279 |q 98042 |goto Darkshore 38.21,87.21 |tip {dropsfrom}Twilight Disciple, Twilight Thug
-step
-  talk Therylune##3584
-  accept Therylune's Escape##945 |goto Darkshore 38.64,87.33
-step
-  note Help Therylune escape, then tell Therysil at the Shrine of Aessina that her sister is safe.
-  goto Darkshore 40.51,87.08 |tip Escort Therylune away from the Master's Glaive
+  note Collect 4 Grizzled Scalps from Grizzled Thistle Bears to the south of Auberdine and place them in Buzzbox 525.
+  collect 4 Grizzled Scalp##5414 |q 1003 |goto Darkshore 39.3,81.36 |tip {dropsfrom}Grizzled Thistle Bear, Den Mother
 step
   turnin The Master's Glaive##944 |goto Darkshore 38.6,86.2
 step
@@ -393,6 +373,34 @@ step
   click Twilight Tome##12666
   accept Return to Onu##950 |goto Darkshore 38.54,86.05
 step
+  click Twilight Tome##12666
+  accept It's All Fun and Games Until...##98042 |goto Darkshore 38.54,86.05
+step
+  note Obtain a Peerless Eye from a Twilight Disciple or Thug at the Master's Glaive in Darkshore and find someone in Auberdine who is willing to take it.
+  collect Peerless Eye##279279 |q 98042 |goto Darkshore 38.21,87.21 |tip {dropsfrom}Twilight Disciple, Twilight Thug
+step
+  only hasitem(5352)
+  use Book: The Powers Below##5352 |tip It starts the quest.
+  accept The Powers Below##968
+step
+  talk Sentinel Aynasha##11711
+  accept One Shot.  One Kill.##5713 |goto Darkshore 45.94,90.29
+step
+  note Protect Sentinel Aynasha, then speak with Onaeya at Maestra's Post in Ashenvale.
+  goto Darkshore 45.87,90.42 |tip Protect Aynasha
+step
+  talk Therylune##3584
+  accept Therylune's Escape##945 |goto Darkshore 38.64,87.33
+step
+  note Help Therylune escape, then tell Therysil at the Shrine of Aessina that her sister is safe.
+  goto Darkshore 40.51,87.08 |tip Escort Therylune away from the Master's Glaive
+step
+  note Bring Onu the recovered Insane Scribbles.
+  talk Onu##3616
+  turnin Return to Onu##950 |goto Darkshore 43.55,76.29
+step
+  turnin Buzzbox 525##1003 |goto Darkshore 41.39,80.56
+step
   click Beached Sea Turtle##176198
   accept Beached Sea Turtle##4731 |goto Darkshore 31.67,83.68
 step
@@ -401,10 +409,6 @@ step
 step
   click Beached Sea Creature##175230
   accept Beached Sea Creature##4733 |goto Darkshore 31.26,87.44
-step
-  note Bring Onu the recovered Insane Scribbles.
-  talk Onu##3616
-  turnin Return to Onu##950 |goto Darkshore 43.55,76.29
 step
   talk Tharnariun Treetender##3701
   turnin Tharnariun's Hope##2139 |goto Darkshore 38.84,43.42
@@ -437,14 +441,14 @@ step
   talk Thundris Windweaver##3649
   turnin The Blackwood Corrupted##4763 |goto Darkshore 37.4,40.13
 step
-  only NightElf Druid completed(6122) haveq(6123)
+  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6123)
   talk Alanndarian Nightsong##3702
   turnin Gathering the Cure##6123 |goto Darkshore 37.69,40.66
 step
   talk Thundris Windweaver##3649
   turnin It's All Fun and Games Until...##98042 |goto Darkshore 37.4,40.13
 step
-  only NightElf Druid completed(6122) completed(6123)
+  only not Human not Dwarf not Gnome Druid completed(6122) completed(6123)
   talk Alanndarian Nightsong##3702
   accept Curing the Sick##6124 |goto Darkshore 37.69,40.66
 step
@@ -455,7 +459,7 @@ step
   accept Holy Diver##87760 |goto Darkshore 36.62,45.59
 step
   note Find a Stormscale Beastmistress, slay her, and bring back her Rod of Deep Dominion.
-  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.05,12.93 |tip {dropsfrom}Stormscale Beastmistress
+  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.16,13.38 |tip {dropsfrom}Stormscale Beastmistress
 step
   talk Gelkak Gyromast##6667
   accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
@@ -463,7 +467,7 @@ step
   talk Gwennyth Bly'Leggonde##10219
   turnin Holy Diver##87760 |goto Darkshore 36.62,45.59
 step
-  only NightElf Druid completed(6122) haveq(6124)
+  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6124)
   note Use the Curative Animal Salve on 10 Sickly Deer that are located throughout Darkshore; doing so should cure them. Sickly Deer have been reported starting south of the Cliffspring River to the north of Auberdine and extending all the way into southern Darkshore where the edge of Ashenvale begins.
   use Sickly Deer##12298 |q 6124 |goto Darkshore 43.81,48.22 |tip {useit}
 step
@@ -479,22 +483,7 @@ step
 step
   only haveq(5321)
   note Escort Kerlonian Evershade to Liladris Moonriver at Maestra's Post in Ashenvale.
-  collect Horn of Awakening##13536 |q 5321 |goto Darkshore 44.39,76.31 |tip {dropsfrom}Kerlonian's Chest
-step
-  only haveq(5321)
-  talk Liladris Moonriver##11219
-  turnin The Sleeper Has Awakened##5321 |goto Ashenvale 27.26,35.58 |tip {turninat}Ashenvale
-step
-  note Deliver Balthule's letter to Delgren the Purifier in Ashenvale Forest.
-  talk Delgren the Purifier##3663
-  turnin The Tower of Althalaxx##967 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale
-step
-  talk Sentinel Onaeya##11806
-  turnin One Shot.  One Kill.##5713 |goto Ashenvale 26.6,36.73 |tip {turninat}Ashenvale
-step
-  only hasitem(5352)
-  use Book: The Powers Below##5352 |tip It starts the quest.
-  accept The Powers Below##968
+  goto Darkshore 42,90.5 |tip Escort Kerlonian Evershade on the road south to his bag
 step
   note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
   collect 5 Fine Moonstalker Pelt##5386 |q 986 |goto Darkshore 43.03,90.77 |tip {dropsfrom}Moonstalker Matriarch, Moonstalker Sire
@@ -541,8 +530,8 @@ step
   turnin A Lost Master##993 |goto Darkshore 45.01,85.3
 step
   only level>=21
-  kill Baron Marinous##270294 |goto Darkshore 59.13,22.83 |elite |tip Loot the quest item here — it starts the quest.
-  accept Baron Marinous##98028 |goto Darkshore 59.13,22.83
+  kill Baron Marinous##270294 |goto Darkshore 59.11,22.77 |elite |tip Loot the quest item here — it starts the quest.
+  accept Baron Marinous##98028 |goto Darkshore 59.11,22.77
 step
   only haveq(98028)
   note Bring the Clouded Water Globe to Onu at the Grove of the Ancients in Darkshore.
@@ -601,6 +590,24 @@ step
   talk Nessa Shadowsong##10118
   turnin Return to Nessa##6343 |goto Teldrassil 56.26,92.44 |tip {turninat}Teldrassil
 step
+  talk Sentinel Onaeya##11806
+  turnin One Shot.  One Kill.##5713 |goto Ashenvale 26.6,36.73 |tip {turninat}Ashenvale
+step
+  only haveq(5321)
+  talk Liladris Moonriver##11219
+  turnin The Sleeper Has Awakened##5321 |goto Ashenvale 27.26,35.58 |tip {turninat}Ashenvale
+step
+  note Deliver Balthule's letter to Delgren the Purifier in Ashenvale Forest.
+  talk Delgren the Purifier##3663
+  turnin The Tower of Althalaxx##967 |goto Ashenvale 26.2,38.7 |tip {turninat}Ashenvale
+step
+  talk Therysil##3585
+  turnin Therylune's Escape##945 |goto Ashenvale 22.64,51.92 |tip {turninat}Ashenvale
+step
+  note Find Raene Wolfrunner in Ashenvale.
+  talk Raene Wolfrunner##3691
+  turnin Trek to Ashenvale##990 |goto Ashenvale 36.62,49.58 |tip {turninat}Ashenvale
+step
   note Travel to Auberdine and look for signs of the dwarven excavation team.
   talk Archaeologist Hollee##2913
   turnin Trouble In Darkshore?##730 |goto Darkshore 37.44,41.84
@@ -634,16 +641,9 @@ step
   talk Dendrite Starblaze##11802
   turnin A Lesson to Learn##26 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
 step
-  only NightElf Druid completed(6122) haveq(6124)
+  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6124)
   talk Dendrite Starblaze##11802
   turnin Curing the Sick##6124 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
-step
-  talk Therysil##3585
-  turnin Therylune's Escape##945 |goto Ashenvale 22.64,51.92 |tip {turninat}Ashenvale
-step
-  note Find Raene Wolfrunner in Ashenvale.
-  talk Raene Wolfrunner##3691
-  turnin Trek to Ashenvale##990 |goto Ashenvale 36.62,49.58 |tip {turninat}Ashenvale
 step
   note Take the mysterious fossil to Chief Archaeologist Greywhisker in Darnassus.
   talk Chief Archaeologist Greywhisker##2912

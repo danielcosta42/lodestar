@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-24)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Darkshore (13-20)",
-	rev = "ef66b5d0",
+	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
+	rev = "f204fed0",
 }, [[
 step
   ding 14
@@ -54,9 +54,6 @@ step
   talk Hilary##8962
   turnin Hilary's Necklace##3741 |goto Redridge Mountains 24.15,53.63
 step
-  talk Deputy Feldon##1070
-  accept Show of Force##98407 |goto Redridge Mountains 25.64,60
-step
   only haveq(125)
   note Foreman Oslow of Lakeshire wants you to retrieve his toolbox from the bottom of Lake Everstill.
   collect Oslow's Toolbox##1309 |q 125 |goto Redridge Mountains 36.43,54.66 |tip {dropsfrom}Sunken Chest
@@ -87,18 +84,15 @@ step
   talk Guard Parker##464
   accept Encroaching Gnolls##244 |goto Redridge Mountains 10.37,71.26
 step
-  note Collect 5 Spiked Collars from Redridge Thrashers for Deputy Feldon near Lakeshire.
-  collect 5 Spiked Collar##280911 |q 98407 |goto Redridge Mountains 10.37,66.29 |tip {dropsfrom}Redridge Thrasher
-step
   note Report to Deputy Feldon.
   talk Deputy Feldon##1070
   turnin Encroaching Gnolls##244 |goto Redridge Mountains 25.64,60
 step
   talk Deputy Feldon##1070
-  turnin Show of Force##98407 |goto Redridge Mountains 25.64,60
+  accept Assessing the Threat##246 |goto Redridge Mountains 25.64,60
 step
   talk Deputy Feldon##1070
-  accept Assessing the Threat##246 |goto Redridge Mountains 25.64,60
+  accept Show of Force##98407 |goto Redridge Mountains 25.64,60
 step
   only haveq(92)
   note Chef Breanna of Lakeshire wants five pieces of Tough Condor Meat, five Great Goretusk Snouts and five helpings of Crisp Spider Meat.
@@ -106,12 +100,18 @@ step
   collect Crisp Spider Meat##1081 |q 92/3 |goto Redridge Mountains 7.32,76.98 |tip {dropsfrom}Tarantula, Greater Tarantula, Chatter
   collect Tough Condor Meat##1080 |q 92 |goto Redridge Mountains 50.17,73.4 |tip {dropsfrom}Dire Condor
 step
+  note Collect 5 Spiked Collars from Redridge Thrashers for Deputy Feldon near Lakeshire.
+  collect 5 Spiked Collar##280911 |q 98407 |goto Redridge Mountains 10.37,66.29 |tip {dropsfrom}Redridge Thrasher
+step
   note Kill 10 Redridge Mongrels and 6 Redridge Poachers, then report back to Deputy Feldon in Lakeshire.
-  kill Redridge Poacher##424 |q 246/2 |goto Redridge Mountains 27.19,82.28
-  kill Redridge Mongrel##423 |q 246 |goto Redridge Mountains 25.26,81.2
+  kill Redridge Mongrel##423 |q 246/1 |goto Redridge Mountains 25.26,81.2
+  kill Redridge Poacher##424 |q 246 |goto Redridge Mountains 27.19,82.28
 step
   talk Deputy Feldon##1070
   turnin Assessing the Threat##246 |goto Redridge Mountains 25.64,60
+step
+  talk Deputy Feldon##1070
+  turnin Show of Force##98407 |goto Redridge Mountains 25.64,60
 step
   only haveq(92)
   talk Chef Breanna##343
@@ -170,8 +170,8 @@ step
 step
   only haveq(98387)
   note Bring 8 Stolen Weapons and 10 Blackrock Supplies to Marshal Marris in Lakeshire.
-  collect 10 Blackrock Supplies##280839 |q 98387/2 |goto Redridge Mountains 70.7,78.7
-  collect 8 Stolen Weapon##280841 |q 98387 |goto Redridge Mountains 70.7,81.4 |tip {dropsfrom}Weapon Rack
+  collect 8 Stolen Weapon##280841 |q 98387/1 |goto Redridge Mountains 70.7,81.4 |tip {dropsfrom}Weapon Rack
+  collect 10 Blackrock Supplies##280839 |q 98387 |goto Redridge Mountains 72.89,86.01 |tip {dropsfrom}Meat Haunch, Water Barrel
 step
   only haveq(20)
   talk Marshal Marris##382
@@ -386,10 +386,6 @@ step
   talk High Priestess Laurena##376
   turnin Arcane Feedback##5676 |goto Stormwind City 49.53,44.6 |tip {turninat}Stormwind City
 step
-  only Gnome Priest level>=20
-  talk High Priestess Laurena##376
-  accept Contingency Plan##94819 |goto Stormwind City 49.53,44.6
-step
   only Warlock completed(1738) level>=20
   talk Gakin the Darkbinder##6122
   accept The Binding##1739 |goto Stormwind City 39.22,85.23
@@ -408,7 +404,7 @@ step
 step
   only Warlock completed(65602) haveq(65603)
   note Using the Wooden Figurine, summon and subdue an incubus, then return the Wooden Figurine to Gakin the Darkbinder in the Slaughtered Lamb.
-  use Summoned Incubus##185335 |q 65603 |goto Stormwind City 39.04,84.64 |tip {useit}
+  use Summoned Incubus##185335 |q 65603 |goto Stormwind City 39.23,84.43 |tip {useit}
 step
   only Warlock completed(65602) haveq(65603)
   talk Gakin the Darkbinder##6122
@@ -459,14 +455,6 @@ step
   talk Mountaineer Kadrell##1340
   accept Report to Mountaineer Rockgar##468 |goto Loch Modan 32.63,49.74
 step
-  only Shaman level>=20
-  talk Norric Lochthane##258043
-  accept Water Sapta##94616 |goto Loch Modan 41.76,19.05
-step
-  only Shaman haveq(94616)
-  talk Norric Lochthane##258043
-  turnin Water Sapta##94616 |goto Loch Modan 41.76,19.05 |tip {turninat}Loch Modan
-step
   only haveq(468)
   note Speak with Mountaineer Rockgar.
   talk Mountaineer Rockgar##1342
@@ -480,15 +468,6 @@ step
   note Speak to High Priest Rohan in Ironforge.
   talk High Priest Rohan##11406
   turnin A Lack of Fear##5645 |goto Ironforge 24.73,8.16 |tip {turninat}Ironforge
-step
-  only Gnome Priest haveq(94819)
-  note Speak to High Priestess Mims in Ironforge.
-  talk High Priestess Mims##258785
-  turnin Contingency Plan##94819 |goto Ironforge 24.59,10 |tip {turninat}Ironforge
-step
-  only Shaman level>=20
-  talk Eldrun Stormbreaker##258098
-  accept Call of Water##94494 |goto Ironforge 47.1,13.79
 step
   only Warrior level>=20
   talk Kelv Sternhammer##5113
@@ -514,11 +493,6 @@ step
   only Warrior completed(1699) level>=20
   talk Yorus Barleybrew##6166
   accept The Shieldsmith##1702 |goto Redridge Mountains 21.49,44.72
-step
-  only Shaman haveq(94494)
-  note Find Norric Lochthane in Loch Modan.
-  talk Norric Lochthane##258043
-  turnin Call of Water##94494 |goto Loch Modan 41.76,19.05 |tip {turninat}Loch Modan
 step
   only completed(65) haveq(132)
   note Take Wiley's Note to Gryan Stoutmantle in Westfall.
@@ -616,6 +590,6 @@ step
   talk Lord Ello Ebonlocke##263
   turnin Messenger to Darkshire##145 |goto Duskwood 71.93,46.42 |tip {turninat}Duskwood
 step
-  note {travel}Darkshore
-  goto Darkshore 36.97,44.13
+  note {travel}Stonetalon Mountains
+  goto Stonetalon Mountains 59.9,66.85
 ]])

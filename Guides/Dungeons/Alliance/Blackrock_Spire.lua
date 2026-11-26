@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackrock Spire", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "a27138c4",
+	rev = "c489d78f",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -49,6 +49,9 @@ step
   talk Ragged John##9563
   accept Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  talk Deliana##230319
+  accept Just Compensation##97448 |goto Dun Morogh 58.07,29.54
+step
   talk Count Remington Ridgewell##2285
   accept Mayara Brightwing##4766 |goto Stormwind City 76.94,47.83
 step
@@ -58,6 +61,9 @@ step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   talk Lorax##10918
   accept Lorax's Tale##5126 |goto Winterspring 63.79,73.76
+step
+  talk Pix Xizzix##227853
+  accept In Demand - Blackrock Legal Records##96075 |goto Stranglethorn Vale 28.52,75.86
 step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
@@ -90,12 +96,18 @@ step
   note In the heart of Blackrock Spire you will find Mother Smolderweb. Engage her and get her to poison you. Chances are good that you will have to kill her as well. Return to Ragged John when you are poisoned so that he can 'milk' you.
   talk Ragged John##9563 |q 4866 |goto Burning Steppes 65.01,23.76
 step
+  note Bring a Cord of the Elements and a set of Gauntlets of the Elements to Deliana in Ironforge.
+  collect Cord of Elements##16673 |q 97448 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
+step
   note Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.
   collect Vosh'gajin's Snakestone##13352 |q 5306 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Shadow Hunter Vosh'gajin
 step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   note Speak with Lorax. Listen to what he has to say.
   talk Lorax##10918 |q 5126 |goto Winterspring 63.79,73.76
+step
+  note Acquire Nefarian's Remit from General Drakkisath in Blackrock Spire, Overseer's License from Overlord Wyrmthalak in Blackrock Spire, and Bronzebeard Wedding Contract from Emperor Thaurissan in Blackrock Depths, and bring them to Pix Xizzix in Booty Bay.
+  collect Nefarion's Remit##272017 |q 96075 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
@@ -143,6 +155,9 @@ step
   talk Ragged John##9563
   turnin Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  talk Deliana##230319
+  turnin Just Compensation##97448 |goto Dun Morogh 58.07,29.54
+step
   note Speak with Mayara Brightwing in the Burning Steppes.
   talk Mayara Brightwing##9565
   turnin Mayara Brightwing##4766 |goto Burning Steppes 84.84,69.12
@@ -153,6 +168,9 @@ step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   talk Lorax##10918
   turnin Lorax's Tale##5126 |goto Winterspring 63.79,73.76
+step
+  talk Pix Xizzix##227853
+  turnin In Demand - Blackrock Legal Records##96075 |goto Stranglethorn Vale 28.52,75.86
 step
   talk Yeh'kinya##8579
   accept The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36

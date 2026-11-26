@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Badlands (37-43)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Stranglethorn Vale (43-51)",
-	rev = "fe0e62c9",
+	next = "Leveling/Alliance/Riverglades (38-44)",
+	rev = "5e3287bd",
 }, [[
 step
   ding 36
@@ -49,6 +49,14 @@ step
   talk Martek the Exiled##4618
   accept Indurium##1108 |goto Badlands 42.22,52.69
 step
+  only haveq(738)
+  note Find Agmond.
+  turnin Find Agmond##738 |goto Badlands 50.89,62.4
+step
+  only completed(1106)
+  note Bring 10 Indurium Flakes to Martek the Exiled in the Badlands.
+  collect 10 Indurium Flake##5797 |q 1108 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Bonesnapper, Stonevault Basher, Stonevault Seer
+step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##710 |goto Badlands 25.95,44.87
 step
@@ -74,17 +82,6 @@ step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
 step
-  only haveq(738)
-  note Find Agmond.
-  turnin Find Agmond##738 |goto Badlands 50.89,62.4
-step
-  only completed(1106)
-  note Bring 10 Indurium Flakes to Martek the Exiled in the Badlands.
-  collect 10 Indurium Flake##5797 |q 1108 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Bonesnapper, Stonevault Basher, Stonevault Seer
-step
-  note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
-  collect 3 Large Stone Slab##4627 |q 711 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental
-step
   only completed(1106)
   talk Martek the Exiled##4618
   turnin Indurium##1108 |goto Badlands 42.22,52.69
@@ -99,18 +96,13 @@ step
   collect Scrap Metal##4630 |q 733 |goto Badlands 62.52,68.44 |tip {dropsfrom}Dustbelcher Ogre, Dustbelcher Brute, Dustbelcher Wyrmhunter
 step
   talk Theldurin the Lost##2785
-  accept Solution to Doom##709 |goto Badlands 51.39,76.87
+  accept Solution to Doom##709 |goto Badlands 51.22,76.78
 step
   talk Sigrun Ironhew##2860
   turnin Scrounging##733 |goto Badlands 53.8,43.3
 step
-  note Bring 4 Buzzard Wings to Rigglefuzz.
-  collect 4 Buzzard Wing##3404 |q 703 |goto Badlands 57.46,28.59 |tip {dropsfrom}Starving Buzzard, Buzzard, Giant Buzzard
-step
-  only haveq(2418)
-  note Bring 8 Dentrium Power Stones and 8 An'Alleum Power Stones to Rigglefuzz in the Badlands.
-  kill Shadowforge Surveyor##4844 |q 2418 |goto Badlands 48.2,11 |elite
-  collect 8 Dentrium Power Stone##8009 |q 2418 |goto Badlands 48.2,11
+  note Bring the Tablet of Ryun'eh to Theldurin the Lost.
+  collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
 step
   note Find Hammertoe Grez in Uldaman.
   talk Hammertoe Grez##2909
@@ -119,19 +111,6 @@ step
   only level>=40
   talk Hammertoe Grez##2909
   accept Amulet of Secrets##722 |goto Badlands 37.9,10.59
-step
-  talk Lotwil Veriatus##2921
-  turnin Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
-step
-  talk Rigglefuzz##2817
-  turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
-step
-  only haveq(2418)
-  talk Rigglefuzz##2817
-  turnin Power Stones##2418 |goto Badlands 42.39,52.93
-step
-  note Bring the Tablet of Ryun'eh to Theldurin the Lost.
-  collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
 step
   only haveq(722)
   note Find Hammertoe's Amulet and return it to him in Uldaman.
@@ -146,9 +125,21 @@ step
   talk Hammertoe Grez##2909
   accept Prospect of Faith##723 |goto Badlands 37.9,10.59
 step
-  only level>=37 hasitem(7666)
-  use Shattered Necklace##7666 |tip It starts the quest.
-  accept The Shattered Necklace##2198
+  only haveq(2418)
+  note Bring 8 Dentrium Power Stones and 8 An'Alleum Power Stones to Rigglefuzz in the Badlands.
+  kill Shadowforge Surveyor##4844 |q 2418 |goto Badlands 48.2,11 |elite
+  collect 8 Dentrium Power Stone##8009 |q 2418 |goto Badlands 48.2,11
+step
+  talk Dorgaron##269577
+  accept Safety Checks##97617 |goto Badlands 54.63,12.87
+step
+  note Bring 4 Buzzard Wings to Rigglefuzz.
+  collect 4 Buzzard Wing##3404 |q 703 |goto Badlands 57.46,28.59 |tip {dropsfrom}Starving Buzzard, Buzzard, Giant Buzzard
+step
+  note Recover 8 Unstudied Artifacts, an Explorers' League Mining Helmet, and a Pristine Mattock and bring them to Dorgaron at the border of Loch Modan and the Badlands.
+  collect 8 Unstudied Artifact##278402 |q 97617/1 |goto Badlands 53.33,32.7 |tip {dropsfrom}Shadowforge Tunneler, Shadowforge Darkweaver, Stonevault Bonesnapper
+  collect Explorers' League Mining Helmet##278403 |q 97617/2 |goto Badlands 53.07,34.48 |tip {dropsfrom}Explorers' League Supplies
+  collect Pristine Mattock##278404 |q 97617 |goto Badlands 49.25,68.36
 step
   only haveq(723)
   note Take Hammertoe's Amulet to Prospector Ryedol in the Badlands.
@@ -159,20 +150,31 @@ step
   talk Prospector Ryedol##2910
   accept Prospect of Faith##724 |goto Badlands 53.42,43.39
 step
-  talk Theldurin the Lost##2785
-  turnin Solution to Doom##709 |goto Badlands 51.39,76.87
+  talk Rigglefuzz##2817
+  turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
+step
+  only haveq(2418)
+  talk Rigglefuzz##2817
+  turnin Power Stones##2418 |goto Badlands 42.39,52.93
 step
   talk Theldurin the Lost##2785
-  accept To Ironforge for Yagyin's Digest##727 |goto Badlands 51.39,76.87
+  turnin Solution to Doom##709 |goto Badlands 51.22,76.78
 step
-  only completed(738)
-  click Battered Dwarven Skeleton##2875
-  accept Murdaloc##739 |goto Badlands 50.89,62.4
+  talk Theldurin the Lost##2785
+  accept To Ironforge for Yagyin's Digest##727 |goto Badlands 51.22,76.78
 step
-  only completed(738)
-  note Slay Agmond's killer, Murdaloc.
-  kill Murdaloc##2945 |q 739/1 |goto Badlands 49.63,66.31
-  kill Stonevault Bonesnapper##2893 |q 739 |goto Badlands 51.35,69.72
+  note Bring 3 Large Stone Slabs to Lotwil Veriatus in the Badlands.
+  collect 3 Large Stone Slab##4627 |q 711 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental
+step
+  talk Lotwil Veriatus##2921
+  turnin Study of the Elements: Rock##711 |goto Badlands 25.95,44.87
+step
+  only level>=37 hasitem(7666)
+  use Shattered Necklace##7666 |tip It starts the quest.
+  accept The Shattered Necklace##2198
+step
+  talk Dorgaron##269577
+  turnin Safety Checks##97617 |goto Badlands 54.63,12.87
 step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
@@ -204,6 +206,15 @@ step
   only level>=40
   talk Garek##2888
   accept Tremors of the Earth##732 |goto Badlands 61.94,54.26
+step
+  only completed(738)
+  click Battered Dwarven Skeleton##2875
+  accept Murdaloc##739 |goto Badlands 50.89,62.4
+step
+  only completed(738)
+  note Slay Agmond's killer, Murdaloc.
+  kill Murdaloc##2945 |q 739/1 |goto Badlands 49.63,66.31
+  kill Stonevault Bonesnapper##2893 |q 739 |goto Badlands 51.35,69.72
 step
   only haveq(732)
   note Retrieve the Sign of the Earth for Garek.
@@ -263,6 +274,10 @@ step
   talk Talvash del Kissel##6826
   turnin The Shattered Necklace##2198 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
 step
+  only not NightElf not Gnome not Skyborne Paladin not completed(4486) not haveq(4486) level>=40
+  talk Tiza Battleforge##6179
+  accept The Tome of Nobility##4485 |goto Ironforge 27.63,12.18
+step
   note Give the Sigil of the Hammer to Gerrig Bonegrip in the Forlorn Cavern of Ironforge.
   talk Gerrig Bonegrip##2786
   turnin To Ironforge for Yagyin's Digest##727 |goto Ironforge 50.83,5.62 |tip {turninat}Ironforge
@@ -308,16 +323,16 @@ step
   only completed(653,688)
   note Find Theldurin the Lost.
   talk Theldurin the Lost##2785
-  turnin Theldurin the Lost##687 |goto Badlands 51.39,76.87
+  turnin Theldurin the Lost##687 |goto Badlands 51.22,76.78
 step
   only completed(735,736)
   note Bring Yagyin's Digest to Theldurin.
   talk Theldurin the Lost##2785
-  turnin Forbidden Knowledge##737 |goto Badlands 51.39,76.87
+  turnin Forbidden Knowledge##737 |goto Badlands 51.22,76.78
 step
   only completed(653,688)
   talk Theldurin the Lost##2785
-  accept The Lost Fragments##692 |goto Badlands 51.39,76.87
+  accept The Lost Fragments##692 |goto Badlands 51.22,76.78
 step
   only completed(653,688)
   note Bring the Torn Scroll Fragment, the Crumpled Scroll Fragment and the Singed Scroll Fragment to Theldurin the Lost.
@@ -325,11 +340,11 @@ step
 step
   only completed(653,688)
   talk Theldurin the Lost##2785
-  turnin The Lost Fragments##692 |goto Badlands 51.39,76.87
+  turnin The Lost Fragments##692 |goto Badlands 51.22,76.78
 step
   only completed(653,688)
   talk Theldurin the Lost##2785
-  accept Summoning the Princess##656 |goto Badlands 51.39,76.87
+  accept Summoning the Princess##656 |goto Badlands 51.22,76.78
 step
   only haveq(762)
   note Kill Ambassador Infernus in Angor Fortress and bring proof of his death to Advisor Belgrum in Ironforge.
@@ -339,27 +354,29 @@ step
   note Get Krom Stoutarm's treasured possession from his chest in the North Common Hall of Uldaman, and bring it to him in Ironforge.
   collect Krom Stoutarm's Treasure##8027 |q 1360 |goto Badlands 35.56,23.51 |tip {dropsfrom}Krom Stoutarm's Chest
 step
-  only level>=37
+  only not NightElf not Gnome not Skyborne Paladin not completed(4486) not haveq(4486) haveq(4485)
+  note Speak to Duthorian Rall in Stormwind.
+  talk Duthorian Rall##6171
+  turnin The Tome of Nobility##4485 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
+step
+  only not NightElf not Gnome not Skyborne Paladin level>=40
+  talk Duthorian Rall##6171
+  accept The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
+step
+  only not NightElf not Gnome not Skyborne Paladin haveq(1661)
+  note Speak to Duthorian Rall in Stormwind.
+  talk Duthorian Rall##6171
+  turnin The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
+step
   talk Mazen Mac'Nadir##338
   accept Mazen's Behest##1363 |goto Stormwind City 51.8,74.24
 step
-  only haveq(1363)
   note Speak with Acolyte Dellis in Stormwind.
   talk Acolyte Dellis##5386
   turnin Mazen's Behest##1363 |goto Stormwind City 51.4,73.81 |tip {turninat}Stormwind City
 step
-  only completed(1363) level>=37
   talk Acolyte Dellis##5386
   accept Mazen's Behest##1364 |goto Stormwind City 51.4,73.81
-step
-  only not NightElf not Gnome not Skyborne Paladin not completed(4485) not completed(4486) not haveq(4485) not haveq(4486) level>=40
-  talk Duthorian Rall##6171
-  accept The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
-step
-  only not NightElf not Gnome not Skyborne Paladin not completed(4485) not completed(4486) not haveq(4485) not haveq(4486) haveq(1661)
-  note Speak to Duthorian Rall in Stormwind.
-  talk Duthorian Rall##6171
-  turnin The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49 |tip {turninat}Stormwind City
 step
   only haveq(1425)
   note Bring the Shipment to Nethergarde to Quartermaster Lungertz in Nethergarde Keep.
@@ -373,11 +390,9 @@ step
   talk Advisor Belgrum##2918
   turnin An Ambassador of Evil##762 |goto Ironforge 77.34,9.71 |tip {turninat}Ironforge
 step
-  only haveq(1364)
   note Retrieve Khadgar's Essays on Dimensional Convergence and deliver them to Watcher Mahar Ba in Nethergarde Keep.
   collect Khadgar's Essays on Dimensional Convergence##6065 |q 1364 |goto Swamp of Sorrows 15.81,36.55 |tip {dropsfrom}Swampwalker, Swampwalker Elder, Tangled Horror
 step
-  only haveq(1364)
   talk Watcher Mahar Ba##5385
   turnin Mazen's Behest##1364 |goto Blasted Lands 67.65,19.17 |tip {turninat}Blasted Lands
 step
@@ -404,6 +419,6 @@ step
   only completed(653,688)
   turnin Summoning the Princess##656 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
 step
-  note {travel}Stranglethorn Vale
-  goto Stranglethorn Vale 26.76,76.38
+  note {travel}Riverglades
+  goto Riverglades 77.1,52.9
 ]])

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Thousand Needles (37-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Feralas (43-48)",
-	rev = "a16df993",
+	next = "Leveling/Horde/Swamp of Sorrows (35-44)",
+	rev = "8468a821",
 }, [[
 step
   ding 36
@@ -70,6 +70,30 @@ step
   talk Zevrost##3326
   accept Summon Felsteed##3631 |goto Orgrimmar 48.47,45.43
 step
+  only Orc not completed(97018) not completed(97074) not completed(97170) not completed(97188) not completed(97200) not completed(97203) not completed(97204) not completed(97205) not haveq(97018) not haveq(97074) not haveq(97170) not haveq(97188) not haveq(97200) not haveq(97203) not haveq(97204) not haveq(97205) level>=40
+  talk Kildar##4752
+  accept Learning to Ride##97194 |goto Orgrimmar 69.41,13.1
+step
+  only Orc not completed(97018) not completed(97074) not completed(97170) not completed(97188) not completed(97200) not completed(97203) not completed(97204) not completed(97205) not haveq(97018) not haveq(97074) not haveq(97170) not haveq(97188) not haveq(97200) not haveq(97203) not haveq(97204) not haveq(97205) haveq(97194)
+  note Learn the Apprentice Riding skill from Kildar.
+  talk Ogunaro Wolfrunner##3362
+  turnin Learning to Ride##97194 |goto Orgrimmar 69.38,12.24 |tip {turninat}Orgrimmar
+step
+  only Orc not completed(95511) not completed(96982) not completed(96989) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(97446) not completed(98166) not completed(99326) not haveq(95511) not haveq(96982) not haveq(96989) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(97446) not haveq(98166) not haveq(99326) level>=40
+  talk Ogunaro Wolfrunner##3362
+  accept Your First Riding Wolf##96994 |goto Orgrimmar 69.38,12.24
+step
+  only Orc not completed(95511) not completed(96982) not completed(96989) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(97446) not completed(98166) not completed(99326) not haveq(95511) not haveq(96982) not haveq(96989) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(97446) not haveq(98166) not haveq(99326) haveq(96994)
+  note Inspect the riding wolves to choose your first mount.
+  kill Timber Riding Wolf##267301 |q 96994/3 |goto Orgrimmar 69.54,12.61
+  kill Brown Riding Wolf##267299 |q 96994/1 |goto Orgrimmar 69.65,12.38
+  kill Dire Riding Wolf##267300 |q 96994/2 |goto Orgrimmar 69.61,12.13
+  kill Black Riding Wolf##267302 |q 96994 |goto Orgrimmar 69.49,11.92
+step
+  only Orc not completed(95511) not completed(96982) not completed(96989) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(97446) not completed(98166) not completed(99326) not haveq(95511) not haveq(96982) not haveq(96989) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(97446) not haveq(98166) not haveq(99326) haveq(96994)
+  talk Ogunaro Wolfrunner##3362
+  turnin Your First Riding Wolf##96994 |goto Orgrimmar 69.38,12.24 |tip {turninat}Orgrimmar
+step
   only Warlock not completed(4487) not completed(4488) not completed(4489) not haveq(4487) not haveq(4488) not haveq(4489) haveq(3631)
   note Speak to Strahad Farsan in the Barrens.
   talk Strahad Farsan##6251
@@ -87,6 +111,6 @@ step
   talk Razzeric##4706
   accept Safety First##1188 |goto Thousand Needles 80.33,76.09
 step
-  note {travel}Orgrimmar
-  goto Orgrimmar 75.23,34.24
+  note {travel}Swamp of Sorrows
+  goto Swamp of Sorrows 47.74,55.2
 ]])

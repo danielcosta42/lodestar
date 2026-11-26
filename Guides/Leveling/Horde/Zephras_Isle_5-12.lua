@@ -5,12 +5,12 @@ ns:RegisterGuide("Leveling/Horde/Zephras Isle (5-12)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "0bd31138",
+	rev = "9eff1b95",
 }, [[
 step
   only level>=1
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   only haveq(92460)
   note Speak with Rorian the Dayseeker in Thendal Grove.
@@ -27,7 +27,7 @@ step
 step
   only haveq(92461)
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   only haveq(92461)
   talk Rorian the Dayseeker##251361
@@ -35,7 +35,7 @@ step
 step
   only haveq(92462)
   note Slay 8 Pesky Cirrusflies in Thendal Grove.
-  kill Pesky Cirrusfly##251169 |q 92462 |goto Zephras Isle 46.14,26.85
+  kill Pesky Cirrusfly##251169 |q 92462 |goto Zephras Isle 45.79,27.56
 step
   only haveq(92462)
   talk Elatrell Featherlight##251368
@@ -50,7 +50,7 @@ step
 step
   only Skyborne
   talk Myriaal Mistwake##263113
-  accept Falling With Style##92474 |goto Zephras Isle 43.68,24.1
+  accept Falling With Style##92474 |goto Zephras Isle 43.68,24.09
 step
   only Hunter completed(92461)
   talk Rorian the Dayseeker##251361
@@ -81,14 +81,14 @@ step
   accept Harvesting Windstones##93552 |goto Zephras Isle 43.37,23.98
 step
   talk Halaan Hawk-Eye##257554
-  accept The Anchors of Zephras##94414 |goto Zephras Isle 43.77,24.09
+  accept The Anchors of Zephras##94414 |goto Zephras Isle 43.76,24.06
 step
   only haveq(93552)
   note Collect 15 Windstone Clusters from Raw Windstones in Thendal Grove.
   collect 15 Windstone Cluster##258772 |q 93552 |goto Zephras Isle 43.82,25.43 |tip {dropsfrom}Raw Windstone
 step
   note Speak with Halaan Hawk-Eye and borrow his gift to view the anchor pylon in the distance.
-  talk Halaan Hawk-Eye##257554 |q 94414 |goto Zephras Isle 43.77,24.09
+  talk Halaan Hawk-Eye##257554 |q 94414 |goto Zephras Isle 43.76,24.06
 step
   only Skyborne
   note Jump from the top of the watchtower in Thendal Grove and use your Walk on Air ability to slow your fall.
@@ -125,7 +125,7 @@ step
   turnin Harvesting Windstones##93552 |goto Zephras Isle 43.37,23.98
 step
   talk Halaan Hawk-Eye##257554
-  turnin The Anchors of Zephras##94414 |goto Zephras Isle 43.77,24.09
+  turnin The Anchors of Zephras##94414 |goto Zephras Isle 43.76,24.06
 step
   note Speak to Yala Windwatcher in Thendal Grove.
   talk Yala Windwatcher##249363
@@ -135,8 +135,8 @@ step
   accept Agitators##92465 |goto Zephras Isle 47.25,21.98
 step
   note Slay 6 Roiling Winds and 7 Al'Aketh Converts in Thendal Grove.
-  kill Roiling Winds##251143 |q 92465/2 |goto Zephras Isle 46.86,20.81
-  kill Al'Aketh Convert##251160 |q 92465 |goto Zephras Isle 46.73,19.62
+  kill Roiling Winds##251143 |q 92465/2 |goto Zephras Isle 47.01,20.24
+  kill Al'Aketh Convert##251160 |q 92465 |goto Zephras Isle 47.26,19.95
 step
   only Skyborne
   note Use your Skysight racial ability at the Elemental Convergence in Thendal Grove.
@@ -156,8 +156,8 @@ step
   accept Al'Aketh Thugs##92544 |goto Zephras Isle 38.31,30.18
 step
   note Slay 6 Al'Aketh Brutes, 4 Al'Aketh Neophytes, and Malduko Cloudcrush in Thendal Grove.
-  kill Al'Aketh Brute##251145 |q 92544/1 |goto Zephras Isle 37.47,32.77
-  kill Al'Aketh Neophyte##251448 |q 92544/2 |goto Zephras Isle 37.48,32.95
+  kill Al'Aketh Neophyte##251448 |q 92544/2 |goto Zephras Isle 36.82,33.09
+  kill Al'Aketh Brute##251145 |q 92544/1 |goto Zephras Isle 36.82,33.13
   kill Malduko Cloudcrush##256935 |q 92544 |goto Zephras Isle 36.05,33.53
 step
   talk Hanaa Nightwind##252095
@@ -194,13 +194,13 @@ step
 step
   only Shaman not completed(1516) not completed(1519) not haveq(1516) not haveq(1519)
   note Bring a Signet of Akir to Windshaper Boro.
-  collect Signet of Akir##251924 |q 92466 |goto Zephras Isle 37.47,32.77 |tip {dropsfrom}Al'Aketh Brute, Al'Aketh Convert, Al'Aketh Neophyte
+  collect Signet of Akir##251924 |q 92466 |goto Zephras Isle 36.82,33.13 |tip {dropsfrom}Al'Aketh Brute, Al'Aketh Convert, Al'Aketh Neophyte
 step
   note Slay 8 Ursera Scavengers and collect the head of the den mother, Urs'anah in Thendal Grove.
-  kill Ursera Scavenger##250937 |q 92470 |goto Zephras Isle 37.65,26.12
+  kill Ursera Scavenger##250937 |q 92470 |goto Zephras Isle 37.27,25.74
 step
   note Collect 6 Scrawny Ursera Claws from Scrawny Ursera in Thendal Grove.
-  collect 6 Scrawny Ursera Claw##251918 |q 92473 |goto Zephras Isle 40.23,27.12 |tip {dropsfrom}Scrawny Ursera
+  collect 6 Scrawny Ursera Claw##251918 |q 92473 |goto Zephras Isle 39.86,27.78 |tip {dropsfrom}Scrawny Ursera
 step
   only Shaman not completed(1516) not completed(1519) not haveq(1516) not haveq(1519)
   talk Windshaper Boro##251374
@@ -212,7 +212,7 @@ step
   talk Valreaa Valewind##257551
   turnin Aggressive Encroachment##92473 |goto Zephras Isle 42.41,25.17
 step
-  only Shaman
+  only Shaman not completed(1517) not completed(1520) not completed(94374) not haveq(1517) not haveq(1520) not haveq(94374)
   talk Windshaper Boro##251374
   accept Call of Earth##92467 |goto Zephras Isle 42.79,23.58
 step
@@ -223,16 +223,16 @@ step
   talk Aetheen of the Gales##251366
   accept The Adventurer##96638 |goto Zephras Isle 42.76,23.66
 step
-  only Shaman
+  only Shaman not completed(1517) not completed(1520) not completed(94374) not haveq(1517) not haveq(1520) not haveq(94374)
   note Find the Rise of Spirits and drink the Earth Sapta.
   talk Minor Manifestation of Earth##251166
   turnin Call of Earth##92467 |goto Zephras Isle 49.67,23.8
 step
-  only Shaman
+  only Shaman not completed(1517) not completed(1518) not completed(1520) not completed(1521) not completed(94374) not completed(94375) not haveq(1517) not haveq(1518) not haveq(1520) not haveq(1521) not haveq(94374) not haveq(94375)
   talk Minor Manifestation of Earth##251166
   accept Call of Earth##92468 |goto Zephras Isle 49.67,23.8
 step
-  only Shaman
+  only Shaman not completed(1517) not completed(1518) not completed(1520) not completed(1521) not completed(94374) not completed(94375) not haveq(1517) not haveq(1518) not haveq(1520) not haveq(1521) not haveq(94374) not haveq(94375)
   note Bring the Rough Quartz to Windshaper Boros in Thendal Grove.
   talk Windshaper Boro##251374
   turnin Call of Earth##92468 |goto Zephras Isle 42.79,23.58
@@ -264,7 +264,7 @@ step
   talk Illaya Amberwind##251902 |q 92595 |goto Zephras Isle 43.51,44.77
 step
   only not completed(95998) not completed(96604) not completed(96605) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96604) not haveq(96605) not haveq(96606) not haveq(96607) not haveq(96608)
-  note Sit near Raan's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
+  note Sit near Raan's Basic Campfire and wait until you receive the Boosted Rest buff.
   click Basic Campfire##460003 |q 96101 |goto Zephras Isle 41.73,44.78
 step
   talk Constable Aonda##251523
@@ -303,7 +303,7 @@ step
   accept A Little Beauty##93951 |goto Zephras Isle 44.88,44.18
 step
   note Collect 10 Prideclaw Pelts from the Prideclaws in Shen'dar Highlands.
-  collect 10 Prideclaw Pelt##252670 |q 92515 |goto Zephras Isle 43.31,50.54 |tip {dropsfrom}Prideclaw
+  collect 10 Prideclaw Pelt##252670 |q 92515 |goto Zephras Isle 42.77,48.01 |tip {dropsfrom}Prideclaw
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96655) not completed(96658) not completed(96661) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96655) not haveq(96658) not haveq(96661)
   note Speak with Zerril Softbreeze in Shen'dar Village to learn to become a cook.
@@ -317,14 +317,14 @@ step
   turnin Camping 101: Cooking##96646 |goto Zephras Isle 43.85,43.84
 step
   note Kill 10 Highlands Bandits and their leader, "Badwind" Bennic in the Shen'dar Highlands.
-  kill Highlands Bandit##251918 |q 92517/1 |goto Zephras Isle 49.25,36.95
+  kill Highlands Bandit##251918 |q 92517/1 |goto Zephras Isle 48.81,37.32
   kill "Badwind" Bennic##255534 |q 92517 |goto Zephras Isle 50.62,34.27
 step
   note Collect 10 Pilfered Windstones from the Highlands Bandits in the Shen'dar Highlands.
-  collect 10 Pilfered Windstone##257945 |q 93319 |goto Zephras Isle 49.25,36.95 |tip {dropsfrom}Highlands Bandit, "Badwind" Bennic
+  collect 10 Pilfered Windstone##257945 |q 93319 |goto Zephras Isle 48.81,37.32 |tip {dropsfrom}Highlands Bandit, "Badwind" Bennic
 step
   note Slay 6 High Order Apprentices in Shen'dar Highlands.
-  kill High Order Apprentice##257521 |q 94411 |goto Zephras Isle 46.09,38.75
+  kill High Order Apprentice##257521 |q 94411 |goto Zephras Isle 46.44,38.85
 step
   talk Constable Aonda##251523
   turnin The Criminal Element##92517 |goto Zephras Isle 45.67,45.5
@@ -340,7 +340,7 @@ step
 step
   only level>=9
   click Bounty Available: Vulgara the Insatiable!##610954
-  accept WANTED: Vulgara the Insatiable##93318 |goto Zephras Isle 43.38,45.82
+  accept WANTED: Vulgara the Insatiable##93318 |goto Zephras Isle 43.38,45.84
 step
   note Speak with Sania Silverstream in Shen'dar Village.
   talk Sania Silverstream##251904
@@ -374,38 +374,32 @@ step
   talk Constable Aonda##251523
   accept Havoc in the Highlands##92550 |goto Zephras Isle 45.67,45.5
 step
-  talk Danarii Bellowveil##252172
-  accept Stolen Supplies##92551 |goto Zephras Isle 45.24,45.18
-step
   talk Constable Aonda##251523
   accept The Western Watch##93926 |goto Zephras Isle 45.67,45.5
 step
   note Travel to the ruins of Falaath Village and slay 6 Al'Aketh Stormcallers, 4 Living Lightning and take the head of Commander Cyclas.
-  kill Al'Aketh Stormcaller##252068 |q 92550 |goto Zephras Isle 49.17,56.11
-step
-  note Collect 10 packs of Stolen Shen'dar Supplies from Falaath Village in the Shen'dar Highlands.
-  collect 10 Stolen Shen'dar Supplies##252760 |q 92551 |goto Zephras Isle 49.17,56.11 |tip {dropsfrom}Al'Aketh Stormcaller, Al'Aketh Healer, Galemender Delanea
+  kill Al'Aketh Stormcaller##252068 |q 92550 |goto Zephras Isle 49.02,53.82
 step
   note Find Peacekeeper Vaaniel at the western watchtower.
-  talk Peacekeeper Vaaniel##252155 |q 93926 |goto Zephras Isle 42.35,62.02
+  talk Peacekeeper Vaaniel##252155 |q 93926 |goto Zephras Isle 42.34,61.98
 step
   talk Peacekeeper Vaaniel##252155
-  turnin The Western Watch##93926 |goto Zephras Isle 42.35,62.02
+  turnin The Western Watch##93926 |goto Zephras Isle 42.34,61.98
 step
   talk Peacekeeper Vaaniel##252155
-  accept A Last Request##93927 |goto Zephras Isle 42.35,62.02
+  accept A Last Request##93927 |goto Zephras Isle 42.34,61.98
 step
   note Collect the note you found near the dead peacekeeper and read it to determine your next steps.
-  talk Skypriest Aanders##256966 |q 93927 |goto Zephras Isle 41.02,64.12
+  talk Skypriest Aanders##256966 |q 93927 |goto Zephras Isle 41.04,64.11
 step
   note Slay 8 Hippogryph Youths, 6 Hippogryph Protectors and a Hippogryph Matriarch in the Shen'dar Highlands.
-  kill Hippogryph Youth##251291 |q 92516/1 |goto Zephras Isle 38.4,54.92
-  kill Hippogryph Protector##251284 |q 92516/2 |goto Zephras Isle 35.87,53.67
+  kill Hippogryph Youth##251291 |q 92516/1 |goto Zephras Isle 38.2,55
+  kill Hippogryph Protector##251284 |q 92516/2 |goto Zephras Isle 35.62,53.65
   kill Hippogryph Matriarch##251261 |q 92516 |goto Zephras Isle 35.23,54.08
 step
   note Collect 3 Small Eggs and 8 Strider Meat from creatures found throughout the Shen'dar Highlands.
-  collect 3 Small Egg##6889 |q 92553/1 |goto Zephras Isle 35.87,53.67 |tip {dropsfrom}Hippogryph Protector, Hippogryph Youth, Galestrider
-  collect 8 Strider Meat##5469 |q 92553 |goto Zephras Isle 42.95,49.56 |tip {dropsfrom}Galestrider
+  collect 3 Small Egg##6889 |q 92553/1 |goto Zephras Isle 35.62,53.65 |tip {dropsfrom}Hippogryph Protector, Hippogryph Youth, Galestrider
+  collect 8 Strider Meat##5469 |q 92553 |goto Zephras Isle 42.47,45.74 |tip {dropsfrom}Galestrider
 step
   note Collect 8 Hippogryph Down feathers in the Shen'dar Highlands.
   collect 8 Hippogryph Down##263493 |q 93951 |goto Zephras Isle 36.02,54.29
@@ -415,9 +409,6 @@ step
 step
   talk Constable Aonda##251523
   turnin Havoc in the Highlands##92550 |goto Zephras Isle 45.67,45.5
-step
-  talk Danarii Bellowveil##252172
-  turnin Stolen Supplies##92551 |goto Zephras Isle 45.24,45.18
 step
   talk Zerril Softbreeze##251905
   turnin Restocking the Larders##92553 |goto Zephras Isle 43.85,43.84
@@ -445,62 +436,63 @@ step
   talk Valennia Stormfist##252383
   accept Bugged##93949 |goto Zephras Isle 66.14,76.67
 step
+  only Tauren
   talk Valennia Stormfist##252383
   accept The Grand Skyseer##92700 |goto Zephras Isle 66.14,76.67
 step
-  only not completed(94493) not haveq(94493)
-  talk Lotheluum Starbreeze##252359
-  accept Unnerving Silence##94484 |goto Zephras Isle 63.99,75.08
-step
-  talk Ealaane Nimbuswalker##259012
-  accept Aid For The Refugees##94896 |goto Zephras Isle 66.04,74.41
-step
-  talk Ealaane Nimbuswalker##259012
-  accept The Fate of a Loved One##94897 |goto Zephras Isle 66.04,74.41
-step
   note Kill Skyhoppers in Valanaar until you've eliminated 8 Enchanted Skyhoppers.
-  kill Skyhopper##251727 |q 93949 |goto Zephras Isle 62.75,76.07
+  kill Skyhopper##251727 |q 93949 |goto Zephras Isle 61.99,75.86
 step
   talk Valennia Stormfist##252383
   turnin Bugged##93949 |goto Zephras Isle 66.14,76.67
 step
+  only Tauren
   note Find Ayessa Dawnsinger in Valanaar.
   talk Ayessa Dawnsinger##251968
   turnin The Grand Skyseer##92700 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Ayessa Dawnsinger##251968
   accept The Broken Construct##93735 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Endaria Mistgaze##254344
-  accept Unwelcome Spirits##93736 |goto Zephras Isle 58.13,78.32
+  accept Unwelcome Spirits##93736 |goto Zephras Isle 58.13,78.3
 step
+  only not Orc not Skyborne not Troll not Undead
   note Find Riaani Nightwind on the west side of Valanaar.
   talk Riaani Nightwind##256083
   turnin The Broken Construct##93735 |goto Zephras Isle 59.06,72.98
 step
   talk Alvarion Windfield##252448
-  accept Blood Tithe##92679 |goto Zephras Isle 62.08,73.17
+  accept Blood Tithe##92679 |goto Zephras Isle 62.1,73.34
   talk Alvarion Windfield##252448 |tip Talk again after accepting: it is part of the quest.
 step
   talk Nyalah Brightfire##257006
   accept Crab Season##93317 |goto Zephras Isle 60.64,72.66
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Riaani Nightwind##256083
   accept The Broken Construct##93737 |goto Zephras Isle 59.06,72.98
 step
+  only not Orc not Skyborne not Troll not Undead
   note Speak with Riaani Nightwind and listen to what he has to say.
   talk Riaani Nightwind##256083 |q 93737 |goto Zephras Isle 59.06,72.98
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Riaani Nightwind##256083
   turnin The Broken Construct##93737 |goto Zephras Isle 59.06,72.98
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Riaani Nightwind##256083
   accept The Broken Construct##93738 |goto Zephras Isle 59.06,72.98
 step
+  only not Orc not Skyborne not Troll not Undead
   note Report back to Ayessa Dawnsinger in Valanaar.
   talk Ayessa Dawnsinger##251968
   turnin The Broken Construct##93738 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Ayessa Dawnsinger##251968
   accept A Firm Response##93746 |goto Zephras Isle 59.15,79.78
 step
@@ -519,8 +511,11 @@ step
   talk Aamelia Windfield##252800
   accept Ornery Ornery Galestriders##92684 |goto Zephras Isle 46.7,81.95
 step
+  talk Malfunctioning Cyclone Construct##250929
+  accept What Is My Purpose?##92698 |goto Zephras Isle 48.87,78.25
+step
   note Gather 10 Ripe Stormapples and slay 5 Hungry Bandits at the Windfield Orchard.
-  kill Hungry Bandit##252802 |q 92682 |goto Zephras Isle 48.05,81.07
+  kill Hungry Bandit##252802 |q 92682 |goto Zephras Isle 47.55,80.76
 step
   note Gather 5 Flutterfly Dust from the Flutterflies around the Gustberry Lowlands.
   collect 5 Flutterfly Dust##253595 |q 92683 |goto Zephras Isle 50.5,79.6
@@ -531,23 +526,25 @@ step
   talk Aamelia Windfield##252800
   turnin Flutterfly Dust##92683 |goto Zephras Isle 46.7,81.95
 step
-  talk Malfunctioning Cyclone Construct##250929
-  accept What Is My Purpose?##92698 |goto Zephras Isle 48.87,78.25
+  note Speak with Aamelia Windfield about the Malfunctioning Cyclone Construct.
+  talk Aamelia Windfield##252800
+  turnin What Is My Purpose?##92698 |goto Zephras Isle 46.7,81.95
 step
   note Gather 7 Lowlands Galestrider Tenderloins from the Ornery Galestriders found throughout the Gustberry Lowlands.
-  collect 7 Lowlands Galestrider Tenderloin##253597 |q 92684 |goto Zephras Isle 55.34,72.96 |tip {dropsfrom}Ornery Galestrider
+  collect 7 Lowlands Galestrider Tenderloin##253597 |q 92684 |goto Zephras Isle 54.67,73.27 |tip {dropsfrom}Ornery Galestrider
 step
   talk Fendaal Windstone##273017
   accept Al'Aketh Assassins##98512 |goto Zephras Isle 56.81,61.11
 step
   note Collect 6 pieces of Windsong Crawler Meat.
-  collect 6 Windsong Crawler Meat##257941 |q 93317 |goto Zephras Isle 52.75,59.49 |tip {dropsfrom}Windsong Crawler
+  collect 6 Windsong Crawler Meat##257941 |q 93317 |goto Zephras Isle 52.45,60.55 |tip {dropsfrom}Windsong Crawler
 step
-  note Confront Belthaan Brightwish along the road to the Shrine of Akir.
-  kill Belathaan Brightwish##256247 |q 93746 |goto Zephras Isle 59.31,58.13
+  only not Orc not Skyborne not Troll not Undead
+  note Confront Belathaan Brightwish along the road to the Shrine of Akir.
+  kill Belathaan Brightwish##256247 |q 93746 |goto Zephras Isle 59.94,56.93
 step
   note Kill 10 Al'Aketh Assassins in the Shen'dar Highlands.
-  kill Al'Aketh Assassin##254626 |q 98512 |goto Zephras Isle 56.09,60.57
+  kill Al'Aketh Assassin##254626 |q 98512 |goto Zephras Isle 55.31,60.94
 step
   talk Fendaal Windstone##273017
   turnin Al'Aketh Assassins##98512 |goto Zephras Isle 56.81,61.11
@@ -563,48 +560,67 @@ step
   talk Quel'ana Quickgale##252389
   accept Taming the Beast##94978 |goto Zephras Isle 59.56,72.63
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Ayessa Dawnsinger##251968
   turnin A Firm Response##93746 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Ayessa Dawnsinger##251968
   accept In Service of Zephras##92871 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Ayessa Dawnsinger##251968
   accept Blood for Blood##93740 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Ayessa Dawnsinger##251968
   accept A Grand Adventure##92708 |goto Zephras Isle 59.15,79.78
 step
-  only Skyborne Shaman
+  only Skyborne Shaman not completed(1524) not haveq(1524)
   talk Sessaria Skystride##252382
   accept Call of Fire##97243 |goto Zephras Isle 58.31,78.51
 step
+  only not Orc not Skyborne not Troll not Undead
   note Listen to what Ayessa Dawnsinger has to say.
   talk Ayessa Dawnsinger##251968 |q 92708 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Ayessa Dawnsinger##251968
   turnin A Grand Adventure##92708 |goto Zephras Isle 59.15,79.78
 step
-  only Skyborne Shaman
+  only Skyborne Shaman not completed(1524) not haveq(1524)
   note Bring the Torch of Dormant Flame to Olariaan Swiftburn at the Shrine of Flames in the Gustberry Lowlands.
   talk Olariaan Swiftburn##268592
   turnin Call of Fire##97243 |goto Zephras Isle 51.24,86.19
 step
-  only Skyborne Shaman
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
   talk Olariaan Swiftburn##268592
   accept Call of Fire##97244 |goto Zephras Isle 51.24,86.19
 step
+  only not Orc not Skyborne not Troll not Undead
   note Report to Valennia Stormfist and let her know that the Windshapers are with them in their fight against the Al'Aketh.
   talk Valennia Stormfist##252383
   turnin In Service of Zephras##92871 |goto Zephras Isle 66.14,76.67
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Valennia Stormfist##252383
   accept Tower Defense##93320 |goto Zephras Isle 66.14,76.67
+step
+  only not completed(94493) not haveq(94493)
+  talk Lotheluum Starbreeze##252359
+  accept Unnerving Silence##94484 |goto Zephras Isle 63.99,75.08
+step
+  talk Ealaane Nimbuswalker##259012
+  accept Aid For The Refugees##94896 |goto Zephras Isle 65.96,74.31
+step
+  talk Ealaane Nimbuswalker##259012
+  accept The Fate of a Loved One##94897 |goto Zephras Isle 65.96,74.31
 step
   only Skyborne Druid
   talk Lotheluum Starbreeze##252359
   accept The Great Ursera Spirit##94006 |goto Zephras Isle 63.99,75.08
 step
+  only not Orc not Skyborne not Troll not Undead
   note Report to Yorana Windyreed at the eastern watchtower in the Gustberry Lowlands.
   talk Yorana Windyreed##252378
   turnin Tower Defense##93320 |goto Zephras Isle 69.65,67.07
@@ -614,9 +630,11 @@ step
   talk Urs'endris##255853
   turnin The Great Ursera Spirit##94006 |goto Zephras Isle 69.81,61.71
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Yorana Windyreed##252378
   accept Disrupting Logistics##92642 |goto Zephras Isle 69.65,67.07
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Yorana Windyreed##252378
   accept Breaking the Breaker##92645 |goto Zephras Isle 69.65,67.07
 step
@@ -624,97 +642,126 @@ step
   talk Urs'endris##255853
   accept Strength and Mercy##94638 |goto Zephras Isle 69.81,61.71
 step
+  only Skyborne Druid
+  note Find and kill Ur'endra in the Shen'dar Highlands.
+  kill Ur'endra##258443 |q 94638 |goto Zephras Isle 54.01,64.58
+step
+  only Skyborne Hunter
+  note Use the Taming Rod to tame a Windsong Crawler found near bodies of water.
+  use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 52.45,60.55 |tip {useit}
+step
+  only not Orc not Skyborne not Troll not Undead
   note Slay 4 Al'Aketh Healers and 8 Al'Aketh Brawlers in the Gustberry Lowlands.
-  kill Al'Aketh Healer##254596 |q 92642/1 |goto Zephras Isle 66.2,67.65
-  kill Al'Aketh Brawler##270201 |q 92642 |goto Zephras Isle 65.97,67.52
+  kill Al'Aketh Brawler##270201 |q 92642/2 |goto Zephras Isle 65.51,67.33
+  kill Al'Aketh Healer##254596 |q 92642 |goto Zephras Isle 65.73,66.94
 step
-  talk Yorana Windyreed##252378
-  turnin Disrupting Logistics##92642 |goto Zephras Isle 69.65,67.07
-step
+  only not Orc not Skyborne not Troll not Undead
   note Slay Commander Belguilos in the Gustberry Lowlands.
   kill Commander Belguilos##252666 |q 92645 |goto Zephras Isle 65.58,65.62
 step
-  only Skyborne Shaman
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
   note Slay Skypriest Faladiel in the Gustberry Lowlands and collect Faladiel's Heart.
   collect Faladiel's Heart##277267 |q 97244 |goto Zephras Isle 64.43,63.71 |tip {dropsfrom}Skypriest Faladiel
 step
+  only not Orc not Skyborne not Troll not Undead
+  talk Yorana Windyreed##252378
+  turnin Disrupting Logistics##92642 |goto Zephras Isle 69.65,67.07
+step
+  only not Orc not Skyborne not Troll not Undead
   talk Yorana Windyreed##252378
   turnin Breaking the Breaker##92645 |goto Zephras Isle 69.65,67.07
 step
+  only Skyborne Druid
+  talk Urs'endris##255853
+  turnin Strength and Mercy##94638 |goto Zephras Isle 69.81,61.71
+step
+  only not Orc not Skyborne not Troll not Undead
   talk Yorana Windyreed##252378
   accept Return to Valanaar##92880 |goto Zephras Isle 69.65,67.07
 step
-  note Bring Yorna's Report to Valennia Stormfist in Valanaar.
-  talk Valennia Stormfist##252383
-  turnin Return to Valanaar##92880 |goto Zephras Isle 66.14,76.67
+  only Skyborne Hunter
+  talk Quel'ana Quickgale##252389
+  turnin Taming the Beast##94978 |goto Zephras Isle 59.56,72.63
 step
-  talk Valennia Stormfist##252383
-  accept The High Elder's Request##92881 |goto Zephras Isle 66.14,76.67
+  only Skyborne Hunter
+  talk Quel'ana Quickgale##252389
+  accept Taming the Beast##94979 |goto Zephras Isle 59.56,72.63
 step
-  note Speak with Talaanis Shadowsong in Valanaar.
-  talk Talaanis Shadowsong##252476
-  turnin The High Elder's Request##92881 |goto Zephras Isle 66.17,76.51
-step
-  talk Talaanis Shadowsong##252476
-  accept The Turncoat##92643 |goto Zephras Isle 66.17,76.51
-step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  turnin Call of Fire##97244 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  accept Call of Fire##97245 |goto Zephras Isle 51.24,86.19
+  only Skyborne Hunter
+  note Use the Taming Rod to tame an Ornery Galestrider in the Gustberry Lowlands.
+  use Ornery Galestrider##251707 |q 94979 |goto Zephras Isle 54.67,73.27 |tip {useit}
 step
   talk Aamelia Windfield##252800
   turnin Ornery Ornery Galestriders##92684 |goto Zephras Isle 46.7,81.95
 step
-  note Speak with Aamelia Windfield about the Malfunctioning Cyclone Construct.
-  talk Aamelia Windfield##252800
-  turnin What Is My Purpose?##92698 |goto Zephras Isle 46.7,81.95
-step
   talk Aamelia Windfield##252800
   accept The Hills Have Eyes##92685 |goto Zephras Isle 46.7,81.95
 step
-  note Loot 7 Blood-Stained Bandit Masks from Highwayman Bandits in the Gustberry Lowlands.
-  collect 7 Blood-Stained Bandit Mask##253596 |q 92685 |goto Zephras Isle 48.97,75.33 |tip {dropsfrom}Bandit Highwayman
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
+  talk Olariaan Swiftburn##268592
+  turnin Call of Fire##97244 |goto Zephras Isle 51.24,86.19
 step
-  talk Aamelia Windfield##252800
-  turnin The Hills Have Eyes##92685 |goto Zephras Isle 46.7,81.95
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
+  talk Olariaan Swiftburn##268592
+  accept Call of Fire##97245 |goto Zephras Isle 51.24,86.19
 step
-  talk Aamelia Windfield##252800
-  accept Standing Our Ground##92693 |goto Zephras Isle 46.7,81.95
-  talk Aamelia Windfield##252800 |tip Talk again after accepting: it is part of the quest.
+  only not Orc not Skyborne not Troll not Undead
+  note Bring Yorna's Report to Valennia Stormfist in Valanaar.
+  talk Valennia Stormfist##252383
+  turnin Return to Valanaar##92880 |goto Zephras Isle 66.14,76.67
 step
-  note Speak with Aamelia Windfield when you are ready to confront the bandit leader.
-  kill Ferauu the Bludgeon##252863 |q 92693 |goto Zephras Isle 47.55,78.43
+  only not Orc not Skyborne not Troll not Undead
+  talk Valennia Stormfist##252383
+  accept The High Elder's Request##92881 |goto Zephras Isle 66.14,76.67
 step
-  talk Aamelia Windfield##252800
-  turnin Standing Our Ground##92693 |goto Zephras Isle 46.7,81.95
+  only not Orc not Skyborne not Troll not Undead
+  note Speak with Talaanis Shadowsong in Valanaar.
+  talk Talaanis Shadowsong##252476
+  turnin The High Elder's Request##92881 |goto Zephras Isle 66.17,76.51
 step
-  talk Aamelia Windfield##252800
-  accept Deliver the News##92703 |goto Zephras Isle 46.7,81.95
-step
-  only Skyborne Shaman
-  note Find the home of Kuramaa in the Shen'dar Highlands, and defeat the spirit in combat. Bring Kuramaa's Mask to Olariaan Swiftburn in the Gustberry Lowlands when you are victorious.
-  collect Kuramaa's Mask##277269 |q 97245 |goto Zephras Isle 42.44,68.75 |tip {dropsfrom}Kuramaa
-step
-  note Find the cultist turncoat at the house just inside the highlands northwest of Valanaar.
-  talk Dead Cultist##253372 |q 92643 |goto Zephras Isle 56.04,58.77
-step
-  only Skyborne Druid
-  note Find and kill Ur'endra in the Shen'dar Highlands.
-  kill Ur'endra##258443 |q 94638 |goto Zephras Isle 53.9,64.69
+  only not Orc not Skyborne not Troll not Undead
+  talk Talaanis Shadowsong##252476
+  accept The Turncoat##92643 |goto Zephras Isle 66.17,76.51
 step
   only Skyborne Hunter
-  note Use the Taming Rod to tame a Windsong Crawler found near bodies of water.
-  use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 52.75,59.49 |tip {useit}
+  talk Quel'ana Quickgale##252389
+  turnin Taming the Beast##94979 |goto Zephras Isle 59.56,72.63
 step
-  talk Dead Cultist##253372
-  turnin The Turncoat##92643 |goto Zephras Isle 56.04,58.77
+  only Skyborne Hunter not completed(6063) not haveq(6063)
+  talk Quel'ana Quickgale##252389
+  accept Taming the Beast##94013 |goto Zephras Isle 59.56,72.63
 step
+  note Loot 7 Blood-Stained Bandit Masks from Highwayman Bandits in the Gustberry Lowlands.
+  collect 7 Blood-Stained Bandit Mask##253596 |q 92685 |goto Zephras Isle 48.9,74.46 |tip {dropsfrom}Bandit Highwayman
+step
+  only Skyborne Hunter not completed(6063) not haveq(6063)
+  note Use the Taming Rod to tame a Vuldren Alpha in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
+  use Vuldren Alpha##250874 |q 94013 |goto Zephras Isle 53.95,75.77 |tip {useit}
+step
+  only Skyborne Hunter not completed(6063) not haveq(6063)
+  talk Quel'ana Quickgale##252389
+  turnin Taming the Beast##94013 |goto Zephras Isle 59.56,72.63
+step
+  only Skyborne Hunter not completed(6063) not haveq(6063)
+  talk Quel'ana Quickgale##252389
+  accept Training the Beast##94050 |goto Zephras Isle 59.56,72.63
+step
+  only Skyborne Hunter not completed(6063) not haveq(6063)
+  note Speak to Quel'dora Quickgale in Valanaar.
+  talk Quel'dora Quickgale##254411
+  turnin Training the Beast##94050 |goto Zephras Isle 59.92,72.87
+step
+  only not Orc not Skyborne not Troll not Undead
+  note Find the cultist turncoat at the house just inside the highlands northwest of Valanaar.
+  talk Dead Cultist##253372 |q 92643 |goto Zephras Isle 56.29,59.2
+step
+  only not Orc not Skyborne not Troll not Undead
   talk Dead Cultist##253372
-  accept Unfortunate News##92644 |goto Zephras Isle 56.04,58.77
+  turnin The Turncoat##92643 |goto Zephras Isle 56.29,59.2
+step
+  only not Orc not Skyborne not Troll not Undead
+  talk Dead Cultist##253372
+  accept Unfortunate News##92644 |goto Zephras Isle 56.29,59.2
 step
   only Skyborne Warrior
   note Reclaim the Skybreaker Bulwark from Zaal Stormshield at the Shrine of Akir.
@@ -735,70 +782,59 @@ step
   talk Strange Hermit##251684
   accept Free the Hollows##93172 |goto Zephras Isle 53.96,38.9
 step
-  note Destroy 10 Wind Hollows in Shadowgale Forest.
-  kill Wind Hollow##251676 |q 93172 |goto Zephras Isle 58.35,32.52
-step
-  note Gather 10 Wind Hollow Essences from Wind Hollows in the Shadowgale Forest.
-  collect 10 Wind Hollow Essence##262357 |q 93736 |goto Zephras Isle 58.35,32.52 |tip {dropsfrom}Wind Hollow
-step
-  note Collect 8 Abandoned Belongings from the ruins of Ban'aethal.
-  collect 8 Abandoned Belongings##266433 |q 94896 |goto Zephras Isle 57.6,32.1
-step
-  note Find Resaan in the Ruins of Ban'aethal.
-  collect Resaan's Heirloom##266434 |q 94897 |goto Zephras Isle 57.05,29.35 |tip {dropsfrom}Resaan Nimbuswalker
-step
   only not completed(94493) not haveq(94493)
   note Find and speak with Elegael Thornpaw in the northeastern part of Shadowgale Forest.
   talk Elegael Thornpaw##257944
-  turnin Unnerving Silence##94484 |goto Zephras Isle 61.7,39.22
+  turnin Unnerving Silence##94484 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  accept Feathers for Binding##94486 |goto Zephras Isle 61.7,39.22
+  accept Feathers for Binding##94486 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  accept Unwanted and Unworthy##94487 |goto Zephras Isle 61.7,39.22
+  accept Unwanted and Unworthy##94487 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  accept Tears of the Lady##94485 |goto Zephras Isle 61.7,39.22
+  accept Tears of the Lady##94485 |goto Zephras Isle 61.76,39.13
 step
   talk Vayn Moongaze##254151
   accept Mercy Falls on Deaf Ears##93165 |goto Zephras Isle 63.81,36.01
 step
   note Gather 8 Shadowgale Acorns in Shadowgale Forest.
-  collect 8 Zephyrseed##257128 |q 93160 |goto Zephras Isle 58.8,38.7 |tip {dropsfrom}Zephyrseed Cone
+  collect 8 Zephyrseed##257128 |q 93160 |goto Zephras Isle 59.31,38.39 |tip {dropsfrom}Zephyrseed Cone
 step
-  note Collect 10 Al'Aketh Cultist's Ears from the Al'Aketh cultists in Shadowgale Forest, the Shine of Akir, or Gustberry Lowlands.
-  collect 10 Al'Aketh Cultist's Ear##258771 |q 93165 |goto Zephras Isle 63.91,37.26 |tip {dropsfrom}Al'Aketh Stormchaser, Al'Aketh Footsoldier, Al'Aketh Guardian
+  note Collect 5 Al'Aketh Cultist's Ears from the Al'Aketh cultists in Shadowgale Forest, the Shrine of Akir, or Gustberry Lowlands.
+  collect 5 Al'Aketh Cultist's Ear##258771 |q 93165 |goto Zephras Isle 63.76,37.66 |tip {dropsfrom}Al'Aketh Stormchaser, Al'Aketh Footsoldier, Al'Aketh Guardian
 step
+  only not Orc not Skyborne not Troll not Undead
   note Collect 10 Al'Aketh Windstone Charms from the corpses of Al'Aketh cultists in the Gustberry Lowlands.
-  collect 10 Al'Aketh Windstone Charm##255658 |q 93740 |goto Zephras Isle 63.91,37.26 |tip {dropsfrom}Al'Aketh Stormchaser, Al'Aketh Footsoldier, Al'Aketh Guardian
+  collect 10 Al'Aketh Windstone Charm##255658 |q 93740 |goto Zephras Isle 63.76,37.66 |tip {dropsfrom}Al'Aketh Stormchaser, Al'Aketh Footsoldier, Al'Aketh Guardian
 step
   note Collect 8 Lady's Tear Moss.
-  collect 8 Lady's Tear Moss##265105 |q 94485 |goto Zephras Isle 60.8,38.7
+  collect 8 Lady's Tear Moss##265105 |q 94485 |goto Zephras Isle 60.89,38.84
 step
   note Collect 20 feathers from the Shadowgale Shrieklings in Shadowgale Forest.
-  collect 20 Pristine Shriekling Feather##265140 |q 94486 |goto Zephras Isle 59,38.7 |tip {dropsfrom}Shadowgale Shriekling
+  collect 20 Pristine Shriekling Feather##265140 |q 94486 |goto Zephras Isle 57.99,39.12 |tip {dropsfrom}Shadowgale Shriekling
 step
   note Collect 10 Bloodied Heirlooms from Al'Aketh Footsoldiers and Al'Aketh Stormchasers in the Shadowgale Forest.
-  collect 10 Bloody Heirloom##265141 |q 94487 |goto Zephras Isle 63.91,37.26 |tip {dropsfrom}Al'Aketh Stormchaser, Al'Aketh Footsoldier
+  collect 10 Bloody Heirloom##265141 |q 94487 |goto Zephras Isle 63.76,37.66 |tip {dropsfrom}Al'Aketh Stormchaser, Al'Aketh Footsoldier
 step
   talk Vayn Moongaze##254151
   turnin Mercy Falls on Deaf Ears##93165 |goto Zephras Isle 63.81,36.01
 step
   talk Elegael Thornpaw##257944
-  turnin Tears of the Lady##94485 |goto Zephras Isle 61.7,39.22
+  turnin Tears of the Lady##94485 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  turnin Feathers for Binding##94486 |goto Zephras Isle 61.7,39.22
+  turnin Feathers for Binding##94486 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  turnin Unwanted and Unworthy##94487 |goto Zephras Isle 61.7,39.22
+  turnin Unwanted and Unworthy##94487 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  accept The Ties That Bind##94488 |goto Zephras Isle 61.7,39.22
+  accept The Ties That Bind##94488 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  accept The Wounds of Betrayal##94489 |goto Zephras Isle 61.7,39.22
+  accept The Wounds of Betrayal##94489 |goto Zephras Isle 61.76,39.13
 step
   kill Commander Haalien##253622 |goto Zephras Isle 65.53,36.32 |tip Loot the quest item here — it starts the quest.
   accept Ripped Missive##94490 |goto Zephras Isle 65.53,36.32
@@ -810,17 +846,30 @@ step
   talk Jorel Windsinger##258130 |q 94489 |goto Zephras Isle 64.48,34.74
 step
   talk Elegael Thornpaw##257944
-  turnin The Ties That Bind##94488 |goto Zephras Isle 61.7,39.22
+  turnin The Ties That Bind##94488 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  turnin The Wounds of Betrayal##94489 |goto Zephras Isle 61.7,39.22
+  turnin The Wounds of Betrayal##94489 |goto Zephras Isle 61.76,39.13
 step
   note Bring the Ripped Missive to Elegael Thornpaw in the Shadowgale Forest.
   talk Elegael Thornpaw##257944
-  turnin Ripped Missive##94490 |goto Zephras Isle 61.7,39.22
+  turnin Ripped Missive##94490 |goto Zephras Isle 61.76,39.13
 step
   talk Elegael Thornpaw##257944
-  accept The Fate of the Den##94491 |goto Zephras Isle 61.7,39.22
+  accept The Fate of the Den##94491 |goto Zephras Isle 61.76,39.13
+step
+  note Destroy 10 Wind Hollows in Shadowgale Forest.
+  kill Wind Hollow##251676 |q 93172 |goto Zephras Isle 57.95,32.19
+step
+  only not Orc not Skyborne not Troll not Undead
+  note Gather 10 Wind Hollow Essences from Wind Hollows in the Shadowgale Forest.
+  collect 10 Wind Hollow Essence##262357 |q 93736 |goto Zephras Isle 57.95,32.19 |tip {dropsfrom}Wind Hollow
+step
+  note Collect 8 Abandoned Belongings from the ruins of Ban'aethal.
+  collect 8 Abandoned Belongings##266433 |q 94896 |goto Zephras Isle 58.32,31.61
+step
+  note Find Resaan in the Ruins of Ban'aethal.
+  collect Resaan's Heirloom##266434 |q 94897 |goto Zephras Isle 57.05,29.35 |tip {dropsfrom}Resaan Nimbuswalker
 step
   talk Strange Hermit##251684
   turnin The Forest's Bounty##93160 |goto Zephras Isle 53.96,38.9
@@ -832,9 +881,98 @@ step
   talk Elayaa Easewind##254084
   accept Taming the Beast##94007 |goto Zephras Isle 45.26,44.24
 step
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
+  note Find the home of Kuramaa in the Shen'dar Highlands, and defeat the spirit in combat. Bring Kuramaa's Mask to Olariaan Swiftburn in the Gustberry Lowlands when you are victorious.
+  collect Kuramaa's Mask##277269 |q 97245 |goto Zephras Isle 42.44,68.75 |tip {dropsfrom}Kuramaa
+step
+  talk Aamelia Windfield##252800
+  turnin The Hills Have Eyes##92685 |goto Zephras Isle 46.7,81.95
+step
+  talk Aamelia Windfield##252800
+  accept Standing Our Ground##92693 |goto Zephras Isle 46.7,81.95
+  talk Aamelia Windfield##252800 |tip Talk again after accepting: it is part of the quest.
+step
+  note Speak with Aamelia Windfield when you are ready to confront the bandit leader.
+  kill Ferauu the Bludgeon##252863 |q 92693 |goto Zephras Isle 47.82,77.81
+step
+  talk Aamelia Windfield##252800
+  turnin Standing Our Ground##92693 |goto Zephras Isle 46.7,81.95
+step
+  talk Aamelia Windfield##252800
+  accept Deliver the News##92703 |goto Zephras Isle 46.7,81.95
+step
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
+  talk Olariaan Swiftburn##268592
+  turnin Call of Fire##97245 |goto Zephras Isle 51.24,86.19
+step
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
+  talk Olariaan Swiftburn##268592
+  accept Call of Fire##97257 |goto Zephras Isle 51.24,86.19
+step
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
+  note Wait for Olariaan to begin the ritual at the Brazier of Offering and follow his instructions.
+  talk Brazier of Offering##268762 |q 97257/1 |goto Zephras Isle 51.2,85.9
+  talk Brazier of Eternal Flame##268679 |q 97257 |goto Zephras Isle 58.35,78.84
+step
+  only Shaman not Orc not Tauren not Troll not Undead not completed(1524) not haveq(1524)
+  talk Sessaria Skystride##252382
+  turnin Call of Fire##97257 |goto Zephras Isle 58.31,78.51
+step
+  only not Orc not Skyborne not Troll not Undead
+  talk Endaria Mistgaze##254344
+  turnin Unwelcome Spirits##93736 |goto Zephras Isle 58.13,78.3
+step
+  only not Orc not Skyborne not Troll not Undead
+  talk Ayessa Dawnsinger##251968
+  turnin Blood for Blood##93740 |goto Zephras Isle 59.15,79.78
+step
+  only not Orc not Skyborne not Troll not Undead
+  note Deliver the glowing crystal to Talanaanis Shadowsong in Valanaar.
+  talk Talaanis Shadowsong##252476
+  turnin Unfortunate News##92644 |goto Zephras Isle 66.17,76.51
+step
+  note Give the missive to Lotheluum in Valanaar and tell him what has transpired.
+  talk Lotheluum Starbreeze##252359
+  turnin The Fate of the Den##94491 |goto Zephras Isle 63.99,75.08
+step
+  talk Ealaane Nimbuswalker##259012
+  turnin Aid For The Refugees##94896 |goto Zephras Isle 65.96,74.31
+step
+  talk Ealaane Nimbuswalker##259012
+  turnin The Fate of a Loved One##94897 |goto Zephras Isle 65.96,74.31
+step
+  only not Orc not Skyborne not Troll not Undead
+  talk Talaanis Shadowsong##252476
+  accept The Cult's True Plans##94568 |goto Zephras Isle 66.17,76.51
+step
+  only not Orc not Skyborne not Troll not Undead
+  note Speak with Talaanis Shadowsong and observe the conversation.
+  talk Talaanis Shadowsong##252476 |q 94568 |goto Zephras Isle 66.17,76.51
+step
+  only not Orc not Skyborne not Troll not Undead
+  talk Talaanis Shadowsong##252476
+  turnin The Cult's True Plans##94568 |goto Zephras Isle 66.17,76.51
+step
+  only not Orc not Skyborne not Troll not Undead
+  talk Talaanis Shadowsong##252476
+  accept Desperate Times##92640 |goto Zephras Isle 66.17,76.51
+step
+  only not Orc not Skyborne not Troll not Undead
+  note Speak with Valennia Stormfist in Valanaar and follow her instructions.
+  talk Valennia Stormfist##252383 |q 92640/1 |goto Zephras Isle 66.14,76.67
+  talk Ayessa Dawnsinger##251968 |q 92640 |goto Zephras Isle 59.15,79.78
+step
+  only not Orc not Skyborne not Troll not Undead
+  talk Valennia Stormfist##252383
+  turnin Desperate Times##92640 |goto Zephras Isle 66.14,76.67
+step
+  only not Orc not Skyborne not Troll not Undead
+  talk Valennia Stormfist##252383
+  accept Prepare for Battle##93065 |goto Zephras Isle 66.14,76.67
+step
   note Speak with Alvarion Windfield in Valanaar.
   talk Alvarion Windfield##252448
-  turnin Deliver the News##92703 |goto Zephras Isle 62.08,73.17
+  turnin Deliver the News##92703 |goto Zephras Isle 62.1,73.34
 step
   only Skyborne Warrior
   talk Seena Skybreaker##252377
@@ -845,159 +983,76 @@ step
   talk Quel'ana Quickgale##252389
   turnin Taming the Beast##94007 |goto Zephras Isle 59.56,72.63
 step
-  only Skyborne Hunter
-  talk Quel'ana Quickgale##252389
-  turnin Taming the Beast##94978 |goto Zephras Isle 59.56,72.63
-step
-  only Skyborne Hunter
-  talk Quel'ana Quickgale##252389
-  accept Taming the Beast##94979 |goto Zephras Isle 59.56,72.63
-step
-  only Skyborne Hunter
-  note Use the Taming Rod to tame an Ornery Galestrider in the Gustberry Lowlands.
-  use Ornery Galestrider##251707 |q 94979 |goto Zephras Isle 55.34,72.96 |tip {useit}
-step
-  talk Endaria Mistgaze##254344
-  turnin Unwelcome Spirits##93736 |goto Zephras Isle 58.13,78.32
-step
-  talk Ayessa Dawnsinger##251968
-  turnin Blood for Blood##93740 |goto Zephras Isle 59.15,79.78
-step
-  note Deliver the glowing crystal to Talanaanis Shadowsong in Valanaar.
-  talk Talaanis Shadowsong##252476
-  turnin Unfortunate News##92644 |goto Zephras Isle 66.17,76.51
-step
-  note Give the missive to Lotheluum in Valanaar and tell him what has transpired.
-  talk Lotheluum Starbreeze##252359
-  turnin The Fate of the Den##94491 |goto Zephras Isle 63.99,75.08
-step
-  talk Ealaane Nimbuswalker##259012
-  turnin Aid For The Refugees##94896 |goto Zephras Isle 66.04,74.41
-step
-  talk Ealaane Nimbuswalker##259012
-  turnin The Fate of a Loved One##94897 |goto Zephras Isle 66.04,74.41
-step
-  talk Talaanis Shadowsong##252476
-  accept The Cult's True Plans##94568 |goto Zephras Isle 66.17,76.51
-step
-  note Speak with Talaanis Shadowsong and observe the conversation.
-  talk Talaanis Shadowsong##252476 |q 94568 |goto Zephras Isle 66.17,76.51
-step
-  talk Talaanis Shadowsong##252476
-  turnin The Cult's True Plans##94568 |goto Zephras Isle 66.17,76.51
-step
-  talk Talaanis Shadowsong##252476
-  accept Desperate Times##92640 |goto Zephras Isle 66.17,76.51
-step
-  note Speak with Valennia Stormfist in Valanaar and follow her instructions.
-  talk Valennia Stormfist##252383 |q 92640/1 |goto Zephras Isle 66.14,76.67
-  talk Ayessa Dawnsinger##251968 |q 92640 |goto Zephras Isle 59.15,79.78
-step
-  talk Valennia Stormfist##252383
-  turnin Desperate Times##92640 |goto Zephras Isle 66.14,76.67
-step
-  talk Valennia Stormfist##252383
-  accept Prepare for Battle##93065 |goto Zephras Isle 66.14,76.67
-step
-  only Skyborne Hunter
-  talk Quel'ana Quickgale##252389
-  turnin Taming the Beast##94979 |goto Zephras Isle 59.56,72.63
-step
-  only Skyborne Hunter
-  talk Quel'ana Quickgale##252389
-  accept Taming the Beast##94013 |goto Zephras Isle 59.56,72.63
-step
+  only not Orc not Skyborne not Troll not Undead
   note Speak with Valennia Stormfist in the Gustberry Lowlands.
-  talk Valennia Stormfist##253844 |q 93065 |goto Zephras Isle 61.16,70.95
+  talk Valennia Stormfist##253844 |q 93065 |goto Zephras Isle 61.15,70.93
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Valennia Stormfist##253844
-  turnin Prepare for Battle##93065 |goto Zephras Isle 61.16,70.95
+  turnin Prepare for Battle##93065 |goto Zephras Isle 61.15,70.93
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Valennia Stormfist##253844
-  accept Making Our Move##92947 |goto Zephras Isle 61.16,70.95
+  accept Making Our Move##92947 |goto Zephras Isle 61.15,70.93
 step
-  only Skyborne Hunter
-  note Use the Taming Rod to tame a Vuldren Alpha in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
-  use Vuldren Alpha##250874 |q 94013 |goto Zephras Isle 53.7,74.53 |tip {useit}
-step
-  only Skyborne Hunter
-  talk Quel'ana Quickgale##252389
-  turnin Taming the Beast##94013 |goto Zephras Isle 59.56,72.63
-step
-  only Skyborne Hunter
-  talk Quel'ana Quickgale##252389
-  accept Training the Beast##94050 |goto Zephras Isle 59.56,72.63
-step
-  only Skyborne Hunter
-  note Speak to Quel'dora Quickgale in Valanaar.
-  talk Quel'dora Quickgale##254411
-  turnin Training the Beast##94050 |goto Zephras Isle 59.92,72.87
-step
-  only Skyborne Druid
-  talk Urs'endris##255853
-  turnin Strength and Mercy##94638 |goto Zephras Isle 69.81,61.71
-step
+  only not Orc not Skyborne not Troll not Undead
   note Slay 7 Al'Aketh Guardians, 7 Al'Aketh Spiritcallers, and 7 Al'Aketh Blademasters, then report to Hyusaa Quickbreeze at the Shrine of Akir.
-  kill Al'Aketh Spiritcaller##252763 |q 92947/2 |goto Zephras Isle 62.12,51.17
-  kill Al'Aketh Guardian##252762 |q 92947/1 |goto Zephras Isle 62.11,50.77
-  kill Al'Aketh Blademaster##252765 |q 92947/3 |goto Zephras Isle 62.48,50.29
-  talk Hyusaa Quickbreeze##253576 |q 92947 |goto Zephras Isle 63.77,50.51
+  kill Al'Aketh Blademaster##252765 |q 92947/3 |goto Zephras Isle 62.28,51.11
+  kill Al'Aketh Guardian##252762 |q 92947/1 |goto Zephras Isle 62.26,51.09
+  kill Al'Aketh Spiritcaller##252763 |q 92947/2 |goto Zephras Isle 61.73,50.6
+  talk Hyusaa Quickbreeze##253576 |q 92947 |goto Zephras Isle 63.79,50.54
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Hyusaa Quickbreeze##253576
-  turnin Making Our Move##92947 |goto Zephras Isle 63.77,50.51
+  turnin Making Our Move##92947 |goto Zephras Isle 63.79,50.54
 step
+  only not Orc not Skyborne not Troll not Undead
   talk Hyusaa Quickbreeze##253576
-  accept The Inner Sanctum##93958 |goto Zephras Isle 63.77,50.51
+  accept The Inner Sanctum##93958 |goto Zephras Isle 63.79,50.54
 step
+  only not Orc not Skyborne not Troll not Undead
   note Speak with Valennia Stormfist inside the inner sanctum at the Shrine of Akir.
   talk Valennia Stormfist##253590
   turnin The Inner Sanctum##93958 |goto Zephras Isle 65.19,50.35
 step
+  only Tauren not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   talk Valennia Stormfist##253590
   accept Confront Lorthuna##92646 |goto Zephras Isle 65.19,50.35
 step
+  only Tauren not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   note Take the portal to the Rohashi Spires overhead and join Elaadrin Evengale and Ayessa Dawnsinger in their confrontation with the High Priestess Lorthuna.
   goto Zephras Isle 74.87,53.02 |tip Confront Lorthuna
 step
+  only Tauren not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   talk Ayessa Dawnsinger##251968
   turnin Confront Lorthuna##92646 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   talk Ayessa Dawnsinger##251968
   accept The Fate of Zephras##93836 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   note Speak with Talaanis Shadowsong in Valanaar.
   talk Talaanis Shadowsong##252476 |q 93836 |goto Zephras Isle 66.17,76.51
 step
+  only not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   talk Talaanis Shadowsong##252476
   turnin The Fate of Zephras##93836 |goto Zephras Isle 66.17,76.51
 step
+  only not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   talk Talaanis Shadowsong##252476
   accept What Comes Next##93090 |goto Zephras Isle 66.17,76.51
 step
+  only not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   note Speak with Ayessa Dawnsinger when you are prepared to leave Zephras Isle.
   talk Ayessa Dawnsinger##251968
   turnin What Comes Next##93090 |goto Zephras Isle 59.15,79.78
 step
+  only not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   talk Ayessa Dawnsinger##251968
   accept The Earthen Ring##95349 |goto Zephras Isle 59.15,79.78
 step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  turnin Call of Fire##97245 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  accept Call of Fire##97257 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  note Wait for Olariaan to begin the ritual at the Brazier of Offering and follow his instructions.
-  talk Brazier of Offering##268762 |q 97257/1 |goto Zephras Isle 51.2,85.9
-  talk Brazier of Eternal Flame##268679 |q 97257 |goto Zephras Isle 58.35,78.84
-step
-  only Skyborne Shaman
-  talk Sessaria Skystride##252382
-  turnin Call of Fire##97257 |goto Zephras Isle 58.31,78.51
-step
+  only not Orc not Skyborne not Troll not Undead not completed(93835) not haveq(93835)
   note Take the skycutter ship from Zephras Isle to Mulgore and speak with Alaana Stormwalker when you arrive.
   talk Alaana Stormwalker##259119
   turnin The Earthen Ring##95349 |goto Mulgore 33.38,22.57 |tip {turninat}Mulgore

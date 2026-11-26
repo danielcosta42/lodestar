@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/The Barrens (12-19)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Ashenvale (20-27)",
-	rev = "03fba82a",
+	next = "Leveling/Horde/Stonetalon Mountains (19-26)",
+	rev = "99c4b3b2",
 }, [[
 step
   ding 11
@@ -88,29 +88,28 @@ step
   talk Thork##3429
   accept Supplies for the Crossroads##5041 |goto The Barrens 51.5,30.87
 step
-  note Bring the Secure Crate to Wharfmaster Dizzywig in Ratchet.
-  talk Wharfmaster Dizzywig##3453
-  turnin Wharfmaster Dizzywig##1492 |goto The Barrens 63.35,38.45
+  note Bring 15 Centaur Bracers to Regthar Deathgate, west of the Crossroads.
+  collect 15 Centaur Bracers##5030 |q 855 |goto The Barrens 45.7,25.99 |tip {dropsfrom}Kolkar Wrangler, Kolkar Stormer, Kolkar Pack Runner
 step
-  talk Gazlowe##3391
-  accept Southsea Freebooters##887 |goto The Barrens 62.68,36.23
+  note Bring 12 Raptor Heads to Gazrog at the Crossroads.
+  collect 12 Raptor Head##5062 |q 869 |goto The Barrens 51.29,22.62 |tip {dropsfrom}Sunscale Lashtail, Sunscale Screecher, Sunscale Scytheclaw
 step
-  talk Sputtervalve##3442
-  accept Samophlange##894 |goto The Barrens 62.98,37.22
+  note Report back to Tonga Runetotem with your findings.
+  goto The Barrens 45.06,22.53 |tip Explore the waters of the Forgotten Pools
 step
-  talk Wrenix the Wretched##7161
-  accept Parts and Pieces##97253 |goto The Barrens 63.07,36.32
+  note Of the Razormane tribe, kill 8 Water Seekers, 8 Thornweavers and 3 Hunters, and then return to Thork in the Crossroads.
+  kill Razormane Water Seeker##3267 |q 871/1 |goto The Barrens 54.94,26.74
+  kill Razormane Thornweaver##3268 |q 871/2 |goto The Barrens 55.11,26.59
+  kill Razormane Hunter##3265 |q 871 |goto The Barrens 57.81,24.44
 step
-  note Kill 12 Southsea Brigands and 6 Southsea Cannoneers for Gazlowe in Ratchet.
-  kill Southsea Brigand##3381 |q 887/1 |goto The Barrens 63.67,46.13
-  kill Southsea Cannoneer##3382 |q 887 |goto The Barrens 63.58,46.69
+  only Shaman not completed(1523) not completed(2983) not completed(2984) not haveq(1523) not haveq(2983) not haveq(2984)
+  note Find Kranal Fiss in the Barrens.
+  talk Kranal Fiss##5907
+  turnin Call of Fire##1522 |goto The Barrens 56.03,19.89
 step
-  only not Undead not Tauren not Skyborne Rogue
-  note Kill Tazan and bring his Satchel to Therzok in the Cleft of Shadow in Orgrimmar.
-  collect Tazan's Satchel##7209 |q 1963 |goto The Barrens 63.11,44.29 |tip {dropsfrom}Tazan
-step
-  note Collect 5 Handfuls of Complicated Parts from the upper pirate camp south of Ratchet, then return to Wrenix the Wretched in Ratchet.
-  collect 5 Handful of Complicated Parts##277331 |q 97253 |goto The Barrens 62,45.9 |tip {dropsfrom}Pile of Complicated Parts
+  only Shaman not completed(97243) not haveq(97243)
+  talk Kranal Fiss##5907
+  accept Call of Fire##1524 |goto The Barrens 56.03,19.89
 step
   only completed(829)
   note Speak with Ak'Zeloth in the Barrens.
@@ -140,29 +139,6 @@ step
   talk Ak'Zeloth##3521
   turnin The Demon Seed##924 |goto The Barrens 62.34,20.07
 step
-  only Shaman not completed(1523) not completed(2983) not completed(2984) not haveq(1523) not haveq(2983) not haveq(2984)
-  note Find Kranal Fiss in the Barrens.
-  talk Kranal Fiss##5907
-  turnin Call of Fire##1522 |goto The Barrens 56.03,19.89
-step
-  only Shaman
-  talk Kranal Fiss##5907
-  accept Call of Fire##1524 |goto The Barrens 56.03,19.89
-step
-  note Bring 15 Centaur Bracers to Regthar Deathgate, west of the Crossroads.
-  collect 15 Centaur Bracers##5030 |q 855 |goto The Barrens 45.7,25.99 |tip {dropsfrom}Kolkar Wrangler, Kolkar Stormer, Kolkar Pack Runner
-step
-  note Bring 12 Raptor Heads to Gazrog at the Crossroads.
-  collect 12 Raptor Head##5062 |q 869 |goto The Barrens 51.29,22.62 |tip {dropsfrom}Sunscale Lashtail, Sunscale Screecher, Sunscale Scytheclaw
-step
-  note Report back to Tonga Runetotem with your findings.
-  goto The Barrens 45.06,22.53 |tip Explore the waters of the Forgotten Pools
-step
-  note Of the Razormane tribe, kill 8 Water Seekers, 8 Thornweavers and 3 Hunters, and then return to Thork in the Crossroads.
-  kill Razormane Water Seeker##3267 |q 871/1 |goto The Barrens 54.94,26.74
-  kill Razormane Thornweaver##3268 |q 871/2 |goto The Barrens 55.11,26.59
-  kill Razormane Hunter##3265 |q 871 |goto The Barrens 57.81,24.44
-step
   only completed(840)
   note Follow the western road from Kargal's Far Watch Outpost.
   talk Sergra Darkthorn##3338
@@ -182,6 +158,30 @@ step
 step
   talk Thork##3429
   turnin Supplies for the Crossroads##5041 |goto The Barrens 51.5,30.87
+step
+  note Bring the Secure Crate to Wharfmaster Dizzywig in Ratchet.
+  talk Wharfmaster Dizzywig##3453
+  turnin Wharfmaster Dizzywig##1492 |goto The Barrens 63.35,38.45
+step
+  talk Gazlowe##3391
+  accept Southsea Freebooters##887 |goto The Barrens 62.68,36.23
+step
+  talk Sputtervalve##3442
+  accept Samophlange##894 |goto The Barrens 62.98,37.22
+step
+  talk Wrenix the Wretched##7161
+  accept Parts and Pieces##97253 |goto The Barrens 63.07,36.32
+step
+  note Kill 12 Southsea Brigands and 6 Southsea Cannoneers for Gazlowe in Ratchet.
+  kill Southsea Brigand##3381 |q 887/1 |goto The Barrens 63.67,46.13
+  kill Southsea Cannoneer##3382 |q 887 |goto The Barrens 63.58,46.69
+step
+  only not Undead not Tauren not Skyborne Rogue
+  note Kill Tazan and bring his Satchel to Therzok in the Cleft of Shadow in Orgrimmar.
+  collect Tazan's Satchel##7209 |q 1963 |goto The Barrens 63.11,44.29 |tip {dropsfrom}Tazan
+step
+  note Collect 5 Handfuls of Complicated Parts from the upper pirate camp south of Ratchet, then return to Wrenix the Wretched in Ratchet.
+  collect 5 Handful of Complicated Parts##277331 |q 97253 |goto The Barrens 62.28,46.21 |tip {dropsfrom}Pile of Complicated Parts
 step
   collect Chen's Empty Keg##3238 |goto The Barrens 55.7,27.3 |tip Loot the quest item here — it starts the quest.
   accept Chen's Empty Keg##819 |goto The Barrens 55.7,27.3
@@ -374,7 +374,7 @@ step
   accept Curing the Sick##6129 |goto The Barrens 52.26,31.93
 step
   note Bring 8 Altered Snapjaw Shells to Tonga Runetotem at the Crossroads.
-  collect 8 Altered Snapjaw Shell##5098 |q 880 |goto The Barrens 47.74,40.22 |tip {dropsfrom}Oasis Snapjaw
+  collect 8 Altered Snapjaw Shell##5098 |q 880 |goto The Barrens 47.74,40.22 |tip {dropsfrom}Oasis Snapjaw, Oasis Snapjaw Hatchling
 step
   talk Tonga Runetotem##3448
   turnin Altered Beings##880 |goto The Barrens 52.26,31.93
@@ -483,45 +483,47 @@ step
   accept Rilli Greasygob##3923 |goto The Barrens 49.05,11.17
 step
   talk Vrang Wildgore##3682
-  accept Bruised Pride and Lion Hides##95494 |goto The Barrens 43.8,12.21
+  accept Bruised Pride and Lion Hides##95494 |goto The Barrens 43.77,12.17
 step
   talk Vrang Wildgore##3682
-  accept The Hermit Tanner##95495 |goto The Barrens 43.8,12.21
-step
-  talk Vrang Wildgore##3682
-  accept Vrang's Game##95507 |goto The Barrens 43.8,12.21
-step
-  talk Walton##261366
-  accept Unwelcome Guests##95508 |goto The Barrens 42.02,11.45
-step
-  talk Walton##261366
-  accept Trouble in the Valley##95621 |goto The Barrens 42.02,11.45
+  accept Vrang's Game##95507 |goto The Barrens 43.77,12.17
 step
   note Collect 6 Savannah Lion Hides from the Savannah Matriarchs and Savannah Patriarchs in the Barrens.
   collect 6 Savannah Lion Hide##269715 |q 95494 |goto The Barrens 44.42,15.78 |tip {dropsfrom}Savannah Patriarch, Savannah Matriarch
 step
   note Collect 8 Trapped Game from traps found in Sprung Traps in the Barrens.
-  collect 8 Trapped Game##269719 |q 95507 |goto The Barrens 45.3,14 |tip {dropsfrom}Sprung Trap
-step
-  note Travel to the wrecked caravan and learn more about why the Kul Tirans are here.
-  collect Benedict's Orders##270151 |q 95621 |goto The Barrens 42.05,15.81 |tip {dropsfrom}Corporal Adamore
+  collect 8 Trapped Game##269719 |q 95507 |goto The Barrens 44.71,13.44 |tip {dropsfrom}Sprung Trap
 step
   talk Vrang Wildgore##3682
-  turnin Bruised Pride and Lion Hides##95494 |goto The Barrens 43.8,12.21
+  turnin Bruised Pride and Lion Hides##95494 |goto The Barrens 43.77,12.17
+step
+  talk Vrang Wildgore##3682
+  turnin Vrang's Game##95507 |goto The Barrens 43.77,12.17
+step
+  talk Vrang Wildgore##3682
+  accept The Hermit Tanner##95495 |goto The Barrens 43.77,12.17
 step
   note Bring the Bundle of Hides to the hermit on the ridge overlooking the Dry Hills in the Barrens.
   talk Walton##261366
   turnin The Hermit Tanner##95495 |goto The Barrens 42.02,11.45
 step
-  talk Vrang Wildgore##3682
-  turnin Vrang's Game##95507 |goto The Barrens 43.8,12.21
-step
-  note Help Walton survive the encounter with Terry Longdrink and the Kul Tiras marines.
   talk Walton##261366
-  turnin Unwelcome Guests##95508 |goto The Barrens 42.02,11.45
+  accept Trouble in the Valley##95621 |goto The Barrens 42.02,11.45
+step
+  note Travel to the wrecked caravan and learn more about why the Kul Tirans are here.
+  collect Benedict's Orders##270151 |q 95621 |goto The Barrens 41.8,15.76 |tip {dropsfrom}Corporal Adamore
 step
   talk Walton##261366
   turnin Trouble in the Valley##95621 |goto The Barrens 42.02,11.45
+step
+  talk Walton##261366
+  accept Unwelcome Guests##95508 |goto The Barrens 42.02,11.45
+step
+  note Help Walton survive the encounter with Terry Longdrink and the Kul Tiras marines.
+  kill Terry Longdrink##261367 |q 95508 |goto The Barrens 41.89,11.4
+step
+  talk Walton##261366
+  turnin Unwelcome Guests##95508 |goto The Barrens 42.02,11.45
 step
   talk Makaba Flathoof##11857
   accept Avenge My Village##6548 |goto The Barrens 35.19,27.76
@@ -600,14 +602,11 @@ step
   talk Regthar Deathgate##3389
   accept Counterattack!##4021 |goto The Barrens 45.34,28.41
 step
-  note Bring a Piece of Krom'zar's Banner to Regthar Deathgate, west of the Crossroads.
-  collect Piece of Krom'zar's Banner##11227 |q 4021 |goto The Barrens 45.34,28.41 |tip {dropsfrom}Krom'zar's Banner
-step
   talk Mankrik##3432
   accept Lost in Battle##4921 |goto The Barrens 51.95,31.58
 step
-  talk Mankrik##3432
-  accept Her Name Is Olgra##95774 |goto The Barrens 51.95,31.58
+  note Bring a Piece of Krom'zar's Banner to Regthar Deathgate, west of the Crossroads.
+  collect Piece of Krom'zar's Banner##11227 |q 4021 |goto The Barrens 44.53,28.15 |tip {dropsfrom}Krom'zar's Banner
 step
   talk Regthar Deathgate##3389
   turnin Counterattack!##4021 |goto The Barrens 45.34,28.41
@@ -653,9 +652,6 @@ step
   note Find Mankrik's wife and then return to him in the Crossroads.
   talk Beaten Corpse##10668 |q 4921 |goto The Barrens 49.33,50.32
 step
-  note Slay quilboars and collect 4 of Olgra's Adornments for Mankrik's memorial.
-  collect 4 Olgra's Adornments##277277 |q 95774 |goto The Barrens 49.97,50.84 |tip {dropsfrom}Razormane Raider
-step
   talk Mangletooth##3430
   turnin Tribes at War##878 |goto The Barrens 44.55,59.26
 step
@@ -665,26 +661,32 @@ step
   talk Mangletooth##3430
   accept Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
 step
-  note Bring a Blood Shard to Mangletooth in Camp Taurajo in the Barrens.
-  collect Blood Shard##5075 |q 5052 |goto The Barrens 44.47,52.32 |tip {dropsfrom}Bristleback Hunter, Bristleback Water Seeker, Bristleback Thornweaver
+  talk Mankrik##3432
+  turnin Consumed by Hatred##899 |goto The Barrens 51.95,31.58
 step
-  talk Mangletooth##3430
-  turnin Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
+  talk Mankrik##3432
+  turnin Lost in Battle##4921 |goto The Barrens 51.95,31.58
+step
+  talk Mankrik##3432
+  accept Her Name Is Olgra##95774 |goto The Barrens 51.95,31.58
 step
   talk Sputtervalve##3442
   accept Ziz Fizziks##1483 |goto The Barrens 62.98,37.22
+step
+  note Bring a Blood Shard to Mangletooth in Camp Taurajo in the Barrens.
+  collect Blood Shard##5075 |q 5052 |goto The Barrens 44.47,52.32 |tip {dropsfrom}Bristleback Hunter, Bristleback Water Seeker, Bristleback Thornweaver
+step
+  note Slay quilboars and collect 4 of Olgra's Adornments for Mankrik's memorial.
+  collect 4 Olgra's Adornments##277277 |q 95774 |goto The Barrens 49.6,51.28 |tip {dropsfrom}Razormane Raider
+step
+  talk Mangletooth##3430
+  turnin Blood Shards of Agamaggan##5052 |goto The Barrens 44.55,59.26
 step
   note Slay Serena Bloodfeather and return her head to Darsok Swiftdagger at the Crossroads.
   collect Serena's Head##5067 |q 876 |goto The Barrens 39.16,12.17 |tip {dropsfrom}Serena Bloodfeather
 step
   talk Darsok Swiftdagger##3449
   turnin Serena Bloodfeather##876 |goto The Barrens 51.62,30.9
-step
-  talk Mankrik##3432
-  turnin Consumed by Hatred##899 |goto The Barrens 51.95,31.58
-step
-  talk Mankrik##3432
-  turnin Lost in Battle##4921 |goto The Barrens 51.95,31.58
 step
   talk Mankrik##3432
   turnin Her Name Is Olgra##95774 |goto The Barrens 51.95,31.58
@@ -735,12 +737,12 @@ step
   talk Nara Wildmane##5770
   turnin Nara Wildmane##1490 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   note Bring the Torch of the Dormant Flame to Telf Joolam in Durotar.
   talk Telf Joolam##5900
   turnin Call of Fire##1524 |goto Durotar 38.55,58.96 |tip {turninat}Durotar
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   talk Telf Joolam##5900
   accept Call of Fire##1525 |goto Durotar 38.55,58.96
 step
@@ -748,27 +750,27 @@ step
   note Bring 5 Singed Scales to Uzzek at Far Watch Post in the Barrens.
   collect 5 Singed Scale##6486 |q 1498 |goto Durotar 39.15,29.29 |tip {dropsfrom}Thunder Lizard, Lightning Hide
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   note Bring 1 Fire Tar and 1 Reagent Pouch to Telf Joolam in Durotar.
   collect 1 Fire Tar##5026 |q 1525/1 |goto The Barrens 54.94,26.74 |tip {dropsfrom}Razormane Water Seeker, Razormane Thornweaver, Razormane Geomancer
   collect 1 Reagent Pouch##6652 |q 1525 |goto Durotar 52.67,25.36 |tip {dropsfrom}Burning Blade Cultist
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   talk Telf Joolam##5900
   turnin Call of Fire##1525 |goto Durotar 38.55,58.96 |tip {turninat}Durotar
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   talk Telf Joolam##5900
   accept Call of Fire##1526 |goto Durotar 38.55,58.96
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   note Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame.
   collect Glowing Ember##6655 |q 1526 |goto Durotar 38.72,58.29 |tip {dropsfrom}Minor Manifestation of Fire
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   turnin Call of Fire##1526 |goto Durotar 38.96,58.22 |tip {turninat}Durotar
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   click Brazier of the Dormant Flame##61934
   accept Call of Fire##1527 |goto Durotar 38.96,58.22
 step
@@ -780,7 +782,7 @@ step
   talk Uzzek##5810
   accept Thun'grim Firegaze##1502 |goto The Barrens 61.38,21.12
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   note Bring the Torch of Eternal Flame to Kranal Fiss in the Barrens.
   talk Kranal Fiss##5907
   turnin Call of Fire##1527 |goto The Barrens 56.03,19.89
@@ -831,47 +833,28 @@ step
   talk Zando'zan##3402
   accept Wrenix of Ratchet##2382 |goto Orgrimmar 42.73,52.95
 step
-  talk Borstan##3368
-  accept Favorite Food##97249 |goto Orgrimmar 57.2,53.32
+  talk Zor Lonetree##4047
+  accept The Spirits of Stonetalon##1061 |goto Orgrimmar 38.93,38.4
 step
-  only not Undead not Tauren not Skyborne
-  note Buy a wind rider to Orgrimmar from the wind rider master Devrak, then bring Zargh's Meats to Gryshka in Orgrimmar.
-  talk Innkeeper Gryshka##6929
-  turnin Ride to Orgrimmar##6384 |goto Orgrimmar 54.1,68.41 |tip {turninat}Orgrimmar
+  only completed(5728)
+  talk Thrall##4949
+  accept Hidden Enemies##5729 |goto Orgrimmar 31.73,37.82
 step
-  only not Undead not Tauren not Skyborne
-  talk Innkeeper Gryshka##6929
-  accept Doras the Wind Rider Master##6385 |goto Orgrimmar 54.1,68.41
+  only completed(5728)
+  note Speak to Neeru Fireblade in Orgrimmar.
+  talk Neeru Fireblade##3216
+  turnin Hidden Enemies##5729 |goto Orgrimmar 49.47,50.59 |tip {turninat}Orgrimmar
 step
-  talk Thatog##268701
-  accept Meal Appeal##97246 |goto Orgrimmar 55.68,72.17
-step
-  only not Undead not Tauren not Skyborne
-  note Bring Gryshka's Letter to Doras in Orgrimmar.
-  talk Doras##3310
-  turnin Doras the Wind Rider Master##6385 |goto Orgrimmar 45.12,63.89 |tip {turninat}Orgrimmar
-step
-  only not Undead not Tauren not Skyborne
-  talk Doras##3310
-  accept Return to the Crossroads.##6386 |goto Orgrimmar 45.12,63.89
-step
-  note Visit Borstan's Firepit and tell him Thatog wants you to deliver Migi's lunch to him personally.
-  talk Borstan##3368
-  turnin Meal Appeal##97246 |goto Orgrimmar 57.2,53.32 |tip {turninat}Orgrimmar
+  only completed(5728)
+  talk Neeru Fireblade##3216
+  accept Hidden Enemies##5730 |goto Orgrimmar 49.47,50.59
 step
   talk Kor'geld##3348
   accept Yelmak's Medley##97242 |goto Orgrimmar 56.05,34.12
 step
-  talk Yelmak##3347
-  accept Whuut's the Rush##97275 |goto Orgrimmar 56.84,33.03
-step
-  note Give Yelmak's Potion to Whuut.
-  talk Whuut##11046
-  turnin Whuut's the Rush##97275 |goto Orgrimmar 55.79,32.9 |tip {turninat}Orgrimmar
-step
-  note Take some cuttings from the Cattails and Speargrass growing around the water flows in the Valley of Honor and return to Kor'geld in Yelmak's Alchemy and Potions
-  collect Handful of Cattails##277278 |q 97242/1 |goto Orgrimmar 69.7,31.2 |tip {dropsfrom}Cattail
-  collect Speargrass Cuttings##277279 |q 97242 |goto Orgrimmar 70.4,29.5 |tip {dropsfrom}Speargrass
+  note Take some cuttings from the Cattails and Speargrass growing around the water flows in the Valley of Honor and return to Kor'geld in Yelmak's Alchemy and Potions.
+  collect Handful of Cattails##277278 |q 97242/1 |goto Orgrimmar 69.66,31.09 |tip {dropsfrom}Cattail
+  collect Speargrass Cuttings##277279 |q 97242 |goto Orgrimmar 70.09,28.98 |tip {dropsfrom}Speargrass
 step
   note Bring the Broken and Battered Samophlange to Rilli Greasygob in Orgrimmar.
   talk Rilli Greasygob##9317
@@ -889,39 +872,58 @@ step
   talk Kor'geld##3348
   turnin Yelmak's Medley##97242 |goto Orgrimmar 56.05,34.12 |tip {turninat}Orgrimmar
 step
-  talk Zor Lonetree##4047
-  accept The Spirits of Stonetalon##1061 |goto Orgrimmar 38.93,38.4
+  talk Yelmak##3347
+  accept Whuut's the Rush##97275 |goto Orgrimmar 56.84,33.03
 step
-  only completed(5728)
-  talk Thrall##4949
-  accept Hidden Enemies##5729 |goto Orgrimmar 31.73,37.82
-step
-  note Bring Migi's Lunch to him behind Grommash Hold
-  talk Migi##268682
-  turnin Favorite Food##97249 |goto Orgrimmar 36.53,29.06 |tip {turninat}Orgrimmar
-step
-  talk Thra##268684
-  accept Rocks to Rests##97326 |goto Orgrimmar 36.82,29.06
-step
-  note Return 8 Smooth Boulders to Thra behind Grommash Hold.
-  collect 8 Smooth Boulder##277952 |q 97326 |goto Orgrimmar 45.3,32.7
-step
-  talk Thra##268684
-  turnin Rocks to Rests##97326 |goto Orgrimmar 36.82,29.06 |tip {turninat}Orgrimmar
-step
-  only completed(5728)
-  note Speak to Neeru Fireblade in Orgrimmar.
-  talk Neeru Fireblade##3216
-  turnin Hidden Enemies##5729 |goto Orgrimmar 49.47,50.59 |tip {turninat}Orgrimmar
-step
-  only completed(5728)
-  talk Neeru Fireblade##3216
-  accept Hidden Enemies##5730 |goto Orgrimmar 49.47,50.59
+  note Give Yelmak's Potion to Whuut.
+  talk Whuut##11046
+  turnin Whuut's the Rush##97275 |goto Orgrimmar 55.79,32.9 |tip {turninat}Orgrimmar
 step
   only completed(5728)
   note Speak to Thrall in Orgrimmar and tell him what you've learned.
   talk Thrall##4949
   turnin Hidden Enemies##5730 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
+step
+  only not Undead not Tauren not Skyborne
+  note Buy a wind rider to Orgrimmar from the wind rider master Devrak, then bring Zargh's Meats to Gryshka in Orgrimmar.
+  talk Innkeeper Gryshka##6929
+  turnin Ride to Orgrimmar##6384 |goto Orgrimmar 54.1,68.41 |tip {turninat}Orgrimmar
+step
+  only not Undead not Tauren not Skyborne
+  talk Innkeeper Gryshka##6929
+  accept Doras the Wind Rider Master##6385 |goto Orgrimmar 54.1,68.41
+step
+  talk Thatog##268701
+  accept Meal Appeal##97246 |goto Orgrimmar 55.66,72.14
+step
+  only not Undead not Tauren not Skyborne
+  note Bring Gryshka's Letter to Doras in Orgrimmar.
+  talk Doras##3310
+  turnin Doras the Wind Rider Master##6385 |goto Orgrimmar 45.12,63.89 |tip {turninat}Orgrimmar
+step
+  only not Undead not Tauren not Skyborne
+  talk Doras##3310
+  accept Return to the Crossroads.##6386 |goto Orgrimmar 45.12,63.89
+step
+  note Visit Borstan's Firepit and tell him Thatog wants you to deliver Migi's lunch to him personally.
+  talk Borstan##3368
+  turnin Meal Appeal##97246 |goto Orgrimmar 57.2,53.32 |tip {turninat}Orgrimmar
+step
+  talk Borstan##3368
+  accept Favorite Food##97249 |goto Orgrimmar 57.2,53.32
+step
+  note Bring Migi's Lunch to him behind Grommash Hold.
+  talk Migi##268682
+  turnin Favorite Food##97249 |goto Orgrimmar 36.54,29.09 |tip {turninat}Orgrimmar
+step
+  talk Thra##268684
+  accept Rocks to Rests##97326 |goto Orgrimmar 36.54,28.49
+step
+  note Return 8 Smooth Boulders to Thra behind Grommash Hold.
+  collect 8 Smooth Boulder##277952 |q 97326 |goto Orgrimmar 45.33,32.69
+step
+  talk Thra##268684
+  turnin Rocks to Rests##97326 |goto Orgrimmar 36.54,28.49 |tip {turninat}Orgrimmar
 step
   note Speak with Seereth Stonebreak in the Stonetalon Mountains.
   talk Seereth Stonebreak##4049
@@ -1024,6 +1026,6 @@ step
   talk Apothecary Zamah##3419
   turnin Forsaken Aid##1064 |goto Thunder Bluff 22.81,20.89 |tip {turninat}Thunder Bluff
 step
-  note {travel}Ashenvale
-  goto Ashenvale 11.69,34.91
+  note {travel}Stonetalon Mountains
+  goto Stonetalon Mountains 47.22,64.04
 ]])

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Hall of Thanes", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "3b709019",
+	rev = "e1a22671",
 }, [[
 step
   kill Dark Iron Spy##6123 |goto Dun Morogh 77.36,61.31 |tip Loot the quest item here — it starts the quest.
@@ -14,7 +14,10 @@ step
   accept Important Heirlooms##96403 |goto Ironforge 32.18,44.5
 step
   talk Afadra Dunwall##264943
-  accept The Restless Dead##96394 |goto Ironforge 33.18,47.94
+  accept The Restless Dead##96394 |goto Ironforge 33.01,48.23
+step
+  talk Ghostly Attendant##265002
+  accept An Ancient Grudge##96395 |goto The Hall of Thanes - Dungeon -1,-1
 step
   collect Treaty of Understanding##673474 |goto The Hall of Thanes - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept The Treaty of Understanding##98423 |goto The Hall of Thanes - Dungeon -1,-1
@@ -23,7 +26,10 @@ step
   collect 8 Dwarven Heirloom##274289 |q 96403 |goto The Hall of Thanes - Dungeon -1,-1
 step
   note Kill 15 Enraged Apparitions, 10 Tormented Souls and put the spirit of Anvilmar to rest.
-  kill Enraged Apparition##263389 |q 96394 |goto The Hall of Thanes - Dungeon -1,-1
+  kill Enraged Apparition##263389 |q 96394 |goto The Hall of Thanes - Dungeon -1,-1 |elite
+step
+  note Put the spirit of Faldrim Anvilmar to rest and then return to the Ghostly Attendant in the Hall of Thanes.
+  kill Faldrim Anvilmar##261306 |q 96395 |goto The Hall of Thanes - Dungeon -1,-1 |elite
 step
   note Deliver the Dark Iron Map to Earthseer Farsen in Dun Morogh.
   talk Earthseer Farsen##264936
@@ -33,7 +39,10 @@ step
   turnin Important Heirlooms##96403 |goto Ironforge 32.18,44.5
 step
   talk Afadra Dunwall##264943
-  turnin The Restless Dead##96394 |goto Ironforge 33.18,47.94
+  turnin The Restless Dead##96394 |goto Ironforge 33.01,48.23
+step
+  talk Ghostly Attendant##265002
+  turnin An Ancient Grudge##96395 |goto The Hall of Thanes - Dungeon -1,-1
 step
   note Deliver the Treaty of Understanding to Magni Bronzebeard in Ironforge.
   talk King Magni Bronzebeard##2784

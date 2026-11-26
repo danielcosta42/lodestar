@@ -16,7 +16,8 @@ import re
 import sys
 from collections import Counter, defaultdict
 
-from router import CAPITAIS, FORA_DO_LEVELING, VANILLA_RACES, ZONA_MAE, Router, continente, load_data, esc
+from router import (CAPITAIS, FORA_DO_LEVELING, VANILLA_RACES, XP_NIVEL, ZONA_MAE, Router, continente, esc,
+                    load_data, xp_quest)
 
 GUIDE_ROOT = os.path.join(os.path.dirname(__file__), "..", "Guides", "Leveling")
 
@@ -69,6 +70,58 @@ BAND_WIDTH = 12
 # continente quando o próximo guia daqui passa FICA_NIVEIS do próximo de lá: com 0 eram
 # 16-20 travessias por cadeia; com 3, 7-9 e o mesmo nível; com 5, os aceites cinza voltam.
 FICA_NIVEIS = 3
+# A cadeia pelo nível simulado (`CADEIA = "sim"`): em vez da mediana, a XP de cada guia (a mesma
+# conta do roteador, com a redução do jogo para quest baixa) diz em que nível o jogador sai dele, e o
+# próximo é o do continente atual enquanto o guia de lá couber nesse nível; troca quando o do outro
+# lado está para ficar cinza (`URGENTE` níveis antes do topo dele) ou quando o daqui ainda não cabe.
+# Pela mediana, o Alterac 34-34 da Aliança (7 quests) bastava para sair de Kalimdor antes de
+# Desolace 33-40, que só voltava depois de Riverglades, no 44, com 12 quests cinza; e o Ashenvale
+# 21-30 (mediana 28) ia para depois de Wetlands 30-33.
+# (`CADEIA = "mediana"` volta à intercalação antiga.) Contra a mediana, na simulação da auditoria:
+# cinza do humano 86 -> 23, do elfo noturno 34 -> 8; grind do orc 247k -> 78k XP; travessias +2/+3.
+CADEIA = "sim"
+URGENTE = 4            # prazo de um guia: passou da mediana, ou a 4 níveis de ter 30% das quests cinza
+EMPATE = 1             # entre dois guias atrasados, o continente atual até 1 nível de diferença no prazo
+ENTRA_FOLGA = 0.5      # o guia cabe se a entrada dele (lo - 1) está até meio nível acima do simulado
+# Ramo da raça: até o primeiro guia da cadeia que começa no RAMO_LO, cada zona inicial segue só os
+# guias do próprio continente — o humano chegava a Darkshore 13-20 no 24 (26 quests cinza); o elfo
+# noturno segue por lá —, se com eles chega ao primeiro guia comum com até RAMO_GRIND níveis de
+# grind. Sem isso (o morto-vivo só tem Silverpine) pega os dos dois continentes, como antes.
+RAMO_LO = 20
+RAMO_GRIND = 2
+# Guia que começa no nível máximo (Alterac Mountains 60-60: a cadeia de Onyxia de Bolvar, o folheto
+# da Darkmoon) não é leveling: fica fora da cadeia, para o autopilot no 60.
+FORA_DA_CADEIA_DESDE = 59
+# quest que pede mais que o nível de saída simulado do guia + isto vai para o guia seguinte da trilha
+TETO_FOLGA = 3
+
+
+def faixa_verde(plvl):
+    """UnitQuestTrivialLevelRange do Classic: a quest é cinza quando plvl - nível > isto."""
+    if plvl <= 5:
+        return 5
+    if plvl < 40:
+        return 5 + plvl // 10
+    if plvl < 60:
+        return 1 + plvl // 5
+    return 9
+
+
+def fator_xp(plvl, qlvl):
+    """A XP de quest baixa no Classic: até 5 níveis abaixo, inteira; depois 80/60/40/20/10%."""
+    d = plvl - qlvl
+    return 1.0 if d <= 5 else {6: 0.8, 7: 0.6, 8: 0.4, 9: 0.2}.get(int(d), 0.1)
+
+
+def soma_xp(nivel, xp):
+    """Nível (com fração) depois de ganhar `xp` a partir de `nivel` (com fração)."""
+    lv = max(int(nivel), 1)
+    dentro = (nivel - lv) * XP_NIVEL[lv - 1] if lv < 60 else 0
+    dentro += xp
+    while lv < 60 and dentro >= XP_NIVEL[lv - 1]:
+        dentro -= XP_NIVEL[lv - 1]
+        lv += 1
+    return 60.0 if lv >= 60 else lv + dentro / XP_NIVEL[lv - 1]
 
 
 def pct(sorted_vals, p):
@@ -351,6 +404,31 @@ def gen_faction(router, faction, level_max, min_quests):
                        if primeiro else z["entry"]})
     feitos.sort(key=lambda f: (f["med"], f["lo"], f["i"]))
 
+    def xp_lista(qids):
+        """[(nível, XP)] das quests de todo jogador do guia, em ordem de nível."""
+        out = []
+        for q in qids:
+            qq = router.quests.get(str(q))
+            if qq and router.para_todos(qq) and (qq["questLevel"] or 0) > 0:
+                out.append((qq["questLevel"], xp_quest(q, qq, router.xp, router.items)))
+        return sorted(out)
+
+    def simula(nivel, f):
+        """O nível de quem sai do guia `f` entrando nele com `nivel` (o `ding` da entrada sobe até
+        lo - 1)."""
+        nivel = max(nivel, f["lo"] - 1)
+        for ql, x in f["xp"]:
+            nivel = soma_xp(nivel, x * fator_xp(int(nivel), ql))
+        return nivel
+
+    def cinza(nivel, f):
+        """Fração das quests de todo jogador do guia que já são cinza para quem entra com `nivel`."""
+        lv = int(max(nivel, f["lo"] - 1))
+        return sum(1 for ql, _ in f["xp"] if lv - ql > faixa_verde(lv)) / max(len(f["xp"]), 1)
+
+    for f in feitos:
+        f["xp"] = xp_lista(f["qids"])
+
     # A cadeia passa por todos os guias da facção, os dos dois continentes intercalados
     # por nível (`intercalada`, FICA_NIVEIS) — nenhum guia fica sem quem aponte para ele.
     # Zona inicial de cada raça e a ilha só entram como começo de cadeia: dela, o
@@ -360,13 +438,17 @@ def gen_faction(router, faction, level_max, min_quests):
         return f["z"]["area"] in ISOLADAS or (f["z"]["area"] in INICIAIS and f["z"]["primeira"])
     trilha = defaultdict(list)
     for f in feitos:
-        if not comeco(f):
+        # decidido aqui, com a faixa da passada 1, e usado também no `next` (a faixa final pode mudar)
+        f["fora_da_cadeia"] = not comeco(f) and f["lo"] >= FORA_DA_CADEIA_DESDE
+        if not comeco(f) and not f["fora_da_cadeia"]:
             trilha[continente(f["z"]["area"], faction)].append(f)
 
     def intercalada():
         """As trilhas dos continentes numa só, na ordem de nível, sem mexer na ordem de
         cada uma (a realocação conta com ela); fica no continente enquanto o próximo
         de lá não passar FICA_NIVEIS do próximo do outro lado."""
+        if CADEIA == "sim":
+            return intercalada_sim()
         pos = {c: 0 for c in trilha}
         out, cont = [], None
         while any(pos[c] < len(gs) for c, gs in trilha.items()):
@@ -378,6 +460,141 @@ def gen_faction(router, faction, level_max, min_quests):
             pos[melhor] += 1
             cont = melhor
         return out
+
+    def cinza_em(f):
+        """O nível em que mais de 30% das quests de todo jogador do guia já são cinza."""
+        return next((lv for lv in range(max(int(f["lo"]) - 1, 1), 61) if cinza(lv, f) > 0.3), 61)
+
+    def intercalada_sim():
+        """A mesma intercalação, pelo nível simulado: o jogador entra com o nível de quem fez as
+        zonas iniciais (10) e cada guia escolhido o leva ao nível de saída dele. Entre as cabeças
+        das trilhas que cabem no nível (entrada até ENTRA_FOLGA acima): a que fica cinza primeiro,
+        se isso acontece a até URGENTE níveis daqui — o continente atual desempata até um nível de
+        diferença —; senão a do continente atual; senão a que cabe; senão a de entrada mais baixa
+        (grind)."""
+        pos = {c: 0 for c in trilha}
+        out, cont, nivel = [], None, 10.0
+        nivel_ramo = {c: 10.0 for c in trilha}    # o jogador do ramo de cada continente (`ramos`)
+        # o jogador simulado é o da maioria das zonas iniciais (a Aliança nasce três vezes nos Reinos
+        # do Leste): o guia baixo do outro continente (lo < RAMO_LO) entra na ordem, mas não dá XP —
+        # ele é do ramo da outra raça (`ramos`)
+        principal = Counter(continente(f["z"]["area"], faction) for f in feitos if comeco(f)).most_common(1)
+        principal = principal[0][0] if principal else None
+        for gs in trilha.values():
+            for f in gs:
+                # prazo: o nível em que o guia já devia ter sido feito — passou da mediana dele, ou
+                # está a URGENTE níveis de ter 30% das quests cinza
+                f["prazo"] = min(cinza_em(f) - URGENTE, f["med"])
+        while any(pos[c] < len(gs) for c, gs in trilha.items()):
+            vivos = [c for c, gs in trilha.items() if pos[c] < len(gs)]
+            cab = {c: trilha[c][pos[c]] for c in vivos}
+
+            def cabe(c):
+                return cab[c]["lo"] - 1 <= nivel + ENTRA_FOLGA
+            urgentes = [c for c in vivos if cabe(c) and nivel >= cab[c]["prazo"]]
+            if urgentes:
+                melhor = min(urgentes, key=lambda c: cab[c]["prazo"])
+                if cont in urgentes and cab[cont]["prazo"] <= cab[melhor]["prazo"] + EMPATE:
+                    melhor = cont
+            elif cont in vivos and cabe(cont):
+                melhor = cont
+            else:
+                melhor = min(vivos, key=lambda c: (not cabe(c), cab[c]["lo"], cab[c]["med"]))
+            f = cab[melhor]
+            if melhor == principal or f["lo"] >= RAMO_LO:
+                f["nivel_entra"] = max(nivel, f["lo"] - 1)
+                nivel = simula(nivel, f)
+                f["nivel_sai"] = nivel
+            else:
+                # guia baixo do outro continente: é do ramo da outra raça, que entra nele com o nível
+                # dela (o elfo noturno chega a Darkshore 13-20 no ~12, não no 20 do humano: com o
+                # nível do humano, The Fall of Ameth'Aran e Tools of the Highborne, de 12, saíam cinza)
+                f["nivel_entra"] = max(nivel_ramo[melhor], f["lo"] - 1)
+                nivel_ramo[melhor] = f["nivel_sai"] = simula(nivel_ramo[melhor], f)
+            out.append(f)
+            pos[melhor] += 1
+            cont = melhor
+        return out
+
+    def ramos(seguinte):
+        """A cadeia de cada zona inicial (`RAMO_LO`, `RAMO_GRIND`). Os caminhos se juntam no
+        primeiro guia que outro caminho já tem — um guia só tem um `next` —, e o guia que nenhum
+        caminho pega segue apontando para o seguinte da ordem."""
+        vivos = [g for g in ordem if any(g in gs for gs in trilha.values())]
+        k = next((n for n, g in enumerate(vivos) if g["lo"] >= RAMO_LO), len(vivos))
+        comum = vivos[k] if k < len(vivos) else None
+        dono = {}
+        out = dict(seguinte)
+        iniciais = [f for f in feitos if comeco(f)]
+        conta = Counter(continente(f["z"]["area"], faction) for f in iniciais)
+        for s in sorted(iniciais, key=lambda f: (-conta[continente(f["z"]["area"], faction)], f["z"]["area"] in ISOLADAS,
+                                                 f["lo"], f["i"])):
+            c = continente(s["z"]["area"], faction)
+            entra = seguinte.get(s["i"])
+            if entra not in vivos:
+                continue
+            j = vivos.index(entra)
+            seq = vivos[j:]
+            if j < k and comum:
+                meus = [g for g in vivos[j:k] if continente(g["z"]["area"], faction) == c]
+                nivel = simula(1, s)
+                for g in meus:
+                    nivel = simula(nivel, g)
+                if nivel >= comum["lo"] - 1 - RAMO_GRIND:
+                    pulados = [g["titulo"] for g in vivos[j:k] if g not in meus]
+                    if pulados:
+                        print("  [%s] %s: ramo do continente até %s (sai no %.1f), sem %s" % (
+                            faction, s["titulo"], comum["titulo"], nivel, ", ".join(pulados)))
+                    seq = meus + vivos[k:]
+            atual, caminho = s, []
+            for g in seq:
+                if g["i"] in dono:                      # junta no caminho que já existe
+                    out[atual["i"]] = g
+                    break
+                out[atual["i"]] = g
+                caminho.append(g)
+                atual = g
+            else:
+                out[atual["i"]] = None
+            for g in caminho:
+                dono.setdefault(g["i"], s["i"])
+        return out
+
+    def cinza_na_entrada(guia_de):
+        """Quest de todo jogador que já é cinza no nível em que a cadeia simulada entra no guia dela
+        (as de 40 do Alterac Mountains 40-53 da Aliança, que a cadeia faz no 52; as de 19-23 do Loch
+        Modan 20-38, feito no 40) vai para o guia anterior da mesma zona em que ainda não é, se os
+        pré-requisitos dela já estão lá e ninguém que depende dela vem antes; sem ele, sai, se nada
+        no guia depende dela."""
+        vivos = [g for g in ordem if any(g in gs for gs in trilha.values())]
+        lugar = {g["i"]: n for n, g in enumerate(vivos)}
+        dele = {f["i"]: f for f in vivos}
+        depende = defaultdict(set)
+        for q in guia_de:
+            for p in router.quests[str(q)]["preSingle"] + router.quests[str(q)]["preGroup"]:
+                depende[p].add(q)
+
+        def cinza_no(g, ql):
+            lv = int(g["nivel_entra"])
+            return lv - ql > faixa_verde(lv)
+        movidas, tiradas = 0, 0
+        for q in sorted(guia_de, key=lambda q: (router.quests[str(q)]["questLevel"] or 0, q)):
+            f, qq = dele.get(guia_de[q]), router.quests[str(q)]
+            ql = qq["questLevel"] or 0
+            if not f or "nivel_entra" not in f or ql <= 0 or not router.para_todos(qq) or not cinza_no(f, ql):
+                continue
+            pre = [lugar.get(guia_de[p], -1) for p in qq["preSingle"] + qq["preGroup"] if p in guia_de]
+            dep = [lugar.get(guia_de[d], len(vivos)) for d in depende[q] if d in guia_de]
+            alvos = [g for g in vivos[:lugar[f["i"]]] if g["z"]["area"] == f["z"]["area"] and "nivel_entra" in g
+                     and not cinza_no(g, ql) and all(n <= lugar[g["i"]] for n in pre)
+                     and all(n >= lugar[g["i"]] for n in dep)]
+            if alvos:
+                guia_de[q] = alvos[-1]["i"]
+                movidas += 1
+            elif not any(d in guia_de for d in depende[q]):
+                del guia_de[q]
+                tiradas += 1
+        print("  [%s] cinza na entrada simulada: %d para um guia anterior da zona, %d fora" % (faction, movidas, tiradas))
 
     def proximo(f):
         vivos = [g for g in ordem if any(g in gs for gs in trilha.values())]
@@ -415,6 +632,11 @@ def gen_faction(router, faction, level_max, min_quests):
             for q, i in guia_de.items():
                 leva[i].add(q)
             teto = {f["i"]: (faixa_do_guia(router, leva[f["i"]]) or (0, f["hi"], 0))[1] for f in feitos}
+            # e o nível em que a cadeia simulada sai do guia, com TETO_FOLGA: as de montaria (40) de
+            # Mulgore 29-40 ficavam atrás de `level>=40` num guia feito no 30
+            for f in feitos:
+                if f.get("nivel_sai"):
+                    teto[f["i"]] = min(teto[f["i"]], int(f["nivel_sai"]) + TETO_FOLGA)
             for q, i in list(guia_de.items()):
                 req = router.nivel_pedido(q, router.quests[str(q)])   # a de grupo, pelo nível dela
                 if i not in teto or req <= teto[i]:
@@ -455,7 +677,9 @@ def gen_faction(router, faction, level_max, min_quests):
                         mudou = True
         # guia que a realocação esvaziou (Thousand Needles 44-44 ficava com uma
         # quest) se dissolve no vizinho da trilha — outra faixa da mesma zona antes
-        tamanho = Counter(guia_de.values())
+        # só conta a quest de todo jogador da facção: o Alterac Mountains 34-34 da Aliança tinha 7, 5
+        # delas de ladino, e o Thousand Needles 37-41 da Horda não tinha nenhuma para o orc e o tauren
+        tamanho = Counter(i for q, i in guia_de.items() if router.para_todos(router.quests[str(q)]))
         f = next((f for fs in trilha.values() for f in fs if tamanho[f["i"]] < min_quests), None)
         if not f:
             break
@@ -464,7 +688,17 @@ def gen_faction(router, faction, level_max, min_quests):
         resto = lista[:k] + lista[k + 1:]
         if not resto:
             break
-        alvo = min(resto, key=lambda g: (g["z"]["area"] != f["z"]["area"],
+        # só num guia de nível perto (BAND_GAP): Mulgore 59-60 (três quests de 59-60) ia para Mulgore
+        # 29-40, o título virava "29-59" e elas ficavam mortas atrás de `level>=` no 30
+        perto = [g for g in resto if abs(g["med"] - f["med"]) < BAND_GAP]
+        if not perto:
+            for q in [q for q, i in guia_de.items() if i == f["i"]]:
+                del guia_de[q]
+            lista.remove(f)
+            feitos.remove(f)
+            print("  [%s] %s sai: nenhum guia da trilha perto do nível dele" % (faction, f["titulo"]))
+            continue
+        alvo = min(perto, key=lambda g: (g["z"]["area"] != f["z"]["area"],
                                          abs(lista.index(g) - k), lista.index(g) > k))
         for q, i in guia_de.items():
             if i == f["i"]:
@@ -475,6 +709,8 @@ def gen_faction(router, faction, level_max, min_quests):
 
     print("  [%s] realocadas para guia mais adiante: %d"
           % (faction, sum(guia_de[q] != origem[q] for q in guia_de)))
+    if CADEIA == "sim":
+        cinza_na_entrada(guia_de)
     conj = defaultdict(set)
     for q, i in guia_de.items():
         conj[i].add(q)
@@ -488,6 +724,11 @@ def gen_faction(router, faction, level_max, min_quests):
         titulos.add(f["titulo"])
         f["key"] = guide_key(faction, f["titulo"])
     seguinte = {f["i"]: proximo(f) for f in feitos}
+    if CADEIA == "sim":
+        seguinte = ramos(seguinte)
+    for f in feitos:
+        if f["fora_da_cadeia"]:
+            seguinte[f["i"]] = None         # 60-60: fora da cadeia, ninguém aponta para ele
     por_i = {f["i"]: f for f in feitos}
 
     # Passada 2: o texto final, com a cadeia, a viagem e exatamente o que foi atribuído.
@@ -550,7 +791,8 @@ def gen_faction(router, faction, level_max, min_quests):
         herd = defaultdict(set)
         for i, d in adiou.items():
             for q, a in d.items():
-                herd[adiante[i][a][0]].add(q)
+                if a in adiante.get(i, {}):     # a zona saiu do caminho na rodada: decide de novo
+                    herd[adiante[i][a][0]].add(q)
         for i, z in enumerate(zones):
             f = por_i.get(i)
             if not f:
@@ -560,7 +802,8 @@ def gen_faction(router, faction, level_max, min_quests):
                                   entrada[nxt["i"]] if nxt else None, f["titulo"], fixas=conj[i], lo=f["lo"],
                                   adiar_zonas={a: (b, por_i[g]["lo"]) for a, (g, b) in adiante[i].items()}
                                   if decide else None,
-                                  adiar_fixo=set(adiou.get(i, {})) if not decide else None, herdadas=herd[i])
+                                  adiar_fixo={q for q, a in adiou.get(i, {}).items() if a in adiante[i]} if not decide else None,
+                                  herdadas=herd[i])
             if not text:              # a cadeia aponta para ele
                 sys.exit("guia vazio na passada 2: %s" % f["titulo"])
             perdidas += len(conj[i] - set(qids))

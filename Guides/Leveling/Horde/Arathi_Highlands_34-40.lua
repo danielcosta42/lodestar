@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Badlands (37-42)",
-	rev = "7777acaa",
+	next = "Leveling/Horde/Stranglethorn Vale (35-41)",
+	rev = "3c48cfb3",
 }, [[
 step
   ding 31
@@ -29,6 +29,11 @@ step
   talk Tor'gan##2706
   accept Raising Spirits##672 |goto Arathi Highlands 74.72,36.29
 step
+  note Slay 10 Witherbark Axe Throwers, 10 Headhunters and 8 Witch Doctors, and return to Drum Fel in the Hammerfall outpost.
+  kill Witherbark Axe Thrower##2554 |q 677/1 |goto Arathi Highlands 65.25,67.59
+  kill Witherbark Witch Doctor##2555 |q 677/3 |goto Arathi Highlands 69.34,68.69
+  kill Witherbark Headhunter##2556 |q 677 |goto Arathi Highlands 68.55,76.41
+step
   note Acquire 10 Highland Raptor Eyes from Highland Striders and Highland Thrashers for Tor'gan in Hammerfall.
   collect 10 Highland Raptor Eye##4512 |q 672 |goto Arathi Highlands 46.76,41.11 |tip {dropsfrom}Highland Strider, Highland Thrasher
 step
@@ -41,8 +46,14 @@ step
   talk Tor'gan##2706
   turnin Raising Spirits##672 |goto Arathi Highlands 74.72,36.29
 step
+  talk Drum Fel##2771
+  turnin Call to Arms##677 |goto Arathi Highlands 74.24,33.92
+step
   talk Tor'gan##2706
   accept Raising Spirits##674 |goto Arathi Highlands 74.72,36.29
+step
+  talk Doctor Gregory Victor##12920
+  accept Silky Sutures##97539 |goto Arathi Highlands 73.41,36.89
 step
   note Give the Raptor Talon Amulet to Gor'mul.
   talk Gor'mul##2792
@@ -55,6 +66,15 @@ step
   talk Tor'gan##2706
   turnin Raising Spirits##675 |goto Arathi Highlands 74.72,36.29
 step
+  note Return 12 Surgical Spidersilk to Doctor Gregory Victor in Hammerfall, Arathi Highlands.
+  collect 12 Surgical Spidersilk##278225 |q 97539 |goto Arathi Highlands 48.69,50.83 |tip {dropsfrom}Plains Creeper, Giant Plains Creeper
+step
+  talk Doctor Gregory Victor##12920
+  turnin Silky Sutures##97539 |goto Arathi Highlands 73.41,36.89
+step
+  talk Doctor Gregory Victor##12920
+  accept Ward Restocking##92519 |goto Arathi Highlands 73.41,36.89
+step
   only level>=37
   talk Zengu##2703
   accept Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
@@ -65,13 +85,16 @@ step
   click Shards of Myzrael##138492
   accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
 step
-  note Slay 10 Witherbark Axe Throwers, 10 Headhunters and 8 Witch Doctors, and return to Drum Fel in the Hammerfall outpost.
-  kill Witherbark Axe Thrower##2554 |q 677/1 |goto Arathi Highlands 65.25,67.59
-  kill Witherbark Witch Doctor##2555 |q 677/3 |goto Arathi Highlands 69.34,68.69
-  kill Witherbark Headhunter##2556 |q 677 |goto Arathi Highlands 68.55,76.41
+  note Pick up a case of Packaged Tonics at Jorell's lab in Go'shek Farm and return to Doctor Gregory Victor in Hammerfall.
+  collect Packaged Tonics##278462 |q 92519 |goto Arathi Highlands 60.19,58.87
 step
   note Acquire 12 Raptor Hearts from Highland Fleshstalkers for Tor'gan.
   collect 12 Raptor Heart##4513 |q 701 |goto Arathi Highlands 49.61,69.12 |tip {dropsfrom}Highland Fleshstalker
+step
+  only haveq(639)
+  note Get the Sigil of Strom for Zengu in Hammerfall.
+  kill Syndicate Prowler##2588 |q 639 |goto Arathi Highlands 28.33,63.36 |elite
+  collect Sigil of Strom##4440 |q 639 |goto Arathi Highlands 28.33,63.36
 step
   only level>=35
   talk Lolo the Lookout##2766
@@ -82,14 +105,38 @@ step
   talk Shakes O'Breen##2610
   turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
 step
-  talk Drum Fel##2771
-  turnin Call to Arms##677 |goto Arathi Highlands 74.24,33.92
+  only level>=33
+  kill Witherbark Goliath##218032 |goto Arathi Highlands 69.6,81.57 |elite |tip Loot the quest item here — it starts the quest.
+  accept The Giant in the Den##92707 |goto Arathi Highlands 69.6,81.57
+step
+  only haveq(92707)
+  note Bring the Goliath's Wristguards to Drum Fel in Hammerfall.
+  kill Witherbark Goliath##218032 |q 92707 |goto Arathi Highlands 69.6,81.57 |elite
+  collect Goliath's Wristguards##253711 |q 92707 |goto Arathi Highlands 69.6,81.57
+step
+  only haveq(639)
+  talk Zengu##2703
+  turnin Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
 step
   talk Tor'gan##2706
   turnin Guile of the Raptor##701 |goto Arathi Highlands 74.72,36.29
 step
+  talk Doctor Gregory Victor##12920
+  turnin Ward Restocking##92519 |goto Arathi Highlands 73.41,36.89
+step
+  only haveq(92707)
+  talk Drum Fel##2771
+  turnin The Giant in the Den##92707 |goto Arathi Highlands 74.24,33.92
+step
   talk Tor'gan##2706
   accept Guile of the Raptor##702 |goto Arathi Highlands 74.72,36.29
+step
+  talk Drum Fel##2771
+  accept Call to Arms##678 |goto Arathi Highlands 74.24,33.92
+step
+  only level>=36
+  talk Tor'gan##2706
+  accept Finding Tan'jani##95143 |goto Arathi Highlands 74.72,36.29
 step
   note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
   collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
@@ -106,12 +153,20 @@ step
   click Iridescent Shards##2701
   accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
 step
-  talk Drum Fel##2771
-  accept Call to Arms##678 |goto Arathi Highlands 74.24,33.92
-step
   note Speak with Tor'gan.
   talk Tor'gan##2706
   turnin Guile of the Raptor##847 |goto Arathi Highlands 74.72,36.29
+step
+  note Kill 10 Boulderfist Brutes and 4 Boulderfist Magi, and return to Drum Fel in the Hammerfall outpost.
+  kill Boulderfist Brute##2566 |q 678/1 |goto Arathi Highlands 53.1,75.93
+  kill Boulderfist Magus##2567 |q 678 |goto Arathi Highlands 52.96,77.02
+step
+  talk Drum Fel##2771
+  turnin Call to Arms##678 |goto Arathi Highlands 74.24,33.92
+step
+  only Rogue completed(96783)
+  click Syndicate Footlocker##656157
+  accept Master of Disguise##96784 |goto Arathi Highlands 32.29,26.57
 step
   note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
   collect Cresting Key##4484 |q 651/2 |goto Arathi Highlands 66.7,29.72 |tip {dropsfrom}Stone of East Binding
@@ -120,21 +175,30 @@ step
 step
   turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
-  only haveq(639)
-  note Get the Sigil of Strom for Zengu in Hammerfall.
-  kill Syndicate Prowler##2588 |q 639 |goto Arathi Highlands 28.33,63.36 |elite
-  collect Sigil of Strom##4440 |q 639 |goto Arathi Highlands 28.33,63.36
+  only Rogue completed(96783)
+  note While disguised as a member of the Syndicate, find someone inside Stromgarde Keep who knows about the secret deal.
+  talk Anastasia Miller##266847
+  turnin Master of Disguise##96784 |goto Arathi Highlands 26.81,64.44
 step
-  note Kill 10 Boulderfist Brutes and 4 Boulderfist Magi, and return to Drum Fel in the Hammerfall outpost.
-  kill Boulderfist Brute##2566 |q 678/1 |goto Arathi Highlands 53.1,75.93
-  kill Boulderfist Magus##2567 |q 678 |goto Arathi Highlands 52.96,77.02
+  only Rogue completed(96783)
+  talk Anastasia Miller##266847
+  accept Ain't No Telling##96785 |goto Arathi Highlands 26.81,64.44
 step
-  only haveq(639)
-  talk Zengu##2703
-  turnin Sigil of Strom##639 |goto Arathi Highlands 73.8,33.96
+  only Rogue completed(96783)
+  note Find something within Stromgarde Keep to convince Anastasia to give up details of the secret deal.
+  collect Stolen Funds##275709 |q 96785 |goto Arathi Highlands 29.47,65.03 |tip {dropsfrom}Anastasia's Stash
 step
-  talk Drum Fel##2771
-  turnin Call to Arms##678 |goto Arathi Highlands 74.24,33.92
+  only Rogue completed(96783)
+  talk Anastasia Miller##266847
+  turnin Ain't No Telling##96785 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue completed(96783)
+  talk Anastasia Miller##266847
+  accept The Syndicate Sting##96786 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue completed(96783)
+  note Break up the secret deal, and take the object being traded to the Syndicate. Then, return to Myrokos Silentform at Ravenholdt Manor.
+  collect Intercepted Shipment##275882 |q 96786 |goto Arathi Highlands 15.52,42.87 |tip {dropsfrom}Secret Shipment
 step
   only completed(639) level>=40
   talk Zengu##2703
@@ -266,19 +330,10 @@ step
   talk Zengu##2703
   accept Sigil of Arathor##643 |goto Arathi Highlands 73.8,33.96
 step
-  only level>=42
-  click Stone of Inner Binding##2702
-  accept Breaking the Keystone##652 |goto Arathi Highlands 36.23,57.38
-step
   only haveq(643)
   note Retrieve the Sigil of Arathor and return it to Zengu in Hammerfall.
   kill Lieutenant Valorcall##2612 |q 643 |goto Arathi Highlands 33.47,52.08 |elite
   collect Sigil of Arathor##4458 |q 643 |goto Arathi Highlands 33.47,52.08
-step
-  only haveq(652)
-  note Find and kill Fozruk. Bring the Rod of Order to the Keystone in the Arathi Highlands.
-  kill Fozruk##2611 |q 652 |goto Arathi Highlands 63.9,30 |elite
-  collect Rod of Order##4469 |q 652 |goto Arathi Highlands 63.9,30
 step
   only haveq(643)
   talk Zengu##2703
@@ -293,29 +348,29 @@ step
   kill Prince Galen Trollbane##2607 |q 644 |goto Arathi Highlands 28.36,58.11 |elite
   collect Sigil of Trollbane##4466 |q 644 |goto Arathi Highlands 28.36,58.11
 step
+  only level>=42
+  click Stone of Inner Binding##2702
+  accept Breaking the Keystone##652 |goto Arathi Highlands 36.23,57.38
+step
+  only haveq(652)
+  note Find and kill Fozruk. Bring the Rod of Order to the Keystone in the Arathi Highlands.
+  kill Fozruk##2611 |q 652 |goto Arathi Highlands 63.9,30 |elite
+  collect Rod of Order##4469 |q 652 |goto Arathi Highlands 63.9,30
+step
+  only haveq(644)
+  talk Zengu##2703
+  turnin Sigil of Trollbane##644 |goto Arathi Highlands 73.8,33.96
+step
+  only completed(644)
+  talk Zengu##2703
+  accept Trol'kalar##645 |goto Arathi Highlands 73.8,33.96
+step
   only haveq(652)
   turnin Breaking the Keystone##652 |goto Arathi Highlands 36.08,58.09
 step
   only completed(652)
   click Keystone##2688
   accept Myzrael's Allies##688 |goto Arathi Highlands 36.08,58.09
-step
-  only haveq(644)
-  talk Zengu##2703
-  turnin Sigil of Trollbane##644 |goto Arathi Highlands 73.8,33.96
-step
-  only haveq(688)
-  note Speak with Zaruk in Hammerfall.
-  talk Zaruk##2787
-  turnin Myzrael's Allies##688 |goto Arathi Highlands 74.54,35.64
-step
-  only completed(688)
-  talk Zaruk##2787
-  accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
-step
-  only completed(644)
-  talk Zengu##2703
-  accept Trol'kalar##645 |goto Arathi Highlands 73.8,33.96
 step
   only haveq(645)
   note Retrieve Trol'kalar from Trollbane's tomb in Stromgarde.
@@ -330,6 +385,15 @@ step
   talk Zengu##2703
   turnin Trol'kalar##646 |goto Arathi Highlands 73.8,33.96
 step
+  only haveq(688)
+  note Speak with Zaruk in Hammerfall.
+  talk Zaruk##2787
+  turnin Myzrael's Allies##688 |goto Arathi Highlands 74.54,35.64
+step
+  only completed(688)
+  talk Zaruk##2787
+  accept Theldurin the Lost##687 |goto Arathi Highlands 74.54,35.64
+step
   talk Genavie Callow##4486
   accept To Steal From Thieves##1164 |goto Undercity 63.83,49.45
 step
@@ -341,37 +405,15 @@ step
   talk Genavie Callow##4486
   turnin To Steal From Thieves##1164 |goto Undercity 63.83,49.45 |tip {turninat}Undercity
 step
+  only Rogue completed(96783)
+  talk Myrokos Silentform##13085
+  turnin The Syndicate Sting##96786 |goto Alterac Mountains 84.93,80.38 |tip {turninat}Alterac Mountains
+step
   only haveq(669)
   note Take the Sample Elven Gem to Fleet Master Seahorn in Booty Bay.
   talk Fleet Master Seahorn##2487
   turnin Sunken Treasure##669 |goto Stranglethorn Vale 27.17,77.01 |tip {turninat}Stranglethorn Vale
 step
-  only completed(669) level>=35
-  talk Fleet Master Seahorn##2487
-  accept Sunken Treasure##670 |goto Stranglethorn Vale 27.17,77.01
-step
-  only haveq(670)
-  note Deliver Seahorn's Letter to Shakes O'Breen in Arathi Highlands.
-  talk Shakes O'Breen##2610
-  turnin Sunken Treasure##670 |goto Arathi Highlands 32.28,81.38
-step
-  only completed(670) level>=35
-  talk Shakes O'Breen##2610
-  accept Death From Below##667 |goto Arathi Highlands 32.28,81.38
-step
-  only haveq(667)
-  note Protect Shakes O'Breen during the attack.
-  goto Arathi Highlands 31.93,81.82 |tip Defend Shakes O'Breen
-step
-  only haveq(667)
-  talk Shakes O'Breen##2610
-  turnin Death From Below##667 |goto Arathi Highlands 32.28,81.38
-step
-  only haveq(687)
-  note Find Theldurin the Lost.
-  talk Theldurin the Lost##2785
-  turnin Theldurin the Lost##687 |goto Badlands 51.39,76.87 |tip {turninat}Badlands
-step
-  note {travel}Badlands
-  goto Badlands 42.39,52.93
+  note {travel}Stranglethorn Vale
+  goto Stranglethorn Vale 35.66,10.53
 ]])

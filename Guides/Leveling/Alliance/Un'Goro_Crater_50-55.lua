@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Un'Goro Crater (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Searing Gorge (48-50)",
-	rev = "2afbc2bb",
+	next = "Leveling/Alliance/Felwood (54-56)",
+	rev = "ed5f34ce",
 }, [[
 step
   ding 49
@@ -85,6 +85,19 @@ step
   collect 8 Gorishi Sting##22435 |q 9052/1 |goto Un'Goro Crater 50.14,75.97 |tip {dropsfrom}Gorishi Wasp, Gorishi Stinger
   collect 8 Bloodcap##22434 |q 9052 |goto Un'Goro Crater 44.62,42.45 |tip {dropsfrom}Bloodpetal Sprout
 step
+  only Druid haveq(9052)
+  talk Torwa Pathfinder##9619
+  turnin Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
+step
+  only Druid completed(9052) level>=50
+  talk Torwa Pathfinder##9619
+  accept Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
+step
+  only Druid haveq(9051)
+  note Stab a Devilsaur with the Devilsaur Barb. Return to Torwa Pathfinder in Un'Goro Crater when you have completed this task.
+  talk Torwa Pathfinder##9619
+  turnin Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
+step
   note Collect 15 Bloodpetals and return to Muigin.
   collect 15 Bloodpetal##11316 |q 4141 |goto Un'Goro Crater 67.79,31.77 |tip {dropsfrom}Bloodpetal Lasher, Bloodpetal Flayer, Bloodpetal Thresher
 step
@@ -149,24 +162,14 @@ step
   talk J.D. Collie##9117
   accept The Western Pylon##4288 |goto Un'Goro Crater 41.92,2.7
 step
-  note Discover the location of the Western Crystal Pylon.
-  click Western Crystal Pylon##164956 |q 4288 |goto Un'Goro Crater 23.86,59.19
+  note Discover the location of the Northern Crystal Pylon in Un'Goro Crater.
+  click Northern Crystal Pylon##164955 |q 4285 |goto Un'Goro Crater 56.52,12.54
 step
-  only Druid haveq(9052)
-  talk Torwa Pathfinder##9619
-  turnin Bloodpetal Poison##9052 |goto Un'Goro Crater 71.64,75.96
-step
-  only Druid completed(9052) level>=50
-  talk Torwa Pathfinder##9619
-  accept Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
+  note Discover the location of the Eastern Crystal Pylon in Un'Goro Crater.
+  click Eastern Crystal Pylon##164957 |q 4287 |goto Un'Goro Crater 77.16,49.98
 step
   talk Torwa Pathfinder##9619
   accept The Fare of Lar'korwi##4290 |goto Un'Goro Crater 71.64,75.96
-step
-  only Druid haveq(9051)
-  note Stab a Devilsaur with the Devilsaur Barb. Return to Torwa Pathfinder in Un'Goro Crater when you have completed this task.
-  talk Torwa Pathfinder##9619
-  turnin Toxic Test##9051 |goto Un'Goro Crater 71.64,75.96
 step
   note Find the carcass of Lar'korwi's freshest kill and steal a Piece of Threshadon Carcass before returning to Torwa Pathfinder in Un'Goro Crater.
   collect Piece of Threshadon Carcass##11504 |q 4290 |goto Un'Goro Crater 68.74,56.71 |tip {dropsfrom}Fresh Threshadon Carcass
@@ -183,11 +186,8 @@ step
   talk Torwa Pathfinder##9619
   turnin The Scent of Lar'korwi##4291 |goto Un'Goro Crater 71.64,75.96
 step
-  note Discover the location of the Eastern Crystal Pylon in Un'Goro Crater.
-  click Eastern Crystal Pylon##164957 |q 4287 |goto Un'Goro Crater 77.16,49.98
-step
-  note Discover the location of the Northern Crystal Pylon in Un'Goro Crater.
-  click Northern Crystal Pylon##164955 |q 4285 |goto Un'Goro Crater 56.52,12.54
+  note Discover the location of the Western Crystal Pylon.
+  click Western Crystal Pylon##164956 |q 4288 |goto Un'Goro Crater 23.86,59.19
 step
   talk J.D. Collie##9117
   turnin The Northern Pylon##4285 |goto Un'Goro Crater 41.92,2.7
@@ -201,12 +201,12 @@ step
   talk J.D. Collie##9117
   accept Making Sense of It##4321 |goto Un'Goro Crater 41.92,2.7
 step
+  click Beware of Pterrordax##174682
+  accept Beware of Pterrordax##4501 |goto Un'Goro Crater 43.53,8.44
+step
   note Speak with J.D. Collie in a moment.
   talk J.D. Collie##9117
   turnin Making Sense of It##4321 |goto Un'Goro Crater 41.92,2.7
-step
-  click Beware of Pterrordax##174682
-  accept Beware of Pterrordax##4501 |goto Un'Goro Crater 43.53,8.44
 step
   only level>=50
   talk Spraggle Frock##9997
@@ -226,6 +226,27 @@ step
 step
   talk Torwa Pathfinder##9619
   accept The Apes of Un'Goro##4289 |goto Un'Goro Crater 71.64,75.96
+step
+  only level>=50
+  talk Torwa Pathfinder##9619
+  accept Uncanny Crystal##87492 |goto Un'Goro Crater 71.64,75.96
+step
+  talk Torwa Pathfinder##9619
+  accept Microcrystal Contamination##87494 |goto Un'Goro Crater 71.64,75.96
+step
+  only haveq(87492)
+  note Bring 1 Damaged Blue Crystal back to Torwa Pathfinder.
+  collect 1 Damaged Blue Crystal##280417 |q 87492 |goto Un'Goro Crater 66.2,75.12
+step
+  note Take the Crystal Infused Scale to Torwa Pathfinder.
+  collect Crystal Infused Scale##280459 |q 87494 |goto Un'Goro Crater 64.16,74.25 |tip {dropsfrom}Ravasaur, Ravasaur Runner, Ravasaur Hunter
+step
+  only haveq(87492)
+  talk Torwa Pathfinder##9619
+  turnin Uncanny Crystal##87492 |goto Un'Goro Crater 71.64,75.96
+step
+  talk Torwa Pathfinder##9619
+  turnin Microcrystal Contamination##87494 |goto Un'Goro Crater 71.64,75.96
 step
   only haveq(4492)
   talk Ringo##9999
@@ -285,6 +306,10 @@ step
   talk Torwa Pathfinder##9619
   turnin The Mighty U'cha##4301 |goto Un'Goro Crater 71.64,75.96
 step
+  only level>=55
+  talk Hol'anyee Marshal##9271
+  accept Hol'anyee's Big Book of Big Lizards##92020 |goto Un'Goro Crater 43.89,7.24
+step
   talk Jenal##9047
   turnin Un'Goro Soil##3764 |goto Darnassus 31.49,8.23 |tip {turninat}Darnassus
 step
@@ -326,6 +351,6 @@ step
   talk Quintis Jonespyre##7879
   turnin Jonespyre's Request##3788 |goto Feralas 32.45,43.79 |tip {turninat}Feralas
 step
-  note {travel}Searing Gorge
-  goto Searing Gorge 39.06,38.99
+  note {travel}Felwood
+  goto Felwood 50.93,85.01
 ]])

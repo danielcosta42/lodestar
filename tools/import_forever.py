@@ -1,8 +1,11 @@
 """Monta o banco do Forever no formato que o roteador já consome.
 
 Entrada:
-  QuestieDB_Forever.toc            a base: quests, NPCs, objetos, itens e zonas do
-                                   Forever, coordenada já neste cliente (questiedb.py)
+  QuestieDB (addon ou repositório) a base: quests, NPCs, objetos, itens e zonas do
+                                   Forever, coordenada já neste cliente (questiedb.py).
+                                   O addon empacotado traz o QuestieDB_Forever.toc baked;
+                                   o repositório-fonte (github.com/Questie/QuestieDB) é lido
+                                   pelo próprio gerador dele, com as correções do Forever
   build/scan.json                  o que o cliente do Forever respondeu em jogo
                                    (import_scan.py) — só preenche lacuna da base
   build/QuestV2-<build>.csv        ids de quest dos dois clientes (wago.tools)
@@ -31,7 +34,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 BUILD = os.path.join(HERE, "build")
 OUT = os.path.join(BUILD, "forever")
 
-FOREVER = "1.60.1.70245"
+FOREVER = "1.60.1.71139"
 ANNIV = "2.5.6.69795"
 
 
@@ -191,7 +194,12 @@ def main(argv):
     # não vira |goto. Upgrade: no emit_do do router.py, quando não houver alvo com
     # spawn, emitir o goto a partir de q["objPoints"][area][0].
 
-    fonte = {"questiedb": banco["versao"], "forever": FOREVER, "anniversary": ANNIV}
+    origem = banco["origem"]
+    fonte = {"questiedb": banco["versao"], "questiedb_modo": origem["modo"],
+             "questiedb_commit": origem.get("commit"), "questiedb_data": origem.get("data"),
+             "forever": FOREVER, "anniversary": ANNIV}
+    if origem.get("correcoes"):
+        fonte["questiedb_correcoes"] = origem["correcoes"]
     os.makedirs(OUT, exist_ok=True)
     for nome, dado in (("quests", quests), ("npcs", npcs), ("objects", objetos),
                        ("zones", zonas), ("items", itens), ("xp", banco["xp"]), ("fonte", fonte)):
@@ -199,8 +207,13 @@ def main(argv):
             json.dump(dado, fh, ensure_ascii=False, sort_keys=True)
     novas = sum(1 for q in quests if int(q) >= 30000)
     print("gravado em", os.path.normpath(OUT))
-    print("  QuestieDB %s: %d quests (%d novas do Forever) | tiradas (Anniversary tem, "
-          "Forever %s não): %d" % (banco["versao"], len(quests), novas, FOREVER, len(tiradas)))
+    print("  QuestieDB %s (%s%s): %d quests (%d novas do Forever) | tiradas (Anniversary tem, "
+          "Forever %s não): %d" % (banco["versao"], origem["modo"],
+                                   " %s" % origem["commit"] if origem.get("commit") else "",
+                                   len(quests), novas, FOREVER, len(tiradas)))
+    if origem.get("correcoes"):
+        print("  correções estáticas do QuestieDB: %(valores)d valores, %(funcoes)d funções, "
+              "%(arquivos)d arquivos" % origem["correcoes"])
     print("  pré-requisitos em ciclo retirados:", ciclos, "| objetivos na ordem do cliente:", reordenadas)
     print("  só o cliente conhecia:", do_cliente, "| com waypoint do servidor:", com_wp)
     if sem_area:

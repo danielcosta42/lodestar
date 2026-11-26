@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Winterspring (54-59)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Silithus (57-60)",
-	rev = "0c3b05fe",
+	next = "Leveling/Alliance/Mount Hyjal (56-59)",
+	rev = "214d9b72",
 }, [[
 step
   ding 53
@@ -25,24 +25,6 @@ step
   talk Salfa##11556
   turnin Speak to Salfa##8465 |goto Winterspring 27.73,34.5
 step
-  only haveq(980)
-  note Travel to Winterspring and speak with Donova Snowden.
-  talk Donova Snowden##9298
-  turnin The New Springs##980 |goto Winterspring 31.27,45.16
-step
-  only haveq(3908)
-  note Take Linken's Sword to Donova Snowden in Winterspring.
-  talk Donova Snowden##9298
-  turnin It's a Secret to Everybody##3908 |goto Winterspring 31.27,45.16
-step
-  only completed(3908)
-  talk Donova Snowden##9298
-  accept The Videre Elixir##3909 |goto Winterspring 31.27,45.16
-step
-  only completed(980)
-  talk Donova Snowden##9298
-  accept Strange Sources##4842 |goto Winterspring 31.27,45.16
-step
   only level>=53
   talk Wynd Nightchaser##11079
   accept The Ruins of Kel'Theril##5244 |goto Winterspring 51.97,30.39
@@ -55,6 +37,10 @@ step
   note {fp}Maethrya
   goto Winterspring 62.33,36.61 |tip {vendor}
 step
+  only hasitem(12771)
+  use Empty Firewater Flask##12771 |tip It starts the quest.
+  accept Winterfall Firewater##5083
+step
   only completed(4808)
   talk Felnok Steelspring##10468
   accept Chillwind Horns##4809 |goto Winterspring 61.63,38.61
@@ -65,16 +51,22 @@ step
   talk Meggi Peppinrocker##11754
   accept Trouble in Winterspring!##6603 |goto Winterspring 60.66,38.17
 step
-  only hasitem(12771)
-  use Empty Firewater Flask##12771 |tip It starts the quest.
-  accept Winterfall Firewater##5083
-step
   note Collect 10 Thick Yeti Furs for Umi Rumplesnicker in Everlook.
   collect 10 Thick Yeti Fur##12366 |q 3783 |goto Winterspring 43.59,38.51 |tip {dropsfrom}Rogue Ice Thistle, Ice Thistle Yeti
 step
   only completed(4808)
   note Bring 8 Uncracked Chillwind Horns to Felnok Steelspring.
   collect 8 Uncracked Chillwind Horn##12444 |q 4809 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
+step
+  only haveq(980)
+  note Travel to Winterspring and speak with Donova Snowden.
+  talk Donova Snowden##9298
+  turnin The New Springs##980 |goto Winterspring 31.27,45.16
+step
+  only haveq(3908)
+  note Take Linken's Sword to Donova Snowden in Winterspring.
+  talk Donova Snowden##9298
+  turnin It's a Secret to Everybody##3908 |goto Winterspring 31.27,45.16
 step
   only haveq(5083)
   note Bring the Empty Firewater Flask to Donova Snowden in Winterspring.
@@ -84,6 +76,14 @@ step
   note Find Donova Snowden near the hot springs in Winterspring.
   talk Donova Snowden##9298
   turnin Trouble in Winterspring!##6603 |goto Winterspring 31.27,45.16
+step
+  only completed(3908)
+  talk Donova Snowden##9298
+  accept The Videre Elixir##3909 |goto Winterspring 31.27,45.16
+step
+  only completed(980)
+  talk Donova Snowden##9298
+  accept Strange Sources##4842 |goto Winterspring 31.27,45.16
 step
   talk Donova Snowden##9298
   accept Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
@@ -100,16 +100,16 @@ step
   talk Donova Snowden##9298
   turnin Threat of the Winterfall##5082 |goto Winterspring 31.27,45.16
 step
-  only completed(980)
-  note Follow Donova Snowden's instructions, then report back.
-  goto Winterspring 59.82,74.25 |tip Discover Darkwhisper Gorge
-step
   talk Umi Rumplesnicker##10305
   turnin Are We There, Yeti?##3783 |goto Winterspring 60.88,37.62
 step
   only completed(4808)
   talk Felnok Steelspring##10468
   turnin Chillwind Horns##4809 |goto Winterspring 61.63,38.61
+step
+  only completed(980)
+  note Follow Donova Snowden's instructions, then report back.
+  goto Winterspring 59.82,74.25 |tip Discover Darkwhisper Gorge
 step
   only completed(980)
   talk Donova Snowden##9298
@@ -194,9 +194,21 @@ step
   note Protect Ranshalla while she attempts to reactivate the Altar of Elune. Report your findings to Erelas Ambersky in Rut'theran Village.
   goto Winterspring 64.85,63.73 |tip Discover the secret of the Altar of Elune
 step
+  only haveq(4864)
+  talk Jaron Stoneshaper##10301
+  turnin Enraged Wildkin##4864 |goto Winterspring 52.14,30.43
+step
   only level>=55
   talk Harlo Wigglesworth##11755
   accept A Little Luck##6606 |goto Winterspring 61.12,38.43
+step
+  only level>=55
+  talk Evie Whirlbrew##11188
+  accept Shroud of the Winter Wilds##92859 |goto Winterspring 60.75,37.78
+step
+  only level>=60
+  talk Umaron Stragarelm##11757
+  accept Halt the Hail##97490 |goto Winterspring 61.86,38.23
 step
   only haveq(6606)
   note Speak with Witch Doctor Mau'ari in Everlook.
@@ -207,6 +219,16 @@ step
   talk Witch Doctor Mau'ari##10307
   accept Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
+  only haveq(92859)
+  note Bring 5 Winterspring Chimaera Fur and 5 Winterspring Owl Feathers to Evie Whirlbrew.
+  collect 5 Winterspring Owl Feather##281242 |q 92859/2 |goto Winterspring 60.91,33.9 |tip {dropsfrom}Winterspring Owl, Winterspring Screecher
+  collect Chillwind Chimaera Fur##281241 |q 92859 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
+step
+  only haveq(97490)
+  note Search the southern hills of Winterspring for the giant known as Hailspite and recover the frost moss that grows upon him.
+  kill Hailspite##269213 |q 97490 |goto Winterspring 65.93,56.88 |elite
+  collect Hailspite Frostmoss##278091 |q 97490 |goto Winterspring 65.93,56.88
+step
   only haveq(969)
   note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
   collect 4 Frostmaul Shards##12334 |q 969 |goto Winterspring 61.84,67.99
@@ -215,18 +237,26 @@ step
   talk Witch Doctor Mau'ari##10307
   turnin Luck Be With You##969 |goto Winterspring 61.92,38.3
 step
+  only haveq(92859)
+  talk Evie Whirlbrew##11188
+  turnin Shroud of the Winter Wilds##92859 |goto Winterspring 60.75,37.78
+step
+  only haveq(97490)
+  talk Umaron Stragarelm##11757
+  turnin Halt the Hail##97490 |goto Winterspring 61.86,38.23
+step
   only completed(969) level>=55
   talk Witch Doctor Mau'ari##10307
   accept Cache of Mau'ari##975 |goto Winterspring 61.92,38.3
+step
+  only completed(92859) level>=55
+  talk Evie Whirlbrew##11188
+  accept Shroud of the Winter Wilds##98462 |goto Winterspring 60.75,37.78
 step
   only haveq(975)
   note Speak to Witch Doctor Mau'ari again in a moment to receive the lucky charm.
   talk Witch Doctor Mau'ari##10307
   turnin Cache of Mau'ari##975 |goto Winterspring 61.92,38.3
-step
-  only haveq(4864)
-  talk Jaron Stoneshaper##10301
-  turnin Enraged Wildkin##4864 |goto Winterspring 52.14,30.43
 step
   only completed(5160) level>=57
   talk Haleh##10929
@@ -236,6 +266,25 @@ step
   note Speak with Haleh if you wish to continue.
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
+step
+  only haveq(98462)
+  note Bring 5 Chillwind Chimaera Fur and 5 Winterspring Owl Feathers to Evie Whirlbrew.
+  collect 5 Chillwind Chimaera Fur##281241 |q 98462/1 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
+  collect 5 Winterspring Owl Feather##281242 |q 98462 |goto Winterspring 60.91,33.9 |tip {dropsfrom}Winterspring Owl, Winterspring Screecher
+step
+  only haveq(98462)
+  talk Evie Whirlbrew##11188
+  turnin Shroud of the Winter Wilds##98462 |goto Winterspring 60.75,37.78
+step
+  only haveq(4986)
+  note Based on the magic enchanted within the Glyphed Oaken Branch, its delivery to the Cenarion Circle in Darnassus is the next step the tauren druid sought. Seek one of the druids there for assistance.
+  talk Mathrengyl Bearwalker##4217
+  turnin Glyphed Oaken Branch##4986 |goto Darnassus 35.37,8.4 |tip {turninat}Darnassus
+step
+  only completed(5248) haveq(5253)
+  note Deliver the Crystal of Zin-Malor to Arch Druid Fandral Staghelm in Darnassus.
+  talk Arch Druid Fandral Staghelm##3516
+  turnin The Crystal of Zin-Malor##5253 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
 step
   only haveq(8471)
   note Take the Winterfall Ritual Totem inside Timbermaw Hold and see if one of the furbolgs there will find a use for the item. The Timbermaw will not speak with you unless you are of Neutral reputation or greater with them.
@@ -283,11 +332,6 @@ step
   note Speak with Arch Druid Fandral Staghelm in Darnassus.
   talk Arch Druid Fandral Staghelm##3516
   turnin Wildkin of Elune##4902 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
-step
-  only completed(5248) haveq(5253)
-  note Deliver the Crystal of Zin-Malor to Arch Druid Fandral Staghelm in Darnassus.
-  talk Arch Druid Fandral Staghelm##3516
-  turnin The Crystal of Zin-Malor##5253 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
 step
   only completed(3908)
   note Go to the graveyard outside Gadgetzan, and use the Videre Elixir. Follow the rest of Donova's instructions to find Gaeriyan.
@@ -425,6 +469,6 @@ step
   talk Linken##8737
   turnin It's Dangerous to Go Alone##3962 |goto Un'Goro Crater 44.66,8.1 |tip {turninat}Un'Goro Crater
 step
-  note {travel}Silithus
-  goto Silithus 51.61,38.63
+  note {travel}Mount Hyjal
+  goto Mount Hyjal 75.27,77.38
 ]])

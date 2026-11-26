@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Warrior", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "2aebde70",
+	rev = "88e13c57",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -79,7 +79,7 @@ step
   turnin Simple Sigil##3116 |goto Teldrassil 59.64,38.44
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -89,7 +89,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49

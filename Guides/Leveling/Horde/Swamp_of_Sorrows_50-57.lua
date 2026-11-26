@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (50-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Eastern Plaguelands (56-60)",
-	rev = "c44f75d7",
+	next = "Leveling/Horde/Tirisfal Glades (53-60)",
+	rev = "b27982ea",
 }, [[
 step
   ding 49
@@ -69,6 +69,19 @@ step
   talk Fallen Hero of the Horde##7572
   accept The Stones That Bind Us##2681 |goto Swamp of Sorrows 34.29,66.14
 step
+  only completed(93678)
+  talk Magtoor##1776
+  accept Visions of Another##93679 |goto Swamp of Sorrows 25.98,31.4
+step
+  only completed(93678)
+  note Watch Onku's vision with Magtoor.
+  talk Magtoor##1776
+  turnin Visions of Another##93679 |goto Swamp of Sorrows 25.98,31.4
+step
+  only completed(93678)
+  talk Magtoor##1776
+  accept The Found One##93684 |goto Swamp of Sorrows 25.98,31.4
+step
   only Warrior level>=50
   talk Christoph Walker##4593
   accept A Troubled Spirit##8417 |goto Undercity 46.93,15.23
@@ -82,15 +95,41 @@ step
   talk Fallen Hero of the Horde##7572
   accept Warrior Kinship##8423 |goto Swamp of Sorrows 34.29,66.14
 step
+  only completed(93678)
+  note Find the draenei searching for draenethyst in the Blasted Lands.
+  talk Kum'isha the Collector##7363
+  turnin The Found One##93684 |goto Blasted Lands 51.98,35.65 |tip {turninat}Blasted Lands
+step
+  only completed(93678)
+  talk Kum'isha the Collector##7363
+  accept To Serve Kum'isha##93685 |goto Blasted Lands 51.98,35.65
+step
   only Warrior haveq(8423)
   note Kill 7 Helboar in the Blasted Lands and return to the Fallen Hero of the Horde.
   kill Helboar##5993 |q 8423 |goto Blasted Lands 50.2,38.6
 step
   note Free nine Servants of Razelikh, three Servants of Sevine, three Servants of Allistarj, and three Servants of Grol. Return to the Fallen Hero when your task is complete. You must remain within close proximity of the stones or the process will fail.
+  kill Servant of Sevine##7671 |q 2681/4 |goto Blasted Lands 40.99,40.09
   kill Servant of Razelikh##7668 |q 2681/1 |goto Blasted Lands 54.09,52.49
   kill Servant of Allistarj##7670 |q 2681/3 |goto Blasted Lands 63.33,40.83
-  kill Servant of Sevine##7671 |q 2681/4 |goto Blasted Lands 40.99,40.09
   kill Servant of Grol##7669 |q 2681 |goto Blasted Lands 41.22,14.43
+step
+  only completed(93678)
+  note Find a Flawless Draenethyst Sphere in the Blasted Lands, and bring it to Kum'isha the Collector.
+  collect Flawless Draenethyst Sphere##8244 |q 93685 |goto Blasted Lands 41.7,14.64 |tip {dropsfrom}Dreadmaul Ogre, Dreadmaul Ogre Mage, Dreadmaul Brute
+step
+  only completed(93678)
+  talk Kum'isha the Collector##7363
+  turnin To Serve Kum'isha##93685 |goto Blasted Lands 51.98,35.65 |tip {turninat}Blasted Lands
+step
+  only completed(93678)
+  talk Kum'isha the Collector##7363
+  accept To Serve The Draenei##93572 |goto Blasted Lands 51.98,35.65
+step
+  only completed(93678)
+  note Protect the draenei refugees as they pass through Kum'isha's rift to Outland. None of the refugees may die.
+  talk Kum'isha the Collector##7363
+  turnin To Serve The Draenei##93572 |goto Blasted Lands 51.98,35.65 |tip {turninat}Blasted Lands
 step
   only Warrior haveq(8423)
   talk Fallen Hero of the Horde##7572
@@ -140,6 +179,6 @@ step
   talk Fallen Hero of the Horde##7572
   turnin The Cover of Darkness##2743 |goto Swamp of Sorrows 34.29,66.14
 step
-  note {travel}Undercity
-  goto Undercity 58.05,91.79
+  note {travel}Tirisfal Glades
+  goto Tirisfal Glades 83.13,68.94
 ]])

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Paladin", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "e1f69a95",
+	rev = "aed26263",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -49,6 +49,14 @@ step
   note Read the Consecrated Letter and speak to Brother Sammuel in Northshire Abbey.
   talk Brother Sammuel##925
   turnin Consecrated Letter##3101 |goto Elwynn Forest 50.43,42.12
+step
+  only Paladin
+  talk Ada Gelhardt##205153
+  accept A Taste of Darkness##95771 |goto Duskwood 4.39,28.4
+step
+  only Paladin
+  talk Ada Gelhardt##205153
+  turnin A Taste of Darkness##95771 |goto Duskwood 4.39,28.4
 step
   only Dwarf Paladin not completed(2999) not completed(3000) not haveq(2999) not haveq(3000)
   talk Azar Stronghammer##1232
@@ -375,20 +383,37 @@ step
   talk Duthorian Rall##6171
   turnin The Tome of Valor##1793 |goto Stormwind City 50.48,47.49
 step
-  only Dwarf Paladin not completed(1661) not completed(4486) not haveq(1661) not haveq(4486)
+  only Paladin
+  talk Katherine the Pure##5492
+  accept Battle at the Mannoroc Coven##96438 |goto Stormwind City 48.48,49.09
+step
+  only Paladin
+  note Investigate the battle at the Mannoroc Coven in Desolace.
+  turnin Battle at the Mannoroc Coven##96438 |goto Desolace 52.72,84.76
+step
+  only Paladin
+  talk Harold Riggs##3179
+  accept Aeonas's Secret Refuge##96449 |goto Wetlands 8.08,58.59
+step
+  only Paladin
+  note Use the Old Dingy at Menethil Harbor to search for Aeonas.
+  talk Slain Scarlet Crusader##217957
+  turnin Aeonas's Secret Refuge##96449 |goto Dun Morogh 11.45,75.71
+step
+  only Dwarf Paladin not completed(4486) not haveq(4486)
   talk Tiza Battleforge##6179
   accept The Tome of Nobility##4485 |goto Ironforge 27.63,12.18
 step
-  only Dwarf Paladin not completed(1661) not completed(4486) not haveq(1661) not haveq(4486)
+  only Dwarf Paladin not completed(4486) not haveq(4486)
   note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Nobility##4485 |goto Stormwind City 50.48,47.49
 step
-  only Human Paladin not completed(4485) not completed(4486) not haveq(4485) not haveq(4486)
+  only not NightElf not Gnome not Skyborne Paladin
   talk Duthorian Rall##6171
   accept The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
 step
-  only Human Paladin not completed(4485) not completed(4486) not haveq(4485) not haveq(4486)
+  only not NightElf not Gnome not Skyborne Paladin
   note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
@@ -436,6 +461,18 @@ step
   turnin Forging the Mightstone##8418 |goto Western Plaguelands 42.7,84.03
 step
   only Paladin
+  talk Katherine the Pure##5492
+  accept In Search of Aeonas##96476 |goto Stormwind City 48.48,49.09
+step
+  only Paladin
+  note Search for signs of Aeonas the Vindicated at the Emerald Sanctuary in Felwood.
+  goto Felwood 43.02,57.07 |tip Follow Aeonas's trail in Felwood
+step
+  only Paladin
+  talk Aeonas the Vindicated##221587
+  turnin In Search of Aeonas##96476 |goto Felwood 45.06,52.08
+step
+  only Paladin
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
@@ -444,112 +481,137 @@ step
   talk Lorekeeper Mykos##14382
   turnin The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   accept An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
   collect 15 Winterspring Blood Sample##21928 |q 8908 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   turnin An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
 step
+  only not completed(84150) not haveq(84150)
   talk Deliana##16013
   accept A Supernatural Device##8922 |goto Ironforge 43.53,52.64
 step
+  only not completed(84150) not haveq(84150)
   note Bring the Sealed Blood Container to Mux Manascrambler inside Gadgetzan in Tanaris.
   talk Mux Manascrambler##16014
   turnin A Supernatural Device##8922 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   accept The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   note Return to Mux Manascrambler in Gadgetzan with 1 Delicate Arcanite Converter, 4 Greater Eternal Essence, 10 Stonescale Oil, 25 Volcanic Ash and 40 gold.
   collect 1 Delicate Arcanite Converter##16006 |q 8921/1 |tip Crafted or bought.
   collect 4 Greater Eternal Essence##16203 |q 8921/2 |tip Crafted or bought.
   collect 10 Stonescale Oil##13423 |q 8921/3 |tip Crafted or bought.
   collect 25 Volcanic Ash##22338 |q 8921 |goto Burning Steppes 60.12,40.36
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   turnin The Ectoplasmic Distiller##8921 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   accept Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   note Use the Ectoplasmic Distiller near incorporeal undead to collect 12 Scorched Ectoplasms in Silithus, 12 Frozen Ectoplasms in Winterspring and 12 Stable Ectoplasms in the Eastern Plaguelands. Bring them along with the Ectoplasmic Distiller back to Mux Manascrambler in Gadgetzan.
   collect 12 Scorched Ectoplasm##21937 |q 8924/1 |goto Silithus 62.65,52.84 |tip {dropsfrom}Tortured Druid, Tortured Sentinel
   collect 12 Frozen Ectoplasm##21936 |q 8924/2 |goto Winterspring 53.58,43.48 |tip {dropsfrom}Suffering Highborne, Anguished Highborne
   collect 12 Stable Ectoplasm##21935 |q 8924 |goto Eastern Plaguelands 52.9,55.8 |tip {dropsfrom}Unseen Servant, Eyeless Watcher, Torn Screamer
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   turnin Hunting for Ectoplasm##8924 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   accept A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   note Find Magma Lord Bokk in the Burning Steppes, obtain his Magma Core and bring it to Mux Manascrambler in Gadgetzan.
   collect Magma Core##21938 |q 8925 |goto Burning Steppes 35.39,57.76 |tip {dropsfrom}Magma Lord Bokk
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   turnin A Portable Power Source##8925 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   accept A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   note Search for an imp inside a cave at the entrance of Darkwhisper Gorge in southern Winterspring, purchase a Fel Elemental Rod and return to Mux Manascrambler in Gadgetzan.
   talk Vi'el##16015
   buy Fel Elemental Rod##21939 |q 8928 |goto Winterspring 58.87,78.39
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   turnin A Shifty Merchant##8928 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   talk Mux Manascrambler##16014
   accept Return to Deliana##8977 |goto Tanaris 52.47,27.23
 step
+  only not completed(84150) not haveq(84150)
   note Bring the Extra-Dimensional Ghost Revealer to Deliana in Ironforge.
   talk Deliana##16013
   turnin Return to Deliana##8977 |goto Ironforge 43.53,52.64
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   accept Just Compensation##8933 |goto Ironforge 43.53,52.64
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   note Bring a Lightforge Belt and a set of Lightforge Gauntlets to Deliana in Ironforge.
   collect Lightforge Belt##16723 |q 8933 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   turnin Just Compensation##8933 |goto Ironforge 43.53,52.64
 step
+  only not completed(84150) not haveq(84150)
   talk Deliana##16013
   accept In Search of Anthion##8929 |goto Ironforge 43.53,52.64
 step
+  only not completed(84150) not haveq(84150)
   note Use the Extra-Dimensional Ghost Revealer at the entrance to Stratholme and speak with the ghost of Anthion Harmon.
   talk Anthion Harmon##16016
   turnin In Search of Anthion##8929 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not completed(84150) not haveq(84150)
   talk Anthion Harmon##16016
   accept Dead Man's Plea##8945 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not completed(84150) not haveq(84150)
   note Go into Stratholme and rescue Ysida Harmon from Baron Rivendare.
   talk Ysida Harmon##16031 |q 8945 |goto Stratholme - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   talk Ysida Harmon##16031
   turnin Dead Man's Plea##8945 |goto Stratholme - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   talk Ysida Harmon##16031
   accept Proof of Life##8946 |goto Stratholme - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   note Bring Ysida's Locket to Anthion Harmon in Eastern Plaguelands.
   talk Anthion Harmon##16016
   turnin Proof of Life##8946 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not completed(84150) not haveq(84150)
   talk Anthion Harmon##16016
   accept Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not completed(84150) not haveq(84150)
   note Bring 3 Dark Iron Bars, 20 Enchanted Leather, 3 Mooncloth and 4 Cured Rugged Hides to Anthion Harmon in the Eastern Plaguelands.
   collect 3 Dark Iron Bar##11371 |q 8947/1 |tip Crafted or bought.
   talk Lhara##14846
@@ -557,67 +619,83 @@ step
   collect 3 Mooncloth##14342 |q 8947/3 |tip Crafted or bought.
   collect 4 Cured Rugged Hide##15407 |q 8947 |tip Crafted or bought.
 step
+  only not completed(84150) not haveq(84150)
   talk Anthion Harmon##16016
   turnin Anthion's Strange Request##8947 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not completed(84150) not haveq(84150)
   talk Anthion Harmon##16016
   accept Anthion's Old Friend##8948 |goto Eastern Plaguelands 26.11,11.3
 step
+  only not completed(84150) not haveq(84150)
   note Take the incomplete Banner of Provocation to Falrin Treeshaper at the library in Dire Maul.
   talk Falrin Treeshaper##16032
   turnin Anthion's Old Friend##8948 |goto Dire Maul - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   talk Falrin Treeshaper##16032
   accept Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   note Collect 25 Ogre Warbeads from Ogres inside Dire Maul or Blackrock Spire and return to Falrin Treeshaper inside the Athenaeum in Dire Maul.
   collect 25 Ogre Warbeads##21982 |q 8949 |goto Feralas 59.7,42.73 |tip {dropsfrom}Gordok Enforcer, Gordok Mauler, Gordok Ogre-Mage
 step
+  only not completed(84150) not haveq(84150)
   talk Falrin Treeshaper##16032
   turnin Falrin's Vendetta##8949 |goto Dire Maul - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   talk Falrin Treeshaper##16032
   accept The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   note Bring the following to Falrin Treeshaper inside Dire Maul: 1 Jeering Spectre's Essence, 4 Dark Runes and 8 Large Brilliant Shards.
   collect 1 Jeering Spectre's Essence##22224 |q 8950/1 |goto Dire Maul - Dungeon -1,-1 |elite |tip {dropsfrom}Eldreth Sorcerer, Eldreth Apparition, Eldreth Spirit
   collect 4 Dark Rune##20520 |q 8950/2 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Scholomance Necromancer, Lady Illucia Barov, Instructor Malicia
   collect 8 Large Brilliant Shard##14344 |q 8950 |tip Crafted or bought.
 step
+  only not completed(84150) not haveq(84150)
   talk Falrin Treeshaper##16032
   turnin The Instigator's Enchantment##8950 |goto Dire Maul - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   talk Falrin Treeshaper##16032
   accept The Challenge##9015 |goto Dire Maul - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   note Travel to the Ring of the Law in Blackrock Depths and place the Banner of Provocation in its center as you are sentenced by High Justice Grimstone. Slay Theldren and his gladiators and return to Anthion Harmon in the Eastern Plaguelands with the first piece of Lord Valthalak's amulet.
   kill Theldren##16059 |q 9015 |goto Blackrock Depths - Dungeon -1,-1 |elite
 step
+  only not completed(84150) not haveq(84150)
   talk Anthion Harmon##16016
   turnin The Challenge##9015 |goto Eastern Plaguelands 26.11,11.3
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Anthion Harmon##16016
   accept Anthion's Parting Words##8954 |goto Eastern Plaguelands 26.11,11.3
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   note Return to Deliana in Ironforge with a set of Lightforge Boots, Lightforge Legplates and Lightforge Spaulders.
   collect Lightforge Boots##16725 |q 8954 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Balnazzar
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   turnin Anthion's Parting Words##8954 |goto Ironforge 43.53,52.64
 step
+  only not completed(84150) not haveq(84150)
   talk Deliana##16013
   accept Bodley's Unfortunate Fate##8960 |goto Ironforge 43.53,52.64
 step
+  only not completed(84150) not haveq(84150)
   note Travel to Blackrock Mountain and use the Extra-Dimensional Ghost Revealer to find Bodley near Blackrock Spire.
   talk Bodley##16033
   turnin Bodley's Unfortunate Fate##8960 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   accept Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   note Gather the Incendicite of Incendius, the Ember of Emberseer and the Cinder of Cynders, along with a Hallowed Brazier, and return them to Bodley inside Blackrock Mountain.
   collect Incendicite of Incendius##21987 |q 8961/1 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Lord Incendius
   collect Ember of Emberseer##21988 |q 8961/2 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}Pyroguard Emberseer
@@ -626,112 +704,127 @@ step
   talk Argent Quartermaster Hasana##10856
   buy Hallowed Brazier##22014 |q 8961 |goto Tirisfal Glades 83.26,68.14
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   turnin Three Kings of Flame##8961 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
-  only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
+  only not completed(84150) not completed(8963) not completed(8964) not completed(8965) not haveq(84150) not haveq(8963) not haveq(8964) not haveq(8965)
   talk Bodley##16033
   accept Components of Importance##8962 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
-  only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
+  only not completed(84150) not completed(8963) not completed(8964) not completed(8965) not haveq(84150) not haveq(8963) not haveq(8964) not haveq(8965)
   note Acquire Druidical Remains and return them to Bodley inside Blackrock Mountain.
   kill Hive'Regal Ambusher##11730 |q 8962 |goto Silithus 58.08,86.89 |elite
   collect Druidical Remains##22226 |q 8962 |goto Silithus 58.08,86.89
 step
-  only not completed(8963) not completed(8964) not completed(8965) not haveq(8963) not haveq(8964) not haveq(8965)
+  only not completed(84150) not completed(8963) not completed(8964) not completed(8965) not haveq(84150) not haveq(8963) not haveq(8964) not haveq(8965)
   talk Bodley##16033
   turnin Components of Importance##8962 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
-  only not completed(8967) not completed(8968) not completed(8969) not haveq(8967) not haveq(8968) not haveq(8969)
+  only not completed(84150) not completed(8967) not completed(8968) not completed(8969) not haveq(84150) not haveq(8967) not haveq(8968) not haveq(8969)
   talk Bodley##16033
   accept The Left Piece of Lord Valthalak's Amulet##8966 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
-  only not completed(8967) not completed(8968) not completed(8969) not haveq(8967) not haveq(8968) not haveq(8969)
+  only not completed(84150) not completed(8967) not completed(8968) not completed(8969) not haveq(84150) not haveq(8967) not haveq(8968) not haveq(8969)
   note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the Left Piece of Lord Valthalak's Amulet and the Brazier of Beckoning.
   kill Mor Grayhoof##16080 |q 8966 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
-  only not completed(8967) not completed(8968) not completed(8969) not haveq(8967) not haveq(8968) not haveq(8969)
+  only not completed(84150) not completed(8967) not completed(8968) not completed(8969) not haveq(84150) not haveq(8967) not haveq(8968) not haveq(8969)
   talk Bodley##16033
   turnin The Left Piece of Lord Valthalak's Amulet##8966 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   accept I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   note Gather 20 Bloodkelp from the Strashaz naga and then return to Bodley inside Blackrock Mountain.
   collect 20 Bloodkelp##22094 |q 8970 |goto Dustwallow Marsh 76.94,19.81 |tip {dropsfrom}Basket of Bloodkelp, Strashaz Warrior, Strashaz Serpent Guard
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   turnin I See Alcaz Island In Your Future...##8970 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
-  only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
+  only not completed(84150) not completed(8986) not completed(8987) not completed(8988) not haveq(84150) not haveq(8986) not haveq(8987) not haveq(8988)
   talk Bodley##16033
   accept More Components of Importance##8985 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
-  only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
+  only not completed(84150) not completed(8986) not completed(8987) not completed(8988) not haveq(84150) not haveq(8986) not haveq(8987) not haveq(8988)
   note Acquire a Starbreeze Village Relic and return it to Bodley inside Blackrock Mountain.
   kill Frostmaul Giant##7428 |q 8985 |goto Winterspring 62.56,69.55 |elite
   collect Starbreeze Village Relic##22227 |q 8985 |goto Winterspring 62.56,69.55
 step
-  only not completed(8986) not completed(8987) not completed(8988) not haveq(8986) not haveq(8987) not haveq(8988)
+  only not completed(84150) not completed(8986) not completed(8987) not completed(8988) not haveq(84150) not haveq(8986) not haveq(8987) not haveq(8988)
   talk Bodley##16033
   turnin More Components of Importance##8985 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
-  only not completed(8990) not completed(8991) not completed(8992) not haveq(8990) not haveq(8991) not haveq(8992)
+  only not completed(84150) not completed(8990) not completed(8991) not completed(8992) not haveq(84150) not haveq(8990) not haveq(8991) not haveq(8992)
   talk Bodley##16033
   accept The Right Piece of Lord Valthalak's Amulet##8989 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
-  only not completed(8990) not completed(8991) not completed(8992) not haveq(8990) not haveq(8991) not haveq(8992)
+  only not completed(84150) not completed(8990) not completed(8991) not completed(8992) not haveq(84150) not haveq(8990) not haveq(8991) not haveq(8992)
   note Use the Brazier of Beckoning to summon forth the spirit of Mor Grayhoof and slay him. Return to Bodley inside Blackrock Mountain with the recombined Lord Valthalak's Amulet and the Brazier of Beckoning.
   kill Mor Grayhoof##16080 |q 8989 |goto Blackrock Spire - Dungeon -1,-1 |elite
 step
-  only not completed(8990) not completed(8991) not completed(8992) not haveq(8990) not haveq(8991) not haveq(8992)
+  only not completed(84150) not completed(8990) not completed(8991) not completed(8992) not haveq(84150) not haveq(8990) not haveq(8991) not haveq(8992)
   talk Bodley##16033
   turnin The Right Piece of Lord Valthalak's Amulet##8989 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   accept Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   note Gather 40 Blackrock Bracers and acquire a Flask of Supreme Power. Return them to Bodley inside Blackrock Mountain.
   collect 40 Blackrock Bracer##22138 |q 8994/1 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Blackhand Incarcerator, Scarshield Acolyte, Scarshield Legionnaire
   collect Flask of Supreme Power##13512 |q 8994 |tip Crafted or bought.
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   turnin Final Preparations##8994 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   accept Mea Culpa, Lord Valthalak##8995 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   note Use the Brazier of Beckoning to summon Lord Valthalak. Dispatch him, and use Lord Valthalak's Amulet on the corpse. Then, return Lord Valthalak's Amulet to the Spirit of Lord Valthalak.
   use Lord Valthalak##16042 |q 8995 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {useit}
 step
+  only not completed(84150) not haveq(84150)
   talk Spirit of Lord Valthalak##16073
   turnin Mea Culpa, Lord Valthalak##8995 |goto Blackrock Spire - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   talk Spirit of Lord Valthalak##16073
   accept Return to Bodley##8996 |goto Blackrock Spire - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   note Return to Bodley inside Blackrock Mountain and give him the Brazier of Beckoning.
   collect Brazier of Beckoning##22056 |q 8996 |goto Blackrock Spire - Dungeon -1,-1
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   turnin Return to Bodley##8996 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   talk Bodley##16033
   accept Back to the Beginning##8997 |goto Eastern Kingdoms - the continent map 48.9,63.93
 step
+  only not completed(84150) not haveq(84150)
   note Speak with Deliana at The High Seat in Ironforge.
   talk Deliana##16013
   turnin Back to the Beginning##8997 |goto Ironforge 43.53,52.64
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   accept Saving the Best for Last##9002 |goto Ironforge 43.53,52.64
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   note Give Deliana your Lightforge Helm and Lightforge Breastplate.
   collect Lightforge Helm##16727 |q 9002 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   turnin Saving the Best for Last##9002 |goto Ironforge 43.53,52.64
 step

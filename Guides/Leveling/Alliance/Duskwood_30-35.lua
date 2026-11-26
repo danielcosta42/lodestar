@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (30-35)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Hillsbrad Foothills (29-32)",
-	rev = "a57d277e",
+	rev = "07420247",
 }, [[
 step
   ding 29
@@ -29,9 +29,18 @@ step
   talk Abercrombie##289
   accept Ogre Thieves##134 |goto Duskwood 28.11,31.46
 step
+  only hasitem(281142)
+  use Merrick's Bow##281142 |tip It starts the quest.
+  accept Merrick's Bow##96138
+step
   only completed(133)
   note Return Abercrombie's Crate to Abercrombie.
   collect Abercrombie's Crate##1349 |q 134 |goto Duskwood 33.42,76.35
+step
+  only haveq(96138)
+  note Defeat 8 Splinter Fist Warriors and 4 Splinter Fist Taskmasters then return to Sirra Von'Indi in Darkshire for more information.
+  kill Splinter Fist Warrior##212 |q 96138/1 |goto Duskwood 33.67,76.02
+  kill Splinter Fist Taskmaster##892 |q 96138 |goto Duskwood 36.57,72.44
 step
   only completed(133)
   talk Abercrombie##289
@@ -48,6 +57,10 @@ step
   note Bring Abercrombie's Letter to Ello Ebonlocke, Mayor of Darkshire.
   talk Lord Ello Ebonlocke##263
   turnin Note to the Mayor##160 |goto Duskwood 71.93,46.42
+step
+  only haveq(96138)
+  talk Sirra Von'Indi##268
+  turnin Merrick's Bow##96138 |goto Duskwood 72.62,47.62
 step
   only completed(57)
   talk Commander Althea Ebonlocke##264
@@ -160,6 +173,9 @@ step
   talk Sven Yorgen##311
   accept Morbent Fel##55 |goto Duskwood 7.78,34.07
 step
+  click A Weathered Grave##61
+  accept The Weathered Grave##225 |goto Duskwood 17.73,29.08
+step
   only completed(322) haveq(55)
   note Use Morbent's Bane on Morbent Fel, kill Morbent Fel, then return Morbent's Bane to Sven at his camp.
   kill Morbent Fel##1200 |q 55 |goto Duskwood 16.9,33.4 |elite
@@ -167,9 +183,6 @@ step
   only completed(322) haveq(55)
   talk Sven Yorgen##311
   turnin Morbent Fel##55 |goto Duskwood 7.78,34.07
-step
-  click A Weathered Grave##61
-  accept The Weathered Grave##225 |goto Duskwood 17.73,29.08
 step
   note Speak with Sirra Von'Indi in Darkshire.
   talk Sirra Von'Indi##268
@@ -260,6 +273,15 @@ step
   talk Klockmort Spannerspan##6169
   turnin Klockmort's Creation##1709 |goto Ironforge 67.92,46.1 |tip {turninat}Ironforge
 step
-  note {travel}Stormwind City
-  goto Stormwind City 48.43,50.22
+  only Shaman level>=30
+  talk Eldrun Stormbreaker##258098
+  accept Call of Air##94789 |goto Ironforge 47.1,13.79
+step
+  only Shaman haveq(94789)
+  note Find Veyric Thundervein in Arathi Highlands.
+  talk Veyric Thunderhame##259023
+  turnin Call of Air##94789 |goto Arathi Highlands 59.84,27.57 |tip {turninat}Arathi Highlands
+step
+  note {travel}Hillsbrad Foothills
+  goto Hillsbrad Foothills 46.43,50.2
 ]])

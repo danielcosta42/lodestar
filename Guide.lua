@@ -644,6 +644,30 @@ function ns:BestGuideForPlayer()
 	return best
 end
 
+-- Guia regerado com outra faixa no título (Silverpine Forest 11-20 -> 11-18): a aba e o passo seguem para o da
+-- mesma zona cuja faixa mais se sobrepõe; no empate, o que começa mais perto da faixa velha, depois a chave (a
+-- ordem do pairs muda a cada carga: Alterac 34-40 empatava entre 34-34 e 40-53 e às vezes mandava o 36 ao 50).
+-- keys = { [chave] = qualquer }.
+function ns.RenamedGuideKey(old, keys)
+	local pre, lo, hi = old:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
+	if not pre then return nil end
+	lo, hi = tonumber(lo), tonumber(hi)
+	local best, bestOv, bestGap
+	for k in pairs(keys) do
+		local p2, l2, h2 = k:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
+		if p2 == pre and k ~= old then
+			l2, h2 = tonumber(l2), tonumber(h2)
+			local ov = math.min(hi, h2) - math.max(lo, l2)
+			local gap = math.abs(l2 - lo)
+			if ov >= 0 and (not bestOv or ov > bestOv or (ov == bestOv and (gap < bestGap
+				or (gap == bestGap and k < best)))) then
+				best, bestOv, bestGap = k, ov, gap
+			end
+		end
+	end
+	return best
+end
+
 -- O passo salvo é um número na lista de passos do guia. Guia regerado (passos em outra
 -- ordem) ou save de antes da 2.4 (contava os passos injetados) faz o número apontar
 -- para outro lugar: recua até logo depois do último passo concluído — seguir o número
@@ -668,20 +692,9 @@ ns:On("_READY", function()
 		char.openGuides[1] = char.currentGuide
 		char.steps[char.currentGuide] = char.currentStep or 1
 	end
-	-- Guia regerado com outra faixa no título (Silverpine Forest 11-20 -> 11-18): aba e
-	-- passo seguem para o da mesma zona cuja faixa mais se sobrepõe.
 	local function renomeado(old)
-		local pre, lo, hi = old:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
-		if not pre or ns.guides[old] then return nil end
-		local best, bestOv
-		for k in pairs(ns.guides) do
-			local p2, l2, h2 = k:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
-			if p2 == pre then
-				local ov = math.min(tonumber(hi), tonumber(h2)) - math.max(tonumber(lo), tonumber(l2))
-				if ov >= 0 and (not bestOv or ov > bestOv) then best, bestOv = k, ov end
-			end
-		end
-		return best
+		if ns.guides[old] then return nil end
+		return ns.RenamedGuideKey(old, ns.guides)
 	end
 	local troca = {}
 	for k in pairs(char.steps) do troca[k] = renomeado(k) end
@@ -723,10 +736,18 @@ ns:On("_READY", function()
 	if not (key and ns.guides[key]) then key = char.openGuides[1] end
 	if key and ns.guides[key] then
 		-- aba de leveling que o nível já passou (logou no 11 com Tirisfal 5-10 ativo,
-		-- e a primeira coisa sugerida era uma quest cinza de Deathknell): abre o guia
-		-- recomendado; a antiga fica na aba. Aba que o jogador escolheu à mão fica.
-		local hi = key ~= char.manualPick and key:sub(1, 9) == "Leveling/" and tonumber(key:match("%-%s*(%d+)%)$"))
-		local best = hi and (UnitLevel("player") or 0) > hi and ns:BestGuideForPlayer()
+		-- e a primeira coisa sugerida era uma quest cinza de Deathknell) ou que ficou longe
+		-- demais adiante (guia regerado: Loch Modan 20-38 virou 37-39, e o 25 ficava nele):
+		-- abre o guia recomendado; a antiga fica na aba. Aba que o jogador escolheu à mão fica.
+		local lo, hi
+		if key ~= char.manualPick and key:sub(1, 9) == "Leveling/" then
+			lo, hi = key:match("%((%d+)%s*%-%s*(%d+)%)$")
+			lo, hi = tonumber(lo), tonumber(hi)
+		end
+		local lvl = UnitLevel("player") or 0
+		-- o "longe adiante" não vale para a zona inicial nem no começo (Durotar e Zephras são 5-12: o 1 sairia)
+		local ahead = lo and lvl > 5 and lvl < lo - 3 and key ~= findStartGuide()
+		local best = hi and (lvl > hi or ahead) and ns:BestGuideForPlayer()
 		ns:LoadGuide(best and best ~= key and best or key, true)   -- mantém o step salvo
 		return
 	end

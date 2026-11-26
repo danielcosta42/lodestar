@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Cenarion Circle", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "001bb74c",
+	rev = "73a7ba9d",
 }, [[
 step
   only NightElf Druid not completed(5924) not completed(5925) not haveq(5924) not haveq(5925)
@@ -97,28 +97,28 @@ step
   talk Alanndarian Nightsong##3702
   turnin The Principal Source##6122 |goto Darkshore 37.69,40.66
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid
   talk Alanndarian Nightsong##3702
   accept Gathering the Cure##6123 |goto Darkshore 37.69,40.66
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid
   note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
   collect 12 Lunar Fungus##15851 |q 6123/2 |goto Darkshore 43.8,50.23 |tip {dropsfrom}Lunar Fungal Bloom
-  collect 5 Earthroot##2449 |q 6123 |goto Teldrassil 57.09,69.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine
+  collect 5 Earthroot##2449 |q 6123 |goto Teldrassil 57.11,68.98 |tip {dropsfrom}Lasher Sproutling, Wrathvine
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid
   talk Alanndarian Nightsong##3702
   turnin Gathering the Cure##6123 |goto Darkshore 37.69,40.66
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid
   talk Alanndarian Nightsong##3702
   accept Curing the Sick##6124 |goto Darkshore 37.69,40.66
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid
   note Use the Curative Animal Salve on 10 Sickly Deer that are located throughout Darkshore; doing so should cure them. Sickly Deer have been reported starting south of the Cliffspring River to the north of Auberdine and extending all the way into southern Darkshore where the edge of Ashenvale begins.
   use Sickly Deer##12298 |q 6124 |goto Darkshore 43.81,48.22 |tip {useit}
 step
-  only NightElf Druid
+  only not Human not Dwarf not Gnome Druid
   talk Dendrite Starblaze##11802
   turnin Curing the Sick##6124 |goto Moonglade 56.21,30.64
 step
@@ -173,83 +173,88 @@ step
   talk Mathrengyl Bearwalker##4217
   turnin Aquatic Form##5061 |goto Darnassus 35.37,8.4
 step
-  only not Human not Dwarf not Gnome Druid
+  only not Human not Dwarf not Gnome Druid not completed(98340) not haveq(98340)
   talk Mathrengyl Bearwalker##4217
   accept The Great Cat Spirit##98393 |goto Darnassus 35.37,8.4
 step
-  only not Human not Dwarf not Gnome Druid
+  only not Human not Dwarf not Gnome Druid not completed(98340) not haveq(98340)
   note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
   talk Dendrite Starblaze##11802
   turnin The Great Cat Spirit##98393 |goto Moonglade 56.21,30.64
 step
-  only Skyborne
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98394) not completed(98405) not haveq(98394) not haveq(98405)
   talk Dendrite Starblaze##11802
   accept The Great Windborne Cat Spirit##98341 |goto Moonglade 56.21,30.64
 step
-  only Skyborne
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98394) not completed(98405) not haveq(98394) not haveq(98405)
   note Seek out the Avatar of Saeyleenan in the southern part Moonglade and learn what it has to share with you about the nature of the windborne cat.
   talk Avatar of Saeyleenan##272054
   turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 43.92,73.44
 step
-  only NightElf Druid
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  talk Avatar of Saeyleenan##272054
+  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
+step
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
+  collect Relic of the Fang##280502 |q 98404/1 |goto Moonglade 72.41,65.9
+  collect Relic of the Silent Shadow##280680 |q 98404/3 |goto Moonglade 74.42,65.27
+  collect Relic of the Claw##280679 |q 98404 |goto Moonglade 75.24,67.33
+step
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  talk Avatar of Saeyleenan##272054
+  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
+step
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not completed(98731) not completed(98739) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405) not haveq(98731) not haveq(98739)
+  talk Avatar of Saeyleenan##272054
+  accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 43.92,73.44
+step
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not completed(98731) not completed(98739) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405) not haveq(98731) not haveq(98739)
+  note Speak to Dendrite.
+  talk Dendrite Starblaze##11802
+  turnin Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 56.21,30.64
+step
+  only NightElf Druid not completed(98341) not completed(98405) not haveq(98341) not haveq(98405)
   talk Dendrite Starblaze##11802
   accept The Great Cat Spirit##98394 |goto Moonglade 56.21,30.64
 step
-  only NightElf Druid
+  only NightElf Druid not completed(98341) not completed(98405) not haveq(98341) not haveq(98405)
   note Seek out the Great Cat Spirit in southern part Moonglade and learn what it has to share with you about the nature of the cat.
   talk Great Cat Spirit##11957
   turnin The Great Cat Spirit##98394 |goto Moonglade 58.39,73.52
 step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
-step
-  only Skyborne
-  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
-  collect Relic of the Fang##280502 |q 98404/1 |goto Moonglade 72.6,66.1
-  collect Relic of the Silent Shadow##280680 |q 98404/3 |goto Moonglade 74.5,65.5
-  collect Relic of the Claw##280679 |q 98404 |goto Moonglade 75.2,67.2
-step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
-step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 43.92,73.44
-step
-  only Skyborne
-  talk Dendrite Starblaze##11802
-  turnin Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 56.21,30.64
-step
-  only NightElf Druid
+  only NightElf Druid not completed(98341) not completed(98342) not completed(98404) not completed(98405) not haveq(98341) not haveq(98342) not haveq(98404) not haveq(98405)
   talk Great Cat Spirit##11957
   accept The Great Cat Spirit##98396 |goto Moonglade 58.39,73.52
 step
-  only NightElf Druid
+  only NightElf Druid not completed(98341) not completed(98342) not completed(98404) not completed(98405) not haveq(98341) not haveq(98342) not haveq(98404) not haveq(98405)
   note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
-  collect Relic of the Fang##280502 |q 98396/1 |goto Moonglade 72.6,66.1
-  collect Relic of the Silent Shadow##280680 |q 98396/3 |goto Moonglade 74.5,65.5
-  collect Relic of the Claw##280679 |q 98396 |goto Moonglade 75.2,67.2
+  collect Relic of the Fang##280502 |q 98396/1 |goto Moonglade 72.41,65.9
+  collect Relic of the Silent Shadow##280680 |q 98396/3 |goto Moonglade 74.42,65.27
+  collect Relic of the Claw##280679 |q 98396 |goto Moonglade 75.24,67.33
 step
-  only NightElf Druid
+  only NightElf Druid not completed(98341) not completed(98342) not completed(98404) not completed(98405) not haveq(98341) not haveq(98342) not haveq(98404) not haveq(98405)
   talk Great Cat Spirit##11957
   turnin The Great Cat Spirit##98396 |goto Moonglade 58.39,73.52
 step
-  only NightElf Druid
+  only NightElf Druid not completed(98341) not completed(98342) not completed(98404) not completed(98405) not completed(98738) not completed(98739) not haveq(98341) not haveq(98342) not haveq(98404) not haveq(98405) not haveq(98738) not haveq(98739)
   talk Great Cat Spirit##11957
   accept Blessings of the Great Cat Spirit##98731 |goto Moonglade 58.39,73.52
 step
-  only NightElf Druid
+  only NightElf Druid not completed(98341) not completed(98342) not completed(98404) not completed(98405) not completed(98738) not completed(98739) not haveq(98341) not haveq(98342) not haveq(98404) not haveq(98405) not haveq(98738) not haveq(98739)
+  note Speak to Dendrite.
   talk Dendrite Starblaze##11802
   turnin Blessings of the Great Cat Spirit##98731 |goto Moonglade 56.21,30.64
 step
+  only not completed(7064) not haveq(7064)
   talk Keeper Marandis##13698
   accept Corruption of Earth and Seed##7065 |goto Desolace 63.83,10.67
 step
+  only not completed(7064) not haveq(7064)
   note Slay Princess Theradras and return to Keeper Marandis at Nijel's Point in Desolace.
   kill Princess Theradras##12201 |q 7065 |goto Maraudon - Dungeon -1,-1 |elite
 step
+  only not completed(7064) not haveq(7064)
   talk Keeper Marandis##13698
   turnin Corruption of Earth and Seed##7065 |goto Desolace 63.83,10.67
 step
@@ -424,6 +429,94 @@ step
   talk Calandrath##15174
   turnin Kitchen Assistance##8317 |goto Silithus 51.89,39.16
 step
+  talk Velician##278305
+  accept The Dying God##96321 |goto Mount Hyjal 36.68,78.23
+step
+  note Find someone on Mount Hyjal who may be interested in the Faintly Glowing Staff.
+  talk Curious Crow##257753
+  turnin The Dying God##96321 |goto Mount Hyjal 48.26,85.72
+step
+  talk Curious Crow##257753
+  accept An Oldstone But An Old Friend##96131 |goto Mount Hyjal 48.26,85.72
+step
+  note Take the Faintly Glowing Branch to Ketharas.
+  talk Ketharas##256222
+  turnin An Oldstone But An Old Friend##96131 |goto Mount Hyjal 73.34,81.88
+step
+  talk Ketharas##256222
+  accept Aid from Moonglade##92612 |goto Mount Hyjal 73.34,81.88
+step
+  note Travel to Nighthaven, in Moonglade, and ask Dendrite Starblaze for assistance on Ketharas' behalf.
+  talk Dendrite Starblaze##11802
+  turnin Aid from Moonglade##92612 |goto Moonglade 56.21,30.64
+step
+  talk Dendrite Starblaze##11802
+  accept The Ancient, Orokai##96209 |goto Moonglade 56.21,30.64
+step
+  note Seek out Orokai in Moonglade.
+  talk Orokai##216289
+  turnin The Ancient, Orokai##96209 |goto Moonglade 41.45,43.63
+step
+  talk Orokai##216289
+  accept Stolen Power##95006 |goto Moonglade 41.45,43.63
+step
+  note Speak with Orokai when you are ready to see what he learned from the Faintly Glowing Branch.
+  talk Dendrite Starblaze##11802
+  turnin Stolen Power##95006 |goto Moonglade 56.21,30.64
+step
+  talk Dendrite Starblaze##11802
+  accept The Pact##93773 |goto Moonglade 56.21,30.64
+step
+  note Report back Ketharas on Mount Hyjal.
+  talk Ketharas##256222
+  turnin The Pact##93773 |goto Mount Hyjal 73.34,81.88
+step
+  talk Ketharas##256222
+  accept Taking to New Heights##92171 |goto Mount Hyjal 73.34,81.88
+step
+  note Travel to the Shrine of Aviana on Mount Hyjal and seek out Skylord Omnuron for aid.
+  talk Skylord Omnuron##254131
+  turnin Taking to New Heights##92171 |goto Mount Hyjal 54.31,63.95
+step
+  talk Skylord Omnuron##254131
+  accept A Bit of the Sky##92500 |goto Mount Hyjal 54.31,63.95
+step
+  note Find the Jewel of the Horizon in the Wormwing harpy nests on Mount Hyjal and bring it to Ketharas.
+  collect The Jewel of the Horizon##272974 |q 92500 |goto Mount Hyjal 47.75,59.45
+step
+  talk Ketharas##256222
+  turnin A Bit of the Sky##92500 |goto Mount Hyjal 73.34,81.88
+step
+  talk Ketharas##256222
+  accept The Capricious Corvid##96930 |goto Mount Hyjal 73.34,81.88
+step
+  note Return to the Curious Crow.
+  talk Curious Crow##257753
+  turnin The Capricious Corvid##96930 |goto Mount Hyjal 48.26,85.72
+step
+  talk Curious Crow##257753
+  accept Heading Up the Mountain##96931 |goto Mount Hyjal 48.26,85.72
+step
+  note Touch the Crow Effigy on the bridge overlooking the Cradle of Tranquility to call the Wild God, Jereman.
+  talk Jereman##267158
+  turnin Heading Up the Mountain##96931 |goto Mount Hyjal 41.15,45.16
+step
+  talk Jereman##267158
+  accept The Balance of Life and Death##96939 |goto Mount Hyjal 41.15,45.16
+step
+  note Speak to the Wild God, Marrosis.
+  talk Marrosis##267113
+  turnin The Balance of Life and Death##96939 |goto Mount Hyjal 27.1,49.99
+step
+  talk Marrosis##267113
+  accept Stolen Life##92317 |goto Mount Hyjal 27.1,49.99
+step
+  note Acquire a Drop of Stolen Life from the Scourge in the ruins on Mount Hyjal, then return to Ketharas.
+  collect Drop of Stolen Life##272973 |q 92317 |goto Mount Hyjal 24.01,55.26 |tip {dropsfrom}Fleshflay Ravener, Forgotten Soldier, Fleshflayer Ravener
+step
+  talk Ketharas##256222
+  turnin Stolen Life##92317 |goto Mount Hyjal 73.34,81.88
+step
   talk Geologist Larksbane##15183
   accept The Twilight Mystery##8284 |goto Silithus 49.67,37.46
 step
@@ -457,6 +550,47 @@ step
   note Take the Decoded Tablet Parchment to Commander Mar'alith.
   talk Commander Mar'alith##15181
   turnin A Terrible Purpose##8287 |goto Silithus 49.2,34.18
+step
+  talk Jereman##267158
+  accept A Clever Creature##96964 |goto Mount Hyjal 41.15,45.16
+step
+  note Speak to the Wild God Renalard.
+  talk Renalard##259695
+  turnin A Clever Creature##96964 |goto Mount Hyjal 60.04,49.35
+step
+  talk Renalard##259695
+  accept Ashes of the Legion Ascent##92335 |goto Mount Hyjal 60.04,49.35
+step
+  note Fetch a pinch of Azgalor's Ashes from the ruins of Dae'gun on Mount Hyjal.
+  collect Azgalor's Ashes##253239 |q 92335 |goto Mount Hyjal 49.39,34.48 |tip {dropsfrom}Azgalor's Remains
+step
+  talk Ketharas##256222
+  turnin Ashes of the Legion Ascent##92335 |goto Mount Hyjal 73.34,81.88
+step
+  talk Ketharas##256222
+  accept The Staff of the Mountain##90647 |goto Mount Hyjal 73.34,81.88
+step
+  note Bring the Staff of the Mountain to Tiala Whitemane at the Summit of Eternity.
+  talk Tiala Whitemane##40833
+  turnin The Staff of the Mountain##90647 |goto Mount Hyjal 68.85,50.6
+step
+  talk Tiala Whitemane##40833
+  accept Paying Back the Pact##92169 |goto Mount Hyjal 68.85,50.6
+step
+  note Use the Staff of the Mountain on 10  members of the Blackthorne Pact on the Summit of Eternity to remove their wards and then kill them.
+  get Paying Back the Pact |q 92169
+step
+  talk Tiala Whitemane##40833
+  turnin Paying Back the Pact##92169 |goto Mount Hyjal 68.85,50.6
+step
+  talk Tiala Whitemane##40833
+  accept Ve'han's Fall##92833 |goto Mount Hyjal 68.85,50.6
+step
+  note Use the Staff of the Mountain to strip Ve'han Talongrasp of his stolen power, then destroy him.
+  kill Ve'han Talongrasp##267182 |q 92833 |goto Mount Hyjal 76.02,34.05 |elite
+step
+  talk Tiala Whitemane##40833
+  turnin Ve'han's Fall##92833 |goto Mount Hyjal 68.85,50.6
 step
   click Wanted Poster: Deathclasp##180448
   accept Wanted - Deathclasp, Terror of the Sands##8283 |goto Silithus 51.35,38.27

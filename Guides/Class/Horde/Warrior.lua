@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Warrior", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "c5a9fb4f",
+	rev = "8d2a2b53",
 }, [[
 step
   talk Gornek##3143
@@ -72,7 +72,7 @@ step
   turnin Simple Scroll##3095 |goto Tirisfal Glades 32.69,65.56
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -82,7 +82,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49

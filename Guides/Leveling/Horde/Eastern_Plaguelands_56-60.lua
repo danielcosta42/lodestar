@@ -4,18 +4,14 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Eastern Plaguelands (56-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "bc2cc267",
+	next = "Leveling/Horde/Winterspring (54-60)",
+	rev = "0431d048",
 }, [[
 step
   ding 55
 step
   talk Lady Sylvanas Windrunner##10181
   accept The Champion of the Banshee Queen##5961 |goto Undercity 58.05,91.79
-step
-  only haveq(3542)
-  note Bring the Tablet of Markri to Andron Gant in Undercity.
-  talk Andron Gant##6522
-  turnin Delivery to Andron Gant##3542 |goto Undercity 54.81,76.33 |tip {turninat}Undercity
 step
   talk Pamela Redpath##10926
   accept Pamela's Doll##5149 |goto Eastern Plaguelands 31.15,77.98
@@ -35,6 +31,15 @@ step
   note Speak with Nathanos Blightcaller in the Eastern Plaguelands. He is said to have taken up residence at the Marris Stead.
   talk Nathanos Blightcaller##11878
   turnin The Champion of the Banshee Queen##5961 |goto Eastern Plaguelands 22.23,63.51
+step
+  talk Augustus the Touched##12384
+  accept Augustus' Receipt Book##6164 |goto Eastern Plaguelands 11.36,26.37
+step
+  note Bring Augustus' Receipt Book to Augustus the Touched in Terrordale.
+  collect Augustus' Receipt Book##15884 |q 6164 |goto Eastern Plaguelands 14.04,24.22
+step
+  talk Augustus the Touched##12384
+  turnin Augustus' Receipt Book##6164 |goto Eastern Plaguelands 11.36,26.37
 step
   only completed(5542) completed(5543) completed(5544)
   talk Tirion Fordring##1855
@@ -109,21 +114,16 @@ step
   note Travel to Northdale, in the northeastern region of the Eastern Plaguelands, and recover the Symbol of Lost Honor. Return to Tirion Fordring upon completion of your objective.
   collect Symbol of Lost Honor##14625 |q 5845 |goto Eastern Plaguelands 62.53,26.81
 step
-  note Free 15 Darrowshire Spirits and return to Carlin Redpath.
-  talk Darrowshire Spirit##11064 |q 5211 |goto Eastern Plaguelands 32.51,29.19
+  only completed(98109)
+  talk Adon##11706
+  accept Orgrimmar's Windshapers##97988 |goto Eastern Plaguelands 50.92,11.48
 step
   only completed(6026)
   note Travel to Plaguewood, northwest of Light's Hope. Destroy 8 Scourge Structures by using Smokey's Special Compound at the Mark of Detonation planted inside each building. Smokey has had the Ziggurats and Slaughterhouses marked.
   kill Scourge Structure##12247 |q 6041 |goto Eastern Plaguelands 28.01,17.75
 step
-  talk Augustus the Touched##12384
-  accept Augustus' Receipt Book##6164 |goto Eastern Plaguelands 11.36,26.37
-step
-  note Bring Augustus' Receipt Book to Augustus the Touched in Terrordale.
-  collect Augustus' Receipt Book##15884 |q 6164 |goto Eastern Plaguelands 14.04,24.22
-step
-  talk Augustus the Touched##12384
-  turnin Augustus' Receipt Book##6164 |goto Eastern Plaguelands 11.36,26.37
+  note Free 15 Darrowshire Spirits and return to Carlin Redpath.
+  talk Darrowshire Spirit##11064 |q 5211 |goto Eastern Plaguelands 32.51,29.19
 step
   only completed(5542) completed(5543) completed(5544)
   talk Tirion Fordring##1855
@@ -438,4 +438,7 @@ step
 step
   note Bring Joseph's Key to Joseph's Chest.
   turnin Hidden Treasures##5942 |goto Eastern Plaguelands 30.92,77.78
+step
+  note {travel}Winterspring
+  goto Winterspring 61.12,38.43
 ]])

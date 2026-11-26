@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Mage", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "84336b2e",
+	rev = "9b151818",
 }, [[
 step
   talk Gornek##3143
@@ -54,7 +54,7 @@ step
   turnin Glyphic Scroll##3098 |goto Tirisfal Glades 30.93,66.06
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -64,7 +64,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
@@ -120,30 +120,30 @@ step
   talk Anastasia Hartwell##4568
   turnin Report to Anastasia##1959 |goto Undercity 85.14,10.03
 step
-  only not Orc not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
   accept Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03
 step
-  only not Orc not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage
   note Obtain a Cantation of Manifestation and a Chest of Containment Coffers from behind Anastasia Hartwell. Bring 3 Filled Containment Coffers, the Chest of Containment Coffers and the Cantation of Manifestation to Anastasia in the Undercity.
   collect 3 Filled Containment Coffer##7292 |q 1960/1
   collect Chest of Containment Coffers##7247 |q 1960/2 |goto Undercity 85.58,9.95
   collect Cantation of Manifestation##7308 |q 1960 |goto Undercity 85.7,10.11
 step
-  only not Orc not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
   turnin Investigate the Alchemist Shop##1960 |goto Undercity 85.14,10.03
 step
-  only not Tauren not Skyborne Mage not Orc
+  only not Tauren not Skyborne Mage
   talk Anastasia Hartwell##4568
   accept Gathering Materials##1961 |goto Undercity 85.14,10.03
 step
-  only not Tauren not Skyborne Mage not Orc
+  only not Tauren not Skyborne Mage
   note Bring 10 Linen Cloth and 6 Dalaran Mana Gems to Josef Gregorian.
   collect 10 Linen Cloth##2589 |q 1961/1 |tip {dropsfrom}humanoids
   collect 6 Dalaran Mana Gem##7293 |q 1961 |goto Silverpine Forest 51.58,64.26 |tip {dropsfrom}Dalaran Apprentice, Dalaran Protector, Dalaran Mage
 step
-  only not Tauren not Skyborne Mage not Orc
+  only not Tauren not Skyborne Mage
   talk Josef Gregorian##4576
   turnin Gathering Materials##1961 |goto Undercity 70.76,30.69
 step
@@ -164,15 +164,15 @@ step
   talk Deino##5885
   turnin Speak with Deino##1943 |goto Orgrimmar 38.45,86.13
 step
-  only not Orc not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage
   talk Deino##5885
   accept Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13
 step
-  only not Orc not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage
   note Bring the Xavian Water Sample to Deino in Orgrimmar.
   collect Xavian Water Sample##7268 |q 1944 |goto Ashenvale 76.29,41.49 |tip {dropsfrom}Xavian Waterfall
 step
-  only not Orc not Tauren not Skyborne Mage
+  only not Tauren not Skyborne Mage
   talk Deino##5885
   turnin Waters of Xavian##1944 |goto Orgrimmar 38.45,86.13
 step
@@ -331,7 +331,7 @@ step
 step
   only Mage
   note Bring 10 Glittering Dust to Archmage Xylem.
-  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer
+  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Arcanist
 step
   only Mage
   talk Archmage Xylem##8379
@@ -695,6 +695,18 @@ step
   only Mage
   talk Archmage Xylem##8379
   turnin Fragmented Magic##9364 |goto Azshara 29.25,40.21
+step
+  only Mage
+  talk Archmage Xylem##8379
+  accept Scalebeard##90789 |goto Azshara 29.25,40.21
+step
+  only Mage
+  note Retrieve the Prismatic Shell for Archmage Xylem.  The Archmage resides in a tower atop the cliffs of Azshara.
+  collect Prismatic Shell##23250 |q 90789 |goto Azshara 41.02,53.05 |tip {dropsfrom}Warlord Krellian, Scalebeard
+step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin Scalebeard##90789 |goto Azshara 29.25,40.21
 step
   only Mage
   talk Lorekeeper Lydros##14368

@@ -4,36 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Burning Steppes (52-54)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Western Plaguelands (53-58)",
-	rev = "f3530a15",
+	next = "Leveling/Alliance/Western Plaguelands (53-60)",
+	rev = "3c06ef1a",
 }, [[
 step
   ding 51
-step
-  talk Franclorn Forgewright##8888
-  accept Dark Iron Legacy##3801 |goto Burning Steppes 28.96,28.93
-step
-  note Speak with Franclorn Forgewright if you are interested in obtaining a key to the city major.
-  talk Franclorn Forgewright##8888
-  turnin Dark Iron Legacy##3801 |goto Burning Steppes 28.96,28.93
-step
-  talk Maxwort Uberglint##9536
-  accept Tablet of the Seven##4296 |goto Burning Steppes 65.15,23.91
-step
-  talk Tinkee Steamboil##10267
-  accept Broodling Essence##4726 |goto Burning Steppes 65.24,24
-step
-  note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
-  collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 63.78,57.27
-step
-  note Bring the Tablet Transcript to Maxwort Uberglint in the Burning Steppes.
-  collect Tablet Transcript##11470 |q 4296 |goto Burning Steppes 54.12,40.76 |tip {dropsfrom}Tablet of the Seven
-step
-  talk Maxwort Uberglint##9536
-  turnin Tablet of the Seven##4296 |goto Burning Steppes 65.15,23.91
-step
-  talk Tinkee Steamboil##10267
-  turnin Broodling Essence##4726 |goto Burning Steppes 65.24,24
 step
   note {fp}Borgus Stoutarm
   goto Burning Steppes 84.33,68.33 |tip {vendor}
@@ -56,6 +31,37 @@ step
   talk Oralius##9177
   accept Gor'tesh the Brute Lord##3824 |goto Burning Steppes 84.56,68.68
 step
+  note Find Gor'tesh, somewhere to the west of Dreadmaul Rock. Kill Gor'tesh and then take Gor'tesh's Lopped Off Head back to Oralius in Burning Steppes.
+  collect Gor'tesh's Lopped Off Head##11080 |q 3824 |goto Burning Steppes 39.33,55.3 |tip {dropsfrom}Gor'tesh, Grubbub
+step
+  talk Franclorn Forgewright##8888
+  accept Dark Iron Legacy##3801 |goto Burning Steppes 28.96,28.93
+step
+  note Speak with Franclorn Forgewright if you are interested in obtaining a key to the city major.
+  talk Franclorn Forgewright##8888
+  turnin Dark Iron Legacy##3801 |goto Burning Steppes 28.96,28.93
+step
+  talk Maxwort Uberglint##9536
+  accept Tablet of the Seven##4296 |goto Burning Steppes 65.15,23.91
+step
+  talk Tinkee Steamboil##10267
+  accept Broodling Essence##4726 |goto Burning Steppes 65.24,24
+step
+  note Bring the Tablet Transcript to Maxwort Uberglint in the Burning Steppes.
+  collect Tablet Transcript##11470 |q 4296 |goto Burning Steppes 54.12,40.76 |tip {dropsfrom}Tablet of the Seven
+step
+  talk Maxwort Uberglint##9536
+  turnin Tablet of the Seven##4296 |goto Burning Steppes 65.15,23.91
+step
+  note Bring 8 Broodling Essence and the Draco-Incarcinatrix 900 to Tinkee Steamboil at the Flame Crest in the Burning Steppes.
+  collect 8 Broodling Essence##12283 |q 4726 |goto Burning Steppes 63.78,57.27
+step
+  talk Oralius##9177
+  turnin Gor'tesh the Brute Lord##3824 |goto Burning Steppes 84.56,68.68
+step
+  talk Oralius##9177
+  accept Ogre Head On A Stick = Party##3825 |goto Burning Steppes 84.56,68.68
+step
   only level>=54
   talk Helendis Riverhorn##9562
   accept Dragonkin Menace##4182 |goto Burning Steppes 85.82,68.95
@@ -64,12 +70,8 @@ step
   talk Marshal Maxwell##9560
   accept The True Masters##4224 |goto Burning Steppes 84.74,69.02
 step
-  note Find Gor'tesh, somewhere to the west of Dreadmaul Rock. Kill Gor'tesh and then take Gor'tesh's Lopped Off Head back to Oralius in Burning Steppes.
-  collect Gor'tesh's Lopped Off Head##11080 |q 3824 |goto Burning Steppes 55.6,54 |tip {dropsfrom}Grubbub, Gor'tesh
-step
-  only completed(4223)
-  note Speak with Ragged John to learn of Marshal Windsor's fate and return to Marshal Maxwell when you have completed this task.
-  talk Ragged John##9563 |q 4224 |goto Burning Steppes 65.01,23.76
+  note Take Gor'tesh's Lopped Off Head and place it at the top of Dreadmaul Rock. Look for a soft dirt mound to plant the pike.
+  click Soft Dirt Mound##160840 |q 3825 |goto Burning Steppes 81,46.79
 step
   only completed(3481) not completed(4023) not haveq(4023) level>=54
   talk Cyrus Therepentous##9459
@@ -91,8 +93,15 @@ step
   talk Cyrus Therepentous##9459
   turnin A Taste of Flame##4022 |goto Burning Steppes 95.09,31.56
 step
+  talk Tinkee Steamboil##10267
+  turnin Broodling Essence##4726 |goto Burning Steppes 65.24,24
+step
+  only completed(4223)
+  note Speak with Ragged John to learn of Marshal Windsor's fate and return to Marshal Maxwell when you have completed this task.
+  talk Ragged John##9563 |q 4224 |goto Burning Steppes 65.01,23.76
+step
   talk Oralius##9177
-  turnin Gor'tesh the Brute Lord##3824 |goto Burning Steppes 84.56,68.68
+  turnin Ogre Head On A Stick = Party##3825 |goto Burning Steppes 84.56,68.68
 step
   only haveq(4182)
   talk Helendis Riverhorn##9562
@@ -102,18 +111,9 @@ step
   talk Marshal Maxwell##9560
   turnin The True Masters##4224 |goto Burning Steppes 84.74,69.02
 step
-  talk Oralius##9177
-  accept Ogre Head On A Stick = Party##3825 |goto Burning Steppes 84.56,68.68
-step
   only completed(4182)
   talk Helendis Riverhorn##9562
   accept The True Masters##4183 |goto Burning Steppes 85.82,68.95
-step
-  note Take Gor'tesh's Lopped Off Head and place it at the top of Dreadmaul Rock. Look for a soft dirt mound to plant the pike.
-  click Soft Dirt Mound##160840 |q 3825 |goto Burning Steppes 81,46.79
-step
-  talk Oralius##9177
-  turnin Ogre Head On A Stick = Party##3825 |goto Burning Steppes 84.56,68.68
 step
   talk Oralius##9177
   accept FIFTY! YEP!##4283 |goto Burning Steppes 84.56,68.68
@@ -128,6 +128,15 @@ step
   talk Marshal Maxwell##9560
   accept Stormwind Rendezvous##6402 |goto Burning Steppes 84.74,69.02
 step
+  only haveq(3461)
+  note Return Tymor's Drawing Kit to him in Ironforge.
+  talk Tymor##8507
+  turnin Return to Tymor##3461 |goto Ironforge 30.96,4.83 |tip {turninat}Ironforge
+step
+  only completed(3702)
+  talk Royal Historian Archesonus##8879
+  accept The Smoldering Ruins of Thaurissan##3701 |goto Ironforge 38.37,55.31
+step
   only haveq(4262)
   note Slay Overmaster Pyron and return to Jalinda Sprig.
   kill Overmaster Pyron##9026 |q 4262 |goto Eastern Kingdoms - the continent map 46.82,67.7 |elite
@@ -136,54 +145,37 @@ step
   talk Jalinda Sprig##9561
   turnin Overmaster Pyron##4262 |goto Burning Steppes 85.41,70.06
 step
-  talk Royal Historian Archesonus##8879
-  accept The Smoldering Ruins of Thaurissan##3702 |goto Ironforge 38.37,55.31
-step
-  note Listen to Royal Historian Archesonus recant the history of Thaurissan.
-  talk Royal Historian Archesonus##8879 |q 3702 |goto Ironforge 38.37,55.31
-step
-  talk Royal Historian Archesonus##8879
-  turnin The Smoldering Ruins of Thaurissan##3702 |goto Ironforge 38.37,55.31 |tip {turninat}Ironforge
-step
-  talk Royal Historian Archesonus##8879
-  accept The Smoldering Ruins of Thaurissan##3701 |goto Ironforge 38.37,55.31
-step
-  only completed(4322)
-  note Travel to Stormwind City and venture to the city gates. Speak with Squire Rowe so that he may let Marshal Windsor know that you have arrived.
-  talk Reginald Windsor##12580
-  turnin Stormwind Rendezvous##6402 |goto Stormwind City 73.61,91.05 |tip {turninat}Stormwind City
-step
-  only completed(4184)
-  talk Highlord Bolvar Fordragon##1748
-  accept The True Masters##4185 |goto Stormwind City 80.21,38.35
-step
-  only completed(4184)
-  note Speak with Highlord Bolvar Fordragon after speaking with Lady Katrana Prestor.
-  talk Lady Katrana Prestor##1749 |q 4185 |goto Stormwind City 80.1,38.17
-step
-  only completed(4184)
-  talk Highlord Bolvar Fordragon##1748
-  turnin The True Masters##4185 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
-step
-  only completed(4184)
-  talk Highlord Bolvar Fordragon##1748
-  accept The True Masters##4186 |goto Stormwind City 80.21,38.35
-step
+  only completed(3702)
   note Venture to the Ruins of Thaurissan in the Burning Steppes and recover information from the Thaurissan Relics. Return to Royal Historian Archesonus when you have recovered the information.
   click Thaurissan Relic##153556 |q 3701 |goto Burning Steppes 62.71,39.6
 step
+  only completed(3702)
   talk Royal Historian Archesonus##8879
   turnin The Smoldering Ruins of Thaurissan##3701 |goto Ironforge 38.37,55.31 |tip {turninat}Ironforge
+step
+  only haveq(4186)
+  note Take Bolvar's Decree to Magistrate Solomon in Lakeshire.
+  talk Magistrate Solomon##344
+  turnin The True Masters##4186 |goto Redridge Mountains 24.9,44.45 |tip {turninat}Redridge Mountains
 step
   only haveq(4183)
   note Travel to Lakeshire and deliver Helendis Riverhorn's Letter to Magistrate Solomon.
   talk Magistrate Solomon##344
   turnin The True Masters##4183 |goto Redridge Mountains 24.9,44.45 |tip {turninat}Redridge Mountains
 step
-  only completed(4184)
-  note Take Bolvar's Decree to Magistrate Solomon in Lakeshire.
-  talk Magistrate Solomon##344
-  turnin The True Masters##4186 |goto Redridge Mountains 24.9,44.45 |tip {turninat}Redridge Mountains
+  only completed(4322)
+  note Travel to Stormwind City and venture to the city gates. Speak with Squire Rowe so that he may let Marshal Windsor know that you have arrived.
+  talk Reginald Windsor##12580
+  turnin Stormwind Rendezvous##6402 |goto Stormwind City 73.61,91.05 |tip {turninat}Stormwind City
+step
+  only completed(4322) not completed(99435) not haveq(99435)
+  talk Reginald Windsor##12580
+  accept The Great Masquerade##6403 |goto Stormwind City 73.61,91.05
+step
+  only completed(4322) not completed(99435) not haveq(99435)
+  note Follow Reginald Windsor through Stormwind. Protect him from harm!
+  talk Highlord Bolvar Fordragon##1748
+  turnin The Great Masquerade##6403 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
 step
   note {travel}Western Plaguelands
   goto Western Plaguelands 38.4,54.05

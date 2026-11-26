@@ -4,11 +4,15 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Silithus (57-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Eastern Plaguelands (56-60)",
-	rev = "79157b31",
+	rev = "223b189e",
 }, [[
 step
   ding 55
+step
+  only haveq(1124)
+  note Speak with Layo Starstrike near the Valor's Rest graveyard of Silithus, showing him Rabine's Letter.
+  talk Layo Starstrike##13220
+  turnin Wasteland##1124 |goto Silithus 81.87,18.93
 step
   only completed(1124)
   talk Layo Starstrike##13220
@@ -113,12 +117,6 @@ step
   talk Noggle Ficklespragg##15190
   accept Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
 step
-  note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
-  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
-step
-  talk Noggle Ficklespragg##15190
-  turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
-step
   only level>=58
   talk Commander Mar'alith##15181
   accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
@@ -140,6 +138,9 @@ step
 step
   talk Hermit Ortell##15194
   accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
+step
+  note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
+  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
 step
   only haveq(8304)
   note Commander Mar'alith at Cenarion Hold in Silithus wants you to question the inhabitants of Bronzebeard's Encampment. You will find Bronzebeard's Encampment south of Cenarion Hold.
@@ -167,6 +168,9 @@ step
   collect Twilight Lexicon - Chapter 3##20396 |q 8279/3 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth
   collect Twilight Lexicon - Chapter 1##20394 |q 8279/1 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
   collect Twilight Lexicon - Chapter 2##20395 |q 8279 |goto Silithus 16.09,86.37 |tip {dropsfrom}Twilight Keeper Exeter
+step
+  talk Noggle Ficklespragg##15190
+  turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
 step
   only haveq(8304)
   talk Commander Mar'alith##15181
@@ -267,7 +271,4 @@ step
   only completed(1124)
   talk Umber##11939
   turnin Under the Chitin Was...##1185 |goto Moonglade 44.88,35.6 |tip {turninat}Moonglade
-step
-  note {travel}Eastern Plaguelands
-  goto Eastern Plaguelands 31.15,77.98
 ]])

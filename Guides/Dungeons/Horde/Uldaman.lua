@@ -4,12 +4,12 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Uldaman", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "5643bea4",
+	rev = "35bf324a",
 }, [[
 step
-  only Mage
+  only Mage completed(1955)
   talk Tabetha##6546
-  accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
+  accept Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Dran Droffers##6986
   accept Necklace Recovery##2283 |goto Orgrimmar 59.49,36.57
@@ -17,9 +17,9 @@ step
   talk Jangdor Swiftstrider##7854
   accept Wild Leather Armor##2854 |goto Feralas 74.43,42.91
 step
-  only Mage
-  note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
-  collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
+  only Mage completed(1955)
+  note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
+  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Obsidian Sentinel
 step
   note Look for a valuable necklace within the Uldaman dig site and bring it back to Dran Droffers in Orgrimmar. The necklace may be damaged.
   collect Shattered Necklace##7666 |q 2283 |goto Badlands 48.2,11 |tip {dropsfrom}Shadowforge Surveyor, Shadowforge Ruffian, Shadowforge Digger
@@ -28,9 +28,9 @@ step
   talk Lhara##14846
   collect 10 Thick Leather##4304 |q 2854 |goto Elwynn Forest 41.2,69.9
 step
-  only Mage
+  only Mage completed(1955)
   talk Tabetha##6546
-  turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
+  turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Dran Droffers##6986
   turnin Necklace Recovery##2283 |goto Orgrimmar 59.49,36.57
@@ -38,26 +38,14 @@ step
   talk Jangdor Swiftstrider##7854
   turnin Wild Leather Armor##2854 |goto Feralas 74.43,42.91
 step
-  only Mage
-  talk Tabetha##6546
-  accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
-step
   talk Dran Droffers##6986
   accept Necklace Recovery, Take 2##2284 |goto Orgrimmar 59.49,36.57
 step
   talk Jangdor Swiftstrider##7854
   accept Wild Leather Shoulders##2855 |goto Feralas 74.43,42.91
 step
-  only Mage
-  note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 1955 |goto Dustwallow Marsh 45.79,56.97 |elite
-step
   note Bring 6 Thick Armor Kits and a Wildvine to Jangdor Swiftstrider in Camp Mojache.
   collect 6 Thick Armor Kit##8173 |q 2855 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Olaf
-step
-  only Mage
-  talk Tabetha##6546
-  turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step
   note Find a clue as to the gems' whereabouts in the depths of Uldaman.
   talk Remains of a Paladin##6912
@@ -66,20 +54,8 @@ step
   talk Jangdor Swiftstrider##7854
   turnin Wild Leather Shoulders##2855 |goto Feralas 74.43,42.91
 step
-  only Mage
-  talk Tabetha##6546
-  accept Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
-step
   talk Remains of a Paladin##6912
   accept Translating the Journal##2318 |goto Uldaman - Dungeon -1,-1
-step
-  only Mage
-  note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
-  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Obsidian Sentinel
-step
-  only Mage
-  talk Tabetha##6546
-  turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
   note Find someone who can translate the paladin's journal. The closest location that might have someone is Kargath, in the Badlands.
   talk Jarkal Mossmeld##6868

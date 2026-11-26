@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/The Hinterlands (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Feralas (43-48)",
-	rev = "b2eb1883",
+	next = "Leveling/Alliance/Searing Gorge (48-50)",
+	rev = "4114ef75",
 }, [[
 step
   ding 41
@@ -26,6 +26,12 @@ step
   talk Falstad Wildhammer##5635
   accept Gryphon Master Talonaxe##1450 |goto The Hinterlands 11.81,46.76
 step
+  talk Fraggar Thundermantle##7884
+  accept Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
+step
+  talk Gryphon Master Talonaxe##5636
+  accept Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
+step
   only completed(1448)
   note Speak with Gryphon Master Talonaxe inside the Aerie Peak Aviary.
   talk Gryphon Master Talonaxe##5636
@@ -35,27 +41,15 @@ step
   talk Gryphon Master Talonaxe##5636
   accept Rhapsody Shindigger##1451 |goto The Hinterlands 9.75,44.47
 step
-  talk Fraggar Thundermantle##7884
-  accept Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
-step
-  talk Gryphon Master Talonaxe##5636
-  accept Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
-step
   only completed(1448)
   note Seek out Rhapsody Shindigger in The Hinterlands.
   talk Rhapsody Shindigger##5634
   turnin Rhapsody Shindigger##1451 |goto The Hinterlands 26.94,48.59
 step
-  note Bring 5 Troll Tribal Necklaces to Fraggar Thundermantle in Aerie Peak.
-  collect 5 Troll Tribal Necklace##9259 |q 2880 |goto The Hinterlands 46.28,66.93 |tip {dropsfrom}Vilebranch Axe Thrower, Witherbark Scalper, Witherbark Zealot
-step
   note Check the cages at the two Witherbark villages, then return to Gryphon Master Talonaxe.
   click Third Witherbark Cage##144068 |q 2988/3 |goto The Hinterlands 31.99,57.31
   click First Witherbark Cage##144066 |q 2988/1 |goto The Hinterlands 23.28,58.81
   click Second Witherbark Cage##144067 |q 2988 |goto The Hinterlands 23.13,58.82
-step
-  talk Fraggar Thundermantle##7884
-  turnin Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
 step
   talk Gryphon Master Talonaxe##5636
   turnin Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
@@ -64,9 +58,15 @@ step
   talk Agnar Beastamer##9660
   accept Food for Baby##4297 |goto The Hinterlands 14.16,43.62
 step
+  note Bring 5 Troll Tribal Necklaces to Fraggar Thundermantle in Aerie Peak.
+  collect 5 Troll Tribal Necklace##9259 |q 2880 |goto The Hinterlands 46.28,66.93 |tip {dropsfrom}Vilebranch Axe Thrower, Witherbark Scalper, Witherbark Zealot
+step
   only completed(3843)
   note Bring 5 Silvermane Stalker Flanks to Agnar Beastamer in Hinterlands.
   collect 5 Silvermane Stalker Flank##11472 |q 4297 |goto The Hinterlands 68,52.86 |tip {dropsfrom}Silvermane Stalker
+step
+  talk Fraggar Thundermantle##7884
+  turnin Troll Necklace Bounty##2880 |goto The Hinterlands 14.83,44.57
 step
   only completed(3843)
   talk Agnar Beastamer##9660
@@ -82,6 +82,10 @@ step
   talk Agnar Beastamer##9660
   accept Becoming a Parent##4298 |goto The Hinterlands 14.16,43.62
 step
+  only level>=45
+  talk Farseer Maret Firetend##270263
+  accept Repurposed Totems##86616 |goto The Hinterlands 14.4,42.6
+step
   only completed(3843)
   note Speak to Agnar Beastamer in the Hinterlands.
   talk Agnar Beastamer##9660
@@ -93,6 +97,10 @@ step
 step
   note Check the top of the Altar of Zul, then return to Gryphon Master Talonaxe.
   goto The Hinterlands 48.98,68.66 |tip Search the Altar of Zul
+step
+  only haveq(86616)
+  note Bring 12 Vilebranch Totems back to Maret Firetend.
+  collect 12 Vilebranch Totem##279225 |q 86616 |goto The Hinterlands 46.75,66.3
 step
   only level>=43 hasitem(8704)
   use OOX-09/HL Distress Beacon##8704 |tip It starts the quest.
@@ -117,6 +125,10 @@ step
   talk Gryphon Master Talonaxe##5636
   turnin The Altar of Zul##2989 |goto The Hinterlands 9.75,44.47
 step
+  only haveq(86616)
+  talk Farseer Maret Firetend##270263
+  turnin Repurposed Totems##86616 |goto The Hinterlands 14.4,42.6
+step
   talk Gryphon Master Talonaxe##5636
   accept Thadius Grimshade##2990 |goto The Hinterlands 9.75,44.47
 step
@@ -124,27 +136,36 @@ step
   talk Gryphon Master Talonaxe##5636
   accept Saving Sharpbeak##2994 |goto The Hinterlands 9.75,44.47
 step
+  talk Tove Redstone##270054
+  accept Treaty Obligations##86615 |goto The Hinterlands 11.84,46.7
+step
+  talk Gryphon Master Talonaxe##5636
+  accept Fledgling Rescue##86620 |goto The Hinterlands 9.75,44.47
+step
+  note Find Ambassador Redstone's missing diplomatic satchel in Wildhammer Keep.
+  collect Diplomatic Satchel##279171 |q 86615 |goto The Hinterlands 13.53,42.59
+step
+  talk Tove Redstone##270054
+  turnin Treaty Obligations##86615 |goto The Hinterlands 11.84,46.7
+step
   only completed(2993)
   note Fight to the top of Jintha'Alor, kill Vile Priestess Hexx for the key to Sharpbeak's cage, and save Sharpbeak.
   click Sharpbeak's Cage##144070 |q 2994 |goto The Hinterlands 53.38,67.11
+step
+  note Collect 6 Lost Gryphon Eggs for Gryphon Master Talonaxe.
+  collect 6 Lost Gryphon Egg##279229 |q 86620 |goto The Hinterlands 16.98,51.27
 step
   only completed(2993)
   talk Gryphon Master Talonaxe##5636
   turnin Saving Sharpbeak##2994 |goto The Hinterlands 9.75,44.47
 step
-  only completed(2279)
-  talk High Explorer Magellas##5387
-  accept The Platinum Discs##2439 |goto Ironforge 69.93,18.55
-step
-  only completed(2279)
-  note Take your reward voucher to Dinita Stonemantle in the Vault of Ironforge.
-  talk Dinita Stonemantle##7292
-  turnin The Platinum Discs##2439 |goto Ironforge 33.88,59.15 |tip {turninat}Ironforge
+  talk Gryphon Master Talonaxe##5636
+  turnin Fledgling Rescue##86620 |goto The Hinterlands 9.75,44.47
 step
   only haveq(836)
   talk Oglethorpe Obnoticus##7406
   turnin Rescue OOX-09/HL!##836 |goto Stranglethorn Vale 28.36,76.35 |tip {turninat}Stranglethorn Vale
 step
-  note {travel}Feralas
-  goto Feralas 30.28,46.17
+  note {travel}Searing Gorge
+  goto Searing Gorge 39.06,38.99
 ]])

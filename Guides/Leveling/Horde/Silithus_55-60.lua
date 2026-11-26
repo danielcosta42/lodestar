@@ -4,8 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Silithus (55-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Swamp of Sorrows (50-57)",
-	rev = "06b62efc",
+	rev = "0ea2b500",
 }, [[
 step
   ding 54
@@ -13,6 +12,16 @@ step
   only level>=54
   talk Cenarion Emissary Blackhoof##15188
   accept Taking Back Silithus##8276 |goto Orgrimmar 47.64,65.76
+step
+  only haveq(97988)
+  note Speak with Corswyn Aseril in Orgrimmar's Valley of Wisdom.
+  talk Corswyn Aseril##255679
+  turnin Orgrimmar's Windshapers##97988 |goto Orgrimmar 38.1,39.01 |tip {turninat}Orgrimmar
+step
+  only haveq(1124)
+  note Speak with Layo Starstrike near the Valor's Rest graveyard of Silithus, showing him Rabine's Letter.
+  talk Layo Starstrike##13220
+  turnin Wasteland##1124 |goto Silithus 81.87,18.93
 step
   only completed(1124) level>=54
   talk Layo Starstrike##13220
@@ -74,18 +83,6 @@ step
   collect 3 Rock Stalker Fang##20377 |q 8278/3 |goto Silithus 38.53,75.75 |tip {dropsfrom}Rock Stalker
   collect 3 Stonelash Flayer Stinger##20375 |q 8278 |goto Silithus 36.03,78.08 |tip {dropsfrom}Stonelash Flayer
 step
-  only completed(1124) haveq(1125)
-  talk Layo Starstrike##13220
-  turnin The Spirits of Southwind##1125 |goto Silithus 81.87,18.93
-step
-  only completed(1124) completed(1125) level>=54
-  talk Layo Starstrike##13220
-  accept Hive in the Tower##1126 |goto Silithus 81.87,18.93
-step
-  only completed(1124) haveq(1126)
-  note Scale the tower of Southwind Village and locate a means to stir the silithid hive into activity. Bring back anything unusual you may uncover when doing so to Layo Starstrike at the Valor's Rest graveyard of Silithus.
-  collect Encrusted Silithid Object##17346 |q 1126 |goto Silithus 60.2,52.6 |tip {dropsfrom}Hive'Ashi Ambusher
-step
   only haveq(8278)
   talk Beetix Ficklespragg##15189
   turnin Noggle's Last Hope##8278 |goto Silithus 51.61,38.63
@@ -102,6 +99,26 @@ step
   talk Geologist Larksbane##15183
   accept The Twilight Mystery##8284 |goto Silithus 49.67,37.46
 step
+  only completed(1124) haveq(1125)
+  talk Layo Starstrike##13220
+  turnin The Spirits of Southwind##1125 |goto Silithus 81.87,18.93
+step
+  only completed(1124) completed(1125) level>=54
+  talk Layo Starstrike##13220
+  accept Hive in the Tower##1126 |goto Silithus 81.87,18.93
+step
+  only completed(1124) haveq(1126)
+  note Scale the tower of Southwind Village and locate a means to stir the silithid hive into activity. Bring back anything unusual you may uncover when doing so to Layo Starstrike at the Valor's Rest graveyard of Silithus.
+  collect Encrusted Silithid Object##17346 |q 1126 |goto Silithus 60.2,52.6 |tip {dropsfrom}Hive'Ashi Ambusher
+step
+  only haveq(8282)
+  note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
+  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
+step
+  only haveq(8282)
+  talk Noggle Ficklespragg##15190
+  turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
+step
   only completed(1124) haveq(1126)
   talk Layo Starstrike##13220
   turnin Hive in the Tower##1126 |goto Silithus 81.87,18.93
@@ -114,14 +131,6 @@ step
   note Geologist Larksbane at Cenarion Hold in Silithus wants you to collect 8 Twilight Tablet Fragments.
   collect 8 Twilight Tablet Fragment##20378 |q 8284 |goto Silithus 20.72,10.25
 step
-  only haveq(8282)
-  note Retrieve Noggle's Satchel from the mountains in the south of Silithus and return it to him at Cenarion Hold.
-  collect Noggle's Satchel##20379 |q 8282 |goto Silithus 44.56,91.38
-step
-  only haveq(8282)
-  talk Noggle Ficklespragg##15190
-  turnin Noggle's Lost Satchel##8282 |goto Silithus 51.63,38.5
-step
   only haveq(8284)
   talk Geologist Larksbane##15183
   turnin The Twilight Mystery##8284 |goto Silithus 49.67,37.46
@@ -130,23 +139,19 @@ step
   click Wanted Poster: Deathclasp##180448
   accept Wanted - Deathclasp, Terror of the Sands##8283 |goto Silithus 51.35,38.27
 step
-  only completed(8284) level>=54
+  only completed(8284)
   talk Geologist Larksbane##15183
   accept The Deserter##8285 |goto Silithus 49.67,37.46
-step
-  only haveq(8285)
-  note Take the restored tablet to Hermit Ortell in Silithus.
-  talk Hermit Ortell##15194
-  turnin The Deserter##8285 |goto Silithus 67.19,69.76
-step
-  only completed(8285) level>=54
-  talk Hermit Ortell##15194
-  accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
 step
   only haveq(8283)
   note Bring Deathclasp's Pincer to Vish Kozus, Captain of the Guard.
   kill Deathclasp##15196 |q 8283 |goto Silithus 45.07,92.31 |elite
   collect Deathclasp's Pincer##20385 |q 8283 |goto Silithus 45.07,92.31
+step
+  only haveq(8285)
+  note Take the restored tablet to Hermit Ortell in Silithus.
+  talk Hermit Ortell##15194
+  turnin The Deserter##8285 |goto Silithus 67.19,69.76
 step
   only haveq(8283)
   talk Vish Kozus##15182
@@ -159,15 +164,17 @@ step
   talk Scout Bloodfist##17081
   accept Report to General Kirika##9416 |goto Silithus 48.95,36.69
 step
-  only haveq(8279)
-  note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
-  collect Twilight Lexicon - Chapter 3##20396 |q 8279/3 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth
-  collect Twilight Lexicon - Chapter 1##20394 |q 8279/1 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
-  collect Twilight Lexicon - Chapter 2##20395 |q 8279 |goto Silithus 16.09,86.37 |tip {dropsfrom}Twilight Keeper Exeter
-step
   only haveq(8318)
   note Bring 10 Encrypted Twilight Texts to Bor Wildmane in Cenarion Hold.
   collect 10 Encrypted Twilight Text##20404 |q 8318 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth, Twilight Avenger, Twilight Geolord
+step
+  only haveq(8318)
+  talk Bor Wildmane##15306
+  turnin Secret Communication##8318 |goto Silithus 48.57,37.78
+step
+  only completed(8285)
+  talk Hermit Ortell##15194
+  accept The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
 step
   note Speak with General Kirika at the Horde encampment near Hive'Regal.
   talk General Kirika##17079
@@ -182,6 +189,20 @@ step
   talk General Kirika##17079
   turnin Scouring the Desert##9422 |goto Silithus 50.75,69.54
 step
+  only level>=58 hasitem(20461)
+  use Brann Bronzebeard's Lost Letter##20461 |tip It starts the quest.
+  accept Brann Bronzebeard's Lost Letter##8308
+step
+  only haveq(8279)
+  note Bring the three chapters of the Twilight Lexicon to Hermit Ortell in Silithus.
+  collect Twilight Lexicon - Chapter 3##20396 |q 8279/3 |goto Silithus 40.86,42.22 |tip {dropsfrom}Twilight Keeper Havunth
+  collect Twilight Lexicon - Chapter 1##20394 |q 8279/1 |goto Silithus 26.35,36.62 |tip {dropsfrom}Twilight Keeper Mayna
+  collect Twilight Lexicon - Chapter 2##20395 |q 8279 |goto Silithus 16.09,86.37 |tip {dropsfrom}Twilight Keeper Exeter
+step
+  only level>=58
+  talk Commander Mar'alith##15181
+  accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
+step
   only haveq(8279)
   talk Hermit Ortell##15194
   turnin The Twilight Lexicon##8279 |goto Silithus 67.19,69.76
@@ -194,27 +215,6 @@ step
   talk Hermit Ortell##15194
   accept A Terrible Purpose##8287 |goto Silithus 67.19,69.76
 step
-  only haveq(8287)
-  note Take the Decoded Tablet Parchment to Commander Mar'alith.
-  talk Commander Mar'alith##15181
-  turnin A Terrible Purpose##8287 |goto Silithus 49.2,34.18
-step
-  only haveq(8318)
-  talk Bor Wildmane##15306
-  turnin Secret Communication##8318 |goto Silithus 48.57,37.78
-step
-  only level>=58
-  talk Commander Mar'alith##15181
-  accept Dearest Natalia##8304 |goto Silithus 49.2,34.18
-step
-  only haveq(8323)
-  note Hermit Ortell wants you to bring him 10 Encrypted Twilight Texts
-  collect 10 Encrypted Twilight Text##20404 |q 8323 |goto Silithus 26.31,37.02 |tip {dropsfrom}Twilight Avenger, Twilight Geolord, Twilight Stonecaller
-step
-  only level>=58 hasitem(20461)
-  use Brann Bronzebeard's Lost Letter##20461 |tip It starts the quest.
-  accept Brann Bronzebeard's Lost Letter##8308
-step
   only haveq(8308)
   note Take Brann Bronzebeard's Letter to Bronzebeard's Encampment in southern Silithus.
   talk Rutgar Glyphshaper##15170
@@ -226,8 +226,13 @@ step
   talk Rutgar Glyphshaper##15170 |q 8304 |goto Silithus 41.28,88.45
 step
   only haveq(8323)
-  talk Hermit Ortell##15194
-  turnin True Believers##8323 |goto Silithus 67.19,69.76
+  note Hermit Ortell wants you to bring him 10 Encrypted Twilight Texts
+  collect 10 Encrypted Twilight Text##20404 |q 8323 |goto Silithus 26.31,37.02 |tip {dropsfrom}Twilight Avenger, Twilight Geolord, Twilight Stonecaller
+step
+  only haveq(8287)
+  note Take the Decoded Tablet Parchment to Commander Mar'alith.
+  talk Commander Mar'alith##15181
+  turnin A Terrible Purpose##8287 |goto Silithus 49.2,34.18
 step
   only haveq(8304)
   talk Commander Mar'alith##15181
@@ -245,11 +250,15 @@ step
   talk Frankal Stonebridge##15171
   accept Breaking the Code##8310 |goto Silithus 40.81,88.86
 step
+  only haveq(8323)
+  talk Hermit Ortell##15194
+  turnin True Believers##8323 |goto Silithus 67.19,69.76
+step
   only haveq(8310)
   note Frankal Stonebridge at Bronzebeard's Encampment in Silithus wants you to recover a Hive'Zora Silithid Brain, Hive'Ashi Silithid Brain, and a Hive'Regal Silithid Brain. Return to Frankal when you have completed this task.
+  collect Hive'Ashi Silithid Brain##20457 |q 8310/1 |goto Silithus 61.73,52.51 |tip {dropsfrom}Hive'Ashi Drone, Hive'Ashi Stinger, Hive'Ashi Worker
   kill Hive'Regal Ambusher##11730 |q 8310/3 |goto Silithus 58.08,86.89 |elite
   collect Hive'Regal Silithid Brain##20459 |q 8310/3 |goto Silithus 58.08,86.89
-  collect Hive'Ashi Silithid Brain##20457 |q 8310/1 |goto Silithus 61.73,52.51 |tip {dropsfrom}Hive'Ashi Drone, Hive'Ashi Stinger, Hive'Ashi Worker
   collect Hive'Zora Silithid Brain##20458 |q 8310 |goto Silithus 27.87,61.78 |tip {dropsfrom}Hive'Zora Wasp, Hive'Zora Waywatcher, Hive'Zora Tunneler
 step
   only haveq(8309)
@@ -304,7 +313,4 @@ step
   only completed(1124) haveq(1185)
   talk Umber##11939
   turnin Under the Chitin Was...##1185 |goto Moonglade 44.88,35.6 |tip {turninat}Moonglade
-step
-  note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 34.29,66.14
 ]])
