@@ -361,7 +361,8 @@ local function pathTick()
 			if not ok then ns:Debug("Terrain:", res) end
 			pathCo = nil
 			if ok and res then
-				pathLeg.path, pathLeg.pathFail = res, nil
+				-- o da segunda busca (cruza uma passagem que a grade não tem): não refaz a cada desvio, como na falha
+				pathLeg.path, pathLeg.pathFail = res, res.solto or nil
 				route.pv = (route.pv or 0) + 1
 			else
 				pathLeg.path = pathLeg.path or false     -- falhou: fica o caminho anterior, se havia

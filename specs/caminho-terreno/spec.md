@@ -32,7 +32,13 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
   Revantusk Village ao platô de The Hinterlands, que a grade de 16,7 jd não tem. Essa busca aceita passo
   travado e célula sem passagem, a 30× o custo, e termina na célula mais perto quando o destino não tem
   passagem (mestre de voo no alto da torre). O caminho segue o terreno e cruza a barreira só onde ela é mais
-  fina. A reta fica para fora da grade ou para a busca grande demais.
+  fina. Só vale passagem curta: até 5 passos travados seguidos e 10 no total. Penhasco longo, lava, a árvore de
+  Teldrassil ou dez paredes não contam, e aí fica a reta.
+  - Se a primeira busca estourou o limite de expansões, a segunda roda com um quinto do limite. Assim o nil que
+    não tem jeito custa 20% a mais, não o dobro.
+  - O caminho dela vem marcado (`solto`). Quem chama não o refaz a cada desvio do jogador: só depois de 300 jd,
+    como na falha.
+  - A reta fica para fora da grade, para a busca grande demais e para a barreira longa.
 - A perna a pé atual ganha `path` (pontos de mundo); o mapa e o minimapa desenham o caminho; a
   seta aponta o ponto do caminho ~25 jd à frente; a distância é a que falta pelo caminho.
 - Refaz o caminho ao trocar de perna ou se o jogador sair dele por mais de 40 jd.

@@ -139,6 +139,9 @@ local ILHA, SALTO, PARADO = 3000, 20, 3000   -- células; células; expansões s
 -- este custo por passo. O caminho segue o terreno e cruza a barreira onde ela é mais fina (onde está a
 -- rampa), em vez de a reta cortar a montanha.
 local TRAVADO = 30
+-- ...mas só uma passagem curta: rampa estreita é poucos passos travados; mais que isso (penhasco longo, lava,
+-- árvore de Teldrassil, dez paredes) não é caminho que o jogador siga, e a busca devolve nil (a reta)
+local TRAVADO_SEGUIDOS, TRAVADO_TOTAL = 5, 10
 
 -- as células ligadas a (r, c) e se a região acaba antes de `ILHA` (é ilha)
 local function regiao(grid, r, c)
@@ -198,8 +201,16 @@ end
 -- expansões (número) ou quando a função disser (orçamento de tempo), cede a vez — não trava
 -- o quadro.
 local caminho
+-- A segunda busca roda com o limite inteiro quando a primeira provou que não há ligação (acabou a fila). Quando a
+-- primeira estourou o limite (região grande: a Revantusk cai aqui), roda com um quinto dele: a passagem curta, quando
+-- existe, sai em poucas expansões (~20 mil na Revantusk), e o nil que não tem jeito custa 20% a mais, não o dobro.
+-- O caminho dela vem marcado (`solto`): quem chama não o refaz a cada desvio do jogador.
 function TR.Path(dados, de, para, maxExp, ceder)
-	return caminho(dados, de, para, maxExp, ceder, false) or caminho(dados, de, para, maxExp, ceder, true)
+	local pts, motivo = caminho(dados, de, para, maxExp, ceder, false)
+	if pts then return pts end
+	pts = caminho(dados, de, para, motivo == "limite" and math.floor(maxExp / 5) or maxExp, ceder, true)
+	if pts then pts.solto = true end
+	return pts
 end
 
 -- solto: a segunda tentativa, que aceita passo travado (TRAVADO) e dispensa a lógica de ilha
@@ -235,7 +246,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	local fila = novaFila()
 	local g, came, fechado = { [start] = 0 }, {}, {}
 	fila.poe(h(sr, sc), start)
-	local exp, achou = 0, start == goal
+	local exp, achou, estourou = 0, start == goal, false
 	local perto, pertoH, parado = start, h(sr, sc), 0
 	local porFuncao = type(ceder) == "function"
 	while not achou and not fila.vazia() do
@@ -245,7 +256,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 		elseif not fechado[k] then
 			fechado[k] = true
 			exp = exp + 1
-			if exp > maxExp then break end
+			if exp > maxExp then estourou = true; break end
 			local r, c = floor(k / W), k % W
 			if ilhaFim then                              -- já na borda da ilha e sem avançar: chega
 				local hk = h(r, c)
@@ -284,7 +295,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	end
 	local fim = goal
 	if not achou then
-		if not (ilhaFim and pertoH <= SALTO * CEL) then return nil end
+		if not (ilhaFim and pertoH <= SALTO * CEL) then return nil, estourou and "limite" or "sem" end
 		fim = perto
 	end
 	local inv, k = {}, fim
@@ -297,6 +308,22 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 		local n = #cel + 1
 		cel[n] = inv[i]
 		molh[n] = molh[n - 1] + (select(2, info(grid, floor(inv[i] / W), inv[i] % W)) and 1 or 0)
+	end
+	-- a segunda busca: quanto da barreira ela cruzou (seguidos e no total); passou do curto, não é caminho
+	if solto then
+		local seguidos, maior, total = 0, 0, 0
+		for n = 2, #cel do
+			local a, b = cel[n - 1], cel[n]
+			local ar, ac, br, bc = floor(a / W), a % W, floor(b / W), b % W
+			local d = PASSO[(br - ar + 1) * 3 + (bc - ac) + 2]
+			if d and info(grid, ar, ac) % 2 ^ d >= 2 ^ (d - 1) then
+				seguidos = 0
+			else
+				seguidos, total = seguidos + 1, total + 1
+				if seguidos > maior then maior = seguidos end
+			end
+		end
+		if maior > TRAVADO_SEGUIDOS or total > TRAVADO_TOTAL then return nil, "barreira" end
 	end
 	-- puxa o fio: de cada vértice (posições em `cel`), reta até o mais adiante (até `alcance`)
 	-- que se alcança sem passo travado nem mais água que o caminho por ali

@@ -775,6 +775,10 @@ local EK = load("Terrain0.lua", {}).terrain
 local revan, aerie = { c = 0, x = -635.3, y = -4720.5 }, { c = 0, x = 283.7, y = -2002.8 }
 local ra, ar = TRN.Path(EK, revan, aerie, 150000), TRN.Path(EK, aerie, revan, 150000)
 check(ra and ar and #ra > 4 and #ar > 4, "Revantusk <-> Aerie Peak: caminho pelo terreno nos dois sentidos")
+check(ra and ra.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
+-- barreira longa (parede de 8 células de espessura): não é passagem curta, fica sem caminho (a reta)
+local grossa = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
+check(TRN.Path(grossa, mundo(5, 30), mundo(5, 70), 40000) == nil, "barreira grossa: a segunda busca não inventa caminho")
 -- lago no meio: contorna se a volta for curta
 local lago = quadranteSint(function() return false end, function(r, c) return c >= 9 and c <= 11 and r >= 3 and r <= 7 end)
 cam = TRN.Path(lago, A, B, 20000)
