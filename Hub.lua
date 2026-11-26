@@ -73,7 +73,6 @@ end
 -- Janela
 --------------------------------------------------------------------------------
 function H:BuildNav()
-	local C = UI.COL
 	frame.navItems = frame.navItems or {}
 	for _, it in pairs(frame.navItems) do it:Hide() end
 	local y = 64
@@ -324,7 +323,7 @@ HOME.build = function(page)
 end
 
 HOME.refresh = function(page)
-	local C, L = UI.COL, ns.L
+	local L = ns.L
 	local g = ns.currentGuide
 	local cont = page.cont
 	if g then

@@ -66,7 +66,6 @@ end
 --------------------------------------------------------------------------------
 if not ns.On then return end
 local UI = ns.UI
-local unpackc = UI.unpackc
 
 -- os nomes de origem do próprio jogo, BATTLE_PET_SOURCE_1..12 (montarias usam os mesmos)
 function CL.SourceLabels()
@@ -225,7 +224,7 @@ local function itemCard(parent)
 end
 
 PAGE.refresh = function(page, H)
-	local C, L = UI.COL, ns.L
+	local L = ns.L
 	-- lido uma vez e de novo só quando o diário muda (o eventos do jogo limpam o cache)
 	if tab == "mounts" then cacheMounts = cacheMounts or CL:Mounts() else cachePets = cachePets or CL:Pets() end
 	local all = tab == "mounts" and cacheMounts or cachePets
