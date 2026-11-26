@@ -40,6 +40,38 @@ local function stepQuestIDs(verb)
 	return ids
 end
 
+-- As quests que o guia aceita (ou entrega) daqui em diante, não só no passo atual (issue #100): falando com o NPC
+-- de uma quest que o guia pega mais à frente, ou entregando uma pronta antes da hora, a automação age igual. A
+-- entrega olha também para trás (a que ficou sem entregar). Fica de fora o que não vale para o personagem: passo
+-- de outra classe/raça, quest pulada, descartada ou cinza (IsStepActive, IsGoalActive). id -> goal.
+local function guideQuestGoals(verb)
+	local out = {}
+	local g = ns.currentGuide
+	if not g then return out end
+	local cur = ns.char.currentStep or 1
+	local first = verb == "turnin" and 1 or cur
+	for i = first, #g.steps do
+		local st = g.steps[i]
+		if ns:IsStepActive(st) then
+			for _, goal in ipairs(st.goals) do
+				if goal.verb == verb and goal.id and not out[goal.id] and ns:IsGoalActive(goal)
+					and not ns:IsGoalComplete(goal) then
+					out[goal.id] = goal
+				end
+			end
+		end
+	end
+	return out
+end
+ns.GuideQuestGoals = guideQuestGoals
+
+-- o que a automação pega/entrega: o passo atual e o resto do guia
+local function wantedIDs(verb)
+	local ids = stepQuestIDs(verb)
+	for id in pairs(guideQuestGoals(verb)) do ids[id] = true end
+	return ids
+end
+
 --------------------------------------------------------------------------------
 -- Helpers de NPC / gossip
 --------------------------------------------------------------------------------
@@ -100,7 +132,7 @@ ns:On("QUEST_DETAIL", function()
 	if ns.GearPlan and ns.GearPlan.HarvestRewards then ns.GearPlan.HarvestRewards() end
 	if not (ns.db and ns.db.autoAccept and ativo()) then return end
 	local qid = GetQuestID and GetQuestID()
-	local wanted = stepQuestIDs("accept")
+	local wanted = wantedIDs("accept")
 	local greedy = shouldGrab()
 	-- se não sabemos o id (cliente antigo), aceita se guloso ou se o step pede accept
 	if not qid then
@@ -162,19 +194,32 @@ ns:On("GOSSIP_SHOW", skipIfUnavailable)
 -- NPCs multi-quest usam a janela "greeting": roteia a próxima disponível p/ o
 -- fluxo normal de accept (QUEST_DETAIL auto-aceita se casar com o passo).
 ns:On("QUEST_GREETING", function()
-	if not (ns.db and ns.db.autoAccept and ativo()) then return end
-	if not shouldGrab() then return end        -- guia te mandou a este NPC (talk/click)
+	if not ativo() then return end
+	-- entrega primeiro: a quest pronta que o guia entrega, aqui ou mais adiante (issue #100)
+	if ns.db and ns.db.autoTurnin and GetNumActiveQuests and SelectActiveQuest and GetActiveQuestID then
+		local want = wantedIDs("turnin")
+		local QL = C_QuestLog
+		for i = 1, GetNumActiveQuests() or 0 do
+			local qid = GetActiveQuestID(i)
+			if qid and want[qid] and QL and QL.IsComplete and QL.IsComplete(qid) then SelectActiveQuest(i); return end
+		end
+	end
+	if not (ns.db and ns.db.autoAccept) then return end
+	local greedy = shouldGrab()                -- guia te mandou a este NPC (talk/click): pega tudo
+	if not greedy and not next(wantedIDs("accept")) then return end
 	-- pega as quests da janela (uma por vez; a greeting re-abre após aceitar), menos
 	-- cinza e repetível que o passo não pede
 	if not (GetNumAvailableQuests and SelectAvailableQuest) then return end
-	local want = stepQuestIDs("accept")
+	local want = wantedIDs("accept")
 	for i = 1, GetNumAvailableQuests() or 0 do
 		local trivial, repeatable, qid
 		if GetAvailableQuestInfo then
 			local _
 			trivial, _, repeatable, _, qid = GetAvailableQuestInfo(i)
 		end
-		if (qid and want[qid]) or not (trivial or repeatable or skipped(qid)) then SelectAvailableQuest(i); return end
+		if (qid and want[qid]) or (greedy and not (trivial or repeatable or skipped(qid))) then
+			SelectAvailableQuest(i); return
+		end
 	end
 end)
 
@@ -209,7 +254,7 @@ ns:On("GOSSIP_SHOW", function()
 	--    Seleciona uma; as demais entram quando o gossip re-abre após aceitar.
 	if ns.db.autoAccept then
 		local greedy = shouldGrab()
-		local want = stepQuestIDs("accept")
+		local want = wantedIDs("accept")
 		if GI and GI.GetAvailableQuests then
 			for _, q in ipairs(GI.GetAvailableQuests()) do
 				if q.questID and (want[q.questID] or (greedy and not q.isTrivial and not q.repeatable
@@ -225,7 +270,7 @@ ns:On("GOSSIP_SHOW", function()
 
 	-- 3) entregar quest ativa completa que o step pede
 	if ns.db.autoTurnin then
-		local want = stepQuestIDs("turnin")
+		local want = wantedIDs("turnin")
 		if GI and GI.GetActiveQuests then
 			for _, q in ipairs(GI.GetActiveQuests()) do
 				if q.questID and want[q.questID] and q.isComplete then
@@ -244,7 +289,7 @@ ns:On("QUEST_PROGRESS", function()
 	if not (ns.db and ns.db.autoTurnin and ativo()) then return end
 	-- só a missão que o passo manda entregar, e nunca a que cobra ouro
 	local qid = GetQuestID and GetQuestID()
-	if not (qid and stepQuestIDs("turnin")[qid]) then return end
+	if not (qid and wantedIDs("turnin")[qid]) then return end
 	if GetQuestMoneyToGet and (GetQuestMoneyToGet() or 0) > 0 then return end
 	if IsQuestCompletable and IsQuestCompletable() then CompleteQuest() end
 end)
@@ -274,7 +319,7 @@ ns:On("QUEST_COMPLETE", function()
 	if ns.GearPlan and ns.GearPlan.HarvestRewards then ns.GearPlan.HarvestRewards() end
 	if not (ns.db and ns.db.autoTurnin and ativo()) then return end
 	local qid = GetQuestID and GetQuestID()
-	if not (qid and stepQuestIDs("turnin")[qid]) then return end     -- a do passo, não outra
+	if not (qid and wantedIDs("turnin")[qid]) then return end        -- uma que o guia entrega, não outra
 	local n = GetNumQuestChoices and GetNumQuestChoices() or 0
 	-- pcall: entregar com bolsa cheia / item único já equipado lança erro visível
 	if n <= 1 then
@@ -288,9 +333,11 @@ ns:On("QUEST_COMPLETE", function()
 	local step = ns:GetStep()
 	if step then
 		for _, g in ipairs(step.goals) do
-			if g.verb == "turnin" and g.reward and ns:IsGoalActive(g) then pick = g.reward; break end
+			if g.verb == "turnin" and g.id == qid and g.reward and ns:IsGoalActive(g) then pick = g.reward; break end
 		end
 	end
+	local ahead = guideQuestGoals("turnin")[qid]          -- entrega de mais adiante: o |reward dela
+	if not pick and ahead and ahead.reward then pick = ahead.reward end
 	if not pick and ns.db.autoReward then pick = bestRewardIndex(n) end
 	if not (pick and pick >= 1 and pick <= n and pcall(GetQuestReward, pick)) then
 		ns:Print("|cffffcc00" .. ns.L.CHOOSE_REWARD .. "|r")

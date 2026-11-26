@@ -354,6 +354,27 @@ step("Secrets", function()
 	ns.char.manualPick = nil
 	ns:LoadGuide(back, true)
 end)
+-- aceite e entrega automáticos valem para as quests do guia mais adiante, não só do passo (issue #100)
+step("AutoAcceptAhead", function()
+	local step = ns:GetStep()
+	local here = {}
+	for _, g in ipairs(step.goals) do if g.id then here[g.id] = true end end
+	local qid
+	for id in pairs(ns.GuideQuestGoals("accept")) do if not here[id] then qid = id; break end end
+	assert(qid, "nenhuma quest mais adiante no guia")
+	local saved = { _G.GetQuestID, _G.AcceptQuest, _G.IsShiftKeyDown }
+	local accepted
+	_G.GetQuestID, _G.AcceptQuest, _G.IsShiftKeyDown = function() return qid end, function() accepted = qid end,
+		function() return false end
+	ns.db.autoAccept = true
+	ns.fire("QUEST_DETAIL")
+	assert(accepted == qid, "não aceitou a quest que o guia pega mais adiante")
+	accepted = nil
+	_G.GetQuestID = function() return 999999 end
+	ns.fire("QUEST_DETAIL")
+	assert(accepted == nil, "aceitou quest fora do guia")
+	_G.GetQuestID, _G.AcceptQuest, _G.IsShiftKeyDown = saved[1], saved[2], saved[3]
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

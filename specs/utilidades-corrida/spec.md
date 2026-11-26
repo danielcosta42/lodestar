@@ -14,6 +14,11 @@ Depois do Lodestar 3 (#90), o que decide a corrida dos guias é o tempo de level
   sugestão volta a até 60 jd do ponto, ele faz lá. O texto diz a quest e quem a dá, no idioma do cliente quando o
   jogo sabe. Na janela do guia, depois do
   passo; clique guia até lá. A janela só redesenha quando a lista muda.
+- **R1b Automação além do passo (issue #100).** O aceite automático pega a quest que o guia aceita em qualquer passo
+  daqui em diante, não só no atual. A entrega automática entrega a quest pronta que o guia entrega em qualquer passo,
+  inclusive um que ficou para trás. Isso vale no gossip, na janela de saudação (com entrega) e na de detalhe. Fica de
+  fora o que não vale para o personagem: passo de outra classe ou raça, quest pulada, descartada ou cinza. A
+  recompensa (`|reward N`) é a do passo daquela entrega.
 - **R2 Masmorra no grind.** Passo com "suba até o nível N" por fazer: a masmorra que cabe agora entre as que têm guia
   para a sua facção (Dungeons:BestNow) e quantas quests dela faltam pegar, com "Ver a masmorra".
 - **R3 Botão de alvo.** Botão seguro (LodestarTarget, atalho em Teclas de atalho) com /targetexact no mob (kill) ou NPC
