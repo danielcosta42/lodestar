@@ -45,7 +45,8 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
     menos 10 jd.
   - A busca liga, célula a célula, o caminho andado (`TR.Links`, também na detecção de ilha) e anda por ele como
     por terreno.
-  - As do addon ficam em `PassagesData.lua`, com as que vierem dos relatórios.
+  - As do addon ficam em `PassagesData.lua`, com as que vierem dos relatórios. A primeira (#104) é a rampa do
+    litoral da Revantusk Village até a beira da praia, gravada em jogo.
   - `/ls report` leva as gravadas em texto curto (`c|zona|x,y;...`).
   - Gravar ou limpar refaz os caminhos da rota: larga a busca em curso, limpa as pernas a pé e redesenha.
   - A gravação para em voo, morte, salto grande num tique (teleporte, pedra de lar), velocidade acima de 18 jd/s

@@ -776,6 +776,15 @@ local revan, aerie = { c = 0, x = -635.3, y = -4720.5 }, { c = 0, x = 283.7, y =
 local ra, ar = TRN.Path(EK, revan, aerie, 150000), TRN.Path(EK, aerie, revan, 150000)
 check(ra and ar and #ra > 4 and #ar > 4, "Revantusk <-> Aerie Peak: caminho pelo terreno nos dois sentidos")
 check(ra and ra.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
+-- com a rampa gravada em jogo (PassagesData.lua, #104): a busca normal já sai pela rampa, nos dois sentidos
+local EKp = load("Terrain0.lua", {}).terrain
+EKp.passages = load("PassagesData.lua", {}).passagesData
+local function pelaRampa(p)
+	for _, q in ipairs(p or {}) do if q.x > -235 and q.x < -150 and q.y > -4460 and q.y < -4330 then return true end end
+end
+local rr, rv = TRN.Path(EKp, revan, aerie, 150000), TRN.Path(EKp, aerie, revan, 150000)
+check(rr and rv and not rr.solto and not rv.solto and pelaRampa(rr) and pelaRampa(rv),
+	"Revantusk <-> Aerie Peak com a rampa gravada: busca normal, pela rampa")
 -- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
 local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
 local trilha = {}                                  -- andada: um ponto por célula (como a gravação, a cada 3 jd)
