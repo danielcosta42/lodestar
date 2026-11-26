@@ -140,7 +140,7 @@ local function update()
 	lastSig = sig
 	ensure(canvas)
 	clear()
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	local col = route.dest and route.dest.red and { 0.9, 0.2, 0.2 } or C.accent
 	for i = route.leg, #route.legs do
 		local leg = route.legs[i]

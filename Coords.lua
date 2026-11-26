@@ -21,17 +21,17 @@ end
 local function ensure()
 	if not mmText and Minimap then
 		mmText = Minimap:CreateFontString(nil, "OVERLAY")
-		UI.SetFont(mmText, 11, { num = true, color = UI.COL.active })
+		UI.SetFont(mmText, 11, { num = true, hud = true, color = UI.HUD.active })
 		mmText:SetPoint("TOP", Minimap, "BOTTOM", 0, -2)
 		local sh = Minimap:CreateFontString(nil, "BACKGROUND")   -- sombra p/ legibilidade
-		UI.SetFont(sh, 11, { num = true, color = { 0, 0, 0, 0.9 } })
+		UI.SetFont(sh, 11, { num = true, hud = true, color = { 0, 0, 0, 0.9 } })
 		sh:SetPoint("CENTER", mmText, "CENTER", 1, -1)
 		mmText._sh = sh
 	end
 	if not wmText and WorldMapFrame then
 		local anchor = WorldMapFrame:GetCanvasContainer() or WorldMapFrame
 		wmText = anchor:CreateFontString(nil, "OVERLAY")
-		UI.SetFont(wmText, 13, { num = true, color = UI.COL.active })
+		UI.SetFont(wmText, 13, { num = true, hud = true, color = UI.HUD.active })
 		wmText:SetPoint("BOTTOM", anchor, "BOTTOM", 0, 8)
 		wmText:SetDrawLayer("OVERLAY", 7)
 	end

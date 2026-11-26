@@ -94,7 +94,7 @@ function T:Refresh()
 			n = n + 1
 			local r = rows[n] or makeRow(frame.content); rows[n] = r
 			r:ClearAllPoints(); r:SetPoint("TOPLEFT", 0, -y); r:SetPoint("TOPRIGHT", 0, -y)
-			r.name:SetText(("|cff8f98a8[%s]|r %s"):format(tostring(e.level or "?"), e.title or ns.QuestState.Title(e.id)))
+			r.name:SetText(("|cff" .. UI.Hex("dim") .. "[%s]|r %s"):format(tostring(e.level or "?"), e.title or ns.QuestState.Title(e.id)))
 			r.name:SetTextColor(UI.unpackc(C.active))
 			r.btn:SetScript("OnClick", function() ns.QuestState.Abandon(e.id) end)
 			r.btn:Show(); r:Show()

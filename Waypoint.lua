@@ -285,7 +285,7 @@ end
 local arrow
 local function ensureArrow()
 	if arrow then return arrow end
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	arrow = CreateFrame("Frame", "LodestarArrow", UIParent)
 	arrow:SetSize(50, 50)
 	local dbp = ns.db.arrow
@@ -315,10 +315,10 @@ local function ensureArrow()
 	plate:SetSize(140, 34)
 	arrow.plate = plate
 	arrow.dist = plate:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(arrow.dist, 16, { num = true, color = C.accent })
+	UI.SetFont(arrow.dist, 16, { num = true, hud = true, color = C.accent })
 	arrow.dist:SetPoint("TOP", 0, -3)
 	arrow.name = plate:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(arrow.name, 10, { num = true, color = C.muted })
+	UI.SetFont(arrow.name, 10, { num = true, hud = true, color = C.muted })
 	arrow.name:SetPoint("BOTTOM", 0, 4)
 	arrow.name:SetPoint("LEFT", 6, 0); arrow.name:SetPoint("RIGHT", -6, 0)
 	arrow.name:SetJustifyH("CENTER"); arrow.name:SetWordWrap(false)
@@ -374,7 +374,7 @@ local function transitETA(goal)
 	return nil
 end
 local function showTransit(a, goal)
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	a:Show(); a.tex:Show(); a.shadow:Show()
 	a.tex:SetRotation(0); a.shadow:SetRotation(0)          -- estático: em voo a direção não guia
 	a.tex:SetVertexColor(UI.unpackc(C.amber))
@@ -391,7 +391,7 @@ end
 -- são opcionais, e quem prefere ir a pé não fica sem seta.
 local STILL = { ship = true, tram = true }
 local function legArrow(a, goal)
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	a:Show()
 	if goal.icon then a.icon:SetTexture(goal.icon); a.icon:Show() else a.icon:Hide() end
 	local dist, dx, dy
@@ -416,7 +416,7 @@ end
 
 local function updateArrow(goal)
 	local a = ensureArrow()
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 
 	if UnitOnTaxi and UnitOnTaxi("player") then a.icon:Hide(); showTransit(a, goal); return end
 	taxi.lastPW, taxi.lastT, taxi.speed = nil, nil, 0      -- fora do voo: reseta o tracking

@@ -20,6 +20,21 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 
 ## Features
 
+### Lodestar 3: the player's hub
+- **A light look** by default (the dark one is one switch away), with rounded cards and soft shadows that read over
+  the game world. Barlow (OFL) in Latin-script languages; the game's font in the others.
+- **The Hub** replaces the guide library: Home (continue your guide, your level and XP, the dungeon for right now, gear
+  upgrades, Legacy, collection), Leveling, Dungeons, Gear, Collections, Legacy, Class, Reputation, Attunements and Events.
+- **Dungeons** by level, the one that fits you now, its entrance (learned the first time you go in), the guide quests
+  to pick up first, and for each boss the loot that upgrades your spec, with the drop chance (loot from pfQuest).
+- **Gear** for your spec: pick it (or let Lodestar read it from your talents), tune the stat weights or paste a Pawn
+  string, and see for every slot what you wear and the best upgrade within reach — dungeons for your level, rewards of
+  the quests on your route and your bags — with where it comes from and how much it gains.
+- **Collections**: mounts and pets from the game's own journals, with where each comes from, a source filter,
+  "missing only" and Guide me.
+- **Legacy**: Forever's Legacy challenges, your account points, each group's progress, your highest character of each
+  class and what is closest, with the way there.
+
 ### Guidance
 - Clean step window with your current objective, checkboxes, and a preview of what's next.
 - On-screen **waypoint arrow**, a **compass strip** at the top of the screen, and the route drawn as
@@ -116,6 +131,10 @@ what it always was: a file you hand over on purpose.
 
 - Routes are generated from the open **[QuestieDB](https://github.com/Questie/QuestieDB)** (Forever
   flavor) by the Questie team, plus what `/ls scan` collects in-game for content no database has yet.
+- Dungeon bosses and their loot come from the **[pfQuest](https://github.com/shagu/pfQuest)** database by Shagu (MIT);
+  `tools/gen_dungeons.py` regenerates `DungeonData.lua`.
+- The interface font is **[Barlow](https://github.com/jpt/barlow)** by Jeremy Tribby (SIL Open Font License 1.1,
+  `Media/Fonts/OFL.txt`).
 - Flight paths, boats and zeppelins come from the game client's own tables (TaxiNodes, TaxiPath,
   TaxiPathNode, via [wago.tools](https://wago.tools)); `tools/gen_travel.py` regenerates them.
 - Trainers the database leaves untitled (Forever's Horde paladin trainers, the junior profession

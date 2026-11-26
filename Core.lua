@@ -149,6 +149,12 @@ local DB_DEFAULTS = {
 	autoFlight = false,   -- OPT-IN: no mestre de voo, voa para o destino da rota (Shift escolhe à mão)
 	partyTell = false,    -- OPT-IN: "[Quest] pronta para entregar" no chat do grupo
 	tomtomShim = false,   -- OPT-IN: sem o TomTom, /way e TomTom:AddWaypoint apontam a seta do Lodestar
+	-- specs/lodestar-3 (issue #90)
+	theme = "light",      -- "light" (padrão) | "dark"; trocar vale depois do /reload
+	gear = { spec = {}, weights = {} },   -- Equipamento: spec escolhida e pesos editados, por classe
+	dungeonDoors = {},    -- Masmorras: a entrada de cada uma, aprendida ao entrar (por instância)
+	alts = {},            -- Legado: classe, nível e profissões de cada personagem da conta
+	rewards = {},         -- recompensas de quest vistas no jogo (Equipamento)
 }
 local CHAR_DEFAULTS = {
 	currentGuide = nil,        -- chave do guia ativo (aba em foco)
@@ -177,6 +183,8 @@ ns:On("ADDON_LOADED", function(_, name)
 	_G.LodestarCharDB = applyDefaults(_G.LodestarCharDB or {}, CHAR_DEFAULTS)
 	ns.db = _G.LodestarDB
 	ns.char = _G.LodestarCharDB
+	-- o tema vale antes de qualquer janela nascer (UI.lua muda a paleta no lugar)
+	if ns.UI and ns.UI.ApplyTheme then ns.UI.ApplyTheme(ns.db.theme) end
 	-- o raceChat nasceu ligado e o padrão ficou gravado em todo save: vira opt-in uma vez só
 	if not ns.db.raceChatOptIn then ns.db.raceChat, ns.db.raceChatOptIn = false, true end
 	fire("_INIT")               -- módulos que dependem da config inicializam aqui

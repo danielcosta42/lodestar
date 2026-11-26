@@ -51,7 +51,7 @@ end
 -- fecha a linha: espaço embaixo e um fio separando da próxima
 local function fimDeLinha(page, h)
 	page._y = page._y + math.max(h, 26) + 10
-	local sep = UI.Rect(page, "ARTWORK", { 1, 1, 1, 0.06 })
+	local sep = UI.Rect(page, "ARTWORK", UI.COL.line)
 	sep:SetPoint("TOPLEFT", 0, -page._y); sep:SetSize(CONTENT_W, 1)
 	page._y = page._y + 11
 end
@@ -158,6 +158,9 @@ end
 
 local function fillHud(p)
 	local L = ns.L
+	switchRow(p, L.SET_THEME, L.SET_THEME_D,
+		function() return (ns.db.theme or "light") == "light" end,
+		function(v) ns.db.theme = v and "light" or "dark"; ns:Print(L.SET_THEME_RELOAD) end)
 	sliderRow(p, L.SET_SCALE, "", 70, 140, 5,
 		function() return (ns.db.viewer.scale or 1) * 100 end,
 		function(v) ns.db.viewer.scale = v / 100; if ns.Viewer then ns.Viewer:ApplyDisplay() end end, "%d%%")
@@ -277,7 +280,7 @@ local function navButton(parent, i, def)
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(NAV_W, 36)
 	b:SetPoint("TOPLEFT", 0, -10 - (i - 1) * 38)
-	local hl = UI.Rect(b, "BACKGROUND", { 1, 1, 1, 0.05 }); hl:SetAllPoints(); hl:Hide()
+	local hl = UI.Rect(b, "BACKGROUND", UI.COL.hover); hl:SetAllPoints(); hl:Hide()
 	local bar = UI.Rect(b, "ARTWORK", UI.COL.accent); bar:SetPoint("TOPLEFT"); bar:SetPoint("BOTTOMLEFT")
 	bar:SetWidth(3); bar:Hide()
 	local ic = UI.Glyph(b, def.glyph, "ARTWORK", 64); ic:SetSize(16, 16); ic:SetPoint("LEFT", 16, 0)
@@ -328,7 +331,7 @@ local function build()
 	close:SetPoint("RIGHT", -10, 0)
 
 	-- menu de seções
-	local nav = UI.Panel(frame, { color = { 0, 0, 0, 0.22 }, border = false })
+	local nav = UI.Panel(frame, { color = UI.dark and { 0, 0, 0, 0.22 } or UI.COL.header, border = false })
 	nav:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 0, 0)
 	nav:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 1, 1); nav:SetWidth(NAV_W)
 

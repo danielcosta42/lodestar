@@ -49,6 +49,23 @@ function Q.ItemProgress(have, need)
 	return ("%d/%d"):format(math.max(0, math.min(tonumber(have) or 0, need)), need)
 end
 
+-- A contagem crua de um objetivo: (feito, pedido). Com índice, aquele objetivo; sem, a soma dos que têm conta. Um
+-- `collect` sem quest conta a bolsa.
+function Q.Counts(objectives, obj)
+	if type(objectives) ~= "table" then return nil end
+	local list = obj and { objectives[obj] } or objectives
+	local have, need = 0, 0
+	for _, o in ipairs(list) do
+		local n = o and tonumber(o.numRequired)
+		if n and n > 0 then
+			need = need + n
+			have = have + math.max(0, math.min(tonumber(o.numFulfilled) or 0, n))
+		end
+	end
+	if need == 0 then return nil end
+	return have, need
+end
+
 -- 299 -> "4:59"; 3723 -> "1:02:03".
 function Q.FmtLeft(s)
 	s = math.max(0, math.floor(tonumber(s) or 0))
@@ -245,21 +262,36 @@ function Q.IsFailed(qid)
 	return qid and QL.IsFailed and ns.IsQuestInLog(qid) and QL.IsFailed(qid) or false
 end
 
--- O texto que vai depois do objetivo: contagem, tempo, falha. `done` já resolvido por quem chama.
-function Q.GoalSuffix(goal, done)
+function Q.GoalCounts(goal)
+	if goal.q and goal.q.id and ns.IsQuestInLog(goal.q.id) then
+		return Q.Counts(Q.Objectives(goal.q.id), goal.q.obj)
+	elseif goal.verb == "collect" and goal.id and goal.count then
+		return math.min(ns.ItemCount(goal.id) or 0, goal.count), goal.count
+	end
+end
+
+local function hex(key, fallback)
+	return ns.UI and ns.UI.Hex and ns.UI.Hex(key) or fallback
+end
+
+-- O texto que vai depois do objetivo: contagem, tempo, falha. `done` já resolvido por quem chama; `noCount`: a
+-- janela mostra a contagem à direita, então aqui só o tempo e a falha.
+function Q.GoalSuffix(goal, done, noCount)
 	local q = questOf(goal)
-	if q and Q.IsFailed(q) then return ("  |cffff6b6b%s|r"):format(L.Q_FAILED), true end
+	if q and Q.IsFailed(q) then return ("  |cff%s%s|r"):format(hex("danger", "ff6b6b"), L.Q_FAILED), true end
 	if done then return "" end
 	local out = ""
-	local prog
-	if goal.q and goal.q.id and ns.IsQuestInLog(goal.q.id) then
-		prog = Q.Progress(Q.Objectives(goal.q.id), goal.q.obj)
-	elseif goal.verb == "collect" and goal.id and goal.count then
-		prog = Q.ItemProgress(ns.ItemCount(goal.id), goal.count)
+	if not noCount then
+		local prog
+		if goal.q and goal.q.id and ns.IsQuestInLog(goal.q.id) then
+			prog = Q.Progress(Q.Objectives(goal.q.id), goal.q.obj)
+		elseif goal.verb == "collect" and goal.id and goal.count then
+			prog = Q.ItemProgress(ns.ItemCount(goal.id), goal.count)
+		end
+		if prog then out = out .. ("  |cff%s%s|r"):format(hex("muted", "d8dde6"), prog) end
 	end
-	if prog then out = out .. "  |cffd8dde6" .. prog .. "|r" end
 	local left = goal.verb ~= "accept" and q and Q.TimeLeft(q)
-	if left then out = out .. "  |cfff0c26a" .. L.Q_TIME_LEFT:format(Q.FmtLeft(left)) .. "|r" end
+	if left then out = out .. ("  |cff%s%s|r"):format(hex("amber", "f0c26a"), L.Q_TIME_LEFT:format(Q.FmtLeft(left))) end
 	return out, false, left ~= nil and left ~= false
 end
 

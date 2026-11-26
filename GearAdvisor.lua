@@ -93,9 +93,24 @@ local function usable(class, level, classID, subClassID)
 	return true
 end
 
+GA.Usable = usable
+
+-- Os espaços de um INVTYPE, sempre em lista ({ 16 }, { 11, 12 }...); nil se não é de vestir.
+function GA.SlotsFor(equipLoc)
+	local d = equipLoc and SLOTS[equipLoc]
+	if not d then return nil end
+	return type(d) == "table" and d or { d }
+end
+
 --------------------------------------------------------------------------------
+-- Nota do item. Com o Equipamento (GearPlan.lua), pelos pesos da spec escolhida; o peso por classe daqui fica de
+-- reserva (cliente sem o módulo, outra classe pedida).
 function GA:Score(link, class)
-	class = class or select(2, UnitClass("player"))
+	local mine = select(2, UnitClass("player"))
+	if ns.GearPlan and ns.GearPlan.ScoreLink and ns.db and (class == nil or class == mine) then
+		return ns.GearPlan:ScoreLink(link)
+	end
+	class = class or mine
 	local w = W[class]; if not (w and link) then return 0 end
 	local s = 0
 	local stats = ns.ItemStats(link)

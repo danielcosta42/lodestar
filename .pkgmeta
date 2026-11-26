@@ -15,11 +15,12 @@ ignore:
   - "lodestar-glyphs/chevron-cima-128.tga"
   - "lodestar-glyphs/chevron-dir-*.tga"
   - "lodestar-glyphs/chevron-esq-*.tga"
-  - "lodestar-glyphs/combate-*.tga"
-  - "lodestar-glyphs/escudo-*.tga"
-  - "lodestar-glyphs/martelo-*.tga"
-  - "lodestar-glyphs/moeda-*.tga"
-  - "lodestar-glyphs/passo-atual-*.tga"
+  # combate, escudo, martelo, moeda e passo-atual entram (Lodestar 3: Central, ações rápidas, Navegação); fica o 128
+  - "lodestar-glyphs/combate-128.tga"
+  - "lodestar-glyphs/escudo-128.tga"
+  - "lodestar-glyphs/martelo-128.tga"
+  - "lodestar-glyphs/moeda-128.tga"
+  - "lodestar-glyphs/passo-atual-128.tga"
   - "lodestar-glyphs/faccao-*-128.tga"
   - "Media/*.html"
   # gerador Python + validador (dev only)

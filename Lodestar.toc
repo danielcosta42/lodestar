@@ -99,6 +99,13 @@ MobWarn.lua
 Deaths.lua
 Danger.lua
 Library.lua
+# Lodestar 3 (specs/lodestar-3): a Central e as páginas que se registram nela.
+Hub.lua
+DungeonData.lua
+GearPlan.lua
+Dungeons.lua
+Collections.lua
+Legacy.lua
 Settings.lua
 Share.lua
 Intro.lua

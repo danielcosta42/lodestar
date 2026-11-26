@@ -1,7 +1,14 @@
 --=============================================================================
--- Viewer — janela principal, visual clean e didático.
--- Cabeçalho + abas de guias | barra de progresso | card "AGORA" | prévia "A SEGUIR".
--- Sem guia aberto: estado vazio com CTA p/ abrir o navegador de guias.
+-- Viewer — a janela do guia (Lodestar 3, specs/lodestar-3). Clara por padrão, com sombra para ler sobre o mundo.
+--
+--   cabeçalho (o guia e a faixa de níveis; Central, Navegação, ··· , recolher, fechar)
+--   abas em pílula · progresso (passo e porcentagem)
+--   avisos (quest abandonada / pulo com Desfazer, grupo para elite, a perna de viagem clicável)
+--   o passo como cartão: quem e onde, a distância, os objetivos com contagem, barra e tempo
+--   ações rápidas (treinador, reparo, estalagem, diário) · A seguir · Voltar / Pular passo
+--
+-- Sem guia aberto: estado vazio com o convite para a Central. O que cada linha faz ao clique (pular a quest, marcar à
+-- mão) mora em RowClick; a contagem, o tempo e a falha vêm do QuestState.
 --=============================================================================
 local ADDON, ns = ...
 local V = {}
@@ -9,33 +16,20 @@ ns.Viewer = V
 local UI = ns.UI
 local unpackc = UI.unpackc
 
-local TAB_H   = 22        -- altura da tira de abas
-local EMPTY_H = 214       -- altura da janela no estado vazio
+local HEAD_H, TAB_H, PAD = 44, 28, 12
+local EMPTY_H = 236
+
+local frame
+local rowPool, distRows, timedRows, previewPool, tabPool = {}, {}, {}, {}, {}
 
 local function verbLabel(verb)
 	if verb == "note" then return "" end
 	return ns.L["VERB_" .. (verb == "goto_" and "goto" or verb)] or verb
 end
 
--- nome localizado da zona (p/ casar com GetZoneText do client)
 local localizedZone = ns.LocalizedZone
 
--- Texto de viagem p/ o passo atual: a perna atual da rota (antes da última, a pé);
--- sem rota e com o alvo fora da zona, "Vá para <zona>".
-local function travelHint()
-	local route = ns.Travel and ns.Travel:Route()
-	if route then
-		-- sem contagem: a dica só se refaz ao trocar de passo (a seta e o painel contam)
-		return route.leg < #route.legs and ns.Waypoint.LegText(route, route.leg) or nil
-	end
-	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
-	local tz = tgt and tgt.goto_ and tgt.goto_.zone
-	local TP = ns.TravelPlanner
-	if not tz or not TP or TP:InZone(tz) then return nil end            -- já na zona (via mapa)
-	return ns.L.OUT_OF_ZONE:format(localizedZone(tz))
-end
-
--- Nome de exibição: quests usam o nome localizado do client quando possível.
+-- Nome de exibição: quests usam o nome localizado do cliente quando possível.
 local function displayName(goal)
 	if (goal.verb == "accept" or goal.verb == "turnin") and goal.id
 		and C_QuestLog and C_QuestLog.GetTitleForQuestID then
@@ -45,11 +39,20 @@ local function displayName(goal)
 	return goal.text or ""
 end
 
-local frame, rowPool, distRows, timedRows = nil, {}, {}, {}
-local tabPool = {}
-
--- Nome curto do guia (última parte da chave "Categoria/Nome").
-local function shortName(key) return key and (key:match("[^/]+$") or key) or "" end
+-- Nome curto do guia ("Categoria/Facção/Nome (lo-hi)" -> "Nome") e a faixa ("lo–hi").
+local function shortName(key)
+	local n = key and (key:match("[^/]+$") or key) or ""
+	return (n:gsub("%s*%(.-%)%s*$", ""))
+end
+local function levelRange(key)
+	local lo, hi = (key or ""):match("%((%d+)%s*%-%s*(%d+)%)")
+	return lo and ("%s–%s"):format(lo, hi) or nil
+end
+local function guideTitle(key)
+	local name = shortName(key)
+	if key and key:match("^Leveling/") then name = localizedZone(name) end
+	return name
+end
 
 -- Encurta o texto com reticências até caber em maxW pixels (respeita UTF-8).
 local function fitText(fs, text, maxW)
@@ -57,10 +60,7 @@ local function fitText(fs, text, maxW)
 	if (fs:GetStringWidth() or 0) <= maxW then return end
 	local n = #text
 	while n > 1 do
-		-- não corta no meio de um caractere UTF-8 (bytes de continuação 0x80..0xBF)
-		while n > 1 and text:byte(n) and text:byte(n) >= 0x80 and text:byte(n) < 0xC0 do
-			n = n - 1
-		end
+		while n > 1 and text:byte(n) and text:byte(n) >= 0x80 and text:byte(n) < 0xC0 do n = n - 1 end
 		n = n - 1
 		fs:SetText(text:sub(1, n) .. "…")
 		if (fs:GetStringWidth() or 0) <= maxW then return end
@@ -68,68 +68,62 @@ local function fitText(fs, text, maxW)
 	fs:SetText("…")
 end
 
---------------------------------------------------------------------------------
--- Botão "+" (adicionar guia): abre o navegador de guias.
---------------------------------------------------------------------------------
-local function makeAddButton(parent)
-	local C = UI.COL
-	local b = CreateFrame("Button", nil, parent)
-	b:SetSize(20, TAB_H - 4)
-	local g = UI.Glyph(b, "mais", "OVERLAY", 64)
-	g:SetSize(12, 12); g:SetPoint("CENTER"); g:SetVertexColor(unpackc(C.muted))
-	b:SetScript("OnEnter", function()
-		g:SetVertexColor(unpackc(C.accent))
-		GameTooltip:SetOwner(b, "ANCHOR_TOP")
-		GameTooltip:SetText(ns.L.ADD_GUIDE); GameTooltip:Show()
-	end)
-	b:SetScript("OnLeave", function() g:SetVertexColor(unpackc(C.muted)); GameTooltip:Hide() end)
-	b:SetScript("OnClick", function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
-	return b
+-- Texto de viagem para o passo atual: a perna atual da rota (antes da última, a pé); sem rota e com o alvo fora da
+-- zona, "Vá para <zona>".
+local function travelHint()
+	local route = ns.Travel and ns.Travel:Route()
+	if route then
+		if route.leg < #route.legs then return ns.Waypoint.LegText(route, route.leg) end
+		return nil
+	end
+	local tgt = ns.Waypoint and ns.Waypoint:PickTarget()
+	local tz = tgt and tgt.goto_ and tgt.goto_.zone
+	local TP = ns.TravelPlanner
+	if not tz or not TP or TP:InZone(tz) then return nil end
+	return ns.L.OUT_OF_ZONE:format(localizedZone(tz))
 end
 
 --------------------------------------------------------------------------------
--- Aba (pill) de um guia aberto: clicar troca; "×" fecha.
+-- Texto do objetivo
 --------------------------------------------------------------------------------
-local function getTab(i)
-	if tabPool[i] then return tabPool[i] end
+local function goalText(goal)
+	if goal.verb == "note" then
+		return ("|cff%s%s|r"):format(UI.Hex("dim"), ns:LocalizeText(goal.text or ""))
+	end
 	local C = UI.COL
-	local t = CreateFrame("Button", nil, frame.tabStrip)
-	t:SetHeight(TAB_H - 4)
-	local bg = UI.Rect(t, "BACKGROUND", { 0, 0, 0, 0.30 }); bg:SetAllPoints(); t.bg = bg
-	local top = UI.Rect(t, "ARTWORK", C.accent)                 -- linha superior (aba ativa)
-	top:SetPoint("TOPLEFT"); top:SetPoint("TOPRIGHT"); top:SetHeight(2); top:Hide(); t.top = top
-	local label = t:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(label, 11.5, { color = C.muted })
-	label:SetPoint("LEFT", 8, 0); label:SetPoint("RIGHT", -18, 0)
-	label:SetJustifyH("LEFT"); label:SetWordWrap(false); t.label = label
-
-	local x = CreateFrame("Button", nil, t)
-	x:SetSize(14, 14); x:SetPoint("RIGHT", -3, 0)
-	local xg = UI.Glyph(x, "fechar", "OVERLAY", 64); xg:SetAllPoints(); xg:SetVertexColor(unpackc(C.dim))
-	x:SetScript("OnEnter", function() xg:SetVertexColor(unpackc(C.accent)) end)
-	x:SetScript("OnLeave", function() xg:SetVertexColor(unpackc(t._active and C.muted or C.dim)) end)
-	x:SetScript("OnClick", function() if t._key then ns:CloseGuide(t._key) end end)
-	t.x = x
-
-	t:SetScript("OnClick", function()
-		if not t._key then return end
-		if not (ns.currentGuide and ns.currentGuide.key == t._key) then ns.char.manualPick = t._key end
-		ns:SwitchGuide(t._key)
-	end)
-	t:SetScript("OnEnter", function()
-		if not t._active then
-			bg:SetColorTexture(unpackc(C.panel)); label:SetTextColor(unpackc(C.active)); x:Show()
-		end
-	end)
-	t:SetScript("OnLeave", function()
-		if not t._active then
-			bg:SetColorTexture(0, 0, 0, 0.30); label:SetTextColor(unpackc(C.muted)); x:Hide()
-		end
-	end)
-	tabPool[i] = t
-	return t
+	local col = goal.verb == "accept" and C.accent or goal.verb == "turnin" and C.done or C.muted
+	local qty = goal.count and (goal.count .. " ") or ""
+	local base = ("|cff%s%s|r |cff%s%s%s|r"):format(UI.Hex(col), verbLabel(goal.verb), UI.Hex("active"), qty,
+		displayName(goal))
+	if goal.elite or goal.raid then
+		local lbl = goal.raid and ns.L.GROUP_TAG_RAID or ns.L.GROUP_TAG_ELITE
+		base = base .. ("  |cff%s[%s]|r"):format(UI.Hex(goal.raid and "danger" or "amber"), lbl)
+	end
+	return base
 end
 
+-- O texto inteiro da linha (a contagem vai à direita): o objetivo, o tempo, a falha e as dicas. Devolve também se a
+-- quest tem tempo (a linha entra no ticker de 1 s).
+local function rowText(goal, done)
+	local QS = ns.QuestState
+	local suffix, failed, timed = "", false, false
+	if QS and goal.verb ~= "note" then suffix, failed, timed = QS.GoalSuffix(goal, done, true) end
+	local txt = goalText(goal)
+	if done or failed then
+		txt = ("|cff%s%s|r"):format(UI.Hex("faded"), (txt:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")))
+	end
+	txt = txt .. (suffix or "")
+	if failed then txt = txt .. ("\n|cff%s• %s|r"):format(UI.Hex("danger"), ns.L.Q_FAILED_TIP) end
+	if goal.tips then
+		for _, tip in ipairs(goal.tips) do
+			txt = txt .. ("\n|cff%s• %s|r"):format(UI.Hex("tip"), ns:LocalizeText(tip))
+		end
+	end
+	return txt, timed
+end
+
+--------------------------------------------------------------------------------
+-- Montagem
 --------------------------------------------------------------------------------
 StaticPopupDialogs["LODESTAR_RESET"] = {
 	text = ns.L.ACT_RESET_CONFIRM, button1 = YES, button2 = NO,
@@ -137,277 +131,73 @@ StaticPopupDialogs["LODESTAR_RESET"] = {
 	timeout = 0, whileDead = true, hideOnEscape = true, preferredIndex = 3,
 }
 
-local function build()
-	if frame then return frame end
-	local dbv = ns.db.viewer
-	local C = UI.COL
-
-	frame = UI.Panel(UIParent, { name = "LodestarViewer" })
-	frame:SetSize(dbv.width or 340, 320)
-	frame:SetPoint(dbv.point or "RIGHT", UIParent, dbv.point or "RIGHT",
-		dbv.x or -24, dbv.y or 0)
-	frame:SetClampedToScreen(true)
-	frame:SetMovable(true); frame:EnableMouse(true)
-	frame:SetFrameStrata("MEDIUM")
-	frame:SetToplevel(true)
-
-	-- Cabeçalho -----------------------------------------------------------
-	local header = UI.Panel(frame, { color = C.header, border = false })
-	header:SetPoint("TOPLEFT"); header:SetPoint("TOPRIGHT"); header:SetHeight(30)
-	header:EnableMouse(true); header:RegisterForDrag("LeftButton")
-	header:SetScript("OnDragStart", function() frame:StartMoving() end)
-	header:SetScript("OnDragStop", function()
-		frame:StopMovingOrSizing()
-		local p, _, _, x, y = frame:GetPoint()
-		dbv.point, dbv.x, dbv.y = p, x, y
-	end)
-	local accentLine = UI.Rect(header, "ARTWORK", C.accent)
-	accentLine:SetPoint("TOPLEFT"); accentLine:SetPoint("TOPRIGHT"); accentLine:SetHeight(2)
-
-	local dot = UI.Icon(header, "icone-gema", "ARTWORK", 128); dot:SetSize(16, 16)
-	dot:SetPoint("LEFT", 9, 0)
-	frame.title = header:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.title, 13, { color = C.active })
-	frame.title:SetPoint("LEFT", dot, "RIGHT", 7, 0)
-	frame.title:SetPoint("RIGHT", header, "RIGHT", -158, 0)
-	frame.title:SetJustifyH("LEFT"); frame.title:SetText("Lodestar")
-
-	local close = UI.CloseButton(header, function() V:Hide() end)
-	close:SetPoint("RIGHT", -6, 0)
-	frame.collapseBtn = CreateFrame("Button", nil, header)
-	frame.collapseBtn:SetSize(18, 18)
-	frame.collapseBtn:SetPoint("RIGHT", close, "LEFT", -2, 0)
-	local chev = UI.Glyph(frame.collapseBtn, "chevron-baixo", "OVERLAY", 64)
-	chev:SetSize(12, 12); chev:SetPoint("CENTER"); chev:SetVertexColor(UI.unpackc(C.muted))
-	frame.collapseChev = chev
-	frame.collapseBtn:SetScript("OnClick", function() V:ToggleCollapse() end)
-
-	local menuBtn = CreateFrame("Button", nil, header)
-	menuBtn:SetSize(20, 18)
-	menuBtn:SetPoint("RIGHT", frame.collapseBtn, "LEFT", -2, 0)
-	local micon = UI.Glyph(menuBtn, "livro", "OVERLAY", 64)
-	micon:SetSize(13, 13); micon:SetPoint("CENTER"); micon:SetVertexColor(UI.unpackc(C.muted))
-	menuBtn:SetScript("OnEnter", function() micon:SetVertexColor(UI.unpackc(C.accent)) end)
-	menuBtn:SetScript("OnLeave", function() micon:SetVertexColor(UI.unpackc(C.muted)) end)
-	menuBtn:SetScript("OnClick", function() if ns.GuideMenu then ns.GuideMenu:Toggle() end end)
-
-	-- engrenagem: abre a tela de configurações
-	local cfgBtn = CreateFrame("Button", nil, header)
-	cfgBtn:SetSize(20, 18)
-	cfgBtn:SetPoint("RIGHT", menuBtn, "LEFT", -2, 0)
-	local cicon = UI.Glyph(cfgBtn, "config", "OVERLAY", 64)
-	cicon:SetSize(13, 13); cicon:SetPoint("CENTER"); cicon:SetVertexColor(UI.unpackc(C.muted))
-	cfgBtn:SetScript("OnEnter", function() cicon:SetVertexColor(UI.unpackc(C.accent)) end)
-	cfgBtn:SetScript("OnLeave", function() cicon:SetVertexColor(UI.unpackc(C.muted)) end)
-	cfgBtn:SetScript("OnClick", function() if ns.Settings then ns.Settings:Toggle() end end)
-
-	-- bússola: o painel Viagem (rota, destino, serviços)
-	local travelBtn = CreateFrame("Button", nil, header)
-	travelBtn:SetSize(20, 18)
-	travelBtn:SetPoint("RIGHT", cfgBtn, "LEFT", -2, 0)
-	local ticon = UI.Glyph(travelBtn, "seta-rota", "OVERLAY", 64)
-	ticon:SetSize(13, 13); ticon:SetPoint("CENTER"); ticon:SetVertexColor(UI.unpackc(C.muted))
-	travelBtn:SetScript("OnEnter", function(self)
-		ticon:SetVertexColor(UI.unpackc(C.accent))
-		GameTooltip:SetOwner(self, "ANCHOR_BOTTOM"); GameTooltip:SetText(ns.L.TRAVEL_TIP); GameTooltip:Show()
-	end)
-	travelBtn:SetScript("OnLeave", function() ticon:SetVertexColor(UI.unpackc(C.muted)); GameTooltip:Hide() end)
-	travelBtn:SetScript("OnClick", function() if ns.TravelPanel then ns.TravelPanel:Toggle() end end)
-
-	-- estrela: a corrida da guilda
-	local raceBtn = CreateFrame("Button", nil, header)
-	raceBtn:SetSize(20, 18)
-	raceBtn:SetPoint("RIGHT", travelBtn, "LEFT", -2, 0)
-	local ricon = UI.Glyph(raceBtn, "estrela", "OVERLAY", 64)
-	ricon:SetSize(13, 13); ricon:SetPoint("CENTER"); ricon:SetVertexColor(UI.unpackc(C.muted))
-	raceBtn:SetScript("OnEnter", function(self)
-		ricon:SetVertexColor(UI.unpackc(C.accent))
-		GameTooltip:SetOwner(self, "ANCHOR_BOTTOM"); GameTooltip:SetText(ns.L.RACE_TITLE); GameTooltip:Show()
-	end)
-	raceBtn:SetScript("OnLeave", function() ricon:SetVertexColor(UI.unpackc(C.muted)); GameTooltip:Hide() end)
-	raceBtn:SetScript("OnClick", function() if ns.RacePanel then ns.RacePanel:Toggle() end end)
-
-	-- ⋯ Ações: o que antes só existia no /ls
-	local actBtn = CreateFrame("Button", nil, header)
-	actBtn:SetSize(20, 18)
-	actBtn:SetPoint("RIGHT", raceBtn, "LEFT", -2, 0)
-	local afs = actBtn:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(afs, 14, { num = true, color = C.muted })
-	afs:SetPoint("CENTER", 0, 3); afs:SetText("···")
-	actBtn:SetScript("OnEnter", function(self)
-		afs:SetTextColor(UI.unpackc(C.accent))
-		GameTooltip:SetOwner(self, "ANCHOR_BOTTOM"); GameTooltip:SetText(ns.L.ACT_TIP); GameTooltip:Show()
-	end)
-	actBtn:SetScript("OnLeave", function() afs:SetTextColor(UI.unpackc(C.muted)); GameTooltip:Hide() end)
-	actBtn:SetScript("OnClick", function(self)
-		local L, run = ns.L, SlashCmdList.LODESTAR
-		UI.Menu(self, {
-			{ L.ACT_RESET, function() StaticPopup_Show("LODESTAR_RESET") end },
-			{ L.ACT_RESCAN, function() run("rescan") end },
-			{ L.ACT_EXPORT, function() run("export") end },
-			{ L.ACT_IMPORT, function() run("import") end },
-			{ L.ACT_TIDY, function() run("diario") end },
-			{ L.ACT_REPORT, function() run("report") end },
-			{ L.ACT_RECORD, function() run("record") end },
-			{ L.ACT_SCAN_START, function() run("scan") end },
-			{ L.ACT_SCAN_STOP, function() run("scan stop") end },
-			{ L.ACT_SCAN_STATUS, function() run("scan status") end },
-			{ L.ACT_SCAN_CLEAR, function() run("scan clear") end },
-		})
-	end)
-
-	-- Tira de abas (guias abertos) ----------------------------------------
-	frame.tabStrip = CreateFrame("Frame", nil, frame)
-	frame.tabStrip:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 0, 0)
-	frame.tabStrip:SetPoint("TOPRIGHT", header, "BOTTOMRIGHT", 0, 0)
-	frame.tabStrip:SetHeight(TAB_H)
-	local stripBg = UI.Rect(frame.tabStrip, "BACKGROUND", { 0, 0, 0, 0.22 }); stripBg:SetAllPoints()
-	frame.addTab = makeAddButton(frame.tabStrip)
-	frame.addTab:SetPoint("RIGHT", frame.tabStrip, "RIGHT", -4, 0)
-
-	-- Progresso -----------------------------------------------------------
-	frame.bar = UI.Bar(frame)
-	frame.bar:SetPoint("TOPLEFT", frame.tabStrip, "BOTTOMLEFT", 0, 0)
-	frame.bar:SetPoint("TOPRIGHT", frame.tabStrip, "BOTTOMRIGHT", 0, 0)
-	frame.bar:SetHeight(3)
-
-	frame.stepLabel = frame:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.stepLabel, 10, { num = true, color = C.muted })
-	frame.stepLabel:SetPoint("TOPRIGHT", frame.bar, "BOTTOMRIGHT", -8, -4)
-
-	frame.nowLabel = frame:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.nowLabel, 10, { num = true, color = C.accent, outline = "" })
-	frame.nowLabel:SetPoint("TOPLEFT", frame.bar, "BOTTOMLEFT", 10, -4)
-	frame.nowLabel:SetText(ns.L.NOW)
-
-	-- Card do passo atual -------------------------------------------------
-	frame.card = UI.Panel(frame, { color = C.panel, accentStripe = true })
-	frame.card:SetPoint("TOPLEFT", frame.nowLabel, "BOTTOMLEFT", -2, -5)
-	frame.card:SetPoint("RIGHT", frame, "RIGHT", -8, 0)
-	frame.content = CreateFrame("Frame", nil, frame.card)
-	frame.content:SetPoint("TOPLEFT", 12, -8)
-	frame.content:SetPoint("RIGHT", -8, 0)
-
-	-- "Guard" de viagem: painel destacado no topo do card quando o alvo está fora
-	-- da zona — mostra o MELHOR caminho (voo/barco/portal) ANTES dos objetivos.
-	frame.travel = UI.Panel(frame.content, { color = { 0.20, 0.14, 0.05, 0.9 }, borderColor = C.amber })
-	local tstripe = UI.Rect(frame.travel, "ARTWORK", C.amber)
-	tstripe:SetPoint("TOPLEFT"); tstripe:SetPoint("BOTTOMLEFT"); tstripe:SetWidth(3)
-	frame.travelIcon = UI.Glyph(frame.travel, "seta-rota", "OVERLAY", 128)
-	frame.travelIcon:SetSize(15, 15); frame.travelIcon:SetPoint("TOPLEFT", 9, -8)
-	frame.travelIcon:SetVertexColor(UI.unpackc(C.amber))
-	frame.travelText = frame.travel:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.travelText, 12, { color = C.amber })
-	frame.travelText:SetPoint("TOPLEFT", frame.travelIcon, "TOPRIGHT", 7, 1)
-	frame.travelText:SetPoint("RIGHT", frame.travel, "RIGHT", -8, 0)
-	frame.travelText:SetJustifyH("LEFT"); frame.travelText:SetWordWrap(true)
-	frame.travel:Hide()
-
-	-- (Pré-requisitos não têm mais banner: a cadeia que falta é injetada inline
-	--  como passos nativos.)
-
-	-- Aviso de cima (specs/revamp-polestar): a quest abandonada que o guia ainda usa ("Voltar por ela" / "Pular"),
-	-- ou o último pulo, com Desfazer.
-	frame.notice = UI.Panel(frame.content, { color = { 0.10, 0.12, 0.18, 0.94 }, borderColor = C.accent })
-	local nstripe = UI.Rect(frame.notice, "ARTWORK", C.accent)
-	nstripe:SetPoint("TOPLEFT"); nstripe:SetPoint("BOTTOMLEFT"); nstripe:SetWidth(3)
-	frame.noticeText = frame.notice:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.noticeText, 11.5, { color = C.active })
-	frame.noticeText:SetPoint("TOPLEFT", 10, -8)
-	frame.noticeText:SetPoint("RIGHT", frame.notice, "RIGHT", -8, 0)
-	frame.noticeText:SetJustifyH("LEFT"); frame.noticeText:SetWordWrap(true)
-	frame.noticeA = UI.Button(frame.notice, "", 104, 20)
-	frame.noticeB = UI.Button(frame.notice, "", 104, 20)
-	frame.notice:Hide()
-
-	-- Banner de GRUPO: passo atual tem inimigo elite/chefe -> recomenda grupo/raide
-	-- e oferece "Procurar grupo" (gancho pro PartyLens; fallback: buscador nativo).
-	frame.group = UI.Panel(frame.content, { color = { 0.16, 0.10, 0.04, 0.92 }, borderColor = C.amber })
-	local gstripe = UI.Rect(frame.group, "ARTWORK", C.amber)
-	gstripe:SetPoint("TOPLEFT"); gstripe:SetPoint("BOTTOMLEFT"); gstripe:SetWidth(3)
-	frame.groupText = frame.group:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.groupText, 11.5, { color = C.amber })
-	frame.groupText:SetPoint("TOPLEFT", 10, -8)
-	frame.groupText:SetPoint("RIGHT", frame.group, "RIGHT", -96, 0)
-	frame.groupText:SetJustifyH("LEFT"); frame.groupText:SetWordWrap(true)
-	frame.groupBtn = UI.Button(frame.group, ns.L.GROUP_FIND, 84, 20)
-	frame.groupBtn:SetPoint("RIGHT", -8, 0)
-	frame.groupBtn:SetScript("OnClick", function() ns:FindGroup(frame._groupRaid) end)
-	frame.group:Hide()
-
-	-- Prévia "a seguir" ---------------------------------------------------
-	frame.nextLabel = frame:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(frame.nextLabel, 10, { num = true, color = C.muted })
-	frame.nextLabel:SetPoint("TOPLEFT", frame.card, "BOTTOMLEFT", 12, -8)
-	frame.nextLabel:SetText(ns.L.NEXT)
-	frame.preview = CreateFrame("Frame", nil, frame)
-	frame.preview:SetPoint("TOPLEFT", frame.nextLabel, "BOTTOMLEFT", 0, -4)
-	frame.preview:SetPoint("RIGHT", frame, "RIGHT", -10, 0)
-
-	-- Rodapé --------------------------------------------------------------
-	frame.prev = UI.Button(frame, ns.L.BACK, 78)
-	frame.prev:SetPoint("BOTTOMLEFT", 8, 8)
-	frame.prev:SetScript("OnClick", function() ns:AdvanceStep(-1) end)
-	frame.next = UI.Button(frame, ns.L.SKIP, 78)
-	frame.next:SetPoint("BOTTOMRIGHT", -8, 8)
-	frame.next:SetScript("OnClick", function() ns:AdvanceStep(1) end)
-
-	return frame
+local function actionsMenu(anchor)
+	local L, run = ns.L, SlashCmdList.LODESTAR
+	UI.Menu(anchor, {
+		{ L.V3_HUB, function() if ns.Hub then ns.Hub:Open() end end },
+		{ L.TRAVEL_TIP, function() run("travel") end },
+		{ L.ACT_TIDY, function() run("diario") end },
+		{ L.RACE_TITLE, function() run("race") end },
+		{ L.SET_TITLE, function() run("config") end },
+		{ L.ACT_REPORT, function() run("report") end },
+		{ L.ACT_RESCAN, function() run("rescan") end },
+		{ L.ACT_RESET, function() StaticPopup_Show("LODESTAR_RESET") end },
+		{ L.ACT_EXPORT, function() run("export") end },
+		{ L.ACT_IMPORT, function() run("import") end },
+		{ L.ACT_RECORD, function() run("record") end },
+		{ L.ACT_SCAN_START, function() run("scan") end },
+		{ L.ACT_SCAN_STATUS, function() run("scan status") end },
+		{ L.ACT_SCAN_STOP, function() run("scan stop") end },
+		{ L.ACT_SCAN_CLEAR, function() run("scan clear") end },
+	})
 end
 
---------------------------------------------------------------------------------
--- Estado vazio (nenhum guia aberto): logo + mensagem + CTA "Abrir guias".
---------------------------------------------------------------------------------
-local function buildEmpty()
-	if frame.empty then return frame.empty end
+-- um aviso de cima: cartão suave com texto e até dois botões
+local function makeBanner(parent, kind)
 	local C = UI.COL
-	local e = CreateFrame("Frame", nil, frame)
-	e:SetPoint("TOPLEFT", frame.tabStrip, "TOPLEFT", 0, 0)   -- ocupa a área do corpo
-	e:SetPoint("TOPRIGHT", frame.tabStrip, "TOPRIGHT", 0, 0)
-	e:SetHeight(EMPTY_H - 30)
-
-	local logo = UI.Icon(e, "logo-estrela", "ARTWORK", 128)
-	logo:SetSize(46, 46); logo:SetPoint("TOP", 0, -16)
-	logo:SetVertexColor(unpackc(C.accent)); logo:SetAlpha(0.9)
-
-	local ttl = e:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(ttl, 15, { color = C.active }); ttl:SetPoint("TOP", logo, "BOTTOM", 0, -10)
-	ttl:SetText(ns.L.EMPTY_TITLE)
-
-	local body = e:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(body, 12, { color = C.muted })
-	body:SetPoint("TOP", ttl, "BOTTOM", 0, -6)
-	body:SetPoint("LEFT", e, "LEFT", 24, 0); body:SetPoint("RIGHT", e, "RIGHT", -24, 0)
-	body:SetJustifyH("CENTER"); body:SetWordWrap(true); body:SetText(ns.L.EMPTY_BODY)
-
-	local cta = UI.Button(e, ns.L.OPEN_GUIDES, 150, 26)
-	cta:SetPoint("TOP", body, "BOTTOM", 0, -16)
-	cta:SetScript("OnClick", function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
-
-	frame.empty = e
-	return e
+	local soft = { info = C.tipSoft, warn = C.amberSoft, gold = C.accentSoft, ok = C.doneSoft }
+	local line = { info = C.tip, warn = C.amber, gold = C.accent, ok = C.done }
+	local b = UI.Card(parent, { color = soft[kind], lineColor = UI.dark and line[kind] or soft[kind], radius = 6 })
+	b.icon = UI.Glyph(b, kind == "warn" and "alvo" or kind == "info" and "seta-rota" or "estrela", "OVERLAY", 64)
+	b.icon:SetSize(16, 16); b.icon:SetPoint("TOPLEFT", 10, -9); b.icon:SetVertexColor(unpackc(line[kind]))
+	b.text = UI.Text(b, 12.5, UI.dark and line[kind] or C.active, { bold = true, wrap = true })
+	b.text:SetPoint("TOPLEFT", b.icon, "TOPRIGHT", 8, 1); b.text:SetPoint("RIGHT", b, "RIGHT", -28, 0)
+	b.sub = UI.Text(b, 11.5, UI.dark and C.muted or line[kind], { num = true, wrap = true })
+	b.sub:SetPoint("TOPLEFT", b.text, "BOTTOMLEFT", 0, -2); b.sub:SetPoint("RIGHT", b, "RIGHT", -28, 0)
+	b.chev = UI.Glyph(b, "chevron-dir", "OVERLAY", 64); b.chev:SetSize(10, 10)
+	b.chev:SetPoint("RIGHT", -10, 0); b.chev:SetVertexColor(unpackc(line[kind])); b.chev:Hide()
+	b.a = UI.Button(b, "", 112, 22); b.b = UI.Button(b, "", 112, 22)
+	b.a:Hide(); b.b:Hide()
+	b:Hide()
+	-- mede e posiciona; devolve a altura
+	function b:Layout(width, buttons)
+		self:SetWidth(width)
+		local h = 10 + self.text:GetStringHeight()
+		if (self.sub:GetText() or "") ~= "" then h = h + 2 + self.sub:GetStringHeight() end
+		h = h + 9
+		if buttons then
+			self.a:ClearAllPoints(); self.a:SetPoint("TOPLEFT", self, "TOPLEFT", 34, -h + 2)
+			self.b:ClearAllPoints(); self.b:SetPoint("LEFT", self.a, "RIGHT", 6, 0)
+			h = h + 28
+		end
+		self:SetHeight(math.max(34, h))
+		return self:GetHeight()
+	end
+	return b
 end
 
---------------------------------------------------------------------------------
--- Linha de goal
---------------------------------------------------------------------------------
+-- um objetivo: glifo, texto, contagem à direita, barra fina e a distância
 local function getRow(i)
 	if rowPool[i] then return rowPool[i] end
-	local row = CreateFrame("Frame", nil, frame.content)
-	row:SetPoint("LEFT"); row:SetPoint("RIGHT")
-	row.glyph = UI.Media(row, "ring", "OVERLAY")
-	row.glyph:SetSize(12, 12)
-	row.glyph:SetPoint("TOPLEFT", 0, -2)
-	row.text = row:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(row.text, 13, { color = UI.COL.active })
-	row.text:SetPoint("TOPLEFT", row.glyph, "TOPRIGHT", 7, 2)
-	row.text:SetPoint("RIGHT", row, "RIGHT", -46, 0)
-	row.text:SetJustifyH("LEFT"); row.text:SetWordWrap(true)
-	row.dist = UI.Chip(row, { 0, 0, 0, 0.35 }, UI.COL.accent)
-	row.dist:SetPoint("TOPRIGHT", 0, -1)
-	row.dist:Hide()
-	-- clique direito numa linha de quest: pular, mostrar no diário, abandonar; clique num objetivo que o jogo não
-	-- confirma sozinho (fale com, clique, use) marca e desmarca à mão
+	local C = UI.COL
+	local row = CreateFrame("Frame", nil, frame.stepCard)
+	row.glyph = row:CreateTexture(nil, "OVERLAY"); row.glyph:SetSize(14, 14); row.glyph:SetPoint("TOPLEFT", 0, -1)
+	row.text = UI.Text(row, 13, C.active, { wrap = true })
+	row.text:SetPoint("TOPLEFT", row.glyph, "TOPRIGHT", 8, 1); row.text:SetPoint("RIGHT", row, "RIGHT", -52, 0)
+	row.count = UI.Text(row, 13, C.muted, { num = true, justify = "RIGHT" })
+	row.count:SetPoint("TOPRIGHT", row, "TOPRIGHT", 0, 0)
+	row.bar = UI.Bar(row, C.accentBright); row.bar:SetHeight(4)
+	row.dist = UI.Badge(row, "", "gold"); row.dist:SetPoint("TOPRIGHT", row, "TOPRIGHT", 0, 1); row.dist:Hide()
 	row:EnableMouse(true)
 	row:SetScript("OnMouseUp", function(self, button) V:RowClick(self, button) end)
 	row:SetScript("OnEnter", function(self) V:RowEnter(self) end)
@@ -452,54 +242,193 @@ function V:RowEnter(row)
 	GameTooltip:Show()
 end
 
-local goalText
-
--- O texto inteiro da linha: o objetivo, a contagem e o tempo do diário (QuestState), as dicas. Devolve também se a
--- quest tem tempo (a linha entra no ticker de 1 s).
-local function rowText(goal, done)
+local function getTab(i)
+	if tabPool[i] then return tabPool[i] end
 	local C = UI.COL
-	local QS = ns.QuestState
-	local suffix, failed, timed = "", false, false
-	if QS and goal.verb ~= "note" then suffix, failed, timed = QS.GoalSuffix(goal, done) end
-	local txt = goalText(goal)
-	if done or failed then txt = "|cff5f6b73" .. txt:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "") .. "|r" end
-	txt = txt .. (suffix or "")
-	local tips = goal.tips
-	if failed then
-		txt = txt .. ("\n|cffff9a8a• %s|r"):format(ns.L.Q_FAILED_TIP)
-	end
-	if tips then
-		local th = ("%02x%02x%02x"):format(C.tip[1]*255, C.tip[2]*255, C.tip[3]*255)
-		for _, tip in ipairs(tips) do
-			txt = txt .. ("\n|cff%s• %s|r"):format(th, ns:LocalizeText(tip))
-		end
-	end
-	return txt, timed
+	local t = CreateFrame("Button", nil, frame.tabStrip)
+	t:SetHeight(TAB_H)
+	t.card = UI.Card(t, { radius = 6, color = C.card }); t.card:SetAllPoints(); t.card:SetFrameLevel(t:GetFrameLevel())
+	t.label = UI.Text(t, 12.5, C.muted, { bold = true, wrap = false })
+	t.label:SetPoint("LEFT", 10, 0)
+	t.meta = UI.Text(t, 11, C.dim, { num = true, justify = "RIGHT" })
+	t.meta:SetPoint("RIGHT", -22, 0)
+	t.x = CreateFrame("Button", nil, t); t.x:SetSize(16, 16); t.x:SetPoint("RIGHT", -4, 0)
+	local xg = UI.Glyph(t.x, "fechar", "OVERLAY", 64); xg:SetAllPoints(); xg:SetVertexColor(unpackc(C.dim))
+	t.x:SetScript("OnEnter", function() xg:SetVertexColor(unpackc(C.danger)) end)
+	t.x:SetScript("OnLeave", function() xg:SetVertexColor(unpackc(C.dim)) end)
+	t.x:SetScript("OnClick", function() if t._key then ns:CloseGuide(t._key) end end)
+	t:SetScript("OnClick", function()
+		if not t._key then return end
+		if not (ns.currentGuide and ns.currentGuide.key == t._key) then ns.char.manualPick = t._key end
+		ns:SwitchGuide(t._key)
+	end)
+	tabPool[i] = t
+	return t
 end
 
-function goalText(goal)
-	if goal.verb == "note" then
-		return ("|cff%s%s|r"):format("aab0bf", ns:LocalizeText(goal.text or ""))
-	end
+local function build()
+	if frame then return frame end
+	local dbv = ns.db.viewer
 	local C = UI.COL
-	local col = goal.verb == "accept" and C.accent
-		or goal.verb == "turnin" and C.done
-		or C.active
-	local hex = ("%02x%02x%02x"):format(col[1] * 255, col[2] * 255, col[3] * 255)
-	local qty = goal.count and (goal.count .. " ") or ""
-	local base = ("|cff%s%s|r %s%s"):format(hex, verbLabel(goal.verb), qty, displayName(goal))
-	-- selo de dificuldade: elite (grupo) / chefe de mundo (raide)
-	if goal.elite or goal.raid then
-		local tc = goal.raid and C.factionH or C.amber
-		local th = ("%02x%02x%02x"):format(tc[1] * 255, tc[2] * 255, tc[3] * 255)
-		local lbl = goal.raid and ns.L.GROUP_TAG_RAID or ns.L.GROUP_TAG_ELITE
-		base = base .. ("  |cff%s[%s]|r"):format(th, lbl)
+	local L = ns.L
+
+	frame = UI.Card(UIParent, { name = "LodestarViewer", shadow = true, color = C.bg })
+	frame:SetSize(math.max(340, dbv.width or 360), 320)
+	frame:SetPoint(dbv.point or "RIGHT", UIParent, dbv.point or "RIGHT", dbv.x or -24, dbv.y or 0)
+	frame:SetClampedToScreen(true)
+	frame:SetMovable(true); frame:EnableMouse(true)
+	frame:SetFrameStrata("MEDIUM")
+	frame:SetToplevel(true)
+
+	-- Cabeçalho -----------------------------------------------------------
+	local header = CreateFrame("Frame", nil, frame)
+	header:SetPoint("TOPLEFT"); header:SetPoint("TOPRIGHT"); header:SetHeight(HEAD_H)
+	header:EnableMouse(true); header:RegisterForDrag("LeftButton")
+	header:SetScript("OnDragStart", function() frame:StartMoving() end)
+	header:SetScript("OnDragStop", function()
+		frame:StopMovingOrSizing()
+		local p, _, _, x, y = frame:GetPoint()
+		dbv.point, dbv.x, dbv.y = p, x, y
+	end)
+	local sep = UI.Rect(header, "ARTWORK", C.line); sep:SetPoint("BOTTOMLEFT", 1, 0); sep:SetPoint("BOTTOMRIGHT", -1, 0)
+	sep:SetHeight(1)
+	frame.header = header
+
+	local star = UI.Icon(header, "logo-estrela", "ARTWORK", 128); star:SetSize(22, 22)
+	star:SetPoint("LEFT", 12, 0); star:SetVertexColor(unpackc(C.accentBright))
+	frame.title = UI.Text(header, 15, C.active, { bold = true, wrap = false })
+	frame.title:SetPoint("LEFT", star, "RIGHT", 8, 0)
+	frame.range = UI.Badge(header, "", "gold"); frame.range:SetPoint("LEFT", frame.title, "RIGHT", 8, 0)
+
+	local close = UI.IconButton(header, "fechar", 24, nil, function() V:Hide() end)
+	close:SetPoint("RIGHT", -10, 0)
+	frame.collapseBtn = UI.IconButton(header, "chevron-baixo", 24, nil, function() V:ToggleCollapse() end)
+	frame.collapseBtn:SetPoint("RIGHT", close, "LEFT", -4, 0)
+	local more = UI.IconButton(header, "mais", 28, L.ACT_TIP, function(self) actionsMenu(self) end)
+	more:SetPoint("RIGHT", frame.collapseBtn, "LEFT", -6, 0)
+	local nav = UI.IconButton(header, "seta-rota", 28, L.TRAVEL_TIP,
+		function() if ns.TravelPanel then ns.TravelPanel:Toggle() end end)
+	nav:SetPoint("RIGHT", more, "LEFT", -4, 0)
+	local hub = UI.IconButton(header, "livro", 28, L.V3_HUB, function() if ns.Hub then ns.Hub:Toggle() end end)
+	hub:SetPoint("RIGHT", nav, "LEFT", -4, 0)
+
+	-- Abas ----------------------------------------------------------------
+	frame.tabStrip = CreateFrame("Frame", nil, frame)
+	frame.tabStrip:SetPoint("TOPLEFT", header, "BOTTOMLEFT", PAD, -8)
+	frame.tabStrip:SetPoint("TOPRIGHT", header, "BOTTOMRIGHT", -PAD, -8)
+	frame.tabStrip:SetHeight(TAB_H)
+	frame.addTab = CreateFrame("Button", nil, frame.tabStrip)
+	frame.addTab:SetSize(TAB_H, TAB_H); frame.addTab:SetPoint("RIGHT")
+	local addBg = UI.Card(frame.addTab, { radius = 6, color = C.bg, lineColor = C.borderHi }); addBg:SetAllPoints()
+	local plus = UI.Glyph(frame.addTab, "mais", "OVERLAY", 64); plus:SetSize(12, 12); plus:SetPoint("CENTER")
+	plus:SetVertexColor(unpackc(C.accent))
+	frame.addTab:SetScript("OnClick", function() if ns.GuideMenu then ns.GuideMenu:Open() end end)
+	frame.addTab:SetScript("OnEnter", function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_TOP"); GameTooltip:SetText(L.ADD_GUIDE); GameTooltip:Show()
+	end)
+	frame.addTab:SetScript("OnLeave", function() GameTooltip:Hide() end)
+
+	-- Progresso -----------------------------------------------------------
+	frame.bar = UI.Bar(frame, C.accentBright)
+	frame.bar:SetHeight(6)
+	frame.stepLabel = UI.Text(frame, 11.5, C.dim, { num = true })
+	frame.pctLabel = UI.Text(frame, 11.5, C.dim, { num = true, justify = "RIGHT" })
+
+	-- Corpo (avisos, cartão do passo, ações, a seguir) ---------------------
+	frame.body = CreateFrame("Frame", nil, frame)
+	frame.notice = makeBanner(frame.body, "gold")
+	frame.group = makeBanner(frame.body, "warn")
+	frame.group.a:SetScript("OnClick", function() ns:FindGroup(frame._groupRaid) end)
+	frame.travel = makeBanner(frame.body, "info")
+	frame.travel:EnableMouse(true)
+	frame.travel:SetScript("OnMouseUp", function() if ns.TravelPanel then ns.TravelPanel:Toggle() end end)
+	frame.travel.chev:Show()
+
+	frame.stepCard = UI.Card(frame.body, { color = C.card })
+	frame.who = UI.Text(frame.stepCard, 14, C.active, { bold = true, wrap = false })
+	frame.where = UI.Text(frame.stepCard, 11.5, C.dim, { num = true, wrap = false })
+	frame.whoDist = UI.Badge(frame.stepCard, "", "gold")
+	frame.whoSep = UI.Rect(frame.stepCard, "ARTWORK", C.line); frame.whoSep:SetHeight(1)
+
+	-- ações rápidas: uma rota em um clique (não são botões seguros: a janela muda de altura em combate)
+	frame.quick = CreateFrame("Frame", nil, frame.body)
+	frame.quick:SetHeight(46)
+	frame.quickBtns = {}
+	local QUICK = {
+		{ "treinador", L.V3_Q_TRAIN, function() if ns.Services then ns.Services:GoTo("classtrainer") end end },
+		{ "martelo", L.V3_Q_REPAIR, function() if ns.Services then ns.Services:GoTo("repair") end end },
+		{ "estrela", L.V3_Q_INN, function() if ns.Services then ns.Services:GoTo("inn") end end },
+		{ "livro", L.ACT_TIDY, function() SlashCmdList.LODESTAR("diario") end },
+	}
+	for i, q in ipairs(QUICK) do
+		local b = CreateFrame("Button", nil, frame.quick)
+		local bg = UI.Card(b, { radius = 6, color = C.card }); bg:SetAllPoints(); bg:SetFrameLevel(b:GetFrameLevel())
+		local g = UI.Glyph(b, q[1], "OVERLAY", 64); g:SetSize(16, 16); g:SetPoint("TOP", 0, -7)
+		g:SetVertexColor(unpackc(C.accent))
+		local t = UI.Text(b, 11.5, C.muted, { num = true, justify = "CENTER", wrap = false })
+		t:SetPoint("BOTTOM", 0, 6); t:SetPoint("LEFT", 2, 0); t:SetPoint("RIGHT", -2, 0); t:SetText(q[2])
+		b:SetScript("OnClick", q[3])
+		b:SetScript("OnEnter", function() bg:SetLine(C.borderHi); t:SetTextColor(unpackc(C.active)) end)
+		b:SetScript("OnLeave", function() bg:SetLine(C.border); t:SetTextColor(unpackc(C.muted)) end)
+		frame.quickBtns[i] = b
 	end
-	return base
+
+	frame.nextLabel = UI.Text(frame.body, 11, C.dim, { num = true })
+	frame.nextLabel:SetText(L.NEXT)
+
+	-- Rodapé --------------------------------------------------------------
+	frame.prev = UI.Button(frame, L.BACK, 84, 30)
+	frame.prev:SetPoint("BOTTOMLEFT", PAD, PAD)
+	frame.prev:SetScript("OnClick", function() ns:AdvanceStep(-1) end)
+	frame.next = UI.Button(frame, L.V3_SKIP_STEP, 112, 30, "primary")
+	frame.next:SetPoint("BOTTOMRIGHT", -PAD, PAD)
+	frame.next:SetScript("OnClick", function() ns:AdvanceStep(1) end)
+
+	return frame
 end
 
 --------------------------------------------------------------------------------
--- Tira de abas: uma pill por guia aberto + botão "+".
+-- Estado vazio (nenhum guia aberto): estrela, convite e a Central.
+--------------------------------------------------------------------------------
+local function buildEmpty()
+	if frame.empty then return frame.empty end
+	local C = UI.COL
+	local e = CreateFrame("Frame", nil, frame)
+	e:SetPoint("TOPLEFT", frame.header, "BOTTOMLEFT", 0, 0)
+	e:SetPoint("TOPRIGHT", frame.header, "BOTTOMRIGHT", 0, 0)
+	e:SetHeight(EMPTY_H - HEAD_H)
+	local logo = UI.Icon(e, "logo-estrela", "ARTWORK", 128)
+	logo:SetSize(44, 44); logo:SetPoint("TOP", 0, -20); logo:SetVertexColor(unpackc(C.accentBright))
+	local ttl = UI.Text(e, 16, C.active, { bold = true, justify = "CENTER" })
+	ttl:SetPoint("TOP", logo, "BOTTOM", 0, -10); ttl:SetText(ns.L.EMPTY_TITLE)
+	local body = UI.Text(e, 12.5, C.muted, { justify = "CENTER", wrap = true })
+	body:SetPoint("TOP", ttl, "BOTTOM", 0, -6)
+	body:SetPoint("LEFT", e, "LEFT", 28, 0); body:SetPoint("RIGHT", e, "RIGHT", -28, 0)
+	body:SetText(ns.L.EMPTY_BODY)
+	local cta = UI.Button(e, ns.L.V3_OPEN_HUB, 170, 32, "primary")
+	cta:SetPoint("TOP", body, "BOTTOM", 0, -16)
+	cta:SetScript("OnClick", function() if ns.Hub then ns.Hub:Open() elseif ns.GuideMenu then ns.GuideMenu:Open() end end)
+	frame.empty = e
+	return e
+end
+
+local BODY_PARTS = { "tabStrip", "bar", "stepLabel", "pctLabel", "body", "prev", "next" }
+
+function V:ShowEmpty()
+	buildEmpty()
+	frame.title:SetText("Lodestar"); frame.range:Hide()
+	for _, k in ipairs(BODY_PARTS) do frame[k]:Hide() end
+	frame.empty:Show()
+	frame:SetHeight(EMPTY_H)
+end
+
+function V:HideEmpty()
+	if frame.empty then frame.empty:Hide() end
+	for _, k in ipairs(BODY_PARTS) do frame[k]:Show() end
+end
+
+--------------------------------------------------------------------------------
+-- Abas
 --------------------------------------------------------------------------------
 function V:RefreshTabs()
 	if not frame then return end
@@ -507,27 +436,27 @@ function V:RefreshTabs()
 	local list = ns.char.openGuides or {}
 	local n = #list
 	local stripW = frame.tabStrip:GetWidth()
-	if stripW <= 0 then stripW = (ns.db.viewer.width or 340) end
-	local addW, gap = 22, 3
-	local avail = stripW - addW - 8 - gap           -- 4px margens laterais + folga do "+"
-	local pillW = (n > 0) and math.floor((avail - (n - 1) * gap) / n) or avail
-	-- piso baixo (16) para caber muitas abas dentro de `avail` sem cobrir o "+"
-	-- nem vazar da janela; teto 150 evita abas gigantes com 1-2 guias.
-	pillW = math.max(16, math.min(150, pillW))
-
-	local x = 4
+	if stripW <= 0 then stripW = frame:GetWidth() - 2 * PAD end
+	local gap = 6
+	local avail = stripW - TAB_H - gap
+	local pillW = n > 0 and math.floor((avail - (n - 1) * gap) / n) or avail
+	pillW = math.max(28, math.min(190, pillW))
+	local x = 0
 	for i = 1, n do
 		local key = list[i]
 		local tab = getTab(i)
 		tab._key = key
 		local active = (ns.currentGuide and ns.currentGuide.key == key) or false
-		tab._active = active
-		tab.top:SetShown(active)
-		tab.bg:SetColorTexture(unpackc(active and C.header or { 0, 0, 0, 0.30 }))
+		tab.card:SetColor(active and C.card or C.bg)
+		tab.card:SetLine(active and C.borderHi or C.border)
 		tab.label:SetTextColor(unpackc(active and C.active or C.muted))
-		tab.x:SetShown(active)                        -- × sempre na ativa; hover mostra nas outras
+		local g = ns.guides[key]
+		local total = g and g.steps and #g.steps or nil
+		local cur = active and ns.char.currentStep or ns.char.steps[key]
+		tab.meta:SetText(total and cur and pillW > 110 and ("%d/%d"):format(cur, total) or "")
+		tab.x:SetShown(active and pillW > 60)
 		tab:SetWidth(pillW)
-		fitText(tab.label, shortName(key), pillW - 24)
+		fitText(tab.label, guideTitle(key), pillW - (tab.meta:GetStringWidth() or 0) - 34)
 		tab:ClearAllPoints()
 		tab:SetPoint("LEFT", frame.tabStrip, "LEFT", x, 0)
 		tab:Show()
@@ -537,96 +466,102 @@ function V:RefreshTabs()
 end
 
 --------------------------------------------------------------------------------
--- Estado vazio: mostra/oculta o corpo normal x o painel de empty state.
+-- O passo: quem, onde e a que distância
 --------------------------------------------------------------------------------
-function V:ShowEmpty()
-	buildEmpty()
-	frame.title:SetText("Lodestar")
-	frame.tabStrip:Hide()
-	frame.bar:Hide(); frame.stepLabel:Hide(); frame.nowLabel:Hide()
-	frame.card:Hide(); frame.nextLabel:Hide(); frame.preview:Hide()
-	frame.prev:Hide(); frame.next:Hide()
-	if frame.previewFS then for _, fs in ipairs(frame.previewFS) do fs:Hide() end end
-	for _, r in pairs(rowPool) do r:Hide() end
-	frame.empty:Show()
-	frame:SetHeight(EMPTY_H)
-end
-
-function V:HideEmpty()
-	if frame.empty then frame.empty:Hide() end
-	frame.tabStrip:Show()
-	frame.bar:Show(); frame.stepLabel:Show(); frame.nowLabel:Show()
-	frame.card:Show(); frame.prev:Show(); frame.next:Show()
-	-- nextLabel/preview têm visibilidade definida no fluxo normal do Refresh
+local WHO = { talk = true, click = true, kill = true, collect = true, use = true }
+local function stepHead(step)
+	local who, whereGoal
+	for _, g in ipairs(step.goals) do
+		if ns:IsGoalActive(g) and not ns:IsGoalComplete(g) then
+			if not who and WHO[g.verb] and g.text then who = g.text end
+			if not whereGoal and g.goto_ and g.goto_.zone then whereGoal = g end
+		end
+	end
+	if not who then
+		for _, g in ipairs(step.goals) do
+			if ns:IsGoalActive(g) and (g.verb == "talk" or g.verb == "kill") and g.text then who = g.text; break end
+		end
+	end
+	local where
+	if whereGoal then
+		local gt = whereGoal.goto_
+		where = ("%s · %s %s"):format(localizedZone(gt.zone),
+			(("%.1f"):format(gt.x or 0)):gsub("%.", ","), (("%.1f"):format(gt.y or 0)):gsub("%.", ","))
+	end
+	return who, where, whereGoal
 end
 
 --------------------------------------------------------------------------------
 function V:Refresh()
 	if not frame or not frame:IsShown() then return end
-	if ns.db.viewer.collapsed then return end   -- recolhido não redesenha nem reexpande
-	local C = UI.COL
+	if ns.db.viewer.collapsed then return end
+	local C, L = UI.COL, ns.L
 	local guide = ns.currentGuide
 	for _, r in pairs(rowPool) do r:Hide() end
+	for _, p in pairs(previewPool) do p:Hide() end
 	wipe(distRows)
 	wipe(timedRows)
 
-	if not guide then
-		V:ShowEmpty()
-		return
-	end
+	if not guide then return V:ShowEmpty() end
 	V:HideEmpty()
 	V:RefreshTabs()
 
-	frame.title:SetText(shortName(guide.key))
+	local W = frame:GetWidth()
+	local inner = W - 2 * PAD
+
+	-- cabeçalho
+	local range = levelRange(guide.key)
+	fitText(frame.title, guideTitle(guide.key), W - 12 - 22 - 8 - 160 - (range and 50 or 0))
+	if range then frame.range:Set(range); frame.range:Show() else frame.range:Hide() end
+
+	-- progresso
 	local total, cur = #guide.steps, ns.char.currentStep
-	frame.bar:SetProgress(cur / total)
-	frame.stepLabel:SetFormattedText("%d / %d", cur, total)
+	local y = HEAD_H + 8 + TAB_H + 10
+	frame.bar:ClearAllPoints()
+	frame.bar:SetPoint("TOPLEFT", frame, "TOPLEFT", PAD, -y); frame.bar:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -PAD, -y)
+	frame.bar:SetProgress(cur / math.max(1, total))
+	frame.stepLabel:ClearAllPoints(); frame.stepLabel:SetPoint("TOPLEFT", frame.bar, "BOTTOMLEFT", 0, -5)
+	frame.stepLabel:SetText(L.V3_STEP_OF:format(cur, total))
+	frame.pctLabel:ClearAllPoints(); frame.pctLabel:SetPoint("TOPRIGHT", frame.bar, "BOTTOMRIGHT", 0, -5)
+	frame.pctLabel:SetText(("%d%%"):format(math.floor(cur / math.max(1, total) * 100)))
+	y = y + 6 + 5 + 14 + 10
 
+	frame.body:ClearAllPoints()
+	frame.body:SetPoint("TOPLEFT", frame, "TOPLEFT", PAD, -y); frame.body:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -PAD, -y)
+	local by = 0
 	local step = ns:GetStep()
-	local y, i = 0, 0
-	local w = frame.content:GetWidth()
-	if w <= 0 then w = (ns.db.viewer.width or 340) - 40 end
 
-
-	-- Aviso de cima: quest abandonada que o guia ainda usa, ou o último pulo (Desfazer)
+	-- aviso de cima: quest abandonada que o guia ainda usa, ou o último pulo (Desfazer)
 	local notice = ns.QuestState and ns.QuestState:Notice()
+	local nb = frame.notice
 	if notice then
-		local L, QS = ns.L, ns.QuestState
-		local a, b = frame.noticeA, frame.noticeB
+		local QS = ns.QuestState
+		nb.sub:SetText("")
 		if notice.kind == "abandoned" then
-			frame.noticeText:SetText(L.Q_ABANDONED:format(notice.title))
-			a.text:SetText(L.Q_GO_BACK); b.text:SetText(L.Q_MENU_SKIP)
-			a:SetScript("OnClick", function()
+			nb.text:SetText(L.Q_ABANDONED:format(notice.title))
+			nb.a.text:SetText(L.Q_GO_BACK); nb.b.text:SetText(L.Q_MENU_SKIP)
+			nb.a:SetScript("OnClick", function()
 				if notice.back then ns:GoToStep(notice.back) else ns:Print(L.Q_NO_BACK) end
-				ns.char.abandoned[notice.q] = nil
+				if ns.char.abandoned then ns.char.abandoned[notice.q] = nil end
 				V:Refresh()
 			end)
-			b:SetScript("OnClick", function() QS:SkipQuest(notice.q) end)
-			a:Show(); b:Show()
+			nb.b:SetScript("OnClick", function() QS:SkipQuest(notice.q) end)
+			nb.a:Show(); nb.b:Show()
 		else
-			local t = notice.extra > 0 and L.Q_SKIPPED_N:format(notice.title, notice.extra)
-				or L.Q_SKIPPED:format(notice.title)
-			frame.noticeText:SetText(t)
-			a.text:SetText(L.Q_UNDO)
-			a:SetScript("OnClick", function() QS:Undo() end)
-			a:Show(); b:Hide()
+			nb.text:SetText(notice.extra > 0 and L.Q_SKIPPED_N:format(notice.title, notice.extra)
+				or L.Q_SKIPPED:format(notice.title))
+			nb.a.text:SetText(L.Q_UNDO)
+			nb.a:SetScript("OnClick", function() QS:Undo() end)
+			nb.a:Show(); nb.b:Hide()
 		end
-		frame.notice:ClearAllPoints()
-		frame.notice:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
-		frame.notice:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)
-		local nh = frame.noticeText:GetStringHeight() + 16
-		a:ClearAllPoints(); b:ClearAllPoints()
-		a:SetPoint("TOPLEFT", frame.notice, "TOPLEFT", 10, -nh)
-		b:SetPoint("LEFT", a, "RIGHT", 6, 0)
-		nh = nh + 28
-		frame.notice:SetHeight(nh)
-		frame.notice:Show()
-		y = y + nh + 8
+		nb:ClearAllPoints(); nb:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+		by = by + nb:Layout(inner, true) + 8
+		nb:Show()
 	else
-		frame.notice:Hide()
+		nb:Hide()
 	end
 
-	-- Banner de GRUPO: o passo atual tem um objetivo elite/chefe ainda não feito?
+	-- grupo: objetivo elite/chefe por fazer
 	local needRaid, needGroup = false, false
 	if step then
 		for _, goal in ipairs(step.goals) do
@@ -635,144 +570,178 @@ function V:Refresh()
 			end
 		end
 	end
+	local gb = frame.group
 	if needRaid or needGroup then
 		frame._groupRaid = needRaid
-		frame.groupText:SetText(needRaid and ns.L.GROUP_RAID or ns.L.GROUP_ELITE)
-		frame.group:ClearAllPoints()
-		frame.group:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
-		frame.group:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)
-		local gh = math.max(28, frame.groupText:GetStringHeight() + 16)
-		frame.group:SetHeight(gh)
-		frame.group:Show()
-		y = y + gh + 8
+		gb.text:SetText(needRaid and L.GROUP_RAID or L.GROUP_ELITE)
+		gb.sub:SetText("")
+		gb.a.text:SetText(L.GROUP_FIND); gb.a:Show(); gb.b:Hide()
+		gb:ClearAllPoints(); gb:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+		by = by + gb:Layout(inner, true) + 8
+		gb:Show()
 	else
-		frame.group:Hide()
+		gb:Hide()
 	end
 
-	-- "Guard" de viagem: como chegar (voo/barco/portal) quando o alvo está fora da zona
+	-- a perna de viagem (clicável: abre a Navegação)
 	local thint = travelHint()
+	local tb = frame.travel
 	if thint then
-		frame.travel:ClearAllPoints()
-		frame.travel:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
-		frame.travel:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)
-		frame.travelText:SetText(thint)
-		local th = math.max(24, frame.travelText:GetStringHeight() + 15)
-		frame.travel:SetHeight(th)
-		frame.travel:Show()
-		y = y + th + 8
+		tb.text:SetText(thint)
+		tb.sub:SetText(L.V3_TRAVEL_SUB)
+		tb:ClearAllPoints(); tb:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+		by = by + tb:Layout(inner) + 8
+		tb:Show()
 	else
-		frame.travel:Hide()
+		tb:Hide()
 	end
 
+	-- o cartão do passo
+	local card = frame.stepCard
+	card:ClearAllPoints(); card:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+	card:SetWidth(inner)
+	local cy = 12
+	local who, where, whereGoal
+	if step then who, where, whereGoal = stepHead(step) end
+	if who or where then
+		frame.who:ClearAllPoints(); frame.who:SetPoint("TOPLEFT", card, "TOPLEFT", 12, -cy)
+		fitText(frame.who, who or where or "", inner - 24 - 70)
+		frame.who:Show()
+		cy = cy + 18
+		if where and who then
+			frame.where:ClearAllPoints(); frame.where:SetPoint("TOPLEFT", card, "TOPLEFT", 12, -cy)
+			frame.where:SetText(where); frame.where:Show()
+			cy = cy + 15
+		else
+			frame.where:Hide()
+		end
+		frame.whoDist:ClearAllPoints(); frame.whoDist:SetPoint("TOPRIGHT", card, "TOPRIGHT", -12, -12)
+		frame.whoDist:Hide()
+		if whereGoal then distRows[#distRows + 1] = { chip = frame.whoDist, goal = whereGoal } end
+		frame.whoSep:ClearAllPoints()
+		frame.whoSep:SetPoint("TOPLEFT", card, "TOPLEFT", 12, -(cy + 6)); frame.whoSep:SetPoint("RIGHT", card, "RIGHT", -12, 0)
+		frame.whoSep:Show()
+		cy = cy + 14
+	else
+		frame.who:Hide(); frame.where:Hide(); frame.whoDist:Hide(); frame.whoSep:Hide()
+	end
+
+	local i = 0
+	local QS = ns.QuestState
 	if step then
 		for _, goal in ipairs(step.goals) do
 			if ns:IsGoalActive(goal) then
 				i = i + 1
 				local row = getRow(i)
-				row:SetWidth(w)
+				row:ClearAllPoints()
+				row:SetPoint("TOPLEFT", card, "TOPLEFT", 12, -cy); row:SetPoint("RIGHT", card, "RIGHT", -12, 0)
 				local done = ns:IsGoalComplete(goal)
-
-				-- glyph de estado
 				if goal.verb == "note" then
 					row.glyph:Hide()
 				else
 					row.glyph:Show()
 					if done then
-						row.glyph:SetTexture(UI.GLYPH .. "check-64")
-						row.glyph:SetVertexColor(UI.unpackc(C.done))
+						row.glyph:SetTexture(UI.GLYPH .. "check-64"); row.glyph:SetVertexColor(unpackc(C.done))
 					else
-						row.glyph:SetTexture(UI.GLYPH .. "losango-64")
-						row.glyph:SetVertexColor(UI.unpackc(
-							ns:IsGoalTrackable(goal) and C.accent or C.soft))
+						row.glyph:SetTexture(UI.MEDIA .. "ring")
+						row.glyph:SetVertexColor(unpackc(ns:IsGoalTrackable(goal) and C.accentBright or C.soft))
 					end
 				end
-
-				-- texto + contagem/tempo + tips
 				local txt, timed = rowText(goal, done)
 				row.text:SetText(txt)
 				row._goal, row._done = goal, done
 				if timed then timedRows[#timedRows + 1] = row end
-
-				-- chip de distância (alvo do goal)
-				row.dist:Hide()
-				if goal.goto_ and not done and ns.Waypoint then
-					distRows[#distRows + 1] = { chip = row.dist, goal = goal }
+				-- contagem e barra (do diário; collect sem quest, da bolsa)
+				local have, need
+				if QS and QS.GoalCounts then have, need = QS.GoalCounts(goal) end
+				local counted = not done and have and need and need > 1
+				local wantDist = goal.goto_ and not done and goal ~= whereGoal and not counted
+				row.count:SetShown(counted and true or false)
+				if counted then row.count:SetText(("%d/%d"):format(have, need)) end
+				row.text:SetPoint("RIGHT", row, "RIGHT", (counted or wantDist) and -52 or 0, 0)
+				local h = math.max(16, row.text:GetStringHeight() + 2)
+				if counted then
+					row.bar:ClearAllPoints()
+					row.bar:SetPoint("TOPLEFT", row.text, "BOTTOMLEFT", 0, -5)
+					row.bar:SetPoint("RIGHT", row, "RIGHT", 0, 0)
+					row.bar:Show(); row.bar:SetProgress(have / need)
+					h = h + 9
+				else
+					row.bar:Hide()
 				end
-
-
-				local h = math.max(16, row.text:GetStringHeight() + 4)
+				-- distância por linha só quando o passo tem mais de um lugar
+				row.dist:Hide()
+				if wantDist and ns.Waypoint then distRows[#distRows + 1] = { chip = row.dist, goal = goal } end
 				row:SetHeight(h)
-				row:ClearAllPoints()
-				row:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
-				row:SetPoint("RIGHT", frame.content, "RIGHT", 0, 0)
 				row:Show()
-				y = y + h + 6
+				cy = cy + h + 9
 			end
 		end
 	end
-	frame.content:SetHeight(math.max(10, y))
-	frame.card:SetHeight(y + 18)
+	card:SetHeight(math.max(40, cy + 4))
+	by = by + card:GetHeight() + 10
 
-	-- prévia dos próximos passos
-	frame.previewFS = frame.previewFS or {}
-	for _, fs in ipairs(frame.previewFS) do fs:Hide() end
-	local py, shown = 0, 0
+	-- ações rápidas
+	frame.quick:ClearAllPoints(); frame.quick:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+	frame.quick:SetWidth(inner)
+	local qn = #frame.quickBtns
+	local qw = math.floor((inner - (qn - 1) * 6) / qn)
+	for qi, b in ipairs(frame.quickBtns) do
+		b:ClearAllPoints(); b:SetSize(qw, 46); b:SetPoint("LEFT", frame.quick, "LEFT", (qi - 1) * (qw + 6), 0)
+	end
+	by = by + 46 + 12
+
+	-- a seguir
+	local shown = 0
 	local idx = cur + 1
+	local py = by + 16
 	while shown < 2 and guide.steps[idx] do
 		local s = guide.steps[idx]
 		if ns:IsStepActive(s) then
 			shown = shown + 1
-			local fs = frame.previewFS[shown]
-			if not fs then
-				fs = frame.preview:CreateFontString(nil, "OVERLAY")
-				UI.SetFont(fs, 11, { color = C.muted })
-				fs:SetJustifyH("LEFT"); fs:SetWordWrap(false)
-				fs:SetPoint("TOPLEFT", 0, -py)
-				fs:SetPoint("RIGHT", 0, 0)
-				frame.previewFS[shown] = fs
+			local p = previewPool[shown]
+			if not p then
+				p = CreateFrame("Frame", nil, frame.body)
+				p.dot = UI.Rect(p, "ARTWORK", C.accentBright); p.dot:SetSize(6, 6); p.dot:SetPoint("LEFT", 2, 0)
+				p.text = UI.Text(p, 12.5, C.muted, { wrap = false })
+				p.text:SetPoint("LEFT", p.dot, "RIGHT", 9, 0); p.text:SetPoint("RIGHT", p, "RIGHT", -44, 0)
+				p.count = UI.Text(p, 12, C.dim, { num = true, justify = "RIGHT" }); p.count:SetPoint("RIGHT")
+				previewPool[shown] = p
 			end
-			fs:ClearAllPoints()
-			fs:SetPoint("TOPLEFT", frame.preview, "TOPLEFT", 0, -py)
-			fs:SetPoint("RIGHT", frame.preview, "RIGHT", 0, 0)
-			-- primeiro goal significativo do próximo passo
-			local summary = "..."
+			p.dot:SetColorTexture(unpackc(shown == 1 and C.accentBright or C.borderHi))
+			local summary, cnt = "...", ""
 			for _, g in ipairs(s.goals) do
 				if g.verb ~= "note" and ns:IsGoalActive(g) then
 					summary = verbLabel(g.verb) .. " " .. displayName(g)
-					local QS = ns.QuestState
-					if QS and g.verb ~= "accept" and not ns:IsGoalComplete(g) then
-						summary = summary .. (QS.GoalSuffix(g, false) or "")
+					if QS and QS.GoalCounts and g.verb ~= "accept" and not ns:IsGoalComplete(g) then
+						local h2, n2 = QS.GoalCounts(g)
+						if h2 and n2 and n2 > 1 then cnt = ("%d/%d"):format(h2, n2) end
 					end
 					break
 				end
 			end
-			fs:SetText("|cff6b7684›|r " .. summary)
-			fs:Show()
-			py = py + 16
+			p.text:SetText(summary); p.count:SetText(cnt)
+			p:ClearAllPoints(); p:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -py); p:SetPoint("RIGHT", frame.body, "RIGHT")
+			p:SetHeight(18); p:Show()
+			py = py + 20
 		end
 		idx = idx + 1
 	end
+	frame.nextLabel:ClearAllPoints(); frame.nextLabel:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
 	frame.nextLabel:SetShown(shown > 0)
-	frame.preview:SetShown(shown > 0)
-	frame.preview:SetHeight(math.max(1, py))
+	if shown > 0 then by = py + 4 end
 
-	-- altura total da janela (inclui a tira de abas)
-	local hgt = 30 + TAB_H + 3 + 18 + (y + 18) + (shown > 0 and (18 + py) or 0) + 40
-	frame:SetHeight(math.min(620, hgt))
+	frame.body:SetHeight(math.max(1, by))
+	frame:SetHeight(math.min(760, y + by + 12 + 30 + PAD))
 	V:UpdateDistances()
 end
 
--- Atualiza só os chips de distância (barato, roda em timer)
+-- Só os chips de distância (barato, roda em timer)
 function V:UpdateDistances()
 	if not (frame and frame:IsShown()) then return end
 	for _, r in ipairs(distRows) do
 		local d = ns.Waypoint and ns.Waypoint:DistanceTo(r.goal)
-		if d then
-			r.chip:Set(("%dy"):format(d))
-			r.chip:Show()
-		else
-			r.chip:Hide()
-		end
+		if d then r.chip:Set(ns.L.V3_YARDS:format(d)); r.chip:Show() else r.chip:Hide() end
 	end
 end
 
@@ -787,18 +756,15 @@ end
 --------------------------------------------------------------------------------
 function V:ApplyCollapsed()
 	if not frame then return end
-	local col = ns.db.viewer.collapsed
-	frame.tabStrip:SetShown(not col)
-	frame.bar:SetShown(not col)
-	frame.stepLabel:SetShown(not col)
-	frame.nowLabel:SetShown(not col)
-	frame.card:SetShown(not col)
-	frame.nextLabel:SetShown(not col)
-	frame.preview:SetShown(not col)
-	frame.prev:SetShown(not col)
-	frame.next:SetShown(not col)
-	if frame.empty then frame.empty:SetShown(false) end
-	if col then frame:SetHeight(30) else V:Refresh() end
+	if ns.db.viewer.collapsed then
+		for _, k in ipairs(BODY_PARTS) do frame[k]:Hide() end
+		if frame.empty then frame.empty:Hide() end
+		frame:SetHeight(HEAD_H)
+		frame.collapseBtn.glyph:SetTexture(UI.GLYPH .. "chevron-dir-64")
+	else
+		frame.collapseBtn.glyph:SetTexture(UI.GLYPH .. "chevron-baixo-64")
+		V:Refresh()
+	end
 end
 
 function V:ToggleCollapse()
@@ -829,7 +795,7 @@ ns:On("_GUIDE_LOADED", function()
 	if not ns.db.viewer.hidden and not ns.instanceHidden then V:Show() end
 end)
 
--- mudou de zona: atualiza o banner de viagem (ex.: chegou no hub de transporte)
+-- mudou de zona: atualiza o aviso de viagem (ex.: chegou no hub de transporte)
 ns:On("ZONE_CHANGED_NEW_AREA", function() if ns.Viewer then ns.Viewer:Refresh() end end)
 
 -- timer leve p/ distâncias

@@ -35,6 +35,11 @@ check(Q.Progress(objs, 3) == nil, "sim/não (0/1) não vira número")
 check(Q.Progress(objs) == "3/8 · 1/5", "sem índice, todos com conta: " .. tostring(Q.Progress(objs)))
 check(Q.Progress({ { numFulfilled = 12, numRequired = 10 } }, 1) == "10/10", "o jogo passando da conta fica no teto")
 check(Q.Progress(nil) == nil and Q.Progress({}, 4) == nil and Q.Progress({}) == nil, "sem objetivo: nada")
+local h, n = Q.Counts(objs, 1)
+check(h == 3 and n == 8, "contagem crua do objetivo 1")
+h, n = Q.Counts(objs)
+check(h == 4 and n == 14, "sem índice: soma dos que têm conta (" .. tostring(h) .. "/" .. tostring(n) .. ")")
+check(Q.Counts(nil) == nil and Q.Counts({ { numRequired = 0 } }) == nil, "sem conta: nada")
 check(Q.ItemProgress(2, 5) == "2/5" and Q.ItemProgress(9, 5) == "5/5" and Q.ItemProgress(1, 1) == nil,
 	"conta da bolsa")
 
