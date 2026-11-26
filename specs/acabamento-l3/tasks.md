@@ -7,4 +7,4 @@
 - [x] T5 Quest cinza: QuestLevels.lua (gen_questlevels.py), QuestState, Guide (pulo e escolha do guia)
 - [x] T6 Reparo pela guilda opcional
 - [x] T7 Testes, ui-smoke
-- [ ] T8 Revisão local, PR
+- [x] T8 Revisão local, PR
