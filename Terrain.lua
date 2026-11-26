@@ -134,6 +134,11 @@ local LONGE, VERTICES = 40, 10           -- até onde o fio tenta alcançar: cé
 -- mestres de voo cai numa. O caminho sai dela (ou chega nela) saltando em reta o pedaço que
 -- falta, até SALTO células.
 local ILHA, SALTO, PARADO = 3000, 20, 3000   -- células; células; expansões sem chegar mais perto
+-- Passagem que a grade não tem entre regiões grandes (a rampa estreita da Revantusk Village até o platô de
+-- The Hinterlands, issue #99): sem caminho, a busca refaz aceitando passo travado (e célula sem passagem) a
+-- este custo por passo. O caminho segue o terreno e cruza a barreira onde ela é mais fina (onde está a
+-- rampa), em vez de a reta cortar a montanha.
+local TRAVADO = 30
 
 -- as células ligadas a (r, c) e se a região acaba antes de `ILHA` (é ilha)
 local function regiao(grid, r, c)
@@ -192,7 +197,13 @@ end
 -- numa ilha salta em reta até a borda dela. `ceder`, numa corrotina: a cada tantas
 -- expansões (número) ou quando a função disser (orçamento de tempo), cede a vez — não trava
 -- o quadro.
+local caminho
 function TR.Path(dados, de, para, maxExp, ceder)
+	return caminho(dados, de, para, maxExp, ceder, false) or caminho(dados, de, para, maxExp, ceder, true)
+end
+
+-- solto: a segunda tentativa, que aceita passo travado (TRAVADO) e dispensa a lógica de ilha
+caminho = function(dados, de, para, maxExp, ceder, solto)
 	if not (de and para and de.c == para.c and dados) then return nil end
 	local grid = dados[de.c]
 	if not grid then return nil end
@@ -203,14 +214,18 @@ function TR.Path(dados, de, para, maxExp, ceder)
 	sr, sc, gr, gc = sr or sr0, sc or sc0, gr or gr0, gc or gc0   -- bloqueada de tudo: ilha vazia
 	-- ilhas: o jogador sai da dele pela célula livre mais perto; para a do destino, a busca
 	-- fica com a célula que mais chegou perto
-	local doIni, ilhaIni = regiao(grid, sr, sc)
-	local ilhaFim = false
-	if not doIni[gr * W + gc] then
-		if ilhaIni then
-			sr, sc = sai(grid, sr, sc, doIni, gr * W + gc)
-			if not sr then return nil end
+	-- solto: o destino pode estar numa célula sem passagem (mestre de voo no alto da torre): fica a célula que
+	-- mais chegou perto, como na ilha
+	local ilhaFim = solto
+	if not solto then
+		local doIni, ilhaIni = regiao(grid, sr, sc)
+		if not doIni[gr * W + gc] then
+			if ilhaIni then
+				sr, sc = sai(grid, sr, sc, doIni, gr * W + gc)
+				if not sr then return nil end
+			end
+			ilhaFim = select(2, regiao(grid, gr, gc))
 		end
-		ilhaFim = select(2, regiao(grid, gr, gc))
 	end
 	local start, goal = sr * W + sc, gr * W + gc
 	local function h(r, c)
@@ -251,11 +266,13 @@ function TR.Path(dados, de, para, maxExp, ceder)
 			local conn = info(grid, r, c)
 			for d = 1, 8 do
 				local nr, nc = r + DIRS[d][1], c + DIRS[d][2]
-				if conn % 2 ^ d >= 2 ^ (d - 1) and nr >= 0 and nc >= 0 and nr < W and nc < W then
+				local liga, custo = conn % 2 ^ d >= 2 ^ (d - 1), 1
+				if not liga and solto then liga, custo = true, TRAVADO end   -- parede, penhasco: caro, não proibido
+				if liga and nr >= 0 and nc >= 0 and nr < W and nc < W then
 					local nk = nr * W + nc
 					if not fechado[nk] then
 						local _, agua = info(grid, nr, nc)
-						local ng = g[k] + (d % 2 == 0 and CEL * SQ2 or CEL) * (agua and NADO or 1)
+						local ng = g[k] + (d % 2 == 0 and CEL * SQ2 or CEL) * (agua and NADO or 1) * custo
 						if not g[nk] or ng < g[nk] then
 							g[nk], came[nk] = ng, k
 							fila.poe(ng + h(nr, nc), nk)

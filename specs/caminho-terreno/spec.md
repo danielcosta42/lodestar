@@ -27,7 +27,12 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
 ## Em jogo
 
 - `Terrain.lua`: decodifica só os quadrantes por onde a busca passa; A* com heurística octil e
-  limite de expansão (sem caminho: a reta de sempre).
+  limite de expansão.
+- Sem caminho entre duas regiões grandes, uma segunda busca roda (issue #99). É o caso da rampa estreita da
+  Revantusk Village ao platô de The Hinterlands, que a grade de 16,7 jd não tem. Essa busca aceita passo
+  travado e célula sem passagem, a 30× o custo, e termina na célula mais perto quando o destino não tem
+  passagem (mestre de voo no alto da torre). O caminho segue o terreno e cruza a barreira só onde ela é mais
+  fina. A reta fica para fora da grade ou para a busca grande demais.
 - A perna a pé atual ganha `path` (pontos de mundo); o mapa e o minimapa desenham o caminho; a
   seta aponta o ponto do caminho ~25 jd à frente; a distância é a que falta pelo caminho.
 - Refaz o caminho ao trocar de perna ou se o jogador sair dele por mais de 40 jd.
@@ -50,4 +55,5 @@ custo do planejador.
 
 1. Num destino atrás de um morro, o pontilhado e a seta contornam o morro.
 2. Atravessar um lago raso a pé ainda é permitido; o mar não vira caminho se houver volta por terra.
-3. Sem caminho (cidade fechada), volta a reta, sem erro.
+3. Sem caminho na grade (cidade fechada, rampa estreita), o caminho cruza a barreira no ponto mais fino, sem
+   erro; a reta só fora da grade.
