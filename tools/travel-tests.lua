@@ -792,8 +792,9 @@ end
 local rr, rv = TRN.Path(EKp, revan, aerie, 150000), TRN.Path(EKp, aerie, revan, 150000)
 check(rr and rv and not rr.solto and not rv.solto and pelaRampa(rr) and pelaRampa(rv),
 	"Revantusk <-> Aerie Peak com a rampa gravada: busca normal, pela rampa")
--- a rampa é a única ligação do platô na grade (a saída para Hillsbrad falta): Aerie Peak -> Chillwind não pode
--- descer a rampa e nadar 4 km pela costa — volta grande demais fica sem caminho (a reta)
+-- Aerie Peak -> Chillwind não pode descer a rampa e nadar 4 km pela costa (volta grande demais por passagem fica sem
+-- caminho). Na grade v1 a rampa era a única ligação do platô; na v2 (#106) a saída para Hillsbrad existe na grade e o
+-- caminho vai por ela — nunca pela rampa e o mar
 local chillwind, tarren = { c = 0, x = 931.3, y = -1430.1 }, { c = 0, x = -0.1, y = -859.9 }
 local ac, at = TRN.Path(EKp, aerie, chillwind, 150000), TRN.Path(EKp, aerie, tarren, 150000)
 check((ac == nil or not pelaRampa(ac)) and (at == nil or not pelaRampa(at)),
@@ -808,9 +809,33 @@ local lightsHope = { c = 0, x = 2271.1, y = -5340.9 }
 local costa = TRN.Path(EK, revan, lightsHope, 150000)
 check(costa and not costa.passagem, "rota longa só da grade segue existindo, sem a marca de passagem")
 check(TRN.Path(EKp, revan, lightsHope, 150000) ~= nil, "com a rampa gravada, a rota longa também existe")
+-- Ironforge (#106): a cidade fica debaixo do morro. A v2 fica com o piso de dentro onde há piso de modelo bem abaixo
+-- do terreno (não o alto do morro): do mestre de voo, sai-se pelo portão — não por cima das montanhas via Loch Modan
+local ifFM, portao = { c = 0, x = -4821.8, y = -1155.4 }, { c = 0, x = -5160, y = -870 }
+local ifp = TRN.Path(EK, ifFM, portao, 150000)
+check(ifp and comprimento(ifp) < 1000, "Ironforge: do mestre de voo ao lado de fora do portão, menos de 1 km ("
+	.. (ifp and math.floor(comprimento(ifp)) or "nil") .. " jd)")
+local kharanos = { c = 0, x = -5590, y = -500 }
+local ifk = TRN.Path(EK, ifFM, kharanos, 150000)
+local retaK = math.sqrt((ifFM.x - kharanos.x) ^ 2 + (ifFM.y - kharanos.y) ^ 2)
+check(ifk and comprimento(ifk) < 1.6 * retaK, "Ironforge -> Kharanos pelo portão, sem a volta pelas montanhas ("
+	.. (ifk and math.floor(comprimento(ifk)) or "nil") .. " jd; reta " .. math.floor(retaK) .. ")")
 -- pé do penhasco: do alto à praia abaixo dos Overlook Cliffs, ~1,2 km pela rampa (8x a reta de 143 jd), real
 local alto, praia = { c = 0, x = 158, y = -4592 }, { c = 0, x = 184, y = -4732 }
 check(TRN.Path(EKp, alto, praia, 150000) ~= nil, "pé do penhasco: o caminho pela rampa não é cortado")
+end
+do -- o limite de volta vale só para caminho por passagem: volta longa só da grade (> 2x a reta e > 2000 jd a mais),
+-- com uma passagem gravada longe dali, segue existindo, pela busca normal e sem a marca de passagem
+local volta = quadranteSint(function(r, c) return c == 48 and r < 86 end, nil, 3)
+local outra = {}
+for col = 10, 20 do local m = mundo(40, col); outra[#outra + 1] = m.x; outra[#outra + 1] = m.y end
+volta.passages = { { c = 0, pts = outra } }
+local va, vb = mundo(5, 43), mundo(5, 53)
+local vp = TRN.Path(volta, va, vb, 40000)
+local vreta = math.sqrt((va.x - vb.x) ^ 2 + (va.y - vb.y) ^ 2)
+check(vp and comprimento(vp) > 2 * vreta and comprimento(vp) - vreta > 2000, "a volta da grade é longa de verdade ("
+	.. (vp and math.floor(comprimento(vp)) or "nil") .. " jd)")
+check(vp and not vp.passagem and not vp.solto, "volta longa só da grade: existe, sem passagem e sem a segunda busca")
 end
 -- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
 local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)

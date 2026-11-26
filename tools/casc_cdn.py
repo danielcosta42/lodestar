@@ -6,7 +6,9 @@ de cada região; a da build aponta a tabela de codificação (conteúdo -> chave
 índice (<hash>.index: chave codificada -> posição e tamanho no pacote). Um arquivo vem do pacote por
 pedido HTTP de intervalo (Range), ou inteiro se for solto (data/xx/yy/<chave>), em BLTE.
 
-Tudo o que baixa fica em tools/build/cdn/ (fora do git): as configurações, a codificação, um índice
+A build é a presa (PINO, a 1.60.1.71139, a mesma das tabelas do wago.tools); atual=True segue a última. Só
+https; configuração e arquivo só entram no cache se o MD5 bate com o hash que os nomeia (a chave codificada é o
+MD5 do cabeçalho BLTE). Tudo o que baixa fica em tools/build/cdn/ (fora do git): as configurações, a codificação, um índice
 único dos pacotes (indices-<config do CDN>.npz, montado dos ~1400 índices, que não ficam) e cada
 arquivo lido, pela chave codificada. Só se baixa o que se lê: `prefetch` junta os pedidos do mesmo
 pacote em intervalos contíguos e baixa em paralelo.
@@ -21,6 +23,7 @@ tamanho e posição de 4), índice de soltos sem posição, raiz MFST v2. Nada d
 o formato é o documentado (wowdev.wiki, TACT/CASC).
 """
 import concurrent.futures as cf
+import hashlib
 import http.client
 import os
 import struct
@@ -35,6 +38,9 @@ import casc
 
 PRODUTO = "wowf"
 REGIAO = "us"
+# A build presa (a mesma das tabelas do wago.tools em gen_travel/import_forever): configuração da build e do
+# CDN do 1.60.1.71139. Seguir a última publicada só com atual=True (gen_terrain --cdn-atual).
+PINO = ("1.60.1.71139", "7a16decda3672d84db0d34d0784fda98", "bc770ae1ebe031a20b2866af12988469")
 VERSOES = "https://%s.version.battle.net/v2/products/%s/%s"
 CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "build", "cdn")
 AGENTE = "Lodestar-casc_cdn/1.0"
@@ -81,6 +87,24 @@ def _baixa(url, intervalo=None, tentativas=4):
         time.sleep(1 + 2 * t)
 
 
+class Corrompido(IOError):
+    """O que veio do CDN não bate com o hash que o nomeia."""
+
+
+def confere_config(b, h):
+    if hashlib.md5(b).hexdigest() != h:
+        raise Corrompido("configuração %s não bate com o MD5" % h)
+
+
+def confere_blte(b, ek):
+    """A chave codificada é o MD5 do cabeçalho BLTE (com tabela de pedaços) ou do arquivo inteiro (sem)."""
+    if len(b) < 8 or b[:4] != b"BLTE":
+        raise Corrompido("%s: não é BLTE" % ek)
+    hs = struct.unpack_from(">I", b, 4)[0]
+    if hashlib.md5(b if hs == 0 else b[:hs]).hexdigest() != ek:
+        raise Corrompido("%s: MD5 do BLTE não bate" % ek)
+
+
 def _grava(caminho, b):
     os.makedirs(os.path.dirname(caminho), exist_ok=True)
     tmp = caminho + ".part"
@@ -116,24 +140,25 @@ def _parte_chave(chaves):
 
 class CascCdn(casc.Casc):
     def __init__(self, produto=PRODUTO, regiao=REGIAO, build_config=None, cdn_config=None, cache=CACHE,
-                 verbose=True):
+                 verbose=True, atual=False):
         self.cache = cache
         self.verbose = verbose
         self.origem = "CDN %s" % produto
         self.baixado = 0                                   # bytes baixados nesta sessão
         os.makedirs(cache, exist_ok=True)
-        ver = _tabela_psv(self._servico(produto, regiao, "versions"))
-        linha = next(r for r in ver if r["Region"] == regiao)
         cdns = _tabela_psv(self._servico(produto, regiao, "cdns"))
         cdn = next(r for r in cdns if r["Name"] == regiao)
         self.caminho = cdn["Path"]
-        srv = [s.split("?")[0].rstrip("/") for s in cdn["Servers"].split()]
-        self.servidores = [s for s in srv if s.startswith("https://")] + [s for s in srv if not s.startswith("https://")]
-        if not build_config:
+        self.servidores = [s.split("?")[0].rstrip("/") for s in cdn["Servers"].split() if s.startswith("https://")]
+        if not self.servidores:
+            raise IOError("nenhum servidor https no CDN de %s" % regiao)
+        self.versao = None
+        if not build_config and atual:                     # a última publicada
+            linha = next(r for r in _tabela_psv(self._servico(produto, regiao, "versions")) if r["Region"] == regiao)
             build_config, cdn_config = linha["BuildConfig"], linha["CDNConfig"]
             self.versao = linha["VersionsName"]
-        else:
-            self.versao = None
+        elif not build_config:                             # a presa
+            self.versao, build_config, cdn_config = PINO
         self.build = _config(self._baixa_cache("config", build_config).decode("utf-8"))
         self.cdn = _config(self._baixa_cache("config", cdn_config).decode("utf-8"))
         self.cdn_config = cdn_config
@@ -186,6 +211,8 @@ class CascCdn(casc.Casc):
             with open(p, "rb") as fh:
                 return fh.read()
         b = self._pede(tipo, h)
+        if tipo == "config":
+            confere_config(b, h)
         _grava(p, b)
         return b
 
@@ -251,6 +278,7 @@ class CascCdn(casc.Casc):
                     if e.code == 404:
                         return None
                     raise
+            confere_blte(b, h)
             _grava(p, b)
         try:
             return self._blte(b)
@@ -295,13 +323,17 @@ class CascCdn(casc.Casc):
             fim = max(p + t for p, t, _ in grupo)
             b = self._pede("data", self.cdn["archives"][pac], intervalo=(ini, fim - 1))
             for p, t, h in grupo:
-                _grava(self._local("data", h), b[p - ini:p - ini + t])
+                parte = b[p - ini:p - ini + t]
+                confere_blte(parte, h)
+                _grava(self._local("data", h), parte)
 
         def solto(h):
             try:
-                _grava(self._local("data", h), self._pede("data", h))
+                b = self._pede("data", h)
             except urllib.error.HTTPError:
-                pass
+                return
+            confere_blte(b, h)
+            _grava(self._local("data", h), b)
 
         if pedidos or soltos:
             n = sum(len(g) for _, g in pedidos) + len(soltos)

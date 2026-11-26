@@ -28,6 +28,7 @@ componentes escolhidos se tocam por uma ligação fina; em diagonal, se se alcan
     python gen_terrain.py --sem-modelos    # v2 só com o terreno
     python gen_terrain.py --demo           # só confere pontos conhecidos (não escreve)
     python gen_terrain.py --out DIR        # escreve em DIR em vez da raiz do addon
+    python gen_terrain.py --cdn-atual      # CDN na última build publicada (padrão: a presa, 1.60.1.71139)
 """
 import math
 import os
@@ -194,6 +195,7 @@ KMAX = 4                           # camadas por amostra (as mais perto do chão
 TETO = 2.0                         # jd entre duas superfícies para caber alguém entre elas
 COS_RAMPA = 1 / math.sqrt(1 + RAMPA ** 2)
 TOL = 0.35                         # amostras: triângulo que passa a menos disso do centro também conta
+PROFUNDO = 50.0                    # jd: piso de modelo tão abaixo do terreno é interior sob o morro (Ironforge)
 JANELA = 3                         # células em volta para o teste de componente essencial
 
 
@@ -269,8 +271,12 @@ def camadas(zt, buraco, agua, ruim, oi, oj, oz):
     # de 4,17 jd): de lado num barranco íngreme também se escorrega (o passo a passo não pega isso)
     gx, gy = np.gradient(zt, F)
     plano = np.hypot(gx, gy) <= RAMPA
-    s_t = np.flatnonzero(~buraco & ~ruim & (plano | funda))
     s_o = (oi * NQ + oj).astype(np.int64)
+    # cidade (ou caverna) debaixo do morro: onde há piso de modelo mais de PROFUNDO abaixo do terreno, o chão é o
+    # de dentro — o alto do morro sobre Ironforge sai, e a cidade se liga ao mundo pelo portão
+    sob = np.zeros(n2, bool)
+    sob[s_o[oz < zt.ravel()[s_o] - PROFUNDO]] = True
+    s_t = np.flatnonzero(~buraco & ~ruim & (plano | funda) & ~sob.reshape(NQ, NQ))
     ag = agua.ravel()[s_o]
     fica = ~(oz < ag - FUNDO)                      # bem debaixo d'água: nada-se por cima
     s = np.concatenate([s_t, s_o[fica]])
@@ -828,7 +834,7 @@ def celula(x, y):
     return int((TOPO - x) // CEL), int((TOPO - y) // CEL)
 
 
-def demo(dados, v2=True):
+def demo(dados, v2=True, v1=False):
     P1, W1, L1, _, _ = dados[1]
     r, c = celula(1677.6, -4315.7)                       # mestre de voo de Orgrimmar
     assert P1[r, c], "o chão do mestre de voo de Orgrimmar devia ser passável"
@@ -838,13 +844,14 @@ def demo(dados, v2=True):
         # nenhuma ligação para fora da grade (o np.roll daria a volta pelo outro lado)
         bordas = (L_[0, :] & 0b10000011).any() or (L_[-1, :] & 0b00111000).any()             or (L_[:, -1] & 0b00001110).any() or (L_[:, 0] & 0b11100000).any()
         assert not bordas, "ligação para fora da grade"
-        # diagonal só se um vizinho reto passa (v1: os dois; v2: a quina tem chão fino, basta um)
+        # diagonal: v1 só se os dois vizinhos retos passam; v2 se um passa (a quina tem chão fino)
         for d, (dr, dc) in enumerate(DIRS):
             if dr and dc:
                 tem = (L_ >> d) & 1 == 1
                 reto1 = np.roll(P_, -dr, 0)
                 reto2 = np.roll(P_, -dc, 1)
-                assert not (tem & ~(reto1 | reto2)).any(), "diagonal cortando quina bloqueada (d=%d)" % d
+                livre = (reto1 & reto2) if v1 else (reto1 | reto2)
+                assert not (tem & ~livre).any(), "diagonal cortando quina bloqueada (d=%d)" % d
     vale = P1.sum()
     assert vale > 100000, vale
     print("ok: Kalimdor %d células passáveis, %d de água" % (vale, W1.sum()))
@@ -876,25 +883,38 @@ def liga(L, a, b, limite=None):
     return False
 
 
-def abre():
-    """O cliente local (casc.Casc) se houver; senão, ou com --cdn, o CDN público (casc_cdn)."""
-    if "--cdn" not in sys.argv:
+def abre(cdn=False, atual=False):
+    """O cliente local (casc.Casc) se houver; senão, ou com cdn, o CDN público (casc_cdn; a build presa, ou a
+    última publicada com atual)."""
+    if not cdn and not atual:
         try:
             return casc.Casc()
         except (OSError, StopIteration, SystemExit):
             print("sem cliente local: lendo do CDN", file=sys.stderr)
     import casc_cdn
-    return casc_cdn.CascCdn()
+    return casc_cdn.CascCdn(atual=atual)
+
+
+def argumentos(args=None):
+    import argparse
+    ap = argparse.ArgumentParser(description="Gera Terrain0.lua e Terrain1.lua (caminho a pé pelo terreno).")
+    ap.add_argument("--cdn", action="store_true", help="lê do CDN público mesmo com cliente instalado")
+    ap.add_argument("--cdn-atual", action="store_true", help="CDN na última build publicada (não a presa)")
+    ap.add_argument("--v1", action="store_true", help="a grade antiga, só terreno por célula")
+    ap.add_argument("--sem-modelos", action="store_true", help="v2 sem os WMO e M2")
+    ap.add_argument("--demo", action="store_true", help="só confere pontos conhecidos; não escreve")
+    ap.add_argument("--out", metavar="DIR", help="escreve em DIR em vez da raiz do addon")
+    return ap.parse_args(args)
 
 
 if __name__ == "__main__":
-    if "--out" in sys.argv:
-        OUT = os.path.join(sys.argv[sys.argv.index("--out") + 1], "Terrain%d.lua")
-    c = abre()
+    a = argumentos()
+    if a.out:
+        OUT = os.path.join(a.out, "Terrain%d.lua")
+    c = abre(a.cdn, a.cdn_atual)
     w = wdts()
-    escrever = "--demo" not in sys.argv
     dados = {}
     for cid in (0, 1):
-        dados[cid] = gera(c, cid, w[cid], escrever, v1="--v1" in sys.argv, modelos_tambem="--sem-modelos" not in sys.argv)
+        dados[cid] = gera(c, cid, w[cid], not a.demo, v1=a.v1, modelos_tambem=not a.sem_modelos)
         print("continente %d: %d KB de dados %s" % (cid, dados[cid][3] // 1024, dados[cid][4] or ""))
-    demo(dados, v2="--v1" not in sys.argv and "--sem-modelos" not in sys.argv)
+    demo(dados, v2=not a.v1 and not a.sem_modelos, v1=a.v1)
