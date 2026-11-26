@@ -196,6 +196,7 @@ TETO = 2.0                         # jd entre duas superfícies para caber algu�
 COS_RAMPA = 1 / math.sqrt(1 + RAMPA ** 2)
 TOL = 0.35                         # amostras: triângulo que passa a menos disso do centro também conta
 PROFUNDO = 50.0                    # jd: piso de modelo tão abaixo do terreno é interior sob o morro (Ironforge)
+ENCOSTA_SOB = 0.6                  # ...e o terreno por cima só sai se for encosta (> ~31°): platô fica (Thorium Point)
 JANELA = 3                         # células em volta para o teste de componente essencial
 
 
@@ -272,10 +273,12 @@ def camadas(zt, buraco, agua, ruim, oi, oj, oz):
     gx, gy = np.gradient(zt, F)
     plano = np.hypot(gx, gy) <= RAMPA
     s_o = (oi * NQ + oj).astype(np.int64)
-    # cidade (ou caverna) debaixo do morro: onde há piso de modelo mais de PROFUNDO abaixo do terreno, o chão é o
-    # de dentro — o alto do morro sobre Ironforge sai, e a cidade se liga ao mundo pelo portão
+    # cidade (ou caverna) debaixo do morro: onde há piso de modelo mais de PROFUNDO abaixo do terreno e o terreno é
+    # encosta, o chão é o de dentro — as encostas do morro sobre Ironforge saem, e a cidade se liga ao mundo pelo
+    # portão; o platô plano sobre uma caverna funda (Thorium Point) fica
     sob = np.zeros(n2, bool)
     sob[s_o[oz < zt.ravel()[s_o] - PROFUNDO]] = True
+    sob &= (np.hypot(gx, gy) > ENCOSTA_SOB).ravel()
     s_t = np.flatnonzero(~buraco & ~ruim & (plano | funda) & ~sob.reshape(NQ, NQ))
     ag = agua.ravel()[s_o]
     fica = ~(oz < ag - FUNDO)                      # bem debaixo d'água: nada-se por cima
@@ -371,12 +374,17 @@ def quadrante_v2(lin, col, zt, buraco, agua, ruim, oi, oj, oz):
     nado = np.bincount(comp_nos, weights=N.ravel()[nos], minlength=nc)
     obj = np.bincount(comp_nos, weights=O.ravel()[nos], minlength=nc)
     zsoma = np.bincount(comp_nos, weights=Z.ravel()[nos], minlength=nc)
+    resto_nos = nos % n2                                  # centroide (amostras do quadrante) de cada componente
+    isoma = np.bincount(comp_nos, weights=resto_nos // NQ, minlength=nc)
+    jsoma = np.bincount(comp_nos, weights=resto_nos % NQ, minlength=nc)
+    cx = (TOPO - lin * TILE - (isoma / np.maximum(tam, 1) + 0.5) * F).astype(np.float32)
+    cy = (TOPO - col * TILE - (jsoma / np.maximum(tam, 1) + 0.5) * F).astype(np.float32)
     def unicos(m):
         e = np.stack([comp[na[m]], comp[nb[m]]], 1)
         return np.unique(e, axis=0) if len(e) else e.reshape(0, 2)
     ea, ed = unicos(cruz == 1), unicos(cruz == 2)
     return {"Z": Z, "comp": comp.reshape(K, NQ, NQ), "cel": cel, "tam": tam, "nado": nado, "obj": obj,
-            "zsoma": zsoma, "arestas": ea, "diagonais": ed}
+            "zsoma": zsoma, "cx": cx, "cy": cy, "arestas": ea, "diagonais": ed}
 
 
 def arestas_borda(Za, Ca, Zb, Cb, ao_lado):
@@ -657,6 +665,126 @@ def distancia_proj(ca, cb, limite, escolha, vizinhos_proj):
     return limite + 1
 
 
+MAX_ENCOSTOS = 24                  # células de encosto por grupo testadas para passagem fina
+
+
+def passagens_finas(ccel, tam, cx, cy, arestas, diagonais, escolhido):
+    """O que o chão fino liga e a grade (um nó por célula) perde ou desvia muito, como passagens no formato das
+    gravadas (Terrain.lua, TR.Links): o túnel da caverna de vários andares, a ponte que cruza o cânion de uma
+    célula, o rio debaixo da ponte, a escada para a plataforma. Para cada grupo de componentes não escolhidos
+    (ligados entre si), os escolhidos em que ele encosta; se dois encostos ficam longe na grade projetada (mais que
+    LONGE_PROJ × o caminho pelo grupo + 4, ou sem ligação), sai uma passagem pelo grupo: os centroides dos
+    componentes, de célula em célula. A grade já conta as passagens emitidas antes. Devolve [[x1, y1, ...]]."""
+    nc = len(ccel)
+    q2 = diagonais_por_quina(ccel, arestas, diagonais)
+    ini2, viz2 = _csr(nc, np.r_[arestas[:, 0], q2[:, 0]], np.r_[arestas[:, 1], q2[:, 1]])
+    ccel_l, viz2_l, ini2_l, tam_l = ccel.tolist(), viz2.tolist(), ini2.tolist(), tam.tolist()
+    esc = {int(c): int(escolhido[c]) for c in np.flatnonzero(escolhido >= 0)}
+    cx_l, cy_l = cx.tolist(), cy.tolist()
+    extra = {}
+
+    def escolha(c):
+        return esc.get(c, -1)
+
+    def vizinhos(k):
+        """Células vizinhas que o componente k alcança (pelos escolhidos delas) e as ligadas por passagem."""
+        out = {ccel_l[y] for y in viz2_l[ini2_l[k]:ini2_l[k + 1]] if esc.get(ccel_l[y]) == y}
+        e = extra.get(ccel_l[k])
+        return out | e if e else out
+
+    livre = [esc.get(ccel_l[k]) != k and tam_l[k] >= MIN_CORREDOR for k in range(nc)]
+    pai = {}
+
+    def raiz(x):
+        while pai[x] != x:
+            pai[x] = pai[pai[x]]
+            x = pai[x]
+        return x
+
+    for k in range(nc):
+        if livre[k] and ini2_l[k + 1] > ini2_l[k]:
+            pai.setdefault(k, k)
+            for y in viz2_l[ini2_l[k]:ini2_l[k + 1]]:
+                if livre[y] and ccel_l[y] != ccel_l[k]:
+                    pai.setdefault(y, y)
+                    ra, rb = raiz(k), raiz(y)
+                    if ra != rb:
+                        pai[max(ra, rb)] = min(ra, rb)
+    grupos_k = {}
+    for k in pai:
+        grupos_k.setdefault(raiz(k), []).append(k)
+    out = []
+    for membros in grupos_k.values():
+        enc = {}
+        for k in membros:
+            for y in viz2_l[ini2_l[k]:ini2_l[k + 1]]:
+                cy_ = ccel_l[y]
+                if esc.get(cy_) == y and cy_ != ccel_l[k]:
+                    enc.setdefault(cy_, set()).add(k)
+        if len(enc) < 2:
+            continue
+        mset = set(membros)
+        cels = sorted(enc)
+        if len(cels) > MAX_ENCOSTOS:                     # espalhados pelo grupo
+            cels = cels[::len(cels) // MAX_ENCOSTOS + 1]
+        for ia, ca in enumerate(cels):
+            prev = {k: None for k in enc[ca]}
+            fila, frente = list(enc[ca]), 0
+            while frente < len(fila):
+                x = fila[frente]
+                frente += 1
+                for y in viz2_l[ini2_l[x]:ini2_l[x + 1]]:
+                    if y in mset and y not in prev:
+                        prev[y] = x
+                        fila.append(y)
+            ordem = {k: i for i, k in enumerate(fila)}
+            for cb in cels[ia + 1:]:
+                fim = min(enc[cb], key=lambda k: ordem.get(k, 1 << 60))
+                if fim not in ordem:
+                    continue
+                cam = [fim]
+                while prev[cam[-1]] is not None:
+                    cam.append(prev[cam[-1]])
+                cam.reverse()                            # de ca para cb
+                cels_cam = [ccel_l[k] for k in cam]
+                if len(set(cels_cam)) != len(cels_cam) or ca in cels_cam or cb in cels_cam:
+                    continue
+                n = len(cam) + 1
+                if distancia_cel(ca, cb, LONGE_PROJ * n + 4, escolha, vizinhos) <= LONGE_PROJ * n + 4:
+                    continue
+                ks = [escolha(ca)] + cam + [escolha(cb)]
+                pts = []
+                for k in ks:
+                    x, y = cx_l[k], cy_l[k]
+                    if pts and math.hypot(x - pts[-2], y - pts[-1]) > 1.9 * CEL:   # TR.Links: > 2 células é salto
+                        pts += [(x + pts[-2]) / 2, (y + pts[-1]) / 2]
+                    pts += [x, y]
+                out.append(pts)
+                cs = [ca] + cels_cam + [cb]
+                for a, b in zip(cs, cs[1:]):
+                    extra.setdefault(a, set()).add(b)
+                    extra.setdefault(b, set()).add(a)
+    return out
+
+
+def distancia_cel(ca, cb, limite, escolha, vizinhos):
+    """Passos de ca a cb na grade projetada mais as passagens já emitidas (até `limite`; além, limite + 1)."""
+    visto, frente, d = {ca}, [ca], 0
+    while frente and d < limite:
+        d += 1
+        prox = []
+        for x in frente:
+            k = escolha(x)
+            for y in (vizinhos(k) if k >= 0 else ()):
+                if y == cb:
+                    return d
+                if y not in visto:
+                    visto.add(y)
+                    prox.append(y)
+        frente = prox
+    return limite + 1
+
+
 def ligacoes_v2(ccel, tam, nado, arestas, escolhido, diagonais=None):
     """Byte de ligação e bit de água por célula, dos componentes escolhidos. Reto: os escolhidos das duas
     células se tocam. Diagonal: os escolhidos das pontas se alcançam pela quina (diagonais_por_quina: há chão
@@ -696,6 +824,103 @@ def ligacoes_v2(ccel, tam, nado, arestas, escolhido, diagonais=None):
     return L, W, P
 
 
+# Rotas que a grade de um nó por célula erra mesmo com as passagens dos grupos (andares que se alternam célula a
+# célula): o caminho mais curto no chão fino entre as duas pontas vira passagem. (continente, nome, x1, y1, x2, y2)
+ROTAS = [
+    (0, "Ironforge: mestre de voo -> portão", -4821.8, -1155.4, -5160.0, -870.0),
+    (0, "Thorium Point: Aliança <-> Horda", -6552.6, -1168.3, -6554.9, -1100.1),
+    (1, "Timbermaw Hold: Felwood <-> Moonglade", 6815.0, -2092.0, 7380.0, -2195.0),
+]
+MARGEM_ROTA = 120                  # jd em volta das pontas onde o caminho fino pode passar
+
+
+def rota_fina(camadas_de, a, b, margem=MARGEM_ROTA):
+    """Caminho mais curto no grafo fino (todas as camadas, 8 vizinhos, desnível na RAMPA; nadar custa NADO) de a
+    até b (mundo), dentro da caixa das pontas mais `margem`. camadas_de(lin, col) -> Z, N do quadrante. Devolve
+    os pontos [x1, y1, ...] a cada ~6 jd, ou None."""
+    import heapq
+    xa, xb = max(a[0], b[0]) + margem, min(a[0], b[0]) - margem
+    ya, yb = max(a[1], b[1]) + margem, min(a[1], b[1]) - margem
+    gi0, gj0 = int((TOPO - xa) / F), int((TOPO - ya) / F)
+    gi1, gj1 = int((TOPO - xb) / F) + 1, int((TOPO - yb) / F) + 1
+    H, Wd = gi1 - gi0, gj1 - gj0
+    partes = {}
+    for lin in range(gi0 // NQ, gi1 // NQ + 1):
+        for col in range(gj0 // NQ, gj1 // NQ + 1):
+            r = camadas_de(lin, col)
+            if r is not None:
+                partes[(lin, col)] = r
+    if not partes:
+        return None
+    K = max(Z.shape[0] for Z, _ in partes.values())
+    ZZ = np.full((K, H, Wd), np.nan, np.float32)
+    NN = np.zeros((K, H, Wd), bool)
+    for (lin, col), (Z, N) in partes.items():
+        a0, b0 = lin * NQ - gi0, col * NQ - gj0
+        sa, sb = slice(max(0, a0), min(H, a0 + NQ)), slice(max(0, b0), min(Wd, b0 + NQ))
+        ta, tb = slice(sa.start - a0, sa.stop - a0), slice(sb.start - b0, sb.stop - b0)
+        ZZ[:Z.shape[0], sa, sb] = Z[:, ta, tb]
+        NN[:Z.shape[0], sa, sb] = N[:, ta, tb]
+
+    def perto(x, y):
+        i, j = int((TOPO - x) / F) - gi0, int((TOPO - y) / F) - gj0
+        for raio in range(6):
+            for di in range(-raio, raio + 1):
+                for dj in range(-raio, raio + 1):
+                    ii, jj = i + di, j + dj
+                    if 0 <= ii < H and 0 <= jj < Wd:
+                        ks = [k for k in range(K) if ZZ[k, ii, jj] == ZZ[k, ii, jj]]
+                        if ks:
+                            return ks, ii, jj
+        return [], i, j
+    ks, si, sj = perto(*a)
+    kt, ti, tj = perto(*b)
+    if not ks or not kt:
+        return None
+    Zl = ZZ.tolist()
+    Nl = NN.tolist()
+    dist, prev, fila = {}, {}, []
+    for k in ks:
+        dist[(k, si, sj)] = 0.0
+        heapq.heappush(fila, (0.0, (k, si, sj)))
+    viz = [(di, dj, F * math.hypot(di, dj)) for di in (-1, 0, 1) for dj in (-1, 0, 1) if di or dj]
+    fim = None
+    while fila:
+        d, no = heapq.heappop(fila)
+        if d > dist.get(no, 1e18):
+            continue
+        k, i, j = no
+        if i == ti and j == tj:
+            fim = no
+            break
+        z = Zl[k][i][j]
+        for di, dj, dd in viz:
+            ii, jj = i + di, j + dj
+            if not (0 <= ii < H and 0 <= jj < Wd):
+                continue
+            lim = RAMPA * dd
+            for k2 in range(K):
+                z2 = Zl[k2][ii][jj]
+                if z2 != z2 or abs(z2 - z) > lim:
+                    continue
+                nd = d + dd * (2.5 if Nl[k2][ii][jj] else 1.0)
+                if nd < dist.get((k2, ii, jj), 1e18):
+                    dist[(k2, ii, jj)] = nd
+                    prev[(k2, ii, jj)] = no
+                    heapq.heappush(fila, (nd, (k2, ii, jj)))
+    if fim is None:
+        return None
+    cam = [fim]
+    while cam[-1] in prev:
+        cam.append(prev[cam[-1]])
+    cam.reverse()
+    pts = []
+    for n, (k, i, j) in enumerate(cam):
+        if n % 3 == 0 or n == len(cam) - 1:
+            pts += [round(TOPO - (i + gi0 + 0.5) * F, 1), round(TOPO - (j + gj0 + 0.5) * F, 1)]
+    return pts
+
+
 def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
     """Grades do continente pela v2: ligações, água, passável; e o que entrou (estatística)."""
     import modelos
@@ -724,6 +949,7 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
                 for k in range(64 * 64) if cortes[k + 1] > cortes[k]}
     vazio = (np.zeros(0, np.int32), np.zeros(0, np.int32), np.zeros(0, np.float32))
     bordas, ccel, tam, nado, obj, zsoma, arestas, diagonais = {}, [], [], [], [], [], [], []
+    cxs, cys = [], []
     base = 0
     for (lin, col), fdid in sorted(q.items()):
         adt = c.le(fdid)
@@ -740,6 +966,8 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
         nado.append(r["nado"])
         obj.append(r["obj"])
         zsoma.append(r["zsoma"])
+        cxs.append(r["cx"])
+        cys.append(r["cy"])
         arestas.append(r["arestas"] + base)
         diagonais.append(r["diagonais"] + base)
         base += len(r["cel"])
@@ -750,19 +978,40 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
                 e_reto, e_diag = arestas_borda(bd[za], bd[ca], bv[zb], bv[cb], False)
                 arestas.append(e_reto)
                 diagonais.append(e_diag)
-    ccel, tam, nado, obj, zsoma = (np.concatenate(x) for x in (ccel, tam, nado, obj, zsoma))
+    ccel, tam, nado, obj, zsoma, cxs, cys = (np.concatenate(x) for x in (ccel, tam, nado, obj, zsoma, cxs, cys))
     arestas = np.concatenate(arestas).astype(np.int64)
     diagonais = np.concatenate(diagonais).astype(np.int64)
     escolhido = escolhe(ccel, tam, nado, arestas, LADO * LADO, diagonais=diagonais)
     L, W, P = ligacoes_v2(ccel, tam, nado, arestas, escolhido, diagonais)
+    pas = passagens_finas(ccel, tam, cxs, cys, arestas, diagonais, escolhido)
+    est["passagens"] = len(pas)
+    # as rotas nomeadas, pelo chão fino
+    vazio_ = (np.zeros(0, np.int32), np.zeros(0, np.int32), np.zeros(0, np.float32))
+
+    def camadas_de(lin, col):
+        if (lin, col) not in q:
+            return None
+        adt = c.le(q[(lin, col)])
+        if not adt:
+            return None
+        zt, bur, ag, rm = fino(*le_adt(adt, ruins))
+        Z, N, _ = camadas(zt, bur, ag, rm, *hits.get(lin * 64 + col, vazio_))
+        return Z, N
+    for cid_r, nome, x1, y1, x2, y2 in ROTAS:
+        if cid_r == cid:
+            pts = rota_fina(camadas_de, (x1, y1), (x2, y2))
+            log("rota fina %s: %s" % (nome, "%d pontos" % (len(pts) // 2) if pts else "sem caminho"))
+            if pts:
+                pas.append(pts)
+                est["rotas"] = est.get("rotas", 0) + 1
     tem = escolhido >= 0
     est.update(componentes=len(ccel), celulas_com_modelo=int((obj[escolhido[tem]] > 0).sum()))
     if depura is not None:                               # grades para olhar (scripts de depuração)
         k = np.where(tem, escolhido, 0)
         depura.update(modelo=(obj[k] > 0) & tem, altura=np.where(tem, zsoma[k] / np.maximum(tam[k], 1), np.nan),
                       ncomp=np.bincount(ccel, minlength=LADO * LADO), ccel=ccel, tam=tam, nado=nado, obj=obj,
-                      zsoma=zsoma, arestas=arestas, diagonais=diagonais, escolhido=escolhido)
-    return L, W, P, q, est
+                      zsoma=zsoma, cx=cxs, cy=cys, arestas=arestas, diagonais=diagonais, escolhido=escolhido)
+    return L, W, P, q, est, pas
 
 
 def rle(bs):
@@ -820,14 +1069,27 @@ def gera(c, cid, wdt, escrever=True, v1=False, modelos_tambem=True):
     if v1:
         H, P, W, q = continente(c, cid, wdt)
         L = ligacoes(H, P, W)
-        est, modo = {}, "v1, só terreno"
+        est, modo, pas = {}, "v1, só terreno", []
     else:
-        L, W, P, q, est = continente_v2(c, cid, wdt, modelos_tambem)
+        L, W, P, q, est, pas = continente_v2(c, cid, wdt, modelos_tambem)
         modo = "v2, terreno + modelos" if modelos_tambem else "v2, só terreno"
     cab = "-- AUTO-GERADO (gen_terrain.py, %s) do terreno do cliente %s (%s)." % (
         modo, c.versao, getattr(c, "origem", "CASC local"))
     total = escreve(cid, L, W, q, cab, OUT % cid if escrever else None)
-    return P, W, L, total, est
+    return P, W, L, total, est, pas
+
+
+def escreve_passagens(pas, versao, saida):
+    """TerrainPassages.lua: as passagens finas dos dois continentes ({c, g = 1, pts}), no formato das gravadas."""
+    linhas = ["-- AUTO-GERADO (gen_terrain.py) do terreno do cliente %s: chão fino que a grade de um nó por célula" % versao,
+              "-- perde (túnel, ponte sobre cânion, rio sob ponte, escada, plataforma). Passagens como as gravadas, g = 1.",
+              "local ADDON, ns = ...", "if not ns then return end", "ns.passagesTerrain = {"]
+    for cid in sorted(pas):
+        for pts in pas[cid]:
+            linhas.append("\t{c=%d,g=1,pts={%s}}," % (cid, ",".join("%.1f" % v for v in pts)))
+    linhas.append("}")
+    with open(saida, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write("\n".join(linhas) + "\n")
 
 
 def celula(x, y):
@@ -835,12 +1097,12 @@ def celula(x, y):
 
 
 def demo(dados, v2=True, v1=False):
-    P1, W1, L1, _, _ = dados[1]
+    P1, W1, L1, _, _, _ = dados[1]
     r, c = celula(1677.6, -4315.7)                       # mestre de voo de Orgrimmar
     assert P1[r, c], "o chão do mestre de voo de Orgrimmar devia ser passável"
     r, c = celula(-1000.0, -4000.0)                      # mar a leste do cais de Ratchet
     assert W1[r, c], "o mar ao lado de Ratchet devia ser água"
-    for P_, W_, L_, _, _ in dados.values():
+    for P_, W_, L_, _, _, _ in dados.values():
         # nenhuma ligação para fora da grade (o np.roll daria a volta pelo outro lado)
         bordas = (L_[0, :] & 0b10000011).any() or (L_[-1, :] & 0b00111000).any()             or (L_[:, -1] & 0b00001110).any() or (L_[:, 0] & 0b11100000).any()
         assert not bordas, "ligação para fora da grade"
@@ -917,4 +1179,7 @@ if __name__ == "__main__":
     for cid in (0, 1):
         dados[cid] = gera(c, cid, w[cid], not a.demo, v1=a.v1, modelos_tambem=not a.sem_modelos)
         print("continente %d: %d KB de dados %s" % (cid, dados[cid][3] // 1024, dados[cid][4] or ""))
+    if not a.demo and not a.v1:
+        escreve_passagens({cid: d[5] for cid, d in dados.items()}, c.versao,
+                          os.path.join(os.path.dirname(OUT), "TerrainPassages.lua"))
     demo(dados, v2=not a.v1 and not a.sem_modelos, v1=a.v1)

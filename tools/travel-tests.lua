@@ -837,6 +837,48 @@ check(vp and comprimento(vp) > 2 * vreta and comprimento(vp) - vreta > 2000, "a 
 	.. (vp and math.floor(comprimento(vp)) or "nil") .. " jd)")
 check(vp and not vp.passagem and not vp.solto, "volta longa só da grade: existe, sem passagem e sem a segunda busca")
 end
+do -- #106: lugares com nome, como em jogo (os dois continentes, as passagens geradas do chão fino e as gravadas)
+local G2 = load("Terrain0.lua", {})
+load("Terrain1.lua", G2)
+local Dj = G2.terrain
+Dj.passages = {}
+for _, p in ipairs(load("TerrainPassages.lua", {}).passagesTerrain or {}) do Dj.passages[#Dj.passages + 1] = p end
+for _, p in ipairs(load("PassagesData.lua", {}).passagesData or {}) do Dj.passages[#Dj.passages + 1] = p end
+local function passaPor(p, x0, x1, y0, y1)
+	for i = 2, #(p or {}) do                              -- cada trecho, a cada 2 jd
+		local a, b = p[i - 1], p[i]
+		local L = math.sqrt((b.x - a.x) ^ 2 + (b.y - a.y) ^ 2)
+		for t = 0, L, 2 do
+			local x, y = a.x + (b.x - a.x) * t / math.max(L, 1e-9), a.y + (b.y - a.y) * t / math.max(L, 1e-9)
+			if x >= x0 and x <= x1 and y >= y0 and y <= y1 then return true end
+		end
+	end
+	return false
+end
+-- nome, de, para, razão máxima sobre a reta, busca normal exigida, caixa {x0, x1, y0, y1} por onde tem de passar
+local lugares = {
+	{ "Ironforge: mestre de voo -> fora do portão (cidade por dentro)", { 0, -4821.8, -1155.4 }, { 0, -5160, -870 }, 2.0, true },
+	{ "Thorium Point: mestre da Aliança -> da Horda (plataformas)", { 0, -6552.6, -1168.3 }, { 0, -6554.9, -1100.1 }, 3.0 },
+	{ "Thandol Span: Wetlands -> Arathi pelo tabuleiro", { 0, -2490, -2470 }, { 0, -2252, -2465 }, 1.4, true,
+		{ -2440, -2300, -2510, -2440 } },
+	{ "Thousand Needles: ponte de corda sobre o cânion", { 1, -4900, -1878 }, { 1, -5010.3, -1892 }, 1.6 },
+	{ "Timbermaw Hold: túnel de Felwood a Moonglade", { 1, 6815, -2092 }, { 1, 7380, -2195 }, 1.6, true,
+		{ 7000, 7250, -2260, -2060 } },
+	{ "Revantusk Village -> Aerie Peak pela rampa", { 0, -635.3, -4720.5 }, { 0, 283.7, -2002.8 }, 1.3, true,
+		{ -235, -150, -4460, -4330 } },
+}
+for _, l in ipairs(lugares) do
+	local a = { c = l[2][1], x = l[2][2], y = l[2][3] }
+	local b = { c = l[3][1], x = l[3][2], y = l[3][3] }
+	local p = TRN.Path(Dj, a, b, 150000)
+	local reta = math.sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2)
+	local len = p and comprimento(p) or 0
+	local caixa = l[6]
+	check(p and len <= l[4] * reta and (not l[5] or not p.solto) and (not caixa or passaPor(p, caixa[1], caixa[2], caixa[3], caixa[4])),
+		("%s: %s jd (reta %d, até %.1fx)%s"):format(l[1], p and math.floor(len) or "nil", math.floor(reta), l[4],
+			p and p.solto and " [segunda busca]" or ""))
+end
+end
 -- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
 local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
 local trilha = {}                                  -- andada: um ponto por célula (como a gravação, a cada 3 jd)

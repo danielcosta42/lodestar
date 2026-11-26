@@ -131,22 +131,29 @@ local LONGE, VERTICES = 40, 10           -- até onde o fio tenta alcançar: cé
 
 -- Passagens (issue #99): trechos que o jogador andou e a grade não tem — a rampa do litoral da Revantusk, ponte,
 -- porta, escada. Cada uma liga, célula a célula, o caminho andado; a busca anda por elas como por terreno.
--- passagens = { { c = continente, pts = { x1, y1, x2, y2, ... } } } (mundo). Cache por tabela de passagens.
+-- passagens = { { c = continente, pts = { x1, y1, x2, y2, ... }, g = gerada? } } (mundo). Cache por tabela de passagens.
+-- As geradas (TerrainPassages.lua, g = true: chão fino que a grade de um nó por célula perde — #106) são chão como o
+-- terreno; só as gravadas marcam o caminho (`passagem`) para o limite de volta. Devolve as ligações e o conjunto das
+-- gravadas (chave a * W * W + b).
 local linksCache = setmetatable({}, { __mode = "k" })
 local NADA = {}
+local WW = W * W
 function TR.Links(passagens, cont)
-	if not passagens then return NADA end
+	if not passagens then return NADA, NADA end
 	local porCont = linksCache[passagens]
 	if not porCont then porCont = {}; linksCache[passagens] = porCont end
-	if porCont[cont] then return porCont[cont] end
-	local links = {}
+	if porCont[cont] then return porCont[cont][1], porCont[cont][2] end
+	local links, gravadas = {}, {}
+	local gerada
 	local function liga(a, b)
 		if a == b then return end
+		if not gerada then gravadas[a * WW + b] = true end
 		links[a] = links[a] or {}
 		for _, x in ipairs(links[a]) do if x == b then return end end
 		table.insert(links[a], b)
 	end
 	for _, p in ipairs(passagens) do
+		gerada = p.g
 		if p.c == cont and p.pts and #p.pts >= 4 then
 			local ant
 			for i = 1, #p.pts - 3, 2 do
@@ -168,8 +175,8 @@ function TR.Links(passagens, cont)
 			end
 		end
 	end
-	porCont[cont] = links
-	return links
+	porCont[cont] = { links, gravadas }
+	return links, gravadas
 end
 
 -- Ilha: região fechada pequena da grade — vila, morro de prédio, cais —, que no jogo se liga
@@ -281,7 +288,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	if not (de and para and de.c == para.c and dados) then return nil end
 	local grid = dados[de.c]
 	if not grid then return nil end
-	local links = TR.Links(dados.passages, de.c)
+	local links, gravadas = TR.Links(dados.passages, de.c)
 	local sr0, sc0 = TR.Cell(de.x, de.y)
 	local gr0, gc0 = TR.Cell(para.x, para.y)
 	local sr, sc = ajusta(grid, sr0, sc0)
@@ -396,9 +403,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 		local n = #cel + 1
 		cel[n] = inv[i]
 		molh[n] = molh[n - 1] + (select(2, info(grid, floor(inv[i] / W), inv[i] % W)) and 1 or 0)
-		if n > 1 and not usouPassagem then
-			for _, x in ipairs(links[cel[n - 1]] or NADA) do if x == cel[n] then usouPassagem = true; break end end
-		end
+		if n > 1 and not usouPassagem and gravadas[cel[n - 1] * WW + cel[n]] then usouPassagem = true end
 	end
 	-- a segunda busca: quanto da barreira ela cruzou (seguidos e no total); passou do curto, não é caminho
 	if solto then

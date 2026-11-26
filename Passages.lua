@@ -61,7 +61,8 @@ local rec                    -- { c, z, pts } enquanto grava
 -- a busca do caminho lê ns.terrain.passages; tabela nova a cada mudança (o cache de ligações é por tabela)
 function P:Apply()
 	if not ns.terrain then return end
-	ns.terrain.passages = P.Merge(ns.passagesData, ns.db and ns.db.passages)
+	-- as geradas do chão fino (TerrainPassages.lua, #106), as do addon e as gravadas aqui
+	ns.terrain.passages = P.Merge(P.Merge(ns.passagesTerrain, ns.passagesData), ns.db and ns.db.passages)
 	-- os caminhos da rota (e a busca em curso, com as ligações velhas) refazem com a passagem nova
 	if ns.Travel and ns.Travel.ResetPaths then ns.Travel:ResetPaths() end
 end

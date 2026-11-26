@@ -85,23 +85,36 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
 - **Chão fino:** cada célula vira 8 × 8 amostras de 2,08 jd com até 4 superfícies (terreno, água funda, modelos;
   duas a menos de 2 jd: a de cima). Amostras vizinhas ligam se o desnível cabe na RAMPA; o terreno só conta onde a
   encosta cabe na rampa em qualquer direção (de lado num barranco também se escorrega).
+- **Passagens do chão fino** (`TerrainPassages.lua`, gerado junto com a grade; carregado antes de `Passages.lua`, que
+  junta geradas + do addon + gravadas): o que o chão fino liga e a grade de um nó por célula perde vira passagem no
+  formato das gravadas (`{c, g = 1, pts}`, pontos a menos de 2 células um do outro). Duas fontes: (1) grupos de
+  componentes não escolhidos que encostam em escolhidos longe (ou sem ligação) na grade — a ponte sobre o cânion de
+  uma célula, o rio sob a ponte, a escada para a plataforma —, pelos centroides dos componentes; (2) rotas nomeadas
+  (`ROTAS` no gerador), pelo caminho mais curto no chão fino — Ironforge do mestre de voo ao portão (os andares da
+  cidade se alternam célula a célula), Timbermaw Hold. As geradas são chão como o terreno: não marcam `passagem` e o
+  limite de volta (2× e 2000 jd) segue só para as gravadas (Terrain.lua, `TR.Links` devolve também as gravadas).
 - **Cidade debaixo do morro:** onde há piso de modelo mais de 50 jd abaixo do terreno, o terreno sai e fica o piso de
-  dentro. Sem isso o alto do morro sobre Ironforge (encostas finas de 41-48°, sem buraco no terreno) ficava com a
-  célula e o mestre de voo saía por cima das montanhas via Loch Modan (5,2 km até o portão); com isso, sai pelo portão.
+  dentro, se o terreno ali for encosta (> ~31°). Sem isso o alto do morro sobre Ironforge (encostas finas de 41-48°,
+  sem buraco no terreno) ficava com a célula e o mestre de voo saía por cima das montanhas via Loch Modan (5,2 km até
+  o portão); com isso, sai pelo portão. O platô plano sobre caverna funda fica (Thorium Point, com uma caverna a ~120 jd
+  abaixo dos mestres de voo).
 - **Um nó por célula** (o formato não muda): dentro da célula, as superfícies ligadas formam componentes e fica um —
   o maior em terra firme; o "essencial" (sem ele os vizinhos que liga se separam por perto: a rampa estreita, a
   ponte); acertado pela grade projetada (o que junta mais grupos de vizinhos) e por corredores (componentes não
   escolhidos que ligam escolhidos longe na grade: a ponte de duas células de largura). Diagonal: se os escolhidos se
   alcançam pela quina (tocando-se ou por qualquer componente de uma célula reta do meio) e uma das retas passa.
-- **Resultado** (552 pares de mestres de voo a até 3,5 km, sem passagens gravadas): sem caminho 247 → 21; segunda
-  busca (solto) 71 → 55; normal 234 → 476; tempo do A* 46 s → 26 s. Pontes (163, do tabuleiro de cada modelo):
-  até 1,25× a reta 95 → 153, nadando 63 → 20. A rampa da Revantusk e a saída para Hillsbrad entram na grade: Revantusk
-  ↔ Aerie Peak por busca normal, pela rampa; Aerie Peak → Tarren Mill ~1,6 km. Arquivos: 1,06 → 1,20 MB e 1,32 →
-  1,61 MB (escape decimal mais curto na string Lua; os bytes são os mesmos).
+- **Resultado** (552 pares de mestres de voo a até 3,5 km, com as passagens geradas, sem as gravadas): sem caminho
+  247 (v1) → 11; segunda busca (solto) 71 → 2; normal 234 → 539; tempo do A* 46 s → 20 s. Pontes (163, do tabuleiro
+  de cada modelo): até 1,25× a reta 95 → 153, nadando 63 → 20. Lugares com teste: Revantusk ↔ Aerie Peak pela rampa,
+  Ironforge do mestre de voo ao portão (busca normal), Thandol Span, a ponte de corda de Thousand Needles, Timbermaw
+  Hold (Felwood → Moonglade, busca normal), Thorium Point Aliança ↔ Horda. Arquivos: 1,06 → 1,20 MB e 1,32 → 1,61 MB
+  (escape decimal mais curto na string Lua; os bytes são os mesmos) + 67 KB de passagens geradas (362, ~4 mil pontos).
 - **Limites:** não há trava de volta grande para caminho só da grade (a regra de 2× e 2000 jd vale para passagem);
-  um erro de escolha numa célula vira volta longa sem aviso. Pares de mestres de voo com caminho normal na v1 que
-  ficaram mais de 1,4× mais longos: Thorium Point A↔H (149 → ~1400 jd), Auberdine → Bloodvenom Post (4,3×), Zoram'gar
-  → Bloodvenom Post (2,3×), Shadowprey ↔ Feathermoon (1,65×) — a investigar. Sem andares — onde dois caminhos se cruzam numa célula só (ponte sobre cânion de uma célula, rio sob
+  um erro de escolha numa célula vira volta longa sem aviso. Pares piores que 1,2× o melhor de (v1, v2 sem passagens geradas), a investigar: Auberdine → Bloodvenom Post
+  (4,3×) e Zoram'gar → Bloodvenom Post (2,3×), Shadowprey ↔ Feathermoon (1,65×), Thorium Point ↔ Thelsamar (1,25-1,37×),
+  The Sepulcher → Undercity (1,34×) e seis pares a 1,22-1,23×. Undercity por dentro ↔ Brill não entra: só se chega
+  pelos elevadores (transporte, não modelo do ADT). Minas e cavernas comuns (Fargodeep, Wailing Caverns, Deadmines) e
+  os canais de Stormwind / o Cleft of Shadow de Orgrimmar ainda sem teste com nome. Sem andares — onde dois caminhos se cruzam numa célula só (ponte sobre cânion de uma célula, rio sob
   ponte estreita), um perde; caverna de vários andares sob morro andável (Timbermaw Hold → Moonglade) fica para a
   segunda busca; cidades por dentro (Ironforge, Undercity) e elevadores/transportes não entram (o elevador não é
   modelo do ADT); líquido de WMO (canais de Stormwind) não é água; parede não bloqueia (só se acrescenta chão).
