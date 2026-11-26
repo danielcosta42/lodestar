@@ -66,14 +66,15 @@ local function legRow(i)
 	local C = UI.COL
 	local r = CreateFrame("Frame", nil, frame.timeline)
 	r:SetHeight(42)
-	-- bolinha redonda (o 9-slice "pill" tem margem 15: num quadrado de 26 px não desenha)
+	-- bolinha redonda
 	r.dot = UI.Media(r, "dot", "ARTWORK"); r.dot:SetVertexColor(unpackc(C.chip))
 	r.dot:SetSize(26, 26); r.dot:SetPoint("TOPLEFT", 0, -2)
 	r.icon = UI.Glyph(r, "seta-rota", "OVERLAY", 64); r.icon:SetSize(13, 13); r.icon:SetPoint("CENTER", r.dot, "CENTER")
 	r.tex = r:CreateTexture(nil, "OVERLAY"); r.tex:SetSize(16, 16); r.tex:SetPoint("CENTER", r.dot, "CENTER")
 	r.line = UI.Rect(r, "BACKGROUND", C.line); r.line:SetWidth(2)
-	r.line:SetPoint("TOP", r.dot, "BOTTOM", 0, 0); r.line:SetPoint("BOTTOM", r, "BOTTOM", 0, -2)
-	-- só pontos de topo: "RIGHT" fixa também o meio vertical e briga com o topo (linha com altura nula, some)
+	-- o fio desce do meio da bolinha (x = 13): os dois pontos no mesmo x, senão um deles vence e o fio corta o texto
+	r.line:SetPoint("TOP", r.dot, "BOTTOM", 0, 0); r.line:SetPoint("BOTTOM", r, "BOTTOMLEFT", 13, -2)
+	-- texto ancorado só pelo topo (TOPLEFT + TOPRIGHT): a largura vem dos dois, a altura da fonte
 	r.text = UI.Text(r, 13, C.active, { bold = true, wrap = false })
 	r.text:SetPoint("TOPLEFT", r, "TOPLEFT", 38, -3); r.text:SetPoint("TOPRIGHT", r, "TOPRIGHT", -64, -3)
 	r.sub = UI.Text(r, 11.5, C.dim, { num = true, wrap = false })
