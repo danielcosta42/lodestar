@@ -421,6 +421,9 @@ PAGE.build = function(page, H)
 	page.none:SetPoint("RIGHT", page.card, "RIGHT", -18, 0); page.none:SetText(L.COL_NONE)
 end
 
+local KIND_LABEL = { toy = ns.L.COL_KIND_toy, pet = ns.L.COL_KIND_pet, mount = ns.L.COL_KIND_mount,
+	item = ns.L.COL_KIND_item }
+
 local function rowsFor(kind)
 	local L, Cc = ns.L, UI.COL
 	local out = {}
@@ -432,8 +435,7 @@ local function rowsFor(kind)
 			out[#out + 1] = {
 				glyph = done and "check" or (q.kind == "pet" and "falar" or q.kind == "mount" and "seta-rota" or "estrela"),
 				tone = done and "ok" or "gold", title = q.name, titleColor = done and Cc.faded or Cc.active,
-				sub = L.COL_QUEST_SUB:format(L["COL_KIND_" .. (q.kind or "item")] or q.kind or "", q.lvl or 1,
-					q.where or ""),
+				sub = L.COL_QUEST_SUB:format(KIND_LABEL[q.kind] or L.COL_KIND_item, q.lvl or 1, q.where or ""),
 				value = done and L.V3_COLLECTED or nil, valueColor = Cc.done,
 				action = not done and L.COL_OPEN or nil, onAction = function() C:OpenGuide(key) end,
 			}
