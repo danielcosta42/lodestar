@@ -129,6 +129,42 @@ end
 
 local LONGE, VERTICES = 40, 10           -- até onde o fio tenta alcançar: células (~670 jd), vértices
 
+-- Passagens (issue #99): trechos que o jogador andou e a grade não tem — a rampa do litoral da Revantusk, ponte,
+-- porta, escada. Cada uma liga, célula a célula, o caminho andado; a busca anda por elas como por terreno.
+-- passagens = { { c = continente, pts = { x1, y1, x2, y2, ... } } } (mundo). Cache por tabela de passagens.
+local linksCache = setmetatable({}, { __mode = "k" })
+local NADA = {}
+function TR.Links(passagens, cont)
+	if not passagens then return NADA end
+	local porCont = linksCache[passagens]
+	if not porCont then porCont = {}; linksCache[passagens] = porCont end
+	if porCont[cont] then return porCont[cont] end
+	local links = {}
+	local function liga(a, b)
+		if a == b then return end
+		links[a] = links[a] or {}
+		for _, x in ipairs(links[a]) do if x == b then return end end
+		table.insert(links[a], b)
+	end
+	for _, p in ipairs(passagens) do
+		if p.c == cont and p.pts and #p.pts >= 4 then
+			local ant
+			for i = 1, #p.pts - 3, 2 do
+				local x0, y0, x1, y1 = p.pts[i], p.pts[i + 1], p.pts[i + 2], p.pts[i + 3]
+				local passos = math.max(1, math.ceil(math.sqrt((x1 - x0) ^ 2 + (y1 - y0) ^ 2) / (CEL / 2)))
+				for k = 0, passos do
+					local r, c = TR.Cell(x0 + (x1 - x0) * k / passos, y0 + (y1 - y0) * k / passos)
+					local cel = r * W + c
+					if ant and ant ~= cel then liga(ant, cel); liga(cel, ant) end
+					ant = cel
+				end
+			end
+		end
+	end
+	porCont[cont] = links
+	return links
+end
+
 -- Ilha: região fechada pequena da grade — vila, morro de prédio, cais —, que no jogo se liga
 -- ao resto por rampa, ponte ou porta, construções que o terreno não tem. Quase metade dos
 -- mestres de voo cai numa. O caminho sai dela (ou chega nela) saltando em reta o pedaço que
@@ -144,7 +180,8 @@ local TRAVADO = 30
 local TRAVADO_SEGUIDOS, TRAVADO_TOTAL = 5, 10
 
 -- as células ligadas a (r, c) e se a região acaba antes de `ILHA` (é ilha)
-local function regiao(grid, r, c)
+local function regiao(grid, r, c, links)
+	links = links or NADA
 	local k0 = r * W + c
 	local set, q, i = { [k0] = true }, { k0 }, 1
 	while q[i] do
@@ -160,6 +197,9 @@ local function regiao(grid, r, c)
 				set[nk] = true
 				q[#q + 1] = nk
 			end
+		end
+		for _, nk in ipairs(links[k] or NADA) do
+			if not set[nk] then set[nk] = true; q[#q + 1] = nk end
 		end
 	end
 	return set, true
@@ -185,11 +225,11 @@ end
 
 -- saindo da ilha de (r, c): a célula livre mais perto que não seja outra ilha (vilas em
 -- platôs vizinhos), ou a da região do destino `goal`
-local function sai(grid, r, c, set, goal)
+local function sai(grid, r, c, set, goal, links)
 	for _ = 1, 6 do
 		local er, ec = saida(grid, r, c, set)
 		if not er then return nil end
-		local s2, ilha = regiao(grid, er, ec)
+		local s2, ilha = regiao(grid, er, ec, links)
 		if not ilha or s2[goal] then return er, ec end
 		for k in pairs(s2) do set[k] = true end
 	end
@@ -218,6 +258,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	if not (de and para and de.c == para.c and dados) then return nil end
 	local grid = dados[de.c]
 	if not grid then return nil end
+	local links = TR.Links(dados.passages, de.c)
 	local sr0, sc0 = TR.Cell(de.x, de.y)
 	local gr0, gc0 = TR.Cell(para.x, para.y)
 	local sr, sc = ajusta(grid, sr0, sc0)
@@ -229,13 +270,13 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	-- mais chegou perto, como na ilha
 	local ilhaFim = solto
 	if not solto then
-		local doIni, ilhaIni = regiao(grid, sr, sc)
+		local doIni, ilhaIni = regiao(grid, sr, sc, links)
 		if not doIni[gr * W + gc] then
 			if ilhaIni then
-				sr, sc = sai(grid, sr, sc, doIni, gr * W + gc)
+				sr, sc = sai(grid, sr, sc, doIni, gr * W + gc, links)
 				if not sr then return nil end
 			end
-			ilhaFim = select(2, regiao(grid, gr, gc))
+			ilhaFim = select(2, regiao(grid, gr, gc, links))
 		end
 	end
 	local start, goal = sr * W + sc, gr * W + gc
@@ -291,6 +332,17 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 					end
 				end
 			end
+			-- passagem gravada: anda por ela como por terreno
+			for _, nk in ipairs(links[k] or NADA) do
+				if not fechado[nk] then
+					local nr, nc = floor(nk / W), nk % W
+					local ng = g[k] + CEL * math.sqrt((nr - r) ^ 2 + (nc - c) ^ 2)
+					if not g[nk] or ng < g[nk] then
+						g[nk], came[nk] = ng, k
+						fila.poe(ng + h(nr, nc), nk)
+					end
+				end
+			end
 		end
 	end
 	local fim = goal
@@ -316,7 +368,9 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 			local a, b = cel[n - 1], cel[n]
 			local ar, ac, br, bc = floor(a / W), a % W, floor(b / W), b % W
 			local d = PASSO[(br - ar + 1) * 3 + (bc - ac) + 2]
-			if d and info(grid, ar, ac) % 2 ^ d >= 2 ^ (d - 1) then
+			local pela = false
+			for _, x in ipairs(links[a] or NADA) do if x == b then pela = true; break end end
+			if pela or (d and info(grid, ar, ac) % 2 ^ d >= 2 ^ (d - 1)) then
 				seguidos = 0
 			else
 				seguidos, total = seguidos + 1, total + 1

@@ -742,3 +742,13 @@ L.COL_PET_NEAR = "Um pet raro nasce aqui"
 L.COL_TAME = "Dome %s (%s, nível %s)"
 L.SET_PARTYSYNC = "Grupo sincronizado"
 L.SET_PARTYSYNC_D = "Com membros do grupo que usam o Lodestar: a contagem deles sob o objetivo compartilhado, quem não tem a quest, e Compartilhar. Só ids de quest e contagens, em mensagem escondida ao seu grupo."
+
+-- Passagens (issue #99)
+L.PASS_START = "Gravando passagem: ande pela rampa, ponte ou porta que a rota não acha e digite /ls passagem de novo."
+L.PASS_SAVED = "Passagem gravada (%d pontos, %.0f jd): as rotas a pé já usam. Ela vai no /ls report para entrar no addon para todo mundo."
+L.PASS_SHORT = "Curta demais para ser passagem: nada gravado."
+L.PASS_NOPOS = "Não dá para ler a sua posição aqui."
+L.PASS_CLEARED = "Passagens gravadas apagadas."
+L.PASS_LIST = "Passagens: %d gravadas aqui, %d no addon."
+L.SET_PASSAGE = "Gravar passagem"
+L.SET_PASSAGE_D = "Quando a rota a pé não acha uma rampa, ponte ou porta, aperte aqui, ande por ela e aperte de novo (ou digite /ls passagem). As rotas passam a usar, e ela vai no relatório."

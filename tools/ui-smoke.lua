@@ -390,6 +390,25 @@ step("PetsEmptyJournal", function()
 	assert(loaded == "Blizzard_Collections", "diário vazio: não pediu a carga das Coleções")
 	_G.C_PetJournal, _G.GetNumCompanions, _G.GetCompanionInfo, _G.C_AddOns = savedPJ, savedN, savedI, savedAddOns
 end)
+-- gravar passagem (issue #99): anda, grava, a busca recebe, o relatório leva
+step("Passages", function()
+	local T, pw = ns.Travel, ns.Travel.PlayerWorld
+	local pos = { c = 0, x = -635, y = -4720 }
+	T.PlayerWorld = function() return { c = pos.c, x = pos.x, y = pos.y } end
+	ns.db.passages = {}
+	ns.Passages:Command("")
+	assert(ns.Passages:Recording(), "não começou a gravar")
+	local upd = ns.eventFrame and ns.eventFrame:GetScript("OnUpdate")
+	for _ = 1, 10 do pos.x = pos.x + 5; if upd then upd(ns.eventFrame, 0.25) end end
+	ns.Passages:Command("")
+	T.PlayerWorld = pw
+	assert(#ns.db.passages == 1, "passagem não foi gravada")
+	assert(ns.terrain.passages and #ns.terrain.passages >= 1, "a busca não recebeu a passagem")
+	local txt = ns.Report.ReportText(ns.Report.Context(), "x")
+	assert(txt:find("Recorded passages"), "o relatório não leva as passagens")
+	ns.Passages:Command("limpar")
+	assert(#ns.db.passages == 0, "limpar não apagou")
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

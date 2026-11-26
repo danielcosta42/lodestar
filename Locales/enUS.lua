@@ -758,3 +758,13 @@ L.COL_PET_NEAR = "A rare pet spawns here"
 L.COL_TAME = "Tame %s (%s, level %s)"
 L.SET_PARTYSYNC = "Party sync"
 L.SET_PARTYSYNC_D = "With party members who run Lodestar: their count under shared goals, who lacks a quest, and Share. Only quest IDs and counts, in hidden addon messages to your party."
+
+-- Passagens (issue #99)
+L.PASS_START = "Recording a passage: walk the ramp, bridge or door the route misses, then type /ls passagem again."
+L.PASS_SAVED = "Passage saved (%d points, %.0f yd): walking routes use it now. It goes in /ls report so it can ship to everyone."
+L.PASS_SHORT = "Too short to be a passage: nothing saved."
+L.PASS_NOPOS = "Can't read your position here."
+L.PASS_CLEARED = "Recorded passages cleared."
+L.PASS_LIST = "Passages: %d recorded here, %d in the addon."
+L.SET_PASSAGE = "Record a passage"
+L.SET_PASSAGE_D = "When the walking route can't find a ramp, bridge or door, press here, walk it, and press again (or type /ls passagem). Routes use it from then on, and it goes in the report."

@@ -39,6 +39,15 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
   - O caminho dela vem marcado (`solto`). Quem chama não o refaz a cada desvio do jogador: só depois de 300 jd,
     como na falha.
   - A reta fica para fora da grade, para a busca grande demais e para a barreira longa.
+- **Passagens gravadas** (issue #99) cobrem a rampa, ponte, porta ou escada que a grade não tem.
+  - O jogador anda o trecho com `/ls passagem`, ou com o botão em Configurações > Ferramentas, e repete para parar.
+  - O Lodestar grava um ponto a cada 3 jd em coordenada de mundo e guarda em `ns.db.passages` o trecho de pelo
+    menos 10 jd.
+  - A busca liga, célula a célula, o caminho andado (`TR.Links`, também na detecção de ilha) e anda por ele como
+    por terreno.
+  - As do addon ficam em `PassagesData.lua`, com as que vierem dos relatórios.
+  - `/ls report` leva as gravadas em texto curto (`c|zona|x,y;...`).
+  - Gravar ou limpar refaz os caminhos da rota.
 - A perna a pé atual ganha `path` (pontos de mundo); o mapa e o minimapa desenham o caminho; a
   seta aponta o ponto do caminho ~25 jd à frente; a distância é a que falta pelo caminho.
 - Refaz o caminho ao trocar de perna ou se o jogador sair dele por mais de 40 jd.

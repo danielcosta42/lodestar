@@ -330,4 +330,14 @@ check(#cnear == 2 and cnear[1].e.id == 1 and cnear[2].e.id == 2 and cnear[2].x =
 local pd, pt = CO.Progress({ { id = 1 }, { id = 2 } }, function(e) return e.id == 1 end)
 check(pd == 1 and pt == 2, "progresso")
 
+-- ── issue #99: passagens gravadas ────────────────────────────────────────────
+local PS = loadPure("Passages.lua").Passages
+local trecho = {}
+check(PS.Add(trecho, 0, 0) and not PS.Add(trecho, 1, 1) and PS.Add(trecho, 3, 4) and #trecho == 4,
+	"passagem: só grava depois de andar 3 jd")
+check(math.abs(PS.Length({ 0, 0, 3, 4, 3, 10 }) - 11) < 1e-9, "passagem: comprimento")
+check(PS.Encode({ c = 0, z = "The Hinterlands", pts = { -635.31, -4720.55, -630, -4700 } })
+	== "0|The Hinterlands|-635.3,-4720.6;-630.0,-4700.0", "passagem: texto do relatório")
+local mg = PS.Merge({ { c = 0 } }, { { c = 1 }, { c = 0 } })
+check(#mg == 3 and mg[2].c == 1, "passagem: as do addon e as gravadas juntas")
 print(("ok: %d checks"):format(checks))

@@ -226,6 +226,7 @@ ns.COMMAND_UI = {
 	mark = "Config. Aparência", trail = "Config. Aparência", xp = "Config. Aparência",
 	coords = "Config. Aparência",
 	debug = "Config. Avançado", tdebug = "Config. Avançado",
+	passagem = "Config. Ferramentas: Gravar passagem", passage = "Config. Ferramentas: Gravar passagem",
 	calibrate = "Config. Avançado",
 	diario = "guia: ⋯", tidy = "guia: ⋯", questlog = "guia: ⋯",
 	report = "guia: ⋯", bug = "guia: ⋯",
@@ -328,6 +329,8 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.QuestLogTidy then ns.QuestLogTidy:Toggle() end
 	elseif cmd == "report" or cmd == "bug" then
 		if ns.Report then ns.Report:Show() end
+	elseif cmd == "passagem" or cmd == "passage" then
+		if ns.Passages then ns.Passages:Command(rest) end
 	elseif cmd == "tdebug" then
 		if ns.Trail and ns.Trail.Debug then ns.Trail.Debug() end
 	elseif cmd == "train" then

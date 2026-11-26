@@ -776,6 +776,14 @@ local revan, aerie = { c = 0, x = -635.3, y = -4720.5 }, { c = 0, x = 283.7, y =
 local ra, ar = TRN.Path(EK, revan, aerie, 150000), TRN.Path(EK, aerie, revan, 150000)
 check(ra and ar and #ra > 4 and #ar > 4, "Revantusk <-> Aerie Peak: caminho pelo terreno nos dois sentidos")
 check(ra and ra.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
+-- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
+local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
+local pa, pb = mundo(60, 42), mundo(60, 53)
+comPassagem.passages = { { c = 0, pts = { pa.x, pa.y, pb.x, pb.y } } }
+local viaRampa = TRN.Path(comPassagem, mundo(5, 30), mundo(5, 70), 40000)
+local passouNaLinha = false
+for _, q in ipairs(viaRampa or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 55 then passouNaLinha = true end end
+check(viaRampa and not viaRampa.solto and passouNaLinha, "passagem gravada: o caminho atravessa por ela (busca normal)")
 -- barreira longa (parede de 8 células de espessura): não é passagem curta, fica sem caminho (a reta)
 local grossa = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
 check(TRN.Path(grossa, mundo(5, 30), mundo(5, 70), 40000) == nil, "barreira grossa: a segunda busca não inventa caminho")
