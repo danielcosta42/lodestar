@@ -186,6 +186,18 @@ G.C_MountJournal = {
 	GetMountInfoByID = function(id) return "Montaria " .. id, 100 + id, 132226, false, true, 3, false, false, nil, false, id == 1, id end,
 	GetMountInfoExtraByID = function() return nil, "", "|cFFFFD200Vendedor: |rKatie Hunter|n|cFFFFD200Zona: |rFloresta de Elwynn" end,
 }
+-- caixa de brinquedos com os filtros do jogador: só mostra tudo com coletados, não coletados e busca vazia
+local toyState = { coll = false, unc = true, filter = "x" }
+G.C_ToyBox = {
+	GetCollectedShown = function() return toyState.coll end, GetUncollectedShown = function() return toyState.unc end,
+	SetCollectedShown = function(v) toyState.coll = v end, SetUncollectedShown = function(v) toyState.unc = v end,
+	SetFilterString = function(v) toyState.filter = v end, ForceToyRefilter = noop,
+	GetNumFilteredToys = function() return (toyState.coll and toyState.unc and toyState.filter == "") and 2 or 0 end,
+	GetToyFromIndex = function(i) return 900 + i end,
+	GetToyInfo = function(id) return id, "Brinquedo " .. id, 134400, false, false end,
+}
+G.ToyBox = { searchString = "x" }
+G.PlayerHasToy = function(id) return id == 901 end
 G.C_PetJournal = {
 	GetNumPets = function() return 1 end,
 	GetPetInfoByIndex = function() return "pet1", 7, false, nil, 1, false, false, "Galinha", 132834, 1, 0, "|cFFFFD200Missão: |rUma Galinha", "" end,
@@ -322,6 +334,26 @@ end
 step("GuideMenu = Hub", function() assert(ns.GuideMenu == ns.Hub, "ns.GuideMenu aponta a Central") end)
 step("Dungeons:GoToDoor", function() ns.Dungeons:GoToDoor(ns.dungeonData[3]) end)
 step("Collections:GuideTo", function() ns.Collections:GuideTo(ns.Collections:Mounts()[2]) end)
+-- issue #109: origens pelo texto (o tipo do jogo não vem), "Todas" uma vez cada, e a aba de brinquedos
+step("Collections:sources+toys", function()
+	ns.Hub:Show("collections")
+	local pg = ns.Collections.Page.page
+	local function rows()
+		local out = {}
+		for _, r in ipairs(pg.srcRows) do
+			if r._shown then out[#out + 1] = r.fs._text .. "=" .. (r.count.text._text or "") end
+		end
+		return table.concat(out, " ")
+	end
+	pg.tabs.buttons[1]:GetScript("OnClick")()
+	assert(rows() == ns.L.V3_ALL .. "=1 Vendedor=1", "origens das montarias: " .. rows())
+	pg.tabs.buttons[3]:GetScript("OnClick")()
+	assert(rows() == ns.L.V3_ALL .. "=1", "brinquedos: " .. rows())
+	local toys = ns.Collections:Toys()
+	assert(#toys == 2 and toys[1].collected and not toys[2].collected, "brinquedos lidos")
+	assert(toyState.coll == false and toyState.unc == true and toyState.filter == "x", "filtros da caixa não voltaram")
+	pg.tabs.buttons[1]:GetScript("OnClick")()
+end)
 step("Tidy", function() ns.QuestLogTidy:Toggle() end)
 -- os passos à frente perto de você: o harness não tem mundo, então a distância é fixa e as linhas têm de aparecer
 step("Nearby", function()

@@ -1,7 +1,7 @@
 --=============================================================================
--- Collections — os Colecionáveis do Lodestar 3 (specs/lodestar-3): montarias e mascotes do diário do próprio jogo
--- (C_MountJournal, C_PetJournal), com o texto de origem que o jogo mostra, filtro por origem, progresso e Guiar
--- (o vendedor quando o Lodestar o conhece; senão a zona que a origem cita).
+-- Collections — os Colecionáveis do Lodestar 3 (specs/lodestar-3): montarias, mascotes e brinquedos do próprio jogo
+-- (C_MountJournal, C_PetJournal, C_ToyBox), com o texto de origem que o jogo mostra, filtro por origem, progresso e
+-- Guiar (o vendedor quando o Lodestar o conhece; senão a zona que a origem cita).
 --
 -- No topo, o núcleo puro (testado fora do jogo). Abaixo, o jogo e a página da Central.
 --=============================================================================
@@ -52,13 +52,48 @@ function CL.Count(list)
 	return have, #(list or {})
 end
 
--- Por tipo de origem; 0 = todos. Os já coletados saem quando `missingOnly`.
-function CL.Filter(list, sourceType, missingOnly)
+-- A chave de origem de um item, para agrupar e filtrar: o nome do tipo do jogo quando ele vem (labels[sourceType]);
+-- senão o rótulo da primeira linha do texto de origem ("Vendedor", "Saque"); sem nada, "" (Outras). Neste cliente o
+-- tipo do jogo vem 0 para tudo (issue #109): é o texto que separa.
+function CL.SourceKey(it, labels)
+	local st = it and it.sourceType or 0
+	if st > 0 and labels and type(labels[st]) == "string" then return labels[st] end
+	local p = CL.ParseSource(it and it.source)
+	return p[1] and p[1][1] or ""
+end
+
+-- Por origem: a chave (CL.SourceKey) ou, sem ela, o tipo do jogo; nil ou 0 = todos. Os já coletados saem quando
+-- `missingOnly`.
+function CL.Filter(list, key, missingOnly)
 	local out = {}
+	local all = key == nil or key == 0
 	for _, it in ipairs(list or {}) do
-		if (sourceType == 0 or it.sourceType == sourceType) and not (missingOnly and it.collected) then out[#out + 1] = it end
+		local k = it.key
+		if k == nil then k = it.sourceType end
+		if (all or k == key) and not (missingOnly and it.collected) then out[#out + 1] = it end
 	end
 	return out
+end
+
+-- As origens presentes (só o que falta, quando `missingOnly`): { { chave, n }, ... } da maior para a menor, Outras
+-- ("") por último; e o total, com cada item uma vez.
+function CL.Buckets(list, missingOnly)
+	local n, total = {}, 0
+	for _, it in ipairs(list or {}) do
+		if not (missingOnly and it.collected) then
+			total = total + 1
+			local k = it.key or ""
+			n[k] = (n[k] or 0) + 1
+		end
+	end
+	local out = {}
+	for k, c in pairs(n) do out[#out + 1] = { k, c } end
+	table.sort(out, function(a, b)
+		if (a[1] == "") ~= (b[1] == "") then return b[1] == "" end
+		if a[2] ~= b[2] then return a[2] > b[2] end
+		return a[1] < b[1]
+	end)
+	return out, total
 end
 
 --------------------------------------------------------------------------------
@@ -88,13 +123,16 @@ function CL:Mounts()
 	local out = {}
 	if not (MJ and MJ.GetMountIDs and MJ.GetMountInfoByID) then return out end
 	local myFaction = UnitFactionGroup("player") == "Horde" and 0 or 1
+	local labels = CL.SourceLabels()
 	for _, id in ipairs(MJ.GetMountIDs() or {}) do
 		local name, spellID, icon, _, _, sourceType, _, isFactionSpecific, faction, hide, collected = MJ.GetMountInfoByID(id)
 		if name and not hide and not (isFactionSpecific and faction ~= nil and faction ~= myFaction) then
 			local _, _, source = nil, nil, ""
 			if MJ.GetMountInfoExtraByID then _, _, source = MJ.GetMountInfoExtraByID(id) end
-			out[#out + 1] = { id = id, name = name, icon = icon, spell = spellID, sourceType = sourceType or 0,
+			local it = { id = id, name = name, icon = icon, spell = spellID, sourceType = sourceType or 0,
 				collected = collected and true or false, source = source or "" }
+			it.key = CL.SourceKey(it, labels)
+			out[#out + 1] = it
 		end
 	end
 	table.sort(out, function(a, b) return a.name < b.name end)
@@ -122,7 +160,7 @@ local function companionPets()
 		local creatureID, name, spellID, icon = GetCompanionInfo("CRITTER", i)
 		if name then
 			out[#out + 1] = { id = creatureID or spellID or i, name = name, icon = icon, sourceType = 0,
-				collected = true, source = "" }
+				collected = true, source = "", key = "" }
 		end
 	end
 	table.sort(out, function(a, b) return a.name < b.name end)
@@ -154,13 +192,16 @@ function CL:Pets()
 	reading = true
 	local n = PJ.GetNumPets() or 0
 	local seen = {}
+	local labels = CL.SourceLabels()
 	for i = 1, n do
 		local petID, speciesID, owned, _, _, _, _, speciesName, icon, _, _, source = PJ.GetPetInfoByIndex(i)
 		if speciesID and not seen[speciesID] then
 			seen[speciesID] = true
-			out[#out + 1] = { id = speciesID, petID = petID, name = speciesName or "?", icon = icon,
-				sourceType = CL.SourceTypeFromText(CL.ParseSource(source), CL.SourceLabels()),
+			local it = { id = speciesID, petID = petID, name = speciesName or "?", icon = icon,
+				sourceType = CL.SourceTypeFromText(CL.ParseSource(source), labels),
 				collected = owned and true or false, source = source or "" }
+			it.key = CL.SourceKey(it, labels)
+			out[#out + 1] = it
 		end
 	end
 	if PJ.SetFilterChecked then for f, v in pairs(saved) do PJ.SetFilterChecked(f, v) end end
@@ -177,6 +218,46 @@ function CL:Pets()
 		return fb
 	end
 	waitingJournal = false
+	table.sort(out, function(a, b) return a.name < b.name end)
+	return out
+end
+
+-- A caixa de brinquedos (Blizzard_ToyBox, família Classic: C_ToyBox, issue #109). Como no diário de mascotes, o que
+-- ela mostra passa pelos filtros do jogador (coletados, não coletados, busca): abre tudo, lê, devolve como estava.
+-- A API não dá o texto de origem do brinquedo: todos em Outras, sem Guiar.
+local waitingToys = false
+function CL:Toys()
+	local TB = C_ToyBox
+	local out = {}
+	if not (TB and TB.GetNumFilteredToys and TB.GetToyFromIndex and TB.GetToyInfo) then return out end
+	local coll = TB.GetCollectedShown and TB.GetCollectedShown()
+	local unc = TB.GetUncollectedShown and TB.GetUncollectedShown()
+	local search = _G.ToyBox and type(_G.ToyBox.searchString) == "string" and _G.ToyBox.searchString or ""
+	reading = true
+	if TB.SetCollectedShown then TB.SetCollectedShown(true) end
+	if TB.SetUncollectedShown then TB.SetUncollectedShown(true) end
+	if search ~= "" and TB.SetFilterString then TB.SetFilterString("") end
+	if TB.ForceToyRefilter then TB.ForceToyRefilter() end
+	for i = 1, TB.GetNumFilteredToys() or 0 do
+		local itemID = TB.GetToyFromIndex(i)
+		if itemID and itemID > 0 then
+			local _, name, icon = TB.GetToyInfo(itemID)
+			if name then
+				out[#out + 1] = { id = itemID, name = name, icon = icon, sourceType = 0, source = "", key = "",
+					collected = PlayerHasToy and PlayerHasToy(itemID) and true or false }
+			end
+		end
+	end
+	if TB.SetCollectedShown and coll ~= nil then TB.SetCollectedShown(coll) end
+	if TB.SetUncollectedShown and unc ~= nil then TB.SetUncollectedShown(unc) end
+	if search ~= "" and TB.SetFilterString then TB.SetFilterString(search) end
+	reading = false
+	if #out == 0 then
+		askJournal()                                 -- a caixa pode só se encher com as Coleções carregadas
+		waitingToys = true
+		return out
+	end
+	waitingToys = false
 	table.sort(out, function(a, b) return a.name < b.name end)
 	return out
 end
@@ -205,7 +286,7 @@ function CL:GuideTo(it)
 	if ns.Toast then ns.Toast:Show({ title = it.name, text = who or zone or "", color = UI.COL.tip, hold = 4 }) end
 end
 
-local cacheMounts, cachePets
+local cacheMounts, cachePets, cacheToys
 function CL:Summary()
 	cacheMounts = cacheMounts or CL:Mounts()
 	local pets = cachePets or CL:Pets()
@@ -232,23 +313,32 @@ end)
 for _, ev in ipairs({ "NEW_MOUNT_ADDED", "COMPANION_LEARNED", "NEW_PET_ADDED", "COMPANION_UNLEARNED" }) do
 	ns:On(ev, function() cacheMounts, cachePets = nil, nil end)
 end
+-- brinquedo novo, ou a caixa que chegou depois: lê de novo; com a página esperando por ela, redesenha uma vez
+ns:On("TOYS_UPDATED", function()
+	if reading then return end
+	cacheToys = nil
+	if waitingToys and ns.Hub and ns.Hub:IsShown() and ns.Hub:Current() == "collections" then
+		waitingToys = false
+		C_Timer.After(0.5, function() if ns.Hub:IsShown() then ns.Hub:Refresh() end end)
+	end
+end)
 
 --------------------------------------------------------------------------------
 -- A página da Central
 --------------------------------------------------------------------------------
 local PAGE = { label = ns.L.V3_COLLECT, glyph = "bandeira", order = 5 }
-local tab, srcFilter, missingOnly = "mounts", 0, true
+local tab, srcFilter, missingOnly = "mounts", nil, true   -- srcFilter: chave de origem (CL.SourceKey); nil = todas
 
-local function srcLabel(i)
-	return i == 0 and ns.L.V3_ALL or _G["BATTLE_PET_SOURCE_" .. i] or (ns.L.V3_SOURCE .. " " .. i)
+local function srcLabel(key)
+	if key == nil then return ns.L.V3_ALL end
+	return key == "" and ns.L.V3_SRC_OTHER or key
 end
 
 PAGE.build = function(page, H)
 	local C, L = UI.COL, ns.L
 	H.PageTitle(page, L.V3_COLLECT)
-	page.tabs = UI.Segmented(page, { { L.V3_MOUNTS, "mounts" }, { L.V3_PETS, "pets" } }, function(v)
-		tab, srcFilter = v, 0; PAGE.refresh(page, H)
-	end)
+	page.tabs = UI.Segmented(page, { { L.V3_MOUNTS, "mounts" }, { L.V3_PETS, "pets" }, { L.V3_TOYS, "toys" } },
+		function(v) tab, srcFilter = v, nil; PAGE.refresh(page, H) end)
 	page.tabs:SetPoint("TOPRIGHT", -40, 2); page.tabs:Select(tab)
 	page.missing = UI.Button(page, "", 150, 28); page.missing:SetPoint("RIGHT", page.tabs, "LEFT", -10, 0)
 	page.missing:SetScript("OnClick", function() missingOnly = not missingOnly; PAGE.refresh(page, H) end)
@@ -287,38 +377,39 @@ PAGE.refresh = function(page, H)
 	-- leitura vazia (o diário ainda não carregou) não fica em cache
 	local petsNow
 	if tab == "mounts" then cacheMounts = cacheMounts or CL:Mounts()
+	elseif tab == "toys" then cacheToys = cacheToys or CL:Toys()
 	else
 		petsNow = cachePets or CL:Pets()
 		if not petsNow.fallback then cachePets = petsNow end   -- a reserva (companheiros) não fica em cache
 	end
+	local all = (tab == "mounts" and cacheMounts or tab == "toys" and cacheToys or petsNow) or {}
 	if cacheMounts and #cacheMounts == 0 then cacheMounts = nil end
 	if cachePets and #cachePets == 0 then cachePets = nil end
-	local all = (tab == "mounts" and cacheMounts or petsNow) or {}
+	if cacheToys and #cacheToys == 0 then cacheToys = nil end
 	local have, total = CL.Count(all)
 	page.subFS:SetText(L.V3_COL_PROGRESS:format(have, total))
 	page.bar:SetProgress(have / math.max(1, total))
 	page.missing.text:SetText(missingOnly and L.V3_MISSING_ONLY or L.V3_SHOW_ALL)
-	-- origens presentes
-	local counts = { [0] = 0 }
-	for _, it in ipairs(all) do
-		if not (missingOnly and it.collected) then
-			counts[0] = counts[0] + 1
-			counts[it.sourceType] = (counts[it.sourceType] or 0) + 1
-		end
-	end
-	local types = {}
-	for k in pairs(counts) do types[#types + 1] = k end
-	table.sort(types)
+	-- origens presentes: Todas (cada item uma vez) e as do texto; só Outras = nada a separar, fica só Todas
+	local buckets, total2 = CL.Buckets(all, missingOnly)
+	if #buckets == 1 and buckets[1][1] == "" then buckets = {} end
+	local present = srcFilter == nil
+	for _, b in ipairs(buckets) do if b[1] == srcFilter then present = true end end
+	if not present then srcFilter = nil end        -- a origem escolhida sumiu (aba, só o que falta)
+	local rows = { { nil, total2 } }
+	for _, b in ipairs(buckets) do rows[#rows + 1] = b end
 	for _, r in ipairs(page.srcRows) do r:Hide() end
-	for i, st in ipairs(types) do
+	local maxRows = math.floor((514 - 30) / 33)
+	for i = 1, math.min(#rows, maxRows) do
+		local key, n = rows[i][1], rows[i][2]
 		local r = page.srcRows[i]
 		if not r then
 			r = UI.NavItem(page.srcCard, "", nil, nil); page.srcRows[i] = r
 		end
 		r:ClearAllPoints(); r:SetPoint("TOPLEFT", page.srcCard, "TOPLEFT", 6, -30 - (i - 1) * 33)
 		r:SetPoint("RIGHT", page.srcCard, "RIGHT", -6, 0)
-		r.fs:SetText(srcLabel(st)); r:SetCount(counts[st], "plain"); r:SetActive(st == srcFilter)
-		r:SetScript("OnClick", function() srcFilter = st; PAGE.refresh(page, H) end)
+		r.fs:SetText(srcLabel(key)); r:SetCount(n, "plain"); r:SetActive(key == srcFilter)
+		r:SetScript("OnClick", function() srcFilter = key; PAGE.refresh(page, H) end)
 		r:Show()
 	end
 	-- cartões
@@ -339,7 +430,7 @@ PAGE.refresh = function(page, H)
 		for _, p in ipairs(CL.ParseSource(it.source)) do parts[#parts + 1] = p[1] and (p[1] .. ": " .. p[2]) or p[2] end
 		c.src:SetText(table.concat(parts, " · "))
 		if it.collected then c.badge:Set(L.V3_COLLECTED, "ok"); c.badge:Show() else c.badge:Hide() end
-		c.go:SetShown(not it.collected)
+		c.go:SetShown(not it.collected and it.source ~= "")   -- sem texto de origem não há para onde guiar
 		c.go:SetScript("OnClick", function() CL:GuideTo(it) end)
 		c:Show()
 	end
@@ -348,5 +439,6 @@ PAGE.refresh = function(page, H)
 end
 
 PAGE.count = function() return nil end
+CL.Page = PAGE                                       -- a fumaça da interface lê a página montada
 
 if ns.Hub then ns.Hub:RegisterPage("collections", PAGE) end

@@ -43,7 +43,11 @@ claro").
   ns.db.rewards, para o Equipamento.
 - **R9 Colecionáveis.** Montarias e mascotes do diário do jogo, com a origem como o jogo escreve; filtro por origem,
   "só o que falta", progresso; Guiar ao vendedor (quando o Lodestar o conhece) ou à zona da origem. O filtro do
-  diário de mascotes volta a como o jogador deixou.
+  diário de mascotes volta a como o jogador deixou. (#109) A origem agrupa pelo nome do tipo do jogo quando ele vem
+  e, senão, pelo rótulo da primeira linha do texto de origem ("Vendedor", "Saque"); sem texto, Outras. "Todas" conta
+  cada item uma vez. Aba Brinquedos (C_ToyBox, família Classic): lê com coletados, não coletados e busca abertos e
+  devolve os filtros da caixa como estavam; a API não dá a origem do brinquedo (sem Guiar). Guiar só com texto de
+  origem.
 - **R10 Legado.** Os desafios do Legado (conquistas sob a raiz das LEGACY_DEFAULT_CATEGORY_*): pontos da conta,
   grupos com feito/total, a lista do grupo com o progresso (critérios; nos de classe, o seu personagem mais alto da
   classe), o mais perto com o caminho (Leveling, Masmorras) e abrir o Legado do jogo. Os personagens da conta
