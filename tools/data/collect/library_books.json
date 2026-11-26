@@ -1,0 +1,1926 @@
+{
+  "meta": {
+    "title": "WoW Forever library books",
+    "gathered": "2026-11-26",
+    "method_note": "Fan-site pages could not be fetched directly from this environment (network allowlist); facts were gathered through web search summaries of the cited pages. Item IDs and per-book turn-in quest IDs come from the MIT-licensed RestedXP library-books route (github.com/heyitsmk/RXPGuides_LibraryBooks) and are cross-checked by web sources where noted (e.g. 79092/79093/79094). No GPL addon data was used. All notes are written in our own words. Re-checked live on 2026-11-26 (see verified).",
+    "confidence_rule": "high = 2+ sources agree on the point (differences under ~0.5 map % treated as rounding); single-source outliers are listed in alt without downgrading when a majority exists; low = no majority, unconfirmed spawn, or map-frame conflict.",
+    "book_count": {
+      "entries_here": 39,
+      "with_known_turnin_quest": 39,
+      "note": "39 collectable books: 38 that every guide confirms plus A Luddite's Guide (Mage-only cage key, hand-in unconfirmed). Rumi has two spawns but is one book. The Liminal and the Arcane was removed (see removed)."
+    },
+    "how_tracking_works": {
+      "summary": "Each book is a soulbound item looted from a world object (no starter quest). While the item is in your bags, the turn-in NPC offers a quest named after the book; completing it consumes the book and records completion. Milestone quests (10/20/25/final) count distinct completed book quests. No dedicated book UI or slash command (/bookui) is mentioned by any source.",
+      "detect_carried": "item count of the book item ID in bags",
+      "detect_turned_in": "completed-quest flag of the per-book turn-in quest ID (IsQuestFlaggedCompleted)",
+      "detect_milestones": [
+        78150,
+        79536,
+        82208,
+        84394
+      ],
+      "per_book_reward": "Each hand-in pays a Comprehension Charm (mage-usable); other classes still get credit toward milestones. Every book quest also leads to the Mage-only quest Research Access (97286).",
+      "gotchas": [
+        "Several players found the book quests do not appear at the librarian when the quest log is near full (dropping under ~20 quests fixed it).",
+        "Librarians refused books until a Blizzard hotfix on 13 Nov 2026.",
+        "The 8 level-60 books (quest IDs 84395-84402) are handed to the mage trainers Jennea Cannon / Oran Snakewrithe, not the librarians.",
+        "Mages: keep the first book until Comprehend Scroll is trained at level 6, or the Study ability may go missing (SideQuest Dad)."
+      ],
+      "sources": [
+        "https://allthings.how/wow-forever-library-books-all-locations-and-rewards/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://wowhandbook.com/library-books/",
+        "https://warcraft.wiki.gg/wiki/Friend_of_the_Library",
+        "https://www.thesidequestdad.com/articles/wow-forever-mage-study/",
+        "https://us.forums.blizzard.com/en/wow/t/quest-library-bug-cant-turn-in-books/2423171",
+        "https://www.warcrafttavern.com/forever/news/where-to-turn-in-library-books-in-wow-forever/"
+      ]
+    },
+    "turnin_npcs": [
+      {
+        "name": "Garion Wendell",
+        "role": "librarian",
+        "faction": "Alliance",
+        "npc_id": 211033,
+        "zone": "Stormwind City",
+        "x": 48.9,
+        "y": 86.7,
+        "note": "Librarian (level 60), Wizard's Sanctum at the top of the Mage Quarter tower. Takes every book except the 8 level-60 ones, and gives quests 78150, 79536 and 82208.",
+        "confidence": "high",
+        "alt": [
+          {
+            "x": 48.9,
+            "y": 86.5,
+            "source": "https://outof.games/realms/forever/npc/211033/",
+            "note": "Out of Games and RestedXP"
+          },
+          {
+            "x": 49.0,
+            "y": 86.4,
+            "note": "previous value in this file"
+          },
+          {
+            "x": 37.6,
+            "y": 80.8,
+            "note": "Classic-era Stormwind map coordinates in older lists"
+          },
+          {
+            "x": 37.8,
+            "y": 80.2,
+            "source": "https://warcraft.wiki.gg/wiki/Garion_Wendell",
+            "note": "wiki, classic map frame"
+          }
+        ],
+        "sources": [
+          "https://www.warcrafttavern.com/forever/news/where-to-turn-in-library-books-in-wow-forever/",
+          "https://warcraft.wiki.gg/wiki/Garion_Wendell",
+          "https://mmonster.co/wow-forever/guides/library-books",
+          "https://outof.games/realms/forever/npc/211033/",
+          "https://forever.warcraftdb.com/data/npc/211033"
+        ]
+      },
+      {
+        "name": "Owen Thadd",
+        "role": "librarian",
+        "faction": "Horde",
+        "npc_id": 211022,
+        "zone": "Undercity",
+        "x": 73.4,
+        "y": 33.0,
+        "note": "Librarian (level 40), inner Magic Quarter. Starts/ends every regular book quest plus 78150, 79536 and 82208.",
+        "confidence": "high",
+        "alt": [
+          {
+            "x": 74.0,
+            "y": 32.4,
+            "note": "previous value in this file (guide rounding)"
+          },
+          {
+            "x": 73.7,
+            "y": 33.3,
+            "source": "https://wowcalc.net/en/forever/wiki/library-books"
+          }
+        ],
+        "sources": [
+          "https://warcraft.wiki.gg/wiki/Owen_Thadd",
+          "https://mmonster.co/wow-forever/guides/library-books",
+          "https://allthings.how/wow-forever-library-books-all-locations-and-rewards/",
+          "https://outof.games/realms/forever/npc/211022/",
+          "https://github.com/heyitsmk/RXPGuides_LibraryBooks"
+        ]
+      },
+      {
+        "name": "Jennea Cannon",
+        "role": "mage_trainer (takes the 8 level-60 books; starts quest 84394)",
+        "faction": "Alliance",
+        "npc_id": 5497,
+        "zone": "Stormwind City",
+        "x": 49.6,
+        "y": 86.1,
+        "note": "Mage Trainer (level 40) beside Garion Wendell. Game data names her giver and ender of the 8 level-60 book quests (84395-84402) and giver of 84394.",
+        "confidence": "high",
+        "alt": [
+          {
+            "x": 49.6,
+            "y": 85.8,
+            "source": "https://outof.games/realms/forever/npc/5497/"
+          },
+          {
+            "x": 49.5,
+            "y": 86.0,
+            "source": "https://github.com/heyitsmk/RXPGuides_LibraryBooks"
+          },
+          {
+            "x": 38.6,
+            "y": 79.3,
+            "note": "Classic Stormwind map frame (old lists, pfQuest); not valid on the Forever map"
+          }
+        ],
+        "sources": [
+          "https://wow4ever.quest/en/npcs/jennea-cannon",
+          "https://outof.games/realms/forever/quest/84394-greater-friend-of-the-library/",
+          "https://us.forums.blizzard.com/en/wow/t/quest-library-bug-cant-turn-in-books/2423171",
+          "https://www.thesidequestdad.com/articles/wow-forever-mage-study/",
+          "https://outof.games/realms/forever/npc/5497/",
+          "https://forever.warcraftdb.com/data/npc/5497"
+        ]
+      },
+      {
+        "name": "Oran Snakewrithe",
+        "role": "quest giver, not a trainer (takes the 8 level-60 books; ends 84394 for Horde)",
+        "faction": "Horde",
+        "npc_id": 7825,
+        "zone": "Undercity",
+        "x": 73.1,
+        "y": 32.9,
+        "note": "Level 50 Undercity quest NPC (Rinji's Secret, Oran's Gratitude) standing next to Owen Thadd in the Magic Quarter; the game data lists him as ender of the 8 level-60 book quests and of 84394.",
+        "confidence": "high",
+        "alt": [
+          {
+            "x": 73.5,
+            "y": 32.5,
+            "source": "https://github.com/heyitsmk/RXPGuides_LibraryBooks"
+          },
+          {
+            "x": 73.6,
+            "y": 33.0,
+            "note": "previous value in this file"
+          }
+        ],
+        "sources": [
+          "https://outof.games/realms/forever/npc/7825/",
+          "https://outof.games/realms/forever/quest/84394/",
+          "https://github.com/heyitsmk/RXPGuides_LibraryBooks"
+        ]
+      }
+    ],
+    "milestones": [
+      {
+        "books": 10,
+        "quest": "Friend of the Library",
+        "quest_id": 78150,
+        "required_level": null,
+        "required_level_note": "No level requirement (Warcraft DB: minimum level 1); quest level 20 (Out of Games shows ~23 from its rewards).",
+        "rewards": [
+          "Scholarly Pendant (item 277203; ilvl 23, +3 Sta +2 Spi)",
+          "Erudite's Amulet (item 277204; ilvl 23, +3 Sta +2 Agi)"
+        ],
+        "giver": "faction librarian (Garion Wendell 211033 / Owen Thadd 211022)",
+        "sources": [
+          "https://www.wowhead.com/forever/quest=78150/friend-of-the-library",
+          "https://outof.games/realms/forever/quest/78150-friend-of-the-library/",
+          "https://wowcalc.net/en/forever/wiki/library-books",
+          "https://www.zockify.com/forever/library-books/",
+          "https://forever.warcraftdb.com/data/quest/78150"
+        ],
+        "confidence": "high"
+      },
+      {
+        "books": 20,
+        "quest": "Greater Friend of the Library",
+        "quest_id": 79536,
+        "required_level": 20,
+        "required_level_note": "Requires 20, quest level 35 (Out of Games, Warcraft DB, RestedXP). The 35 in one guide is the quest level.",
+        "rewards": [
+          "Field Researcher's Loop (item 281634)",
+          "Philanthropist's Ring (item 281635)"
+        ],
+        "giver": "faction librarian (Garion Wendell 211033 / Owen Thadd 211022)",
+        "sources": [
+          "https://outof.games/realms/forever/quest/79536-greater-friend-of-the-library/",
+          "https://wowcalc.net/en/forever/wiki/library-books",
+          "https://www.zockify.com/forever/library-books/",
+          "https://forever.warcraftdb.com/data/quest/79536"
+        ],
+        "confidence": "high"
+      },
+      {
+        "books": 25,
+        "quest": "Greater Friend of the Library",
+        "quest_id": 82208,
+        "required_level": 35,
+        "required_level_note": "Requires 35 (Out of Games, Warcraft DB, RestedXP); quest level 45. Its objective text says 25 books. The reward items need level 40 (Truthseeker's Bow got that requirement on 8 Oct).",
+        "rewards": [
+          "Truthseeker's Bow (item 277254; ilvl 45, +7 Agi +3 Sta, requires 40)",
+          "Crest of Elucidation (item 277258, shield)",
+          "Researcher's Night Light (item 277260, off-hand)"
+        ],
+        "giver": "faction librarian (Garion Wendell 211033 / Owen Thadd 211022)",
+        "sources": [
+          "https://outof.games/realms/forever/quest/82208-greater-friend-of-the-library/",
+          "https://wowcalc.net/en/forever/wiki/library-books",
+          "https://wow4evernews.com/en/articles/wow-forever-library-books-locations-rewards",
+          "https://www.icy-veins.com/wow-forever/news/earn-the-best-bow-in-the-game-before-blizzard-changes-it/",
+          "https://outof.games/realms/forever/quest/82208/",
+          "https://forever.warcraftdb.com/data/quest/82208"
+        ],
+        "confidence": "high"
+      },
+      {
+        "books": null,
+        "quest": "Greater Friend of the Library",
+        "quest_id": 84394,
+        "required_level": 50,
+        "required_level_note": "Requires 50, about level 58 (Out of Games).",
+        "books_note": "Count still unconfirmed: RestedXP says 30 books, Warcraft Wiki 35; the game data pages give no objective text. It follows 82208 in the chain.",
+        "rewards": [
+          "Antique Bulwark (item 281637)",
+          "Museum Keeper's Chain (item 281636)",
+          "Artifact Seeker's Pendant (item 277202)"
+        ],
+        "giver": "Jennea Cannon (5497, Stormwind); Horde ender Oran Snakewrithe (7825, Undercity) per the game data",
+        "sources": [
+          "https://www.wowhead.com/forever/quest=84394/greater-friend-of-the-library",
+          "https://outof.games/realms/forever/quest/84394-greater-friend-of-the-library/",
+          "https://warcraft.wiki.gg/wiki/Greater_Friend_of_the_Library_(3)",
+          "https://mmonerds.com/guides/wow-forever-library-books-guide/",
+          "https://github.com/heyitsmk/RXPGuides_LibraryBooks"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "faction_restrictions_summary": {
+      "alliance_only": [],
+      "horde_only": [
+        "The Lessons of Ta'zo",
+        "Ataeric: On Arcane Curiosities",
+        "The Apothecary's Metaphysical Primer"
+      ],
+      "disputed": [
+        "The Apothecary's Metaphysical Primer (kept Horde-only; no Forever player report, quest flagged for both)",
+        "Archmage Antonidas: The Unabridged Autobiography (set to both: Horde hand-in reported; several guides still say Alliance-only)",
+        "Archmage Theocritus' Research Journal and Rumi of Gnomeregan (set to both: quests flagged for both sides; wowcalc says Alliance-only)"
+      ],
+      "note": "Rule used: the 1.60.1 game data flags all 39 book quests for both factions, so a faction lock is only kept where Forever players report the object missing/unusable for one side (Ataeric, Ta'zo) or no source contradicts the guides (Apothecary). Result: Alliance 36 books, Horde 39 (Luddite needs a Mage for both).",
+      "sources": [
+        "https://mmonster.co/wow-forever/guides/library-books",
+        "https://leprestore.com/guides/world-of-warcraft-forever/wow-forever-library-books-guide/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/npc/211022/"
+      ]
+    },
+    "removed": [
+      {
+        "name": "The Liminal and the Arcane",
+        "item_id": 220347,
+        "quest_id": 81951,
+        "reason": "Not collectable in Forever: the quest exists in the 1.60.1 data but has no ender and the item has no source (Out of Games, Warcraft DB); in Season of Discovery it sat in Oneiros behind the Nightmare portal, which Forever lacks (ForeverChanges, wowcalc, wow4ever.quest)."
+      }
+    ],
+    "verified": {
+      "date": "2026-11-26",
+      "checked_live": "Opened live: Out of Games WoW Forever database (quest, NPC, item pages, game data 1.60.1) for all 40 book quests, the 4 milestones and the 4 turn-in NPCs; Warcraft DB Forever (forever.warcraftdb.com) item/object pages for book object spawns (27 books have a recorded spawn pin with loots) and NPC pins; guide pages of Warcraft Tavern, ForeverChanges, wowcalc, wow4ever.quest, wowforevertools, mmonster, Method; RestedXP library-books route (MIT, v0.1.3).",
+      "not_reachable": "Wowhead Forever pages returned HTTP 403 (CloudFront block) from this environment, as did warcraft.wiki.gg (bot challenge), Icy Veins, Zockify, Conquest Capped and Overgear; their earlier claims are kept only where another source agrees.",
+      "changed": "Coordinates checked for every book: 20 entries changed. 18 of them by 0.1-0.5 map % to the game-data spawn or the guide majority (largest: Everyday Etiquette, Legends of the Tidesages, A Mind of Metal, Luddite's Guide); the 2 Blackrock Mountain books moved to the Burning Steppes map. Exact spawn pins are recorded as the first alt entry where the game data has one (27 books). 4 turn-in NPC ids filled and their positions corrected; faction locks reduced to 3 Horde books; Luddite's item/quest ids filled; The Liminal and the Arcane removed; milestone reward item ids added.",
+      "uncertain": "Faction locks are partly player-reported (Ta'zo, Ataeric) or unverified (Apothecary); the 84394 book count (30 vs 35); Luddite hand-in never confirmed by a player; The Knight and the Lady and Scourge may have extra spawn spots; 12 books have no game-data spawn pin, so they rely on guide consensus."
+    }
+  },
+  "books": [
+    {
+      "name": "Archmage Theocritus' Research Journal",
+      "zone": "Elwynn Forest",
+      "x": 65.4,
+      "y": 70.1,
+      "location_note": "Tower of Azora, east of Goldshire. Climb the tower; the book sits on a low table near the top of the stairs.",
+      "faction": null,
+      "faction_note": "Both factions. The hand-in quest 79092 is flagged for both sides in the 1.60.1 game data (Out of Games, Warcraft DB) and mmonster says the same; RestedXP routes it for Horde too. Conquest Capped and wowcalc still call it Alliance-only (a Season of Discovery holdover). Reaching the Tower of Azora as Horde is the real obstacle.",
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 203755,
+      "turnin_quest_id": 79092,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://warcraft.wiki.gg/wiki/Library_book",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79092/",
+        "https://forever.warcraftdb.com/data/item/203755",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 65.39,
+          "y": 70.14,
+          "source": "https://forever.warcraftdb.com/data/item/203755",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "note": "Floor disputed: top floor (Warcraft Tavern), about halfway up (RestedXP route), third floor (one guide). Same x/y."
+        }
+      ],
+      "faction_alt": "Alliance"
+    },
+    {
+      "name": "Archmage Antonidas: The Unabridged Autobiography",
+      "zone": "Ironforge",
+      "x": 75.7,
+      "y": 10.5,
+      "location_note": "Hall of Explorers, Ironforge: the small back room in the northeast, on the big table in the middle (turn the camera if something hides it). The game data pins the object on the Dun Morogh map (63.2, 22.9) because Ironforge sits inside it.",
+      "faction": null,
+      "faction_note": "Both factions. A Horde player looted it in Ironforge and Owen Thadd offered the quest (ForeverChanges, report of 30 Sep 2026); quest 79091 is flagged for both sides in the game data and RestedXP (v0.1.1) routes it for Horde. mmonster, leprestore, Conquest Capped and wowcalc still list it as Alliance-only. Deep in an Alliance capital, so Horde need to sneak in.",
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 203754,
+      "turnin_quest_id": 79091,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Library_book",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/",
+        "https://mmonster.co/wow-forever/guides/library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79091/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 76.1,
+          "y": 10.2,
+          "source": "https://www.warcrafttavern.com/forever/guides/library-books/"
+        },
+        {
+          "x": 76.3,
+          "y": 10.8,
+          "source": "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/"
+        },
+        {
+          "zone": "Dun Morogh",
+          "x": 63.2,
+          "y": 22.9,
+          "source": "https://forever.warcraftdb.com/data/item/203754",
+          "note": "same object, Dun Morogh map frame"
+        }
+      ],
+      "faction_alt": "Alliance"
+    },
+    {
+      "name": "The Apothecary's Metaphysical Primer",
+      "zone": "Tirisfal Glades",
+      "x": 59.4,
+      "y": 52.3,
+      "location_note": "Brill alchemy shop, on the shelf beside Apothecary Johaan.",
+      "faction": "Horde",
+      "faction_note": "Kept as Horde-only (mmonster, leprestore, wowcalc). Not settled: quest 79095 is flagged for both sides in the game data and RestedXP routes it for Alliance, and no Forever player report says either way.",
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 208185,
+      "turnin_quest_id": 79095,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.zockify.com/forever/library-books/",
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://warcraft.wiki.gg/wiki/Library_book",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79095/",
+        "https://forever.warcraftdb.com/data/item/208185",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "x": 59.4,
+          "y": 52.27,
+          "source": "https://forever.warcraftdb.com/data/item/208185",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 59.5,
+          "y": 52.3,
+          "source": "https://www.zockify.com/forever/library-books/"
+        }
+      ]
+    },
+    {
+      "name": "Ataeric: On Arcane Curiosities",
+      "zone": "Silverpine Forest",
+      "x": 43.4,
+      "y": 41.2,
+      "location_note": "The Sepulcher (Horde outpost): enter the main building/tomb, go down the stairs to the bottom room; the 'Arcane Secrets' container is on a shelf in the right-hand corner beside Sebastian Meloche. Horde guards.",
+      "faction": "Horde",
+      "faction_note": "Horde-only in practice: Alliance players who searched the tomb found nothing (wowcalc, Eloboost24), which fits the object being shown to Horde only. The quest itself (79096) is flagged for both sides and RestedXP routes it for Alliance, so treat this as reported, not datamined.",
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 210177,
+      "turnin_quest_id": 79096,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.zockify.com/forever/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://eloboost24.eu/blog/wow-forever-library-books-all-31-locations-and-rewards",
+        "https://www.myrtana.net/en/wow-forever/wiki/library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79096/",
+        "https://forever.warcraftdb.com/data/item/210177",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 43.36,
+          "y": 41.24,
+          "source": "https://forever.warcraftdb.com/data/item/210177",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "note": "Eloboost24 and wowcalc report Alliance players finding nothing here; the game data has 5 recorded loots of this object (Warcraft DB), so the spawn itself is real."
+        }
+      ]
+    },
+    {
+      "name": "The Dalaran Digest, Vol. 23",
+      "zone": "Silverpine Forest",
+      "x": 63.5,
+      "y": 63.1,
+      "location_note": "Ambermill, main town hall inside the walls; bookshelf in the northeast corner. Dalaran mages in town are hostile.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 209844,
+      "turnin_quest_id": 78127,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.zockify.com/forever/library-books/",
+        "https://wowhandbook.com/library-books/",
+        "https://allthings.how/wow-forever-library-books-all-locations-and-rewards/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78127/",
+        "https://forever.warcraftdb.com/data/item/209844",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 63.52,
+          "y": 63.13,
+          "source": "https://forever.warcraftdb.com/data/item/209844",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        }
+      ]
+    },
+    {
+      "name": "Rumi of Gnomeregan: The Collected Works",
+      "zone": "Westfall",
+      "x": 52.7,
+      "y": 53.7,
+      "location_note": "Sentinel Hill inn, on the table behind the innkeeper's counter. A second copy exists in Thelsamar (see alt); either one counts, and only one can be turned in.",
+      "faction": null,
+      "faction_note": "Both factions. Quest 79093 is flagged for both sides in the game data; mmonster agrees. wowcalc lists it as Alliance-only (Season of Discovery holdover). Both spawns sit in Alliance inns.",
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 208860,
+      "turnin_quest_id": 79093,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.zockify.com/forever/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://wowforevertools.com/books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79093/",
+        "https://forever.warcraftdb.com/data/item/208860",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 52.68,
+          "y": 53.7,
+          "source": "https://forever.warcraftdb.com/data/item/208860",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 52.7,
+          "y": 53.8,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "zone": "Loch Modan",
+          "x": 35.6,
+          "y": 48.9,
+          "note": "Thelsamar inn, upstairs on a table (second spawn of the same book)"
+        },
+        {
+          "x": 52.7,
+          "y": 53.7,
+          "source": "one listing"
+        }
+      ],
+      "faction_alt": "Alliance",
+      "duplicate_spawns": true
+    },
+    {
+      "name": "Runes of the Sorcerer-Kings",
+      "zone": "Loch Modan",
+      "x": 77.4,
+      "y": 14.0,
+      "location_note": "Mo'grosh Stronghold ogre cave (entrance about 74.5, 19.6); keep to the left wall, the book is in a side chamber. Elite ogres.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 209850,
+      "turnin_quest_id": 78148,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://wowsod.pro/articles/wow-forever-library-books-friend-of-the-library",
+        "https://www.zockify.com/forever/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78148/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 77.5,
+          "y": 14.1,
+          "note": "previous value in this file (guide consensus before the live check)"
+        }
+      ]
+    },
+    {
+      "name": "Bewitchments and Glamours",
+      "zone": "Westfall",
+      "x": 45.4,
+      "y": 70.3,
+      "location_note": "Moonbrook, first house on the left as you enter town; red book on the lowest shelf of the bookcase.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 209845,
+      "turnin_quest_id": 78142,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://wowforever.be/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78142/",
+        "https://forever.warcraftdb.com/data/item/209845",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 45.39,
+          "y": 70.29,
+          "source": "https://forever.warcraftdb.com/data/item/209845",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 45.4,
+          "y": 70.4,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 45.4,
+          "y": 70.5
+        },
+        {
+          "note": "Some sites list a Zephras Isle spawn; Wowhead states there are no books on Zephras Isle and wowcalc marks it unconfirmed."
+        }
+      ]
+    },
+    {
+      "name": "Crimes Against Anatomy",
+      "zone": "Duskwood",
+      "x": 16.6,
+      "y": 28.5,
+      "location_note": "Raven Hill Cemetery, the westernmost crypt (Dawning Wood Catacombs); at the bottom of the stairs / far room, on a bench. Dense undead.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 209849,
+      "turnin_quest_id": 78147,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://wowforevertools.com/books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78147/",
+        "https://forever.warcraftdb.com/data/item/209849",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 16.64,
+          "y": 28.52,
+          "source": "https://forever.warcraftdb.com/data/item/209849",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 16.7,
+          "y": 28.5,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 16.6,
+          "y": 28.5,
+          "source": "https://github.com/heyitsmk/RXPGuides_LibraryBooks"
+        },
+        {
+          "note": "6.7, 28.5 appears in one listing; treated as a typo."
+        }
+      ]
+    },
+    {
+      "name": "Goaz Scrolls",
+      "zone": "Wetlands",
+      "x": 33.6,
+      "y": 48.0,
+      "location_note": "Whelgar's Excavation Site, inside a half-buried urn on the lowest level near the west end.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 209848,
+      "turnin_quest_id": 78146,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78146/",
+        "https://forever.warcraftdb.com/data/item/209848",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 33.57,
+          "y": 47.97,
+          "source": "https://forever.warcraftdb.com/data/item/209848",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 33.6,
+          "y": 47.9,
+          "note": "previous value in this file (guide consensus before the live check)"
+        }
+      ]
+    },
+    {
+      "name": "Defensive Magics 101",
+      "zone": "Alterac Mountains",
+      "x": 48.4,
+      "y": 57.6,
+      "location_note": "Gallows' Corner ogre fortress, on a crate just inside the first tower; a level 40 ogre guards the room.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 215815,
+      "turnin_quest_id": 79948,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://wowforever.be/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79948/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 48.4,
+          "y": 57.5,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 48.5,
+          "y": 57.6,
+          "source": "https://foreverspec.com/secrets/hidden-library-books/"
+        }
+      ]
+    },
+    {
+      "name": "A Web of Lies: Debunking Myths and Legends",
+      "zone": "Arathi Highlands",
+      "x": 73.6,
+      "y": 65.2,
+      "location_note": "Witherbark Village, a scroll on the ground beside a tent entrance on the side facing the hut. Can be looted from behind/through the tent without pulling the trolls.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 215816,
+      "turnin_quest_id": 79949,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://wowforever.be/guides/library-books/",
+        "https://wow4ever.quest/en/library-books",
+        "https://wowsod.pro/articles/wow-forever-library-books-friend-of-the-library",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79949/",
+        "https://forever.warcraftdb.com/data/item/215816",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 73.59,
+          "y": 65.24,
+          "source": "https://forever.warcraftdb.com/data/item/215816",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 73.0,
+          "y": 65.0,
+          "source": "https://www.zockify.com/forever/library-books/"
+        },
+        {
+          "x": 73.4,
+          "y": 65.1,
+          "source": "https://wowforevertools.com/books"
+        },
+        {
+          "x": 76.0,
+          "y": 65.0,
+          "source": "https://wowsod.pro/articles/wow-forever-library-books-friend-of-the-library",
+          "note": "two beta testers: in front of the easternmost tent"
+        }
+      ]
+    },
+    {
+      "name": "Basilisks: Should Petrification be Feared?",
+      "zone": "Stranglethorn Vale",
+      "x": 41.4,
+      "y": 50.9,
+      "location_note": "Crystalvein Mine, on a wooden platform just to the right of the cave entrance (outside).",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 213165,
+      "turnin_quest_id": 79535,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.zockify.com/forever/library-books/",
+        "https://wowforevertools.com/books",
+        "https://classicwowforever.com/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79535/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 41.5,
+          "y": 50.8
+        },
+        {
+          "x": 41.3,
+          "y": 50.9
+        }
+      ]
+    },
+    {
+      "name": "Mummies: A Guide to the Unsavory Undead",
+      "zone": "Badlands",
+      "x": 56.7,
+      "y": 39.9,
+      "location_note": "Hilltop crypt east of Hammertoe's Digsite, above a small dwarf camp (climb up around 56.0, 45.0); inside the crypt beside two skeletons.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 215820,
+      "turnin_quest_id": 79951,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.wowhead.com/forever/guide/library-book-locations-and-rewards",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.sportskeeda.com/mmo/all-wow-forever-library-book-locations-known-far",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79951/",
+        "https://forever.warcraftdb.com/data/item/215820",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 56.68,
+          "y": 39.94,
+          "source": "https://forever.warcraftdb.com/data/item/215820",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 56.7,
+          "y": 39.7,
+          "source": "https://classicwowforever.com/guides/library-books/"
+        },
+        {
+          "x": 56.8,
+          "y": 39.6,
+          "source": "https://wowforevertools.com/books"
+        },
+        {
+          "x": 57.0,
+          "y": 39.0,
+          "source": "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/"
+        }
+      ]
+    },
+    {
+      "name": "Sanguine Sorcery",
+      "zone": "Swamp of Sorrows",
+      "x": 70.2,
+      "y": 51.9,
+      "location_note": "On top of the Temple of Atal'Hakkar (Sunken Temple) exterior, on the highest walkway. Outside the dungeon.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 220345,
+      "turnin_quest_id": 81947,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Library_book",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/81947/",
+        "https://forever.warcraftdb.com/data/item/220345",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 70.24,
+          "y": 51.87,
+          "source": "https://forever.warcraftdb.com/data/item/220345",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 70.1,
+          "y": 51.8,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 70.0,
+          "y": 51.0,
+          "source": "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+          "note": "RestedXP, ForeverChanges and Warcraft Tavern round to this"
+        }
+      ]
+    },
+    {
+      "name": "Venomous Journeys",
+      "zone": "The Hinterlands",
+      "x": 36.0,
+      "y": 72.7,
+      "location_note": "Shadra'Alor troll compound, tucked behind a brown wall.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 220350,
+      "turnin_quest_id": 81954,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Library_book",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/81954/",
+        "https://forever.warcraftdb.com/data/item/220350",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 36.0,
+          "y": 72.73,
+          "source": "https://forever.warcraftdb.com/data/item/220350",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 36.0,
+          "y": 72.8,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 36.0,
+          "y": 72.7,
+          "source": "https://warcraft.wiki.gg/wiki/Venomous_Journeys"
+        }
+      ]
+    },
+    {
+      "name": "A Mind of Metal",
+      "zone": "Searing Gorge",
+      "x": 38.0,
+      "y": 49.6,
+      "location_note": "The Cauldron, on the table inside the Dark Iron tent.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 220352,
+      "turnin_quest_id": 81955,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Library_book",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/81955/",
+        "https://forever.warcraftdb.com/data/item/220352",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 37.96,
+          "y": 49.55,
+          "source": "https://forever.warcraftdb.com/data/item/220352",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 37.8,
+          "y": 49.3,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 37.8,
+          "y": 49.6,
+          "source": "https://metaforge.app/wow-forever/library-books"
+        }
+      ]
+    },
+    {
+      "name": "Conjurer's Codex",
+      "zone": "Blasted Lands",
+      "x": 55.4,
+      "y": 32.2,
+      "location_note": "Out in the open by the road rubble; look for the sparkle.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 220353,
+      "turnin_quest_id": 81956,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Library_book",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/81956/",
+        "https://forever.warcraftdb.com/data/item/220353",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 55.38,
+          "y": 32.25,
+          "source": "https://forever.warcraftdb.com/data/item/220353",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 55.3,
+          "y": 32.2,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 55.4,
+          "y": 32.2,
+          "source": "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/"
+        }
+      ]
+    },
+    {
+      "name": "Stonewrought Design",
+      "zone": "Burning Steppes",
+      "x": 29.0,
+      "y": 28.8,
+      "location_note": "Inside Blackrock Mountain, no dungeon needed: go down the chain to Lothos Riftwaker's central pavilion; the book is on the altar of Franclorn Forgewright's tomb room (doorway to Lothos's left, where the dwarf ghost stands). Point drawn on the Burning Steppes map, where the game places the object.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 220349,
+      "turnin_quest_id": 81953,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://overgear.com/guides/wow-forever/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/81953/",
+        "https://forever.warcraftdb.com/data/item/220349",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 29.03,
+          "y": 28.83,
+          "source": "https://forever.warcraftdb.com/data/item/220349",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 48.6,
+          "y": 64.2,
+          "note": "previous value in this file (guide consensus before the live check)",
+          "zone": "Blackrock Mountain"
+        },
+        {
+          "zone": "Blackrock Mountain",
+          "x": 29.0,
+          "y": 37.5,
+          "source": "https://foreverspec.com/secrets/hidden-library-books/",
+          "note": "foreverspec approximate pin"
+        }
+      ],
+      "map_frame_note": "Coordinates are on the Burning Steppes map (uiMapID 1428): the object's game-data pin, the RestedXP route, wowcalc and ForeverChanges all use that frame, and Out of Games lists the drop zone as Burning Steppes. The 48.6, 64.2 pair from wowforevertools is the Blackrock Mountain sub-map."
+    },
+    {
+      "name": "Magma or Lava?",
+      "zone": "Burning Steppes",
+      "x": 26.2,
+      "y": 22.3,
+      "location_note": "Inside Blackrock Mountain, no dungeon needed: from Lothos Riftwaker's pavilion follow the mine passage toward the Blackrock Depths portal; on the ground by a brazier just before it. Point drawn on the Burning Steppes map, where the game places the object.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 228133,
+      "turnin_quest_id": 84396,
+      "turnin_npc": "mage_trainer",
+      "sources": [
+        "https://overgear.com/guides/wow-forever/library-books/",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.wowhead.com/forever/guide/library-book-locations-and-rewards",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/84396/",
+        "https://forever.warcraftdb.com/data/item/228133",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 26.16,
+          "y": 22.32,
+          "source": "https://forever.warcraftdb.com/data/item/228133",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 48.4,
+          "y": 63.6,
+          "note": "previous value in this file (guide consensus before the live check)",
+          "zone": "Blackrock Mountain"
+        },
+        {
+          "zone": "Burning Steppes",
+          "x": 28.7,
+          "y": 30.5,
+          "source": "https://wowcalc.net/en/forever/wiki/library-books",
+          "note": "approximate, converted by wowcalc"
+        },
+        {
+          "map": "Blackrock Mountain sub-map",
+          "x": 48.4,
+          "y": 63.6,
+          "source": "https://wowforevertools.com/books"
+        }
+      ],
+      "map_frame_note": "Burning Steppes map (uiMapID 1428), the game-data pin of the object (2 of 2 loots recorded) and the RestedXP route. wowcalc's 28.7, 30.5 is marked approximate by its own site; 48.4, 63.6 (wowforevertools) is the Blackrock Mountain sub-map."
+    },
+    {
+      "name": "Necromancy 101",
+      "zone": "Western Plaguelands",
+      "x": 69.4,
+      "y": 72.8,
+      "location_note": "Caer Darrow: enter the Scholomance building (not the dungeon portal), go right, up the stairs/ladders and ramp; on a table in a nook near the Blood of Heroes.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 228141,
+      "turnin_quest_id": 84402,
+      "turnin_npc": "mage_trainer",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/84402/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 69.2,
+          "y": 72.3
+        },
+        {
+          "note": "52.7, 26.3 in one guide lands in Hearthglen; ignore."
+        }
+      ]
+    },
+    {
+      "name": "Undead Potatoes",
+      "zone": "Western Plaguelands",
+      "x": 38.3,
+      "y": 54.6,
+      "location_note": "Felstone Field farmhouse, upstairs.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 228132,
+      "turnin_quest_id": 84395,
+      "turnin_npc": "mage_trainer",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/84395/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 38.2,
+          "y": 54.6
+        },
+        {
+          "x": 38.0,
+          "y": 54.0
+        }
+      ]
+    },
+    {
+      "name": "A Study of the Light",
+      "zone": "Eastern Plaguelands",
+      "x": 71.8,
+      "y": 48.3,
+      "location_note": "Inside Light's Hope Chapel, back left corner.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 228135,
+      "turnin_quest_id": 84398,
+      "turnin_npc": "mage_trainer",
+      "sources": [
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://wowcalc.net/en/forever/wiki/library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/84398/",
+        "https://forever.warcraftdb.com/data/item/228135",
+        "https://foreverchanges.pro/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 71.8,
+          "y": 48.34,
+          "source": "https://forever.warcraftdb.com/data/item/228135",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 71.8,
+          "y": 48.2,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 71.8,
+          "y": 48.3
+        },
+        {
+          "x": 81.7,
+          "y": 57.8,
+          "note": "Season of Discovery coordinates; Forever redrew the Eastern Plaguelands map, so these point to the wrong place"
+        }
+      ]
+    },
+    {
+      "name": "The Knight and the Lady",
+      "zone": "Eastern Plaguelands",
+      "x": 47.3,
+      "y": 42.3,
+      "location_note": "Burnt-out house on the east side of Blackwood Lake (bats circle it); the book is on the floor. ForeverChanges reports two more spawn spots (see alt), so the book may rotate.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 228138,
+      "turnin_quest_id": 84400,
+      "turnin_npc": "mage_trainer",
+      "sources": [
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/84400/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "x": 47.2,
+          "y": 42.3
+        },
+        {
+          "x": 54.4,
+          "y": 51.1,
+          "source": "https://foreverchanges.pro/library-books",
+          "note": "Corin's Crossing house, one reader on 2 Oct 2026"
+        },
+        {
+          "x": 25.6,
+          "y": 10.6,
+          "source": "https://foreverchanges.pro/library-books",
+          "note": "by the gates of Stratholme, one player on 24 Sep 2026; ForeverChanges treats these as extra spawns of the same book"
+        }
+      ]
+    },
+    {
+      "name": "Scourge: Undead Menace or Misunderstood?",
+      "zone": "Eastern Plaguelands",
+      "x": 26.5,
+      "y": 15.0,
+      "location_note": "Before the bridge to Stratholme's main gate, on a table/box by the gibbets on the right; outside the dungeon, two Crypt Walkers close by. A second spot in Plaguewood is reported (alt).",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 228140,
+      "turnin_quest_id": 84401,
+      "turnin_npc": "mage_trainer",
+      "sources": [
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://wowcalc.net/en/forever/wiki/library-books",
+        "https://wowhandbook.com/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/84401/",
+        "https://foreverchanges.pro/library-books"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "x": 26.6,
+          "y": 14.5,
+          "source": "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards"
+        },
+        {
+          "x": 31.2,
+          "y": 21.0,
+          "source": "https://foreverchanges.pro/library-books",
+          "note": "Plaguewood, picked up there in a 30 Sep 2026 video; possibly a second spawn"
+        }
+      ]
+    },
+    {
+      "name": "The Lessons of Ta'zo",
+      "zone": "Orgrimmar",
+      "x": 38.7,
+      "y": 78.4,
+      "location_note": "Valley of Spirits near the mage trainers, in front of the Darkbriar Lodge sign: the painted stone 'Mural of Ta'zo' (object 405149). Clicking it casts Trace Ta'zo Mural, which creates the book.",
+      "faction": "Horde",
+      "faction_note": "Kept as Horde-only: ForeverChanges says Alliance characters cannot take the Orgrimmar book, and mmonster, wowcalc and Conquest Capped agree. The quest 79094 is flagged for both sides and RestedXP routes it for Alliance, so the lock is on the mural trace, not the quest (reported, not datamined).",
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 207972,
+      "turnin_quest_id": 79094,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Library_book",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79094/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 38.7,
+          "y": 78.4,
+          "source": "https://outof.games/realms/forever/object/405149/",
+          "note": "game-data position of the Mural of Ta'zo object"
+        },
+        {
+          "x": 38.5,
+          "y": 78.2,
+          "source": "https://www.warcrafttavern.com/forever/guides/library-books/"
+        },
+        {
+          "x": 38.6,
+          "y": 78.4,
+          "source": "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards"
+        }
+      ]
+    },
+    {
+      "name": "Nar'thalas Almanac, Vol. 74",
+      "zone": "Darkshore",
+      "x": 59.6,
+      "y": 22.2,
+      "location_note": "Ruins of Mathystra: go down the stone stairs; the scroll is on the third landing, before the flooded bottom.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 209843,
+      "turnin_quest_id": 78124,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.wowhead.com/forever/guide/library-book-locations-and-rewards",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78124/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 59.8,
+          "y": 22.3
+        }
+      ]
+    },
+    {
+      "name": "Arcanic Systems Manual",
+      "zone": "The Barrens",
+      "x": 56.3,
+      "y": 8.8,
+      "location_note": "The Sludge Fen: climb the Venture Co. oil rig to the control room at the very top; the manual is on a chair.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 209847,
+      "turnin_quest_id": 78145,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78145/",
+        "https://forever.warcraftdb.com/data/item/209847",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 56.3,
+          "y": 8.77,
+          "source": "https://forever.warcraftdb.com/data/item/209847",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        }
+      ]
+    },
+    {
+      "name": "Baxtan: On Destructive Magics",
+      "zone": "The Barrens",
+      "x": 62.7,
+      "y": 36.3,
+      "location_note": "Ratchet, upstairs in the engineering building beside the flight master; on a table next to Gazlowe.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 208800,
+      "turnin_quest_id": 79097,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79097/",
+        "https://forever.warcraftdb.com/data/item/208800",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 62.67,
+          "y": 36.27,
+          "source": "https://forever.warcraftdb.com/data/item/208800",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        }
+      ]
+    },
+    {
+      "name": "Secrets of the Dreamers",
+      "zone": "The Barrens",
+      "x": 46.0,
+      "y": 36.5,
+      "location_note": "Cavern of Mists (the Wailing Caverns cave under Lushwater Oasis). Go to the last room, past the summoning stone, to the dry upper ledge just before the instance portal; click the scrolls on the rocks. Do not enter the dungeon.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 209846,
+      "turnin_quest_id": 78143,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78143/",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "map": "Wailing Caverns cave map",
+          "x": 52.8,
+          "y": 54.7,
+          "note": "in-cave position"
+        },
+        {
+          "zone": "The Barrens",
+          "x": 49.3,
+          "y": 33.1,
+          "source": "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+          "note": "book position projected on the Barrens map"
+        },
+        {
+          "zone": "The Barrens",
+          "x": 46.0,
+          "y": 36.0,
+          "note": "Lushwater Oasis listing"
+        }
+      ],
+      "coords_are_entrance": true
+    },
+    {
+      "name": "Fury of the Land",
+      "zone": "Stonetalon Mountains",
+      "x": 74.4,
+      "y": 85.7,
+      "location_note": "Grimtotem Post, on top of a barrel inside the smaller tent.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 209851,
+      "turnin_quest_id": 78149,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/78149/",
+        "https://forever.warcraftdb.com/data/item/209851",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 74.37,
+          "y": 85.7,
+          "source": "https://forever.warcraftdb.com/data/item/209851",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        }
+      ]
+    },
+    {
+      "name": "Geomancy: The Stone-Cold Truth",
+      "zone": "Thousand Needles",
+      "x": 34.4,
+      "y": 40.1,
+      "location_note": "Darkcloud Pinnacle: path up starts near 31, 37; cross the rope bridges; on the floor of the biggest hut. Guards nearby.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 215683,
+      "turnin_quest_id": 79947,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://foreverspec.com/secrets/hidden-library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79947/",
+        "https://forever.warcraftdb.com/data/item/215683",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 34.4,
+          "y": 40.07,
+          "source": "https://forever.warcraftdb.com/data/item/215683",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 34.4,
+          "y": 40.0,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 34.0,
+          "y": 40.0
+        },
+        {
+          "x": 34.4,
+          "y": 40.1
+        }
+      ]
+    },
+    {
+      "name": "Demons and You",
+      "zone": "Desolace",
+      "x": 55.1,
+      "y": 26.2,
+      "location_note": "Thunder Axe Fortress, largest building in the inner ring; the 'Mysterious Book' sits on a bench beside a cauldron.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 215817,
+      "turnin_quest_id": 79950,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-library-books/",
+        "https://overgear.com/guides/wow-forever/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79950/",
+        "https://forever.warcraftdb.com/data/item/215817",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 55.1,
+          "y": 26.22,
+          "source": "https://forever.warcraftdb.com/data/item/215817",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 55.0,
+          "y": 28.0,
+          "source": "https://www.warcrafttavern.com/forever/guides/library-books/"
+        }
+      ]
+    },
+    {
+      "name": "RwlRwlRwlRwl!",
+      "zone": "Dustwallow Marsh",
+      "x": 57.2,
+      "y": 20.8,
+      "location_note": "Murloc camp north of Witch Hill; the 'Waterlogged Book' lies on the ground at the east edge of the camp.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 215822,
+      "turnin_quest_id": 79952,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://classicwowforever.com/guides/library-books/",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/79952/",
+        "https://forever.warcraftdb.com/data/item/215822",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 57.18,
+          "y": 20.82,
+          "source": "https://forever.warcraftdb.com/data/item/215822",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 57.1,
+          "y": 20.8,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 57.0,
+          "y": 21.0,
+          "source": "https://www.warcrafttavern.com/forever/guides/library-books/"
+        },
+        {
+          "x": 57.2,
+          "y": 20.8
+        }
+      ]
+    },
+    {
+      "name": "Legends of the Tidesages",
+      "zone": "Tanaris",
+      "x": 72.7,
+      "y": 47.8,
+      "location_note": "Lost Rigger Cove, on a bookshelf in the middle pirate building.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 220346,
+      "turnin_quest_id": 81949,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://wowforever.be/guides/library-books/",
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/81949/",
+        "https://forever.warcraftdb.com/data/item/220346",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 72.67,
+          "y": 47.85,
+          "source": "https://forever.warcraftdb.com/data/item/220346",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 72.6,
+          "y": 47.5,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 72.7,
+          "y": 47.8
+        }
+      ]
+    },
+    {
+      "name": "Everyday Etiquette",
+      "zone": "Azshara",
+      "x": 20.9,
+      "y": 62.0,
+      "location_note": "Haldarr Encampment (satyr ruins north of the western flight path), on top of a crate.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 220348,
+      "turnin_quest_id": 81952,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://space4games.com/en/games-en/wow-forever-library-books/",
+        "https://wowforever.be/guides/library-books/",
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/81952/",
+        "https://forever.warcraftdb.com/data/item/220348",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 20.86,
+          "y": 62.01,
+          "source": "https://forever.warcraftdb.com/data/item/220348",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 20.4,
+          "y": 62.3,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 20.0,
+          "y": 61.0,
+          "note": "one guide"
+        },
+        {
+          "x": 20.7,
+          "y": 62.0,
+          "source": "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+          "note": "RestedXP, wowcalc, ForeverChanges"
+        }
+      ]
+    },
+    {
+      "name": "Northern Kalimdor: A Comprehensive Guide",
+      "zone": "Felwood",
+      "x": 65.3,
+      "y": 3.3,
+      "location_note": "Timbermaw Hold tunnel, beside the bridge in the middle, above the reputation vendor.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 228134,
+      "turnin_quest_id": 84397,
+      "turnin_npc": "mage_trainer",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://wowforever.be/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/84397/",
+        "https://forever.warcraftdb.com/data/item/228134",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 65.32,
+          "y": 3.32,
+          "source": "https://forever.warcraftdb.com/data/item/228134",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 65.2,
+          "y": 3.2,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 65.1,
+          "y": 3.2
+        },
+        {
+          "x": 65.2,
+          "y": 3.3
+        }
+      ],
+      "name_variant": "Northern Kalimdor - A Comprehensive Guide"
+    },
+    {
+      "name": "Ka-Boom!",
+      "zone": "Winterspring",
+      "x": 60.8,
+      "y": 37.7,
+      "location_note": "Everlook alchemy building near the town entrance, on a shelf behind the alchemy supplies vendor.",
+      "faction": null,
+      "faction_note": null,
+      "inside_instance": false,
+      "inside_cave_or_building_interior": true,
+      "item_id": 228136,
+      "turnin_quest_id": 84399,
+      "turnin_npc": "mage_trainer",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.zockify.com/forever/library-books/",
+        "https://wowforever.be/guides/library-books/",
+        "https://github.com/heyitsmk/RXPGuides_LibraryBooks",
+        "https://outof.games/realms/forever/quest/84399/",
+        "https://forever.warcraftdb.com/data/item/228136",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 60.77,
+          "y": 37.72,
+          "source": "https://forever.warcraftdb.com/data/item/228136",
+          "note": "game-data spawn of the book object (exact pin, looted samples); x/y above is this rounded"
+        },
+        {
+          "x": 60.7,
+          "y": 37.7,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 60.4,
+          "y": 37.4
+        },
+        {
+          "x": 61.0,
+          "y": 38.0
+        }
+      ]
+    },
+    {
+      "name": "A Luddite's Guide to Caring for Your Demonic Pet",
+      "zone": "Swamp of Sorrows",
+      "x": 61.4,
+      "y": 22.4,
+      "location_note": "Mage only: in a Rusted Cage at Fallow Sanctuary (north Swamp of Sorrows); the Rusted Cage Key (item 216523, 'Classes: Mage') drops from Lost One Hunters (~3%) and Riftseekers (~2%). Hand-in not yet confirmed by players.",
+      "faction": null,
+      "faction_note": "Both factions, Mage only (key restriction).",
+      "inside_instance": false,
+      "inside_cave_or_building_interior": false,
+      "item_id": 215824,
+      "turnin_quest_id": 79953,
+      "turnin_npc": "librarian",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-library-books",
+        "https://wowforevertools.com/books",
+        "https://metaforge.app/wow-forever/database/reagents/a-luddites-guide-to-caring-for-your-demonic-pet",
+        "https://foreverchanges.pro/library-books",
+        "https://wowcalc.net/en/forever/wiki/library-books",
+        "https://outof.games/realms/forever/quest/79953/",
+        "https://outof.games/realms/forever/item/215824/",
+        "https://forever.warcraftdb.com/data/item/216523",
+        "https://wow4ever.quest/en/library-books"
+      ],
+      "confidence": "low",
+      "alt": [
+        {
+          "x": 61.0,
+          "y": 22.0,
+          "note": "previous value in this file (guide consensus before the live check)"
+        },
+        {
+          "x": 61.5,
+          "y": 22.6
+        },
+        {
+          "note": "Turn-in disputed: one guide says the librarian offers the quest; another says no Forever hand-in quest has been found."
+        },
+        {
+          "x": 61.0,
+          "y": 22.0,
+          "source": "https://wowcalc.net/en/forever/wiki/library-books"
+        },
+        {
+          "note": "Item 215824 and quest 79953 exist in the 1.60.1 game data (hand-in at Owen Thadd / Garion Wendell), but no database records a loot of the cage and Warcraft Tavern thinks the book is absent; ForeverChanges and wow4ever.quest list it as found. No player report of a completed hand-in was found."
+        }
+      ],
+      "status": "reported",
+      "wiki_name_variant": "A Ludite's Guide to Caring for Your Demonic Pet"
+    }
+  ]
+}

@@ -106,6 +106,8 @@ DungeonData.lua
 GearPlan.lua
 Dungeons.lua
 Collections.lua
+CollectData.lua
+Collect.lua
 Legacy.lua
 # Utilidades de corrida (issue #92)
 RareData.lua

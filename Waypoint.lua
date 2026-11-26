@@ -280,23 +280,15 @@ function WP:DistanceTo(goal)
 end
 
 --------------------------------------------------------------------------------
--- Seta própria (issue #93): a seta do Lodestar 3 — contorno, miolo e sombra (Media/nav-arrow*, tools/gen_media.py)
--- girando juntos; embaixo, o rótulo numa pílula arredondada (distância e destino), nas cores do tema.
+-- Seta própria (issues #93 e #94): contorno, miolo e sombra (Media/nav-arrow*, tools/gen_media.py) girando juntos
+-- sobre um brilho suave; embaixo, o texto solto no mundo, com sombra (como nos passos de viagem): a distância em
+-- dourado e o destino em claro, até duas linhas. Cores do HUD: leem sobre qualquer chão, nos dois temas.
 --------------------------------------------------------------------------------
 local arrow
--- a largura do texto sem a da pílula (o nome está preso aos dois lados dela: GetStringWidth pararia na pílula)
-local function textWidth(fs)
-	local w = fs.GetUnboundedStringWidth and fs:GetUnboundedStringWidth()
-	return tonumber(w) or tonumber(fs:GetStringWidth()) or 0
-end
-local function plateFit(a)
-	local w = math.max(textWidth(a.dist), textWidth(a.name)) + 32
-	a.plate:SetWidth(math.max(112, math.min(260, w)))
-end
 
 local function ensureArrow()
 	if arrow then return arrow end
-	local C = UI.COL
+	local C = UI.HUD
 	arrow = CreateFrame("Frame", "LodestarArrow", UIParent)
 	arrow:SetSize(56, 56)
 	local dbp = ns.db.arrow
@@ -311,46 +303,56 @@ local function ensureArrow()
 		dbp.point, dbp.x, dbp.y = p, x, y
 	end)
 
+	-- o brilho atrás (da cor da seta, bem fraco)
+	arrow.glow = UI.Media(arrow, "glow", "BACKGROUND")
+	arrow.glow:SetSize(96, 96); arrow.glow:SetPoint("CENTER")
+	arrow.glow:SetVertexColor(C.accentBright[1], C.accentBright[2], C.accentBright[3], 0.28)
+
 	local function layer(file, lvl, sub)
 		local t = arrow:CreateTexture(nil, lvl, nil, sub)
-		t:SetTexture(UI.MEDIA .. file); t:SetSize(52, 52); t:SetPoint("CENTER")
+		t:SetTexture(UI.MEDIA .. file); t:SetSize(50, 50); t:SetPoint("CENTER")
 		return t
 	end
-	arrow.shadow = layer("nav-arrow-shadow", "BACKGROUND")
+	arrow.shadow = layer("nav-arrow-shadow", "BORDER")
 	arrow.shadow:ClearAllPoints(); arrow.shadow:SetPoint("CENTER", 0, -3)
-	arrow.shadow:SetVertexColor(0, 0, 0, UI.dark and 0.6 or 0.35)
+	arrow.shadow:SetVertexColor(0, 0, 0, 0.55)
 	arrow.edge = layer("nav-arrow", "ARTWORK", 1)
-	arrow.edge:SetVertexColor(UI.unpackc(UI.dark and { 0.09, 0.085, 0.07, 1 } or { 1, 1, 1, 1 }))
+	arrow.edge:SetVertexColor(0.10, 0.08, 0.05, 0.95)
 	arrow.tex = layer("nav-arrow-fill", "ARTWORK", 2)
 	arrow.tex:SetVertexColor(UI.unpackc(C.accentBright))
 
-	-- o rótulo: pílula com sombra, distância em cima e destino embaixo
+	-- o rótulo: texto solto, centrado, com sombra
 	local plate = CreateFrame("Frame", nil, arrow)
-	plate:SetPoint("TOP", arrow, "BOTTOM", 0, -4)
-	plate:SetSize(140, 40)
-	local sh = UI.Slice(plate, "shadow", "BACKGROUND", C.shadow, -8)
-	sh:SetPoint("TOPLEFT", -14, 10); sh:SetPoint("BOTTOMRIGHT", 14, -16)
-	local bg = UI.Slice(plate, "pill", "BACKGROUND", C.card); bg:SetAllPoints()
-	local line = UI.Slice(plate, "pill-line", "BORDER", C.border); line:SetAllPoints()
+	plate:SetPoint("TOP", arrow, "BOTTOM", 0, -2)
+	plate:SetSize(240, 48)
 	arrow.plate = plate
 	arrow.dist = plate:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(arrow.dist, 15, { num = true, color = C.accent })
-	arrow.dist:SetPoint("TOP", 0, -5)
+	UI.SetFont(arrow.dist, 16, { num = true, hud = true, color = C.amber, outline = "" })
+	arrow.dist:SetPoint("TOP", 0, 0)
 	arrow.name = plate:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(arrow.name, 11, { color = C.muted })
-	arrow.name:SetPoint("BOTTOM", 0, 6)
-	arrow.name:SetPoint("LEFT", 14, 0); arrow.name:SetPoint("RIGHT", -14, 0)
-	arrow.name:SetJustifyH("CENTER"); arrow.name:SetWordWrap(false)
-	-- ícone do que lançar (pedra de lar, teleporte), no lugar da seta
+	UI.SetFont(arrow.name, 12.5, { bold = true, hud = true, color = C.active })
+	arrow.name:SetPoint("TOP", arrow.dist, "BOTTOM", 0, -3)
+	arrow.name:SetWidth(240)
+	arrow.name:SetJustifyH("CENTER"); arrow.name:SetWordWrap(true)
+	if arrow.name.SetMaxLines then arrow.name:SetMaxLines(4) end
+	-- ícone do que lançar (pedra de lar, teleporte, barco), no lugar da seta
 	arrow.icon = arrow:CreateTexture(nil, "OVERLAY")
 	arrow.icon:SetSize(34, 34); arrow.icon:SetPoint("CENTER"); arrow.icon:Hide()
 	return arrow
 end
 
 -- a seta (as três camadas juntas)
-local function needle(a, on) a.tex:SetShown(on); a.edge:SetShown(on); a.shadow:SetShown(on) end
+-- o brilho fica com o ícone (barco, pedra de lar) quando a seta some, como nos passos de viagem
+local function needle(a, on)
+	a.tex:SetShown(on); a.edge:SetShown(on); a.shadow:SetShown(on)
+	a.glow:SetShown(on or a.icon:IsShown())
+end
 local function turn(a, rel) a.tex:SetRotation(rel); a.edge:SetRotation(rel); a.shadow:SetRotation(rel) end
-local function tint(a, c) a.tex:SetVertexColor(UI.unpackc(c or UI.COL.accentBright)) end
+local function tint(a, c)
+	c = c or UI.HUD.accentBright
+	a.tex:SetVertexColor(UI.unpackc(c))
+	a.glow:SetVertexColor(c[1], c[2], c[3], 0.28)
+end
 
 local function verbWord(goal)
 	if goal.verb == "note" then return "" end
@@ -398,7 +400,7 @@ local function transitETA(goal)
 	return nil
 end
 local function showTransit(a, goal)
-	local C = UI.COL          -- a pílula é do tema (issue #93)
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	a:Show(); needle(a, true)
 	turn(a, 0)          -- estático: em voo a direção não guia
 	tint(a, C.amber)
@@ -415,7 +417,7 @@ end
 -- são opcionais, e quem prefere ir a pé não fica sem seta.
 local STILL = { ship = true, tram = true }
 local function legArrow(a, goal)
-	local C = UI.COL          -- a pílula é do tema (issue #93)
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	a:Show()
 	if goal.icon then a.icon:SetTexture(goal.icon); a.icon:Show() else a.icon:Hide() end
 	local dist, dx, dy
@@ -440,7 +442,7 @@ end
 
 local function updateArrow(goal)
 	local a = ensureArrow()
-	local C = UI.COL          -- a pílula é do tema (issue #93)
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 
 	if UnitOnTaxi and UnitOnTaxi("player") then a.icon:Hide(); showTransit(a, goal); return end
 	taxi.lastPW, taxi.lastT, taxi.speed = nil, nil, 0      -- fora do voo: reseta o tracking
@@ -495,7 +497,7 @@ function WP:Update()
 		if arrow then arrow:Hide() end
 		return
 	end
-	updateArrow(goal); if arrow then plateFit(arrow) end
+	updateArrow(goal)
 end
 
 -- ticker: rotação/distância e proximidade -> conclui `goto`
@@ -503,7 +505,7 @@ ns:Every(0.1, function()
 	if not (explicitDest() or ns:UIShown()) then if arrow then arrow:Hide() end return end
 	local goal = WP:PickTarget()
 	if not goal then if arrow then arrow:Hide() end return end
-	updateArrow(goal); if arrow then plateFit(arrow) end
+	updateArrow(goal)
 	if UnitOnTaxi and UnitOnTaxi("player") then return end   -- em voo: não "chega" sobrevoando
 	if goal._leg then return end                              -- perna da rota: o Travel acompanha
 	local dist = WP:DistanceTo(goal)

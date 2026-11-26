@@ -281,4 +281,41 @@ check(not cyc[1] and not cyc[2] and not cyc[3], "cinza em ciclo que leva a quest
 local un, ut = QG.Useful(gsteps, function(q) return not greyIds[q] end)
 check(un == 2 and ut == 5, "o que ainda serve: quests para pegar, sem repetir, as úteis")
 
+-- ── issue #94: colecionáveis ─────────────────────────────────────────────────
+local CO = loadPure("Collect.lua").Collect
+local PA = loadPure("Parser.lua")
+local route = CO.Route({ { id = 1, zone = "A", x = 10, y = 10 }, { id = 2, zone = "B", x = 5, y = 5 },
+	{ id = 3, zone = "A", x = 90, y = 90 }, { id = 4, zone = "A", x = 12, y = 11 } })
+check(route[1].id == 1 and route[2].id == 4 and route[3].id == 3 and route[4].id == 2,
+	"rota: zonas na ordem em que aparecem, vizinho mais perto dentro da zona")
+local books = { { id = 7, name = "Journal", zone = "Elwynn Forest", x = 65.4, y = 70.1, note = "top floor" },
+	{ id = 8, name = "Primer | x", zone = "Tirisfal Glades", x = 59.5, y = 52.3, faction = "Horde" } }
+local bsteps = PA:ParseGuide(CO.BooksBody(books, { Alliance = { name = "Librarian", npc = 99, zone = "Stormwind City", x = 50, y = 50 } }))
+check(#bsteps == 3 and bsteps[1].goals[1].verb == "click" and bsteps[1].goals[1].complete == "collected(books:7)"
+	and bsteps[1].goals[1].goto_.zone == "Elwynn Forest" and bsteps[2].only == "Horde"
+	and bsteps[3].only == "Alliance" and bsteps[3].goals[1].verb == "talk",
+	"guia dos livros: um passo por livro (fecha ao pegar, facção), a entrega no fim; a barra do nome não quebra")
+local qsteps = PA:ParseGuide(CO.QuestBody({ name = "Cozy", lvl = 14, steps = {
+	{ act = "click", target = "Burned-Out Remains", zone = "Westfall", x = 37, y = 50, faction = "Alliance" },
+	{ act = "accept", target = "Stepping Stones", id = 123, zone = "Stonetalon Mountains", x = 1, y = 2 },
+	{ act = "emote", target = "/dance with the slime", zone = "Undercity", x = 3, y = 4 },
+	{ act = "goto", zone = "Loch Modan", x = 46, y = 15 } } }))
+check(#qsteps == 5 and qsteps[1].goals[1].verb == "ding" and qsteps[2].only == "Alliance"
+	and qsteps[3].goals[1].verb == "accept" and qsteps[3].goals[1].id == 123 and qsteps[4].goals[1].verb == "note"
+	and qsteps[4].goals[1].goto_.zone == "Undercity" and qsteps[5].goals[1].verb == "goto_",
+	"guia de missão de colecionável: nível, facção, aceite com id, emote como nota com ponto, ir até")
+local esteps = PA:ParseGuide(CO.QuestBody({ name = "Slime", steps = {
+	{ act = "emote", target = "Sewer Slime", note = "/dance with it", zone = "Undercity", x = 1, y = 2 } } }))
+check(esteps[1].goals[1].verb == "note" and esteps[1].goals[1].tips and esteps[1].goals[1].tips[1] == "/dance with it",
+	"emote: o segredo (a nota) vira dica quando o alvo é o texto da linha")
+local psteps = PA:ParseGuide(CO.PetsBody({ { id = 5, name = "Ol' Sooty", family = "Bear", lvl = 20, zone = "Loch Modan",
+	pts = { { 40, 40 } } } }))
+check(#psteps == 1 and psteps[1].only == "HUNTER" and psteps[1].goals[1].complete == "collected(pets:5)"
+	and psteps[1].goals[1].tips and psteps[1].goals[1].tips[1]:find("Sooty"), "guia dos pets raros: só caçador, fecha ao marcar")
+local cnear = CO.Near({ { id = 1, zone = "Z", x = 1, y = 1 }, { id = 2, zone = "Z", pts = { { 9, 9 }, { 2, 2 } } },
+	{ id = 3, zone = "Z", x = 5, y = 5 } }, function(_, x, y) return x * 10 end, 60, function(e) return e.id == 3 end)
+check(#cnear == 2 and cnear[1].e.id == 1 and cnear[2].e.id == 2 and cnear[2].x == 2, "perto: o ponto mais perto, sem o já pego")
+local pd, pt = CO.Progress({ { id = 1 }, { id = 2 } }, function(e) return e.id == 1 end)
+check(pd == 1 and pt == 2, "progresso")
+
 print(("ok: %d checks"):format(checks))
