@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Western Plaguelands (53-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Un'Goro Crater (51-55)",
-	rev = "81de7ac4",
+	next = "Leveling/Horde/Eastern Plaguelands (56-60)",
+	rev = "d032ee06",
 }, [[
 step
   ding 52
@@ -32,6 +32,18 @@ step
   talk Mulgris Deepriver##10739
   turnin The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
 step
+  only not completed(5601) not haveq(5601)
+  talk Marlene Redpath##10927
+  accept Little Pamela##5142 |goto Western Plaguelands 49.17,78.57
+step
+  only not completed(5405) not completed(5503) not haveq(5405) not haveq(5503)
+  talk Argent Officer Pureheart##10840
+  accept Argent Dawn Commission##5401 |goto Western Plaguelands 42.97,83.55
+step
+  only not completed(5405) not completed(5503) not haveq(5405) not haveq(5503)
+  talk Argent Officer Pureheart##10840
+  turnin Argent Dawn Commission##5401 |goto Western Plaguelands 42.97,83.55
+step
   only level>=52
   click Mrs. Dalson's Diary##175926
   accept Mrs. Dalson's Diary##5058 |goto Western Plaguelands 47.8,50.67
@@ -52,18 +64,6 @@ step
   only level>=53
   talk Chromie##10667
   accept A Matter of Time##4971 |goto Western Plaguelands 39.46,66.76
-step
-  only not completed(5601) not haveq(5601)
-  talk Marlene Redpath##10927
-  accept Little Pamela##5142 |goto Western Plaguelands 49.17,78.57
-step
-  only not completed(5405) not completed(5503) not haveq(5405) not haveq(5503)
-  talk Argent Officer Pureheart##10840
-  accept Argent Dawn Commission##5401 |goto Western Plaguelands 42.97,83.55
-step
-  only not completed(5405) not completed(5503) not haveq(5405) not haveq(5503)
-  talk Argent Officer Pureheart##10840
-  turnin Argent Dawn Commission##5401 |goto Western Plaguelands 42.97,83.55
 step
   talk Mulgris Deepriver##10739
   accept The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
@@ -134,6 +134,14 @@ step
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6023 |goto Western Plaguelands 51.92,28.06
+step
+  only level>=53
+  talk Fallen Skyborne##270191
+  accept River Ends##7790 |goto Western Plaguelands 70.09,44.15
+step
+  only haveq(7790)
+  note Look for the cause of the Skyborne struggle along Thondroril River.
+  turnin River Ends##7790 |goto Western Plaguelands 70.09,44.12
 step
   talk Kirsta Deepshadow##11610
   accept Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
@@ -288,10 +296,15 @@ step
   talk High Executor Derrington##10837
   turnin Mission Accomplished!##5238 |goto Tirisfal Glades 83.13,68.94 |tip {turninat}Tirisfal Glades
 step
+  only haveq(4883)
+  note Take the Blue-feathered Necklace to Nara Wildmane.
+  talk Nara Wildmane##5770
+  turnin Guarding Secrets##4883 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
+step
   note Based on the magic enchanted within the Glyphed Oaken Branch, its delivery to the Cenarion Circle in Thunder Bluff is the next step the tauren druid sought. Seek one of the druids there for assistance.
   talk Nara Wildmane##5770
   turnin Glyphed Oaken Branch##4987 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
-  note {travel}Thunder Bluff
-  goto Thunder Bluff 78.62,28.56
+  note {travel}Undercity
+  goto Undercity 58.05,91.79
 ]])

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (43-51)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/The Hinterlands (43-48)",
-	rev = "d072b6fe",
+	rev = "f674efea",
 }, [[
 step
   ding 41
@@ -13,6 +13,53 @@ step
   only completed(2204)
   talk Talvash del Kissel##6826
   accept Restoring the Necklace##2361 |goto Ironforge 36.38,3.61
+step
+  only haveq(1457)
+  note Bring Karnitol's Satchel to Roetten Stonehammer in Ironforge.
+  talk Roetten Stonehammer##5637
+  turnin The Karnitol Shipwreck##1457 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+step
+  only haveq(1467)
+  note Bring Leftwitch's Package back to Roetten Stonehammer in Ironforge.
+  talk Roetten Stonehammer##5637
+  turnin Reagents for Reclaimers Inc.##1467 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+step
+  only completed(196) level>=43
+  talk Hemet Nesingwary##715
+  accept Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
+step
+  only completed(196) haveq(197)
+  note Hemet Nesingwary wants you to kill Tethis, an elusive, dangerous raptor in Stranglethorn.
+  kill Tethis##730 |q 197 |goto Stranglethorn Vale 32.2,42.8 |elite
+  collect Talon of Tethis##3877 |q 197 |goto Stranglethorn Vale 32.2,42.8
+step
+  only completed(196) haveq(197)
+  talk Hemet Nesingwary##715
+  turnin Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
+step
+  only completed(188) completed(193) completed(196) completed(197) level>=43
+  talk Hemet Nesingwary##715
+  accept Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
+step
+  only completed(188) completed(193) completed(196) haveq(208)
+  note Hemet Nesingwary wants you to bring him the head of King Bangalash, the great white tiger.
+  kill King Bangalash##731 |q 208 |goto Stranglethorn Vale 38.21,35.58 |elite
+  collect Head of Bangalash##3880 |q 208 |goto Stranglethorn Vale 38.21,35.58
+step
+  only level>=44
+  talk Knaz Blunderflame##8679
+  accept Noise Complaints##97405 |goto Stranglethorn Vale 51.05,35.23
+step
+  only haveq(97405)
+  note Knaz Blunderflame wants you to kill 3 Mosh'Ogg Spellcrafters, 3 Mosh'Ogg Warmongers, 3 Mosh'Ogg Maulers, and 3 Mosh'Ogg Shaman at the Mosh'Ogg Ogre Mount.
+  kill Mosh'Ogg Warmonger##709 |q 97405/2 |goto Stranglethorn Vale 48.85,30.08 |elite
+  kill Mosh'Ogg Shaman##679 |q 97405/4 |goto Stranglethorn Vale 50.14,27.94 |elite
+  kill Mosh'Ogg Spellcrafter##710 |q 97405/1 |goto Stranglethorn Vale 51.37,27.89 |elite
+  kill Mosh'Ogg Mauler##678 |q 97405 |goto Stranglethorn Vale 51.48,27.13 |elite
+step
+  only haveq(97405)
+  talk Knaz Blunderflame##8679
+  turnin Noise Complaints##97405 |goto Stranglethorn Vale 51.05,35.23
 step
   note {fp}Gyll
   goto Stranglethorn Vale 27.53,77.79 |tip {vendor}
@@ -39,6 +86,9 @@ step
   talk Crank Fizzlebub##2498
   accept Zanzil's Secret##621 |goto Stranglethorn Vale 27.12,77.21
 step
+  talk Fin Fizracket##2486
+  accept Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
+step
   only completed(599)
   note Fleet Master Seahorn in Booty Bay wants you to kill 10 Bloodsail Swashbucklers and bring back the Bloodsail Charts and the Bloodsail Orders.
   kill Bloodsail Swashbuckler##1563 |q 604 |goto Stranglethorn Vale 26.67,82.84
@@ -47,9 +97,16 @@ step
   talk Fleet Master Seahorn##2487
   turnin The Bloodsail Buccaneers##604 |goto Stranglethorn Vale 27.17,77.01
 step
+  only completed(599)
+  talk Fleet Master Seahorn##2487
+  accept The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
+step
   only completed(597)
   note Dizzy One-Eye in Booty Bay wants you to retrieve his eye from the Bloodsail Buccaneers.
   collect Dizzy's Eye##3897 |q 576 |goto Stranglethorn Vale 32.34,71.67 |tip {dropsfrom}Bloodsail Raider, Bloodsail Mage, Bloodsail Swashbuckler
+step
+  note Seek out Witch Doctor Unbagwa and have him summon Mokk the Savage. Bring the Heart of Mokk to Fin Fizracket.
+  collect Heart of Mokk##2797 |q 348 |goto Stranglethorn Vale 35.05,60.88 |tip {dropsfrom}Mokk the Savage
 step
   note Bring 12 samples of Zanzil's Mixture to Crank Fizzlebub in Booty Bay.
   collect 12 Zanzil's Mixture##4016 |q 621 |goto Stranglethorn Vale 38.89,57.62 |tip {dropsfrom}Zanzil Zombie, Zanzil Hunter, Zanzil Witch Doctor
@@ -61,7 +118,10 @@ step
   collect Maury's Clubbed Foot##3924 |q 609 |goto Stranglethorn Vale 35.26,51.27 |tip {dropsfrom}Maury "Club Foot" Wilkins
 step
   note Bring 10 Bundles of Akiris Reed to Privateer Bloads in Booty Bay.
-  collect 10 Akiris Reed##4029 |q 617 |goto Stranglethorn Vale 26.2,62.42 |tip {dropsfrom}Naga Explorer, Brinescale Skirmisher
+  collect 10 Akiris Reed##4029 |q 617 |goto Stranglethorn Vale 26.2,62.42 |tip {dropsfrom}Naga Explorer
+step
+  talk Fin Fizracket##2486
+  turnin Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
 step
   only completed(597)
   talk Dizzy One-Eye##2493
@@ -81,63 +141,9 @@ step
   talk "Sea Wolf" MacKinley##2501
   accept Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
 step
-  talk Fin Fizracket##2486
-  accept Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
-step
-  only completed(599)
-  talk Fleet Master Seahorn##2487
-  accept The Bloodsail Buccaneers##608 |goto Stranglethorn Vale 27.17,77.01
-step
-  note Seek out Witch Doctor Unbagwa and have him summon Mokk the Savage. Bring the Heart of Mokk to Fin Fizracket.
-  collect Heart of Mokk##2797 |q 348 |goto Stranglethorn Vale 35.05,60.88 |tip {dropsfrom}Mokk the Savage
-step
-  only completed(189)
-  note Acquire 18 Skullsplitter Tusks and return them to Kebok.
-  collect 18 Skullsplitter Tusk##1524 |q 209 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
-step
-  only completed(196) level>=43
-  talk Hemet Nesingwary##715
-  accept Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
-step
-  only completed(202) completed(205) level>=46
-  talk Brother Nimetz##739
-  accept Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
-step
-  only completed(202) completed(205) haveq(206)
-  note Bring the Mind's Eye to Brother Nimetz at the Rebel Camp.
-  kill Mai'Zoth##818 |q 206 |goto Stranglethorn Vale 52.93,27.6 |elite
-  collect Mind's Eye##3616 |q 206 |goto Stranglethorn Vale 52.93,27.6
-step
-  only completed(607) haveq(613)
-  note Bring Maury's Key to "Sea Wolf" Mackinley in Booty Bay.
-  kill Mosh'Ogg Mauler##678 |q 613 |goto Stranglethorn Vale 51.48,27.13 |elite
-  collect Maury's Key##3930 |q 613 |goto Stranglethorn Vale 51.48,27.13
-step
-  only completed(196) haveq(197)
-  note Hemet Nesingwary wants you to kill Tethis, an elusive, dangerous raptor in Stranglethorn.
-  kill Tethis##730 |q 197 |goto Stranglethorn Vale 32.2,42.8 |elite
-  collect Talon of Tethis##3877 |q 197 |goto Stranglethorn Vale 32.2,42.8
-step
-  only completed(196) haveq(197)
-  talk Hemet Nesingwary##715
-  turnin Raptor Mastery##197 |goto Stranglethorn Vale 35.66,10.81
-step
-  only completed(188) completed(193) completed(196) completed(197) level>=43
-  talk Hemet Nesingwary##715
-  accept Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
-step
-  only completed(202) completed(205) haveq(206)
-  talk Brother Nimetz##739
-  turnin Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
-step
-  only completed(188) completed(193) completed(196) haveq(208)
-  note Hemet Nesingwary wants you to bring him the head of King Bangalash, the great white tiger.
-  kill King Bangalash##731 |q 208 |goto Stranglethorn Vale 38.21,35.58 |elite
-  collect Head of Bangalash##3880 |q 208 |goto Stranglethorn Vale 38.21,35.58
-step
-  only completed(188) completed(193) completed(196) haveq(208)
-  talk Hemet Nesingwary##715
-  turnin Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
+  only not completed(614) not haveq(614) level>=47
+  talk Captain Hecklebury Smotts##2500
+  accept The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
 step
   collect Cortello's Riddle##2554 |goto Stranglethorn Vale 29.19,88.6 |tip Loot the quest item here — it starts the quest.
   accept Cortello's Riddle##624 |goto Stranglethorn Vale 29.19,88.6
@@ -157,12 +163,40 @@ step
   talk Princess Poobah##2634
   turnin Message in a Bottle##594 |goto Stranglethorn Vale 38.53,80.58
 step
+  only not completed(614) not haveq(614) haveq(8551)
+  note Bring Smotts' Chest to Hecklebury Smotts in Booty Bay.
+  kill Gorlash##1492 |q 8551 |goto Stranglethorn Vale 36.95,69.73 |elite
+  collect Smotts' Chest##3932 |q 8551 |goto Stranglethorn Vale 36.95,69.73
+step
+  only completed(189)
+  note Acquire 18 Skullsplitter Tusks and return them to Kebok.
+  collect 18 Skullsplitter Tusk##1524 |q 209 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
+step
+  only completed(188) completed(193) completed(196) haveq(208)
+  talk Hemet Nesingwary##715
+  turnin Big Game Hunter##208 |goto Stranglethorn Vale 35.66,10.81
+step
+  only completed(202) completed(205) level>=46
+  talk Brother Nimetz##739
+  accept Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
+step
+  only completed(202) completed(205) haveq(206)
+  note Bring the Mind's Eye to Brother Nimetz at the Rebel Camp.
+  kill Mai'Zoth##818 |q 206 |goto Stranglethorn Vale 52.93,27.6 |elite
+  collect Mind's Eye##3616 |q 206 |goto Stranglethorn Vale 52.93,27.6
+step
+  only completed(607) haveq(613)
+  note Bring Maury's Key to "Sea Wolf" Mackinley in Booty Bay.
+  kill Mosh'Ogg Mauler##678 |q 613 |goto Stranglethorn Vale 51.48,27.13 |elite
+  collect Maury's Key##3930 |q 613 |goto Stranglethorn Vale 51.48,27.13
+step
+  only completed(202) completed(205) haveq(206)
+  talk Brother Nimetz##739
+  turnin Mai'Zoth##206 |goto Stranglethorn Vale 37.83,3.56
+step
   only completed(189)
   talk Kebok##737
   turnin Skullsplitter Tusks##209 |goto Stranglethorn Vale 27,77.13
-step
-  talk Fin Fizracket##2486
-  turnin Stranglethorn Fever##348 |goto Stranglethorn Vale 27.61,76.74
 step
   only completed(599)
   talk Fleet Master Seahorn##2487
@@ -172,16 +206,7 @@ step
   talk "Sea Wolf" MacKinley##2501
   turnin Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
 step
-  only level>=47
-  talk Captain Hecklebury Smotts##2500
-  accept The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
-step
-  only haveq(8551)
-  note Bring Smotts' Chest to Hecklebury Smotts in Booty Bay.
-  kill Gorlash##1492 |q 8551 |goto Stranglethorn Vale 36.95,69.73 |elite
-  collect Smotts' Chest##3932 |q 8551 |goto Stranglethorn Vale 36.95,69.73
-step
-  only haveq(8551)
+  only not completed(614) not haveq(614) haveq(8551)
   talk Captain Hecklebury Smotts##2500
   turnin The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
 step
@@ -197,27 +222,18 @@ step
   talk Captain Hecklebury Smotts##2500
   turnin The Monogrammed Sash##8552 |goto Stranglethorn Vale 26.69,73.61
 step
-  only completed(8552)
+  only not completed(615) not haveq(615) completed(8552)
   talk Captain Hecklebury Smotts##2500
   accept The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.69,73.61
 step
-  only haveq(8553)
+  only not completed(615) not haveq(615) haveq(8553)
   note Speak with Sprogger.
   talk Sprogger##2594
   turnin The Captain's Cutlass##8553 |goto Stranglethorn Vale 26.66,73.64
 step
-  only completed(8553) level>=50
+  only not completed(618) not haveq(618) completed(8553) level>=50
   talk Sprogger##2594
   accept Facing Negolash##8554 |goto Stranglethorn Vale 26.66,73.64
-step
-  only haveq(8554)
-  note Bring 10 Barbecued Buzzard Wings and 5 bottles of Junglevine Wine to Captain Smotts' Lifeboat.
-  kill Negolash##1494 |q 8554 |goto Stranglethorn Vale 32.45,81.57 |elite
-  collect 10 Smotts' Cutlass##3935 |q 8554 |goto Stranglethorn Vale 32.45,81.57
-step
-  only haveq(8554)
-  talk Captain Hecklebury Smotts##2500
-  turnin Facing Negolash##8554 |goto Stranglethorn Vale 26.69,73.61
 step
   only completed(594) level>=51
   talk Princess Poobah##2634
@@ -231,6 +247,23 @@ step
   only haveq(630)
   talk Princess Poobah##2634
   turnin Message in a Bottle##630 |goto Stranglethorn Vale 38.53,80.58
+step
+  only not completed(618) not haveq(618) haveq(8554)
+  note Bring 10 Barbecued Buzzard Wings and 5 bottles of Junglevine Wine to Captain Smotts' Lifeboat.
+  kill Negolash##1494 |q 8554 |goto Stranglethorn Vale 32.45,81.57 |elite
+  collect 10 Smotts' Cutlass##3935 |q 8554 |goto Stranglethorn Vale 32.45,81.57
+step
+  only not completed(618) not haveq(618) haveq(8554)
+  talk Captain Hecklebury Smotts##2500
+  turnin Facing Negolash##8554 |goto Stranglethorn Vale 26.69,73.61
+step
+  only not completed(96376) not completed(96377) not haveq(96376) not haveq(96377) level>=48
+  talk Rix Xizzix##214954
+  accept State Secrets##96379 |goto Stranglethorn Vale 28.51,75.77
+step
+  only not completed(96376) not completed(96377) not haveq(96376) not haveq(96377) haveq(96379)
+  talk Rix Xizzix##214954
+  turnin State Secrets##96379 |goto Stranglethorn Vale 28.51,75.77
 step
   only completed(3621) level>=45
   talk Galvan the Ancient##7802
@@ -264,8 +297,32 @@ step
   talk Talvash del Kissel##6826
   turnin Restoring the Necklace##2361 |goto Ironforge 36.38,3.61 |tip {turninat}Ironforge
 step
+  only completed(2279)
+  talk High Explorer Magellas##5387
+  accept The Platinum Discs##2439 |goto Ironforge 69.93,18.55
+step
+  only completed(2279)
+  note Take your reward voucher to Dinita Stonemantle in the Vault of Ironforge.
+  talk Dinita Stonemantle##7292
+  turnin The Platinum Discs##2439 |goto Ironforge 33.88,59.15 |tip {turninat}Ironforge
+step
+  only haveq(94894)
+  note Deliver Kilgar's Head to Bolvar Fordragon within Stormwind Keep in Stormwind City.
+  talk Highlord Bolvar Fordragon##1748
+  turnin The Twilight Threat##94894 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
+step
+  only haveq(95264)
+  note Bring the news to Matthias Shaw in Stormwind.
+  talk Master Mathias Shaw##332
+  turnin Shaw Needs To Know##95264 |goto Stormwind City 78.31,70.74 |tip {turninat}Stormwind City
+step
   talk High Sorcerer Andromath##5694
   accept Vital Supplies##1477 |goto Stormwind City 48.71,87.62
+step
+  only haveq(94893)
+  note Deliver Marshal Ryan's Crest to Abigail Lawson in the Cathedral Square of Stormwind City.
+  talk Abigail Lawson##278088
+  turnin Delivering Closure##94893 |goto Stormwind City 50.12,51.55 |tip {turninat}Stormwind City
 step
   note Speak with Watchmaster Sorigal.
   talk Watchmaster Sorigal##5464

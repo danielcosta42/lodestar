@@ -3,7 +3,8 @@
 Beta de 2026-09-17 a 2026-10-21; lançamento em **2026-11-04, 15:00 PST**. Build mais novo no wago em
 2026-11-02: **1.60.1.70753** (produto `wowf`, **Interface 16001**); as tabelas do cliente (`QuestV2`,
 voos) ainda são as do 70245. Do 70245 ao 70753 nenhuma quest saiu, 7 entraram e a tabela de voos
-ganhou um nó.
+ganhou um nó. Em 2026-11-26 o cliente é o **1.60.1.71139**, e é dele a `QuestV2` que o
+`import_forever.py` baixa.
 
 O Lodestar é **Forever e só**. O suporte a TBC/Anniversary saiu na v2.0.0, e desde a #9 a biblioteca
 inteira de guias é gerada do banco do Forever.
@@ -69,6 +70,46 @@ Parado num objeto, o guia não sai sozinho: o `skipIfUnavailable` só age no gos
 banco trouxer campo novo, confira as quests que **entram**, não só as que saem: `validate_guides`
 aprova objeto como quem dá a quest.
 
+## O que o QuestieDB 1.1.6 trouxe (2026-11-26)
+
+A biblioteca sai do **repositório-fonte** do QuestieDB (1.1.6, `preview` 661d7ff), não mais do
+addon empacotado: 6.085 quests (1.818 com id ≥ 30000), 15.565 NPCs, 7.480 objetos. É a primeira base
+com as quests de **Riverglades** (167), **Mount Hyjal** (159, níveis 56-60, `reqLevel` 54) e o resto de
+**Shen'dralas** (41). Entram sem mudar a descoberta de zona: Riverglades vira `Riverglades (38-44)`
+na Aliança (103 quests) e `(39-43)` na Horda (86), entre Badlands e o conteúdo de 42+; Hyjal, `Mount
+Hyjal (56-59)` / `(57-60)` entre Winterspring e Silithus; Shen'dralas enche o `Desolace (42-45)`.
+Os guias de leveling passam de 85 para 93, e a cadeia de cada facção chega ao 60 na simulação de XP
+(antes parava no 57-58). A auditoria da rota (cadeia, faixas, grind, cinza, travessias) está no
+relatório da regeração.
+
+- **O repositório não traz o banco pronto.** `data/Forever/forever*DB.lua` é só a base convertida do
+  Era; o que o addon entrega é ela mais as correções estáticas — as herdadas do Era
+  (`src/corrections/Forever/legacy`), o delta-base gerado do banco do Forever da Wowhead, os traces
+  dos jogadores e as `forever*Fixes.lua`, nessa ordem — e os Derived Passes. As correções são Lua
+  (`_remove`, `zoneIDs`, funções), então o `questiedb.py` não as reimplementa: roda o
+  `generator/flavor.lua` do próprio QuestieDB (Lua 5.1, sem dependência), o mesmo passo que o
+  `generate.lua` usa antes de escrever o `.toc`, normaliza cada campo como o baked guarda e lê o
+  resultado com o `parse_lua`. 128.911 valores de 19 arquivos de correção; o `fonte.json` guarda
+  versão, commit, data e essa conta.
+- **XP dos traces.** O `support/Forever/QuestXP/xpDB-traces.lua` (a XP que os jogadores viram) vence a
+  tabela, como no QuestieDB, e cobre 1.248 quests que ela não tinha — quase todas as do Forever.
+- **Season of Discovery com classe.** 55 quests da faixa 76000-85999 ganharam classe (o delta-base
+  copia a máscara da Wowhead): as cadeias de runa de paladino, ladino, druida, guerreiro, mago e
+  sacerdote. Com a regra antiga ("sem classe sai") entravam como `only <Classe>` no meio dos guias — o
+  ladino de Redridge ia a Silverpine e a Shadowfang Keep sozinho (The Horn of Xelthos), o paladino de
+  Stonetalon a Darkshore e Ashenvale (A Strange Artifact). Na faixa agora só fica o **xamã**, que já
+  estava nos guias (Storm, Earth, and Fire, Grant's Shield). Os traces mostram jogadores fazendo
+  essas cadeias no Forever: se a rota de runa for desejada, o lugar é o guia de classe.
+- **Vagas do Forever**: "REUSEME" (98426, com giver em Riverglades) e "REUSE ME" (98338) são
+  placeholder, como `<NYI>`.
+- **Item genérico de outra zona.** O Chunk of Boar Meat de Paletusk Harvesting (41, Riverglades) só
+  caía do Stonetusk Boar de Elwynn (nível 5) no banco, e a Horda ia a Elwynn. Quando toda fonte do
+  item está fora da zona da quest e 10+ níveis abaixo dela, o mob hostil da zona que o título nomeia
+  (os Paletusk) vira fonte.
+- **Valley of Bones (93034) passou a pedir Ongeku (1373)**, cujo Draenethyst Shard o banco põe em
+  Swamp of Sorrows: a Horda perdeu Valley of Bones e Ravaging Ravagers. O que sobra de Shen'dralas
+  na Horda segue em Desolace (Khan Jehn, com o Nerlokh).
+
 ## De onde vêm as rotas
 
 **1. QuestieDB do Forever — a base.** Desde a 1.0.5 (2026-10, "Add Forever base data") o QuestieDB,
@@ -83,6 +124,11 @@ escalares e uma máscara de quais campos-tabela existem, `## X-Quest-<id>-<campo
 valor longo partido em `~N~` + `-1..-N`, e o cabeçalho de ids comprimido com zlib. O número do campo
 é o índice do Questie (`questKeys`), então `tools/questiedb.py` decodifica (CBOR à mão, sem
 dependência) e entrega o mesmo JSON que o `build_intermediate.py` sempre produziu.
+
+**Repositório-fonte (desde a 1.1.6).** `python tools/import_forever.py <checkout do QuestieDB>`
+reconhece o repositório (tem `generator/flavor.lua` e `data/Forever/`, não tem o `.toc` baked) e
+roda o gerador dele com `lua5.1` (ou `$LUA`, ou `luajit`), no diretório do checkout, só lendo de lá.
+O addon empacotado continua aceito; o `fonte.json` diz qual foi (`questiedb_modo`).
 
 **A coordenada já está no sistema do Forever.** Conferido contra o scan em jogo, Zarlman Two-Moons em
 Mulgore: 46.88/61.19 no QuestieDB, 46.86/61.13 no cliente, 47.76/57.53 no banco do Anniversary. O
@@ -380,18 +426,20 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   ainda não é público: o `Guide.lua` reconhece a raça pelo id, e o guia inicial dela é Zephras Isle.
   Zona inicial com duas faixas começa pela mais baixa.
 
-## Números (QuestieDB 1.0.10, `QuestV2` do 70245)
+## Números (QuestieDB 1.1.6 fonte, `QuestV2` do 71139)
 
 | | |
 |---|---|
-| Guias | 193 (85 de leveling, 108 especiais) |
-| Quests novas do Forever em guia | **513 de 995** |
+| Guias de leveling | 93 (51 da Aliança, 42 da Horda; eram 85) |
+| Quests novas do Forever (id ≥ 86000) nos guias de leveling | **965 de 1.552** |
 | — fora: entrega de Craftsman's Writ | 150 |
-| — fora: começam por item ou giver sem posição | 110 |
-| — fora: exigem profissão | 90 |
-| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão, Library Books, Season of Discovery...) | 95 |
-| — fora: evento/repetível/campo de batalha | 37 |
-| `validate_guides.py` — ocorrências | **0** (antes da revisão: 10 bloqueios, 244 pré-req ausentes) |
+| — fora: exigem profissão | 91 |
+| — fora: começam por item ou giver sem posição | 65 |
+| — fora: evento/repetível/campo de batalha | 53 |
+| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão, nível 60, fora da faixa...) | 177 |
+| `validate_guides.py` — ocorrências nos guias de leveling | **0**; nos especiais, 33 até o `gen_special.py` rodar de novo com o banco novo (rodado numa cópia: 0) |
+
+Na 1.0.10 eram 513 de 995 quests novas em guia (leveling e especiais).
 | Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos, toda raça×classe |
 | `guide_integrity.py` — passo sem coordenada | 113, 34 deles aceites de drop com o item na bolsa, e o resto: item de quest que o banco não sabe de onde vem (páginas de Green Hills of Stranglethorn, Stolen Weapon), sem seta em vez da de quem deu a quest; material de profissão e tecido saem sem seta de propósito, com a dica, e não contam |
 
@@ -402,9 +450,9 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 | zona | areaID / uiMapID | nível | no QuestieDB 1.0.6 |
 |---|---|---|---|
 | Zephras Isle | 16593 / 2521 | 1-12 | zona inicial da raça nova; **guia nas duas facções** |
-| Riverglades | 16591 / 2548 | 36-44 | 181 NPCs com spawn, **nenhuma quest** — fora do beta |
-| Mount Hyjal | 616 / 2482 | — | NPCs, nenhuma quest |
-| Shen'dralas | 16651 / 2652 | 38-43 | 19 quests; 6 no guia de Desolace da Aliança (1 também no da Horda); 12 sem quem dá posicionado |
+| Riverglades | 16591 / 2548 | 36-44 | 1.0.6: só NPCs. **1.1.6: 167 quests**; guia `Riverglades (38-44)` na Aliança (103) e `(39-43)` na Horda (86). Voos Rog'mar (H), Powderfuse Port e Farholde Keep (A), barco de Gadgetzan |
+| Mount Hyjal | 616 / 2482 | 56-60 | 1.0.6: só NPCs. **1.1.6: 159 quests**, `reqLevel` 54; guia `Mount Hyjal (56-59)` / `(57-60)` |
+| Shen'dralas | 16651 / 2652 | 38-45 | 1.1.6: 41 quests, no guia de Desolace (`ZONA_MAE`) |
 | Darkspear Islands | 16606 / 2524 | 30-60 | **Battleground 15v15**; as quests dela ficam fora do leveling |
 | City of Dalaran | 16544 / — | 33 | masmorra nova (entrada em Alterac); guia de masmorra |
 | Excavation Site: Wetlands | 16732 / — | 28-31 | masmorra nova (entrada em Wetlands); guia de masmorra |
@@ -414,7 +462,8 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 ## Regerar
 
 Num build novo do cliente, ajustar `FOREVER` em `tools/import_forever.py`; numa versão nova do
-QuestieDB, só rodar de novo. Tudo é determinístico.
+QuestieDB, só rodar de novo. Tudo é determinístico. A pasta pode ser o addon empacotado ou o
+repositório-fonte (`git clone https://github.com/Questie/QuestieDB`; pede Lua 5.1).
 
 ```
 python tools/questiedb.py --demo <pasta do QuestieDB>
@@ -442,8 +491,16 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
 ## Em aberto
 
 
-- **Riverglades e Hyjal.** O QuestieDB 1.0.6 tem os NPCs, não as quests. Entram quando ele tiver —
-  ou quando o `/ls scan` colher no lançamento. Em Shen'dralas, 12 das 19 quests esperam quem as dá.
+- **Regerar o resto com o banco 1.1.6.** Só os guias de leveling saíram dele: `gen_special.py`
+  (classe, masmorra, reputação — o `validate_guides.py` acusa 33 ocorrências neles até lá, e o
+  `check_special.py` 30; regerados numa cópia, 0 e 2: Elemental Aid, do xamã, em Razorfen Kraul sem
+  o Call of Air), `gen_forever.py` (o `ForeverData.lua` ainda lista para o `/ls scan` ids que o
+  1.1.6 já conhece), `gen_questlevels.py` (976 quests dos guias não estão no pfQuest: o cinza só
+  aparece quando o jogo carrega a quest) e `gen_zonedata`/`gen_trainers`/`gen_travel`/`gen_subzones`.
+- **Ordem da cadeia com Riverglades.** A intercalação pela mediana pôs o `Desolace (33-40)` da Aliança
+  depois de Riverglades (entra no ~44, 12 quests cinza) e o `Ashenvale (21-30)` depois de Wetlands
+  30-33 (15 cinza). Pelo meio da faixa do título os cinza da Aliança caem de 86 para 69, mas o grind
+  e as travessias sobem: falta escolher o próximo guia pelo nível simulado, não por um número só.
 - **`QuestV2` do 70338.** O wago devolvia 503 quando o build entrou; ao voltar, subir `FOREVER` em
   `tools/import_forever.py` e rodar o "Regerar" (as tabelas de voo vêm do mesmo build).
 - **Masmorra nova sem mapa.** O QuestieDB não posiciona nada dentro de City of Dalaran, Excavation

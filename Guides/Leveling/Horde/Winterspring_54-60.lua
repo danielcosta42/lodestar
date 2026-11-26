@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Winterspring (54-59)", {
+ns:RegisterGuide("Leveling/Horde/Winterspring (54-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Silithus (55-60)",
-	rev = "71cd0466",
+	next = "Leveling/Horde/Mount Hyjal (57-60)",
+	rev = "43a81a83",
 }, [[
 step
   ding 53
@@ -129,9 +129,46 @@ step
   talk Storm Shadowhoof##10303
   turnin Brumeran of the Chillwind##5055 |goto Winterspring 61.93,38.38
 step
+  only level>=55
+  talk Sar Browneye##11718
+  accept Shardtooth Pulling##97264 |goto Winterspring 58.3,12.79
+step
+  only level>=55
+  talk Rilan Howard##11751
+  accept Two-Headed Ravagers##97403 |goto Winterspring 58.26,12.87
+step
   only completed(4741) hasitem(12558)
   use Blue-feathered Necklace##12558 |tip It starts the quest.
   accept Guarding Secrets##4882
+step
+  only haveq(97264)
+  note Remove 12 Elder Shardtooth from nearby areas, then return to Sarna Brownhorn.
+  kill Elder Shardtooth##7445 |q 97264 |goto Winterspring 59.8,20.33
+step
+  only haveq(97403)
+  note Kill 15 Chillwind Ravagers and return to Rilan Howard in northern Winterspring.
+  kill Chillwind Ravager##7449 |q 97403 |goto Winterspring 58.58,21.52
+step
+  only haveq(97264)
+  talk Sar Browneye##11718
+  turnin Shardtooth Pulling##97264 |goto Winterspring 58.3,12.79
+step
+  only haveq(97403)
+  talk Rilan Howard##11751
+  turnin Two-Headed Ravagers##97403 |goto Winterspring 58.26,12.87
+step
+  only completed(97264) level>=55
+  talk Sar Browneye##11718
+  accept Too Bad to Bear##97404 |goto Winterspring 58.3,12.79
+step
+  only haveq(97404)
+  note Kill the old shardtooth matriarchs, Kuroma and Kamuro, and return their heads to Sarna Brownhorn.
+  collect Kuroma's Head##278097 |q 97404/1 |goto Winterspring 59.53,11.85 |tip {dropsfrom}Kuroma
+  collect Kamuro's Head##278098 |q 97404 |goto Winterspring 59.58,11.76 |tip {dropsfrom}Kamuro
+step
+  only haveq(97404)
+  talk Sar Browneye##11718
+  turnin Too Bad to Bear##97404 |goto Winterspring 58.3,12.79
 step
   talk Salfa##11556
   turnin Winterfall Activity##8464 |goto Winterspring 27.73,34.5
@@ -144,6 +181,10 @@ step
   talk Harlo Wigglesworth##11755
   accept A Little Luck##6606 |goto Winterspring 61.12,38.43
 step
+  only level>=55
+  talk Evie Whirlbrew##11188
+  accept Shroud of the Winter Wilds##92859 |goto Winterspring 60.75,37.78
+step
   only haveq(6606)
   note Speak with Witch Doctor Mau'ari in Everlook.
   talk Witch Doctor Mau'ari##10307
@@ -152,6 +193,20 @@ step
   only level>=55
   talk Witch Doctor Mau'ari##10307
   accept Luck Be With You##969 |goto Winterspring 61.92,38.3
+step
+  only level>=60
+  talk Umaron Stragarelm##11757
+  accept Halt the Hail##97490 |goto Winterspring 61.86,38.23
+step
+  only haveq(92859)
+  note Bring 5 Winterspring Chimaera Fur and 5 Winterspring Owl Feathers to Evie Whirlbrew.
+  collect 5 Winterspring Owl Feather##281242 |q 92859/2 |goto Winterspring 60.91,33.9 |tip {dropsfrom}Winterspring Owl, Winterspring Screecher
+  collect Chillwind Chimaera Fur##281241 |q 92859 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
+step
+  only haveq(97490)
+  note Search the southern hills of Winterspring for the giant known as Hailspite and recover the frost moss that grows upon him.
+  kill Hailspite##269213 |q 97490 |goto Winterspring 65.93,56.88 |elite
+  collect Hailspite Frostmoss##278091 |q 97490 |goto Winterspring 65.93,56.88
 step
   only haveq(969)
   note Collect 4 Frostmaul Shards for Witch Doctor Mau'ari in Everlook.
@@ -169,6 +224,14 @@ step
   talk Storm Shadowhoof##10303
   turnin Shy-Rotam##5056 |goto Winterspring 61.93,38.38
 step
+  only haveq(92859)
+  talk Evie Whirlbrew##11188
+  turnin Shroud of the Winter Wilds##92859 |goto Winterspring 60.75,37.78
+step
+  only haveq(97490)
+  talk Umaron Stragarelm##11757
+  turnin Halt the Hail##97490 |goto Winterspring 61.86,38.23
+step
   only completed(969) level>=55
   talk Witch Doctor Mau'ari##10307
   accept Cache of Mau'ari##975 |goto Winterspring 61.92,38.3
@@ -176,6 +239,10 @@ step
   only completed(5056)
   talk Storm Shadowhoof##10303
   accept Past Endeavors##5057 |goto Winterspring 61.93,38.38
+step
+  only completed(92859) level>=55
+  talk Evie Whirlbrew##11188
+  accept Shroud of the Winter Wilds##98462 |goto Winterspring 60.75,37.78
 step
   only haveq(975)
   note Speak to Witch Doctor Mau'ari again in a moment to receive the lucky charm.
@@ -186,6 +253,11 @@ step
   talk Storm Shadowhoof##10303
   turnin Past Endeavors##5057 |goto Winterspring 61.93,38.38
 step
+  only haveq(98462)
+  note Bring 5 Chillwind Chimaera Fur and 5 Winterspring Owl Feathers to Evie Whirlbrew.
+  collect 5 Winterspring Owl Feather##281242 |q 98462/2 |goto Winterspring 60.91,33.9 |tip {dropsfrom}Winterspring Owl, Winterspring Screecher
+  collect 5 Chillwind Chimaera Fur##281241 |q 98462 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
+step
   only completed(5160) level>=57
   talk Haleh##10929
   accept Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
@@ -194,6 +266,10 @@ step
   note Speak with Haleh if you wish to continue.
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
+step
+  only haveq(98462)
+  talk Evie Whirlbrew##11188
+  turnin Shroud of the Winter Wilds##98462 |goto Winterspring 60.75,37.78
 step
   only completed(3908)
   note Seek out Gregan Brewspewer in northern Feralas. From him, learn how you may acquire the Videre Elixir, then return to Donova Snowden in Winterspring.
@@ -233,15 +309,6 @@ step
   talk Kernda##11558
   turnin Winterfall Ritual Totem##8471 |goto Felwood 65.5,3.52 |tip {turninat}Felwood
 step
-  only level>=54
-  talk Warcaller Gorlach##10880
-  accept Camp Mojache##7492 |goto Orgrimmar 37.68,75.16
-step
-  only haveq(7492)
-  note Speak with Talo Thornhoof at Camp Mojache in Feralas.
-  talk Talo Thornhoof##7776
-  turnin Camp Mojache##7492 |goto Feralas 76.18,43.83 |tip {turninat}Feralas
-step
   only haveq(8923)
   note Take the Sealed Venom Container to Mux Manascrambler in Gadgetzan.
   talk Mux Manascrambler##16014
@@ -263,11 +330,6 @@ step
   only completed(3908)
   click A Conspicuous Gravestone##148504
   accept Linken's Sword##3914 |goto Tanaris 53.81,29.06
-step
-  only completed(4741) haveq(4883)
-  note Take the Blue-feathered Necklace to Nara Wildmane.
-  talk Nara Wildmane##5770
-  turnin Guarding Secrets##4883 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
   only haveq(5085)
   note Report back to Donova Snowden with your findings.
@@ -397,6 +459,6 @@ step
   talk Linken##8737
   turnin It's Dangerous to Go Alone##3962 |goto Un'Goro Crater 44.66,8.1 |tip {turninat}Un'Goro Crater
 step
-  note {travel}Silithus
-  goto Silithus 48.95,36.69
+  note {travel}Mount Hyjal
+  goto Mount Hyjal 54.05,84.39
 ]])

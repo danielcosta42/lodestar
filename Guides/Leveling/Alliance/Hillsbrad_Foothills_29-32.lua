@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Hillsbrad Foothills (29-32)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Wetlands (30-33)",
-	rev = "966655c2",
+	rev = "a922ba96",
 }, [[
 step
   ding 28
@@ -14,15 +14,17 @@ step
   talk Warden Thelwater##1719
   accept The Curious Visitor##392 |goto Stormwind City 51.49,69.38
 step
+  only completed(98191)
   talk Lord Grayson Shadowbreaker##928
   accept The Shamed Lieutenant##98219 |goto Stormwind City 48.43,50.22
 step
   talk Tom "Half-fish" Wilson##254078
-  accept A Lack of Virtue##98459 |goto Hillsbrad Foothills 51.2,66.45
+  accept A Lack of Virtue##98459 |goto Hillsbrad Foothills 51.19,66.45
 step
   note {fp}Darla Harris
   goto Hillsbrad Foothills 49.34,52.27 |tip {vendor}
 step
+  only completed(98191)
   note Speak to Lieutenant Farren Orinelle in Southshore in Hillsbrad Foothills.
   talk Lieutenant Farren Orinelle##2228
   turnin The Shamed Lieutenant##98219 |goto Hillsbrad Foothills 51.46,58.39
@@ -51,17 +53,17 @@ step
   talk Lieutenant Farren Orinelle##2228
   turnin Down the Coast##536 |goto Hillsbrad Foothills 51.46,58.39
 step
-  only level>=28
+  only not completed(7321) not haveq(7321) level>=28
   talk Chef Jessen##2430
   accept Soothing Turtle Bisque##555 |goto Hillsbrad Foothills 51.89,58.68
 step
-  only haveq(555)
+  only not completed(7321) not haveq(7321) haveq(555)
   note Bring 10 pieces of Turtle Meat and some Soothing Spices to Chef Jessen in Southshore.
   talk Micha Yance##2381
   buy Soothing Spices##3713 |q 555/2 |goto Hillsbrad Foothills 48.94,55.03
   collect Turtle Meat##3712 |q 555 |goto Hillsbrad Foothills 66.06,38.25 |tip {dropsfrom}Snapjaw
 step
-  only haveq(555)
+  only not completed(7321) not haveq(7321) haveq(555)
   talk Chef Jessen##2430
   turnin Soothing Turtle Bisque##555 |goto Hillsbrad Foothills 51.89,58.68
 step
@@ -225,5 +227,5 @@ step
   turnin A Lack of Virtue##98459 |goto Wetlands 8.66,58.12 |tip {turninat}Wetlands
 step
   note {travel}Wetlands
-  goto Wetlands 53.48,54.53
+  goto Wetlands 58.86,45.15
 ]])

@@ -1,14 +1,14 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-43)", {
+ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-44)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Hillsbrad Foothills (32-40)",
-	rev = "86c1b683",
+	rev = "d4e10848",
 }, [[
 step
-  ding 33
+  ding 34
 step
   note {fp}Shardi
   goto Dustwallow Marsh 35.56,31.88 |tip {vendor}
@@ -27,15 +27,6 @@ step
 step
   talk Nazeer Bloodpike##4791
   accept The Theramore Docks##1202 |goto Dustwallow Marsh 35.21,30.66
-step
-  click Black Shield##20992
-  accept The Black Shield##1251 |goto Dustwallow Marsh 29.63,48.62
-step
-  click Hoofprints##21015
-  accept Suspicious Hoofprints##1268 |goto Dustwallow Marsh 29.7,47.64
-step
-  click Theramore Guard Badge##21042
-  accept Lieutenant Paval Reethe##1269 |goto Dustwallow Marsh 29.83,48.24
 step
   talk "Swamp Eye" Jarl##4792
   accept Soothing Spices##1218 |goto Dustwallow Marsh 55.44,26.27
@@ -65,6 +56,15 @@ step
   note Bring 40 Unpopped Darkmist Eyes to "Swamp Eye" Jarl at the Swamplight Manor.
   collect 40 Unpopped Darkmist Eye##5884 |q 1206 |goto Dustwallow Marsh 32.32,22.29 |tip {dropsfrom}Darkmist Spider, Darkmist Lurker, Darkmist Recluse
 step
+  click Black Shield##20992
+  accept The Black Shield##1251 |goto Dustwallow Marsh 29.63,48.62
+step
+  click Hoofprints##21015
+  accept Suspicious Hoofprints##1268 |goto Dustwallow Marsh 29.7,47.64
+step
+  click Theramore Guard Badge##21042
+  accept Lieutenant Paval Reethe##1269 |goto Dustwallow Marsh 29.83,48.24
+step
   talk Mudcrush Durtfeet##4503
   turnin Hungry!##1177 |goto Dustwallow Marsh 35.15,38.26
 step
@@ -86,10 +86,6 @@ step
 step
   talk Krog##4926
   accept The Black Shield##1321 |goto Dustwallow Marsh 36.42,31.88
-step
-  only completed(1261)
-  talk Nazeer Bloodpike##4791
-  accept Report to Zor##1262 |goto Dustwallow Marsh 35.21,30.66
 step
   note Show the Blackened Iron Shield to Do'gol in Brackenwall Village.
   talk Do'gol##5087
@@ -148,6 +144,10 @@ step
   talk Do'gol##5087
   accept The Black Shield##1323 |goto Dustwallow Marsh 36.53,30.79
 step
+  only completed(1261)
+  talk Nazeer Bloodpike##4791
+  accept Report to Zor##1262 |goto Dustwallow Marsh 35.21,30.66
+step
   note Talk with Krog in Brackenwall Village.
   talk Krog##4926
   turnin The Black Shield##1323 |goto Dustwallow Marsh 36.42,31.88
@@ -166,6 +166,10 @@ step
   only level>=38
   talk Draz'Zilb##4501
   accept Identifying the Brood##1169 |goto Dustwallow Marsh 37.15,33.09
+step
+  only level>=38
+  talk Krak##4883
+  accept Skin Careful, Skin Sharp##98192 |goto Dustwallow Marsh 36.4,30.85
 step
   only haveq(1166)
   note Overlord Mok'Morokk in Brackenwall Village wants you to retrieve his grog, snuff and strongbox in Dustwallow Swamp.
@@ -217,13 +221,58 @@ step
   talk Draz'Zilb##4501
   accept The Brood of Onyxia##1172 |goto Dustwallow Marsh 37.15,33.09
 step
+  only haveq(98192)
+  note Bring 8 Intact Raptor Hides to Krak in Brackenwall Village.
+  collect 8 Intact Raptor Hide##279601 |q 98192 |goto Dustwallow Marsh 34.83,66.62 |tip {dropsfrom}Bloodfen Razormaw, Bloodfen Lashtail
+step
+  only level>=39
+  talk Drazzit Dripvalve##270723
+  accept Whelps are the Worst!##98205 |goto Dustwallow Marsh 41.01,75.73
+step
+  only level>=39
+  talk Drazzit Dripvalve##270723
+  accept Dragon Scales, Post Burnt Tails##98215 |goto Dustwallow Marsh 41.01,75.73
+step
+  only level>=39
+  talk Gizzix Grimegurgle##270727
+  accept Active Ingredient##98231 |goto Dustwallow Marsh 40.97,75.68
+step
   only haveq(1172)
   note Draz'Zilb in Brackenwall Village wants you to destroy 5 Eggs of Onyxia.
   click Egg of Onyxia##20359 |q 1172 |goto Dustwallow Marsh 56.65,75.41
 step
+  only haveq(98205)
+  note Slay 8 Searing Hatchlings and 8 Searing Whelps.
+  kill Searing Whelp##4324 |q 98205/2 |goto Dustwallow Marsh 45.4,73.6
+  kill Searing Hatchling##4323 |q 98205 |goto Dustwallow Marsh 45.4,73
+step
+  only haveq(98215)
+  note Bring 20 Shed Dark Dragonscales to Drazzit Dripvalve.
+  collect 20 Shed Dark Dragonscale##279934 |q 98215 |goto Dustwallow Marsh 44.26,75.39
+step
+  only haveq(98231)
+  note Bring 10 Wyrmtail to Gizzix Grimegurgle.
+  collect 10 Wyrmtail##280092 |q 98231 |goto Dustwallow Marsh 47.22,74.48
+step
+  only haveq(98205)
+  talk Drazzit Dripvalve##270723
+  turnin Whelps are the Worst!##98205 |goto Dustwallow Marsh 41.01,75.73
+step
+  only haveq(98215)
+  talk Drazzit Dripvalve##270723
+  turnin Dragon Scales, Post Burnt Tails##98215 |goto Dustwallow Marsh 41.01,75.73
+step
+  only haveq(98231)
+  talk Gizzix Grimegurgle##270727
+  turnin Active Ingredient##98231 |goto Dustwallow Marsh 40.97,75.68
+step
   only haveq(1172)
   talk Draz'Zilb##4501
   turnin The Brood of Onyxia##1172 |goto Dustwallow Marsh 37.15,33.09
+step
+  only haveq(98192)
+  talk Krak##4883
+  turnin Skin Careful, Skin Sharp##98192 |goto Dustwallow Marsh 36.4,30.85
 step
   only completed(1172) level>=38
   talk Overlord Mok'Morokk##4500
@@ -249,7 +298,6 @@ step
   talk Mosarn##4943
   turnin The Black Shield##1276 |goto Thunder Bluff 54.01,80.77 |tip {turninat}Thunder Bluff
 step
-  only level>=35
   talk Melor Stonehoof##3441
   accept Deadmire##1205 |goto Thunder Bluff 61.54,80.92
 step
@@ -257,7 +305,7 @@ step
   talk Ursyn Ghull##3048
   accept Journey to the Marsh##1947 |goto Thunder Bluff 25.7,14.19
 step
-  only Mage level>=35
+  only Mage
   talk Ursyn Ghull##3048
   accept Return to the Marsh##1953 |goto Thunder Bluff 25.7,14.19
 step
@@ -266,7 +314,7 @@ step
   talk Tabetha##6546
   turnin Journey to the Marsh##1947 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Mage haveq(1953)
+  only Mage
   note Speak with Tabetha.
   talk Tabetha##6546
   turnin Return to the Marsh##1953 |goto Dustwallow Marsh 46.06,57.09
@@ -275,11 +323,10 @@ step
   talk Tabetha##6546
   accept Hidden Secrets##1949 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Mage level>=35
+  only Mage
   talk Tabetha##6546
   accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
-  only haveq(1205)
   note Bring Deadmire's Tooth to Melor in Thunder Bluff.
   collect Deadmire's Tooth##5945 |q 1205 |goto Dustwallow Marsh 50.2,52.7 |tip {dropsfrom}Deadmire
 step
@@ -292,7 +339,6 @@ step
   talk Deino##5885
   accept Tabetha's Task##2861 |goto Orgrimmar 38.45,86.13
 step
-  only haveq(1205)
   talk Melor Stonehoof##3441
   turnin Deadmire##1205 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
 step
@@ -318,15 +364,15 @@ step
   talk Magus Tirth##6548
   turnin Get the Scoop##1950 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
 step
-  only Mage haveq(1954)
+  only Mage
   note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
   collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
 step
-  only Mage haveq(1954)
+  only Mage
   talk Tabetha##6546
   turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
-  only Mage completed(1954) level>=40
+  only Mage level>=40
   talk Tabetha##6546
   accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step

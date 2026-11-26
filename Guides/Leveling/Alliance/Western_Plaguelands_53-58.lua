@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (53-58)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (55-57)",
-	rev = "d77928b6",
+	rev = "a73b2b57",
 }, [[
 step
   ding 52
@@ -225,6 +225,14 @@ step
   talk Alchemist Arbington##11056
   accept Skeletal Fragments##5537 |goto Western Plaguelands 42.66,83.77
 step
+  only level>=53
+  talk Fallen Skyborne##270191
+  accept River Ends##7790 |goto Western Plaguelands 70.09,44.15
+step
+  only haveq(7790)
+  note Look for the cause of the Skyborne struggle along Thondroril River.
+  turnin River Ends##7790 |goto Western Plaguelands 70.09,44.12
+step
   talk Lord Tirion Fordring##12126
   accept Demon Dogs##5542 |goto Western Plaguelands 53.95,24.45
 step
@@ -432,5 +440,5 @@ step
   turnin Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
 step
   note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 22.22,50.23
+  goto Swamp of Sorrows 22.31,50.41
 ]])

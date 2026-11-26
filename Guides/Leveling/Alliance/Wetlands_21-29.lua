@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Wetlands (21-29)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Elwynn Forest (21-28)",
-	rev = "130970d6",
+	rev = "82f8522e",
 }, [[
 step
   ding 20
@@ -40,8 +40,8 @@ step
   kill Bluegill Murloc##1024 |q 279 |goto Wetlands 15.26,39.83
 step
   note Recover 6 Khaz Modan Timber and 30 Khaz Modan Iron from Menethil Harbor for Valstag Ironjaw.
-  collect 30 Khaz Modan Iron##279822 |q 98197/2 |goto Wetlands 11.4,53
-  collect 6 Khaz Modan Timber##279821 |q 98197 |goto Wetlands 6,52.8
+  collect 30 Khaz Modan Iron##279822 |q 98197/2 |goto Wetlands 11.34,52.99
+  collect 6 Khaz Modan Timber##279821 |q 98197 |goto Wetlands 5.9,52.93
 step
   only haveq(279)
   talk Karl Boran##1242
@@ -74,45 +74,34 @@ step
   kill Mosshide Mongrel##1008 |q 276/2 |goto Wetlands 60.74,64.31
   kill Mosshide Gnoll##1007 |q 276 |goto Wetlands 61.89,71.88
 step
-  only Shaman level>=20
-  talk Hervdana Saegrund##258203
-  accept Call of Water##94497 |goto Wetlands 65.76,76.52
+  only haveq(276)
+  talk Rethiel the Greenwarden##1244
+  turnin Tramping Paws##276 |goto Wetlands 56.37,40.4
 step
-  only Shaman haveq(94497)
-  note Fill the Empty Brown Waterskin at the bottom of the waterfalls below Hervdana's cave and return it to her in the Wetlands.
-  collect Full Brown Waterskin##265734 |q 94497 |goto Wetlands 65.76,76.52
+  only completed(276) level>=20
+  talk Rethiel the Greenwarden##1244
+  accept Fire Taboo##277 |goto Wetlands 56.37,40.4
 step
-  only Shaman level>=20
-  talk Hervdana Saegrund##258203
-  accept Call of Water##94499 |goto Wetlands 65.76,76.52
+  only haveq(277)
+  note Bring Rethiel the Greenwarden 9 Crude Flints.
+  collect 9 Crude Flint##2611 |q 277 |goto Wetlands 61.2,58.26 |tip {dropsfrom}Mosshide Mistweaver, Mosshide Fenrunner, Mosshide Trapper
 step
-  only Shaman haveq(94499)
-  note Fill the Empty Red Waterskin at Stonewatch Falls near the Nightcrawler Murlocs and return to Hervdana Saegrund in the Wetlands.
-  collect Full Red Waterskin##265748 |q 94499 |goto Wetlands 65.76,76.52
+  only haveq(277)
+  talk Rethiel the Greenwarden##1244
+  turnin Fire Taboo##277 |goto Wetlands 56.37,40.4
 step
-  only Shaman level>=20
-  talk Hervdana Saegrund##258203
-  accept Call of Water##94500 |goto Wetlands 65.76,76.52
+  only level>=22
+  talk Ormer Ironbraid##1078
+  accept Ormer's Revenge##294 |goto Wetlands 38.18,50.89
 step
-  only Shaman haveq(94500)
-  note Fill the Unfilled Blue Waterskin at the waters of Astranaar in Ashenvale and return to Hervdana Saegrund in the Wetlands.
-  collect Full Blue Waterskin##265773 |q 94500 |goto Wetlands 65.76,76.52
+  only haveq(294)
+  note Ormer Ironbraid at the Whelgar Excavation Site wants you to kill 10 Mottled Screechers and 10 Mottled Raptors.
+  kill Mottled Screecher##1021 |q 294/2 |goto Wetlands 24.22,52.53
+  kill Mottled Raptor##1020 |q 294 |goto Wetlands 23.89,47.15
 step
-  only Shaman level>=20
-  talk Hervdana Saegrund##258203
-  accept Call of Water##94501 |goto Wetlands 65.76,76.52
-step
-  only Shaman haveq(94497)
-  talk Hervdana Saegrund##258203
-  turnin Call of Water##94497 |goto Wetlands 65.76,76.52
-step
-  only Shaman haveq(94499)
-  talk Hervdana Saegrund##258203
-  turnin Call of Water##94499 |goto Wetlands 65.76,76.52
-step
-  only Shaman haveq(94500)
-  talk Hervdana Saegrund##258203
-  turnin Call of Water##94500 |goto Wetlands 65.76,76.52
+  only haveq(294)
+  talk Ormer Ironbraid##1078
+  turnin Ormer's Revenge##294 |goto Wetlands 38.18,50.89
 step
   note Deliver the Bundle of Crocolisk Skins to James Halloran, the tanner, in Menethil Harbor.
   talk James Halloran##2094
@@ -125,6 +114,10 @@ step
   talk Caitlin Grassman##1480
   turnin Alchemical Hazards##98282 |goto Wetlands 11.88,58.82
 step
+  only level>=21
+  talk Tarrel Rockweaver##2096
+  accept In Search of The Excavation Team##305 |goto Wetlands 11.5,52.17
+step
   talk Sida##2111
   accept Digging Through the Ooze##470 |goto Wetlands 11.8,57.99
 step
@@ -132,55 +125,23 @@ step
   talk Archaeologist Flagongut##2911
   accept The Absent Minded Prospector##943 |goto Wetlands 10.84,60.43
 step
-  only level>=21
-  talk Tarrel Rockweaver##2096
-  accept In Search of The Excavation Team##305 |goto Wetlands 11.5,52.17
-step
-  only haveq(305)
-  note Tarrel Rockweaver wants you to travel to the Excavation Site and contact Merrin Rockweaver.
-  talk Merrin Rockweaver##1076
-  turnin In Search of The Excavation Team##305 |goto Wetlands 38.91,52.34
-step
-  only level>=22
-  talk Ormer Ironbraid##1078
-  accept Ormer's Revenge##294 |goto Wetlands 38.18,50.89
-step
-  only completed(305) level>=21
-  talk Merrin Rockweaver##1076
-  accept In Search of The Excavation Team##306 |goto Wetlands 38.91,52.34
-step
-  only haveq(294)
-  note Ormer Ironbraid at the Whelgar Excavation Site wants you to kill 10 Mottled Screechers and 10 Mottled Raptors.
-  kill Mottled Screecher##1021 |q 294/2 |goto Wetlands 24.22,52.53
-  kill Mottled Raptor##1020 |q 294 |goto Wetlands 23.89,47.15
+  only completed(279)
+  talk Karl Boran##1242
+  accept Reclaiming Goods##281 |goto Wetlands 8.32,58.57
 step
   only completed(942)
   note Archaeologist Flagongut in Menethil Harbor wants you to bring him the Stone of Relu and Flagongut's Fossil.
   collect Stone of Relu##5233 |q 943/1 |goto Wetlands 23.89,47.15 |tip {dropsfrom}Mottled Raptor, Mottled Screecher, Mottled Scytheclaw
   collect Flagongut's Fossil##5234 |q 943 |goto Wetlands 38.86,52.21
 step
-  only completed(942)
-  talk Archaeologist Flagongut##2911
-  turnin The Absent Minded Prospector##943 |goto Wetlands 10.84,60.43
+  only haveq(305)
+  note Tarrel Rockweaver wants you to travel to the Excavation Site and contact Merrin Rockweaver.
+  talk Merrin Rockweaver##1076
+  turnin In Search of The Excavation Team##305 |goto Wetlands 38.91,52.34
 step
-  only haveq(306)
-  note Return to Tarrel Rockweaver with Merrin's note.
-  talk Tarrel Rockweaver##2096
-  turnin In Search of The Excavation Team##306 |goto Wetlands 11.5,52.17
-step
-  only completed(279)
-  talk Karl Boran##1242
-  accept Reclaiming Goods##281 |goto Wetlands 8.32,58.57
-step
-  talk Karl Boran##1242
-  accept Return the Statuette##98189 |goto Wetlands 8.32,58.57
-step
-  talk Captain Stoutfist##2104
-  accept A Friend of the Family##98190 |goto Wetlands 9.86,57.49
-step
-  note Bring the Menethil Statuette to Captain Stoutfist in Menethil Keep.
-  talk Captain Stoutfist##2104
-  turnin Return the Statuette##98189 |goto Wetlands 9.86,57.49
+  only completed(305) level>=21
+  talk Merrin Rockweaver##1076
+  accept In Search of The Excavation Team##306 |goto Wetlands 38.91,52.34
 step
   only haveq(281)
   note Search the crates and barrels at the coastal Murloc camps.
@@ -211,68 +172,48 @@ step
   talk Karl Boran##1242
   turnin Return the Statuette##286 |goto Wetlands 8.32,58.57
 step
+  only haveq(306)
+  note Return to Tarrel Rockweaver with Merrin's note.
+  talk Tarrel Rockweaver##2096
+  turnin In Search of The Excavation Team##306 |goto Wetlands 11.5,52.17
+step
+  only completed(942)
+  talk Archaeologist Flagongut##2911
+  turnin The Absent Minded Prospector##943 |goto Wetlands 10.84,60.43
+step
+  only completed(286)
+  talk Karl Boran##1242
+  accept Return the Statuette##98189 |goto Wetlands 8.32,58.57
+step
   talk James Halloran##2094
   accept Apprentice's Duties##471 |goto Wetlands 8.55,55.74
 step
-  only haveq(294)
-  talk Ormer Ironbraid##1078
-  turnin Ormer's Revenge##294 |goto Wetlands 38.18,50.89
+  only haveq(98189)
+  note Bring the Menethil Statuette to Captain Stoutfist in Menethil Keep.
+  talk Captain Stoutfist##2104
+  turnin Return the Statuette##98189 |goto Wetlands 9.86,57.49
 step
-  only haveq(276)
-  talk Rethiel the Greenwarden##1244
-  turnin Tramping Paws##276 |goto Wetlands 56.37,40.4
+  only completed(98189)
+  talk Captain Stoutfist##2104
+  accept A Friend of the Family##98190 |goto Wetlands 9.86,57.49
 step
-  only completed(276)
-  talk Rethiel the Greenwarden##1244
-  accept Fire Taboo##277 |goto Wetlands 56.37,40.4
+  note Collect 6 Giant Crocolisk Skins and bring them to James Halloran in Menethil Harbor.
+  collect 6 Giant Crocolisk Skin##3348 |q 471 |goto Wetlands 18.37,27.04 |tip {dropsfrom}Giant Wetlands Crocolisk
 step
-  only haveq(277)
-  note Bring Rethiel the Greenwarden 9 Crude Flints.
-  collect 9 Crude Flint##2611 |q 277 |goto Wetlands 61.2,58.26 |tip {dropsfrom}Mosshide Mistweaver, Mosshide Fenrunner, Mosshide Trapper
-step
-  only haveq(277)
-  talk Rethiel the Greenwarden##1244
-  turnin Fire Taboo##277 |goto Wetlands 56.37,40.4
+  note One of the oozes at Ironbeard's Tomb has Sida's bag, retrieve it and bring it back to her in Menethil Harbor.
+  collect Sida's Bag##3349 |q 470 |goto Wetlands 44.63,24.76 |tip {dropsfrom}Crimson Ooze, Black Ooze, Monstrous Ooze
 step
   only completed(277)
   talk Rethiel the Greenwarden##1244
   accept Blisters on The Land##275 |goto Wetlands 56.37,40.4
 step
-  note One of the oozes at Ironbeard's Tomb has Sida's bag, retrieve it and bring it back to her in Menethil Harbor.
-  collect Sida's Bag##3349 |q 470 |goto Wetlands 44.63,24.76 |tip {dropsfrom}Crimson Ooze, Black Ooze, Monstrous Ooze
-step
   only haveq(275)
   note Kill 12 Fen Creepers, then return to Rethiel the Greenwarden in the Wetlands.
   kill Fen Creeper##1040 |q 275 |goto Wetlands 35.56,33.45
 step
-  note Collect 6 Giant Crocolisk Skins and bring them to James Halloran in Menethil Harbor.
-  collect 6 Giant Crocolisk Skin##3348 |q 471 |goto Wetlands 18.37,27.04 |tip {dropsfrom}Giant Wetlands Crocolisk
-step
-  talk Sida##2111
-  turnin Digging Through the Ooze##470 |goto Wetlands 11.8,57.99
-step
-  talk James Halloran##2094
-  turnin Apprentice's Duties##471 |goto Wetlands 8.55,55.74
-step
-  only level>=22
-  talk First Mate Fitzsimmons##1239
-  accept The Third Fleet##288 |goto Wetlands 10.9,59.64
-step
-  only haveq(288)
-  note Buy First Mate Fitzsimmons a Flagon of Mead.
-  talk Innkeeper Helbrek##1464
-  buy Flagon of Mead##2594 |q 288 |goto Wetlands 10.7,60.95
-step
-  only level>=25
-  talk Harlo Barnaby##2097
-  accept Fall of Dun Modr##472 |goto Wetlands 10.85,55.9
-step
-  talk James Halloran##2094
-  accept Crocs of the Sky##98072 |goto Wetlands 8.55,55.74
-step
-  only haveq(288)
-  talk First Mate Fitzsimmons##1239
-  turnin The Third Fleet##288 |goto Wetlands 10.9,59.64
+  only haveq(275)
+  talk Rethiel the Greenwarden##1244
+  turnin Blisters on The Land##275 |goto Wetlands 56.37,40.4
 step
   only completed(294) level>=22
   talk Ormer Ironbraid##1078
@@ -299,20 +240,27 @@ step
   talk Prospector Whelgar##1077
   turnin Uncovering the Past##299 |goto Wetlands 38.81,52.39
 step
-  note Collect 8 Pristine Crimson Scales and bring them to James Halloran in Menethil Harbor.
-  collect 8 Pristine Crimson Scale##279385 |q 98072 |goto Wetlands 63.43,48.8 |tip {dropsfrom}Red Whelp, Lost Whelp, Flamesnorting Whelp
-step
-  only haveq(275)
-  talk Rethiel the Greenwarden##1244
-  turnin Blisters on The Land##275 |goto Wetlands 56.37,40.4
-step
-  only haveq(472)
-  note Search for Longbraid near the town of Dun Modr.
-  talk Longbraid the Grim##1071
-  turnin Fall of Dun Modr##472 |goto Wetlands 49.8,18.26
+  talk Sida##2111
+  turnin Digging Through the Ooze##470 |goto Wetlands 11.8,57.99
 step
   talk James Halloran##2094
-  turnin Crocs of the Sky##98072 |goto Wetlands 8.55,55.74
+  turnin Apprentice's Duties##471 |goto Wetlands 8.55,55.74
+step
+  only level>=22
+  talk First Mate Fitzsimmons##1239
+  accept The Third Fleet##288 |goto Wetlands 10.9,59.64
+step
+  only haveq(288)
+  note Buy First Mate Fitzsimmons a Flagon of Mead.
+  talk Innkeeper Helbrek##1464
+  buy Flagon of Mead##2594 |q 288 |goto Wetlands 10.7,60.95
+step
+  talk James Halloran##2094
+  accept Crocs of the Sky##98072 |goto Wetlands 8.55,55.74
+step
+  only haveq(288)
+  talk First Mate Fitzsimmons##1239
+  turnin The Third Fleet##288 |goto Wetlands 10.9,59.64
 step
   only completed(455) level>=23
   talk Valstag Ironjaw##2086
@@ -331,17 +279,23 @@ step
   talk Captain Stoutfist##2104
   accept War Banners##464 |goto Wetlands 9.86,57.49
 step
-  only haveq(464)
-  note Bring 8 Dragonmaw War Banners to Captain Stoutfist.
-  collect 8 Dragonmaw War Banner##3337 |q 464 |goto Wetlands 45.83,45.42 |tip {dropsfrom}Dragonmaw Raider, Dragonmaw Swamprunner, Dragonmaw Centurion
-step
   only haveq(98221)
   note Captain Stoutfist in Menethil Keep wants you to destroy the 4 sets of Attack Plans in the Angerfang Encampment.
   get From the Ashes |q 98221 |goto Wetlands 53.25,54.08
 step
+  note Collect 8 Pristine Crimson Scales and bring them to James Halloran in Menethil Harbor.
+  collect 8 Pristine Crimson Scale##279385 |q 98072 |goto Wetlands 63.43,48.8 |tip {dropsfrom}Red Whelp, Lost Whelp, Flamesnorting Whelp
+step
+  only haveq(464)
+  note Bring 8 Dragonmaw War Banners to Captain Stoutfist.
+  collect 8 Dragonmaw War Banner##3337 |q 464 |goto Wetlands 45.83,45.42 |tip {dropsfrom}Dragonmaw Raider, Dragonmaw Swamprunner, Dragonmaw Centurion
+step
   only haveq(464)
   talk Captain Stoutfist##2104
   turnin War Banners##464 |goto Wetlands 9.86,57.49
+step
+  talk James Halloran##2094
+  turnin Crocs of the Sky##98072 |goto Wetlands 8.55,55.74
 step
   only haveq(98221)
   talk Captain Stoutfist##2104
@@ -354,25 +308,11 @@ step
   talk Sylessa Duskwhisper##270844
   accept Bloom of the Heavens##98208 |goto Wetlands 7.92,55.8
 step
-  note Recover Nord'el for Sylessa Duskwhisper in Menethil Harbor.
-  collect Nord'el##279915 |q 98208 |goto Wetlands 7.92,55.8
-step
-  talk Captain Stoutfist##2104
-  accept This Land Was Their Land##98230 |goto Wetlands 9.86,57.49
-step
   talk James Halloran##2094
   accept Crimson Crate Delivery##98240 |goto Wetlands 8.55,55.74
 step
-  talk Sylessa Duskwhisper##270844
-  turnin Bloom of the Heavens##98208 |goto Wetlands 7.92,55.8
-step
-  only haveq(289)
-  note Kill 13 Cursed Sailors, 5 Cursed Marines and First Mate Snellig. Bring Snellig's Snuffbox to First Mate Fitzsimmons in Menethil Harbor.
-  kill Cursed Sailor##1157 |q 289 |goto Wetlands 14.03,30.28
-step
-  only haveq(289)
-  talk First Mate Fitzsimmons##1239
-  turnin The Cursed Crew##289 |goto Wetlands 10.9,59.64
+  note Recover Nord'el for Sylessa Duskwhisper in Menethil Harbor.
+  collect Nord'el##279915 |q 98208 |goto Wetlands 12.17,63.76
 step
   only completed(295)
   talk Ormer Ironbraid##1078
@@ -386,10 +326,6 @@ step
   talk Ormer Ironbraid##1078
   turnin Ormer's Revenge##296 |goto Wetlands 38.18,50.89
 step
-  note Find Howin Kindfeather east of Menethil Harbor, along the road.
-  talk Howin Kindfeather##270637
-  turnin This Land Was Their Land##98230 |goto Wetlands 49.36,42.13
-step
   note Bring the Crimson Crate to Howin Kindfeather off the road to the east of Menethil Harbor.
   talk Howin Kindfeather##270637
   turnin Crimson Crate Delivery##98240 |goto Wetlands 49.36,42.13
@@ -400,17 +336,28 @@ step
   talk Howin Kindfeather##270637
   accept Trying Times##98246 |goto Wetlands 49.36,42.13
 step
+  note Collect 10 Razormaw Incisors for Howin Kindfeather.
+  collect 10 Razormaw Incisor##280103 |q 98245 |goto Wetlands 67.84,30.74 |tip {dropsfrom}Highland Razormaw, Elder Razormaw
+step
   note Gather 12 Perfect Razormaw Eggs for Howin Kindfeather.
-  collect 12 Perfect Razormaw Egg##280132 |q 98246 |goto Wetlands 49.36,42.13
+  collect 12 Perfect Razormaw Egg##280132 |q 98246 |goto Wetlands 64.63,31.77 |tip {dropsfrom}Razormaw Eggs, Razormaw Egg
+step
+  talk Howin Kindfeather##270637
+  turnin Razormaw Needling##98245 |goto Wetlands 49.36,42.13
 step
   talk Howin Kindfeather##270637
   turnin Trying Times##98246 |goto Wetlands 49.36,42.13
 step
-  note Collect 10 Razormaw Incisors for Howin Kindfeather.
-  collect 10 Razormaw Incisor##280103 |q 98245 |goto Wetlands 67.84,30.74 |tip {dropsfrom}Highland Razormaw, Elder Razormaw
+  only haveq(289)
+  note Kill 13 Cursed Sailors, 5 Cursed Marines and First Mate Snellig. Bring Snellig's Snuffbox to First Mate Fitzsimmons in Menethil Harbor.
+  kill Cursed Sailor##1157 |q 289 |goto Wetlands 14.03,30.28
 step
-  talk Howin Kindfeather##270637
-  turnin Razormaw Needling##98245 |goto Wetlands 49.36,42.13
+  only haveq(289)
+  talk First Mate Fitzsimmons##1239
+  turnin The Cursed Crew##289 |goto Wetlands 10.9,59.64
+step
+  talk Sylessa Duskwhisper##270844
+  turnin Bloom of the Heavens##98208 |goto Wetlands 7.92,55.8
 step
   only completed(161)
   note Ashlan Stonesmirk wants you to return to Chief Engineer Hinderweir and inform him of the new discovery.
@@ -420,11 +367,6 @@ step
   only completed(161)
   talk Chief Engineer Hinderweir VII##1093
   accept A Dark Threat Looms##278 |goto Loch Modan 46.05,13.61
-step
-  only Shaman haveq(94501)
-  note Bring the Vial of Purest Water to Norric Lochthane in Loch Modan.
-  talk Norric Lochthane##258043
-  turnin Call of Water##94501 |goto Loch Modan 41.76,19.05 |tip {turninat}Loch Modan
 step
   only completed(161)
   note Chief Engineer Hinderweir wants you to gather Lurker Venom, a Mo'grosh Crystal, and a Crocolisk Tear.
@@ -454,6 +396,7 @@ step
   talk Chief Engineer Hinderweir VII##1093
   turnin A Dark Threat Looms##283 |goto Loch Modan 46.05,13.61 |tip {turninat}Loch Modan
 step
+  only haveq(98190)
   note Bring the Menethil Statuette to Highlord Bolvar Fordragon in Stormwind Keep.
   talk Highlord Bolvar Fordragon##1748
   turnin A Friend of the Family##98190 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City

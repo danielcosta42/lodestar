@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (22-28)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Thousand Needles (27-33)",
-	rev = "3f6df189",
+	rev = "4c378c5b",
 }, [[
 step
   ding 21
@@ -40,77 +40,6 @@ step
   talk Serge Hinott##2391
   turnin Hinott's Assistance##2480 |goto Hillsbrad Foothills 61.63,19.19
 step
-  note Apothecary Lydon of Tarren Mill wants 10 Gray Bear Tongues and some Creeper Ichor.
-  collect 10 Gray Bear Tongue##3476 |q 496/1 |goto Hillsbrad Foothills 59.07,32.75 |tip {dropsfrom}Gray Bear, Vicious Gray Bear, Elder Gray Bear
-  collect Creeper Ichor##3477 |q 496 |goto Hillsbrad Foothills 59.56,35.19 |tip {dropsfrom}Forest Moss Creeper, Giant Moss Creeper, Elder Moss Creeper
-step
-  talk Apothecary Lydon##2216
-  turnin Elixir of Suffering##496 |goto Hillsbrad Foothills 61.44,19.06
-step
-  talk Apothecary Lydon##2216
-  accept Elixir of Suffering##499 |goto Hillsbrad Foothills 61.44,19.06
-step
-  only level>=21
-  talk Apothecary Lydon##2216
-  accept Elixir of Pain##501 |goto Hillsbrad Foothills 61.44,19.06
-step
-  talk High Executor Darthalia##2215
-  accept Battle of Hillsbrad##527 |goto Hillsbrad Foothills 62.33,20.45
-step
-  note Give Umpi the Elixir of Suffering.
-  talk Umpi##2230
-  turnin Elixir of Suffering##499 |goto Hillsbrad Foothills 61.55,19.14
-step
-  only haveq(501)
-  note Bring 10 vials of Mountain Lion Blood to Apothecary Lydon in Tarren Mill.
-  collect 10 Mountain Lion Blood##3496 |q 501 |goto Hillsbrad Foothills 53.42,39.28 |tip {dropsfrom}Starving Mountain Lion, Feral Mountain Lion, Mountain Lion
-step
-  note Kill 6 Hillsbrad Farmhands, 6 Hillsbrad Farmers, Farmer Ray and Farmer Getz and report back to Darthalia in Tarren Mill.
-  kill Farmer Getz##2403 |q 527/4 |goto Hillsbrad Foothills 36.4,39.4
-  kill Hillsbrad Farmer##2266 |q 527/1 |goto Hillsbrad Foothills 34.79,38.52
-  kill Hillsbrad Farmhand##2360 |q 527/2 |goto Hillsbrad Foothills 33.83,40.09
-  kill Farmer Ray##232 |q 527 |goto Hillsbrad Foothills 33.22,34.76
-step
-  talk Deathstalker Lesh##2214
-  accept Time To Strike##494 |goto Hillsbrad Foothills 20.79,47.4
-step
-  note Travel to Tarren Mill to deliver Deathstalker Lesh's message to High Executor Darthalia.
-  talk High Executor Darthalia##2215
-  turnin Time To Strike##494 |goto Hillsbrad Foothills 62.33,20.45
-step
-  only haveq(501)
-  talk Apothecary Lydon##2216
-  turnin Elixir of Pain##501 |goto Hillsbrad Foothills 61.44,19.06
-step
-  talk High Executor Darthalia##2215
-  turnin Battle of Hillsbrad##527 |goto Hillsbrad Foothills 62.33,20.45
-step
-  only completed(501)
-  talk Apothecary Lydon##2216
-  accept Elixir of Pain##502 |goto Hillsbrad Foothills 61.44,19.06
-step
-  talk High Executor Darthalia##2215
-  accept Battle of Hillsbrad##528 |goto Hillsbrad Foothills 62.33,20.45
-step
-  talk Deathguard Samsa##2418
-  accept Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
-step
-  talk High Executor Darthalia##2215
-  accept Scout Support##98094 |goto Hillsbrad Foothills 62.33,20.45
-step
-  only Undead Paladin
-  talk Ott##3539
-  accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Undead Paladin
-  talk Ott##3539
-  accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Undead Paladin
-  note Watch as Ott forges your blade.
-  talk Ott##3539
-  turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
-step
   note Krusk in Tarren Mill needs you to free Drull and Tog'thar from Durnholde Keep.
   click Locked ball and chain##1721 |q 498/1 |goto Hillsbrad Foothills 75.33,41.5
   click Locked ball and chain##1722 |q 498 |goto Hillsbrad Foothills 79.79,39.65
@@ -123,36 +52,8 @@ step
   note Bring 5 Vials of Innocent Blood to Apothecary Lydon in Tarren Mill.
   collect 5 Vial of Innocent Blood##5620 |q 1066 |goto Hillsbrad Foothills 78.73,43.51 |tip {dropsfrom}Syndicate Shadow Mage
 step
-  note High Executor Darthalia wants you to deliver updated orders to Deathstalker Masoj, south of Tarren Mill, outside of Dun Garok.
-  talk Deathstalker Masoj##270438
-  turnin Scout Support##98094 |goto Hillsbrad Foothills 63.58,53.11
-step
-  talk Deathstalker Masoj##270438
-  accept Valuable Vantages##98095 |goto Hillsbrad Foothills 63.58,53.11
-step
-  note Deathstalker Masoj needs you to place the three Apothecary Vials on peaks around Hillsbrad Foothills and return to him.
-  talk Deathstalker Masoj##270438
-  turnin Valuable Vantages##98095 |goto Hillsbrad Foothills 63.58,53.11
-step
-  note Kill 15 Hillsbrad Peasants and report back to Darthalia in Tarren Mill.
-  kill Hillsbrad Peasant##2267 |q 528 |goto Hillsbrad Foothills 34.06,45.69
-step
-  only haveq(502)
-  note Feed the Elixir of Pain to Stanley.
-  talk Stanley##2274
-  turnin Elixir of Pain##502 |goto Hillsbrad Foothills 32.66,35.32
-step
-  note Deathguard Samsa of Tarren Mill wants 30 Hillsbrad Human Skulls.
-  collect 30 Hillsbrad Human Skull##3692 |q 546 |goto Hillsbrad Foothills 33.22,34.76 |tip {dropsfrom}Farmer Ray, Syndicate Shadow Mage, Syndicate Rogue
-step
   talk Krusk##2229
   turnin The Rescue##498 |goto Hillsbrad Foothills 63.24,20.66
-step
-  talk High Executor Darthalia##2215
-  turnin Battle of Hillsbrad##528 |goto Hillsbrad Foothills 62.33,20.45
-step
-  talk Deathguard Samsa##2418
-  turnin Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
 step
   talk High Executor Darthalia##2215
   turnin WANTED: Syndicate Personnel##549 |goto Hillsbrad Foothills 62.33,20.45
@@ -165,8 +66,128 @@ step
   talk Apothecary Lydon##2216
   accept Return to Thunder Bluff##1067 |goto Hillsbrad Foothills 61.44,19.06
 step
+  only level>=21
+  talk Apothecary Lydon##2216
+  accept Elixir of Pain##501 |goto Hillsbrad Foothills 61.44,19.06
+step
+  talk High Executor Darthalia##2215
+  accept Battle of Hillsbrad##527 |goto Hillsbrad Foothills 62.33,20.45
+step
+  only Paladin completed(95036)
+  talk Trevan Rol##248840
+  accept An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.3
+step
+  only Paladin completed(95036)
+  note Speak with Ott and ask him to forge your blade.
+  talk Ott##3539
+  turnin An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  talk Ott##3539
+  accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  note Watch as Ott forges your blade.
+  talk Ott##3539 |q 95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  talk Ott##3539
+  turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  talk Ott##3539
+  accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
+  talk Trevan Rol##248840
+  turnin The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.3
+step
+  note Apothecary Lydon of Tarren Mill wants 10 Gray Bear Tongues and some Creeper Ichor.
+  collect 10 Gray Bear Tongue##3476 |q 496/1 |goto Hillsbrad Foothills 59.07,32.75 |tip {dropsfrom}Gray Bear, Vicious Gray Bear, Elder Gray Bear
+  collect Creeper Ichor##3477 |q 496 |goto Hillsbrad Foothills 59.56,35.19 |tip {dropsfrom}Forest Moss Creeper, Giant Moss Creeper, Elder Moss Creeper
+step
+  only haveq(501)
+  note Bring 10 vials of Mountain Lion Blood to Apothecary Lydon in Tarren Mill.
+  collect 10 Mountain Lion Blood##3496 |q 501 |goto Hillsbrad Foothills 53.42,39.28 |tip {dropsfrom}Starving Mountain Lion, Feral Mountain Lion, Mountain Lion
+step
+  note Kill 6 Hillsbrad Farmhands, 6 Hillsbrad Farmers, Farmer Ray and Farmer Getz and report back to Darthalia in Tarren Mill.
+  kill Farmer Getz##2403 |q 527/4 |goto Hillsbrad Foothills 36.4,39.4
+  kill Hillsbrad Farmer##2266 |q 527/1 |goto Hillsbrad Foothills 34.79,38.52
+  kill Hillsbrad Farmhand##2360 |q 527/2 |goto Hillsbrad Foothills 33.83,40.09
+  kill Farmer Ray##232 |q 527 |goto Hillsbrad Foothills 33.22,34.76
+step
+  talk Apothecary Lydon##2216
+  turnin Elixir of Suffering##496 |goto Hillsbrad Foothills 61.44,19.06
+step
+  only haveq(501)
+  talk Apothecary Lydon##2216
+  turnin Elixir of Pain##501 |goto Hillsbrad Foothills 61.44,19.06
+step
+  talk High Executor Darthalia##2215
+  turnin Battle of Hillsbrad##527 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk Apothecary Lydon##2216
+  accept Elixir of Suffering##499 |goto Hillsbrad Foothills 61.44,19.06
+step
+  only completed(501)
+  talk Apothecary Lydon##2216
+  accept Elixir of Pain##502 |goto Hillsbrad Foothills 61.44,19.06
+step
+  talk High Executor Darthalia##2215
+  accept Battle of Hillsbrad##528 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk Deathguard Samsa##2418
+  accept Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
+step
+  note Give Umpi the Elixir of Suffering.
+  talk Umpi##2230
+  turnin Elixir of Suffering##499 |goto Hillsbrad Foothills 61.55,19.14
+step
+  only haveq(502)
+  note Feed the Elixir of Pain to Stanley.
+  talk Stanley##2274
+  turnin Elixir of Pain##502 |goto Hillsbrad Foothills 32.66,35.32
+step
+  note Deathguard Samsa of Tarren Mill wants 30 Hillsbrad Human Skulls.
+  collect 30 Hillsbrad Human Skull##3692 |q 546 |goto Hillsbrad Foothills 33.22,34.76 |tip {dropsfrom}Farmer Ray, Syndicate Shadow Mage, Syndicate Rogue
+step
+  talk Deathstalker Lesh##2214
+  accept Time To Strike##494 |goto Hillsbrad Foothills 20.79,47.4
+step
+  note Kill 15 Hillsbrad Peasants and report back to Darthalia in Tarren Mill.
+  kill Hillsbrad Peasant##2267 |q 528 |goto Hillsbrad Foothills 34.06,45.69
+step
+  note Travel to Tarren Mill to deliver Deathstalker Lesh's message to High Executor Darthalia.
+  talk High Executor Darthalia##2215
+  turnin Time To Strike##494 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk High Executor Darthalia##2215
+  turnin Battle of Hillsbrad##528 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk Deathguard Samsa##2418
+  turnin Souvenirs of Death##546 |goto Hillsbrad Foothills 62.11,19.7
+step
+  talk High Executor Darthalia##2215
+  accept Scout Support##98094 |goto Hillsbrad Foothills 62.33,20.45
+step
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##529 |goto Hillsbrad Foothills 62.33,20.45
+step
+  note High Executor Darthalia wants you to deliver updated orders to Deathstalker Masoj, south of Tarren Mill, outside of Dun Garok.
+  talk Deathstalker Masoj##270438
+  turnin Scout Support##98094 |goto Hillsbrad Foothills 64,53.82
+step
+  talk Deathstalker Masoj##270438
+  accept Valuable Vantages##98095 |goto Hillsbrad Foothills 64,53.82
+step
+  note Deathstalker Masoj needs you to place the three Apothecary Vials on peaks around Hillsbrad Foothills and return to him.
+  goto Hillsbrad Foothills 74.24,73.36 |q 98095/3
+  goto Hillsbrad Foothills 71.52,30.38 |q 98095/2
+  goto Alterac Mountains 38.58,95.09 |q 98095
+step
+  talk Deathstalker Masoj##270438
+  turnin Valuable Vantages##98095 |goto Hillsbrad Foothills 64,53.82
 step
   note Kill Blacksmith Verringtan and 4 Hillsbrad Apprentice Blacksmiths.
   kill Blacksmith Verringtan##2404 |q 529 |goto Hillsbrad Foothills 32.11,44.42
@@ -241,15 +262,47 @@ step
   note Place the Tainted Keg on the rug for the captured farmers.
   turnin Elixir of Agony##524 |goto Hillsbrad Foothills 62.81,18.73
 step
-  only Undead Paladin
-  note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
-  talk Trevan Rol##248840
-  turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.4,41.1 |tip {turninat}Silverpine Forest
+  only not Undead not Skyborne Shaman hasitem(281147)
+  use Grant's Shield##281147 |tip It starts the quest.
+  accept Grant's Shield##79362
+step
+  only not Undead not Skyborne Shaman haveq(79362)
+  note Find Grant's Mace on one of the skeletons in Raven Hill Cemetery then return to Sirra Von'Indie in Darkshire for more information.
+  collect Grant's Mace##281146 |q 79362 |goto Duskwood 23.06,47.11 |tip {dropsfrom}Skeletal Horror, Skeletal Fiend, Skeletal Healer
+step
+  only not Undead not Skyborne Shaman hasitem(281145)
+  use Silvia's Sword##281145 |tip It starts the quest.
+  accept Silvia's Sword##79363
+step
+  only not Undead not Skyborne Shaman haveq(79363)
+  note Defeat 7 Defias Night Blades and 7 Defias Enchanters in Addle's Stead then return to Sirra Von'Indi in Darkshire for more information.
+  kill Defias Night Blade##909 |q 79363/1 |goto Duskwood 23.37,73.31
+  kill Defias Enchanter##910 |q 79363 |goto Duskwood 23.65,71.95
+step
+  only not Undead not Skyborne Shaman haveq(79362)
+  talk Bath'rah the Windwatcher##6176
+  turnin Grant's Shield##79362 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
+step
+  only not Undead not Skyborne Shaman haveq(79363)
+  talk Bath'rah the Windwatcher##6176
+  turnin Silvia's Sword##79363 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
 step
   only haveq(513)
   note Take the Mudsnout Composite to Master Apothecary Faranell in the Undercity.
   talk Master Apothecary Faranell##2055
   turnin Elixir of Agony##513 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
+step
+  only Undead Paladin completed(95036) level>=26
+  talk Lumina Windsinger##259620
+  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
+step
+  only Undead Paladin completed(95036) haveq(95140)
+  note Use the Moonsilver Blade to destroy Old Fire-Eye in Silverpine Forest.
+  kill Old Fire-Eye##259897 |q 95140 |goto Silverpine Forest 49.55,85.89 |elite
+step
+  only Undead Paladin completed(95036) haveq(95140)
+  talk Lumina Windsinger##259620
+  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99 |tip {turninat}Silverpine Forest
 step
   note {travel}Thousand Needles
   goto Thousand Needles 53.95,41.49

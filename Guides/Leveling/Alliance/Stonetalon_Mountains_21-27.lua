@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Stonetalon Mountains (21-27)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Ashenvale (20-28)",
-	rev = "f8ccf2ba",
+	next = "Leveling/Alliance/Duskwood (21-28)",
+	rev = "4cc3a9af",
 }, [[
 step
   ding 20
@@ -63,7 +63,7 @@ step
 step
   only level>=20
   talk Night Elf Courier##268925
-  accept Stonetalon Supply Run##86574 |goto Stonetalon Mountains 48.71,39.85
+  accept Stonetalon Supply Run##86574 |goto Stonetalon Mountains 48.69,39.86
 step
   only haveq(86574)
   note Collect 6 Stonetalon Supplies from Pridewing Wyverns and deliver them to Innkeeper Faralia.
@@ -127,6 +127,11 @@ step
   talk Sputtervalve##3442
   accept Further Instructions##1095 |goto The Barrens 62.98,37.22
 step
+  only completed(1091) haveq(1082)
+  note Return to Sentinel Thenysil in Ashenvale.
+  talk Sentinel Thenysil##4079
+  turnin Update for Sentinel Thenysil##1082 |goto Ashenvale 34.89,49.79 |tip {turninat}Ashenvale
+step
   note Bring the new orders to Ziz Fizziks in the Stonetalon Mountains.
   talk Ziz Fizziks##4201
   turnin Further Instructions##1095 |goto Stonetalon Mountains 58.99,62.6
@@ -135,16 +140,11 @@ step
   accept Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6
 step
   note Bring Gerenzo Wrenchwhistle's Mechanical Arm to Ziz Fizziks in the Stonetalon Mountains.
-  collect Gerenzo's Mechanical Arm##5736 |q 1096 |goto Stonetalon Mountains 64.49,40.25 |tip {dropsfrom}Gerenzo Wrenchwhistle
+  collect Gerenzo's Mechanical Arm##5736 |q 1096 |goto Stonetalon Mountains 63.37,39.7 |tip {dropsfrom}Gerenzo Wrenchwhistle
 step
   talk Ziz Fizziks##4201
   turnin Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6
 step
-  only completed(1091) haveq(1082)
-  note Return to Sentinel Thenysil in Ashenvale.
-  talk Sentinel Thenysil##4079
-  turnin Update for Sentinel Thenysil##1082 |goto Ashenvale 34.89,49.79 |tip {turninat}Ashenvale
-step
-  note {travel}Ashenvale
-  goto Ashenvale 34.67,48.84
+  note {travel}Duskwood
+  goto Duskwood 7.71,33.2
 ]])

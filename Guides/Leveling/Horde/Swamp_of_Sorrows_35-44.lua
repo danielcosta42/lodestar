@@ -4,14 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (35-44)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Thousand Needles (37-41)",
-	rev = "638caa37",
+	next = "Leveling/Horde/Badlands (37-42)",
+	rev = "48b995b6",
 }, [[
 step
   ding 31
-step
-  talk Magtoor##1776
-  accept Draenethyst Crystals##1389 |goto Swamp of Sorrows 25.98,31.4
 step
   note {fp}Breyk
   goto Swamp of Sorrows 46.07,54.83 |tip {vendor}
@@ -25,14 +22,26 @@ step
   note Find the missing courier, and ensure Dar's shipment is delivered to the Harborage.
   collect Courier's Shipment##260452 |q 93663 |goto Swamp of Sorrows 44.7,57.21
 step
-  note Bring 6 Draenethyst crystals to Magtoor at The Harborage in the Swamp of Sorrows.
-  collect 6 Draenethyst Crystal##6071 |q 1389 |goto Swamp of Sorrows 62.08,22.45 |tip {dropsfrom}Draenethyst Crystals
-step
-  talk Magtoor##1776
-  turnin Draenethyst Crystals##1389 |goto Swamp of Sorrows 25.98,31.4
-step
   talk Magtoor##1776
   turnin Lost in Transit##93663 |goto Swamp of Sorrows 25.98,31.4
+step
+  talk Magtoor##1776
+  accept Draenethyst Crystals##1389 |goto Swamp of Sorrows 25.98,31.4
+step
+  talk Karana##254775
+  accept Blood of My Blood##93429 |goto Swamp of Sorrows 24.72,32.64
+step
+  note Slay 10 Lost Ones in the Fallow Sanctuary.
+  get Blood of My Blood |q 93429
+step
+  talk Pelluk##254770
+  accept Taking the Bait Back##93430 |goto Swamp of Sorrows 26.51,30.35
+step
+  talk Karana##254775
+  turnin Blood of My Blood##93429 |goto Swamp of Sorrows 24.72,32.64
+step
+  note Bring 6 Draenethyst crystals to Magtoor at The Harborage in the Swamp of Sorrows.
+  collect 6 Draenethyst Crystal##6071 |q 1389 |goto Swamp of Sorrows 62.08,22.45 |tip {dropsfrom}Draenethyst Crystals
 step
   talk Galen Goodward##5391
   accept Galen's Escape##1393 |goto Swamp of Sorrows 65.47,18.16
@@ -40,7 +49,16 @@ step
   note Escort Galen out of danger, then find his camp in the Swamp of Sorrows and open his strongbox.
   goto Swamp of Sorrows 53.08,29.55 |tip Escort Galen out of the Fallow Sanctuary.
 step
+  note Find the Lost One Fisherman who stole Pelluk's lure, and take it back.
+  collect Lucky Lure##258530 |q 93430 |goto Swamp of Sorrows 53.73,30.65 |tip {dropsfrom}Lost One Fisherman
+step
   turnin Galen's Escape##1393 |goto Swamp of Sorrows 47.81,39.76
+step
+  talk Magtoor##1776
+  turnin Draenethyst Crystals##1389 |goto Swamp of Sorrows 25.98,31.4
+step
+  talk Pelluk##254770
+  turnin Taking the Bait Back##93430 |goto Swamp of Sorrows 26.51,30.35
 step
   kill Noboru the Cudgel##5477 |goto Swamp of Sorrows 54.9,34.1 |tip Loot the quest item here — it starts the quest.
   accept Noboru the Cudgel##1392 |goto Swamp of Sorrows 54.9,34.1
@@ -151,6 +169,11 @@ step
   talk Neeka Bloodscar##5394
   turnin Neeka Bloodscar##1418 |goto Badlands 6.49,47.2 |tip {turninat}Badlands
 step
-  note {travel}Thousand Needles
-  goto Thousand Needles 32.24,22.17
+  only haveq(687)
+  note Find Theldurin the Lost.
+  talk Theldurin the Lost##2785
+  turnin Theldurin the Lost##687 |goto Badlands 51.22,76.78 |tip {turninat}Badlands
+step
+  note {travel}Badlands
+  goto Badlands 42.39,52.93
 ]])

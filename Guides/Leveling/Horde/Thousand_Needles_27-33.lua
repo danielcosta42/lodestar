@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-33)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Mulgore (30-31)",
-	rev = "ccbc081e",
+	next = "Leveling/Horde/Mulgore (29-59)",
+	rev = "151d54f9",
 }, [[
 step
   ding 26
@@ -13,8 +13,34 @@ step
   talk Dorn Plainstalker##2986
   accept Test of Faith##1149 |goto Thousand Needles 53.95,41.49
 step
+  note If you have faith, leap from the planks overlooking Thousand Needles.
+  talk Dorn Plainstalker##2986
+  turnin Test of Faith##1149 |goto Thousand Needles 53.95,41.49
+step
   kill Galak Messenger##10617 |goto Thousand Needles 39.43,33.1 |tip Loot the quest item here — it starts the quest.
   accept Assassination Plot##4881 |goto Thousand Needles 39.43,33.1
+step
+  note Warn Kanati Greycloud at Whitereach Post of the plot to kill him.
+  talk Kanati Greycloud##10638
+  turnin Assassination Plot##4881 |goto Thousand Needles 21.25,32.06
+step
+  talk Kanati Greycloud##10638
+  accept Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
+step
+  note Protect Kanati Greycloud from the centaur attack.
+  kill Galak Assassin##10720 |q 4966 |goto Thousand Needles 21.26,31.81
+step
+  talk Kanati Greycloud##10638
+  turnin Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
+step
+  talk Pao'ka Swiftmountain##10427
+  accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
+step
+  note Escort Pao'ka Swiftmountain from Highperch, and then talk to Motega Firemane in Whitereach Post.
+  goto Thousand Needles 15.15,32.65 |tip Escort Pao'ka from Highperch
+step
+  talk Motega Firemane##10428
+  turnin Homeward Bound##4770 |goto Thousand Needles 21.54,32.35
 step
   only haveq(5881)
   note Maggran wishes you to deliver a letter to Grish Longrunner at the Great Lift in the Barrens.
@@ -37,6 +63,18 @@ step
   talk Hagar Lightninghoof##10539
   accept Alien Egg##4821 |goto Thousand Needles 44.64,50.29
 step
+  talk Elu##10377
+  accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
+step
+  click Wanted Poster - Arnak Grimtotem##176115
+  accept WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
+step
+  talk Jandia##4877
+  accept Stolen Freewind Supplies##98069 |goto Thousand Needles 46.21,51.51
+step
+  talk Jandia##4877
+  accept Stop the Screeching##98070 |goto Thousand Needles 46.21,51.51
+step
   note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
   collect Alien Egg##12467 |q 4821 |goto Thousand Needles 52.34,55.25
 step
@@ -46,48 +84,20 @@ step
   talk Hagar Lightninghoof##10539
   accept Serpent Wild##4865 |goto Thousand Needles 44.64,50.29
 step
-  talk Elu##10377
-  accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
-step
-  click Wanted Poster - Arnak Grimtotem##176115
-  accept WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
+  talk Dorn Plainstalker##2986
+  accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
 step
   note Kill 12 Galak Scouts, 10 Galak Wranglers, and 6 Galak Windchasers, and then return to Cliffwatcher Longhorn in Freewind Post.
-  kill Galak Wrangler##4093 |q 4841/2 |goto Thousand Needles 43.65,39.34
   kill Galak Windchaser##4096 |q 4841/3 |goto Thousand Needles 44.44,38.41
+  kill Galak Wrangler##4093 |q 4841/2 |goto Thousand Needles 43.65,39.34
   kill Galak Scout##4094 |q 4841 |goto Thousand Needles 43.29,37.97
-step
-  note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
-  collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
-step
-  talk Lakota Windsong##10646
-  accept Free at Last##4904 |goto Thousand Needles 37.95,26.45
-step
-  note Escort Lakota Windsong from the Darkcloud Pinnacle, and then talk to Thalia Amberhide at Freewind Post.
-  goto Thousand Needles 30.93,37.12 |tip Escort Lakota Windsong from the Darkcloud Pinnacle.
 step
   note Report your findings to Motega Firemane.
   talk Motega Firemane##10428
   turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
 step
-  note Warn Kanati Greycloud at Whitereach Post of the plot to kill him.
-  talk Kanati Greycloud##10638
-  turnin Assassination Plot##4881 |goto Thousand Needles 21.25,32.06
-step
   talk Motega Firemane##10428
   accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
-step
-  note If you have faith, leap from the planks overlooking Thousand Needles.
-  goto Thousand Needles 26.43,32.93
-step
-  talk Kanati Greycloud##10638
-  accept Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
-step
-  note Protect Kanati Greycloud from the centaur attack.
-  kill Galak Assassin##10720 |q 4966 |goto Thousand Needles 21.26,31.81
-step
-  talk Kanati Greycloud##10638
-  turnin Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
 step
   only level>=30
   talk Wizlo Bearingshiner##10941
@@ -98,21 +108,23 @@ step
   kill Enraged Panther##10992 |q 5151 |goto Thousand Needles 22.76,24.62 |elite
   collect Hypercapacitor Gizmo##12946 |q 5151 |goto Thousand Needles 22.76,24.62
 step
-  note Bring 10 Highperch Wyvern Eggs to Elu in Freewind Post.
-  collect 10 Highperch Wyvern Egg##12356 |q 4767 |goto Thousand Needles 12.56,37.37
-step
-  talk Pao'ka Swiftmountain##10427
-  accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
-step
-  note Escort Pao'ka Swiftmountain from Highperch, and then talk to Motega Firemane in Whitereach Post.
-  goto Thousand Needles 15.15,32.65 |tip Escort Pao'ka from Highperch
-step
-  talk Motega Firemane##10428
-  turnin Homeward Bound##4770 |goto Thousand Needles 21.54,32.35
-step
   only haveq(5151)
   talk Wizlo Bearingshiner##10941
   turnin Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
+step
+  note Bring 10 Highperch Wyvern Eggs to Elu in Freewind Post.
+  collect 10 Highperch Wyvern Egg##12356 |q 4767 |goto Thousand Needles 12.56,37.37
+step
+  note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
+  collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.8 |tip {dropsfrom}Grenka Bloodscreech
+step
+  note Bring 8 Stolen Freewind Supplies to Jandia in Freewind Post.
+  collect 8 Stolen Freewind Supplies##279383 |q 98069 |goto Thousand Needles 26.81,52.16
+step
+  note Slay 5 Screeching Harpies, 5 Screeching Roguefeather Harpies and 5 Screeching Windcaller Harpies.
+  kill Screeching Harpy##4100 |q 98070/1 |goto Thousand Needles 26.49,52.26
+  kill Screeching Windcaller##4104 |q 98070/3 |goto Thousand Needles 26.31,53.67
+  kill Screeching Roguefeather##4101 |q 98070 |goto Thousand Needles 27.35,51
 step
   talk Elu##10377
   turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
@@ -120,36 +132,21 @@ step
   talk Cliffwatcher Longhorn##10537
   turnin Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
 step
-  talk Thalia Amberhide##10645
-  turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
+  talk Jandia##4877
+  turnin Stolen Freewind Supplies##98069 |goto Thousand Needles 46.21,51.51
 step
-  talk Cliffwatcher Longhorn##10537
-  turnin WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
+  talk Jandia##4877
+  turnin Stop the Screeching##98070 |goto Thousand Needles 46.21,51.51
 step
   talk Cliffwatcher Longhorn##10537
   accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
-  only level>=27
-  talk Jandia##4877
-  accept Stolen Freewind Supplies##98069 |goto Thousand Needles 46.21,51.51
-step
-  only haveq(98069)
-  note Bring 8 Stolen Freewind Supplies to Jandia in Freewind Post.
-  collect 8 Stolen Freewind Supplies##279383 |q 98069 |goto Thousand Needles 46.21,51.51
-step
-  only level>=27
-  talk Jandia##4877
-  accept Stop the Screeching##98070 |goto Thousand Needles 46.21,51.51
-step
-  only haveq(98069)
-  talk Jandia##4877
-  turnin Stolen Freewind Supplies##98069 |goto Thousand Needles 46.21,51.51
-step
   talk Dorn Plainstalker##2986
-  turnin Test of Faith##1149 |goto Thousand Needles 53.95,41.49
+  turnin Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
 step
+  only level>=30
   talk Dorn Plainstalker##2986
-  accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
+  accept Test of Strength##1151 |goto Thousand Needles 53.95,41.49
 step
   note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
   collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.47,35.43
@@ -159,33 +156,28 @@ step
   collect Secret Note #3##12768 |q 5064/3 |goto Thousand Needles 39.34,41.53 |tip {dropsfrom}Document Chest
   collect Secret Note #1##12765 |q 5064 |goto Thousand Needles 31.79,32.58 |tip {dropsfrom}Document Chest
 step
-  note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
-  collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.8 |tip {dropsfrom}Grenka Bloodscreech
+  note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
+  collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
 step
-  only haveq(98070)
-  note Slay 5 Screeching Harpies, 5 Screeching Roguefeather Harpies and 5 Screeching Windcaller Harpies.
-  kill Screeching Windcaller##4104 |q 98070/3 |goto Thousand Needles 26.31,53.67
-  kill Screeching Harpy##4100 |q 98070/1 |goto Thousand Needles 26.49,52.26
-  kill Screeching Roguefeather##4101 |q 98070 |goto Thousand Needles 27.35,51
+  talk Lakota Windsong##10646
+  accept Free at Last##4904 |goto Thousand Needles 37.95,26.45
 step
-  talk Cliffwatcher Longhorn##10537
-  turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
-step
-  only haveq(98070)
-  talk Jandia##4877
-  turnin Stop the Screeching##98070 |goto Thousand Needles 46.21,51.51
-step
-  talk Dorn Plainstalker##2986
-  turnin Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
-step
-  only level>=30
-  talk Dorn Plainstalker##2986
-  accept Test of Strength##1151 |goto Thousand Needles 53.95,41.49
+  note Escort Lakota Windsong from the Darkcloud Pinnacle, and then talk to Thalia Amberhide at Freewind Post.
+  goto Thousand Needles 30.93,37.12 |tip Escort Lakota Windsong from the Darkcloud Pinnacle.
 step
   only haveq(1151)
   note Bring Fragments of Rok'Alim to Dorn Plainstalker in Thousand Needles.
   kill Rok'Alim the Pounder##4499 |q 1151 |goto Thousand Needles 17.1,38.1 |elite
   collect Fragments of Rok'Alim##5844 |q 1151 |goto Thousand Needles 17.1,38.1
+step
+  talk Thalia Amberhide##10645
+  turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
+step
+  talk Cliffwatcher Longhorn##10537
+  turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
+step
+  talk Cliffwatcher Longhorn##10537
+  turnin WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
 step
   only haveq(1151)
   talk Dorn Plainstalker##2986
@@ -257,14 +249,13 @@ step
   talk Trackmaster Zherin##4629
   turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
 step
-  only Shaman level>=30
-  talk Rau Cliffrunner##4722
-  accept Eyes on the Sky##79364 |goto Thousand Needles 46.14,51.71
+  only level>=28 hasitem(5877)
+  use Cracked Silithid Carapace##5877 |tip It starts the quest.
+  accept Parts of the Swarm##1148
 step
-  only Shaman haveq(79364)
-  note Speak with Prate Cloudseer in Thousand Needles.
-  talk Prate Cloudseer##5905
-  turnin Eyes on the Sky##79364 |goto Thousand Needles 53.54,42.65
+  only haveq(1148)
+  note Bring 1 Silithid Heart, 5 Silithid Talons, and 3 Intact Silithid Carapaces, to Korran at the Crossroads.
+  collect 1 Silithid Heart##5855 |q 1148 |goto Thousand Needles 69.91,82.48 |tip {dropsfrom}Silithid Searcher, Silithid Invader, Silithid Hive Drone
 step
   only level>=32
   talk Cliffwatcher Longhorn##10537
@@ -381,9 +372,17 @@ step
   talk Menara Voidrender##6266
   turnin The Completed Robe##4786 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
+  only haveq(1148)
+  talk Korran##3428
+  turnin Parts of the Swarm##1148 |goto The Barrens 51.07,29.63 |tip {turninat}The Barrens
+step
   only level>=29
   talk Korran##3428
   accept The Swarm Grows##1145 |goto The Barrens 51.07,29.63
+step
+  only completed(1148) level>=28
+  talk Korran##3428
+  accept Parts of the Swarm##1184 |goto The Barrens 51.07,29.63
 step
   only level>=30
   talk Regthar Deathgate##3389
@@ -393,6 +392,11 @@ step
   note Deliver Korran's Sealed Note to Belgrom Rockmaul in Orgrimmar.
   talk Belgrom Rockmaul##4485
   turnin The Swarm Grows##1145 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
+step
+  only haveq(1184)
+  note Return to Belgrom Rockmaul in Orgrimmar.
+  talk Belgrom Rockmaul##4485
+  turnin Parts of the Swarm##1184 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
 step
   only completed(1145) level>=29
   talk Belgrom Rockmaul##4485
@@ -410,7 +414,7 @@ step
   talk Gan'rul Bloodeye##5875
   accept Seeking Strahad##2996 |goto Orgrimmar 48.25,45.28
 step
-  only Shaman not completed(1532) not haveq(1532) level>=30
+  only Shaman not completed(1532) not completed(96136) not haveq(1532) not haveq(96136) level>=30
   talk Searn Firewarder##5892
   accept Call of Air##1531 |goto Orgrimmar 37.96,37.73
 step
@@ -419,7 +423,7 @@ step
   talk Keldran##5640
   turnin Alliance Relations##1431 |goto Orgrimmar 22.56,52.63 |tip {turninat}Orgrimmar
 step
-  only Shaman not completed(1532) not haveq(1532) haveq(1531)
+  only Shaman not completed(1532) not completed(96136) not haveq(1532) not haveq(96136) haveq(1531)
   note Find Prate Cloudseer in Thousand Needles.
   talk Prate Cloudseer##5905
   turnin Call of Air##1531 |goto Thousand Needles 53.54,42.65
@@ -453,14 +457,6 @@ step
   kill Silithid Hive Drone##4133 |q 1147/2 |goto Thousand Needles 68.88,85.88
   kill Silithid Invader##4131 |q 1147 |goto Thousand Needles 65.31,86.73
 step
-  only completed(1146) level>=28 hasitem(5877)
-  use Cracked Silithid Carapace##5877 |tip It starts the quest.
-  accept Parts of the Swarm##1148
-step
-  only haveq(1148)
-  note Bring 1 Silithid Heart, 5 Silithid Talons, and 3 Intact Silithid Carapaces, to Korran at the Crossroads.
-  collect 1 Silithid Heart##5855 |q 1148 |goto Thousand Needles 69.91,82.48 |tip {dropsfrom}Silithid Searcher, Silithid Invader, Silithid Hive Drone
-step
   only haveq(1147)
   talk Moktar Krin##4483
   turnin The Swarm Grows##1147 |goto Thousand Needles 67.58,63.94
@@ -474,14 +470,6 @@ step
   note Speak to Menara Voidrender in the Barrens.
   talk Menara Voidrender##6266
   turnin In Search of Menara Voidrender##4737 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
-step
-  only haveq(1148)
-  talk Korran##3428
-  turnin Parts of the Swarm##1148 |goto The Barrens 51.07,29.63 |tip {turninat}The Barrens
-step
-  only completed(1148)
-  talk Korran##3428
-  accept Parts of the Swarm##1184 |goto The Barrens 51.07,29.63
 step
   only Warlock completed(4782) haveq(4783)
   note Bring 10 Vials of Hatefury Blood and 1 Lesser Infernal Stone to Menara Voidrender in the Barrens.
@@ -503,7 +491,7 @@ step
 step
   only completed(1067)
   note Bring the Toxic Fogger to the Venture Co. sky port, then return to Apothecary Zamah.
-  goto Stonetalon Mountains 66.44,45.46 |tip Place the Toxic Fogger
+  click Venture Co. Copter Pad##19594 |q 1086 |goto Stonetalon Mountains 66.51,45.48
 step
   only completed(1067)
   talk Apothecary Zamah##3419
@@ -511,11 +499,6 @@ step
 step
   talk Melor Stonehoof##3441
   turnin Steelsnap##1131 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
-step
-  only haveq(1184)
-  note Return to Belgrom Rockmaul in Orgrimmar.
-  talk Belgrom Rockmaul##4485
-  turnin Parts of the Swarm##1184 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
 step
   only haveq(1154)
   note Find the Legacy of the Aspects and return it to Braug Dimspirit near the entrance to Talondeep Path in Stonetalon Mountains.
@@ -531,6 +514,9 @@ step
 step
   only haveq(6627)
   note Answer Braug Dimspirit's question successfully and then speak to him again. He will remain in Stonetalon Mountains when you are ready.
+  talk Braug Dimspirit##4489 |q 6627 |goto Stonetalon Mountains 78.8,45.69
+step
+  only haveq(6627)
   talk Braug Dimspirit##4489
   turnin Test of Lore##6627 |goto Stonetalon Mountains 78.8,45.69 |tip {turninat}Stonetalon Mountains
 step

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Dustwallow Marsh (35-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Thousand Needles (30-41)",
-	rev = "6ff13d84",
+	rev = "d4c2a2f8",
 }, [[
 step
   ding 34
@@ -206,18 +206,43 @@ step
   talk Fiora Longears##4456
   turnin Highperch Venom##1135 |goto Dustwallow Marsh 66.46,45.15
 step
-  only Mage haveq(1954)
-  note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
-  collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
-step
-  only Mage haveq(1954)
-  talk Tabetha##6546
-  turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
-step
   only Warlock completed(4961) haveq(4976)
   note Return the Cleansed Infernal Orb to Menara Voidrender in the Barrens.
   talk Menara Voidrender##6266
   turnin Returning the Cleansed Orb##4976 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  only Warlock completed(4782)
+  talk Menara Voidrender##6266
+  accept Components for the Enchanted Gold Bloodrobe##4783 |goto The Barrens 62.51,35.45
+step
+  only Warlock completed(4784)
+  talk Menara Voidrender##6266
+  accept The Completed Robe##4786 |goto The Barrens 62.51,35.45
+step
+  only Warlock completed(4784)
+  note Wait for Menara Voidrender to complete your robe and then speak to her again.
+  talk Menara Voidrender##6266 |q 4786 |goto The Barrens 62.51,35.45
+step
+  only Warlock completed(4784)
+  talk Menara Voidrender##6266
+  turnin The Completed Robe##4786 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  only Warlock completed(4782)
+  note Bring 10 Vials of Hatefury Blood and 1 Lesser Infernal Stone to Menara Voidrender in the Barrens.
+  collect 10 Vial of Hatefury Blood##6989 |q 4783/1 |goto Desolace 73.55,19.11 |tip {dropsfrom}Hatefury Rogue, Hatefury Trickster, Hatefury Felsworn
+  collect 1 Lesser Infernal Stone##6990 |q 4783 |goto Desolace 51.45,75.61 |tip {dropsfrom}Lesser Infernal, Demon Portal Guardian
+step
+  only Mage haveq(1954)
+  note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
+  collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
+step
+  only Warlock completed(4782)
+  talk Menara Voidrender##6266
+  turnin Components for the Enchanted Gold Bloodrobe##4783 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  only Mage haveq(1954)
+  talk Tabetha##6546
+  turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
 step
   only Mage completed(1947)
   note Speak with Magus Tirth in the Shimmering Flats.

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Un'Goro Crater (51-55)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Azshara (52-58)",
-	rev = "c2da77a2",
+	next = "Leveling/Horde/Azshara (52-57)",
+	rev = "c3059903",
 }, [[
 step
   ding 50
@@ -15,11 +15,6 @@ step
 step
   talk Jes'rimon##8659
   accept Bone-Bladed Weapons##4300 |goto Orgrimmar 55.52,34.08
-step
-  only haveq(81)
-  note Deliver the barrel to Dran Droffers in Orgrimmar.
-  talk Dran Droffers##6986
-  turnin Ripple Delivery##81 |goto Orgrimmar 59.49,36.57 |tip {turninat}Orgrimmar
 step
   note {fp}Gryfe
   goto Un'Goro Crater 45.23,5.83 |tip {vendor}
@@ -209,12 +204,12 @@ step
   talk J.D. Collie##9117
   accept Making Sense of It##4321 |goto Un'Goro Crater 41.92,2.7
 step
-  click Beware of Pterrordax##174682
-  accept Beware of Pterrordax##4501 |goto Un'Goro Crater 43.53,8.44
-step
   note Speak with J.D. Collie in a moment.
   talk J.D. Collie##9117
   turnin Making Sense of It##4321 |goto Un'Goro Crater 41.92,2.7
+step
+  click Beware of Pterrordax##174682
+  accept Beware of Pterrordax##4501 |goto Un'Goro Crater 43.53,8.44
 step
   talk Spraggle Frock##9997
   accept Lost!##4492 |goto Un'Goro Crater 43.62,8.5
@@ -232,6 +227,24 @@ step
 step
   talk Torwa Pathfinder##9619
   accept The Apes of Un'Goro##4289 |goto Un'Goro Crater 71.64,75.96
+step
+  talk Torwa Pathfinder##9619
+  accept Uncanny Crystal##87492 |goto Un'Goro Crater 71.64,75.96
+step
+  talk Torwa Pathfinder##9619
+  accept Microcrystal Contamination##87494 |goto Un'Goro Crater 71.64,75.96
+step
+  note Bring 1 Damaged Blue Crystal back to Torwa Pathfinder.
+  collect 1 Damaged Blue Crystal##280417 |q 87492 |goto Un'Goro Crater 66.2,75.12
+step
+  note Take the Crystal Infused Scale to Torwa Pathfinder.
+  collect Crystal Infused Scale##280459 |q 87494 |goto Un'Goro Crater 64.16,74.25 |tip {dropsfrom}Ravasaur, Ravasaur Runner, Ravasaur Hunter
+step
+  talk Torwa Pathfinder##9619
+  turnin Uncanny Crystal##87492 |goto Un'Goro Crater 71.64,75.96
+step
+  talk Torwa Pathfinder##9619
+  turnin Microcrystal Contamination##87494 |goto Un'Goro Crater 71.64,75.96
 step
   talk Ringo##9999
   turnin Lost!##4492 |goto Un'Goro Crater 51.9,49.85
@@ -284,6 +297,10 @@ step
   talk Torwa Pathfinder##9619
   turnin The Bait for Lar'korwi##4292 |goto Un'Goro Crater 71.64,75.96
 step
+  only level>=55
+  talk Hol'anyee Marshal##9271
+  accept Hol'anyee's Big Book of Big Lizards##92020 |goto Un'Goro Crater 43.89,7.24
+step
   talk Ghede##9076
   turnin Un'Goro Soil##3761 |goto Thunder Bluff 77.46,21.97 |tip {turninat}Thunder Bluff
 step
@@ -306,14 +323,16 @@ step
   talk Jes'rimon##8659
   turnin Bone-Bladed Weapons##4300 |goto Orgrimmar 55.52,34.08 |tip {turninat}Orgrimmar
 step
-  only completed(4001)
-  talk Thrall##4949
-  accept The Eastern Kingdom##4002 |goto Orgrimmar 31.73,37.82
+  only not completed(96377) not completed(96379) not haveq(96377) not haveq(96379)
+  talk Nazgrel##3230
+  accept State Secrets##96376 |goto Orgrimmar 32.3,35.75
 step
-  only completed(4001)
-  note Speak with Thrall if you are prepared to take on the mission he has planned.
-  talk Thrall##4949
-  turnin The Eastern Kingdom##4002 |goto Orgrimmar 31.73,37.82 |tip {turninat}Orgrimmar
+  only not completed(96377) not completed(96379) not haveq(96377) not haveq(96379)
+  collect Document Box##274041 |q 96376 |goto Orgrimmar 32.3,35.75
+step
+  only not completed(96377) not completed(96379) not haveq(96377) not haveq(96379)
+  talk Nazgrel##3230
+  turnin State Secrets##96376 |goto Orgrimmar 32.3,35.75 |tip {turninat}Orgrimmar
 step
   note {travel}Orgrimmar
   goto Orgrimmar 75.23,34.24

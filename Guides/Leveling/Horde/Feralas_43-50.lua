@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Feralas (43-48)", {
+ns:RegisterGuide("Leveling/Horde/Feralas (43-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Tanaris (44-50)",
-	rev = "13f11e35",
+	next = "Leveling/Horde/Stranglethorn Vale (43-51)",
+	rev = "99d81a79",
 }, [[
 step
   ding 41
@@ -29,11 +29,24 @@ step
   talk Orwin Gizzmick##8021
   accept Gordunni Cobalt##2987 |goto Feralas 75.7,44.31
 step
+  only level>=43
+  talk Blaise Montgomery##11752
+  accept Lost for Words##92878 |goto Feralas 74.91,44.02
+step
   note Bring 10 Woodpaw Gnoll Manes to Hadoken Swiftstrider in Camp Mojache.
   collect 10 Woodpaw Gnoll Mane##9237 |q 2862 |goto Feralas 70.38,51.01 |tip {dropsfrom}Woodpaw Mongrel, Woodpaw Trapper, Woodpaw Brute
 step
+  only haveq(92878)
+  note Bring proof of Namida Grimtotem's demise to Blaise Montgomery at Camp Mojache.
+  kill Namida Grimtotem##222286 |q 92878 |goto Feralas 67.09,38.91 |elite
+  collect Namida's Hoof##254877 |q 92878 |goto Feralas 67.09,38.91
+step
   talk Hadoken Swiftstrider##7875
   turnin War on the Woodpaw##2862 |goto Feralas 74.91,42.46
+step
+  only haveq(92878)
+  talk Blaise Montgomery##11752
+  turnin Lost for Words##92878 |goto Feralas 74.91,44.02
 step
   talk Krueg Skullsplitter##4544
   accept A New Cloak's Sheen##2973 |goto Feralas 75.94,42.74
@@ -233,16 +246,6 @@ step
   talk Talo Thornhoof##7776
   accept The Strength of Corruption##4120 |goto Feralas 76.18,43.83
 step
-  only haveq(1188)
-  note Bring the Seaforium Booster to Shreev in Gadgetzan.
-  talk Shreev##4708
-  turnin Safety First##1188 |goto Tanaris 50.96,27.24 |tip {turninat}Tanaris
-step
-  only haveq(3380)
-  note Find Marvon Rivetseeker in Tanaris.
-  talk Marvon Rivetseeker##7771
-  turnin The Sunken Temple##3380 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris
-step
   note Take the Shrunken Head to Neeru Fireblade in Orgrimmar.
   talk Neeru Fireblade##3216
   turnin A Strange Request##3121 |goto Orgrimmar 49.47,50.59 |tip {turninat}Orgrimmar
@@ -254,31 +257,46 @@ step
   talk Zilzibin Drumlore##7010
   turnin Zukk'ash Report##7732 |goto Orgrimmar 56.26,46.68 |tip {turninat}Orgrimmar
 step
+  talk Dran Droffers##6986
+  accept Ripple Recovery##649 |goto Orgrimmar 59.49,36.57
+step
+  note Talk to Malton Droffers in Orgrimmar.
+  talk Malton Droffers##6987
+  turnin Ripple Recovery##649 |goto Orgrimmar 59.65,36.94 |tip {turninat}Orgrimmar
+step
   note Bring the Crate of Grimtotem Horns to Belgrom Rockmaul in Orgrimmar.
   talk Belgrom Rockmaul##4485
   turnin A Grim Discovery##2976 |goto Orgrimmar 75.23,34.24 |tip {turninat}Orgrimmar
+step
+  only not completed(3762) not completed(3784) not haveq(3762) not haveq(3784) level>=47
+  talk Innkeeper Gryshka##6929
+  accept Assisting Arch Druid Runetotem##936 |goto Orgrimmar 54.1,68.41
 step
   note Bring the Gordunni Orb to Uthel'nay in the Darkbriar Lodge in Orgrimmar.
   talk Uthel'nay##7311
   turnin The Gordunni Orb##3002 |goto Orgrimmar 39.16,86.27 |tip {turninat}Orgrimmar
 step
-  only completed(2280)
+  only not completed(3762) not completed(3784) not haveq(3762) not haveq(3784) haveq(936)
+  note Speak with Arch Druid Hamuul Runetotem in Thunder Bluff.
+  talk Arch Druid Hamuul Runetotem##5769
+  turnin Assisting Arch Druid Runetotem##936 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
+step
+  only completed(2440) level>=45
   talk Sage Truthseeker##3978
-  accept The Platinum Discs##2440 |goto Thunder Bluff 34.4,46.87
+  accept Portents of Uldum##2965 |goto Thunder Bluff 34.4,46.87
 step
-  only completed(2280)
-  note Take the reward voucher to Bena Winterhoof in Thunder Bluff.
-  talk Bena Winterhoof##3009
-  turnin The Platinum Discs##2440 |goto Thunder Bluff 46.62,33.17 |tip {turninat}Thunder Bluff
+  only completed(1205) level>=45
+  talk Melor Stonehoof##3441
+  accept Mirrorscale##97378 |goto Thunder Bluff 61.54,80.92
 step
-  only haveq(4120)
-  note Talo Thornhoof at Camp Mojache in Feralas wants you to kill 12 Angerclaw Grizzlies and 12 Felpaw Ravagers in Felwood.
-  kill Angerclaw Grizzly##8957 |q 4120/1 |goto Felwood 57.6,17.79
-  kill Felpaw Ravager##8961 |q 4120 |goto Felwood 56.53,21.22
+  only completed(2440) haveq(2965)
+  note Speak with Nara Wildmane on the Elder Rise in Thunder Bluff.
+  talk Nara Wildmane##5770
+  turnin Portents of Uldum##2965 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
-  only haveq(4120)
-  talk Talo Thornhoof##7776
-  turnin The Strength of Corruption##4120 |goto Feralas 76.18,43.83
+  only completed(2440) completed(2965) level>=45
+  talk Nara Wildmane##5770
+  accept Seeing What Happens##2966 |goto Thunder Bluff 75.65,31.61
 step
   note Deliver Neeru's Herb Pouch to Witch Doctor Uzer'i in Feralas.
   talk Witch Doctor Uzer'i##8115
@@ -293,9 +311,26 @@ step
   collect 40 Metallic Fragments##9592 |q 3128/4 |goto Feralas 55.48,62.22 |tip {dropsfrom}Frayfeather Hippogryph, Frayfeather Stagwing, Frayfeather Skystormer
   collect 6 Encrusted Minerals##9589 |q 3128 |goto Feralas 44.26,22.29 |tip {dropsfrom}Sprite Dragon, Sprite Darter, Land Walker
 step
+  only completed(1205) haveq(97378)
+  note Bring Mirrorscale's Wing to Melor Stonehoof in Thunder Bluff.
+  collect Mirrorscale's Wing##277972 |q 97378 |goto Feralas 48.22,46.69 |tip {dropsfrom}Mirrorscale
+step
   talk Witch Doctor Uzer'i##8115
   turnin Natural Materials##3128 |goto Feralas 74.42,43.36
 step
-  note {travel}Tanaris
-  goto Tanaris 52.46,28.51
+  only completed(1205) haveq(97378)
+  talk Melor Stonehoof##3441
+  turnin Mirrorscale##97378 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
+step
+  only haveq(4120)
+  note Talo Thornhoof at Camp Mojache in Feralas wants you to kill 12 Angerclaw Grizzlies and 12 Felpaw Ravagers in Felwood.
+  kill Angerclaw Grizzly##8957 |q 4120/1 |goto Felwood 57.6,17.79
+  kill Felpaw Ravager##8961 |q 4120 |goto Felwood 56.53,21.22
+step
+  only haveq(4120)
+  talk Talo Thornhoof##7776
+  turnin The Strength of Corruption##4120 |goto Feralas 76.18,43.83
+step
+  note {travel}Stranglethorn Vale
+  goto Stranglethorn Vale 32.16,27.72
 ]])

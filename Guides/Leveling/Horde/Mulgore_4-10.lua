@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Mulgore (4-10)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Barrens (12-19)",
-	rev = "95a85727",
+	rev = "7465edf8",
 }, [[
 step
   only level>=1
@@ -98,16 +98,27 @@ step
   note Grull Hawkwind in Camp Narache wants you to bring him 10 Mountain Cougar Pelts.
   collect 10 Mountain Cougar Pelt##4742 |q 750 |goto Mulgore 47.51,88.11 |tip {dropsfrom}Mountain Cougar
 step
-  only completed(755)
+  only not Orc not Troll not Skyborne completed(755)
   talk Seer Graytongue##2982
   accept Grace of An'she and Mu'sha##95805 |goto Mulgore 42.54,90.13
 step
-  only haveq(95805)
+  only not Orc not Troll not Skyborne haveq(95805)
   note Carry the Smoldering Incense to the shrine of An'she and Mu'sha in the southeastern hills before the incense burns to ash in ten minutes!
   turnin Grace of An'she and Mu'sha##95805 |goto Mulgore 56.61,88.7
 step
   talk Antur Fallow##6775
   accept A Task Unfinished##1656 |goto Mulgore 39.16,81.24
+step
+  only haveq(750)
+  talk Grull Hawkwind##2980
+  turnin The Hunt Continues##750 |goto Mulgore 44.47,77.5
+step
+  only completed(750)
+  talk Grull Hawkwind##2980
+  accept The Battleboars##780 |goto Mulgore 44.47,77.5
+step
+  talk Brave Windfeather##3209
+  accept Break Sharptusk!##3376 |goto Mulgore 44.18,77.03
 step
   collect Dirt-stained Map##3076 |goto Mulgore 59.8,82.2 |tip Loot the quest item here — it starts the quest.
   accept Attack on Camp Narache##781 |goto Mulgore 59.8,82.2
@@ -116,28 +127,31 @@ step
   note Kill Bristlebacks in Brambleblade Ravine and bring 12 Bristleback Belts to Chief Hawkwind in Camp Narache.
   collect 12 Bristleback Belt##4770 |q 757 |goto Mulgore 58.41,78.91 |tip {dropsfrom}Bristleback Quilboar, Bristleback Shaman
 step
-  only haveq(750)
-  talk Grull Hawkwind##2980
-  turnin The Hunt Continues##750 |goto Mulgore 44.47,77.5
+  only haveq(780)
+  note Grull Hawkwind in Camp Narache wants you to kill Battleboars and bring back 8 Battleboar Snouts and 8 Battleboar Flanks.
+  collect 8 Battleboar Snout##4848 |q 780 |goto Mulgore 60.2,78.63 |tip {dropsfrom}Bristleback Battleboar, Battleboar
+step
+  note Bring the head of Chief Sharptusk Thornmantle to Brave Windfeather in Red Cloud Mesa.
+  collect Chief Sharptusk Thornmantle's Head##10459 |q 3376 |goto Mulgore 61.02,78 |tip {dropsfrom}Chief Sharptusk Thornmantle
 step
   only haveq(757)
   talk Chief Hawkwind##2981
   turnin Rite of Strength##757 |goto Mulgore 43.89,76.66
 step
+  only haveq(780)
+  talk Grull Hawkwind##2980
+  turnin The Battleboars##780 |goto Mulgore 44.47,77.5
+step
   note Bring the Bristleback Attack Plans to Chief Hawkwind in Camp Narache.
   talk Chief Hawkwind##2981
   turnin Attack on Camp Narache##781 |goto Mulgore 43.89,76.66
 step
-  only completed(750)
-  talk Grull Hawkwind##2980
-  accept The Battleboars##780 |goto Mulgore 44.47,77.5
+  talk Brave Windfeather##3209
+  turnin Break Sharptusk!##3376 |goto Mulgore 44.18,77.03
 step
   only completed(757)
   talk Chief Hawkwind##2981
   accept Rites of the Earthmother##763 |goto Mulgore 43.89,76.66
-step
-  talk Brave Windfeather##3209
-  accept Break Sharptusk!##3376 |goto Mulgore 44.18,77.03
 step
   only Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
   talk Seer Ravenfeather##5888
@@ -147,49 +161,26 @@ step
   talk Chief Hawkwind##2981
   accept The Adventurer##96659 |goto Mulgore 43.89,76.66
 step
-  only Shaman completed(1517)
-  talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1518 |goto Mulgore 51.99,80.4
-step
-  only haveq(780)
-  note Grull Hawkwind in Camp Narache wants you to kill Battleboars and bring back 8 Battleboar Snouts and 8 Battleboar Flanks.
-  collect 8 Battleboar Snout##4848 |q 780 |goto Mulgore 60.2,78.63 |tip {dropsfrom}Bristleback Battleboar, Battleboar
-step
   only Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
   note Bring 2 applications of Ritual Salve to Seer Ravenfeather in Camp Narache.
   collect 2 Ritual Salve##6634 |q 1519 |goto Mulgore 61.05,78.16 |tip {dropsfrom}Bristleback Shaman
-step
-  note Bring the head of Chief Sharptusk Thornmantle to Brave Windfeather in Red Cloud Mesa.
-  collect Chief Sharptusk Thornmantle's Head##10459 |q 3376 |goto Mulgore 61.02,78 |tip {dropsfrom}Chief Sharptusk Thornmantle
-step
-  only haveq(780)
-  talk Grull Hawkwind##2980
-  turnin The Battleboars##780 |goto Mulgore 44.47,77.5
 step
   only Shaman not completed(1516) not completed(92466) not haveq(1516) not haveq(92466)
   talk Seer Ravenfeather##5888
   turnin Call of Earth##1519 |goto Mulgore 44.35,76.77
 step
-  talk Brave Windfeather##3209
-  turnin Break Sharptusk!##3376 |goto Mulgore 44.18,77.03
-step
-  only Shaman not completed(92466) not haveq(92466)
+  only Shaman not completed(1517) not completed(92467) not completed(94374) not haveq(1517) not haveq(92467) not haveq(94374)
   talk Seer Ravenfeather##5888
   accept Call of Earth##1520 |goto Mulgore 44.35,76.77
 step
-  only Shaman not completed(92466) not haveq(92466)
+  only Shaman not completed(1517) not completed(92467) not completed(94374) not haveq(1517) not haveq(92467) not haveq(94374)
   note Find Kodo Rock and drink the Earth Sapta.
   talk Minor Manifestation of Earth##5891
   turnin Call of Earth##1520 |goto Mulgore 51.99,80.4
 step
-  only Shaman not completed(92466) not haveq(92466)
+  only Shaman not completed(1521) not completed(92468) not completed(94375) not haveq(1521) not haveq(92468) not haveq(94375)
   talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1521 |goto Mulgore 51.99,80.4
-step
-  only Shaman not completed(92466) not haveq(92466)
-  note Bring the Rough Quartz to Seer Ravenfeather in Camp Narache.
-  talk Seer Ravenfeather##5888
-  turnin Call of Earth##1521 |goto Mulgore 44.35,76.77
+  accept Call of Earth##1518 |goto Mulgore 51.99,80.4
 step
   only haveq(763)
   note Take the Totem of Hawkwind to Baine Bloodhoof in Bloodhoof Village. Follow the road out of Camp Narache.
@@ -203,7 +194,7 @@ step
   only not completed(96627) not completed(96628) not completed(96630) not completed(96638) not completed(96652) not completed(96656) not haveq(96627) not haveq(96628) not haveq(96630) not haveq(96638) not haveq(96652) not haveq(96656) haveq(96659)
   note Deliver the Supply Bundle to Kaga Wildhoof near Bloodhoof Village.
   talk Kaga Wildhoof##265810
-  turnin The Adventurer##96659 |goto Mulgore 46.16,67.3
+  turnin The Adventurer##96659 |goto Mulgore 46.13,67.4
 step
   only Tauren
   talk Mull Thunderhorn##2948
@@ -215,12 +206,13 @@ step
   talk Baine Bloodhoof##2993
   accept Rite of Vision##767 |goto Mulgore 46.67,63.38
 step
+  only completed(757)
   talk Yaw Sharpmane##3065
   accept Chakuyak##96130 |goto Mulgore 46.93,59.65
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Kaga Wildhoof##265810
-  accept The Great Outdoors##96605 |goto Mulgore 46.16,67.3
+  accept The Great Outdoors##96605 |goto Mulgore 46.13,67.4
 step
   talk Krang Stonehoof##3063
   accept Sparring Match##99108 |goto Mulgore 48.35,63.74
@@ -229,7 +221,7 @@ step
   accept Kyle's Gone Missing!##99411 |goto Mulgore 47.28,57.63
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96606) not haveq(96607) not haveq(96608)
-  note Sit near Kaga's Basic Campfire by typing /sit in the chat window and wait until you receive the Boosted Rest buff.
+  note Sit near Kaga's Basic Campfire and wait until you receive the Boosted Rest buff.
   click Basic Campfire##460003 |q 96605 |goto Mulgore 46.21,67.31
 step
   note Defeat 3 other players in duels or Novice Warriors for Tang Stonehoof.
@@ -244,7 +236,7 @@ step
 step
   only not completed(95998) not completed(96101) not completed(96604) not completed(96606) not completed(96607) not completed(96608) not haveq(95998) not haveq(96101) not haveq(96604) not haveq(96606) not haveq(96607) not haveq(96608)
   talk Kaga Wildhoof##265810
-  turnin The Great Outdoors##96605 |goto Mulgore 46.16,67.3
+  turnin The Great Outdoors##96605 |goto Mulgore 46.13,67.4
 step
   talk Krang Stonehoof##3063
   turnin Sparring Match##99108 |goto Mulgore 48.35,63.74
@@ -254,7 +246,7 @@ step
 step
   only not completed(96626) not completed(96629) not completed(96634) not completed(96646) not completed(96655) not completed(96658) not haveq(96626) not haveq(96629) not haveq(96634) not haveq(96646) not haveq(96655) not haveq(96658)
   talk Kaga Wildhoof##265810
-  accept Camping 101: Cooking##96661 |goto Mulgore 46.16,67.3
+  accept Camping 101: Cooking##96661 |goto Mulgore 46.13,67.4
 step
   talk Zarlman Two-Moons##3054
   accept Rite of Vision##771 |goto Mulgore 46.88,61.19
@@ -293,6 +285,7 @@ step
   collect Plainstrider Scale##4806 |q 766/3 |goto Mulgore 40.37,60.65 |tip {dropsfrom}Adult Plainstrider, Elder Plainstrider, Mazzranache
   collect Flatland Cougar Femur##4805 |q 766 |goto Mulgore 49.26,47.06 |tip {dropsfrom}Flatland Cougar
 step
+  only haveq(96130)
   note Defeat Chakuyak and bring back her pelt.
   collect Chakuyak's Pelt##270302 |q 96130 |goto Mulgore 39.46,66.18 |tip {dropsfrom}Chakuyak
 step
@@ -306,6 +299,7 @@ step
   talk Maur Raincaller##3055
   turnin Mazzranache##766 |goto Mulgore 46.23,60.8
 step
+  only haveq(96130)
   talk Yaw Sharpmane##3065
   turnin Chakuyak##96130 |goto Mulgore 46.93,59.65
 step
@@ -342,15 +336,14 @@ step
   talk Mull Thunderhorn##2948
   accept Thunderhorn Totem##756 |goto Mulgore 47.52,63.58
 step
+  only not Orc not Troll not Skyborne
   talk Brave Wildrunner##3222
   accept Our Ancient Enemy##99101 |goto Mulgore 46.68,63.83
 step
+  only not Orc not Troll not Skyborne
   note Bring Longwalker Malah's Report to Baine Bloodhoof.
   talk Baine Bloodhoof##2993
   turnin Our Ancient Enemy##99101 |goto Mulgore 46.67,63.38
-step
-  talk Baine Bloodhoof##2993
-  accept Drive Them Out##99080 |goto Mulgore 46.67,63.38
 step
   note Morin Cloudstalker wants you to examine the contents of a supply crate at the Ravaged Caravan.
   turnin The Ravaged Caravan##749 |goto Mulgore 51.87,53.37
@@ -391,8 +384,9 @@ step
   note Bring 8 Windfury Talons to Ruul Eagletalon in Bloodhoof Village.
   collect 8 Windfury Talon##4751 |q 743 |goto Mulgore 59.55,72.03 |tip {dropsfrom}Windfury Harpy, Windfury Wind Witch
 step
-  note Kill 6 Galak Centaurs, 4 Galak Outrunners, and bring the head of Herak the Pillager to Baine Bloodhoof.
-  kill Galak Centaur##2967 |q 99080 |goto Mulgore 64.05,61.68
+  only Tauren
+  note Use the Thunderhorn Cleansing Totem at the Thunderhorn Water Well, then return to Mull.
+  goto Mulgore 44.17,51.11 |tip Cleanse the Thunderhorn Water Well
 step
   kill Supervisor Fizsprocket##3051 |goto Mulgore 61.19,49.32 |tip Loot the quest item here — it starts the quest.
   accept Fizsprocket's Notes##98424 |goto Mulgore 61.19,49.32
@@ -406,29 +400,14 @@ step
   collect Shredder Operation Instructions##281035 |q 98424/1 |goto Mulgore 58.63,47.31
   collect Barrens Operations Best Practices##281036 |q 98424 |goto Mulgore 61.67,47.31
 step
-  only Tauren
-  note Use the Thunderhorn Cleansing Totem at the Thunderhorn Water Well, then return to Mull.
-  goto Mulgore 44.17,51.11 |tip Cleanse the Thunderhorn Water Well
+  talk Lorekeeper Raintotem##3233
+  accept A Sacred Burial##833 |goto Mulgore 56.98,34.55
 step
-  talk Morin Cloudstalker##2988
-  turnin The Venture Co.##764 |goto Mulgore 54.76,64.27
+  note Lorekeeper Raintotem wants you to kill 8 Bristleback Interlopers at Red Rocks.
+  kill Bristleback Interloper##3232 |q 833 |goto Mulgore 57.96,30.92
 step
-  talk Morin Cloudstalker##2988
-  turnin Fizsprocket's Notes##98424 |goto Mulgore 54.76,64.27
-step
-  note Kill 10 Palemane Tanners, 8 Palemane Skinners, and 5 Palemane Poachers, then return to Baine Bloodhoof in Bloodhoof Village.
-  kill Palemane Tanner##2949 |q 745/1 |goto Mulgore 36.76,66.12
-  kill Palemane Skinner##2950 |q 745/2 |goto Mulgore 36.28,66.13
-  kill Palemane Poacher##2951 |q 745 |goto Mulgore 33.17,64.65
-step
-  talk Perith Stormhoof##272203
-  accept The Longwalkers##98430 |goto Mulgore 33.13,65.92
-step
-  note Help Perith Stormhoof escape Palemane Rock, and report his safety to Cairne Bloodhoof in Thunder Bluff.
-  goto Mulgore 37.19,64.62 |tip Escort Perith Stormhoof out of Palemane Rock
-step
-  note Collect 5 Prospector's Picks.
-  collect 5 Broken Tools##4703 |q 746 |goto Mulgore 33.1,54.8 |tip {dropsfrom}Forge
+  talk Lorekeeper Raintotem##3233
+  turnin A Sacred Burial##833 |goto Mulgore 56.98,34.55
 step
   note Consume the Water of the Seers in front of the tribal fire in Bloodhoof Village and follow the vision once it appears.
   talk Seer Wiserunner##2984
@@ -436,6 +415,20 @@ step
 step
   talk Seer Wiserunner##2984
   accept Rite of Wisdom##773 |goto Mulgore 34.31,43.29
+step
+  note Collect 5 Prospector's Picks.
+  collect 5 Broken Tools##4703 |q 746 |goto Mulgore 33.1,54.8 |tip {dropsfrom}Forge
+step
+  note Kill 10 Palemane Tanners, 8 Palemane Skinners, and 5 Palemane Poachers, then return to Baine Bloodhoof in Bloodhoof Village.
+  kill Palemane Poacher##2951 |q 745/3 |goto Mulgore 33.17,64.65
+  kill Palemane Skinner##2950 |q 745/2 |goto Mulgore 36.28,66.13
+  kill Palemane Tanner##2949 |q 745 |goto Mulgore 36.76,66.12
+step
+  talk Perith Stormhoof##272203
+  accept The Longwalkers##98430 |goto Mulgore 33.12,65.92
+step
+  note Help Perith Stormhoof escape Palemane Rock, and report his safety to Cairne Bloodhoof in Thunder Bluff.
+  goto Mulgore 37.19,64.62 |tip Escort Perith Stormhoof out of Palemane Rock
 step
   talk Ruul Eagletalon##2985
   turnin Dangers of the Windfury##743 |goto Mulgore 46.54,64.94
@@ -450,15 +443,72 @@ step
   talk Mull Thunderhorn##2948
   turnin Thunderhorn Cleansing##758 |goto Mulgore 47.52,63.58
 step
-  talk Baine Bloodhoof##2993
-  turnin Drive Them Out##99080 |goto Mulgore 46.67,63.38
-step
-  talk Baine Bloodhoof##2993
-  accept The High Chieftain##99082 |goto Mulgore 46.67,63.38
-step
   only Tauren
   talk Mull Thunderhorn##2948
   accept Wildmane Totem##759 |goto Mulgore 47.52,63.58
+step
+  only not Orc not Skyborne not Troll
+  talk Baine Bloodhoof##2993
+  accept Drive Them Out##99080 |goto Mulgore 46.67,63.38
+step
+  talk Morin Cloudstalker##2988
+  turnin The Venture Co.##764 |goto Mulgore 54.76,64.27
+step
+  talk Morin Cloudstalker##2988
+  turnin Fizsprocket's Notes##98424 |goto Mulgore 54.76,64.27
+step
+  talk Morin Cloudstalker##2988
+  accept Supervisor Fizsprocket##765 |goto Mulgore 54.76,64.27
+step
+  only level>=12
+  talk Morin Cloudstalker##2988
+  accept Ceasing Operations##98427 |goto Mulgore 54.76,64.27
+step
+  only not Orc not Skyborne not Troll
+  note Kill 6 Galak Centaurs, 4 Galak Outrunners, and bring the head of Herak the Pillager to Baine Bloodhoof.
+  kill Galak Centaur##2967 |q 99080 |goto Mulgore 64.05,61.68
+step
+  note Kill Supervisor Fizsprocket and return his clipboard to Morin Cloudstalker at Bloodhoof Village.
+  collect Fizsprocket's Clipboard##4819 |q 765 |goto Mulgore 61.19,49.32 |tip {dropsfrom}Supervisor Fizsprocket
+step
+  only haveq(98427)
+  note Bring the Clearcutter Key to Morin Cloudstalker outside Bloodhoof Village.
+  kill Venture Co. Clearclutter##272173 |q 98427 |goto Mulgore 56.76,42.75 |elite
+  collect Clearcutter Key##281048 |q 98427 |goto Mulgore 56.76,42.75
+step
+  note Travel to Red Rocks east of Thunder Bluff and speak with the Ancestral Spirit.
+  talk Ancestral Spirit##2994
+  turnin Rite of Wisdom##773 |goto Mulgore 58.31,30.7
+step
+  talk Ancestral Spirit##2994
+  accept Journey into Thunder Bluff##775 |goto Mulgore 58.31,30.7
+step
+  only Tauren
+  note Bring 8 Prairie Alpha Teeth to Mull Thunderhorn in Bloodhoof Village.
+  collect 8 Prairie Alpha Tooth##4803 |q 759 |goto Mulgore 54.41,36.89 |tip {dropsfrom}Prairie Wolf Alpha
+step
+  talk Morin Cloudstalker##2988
+  turnin Supervisor Fizsprocket##765 |goto Mulgore 54.76,64.27
+step
+  only haveq(98427)
+  talk Morin Cloudstalker##2988
+  turnin Ceasing Operations##98427 |goto Mulgore 54.76,64.27
+step
+  only Tauren
+  talk Mull Thunderhorn##2948
+  turnin Wildmane Totem##759 |goto Mulgore 47.52,63.58
+step
+  only not Orc not Skyborne not Troll
+  talk Baine Bloodhoof##2993
+  turnin Drive Them Out##99080 |goto Mulgore 46.67,63.38
+step
+  only Tauren
+  talk Mull Thunderhorn##2948
+  accept Wildmane Cleansing##760 |goto Mulgore 47.52,63.58
+step
+  only not Orc not Skyborne not Troll
+  talk Baine Bloodhoof##2993
+  accept The High Chieftain##99082 |goto Mulgore 46.67,63.38
 step
   only not completed(844) not haveq(844)
   talk Skorn Whitecloud##3052
@@ -480,56 +530,6 @@ step
   talk Gennia Runetotem##3064
   accept Heeding the Call##5928 |goto Mulgore 47.48,62.95
 step
-  talk Morin Cloudstalker##2988
-  accept Supervisor Fizsprocket##765 |goto Mulgore 54.76,64.27
-step
-  only level>=12
-  talk Morin Cloudstalker##2988
-  accept Ceasing Operations##98427 |goto Mulgore 54.76,64.27
-step
-  note Kill Supervisor Fizsprocket and return his clipboard to Morin Cloudstalker at Bloodhoof Village.
-  collect Fizsprocket's Clipboard##4819 |q 765 |goto Mulgore 61.19,49.32 |tip {dropsfrom}Supervisor Fizsprocket
-step
-  only haveq(98427)
-  note Bring the Clearcutter Key to Morin Cloudstalker outside Bloodhoof Village.
-  kill Venture Co. Clearclutter##272173 |q 98427 |goto Mulgore 56.76,42.75 |elite
-  collect Clearcutter Key##281048 |q 98427 |goto Mulgore 56.76,42.75
-step
-  note Travel to Red Rocks east of Thunder Bluff and speak with the Ancestral Spirit.
-  talk Ancestral Spirit##2994
-  turnin Rite of Wisdom##773 |goto Mulgore 58.31,30.7
-step
-  talk Ancestral Spirit##2994
-  accept Journey into Thunder Bluff##775 |goto Mulgore 58.31,30.7
-step
-  talk Lorekeeper Raintotem##3233
-  accept A Sacred Burial##833 |goto Mulgore 56.98,34.55
-step
-  only Tauren
-  note Bring 8 Prairie Alpha Teeth to Mull Thunderhorn in Bloodhoof Village.
-  collect 8 Prairie Alpha Tooth##4803 |q 759 |goto Mulgore 54.41,36.89 |tip {dropsfrom}Prairie Wolf Alpha
-step
-  note Lorekeeper Raintotem wants you to kill 8 Bristleback Interlopers at Red Rocks.
-  kill Bristleback Interloper##3232 |q 833 |goto Mulgore 57.96,30.92
-step
-  talk Lorekeeper Raintotem##3233
-  turnin A Sacred Burial##833 |goto Mulgore 56.98,34.55
-step
-  talk Morin Cloudstalker##2988
-  turnin Supervisor Fizsprocket##765 |goto Mulgore 54.76,64.27
-step
-  only haveq(98427)
-  talk Morin Cloudstalker##2988
-  turnin Ceasing Operations##98427 |goto Mulgore 54.76,64.27
-step
-  only Tauren
-  talk Mull Thunderhorn##2948
-  turnin Wildmane Totem##759 |goto Mulgore 47.52,63.58
-step
-  only Tauren
-  talk Mull Thunderhorn##2948
-  accept Wildmane Cleansing##760 |goto Mulgore 47.52,63.58
-step
   only not completed(844) not haveq(844)
   note Bring 4 Flatland Prowler Claws to Melor Stonehoof in Thunder Bluff.
   collect 4 Flatland Prowler Claw##5203 |q 861 |goto Mulgore 48.56,28.22 |tip {dropsfrom}Flatland Prowler
@@ -540,24 +540,20 @@ step
 step
   only Skyborne Druid
   talk Muln Earthfury##259118
-  accept Child of Nature##94911 |goto Mulgore 33.41,22.58
+  accept Child of Nature##94911 |goto Mulgore 33.41,22.59
 step
   only Tauren
   talk Mull Thunderhorn##2948
   turnin Wildmane Cleansing##760 |goto Mulgore 47.52,63.58
 step
-  only not Orc not Skyborne not Troll not Undead
+  only Tauren
   talk Mull Thunderhorn##2948
   accept Thunderhorn's Report##98435 |goto Mulgore 47.52,63.58
-step
-  only Shaman completed(1517)
-  note Bring the Rough Quartz to Canaga Earthcaller in the Valley of Trials.
-  talk Canaga Earthcaller##5887
-  turnin Call of Earth##1518 |goto Durotar 42.4,69.17 |tip {turninat}Durotar
 step
   talk Cairne Bloodhoof##3057
   turnin The Longwalkers##98430 |goto Thunder Bluff 60.3,51.68 |tip {turninat}Thunder Bluff
 step
+  only not Orc not Skyborne not Troll
   note Seek audience with High Chieftain Cairne Bloodhoof in Thunder Bluff.
   talk Cairne Bloodhoof##3057
   turnin The High Chieftain##99082 |goto Thunder Bluff 60.3,51.68 |tip {turninat}Thunder Bluff
@@ -583,7 +579,7 @@ step
   talk Kary Thunderhorn##3038
   accept The Hunter's Path##6065 |goto Thunder Bluff 58.49,88.33
 step
-  note Purchase a Bundle of Herbs from Nida the herbalist, a Bundle of Ceder Twigs from Nata the enchanting supplier, and Sinew Thread from Mahu the leatherworking supplier and Ceremonial Flint and Tinder from Naal the cooking supplier.
+  note Purchase a Bundle of Herbs from Nida the herbalist, a Bundle of Cedar Twigs from Nata the enchanting supplier, and Sinew Thread from Mahu the leatherworking supplier and Ceremonial Flint and Tinder from Naal the cooking supplier.
   click Incense Burner##665373 |q 97485 |goto Thunder Bluff 53.02,87.84
 step
   talk Eylah Sunhorn##269068
@@ -619,7 +615,7 @@ step
   talk Turak Runetotem##3033
   accept Moonglade##5922 |goto Thunder Bluff 76.48,27.22
 step
-  only not Orc not Skyborne not Troll not Undead
+  only Tauren
   note Bring Thunderhorn's Report to Arch Druid Hamuul Runetotem in Thunder Bluff.
   talk Arch Druid Hamuul Runetotem##5769
   turnin Thunderhorn's Report##98435 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
@@ -693,7 +689,7 @@ step
   turnin Hex of Weakness##5655 |goto Orgrimmar 35.59,87.82 |tip {turninat}Orgrimmar
 step
   only Skyborne Druid
-  note Use the spell "Teleport: Moonglade" to travel to Moonglade.  When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##94913 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
 step
@@ -701,6 +697,11 @@ step
   note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##5922 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
+step
+  only Shaman not completed(1521) not completed(92468) not completed(94375) not haveq(1521) not haveq(92468) not haveq(94375)
+  note Bring the Rough Quartz to Canaga Earthcaller in the Valley of Trials.
+  talk Canaga Earthcaller##5887
+  turnin Call of Earth##1518 |goto Durotar 42.4,69.17 |tip {turninat}Durotar
 step
   only Warrior not completed(1819) not haveq(1819)
   note Speak with Uzzek at Far Watch Post.

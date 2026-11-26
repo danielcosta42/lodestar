@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (53-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Western Plaguelands (53-57)",
-	rev = "ae6d2afc",
+	rev = "6c71d895",
 }, [[
 step
   ding 51
@@ -13,6 +13,16 @@ step
   only not completed(5093) not completed(5095) not haveq(5093) not haveq(5095)
   talk Harbinger Balthazad##10879
   accept A Call to Arms: The Plaguelands!##5094 |goto Undercity 63.9,44.08
+step
+  only haveq(3542)
+  note Bring the Tablet of Markri to Andron Gant in Undercity.
+  talk Andron Gant##6522
+  turnin Delivery to Andron Gant##3542 |goto Undercity 54.81,76.33 |tip {turninat}Undercity
+step
+  only haveq(97001)
+  note Take the Sawyer Family Ledger to Abigail Sawyer in Undercity's War Quarter.
+  talk Abigail Sawyer##4604
+  turnin Sawyer's Legacy##97001 |goto Undercity 54.7,38.76 |tip {turninat}Undercity
 step
   only not completed(5093) not completed(5095) not haveq(5093) not haveq(5095)
   note Seek out High Executor Derrington. His base camp is located at the Bulwark, east of Tirisfal Glade and the Undercity.
@@ -33,6 +43,25 @@ step
   talk Argent Officer Garush##10839
   turnin Argent Dawn Commission##5405 |goto Tirisfal Glades 83.19,68.45
 step
+  talk Knight of Mourning##276110
+  accept The Knight of Mourning##93030 |goto Tirisfal Glades 17.58,67.6
+step
+  only Paladin level>=58
+  talk Knight of Mourning##276110
+  accept The Reliquary of Tyr##99187 |goto Tirisfal Glades 17.58,67.6
+step
+  only Paladin haveq(99187)
+  note Travel to Blackmaw Hold in Kalimdor, and recover the Reliquary of Tyr.
+  collect Reliquary of Tyr##286415 |q 99187 |goto Tirisfal Glades 17.58,67.6 |elite |tip {dropsfrom}Elder Shaman Bloodmane
+step
+  note Speak with the Knight of Mourning to learn more about his unfinished quest.
+  talk Knight of Mourning##276110
+  turnin The Knight of Mourning##93030 |goto Tirisfal Glades 17.58,67.6
+step
+  only Paladin haveq(99187)
+  talk Knight of Mourning##276110
+  turnin The Reliquary of Tyr##99187 |goto Tirisfal Glades 17.58,67.6
+step
   only completed(5802) level>=55
   talk Apothecary Dithers##11057
   accept Araj's Scarab##5804 |goto Tirisfal Glades 83.28,69.23
@@ -46,14 +75,47 @@ step
   talk Mickey Levine##11615
   accept A Plague Upon Thee##5902 |goto Tirisfal Glades 83.29,72.34
 step
-  only level>=57
-  talk Apothecary Zinge##5204
-  accept Vivian Lagrave and the Darkstone Tablet##4769 |goto Undercity 50.14,67.97
+  only level>=54
+  talk Royal Overseer Bauhaus##10781
+  accept Wood Remains##97007 |goto Undercity 69.79,43.16
 step
-  only haveq(4769)
-  note Speak with Shadowmage Vivian Lagrave.
-  talk Shadowmage Vivian Lagrave##9078
-  turnin Vivian Lagrave and the Darkstone Tablet##4769 |goto Badlands 2.9,47.76 |tip {turninat}Badlands
+  only haveq(97007)
+  note Return the notarized Sawyer Family Ledger to Abigail Sawyer in the War Quarter.
+  talk Abigail Sawyer##4604
+  turnin Wood Remains##97007 |goto Undercity 54.7,38.76 |tip {turninat}Undercity
+step
+  only level>=54
+  talk Abigail Sawyer##4604
+  accept Notarized Claim##97006 |goto Undercity 54.7,38.76
+step
+  only haveq(97006)
+  note Take the Sawyer Family Ledger to Royal Overseer Bauhaus in Undercity's Trade Quarter.
+  talk Royal Overseer Bauhaus##10781
+  turnin Notarized Claim##97006 |goto Undercity 69.79,43.16 |tip {turninat}Undercity
+step
+  only level>=55
+  talk Master Apothecary Faranell##2055
+  accept The Dark Crystal##95926 |goto Undercity 48.82,69.28
+step
+  only haveq(95926)
+  note Gather a colorless Drained Crystal Fragment near the Achromatic Crystal in the Shaper's Terrace.
+  collect Drained Crystal Fragment##271771 |q 95926 |goto Undercity 48.82,69.28
+step
+  only haveq(95926)
+  talk Master Apothecary Faranell##2055
+  turnin The Dark Crystal##95926 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
+step
+  only level>=60
+  talk Chemist Fuely##10136
+  accept Essence of Seeping Slimes##97049 |goto Undercity 47.45,73.35
+step
+  only haveq(97049)
+  note Gather 8 Seeping Slime Essence in the Shaper's Terrace.
+  collect 8 Seeping Slime Essence##276235 |q 97049 |goto Undercity 47.45,73.35 |elite |tip {dropsfrom}Seeping Slime
+step
+  only haveq(97049)
+  talk Chemist Fuely##10136
+  turnin Essence of Seeping Slimes##97049 |goto Undercity 47.45,73.35 |tip {turninat}Undercity
 step
   note Find someplace suitable in the center of the Northridge Lumber Mill in Western Plaguelands to place the Barrel of Plagueland Termites.
   turnin A Plague Upon Thee##5902 |goto Western Plaguelands 48.34,31.99 |tip {turninat}Western Plaguelands

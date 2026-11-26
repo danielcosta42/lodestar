@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (11-18)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Redridge Mountains (15-24)",
-	rev = "9a1c5759",
+	rev = "7725f7ef",
 }, [[
 step
   ding 10
@@ -31,11 +31,11 @@ step
 step
   only level>=10
   talk Grenhild Darktalon##49808
-  accept Snowbound##86667 |goto Loch Modan 36.5,48.29
+  accept Snowbound##86667 |goto Loch Modan 36.5,48.3
 step
   only haveq(86667)
   note Deliver a Jar of Snow to Norric Lochthane at his house on the northwest coast of the Loch.
-  collect Jar of Snow##279379 |q 86667 |goto Loch Modan 36.5,48.29
+  collect Jar of Snow##279379 |q 86667 |goto Loch Modan 36.5,48.3
 step
   only not Human not NightElf not Skyborne haveq(6387)
   note Bring Brock's List to Thorgrum Borrelson in Thelsamar.
@@ -57,7 +57,7 @@ step
 step
   only haveq(86667)
   talk Norric Lochthane##258043
-  turnin Snowbound##86667 |goto Loch Modan 41.76,19.05
+  turnin Snowbound##86667 |goto Loch Modan 41.77,19.05
 step
   only haveq(416)
   talk Mountaineer Kadrell##1340
@@ -109,7 +109,7 @@ step
   only Shaman completed(94465)
   turnin Call of Fire##94467 |goto Loch Modan 31.79,64.52
 step
-  only Shaman completed(94465)
+  only Dwarf Shaman completed(94465)
   click Brazier of the Dormant Flame##61934
   accept Call of Fire##94468 |goto Loch Modan 31.79,64.52
 step
@@ -173,7 +173,7 @@ step
 step
   only haveq(86758)
   note Find and defeat the crocolisk Daggerfang and bring back Marek's knife.
-  collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 62.19,44.96 |tip {dropsfrom}Daggerfang
+  collect Marek's Croc-Hunting Knife##279591 |q 86758 |goto Loch Modan 61.93,44.37 |tip {dropsfrom}Daggerfang
 step
   note Get 5 pieces of Crocolisk Meat and 6 Crocolisk Skins for Marek Ironheart at the Farstrider Lodge.
   collect Crocolisk Meat##2924 |q 385 |goto Loch Modan 56.87,39.12 |tip {dropsfrom}Loch Crocolisk, Daggerfang, Large Loch Crocolisk
@@ -209,10 +209,10 @@ step
   accept In Defense of the King's Lands##217 |goto Loch Modan 23.23,73.68
 step
   talk Mountaineer Ylva##269153
-  accept Banner of the Fallen##86585 |goto Loch Modan 31.77,86.31
+  accept Banner of the Fallen##86585 |goto Loch Modan 31.77,86.27
 step
   note Raise the standard of Ironforge, call out the trogg Headsplitter and kill it, then report to Captain Rugelfuss.
-  kill Headsplitter##269185 |q 86585 |goto Loch Modan 32.48,87.48
+  kill Headsplitter##269185 |q 86585 |goto Loch Modan 31.81,86.49
 step
   note Kill the Trogg leader, Grawmug, and his two guards, Gnasher and Brawler then report back to Captain Rugelfuss in the southern guard tower.
   kill Grawmug##1205 |q 217/1 |goto Loch Modan 34.77,90.45
@@ -233,20 +233,20 @@ step
   talk Magmar Fellhew##1345
   accept Gathering Idols##297 |goto Loch Modan 64.9,66.66
 step
-  collect Excavation Tools##665282 |goto Loch Modan 69.4,67.5 |tip Loot the quest item here — it starts the quest.
-  accept Excavation Tools##86613 |goto Loch Modan 69.4,67.5
-step
-  note Return 6 Excavation Tools to Magmar Fellhew.
-  collect 6 Excavation Tools##278398 |q 86613 |goto Loch Modan 69.4,67.5
-step
-  talk Prospector Ironband##1344
-  turnin Excavation Tools##86613 |goto Loch Modan 65.93,65.62
+  collect Excavation Tools##665282 |goto Loch Modan 70.65,64.94 |tip Loot the quest item here — it starts the quest.
+  accept Excavation Tools##86613 |goto Loch Modan 70.65,64.94
 step
   note Bring Magmar Fellhew 8 Carved Stone Idols.
   collect 8 Carved Stone Idol##2636 |q 297 |goto Loch Modan 70.03,62.68 |tip {dropsfrom}Stonesplinter Geomancer, Stonesplinter Digger, Berserk Trogg
 step
+  note Return 6 Excavation Tools to Magmar Fellhew.
+  collect 6 Excavation Tools##278398 |q 86613 |goto Loch Modan 70.65,64.94
+step
   talk Magmar Fellhew##1345
   turnin Gathering Idols##297 |goto Loch Modan 64.9,66.66
+step
+  talk Prospector Ironband##1344
+  turnin Excavation Tools##86613 |goto Loch Modan 65.93,65.62
 step
   only level>=16
   talk Chief Engineer Hinderweir VII##1093
@@ -270,7 +270,7 @@ step
   accept A Dark Threat Looms##161 |goto Loch Modan 46.05,13.61
 step
   click Discarded Fishing Toolbox##665289
-  accept Silver of the Waves##86614 |goto Loch Modan 48.06,39.7
+  accept Silver of the Waves##86614 |goto Loch Modan 45.68,43.29
 step
   note Return the Monogrammed Silver Hair clip to its owner.
   talk Khara Deepwater##1684
@@ -304,16 +304,16 @@ step
   talk Jennea Cannon##5497
   turnin Investigate the Blue Recluse##1920 |goto Stormwind City 49.56,85.8 |tip {turninat}Stormwind City
 step
-  only not Dwarf not NightElf not Skyborne Mage completed(1920) level>=15
+  only not Dwarf not NightElf Mage completed(1920) level>=15
   talk Jennea Cannon##5497
   accept Gathering Materials##1921 |goto Stormwind City 49.56,85.8
 step
-  only not Dwarf not NightElf not Skyborne Mage haveq(1921)
+  only not Dwarf not NightElf Mage haveq(1921)
   note Bring 10 Linen Cloth and the 6 Charged Rift Gems to Wynne Larson in Stormwind.
   collect 10 Linen Cloth##2589 |q 1921/1 |tip {dropsfrom}humanoids
   collect 6 Charged Rift Gem##7249 |q 1921 |goto Loch Modan 35.3,24.38 |tip {dropsfrom}Miners' League Crates
 step
-  only not Dwarf not NightElf not Skyborne Mage haveq(1921)
+  only not Dwarf not NightElf Mage haveq(1921)
   talk Wynne Larson##1309
   turnin Gathering Materials##1921 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
 step
@@ -437,7 +437,7 @@ step
   talk Bingles Blastenheimer##6577
   turnin Bingles' Missing Supplies##2038 |goto Loch Modan 63.56,47.92
 step
-  only Shaman completed(94465)
+  only Dwarf Shaman completed(94465)
   note Bring the Torch of Eternal Flame to Bruegs Kindleborn in Dun Morogh.
   talk Bruegs Kindleborn##257597
   turnin Call of Fire##94468 |goto Dun Morogh 87.94,44.8 |tip {turninat}Dun Morogh

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Badlands (37-42)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Swamp of Sorrows (35-44)",
-	rev = "d22dc96f",
+	next = "Leveling/Horde/Riverglades (39-43)",
+	rev = "5e034800",
 }, [[
 step
   ding 36
@@ -88,6 +88,12 @@ step
   collect 10 Crag Coyote Fang##7846 |q 2258/2 |goto Badlands 49.87,41.92 |tip {dropsfrom}Crag Coyote, Feral Crag Coyote, Elder Crag Coyote
   collect 5 Rock Elemental Shard##7848 |q 2258 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Lesser Rock Elemental, Ambassador Infernus
 step
+  talk Rigglefuzz##2817
+  turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
+step
+  talk Theldurin the Lost##2785
+  accept Solution to Doom##709 |goto Badlands 51.22,76.78
+step
   only haveq(2258)
   talk Jarkal Mossmeld##6868
   turnin Badlands Reagent Run##2258 |goto Badlands 2.42,46.06
@@ -98,30 +104,28 @@ step
   talk Neeka Bloodscar##5394
   accept Report to Helgrum##1420 |goto Badlands 6.49,47.2
 step
-  note Bring 30 Coyote Jawbones to Neeka Bloodscar in Kargath.
-  collect 30 Coyote Jawbone##6166 |q 1419 |goto Badlands 49.87,41.92 |tip {dropsfrom}Crag Coyote, Feral Crag Coyote, Elder Crag Coyote
+  talk Mus'hale##269647
+  accept Supplies and Studies##97663 |goto Badlands 4.09,46.22
 step
-  talk Theldurin the Lost##2785
-  accept Solution to Doom##709 |goto Badlands 51.39,76.87
-step
-  talk Rigglefuzz##2817
-  turnin Barbecued Buzzard Wings##703 |goto Badlands 42.39,52.93
+  note Slay ogres in the Dustbowl for Mus'hale's Stolen Supplies and use them to collect rubbings of the nearby stone etchings, then return to Mus'hale at Kargath.
+  talk Mus'hale##269647
+  turnin Supplies and Studies##97663 |goto Badlands 4.09,46.22
 step
   note Bring the Tablet of Ryun'eh to Theldurin the Lost.
   collect Tablet of Ryun'eh##4631 |q 709 |goto Badlands 39.34,18.82 |tip {dropsfrom}Ancient Chest
 step
-  talk Neeka Bloodscar##5394
-  turnin Coyote Thieves##1419 |goto Badlands 6.49,47.2
+  note Bring 30 Coyote Jawbones to Neeka Bloodscar in Kargath.
+  collect 30 Coyote Jawbone##6166 |q 1419 |goto Badlands 49.87,41.92 |tip {dropsfrom}Crag Coyote, Feral Crag Coyote, Elder Crag Coyote
 step
   talk Theldurin the Lost##2785
-  turnin Solution to Doom##709 |goto Badlands 51.39,76.87
+  turnin Solution to Doom##709 |goto Badlands 51.22,76.78
 step
   talk Theldurin the Lost##2785
-  accept To the Undercity for Yagyin's Digest##728 |goto Badlands 51.39,76.87
+  accept To the Undercity for Yagyin's Digest##728 |goto Badlands 51.22,76.78
 step
   only completed(687)
   talk Theldurin the Lost##2785
-  accept The Lost Fragments##692 |goto Badlands 51.39,76.87
+  accept The Lost Fragments##692 |goto Badlands 51.22,76.78
 step
   only completed(687)
   note Bring the Torn Scroll Fragment, the Crumpled Scroll Fragment and the Singed Scroll Fragment to Theldurin the Lost.
@@ -129,13 +133,49 @@ step
 step
   only completed(687)
   talk Theldurin the Lost##2785
-  turnin The Lost Fragments##692 |goto Badlands 51.39,76.87
+  turnin The Lost Fragments##692 |goto Badlands 51.22,76.78
+step
+  talk Neeka Bloodscar##5394
+  turnin Coyote Thieves##1419 |goto Badlands 6.49,47.2
+step
+  only completed(2258)
+  talk Jarkal Mossmeld##6868
+  accept Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
+step
+  only completed(2318) level>=37
+  talk Jarkal Mossmeld##6868
+  accept Translating the Journal##2338 |goto Badlands 2.42,46.06
+step
+  only completed(2318) haveq(2338)
+  note Let Jarkal borrow the necklace. In exchange, he will translate the journal for you.
+  talk Jarkal Mossmeld##6868
+  turnin Translating the Journal##2338 |goto Badlands 2.42,46.06
 step
   talk Lotwil Veriatus##2921
   accept Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
 step
+  only haveq(2202)
+  note Bring 12 Magenta Fungus Caps to Jarkal Mossmeld in Kargath.
+  collect 12 Magenta Fungus Cap##8047 |q 2202 |goto Badlands 37.57,15.26 |tip {dropsfrom}Magenta Cap Clusters
+step
+  only haveq(2202)
+  talk Jarkal Mossmeld##6868
+  turnin Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
+step
+  only level>=40
+  talk Gorn##1068
+  accept Broken Alliances##782 |goto Badlands 2.91,45.6
+step
+  only haveq(782)
+  note Kill Boss Tho'grun and bring the Sign of the Earth to Gorn in Kargath.
+  collect Sign of the Earth##4640 |q 782 |goto Badlands 12.62,75.49 |tip {dropsfrom}Boss Tho'grun
+step
   note Bring 5 Bracers of Rock Binding to Lotwil Veriatus in the Badlands.
   collect 5 Bracers of Rock Binding##4628 |q 712 |goto Badlands 5.48,82.27 |tip {dropsfrom}Greater Rock Elemental
+step
+  only haveq(782)
+  talk Gorn##1068
+  turnin Broken Alliances##782 |goto Badlands 2.91,45.6
 step
   talk Lotwil Veriatus##2921
   turnin Study of the Elements: Rock##712 |goto Badlands 25.95,44.87
@@ -157,39 +197,6 @@ step
   note Bring Cog #5 to Lotwil Veriatus.
   talk Lotwil Veriatus##2921
   turnin This Is Going to Be Hard##777 |goto Badlands 25.95,44.87
-step
-  only completed(2258)
-  talk Jarkal Mossmeld##6868
-  accept Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
-step
-  only completed(2318) level>=37
-  talk Jarkal Mossmeld##6868
-  accept Translating the Journal##2338 |goto Badlands 2.42,46.06
-step
-  only level>=40
-  talk Gorn##1068
-  accept Broken Alliances##782 |goto Badlands 2.91,45.6
-step
-  only completed(2318) haveq(2338)
-  note Let Jarkal borrow the necklace. In exchange, he will translate the journal for you.
-  talk Jarkal Mossmeld##6868
-  turnin Translating the Journal##2338 |goto Badlands 2.42,46.06
-step
-  only haveq(782)
-  note Kill Boss Tho'grun and bring the Sign of the Earth to Gorn in Kargath.
-  collect Sign of the Earth##4640 |q 782 |goto Badlands 12.62,75.49 |tip {dropsfrom}Boss Tho'grun
-step
-  only haveq(2202)
-  note Bring 12 Magenta Fungus Caps to Jarkal Mossmeld in Kargath.
-  collect 12 Magenta Fungus Cap##8047 |q 2202 |goto Badlands 37.57,15.26 |tip {dropsfrom}Magenta Cap Clusters
-step
-  only haveq(782)
-  talk Gorn##1068
-  turnin Broken Alliances##782 |goto Badlands 2.91,45.6
-step
-  only haveq(2202)
-  talk Jarkal Mossmeld##6868
-  turnin Uldaman Reagent Run##2202 |goto Badlands 2.42,46.06
 step
   only completed(713)
   talk Lotwil Veriatus##2921
@@ -223,7 +230,7 @@ step
   only completed(735,736)
   note Bring Yagyin's Digest to Theldurin.
   talk Theldurin the Lost##2785
-  turnin Forbidden Knowledge##737 |goto Badlands 51.39,76.87
+  turnin Forbidden Knowledge##737 |goto Badlands 51.22,76.78
 step
   note Get Patrick Garrett's family treasure from their family chest in the South Common Hall of Uldaman, and bring it to him in the Undercity.
   collect Garrett Family Treasure##8026 |q 2342 |goto Badlands 34.19,18.63 |tip {dropsfrom}Garrett Family Chest
@@ -231,10 +238,6 @@ step
   talk Patrick Garrett##5651
   turnin Reclaimed Treasures##2342 |goto Undercity 62.32,48.61 |tip {turninat}Undercity
 step
-  note Bring Neeka's Report to Helgrum the Swift in Stonard.
-  talk Helgrum the Swift##1442
-  turnin Report to Helgrum##1420 |goto Swamp of Sorrows 47.74,55.2 |tip {turninat}Swamp of Sorrows
-step
-  note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 25.98,31.4
+  note {travel}Undercity
+  goto Undercity 61.64,28.95
 ]])

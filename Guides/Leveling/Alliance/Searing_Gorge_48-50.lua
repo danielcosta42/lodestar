@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Searing Gorge (48-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Blasted Lands (50-55)",
-	rev = "b8c1c1f7",
+	next = "Leveling/Alliance/Alterac Mountains (40-53)",
+	rev = "3b700242",
 }, [[
 step
   ding 46
@@ -225,11 +225,6 @@ step
   talk Mountaineer Pebblebitty##3836
   accept Proof of Deed##3182 |goto Loch Modan 18.18,84.01
 step
-  only haveq(2977)
-  note Speak with Historian Karnik in Ironforge.
-  talk Historian Karnik##2916
-  turnin Return to Ironforge##2977 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
-step
   only haveq(3182)
   note Take Margol's Gigantic Horn to Curator Thorius in Ironforge.
   talk Curator Thorius##8256
@@ -245,6 +240,15 @@ step
 step
   talk Curator Thorius##8256
   accept Dwarven Justice##3371 |goto Ironforge 71.5,15.74
+step
+  only completed(2439)
+  talk High Explorer Magellas##5387
+  accept Portents of Uldum##2963 |goto Ironforge 69.93,18.55
+step
+  only completed(2439)
+  note Speak with Historian Karnik in the Hall of Explorers within Ironforge.
+  talk Historian Karnik##2916
+  turnin Portents of Uldum##2963 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
 step
   only haveq(3201)
   note Take the Proof of Deed back to Mountaineer Pebblebitty.
@@ -278,6 +282,6 @@ step
   talk Curator Thorius##8256
   turnin Rise, Obsidion!##3566 |goto Ironforge 71.5,15.74 |tip {turninat}Ironforge
 step
-  note {travel}Blasted Lands
-  goto Blasted Lands 50.55,14.2
+  note {travel}Alterac Mountains
+  goto Alterac Mountains 39.18,14.66
 ]])

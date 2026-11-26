@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/The Hinterlands (47-50)", {
+ns:RegisterGuide("Leveling/Horde/The Hinterlands (47-51)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Searing Gorge (48-50)",
-	rev = "7b99c44d",
+	rev = "f7f3e004",
 }, [[
 step
   ding 46
@@ -141,6 +141,9 @@ step
   talk Lard##14731
   accept Lard Lost His Lunch##7840 |goto The Hinterlands 78.14,81.38
 step
+  talk Qujo##270780
+  accept Witch Doctor Ti'ik##98203 |goto The Hinterlands 77.95,77.83
+step
   talk Katoom the Angler##14740
   accept Snapjaws, Mon!##7815 |goto The Hinterlands 80.33,81.54
 step
@@ -193,6 +196,18 @@ step
   talk Otho Moji'ko##14738
   accept The Final Message to the Wildhammer##7843 |goto The Hinterlands 79.38,79.08
 step
+  note Kill the Witherbark witch doctor known as Ti'ik in a cave west of Hiri'watha and return with his head.
+  collect Ti'ik's Head##279913 |q 98203 |goto The Hinterlands 26.05,65.34 |tip {dropsfrom}Witch Doctor Ti'ik
+step
+  note Otho Moji'ko at Revantusk Village in the Hinterlands wants you to travel to Aerie Peak in the western region of the Hinterlands and place the Final Message to the Wildhammer by the well in the center of town. Return to him once this task is complete.
+  goto The Hinterlands 14.34,48.07 |tip Message to the Wildhammer Delivered
+step
+  talk Otho Moji'ko##14738
+  turnin The Final Message to the Wildhammer##7843 |goto The Hinterlands 79.38,79.08
+step
+  talk Qujo##270780
+  turnin Witch Doctor Ti'ik##98203 |goto The Hinterlands 77.95,77.83
+step
   talk Primal Torntusk##14736
   accept Kidnapped Elder Torntusk!##7845 |goto The Hinterlands 78.2,81.18
 step
@@ -237,12 +252,6 @@ step
   talk Elder Torntusk##14757
   accept Return to Primal Torntusk##7847 |goto The Hinterlands 59.69,77.84
 step
-  note Otho Moji'ko at Revantusk Village in the Hinterlands wants you to travel to Aerie Peak in the western region of the Hinterlands and place the Final Message to the Wildhammer by the well in the center of town. Return to him once this task is complete.
-  goto The Hinterlands 14.34,48.07 |tip Message to the Wildhammer Delivered
-step
-  talk Otho Moji'ko##14738
-  turnin The Final Message to the Wildhammer##7843 |goto The Hinterlands 79.38,79.08
-step
   only haveq(7847)
   note Elder Torntusk at Jintha'alor wants you to return to Primal Torntusk at Revantusk Village with news of his rescue.
   talk Primal Torntusk##14736
@@ -280,6 +289,32 @@ step
 step
   talk Oran Snakewrithe##7825
   turnin Oran's Gratitude##8273 |goto Undercity 73.06,32.85 |tip {turninat}Undercity
+step
+  only Rogue level>=50
+  talk Miles Dexter##4583
+  accept A Simple Request##8233 |goto Undercity 85.21,71.57
+step
+  only completed(3568)
+  talk Chemist Cuely##8390
+  accept Seeping Corruption##3569 |goto Undercity 48.71,71.39
+step
+  only completed(3568)
+  note Give Cuely's Elixir to Thersa Windsong in Undercity.
+  talk Thersa Windsong##8393
+  turnin Seeping Corruption##3569 |goto Undercity 49.04,70.8 |tip {turninat}Undercity
+step
+  only completed(3568)
+  talk Chemist Cuely##8390
+  accept Seeping Corruption##3570 |goto Undercity 48.71,71.39
+step
+  only completed(3568)
+  talk Chemist Cuely##8390
+  turnin Seeping Corruption##3570 |goto Undercity 48.71,71.39 |tip {turninat}Undercity
+step
+  only Rogue haveq(8233)
+  note Speak with Lord Jorach Ravenholdt in Ravenholdt Manor.
+  talk Lord Jorach Ravenholdt##6768
+  turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88 |tip {turninat}Alterac Mountains
 step
   note Bring an Undamaged Venom Sac to Apothecary Lydon in Tarren Mill.
   collect Undamaged Venom Sac##9322 |q 2934 |goto The Hinterlands 35.35,71.35 |tip {dropsfrom}Witherbark Broodguard

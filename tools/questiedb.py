@@ -18,17 +18,31 @@ As coordenadas já estão no sistema do Forever. Conferido contra o scan em jogo
 Zarlman Two-Moons em Mulgore: 46.88/61.19 aqui, 46.86/61.13 no cliente, e
 47.76/57.53 no banco do Anniversary. Não reprojetar.
 
-    python questiedb.py --demo [pasta do QuestieDB]
+Lê também o **repositório-fonte** do QuestieDB (github.com/Questie/QuestieDB, sem o .toc
+baked): `data/Forever/forever*DB.lua` é só a base convertida do Era, e o que o addon
+entrega sai dela mais as correções estáticas (as herdadas do Era em
+`src/corrections/Forever/legacy`, o delta-base gerado, os traces e as `forever*Fixes.lua`,
+nessa ordem) e os Derived Passes. As correções são Lua com `_remove`, `zoneIDs` e
+funções: em vez de reimplementar, roda o próprio `generator/flavor.lua` do QuestieDB
+(Lua 5.1, sem dependência) — o mesmo `flavorLoader.load` que o `generate.lua` usa para
+escrever o .toc — e normaliza cada campo como o baked guarda (`normalize.field` +
+`encode.hasStoredValue`). Sai uma tabela Lua por tipo, lida pelo `parse_lua`.
+
+    python questiedb.py --demo [pasta do QuestieDB, baked ou fonte]
 """
 import base64
 import json
 import os
 import re
+import shutil
 import struct
+import subprocess
 import sys
+import tempfile
 import zlib
 
 from build_intermediate import build_npcs, build_objects, build_quests
+from parse_lua import LuaParser
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 # O QuestieDB fica ao lado do Lodestar, na pasta AddOns do cliente do Forever.
@@ -161,6 +175,101 @@ def entidades(meta):
     return out
 
 
+# Roda na raiz do repositório-fonte do QuestieDB: os módulos dele se carregam por caminho
+# relativo (`dofile("src/config.lua")`). Só lê de lá; escreve em arg[1].
+EXPORTA_LUA = r"""
+local saida = assert(arg[1], "pasta de saída")
+local config = dofile("src/config.lua")
+local normalize = dofile("src/meta/normalize.lua")
+local encode = dofile("generator/encode.lua")
+local serialize = dofile("generator/serialize.lua")
+local lib = dofile("generator/lib.lua")
+local flavor = assert(config.flavorByName.Forever, "QuestieDB sem o flavor Forever")
+-- o mesmo passo do generate.lua: base + correções estáticas + Derived Passes
+local loaded, stats = dofile("generator/flavor.lua").load(flavor)
+for _, tipo in ipairs(config.entityTypes) do
+  local e = assert(loaded[tipo.name], tipo.name)
+  local meta, linhas = e.meta, { "return {" }
+  for _, id in ipairs(lib.sortedIds(e.entities)) do
+    local fonte, row = e.entities[id], {}
+    for i = 1, meta.fieldCount do
+      -- o que o baked guarda: número nil vira 0 e some, tabela vazia some, {0,0} some
+      local v = normalize.field(meta, i, fonte[i])
+      if encode.hasStoredValue(meta, i, v) then row[i] = v end
+    end
+    linhas[#linhas + 1] = "[" .. serialize.integer(id) .. "]=" .. serialize.value(row) .. ","
+  end
+  linhas[#linhas + 1] = "}"
+  local f = assert(io.open(saida .. "/" .. tipo.name .. ".lua", "wb"))
+  assert(f:write(table.concat(linhas, "\n"), "\n"))
+  assert(f:close())
+end
+io.write(string.format("%d %d %d", stats.applied, stats.corrections and stats.corrections.registered or 0,
+  stats.corrections and stats.corrections.files or 0))
+"""
+
+
+def e_fonte(pasta):
+    """Repositório-fonte do QuestieDB (sem o .toc baked do Forever)."""
+    return (not os.path.exists(os.path.join(pasta, TOC))
+            and os.path.exists(os.path.join(pasta, "generator", "flavor.lua"))
+            and os.path.exists(os.path.join(pasta, "data", "Forever", "foreverQuestDB.lua")))
+
+
+def lua51():
+    """O interpretador: $LUA, ou o primeiro Lua 5.1 do PATH (o gerador do QuestieDB é 5.1)."""
+    for cand in [os.environ.get("LUA"), "lua5.1", "lua", "luajit"]:
+        exe = cand and shutil.which(cand)
+        if not exe:
+            continue
+        try:
+            v = subprocess.run([exe, "-e", "io.write(_VERSION)"], capture_output=True, text=True, timeout=30)
+        except OSError:
+            continue
+        if v.stdout == "Lua 5.1":
+            return exe
+    sys.exit("o QuestieDB-fonte pede um Lua 5.1 (lua5.1, luajit ou $LUA)")
+
+
+def entidades_fonte(pasta):
+    """O mesmo {"Quest": {id: {campo: valor}}, ...} de `entidades`, do repositório-fonte."""
+    out, saida = {}, tempfile.mkdtemp(prefix="questiedb-")
+    try:
+        r = subprocess.run([lua51(), "-", saida], input=EXPORTA_LUA, cwd=os.path.abspath(pasta),
+                           capture_output=True, text=True)
+        if r.returncode:
+            sys.exit("o gerador do QuestieDB falhou:\n" + r.stderr)
+        aplicadas, funcoes, arquivos = (int(x) for x in r.stdout.split())
+        for ent in ("Quest", "Npc", "Object", "Item"):
+            with open(os.path.join(saida, ent + ".lua"), encoding="utf-8") as fh:
+                texto = fh.read()
+            assert texto.startswith("return ")
+            out[ent] = LuaParser(texto[len("return "):]).parse_value()
+    finally:
+        shutil.rmtree(saida, ignore_errors=True)
+    out["correcoes"] = {"valores": aplicadas, "funcoes": funcoes, "arquivos": arquivos}
+    return out
+
+
+def versao_fonte(pasta):
+    """Versão do .toc-base (`## Version: 1.1.6`) e o commit do checkout, se houver git."""
+    versao = "?"
+    with open(os.path.join(pasta, "QuestieDB.toc"), encoding="utf-8") as fh:
+        for linha in fh:
+            if linha.startswith("## Version:"):
+                versao = linha.split(":", 1)[1].strip()
+                break
+    commit = data = None
+    try:
+        r = subprocess.run(["git", "-C", pasta, "log", "-1", "--format=%h %cs"],
+                           capture_output=True, text=True, timeout=30)
+        if r.returncode == 0 and r.stdout.strip():
+            commit, data = r.stdout.split()
+    except OSError:
+        pass
+    return versao, commit, data
+
+
 def zonas(pasta):
     """areaID -> {uiMapId, name}, do próprio QuestieDB do Forever.
 
@@ -265,14 +374,30 @@ def xp(pasta=PADRAO):
     gera do cliente (o Questie mostra a XP com ele). Quest nova do Forever quase não tem."""
     p = os.path.join(pasta, "support", "Forever", "QuestXP", "xpDB-classic.lua")
     txt = open(p, encoding="utf-8").read()
-    return {int(i): [int(n), int(x)] for i, n, x in re.findall(r"^\s*\[(\d+)\] = \{(\d+), (\d+)\}", txt, re.M)}
+    out = {int(i): [int(n), int(x)] for i, n, x in re.findall(r"^\s*\[(\d+)\] = \{(\d+), (\d+)\}", txt, re.M)}
+    # A XP que os jogadores viram (QuestieTrace, 1.1.x): o QuestieDB carrega depois da tabela e
+    # ela vence — inclusive para 1.248 quests que a tabela não tinha, as novas do Forever.
+    p = os.path.join(pasta, "support", "Forever", "QuestXP", "xpDB-traces.lua")
+    if os.path.exists(p):
+        txt = open(p, encoding="utf-8").read()
+        out.update({int(i): [int(n), int(x)] for i, n, x in
+                    re.findall(r"^\s*QuestXP\.db\[(\d+)\] = \{(\d+), (\d+)\}", txt, re.M)})
+    return out
 
 
 def carrega(pasta=PADRAO):
     """O banco no formato intermediário: quests, npcs, objects, items, zones,
     com chave string (como o JSON que o roteador lê) e a versão do QuestieDB."""
-    meta = le_toc(os.path.join(pasta, TOC))
-    raw = entidades(meta)
+    if e_fonte(pasta):
+        raw = entidades_fonte(pasta)
+        versao, commit, data = versao_fonte(pasta)
+        origem = {"modo": "fonte", "versao": versao, "commit": commit, "data": data,
+                  "correcoes": raw.pop("correcoes")}
+    else:
+        meta = le_toc(os.path.join(pasta, TOC))
+        raw = entidades(meta)
+        origem = {"modo": "baked", "versao": meta.get("Version", "?"),
+                  "commit": meta.get("X-BUILD-COMMIT"), "data": meta.get("X-BUILD-TIME")}
     quests = build_quests(raw["Quest"])
     banco = {
         "quests": quests,
@@ -282,7 +407,7 @@ def carrega(pasta=PADRAO):
         "zones": zonas(pasta),
         "xp": xp(pasta),
     }
-    banco["versao"] = meta.get("Version", "?")
+    banco["versao"], banco["origem"] = origem["versao"], origem
     # Ida e volta pelo JSON: chave vira string em todos os níveis, como no
     # arquivo que o roteador lê (spawn de zona 215 é "215", não 215).
     return json.loads(json.dumps(banco))
@@ -319,6 +444,7 @@ def demo(pasta=PADRAO):
     assert s["faction"] == "H", s["faction"]          # Horda + Skyborne da Horda (2^33)
 
     assert zonas_["16593"] == {"uiMapId": 2521, "name": "Zephras Isle"}, zonas_["16593"]
+    assert zonas_["16591"] == {"uiMapId": 2548, "name": "Riverglades"}, zonas_["16591"]
     assert b["xp"]["7"] == [2, 170] and b["xp"]["363"] == [1, 40], "XP de quest"   # Kobold Camp Cleanup, Rude Awakening
     assert zonas_["2017"]["name"] == "Stratholme - Dungeon", zonas_["2017"]
     assert zonas_["16544"] == {"uiMapId": 0, "name": "City of Dalaran - Dungeon"}, zonas_["16544"]
@@ -328,9 +454,10 @@ def demo(pasta=PADRAO):
     assert not sem_nome, "npc de quest sem nome: %s" % sem_nome[:5]
 
     novas = [i for i in q if int(i) >= 30000]
-    print("ok: QuestieDB %s — %d quests (%d novas), %d npcs, %d objetos, %d itens, %d zonas"
-          % (b["versao"], len(q), len(novas), len(npcs), len(b["objects"]), len(b["items"]),
-             len(zonas_)))
+    o = b["origem"]
+    print("ok: QuestieDB %s (%s%s) — %d quests (%d novas), %d npcs, %d objetos, %d itens, %d zonas"
+          % (b["versao"], o["modo"], " %s" % o["commit"] if o.get("commit") else "", len(q), len(novas),
+             len(npcs), len(b["objects"]), len(b["items"]), len(zonas_)))
     return b
 
 

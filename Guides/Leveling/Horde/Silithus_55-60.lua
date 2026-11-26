@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Silithus (55-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Swamp of Sorrows (50-57)",
-	rev = "06b62efc",
+	next = "Leveling/Horde/Tirisfal Glades (53-60)",
+	rev = "7243c9dd",
 }, [[
 step
   ding 54
@@ -305,6 +305,6 @@ step
   talk Umber##11939
   turnin Under the Chitin Was...##1185 |goto Moonglade 44.88,35.6 |tip {turninat}Moonglade
 step
-  note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 34.29,66.14
+  note {travel}Tirisfal Glades
+  goto Tirisfal Glades 83.13,68.94
 ]])

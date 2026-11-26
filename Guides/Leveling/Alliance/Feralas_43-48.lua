@@ -4,17 +4,21 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Feralas (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Tanaris (44-50)",
-	rev = "7163105d",
+	next = "Leveling/Alliance/Stranglethorn Vale (43-51)",
+	rev = "d681a57e",
 }, [[
 step
-  ding 41
+  ding 42
 step
   talk Shandris Feathermoon##3936
   accept The Ruins of Solarsal##2866 |goto Feralas 30.28,46.17
 step
   talk Latronicus Moonspear##7877
   accept The Missing Courier##4124 |goto Feralas 30.38,46.17
+step
+  only level>=43
+  click WANTED!##581918
+  accept WANTED: Ohk'zi##92858 |goto Feralas 31.09,43.83
 step
   talk Angelas Moonbreeze##7900
   accept The High Wilderness##2982 |goto Feralas 31.83,45.61
@@ -66,9 +70,6 @@ step
   talk Quintis Jonespyre##7879
   accept Psychometric Reading##4130 |goto Feralas 32.45,43.79
 step
-  talk Pratt McGrubben##7852
-  accept The Mark of Quality##2821 |goto Feralas 30.63,42.71
-step
   note Speak with Ginro Hearthkindle in Feathermoon Stronghold.
   talk Ginro Hearthkindle##7880
   turnin Psychometric Reading##4130 |goto Feralas 31.86,45.13
@@ -76,8 +77,20 @@ step
   talk Ginro Hearthkindle##7880
   accept The Woodpaw Gnolls##4131 |goto Feralas 31.86,45.13
 step
+  talk Pratt McGrubben##7852
+  accept The Mark of Quality##2821 |goto Feralas 30.63,42.71
+step
   note Bring 10 Hatecrest Naga Scales to Latronicus Moonspear in Feathermoon Stronghold.
   collect 10 Hatecrest Naga Scale##9247 |q 2869 |goto Feralas 29.57,53.56 |tip {dropsfrom}Hatecrest Warrior, Hatecrest Wave Rider, Hatecrest Myrmidon
+step
+  talk Latronicus Moonspear##7877
+  turnin Against the Hatecrest##2869 |goto Feralas 30.38,46.17
+step
+  talk Latronicus Moonspear##7877
+  accept Against Lord Shalzaru##2870 |goto Feralas 30.38,46.17
+step
+  note Eliminate Lord Shalzaru, and then bring the Mysterious Relic he uncovered to Latronicus Moonspear in Feathermoon Stronghold.
+  collect Mysterious Relic##9248 |q 2870 |goto Feralas 28.5,70.46 |tip {dropsfrom}Lord Shalzaru
 step
   note Bring 10 Thick Yeti Hides to Pratt McGrubben in Feathermoon Stronghold.
   collect 10 Thick Yeti Hide##8973 |q 2821 |goto Feralas 55.55,56.47 |tip {dropsfrom}Feral Scar Yeti, Hulking Feral Scar, Enraged Feral Scar
@@ -112,11 +125,48 @@ step
   talk Falfindel Waywarder##4048
   turnin Thalanaar Delivery##4281 |goto Feralas 89.64,46.57
 step
+  only hasitem(8705)
+  use OOX-22/FE Distress Beacon##8705 |tip It starts the quest.
+  accept Find OOX-22/FE!##2766
+step
+  only haveq(92858)
+  note Bring the Staff of Ohk'zi to Latronicus Moonspear at Feathermoon Stronghold.
+  kill Ohk'zi##222233 |q 92858 |goto Feralas 74.86,25.74 |elite
+  collect Staff of Ohk'zi##254692 |q 92858 |goto Feralas 74.86,25.74
+step
+  only haveq(2766)
+  note Take the distress beacon to Oglethorpe's homing robot in a cave near Feral Scar Vale.
+  talk Homing Robot OOX-22/FE##7807
+  turnin Find OOX-22/FE!##2766 |goto Feralas 53.35,55.7
+step
+  talk Kindal Moonweaver##7956
+  accept Freedom for All Creatures##2969 |goto Feralas 65.94,45.65
+step
+  note Using the Bamboo Cage Key, free the Sprite Darters from the pen in the Grimtotem camp. At least 6 Sprite Darters and Kindal Moonweaver must survive.
+  talk Captured Sprite Darter##7997 |q 2969 |goto Feralas 66.54,46.93
+step
+  talk Kindal Moonweaver##7956
+  turnin Freedom for All Creatures##2969 |goto Feralas 65.94,45.65
+step
+  talk Jer'kai Moonweaver##7957
+  accept Doling Justice##2970 |goto Feralas 65.95,45.61
+step
+  note Kill 12 Grimtotem Naturalists, 10 Grimtotem Raiders, and 6 Grimtotem Shamans before returning to Jer'kai Moonweaver in Feralas.
+  kill Grimtotem Raider##7725 |q 2970/2 |goto Feralas 67.22,46.37
+  kill Grimtotem Shaman##7727 |q 2970/3 |goto Feralas 68.09,46.12
+  kill Grimtotem Naturalist##7726 |q 2970 |goto Feralas 68.74,39.25
+step
+  talk Jer'kai Moonweaver##7957
+  turnin Doling Justice##2970 |goto Feralas 65.95,45.61
+step
+  talk Jer'kai Moonweaver##7957
+  accept Doling Justice##2972 |goto Feralas 65.95,45.61
+step
   talk Pratt McGrubben##7852
   turnin The Mark of Quality##2821 |goto Feralas 30.63,42.71
 step
   talk Latronicus Moonspear##7877
-  turnin Against the Hatecrest##2869 |goto Feralas 30.38,46.17
+  turnin Against Lord Shalzaru##2870 |goto Feralas 30.38,46.17
 step
   talk Angelas Moonbreeze##7900
   turnin The High Wilderness##2982 |goto Feralas 31.83,45.61
@@ -124,15 +174,25 @@ step
   talk Ginro Hearthkindle##7880
   turnin Freed from the Hive##4265 |goto Feralas 31.86,45.13
 step
+  only haveq(92858)
   talk Latronicus Moonspear##7877
-  accept Against Lord Shalzaru##2870 |goto Feralas 30.38,46.17
+  turnin WANTED: Ohk'zi##92858 |goto Feralas 30.38,46.17
+step
+  talk Latronicus Moonspear##7877
+  accept Delivering the Relic##2871 |goto Feralas 30.38,46.17
 step
   talk Ginro Hearthkindle##7880
   accept A Hero's Welcome##4266 |goto Feralas 31.86,45.13
 step
-  only level>=42
   talk Troyas Moonbreeze##7764
   accept In Search of Knowledge##2939 |goto Feralas 31.78,45.5
+step
+  talk Pratt McGrubben##7852
+  accept Improved Quality##7733 |goto Feralas 30.63,42.71
+step
+  note Deliver the Mysterious Relic to Vestia Moonspear in Feathermoon Stronghold.
+  talk Vestia Moonspear##7878
+  turnin Delivering the Relic##2871 |goto Feralas 30.08,45.06
 step
   note Speak with Shandris Feathermoon in Feathermoon Stronghold.
   talk Shandris Feathermoon##3936
@@ -140,22 +200,6 @@ step
 step
   talk Shandris Feathermoon##3936
   accept Rise of the Silithid##4267 |goto Feralas 30.28,46.17
-step
-  note Eliminate Lord Shalzaru, and then bring the Mysterious Relic he uncovered to Latronicus Moonspear in Feathermoon Stronghold.
-  collect Mysterious Relic##9248 |q 2870 |goto Feralas 28.5,70.46 |tip {dropsfrom}Lord Shalzaru
-step
-  talk Latronicus Moonspear##7877
-  turnin Against Lord Shalzaru##2870 |goto Feralas 30.38,46.17
-step
-  talk Latronicus Moonspear##7877
-  accept Delivering the Relic##2871 |goto Feralas 30.38,46.17
-step
-  note Deliver the Mysterious Relic to Vestia Moonspear in Feathermoon Stronghold.
-  talk Vestia Moonspear##7878
-  turnin Delivering the Relic##2871 |goto Feralas 30.08,45.06
-step
-  talk Pratt McGrubben##7852
-  accept Improved Quality##7733 |goto Feralas 30.63,42.71
 step
   only level>=45
   talk Zorbin Fandazzle##14637
@@ -183,38 +227,6 @@ step
 step
   note Bring 10 Rage Scar Yeti Hides to Pratt McGrubben at Feathermoon Stronghold, Feralas.
   collect 10 Rage Scar Yeti Hide##18947 |q 7733 |goto Feralas 53.28,31.85 |tip {dropsfrom}Rage Scar Yeti, Elder Rage Scar, Ferocious Rage Scar
-step
-  talk Kindal Moonweaver##7956
-  accept Freedom for All Creatures##2969 |goto Feralas 65.94,45.65
-step
-  note Using the Bamboo Cage Key, free the Sprite Darters from the pen in the Grimtotem camp. At least 6 Sprite Darters and Kindal Moonweaver must survive.
-  talk Captured Sprite Darter##7997 |q 2969 |goto Feralas 66.54,46.93
-step
-  talk Kindal Moonweaver##7956
-  turnin Freedom for All Creatures##2969 |goto Feralas 65.94,45.65
-step
-  talk Jer'kai Moonweaver##7957
-  accept Doling Justice##2970 |goto Feralas 65.95,45.61
-step
-  note Kill 12 Grimtotem Naturalists, 10 Grimtotem Raiders, and 6 Grimtotem Shamans before returning to Jer'kai Moonweaver in Feralas.
-  kill Grimtotem Raider##7725 |q 2970/2 |goto Feralas 67.22,46.37
-  kill Grimtotem Shaman##7727 |q 2970/3 |goto Feralas 68.09,46.12
-  kill Grimtotem Naturalist##7726 |q 2970 |goto Feralas 68.74,39.25
-step
-  only hasitem(8705)
-  use OOX-22/FE Distress Beacon##8705 |tip It starts the quest.
-  accept Find OOX-22/FE!##2766
-step
-  talk Jer'kai Moonweaver##7957
-  turnin Doling Justice##2970 |goto Feralas 65.95,45.61
-step
-  talk Jer'kai Moonweaver##7957
-  accept Doling Justice##2972 |goto Feralas 65.95,45.61
-step
-  only haveq(2766)
-  note Take the distress beacon to Oglethorpe's homing robot in a cave near Feral Scar Vale.
-  talk Homing Robot OOX-22/FE##7807
-  turnin Find OOX-22/FE!##2766 |goto Feralas 53.35,55.7
 step
   talk Pratt McGrubben##7852
   turnin Improved Quality##7733 |goto Feralas 30.63,42.71
@@ -244,23 +256,28 @@ step
   talk Angelas Moonbreeze##7900
   accept The Sunken Temple##3445 |goto Feralas 31.83,45.61
 step
-  only haveq(1188)
-  note Bring the Seaforium Booster to Shreev in Gadgetzan.
-  talk Shreev##4708
-  turnin Safety First##1188 |goto Tanaris 50.96,27.24 |tip {turninat}Tanaris
-step
-  only haveq(3445)
-  note Find Marvon Rivetseeker in Tanaris.
-  talk Marvon Rivetseeker##7771
-  turnin The Sunken Temple##3445 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris
+  only NightElf haveq(95511)
+  note Inspect the riding sabers to choose your first mount.
+  talk Lelanai##4730
+  turnin Your First Feline Friend##95511 |goto Darnassus 38.28,15.36 |tip {turninat}Darnassus
 step
   note Take Jer'kai's Signet Ring to High Priestess Tyrande Whisperwind in Darnassus.
   talk Tyrande Whisperwind##7999
   turnin Doling Justice##2972 |goto Darnassus 39.1,81.59 |tip {turninat}Darnassus
 step
+  only haveq(162)
+  note Take the Insect Analysis Report to Gracina Spiritmight in Darnassus.
+  talk Gracina Spiritmight##7740
+  turnin Rise of the Silithid##162 |goto Darnassus 41.83,85.62 |tip {turninat}Darnassus
+step
   note Bring Raschal's Report to Gracina Spiritmight in Darnassus.
   talk Gracina Spiritmight##7740
   turnin Rise of the Silithid##4267 |goto Darnassus 41.83,85.62 |tip {turninat}Darnassus
+step
+  only haveq(3445)
+  note Find Marvon Rivetseeker in Tanaris.
+  talk Marvon Rivetseeker##7771
+  turnin The Sunken Temple##3445 |goto Tanaris 52.71,45.92 |tip {turninat}Tanaris
 step
   talk Kindal Moonweaver##7956
   accept An Orphan Looking For a Home##3841 |goto Feralas 65.94,45.65
@@ -269,6 +286,6 @@ step
   talk Quentin##9238
   turnin An Orphan Looking For a Home##3841 |goto Thousand Needles 78.35,74.72 |tip {turninat}Thousand Needles
 step
-  note {travel}Tanaris
-  goto Tanaris 52.46,28.51
+  note {travel}Stranglethorn Vale
+  goto Stranglethorn Vale 26.76,76.38
 ]])

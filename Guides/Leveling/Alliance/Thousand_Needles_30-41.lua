@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Thousand Needles (30-41)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Desolace (33-39)",
-	rev = "da095617",
+	next = "Leveling/Alliance/Alterac Mountains (34-34)",
+	rev = "d6e001a8",
 }, [[
 step
   ding 29
@@ -80,8 +80,8 @@ step
   note Bring 20 Sunscorched Shells to Mathiel in Darnassus.
   collect 20 Sunscorched Shell##6849 |q 1710 |goto Thousand Needles 11.41,36.76
 step
-  collect Henrig Lonebrow's Journal##19861 |goto Thousand Needles 30.73,24.35 |tip Loot the quest item here — it starts the quest.
-  accept Lonebrow's Journal##1100 |goto Thousand Needles 30.73,24.35
+  collect Henrig Lonebrow's Journal##19861 |goto Thousand Needles 31.3,28.1 |tip Loot the quest item here — it starts the quest.
+  accept Lonebrow's Journal##1100 |goto Thousand Needles 31.3,28.1
 step
   only level>=30
   talk Kravel Koalbeard##4452
@@ -191,6 +191,6 @@ step
   talk Razzeric##4706
   accept Safety First##1188 |goto Thousand Needles 80.33,76.09
 step
-  note {travel}Desolace
-  goto Desolace 38.88,27.16
+  note {travel}Alterac Mountains
+  goto Alterac Mountains 58.32,67.92
 ]])

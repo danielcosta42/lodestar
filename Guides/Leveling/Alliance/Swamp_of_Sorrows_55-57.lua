@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (55-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Tanaris (53-54)",
-	rev = "bf9a311e",
+	next = "Leveling/Alliance/Eastern Plaguelands (55-60)",
+	rev = "c963d49e",
 }, [[
 step
   ding 51
@@ -28,6 +28,18 @@ step
   talk Fallen Hero of the Horde##7572
   turnin A Troubled Spirit##8417 |goto Swamp of Sorrows 34.29,66.14
 step
+  only completed(3373)
+  talk Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip They give you the item that starts the quest.
+  accept The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
+step
+  only completed(3373)
+  note Bring the Oathstone of Ysera's Dragonflight and the Chained Essence of Eranikus to Itharius in the Swamp of Sorrows. It is there that you will make your choice to aid Ysera's Dragonflight or not.
+  collect Chained Essence of Eranikus##10455 |q 3374 |goto Swamp of Sorrows 13.67,71.72 |tip Crafted or bought.
+step
+  only completed(3373)
+  talk Itharius##5353
+  turnin The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
+step
   only completed(2623,2783)
   talk Fallen Hero of the Horde##7572
   accept A Tale of Sorrow##2801 |goto Swamp of Sorrows 34.29,66.14
@@ -44,17 +56,18 @@ step
   talk Fallen Hero of the Horde##7572
   accept The Stones That Bind Us##2681 |goto Swamp of Sorrows 34.29,66.14
 step
-  only completed(3373)
-  talk Itharius##5353 |goto Swamp of Sorrows 13.67,71.72 |tip They give you the item that starts the quest.
-  accept The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
+  only completed(93678)
+  talk Magtoor##1776
+  accept Visions of Another##93679 |goto Swamp of Sorrows 25.98,31.4
 step
-  only completed(3373)
-  note Bring the Oathstone of Ysera's Dragonflight and the Chained Essence of Eranikus to Itharius in the Swamp of Sorrows. It is there that you will make your choice to aid Ysera's Dragonflight or not.
-  collect Chained Essence of Eranikus##10455 |q 3374 |goto Swamp of Sorrows 13.67,71.72 |tip Crafted or bought.
+  only completed(93678)
+  note Watch Onku's vision with Magtoor.
+  talk Magtoor##1776
+  turnin Visions of Another##93679 |goto Swamp of Sorrows 25.98,31.4
 step
-  only completed(3373)
-  talk Itharius##5353
-  turnin The Essence of Eranikus##3374 |goto Swamp of Sorrows 13.67,71.72
+  only completed(93678)
+  talk Magtoor##1776
+  accept The Found One##93684 |goto Swamp of Sorrows 25.98,31.4
 step
   only completed(1469)
   note Gather 10 Atal'ai Tablets for Brohann Caskbelly in Stormwind.
@@ -64,12 +77,38 @@ step
   talk Brohann Caskbelly##5384
   turnin Into The Temple of Atal'Hakkar##1475 |goto Stormwind City 69.45,40.4 |tip {turninat}Stormwind City
 step
+  only completed(93678)
+  note Find the draenei searching for draenethyst in the Blasted Lands.
+  talk Kum'isha the Collector##7363
+  turnin The Found One##93684 |goto Blasted Lands 51.98,35.65 |tip {turninat}Blasted Lands
+step
+  only completed(93678)
+  talk Kum'isha the Collector##7363
+  accept To Serve Kum'isha##93685 |goto Blasted Lands 51.98,35.65
+step
   only completed(2623,2783)
   note Free nine Servants of Razelikh, three Servants of Sevine, three Servants of Allistarj, and three Servants of Grol. Return to the Fallen Hero when your task is complete. You must remain within close proximity of the stones or the process will fail.
+  kill Servant of Sevine##7671 |q 2681/4 |goto Blasted Lands 40.99,40.09
   kill Servant of Razelikh##7668 |q 2681/1 |goto Blasted Lands 54.09,52.49
   kill Servant of Allistarj##7670 |q 2681/3 |goto Blasted Lands 63.33,40.83
-  kill Servant of Sevine##7671 |q 2681/4 |goto Blasted Lands 40.99,40.09
   kill Servant of Grol##7669 |q 2681 |goto Blasted Lands 41.22,14.43
+step
+  only completed(93678)
+  note Find a Flawless Draenethyst Sphere in the Blasted Lands, and bring it to Kum'isha the Collector.
+  collect Flawless Draenethyst Sphere##8244 |q 93685 |goto Blasted Lands 41.7,14.64 |tip {dropsfrom}Dreadmaul Ogre, Dreadmaul Ogre Mage, Dreadmaul Brute
+step
+  only completed(93678)
+  talk Kum'isha the Collector##7363
+  turnin To Serve Kum'isha##93685 |goto Blasted Lands 51.98,35.65 |tip {turninat}Blasted Lands
+step
+  only completed(93678)
+  talk Kum'isha the Collector##7363
+  accept To Serve The Draenei##93572 |goto Blasted Lands 51.98,35.65
+step
+  only completed(93678)
+  note Protect the draenei refugees as they pass through Kum'isha's rift to Outland. None of the refugees may die.
+  talk Kum'isha the Collector##7363
+  turnin To Serve The Draenei##93572 |goto Blasted Lands 51.98,35.65 |tip {turninat}Blasted Lands
 step
   only completed(2623,2783)
   talk Fallen Hero of the Horde##7572
@@ -110,6 +149,6 @@ step
   talk Fallen Hero of the Horde##7572
   turnin The Cover of Darkness##2743 |goto Swamp of Sorrows 34.29,66.14
 step
-  note {travel}Tanaris
-  goto Tanaris 51.57,26.76
+  note {travel}Eastern Plaguelands
+  goto Eastern Plaguelands 31.15,77.98
 ]])

@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (30-35)",
-	rev = "dc533a37",
+	rev = "5c2f14eb",
 }, [[
 step
   ding 20
@@ -184,6 +184,7 @@ step
   talk Milton Sheaf##1440
   accept Brother Paxton##344 |goto Stormwind City 77.07,30.21
 step
+  only completed(98190)
   talk Highlord Bolvar Fordragon##1748
   accept A Friend of the Family##98191 |goto Stormwind City 80.21,38.35
 step
@@ -196,6 +197,7 @@ step
   talk Bishop DeLavey##4960
   accept The Missing Diplomat##1241 |goto Stormwind City 80.24,44.07
 step
+  only completed(98190)
   note Bring the Menethil Statuette to Lord Grayson Shadowbreaker in the Cathedral of Light.
   talk Lord Grayson Shadowbreaker##928
   turnin A Friend of the Family##98191 |goto Stormwind City 48.43,50.22 |tip {turninat}Stormwind City

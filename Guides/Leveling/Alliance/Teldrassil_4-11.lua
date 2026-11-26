@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Teldrassil (4-11)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Darkshore (13-20)",
-	rev = "14ef4bf1",
+	rev = "82dbe14a",
 }, [[
 step
   only level>=1
@@ -58,7 +58,7 @@ step
   talk Conservator Ilthalaine##2079
   accept Verdant Sigil##3120 |goto Teldrassil 58.69,44.27
 step
-  only completed(458)
+  only NightElf completed(458)
   talk Tarindrella##1992
   accept Nature's Call##97977 |goto Teldrassil 57.83,45.21
 step
@@ -70,9 +70,9 @@ step
   note Collect 8 Fel Moss and bring them to Tarindrella.
   collect 8 Fel Moss##3297 |q 459 |goto Teldrassil 55.97,45.97 |tip {dropsfrom}Grell, Grellkin
 step
-  only haveq(97977)
-  note Collect 4  Gnarlpine Totems and bring them to Tarindrella.
-  collect 4 Gnarlpine Totem##279082 |q 97977 |goto Teldrassil 55.1,39.7
+  only NightElf haveq(97977)
+  note Collect 4 Gnarlpine Totems and bring them to Tarindrella.
+  collect 4 Gnarlpine Totem##279082 |q 97977 |goto Teldrassil 55.79,44.2
 step
   only haveq(459)
   talk Tarindrella##1992
@@ -93,7 +93,7 @@ step
   talk Mardant Strongoak##3597
   turnin Verdant Sigil##3120 |goto Teldrassil 58.63,40.29
 step
-  only haveq(97977)
+  only NightElf haveq(97977)
   talk Tarindrella##1992
   turnin Nature's Call##97977 |goto Teldrassil 57.83,45.21
 step
@@ -369,8 +369,15 @@ step
   note Kill Lord Melenas and bring his head to Tallonkai Swiftroot in Dolanaar.
   collect Melenas' Head##5221 |q 932 |goto Teldrassil 51.31,50.19 |tip {dropsfrom}Lord Melenas
 step
-  talk Sentinel Shayla Nightbreeze##2155
-  accept Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 40.46,50.73
+  talk Moon Priestess Amara##2151
+  turnin The Road to Darnassus##487 |goto Teldrassil 52.91,57.2
+step
+  talk Tallonkai Swiftroot##3567
+  turnin Twisted Hatred##932 |goto Teldrassil 55.57,56.95
+step
+  only not completed(2518) not haveq(2518)
+  talk Laurna Morninglight##3600
+  accept The Sisterhood of Elune##98391 |goto Teldrassil 55.56,56.75
 step
   talk Oben Rageclaw##7317
   accept The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
@@ -387,8 +394,17 @@ step
   talk Oben Rageclaw##7317
   turnin The Sleeping Druid##2541 |goto Teldrassil 44.94,61.59
 step
+  talk Oben Rageclaw##7317
+  accept Druid of the Claw##2561 |goto Teldrassil 44.94,61.59
+step
+  note Oben Rageclaw wants you to kill his soulless body, and then use the Voodoo Charm.
+  kill Rageclaw##7318 |q 2561 |goto Teldrassil 45.53,58.58
+step
+  talk Oben Rageclaw##7317
+  turnin Druid of the Claw##2561 |goto Teldrassil 44.94,61.59
+step
   talk Sentinel Lynessa Duskblossom##275744
-  accept Escaping Ban'ethil##99053 |goto Teldrassil 44.68,58.92
+  accept Escaping Ban'ethil##99053 |goto Teldrassil 44.68,58.91
 step
   note Help Sentinel Lynessa Duskblossom escape Ban'ethil Barrow Den, and report her safety to Sentinel Kyra Starsong in Dolanaar.
   goto Teldrassil 43.08,51.65 |tip Escort Lynessa Duskblossom out of Ban'ethil
@@ -399,54 +415,17 @@ step
   note Bring 12 Timberling Sprouts to Denalan at Lake Al'Ameth.
   collect 12 Timberling Sprout##5169 |q 919 |goto Teldrassil 55.08,69.93
 step
-  talk Corithras Moonrage##3515
-  turnin Crown of the Earth##933 |goto Teldrassil 56.14,61.71
-step
   talk Denalan##2080
   turnin Timberling Sprouts##919 |goto Teldrassil 60.9,68.49
 step
-  note Shayla Nightbreeze on the road outside of Darnassus wants you to bring her 15 Gnarlpine Fangs.
-  collect 15 Gnarlpine Fang##5220 |q 490 |goto Teldrassil 66.7,63.34 |tip {dropsfrom}Gnarlpine Ursa, Gnarlpine Gardener, Gnarlpine Warrior
+  talk Corithras Moonrage##3515
+  turnin Crown of the Earth##933 |goto Teldrassil 56.14,61.71
 step
   note Tallonkai Swiftroot in Dolanaar wants you to kill 7 Gnarlpine Mystics and find the Missing Jewel.
   kill Gnarlpine Mystic##7235 |q 2459 |goto Teldrassil 68.64,52.3
 step
-  talk Athridas Bearmantle##2078
-  turnin The Relics of Wakening##483 |goto Teldrassil 55.96,57.27
-step
-  talk Moon Priestess Amara##2151
-  turnin The Road to Darnassus##487 |goto Teldrassil 52.91,57.2
-step
-  talk Tallonkai Swiftroot##3567
-  turnin Twisted Hatred##932 |goto Teldrassil 55.57,56.95
-step
-  talk Tallonkai Swiftroot##3567
-  turnin Ferocitas the Dream Eater##2459 |goto Teldrassil 55.57,56.95
-step
-  talk Sentinel Kyra Starsong##2081
-  turnin Escaping Ban'ethil##99053 |goto Teldrassil 56,59.52
-step
-  talk Laurna Morninglight##3600
-  accept The Sisterhood of Elune##98391 |goto Teldrassil 55.56,56.75
-step
-  talk Oben Rageclaw##7317
-  accept Druid of the Claw##2561 |goto Teldrassil 44.94,61.59
-step
-  note Oben Rageclaw wants you to kill his soulless body, and then use the Voodoo Charm.
-  kill Rageclaw##7318 |q 2561 |goto Teldrassil 45.53,58.58
-step
-  talk Oben Rageclaw##7317
-  turnin Druid of the Claw##2561 |goto Teldrassil 44.94,61.59
-step
-  click Strange Fruited Plant##6751
-  accept The Glowing Fruit##930 |goto Teldrassil 42.61,76.19
-step
-  note Bring the glowing fruit to Denalan at Lake Al'Ameth.
-  talk Denalan##2080
-  turnin The Glowing Fruit##930 |goto Teldrassil 60.9,68.49
-step
-  talk Corithras Moonrage##3515
-  accept Crown of the Earth##7383 |goto Teldrassil 56.14,61.71
+  talk Sentinel Shayla Nightbreeze##2155
+  accept Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 40.46,50.73
 step
   note Search for Sentinel Eralya Leafshadow on the road leading to the Oracle Glade.
   talk Sentinel Eralya Leafshadow##275683
@@ -455,33 +434,29 @@ step
   talk Sentinel Eralya Leafshadow##275683
   accept Not Dead Yet##99047 |goto Teldrassil 37.54,36.81
 step
-  talk Sentinel Arynia Cloudsbreak##3519
-  accept The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
-step
-  note Fill the Amethyst Phial and bring it back to Corithras Moonrage in Dolanaar.
-  collect Filled Amethyst Phial##18151 |q 7383 |goto Teldrassil 38.44,34.06 |tip {dropsfrom}Oracle Glade Moonwell
-step
   click Strange Fronded Plant##6752
   accept The Shimmering Frond##931 |goto Teldrassil 34.61,28.76
 step
-  note Acquire 6 Bloodfeather Belts and bring them to Sentinel Arynia Cloudsbreak in the Oracle Glade.
-  collect 6 Bloodfeather Belt##5204 |q 937 |goto Teldrassil 37.73,41.07 |tip {dropsfrom}Bloodfeather Harpy, Bloodfeather Rogue, Bloodfeather Sorceress
+  talk Athridas Bearmantle##2078
+  turnin The Relics of Wakening##483 |goto Teldrassil 55.96,57.27
 step
-  talk Sentinel Arynia Cloudsbreak##3519
-  turnin The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
+  talk Tallonkai Swiftroot##3567
+  turnin Ferocitas the Dream Eater##2459 |goto Teldrassil 55.57,56.95
 step
-  note Seek aid from Byancie in Dolaanar for Sentinel Eralya Leafshadow.
+  note Seek aid from Byancie in Dolanaar for Sentinel Eralya Leafshadow.
   talk Byancie##6094
   turnin Not Dead Yet##99047 |goto Teldrassil 55.29,56.82
 step
+  talk Sentinel Kyra Starsong##2081
+  turnin Escaping Ban'ethil##99053 |goto Teldrassil 56,59.52
+step
+  only not Human not Dwarf not Gnome
   talk Byancie##6094
   accept The Great Tree Provides##99050 |goto Teldrassil 55.29,56.82
 step
+  only not completed(934) not haveq(934)
   talk Corithras Moonrage##3515
-  turnin Crown of the Earth##7383 |goto Teldrassil 56.14,61.71
-step
-  talk Corithras Moonrage##3515
-  accept Crown of the Earth##935 |goto Teldrassil 56.14,61.71
+  accept Crown of the Earth##7383 |goto Teldrassil 56.14,61.71
 step
   note Bring a Shimmering Frond to Denalan at Lake Al'Ameth
   talk Denalan##2080
@@ -490,8 +465,9 @@ step
   click Sprouted Frond##7510
   accept The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
 step
+  only not Human not Dwarf not Gnome
   note Collect 6 Dewy Lasher Fronds, an Empty Vial, and a Refreshing Spring Water for Byancie in Dolanaar.
-  collect 6 Dewy Lasher Frond##286017 |q 99050/1 |goto Teldrassil 57.09,69.56 |tip {dropsfrom}Lasher Sproutling, Blooming Lasher, Wrathvine
+  collect 6 Dewy Lasher Frond##286017 |q 99050/1 |goto Teldrassil 57.11,68.98 |tip {dropsfrom}Lasher Sproutling, Blooming Lasher, Wrathvine
   talk Narret Shadowgrove##3614
   buy Empty Vial##3371 |q 99050/2 |goto Teldrassil 55.27,57.15
   talk Lyrai##3587
@@ -499,18 +475,37 @@ step
 step
   turnin The Sprouted Fronds##2399 |goto Teldrassil 60.78,68.59
 step
+  note Shayla Nightbreeze on the road outside of Darnassus wants you to bring her 15 Gnarlpine Fangs.
+  collect 15 Gnarlpine Fang##5220 |q 490 |goto Teldrassil 66.7,63.34 |tip {dropsfrom}Gnarlpine Ursa, Gnarlpine Gardener, Gnarlpine Warrior
+step
+  only not Human not Dwarf not Gnome
   talk Byancie##6094
   turnin The Great Tree Provides##99050 |goto Teldrassil 55.29,56.82
 step
+  only not Human not Dwarf not Gnome
   talk Byancie##6094
   accept Easing Suffering##99073 |goto Teldrassil 55.29,56.82
 step
   talk Sentinel Shayla Nightbreeze##2155
   turnin Bounty: Gnarlpine Furbolg##490 |goto Teldrassil 40.46,50.73
 step
+  only not Human not Dwarf not Gnome
   note Take the Lashwater Salve to Sentinel Eralya Leafshadow on the road to the Oracle Tree.
   talk Sentinel Eralya Leafshadow##275683
   turnin Easing Suffering##99073 |goto Teldrassil 37.54,36.81
+step
+  talk Sentinel Arynia Cloudsbreak##3519
+  accept The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
+step
+  only not completed(934) not haveq(934)
+  note Fill the Amethyst Phial and bring it back to Corithras Moonrage in Dolanaar.
+  collect Filled Amethyst Phial##18151 |q 7383 |goto Teldrassil 38.44,34.06 |tip {dropsfrom}Oracle Glade Moonwell
+step
+  note Acquire 6 Bloodfeather Belts and bring them to Sentinel Arynia Cloudsbreak in the Oracle Glade.
+  collect 6 Bloodfeather Belt##5204 |q 937 |goto Teldrassil 37.73,41.07 |tip {dropsfrom}Bloodfeather Harpy, Bloodfeather Rogue, Bloodfeather Sorceress
+step
+  talk Sentinel Arynia Cloudsbreak##3519
+  turnin The Enchanted Glade##937 |goto Teldrassil 38.32,34.36
 step
   talk Sentinel Arynia Cloudsbreak##3519
   accept Darkness in the Glade##98392 |goto Teldrassil 38.32,34.36
@@ -565,7 +560,7 @@ step
   talk Laurna Morninglight##3600
   accept Returning Home##5629 |goto Teldrassil 55.56,56.75
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   talk Dazalar##3601
   accept Taming the Beast##6063 |goto Teldrassil 56.68,59.49
 step
@@ -573,19 +568,27 @@ step
   talk Tallonkai Swiftroot##3567
   accept Twisted Hatred##98403 |goto Teldrassil 55.57,56.95
 step
+  only not completed(934) not haveq(934)
+  talk Corithras Moonrage##3515
+  turnin Crown of the Earth##7383 |goto Teldrassil 56.14,61.71
+step
+  only not completed(934) not haveq(934)
+  talk Corithras Moonrage##3515
+  accept Crown of the Earth##935 |goto Teldrassil 56.14,61.71
+step
   only NightElf Druid not completed(5923) not completed(5924) not haveq(5923) not haveq(5924)
   talk Kal##3602
   accept Heeding the Call##5925 |goto Teldrassil 55.95,61.56
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   note Use the Taming Rod to tame a Webwood Lurker. Practice your skills, then return the Taming Rod to Dazalar in Dolanaar.
   use Webwood Lurker##1998 |q 6063 |goto Teldrassil 60.14,60.26 |tip {useit}
 step
   only haveq(98403)
   note Kill 8 Befouled Webwoods and bring Xethorr the Wicked's Mature Fel Moss to Tallonkai Swiftroot in Dolanaar.
-  kill Befouled Webwood##272096 |q 98403 |goto Teldrassil 49.56,45.34
+  kill Befouled Webwood##272096 |q 98403 |goto Teldrassil 49.7,44.61
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   talk Dazalar##3601
   turnin Taming the Beast##6063 |goto Teldrassil 56.68,59.49
 step
@@ -593,40 +596,48 @@ step
   talk Tallonkai Swiftroot##3567
   turnin Twisted Hatred##98403 |goto Teldrassil 55.57,56.95
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   talk Dazalar##3601
   accept Taming the Beast##6101 |goto Teldrassil 56.68,59.49
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   note Use the Taming Rod to tame a Nightsaber Stalker. Practice your skills, then return the Taming Rod to Dazalar in Dolanaar.
   use Nightsaber Stalker##2043 |q 6101 |goto Teldrassil 46.59,71.34 |tip {useit}
+step
+  click Strange Fruited Plant##6751
+  accept The Glowing Fruit##930 |goto Teldrassil 42.61,76.19
 step
   note Kill Ursal the Mauler and return to Athridas Bearmantle in Dolanaar.
   kill Ursal the Mauler##2039 |q 486 |goto Teldrassil 38.83,79.81
 step
+  note Bring the glowing fruit to Denalan at Lake Al'Ameth.
+  talk Denalan##2080
+  turnin The Glowing Fruit##930 |goto Teldrassil 60.9,68.49
+step
   talk Athridas Bearmantle##2078
   turnin Ursal the Mauler##486 |goto Teldrassil 55.96,57.27
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   talk Dazalar##3601
   turnin Taming the Beast##6101 |goto Teldrassil 56.68,59.49
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   talk Dazalar##3601
   accept Taming the Beast##6102 |goto Teldrassil 56.68,59.49
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   note Use the Taming Rod to tame a Strigid Screecher. Practice your skills, then return the Taming Rod to Dazalar in Dolanaar.
   use Strigid Screecher##1996 |q 6102 |goto Teldrassil 41.05,68.39 |tip {useit}
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   talk Dazalar##3601
   turnin Taming the Beast##6102 |goto Teldrassil 56.68,59.49
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   talk Dazalar##3601
   accept Training the Beast##6103 |goto Teldrassil 56.68,59.49
 step
+  only not completed(2518) not haveq(2518)
   note Speak to Sister Aquinne in Darnassus.
   talk Sister Aquinne##7316
   turnin The Sisterhood of Elune##98391 |goto Darnassus 28.94,45.8 |tip {turninat}Darnassus
@@ -654,10 +665,12 @@ step
   talk Arch Druid Fandral Staghelm##3516
   turnin Teldrassil##940 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
 step
+  only not completed(934) not haveq(934)
   note Bring the Filled Vessel to Arch Druid Fandral Staghelm in Darnassus.
   talk Arch Druid Fandral Staghelm##3516
   turnin Crown of the Earth##935 |goto Darnassus 34.81,9.26 |tip {turninat}Darnassus
 step
+  only not completed(934) not haveq(934)
   talk Arch Druid Fandral Staghelm##3516
   accept Crown of the Earth##98046 |goto Darnassus 34.81,9.26
 step
@@ -682,7 +695,7 @@ step
   talk Mathrengyl Bearwalker##4217
   accept Moonglade##5921 |goto Darnassus 35.37,8.4
 step
-  only NightElf Hunter
+  only NightElf Hunter not completed(94013) not haveq(94013)
   note Speak to Jocaste in the Cenarion Enclave, in Darnassus.
   talk Jocaste##4146
   turnin Training the Beast##6103 |goto Darnassus 40.38,8.55 |tip {turninat}Darnassus
@@ -712,10 +725,12 @@ step
   talk Priestess A'moora##7313
   accept Tears of the Moon##2518 |goto Darnassus 36.65,85.93
 step
+  only not completed(934) not haveq(934)
   note Bring the Drained Vessel to Lariia in the Temple of the Moon in Darnassus.
   talk Lariia##4092
   turnin Crown of the Earth##98046 |goto Darnassus 40.35,88.68 |tip {turninat}Darnassus
 step
+  only NightElf not completed(934) not haveq(934)
   talk Lariia##4092
   accept Crown of the Earth##98065 |goto Darnassus 40.35,88.68
 step
@@ -731,6 +746,7 @@ step
   talk Sentinel Dalia Sunblade##8396
   turnin Eyes of the Sentinels##98067 |goto Darnassus 39.65,89.54 |tip {turninat}Darnassus
 step
+  only NightElf not completed(934) not haveq(934)
   note Bring the Moonwell Remnants to Tyrande Whisperwind in the Temple of the Moon in Darnassus.
   talk Tyrande Whisperwind##7999
   turnin Crown of the Earth##98065 |goto Darnassus 39.1,81.59 |tip {turninat}Darnassus

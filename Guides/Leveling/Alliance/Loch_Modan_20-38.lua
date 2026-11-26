@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Loch Modan (20-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Swamp of Sorrows (35-42)",
-	rev = "053d1c96",
+	next = "Leveling/Alliance/Hillsbrad Foothills (33-40)",
+	rev = "cdea327b",
 }, [[
 step
   ding 16
@@ -62,13 +62,9 @@ step
   kill Chok'sul##1210 |q 256 |goto Loch Modan 79.59,14.7 |elite
   collect Chok'sul's Head##2561 |q 256 |goto Loch Modan 79.59,14.7
 step
-  only Shaman level>=20
+  only Shaman completed(94494) level>=20
   talk Norric Lochthane##258043
-  accept Call of Water##94495 |goto Loch Modan 41.76,19.05
-step
-  only Shaman level>=20
-  talk Norric Lochthane##258043
-  accept Call of Water##94502 |goto Loch Modan 41.76,19.05
+  accept Call of Water##94495 |goto Loch Modan 41.77,19.05
 step
   only haveq(256)
   talk Magistrate Bluntnose##1139
@@ -78,26 +74,69 @@ step
   talk Ghak Healtouch##1470
   accept Badlands Reagent Run##2500 |goto Loch Modan 37.07,49.38
 step
-  only Shaman haveq(94495)
+  only Shaman completed(94494) haveq(94495)
   note Find Hervdana Saegrund in the Wetlands.
   talk Hervdana Saegrund##258203
   turnin Call of Water##94495 |goto Wetlands 65.76,76.52 |tip {turninat}Wetlands
+step
+  only Shaman completed(94494) completed(94495) level>=20
+  talk Hervdana Saegrund##258203
+  accept Call of Water##94497 |goto Wetlands 65.76,76.52
+step
+  only Shaman completed(94494) haveq(94497)
+  note Fill the Empty Brown Waterskin at the bottom of the waterfalls below Hervdana's cave and return it to her in the Wetlands.
+  collect Full Brown Waterskin##265734 |q 94497 |goto Wetlands 65.76,76.52
+step
+  only Shaman completed(94494) haveq(94497)
+  talk Hervdana Saegrund##258203
+  turnin Call of Water##94497 |goto Wetlands 65.76,76.52 |tip {turninat}Wetlands
+step
+  only Shaman completed(94494) completed(94497) level>=20
+  talk Hervdana Saegrund##258203
+  accept Call of Water##94499 |goto Wetlands 65.76,76.52
+step
+  only Shaman completed(94494) haveq(94499)
+  note Fill the Empty Red Waterskin at Stonewatch Falls near the Nightcrawler Murlocs and return to Hervdana Saegrund in the Wetlands.
+  collect Full Red Waterskin##265748 |q 94499 |goto Wetlands 65.76,76.52
+step
+  only Shaman completed(94494) haveq(94499)
+  talk Hervdana Saegrund##258203
+  turnin Call of Water##94499 |goto Wetlands 65.76,76.52 |tip {turninat}Wetlands
+step
+  only Shaman completed(94494) completed(94499) level>=20
+  talk Hervdana Saegrund##258203
+  accept Call of Water##94500 |goto Wetlands 65.76,76.52
+step
+  only Shaman completed(94494) haveq(94500)
+  note Fill the Unfilled Blue Waterskin at the waters of Astranaar in Ashenvale and return to Hervdana Saegrund in the Wetlands.
+  collect Full Blue Waterskin##265773 |q 94500 |goto Wetlands 65.76,76.52
+step
+  only Shaman completed(94494) haveq(94500)
+  talk Hervdana Saegrund##258203
+  turnin Call of Water##94500 |goto Wetlands 65.76,76.52 |tip {turninat}Wetlands
+step
+  only Shaman completed(94494) completed(94500) level>=20
+  talk Hervdana Saegrund##258203
+  accept Call of Water##94501 |goto Wetlands 65.76,76.52
 step
   only haveq(467)
   note Speak with Pilot Stonegear.
   talk Pilot Stonegear##1377
   turnin Stonegear's Search##467 |goto Dun Morogh 49.62,48.61 |tip {turninat}Dun Morogh
 step
-  only Shaman haveq(94502)
-  note Cleanse the corruption at Stendel's Pond in Westfall.
-  collect Corrupt Manifestation's Bracers##7812 |q 94502 |goto Silverpine Forest 38.78,44.26 |tip {dropsfrom}Corrupt Minor Manifestation of Water
-step
-  only Shaman haveq(94502)
-  turnin Call of Water##94502 |goto Westfall 45.6,59.92 |tip {turninat}Westfall
+  only haveq(98313)
+  note Bring the Whelgar Relic Package to Historian Karnik in Ironforge.
+  talk Historian Karnik##2916
+  turnin For Further Study##98313 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
 step
   only level>=30
   talk Prospector Stormpike##1356
   accept Ironband Wants You!##707 |goto Ironforge 74.64,11.74
+step
+  only haveq(98300)
+  note Deliver Howin's Missive to King Magni Bronzebeard in Ironforge.
+  talk King Magni Bronzebeard##2784
+  turnin Word to Ironforge##98300 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
 step
   only haveq(707)
   note Speak with Prospector Ironband at Ironband's Excavation Site in Loch Modan.
@@ -107,6 +146,15 @@ step
   only level>=30
   talk Prospector Ironband##1344
   accept Find Agmond##738 |goto Loch Modan 65.93,65.62
+step
+  only Shaman completed(94494) haveq(94501)
+  note Bring the Vial of Purest Water to Norric Lochthane in Loch Modan.
+  talk Norric Lochthane##258043
+  turnin Call of Water##94501 |goto Loch Modan 41.77,19.05
+step
+  only Shaman completed(94494) completed(94501) level>=20
+  talk Norric Lochthane##258043
+  accept Call of Water##94502 |goto Loch Modan 41.77,19.05
 step
   only haveq(2500)
   note Acquire the reagents Ghak Healtouch needs from the Badlands, then return to him in Thelsamar.
@@ -130,6 +178,31 @@ step
   talk Ghak Healtouch##1470
   turnin Uldaman Reagent Run##17 |goto Loch Modan 37.07,49.38
 step
-  note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 25.98,31.4
+  only Shaman completed(94494) haveq(94502)
+  note Drink the Water Sapta and Cleanse the corruption at Stendel's Pond in Westfall.
+  collect Corrupt Manifestation's Bracers##7812 |q 94502 |goto Silverpine Forest 38.78,44.26 |tip {dropsfrom}Corrupt Minor Manifestation of Water
+step
+  only Shaman completed(94494) haveq(94502)
+  turnin Call of Water##94502 |goto Westfall 45.59,59.91 |tip {turninat}Westfall
+step
+  only Dwarf Shaman completed(94494) completed(94502) level>=20
+  click Forgotten Shrine##619896
+  accept Call of Water##94503 |goto Westfall 45.59,59.91
+step
+  only Dwarf Shaman completed(94494) haveq(94503)
+  note Speak to the Minor Manifestation of Water in Westfall.
+  talk Minor Manifestation of Water##5895
+  turnin Call of Water##94503 |goto Silverpine Forest 38.65,44.58 |tip {turninat}Silverpine Forest
+step
+  only Dwarf Shaman completed(94494) completed(94503) level>=20
+  talk Minor Manifestation of Water##5895
+  accept Call of Water##94505 |goto Silverpine Forest 38.65,44.58
+step
+  only Dwarf Shaman completed(94494) haveq(94505)
+  note Bring the Shard of Water to Norric Lochthane in Loch Modan.
+  talk Norric Lochthane##258043
+  turnin Call of Water##94505 |goto Loch Modan 41.77,19.05
+step
+  note {travel}Hillsbrad Foothills
+  goto Hillsbrad Foothills 48.14,59.11
 ]])

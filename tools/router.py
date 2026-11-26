@@ -24,8 +24,10 @@ BUILD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "build", "forev
 # quests placeholder/deprecadas do banco: nunca entram num guia (o NPC não as oferece).
 # Colchetes case-insensitive; prefixos "OLD "/"BETA " só em CAIXA ALTA (não pega nomes
 # legítimos como "Old Man Barlo"). "BETA " marca quests de teste sem giver no banco.
-_PLACEHOLDER_CI = re.compile(r"\[not used\]|\[unused\]|\[ph\]|\[nyi\]|\[deprecated\]", re.I)
-_PLACEHOLDER_CS = re.compile(r"^(OLD|BETA)\s")
+# O QuestieDB 1.1 trouxe as vagas do Forever: "REUSEME" (98426, com giver em Riverglades) e
+# "REUSE ME" (98338); e "<NYI>" como prefixo, além de "[NYI]".
+_PLACEHOLDER_CI = re.compile(r"\[not used\]|\[unused\]|\[ph\]|[\[<]nyi[\]>]|\[deprecated\]", re.I)
+_PLACEHOLDER_CS = re.compile(r"^(OLD|BETA)\s|^REUSE ?ME$")
 def is_placeholder(name):
     return bool(name and (_PLACEHOLDER_CI.search(name) or _PLACEHOLDER_CS.search(name)))
 
@@ -236,7 +238,15 @@ FORA_QUESTS = {6564, 7810, 78089, 78090, 78091, 78092, 78093, 78676, 92457}
 # Season of Discovery: as quests de lá estão no cliente, mas sem classe no banco. Runa de ladino,
 # Dragonslayer's: o guia mandava todo mundo clicar num objeto que não dá nada e parava ali. Só esta
 # faixa: dos 86000 em diante é conteúdo do Forever, e os Library Books caem aqui também.
+# O QuestieDB 1.1 deu classe a 55 delas (o delta-base vem do banco do Forever da Wowhead): as
+# cadeias de runa de paladino, ladino, druida, guerreiro, mago e sacerdote (The Horn of Xelthos,
+# A Strange Artifact, Oi!, Beach Bot...). Com a classe elas entravam como `only <Classe>` no meio
+# dos guias — o ladino de Redridge ia a Silverpine e a Shadowfang Keep sozinho; o paladino de
+# Stonetalon, a Darkshore e Ashenvale —, o que nenhuma versão anterior fazia (78089-78093 e 78676,
+# que já tinham classe, saíam por id). Na faixa fica só a classe que o Forever usa dela: o xamã
+# (Storm, Earth, and Fire, Grant's Shield...), que já estava nos guias.
 SEASON_OF_DISCOVERY = range(76000, 86000)
+SOD_CLASSE_FICA = 64                     # Shaman
 # e as "Legacy Reward" (brinde de conta: sem texto nem objetivo, só para quem tem direito)
 FORA_NOME = re.compile(r"^Legacy Reward:")
 # Livros da biblioteca: o objeto no mundo dá um item, e a quest só abre no bibliotecário com o livro
@@ -473,8 +483,31 @@ class Router:
                          for e in q["endNpcs"] for z, pts in ((self.npc(e) or {}).get("spawns") or {}).items()):
                 self.quests[k] = dict(q, trigger=None)
         for k, q in self.quests.items():
-            if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or "") or set(q["startNpcs"]) & BIBLIOTECARIOS                     or (q["startObjects"] and q["startNpcs"] and set(q["startNpcs"]) <= TREINADORES_DE_LIVRO)                     or (int(k) in SEASON_OF_DISCOVERY and not q["classes"]):
+            if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or "") or set(q["startNpcs"]) & BIBLIOTECARIOS                     or (q["startObjects"] and q["startNpcs"] and set(q["startNpcs"]) <= TREINADORES_DE_LIVRO)                     or (int(k) in SEASON_OF_DISCOVERY and not q["classes"] & SOD_CLASSE_FICA):
                 self.quests[k] = dict(q, fora=True)
+        # Item genérico que o banco só põe em mob de outra zona, 10+ níveis abaixo da quest: o Chunk
+        # of Boar Meat de Paletusk Harvesting (41, Riverglades) só caía do Stonetusk Boar de Elwynn
+        # (nível 5), e a Horda ia a Elwynn. O mob hostil da zona da quest que o título nomeia
+        # ("Paletusk": Mature/Young/Juvenile Paletusk) entra como fonte do item, e a fonte da zona
+        # do guia vence como sempre.
+        self.items = dict(self.items)
+        for k, q in self.quests.items():
+            ql, zona = q.get("questLevel") or 0, q.get("zoneOrSort") or 0
+            palavras = set(re.findall(r"\b[A-Z][a-z']{4,}\b", q["name"] or ""))
+            if not (ql and zona > 0 and q["objItems"] and palavras):
+                continue
+            for iid in q["objItems"]:
+                it = self.items.get(str(iid))
+                if not it or it.get("obj") or it.get("vendor"):
+                    continue
+                fontes = [e for e in (self.npc(n) for n in it.get("npc") or []) if e and e.get("spawns")]
+                if not fontes or any(str(zona) in e["spawns"] or (e.get("maxLevel") or 0) + 10 > ql for e in fontes):
+                    continue
+                novos = [int(n) for n, e in self.npcs.items()
+                         if str(zona) in (e.get("spawns") or {}) and not npc_amigo(e) and not is_marker(e.get("name"))
+                         and palavras & set((e.get("name") or "").split())]
+                if novos:
+                    self.items[str(iid)] = dict(it, npc=list(it.get("npc") or []) + novos)
         # Tarefa sem objetivo no banco: o alvo pelo nome no texto ("slay 6 Undead
         # Ravagers", "slay Outcast Necromancers"), ou da tabela; sem ele, o passo de fazer
         # espera a quest (`_emissores`) — ou a quest sai (`trabalho_sem_lugar`)
@@ -2785,8 +2818,12 @@ def demo():
     # livro da biblioteca não é rota: o `accept` no objeto nunca completa
     assert all(r.quests[q].get("fora") for q in ("78127", "78150", "84396")), "livro da biblioteca na rota"
     assert not any(r.quests[q].get("fora") for q in ("249", "2954", "7632")), "objeto e NPC que dão quest de verdade"
-    # Season of Discovery sem classe sai; conteúdo do Forever com id vizinho fica
-    assert all(r.quests[q].get("fora") for q in ("79192", "76156", "78132", "78261")), "quest do Season of Discovery na rota"
+    # Season of Discovery sem classe sai, e com classe também, fora a do xamã (The Horn of Xelthos,
+    # ladino, e A Strange Artifact, paladino, ganharam classe no QuestieDB 1.1); conteúdo do Forever
+    # com id vizinho fica
+    assert all(r.quests[q].get("fora") for q in ("79192", "76156", "78132", "78261", "78088", "84135")), \
+        "quest do Season of Discovery na rota"
+    assert not any(r.quests[q].get("fora") for q in ("79358", "79362")), "xamã do Forever (faixa do SoD) fora"
     assert not any(r.quests[q].get("fora") for q in ("86784", "87288")), "quest do Forever fora da rota"
     # drop de vários mobs: o aceite só para quem tem o item; de um chefe, o passo fica
     elwynn = ler(guias, "..", "Alliance", "Elwynn_Forest_3-10.lua")
@@ -2864,8 +2901,11 @@ def demo():
         "Apothecary Zamah sem a entrega logo depois"
     assert t.index("turnin Hamuul Runetotem##1489") - t.index("turnin Apothecary Zamah##853") < 3000, \
         "duas idas a Thunder Bluff"
-    # Shen'dralas é de Desolace: a Horda pega Ravaging Ravagers com o Nerlokh
-    assert "accept Ravaging Ravagers##93035" in ler(guias, "Desolace_33-39.lua"), "Shen'dralas fora de Desolace"
+    # Shen'dralas é de Desolace: a Horda pega Khan Jehn com o Nerlokh, que só existe lá (Ravaging
+    # Ravagers, a de antes, saiu no QuestieDB 1.1: Valley of Bones passou a pedir Ongeku, cujo
+    # Draenethyst Shard o banco põe em Swamp of Sorrows)
+    assert re.search(r"accept Khan Jehn##93128 \|goto Shen'dralas", ler(guias, "Desolace_33-39.lua")), \
+        "Shen'dralas fora de Desolace"
     # o giver da capital da gente da zona: Speak with Un'thuwa em Orgrimmar, para Durotar
     assert re.search(r"accept Speak with Un'thuwa##1883 \|goto Orgrimmar", ler(guias, "Durotar_5-12.lua")), \
         "Un'thuwa em Thunder Bluff"

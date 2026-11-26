@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Arathi Highlands (31-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Badlands (37-43)",
-	rev = "3a0d5d6d",
+	rev = "6ad81a2f",
 }, [[
 step
   ding 30
@@ -13,10 +13,6 @@ step
   only level>=30
   talk Archmage Malin##2708
   accept Malin's Request##690 |goto Stormwind City 50.5,87.47
-step
-  only Shaman level>=30
-  talk Eldrun Stormbreaker##258098
-  accept Call of Air##94789 |goto Ironforge 47.1,13.79
 step
   collect Waterlogged Letter##2656 |goto Arathi Highlands 44.29,92.88 |tip Loot the quest item here — it starts the quest.
   accept Sully Balloo's Letter##637 |goto Arathi Highlands 44.29,92.88
@@ -45,10 +41,23 @@ step
   talk Captain Nials##2700
   turnin Northfold Manor##681 |goto Arathi Highlands 45.83,47.56
 step
-  only Shaman haveq(94789)
-  note Find Veyric Thundervein in Arathi Highlands.
-  talk Veyric Thunderhame##259023
-  turnin Call of Air##94789 |goto Arathi Highlands 59.84,27.57
+  only level>=30
+  talk Apprentice Kryten##2788
+  accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
+step
+  only haveq(691)
+  note Find 10 Witherbark Tusks, 4 Witherbark Medicine Pouches and a Shadow Hunter Knife for Apprentice Kryten at Refuge Pointe.
+  collect 10 Witherbark Tusk##4503 |q 691/1 |goto Arathi Highlands 35.1,46.16 |tip {dropsfrom}Witherbark Troll, Witherbark Shadowcaster, Witherbark Axe Thrower
+  collect 4 Witherbark Medicine Pouch##4522 |q 691/2 |goto Arathi Highlands 69.34,68.69 |tip {dropsfrom}Witherbark Witch Doctor
+  collect Shadow Hunter Knife##5040 |q 691 |goto Arathi Highlands 67.53,80.51 |tip {dropsfrom}Witherbark Shadow Hunter
+step
+  only Rogue completed(96783)
+  click Syndicate Footlocker##656157
+  accept Master of Disguise##96784 |goto Arathi Highlands 32.29,26.57
+step
+  only haveq(691)
+  talk Apprentice Kryten##2788
+  turnin Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
 step
   only completed(659) level>=30
   talk Quae##2712
@@ -88,58 +97,75 @@ step
   accept Hints of a New Plague?##661 |goto Arathi Highlands 60.18,53.85
 step
   only level>=30
-  talk Apprentice Kryten##2788
-  accept Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
+  click Shards of Myzrael##138492
+  accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
+step
+  only haveq(642)
+  note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
+  collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
+step
+  only haveq(642)
+  turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
+step
+  only completed(642)
+  click Iridescent Shards##2701
+  accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
 step
   only completed(681) level>=37
   talk Captain Nials##2700
   accept Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
+step
+  only Rogue completed(96783)
+  note While disguised as a member of the Syndicate, find someone inside Stromgarde Keep who knows about the secret deal.
+  talk Anastasia Miller##266847
+  turnin Master of Disguise##96784 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue completed(96783)
+  talk Anastasia Miller##266847
+  accept Ain't No Telling##96785 |goto Arathi Highlands 26.81,64.44
+step
+  only level>=32
+  talk Caretaker Alaric##2782
+  accept Dutiful Steps##92872 |goto Arathi Highlands 28.98,59.68
 step
   only haveq(682)
   note Bring 7 Stromgarde Badges to Captain Nials at Refuge Pointe.
   kill Syndicate Prowler##2588 |q 682 |goto Arathi Highlands 28.33,63.36 |elite
   collect 7 Stromgarde Badge##4506 |q 682 |goto Arathi Highlands 28.33,63.36
 step
-  only haveq(691)
-  note Find 10 Witherbark Tusks, 4 Witherbark Medicine Pouches and a Shadow Hunter Knife for Apprentice Kryten at Refuge Pointe.
-  collect 10 Witherbark Tusk##4503 |q 691/1 |goto Arathi Highlands 35.1,46.16 |tip {dropsfrom}Witherbark Troll, Witherbark Shadowcaster, Witherbark Axe Thrower
-  collect 4 Witherbark Medicine Pouch##4522 |q 691/2 |goto Arathi Highlands 69.34,68.69 |tip {dropsfrom}Witherbark Witch Doctor
-  collect Shadow Hunter Knife##5040 |q 691 |goto Arathi Highlands 67.53,80.51 |tip {dropsfrom}Witherbark Shadow Hunter
+  only Rogue completed(96783)
+  note Find something within Stromgarde Keep to convince Anastasia to give up details of the secret deal.
+  collect Stolen Funds##275709 |q 96785 |goto Arathi Highlands 29.47,65.03 |tip {dropsfrom}Anastasia's Stash
+step
+  only haveq(92872)
+  note Throw the Pouch of Tomb Dust into The Great Sea and return to Caretaker Alaric in the Stromgarde Keep crypt.
+  talk Caretaker Alaric##2782
+  turnin Dutiful Steps##92872 |goto Arathi Highlands 28.98,59.68
+step
+  only Rogue completed(96783)
+  talk Anastasia Miller##266847
+  turnin Ain't No Telling##96785 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue completed(96783)
+  talk Anastasia Miller##266847
+  accept The Syndicate Sting##96786 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue completed(96783)
+  note Break up the secret deal, and take the object being traded to the Syndicate. Then, return to Myrokos Silentform at Ravenholdt Manor.
+  collect Intercepted Shipment##275882 |q 96786 |goto Arathi Highlands 15.52,42.87 |tip {dropsfrom}Secret Shipment
+step
+  only haveq(651)
+  note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
+  collect Thundering Key##4485 |q 651/3 |goto Arathi Highlands 52.04,50.73 |tip {dropsfrom}Stone of Outer Binding
+  collect Cresting Key##4484 |q 651/2 |goto Arathi Highlands 66.7,29.72 |tip {dropsfrom}Stone of East Binding
+  collect Burning Key##4483 |q 651 |goto Arathi Highlands 25.46,30.11 |tip {dropsfrom}Stone of West Binding
+step
+  only haveq(651)
+  turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
 step
   only haveq(682)
   talk Captain Nials##2700
   turnin Stromgarde Badges##682 |goto Arathi Highlands 45.83,47.56
-step
-  only haveq(691)
-  talk Apprentice Kryten##2788
-  turnin Worth Its Weight in Gold##691 |goto Arathi Highlands 46.2,47.75
-step
-  click Shards of Myzrael##138492
-  accept The Princess Trapped##642 |goto Arathi Highlands 62.5,33.73
-step
-  note Gather 12 Motes of Myzrael, then bring them to the Iridescent Shards in Drywhisker Gorge.
-  collect 12 Mote of Myzrael##4435 |q 642 |goto Arathi Highlands 78.55,37.77 |tip {dropsfrom}Drywhisker Kobold, Drywhisker Surveyor, Drywhisker Digger
-step
-  turnin The Princess Trapped##642 |goto Arathi Highlands 84.31,30.95
-step
-  click Iridescent Shards##2701
-  accept Stones of Binding##651 |goto Arathi Highlands 84.31,30.95
-step
-  note Gather the Burning Key, the Cresting Key and the Thundering Key from the Stone of West Binding, the Stone of East Binding and the Stone of Outer Binding.
-  collect Cresting Key##4484 |q 651/2 |goto Arathi Highlands 66.7,29.72 |tip {dropsfrom}Stone of East Binding
-  collect Thundering Key##4485 |q 651/3 |goto Arathi Highlands 52.04,50.73 |tip {dropsfrom}Stone of Outer Binding
-  collect Burning Key##4483 |q 651 |goto Arathi Highlands 25.46,30.11 |tip {dropsfrom}Stone of West Binding
-step
-  turnin Stones of Binding##651 |goto Arathi Highlands 36.23,57.38
-step
-  only level>=35
-  talk Lolo the Lookout##2766
-  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
-step
-  only haveq(663)
-  note Talk to Captain O'Breen in Faldir's Cove.
-  talk Shakes O'Breen##2610
-  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
 step
   only level>=39
   click Wanted Board##2713
@@ -161,6 +187,10 @@ step
   talk Skuerto##2789
   accept Trelane's Defenses##694 |goto Arathi Highlands 46.65,47.01
 step
+  only level>=39
+  talk Groundskeeper Lomar##219
+  accept Ground to Keep##92867 |goto Arathi Highlands 27,57.2
+step
   only haveq(684)
   note Bring Marez's head to Captain Nials at Refuge Pointe.
   kill Marez Cowl##2783 |q 684 |goto Arathi Highlands 29.47,64.14 |elite
@@ -170,6 +200,13 @@ step
   note Find an Azure Agate and bring it to Apprentice Kryten at Refuge Pointe.
   kill Boulderfist Shaman##2570 |q 694 |goto Arathi Highlands 19.97,67.51 |elite
   collect Azure Agate##4527 |q 694 |goto Arathi Highlands 19.97,67.51
+step
+  only haveq(92867)
+  note Defeat the Boulderfist, Syndicate, and Witherbark intruders in Stromgarde Keep and return to Groundskeeper Lomar.
+  kill Boulderfist Mauler##2569 |q 92867/1 |goto Arathi Highlands 21.59,66.7 |elite
+  kill Witherbark Berserker##2558 |q 92867/4 |goto Arathi Highlands 24.04,65.18 |elite
+  kill Syndicate Conjuror##2590 |q 92867/2 |goto Arathi Highlands 27.44,65.56 |elite
+  kill Syndicate Prowler##2588 |q 92867 |goto Arathi Highlands 28.33,63.36 |elite
 step
   only haveq(684)
   talk Captain Nials##2700
@@ -183,10 +220,6 @@ step
   talk Apprentice Kryten##2788
   accept An Apprentice's Enchantment##695 |goto Arathi Highlands 46.2,47.75
 step
-  only level>=40
-  click Wanted Board##2713
-  accept WANTED: Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
-step
   only haveq(695)
   note Speak to Skuerto.
   talk Skuerto##2789
@@ -195,6 +228,14 @@ step
   only completed(695)
   talk Skuerto##2789
   accept Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
+step
+  only level>=40
+  click Wanted Board##2713
+  accept WANTED: Otto and Falconcrest##685 |goto Arathi Highlands 46.04,47.76
+step
+  only haveq(92867)
+  talk Groundskeeper Lomar##219
+  turnin Ground to Keep##92867 |goto Arathi Highlands 27,57.2
 step
   only haveq(685)
   note Bring Otto's Head and Falconcrest's Head to Captain Nials at Refuge Pointe.
@@ -208,6 +249,15 @@ step
   collect Trelane's Phylactery##4530 |q 696/1 |goto Arathi Highlands 18.18,68.14 |tip {dropsfrom}Trelane's Footlocker
   collect Trelane's Ember Agate##4532 |q 696/3 |goto Arathi Highlands 18.03,67.87 |tip {dropsfrom}Trelane's Lockbox
   collect Trelane's Orb##4531 |q 696 |goto Arathi Highlands 18.17,69.15 |tip {dropsfrom}Trelane's Chest
+step
+  only level>=35
+  talk Lolo the Lookout##2766
+  accept Land Ho!##663 |goto Arathi Highlands 31.78,82.68
+step
+  only haveq(663)
+  note Talk to Captain O'Breen in Faldir's Cove.
+  talk Shakes O'Breen##2610
+  turnin Land Ho!##663 |goto Arathi Highlands 32.28,81.38
 step
   only completed(663) level>=35
   talk First Mate Nilzlix##2767
@@ -282,11 +332,15 @@ step
   talk Skuerto##2789
   turnin Attack on the Tower##696 |goto Arathi Highlands 46.65,47.01
 step
+  only level>=36
+  talk Captain Nials##2700
+  accept The Riverglades Report##95315 |goto Arathi Highlands 45.83,47.56
+step
   only completed(696)
   talk Skuerto##2789
   accept Malin's Request##697 |goto Arathi Highlands 46.65,47.01
 step
-  only level>=42
+  only completed(651) level>=42
   click Stone of Inner Binding##2702
   accept Breaking the Keystone##652 |goto Arathi Highlands 36.23,57.38
 step
@@ -339,6 +393,10 @@ step
 step
   note Grand Mason Marblesten of Ironforge wants 5 pieces of Alterac Granite.
   collect Alterac Granite##4521 |q 689 |goto Hillsbrad Foothills 43.54,30.19
+step
+  only Rogue completed(96783)
+  talk Myrokos Silentform##13085
+  turnin The Syndicate Sting##96786 |goto Alterac Mountains 84.93,80.38 |tip {turninat}Alterac Mountains
 step
   talk Grand Mason Marblesten##2790
   turnin A King's Tribute##689 |goto Ironforge 39.04,88.05 |tip {turninat}Ironforge

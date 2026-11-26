@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (32-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Alterac Mountains (34-40)",
-	rev = "3b50b3e0",
+	rev = "7b8cb613",
 }, [[
 step
   ding 31
@@ -20,36 +20,30 @@ step
   talk Deathguard Humbert##2419
   accept Humbert's Sword##547 |goto Hillsbrad Foothills 62.76,20.21
 step
-  talk Keeper Bel'varil##2437
-  accept Stone Tokens##556 |goto Hillsbrad Foothills 61.5,20.93
-step
   talk Tallow##2770
   accept The Hammer May Fall##676 |goto Hillsbrad Foothills 61.87,19.57
-step
-  talk Novice Thaivand##2429
-  accept Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
-step
-  talk Magus Wordeen Voidglare##2410
-  accept Key to the City##93680 |goto Hillsbrad Foothills 61.6,20.85
-step
-  note Acquire the Dalaran Sewer Key for Magus Wordeen Voidglare in Tarren Mill.
-  collect Grimy Key##279469 |q 93680 |goto Hillsbrad Foothills 61.6,20.85
-step
-  talk Magus Wordeen Voidglare##2410
-  accept Shrewd Negotiations##97287 |goto Hillsbrad Foothills 61.6,20.85
-step
-  talk Magus Wordeen Voidglare##2410
-  turnin Key to the City##93680 |goto Hillsbrad Foothills 61.6,20.85
-step
-  only completed(498)
-  talk Krusk##2229
-  accept Infiltration##533 |goto Hillsbrad Foothills 63.24,20.66
 step
   talk Magus Wordeen Voidglare##2410
   accept Prison Break In##544 |goto Hillsbrad Foothills 61.6,20.85
 step
+  talk Novice Thaivand##2429
+  accept Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
+step
+  talk Keeper Bel'varil##2437
+  accept Stone Tokens##556 |goto Hillsbrad Foothills 61.5,20.93
+step
   talk Magus Wordeen Voidglare##2410
-  accept Blood in the Streets##92434 |goto Hillsbrad Foothills 61.6,20.85
+  accept Key to the City##93680 |goto Hillsbrad Foothills 61.6,20.85
+step
+  only completed(92458,96984)
+  talk Magus Wordeen Voidglare##2410
+  accept Shrewd Negotiations##97287 |goto Hillsbrad Foothills 61.6,20.85
+step
+  note Bring 10 Worn Stone Tokens to Keeper Bel'varil in Tarren Mill.
+  collect 10 Worn Stone Token##3714 |q 556 |goto Hillsbrad Foothills 26.98,31.5 |tip {dropsfrom}Dalaran Theurgist
+step
+  note Retrieve Helcular's Rod from the Yeti and bring it back to Novice Thaivand in Tarren Mill.
+  collect Helcular's Rod##3708 |q 552 |goto Hillsbrad Foothills 45.28,31.24 |tip {dropsfrom}Cave Yeti, Ferocious Yeti
 step
   only completed(539)
   note Travel to Dun Garok and kill 8 Mountaineers, 4 Riflemen, 2 Priests and Captain Ironhill and report back to Darthalia in Tarren Mill.
@@ -62,9 +56,6 @@ step
   kill Dun Garok Mountaineer##2344 |q 547 |goto Hillsbrad Foothills 71.58,79.57 |elite
   collect Humbert's Sword##3693 |q 547 |goto Hillsbrad Foothills 71.58,79.57
 step
-  note Retrieve Helcular's Rod from the Yeti and bring it back to Novice Thaivand in Tarren Mill.
-  collect Helcular's Rod##3708 |q 552 |goto Hillsbrad Foothills 45.28,31.24 |tip {dropsfrom}Cave Yeti, Ferocious Yeti
-step
   only completed(539)
   talk High Executor Darthalia##2215
   turnin Battle of Hillsbrad##541 |goto Hillsbrad Foothills 62.33,20.45
@@ -75,12 +66,22 @@ step
   talk Novice Thaivand##2429
   turnin Helcular's Revenge##552 |goto Hillsbrad Foothills 63.88,19.66
 step
+  talk Keeper Bel'varil##2437
+  turnin Stone Tokens##556 |goto Hillsbrad Foothills 61.5,20.93
+step
   only completed(539)
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##550 |goto Hillsbrad Foothills 62.33,20.45
 step
   talk Novice Thaivand##2429
   accept Helcular's Revenge##553 |goto Hillsbrad Foothills 63.88,19.66
+step
+  talk Keeper Bel'varil##2437
+  accept Bracers of Binding##557 |goto Hillsbrad Foothills 61.5,20.93
+step
+  only completed(498)
+  talk Krusk##2229
+  accept Infiltration##533 |goto Hillsbrad Foothills 63.24,20.66
 step
   note Charge the Rod of Helcular with the powers of the Flame of Azel, Flame of Veraz and the Flame of Uzel.
   click Flame of Veraz##1769 |q 553/2 |goto Hillsbrad Foothills 44.05,26.55
@@ -107,18 +108,24 @@ step
   talk Sharlindra##2227
   accept The Crown of Will##495 |goto Undercity 57.63,93.8
 step
-  note Speak with Archmage Celindra in the City of Dalaran.
-  talk Archmage Celindra##252085
-  turnin Shrewd Negotiations##97287 |goto Alterac Mountains 14.15,60.05 |tip {turninat}Alterac Mountains
+  note Kill 8 Boulderfist Ogres and 10 Boulderfist Enforcers, then find Drum Fel in the Hammerfall outpost in Arathi Highlands.
+  kill Boulderfist Ogre##2562 |q 676/1 |goto Arathi Highlands 35.7,45.27
+  kill Boulderfist Enforcer##2564 |q 676 |goto Arathi Highlands 32.39,44.74
 step
-  note Bring 10 Worn Stone Tokens to Keeper Bel'varil in Tarren Mill.
-  collect 10 Worn Stone Token##3714 |q 556 |goto Alterac Mountains 19,84.35 |tip {dropsfrom}Dalaran Shield Guard, Dalaran Theurgist, Dalaran Summoner
+  talk Drum Fel##2771
+  turnin The Hammer May Fall##676 |goto Arathi Highlands 74.24,33.92 |tip {turninat}Arathi Highlands
 step
   note Find the traitors and recover their artifacts, then return to Magus Voidglare in Tarren Mill.
-  collect Bloodstone Marble##3689 |q 544/2 |goto Alterac Mountains 20.16,84.28 |tip {dropsfrom}Ricter
-  collect Bloodstone Wedge##3691 |q 544/1 |goto Alterac Mountains 19.91,85.97 |tip {dropsfrom}Dermot
-  collect Bloodstone Shard##3690 |q 544/3 |goto Alterac Mountains 20.34,86.4 |tip {dropsfrom}Alina
-  collect Bloodstone Oval##3688 |q 544 |goto Alterac Mountains 17.8,83.2 |tip {dropsfrom}Kegan Darkmar
+  collect Bloodstone Wedge##3691 |q 544/1 |goto Alterac Mountains 18.76,91.41 |tip {dropsfrom}Dermot
+  collect Bloodstone Shard##3690 |q 544/3 |goto Alterac Mountains 19.31,91.76 |tip {dropsfrom}Alina
+  collect Bloodstone Marble##3689 |q 544/2 |goto Alterac Mountains 19.31,90.22 |tip {dropsfrom}Ricter
+  collect Bloodstone Oval##3688 |q 544 |goto Alterac Mountains 16.58,89.03 |tip {dropsfrom}Kegan Darkmar
+step
+  note Acquire the Dalaran Sewer Key for Magus Wordeen Voidglare in Tarren Mill.
+  collect Grimy Key##279469 |q 93680 |goto Alterac Mountains 16.3,89.31 |tip {dropsfrom}Warden's Footlocker
+step
+  note Bring 4 Bracers of Earth Binding to Keeper Bel'varil in Tarren Mill.
+  collect 4 Bracers of Earth Binding##3715 |q 557 |goto Alterac Mountains 24.62,54.86 |tip {dropsfrom}Elemental Slave
 step
   only completed(498)
   note Retrieve information about Gol'dir's whereabouts for Krusk in Tarren Mill.
@@ -128,17 +135,17 @@ step
   note Kill Baron Vardus and deliver his head to High Executor Darthalia in Tarren Mill.
   collect Head of Baron Vardus##3626 |q 566 |goto Alterac Mountains 56.28,26.7 |tip {dropsfrom}Baron Vardus
 step
-  talk Keeper Bel'varil##2437
-  turnin Stone Tokens##556 |goto Hillsbrad Foothills 61.5,20.93
-step
-  talk Keeper Bel'varil##2437
-  accept Bracers of Binding##557 |goto Hillsbrad Foothills 61.5,20.93
-step
   talk Magus Wordeen Voidglare##2410
   turnin Prison Break In##544 |goto Hillsbrad Foothills 61.6,20.85
 step
   talk Magus Wordeen Voidglare##2410
+  turnin Key to the City##93680 |goto Hillsbrad Foothills 61.6,20.85
+step
+  talk Magus Wordeen Voidglare##2410
   accept Dalaran Patrols##545 |goto Hillsbrad Foothills 61.6,20.85
+step
+  talk Keeper Bel'varil##2437
+  turnin Bracers of Binding##557 |goto Hillsbrad Foothills 61.5,20.93
 step
   only completed(549) haveq(566)
   talk High Executor Darthalia##2215
@@ -161,23 +168,14 @@ step
   talk Krusk##2229
   accept Gol'dir##503 |goto Hillsbrad Foothills 63.24,20.66
 step
-  note Kill 8 Boulderfist Ogres and 10 Boulderfist Enforcers, then find Drum Fel in the Hammerfall outpost in Arathi Highlands.
-  kill Boulderfist Ogre##2562 |q 676/1 |goto Arathi Highlands 35.7,45.27
-  kill Boulderfist Enforcer##2564 |q 676 |goto Arathi Highlands 32.39,44.74
-step
-  talk Drum Fel##2771
-  turnin The Hammer May Fall##676 |goto Arathi Highlands 74.24,33.92 |tip {turninat}Arathi Highlands
-step
-  note Find a way into Dalaran along the Lordamere Lake.
+  only completed(92458,96984)
+  note Speak with the Image of Archmage Modera near Dalaran.
   talk Image of Archmage Modera##269127
-  turnin Blood in the Streets##92434 |goto Silverpine Forest 68.62,45.13 |tip {turninat}Silverpine Forest
-step
-  note Bring 4 Bracers of Earth Binding to Keeper Bel'varil in Tarren Mill.
-  collect 4 Bracers of Earth Binding##3715 |q 557 |goto Alterac Mountains 21.78,64.34 |tip {dropsfrom}Elemental Slave
+  turnin Shrewd Negotiations##97287 |goto Silverpine Forest 68.62,45.13 |tip {turninat}Silverpine Forest
 step
   note Kill 6 Dalaran Summoners and 12 Elemental Slaves, then return to Magus Voidglare in Tarren Mill.
-  kill Elemental Slave##2359 |q 545/2 |goto Alterac Mountains 21.78,64.34
-  kill Dalaran Summoner##2358 |q 545 |goto Alterac Mountains 18.88,74.92
+  kill Dalaran Summoner##2358 |q 545/1 |goto Alterac Mountains 25.1,57.5
+  kill Elemental Slave##2359 |q 545 |goto Alterac Mountains 24.62,54.86
 step
   only haveq(518)
   note Kill 10 Crushridge Maulers for Melisara in Tarren Mill.
@@ -191,11 +189,11 @@ step
   talk Gol'dir##2316
   turnin Gol'dir##503 |goto Alterac Mountains 59.96,43.74 |tip {turninat}Alterac Mountains
 step
-  talk Keeper Bel'varil##2437
-  turnin Bracers of Binding##557 |goto Hillsbrad Foothills 61.5,20.93
-step
   talk Magus Wordeen Voidglare##2410
   turnin Dalaran Patrols##545 |goto Hillsbrad Foothills 61.6,20.85
+step
+  talk Magus Wordeen Voidglare##2410
+  accept Blood in the Streets##92434 |goto Hillsbrad Foothills 61.6,20.85
 step
   only haveq(518)
   talk Melisara##2278
@@ -204,6 +202,12 @@ step
   only completed(518) level>=41
   talk Melisara##2278
   accept The Crown of Will##519 |goto Hillsbrad Foothills 62.63,20.65
+step
+  note Find a way into Dalaran along the Lordamere Lake.
+  talk Image of Archmage Modera##269127 |q 92434 |goto Silverpine Forest 68.62,45.13
+step
+  talk Image of Archmage Modera##269127
+  turnin Blood in the Streets##92434 |goto Silverpine Forest 68.62,45.13 |tip {turninat}Silverpine Forest
 step
   only haveq(519)
   note Kill Targ, Muckrake, and Glommus and bring their heads to Melisara in Tarren Mill.

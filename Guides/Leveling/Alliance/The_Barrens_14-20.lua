@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Barrens (14-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
-	rev = "4454394a",
+	rev = "bc786db8",
 }, [[
 step
   ding 13
@@ -19,40 +19,21 @@ step
   talk Sputtervalve##3442
   accept Samophlange##894 |goto The Barrens 62.98,37.22
 step
-  note Access the control console at the Venture Company research site.
-  turnin Samophlange##894 |goto The Barrens 52.4,11.65
-step
-  click Control Console##4141
-  accept Samophlange##900 |goto The Barrens 52.4,11.65
-step
-  note Close off the Fuel Control Valve, the Regulator Valve and the Main Control Valve then use the control console again.
-  click Main Control Valve##4072 |q 900/1 |goto The Barrens 52.33,11.56
-  click Regulator Valve##61935 |q 900/3 |goto The Barrens 52.3,11.42
-  click Fuel Control Valve##61936 |q 900 |goto The Barrens 52.4,11.41
-step
-  turnin Samophlange##900 |goto The Barrens 52.4,11.65
-step
-  click Control Console##4141
-  accept Samophlange##901 |goto The Barrens 52.4,11.65
-step
-  note Get the Console Key from Tinkerer Sniggles to use on the control console.
-  collect Console Key##5089 |q 901 |goto The Barrens 52.84,10.39 |tip {dropsfrom}Tinkerer Sniggles
-step
-  turnin Samophlange##901 |goto The Barrens 52.4,11.65
-step
-  click Control Console##4141
-  accept Samophlange##902 |goto The Barrens 52.4,11.65
+  talk Wrenix the Wretched##7161
+  accept Parts and Pieces##97253 |goto The Barrens 63.07,36.32
 step
   note Kill 12 Southsea Brigands and 6 Southsea Cannoneers for Gazlowe in Ratchet.
   kill Southsea Brigand##3381 |q 887/1 |goto The Barrens 63.67,46.13
   kill Southsea Cannoneer##3382 |q 887 |goto The Barrens 63.58,46.69
 step
+  note Collect 5 Handfuls of Complicated Parts from the upper pirate camp south of Ratchet, then return to Wrenix the Wretched in Ratchet.
+  collect 5 Handful of Complicated Parts##277331 |q 97253 |goto The Barrens 62.28,46.21 |tip {dropsfrom}Pile of Complicated Parts
+step
   talk Gazlowe##3391
   turnin Southsea Freebooters##887 |goto The Barrens 62.68,36.23
 step
-  note Return the Samophlange to Sputtervalve in Ratchet.
-  talk Sputtervalve##3442
-  turnin Samophlange##902 |goto The Barrens 62.98,37.22
+  talk Wrenix the Wretched##7161
+  turnin Parts and Pieces##97253 |goto The Barrens 63.07,36.32
 step
   talk Gazlowe##3391
   accept The Missing Shipment##890 |goto The Barrens 62.68,36.23
@@ -66,12 +47,6 @@ step
 step
   talk Wharfmaster Dizzywig##3453
   accept The Missing Shipment##892 |goto The Barrens 63.35,38.45
-step
-  talk Mebok Mizzyrix##3446
-  accept Raptor Horns##865 |goto The Barrens 62.37,37.62
-step
-  talk Wharfmaster Dizzywig##3453
-  accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
 step
   note Return Gazlowe's Ledger to Gazlowe in Ratchet.
   talk Gazlowe##3391
@@ -87,8 +62,26 @@ step
   note Bring the head of Baron Longshore to Gazlowe in Ratchet.
   collect Baron Longshore's Head##5084 |q 895 |goto The Barrens 63.3,49 |tip {dropsfrom}Baron Longshore
 step
+  talk Gazlowe##3391
+  turnin Stolen Booty##888 |goto The Barrens 62.68,36.23
+step
+  talk Gazlowe##3391
+  turnin WANTED: Baron Longshore##895 |goto The Barrens 62.68,36.23
+step
+  talk Mebok Mizzyrix##3446
+  accept Raptor Horns##865 |goto The Barrens 62.37,37.62
+step
+  talk Wharfmaster Dizzywig##3453
+  accept Miner's Fortune##896 |goto The Barrens 63.35,38.45
+step
   note Gather 5 Intact Raptor Horns from Sunscale Scytheclaws, and bring them to Mebok Mizzyrix in Ratchet.
   collect 5 Intact Raptor Horn##5055 |q 865 |goto The Barrens 52.58,45.99 |tip {dropsfrom}Sunscale Scytheclaw, Ishamuhale, Takk the Leaper
+step
+  note Access the control console at the Venture Company research site.
+  turnin Samophlange##894 |goto The Barrens 52.4,11.65
+step
+  click Control Console##4141
+  accept Samophlange##900 |goto The Barrens 52.4,11.65
 step
   talk Wizzlecrank's Shredder##3439
   accept Ignition##858 |goto The Barrens 56.52,7.45
@@ -99,8 +92,26 @@ step
   note Retrieve the Cats Eye Emerald from one of the Venture Co. Overseers or Enforcers for Wharfmaster Dizzywig at Ratchet.
   collect Cats Eye Emerald##5097 |q 896 |goto The Barrens 60.81,3.79 |tip {dropsfrom}Venture Co. Enforcer, Venture Co. Overseer, Boss Copperplug
 step
+  note Close off the Fuel Control Valve, the Regulator Valve and the Main Control Valve then use the control console again.
+  click Fuel Control Valve##61936 |q 900/2 |goto The Barrens 52.4,11.41
+  click Regulator Valve##61935 |q 900/3 |goto The Barrens 52.3,11.42
+  click Main Control Valve##4072 |q 900 |goto The Barrens 52.33,11.56
+step
   talk Wizzlecrank's Shredder##3439
   turnin Ignition##858 |goto The Barrens 56.52,7.45
+step
+  turnin Samophlange##900 |goto The Barrens 52.4,11.65
+step
+  click Control Console##4141
+  accept Samophlange##901 |goto The Barrens 52.4,11.65
+step
+  note Get the Console Key from Tinkerer Sniggles to use on the control console.
+  collect Console Key##5089 |q 901 |goto The Barrens 52.84,10.39 |tip {dropsfrom}Tinkerer Sniggles
+step
+  turnin Samophlange##901 |goto The Barrens 52.4,11.65
+step
+  click Control Console##4141
+  accept Samophlange##902 |goto The Barrens 52.4,11.65
 step
   talk Wizzlecrank's Shredder##3439
   accept The Escape##863 |goto The Barrens 56.52,7.45
@@ -114,14 +125,12 @@ step
   talk Mebok Mizzyrix##3446
   turnin Raptor Horns##865 |goto The Barrens 62.37,37.62
 step
-  talk Gazlowe##3391
-  turnin Stolen Booty##888 |goto The Barrens 62.68,36.23
-step
-  talk Gazlowe##3391
-  turnin WANTED: Baron Longshore##895 |goto The Barrens 62.68,36.23
-step
   talk Wharfmaster Dizzywig##3453
   turnin Miner's Fortune##896 |goto The Barrens 63.35,38.45
+step
+  note Return the Samophlange to Sputtervalve in Ratchet.
+  talk Sputtervalve##3442
+  turnin Samophlange##902 |goto The Barrens 62.98,37.22
 step
   only level>=15
   talk Mebok Mizzyrix##3446
@@ -137,8 +146,8 @@ step
 step
   only haveq(97005)
   note Bring Chol'aruk's Head to Bainham in the Barrens.
-  kill Chol'aruk##267307 |q 97005 |goto The Barrens 58.06,26.72 |elite
-  collect Chol'aruk's Head##276070 |q 97005 |goto The Barrens 58.06,26.72
+  kill Chol'aruk##267307 |q 97005 |goto The Barrens 57.53,27.06 |elite
+  collect Chol'aruk's Head##276070 |q 97005 |goto The Barrens 57.53,27.06
 step
   only haveq(97005)
   talk Bainham##267309
@@ -161,7 +170,7 @@ step
   talk Mathrengyl Bearwalker##4217
   turnin In Nightmares##3370 |goto Darnassus 35.37,8.4 |tip {turninat}Darnassus
 step
-  only not Human not Dwarf not Gnome Druid level>=20
+  only not Human not Dwarf not Gnome Druid not completed(98340) not haveq(98340) level>=20
   talk Mathrengyl Bearwalker##4217
   accept The Great Cat Spirit##98393 |goto Darnassus 35.37,8.4
 step
@@ -173,7 +182,7 @@ step
   talk Priestess Alathea##11401
   turnin Elune's Grace##5672 |goto Darnassus 39.52,81.2 |tip {turninat}Darnassus
 step
-  only not Human not Dwarf not Gnome Druid haveq(98393)
+  only not Human not Dwarf not Gnome Druid not completed(98340) not haveq(98340) haveq(98393)
   note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
   talk Dendrite Starblaze##11802
   turnin The Great Cat Spirit##98393 |goto Moonglade 56.21,30.64 |tip {turninat}Moonglade
