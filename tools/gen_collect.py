@@ -138,6 +138,8 @@ def quests_lua(q):
                 ident = st.get("item_id")
             elif act in ("talk", "kill"):
                 ident = st.get("npc_id")
+            elif act == "click":
+                ident = st.get("npc_id") or st.get("object_id")     # a marca no NPC (corpo, sapo) segue valendo
             else:
                 ident = None
             # aceitar/entregar: o alvo é a quest (a janela diz "Entregue <quest>"); o objeto vai na nota

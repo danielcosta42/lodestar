@@ -7,4 +7,4 @@
 - [x] T5 Página Segredos na Central
 - [x] T6 Seta no estilo dos passos de viagem
 - [x] T7 Configurações, textos, testes, ui-smoke
-- [ ] T8 Revisão local, PR
+- [x] T8 Revisão local, PR

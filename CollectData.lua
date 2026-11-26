@@ -6,8 +6,8 @@ if not ns then return end
 ns.collectData = {
 	quests = {
 		{ name = "Cozy Sleeping Bag", kind = "item", item = 211527, lvl = 14, doneQuest = 79976, where = "Westfall / The Barrens …", steps = {
-			{ act = "click", target = "Burned-Out Remains", zone = "Westfall", x = 37.4, y = 50.7, faction = "Alliance", note = "Alliance start: cart wreckage at Alexston Farmstead. Accept '...and that note you found'." },
-			{ act = "click", target = "Burned-Out Remains", zone = "The Barrens", x = 46.4, y = 73.9, faction = "Horde", note = "Horde start: burnt tower south of Camp Taurajo. Accept '...and that note you found'." },
+			{ act = "click", target = "Burned-Out Remains", id = 415107, zone = "Westfall", x = 37.4, y = 50.7, faction = "Alliance", note = "Alliance start: cart wreckage at Alexston Farmstead. Accept '...and that note you found'." },
+			{ act = "click", target = "Burned-Out Remains", id = 415106, zone = "The Barrens", x = 46.4, y = 73.9, faction = "Horde", note = "Horde start: burnt tower south of Camp Taurajo. Accept '...and that note you found'." },
 			{ act = "turnin", target = "...and that note you found", id = 79008, zone = "The Barrens", x = 46.4, y = 73.9, faction = "Alliance", note = "Alliance hands in '...and that note you found' here." },
 			{ act = "turnin", target = "...and that note you found", id = 79007, zone = "Westfall", x = 37.4, y = 50.7, faction = "Horde", note = "Horde hands in '...and that note you found' here." },
 			{ act = "accept", target = "Stepping Stones", id = 79192, zone = "The Barrens", x = 46.4, y = 73.8, faction = "Alliance", note = "Alliance: from the Nailed Plank right beside the burnt tower." },
@@ -87,7 +87,7 @@ ns.collectData = {
 		{ name = "Musical Gustjumper", kind = "pet", item = 268109, lvl = 1, where = "Zephras Isle", steps = {
 			{ act = "goto", target = "Frogs on a rock near the top of the waterfall", zone = "Zephras Isle", x = 51.5, y = 72.2 },
 			{ act = "emote", target = "a frog", zone = "Zephras Isle", x = 51.5, y = 72.2, note = "Target one of the frogs (Musical Gustjumper, npc 259006) and /sing." },
-			{ act = "click", target = "Musical Gustjumper (frog that hops onto the log)", zone = "Zephras Isle", x = 51.5, y = 72.2, note = "One frog hops onto a log next to you; right-click it to pick it up. The game data has a second NPC record at this exact spot (259843), probably that frog." },
+			{ act = "click", target = "Musical Gustjumper (frog that hops onto the log)", id = 259843, zone = "Zephras Isle", x = 51.5, y = 72.2, note = "One frog hops onto a log next to you; right-click it to pick it up. The game data has a second NPC record at this exact spot (259843), probably that frog." },
 			{ act = "use", target = "Musical Gustjumper", id = 268109, note = "Learn the pet (item 268109). Not soulbound until collected; reports differ on whether you can get extras." },
 		} },
 		{ name = "Truthseeker's Bow", kind = "item", item = 277254, lvl = 35, doneQuest = 82208, where = "Stormwind City / Undercity", steps = {
@@ -119,7 +119,7 @@ ns.collectData = {
 			{ act = "talk", target = "Je'neu Sancrea", id = 12736, zone = "Ashenvale", x = 11.6, y = 34.3, faction = "Horde", note = "hand in Baron Aquanis, then talk again. Je'neu Sancrea at Zoram'gar Outpost; then talk again for the Befouled Water Globe (282337). (Kept as a talk step so the…" },
 			{ act = "talk", target = "Highborne Spirit", id = 273642, zone = "Ashenvale", x = 15.7, y = 19.3, note = "Zoram Strand, with the ring equipped and the globe in bags; it sends you after Athrikus Narassin's tome." },
 			{ act = "kill", target = "Athrikus Narassin", id = 3660, zone = "Darkshore", x = 56, y = 26.3, note = "Top of the Tower of Althalaxx; loot the Azsharan Key (item 282406)." },
-			{ act = "click", target = "Narassin's Strongbox", zone = "Darkshore", x = 56.2, y = 26.5, note = "Right behind him: open it with the key for Narassin's Tome (item 282404), then return to the Highborne Spirit (15.7, 19.3 Ashenvale)." },
+			{ act = "click", target = "Narassin's Strongbox", id = 676349, zone = "Darkshore", x = 56.2, y = 26.5, note = "Right behind him: open it with the key for Narassin's Tome (item 282404), then return to the Highborne Spirit (15.7, 19.3 Ashenvale)." },
 			{ act = "talk", target = "Mordent Evenshade", id = 253471, zone = "Shen'dralas", x = 35.2, y = 46.6, note = "Evenshade's spot in Shen'dralas (uiMapID 2652). Have Narassin's Tome in your bags; he names three cleansing materials (completion flag: quest 98642)." },
 			{ act = "click", target = "Shen'dralar Vault switches + vault (Star of Elune)", zone = "Feralas", x = 58.5, y = 71.6, note = "Ruins of Isildien, ring equipped, level 50+ advised. Five players: four flip the hidden Ancient Switches within ~10 s of each other at 58.5,71.0 (top floor) /…" },
 			{ act = "collect", target = "Abyssal Mote", id = 282547, zone = "Azshara", x = 66, y = 54.1, note = "Underwater Abyssal Chest, visible only after the long Azsharite questline (ends with 3602 'Azsharite', Loramus Thalipedes). Gives item 282547." },
@@ -135,15 +135,15 @@ ns.collectData = {
 			{ act = "accept", target = "Raene's Cleansing (1 of 11)", id = 991, zone = "Ashenvale", x = 36.6, y = 49.6, note = "Raene Wolfrunner in Astranaar. Eleven-part chain, every part named Raene's Cleansing; it starts with 991." },
 			{ act = "turnin", target = "Raene's Cleansing (1)", id = 991, zone = "Ashenvale", x = 20.3, y = 42.3, note = "Teronis' Corpse at Lake Falathim." },
 			{ act = "accept", target = "Raene's Cleansing (2)", id = 1023, zone = "Ashenvale", x = 20.3, y = 42.3, note = "From Teronis' Corpse: find the Glowing Gem and bring it with Teronis' Journal to Raene." },
-			{ act = "click", target = "Teronis' Corpse", zone = "Ashenvale", x = 20.3, y = 42.3, note = "Search around the corpse for the Glowing Gem (item 5463; random, may take several tries)." },
+			{ act = "click", target = "Teronis' Corpse", id = 3891, zone = "Ashenvale", x = 20.3, y = 42.3, note = "Search around the corpse for the Glowing Gem (item 5463; random, may take several tries)." },
 			{ act = "turnin", target = "Raene's Cleansing (2)", id = 1023, zone = "Ashenvale", x = 36.6, y = 49.6, note = "Raene Wolfrunner." },
 			{ act = "accept", target = "Raene's Cleansing (3)", id = 1024, zone = "Ashenvale", x = 36.6, y = 49.6 },
 			{ act = "turnin", target = "Raene's Cleansing (3)", id = 1024, zone = "Ashenvale", x = 53.5, y = 46.2, note = "Shael'dryn at the moonwell east of Iris Lake; give her the gem." },
 			{ act = "accept", target = "Raene's Cleansing (4)", id = 1026, zone = "Ashenvale", x = 53.5, y = 46.2, note = "Wooden Key and the first piece of Dartol's Rod." },
-			{ act = "click", target = "Worn Chest (Iron Shaft)", zone = "Ashenvale", x = 54.4, y = 35.4, note = "Treants drop the Wooden Key; the chest (object 19022) is near the Felwood border." },
+			{ act = "click", target = "Worn Chest (Iron Shaft)", id = 19022, zone = "Ashenvale", x = 54.4, y = 35.4, note = "Treants drop the Wooden Key; the chest (object 19022) is near the Felwood border." },
 			{ act = "turnin", target = "Raene's Cleansing (4)", id = 1026, zone = "Ashenvale", x = 53.5, y = 46.2 },
 			{ act = "accept", target = "Raene's Cleansing (5)", id = 1027, zone = "Ashenvale", x = 53.5, y = 46.2, note = "Last piece of the rod." },
-			{ act = "click", target = "Rusty Chest (Iron Pommel)", zone = "Ashenvale", x = 76.2, y = 69.4, note = "Appears after killing the Rotting Slimes; the chest (object 19021) has several spawn points in south-east Ashenvale (alt)." },
+			{ act = "click", target = "Rusty Chest (Iron Pommel)", id = 19021, zone = "Ashenvale", x = 76.2, y = 69.4, note = "Appears after killing the Rotting Slimes; the chest (object 19021) has several spawn points in south-east Ashenvale (alt)." },
 			{ act = "turnin", target = "Raene's Cleansing (5)", id = 1027, zone = "Ashenvale", x = 53.5, y = 46.2 },
 			{ act = "accept", target = "Raene's Cleansing (6)", id = 1028, zone = "Ashenvale", x = 53.5, y = 46.2, note = "Find the hidden shrine and re-enchant the rod." },
 			{ act = "turnin", target = "Raene's Cleansing (6)", id = 1028, zone = "Ashenvale", x = 56.4, y = 49.2, note = "Hidden Shrine (object 19024): gives Dartol's Rod of Transformation (item 5462)." },
