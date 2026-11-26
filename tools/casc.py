@@ -7,24 +7,31 @@ arquivo vem em BLTE (pedaços crus ou zlib).
 
     python casc.py --demo        # lê o WDT de Kalimdor e conta os quadrantes
 
-Formato conferido no cliente do Forever (build 1.60.1.70245): índice v7, raiz MFST v2.
+Formato conferido no cliente do Forever (builds 1.60.1.70245 e 1.60.1.71139): índice v7, raiz MFST v2.
+Cliente fora de onde o addon fica instalado: WOW_DIR="C:/World of Warcraft" python casc.py --demo
 """
 import os
 import struct
 import zlib
 
-RAIZ_WOW = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                         "..", "..", "..", "..", ".."))
-PRODUTO = "wow_classic_beta"
+# WOW_DIR: o cliente fora de onde o addon fica instalado (repo clonado em outro lugar)
+RAIZ_WOW = os.environ.get("WOW_DIR") or os.path.normpath(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "..", ".."))
+PRODUTOS = ("wowf", "wow_classic_beta")    # o Forever, com o código novo e o antigo
 ENUS = 0x2
 
 
 class Casc:
-    def __init__(self, raiz=RAIZ_WOW, produto=PRODUTO):
+    def __init__(self, raiz=RAIZ_WOW, produtos=PRODUTOS):
         self.dados = os.path.join(raiz, "Data", "data")
         info = [l.rstrip("\n").split("|") for l in open(os.path.join(raiz, ".build.info"), encoding="utf-8")]
         cab = [h.split("!")[0] for h in info[0]]
-        linha = next(dict(zip(cab, r)) for r in info[1:] if dict(zip(cab, r)).get("Product") == produto)
+        linhas = [dict(zip(cab, r)) for r in info[1:]]
+        # o Forever se houver; senão, o produto ativo que existir
+        linha = next((l for p in produtos for l in linhas if l.get("Product") == p), None) \
+            or next((l for l in linhas if l.get("Active") == "1"), None)
+        if not linha:
+            raise SystemExit("nenhum produto ativo em %s/.build.info" % raiz)
         self.versao = linha["Version"]
         bk = linha["Build Key"]
         conf = {}
