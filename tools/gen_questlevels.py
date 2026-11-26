@@ -1,5 +1,6 @@
-"""Gera QuestLevels.lua (issue #93): o nível de cada quest que os guias citam, para o Lodestar saber o que é cinza
-antes de a quest estar no diário (o jogo só dá o nível de quest já carregada).
+"""Gera QuestLevels.lua (issues #93 e #100): o nível de cada quest que os guias citam, para o Lodestar saber o que
+é cinza antes de a quest estar no diário (o jogo só dá o nível de quest já carregada), e o que a abre (nível mínimo,
+pré-requisitos), para o "Enquanto está aqui" só sugerir o que o NPC já oferece.
 
 Fonte: o banco do Forever que o import_forever.py montou (tools/build/forever/quests.json, o `questLevel` do
 QuestieDB); sem nível lá (quest de classe vem com -1), o da XP que os jogadores viram (xp.json, a tabela do QuestieDB
@@ -49,7 +50,8 @@ def main():
     import json
     build = os.path.join(HERE, "build", "forever")
     with open(os.path.join(build, "quests.json"), encoding="utf-8") as fh:
-        banco = {int(k): q.get("questLevel") or 0 for k, q in json.load(fh).items()}
+        bruto = json.load(fh)
+    banco = {int(k): q.get("questLevel") or 0 for k, q in bruto.items()}
     xp = {}
     if os.path.exists(os.path.join(build, "xp.json")):
         with open(os.path.join(build, "xp.json"), encoding="utf-8") as fh:
@@ -78,6 +80,24 @@ def main():
             row = []
     if row:
         lines.append("\t" + ",".join(row) + ",")
+    lines.append("}")
+    # issue #100: o que abre a quest — nível mínimo e pré-requisitos (preSingle: qualquer um; preGroup: todos).
+    # O "Enquanto está aqui" só sugere pegar o que o NPC já oferece.
+    lines.append("ns.questReq = {")
+    for q in sorted(want):
+        e = bruto.get(str(q)) or {}
+        r = e.get("reqLevel") or 0
+        a = [int(x) for x in (e.get("preSingle") or [])]
+        g = [int(x) for x in (e.get("preGroup") or [])]
+        if r > 1 or a or g:
+            parts = []
+            if r > 1:
+                parts.append("r=%d" % r)
+            if a:
+                parts.append("a={%s}" % ",".join(map(str, a)))
+            if g:
+                parts.append("g={%s}" % ",".join(map(str, g)))
+            lines.append("\t[%d]={%s}," % (q, ",".join(parts)))
     lines.append("}")
     with open(OUT, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
