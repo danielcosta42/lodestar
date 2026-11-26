@@ -644,6 +644,30 @@ function ns:BestGuideForPlayer()
 	return best
 end
 
+-- Guia regerado com outra faixa no título (Silverpine Forest 11-20 -> 11-18): a aba e o passo seguem para o da
+-- mesma zona cuja faixa mais se sobrepõe; no empate, o que começa mais perto da faixa velha, depois a chave (a
+-- ordem do pairs muda a cada carga: Alterac 34-40 empatava entre 34-34 e 40-53 e às vezes mandava o 36 ao 50).
+-- keys = { [chave] = qualquer }.
+function ns.RenamedGuideKey(old, keys)
+	local pre, lo, hi = old:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
+	if not pre then return nil end
+	lo, hi = tonumber(lo), tonumber(hi)
+	local best, bestOv, bestGap
+	for k in pairs(keys) do
+		local p2, l2, h2 = k:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
+		if p2 == pre and k ~= old then
+			l2, h2 = tonumber(l2), tonumber(h2)
+			local ov = math.min(hi, h2) - math.max(lo, l2)
+			local gap = math.abs(l2 - lo)
+			if ov >= 0 and (not bestOv or ov > bestOv or (ov == bestOv and (gap < bestGap
+				or (gap == bestGap and k < best)))) then
+				best, bestOv, bestGap = k, ov, gap
+			end
+		end
+	end
+	return best
+end
+
 -- O passo salvo é um número na lista de passos do guia. Guia regerado (passos em outra
 -- ordem) ou save de antes da 2.4 (contava os passos injetados) faz o número apontar
 -- para outro lugar: recua até logo depois do último passo concluído — seguir o número
@@ -668,20 +692,9 @@ ns:On("_READY", function()
 		char.openGuides[1] = char.currentGuide
 		char.steps[char.currentGuide] = char.currentStep or 1
 	end
-	-- Guia regerado com outra faixa no título (Silverpine Forest 11-20 -> 11-18): aba e
-	-- passo seguem para o da mesma zona cuja faixa mais se sobrepõe.
 	local function renomeado(old)
-		local pre, lo, hi = old:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
-		if not pre or ns.guides[old] then return nil end
-		local best, bestOv
-		for k in pairs(ns.guides) do
-			local p2, l2, h2 = k:match("^(Leveling/.+) %((%d+)%-(%d+)%)$")
-			if p2 == pre then
-				local ov = math.min(tonumber(hi), tonumber(h2)) - math.max(tonumber(lo), tonumber(l2))
-				if ov >= 0 and (not bestOv or ov > bestOv) then best, bestOv = k, ov end
-			end
-		end
-		return best
+		if ns.guides[old] then return nil end
+		return ns.RenamedGuideKey(old, ns.guides)
 	end
 	local troca = {}
 	for k in pairs(char.steps) do troca[k] = renomeado(k) end

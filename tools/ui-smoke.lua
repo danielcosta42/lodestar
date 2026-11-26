@@ -378,6 +378,18 @@ step("Settings", function()
 	assert(not ns.Hub:IsShown(), "Configurações: o atalho de novo fecha")
 end)
 -- quest cinza (issue #93): no 60, as do Westfall saem do guia; no 5, nenhuma
+-- guia renomeado (issue #97): no empate de sobreposição, a faixa que começa mais perto da velha, sempre a mesma
+step("RenamedGuide", function()
+	local keys = { ["Leveling/Alliance/Alterac Mountains (34-34)"] = 1, ["Leveling/Alliance/Alterac Mountains (40-53)"] = 1,
+		["Leveling/Alliance/Wetlands (30-33)"] = 1 }
+	for _ = 1, 5 do
+		assert(ns.RenamedGuideKey("Leveling/Alliance/Alterac Mountains (34-40)", keys)
+			== "Leveling/Alliance/Alterac Mountains (34-34)", "renomeado: escolheu a faixa errada")
+	end
+	assert(ns.RenamedGuideKey("Leveling/Alliance/Silverpine Forest (11-20)",
+		{ ["Leveling/Alliance/Silverpine Forest (11-18)"] = 1 }) == "Leveling/Alliance/Silverpine Forest (11-18)")
+	assert(ns.RenamedGuideKey("Leveling/Alliance/Duskwood (20-25)", keys) == nil, "renomeado: outra zona")
+end)
 step("Grey", function()
 	local lvl = _G.UnitLevel
 	_G.UnitQuestTrivialLevelRange = function() return 3 end
