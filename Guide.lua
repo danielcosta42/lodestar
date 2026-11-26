@@ -736,10 +736,16 @@ ns:On("_READY", function()
 	if not (key and ns.guides[key]) then key = char.openGuides[1] end
 	if key and ns.guides[key] then
 		-- aba de leveling que o nível já passou (logou no 11 com Tirisfal 5-10 ativo,
-		-- e a primeira coisa sugerida era uma quest cinza de Deathknell): abre o guia
-		-- recomendado; a antiga fica na aba. Aba que o jogador escolheu à mão fica.
-		local hi = key ~= char.manualPick and key:sub(1, 9) == "Leveling/" and tonumber(key:match("%-%s*(%d+)%)$"))
-		local best = hi and (UnitLevel("player") or 0) > hi and ns:BestGuideForPlayer()
+		-- e a primeira coisa sugerida era uma quest cinza de Deathknell) ou que ficou longe
+		-- demais adiante (guia regerado: Loch Modan 20-38 virou 37-39, e o 25 ficava nele):
+		-- abre o guia recomendado; a antiga fica na aba. Aba que o jogador escolheu à mão fica.
+		local lo, hi
+		if key ~= char.manualPick and key:sub(1, 9) == "Leveling/" then
+			lo, hi = key:match("%((%d+)%s*%-%s*(%d+)%)$")
+			lo, hi = tonumber(lo), tonumber(hi)
+		end
+		local lvl = UnitLevel("player") or 0
+		local best = hi and (lvl > hi or lvl < lo - 3) and ns:BestGuideForPlayer()
 		ns:LoadGuide(best and best ~= key and best or key, true)   -- mantém o step salvo
 		return
 	end
