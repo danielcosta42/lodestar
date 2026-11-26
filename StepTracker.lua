@@ -44,13 +44,25 @@ end
 -- de uma quest que o guia pega mais à frente, ou entregando uma pronta antes da hora, a automação age igual. A
 -- entrega olha também para trás (a que ficou sem entregar). Fica de fora o que não vale para o personagem: passo
 -- de outra classe/raça, quest pulada, descartada ou cinza (IsStepActive, IsGoalActive). id -> goal.
+local ACEITE_ADIANTE = 40           -- passos (os mesmos do "Enquanto está aqui")
+local function logFull()
+	local QL = C_QuestLog
+	if not (QL and QL.GetNumQuestLogEntries and QL.GetMaxNumQuestsCanAccept) then return false end
+	local _, numQuests = QL.GetNumQuestLogEntries()
+	local max = QL.GetMaxNumQuestsCanAccept()
+	return numQuests and max and numQuests >= max or false
+end
 local function guideQuestGoals(verb)
 	local out = {}
 	local g = ns.currentGuide
 	if not g then return out end
 	local cur = ns.char.currentStep or 1
+	-- aceite: só os próximos passos (escolta começa no aceite; a do fim do guia não pode começar agora) e nunca
+	-- com o diário cheio; entrega: o guia inteiro
+	if verb == "accept" and logFull() then return out end
 	local first = verb == "turnin" and 1 or cur
-	for i = first, #g.steps do
+	local last = verb == "accept" and math.min(#g.steps, cur + ACEITE_ADIANTE) or #g.steps
+	for i = first, last do
 		local st = g.steps[i]
 		if ns:IsStepActive(st) then
 			for _, goal in ipairs(st.goals) do

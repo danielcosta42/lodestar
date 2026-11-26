@@ -84,11 +84,25 @@ def main():
     # issue #100: o que abre a quest — nível mínimo e pré-requisitos (preSingle: qualquer um; preGroup: todos).
     # O "Enquanto está aqui" só sugere pegar o que o NPC já oferece.
     lines.append("ns.questReq = {")
+
+    def alternativas(ids):
+        """o pré-requisito vale também pela quest que o banco marca como exclusiva dele (exclusiveTo): fez uma, não
+        pode a outra, e o Questie conta qualquer uma das duas. Id negativo (\"não ter feito\") fica de fora."""
+        out = []
+        for x in ids:
+            x = int(x)
+            if x <= 0:
+                continue
+            for y in [x] + [int(z) for z in ((bruto.get(str(x)) or {}).get("exclusiveTo") or [])]:
+                if y > 0 and y not in out:
+                    out.append(y)
+        return out
+
     for q in sorted(want):
         e = bruto.get(str(q)) or {}
         r = e.get("reqLevel") or 0
-        a = [int(x) for x in (e.get("preSingle") or [])]
-        g = [int(x) for x in (e.get("preGroup") or [])]
+        a = alternativas(e.get("preSingle") or [])
+        g = [int(x) for x in (e.get("preGroup") or []) if int(x) > 0]
         if r > 1 or a or g:
             parts = []
             if r > 1:

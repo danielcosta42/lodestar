@@ -100,7 +100,7 @@ function N:Candidates()
 		if ns:IsStepActive(steps[i]) then
 			for _, goal in ipairs(steps[i].goals) do
 				local gt = goal.goto_
-				if gt and gt.zone and gt.x and ns:IsGoalActive(goal) then
+				if gt and gt.zone and gt.x and open(goal) then           -- o feito o guia pula: não volta lá
 					local w = world(gt)
 					if w then points[#points + 1] = { step = i, x = w.x, y = w.y, c = w.c } end
 				end
