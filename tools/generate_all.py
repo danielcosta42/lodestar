@@ -474,6 +474,7 @@ def gen_faction(router, faction, level_max, min_quests):
         (grind)."""
         pos = {c: 0 for c in trilha}
         out, cont, nivel = [], None, 10.0
+        nivel_ramo = {c: 10.0 for c in trilha}    # o jogador do ramo de cada continente (`ramos`)
         # o jogador simulado é o da maioria das zonas iniciais (a Aliança nasce três vezes nos Reinos
         # do Leste): o guia baixo do outro continente (lo < RAMO_LO) entra na ordem, mas não dá XP —
         # ele é do ramo da outra raça (`ramos`)
@@ -500,10 +501,16 @@ def gen_faction(router, faction, level_max, min_quests):
             else:
                 melhor = min(vivos, key=lambda c: (not cabe(c), cab[c]["lo"], cab[c]["med"]))
             f = cab[melhor]
-            f["nivel_entra"] = max(nivel, f["lo"] - 1)
             if melhor == principal or f["lo"] >= RAMO_LO:
+                f["nivel_entra"] = max(nivel, f["lo"] - 1)
                 nivel = simula(nivel, f)
-            f["nivel_sai"] = simula(f["nivel_entra"], f)
+                f["nivel_sai"] = nivel
+            else:
+                # guia baixo do outro continente: é do ramo da outra raça, que entra nele com o nível
+                # dela (o elfo noturno chega a Darkshore 13-20 no ~12, não no 20 do humano: com o
+                # nível do humano, The Fall of Ameth'Aran e Tools of the Highborne, de 12, saíam cinza)
+                f["nivel_entra"] = max(nivel_ramo[melhor], f["lo"] - 1)
+                nivel_ramo[melhor] = f["nivel_sai"] = simula(nivel_ramo[melhor], f)
             out.append(f)
             pos[melhor] += 1
             cont = melhor

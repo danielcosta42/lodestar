@@ -234,7 +234,9 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   entra no guia dela vai para o guia anterior da mesma zona em que não é (com os pré-requisitos já
   lá e nada que dependa dela antes); sem ele, sai, se nada depende dela. As de 19-23 do Loch Modan
   20-38, feito no 40, foram para o Loch Modan 12-18; as de 40 do Alterac 40-53, feito no 52, saíram
-  (sobra o Alterac 45-53).
+  (sobra o Alterac 45-53). O guia baixo (`lo` < 20) do outro continente entra e sai com o nível do
+  jogador do ramo dele, simulado à parte desde o 10: com o do humano, Darkshore 13-20 "entrava" no 20
+  e perdia The Fall of Ameth'Aran e Tools of the Highborne, de 12, que o elfo noturno faz no 12.
 - **O teto do guia é também o nível simulado de saída + 3** (`TETO_FOLGA`): quest que pede mais vai
   ao guia seguinte da trilha. As de montaria do tauren (40) saíram de Mulgore 29-30 para Desolace
   33-40.

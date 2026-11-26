@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Darkshore (13-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/The Barrens (14-20)",
-	rev = "06da413e",
+	rev = "48d118e3",
 }, [[
 step
   ding 12
@@ -17,11 +17,19 @@ step
   note {fp}Caylais Moonfeather
   goto Darkshore 36.34,45.58 |tip {vendor}
 step
+  only Warrior completed(1683,1678,1639)
+  note Bring 8 loads of Elunite Ore and the Medallion of Elura to Elanaria in Darnassus.
+  collect Elunite Ore##6808 |q 1686/1 |goto Darkshore 32.21,44.42 |tip {dropsfrom}Crate of Elunite
+  collect Elura's Medallion##6809 |q 1686 |goto Darkshore 31.64,44.86 |tip {dropsfrom}Shade of Elura
+step
   talk Wizbang Cranktoggle##3666
   accept Buzzbox 827##983 |goto Darkshore 36.97,44.13
 step
   talk Thundris Windweaver##3649
   accept Bashal'Aran##954 |goto Darkshore 37.4,40.13
+step
+  talk Thundris Windweaver##3649
+  accept Tools of the Highborne##958 |goto Darkshore 37.4,40.13
 step
   only NightElf completed(6342)
   talk Laird##4200
@@ -54,76 +62,10 @@ step
   note Collect 3 Thresher Eyes from Darkshore Threshers in the deep sea near Buzzbox 411.
   collect 3 Thresher Eye##5412 |q 1001 |goto Darkshore 33.77,38.38 |tip {dropsfrom}Darkshore Thresher, Elder Darkshore Thresher
 step
-  only Warrior completed(1683,1678,1639)
-  note Bring 8 loads of Elunite Ore and the Medallion of Elura to Elanaria in Darnassus.
-  collect Elunite Ore##6808 |q 1686/1 |goto Darkshore 32.21,44.42 |tip {dropsfrom}Crate of Elunite
-  collect Elura's Medallion##6809 |q 1686 |goto Darkshore 31.64,44.86 |tip {dropsfrom}Shade of Elura
-step
-  note Recover Sea Creature Bones from the beached sea creature just south of Auberdine, and then return with it to Gwennyth Bly'Leggonde in Auberdine.
-  collect Sea Creature Bones##12242 |q 3524 |goto Darkshore 36.37,50.92 |tip {dropsfrom}Beached Sea Creature
-step
-  note Capture a living Rabid Thistle Bear and bring it back to Tharnariun.
-  use Rabid Thistle Bear##2164 |q 2118 |goto Darkshore 40.09,58.31 |tip {useit}
-step
-  note Find and slay the owl known as Jai'vhanel and take one of her feathers. The black owl was last seen north of the Ameth'Aran ruins near the mountain base. Report the death of Jai'vhanel to Sentinel Glynda Nal'Shea in Auberdine.
-  collect Feather of Jai'vhanel##281038 |q 98025 |goto Darkshore 44.64,58.61 |tip {dropsfrom}Jai'vhanel
-step
-  only haveq(4811)
-  note Travel east of Auberdine and look for a large, red crystal along Darkshore's eastern mountain range. Report back what you find to Sentinel Glynda Nal'Shea in Auberdine.
-  click Mysterious Red Crystal##175524 |q 4811 |goto Darkshore 47.32,48.68
-step
-  talk Tharnariun Treetender##3701
-  turnin Plagued Lands##2118 |goto Darkshore 38.84,43.42
-step
-  talk Gwennyth Bly'Leggonde##10219
-  turnin Washed Ashore##3524 |goto Darkshore 36.62,45.59
-step
-  only haveq(4811)
-  talk Sentinel Glynda Nal'Shea##2930
-  turnin The Red Crystal##4811 |goto Darkshore 37.7,43.41
-step
-  talk Sentinel Glynda Nal'Shea##2930
-  turnin WANTED: Jai'vhanel##98025 |goto Darkshore 37.7,43.41
-step
-  talk Gwennyth Bly'Leggonde##10219
-  accept Washed Ashore##4681 |goto Darkshore 36.62,45.59
-step
-  only completed(4811)
-  talk Sentinel Glynda Nal'Shea##2930
-  accept As Water Cascades##4812 |goto Darkshore 37.7,43.41
-step
-  only haveq(4812)
-  note Fill the Empty Water Tube at the Auberdine moonwell, and then investigate the red crystal along Darkshore's eastern mountain wall.
-  collect Moonwell Water Tube##14339 |q 4812 |goto Darkshore 37.78,44.03 |tip {dropsfrom}Auberdine Moonwell
-step
-  note Recover the Sea Turtle Remains from the Skeletal Sea Turtle in the waters west of Auberdine, and then speak with Gwennyth Bly'Leggonde back in Auberdine.
-  collect Sea Turtle Remains##12289 |q 4681 |goto Darkshore 31.82,46.31 |tip {dropsfrom}Skeletal Sea Turtle
-step
-  only haveq(4812)
-  turnin As Water Cascades##4812 |goto Darkshore 47.32,48.68
-step
-  only completed(4812)
-  click Mysterious Red Crystal##175524
-  accept The Fragments Within##4813 |goto Darkshore 47.32,48.68
-step
-  talk Gwennyth Bly'Leggonde##10219
-  turnin Washed Ashore##4681 |goto Darkshore 36.62,45.59
-step
-  only haveq(4813)
-  note Report back what you have found to Sentinel Glynda Nal'Shea in Auberdine.
-  talk Sentinel Glynda Nal'Shea##2930
-  turnin The Fragments Within##4813 |goto Darkshore 37.7,43.41
-step
   turnin Buzzbox 411##1001 |goto Darkshore 41.96,28.62
-step
-  click Beached Sea Creature##175233
-  accept Beached Sea Creature##4723 |goto Darkshore 41.93,31.53
 step
   click Buzzbox 411##17183
   accept Buzzbox 323##1002 |goto Darkshore 41.96,28.62
-step
-  click Beached Sea Turtle##176197
-  accept Beached Sea Turtle##4725 |goto Darkshore 44.19,20.6
 step
   note Find the source of the strange blue aura in the ruins of Bashal'Aran.
   talk Asterion##3650
@@ -150,13 +92,94 @@ step
   talk Asterion##3650
   accept Bashal'Aran##957 |goto Darkshore 44.17,36.29
 step
-  note Take the Sea Creature Bones to Gwennyth Bly'Leggonde in Auberdine.
-  talk Gwennyth Bly'Leggonde##10219
-  turnin Beached Sea Creature##4723 |goto Darkshore 36.62,45.59
+  only haveq(4811)
+  note Travel east of Auberdine and look for a large, red crystal along Darkshore's eastern mountain range. Report back what you find to Sentinel Glynda Nal'Shea in Auberdine.
+  click Mysterious Red Crystal##175524 |q 4811 |goto Darkshore 47.32,48.68
 step
-  note Take the Strangely Marked Box to Gwennyth Bly'Leggonde in Auberdine.
+  note Recover Sea Creature Bones from the beached sea creature just south of Auberdine, and then return with it to Gwennyth Bly'Leggonde in Auberdine.
+  collect Sea Creature Bones##12242 |q 3524 |goto Darkshore 36.37,50.92 |tip {dropsfrom}Beached Sea Creature
+step
   talk Gwennyth Bly'Leggonde##10219
-  turnin Beached Sea Turtle##4725 |goto Darkshore 36.62,45.59
+  turnin Washed Ashore##3524 |goto Darkshore 36.62,45.59
+step
+  only haveq(4811)
+  talk Sentinel Glynda Nal'Shea##2930
+  turnin The Red Crystal##4811 |goto Darkshore 37.7,43.41
+step
+  talk Gwennyth Bly'Leggonde##10219
+  accept Washed Ashore##4681 |goto Darkshore 36.62,45.59
+step
+  only completed(4811)
+  talk Sentinel Glynda Nal'Shea##2930
+  accept As Water Cascades##4812 |goto Darkshore 37.7,43.41
+step
+  only haveq(4812)
+  note Fill the Empty Water Tube at the Auberdine moonwell, and then investigate the red crystal along Darkshore's eastern mountain wall.
+  collect Moonwell Water Tube##14339 |q 4812 |goto Darkshore 37.78,44.03 |tip {dropsfrom}Auberdine Moonwell
+step
+  note Recover the Sea Turtle Remains from the Skeletal Sea Turtle in the waters west of Auberdine, and then speak with Gwennyth Bly'Leggonde back in Auberdine.
+  collect Sea Turtle Remains##12289 |q 4681 |goto Darkshore 31.82,46.31 |tip {dropsfrom}Skeletal Sea Turtle
+step
+  only haveq(4812)
+  turnin As Water Cascades##4812 |goto Darkshore 47.32,48.68
+step
+  only completed(4812)
+  click Mysterious Red Crystal##175524
+  accept The Fragments Within##4813 |goto Darkshore 47.32,48.68
+step
+  talk Sentinel Tysha Moonblade##3639
+  accept The Fall of Ameth'Aran##953 |goto Darkshore 40.3,59.73
+step
+  note Study the tablets which tell of Ameth'Aran and of its fall, then return to Sentinel Tysha Moonblade in Darkshore.
+  click The Lay of Ameth'Aran##17188 |q 953/1 |goto Darkshore 43.3,58.68
+  click The Fall of Ameth'Aran##17189 |q 953 |goto Darkshore 42.65,63.14
+step
+  note Destroy the Ancient Moonstone Seal at the ancient flame in Ameth'Aran, then return to Asterion in Bashal'Aran.
+  click Ancient Flame##16393 |q 957 |goto Darkshore 42.37,61.82
+step
+  note Retrieve 7 Highborne Relics for Thundris Windweaver in Auberdine.
+  collect 7 Highborne Relic##5360 |q 958 |goto Darkshore 42.05,58.42 |tip {dropsfrom}Cursed Highborne, Writhing Highborne, Wailing Highborne
+step
+  note Capture a living Rabid Thistle Bear and bring it back to Tharnariun.
+  use Rabid Thistle Bear##2164 |q 2118 |goto Darkshore 40.09,58.31 |tip {useit}
+step
+  note Find and slay the owl known as Jai'vhanel and take one of her feathers. The black owl was last seen north of the Ameth'Aran ruins near the mountain base. Report the death of Jai'vhanel to Sentinel Glynda Nal'Shea in Auberdine.
+  collect Feather of Jai'vhanel##281038 |q 98025 |goto Darkshore 44.64,58.61 |tip {dropsfrom}Jai'vhanel
+step
+  talk Sentinel Tysha Moonblade##3639
+  turnin The Fall of Ameth'Aran##953 |goto Darkshore 40.3,59.73
+step
+  note Collect 6 Moonstalker Fangs and place them in Buzzbox 323.
+  collect 6 Moonstalker Fang##5413 |q 1002 |goto Darkshore 43.81,65.65 |tip {dropsfrom}Moonstalker, Moonstalker Runt, Moonstalker Sire
+step
+  note Find a corrupt furbolg camp in Darkshore and return to Terenthis in Auberdine.
+  goto Darkshore 39.95,78.41 |tip Find a corrupt furbolg camp
+step
+  talk Thundris Windweaver##3649
+  turnin Tools of the Highborne##958 |goto Darkshore 37.4,40.13
+step
+  talk Terenthis##3693
+  turnin How Big a Threat?##984 |goto Darkshore 39.37,43.48
+step
+  talk Tharnariun Treetender##3701
+  turnin Plagued Lands##2118 |goto Darkshore 38.84,43.42
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Washed Ashore##4681 |goto Darkshore 36.62,45.59
+step
+  only haveq(4813)
+  note Report back what you have found to Sentinel Glynda Nal'Shea in Auberdine.
+  talk Sentinel Glynda Nal'Shea##2930
+  turnin The Fragments Within##4813 |goto Darkshore 37.7,43.41
+step
+  talk Sentinel Glynda Nal'Shea##2930
+  turnin WANTED: Jai'vhanel##98025 |goto Darkshore 37.7,43.41
+step
+  talk Terenthis##3693
+  accept How Big a Threat?##985 |goto Darkshore 39.37,43.48
+step
+  talk Terenthis##3693
+  accept Thundris Windweaver##4761 |goto Darkshore 39.37,43.48
 step
   talk Cerellean Whiteclaw##3644
   accept For Love Eternal##963 |goto Darkshore 35.74,43.71
@@ -168,34 +191,22 @@ step
   talk Alanndarian Nightsong##3702
   accept Gathering the Cure##6123 |goto Darkshore 37.69,40.66
 step
-  click Beached Sea Creature##175226
-  accept Beached Sea Creature##4728 |goto Darkshore 36.01,70.88
+  note Speak with Thundris Windweaver in Auberdine.
+  talk Thundris Windweaver##3649
+  turnin Thundris Windweaver##4761 |goto Darkshore 37.4,40.13
 step
-  note Find a corrupt furbolg camp in Darkshore and return to Terenthis in Auberdine.
-  goto Darkshore 39.95,78.41 |tip Find a corrupt furbolg camp
+  talk Thundris Windweaver##3649
+  accept The Cliffspring River##4762 |goto Darkshore 37.4,40.13
 step
-  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6123)
-  note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
-  collect 5 Earthroot##2449 |q 6123/1 |goto Darkshore 42.59,71.93
-  collect 12 Lunar Fungus##15851 |q 6123 |goto Darkshore 43.8,50.23 |tip {dropsfrom}Lunar Fungal Bloom
-step
-  talk Sentinel Aynasha##11711
-  accept One Shot.  One Kill.##5713 |goto Darkshore 45.94,90.29
-step
-  note Protect Sentinel Aynasha, then speak with Onaeya at Maestra's Post in Ashenvale.
-  goto Darkshore 45.87,90.42 |tip Protect Aynasha
+  note Kill 8 Blackwood Pathfinders and 5 Windtalkers and return to Terenthis in Auberdine.
+  kill Blackwood Pathfinder##2167 |q 985/1 |goto Darkshore 39.84,53.94
+  kill Blackwood Windtalker##2324 |q 985 |goto Darkshore 39.92,54.37
 step
   click Beached Sea Turtle##176190
   accept Beached Sea Turtle##4722 |goto Darkshore 37.09,62.18
 step
-  note Destroy the Ancient Moonstone Seal at the ancient flame in Ameth'Aran, then return to Asterion in Bashal'Aran.
-  click Ancient Flame##16393 |q 957 |goto Darkshore 42.37,61.82
-step
   note Free the spirit of Anaya Dawnrunner and bring her pendant back to Cerellean Whiteclaw in Auberdine.
   collect Anaya's Pendant##5382 |q 963 |goto Darkshore 41.81,60.73 |tip {dropsfrom}Anaya Dawnrunner
-step
-  note Collect 6 Moonstalker Fangs and place them in Buzzbox 323.
-  collect 6 Moonstalker Fang##5413 |q 1002 |goto Darkshore 43.81,65.65 |tip {dropsfrom}Moonstalker, Moonstalker Runt, Moonstalker Sire
 step
   note Cleanse the forest of 20 Rabid Thistle Bears and return to Tharnariun Treetender in Darkshore.
   kill Rabid Thistle Bear##2164 |q 2138 |goto Darkshore 40.09,58.31
@@ -204,7 +215,7 @@ step
   turnin For Love Eternal##963 |goto Darkshore 35.74,43.71
 step
   talk Terenthis##3693
-  turnin How Big a Threat?##984 |goto Darkshore 39.37,43.48
+  turnin How Big a Threat?##985 |goto Darkshore 39.37,43.48
 step
   talk Tharnariun Treetender##3701
   turnin Cleansing of the Infected##2138 |goto Darkshore 38.84,43.42
@@ -212,24 +223,6 @@ step
   note Take the Sea Turtle Remains to Gwennyth Bly'Leggonde in Auberdine.
   talk Gwennyth Bly'Leggonde##10219
   turnin Beached Sea Turtle##4722 |goto Darkshore 36.62,45.59
-step
-  note Take the Sea Creature Bones to Gwennyth Bly'Leggonde in Auberdine.
-  talk Gwennyth Bly'Leggonde##10219
-  turnin Beached Sea Creature##4728 |goto Darkshore 36.62,45.59
-step
-  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6123)
-  talk Alanndarian Nightsong##3702
-  turnin Gathering the Cure##6123 |goto Darkshore 37.69,40.66
-step
-  talk Terenthis##3693
-  accept How Big a Threat?##985 |goto Darkshore 39.37,43.48
-step
-  talk Terenthis##3693
-  accept Thundris Windweaver##4761 |goto Darkshore 39.37,43.48
-step
-  only not Human not Dwarf not Gnome Druid completed(6122) completed(6123) level>=14
-  talk Alanndarian Nightsong##3702
-  accept Curing the Sick##6124 |goto Darkshore 37.69,40.66
 step
   talk Barithras Moonshade##3583
   accept Cave Mushrooms##947 |goto Darkshore 37.32,43.64
@@ -243,13 +236,6 @@ step
 step
   talk Thundris Windweaver##3649
   accept Expanding Horizons##97914 |goto Darkshore 37.4,40.13
-step
-  note Speak with Thundris Windweaver in Auberdine.
-  talk Thundris Windweaver##3649
-  turnin Thundris Windweaver##4761 |goto Darkshore 37.4,40.13
-step
-  talk Thundris Windweaver##3649
-  accept The Cliffspring River##4762 |goto Darkshore 37.4,40.13
 step
   talk Asterion##3650
   turnin Bashal'Aran##957 |goto Darkshore 44.17,36.29
@@ -269,13 +255,19 @@ step
   click Beached Sea Turtle##176196
   accept Beached Sea Turtle##4727 |goto Darkshore 53.11,18.08
 step
+  click Beached Sea Turtle##176197
+  accept Beached Sea Turtle##4725 |goto Darkshore 44.19,20.6
+step
   only haveq(1138)
   note Collect 6 Fine Crab Chunks for Gubber Blump in Auberdine.
   collect 6 Fine Crab Chunks##12237 |q 1138 |goto Darkshore 46.52,21.04 |tip {dropsfrom}Reef Crawler, Encrusted Tide Crawler
 step
+  click Beached Sea Creature##175233
+  accept Beached Sea Creature##4723 |goto Darkshore 41.93,31.53
+step
   note Recover the Silver Dawning's Lockbox and the Mist Veil's Lockbox for Gorbold Steelhand in Auberdine. Both items should be found aboard the wreckage of the ships to the north of the village.
-  collect Mist Veil's Lockbox##12192 |q 982/2 |goto Darkshore 39.63,27.46
-  collect Silver Dawning's Lockbox##12191 |q 982 |goto Darkshore 38.24,28.8
+  collect Silver Dawning's Lockbox##12191 |q 982/1 |goto Darkshore 38.24,28.8
+  collect Mist Veil's Lockbox##12192 |q 982 |goto Darkshore 39.63,27.46
 step
   talk Barithras Moonshade##3583
   turnin Cave Mushrooms##947 |goto Darkshore 37.32,43.64
@@ -286,6 +278,14 @@ step
   only haveq(1138)
   talk Gubber Blump##10216
   turnin Fruit of the Sea##1138 |goto Darkshore 36.1,44.93
+step
+  note Take the Sea Creature Bones to Gwennyth Bly'Leggonde in Auberdine.
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Creature##4723 |goto Darkshore 36.62,45.59
+step
+  note Take the Strangely Marked Box to Gwennyth Bly'Leggonde in Auberdine.
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Turtle##4725 |goto Darkshore 36.62,45.59
 step
   note Take the Sea Turtle Remains to Gwennyth Bly'Leggonde in Auberdine.
   talk Gwennyth Bly'Leggonde##10219
@@ -310,17 +310,6 @@ step
   only level>=15
   talk Thundris Windweaver##3649
   accept The Blackwood Corrupted##4763 |goto Darkshore 37.4,40.13
-step
-  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6124)
-  note Use the Curative Animal Salve on 10 Sickly Deer that are located throughout Darkshore; doing so should cure them. Sickly Deer have been reported starting south of the Cliffspring River to the north of Auberdine and extending all the way into southern Darkshore where the edge of Ashenvale begins.
-  use Sickly Deer##12298 |q 6124 |goto Darkshore 43.81,48.22 |tip {useit}
-step
-  note Kill 8 Blackwood Pathfinders and 5 Windtalkers and return to Terenthis in Auberdine.
-  kill Blackwood Pathfinder##2167 |q 985/1 |goto Darkshore 39.84,53.94
-  kill Blackwood Windtalker##2324 |q 985 |goto Darkshore 39.92,54.37
-step
-  talk Terenthis##3693
-  turnin How Big a Threat?##985 |goto Darkshore 39.37,43.48
 step
   note Find and kill the Den Mother.
   kill Den Mother##6788 |q 2139 |goto Darkshore 51.48,38.26
@@ -351,6 +340,14 @@ step
 step
   talk Onu##3616
   accept The Master's Glaive##944 |goto Darkshore 43.55,76.29
+step
+  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6123)
+  note Bring 5 Earthroot and 12 Lunar Funguses to Alanndarian Nightsong in Auberdine so she may make a curative salve.
+  collect 5 Earthroot##2449 |q 6123/1 |goto Darkshore 42.59,71.93
+  collect 12 Lunar Fungus##15851 |q 6123 |goto Darkshore 43.8,50.23 |tip {dropsfrom}Lunar Fungal Bloom
+step
+  click Beached Sea Creature##175226
+  accept Beached Sea Creature##4728 |goto Darkshore 36.01,70.88
 step
   only haveq(4740)
   note Find and slay the murloc known as Murkdeep. The creature is thought to be defending the murloc huts south of Auberdine along the water.
@@ -386,6 +383,12 @@ step
   use Book: The Powers Below##5352 |tip It starts the quest.
   accept The Powers Below##968
 step
+  talk Sentinel Aynasha##11711
+  accept One Shot.  One Kill.##5713 |goto Darkshore 45.94,90.29
+step
+  note Protect Sentinel Aynasha, then speak with Onaeya at Maestra's Post in Ashenvale.
+  goto Darkshore 45.87,90.42 |tip Protect Aynasha
+step
   talk Therylune##3584
   accept Therylune's Escape##945 |goto Darkshore 38.64,87.33
 step
@@ -412,6 +415,10 @@ step
 step
   note Take the Sea Creature Bones to Gwennyth Bly'Leggonde in Auberdine.
   talk Gwennyth Bly'Leggonde##10219
+  turnin Beached Sea Creature##4728 |goto Darkshore 36.62,45.59
+step
+  note Take the Sea Creature Bones to Gwennyth Bly'Leggonde in Auberdine.
+  talk Gwennyth Bly'Leggonde##10219
   turnin Beached Sea Creature##4730 |goto Darkshore 36.62,45.59
 step
   note Take the Strangely Marked Box to Gwennyth Bly'Leggonde in Auberdine.
@@ -434,14 +441,35 @@ step
   talk Thundris Windweaver##3649
   turnin The Blackwood Corrupted##4763 |goto Darkshore 37.4,40.13
 step
+  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6123)
+  talk Alanndarian Nightsong##3702
+  turnin Gathering the Cure##6123 |goto Darkshore 37.69,40.66
+step
   talk Thundris Windweaver##3649
   turnin It's All Fun and Games Until...##98042 |goto Darkshore 37.4,40.13
+step
+  only not Human not Dwarf not Gnome Druid completed(6122) completed(6123)
+  talk Alanndarian Nightsong##3702
+  accept Curing the Sick##6124 |goto Darkshore 37.69,40.66
 step
   talk Terenthis##3693
   accept A Lost Master##986 |goto Darkshore 39.37,43.48
 step
   talk Gwennyth Bly'Leggonde##10219
   accept Holy Diver##87760 |goto Darkshore 36.62,45.59
+step
+  note Find a Stormscale Beastmistress, slay her, and bring back her Rod of Deep Dominion.
+  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.16,13.38 |tip {dropsfrom}Stormscale Beastmistress
+step
+  talk Gelkak Gyromast##6667
+  accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
+step
+  talk Gwennyth Bly'Leggonde##10219
+  turnin Holy Diver##87760 |goto Darkshore 36.62,45.59
+step
+  only not Human not Dwarf not Gnome Druid completed(6122) haveq(6124)
+  note Use the Curative Animal Salve on 10 Sickly Deer that are located throughout Darkshore; doing so should cure them. Sickly Deer have been reported starting south of the Cliffspring River to the north of Auberdine and extending all the way into southern Darkshore where the edge of Ashenvale begins.
+  use Sickly Deer##12298 |q 6124 |goto Darkshore 43.81,48.22 |tip {useit}
 step
   talk Onu##3616
   accept Mathystra Relics##951 |goto Darkshore 43.55,76.29
@@ -460,21 +488,10 @@ step
   note Find 5 Fine Moonstalker Pelts and return them to Terenthis in Auberdine.
   collect 5 Fine Moonstalker Pelt##5386 |q 986 |goto Darkshore 43.03,90.77 |tip {dropsfrom}Moonstalker Matriarch, Moonstalker Sire
 step
-  talk Terenthis##3693
-  turnin A Lost Master##986 |goto Darkshore 39.37,43.48
-step
-  talk Terenthis##3693
-  accept A Lost Master##993 |goto Darkshore 39.37,43.48
-step
-  note Find a Stormscale Beastmistress, slay her, and bring back her Rod of Deep Dominion.
-  collect Rod of Deep Dominion##280686 |q 87760 |goto Darkshore 49.16,13.38 |tip {dropsfrom}Stormscale Beastmistress
-step
-  talk Gelkak Gyromast##6667
-  accept Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
-step
-  only level>=21
-  kill Baron Marinous##270294 |goto Darkshore 59.11,22.77 |elite |tip Loot the quest item here — it starts the quest.
-  accept Baron Marinous##98028 |goto Darkshore 59.11,22.77
+  note Find and return the three pieces of Gelkak's Key to Gelkak Gyromast.
+  collect Top of Gelkak's Key##7498 |q 2098/1 |goto Darkshore 38.85,90.08 |tip {dropsfrom}Giant Foreststrider
+  collect Middle of Gelkak's Key##7499 |q 2098/2 |goto Darkshore 36.12,50.61 |tip {dropsfrom}Greymist Raider, Greymist Coastrunner, Greymist Seer
+  collect Bottom of Gelkak's Key##7500 |q 2098 |goto Darkshore 51.73,22.54 |tip {dropsfrom}Encrusted Tide Crawler, Raging Reef Crawler
 step
   note Bring 6 Mathystra Relics to Onu at the Grove of the Ancients.
   collect 6 Mathystra Relic##5273 |q 951 |goto Darkshore 59.95,24.02
@@ -483,29 +500,6 @@ step
   kill Stormscale Sorceress##2182 |q 98013/2 |goto Darkshore 59.89,22.51
   kill Stormscale Myrmidon##2181 |q 98013/1 |goto Darkshore 58.45,21.35
   kill Stormscale Warrior##2183 |q 98013 |goto Darkshore 61.25,19.78
-step
-  talk Onu##3616
-  turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
-step
-  talk Arbal##270269
-  turnin Swelling Forces##98013 |goto Darkshore 43.75,76.5
-step
-  only haveq(98028)
-  note Bring the Clouded Water Globe to Onu at the Grove of the Ancients in Darkshore.
-  talk Onu##3616
-  turnin Baron Marinous##98028 |goto Darkshore 43.55,76.29
-step
-  note Find Volcor in Darkshore and give him the Enchanted Moonstalker Cloak.
-  talk Volcor##3692
-  turnin A Lost Master##993 |goto Darkshore 45.01,85.3
-step
-  note Find and return the three pieces of Gelkak's Key to Gelkak Gyromast.
-  collect Top of Gelkak's Key##7498 |q 2098/1 |goto Darkshore 38.85,90.08 |tip {dropsfrom}Giant Foreststrider
-  collect Middle of Gelkak's Key##7499 |q 2098/2 |goto Darkshore 36.12,50.61 |tip {dropsfrom}Greymist Raider, Greymist Coastrunner, Greymist Seer
-  collect Bottom of Gelkak's Key##7500 |q 2098 |goto Darkshore 51.73,22.54 |tip {dropsfrom}Encrusted Tide Crawler, Raging Reef Crawler
-step
-  talk Gwennyth Bly'Leggonde##10219
-  turnin Holy Diver##87760 |goto Darkshore 36.62,45.59
 step
   talk Gelkak Gyromast##6667
   turnin Gyromast's Retrieval##2098 |goto Darkshore 56.66,13.48
@@ -518,6 +512,31 @@ step
 step
   talk Gelkak Gyromast##6667
   turnin Gyromast's Revenge##2078 |goto Darkshore 56.66,13.48
+step
+  talk Terenthis##3693
+  turnin A Lost Master##986 |goto Darkshore 39.37,43.48
+step
+  talk Terenthis##3693
+  accept A Lost Master##993 |goto Darkshore 39.37,43.48
+step
+  talk Onu##3616
+  turnin Mathystra Relics##951 |goto Darkshore 43.55,76.29
+step
+  talk Arbal##270269
+  turnin Swelling Forces##98013 |goto Darkshore 43.75,76.5
+step
+  note Find Volcor in Darkshore and give him the Enchanted Moonstalker Cloak.
+  talk Volcor##3692
+  turnin A Lost Master##993 |goto Darkshore 45.01,85.3
+step
+  only level>=21
+  kill Baron Marinous##270294 |goto Darkshore 59.11,22.77 |elite |tip Loot the quest item here — it starts the quest.
+  accept Baron Marinous##98028 |goto Darkshore 59.11,22.77
+step
+  only haveq(98028)
+  note Bring the Clouded Water Globe to Onu at the Grove of the Ancients in Darkshore.
+  talk Onu##3616
+  turnin Baron Marinous##98028 |goto Darkshore 43.55,76.29
 step
   only not completed(995) not haveq(995)
   talk Volcor##3692
