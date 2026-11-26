@@ -196,7 +196,11 @@ TETO = 2.0                         # jd entre duas superfícies para caber algu�
 COS_RAMPA = 1 / math.sqrt(1 + RAMPA ** 2)
 TOL = 0.35                         # amostras: triângulo que passa a menos disso do centro também conta
 PROFUNDO = 50.0                    # jd: piso de modelo tão abaixo do terreno é interior sob o morro (Ironforge)
-ENCOSTA_SOB = 0.6                  # ...e o terreno por cima só sai se for encosta (> ~31°): platô fica (Thorium Point)
+# Cidades feitas dentro do morro, entradas pelo próprio chão (o portão): só na pegada delas o piso de dentro substitui o
+# terreno de cima. Em todo o resto o chão de fora nunca cede a um piso por baixo (caverna, masmorra, Undercity sob as
+# ruínas, a caverna sob Thorium Point). FileDataID do WMO.
+INTERIORES = (7801267,)            # Ironforge
+PISO_MODELO = 16                   # amostras de modelo num componente (1/4 da célula) para a célula contar como de rua
 JANELA = 3                         # células em volta para o teste de componente essencial
 
 
@@ -262,9 +266,10 @@ def rasteriza(tris, lote=400000):
     return np.concatenate(gi), np.concatenate(gj), np.concatenate(gz)
 
 
-def camadas(zt, buraco, agua, ruim, oi, oj, oz):
+def camadas(zt, buraco, agua, ruim, oi, oj, oz, interior=None):
     """Superfícies de cada amostra do quadrante: Z (K, NQ, NQ) com nan onde não há, nado (K, NQ, NQ) e
-    objeto (K, NQ, NQ). oi, oj, oz: as amostras que os modelos cobrem (no quadrante) e a altura."""
+    objeto (K, NQ, NQ). oi, oj, oz: as amostras que os modelos cobrem (no quadrante) e a altura. interior (NQ, NQ):
+    a pegada das cidades dentro do morro (INTERIORES), onde o piso bem abaixo substitui o terreno."""
     n2 = NQ * NQ
     funda = agua - zt > FUNDO
     chao = np.where(funda, agua, zt).ravel()
@@ -273,12 +278,12 @@ def camadas(zt, buraco, agua, ruim, oi, oj, oz):
     gx, gy = np.gradient(zt, F)
     plano = np.hypot(gx, gy) <= RAMPA
     s_o = (oi * NQ + oj).astype(np.int64)
-    # cidade (ou caverna) debaixo do morro: onde há piso de modelo mais de PROFUNDO abaixo do terreno e o terreno é
-    # encosta, o chão é o de dentro — as encostas do morro sobre Ironforge saem, e a cidade se liga ao mundo pelo
-    # portão; o platô plano sobre uma caverna funda (Thorium Point) fica
+    # cidade debaixo do morro (só na pegada das INTERIORES): onde há piso mais de PROFUNDO abaixo do terreno, o chão é
+    # o de dentro — o morro sobre Ironforge sai e a cidade se liga ao mundo pelo portão
     sob = np.zeros(n2, bool)
-    sob[s_o[oz < zt.ravel()[s_o] - PROFUNDO]] = True
-    sob &= (np.hypot(gx, gy) > ENCOSTA_SOB).ravel()
+    if interior is not None:
+        sob[s_o[oz < zt.ravel()[s_o] - PROFUNDO]] = True
+        sob &= interior.ravel()
     s_t = np.flatnonzero(~buraco & ~ruim & (plano | funda) & ~sob.reshape(NQ, NQ))
     ag = agua.ravel()[s_o]
     fica = ~(oz < ag - FUNDO)                      # bem debaixo d'água: nada-se por cima
@@ -338,11 +343,11 @@ def pares(A, B, dist):
         return np.nonzero(np.abs(A[:, None] - B[None, :]) <= RAMPA * dist)
 
 
-def quadrante_v2(lin, col, zt, buraco, agua, ruim, oi, oj, oz):
+def quadrante_v2(lin, col, zt, buraco, agua, ruim, oi, oj, oz, interior=None):
     """Componentes de um quadrante: o de cada nó (K, NQ, NQ; -1 sem camada), por componente a célula
     (do continente), quantos nós, quantos a nado e quantos em modelo, e os pares de componentes de células
     vizinhas (N-S, L-O) que se tocam dentro do quadrante."""
-    Z, N, O = camadas(zt, buraco, agua, ruim, oi, oj, oz)
+    Z, N, O = camadas(zt, buraco, agua, ruim, oi, oj, oz, interior)
     K = Z.shape[0]
     n2 = NQ * NQ
     ia, ib, cruz = [], [], []
@@ -434,7 +439,7 @@ def diagonais_por_quina(ccel, arestas, diagonais):
     return np.unique(np.concatenate(pares), axis=0)
 
 
-def escolhe(ccel, tam, nado, arestas, ncel, voltas=3, diagonais=None):
+def escolhe(ccel, tam, nado, arestas, ncel, voltas=3, diagonais=None, obj=None):
     """Um componente por célula (a grade em jogo tem um nó por célula).
     1. O maior em terra firme (a nado só se não houver outro).
     2. Semente das passagens estreitas: onde a célula tem mais de um componente, fica o "essencial" em terra
@@ -448,7 +453,21 @@ def escolhe(ccel, tam, nado, arestas, ncel, voltas=3, diagonais=None):
     if diagonais is None:
         diagonais = np.zeros((0, 2), np.int64)
     seco_a = tam - nado
-    chave = np.where(seco_a * 2 >= tam, seco_a, 0) * 4096 + tam
+    # primeiro quem liga a alguém, depois terra firme, depois quem alcança mais células vizinhas (o chão da rua, não o
+    # telhado nem o fundo do canal), depois o tamanho
+    pv = np.concatenate([arestas, diagonais, arestas[:, ::-1], diagonais[:, ::-1]]) if len(arestas) else \
+        np.zeros((0, 2), np.int64)
+    pv = np.unique(np.stack([pv[:, 0], ccel[pv[:, 1]]], 1), axis=0) if len(pv) else pv
+    grau = np.bincount(pv[:, 0], minlength=nc) if len(pv) else np.zeros(nc, np.int64)
+    chave = ((grau > 0).astype(np.int64) << 40) + ((seco_a * 2 >= tam).astype(np.int64) << 32) + \
+        (grau.astype(np.int64) << 16) + tam.astype(np.int64)
+    # ...só onde a célula tem chão de modelo de verdade (rua, prédio, cais: um componente com PISO_MODELO amostras de
+    # modelo); célula de terreno — com árvore e pedra — fica com o maior em terra firme (o grau ali troca o platô pelo pé
+    # do barranco)
+    if obj is not None:
+        com_modelo = np.bincount(ccel, weights=(obj >= PISO_MODELO), minlength=ncel)[ccel] > 0
+        simples = np.where(seco_a * 2 >= tam, seco_a, 0).astype(np.int64) * 4096 + tam.astype(np.int64)
+        chave = np.where(com_modelo, chave, simples)
     o = np.lexsort((-chave, ccel))
     primeiro = np.r_[True, ccel[o][1:] != ccel[o][:-1]]
     escolhido = np.full(ncel, -1, np.int64)
@@ -830,6 +849,7 @@ ROTAS = [
     (0, "Ironforge: mestre de voo -> portão", -4821.8, -1155.4, -5160.0, -870.0),
     (0, "Thorium Point: Aliança <-> Horda", -6552.6, -1168.3, -6554.9, -1100.1),
     (1, "Timbermaw Hold: Felwood <-> Moonglade", 6815.0, -2092.0, 7380.0, -2195.0),
+    (1, "Thousand Needles: ponte de corda sobre o cânion", -4900.0, -1878.0, -5010.3, -1892.0),
 ]
 MARGEM_ROTA = 120                  # jd em volta das pontas onde o caminho fino pode passar
 
@@ -929,6 +949,7 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
     c.prefetch(q.values())
     est = {}
     hits = {}
+    interiores = {}
     if modelos_tambem:
         maid = dict(casc.pedacos_wow(c.le(wdt)))["MAID"]
         objs = {k: struct.unpack_from("<I", maid, (k[0] * 64 + k[1]) * 32 + 4)[0] for k in q}
@@ -947,6 +968,15 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
         cortes = np.searchsorted(t, np.arange(64 * 64 + 1))
         hits = {k: (gi[cortes[k]:cortes[k + 1]] % NQ, gj[cortes[k]:cortes[k + 1]] % NQ, gz[cortes[k]:cortes[k + 1]])
                 for k in range(64 * 64) if cortes[k + 1] > cortes[k]}
+        wi = [w for w in wmos if w[0] in INTERIORES]
+        if wi:
+            Ti, Di = M.triangulos(wi, [], doodads_wmo=False)
+            ii, jj, _ = rasteriza(modelos.pisaveis(Ti, Di, COS_RAMPA))
+            for a_, b_ in zip(ii.tolist(), jj.tolist()):
+                k = (a_ // NQ) * 64 + b_ // NQ
+                if k not in interiores:
+                    interiores[k] = np.zeros((NQ, NQ), bool)
+                interiores[k][a_ % NQ, b_ % NQ] = True
     vazio = (np.zeros(0, np.int32), np.zeros(0, np.int32), np.zeros(0, np.float32))
     bordas, ccel, tam, nado, obj, zsoma, arestas, diagonais = {}, [], [], [], [], [], [], []
     cxs, cys = [], []
@@ -956,7 +986,8 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
         if not adt:
             continue
         zt, bur, ag, rm = fino(*le_adt(adt, ruins))
-        r = quadrante_v2(lin, col, zt, bur, ag, rm, *hits.get(lin * 64 + col, vazio))
+        r = quadrante_v2(lin, col, zt, bur, ag, rm, *hits.get(lin * 64 + col, vazio),
+                         interior=interiores.get(lin * 64 + col))
         cg = np.where(r["comp"] >= 0, r["comp"] + base, -1)
         Z = r["Z"]
         bordas[(lin, col)] = (Z[:, -1, :], cg[:, -1, :], Z[:, 0, :], cg[:, 0, :],
@@ -981,7 +1012,7 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
     ccel, tam, nado, obj, zsoma, cxs, cys = (np.concatenate(x) for x in (ccel, tam, nado, obj, zsoma, cxs, cys))
     arestas = np.concatenate(arestas).astype(np.int64)
     diagonais = np.concatenate(diagonais).astype(np.int64)
-    escolhido = escolhe(ccel, tam, nado, arestas, LADO * LADO, diagonais=diagonais)
+    escolhido = escolhe(ccel, tam, nado, arestas, LADO * LADO, diagonais=diagonais, obj=obj)
     L, W, P = ligacoes_v2(ccel, tam, nado, arestas, escolhido, diagonais)
     pas = passagens_finas(ccel, tam, cxs, cys, arestas, diagonais, escolhido)
     est["passagens"] = len(pas)
@@ -995,7 +1026,7 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
         if not adt:
             return None
         zt, bur, ag, rm = fino(*le_adt(adt, ruins))
-        Z, N, _ = camadas(zt, bur, ag, rm, *hits.get(lin * 64 + col, vazio_))
+        Z, N, _ = camadas(zt, bur, ag, rm, *hits.get(lin * 64 + col, vazio_), interior=interiores.get(lin * 64 + col))
         return Z, N
     for cid_r, nome, x1, y1, x2, y2 in ROTAS:
         if cid_r == cid:

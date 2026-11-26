@@ -866,6 +866,12 @@ local lugares = {
 		{ 7000, 7250, -2260, -2060 } },
 	{ "Revantusk Village -> Aerie Peak pela rampa", { 0, -635.3, -4720.5 }, { 0, 283.7, -2002.8 }, 1.3, true,
 		{ -235, -150, -4460, -4330 } },
+	-- minas e entradas de caverna: de dentro (a origem do WMO) até fora, ~100 jd (no chão fino: 1,0-1,3x a reta)
+	{ "Fargodeep Mine (Elwynn): de dentro para fora", { 0, -9834, 194 }, { 0, -9760, 120 }, 2.0 },
+	{ "Echo Ridge Mine (Northshire): de dentro para fora", { 0, -8646, -132 }, { 0, -8560, -180 }, 2.0 },
+	-- (no chão fino são 182 jd; a grade, com os andares da entrada, dá ~380: falta a rota fina desta — spec)
+	{ "Wailing Caverns (Barrens): da entrada para fora", { 1, -929, -2095 }, { 1, -800, -2000 }, 2.5 },
+	{ "Deadmines (Moonbrook): da entrada para fora", { 0, -11099, 1528 }, { 0, -11030, 1450 }, 2.0 },
 }
 for _, l in ipairs(lugares) do
 	local a = { c = l[2][1], x = l[2][2], y = l[2][3] }
@@ -877,6 +883,57 @@ for _, l in ipairs(lugares) do
 	check(p and len <= l[4] * reta and (not l[5] or not p.solto) and (not caixa or passaPor(p, caixa[1], caixa[2], caixa[3], caixa[4])),
 		("%s: %s jd (reta %d, até %.1fx)%s"):format(l[1], p and math.floor(len) or "nil", math.floor(reta), l[4],
 			p and p.solto and " [segunda busca]" or ""))
+end
+end
+do -- #106: dentro das cidades, pares aleatórios fixos contra a grade v1 (comprimentos medidos na v1 do 1.60.1.71139,
+-- só terreno). A v2 escolhe, onde a célula tem chão de modelo, o componente que alcança mais vizinhos (a rua, não o
+-- telhado nem o fundo do canal). Guarda: razão média sobre a reta e pares mais de 1,5x a v1, por cidade (limites do
+-- que a v2 mede hoje, com folga; Booty Bay e Orgrimmar têm andares que um nó por célula não separa — spec).
+local G3 = load("Terrain0.lua", {})
+load("Terrain1.lua", G3)
+local Dc = G3.terrain
+Dc.passages = load("TerrainPassages.lua", {}).passagesTerrain
+local V1 = {
+	["Stormwind"] = { 449, 287, 318, 110, 338, 317, 482, 260, 177, 191, 414, 485, 206, 184, 617, 568, 77, 273, 312, 178, 316, 446, 201, 406, 307, 289, 408, 52, 221, 151 },
+	["Orgrimmar"] = { 1143, 293, 483, 252, 335, 265, 735, 544, 393, 1794, 151, 330, 933, 237, 1005, 66, 336, 1003, 1086, 305, 986, 546, 254, 563, 1073, 185, 375, 268, 1064, 755 },
+	["Booty Bay"] = { 150, 273, 1233, 155, 244, 1163, 94, 869, 313, 158, 84, 155, 572, 263, 167, 172, 82, 105, 268, 530, 77, 302, 56, 293, 348, 271, 80, 1654, 164, 1128 },
+	["Ironforge"] = { 261, 159, 381, 297, 309, 372, 158, 398, 284, 496, 397, 316, 284, 90, 516, 388, 239, 260, 310, 280, 412, 239, 431, 279, 77, 62, 103, 322, 124, 372 },
+	["Undercity"] = { 105, 127, 142, 215, 92, 130, 289, 49, 194, 441, 442, 125, 359, 51, 48, 128, 221, 115, 467, 221, 274, 328, 450, 401, 363, 215, 131, 144, 385, 447 },
+	["Thunder Bluff"] = { 1219, 154, 644, 1986, 1185, 328, 1767, 1053, 1884, 297, 1383, 1761, 273, 79, 135, 175, 1924, 83, 44, 154, 368, 1173, 205, 2035, 400, 788, 1087, 484, 1157, 1050 },
+	["Darnassus"] = { 355, 201, 222, 906, 245, 459, 435, 531, 746, 242, 608, 515, 80, 626, 593, 204, 979, 288, 478, 351, 680, 530, 283, 249, 403, 368, 528, 105, 489, 496 },
+	["Gadgetzan"] = { 210, 262, 158, 190, 128, 159, 22, 160, 42, 87, 86, 110, 114, 288, 213, 96, 244, 54, 122, 125, 108, 108, 112, 80, 259, 218, 44, 260, 84, 52 },
+	["Ratchet"] = { 225, 154, 149, 262, 282, 192, 53, 61, 148, 264, 79, 137, 145, 47, 255, 280, 255, 197, 192, 164, 225, 125, 159, 69, 233, 293, 297, 60, 225, 290 },
+}
+local CIDADES = { -- nome, c, x0, x1, y0, y1, razão média máxima (v2), pares > 1,5x v1 no máximo
+	{ "Stormwind", 0, -8950, -8450, 350, 1000, 1.26, 2 },
+	{ "Orgrimmar", 1, 1350, 2050, -4750, -4100, 1.96, 7 },
+	{ "Booty Bay", 0, -14550, -14250, 300, 600, 2.43, 12 },
+	{ "Ironforge", 0, -5000, -4600, -1250, -800, 1.47, 4 },
+	{ "Undercity", 0, 1500, 1800, 100, 420, 1.53, 5 },
+	{ "Thunder Bluff", 1, -1400, -950, -150, 250, 2.67, 6 },
+	{ "Darnassus", 1, 9650, 10200, 1900, 2600, 1.27, 2 },
+	{ "Gadgetzan", 1, -7200, -6950, -3900, -3650, 1.15, 2 },
+	{ "Ratchet", 1, -1050, -800, -3900, -3600, 1.20, 4 },
+}
+local semente = 12345
+local function rnd() semente = (semente * 1103515245 + 12345) % 2147483648; return semente / 2147483648 end
+for _, cd in ipairs(CIDADES) do
+	local nome, c, x0, x1, y0, y1 = cd[1], cd[2], cd[3], cd[4], cd[5], cd[6]
+	local n, r1, r2, pior = 0, 0, 0, 0
+	for k = 1, 30 do
+		local a = { c = c, x = x0 + (x1 - x0) * rnd(), y = y0 + (y1 - y0) * rnd() }
+		local b = { c = c, x = x0 + (x1 - x0) * rnd(), y = y0 + (y1 - y0) * rnd() }
+		local d = math.sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2)
+		local l1 = V1[nome][k]
+		local p = l1 > 0 and d > 30 and TRN.Path(Dc, a, b, 40000)
+		if p then
+			n = n + 1
+			r1, r2 = r1 + l1 / d, r2 + comprimento(p) / d
+			if comprimento(p) > 1.5 * l1 then pior = pior + 1 end
+		end
+	end
+	check(n > 20 and r2 / n <= cd[7] and pior <= cd[8], ("cidade %s: razão média %.2f (v1 %.2f, até %.2f), %d pares > 1,5x a v1 (até %d)")
+		:format(nome, r2 / math.max(n, 1), r1 / math.max(n, 1), cd[7], pior, cd[8]))
 end
 end
 -- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
