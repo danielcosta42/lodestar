@@ -631,7 +631,9 @@ function V:Refresh()
 	if dun then
 		local quests = ns.Dungeons:QuestsFor(dun)
 		local todo = 0
-		for _, q in ipairs(quests) do if not ns.IsQuestDone(q.id) then todo = todo + 1 end end
+		for _, q in ipairs(quests) do
+			if not ns.IsQuestDone(q.id) and not ns.IsQuestInLog(q.id) then todo = todo + 1 end
+		end
 		gr.text:SetText(L.NB_GRIND:format(dun.key, dun.lo, dun.hi))
 		gr.sub:SetText(todo > 0 and L.NB_GRIND_Q:format(todo) or "")
 		gr.a.text:SetText(L.V3_SEE_DUNGEON); gr.a:Show(); gr.b:Hide()

@@ -281,11 +281,34 @@ step("GuideMenu = Hub", function() assert(ns.GuideMenu == ns.Hub, "ns.GuideMenu 
 step("Dungeons:GoToDoor", function() ns.Dungeons:GoToDoor(ns.dungeonData[3]) end)
 step("Collections:GuideTo", function() ns.Collections:GuideTo(ns.Collections:Mounts()[2]) end)
 step("Tidy", function() ns.QuestLogTidy:Toggle() end)
-step("Nearby", function() ns.Nearby.Scan(); ns.Viewer:Refresh() end)
-step("TargetButton", function() ns.TargetButton.Apply() end)
+-- os passos à frente perto de você: o harness não tem mundo, então a distância é fixa e as linhas têm de aparecer
+step("Nearby", function()
+	local WP, dist = ns.Waypoint, ns.Waypoint.DistanceTo
+	WP.DistanceTo = function() return 50 end
+	ns.Nearby.Scan(); ns.Viewer:Refresh()
+	WP.DistanceTo = dist
+	assert(#ns.Nearby:List() > 0, "enquanto está aqui: nada à frente")
+	assert(ns.Viewer:GetFrame().nearRows[1]:IsShown(), "enquanto está aqui: a linha não apareceu")
+	for _, c in ipairs(ns.Nearby:List()) do assert(not ns.Nearby.Label(c):find("Quest #"), "rótulo sem o nome") end
+end)
+step("TargetButton", function()
+	ns.TargetButton.Apply()
+	ns.Viewer:Hide(); ns.TargetButton.Apply()
+	assert(not (_G.LodestarTarget and _G.LodestarTarget:IsShown()), "botão de alvo com o guia fechado")
+	ns.Viewer:Show()
+end)
+-- em grupo: a contagem de quem também usa o Lodestar sob a quest do passo
 step("PartySync", function()
-	ns.fire("CHAT_MSG_ADDON", "LSParty", "LS3|S|22:c,153:3/15", "PARTY", "Ana-Reino")
-	ns.PartySync.Broadcast(true); ns.Viewer:Refresh()
+	local q
+	for _, g in ipairs(ns:GetStep().goals) do q = q or ns.QuestState.QuestOf(g) end
+	assert(q, "passo sem quest")
+	local inGroup, inParty = _G.IsInGroup, _G.UnitInParty
+	_G.IsInGroup, _G.UnitInParty = function() return true end, function() return true end
+	ns.fire("CHAT_MSG_ADDON", "LSParty", "LS3|S|" .. q .. ":x,153:3/15", "PARTY", "Ana Silva-Reino")
+	local who = ns.PartySync:For(q)
+	assert(#who == 1 and who[1].name == "Ana" and who[1].state == "x", "grupo: a mensagem não chegou")
+	ns.PartySync.Broadcast(true); ns.Viewer:Refresh(); ns.PartySync:CanShare(q)
+	_G.IsInGroup, _G.UnitInParty = inGroup, inParty
 end)
 step("Rares", function() ns.Rares:GoTo(ns.rareData["Elwynn Forest"][1], "Elwynn Forest") end)
 step("Report", function() ns.Report:Show() end)

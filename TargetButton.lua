@@ -149,7 +149,8 @@ function T.Apply()
 	targets = show and T.Targets(step.goals, function(g) return ns:IsGoalActive(g) end,
 		function(g) return ns:IsGoalComplete(g) end, names()) or {}
 	if #targets == 0 then
-		if button then button:Hide() end
+		-- some e esquece a macro: o atalho (CLICK) roda num botão escondido
+		if button then button:SetAttribute("macrotext", nil); button:Hide() end
 		return
 	end
 	local b = ensure()
@@ -166,11 +167,11 @@ local dirty = true
 for _, ev in ipairs({ "QUEST_LOG_UPDATE", "_GUIDE_LOADED", "PLAYER_REGEN_ENABLED", "UNIT_QUEST_LOG_CHANGED" }) do
 	ns:On(ev, function() dirty = true end)
 end
-local lastStep
+local lastStep, lastShown
 ns:Every(0.5, function()
-	local step = ns:GetStep()
-	if dirty or pendingApply or step ~= lastStep then
-		dirty, lastStep = false, step
+	local step, shown = ns:GetStep(), ns:UIShown() and true or false
+	if dirty or pendingApply or step ~= lastStep or shown ~= lastShown then
+		dirty, lastStep, lastShown = false, step, shown
 		T.Apply()
 	elseif button and button:IsShown() then
 		reanchor(button)

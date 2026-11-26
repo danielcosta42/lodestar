@@ -117,17 +117,22 @@ local lastSent, sentAt = nil, 0
 local function broadcast(force)
 	if not (on() and inParty() and send) then return end
 	local msg = P.Encode(states())
-	if not force and msg == lastSent and GetTime() - sentAt < 60 then return end
+	if not force and msg == lastSent and GetTime() - sentAt < 29 then return end
 	lastSent, sentAt = msg, GetTime()
 	pcall(send, P.PREFIX, msg, "PARTY")
 end
 P.Broadcast = broadcast
 
-local pending
+local pending, pendingForce
 local function later(force)
+	pendingForce = pendingForce or force
 	if pending then return end
 	pending = true
-	C_Timer.After(2, function() pending = nil; broadcast(force) end)
+	C_Timer.After(2, function()
+		local f = pendingForce
+		pending, pendingForce = nil, nil
+		broadcast(f)
+	end)
 end
 for _, ev in ipairs({ "QUEST_LOG_UPDATE", "QUEST_ACCEPTED", "QUEST_TURNED_IN", "_GUIDE_LOADED" }) do
 	ns:On(ev, function() later(false) end)

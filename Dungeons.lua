@@ -79,8 +79,11 @@ function D:List()
 	return ns.dungeonData or {}
 end
 
+-- a que cabe agora entre as que têm guia para a sua facção (Ragefire não é para a Aliança, Deadmines não é para a Horda)
 function D:BestNow()
-	return D.Best(D:List(), UnitLevel("player") or 1)
+	local mine = {}
+	for _, d in ipairs(D:List()) do if D:Guide(d) then mine[#mine + 1] = d end end
+	return D.Best(mine, UnitLevel("player") or 1)
 end
 
 -- itens do chefe que melhoram a spec (nota do GearPlan contra o equipado; até 5 níveis acima do seu)
