@@ -5,4 +5,4 @@
 - [x] T3 Ordem das zonas pelo nível simulado; entrada dos Eastern Kingdoms; guias de 60 fora da cadeia
 - [x] T4 gen_special, QuestLevels.lua (banco primeiro), ForeverData.lua
 - [x] T5 Auditoria antes × depois (docs/rota-auditoria-2026-11.md)
-- [ ] T6 Revisão local, PR
+- [x] T6 Revisão local, PR

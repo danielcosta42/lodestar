@@ -745,7 +745,9 @@ ns:On("_READY", function()
 			lo, hi = tonumber(lo), tonumber(hi)
 		end
 		local lvl = UnitLevel("player") or 0
-		local best = hi and (lvl > hi or lvl < lo - 3) and ns:BestGuideForPlayer()
+		-- o "longe adiante" não vale para a zona inicial nem no começo (Durotar e Zephras são 5-12: o 1 sairia)
+		local ahead = lo and lvl > 5 and lvl < lo - 3 and key ~= findStartGuide()
+		local best = hi and (lvl > hi or ahead) and ns:BestGuideForPlayer()
 		ns:LoadGuide(best and best ~= key and best or key, true)   -- mantém o step salvo
 		return
 	end
