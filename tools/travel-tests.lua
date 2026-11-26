@@ -763,19 +763,25 @@ check(cam and math.abs(cam[#cam].x - B.x) < 0.01 and math.abs(cam[1].x - A.x) < 
 local fechada = quadranteSint(function(r, c) return c == 48 end, nil, 3)
 local cruza = TRN.Path(fechada, mundo(5, 40), mundo(5, 56), 20000)
 check(cruza and #cruza >= 2 and comprimento(cruza) < 1.2 * 16 * 16.7, "parede inteira: cruza no ponto mais fino, sem volta")
+check(cruza and cruza.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
 -- parede inteira com uma porta estreita lá embaixo: a porta, não a parede (passo travado custa caro)
 local porta = quadranteSint(function(r, c) return c == 48 and r ~= 30 end, nil, 3)
 local pela = TRN.Path(porta, mundo(5, 40), mundo(5, 56), 40000)
 local desceu = false
 for _, q in ipairs(pela or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 25 then desceu = true end end
 check(pela and desceu, "parede com porta: o caminho vai pela porta")
--- dados reais: a Revantusk Village (The Hinterlands) fica numa região que a grade não liga ao platô; o caminho
--- até Aerie Peak segue o terreno (antes: nil e a reta pelas montanhas)
+-- dados reais: a Revantusk Village (The Hinterlands) e o platô de Aerie Peak. Na grade v1 (16,7 jd por célula, só
+-- terreno) a rampa do litoral não cabia e só a segunda busca (solto) achava caminho; na v2 (chão fino de 2,08 jd,
+-- #106) a rampa é chão ligado: busca normal, sem passagem gravada, subindo pela rampa de verdade
 local EK = load("Terrain0.lua", {}).terrain
 local revan, aerie = { c = 0, x = -635.3, y = -4720.5 }, { c = 0, x = 283.7, y = -2002.8 }
 local ra, ar = TRN.Path(EK, revan, aerie, 150000), TRN.Path(EK, aerie, revan, 150000)
 check(ra and ar and #ra > 4 and #ar > 4, "Revantusk <-> Aerie Peak: caminho pelo terreno nos dois sentidos")
-check(ra and ra.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
+local function naRampa(p)
+	for _, q in ipairs(p or {}) do if q.x > -235 and q.x < -150 and q.y > -4460 and q.y < -4330 then return true end end
+end
+check(ra and ar and not ra.solto and not ar.solto and naRampa(ra) and naRampa(ar),
+	"Revantusk <-> Aerie Peak sem passagem gravada: busca normal, pela rampa (grade v2)")
 do -- #104 (bloco próprio: o arquivo já passa de 200 locais no topo)
 -- com a rampa gravada em jogo (PassagesData.lua, #104): a busca normal já sai pela rampa, nos dois sentidos
 local EKp = load("Terrain0.lua", {}).terrain
@@ -795,11 +801,13 @@ check((ac == nil or not pelaRampa(ac)) and (at == nil or not pelaRampa(at)),
 check(TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 0, y = 5000 }, { x = 100, y = 5000 }, { x = 100, y = 0 } },
 	{ x = 0, y = 0 }, { x = 100, y = 0 }) and not TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 200, y = 300 },
 	{ x = 300, y = 0 } }, { x = 0, y = 0 }, { x = 300, y = 0 }), "volta demais: 2x a reta e 2000 jd a mais")
--- só por passagem: rota costeira longa só da grade (Revantusk -> Light's Hope, ~4x a reta) segue existindo com a
--- rampa no mapa, sem a marca de passagem (o limite não a derruba)
+-- só por passagem: rota longa só da grade (Revantusk -> Light's Hope) segue existindo, sem a marca de passagem (o
+-- limite não a derruba). Na grade v2 (#106) ela sobe pela rampa de verdade — que a passagem gravada cobre —, então
+-- o "só da grade" se confere sem as passagens; com elas, o caminho também existe
 local lightsHope = { c = 0, x = 2271.1, y = -5340.9 }
-local costa = TRN.Path(EKp, revan, lightsHope, 150000)
-check(costa and not costa.passagem, "rota costeira só da grade segue existindo, sem a marca de passagem")
+local costa = TRN.Path(EK, revan, lightsHope, 150000)
+check(costa and not costa.passagem, "rota longa só da grade segue existindo, sem a marca de passagem")
+check(TRN.Path(EKp, revan, lightsHope, 150000) ~= nil, "com a rampa gravada, a rota longa também existe")
 -- pé do penhasco: do alto à praia abaixo dos Overlook Cliffs, ~1,2 km pela rampa (8x a reta de 143 jd), real
 local alto, praia = { c = 0, x = 158, y = -4592 }, { c = 0, x = 184, y = -4732 }
 check(TRN.Path(EKp, alto, praia, 150000) ~= nil, "pé do penhasco: o caminho pela rampa não é cortado")

@@ -68,16 +68,45 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
 - Refaz o caminho ao trocar de perna ou se o jogador sair dele por mais de 40 jd.
 - O planejador segue com a distância em reta (custo de pernas a pé) nesta versão.
 
-## Fora (v2)
+## v2: chão fino e modelos (issue #106)
 
-Prédios e cidades fechadas (WMO), pontes, elevadores, modelos (M2: árvores, pedras); caminho no
-custo do planejador.
+- **Fonte sem cliente:** `tools/casc_cdn.py` lê o mesmo do CDN público da Blizzard (TACT, produto `wowf`, build
+  1.60.1.71139): configuração da build → codificação → raiz (MFST); arquivo pelo FileDataID, do pacote por pedido
+  de intervalo (os índices dos ~1400 pacotes viram um índice só, `tools/build/cdn/indices-*.npz`) ou solto, em BLTE.
+  Cache em `tools/build/cdn/` (fora do git; ~1 GB com tudo: índices, codificação, raiz, ADT, WMO, M2). `gen_terrain.py`
+  usa o cliente local se houver, senão o CDN (`--cdn` força). Conferido: a v1 do CDN sai idêntica byte a byte à do
+  cliente instalado.
+- **Modelos** (`tools/modelos.py`): do ADT `_obj0`, as colocações de WMO (MODF) e M2 (MDDF), sem repetição
+  (uniqueId), e os doodads dos WMO (conjunto 0 + o da colocação). Colisão: WMO pelos triângulos do grupo
+  (MOVT/MOVI) com F_COLLISION ou desenhados sem ser detalhe (MOPY/MPY2); M2 pelos triângulos de colisão do
+  cabeçalho. Rotação conferida com a caixa do MODF: R = Rz(ry+180°)·Ry(rx)·Rx(rz). Só os pisáveis (≤ RAMPA).
+- **Chão fino:** cada célula vira 8 × 8 amostras de 2,08 jd com até 4 superfícies (terreno, água funda, modelos;
+  duas a menos de 2 jd: a de cima). Amostras vizinhas ligam se o desnível cabe na RAMPA; o terreno só conta onde a
+  encosta cabe na rampa em qualquer direção (de lado num barranco também se escorrega).
+- **Um nó por célula** (o formato não muda): dentro da célula, as superfícies ligadas formam componentes e fica um —
+  o maior em terra firme; o "essencial" (sem ele os vizinhos que liga se separam por perto: a rampa estreita, a
+  ponte); acertado pela grade projetada (o que junta mais grupos de vizinhos) e por corredores (componentes não
+  escolhidos que ligam escolhidos longe na grade: a ponte de duas células de largura). Diagonal: se os escolhidos se
+  alcançam pela quina (tocando-se ou por qualquer componente de uma célula reta do meio) e uma das retas passa.
+- **Resultado** (552 pares de mestres de voo a até 3,5 km, sem passagens gravadas): sem caminho 247 → 21; segunda
+  busca (solto) 71 → 49; normal 234 → 482; tempo do A* 46 s → 27 s. Pontes (163, do tabuleiro de cada modelo):
+  até 1,25× a reta 95 → 153, nadando 63 → 20. A rampa da Revantusk e a saída para Hillsbrad entram na grade: Revantusk
+  ↔ Aerie Peak por busca normal, pela rampa; Aerie Peak → Tarren Mill ~1,6 km. Arquivos: 1,06 → 1,20 MB e 1,32 →
+  1,61 MB (escape decimal mais curto na string Lua; os bytes são os mesmos).
+- **Limites:** sem andares — onde dois caminhos se cruzam numa célula só (ponte sobre cânion de uma célula, rio sob
+  ponte estreita), um perde; caverna de vários andares sob morro andável (Timbermaw Hold → Moonglade) fica para a
+  segunda busca; cidades por dentro (Ironforge, Undercity) e elevadores/transportes não entram (o elevador não é
+  modelo do ADT); líquido de WMO (canais de Stormwind) não é água; parede não bloqueia (só se acrescenta chão).
+
+## Fora
+
+Andares (mais de um nó por célula), elevadores, líquido de WMO; caminho no custo do planejador.
 
 ## Testes
 
 - A* e decodificação com grade sintética (parede, água, sem caminho) em `tools/travel-tests.lua`.
 - Gerador: `--demo` com pontos conhecidos (o chão do mestre de voo de Orgrimmar é passável; o mar
-  ao lado de Ratchet é água).
+  ao lado de Ratchet é água; v2: Revantusk ↔ Aerie Peak e as duas pontas da Thandol Span ligadas na grade).
 - Dados reais: um caminho em Durotar contorna o que a reta atravessa (mais longo que a reta, e
   existe).
 

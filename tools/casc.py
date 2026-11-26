@@ -9,6 +9,7 @@ arquivo vem em BLTE (pedaços crus ou zlib).
 
 Formato conferido no cliente do Forever (builds 1.60.1.70245 e 1.60.1.71139): índice v7, raiz MFST v2.
 Cliente fora de onde o addon fica instalado: WOW_DIR="C:/World of Warcraft" python casc.py --demo
+Sem cliente instalado: casc_cdn.py lê o mesmo do CDN público da Blizzard (mesma interface).
 """
 import os
 import struct
@@ -19,6 +20,10 @@ RAIZ_WOW = os.environ.get("WOW_DIR") or os.path.normpath(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "..", ".."))
 PRODUTOS = ("wowf", "wow_classic_beta")    # o Forever, com o código novo e o antigo
 ENUS = 0x2
+
+
+class Cifrado(ValueError):
+    """Pedaço BLTE cifrado ('E') sem a chave: quem lê trata o arquivo como ausente."""
 
 
 class Casc:
@@ -89,6 +94,10 @@ class Casc:
                 out.append(c[1:])
             elif modo == b"Z":
                 out.append(zlib.decompress(c[1:]))
+            elif modo == b"F":                         # um BLTE dentro do outro
+                out.append(self._blte(c[1:]))
+            elif modo == b"E":
+                raise Cifrado("pedaço BLTE cifrado")
             else:
                 raise ValueError("pedaço BLTE %r não suportado" % modo)
         return b"".join(out)
@@ -166,10 +175,17 @@ class Casc:
         return raiz
 
     def le(self, fdid):
-        """Bytes do arquivo pelo FileDataID; None se a build não o tem."""
+        """Bytes do arquivo pelo FileDataID; None se a build não o tem (ou se vem cifrado)."""
         ck = self._raiz.get(fdid)
         ek = ck and self.ckey_para_ekey(ck)
-        return self.le_ekey(ek) if ek else None
+        try:
+            return self.le_ekey(ek) if ek else None
+        except Cifrado:
+            return None
+
+    def prefetch(self, fdids):
+        """Local: tudo já está no disco (o leitor do CDN baixa aqui de uma vez)."""
+        return 0
 
 
 def pedacos_wow(b):
