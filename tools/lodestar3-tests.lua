@@ -189,7 +189,7 @@ check(#near == 3 and near[1].q == 4 and near[2].q == 1 and near[2].dist == 30 an
 check(N.Signature(near) == "objective:4,turnin:1,accept:3", "assinatura do que mostrar")
 check(#N.Pick({}, 100, 3) == 0 and #N.Pick({ { q = 1 } }, 100, 3) == 0, "sem distância: fora")
 check(N.StepNPC({ { verb = "accept", text = "Westfall Stew" }, { verb = "talk", text = "" }, { verb = "talk", text = "Salma" } })
-	== "Salma" and N.StepNPC({ { verb = "accept", text = "X" } }) == nil, "quem dá a quest: o primeiro talk com nome")
+	.text == "Salma" and N.StepNPC({ { verb = "accept", text = "X" } }) == nil, "quem dá a quest: o primeiro talk com nome")
 
 -- ── botão de alvo ────────────────────────────────────────────────────────────
 local TB = loadPure("TargetButton.lua").TargetButton

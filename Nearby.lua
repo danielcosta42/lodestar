@@ -33,10 +33,10 @@ function N.Pick(cands, radius, limit)
 	return out
 end
 
--- O NPC do passo (quem dá a quest): o primeiro "talk" com nome.
+-- O NPC do passo (quem dá a quest): o primeiro "talk" com nome (o goal; o nome no idioma do cliente vem depois).
 function N.StepNPC(goals)
 	for _, g in ipairs(goals or {}) do
-		if g.verb == "talk" and g.text and g.text ~= "" then return g.text end
+		if g.verb == "talk" and g.text and g.text ~= "" then return g end
 	end
 end
 
@@ -57,8 +57,8 @@ local current, sig = {}, ""
 
 local function questOf(g) return ns.QuestState and ns.QuestState.QuestOf(g) end
 
--- Os candidatos dos passos à frente (o atual já está na janela). Quest para pegar só quando o guia não a segura:
--- nada de "suba até o nível N" por fazer antes dela, nem entrega por fazer no mesmo passo (a próxima da corrente).
+-- Os candidatos dos passos à frente (o atual já está na janela). Quest para pegar só quando o guia não a segura: a
+-- corrente o passo já segura ("only completed(X)", IsStepActive); o nível, nenhum "suba até o nível N" por fazer antes.
 function N:Candidates()
 	local g = ns.currentGuide
 	if not (g and ns.Waypoint) then return {} end
@@ -70,10 +70,7 @@ function N:Candidates()
 		local st = steps[i]
 		local active = ns:IsStepActive(st)
 		if i > cur and active then
-			local npc, held = N.StepNPC(st.goals), false
-			for _, goal in ipairs(st.goals) do
-				if goal.verb == "turnin" and open(goal) then held = true end
-			end
+			local npc = N.StepNPC(st.goals)
 			for _, goal in ipairs(st.goals) do
 				local q = questOf(goal)
 				if q and goal.goto_ and goal.goto_.zone and open(goal) then
@@ -81,7 +78,7 @@ function N:Candidates()
 					if goal.verb == "turnin" then
 						if ns.IsQuestInLog(q) and QL.IsComplete and QL.IsComplete(q) then kind = "turnin" end
 					elseif goal.verb == "accept" then
-						if not (gated or held) and not ns.IsQuestInLog(q) and not ns.IsQuestDone(q) then kind = "accept" end
+						if not gated and not ns.IsQuestInLog(q) and not ns.IsQuestDone(q) then kind = "accept" end
 					elseif goal.q and ns.IsQuestInLog(q) then
 						kind = "objective"
 					end
@@ -126,9 +123,11 @@ end
 function N.Label(c)
 	local L = ns.L
 	if c.kind == "accept" then
-		-- fora do diário o jogo não dá o nome: vale o do guia
-		local title = c.goal.text or (ns.QuestState and ns.QuestState.Title(c.q)) or tostring(c.q)
-		return c.npc and L.NB_ACCEPT:format(title, c.npc) or L.NB_ACCEPT1:format(title)
+		-- o nome no idioma do cliente quando o jogo o sabe; fora do diário pode não saber: vale o do guia
+		local t = QL.GetTitleForQuestID and QL.GetTitleForQuestID(c.q)
+		local title = (t and t ~= "" and t) or c.goal.text or tostring(c.q)
+		local npc = c.npc and ((ns.db.npcNames or {})[c.npc.id] or c.npc.text)
+		return npc and L.NB_ACCEPT:format(title, npc) or L.NB_ACCEPT1:format(title)
 	end
 	local title = ns.QuestState and ns.QuestState.Title(c.q) or tostring(c.q)
 	if c.kind == "turnin" then return L.NB_TURNIN:format(title) end

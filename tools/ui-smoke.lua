@@ -289,7 +289,14 @@ step("Nearby", function()
 	WP.DistanceTo = dist
 	assert(#ns.Nearby:List() > 0, "enquanto está aqui: nada à frente")
 	assert(ns.Viewer:GetFrame().nearRows[1]:IsShown(), "enquanto está aqui: a linha não apareceu")
-	for _, c in ipairs(ns.Nearby:List()) do assert(not ns.Nearby.Label(c):find("Quest #"), "rótulo sem o nome") end
+	-- fora do diário o jogo pode não saber o nome da quest: o rótulo usa o do guia
+	local title = C_QuestLog.GetTitleForQuestID
+	C_QuestLog.GetTitleForQuestID = function() return nil end
+	for _, c in ipairs(ns.Nearby:List()) do
+		local s = ns.Nearby.Label(c)
+		assert(not s:find("Quest #") and not s:find("%d%d+$"), "rótulo sem o nome: " .. s)
+	end
+	C_QuestLog.GetTitleForQuestID = title
 end)
 step("TargetButton", function()
 	ns.TargetButton.Apply()

@@ -8,8 +8,8 @@ Depois do Lodestar 3 (#90), o que decide a corrida dos guias é o tempo de level
 
 - **R1 Enquanto está aqui.** A cada 2 s, dos 40 passos à frente: objetivos cuja quest está no diário, entregas
   prontas e quests para pegar, com coordenada, a até 220 jd. Uma linha por quest (a mais perto), até 3, do mais perto.
-  Quest para pegar só quando o guia não a segura: nenhum "suba até o nível N" por fazer antes dela e nenhuma entrega
-  por fazer no mesmo passo (a próxima da corrente); o texto diz a quest e quem a dá. Na janela do guia, depois do
+  Quest para pegar só quando o guia não a segura: a corrente o passo já segura ("only completed"); o nível, nenhum
+  "suba até o nível N" por fazer antes dela. O texto diz a quest e quem a dá, no idioma do cliente quando o jogo sabe. Na janela do guia, depois do
   passo; clique guia até lá. A janela só redesenha quando a lista muda.
 - **R2 Masmorra no grind.** Passo com "suba até o nível N" por fazer: a masmorra que cabe agora entre as que têm guia
   para a sua facção (Dungeons:BestNow) e quantas quests dela faltam pegar, com "Ver a masmorra".
