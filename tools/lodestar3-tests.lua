@@ -292,7 +292,7 @@ local books = { { id = 7, name = "Journal", zone = "Elwynn Forest", x = 65.4, y 
 	{ id = 8, name = "Primer | x", zone = "Tirisfal Glades", x = 59.5, y = 52.3, faction = "Horde" } }
 local bsteps = PA:ParseGuide(CO.BooksBody(books, { Alliance = { name = "Librarian", npc = 99, zone = "Stormwind City", x = 50, y = 50 } }))
 check(#bsteps == 3 and bsteps[1].goals[1].verb == "click" and bsteps[1].goals[1].complete == "collected(books:7)"
-	and bsteps[1].goals[1].goto_.zone == "Elwynn Forest" and bsteps[2].goals[1].only == "Horde"
+	and bsteps[1].goals[1].goto_.zone == "Elwynn Forest" and bsteps[2].only == "Horde"
 	and bsteps[3].only == "Alliance" and bsteps[3].goals[1].verb == "talk",
 	"guia dos livros: um passo por livro (fecha ao pegar, facção), a entrega no fim; a barra do nome não quebra")
 local qsteps = PA:ParseGuide(CO.QuestBody({ name = "Cozy", lvl = 14, steps = {

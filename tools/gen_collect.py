@@ -55,6 +55,11 @@ def fields(d):
     return "{ " + ", ".join(parts) + " }"
 
 
+def slug(name):
+    """id estável pelo nome (a marca salva não pode depender da posição na lista)"""
+    return re.sub(r"[^a-z0-9]+", "_", str(name).lower()).strip("_")[:28] or "x"
+
+
 def rare_index():
     """nome -> (id, zona, pontos) do RareData.lua"""
     out = {}
@@ -74,12 +79,12 @@ def rare_index():
 
 def books_lua(b):
     lines = ["\tbooks = {", "\t\tlist = {"]
-    for i, e in enumerate(b["books"], 1):
+    for e in b["books"]:
         note = short(e.get("location_note"))
         if e.get("confidence") == "low":
             note = (note + " " if note else "") + "(location unconfirmed)"
         lines.append("\t\t\t" + fields({
-            "id": e.get("item_id") or ("x%d" % i), "name": e["name"], "zone": e.get("zone"),
+            "id": e.get("item_id") or slug(e["name"]), "name": e["name"], "zone": e.get("zone"),
             "x": e.get("x"), "y": e.get("y"), "faction": e.get("faction"), "item": e.get("item_id"),
             "quest": e.get("turnin_quest_id"), "note": note, "low": e.get("confidence") == "low" or None,
         }) + ",")
@@ -129,6 +134,11 @@ def quests_lua(q):
             target = st.get("target")
             if act in ("accept", "turnin") and qname.get(ident):
                 target = qname[ident]
+            # sem o que o jogo confirma, vira nota (o passo anda à mão): aceite/entrega sem id, "ir até" sem ponto
+            if act in ("accept", "turnin") and not ident:
+                act, target = "note", ("Accept: " if act == "accept" else "Turn in: ") + str(target or "")
+            elif act == "goto" and (st.get("x") is None or not st.get("zone")):
+                act = "note"
             lines.append("\t\t\t" + fields({
                 "act": act, "target": target, "id": ident, "zone": st.get("zone"),
                 "x": st.get("x"), "y": st.get("y"), "faction": st.get("faction"), "note": short(st.get("note")),
@@ -142,11 +152,11 @@ def pets_lua(p):
     rares = rare_index()
     lines = ["\tpets = {"]
     used = set()
-    for i, e in enumerate(p["pets"], 1):
+    for e in p["pets"]:
         r = rares.get(e["name"].lower())
-        pid = e.get("npc_id") or (r and r[0]) or ("p%d" % i)
+        pid = e.get("npc_id") or (r and r[0]) or slug(e["name"])
         if pid in used:
-            pid = "p%d" % i
+            pid = slug(e["name"]) + "_" + slug(e.get("zone") or "")
         used.add(pid)
         pts = [(sp["x"], sp["y"]) for sp in (e.get("spawns") or []) if sp.get("x") is not None]
         zone = e.get("zone")
@@ -170,6 +180,11 @@ def main():
     lines.append("}")
     with open(OUT, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
+    # zona que o Lodestar não conhece (ZoneData.lua): sem ponto no mapa, sem distância
+    known = set(re.findall(r'\["([^"]+)"\]\s*=\s*\d+', open(os.path.join(ROOT, "ZoneData.lua"), encoding="utf-8").read()))
+    unknown = sorted(set(re.findall(r'zone = "([^"]+)"', "\n".join(lines))) - known)
+    for z in unknown:
+        print("aviso: zona fora do ZoneData.lua: %s" % z)
     print("ok: %d missões, %d livros, %d pets" % (len(q["collectibles"]), len(b["books"]), len(p["pets"])))
 
 

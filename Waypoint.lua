@@ -342,7 +342,11 @@ local function ensureArrow()
 end
 
 -- a seta (as três camadas juntas)
-local function needle(a, on) a.tex:SetShown(on); a.edge:SetShown(on); a.shadow:SetShown(on) end
+-- o brilho fica com o ícone (barco, pedra de lar) quando a seta some, como nos passos de viagem
+local function needle(a, on)
+	a.tex:SetShown(on); a.edge:SetShown(on); a.shadow:SetShown(on)
+	a.glow:SetShown(on or a.icon:IsShown())
+end
 local function turn(a, rel) a.tex:SetRotation(rel); a.edge:SetRotation(rel); a.shadow:SetRotation(rel) end
 local function tint(a, c)
 	c = c or UI.HUD.accentBright

@@ -59,7 +59,6 @@ local function at(e)
 	if not (e.zone and e.x and e.y) then return "" end
 	return (" |goto %s %.1f,%.1f"):format(e.zone, e.x, e.y)
 end
-local function only(e) return e.faction and (" |only " .. e.faction) or "" end
 
 local ACT = { accept = "accept", turnin = "turnin", talk = "talk", click = "click", use = "use", kill = "kill",
 	collect = "collect", ["goto"] = "goto", buy = "buy" }
@@ -89,8 +88,10 @@ end
 function C.BooksBody(books, turnin)
 	local out = {}
 	for _, b in ipairs(C.Route(books or {})) do
-		out[#out + 1] = ("step\n  click %s%s |complete collected(books:%s)%s%s"):format(clean(b.name), at(b), b.id,
-			only(b), b.note and ("\n  |tip " .. clean(b.note)) or "")
+		-- a facção vai no passo: passo inativo é pulado; objetivo inativo deixava o passo para sempre aberto
+		out[#out + 1] = ("step%s\n  click %s%s |complete collected(books:%s)%s"):format(
+			b.faction and ("\n  only " .. b.faction) or "", clean(b.name), at(b), b.id,
+			b.note and ("\n  |tip " .. clean(b.note)) or "")
 	end
 	for fac, t in pairs(turnin or {}) do
 		out[#out + 1] = ("step\n  only %s\n  talk %s%s%s"):format(fac, clean(t.name), t.npc and ("##" .. t.npc) or "", at(t))
@@ -104,7 +105,7 @@ function C.PetsBody(pets, L)
 	local pts = {}
 	for _, p in ipairs(pets or {}) do
 		local first = p.pts and p.pts[1]
-		pts[#pts + 1] = { pet = p, zone = p.zone, x = first and first[1], y = first and first[2] }
+		if first and p.zone then pts[#pts + 1] = { pet = p, zone = p.zone, x = first[1], y = first[2] } end
 	end
 	local out = {}
 	for _, it in ipairs(C.Route(pts)) do
@@ -212,9 +213,17 @@ function C:ToggleFromGoal(goal)
 	return true
 end
 
+local function factionOK(e) return not e.faction or e.faction == UnitFactionGroup("player") end
+local function mine(list)
+	local out = {}
+	for _, e in ipairs(list or {}) do if factionOK(e) then out[#out + 1] = e end end
+	return out
+end
+
+-- as listas do personagem: o que é da outra facção fica de fora (progresso, contagem, página, pinos)
 function C:Lists()
 	local d = data()
-	return { quests = d.quests or {}, books = d.books and d.books.list or {}, pets = d.pets or {} }
+	return { quests = mine(d.quests), books = mine(d.books and d.books.list), pets = d.pets or {} }
 end
 
 function C:KindProgress(kind)
@@ -228,20 +237,27 @@ function C:OpenGuide(key)
 	if ns.Viewer then ns.Viewer:Show() end
 end
 
-function C:GoTo(e, x, y, label)
+local function where(e)
 	local p = e.pts and e.pts[1]
-	ns.Waypoint:SetCustom(e.zone, x or e.x or (p and p[1]), y or e.y or (p and p[2]), label or e.name)
+	local x, y = e.x or (p and p[1]), e.y or (p and p[2])
+	if e.zone and x and y then return x, y end
+end
+C.Where = where
+
+function C:GoTo(e, x, y, label)
+	if not (x and y) then x, y = where(e) end
+	if not (e.zone and x and y) then return end            -- sem ponto conhecido: não há para onde guiar
+	ns.Waypoint:SetCustom(e.zone, x, y, label or e.name)
 end
 
 local function isHunter() return select(2, UnitClass("player")) == "HUNTER" end
-local function factionOK(e) return not e.faction or e.faction == UnitFactionGroup("player") end
 
 -- o que aparece no mapa: livros (e os pets raros, para caçador) que faltam
 function C:MapPoints()
 	local out = {}
 	if ns.db.collectPins == false then return out end
 	for _, b in ipairs(C:Lists().books) do
-		if factionOK(b) and not C:IsDone("books", b) then out[#out + 1] = { kind = "books", e = b } end
+		if not C:IsDone("books", b) then out[#out + 1] = { kind = "books", e = b } end
 	end
 	if isHunter() then
 		for _, p in ipairs(C:Lists().pets) do
@@ -299,29 +315,41 @@ local function points(it)
 end
 
 -- mapa-múndi
+-- cada pino fica preso ao seu ponto (chave = tipo, id e coordenada): a cada atualização só se move ou some; o
+-- quadro sob o mouse nunca troca de dono (o clique direito marcaria outro livro)
 local worldPool, worldActive = {}, {}
-local function worldRelease() for _, p in ipairs(worldActive) do p:Hide(); worldPool[#worldPool + 1] = p end; wipe(worldActive) end
+local function worldRelease()
+	for k, p in pairs(worldActive) do p:Hide(); worldPool[#worldPool + 1] = p; worldActive[k] = nil end
+end
 local function worldUpdate()
 	local WMF = WorldMapFrame
-	worldRelease()
-	if not (WMF and WMF:IsShown() and WMF.GetCanvas) then return end
+	if not (WMF and WMF:IsShown() and WMF.GetCanvas) then return worldRelease() end
 	local shown = WMF.GetMapID and WMF:GetMapID()
 	local ok, canvas = pcall(WMF.GetCanvas, WMF)
-	if not (shown and ok and canvas) then return end
+	if not (shown and ok and canvas) then return worldRelease() end
 	local w, h = canvas:GetSize()
-	if not w or w == 0 then return end
+	if not w or w == 0 then return worldRelease() end
+	local seen = {}
 	for _, it in ipairs(C:MapPoints()) do
 		for _, pt in ipairs(points(it)) do
 			local x, y = ns.Waypoint:MapPos(it.e.zone, pt[1], pt[2], shown)
 			if x and x >= 0 and x <= 1 and y >= 0 and y <= 1 then
-				local p = table.remove(worldPool) or pinFrame(canvas)
-				p:SetParent(canvas); p:SetFrameStrata("TOOLTIP")
-				style(p, it, pt[1], pt[2])
+				local key = ("%s:%s:%s:%s"):format(it.kind, tostring(it.e.id), pt[1], pt[2])
+				local p = worldActive[key]
+				if not p then
+					p = table.remove(worldPool) or pinFrame(canvas)
+					p:SetParent(canvas); p:SetFrameStrata("TOOLTIP")
+					style(p, it, pt[1], pt[2])
+					worldActive[key] = p
+				end
 				p:ClearAllPoints(); p:SetPoint("CENTER", canvas, "TOPLEFT", x * w, -y * h)
 				p:Show()
-				worldActive[#worldActive + 1] = p
+				seen[key] = true
 			end
 		end
+	end
+	for k, p in pairs(worldActive) do
+		if not seen[k] then p:Hide(); worldPool[#worldPool + 1] = p; worldActive[k] = nil end
 	end
 end
 
@@ -381,7 +409,7 @@ local function miniUpdate()
 	end
 end
 
-ns:Every(0.3, function() if WorldMapFrame and WorldMapFrame:IsShown() then pcall(worldUpdate) elseif #worldActive > 0 then worldRelease() end end)
+ns:Every(0.3, function() if WorldMapFrame and WorldMapFrame:IsShown() then pcall(worldUpdate) elseif next(worldActive) then worldRelease() end end)
 ns:Every(1, function() local ok, err = pcall(miniUpdate); if not ok then ns:Debug("Collect", err) end end)
 C.WorldUpdate, C.MiniUpdate = worldUpdate, miniUpdate
 
@@ -443,7 +471,7 @@ local function rowsFor(kind)
 	else
 		local list = lists[kind]
 		for _, e in ipairs(list) do
-			if kind ~= "books" or factionOK(e) then
+			do
 				local done = C:IsDone(kind, e)
 				local kindKey = kind
 				out[#out + 1] = {
@@ -452,7 +480,7 @@ local function rowsFor(kind)
 					sub = kind == "pets" and L.COL_PET_SUB:format(e.family or "?", tostring(e.lvl or "?"), ns.LocalizedZone(e.zone or ""))
 						or ("%s · %s"):format(ns.LocalizedZone(e.zone or ""), e.note or ""),
 					value = done and L.V3_COLLECTED or nil, valueColor = Cc.done,
-					action = not done and L.V3_GO or nil, onAction = function() C:GoTo(e) end,
+					action = (not done and where(e)) and L.V3_GO or nil, onAction = function() C:GoTo(e) end,
 					onClick = function() C:Mark(kindKey, e.id, not C:IsDone(kindKey, e)) end,
 				}
 			end
