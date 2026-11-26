@@ -566,6 +566,11 @@ L.V3_RAID = "raid"
 -- Navigation
 L.V3_NAV_TITLE = "Navigation"
 L.V3_NAV_NEAREST = "NEAREST, BY TRAVEL TIME"
+-- rótulo curto na grade de serviços da Navegação (3 colunas)
+L.V3_NAV_SVC_CLASSTRAINER = "Class trainer"
+L.V3_NAV_SVC_PROFTRAINER = "Professions"
+L.V3_NAV_SVC_AUCTION = "Auction house"
+L.V3_NAV_SVC_STABLE = "Stable master"
 L.V3_NAV_CHOOSE = "choose"
 L.V3_NAV_NONE = "none known"
 L.V3_NAV_ARRIVES = "arrives %s"

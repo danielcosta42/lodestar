@@ -22,6 +22,12 @@ function TP.ProfLabel(prof)
 	return rawget(ns.L, "PROF_" .. (prof:upper():gsub("%s+", "_"))) or prof
 end
 
+-- nome do serviço na grade (3 colunas de 120 px): o curto, se houver; senão o de sempre
+function TP.SvcLabel(kind)
+	local k = kind:upper()
+	return rawget(ns.L, "V3_NAV_SVC_" .. k) or rawget(ns.L, "SERVICE_" .. k) or kind
+end
+
 -- serviço pedido pelo painel: a falha aparece aqui, não no chat
 local function say(msg)
 	status:SetText(msg or ""); status:Show()
@@ -60,16 +66,18 @@ local function legRow(i)
 	local C = UI.COL
 	local r = CreateFrame("Frame", nil, frame.timeline)
 	r:SetHeight(42)
-	r.dot = UI.Slice(r, "pill", "ARTWORK", C.chip)
+	-- bolinha redonda (o 9-slice "pill" tem margem 15: num quadrado de 26 px não desenha)
+	r.dot = UI.Media(r, "dot", "ARTWORK"); r.dot:SetVertexColor(unpackc(C.chip))
 	r.dot:SetSize(26, 26); r.dot:SetPoint("TOPLEFT", 0, -2)
 	r.icon = UI.Glyph(r, "seta-rota", "OVERLAY", 64); r.icon:SetSize(13, 13); r.icon:SetPoint("CENTER", r.dot, "CENTER")
 	r.tex = r:CreateTexture(nil, "OVERLAY"); r.tex:SetSize(16, 16); r.tex:SetPoint("CENTER", r.dot, "CENTER")
 	r.line = UI.Rect(r, "BACKGROUND", C.line); r.line:SetWidth(2)
 	r.line:SetPoint("TOP", r.dot, "BOTTOM", 0, 0); r.line:SetPoint("BOTTOM", r, "BOTTOM", 0, -2)
+	-- só pontos de topo: "RIGHT" fixa também o meio vertical e briga com o topo (linha com altura nula, some)
 	r.text = UI.Text(r, 13, C.active, { bold = true, wrap = false })
-	r.text:SetPoint("TOPLEFT", r.dot, "TOPRIGHT", 12, -1); r.text:SetPoint("RIGHT", r, "RIGHT", -64, 0)
+	r.text:SetPoint("TOPLEFT", r, "TOPLEFT", 38, -3); r.text:SetPoint("TOPRIGHT", r, "TOPRIGHT", -64, -3)
 	r.sub = UI.Text(r, 11.5, C.dim, { num = true, wrap = false })
-	r.sub:SetPoint("TOPLEFT", r.text, "BOTTOMLEFT", 0, -2); r.sub:SetPoint("RIGHT", r, "RIGHT", -64, 0)
+	r.sub:SetPoint("TOPLEFT", r.text, "BOTTOMLEFT", 0, -2); r.sub:SetPoint("TOPRIGHT", r.text, "BOTTOMRIGHT", 0, -2)
 	r.time = UI.Text(r, 13, C.muted, { num = true, justify = "RIGHT" }); r.time:SetPoint("TOPRIGHT", r, "TOPRIGHT", 0, -2)
 	legRows[i] = r
 	return r
@@ -108,6 +116,7 @@ local function build()
 	frame.timelineCard = UI.Card(frame, { color = C.card })
 	frame.timeline = CreateFrame("Frame", nil, frame.timelineCard)
 	frame.timeline:SetPoint("TOPLEFT", 14, -12); frame.timeline:SetPoint("TOPRIGHT", -14, -12)
+	frame.timeline:SetHeight(1)
 	frame.noRoute = UI.Text(frame.timelineCard, 12.5, C.dim, { wrap = true })
 	frame.noRoute:SetPoint("TOPLEFT", 14, -14); frame.noRoute:SetPoint("RIGHT", -14, 0); frame.noRoute:SetText(L.TRAVEL_NOROUTE)
 
@@ -123,10 +132,10 @@ local function build()
 		b:SetPoint("TOPLEFT", ((i - 1) % cols) * (bw + 6), -math.floor((i - 1) / cols) * 50)
 		local bg = UI.Card(b, { radius = 6, color = C.card }); bg:SetAllPoints(); bg:SetFrameLevel(b:GetFrameLevel())
 		b.name = UI.Text(b, 12.5, C.active, { bold = true, wrap = false })
-		b.name:SetPoint("TOPLEFT", 10, -7); b.name:SetPoint("RIGHT", -6, 0)
-		b.name:SetText(L["SERVICE_" .. kind:upper()] or kind)
+		b.name:SetPoint("TOPLEFT", 10, -7); b.name:SetPoint("TOPRIGHT", -6, -7)
+		b.name:SetText(TP.SvcLabel(kind))
 		b.time = UI.Text(b, 11.5, C.dim, { num = true, wrap = false })
-		b.time:SetPoint("TOPLEFT", b.name, "BOTTOMLEFT", 0, -2); b.time:SetPoint("RIGHT", -6, 0)
+		b.time:SetPoint("TOPLEFT", b.name, "BOTTOMLEFT", 0, -2); b.time:SetPoint("TOPRIGHT", b.name, "BOTTOMRIGHT", 0, -2)
 		b.time:SetText(kind == "proftrainer" and L.V3_NAV_CHOOSE or "…")
 		b:SetScript("OnClick", function(self)
 			if kind == "proftrainer" then return toggleProfList(self) end
@@ -237,13 +246,14 @@ function TP.Refresh()
 			end
 			r.line:SetShown(i < n)
 			r:ClearAllPoints(); r:SetPoint("TOPLEFT", frame.timeline, "TOPLEFT", 0, -ty)
-			r:SetPoint("RIGHT", frame.timeline, "RIGHT", 0, 0)
+			r:SetPoint("TOPRIGHT", frame.timeline, "TOPRIGHT", 0, -ty)
 			r:Show()
 			ty = ty + 46
 		elseif r then
 			r:Hide()
 		end
 	end
+	frame.timeline:SetHeight(math.max(ty, 1))
 	local cardH = n > 0 and (ty + 16) or 46
 	frame.timelineCard:SetHeight(cardH)
 	y = y + cardH + 16

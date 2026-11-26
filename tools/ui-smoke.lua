@@ -15,6 +15,7 @@ local function new(kind, name, parent)
 	local o = setmetatable({ _kind = kind, _shown = true, _w = 0, _h = 0, _scripts = {}, _parent = parent, _name = name },
 		Obj)
 	if name then _G[name] = o end
+	if parent and type(parent) == "table" then parent._kids = parent._kids or {}; parent._kids[#parent._kids + 1] = o end
 	return o
 end
 local M = {}
@@ -48,6 +49,8 @@ function M:SetScript(k, f) self._scripts[k] = f end
 function M:HookScript(k, f) self._scripts[k] = f end
 function M:GetScript(k) return self._scripts[k] end
 function M:GetPoint() return "CENTER", nil, "CENTER", 0, 0 end
+function M:SetPoint(p) self._pts = self._pts or {}; self._pts[#self._pts + 1] = p end
+function M:ClearAllPoints() self._pts = {} end
 function M:GetParent() return self._parent end
 function M:GetName() return self._name end
 function M:GetFrameLevel() return 1 end
@@ -283,6 +286,34 @@ step("SkipQuest + Undo", function()
 end)
 step("Viewer empty", function() local k = ns.currentGuide.key; ns:CloseGuide(k); ns.Viewer:Refresh(); ns:LoadGuide(k, true) end)
 step("TravelPanel", function() ns.TravelPanel:Toggle(); ns.TravelPanel.Refresh(); ns.TravelPanel.MeasureServices() end)
+-- Navegação com rota (issue #108): cada perna aparece, ancorada só pelo topo, e a linha do tempo tem altura
+step("TravelPanel route", function()
+	local T = ns.Travel
+	local savedRoute, savedPW = T.Route, T.PlayerWorld
+	local a, b, c = { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 0, x = 900, y = 0 }
+	local route = { leg = 2, kind = "guide", dest = { label = "Silvermane Stalker" }, legs = {
+		{ k = "walk", a = a, b = b, s = 20, name = "Revantusk Village" },
+		{ k = "flight", a = b, b = c, s = 120, name = "Aerie Peak" },
+		{ k = "walk", a = c, b = c, s = 10 } } }
+	T.Route = function() return route end
+	T.PlayerWorld = function() return { c = 0, x = 100, y = 0 } end
+	local ok, err = pcall(ns.TravelPanel.Refresh)
+	T.Route, T.PlayerWorld = savedRoute, savedPW
+	assert(ok, err)
+	local tl = _G.LodestarTravel.timeline
+	assert(tl._h >= 3 * 46, "linha do tempo sem altura: " .. tl._h)
+	local shown = 0
+	for _, r in ipairs(tl._kids or {}) do
+		if r._shown then
+			shown = shown + 1
+			local pts = table.concat(r._pts or {}, " ")
+			assert(pts == "TOPLEFT TOPRIGHT", "perna " .. shown .. " ancorada por " .. pts)
+			assert(r.text._text and r.text._text ~= "", "perna " .. shown .. " sem texto")
+		end
+	end
+	assert(shown == 3, "pernas na linha do tempo: " .. shown)
+	ns.TravelPanel.Refresh()
+end)
 for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "rares", "characters",
 	"class", "dungeonguides", "reputation",
 	"attunements", "events" }) do

@@ -22,7 +22,9 @@ claro").
   Pular passo. Tudo do #89 segue (clique direito, marcar à mão, tempo, falha).
 - **R4 Navegação.** O destino com o tempo total e a hora de chegada; a viagem em linha do tempo (perna, ícone, tempo;
   a atual destacada, as feitas apagadas); os serviços em grade com o tempo de viagem medido ao abrir (um por quadro);
-  profissão abre a lista; coordenada.
+  profissão abre a lista; coordenada. (#108) A linha do tempo tem altura e cada perna se ancora pelo topo (sem
+  altura, o cliente não desenha as pernas); na grade, rótulo curto quando o nome não cabe (Profissões, Estábulo).
+  O + de adicionar guia fica com o fundo no nível do botão (senão o fundo cobre o glifo).
 - **R5 Central.** Substitui a Biblioteca (ns.GuideMenu abre a Central). Menu: Início, Leveling, Masmorras,
   Equipamento, Colecionáveis, Legado, Classe, Reputação, Sintonias, Eventos; Configurações e Relatar no pé.
   - **Início:** continuar (guia, passo, o que fazer agora, nível e XP) e os cartões de masmorra, equipamento, Legado e
