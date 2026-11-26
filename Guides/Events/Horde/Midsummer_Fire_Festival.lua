@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Horde/Midsummer Fire Festival", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "b9a25ef7",
+	rev = "11eb3b22",
 }, [[
 step
   talk Festival Talespinner##16818
@@ -17,7 +17,7 @@ step
   click Flame of Stonetalon##181562 |q 9388 |goto Stonetalon Mountains 59.45,72.36
 step
   talk Festival Flamekeeper##16788
-  turnin Flickering Flames in Kalimdor##9388 |goto Teldrassil 56.56,91.94
+  turnin Flickering Flames in Kalimdor##9388 |goto Undercity 65.6,35.99
 step
   talk Festival Talespinner##16818
   accept Flickering Flames in the Eastern Kingdoms##9389 |goto Undercity 66.47,37.76
@@ -29,7 +29,7 @@ step
   click Flame of the Wetlands##181567 |q 9389 |goto Wetlands 51.23,17.29
 step
   talk Festival Flamekeeper##16788
-  turnin Flickering Flames in the Eastern Kingdoms##9389 |goto Teldrassil 56.56,91.94
+  turnin Flickering Flames in the Eastern Kingdoms##9389 |goto Undercity 65.6,35.99
 step
   collect Flame of Ironforge##181333 |goto Ironforge 64.6,24.84 |tip Loot the quest item here — it starts the quest.
   accept Stealing Ironforge's Flame##9331 |goto Ironforge 64.6,24.84

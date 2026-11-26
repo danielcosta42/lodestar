@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Shaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "50135adf",
+	rev = "6d1e051f",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -62,11 +62,11 @@ step
   talk Minor Manifestation of Earth##5891
   turnin Call of Earth##94374 |goto Dun Morogh 24.84,61.86
 step
-  only Shaman
+  only not Human not NightElf not Skyborne Shaman
   talk Minor Manifestation of Earth##5891
   accept Call of Earth##94375 |goto Dun Morogh 24.84,61.86
 step
-  only Shaman
+  only not Human not NightElf not Skyborne Shaman
   note Bring the Rough Quartz to Teo Hammerstorm in Anvilmar.
   talk Teo Hammerstorm##257446
   turnin Call of Earth##94375 |goto Dun Morogh 28.79,66.18
@@ -138,11 +138,11 @@ step
   collect Glowing Ember##6655 |q 94467 |goto Durotar 38.72,58.29 |tip {dropsfrom}Minor Manifestation of Fire
 step
   only Shaman
-  turnin Call of Fire##94467 |goto Durotar 38.96,58.22
+  turnin Call of Fire##94467 |goto Loch Modan 31.79,64.52
 step
   only Shaman
   click Brazier of the Dormant Flame##61934
-  accept Call of Fire##94468 |goto Durotar 38.96,58.22
+  accept Call of Fire##94468 |goto Loch Modan 31.79,64.52
 step
   only Shaman
   note Bring the Torch of Eternal Flame to Bruegs Kindleborn in Dun Morogh.

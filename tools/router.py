@@ -231,8 +231,10 @@ ZONA_MAE = {16651: 405}
 # Fora do leveling por nome: Arena Master começa no baú do evento de PvP da arena de Gurubashi;
 # 78089-78093 e 78676 são as cadeias de paladino e ladino do Season of Discovery que terminam em
 # objeto; Starving Arcane é de masmorra, e o giver novo em Alterac a trazia para a rota principal;
-# The Damp Note começa num drop de elite dentro de Blackfathom Deeps: fica no guia da masmorra
-FORA_QUESTS = {6564, 7810, 78089, 78090, 78091, 78092, 78093, 78676, 92457}
+# The Damp Note começa num drop de elite dentro de Blackfathom Deeps: fica no guia da masmorra;
+# The Darkmoon Faire (7905 A, 7926 H) é entrega na feira, que só existe na semana dela, e o banco a
+# classifica na capital, não no -364: com a entrega no continente certo, a da Horda entrava em Dustwallow
+FORA_QUESTS = {6564, 7810, 78089, 78090, 78091, 78092, 78093, 78676, 92457, 7905, 7926}
 # Season of Discovery: as quests de lá estão no cliente, mas sem classe no banco. Runa de ladino,
 # Dragonslayer's: o guia mandava todo mundo clicar num objeto que não dá nada e parava ali. Só esta
 # faixa: dos 86000 em diante é conteúdo do Forever, e os Library Books caem aqui também.
@@ -928,6 +930,27 @@ class Router:
             out |= set(((tabela(i) or {}).get("spawns") or {}))
         return out
 
+    def _na_quest(self, ent, q, ponta):
+        """O NPC ou objeto com os spawns que valem para esta quest (`ponta`: "start" ou "end").
+        Quem nasce em várias zonas fica na zona da outra ponta, quando ela é uma delas; senão, no
+        continente dela. O Minor Manifestation of Earth existe em Durotar, Mulgore e Dun Morogh, e
+        o guia mandava o xamã da Horda a Dun Morogh; o Brazier of the Dormant Flame, em Durotar e
+        Loch Modan, mandava o anão a Durotar. Quem tem cópia numa capital amiga não muda de
+        continente: o Harbinger do Lunar Festival dá a Valadar Starsong em Stormwind, e o convite
+        leva a Moonglade."""
+        sp = (ent or {}).get("spawns") or {}
+        if len(sp) < 2:
+            return ent
+        o = "end" if ponta == "start" else "start"
+        outra = self._areas(q[o + "Npcs"], self.npc) | self._areas(q[o + "Objects"], self.obj)
+        cont = {continente(a, self.faction) for a in outra}
+        zonas = set(sp) & outra
+        if not zonas and len(cont) == 1 and not {int(z) for z in sp} & CAPITAIS.get(self.faction, set()):
+            zonas = {z for z in sp if continente(z, self.faction) in cont}
+        if not zonas or zonas == set(sp):
+            return ent
+        return dict(ent, spawns={z: p for z, p in sp.items() if z in zonas})   # na ordem do banco: empate de contagem não varia
+
     def _instancia(self, z):
         return (self.zones.get(str(z)) or {}).get("name", "").endswith((" - Dungeon", " - Raid"))
 
@@ -1226,13 +1249,13 @@ class Router:
             anchored = False
             aqui = {str(area)} | {str(s) for s, m in ZONA_MAE.items() if m == area}
             for n in q["startNpcs"]:
-                npc = self.npc(n)
+                npc = self._na_quest(self.npc(n), q, "start")
                 if npc and aqui & set(npc.get("spawns", {})):
                     anchored = True
                     break
             if not anchored:
                 for o in q["startObjects"]:
-                    ob = self.obj(o)
+                    ob = self._na_quest(self.obj(o), q, "start")
                     if ob and aqui & set(ob.get("spawns", {})):
                         anchored = True
                         break
@@ -1518,13 +1541,13 @@ class Router:
             giver = giver_id = None
             giver_kind = "npc"; item_verb = None; gc_o = None
             for n in q["startNpcs"]:                 # o giver que spawna NA zona primeiro
-                cand = self.npc(n)
+                cand = self._na_quest(self.npc(n), q, "start")
                 if cand and str(area) in cand.get("spawns", {}):
                     giver, giver_id = cand, n
                     break
             if giver is None:                       # início por OBJETO (clicar p/ pegar)
                 for o in q["startObjects"]:
-                    cand = self.obj(o)
+                    cand = self._na_quest(self.obj(o), q, "start")
                     sp = self.best_spawn(cand, area)
                     # a caixa de correio de Orgrimmar também dá Deviate Hides: não para a Aliança
                     if sp and sp[0] not in self._inimigas:
@@ -1547,7 +1570,7 @@ class Router:
                         giver_kind, item_verb, gc_o = "item", src[0], src[3]
                         break
             if giver is None:                       # giver noutra zona (capital): do continente
-                cands = [(n, self.npc(n)) for n in q["startNpcs"]]   # do guia, se houver
+                cands = [(n, self._na_quest(self.npc(n), q, "start")) for n in q["startNpcs"]]   # do guia, se houver
                 cands = [(n, c) for n, c in cands if c and c.get("spawns")]
                 cont = continente(area, self.faction) if area != -1 and self.faction else None
                 perto = [(n, c) for n, c in cands
@@ -1561,21 +1584,22 @@ class Router:
             gc = gc_o or self.best_spawn(giver, area)
             ender = ender_id = eobj = None
             for n in q["endNpcs"]:                   # quem recebe: o que spawna na zona primeiro
-                cand = self.npc(n)
+                cand = self._na_quest(self.npc(n), q, "end")
                 if cand and str(area) in cand.get("spawns", {}):
                     ender, ender_id = cand, n
                     break
             if ender is None:
                 for n in q["endNpcs"]:
                     if self.npc(n):
-                        ender, ender_id = self.npc(n), n
+                        ender, ender_id = self._na_quest(self.npc(n), q, "end"), n
                         break
             ec = self.best_spawn(ender, area)
             if not ender:                           # entrega por OBJETO (sem NPC)
                 for o in q["endObjects"]:
-                    sp = self.best_spawn(self.obj(o), area)
+                    ob = self._na_quest(self.obj(o), q, "end")
+                    sp = self.best_spawn(ob, area)
                     if sp:
-                        eobj, ec = self.obj(o), sp
+                        eobj, ec = ob, sp
                         break
                 if not eobj and q["endObjects"]:    # objeto de entrega sem spawn: perto do giver
                     eo = self.obj(q["endObjects"][0])
@@ -2512,7 +2536,8 @@ class Router:
         # o banco a abra a todas: Call of Earth de Durotar, Mulgore e Zephras são a
         # mesma escolha para o banco, e o xamã orc ficava só com a da ilha
         for qid, q in list(sel.items()):
-            zonas = self._areas(q["startNpcs"], self.npc)
+            zonas = set().union(*(((self._na_quest(self.npc(n), q, "start") or {}).get("spawns") or {})
+                                  for n in q["startNpcs"]))   # a 1518 é do orc: o Manifestation dela é o de Durotar
             z = int(next(iter(zonas))) if len(zonas) == 1 else None
             irma = any(x in sel and qid in sel[x]["exclusiveTo"] for x in q["exclusiveTo"])
             casa = RACA_DA_ZONA.get(z) or (RACA_DA_CAPITAL.get(z) if irma else None)
@@ -2890,8 +2915,28 @@ def demo():
     barrens = next(i for i, g in enumerate(cadeia) if re.match(r"Leveling/Horde/The Barrens \(1\d-", g))
     hills = next(i for i, g in enumerate(cadeia) if g.startswith("Leveling/Horde/Hillsbrad Foothills (3"))
     assert barrens < hills, "cadeia do morto-vivo sem Kalimdor antes de Hillsbrad 32-39: %s" % cadeia[:8]
+    # quem nasce em várias zonas fica na da outra ponta (#65): o Minor Manifestation of Earth em
+    # Durotar para o orc e o troll, em Mulgore para o tauren; o brazier do anão em Loch Modan
+    manif = r.npc(5891)                                   # Durotar 14, Mulgore 215, Dun Morogh 1
+    assert set(r._na_quest(manif, r.quests["1518"], "start")["spawns"]) == {"14"}, "1518 fora de Durotar"
+    assert set(r._na_quest(manif, r.quests["1520"], "end")["spawns"]) == {"215"}, "1520 fora de Mulgore"
+    xama_h = ler(guias, "..", "..", "Class", "Horde", "Shaman.lua")
+    for v, q, zona in (("turnin", 1517, "Durotar"), ("accept", 1518, "Durotar"),
+                       ("turnin", 1520, "Mulgore"), ("accept", 1521, "Mulgore")):
+        assert re.search(r"%s Call of Earth##%d \|goto %s " % (v, q, zona), xama_h), "Call of Earth %d fora de %s" % (q, zona)
+    assert "##1518" not in ler(guias, "Mulgore_4-10.lua"), "Call of Earth do orc em Mulgore"
+    xama_a = ler(guias, "..", "..", "Class", "Alliance", "Shaman.lua")
+    assert re.search(r"accept Call of Fire##94468 \|goto Loch Modan ", xama_a), "Call of Fire do anão em Durotar"
+    # pegar ou entregar na zona inicial da outra facção, fora dos eventos (a feira e os anciãos do
+    # Lunar Festival vão lá de propósito)
+    for lado, zonas in (("Horde", "Elwynn Forest|Dun Morogh|Teldrassil"), ("Alliance", "Durotar|Mulgore|Tirisfal Glades")):
+        for raiz in ("Leveling", "Class"):
+            pasta = os.path.join(guias, "..", "..", raiz, lado)
+            for f in os.listdir(pasta):
+                m = re.search(r"^  (?:accept|turnin) [^\n]*\|goto (?:%s) " % zonas, ler(pasta, f), re.M)
+                assert not m, "%s/%s/%s: %s" % (raiz, lado, f, m.group(0))
     print("ok: router — antecessores alternativos, verbo kill, nível, tarefa sem objetivo, rota das zonas "
-          "iniciais, ding, vários alvos, saída da ilha, explorar, cadeia intercalada")
+          "iniciais, ding, vários alvos, saída da ilha, explorar, cadeia intercalada, spawn da outra ponta")
 
 
 if __name__ == "__main__":

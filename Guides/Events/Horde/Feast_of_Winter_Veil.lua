@@ -4,11 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Events/Horde/Feast of Winter Veil", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "14307d95",
+	rev = "afe312a8",
 }, [[
 step
   talk Wonderform Operator##15732
-  accept Winter's Presents##8828 |goto Dun Morogh 53.16,35.62
+  accept Winter's Presents##8828 |goto Durotar 49.99,13.59
 step
   note Speak with Great-father Winter. He is located near the Smokywood Pastures vendor area in Orgrimmar.
   talk Great-father Winter##13445
@@ -49,7 +49,7 @@ step
   turnin A Ticking Present##8769 |goto Orgrimmar 52.28,69.29
 step
   talk Wonderform Operator##15732
-  accept New Year Celebrations!##8861 |goto Dun Morogh 53.16,35.62
+  accept New Year Celebrations!##8861 |goto Durotar 49.99,13.59
 step
   note Bring the Smokywood Supplies to Innkeeper Pala in Thunder Bluff.
   talk Innkeeper Pala##6746
@@ -148,7 +148,7 @@ step
   note Bring 1 Deeprock Salt and 5 gold coins to the Holly Preserver machine, upon which you will receive 5 Preserved Holly.
   collect 1 Deeprock Salt##8150 |q 8799 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Stone Golem, Lesser Rock Elemental
 step
-  turnin The Hero of the Day##8799 |goto Undercity 67.33,38
+  turnin The Hero of the Day##8799 |goto Orgrimmar 53.57,67.17
 step
   talk Innkeeper Gryshka##6929
   accept Flexing for Nougat##8359 |goto Orgrimmar 54.1,68.41
