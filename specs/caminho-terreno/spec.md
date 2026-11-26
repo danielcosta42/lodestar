@@ -48,8 +48,9 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
   - As do addon ficam em `PassagesData.lua`, com as que vierem dos relatórios.
   - `/ls report` leva as gravadas em texto curto (`c|zona|x,y;...`).
   - Gravar ou limpar refaz os caminhos da rota: larga a busca em curso, limpa as pernas a pé e redesenha.
-  - A gravação para em voo, morte ou salto grande num tique (teleporte, pedra de lar) e quando troca de continente.
-  - O trecho gravado caindo é de mão única. Trecho de mais de 2 células entre dois pontos não liga nada: é salto.
+  - A gravação para em voo, morte, salto grande num tique (teleporte, pedra de lar), velocidade acima de 18 jd/s
+    (barco, zepelim) e quando troca de continente.
+  - O trecho gravado caindo por mais de ~1 s é de mão única (um pulo comum não conta). Trecho de mais de 2 células entre dois pontos não liga nada: é salto.
   - O relatório não usa "|" (a caixa leria como código de textura ou link).
 - A segunda busca poda, durante a própria busca, o passo que estoura o limite de travados. O orçamento dela é um
   terço do limite, ou um quinto se a primeira estourou. Nos 552 pares de mestres de voo, o pior caso foi de 2,4 s

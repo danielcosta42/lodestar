@@ -13,6 +13,8 @@ ns.Passages = P
 P.MIN_STEP = 3          -- jardas entre dois pontos gravados
 P.MIN_LEN = 10          -- jardas: menos que isso não é passagem
 P.MAX_TICK = 15         -- jardas num tique (0,2 s): mais que isso é voo, teleporte, pedra — não é andar
+P.MAX_SPEED = 18        -- jd/s: a montaria mais rápida faz 14; barco e zepelim no mesmo continente passam disso
+P.FALL_TICKS = 5        -- tiques caindo seguidos (~1 s) para ser queda: um pulo comum não deixa a rampa de mão única
 
 -- Junta mais um ponto ao trecho: só se andou MIN_STEP desde o último. pts = { x1, y1, ... }.
 function P.Add(pts, x, y)
@@ -109,13 +111,26 @@ ns:Every(0.2, function()
 	local me = ns.Travel and ns.Travel.PlayerWorld()
 	if not me then return end
 	local n = #rec.pts
-	local salto = n >= 2 and ((me.x - rec.pts[n - 1]) ^ 2 + (me.y - rec.pts[n]) ^ 2) > P.MAX_TICK ^ 2
-	if me.c ~= rec.c or salto or (UnitOnTaxi and UnitOnTaxi("player"))
+	local now = GetTime()
+	local d2 = n >= 2 and ((me.x - rec.pts[n - 1]) ^ 2 + (me.y - rec.pts[n]) ^ 2) or 0
+	-- rápido demais desde o último tique (barco, zepelim): não é andar
+	local veloz = rec.lastPos and rec.lastT and now > rec.lastT
+		and math.sqrt((me.x - rec.lastPos.x) ^ 2 + (me.y - rec.lastPos.y) ^ 2) / (now - rec.lastT) > P.MAX_SPEED
+	rec.lastPos, rec.lastT = { x = me.x, y = me.y }, now
+	if me.c ~= rec.c or d2 > P.MAX_TICK ^ 2 or veloz or (UnitOnTaxi and UnitOnTaxi("player"))
 		or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then
 		return P:Stop()
 	end
-	if P.Add(rec.pts, me.x, me.y) and IsFalling and IsFalling() then
+	-- queda: só depois de ~1 s caindo; os trechos dela ficam de mão única
+	if IsFalling and IsFalling() then
+		rec.fallTicks = (rec.fallTicks or 0) + 1
+		if rec.fallTicks == 1 then rec.fallFrom = #rec.pts / 2 end
+	else
+		rec.fallTicks = 0
+	end
+	P.Add(rec.pts, me.x, me.y)
+	if (rec.fallTicks or 0) >= P.FALL_TICKS then
 		rec.f = rec.f or {}
-		rec.f[(#rec.pts - 2) / 2] = true                 -- o trecho que acabou de entrar foi uma queda
+		for seg = rec.fallFrom, #rec.pts / 2 - 1 do rec.f[seg] = true end
 	end
 end)

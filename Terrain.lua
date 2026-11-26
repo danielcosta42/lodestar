@@ -251,7 +251,7 @@ local caminho
 -- A segunda busca roda com um terço do limite quando a primeira provou que não há ligação (acabou a fila), e com um
 -- quinto quando a primeira estourou o limite (região grande: a Revantusk cai aqui). A passagem curta, quando existe,
 -- sai em poucas expansões (~20 mil na Revantusk; a busca já poda o passo que estoura o limite de travados), e o nil
--- que não tem jeito custa 20-33% a mais, não o dobro.
+-- que não tem jeito custa uma fração a mais, não o dobro (a expansão solta custa mais que a estrita).
 -- O caminho dela vem marcado (`solto`): quem chama não o refaz a cada desvio do jogador.
 function TR.Path(dados, de, para, maxExp, ceder)
 	local pts, motivo = caminho(dados, de, para, maxExp, ceder, false)
