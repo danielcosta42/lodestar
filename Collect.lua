@@ -176,6 +176,25 @@ end
 local function hasItem(id) return id and ns.ItemCount and ns.ItemCount(id) > 0 end
 local function hasToy(id) return id and PlayerHasToy and PlayerHasToy(id) end
 
+-- o diário do jogo tem o colecionável? (brinquedo, mascote pelo item, montaria pelo item; senão, a bolsa)
+function C.Owned(kind, item)
+	if kind == "toy" then return hasToy(item) or hasItem(item) end
+	if kind == "mount" and C_MountJournal and C_MountJournal.GetMountFromItem then
+		local ok, id = pcall(C_MountJournal.GetMountFromItem, item)
+		if ok and id and C_MountJournal.GetMountInfoByID then
+			local ok2, isCollected = pcall(function() return select(11, C_MountJournal.GetMountInfoByID(id)) end)
+			if ok2 and isCollected then return true end
+		end
+	elseif kind == "pet" and C_PetJournal and C_PetJournal.GetPetInfoByItemID and C_PetJournal.GetNumCollectedInfo then
+		local ok, species = pcall(function() return select(13, C_PetJournal.GetPetInfoByItemID(item)) end)
+		if ok and species then
+			local ok2, n = pcall(C_PetJournal.GetNumCollectedInfo, species)
+			if ok2 and tonumber(n) and n > 0 then return true end
+		end
+	end
+	return hasItem(item)
+end
+
 -- já foi? (o que o jogo sabe vale primeiro; o marcado à mão vale sempre)
 function C:IsDone(kind, e)
 	if not e then return false end
@@ -183,7 +202,10 @@ function C:IsDone(kind, e)
 	if kind == "books" then
 		return (e.quest and ns.IsQuestDone(e.quest)) or hasItem(e.item) or false
 	elseif kind == "quests" then
-		if e.item and (hasToy(e.item) or hasItem(e.item)) then return true end
+		-- com o item conhecido, vale o diário (brinquedo, mascote, montaria): a última quest da corrente pode
+		-- vir antes do colecionável (a insígnia do Alcaz junta seis peças depois dela); "item" comum é a bolsa
+		if e.item and e.kind ~= "item" then return C.Owned(e.kind, e.item) and true or false end
+		if e.item and hasItem(e.item) then return true end
 		local last = e.doneQuest
 		return last and ns.IsQuestDone(last) or false
 	end
