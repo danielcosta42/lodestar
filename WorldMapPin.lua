@@ -14,7 +14,7 @@ local function ensurePin(canvas)
 	pin:SetSize(22, 22)
 	pin:SetFrameStrata("TOOLTIP")
 	local ring = UI.Glyph(pin, "alvo", "OVERLAY", 128); ring:SetAllPoints()
-	ring:SetVertexColor(UI.unpackc(UI.COL.accent))
+	ring:SetVertexColor(UI.unpackc(UI.HUD.accent))
 	pin.ring = ring
 	-- pulso sutil
 	pin._t = 0

@@ -555,6 +555,11 @@ do
 		if codigo:find(k, 1, true) then return true end
 		local suf = k:match("^NOTE_(.+)$") or k:match("^TIP_(.+)$")
 		if suf and tokens[suf] then return true end
+		-- status e specs do Equipamento (GearPlan.lua): a chave sai do nome curto em código ("str", "arms")
+		local stat = k:match("^STAT_([%u%d]+)$")
+		if stat and nomes[stat:lower()] then return true end
+		local spec = k:match("^SPEC_%u+_(%w+)$")
+		if spec and nomes[spec] then return true end
 		for _, pre in ipairs(DIN) do
 			if k:sub(1, #pre) == pre then
 				local s = k:sub(#pre + 1)

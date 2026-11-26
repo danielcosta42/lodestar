@@ -168,7 +168,7 @@ local function build()
 	}
 	frame.kindTabs.fast:SetPoint("TOPRIGHT", -12, -(HEAD_H + 8))
 	frame.kindTabs.high:SetPoint("RIGHT", frame.kindTabs.fast, "LEFT", -2, 0)
-	local sep = UI.Rect(frame, "ARTWORK", { 1, 1, 1, 0.06 })
+	local sep = UI.Rect(frame, "ARTWORK", UI.COL.line)
 	sep:SetPoint("TOPLEFT", 12, -(HEAD_H + 36)); sep:SetPoint("TOPRIGHT", -12, -(HEAD_H + 36)); sep:SetHeight(1)
 
 	-- seletor de marco (só no Mais rápido)
@@ -209,7 +209,7 @@ local function build()
 	frame.empty:SetJustifyH("CENTER")
 
 	-- rodapé: quantos no placar e o convite à guilda
-	local foot = UI.Rect(frame, "ARTWORK", { 1, 1, 1, 0.06 })
+	local foot = UI.Rect(frame, "ARTWORK", UI.COL.line)
 	foot:SetPoint("BOTTOMLEFT", 12, 44); foot:SetPoint("BOTTOMRIGHT", -12, 44); foot:SetHeight(1)
 	frame.count = frame:CreateFontString(nil, "OVERLAY"); UI.SetFont(frame.count, 11, { color = C.muted })
 	frame.count:SetPoint("BOTTOMLEFT", 16, 18)

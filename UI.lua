@@ -10,35 +10,133 @@ UI.MEDIA  = "Interface\\AddOns\\" .. ADDON .. "\\Media\\"
 UI.GLYPH  = "Interface\\AddOns\\" .. ADDON .. "\\lodestar-glyphs\\"   -- ícones de UI
 UI.ICON   = "Interface\\AddOns\\" .. ADDON .. "\\lodestar-icones\\"   -- marca/logo
 
--- Paleta (spec Lodestar: preto quente + dourado premium; verde=feito, azul=dica) --
-UI.COL = {
+-- Paleta. Dois temas (specs/lodestar-3): o claro é o padrão; o escuro é o de sempre. UI.COL é UMA tabela, mudada
+-- no lugar por UI.ApplyTheme (no ADDON_LOADED, antes de qualquer janela nascer): quem guardou `local C = UI.COL`,
+-- ou até `UI.COL.accent`, vê o tema certo. Trocar de tema vale depois de um /reload.
+--
+-- UI.HUD é fixa (o escuro): o que é desenhado direto sobre o mundo — seta, bússola, coordenadas, item da quest —
+-- precisa de texto claro com sombra em qualquer tema.
+local DARK = {
 	bg          = { 0.070, 0.067, 0.051, 0.96 },  -- fundo dos painéis (#12110D)
 	panel       = { 0.118, 0.110, 0.086, 1.00 },  -- cards/superfícies (#1E1C16)
+	card        = { 0.118, 0.110, 0.086, 1.00 },
 	header      = { 0.130, 0.115, 0.078, 1.00 },  -- barra de título (dourado sutil)
 	border      = { 0.878, 0.659, 0.306, 0.30 },  -- borda dourada sutil
 	borderHi    = { 0.878, 0.659, 0.306, 0.60 },  -- borda dourada em hover
+	line        = { 1, 1, 1, 0.06 },              -- fio separador
 	accent      = { 0.878, 0.659, 0.306, 1.00 },  -- OURO primário (#E0A84E)
 	accentBright= { 0.941, 0.812, 0.541, 1.00 },  -- ouro claro / topo gradiente (#F0CF8A)
 	accentDeep  = { 0.776, 0.490, 0.133, 1.00 },  -- ouro escuro / base gradiente (#C67D22)
 	accentDk    = { 0.776, 0.490, 0.133, 1.00 },  -- (alias legado)
+	accentSoft  = { 0.878, 0.659, 0.306, 0.16 },
 	amber       = { 0.941, 0.647, 0.235, 1.00 },  -- seta/distância (#F0A53C)
+	amberSoft   = { 0.941, 0.647, 0.235, 0.16 },
 	done        = { 0.435, 0.749, 0.451, 1.00 },  -- verde concluído (#6FBF73)
+	doneSoft    = { 0.435, 0.749, 0.451, 0.16 },
 	active      = { 0.941, 0.902, 0.824, 1.00 },  -- texto primário (#F0E6D2)
 	soft        = { 0.788, 0.604, 0.325, 1.00 },  -- ouro apagado (#C99A53)
 	muted       = { 0.604, 0.569, 0.498, 1.00 },  -- secundário (#9A917F)
 	dim         = { 0.420, 0.400, 0.361, 1.00 },  -- rótulos apagados (#6B665C)
+	faded       = { 0.373, 0.420, 0.451, 1.00 },  -- texto de feito/riscado (#5F6B73)
 	tip         = { 0.498, 0.690, 0.878, 1.00 },  -- azul dicas (#7FB0E0)
+	tipSoft     = { 0.498, 0.690, 0.878, 0.16 },
+	danger      = { 1.000, 0.420, 0.420, 1.00 },
+	dangerSoft  = { 1.000, 0.420, 0.420, 0.16 },
+	epic        = { 0.741, 0.471, 0.957, 1.00 },
+	epicSoft    = { 0.741, 0.471, 0.957, 0.16 },
 	factionA    = { 0.416, 0.624, 0.878, 1.00 },  -- Aliança (#6A9FE0)
 	factionH    = { 0.820, 0.416, 0.353, 1.00 },  -- Horda (#D16A5A)
 	green       = { 0.290, 0.640, 0.360, 1.00 },  -- switch ligado
+	track       = { 0, 0, 0, 0.45 },              -- trilho de barra
+	chip        = { 0, 0, 0, 0.35 },              -- fundo de chip
+	hover       = { 1, 1, 1, 0.05 },
+	ink         = { 0.941, 0.902, 0.824, 1.00 },  -- botão primário: fundo
+	onInk       = { 0.070, 0.067, 0.051, 1.00 },  -- botão primário: texto
 	shadow      = { 0.00, 0.00, 0.00, 0.55 },
+	qUncommon   = { 0.118, 1.000, 0.000, 1.00 },
+	qRare       = { 0.000, 0.439, 0.867, 1.00 },
+	qEpic       = { 0.639, 0.208, 0.933, 1.00 },
 }
+local LIGHT = {
+	bg          = { 0.984, 0.973, 0.949, 0.98 },  -- papel (#FBF8F2)
+	panel       = { 1.000, 1.000, 1.000, 1.00 },  -- cartão (#FFFFFF)
+	card        = { 1.000, 1.000, 1.000, 1.00 },
+	header      = { 0.957, 0.933, 0.886, 1.00 },  -- faixa (#F4EEE2)
+	border      = { 0.902, 0.863, 0.796, 1.00 },  -- fio (#E6DCCB)
+	borderHi    = { 0.827, 0.769, 0.651, 1.00 },  -- fio forte (#D3C4A6)
+	line        = { 0.941, 0.910, 0.855, 1.00 },  -- separador (#F0E8DA)
+	accent      = { 0.612, 0.420, 0.063, 1.00 },  -- ouro que lê sobre o claro (#9C6B10)
+	accentBright= { 0.725, 0.522, 0.122, 1.00 },  -- ouro das barras (#B9851F)
+	accentDeep  = { 0.541, 0.373, 0.071, 1.00 },  -- (#8A5F12)
+	accentDk    = { 0.541, 0.373, 0.071, 1.00 },
+	accentSoft  = { 0.965, 0.914, 0.800, 1.00 },  -- (#F6E9CC)
+	amber       = { 0.663, 0.396, 0.039, 1.00 },  -- (#A9650A)
+	amberSoft   = { 0.988, 0.937, 0.851, 1.00 },  -- (#FCEFD9)
+	done        = { 0.180, 0.541, 0.306, 1.00 },  -- (#2E8A4E)
+	doneSoft    = { 0.890, 0.953, 0.910, 1.00 },  -- (#E3F3E8)
+	active      = { 0.114, 0.133, 0.188, 1.00 },  -- tinta (#1D2230)
+	soft        = { 0.541, 0.416, 0.208, 1.00 },  -- (#8A6A35)
+	muted       = { 0.306, 0.333, 0.400, 1.00 },  -- (#4E5566)
+	dim         = { 0.424, 0.451, 0.514, 1.00 },  -- (#6C7383)
+	faded       = { 0.541, 0.565, 0.627, 1.00 },  -- (#8A90A0)
+	tip         = { 0.176, 0.424, 0.710, 1.00 },  -- (#2D6CB5)
+	tipSoft     = { 0.894, 0.933, 0.980, 1.00 },  -- (#E4EEFA)
+	danger      = { 0.698, 0.227, 0.227, 1.00 },  -- (#B23A3A)
+	dangerSoft  = { 0.976, 0.890, 0.882, 1.00 },  -- (#F9E3E1)
+	epic        = { 0.557, 0.169, 0.816, 1.00 },  -- (#8E2BD0)
+	epicSoft    = { 0.953, 0.902, 0.984, 1.00 },  -- (#F3E6FB)
+	factionA    = { 0.176, 0.424, 0.710, 1.00 },
+	factionH    = { 0.698, 0.227, 0.227, 1.00 },
+	green       = { 0.180, 0.541, 0.306, 1.00 },
+	track       = { 0.937, 0.902, 0.839, 1.00 },  -- (#EFE6D6)
+	chip        = { 0.957, 0.933, 0.886, 1.00 },
+	hover       = { 0.114, 0.133, 0.188, 0.05 },
+	ink         = { 0.114, 0.133, 0.188, 1.00 },
+	onInk       = { 0.984, 0.973, 0.949, 1.00 },
+	shadow      = { 0.00, 0.00, 0.00, 0.22 },
+	qUncommon   = { 0.102, 0.541, 0.200, 1.00 },  -- (#1A8A33)
+	qRare       = { 0.043, 0.388, 0.769, 1.00 },  -- (#0B63C4)
+	qEpic       = { 0.557, 0.169, 0.816, 1.00 },
+}
+UI.THEMES = { light = LIGHT, dark = DARK }
 
-UI.FONT       = STANDARD_TEXT_FONT or "Fonts\\FRIZQT__.TTF"  -- corpo (papel de Barlow)
-UI.FONT_NUM   = "Fonts\\ARIALN.TTF"       -- estreita, rótulos/números (Barlow Condensed)
--- Friz Quadrata (serif humanista) é bem mais próxima da Cinzel do que MORPHEUS,
--- e sem o espaçamento largo estranho. Troque por Cinzel.ttf quando tiver o arquivo.
-UI.FONT_TITLE = STANDARD_TEXT_FONT or "Fonts\\FRIZQT__.TTF"
+local function copyc(c) return { c[1], c[2], c[3], c[4] } end
+UI.HUD = {}
+for k, v in pairs(DARK) do UI.HUD[k] = copyc(v) end
+
+UI.COL = {}
+function UI.ApplyTheme(name)
+	local t = UI.THEMES[name] or LIGHT
+	for k, v in pairs(t) do
+		local cur = UI.COL[k]
+		if cur then cur[1], cur[2], cur[3], cur[4] = v[1], v[2], v[3], v[4] else UI.COL[k] = copyc(v) end
+	end
+	UI.theme = UI.THEMES[name] and name or "light"
+	UI.dark = UI.theme == "dark"
+end
+UI.ApplyTheme("light")
+
+-- "rrggbb" de uma cor da paleta, para |cff…|r
+function UI.Hex(key)
+	local c = type(key) == "table" and key or UI.COL[key] or UI.COL.active
+	return ("%02x%02x%02x"):format(math.floor(c[1] * 255 + 0.5), math.floor(c[2] * 255 + 0.5), math.floor(c[3] * 255 + 0.5))
+end
+
+-- Fontes: Barlow (OFL, Media/Fonts) nos idiomas de alfabeto latino; nos outros, a fonte do jogo, que tem os glifos.
+local LATIN = { enUS = true, enGB = true, ptBR = true, ptPT = true, deDE = true, esES = true, esMX = true,
+	frFR = true, itIT = true }
+local FONTS = "Interface\\AddOns\\" .. ADDON .. "\\Media\\Fonts\\"
+if LATIN[GetLocale and GetLocale() or "enUS"] then
+	UI.FONT       = FONTS .. "Barlow-Medium.ttf"
+	UI.FONT_BOLD  = FONTS .. "Barlow-SemiBold.ttf"
+	UI.FONT_NUM   = FONTS .. "BarlowCondensed-SemiBold.ttf"
+	UI.FONT_TITLE = FONTS .. "Barlow-Bold.ttf"
+else
+	UI.FONT       = STANDARD_TEXT_FONT or "Fonts\\FRIZQT__.TTF"
+	UI.FONT_BOLD  = UI.FONT
+	UI.FONT_NUM   = "Fonts\\ARIALN.TTF"
+	UI.FONT_TITLE = UI.FONT
+end
 
 -- helpers ---------------------------------------------------------------------
 local function unpackc(c, a)
@@ -46,16 +144,37 @@ local function unpackc(c, a)
 end
 UI.unpackc = unpackc
 
+-- opts: num (condensada, números e rótulos), bold, title, color, outline, shadow, hud (texto sobre o mundo:
+-- sempre com sombra escura, em qualquer tema)
 function UI.SetFont(fs, size, opts)
 	opts = opts or {}
-	local font = opts.title and UI.FONT_TITLE or (opts.num and UI.FONT_NUM) or UI.FONT
+	local font = opts.title and UI.FONT_TITLE or (opts.num and UI.FONT_NUM) or (opts.bold and UI.FONT_BOLD) or UI.FONT
 	fs:SetFont(font, size, opts.outline or "")
+	if not fs:GetFont() then fs:SetFont(STANDARD_TEXT_FONT or "Fonts\\FRIZQT__.TTF", size, opts.outline or "") end
 	if opts.color then fs:SetTextColor(unpackc(opts.color)) end
-	if opts.shadow ~= false then
+	if opts.shadow == false or (not UI.dark and not opts.hud) then
+		fs:SetShadowOffset(0, 0)
+	else
 		fs:SetShadowColor(0, 0, 0, 0.9)
 		fs:SetShadowOffset(1, -1)
 	end
 	return fs
+end
+
+-- Textura 9-slice da Media (cantos arredondados que não esticam). Sem a API (cliente velho): cor sólida.
+local SLICES = { ["round-12"] = 12, ["round-12-line"] = 12, ["round-6"] = 6, ["round-6-line"] = 6, pill = 15, shadow = 32 }
+function UI.Slice(parent, file, layer, color, sub)
+	local t = parent:CreateTexture(nil, layer or "BACKGROUND", nil, sub)
+	if t.SetTextureSliceMargins then
+		t:SetTexture(UI.MEDIA .. file)
+		local m = SLICES[file] or 8
+		t:SetTextureSliceMargins(m, m, m, m)
+		if t.SetTextureSliceMode then t:SetTextureSliceMode(0) end
+		if color then t:SetVertexColor(unpackc(color)) end
+	elseif color then
+		t:SetColorTexture(unpackc(color))
+	end
+	return t
 end
 
 -- textura de cor sólida
@@ -95,6 +214,11 @@ function UI.Panel(parent, opts)
 	local bg = UI.Rect(f, "BACKGROUND", opts.color or UI.COL.bg)
 	bg:SetAllPoints()
 	f.bg = bg
+	-- janela de topo no claro: sombra suave por trás (o mundo atrás é escuro; o papel precisa descolar dele)
+	if not UI.dark and parent == UIParent and opts.border ~= false then
+		local sh = UI.Slice(f, "shadow", "BACKGROUND", UI.COL.shadow, -8)
+		sh:SetPoint("TOPLEFT", -22, 18); sh:SetPoint("BOTTOMRIGHT", 22, -26)
+	end
 	if opts.border ~= false then addBorder(f, opts.borderColor or UI.COL.border) end
 	if opts.accentStripe then
 		local s = UI.Rect(f, "ARTWORK", opts.accentColor or UI.COL.accent)
@@ -107,11 +231,14 @@ end
 -- Barra de progresso (fundo + preenchimento)
 function UI.Bar(parent, color)
 	local bar = CreateFrame("Frame", nil, parent)
-	local bg = UI.Rect(bar, "BACKGROUND", { 0, 0, 0, 0.45 }); bg:SetAllPoints()
-	local fill = UI.Rect(bar, "ARTWORK", color or UI.COL.accent)
+	local bg = UI.dark and UI.Rect(bar, "BACKGROUND", UI.COL.track) or UI.Slice(bar, "pill", "BACKGROUND", UI.COL.track)
+	bg:SetAllPoints()
+	local fill = UI.dark and UI.Rect(bar, "ARTWORK", color or UI.COL.accent)
+		or UI.Slice(bar, "pill", "ARTWORK", color or UI.COL.accentBright)
 	fill:SetPoint("TOPLEFT"); fill:SetPoint("BOTTOMLEFT")
 	fill:SetWidth(1)
-	bar.fill = fill
+	bar.fill, bar.track = fill, bg
+	function bar:SetColor(c) if self.fill.SetVertexColor and not UI.dark then self.fill:SetVertexColor(unpackc(c)) else self.fill:SetColorTexture(unpackc(c)) end end
 	function bar:SetProgress(frac)
 		frac = math.max(0, math.min(1, frac or 0))
 		local w = self:GetWidth() * frac
@@ -121,25 +248,44 @@ function UI.Bar(parent, color)
 end
 
 -- Botão "ghost" clean (sem arte da Blizzard)
-function UI.Button(parent, text, w, h)
+-- Botão. No escuro, o "ghost" de sempre (retângulo de 1px). No claro, arredondado; `kind` = "primary" (tinta
+-- cheia, a ação principal da tela) ou nada (contorno).
+function UI.Button(parent, text, w, h, kind)
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(w or 74, h or 22)
-	local bg = UI.Rect(b, "BACKGROUND", UI.COL.panel); bg:SetAllPoints()
-	addBorder(b, UI.COL.border)
 	local fs = b:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(fs, 12, { num = true, color = UI.COL.muted })
-	fs:SetPoint("CENTER")
-	fs:SetText(text)
 	b.text = fs
+	fs:SetPoint("CENTER")
+	if UI.dark then
+		local bg = UI.Rect(b, "BACKGROUND", UI.COL.panel); bg:SetAllPoints()
+		addBorder(b, UI.COL.border)
+		UI.SetFont(fs, 12, { num = true, color = UI.COL.muted })
+		fs:SetText(text)
+		b:SetScript("OnEnter", function()
+			bg:SetColorTexture(unpackc(UI.COL.header))
+			fs:SetTextColor(unpackc(UI.COL.active))
+			for _, t in pairs(b._border) do t:SetColorTexture(unpackc(UI.COL.borderHi)) end
+		end)
+		b:SetScript("OnLeave", function()
+			bg:SetColorTexture(unpackc(UI.COL.panel))
+			fs:SetTextColor(unpackc(UI.COL.muted))
+			for _, t in pairs(b._border) do t:SetColorTexture(unpackc(UI.COL.border)) end
+		end)
+		return b
+	end
+	local primary = kind == "primary"
+	local bg = UI.Slice(b, "round-6", "BACKGROUND", primary and UI.COL.ink or UI.COL.card); bg:SetAllPoints()
+	local line = UI.Slice(b, "round-6-line", "BORDER", primary and UI.COL.ink or UI.COL.border); line:SetAllPoints()
+	b.bg, b.line = bg, line
+	UI.SetFont(fs, 12.5, { bold = true, color = primary and UI.COL.onInk or UI.COL.muted })
+	fs:SetText(text)
 	b:SetScript("OnEnter", function()
-		bg:SetColorTexture(unpackc(UI.COL.header))
-		fs:SetTextColor(unpackc(UI.COL.active))
-		for _, t in pairs(b._border) do t:SetColorTexture(unpackc(UI.COL.borderHi)) end
+		if primary then bg:SetVertexColor(unpackc(UI.COL.accentDeep)); line:SetVertexColor(unpackc(UI.COL.accentDeep))
+		else line:SetVertexColor(unpackc(UI.COL.borderHi)); fs:SetTextColor(unpackc(UI.COL.active)) end
 	end)
 	b:SetScript("OnLeave", function()
-		bg:SetColorTexture(unpackc(UI.COL.panel))
-		fs:SetTextColor(unpackc(UI.COL.muted))
-		for _, t in pairs(b._border) do t:SetColorTexture(unpackc(UI.COL.border)) end
+		if primary then bg:SetVertexColor(unpackc(UI.COL.ink)); line:SetVertexColor(unpackc(UI.COL.ink))
+		else line:SetVertexColor(unpackc(UI.COL.border)); fs:SetTextColor(unpackc(UI.COL.muted)) end
 	end)
 	return b
 end
@@ -147,12 +293,14 @@ end
 -- Chip: rótulo compacto com fundo + ícone (glyph) opcional
 function UI.Chip(parent, color, textColor)
 	local c = CreateFrame("Frame", nil, parent)
-	local bg = UI.Rect(c, "BACKGROUND", color or { 0, 0, 0, 0.35 }); bg:SetAllPoints()
+	local bg = UI.dark and UI.Rect(c, "BACKGROUND", color or UI.COL.chip)
+		or UI.Slice(c, "pill", "BACKGROUND", color or UI.COL.accentSoft)
+	bg:SetAllPoints()
 	c.bg = bg
 	c.icon = c:CreateTexture(nil, "OVERLAY"); c.icon:SetSize(11, 11)
 	c.icon:SetPoint("LEFT", 5, 0); c.icon:Hide()
 	local fs = c:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(fs, 11, { num = true, color = textColor or UI.COL.muted })
+	UI.SetFont(fs, 11, { num = true, color = textColor or (UI.dark and UI.COL.muted or UI.COL.accentDeep) })
 	fs:SetPoint("LEFT", 6, 0)
 	c.text = fs
 	function c:SetIcon(glyph, tint)
@@ -210,15 +358,21 @@ end
 function UI.Switch(parent, onToggle)
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(46, 24)
-	local track = UI.Rect(b, "BACKGROUND", { 1, 1, 1, 0.14 }); track:SetAllPoints()
-	addBorder(b, { 1, 1, 1, 0.10 })
+	local off = UI.dark and { 1, 1, 1, 0.14 } or UI.COL.track
+	local track
+	if UI.dark then
+		track = UI.Rect(b, "BACKGROUND", off); addBorder(b, { 1, 1, 1, 0.10 })
+	else
+		track = UI.Slice(b, "pill", "BACKGROUND", off)
+	end
+	track:SetAllPoints()
+	local function paintTrack(c) if UI.dark then track:SetColorTexture(unpackc(c)) else track:SetVertexColor(unpackc(c)) end end
 	local knob = UI.Media(b, "dot", "OVERLAY"); knob:SetSize(18, 18)
-	knob:SetPoint("LEFT", 3, 0); knob:SetVertexColor(0.96, 0.96, 0.96, 1)
+	knob:SetPoint("LEFT", 3, 0); knob:SetVertexColor(1, 1, 1, 1)
 	b.knob = knob
 	function b:SetOn(on)
 		self._on = on and true or false
-		if self._on then track:SetColorTexture(unpackc(UI.COL.green))
-		else track:SetColorTexture(1, 1, 1, 0.14) end
+		paintTrack(self._on and UI.COL.green or off)
 		knob:ClearAllPoints()
 		knob:SetPoint(self._on and "RIGHT" or "LEFT", self._on and -3 or 3, 0)
 	end
@@ -237,13 +391,13 @@ function UI.Slider(parent, minV, maxV, step, onChange)
 	s:SetOrientation("HORIZONTAL"); s:SetHeight(16)
 	s:SetMinMaxValues(minV, maxV); s:SetValueStep(step or 1)
 	if s.SetObeyStepOnDrag then s:SetObeyStepOnDrag(true) end
-	local bg = UI.Rect(s, "BACKGROUND", { 0, 0, 0, 0.35 })
+	local bg = UI.Rect(s, "BACKGROUND", UI.COL.track)
 	bg:SetPoint("LEFT"); bg:SetPoint("RIGHT"); bg:SetHeight(6)
 	local fill = UI.Rect(s, "ARTWORK", UI.COL.accent)
 	fill:SetPoint("LEFT", bg, "LEFT"); fill:SetHeight(6); fill:SetWidth(1)
 	local thumb = s:CreateTexture(nil, "OVERLAY")
 	thumb:SetTexture(UI.MEDIA .. "dot"); thumb:SetSize(16, 16)
-	thumb:SetVertexColor(0.96, 0.94, 0.86, 1)
+	if UI.dark then thumb:SetVertexColor(0.96, 0.94, 0.86, 1) else thumb:SetVertexColor(unpackc(UI.COL.accentBright)) end
 	s:SetThumbTexture(thumb)
 	local function paint(val)
 		local frac = (maxV > minV) and (val - minV) / (maxV - minV) or 0
@@ -284,6 +438,7 @@ end
 
 -- Ornamento de canto (linhas douradas em ⌐) — decorativo p/ janelas
 function UI.CornerFlourish(frame)
+	if not UI.dark then return end           -- o claro não tem ornamento: o cartão arredondado basta
 	local C = UI.COL.accent
 	for _, corner in ipairs({ "TOPLEFT", "TOPRIGHT" }) do
 		local h = UI.Rect(frame, "OVERLAY", C); h:SetSize(16, 2)
@@ -295,6 +450,198 @@ function UI.CornerFlourish(frame)
 end
 
 --------------------------------------------------------------------------------
+-- Lodestar 3 (specs/lodestar-3): cartão, janela, botão de ícone, selo, segmentado, item de menu lateral, rolagem.
+-- No escuro tudo cai no retângulo de 1px de sempre; no claro, cantos arredondados e sombra.
+--------------------------------------------------------------------------------
+function UI.Text(parent, size, color, opts)
+	local fs = parent:CreateFontString(nil, "OVERLAY")
+	opts = opts or {}
+	opts.color = color or UI.COL.active
+	UI.SetFont(fs, size, opts)
+	fs:SetJustifyH(opts.justify or "LEFT")
+	if opts.wrap ~= nil then fs:SetWordWrap(opts.wrap) end
+	return fs
+end
+
+-- Cartão: superfície arredondada com fio. opts: color, line (false = sem fio), shadow, radius ("12" | "6").
+function UI.Card(parent, opts)
+	opts = opts or {}
+	local f = CreateFrame("Frame", opts.name, parent)
+	if UI.dark then
+		f.bg = UI.Rect(f, "BACKGROUND", opts.color or UI.COL.panel); f.bg:SetAllPoints()
+		if opts.line ~= false then addBorder(f, opts.lineColor or UI.COL.border) end
+	else
+		local r = opts.radius == 6 and "round-6" or "round-12"
+		if opts.shadow then
+			local sh = UI.Slice(f, "shadow", "BACKGROUND", UI.COL.shadow, -8)
+			sh:SetPoint("TOPLEFT", -22, 18); sh:SetPoint("BOTTOMRIGHT", 22, -26)
+		end
+		f.bg = UI.Slice(f, r, "BACKGROUND", opts.color or UI.COL.card); f.bg:SetAllPoints()
+		if opts.line ~= false then
+			f.line = UI.Slice(f, r .. "-line", "BORDER", opts.lineColor or UI.COL.border); f.line:SetAllPoints()
+		end
+	end
+	function f:SetColor(c) if UI.dark then self.bg:SetColorTexture(unpackc(c)) else self.bg:SetVertexColor(unpackc(c)) end end
+	function f:SetLine(c)
+		if self.line then self.line:SetVertexColor(unpackc(c))
+		elseif self._border then for _, t in pairs(self._border) do t:SetColorTexture(unpackc(c)) end end
+	end
+	return f
+end
+
+-- Janela de topo: cartão com sombra, arrastável pelo topo, Esc fecha, no estrato pedido.
+function UI.Window(name, w, h, opts)
+	opts = opts or {}
+	local f = UI.Card(UIParent, { name = name, shadow = true, color = UI.COL.bg })
+	f:SetSize(w, h)
+	f:SetPoint(opts.point or "CENTER")
+	f:SetFrameStrata(opts.strata or "DIALOG"); f:SetToplevel(true)
+	f:SetMovable(true); f:EnableMouse(true); f:SetClampedToScreen(true)
+	f:RegisterForDrag("LeftButton")
+	f:SetScript("OnDragStart", function(self) self:StartMoving() end)
+	f:SetScript("OnDragStop", function(self) self:StopMovingOrSizing(); if opts.onMoved then opts.onMoved(self) end end)
+	if opts.esc ~= false and name then tinsert(UISpecialFrames, name) end
+	return f
+end
+
+-- Botão quadrado com glifo (cabeçalhos, ações rápidas). glyph = nome em lodestar-glyphs.
+function UI.IconButton(parent, glyph, size, tip, onClick)
+	local b = CreateFrame("Button", nil, parent)
+	size = size or 28
+	b:SetSize(size, size)
+	local bg = UI.dark and UI.Rect(b, "BACKGROUND", { 0, 0, 0, 0 }) or UI.Slice(b, "round-6", "BACKGROUND", UI.COL.header)
+	bg:SetAllPoints()
+	local g = UI.Glyph(b, glyph, "OVERLAY", 64)
+	g:SetSize(math.floor(size * 0.52), math.floor(size * 0.52)); g:SetPoint("CENTER")
+	g:SetVertexColor(unpackc(UI.COL.muted))
+	b.glyph, b.bg = g, bg
+	b:SetScript("OnEnter", function(self)
+		g:SetVertexColor(unpackc(UI.COL.accent))
+		if tip then GameTooltip:SetOwner(self, "ANCHOR_BOTTOM"); GameTooltip:SetText(tip); GameTooltip:Show() end
+	end)
+	b:SetScript("OnLeave", function() g:SetVertexColor(unpackc(UI.COL.muted)); GameTooltip:Hide() end)
+	if onClick then b:SetScript("OnClick", onClick) end
+	return b
+end
+
+-- Selo em pílula: texto curto com fundo suave. kind = "gold" | "ok" | "warn" | "info" | "danger" | "epic" | "plain".
+local BADGE = {
+	gold = { "accentSoft", "accentDeep" }, ok = { "doneSoft", "done" }, warn = { "amberSoft", "amber" },
+	info = { "tipSoft", "tip" }, danger = { "dangerSoft", "danger" }, epic = { "epicSoft", "epic" },
+	plain = { "chip", "muted" },
+}
+function UI.Badge(parent, text, kind)
+	local b = CreateFrame("Frame", nil, parent)
+	local k = BADGE[kind or "gold"] or BADGE.gold
+	b.bg = UI.dark and UI.Rect(b, "BACKGROUND", UI.COL[k[1]]) or UI.Slice(b, "pill", "BACKGROUND", UI.COL[k[1]])
+	b.bg:SetAllPoints()
+	b.text = UI.Text(b, 11, UI.COL[k[2]], { num = true })
+	b.text:SetPoint("CENTER", 0, 0)
+	function b:Set(txt, newKind)
+		if newKind then
+			local nk = BADGE[newKind] or BADGE.gold
+			if UI.dark then self.bg:SetColorTexture(unpackc(UI.COL[nk[1]])) else self.bg:SetVertexColor(unpackc(UI.COL[nk[1]])) end
+			self.text:SetTextColor(unpackc(UI.COL[nk[2]]))
+		end
+		self.text:SetText(txt)
+		self:SetSize(math.max(18, self.text:GetStringWidth() + 14), 17)
+	end
+	b:Set(text or "")
+	return b
+end
+
+-- Controle segmentado: { { label, value }, ... }; onSelect(value).
+function UI.Segmented(parent, items, onSelect)
+	local f = CreateFrame("Frame", nil, parent)
+	local bg = UI.dark and UI.Rect(f, "BACKGROUND", UI.COL.chip) or UI.Slice(f, "round-6", "BACKGROUND", UI.COL.header)
+	bg:SetAllPoints()
+	f.buttons = {}
+	local x = 3
+	for i, it in ipairs(items) do
+		local b = CreateFrame("Button", nil, f)
+		b:SetHeight(24)
+		local sel = UI.dark and UI.Rect(b, "BACKGROUND", UI.COL.header) or UI.Slice(b, "round-6", "BACKGROUND", UI.COL.card)
+		sel:SetAllPoints(); sel:Hide()
+		local fs = UI.Text(b, 12, UI.COL.muted, { bold = true }); fs:SetPoint("CENTER"); fs:SetText(it[1])
+		b:SetWidth(fs:GetStringWidth() + 22)
+		b:SetPoint("LEFT", f, "LEFT", x, 0)
+		x = x + b:GetWidth() + 2
+		b.sel, b.fs, b.value = sel, fs, it[2]
+		b:SetScript("OnClick", function() f:Select(it[2]); if onSelect then onSelect(it[2]) end end)
+		f.buttons[i] = b
+	end
+	f:SetSize(x + 1, 30)
+	function f:Select(value)
+		for _, b in ipairs(self.buttons) do
+			local on = b.value == value
+			b.sel:SetShown(on)
+			b.fs:SetTextColor(unpackc(on and UI.COL.active or UI.COL.muted))
+		end
+		self.value = value
+	end
+	function f:SetLabel(value, label)
+		for _, b in ipairs(self.buttons) do if b.value == value then b.fs:SetText(label) end end
+	end
+	return f
+end
+
+-- Item do menu lateral da Central: glifo + rótulo + contador opcional.
+function UI.NavItem(parent, label, glyph, onClick)
+	local b = CreateFrame("Button", nil, parent)
+	b:SetHeight(32)
+	local sel = UI.dark and UI.Rect(b, "BACKGROUND", UI.COL.hover) or UI.Slice(b, "round-6", "BACKGROUND", UI.COL.card)
+	sel:SetAllPoints(); sel:Hide()
+	local bar = UI.Rect(b, "ARTWORK", UI.COL.accent); bar:SetPoint("TOPLEFT", 0, -7); bar:SetPoint("BOTTOMLEFT", 0, 7)
+	bar:SetWidth(3); bar:Hide()
+	local g = glyph and UI.Glyph(b, glyph, "OVERLAY", 64)
+	if g then g:SetSize(15, 15); g:SetPoint("LEFT", 12, 0); g:SetVertexColor(unpackc(UI.COL.dim)) end
+	local fs = UI.Text(b, 13, UI.COL.muted, { bold = true })
+	fs:SetPoint("LEFT", g or b, g and "RIGHT" or "LEFT", g and 9 or 12, 0); fs:SetText(label)
+	b.count = UI.Badge(b, "", "ok"); b.count:SetPoint("RIGHT", -8, 0); b.count:Hide()
+	b.sel, b.fs, b.g, b.bar = sel, fs, g, bar
+	function b:SetActive(on)
+		self.sel:SetShown(on); self.bar:SetShown(on)
+		self.fs:SetTextColor(unpackc(on and UI.COL.active or UI.COL.muted))
+		if self.g then self.g:SetVertexColor(unpackc(on and UI.COL.accent or UI.COL.dim)) end
+	end
+	function b:SetCount(n, kind)
+		if n and n ~= "" and n ~= 0 then self.count:Set(tostring(n), kind); self.count:Show() else self.count:Hide() end
+	end
+	b:SetScript("OnEnter", function(self) if not self.sel:IsShown() then self.fs:SetTextColor(unpackc(UI.COL.active)) end end)
+	b:SetScript("OnLeave", function(self) if not self.sel:IsShown() then self.fs:SetTextColor(unpackc(UI.COL.muted)) end end)
+	b:SetScript("OnClick", onClick)
+	return b
+end
+
+-- Área com rolagem vertical: devolve o ScrollFrame e o filho (a largura do filho é a da área).
+function UI.Scroll(parent)
+	local sf = CreateFrame("ScrollFrame", nil, parent)
+	local child = CreateFrame("Frame", nil, sf)
+	child:SetSize(1, 1)
+	sf:SetScrollChild(child)
+	sf:EnableMouseWheel(true)
+	local thumb = UI.Rect(parent, "OVERLAY", UI.COL.borderHi); thumb:SetWidth(3); thumb:Hide()
+	local function sync()
+		local max = math.max(0, child:GetHeight() - sf:GetHeight())
+		local v = math.min(sf:GetVerticalScroll(), max)
+		sf:SetVerticalScroll(v)
+		if max <= 0 then thumb:Hide(); return end
+		local vh = sf:GetHeight()
+		local th = math.max(24, vh * vh / (vh + max))
+		thumb:SetHeight(th); thumb:ClearAllPoints()
+		thumb:SetPoint("TOPRIGHT", sf, "TOPRIGHT", 6, -(vh - th) * v / max); thumb:Show()
+	end
+	sf:SetScript("OnMouseWheel", function(self, d)
+		local max = math.max(0, child:GetHeight() - self:GetHeight())
+		self:SetVerticalScroll(math.max(0, math.min(max, self:GetVerticalScroll() - d * 48)))
+		sync()
+	end)
+	sf:SetScript("OnSizeChanged", function(self, w) child:SetWidth(w); sync() end)
+	sf.child, sf.Sync = child, sync
+	return sf, child
+end
+
+--------------------------------------------------------------------------------
 -- Menu: uma coluna de botões presa ao `anchor`; clicar de novo, fora ou Esc fecha.
 -- items = { { texto, função }, ... }
 --------------------------------------------------------------------------------
@@ -302,7 +649,7 @@ local menu
 function UI.Menu(anchor, items)
 	if menu and menu:IsShown() and menu._anchor == anchor then return menu:Hide() end
 	if not menu then
-		menu = UI.Panel(UIParent, { name = "LodestarMenu" })
+		menu = UI.Card(UIParent, { name = "LodestarMenu", shadow = true, color = UI.COL.bg })
 		menu:SetFrameStrata("FULLSCREEN_DIALOG"); menu:SetClampedToScreen(true)
 		menu.buttons = {}
 		tinsert(UISpecialFrames, "LodestarMenu")

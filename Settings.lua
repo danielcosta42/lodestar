@@ -51,7 +51,7 @@ end
 -- fecha a linha: espaço embaixo e um fio separando da próxima
 local function fimDeLinha(page, h)
 	page._y = page._y + math.max(h, 26) + 10
-	local sep = UI.Rect(page, "ARTWORK", { 1, 1, 1, 0.06 })
+	local sep = UI.Rect(page, "ARTWORK", UI.COL.line)
 	sep:SetPoint("TOPLEFT", 0, -page._y); sep:SetSize(CONTENT_W, 1)
 	page._y = page._y + 11
 end
@@ -119,6 +119,13 @@ local function fillAuto(p)
 		function() return ns.db.autoRepair end, function(v) ns.db.autoRepair = v end)
 	switchRow(p, L.SET_SELL, L.SET_SELL_D,
 		function() return ns.db.autoSell end, function(v) ns.db.autoSell = v end)
+	switchRow(p, L.SET_AUTOFLY, L.SET_AUTOFLY_D,
+		function() return ns.db.autoFlight == true end, function(v) ns.db.autoFlight = v end, true)
+	switchRow(p, L.SET_TIMERS, L.SET_TIMERS_D,
+		function() return ns.db.timerAlerts ~= false end, function(v) ns.db.timerAlerts = v end)
+	switchRow(p, L.SET_INSTANCE, L.SET_INSTANCE_D,
+		function() return ns.db.hideInInstance ~= false end,
+		function(v) ns.db.hideInInstance = v; if ns.Instance then ns.Instance:Apply() end end)
 end
 
 local function fillNav(p)
@@ -144,10 +151,16 @@ local function fillNav(p)
 	sliderRow(p, L.SET_MMRANGE, L.SET_MMRANGE_D, 50, 200, 5,
 		function() return (ns.db.minimap.rangeMult or 1) * 100 end,
 		function(v) ns.db.minimap.rangeMult = v / 100 end, "%d%%")
+	switchRow(p, L.SET_TOMTOM, L.SET_TOMTOM_D,
+		function() return ns.db.tomtomShim == true end,
+		function(v) ns.db.tomtomShim = v; if v and ns.TomTomShim then ns.TomTomShim:Install() end end, true)
 end
 
 local function fillHud(p)
 	local L = ns.L
+	switchRow(p, L.SET_THEME, L.SET_THEME_D,
+		function() return (ns.db.theme or "light") == "light" end,
+		function(v) ns.db.theme = v and "light" or "dark"; ns:Print(L.SET_THEME_RELOAD) end)
 	sliderRow(p, L.SET_SCALE, "", 70, 140, 5,
 		function() return (ns.db.viewer.scale or 1) * 100 end,
 		function(v) ns.db.viewer.scale = v / 100; if ns.Viewer then ns.Viewer:ApplyDisplay() end end, "%d%%")
@@ -176,6 +189,18 @@ local function fillHud(p)
 		function() return ns.db.mobWarning end, function(v) ns.db.mobWarning = v end)
 	switchRow(p, L.SET_GEAR, L.SET_GEAR_D,
 		function() return ns.db.gearAdvisor end, function(v) ns.db.gearAdvisor = v end)
+	switchRow(p, L.SET_NEARBY, L.SET_NEARBY_D,
+		function() return ns.db.nearby ~= false end,
+		function(v) ns.db.nearby = v; if ns.Nearby then ns.Nearby.Scan() end end)
+	switchRow(p, L.SET_TARGETBTN, L.SET_TARGETBTN_D,
+		function() return ns.db.targetButton ~= false end,
+		function(v) ns.db.targetButton = v; if ns.TargetButton then ns.TargetButton.Apply() end end)
+	switchRow(p, L.SET_MARKTARGET, L.SET_MARKTARGET_D,
+		function() return ns.db.markTarget ~= false end, function(v) ns.db.markTarget = v end)
+	switchRow(p, L.SET_RARES, L.SET_RARES_D,
+		function() return ns.db.rareAlerts ~= false end, function(v) ns.db.rareAlerts = v end)
+	switchRow(p, L.SET_GEARTIPS, L.SET_GEARTIPS_D,
+		function() return ns.db.gearTips ~= false end, function(v) ns.db.gearTips = v end)
 	switchRow(p, L.SET_TOASTS, L.SET_TOASTS_D,
 		function() return ns.db.toastsEnabled end, function(v) ns.db.toastsEnabled = v end)
 end
@@ -186,6 +211,10 @@ local function fillGroup(p)
 		function() return ns.db.eliteBuddy == true end, function(v) ns.db.eliteBuddy = v end, true)
 	switchRow(p, L.SET_SHARE, L.SET_SHARE_D,
 		function() return ns.db.autoShareQuest end, function(v) ns.db.autoShareQuest = v end, true)
+	switchRow(p, L.SET_PARTYSYNC, L.SET_PARTYSYNC_D,
+		function() return ns.db.partySync ~= false end, function(v) ns.db.partySync = v end)
+	switchRow(p, L.SET_PARTYTELL, L.SET_PARTYTELL_D,
+		function() return ns.db.partyTell == true end, function(v) ns.db.partyTell = v end, true)
 	switchRow(p, L.SET_SHAREQ, L.SET_SHAREQ_D,
 		function() return ns.db.shareQuests end, function(v) ns.db.shareQuests = v end, true)
 	switchRow(p, L.SET_DANGER, L.SET_DANGER_D,
@@ -219,6 +248,8 @@ local function fillTools(p)
 		L.SET_OPEN, function() if ns.Consumables then ns.Consumables:Toggle() end end)
 	buttonRow(p, L.SET_CARDNOW, L.SET_CARDNOW_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("card") end)
 	buttonRow(p, L.SET_TOUR, L.SET_TOUR_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("intro") end)
+	buttonRow(p, L.SET_TIDY, L.SET_TIDY_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("diario") end)
+	buttonRow(p, L.SET_REPORT, L.SET_REPORT_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("report") end)
 end
 
 local function fillAdvanced(p)
@@ -261,7 +292,7 @@ local function navButton(parent, i, def)
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(NAV_W, 36)
 	b:SetPoint("TOPLEFT", 0, -10 - (i - 1) * 38)
-	local hl = UI.Rect(b, "BACKGROUND", { 1, 1, 1, 0.05 }); hl:SetAllPoints(); hl:Hide()
+	local hl = UI.Rect(b, "BACKGROUND", UI.COL.hover); hl:SetAllPoints(); hl:Hide()
 	local bar = UI.Rect(b, "ARTWORK", UI.COL.accent); bar:SetPoint("TOPLEFT"); bar:SetPoint("BOTTOMLEFT")
 	bar:SetWidth(3); bar:Hide()
 	local ic = UI.Glyph(b, def.glyph, "ARTWORK", 64); ic:SetSize(16, 16); ic:SetPoint("LEFT", 16, 0)
@@ -312,7 +343,7 @@ local function build()
 	close:SetPoint("RIGHT", -10, 0)
 
 	-- menu de seções
-	local nav = UI.Panel(frame, { color = { 0, 0, 0, 0.22 }, border = false })
+	local nav = UI.Panel(frame, { color = UI.dark and { 0, 0, 0, 0.22 } or UI.COL.header, border = false })
 	nav:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 0, 0)
 	nav:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 1, 1); nav:SetWidth(NAV_W)
 

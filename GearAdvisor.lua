@@ -93,9 +93,29 @@ local function usable(class, level, classID, subClassID)
 	return true
 end
 
+GA.Usable = usable
+
+-- os pesos genéricos da classe, na chave do Equipamento (spec desconhecida)
+function GA.ClassWeights(class)
+	return W[class] or {}
+end
+
+-- Os espaços de um INVTYPE, sempre em lista ({ 16 }, { 11, 12 }...); nil se não é de vestir.
+function GA.SlotsFor(equipLoc)
+	local d = equipLoc and SLOTS[equipLoc]
+	if not d then return nil end
+	return type(d) == "table" and d or { d }
+end
+
 --------------------------------------------------------------------------------
+-- Nota do item. Com o Equipamento (GearPlan.lua), pelos pesos da spec escolhida; o peso por classe daqui fica de
+-- reserva (cliente sem o módulo, outra classe pedida).
 function GA:Score(link, class)
-	class = class or select(2, UnitClass("player"))
+	local mine = select(2, UnitClass("player"))
+	if ns.GearPlan and ns.GearPlan.ScoreLink and ns.db and (class == nil or class == mine) then
+		return ns.GearPlan:ScoreLink(link)
+	end
+	class = class or mine
 	local w = W[class]; if not (w and link) then return 0 end
 	local s = 0
 	local stats = ns.ItemStats(link)
@@ -119,6 +139,30 @@ local function slotScore(invSlot, class)
 	end
 	if not ns.ItemInfo(link) then return math.huge end   -- ainda sem dado: não dá para comparar
 	return GA:Score(link, class)
+end
+
+-- Quanto um item melhora sobre o equipado no mesmo lugar (o pior dos dois anéis/berloques): ganho e porcentagem.
+-- nil quando não é equipável, a classe não usa, o nível não deixa ou ainda falta dado do item.
+function GA:Gain(link)
+	if not (link and ns.IsEquippable(link)) then return nil end
+	local class = select(2, UnitClass("player"))
+	local level = UnitLevel("player") or 1
+	if not W[class] then return nil end
+	local _, _, _, equipLoc, _, classID, subClassID = ns.ItemInfoInstant(link)
+	local dest = equipLoc and SLOTS[equipLoc]
+	local minLevel = select(5, ns.ItemInfo(link))
+	if not (dest and minLevel and minLevel <= level and usable(class, level, classID, subClassID)) then return nil end
+	local sc = GA:Score(link, class)
+	local eqScore = math.huge
+	if type(dest) == "table" then
+		for _, s in ipairs(dest) do eqScore = math.min(eqScore, slotScore(s, class)) end
+	else
+		eqScore = slotScore(dest, class)
+	end
+	if eqScore == math.huge then return nil end
+	local gain = sc - eqScore
+	local pct = eqScore > 0 and math.floor(gain / eqScore * 100 + 0.5) or nil
+	return gain, pct
 end
 
 --------------------------------------------------------------------------------

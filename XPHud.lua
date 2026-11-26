@@ -183,7 +183,7 @@ function H:Update()
 	local pct = math.floor(xp / max * 100)
 	local rested = GetXPExhaustion and GetXPExhaustion()
 	local restTag = (rested and rested > 0) and "  |cff59b0ffz|r" or ""
-	frame.l1:SetText(("%s %d  |cff8a94a0%d%%|r%s"):format(ns.L.LEVEL_SHORT, lvl, pct, restTag))
+	frame.l1:SetText(("%s %d  |cff" .. UI.Hex("dim") .. "%d%%|r%s"):format(ns.L.LEVEL_SHORT, lvl, pct, restTag))
 	frame.bar:SetProgress(xp / max)
 
 	local xph = xpPerHour()

@@ -73,7 +73,7 @@ end
 local button
 local function ensureButton()
 	if button then return button end
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	button = CreateFrame("Button", "LodestarQuestItem", UIParent, "SecureActionButtonTemplate")
 	button:SetSize(42, 42)
 	button:SetFrameStrata("MEDIUM")
@@ -89,7 +89,7 @@ local function ensureButton()
 	glow:SetBlendMode("ADD"); glow:SetAlpha(0)
 	button.glow = glow
 
-	local bg = UI.Panel(button, { color = { 0, 0, 0, 0.85 } })
+	local bg = UI.Panel(button, { color = { 0, 0, 0, 0.85 }, borderColor = UI.HUD.border })
 	bg:SetAllPoints()
 
 	button.icon = button:CreateTexture(nil, "ARTWORK")
@@ -100,7 +100,7 @@ local function ensureButton()
 	button.cd:SetAllPoints(button.icon)
 
 	button.count = button:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(button.count, 12, { num = true, color = C.active })
+	UI.SetFont(button.count, 12, { num = true, hud = true, color = C.active })
 	button.count:SetPoint("BOTTOMRIGHT", -3, 3)
 
 	button._t = 0

@@ -20,6 +20,29 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 
 ## Features
 
+### Lodestar 3: the player's hub
+- **A light look** by default (the dark one is one switch away), with rounded cards and soft shadows that read over
+  the game world. Barlow (OFL) in Latin-script languages; the game's font in the others.
+- **The Hub** replaces the guide library: Home (continue your guide, your level and XP, the dungeon for right now, gear
+  upgrades, Legacy, collection), Leveling, Dungeons, Gear, Collections, Legacy, Class, Reputation, Attunements and Events.
+- **Dungeons** by level, the one that fits you now, its entrance (learned the first time you go in), the guide quests
+  to pick up first, and for each boss the loot that upgrades your spec, with the drop chance (loot from pfQuest).
+- **Gear** for your spec: pick it (or let Lodestar read it from your talents), tune the stat weights or paste a Pawn
+  string, and see for every slot what you wear and the best upgrade within reach — dungeons for your level, rewards of
+  the quests on your route and your bags — with where it comes from and how much it gains.
+- **Collections**: mounts and pets from the game's own journals, with where each comes from, a source filter,
+  "missing only" and Guide me.
+- **Legacy**: Forever's Legacy challenges, your account points, each group's progress, your highest character of each
+  class and what is closest, with the way there.
+- **While you're here**: goals of the next steps you're close to (objectives of quests in your log, ready turn-ins,
+  quests to pick up ahead), so the step ahead is shorter when you get there. On a grind step, the dungeon that fits you.
+- **Target button** (with a key binding): targets the step's mob or NPC and marks it with a raid icon.
+- **Party sync**: with party members who run Lodestar, their counts under the goals you share, who lacks a quest, and
+  Share.
+- **Rares**: a toast when a known rare usually spawns near you, and a Rares page for your zone (pfQuest data).
+- **Characters**: every character on the account with level, professions, gold and when you last played them.
+- A notice when someone in your circle runs a newer Lodestar.
+
 ### Guidance
 - Clean step window with your current objective, checkboxes, and a preview of what's next.
 - On-screen **waypoint arrow**, a **compass strip** at the top of the screen, and the route drawn as
@@ -39,15 +62,29 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
   bank, auction house, flight master or stable (nearest by travel time, not straight line). All in the
   **Travel** panel — the compass button in the guide header.
 - **Multiple guides open at once as tabs** — switch, add, or close routes on the fly, with a clean empty state when none is loaded.
+- **Live counts on every goal** — "Kill Boar 3/8", the bag count on collect goals, the time left on timed quests (with an
+  alert at 5 minutes and at 1 minute) and a clear mark on a failed escort or timed quest.
+- **Right-click a quest line** to skip that quest (and the quests that follow from it) with **Undo**, show it in the quest
+  log, or abandon it. Abandon a quest the guide still needs and the window offers **Go back for it** or **Skip it**.
+- **Tidy quest log** — the quests in your log your route no longer uses, each with Abandon, and the finished ones no
+  step ahead hands in.
+- **Steps aside in dungeons, raids and battlegrounds** and comes back when you leave (dungeon guides stay).
+- **Key bindings** for the window, next/previous step, Travel, the quest item, Tidy and Report.
 
 ### Automation (never get stuck)
 - **Auto-accept**, **auto-turn-in**, and optional **auto-reward** (off by default; picks the best reward using a class-aware gear score).
 - Auto-selects the right gossip/quest option and auto-shares quests with your party.
 - **Auto-skips** a step whose NPC no longer offers its quest — imperfect data never stalls you.
+- **Hold Shift** at an NPC, a vendor or a flight master and Lodestar keeps its hands off, once.
+- Optional: **take the route's flight** at the flight master by itself.
 
 ### Leveling companions
 - **XP/hour pace HUD** with ETA-to-level and ahead/behind tracking.
-- **Gear Advisor** — pings you when a bag item is an upgrade.
+- **Gear Advisor** — pings you when a bag item is an upgrade, marks it on the item's tooltip ("Upgrade +12%") and puts a
+  green arrow on the best quest reward.
+- Optional: **tell my party** when one of your quests is ready to turn in.
+- Optional: **TomTom compatibility** — without TomTom installed, `/way` and addons that set TomTom waypoints point
+  Lodestar's arrow.
 - Target markers on tooltips & nameplates; player coordinates on minimap and map.
 - Death counter and a shareable end-of-run **Report Card** (with "ghost racing").
 
@@ -63,6 +100,8 @@ goes in the message, and the addon on the other side drops who sent it. Off, sha
 what it always was: a file you hand over on purpose.
 
 ### For contributors
+- **Report a problem** (the guide's ··· menu or `/ls report`): copyable text with the version, the step, where you stand
+  and your addons — no character, realm or account names — ready for a GitHub issue.
 - **Import / export** guides with share codes; record your own route in-game.
 - Interface in English and Brazilian Portuguese; deDE, esES, esMX, frFR, itIT, koKR, ruRU, zhCN and zhTW
   translate the main labels and fall back to English for the rest. Translations welcome.
@@ -91,6 +130,8 @@ what it always was: a file you hand over on purpose.
 | `/ls travel` | Open the Travel panel |
 | `/ls near <type>` | Route to the nearest service: `trainer`, `prof <name>`, `repair`, `vendor`, `inn`, `bank`, `auction`, `flight`, `stable` |
 | `/ls way <x> <y> [zone]` · `/ls way off` | Set / clear a manual destination |
+| `/ls diario` | Tidy quest log: quests your route no longer uses |
+| `/ls report` | Report a problem: copyable text for a GitHub issue |
 
 ---
 
@@ -98,6 +139,11 @@ what it always was: a file you hand over on purpose.
 
 - Routes are generated from the open **[QuestieDB](https://github.com/Questie/QuestieDB)** (Forever
   flavor) by the Questie team, plus what `/ls scan` collects in-game for content no database has yet.
+- Dungeon bosses, their loot and the world's rares come from the **[pfQuest](https://github.com/shagu/pfQuest)**
+  database by Shagu (MIT); `tools/gen_dungeons.py` and `tools/gen_rares.py` regenerate `DungeonData.lua` and
+  `RareData.lua`.
+- The interface font is **[Barlow](https://github.com/jpt/barlow)** by Jeremy Tribby (SIL Open Font License 1.1,
+  `Media/Fonts/OFL.txt`).
 - Flight paths, boats and zeppelins come from the game client's own tables (TaxiNodes, TaxiPath,
   TaxiPathNode, via [wago.tools](https://wago.tools)); `tools/gen_travel.py` regenerates them.
 - Trainers the database leaves untitled (Forever's Horde paladin trainers, the junior profession

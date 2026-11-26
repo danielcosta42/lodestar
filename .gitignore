@@ -18,6 +18,12 @@ tools/*
 !tools/race-tests.lua
 !tools/splits-tests.lua
 !tools/retro-tests.lua
+!tools/revamp-tests.lua
+!tools/lodestar3-tests.lua
+!tools/gen_dungeons.py
+!tools/gen_media.py
+!tools/gen_rares.py
+!tools/ui-smoke.lua
 !tools/questiedb.py
 # O verificador das cópias da lib ChehulNet (vem de danielcosta42/chehulnet pelo sync; o CI roda).
 !tools/chehulnet-lock.sh

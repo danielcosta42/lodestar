@@ -11,14 +11,17 @@ ignore:
   # arte-fonte e preview de HUD
   - "Media/*.zip"
   # glifos que a interface não usa (ficam no repositório como fonte)
-  - "lodestar-glyphs/chevron-cima-*.tga"
-  - "lodestar-glyphs/chevron-dir-*.tga"
+  # chevron-cima-64 é a seta de melhoria (GearTips.lua); só o de 128 fica de fora
+  - "lodestar-glyphs/chevron-cima-128.tga"
+  # chevron-dir-64: o aviso de viagem e o cabeçalho recolhido (Lodestar 3)
+  - "lodestar-glyphs/chevron-dir-128.tga"
   - "lodestar-glyphs/chevron-esq-*.tga"
-  - "lodestar-glyphs/combate-*.tga"
-  - "lodestar-glyphs/escudo-*.tga"
-  - "lodestar-glyphs/martelo-*.tga"
-  - "lodestar-glyphs/moeda-*.tga"
-  - "lodestar-glyphs/passo-atual-*.tga"
+  # combate, escudo, martelo, moeda e passo-atual entram (Lodestar 3: Central, ações rápidas, Navegação); fica o 128
+  - "lodestar-glyphs/combate-128.tga"
+  - "lodestar-glyphs/escudo-128.tga"
+  - "lodestar-glyphs/martelo-128.tga"
+  - "lodestar-glyphs/moeda-128.tga"
+  - "lodestar-glyphs/passo-atual-128.tga"
   - "lodestar-glyphs/faccao-*-128.tga"
   - "Media/*.html"
   # gerador Python + validador (dev only)

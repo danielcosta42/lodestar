@@ -21,7 +21,7 @@ local function ensureMarker()
 	sh:SetPoint("CENTER", 1, -1); sh:SetSize(22, 22)
 	sh:SetRotation(math.pi); sh:SetVertexColor(0, 0, 0, 0.55)
 	local tex = UI.Glyph(marker, "seta-rota", "OVERLAY", 128); tex:SetAllPoints()
-	tex:SetRotation(math.pi); tex:SetVertexColor(UI.unpackc(UI.COL.accent))
+	tex:SetRotation(math.pi); tex:SetVertexColor(UI.unpackc(UI.HUD.accent))
 	marker._t = 0
 	marker:SetScript("OnUpdate", function(self, e)
 		self._t = self._t + e
@@ -106,6 +106,12 @@ local function highlight()
 			if TaxiNodeName(i) == want then
 				local btn = _G["TaxiButton" .. i]
 				if btn then place(btn) end
+				-- voo automático (opcional): o voo da rota, alcançável daqui; Shift escolhe à mão
+				if ns.db.autoFlight and not (IsShiftKeyDown and IsShiftKeyDown())
+					and TaxiNodeGetType(i) == "REACHABLE" and TakeTaxiNode then
+					ns:Printf("%s |cfff0c26a%s|r", ns.L.FLYING_TO, want)
+					return TakeTaxiNode(i)
+				end
 				return ns:Printf("%s |cfff0c26a%s|r", ns.L.FLY_TO, want)
 			end
 		end

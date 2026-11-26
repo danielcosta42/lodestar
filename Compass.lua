@@ -52,7 +52,7 @@ end
 
 local function build()
 	if frame then return frame end
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	local db = ns.db.compass
 	frame = CreateFrame("Frame", "LodestarCompass", UIParent)
 	frame:SetSize(W, H)
@@ -76,7 +76,7 @@ local function build()
 		t:SetSize(1, major and 6 or 3)
 		if LETTER[i] then
 			t.label = frame:CreateFontString(nil, "ARTWORK")
-			UI.SetFont(t.label, 10, { num = true, color = LETTER[i] == "N" and C.accent or PARCH })
+			UI.SetFont(t.label, 10, { num = true, hud = true, color = LETTER[i] == "N" and C.accent or PARCH })
 			t.label:SetText(ns.L["COMPASS_" .. LETTER[i]] or LETTER[i])
 			t.label:SetPoint("TOP", t, "BOTTOM", 0, -2)
 		end
@@ -98,7 +98,7 @@ local function build()
 		markers[k] = t
 	end
 	info = frame:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(info, 11, { num = true, color = C.active })
+	UI.SetFont(info, 11, { num = true, hud = true, color = C.active })
 	info:SetPoint("TOP", frame, "TOP", 0, -24)
 	CP:ApplyDisplay()
 	return frame
@@ -140,7 +140,7 @@ local function update()
 		GetServerTime and GetServerTime() or 0)       -- o segundo: a contagem do barco anda parada
 	if sig == lastSig then return end
 	lastSig = sig
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	local facing = GetPlayerFacing and GetPlayerFacing() or 0
 	for i = 0, 23 do
 		ticks[i]:Hide()

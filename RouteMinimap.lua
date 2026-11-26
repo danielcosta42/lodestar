@@ -75,7 +75,7 @@ local function update()
 	hideAll()
 	lastSig = sig
 	ensure()
-	local C = UI.COL
+	local C = UI.HUD          -- sobre o mundo: a paleta fixa (UI.lua)
 	local col = route.dest and route.dest.red and { 0.9, 0.2, 0.2 } or C.accent
 	local function px(x, y)            -- mundo -> pixels do minimapa, sem prender na borda
 		local rx, ry = G.ToMinimap(p.x, p.y, x, y, facing, rotate, ydPerPx, math.huge)

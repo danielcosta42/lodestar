@@ -1,0 +1,10 @@
+<Bindings>
+	<Binding name="LODESTAR_TOGGLE" header="LODESTAR" category="ADDONS">Lodestar_Binding("toggle")</Binding>
+	<Binding name="LODESTAR_NEXT" category="ADDONS">Lodestar_Binding("next")</Binding>
+	<Binding name="LODESTAR_PREV" category="ADDONS">Lodestar_Binding("prev")</Binding>
+	<Binding name="LODESTAR_TRAVEL" category="ADDONS">Lodestar_Binding("travel")</Binding>
+	<Binding name="CLICK LodestarQuestItem:LeftButton" category="ADDONS"></Binding>
+	<Binding name="CLICK LodestarTarget:LeftButton" category="ADDONS"></Binding>
+	<Binding name="LODESTAR_TIDY" category="ADDONS">Lodestar_Binding("diario")</Binding>
+	<Binding name="LODESTAR_REPORT" category="ADDONS">Lodestar_Binding("report")</Binding>
+</Bindings>

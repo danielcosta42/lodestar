@@ -8,9 +8,9 @@ local UI = ns.UI
 
 -- cor + rótulo por tipo de goal
 local function kindOf(verb)
-	if verb == "accept" then return UI.COL.done, "!" end        -- pegar quest (verde)
-	if verb == "turnin" then return UI.COL.accent, "?" end       -- entregar (ouro)
-	return UI.COL.amber, nil                                     -- objetivo (âmbar)
+	if verb == "accept" then return UI.HUD.done, "!" end        -- pegar quest (verde)
+	if verb == "turnin" then return UI.HUD.accent, "?" end       -- entregar (ouro)
+	return UI.HUD.amber, nil                                     -- objetivo (âmbar)
 end
 
 --------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ local function acquire(canvas)
 		p:SetFrameStrata("TOOLTIP")
 		p.dot = UI.Glyph(p, "losango", "OVERLAY", 64); p.dot:SetAllPoints()
 		p.letter = p:CreateFontString(nil, "OVERLAY")
-		UI.SetFont(p.letter, 11, { color = { 1, 1, 1, 1 } })
+		UI.SetFont(p.letter, 11, { hud = true, color = { 1, 1, 1, 1 } })
 		p.letter:SetPoint("CENTER", 0, 0)
 		p:SetScript("OnEnter", function(self)
 			if not self._text then return end
@@ -91,7 +91,7 @@ local function style(p, info)
 	local col = kindOf(info.verb)                -- cor = tipo (pegar, entregar, objetivo)
 	local sz = info.current and 20 or 16
 	p:SetSize(sz, sz)
-	p.dot:SetVertexColor(UI.unpackc(info.current and UI.COL.accent or col))
+	p.dot:SetVertexColor(UI.unpackc(info.current and UI.HUD.accent or col))
 	-- número = ordem no guia; vai apagando adiante, e o que ainda não dá fica fraco
 	p:SetAlpha(info.later and 0.35 or math.max(0.55, 1 - (info.order - 1) * 0.07))
 	p.letter:SetText(info.order); p.letter:Show()
