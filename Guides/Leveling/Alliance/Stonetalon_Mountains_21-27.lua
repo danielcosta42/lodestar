@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Stonetalon Mountains (21-27)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Duskwood (21-28)",
-	rev = "4cc3a9af",
+	next = "Leveling/Alliance/Ashenvale (21-30)",
+	rev = "d3015f59",
 }, [[
 step
   ding 20
@@ -127,11 +127,6 @@ step
   talk Sputtervalve##3442
   accept Further Instructions##1095 |goto The Barrens 62.98,37.22
 step
-  only completed(1091) haveq(1082)
-  note Return to Sentinel Thenysil in Ashenvale.
-  talk Sentinel Thenysil##4079
-  turnin Update for Sentinel Thenysil##1082 |goto Ashenvale 34.89,49.79 |tip {turninat}Ashenvale
-step
   note Bring the new orders to Ziz Fizziks in the Stonetalon Mountains.
   talk Ziz Fizziks##4201
   turnin Further Instructions##1095 |goto Stonetalon Mountains 58.99,62.6
@@ -145,6 +140,11 @@ step
   talk Ziz Fizziks##4201
   turnin Gerenzo Wrenchwhistle##1096 |goto Stonetalon Mountains 58.99,62.6
 step
-  note {travel}Duskwood
-  goto Duskwood 7.71,33.2
+  only completed(1091) haveq(1082)
+  note Return to Sentinel Thenysil in Ashenvale.
+  talk Sentinel Thenysil##4079
+  turnin Update for Sentinel Thenysil##1082 |goto Ashenvale 34.89,49.79 |tip {turninat}Ashenvale
+step
+  note {travel}Ashenvale
+  goto Ashenvale 34.67,48.84
 ]])

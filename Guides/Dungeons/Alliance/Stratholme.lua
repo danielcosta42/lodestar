@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Stratholme", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "5fa031ac",
+	rev = "49d18260",
 }, [[
 step
   talk Tirion Fordring##1855
@@ -15,6 +15,36 @@ step
 step
   talk Tirion Fordring##1855
   accept Carrion Grubbage##5544 |goto Eastern Plaguelands 5.16,35.57
+step
+  only Paladin
+  talk Orthas##228619
+  accept A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 53.44,58.52
+step
+  only NightElf Druid not completed(8905) not haveq(8905)
+  talk Deliana##230319
+  accept An Earnest Proposition##84147 |goto Dun Morogh 58.07,29.54
+step
+  only Paladin not completed(8908) not haveq(8908)
+  talk Deliana##230319
+  accept An Earnest Proposition##84150 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept An Earnest Proposition##84151 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##84166 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##84169 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept An Earnest Proposition##97447 |goto Dun Morogh 58.07,29.54
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84181 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84184 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Leonid Barthalomew the Revered##11036
   accept Houses of the Holy##5243 |goto Eastern Plaguelands 71.89,48.29
@@ -44,9 +74,9 @@ step
   talk Seril Scourgebane##11193
   accept Corruption##5307 |goto Winterspring 61.33,37.19
 step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Duthorian Rall##6171
-  accept Lord Grayson Shadowbreaker##7638 |goto Stormwind City 50.48,47.49
+  only not NightElf not Gnome not Skyborne Paladin completed(7641)
+  talk Grimand Elmore##1416
+  accept Collection of Goods##7642 |goto Stormwind City 59.73,33.78
 step
   note Slay 20 Plaguehound Runts, 5 Plaguehounds and 5 Frenzied Plaguehounds. Return to Tirion Fordring when the task is complete.
   kill Plaguehound Runt##8596 |q 5542/1 |goto Eastern Plaguelands 20.15,61.44
@@ -58,6 +88,38 @@ step
 step
   note Seek out the Carrion Grubs and Devourers of the region. Slay them and harvest their meat. Return to Tirion Fordring when you have gathered 15 Slabs of Carrion Worm Meat.
   collect 15 Slab of Carrion Worm Meat##13853 |q 5544 |goto Eastern Plaguelands 42.91,55.69 |tip {dropsfrom}Carrion Grub, Carrion Devourer
+step
+  only Paladin
+  note Obtain a Necrotic Runestone from Maleki the Pallid in Stratholme, then find the Rotting Dwarf Corpse near the Undercroft in southwestern Eastern Plaguelands.
+  collect Necrotic Runestone##227690 |q 84330 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
+step
+  only NightElf Druid not completed(8905) not haveq(8905)
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Wildheart Bracers to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 84147 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  only Paladin not completed(8908) not haveq(8908)
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 84150 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with 1 set of Devout Bracers to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 84151 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  note Bring a Lightforge Belt and a set of Lightforge Gauntlets to Deliana in Ironforge.
+  collect Lightforge Belt##16723 |q 84166 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
+step
+  note Bring a Dreadmist Belt and a set of Dreadmist Wraps to Deliana in Ironforge.
+  collect Dreadmist Belt##16702 |q 84169 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Thuzadin Shadowcaster, Thuzadin Necromancer, Crimson Conjuror
+step
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Bindings of the Elements to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 97447 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  note Return to Deliana in Ironforge with a set of Magister's Boots, Magister's Leggings and Magister's Mantle.
+  collect Magister's Boots##16682 |q 84181/1 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Hearthsinger Forresten
+  collect Magister's Leggings##16687 |q 84181/2 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Baron Rivendare
+  collect Magister's Mantle##16689 |q 84181 |tip Crafted or bought.
+step
+  note Return to Deliana in Ironforge with a set of Shadowcraft Boots, Shadowcraft Pants and Shadowcraft Spaulders.
+  collect Shadowcraft Boots##16711 |q 84184 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Rattlegore
 step
   note Travel to Stratholme, in the north. Search the supply crates that litter the city and recover 5 Stratholme Holy Water. Return to Leonid Barthalomew the Revered when you have collected enough of the blessed fluid.
   collect 5 Stratholme Holy Water##13180 |q 5243 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
@@ -83,6 +145,13 @@ step
   note Find the Black Guard Swordsmith in Stratholme and destroy him. Recover the Insignia of the Black Guard and return to Seril Scourgebane.
   collect Insignia of the Black Guard##13350 |q 5307 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Black Guard Swordsmith
 step
+  only not NightElf not Gnome not Skyborne Paladin completed(7641)
+  note Bring 40 Runecloth, 6 Arcanite Bars, 10 Arthas' Tears, 5 Stratholme Holy Water vials, and 150 gold to Grimand Elmore in the Dwarven District of Stormwind.
+  collect 5 Stratholme Holy Water##13180 |q 7642/1 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 10 Arthas' Tears##8836 |q 7642/2 |goto Western Plaguelands 47.76,60.95
+  collect 40 Runecloth##14047 |q 7642/3 |tip {dropsfrom}humanoids
+  collect 6 Arcanite Bar##12360 |q 7642 |tip Crafted or bought.
+step
   talk Tirion Fordring##1855
   turnin Demon Dogs##5542 |goto Eastern Plaguelands 5.16,35.57
 step
@@ -91,6 +160,36 @@ step
 step
   talk Tirion Fordring##1855
   turnin Carrion Grubbage##5544 |goto Eastern Plaguelands 5.16,35.57
+step
+  only Paladin
+  talk Rotting Dwarf Corpse##229018
+  turnin A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 23.05,73.52
+step
+  only NightElf Druid not completed(8905) not haveq(8905)
+  talk Deliana##230319
+  turnin An Earnest Proposition##84147 |goto Dun Morogh 58.07,29.54
+step
+  only Paladin not completed(8908) not haveq(8908)
+  talk Deliana##230319
+  turnin An Earnest Proposition##84150 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin An Earnest Proposition##84151 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##84166 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##84169 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin An Earnest Proposition##97447 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Anthion's Parting Words##84181 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Anthion's Parting Words##84184 |goto Dun Morogh 58.07,29.54
 step
   talk Leonid Barthalomew the Revered##11036
   turnin Houses of the Holy##5243 |goto Eastern Plaguelands 71.89,48.29
@@ -121,10 +220,9 @@ step
   talk Seril Scourgebane##11193
   turnin Corruption##5307 |goto Winterspring 61.33,37.19
 step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Speak with Lord Grayson Shadowbreaker in Stormwind's Cathedral District.
-  talk Lord Grayson Shadowbreaker##928
-  turnin Lord Grayson Shadowbreaker##7638 |goto Stormwind City 48.43,50.22
+  only not NightElf not Gnome not Skyborne Paladin completed(7641)
+  talk Grimand Elmore##1416
+  turnin Collection of Goods##7642 |goto Stormwind City 59.73,33.78
 step
   talk Tirion Fordring##1855
   accept Redemption##5742 |goto Eastern Plaguelands 5.16,35.57
@@ -143,10 +241,6 @@ step
 step
   talk Eva Sarkhoff##11216
   accept Krastinov's Bag of Horrors##5515 |goto Western Plaguelands 70.22,73.71
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Lord Grayson Shadowbreaker##928
-  accept Emphasis on Sacrifice##7637 |goto Stormwind City 48.43,50.22
 step
   note Listen to what Tirion Fordring has to say.
   talk Tirion Fordring##1855 |q 5742 |goto Eastern Plaguelands 5.16,35.57
@@ -179,11 +273,6 @@ step
   talk Eva Sarkhoff##11216
   turnin Krastinov's Bag of Horrors##5515 |goto Western Plaguelands 70.22,73.71
 step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Travel to Ironforge and get High Priest Rohan's Exorcism Censer. You will need to make a donation of 150 gold in order to secure it.
-  talk High Priest Rohan##11406
-  turnin Emphasis on Sacrifice##7637 |goto Ironforge 24.73,8.16
-step
   talk Tirion Fordring##1855
   accept Of Forgotten Memories##5781 |goto Eastern Plaguelands 5.16,35.57
 step
@@ -192,10 +281,6 @@ step
 step
   talk Eva Sarkhoff##11216
   accept Kirtonos the Herald##5384 |goto Western Plaguelands 70.22,73.71
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk High Priest Rohan##11406
-  accept To Show Due Judgment##7639 |goto Ironforge 24.73,8.16
 step
   note Travel to the Undercroft - at the southernmost section of the Eastern Plaguelands - and recover Taelan's Hammer. Return to Tirion Fordring upon completion of your objective.
   collect Taelan's Hammer##14613 |q 5781 |goto Eastern Plaguelands 23.85,74.22 |tip {dropsfrom}Mercutio Filthgorger
@@ -215,20 +300,11 @@ step
   talk Eva Sarkhoff##11216
   turnin Kirtonos the Herald##5384 |goto Western Plaguelands 70.22,73.71
 step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Return the Exorcism Censer to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
-  talk Lord Grayson Shadowbreaker##928
-  turnin To Show Due Judgment##7639 |goto Stormwind City 48.43,50.22
-step
   talk Tirion Fordring##1855
   accept Of Lost Honor##5845 |goto Eastern Plaguelands 5.16,35.57
 step
   talk Magistrate Marduke##11286
   accept The Human, Ras Frostwhisper##5461 |goto Western Plaguelands 70.57,74.11
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Lord Grayson Shadowbreaker##928
-  accept Exorcising Terrordale##7640 |goto Stormwind City 48.43,50.22
 step
   note Travel to Northdale, in the northeastern region of the Eastern Plaguelands, and recover the Symbol of Lost Honor. Return to Tirion Fordring upon completion of your objective.
   collect Symbol of Lost Honor##14625 |q 5845 |goto Eastern Plaguelands 62.53,26.81
@@ -236,29 +312,17 @@ step
   note Travel to the Arathi Highlands, to the ruins of Stromgarde. Search Stromgarde for a Keepsake of Remembrance. If you find such an item, return with it to Magistrate Marduke.
   collect Keepsake of Remembrance##13585 |q 5461 |goto Arathi Highlands 20.8,65.8
 step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Use the Exorcism Censer to drive out the spirits that torment Terrordale. When you have slain 25 Terrordale Spirits, return to Lord Grayson Shadowbreaker in the Cathedral District of Stormwind.
-  kill Terrordale Spirit##14564 |q 7640 |goto Eastern Plaguelands 11.36,20.78
-step
   talk Tirion Fordring##1855
   turnin Of Lost Honor##5845 |goto Eastern Plaguelands 5.16,35.57
 step
   talk Magistrate Marduke##11286
   turnin The Human, Ras Frostwhisper##5461 |goto Western Plaguelands 70.57,74.11
 step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Lord Grayson Shadowbreaker##928
-  turnin Exorcising Terrordale##7640 |goto Stormwind City 48.43,50.22
-step
   talk Tirion Fordring##1855
   accept Of Love and Family##5846 |goto Eastern Plaguelands 5.16,35.57
 step
   talk Magistrate Marduke##11286
   accept The Dying, Ras Frostwhisper##5462 |goto Western Plaguelands 70.57,74.11
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Lord Grayson Shadowbreaker##928
-  accept The Work of Grimand Elmore##7641 |goto Stormwind City 48.43,50.22
 step
   note Travel to island of Caer Darrow, in the south-central region of the Plaguelands, and look for any clues as to the whereabouts of the painting.
   talk Artist Renfray##11936
@@ -268,38 +332,18 @@ step
   talk Leonid Barthalomew the Revered##11036
   turnin The Dying, Ras Frostwhisper##5462 |goto Eastern Plaguelands 71.89,48.29
 step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Speak with Grimand Elmore in Stormwind's Dwarven District.
-  talk Grimand Elmore##1416
-  turnin The Work of Grimand Elmore##7641 |goto Stormwind City 59.73,33.78
-step
   talk Leonid Barthalomew the Revered##11036
   accept Menethil's Gift##5463 |goto Eastern Plaguelands 71.89,48.29
 step
   talk Artist Renfray##11936
   accept Of Love and Family##5848 |goto Western Plaguelands 65.77,75.37
 step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Grimand Elmore##1416
-  accept Collection of Goods##7642 |goto Stormwind City 59.73,33.78
-step
   note Travel to Stratholme, in the northern part of the Plaguelands. It is in the Scarlet Bastion that you will find the painting 'Of Love and Family,' hidden behind another painting depicting the twin moons of our world.
   collect Of Love and Family##14679 |q 5848 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Unfinished Painting
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Bring 40 Runecloth, 6 Arcanite Bars, 10 Arthas' Tears, 5 Stratholme Holy Water vials, and 150 gold to Grimand Elmore in the Dwarven District of Stormwind.
-  collect 5 Stratholme Holy Water##13180 |q 7642/1 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
-  collect 10 Arthas' Tears##8836 |q 7642/2 |goto Western Plaguelands 47.76,60.95
-  collect 40 Runecloth##14047 |q 7642/3 |tip {dropsfrom}humanoids
-  collect 6 Arcanite Bar##12360 |q 7642 |tip Crafted or bought.
 step
   note Travel to Stratholme and find Menethil's Gift. Place the Keepsake of Remembrance upon the unholy ground.
   turnin Menethil's Gift##5463 |goto Stratholme - Dungeon -1,-1
 step
   talk Tirion Fordring##1855
   turnin Of Love and Family##5848 |goto Eastern Plaguelands 5.16,35.57
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Grimand Elmore##1416
-  turnin Collection of Goods##7642 |goto Stormwind City 59.73,33.78
 ]])

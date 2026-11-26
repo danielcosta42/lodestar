@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (35-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Swamp of Sorrows (35-44)",
-	rev = "bd0f87cc",
+	next = "Leveling/Horde/Desolace (33-40)",
+	rev = "bda8a7dd",
 }, [[
 step
   ding 34
@@ -618,6 +618,15 @@ step
   talk Krazek##773
   turnin Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
 step
-  note {travel}Swamp of Sorrows
-  goto Swamp of Sorrows 47.74,55.2
+  only Undead Paladin level>=40
+  talk Garen Largo##260093
+  accept Report to Danitha##97022 |goto Undercity 47.53,14.99
+step
+  only Undead Paladin haveq(97022)
+  note Speak with Danitha Morr at Bandarion Keep.
+  talk Danitha Morr##246378
+  turnin Report to Danitha##97022 |goto Tirisfal Glades 22.09,44.66 |tip {turninat}Tirisfal Glades
+step
+  note {travel}Desolace
+  goto Desolace 56.29,59.68
 ]])

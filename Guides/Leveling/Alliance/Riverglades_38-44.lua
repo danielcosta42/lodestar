@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Riverglades (38-44)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Desolace (33-40)",
-	rev = "27b013c2",
+	next = "Leveling/Alliance/Desolace (42-45)",
+	rev = "ef6fe6c0",
 }, [[
 step
   ding 37
@@ -971,6 +971,6 @@ step
   talk Friz Frazzlespark##255897
   turnin All's Well That Ends Well##95327 |goto Riverglades 77.1,52.9
 step
-  note {travel}Desolace
-  goto Desolace 38.88,27.16
+  note {travel}Shen'dralas
+  goto Shen'dralas 43.65,34.32
 ]])

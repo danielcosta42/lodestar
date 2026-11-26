@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Horde/Cenarion Circle", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "9b41acd2",
+	rev = "12cf5375",
 }, [[
 step
   only Skyborne Druid
@@ -12,7 +12,7 @@ step
   accept Moonglade##94913 |goto Thunder Bluff 76.48,27.22
 step
   only Skyborne Druid
-  note Use the spell "Teleport: Moonglade" to travel to Moonglade.  When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##94913 |goto Moonglade 56.21,30.64
 step
@@ -104,7 +104,7 @@ step
   only Tauren Druid
   note Bring 5 Earthroot and 5 Kodo Horns to Tonga Runetotem at the Crossroads so he may make a curative salve.
   collect 5 Kodo Horn##15852 |q 6128/2 |goto The Barrens 54.06,41.46 |tip {dropsfrom}Lost Barrens Kodo, Barrens Kodo
-  collect 5 Earthroot##2449 |q 6128 |goto Teldrassil 57.09,69.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine
+  collect 5 Earthroot##2449 |q 6128 |goto Teldrassil 57.11,68.98 |tip {dropsfrom}Lasher Sproutling, Wrathvine
 step
   only Tauren Druid
   talk Tonga Runetotem##3448
@@ -173,84 +173,88 @@ step
   talk Turak Runetotem##3033
   turnin Aquatic Form##31 |goto Thunder Bluff 76.48,27.22
 step
-  only Skyborne
-  talk Dendrite Starblaze##11802
-  accept The Great Windborne Cat Spirit##98341 |goto Moonglade 56.21,30.64
-step
-  only Skyborne
-  note Seek out the Avatar of Saeyleenan in the southern part Moonglade and learn what it has to share with you about the nature of the windborne cat.
-  talk Avatar of Saeyleenan##272054
-  turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 43.92,73.44
-step
-  only Tauren Druid
-  talk Dendrite Starblaze##11802
-  accept The Great Cat Spirit##98405 |goto Moonglade 56.21,30.64
-step
-  only Tauren Druid
-  note Seek out the Great Cat Spirit in southern part Moonglade and learn what it has to share with you about the nature of the cat.
-  talk Great Cat Spirit##11957
-  turnin The Great Cat Spirit##98405 |goto Moonglade 58.39,73.52
-step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
-step
-  only Skyborne
-  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
-  collect Relic of the Fang##280502 |q 98404/1 |goto Moonglade 72.6,66.1
-  collect Relic of the Silent Shadow##280680 |q 98404/3 |goto Moonglade 74.5,65.5
-  collect Relic of the Claw##280679 |q 98404 |goto Moonglade 75.2,67.2
-step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
-step
-  only Skyborne
-  talk Avatar of Saeyleenan##272054
-  accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 43.92,73.44
-step
-  only Skyborne
-  talk Dendrite Starblaze##11802
-  turnin Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 56.21,30.64
-step
-  only Tauren Druid
-  talk Great Cat Spirit##11957
-  accept The Great Cat Spirit##98342 |goto Moonglade 58.39,73.52
-step
-  only Tauren Druid
-  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
-  collect Relic of the Fang##280502 |q 98342/1 |goto Moonglade 72.6,66.1
-  collect Relic of the Silent Shadow##280680 |q 98342/3 |goto Moonglade 74.5,65.5
-  collect Relic of the Claw##280679 |q 98342 |goto Moonglade 75.2,67.2
-step
-  only Tauren Druid
-  talk Great Cat Spirit##11957
-  turnin The Great Cat Spirit##98342 |goto Moonglade 58.39,73.52
-step
-  only Tauren Druid
-  talk Great Cat Spirit##11957
-  accept Blessings of the Great Cat Spirit##98739 |goto Moonglade 58.39,73.52
-step
-  only Tauren Druid
-  note Speak to Dendrite.
-  talk Dendrite Starblaze##11802
-  turnin Blessings of the Great Cat Spirit##98739 |goto Moonglade 56.21,30.64
-step
-  only not Orc not Undead not Troll Druid
+  only not Orc not Undead not Troll Druid not completed(98393) not haveq(98393)
   talk Turak Runetotem##3033
   accept The Great Cat Spirit##98340 |goto Thunder Bluff 76.48,27.22
 step
-  only not Orc not Undead not Troll Druid
+  only not Orc not Undead not Troll Druid not completed(98393) not haveq(98393)
   note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
   talk Dendrite Starblaze##11802
   turnin The Great Cat Spirit##98340 |goto Moonglade 56.21,30.64
 step
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98394) not completed(98405) not haveq(98394) not haveq(98405)
+  talk Dendrite Starblaze##11802
+  accept The Great Windborne Cat Spirit##98341 |goto Moonglade 56.21,30.64
+step
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98394) not completed(98405) not haveq(98394) not haveq(98405)
+  note Seek out the Avatar of Saeyleenan in the southern part Moonglade and learn what it has to share with you about the nature of the windborne cat.
+  talk Avatar of Saeyleenan##272054
+  turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 43.92,73.44
+step
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  talk Avatar of Saeyleenan##272054
+  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
+step
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
+  collect Relic of the Fang##280502 |q 98404/1 |goto Moonglade 72.41,65.9
+  collect Relic of the Silent Shadow##280680 |q 98404/3 |goto Moonglade 74.42,65.27
+  collect Relic of the Claw##280679 |q 98404 |goto Moonglade 75.24,67.33
+step
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  talk Avatar of Saeyleenan##272054
+  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
+step
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not completed(98731) not completed(98739) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405) not haveq(98731) not haveq(98739)
+  talk Avatar of Saeyleenan##272054
+  accept Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 43.92,73.44
+step
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not completed(98731) not completed(98739) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405) not haveq(98731) not haveq(98739)
+  note Speak to Dendrite.
+  talk Dendrite Starblaze##11802
+  turnin Blessings of the Great Windborne Cat Spirit##98738 |goto Moonglade 56.21,30.64
+step
+  only Tauren Druid not completed(98341) not completed(98394) not haveq(98341) not haveq(98394)
+  talk Dendrite Starblaze##11802
+  accept The Great Cat Spirit##98405 |goto Moonglade 56.21,30.64
+step
+  only Tauren Druid not completed(98341) not completed(98394) not haveq(98341) not haveq(98394)
+  note Seek out the Great Cat Spirit in southern part Moonglade and learn what it has to share with you about the nature of the cat.
+  talk Great Cat Spirit##11957
+  turnin The Great Cat Spirit##98405 |goto Moonglade 58.39,73.52
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404)
+  talk Great Cat Spirit##11957
+  accept The Great Cat Spirit##98342 |goto Moonglade 58.39,73.52
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404)
+  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
+  collect Relic of the Fang##280502 |q 98342/1 |goto Moonglade 72.41,65.9
+  collect Relic of the Silent Shadow##280680 |q 98342/3 |goto Moonglade 74.42,65.27
+  collect Relic of the Claw##280679 |q 98342 |goto Moonglade 75.24,67.33
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404)
+  talk Great Cat Spirit##11957
+  turnin The Great Cat Spirit##98342 |goto Moonglade 58.39,73.52
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not completed(98731) not completed(98738) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404) not haveq(98731) not haveq(98738)
+  talk Great Cat Spirit##11957
+  accept Blessings of the Great Cat Spirit##98739 |goto Moonglade 58.39,73.52
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not completed(98731) not completed(98738) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404) not haveq(98731) not haveq(98738)
+  note Speak to Dendrite.
+  talk Dendrite Starblaze##11802
+  turnin Blessings of the Great Cat Spirit##98739 |goto Moonglade 56.21,30.64
+step
+  only not completed(7065) not haveq(7065)
   talk Selendra##13699
   accept Corruption of Earth and Seed##7064 |goto Desolace 26.87,77.67
 step
+  only not completed(7065) not haveq(7065)
   note Slay Princess Theradras and return to Selendra near Shadowprey Village in Desolace.
   kill Princess Theradras##12201 |q 7064 |goto Maraudon - Dungeon -1,-1 |elite
 step
+  only not completed(7065) not haveq(7065)
   talk Selendra##13699
   turnin Corruption of Earth and Seed##7064 |goto Desolace 26.87,77.67
 step
@@ -451,6 +455,30 @@ step
   note Take the Decoded Tablet Parchment to Commander Mar'alith.
   talk Commander Mar'alith##15181
   turnin A Terrible Purpose##8287 |goto Silithus 49.2,34.18
+step
+  only completed(90647)
+  talk Tiala Whitemane##40833
+  accept Paying Back the Pact##92169 |goto Mount Hyjal 68.85,50.6
+step
+  only completed(90647)
+  note Use the Staff of the Mountain on 10  members of the Blackthorne Pact on the Summit of Eternity to remove their wards and then kill them.
+  get Paying Back the Pact |q 92169
+step
+  only completed(90647)
+  talk Tiala Whitemane##40833
+  turnin Paying Back the Pact##92169 |goto Mount Hyjal 68.85,50.6
+step
+  only completed(90647)
+  talk Tiala Whitemane##40833
+  accept Ve'han's Fall##92833 |goto Mount Hyjal 68.85,50.6
+step
+  only completed(90647)
+  note Use the Staff of the Mountain to strip Ve'han Talongrasp of his stolen power, then destroy him.
+  kill Ve'han Talongrasp##267182 |q 92833 |goto Mount Hyjal 76.02,34.05 |elite
+step
+  only completed(90647)
+  talk Tiala Whitemane##40833
+  turnin Ve'han's Fall##92833 |goto Mount Hyjal 68.85,50.6
 step
   click Wanted Poster: Deathclasp##180448
   accept Wanted - Deathclasp, Terror of the Sands##8283 |goto Silithus 51.35,38.27

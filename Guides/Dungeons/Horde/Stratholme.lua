@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Stratholme", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "af047793",
+	rev = "7def0fe7",
 }, [[
 step
   talk Tirion Fordring##1855
@@ -21,6 +21,19 @@ step
 step
   talk Nathanos Blightcaller##11878
   accept Un-Life's Little Annoyances##6042 |goto Eastern Plaguelands 22.23,63.51
+step
+  only Paladin
+  talk Orthas##228619
+  accept A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 53.44,58.52
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84189 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84191 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84193 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Leonid Barthalomew the Revered##11036
   accept Houses of the Holy##5243 |goto Eastern Plaguelands 71.89,48.29
@@ -40,6 +53,24 @@ step
   talk Nathanos Blightcaller##11878
   accept The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
 step
+  talk Mokvar##230317
+  accept An Earnest Proposition##84155 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept An Earnest Proposition##84158 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept An Earnest Proposition##84160 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##84177 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept An Earnest Proposition##97411 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##97412 |goto Orgrimmar 34.96,38.26
+step
   talk Aurius##10917
   accept The Medallion of Faith##5122 |goto Stratholme - Dungeon -1,-1
 step
@@ -52,6 +83,10 @@ step
 step
   talk Seril Scourgebane##11193
   accept Corruption##5307 |goto Winterspring 61.33,37.19
+step
+  only Paladin
+  talk Ott##3539
+  accept Collection of Goods##97179 |goto Hillsbrad Foothills 60.43,26.18
 step
   note Slay 20 Plaguehound Runts, 5 Plaguehounds and 5 Frenzied Plaguehounds. Return to Tirion Fordring when the task is complete.
   kill Plaguehound Runt##8596 |q 5542/1 |goto Eastern Plaguelands 20.15,61.44
@@ -71,6 +106,21 @@ step
   kill Noxious Plaguebat##8601 |q 6042/1 |goto Eastern Plaguelands 53.15,51.14
   kill Monstrous Plaguebat##8602 |q 6042 |goto Eastern Plaguelands 43.93,29.08
 step
+  only Paladin
+  note Obtain a Necrotic Runestone from Maleki the Pallid in Stratholme, then find the Rotting Dwarf Corpse near the Undercroft in southwestern Eastern Plaguelands.
+  collect Necrotic Runestone##227690 |q 84330 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
+step
+  note Return to Mokvar in Orgimmar with a set of Magister's Boots, Magister's Leggings and Magister's Mantle.
+  collect Magister's Boots##16682 |q 84189/1 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Hearthsinger Forresten
+  collect Magister's Leggings##16687 |q 84189/2 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Baron Rivendare
+  collect Magister's Mantle##16689 |q 84189 |tip Crafted or bought.
+step
+  note Return to Mokvar in Orgimmar with a set of  Shadowcraft Boots, Shadowcraft Pants and Shadowcraft Spaulders.
+  collect Shadowcraft Boots##16711 |q 84191 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Rattlegore
+step
+  note Return to Mokvar in Orgimmar with a set of Dreadmist Sandals, Dreadmist Leggings and Dreadmist Mantle.
+  collect Dreadmist Sandals##16704 |q 84193 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Baroness Anastari
+step
   note Travel to Stratholme, in the north. Search the supply crates that litter the city and recover 5 Stratholme Holy Water. Return to Leonid Barthalomew the Revered when you have collected enough of the blessed fluid.
   collect 5 Stratholme Holy Water##13180 |q 5243 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
 step
@@ -86,6 +136,24 @@ step
   note Travel to the northern borders of the Eastern Plaguelands and recover the Quel'Thalas Registry. The item is somewhere in the Quel'Lithien lodge.
   kill Pathstrider##8565 |q 6133 |goto Eastern Plaguelands 46.74,13.01
 step
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Wildheart Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 84155 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Devout Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 84158 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Bindings of the Elements to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 84160 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  note Bring a Dreadmist Belt and a set of Dreadmist Wraps to Mokvar in Orgrimmar.
+  collect Dreadmist Belt##16702 |q 84177 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Thuzadin Shadowcaster, Thuzadin Necromancer, Crimson Conjuror
+step
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Lightforge Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 97411 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  note Bring a Lightforge Belt and a set of Lightforge Gauntlets to Mokvar in Orgrimmar.
+  collect Lightforge Belt##16723 |q 97412 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
+step
   collect Medallion of Faith##12845 |q 5122 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Malor's Strongbox
 step
   note Find Doctor Theolen Krastinov inside the Scholomance. Destroy him, then burn the Remains of Eva Sarkhoff and the Remains of Lucien Sarkhoff. Return to Eva Sarkhoff when the task is complete.
@@ -97,6 +165,13 @@ step
 step
   note Find the Black Guard Swordsmith in Stratholme and destroy him. Recover the Insignia of the Black Guard and return to Seril Scourgebane.
   collect Insignia of the Black Guard##13350 |q 5307 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Black Guard Swordsmith
+step
+  only Paladin
+  note Bring 40 Runecloth, 6 Arcanite Bars, 10 Arthas' Tears, 5 Stratholme Holy Water vials, and 150 gold to Ott in Hillsbrad Foothills.
+  collect 5 Stratholme Holy Water##13180 |q 97179/1 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 10 Arthas' Tears##8836 |q 97179/2 |goto Western Plaguelands 47.76,60.95
+  collect 40 Runecloth##14047 |q 97179/3 |tip {dropsfrom}humanoids
+  collect 6 Arcanite Bar##12360 |q 97179 |tip Crafted or bought.
 step
   talk Tirion Fordring##1855
   turnin Demon Dogs##5542 |goto Eastern Plaguelands 5.16,35.57
@@ -112,6 +187,19 @@ step
 step
   talk Nathanos Blightcaller##11878
   turnin Un-Life's Little Annoyances##6042 |goto Eastern Plaguelands 22.23,63.51
+step
+  only Paladin
+  talk Rotting Dwarf Corpse##229018
+  turnin A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 23.05,73.52
+step
+  talk Mokvar##230317
+  turnin Anthion's Parting Words##84189 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Anthion's Parting Words##84191 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Anthion's Parting Words##84193 |goto Orgrimmar 34.96,38.26
 step
   talk Leonid Barthalomew the Revered##11036
   turnin Houses of the Holy##5243 |goto Eastern Plaguelands 71.89,48.29
@@ -132,6 +220,24 @@ step
   talk Nathanos Blightcaller##11878
   turnin The Ranger Lord's Behest##6133 |goto Eastern Plaguelands 22.23,63.51
 step
+  talk Mokvar##230317
+  turnin An Earnest Proposition##84155 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin An Earnest Proposition##84158 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin An Earnest Proposition##84160 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##84177 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin An Earnest Proposition##97411 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##97412 |goto Orgrimmar 34.96,38.26
+step
   talk Aurius##10917
   turnin The Medallion of Faith##5122 |goto Stratholme - Dungeon -1,-1
 step
@@ -144,6 +250,10 @@ step
 step
   talk Seril Scourgebane##11193
   turnin Corruption##5307 |goto Winterspring 61.33,37.19
+step
+  only Paladin
+  talk Ott##3539
+  turnin Collection of Goods##97179 |goto Hillsbrad Foothills 60.43,26.18
 step
   talk Tirion Fordring##1855
   accept Redemption##5742 |goto Eastern Plaguelands 5.16,35.57

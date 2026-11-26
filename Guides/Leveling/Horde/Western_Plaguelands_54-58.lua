@@ -1,14 +1,14 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Western Plaguelands (53-57)", {
+ns:RegisterGuide("Leveling/Horde/Western Plaguelands (54-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Eastern Plaguelands (56-60)",
-	rev = "d032ee06",
+	rev = "6ef90f82",
 }, [[
 step
-  ding 52
+  ding 53
 step
   talk Janice Felstone##10778
   accept Better Late Than Never##5021 |goto Western Plaguelands 38.4,54.05
@@ -26,12 +26,6 @@ step
   talk Mulgris Deepriver##10739
   accept The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
 step
-  note Destroy 8 Diseased Wolves, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
-  kill Diseased Wolf##1817 |q 4984 |goto Western Plaguelands 46.52,44.91
-step
-  talk Mulgris Deepriver##10739
-  turnin The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
-step
   only not completed(5601) not haveq(5601)
   talk Marlene Redpath##10927
   accept Little Pamela##5142 |goto Western Plaguelands 49.17,78.57
@@ -44,22 +38,45 @@ step
   talk Argent Officer Pureheart##10840
   turnin Argent Dawn Commission##5401 |goto Western Plaguelands 42.97,83.55
 step
-  only level>=52
   click Mrs. Dalson's Diary##175926
   accept Mrs. Dalson's Diary##5058 |goto Western Plaguelands 47.8,50.67
 step
-  only level>=52
   click Locked Cabinet##175924
   accept Locked Away##5060 |goto Western Plaguelands 47.35,49.63
 step
-  only haveq(5060)
+  note Destroy 8 Diseased Wolves, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
+  kill Diseased Wolf##1817 |q 4984 |goto Western Plaguelands 46.52,44.91
+step
   collect Dalson Cabinet Key##12739 |q 5060 |goto Western Plaguelands 48.23,49.67 |tip {dropsfrom}Farmer Dalson
 step
-  only haveq(5058)
   turnin Mrs. Dalson's Diary##5058 |goto Western Plaguelands 47.8,50.67
 step
-  only haveq(5060)
   turnin Locked Away##5060 |goto Western Plaguelands 47.35,49.63
+step
+  talk Mulgris Deepriver##10739
+  turnin The Wildlife Suffers Too##4984 |goto Western Plaguelands 53.73,64.66
+step
+  only completed(5902)
+  click Termite Barrel##177491
+  accept A Plague Upon Thee##6390 |goto Western Plaguelands 48.34,31.99
+step
+  talk Lord Tirion Fordring##12126
+  accept Demon Dogs##5542 |goto Western Plaguelands 53.95,24.45
+step
+  talk Lord Tirion Fordring##12126
+  accept Blood Tinged Skies##5543 |goto Western Plaguelands 53.95,24.45
+step
+  talk Lord Tirion Fordring##12126
+  accept Carrion Grubbage##5544 |goto Western Plaguelands 53.95,24.45
+step
+  talk Kirsta Deepshadow##11610
+  accept Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
+step
+  note Kill 2 Scarlet Medics, 2 Scarlet Hunters, 2 Scarlet Magi and 2 Scarlet Knights before returning to Kirsta Deepshadow in Western Plaguelands.
+  kill Scarlet Knight##1833 |q 6004/4 |goto Western Plaguelands 53.18,36.97
+  kill Scarlet Mage##1826 |q 6004/3 |goto Western Plaguelands 52.77,37.56
+  kill Scarlet Hunter##1831 |q 6004/2 |goto Western Plaguelands 47.33,51.38
+  kill Scarlet Medic##10605 |q 6004 |goto Western Plaguelands 41.03,51.91
 step
   only level>=53
   talk Chromie##10667
@@ -71,15 +88,6 @@ step
   only haveq(4971)
   note Use the Temporal Displacer near one of Andorhal's silos and uncover Temporal Parasites.
   kill Temporal Parasite##10717 |q 4971 |goto Western Plaguelands 48.26,65.77
-step
-  note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
-  kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.61
-step
-  talk Mulgris Deepriver##10739
-  turnin The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
-step
-  talk Mulgris Deepriver##10739
-  accept Glyphed Oaken Branch##4987 |goto Western Plaguelands 53.73,64.66
 step
   only haveq(4971)
   talk Chromie##10667
@@ -97,30 +105,22 @@ step
   talk Chromie##10667
   turnin Counting Out Time##4972 |goto Western Plaguelands 39.46,66.76
 step
-  only completed(5902)
-  click Termite Barrel##177491
-  accept A Plague Upon Thee##6390 |goto Western Plaguelands 48.34,31.99
+  note Destroy 8 Diseased Grizzlies, and then return to Mulgris Deepriver at the Writhing Haunt, Western Plaguelands.
+  kill Diseased Grizzly##1816 |q 4985 |goto Western Plaguelands 59.01,51.61
 step
-  only level>=52
-  talk Lord Tirion Fordring##12126
-  accept Demon Dogs##5542 |goto Western Plaguelands 53.95,24.45
+  talk Mulgris Deepriver##10739
+  turnin The Wildlife Suffers Too##4985 |goto Western Plaguelands 53.73,64.66
 step
-  only level>=52
-  talk Lord Tirion Fordring##12126
-  accept Blood Tinged Skies##5543 |goto Western Plaguelands 53.95,24.45
+  talk Mulgris Deepriver##10739
+  accept Glyphed Oaken Branch##4987 |goto Western Plaguelands 53.73,64.66
 step
-  only level>=52
-  talk Lord Tirion Fordring##12126
-  accept Carrion Grubbage##5544 |goto Western Plaguelands 53.95,24.45
+  only level>=53
+  talk Fallen Skyborne##270191
+  accept River Ends##7790 |goto Western Plaguelands 70.09,44.15
 step
-  talk Kirsta Deepshadow##11610
-  accept Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
-step
-  note Kill 2 Scarlet Medics, 2 Scarlet Hunters, 2 Scarlet Magi and 2 Scarlet Knights before returning to Kirsta Deepshadow in Western Plaguelands.
-  kill Scarlet Knight##1833 |q 6004/4 |goto Western Plaguelands 53.18,36.97
-  kill Scarlet Mage##1826 |q 6004/3 |goto Western Plaguelands 52.77,37.56
-  kill Scarlet Hunter##1831 |q 6004/2 |goto Western Plaguelands 47.33,51.38
-  kill Scarlet Medic##10605 |q 6004 |goto Western Plaguelands 41.03,51.91
+  only haveq(7790)
+  note Look for the cause of the Skyborne struggle along Thondroril River.
+  turnin River Ends##7790 |goto Western Plaguelands 70.09,44.12
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6004 |goto Western Plaguelands 51.92,28.06
@@ -134,14 +134,6 @@ step
 step
   talk Kirsta Deepshadow##11610
   turnin Unfinished Business##6023 |goto Western Plaguelands 51.92,28.06
-step
-  only level>=53
-  talk Fallen Skyborne##270191
-  accept River Ends##7790 |goto Western Plaguelands 70.09,44.15
-step
-  only haveq(7790)
-  note Look for the cause of the Skyborne struggle along Thondroril River.
-  turnin River Ends##7790 |goto Western Plaguelands 70.09,44.12
 step
   talk Kirsta Deepshadow##11610
   accept Unfinished Business##6025 |goto Western Plaguelands 51.92,28.06
@@ -179,31 +171,41 @@ step
   talk Pamela Redpath##10926
   turnin Little Pamela##5142 |goto Eastern Plaguelands 31.15,77.98 |tip {turninat}Eastern Plaguelands
 step
-  only haveq(5543)
   note Slay 30 Plaguebats and return to Tirion Fordring.
   kill Plaguebat##8600 |q 5543 |goto Eastern Plaguelands 28.22,64.82
 step
-  only haveq(5542)
   note Slay 20 Plaguehound Runts, 5 Plaguehounds and 5 Frenzied Plaguehounds. Return to Tirion Fordring when the task is complete.
   kill Plaguehound Runt##8596 |q 5542/1 |goto Eastern Plaguelands 20.15,61.44
   kill Frenzied Plaguehound##8598 |q 5542/3 |goto Eastern Plaguelands 45.86,30.91
   kill Plaguehound##8597 |q 5542 |goto Eastern Plaguelands 59.53,53.87
 step
-  only haveq(5544)
   note Seek out the Carrion Grubs and Devourers of the region. Slay them and harvest their meat. Return to Tirion Fordring when you have gathered 15 Slabs of Carrion Worm Meat.
   collect 15 Slab of Carrion Worm Meat##13853 |q 5544 |goto Eastern Plaguelands 42.91,55.69 |tip {dropsfrom}Carrion Grub, Carrion Devourer
 step
-  only haveq(5542)
   talk Tirion Fordring##1855
   turnin Demon Dogs##5542 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
 step
-  only haveq(5543)
   talk Tirion Fordring##1855
   turnin Blood Tinged Skies##5543 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
 step
-  only haveq(5544)
   talk Tirion Fordring##1855
   turnin Carrion Grubbage##5544 |goto Eastern Plaguelands 5.16,35.57 |tip {turninat}Eastern Plaguelands
+step
+  only completed(3621)
+  talk Galvan the Ancient##7802
+  accept Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
+step
+  only completed(3621)
+  note Wait for Galvan to finish forging the weaponry.
+  talk Galvan the Ancient##7802 |q 3625 |goto Stranglethorn Vale 50.62,20.48
+step
+  only completed(3621)
+  talk Galvan the Ancient##7802
+  turnin Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48 |tip {turninat}Stranglethorn Vale
+step
+  only completed(3621)
+  talk Galvan the Ancient##7802
+  accept Return to the Blasted Lands##3626 |goto Stranglethorn Vale 50.62,20.48
 step
   note Check with the Royal Overseers of the Undercity to learn the whereabouts of a Jeremiah Felstone. There is usually a census officer located near guild and tabard registration.
   talk Royal Overseer Bauhaus##10781
@@ -243,6 +245,15 @@ step
   click Scourge Cauldron##177289
   accept Return to the Bulwark##5232 |goto Western Plaguelands 46.18,51.9
 step
+  only completed(3621)
+  note Return to the Fallen Hero of the Horde.
+  talk Fallen Hero of the Horde##7572
+  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
+step
+  only completed(3621) level>=60
+  talk Fallen Hero of the Horde##7572
+  accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
+step
   only completed(5229)
   note Bring the Filled Dalson's Tears Bottle to Shadow Priestess Vandis at the Bulwark, Western Plaguelands.
   talk Shadow Priestess Vandis##11055
@@ -251,6 +262,23 @@ step
   only completed(5229)
   talk Shadow Priestess Vandis##11055
   accept Target: Writhing Haunt##5233 |goto Tirisfal Glades 83.04,71.91
+step
+  only completed(3621) haveq(3627)
+  note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
+  kill Archmage Allistarj##7666 |q 3627/1 |goto Blasted Lands 66.69,29.24 |elite
+  collect Amulet of Allistarj##10755 |q 3627/1 |goto Blasted Lands 66.69,29.24
+  kill Lady Sevine##7667 |q 3627/3 |goto Blasted Lands 40.75,29.97 |elite
+  collect Amulet of Sevine##10754 |q 3627/3 |goto Blasted Lands 40.75,29.97
+  kill Grol the Destroyer##7665 |q 3627 |goto Blasted Lands 42.57,13.01 |elite
+  collect Amulet of Grol##10753 |q 3627 |goto Blasted Lands 42.57,13.01
+step
+  only completed(3621) haveq(3627)
+  talk Fallen Hero of the Horde##7572
+  turnin Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
+step
+  only completed(3621) completed(3627) level>=60
+  talk Fallen Hero of the Horde##7572
+  accept You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14
 step
   only completed(5229)
   note Go to the Writhing Haunt in Western Plaguelands to locate and defeat the Cauldron Lord present there, and use its key to gain access to the cauldron. You must have the Empty Writhing Haunt Bottle with you to secure a sample of the poisons used inside the cauldron.
@@ -262,6 +290,15 @@ step
   only completed(5229)
   click Scourge Cauldron##176393
   accept Return to the Bulwark##5234 |goto Western Plaguelands 53.02,65.61
+step
+  only completed(3621) haveq(3628)
+  note Destroy Razelikh the Defiler and return the Severed Horn of the Defiler to the Fallen Hero of the Horde. You will also need to return the Ward of the Defiler so that the Fallen Hero can destroy it, preventing it from ever falling into the wrong hands.
+  kill Razelikh the Defiler##7664 |q 3628 |goto Blasted Lands 47.64,29.83 |elite
+  collect Severed Horn of the Defiler##10759 |q 3628 |goto Blasted Lands 47.64,29.83
+step
+  only completed(3621) haveq(3628)
+  talk Fallen Hero of the Horde##7572
+  turnin You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
 step
   only completed(5229)
   note Bring the Filled Writhing Haunt Bottle to Shadow Priestess Vandis at The Bulwark, Western Plaguelands.
@@ -295,15 +332,6 @@ step
   only completed(5229)
   talk High Executor Derrington##10837
   turnin Mission Accomplished!##5238 |goto Tirisfal Glades 83.13,68.94 |tip {turninat}Tirisfal Glades
-step
-  only haveq(4883)
-  note Take the Blue-feathered Necklace to Nara Wildmane.
-  talk Nara Wildmane##5770
-  turnin Guarding Secrets##4883 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
-step
-  note Based on the magic enchanted within the Glyphed Oaken Branch, its delivery to the Cenarion Circle in Thunder Bluff is the next step the tauren druid sought. Seek one of the druids there for assistance.
-  talk Nara Wildmane##5770
-  turnin Glyphed Oaken Branch##4987 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
   note {travel}Undercity
   goto Undercity 58.05,91.79

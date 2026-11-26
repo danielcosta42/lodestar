@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Mount Hyjal (57-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Silithus (55-60)",
-	rev = "dbc6dfdc",
+	rev = "952b90c8",
 }, [[
 step
   ding 56
@@ -851,6 +851,10 @@ step
   note Take mail from Everlook up to Innkeeper Sebelia on the summit of Mount Hyjal.
   talk Sebelia##243815
   turnin Top of the Post##93269 |goto Mount Hyjal 70.87,51.55
+step
+  note Take the Sawyer Family Ledger to Abigail Sawyer in Undercity's War Quarter.
+  talk Abigail Sawyer##4604
+  turnin Sawyer's Legacy##97001 |goto Undercity 54.7,38.76 |tip {turninat}Undercity
 step
   note {travel}Silithus
   goto Silithus 48.95,36.69

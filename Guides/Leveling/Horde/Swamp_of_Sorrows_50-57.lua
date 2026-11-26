@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Swamp of Sorrows (50-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Tanaris (50-54)",
-	rev = "26de1b14",
+	next = "Leveling/Horde/Tirisfal Glades (53-60)",
+	rev = "b27982ea",
 }, [[
 step
   ding 49
@@ -179,6 +179,6 @@ step
   talk Fallen Hero of the Horde##7572
   turnin The Cover of Darkness##2743 |goto Swamp of Sorrows 34.29,66.14
 step
-  note {travel}Tanaris
-  goto Tanaris 51.57,26.76
+  note {travel}Tirisfal Glades
+  goto Tirisfal Glades 83.13,68.94
 ]])

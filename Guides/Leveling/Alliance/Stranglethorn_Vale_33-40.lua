@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Stranglethorn Vale (33-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Loch Modan (20-38)",
-	rev = "78d21370",
+	next = "Leveling/Alliance/Dustwallow Marsh (35-38)",
+	rev = "7072a1a4",
 }, [[
 step
   ding 32
@@ -461,15 +461,6 @@ step
   note Kill 6 Kurzen Elite, 4 Kurzen Subchiefs, and bring Kurzen's Head to Lieutenant Doren at the Rebel Camp.
   kill Kurzen Elite##939 |q 202 |goto Stranglethorn Vale 47.88,6.86
 step
-  only haveq(193)
-  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to bring him the Fang of Bhag'thera.
-  kill Bhag'thera##728 |q 193 |goto Stranglethorn Vale 49.4,24 |elite
-  collect Fang of Bhag'thera##3876 |q 193 |goto Stranglethorn Vale 49.4,24
-step
-  only haveq(193)
-  talk Sir S. J. Erlgadin##718
-  turnin Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
-step
   only haveq(202)
   talk Lieutenant Doren##469
   turnin Colonel Kurzen##202 |goto Stranglethorn Vale 38.04,3.01
@@ -488,6 +479,11 @@ step
 step
   talk Hemet Nesingwary##715
   accept Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
+step
+  only haveq(193)
+  note Sir S. J. Erlgadin of Nesingwary's Expedition wants you to bring him the Fang of Bhag'thera.
+  kill Bhag'thera##728 |q 193 |goto Stranglethorn Vale 49.4,24 |elite
+  collect Fang of Bhag'thera##3876 |q 193 |goto Stranglethorn Vale 49.4,24
 step
   note Bring 4 Skullsplitter Fetishes to Brother Nimetz at the Rebel Camp.
   collect 4 Skullsplitter Fetish##2466 |q 205 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Mystic, Skullsplitter Witch Doctor
@@ -522,6 +518,10 @@ step
 step
   note Bring 10 Singing Blue Crystals to Crank Fizzlebub in Booty Bay.
   collect 10 Singing Blue Crystal##3917 |q 600 |goto Stranglethorn Vale 41.55,43.48 |tip {dropsfrom}Venture Co. Strip Miner, Venture Co. Surveyor, Venture Co. Tinkerer
+step
+  only haveq(193)
+  talk Sir S. J. Erlgadin##718
+  turnin Panther Mastery##193 |goto Stranglethorn Vale 35.55,10.55
 step
   talk Hemet Nesingwary##715
   turnin Raptor Mastery##196 |goto Stranglethorn Vale 35.66,10.81
@@ -617,14 +617,6 @@ step
   talk Krazek##773
   turnin Dream Dust in the Swamp##1116 |goto Stranglethorn Vale 26.95,77.21
 step
-  only completed(1222)
-  talk Angus Stern##1141
-  accept Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64
-step
-  only completed(1222)
-  talk Angus Stern##1141
-  turnin Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
-step
   only level>=35
   talk Angus Stern##1141
   accept A Meal Served Cold##212 |goto Stormwind City 51.79,93.64
@@ -680,6 +672,6 @@ step
   talk Thyn'tel Bladeweaver##8026
   turnin Answered Questions##1044 |goto Darnassus 61.77,39.18 |tip {turninat}Darnassus
 step
-  note {travel}Loch Modan
-  goto Loch Modan 32.63,49.74
+  note {travel}Dustwallow Marsh
+  goto Dustwallow Marsh 66.46,45.15
 ]])

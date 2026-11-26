@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Barrens (14-20)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
-	rev = "bc786db8",
+	rev = "3f20a416",
 }, [[
 step
   ding 13
@@ -165,15 +165,6 @@ step
   talk Mebok Mizzyrix##3446
   turnin Deepmoss Spider Eggs##1069 |goto The Barrens 62.37,37.62
 step
-  only completed(6981) haveq(3370)
-  note Bring the Nightmare Shard to Mathrengyl Bearwalker in Darnassus.
-  talk Mathrengyl Bearwalker##4217
-  turnin In Nightmares##3370 |goto Darnassus 35.37,8.4 |tip {turninat}Darnassus
-step
-  only not Human not Dwarf not Gnome Druid not completed(98340) not haveq(98340) level>=20
-  talk Mathrengyl Bearwalker##4217
-  accept The Great Cat Spirit##98393 |goto Darnassus 35.37,8.4
-step
   only NightElf Priest not completed(5673) not completed(5674) not completed(5675) not haveq(5673) not haveq(5674) not haveq(5675) level>=20
   talk Priestess Alathea##11401
   accept Elune's Grace##5672 |goto Darnassus 39.52,81.2
@@ -181,6 +172,10 @@ step
   only NightElf Priest not completed(5673) not completed(5674) not completed(5675) not haveq(5673) not haveq(5674) not haveq(5675) haveq(5672)
   talk Priestess Alathea##11401
   turnin Elune's Grace##5672 |goto Darnassus 39.52,81.2 |tip {turninat}Darnassus
+step
+  only not Human not Dwarf not Gnome Druid not completed(98340) not haveq(98340) level>=20
+  talk Mathrengyl Bearwalker##4217
+  accept The Great Cat Spirit##98393 |goto Darnassus 35.37,8.4
 step
   only not Human not Dwarf not Gnome Druid not completed(98340) not haveq(98340) haveq(98393)
   note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.

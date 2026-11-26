@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/The Deadmines", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "5c13aeed",
+	rev = "15e617bd",
 }, [[
 step
   talk Alba Fairmoon##253092
@@ -93,7 +93,7 @@ step
   accept The Defias Brotherhood##135 |goto Westfall 56.33,47.52
 step
   note Collect 8 Suspicious Industrial Supplies from Moonbrook.
-  collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 42.5,68.7 |tip {dropsfrom}Suspicious Crate
+  collect 8 Suspicious Industrial Supplies##254676 |q 92747 |goto Westfall 43.67,68.12 |tip {dropsfrom}Suspicious Crate
 step
   talk Alba Fairmoon##253092
   turnin Moonbrook Espionage##92747 |goto Westfall 52.48,52.97
@@ -125,7 +125,7 @@ step
   talk Gryan Stoutmantle##234
   accept The Defias Brotherhood##142 |goto Westfall 56.33,47.52
 step
-  note Obtain 10 Coarse Dynamite from crafting, trading, or the auction house, then return to Sprite Jumpsprocket in the Dwarven District of Stormwind.
+  note Obtain 10 Rough Dynamite from crafting, trading, or the auction house, then return to Sprite Jumpsprocket in the Dwarven District of Stormwind.
   collect 10 Rough Dynamite##4358 |q 92749 |goto Stormwind City 61.88,30.56 |tip Crafted or bought.
 step
   note Track down the Defias Messenger in Westfall and bring his message to Stoutmantle.

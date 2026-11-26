@@ -174,8 +174,13 @@ def main():
         qids = [q for q in qids if q not in repetivel or q in precisa]
         if len(qids) < (1 if name in RAIDS else 3):    # raide: a da cabeça do chefe já vale
             continue
+        # a cadeia de classe que leva à quest de masmorra é do guia de classe: aqui ela vira
+        # `completed()` (Elemental Aid, do xamã, em Razorfen Kraul, pede um dos Call of Air; puxados
+        # para cá, ficavam de fora o morto-vivo e o Skyborne, e o aceite travava)
+        de_classe = {int(k) for k, v in Q.items()            # uma classe só: as do guia de classe
+                     if v["classes"] and not v["classes"] & (v["classes"] - 1)} - set(qids)
         for fac in ("A", "H"):
-            n = emit("Dungeons", fac, name, qids, "phase", exclude=sintonia | (repetivel - precisa))
+            n = emit("Dungeons", fac, name, qids, "phase", exclude=sintonia | (repetivel - precisa) | de_classe)
             if n:
                 print("  [%s] %-28s %d quests" % (fac, name, n))
 

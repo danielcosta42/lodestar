@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Felwood (54-56)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Blasted Lands (50-55)",
-	rev = "4165958d",
+	next = "Leveling/Alliance/Burning Steppes (52-54)",
+	rev = "88a230a9",
 }, [[
 step
   ding 53
@@ -368,6 +368,6 @@ step
   talk Kayneth Stillwind##3848
   turnin Ancient Spirit##4261 |goto Ashenvale 85.24,44.71 |tip {turninat}Ashenvale
 step
-  note {travel}Blasted Lands
-  goto Blasted Lands 50.55,14.2
+  note {travel}Burning Steppes
+  goto Burning Steppes 84.56,68.68
 ]])

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Tirisfal Glades (53-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Western Plaguelands (53-57)",
-	rev = "6c71d895",
+	next = "Leveling/Horde/Western Plaguelands (54-58)",
+	rev = "bdc03382",
 }, [[
 step
   ding 51
@@ -13,16 +13,6 @@ step
   only not completed(5093) not completed(5095) not haveq(5093) not haveq(5095)
   talk Harbinger Balthazad##10879
   accept A Call to Arms: The Plaguelands!##5094 |goto Undercity 63.9,44.08
-step
-  only haveq(3542)
-  note Bring the Tablet of Markri to Andron Gant in Undercity.
-  talk Andron Gant##6522
-  turnin Delivery to Andron Gant##3542 |goto Undercity 54.81,76.33 |tip {turninat}Undercity
-step
-  only haveq(97001)
-  note Take the Sawyer Family Ledger to Abigail Sawyer in Undercity's War Quarter.
-  talk Abigail Sawyer##4604
-  turnin Sawyer's Legacy##97001 |goto Undercity 54.7,38.76 |tip {turninat}Undercity
 step
   only not completed(5093) not completed(5095) not haveq(5093) not haveq(5095)
   note Seek out High Executor Derrington. His base camp is located at the Bulwark, east of Tirisfal Glade and the Undercity.

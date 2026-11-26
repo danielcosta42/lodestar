@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Winterspring (54-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Mount Hyjal (57-60)",
-	rev = "43a81a83",
+	rev = "309a471a",
 }, [[
 step
   ding 53
@@ -330,6 +330,11 @@ step
   only completed(3908)
   click A Conspicuous Gravestone##148504
   accept Linken's Sword##3914 |goto Tanaris 53.81,29.06
+step
+  only completed(4741) haveq(4883)
+  note Take the Blue-feathered Necklace to Nara Wildmane.
+  talk Nara Wildmane##5770
+  turnin Guarding Secrets##4883 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
   only haveq(5085)
   note Report back to Donova Snowden with your findings.

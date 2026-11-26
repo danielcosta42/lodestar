@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Redridge Mountains (15-24)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Darkshore (13-20)",
-	rev = "23ff5dd9",
+	next = "Leveling/Alliance/Stonetalon Mountains (21-27)",
+	rev = "f204fed0",
 }, [[
 step
   ding 14
@@ -590,6 +590,6 @@ step
   talk Lord Ello Ebonlocke##263
   turnin Messenger to Darkshire##145 |goto Duskwood 71.93,46.42 |tip {turninat}Duskwood
 step
-  note {travel}Darkshore
-  goto Darkshore 36.97,44.13
+  note {travel}Stonetalon Mountains
+  goto Stonetalon Mountains 59.9,66.85
 ]])

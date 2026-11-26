@@ -197,13 +197,33 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 - **Pré-requisito de fora do guia vira condição do passo**: `only completed(p)` (com várias opções,
   `completed(a,b)` = qualquer uma). O passo só aparece para quem já entregou; antes, ou o guia
   cortava a quest, ou mandava a um NPC que não a abre e travava. Quem depende dela no guia herda.
-- **A cadeia intercala os continentes por nível.** Uma só por facção: depois da zona inicial, o
-  primeiro guia do próprio continente, e daí todos os guias dos dois, em ordem de nível; troca de
-  continente quando o próximo daqui passa 3 níveis (`FICA_NIVEIS`) do próximo de lá — 7 a 9
-  travessias por cadeia. Por continente, o morto-vivo ia de Hillsbrad 22-28 a Hillsbrad 32-39 no
-  nível 23 (o conteúdo de 28-32 da Horda é de Kalimdor) e a cadeia não dava XP para o 60. O custo:
-  a cadeia é a mesma para todas as raças, e o humano passa por Darkshore 13-20 e The Barrens 14-21
-  já no 22-25, com boa parte das quests cinza (o modelo do revisor dá ~65% da XP ali).
+- **A cadeia intercala os continentes pelo nível simulado** (`CADEIA = "sim"`, desde a 1.1.6). Cada
+  continente guarda a trilha dele, na ordem da mediana, e a cadeia as junta simulando o jogador: a
+  XP de cada guia é a do roteador (`xp_quest`), com a redução do jogo para quest de 6+ níveis abaixo.
+  Entre as cabeças das trilhas que cabem no nível (entrada `lo − 1` até meio nível acima), vai a que
+  passou do **prazo** — a mediana dela, ou 4 níveis (`URGENTE`) antes de 30% das quests ficarem
+  cinza —, com o continente atual desempatando até 1 nível (`EMPATE`); senão a do continente atual,
+  senão a que cabe, senão a de entrada mais baixa (grind). O jogador simulado é o da maioria das
+  zonas iniciais (Reinos do Leste na Aliança, Kalimdor na Horda): o guia baixo (`lo` < 20) do outro
+  continente entra na ordem sem lhe dar XP. Por continente, o morto-vivo ia de Hillsbrad 22-28 a
+  Hillsbrad 32-39 no nível 23 e a cadeia não dava XP para o 60; pela mediana (até a 1.1.6), o
+  `Alterac Mountains (34-34)` da Aliança, de 7 quests, bastava para sair de Kalimdor antes de Desolace
+  33-40, que voltava depois de Riverglades no 44 (12 quests cinza), e o Ashenvale 21-30 (mediana 28)
+  ia para depois de Wetlands 30-33 (15). Na simulação da auditoria: cinza do humano 86 → 23, do elfo
+  noturno 34 → 8; grind do orc 247k → 78k de XP; 2 a 3 travessias a mais por cadeia.
+- **Ramo da raça.** Até o primeiro guia comum com `lo` ≥ 20 (`RAMO_LO`), cada zona inicial segue só
+  os guias do próprio continente, se com eles chega a ele com até 2 níveis de grind (`RAMO_GRIND`):
+  humano, anão e Skyborne da Aliança vão Westfall → Dun Morogh 13-26 → Loch Modan → Redridge →
+  Stonetalon, sem Darkshore 13-20 nem The Barrens 14-20 (onde chegavam no 24, com 26 quests
+  cinza); o elfo noturno, Darkshore → The Barrens → Stonetalon. O morto-vivo não ramifica: só com
+  Silverpine ficaria 2+ níveis abaixo, e segue por The Barrens 12-19. Os caminhos se juntam no
+  primeiro guia que outro já tem — um guia só tem um `next`.
+- **Guia que começa no 59+ fica fora da cadeia** (`FORA_DA_CADEIA_DESDE`): `Alterac Mountains
+  (60-60)` da Aliança (a cadeia de Onyxia de Bolvar, o folheto da Darkmoon) e `Mulgore (59-60)` da
+  Horda são gerados, mas ninguém aponta para eles; o autopilot os oferece no 60.
+- **O teto do guia é também o nível simulado de saída + 3** (`TETO_FOLGA`): quest que pede mais vai
+  ao guia seguinte da trilha. As de montaria do tauren (40) saíram de Mulgore 29-30 para Desolace
+  33-40.
 - **Cadeia que atravessa zonas** (The Defias Brotherhood: Westfall → Redridge → Westfall): a quest
   cujo pré-req fica num guia mais adiante da trilha do continente vai para ele, no bloco final
   ("volte a Sentinel Hill"); pré-req noutro continente, mais adiante na cadeia, leva a quest ao
@@ -211,7 +231,9 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   acima da zona onde começa que continua cadeia de nível maior não sai como "poluente" dali: é ela
   que vai ao guia do pré-req (The Legend of Stalvan do baú de Westfall, req 22, vai a Duskwood;
   tirada, a cadeia de Stalvan sumia). Guia que fica com
-  menos de 6 quests se dissolve no vizinho da trilha. Entrega noutra zona de que nada depende vai
+  menos de 6 quests se dissolve no vizinho da trilha — só num de nível até `BAND_GAP` dele: Mulgore
+  59-60 ia para Mulgore 29-40, que virava "29-59" com as de 59-60 mortas atrás de `level>=`; sem
+  vizinho perto, as quests saem. Entrega noutra zona de que nada depende vai
   para o fim do guia (Flight to Auberdine, na chegada a Darkshore).
 - **Exclusivas.** Todo passo de quest com `exclusiveTo` leva `not completed(x) not haveq(x)`: feita
   uma variante, a outra some em vez de travar — inclusive em guias diferentes do mesmo caminho
@@ -437,7 +459,9 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 | — fora: começam por item ou giver sem posição | 65 |
 | — fora: evento/repetível/campo de batalha | 53 |
 | — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão, nível 60, fora da faixa...) | 177 |
-| `validate_guides.py` — ocorrências nos guias de leveling | **0**; nos especiais, 33 até o `gen_special.py` rodar de novo com o banco novo (rodado numa cópia: 0) |
+| `validate_guides.py` — ocorrências | **0** em 205 guias (leveling e especiais, regerados com o 1.1.6) |
+| `check_special.py` | **0** problemas em 68 guias |
+| `QuestLevels.lua` | 4.333 de 4.333 quests citadas, do `questLevel` do banco (antes, do pfQuest: 976 sem nível) |
 
 Na 1.0.10 eram 513 de 995 quests novas em guia (leveling e especiais).
 | Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos, toda raça×classe |
@@ -491,16 +515,20 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
 ## Em aberto
 
 
-- **Regerar o resto com o banco 1.1.6.** Só os guias de leveling saíram dele: `gen_special.py`
-  (classe, masmorra, reputação — o `validate_guides.py` acusa 33 ocorrências neles até lá, e o
-  `check_special.py` 30; regerados numa cópia, 0 e 2: Elemental Aid, do xamã, em Razorfen Kraul sem
-  o Call of Air), `gen_forever.py` (o `ForeverData.lua` ainda lista para o `/ls scan` ids que o
-  1.1.6 já conhece), `gen_questlevels.py` (976 quests dos guias não estão no pfQuest: o cinza só
-  aparece quando o jogo carrega a quest) e `gen_zonedata`/`gen_trainers`/`gen_travel`/`gen_subzones`.
-- **Ordem da cadeia com Riverglades.** A intercalação pela mediana pôs o `Desolace (33-40)` da Aliança
-  depois de Riverglades (entra no ~44, 12 quests cinza) e o `Ashenvale (21-30)` depois de Wetlands
-  30-33 (15 cinza). Pelo meio da faixa do título os cinza da Aliança caem de 86 para 69, mas o grind
-  e as travessias sobem: falta escolher o próximo guia pelo nível simulado, não por um número só.
+- **Regerar o resto com o banco 1.1.6.** Já saíram dele os guias de leveling e os especiais
+  (`gen_special.py`: a cadeia de uma classe só que leva a uma quest de masmorra vira `completed()` no
+  guia da masmorra — Elemental Aid, em Razorfen Kraul, pede um dos Call of Air), o `QuestLevels.lua`
+  (`gen_questlevels.py`, agora do `questLevel` do banco; o pfQuest só se a pasta vier no argumento)
+  e o `ForeverData.lua` (1.099 ids que nenhum banco conhece, eram ~2.106). Falta
+  `gen_zonedata`/`gen_trainers`/`gen_travel`/`gen_subzones`.
+- **Horda em Riverglades entra por Undercity.** O Badlands 37-42 termina lá pelas quests dele
+  (Yagyin's Digest, Forbidden Knowledge, Reclaimed Treasures) e Riverglades pega Armory of Sunnyglade
+  na mesma visita; adiar as entregas de Undercity pede um guia que vá lá até 5 níveis depois, e não
+  há. A ordem já é monotônica: Badlands → Riverglades → Desolace 42-45 → Tanaris.
+- **Travessias.** A cadeia simulada tem 2 a 3 travessias a mais que a da mediana (humano 13, orc 12):
+  guias pequenos do outro continente (`Teldrassil (48-55)`, `Alterac Mountains (40-53)`) puxam a
+  viagem. Juntar guia pequeno ao vizinho do mesmo continente ou pesar o tamanho no prazo é o próximo
+  passo.
 - **`QuestV2` do 70338.** O wago devolvia 503 quando o build entrou; ao voltar, subir `FOREVER` em
   `tools/import_forever.py` e rodar o "Regerar" (as tabelas de voo vêm do mesmo build).
 - **Masmorra nova sem mapa.** O QuestieDB não posiciona nada dentro de City of Dalaran, Excavation

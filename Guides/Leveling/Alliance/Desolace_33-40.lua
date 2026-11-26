@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Desolace (33-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Desolace (42-45)",
-	rev = "ad291874",
+	next = "Leveling/Alliance/Loch Modan (20-38)",
+	rev = "28feecfa",
 }, [[
 step
   ding 32
@@ -388,6 +388,6 @@ step
   talk Lelanai##4730
   accept Your First Feline Friend##95511 |goto Darnassus 38.28,15.36
 step
-  note {travel}Shen'dralas
-  goto Shen'dralas 43.65,34.32
+  note {travel}Loch Modan
+  goto Loch Modan 32.63,49.74
 ]])

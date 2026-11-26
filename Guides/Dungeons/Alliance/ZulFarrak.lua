@@ -4,11 +4,15 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Zul'Farrak", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "3cafd5d1",
+	rev = "ba69bb56",
 }, [[
 step
   talk Yeh'kinya##8579
   accept Screecher Spirits##3520 |goto Tanaris 66.99,22.36
+step
+  only Mage
+  talk Garion Wendell##211033
+  accept A Lesson in Literacy##82084 |goto Stormwind City 48.94,86.54
 step
   talk Tran'rek##7876
   accept Scarab Shells##2865 |goto Tanaris 51.57,26.76
@@ -18,6 +22,9 @@ step
 step
   talk Gryphon Master Talonaxe##5636
   accept Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
+step
+  talk Archmage Lan'dalock##20735
+  accept The Witch Doctor's Head##96770 |goto Alterac Mountains 15.3,73.93
 step
   talk Tabetha##6546
   accept Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
@@ -31,6 +38,12 @@ step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
 step
+  only Mage
+  note Track down and collect the spellbook materials requested by the librarian.
+  collect Zukk'ash Resin##221361 |q 82084/2 |goto Feralas 78.01,64.14 |tip {dropsfrom}Zukk'ash Stinger, Zukk'ash Wasp, Zukk'ash Worker
+  collect Pristine Owlbeast Quill##221359 |q 82084/1 |goto The Hinterlands 29.72,55.26 |tip {dropsfrom}Vicious Owlbeast, Primitive Owlbeast, Savage Owlbeast
+  collect Farraki Papyrus##221360 |q 82084 |goto Zul'Farrak - Dungeon -1,-1 |tip {dropsfrom}Shallow Grave, Zul'Farrak Zombie
+step
   note Bring 5 Uncracked Scarab Shells to Tran'rek in Gadgetzan.
   collect 5 Uncracked Scarab Shell##9238 |q 2865 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Scarab
 step
@@ -41,6 +54,9 @@ step
   click First Witherbark Cage##144066 |q 2988/1 |goto The Hinterlands 23.28,58.81
   click Second Witherbark Cage##144067 |q 2988/2 |goto The Hinterlands 23.13,58.82
   click Third Witherbark Cage##144068 |q 2988 |goto The Hinterlands 31.99,57.31
+step
+  note Slay Witch Doctor Zum'rah and bring Zum'rah's Head to Archmage Lan'dalock in Dalaran.
+  collect Zum'rah's Head##277112 |q 96770 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Witch Doctor Zum'rah
 step
   note Bring the Tiara of the Deep to Tabetha in Dustwallow Marsh.
   collect Tiara of the Deep##9234 |q 2846 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Hydromancer Velratha
@@ -54,6 +70,10 @@ step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
 step
+  only Mage
+  talk Garion Wendell##211033
+  turnin A Lesson in Literacy##82084 |goto Stormwind City 48.94,86.54
+step
   talk Tran'rek##7876
   turnin Scarab Shells##2865 |goto Tanaris 51.57,26.76
 step
@@ -62,6 +82,9 @@ step
 step
   talk Gryphon Master Talonaxe##5636
   turnin Witherbark Cages##2988 |goto The Hinterlands 9.75,44.47
+step
+  talk Archmage Lan'dalock##20735
+  turnin The Witch Doctor's Head##96770 |goto Alterac Mountains 15.3,73.93
 step
   talk Tabetha##6546
   turnin Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09

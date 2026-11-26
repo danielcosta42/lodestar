@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Thousand Needles (30-41)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Alterac Mountains (34-34)",
-	rev = "d6e001a8",
+	next = "Leveling/Alliance/Desolace (33-40)",
+	rev = "71467e5c",
 }, [[
 step
   ding 29
@@ -76,12 +76,12 @@ step
   talk Trackmaster Zherin##4629
   turnin A Bump in the Road##1175 |goto Thousand Needles 81.63,77.95
 step
+  collect Henrig Lonebrow's Journal##19861 |goto Thousand Needles 31.3,28.1 |tip Loot the quest item here — it starts the quest.
+  accept Lonebrow's Journal##1100 |goto Thousand Needles 31.3,28.1
+step
   only Warrior completed(1782)
   note Bring 20 Sunscorched Shells to Mathiel in Darnassus.
   collect 20 Sunscorched Shell##6849 |q 1710 |goto Thousand Needles 11.41,36.76
-step
-  collect Henrig Lonebrow's Journal##19861 |goto Thousand Needles 31.3,28.1 |tip Loot the quest item here — it starts the quest.
-  accept Lonebrow's Journal##1100 |goto Thousand Needles 31.3,28.1
 step
   only level>=30
   talk Kravel Koalbeard##4452
@@ -130,25 +130,6 @@ step
   talk Pozzik##4630
   turnin Rizzle's Schematics##1194 |goto Thousand Needles 80.18,75.88
 step
-  only haveq(1039)
-  note Speak with Wharfmaster Dizzywig in Ratchet.
-  talk Wharfmaster Dizzywig##3453
-  turnin The Barrens Port##1039 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
-step
-  only haveq(1111)
-  note Bring Kravel's Parts Order to Wharfmaster Dizzywig in Ratchet.
-  talk Wharfmaster Dizzywig##3453
-  turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
-step
-  only completed(1111) level>=30
-  talk Wharfmaster Dizzywig##3453
-  accept Parts for Kravel##1112 |goto The Barrens 63.35,38.45
-step
-  only haveq(1178)
-  note Speak to Gazlowe in Ratchet.
-  talk Gazlowe##3391
-  turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
-step
   only Warrior completed(1782)
   talk Mathiel##6142
   turnin Sunscorched Shells##1710 |goto Darnassus 59.51,45.38 |tip {turninat}Darnassus
@@ -164,6 +145,20 @@ step
   note Read Henrig Lonebrow's Journal.
   talk Falfindel Waywarder##4048
   turnin Lonebrow's Journal##1100 |goto Feralas 89.64,46.57 |tip {turninat}Feralas
+step
+  only haveq(1111)
+  note Bring Kravel's Parts Order to Wharfmaster Dizzywig in Ratchet.
+  talk Wharfmaster Dizzywig##3453
+  turnin Wharfmaster Dizzywig##1111 |goto The Barrens 63.35,38.45 |tip {turninat}The Barrens
+step
+  only completed(1111) level>=30
+  talk Wharfmaster Dizzywig##3453
+  accept Parts for Kravel##1112 |goto The Barrens 63.35,38.45
+step
+  only haveq(1178)
+  note Speak to Gazlowe in Ratchet.
+  talk Gazlowe##3391
+  turnin Goblin Sponsorship##1178 |goto The Barrens 62.68,36.23 |tip {turninat}The Barrens
 step
   only haveq(1112)
   note Bring Kravel's Parts to Kravel Koalbeard in the Shimmering Flats.
@@ -191,6 +186,6 @@ step
   talk Razzeric##4706
   accept Safety First##1188 |goto Thousand Needles 80.33,76.09
 step
-  note {travel}Alterac Mountains
-  goto Alterac Mountains 58.32,67.92
+  note {travel}Desolace
+  goto Desolace 38.88,27.16
 ]])

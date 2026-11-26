@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Moonglade (55-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Winterspring (54-60)",
-	rev = "937ea2bb",
+	rev = "effebeab",
 }, [[
 step
   ding 54
@@ -13,6 +13,11 @@ step
   only completed(1000,1004,1018) level>=54
   talk Arch Druid Hamuul Runetotem##5769
   accept Rabine Saturna##1123 |goto Thunder Bluff 78.62,28.56
+step
+  only haveq(4987)
+  note Based on the magic enchanted within the Glyphed Oaken Branch, its delivery to the Cenarion Circle in Thunder Bluff is the next step the tauren druid sought. Seek one of the druids there for assistance.
+  talk Nara Wildmane##5770
+  turnin Glyphed Oaken Branch##4987 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
   note {fp}Bunthen Plainswind
   goto Moonglade 44.28,45.87 |tip {vendor}
@@ -39,6 +44,15 @@ step
   talk Torwa Pathfinder##9619
   turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96 |tip {turninat}Un'Goro Crater
 step
+  only haveq(97988)
+  note Speak with Corswyn Aseril in Orgrimmar's Valley of Wisdom.
+  talk Corswyn Aseril##255679
+  turnin Orgrimmar's Windshapers##97988 |goto Orgrimmar 38.1,39.01 |tip {turninat}Orgrimmar
+step
+  only completed(8913,8914,8915,8916,8917,8918,8919,8920) level>=58
+  talk Mokvar##16012
+  accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
+step
   only completed(1000,1004,1018) haveq(1124)
   note Speak with Layo Starstrike near the Valor's Rest graveyard of Silithus, showing him Rabine's Letter.
   talk Layo Starstrike##13220
@@ -63,10 +77,6 @@ step
   only haveq(5526)
   talk Rabine Saturna##11801
   turnin Shards of the Felvine##5526 |goto Moonglade 51.69,45.1
-step
-  only completed(8913,8914,8915,8916,8917,8918,8919,8920) level>=58
-  talk Mokvar##16012
-  accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
 step
   note {travel}Winterspring
   goto Winterspring 61.12,38.43

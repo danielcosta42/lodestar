@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Wetlands (30-33)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Ashenvale (21-30)",
-	rev = "4d117896",
+	next = "Leveling/Alliance/Alterac Mountains (34-34)",
+	rev = "5818ffff",
 }, [[
 step
   ding 28
@@ -303,6 +303,6 @@ step
   talk Captain Nials##2700
   turnin Plea To The Alliance##634 |goto Arathi Highlands 45.83,47.56 |tip {turninat}Arathi Highlands
 step
-  note {travel}Ashenvale
-  goto Ashenvale 34.67,48.84
+  note {travel}Alterac Mountains
+  goto Alterac Mountains 58.32,67.92
 ]])

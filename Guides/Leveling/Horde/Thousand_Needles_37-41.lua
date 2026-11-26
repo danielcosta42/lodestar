@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Thousand Needles (37-41)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Desolace (42-45)",
-	rev = "66d7323e",
+	next = "Leveling/Horde/Swamp of Sorrows (35-44)",
+	rev = "8468a821",
 }, [[
 step
   ding 36
@@ -111,6 +111,6 @@ step
   talk Razzeric##4706
   accept Safety First##1188 |goto Thousand Needles 80.33,76.09
 step
-  note {travel}Shen'dralas
-  goto Shen'dralas 43.65,34.32
+  note {travel}Swamp of Sorrows
+  goto Swamp of Sorrows 47.74,55.2
 ]])

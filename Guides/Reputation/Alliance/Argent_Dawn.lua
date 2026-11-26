@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Reputation/Alliance/Argent Dawn", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "fd0b39a9",
+	rev = "f0a94d9c",
 }, [[
 step
   talk Dawnwatcher Shaedlass##4786
@@ -761,15 +761,15 @@ step
   talk Quartermaster Miranda Breechlock##11536
   turnin Epic Armaments of Battle - Exalted Amongst the Dawn##9228 |goto Eastern Plaguelands 71.79,50.25
 step
-  only Druid
+  only Druid not completed(84147) not haveq(84147)
   talk Deliana##16013
   accept An Earnest Proposition##8905 |goto Ironforge 43.53,52.64
 step
-  only Druid
+  only Druid not completed(84147) not haveq(84147)
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Wildheart Bracers to Deliana in Ironforge.
   collect 15 Winterspring Blood Sample##21928 |q 8905 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
 step
-  only Druid
+  only Druid not completed(84147) not haveq(84147)
   talk Deliana##16013
   turnin An Earnest Proposition##8905 |goto Ironforge 43.53,52.64
 step
@@ -797,15 +797,15 @@ step
   talk Deliana##16013
   turnin An Earnest Proposition##8907 |goto Ironforge 43.53,52.64
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   accept An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
   collect 15 Winterspring Blood Sample##21928 |q 8908 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
 step
-  only Paladin
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   turnin An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
 step

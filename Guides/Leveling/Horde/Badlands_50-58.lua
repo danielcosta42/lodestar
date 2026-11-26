@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Badlands (50-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Swamp of Sorrows (50-57)",
-	rev = "78ac2652",
+	rev = "f912f3e9",
 }, [[
 step
   ding 49
@@ -63,6 +63,19 @@ step
   only completed(692)
   turnin Summoning the Princess##656 |goto Arathi Highlands 62.5,33.73 |tip {turninat}Arathi Highlands
 step
+  only haveq(3542)
+  note Bring the Tablet of Markri to Andron Gant in Undercity.
+  talk Andron Gant##6522
+  turnin Delivery to Andron Gant##3542 |goto Undercity 54.81,76.33 |tip {turninat}Undercity
+step
+  only level>=50
+  talk Apothecary Zinge##5204
+  accept Vivian Lagrave##4133 |goto Undercity 50.14,67.97
+step
+  only level>=57
+  talk Apothecary Zinge##5204
+  accept Vivian Lagrave and the Darkstone Tablet##4769 |goto Undercity 50.14,67.97
+step
   note Venture forth to the Burning Steppes and find out what became of Sha'ni Proudtusk.
   talk Sha'ni Proudtusk##9136
   turnin Dreadmaul Rock##3821 |goto Burning Steppes 79.95,45.4 |tip {turninat}Burning Steppes
@@ -92,19 +105,6 @@ step
   talk Hierophant Theodora Mulvadania##9079
   accept The Rise of the Machines##4062 |goto Badlands 3.02,47.81
 step
-  only haveq(4062)
-  note Take the Elemental Shard Sample to Lotwil Veriatus.
-  talk Lotwil Veriatus##2921
-  turnin The Rise of the Machines##4062 |goto Badlands 25.95,44.87
-step
-  only level>=50
-  talk Apothecary Zinge##5204
-  accept Vivian Lagrave##4133 |goto Undercity 50.14,67.97
-step
-  only level>=57
-  talk Apothecary Zinge##5204
-  accept Vivian Lagrave and the Darkstone Tablet##4769 |goto Undercity 50.14,67.97
-step
   only haveq(4133)
   note Speak with Shadowmaster Vivian Lagrave in Kargath.
   talk Shadowmage Vivian Lagrave##9078
@@ -114,6 +114,11 @@ step
   note Speak with Shadowmage Vivian Lagrave.
   talk Shadowmage Vivian Lagrave##9078
   turnin Vivian Lagrave and the Darkstone Tablet##4769 |goto Badlands 2.9,47.76
+step
+  only haveq(4062)
+  note Take the Elemental Shard Sample to Lotwil Veriatus.
+  talk Lotwil Veriatus##2921
+  turnin The Rise of the Machines##4062 |goto Badlands 25.95,44.87
 step
   note {travel}Swamp of Sorrows
   goto Swamp of Sorrows 34.29,66.14

@@ -1,39 +1,17 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (55-60)", {
+ns:RegisterGuide("Leveling/Alliance/Eastern Plaguelands (56-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Alterac Mountains (60-60)",
-	rev = "9c8fb261",
+	next = "Leveling/Alliance/Winterspring (54-59)",
+	rev = "4fe13ec5",
 }, [[
 step
-  ding 54
-step
-  talk Pamela Redpath##10926
-  accept Pamela's Doll##5149 |goto Eastern Plaguelands 31.15,77.98
-step
-  note Find Pamela's doll.
-  collect Pamela's Doll##12885 |q 5149 |goto Eastern Plaguelands 32.58,79.56 |tip Combine Pamela's Doll's Head, Pamela's Doll's Left Side, Pamela's Doll's Right Side.
-step
-  talk Pamela Redpath##10926
-  turnin Pamela's Doll##5149 |goto Eastern Plaguelands 31.15,77.98
-step
-  talk Pamela Redpath##10926
-  accept Auntie Marlene##5152 |goto Eastern Plaguelands 31.15,77.98
-step
-  talk Pamela Redpath##10926
-  accept Uncle Carlin##5241 |goto Eastern Plaguelands 31.15,77.98
+  ding 55
 step
   note {fp}Khaelyn Steelwing
   goto Eastern Plaguelands 71.81,49.6 |tip {vendor}
-step
-  note Find Carlin Redpath.
-  talk Carlin Redpath##11063
-  turnin Uncle Carlin##5241 |goto Eastern Plaguelands 71.7,50.04
-step
-  talk Carlin Redpath##11063
-  accept Defenders of Darrowshire##5211 |goto Eastern Plaguelands 71.7,50.04
 step
   only not completed(5401) not completed(5405) not haveq(5401) not haveq(5405)
   talk Duke Nicholas Zverenhoff##11039
@@ -49,9 +27,6 @@ step
   only completed(98109)
   talk Adon##11706
   accept Stormwind's High Order##97987 |goto Eastern Plaguelands 50.92,11.48
-step
-  note Free 15 Darrowshire Spirits and return to Carlin Redpath.
-  talk Darrowshire Spirit##11064 |q 5211 |goto Eastern Plaguelands 32.51,29.19
 step
   talk Augustus the Touched##12384
   accept Augustus' Receipt Book##6164 |goto Eastern Plaguelands 11.36,26.37
@@ -85,15 +60,37 @@ step
   note Bring Zaeldarr's Head to Caretaker Alen at Light's Hope Chapel.
   collect Zaeldarr's Head##15785 |q 6021 |goto Eastern Plaguelands 23.07,72.63 |tip {dropsfrom}Zaeldarr the Outcast
 step
+  talk Pamela Redpath##10926
+  accept Pamela's Doll##5149 |goto Eastern Plaguelands 31.15,77.98
+step
+  note Find Pamela's doll.
+  collect Pamela's Doll##12885 |q 5149 |goto Eastern Plaguelands 32.58,79.56 |tip Combine Pamela's Doll's Head, Pamela's Doll's Left Side, Pamela's Doll's Right Side.
+step
+  talk Pamela Redpath##10926
+  turnin Pamela's Doll##5149 |goto Eastern Plaguelands 31.15,77.98
+step
+  talk Pamela Redpath##10926
+  accept Auntie Marlene##5152 |goto Eastern Plaguelands 31.15,77.98
+step
+  talk Pamela Redpath##10926
+  accept Uncle Carlin##5241 |goto Eastern Plaguelands 31.15,77.98
+step
+  note Find Carlin Redpath.
   talk Carlin Redpath##11063
-  turnin Defenders of Darrowshire##5211 |goto Eastern Plaguelands 71.7,50.04
+  turnin Uncle Carlin##5241 |goto Eastern Plaguelands 71.7,50.04
 step
   talk Caretaker Alen##11038
   turnin Zaeldarr the Outcast##6021 |goto Eastern Plaguelands 69.93,53.72
 step
-  only completed(6026) level>=54
+  talk Carlin Redpath##11063
+  accept Defenders of Darrowshire##5211 |goto Eastern Plaguelands 71.7,50.04
+step
+  only completed(6026)
   talk Smokey LaRue##11033
   accept When Smokey Sings, I Get Violent##6041 |goto Eastern Plaguelands 70.88,48.43
+step
+  note Free 15 Darrowshire Spirits and return to Carlin Redpath.
+  talk Darrowshire Spirit##11064 |q 5211 |goto Eastern Plaguelands 32.51,29.19
 step
   only completed(5542) completed(5543) completed(5544)
   talk Tirion Fordring##1855
@@ -103,7 +100,7 @@ step
   talk Tirion Fordring##1855
   accept Of Lost Honor##5845 |goto Eastern Plaguelands 5.16,35.57
 step
-  only completed(6026) haveq(6041)
+  only completed(6026)
   note Travel to Plaguewood, northwest of Light's Hope. Destroy 8 Scourge Structures by using Smokey's Special Compound at the Mark of Detonation planted inside each building. Smokey has had the Ziggurats and Slaughterhouses marked.
   kill Scourge Structure##12247 |q 6041 |goto Eastern Plaguelands 28.01,17.75
 step
@@ -111,7 +108,10 @@ step
   note Travel to Northdale, in the northeastern region of the Eastern Plaguelands, and recover the Symbol of Lost Honor. Return to Tirion Fordring upon completion of your objective.
   collect Symbol of Lost Honor##14625 |q 5845 |goto Eastern Plaguelands 62.53,26.81
 step
-  only completed(6026) haveq(6041)
+  talk Carlin Redpath##11063
+  turnin Defenders of Darrowshire##5211 |goto Eastern Plaguelands 71.7,50.04
+step
+  only completed(6026)
   talk Smokey LaRue##11033
   turnin When Smokey Sings, I Get Violent##6041 |goto Eastern Plaguelands 70.88,48.43
 step
@@ -127,13 +127,20 @@ step
   talk Tirion Fordring##1855
   accept Find Myranda##5861 |goto Eastern Plaguelands 5.16,35.57
 step
-  only level>=54
   click Torn Scroll##177667
   accept Hameya's Plea##6024 |goto Eastern Plaguelands 22.9,72.96
 step
   only level>=55
   talk Caretaker Alen##11038
   accept The Restless Souls##5281 |goto Eastern Plaguelands 69.93,53.72
+step
+  only completed(5464) level>=57
+  talk Leonid Barthalomew the Revered##11036
+  accept Soulbound Keepsake##5465 |goto Eastern Plaguelands 71.89,48.29
+step
+  only completed(5522) level>=57
+  talk Leonid Barthalomew the Revered##11036
+  accept Betina Bigglezink##5531 |goto Eastern Plaguelands 71.89,48.29
 step
   only level>=55
   talk Huntsman Leopold##16132
@@ -158,11 +165,15 @@ step
   goto Eastern Plaguelands 18.16,25.06 |q 9664/4
   goto Eastern Plaguelands 34.09,64.1 |q 9664
 step
+  only completed(5522) haveq(5531)
+  note Bring the Frozen Eggs to Betina Bigglezink.
+  talk Betina Bigglezink##11035
+  turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
+step
   only haveq(9664)
   talk Emmisary Whitebeard##17069
   turnin Establishing New Outposts##9664 |goto Eastern Plaguelands 71.51,49.66
 step
-  only haveq(6024)
   note Kill Infiltrator Hameya. Use his key on the Mound of Dirt behind the Undercroft.
   collect Hameya's Key##15767 |q 6024 |goto Eastern Plaguelands 61.96,11.11 |tip {dropsfrom}Infiltrator Hameya
 step
@@ -179,7 +190,6 @@ step
   note Huntsman Leopold at Light's Hope Chapel in the Eastern Plaguelands wants 30 Crypt Fiend Parts.
   collect 30 Crypt Fiend Parts##22525 |q 9124 |goto Eastern Plaguelands 12.84,25.99 |tip {dropsfrom}Crypt Fiend, Crypt Walker, Crypt Horror
 step
-  only haveq(6024)
   turnin Hameya's Plea##6024 |goto Eastern Plaguelands 23.58,73.79
 step
   only haveq(9124)
@@ -190,18 +200,21 @@ step
   talk Rohan the Assassin##16131
   turnin Bonescythe Digs##9126 |goto Eastern Plaguelands 71.62,48.91
 step
-  only completed(5464) level>=57
-  talk Leonid Barthalomew the Revered##11036
-  accept Soulbound Keepsake##5465 |goto Eastern Plaguelands 71.89,48.29
+  only completed(3621)
+  talk Galvan the Ancient##7802
+  accept Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
 step
-  only completed(5522) level>=57
-  talk Leonid Barthalomew the Revered##11036
-  accept Betina Bigglezink##5531 |goto Eastern Plaguelands 71.89,48.29
+  only completed(3621)
+  note Wait for Galvan to finish forging the weaponry.
+  talk Galvan the Ancient##7802 |q 3625 |goto Stranglethorn Vale 50.62,20.48
 step
-  only completed(5522) haveq(5531)
-  note Bring the Frozen Eggs to Betina Bigglezink.
-  talk Betina Bigglezink##11035
-  turnin Betina Bigglezink##5531 |goto Eastern Plaguelands 71.66,49.94
+  only completed(3621)
+  talk Galvan the Ancient##7802
+  turnin Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48 |tip {turninat}Stranglethorn Vale
+step
+  only completed(3621)
+  talk Galvan the Ancient##7802
+  accept Return to the Blasted Lands##3626 |goto Stranglethorn Vale 50.62,20.48
 step
   only completed(5464) haveq(5465)
   note Return to Magistrate Marduke in Caer Darrow. Show him the Soulbound Keepsake.
@@ -289,6 +302,41 @@ step
   talk Tirion Fordring##1855
   turnin In Dreams##5944 |goto Eastern Plaguelands 5.16,35.57
 step
+  only completed(3621)
+  note Return to the Fallen Hero of the Horde.
+  talk Fallen Hero of the Horde##7572
+  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
+step
+  only completed(3621) level>=60
+  talk Fallen Hero of the Horde##7572
+  accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
+step
+  only completed(3621) haveq(3627)
+  note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
+  kill Archmage Allistarj##7666 |q 3627/1 |goto Blasted Lands 66.69,29.24 |elite
+  collect Amulet of Allistarj##10755 |q 3627/1 |goto Blasted Lands 66.69,29.24
+  kill Lady Sevine##7667 |q 3627/3 |goto Blasted Lands 40.75,29.97 |elite
+  collect Amulet of Sevine##10754 |q 3627/3 |goto Blasted Lands 40.75,29.97
+  kill Grol the Destroyer##7665 |q 3627 |goto Blasted Lands 42.57,13.01 |elite
+  collect Amulet of Grol##10753 |q 3627 |goto Blasted Lands 42.57,13.01
+step
+  only completed(3621) haveq(3627)
+  talk Fallen Hero of the Horde##7572
+  turnin Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
+step
+  only completed(3621) completed(3627) level>=60
+  talk Fallen Hero of the Horde##7572
+  accept You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14
+step
+  only completed(3621) haveq(3628)
+  note Destroy Razelikh the Defiler and return the Severed Horn of the Defiler to the Fallen Hero of the Horde. You will also need to return the Ward of the Defiler so that the Fallen Hero can destroy it, preventing it from ever falling into the wrong hands.
+  kill Razelikh the Defiler##7664 |q 3628 |goto Blasted Lands 47.64,29.83 |elite
+  collect Severed Horn of the Defiler##10759 |q 3628 |goto Blasted Lands 47.64,29.83
+step
+  only completed(3621) haveq(3628)
+  talk Fallen Hero of the Horde##7572
+  turnin You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
+step
   note Bring Davil's Libram and Redpath's Shield to Carlin Redpath.
   collect Davil's Libram##12954 |q 5168/1 |goto Western Plaguelands 42.52,18.99
   collect Redpath's Shield##12955 |q 5168 |goto Western Plaguelands 63.79,57.19
@@ -312,31 +360,21 @@ step
   talk Chromie##10667
   turnin Return to Chromie##5941 |goto Western Plaguelands 39.46,66.76 |tip {turninat}Western Plaguelands
 step
-  only level>=55
   talk Chromie##10667
   accept The Battle of Darrowshire##5721 |goto Western Plaguelands 39.46,66.76
 step
-  only haveq(5721)
   note Place the Relic Bundle at the Darrowshire town square.
   talk Joseph Redpath##10936 |q 5721 |goto Eastern Plaguelands 33.62,78.46
 step
-  only haveq(5721)
   talk Pamela Redpath##10926
   turnin The Battle of Darrowshire##5721 |goto Eastern Plaguelands 31.15,77.98
 step
-  only completed(5721)
   talk Pamela Redpath##10926
   accept Hidden Treasures##5942 |goto Eastern Plaguelands 31.15,77.98
 step
-  only haveq(5942)
   note Bring Joseph's Key to Joseph's Chest.
   turnin Hidden Treasures##5942 |goto Eastern Plaguelands 30.92,77.78
 step
-  only completed(98109)
-  note Speak with Saera Wirraway in Stormwind in The Park.
-  talk Saera Wirraway##270112
-  turnin Stormwind's High Order##97987 |goto Stormwind City 78.61,48.1 |tip {turninat}Stormwind City
-step
-  note {travel}Stormwind City
-  goto Stormwind City 80.21,38.35
+  note {travel}Winterspring
+  goto Winterspring 60.88,37.62
 ]])

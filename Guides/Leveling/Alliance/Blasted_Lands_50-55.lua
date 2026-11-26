@@ -4,11 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Blasted Lands (50-55)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Burning Steppes (52-54)",
-	rev = "5037a2bd",
+	next = "Leveling/Alliance/Azshara (51-58)",
+	rev = "5d86de27",
 }, [[
 step
-  ding 48
+  ding 49
 step
   talk Bloodmage Drazial##7505
   accept Snickerfang Jowls##2581 |goto Blasted Lands 50.55,14.2
@@ -25,6 +25,22 @@ step
   talk Bloodmage Lynnore##7506
   accept Vulture's Vigor##2603 |goto Blasted Lands 50.64,14.3
 step
+  note {fp}Alexandra Constantine
+  goto Blasted Lands 65.54,24.34 |tip {vendor}
+step
+  note Bring three Blasted Boar Lungs, two Scorpok Pincers, and one Basilisk Brain to Bloodmage Drazial.
+  collect Scorpok Pincer##8393 |q 2583/2 |goto Blasted Lands 47.8,22.4 |tip {dropsfrom}Scorpok Stinger, Clack the Reaver
+  collect Blasted Boar Lung##8392 |q 2583/1 |goto Blasted Lands 58.22,30.36 |tip {dropsfrom}Ashmane Boar, Helboar, Grunter
+  collect Basilisk Brain##8394 |q 2583 |goto Blasted Lands 60.94,27.83 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide, Deatheye
+step
+  note Bring ten Basilisk Brains and two Vulture Gizzards to Bloodmage Lynnore.
+  collect Basilisk Brain##8394 |q 2601/1 |goto Blasted Lands 60.94,27.83 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide, Deatheye
+  collect Vulture Gizzard##8396 |q 2601 |goto Blasted Lands 57.6,28.4 |tip {dropsfrom}Black Slayer, Bonepicker
+step
+  note Bring ten Vulture Gizzards and two Snickerfang Jowls to Bloodmage Lynnore.
+  collect Vulture Gizzard##8396 |q 2603/1 |goto Blasted Lands 57.6,28.4 |tip {dropsfrom}Black Slayer, Bonepicker
+  collect Snickerfang Jowl##8391 |q 2603 |goto Blasted Lands 46.67,20.94 |tip {dropsfrom}Starving Snickerfang, Snickerfang Hyena, Ravage
+step
   note Bring three Snickerfang Jowls, two Blasted Boar Lungs, and one Scorpok Pincer to Bloodmage Drazial.
   collect Snickerfang Jowl##8391 |q 2581/1 |goto Blasted Lands 46.67,20.94 |tip {dropsfrom}Starving Snickerfang, Snickerfang Hyena, Ravage
   collect Scorpok Pincer##8393 |q 2581/3 |goto Blasted Lands 47.8,22.4 |tip {dropsfrom}Scorpok Stinger, Clack the Reaver
@@ -39,46 +55,25 @@ step
   turnin Snickerfang Jowls##2581 |goto Blasted Lands 50.55,14.2
 step
   talk Bloodmage Drazial##7505
-  turnin The Decisive Striker##2585 |goto Blasted Lands 50.55,14.2
-step
-  note {fp}Alexandra Constantine
-  goto Blasted Lands 65.54,24.34 |tip {vendor}
-step
-  only haveq(96797)
-  note Travel to Nethergarde Keep in the Blasted Lands and locate Sergeant Danneth.
-  talk Lieutenant Connar##266524
-  turnin The Orphan##96797 |goto Blasted Lands 66.07,19.4
-step
-  talk Bernie Heisten##3546
-  accept Deflective Surface##87295 |goto Blasted Lands 63.51,17.01
-step
-  note Bring three Blasted Boar Lungs, two Scorpok Pincers, and one Basilisk Brain to Bloodmage Drazial.
-  collect Basilisk Brain##8394 |q 2583/3 |goto Blasted Lands 60.94,27.83 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide, Deatheye
-  collect Blasted Boar Lung##8392 |q 2583/1 |goto Blasted Lands 58.22,30.36 |tip {dropsfrom}Ashmane Boar, Helboar, Grunter
-  collect Scorpok Pincer##8393 |q 2583 |goto Blasted Lands 47.8,22.4 |tip {dropsfrom}Scorpok Stinger, Clack the Reaver
-step
-  note Bring ten Basilisk Brains and two Vulture Gizzards to Bloodmage Lynnore.
-  collect Vulture Gizzard##8396 |q 2601/2 |goto Blasted Lands 57.6,28.4 |tip {dropsfrom}Black Slayer, Bonepicker
-  collect Basilisk Brain##8394 |q 2601 |goto Blasted Lands 60.94,27.83 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide, Deatheye
-step
-  note Bring ten Vulture Gizzards and two Snickerfang Jowls to Bloodmage Lynnore.
-  collect Vulture Gizzard##8396 |q 2603/1 |goto Blasted Lands 57.6,28.4 |tip {dropsfrom}Black Slayer, Bonepicker
-  collect Snickerfang Jowl##8391 |q 2603 |goto Blasted Lands 46.67,20.94 |tip {dropsfrom}Starving Snickerfang, Snickerfang Hyena, Ravage
-step
-  note Bring 10 Redstone Basilisk Scales to Bernie Heisten.
-  collect 10 Redstone Basilisk Scale##280181 |q 87295 |goto Blasted Lands 60.94,27.83 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide
-step
-  talk Bernie Heisten##3546
-  turnin Deflective Surface##87295 |goto Blasted Lands 63.51,17.01
+  turnin A Boar's Vitality##2583 |goto Blasted Lands 50.55,14.2
 step
   talk Bloodmage Drazial##7505
-  turnin A Boar's Vitality##2583 |goto Blasted Lands 50.55,14.2
+  turnin The Decisive Striker##2585 |goto Blasted Lands 50.55,14.2
 step
   talk Bloodmage Lynnore##7506
   turnin The Basilisk's Bite##2601 |goto Blasted Lands 50.64,14.3
 step
   talk Bloodmage Lynnore##7506
   turnin Vulture's Vigor##2603 |goto Blasted Lands 50.64,14.3
+step
+  talk Bernie Heisten##3546
+  accept Deflective Surface##87295 |goto Blasted Lands 63.51,17.01
+step
+  note Bring 10 Redstone Basilisk Scales to Bernie Heisten.
+  collect 10 Redstone Basilisk Scale##280181 |q 87295 |goto Blasted Lands 60.94,27.83 |tip {dropsfrom}Redstone Basilisk, Redstone Crystalhide
+step
+  talk Bernie Heisten##3546
+  turnin Deflective Surface##87295 |goto Blasted Lands 63.51,17.01
 step
   only completed(96797)
   talk Lieutenant Connar##266524
@@ -137,25 +132,6 @@ step
   talk Ambassador Ardalan##7826
   accept Petty Squabbles##2783 |goto Blasted Lands 67.57,19.29
 step
-  only haveq(2977)
-  note Speak with Historian Karnik in Ironforge.
-  talk Historian Karnik##2916
-  turnin Return to Ironforge##2977 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
-step
-  only completed(2977)
-  talk Historian Karnik##2916
-  accept A Future Task##2964 |goto Ironforge 77.54,11.82
-step
-  only completed(2977)
-  note Speak with High Explorer Magellas in Ironforge.
-  talk High Explorer Magellas##5387
-  turnin A Future Task##2964 |goto Ironforge 69.93,18.55 |tip {turninat}Ironforge
-step
-  only haveq(3461)
-  note Return Tymor's Drawing Kit to him in Ironforge.
-  talk Tymor##8507
-  turnin Return to Tymor##3461 |goto Ironforge 30.96,4.83 |tip {turninat}Ironforge
-step
   only level>=50
   talk Royal Historian Archesonus##8879
   accept The Smoldering Ruins of Thaurissan##3702 |goto Ironforge 38.37,55.31
@@ -194,6 +170,6 @@ step
   talk Orphan Matron Aria##34365
   turnin Thicker Than Water##96812 |goto Alterac Mountains 21.62,73.18 |tip {turninat}Alterac Mountains
 step
-  note {travel}Burning Steppes
-  goto Burning Steppes 28.96,28.93
+  note {travel}Azshara
+  goto Azshara 11.37,78.17
 ]])

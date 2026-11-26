@@ -4,15 +4,15 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Uldaman", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "f357b1d6",
+	rev = "2147b9cf",
 }, [[
 step
   click Crumpled Map##2868
   accept A Sign of Hope##720 |goto Badlands 53.03,33.94
 step
-  only Mage
+  only Mage completed(1955)
   talk Tabetha##6546
-  accept The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
+  accept Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
   talk Prospector Stormpike##1356
   accept The Lost Dwarves##2398 |goto Ironforge 74.64,11.74
@@ -23,9 +23,9 @@ step
   talk Pratt McGrubben##7852
   accept Wild Leather Armor##2847 |goto Feralas 30.63,42.71
 step
-  only Mage
-  note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
-  collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
+  only Mage completed(1955)
+  note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
+  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Obsidian Sentinel
 step
   note Bring 10 Thick Leather to Pratt McGrubben in Feathermoon Stronghold.
   talk Lhara##14846
@@ -35,9 +35,9 @@ step
   talk Prospector Ryedol##2910
   turnin A Sign of Hope##720 |goto Badlands 53.42,43.39
 step
-  only Mage
+  only Mage completed(1955)
   talk Tabetha##6546
-  turnin The Infernal Orb##1954 |goto Dustwallow Marsh 46.06,57.09
+  turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
   note Find Baelog in Uldaman.
   talk Baelog##6906
@@ -53,19 +53,11 @@ step
   talk Prospector Ryedol##2910
   accept A Sign of Hope##721 |goto Badlands 53.42,43.39
 step
-  only Mage
-  talk Tabetha##6546
-  accept The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
-step
   talk Talvash del Kissel##6826
   accept Lore for a Price##2199 |goto Ironforge 36.38,3.61
 step
   talk Pratt McGrubben##7852
   accept Wild Leather Shoulders##2848 |goto Feralas 30.63,42.71
-step
-  only Mage
-  note Kill the Demon of the Orb, then speak with Tabetha.
-  kill Demon of the Orb##6549 |q 1955 |goto Dustwallow Marsh 45.79,56.97 |elite
 step
   note Bring five silver bars to Talvash del Kissel in Ironforge.
   collect Silver Bar##2842 |q 2199 |goto Redridge Mountains 15.87,36.18 |tip {dropsfrom}Battered Chest
@@ -77,10 +69,6 @@ step
   talk Hammertoe Grez##2909
   turnin A Sign of Hope##721 |goto Badlands 37.9,10.59
 step
-  only Mage
-  talk Tabetha##6546
-  turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
-step
   talk Talvash del Kissel##6826
   turnin Lore for a Price##2199 |goto Ironforge 36.38,3.61
 step
@@ -90,10 +78,6 @@ step
   talk Hammertoe Grez##2909
   accept Amulet of Secrets##722 |goto Badlands 37.9,10.59
 step
-  only Mage
-  talk Tabetha##6546
-  accept Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
-step
   talk Talvash del Kissel##6826
   accept Back to Uldaman##2200 |goto Ironforge 36.38,3.61
 step
@@ -101,16 +85,8 @@ step
   kill Magregan Deepshadow##2932 |q 722 |goto Badlands 38.99,19.73 |elite
   collect Hammertoe's Amulet##4635 |q 722 |goto Badlands 38.99,19.73
 step
-  only Mage
-  note Retrieve an Obsidian Power Source and bring it to Tabetha in Dustwallow Marsh.
-  collect Obsidian Power Source##8053 |q 1956 |goto Uldaman - Dungeon -1,-1 |elite |tip {dropsfrom}Obsidian Sentinel
-step
   talk Hammertoe Grez##2909
   turnin Amulet of Secrets##722 |goto Badlands 37.9,10.59
-step
-  only Mage
-  talk Tabetha##6546
-  turnin Power in Uldaman##1956 |goto Dustwallow Marsh 46.06,57.09
 step
   note Search for clues as to the current disposition of Talvash's necklace within Uldaman. The slain paladin he mentioned was the person who had it last.
   talk Remains of a Paladin##6912

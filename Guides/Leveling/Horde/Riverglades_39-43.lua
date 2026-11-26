@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Riverglades (39-43)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Thousand Needles (37-41)",
-	rev = "6d7d8627",
+	next = "Leveling/Horde/Desolace (42-45)",
+	rev = "36798047",
 }, [[
 step
   ding 38
@@ -859,6 +859,6 @@ step
   talk Friz Frazzlespark##255897
   turnin All's Well That Ends Well##95327 |goto Riverglades 77.1,52.9
 step
-  note {travel}Thousand Needles
-  goto Thousand Needles 32.24,22.17
+  note {travel}Shen'dralas
+  goto Shen'dralas 43.65,34.32
 ]])

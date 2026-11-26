@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Druid", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "c00a95eb",
+	rev = "e847cba7",
 }, [[
 step
   talk Grull Hawkwind##2980
@@ -26,7 +26,7 @@ step
   turnin Verdant Note##3094 |goto Mulgore 44.65,76.55
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -36,7 +36,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
@@ -52,7 +52,7 @@ step
 step
   only Skyborne Druid
   talk Muln Earthfury##259118
-  accept Child of Nature##94911 |goto Mulgore 33.41,22.58
+  accept Child of Nature##94911 |goto Mulgore 33.41,22.59
 step
   only Skyborne Druid
   note Speak with Turak Runetotem in Thunder Bluff.
@@ -64,7 +64,7 @@ step
   accept Moonglade##94913 |goto Thunder Bluff 76.48,27.22
 step
   only Skyborne Druid
-  note Use the spell "Teleport: Moonglade" to travel to Moonglade.  When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
+  note Use the spell "Teleport: Moonglade" to travel to Moonglade. When you arrive, speak with Dendrite Starblaze in the village of Nighthaven.
   talk Dendrite Starblaze##11802
   turnin Moonglade##94913 |goto Moonglade 56.21,30.64
 step
@@ -134,7 +134,7 @@ step
 step
   only Skyborne Druid
   note Find and kill Ur'endra in the Shen'dar Highlands.
-  kill Ur'endra##258443 |q 94638 |goto Zephras Isle 53.9,64.69
+  kill Ur'endra##258443 |q 94638 |goto Zephras Isle 54.01,64.58
 step
   only Skyborne Druid
   talk Urs'endris##255853
@@ -167,7 +167,7 @@ step
 step
   only Tauren Druid
   note Bring 5 Earthroot and 5 Kodo Horns to Tonga Runetotem at the Crossroads so he may make a curative salve.
-  collect 5 Earthroot##2449 |q 6128/1 |goto Teldrassil 57.09,69.56 |tip {dropsfrom}Lasher Sproutling, Wrathvine
+  collect 5 Earthroot##2449 |q 6128/1 |goto Teldrassil 57.11,68.98 |tip {dropsfrom}Lasher Sproutling, Wrathvine
   collect 5 Kodo Horn##15852 |q 6128 |goto The Barrens 54.06,41.46 |tip {dropsfrom}Lost Barrens Kodo, Barrens Kodo
 step
   only Tauren Druid
@@ -237,55 +237,87 @@ step
   talk Turak Runetotem##3033
   turnin Aquatic Form##31 |goto Thunder Bluff 76.48,27.22
 step
-  only not Orc not Undead not Troll Druid
+  only not Orc not Undead not Troll Druid not completed(98393) not haveq(98393)
+  talk Turak Runetotem##3033
+  accept The Great Cat Spirit##98340 |goto Thunder Bluff 76.48,27.22
+step
+  only not Orc not Undead not Troll Druid not completed(98393) not haveq(98393)
+  note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
+  talk Dendrite Starblaze##11802
+  turnin The Great Cat Spirit##98340 |goto Moonglade 56.21,30.64
+step
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98394) not completed(98405) not haveq(98394) not haveq(98405)
+  talk Dendrite Starblaze##11802
+  accept The Great Windborne Cat Spirit##98341 |goto Moonglade 56.21,30.64
+step
+  only Skyborne not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98394) not completed(98405) not haveq(98394) not haveq(98405)
+  note Seek out the Avatar of Saeyleenan in the southern part Moonglade and learn what it has to share with you about the nature of the windborne cat.
+  talk Avatar of Saeyleenan##272054
+  turnin The Great Windborne Cat Spirit##98341 |goto Moonglade 43.92,73.44
+step
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  talk Avatar of Saeyleenan##272054
+  accept The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
+step
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Avatar of Saeyleenan.
+  collect Relic of the Fang##280502 |q 98404/1 |goto Moonglade 72.41,65.9
+  collect Relic of the Silent Shadow##280680 |q 98404/3 |goto Moonglade 74.42,65.27
+  collect Relic of the Claw##280679 |q 98404 |goto Moonglade 75.24,67.33
+step
+  only Skyborne Druid not Hunter not Mage not Paladin not Priest not Rogue not Shaman not Warlock not Warrior not completed(98342) not completed(98394) not completed(98396) not completed(98405) not haveq(98342) not haveq(98394) not haveq(98396) not haveq(98405)
+  talk Avatar of Saeyleenan##272054
+  turnin The Great Windborne Cat Spirit##98404 |goto Moonglade 43.92,73.44
+step
+  only Tauren Druid not completed(98341) not completed(98394) not haveq(98341) not haveq(98394)
+  talk Dendrite Starblaze##11802
+  accept The Great Cat Spirit##98405 |goto Moonglade 56.21,30.64
+step
+  only Tauren Druid not completed(98341) not completed(98394) not haveq(98341) not haveq(98394)
+  note Seek out the Great Cat Spirit in southern part Moonglade and learn what it has to share with you about the nature of the cat.
+  talk Great Cat Spirit##11957
+  turnin The Great Cat Spirit##98405 |goto Moonglade 58.39,73.52
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404)
+  talk Great Cat Spirit##11957
+  accept The Great Cat Spirit##98342 |goto Moonglade 58.39,73.52
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404)
+  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
+  collect Relic of the Fang##280502 |q 98342/1 |goto Moonglade 72.41,65.9
+  collect Relic of the Silent Shadow##280680 |q 98342/3 |goto Moonglade 74.42,65.27
+  collect Relic of the Claw##280679 |q 98342 |goto Moonglade 75.24,67.33
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404)
+  talk Great Cat Spirit##11957
+  turnin The Great Cat Spirit##98342 |goto Moonglade 58.39,73.52
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not completed(98731) not completed(98738) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404) not haveq(98731) not haveq(98738)
+  talk Great Cat Spirit##11957
+  accept Blessings of the Great Cat Spirit##98739 |goto Moonglade 58.39,73.52
+step
+  only Tauren Druid not completed(98341) not completed(98394) not completed(98396) not completed(98404) not completed(98731) not completed(98738) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98404) not haveq(98731) not haveq(98738)
+  note Speak to Dendrite.
+  talk Dendrite Starblaze##11802
+  turnin Blessings of the Great Cat Spirit##98739 |goto Moonglade 56.21,30.64
+step
+  only not Orc not Undead not Troll Druid not completed(98341) not completed(98394) not completed(98396) not completed(98397) not completed(98404) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98397) not haveq(98404)
   talk Dendrite Starblaze##11802
   accept To Thunder Bluff##98362 |goto Moonglade 56.21,30.64
 step
-  only not Orc not Undead not Troll Druid
+  only not Orc not Undead not Troll Druid not completed(98341) not completed(98394) not completed(98396) not completed(98397) not completed(98404) not haveq(98341) not haveq(98394) not haveq(98396) not haveq(98397) not haveq(98404)
   note Return to Thunder Bluff and speak with Turak Runetotem on the Elder Rise.
   talk Turak Runetotem##3033
   turnin To Thunder Bluff##98362 |goto Thunder Bluff 76.48,27.22
 step
   only Tauren Druid
-  talk Dendrite Starblaze##11802
-  accept The Great Cat Spirit##98405 |goto Moonglade 56.21,30.64
+  talk Tyrisius##221985
+  accept Wisdom of the Guardians##81924 |goto Feralas 57.16,68.92
 step
   only Tauren Druid
-  note Seek out the Great Cat Spirit in southern part Moonglade and learn what it has to share with you about the nature of the cat.
-  talk Great Cat Spirit##11957
-  turnin The Great Cat Spirit##98405 |goto Moonglade 58.39,73.52
-step
-  only Tauren Druid
-  talk Great Cat Spirit##11957
-  accept The Great Cat Spirit##98342 |goto Moonglade 58.39,73.52
-step
-  only Tauren Druid
-  note Recover the Relic of the Fang, Relic of the Claw, and Relic of the Silent Shadow from the Stormrage Barrow Den, and return them to the Great Cat Spirit.
-  collect Relic of the Fang##280502 |q 98342/1 |goto Moonglade 72.6,66.1
-  collect Relic of the Silent Shadow##280680 |q 98342/3 |goto Moonglade 74.5,65.5
-  collect Relic of the Claw##280679 |q 98342 |goto Moonglade 75.2,67.2
-step
-  only Tauren Druid
-  talk Great Cat Spirit##11957
-  turnin The Great Cat Spirit##98342 |goto Moonglade 58.39,73.52
-step
-  only Tauren Druid
-  talk Great Cat Spirit##11957
-  accept Blessings of the Great Cat Spirit##98739 |goto Moonglade 58.39,73.52
-step
-  only Tauren Druid
-  note Speak to Dendrite.
-  talk Dendrite Starblaze##11802
-  turnin Blessings of the Great Cat Spirit##98739 |goto Moonglade 56.21,30.64
-step
-  only not Orc not Undead not Troll Druid
-  talk Turak Runetotem##3033
-  accept The Great Cat Spirit##98340 |goto Thunder Bluff 76.48,27.22
-step
-  only not Orc not Undead not Troll Druid
-  note Speak with Dendrite Starblaze in the village of Nighthaven, Moonglade.
-  talk Dendrite Starblaze##11802
-  turnin The Great Cat Spirit##98340 |goto Moonglade 56.21,30.64
+  note Prove yourself to the guardian spirits of Feralas, Azshara, and the Hinterlands, then return to Tyrisius in Feralas.
+  talk Tyrisius##221985
+  turnin Wisdom of the Guardians##81924 |goto Feralas 57.16,68.92
 step
   only Druid
   talk Turak Runetotem##3033

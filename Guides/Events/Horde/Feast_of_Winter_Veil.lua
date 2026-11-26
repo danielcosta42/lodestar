@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Horde/Feast of Winter Veil", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "14307d95",
+	rev = "bfbff478",
 }, [[
 step
   talk Wonderform Operator##15732
@@ -149,6 +149,20 @@ step
   collect 1 Deeprock Salt##8150 |q 8799 |goto Badlands 40.51,78.29 |tip {dropsfrom}Rock Elemental, Stone Golem, Lesser Rock Elemental
 step
   turnin The Hero of the Day##8799 |goto Undercity 67.33,38
+step
+  talk Kaymard Copperpinch##216924
+  accept Stolen Winter Veil Treats##79483 |goto Orgrimmar 53.2,66.6
+step
+  note Locate the Smokywood Pastures investigator that has gone missing in the snowy regions of the Alterac Mountains.
+  talk Strange Snowman##216915
+  turnin Stolen Winter Veil Treats##79483 |goto Alterac Mountains 35.6,72.6
+step
+  talk Kaymard Copperpinch##216924
+  accept Metzen the Reindeer##79495 |goto Orgrimmar 53.2,66.6
+step
+  note Find Metzen the Reindeer. Use the notes provided to you for clues as to where he is being held.
+  talk Kaymard Copperpinch##216924
+  turnin Metzen the Reindeer##79495 |goto Orgrimmar 53.2,66.6
 step
   talk Innkeeper Gryshka##6929
   accept Flexing for Nougat##8359 |goto Orgrimmar 54.1,68.41

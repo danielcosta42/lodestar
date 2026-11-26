@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (43-51)", {
+ns:RegisterGuide("Leveling/Horde/Stranglethorn Vale (43-50)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/The Hinterlands (47-51)",
-	rev = "10f7ee71",
+	rev = "f1060c0f",
 }, [[
 step
   ding 41
@@ -150,6 +150,23 @@ step
   talk "Sea Wolf" MacKinley##2501
   accept Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
 step
+  only not completed(614) not haveq(614) level>=47
+  talk Captain Hecklebury Smotts##2500
+  accept The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
+step
+  only level>=45
+  collect Half-Buried Bottle##2560 |goto Stranglethorn Vale 36.56,77.09 |tip Loot the quest item here — it starts the quest.
+  accept Message in a Bottle##594 |goto Stranglethorn Vale 36.56,77.09
+step
+  only haveq(594)
+  note Find the author of the message in a bottle.
+  talk Princess Poobah##2634
+  turnin Message in a Bottle##594 |goto Stranglethorn Vale 38.53,80.58
+step
+  only completed(189)
+  note Acquire 18 Skullsplitter Tusks and return them to Kebok.
+  collect 18 Skullsplitter Tusk##1524 |q 209 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
+step
   only completed(571)
   talk Far Seer Mok'thardin##2465
   turnin Mok'thardin's Enchantment##573 |goto Stranglethorn Vale 32.12,29.24
@@ -157,10 +174,6 @@ step
   only completed(584)
   click Bubbling Cauldron##2076
   accept Speaking with Gan'zulah##586 |goto Stranglethorn Vale 32.22,27.6
-step
-  only completed(189)
-  note Acquire 18 Skullsplitter Tusks and return them to Kebok.
-  collect 18 Skullsplitter Tusk##1524 |q 209 |goto Stranglethorn Vale 45.92,38 |tip {dropsfrom}Skullsplitter Warrior, Skullsplitter Hunter, Skullsplitter Witch Doctor
 step
   only completed(584)
   note Kill 8 Skullsplitter Hunters, 6 Skullsplitter Headhunters, and 4 Skullsplitter Berserkers.
@@ -195,14 +208,14 @@ step
   talk Kin'weelay##2519
   accept The Singing Crystals##589 |goto Stranglethorn Vale 32.27,27.71
 step
+  only completed(584) completed(585)
+  note Bring 3 Pulsing Blue Shards to Kin'weelay at the Grom'gol Base Camp.
+  collect 3 Pulsing Blue Shard##3911 |q 589 |goto Stranglethorn Vale 43.39,47.9 |tip {dropsfrom}Ironjaw Basilisk
+step
   only completed(188) completed(193) completed(196) haveq(208)
   note Hemet Nesingwary wants you to bring him the head of King Bangalash, the great white tiger.
   kill King Bangalash##731 |q 208 |goto Stranglethorn Vale 38.21,35.58 |elite
   collect Head of Bangalash##3880 |q 208 |goto Stranglethorn Vale 38.21,35.58
-step
-  only completed(584) completed(585)
-  note Bring 3 Pulsing Blue Shards to Kin'weelay at the Grom'gol Base Camp.
-  collect 3 Pulsing Blue Shard##3911 |q 589 |goto Stranglethorn Vale 43.39,47.9 |tip {dropsfrom}Ironjaw Basilisk
 step
   only completed(584) completed(585)
   talk Kin'weelay##2519
@@ -233,14 +246,10 @@ step
   note Bring the Filled Soul Gem to Nimboya.
   collect Filled Soul Gem##3913 |q 592 |goto Stranglethorn Vale 39.02,58.35 |tip {dropsfrom}Yenniku
 step
-  only level>=45
-  collect Half-Buried Bottle##2560 |goto Stranglethorn Vale 36.56,77.09 |tip Loot the quest item here — it starts the quest.
-  accept Message in a Bottle##594 |goto Stranglethorn Vale 36.56,77.09
-step
-  only haveq(594)
-  note Find the author of the message in a bottle.
-  talk Princess Poobah##2634
-  turnin Message in a Bottle##594 |goto Stranglethorn Vale 38.53,80.58
+  only not completed(614) not haveq(614) haveq(8551)
+  note Bring Smotts' Chest to Hecklebury Smotts in Booty Bay.
+  kill Gorlash##1492 |q 8551 |goto Stranglethorn Vale 36.95,69.73 |elite
+  collect Smotts' Chest##3932 |q 8551 |goto Stranglethorn Vale 36.95,69.73
 step
   only completed(189)
   talk Kebok##737
@@ -249,15 +258,6 @@ step
   only completed(607) haveq(613)
   talk "Sea Wolf" MacKinley##2501
   turnin Cracking Maury's Foot##613 |goto Stranglethorn Vale 27.78,77.07
-step
-  only not completed(614) not haveq(614) level>=47
-  talk Captain Hecklebury Smotts##2500
-  accept The Captain's Chest##8551 |goto Stranglethorn Vale 26.69,73.61
-step
-  only not completed(614) not haveq(614) haveq(8551)
-  note Bring Smotts' Chest to Hecklebury Smotts in Booty Bay.
-  kill Gorlash##1492 |q 8551 |goto Stranglethorn Vale 36.95,69.73 |elite
-  collect Smotts' Chest##3932 |q 8551 |goto Stranglethorn Vale 36.95,69.73
 step
   only not completed(614) not haveq(614) haveq(8551)
   talk Captain Hecklebury Smotts##2500
@@ -322,35 +322,10 @@ step
   talk Rix Xizzix##214954
   turnin State Secrets##96379 |goto Stranglethorn Vale 28.51,75.77
 step
-  only completed(3621) level>=45
-  talk Galvan the Ancient##7802
-  accept Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
-step
-  only completed(3621) haveq(3625)
-  note Wait for Galvan to finish forging the weaponry.
-  talk Galvan the Ancient##7802 |q 3625 |goto Stranglethorn Vale 50.62,20.48
-step
-  only completed(3621) haveq(3625)
-  talk Galvan the Ancient##7802
-  turnin Enchanted Azsharite Fel Weaponry##3625 |goto Stranglethorn Vale 50.62,20.48
-step
-  only completed(3621) completed(3625) level>=45
-  talk Galvan the Ancient##7802
-  accept Return to the Blasted Lands##3626 |goto Stranglethorn Vale 50.62,20.48
-step
   only haveq(1420)
   note Bring Neeka's Report to Helgrum the Swift in Stonard.
   talk Helgrum the Swift##1442
   turnin Report to Helgrum##1420 |goto Swamp of Sorrows 47.74,55.2 |tip {turninat}Swamp of Sorrows
-step
-  only completed(3621) haveq(3626)
-  note Return to the Fallen Hero of the Horde.
-  talk Fallen Hero of the Horde##7572
-  turnin Return to the Blasted Lands##3626 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
-step
-  only completed(3621) completed(3626) level>=60
-  talk Fallen Hero of the Horde##7572
-  accept Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14
 step
   note Solve the riddle!
   turnin Cortello's Riddle##624 |goto Swamp of Sorrows 22.87,48.19 |tip {turninat}Swamp of Sorrows
@@ -425,32 +400,6 @@ step
   only Shaman haveq(8412)
   talk Bath'rah the Windwatcher##6176
   turnin Spirit Totem##8412 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
-step
-  only completed(3621) haveq(3627)
-  note Slay Grol the Destroyer, Lady Sevine, and Archmage Allistarj. From their corpses take the Amulet of Grol, the Amulet of Sevine, and the Amulet of Allistarj.
-  kill Archmage Allistarj##7666 |q 3627/1 |goto Blasted Lands 66.69,29.24 |elite
-  collect Amulet of Allistarj##10755 |q 3627/1 |goto Blasted Lands 66.69,29.24
-  kill Lady Sevine##7667 |q 3627/3 |goto Blasted Lands 40.75,29.97 |elite
-  collect Amulet of Sevine##10754 |q 3627/3 |goto Blasted Lands 40.75,29.97
-  kill Grol the Destroyer##7665 |q 3627 |goto Blasted Lands 42.57,13.01 |elite
-  collect Amulet of Grol##10753 |q 3627 |goto Blasted Lands 42.57,13.01
-step
-  only completed(3621) haveq(3627)
-  talk Fallen Hero of the Horde##7572
-  turnin Uniting the Shattered Amulet##3627 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
-step
-  only completed(3621) completed(3627) level>=60
-  talk Fallen Hero of the Horde##7572
-  accept You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14
-step
-  only completed(3621) haveq(3628)
-  note Destroy Razelikh the Defiler and return the Severed Horn of the Defiler to the Fallen Hero of the Horde. You will also need to return the Ward of the Defiler so that the Fallen Hero can destroy it, preventing it from ever falling into the wrong hands.
-  kill Razelikh the Defiler##7664 |q 3628 |goto Blasted Lands 47.64,29.83 |elite
-  collect Severed Horn of the Defiler##10759 |q 3628 |goto Blasted Lands 47.64,29.83
-step
-  only completed(3621) haveq(3628)
-  talk Fallen Hero of the Horde##7572
-  turnin You Are Rakh'likh, Demon##3628 |goto Swamp of Sorrows 34.29,66.14 |tip {turninat}Swamp of Sorrows
 step
   note {travel}Undercity
   goto Undercity 73.06,32.85

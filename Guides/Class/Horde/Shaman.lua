@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Shaman", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "1051777e",
+	rev = "734e204f",
 }, [[
 step
   talk Gornek##3143
@@ -53,7 +53,7 @@ step
   turnin Rune-Inscribed Note##3093 |goto Mulgore 44.58,76.56
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -63,7 +63,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
@@ -83,7 +83,7 @@ step
 step
   only Skyborne Shaman not completed(1516) not completed(1519) not haveq(1516) not haveq(1519)
   note Bring a Signet of Akir to Windshaper Boro.
-  collect Signet of Akir##251924 |q 92466 |goto Zephras Isle 37.47,32.77 |tip {dropsfrom}Al'Aketh Brute, Al'Aketh Convert, Al'Aketh Neophyte
+  collect Signet of Akir##251924 |q 92466 |goto Zephras Isle 36.82,33.13 |tip {dropsfrom}Al'Aketh Brute, Al'Aketh Convert, Al'Aketh Neophyte
 step
   only Skyborne Shaman not completed(1516) not completed(1519) not haveq(1516) not haveq(1519)
   talk Windshaper Boro##251374
@@ -113,75 +113,75 @@ step
   talk Seer Ravenfeather##5888
   turnin Call of Earth##1519 |goto Mulgore 44.35,76.77
 step
-  only Skyborne Shaman
+  only Skyborne Shaman not completed(1517) not completed(1520) not completed(94374) not haveq(1517) not haveq(1520) not haveq(94374)
   talk Windshaper Boro##251374
   accept Call of Earth##92467 |goto Zephras Isle 42.79,23.58
 step
-  only Skyborne Shaman
+  only Skyborne Shaman not completed(1517) not completed(1520) not completed(94374) not haveq(1517) not haveq(1520) not haveq(94374)
   note Find the Rise of Spirits and drink the Earth Sapta.
   talk Minor Manifestation of Earth##251166
   turnin Call of Earth##92467 |goto Zephras Isle 49.67,23.8
 step
-  only Skyborne Shaman
+  only Skyborne Shaman not completed(1517) not completed(1518) not completed(1520) not completed(1521) not completed(94374) not completed(94375) not haveq(1517) not haveq(1518) not haveq(1520) not haveq(1521) not haveq(94374) not haveq(94375)
   talk Minor Manifestation of Earth##251166
   accept Call of Earth##92468 |goto Zephras Isle 49.67,23.8
 step
-  only Skyborne Shaman
+  only Skyborne Shaman not completed(1517) not completed(1518) not completed(1520) not completed(1521) not completed(94374) not completed(94375) not haveq(1517) not haveq(1518) not haveq(1520) not haveq(1521) not haveq(94374) not haveq(94375)
   note Bring the Rough Quartz to Windshaper Boros in Thendal Grove.
   talk Windshaper Boro##251374
   turnin Call of Earth##92468 |goto Zephras Isle 42.79,23.58
 step
-  only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
+  only not Undead not Tauren not Skyborne Shaman not completed(1520) not completed(92467) not completed(94374) not haveq(1520) not haveq(92467) not haveq(94374)
   talk Canaga Earthcaller##5887
   accept Call of Earth##1517 |goto Durotar 42.4,69.17
 step
-  only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
+  only not Undead not Tauren not Skyborne Shaman not completed(1520) not completed(92467) not completed(94374) not haveq(1520) not haveq(92467) not haveq(94374)
   note Find Spirit Rock and drink the Earth Sapta.
   talk Minor Manifestation of Earth##5891
   turnin Call of Earth##1517 |goto Dun Morogh 24.84,61.86
 step
-  only Shaman not completed(92466) not haveq(92466)
-  talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1518 |goto Dun Morogh 24.84,61.86
-step
-  only Shaman not completed(92466) not haveq(92466)
-  note Bring the Rough Quartz to Canaga Earthcaller in the Valley of Trials.
-  talk Canaga Earthcaller##5887
-  turnin Call of Earth##1518 |goto Durotar 42.4,69.17
-step
-  only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
+  only not Undead not Tauren not Skyborne Shaman not completed(1520) not completed(92467) not completed(94374) not haveq(1520) not haveq(92467) not haveq(94374)
   talk Canaga Earthcaller##5887
   accept Earth Sapta##1463 |goto Durotar 42.4,69.17
 step
-  only not Undead not Tauren not Skyborne Shaman not completed(92466) not haveq(92466)
+  only not Undead not Tauren not Skyborne Shaman not completed(1520) not completed(92467) not completed(94374) not haveq(1520) not haveq(92467) not haveq(94374)
   talk Canaga Earthcaller##5887
   turnin Earth Sapta##1463 |goto Durotar 42.4,69.17
 step
-  only Tauren Shaman not completed(92466) not haveq(92466)
+  only Tauren Shaman not completed(1517) not completed(92467) not completed(94374) not haveq(1517) not haveq(92467) not haveq(94374)
   talk Seer Ravenfeather##5888
   accept Call of Earth##1520 |goto Mulgore 44.35,76.77
 step
-  only Tauren Shaman not completed(92466) not haveq(92466)
+  only Tauren Shaman not completed(1517) not completed(92467) not completed(94374) not haveq(1517) not haveq(92467) not haveq(94374)
   note Find Kodo Rock and drink the Earth Sapta.
   talk Minor Manifestation of Earth##5891
   turnin Call of Earth##1520 |goto Dun Morogh 24.84,61.86
 step
-  only Shaman not completed(92466) not haveq(92466)
+  only not Skyborne Shaman not completed(1521) not completed(92468) not completed(94375) not haveq(1521) not haveq(92468) not haveq(94375)
   talk Minor Manifestation of Earth##5891
-  accept Call of Earth##1521 |goto Dun Morogh 24.84,61.86
+  accept Call of Earth##1518 |goto Dun Morogh 24.84,61.86
 step
-  only Shaman not completed(92466) not haveq(92466)
-  note Bring the Rough Quartz to Seer Ravenfeather in Camp Narache.
-  talk Seer Ravenfeather##5888
-  turnin Call of Earth##1521 |goto Mulgore 44.35,76.77
+  only not Skyborne Shaman not completed(1521) not completed(92468) not completed(94375) not haveq(1521) not haveq(92468) not haveq(94375)
+  note Bring the Rough Quartz to Canaga Earthcaller in the Valley of Trials.
+  talk Canaga Earthcaller##5887
+  turnin Call of Earth##1518 |goto Durotar 42.4,69.17
 step
-  only Tauren Shaman not completed(92466) not haveq(92466)
+  only Tauren Shaman not completed(1517) not completed(92467) not completed(94374) not haveq(1517) not haveq(92467) not haveq(94374)
   talk Seer Ravenfeather##5888
   accept Earth Sapta##1462 |goto Mulgore 44.35,76.77
 step
-  only Tauren Shaman not completed(92466) not haveq(92466)
+  only Tauren Shaman not completed(1517) not completed(92467) not completed(94374) not haveq(1517) not haveq(92467) not haveq(94374)
   talk Seer Ravenfeather##5888
   turnin Earth Sapta##1462 |goto Mulgore 44.35,76.77
+step
+  only Skyborne Shaman
+  talk Kardris Dreamseeker##3344
+  accept Call of Fire##98517 |goto Orgrimmar 38.8,36.37
+step
+  only Skyborne Shaman
+  note Report to Sessaria Skystride or Aarnor Galestrike on Zephras Isle to continue your training as a Shaman.
+  talk Sessaria Skystride##252382
+  turnin Call of Fire##98517 |goto Zephras Isle 58.31,78.51
 step
   only not Undead not Tauren Shaman not completed(1523) not completed(2983) not completed(2984) not haveq(1523) not haveq(2983) not haveq(2984)
   talk Searn Firewarder##5892
@@ -201,98 +201,52 @@ step
   talk Kranal Fiss##5907
   turnin Call of Fire##1523 |goto The Barrens 56.03,19.89
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   talk Kranal Fiss##5907
   accept Call of Fire##1524 |goto The Barrens 56.03,19.89
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   note Bring the Torch of the Dormant Flame to Telf Joolam in Durotar.
   talk Telf Joolam##5900
   turnin Call of Fire##1524 |goto Durotar 38.55,58.96
 step
-  only not Undead not Tauren not Skyborne Shaman
+  only not Undead not Tauren not Skyborne Shaman not completed(97243) not haveq(97243)
   talk Telf Joolam##5900
   accept Call of Fire##1525 |goto Durotar 38.55,58.96
 step
-  only not Undead not Tauren not Skyborne Shaman
+  only not Undead not Tauren not Skyborne Shaman not completed(97243) not haveq(97243)
   note Bring 1 Fire Tar and 1 Reagent Pouch to Telf Joolam in Durotar.
   collect 1 Fire Tar##5026 |q 1525/1 |goto The Barrens 54.94,26.74 |tip {dropsfrom}Razormane Water Seeker, Razormane Thornweaver, Razormane Geomancer
   collect 1 Reagent Pouch##6652 |q 1525 |goto Durotar 52.67,25.36 |tip {dropsfrom}Burning Blade Cultist
 step
-  only not Undead not Tauren not Skyborne Shaman
+  only not Undead not Tauren not Skyborne Shaman not completed(97243) not haveq(97243)
   talk Telf Joolam##5900
   turnin Call of Fire##1525 |goto Durotar 38.55,58.96
 step
-  only not Undead not Tauren not Skyborne Shaman
+  only not Undead not Tauren not Skyborne Shaman not completed(97243) not haveq(97243)
   talk Telf Joolam##5900
   accept Fire Sapta##1464 |goto Durotar 38.55,58.96
 step
-  only not Undead not Tauren not Skyborne Shaman
+  only not Undead not Tauren not Skyborne Shaman not completed(97243) not haveq(97243)
   talk Telf Joolam##5900
   turnin Fire Sapta##1464 |goto Durotar 38.55,58.96
 step
-  only Skyborne Shaman
-  talk Sessaria Skystride##252382
-  accept Call of Fire##97243 |goto Zephras Isle 58.31,78.51
-step
-  only Skyborne Shaman
-  note Bring the Torch of Dormant Flame to Olariaan Swiftburn at the Shrine of Flames in the Gustberry Lowlands.
-  talk Olariaan Swiftburn##268592
-  turnin Call of Fire##97243 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  accept Call of Fire##97244 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  note Slay Skypriest Faladiel in the Gustberry Lowlands and collect Faladiel's Heart.
-  collect Faladiel's Heart##277267 |q 97244 |goto Zephras Isle 64.43,63.71 |tip {dropsfrom}Skypriest Faladiel
-step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  turnin Call of Fire##97244 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  accept Call of Fire##97245 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  note Find the home of Kuramaa in the Shen'dar Highlands, and defeat the spirit in combat. Bring Kuramaa's Mask to Olariaan Swiftburn in the Gustberry Lowlands when you are victorious.
-  collect Kuramaa's Mask##277269 |q 97245 |goto Zephras Isle 42.44,68.75 |tip {dropsfrom}Kuramaa
-step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  turnin Call of Fire##97245 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  talk Olariaan Swiftburn##268592
-  accept Call of Fire##97257 |goto Zephras Isle 51.24,86.19
-step
-  only Skyborne Shaman
-  note Wait for Olariaan to begin the ritual at the Brazier of Offering and follow his instructions.
-  talk Brazier of Offering##268762 |q 97257/1 |goto Zephras Isle 51.2,85.9
-  talk Brazier of Eternal Flame##268679 |q 97257 |goto Zephras Isle 58.35,78.84
-step
-  only Skyborne Shaman
-  talk Sessaria Skystride##252382
-  turnin Call of Fire##97257 |goto Zephras Isle 58.31,78.51
-step
-  only not Undead not Tauren not Skyborne Shaman
+  only not Undead not Tauren not Skyborne Shaman not completed(97243) not haveq(97243)
   talk Telf Joolam##5900
   accept Call of Fire##1526 |goto Durotar 38.55,58.96
 step
-  only not Undead not Tauren not Skyborne Shaman
+  only not Undead not Tauren not Skyborne Shaman not completed(97243) not haveq(97243)
   note Defeat the Minor Manifestation of Fire, and place the Glowing Ember in the brazier atop the Shrine of Eternal Flame.
   collect Glowing Ember##6655 |q 1526 |goto Durotar 38.72,58.29 |tip {dropsfrom}Minor Manifestation of Fire
 step
-  only not Undead not Tauren not Skyborne Shaman
+  only not Undead not Tauren not Skyborne Shaman not completed(97243) not haveq(97243)
   turnin Call of Fire##1526 |goto Durotar 38.96,58.22
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   click Brazier of the Dormant Flame##61934
   accept Call of Fire##1527 |goto Durotar 38.96,58.22
 step
-  only Shaman
+  only Shaman not completed(97243) not haveq(97243)
   note Bring the Torch of Eternal Flame to Kranal Fiss in the Barrens.
   talk Kranal Fiss##5907
   turnin Call of Fire##1527 |goto The Barrens 56.03,19.89
@@ -420,8 +374,8 @@ step
   turnin Call of Water##96 |goto The Barrens 65.83,43.78
 step
   only not Undead not Skyborne Shaman
-  kill Lost Knight##272291 |goto Duskwood 25.48,42.6 |tip Loot the quest item here — it starts the quest.
-  accept Grant's Shield##79362 |goto Duskwood 25.48,42.6
+  kill Lost Knight##272291 |goto Duskwood 23.87,39.35 |tip Loot the quest item here — it starts the quest.
+  accept Grant's Shield##79362 |goto Duskwood 23.87,39.35
 step
   only not Undead not Skyborne Shaman
   note Find Grant's Mace on one of the skeletons in Raven Hill Cemetery then return to Sirra Von'Indie in Darkshire for more information.
@@ -432,8 +386,8 @@ step
   turnin Grant's Shield##79362 |goto Alterac Mountains 80.5,66.92
 step
   only not Undead not Skyborne Shaman
-  kill Lost Defender##272284 |goto Duskwood 50.7,71.38 |tip Loot the quest item here — it starts the quest.
-  accept Silvia's Sword##79363 |goto Duskwood 50.7,71.38
+  kill Lost Defender##272284 |goto Duskwood 52.71,70.94 |tip Loot the quest item here — it starts the quest.
+  accept Silvia's Sword##79363 |goto Duskwood 52.71,70.94
 step
   only not Undead not Skyborne Shaman
   note Defeat 7 Defias Night Blades and 7 Defias Enchanters in Addle's Stead then return to Sirra Von'Indi in Darkshire for more information.
@@ -444,20 +398,20 @@ step
   talk Bath'rah the Windwatcher##6176
   turnin Silvia's Sword##79363 |goto Alterac Mountains 80.5,66.92
 step
-  only not Undead not Tauren Shaman not completed(1532) not haveq(1532)
+  only not Undead not Tauren Shaman not completed(1532) not completed(96136) not haveq(1532) not haveq(96136)
   talk Searn Firewarder##5892
   accept Call of Air##1531 |goto Orgrimmar 37.96,37.73
 step
-  only not Undead not Tauren Shaman not completed(1532) not haveq(1532)
+  only not Undead not Tauren Shaman not completed(1532) not completed(96136) not haveq(1532) not haveq(96136)
   note Find Prate Cloudseer in Thousand Needles.
   talk Prate Cloudseer##5905
   turnin Call of Air##1531 |goto Thousand Needles 53.54,42.65
 step
-  only Tauren Shaman not completed(1531) not haveq(1531)
+  only Tauren Shaman not completed(1531) not completed(96136) not haveq(1531) not haveq(96136)
   talk Xanis Flameweaver##5906
   accept Call of Air##1532 |goto Thunder Bluff 25.16,20.51
 step
-  only Tauren Shaman not completed(1531) not haveq(1531)
+  only Tauren Shaman not completed(1531) not completed(96136) not haveq(1531) not haveq(96136)
   note Find Prate Cloudseer in Thousand Needles.
   talk Prate Cloudseer##5905
   turnin Call of Air##1532 |goto Thousand Needles 53.54,42.65
@@ -471,65 +425,72 @@ step
   collect Tattered Note##274463 |q 79360 |goto Razorfen Kraul - Dungeon -1,-1 |elite |tip {dropsfrom}Charlga Razorflank
 step
   only Shaman
-  talk Bath'rah the Windwatcher##6176
-  turnin Elemental Aid##79360 |goto Alterac Mountains 80.5,66.92
+  talk Rau Cliffrunner##4722
+  turnin Elemental Aid##79360 |goto Thousand Needles 46.14,51.71
 step
-  only Shaman
+  only Shaman not completed(98338) not haveq(98338)
   talk Rau Cliffrunner##4722
   accept Eyes on the Sky##79364 |goto Thousand Needles 46.14,51.71
 step
-  only Shaman
+  only Shaman not completed(98338) not haveq(98338)
   note Speak with Prate Cloudseer in Thousand Needles.
   talk Prate Cloudseer##5905
   turnin Eyes on the Sky##79364 |goto Thousand Needles 53.54,42.65
 step
-  only not Undead not Skyborne Shaman not completed(79358) not haveq(79358)
+  only not Undead not Troll not Skyborne Shaman
   talk Bath'rah the Windwatcher##6176
-  accept Storm, Earth, and Fire##79361 |goto Alterac Mountains 80.5,66.92
+  accept With Wind Beneath Your Wings##79365 |goto Alterac Mountains 80.5,66.92
 step
-  only not Undead not Skyborne Shaman not completed(79358) not haveq(79358)
+  only not Undead not Troll not Skyborne Shaman
+  note Return to Rau Cliffrunner in Thousand Needles at Freewind Post.
+  talk Rau Cliffrunner##4722
+  turnin With Wind Beneath Your Wings##79365 |goto Thousand Needles 46.14,51.71
+step
+  only Shaman not completed(98338) not haveq(98338)
+  talk Prate Cloudseer##5905
+  accept Storm, Earth, and Fire##79361 |goto Thousand Needles 53.54,42.65
+step
+  only Shaman not completed(98338) not haveq(98338)
   note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Prate Cloudseer in Thousand Needles.
   collect 5 Twisted Water Totem##274046 |q 79361/1 |goto Dustwallow Marsh 57.6,21.6 |tip {dropsfrom}Mirefin Puddlejumper, Mirefin Murloc, Mirefin Warrior
   collect 5 Twisted Earth Totem##274045 |q 79361/2 |goto Swamp of Sorrows 49,31.9 |tip {dropsfrom}Lost One Mudlurker, Lost One Fisherman, Lost One Hunter
-  collect 5 Twisted Fire Totem##274044 |q 79361/3 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Bonesnapper, Stonevault Shaman
+  collect 5 Twisted Fire Totem##274044 |q 79361/3 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Bonesnapper, Stonevault Shaman, Dustbelcher Ogre
   collect 5 Twisted Air Totem##274047 |q 79361 |goto Desolace 35.28,61.41 |tip {dropsfrom}Maraudine Wrangler, Maraudine Mauler, Maraudine Windchaser
 step
-  only not Undead not Skyborne Shaman not completed(79358) not haveq(79358)
-  talk Bath'rah the Windwatcher##6176
-  turnin Storm, Earth, and Fire##79361 |goto Alterac Mountains 80.5,66.92
+  only Shaman not completed(98338) not haveq(98338)
+  talk Prate Cloudseer##5905
+  turnin Storm, Earth, and Fire##79361 |goto Thousand Needles 53.54,42.65
 step
-  only not Orc not Tauren not Troll Shaman not completed(79361) not haveq(79361)
-  talk Veyric Thunderhame##259023
-  accept Storm, Earth, and Fire##79358 |goto Arathi Highlands 59.84,27.57
-step
-  only not Orc not Tauren not Troll Shaman not completed(79361) not haveq(79361)
-  note Collect 5 Twisted Fire Totems, 5 Twisted Earth Totems, 5 Twisted Air Totems, and 5 Twisted Water Totems for Veyric Thunderhame in Arathi Highlands.
-  collect 5 Twisted Water Totem##274046 |q 79358/1 |goto Dustwallow Marsh 57.6,21.6 |tip {dropsfrom}Mirefin Puddlejumper, Mirefin Murloc, Mirefin Warrior
-  collect 5 Twisted Earth Totem##274045 |q 79358/2 |goto Swamp of Sorrows 49,31.9 |tip {dropsfrom}Lost One Mudlurker, Lost One Fisherman, Lost One Hunter
-  collect 5 Twisted Fire Totem##274044 |q 79358/3 |goto Badlands 51.35,69.72 |tip {dropsfrom}Stonevault Bonesnapper, Stonevault Shaman
-  collect 5 Twisted Air Totem##274047 |q 79358 |goto Desolace 35.28,61.41 |tip {dropsfrom}Maraudine Wrangler, Maraudine Mauler, Maraudine Windchaser
-step
-  only not Orc not Tauren not Troll Shaman not completed(79361) not haveq(79361)
-  talk Rau Cliffrunner##4722
-  turnin Storm, Earth, and Fire##79358 |goto Thousand Needles 46.14,51.71
-step
-  only Shaman
+  only Shaman not completed(96135) not completed(98338) not haveq(96135) not haveq(98338)
   talk Rau Cliffrunner##4722
   accept Heed My Call##79366 |goto Thousand Needles 46.14,51.71
 step
-  only Shaman
+  only Shaman not completed(96135) not completed(98338) not haveq(96135) not haveq(98338)
   note Use the Twisted Totems to put an end to the quilboar ritual.
+  kill Ravaging Tempest##216474 |q 79366 |goto Thousand Needles 36.71,39.17 |elite
+  collect Eye of the Tempest##212792 |q 79366 |goto Thousand Needles 36.71,39.17
+step
+  only Shaman not completed(96135) not completed(98338) not haveq(96135) not haveq(98338)
   talk Rau Cliffrunner##4722
   turnin Heed My Call##79366 |goto Thousand Needles 46.14,51.71
 step
-  only not Undead not Skyborne Shaman
+  only Shaman not completed(96016) not completed(98338) not haveq(96016) not haveq(98338)
   talk Rau Cliffrunner##4722
   accept The Tempest's Weapons##79442 |goto Thousand Needles 46.14,51.71
 step
-  only not Undead not Skyborne Shaman
+  only Shaman not completed(96016) not completed(98338) not haveq(96016) not haveq(98338)
   note Deliver the Eye of the Tempest to Bath'rah the Windwatcher in Alterac Mountains.
   talk Bath'rah the Windwatcher##6176
   turnin The Tempest's Weapons##79442 |goto Alterac Mountains 80.5,66.92
+step
+  only Shaman
+  talk Odd Totem##222856
+  accept Challenge of the Desert Wolf##95753 |goto Tanaris 43.01,41.3
+step
+  only Shaman
+  note Reach the other Odd Totem at the end of the massive skeleton before time runs out.
+  talk Odd Totem##222857
+  turnin Challenge of the Desert Wolf##95753 |goto Tanaris 45.74,37.74
 step
   only Shaman not completed(8411) not haveq(8411)
   talk Beram Skychaser##3032

@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackrock Depths", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "a6476d73",
+	rev = "88f0041f",
 }, [[
 step
   talk Kalaran Windblade##8479
@@ -33,6 +33,9 @@ step
 step
   talk Maxwort Uberglint##9536
   accept The Heart of the Mountain##4123 |goto Burning Steppes 65.15,23.91
+step
+  talk Alaana Stormwalker##259119
+  accept Fragment of the Firelands##97197 |goto Mulgore 33.38,22.57
 step
   talk Apothecary Zinge##5204
   accept Vivian Lagrave##4133 |goto Undercity 50.14,67.97
@@ -65,6 +68,9 @@ step
   note Bring the Heart of the Mountain to Maxwort Uberglint in the Burning Steppes.
   collect The Heart of the Mountain##11309 |q 4123 |goto Blackrock Depths - Dungeon -1,-1 |tip {dropsfrom}Heart of the Mountain
 step
+  note Recover a Fragment of the Firelands from Blackrock Depths for Alaana Stormwalker in Mulgore.
+  collect Fragment of the Firelands##277129 |q 97197 |goto Blackrock Depths - Dungeon -1,-1 |elite |tip {dropsfrom}Magmus
+step
   note Turn the Thorium Brotherhood Contract in to Lokhtos Darkbargainer if you would like to receive the plans for Sulfuron.
   collect Sulfuron Ingot##17203 |q 7604 |goto Molten Core - Dungeon -1,-1 |raid |tip {dropsfrom}Golemagg the Incinerator
 step
@@ -95,6 +101,9 @@ step
 step
   talk Maxwort Uberglint##9536
   turnin The Heart of the Mountain##4123 |goto Burning Steppes 65.15,23.91
+step
+  talk Alaana Stormwalker##259119
+  turnin Fragment of the Firelands##97197 |goto Mulgore 33.38,22.57
 step
   note Speak with Shadowmaster Vivian Lagrave in Kargath.
   talk Shadowmage Vivian Lagrave##9078

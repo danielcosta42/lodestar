@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/The Hinterlands (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Searing Gorge (48-50)",
-	rev = "d717b1b6",
+	rev = "4114ef75",
 }, [[
 step
   ding 41
@@ -161,19 +161,6 @@ step
 step
   talk Gryphon Master Talonaxe##5636
   turnin Fledgling Rescue##86620 |goto The Hinterlands 9.75,44.47
-step
-  only haveq(1364)
-  talk Watcher Mahar Ba##5385
-  turnin Mazen's Behest##1364 |goto Blasted Lands 67.65,19.17 |tip {turninat}Blasted Lands
-step
-  note Bring Sharpbeak's Feather to Thadius Grimshade in the Blasted Lands.
-  talk Thadius Grimshade##8022
-  turnin Thadius Grimshade##2990 |goto Blasted Lands 66.9,19.47 |tip {turninat}Blasted Lands
-step
-  only haveq(1425)
-  note Bring the Shipment to Nethergarde to Quartermaster Lungertz in Nethergarde Keep.
-  talk Quartermaster Lungertz##5393
-  turnin Deliver the Shipment##1425 |goto Blasted Lands 66.52,21.39 |tip {turninat}Blasted Lands
 step
   only haveq(836)
   talk Oglethorpe Obnoticus##7406

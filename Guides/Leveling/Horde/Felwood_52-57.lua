@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Felwood (52-56)", {
+ns:RegisterGuide("Leveling/Horde/Felwood (52-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Moonglade (55-60)",
-	rev = "4343b8b8",
+	next = "Leveling/Horde/Badlands (50-58)",
+	rev = "3e366fad",
 }, [[
 step
   ding 51
@@ -269,12 +269,30 @@ step
   talk Liv Rizzlefix##8496
   turnin Marvon's Workshop##4147 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
 step
+  talk Liv Rizzlefix##8496
+  accept Volcanic Activity##4502 |goto The Barrens 62.45,38.73
+step
   note Take the Corrupt Moon Well Water to Islen Waterseer in the Barrens.
   talk Islen Waterseer##5901
   turnin Seeking Spiritual Aid##5158 |goto The Barrens 65.83,43.78 |tip {turninat}The Barrens
 step
   talk Islen Waterseer##5901
   accept Cleansed Water Returns to Felwood##5159 |goto The Barrens 65.83,43.78
+step
+  talk Gishah##256384 |tip Buy Advertising License Application: it starts the quest.
+  accept Sign Me Up!##95819 |goto The Barrens 49.38,29.41
+step
+  note Bring the completed form to Jornah in The Barrens.
+  collect Massive Pile of Completed Forms##270897 |q 95819 |goto The Barrens 49.38,29.41
+step
+  talk Jornah##256388
+  turnin Sign Me Up!##95819 |goto The Barrens 49.91,29.36 |tip {turninat}The Barrens
+step
+  note Collect 9 samples of Un'Goro Ash from the fire elementals around the volcano in Un'Goro Crater, and return them to Liv Rizzlefix in Ratchet.
+  collect 9 Un'Goro Ash##11829 |q 4502 |goto Un'Goro Crater 55.1,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Blazing Invader
+step
+  talk Liv Rizzlefix##8496
+  turnin Volcanic Activity##4502 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
 step
   only haveq(86814)
   note Plant the Timbermaw War Banner at the Legashi Stronghold in Azshara. Kill Prince Halanox, report your victory to Gatekeeper Rageroar at Ursolan.
@@ -358,6 +376,6 @@ step
   talk Trull Failbane##10306
   turnin Wild Guardians##4721 |goto Felwood 34.73,52.79
 step
-  note {travel}Moonglade
-  goto Moonglade 56.21,30.64
+  note {travel}Badlands
+  goto Badlands 3.36,48.06
 ]])

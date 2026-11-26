@@ -4,16 +4,38 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (22-28)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Thousand Needles (27-33)",
-	rev = "4c378c5b",
+	next = "Leveling/Horde/Thousand Needles (26-35)",
+	rev = "919fc506",
 }, [[
 step
   ding 21
 step
+  talk Apothecary Renferrel##1937
+  accept Journey to Hillsbrad Foothills##493 |goto Silverpine Forest 42.8,40.86
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  talk Carendin Halgar##5675
+  accept The Binding##1474 |goto Undercity 85.06,25.99
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  note Using the Pure Hearts, summon and subdue a succubus, then return the Pure Hearts to Carendin Halgar in the Magic Quarter of the Undercity.
+  use Summoned Succubus##5677 |q 1474 |tip {useit}
+step
+  only Undead Priest not completed(5644) not completed(5646) not haveq(5644) not haveq(5646)
+  talk Aelthalyste##4606
+  accept Dark Sacrifice##5679 |goto Undercity 49.26,17.12
+step
+  only Shaman completed(63)
+  click Brazier of Everfount##113791
+  accept Call of Water##100 |goto Silverpine Forest 38.26,44.56
+step
+  only hasitem(271343)
+  use Note Scrap##271343 |tip It starts the quest.
+  accept The Offering Stone##95884
+step
   note {fp}Zarise
   goto Hillsbrad Foothills 60.14,18.62 |tip {vendor}
 step
-  only haveq(493)
   note Deliver Apothecary Renferrel's findings to Apothecary Lydon in the town of Tarren Mill in the Hillsbrad Foothills.
   talk Apothecary Lydon##2216
   turnin Journey to Hillsbrad Foothills##493 |goto Hillsbrad Foothills 61.44,19.06
@@ -72,36 +94,6 @@ step
 step
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##527 |goto Hillsbrad Foothills 62.33,20.45
-step
-  only Paladin completed(95036)
-  talk Trevan Rol##248840
-  accept An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.3
-step
-  only Paladin completed(95036)
-  note Speak with Ott and ask him to forge your blade.
-  talk Ott##3539
-  turnin An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Paladin completed(95036)
-  talk Ott##3539
-  accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Paladin completed(95036)
-  note Watch as Ott forges your blade.
-  talk Ott##3539 |q 95125 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Paladin completed(95036)
-  talk Ott##3539
-  turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Paladin completed(95036)
-  talk Ott##3539
-  accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
-step
-  only Paladin completed(95036)
-  note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
-  talk Trevan Rol##248840
-  turnin The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.3
 step
   note Apothecary Lydon of Tarren Mill wants 10 Gray Bear Tongues and some Creeper Ichor.
   collect 10 Gray Bear Tongue##3476 |q 496/1 |goto Hillsbrad Foothills 59.07,32.75 |tip {dropsfrom}Gray Bear, Vicious Gray Bear, Elder Gray Bear
@@ -174,6 +166,36 @@ step
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##529 |goto Hillsbrad Foothills 62.33,20.45
 step
+  only Paladin completed(95036)
+  talk Trevan Rol##248840
+  accept An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.3
+step
+  only Paladin completed(95036)
+  note Speak with Ott and ask him to forge your blade.
+  talk Ott##3539
+  turnin An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  talk Ott##3539
+  accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  note Watch as Ott forges your blade.
+  talk Ott##3539 |q 95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  talk Ott##3539
+  turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  talk Ott##3539
+  accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin completed(95036)
+  note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
+  talk Trevan Rol##248840
+  turnin The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.3
+step
   note High Executor Darthalia wants you to deliver updated orders to Deathstalker Masoj, south of Tarren Mill, outside of Dun Garok.
   talk Deathstalker Masoj##270438
   turnin Scout Support##98094 |goto Hillsbrad Foothills 64,53.82
@@ -198,38 +220,35 @@ step
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##532 |goto Hillsbrad Foothills 62.33,20.45
 step
-  only level>=24
-  talk Apothecary Lydon##2216
-  accept Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
-step
-  click Dangerous!##2008
-  accept Dangerous!##567 |goto Hillsbrad Foothills 62.56,19.66
-step
   note Kill Magistrate Burnside and 5 Hillsbrad Councilmen. Destroy the Hillsbrad Proclamation. Steal the Hillsbrad Town Registry. Report back to Darthalia in Tarren Mill afterwards.
   kill Magistrate Burnside##2335 |q 532 |goto Hillsbrad Foothills 29.67,41.64
-step
-  note High Executor Darthalia of Tarren Mill is offering a bounty on Clerk Horrace Whitesteed, Citizen Wilkes, Miner Hackett and Farmer Kalaba.
-  kill Clerk Horrace Whitesteed##2448 |q 567/1 |goto Hillsbrad Foothills 29.51,42.41
-  kill Citizen Wilkes##2449 |q 567/2 |goto Hillsbrad Foothills 32.62,39.79
-  kill Farmer Kalaba##2451 |q 567/4 |goto Hillsbrad Foothills 35.88,46.57
-  kill Miner Hackett##2450 |q 567 |goto Hillsbrad Foothills 31.8,52.7
 step
   talk High Executor Darthalia##2215
   turnin Battle of Hillsbrad##532 |goto Hillsbrad Foothills 62.33,20.45
 step
-  talk High Executor Darthalia##2215
-  turnin Dangerous!##567 |goto Hillsbrad Foothills 62.33,20.45
+  only level>=24
+  talk Apothecary Lydon##2216
+  accept Elixir of Agony##509 |goto Hillsbrad Foothills 61.44,19.06
 step
   talk High Executor Darthalia##2215
   accept Battle of Hillsbrad##539 |goto Hillsbrad Foothills 62.33,20.45
 step
+  click Dangerous!##2008
+  accept Dangerous!##567 |goto Hillsbrad Foothills 62.56,19.66
+step
+  note High Executor Darthalia of Tarren Mill is offering a bounty on Clerk Horrace Whitesteed, Citizen Wilkes, Miner Hackett and Farmer Kalaba.
+  kill Citizen Wilkes##2449 |q 567/2 |goto Hillsbrad Foothills 32.62,39.79
+  kill Clerk Horrace Whitesteed##2448 |q 567/1 |goto Hillsbrad Foothills 29.51,42.41
+  kill Farmer Kalaba##2451 |q 567/4 |goto Hillsbrad Foothills 35.88,46.57
+  kill Miner Hackett##2450 |q 567 |goto Hillsbrad Foothills 31.8,52.7
+step
+  note Kill Foreman Bonds and 10 Hillsbrad Miners and report back to Darthalia in Tarren Mill.
+  kill Hillsbrad Miner##2269 |q 539/2 |goto Hillsbrad Foothills 30.44,55.62
+  kill Foreman Bonds##2305 |q 539 |goto Hillsbrad Foothills 31.21,56.01
+step
   only haveq(509)
   note Bring 6 Mudsnout Blossoms to Apothecary Lydon in Tarren Mill.
   collect 6 Mudsnout Blossoms##3502 |q 509 |goto Hillsbrad Foothills 64.56,61.25 |tip {dropsfrom}Mudsnout Blossom
-step
-  note Kill Foreman Bonds and 10 Hillsbrad Miners and report back to Darthalia in Tarren Mill.
-  kill Foreman Bonds##2305 |q 539/1 |goto Hillsbrad Foothills 31.21,56.01
-  kill Hillsbrad Miner##2269 |q 539 |goto Hillsbrad Foothills 30.44,55.62
 step
   only haveq(509)
   talk Apothecary Lydon##2216
@@ -237,6 +256,9 @@ step
 step
   talk High Executor Darthalia##2215
   turnin Battle of Hillsbrad##539 |goto Hillsbrad Foothills 62.33,20.45
+step
+  talk High Executor Darthalia##2215
+  turnin Dangerous!##567 |goto Hillsbrad Foothills 62.33,20.45
 step
   only completed(509) level>=24
   talk Apothecary Lydon##2216
@@ -261,6 +283,60 @@ step
   only completed(515) haveq(524)
   note Place the Tainted Keg on the rug for the captured farmers.
   turnin Elixir of Agony##524 |goto Hillsbrad Foothills 62.81,18.73
+step
+  only Warlock completed(1476) not completed(1507) not haveq(1507)
+  talk Carendin Halgar##5675
+  turnin The Binding##1474 |goto Undercity 85.06,25.99 |tip {turninat}Undercity
+step
+  only Undead Priest not completed(5644) not completed(5646) not haveq(5644) not haveq(5646)
+  talk Aelthalyste##4606
+  turnin Dark Sacrifice##5679 |goto Undercity 49.26,17.12 |tip {turninat}Undercity
+step
+  only Shaman completed(63)
+  note Speak to the Minor Manifestation of Water in Silverpine Forest.
+  talk Minor Manifestation of Water##5895
+  turnin Call of Water##100 |goto Silverpine Forest 38.65,44.58 |tip {turninat}Silverpine Forest
+step
+  only Undead Paladin completed(95036) level>=26
+  talk Lumina Windsinger##259620
+  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
+step
+  only haveq(95884)
+  note Find the Offering Stone in Beren's Peril in Silverpine Forest.
+  collect Note Scrap##271343 |q 95884 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
+step
+  only haveq(95884)
+  turnin The Offering Stone##95884 |goto Silverpine Forest 58.12,69.77 |tip {turninat}Silverpine Forest
+step
+  only completed(95884)
+  click Offering Stone##645153
+  accept The Tortured Soul##95883 |goto Silverpine Forest 58.12,69.77
+step
+  only haveq(95883)
+  note Collect a Tortured Soul from the nearby undead in Beren's Peril in Silverpine Forest.
+  collect Tortured Soul##271350 |q 95883 |goto Silverpine Forest 58.66,71.29 |tip {dropsfrom}Ravenclaw Guardian, Ravenclaw Drudger
+step
+  only haveq(95883)
+  turnin The Tortured Soul##95883 |goto Silverpine Forest 58.12,69.77 |tip {turninat}Silverpine Forest
+step
+  only completed(95883) level>=23
+  click Offering Stone##645153
+  accept The Offering of Blood##95885 |goto Silverpine Forest 58.12,69.77
+step
+  only haveq(95885)
+  note Use the Tortured Soul to give an offering of blood at the Offering Stone in Beren's Peril.
+  kill Tortured Soul##212753 |q 95885 |goto Silverpine Forest 58.19,69.83 |elite
+step
+  only haveq(95885)
+  turnin The Offering of Blood##95885 |goto Silverpine Forest 58.12,69.77 |tip {turninat}Silverpine Forest
+step
+  only Undead Paladin completed(95036) haveq(95140)
+  note Use the Moonsilver Blade to destroy Old Fire-Eye in Silverpine Forest.
+  kill Old Fire-Eye##259897 |q 95140 |goto Silverpine Forest 49.55,85.89 |elite
+step
+  only Undead Paladin completed(95036) haveq(95140)
+  talk Lumina Windsinger##259620
+  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99 |tip {turninat}Silverpine Forest
 step
   only not Undead not Skyborne Shaman hasitem(281147)
   use Grant's Shield##281147 |tip It starts the quest.
@@ -287,23 +363,6 @@ step
   talk Bath'rah the Windwatcher##6176
   turnin Silvia's Sword##79363 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
 step
-  only haveq(513)
-  note Take the Mudsnout Composite to Master Apothecary Faranell in the Undercity.
-  talk Master Apothecary Faranell##2055
-  turnin Elixir of Agony##513 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
-step
-  only Undead Paladin completed(95036) level>=26
-  talk Lumina Windsinger##259620
-  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
-step
-  only Undead Paladin completed(95036) haveq(95140)
-  note Use the Moonsilver Blade to destroy Old Fire-Eye in Silverpine Forest.
-  kill Old Fire-Eye##259897 |q 95140 |goto Silverpine Forest 49.55,85.89 |elite
-step
-  only Undead Paladin completed(95036) haveq(95140)
-  talk Lumina Windsinger##259620
-  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99 |tip {turninat}Silverpine Forest
-step
   note {travel}Thousand Needles
-  goto Thousand Needles 53.95,41.49
+  goto Thousand Needles 44.64,50.29
 ]])

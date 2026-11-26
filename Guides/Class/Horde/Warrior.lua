@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Warrior", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "c5a9fb4f",
+	rev = "98019bb7",
 }, [[
 step
   talk Gornek##3143
@@ -72,7 +72,7 @@ step
   turnin Simple Scroll##3095 |goto Tirisfal Glades 32.69,65.56
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -82,7 +82,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
@@ -454,6 +454,18 @@ step
   turnin Voodoo Feathers##8425 |goto Swamp of Sorrows 34.29,66.14
 step
   only Warrior
+  click Red Bag##457056
+  accept Poacher's Den##84211 |goto Burning Steppes 53,24.22
+step
+  only Warrior
+  note Recover the rest of the materials and return to Nami in Everlook.
+  collect Vertically Composited Patch Hampler##226698 |q 84211 |goto Burning Steppes 49.8,33.4 |tip {dropsfrom}Harrigen, Montrose, Plio
+step
+  only Warrior
+  talk Nami##228216
+  turnin Poacher's Den##84211 |goto Mount Hyjal 60.1,61.18
+step
+  only Warrior
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept Codex of Defense##7499 |goto Dire Maul - Dungeon -1,-1
 step
@@ -810,4 +822,20 @@ step
   only Warrior
   talk Geologist Larksbane##15183
   turnin Armaments of War##8316 |goto Silithus 49.67,37.46
+step
+  only Warrior
+  click Half-Buried Mech##456682
+  accept Beach Bot##84135 |goto Tanaris 59.24,91.49
+step
+  only Warrior
+  note Use a rock or something to dislodge parts of the mech.
+  turnin Beach Bot##84135 |goto Tanaris 59.26,91.56
+step
+  only Warrior
+  talk Sebastian Jurgens##228956
+  accept Rift Away##84213 |goto Tanaris 55.29,95.52
+step
+  only Warrior
+  note Use the Distant Communication Device to send the signal to Jurgens at either Tirisfal Glades or Westfall
+  turnin Rift Away##84213 |goto Westfall 53.01,40.12
 ]])

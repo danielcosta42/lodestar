@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Paladin", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "5f4b402b",
+	rev = "87cdf645",
 }, [[
 step
   talk Shadow Priest Sarvis##1569
@@ -32,7 +32,7 @@ step
 step
   only Undead Paladin
   note Heal 5 Injured Deathguard with your Holy Light ability.
-  talk Injured Deathguard##259377 |q 90902 |goto Tirisfal Glades 32.57,64.21
+  talk Injured Deathguard##259377 |q 90902 |goto Tirisfal Glades 31.86,63.99
 step
   only Undead Paladin
   talk Aramis Hammerhand##244808
@@ -68,8 +68,8 @@ step
 step
   only Undead Paladin
   note Slay 8 Vile Fin Attackers and 8 Vile Fin Seers and report back to Breton Samuels when it is done.
-  kill Vile Fin Attacker##250283 |q 91285/1 |goto Tirisfal Glades 17.04,55.58
-  kill Vile Fin Seer##250282 |q 91285 |goto Tirisfal Glades 17.06,54.28
+  kill Vile Fin Attacker##250283 |q 91285/1 |goto Tirisfal Glades 17.3,55.65
+  kill Vile Fin Seer##250282 |q 91285 |goto Tirisfal Glades 17.42,55.2
 step
   only Undead Paladin
   talk Breton Samuels##246349
@@ -96,7 +96,7 @@ step
 step
   only Undead Paladin
   note Collect 12 pieces of Sturdy Lumber from Shadowvale in Tirisfal Glades.
-  collect 12 Sturdy Lumber##246213 |q 91316 |goto Tirisfal Glades 10,66.4 |tip {dropsfrom}Lumber Pile
+  collect 12 Sturdy Lumber##246213 |q 91316 |goto Tirisfal Glades 9.9,66.44 |tip {dropsfrom}Lumber Pile
 step
   only Undead Paladin
   talk Jorin Croge##246393
@@ -117,7 +117,7 @@ step
 step
   only Undead Paladin
   note Slay 8 Tarnished Drudges, 6 Tarnished Zealots, and collect the head of Commander Rudolph Gelhardt in Tirisfal Glades.
-  kill Tarnished Drudge##259434 |q 91317 |goto Tirisfal Glades 13.38,63.13
+  collect 8 Rudolph Gelhardt's Head##270435 |q 91317 |goto Tirisfal Glades 11.51,64.18 |tip {dropsfrom}Rudolph Gelhardt
 step
   only Undead Paladin
   talk Danitha Morr##246378
@@ -180,73 +180,26 @@ step
   talk Deathguard Falgan##257663
   turnin A Lesson in Divinity##94438 |goto Tirisfal Glades 86.73,47.72
 step
-  only Undead Paladin
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
   talk Deathguard Falgan##257663
   accept A Lesson in Divinity##94440 |goto Tirisfal Glades 86.73,47.72
 step
-  only Undead Paladin
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
   note Retrieve the Scarlet Crusade Attack Plans from the Scarlet Crusaders at Venomweb Vale, and return to Deathguard Billmuth at Bandarion Keep.
   collect Scarlet Crusade Attack Plans##264693 |q 94440 |goto Tirisfal Glades 78.38,56.03 |tip {dropsfrom}Scarlet Zealot, Scarlet Friar, Tarnished Zealot
 step
-  only Undead Paladin
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
   talk Deathguard Billmuth##257655
   turnin A Lesson in Divinity##94440 |goto Tirisfal Glades 21.92,44.5
 step
-  only Undead Paladin
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
   talk Deathguard Billmuth##257655
   accept A Lesson in Divinity##94441 |goto Tirisfal Glades 21.92,44.5
 step
-  only Undead Paladin
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
   note Speak with Danitha Morr in the keep at Bandarion Keep.
   talk Danitha Morr##246378
   turnin A Lesson in Divinity##94441 |goto Tirisfal Glades 22.09,44.66
-step
-  only Undead Paladin
-  talk Lumina Windsinger##248755
-  accept Lumina Windsinger##91862 |goto Silverpine Forest 65.55,23.27
-step
-  only Undead Paladin
-  note Retrieve the Fenris Isle Key from the Rot Hide Gnolls and use it to free Lumina Windsinger.
-  collect Fenris Isle Key##267412 |q 91862 |goto Silverpine Forest 65.71,24.03 |tip {dropsfrom}Rot Hide Savage, Raging Rot Hide, Rot Hide Bruiser
-step
-  only Undead Paladin
-  talk Lumina Windsinger##248755
-  turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.55,23.27
-step
-  only Undead Paladin
-  talk Lumina Windsinger##248755
-  accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.55,23.27
-step
-  only Undead Paladin
-  note Accompany Lumina Windsinger and help her escape Fenris Keep.
-  talk Lumina Windsinger##259620
-  turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.4,40.99
-step
-  only Undead Paladin
-  click Charred Remains##566037
-  accept Into Fenris Keep##91861 |goto Silverpine Forest 65.02,34.1
-step
-  only Undead Paladin
-  note Investigate Fenris Keep to the north and attempt to locate the missing member of the Earthen Ring party.
-  talk Lumina Windsinger##248755
-  turnin Into Fenris Keep##91861 |goto Silverpine Forest 65.55,23.27
-step
-  only Undead Paladin
-  talk Trevan Rol##248840
-  accept A Curious Pair##91859 |goto Silverpine Forest 43.4,41.1
-step
-  only Undead Paladin
-  note Speak with Deathguard Baldren about the mysterious Earthen Ring travelers who recently passed through The Sepulcher.
-  talk Deathguard Baldren##259611
-  turnin A Curious Pair##91859 |goto Silverpine Forest 45.81,41.88
-step
-  only Undead Paladin
-  talk Deathguard Baldren##259611
-  accept A Grim Fate##91860 |goto Silverpine Forest 45.81,41.88
-step
-  only Undead Paladin
-  note Investigate Fenris Isle to the east and learn the fate of the Earthen Ring traveling party.
-  turnin A Grim Fate##91860 |goto Silverpine Forest 65.02,34.1
 step
   only Undead Paladin
   talk Danitha Morr##246378
@@ -257,18 +210,131 @@ step
   talk Trevan Rol##248840
   turnin Diplomatic Incident##91858 |goto Silverpine Forest 43.4,41.1
 step
-  only Undead Paladin
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Trevan Rol##248840
+  accept A Curious Pair##91859 |goto Silverpine Forest 43.4,41.1
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  note Speak with Deathguard Baldren about the mysterious Earthen Ring travelers who recently passed through The Sepulcher.
+  talk Deathguard Baldren##259611
+  turnin A Curious Pair##91859 |goto Silverpine Forest 45.81,41.88
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Deathguard Baldren##259611
+  accept A Grim Fate##91860 |goto Silverpine Forest 45.81,41.88
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  note Investigate Fenris Isle to the east and learn the fate of the Earthen Ring traveling party.
+  click Charred Remains##566037 |q 91860 |goto Silverpine Forest 65.02,34.1
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  turnin A Grim Fate##91860 |goto Silverpine Forest 65.02,34.1
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
+  click Charred Remains##566037
+  accept Into Fenris Keep##91861 |goto Silverpine Forest 65.02,34.1
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
+  note Investigate Fenris Keep to the north and attempt to locate the missing member of the Earthen Ring party.
+  talk Lumina Windsinger##248755
+  turnin Into Fenris Keep##91861 |goto Silverpine Forest 65.55,23.27
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Lumina Windsinger##248755
+  accept Lumina Windsinger##91862 |goto Silverpine Forest 65.55,23.27
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  note Retrieve the Fenris Isle Key from the Rot Hide Gnolls and use it to free Lumina Windsinger.
+  collect Fenris Isle Key##267412 |q 91862 |goto Silverpine Forest 65.71,24.03 |tip {dropsfrom}Rot Hide Savage, Raging Rot Hide, Rot Hide Bruiser
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Lumina Windsinger##248755
+  turnin Lumina Windsinger##91862 |goto Silverpine Forest 65.55,23.27
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Lumina Windsinger##248755
+  accept The Windshaper's Wrath##96204 |goto Silverpine Forest 65.55,23.27
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  note Accompany Lumina Windsinger and help her escape Fenris Keep.
+  talk Lumina Windsinger##248755 |q 96204 |goto Silverpine Forest 65.55,23.27
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Lumina Windsinger##259620
+  turnin The Windshaper's Wrath##96204 |goto Silverpine Forest 43.4,40.99
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
   talk Lumina Windsinger##259620
   accept The Debt##95034 |goto Silverpine Forest 43.4,40.99
 step
-  only Undead Paladin
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
   note Speak with Lumina Windsinger in the Sepulcher.
+  talk Lumina Windsinger##259620 |q 95034 |goto Silverpine Forest 43.4,40.99
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
   talk Lumina Windsinger##259620
   turnin The Debt##95034 |goto Silverpine Forest 43.4,40.99
 step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
+  talk Lumina Windsinger##259620
+  accept A Moon-Kissed Blade##95036 |goto Silverpine Forest 43.4,40.99
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
+  note Speak with Trevan Rol in the Sepulcher and bring him the materials he requires.
+  collect Trevan's Weapon Notes##267454 |q 95036/1
+  collect Whitestone Oak Lumber##6994 |q 95036/2 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Goblin Woodcarver
+  collect Enchanted Silver Ingot##267361 |q 95036/3
+  collect Purified Kor Gem##272448 |q 95036
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
+  talk Trevan Rol##248840
+  turnin A Moon-Kissed Blade##95036 |goto Silverpine Forest 43.4,41.1
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Trevan Rol##248840
+  accept An Underrated Talent##95111 |goto Silverpine Forest 43.4,41.1
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  note Speak with Ott and ask him to forge your blade.
+  talk Ott##3539
+  turnin An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Ott##3539
+  accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  note Watch as Ott forges your blade.
+  talk Ott##3539 |q 95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Ott##3539
+  turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  talk Ott##3539
+  accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin not Orc not Skyborne not Tauren not Troll
+  note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
+  talk Trevan Rol##248840
+  turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.4,41.1
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
+  talk Lumina Windsinger##259620
+  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
+  note Use the Moonsilver Blade to destroy Old Fire-Eye in Silverpine Forest.
+  kill Old Fire-Eye##259897 |q 95140 |goto Silverpine Forest 49.55,85.89 |elite
+step
+  only Undead Paladin not Orc not Skyborne not Tauren not Troll
+  talk Lumina Windsinger##259620
+  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
+step
   only Paladin
   talk Ulric Frostveil##259649
-  accept Seeking the Kor Gem##95042 |goto Ashenvale 11.87,34.41
+  accept Seeking the Kor Gem##95042 |goto Ashenvale 11.84,34.47
 step
   only Paladin
   note Bring a Kor Gem to Ulric Frostveil in Ashenvale.
@@ -276,58 +342,88 @@ step
 step
   only Paladin
   talk Ulric Frostveil##259649
-  turnin Seeking the Kor Gem##95042 |goto Ashenvale 11.87,34.41
+  turnin Seeking the Kor Gem##95042 |goto Ashenvale 11.84,34.47
 step
   only Undead Paladin
-  talk Ott##3539
-  accept Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+  talk Garen Largo##260093
+  accept Report to Danitha##97022 |goto Undercity 47.53,14.99
 step
   only Undead Paladin
-  note Watch as Ott forges your blade.
-  talk Ott##3539
-  turnin Ott's Masterwork##95125 |goto Hillsbrad Foothills 60.43,26.18
+  note Speak with Danitha Morr at Bandarion Keep.
+  talk Danitha Morr##246378
+  turnin Report to Danitha##97022 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
-  talk Ott##3539
-  accept The Moonsilver Blade##95126 |goto Hillsbrad Foothills 60.43,26.18
+  talk Danitha Morr##246378
+  accept A Paladin's Steed##94971 |goto Tirisfal Glades 22.09,44.66
 step
   only Undead Paladin
-  note Bring Ott's Masterwork to Trevan Rol in Silverpine Forest.
-  talk Trevan Rol##248840
-  turnin The Moonsilver Blade##95126 |goto Silverpine Forest 43.4,41.1
+  note Speak with Danitha Morr to learn to summon your Warhorse.
+  talk Danitha Morr##246378
+  turnin A Paladin's Steed##94971 |goto Tirisfal Glades 22.09,44.66
+step
+  only Paladin
+  talk Orthas##228619
+  accept Oi!##84318 |goto Eastern Plaguelands 53.44,58.52
+step
+  only Paladin
+  note Find Orthas' missing hammer in Corrin's Crossing.
+  collect Ornate Warhammer##227686 |q 84318 |goto Eastern Plaguelands 53.47,58.59 |tip {dropsfrom}Orthas's Hammer
+step
+  only Paladin
+  talk Orthas##228619
+  turnin Oi!##84318 |goto Eastern Plaguelands 53.44,58.52
+step
+  only Paladin
+  talk Orthas##228619
+  accept Oh No Ye Don't!##84319 |goto Eastern Plaguelands 53.44,58.52
+step
+  only Paladin
+  note Orthas needs you to recover his missing armor from the corpse of an Abomination somewhere in Plaguewood.
+  collect Partially-Digested Plate Armor##227689 |q 84319 |goto Eastern Plaguelands 29.09,24.26 |tip {dropsfrom}Stitched Horror, Abomination
+step
+  only Paladin
+  talk Orthas##228619
+  turnin Oh No Ye Don't!##84319 |goto Eastern Plaguelands 53.44,58.52
 step
   only Undead Paladin
-  talk Lumina Windsinger##259620
-  accept A Moon-Kissed Blade##95036 |goto Silverpine Forest 43.4,40.99
+  talk Knight of Mourning##276110
+  accept The Reliquary of Tyr##99187 |goto Tirisfal Glades 17.58,67.6
 step
   only Undead Paladin
-  note Speak with Trevan Rol in the Sepulcher and bring him the materials he requires.
-  collect Trevan's Weapon Notes##267454 |q 95036/1
-  collect Whitestone Oak Lumber##6994 |q 95036/2 |goto The Deadmines - Dungeon -1,-1 |elite |tip {dropsfrom}Goblin Woodcarver
-  collect Enchanted Silver Ingot##267361 |q 95036/3
-  collect Purified Kor Gem##272448 |q 95036
+  note Travel to Blackmaw Hold in Kalimdor, and recover the Reliquary of Tyr.
+  collect Reliquary of Tyr##286415 |q 99187 |goto Tirisfal Glades 17.58,67.6 |elite |tip {dropsfrom}Elder Shaman Bloodmane
 step
   only Undead Paladin
-  talk Trevan Rol##248840
-  turnin A Moon-Kissed Blade##95036 |goto Silverpine Forest 43.4,41.1
+  talk Knight of Mourning##276110
+  turnin The Reliquary of Tyr##99187 |goto Tirisfal Glades 17.58,67.6
 step
-  only Undead Paladin
-  talk Trevan Rol##248840
-  accept An Underrated Talent##95111 |goto Silverpine Forest 43.4,41.1
+  only Paladin
+  talk Orthas##228619
+  accept A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 53.44,58.52
 step
-  only Undead Paladin
-  note Speak with Ott and ask him to forge your blade.
-  talk Ott##3539
-  turnin An Underrated Talent##95111 |goto Hillsbrad Foothills 60.43,26.18
+  only Paladin
+  note Obtain a Necrotic Runestone from Maleki the Pallid in Stratholme, then find the Rotting Dwarf Corpse near the Undercroft in southwestern Eastern Plaguelands.
+  collect Necrotic Runestone##227690 |q 84330 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
 step
-  only Undead Paladin
-  talk Lumina Windsinger##259620
-  accept Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
+  only Paladin
+  talk Rotting Dwarf Corpse##229018
+  turnin A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 23.05,73.52
 step
-  only Undead Paladin
-  note Use the Moonsilver Blade to destroy Old-Fire Eye in Silverpine Forest.
-  talk Lumina Windsinger##259620
-  turnin Old Fire-Eye##95140 |goto Silverpine Forest 43.4,40.99
+  only Paladin
+  talk Rotting Dwarf Corpse##229018
+  accept Send Me On Me Way##84414 |goto Eastern Plaguelands 23.05,73.52
+step
+  only Paladin
+  note Observe Orthas as he moves on from this world.
+  turnin Send Me On Me Way##84414 |goto Eastern Plaguelands 23.08,73.52
+step
+  only Paladin
+  click Mysterious Chest##462236
+  accept A Thane's Gratitude##84332 |goto Eastern Plaguelands 23.08,73.52
+step
+  only Paladin
+  turnin A Thane's Gratitude##84332 |goto Eastern Plaguelands 23.08,73.52
 step
   only Paladin
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
@@ -744,4 +840,102 @@ step
 step
   talk Geologist Larksbane##15183
   turnin The Calling##8315 |goto Silithus 49.67,37.46
+step
+  only Paladin
+  talk Nathanos Blightcaller##11878
+  accept Manna-Enriched Horse Feed##97186 |goto Eastern Plaguelands 22.23,63.51
+step
+  only Paladin
+  note Retrieve 20 Enriched Manna Biscuits for Nathanos Blightcaller in Eastern Plaguelands. The Argent Dawn is known as the sole purveyor of the biscuits. You'll also need to provide Blightcaller with 50 gold for his time.
+  talk Argent Quartermaster Hasana##10856
+  buy 20 Enriched Manna Biscuit##13724 |q 97186 |goto Tirisfal Glades 83.26,68.14
+step
+  only Paladin
+  talk Nathanos Blightcaller##11878
+  turnin Manna-Enriched Horse Feed##97186 |goto Eastern Plaguelands 22.23,63.51
+step
+  only Paladin
+  talk Ott##3539
+  accept Collection of Goods##97179 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin
+  note Bring 40 Runecloth, 6 Arcanite Bars, 10 Arthas' Tears, 5 Stratholme Holy Water vials, and 150 gold to Ott in Hillsbrad Foothills.
+  collect 5 Stratholme Holy Water##13180 |q 97179/1 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
+  collect 10 Arthas' Tears##8836 |q 97179/2 |goto Western Plaguelands 47.76,60.95
+  collect 40 Runecloth##14047 |q 97179/3 |tip {dropsfrom}humanoids
+  collect 6 Arcanite Bar##12360 |q 97179 |tip Crafted or bought.
+step
+  only Paladin
+  talk Ott##3539
+  turnin Collection of Goods##97179 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin
+  talk Ott##3539
+  accept Ott's Finest Work##97180 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Paladin
+  note Take the Arcanite Barding to Danitha Morr at Bandarion Keep for inspection.
+  talk Danitha Morr##246378
+  turnin Ott's Finest Work##97180 |goto Tirisfal Glades 22.09,44.66
+step
+  only Paladin
+  talk Zayus##5994
+  accept Acts of Mercy##97177 |goto Orgrimmar 35.72,86.9
+step
+  only Paladin
+  note Return the Exorcism Censer to Danitha Morr at Bandarion Keep in Tirisfal Glades.
+  talk Danitha Morr##246378
+  turnin Acts of Mercy##97177 |goto Tirisfal Glades 22.09,44.66
+step
+  only Paladin
+  talk Alodan the Hopeful##246344
+  accept A Worthy Endeavor##97174 |goto Thunder Bluff 25.36,14.64
+step
+  only Paladin
+  note Speak with Danitha Morr at Bandarion Keep in Tirisfal Glades.
+  talk Danitha Morr##246378
+  turnin A Worthy Endeavor##97174 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept Due Sacrifice##97175 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  note Travel to Orgrimmar and get High Priest Zayus's Exorcism Censer. You will need to make a donation of 150 gold in order to secure it.
+  talk Zayus##5994
+  turnin Due Sacrifice##97175 |goto Orgrimmar 35.72,86.9
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept Exorcising Terrordale##97176 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  note Use the Exorcism Censer to drive out the tormented spirits in Terrordale. When you have destroyed 25 Terrordale Spirits, return to Danitha Morr at Bandarion Keep in Tirisfal Glades.
+  kill Terrordale Spirit##14564 |q 97176 |goto Eastern Plaguelands 11.36,20.78
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  turnin Exorcising Terrordale##97176 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept Ott of Tarren Mill##97178 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  note Speak with Ott at the village of Tarren Mill in the Hillsbrad Foothills.
+  talk Ott##3539
+  turnin Ott of Tarren Mill##97178 |goto Hillsbrad Foothills 60.43,26.18
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  accept The Divination Scryer##97184 |goto Tirisfal Glades 22.09,44.66
+step
+  only Undead Paladin
+  note Bring an Azerothian Diamond and a Pristine Black Diamond to Danitha Morr at Bandarion Keep in Tirisfal Glades.
+  collect Azerothian Diamond##12800 |q 97184/1 |goto Burning Steppes 64.33,43.33 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+  collect Pristine Black Diamond##18335 |q 97184 |goto Alterac Valley 52.39,7.78 |tip {dropsfrom}Morloch, Frostwolf Legionnaire, Lieutenant Rugba
+step
+  only Undead Paladin
+  talk Danitha Morr##246378
+  turnin The Divination Scryer##97184 |goto Tirisfal Glades 22.09,44.66
 ]])

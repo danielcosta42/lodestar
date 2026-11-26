@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Loch Modan (20-38)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Hillsbrad Foothills (33-40)",
-	rev = "cdea327b",
+	rev = "83922a7d",
 }, [[
 step
   ding 16
@@ -133,6 +133,16 @@ step
   talk Prospector Stormpike##1356
   accept Ironband Wants You!##707 |goto Ironforge 74.64,11.74
 step
+  only haveq(1457)
+  note Bring Karnitol's Satchel to Roetten Stonehammer in Ironforge.
+  talk Roetten Stonehammer##5637
+  turnin The Karnitol Shipwreck##1457 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+step
+  only haveq(1467)
+  note Bring Leftwitch's Package back to Roetten Stonehammer in Ironforge.
+  talk Roetten Stonehammer##5637
+  turnin Reagents for Reclaimers Inc.##1467 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+step
   only haveq(98300)
   note Deliver Howin's Missive to King Magni Bronzebeard in Ironforge.
   talk King Magni Bronzebeard##2784
@@ -155,6 +165,14 @@ step
   only Shaman completed(94494) completed(94501) level>=20
   talk Norric Lochthane##258043
   accept Call of Water##94502 |goto Loch Modan 41.77,19.05
+step
+  only completed(1222) level>=30
+  talk Angus Stern##1141
+  accept Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64
+step
+  only completed(1222) haveq(1271)
+  talk Angus Stern##1141
+  turnin Feast at the Blue Recluse##1271 |goto Stormwind City 51.79,93.64 |tip {turninat}Stormwind City
 step
   only haveq(2500)
   note Acquire the reagents Ghak Healtouch needs from the Badlands, then return to him in Thelsamar.

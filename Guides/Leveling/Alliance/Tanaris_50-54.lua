@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Tanaris (50-54)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Azshara (51-58)",
-	rev = "0f1f0196",
+	next = "Leveling/Alliance/Alterac Mountains (40-53)",
+	rev = "5ebb32df",
 }, [[
 step
   ding 49
@@ -134,6 +134,6 @@ step
   talk Idriana##4155
   turnin Calm Before the Storm##4510 |goto Darnassus 39.39,42.44 |tip {turninat}Darnassus
 step
-  note {travel}Azshara
-  goto Azshara 11.37,78.17
+  note {travel}Alterac Mountains
+  goto Alterac Mountains 39.18,14.66
 ]])

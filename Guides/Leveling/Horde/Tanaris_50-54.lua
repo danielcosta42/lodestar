@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Tanaris (50-54)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Un'Goro Crater (51-55)",
-	rev = "5d9f9bb8",
+	rev = "b7c7fea4",
 }, [[
 step
   ding 49
@@ -90,18 +90,6 @@ step
   only completed(32,7732) completed(4494) level>=50
   talk Alchemist Pestlezugg##5594
   accept Bungle in the Jungle##4496 |goto Tanaris 50.89,26.96
-step
-  only completed(95285) level>=53
-  talk Sergeant Ulka##260383
-  accept Blood Red Bandanas##96334 |goto Dustwallow Marsh 70.3,18.85
-step
-  only completed(95285) haveq(96334)
-  note Enter Alcaz Prison and collect 8 Blood Red Bandanas from the human guards there.
-  collect 8 Blood Red Bandana##274028 |q 96334 |goto Dustwallow Marsh 70.3,18.85 |elite |tip {dropsfrom}Alcaz Chaplain, Defias Truthfinder, Defias Mercenary
-step
-  only completed(95285) haveq(96334)
-  talk Eitrigg##3144
-  turnin Blood Red Bandanas##96334 |goto Orgrimmar 34.28,39.35 |tip {turninat}Orgrimmar
 step
   note Collect 12 samples of Super Sticky Tar for Tran'rek in Gadgetzan.
   collect 12 Super Sticky Tar##11834 |q 4504 |goto Un'Goro Crater 58.98,31.38 |tip {dropsfrom}Tar Beast, Tar Lurker, Tar Lord

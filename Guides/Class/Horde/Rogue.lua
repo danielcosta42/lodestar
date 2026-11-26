@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Rogue", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "be0b2d43",
+	rev = "adb4a6b6",
 }, [[
 step
   talk Gornek##3143
@@ -54,7 +54,7 @@ step
   turnin Encrypted Scroll##3096 |goto Tirisfal Glades 32.53,65.65
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -64,7 +64,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
@@ -287,16 +287,32 @@ step
   turnin Hinott's Assistance##2480 |goto Hillsbrad Foothills 61.63,19.19
 step
   only Rogue
-  talk Myrokos Silentform##13085
-  accept Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+  click Dead Drop##410369
+  accept The Horn of Xelthos##78261 |goto Silverpine Forest 47.12,70.99
 step
   only Rogue
-  note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
-  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 79.1,45.73
+  note Find The Horn of Xelthos inside of Shadowfang Keep. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone.
+  turnin The Horn of Xelthos##78261 |goto Silverpine Forest 47.12,70.99
 step
   only Rogue
-  talk Myrokos Silentform##13085
-  turnin Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+  click Dead Drop##410369
+  accept The Horn of Xelthos##78307 |goto Silverpine Forest 47.12,70.99
+step
+  only Rogue
+  note Log
+  turnin The Horn of Xelthos##78307 |goto Silverpine Forest 47.12,70.99
+step
+  only Rogue
+  talk Veenix##4086
+  accept Goblin Lockpicks##78270 |goto Stonetalon Mountains 58.22,51.74
+step
+  only Rogue
+  note Find The Horn of Xelthos inside of Shadowfang Keep. Then, return it to C's dead drop near Pyrewood Village.
+  collect Venture Co. Work Order##210187 |q 78270 |goto Stonetalon Mountains 65.24,53.45 |tip {dropsfrom}Venture Co. Deforester, Venture Co. Operator, Venture Co. Logger
+step
+  only Rogue
+  talk Veenix##4086
+  turnin Goblin Lockpicks##78270 |goto Stonetalon Mountains 58.22,51.74
 step
   only Rogue
   talk Gest##3327 |goto Orgrimmar 42.69,51.48 |tip They give you the item that starts the quest.
@@ -312,11 +328,34 @@ step
 step
   only Rogue
   talk Myrokos Silentform##13085
-  accept A Way In##96783 |goto Alterac Mountains 84.93,80.38
+  accept Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
 step
   only Rogue
-  note Steal a Syndicate uniform from Northfold Manor to infiltrate Stromgarde Keep.
-  turnin A Way In##96783 |goto Alterac Mountains 84.93,80.38
+  note Find Lord Tomas inside Durnholde Keep, in Hillsbrad Foothills, and kill him. Then, return to Myrokos Silentform.
+  kill Lord Tomas##266216 |q 96779 |goto Hillsbrad Foothills 80,45.79
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  click Dead Drop##410369
+  accept The Eye of Bhossca##78676 |goto Silverpine Forest 47.12,70.99
+step
+  only Rogue
+  note Find The Eye of Bhossca inside of the Scarlet Monastery. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone.
+  collect Eye of Bhossca##210953 |q 78676 |goto Silverpine Forest 47.12,70.99 |tip {dropsfrom}Padlocked Reliquary
+step
+  only Rogue
+  turnin The Eye of Bhossca##78676 |goto Silverpine Forest 47.12,70.99
+step
+  only Rogue
+  click Dead Drop##410369
+  accept The Eye of Bhossca##78699 |goto Silverpine Forest 47.12,70.99
+step
+  only Rogue
+  note Log
+  turnin The Eye of Bhossca##78699 |goto Silverpine Forest 47.12,70.99
 step
   only Rogue
   talk Myrokos Silentform##13085
@@ -324,12 +363,99 @@ step
 step
   only Rogue
   note Steal Barton's Scouting Report by pickpocketing it from him. Then, bring the report to Myrokos Silentform at Ravenholdt Manor.
-  kill Barton##266357 |q 96781 |goto Alterac Mountains 62.59,46.86
-  collect Barton's Scouting Report##275482 |q 96781 |goto Alterac Mountains 62.59,46.86
+  collect Barton's Scouting Report##275482 |q 96781 |goto Alterac Mountains 61.95,45.44 |tip {dropsfrom}Barton
 step
   only Rogue
   talk Myrokos Silentform##13085
   turnin What's the Big Idea?##96781 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  accept A Way In##96783 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  note Steal a Syndicate uniform from Northfold Manor to infiltrate Stromgarde Keep.
+  turnin A Way In##96783 |goto Arathi Highlands 32.29,26.57
+step
+  only Rogue
+  click Syndicate Footlocker##656157
+  accept Master of Disguise##96784 |goto Arathi Highlands 32.29,26.57
+step
+  only Rogue
+  note While disguised as a member of the Syndicate, find someone inside Stromgarde Keep who knows about the secret deal.
+  talk Anastasia Miller##266847
+  turnin Master of Disguise##96784 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue
+  talk Anastasia Miller##266847
+  accept Ain't No Telling##96785 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue
+  note Find something within Stromgarde Keep to convince Anastasia to give up details of the secret deal.
+  collect Stolen Funds##275709 |q 96785 |goto Arathi Highlands 29.47,65.03 |tip {dropsfrom}Anastasia's Stash
+step
+  only Rogue
+  talk Anastasia Miller##266847
+  turnin Ain't No Telling##96785 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue
+  talk Anastasia Miller##266847
+  accept The Syndicate Sting##96786 |goto Arathi Highlands 26.81,64.44
+step
+  only Rogue
+  note Break up the secret deal, and take the object being traded to the Syndicate. Then, return to Myrokos Silentform at Ravenholdt Manor.
+  collect Intercepted Shipment##275882 |q 96786 |goto Arathi Highlands 15.52,42.87 |tip {dropsfrom}Secret Shipment
+step
+  only Rogue
+  talk Myrokos Silentform##13085
+  turnin The Syndicate Sting##96786 |goto Alterac Mountains 84.93,80.38
+step
+  only Rogue
+  talk Zan Shivsproket##6777
+  accept One Last Drop##80454 |goto Alterac Mountains 85.95,79.96
+step
+  only Rogue
+  note Take the Modified Talisman to Caius' dead drop near Pyrewood Village.
+  turnin One Last Drop##80454 |goto Silverpine Forest 47.12,70.99
+step
+  only Rogue
+  talk Fahrad##6707
+  accept Best Laid Plans##80453 |goto Alterac Mountains 84.45,80.32
+step
+  only Rogue
+  note Bring the Talisman of Kazdor to Zan Shivsprocket in the basement of Ravenholdt Manor.
+  talk Zan Shivsproket##6777
+  turnin Best Laid Plans##80453 |goto Alterac Mountains 85.95,79.96
+step
+  only Rogue
+  talk Fahrad##6707
+  accept Fool Me Twice##80526 |goto Alterac Mountains 84.45,80.32
+step
+  only Rogue
+  note Speak to Fahrad when you're ready to hear his plan.
+  talk Fahrad##6707
+  turnin Fool Me Twice##80526 |goto Alterac Mountains 84.45,80.32
+step
+  only Rogue
+  talk Fahrad##6707
+  accept The Talisman of Kazdor##80411 |goto Alterac Mountains 84.45,80.32
+step
+  only Rogue
+  note Find The Talisman of Kazdor inside of Zul'Farrak. Then, bring it to Fahrad at Ravenholdt Manor. You must complete the job alone.
+  collect Talisman of Kazdor##217609 |q 80411 |goto Alterac Mountains 84.45,80.32 |tip {dropsfrom}Spellbound War Chest
+step
+  only Rogue
+  talk Fahrad##6707
+  turnin The Talisman of Kazdor##80411 |goto Alterac Mountains 84.45,80.32
+step
+  only Rogue
+  click Dead Drop##410369
+  accept Biding Our Time##80455 |goto Silverpine Forest 47.12,70.99
+step
+  only Rogue
+  note Report back to Fahrad at Ravenholdt Manor.
+  talk Fahrad##6707
+  turnin Biding Our Time##80455 |goto Alterac Mountains 84.45,80.32
 step
   only Rogue
   talk Ormok##3328
@@ -346,7 +472,7 @@ step
 step
   only Rogue
   note Retrieve the Sealed Azure Bag from the Timbermaw Shaman in Azshara. Then take the bag to Archmage Xylem, also found in Azshara.
-  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.78,22.51 |tip {dropsfrom}Timbermaw Shaman
+  collect Sealed Azure Bag##19775 |q 8234 |goto Azshara 44.78,22.51 |tip {dropsfrom}Timbermaw Shaman, Blackmaw Shaman
 step
   only Rogue
   talk Archmage Xylem##8379

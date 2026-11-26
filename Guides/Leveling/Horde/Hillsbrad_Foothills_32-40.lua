@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (32-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Alterac Mountains (34-40)",
-	rev = "7b8cb613",
+	rev = "5a9a008e",
 }, [[
 step
   ding 31
@@ -93,6 +93,11 @@ step
   only completed(549) level>=35
   click WANTED##1763
   accept WANTED: Baron Vardus##566 |goto Hillsbrad Foothills 62.63,20.75
+step
+  only haveq(513)
+  note Take the Mudsnout Composite to Master Apothecary Faranell in the Undercity.
+  talk Master Apothecary Faranell##2055
+  turnin Elixir of Agony##513 |goto Undercity 48.82,69.28 |tip {turninat}Undercity
 step
   only haveq(1159)
   note Find Parqual Fintallas in Undercity.

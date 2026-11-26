@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Alterac Mountains (40-53)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Teldrassil (48-55)",
-	rev = "114c3542",
+	next = "Leveling/Alliance/Blasted Lands (50-55)",
+	rev = "f265c009",
 }, [[
 step
   ding 31
@@ -128,13 +128,37 @@ step
   talk Lord Jorach Ravenholdt##6768
   turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88
 step
-  note Take the Ensorcelled Parchment to Prospector Stormpike in Ironforge.
-  talk Prospector Stormpike##1356
-  turnin Stormpike's Deciphering##554 |goto Ironforge 74.64,11.74 |tip {turninat}Ironforge
+  only haveq(2990)
+  note Bring Sharpbeak's Feather to Thadius Grimshade in the Blasted Lands.
+  talk Thadius Grimshade##8022
+  turnin Thadius Grimshade##2990 |goto Blasted Lands 66.9,19.47 |tip {turninat}Blasted Lands
+step
+  only haveq(96797)
+  note Travel to Nethergarde Keep in the Blasted Lands and locate Sergeant Danneth.
+  talk Lieutenant Connar##266524
+  turnin The Orphan##96797 |goto Blasted Lands 66.07,19.4 |tip {turninat}Blasted Lands
+step
+  only haveq(2977)
+  note Speak with Historian Karnik in Ironforge.
+  talk Historian Karnik##2916
+  turnin Return to Ironforge##2977 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
 step
   only level>=45
   talk Historian Karnik##2916
   accept Passing the Burden##3448 |goto Ironforge 77.54,11.82
+step
+  only completed(2977) level>=45
+  talk Historian Karnik##2916
+  accept A Future Task##2964 |goto Ironforge 77.54,11.82
+step
+  note Take the Ensorcelled Parchment to Prospector Stormpike in Ironforge.
+  talk Prospector Stormpike##1356
+  turnin Stormpike's Deciphering##554 |goto Ironforge 74.64,11.74 |tip {turninat}Ironforge
+step
+  only completed(2977) haveq(2964)
+  note Speak with High Explorer Magellas in Ironforge.
+  talk High Explorer Magellas##5387
+  turnin A Future Task##2964 |goto Ironforge 69.93,18.55 |tip {turninat}Ironforge
 step
   only haveq(3448)
   note Speak to Tymor in Ironforge.
@@ -159,6 +183,6 @@ step
   talk Xiggs Fuselighter##8517
   turnin Signal for Pickup##3451 |goto Ironforge 70.87,94.56 |tip {turninat}Ironforge
 step
-  note {travel}Teldrassil
-  goto Teldrassil 58.69,44.27
+  note {travel}Blasted Lands
+  goto Blasted Lands 50.55,14.2
 ]])

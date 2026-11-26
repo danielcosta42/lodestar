@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Priest", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "6ae47de9",
+	rev = "e28ead6b",
 }, [[
 step
   talk Gornek##3143
@@ -113,12 +113,12 @@ step
 step
   only Undead Priest not completed(5646) not completed(5679) not haveq(5646) not haveq(5679)
   talk Miles Welsh##3044
-  accept Devouring Plague##5644 |goto Thunder Bluff 25.32,15.27
+  accept Dark Sacrifice##5644 |goto Thunder Bluff 25.32,15.27
 step
   only Undead Priest not completed(5646) not completed(5679) not haveq(5646) not haveq(5679)
   note Speak to Aelthalyste in the Undercity.
   talk Aelthalyste##4606
-  turnin Devouring Plague##5644 |goto Undercity 49.26,17.12
+  turnin Dark Sacrifice##5644 |goto Undercity 49.26,17.12
 step
   only Priest
   talk Malakai Cross##3045

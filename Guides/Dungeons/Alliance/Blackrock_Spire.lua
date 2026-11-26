@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Blackrock Spire", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "a27138c4",
+	rev = "626a9f88",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -49,6 +49,66 @@ step
   talk Ragged John##9563
   accept Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  talk Deliana##230319
+  accept An Earnest Proposition##84148 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept An Earnest Proposition##84149 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept An Earnest Proposition##84153 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept An Earnest Proposition##84154 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##84163 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##84164 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##84165 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##84167 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##84168 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##84170 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Saving the Best for Last##84195 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Saving the Best for Last##84196 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Saving the Best for Last##84200 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Saving the Best for Last##84202 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  accept Just Compensation##97448 |goto Dun Morogh 58.07,29.54
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84179 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84180 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84182 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84183 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84186 |goto Eastern Plaguelands 26.11,11.3
+step
   talk Count Remington Ridgewell##2285
   accept Mayara Brightwing##4766 |goto Stormwind City 76.94,47.83
 step
@@ -58,6 +118,9 @@ step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   talk Lorax##10918
   accept Lorax's Tale##5126 |goto Winterspring 63.79,73.76
+step
+  talk Pix Xizzix##227853
+  accept In Demand - Blackrock Legal Records##96075 |goto Stranglethorn Vale 28.52,75.86
 step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
@@ -90,12 +153,75 @@ step
   note In the heart of Blackrock Spire you will find Mother Smolderweb. Engage her and get her to poison you. Chances are good that you will have to kill her as well. Return to Ragged John when you are poisoned so that he can 'milk' you.
   talk Ragged John##9563 |q 4866 |goto Burning Steppes 65.01,23.76
 step
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Beaststalker's Bindings to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 84148 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Magister's Bindings to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 84149 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Dreadmist Bracers to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 84153 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Bracers of Valor to Deliana in Ironforge.
+  collect 15 Winterspring Blood Sample##21928 |q 84154 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
+step
+  note Bring a Wildheart Belt and a set of Wildheart Gloves Deliana in Ironforge.
+  collect Wildheart Belt##16716 |q 84163 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider
+step
+  note Bring a Beaststalker's Belt and a set of Beaststalker's Gloves to Deliana in Ironforge.
+  collect Beaststalker's Belt##16680 |q 84164 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Headhunter, Scarshield Raider, Firebrand Grunt
+step
+  note Bring a Magister's Belt and a set of Magister's Gloves to Deliana in Ironforge.
+  collect Magister's Belt##16685 |q 84165 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Mystic
+step
+  note Bring a Devout Belt and a set of Devout Gloves to Deliana in Ironforge.
+  collect Devout Belt##16696 |q 84167 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
+step
+  note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Deliana in Ironforge.
+  collect Shadowcraft Belt##16713 |q 84168 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
+step
+  note Bring a Belt of Valor and a set of Gauntlets of Valor to Deliana in Ironforge.
+  collect Belt of Valor##16736 |q 84170 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker
+step
+  note Give Deliana your Wildheart Cowl and Wildheart Vest.
+  collect Wildheart Cowl##16720 |q 84195 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
+step
+  note Give Deliana your Beaststalker's Cap and Beaststalker's Tunic.
+  collect Beaststalker's Cap##16677 |q 84196 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
+step
+  note Give Deliana your Shadowcraft Cap and Shadowcraft Tunic.
+  collect Shadowcraft Cap##16707 |q 84200 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
+step
+  note Give Deliana your Helm of Valor and Breastplate of Valor.
+  collect Helm of Valor##16731 |q 84202 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
+step
+  note Bring a Cord of the Elements and a set of Gauntlets of the Elements to Deliana in Ironforge.
+  collect Cord of Elements##16673 |q 97448 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
+step
+  note Return to Deliana in Ironforge with a set of Wildheart Boots, a Wildheart Kilt and Wildheart Spaulders.
+  collect Wildheart Boots##16715 |q 84179 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Mother Smolderweb
+step
+  note Return to Deliana in Ironforge with a set of Beaststalker's Boots, Beaststalker's Pants and Beaststalker's Mantle.
+  collect Beaststalker's Boots##16675 |q 84180 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Nerub'enkan
+step
+  note Return to Deliana in Ironforge with a set of Lightforge Boots, Lightforge Legplates and Lightforge Spaulders.
+  collect Lightforge Boots##16725 |q 84182 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Balnazzar
+step
+  note Return to Deliana in Ironforge with a set of Devout Sandals, Devout Skirt and Devout Mantle.
+  collect Devout Sandals##16691 |q 84183 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
+step
+  note Return to Deliana in Ironforge with a set of Boots of Valor, Legplates of Valor and Spaulders of Valor.
+  collect Boots of Valor##16734 |q 84186 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Kirtonos the Herald
+step
   note Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.
   collect Vosh'gajin's Snakestone##13352 |q 5306 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Shadow Hunter Vosh'gajin
 step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   note Speak with Lorax. Listen to what he has to say.
   talk Lorax##10918 |q 5126 |goto Winterspring 63.79,73.76
+step
+  note Acquire Nefarian's Remit from General Drakkisath in Blackrock Spire, Overseer's License from Overlord Wyrmthalak in Blackrock Spire, and Bronzebeard Wedding Contract from Emperor Thaurissan in Blackrock Depths, and bring them to Pix Xizzix in Booty Bay.
+  collect Nefarion's Remit##272017 |q 96075 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
@@ -143,6 +269,66 @@ step
   talk Ragged John##9563
   turnin Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  talk Deliana##230319
+  turnin An Earnest Proposition##84148 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin An Earnest Proposition##84149 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin An Earnest Proposition##84153 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin An Earnest Proposition##84154 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##84163 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##84164 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##84165 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##84167 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##84168 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##84170 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Saving the Best for Last##84195 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Saving the Best for Last##84196 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Saving the Best for Last##84200 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Saving the Best for Last##84202 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Just Compensation##97448 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Anthion's Parting Words##84179 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Anthion's Parting Words##84180 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Anthion's Parting Words##84182 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Anthion's Parting Words##84183 |goto Dun Morogh 58.07,29.54
+step
+  talk Deliana##230319
+  turnin Anthion's Parting Words##84186 |goto Dun Morogh 58.07,29.54
+step
   note Speak with Mayara Brightwing in the Burning Steppes.
   talk Mayara Brightwing##9565
   turnin Mayara Brightwing##4766 |goto Burning Steppes 84.84,69.12
@@ -153,6 +339,9 @@ step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   talk Lorax##10918
   turnin Lorax's Tale##5126 |goto Winterspring 63.79,73.76
+step
+  talk Pix Xizzix##227853
+  turnin In Demand - Blackrock Legal Records##96075 |goto Stranglethorn Vale 28.52,75.86
 step
   talk Yeh'kinya##8579
   accept The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36

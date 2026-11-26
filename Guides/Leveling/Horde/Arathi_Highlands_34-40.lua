@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Arathi Highlands (34-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Stranglethorn Vale (35-41)",
-	rev = "d507f23a",
+	rev = "3c48cfb3",
 }, [[
 step
   ding 31
@@ -397,10 +397,6 @@ step
   talk Genavie Callow##4486
   accept To Steal From Thieves##1164 |goto Undercity 63.83,49.45
 step
-  only Undead Paladin level>=40
-  talk Garen Largo##260093
-  accept Report to Danitha##97022 |goto Undercity 47.53,14.99
-step
   note Bring Kenata, Fardel, and Marcel Dabyrie's Heads to Genavie Callow in Undercity.
   collect Kenata's Head##5830 |q 1164/1 |goto Arathi Highlands 56.38,36.09 |tip {dropsfrom}Kenata Dabyrie
   collect Fardel's Head##5831 |q 1164/3 |goto Arathi Highlands 56.55,38.7 |tip {dropsfrom}Fardel Dabyrie
@@ -408,11 +404,6 @@ step
 step
   talk Genavie Callow##4486
   turnin To Steal From Thieves##1164 |goto Undercity 63.83,49.45 |tip {turninat}Undercity
-step
-  only Undead Paladin haveq(97022)
-  note Speak with Danitha Morr at Bandarion Keep.
-  talk Danitha Morr##246378
-  turnin Report to Danitha##97022 |goto Tirisfal Glades 22.09,44.66 |tip {turninat}Tirisfal Glades
 step
   only Rogue completed(96783)
   talk Myrokos Silentform##13085

@@ -1,11 +1,11 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (53-58)", {
+ns:RegisterGuide("Leveling/Alliance/Western Plaguelands (53-60)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Swamp of Sorrows (55-57)",
-	rev = "a73b2b57",
+	rev = "68b550c2",
 }, [[
 step
   ding 52
@@ -409,6 +409,10 @@ step
   talk Count Remington Ridgewell##2285
   accept Mayara Brightwing##4766 |goto Stormwind City 76.94,47.83
 step
+  only completed(6183) level>=56
+  talk Master Mathias Shaw##332
+  accept Flint Shadowmore##6184 |goto Stormwind City 78.31,70.74
+step
   only haveq(4766)
   note Speak with Mayara Brightwing in the Burning Steppes.
   talk Mayara Brightwing##9565
@@ -426,6 +430,15 @@ step
   talk Ragged John##9563
   turnin Mother's Milk##4866 |goto Burning Steppes 65.01,23.76 |tip {turninat}Burning Steppes
 step
+  only completed(6183) haveq(6184)
+  note Travel to Chillwind Camp in the Western Plaguelands and meet up with your contact, Flint Shadowmore.
+  talk Flint Shadowmore##12425
+  turnin Flint Shadowmore##6184 |goto Western Plaguelands 43.61,84.51
+step
+  only completed(6183) completed(6184) level>=56
+  talk Flint Shadowmore##12425
+  accept The Eastern Plagues##6185 |goto Western Plaguelands 43.61,84.51
+step
   note Return to Janice Felstone in Western Plaguelands her Good Luck Half-Charm.
   talk Janice Felstone##10778
   turnin Good Luck Charm##5050 |goto Western Plaguelands 38.4,54.05
@@ -438,6 +451,39 @@ step
 step
   talk Janice Felstone##10778
   turnin Two Halves Become One##5051 |goto Western Plaguelands 38.4,54.05
+step
+  only Shaman level>=60
+  talk Eldrun Stormbreaker##258098
+  accept Material Assistance##97168 |goto Ironforge 47.1,13.79
+step
+  only Shaman haveq(97168)
+  note If you are interested in helping Eldrun Stormbreaker in Ironforge, bring him an Azerothian Diamond and a Pristine Black Diamond.
+  kill Skeletal Warlord##1788 |q 97168/2 |goto Western Plaguelands 45.15,69.56 |elite
+  collect Pristine Black Diamond##18335 |q 97168/2 |goto Western Plaguelands 45.15,69.56
+  collect Azerothian Diamond##12800 |q 97168 |goto Western Plaguelands 54.69,36.28 |tip {dropsfrom}Small Thorium Vein, Rich Thorium Vein
+step
+  only Shaman haveq(97168)
+  talk Eldrun Stormbreaker##258098
+  turnin Material Assistance##97168 |goto Ironforge 47.1,13.79 |tip {turninat}Ironforge
+step
+  only completed(6183) haveq(6185)
+  note Scour the Eastern Plaguelands for clues as to the "Blightcaller" and the missing SI:7 agents. If you find any SI:7 Insignias, return them to Flint Shadowmore at Chillwind Camp.
+  collect SI:7 Insignia (Rutger)##16003 |q 6185/1 |goto Eastern Plaguelands 24.28,68.11 |tip {dropsfrom}Mangled Human Remains
+  collect SI:7 Insignia (Turyen)##16002 |q 6185/3 |goto Eastern Plaguelands 24.28,63.65 |tip {dropsfrom}Mangled Human Remains
+  collect SI:7 Insignia (Fredo)##16001 |q 6185 |goto Eastern Plaguelands 22.79,63.72 |tip {dropsfrom}Mangled Human Remains
+step
+  only completed(6183) haveq(6185)
+  talk Flint Shadowmore##12425
+  turnin The Eastern Plagues##6185 |goto Western Plaguelands 43.61,84.51
+step
+  only completed(6183) completed(6185) level>=56
+  talk Flint Shadowmore##12425
+  accept The Blightcaller Cometh##6186 |goto Western Plaguelands 43.61,84.51
+step
+  only completed(6183) haveq(6186)
+  note Return to Stormwind and inform Highlord Bolvar Fordragon of the fate of Nathanos Marris.
+  talk Highlord Bolvar Fordragon##1748
+  turnin The Blightcaller Cometh##6186 |goto Stormwind City 80.21,38.35 |tip {turninat}Stormwind City
 step
   note {travel}Swamp of Sorrows
   goto Swamp of Sorrows 22.31,50.41

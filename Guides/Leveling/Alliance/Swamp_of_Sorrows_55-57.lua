@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Swamp of Sorrows (55-57)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Eastern Plaguelands (55-60)",
-	rev = "c963d49e",
+	next = "Leveling/Alliance/Eastern Plaguelands (56-60)",
+	rev = "083ed24c",
 }, [[
 step
   ding 51
@@ -150,5 +150,5 @@ step
   turnin The Cover of Darkness##2743 |goto Swamp of Sorrows 34.29,66.14
 step
   note {travel}Eastern Plaguelands
-  goto Eastern Plaguelands 31.15,77.98
+  goto Eastern Plaguelands 69.93,53.72
 ]])

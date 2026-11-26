@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Badlands (37-43)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Riverglades (38-44)",
-	rev = "14b580e0",
+	rev = "5e3287bd",
 }, [[
 step
   ding 36
@@ -378,6 +378,11 @@ step
   talk Acolyte Dellis##5386
   accept Mazen's Behest##1364 |goto Stormwind City 51.4,73.81
 step
+  only haveq(1425)
+  note Bring the Shipment to Nethergarde to Quartermaster Lungertz in Nethergarde Keep.
+  talk Quartermaster Lungertz##5393
+  turnin Deliver the Shipment##1425 |goto Blasted Lands 66.52,21.39 |tip {turninat}Blasted Lands
+step
   talk Krom Stoutarm##6294
   turnin Reclaimed Treasures##1360 |goto Ironforge 74.19,9.39 |tip {turninat}Ironforge
 step
@@ -387,6 +392,9 @@ step
 step
   note Retrieve Khadgar's Essays on Dimensional Convergence and deliver them to Watcher Mahar Ba in Nethergarde Keep.
   collect Khadgar's Essays on Dimensional Convergence##6065 |q 1364 |goto Swamp of Sorrows 15.81,36.55 |tip {dropsfrom}Swampwalker, Swampwalker Elder, Tangled Horror
+step
+  talk Watcher Mahar Ba##5385
+  turnin Mazen's Behest##1364 |goto Blasted Lands 67.65,19.17 |tip {turninat}Blasted Lands
 step
   only completed(738)
   talk Prospector Ironband##1344

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Searing Gorge (48-50)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Alterac Mountains (40-53)",
-	rev = "3b700242",
+	next = "Leveling/Alliance/Teldrassil (48-55)",
+	rev = "9de2339e",
 }, [[
 step
   ding 46
@@ -282,6 +282,6 @@ step
   talk Curator Thorius##8256
   turnin Rise, Obsidion!##3566 |goto Ironforge 71.5,15.74 |tip {turninat}Ironforge
 step
-  note {travel}Alterac Mountains
-  goto Alterac Mountains 39.18,14.66
+  note {travel}Teldrassil
+  goto Teldrassil 58.69,44.27
 ]])

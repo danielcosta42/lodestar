@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Blackrock Spire", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "5ada8ae2",
+	rev = "7ba91f64",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -31,6 +31,9 @@ step
   talk Kibler##10260
   accept En-Ay-Es-Tee-Why##4862 |goto Burning Steppes 65.89,21.92
 step
+  talk Warlord Goretooth##9077
+  accept Blood and Thunder##98325 |goto Badlands 5.81,47.52
+step
   talk Warosh##10799
   accept Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
 step
@@ -46,6 +49,63 @@ step
   talk Ragged John##9563
   accept Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84187 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84188 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84190 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84192 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Anthion Harmon##16016
+  accept Anthion's Parting Words##84194 |goto Eastern Plaguelands 26.11,11.3
+step
+  talk Mokvar##230317
+  accept An Earnest Proposition##84156 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept An Earnest Proposition##84157 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept An Earnest Proposition##84161 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept An Earnest Proposition##84162 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##84171 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##84172 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##84173 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##84174 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##84175 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##84176 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Just Compensation##84178 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Saving the Best for Last##84203 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Saving the Best for Last##84208 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  accept Saving the Best for Last##84210 |goto Orgrimmar 34.96,38.26
+step
   talk Apothecary Zinge##5204
   accept Vivian Lagrave and the Darkstone Tablet##4769 |goto Undercity 50.14,67.97
 step
@@ -55,6 +115,9 @@ step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   talk Lorax##10918
   accept Lorax's Tale##5126 |goto Winterspring 63.79,73.76
+step
+  talk Pix Xizzix##227853
+  accept In Demand - Blackrock Legal Records##96075 |goto Stranglethorn Vale 28.52,75.86
 step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
@@ -84,12 +147,72 @@ step
   note In the heart of Blackrock Spire you will find Mother Smolderweb. Engage her and get her to poison you. Chances are good that you will have to kill her as well. Return to Ragged John when you are poisoned so that he can 'milk' you.
   talk Ragged John##9563 |q 4866 |goto Burning Steppes 65.01,23.76
 step
+  note Return to Mokvar in Orgimmar with a set of Wildheart Boots, a Wildheart Kilt and Wildheart Spaulders.
+  collect Wildheart Boots##16715 |q 84187 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Mother Smolderweb
+step
+  note Return to Mokvar in Orgimmar with a set of Beaststalker's Boots, Beaststalker's Pants and Beaststalker's Mantle.
+  collect Beaststalker's Boots##16675 |q 84188 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Nerub'enkan
+step
+  note Return to Mokvar in Orgimmar with a set of Devout Sandals, Devout Skirt and Devout Mantle.
+  collect Devout Sandals##16691 |q 84190 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
+step
+  note Return to Mokvar in Orgimmar with a set of Boots of Elements, Kilt of Elements and Pauldrons of Elements.
+  collect Boots of Elements##16670 |q 84192 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Highlord Omokk
+step
+  note Return to Mokvar in Orgimmar with a set of Boots of Valor, Legplates of Valor and Spaulders of Valor.
+  collect Boots of Valor##16734 |q 84194 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Kirtonos the Herald
+step
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Beaststalker's Bindings to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 84156 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Magister's Bindings to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 84157 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Dreadmist Bracers to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 84161 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  note Acquire 15 Silithus Venom Samples and 20 gold and bring them along with a set of Bracers of Valor to Mokvar in Orgrimmar.
+  collect 15 Silithus Venom Sample##22381 |q 84162 |goto Silithus 59.92,28.13 |tip {dropsfrom}Stonelash Scorpid, Stonelash Pincer, Stonelash Flayer
+step
+  note Bring a Wildheart Belt and a set of Wildheart Gloves to Mokvar in Orgrimmar.
+  collect Wildheart Belt##16716 |q 84171 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Raider, Bloodaxe Raider
+step
+  note Bring a Beaststalker's Belt and a set of Beaststalker's Gloves to Mokvar in Orgrimmar.
+  collect Beaststalker's Belt##16680 |q 84172 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Headhunter, Scarshield Raider, Firebrand Grunt
+step
+  note Bring a Magister's Belt and a set of Magister's Gloves to Mokvar in Orgrimmar.
+  collect Magister's Belt##16685 |q 84173 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Mystic
+step
+  note Bring a Devout Belt and a set of Devout Gloves to Mokvar in Orgrimmar.
+  collect Devout Belt##16696 |q 84174 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Scarshield Spellbinder, Smolderthorn Shadow Priest, Firebrand Darkweaver
+step
+  note Bring a Shadowcraft Belt and a set of Shadowcraft Gloves to Mokvar in Orgrimmar.
+  collect Shadowcraft Belt##16713 |q 84175 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
+step
+  note Bring a Cord of the Elements and a set of Gauntlets of the Elements to Mokvar in Orgrimmar.
+  collect Cord of Elements##16673 |q 84176 |goto Eastern Kingdoms - the continent map 49.12,64.1 |tip {dropsfrom}Scarshield Quartermaster
+step
+  note Bring a Belt of Valor and a set of Gauntlets of Valor to Mokvar in Orgrimmar.
+  collect Belt of Valor##16736 |q 84178 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Smolderthorn Berserker
+step
+  note Give Mokvar your Wildheart Cowl and Wildheart Vest.
+  collect Wildheart Cowl##16720 |q 84203 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
+step
+  note Give Mokvar your Coif of Elements and Vest of Elements.
+  collect Coif of Elements##16667 |q 84208 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
+step
+  note Give Mokvar your Helm of Valor and Breastplate of Valor.
+  collect Helm of Valor##16731 |q 84210 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Darkmaster Gandling
+step
   note Travel to Blackrock Spire and slay Shadow Hunter Vosh'gajin. Recover Vosh'gajin's Snakestone and return to Kilram.
   collect Vosh'gajin's Snakestone##13352 |q 5306 |goto Blackrock Spire - Dungeon -1,-1 |elite |tip {dropsfrom}Shadow Hunter Vosh'gajin
 step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   note Speak with Lorax. Listen to what he has to say.
   talk Lorax##10918 |q 5126 |goto Winterspring 63.79,73.76
+step
+  note Acquire Nefarian's Remit from General Drakkisath in Blackrock Spire, Overseer's License from Overlord Wyrmthalak in Blackrock Spire, and Bronzebeard Wedding Contract from Emperor Thaurissan in Blackrock Depths, and bring them to Pix Xizzix in Booty Bay.
+  collect Nefarion's Remit##272017 |q 96075 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
@@ -116,6 +239,10 @@ step
   talk Kibler##10260
   turnin En-Ay-Es-Tee-Why##4862 |goto Burning Steppes 65.89,21.92
 step
+  note Speak to Warlord Goretooth to serve the Kargath Expeditionary Force.
+  talk Warlord Goretooth##9077
+  turnin Blood and Thunder##98325 |goto Badlands 5.81,47.52
+step
   talk Warosh##10799
   turnin Urok Doomhowl##4867 |goto Blackrock Spire - Dungeon -1,-1
 step
@@ -134,6 +261,63 @@ step
   talk Ragged John##9563
   turnin Mother's Milk##4866 |goto Burning Steppes 65.01,23.76
 step
+  talk Mokvar##230317
+  turnin Anthion's Parting Words##84187 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Anthion's Parting Words##84188 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Anthion's Parting Words##84190 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Anthion's Parting Words##84192 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Anthion's Parting Words##84194 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin An Earnest Proposition##84156 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin An Earnest Proposition##84157 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin An Earnest Proposition##84161 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin An Earnest Proposition##84162 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##84171 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##84172 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##84173 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##84174 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##84175 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##84176 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Just Compensation##84178 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Saving the Best for Last##84203 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Saving the Best for Last##84208 |goto Orgrimmar 34.96,38.26
+step
+  talk Mokvar##230317
+  turnin Saving the Best for Last##84210 |goto Orgrimmar 34.96,38.26
+step
   note Speak with Shadowmage Vivian Lagrave.
   talk Shadowmage Vivian Lagrave##9078
   turnin Vivian Lagrave and the Darkstone Tablet##4769 |goto Badlands 2.9,47.76
@@ -144,6 +328,9 @@ step
   only not Hunter not Rogue not Priest not Mage not Warlock not Druid
   talk Lorax##10918
   turnin Lorax's Tale##5126 |goto Winterspring 63.79,73.76
+step
+  talk Pix Xizzix##227853
+  turnin In Demand - Blackrock Legal Records##96075 |goto Stranglethorn Vale 28.52,75.86
 step
   talk Yeh'kinya##8579
   accept The Prophecy of Mosh'aru##3527 |goto Tanaris 66.99,22.36

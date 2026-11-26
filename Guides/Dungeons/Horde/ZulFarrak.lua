@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Horde/Zul'Farrak", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "5aafc7bc",
+	rev = "6c1bc683",
 }, [[
 step
   talk Yeh'kinya##8579
@@ -16,8 +16,15 @@ step
   talk Trenton Lighthammer##7804
   accept Troll Temper##3042 |goto Tanaris 51.41,28.75
 step
+  only Mage
+  talk Owen Thadd##211022
+  accept A Lesson in Literacy##82084 |goto Undercity 73.4,33
+step
   talk Tabetha##6546
   accept Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
+step
+  talk Mazu'kon##264074
+  accept Zum'rah's Head##96775 |goto Mulgore 32.5,20.66
 step
   talk Chief Engineer Bilgewhizzle##7407
   accept Divino-matic Rod##2768 |goto Tanaris 52.46,28.51
@@ -34,8 +41,17 @@ step
   note Bring 20 Vials of Troll Temper to Trenton Lighthammer in Gadgetzan.
   collect 20 Troll Temper##9523 |q 3042 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Zul'Farrak Dead Hero, Sandfury Shadowcaster, Sandfury Blood Drinker
 step
+  only Mage
+  note Track down and collect the spellbook materials requested by the librarian.
+  collect Pristine Owlbeast Quill##221359 |q 82084/1 |goto The Hinterlands 29.72,55.26 |tip {dropsfrom}Vicious Owlbeast, Primitive Owlbeast, Savage Owlbeast
+  collect Zukk'ash Resin##221361 |q 82084/2 |goto Feralas 78.01,64.14 |tip {dropsfrom}Zukk'ash Stinger, Zukk'ash Wasp, Zukk'ash Worker
+  collect Farraki Papyrus##221360 |q 82084 |goto Zul'Farrak - Dungeon -1,-1 |tip {dropsfrom}Shallow Grave, Zul'Farrak Zombie
+step
   note Bring the Tiara of the Deep to Tabetha in Dustwallow Marsh.
   collect Tiara of the Deep##9234 |q 2846 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Hydromancer Velratha
+step
+  note Slay Witch Doctor Zum'rah and bring Zum'rah's Head to Mazu'kon in Mulgore.
+  collect Zum'rah's Head##277112 |q 96775 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Witch Doctor Zum'rah
 step
   note Bring the Divino-matic Rod to Chief Engineer Bilgewhizzle in Gadgetzan.
   collect Divino-matic Rod##8548 |q 2768 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Sergeant Bly
@@ -52,8 +68,15 @@ step
   talk Trenton Lighthammer##7804
   turnin Troll Temper##3042 |goto Tanaris 51.41,28.75
 step
+  only Mage
+  talk Owen Thadd##211022
+  turnin A Lesson in Literacy##82084 |goto Undercity 73.4,33
+step
   talk Tabetha##6546
   turnin Tiara of the Deep##2846 |goto Dustwallow Marsh 46.06,57.09
+step
+  talk Mazu'kon##264074
+  turnin Zum'rah's Head##96775 |goto Mulgore 32.5,20.66
 step
   talk Chief Engineer Bilgewhizzle##7407
   turnin Divino-matic Rod##2768 |goto Tanaris 52.46,28.51

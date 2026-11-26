@@ -4,7 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Eastern Plaguelands (56-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "0830dc4f",
+	next = "Leveling/Horde/Moonglade (55-60)",
+	rev = "6c91e9e0",
 }, [[
 step
   ding 55
@@ -438,8 +439,6 @@ step
   note Bring Joseph's Key to Joseph's Chest.
   turnin Hidden Treasures##5942 |goto Eastern Plaguelands 30.92,77.78
 step
-  only completed(98109)
-  note Speak with Corswyn Aseril in Orgrimmar's Valley of Wisdom.
-  talk Corswyn Aseril##255679
-  turnin Orgrimmar's Windshapers##97988 |goto Orgrimmar 38.1,39.01 |tip {turninat}Orgrimmar
+  note {travel}Moonglade
+  goto Moonglade 56.21,30.64
 ]])

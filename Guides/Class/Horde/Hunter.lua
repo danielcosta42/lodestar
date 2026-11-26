@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Hunter", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "4ba26466",
+	rev = "d22ad658",
 }, [[
 step
   talk Gornek##3143
@@ -53,7 +53,7 @@ step
   turnin Etched Note##3092 |goto Mulgore 43.96,76.35
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -63,7 +63,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
@@ -200,7 +200,7 @@ step
 step
   only Skyborne Hunter
   note Use the Taming Rod to tame a Windsong Crawler found near bodies of water.
-  use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 52.75,59.49 |tip {useit}
+  use Windsong Crawler##254588 |q 94978 |goto Zephras Isle 52.45,60.55 |tip {useit}
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
@@ -212,29 +212,29 @@ step
 step
   only Skyborne Hunter
   note Use the Taming Rod to tame an Ornery Galestrider in the Gustberry Lowlands.
-  use Ornery Galestrider##251707 |q 94979 |goto Zephras Isle 55.34,72.96 |tip {useit}
+  use Ornery Galestrider##251707 |q 94979 |goto Zephras Isle 54.67,73.27 |tip {useit}
 step
   only Skyborne Hunter
   talk Quel'ana Quickgale##252389
   turnin Taming the Beast##94979 |goto Zephras Isle 59.56,72.63
 step
-  only Skyborne Hunter
+  only Skyborne Hunter not completed(6063) not haveq(6063)
   talk Quel'ana Quickgale##252389
   accept Taming the Beast##94013 |goto Zephras Isle 59.56,72.63
 step
-  only Skyborne Hunter
+  only Skyborne Hunter not completed(6063) not haveq(6063)
   note Use the Taming Rod to tame a Vuldren Alpha in the Gustberry Lowlands. Practice your skills, then return the Taming Rod to Quel'ana Quickgale in Valanaar.
-  use Vuldren Alpha##250874 |q 94013 |goto Zephras Isle 53.7,74.53 |tip {useit}
+  use Vuldren Alpha##250874 |q 94013 |goto Zephras Isle 53.95,75.77 |tip {useit}
 step
-  only Skyborne Hunter
+  only Skyborne Hunter not completed(6063) not haveq(6063)
   talk Quel'ana Quickgale##252389
   turnin Taming the Beast##94013 |goto Zephras Isle 59.56,72.63
 step
-  only Skyborne Hunter
+  only Skyborne Hunter not completed(6063) not haveq(6063)
   talk Quel'ana Quickgale##252389
   accept Training the Beast##94050 |goto Zephras Isle 59.56,72.63
 step
-  only Skyborne Hunter
+  only Skyborne Hunter not completed(6063) not haveq(6063)
   note Speak to Quel'dora Quickgale in Valanaar.
   talk Quel'dora Quickgale##254411
   turnin Training the Beast##94050 |goto Zephras Isle 59.92,72.87

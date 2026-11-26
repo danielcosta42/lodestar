@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Mage", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "1aaf46ae",
+	rev = "94fdcf28",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -51,7 +51,7 @@ step
   turnin Glyphic Letter##3104 |goto Elwynn Forest 49.66,39.4
 step
   talk Ailee Farheart##251362
-  accept Coming of Age##92460 |goto Zephras Isle 42.81,23.37
+  accept Coming of Age##92460 |goto Zephras Isle 42.82,23.36
 step
   note Speak with Rorian the Dayseeker in Thendal Grove.
   talk Rorian the Dayseeker##251361
@@ -61,7 +61,7 @@ step
   accept Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
 step
   note Slay 8 Vuldren Juveniles in Thendal Grove.
-  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.24,25.92
+  kill Juvenile Vuldren##250873 |q 92461 |goto Zephras Isle 45.23,25.98
 step
   talk Rorian the Dayseeker##251361
   turnin Harmony in Balance##92461 |goto Zephras Isle 42.05,23.49
@@ -126,6 +126,18 @@ step
   talk Belann Windwood##256507
   turnin Speak with Belann##93791 |goto Zephras Isle 62.89,77.44
 step
+  only Skyborne Mage
+  talk Belann Windwood##256507
+  accept Boughs in the Wind##93797 |goto Zephras Isle 62.89,77.44
+step
+  only Skyborne Mage
+  note Bring a Wind-Infused Bough to Belann Windwood in Valanaar.
+  collect Wind-Infused Bough##262668 |q 93797 |goto Zephras Isle 48.57,67.63
+step
+  only Skyborne Mage
+  talk Belann Windwood##256507
+  turnin Boughs in the Wind##93797 |goto Zephras Isle 62.89,77.44
+step
   only not Dwarf not NightElf not Skyborne Mage
   talk Zaldimar Wefhellt##328
   accept Report to Jennea##1919 |goto Elwynn Forest 43.25,66.19
@@ -149,16 +161,16 @@ step
   talk Jennea Cannon##5497
   turnin Investigate the Blue Recluse##1920 |goto Stormwind City 49.56,85.8
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   talk Jennea Cannon##5497
   accept Gathering Materials##1921 |goto Stormwind City 49.56,85.8
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   note Bring 10 Linen Cloth and the 6 Charged Rift Gems to Wynne Larson in Stormwind.
   collect 10 Linen Cloth##2589 |q 1921/1 |tip {dropsfrom}humanoids
   collect 6 Charged Rift Gem##7249 |q 1921 |goto Loch Modan 35.3,24.38 |tip {dropsfrom}Miners' League Crates
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   talk Wynne Larson##1309
   turnin Gathering Materials##1921 |goto Stormwind City 51.84,83.51
 step
@@ -179,27 +191,27 @@ step
   talk High Sorcerer Andromath##5694
   turnin High Sorcerer Andromath##1939 |goto Stormwind City 48.71,87.62
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   talk High Sorcerer Andromath##5694
   accept Ur's Treatise on Shadow Magic##1938 |goto Stormwind City 48.71,87.62
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   note Bring Ur's Treatise on Shadow Magic to High Sorcerer Andromath in Stormwind.
   collect Ur's Treatise on Shadow Magic##7266 |q 1938 |goto Redridge Mountains 73.77,47.61
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   talk High Sorcerer Andromath##5694
   turnin Ur's Treatise on Shadow Magic##1938 |goto Stormwind City 48.71,87.62
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   talk High Sorcerer Andromath##5694
   accept Pristine Spider Silk##1940 |goto Stormwind City 48.71,87.62
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   note Bring 8 Pristine Spider Silk to Wynne Larson in Stormwind.
   collect 8 Pristine Spider Silk##7267 |q 1940 |goto Duskwood 32.82,51.72 |tip {dropsfrom}Black Widow Hatchling, Carrion Recluse
 step
-  only not Dwarf not NightElf not Skyborne Mage
+  only not Dwarf not NightElf Mage
   talk Wynne Larson##1309
   turnin Pristine Spider Silk##1940 |goto Stormwind City 51.84,83.51
 step
@@ -346,7 +358,7 @@ step
 step
   only Mage
   note Bring 10 Glittering Dust to Archmage Xylem.
-  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer
+  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Arcanist
 step
   only Mage
   talk Archmage Xylem##8379
@@ -710,6 +722,18 @@ step
   only Mage
   talk Archmage Xylem##8379
   turnin Fragmented Magic##9364 |goto Azshara 29.25,40.21
+step
+  only Mage
+  talk Archmage Xylem##8379
+  accept Scalebeard##90789 |goto Azshara 29.25,40.21
+step
+  only Mage
+  note Retrieve the Prismatic Shell for Archmage Xylem.  The Archmage resides in a tower atop the cliffs of Azshara.
+  collect Prismatic Shell##23250 |q 90789 |goto Azshara 41.02,53.05 |tip {dropsfrom}Warlord Krellian, Scalebeard
+step
+  only Mage
+  talk Archmage Xylem##8379
+  turnin Scalebeard##90789 |goto Azshara 29.25,40.21
 step
   only Mage
   talk Lorekeeper Lydros##14368

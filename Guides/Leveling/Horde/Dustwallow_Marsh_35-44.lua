@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Dustwallow Marsh (35-44)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Hillsbrad Foothills (32-40)",
-	rev = "d4e10848",
+	next = "Leveling/Horde/Thousand Needles (37-41)",
+	rev = "7945b3a5",
 }, [[
 step
   ding 34
@@ -361,10 +361,6 @@ step
   talk "Plucky" Johnson##6626 |q 1950 |goto Thousand Needles 79.61,75.63
 step
   only Mage
-  talk Magus Tirth##6548
-  turnin Get the Scoop##1950 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
-step
-  only Mage
   note Bring an Infernal Orb to Tabetha in Dustwallow Marsh.
   collect Infernal Orb##7291 |q 1954 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
 step
@@ -384,6 +380,10 @@ step
   talk Tabetha##6546
   turnin The Exorcism##1955 |goto Dustwallow Marsh 46.06,57.09
 step
-  note {travel}Hillsbrad Foothills
-  goto Hillsbrad Foothills 62.76,20.21
+  only Mage
+  talk Magus Tirth##6548
+  turnin Get the Scoop##1950 |goto Thousand Needles 78.29,75.7 |tip {turninat}Thousand Needles
+step
+  note {travel}Thousand Needles
+  goto Thousand Needles 32.24,22.17
 ]])

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Blasted Lands (50-55)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Badlands (50-58)",
-	rev = "007bbe20",
+	next = "Leveling/Horde/Tanaris (50-54)",
+	rev = "881bb022",
 }, [[
 step
   ding 46
@@ -81,6 +81,6 @@ step
   talk Kum'isha the Collector##7363
   turnin Everything Counts In Large Amounts##3501 |goto Blasted Lands 51.98,35.65
 step
-  note {travel}Badlands
-  goto Badlands 3.36,48.06
+  note {travel}Tanaris
+  goto Tanaris 51.57,26.76
 ]])

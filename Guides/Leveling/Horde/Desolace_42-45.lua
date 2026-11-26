@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Desolace (42-45)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Tanaris (43-49)",
+	next = "Leveling/Horde/Tanaris (43-48)",
 	rev = "42043002",
 }, [[
 step

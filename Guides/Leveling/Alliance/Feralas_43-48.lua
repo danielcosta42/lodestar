@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Feralas (43-48)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Stranglethorn Vale (43-51)",
+	next = "Leveling/Alliance/Stranglethorn Vale (43-50)",
 	rev = "d681a57e",
 }, [[
 step

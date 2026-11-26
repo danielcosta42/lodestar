@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Desolace (33-40)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Dustwallow Marsh (35-44)",
-	rev = "cf387bc1",
+	rev = "8303ad81",
 }, [[
 step
   ding 32
@@ -82,23 +82,21 @@ step
   note Return the Burning Gem and 15 Infused Burning Gems to Maurin Bonesplitter in Desolace.
   collect 15 Infused Burning Gem##6435 |q 1435 |goto Desolace 55.95,27.4 |tip {dropsfrom}Burning Blade Augur, Burning Blade Reaver, Burning Blade Adept
 step
+  talk Azore Aldamort##11863
+  accept Sceptre of Light##5741 |goto Desolace 38.88,27.16
+step
+  note Get the Sceptre of Light and then return it to Azore Aldamort at the tower in Ethel Rethor.
+  collect Sceptre of Light##15750 |q 5741 |goto Desolace 55.17,30.15 |tip {dropsfrom}Burning Blade Seer
+step
   only hasitem(20310)
   use Flayed Demon Skin##20310 |tip It starts the quest.
   accept The Corrupter##1480
 step
-  only completed(1431)
-  note Slay 7 Hatefury Rogues, 7 Hatefury Felsworn, 7 Hatefury Betrayers, and 7 Hatefury Hellcallers, and return to Takata Steelblade in Desolace.
-  kill Hatefury Rogue##4670 |q 1434/1 |goto Desolace 73.55,19.11
-  kill Hatefury Felsworn##4672 |q 1434/2 |goto Desolace 74.73,19.86
-  kill Hatefury Hellcaller##4675 |q 1434/4 |goto Desolace 76.02,19.85
-  kill Hatefury Betrayer##4673 |q 1434 |goto Desolace 77.63,17.94
+  talk Azore Aldamort##11863
+  turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
 step
   talk Felgur Twocuts##5395
   turnin Khan Dez'hepah##1365 |goto Desolace 56.19,59.57
-step
-  only completed(1431)
-  talk Takata Steelblade##5641
-  turnin Befouled by Satyr##1434 |goto Desolace 52.57,54.39
 step
   only completed(1431)
   talk Maurin Bonesplitter##4498
@@ -111,10 +109,6 @@ step
 step
   talk Felgur Twocuts##5395
   accept Centaur Bounty##1366 |goto Desolace 56.19,59.57
-step
-  only completed(1431)
-  talk Takata Steelblade##5641
-  accept Alliance Relations##1436 |goto Desolace 52.57,54.39
 step
   only completed(1480)
   talk Maurin Bonesplitter##4498
@@ -133,28 +127,6 @@ step
   note Maintain your reputation with the Magram, and bring 3 Broken Tears to Warug in the Magram Village.
   collect 3 Broken Tears##6083 |q 1369 |goto Desolace 39.65,93.3 |tip {dropsfrom}Tear of Theradras
 step
-  note Bring 6 bags of Crudely Dried Meat to Uthek the Wise in the Gelkis Village.
-  collect 6 Crudely Dried Meat##6069 |q 1370 |goto Desolace 72.43,78.51 |tip {dropsfrom}Sack of Meat
-step
-  talk Warug##5398
-  turnin Broken Tears##1369 |goto Desolace 74.97,68.16
-step
-  only completed(1371)
-  talk Warug##5398
-  accept Khan Shaka##1375 |goto Desolace 74.97,68.16
-step
-  note Bring 15 Centaur Ears to Felgur Twocuts in Desolace.
-  collect 15 Centaur Ear##6067 |q 1366 |goto Desolace 69.35,46.87 |tip {dropsfrom}Kolkar Centaur, Kolkar Scout, Kolkar Mauler
-step
-  talk Felgur Twocuts##5395
-  turnin Centaur Bounty##1366 |goto Desolace 56.19,59.57
-step
-  talk Nataka Longhorn##11259
-  accept Catch of the Day##5386 |goto Desolace 55.41,55.81
-step
-  talk Uthek the Wise##5397
-  turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
-step
   note {fp}Thalon
   goto Desolace 21.6,74.13 |tip {vendor}
 step
@@ -164,17 +136,9 @@ step
   talk Mai'Lahii##12031
   accept Clam Bait##6142 |goto Desolace 22.64,71.97
 step
+  only level>=32
   talk Drulzegar Skraghook##12340
   accept Other Fish to Fry##6143 |goto Desolace 23.32,72.87
-step
-  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
-  collect 2 Bloodbelly Fish##13546 |q 5386 |goto Desolace 22.45,73.12 |tip {dropsfrom}Jinar'Zillen
-step
-  talk Nataka Longhorn##11259
-  turnin Catch of the Day##5386 |goto Desolace 55.41,55.81
-step
-  talk Azore Aldamort##11863
-  accept Sceptre of Light##5741 |goto Desolace 38.88,27.16
 step
   click Rackmore's Log##177787
   accept Claim Rackmore's Treasure!##6161 |goto Desolace 36.07,30.41
@@ -182,11 +146,18 @@ step
   note Find 10 pieces of Soft-shelled Clam Meat and bring it back to Mai'Lahii at Shadowprey Village.
   collect 10 Soft-shelled Clam Meat##15924 |q 6142 |goto Desolace 34.48,29.06 |tip {dropsfrom}Enraged Reef Crawler, Giant Softshell Clam
 step
-  note Get the Sceptre of Light and then return it to Azore Aldamort at the tower in Ethel Rethor.
-  collect Sceptre of Light##15750 |q 5741 |goto Desolace 55.17,30.15 |tip {dropsfrom}Burning Blade Seer
+  only haveq(6143)
+  note Slay 7 Slitherblade Myrmidon, 7 Slitherblade Naga, and 5 Slitherblade Sorceresses, and then talk to Drulzegar at Shadowprey in Desolace.
+  kill Slitherblade Sorceress##4712 |q 6143/3 |goto Desolace 32.94,23.32
+  kill Slitherblade Naga##4711 |q 6143/2 |goto Desolace 36.25,23.14
+  kill Slitherblade Myrmidon##4714 |q 6143 |goto Desolace 32.74,14.68
 step
-  talk Azore Aldamort##11863
-  turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
+  only completed(1431)
+  note Slay 7 Hatefury Rogues, 7 Hatefury Felsworn, 7 Hatefury Betrayers, and 7 Hatefury Hellcallers, and return to Takata Steelblade in Desolace.
+  kill Hatefury Rogue##4670 |q 1434/1 |goto Desolace 73.55,19.11
+  kill Hatefury Felsworn##4672 |q 1434/2 |goto Desolace 74.73,19.86
+  kill Hatefury Hellcaller##4675 |q 1434/4 |goto Desolace 76.02,19.85
+  kill Hatefury Betrayer##4673 |q 1434 |goto Desolace 77.63,17.94
 step
   only haveq(1481)
   note Bring a Shadowstalker Scalp to Maurin Bonesplitter in Desolace.
@@ -199,16 +170,47 @@ step
   kill Hatefury Trickster##4671 |q 97265/1 |goto Desolace 77.34,20.35
   kill Hatefury Rogue##4670 |q 97265 |goto Desolace 73.55,19.11
 step
+  note Bring 15 Centaur Ears to Felgur Twocuts in Desolace.
+  collect 15 Centaur Ear##6067 |q 1366 |goto Desolace 69.35,46.87 |tip {dropsfrom}Kolkar Centaur, Kolkar Scout, Kolkar Mauler
+step
+  talk Warug##5398
+  turnin Broken Tears##1369 |goto Desolace 74.97,68.16
+step
+  only completed(1371)
+  talk Warug##5398
+  accept Khan Shaka##1375 |goto Desolace 74.97,68.16
+step
+  note Bring 6 bags of Crudely Dried Meat to Uthek the Wise in the Gelkis Village.
+  collect 6 Crudely Dried Meat##6069 |q 1370 |goto Desolace 72.43,78.51 |tip {dropsfrom}Sack of Meat
+step
+  talk Felgur Twocuts##5395
+  turnin Centaur Bounty##1366 |goto Desolace 56.19,59.57
+step
+  only completed(1431)
+  talk Takata Steelblade##5641
+  turnin Befouled by Satyr##1434 |goto Desolace 52.57,54.39
+step
   only haveq(1481)
   talk Maurin Bonesplitter##4498
   turnin The Corrupter##1481 |goto Desolace 52.25,53.44
+step
+  only completed(1431)
+  talk Takata Steelblade##5641
+  accept Alliance Relations##1436 |goto Desolace 52.57,54.39
 step
   only completed(1481)
   talk Maurin Bonesplitter##4498
   accept The Corrupter##1482 |goto Desolace 52.25,53.44
 step
+  talk Nataka Longhorn##11259
+  accept Catch of the Day##5386 |goto Desolace 55.41,55.81
+step
   talk Mai'Lahii##12031
   turnin Clam Bait##6142 |goto Desolace 22.64,71.97
+step
+  only haveq(6143)
+  talk Drulzegar Skraghook##12340
+  turnin Other Fish to Fry##6143 |goto Desolace 23.32,72.87
 step
   talk Aka'rai##268705
   turnin Hate the Hatefury##97265 |goto Desolace 25.32,67.05
@@ -216,13 +218,15 @@ step
   talk Taiga Wisemane##11624
   accept Hand of Iruxos##5381 |goto Desolace 25.82,68.21
 step
+  note Talk to Jinar'Zillen at Shadowprey Village, and then bring Nataka Longhorn 2 Bloodbelly fish.
+  collect 2 Bloodbelly Fish##13546 |q 5386 |goto Desolace 22.45,73.12 |tip {dropsfrom}Jinar'Zillen
+step
   note Find Rackmore's Silver Key. Find Rackmore's Golden Key. Find and open Rackmore's Chest.
   collect Rackmore's Silver Key##15878 |q 6161/1 |goto Desolace 24.7,78.72 |tip {dropsfrom}Drysnap Crawler, Drysnap Pincer
   collect Rackmore's Golden Key##15881 |q 6161 |goto Desolace 36.25,23.14 |tip {dropsfrom}Slitherblade Naga, Slitherblade Sorceress, Slitherblade Warrior
 step
-  only completed(1371)
-  note Maintain your reputation with the Magram, and bring the Head of Khan Shaka to Warug in the Magram Village in Desolace.
-  collect Khan Shaka's Head##6073 |q 1375 |goto Desolace 40.49,95.49 |tip {dropsfrom}Khan Shaka
+  talk Uthek the Wise##5397
+  turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
 step
   talk Rigger Gizelton##11626
   accept Gizelton Caravan##5943 |goto Desolace 45.4,75.29
@@ -233,9 +237,8 @@ step
   talk Smeed Scrabblescrew##11596
   turnin Gizelton Caravan##5943 |goto Desolace 60.86,61.86
 step
-  only completed(1371)
-  talk Warug##5398
-  turnin Khan Shaka##1375 |goto Desolace 74.97,68.16
+  talk Nataka Longhorn##11259
+  turnin Catch of the Day##5386 |goto Desolace 55.41,55.81
 step
   note Retrieve the Demon Box from Thunder Axe Fortress, and return it, along with the Demon Pick to Taiga Wisemane in Shadowprey Village.
   collect Demon Box##13542 |q 5381 |goto Desolace 55,26.6 |tip {dropsfrom}Demon Spirit
@@ -246,11 +249,6 @@ step
   only haveq(1482)
   note Bring an Oracle Crystal to Maurin Bonesplitter in Desolace.
   collect Oracle Crystal##6442 |q 1482 |goto Desolace 33.89,10.15 |tip {dropsfrom}Slitherblade Oracle
-step
-  note Slay 7 Slitherblade Myrmidon, 7 Slitherblade Naga, and 5 Slitherblade Sorceresses, and then talk to Drulzegar at Shadowprey in Desolace.
-  kill Slitherblade Myrmidon##4714 |q 6143/1 |goto Desolace 32.74,14.68
-  kill Slitherblade Sorceress##4712 |q 6143/3 |goto Desolace 32.94,23.32
-  kill Slitherblade Naga##4711 |q 6143 |goto Desolace 36.25,23.14
 step
   turnin Claim Rackmore's Treasure!##6161 |goto Desolace 30,8.71
 step
@@ -263,19 +261,8 @@ step
   talk Taiga Wisemane##11624
   turnin Hand of Iruxos##5381 |goto Desolace 25.82,68.21
 step
-  talk Drulzegar Skraghook##12340
-  turnin Other Fish to Fry##6143 |goto Desolace 23.32,72.87
-step
   talk Taiga Wisemane##11624
   accept Portals of the Legion##5581 |goto Desolace 25.82,68.21
-step
-  only level>=34
-  talk Melizza Brimbuzzle##12277
-  accept Get Me Out of Here!##6132 |goto Desolace 33.95,53.5
-step
-  only haveq(6132)
-  note Escort Melizza Brimbuzzle, then speak with Hornizz Brimbuzzle at the Kodo Graveyard in Desolace.
-  goto Desolace 40.15,61.58 |tip Melizza Brimbuzzle escorted to safety
 step
   only haveq(1482)
   talk Maurin Bonesplitter##4498
@@ -290,10 +277,6 @@ step
   talk Takata Steelblade##5641
   turnin The Corrupter##1484 |goto Desolace 52.57,54.39
 step
-  only haveq(6132)
-  talk Hornizz Brimbuzzle##6019
-  turnin Get Me Out of Here!##6132 |goto Desolace 47.83,61.83
-step
   only level>=34
   talk Hornizz Brimbuzzle##6019
   accept Ghost-o-plasm Round Up##6134 |goto Desolace 47.83,61.83
@@ -305,11 +288,27 @@ step
   note Bring 8 Ghost-o-plasms and the Crate of Ghost Magnets to Hornizz Brimbuzzle in Desolace.
   collect 8 Ghost-o-plasm##15849 |q 6134 |goto Desolace 64.18,91.63 |tip {dropsfrom}Magrami Spectre
 step
+  only completed(1371)
+  note Maintain your reputation with the Magram, and bring the Head of Khan Shaka to Warug in the Magram Village in Desolace.
+  collect Khan Shaka's Head##6073 |q 1375 |goto Desolace 40.49,95.49 |tip {dropsfrom}Khan Shaka
+step
   talk Taiga Wisemane##11624
   turnin Portals of the Legion##5581 |goto Desolace 25.82,68.21
 step
+  only level>=34
+  talk Melizza Brimbuzzle##12277
+  accept Get Me Out of Here!##6132 |goto Desolace 33.95,53.5
+step
+  only haveq(6132)
+  note Escort Melizza Brimbuzzle, then speak with Hornizz Brimbuzzle at the Kodo Graveyard in Desolace.
+  goto Desolace 40.15,61.58 |tip Melizza Brimbuzzle escorted to safety
+step
   talk Bibbly F'utzbuckle##11438
   accept Bone Collector##5501 |goto Desolace 62.33,38.99
+step
+  only haveq(6132)
+  talk Hornizz Brimbuzzle##6019
+  turnin Get Me Out of Here!##6132 |goto Desolace 47.83,61.83
 step
   only haveq(6134)
   talk Hornizz Brimbuzzle##6019
@@ -320,6 +319,10 @@ step
 step
   talk Bibbly F'utzbuckle##11438
   turnin Bone Collector##5501 |goto Desolace 62.33,38.99
+step
+  only completed(1371)
+  talk Warug##5398
+  turnin Khan Shaka##1375 |goto Desolace 74.97,68.16
 step
   only completed(93464)
   talk Azore Aldamort##11863
@@ -337,14 +340,14 @@ step
   note Acquire 5 Carved Centaur Totems by slaying centaur of any clan throughout Desolace, then return them to Gurda Wildmane at Ghost Walker Post.
   collect 5 Carved Centaur Totem##254432 |q 93225 |goto Desolace 69.35,46.87 |tip {dropsfrom}Kolkar Centaur, Kolkar Scout, Kolkar Mauler
 step
-  only completed(93464)
-  note Take Gimashi's notes on Draenethyst, and bring them back to Azore Aldamort.
-  collect Gimashi's Findings##258774 |q 93465 |goto Desolace 80.14,76.36 |tip {dropsfrom}Gimashi
-step
   only haveq(1488)
   note Slay Lord Azrethoc and Jugkar Grim'rod and return to Takata Steelblade in Desolace.
   kill Lord Azrethoc##5760 |q 1488/1 |goto Desolace 56.95,75.74 |elite
   kill Jugkar Grim'rod##5771 |q 1488 |goto Desolace 55.91,77.76
+step
+  only completed(93464)
+  note Take Gimashi's notes on Draenethyst, and bring them back to Azore Aldamort.
+  collect Gimashi's Findings##258774 |q 93465 |goto Desolace 80.14,76.36 |tip {dropsfrom}Gimashi
 step
   only haveq(1488)
   talk Takata Steelblade##5641
@@ -370,6 +373,40 @@ step
   note Maintain your reputation with the Magram and perform a necromancy ritual to resurrect Khan Jehn. The ritual site can be found in a tent at the central lake of Magram Village.
   talk Khan Jehn##254357
   turnin Khan Jehn##93196 |goto Desolace 73.83,73.89
+step
+  only completed(1431)
+  note Speak to Keldran in Orgrimmar.
+  talk Keldran##5640
+  turnin Alliance Relations##1436 |goto Orgrimmar 22.56,52.63 |tip {turninat}Orgrimmar
+step
+  only Warlock not completed(4965) not completed(4968) not completed(4969) not haveq(4965) not haveq(4968) not haveq(4969) level>=35
+  talk Zevrost##3326
+  accept Knowledge of the Orb of Orahil##4967 |goto Orgrimmar 48.47,45.43
+step
+  only Warlock not completed(4965) not completed(4968) not completed(4969) not haveq(4965) not haveq(4968) not haveq(4969) haveq(4967)
+  note Speak to Menara Voidrender in the Barrens.
+  talk Menara Voidrender##6266
+  turnin Knowledge of the Orb of Orahil##4967 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
+step
+  only Warlock level>=35
+  talk Menara Voidrender##6266
+  accept Fragments of the Orb of Orahil##1799 |goto The Barrens 62.51,35.45
+step
+  only Warlock not completed(4963) not haveq(4963) level>=35
+  talk Acolyte Wytula##6254
+  accept Shard of a Felhound##4962 |goto The Barrens 62.64,35.3
+step
+  only Warlock not completed(4963) not haveq(4963) haveq(4962)
+  note Take the Felhas Ruby and use it on one of the Felhounds found in Desolace. After successful, bring the Felhas Ruby and the Imprisoned Felhound Spirit back to Menara Voidrender in the Barrens.
+  collect Imprisoned Felhound Spirit##12648 |q 4962 |goto Desolace 52.91,68.14 |tip {dropsfrom}Mana Eater
+step
+  only Warlock haveq(1799)
+  note Speak to Menara's acolytes inside the tower above Ratchet and choose one of their paths to follow.
+  collect Infernal Orb##7291 |q 1799 |goto Desolace 80.47,77.84 |tip {dropsfrom}Burning Blade Summoner
+step
+  only Warlock not completed(4963) not haveq(4963) haveq(4962)
+  talk Menara Voidrender##6266
+  turnin Shard of a Felhound##4962 |goto The Barrens 62.51,35.45 |tip {turninat}The Barrens
 step
   only completed(92873) haveq(92893)
   note Maintain your reputation with the Magram Clan, and slay 5 Gelkis Captives scattered around the Valley of Bones. Return to Orgrul after the task is complete.
@@ -403,25 +440,32 @@ step
   talk Uthek the Wise##5397
   turnin Khan Jehn##93128 |goto Desolace 36.22,79.25
 step
-  only Tauren not completed(95511) not completed(96982) not completed(96989) not completed(96994) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(98166) not completed(99326) not haveq(95511) not haveq(96982) not haveq(96989) not haveq(96994) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(98166) not haveq(99326) level>=40
-  talk Tylana Clawhoof##269152
-  accept Your First Riding Kodo##97446 |goto Stonetalon Mountains 46.07,59.87
+  only Tauren not completed(95511) not completed(96989) not completed(96994) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(97446) not completed(98166) not completed(99326) not haveq(95511) not haveq(96989) not haveq(96994) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(97446) not haveq(98166) not haveq(99326) level>=40
+  talk Harb Clawhoof##3685
+  accept Your First Riding Kodo##96982 |goto Mulgore 46.65,62.08
 step
-  only Tauren not completed(95511) not completed(96982) not completed(96989) not completed(96994) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(98166) not completed(99326) not haveq(95511) not haveq(96982) not haveq(96989) not haveq(96994) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(98166) not haveq(99326) haveq(97446)
+  only Tauren not completed(97018) not completed(97074) not completed(97170) not completed(97188) not completed(97194) not completed(97200) not completed(97203) not completed(97205) not haveq(97018) not haveq(97074) not haveq(97170) not haveq(97188) not haveq(97194) not haveq(97200) not haveq(97203) not haveq(97205) level>=40
+  talk Kar Stormsinger##3690
+  accept Learning to Ride##97204 |goto Mulgore 46.79,61.97
+step
+  only Tauren not completed(95511) not completed(96989) not completed(96994) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(97446) not completed(98166) not completed(99326) not haveq(95511) not haveq(96989) not haveq(96994) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(97446) not haveq(98166) not haveq(99326) haveq(96982)
   note Inspect the riding kodos to choose your first mount.
-  kill Grey Riding Kodo##269139 |q 97446/1 |goto Stonetalon Mountains 46.18,59.81
-  kill White Riding Kodo##269138 |q 97446/3 |goto Stonetalon Mountains 46.11,59.8
-  kill Brown Riding Kodo##269140 |q 97446/2 |goto Stonetalon Mountains 46.28,59.8
-  kill Lavender Riding Kodo##269141 |q 97446 |goto Stonetalon Mountains 46.36,59.8
+  kill Grey Riding Kodo##267226 |q 96982/1 |goto Mulgore 46.86,61.99
+  kill White Riding Kodo##267216 |q 96982/3 |goto Mulgore 46.9,61.98
+  talk Brown Riding Kodo##267227 |q 96982 |goto Mulgore 46.81,62
 step
-  only Tauren not completed(95511) not completed(96982) not completed(96989) not completed(96994) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(98166) not completed(99326) not haveq(95511) not haveq(96982) not haveq(96989) not haveq(96994) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(98166) not haveq(99326) haveq(97446)
-  talk Tylana Clawhoof##269152
-  turnin Your First Riding Kodo##97446 |goto Stonetalon Mountains 46.07,59.87 |tip {turninat}Stonetalon Mountains
+  only Tauren not completed(95511) not completed(96989) not completed(96994) not completed(96996) not completed(96997) not completed(97017) not completed(97045) not completed(97046) not completed(97171) not completed(97446) not completed(98166) not completed(99326) not haveq(95511) not haveq(96989) not haveq(96994) not haveq(96996) not haveq(96997) not haveq(97017) not haveq(97045) not haveq(97046) not haveq(97171) not haveq(97446) not haveq(98166) not haveq(99326) haveq(96982)
+  talk Harb Clawhoof##3685
+  turnin Your First Riding Kodo##96982 |goto Mulgore 46.65,62.08 |tip {turninat}Mulgore
 step
-  only completed(1431)
-  note Speak to Keldran in Orgrimmar.
-  talk Keldran##5640
-  turnin Alliance Relations##1436 |goto Orgrimmar 22.56,52.63 |tip {turninat}Orgrimmar
+  only Tauren not completed(97018) not completed(97074) not completed(97170) not completed(97188) not completed(97194) not completed(97200) not completed(97203) not completed(97205) not haveq(97018) not haveq(97074) not haveq(97170) not haveq(97188) not haveq(97194) not haveq(97200) not haveq(97203) not haveq(97205) haveq(97204)
+  note Learn the Apprentice Riding skill from Kar Stormsinger.
+  talk Harb Clawhoof##3685
+  turnin Learning to Ride##97204 |goto Mulgore 46.65,62.08 |tip {turninat}Mulgore
+step
+  only Warlock haveq(1799)
+  talk Tabetha##6546
+  turnin Fragments of the Orb of Orahil##1799 |goto Dustwallow Marsh 46.06,57.09 |tip {turninat}Dustwallow Marsh
 step
   note {travel}Dustwallow Marsh
   goto Dustwallow Marsh 35.21,30.66

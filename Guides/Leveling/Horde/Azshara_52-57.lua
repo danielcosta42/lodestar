@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Azshara (52-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Felwood (52-56)",
-	rev = "b9d4f75c",
+	next = "Leveling/Horde/Felwood (52-57)",
+	rev = "846bfc44",
 }, [[
 step
   ding 51
@@ -33,26 +33,26 @@ step
   talk Belgrom Rockmaul##4485
   accept Betrayed##3504 |goto Orgrimmar 75.23,34.24
 step
+  talk Eitrigg##3144
+  accept The Missing Kor'kron##95283 |goto Orgrimmar 34.28,39.35
+step
+  talk Nazeer Bloodpike##4791
+  accept The Elite of the Elite##95284 |goto Dustwallow Marsh 35.21,30.66
+step
   talk Loh'atu##11548
   accept Spiritual Unrest##5535 |goto Azshara 11.37,78.17
 step
   talk Loh'atu##11548
   accept A Land Filled with Hatred##5536 |goto Azshara 11.37,78.17
 step
+  note Destroy 6 Highborne Apparitions and 6 Highborne Lichlings before returning to Loh'atu in Azshara.
+  kill Highborne Apparition##6116 |q 5535/1 |goto Azshara 17.27,70.71
+  kill Highborne Lichling##6117 |q 5535 |goto Azshara 17.85,69.96
+step
   note Kill 6 Haldarr Satyr, 2 Haldarr Tricksters, 2 Haldarr Felsworn and then return to Loh'atu on the border of Ashenvale.
   kill Haldarr Trickster##6126 |q 5536/2 |goto Azshara 20.27,62.23
   kill Haldarr Satyr##6125 |q 5536/1 |goto Azshara 20.99,61.79
   kill Haldarr Felsworn##6127 |q 5536 |goto Azshara 20.54,61.2
-step
-  note Destroy 6 Highborne Apparitions and 6 Highborne Lichlings before returning to Loh'atu in Azshara.
-  kill Highborne Lichling##6117 |q 5535/2 |goto Azshara 17.85,69.96
-  kill Highborne Apparition##6116 |q 5535 |goto Azshara 17.27,70.71
-step
-  talk Loh'atu##11548
-  turnin Spiritual Unrest##5535 |goto Azshara 11.37,78.17
-step
-  talk Loh'atu##11548
-  turnin A Land Filled with Hatred##5536 |goto Azshara 11.37,78.17
 step
   note {fp}Kroum
   goto Azshara 21.96,49.62 |tip {vendor}
@@ -124,14 +124,89 @@ step
   talk Ekkal##235903
   accept Report to Rageroar##86752 |goto Azshara 42,38.88
 step
+  only Rogue completed(8234)
+  talk Archmage Xylem##8379
+  accept Encoded Fragments##8235 |goto Azshara 29.25,40.21
+step
+  only Mage
+  talk Archmage Xylem##8379
+  accept Magic Dust##8251 |goto Azshara 29.25,40.21
+step
+  talk Jediga##8587
+  turnin Stealing Knowledge##3517 |goto Azshara 22.56,51.42
+step
+  only not completed(89001) not haveq(89001)
+  talk Kurll##3621
+  turnin Home on the Range##91488 |goto Azshara 21.82,52.1
+step
+  talk Izvi Gildfizz##247473
+  turnin Long Walks on the Beach##91568 |goto Azshara 22.46,51.89
+step
+  only not completed(89013) not haveq(89013)
+  talk Kurll##3621
+  accept Gettin' Buzzed##91608 |goto Azshara 21.82,52.1
+step
+  talk Jediga##8587
+  accept Delivery to Magatha##3518 |goto Azshara 22.56,51.42
+step
+  talk Jediga##8587
+  accept Delivery to Jes'rimon##3541 |goto Azshara 22.56,51.42
+step
+  talk Jediga##8587
+  accept Delivery to Andron Gant##3542 |goto Azshara 22.56,51.42
+step
+  talk Jediga##8587
+  accept Delivery to Archmage Xylem##3561 |goto Azshara 22.56,51.42
+step
+  only not completed(89013) not haveq(89013)
+  note Gather 5 Wild Honey from Wasp Nests using Kurll's Pellet Gun.
+  collect 5 Wild Honey##238503 |q 91608 |goto Azshara 18.94,55.21 |tip {dropsfrom}Honey Wasp
+step
+  only not completed(89013) not haveq(89013)
+  talk Kurll##3621
+  turnin Gettin' Buzzed##91608 |goto Azshara 21.82,52.1
+step
+  note Bring the Tablet of Sael'hai to Archmage Xylem in Azshara.
+  talk Archmage Xylem##8379
+  turnin Delivery to Archmage Xylem##3561 |goto Azshara 29.25,40.21
+step
+  talk Archmage Xylem##8379
+  accept Xylem's Payment to Jediga##3565 |goto Azshara 29.25,40.21
+step
+  note Deliver Xylem's Note to Jediga in Azshara.
+  talk Jediga##8587
+  turnin Xylem's Payment to Jediga##3565 |goto Azshara 22.56,51.42
+step
+  talk Loh'atu##11548
+  turnin Spiritual Unrest##5535 |goto Azshara 11.37,78.17
+step
+  talk Loh'atu##11548
+  turnin A Land Filled with Hatred##5536 |goto Azshara 11.37,78.17
+step
+  only Hunter
+  note Bring a pair of Perfect Courser Antlers to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast of the Ruins of Eldarath.
+  collect Perfect Courser Antler##20017 |q 8153 |goto Azshara 50.78,75.64 |tip {dropsfrom}Mosshoof Courser
+step
+  only Priest
+  note Acquire 4 Healthy Courser Glands and bring them to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
+  collect 4 Healthy Courser Gland##20027 |q 8255 |goto Azshara 50.78,75.64 |tip {dropsfrom}Mosshoof Courser
+step
   note Kill 10 Blood Elf Reclaimers, and 10 Blood Elf Surveyors before seeking out Magus Rimtori's camp. Once you've found it, look for something that might be important to her that can be used to draw her into a fight.
   kill Blood Elf Reclaimer##6199 |q 3505/1 |goto Azshara 56.39,28.85
   kill Blood Elf Surveyor##6198 |q 3505 |goto Azshara 58.02,28.18
+step
+  only Mage
+  note Bring 10 Glittering Dust to Archmage Xylem.
+  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Arcanist
 step
   turnin Betrayed##3505 |goto Azshara 59.51,31.3
 step
   talk Sin'dorei Tome of Summoning##247449
   accept Seals of the Sin'dorei##91497 |goto Azshara 59.52,31.31
+step
+  only Rogue completed(8234)
+  note Bring 10 Encoded Fragments to Archmage Xylem in Azshara.
+  collect 10 Encoded Fragment##20023 |q 8235 |goto Azshara 71.73,29.47 |tip {dropsfrom}Forest Ooze
 step
   note Bring the Seal of the Warden, Seal of the Warrior, and Seal of the Ranger to the Sin'dorei Tome of Summoning.
   collect Seal of the Warrior##246721 |q 91497/2 |goto Azshara 56.41,27.64 |tip {dropsfrom}Magister Hawkhelm
@@ -165,6 +240,9 @@ step
   talk Korsa##236770
   accept Return to Rageroar##86797 |goto Azshara 63.01,21.43
 step
+  talk Korsa##236770
+  accept Thinning Their Forces##86792 |goto Azshara 63.01,21.43
+step
   only Warlock not completed(8420) not haveq(8420)
   note Bring a piece of felcloth to Impsy in Felwood.
   collect Felcloth##14256 |q 8419 |goto Azshara 61.79,23.59 |tip {dropsfrom}Legashi Satyr, Legashi Rogue, Legashi Hellcaller
@@ -177,6 +255,11 @@ step
   note Kill Master Feardred, and bring his amulet to Korsa.
   collect Feardred's Amulet##235334 |q 86777 |goto Azshara 61.35,25.05 |tip {dropsfrom}Master Feardred
 step
+  note Kill 6 Legashi Hellraisers, 4 Legashi Soulstealers, and 2 Legashi Blackguards for Korsa outside Legashi Stronghold.
+  kill Legashi Hellraiser##236874 |q 86792/1 |goto Azshara 65.66,18.6
+  kill Legashi Soulstealer##236867 |q 86792/2 |goto Azshara 65.74,18.58
+  kill Legashi Blackguard##236876 |q 86792 |goto Azshara 65.57,18.12
+step
   note Find a Legashi Firewater Recipe from satyr in the Legashi Encampment.
   collect Legashi Firewater Recipe##235645 |q 86925 |goto Azshara 61.79,23.59 |tip {dropsfrom}Legashi Satyr, Legashi Rogue, Legashi Hellcaller
 step
@@ -186,14 +269,6 @@ step
 step
   talk Korsa##236770
   turnin Master Feardred##86777 |goto Azshara 63.01,21.43
-step
-  talk Korsa##236770
-  accept Thinning Their Forces##86792 |goto Azshara 63.01,21.43
-step
-  note Kill 6 Legashi Hellraisers, 4 Legashi Soulstealers, and 2 Legashi Blackguards for Korsa outside Legashi Stronghold.
-  kill Legashi Hellraiser##236874 |q 86792/1 |goto Azshara 65.66,18.6
-  kill Legashi Soulstealer##236867 |q 86792/2 |goto Azshara 65.74,18.58
-  kill Legashi Blackguard##236876 |q 86792 |goto Azshara 65.57,18.12
 step
   talk Korsa##236770
   turnin Thinning Their Forces##86792 |goto Azshara 63.01,21.43
@@ -266,131 +341,6 @@ step
   note Break the Seals of the Sin'dorei, then bring Magus Rimtori's head to Ag'tor Bloodfist in Valormok.
   collect Head of Magus Rimtori##10597 |q 91500 |goto Azshara 59.51,31.37 |tip {dropsfrom}Magus Rimtori
 step
-  talk Ekkal##235903
-  turnin The Legashi Threat##86746 |goto Azshara 42,38.88
-step
-  note Find Some Rune that the naga have in their possession in the Ruins of Eldarath and return it to Kim'jael in Azshara.
-  collect Some Rune##13815 |q 5534 |goto Azshara 44.37,53.93 |tip {dropsfrom}Spitelash Siren, Spitelash Myrmidon, Spitelash Battlemaster
-step
-  talk Jediga##8587
-  turnin Stealing Knowledge##3517 |goto Azshara 22.56,51.42
-step
-  only not completed(89001) not haveq(89001)
-  talk Kurll##3621
-  turnin Home on the Range##91488 |goto Azshara 21.82,52.1
-step
-  talk Ag'tor Bloodfist##8576
-  turnin An Explosive Gambit##91500 |goto Azshara 22.26,51.48
-step
-  note Bring the Sin'dorei Tome of Summoning back to Jediga in Valormok.
-  talk Jediga##8587
-  turnin Sin'dorei Tome of Summoning##91538 |goto Azshara 22.56,51.42
-step
-  talk Izvi Gildfizz##247473
-  turnin Long Walks on the Beach##91568 |goto Azshara 22.46,51.89
-step
-  talk Izvi Gildfizz##247473
-  turnin Blue Gold##91569 |goto Azshara 22.46,51.89
-step
-  only not completed(89013) not haveq(89013)
-  talk Kurll##3621
-  accept Gettin' Buzzed##91608 |goto Azshara 21.82,52.1
-step
-  talk Jediga##8587
-  accept Delivery to Magatha##3518 |goto Azshara 22.56,51.42
-step
-  talk Jediga##8587
-  accept Delivery to Jes'rimon##3541 |goto Azshara 22.56,51.42
-step
-  talk Jediga##8587
-  accept Delivery to Andron Gant##3542 |goto Azshara 22.56,51.42
-step
-  talk Jediga##8587
-  accept Delivery to Archmage Xylem##3561 |goto Azshara 22.56,51.42
-step
-  only level>=54
-  talk Izvi Gildfizz##247473
-  accept Ley of the Land##91685 |goto Azshara 22.46,51.89
-step
-  talk Ag'tor Bloodfist##8576
-  accept Revenge Exacted##91531 |goto Azshara 22.26,51.48
-step
-  talk Jediga##8587
-  accept Sin'dorei Tome of Summoning##91547 |goto Azshara 22.56,51.42
-step
-  only not completed(92345) not haveq(92345)
-  talk Jediga##8587
-  accept Beneath Nordrassil##92346 |goto Azshara 22.56,51.42
-step
-  only not completed(89013) not haveq(89013)
-  note Gather 5 Wild Honey from Wasp Nests using Kurll's Pellet Gun.
-  collect 5 Wild Honey##238503 |q 91608 |goto Azshara 18.94,55.21 |tip {dropsfrom}Honey Wasp
-step
-  only not completed(89013) not haveq(89013)
-  talk Kurll##3621
-  turnin Gettin' Buzzed##91608 |goto Azshara 21.82,52.1
-step
-  note Bring the Tablet of Sael'hai to Archmage Xylem in Azshara.
-  talk Archmage Xylem##8379
-  turnin Delivery to Archmage Xylem##3561 |goto Azshara 29.25,40.21
-step
-  talk Archmage Xylem##8379
-  accept Xylem's Payment to Jediga##3565 |goto Azshara 29.25,40.21
-step
-  only Rogue completed(8234)
-  talk Archmage Xylem##8379
-  accept Encoded Fragments##8235 |goto Azshara 29.25,40.21
-step
-  only Mage
-  talk Archmage Xylem##8379
-  accept Magic Dust##8251 |goto Azshara 29.25,40.21
-step
-  note Deliver Xylem's Note to Jediga in Azshara.
-  talk Jediga##8587
-  turnin Xylem's Payment to Jediga##3565 |goto Azshara 22.56,51.42
-step
-  only level>=56
-  talk Kurll##3621
-  accept Deadliest Catch##91611 |goto Azshara 21.82,52.1
-step
-  only haveq(91685)
-  note Use the Mana-Siphoning Wand on the Leyline Rift in Lake Mennar and bring the Tear of Mennar to Izvi Gildfizz.
-  kill Celegosa##247972 |q 91685 |goto Azshara 40.49,80.02 |elite
-  collect Tear of Mennar##246938 |q 91685 |goto Azshara 40.49,80.02
-step
-  only Hunter
-  note Bring a pair of Perfect Courser Antlers to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast of the Ruins of Eldarath.
-  collect Perfect Courser Antler##20017 |q 8153 |goto Azshara 50.78,75.64 |tip {dropsfrom}Mosshoof Courser
-step
-  only Priest
-  note Acquire 4 Healthy Courser Glands and bring them to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
-  collect 4 Healthy Courser Gland##20027 |q 8255 |goto Azshara 50.78,75.64 |tip {dropsfrom}Mosshoof Courser
-step
-  note Use the Satyrweed Tincture on 3 Mosshoof Coursers or Thunderhead Skystormers after weakening them.
-  use Mosshoof Courser##8761 |q 86812 |goto Azshara 50.78,75.64 |tip {useit}
-step
-  only haveq(91611)
-  note Bring a Mammoth Shark Steak to Kurll at Valormok.
-  kill Mammoth Shark##12125 |q 91611 |goto Azshara 76.28,74.94 |elite
-  collect Mammoth Shark Steak##238507 |q 91611 |goto Azshara 76.28,74.94
-step
-  only Rogue completed(8234)
-  note Bring 10 Encoded Fragments to Archmage Xylem in Azshara.
-  collect 10 Encoded Fragment##20023 |q 8235 |goto Azshara 71.73,29.47 |tip {dropsfrom}Forest Ooze
-step
-  talk Kim'jael##8420
-  turnin Kim'jael's "Missing" Equipment##5534 |goto Azshara 53.45,21.82
-step
-  click Kaldorei Tome of Summoning##151286
-  accept Betrayed##3506 |goto Azshara 59.51,31.3
-step
-  note Destroy the arcane focusing crystal tied to Magus Rimtori and then slay her. Afterwards, take the Head of Magus Rimtori to Ag'tor Bloodfist in Azshara.
-  collect Head of Magus Rimtori##10597 |q 3506 |goto Azshara 59.51,31.37 |tip {dropsfrom}Magus Rimtori
-step
-  only Mage
-  note Bring 10 Glittering Dust to Archmage Xylem.
-  collect 10 Glittering Dust##20028 |q 8251 |goto Azshara 58.02,28.18 |tip {dropsfrom}Blood Elf Surveyor, Blood Elf Reclaimer, Blood Elf Arcanist
-step
   only Hunter
   talk Ogtinc##8405
   turnin Courser Antlers##8153 |goto Azshara 42.4,42.62
@@ -398,6 +348,9 @@ step
   only Priest
   talk Ogtinc##8405
   turnin Of Coursers We Know##8255 |goto Azshara 42.4,42.62
+step
+  talk Ekkal##235903
+  turnin The Legashi Threat##86746 |goto Azshara 42,38.88
 step
   only Hunter
   talk Ogtinc##8405
@@ -420,22 +373,43 @@ step
   accept The Siren's Coral##8252 |goto Azshara 29.25,40.21
 step
   talk Ag'tor Bloodfist##8576
-  turnin Betrayed##3506 |goto Azshara 22.26,51.48
+  turnin An Explosive Gambit##91500 |goto Azshara 22.26,51.48
 step
-  only haveq(91611)
-  talk Kurll##3621
-  turnin Deadliest Catch##91611 |goto Azshara 21.82,52.1
+  note Bring the Sin'dorei Tome of Summoning back to Jediga in Valormok.
+  talk Jediga##8587
+  turnin Sin'dorei Tome of Summoning##91538 |goto Azshara 22.56,51.42
 step
-  only haveq(91685)
   talk Izvi Gildfizz##247473
-  turnin Ley of the Land##91685 |goto Azshara 22.46,51.89
+  turnin Blue Gold##91569 |goto Azshara 22.46,51.89
+step
+  only level>=54
+  talk Izvi Gildfizz##247473
+  accept Ley of the Land##91685 |goto Azshara 22.46,51.89
 step
   talk Ag'tor Bloodfist##8576
-  accept Betrayed##3507 |goto Azshara 22.26,51.48
+  accept Revenge Exacted##91531 |goto Azshara 22.26,51.48
+step
+  talk Jediga##8587
+  accept Sin'dorei Tome of Summoning##91547 |goto Azshara 22.56,51.42
+step
+  only not completed(92345) not haveq(92345)
+  talk Jediga##8587
+  accept Beneath Nordrassil##92346 |goto Azshara 22.56,51.42
 step
   only Priest
   note Acquire an Ichor of Undeath for Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
   collect Ichor of Undeath##7972 |q 8256 |goto Azshara 17.27,70.71 |tip {dropsfrom}Highborne Apparition, Highborne Lichling, Lingering Highborne
+step
+  only haveq(91685)
+  note Use the Mana-Siphoning Wand on the Leyline Rift in Lake Mennar and bring the Tear of Mennar to Izvi Gildfizz.
+  kill Celegosa##247972 |q 91685 |goto Azshara 40.49,80.02 |elite
+  collect Tear of Mennar##246938 |q 91685 |goto Azshara 40.49,80.02
+step
+  note Use the Satyrweed Tincture on 3 Mosshoof Coursers or Thunderhead Skystormers after weakening them.
+  use Mosshoof Courser##8761 |q 86812 |goto Azshara 50.78,75.64 |tip {useit}
+step
+  note Find Some Rune that the naga have in their possession in the Ruins of Eldarath and return it to Kim'jael in Azshara.
+  collect Some Rune##13815 |q 5534 |goto Azshara 44.37,53.93 |tip {dropsfrom}Spitelash Siren, Spitelash Myrmidon, Spitelash Battlemaster
 step
   only Mage
   note Collect 6 Enchanted Coral and return them to Archmage Xylem.
@@ -444,6 +418,10 @@ step
   only Priest
   talk Ogtinc##8405
   turnin The Ichor of Undeath##8256 |goto Azshara 42.4,42.62
+step
+  only haveq(91685)
+  talk Izvi Gildfizz##247473
+  turnin Ley of the Land##91685 |goto Azshara 22.46,51.89
 step
   only Mage
   talk Archmage Xylem##8379
@@ -477,6 +455,9 @@ step
   talk Lorekeeper Nok##249853
   turnin The Twin Bears##92066 |goto Azshara 41.31,20.1
 step
+  talk Kim'jael##8420
+  turnin Kim'jael's "Missing" Equipment##5534 |goto Azshara 53.45,21.82
+step
   only Hunter
   note Bring 6 Wavethrasher Scales to Ogtinc in Azshara. Ogtinc resides atop the cliffs northeast the Ruins of Eldarath.
   collect 6 Wavethrasher Scales##20087 |q 8231 |goto Azshara 86.31,12.61 |tip {dropsfrom}Young Wavethrasher, Wavethrasher, Great Wavethrasher
@@ -484,6 +465,31 @@ step
   only Hunter
   talk Ogtinc##8405
   turnin Wavethrashing##8231 |goto Azshara 42.4,42.62
+step
+  click Kaldorei Tome of Summoning##151286
+  accept Betrayed##3506 |goto Azshara 59.51,31.3
+step
+  note Destroy the arcane focusing crystal tied to Magus Rimtori and then slay her. Afterwards, take the Head of Magus Rimtori to Ag'tor Bloodfist in Azshara.
+  collect Head of Magus Rimtori##10597 |q 3506 |goto Azshara 59.51,31.37 |tip {dropsfrom}Magus Rimtori
+step
+  talk Ag'tor Bloodfist##8576
+  turnin Betrayed##3506 |goto Azshara 22.26,51.48
+step
+  talk Ag'tor Bloodfist##8576
+  accept Betrayed##3507 |goto Azshara 22.26,51.48
+step
+  only level>=56
+  talk Kurll##3621
+  accept Deadliest Catch##91611 |goto Azshara 21.82,52.1
+step
+  only haveq(91611)
+  note Bring a Mammoth Shark Steak to Kurll at Valormok.
+  kill Mammoth Shark##12125 |q 91611 |goto Azshara 76.28,74.94 |elite
+  collect Mammoth Shark Steak##238507 |q 91611 |goto Azshara 76.28,74.94
+step
+  only haveq(91611)
+  talk Kurll##3621
+  turnin Deadliest Catch##91611 |goto Azshara 21.82,52.1
 step
   only completed(2744)
   talk Loramus Thalipedes##7783
@@ -545,31 +551,6 @@ step
   talk Ogtinc##8405
   turnin Claws That Rend, Tusks that Gore##92069 |goto Azshara 42.4,42.62
 step
-  only completed(2744) haveq(3510)
-  talk Lord Arkkoroc##6134
-  turnin The Name of the Beast##3510 |goto Azshara 77.13,42.79
-step
-  only completed(2744) completed(3510)
-  talk Lord Arkkoroc##6134
-  accept The Name of the Beast##3511 |goto Azshara 77.13,42.79
-step
-  only completed(2744) haveq(3511)
-  note Take the temper back to Loramus Thalipedes.
-  talk Loramus Thalipedes##7783
-  turnin The Name of the Beast##3511 |goto Azshara 60.82,66.35
-step
-  only completed(2744) completed(3511)
-  talk Loramus Thalipedes##7783
-  accept Azsharite##3602 |goto Azshara 60.82,66.35
-step
-  only completed(2744) haveq(3602)
-  note Recover twenty Crystallized Azsharite from southern Azshara. You may use the Felhound to assist you in 'sniffing' out the location of cleverly hidden deposits.
-  collect Crystallized Azsharite##10714 |q 3602 |goto Azshara 55.65,83.31 |tip {dropsfrom}Azsharite Formation
-step
-  only completed(2744) haveq(3602)
-  talk Loramus Thalipedes##7783
-  turnin Azsharite##3602 |goto Azshara 60.82,66.35
-step
   only level>=55
   talk Ekkal##235903
   accept Blackmaw Pouches##97327 |goto Azshara 42,38.88
@@ -605,6 +586,63 @@ step
   talk Ekkal##235903
   turnin Blackmaw Pouches##96246 |goto Azshara 42,38.88
 step
+  only completed(2744) haveq(3510)
+  talk Lord Arkkoroc##6134
+  turnin The Name of the Beast##3510 |goto Azshara 77.13,42.79
+step
+  only completed(2744) completed(3510)
+  talk Lord Arkkoroc##6134
+  accept The Name of the Beast##3511 |goto Azshara 77.13,42.79
+step
+  only completed(2744) haveq(3511)
+  note Take the temper back to Loramus Thalipedes.
+  talk Loramus Thalipedes##7783
+  turnin The Name of the Beast##3511 |goto Azshara 60.82,66.35
+step
+  only completed(2744) completed(3511)
+  talk Loramus Thalipedes##7783
+  accept Azsharite##3602 |goto Azshara 60.82,66.35
+step
+  only completed(2744) haveq(3602)
+  note Recover twenty Crystallized Azsharite from southern Azshara. You may use the Felhound to assist you in 'sniffing' out the location of cleverly hidden deposits.
+  collect Crystallized Azsharite##10714 |q 3602 |goto Azshara 55.65,83.31 |tip {dropsfrom}Azsharite Formation
+step
+  only completed(2744) haveq(3602)
+  talk Loramus Thalipedes##7783
+  turnin Azsharite##3602 |goto Azshara 60.82,66.35
+step
+  note Speak with Nazeer Bloodspike in Brackenwall Village.
+  talk Nazeer Bloodpike##4791
+  turnin The Missing Kor'kron##95283 |goto Dustwallow Marsh 35.21,30.66 |tip {turninat}Dustwallow Marsh
+step
+  note Find the missing Kor'kron Elites.
+  talk Sergeant Ulka##260383
+  turnin The Elite of the Elite##95284 |goto Dustwallow Marsh 70.3,18.85 |tip {turninat}Dustwallow Marsh
+step
+  talk Sergeant Ulka##260383
+  accept Right Place, Wrong Time##95285 |goto Dustwallow Marsh 70.3,18.85
+step
+  note Speak with Sergeant Ulka to learn more about the situation on Alcaz Isle.
+  talk Sergeant Ulka##260383
+  turnin Right Place, Wrong Time##95285 |goto Dustwallow Marsh 70.3,18.85 |tip {turninat}Dustwallow Marsh
+step
+  talk Sergeant Ulka##260383
+  accept A Little Payback##96332 |goto Dustwallow Marsh 70.3,18.85
+step
+  note Enter the Alcaz Prison and slay 15 Strashasz Soldiers, 8 Strashaz Enchantresses, and bring the head of Tidemistress Ca'zass to Sergeant Ulka.
+  get A Little Payback |q 96332
+step
+  talk Sergeant Ulka##260383
+  turnin A Little Payback##96332 |goto Dustwallow Marsh 70.3,18.85 |tip {turninat}Dustwallow Marsh
+step
+  only level>=53
+  talk Sergeant Ulka##260383
+  accept Blood Red Bandanas##96334 |goto Dustwallow Marsh 70.3,18.85
+step
+  only haveq(96334)
+  note Enter Alcaz Prison and collect 8 Blood Red Bandanas from the human guards there.
+  collect 8 Blood Red Bandana##274028 |q 96334 |goto Dustwallow Marsh 70.3,18.85 |elite |tip {dropsfrom}Alcaz Chaplain, Defias Truthfinder, Defias Mercenary
+step
   note Bring the Tablet of Jin'yael to Jes'rimon in Orgrimmar.
   talk Jes'rimon##8659
   turnin Delivery to Jes'rimon##3541 |goto Orgrimmar 55.52,34.08 |tip {turninat}Orgrimmar
@@ -619,6 +657,10 @@ step
   note Bring the Sin'dorei Tome of Summoning to Zevrost in Orgrimmar.
   talk Zevrost##3326
   turnin Sin'dorei Tome of Summoning##91547 |goto Orgrimmar 48.47,45.43 |tip {turninat}Orgrimmar
+step
+  only haveq(96334)
+  talk Eitrigg##3144
+  turnin Blood Red Bandanas##96334 |goto Orgrimmar 34.28,39.35 |tip {turninat}Orgrimmar
 step
   only completed(4001)
   talk Thrall##4949

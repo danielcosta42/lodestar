@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Attunements/Alliance/Onyxia's Lair (Alliance)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "68ea0a67",
+	rev = "a7f98665",
 }, [[
 step
   talk Helendis Riverhorn##9562
@@ -109,26 +109,33 @@ step
   talk Reginald Windsor##12580
   turnin Stormwind Rendezvous##6402 |goto Stormwind City 73.61,91.05
 step
+  only not completed(99435) not haveq(99435)
   talk Reginald Windsor##12580
   accept The Great Masquerade##6403 |goto Stormwind City 73.61,91.05
 step
+  only not completed(99435) not haveq(99435)
   note Follow Reginald Windsor through Stormwind. Protect him from harm!
   talk Highlord Bolvar Fordragon##1748
   turnin The Great Masquerade##6403 |goto Stormwind City 80.21,38.35
 step
+  only not completed(99435) not haveq(99435)
   talk Highlord Bolvar Fordragon##1748
   accept The Dragon's Eye##6501 |goto Stormwind City 80.21,38.35
 step
+  only not completed(99435) not haveq(99435)
   note You must search the world for a being capable of restoring the power to the Fragment of the Dragon's Eye. The only information you possess about such a being is that they exist.
   talk Haleh##10929
   turnin The Dragon's Eye##6501 |goto Winterspring 54.55,51.2
 step
+  only not completed(99435) not haveq(99435)
   talk Haleh##10929
   accept Drakefire Amulet##6502 |goto Winterspring 54.55,51.2
 step
+  only not completed(99435) not haveq(99435)
   note You must retrieve the Blood of the Black Dragon Champion from General Drakkisath. Drakkisath can be found in his throne room behind the Halls of Ascension in Blackrock Spire.
   collect Blood of the Black Dragon Champion##16663 |q 6502 |goto Blackrock Spire - Dungeon -1,-1 |raid |tip {dropsfrom}General Drakkisath
 step
+  only not completed(99435) not haveq(99435)
   talk Haleh##10929
   turnin Drakefire Amulet##6502 |goto Winterspring 54.55,51.2
 ]])

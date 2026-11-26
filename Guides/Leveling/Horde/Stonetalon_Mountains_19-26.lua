@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Stonetalon Mountains (19-26)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Ashenvale (22-27)",
-	rev = "924d1894",
+	rev = "b3a0ddfb",
 }, [[
 step
   ding 18
@@ -121,8 +121,27 @@ step
   note Bring 10 Incendrites to Tsunaman at Sun Rock Retreat.
   collect 10 Incendrites##16312 |q 6393 |goto Stonetalon Mountains 36.55,51.37 |tip {dropsfrom}Rogue Flame Spirit, Burning Ravager, Burning Destroyer
 step
+  only haveq(6393)
+  talk Tsunaman##11862
+  turnin Elemental War##6393 |goto Stonetalon Mountains 47.36,64.25
+step
+  talk Maggran Earthbinder##11860
+  accept Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
+step
+  talk Maggran Earthbinder##11860
+  accept Bloodfury Trinkets##86576 |goto Stonetalon Mountains 47.2,61.16
+step
   note Plant 10 Gaea Seeds in Gaea Dirt Mounds, and then return the remaining Enchanted Gaea Seeds to Tammra at Sun Rock Retreat.
   click Gaea Dirt Mound##177929 |q 6381 |goto Stonetalon Mountains 33.61,68.96
+step
+  note Maggran Earthbinder in Sun Rock Retreat wants you to slay 7 Bloodfury Harpies, 7 Bloodfury Ambushers, 7 Bloodfury Slayers and 7 Bloodfury Roguefeathers.
+  kill Bloodfury Roguefeather##4023 |q 6282/4 |goto Stonetalon Mountains 34.86,69.12
+  kill Bloodfury Slayer##4024 |q 6282/3 |goto Stonetalon Mountains 30.24,69.58
+  kill Bloodfury Ambusher##4025 |q 6282/2 |goto Stonetalon Mountains 30.8,61.32
+  kill Bloodfury Harpy##4022 |q 6282 |goto Stonetalon Mountains 32.57,60.66
+step
+  note Bring 15 Glittering Sunstones to Mor'rogal.
+  collect 15 Glittering Sunstone##277936 |q 86576 |goto Stonetalon Mountains 32.57,60.66 |tip {dropsfrom}Bloodfury Harpy, Bloodfury Roguefeather, Bloodfury Slayer
 step
   only haveq(1087)
   note Kill 4 Sons of Cenarius, 4 Daughters of Cenarius and 4 Cenarion Botanists for Braelyn Firehand near Sun Rock Retreat.
@@ -134,18 +153,14 @@ step
   talk Braelyn Firehand##4198
   turnin Cenarius' Legacy##1087 |goto Stonetalon Mountains 45.94,60.42
 step
+  talk Maggran Earthbinder##11860
+  turnin Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
+step
   talk Tammra Windfield##11864
   turnin New Life##6381 |goto Stonetalon Mountains 47.46,58.38
 step
-  only haveq(6393)
-  talk Tsunaman##11862
-  turnin Elemental War##6393 |goto Stonetalon Mountains 47.36,64.25
-step
-  talk Maggran Earthbinder##11860
-  accept Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
-step
-  talk Maggran Earthbinder##11860
-  accept Bloodfury Trinkets##86576 |goto Stonetalon Mountains 47.2,61.16
+  talk Mor'rogal##11861
+  turnin Bloodfury Trinkets##86576 |goto Stonetalon Mountains 47.22,64.04
 step
   only level>=20
   talk Witch Doctor Jin'Zil##3995
@@ -158,34 +173,6 @@ step
   collect Stonetalon Sap##5582 |q 1058/1 |goto Stonetalon Mountains 34.78,17.41 |tip {dropsfrom}Sap Beast
   collect 5 Twilight Whisker##5584 |q 1058 |goto Stonetalon Mountains 33.28,9.93 |tip {dropsfrom}Twilight Runner
 step
-  note Maggran Earthbinder in Sun Rock Retreat wants you to slay 7 Bloodfury Harpies, 7 Bloodfury Ambushers, 7 Bloodfury Slayers and 7 Bloodfury Roguefeathers.
-  kill Bloodfury Harpy##4022 |q 6282/1 |goto Stonetalon Mountains 32.57,60.66
-  kill Bloodfury Ambusher##4025 |q 6282/2 |goto Stonetalon Mountains 30.8,61.32
-  kill Bloodfury Slayer##4024 |q 6282/3 |goto Stonetalon Mountains 30.24,69.58
-  kill Bloodfury Roguefeather##4023 |q 6282 |goto Stonetalon Mountains 34.86,69.12
-step
-  note Bring 15 Glittering Sunstones to Mor'rogal.
-  collect 15 Glittering Sunstone##277936 |q 86576 |goto Stonetalon Mountains 32.57,60.66 |tip {dropsfrom}Bloodfury Harpy, Bloodfury Roguefeather, Bloodfury Slayer
-step
-  talk Maggran Earthbinder##11860
-  turnin Harpies Threaten##6282 |goto Stonetalon Mountains 47.2,61.16
-step
-  talk Mor'rogal##11861
-  turnin Bloodfury Trinkets##86576 |goto Stonetalon Mountains 47.22,64.04
-step
-  only level>=26
-  talk Maggran Earthbinder##11860
-  accept Bloodfury Bloodline##6283 |goto Stonetalon Mountains 47.2,61.16
-step
-  only haveq(6283)
-  note Maggran at Sun Rock Retreat wishes you to slay Bloodfury Ripper and bring her remains as proof of your deed.
-  kill Bloodfury Ripper##12579 |q 6283 |goto Stonetalon Mountains 30.75,61.91 |elite
-  collect Bloodfury Ripper's Remains##16190 |q 6283 |goto Stonetalon Mountains 30.75,61.91
-step
-  only haveq(6283)
-  talk Maggran Earthbinder##11860
-  turnin Bloodfury Bloodline##6283 |goto Stonetalon Mountains 47.2,61.16
-step
   only haveq(1058)
   talk Witch Doctor Jin'Zil##3995
   turnin Jin'Zil's Forest Magic##1058 |goto Stonetalon Mountains 74.54,97.94
@@ -194,7 +181,7 @@ step
   talk Maggran Earthbinder##11860
   accept Calling in the Reserves##5881 |goto Stonetalon Mountains 47.2,61.16
 step
-  only completed(1087)
+  only completed(1087) level>=20
   talk Braelyn Firehand##4198
   accept Ordanus##1088 |goto Stonetalon Mountains 45.94,60.42
 step
@@ -272,10 +259,6 @@ step
   talk Torm Ragetotem##3041
   accept Speak with Ruga##1823 |goto Thunder Bluff 57.24,87.37
 step
-  only Warrior completed(1848)
-  talk Orm Stonehoof##6410
-  accept Chimaeric Horn##1844 |goto Thunder Bluff 38.99,55.98
-step
   talk Tah Winterhoof##3024
   accept Pigments for Paints##97538 |goto Thunder Bluff 54.14,47.05
 step
@@ -330,10 +313,6 @@ step
   note Tah Winterhoof in Thunder Bluff wants 30 Mirkweed Pods from Mirkfallon Lake.
   collect 30 Mirkweed Pods##278201 |q 97538 |goto Stonetalon Mountains 49.57,39.78 |tip {dropsfrom}Mirkweed, Dried Mirkweed Pile
 step
-  only Warrior completed(1848)
-  note Bring a Galvanized Horn to Orm Stonehoof in Thunder Bluff.
-  collect Galvanized Horn##6840 |q 1844 |goto Stonetalon Mountains 33.64,74.66 |tip {dropsfrom}Chimaera Matriarch
-step
   only Warlock completed(1508) not completed(1472) not haveq(1472)
   note Speak with Ken'zigla at the Malaka'jin.
   talk Ken'zigla##4197
@@ -345,18 +324,6 @@ step
 step
   talk Tah Winterhoof##3024
   turnin Pigments for Paints##97538 |goto Thunder Bluff 54.14,47.05 |tip {turninat}Thunder Bluff
-step
-  only Warrior completed(1848)
-  talk Orm Stonehoof##6410
-  turnin Chimaeric Horn##1844 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
-step
-  only Warrior completed(1848)
-  talk Orm Stonehoof##6410
-  accept Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98
-step
-  only Warrior completed(1848)
-  talk Orm Stonehoof##6410
-  turnin Brutal Helm##1845 |goto Thunder Bluff 38.99,55.98 |tip {turninat}Thunder Bluff
 step
   only haveq(1088)
   note Bring Ordanus' head to Braelyn Firehand near Sun Rock Retreat.
