@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Druid", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "9ef94779",
+	rev = "caa8b4ee",
 }, [[
 step
   talk Conservator Ilthalaine##2079
@@ -311,15 +311,6 @@ step
   talk Mathrengyl Bearwalker##4217
   turnin To Darnassus##98397 |goto Darnassus 35.37,8.4
 step
-  only NightElf Druid
-  talk Tyrisius##221985
-  accept Wisdom of the Guardians##81924 |goto Feralas 57.16,68.92
-step
-  only NightElf Druid
-  note Prove yourself to the guardian spirits of Feralas, Azshara, and the Hinterlands, then return to Tyrisius in Feralas.
-  talk Tyrisius##221985
-  turnin Wisdom of the Guardians##81924 |goto Feralas 57.16,68.92
-step
   only Druid
   talk Mathrengyl Bearwalker##4217
   accept Torwa Pathfinder##9063 |goto Darnassus 35.37,8.4
@@ -372,27 +363,15 @@ step
   talk Lorekeeper Javon##14381
   turnin The Emerald Dream...##7506 |goto Dire Maul - Dungeon -1,-1
 step
-  only NightElf Druid not completed(8905) not haveq(8905)
-  talk Deliana##230319
-  accept An Earnest Proposition##84147 |goto Dun Morogh 58.07,29.54
-step
-  only NightElf Druid not completed(8905) not haveq(8905)
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Wildheart Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 84147 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only NightElf Druid not completed(8905) not haveq(8905)
-  talk Deliana##230319
-  turnin An Earnest Proposition##84147 |goto Dun Morogh 58.07,29.54
-step
-  only not Human not NightElf not Skyborne Druid not completed(84147) not haveq(84147)
+  only Druid not completed(84147) not haveq(84147)
   talk Deliana##16013
   accept An Earnest Proposition##8905 |goto Ironforge 43.53,52.64
 step
-  only not Human not NightElf not Skyborne Druid not completed(84147) not haveq(84147)
+  only Druid not completed(84147) not haveq(84147)
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Wildheart Bracers to Deliana in Ironforge.
   collect 15 Winterspring Blood Sample##21928 |q 8905 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
 step
-  only not Human not NightElf not Skyborne Druid not completed(84147) not haveq(84147)
+  only Druid not completed(84147) not haveq(84147)
   talk Deliana##16013
   turnin An Earnest Proposition##8905 |goto Ironforge 43.53,52.64
 step

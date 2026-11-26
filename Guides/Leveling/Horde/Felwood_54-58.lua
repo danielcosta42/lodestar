@@ -1,14 +1,34 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Felwood (52-57)", {
+ns:RegisterGuide("Leveling/Horde/Felwood (54-58)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Badlands (50-58)",
-	rev = "3e366fad",
+	rev = "0340bb2d",
 }, [[
 step
-  ding 51
+  ding 53
+step
+  only Druid
+  talk Turak Runetotem##3033
+  accept Torwa Pathfinder##9063 |goto Thunder Bluff 76.48,27.22
+step
+  talk Liv Rizzlefix##8496
+  accept Volcanic Activity##4502 |goto The Barrens 62.45,38.73
+step
+  only completed(92345,92346)
+  talk Nara Wildmane##5770
+  accept Get to the Roots of It##92343 |goto Thunder Bluff 75.65,31.61
+step
+  only completed(92345,92346)
+  note Gather 10 Nordrassil Root Caps inside Blackmaw Hold for Nara Wildmane in Thunder Bluff.
+  collect 10 Nordrassil Root Cap##250773 |q 92343 |goto Thunder Bluff 75.65,31.61
+step
+  only haveq(4147)
+  note Travel to Marvon Rivetseeker's workshop in Ratchet.
+  talk Liv Rizzlefix##8496
+  turnin Marvon's Workshop##4147 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
 step
   talk Grazle##11554
   accept Timbermaw Ally##8460 |goto Felwood 50.93,85.01
@@ -16,46 +36,32 @@ step
   talk Greta Mosshoof##10922
   accept Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
 step
-  note {fp}Brakkar
-  goto Felwood 34.44,53.96 |tip {vendor}
+  talk Taronn Redfeather##10921
+  accept Verifying the Corruption##5156 |goto Felwood 50.89,81.62
 step
-  note Enter Jaedenar and slay 4 Jaedenar Hounds, 4 Jaedenar Guardsmen, 6 Jaedenar Adepts, and 6 Jaedenar Cultists before returning to Greta Mosshoof in Felwood.
-  kill Jaedenar Adept##7115 |q 5155/3 |goto Felwood 38.25,61.45
-  kill Jaedenar Cultist##7112 |q 5155/4 |goto Felwood 38.15,61.13
-  kill Jaedenar Guardian##7113 |q 5155/2 |goto Felwood 38.07,60.74
-  kill Jaedenar Hound##7125 |q 5155 |goto Felwood 38.83,60.38
+  talk Maybess Riverbreeze##9529
+  accept Cleansing Felwood##4102 |goto Felwood 46.75,83.13
 step
-  talk Dreka'Sur##9620
-  accept A Husband's Last Battle##6162 |goto Felwood 34.8,52.73
+  talk Kelek Skykeeper##10920
+  accept A Sampling of Putrescence##86577 |goto Felwood 51.14,81.75
 step
-  talk Greta Mosshoof##10922
-  turnin Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
+  note Bring 8 Putrescent Bear Organs and 10 Putrescent Wolf Organs to Kelek Skykeeper.
+  collect 10 Putrescent Wolf Organs##277959 |q 86577/2 |goto Felwood 49.62,81.94 |tip {dropsfrom}Felpaw Wolf, Felpaw Scavenger, Felpaw Ravager
+  collect 8 Putrescent Bear Organs##277958 |q 86577 |goto Felwood 48.43,78.77 |tip {dropsfrom}Angerclaw Bear, Angerclaw Grizzly, Angerclaw Mauler
 step
-  talk Greta Mosshoof##10922
-  accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
-step
-  note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
-  collect Corrupt Moonwell Water##12907 |q 5157 |goto Felwood 35.17,59.79 |tip {dropsfrom}Corrupt Jaedenar Moonwell
-step
-  talk Greta Mosshoof##10922
-  turnin Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
-step
-  talk Greta Mosshoof##10922
-  accept Seeking Spiritual Aid##5158 |goto Felwood 51.21,82.11
-step
-  note Kill Overlord Ror and return his claw to Dreka'Sur at Bloodvenom Post in Felwood.
-  collect Overlord Ror's Claw##15879 |q 6162 |goto Felwood 48.23,94.28 |tip {dropsfrom}Overlord Ror
+  talk Kelek Skykeeper##10920
+  turnin A Sampling of Putrescence##86577 |goto Felwood 51.14,81.75
 step
   note Grazle wants you to prove yourself by killing 6 Deadwood Warriors, 6 Deadwood Pathfinders, and 6 Deadwood Gardeners. Return to him in southern Felwood near the Emerald Sanctuary when you are done.
-  kill Deadwood Warrior##7153 |q 8460/1 |goto Felwood 48.39,91.4
+  kill Deadwood Pathfinder##7155 |q 8460/2 |goto Felwood 48.3,89.46
   kill Deadwood Gardener##7154 |q 8460/3 |goto Felwood 48.42,89.84
-  kill Deadwood Pathfinder##7155 |q 8460 |goto Felwood 48.3,89.46
+  kill Deadwood Warrior##7153 |q 8460 |goto Felwood 48.39,91.4
 step
   talk Grazle##11554
   turnin Timbermaw Ally##8460 |goto Felwood 50.93,85.01
 step
-  talk Taronn Redfeather##10921
-  accept Verifying the Corruption##5156 |goto Felwood 50.89,81.62
+  talk Grazle##11554
+  accept Speak to Nafien##8462 |goto Felwood 50.93,85.01
 step
   only Warlock
   talk Niby the Almighty##14469
@@ -65,6 +71,17 @@ step
   talk Impsy##14470
   accept Hot and Itchy##8420 |goto Felwood 41.36,45.02
 step
+  note {fp}Brakkar
+  goto Felwood 34.44,53.96 |tip {vendor}
+step
+  only hasitem(13140)
+  use Blood Red Key##13140 |tip It starts the quest.
+  accept A Strange Red Key##5202
+step
+  only not completed(86611) not haveq(86611)
+  click Statue of Malorne##661778
+  accept Stag Lord's Bauble##86612 |goto Felwood 42.06,47.31
+step
   note Seek out and destroy 2 Entropic Beasts and 2 Entropic Horrors while exploring Shatter Scar Vale. After checking to see if the craters there are still filled with corrupt fel water, return to Taronn Redfeather in Felwood.
   kill Entropic Beast##9878 |q 5156 |goto Felwood 41.73,40.15
 step
@@ -73,11 +90,38 @@ step
   talk Impsy##14470
   turnin What Niby Commands##7601 |goto Felwood 41.36,45.02
 step
+  only haveq(5202)
+  note Search through Jaedenar to discover what the Blood Red Key is used for.
+  talk Captured Arko'narin##11016
+  turnin A Strange Red Key##5202 |goto Felwood 36.21,55.47
+step
+  only not completed(86611) not haveq(86611)
+  note Take the Stag Lord's Bauble to someone in Bloodvenom Post who may know about it.
+  talk Winna Hazzard##9996
+  turnin Stag Lord's Bauble##86612 |goto Felwood 34.21,52.34
+step
   talk Dreka'Sur##9620
-  turnin A Husband's Last Battle##6162 |goto Felwood 34.8,52.73
+  accept A Husband's Last Battle##6162 |goto Felwood 34.8,52.73
 step
   talk Winna Hazzard##9996
   accept Well of Corruption##4505 |goto Felwood 34.21,52.34
+step
+  talk Trull Failbane##10306
+  accept Wild Guardians##4521 |goto Felwood 34.73,52.79
+step
+  only completed(5202)
+  talk Captured Arko'narin##11016
+  accept Rescue From Jaedenar##5203 |goto Felwood 36.21,55.47
+step
+  only haveq(5203)
+  note Escort Arko'narin to where Lightforge and her equipment are being held, and then protect her as you escape Shadow Hold. Afterwards, seek out Jessir Moonbow in Felwood to let her know what's happened to her friends.
+  goto Felwood 35.45,59.06 |tip Protect Arko'narin out of Shadow Hold
+step
+  note Enter Jaedenar and slay 4 Jaedenar Hounds, 4 Jaedenar Guardsmen, 6 Jaedenar Adepts, and 6 Jaedenar Cultists before returning to Greta Mosshoof in Felwood.
+  kill Jaedenar Hound##7125 |q 5155/1 |goto Felwood 38.83,60.38
+  kill Jaedenar Guardian##7113 |q 5155/2 |goto Felwood 38.07,60.74
+  kill Jaedenar Cultist##7112 |q 5155/4 |goto Felwood 38.15,61.13
+  kill Jaedenar Adept##7115 |q 5155 |goto Felwood 38.25,61.45
 step
   note Collect a sample of corrupted water from the Jadefire Satyrs' moonwell and bring it to Winna Hazzard at Bloodvenom Post.
   collect Filled Flasket##12567 |q 4505 |goto Felwood 32.32,66.56 |tip {dropsfrom}Corrupted Moonwell Spell Focus (DND)
@@ -109,69 +153,17 @@ step
   collect 4 Bloodvenom Essence##20614 |q 8421/2 |goto Felwood 41.4,50.23 |tip {dropsfrom}Tainted Ooze
   collect 10 Rotting Wood##20613 |q 8421 |goto Felwood 46.58,23.75 |tip {dropsfrom}Irontree Wanderer, Irontree Stomper, Withered Protector
 step
-  only Warlock
-  talk Impsy##14470
-  turnin The Wrong Stuff##8421 |goto Felwood 41.36,45.02
-step
-  talk Taronn Redfeather##10921
-  turnin Verifying the Corruption##5156 |goto Felwood 50.89,81.62
-step
-  only hasitem(13140)
-  use Blood Red Key##13140 |tip It starts the quest.
-  accept A Strange Red Key##5202
-step
-  only not completed(86611) not haveq(86611)
-  click Statue of Malorne##661778
-  accept Stag Lord's Bauble##86612 |goto Felwood 42.06,47.31
-step
-  only haveq(5202)
-  note Search through Jaedenar to discover what the Blood Red Key is used for.
-  talk Captured Arko'narin##11016
-  turnin A Strange Red Key##5202 |goto Felwood 36.21,55.47
-step
-  only not completed(86611) not haveq(86611)
-  note Take the Stag Lord's Bauble to someone in Bloodvenom Post who may know about it.
-  talk Winna Hazzard##9996
-  turnin Stag Lord's Bauble##86612 |goto Felwood 34.21,52.34
-step
-  only level>=52
-  talk Trull Failbane##10306
-  accept Wild Guardians##4521 |goto Felwood 34.73,52.79
-step
-  only completed(5202)
-  talk Captured Arko'narin##11016
-  accept Rescue From Jaedenar##5203 |goto Felwood 36.21,55.47
-step
-  only haveq(5203)
-  note Escort Arko'narin to where Lightforge and her equipment are being held, and then protect her as you escape Shadow Hold. Afterwards, seek out Jessir Moonbow in Felwood to let her know what's happened to her friends.
-  goto Felwood 35.45,59.06 |tip Protect Arko'narin out of Shadow Hold
-step
-  only haveq(5203)
-  talk Jessir Moonbow##11019
-  turnin Rescue From Jaedenar##5203 |goto Felwood 51.35,82.01
-step
-  talk Maybess Riverbreeze##9529
-  accept Cleansing Felwood##4102 |goto Felwood 46.75,83.13
-step
-  talk Grazle##11554
-  accept Speak to Nafien##8462 |goto Felwood 50.93,85.01
-step
-  talk Kelek Skykeeper##10920
-  accept A Sampling of Putrescence##86577 |goto Felwood 51.14,81.75
-step
-  note Bring 8 Putrescent Bear Organs and 10 Putrescent Wolf Organs to Kelek Skykeeper.
-  collect 10 Putrescent Wolf Organs##277959 |q 86577/2 |goto Felwood 49.62,81.94 |tip {dropsfrom}Felpaw Wolf, Felpaw Scavenger, Felpaw Ravager
-  collect 8 Putrescent Bear Organs##277958 |q 86577 |goto Felwood 48.43,78.77 |tip {dropsfrom}Angerclaw Bear, Angerclaw Grizzly, Angerclaw Mauler
-step
-  talk Kelek Skykeeper##10920
-  turnin A Sampling of Putrescence##86577 |goto Felwood 51.14,81.75
-step
   note Bring 15 Blood Amber to Maybess Riverbreeze in Felwood.
   collect 15 Blood Amber##11503 |q 4102 |goto Felwood 57.16,18.28 |tip {dropsfrom}Warpwood Moss Flayer, Warpwood Shredder, Dessecus
 step
   note Travel north along the main road in Felwood and speak with the furbolg named Nafien. He stands guard outside the entrance to Timbermaw Hold.
   talk Nafien##15395
   turnin Speak to Nafien##8462 |goto Felwood 64.77,8.13
+step
+  only haveq(86798)
+  note Speak to Gorn One Eye in Timbermaw Hold and ask him to provide reinforcements.
+  talk Gorn One Eye##11555
+  turnin Timbermaw Reinforcements##86798 |goto Felwood 65.18,2.68
 step
   talk Nafien##15395
   accept Deadwood of the North##8461 |goto Felwood 64.77,8.13
@@ -209,8 +201,25 @@ step
   talk Nafien##15395
   accept Speak to Salfa##8465 |goto Felwood 64.77,8.13
 step
+  only Warlock
+  talk Impsy##14470
+  turnin The Wrong Stuff##8421 |goto Felwood 41.36,45.02
+step
   talk Maybess Riverbreeze##9529
   turnin Cleansing Felwood##4102 |goto Felwood 46.75,83.13
+step
+  talk Greta Mosshoof##10922
+  turnin Forces of Jaedenar##5155 |goto Felwood 51.21,82.11
+step
+  talk Taronn Redfeather##10921
+  turnin Verifying the Corruption##5156 |goto Felwood 50.89,81.62
+step
+  only haveq(5203)
+  talk Jessir Moonbow##11019
+  turnin Rescue From Jaedenar##5203 |goto Felwood 51.35,82.01
+step
+  talk Greta Mosshoof##10922
+  accept Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
 step
   talk Maybess Riverbreeze##9529
   accept Salve via Hunting##5887 |goto Felwood 46.75,83.13
@@ -219,7 +228,20 @@ step
   talk Jessir Moonbow##11019
   accept Retribution of the Light##5204 |goto Felwood 51.35,82.01
 step
+  only level>=55
+  talk Greta Mosshoof##10922
+  accept The Source of the Corruption##91952 |goto Felwood 51.21,82.11
+step
+  note Kill Overlord Ror and return his claw to Dreka'Sur at Bloodvenom Post in Felwood.
+  collect Overlord Ror's Claw##15879 |q 6162 |goto Felwood 48.23,94.28 |tip {dropsfrom}Overlord Ror
+step
   collect Corrupted Soul Shard##11515 |q 5887 |goto Felwood 40.17,70.82 |tip {dropsfrom}Cursed Ooze, Tainted Ooze, Vile Ooze
+step
+  note Take the Empty Canteen to the Moon Well in the center of Jaedenar and fill it before returning to Greta Mosshoof in Felwood.
+  collect Corrupt Moonwell Water##12907 |q 5157 |goto Felwood 35.17,59.79 |tip {dropsfrom}Corrupt Jaedenar Moonwell
+step
+  talk Dreka'Sur##9620
+  turnin A Husband's Last Battle##6162 |goto Felwood 34.8,52.73
 step
   only haveq(5204)
   note Return to Jaedenar and kill the succubus Rakaiah before finding the Remains of Trey Lightforge.
@@ -233,6 +255,9 @@ step
   talk Remains of Trey Lightforge##11020
   accept The Remains of Trey Lightforge##5385 |goto Felwood 38.5,50.41
 step
+  talk Greta Mosshoof##10922
+  turnin Collection of the Corrupt Water##5157 |goto Felwood 51.21,82.11
+step
   only haveq(5385)
   note Return the Remains of Trey Lightforge to Jessir Moonbow in Felwood.
   talk Jessir Moonbow##11019
@@ -241,9 +266,8 @@ step
   talk Maybess Riverbreeze##9529
   turnin Salve via Hunting##5887 |goto Felwood 46.75,83.13
 step
-  only level>=55
   talk Greta Mosshoof##10922
-  accept The Source of the Corruption##91952 |goto Felwood 51.21,82.11
+  accept Seeking Spiritual Aid##5158 |goto Felwood 51.21,82.11
 step
   only haveq(3908)
   note Take Linken's Sword to Donova Snowden in Winterspring.
@@ -259,18 +283,20 @@ step
   talk Salfa##11556
   turnin Speak to Salfa##8465 |goto Winterspring 27.73,34.5 |tip {turninat}Winterspring
 step
-  only haveq(4521)
   note Trull Failbane in Felwood wants you to kill 15 Raging Owlbeasts and 15 Ragged Owlbeasts.
   kill Ragged Owlbeast##7450 |q 4521/2 |goto Winterspring 44.76,38.29
   kill Raging Owlbeast##7451 |q 4521 |goto Winterspring 59.83,31.69
 step
-  only haveq(4147)
-  note Travel to Marvon Rivetseeker's workshop in Ratchet.
-  talk Liv Rizzlefix##8496
-  turnin Marvon's Workshop##4147 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
+  only Druid
+  note Speak with Torwa Pathfinder in Un'Goro Crater.
+  talk Torwa Pathfinder##9619
+  turnin Torwa Pathfinder##9063 |goto Un'Goro Crater 71.64,75.96 |tip {turninat}Un'Goro Crater
+step
+  note Collect 9 samples of Un'Goro Ash from the fire elementals around the volcano in Un'Goro Crater, and return them to Liv Rizzlefix in Ratchet.
+  collect 9 Un'Goro Ash##11829 |q 4502 |goto Un'Goro Crater 55.1,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Blazing Invader
 step
   talk Liv Rizzlefix##8496
-  accept Volcanic Activity##4502 |goto The Barrens 62.45,38.73
+  turnin Volcanic Activity##4502 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
 step
   note Take the Corrupt Moon Well Water to Islen Waterseer in the Barrens.
   talk Islen Waterseer##5901
@@ -288,12 +314,6 @@ step
   talk Jornah##256388
   turnin Sign Me Up!##95819 |goto The Barrens 49.91,29.36 |tip {turninat}The Barrens
 step
-  note Collect 9 samples of Un'Goro Ash from the fire elementals around the volcano in Un'Goro Crater, and return them to Liv Rizzlefix in Ratchet.
-  collect 9 Un'Goro Ash##11829 |q 4502 |goto Un'Goro Crater 55.1,48.83 |tip {dropsfrom}Scorching Elemental, Living Blaze, Blazing Invader
-step
-  talk Liv Rizzlefix##8496
-  turnin Volcanic Activity##4502 |goto The Barrens 62.45,38.73 |tip {turninat}The Barrens
-step
   only haveq(86814)
   note Plant the Timbermaw War Banner at the Legashi Stronghold in Azshara. Kill Prince Halanox, report your victory to Gatekeeper Rageroar at Ursolan.
   kill Prince Halanox##235892 |q 86814 |goto Azshara 67.2,18.67 |elite
@@ -301,14 +321,6 @@ step
   only haveq(86814)
   talk Gatekeeper Rageroar##236573
   turnin Blackmaw Counter-Offensive##86814 |goto Azshara 42.28,20.13 |tip {turninat}Azshara
-step
-  only completed(92345,92346)
-  talk Nara Wildmane##5770
-  accept Get to the Roots of It##92343 |goto Thunder Bluff 75.65,31.61
-step
-  only completed(92345,92346)
-  note Gather 10 Nordrassil Root Caps inside Blackmaw Hold for Nara Wildmane in Thunder Bluff.
-  collect 10 Nordrassil Root Cap##250773 |q 92343 |goto Thunder Bluff 75.65,31.61
 step
   only completed(92345,92346)
   talk Nara Wildmane##5770
@@ -323,11 +335,13 @@ step
   talk Arch Druid Hamuul Runetotem##5769
   turnin The New Frontier##1000 |goto Thunder Bluff 78.62,28.56 |tip {turninat}Thunder Bluff
 step
-  only haveq(4521)
+  only completed(1000) level>=54
+  talk Arch Druid Hamuul Runetotem##5769
+  accept Rabine Saturna##1123 |goto Thunder Bluff 78.62,28.56
+step
   talk Trull Failbane##10306
   turnin Wild Guardians##4521 |goto Felwood 34.73,52.79
 step
-  only completed(4521) level>=52
   talk Trull Failbane##10306
   accept Wild Guardians##4741 |goto Felwood 34.73,52.79
 step
@@ -356,23 +370,55 @@ step
   talk Greta Mosshoof##10922
   turnin A Final Blow##5242 |goto Felwood 51.21,82.11
 step
-  only haveq(4741)
+  only haveq(1123)
+  note Speak with Rabine Saturna in the village of Nighthaven, Moonglade. Moonglade lies between Felwood and Winterspring, accessible through a path out of Timbermaw Hold.
+  talk Rabine Saturna##11801
+  turnin Rabine Saturna##1123 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
+step
+  only level>=56
+  talk Rabine Saturna##11801
+  accept A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1
+step
+  only completed(1123) level>=54
+  talk Rabine Saturna##11801
+  accept Wasteland##1124 |goto Moonglade 51.69,45.1
+step
+  only haveq(5527)
+  note Travel to Silithus and search for a Reliquary of Purity within the ruins of Southwind Village. If you are able to find it, return with it to Rabine Saturna in Nighthaven, Moonglade.
+  collect Reliquary of Purity##22201 |q 5527 |goto Silithus 63.23,55.35 |tip {dropsfrom}Dusty Reliquary
+step
+  only haveq(5527)
+  talk Rabine Saturna##11801
+  turnin A Reliquary of Purity##5527 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
+step
+  only completed(5527) level>=56
+  talk Rabine Saturna##11801
+  accept Shards of the Felvine##5526 |goto Moonglade 51.69,45.1
+step
+  only haveq(5526)
+  note Find the Felvine in Dire Maul and acquire a shard from it. Chances are you'll only be able to procure one with the demise of Alzzin the Wildshaper. Use the Reliquary of Purity to securely seal the shard inside, and return it to Rabine Saturna in Nighthaven, Moonglade.
+  collect Sealed Reliquary of Purity##18540 |q 5526 |goto Moonglade 51.69,45.1
+step
+  only haveq(5526)
+  talk Rabine Saturna##11801
+  turnin Shards of the Felvine##5526 |goto Moonglade 51.69,45.1 |tip {turninat}Moonglade
+step
+  only completed(8913,8914,8915,8916,8917,8918,8919,8920) level>=58
+  talk Mokvar##16012
+  accept A Supernatural Device##8923 |goto Orgrimmar 34.95,38.29
+step
   note Trull Failbane in Felwood wants you to hunt 13 Moontouched Owlbeasts.
   kill Moontouched Owlbeast##7453 |q 4741 |goto Winterspring 64.15,22.9
 step
-  only haveq(4741)
   talk Trull Failbane##10306
   turnin Wild Guardians##4741 |goto Felwood 34.73,52.79
 step
-  only completed(4741) level>=52
   talk Trull Failbane##10306
   accept Wild Guardians##4721 |goto Felwood 34.73,52.79
 step
-  only haveq(4721)
   note Trull Failbane in Felwood wants you to hunt 10 Berserk Owlbeasts in Winterspring.
   kill Berserk Owlbeast##7454 |q 4721 |goto Winterspring 65.67,22.28
 step
-  only haveq(4721)
   talk Trull Failbane##10306
   turnin Wild Guardians##4721 |goto Felwood 34.73,52.79
 step

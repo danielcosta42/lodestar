@@ -4,15 +4,11 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Zul'Farrak", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "ba69bb56",
+	rev = "599f2c29",
 }, [[
 step
   talk Yeh'kinya##8579
   accept Screecher Spirits##3520 |goto Tanaris 66.99,22.36
-step
-  only Mage
-  talk Garion Wendell##211033
-  accept A Lesson in Literacy##82084 |goto Stormwind City 48.94,86.54
 step
   talk Tran'rek##7876
   accept Scarab Shells##2865 |goto Tanaris 51.57,26.76
@@ -37,12 +33,6 @@ step
 step
   note Capture the spirits of 3 screechers in Feralas, then return to Yeh'kinya in Steamwheedle Port.
   use Screecher Spirit##8612 |q 3520 |goto Feralas 46.82,48.47 |tip {useit}
-step
-  only Mage
-  note Track down and collect the spellbook materials requested by the librarian.
-  collect Zukk'ash Resin##221361 |q 82084/2 |goto Feralas 78.01,64.14 |tip {dropsfrom}Zukk'ash Stinger, Zukk'ash Wasp, Zukk'ash Worker
-  collect Pristine Owlbeast Quill##221359 |q 82084/1 |goto The Hinterlands 29.72,55.26 |tip {dropsfrom}Vicious Owlbeast, Primitive Owlbeast, Savage Owlbeast
-  collect Farraki Papyrus##221360 |q 82084 |goto Zul'Farrak - Dungeon -1,-1 |tip {dropsfrom}Shallow Grave, Zul'Farrak Zombie
 step
   note Bring 5 Uncracked Scarab Shells to Tran'rek in Gadgetzan.
   collect 5 Uncracked Scarab Shell##9238 |q 2865 |goto Zul'Farrak - Dungeon -1,-1 |elite |tip {dropsfrom}Scarab
@@ -69,10 +59,6 @@ step
 step
   talk Yeh'kinya##8579
   turnin Screecher Spirits##3520 |goto Tanaris 66.99,22.36
-step
-  only Mage
-  talk Garion Wendell##211033
-  turnin A Lesson in Literacy##82084 |goto Stormwind City 48.94,86.54
 step
   talk Tran'rek##7876
   turnin Scarab Shells##2865 |goto Tanaris 51.57,26.76

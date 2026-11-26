@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Mulgore (29-30)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Stonetalon Mountains (26-30)",
-	rev = "6f7cf0d7",
+	next = "Leveling/Horde/Hillsbrad Foothills (32-40)",
+	rev = "baa99aac",
 }, [[
 step
   ding 24
@@ -71,6 +71,6 @@ step
   talk Mazu'kon##264074
   turnin Ancient Gurubashi Idol##96774 |goto Mulgore 32.5,20.66
 step
-  note {travel}Stonetalon Mountains
-  goto Stonetalon Mountains 47.22,64.04
+  note {travel}Hillsbrad Foothills
+  goto Hillsbrad Foothills 62.76,20.21
 ]])

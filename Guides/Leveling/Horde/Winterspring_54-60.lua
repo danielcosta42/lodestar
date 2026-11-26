@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Horde/Winterspring (54-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Mount Hyjal (57-60)",
-	rev = "309a471a",
+	rev = "d5638d82",
 }, [[
 step
   ding 53
@@ -258,6 +258,10 @@ step
   collect 5 Winterspring Owl Feather##281242 |q 98462/2 |goto Winterspring 60.91,33.9 |tip {dropsfrom}Winterspring Owl, Winterspring Screecher
   collect 5 Chillwind Chimaera Fur##281241 |q 98462 |goto Winterspring 44.88,42.22 |tip {dropsfrom}Fledgling Chillwind, Chillwind Chimaera, Chillwind Ravager
 step
+  only haveq(98462)
+  talk Evie Whirlbrew##11188
+  turnin Shroud of the Winter Wilds##98462 |goto Winterspring 60.75,37.78
+step
   only completed(5160) level>=57
   talk Haleh##10929
   accept Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
@@ -266,10 +270,6 @@ step
   note Speak with Haleh if you wish to continue.
   talk Haleh##10929
   turnin Wrath of the Blue Flight##5161 |goto Winterspring 54.55,51.2
-step
-  only haveq(98462)
-  talk Evie Whirlbrew##11188
-  turnin Shroud of the Winter Wilds##98462 |goto Winterspring 60.75,37.78
 step
   only completed(3908)
   note Seek out Gregan Brewspewer in northern Feralas. From him, learn how you may acquire the Videre Elixir, then return to Donova Snowden in Winterspring.
@@ -309,6 +309,16 @@ step
   talk Kernda##11558
   turnin Winterfall Ritual Totem##8471 |goto Felwood 65.5,3.52 |tip {turninat}Felwood
 step
+  only haveq(4987)
+  note Based on the magic enchanted within the Glyphed Oaken Branch, its delivery to the Cenarion Circle in Thunder Bluff is the next step the tauren druid sought. Seek one of the druids there for assistance.
+  talk Nara Wildmane##5770
+  turnin Glyphed Oaken Branch##4987 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
+step
+  only completed(4741) haveq(4883)
+  note Take the Blue-feathered Necklace to Nara Wildmane.
+  talk Nara Wildmane##5770
+  turnin Guarding Secrets##4883 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
+step
   only haveq(8923)
   note Take the Sealed Venom Container to Mux Manascrambler in Gadgetzan.
   talk Mux Manascrambler##16014
@@ -330,11 +340,6 @@ step
   only completed(3908)
   click A Conspicuous Gravestone##148504
   accept Linken's Sword##3914 |goto Tanaris 53.81,29.06
-step
-  only completed(4741) haveq(4883)
-  note Take the Blue-feathered Necklace to Nara Wildmane.
-  talk Nara Wildmane##5770
-  turnin Guarding Secrets##4883 |goto Thunder Bluff 75.65,31.61 |tip {turninat}Thunder Bluff
 step
   only haveq(5085)
   note Report back to Donova Snowden with your findings.

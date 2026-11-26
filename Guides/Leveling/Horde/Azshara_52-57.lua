@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Azshara (52-57)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Felwood (52-57)",
-	rev = "846bfc44",
+	next = "Leveling/Horde/Felwood (54-58)",
+	rev = "ad92f673",
 }, [[
 step
   ding 51
@@ -611,6 +611,10 @@ step
   talk Loramus Thalipedes##7783
   turnin Azsharite##3602 |goto Azshara 60.82,66.35
 step
+  only Warlock not completed(8420) not haveq(8420)
+  talk Impsy##14470
+  turnin An Imp's Request##8419 |goto Felwood 41.36,45.02 |tip {turninat}Felwood
+step
   note Speak with Nazeer Bloodspike in Brackenwall Village.
   talk Nazeer Bloodpike##4791
   turnin The Missing Kor'kron##95283 |goto Dustwallow Marsh 35.21,30.66 |tip {turninat}Dustwallow Marsh
@@ -713,14 +717,6 @@ step
   talk Jediga##8587
   turnin Jes'rimon's Payment to Jediga##3563 |goto Azshara 22.56,51.42
 step
-  only Warlock not completed(8420) not haveq(8420)
-  talk Impsy##14470
-  turnin An Imp's Request##8419 |goto Felwood 41.36,45.02 |tip {turninat}Felwood
-step
-  note Speak to Gorn One Eye in Timbermaw Hold and ask him to provide reinforcements.
-  talk Gorn One Eye##11555
-  turnin Timbermaw Reinforcements##86798 |goto Felwood 65.18,2.68 |tip {turninat}Felwood
-step
-  note {travel}Felwood
-  goto Felwood 50.93,85.01
+  note {travel}The Barrens
+  goto The Barrens 62.45,38.73
 ]])

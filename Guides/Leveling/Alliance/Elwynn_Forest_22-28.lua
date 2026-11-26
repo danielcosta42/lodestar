@@ -1,18 +1,14 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (21-28)", {
+ns:RegisterGuide("Leveling/Alliance/Elwynn Forest (22-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Duskwood (30-35)",
-	rev = "5c2f14eb",
+	rev = "661e39f5",
 }, [[
 step
-  ding 20
-step
-  only completed(373)
-  talk Baros Alexston##1646
-  accept Bazil Thredd##389 |goto Stormwind City 57.74,47.86
+  ding 21
 step
   only haveq(69)
   note Go to The Lion's Pride Inn to see if anyone there has heard of the name Stalvan.
@@ -23,7 +19,6 @@ step
   talk Smith Argus##514
   accept Return to Verner##119 |goto Elwynn Forest 41.71,65.54
 step
-  only level>=20
   talk Theocritus##313
   accept A Watchful Eye##94 |goto Elwynn Forest 65.22,69.71
 step
@@ -39,10 +34,6 @@ step
   note Return to Verner Osgood in Redridge. Give him the Crate of Horseshoes.
   talk Verner Osgood##415
   turnin Return to Verner##119 |goto Redridge Mountains 25.88,47.27 |tip {turninat}Redridge Mountains
-step
-  only completed(118)
-  talk Verner Osgood##415
-  accept Underbelly Scales##122 |goto Redridge Mountains 25.88,47.27
 step
   only completed(118)
   talk Verner Osgood##415
@@ -69,23 +60,12 @@ step
   talk Verner Osgood##415
   turnin Howling in the Hills##126 |goto Redridge Mountains 25.88,47.27 |tip {turninat}Redridge Mountains
 step
-  only completed(118)
-  note Gather 6 Underbelly Whelp Scales from Black Dragon Whelps, and bring them to Verner Osgood in Redridge.
-  collect 6 Underbelly Whelp Scale##1221 |q 122 |goto Redridge Mountains 38.42,77.96 |tip {dropsfrom}Black Dragon Whelp, Snarlflare
-step
-  only completed(118)
-  talk Verner Osgood##415
-  turnin Underbelly Scales##122 |goto Redridge Mountains 25.88,47.27 |tip {turninat}Redridge Mountains
-step
-  only haveq(94)
   note Take the Glyph of Azora to the Lion Statue near the Tower of Ilgalar in Redridge.
   turnin A Watchful Eye##94 |goto Redridge Mountains 79.4,46.83 |tip {turninat}Redridge Mountains
 step
-  only completed(94) level>=20
   click Old Lion Statue##31
   accept Looking Further##248 |goto Redridge Mountains 79.4,46.83
 step
-  only haveq(248)
   note Climb the intact watch tower beside Stonewatch Keep.
   turnin Looking Further##248 |goto Redridge Mountains 58.16,49.84 |tip {turninat}Redridge Mountains
 step
@@ -103,11 +83,6 @@ step
   note Speak to Lomac Gearstrip in Ironforge.
   talk Lomac Gearstrip##4081
   turnin An Old Colleague##1072 |goto Ironforge 72.08,51.88 |tip {turninat}Ironforge
-step
-  only completed(373)
-  note Speak with Warden Thelwater in the Stockade.
-  talk Warden Thelwater##1719
-  turnin Bazil Thredd##389 |goto Stormwind City 51.49,69.38 |tip {turninat}Stormwind City
 step
   only completed(69) haveq(70)
   talk Caretaker Folsom##297
@@ -240,7 +215,7 @@ step
   talk Brother Paxton##951
   accept Ink Supplies##345 |goto Elwynn Forest 49.61,40.41
 step
-  only completed(248) level>=27
+  only level>=27
   talk Theocritus##313
   accept Morganth##249 |goto Elwynn Forest 65.22,69.71
 step

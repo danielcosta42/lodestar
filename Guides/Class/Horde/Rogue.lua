@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Rogue", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "adb4a6b6",
+	rev = "820c6e7a",
 }, [[
 step
   talk Gornek##3143
@@ -287,34 +287,6 @@ step
   turnin Hinott's Assistance##2480 |goto Hillsbrad Foothills 61.63,19.19
 step
   only Rogue
-  click Dead Drop##410369
-  accept The Horn of Xelthos##78261 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  note Find The Horn of Xelthos inside of Shadowfang Keep. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone.
-  turnin The Horn of Xelthos##78261 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  click Dead Drop##410369
-  accept The Horn of Xelthos##78307 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  note Log
-  turnin The Horn of Xelthos##78307 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  talk Veenix##4086
-  accept Goblin Lockpicks##78270 |goto Stonetalon Mountains 58.22,51.74
-step
-  only Rogue
-  note Find The Horn of Xelthos inside of Shadowfang Keep. Then, return it to C's dead drop near Pyrewood Village.
-  collect Venture Co. Work Order##210187 |q 78270 |goto Stonetalon Mountains 65.24,53.45 |tip {dropsfrom}Venture Co. Deforester, Venture Co. Operator, Venture Co. Logger
-step
-  only Rogue
-  talk Veenix##4086
-  turnin Goblin Lockpicks##78270 |goto Stonetalon Mountains 58.22,51.74
-step
-  only Rogue
   talk Gest##3327 |goto Orgrimmar 42.69,51.48 |tip They give you the item that starts the quest.
   accept The Manor, Ravenholdt##6681 |goto Orgrimmar 42.69,51.48
 step
@@ -337,25 +309,6 @@ step
   only Rogue
   talk Myrokos Silentform##13085
   turnin Syndicate Sabotage##96779 |goto Alterac Mountains 84.93,80.38
-step
-  only Rogue
-  click Dead Drop##410369
-  accept The Eye of Bhossca##78676 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  note Find The Eye of Bhossca inside of the Scarlet Monastery. Then, return it to C's dead drop near Pyrewood Village. You must complete the job alone.
-  collect Eye of Bhossca##210953 |q 78676 |goto Silverpine Forest 47.12,70.99 |tip {dropsfrom}Padlocked Reliquary
-step
-  only Rogue
-  turnin The Eye of Bhossca##78676 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  click Dead Drop##410369
-  accept The Eye of Bhossca##78699 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  note Log
-  turnin The Eye of Bhossca##78699 |goto Silverpine Forest 47.12,70.99
 step
   only Rogue
   talk Myrokos Silentform##13085
@@ -409,53 +362,6 @@ step
   only Rogue
   talk Myrokos Silentform##13085
   turnin The Syndicate Sting##96786 |goto Alterac Mountains 84.93,80.38
-step
-  only Rogue
-  talk Zan Shivsproket##6777
-  accept One Last Drop##80454 |goto Alterac Mountains 85.95,79.96
-step
-  only Rogue
-  note Take the Modified Talisman to Caius' dead drop near Pyrewood Village.
-  turnin One Last Drop##80454 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  talk Fahrad##6707
-  accept Best Laid Plans##80453 |goto Alterac Mountains 84.45,80.32
-step
-  only Rogue
-  note Bring the Talisman of Kazdor to Zan Shivsprocket in the basement of Ravenholdt Manor.
-  talk Zan Shivsproket##6777
-  turnin Best Laid Plans##80453 |goto Alterac Mountains 85.95,79.96
-step
-  only Rogue
-  talk Fahrad##6707
-  accept Fool Me Twice##80526 |goto Alterac Mountains 84.45,80.32
-step
-  only Rogue
-  note Speak to Fahrad when you're ready to hear his plan.
-  talk Fahrad##6707
-  turnin Fool Me Twice##80526 |goto Alterac Mountains 84.45,80.32
-step
-  only Rogue
-  talk Fahrad##6707
-  accept The Talisman of Kazdor##80411 |goto Alterac Mountains 84.45,80.32
-step
-  only Rogue
-  note Find The Talisman of Kazdor inside of Zul'Farrak. Then, bring it to Fahrad at Ravenholdt Manor. You must complete the job alone.
-  collect Talisman of Kazdor##217609 |q 80411 |goto Alterac Mountains 84.45,80.32 |tip {dropsfrom}Spellbound War Chest
-step
-  only Rogue
-  talk Fahrad##6707
-  turnin The Talisman of Kazdor##80411 |goto Alterac Mountains 84.45,80.32
-step
-  only Rogue
-  click Dead Drop##410369
-  accept Biding Our Time##80455 |goto Silverpine Forest 47.12,70.99
-step
-  only Rogue
-  note Report back to Fahrad at Ravenholdt Manor.
-  talk Fahrad##6707
-  turnin Biding Our Time##80455 |goto Alterac Mountains 84.45,80.32
 step
   only Rogue
   talk Ormok##3328

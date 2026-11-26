@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Druid", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "e847cba7",
+	rev = "4e63f610",
 }, [[
 step
   talk Grull Hawkwind##2980
@@ -309,15 +309,6 @@ step
   note Return to Thunder Bluff and speak with Turak Runetotem on the Elder Rise.
   talk Turak Runetotem##3033
   turnin To Thunder Bluff##98362 |goto Thunder Bluff 76.48,27.22
-step
-  only Tauren Druid
-  talk Tyrisius##221985
-  accept Wisdom of the Guardians##81924 |goto Feralas 57.16,68.92
-step
-  only Tauren Druid
-  note Prove yourself to the guardian spirits of Feralas, Azshara, and the Hinterlands, then return to Tyrisius in Feralas.
-  talk Tyrisius##221985
-  turnin Wisdom of the Guardians##81924 |goto Feralas 57.16,68.92
 step
   only Druid
   talk Turak Runetotem##3033

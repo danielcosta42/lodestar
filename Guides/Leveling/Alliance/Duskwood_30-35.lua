@@ -5,7 +5,7 @@ ns:RegisterGuide("Leveling/Alliance/Duskwood (30-35)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Hillsbrad Foothills (29-32)",
-	rev = "b66965d2",
+	rev = "07420247",
 }, [[
 step
   ding 29
@@ -283,5 +283,5 @@ step
   turnin Call of Air##94789 |goto Arathi Highlands 59.84,27.57 |tip {turninat}Arathi Highlands
 step
   note {travel}Hillsbrad Foothills
-  goto Hillsbrad Foothills 51.19,66.45
+  goto Hillsbrad Foothills 46.43,50.2
 ]])

@@ -484,7 +484,22 @@ class Router:
                 self.quests[k] = dict(q, trigger=None)
         for k, q in self.quests.items():
             if int(k) in FORA_QUESTS or FORA_NOME.match(q["name"] or "") or set(q["startNpcs"]) & BIBLIOTECARIOS                     or (q["startObjects"] and q["startNpcs"] and set(q["startNpcs"]) <= TREINADORES_DE_LIVRO)                     or (int(k) in SEASON_OF_DISCOVERY and not q["classes"] & SOD_CLASSE_FICA):
-                self.quests[k] = dict(q, fora=True)
+                # `sod`: fora de todo guia, também dos especiais (generate_linear), que levam de volta
+                # as de masmorra de FORA_QUESTS (The Damp Note, Starving Arcane)
+                self.quests[k] = dict(q, fora=True, sod=int(k) in SEASON_OF_DISCOVERY and not q["classes"] & SOD_CLASSE_FICA)
+        # NPC que é o único a receber três ou mais quests das duas facções, dadas por NPC neutro, é
+        # neutro no Forever, seja qual for o `friendlyToFaction` do banco: Ketharas, o eremita de Mount
+        # Hyjal, vem "A" e recebe sete quests AH (Stolen Life, The Pact...) que a Horda também faz
+        so_recebe = defaultdict(int)
+        for k, q in self.quests.items():
+            if q["faction"] == "AH" and not q["races"] and len(q["endNpcs"]) == 1 and q["startNpcs"] and all(
+                    (self.npcs.get(str(n)) or {}).get("faction") in ("AH", None) for n in q["startNpcs"]):
+                so_recebe[q["endNpcs"][0]] += 1
+        neutros = [n for n, c in so_recebe.items() if c >= 3 and (self.npcs.get(str(n)) or {}).get("faction") in ("A", "H")]
+        if neutros:
+            self.npcs = dict(self.npcs)
+            for n in neutros:
+                self.npcs[str(n)] = dict(self.npcs[str(n)], faction="AH")
         # Item genérico que o banco só põe em mob de outra zona, 10+ níveis abaixo da quest: o Chunk
         # of Boar Meat de Paletusk Harvesting (41, Riverglades) só caía do Stonetusk Boar de Elwynn
         # (nível 5), e a Horda ia a Elwynn. O mob hostil da zona da quest que o título nomeia
@@ -2537,8 +2552,21 @@ class Router:
             q = self.quests.get(str(qid))
             # `exclude`: o que outro guia leva (sintonização); quem depende dela fica atrás
             # de `completed()`
-            if q and q["faction"] in fac_ok and not is_placeholder(q["name"]) and qid not in exclude:
+            if q and q["faction"] in fac_ok and not is_placeholder(q["name"]) and qid not in exclude \
+                    and not q.get("sod"):
                 sel[int(qid)] = q
+        # Season of Discovery (`sod`) não volta pela cadeia de pré-requisitos: quem só abre por uma
+        # delas sai junto (The Eye of Bhossca, do ladino, depois de The Horn of Xelthos)
+        tirada = {int(k) for k, q in self.quests.items() if q.get("sod")}
+        mudou = True
+        while mudou:
+            mudou = False
+            for qid in list(sel):
+                q = sel[qid]
+                if any(p in tirada for p in q["preGroup"]) or (q["preSingle"] and all(p in tirada for p in q["preSingle"])):
+                    del sel[qid]
+                    tirada.add(qid)
+                    mudou = True
         if not sel:
             return None, 0, []
         # Quest de classe dada só numa zona inicial é da raça que nasce ali, mesmo que

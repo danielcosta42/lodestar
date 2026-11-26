@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Duskwood (21-28)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Wetlands (21-29)",
-	rev = "509e6c4a",
+	next = "Leveling/Alliance/Wetlands (22-29)",
+	rev = "99a5fb49",
 }, [[
 step
   ding 20
@@ -45,10 +45,6 @@ step
   note Deliver the Blood-Stained Letter to Avette Fellwood in Duskwood.
   talk Avette Fellwood##228
   turnin Remember That I Love You##95161 |goto Duskwood 73.03,44.42
-step
-  only completed(145)
-  talk Lord Ello Ebonlocke##263
-  accept Messenger to Darkshire##146 |goto Duskwood 71.93,46.42
 step
   talk Elaine Carevin##633
   accept Raven Hill##163 |goto Duskwood 75.34,48.75
@@ -115,23 +111,6 @@ step
   talk Chef Grual##272
   accept Return to Jitters##240 |goto Duskwood 73.75,43.48
 step
-  note Return to Jitters with the Dusky Crab Cakes.
-  talk Jitters##288
-  turnin Return to Jitters##240 |goto Duskwood 18.38,56.37
-step
-  only hasitem(281143)
-  use Ira's Dagger##281143 |tip It starts the quest.
-  accept Ira's Dagger##96137
-step
-  only haveq(96137)
-  note Defeat 10 Young Black Ravagers and 7 Black Ravagers then return to Sirra Von'Indi in Darkshire for more information.
-  kill Young Black Ravager##923 |q 96137/1 |goto Duskwood 48.99,65.24
-  kill Black Ravager##628 |q 96137 |goto Duskwood 68.37,33.3
-step
-  only haveq(96137)
-  talk Sirra Von'Indi##268
-  turnin Ira's Dagger##96137 |goto Duskwood 72.62,47.62
-step
   talk Madame Eva##265
   accept The Totem of Infliction##101 |goto Duskwood 75.79,45.32
 step
@@ -156,11 +135,24 @@ step
   collect 5 Vial of Spider Venom##1130 |q 101/2 |goto Duskwood 41.79,20.83 |tip {dropsfrom}Venom Web Spider, Pygmy Venom Web Spider, Green Recluse
   collect 10 Skeleton Finger##2378 |q 101 |goto Duskwood 80.57,70.2 |tip {dropsfrom}Skeletal Warrior, Skeletal Horror, Skeletal Mage
 step
+  note Return to Jitters with the Dusky Crab Cakes.
+  talk Jitters##288
+  turnin Return to Jitters##240 |goto Duskwood 18.38,56.37
+step
+  only hasitem(281143)
+  use Ira's Dagger##281143 |tip It starts the quest.
+  accept Ira's Dagger##96137
+step
   note Go to Sven's Farm and find what was buried behind the old stump.
   turnin Sven's Revenge##95 |goto Duskwood 49.85,77.71
 step
   click Mound of loose dirt##59
   accept Sven's Camp##230 |goto Duskwood 49.85,77.71
+step
+  only haveq(96137)
+  note Defeat 10 Young Black Ravagers and 7 Black Ravagers then return to Sirra Von'Indi in Darkshire for more information.
+  kill Young Black Ravager##923 |q 96137/1 |goto Duskwood 48.99,65.24
+  kill Black Ravager##628 |q 96137 |goto Duskwood 68.37,33.3
 step
   talk Madame Eva##265
   turnin The Totem of Infliction##101 |goto Duskwood 75.79,45.32
@@ -168,6 +160,10 @@ step
   note Speak with Madame Eva.
   talk Madame Eva##265
   turnin Supplies from Darkshire##148 |goto Duskwood 75.79,45.32
+step
+  only haveq(96137)
+  talk Sirra Von'Indi##268
+  turnin Ira's Dagger##96137 |goto Duskwood 72.62,47.62
 step
   talk Madame Eva##265
   accept Ghost Hair Thread##149 |goto Duskwood 75.79,45.32
@@ -319,11 +315,6 @@ step
   talk Sven Yorgen##311
   accept Seeking Wisdom##269 |goto Duskwood 7.78,34.07
 step
-  only completed(145)
-  note Return to Magistrate Solomon with Lord Ebonlocke's letter of response.
-  talk Magistrate Solomon##344
-  turnin Messenger to Darkshire##146 |goto Redridge Mountains 24.9,44.45 |tip {turninat}Redridge Mountains
-step
   note Travel to the Moonbrook Schoolhouse and bring back any updated information about Stalvan to Clerk Daltry.
   turnin The Legend of Stalvan##67 |goto Westfall 41.51,66.73 |tip {turninat}Westfall
 step
@@ -409,5 +400,5 @@ step
   turnin Pristine Spider Silk##1940 |goto Stormwind City 51.84,83.51 |tip {turninat}Stormwind City
 step
   note {travel}Wetlands
-  goto Wetlands 8.55,55.74
+  goto Wetlands 8.32,58.57
 ]])

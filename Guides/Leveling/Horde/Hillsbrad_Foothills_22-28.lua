@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Hillsbrad Foothills (22-28)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Thousand Needles (26-35)",
-	rev = "919fc506",
+	next = "Leveling/Horde/Thousand Needles (27-33)",
+	rev = "14c77287",
 }, [[
 step
   ding 21
@@ -364,5 +364,5 @@ step
   turnin Silvia's Sword##79363 |goto Alterac Mountains 80.5,66.92 |tip {turninat}Alterac Mountains
 step
   note {travel}Thousand Needles
-  goto Thousand Needles 44.64,50.29
+  goto Thousand Needles 53.95,41.49
 ]])

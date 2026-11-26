@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Events/Alliance/Feast of Winter Veil", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "0b2e1fdd",
+	rev = "6da60812",
 }, [[
 step
   talk Wonderform Operator##15732
@@ -114,20 +114,6 @@ step
 step
   talk Greatfather Winter##13444
   turnin Treats for Greatfather Winter##7025 |goto Ironforge 33.2,65.41
-step
-  talk Wulmort Jinglepocket##216902
-  accept Stolen Winter Veil Treats##79482 |goto Ironforge 33.4,67
-step
-  note Locate the Smokywood Pastures investigator that has gone missing in the snowy regions of the Alterac Mountains.
-  talk Strange Snowman##216915
-  turnin Stolen Winter Veil Treats##79482 |goto Alterac Mountains 35.6,72.6
-step
-  talk Wulmort Jinglepocket##216902
-  accept Metzen the Reindeer##79492 |goto Ironforge 33.4,67
-step
-  note Find Metzen the Reindeer. Use the notes provided to you for clues as to where he is being held.
-  talk Wulmort Jinglepocket##216902
-  turnin Metzen the Reindeer##79492 |goto Ironforge 33.4,67
 step
   only not completed(7023) not haveq(7023)
   talk Wulmort Jinglepocket##13433

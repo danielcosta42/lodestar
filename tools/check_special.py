@@ -19,7 +19,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 from gen_special import troca_de_raide, walk_chain  # noqa: E402
-from router import CLASS_BIT, load_data, npc_amigo  # noqa: E402
+from router import CLASS_BIT, SEASON_OF_DISCOVERY, SOD_CLASSE_FICA, load_data, npc_amigo  # noqa: E402
 
 RAIZ = os.path.join(os.path.dirname(__file__), "..", "Guides")
 RACAS = {"Alliance": {"Human": 1, "Dwarf": 4, "NightElf": 8, "Gnome": 64, "Skyborne": 1 << 32},
@@ -115,6 +115,16 @@ def main():
     dadas = set()
     for f in glob.glob(os.path.join(RAIZ, "**", "*.lua"), recursive=True):
         dadas |= {int(x) for x in re.findall(r"accept [^\n]*?##(\d+)", open(f, encoding="utf-8").read())}
+    # Season of Discovery fora de todo guia, de qualquer categoria (a regra do roteador): só a do xamã
+    # fica. Voltava pelo guia de classe e pela cadeia de pré-requisitos das masmorras
+    for f in sorted(glob.glob(os.path.join(RAIZ, "**", "*.lua"), recursive=True)):
+        texto = open(f, encoding="utf-8").read()
+        m = REG.search(texto)
+        chave = m.group(1) if m else os.path.basename(f)
+        for x in sorted({int(x) for x in re.findall(r"accept [^\n]*?##(\d+)", texto)}):
+            q = Q.get(str(x)) or {}
+            if x in SEASON_OF_DISCOVERY and not (q.get("classes") or 0) & SOD_CLASSE_FICA:
+                probs.append("%s: quest do Season of Discovery %d %s" % (chave, x, q.get("name")))
     for cat, chave, ps in guias:
         fac = "Horde" if "/Horde/" in chave else "Alliance"
         nome = chave.rsplit("/", 1)[-1]

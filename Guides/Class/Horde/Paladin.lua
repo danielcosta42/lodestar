@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Horde/Paladin", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	rev = "87cdf645",
+	rev = "f05b30ad",
 }, [[
 step
   talk Shadow Priest Sarvis##1569
@@ -362,30 +362,6 @@ step
   talk Danitha Morr##246378
   turnin A Paladin's Steed##94971 |goto Tirisfal Glades 22.09,44.66
 step
-  only Paladin
-  talk Orthas##228619
-  accept Oi!##84318 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  note Find Orthas' missing hammer in Corrin's Crossing.
-  collect Ornate Warhammer##227686 |q 84318 |goto Eastern Plaguelands 53.47,58.59 |tip {dropsfrom}Orthas's Hammer
-step
-  only Paladin
-  talk Orthas##228619
-  turnin Oi!##84318 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  talk Orthas##228619
-  accept Oh No Ye Don't!##84319 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  note Orthas needs you to recover his missing armor from the corpse of an Abomination somewhere in Plaguewood.
-  collect Partially-Digested Plate Armor##227689 |q 84319 |goto Eastern Plaguelands 29.09,24.26 |tip {dropsfrom}Stitched Horror, Abomination
-step
-  only Paladin
-  talk Orthas##228619
-  turnin Oh No Ye Don't!##84319 |goto Eastern Plaguelands 53.44,58.52
-step
   only Undead Paladin
   talk Knight of Mourning##276110
   accept The Reliquary of Tyr##99187 |goto Tirisfal Glades 17.58,67.6
@@ -397,33 +373,6 @@ step
   only Undead Paladin
   talk Knight of Mourning##276110
   turnin The Reliquary of Tyr##99187 |goto Tirisfal Glades 17.58,67.6
-step
-  only Paladin
-  talk Orthas##228619
-  accept A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  note Obtain a Necrotic Runestone from Maleki the Pallid in Stratholme, then find the Rotting Dwarf Corpse near the Undercroft in southwestern Eastern Plaguelands.
-  collect Necrotic Runestone##227690 |q 84330 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
-step
-  only Paladin
-  talk Rotting Dwarf Corpse##229018
-  turnin A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 23.05,73.52
-step
-  only Paladin
-  talk Rotting Dwarf Corpse##229018
-  accept Send Me On Me Way##84414 |goto Eastern Plaguelands 23.05,73.52
-step
-  only Paladin
-  note Observe Orthas as he moves on from this world.
-  turnin Send Me On Me Way##84414 |goto Eastern Plaguelands 23.08,73.52
-step
-  only Paladin
-  click Mysterious Chest##462236
-  accept A Thane's Gratitude##84332 |goto Eastern Plaguelands 23.08,73.52
-step
-  only Paladin
-  turnin A Thane's Gratitude##84332 |goto Eastern Plaguelands 23.08,73.52
 step
   only Paladin
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.

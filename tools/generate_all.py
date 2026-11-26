@@ -438,7 +438,9 @@ def gen_faction(router, faction, level_max, min_quests):
         return f["z"]["area"] in ISOLADAS or (f["z"]["area"] in INICIAIS and f["z"]["primeira"])
     trilha = defaultdict(list)
     for f in feitos:
-        if not comeco(f) and f["lo"] < FORA_DA_CADEIA_DESDE:
+        # decidido aqui, com a faixa da passada 1, e usado também no `next` (a faixa final pode mudar)
+        f["fora_da_cadeia"] = not comeco(f) and f["lo"] >= FORA_DA_CADEIA_DESDE
+        if not comeco(f) and not f["fora_da_cadeia"]:
             trilha[continente(f["z"]["area"], faction)].append(f)
 
     def intercalada():
@@ -551,6 +553,42 @@ def gen_faction(router, faction, level_max, min_quests):
                 dono.setdefault(g["i"], s["i"])
         return out
 
+    def cinza_na_entrada(guia_de):
+        """Quest de todo jogador que já é cinza no nível em que a cadeia simulada entra no guia dela
+        (as de 40 do Alterac Mountains 40-53 da Aliança, que a cadeia faz no 52; as de 19-23 do Loch
+        Modan 20-38, feito no 40) vai para o guia anterior da mesma zona em que ainda não é, se os
+        pré-requisitos dela já estão lá e ninguém que depende dela vem antes; sem ele, sai, se nada
+        no guia depende dela."""
+        vivos = [g for g in ordem if any(g in gs for gs in trilha.values())]
+        lugar = {g["i"]: n for n, g in enumerate(vivos)}
+        dele = {f["i"]: f for f in vivos}
+        depende = defaultdict(set)
+        for q in guia_de:
+            for p in router.quests[str(q)]["preSingle"] + router.quests[str(q)]["preGroup"]:
+                depende[p].add(q)
+
+        def cinza_no(g, ql):
+            lv = int(g["nivel_entra"])
+            return lv - ql > faixa_verde(lv)
+        movidas, tiradas = 0, 0
+        for q in sorted(guia_de, key=lambda q: (router.quests[str(q)]["questLevel"] or 0, q)):
+            f, qq = dele.get(guia_de[q]), router.quests[str(q)]
+            ql = qq["questLevel"] or 0
+            if not f or "nivel_entra" not in f or ql <= 0 or not router.para_todos(qq) or not cinza_no(f, ql):
+                continue
+            pre = [lugar.get(guia_de[p], -1) for p in qq["preSingle"] + qq["preGroup"] if p in guia_de]
+            dep = [lugar.get(guia_de[d], len(vivos)) for d in depende[q] if d in guia_de]
+            alvos = [g for g in vivos[:lugar[f["i"]]] if g["z"]["area"] == f["z"]["area"] and "nivel_entra" in g
+                     and not cinza_no(g, ql) and all(n <= lugar[g["i"]] for n in pre)
+                     and all(n >= lugar[g["i"]] for n in dep)]
+            if alvos:
+                guia_de[q] = alvos[-1]["i"]
+                movidas += 1
+            elif not any(d in guia_de for d in depende[q]):
+                del guia_de[q]
+                tiradas += 1
+        print("  [%s] cinza na entrada simulada: %d para um guia anterior da zona, %d fora" % (faction, movidas, tiradas))
+
     def proximo(f):
         vivos = [g for g in ordem if any(g in gs for gs in trilha.values())]
         if f in vivos:
@@ -632,7 +670,9 @@ def gen_faction(router, faction, level_max, min_quests):
                         mudou = True
         # guia que a realocação esvaziou (Thousand Needles 44-44 ficava com uma
         # quest) se dissolve no vizinho da trilha — outra faixa da mesma zona antes
-        tamanho = Counter(guia_de.values())
+        # só conta a quest de todo jogador da facção: o Alterac Mountains 34-34 da Aliança tinha 7, 5
+        # delas de ladino, e o Thousand Needles 37-41 da Horda não tinha nenhuma para o orc e o tauren
+        tamanho = Counter(i for q, i in guia_de.items() if router.para_todos(router.quests[str(q)]))
         f = next((f for fs in trilha.values() for f in fs if tamanho[f["i"]] < min_quests), None)
         if not f:
             break
@@ -662,6 +702,8 @@ def gen_faction(router, faction, level_max, min_quests):
 
     print("  [%s] realocadas para guia mais adiante: %d"
           % (faction, sum(guia_de[q] != origem[q] for q in guia_de)))
+    if CADEIA == "sim":
+        cinza_na_entrada(guia_de)
     conj = defaultdict(set)
     for q, i in guia_de.items():
         conj[i].add(q)
@@ -678,7 +720,7 @@ def gen_faction(router, faction, level_max, min_quests):
     if CADEIA == "sim":
         seguinte = ramos(seguinte)
     for f in feitos:
-        if f["lo"] >= FORA_DA_CADEIA_DESDE and not comeco(f):
+        if f["fora_da_cadeia"]:
             seguinte[f["i"]] = None         # 60-60: fora da cadeia, ninguém aponta para ele
     por_i = {f["i"]: f for f in feitos}
 

@@ -78,7 +78,7 @@ com as quests de **Riverglades** (167), **Mount Hyjal** (159, níveis 56-60, `re
 **Shen'dralas** (41). Entram sem mudar a descoberta de zona: Riverglades vira `Riverglades (38-44)`
 na Aliança (103 quests) e `(39-43)` na Horda (86), entre Badlands e o conteúdo de 42+; Hyjal, `Mount
 Hyjal (56-59)` / `(57-60)` entre Winterspring e Silithus; Shen'dralas enche o `Desolace (42-45)`.
-Os guias de leveling passam de 85 para 93, e a cadeia de cada facção chega ao 60 na simulação de XP
+Os guias de leveling passam de 85 para 91, e a cadeia de cada facção chega ao 60 na simulação de XP
 (antes parava no 57-58). A auditoria da rota (cadeia, faixas, grind, cinza, travessias) está no
 relatório da regeração.
 
@@ -99,7 +99,15 @@ relatório da regeração.
   ladino de Redridge ia a Silverpine e a Shadowfang Keep sozinho (The Horn of Xelthos), o paladino de
   Stonetalon a Darkshore e Ashenvale (A Strange Artifact). Na faixa agora só fica o **xamã**, que já
   estava nos guias (Storm, Earth, and Fire, Grant's Shield). Os traces mostram jogadores fazendo
-  essas cadeias no Forever: se a rota de runa for desejada, o lugar é o guia de classe.
+  essas cadeias no Forever: se a rota de runa for desejada, o lugar é o guia de classe. A regra vale
+  para todo guia: a quest leva `sod` além de `fora`, e o `generate_linear` (classe, masmorra, evento)
+  a pula, com o que só abre por ela — antes o guia de classe trazia o Dead Drop do ladino, 16 do
+  paladino e Beach Bot, e Stratholme e Blackrock Spire as cópias do tier 0.5 do NPC 230319 (`fora`
+  inteiro não serve ali: FORA_QUESTS também tem as de masmorra, The Damp Note e Starving Arcane). O
+  `check_special.py` reprova quest da faixa sem o bit do xamã em qualquer guia.
+- **Ketharas (256222), o eremita de Mount Hyjal, vem "A" no banco** e é o único que recebe sete
+  quests AH dadas por NPC neutro (Stolen Life, The Pact...). O roteador trata como neutro o NPC que
+  é o único a receber 3+ quests assim — só ele no banco.
 - **Vagas do Forever**: "REUSEME" (98426, com giver em Riverglades) e "REUSE ME" (98338) são
   placeholder, como `<NYI>`.
 - **Item genérico de outra zona.** O Chunk of Boar Meat de Paletusk Harvesting (41, Riverglades) só
@@ -218,9 +226,15 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   cinza); o elfo noturno, Darkshore → The Barrens → Stonetalon. O morto-vivo não ramifica: só com
   Silverpine ficaria 2+ níveis abaixo, e segue por The Barrens 12-19. Os caminhos se juntam no
   primeiro guia que outro já tem — um guia só tem um `next`.
-- **Guia que começa no 59+ fica fora da cadeia** (`FORA_DA_CADEIA_DESDE`): `Alterac Mountains
-  (60-60)` da Aliança (a cadeia de Onyxia de Bolvar, o folheto da Darkmoon) e `Mulgore (59-60)` da
-  Horda são gerados, mas ninguém aponta para eles; o autopilot os oferece no 60.
+- **Guia que começa no 59+ fica fora da cadeia** (`FORA_DA_CADEIA_DESDE`, decidido com a faixa da
+  passada 1 e guardado em `fora_da_cadeia`): `Alterac Mountains (60-60)` da Aliança (a cadeia de
+  Onyxia de Bolvar, o folheto da Darkmoon) e `Mulgore (59-60)` da Horda são gerados, mas ninguém
+  aponta para eles; o autopilot os oferece no 60.
+- **Cinza na entrada simulada.** A quest de todo jogador que já é cinza no nível em que a cadeia
+  entra no guia dela vai para o guia anterior da mesma zona em que não é (com os pré-requisitos já
+  lá e nada que dependa dela antes); sem ele, sai, se nada depende dela. As de 19-23 do Loch Modan
+  20-38, feito no 40, foram para o Loch Modan 12-18; as de 40 do Alterac 40-53, feito no 52, saíram
+  (sobra o Alterac 45-53).
 - **O teto do guia é também o nível simulado de saída + 3** (`TETO_FOLGA`): quest que pede mais vai
   ao guia seguinte da trilha. As de montaria do tauren (40) saíram de Mulgore 29-30 para Desolace
   33-40.
@@ -231,7 +245,8 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
   acima da zona onde começa que continua cadeia de nível maior não sai como "poluente" dali: é ela
   que vai ao guia do pré-req (The Legend of Stalvan do baú de Westfall, req 22, vai a Duskwood;
   tirada, a cadeia de Stalvan sumia). Guia que fica com
-  menos de 6 quests se dissolve no vizinho da trilha — só num de nível até `BAND_GAP` dele: Mulgore
+  menos de 6 quests de todo jogador (`para_todos`: o Alterac 34-34 da Aliança tinha 7, 5 de ladino)
+  se dissolve no vizinho da trilha — só num de nível até `BAND_GAP` dele: Mulgore
   59-60 ia para Mulgore 29-40, que virava "29-59" com as de 59-60 mortas atrás de `level>=`; sem
   vizinho perto, as quests saem. Entrega noutra zona de que nada depende vai
   para o fim do guia (Flight to Auberdine, na chegada a Darkshore).
@@ -452,16 +467,16 @@ ingerimos o RestedXP: é CC BY-NC-SA, e o share-alike contaminaria tudo que deri
 
 | | |
 |---|---|
-| Guias de leveling | 93 (51 da Aliança, 42 da Horda; eram 85) |
-| Quests novas do Forever (id ≥ 86000) nos guias de leveling | **965 de 1.552** |
+| Guias de leveling | 91 (50 da Aliança, 41 da Horda; eram 85) |
+| Quests novas do Forever (id ≥ 86000) nos guias de leveling | **963 de 1.552** (1.049 em algum guia) |
 | — fora: entrega de Craftsman's Writ | 150 |
 | — fora: exigem profissão | 91 |
-| — fora: começam por item ou giver sem posição | 65 |
+| — fora: começam por item ou giver sem posição | 59 |
 | — fora: evento/repetível/campo de batalha | 53 |
-| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão, nível 60, fora da faixa...) | 177 |
-| `validate_guides.py` — ocorrências | **0** em 205 guias (leveling e especiais, regerados com o 1.1.6) |
-| `check_special.py` | **0** problemas em 68 guias |
-| `QuestLevels.lua` | 4.333 de 4.333 quests citadas, do `questLevel` do banco (antes, do pfQuest: 976 sem nível) |
+| — fora: outro (entrega sem spawn, zona 10+ níveis acima, item só de profissão, cinza na entrada, nível 60...) | 150 |
+| `validate_guides.py` — ocorrências | **0** em 201 guias (leveling e especiais, regerados com o 1.1.6) |
+| `check_special.py` | **0** problemas em 68 guias, e nenhuma quest do Season of Discovery fora do xamã em guia nenhum |
+| `QuestLevels.lua` | 4.232 de 4.232 quests citadas, do `questLevel` do banco (antes, do pfQuest: 976 sem nível) |
 
 Na 1.0.10 eram 513 de 995 quests novas em guia (leveling e especiais).
 | Cadeia `next` de cada zona inicial — accept que trava | **0** nos 8 caminhos, toda raça×classe |
@@ -525,10 +540,12 @@ vez de cair em outro. `generate_all.py` e `gen_special.py` refazem os diretório
   (Yagyin's Digest, Forbidden Knowledge, Reclaimed Treasures) e Riverglades pega Armory of Sunnyglade
   na mesma visita; adiar as entregas de Undercity pede um guia que vá lá até 5 níveis depois, e não
   há. A ordem já é monotônica: Badlands → Riverglades → Desolace 42-45 → Tanaris.
-- **Travessias.** A cadeia simulada tem 2 a 3 travessias a mais que a da mediana (humano 13, orc 12):
-  guias pequenos do outro continente (`Teldrassil (48-55)`, `Alterac Mountains (40-53)`) puxam a
-  viagem. Juntar guia pequeno ao vizinho do mesmo continente ou pesar o tamanho no prazo é o próximo
-  passo.
+- **Travessias.** A cadeia simulada tem 2 a 3 travessias a mais que a da mediana (humano 13, orc 12),
+  três delas entre 48 e 54 na Aliança (Searing Gorge → Teldrassil 48-55 → Tanaris 50-54 → Alterac
+  45-53 → Blasted Lands → Azshara). Impedir que guia pequeno (menos de 12 quests de todo jogador)
+  puxe a troca baixa o humano a 10, mas joga o bloco 50-60 dos Reinos do Leste para depois de
+  Silithus, no 60, e o grind sobe de 140k para 247k: falta juntar o guia pequeno ao vizinho do mesmo
+  continente.
 - **`QuestV2` do 70338.** O wago devolvia 503 quando o build entrou; ao voltar, subir `FOREVER` em
   `tools/import_forever.py` e rodar o "Regerar" (as tabelas de voo vêm do mesmo build).
 - **Masmorra nova sem mapa.** O QuestieDB não posiciona nada dentro de City of Dalaran, Excavation

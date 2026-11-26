@@ -1,52 +1,28 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Horde/Thousand Needles (26-35)", {
+ns:RegisterGuide("Leveling/Horde/Thousand Needles (27-33)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
 	next = "Leveling/Horde/Mulgore (29-30)",
-	rev = "329fc03a",
+	rev = "151d54f9",
 }, [[
 step
-  ding 25
+  ding 26
 step
-  only level>=25
   talk Dorn Plainstalker##2986
   accept Test of Faith##1149 |goto Thousand Needles 53.95,41.49
 step
-  only haveq(1149)
   note If you have faith, leap from the planks overlooking Thousand Needles.
   talk Dorn Plainstalker##2986
   turnin Test of Faith##1149 |goto Thousand Needles 53.95,41.49
 step
-  note {fp}Nyse
-  goto Thousand Needles 45.14,49.11 |tip {vendor}
-step
-  talk Hagar Lightninghoof##10539
-  accept Alien Egg##4821 |goto Thousand Needles 44.64,50.29
-step
-  note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
-  collect Alien Egg##12467 |q 4821 |goto Thousand Needles 52.34,55.25
-step
-  talk Hagar Lightninghoof##10539
-  turnin Alien Egg##4821 |goto Thousand Needles 44.64,50.29
-step
-  talk Hagar Lightninghoof##10539
-  accept Serpent Wild##4865 |goto Thousand Needles 44.64,50.29
-step
   kill Galak Messenger##10617 |goto Thousand Needles 39.43,33.1 |tip Loot the quest item here — it starts the quest.
   accept Assassination Plot##4881 |goto Thousand Needles 39.43,33.1
-step
-  note Report your findings to Motega Firemane.
-  talk Motega Firemane##10428
-  turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
 step
   note Warn Kanati Greycloud at Whitereach Post of the plot to kill him.
   talk Kanati Greycloud##10638
   turnin Assassination Plot##4881 |goto Thousand Needles 21.25,32.06
-step
-  talk Motega Firemane##10428
-  accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
 step
   talk Kanati Greycloud##10638
   accept Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
@@ -57,6 +33,15 @@ step
   talk Kanati Greycloud##10638
   turnin Protect Kanati Greycloud##4966 |goto Thousand Needles 21.25,32.06
 step
+  talk Pao'ka Swiftmountain##10427
+  accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
+step
+  note Escort Pao'ka Swiftmountain from Highperch, and then talk to Motega Firemane in Whitereach Post.
+  goto Thousand Needles 15.15,32.65 |tip Escort Pao'ka from Highperch
+step
+  talk Motega Firemane##10428
+  turnin Homeward Bound##4770 |goto Thousand Needles 21.54,32.35
+step
   only haveq(5881)
   note Maggran wishes you to deliver a letter to Grish Longrunner at the Great Lift in the Barrens.
   talk Grish Longrunner##12576
@@ -65,42 +50,40 @@ step
   talk Brave Moonhorn##10079
   accept Message to Freewind Post##4542 |goto Thousand Needles 32.24,22.17
 step
-  only level>=25
-  talk Lakota Windsong##10646
-  accept Free at Last##4904 |goto Thousand Needles 37.95,26.45
-step
-  only haveq(4904)
-  note Escort Lakota Windsong from the Darkcloud Pinnacle, and then talk to Thalia Amberhide at Freewind Post.
-  goto Thousand Needles 30.93,37.12 |tip Escort Lakota Windsong from the Darkcloud Pinnacle.
+  note {fp}Nyse
+  goto Thousand Needles 45.14,49.11 |tip {vendor}
 step
   note Bring the Urgent Message to Cliffwatcher Longhorn at Freewind Post.
   talk Cliffwatcher Longhorn##10537
   turnin Message to Freewind Post##4542 |goto Thousand Needles 45.67,50.74
 step
-  only haveq(4904)
-  talk Thalia Amberhide##10645
-  turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
-step
   talk Cliffwatcher Longhorn##10537
   accept Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
 step
-  only level>=25
+  talk Hagar Lightninghoof##10539
+  accept Alien Egg##4821 |goto Thousand Needles 44.64,50.29
+step
   talk Elu##10377
   accept Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
-  only level>=25
   click Wanted Poster - Arnak Grimtotem##176115
   accept WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 46,50.86
 step
-  only level>=25
   talk Jandia##4877
   accept Stolen Freewind Supplies##98069 |goto Thousand Needles 46.21,51.51
 step
-  only level>=25
   talk Jandia##4877
   accept Stop the Screeching##98070 |goto Thousand Needles 46.21,51.51
 step
-  only completed(1149) level>=25
+  note Return the Alien Egg to Hagar Lightninghoof in Freewind Post.
+  collect Alien Egg##12467 |q 4821 |goto Thousand Needles 52.34,55.25
+step
+  talk Hagar Lightninghoof##10539
+  turnin Alien Egg##4821 |goto Thousand Needles 44.64,50.29
+step
+  talk Hagar Lightninghoof##10539
+  accept Serpent Wild##4865 |goto Thousand Needles 44.64,50.29
+step
   talk Dorn Plainstalker##2986
   accept Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
 step
@@ -109,12 +92,12 @@ step
   kill Galak Wrangler##4093 |q 4841/2 |goto Thousand Needles 43.65,39.34
   kill Galak Scout##4094 |q 4841 |goto Thousand Needles 43.29,37.97
 step
-  note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
-  collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.47,35.43
+  note Report your findings to Motega Firemane.
+  talk Motega Firemane##10428
+  turnin Serpent Wild##4865 |goto Thousand Needles 21.54,32.35
 step
-  only haveq(5147)
-  note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
-  collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
+  talk Motega Firemane##10428
+  accept Sacred Fire##5062 |goto Thousand Needles 21.54,32.35
 step
   only level>=30
   talk Wizlo Bearingshiner##10941
@@ -125,82 +108,76 @@ step
   kill Enraged Panther##10992 |q 5151 |goto Thousand Needles 22.76,24.62 |elite
   collect Hypercapacitor Gizmo##12946 |q 5151 |goto Thousand Needles 22.76,24.62
 step
-  only haveq(4767)
+  only haveq(5151)
+  talk Wizlo Bearingshiner##10941
+  turnin Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
+step
   note Bring 10 Highperch Wyvern Eggs to Elu in Freewind Post.
   collect 10 Highperch Wyvern Egg##12356 |q 4767 |goto Thousand Needles 12.56,37.37
 step
-  only level>=25
-  talk Pao'ka Swiftmountain##10427
-  accept Homeward Bound##4770 |goto Thousand Needles 17.89,40.57
-step
-  only haveq(4770)
-  note Escort Pao'ka Swiftmountain from Highperch, and then talk to Motega Firemane in Whitereach Post.
-  goto Thousand Needles 15.15,32.65 |tip Escort Pao'ka from Highperch
-step
-  only haveq(1150)
   note Bring Grenka's Claw to Dorn Plainstalker in Thousand Needles.
   collect Grenka's Claw##5843 |q 1150 |goto Thousand Needles 26.6,55.8 |tip {dropsfrom}Grenka Bloodscreech
 step
-  only haveq(98069)
   note Bring 8 Stolen Freewind Supplies to Jandia in Freewind Post.
   collect 8 Stolen Freewind Supplies##279383 |q 98069 |goto Thousand Needles 26.81,52.16
 step
-  only haveq(98070)
   note Slay 5 Screeching Harpies, 5 Screeching Roguefeather Harpies and 5 Screeching Windcaller Harpies.
   kill Screeching Harpy##4100 |q 98070/1 |goto Thousand Needles 26.49,52.26
   kill Screeching Windcaller##4104 |q 98070/3 |goto Thousand Needles 26.31,53.67
   kill Screeching Roguefeather##4101 |q 98070 |goto Thousand Needles 27.35,51
 step
-  only haveq(4767)
   talk Elu##10377
   turnin Wind Rider##4767 |goto Thousand Needles 44.93,48.92
 step
   talk Cliffwatcher Longhorn##10537
   turnin Pacify the Centaur##4841 |goto Thousand Needles 45.67,50.74
 step
-  only haveq(5147)
-  talk Cliffwatcher Longhorn##10537
-  turnin WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
-step
-  only haveq(98069)
   talk Jandia##4877
   turnin Stolen Freewind Supplies##98069 |goto Thousand Needles 46.21,51.51
 step
-  only haveq(98070)
   talk Jandia##4877
   turnin Stop the Screeching##98070 |goto Thousand Needles 46.21,51.51
 step
   talk Cliffwatcher Longhorn##10537
   accept Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
 step
-  only haveq(1150)
   talk Dorn Plainstalker##2986
   turnin Test of Endurance##1150 |goto Thousand Needles 53.95,41.49
 step
-  only completed(1150) level>=30
+  only level>=30
   talk Dorn Plainstalker##2986
   accept Test of Strength##1151 |goto Thousand Needles 53.95,41.49
 step
+  note Gather 10 bushels of Incendia Agave, and then consult Magatha Grimtotem on Elder Rise in Thunderbluff.
+  collect 10 Incendia Agave##12732 |q 5062 |goto Thousand Needles 36.47,35.43
+step
   note Locate and retrieve the three Secret Notes in Darkcloud Pinnacle.
-  collect Secret Note #3##12768 |q 5064/3 |goto Thousand Needles 39.34,41.53 |tip {dropsfrom}Document Chest
   collect Secret Note #2##12766 |q 5064/2 |goto Thousand Needles 33.76,39.99 |tip {dropsfrom}Document Chest
+  collect Secret Note #3##12768 |q 5064/3 |goto Thousand Needles 39.34,41.53 |tip {dropsfrom}Document Chest
   collect Secret Note #1##12765 |q 5064 |goto Thousand Needles 31.79,32.58 |tip {dropsfrom}Document Chest
 step
-  only haveq(4770)
-  talk Motega Firemane##10428
-  turnin Homeward Bound##4770 |goto Thousand Needles 21.54,32.35
+  note Slay Arnak Grimtotem and bring proof of your deed to Cliffwatcher Longhorn in Freewind Post.
+  collect Arnak's Hoof##12884 |q 5147 |goto Thousand Needles 38.11,26.87 |tip {dropsfrom}Arnak Grimtotem
 step
-  only haveq(5151)
-  talk Wizlo Bearingshiner##10941
-  turnin Hypercapacitor Gizmo##5151 |goto Thousand Needles 21.43,32.55
+  talk Lakota Windsong##10646
+  accept Free at Last##4904 |goto Thousand Needles 37.95,26.45
+step
+  note Escort Lakota Windsong from the Darkcloud Pinnacle, and then talk to Thalia Amberhide at Freewind Post.
+  goto Thousand Needles 30.93,37.12 |tip Escort Lakota Windsong from the Darkcloud Pinnacle.
 step
   only haveq(1151)
   note Bring Fragments of Rok'Alim to Dorn Plainstalker in Thousand Needles.
   kill Rok'Alim the Pounder##4499 |q 1151 |goto Thousand Needles 17.1,38.1 |elite
   collect Fragments of Rok'Alim##5844 |q 1151 |goto Thousand Needles 17.1,38.1
 step
+  talk Thalia Amberhide##10645
+  turnin Free at Last##4904 |goto Thousand Needles 45.97,51.61
+step
   talk Cliffwatcher Longhorn##10537
   turnin Grimtotem Spying##5064 |goto Thousand Needles 45.67,50.74
+step
+  talk Cliffwatcher Longhorn##10537
+  turnin WANTED: Arnak Grimtotem##5147 |goto Thousand Needles 45.67,50.74
 step
   only haveq(1151)
   talk Dorn Plainstalker##2986
@@ -508,6 +485,10 @@ step
   talk Braug Dimspirit##4489
   turnin Test of Lore##1152 |goto Stonetalon Mountains 78.8,45.69 |tip {turninat}Stonetalon Mountains
 step
+  only completed(1152)
+  talk Braug Dimspirit##4489
+  accept Test of Lore##1154 |goto Stonetalon Mountains 78.8,45.69
+step
   only completed(1067)
   note Bring the Toxic Fogger to the Venture Co. sky port, then return to Apothecary Zamah.
   click Venture Co. Copter Pad##19594 |q 1086 |goto Stonetalon Mountains 66.51,45.48
@@ -518,6 +499,30 @@ step
 step
   talk Melor Stonehoof##3441
   turnin Steelsnap##1131 |goto Thunder Bluff 61.54,80.92 |tip {turninat}Thunder Bluff
+step
+  only haveq(1154)
+  note Find the Legacy of the Aspects and return it to Braug Dimspirit near the entrance to Talondeep Path in Stonetalon Mountains.
+  collect Legacy of the Aspects##5860 |q 1154 |goto Ashenvale 75.57,74.37 |tip {dropsfrom}The Legacy of the Aspects
+step
+  only haveq(1154)
+  talk Braug Dimspirit##4489
+  turnin Test of Lore##1154 |goto Stonetalon Mountains 78.8,45.69 |tip {turninat}Stonetalon Mountains
+step
+  only completed(1154)
+  talk Braug Dimspirit##4489
+  accept Test of Lore##6627 |goto Stonetalon Mountains 78.8,45.69
+step
+  only haveq(6627)
+  note Answer Braug Dimspirit's question successfully and then speak to him again. He will remain in Stonetalon Mountains when you are ready.
+  talk Braug Dimspirit##4489 |q 6627 |goto Stonetalon Mountains 78.8,45.69
+step
+  only haveq(6627)
+  talk Braug Dimspirit##4489
+  turnin Test of Lore##6627 |goto Stonetalon Mountains 78.8,45.69 |tip {turninat}Stonetalon Mountains
+step
+  only completed(6627)
+  talk Braug Dimspirit##4489
+  accept Test of Lore##1159 |goto Stonetalon Mountains 78.8,45.69
 step
   note {travel}Mulgore
   goto Mulgore 32.5,20.66

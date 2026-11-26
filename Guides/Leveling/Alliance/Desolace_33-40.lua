@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Alliance/Desolace (33-40)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	next = "Leveling/Alliance/Loch Modan (20-38)",
-	rev = "28feecfa",
+	next = "Leveling/Alliance/Loch Modan (37-39)",
+	rev = "2374e11b",
 }, [[
 step
   ding 32
@@ -26,6 +26,14 @@ step
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1458 |goto Desolace 66.2,9.63
 step
+  only completed(1453)
+  note Bring 10 Hatefury Claws, and 10 Hatefury Horns to Kreldig Ungor in Desolace.
+  collect 10 Hatefury Claw##6246 |q 1458 |goto Desolace 73.55,19.11 |tip {dropsfrom}Hatefury Rogue, Hatefury Trickster, Hatefury Felsworn
+step
+  only completed(1453)
+  talk Kreldig Ungor##5638
+  turnin Reagents for Reclaimers Inc.##1458 |goto Desolace 66.2,9.63
+step
   note Find and search Tyranis and Dalinda Malem's wagon in Desolace.
   turnin Vahlarriel's Search##1437 |goto Desolace 56.52,17.84
 step
@@ -35,13 +43,30 @@ step
   note Get the Sceptre of Light and then return it to Azore Aldamort at the tower in Ethel Rethor.
   collect Sceptre of Light##15750 |q 5741 |goto Desolace 55.17,30.15 |tip {dropsfrom}Burning Blade Seer
 step
-  only completed(1453)
-  note Bring 10 Hatefury Claws, and 10 Hatefury Horns to Kreldig Ungor in Desolace.
-  collect 10 Hatefury Claw##6246 |q 1458 |goto Desolace 73.55,19.11 |tip {dropsfrom}Hatefury Rogue, Hatefury Trickster, Hatefury Felsworn
+  talk Azore Aldamort##11863
+  turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
 step
-  only completed(1453)
-  talk Kreldig Ungor##5638
-  turnin Reagents for Reclaimers Inc.##1458 |goto Desolace 66.2,9.63
+  talk Cork Gizelton##11625
+  accept Bodyguard for Hire##5821 |goto Desolace 66.54,37.51
+step
+  note Escort the Gizelton Caravan past the Kolkar Centaur village. Talk with Smeed at Scrabblescrew's Camp for your reward.
+  goto Desolace 67.17,56.62 |tip Escort Gizelton Caravan past Kolkar Centaur Village
+step
+  talk Smeed Scrabblescrew##11596
+  turnin Bodyguard for Hire##5821 |goto Desolace 60.86,61.86
+step
+  talk Smeed Scrabblescrew##11596
+  accept Kodo Roundup##5561 |goto Desolace 60.86,61.86
+step
+  note Bring five Tamed Kodos and the Kodo Kombobulator back to Smeed Scrabblescrew at Scrabblescrew's Camp.
+  talk Smeed Scrabblescrew##11596
+  turnin Kodo Roundup##5561 |goto Desolace 60.86,61.86
+step
+  note Bring 15 Centaur Ears to Corporal Melkins at Nijel's Point in Desolace.
+  collect 15 Centaur Ear##6067 |q 1387 |goto Desolace 69.35,46.87 |tip {dropsfrom}Kolkar Centaur, Kolkar Scout, Kolkar Mauler
+step
+  talk Corporal Melkins##5752
+  turnin Centaur Bounty##1387 |goto Desolace 66.74,10.87
 step
   note Return the Malem Pendant to Vahlarriel Demonslayer in Desolace.
   talk Vahlarriel Demonslayer##5642
@@ -62,11 +87,6 @@ step
   only completed(1453)
   talk Kreldig Ungor##5638
   accept Reagents for Reclaimers Inc.##1459 |goto Desolace 66.2,9.63
-step
-  only completed(1453)
-  note Bring 7 vials of Scorpashi Venom and 3 Aged Kodo Hides to Kreldig Ungor in Desolace.
-  collect Scorpashi Venom##6248 |q 1459/1 |goto Desolace 65.46,27.9 |tip {dropsfrom}Scorpashi Snapper, Scorpashi Lasher, Scorpashi Venomlash
-  collect 3 Aged Kodo Hide##6249 |q 1459 |goto Desolace 51.95,56.1 |tip {dropsfrom}Aged Kodo
 step
   note Find Dalinda Malem in Desolace.
   talk Dalinda Malem##5644
@@ -93,42 +113,10 @@ step
   note Escort Dalinda Malem from Thunder Axe Fortress and then return to Vahlarriel Demonslayer in Desolace.
   goto Desolace 58.27,30.91 |tip Rescue Dalinda Malem
 step
-  talk Azore Aldamort##11863
-  turnin Sceptre of Light##5741 |goto Desolace 38.88,27.16
-step
-  talk Cork Gizelton##11625
-  accept Bodyguard for Hire##5821 |goto Desolace 66.54,37.51
-step
-  note Escort the Gizelton Caravan past the Kolkar Centaur village. Talk with Smeed at Scrabblescrew's Camp for your reward.
-  goto Desolace 67.17,56.62 |tip Escort Gizelton Caravan past Kolkar Centaur Village
-step
-  talk Smeed Scrabblescrew##11596
-  turnin Bodyguard for Hire##5821 |goto Desolace 60.86,61.86
-step
-  talk Smeed Scrabblescrew##11596
-  accept Kodo Roundup##5561 |goto Desolace 60.86,61.86
-step
-  note Bring five Tamed Kodos and the Kodo Kombobulator back to Smeed Scrabblescrew at Scrabblescrew's Camp.
-  talk Smeed Scrabblescrew##11596
-  turnin Kodo Roundup##5561 |goto Desolace 60.86,61.86
-step
-  note Gain a Friendly reputation with the Magram, then speak with Warug.
-  talk Warug##5398
-  turnin Brutal Politics##1385 |goto Desolace 74.97,68.16
-step
-  talk Warug##5398
-  accept Assault on the Kolkar##1386 |goto Desolace 74.97,68.16
-step
-  note Maintain your reputation with the Magram. Kill 12 Kolkar Centaurs, 12 Kolkar Scouts and 6 Kolkar Maulers, then return to Warug in the Magram Village in Desolace.
-  kill Kolkar Centaur##4632 |q 1386/1 |goto Desolace 69.35,46.87
-  kill Kolkar Scout##4633 |q 1386/2 |goto Desolace 68.62,45.66
-  kill Kolkar Mauler##4634 |q 1386 |goto Desolace 72.26,44.71
-step
-  note Bring 15 Centaur Ears to Corporal Melkins at Nijel's Point in Desolace.
-  collect 15 Centaur Ear##6067 |q 1387 |goto Desolace 69.35,46.87 |tip {dropsfrom}Kolkar Centaur, Kolkar Scout, Kolkar Mauler
-step
-  talk Corporal Melkins##5752
-  turnin Centaur Bounty##1387 |goto Desolace 66.74,10.87
+  only completed(1453)
+  note Bring 7 vials of Scorpashi Venom and 3 Aged Kodo Hides to Kreldig Ungor in Desolace.
+  collect Scorpashi Venom##6248 |q 1459/1 |goto Desolace 65.46,27.9 |tip {dropsfrom}Scorpashi Snapper, Scorpashi Lasher, Scorpashi Venomlash
+  collect 3 Aged Kodo Hide##6249 |q 1459 |goto Desolace 51.95,56.1 |tip {dropsfrom}Aged Kodo
 step
   talk Vahlarriel Demonslayer##5642
   turnin Return to Vahlarriel##1440 |goto Desolace 66.44,11.82
@@ -154,11 +142,12 @@ step
   talk Uthek the Wise##5397
   accept Raid on the Kolkar##1384 |goto Desolace 36.22,79.25
 step
+  note Gain a Friendly reputation with the Magram, then speak with Warug.
   talk Warug##5398
-  turnin Assault on the Kolkar##1386 |goto Desolace 74.97,68.16
+  turnin Brutal Politics##1385 |goto Desolace 74.97,68.16
 step
   talk Warug##5398
-  accept Broken Tears##1369 |goto Desolace 74.97,68.16
+  accept Assault on the Kolkar##1386 |goto Desolace 74.97,68.16
 step
   only completed(1371)
   talk Warug##5398
@@ -166,6 +155,17 @@ step
 step
   note Maintain your reputation with the Gelkis, and bring 10 Crude Charms to Uthek the Wise in the Gelkis Village in Desolace.
   collect 10 Crude Charm##6079 |q 1384 |goto Desolace 69.35,46.87 |tip {dropsfrom}Kolkar Centaur, Kolkar Scout, Kolkar Mauler
+step
+  note Maintain your reputation with the Magram. Kill 12 Kolkar Centaurs, 12 Kolkar Scouts and 6 Kolkar Maulers, then return to Warug in the Magram Village in Desolace.
+  kill Kolkar Centaur##4632 |q 1386/1 |goto Desolace 69.35,46.87
+  kill Kolkar Scout##4633 |q 1386/2 |goto Desolace 68.62,45.66
+  kill Kolkar Mauler##4634 |q 1386 |goto Desolace 72.26,44.71
+step
+  talk Warug##5398
+  turnin Assault on the Kolkar##1386 |goto Desolace 74.97,68.16
+step
+  talk Warug##5398
+  accept Broken Tears##1369 |goto Desolace 74.97,68.16
 step
   talk Uthek the Wise##5397
   turnin Raid on the Kolkar##1384 |goto Desolace 36.22,79.25
@@ -190,12 +190,6 @@ step
   talk Warug##5398
   turnin Khan Shaka##1375 |goto Desolace 74.97,68.16
 step
-  talk Rigger Gizelton##11626
-  accept Gizelton Caravan##5943 |goto Desolace 45.4,75.29
-step
-  note Escort the Gizelton Caravan through Mannoroc Coven. Talk with Smeed at Scrabblescrew's Camp for your reward.
-  goto Desolace 55.69,67.79 |tip Escort Gizelton Caravan past Mannoroc Coven
-step
   talk Uthek the Wise##5397
   turnin Stealing Supplies##1370 |goto Desolace 36.22,79.25
 step
@@ -207,6 +201,12 @@ step
   note Maintain your reputation with the Gelkis, and bring Tears of Theradras back to Uthek the Wise in Gelkis Village.
   talk Uthek the Wise##5397
   turnin A Cleansing Cry##93044 |goto Desolace 36.22,79.25
+step
+  talk Rigger Gizelton##11626
+  accept Gizelton Caravan##5943 |goto Desolace 45.4,75.29
+step
+  note Escort the Gizelton Caravan through Mannoroc Coven. Talk with Smeed at Scrabblescrew's Camp for your reward.
+  goto Desolace 55.69,67.79 |tip Escort Gizelton Caravan past Mannoroc Coven
 step
   talk Smeed Scrabblescrew##11596
   turnin Gizelton Caravan##5943 |goto Desolace 60.86,61.86
@@ -256,14 +256,6 @@ step
   accept The Karnitol Shipwreck##1454 |goto Desolace 66.2,9.63
 step
   only completed(1453)
-  talk Kreldig Ungor##5638
-  accept Reagents for Reclaimers Inc.##1466 |goto Desolace 66.2,9.63
-step
-  only not completed(93225) not haveq(93225)
-  talk Captain Pentigast##5396
-  accept Carved Centaur Totems##93224 |goto Desolace 66.66,10.93
-step
-  only completed(1453)
   note Find Karnitol's Chest in Desolace.
   turnin The Karnitol Shipwreck##1454 |goto Desolace 36.11,30.45
 step
@@ -283,6 +275,14 @@ step
   only completed(1453)
   talk Kreldig Ungor##5638
   accept The Karnitol Shipwreck##1456 |goto Desolace 66.2,9.63
+step
+  only completed(1453)
+  talk Kreldig Ungor##5638
+  accept Reagents for Reclaimers Inc.##1466 |goto Desolace 66.2,9.63
+step
+  only not completed(93225) not haveq(93225)
+  talk Captain Pentigast##5396
+  accept Carved Centaur Totems##93224 |goto Desolace 66.66,10.93
 step
   only not completed(93225) not haveq(93225)
   note Acquire 5 Carved Centaur Totems by slaying centaur of any clan throughout Desolace, then return them to Captain Pentigast at Nijel's Point.
@@ -388,6 +388,26 @@ step
   talk Lelanai##4730
   accept Your First Feline Friend##95511 |goto Darnassus 38.28,15.36
 step
-  note {travel}Loch Modan
-  goto Loch Modan 32.63,49.74
+  only haveq(98313)
+  note Bring the Whelgar Relic Package to Historian Karnik in Ironforge.
+  talk Historian Karnik##2916
+  turnin For Further Study##98313 |goto Ironforge 77.54,11.82 |tip {turninat}Ironforge
+step
+  only completed(1453)
+  note Bring Karnitol's Satchel to Roetten Stonehammer in Ironforge.
+  talk Roetten Stonehammer##5637
+  turnin The Karnitol Shipwreck##1457 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+step
+  only completed(1453)
+  note Bring Leftwitch's Package back to Roetten Stonehammer in Ironforge.
+  talk Roetten Stonehammer##5637
+  turnin Reagents for Reclaimers Inc.##1467 |goto Ironforge 69.95,21.26 |tip {turninat}Ironforge
+step
+  only haveq(98300)
+  note Deliver Howin's Missive to King Magni Bronzebeard in Ironforge.
+  talk King Magni Bronzebeard##2784
+  turnin Word to Ironforge##98300 |goto Ironforge 39.09,56.2 |tip {turninat}Ironforge
+step
+  note {travel}Ironforge
+  goto Ironforge 74.64,11.74
 ]])

@@ -4,8 +4,8 @@ if not ns then return end
 ns:RegisterGuide("Leveling/Horde/Eastern Plaguelands (56-60)", {
 	faction = "Horde",
 	author = "Lodestar Generator",
-	next = "Leveling/Horde/Moonglade (55-60)",
-	rev = "6c91e9e0",
+	next = "Leveling/Horde/Winterspring (54-60)",
+	rev = "0431d048",
 }, [[
 step
   ding 55
@@ -439,6 +439,6 @@ step
   note Bring Joseph's Key to Joseph's Chest.
   turnin Hidden Treasures##5942 |goto Eastern Plaguelands 30.92,77.78
 step
-  note {travel}Moonglade
-  goto Moonglade 56.21,30.64
+  note {travel}Winterspring
+  goto Winterspring 61.12,38.43
 ]])

@@ -1,42 +1,17 @@
 -- AUTO-GERADO pelo roteador Lodestar. Fonte: QuestieDB do Forever (dados abertos).
 local ADDON, ns = ...
 if not ns then return end
-ns:RegisterGuide("Leveling/Alliance/Alterac Mountains (40-53)", {
+ns:RegisterGuide("Leveling/Alliance/Alterac Mountains (45-53)", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
 	next = "Leveling/Alliance/Blasted Lands (50-55)",
-	rev = "f265c009",
+	rev = "f844a263",
 }, [[
 step
   ding 31
 step
-  only level>=40
-  talk Count Remington Ridgewell##2285
-  accept The Perenolde Tiara##543 |goto Stormwind City 76.94,47.83
-step
-  only Warrior completed(1791)
-  talk Bath'rah the Windwatcher##6176
-  accept Cyclonian##1712 |goto Alterac Mountains 80.5,66.92
-step
   collect Worn Wooden Chest##1765 |goto Alterac Mountains 39.18,14.66 |tip Loot the quest item here — it starts the quest.
   accept The Ensorcelled Parchment##551 |goto Alterac Mountains 39.18,14.66
-step
-  only haveq(543)
-  note Bring the Perenolde Tiara to Remington Ridgewell in Stormwind.
-  kill Grel'borg the Miser##2417 |q 543 |goto Alterac Mountains 35.58,54.42 |elite
-  collect Perenolde Tiara##3684 |q 543 |goto Alterac Mountains 35.58,54.42
-step
-  only level>=40
-  talk Archmage Timear##31439
-  accept Ancient Gurubashi Secrets##97130 |goto Alterac Mountains 15.37,74.09
-step
-  only haveq(97130)
-  note Recover an Ancient Gurubashi Idol from the Drowned City.
-  collect Ancient Gurubashi Idol##276894 |q 97130 |goto Alterac Mountains 15.37,74.09 |elite |tip {dropsfrom}Deathless Marrow
-step
-  only haveq(97130)
-  talk Archmage Timear##31439
-  turnin Ancient Gurubashi Secrets##97130 |goto Alterac Mountains 15.37,74.09
 step
   only level>=45
   talk Ranath Nightstride##268425
@@ -49,6 +24,10 @@ step
   only haveq(96771)
   talk Ranath Nightstride##268425
   turnin Vengeance of the Highborne##96771 |goto Alterac Mountains 17.8,65.95
+step
+  only Warrior completed(1791)
+  talk Bath'rah the Windwatcher##6176
+  accept Cyclonian##1712 |goto Alterac Mountains 80.5,66.92
 step
   only level>=53
   talk Archmage Lan'dalock##20735
@@ -66,31 +45,9 @@ step
   talk Orphan Matron Aria##34365
   accept The Orphan##96797 |goto Alterac Mountains 21.62,73.18
 step
-  only haveq(543)
-  talk Count Remington Ridgewell##2285
-  turnin The Perenolde Tiara##543 |goto Stormwind City 76.94,47.83 |tip {turninat}Stormwind City
-step
-  only Rogue level>=50
-  talk Osborne the Night Man##918
-  accept A Simple Request##8233 |goto Stormwind City 77.43,65.31
-step
-  only not completed(96376) not completed(96379) not haveq(96376) not haveq(96379) level>=48
-  talk Renzik "The Shiv"##6946
-  accept State Secrets##96377 |goto Stormwind City 78.29,71.14
-step
-  only not completed(96376) not completed(96379) not haveq(96376) not haveq(96379) haveq(96377)
-  collect Document Box##274041 |q 96377 |goto Stormwind City 78.29,71.14
-step
-  only not completed(96376) not completed(96379) not haveq(96376) not haveq(96379) haveq(96377)
-  talk Renzik "The Shiv"##6946
-  turnin State Secrets##96377 |goto Stormwind City 78.29,71.14 |tip {turninat}Stormwind City
-step
   note Take the Ensorcelled Parchment to Loremaster Dibbs in Southshore.
   talk Loremaster Dibbs##2277
   turnin The Ensorcelled Parchment##551 |goto Hillsbrad Foothills 50.57,57.09 |tip {turninat}Hillsbrad Foothills
-step
-  talk Loremaster Dibbs##2277
-  accept Stormpike's Deciphering##554 |goto Hillsbrad Foothills 50.57,57.09
 step
   only Warrior completed(1791)
   note Bring the items on Bath'rah's Parchment to Bath'rah the Windwatcher in Alterac.
@@ -102,31 +59,26 @@ step
   talk Bath'rah the Windwatcher##6176
   turnin Cyclonian##1712 |goto Alterac Mountains 80.5,66.92
 step
-  only Warrior completed(1791) level>=40
+  only Warrior completed(1791)
   talk Bath'rah the Windwatcher##6176
   accept The Summoning##1713 |goto Alterac Mountains 80.5,66.92
 step
-  only Warrior completed(1791) haveq(1713)
+  only Warrior completed(1791)
   note Bring the Whirlwind Heart to Bath'rah Windwatcher.
   kill Cyclonian##6239 |q 1713 |goto Alterac Mountains 80.32,62.14 |elite
   collect Whirlwind Heart##6894 |q 1713 |goto Alterac Mountains 80.32,62.14
 step
-  only Warrior completed(1791) haveq(1713)
+  only Warrior completed(1791)
   talk Bath'rah the Windwatcher##6176
   turnin The Summoning##1713 |goto Alterac Mountains 80.5,66.92
 step
-  only Warrior completed(1791) completed(1713)
+  only Warrior completed(1791)
   talk Bath'rah the Windwatcher##6176
   accept Whirlwind Weapon##1792 |goto Alterac Mountains 80.5,66.92
 step
-  only Warrior completed(1791) haveq(1792)
+  only Warrior completed(1791)
   talk Bath'rah the Windwatcher##6176
   turnin Whirlwind Weapon##1792 |goto Alterac Mountains 80.5,66.92
-step
-  only Rogue haveq(8233)
-  note Speak with Lord Jorach Ravenholdt in Ravenholdt Manor.
-  talk Lord Jorach Ravenholdt##6768
-  turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88
 step
   only haveq(2990)
   note Bring Sharpbeak's Feather to Thadius Grimshade in the Blasted Lands.
@@ -150,10 +102,6 @@ step
   only completed(2977) level>=45
   talk Historian Karnik##2916
   accept A Future Task##2964 |goto Ironforge 77.54,11.82
-step
-  note Take the Ensorcelled Parchment to Prospector Stormpike in Ironforge.
-  talk Prospector Stormpike##1356
-  turnin Stormpike's Deciphering##554 |goto Ironforge 74.64,11.74 |tip {turninat}Ironforge
 step
   only completed(2977) haveq(2964)
   note Speak with High Explorer Magellas in Ironforge.
@@ -182,6 +130,26 @@ step
   note Speak to Xiggs Fuselighter and get a Standard Issue Flare Gun from him in Ironforge.
   talk Xiggs Fuselighter##8517
   turnin Signal for Pickup##3451 |goto Ironforge 70.87,94.56 |tip {turninat}Ironforge
+step
+  only Rogue level>=50
+  talk Osborne the Night Man##918
+  accept A Simple Request##8233 |goto Stormwind City 77.43,65.31
+step
+  only not completed(96376) not completed(96379) not haveq(96376) not haveq(96379) level>=48
+  talk Renzik "The Shiv"##6946
+  accept State Secrets##96377 |goto Stormwind City 78.29,71.14
+step
+  only not completed(96376) not completed(96379) not haveq(96376) not haveq(96379) haveq(96377)
+  collect Document Box##274041 |q 96377 |goto Stormwind City 78.29,71.14
+step
+  only not completed(96376) not completed(96379) not haveq(96376) not haveq(96379) haveq(96377)
+  talk Renzik "The Shiv"##6946
+  turnin State Secrets##96377 |goto Stormwind City 78.29,71.14 |tip {turninat}Stormwind City
+step
+  only Rogue haveq(8233)
+  note Speak with Lord Jorach Ravenholdt in Ravenholdt Manor.
+  talk Lord Jorach Ravenholdt##6768
+  turnin A Simple Request##8233 |goto Alterac Mountains 86.02,78.88
 step
   note {travel}Blasted Lands
   goto Blasted Lands 50.55,14.2

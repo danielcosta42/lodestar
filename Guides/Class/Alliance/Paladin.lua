@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Class/Alliance/Paladin", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "2c1ebc42",
+	rev = "aed26263",
 }, [[
 step
   talk Sten Stoutarm##658
@@ -384,33 +384,6 @@ step
   turnin The Tome of Valor##1793 |goto Stormwind City 50.48,47.49
 step
   only Paladin
-  click Strange Orb##409289
-  accept A Strange Artifact##78088 |goto Darkshore 56.22,26.44
-step
-  only Paladin
-  note Bring the Althalaxx Orb to Delgren the Purifier at Maestra's Post in Ashenvale.
-  talk Delgren the Purifier##3663
-  turnin A Strange Artifact##78088 |goto Ashenvale 26.2,38.7
-step
-  only Paladin
-  click Broken Warhammer##423703
-  accept The Broken Hammer##79939 |goto Desolace 52.72,84.76
-step
-  only Paladin
-  note Recover clues about the recent battle at Mannoroc Coven, and return the Broken Warhammer to Katherine the Pure in Stormwind.
-  talk Katherine the Pure##5492
-  turnin The Broken Hammer##79939 |goto Stormwind City 48.48,49.09
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  talk Katherine the Pure##5492
-  accept A Lost Brother##79940 |goto Stormwind City 48.48,49.09
-step
-  only not NightElf not Gnome not Skyborne Paladin
-  note Speak with Katherine the Pure and learn more about the broken hammer.
-  talk Katherine the Pure##5492
-  turnin A Lost Brother##79940 |goto Stormwind City 48.48,49.09
-step
-  only Paladin
   talk Katherine the Pure##5492
   accept Battle at the Mannoroc Coven##96438 |goto Stormwind City 48.48,49.09
 step
@@ -444,33 +417,6 @@ step
   note Speak to Duthorian Rall in Stormwind.
   talk Duthorian Rall##6171
   turnin The Tome of Nobility##1661 |goto Stormwind City 50.48,47.49
-step
-  only Paladin
-  talk Elrick##221575
-  accept Elrick, Paladin of the Silver Hand##81765 |goto Dustwallow Marsh 66.48,45.37
-step
-  only Paladin
-  note Speak with Elrick to learn more.
-  talk Innkeeper Janene##6272
-  turnin Elrick, Paladin of the Silver Hand##81765 |goto Dustwallow Marsh 66.59,45.22
-step
-  only Paladin
-  talk Katherine the Pure##5492
-  accept The Mysterious Merchant##81764 |goto Stormwind City 48.48,49.09
-step
-  only Paladin
-  note Travel to Theramore and find the mysterious merchant.
-  talk Elrick##221575
-  turnin The Mysterious Merchant##81764 |goto Dustwallow Marsh 66.48,45.37
-step
-  only Paladin
-  talk Aeonas the Vindicated##218160
-  accept Some Good News##81762 |goto Stormwind City 48.65,49.12
-step
-  only Paladin
-  note Speak with Katherine the Pure at the Cathedral of Light in Stormwind.
-  talk Katherine the Pure##5492
-  turnin Some Good News##81762 |goto Stormwind City 48.48,49.09
 step
   only not NightElf not Gnome not Skyborne Paladin
   talk Lord Grayson Shadowbreaker##928
@@ -515,49 +461,6 @@ step
   turnin Forging the Mightstone##8418 |goto Western Plaguelands 42.7,84.03
 step
   only Paladin
-  talk Gregory##221636
-  accept Materials of Significance##81790 |goto Felwood 44.66,51.95
-step
-  only Paladin
-  note Use the hints in Gregory's Note to determine where to find the magical components needed for the ritual. You will need help from allies for this.
-  kill Infernal Bodyguard##7135 |q 81790/1 |goto Felwood 41.47,42.16 |elite
-  collect Fiery Infernal Core##220166 |q 81790/1 |goto Felwood 41.47,42.16
-  collect Shimmering Grave Dust##220167 |q 81790/2 |tip {dropsfrom}Grave Mound
-  talk Plugger Spazzring##9499
-  buy Triple-Brewed Molten Lager##220168 |q 81790/3 |goto Blackrock Depths - Dungeon -1,-1
-  collect Symbol of Faith##220169 |q 81790
-step
-  only Paladin
-  talk Gregory##221636
-  turnin Materials of Significance##81790 |goto Felwood 44.66,51.95
-step
-  only Paladin
-  talk Aeonas the Vindicated##221587
-  accept The Ritual##81885 |goto Felwood 45.06,52.08
-step
-  only Paladin
-  note Speak with Gregory to begin the ritual.
-  talk Aeonas the Vindicated##221587
-  turnin The Ritual##81885 |goto Felwood 45.06,52.08
-step
-  only Paladin
-  talk Aeonas the Vindicated##221587
-  accept The Price of Hope##82135 |goto Felwood 45.06,52.08
-step
-  only Paladin
-  note Bring the Mannoroc Echoing Orb to Katherine the Pure in Stormwind.
-  talk Katherine the Pure##5492
-  turnin The Price of Hope##82135 |goto Stormwind City 48.48,49.09
-step
-  only Paladin
-  talk Brave Stonetorch##214529
-  accept A Newly Discovered Purpose...##81944 |goto Hillsbrad Foothills 67.48,14.8
-step
-  only Paladin
-  talk Brave Stonetorch##214529
-  turnin A Newly Discovered Purpose...##81944 |goto Hillsbrad Foothills 67.48,14.8
-step
-  only Paladin
   talk Katherine the Pure##5492
   accept In Search of Aeonas##96476 |goto Stormwind City 48.48,49.09
 step
@@ -570,57 +473,6 @@ step
   turnin In Search of Aeonas##96476 |goto Felwood 45.06,52.08
 step
   only Paladin
-  talk Orthas##228619
-  accept Oi!##84318 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  note Find Orthas' missing hammer in Corrin's Crossing.
-  collect Ornate Warhammer##227686 |q 84318 |goto Eastern Plaguelands 53.47,58.59 |tip {dropsfrom}Orthas's Hammer
-step
-  only Paladin
-  talk Orthas##228619
-  turnin Oi!##84318 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  talk Orthas##228619
-  accept Oh No Ye Don't!##84319 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  note Orthas needs you to recover his missing armor from the corpse of an Abomination somewhere in Plaguewood.
-  collect Partially-Digested Plate Armor##227689 |q 84319 |goto Eastern Plaguelands 29.09,24.26 |tip {dropsfrom}Stitched Horror, Abomination
-step
-  only Paladin
-  talk Orthas##228619
-  turnin Oh No Ye Don't!##84319 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  talk Orthas##228619
-  accept A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 53.44,58.52
-step
-  only Paladin
-  note Obtain a Necrotic Runestone from Maleki the Pallid in Stratholme, then find the Rotting Dwarf Corpse near the Undercroft in southwestern Eastern Plaguelands.
-  collect Necrotic Runestone##227690 |q 84330 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
-step
-  only Paladin
-  talk Rotting Dwarf Corpse##229018
-  turnin A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 23.05,73.52
-step
-  only Paladin
-  talk Rotting Dwarf Corpse##229018
-  accept Send Me On Me Way##84414 |goto Eastern Plaguelands 23.05,73.52
-step
-  only Paladin
-  note Observe Orthas as he moves on from this world.
-  turnin Send Me On Me Way##84414 |goto Eastern Plaguelands 23.08,73.52
-step
-  only Paladin
-  click Mysterious Chest##462236
-  accept A Thane's Gratitude##84332 |goto Eastern Plaguelands 23.08,73.52
-step
-  only Paladin
-  turnin A Thane's Gratitude##84332 |goto Eastern Plaguelands 23.08,73.52
-step
-  only Paladin
   collect A Dusty Tome##179547 |goto Dire Maul - Dungeon -1,-1 |tip Loot the quest item here — it starts the quest.
   accept The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
@@ -629,27 +481,15 @@ step
   talk Lorekeeper Mykos##14382
   turnin The Light and How To Swing It##7501 |goto Dire Maul - Dungeon -1,-1
 step
-  only not Dwarf not Gnome Paladin not completed(8908) not haveq(8908)
-  talk Deliana##230319
-  accept An Earnest Proposition##84150 |goto Dun Morogh 58.07,29.54
-step
-  only not Dwarf not Gnome Paladin not completed(8908) not haveq(8908)
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 84150 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only not Dwarf not Gnome Paladin not completed(8908) not haveq(8908)
-  talk Deliana##230319
-  turnin An Earnest Proposition##84150 |goto Dun Morogh 58.07,29.54
-step
-  only not Human not NightElf not Skyborne Paladin not completed(84150) not haveq(84150)
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   accept An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
 step
-  only not Human not NightElf not Skyborne Paladin not completed(84150) not haveq(84150)
+  only Paladin not completed(84150) not haveq(84150)
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
   collect 15 Winterspring Blood Sample##21928 |q 8908 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
 step
-  only not Human not NightElf not Skyborne Paladin not completed(84150) not haveq(84150)
+  only Paladin not completed(84150) not haveq(84150)
   talk Deliana##16013
   turnin An Earnest Proposition##8908 |goto Ironforge 43.53,52.64
 step

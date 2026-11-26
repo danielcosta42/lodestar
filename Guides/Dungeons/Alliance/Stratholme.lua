@@ -4,7 +4,7 @@ if not ns then return end
 ns:RegisterGuide("Dungeons/Alliance/Stratholme", {
 	faction = "Alliance",
 	author = "Lodestar Generator",
-	rev = "49d18260",
+	rev = "d7cd1204",
 }, [[
 step
   talk Tirion Fordring##1855
@@ -16,35 +16,8 @@ step
   talk Tirion Fordring##1855
   accept Carrion Grubbage##5544 |goto Eastern Plaguelands 5.16,35.57
 step
-  only Paladin
-  talk Orthas##228619
-  accept A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 53.44,58.52
-step
-  only NightElf Druid not completed(8905) not haveq(8905)
-  talk Deliana##230319
-  accept An Earnest Proposition##84147 |goto Dun Morogh 58.07,29.54
-step
-  only Paladin not completed(8908) not haveq(8908)
-  talk Deliana##230319
-  accept An Earnest Proposition##84150 |goto Dun Morogh 58.07,29.54
-step
-  talk Deliana##230319
-  accept An Earnest Proposition##84151 |goto Dun Morogh 58.07,29.54
-step
-  talk Deliana##230319
-  accept Just Compensation##84166 |goto Dun Morogh 58.07,29.54
-step
-  talk Deliana##230319
-  accept Just Compensation##84169 |goto Dun Morogh 58.07,29.54
-step
   talk Deliana##230319
   accept An Earnest Proposition##97447 |goto Dun Morogh 58.07,29.54
-step
-  talk Anthion Harmon##16016
-  accept Anthion's Parting Words##84181 |goto Eastern Plaguelands 26.11,11.3
-step
-  talk Anthion Harmon##16016
-  accept Anthion's Parting Words##84184 |goto Eastern Plaguelands 26.11,11.3
 step
   talk Leonid Barthalomew the Revered##11036
   accept Houses of the Holy##5243 |goto Eastern Plaguelands 71.89,48.29
@@ -89,37 +62,8 @@ step
   note Seek out the Carrion Grubs and Devourers of the region. Slay them and harvest their meat. Return to Tirion Fordring when you have gathered 15 Slabs of Carrion Worm Meat.
   collect 15 Slab of Carrion Worm Meat##13853 |q 5544 |goto Eastern Plaguelands 42.91,55.69 |tip {dropsfrom}Carrion Grub, Carrion Devourer
 step
-  only Paladin
-  note Obtain a Necrotic Runestone from Maleki the Pallid in Stratholme, then find the Rotting Dwarf Corpse near the Undercroft in southwestern Eastern Plaguelands.
-  collect Necrotic Runestone##227690 |q 84330 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Maleki the Pallid
-step
-  only NightElf Druid not completed(8905) not haveq(8905)
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Wildheart Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 84147 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  only Paladin not completed(8908) not haveq(8908)
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Lightforge Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 84150 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with 1 set of Devout Bracers to Deliana in Ironforge.
-  collect 15 Winterspring Blood Sample##21928 |q 84151 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  note Bring a Lightforge Belt and a set of Lightforge Gauntlets to Deliana in Ironforge.
-  collect Lightforge Belt##16723 |q 84166 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Rockwing Gargoyle, Rockwing Screecher, Crimson Guardsman
-step
-  note Bring a Dreadmist Belt and a set of Dreadmist Wraps to Deliana in Ironforge.
-  collect Dreadmist Belt##16702 |q 84169 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Thuzadin Shadowcaster, Thuzadin Necromancer, Crimson Conjuror
-step
   note Acquire 15 Winterspring Blood Samples and 20 gold and bring them along with a set of Bindings of the Elements to Deliana in Ironforge.
   collect 15 Winterspring Blood Sample##21928 |q 97447 |goto Winterspring 51.65,11.34 |tip {dropsfrom}Frostsaber Cub, Frostsaber, Frostsaber Stalker
-step
-  note Return to Deliana in Ironforge with a set of Magister's Boots, Magister's Leggings and Magister's Mantle.
-  collect Magister's Boots##16682 |q 84181/1 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Hearthsinger Forresten
-  collect Magister's Leggings##16687 |q 84181/2 |goto Stratholme - Dungeon -1,-1 |elite |tip {dropsfrom}Baron Rivendare
-  collect Magister's Mantle##16689 |q 84181 |tip Crafted or bought.
-step
-  note Return to Deliana in Ironforge with a set of Shadowcraft Boots, Shadowcraft Pants and Shadowcraft Spaulders.
-  collect Shadowcraft Boots##16711 |q 84184 |goto Scholomance - Dungeon -1,-1 |elite |tip {dropsfrom}Rattlegore
 step
   note Travel to Stratholme, in the north. Search the supply crates that litter the city and recover 5 Stratholme Holy Water. Return to Leonid Barthalomew the Revered when you have collected enough of the blessed fluid.
   collect 5 Stratholme Holy Water##13180 |q 5243 |goto Stratholme - Dungeon -1,-1 |tip {dropsfrom}Supply Crate, Stratholme Supply Crate
@@ -161,35 +105,8 @@ step
   talk Tirion Fordring##1855
   turnin Carrion Grubbage##5544 |goto Eastern Plaguelands 5.16,35.57
 step
-  only Paladin
-  talk Rotting Dwarf Corpse##229018
-  turnin A Wee Bit O' Necromancy##84330 |goto Eastern Plaguelands 23.05,73.52
-step
-  only NightElf Druid not completed(8905) not haveq(8905)
-  talk Deliana##230319
-  turnin An Earnest Proposition##84147 |goto Dun Morogh 58.07,29.54
-step
-  only Paladin not completed(8908) not haveq(8908)
-  talk Deliana##230319
-  turnin An Earnest Proposition##84150 |goto Dun Morogh 58.07,29.54
-step
-  talk Deliana##230319
-  turnin An Earnest Proposition##84151 |goto Dun Morogh 58.07,29.54
-step
-  talk Deliana##230319
-  turnin Just Compensation##84166 |goto Dun Morogh 58.07,29.54
-step
-  talk Deliana##230319
-  turnin Just Compensation##84169 |goto Dun Morogh 58.07,29.54
-step
   talk Deliana##230319
   turnin An Earnest Proposition##97447 |goto Dun Morogh 58.07,29.54
-step
-  talk Deliana##230319
-  turnin Anthion's Parting Words##84181 |goto Dun Morogh 58.07,29.54
-step
-  talk Deliana##230319
-  turnin Anthion's Parting Words##84184 |goto Dun Morogh 58.07,29.54
 step
   talk Leonid Barthalomew the Revered##11036
   turnin Houses of the Holy##5243 |goto Eastern Plaguelands 71.89,48.29
