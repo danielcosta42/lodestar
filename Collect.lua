@@ -339,8 +339,14 @@ local function miniUpdate()
 	if not me then return end
 	local list = C:MapPoints()
 	if #list == 0 then return end
+	-- só o continente onde o jogador está (a distância de cada ponto custa conversão de mapa, a cada segundo)
+	local TP = ns.TravelPlanner
+	local here = TP and TP.PlayerContinent and TP:PlayerContinent()
 	local flat = {}
-	for _, it in ipairs(list) do flat[#flat + 1] = it.e; it.e._kind = it.kind end
+	for _, it in ipairs(list) do
+		local cont = here and TP.ZoneContinent and TP:ZoneContinent(it.e.zone)
+		if not (here and cont) or cont == here then flat[#flat + 1] = it.e; it.e._kind = it.kind end
+	end
 	local near = C.Near(flat, distFn, C.NEAR, nil, 12)
 	if #near == 0 then return end
 	if not overlay then
@@ -397,6 +403,7 @@ PAGE.build = function(page, H)
 	H.PageTitle(page, L.COL_PAGE)
 	page.tabs = UI.Segmented(page, tabs(), function(v) tab = v; PAGE.refresh(page, H) end)
 	page.tabs:SetPoint("TOPRIGHT", -40, 2)
+	C.PageTabs = function() return page.tabs end
 	page.hero = UI.Card(page, { color = Cc.card }); page.hero:SetPoint("TOPLEFT", 0, -52); page.hero:SetPoint("RIGHT", page, "RIGHT", -8, 0)
 	page.hero:SetHeight(74)
 	page.heroLabel = H.Label(page.hero, ""); page.heroLabel:SetPoint("TOPLEFT", 18, -14)

@@ -34,6 +34,10 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
   "missing only" and Guide me.
 - **Legacy**: Forever's Legacy challenges, your account points, each group's progress, your highest character of each
   class and what is closest, with the way there.
+- **Secrets** (Forever collectibles): guides for the collectible quest chains (Cozy Sleeping Bag, Night Watchman's
+  Torch, Sprite Darter Hatchling and more), every hidden Library Book in one route, and the rare pets for hunters.
+  Books (and rare pets, for hunters) you still lack show on the world map and the minimap when you're near, with a
+  toast when you're right there; what you already have drops off.
 - **Grey quests stay out**: a quest too low for your level (by the game's own grey range) leaves the guide, with what
   only it unlocks, unless it leads to a quest that still gives XP; the automatic guide pick weighs how much of each
   guide is still worth doing.
@@ -146,6 +150,10 @@ what it always was: a file you hand over on purpose.
   **[pfQuest](https://github.com/shagu/pfQuest)** database by Shagu (MIT); `tools/gen_dungeons.py`,
   `tools/gen_rares.py` and `tools/gen_questlevels.py` regenerate `DungeonData.lua`, `RareData.lua` and
   `QuestLevels.lua`.
+- The Secrets data (`tools/data/collect/`, regenerated into `CollectData.lua` by `tools/gen_collect.py`) are facts
+  gathered from public guides, cited per entry; book item and quest IDs and some points come from the MIT-licensed
+  [RXPGuides_LibraryBooks](https://github.com/heyitsmk/RXPGuides_LibraryBooks) and
+  [Whatnot](https://github.com/DrKlampz/Whatnot).
 - The interface font is **[Barlow](https://github.com/jpt/barlow)** by Jeremy Tribby (SIL Open Font License 1.1,
   `Media/Fonts/OFL.txt`).
 - Flight paths, boats and zeppelins come from the game client's own tables (TaxiNodes, TaxiPath,

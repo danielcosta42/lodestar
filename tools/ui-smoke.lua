@@ -326,6 +326,34 @@ step("PartySync", function()
 	_G.IsInGroup, _G.UnitInParty = inGroup, inParty
 end)
 step("Rares", function() ns.Rares:GoTo(ns.rareData["Elwynn Forest"][1], "Elwynn Forest") end)
+-- os colecionáveis (issue #94): os guias gerados carregam, a página passa pelas abas, marcar fecha o passo, pinos
+step("Secrets", function()
+	local CO, back = ns.Collect, ns.currentGuide.key
+	assert(ns.guides[CO.GUIDE_BOOKS] and ns.guides[CO.GUIDE_PETS], "guias dos livros e dos pets")
+	local n = 0
+	for key, g in pairs(ns.guides) do
+		if key:find("^Collectibles/") then n = n + 1; assert(#ns.ensureParsed(g) > 0, "guia vazio: " .. key) end
+	end
+	assert(n >= 3, "poucos guias de colecionável")
+	ns.Hub:Show("secrets")
+	assert(ns.Hub:Current() == "secrets", "página Segredos")
+	for _, v in ipairs({ "books", "quests" }) do
+		for _, b in ipairs(ns.Collect.PageTabs().buttons) do if b.value == v then b:GetScript("OnClick")(b) end end
+	end
+	CO:OpenGuide(CO.GUIDE_BOOKS)
+	assert(ns.currentGuide.key == CO.GUIDE_BOOKS, "o guia dos livros não abriu")
+	local step = ns:GetStep()
+	local goal = step.goals[1]
+	local kind, id = goal.complete:match("collected%((%a+):([%w_]+)%)")
+	assert(kind == "books" and not ns:IsStepComplete(step), "passo do livro já feito")
+	CO:Mark(kind, id, true)
+	assert(ns:IsStepComplete(step) and CO:IsDoneKey(kind, id), "marcar não fecha o passo")
+	CO:Mark(kind, id, false)
+	assert(#CO:MapPoints() > 0, "nada no mapa")
+	CO.WorldUpdate(); CO.MiniUpdate()
+	ns.char.manualPick = nil
+	ns:LoadGuide(back, true)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

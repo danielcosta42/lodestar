@@ -1,0 +1,2064 @@
+{
+  "meta": {
+    "title": "WoW Forever collectible quests and secrets",
+    "gathered": "2026-11-26",
+    "method_note": "Fan-site pages could not be fetched directly (network allowlist); facts come from web-search summaries of the cited pages, written in our own words. Where a coordinate came only from an MIT-licensed addon (Whatnot) it is marked as such. No GPL addon data was used.",
+    "step_schema": "action in accept|turnin|click|use|emote|kill|collect|goto|talk; ids are null when no source gave them.",
+    "confidence_rule": "high = 2+ sources agree on locations/steps; medium = one good source or partly unverified coordinates; low = sources conflict or availability unconfirmed.",
+    "not_included": [
+      "Holstered Replica Ironforge Air Rifle (Legacy System reward at 15 points, not a quest)",
+      "Pouch of Violet Dust (time-limited Twitch drop)",
+      "Minfernal, Shaking Egg, Tallstrider Hatchling, Condor Hatchling (plain rare-mob drops: Immolatus in Felwood, Lord Condar in Loch Modan, Strider Clutchmother in Darkshore)",
+      "Galestrider mounts (vendor and reputation sources per Wowhead mount guide)",
+      "Ta'shkal (secret hunter pet; see rare_hunter_pets.json)"
+    ]
+  },
+  "collectibles": [
+    {
+      "name": "Cozy Sleeping Bag",
+      "type": "item",
+      "type_note": "Usable camp item (rest in it for +1% XP per minute, up to +3%, outside rested areas). Returned from Season of Discovery. Not confirmed as a Toy Box entry.",
+      "reward_item_id": null,
+      "reward_item_id_note": "Not found in sources (the SoD item ID was not verified).",
+      "other_rewards": [
+        "Old Toolbox (12-slot bag) from Stepping Stones (some guides also list a Sturdy Lunchbox)",
+        "Student Fodder (1 or 5, sources differ)"
+      ],
+      "faction": null,
+      "min_level": 14,
+      "level_note": "All six quests require level 14. Horde players are advised 20-30 because of level-30 Alliance guards at Stonewrought Dam.",
+      "quests": [
+        {
+          "name": "...and that note you found",
+          "quest_id": 79008,
+          "faction": "Alliance",
+          "level": 15,
+          "req_level": 14,
+          "start": "Burned-Out Remains (cart wreckage, Alexston Farmstead)",
+          "start_zone": "Westfall",
+          "start_x": 37.4,
+          "start_y": 50.7,
+          "end": "Burned-Out Remains (burnt tower south of Camp Taurajo)",
+          "end_zone": "The Barrens",
+          "end_x": 46.4,
+          "end_y": 73.9
+        },
+        {
+          "name": "...and that note you found",
+          "quest_id": 79007,
+          "faction": "Horde",
+          "level": 14,
+          "req_level": 14,
+          "start": "Burned-Out Remains (burnt tower south of Camp Taurajo)",
+          "start_zone": "The Barrens",
+          "start_x": 46.4,
+          "start_y": 73.9,
+          "end": "Burned-Out Remains (cart wreckage, Alexston Farmstead)",
+          "end_zone": "Westfall",
+          "end_x": 37.4,
+          "end_y": 50.7
+        },
+        {
+          "name": "Stepping Stones",
+          "quest_id": 79192,
+          "faction": null,
+          "level": 24,
+          "req_level": 14,
+          "start": "Burned-Out Remains where you turned in step 1 (Barrens for Alliance, Westfall for Horde)",
+          "start_zone": null,
+          "start_x": null,
+          "start_y": null,
+          "start_note": "Start point is reported inconsistently (Nailed Plank in Westfall, burnt debris in the Barrens); it follows the turn-in of step 1.",
+          "end": "Pocket Litter (box at an abandoned camp NE of Sun Rock Retreat)",
+          "end_zone": "Stonetalon Mountains",
+          "end_x": 40.8,
+          "end_y": 52.6
+        },
+        {
+          "name": "Scramble",
+          "quest_id": 79980,
+          "faction": null,
+          "level": 24,
+          "req_level": 14,
+          "start": "Pocket Litter",
+          "start_zone": "Stonetalon Mountains",
+          "start_x": 40.8,
+          "start_y": 52.6,
+          "end": "Mound of Dirt (ledge below the camp; jump down from the hill)",
+          "end_zone": "Stonetalon Mountains",
+          "end_x": 39.6,
+          "end_y": 49.9
+        },
+        {
+          "name": "Wet Job",
+          "quest_id": 79974,
+          "faction": null,
+          "level": 32,
+          "req_level": 14,
+          "level_note": "32 per Icy Veins DB, 40 per Warcraft Wiki",
+          "start": "Mound of Dirt",
+          "start_zone": "Stonetalon Mountains",
+          "start_x": 39.6,
+          "start_y": 49.9,
+          "end": "Eagle Figurine / Carved Figurine on the carved dwarf heads below the top of Stonewrought Dam",
+          "end_zone": "Loch Modan",
+          "end_x": 49.4,
+          "end_y": 12.9
+        },
+        {
+          "name": "Eagle's Fist",
+          "quest_id": 79975,
+          "faction": null,
+          "level": 32,
+          "req_level": 14,
+          "level_note": "32 per Icy Veins DB, 40 per Warcraft Wiki",
+          "start": "Eagle Figurine",
+          "start_zone": "Loch Modan",
+          "start_x": 49.4,
+          "start_y": 12.9,
+          "end": "Messenger Bag hanging on Thoradin's Wall",
+          "end_zone": "Arathi Highlands",
+          "end_x": 22.5,
+          "end_y": 24.1
+        },
+        {
+          "name": "This Must Be The Place",
+          "quest_id": 79976,
+          "faction": null,
+          "level": 32,
+          "req_level": 14,
+          "start": "Messenger Bag",
+          "start_zone": "Arathi Highlands",
+          "start_x": 22.5,
+          "start_y": 24.1,
+          "end": "Hastily Rolled-Up Satchel (just below the Messenger Bag)",
+          "end_zone": "Arathi Highlands",
+          "end_x": 22.5,
+          "end_y": 24.1,
+          "reward": "Cozy Sleeping Bag + Student Fodder"
+        },
+        {
+          "name": "Rekindle",
+          "quest_id": 80001,
+          "optional": true,
+          "faction": null,
+          "level": null,
+          "req_level": null,
+          "start": null,
+          "note": "Optional side quest using the Flint and Wood from the chain (single source)."
+        }
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "Burned-Out Remains",
+          "zone": "Westfall",
+          "x": 37.4,
+          "y": 50.7,
+          "note": "Alliance start: cart wreckage at Alexston Farmstead. Accept '...and that note you found'.",
+          "quest_id": 79008,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "faction": "Alliance",
+          "alt": [
+            {
+              "x": 37.46,
+              "y": 50.59,
+              "source": "zockify"
+            },
+            {
+              "x": 37.1,
+              "y": 50.1,
+              "source": "Whatnot (MIT addon)"
+            }
+          ]
+        },
+        {
+          "action": "click",
+          "target": "Burned-Out Remains",
+          "zone": "The Barrens",
+          "x": 46.4,
+          "y": 73.9,
+          "note": "Horde start: burnt tower south of Camp Taurajo. Accept '...and that note you found'.",
+          "quest_id": 79007,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "faction": "Horde",
+          "alt": [
+            {
+              "x": 46.35,
+              "y": 73.87,
+              "source": "zockify"
+            },
+            {
+              "x": 46.1,
+              "y": 74.3,
+              "source": "Whatnot (MIT addon)"
+            }
+          ]
+        },
+        {
+          "action": "turnin",
+          "target": "Burned-Out Remains (burnt tower)",
+          "zone": "The Barrens",
+          "x": 46.4,
+          "y": 73.9,
+          "note": "Alliance hands in '...and that note you found' here, then accepts Stepping Stones from the same remains.",
+          "quest_id": 79008,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "faction": "Alliance"
+        },
+        {
+          "action": "turnin",
+          "target": "Burned-Out Remains (cart wreckage)",
+          "zone": "Westfall",
+          "x": 37.4,
+          "y": 50.7,
+          "note": "Horde hands in '...and that note you found' here, then accepts Stepping Stones from the same remains.",
+          "quest_id": 79007,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "faction": "Horde"
+        },
+        {
+          "action": "accept",
+          "target": "Stepping Stones",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "From the remains where you just turned in (Barrens for Alliance, Westfall for Horde).",
+          "quest_id": 79192,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "goto",
+          "target": "Abandoned camp NE of Sun Rock Retreat",
+          "zone": "Stonetalon Mountains",
+          "x": 50.9,
+          "y": 52.3,
+          "note": "Mountain trail entrance; follow it up to the camp.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Pocket Litter (box by the tent)",
+          "zone": "Stonetalon Mountains",
+          "x": 40.8,
+          "y": 52.6,
+          "note": "Hand in Stepping Stones (Old Toolbox reward) and accept Scramble.",
+          "quest_id": 79192,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 40.6,
+              "y": 52.4,
+              "source": "eloboost24"
+            },
+            {
+              "x": 40.7,
+              "y": 52.4,
+              "source": "Whatnot (MIT addon)"
+            }
+          ]
+        },
+        {
+          "action": "accept",
+          "target": "Scramble",
+          "zone": "Stonetalon Mountains",
+          "x": 40.8,
+          "y": 52.6,
+          "note": null,
+          "quest_id": 79980,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Mound of Dirt",
+          "zone": "Stonetalon Mountains",
+          "x": 39.6,
+          "y": 49.9,
+          "note": "Jump from the hill north of the camp down onto the ledge. Hand in Scramble, accept Wet Job.",
+          "quest_id": 79980,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "Wet Job",
+          "zone": "Stonetalon Mountains",
+          "x": 39.6,
+          "y": 49.9,
+          "note": null,
+          "quest_id": 79974,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Eagle Figurine (Carved Figurine)",
+          "zone": "Loch Modan",
+          "x": 49.4,
+          "y": 12.9,
+          "note": "Walk out on Stonewrought Dam, face north toward the Wetlands and drop onto the carved dwarf heads; the figurine is on the easternmost head. Level-30 Alliance guards nearby.",
+          "quest_id": 79974,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 49.46,
+              "y": 12.77,
+              "source": "zockify"
+            }
+          ]
+        },
+        {
+          "action": "accept",
+          "target": "Eagle's Fist",
+          "zone": "Loch Modan",
+          "x": 49.4,
+          "y": 12.9,
+          "note": null,
+          "quest_id": 79975,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "goto",
+          "target": "Broken cart at the foot of Thoradin's Wall",
+          "zone": "Hillsbrad Foothills",
+          "x": 87.3,
+          "y": 49.6,
+          "note": "Climb in via the cart on the Hillsbrad side, follow the jumps to the camp on the wall, go through the room and look right/outside.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Messenger Bag (hanging)",
+          "zone": "Arathi Highlands",
+          "x": 22.5,
+          "y": 24.1,
+          "note": "Hand in Eagle's Fist, accept This Must Be The Place.",
+          "quest_id": 79975,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "zone": "Hillsbrad Foothills",
+              "x": 87.4,
+              "y": 49.6,
+              "note": "same spot as seen on the Hillsbrad map (approach point)"
+            }
+          ]
+        },
+        {
+          "action": "accept",
+          "target": "This Must Be The Place",
+          "zone": "Arathi Highlands",
+          "x": 22.5,
+          "y": 24.1,
+          "note": null,
+          "quest_id": 79976,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Hastily Rolled-Up Satchel",
+          "zone": "Arathi Highlands",
+          "x": 22.5,
+          "y": 24.1,
+          "note": "Hangs just under the Messenger Bag. Completing it awards the Cozy Sleeping Bag.",
+          "quest_id": 79976,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "sources": [
+        "https://www.wowhead.com/forever/guide/cozy-sleeping-bag-locations-rewards",
+        "https://www.wowhead.com/forever/news/cozy-sleeping-bag-is-back-in-wow-forever-383000",
+        "https://www.warcrafttavern.com/forever/guides/cozy-sleeping-bag/",
+        "https://www.method.gg/wow-forever/how-to-unlock-the-cozy-sleeping-bag-in-wow-forever",
+        "https://www.zockify.com/forever/cozy-sleeping-bag/",
+        "https://foreverchanges.pro/cozy-sleeping-bag",
+        "https://mobalytics.gg/wow-forever/quests/how-to-get-the-cozy-sleeping-bag-in-wow-forever-rampagewow",
+        "https://eloboost24.eu/blog/wow-forever-cozy-sleeping-bag-full-quest-guide-with-coordinates-addons-and-tips",
+        "https://wowforever.gg/en/guides/quest-guides/wow-forever-cosy-sleeping-bag-guide/",
+        "https://outof.games/realms/forever/quest/79007-and-that-note-you-found/",
+        "https://outof.games/realms/forever/quest/79008-and-that-note-you-found/",
+        "https://db.icy-veins.com/wow-forever/quests/79192",
+        "https://db.icy-veins.com/wow-forever/quests/79980",
+        "https://www.wowhead.com/forever/quest=79976/this-must-be-the-place",
+        "https://outof.games/realms/forever/quest/79976-this-must-be-the-place/",
+        "https://urgametips.com/wow-forever/quest-guides/scramble-pocket-litter-mound-stonetalon/",
+        "https://kingboost.net/blog/wow-forever/wow-forever-cozy-sleeping-bag-guide/"
+      ],
+      "confidence": "high",
+      "notes": "The Messenger Bag's exact spot is the least consistent point (Arathi map 22.4-22.5, 24.1-24.2 vs Hillsbrad 87.3-87.4, 49.6 approach)."
+    },
+    {
+      "name": "Night Watchman's Torch",
+      "type": "toy",
+      "reward_item_id": null,
+      "faction": null,
+      "faction_note": "Both factions (Wowhead 'Side: Both'); Horde access was fixed on 15 Oct. Metaforge lists it as Alliance-only (outlier).",
+      "min_level": 1,
+      "level_note": "Quest level 60, requires level 1.",
+      "quests": [
+        {
+          "name": "An Unfortunate End",
+          "quest_id": 98372,
+          "faction": null,
+          "level": 60,
+          "req_level": 1,
+          "start": "Night Watch Guard (dead body)",
+          "end": "Night Watch Guard (same body)",
+          "zone": "Duskwood"
+        },
+        {
+          "name": "An Unfortunate End",
+          "quest_id": 99267,
+          "faction": "Alliance",
+          "note": "Second ID listed by bindonforever/kovarel as an Alliance version; unverified."
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": "Slain Night Watch Guard",
+          "zone": "Duskwood",
+          "x": 17.2,
+          "y": 54.4,
+          "note": "Most reported spot: behind the biggest building at Raven Hill, next to the outhouse. The body rotates between 6-9 spots; one source says it only appears at night (after 20:00 game time).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 18.1,
+              "y": 55.2
+            },
+            {
+              "x": 20.9,
+              "y": 34.4,
+              "note": "top of Raven Hill Cemetery among level-25 ghouls"
+            },
+            {
+              "x": 66.1,
+              "y": 34.0,
+              "note": "Brightwood Grove"
+            },
+            {
+              "x": 45.9,
+              "y": 78.3,
+              "note": "road toward Stranglethorn"
+            },
+            {
+              "x": 45.6,
+              "y": 79.2,
+              "note": "Yorgen Farmstead"
+            }
+          ]
+        },
+        {
+          "action": "accept",
+          "target": "An Unfortunate End",
+          "zone": "Duskwood",
+          "x": null,
+          "y": null,
+          "note": "Offered by the body.",
+          "quest_id": 98372,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "An Unfortunate End",
+          "zone": "Duskwood",
+          "x": null,
+          "y": null,
+          "note": "Hand it straight back in to the same body; the torch goes to your bags.",
+          "quest_id": 98372,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "use",
+          "target": "Night Watchman's Torch",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Cosmetic light for 5 minutes, 30 s cooldown; not usable in cities; goes out when you enter combat or swim.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "sources": [
+        "https://www.wowhead.com/forever/quest=98372/an-unfortunate-end",
+        "https://db.icy-veins.com/wow-forever/quests/98372",
+        "https://warcraft.wiki.gg/wiki/An_Unfortunate_End",
+        "https://warcraft.wiki.gg/wiki/Night_Watchman's_Torch",
+        "https://www.icy-veins.com/wow-forever/news/one-quick-quest-gives-you-a-toy-that-actually-lights-up-wow-forever/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-night-watchmans-torch/",
+        "https://lfcarry.com/guides/wow-forever-night-watchmans-torch",
+        "https://urgametips.com/wow-forever/quest-guides/unfortunate-end-night-watchmans-torch/",
+        "https://bindonforever.com/quest/99267",
+        "https://kovarel.com/wow-forever/quests/99267-an-unfortunate-end"
+      ],
+      "confidence": "low",
+      "notes": "Quest ID is solid; the spawn location rotates and sources list different sets of points, so treat coordinates as a search list."
+    },
+    {
+      "name": "Prairie Chicken",
+      "type": "pet",
+      "reward_item_id": null,
+      "reward_item_note": "Reward is a Chicken Egg that teaches the pet (now a spell, no bag slot). Classic item ID for the egg was not confirmed by sources.",
+      "faction": "Alliance",
+      "faction_note": "Only Alliance can complete CLUCK!; Horde may loot an egg spawned by an Alliance player's quest (old reports, not verified in Forever).",
+      "min_level": 1,
+      "quests": [
+        {
+          "name": "CLUCK!",
+          "quest_id": 3861,
+          "level": 1,
+          "start": "befriended Chicken",
+          "end": "befriended Chicken",
+          "zone": "Westfall"
+        }
+      ],
+      "steps": [
+        {
+          "action": "talk",
+          "target": "Farmer Saldean (buy Special Chicken Feed)",
+          "zone": "Westfall",
+          "x": null,
+          "y": null,
+          "note": "Saldean's Farm. Buy at least one Special Chicken Feed.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 11109
+        },
+        {
+          "action": "emote",
+          "target": "Chicken near Saldean's Farm",
+          "zone": "Westfall",
+          "x": null,
+          "y": null,
+          "note": "Target a chicken and repeat /chicken until it turns friendly (green name) and offers CLUCK!. Number of tries varies.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "CLUCK!",
+          "zone": "Westfall",
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 3861,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "emote",
+          "target": "the befriended chicken",
+          "zone": "Westfall",
+          "x": null,
+          "y": null,
+          "note": "/cheer at it before handing in the feed.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "CLUCK!",
+          "zone": "Westfall",
+          "x": null,
+          "y": null,
+          "note": "Give the Special Chicken Feed.",
+          "quest_id": 3861,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 11109
+        },
+        {
+          "action": "collect",
+          "target": "Chicken Egg",
+          "zone": "Westfall",
+          "x": null,
+          "y": null,
+          "note": "Loot the egg that spawns next to the chicken (bind on pickup); onlookers have reportedly sniped eggs.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "use",
+          "target": "Chicken Egg",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Learns the Prairie Chicken companion.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "sources": [
+        "https://wowforever.be/guides/pets/prairie-chicken/",
+        "https://forevercompanions.com/pets/prairie-chicken",
+        "https://wow4evernews.com/en/articles/wow-forever-prairie-chicken-pet-saldean",
+        "https://www.wowhead.com/quest=3861/cluck",
+        "https://foreverchanges.pro/quest/3861/cluck",
+        "https://kovarel.com/wow-classic/quests/3861-cluck",
+        "https://warcraft.wiki.gg/wiki/Chicken_Egg",
+        "https://us.forums.blizzard.com/en/wow/t/westfall-prairie-chicken-snipers/2406904"
+      ],
+      "confidence": "medium",
+      "notes": "No source gave Farmer Saldean's Forever coordinates. wowforever.be also mentions a 'Farm Chicken Egg' world-drop source (conflict)."
+    },
+    {
+      "name": "Sprite Darter Hatchling",
+      "type": "pet",
+      "reward_item": "Sprite Darter Egg",
+      "reward_item_id": 11474,
+      "faction": "Alliance",
+      "faction_note": "Quest chain is Alliance-only. Horde alternative: Sprite Darters (level 43-45, western Feralas) drop it at about 2.7%.",
+      "min_level": 38,
+      "level_note": "Chain quests are level 47-48; Freedom for All Creatures and The Newest Member of the Family require 38. One source lists Becoming a Parent as requiring 41.",
+      "steps": [
+        {
+          "action": "accept",
+          "target": "Freedom for All Creatures",
+          "zone": "Feralas",
+          "x": 65.9,
+          "y": 45.6,
+          "note": "From Kindal Moonweaver on a ledge behind the Grimtotem Compound (go left of the compound, up the path behind a tree).",
+          "quest_id": 2969,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "use",
+          "target": "Bamboo Cage Key",
+          "zone": "Feralas",
+          "x": 66.8,
+          "y": 46.2,
+          "note": "Free the Sprite Darters from the Grimtotem pen; at least 6 darters and Kindal must survive; 6-minute timer. A partner helps.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Freedom for All Creatures",
+          "zone": "Feralas",
+          "x": 65.9,
+          "y": 45.6,
+          "note": "Kindal Moonweaver.",
+          "quest_id": 2969,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "Doling Justice",
+          "zone": "Feralas",
+          "x": 65.9,
+          "y": 45.6,
+          "note": "From Jer'kai Moonweaver (Kindal's sister).",
+          "quest_id": 2970,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "kill",
+          "target": "12 Grimtotem Naturalists, 10 Grimtotem Raiders, 6 Grimtotem Shamans",
+          "zone": "Feralas",
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 2970,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Doling Justice",
+          "zone": "Feralas",
+          "x": 65.9,
+          "y": 45.6,
+          "note": "Jer'kai Moonweaver.",
+          "quest_id": 2970,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "Doling Justice",
+          "zone": "Feralas",
+          "x": 65.9,
+          "y": 45.6,
+          "note": "Part 2: take Jer'kai's Signet Ring to Darnassus.",
+          "quest_id": 2972,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Doling Justice",
+          "zone": "Darnassus",
+          "x": null,
+          "y": null,
+          "note": "High Priestess Tyrande Whisperwind.",
+          "quest_id": 2972,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "An Orphan Looking For a Home",
+          "zone": "Feralas",
+          "x": 65.9,
+          "y": 45.6,
+          "note": "From Kindal Moonweaver after Doling Justice.",
+          "quest_id": 3841,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "An Orphan Looking For a Home",
+          "zone": "Thousand Needles",
+          "x": 78.3,
+          "y": 74.7,
+          "note": "Quentin at the Shimmering Flats.",
+          "quest_id": 3841,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "A Short Incubation",
+          "zone": "Thousand Needles",
+          "x": 78.3,
+          "y": 74.7,
+          "note": "Quentin wants 2 Elixirs of (Lesser) Fortitude; bring them along to do it in one go.",
+          "quest_id": 3842,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "A Short Incubation",
+          "zone": "Thousand Needles",
+          "x": 78.3,
+          "y": 74.7,
+          "note": null,
+          "quest_id": 3842,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "The Newest Member of the Family",
+          "zone": "Thousand Needles",
+          "x": 78.3,
+          "y": 74.7,
+          "note": "1-hour timer: carry the Fragile Sprite Darter Egg to Agnar Beastamer.",
+          "quest_id": 3843,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "The Newest Member of the Family",
+          "zone": "The Hinterlands",
+          "x": null,
+          "y": null,
+          "note": "Agnar Beastamer, Wildhammer Keep at Aerie Peak.",
+          "quest_id": 3843,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "Food for Baby",
+          "zone": "The Hinterlands",
+          "x": null,
+          "y": null,
+          "note": "Agnar Beastamer: bring 5 Silvermane Stalker Flanks.",
+          "quest_id": 4297,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Food for Baby",
+          "zone": "The Hinterlands",
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 4297,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "Becoming a Parent",
+          "zone": "The Hinterlands",
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 4298,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Becoming a Parent",
+          "zone": "The Hinterlands",
+          "x": null,
+          "y": null,
+          "note": "Reward: Sprite Darter Egg.",
+          "quest_id": 4298,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 11474
+        }
+      ],
+      "sources": [
+        "https://www.wowhead.com/forever/quest=4298/becoming-a-parent",
+        "https://outof.games/realms/forever/item/11474-sprite-darter-egg/?region=us&type=roleplay",
+        "https://foreverchanges.pro/quest/2969/freedom-for-all-creatures",
+        "https://foreverchanges.pro/quest/2970/doling-justice",
+        "https://forg.gg/en/forever/quest/3841",
+        "https://outof.games/realms/forever/quest/3842-a-short-incubation/",
+        "https://classicdb.ch/?quest=3843",
+        "https://warcraft.wiki.gg/wiki/Freedom_for_All_Creatures_quest_chain",
+        "https://warcraft.wiki.gg/wiki/Freedom_for_All_Creatures",
+        "https://warcraft.wiki.gg/wiki/Agnar_Beastamer",
+        "https://www.gamemaps.net/game/wow_forever/quests/an-orphan-looking-for-a-home",
+        "https://lfcarry.com/guides/wow-forever-companion-pets",
+        "https://wowcalc.net/en/forever/wiki/pets/sprite-darter-hatchling"
+      ],
+      "confidence": "medium",
+      "notes": "Quest IDs 2969, 2970, 2972, 3841, 3842, 3843, 4298 are named by Forever databases; 4297 (Food for Baby) is the Classic ID and was not shown by a Forever source. Wowhead's retail PTR marks the chain obsolete, but Forever databases list it as live. Agnar Beastamer's coordinates were not found."
+    },
+    {
+      "name": "Alcaz Operative Insignia",
+      "type": "toy",
+      "reward_item_id": null,
+      "effect": "Defias operative disguise for 10 minutes, 30-minute cooldown; learned account-wide (Wowhead).",
+      "faction": null,
+      "min_level": 48,
+      "level_note": "Dungeon and follow-up quests are level 53, require 48. Fractured Insignia requires level 40.",
+      "steps": [
+        {
+          "action": "goto",
+          "target": "Alcaz Prison (dungeon)",
+          "zone": "Dustwallow Marsh",
+          "x": null,
+          "y": null,
+          "note": "Clear the dungeon but leave the first boss, The Questioner, alive. Killing him first locks the run out of the quest.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "talk",
+          "target": "Mason Connery",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Prisoner in chains at the end of Alcaz Prison.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "The Man in the Iron Chains",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "From Mason Connery.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "kill",
+          "target": "The Questioner",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Loot the shackle key (Ornate/Alcaz Shackle Key).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "The Man in the Iron Chains",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Free Mason Connery.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "More Valuable Than Gold",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Mason gives a note pointing to Moonbrook.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "click",
+          "target": "Connery's Trunk (loose floorboard)",
+          "zone": "Westfall",
+          "x": 43.4,
+          "y": 67.8,
+          "note": "Moonbrook inn, second floor, middle room, corner floorboard. Completes More Valuable Than Gold and gives the Document Box (do not vendor it).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "use",
+          "target": "Document Box",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Starts State Secrets.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "State Secrets",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Alliance: Renzik 'The Shiv' in Stormwind City. Horde: Nazgrel in Orgrimmar (quest 96376). Neutral: Rix Xizzix in Booty Bay. Reward: 1 Fractured Insignia.",
+          "quest_id": 96376,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 279450
+        },
+        {
+          "action": "collect",
+          "target": "6 Fractured Insignia",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "One per character (quest is not repeatable); the insignia is tradeable, so the rest can come from alts, friends or the Auction House.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 279450
+        },
+        {
+          "action": "use",
+          "target": "Fractured Insignia (with 6 in bags)",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Combines into the Alcaz Operative Insignia toy.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "quests": [
+        {
+          "name": "The Man in the Iron Chains",
+          "quest_id": null,
+          "level": 53,
+          "req_level": 48,
+          "start": "Mason Connery",
+          "end": "Mason Connery"
+        },
+        {
+          "name": "More Valuable Than Gold",
+          "quest_id": null,
+          "start": "Mason Connery",
+          "end": "Connery's Trunk, Moonbrook"
+        },
+        {
+          "name": "State Secrets",
+          "quest_id": 96376,
+          "faction": "Horde",
+          "level": 53,
+          "req_level": 48,
+          "start": "Nazgrel",
+          "end": "Nazgrel",
+          "note": "Alliance (Renzik) and neutral (Rix Xizzix) versions exist with unknown IDs."
+        }
+      ],
+      "sources": [
+        "https://www.wowhead.com/forever/news/secret-disguise-toy-found-wow-forever-383859",
+        "https://www.icy-veins.com/wow-forever/news/join-the-defias-brothehood-with-the-alcaz-operative-insignia-toy/",
+        "https://warcraft.wiki.gg/wiki/Alcaz_Operative_Insignia",
+        "https://warcraft.wiki.gg/wiki/The_Man_in_the_Iron_Chains",
+        "https://warcraft.wiki.gg/wiki/Document_Box",
+        "https://warcraft.wiki.gg/wiki/Fractured_Insignia",
+        "https://www.wowhead.com/forever/quest=96376/state-secrets",
+        "https://outof.games/realms/forever/item/279450-fractured-insignia/",
+        "https://guided.news/en/guides/wow-forever-alcaz-operative-insignia-disguise-guide/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-alcaz-operative-toy/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-document-box",
+        "https://lfcarry.com/guides/wow-forever-alcaz-prison"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Excitable Slime",
+      "type": "pet",
+      "reward_item_id": 275682,
+      "reward_item_id_note": "Single source (WoW Handbook).",
+      "faction": "Horde",
+      "faction_note": "No faction flag on the quest per one guide, but everything happens in Undercity, so it is Horde in practice; databases list the quest as Horde.",
+      "min_level": 1,
+      "quests": [
+        {
+          "name": "WRIGGLE.",
+          "quest_id": 97583,
+          "level": 1,
+          "start": "Excitable Slime",
+          "end": "Excitable Slime",
+          "zone": "Undercity"
+        }
+      ],
+      "steps": [
+        {
+          "action": "talk",
+          "target": "Boyle (buy Nutritious Slime Sludge)",
+          "zone": "Undercity",
+          "x": 56.2,
+          "y": 64.6,
+          "note": "Sludge vendor.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 278265,
+          "alt": [
+            {
+              "x": 55.4,
+              "y": 64.1
+            },
+            {
+              "x": 55.5,
+              "y": 64.1
+            }
+          ]
+        },
+        {
+          "action": "goto",
+          "target": "Excitable Slime in the canal",
+          "zone": "Undercity",
+          "x": 57.3,
+          "y": 64.9,
+          "note": "It patrols the green canal. Stand on solid ground (canal steps); emotes while swimming do not work.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 57.8,
+              "y": 64.8,
+              "source": "ForeverChanges"
+            },
+            {
+              "note": "NPC ID 269452 seen only inside a cited URL; unconfirmed"
+            }
+          ]
+        },
+        {
+          "action": "emote",
+          "target": "Excitable Slime",
+          "zone": "Undercity",
+          "x": null,
+          "y": null,
+          "note": "Target it and /dance repeatedly until it emotes back and offers the quest.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "WRIGGLE.",
+          "zone": "Undercity",
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 97583,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "WRIGGLE.",
+          "zone": "Undercity",
+          "x": null,
+          "y": null,
+          "note": "Hand over 1 Nutritious Slime Sludge.",
+          "quest_id": 97583,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 278265
+        },
+        {
+          "action": "use",
+          "target": "Excitable Slime",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Use the pet item to learn it.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 275682
+        }
+      ],
+      "sources": [
+        "https://www.wowhead.com/forever/news/earn-two-new-pets-in-capital-cities-in-wow-forever-383170",
+        "https://lostwow.com/ForeverCityPets.shtml",
+        "https://wowforever.be/guides/pets/excitable-slime/",
+        "https://forevercompanions.com/pets/excitable-slime",
+        "https://forg.gg/en/forever/tips/excitable-slime",
+        "https://wowhandbook.com/news/hidden-pets-gustjumper-slime-crocolisk/",
+        "https://mobalytics.gg/wow-forever/profile/rampagewow-1zhvs5/quests/how-to-get-the-excitable-slime-pet-in-wow-forever",
+        "https://bindonforever.com/quest/97583",
+        "https://foreverchanges.pro/quest/97583/wriggle"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Musical Gustjumper",
+      "type": "pet",
+      "reward_item_id": null,
+      "faction": null,
+      "faction_note": "Zephras Isle (Skyborne start zone); Horde reach it by zeppelin from Mulgore, Alliance by boat from north Dalaran.",
+      "min_level": 1,
+      "steps": [
+        {
+          "action": "goto",
+          "target": "Frogs on a rock near the top of the waterfall",
+          "zone": "Zephras Isle",
+          "x": 51.5,
+          "y": 72.1,
+          "note": null,
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 51.5,
+              "y": 72.2,
+              "source": "forg.gg"
+            },
+            {
+              "x": 51.5,
+              "y": 72.3,
+              "source": "Gfinity"
+            }
+          ]
+        },
+        {
+          "action": "emote",
+          "target": "a frog",
+          "zone": "Zephras Isle",
+          "x": 51.5,
+          "y": 72.1,
+          "note": "Target one of the frogs and /sing.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "click",
+          "target": "Musical Gustjumper (frog that hops onto the log)",
+          "zone": "Zephras Isle",
+          "x": 51.5,
+          "y": 72.1,
+          "note": "One frog hops onto a log next to you; right-click it to pick it up.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "use",
+          "target": "Musical Gustjumper",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Learn the pet. Not soulbound until collected; reports differ on whether you can get extras.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "sources": [
+        "https://www.warcrafttavern.com/forever/news/how-to-get-a-musical-gustjumper-frog-pet-in-wow-forever/",
+        "https://www.gfinityesports.com/article/world-of-warcraft-forever-how-to-get-the-musical-gustjumper-pet",
+        "https://lostwow.com/ForeverGustjumper.shtml",
+        "https://forg.gg/en/forever/tips/musical-gustjumper",
+        "https://wowhandbook.com/news/hidden-pets-gustjumper-slime-crocolisk/"
+      ],
+      "confidence": "high",
+      "notes": "No quest involved."
+    },
+    {
+      "name": "Truthseeker's Bow",
+      "type": "item",
+      "type_note": "Rare bow (ilvl 45, +7 Agi, +3 Sta, binds on pickup); requires level 40 since the 8 Oct patch (no requirement during beta).",
+      "reward_item_id": null,
+      "faction": null,
+      "min_level": 35,
+      "level_note": "The 25-book quest requires 35 (Out of Games, wowcalc) or 30 (most guides); the bow itself needs level 40.",
+      "steps": [
+        {
+          "action": "collect",
+          "target": "Library books (see library_books.json)",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Loot 25 different books.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Each book's quest at your librarian",
+          "zone": "Stormwind City",
+          "x": 49.0,
+          "y": 86.4,
+          "note": "Alliance: Garion Wendell. Horde: Owen Thadd, Undercity 74.0, 32.4. The 8 level-60 books go to the mage trainer next to them.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "Friend of the Library (10 books)",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 78150,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Friend of the Library",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 78150,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "Greater Friend of the Library (20 books, level 20)",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 79536,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Greater Friend of the Library",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 79536,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "accept",
+          "target": "Greater Friend of the Library (25 books)",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": 82208,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Greater Friend of the Library",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Choose Truthseeker's Bow (alternatives: Crest of Elucidation, Researcher's Night Light).",
+          "quest_id": 82208,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "sources": [
+        "https://outof.games/realms/forever/quest/82208-greater-friend-of-the-library/",
+        "https://www.icy-veins.com/wow-forever/news/earn-the-best-bow-in-the-game-before-blizzard-changes-it/",
+        "https://lostwow.com/ForeverSecrets.shtml",
+        "https://wow4evernews.com/en/articles/wow-forever-library-books-locations-rewards",
+        "https://wowcalc.net/en/forever/wiki/library-books"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Dawn Waker (Eluvi'ana)",
+      "type": "item",
+      "type_note": "Secret chain. Confirmed reward so far: Eluvi'ana, a rare one-hand sword (ilvl 15, unique, soulbound). The chain continues but its end (a twin blade, Eluvi'tor) is unsolved as of late Nov 2026.",
+      "reward_item_id": null,
+      "faction": null,
+      "faction_note": "Both factions; the water-globe step differs by faction.",
+      "min_level": 1,
+      "level_note": "Part 1 (sword) is low level; Wowhead suggests 40+ for the whole chain; later steps are level 45-60 content.",
+      "steps": [
+        {
+          "action": "collect",
+          "target": "Ancient Heirloom (ring)",
+          "zone": "Zephras Isle",
+          "x": 41.7,
+          "y": 23.4,
+          "note": "Thendal Village, top floor of the building. Skyborne characters get it from the quest Coming of Age instead. Wear it: it reveals elven spirits and hidden vaults.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "collect",
+          "target": "Night Watchman's Torch",
+          "zone": "Duskwood",
+          "x": 17.2,
+          "y": 54.4,
+          "note": "See the Night Watchman's Torch entry (quest 98372).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "use",
+          "target": "Night Watchman's Torch",
+          "zone": "Zephras Isle",
+          "x": 58.1,
+          "y": 24.1,
+          "note": "Back of the Ruins of Ban'aethal: light the torch to reveal the Ancient Hilt. World boss Altairus is close; pull him away and let him reset, no need to kill him.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "click",
+          "target": "Ancient Hilt",
+          "zone": "Zephras Isle",
+          "x": 58.1,
+          "y": 24.1,
+          "note": "Starts 'The Ancient Hilt' (ID from one database).",
+          "quest_id": 93161,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "talk",
+          "target": "Ealaane Nimbuswalker",
+          "zone": "Zephras Isle",
+          "x": 65.9,
+          "y": 74.4,
+          "note": "Near Valanaar. Give her the hilt (keep it).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 66.0,
+              "y": 74.3
+            }
+          ]
+        },
+        {
+          "action": "collect",
+          "target": "Ancient Skyborne Blade",
+          "zone": "Zephras Isle",
+          "x": 48.94,
+          "y": 72.68,
+          "note": "Spawn point moves; reported spots listed in alt.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 50.4,
+              "y": 44.3
+            },
+            {
+              "x": 66.25,
+              "y": 43.15
+            },
+            {
+              "x": 59.9,
+              "y": 82.2
+            },
+            {
+              "x": 47.5,
+              "y": 71.5,
+              "note": "one listing"
+            }
+          ]
+        },
+        {
+          "action": "turnin",
+          "target": "Ealaane Nimbuswalker",
+          "zone": "Zephras Isle",
+          "x": 65.9,
+          "y": 74.4,
+          "note": "Returns Eluvi'ana. You can stop here if you only want the sword.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "kill",
+          "target": "Baron Marinous (summoned at the Fathom Stone)",
+          "zone": "Darkshore",
+          "x": 58.9,
+          "y": 22.6,
+          "note": "Alliance route to the globe: summon him, loot the Clouded Water Globe.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "faction": "Alliance"
+        },
+        {
+          "action": "talk",
+          "target": "Onu",
+          "zone": "Darkshore",
+          "x": 43.6,
+          "y": 76.4,
+          "note": "Grove of the Ancients: hand in the globe, then talk to Onu again to receive the Befouled Water Globe (item 282337). The extra conversation is required.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 282337,
+          "faction": "Alliance"
+        },
+        {
+          "action": "talk",
+          "target": "Je'neu Sancrea",
+          "zone": "Ashenvale",
+          "x": 11.6,
+          "y": 34.2,
+          "note": "Horde route: Zoram'gar Outpost. Kill Baron Aquanis in Blackfathom Deeps for the Strange Water Globe, hand it in, then talk again for the Befouled Water Globe.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 282337,
+          "faction": "Horde",
+          "alt": [
+            {
+              "x": 11.6,
+              "y": 34.3
+            }
+          ]
+        },
+        {
+          "action": "talk",
+          "target": "Highborne Spirit",
+          "zone": "Ashenvale",
+          "x": 15.7,
+          "y": 19.3,
+          "note": "Zoram Strand, with the ring equipped and the globe in bags.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 15.8,
+              "y": 19.4
+            }
+          ]
+        },
+        {
+          "action": "kill",
+          "target": "Athrikus Narassin",
+          "zone": "Darkshore",
+          "x": 56.4,
+          "y": 26.5,
+          "note": "Top of the Tower of Althalaxx; loot the Azsharan Key and open Narassin's Strongbox for Narassin's Tome, then return to the spirit.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "talk",
+          "target": "Mordent Evenshade",
+          "zone": null,
+          "x": 35.05,
+          "y": 46.49,
+          "note": "Reported zone 'Shen'dralar' (Evenshade's Overlook); he names three cleansing materials. Talk before gathering. Zone name not confirmed by a second source.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "click",
+          "target": "Shen'dralar Vault switches + vault (Star of Elune)",
+          "zone": "Feralas",
+          "x": 58.5,
+          "y": 71.6,
+          "note": "Ruins of Isildien, ring equipped. Five players: four press hidden switches within ~15 s of each other at 58.5,71.0 / 57.3,71.7 / 59.7,72.0 / 61.1,73.6 while the fifth loots the Star of Elune.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "collect",
+          "target": "Abyssal Mote",
+          "zone": "Azshara",
+          "x": null,
+          "y": null,
+          "note": "Underwater chest; no coordinates in web sources (an MIT addon lists 66.0, 54.1 via the Kirith/Azsharite chain).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 66.0,
+              "y": 54.1,
+              "source": "Whatnot (MIT addon)"
+            }
+          ]
+        },
+        {
+          "action": "kill",
+          "target": "Anguished / Suffering Highborne (20 Tears of Anguish)",
+          "zone": "Winterspring",
+          "x": null,
+          "y": null,
+          "note": "Lake Kel'Theril ghosts, about level 55; drops not guaranteed.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 53.6,
+              "y": 43.2,
+              "source": "Whatnot (MIT addon)"
+            }
+          ]
+        },
+        {
+          "action": "use",
+          "target": "Befouled Water Globe",
+          "zone": "Mount Hyjal",
+          "x": 72.7,
+          "y": 37.2,
+          "note": "Shrine of Coalescence with the Star, the Mote and the tears: creates the Cleansed Water Globe.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "talk",
+          "target": "Mordent Evenshade",
+          "zone": null,
+          "x": 35.05,
+          "y": 46.49,
+          "note": "Show him the Cleansed Water Globe; he sends you to Prince Tortheldrin.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "talk",
+          "target": "Prince Tortheldrin",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Dire Maul west wing. He speaks of Eluvi'ana and its twin Eluvi'tor and hints that Honored with his court is needed; one player at Honored saw no new dialogue. End of the known trail.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "sources": [
+        "https://www.wowhead.com/forever/guide/dawn-waker-secret-walkthrough",
+        "https://www.icy-veins.com/wow-forever/news/a-torch-an-ancient-sword-and-a-secret-wow-forever-players-cant-solve/",
+        "https://warcraft.wiki.gg/wiki/Ancient_Hilt",
+        "https://warcraft.wiki.gg/wiki/Befouled_Water_Globe_(Forever)",
+        "https://warcraft-secrets.com/guides/eluvitor-the-dawn-waker",
+        "https://guided.news/en/guides/wow-forever-dawn-waker-eluviana-cleanse-water-globe/",
+        "https://wowclassicforever.info/quests/star-of-elune/",
+        "https://wowhandbook.com/news/dawn-waker-secret/",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-dawn-waker-secret",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-dawn-waker-secret/",
+        "https://www.zockify.com/forever/dawn-waker-secret/",
+        "https://expcarry.com/wow-forever-dawn-waker-secret",
+        "https://bindonforever.com/quest/93161"
+      ],
+      "confidence": "medium",
+      "notes": "Steps up to Tortheldrin are well documented; the final reward is unknown. Mordent's zone label and the Azshara/Winterspring coordinates are single-source."
+    },
+    {
+      "name": "Replica Dartol's Rod of Transformation",
+      "type": "toy",
+      "reward_item_id": null,
+      "effect": "Turns you into a furbolg (Forever toy version of the Raene's Cleansing rod; the quest rod is removed at the final turn-in).",
+      "faction": "Alliance",
+      "min_level": 18,
+      "steps": [
+        {
+          "action": "accept",
+          "target": "Raene's Cleansing",
+          "zone": "Ashenvale",
+          "x": 36.6,
+          "y": 49.6,
+          "note": "Raene Wolfrunner in Astranaar. Eleven-part chain; several parts share the same name. First part is quest 1028 on Wowhead Classic.",
+          "quest_id": 1028,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "click",
+          "target": "Teronis' Corpse",
+          "zone": "Ashenvale",
+          "x": 20.3,
+          "y": 42.3,
+          "note": "Lake Falathim; search for the Glowing Gem (random, may take several tries).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "talk",
+          "target": "Shael'dryn",
+          "zone": "Ashenvale",
+          "x": 53.5,
+          "y": 46.2,
+          "note": "Moonwell east of Iris Lake; give her the gem.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "click",
+          "target": "Worn Chest (Iron Shaft)",
+          "zone": "Ashenvale",
+          "x": 54.4,
+          "y": 35.4,
+          "note": "Treants drop the Wooden Key; near the Felwood border.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "click",
+          "target": "Rusty Chest (Iron Pommel)",
+          "zone": "Ashenvale",
+          "x": 70.0,
+          "y": 75.0,
+          "note": "Appears after killing the Rotting Slimes.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "click",
+          "target": "Hidden shrine",
+          "zone": "Ashenvale",
+          "x": 56.4,
+          "y": 49.2,
+          "note": "Enchant the rebuilt rod, then interact again for the next quest.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "talk",
+          "target": "Krolg",
+          "zone": "Ashenvale",
+          "x": 50.8,
+          "y": 75.1,
+          "note": "Mystral Lake; take the temporary rod to Raene first, then use it to speak with Krolg.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "kill",
+          "target": "Ran Bloodtooth + 4 Bloodtooth Guards",
+          "zone": "Ashenvale",
+          "x": 54.7,
+          "y": 79.6,
+          "note": "Tough elite; loot his skull.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "Raene's Cleansing (final)",
+          "zone": "Ashenvale",
+          "x": 36.6,
+          "y": 49.6,
+          "note": "Bring the skull and quest rod to Raene; reward is the Replica Dartol's Rod toy.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "sources": [
+        "https://www.icy-veins.com/wow-forever/news/transform-into-a-furbolg-indefinitely-with-this-new-wow-forever-toy/",
+        "https://guided.news/en/guides/wow-forever-dartols-rod-transformation-furbolg-toy/",
+        "https://expcarry.com/wow-forever-dartols-rod-guide",
+        "https://forg.gg/en/forever/quest/1030",
+        "https://www.wowhead.com/classic/quest=1028/raenes-cleansing",
+        "https://www.wowhead.com/forever/guide/lotr-a-collectors-guide-to-wow-forever-34946",
+        "https://github.com/DrKlampz/Whatnot"
+      ],
+      "confidence": "medium",
+      "notes": "Reward mechanic and Alliance-only status agree across sources. Step coordinates come from Classic-era data (via an MIT addon) and were not re-verified on Forever; step order beyond the outline is from forg.gg's list."
+    },
+    {
+      "name": "Everlasting Silvermoon Shimmerwine",
+      "type": "toy",
+      "reward_item_id": 276896,
+      "effect": "Hold up a glass of wine.",
+      "faction": null,
+      "faction_note": "One guide calls it an Alliance quest; not confirmed elsewhere.",
+      "min_level": null,
+      "level_note": "Quest level 52.",
+      "quests": [
+        {
+          "name": "A Taste of Home",
+          "quest_id": 96609,
+          "level": 52,
+          "start": "Arille Azuregaze",
+          "end": "Arille Azuregaze",
+          "zone": "City of Dalaran (Alterac Mountains map)"
+        }
+      ],
+      "steps": [
+        {
+          "action": "accept",
+          "target": "A Taste of Home",
+          "zone": "Alterac Mountains",
+          "x": 18.4,
+          "y": 65.8,
+          "note": "Arille Azuregaze in the City of Dalaran (coordinates given on the Alterac Mountains map; some sites label the zone Dalaran).",
+          "quest_id": 96609,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "collect",
+          "target": "10 Silvermoon Shimmerwine",
+          "zone": "Azshara",
+          "x": null,
+          "y": null,
+          "note": "Drops from Blood Elf Reclaimers, Surveyors, Defenders and Arcanists.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 274966
+        },
+        {
+          "action": "turnin",
+          "target": "A Taste of Home",
+          "zone": "Alterac Mountains",
+          "x": 18.4,
+          "y": 65.8,
+          "note": "Reward: the toy plus a choice of Shimmerwine Shanker or Shimmerwine Spirits.",
+          "quest_id": 96609,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": 276896
+        }
+      ],
+      "sources": [
+        "https://outof.games/realms/forever/quest/96609-a-taste-of-home/",
+        "https://wowhelm.com/forever/quest/96609/a-taste-of-home",
+        "https://foreverchanges.pro/quest/96609/a-taste-of-home",
+        "https://wow-forever.gg/db/items/276896-everlasting-silvermoon-shimmerwine/",
+        "https://www.wowhead.com/forever/guide/lotr-a-collectors-guide-to-wow-forever-34946"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Weevil K. Neevil",
+      "type": "pet",
+      "reward_item_id": 280456,
+      "faction": null,
+      "min_level": 25,
+      "level_note": "Quest level 35, requires 25.",
+      "quests": [
+        {
+          "name": "My Little Friends",
+          "quest_id": null,
+          "level": 35,
+          "req_level": 25,
+          "zone": "Swamp of Sorrows"
+        }
+      ],
+      "steps": [
+        {
+          "action": "accept",
+          "target": "My Little Friends",
+          "zone": "Swamp of Sorrows",
+          "x": null,
+          "y": null,
+          "note": "Giver reported as Amaryllis Webb (single source).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "use",
+          "target": "Entomology Starter Kit",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Catch an Arbor Tarantula, a Hay Weevil Specimen and a Flesh Picker (locations not given by sources).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "turnin",
+          "target": "My Little Friends",
+          "zone": "Swamp of Sorrows",
+          "x": null,
+          "y": null,
+          "note": "Reward: Weevil K. Neevil (data marks it account-wide; unconfirmed).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        }
+      ],
+      "sources": [
+        "https://www.wowhead.com/forever/item=280456/weevil-k-neevil",
+        "https://wowforever.wiki.fextralife.com/My_Little_Friends",
+        "https://wowforever.be/guides/pets/weevil-k-neevil/",
+        "https://www.wowhead.com/forever/guide/lotr-a-collectors-guide-to-wow-forever-34946"
+      ],
+      "confidence": "low",
+      "notes": "Quest exists in the Forever database; beta reports on its availability were inconsistent."
+    },
+    {
+      "name": "Baby Crocolisk",
+      "type": "pet",
+      "reward_item_id": null,
+      "faction": "Alliance",
+      "faction_note": "Stormwind City; Alliance in practice.",
+      "min_level": null,
+      "steps": [
+        {
+          "action": "kill",
+          "target": "Sewer Beast",
+          "zone": "Stormwind City",
+          "x": 49.0,
+          "y": 22.0,
+          "note": "Level 50 rare (elite on beta) crocolisk patrolling the canals; groups/raids have been used. Drop rate unknown (one beta figure 88.6%).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "alt": [
+            {
+              "x": 66.5,
+              "y": 31.5,
+              "note": "second reported sighting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "https://www.wowhead.com/forever/news/earn-two-new-pets-in-capital-cities-in-wow-forever-383170",
+        "https://lostwow.com/ForeverCityPets.shtml",
+        "https://wowhandbook.com/news/hidden-pets-gustjumper-slime-crocolisk/",
+        "https://www.foreverwisp.com/guides/wow-forever-excitable-slime-baby-crocolisk-pets"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "name": "Reins of the Pack Kodo",
+      "type": "mount",
+      "reward_item_id": null,
+      "faction": null,
+      "min_level": 60,
+      "steps": [
+        {
+          "action": "collect",
+          "target": "6,000 Merchant's Favor",
+          "zone": null,
+          "x": null,
+          "y": null,
+          "note": "Forever-only currency from the trade-supply factions (Azeroth Commerce Authority / Durotar Supply and Logistics).",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null
+        },
+        {
+          "action": "talk",
+          "target": "Huey Sunnydale (Alliance vendor)",
+          "zone": "Redridge Mountains",
+          "x": null,
+          "y": null,
+          "note": "Three Corners.",
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "faction": "Alliance"
+        },
+        {
+          "action": "talk",
+          "target": "Okamache (Horde vendor)",
+          "zone": "The Barrens",
+          "x": null,
+          "y": null,
+          "note": null,
+          "quest_id": null,
+          "npc_id": null,
+          "object_id": null,
+          "item_id": null,
+          "faction": "Horde"
+        }
+      ],
+      "requirements_note": "Level 60 and Journeyman Riding. Whether Exalted with the supply faction is required is disputed (boost sites say yes; one guide says Exalted gates the tabard instead).",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Merchant's_Favor",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-mounts-guide/",
+        "https://www.wowhead.com/forever/guide/collections/mounts-locations-appearances"
+      ],
+      "confidence": "low"
+    }
+  ]
+}

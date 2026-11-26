@@ -24,6 +24,8 @@ tools/*
 !tools/gen_media.py
 !tools/gen_rares.py
 !tools/gen_questlevels.py
+!tools/gen_collect.py
+!tools/data/
 !tools/ui-smoke.lua
 !tools/questiedb.py
 # O verificador das cópias da lib ChehulNet (vem de danielcosta42/chehulnet pelo sync; o CI roda).

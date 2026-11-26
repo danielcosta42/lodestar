@@ -1,0 +1,1384 @@
+{
+  "meta": {
+    "title": "WoW Forever rare tameable beasts",
+    "gathered": "2026-11-26",
+    "method_note": "Pet sites could not be fetched directly (network allowlist); data comes from web-search summaries of the cited pages. Petopia Forever pages were indexed but their full tables were not readable, so many coordinates come from wowhandbook, Conquest Capped and similar guides. NPC IDs are null unless a source URL carried them.",
+    "confidence_rule": "high = 2+ sources agree on zone and spawn; medium = single source or no coordinates; low = conflicting zone/family/level/spawn or classic-only data.",
+    "known_gaps": [
+      "Azzere the Skyblade, Washte Pawne, Mezzir the Howler, Bloodroar the Stalker, Deatheye, Bjarn, King Bangalash, Bhag'thera, Ghost Howl were named by some pages but no Forever data was found",
+      "Petopia's 'collector' (unique look) flags were not readable per pet"
+    ],
+    "family_notes": "Forever adds a Fox family (Trickster's Dance: +50% dodge and 30% faster attacks for 12 s) and renames Owl to Bird of Prey. You cannot tame a beast above your level."
+  },
+  "pets": [
+    {
+      "name": "Shal'ma",
+      "npc_id": null,
+      "family": "Cat",
+      "level": 9,
+      "rank": "rare",
+      "zone": "Durotar",
+      "spawns": [
+        {
+          "x": 59.8,
+          "y": 91.0
+        },
+        {
+          "x": 62.8,
+          "y": 96.8
+        },
+        {
+          "x": 68.6,
+          "y": 70.6
+        }
+      ],
+      "notes": "New Horde-side rare cat on the Echo Isles; shares listed spawn points with Raluk (unknown whether they alternate).",
+      "new_in_forever": true,
+      "sources": [
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-hunter-pets/",
+        "https://guided.news/en/guides/wow-forever-tame-train-hunter-pets-rare-beasts/",
+        "https://wowforeverpets.com/rares"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "spawns": [
+            [
+              60.7,
+              90.0
+            ],
+            [
+              69.2,
+              71.5
+            ],
+            [
+              63.1,
+              96.2
+            ]
+          ],
+          "note": "second guide's spawn list"
+        }
+      ]
+    },
+    {
+      "name": "Ghostfang",
+      "npc_id": null,
+      "family": "Cat",
+      "level": 10,
+      "rank": "rare",
+      "zone": "Dun Morogh",
+      "spawns": [
+        {
+          "x": 74.5,
+          "y": 63.2
+        },
+        {
+          "x": 79.5,
+          "y": 43.0
+        },
+        {
+          "x": 80.8,
+          "y": 46.3
+        },
+        {
+          "x": 81.7,
+          "y": 55.5
+        }
+      ],
+      "notes": "Rare cat with a unique ghostly look; respawn about 30 minutes.",
+      "new_in_forever": true,
+      "sources": [
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-ghostfang/",
+        "https://mmonster.co/wow-forever/guides/hunter-pets/cat",
+        "https://www.wow-petopia.com/forever/browse.php?id=looks",
+        "https://guided.news/en/guides/wow-forever-tame-train-hunter-pets-rare-beasts/"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "spawns": [
+            [
+              74.2,
+              63.2
+            ],
+            [
+              79.4,
+              42.8
+            ],
+            [
+              80.4,
+              46.6
+            ],
+            [
+              81.6,
+              55.4
+            ]
+          ],
+          "note": "second guide (rounding)"
+        }
+      ]
+    },
+    {
+      "name": "The Rake",
+      "npc_id": null,
+      "family": "Cat",
+      "level": 10,
+      "rank": "rare",
+      "zone": "Mulgore",
+      "spawns": [],
+      "notes": "Rare cat with a fast 1.2 s attack speed.",
+      "new_in_forever": false,
+      "sources": [
+        "https://foreverdb.net/pets/cat",
+        "https://guided.news/en/guides/wow-forever-tame-train-hunter-pets-rare-beasts/"
+      ],
+      "confidence": "low",
+      "alt": [
+        {
+          "zone": "The Barrens",
+          "note": "foreverspec map shows a level-10 cat in The Barrens"
+        }
+      ]
+    },
+    {
+      "name": "Echeyakee",
+      "npc_id": null,
+      "family": "Cat",
+      "level": 16,
+      "rank": "rare",
+      "zone": "The Barrens",
+      "spawns": [
+        {
+          "x": 55.9,
+          "y": 17.2
+        }
+      ],
+      "notes": "White lion look. Conquest Capped says it only appears when a Horde player uses the Horn of Echeyakee (Classic quest behavior); foreverdb lists it as a normal spawn.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/cat/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-hunter-pets/",
+        "https://foreverdb.net/pets/cat"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Humar the Pridelord",
+      "npc_id": null,
+      "family": "Cat",
+      "level": 23,
+      "rank": "rare elite",
+      "zone": "The Barrens",
+      "spawns": [
+        {
+          "x": 62.0,
+          "y": 33.3
+        }
+      ],
+      "notes": "Iconic black lion, heavily camped. Listed as rare elite in some tables.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/cat/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-hunter-pets/",
+        "https://wowfdb.com/classes/hunter/rare-pets/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Broken Tooth",
+      "npc_id": null,
+      "family": "Cat",
+      "level": 37,
+      "rank": "rare",
+      "zone": "Badlands",
+      "spawns": [
+        {
+          "x": 44.5,
+          "y": 36.5
+        },
+        {
+          "x": 53.0,
+          "y": 13.0
+        },
+        {
+          "x": 61.5,
+          "y": 30.5
+        }
+      ],
+      "notes": "Prized for 1.0 s attack speed. Spawns south of Angor Fortress, on the hills south of Uldaman, and in the east clearing.",
+      "new_in_forever": false,
+      "sources": [
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-broken-tooth/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-hunter-pets/",
+        "https://guided.news/en/guides/wow-forever-tame-train-hunter-pets-rare-beasts/"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "spawns": [
+            [
+              59.7,
+              29.4
+            ],
+            [
+              59.7,
+              26.9
+            ],
+            [
+              53.7,
+              15.5
+            ],
+            [
+              45.8,
+              36.5
+            ]
+          ],
+          "note": "second guide"
+        }
+      ]
+    },
+    {
+      "name": "Rak'shiri",
+      "npc_id": 10200,
+      "family": "Cat",
+      "level": 57,
+      "rank": "rare",
+      "zone": "Winterspring",
+      "spawns": [
+        {
+          "x": 51.1,
+          "y": 10.8
+        }
+      ],
+      "notes": "Rare cat. Petopia's legacy NPC page shows an older level range.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/cat/",
+        "https://www.wow-petopia.com/npc.php?id=10200"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Sian-Rotam",
+      "npc_id": null,
+      "family": "Cat",
+      "level": 60,
+      "rank": "elite",
+      "zone": "Winterspring",
+      "spawns": [],
+      "notes": "Elite with the Echeyakee-style look (foreverdb).",
+      "new_in_forever": false,
+      "sources": [
+        "https://foreverdb.net/pets/cat"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Ta'shkal",
+      "npc_id": null,
+      "family": "Cat",
+      "level": 57,
+      "rank": "rare",
+      "zone": "Mount Hyjal",
+      "spawns": [
+        {
+          "x": 26.5,
+          "y": 64.9
+        }
+      ],
+      "notes": "Secret green-and-orange cat with 1.0 s attack speed. Not in the open world: loot a grey Corrupted Cat Figurine from the fel pools of Felblood Scar (southern Hyjal), then use the Lonely Lantern on the hill above Mourning's Rest while carrying it. The figurine can be consumed without a spawn, so bring spares. Coordinates are the lantern.",
+      "new_in_forever": true,
+      "sources": [
+        "https://wowhandbook.com/news/hunter-pet-tashkal-mount-hyjal/",
+        "https://wow.gg/guides/wow-forever-tashkal-hunter-pet",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-tashkal/"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "x": 27.0,
+          "y": 63.6,
+          "note": "lantern per another guide"
+        },
+        {
+          "note": "Level 57 vs 58 disputed; one guide says hunter level 58+ needed"
+        }
+      ],
+      "summon": true
+    },
+    {
+      "name": "Shalla'kal",
+      "npc_id": null,
+      "family": "Cat",
+      "level": null,
+      "rank": null,
+      "zone": "Mount Hyjal",
+      "spawns": [
+        {
+          "x": 31.4,
+          "y": 50.0
+        }
+      ],
+      "notes": "Listed as a tameable cat in forg.gg's Mount Hyjal list; rarity not stated.",
+      "new_in_forever": true,
+      "sources": [
+        "https://forg.gg/en/forever/pets/zones/mount-hyjal"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Coldrasp",
+      "npc_id": null,
+      "family": "Wolf",
+      "level": 12,
+      "rank": "rare",
+      "zone": "Tirisfal Glades",
+      "spawns": [
+        {
+          "x": 15.6,
+          "y": 69.8
+        }
+      ],
+      "notes": "Spectral blue spirit-wolf skin, new in Forever (Whispering Forest area, western Tirisfal).",
+      "new_in_forever": true,
+      "sources": [
+        "https://foreverdb.net/pets/wolf",
+        "https://foreverchanges.pro/hunter-pets",
+        "https://www.wow-petopia.com/forever/browse.php?id=looks",
+        "https://wowforeverpets.com/rares"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "x": 17.5,
+          "y": 68.8
+        },
+        {
+          "x": 15.9,
+          "y": 66.8
+        },
+        {
+          "x": 19.7,
+          "y": 65.6,
+          "source": "https://wowforeverpets.com/rares"
+        }
+      ]
+    },
+    {
+      "name": "Gorefang",
+      "npc_id": null,
+      "family": "Wolf",
+      "level": 13,
+      "rank": "rare",
+      "zone": "Silverpine Forest",
+      "spawns": [],
+      "notes": "Rare wolf; no coordinates found.",
+      "new_in_forever": false,
+      "sources": [
+        "https://warcraftmaps.com/hunter-pets"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Lupos",
+      "npc_id": null,
+      "family": "Wolf",
+      "level": 23,
+      "rank": "rare",
+      "zone": "Duskwood",
+      "spawns": [
+        {
+          "x": 20.0,
+          "y": 26.4
+        }
+      ],
+      "notes": "Rare spectral-looking wolf near The Darkened Bank.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/wolf/",
+        "https://foreverdb.net/pets/wolf"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Ghostpaw Alpha",
+      "npc_id": null,
+      "family": "Wolf",
+      "level": 28,
+      "rank": "rare",
+      "zone": "Ashenvale",
+      "spawns": [
+        {
+          "x": 57.3,
+          "y": 34.2
+        }
+      ],
+      "notes": "Added to rare-beast tables on 20 Nov 2026; one table lists it as a normal spawn (level 27-28).",
+      "new_in_forever": false,
+      "sources": [
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-hunter-pets/",
+        "https://wowhandbook.com/hunter-pets/wolf/"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Snarler",
+      "npc_id": null,
+      "family": "Wolf",
+      "level": 42,
+      "rank": "rare",
+      "zone": "Feralas",
+      "spawns": [
+        {
+          "x": 80.2,
+          "y": 39.6
+        }
+      ],
+      "notes": "Rare wolf in eastern Feralas.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/wolf/",
+        "https://lfcarry.com/guides/wow-forever-rare-spawns",
+        "https://foreverdb.net/pets/wolf"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 79.0,
+          "y": 39.0,
+          "source": "https://lfcarry.com/guides/wow-forever-rare-spawns"
+        },
+        {
+          "note": "search area 79.0,38.6 to 85.6,42.2 per another source"
+        }
+      ]
+    },
+    {
+      "name": "Old Cliff Jumper",
+      "npc_id": null,
+      "family": "Wolf",
+      "level": 42,
+      "rank": "rare",
+      "zone": "The Hinterlands",
+      "spawns": [],
+      "notes": "Listed as a rare wolf near Aerie Peak; no coordinates found.",
+      "new_in_forever": false,
+      "sources": [
+        "https://lfcarry.com/guides/wow-forever-rare-spawns"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Old Rusthowl",
+      "npc_id": null,
+      "family": "Wolf",
+      "level": 58,
+      "rank": "rare elite",
+      "zone": "Mount Hyjal",
+      "spawns": [],
+      "notes": "Rare elite wolf (57-58), added 18 Nov 2026; another source lists it with no located spawn.",
+      "new_in_forever": true,
+      "sources": [
+        "https://forg.gg/en/forever/pets/zones/mount-hyjal",
+        "https://foreverdb.net/pets/wolf"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Mystmane",
+      "npc_id": null,
+      "family": "Bear",
+      "level": 13,
+      "rank": "rare",
+      "zone": "Zephras Isle",
+      "spawns": [
+        {
+          "x": 60.0,
+          "y": 33.5
+        }
+      ],
+      "notes": "New rare bear in Shadowgale Forest; 1.6 s attack speed and already knows Swipe.",
+      "new_in_forever": true,
+      "sources": [
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-mystmane/",
+        "https://wowforeverpets.com/blog/zephras-isle-hunter-pets",
+        "https://wowhandbook.com/hunter-pets/bear/"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "x": 58.1,
+          "y": 38.1
+        },
+        {
+          "x": 56.2,
+          "y": 37.9,
+          "source": "https://wowhandbook.com/hunter-pets/bear/"
+        }
+      ]
+    },
+    {
+      "name": "Old Vicejaw",
+      "npc_id": null,
+      "family": "Bear",
+      "level": 14,
+      "rank": "rare",
+      "zone": "Silverpine Forest",
+      "spawns": [],
+      "notes": "Rare near Deep Elem Mine; one source lists it under wolves.",
+      "new_in_forever": false,
+      "sources": [
+        "https://mmonster.co/wow-forever/guides/hunter-pets",
+        "https://foreverspec.com/hunter-pets/rares/"
+      ],
+      "confidence": "low",
+      "alt": [
+        {
+          "family": "Wolf"
+        }
+      ]
+    },
+    {
+      "name": "Big Samras",
+      "npc_id": null,
+      "family": "Bear",
+      "level": 27,
+      "rank": "rare",
+      "zone": "Hillsbrad Foothills",
+      "spawns": [
+        {
+          "x": 86.0,
+          "y": 39.9
+        }
+      ],
+      "notes": "Rare bear, 2.0 s attack speed.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/bear/",
+        "https://www.wow-petopia.com/forever/browse.php?id=rare"
+      ],
+      "confidence": "low",
+      "alt": [
+        {
+          "x": 72.0,
+          "y": 30.0,
+          "source": "https://worstguidesever.com/wow-forever-bear-pet-guide/",
+          "note": "hilltop NW of Durnholde"
+        }
+      ]
+    },
+    {
+      "name": "Ursol'lok",
+      "npc_id": 12037,
+      "family": "Bear",
+      "level": 31,
+      "rank": "rare",
+      "zone": "Ashenvale",
+      "spawns": [
+        {
+          "x": 83.4,
+          "y": 48.5
+        }
+      ],
+      "notes": "Rare bear in eastern Ashenvale, 2.0 s attack speed.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/bear/",
+        "https://www.wow-petopia.com/forever/browse.php?id=rare",
+        "https://wowf.io/en/hunter-pets/rares/12037"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 83.0,
+          "y": 52.0,
+          "source": "https://worstguidesever.com/wow-forever-bear-pet-guide/"
+        }
+      ]
+    },
+    {
+      "name": "Old Grizzlegut",
+      "npc_id": null,
+      "family": "Bear",
+      "level": 43,
+      "rank": "rare",
+      "zone": "Feralas",
+      "spawns": [
+        {
+          "x": 59.5,
+          "y": 59.4
+        }
+      ],
+      "notes": "Rare bear; knows Claw rank 6 when tamed.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/bear/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Mongress",
+      "npc_id": null,
+      "family": "Bear",
+      "level": 50,
+      "rank": "rare",
+      "zone": "Felwood",
+      "spawns": [
+        {
+          "x": 39.8,
+          "y": 80.3
+        }
+      ],
+      "notes": "Rare bear.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/bear/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Mother Fang",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 10,
+      "rank": "rare",
+      "zone": "Elwynn Forest",
+      "spawns": [
+        {
+          "x": 62.1,
+          "y": 48.0
+        }
+      ],
+      "notes": "Back of Jasperlode Mine (entrance about 62, 55). Level 7-10 listed.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/spider/",
+        "https://worstguidesever.com/wow-forever-spider-hunter-pet-guide/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Sri'skulk",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 13,
+      "rank": "rare",
+      "zone": "Tirisfal Glades",
+      "spawns": [
+        {
+          "x": 88.2,
+          "y": 51.4
+        }
+      ],
+      "notes": "Venomweb Vale.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/spider/",
+        "https://worstguidesever.com/wow-forever-spider-hunter-pet-guide/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Krethis Shadowspinner",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 15,
+      "rank": "rare",
+      "zone": "Silverpine Forest",
+      "spawns": [
+        {
+          "x": 36.0,
+          "y": 8.0
+        }
+      ],
+      "notes": "One spawn per forevermastery.",
+      "new_in_forever": false,
+      "sources": [
+        "https://forevermastery.com/en/tools/hunter-pets",
+        "https://wowhandbook.com/hunter-pets/spider/"
+      ],
+      "confidence": "low",
+      "alt": [
+        {
+          "zone": "Tirisfal Glades",
+          "note": "foreverspec lists Deathknell"
+        }
+      ]
+    },
+    {
+      "name": "Shanda the Spinner",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 19,
+      "rank": "rare",
+      "zone": "Loch Modan",
+      "spawns": [],
+      "notes": "No coordinates found.",
+      "new_in_forever": false,
+      "sources": [
+        "https://bindonforever.com/pets/spider"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Chatter",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 23,
+      "rank": "rare",
+      "zone": "Redridge Mountains",
+      "spawns": [],
+      "notes": "No coordinates found.",
+      "new_in_forever": false,
+      "sources": [
+        "https://bindonforever.com/pets/spider",
+        "https://forg.gg/en/forever/pets/rare"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Leech Widow",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 24,
+      "rank": "rare",
+      "zone": "Wetlands",
+      "spawns": [
+        {
+          "x": 47.3,
+          "y": 59.2
+        }
+      ],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/spider/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Naraxis",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 27,
+      "rank": "rare",
+      "zone": "Duskwood",
+      "spawns": [
+        {
+          "x": 86.4,
+          "y": 47.6
+        }
+      ],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/spider/",
+        "https://worstguidesever.com/wow-forever-spider-hunter-pet-guide/"
+      ],
+      "confidence": "low",
+      "alt": [
+        {
+          "zone": "Deadwind Pass",
+          "source": "https://foreverspec.com/hunter-pets/rares/"
+        }
+      ]
+    },
+    {
+      "name": "Darkmist Widow",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 40,
+      "rank": "rare",
+      "zone": "Dustwallow Marsh",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/spider/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Rekk'tilac",
+      "npc_id": null,
+      "family": "Spider",
+      "level": 48,
+      "rank": "rare",
+      "zone": "Searing Gorge",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/spider/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Takk the Leaper",
+      "npc_id": null,
+      "family": "Raptor",
+      "level": 19,
+      "rank": "rare elite",
+      "zone": "The Barrens",
+      "spawns": [
+        {
+          "x": 59.6,
+          "y": 8.3
+        }
+      ],
+      "notes": "Grey raptor skin; drops a Raptor Hide Cloak.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/raptor/",
+        "https://games.gg/world-of-warcraft/guides/wow-forever-raptor-pet-guide/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-hunter-pets/"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "x": 60.4,
+          "y": 9.4,
+          "source": "https://games.gg/world-of-warcraft/guides/wow-forever-raptor-pet-guide/"
+        },
+        {
+          "note": "Boulder Lode Mine area per another source"
+        }
+      ]
+    },
+    {
+      "name": "Razormaw Matriarch",
+      "npc_id": null,
+      "family": "Raptor",
+      "level": 31,
+      "rank": "rare",
+      "zone": "Wetlands",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/raptor/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Dart",
+      "npc_id": null,
+      "family": "Raptor",
+      "level": 38,
+      "rank": "rare",
+      "zone": "Dustwallow Marsh",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/raptor/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Tethis",
+      "npc_id": null,
+      "family": "Raptor",
+      "level": 43,
+      "rank": "rare",
+      "zone": "Stranglethorn Vale",
+      "spawns": [
+        {
+          "x": 28.7,
+          "y": 44.9
+        }
+      ],
+      "notes": "Blue raptor skin; normal vs elite disputed.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/raptor/",
+        "https://games.gg/world-of-warcraft/guides/wow-forever-raptor-pet-guide/"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Nightscreech",
+      "npc_id": null,
+      "family": "Bird of Prey",
+      "level": 10,
+      "rank": "rare",
+      "zone": "Teldrassil",
+      "spawns": [
+        {
+          "x": 46.4,
+          "y": 33.6
+        },
+        {
+          "x": 40.0,
+          "y": 55.6
+        }
+      ],
+      "notes": "Rare owl (Owl family is renamed Bird of Prey in Forever); reported to know 'Mine!'.",
+      "new_in_forever": true,
+      "sources": [
+        "https://guided.news/en/guides/wow-forever-tame-train-hunter-pets-rare-beasts/",
+        "https://foreverchanges.pro/hunter-pets",
+        "https://wowfdb.com/classes/hunter/rare-pets/"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "spawns": [
+            [
+              40.1,
+              55.2
+            ],
+            [
+              46.6,
+              32.8
+            ],
+            [
+              38.2,
+              28.2
+            ]
+          ],
+          "note": "second guide"
+        }
+      ]
+    },
+    {
+      "name": "Lord Condar",
+      "npc_id": null,
+      "family": "Carrion Bird",
+      "level": 16,
+      "rank": "rare",
+      "zone": "Loch Modan",
+      "spawns": [
+        {
+          "x": 63.0,
+          "y": 79.0
+        }
+      ],
+      "notes": "Red carrion bird SW of Farstrider Lodge (level 15-16). Also drops the Shaking Egg / Condor Hatchling companion.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/carrion-bird/",
+        "https://worstguidesever.com/wow-forever-carrion-bird-hunter-pet-guide/",
+        "https://mmonster.co/wow-forever/guides/hunter-pets/rare-pets"
+      ],
+      "confidence": "high",
+      "alt": []
+    },
+    {
+      "name": "Spiteflayer",
+      "npc_id": null,
+      "family": "Carrion Bird",
+      "level": 52,
+      "rank": "rare",
+      "zone": "Blasted Lands",
+      "spawns": [
+        {
+          "x": 58.0,
+          "y": 34.0
+        }
+      ],
+      "notes": "Black; circles south of Nethergarde Keep above the road.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wowhandbook.com/hunter-pets/carrion-bird/",
+        "https://worstguidesever.com/wow-forever-carrion-bird-hunter-pet-guide/"
+      ],
+      "confidence": "high",
+      "alt": []
+    },
+    {
+      "name": "Kackle",
+      "npc_id": null,
+      "family": "Crocolisk",
+      "level": 16,
+      "rank": "rare",
+      "zone": "Loch Modan",
+      "spawns": [],
+      "notes": "Rare at The Loch (15-16).",
+      "new_in_forever": false,
+      "sources": [
+        "https://www.wow-petopia.com/forever/browse.php?id=rare",
+        "https://mobalytics.gg/wow-forever/guides/hunter-pets"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Large Loch Crocolisk",
+      "npc_id": null,
+      "family": "Crocolisk",
+      "level": 22,
+      "rank": "rare",
+      "zone": "Loch Modan",
+      "spawns": [
+        {
+          "x": 58.9,
+          "y": 30.9
+        }
+      ],
+      "notes": "North part of The Loch, away from the bank.",
+      "new_in_forever": false,
+      "sources": [
+        "https://wow-forever.gg/pets/crocilisk/",
+        "https://worstguidesever.com/wow-forever-crocolisk-hunter-pet-guide/",
+        "https://wowfdb.com/classes/hunter/rare-pets/"
+      ],
+      "confidence": "high",
+      "alt": [
+        {
+          "x": 60.0,
+          "y": 34.0,
+          "source": "https://wowfdb.com/classes/hunter/rare-pets/"
+        }
+      ]
+    },
+    {
+      "name": "Ripscale",
+      "npc_id": null,
+      "family": "Crocolisk",
+      "level": 39,
+      "rank": "rare",
+      "zone": "Dustwallow Marsh",
+      "spawns": [
+        {
+          "x": 46.0,
+          "y": 58.0
+        }
+      ],
+      "notes": "Six spawns reported; one near Tabetha's house.",
+      "new_in_forever": false,
+      "sources": [
+        "https://worstguidesever.com/wow-forever-crocolisk-hunter-pet-guide/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Sewer Beast",
+      "npc_id": null,
+      "family": "Crocolisk",
+      "level": 50,
+      "rank": "rare elite",
+      "zone": "Stormwind City",
+      "spawns": [
+        {
+          "x": 49.0,
+          "y": 22.0
+        },
+        {
+          "x": 66.5,
+          "y": 31.5
+        }
+      ],
+      "notes": "Patrols the Stormwind canals; elite on beta. Also drops the Baby Crocolisk companion.",
+      "new_in_forever": false,
+      "sources": [
+        "https://worstguidesever.com/wow-forever-crocolisk-hunter-pet-guide/",
+        "https://www.wowhead.com/forever/news/earn-two-new-pets-in-capital-cities-in-wow-forever-383170"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Ghostmaw",
+      "npc_id": null,
+      "family": "Crocolisk",
+      "level": 42,
+      "rank": "elite",
+      "zone": "The Riverglades",
+      "spawns": [
+        {
+          "x": 53.7,
+          "y": 41.7
+        }
+      ],
+      "notes": "Elite; also a WANTED bounty target. Riverglades is a Forever-only zone.",
+      "new_in_forever": true,
+      "sources": [
+        "https://forg.gg/en/forever/pets/zones/riverglades"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Krek the Noxious",
+      "npc_id": null,
+      "family": "Turtle",
+      "level": 42,
+      "rank": "elite",
+      "zone": "The Riverglades",
+      "spawns": [],
+      "notes": "Elite turtle.",
+      "new_in_forever": true,
+      "sources": [
+        "https://wowfdb.com/classes/hunter/rare-pets/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Mazzranache",
+      "npc_id": null,
+      "family": "Tallstrider",
+      "level": 9,
+      "rank": "rare",
+      "zone": "Mulgore",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://foreverspec.com/hunter-pets/rares/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Fernfeather",
+      "npc_id": null,
+      "family": "Tallstrider",
+      "level": 10,
+      "rank": "rare",
+      "zone": "Zephras Isle",
+      "spawns": [
+        {
+          "x": 52.0,
+          "y": 82.0
+        }
+      ],
+      "notes": "Crane-like tallstrider skin, far south of the island near the mount vendors.",
+      "new_in_forever": true,
+      "sources": [
+        "https://forg.gg/en/forever/pets/zones/zephras-isle",
+        "https://wowforeverpets.com/blog/zephras-isle-hunter-pets",
+        "https://guided.news/en/guides/wow-forever-tame-train-hunter-pets-rare-beasts/"
+      ],
+      "confidence": "medium",
+      "alt": [
+        {
+          "spawns": [
+            [
+              51.4,
+              82.4
+            ],
+            [
+              52.4,
+              82.2
+            ],
+            [
+              53.8,
+              78.8
+            ]
+          ],
+          "note": "search points"
+        }
+      ]
+    },
+    {
+      "name": "Strider Clutchmother",
+      "npc_id": null,
+      "family": "Tallstrider",
+      "level": 20,
+      "rank": "rare elite",
+      "zone": "Darkshore",
+      "spawns": [],
+      "notes": "Rare elite in southern Darkshore; also drops the Tallstrider Hatchling companion.",
+      "new_in_forever": false,
+      "sources": [
+        "https://foreverspec.com/hunter-pets/rares/",
+        "https://warcraftmaps.com/hunter-pets"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Snort the Heckler",
+      "npc_id": null,
+      "family": "Hyena",
+      "level": 17,
+      "rank": "rare",
+      "zone": "The Barrens",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://warcraftmaps.com/hunter-pets",
+        "https://foreverspec.com/hunter-pets/rares/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Giggler",
+      "npc_id": null,
+      "family": "Hyena",
+      "level": 34,
+      "rank": "rare",
+      "zone": "Desolace",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://foreverspec.com/hunter-pets/rares/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Murderous Blisterpaw",
+      "npc_id": null,
+      "family": "Hyena",
+      "level": 43,
+      "rank": "rare",
+      "zone": "Tanaris",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://foreverspec.com/hunter-pets/rares/"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Kurmokk",
+      "npc_id": null,
+      "family": "Gorilla",
+      "level": 42,
+      "rank": "rare",
+      "zone": "Stranglethorn Vale",
+      "spawns": [],
+      "notes": "Ruins of Aboraz.",
+      "new_in_forever": false,
+      "sources": [
+        "https://foreverdb.net/pets",
+        "https://lfcarry.com/guides/wow-forever-rare-spawns"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Uhk'loc",
+      "npc_id": null,
+      "family": "Gorilla",
+      "level": 53,
+      "rank": "rare",
+      "zone": "Un'Goro Crater",
+      "spawns": [],
+      "notes": "Level 52-53.",
+      "new_in_forever": false,
+      "sources": [
+        "https://foreverdb.net/pets",
+        "https://lfcarry.com/guides/wow-forever-rare-spawns"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Grunter",
+      "npc_id": null,
+      "family": "Boar",
+      "level": 50,
+      "rank": "rare",
+      "zone": "Blasted Lands",
+      "spawns": [],
+      "notes": null,
+      "new_in_forever": false,
+      "sources": [
+        "https://warcraftmaps.com/hunter-pets"
+      ],
+      "confidence": "medium",
+      "alt": []
+    },
+    {
+      "name": "Death Flayer",
+      "npc_id": null,
+      "family": "Scorpid",
+      "level": 11,
+      "rank": "rare",
+      "zone": "Durotar",
+      "spawns": [],
+      "notes": "Classic-era data only.",
+      "new_in_forever": false,
+      "sources": [
+        "https://www.wow-petopia.com/classic/browse.php?id=rare"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Clack the Reaver",
+      "npc_id": null,
+      "family": "Scorpid",
+      "level": 53,
+      "rank": "rare",
+      "zone": "Blasted Lands",
+      "spawns": [],
+      "notes": "Classic-era data only.",
+      "new_in_forever": false,
+      "sources": [
+        "https://www.wow-petopia.com/classic/browse.php?id=rare"
+      ],
+      "confidence": "low",
+      "alt": []
+    },
+    {
+      "name": "Slydris",
+      "npc_id": null,
+      "family": "Fox",
+      "level": 6,
+      "rank": "rare elite",
+      "zone": "Zephras Isle",
+      "spawns": [
+        {
+          "x": 50.9,
+          "y": 51.4
+        }
+      ],
+      "notes": "Gold vuldren (fox) with a unique look; Fox is a new Forever family (Trickster's Dance). Rare elite at level 6, tameable once you hit 10. Spawn is unreliable (one tester camped 12+ hours).",
+      "new_in_forever": true,
+      "sources": [
+        "https://wowforeverpets.com/blog/fox-pet-family-wow-forever",
+        "https://endgametools.com/en/wow-forever/news/wow-forever-hunter-pets",
+        "https://www.wow-petopia.com/forever/browse.php?id=collector",
+        "https://forg.gg/en/forever/pets/zones/zephras-isle"
+      ],
+      "confidence": "low",
+      "alt": [
+        {
+          "x": 50.2,
+          "y": 51.0
+        },
+        {
+          "x": 50.0,
+          "y": 53.0
+        },
+        {
+          "level": 10,
+          "note": "older listings show level 10"
+        }
+      ]
+    }
+  ]
+}
