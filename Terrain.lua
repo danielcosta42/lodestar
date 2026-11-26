@@ -248,10 +248,12 @@ end
 -- expansões (número) ou quando a função disser (orçamento de tempo), cede a vez — não trava
 -- o quadro.
 local caminho
--- Volta grande demais (mais de 3× a reta e mais de 1500 jd a mais) não é caminho: é a grade sem a saída de verdade
--- (o platô de The Hinterlands só se liga ao mundo pela rampa da Revantusk na grade, e Aerie Peak -> Chillwind descia
--- a rampa e nadava 4 km pela costa de Arathi; #104). Fica a reta, que engana menos, e quem chama espera 300 jd.
-local VOLTA_FATOR, VOLTA_JD = 3, 1500
+-- Volta grande demais POR UMA PASSAGEM (mais de 2× a reta e mais de 1000 jd a mais) não é caminho: é a passagem
+-- virando a única saída de uma região que na grade não tem a de verdade (o platô de The Hinterlands só se liga ao
+-- mundo pela rampa da Revantusk, e Aerie Peak -> Chillwind descia a rampa e nadava 4 km pela costa; #104). Caminho
+-- só da grade fica como sempre (rotas costeiras longas são reais). Recusado o da busca normal, tenta a segunda; se
+-- nada serve, fica a reta, e quem chama espera 300 jd.
+local VOLTA_FATOR, VOLTA_JD = 2, 1000
 local function voltaDemais(pts, de, para)
 	local len = 0
 	for i = 2, #pts do len = len + math.sqrt((pts[i].x - pts[i - 1].x) ^ 2 + (pts[i].y - pts[i - 1].y) ^ 2) end
@@ -264,12 +266,13 @@ TR.VoltaDemais = voltaDemais
 -- sai em poucas expansões (~20 mil na Revantusk; a busca já poda o passo que estoura o limite de travados), e o nil
 -- que não tem jeito custa uma fração a mais, não o dobro (a expansão solta custa mais que a estrita).
 -- O caminho dela vem marcado (`solto`): quem chama não o refaz a cada desvio do jogador.
+local function recusa(pts, de, para) return pts and pts.passagem and voltaDemais(pts, de, para) end
 function TR.Path(dados, de, para, maxExp, ceder)
 	local pts, motivo = caminho(dados, de, para, maxExp, ceder, false)
-	if pts then return not voltaDemais(pts, de, para) and pts or nil end
+	if pts and not recusa(pts, de, para) then return pts end
 	pts = caminho(dados, de, para, math.floor(maxExp / (motivo == "limite" and 5 or 3)), ceder, true)
-	if pts and voltaDemais(pts, de, para) then return nil end
-	if pts then pts.solto = true end
+	if not pts or recusa(pts, de, para) then return nil end
+	pts.solto = true
 	return pts
 end
 
@@ -388,10 +391,14 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 		k = came[k]
 	end
 	local cel, molh = {}, { [0] = 0 }             -- do início ao fim; água acumulada
+	local usouPassagem = false
 	for i = #inv, 1, -1 do
 		local n = #cel + 1
 		cel[n] = inv[i]
 		molh[n] = molh[n - 1] + (select(2, info(grid, floor(inv[i] / W), inv[i] % W)) and 1 or 0)
+		if n > 1 and not usouPassagem then
+			for _, x in ipairs(links[cel[n - 1]] or NADA) do if x == cel[n] then usouPassagem = true; break end end
+		end
 	end
 	-- a segunda busca: quanto da barreira ela cruzou (seguidos e no total); passou do curto, não é caminho
 	if solto then
@@ -444,6 +451,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	r, c = TR.Cell(para.x, para.y)
 	if #cel > 1 and (r ~= fr or c ~= fc) then pts[#pts + 1] = TR.CellCenter(de.c, fr, fc) end
 	pts[#pts + 1] = { c = para.c, x = para.x, y = para.y }
+	pts.passagem = usouPassagem or nil
 	return pts
 end
 

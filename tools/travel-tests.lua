@@ -794,20 +794,25 @@ check((ac == nil or not pelaRampa(ac)) and (at == nil or not pelaRampa(at)),
 	"Aerie Peak -> Chillwind / Tarren Mill: nada de descer a rampa e dar a volta pelo mar")
 check(TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 0, y = 5000 }, { x = 100, y = 5000 }, { x = 100, y = 0 } },
 	{ x = 0, y = 0 }, { x = 100, y = 0 }) and not TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 200, y = 300 },
-	{ x = 300, y = 0 } }, { x = 0, y = 0 }, { x = 300, y = 0 }), "volta demais: 3x a reta e 1500 jd a mais")
+	{ x = 300, y = 0 } }, { x = 0, y = 0 }, { x = 300, y = 0 }), "volta demais: 2x a reta e 1000 jd a mais")
+-- só por passagem: rota costeira longa só da grade (Revantusk -> Light's Hope, ~4x a reta) segue existindo
+local semPassagem = load("Terrain0.lua", {}).terrain
+local lightsHope = { c = 0, x = 2271.1, y = -5340.9 }
+local costa = TRN.Path(semPassagem, revan, lightsHope, 150000)
+check(costa == nil or not costa.passagem, "rota só da grade não leva a marca de passagem")
 end
 -- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
 local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
 local trilha = {}                                  -- andada: um ponto por célula (como a gravação, a cada 3 jd)
-for col = 42, 53 do local m = mundo(60, col); trilha[#trilha + 1] = m.x; trilha[#trilha + 1] = m.y end
+for col = 42, 53 do local m = mundo(12, col); trilha[#trilha + 1] = m.x; trilha[#trilha + 1] = m.y end
 comPassagem.passages = { { c = 0, pts = trilha } }
 local viaRampa = TRN.Path(comPassagem, mundo(5, 30), mundo(5, 70), 40000)
 local passouNaLinha = false
-for _, q in ipairs(viaRampa or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 55 then passouNaLinha = true end end
+for _, q in ipairs(viaRampa or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 10 then passouNaLinha = true end end
 check(viaRampa and not viaRampa.solto and passouNaLinha, "passagem gravada: o caminho atravessa por ela (busca normal)")
 -- salto (dois pontos longe: voo, teleporte) não liga nada
 local salto = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
-local sa, sb = mundo(60, 42), mundo(60, 53)
+local sa, sb = mundo(12, 42), mundo(12, 53)
 salto.passages = { { c = 0, pts = { sa.x, sa.y, sb.x, sb.y } } }
 check(TRN.Path(salto, mundo(5, 30), mundo(5, 70), 40000) == nil, "salto gravado (voo, teleporte) não vira caminho")
 -- queda: só desce (de B para A não volta pela passagem)
