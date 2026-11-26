@@ -92,6 +92,9 @@ local function evalToken(tok)
 				if IsQuestComplete(tonumber(id)) then result = true; break end
 			end
 		elseif fn == "haveq" then result = IsQuestInLog(tonumber(arg))
+		elseif fn == "collected" then           -- collected(books:12): o colecionável já foi pego (Collect.lua)
+			local kind, id = arg:match("^(%a+):([%w_]+)$")
+			result = kind and ns.Collect and ns.Collect.IsDoneKey and ns.Collect:IsDoneKey(kind, id) or false
 		elseif fn == "hasitem" then
 			local id, n = arg:match("^(%d+),?(%d*)$")
 			result = ItemCount(tonumber(id)) >= (tonumber(n) or 1)

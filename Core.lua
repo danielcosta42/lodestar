@@ -164,6 +164,7 @@ local DB_DEFAULTS = {
 	npcNames = {},        -- nome de cada NPC do guia no idioma do cliente (aprendido ao ver)
 	partySync = true,     -- contagem dos membros do grupo que usam o Lodestar (só o grupo, mensagem escondida)
 	rareAlerts = true,    -- aviso de raro perto
+	collectPins = true,   -- livros e pets raros que faltam no mapa e no minimapa, com aviso perto (issue #94)
 }
 local CHAR_DEFAULTS = {
 	currentGuide = nil,        -- chave do guia ativo (aba em foco)

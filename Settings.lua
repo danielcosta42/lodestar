@@ -220,6 +220,8 @@ local function fillHud(p)
 		function() return ns.db.markTarget ~= false end, function(v) ns.db.markTarget = v end)
 	switchRow(p, L.SET_RARES, L.SET_RARES_D,
 		function() return ns.db.rareAlerts ~= false end, function(v) ns.db.rareAlerts = v end)
+	switchRow(p, L.SET_COLLECT, L.SET_COLLECT_D,
+		function() return ns.db.collectPins ~= false end, function(v) ns.db.collectPins = v end)
 	switchRow(p, L.SET_GEARTIPS, L.SET_GEARTIPS_D,
 		function() return ns.db.gearTips ~= false end, function(v) ns.db.gearTips = v end)
 	switchRow(p, L.SET_TOASTS, L.SET_TOASTS_D,

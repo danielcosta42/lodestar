@@ -232,6 +232,8 @@ function V:RowClick(row, button)
 			items[#items + 1] = { L.Q_MENU_ABANDON, function() QS.Abandon(qid) end }
 		end
 		UI.Menu(row, items)
+	elseif button == "LeftButton" and goal.complete and ns.Collect and ns.Collect:ToggleFromGoal(goal) then
+		-- colecionável (issue #94): marca ou desmarca como pego (o Collect atualiza a janela)
 	elseif button == "LeftButton" and goal._gkey and goal.verb ~= "note" and not ns:IsGoalTrackable(goal) then
 		local cg = ns.char.completedGoals
 		cg[goal._gkey] = not cg[goal._gkey] or nil
