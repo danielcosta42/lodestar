@@ -332,12 +332,20 @@ step("Settings", function()
 	ns.Settings:Toggle()
 	assert(ns.Hub:IsShown() and ns.Hub:Current() == "settings", "Configurações fora da Central")
 	for i = 1, 6 do ns.Settings:SelectSection(i) end
-	local reloaded = false
+	-- clicar no outro tema recarrega e grava; clicar no mesmo, não
+	local reloads, theme = 0, ns.db.theme or "light"
+	local other = theme == "dark" and "light" or "dark"
 	local cui, rui = _G.C_UI, _G.ReloadUI
-	_G.C_UI, _G.ReloadUI = { Reload = function() reloaded = true end }, function() reloaded = true end
-	ns.Settings.Reload()
+	_G.C_UI, _G.ReloadUI = { Reload = function() reloads = reloads + 1 end }, function() reloads = reloads + 1 end
+	local function click(v)
+		for _, b in ipairs(ns.Settings.themeSeg.buttons) do if b.value == v then b:GetScript("OnClick")(b) end end
+	end
+	click(theme)
+	assert(reloads == 0, "o mesmo tema recarregou")
+	click(other)
+	assert(reloads == 1 and ns.db.theme == other, "trocar o tema não recarrega")
+	ns.db.theme = theme
 	_G.C_UI, _G.ReloadUI = cui, rui
-	assert(reloaded, "trocar o tema não recarrega")
 	ns.Settings:Toggle()
 	assert(not ns.Hub:IsShown(), "Configurações: o atalho de novo fecha")
 end)

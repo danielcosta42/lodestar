@@ -115,7 +115,9 @@ local function build()
 
 	frame.footer = CreateFrame("Frame", nil, frame.nav)
 	frame.footer:SetPoint("BOTTOMLEFT", 10, 12); frame.footer:SetPoint("BOTTOMRIGHT", -10, 12); frame.footer:SetHeight(68)
-	local cfg = UI.NavItem(frame.footer, L.SET_TITLE, "config", function() H:Show("settings") end)
+	local cfg = UI.NavItem(frame.footer, L.SET_TITLE, "config", function()
+		if ns.Settings then ns.Settings:Toggle() else H:Show("settings") end
+	end)
 	frame.footerItems = { settings = cfg }
 	cfg:SetPoint("TOPLEFT"); cfg:SetPoint("TOPRIGHT")
 	local rep = UI.NavItem(frame.footer, L.ACT_REPORT, "buscar", function() SlashCmdList.LODESTAR("report") end)

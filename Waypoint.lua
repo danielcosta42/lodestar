@@ -284,8 +284,13 @@ end
 -- girando juntos; embaixo, o rótulo numa pílula arredondada (distância e destino), nas cores do tema.
 --------------------------------------------------------------------------------
 local arrow
+-- a largura do texto sem a da pílula (o nome está preso aos dois lados dela: GetStringWidth pararia na pílula)
+local function textWidth(fs)
+	local w = fs.GetUnboundedStringWidth and fs:GetUnboundedStringWidth()
+	return tonumber(w) or tonumber(fs:GetStringWidth()) or 0
+end
 local function plateFit(a)
-	local w = math.max(a.dist:GetStringWidth(), a.name:GetStringWidth()) + 32
+	local w = math.max(textWidth(a.dist), textWidth(a.name)) + 32
 	a.plate:SetWidth(math.max(112, math.min(260, w)))
 end
 

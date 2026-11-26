@@ -179,7 +179,7 @@ end
 
 local function fillHud(p)
 	local L = ns.L
-	segRow(p, L.SET_THEME, L.SET_THEME_D, { { L.SET_THEME_LIGHT, "light" }, { L.SET_THEME_DARK, "dark" } },
+	S.themeSeg = segRow(p, L.SET_THEME, L.SET_THEME_D, { { L.SET_THEME_LIGHT, "light" }, { L.SET_THEME_DARK, "dark" } },
 		function() return ns.db.theme == "dark" and "dark" or "light" end,
 		function(v) if v ~= (ns.db.theme or "light") then ns.db.theme = v; reload() end end)
 	sliderRow(p, L.SET_SCALE, "", 70, 140, 5,

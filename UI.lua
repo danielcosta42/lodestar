@@ -179,7 +179,7 @@ function UI.SetFont(fs, size, opts)
 end
 
 -- Textura 9-slice da Media (cantos arredondados que não esticam). Sem a API (cliente velho): cor sólida.
-local SLICES = { ["round-12"] = 12, ["round-12-line"] = 12, ["round-6"] = 6, ["round-6-line"] = 6, pill = 15, shadow = 32 }
+local SLICES = { ["round-12"] = 12, ["round-12-line"] = 12, ["round-6"] = 6, ["round-6-line"] = 6, pill = 15, ["pill-line"] = 15, shadow = 32 }
 function UI.Slice(parent, file, layer, color, sub)
 	local t = parent:CreateTexture(nil, layer or "BACKGROUND", nil, sub)
 	if t.SetTextureSliceMargins then
@@ -239,8 +239,8 @@ function UI.Panel(parent, opts)
 	else
 		-- janela de topo: sombra suave por trás (o papel precisa descolar do mundo)
 		if parent == UIParent and opts.border ~= false then
-			local sh = UI.Slice(f, "shadow", "BACKGROUND", UI.COL.shadow, -8)
-			sh:SetPoint("TOPLEFT", -22, 18); sh:SetPoint("BOTTOMRIGHT", 22, -26)
+			f.shadow = UI.Slice(f, "shadow", "BACKGROUND", UI.COL.shadow, -8)
+			f.shadow:SetPoint("TOPLEFT", -22, 18); f.shadow:SetPoint("BOTTOMRIGHT", 22, -26)
 		end
 		f.bg = UI.Slice(f, r, "BACKGROUND", color); f.bg:SetAllPoints()
 		if opts.top or opts.bottom then   -- faixa de topo (ou de rodapé): o lado de dentro fica reto

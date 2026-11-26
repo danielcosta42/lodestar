@@ -167,26 +167,62 @@ function Q.IsGrey(qlvl, plvl, range)
 	return (qlvl and plvl and range and plvl - qlvl > range) and true or false
 end
 
--- As quests cinza que saem do guia. grey(q): q é cinza e não está no diário nem feita. Fica a que libera (pelo
--- `only completed`, Q.Dependents) alguma quest que não é cinza: ela abre conteúdo que ainda vale. lists = { steps }.
+-- As quests cinza que saem do guia. grey(q): q é cinza e não está no diário nem feita. Fica a que leva (pelo
+-- `only completed(...)`, em cadeia) a alguma quest que não é cinza: ela abre conteúdo que ainda vale. lists = { steps }.
+-- Uma passada pelos passos monta o mapa "q -> o que só aparece depois de q" (cada condição lida uma vez) e o cinza de
+-- cada quest é perguntado uma vez só: no 60, com cinco guias abertos, são milhares de objetivos.
 function Q.GreySkip(lists, grey)
-	local out, seen = {}, {}
+	local isGrey, parsed = {}, {}
+	local function greyOf(q)
+		local v = isGrey[q]
+		if v == nil then v = grey(q) and true or false; isGrey[q] = v end
+		return v
+	end
+	local function ids(cond)
+		if not cond then return nil end
+		local v = parsed[cond]
+		if v == nil then
+			v = {}
+			for _, set in ipairs(completedSets(cond)) do for _, id in ipairs(set) do v[#v + 1] = id end end
+			parsed[cond] = v
+		end
+		return v
+	end
+	local quests, seen, children = {}, {}, {}
+	local function link(srcs, q)
+		for _, src in ipairs(srcs or {}) do
+			if src ~= q then children[src] = children[src] or {}; table.insert(children[src], q) end
+		end
+	end
 	for _, steps in ipairs(lists or {}) do
 		for _, step in ipairs(steps) do
+			local stepIds = ids(step.only)
 			for _, goal in ipairs(step.goals or {}) do
 				local q = questOf(goal)
-				if q and not seen[q] then
-					seen[q] = true
-					if grey(q) then
-						local only = true
-						for _, d in ipairs(Q.Dependents(lists, q)) do
-							if d ~= q and not grey(d) then only = false; break end
-						end
-						if only then out[q] = true end
-					end
+				if q then
+					if not seen[q] then seen[q] = true; quests[#quests + 1] = q end
+					link(stepIds, q); link(ids(goal.only), q)
 				end
 			end
 		end
+	end
+	-- q ainda vale (não é cinza, ou leva a uma que não é)? memorizado; num ciclo, o que está em aberto conta como não
+	local live, busy = {}, {}
+	local function alive(q)
+		if live[q] ~= nil then return live[q] end
+		if busy[q] then return false end
+		busy[q] = true
+		local v = not greyOf(q)
+		if not v then
+			for _, c in ipairs(children[q] or {}) do if alive(c) then v = true; break end end
+		end
+		busy[q] = nil
+		live[q] = v
+		return v
+	end
+	local out = {}
+	for _, q in ipairs(quests) do
+		if greyOf(q) and not alive(q) then out[q] = true end
 	end
 	return out
 end
@@ -436,7 +472,8 @@ local function greyLater(plvl)
 end
 ns:On("_GUIDE_LOADED", function() requestAhead(); greyLater() end)
 ns:On("PLAYER_LEVEL_UP", function(_, lvl) greyLater(tonumber(lvl)) end)
-ns:On("QUEST_DATA_LOAD_RESULT", function() if ns.currentGuide then greyLater() end end)
+-- só as que o Lodestar pediu (o evento vale para qualquer pedido do jogo e de outros addons)
+ns:On("QUEST_DATA_LOAD_RESULT", function(_, q) if q and requested[q] and ns.currentGuide then greyLater() end end)
 
 function Q:SkipQuest(qid)
 	if not qid then return end
