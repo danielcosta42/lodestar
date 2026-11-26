@@ -271,6 +271,13 @@ local greyIds = { [10] = true, [11] = true, [20] = true }
 local gskip = QG.GreySkip({ gsteps }, function(q) return greyIds[q] end)
 check(gskip[10] and gskip[11] and not gskip[20] and not gskip[21] and not gskip[30],
 	"cinza sai do guia com o que só ela libera; fica a que leva a quest que ainda vale")
+-- ciclo: 1 e 2 cinza, uma libera a outra, e 1 libera 3 (não é cinza): nenhuma sai
+local cyc = QG.GreySkip({ {
+	{ only = "completed(2)", goals = { { verb = "accept", id = 1 } } },
+	{ only = "completed(1)", goals = { { verb = "accept", id = 2 } } },
+	{ only = "completed(1)", goals = { { verb = "accept", id = 3 } } },
+} }, function(q) return q ~= 3 end)
+check(not cyc[1] and not cyc[2] and not cyc[3], "cinza em ciclo que leva a quest que vale: fica")
 local un, ut = QG.Useful(gsteps, function(q) return not greyIds[q] end)
 check(un == 2 and ut == 5, "o que ainda serve: quests para pegar, sem repetir, as úteis")
 

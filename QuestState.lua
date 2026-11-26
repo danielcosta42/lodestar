@@ -206,19 +206,24 @@ function Q.GreySkip(lists, grey)
 			end
 		end
 	end
-	-- q ainda vale (não é cinza, ou leva a uma que não é)? memorizado; num ciclo, o que está em aberto conta como não
+	-- q ainda vale (não é cinza, ou leva a uma que não é)? Num ciclo, a que ainda está em aberto conta como "não" só
+	-- para quem perguntou: um "não" que dependeu dela não é memorizado (outra entrada no ciclo pode achar o caminho).
 	local live, busy = {}, {}
 	local function alive(q)
-		if live[q] ~= nil then return live[q] end
-		if busy[q] then return false end
+		if live[q] ~= nil then return live[q], false end
+		if busy[q] then return false, true end
 		busy[q] = true
-		local v = not greyOf(q)
+		local v, open = not greyOf(q), false
 		if not v then
-			for _, c in ipairs(children[q] or {}) do if alive(c) then v = true; break end end
+			for _, c in ipairs(children[q] or {}) do
+				local cv, co = alive(c)
+				if cv then v = true; break end
+				if co then open = true end
+			end
 		end
 		busy[q] = nil
-		live[q] = v
-		return v
+		if v or not open then live[q] = v end
+		return v, open and not v
 	end
 	local out = {}
 	for _, q in ipairs(quests) do

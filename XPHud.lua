@@ -88,6 +88,12 @@ local frame
 local function docked(on)
 	if frame.shadow then frame.shadow:SetShown(not on) end
 	if frame.line then frame.line:SetShown(not on) end
+	-- os cantos de cima retos: encosta na janela do guia sem vão
+	if not frame.topFill then
+		frame.topFill = UI.Rect(frame, "BACKGROUND", UI.COL.bg)
+		frame.topFill:SetPoint("TOPLEFT"); frame.topFill:SetPoint("TOPRIGHT"); frame.topFill:SetHeight(12)
+	end
+	frame.topFill:SetShown(on)
 end
 
 local function applyAnchor()
