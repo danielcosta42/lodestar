@@ -298,6 +298,14 @@ step("Nearby", function()
 	end
 	C_QuestLog.GetTitleForQuestID = title
 end)
+-- fechar o guia some com a seta, mesmo com um destino avulso (issue #93)
+step("Arrow", function()
+	ns.Waypoint:SetCustom("Westfall", 50, 50, "x")
+	assert(_G.LodestarArrow and _G.LodestarArrow:IsShown(), "seta não apareceu para o destino avulso")
+	ns.Viewer:Hide()
+	assert(not (_G.LodestarArrow and _G.LodestarArrow:IsShown()), "seta com o guia fechado")
+	ns.Viewer:Show()
+end)
 step("TargetButton", function()
 	ns.TargetButton.Apply()
 	ns.Viewer:Hide(); ns.TargetButton.Apply()
@@ -319,7 +327,43 @@ step("PartySync", function()
 end)
 step("Rares", function() ns.Rares:GoTo(ns.rareData["Elwynn Forest"][1], "Elwynn Forest") end)
 step("Report", function() ns.Report:Show() end)
-step("Settings", function() ns.Settings:Toggle() end)
+-- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
+step("Settings", function()
+	ns.Settings:Toggle()
+	assert(ns.Hub:IsShown() and ns.Hub:Current() == "settings", "Configurações fora da Central")
+	for i = 1, 6 do ns.Settings:SelectSection(i) end
+	-- clicar no outro tema recarrega e grava; clicar no mesmo, não
+	local reloads, theme = 0, ns.db.theme or "light"
+	local other = theme == "dark" and "light" or "dark"
+	local cui, rui = _G.C_UI, _G.ReloadUI
+	_G.C_UI, _G.ReloadUI = { Reload = function() reloads = reloads + 1 end }, function() reloads = reloads + 1 end
+	local function click(v)
+		for _, b in ipairs(ns.Settings.themeSeg.buttons) do if b.value == v then b:GetScript("OnClick")(b) end end
+	end
+	click(theme)
+	assert(reloads == 0, "o mesmo tema recarregou")
+	click(other)
+	assert(reloads == 1 and ns.db.theme == other, "trocar o tema não recarrega")
+	ns.db.theme = theme
+	_G.C_UI, _G.ReloadUI = cui, rui
+	ns.Settings:Toggle()
+	assert(not ns.Hub:IsShown(), "Configurações: o atalho de novo fecha")
+end)
+-- quest cinza (issue #93): no 60, as do Westfall saem do guia; no 5, nenhuma
+step("Grey", function()
+	local lvl = _G.UnitLevel
+	_G.UnitQuestTrivialLevelRange = function() return 3 end
+	_G.UnitLevel = function() return 60 end
+	ns.QuestState:RefreshGrey(60)
+	assert(next(ns.greySkip) ~= nil, "cinza: nada saiu no 60")
+	ns.Viewer:Refresh()
+	_G.UnitLevel = function() return 5 end
+	ns.QuestState:RefreshGrey(5)
+	assert(next(ns.greySkip) == nil, "cinza: no 5 ainda tinha quest fora")
+	_G.UnitLevel = lvl
+	ns.QuestState:RefreshGrey(18)
+	assert(ns:BestGuideForPlayer(), "escolha automática do guia")
+end)
 step("Menu", function() ns.UI.Menu(ns.Viewer:GetFrame(), { { "a", noop }, { "b", noop } }) end)
 step("events", function()
 	for _, ev in ipairs({ "QUEST_LOG_UPDATE", "BAG_UPDATE_DELAYED", "PLAYER_LEVEL_UP", "ZONE_CHANGED_NEW_AREA",

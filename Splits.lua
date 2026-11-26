@@ -175,7 +175,7 @@ local function build()
 	frame.head = CreateFrame("Button", nil, frame)
 	frame.head:SetPoint("TOPLEFT", 1, -1); frame.head:SetPoint("TOPRIGHT", -1, -1); frame.head:SetHeight(26)
 	local bar = UI.Rect(frame.head, "ARTWORK", C.accent)
-	bar:SetPoint("TOPLEFT"); bar:SetPoint("TOPRIGHT"); bar:SetHeight(2)
+	bar:SetPoint("TOPLEFT", 12, 0); bar:SetPoint("TOPRIGHT", -12, 0); bar:SetHeight(2)   -- dentro da curva do canto
 	local title = frame.head:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(title, 12, { title = true, color = C.accent })
 	title:SetPoint("LEFT", 8, -1); title:SetText(L.SPLITS_TITLE)

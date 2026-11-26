@@ -111,6 +111,8 @@ local DB_DEFAULTS = {
 	                      -- (risco de item errado; guias curados com |reward já acertam)
 	autoGossip = true,    -- seleciona a opção/quest certa no diálogo (gossip)
 	autoSkip = true,      -- pula passo cujo NPC não oferece a quest (nunca trava)
+	skipGrey = true,      -- quest cinza fora do diário sai do guia (issue #93)
+	repairGuild = true,   -- o reparo automático usa o dinheiro da guilda primeiro (issue #93)
 	autoRepair = true,    -- repara tudo ao abrir o vendedor
 	autoSell = true,      -- vende itens cinza (lixo) ao abrir o vendedor
 	gearAdvisor = true,   -- avisa quando acha um upgrade de equipamento na bolsa

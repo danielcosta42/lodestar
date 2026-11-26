@@ -407,12 +407,12 @@ local function build()
 	UI.CornerFlourish(frame)
 
 	-- cabeçalho: quem é você, busca, fechar
-	local header = UI.Panel(frame, { color = C.header, border = false })
+	local header = UI.Panel(frame, { color = C.header, border = false, top = true })
 	header:SetPoint("TOPLEFT", 1, -1); header:SetPoint("TOPRIGHT", -1, -1); header:SetHeight(HEAD_H)
 	header:EnableMouse(true); header:RegisterForDrag("LeftButton")
 	header:SetScript("OnDragStart", function() frame:StartMoving() end)
 	header:SetScript("OnDragStop", function() frame:StopMovingOrSizing() end)
-	local line = UI.Rect(header, "ARTWORK", C.accent); line:SetPoint("TOPLEFT"); line:SetPoint("TOPRIGHT"); line:SetHeight(2)
+	local line = UI.Rect(header, "ARTWORK", C.accent); line:SetPoint("TOPLEFT", 12, 0); line:SetPoint("TOPRIGHT", -12, 0); line:SetHeight(2)   -- dentro da curva do canto
 	local gem = UI.Icon(header, "icone-gema", "ARTWORK", 128); gem:SetSize(24, 24); gem:SetPoint("LEFT", 14, 0)
 	local ttl = texto(header, 17, C.active, { title = true }); ttl:SetPoint("LEFT", gem, "RIGHT", 10, 6)
 	ttl:SetText(L.LIB_TITLE:upper())

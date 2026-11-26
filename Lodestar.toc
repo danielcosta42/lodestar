@@ -44,6 +44,7 @@ Libs\LibChehulQuest.lua
 ChehulNetWire.lua
 
 ZoneData.lua
+QuestLevels.lua
 Trainers.lua
 Parser.lua
 # Gerado (tools/gen_forever.py): o que não existe no Forever.

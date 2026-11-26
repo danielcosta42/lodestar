@@ -84,6 +84,18 @@ end
 -- UI
 --------------------------------------------------------------------------------
 local frame
+-- preso à janela do guia: sem sombra nem contorno próprios (parece um só cartão); solto: cartão completo
+local function docked(on)
+	if frame.shadow then frame.shadow:SetShown(not on) end
+	if frame.line then frame.line:SetShown(not on) end
+	-- os cantos de cima retos: encosta na janela do guia sem vão
+	if not frame.topFill then
+		frame.topFill = UI.Rect(frame, "BACKGROUND", UI.COL.bg)
+		frame.topFill:SetPoint("TOPLEFT"); frame.topFill:SetPoint("TOPRIGHT"); frame.topFill:SetHeight(12)
+	end
+	frame.topFill:SetShown(on)
+end
+
 local function applyAnchor()
 	if not frame then return end
 	frame:ClearAllPoints()
@@ -92,15 +104,15 @@ local function applyAnchor()
 	if p and p.detached then
 		frame:SetWidth(ns.db.viewer.width or 340)
 		frame:SetPoint(p.point or "TOP", UIParent, p.point or "TOP", p.x or 0, p.y or -120)
-		if frame._border then frame._border.TOP:Show() end          -- painel completo
+		docked(false)                                               -- painel completo
 	elseif vf then
 		frame:SetPoint("TOPLEFT", vf, "BOTTOMLEFT", 0, 1)            -- rente + largura cheia
 		frame:SetPoint("TOPRIGHT", vf, "BOTTOMRIGHT", 0, 1)
-		if frame._border then frame._border.TOP:Hide() end           -- sem emenda: parece 1 popup
+		docked(true)                                                -- sem emenda: parece 1 popup
 	else
 		frame:SetWidth(ns.db.viewer.width or 340)
 		frame:SetPoint("TOP", UIParent, "TOP", 0, -120)
-		if frame._border then frame._border.TOP:Show() end
+		docked(false)
 	end
 end
 
@@ -116,7 +128,7 @@ local function build()
 			local L, T = self:GetLeft(), self:GetTop()
 			ns.db.xpHudPos = { detached = true }
 			self:ClearAllPoints(); self:SetWidth(ns.db.viewer.width or 340)
-			if self._border then self._border.TOP:Show() end
+			docked(false)
 			if L and T then self:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", L, T) end
 		end
 		self:StartMoving()

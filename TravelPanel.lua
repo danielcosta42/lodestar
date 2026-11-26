@@ -60,7 +60,7 @@ local function legRow(i)
 	local C = UI.COL
 	local r = CreateFrame("Frame", nil, frame.timeline)
 	r:SetHeight(42)
-	r.dot = UI.dark and UI.Rect(r, "ARTWORK", C.chip) or UI.Slice(r, "pill", "ARTWORK", C.chip)
+	r.dot = UI.Slice(r, "pill", "ARTWORK", C.chip)
 	r.dot:SetSize(26, 26); r.dot:SetPoint("TOPLEFT", 0, -2)
 	r.icon = UI.Glyph(r, "seta-rota", "OVERLAY", 64); r.icon:SetSize(13, 13); r.icon:SetPoint("CENTER", r.dot, "CENTER")
 	r.tex = r:CreateTexture(nil, "OVERLAY"); r.tex:SetSize(16, 16); r.tex:SetPoint("CENTER", r.dot, "CENTER")
@@ -226,7 +226,7 @@ function TP.Refresh()
 			r.time:SetText(ns.Waypoint.FmtTime(leg.s or 0))
 			r.time:SetTextColor(unpackc(current and C.tip or C.muted))
 			local tint = done and C.doneSoft or current and C.tip or C.chip
-			if UI.dark then r.dot:SetColorTexture(unpackc(tint)) else r.dot:SetVertexColor(unpackc(tint)) end
+			r.dot:SetVertexColor(unpackc(tint))
 			local tex = (leg.k == "hearth" or leg.k == "teleport") and (leg.spell and ns.SpellIcon(leg.spell)
 				or leg.k == "hearth" and ns.ItemIcon(6948))
 			if tex then r.tex:SetTexture(tex); r.tex:Show(); r.icon:Hide()

@@ -1,6 +1,6 @@
 --=============================================================================
--- UI kit — direção de arte do Lodestar. Visual clean: painéis retangulares,
--- bordas de 1px, cor sólida, hierarquia por cor/tipografia. Sem glass/orgânico.
+-- UI kit — direção de arte do Lodestar 3: cartões arredondados com fio e sombra, pílulas, hierarquia por
+-- cor/tipografia. Os dois temas (claro e escuro) têm a MESMA forma; só a paleta muda (issue #93).
 --=============================================================================
 local ADDON, ns = ...
 local UI = {}
@@ -98,9 +98,26 @@ local LIGHT = {
 	qRare       = { 0.043, 0.388, 0.769, 1.00 },  -- (#0B63C4)
 	qEpic       = { 0.557, 0.169, 0.816, 1.00 },
 }
-UI.THEMES = { light = LIGHT, dark = DARK }
-
 local function copyc(c) return { c[1], c[2], c[3], c[4] } end
+
+-- O tema escuro das janelas: a mesma estrutura do claro (papel, cartão mais claro que o papel, faixa, fio
+-- visível), em tons escuros quentes. O DARK acima segue sendo a paleta do HUD (UI.HUD).
+local DARK_UI = {}
+for k, v in pairs(DARK) do DARK_UI[k] = copyc(v) end
+for k, v in pairs({
+	bg       = { 0.082, 0.078, 0.063, 0.97 },  -- papel (#15140F)
+	panel    = { 0.129, 0.122, 0.102, 1.00 },  -- cartão (#211F1A)
+	card     = { 0.129, 0.122, 0.102, 1.00 },
+	header   = { 0.106, 0.100, 0.082, 1.00 },  -- faixa (#1B1915)
+	border   = { 1, 1, 1, 0.09 },
+	borderHi = { 1, 1, 1, 0.20 },
+	line     = { 1, 1, 1, 0.06 },
+	track    = { 1, 1, 1, 0.10 },
+	chip     = { 1, 1, 1, 0.07 },
+	hover    = { 1, 1, 1, 0.05 },
+}) do DARK_UI[k] = v end
+UI.THEMES = { light = LIGHT, dark = DARK_UI }
+
 UI.HUD = {}
 for k, v in pairs(DARK) do UI.HUD[k] = copyc(v) end
 
@@ -152,7 +169,7 @@ function UI.SetFont(fs, size, opts)
 	fs:SetFont(font, size, opts.outline or "")
 	if not fs:GetFont() then fs:SetFont(STANDARD_TEXT_FONT or "Fonts\\FRIZQT__.TTF", size, opts.outline or "") end
 	if opts.color then fs:SetTextColor(unpackc(opts.color)) end
-	if opts.shadow == false or (not UI.dark and not opts.hud) then
+	if opts.shadow == false or not opts.hud then        -- sombra só no texto sobre o mundo
 		fs:SetShadowOffset(0, 0)
 	else
 		fs:SetShadowColor(0, 0, 0, 0.9)
@@ -162,7 +179,7 @@ function UI.SetFont(fs, size, opts)
 end
 
 -- Textura 9-slice da Media (cantos arredondados que não esticam). Sem a API (cliente velho): cor sólida.
-local SLICES = { ["round-12"] = 12, ["round-12-line"] = 12, ["round-6"] = 6, ["round-6-line"] = 6, pill = 15, shadow = 32 }
+local SLICES = { ["round-12"] = 12, ["round-12-line"] = 12, ["round-6"] = 6, ["round-6-line"] = 6, pill = 15, ["pill-line"] = 15, shadow = 32 }
 function UI.Slice(parent, file, layer, color, sub)
 	local t = parent:CreateTexture(nil, layer or "BACKGROUND", nil, sub)
 	if t.SetTextureSliceMargins then
@@ -207,22 +224,42 @@ local function addBorder(frame, color)
 end
 UI.AddBorder = addBorder
 
--- Painel limpo: fundo sólido + borda 1px + (opcional) faixa de acento à esquerda
+-- Painel: arredondado com fio (e sombra, se é janela de topo), nos dois temas. opts: color, border (false = sem
+-- fio: superfície interna, reta), borderColor, top / bottom (faixa de topo ou de rodapé de janela: só os cantos de
+-- fora arredondados),
+-- radius (6 = cantos pequenos, para botões), accentStripe.
 function UI.Panel(parent, opts)
 	opts = opts or {}
 	local f = CreateFrame("Frame", opts.name, parent)
-	local bg = UI.Rect(f, "BACKGROUND", opts.color or UI.COL.bg)
-	bg:SetAllPoints()
-	f.bg = bg
-	-- janela de topo no claro: sombra suave por trás (o mundo atrás é escuro; o papel precisa descolar dele)
-	if not UI.dark and parent == UIParent and opts.border ~= false then
-		local sh = UI.Slice(f, "shadow", "BACKGROUND", UI.COL.shadow, -8)
-		sh:SetPoint("TOPLEFT", -22, 18); sh:SetPoint("BOTTOMRIGHT", 22, -26)
+	local color = opts.color or UI.COL.bg
+	local r = opts.radius == 6 and "round-6" or "round-12"
+	if opts.border == false and not (opts.top or opts.bottom) then
+		f.bg = UI.Rect(f, "BACKGROUND", color); f.bg:SetAllPoints()
+		f.flat = true
+	else
+		-- janela de topo: sombra suave por trás (o papel precisa descolar do mundo)
+		if parent == UIParent and opts.border ~= false then
+			f.shadow = UI.Slice(f, "shadow", "BACKGROUND", UI.COL.shadow, -8)
+			f.shadow:SetPoint("TOPLEFT", -22, 18); f.shadow:SetPoint("BOTTOMRIGHT", 22, -26)
+		end
+		f.bg = UI.Slice(f, r, "BACKGROUND", color); f.bg:SetAllPoints()
+		if opts.top or opts.bottom then   -- faixa de topo (ou de rodapé): o lado de dentro fica reto
+			local edge = opts.top and "BOTTOM" or "TOP"
+			f.fill = UI.Rect(f, "BACKGROUND", color)
+			f.fill:SetPoint(edge .. "LEFT"); f.fill:SetPoint(edge .. "RIGHT"); f.fill:SetHeight(r == "round-6" and 6 or 12)
+		end
+		if opts.border ~= false then
+			f.line = UI.Slice(f, r .. "-line", "BORDER", opts.borderColor or UI.COL.border); f.line:SetAllPoints()
+		end
 	end
-	if opts.border ~= false then addBorder(f, opts.borderColor or UI.COL.border) end
+	function f:SetColor(c)
+		if self.flat then self.bg:SetColorTexture(unpackc(c)) else self.bg:SetVertexColor(unpackc(c)) end
+		if self.fill then self.fill:SetColorTexture(unpackc(c)) end
+	end
+	function f:SetLine(c) if self.line then self.line:SetVertexColor(unpackc(c)) end end
 	if opts.accentStripe then
 		local s = UI.Rect(f, "ARTWORK", opts.accentColor or UI.COL.accent)
-		s:SetPoint("TOPLEFT"); s:SetPoint("BOTTOMLEFT"); s:SetWidth(3)
+		s:SetPoint("TOPLEFT", 0, -12); s:SetPoint("BOTTOMLEFT", 0, 12); s:SetWidth(3)
 		f.stripe = s
 	end
 	return f
@@ -231,14 +268,13 @@ end
 -- Barra de progresso (fundo + preenchimento)
 function UI.Bar(parent, color)
 	local bar = CreateFrame("Frame", nil, parent)
-	local bg = UI.dark and UI.Rect(bar, "BACKGROUND", UI.COL.track) or UI.Slice(bar, "pill", "BACKGROUND", UI.COL.track)
+	local bg = UI.Slice(bar, "pill", "BACKGROUND", UI.COL.track)
 	bg:SetAllPoints()
-	local fill = UI.dark and UI.Rect(bar, "ARTWORK", color or UI.COL.accent)
-		or UI.Slice(bar, "pill", "ARTWORK", color or UI.COL.accentBright)
+	local fill = UI.Slice(bar, "pill", "ARTWORK", color or UI.COL.accentBright)
 	fill:SetPoint("TOPLEFT"); fill:SetPoint("BOTTOMLEFT")
 	fill:SetWidth(1)
 	bar.fill, bar.track = fill, bg
-	function bar:SetColor(c) if self.fill.SetVertexColor and not UI.dark then self.fill:SetVertexColor(unpackc(c)) else self.fill:SetColorTexture(unpackc(c)) end end
+	function bar:SetColor(c) self.fill:SetVertexColor(unpackc(c)) end
 	function bar:SetProgress(frac)
 		frac = math.max(0, math.min(1, frac or 0))
 		local w = self:GetWidth() * frac
@@ -247,38 +283,21 @@ function UI.Bar(parent, color)
 	return bar
 end
 
--- Botão "ghost" clean (sem arte da Blizzard)
--- Botão. No escuro, o "ghost" de sempre (retângulo de 1px). No claro, arredondado; `kind` = "primary" (tinta
--- cheia, a ação principal da tela) ou nada (contorno).
+-- Botão arredondado; `kind` = "primary" (tinta cheia, a ação principal da tela) ou nada (contorno).
+-- b:Fit(min) ajusta a largura ao texto (nunca corta).
 function UI.Button(parent, text, w, h, kind)
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(w or 74, h or 22)
 	local fs = b:CreateFontString(nil, "OVERLAY")
 	b.text = fs
 	fs:SetPoint("CENTER")
-	if UI.dark then
-		local bg = UI.Rect(b, "BACKGROUND", UI.COL.panel); bg:SetAllPoints()
-		addBorder(b, UI.COL.border)
-		UI.SetFont(fs, 12, { num = true, color = UI.COL.muted })
-		fs:SetText(text)
-		b:SetScript("OnEnter", function()
-			bg:SetColorTexture(unpackc(UI.COL.header))
-			fs:SetTextColor(unpackc(UI.COL.active))
-			for _, t in pairs(b._border) do t:SetColorTexture(unpackc(UI.COL.borderHi)) end
-		end)
-		b:SetScript("OnLeave", function()
-			bg:SetColorTexture(unpackc(UI.COL.panel))
-			fs:SetTextColor(unpackc(UI.COL.muted))
-			for _, t in pairs(b._border) do t:SetColorTexture(unpackc(UI.COL.border)) end
-		end)
-		return b
-	end
 	local primary = kind == "primary"
 	local bg = UI.Slice(b, "round-6", "BACKGROUND", primary and UI.COL.ink or UI.COL.card); bg:SetAllPoints()
 	local line = UI.Slice(b, "round-6-line", "BORDER", primary and UI.COL.ink or UI.COL.border); line:SetAllPoints()
 	b.bg, b.line = bg, line
 	UI.SetFont(fs, 12.5, { bold = true, color = primary and UI.COL.onInk or UI.COL.muted })
 	fs:SetText(text)
+	function b:Fit(min) self:SetWidth(math.max(min or 0, math.ceil(self.text:GetStringWidth()) + 28)) end
 	b:SetScript("OnEnter", function()
 		if primary then bg:SetVertexColor(unpackc(UI.COL.accentDeep)); line:SetVertexColor(unpackc(UI.COL.accentDeep))
 		else line:SetVertexColor(unpackc(UI.COL.borderHi)); fs:SetTextColor(unpackc(UI.COL.active)) end
@@ -293,14 +312,13 @@ end
 -- Chip: rótulo compacto com fundo + ícone (glyph) opcional
 function UI.Chip(parent, color, textColor)
 	local c = CreateFrame("Frame", nil, parent)
-	local bg = UI.dark and UI.Rect(c, "BACKGROUND", color or UI.COL.chip)
-		or UI.Slice(c, "pill", "BACKGROUND", color or UI.COL.accentSoft)
+	local bg = UI.Slice(c, "pill", "BACKGROUND", color or UI.COL.accentSoft)
 	bg:SetAllPoints()
 	c.bg = bg
 	c.icon = c:CreateTexture(nil, "OVERLAY"); c.icon:SetSize(11, 11)
 	c.icon:SetPoint("LEFT", 5, 0); c.icon:Hide()
 	local fs = c:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(fs, 11, { num = true, color = textColor or (UI.dark and UI.COL.muted or UI.COL.accentDeep) })
+	UI.SetFont(fs, 11, { num = true, color = textColor or (UI.dark and UI.COL.accent or UI.COL.accentDeep) })
 	fs:SetPoint("LEFT", 6, 0)
 	c.text = fs
 	function c:SetIcon(glyph, tint)
@@ -358,15 +376,10 @@ end
 function UI.Switch(parent, onToggle)
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(46, 24)
-	local off = UI.dark and { 1, 1, 1, 0.14 } or UI.COL.track
-	local track
-	if UI.dark then
-		track = UI.Rect(b, "BACKGROUND", off); addBorder(b, { 1, 1, 1, 0.10 })
-	else
-		track = UI.Slice(b, "pill", "BACKGROUND", off)
-	end
+	local off = UI.dark and { 1, 1, 1, 0.16 } or UI.COL.track
+	local track = UI.Slice(b, "pill", "BACKGROUND", off)
 	track:SetAllPoints()
-	local function paintTrack(c) if UI.dark then track:SetColorTexture(unpackc(c)) else track:SetVertexColor(unpackc(c)) end end
+	local function paintTrack(c) track:SetVertexColor(unpackc(c)) end
 	local knob = UI.Media(b, "dot", "OVERLAY"); knob:SetSize(18, 18)
 	knob:SetPoint("LEFT", 3, 0); knob:SetVertexColor(1, 1, 1, 1)
 	b.knob = knob
@@ -391,13 +404,13 @@ function UI.Slider(parent, minV, maxV, step, onChange)
 	s:SetOrientation("HORIZONTAL"); s:SetHeight(16)
 	s:SetMinMaxValues(minV, maxV); s:SetValueStep(step or 1)
 	if s.SetObeyStepOnDrag then s:SetObeyStepOnDrag(true) end
-	local bg = UI.Rect(s, "BACKGROUND", UI.COL.track)
+	local bg = UI.Slice(s, "pill", "BACKGROUND", UI.COL.track)
 	bg:SetPoint("LEFT"); bg:SetPoint("RIGHT"); bg:SetHeight(6)
-	local fill = UI.Rect(s, "ARTWORK", UI.COL.accent)
+	local fill = UI.Slice(s, "pill", "ARTWORK", UI.COL.accentBright)
 	fill:SetPoint("LEFT", bg, "LEFT"); fill:SetHeight(6); fill:SetWidth(1)
 	local thumb = s:CreateTexture(nil, "OVERLAY")
 	thumb:SetTexture(UI.MEDIA .. "dot"); thumb:SetSize(16, 16)
-	if UI.dark then thumb:SetVertexColor(0.96, 0.94, 0.86, 1) else thumb:SetVertexColor(unpackc(UI.COL.accentBright)) end
+	thumb:SetVertexColor(unpackc(UI.COL.accentBright))
 	s:SetThumbTexture(thumb)
 	local function paint(val)
 		local frac = (maxV > minV) and (val - minV) / (maxV - minV) or 0
@@ -436,22 +449,12 @@ function UI.Tab(parent, text, onClick)
 	return t
 end
 
--- Ornamento de canto (linhas douradas em ⌐) — decorativo p/ janelas
-function UI.CornerFlourish(frame)
-	if not UI.dark then return end           -- o claro não tem ornamento: o cartão arredondado basta
-	local C = UI.COL.accent
-	for _, corner in ipairs({ "TOPLEFT", "TOPRIGHT" }) do
-		local h = UI.Rect(frame, "OVERLAY", C); h:SetSize(16, 2)
-		local v = UI.Rect(frame, "OVERLAY", C); v:SetSize(2, 16)
-		local xo = corner == "TOPLEFT" and 6 or -6
-		h:SetPoint(corner, xo, -6); v:SetPoint(corner, xo, -6)
-		h:SetAlpha(0.7); v:SetAlpha(0.7)
-	end
-end
+-- Ornamento de canto: aposentado (issue #93) — o cartão arredondado basta nos dois temas.
+function UI.CornerFlourish() end
 
 --------------------------------------------------------------------------------
 -- Lodestar 3 (specs/lodestar-3): cartão, janela, botão de ícone, selo, segmentado, item de menu lateral, rolagem.
--- No escuro tudo cai no retângulo de 1px de sempre; no claro, cantos arredondados e sombra.
+-- Mesma forma nos dois temas: cantos arredondados e sombra.
 --------------------------------------------------------------------------------
 function UI.Text(parent, size, color, opts)
 	local fs = parent:CreateFontString(nil, "OVERLAY")
@@ -467,25 +470,17 @@ end
 function UI.Card(parent, opts)
 	opts = opts or {}
 	local f = CreateFrame("Frame", opts.name, parent)
-	if UI.dark then
-		f.bg = UI.Rect(f, "BACKGROUND", opts.color or UI.COL.panel); f.bg:SetAllPoints()
-		if opts.line ~= false then addBorder(f, opts.lineColor or UI.COL.border) end
-	else
-		local r = opts.radius == 6 and "round-6" or "round-12"
-		if opts.shadow then
-			local sh = UI.Slice(f, "shadow", "BACKGROUND", UI.COL.shadow, -8)
-			sh:SetPoint("TOPLEFT", -22, 18); sh:SetPoint("BOTTOMRIGHT", 22, -26)
-		end
-		f.bg = UI.Slice(f, r, "BACKGROUND", opts.color or UI.COL.card); f.bg:SetAllPoints()
-		if opts.line ~= false then
-			f.line = UI.Slice(f, r .. "-line", "BORDER", opts.lineColor or UI.COL.border); f.line:SetAllPoints()
-		end
+	local r = opts.radius == 6 and "round-6" or "round-12"
+	if opts.shadow then
+		local sh = UI.Slice(f, "shadow", "BACKGROUND", UI.COL.shadow, -8)
+		sh:SetPoint("TOPLEFT", -22, 18); sh:SetPoint("BOTTOMRIGHT", 22, -26)
 	end
-	function f:SetColor(c) if UI.dark then self.bg:SetColorTexture(unpackc(c)) else self.bg:SetVertexColor(unpackc(c)) end end
-	function f:SetLine(c)
-		if self.line then self.line:SetVertexColor(unpackc(c))
-		elseif self._border then for _, t in pairs(self._border) do t:SetColorTexture(unpackc(c)) end end
+	f.bg = UI.Slice(f, r, "BACKGROUND", opts.color or UI.COL.card); f.bg:SetAllPoints()
+	if opts.line ~= false then
+		f.line = UI.Slice(f, r .. "-line", "BORDER", opts.lineColor or UI.COL.border); f.line:SetAllPoints()
 	end
+	function f:SetColor(c) self.bg:SetVertexColor(unpackc(c)) end
+	function f:SetLine(c) if self.line then self.line:SetVertexColor(unpackc(c)) end end
 	return f
 end
 
@@ -509,7 +504,7 @@ function UI.IconButton(parent, glyph, size, tip, onClick)
 	local b = CreateFrame("Button", nil, parent)
 	size = size or 28
 	b:SetSize(size, size)
-	local bg = UI.dark and UI.Rect(b, "BACKGROUND", { 0, 0, 0, 0 }) or UI.Slice(b, "round-6", "BACKGROUND", UI.COL.header)
+	local bg = UI.Slice(b, "round-6", "BACKGROUND", UI.COL.header)
 	bg:SetAllPoints()
 	local g = UI.Glyph(b, glyph, "OVERLAY", 64)
 	g:SetSize(math.floor(size * 0.52), math.floor(size * 0.52)); g:SetPoint("CENTER")
@@ -533,14 +528,14 @@ local BADGE = {
 function UI.Badge(parent, text, kind)
 	local b = CreateFrame("Frame", nil, parent)
 	local k = BADGE[kind or "gold"] or BADGE.gold
-	b.bg = UI.dark and UI.Rect(b, "BACKGROUND", UI.COL[k[1]]) or UI.Slice(b, "pill", "BACKGROUND", UI.COL[k[1]])
+	b.bg = UI.Slice(b, "pill", "BACKGROUND", UI.COL[k[1]])
 	b.bg:SetAllPoints()
 	b.text = UI.Text(b, 11, UI.COL[k[2]], { num = true })
 	b.text:SetPoint("CENTER", 0, 0)
 	function b:Set(txt, newKind)
 		if newKind then
 			local nk = BADGE[newKind] or BADGE.gold
-			if UI.dark then self.bg:SetColorTexture(unpackc(UI.COL[nk[1]])) else self.bg:SetVertexColor(unpackc(UI.COL[nk[1]])) end
+			self.bg:SetVertexColor(unpackc(UI.COL[nk[1]]))
 			self.text:SetTextColor(unpackc(UI.COL[nk[2]]))
 		end
 		self.text:SetText(txt)
@@ -550,17 +545,106 @@ function UI.Badge(parent, text, kind)
 	return b
 end
 
+-- Linha de lista padrão (issue #93): marcador em ladrilho (glifo num quadrado arredondado, no tom do selo), título,
+-- linha de baixo (texto ou barra) e, à direita, um valor e/ou uma ação que cabe no texto. Altura fixa; sem a linha de
+-- baixo, o título centra. Fio embaixo; realce ao passar o mouse quando a linha é clicável.
+--   r:Set{ glyph, tone ("gold" | "ok" | "info" | "epic" | "warn" | "danger" | "plain"), title, titleColor, wrap,
+--          sub, subColor, progress (0..1), progressColor, value, valueColor, action, onAction, onClick }
+function UI.ListRow(parent, height)
+	local C = UI.COL
+	local r = CreateFrame("Button", nil, parent)
+	r:SetHeight(height or 48)
+	r.hl = UI.Slice(r, "round-6", "BACKGROUND", C.hover); r.hl:SetAllPoints(); r.hl:Hide()
+	r.tile = UI.Slice(r, "round-6", "ARTWORK", C.accentSoft); r.tile:SetSize(28, 28); r.tile:SetPoint("LEFT", 8, 0)
+	r.glyph = r:CreateTexture(nil, "OVERLAY"); r.glyph:SetSize(15, 15); r.glyph:SetPoint("CENTER", r.tile, "CENTER")
+	r.title = UI.Text(r, 13, C.active, { bold = true, wrap = false })
+	r.sub = UI.Text(r, 11.5, C.dim, { num = true, wrap = false })
+	r.bar = UI.Bar(r, C.accentBright); r.bar:SetHeight(5); r.bar:Hide()
+	r.value = UI.Text(r, 12, C.dim, { num = true, justify = "RIGHT" })
+	r.action = CreateFrame("Button", nil, r); r.action:SetHeight(24)
+	r.actionFS = UI.Text(r.action, 12.5, C.tip, { bold = true }); r.actionFS:SetPoint("CENTER")
+	r.action:SetScript("OnEnter", function() r.actionFS:SetTextColor(unpackc(C.accent)) end)
+	r.action:SetScript("OnLeave", function() r.actionFS:SetTextColor(unpackc(C.tip)) end)
+	r.sep = UI.Rect(r, "BORDER", C.line); r.sep:SetHeight(1)
+	r.sep:SetPoint("BOTTOMLEFT", 8, 0); r.sep:SetPoint("BOTTOMRIGHT", -8, 0)
+	r:SetScript("OnEnter", function(self) if self._click then self.hl:Show() end end)
+	r:SetScript("OnLeave", function(self) self.hl:Hide() end)
+	function r:Set(t)
+		local k = BADGE[t.tone or "gold"] or BADGE.gold
+		local left = 12
+		if t.glyph then
+			self.tile:SetVertexColor(unpackc(C[k[1]]))
+			self.glyph:SetTexture(UI.GLYPH .. t.glyph .. "-64"); self.glyph:SetVertexColor(unpackc(C[k[2]]))
+			self.tile:Show(); self.glyph:Show()
+			left = 48
+		else
+			self.tile:Hide(); self.glyph:Hide()
+		end
+		-- direita: ação, depois o valor
+		local right = -10
+		if t.action then
+			self.actionFS:SetText(t.action)
+			self.action:SetWidth(math.ceil(self.actionFS:GetStringWidth()) + 14)
+			self.action:ClearAllPoints(); self.action:SetPoint("RIGHT", self, "RIGHT", -4, 0)
+			self.action:SetScript("OnClick", t.onAction)
+			self.action:Show()
+			right = -4 - self.action:GetWidth() - 6
+		else
+			self.action:Hide()
+		end
+		if t.value and t.value ~= "" then
+			self.value:SetText(t.value); self.value:SetTextColor(unpackc(t.valueColor or C.dim))
+			self.value:ClearAllPoints(); self.value:SetPoint("RIGHT", self, "RIGHT", right, 0)
+			self.value:Show()
+			right = right - math.ceil(self.value:GetStringWidth()) - 10
+		else
+			self.value:Hide()
+		end
+		-- texto
+		local two = (t.sub and t.sub ~= "") or t.progress ~= nil
+		self.title:SetText(t.title or "")
+		self.title:SetTextColor(unpackc(t.titleColor or C.active))
+		self.title:SetWordWrap(t.wrap and true or false)
+		if self.title.SetMaxLines then self.title:SetMaxLines(t.wrap and 2 or 1) end
+		self.title:ClearAllPoints()
+		if two then
+			self.title:SetPoint("TOPLEFT", self, "TOPLEFT", left, t.wrap and -6 or -9)
+			self.title:SetPoint("TOPRIGHT", self, "TOPRIGHT", right, t.wrap and -6 or -9)
+		else
+			self.title:SetPoint("LEFT", self, "LEFT", left, 0)
+			self.title:SetPoint("RIGHT", self, "RIGHT", right, 0)
+		end
+		self.sub:ClearAllPoints(); self.bar:ClearAllPoints()
+		if t.progress ~= nil then
+			self.sub:Hide()
+			self.bar:SetPoint("TOPLEFT", self.title, "BOTTOMLEFT", 0, -7)
+			self.bar:SetPoint("TOPRIGHT", self.title, "BOTTOMRIGHT", 0, -7)
+			self.bar:SetColor(t.progressColor or C.accentBright)
+			self.bar:SetProgress(t.progress); self.bar:Show()
+		else
+			self.bar:Hide()
+			self.sub:SetText(t.sub or ""); self.sub:SetTextColor(unpackc(t.subColor or C.dim))
+			self.sub:SetPoint("TOPLEFT", self.title, "BOTTOMLEFT", 0, -4)
+			self.sub:SetPoint("TOPRIGHT", self.title, "BOTTOMRIGHT", 0, -4)
+			self.sub:SetShown(two)
+		end
+		self._click = t.onClick
+		self:SetScript("OnClick", t.onClick)
+	end
+	return r
+end
+
 -- Controle segmentado: { { label, value }, ... }; onSelect(value).
 function UI.Segmented(parent, items, onSelect)
 	local f = CreateFrame("Frame", nil, parent)
-	local bg = UI.dark and UI.Rect(f, "BACKGROUND", UI.COL.chip) or UI.Slice(f, "round-6", "BACKGROUND", UI.COL.header)
+	local bg = UI.Slice(f, "round-6", "BACKGROUND", UI.dark and UI.COL.chip or UI.COL.header)
 	bg:SetAllPoints()
 	f.buttons = {}
 	local x = 3
 	for i, it in ipairs(items) do
 		local b = CreateFrame("Button", nil, f)
 		b:SetHeight(24)
-		local sel = UI.dark and UI.Rect(b, "BACKGROUND", UI.COL.header) or UI.Slice(b, "round-6", "BACKGROUND", UI.COL.card)
+		local sel = UI.Slice(b, "round-6", "BACKGROUND", UI.COL.card)
 		sel:SetAllPoints(); sel:Hide()
 		local fs = UI.Text(b, 12, UI.COL.muted, { bold = true }); fs:SetPoint("CENTER"); fs:SetText(it[1])
 		b:SetWidth(fs:GetStringWidth() + 22)
@@ -589,7 +673,7 @@ end
 function UI.NavItem(parent, label, glyph, onClick)
 	local b = CreateFrame("Button", nil, parent)
 	b:SetHeight(32)
-	local sel = UI.dark and UI.Rect(b, "BACKGROUND", UI.COL.hover) or UI.Slice(b, "round-6", "BACKGROUND", UI.COL.card)
+	local sel = UI.Slice(b, "round-6", "BACKGROUND", UI.COL.card)
 	sel:SetAllPoints(); sel:Hide()
 	local bar = UI.Rect(b, "ARTWORK", UI.COL.accent); bar:SetPoint("TOPLEFT", 0, -7); bar:SetPoint("BOTTOMLEFT", 0, 7)
 	bar:SetWidth(3); bar:Hide()

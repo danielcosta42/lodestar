@@ -34,6 +34,9 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
   "missing only" and Guide me.
 - **Legacy**: Forever's Legacy challenges, your account points, each group's progress, your highest character of each
   class and what is closest, with the way there.
+- **Grey quests stay out**: a quest too low for your level (by the game's own grey range) leaves the guide, with what
+  only it unlocks, unless it leads to a quest that still gives XP; the automatic guide pick weighs how much of each
+  guide is still worth doing.
 - **While you're here**: goals of the next steps you're close to (objectives of quests in your log, ready turn-ins,
   quests to pick up ahead), so the step ahead is shorter when you get there. On a grind step, the dungeon that fits you.
 - **Target button** (with a key binding): targets the step's mob or NPC and marks it with a raid icon.
@@ -139,9 +142,10 @@ what it always was: a file you hand over on purpose.
 
 - Routes are generated from the open **[QuestieDB](https://github.com/Questie/QuestieDB)** (Forever
   flavor) by the Questie team, plus what `/ls scan` collects in-game for content no database has yet.
-- Dungeon bosses, their loot and the world's rares come from the **[pfQuest](https://github.com/shagu/pfQuest)**
-  database by Shagu (MIT); `tools/gen_dungeons.py` and `tools/gen_rares.py` regenerate `DungeonData.lua` and
-  `RareData.lua`.
+- Dungeon bosses, their loot, the world's rares and quest levels come from the
+  **[pfQuest](https://github.com/shagu/pfQuest)** database by Shagu (MIT); `tools/gen_dungeons.py`,
+  `tools/gen_rares.py` and `tools/gen_questlevels.py` regenerate `DungeonData.lua`, `RareData.lua` and
+  `QuestLevels.lua`.
 - The interface font is **[Barlow](https://github.com/jpt/barlow)** by Jeremy Tribby (SIL Open Font License 1.1,
   `Media/Fonts/OFL.txt`).
 - Flight paths, boats and zeppelins come from the game client's own tables (TaxiNodes, TaxiPath,

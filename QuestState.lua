@@ -161,6 +161,92 @@ function Q.UndoLast(char)
 	return last
 end
 
+-- Cinza (issue #93), a regra do jogo (GetQuestDifficultyColor): a quest é cinza quando o jogador passou do nível
+-- dela mais que a faixa de cinza do cliente (UnitQuestTrivialLevelRange).
+function Q.IsGrey(qlvl, plvl, range)
+	return (qlvl and plvl and range and plvl - qlvl > range) and true or false
+end
+
+-- As quests cinza que saem do guia. grey(q): q é cinza e não está no diário nem feita. Fica a que leva (pelo
+-- `only completed(...)`, em cadeia) a alguma quest que não é cinza: ela abre conteúdo que ainda vale. lists = { steps }.
+-- Uma passada pelos passos monta o mapa "q -> o que só aparece depois de q" (cada condição lida uma vez) e o cinza de
+-- cada quest é perguntado uma vez só: no 60, com cinco guias abertos, são milhares de objetivos.
+function Q.GreySkip(lists, grey)
+	local isGrey, parsed = {}, {}
+	local function greyOf(q)
+		local v = isGrey[q]
+		if v == nil then v = grey(q) and true or false; isGrey[q] = v end
+		return v
+	end
+	local function ids(cond)
+		if not cond then return nil end
+		local v = parsed[cond]
+		if v == nil then
+			v = {}
+			for _, set in ipairs(completedSets(cond)) do for _, id in ipairs(set) do v[#v + 1] = id end end
+			parsed[cond] = v
+		end
+		return v
+	end
+	local quests, seen, children = {}, {}, {}
+	local function link(srcs, q)
+		for _, src in ipairs(srcs or {}) do
+			if src ~= q then children[src] = children[src] or {}; table.insert(children[src], q) end
+		end
+	end
+	for _, steps in ipairs(lists or {}) do
+		for _, step in ipairs(steps) do
+			local stepIds = ids(step.only)
+			for _, goal in ipairs(step.goals or {}) do
+				local q = questOf(goal)
+				if q then
+					if not seen[q] then seen[q] = true; quests[#quests + 1] = q end
+					link(stepIds, q); link(ids(goal.only), q)
+				end
+			end
+		end
+	end
+	-- q ainda vale (não é cinza, ou leva a uma que não é)? Num ciclo, a que ainda está em aberto conta como "não" só
+	-- para quem perguntou: um "não" que dependeu dela não é memorizado (outra entrada no ciclo pode achar o caminho).
+	local live, busy = {}, {}
+	local function alive(q)
+		if live[q] ~= nil then return live[q], false end
+		if busy[q] then return false, true end
+		busy[q] = true
+		local v, open = not greyOf(q), false
+		if not v then
+			for _, c in ipairs(children[q] or {}) do
+				local cv, co = alive(c)
+				if cv then v = true; break end
+				if co then open = true end
+			end
+		end
+		busy[q] = nil
+		if v or not open then live[q] = v end
+		return v, open and not v
+	end
+	local out = {}
+	for _, q in ipairs(quests) do
+		if greyOf(q) and not alive(q) then out[q] = true end
+	end
+	return out
+end
+
+-- Quanto do guia ainda serve: das quests que ele manda pegar, quantas são úteis (useful(q)), e o total.
+function Q.Useful(steps, useful)
+	local n, total, seen = 0, 0, {}
+	for _, step in ipairs(steps or {}) do
+		for _, goal in ipairs(step.goals or {}) do
+			if goal.verb == "accept" and goal.id and not seen[goal.id] then
+				seen[goal.id] = true
+				total = total + 1
+				if useful(goal.id) then n = n + 1 end
+			end
+		end
+	end
+	return n, total
+end
+
 function Q.IsSkipped(char, q)
 	return q and char and char.skipped and char.skipped[q] or false
 end
@@ -322,6 +408,77 @@ local function refresh()
 	if ns.Viewer then ns.Viewer:Refresh() end
 	if ns.Waypoint then ns.Waypoint:Update() end
 end
+
+--------------------------------------------------------------------------------
+-- Quest cinza (issue #93): sai do guia enquanto não está no diário (Guide.lua, skippedGoal lê ns.greySkip)
+--------------------------------------------------------------------------------
+ns.greySkip = {}
+
+function Q.GreyRange()
+	local f = UnitQuestTrivialLevelRange
+	if not f then return nil end
+	local ok, r = pcall(f, "player")
+	if not ok or ns.IsSecret(r) then return nil end
+	return tonumber(r)
+end
+
+-- o nível da quest: o do jogo quando ela está carregada; senão o dos dados (QuestLevels.lua, pfQuest)
+function Q.Level(q)
+	if QL.GetQuestDifficultyLevel then
+		local ok, l = pcall(QL.GetQuestDifficultyLevel, q)
+		if ok and not ns.IsSecret(l) and tonumber(l) and l > 0 then return l end
+	end
+	return ns.questLevel and ns.questLevel[q]
+end
+
+function Q.IsGreyQuest(q, plvl)
+	local range, lvl = Q.GreyRange(), Q.Level(q)
+	if range and lvl then return Q.IsGrey(lvl, plvl or UnitLevel("player"), range) end
+	if QL.IsQuestTrivial then
+		local ok, t = pcall(QL.IsQuestTrivial, q)
+		return ok and t == true
+	end
+	return false
+end
+
+local requested = {}
+-- pede ao jogo os dados das quests à frente (o nível dele vale mais que o dos dados)
+local function requestAhead()
+	local g = ns.currentGuide
+	if not (g and QL.RequestLoadQuestByID) then return end
+	local cur = ns.char.currentStep or 1
+	for i = cur, math.min(#g.steps, cur + 80) do
+		for _, goal in ipairs(g.steps[i].goals) do
+			local q = goal.verb == "accept" and goal.id
+			if q and not requested[q] then requested[q] = true; pcall(QL.RequestLoadQuestByID, q) end
+		end
+	end
+end
+
+function Q:RefreshGrey(plvl)
+	local set = {}
+	if ns.db.skipGrey ~= false and ns.currentGuide then
+		set = Q.GreySkip(openStepLists(), function(q)
+			return not ns.IsQuestInLog(q) and not ns.IsQuestDone(q) and Q.IsGreyQuest(q, plvl)
+		end)
+	end
+	local changed = false
+	for q in pairs(set) do if not ns.greySkip[q] then changed = true end end
+	for q in pairs(ns.greySkip) do if not set[q] then changed = true end end
+	ns.greySkip = set
+	if changed then ns:CheckProgress(); refresh() end
+end
+
+local greyPending
+local function greyLater(plvl)
+	if greyPending then return end
+	greyPending = true
+	C_Timer.After(1, function() greyPending = nil; Q:RefreshGrey(plvl) end)
+end
+ns:On("_GUIDE_LOADED", function() requestAhead(); greyLater() end)
+ns:On("PLAYER_LEVEL_UP", function(_, lvl) greyLater(tonumber(lvl)) end)
+-- só as que o Lodestar pediu (o evento vale para qualquer pedido do jogo e de outros addons)
+ns:On("QUEST_DATA_LOAD_RESULT", function(_, q) if q and requested[q] and ns.currentGuide then greyLater() end end)
 
 function Q:SkipQuest(qid)
 	if not qid then return end

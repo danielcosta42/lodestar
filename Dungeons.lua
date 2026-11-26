@@ -166,7 +166,7 @@ local function listRow(parent)
 	local C = UI.COL
 	local r = CreateFrame("Button", nil, parent)
 	r:SetHeight(30)
-	r.sel = UI.dark and UI.Rect(r, "BACKGROUND", C.hover) or UI.Slice(r, "round-6", "BACKGROUND", C.accentSoft)
+	r.sel = UI.Slice(r, "round-6", "BACKGROUND", C.accentSoft)
 	r.sel:SetAllPoints(); r.sel:Hide()
 	r.name = UI.Text(r, 13, C.muted, { wrap = false }); r.name:SetPoint("LEFT", 10, 0); r.name:SetPoint("RIGHT", -52, 0)
 	r.range = UI.Text(r, 11.5, C.dim, { num = true, justify = "RIGHT" }); r.range:SetPoint("RIGHT", -8, 0)
@@ -186,44 +186,40 @@ PAGE.build = function(page, H)
 	-- detalhe à direita
 	local dx = 232 + 16
 	local dw = cw - dx
-	page.title = UI.Text(page, 22, C.active, { bold = true }); page.title:SetPoint("TOPLEFT", dx, 0)
+	-- cabeçalho em três linhas (nada por baixo de nada): nome e selo; o resumo; as ações
+	page.title = UI.Text(page, 22, C.active, { bold = true, wrap = false }); page.title:SetPoint("TOPLEFT", dx, 0)
 	page.fit = UI.Badge(page, "", "ok"); page.fit:SetPoint("LEFT", page.title, "RIGHT", 10, 0)
-	page.sub = UI.Text(page, 13, C.muted); page.sub:SetPoint("TOPLEFT", dx, -30)
-	page.door = UI.Button(page, L.V3_GUIDE_TO_DOOR, 160, 34, "primary"); page.door:SetPoint("TOPRIGHT", -36, 0)
-	page.qguide = UI.Button(page, L.V3_QUEST_GUIDE, 130, 34); page.qguide:SetPoint("RIGHT", page.door, "LEFT", -8, 0)
+	page.sub = UI.Text(page, 13, C.muted, { wrap = false }); page.sub:SetPoint("TOPLEFT", dx, -32)
+	page.sub:SetWidth(dw - 44)
+	page.door = UI.Button(page, L.V3_GUIDE_TO_DOOR, 160, 32, "primary"); page.door:SetPoint("TOPLEFT", dx, -56)
+	page.door:Fit(150)
+	page.qguide = UI.Button(page, L.V3_QUEST_GUIDE, 130, 32); page.qguide:SetPoint("LEFT", page.door, "RIGHT", 8, 0)
+	page.qguide:Fit(110)
 	local half = math.floor((dw - 14) / 2)
-	page.qCard = UI.Card(page, { color = C.card }); page.qCard:SetPoint("TOPLEFT", dx, -62); page.qCard:SetSize(half - 40, 518)
+	page.qCard = UI.Card(page, { color = C.card }); page.qCard:SetPoint("TOPLEFT", dx, -102); page.qCard:SetSize(half, 478)
 	page.qLabel = H.Label(page.qCard, ""); page.qLabel:SetPoint("TOPLEFT", 14, -14)
 	page.qscroll, page.qlist = UI.Scroll(page.qCard)
 	page.qscroll:SetPoint("TOPLEFT", 10, -34); page.qscroll:SetPoint("BOTTOMRIGHT", -12, 10)
 	page.qrows = {}
 	page.bCard = UI.Card(page, { color = C.card }); page.bCard:SetPoint("TOPLEFT", page.qCard, "TOPRIGHT", 14, 0)
-	page.bCard:SetSize(dw - half + 26, 518)
+	page.bCard:SetSize(dw - half - 14, 478)
 	page.bLabel = H.Label(page.bCard, ""); page.bLabel:SetPoint("TOPLEFT", 14, -14)
 	page.bscroll, page.blist = UI.Scroll(page.bCard)
 	page.bscroll:SetPoint("TOPLEFT", 10, -34); page.bscroll:SetPoint("BOTTOMRIGHT", -12, 10)
 	page.brows = {}
 end
 
-local function questRow(parent)
-	local C = UI.COL
-	local r = CreateFrame("Frame", nil, parent); r:SetHeight(40)
-	r.glyph = r:CreateTexture(nil, "OVERLAY"); r.glyph:SetSize(15, 15); r.glyph:SetPoint("TOPLEFT", 2, -3)
-	r.name = UI.Text(r, 13, C.active, { bold = true, wrap = false }); r.name:SetPoint("TOPLEFT", 24, -2)
-	r.name:SetPoint("RIGHT", r, "RIGHT", -4, 0)
-	r.sub = UI.Text(r, 11.5, C.dim, { num = true, wrap = false }); r.sub:SetPoint("TOPLEFT", r.name, "BOTTOMLEFT", 0, -3)
-	r.sub:SetPoint("RIGHT", r, "RIGHT", -50, 0)
-	r.go = CreateFrame("Button", nil, r); r.go:SetSize(46, 16); r.go:SetPoint("BOTTOMRIGHT", 0, 6)
-	r.goFS = UI.Text(r.go, 12, C.tip, { bold = true, justify = "RIGHT" }); r.goFS:SetAllPoints(); r.goFS:SetText(ns.L.V3_GO)
-	return r
-end
+local function questRow(parent) return UI.ListRow(parent, 50) end
 
+-- o chefe: nome em cima; embaixo, o que melhora a sua spec (um item por linha) ou "nada" numa linha só
 local function bossRow(parent)
 	local C = UI.COL
-	local r = CreateFrame("Frame", nil, parent); r:SetHeight(26)
-	r.name = UI.Text(r, 13, C.active, { bold = true, wrap = false }); r.name:SetPoint("TOPLEFT", 2, -4); r.name:SetWidth(150)
-	r.items = UI.Text(r, 12.5, C.muted, { wrap = true }); r.items:SetPoint("TOPLEFT", 160, -4); r.items:SetPoint("RIGHT", r, "RIGHT", -4, 0)
-	r.sep = UI.Rect(r, "ARTWORK", C.line); r.sep:SetHeight(1); r.sep:SetPoint("BOTTOMLEFT"); r.sep:SetPoint("BOTTOMRIGHT")
+	local r = CreateFrame("Frame", nil, parent); r:SetHeight(44)
+	r.name = UI.Text(r, 13, C.active, { bold = true, wrap = false })
+	r.name:SetPoint("TOPLEFT", 10, -9); r.name:SetPoint("TOPRIGHT", -10, -9)
+	r.items = UI.Text(r, 12, C.muted, { wrap = true })
+	r.items:SetPoint("TOPLEFT", r.name, "BOTTOMLEFT", 0, -4); r.items:SetPoint("TOPRIGHT", r.name, "BOTTOMRIGHT", 0, -4)
+	r.sep = UI.Rect(r, "ARTWORK", C.line); r.sep:SetHeight(1); r.sep:SetPoint("BOTTOMLEFT", 8, 0); r.sep:SetPoint("BOTTOMRIGHT", -8, 0)
 	return r
 end
 
@@ -277,25 +273,23 @@ PAGE.refresh = function(page, H)
 		local r = page.qrows[i] or questRow(page.qlist); page.qrows[i] = r
 		r:ClearAllPoints(); r:SetPoint("TOPLEFT", page.qlist, "TOPLEFT", 0, -y); r:SetPoint("RIGHT", page.qlist, "RIGHT")
 		local done, inLog = ns.IsQuestDone(q.id), ns.IsQuestInLog(q.id)
-		r.glyph:SetTexture(done and (UI.GLYPH .. "check-64") or (UI.MEDIA .. "ring"))
-		r.glyph:SetVertexColor(unpackc(done and C.done or inLog and C.done or C.accentBright))
-		r.name:SetText(ns.QuestState and ns.QuestState.Title(q.id) or q.text or "?")
-		r.name:SetTextColor(unpackc(done and C.faded or C.active))
+		local title = ns.QuestState and ns.QuestState.Title(q.id) or q.text or "?"
 		local where = q.zone and ("%s %.0f, %.0f"):format(ns.LocalizedZone(q.zone), q.x or 0, q.y or 0) or ""
-		r.sub:SetText(done and L.V3_Q_DONE or inLog and L.V3_Q_INLOG or where)
-		r.sub:SetTextColor(unpackc(inLog and C.done or C.dim))
-		r.go:SetShown(not done and not inLog and q.zone ~= nil)
-		r.go:SetScript("OnClick", function() ns.Waypoint:SetCustom(q.zone, q.x, q.y, r.name:GetText()) end)
+		r:Set({
+			glyph = done and "check" or "bandeira", tone = done and "ok" or inLog and "info" or "gold",
+			title = title, titleColor = done and C.faded or C.active,
+			sub = done and L.V3_Q_DONE or inLog and L.V3_Q_INLOG or where, subColor = inLog and C.tip or C.dim,
+			action = (not done and not inLog and q.zone) and L.V3_GO or nil,
+			onAction = function() ns.Waypoint:SetCustom(q.zone, q.x, q.y, title) end,
+		})
 		r:Show()
-		y = y + 44
+		y = y + 50
 	end
 	if #quests == 0 then
 		local r = page.qrows[1] or questRow(page.qlist); page.qrows[1] = r
 		r:ClearAllPoints(); r:SetPoint("TOPLEFT", page.qlist, "TOPLEFT", 0, 0); r:SetPoint("RIGHT", page.qlist, "RIGHT")
-		r.glyph:Hide(); r.go:Hide(); r.name:SetText(L.V3_NO_DUNGEON_QUESTS); r.name:SetTextColor(unpackc(C.dim)); r.sub:SetText("")
-		r:Show(); y = 44
-	else
-		for _, r in ipairs(page.qrows) do r.glyph:Show() end
+		r:Set({ title = L.V3_NO_DUNGEON_QUESTS, titleColor = C.dim })
+		r:Show(); y = 50
 	end
 	page.qlist:SetHeight(y); page.qscroll.Sync()
 	-- chefes e o que melhora
@@ -319,7 +313,7 @@ PAGE.refresh = function(page, H)
 			end
 		end
 		r.items:SetText(#parts > 0 and table.concat(parts, "\n") or ("|cff%s%s|r"):format(UI.Hex("faded"), L.V3_NOTHING_FOR_YOU))
-		local h = math.max(26, r.items:GetStringHeight() + 12)
+		local h = math.max(46, 9 + 17 + 4 + math.ceil(r.items:GetStringHeight()) + 10)
 		r:SetHeight(h)
 		r:Show()
 		y = y + h

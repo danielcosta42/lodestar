@@ -77,16 +77,19 @@ function H:BuildNav()
 	for _, it in pairs(frame.navItems) do it:Hide() end
 	local y = 64
 	for i, def in ipairs(order) do
-		if def.sep then y = y + 12 end
-		local it = frame.navItems[def.id]
-		if not it then
-			it = UI.NavItem(frame.nav, def.label, def.glyph, function() H:Show(def.id) end)
-			frame.navItems[def.id] = it
+		if not def.hidden then                       -- as escondidas (Configurações) moram no rodapé
+			if def.sep then y = y + 12 end
+			local it = frame.navItems[def.id]
+			if not it then
+				it = UI.NavItem(frame.nav, def.label, def.glyph, function() H:Show(def.id) end)
+				frame.navItems[def.id] = it
+			end
+			it:ClearAllPoints(); it:SetPoint("TOPLEFT", frame.nav, "TOPLEFT", 10, -y)
+			it:SetPoint("RIGHT", frame.nav, "RIGHT", -10, 0)
+			it:Show()
+			y = y + 34
+			def._i = i
 		end
-		it:ClearAllPoints(); it:SetPoint("TOPLEFT", frame.nav, "TOPLEFT", 10, -y); it:SetPoint("RIGHT", frame.nav, "RIGHT", -10, 0)
-		it:Show()
-		y = y + 34
-		def._i = i
 	end
 end
 
@@ -97,15 +100,13 @@ local function build()
 
 	frame.nav = CreateFrame("Frame", nil, frame)
 	frame.nav:SetPoint("TOPLEFT"); frame.nav:SetPoint("BOTTOMLEFT"); frame.nav:SetWidth(NAV_W)
-	local navBg = UI.dark and UI.Rect(frame.nav, "BACKGROUND", { 0, 0, 0, 0.22 })
-		or UI.Slice(frame.nav, "round-12", "BACKGROUND", C.header)
+	local navBg = UI.Slice(frame.nav, "round-12", "BACKGROUND", C.header)
 	navBg:SetPoint("TOPLEFT", 1, -1); navBg:SetPoint("BOTTOMRIGHT", 0, 1)
 	local navEdge = UI.Rect(frame.nav, "BORDER", C.border); navEdge:SetWidth(1)
 	navEdge:SetPoint("TOPRIGHT"); navEdge:SetPoint("BOTTOMRIGHT")
 	-- o cartão da página cobre a curva do lado direito do menu
 	local navFill = UI.Rect(frame.nav, "BACKGROUND", C.header); navFill:SetPoint("TOPRIGHT", -1, -1)
 	navFill:SetPoint("BOTTOMRIGHT", -1, 1); navFill:SetWidth(14)
-	if UI.dark then navFill:Hide() end
 
 	local star = UI.Icon(frame.nav, "logo-estrela", "ARTWORK", 128); star:SetSize(24, 24)
 	star:SetPoint("TOPLEFT", 18, -18); star:SetVertexColor(unpackc(C.accentBright))
@@ -114,7 +115,10 @@ local function build()
 
 	frame.footer = CreateFrame("Frame", nil, frame.nav)
 	frame.footer:SetPoint("BOTTOMLEFT", 10, 12); frame.footer:SetPoint("BOTTOMRIGHT", -10, 12); frame.footer:SetHeight(68)
-	local cfg = UI.NavItem(frame.footer, L.SET_TITLE, "config", function() SlashCmdList.LODESTAR("config") end)
+	local cfg = UI.NavItem(frame.footer, L.SET_TITLE, "config", function()
+		if ns.Settings then ns.Settings:Toggle() else H:Show("settings") end
+	end)
+	frame.footerItems = { settings = cfg }
 	cfg:SetPoint("TOPLEFT"); cfg:SetPoint("TOPRIGHT")
 	local rep = UI.NavItem(frame.footer, L.ACT_REPORT, "buscar", function() SlashCmdList.LODESTAR("report") end)
 	rep:SetPoint("TOPLEFT", cfg, "BOTTOMLEFT", 0, -2); rep:SetPoint("TOPRIGHT", cfg, "BOTTOMRIGHT", 0, -2)
@@ -138,7 +142,7 @@ function H:Show(id)
 	current = id
 	for pid, def in pairs(pages) do
 		if def.page then def.page:SetShown(pid == id) end
-		local it = frame.navItems and frame.navItems[pid]
+		local it = (frame.navItems and frame.navItems[pid]) or (frame.footerItems and frame.footerItems[pid])
 		if it then it:SetActive(pid == id) end
 	end
 	local def = pages[id]
@@ -171,6 +175,7 @@ function H:Open(id) H:Show(id or "leveling") end
 function H:Toggle() build(); if frame:IsShown() then frame:Hide() else H:Show(current or "home") end end
 function H:Hide() if frame then frame:Hide() end end
 function H:IsShown() return frame and frame:IsShown() end
+function H:Current() return current end
 function H:Refresh() if frame and frame:IsShown() and current then H:Show(current) end end
 
 --------------------------------------------------------------------------------

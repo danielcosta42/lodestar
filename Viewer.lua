@@ -872,7 +872,13 @@ function V:Show()
 	ns.db.viewer.hidden = false
 	frame:Show(); V:ApplyDisplay(); V:ApplyCollapsed(); ns:RefreshHUDs()
 end
-function V:Hide() if frame then frame:Hide() end; ns.db.viewer.hidden = true; ns:RefreshHUDs() end
+function V:Hide()
+	if frame then frame:Hide() end
+	ns.db.viewer.hidden = true
+	-- fechar o guia some com a seta (issue #93): o destino avulso ("Guiar", /way) sai junto; o do corpo fica
+	if ns.Destinations and ns.Destinations:Get("manual") then ns.Destinations:Clear("manual") end
+	ns:RefreshHUDs()
+end
 function V:Toggle() build(); if frame:IsShown() then V:Hide() else V:Show() end end
 
 ns:On("_GUIDE_LOADED", function()
