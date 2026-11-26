@@ -196,7 +196,8 @@ local doneSet = { [7841] = true, [5] = true }
 local function isDone(id) return doneSet[id] end
 check(N.Opens(nil, 1, isDone) and N.Opens({ r = 44, a = { 7841 } }, 48, isDone)
 	and not N.Opens({ r = 44, a = { 7841 } }, 40, isDone) and not N.Opens({ a = { 9 } }, 60, isDone)
-	and N.Opens({ g = { 5, 7841 } }, 60, isDone) and not N.Opens({ g = { 5, 6 } }, 60, isDone),
+	and N.Opens({ g = { 5, 7841 } }, 60, isDone) and not N.Opens({ g = { 5, 6 } }, 60, isDone)
+	and N.Opens({ g = { 5, { 6, 7841 } } }, 60, isDone) and not N.Opens({ g = { { 6, 9 } } }, 60, isDone),
 	"abre: nível mínimo, um dos pré-requisitos (a) e todos (g)")
 local pts = { { step = 3, x = 0, y = 0, c = 0 }, { step = 9, x = 500, y = 500, c = 0 } }
 check(N.Revisits(pts, 5, { x = 30, y = 40, c = 0 }) and not N.Revisits(pts, 3, { x = 30, y = 40, c = 0 })

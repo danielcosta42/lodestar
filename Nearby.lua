@@ -45,7 +45,15 @@ end
 function N.Opens(req, level, isDone)
 	if not req then return true end
 	if req.r and (level or 0) < req.r then return false end
-	for _, id in ipairs(req.g or {}) do if not isDone(id) then return false end end
+	for _, id in ipairs(req.g or {}) do
+		if type(id) == "table" then                  -- {a, b}: qualquer uma (a exclusiva conta como a pedida)
+			local any = false
+			for _, x in ipairs(id) do if isDone(x) then any = true; break end end
+			if not any then return false end
+		elseif not isDone(id) then
+			return false
+		end
+	end
 	if req.a and #req.a > 0 then
 		for _, id in ipairs(req.a) do if isDone(id) then return true end end
 		return false

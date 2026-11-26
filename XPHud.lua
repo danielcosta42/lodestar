@@ -111,7 +111,9 @@ local function applyAnchor()
 	if p and p.detached then
 		frame:SetWidth(ns.db.viewer.width or 340)
 		-- o ponto da tela relativo é o salvo (antes só o da barra: TOPLEFT preso ao BOTTOMLEFT voltava fora do lugar)
-		frame:SetPoint(p.point or "TOP", UIParent, p.rel or p.point or "TOP", p.x or 0, p.y or -120)
+		-- o deslocamento foi salvo na escala de então: a escala da janela mudou, a barra fica no mesmo lugar da tela
+		local k = (p.scale or frame:GetScale()) / frame:GetScale()
+		frame:SetPoint(p.point or "TOP", UIParent, p.rel or p.point or "TOP", (p.x or 0) * k, (p.y or -120) * k)
 		docked(false)                                               -- painel completo
 	elseif vf then
 		frame:SetPoint("TOPLEFT", vf, "BOTTOMLEFT", 0, 1)            -- rente + largura cheia
@@ -135,7 +137,9 @@ local function build()
 		-- grudado -> solta na posição atual e passa a flutuar
 		if not (ns.db.xpHudPos and ns.db.xpHudPos.detached) then
 			local L, T = self:GetLeft(), self:GetTop()
-			ns.db.xpHudPos = { detached = true }
+			-- a posição inteira já no começo (sem o ponto relativo ela pareceria salva antes do #102 e voltaria a grudar)
+			ns.db.xpHudPos = { detached = true, point = "TOPLEFT", rel = "BOTTOMLEFT", x = L or 0, y = T or 0,
+				scale = self:GetScale() }
 			self:ClearAllPoints(); self:SetWidth(ns.db.viewer.width or 340)
 			docked(false)
 			if L and T then self:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", L, T) end
@@ -157,7 +161,7 @@ local function build()
 			end
 		end
 		local pt, _, rel, x, y = self:GetPoint()
-		ns.db.xpHudPos = { detached = true, point = pt, rel = rel, x = x, y = y }
+		ns.db.xpHudPos = { detached = true, point = pt, rel = rel, x = x, y = y, scale = self:GetScale() }
 	end)
 	frame:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_TOP")
@@ -198,7 +202,9 @@ function H:Update()
 	local lvl = UnitLevel("player") or 1
 	local max = UnitXPMax("player") or 0
 	if max <= 0 then if frame then frame:Hide() end return end   -- nível máximo: sem XP
-	build(); applyAnchor(); frame:Show()
+	build()
+	if not (frame.IsMovingOrSizing and frame:IsMovingOrSizing()) then applyAnchor() end   -- arrastando: não puxa de volta
+	frame:Show()
 
 	local C = UI.COL
 	local xp = UnitXP("player") or 0

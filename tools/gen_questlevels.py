@@ -102,7 +102,14 @@ def main():
         e = bruto.get(str(q)) or {}
         r = e.get("reqLevel") or 0
         a = alternativas(e.get("preSingle") or [])
-        g = [int(x) for x in (e.get("preGroup") or []) if int(x) > 0]
+        # em grupo: cada um vale por ele ou pela exclusiva dele ({a,b} = qualquer um desses)
+        g = []
+        for x in (e.get("preGroup") or []):
+            alts = alternativas([x])
+            if len(alts) == 1:
+                g.append(str(alts[0]))
+            elif alts:
+                g.append("{%s}" % ",".join(map(str, alts)))
         if r > 1 or a or g:
             parts = []
             if r > 1:
@@ -110,7 +117,7 @@ def main():
             if a:
                 parts.append("a={%s}" % ",".join(map(str, a)))
             if g:
-                parts.append("g={%s}" % ",".join(map(str, g)))
+                parts.append("g={%s}" % ",".join(g))
             lines.append("\t[%d]={%s}," % (q, ",".join(parts)))
     lines.append("}")
     with open(OUT, "w", encoding="utf-8") as f:

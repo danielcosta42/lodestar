@@ -109,6 +109,7 @@ local journalAsked, waitingJournal = false, false
 local function askJournal()
 	if journalAsked or (InCombatLockdown and InCombatLockdown()) then return end   -- em combate: na próxima
 	journalAsked = true
+	waitingJournal = true                        -- espera a lista desta carga (e só desta: sem laço)
 	local load = (C_AddOns and C_AddOns.LoadAddOn) or LoadAddOn
 	if load then pcall(load, "Blizzard_Collections") end
 end
@@ -168,9 +169,8 @@ function CL:Pets()
 	if search ~= "" and PJ.SetSearchFilter then PJ.SetSearchFilter(search) end
 	reading = false
 	if #out == 0 then
-		-- espera a lista só depois de pedir a carga (antes da carga, para o evento dela não se perder); diário que
-		-- segue vazio depois da carga não fica redesenhando
-		if not journalAsked then waitingJournal = true end
+		-- pede a carga (uma vez; ela marca a espera antes, para o evento não se perder); diário que segue vazio
+		-- depois da carga, ou leitura em combate, não fica redesenhando
 		askJournal()
 		local fb = companionPets()
 		fb.fallback = true                           -- reserva: não fica em cache como se fosse o diário
