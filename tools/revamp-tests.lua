@@ -88,12 +88,12 @@ local last = Q.Skip(char, deps, 1000, { guide = "G", step = 2 })
 check(char.skipped[100] and char.skipped[101] and char.skipped[102], "pulou a quest e as dependentes")
 check(last.guide == "G" and last.step == 2 and last.t == 1000, "guarda onde aconteceu")
 check(Q.IsSkipped(char, 101) and not Q.IsSkipped(char, 105) and not Q.IsSkipped(char, nil), "IsSkipped")
-local undone = Q.Undo(char)
+local undone = Q.UndoLast(char)
 check(undone and undone.step == 2 and not char.skipped[100] and not char.skipped[102] and char.lastSkip == nil,
 	"desfazer devolve tudo")
-check(Q.Undo(char) == nil, "desfazer duas vezes: nada")
+check(Q.UndoLast(char) == nil, "desfazer duas vezes: nada")
 Q.Skip(char, { 1 }, 1); Q.Skip(char, { 2 }, 2)
-Q.Undo(char)
+Q.UndoLast(char)
 check(char.skipped[1] and not char.skipped[2], "desfazer só o último pulo")
 
 -- ── a quest abandonada ───────────────────────────────────────────────────────
@@ -123,7 +123,8 @@ local R = loadPure("Report.lua").Report
 local txt = R.ReportText({
 	version = "2.15.0", client = "1.60.1.70245 (16001)", locale = "ptBR",
 	guide = "Leveling/Alliance/Westfall (10-20)", step = 12, total = 80,
-	goals = { { verb = "kill", text = "Defias Trapper", id = 504, q = "153/1" }, { verb = "turnin", text = "X", id = 9, done = true } },
+	goals = { { verb = "kill", text = "Defias Trapper", id = 504, q = "153/1" },
+		{ verb = "turnin", text = "X", id = 9, done = true } },
 	zone = "Westfall", map = 1436, x = 42.123, y = 65.98, level = 14, class = "WARRIOR", race = "HUMAN",
 	faction = "Alliance", quests = { { id = 153, title = "Red Leather Bandanas", inLog = true, progress = "3/15" } },
 	auto = { turnin = true, accept = false }, addons = { "Questie", "Details" },
@@ -232,5 +233,36 @@ check(ns.char.currentStep == 1 and ns.char.hold == 1 and ns.char.steps[ns.curren
 	"GoToStep vai e segura")
 ns:GoToStep(99)
 check(ns.char.currentStep == 1, "GoToStep fora do guia: fica onde está")
+
+-- "Voltar por ela": o passo de volta está por fazer, a trava solta já (o guia segue quando ele fechar)
+inLog[100] = nil
+ns.char.currentStep = 3
+ns:GoToStep(1)
+check(ns.char.currentStep == 1 and ns.char.hold == nil, "GoToStep num passo por fazer solta a trava")
+inLog[100] = true
+ns:CheckProgress()
+check(ns.char.currentStep == 2,
+	"reaceita: o guia anda sozinho até o objetivo por fazer (" .. ns.char.currentStep .. ")")
+
+-- ── a metade de jogo do QuestState: Desfazer não chama a si mesmo ──────────────
+C_Timer = { After = function() end }
+function GetTime() return 100 end
+time = os.time
+StaticPopupDialogs = {}
+ns.Every = function() end
+ns.Print, ns.Printf = function() end, function() end
+ns.fire = function() end
+assert(loadfile(ROOT .. "/QuestState.lua"))("Lodestar", ns)
+local QS = ns.QuestState
+check(QS.UndoLast ~= QS.Undo, "o desfazer puro e o do jogo são funções diferentes")
+ns.guides["Leveling/Alliance/Teste (1-10)"].meta.next = "Leveling/Alliance/Manual (1-10)"
+ns.char.openGuides = { "Leveling/Alliance/Teste (1-10)" }
+ns.char.currentStep = 2
+QS:SkipQuest(100)
+check(ns.char.skipped[100] and ns.char.lastSkip, "pular pelo jogo marca e guarda o desfazer")
+check(QS:Notice() and QS:Notice().kind == "skipped", "o topo do passo mostra o pulo")
+local ok, err = pcall(QS.Undo, QS)
+check(ok, "Desfazer pelo jogo não estoura: " .. tostring(err))
+check(not ns.char.skipped[100] and ns.char.lastSkip == nil, "Desfazer pelo jogo devolve a quest")
 
 print(("ok: %d checks"):format(checks))

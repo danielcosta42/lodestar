@@ -28,6 +28,12 @@ end
 function I:Check()
 	if not ns.db then return end
 	if inside() then
+		-- abriu um guia de masmorra lá dentro: a janela volta
+		if ns.instanceHidden and insideGuide() then
+			ns.instanceHidden = nil
+			if not ns.db.viewer.hidden and ns.Viewer then ns.Viewer:Show() end
+			return ns:RefreshHUDs()
+		end
 		if ns.db.hideInInstance == false or ns.instanceHidden or shownInside or insideGuide() then return end
 		ns.instanceHidden = true
 		local f = ns.Viewer and ns.Viewer:GetFrame()
@@ -68,3 +74,4 @@ end
 
 ns:On("PLAYER_ENTERING_WORLD", function() C_Timer.After(0.5, function() I:Check() end) end)
 ns:On("ZONE_CHANGED_NEW_AREA", function() I:Check() end)
+ns:On("_GUIDE_LOADED", function() I:Check() end)

@@ -26,13 +26,17 @@ end
 if not ns.On then return end
 
 local last, sent = nil, {}
+-- o envio do chat mudou de lugar entre versões do cliente (o mesmo de Race.lua e ReportCard.lua)
+local send = (C_ChatInfo and C_ChatInfo.SendChatMessage) or SendChatMessage
 
 local function snapshot()
 	local t, QL = {}, C_QuestLog or {}
 	if not (QL.GetNumQuestLogEntries and QL.GetInfo and QL.IsComplete) then return t end
 	for i = 1, QL.GetNumQuestLogEntries() or 0 do
 		local info = QL.GetInfo(i)
-		if info and info.questID and not info.isHeader then t[info.questID] = QL.IsComplete(info.questID) and true or false end
+		if info and info.questID and not info.isHeader then
+			t[info.questID] = QL.IsComplete(info.questID) and true or false
+		end
 	end
 	return t
 end
@@ -59,9 +63,9 @@ local function check()
 	last = now
 	if not (ns.db and ns.db.partyTell and inParty()) then return end
 	for _, qid in ipairs(ready) do
-		if not sent[qid] then
-			sent[qid] = true
-			pcall(SendChatMessage, ("Lodestar: %s %s"):format(link(qid), ns.L.PT_READY), "PARTY")
+		if not sent[qid] and send then
+			-- só conta como avisado o que saiu (chat travado ou canal recusado: tenta na próxima)
+			sent[qid] = pcall(send, ("Lodestar: %s %s"):format(link(qid), ns.L.PT_READY), "PARTY") or nil
 		end
 	end
 end

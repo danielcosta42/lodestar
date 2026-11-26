@@ -133,7 +133,8 @@ function Q.Skip(char, ids, now, where)
 	return char.lastSkip
 end
 
-function Q.Undo(char)
+-- (puro; o Q:Undo do jogo, abaixo, é quem a janela chama)
+function Q.UndoLast(char)
 	local last = char.lastSkip
 	if not last then return nil end
 	for _, id in ipairs(last.ids or {}) do
@@ -262,11 +263,18 @@ function Q.GoalSuffix(goal, done)
 	return out, false, left ~= nil and left ~= false
 end
 
--- Os passos dos guias abertos (para achar quem depende de uma quest em todo guia).
+-- Os passos dos guias abertos e dos seguintes da cadeia de cada um (para achar quem depende de uma quest em todo
+-- guia que a rota ainda vai abrir).
 local function openStepLists()
 	local lists, seen = {}, {}
 	local function add(g)
-		if g and not seen[g.key] then seen[g.key] = true; lists[#lists + 1] = ns.ensureParsed(g) end
+		local n = 0
+		while g and not seen[g.key] and n <= 4 do
+			seen[g.key] = true
+			lists[#lists + 1] = ns.ensureParsed(g)
+			local nxt = ns:NextGuideKey(g)
+			g, n = nxt and ns.guides[nxt], n + 1
+		end
 	end
 	add(ns.currentGuide)
 	for _, k in ipairs(ns.char.openGuides or {}) do add(ns.guides[k]) end
@@ -296,7 +304,7 @@ function Q:SkipQuest(qid)
 end
 
 function Q:Undo()
-	local last = Q.Undo(ns.char)
+	local last = Q.UndoLast(ns.char)
 	if not last then return end
 	-- o pulo fez o guia andar: volta ao passo onde ele aconteceu
 	local g = ns.currentGuide

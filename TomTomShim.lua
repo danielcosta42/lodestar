@@ -69,7 +69,9 @@ end
 
 local current           -- o "uid" do último ponto que veio por aqui
 
-local shim = { __lodestar = true }
+-- O que não tem aqui responde nada (um addon que chama AddZWaypoint, GetKey... não estoura).
+local function nothing() return nil end
+local shim = setmetatable({ __lodestar = true }, { __index = function() return nothing end })
 
 function shim:AddWaypoint(map, x, y, opts)
 	if not (tonumber(map) and tonumber(x) and tonumber(y) and ns.Waypoint) then return nil end

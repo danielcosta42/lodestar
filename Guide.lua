@@ -520,8 +520,8 @@ function ns:GoToStep(idx)
 	self.char.currentStep = idx
 	self.char.steps[guide.key] = idx
 	self.char.hold = idx
-	if self.Viewer then self.Viewer:Refresh() end
-	if self.Waypoint then self.Waypoint:Update() end
+	-- o passo de volta está por fazer: solta a trava já, para o guia seguir quando ele fechar
+	self:CheckProgress()
 end
 
 -- Chamado quando o estado do jogo muda: auto-avança por TODOS os steps já

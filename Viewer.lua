@@ -317,7 +317,7 @@ local function build()
 	frame.noticeText:SetPoint("RIGHT", frame.notice, "RIGHT", -8, 0)
 	frame.noticeText:SetJustifyH("LEFT"); frame.noticeText:SetWordWrap(true)
 	frame.noticeA = UI.Button(frame.notice, "", 104, 20)
-	frame.noticeB = UI.Button(frame.notice, "", 78, 20)
+	frame.noticeB = UI.Button(frame.notice, "", 104, 20)
 	frame.notice:Hide()
 
 	-- Banner de GRUPO: passo atual tem inimigo elite/chefe -> recomenda grupo/raide
