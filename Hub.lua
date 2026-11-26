@@ -252,7 +252,11 @@ local function guideListPage(cat, label, glyph, ord, sep)
 				-- abrir retoma do passo salvo; "Do início" (clique direito) recomeça, como a Biblioteca fazia
 				local function open(fromStart)
 					ns.char.manualPick = key
-					if fromStart then ns.char.steps[key] = nil end
+					if fromStart then
+						-- o guia ativo: o LoadGuide grava o passo atual de volta antes de ler; zera ele também
+						if ns.currentGuide and ns.currentGuide.key == key then ns.char.currentStep = 1; ns.char.hold = nil end
+						ns.char.steps[key] = nil
+					end
 					ns:LoadGuide(key, not fromStart and ns.char.steps[key] ~= nil)
 					if ns.Viewer then ns.Viewer:Show() end
 					H:Refresh()

@@ -102,6 +102,7 @@ function CL:Mounts()
 end
 
 -- o diário de mascotes filtra o que mostra: abre tudo, lê, devolve como o jogador deixou
+local reading = false
 function CL:Pets()
 	local PJ = C_PetJournal
 	local out = {}
@@ -115,9 +116,15 @@ function CL:Pets()
 	if PJ.GetNumPetSources and PJ.IsPetSourceChecked and PJ.SetPetSourceChecked then
 		for i = 1, PJ.GetNumPetSources() or 0 do sources[i] = PJ.IsPetSourceChecked(i); PJ.SetPetSourceChecked(i, true) end
 	end
-	if PJ.GetNumPetTypes and PJ.IsPetTypeChecked and PJ.SetPetTypeChecked then
-		for i = 1, PJ.GetNumPetTypes() or 0 do types[i] = PJ.IsPetTypeChecked(i); PJ.SetPetTypeChecked(i, true) end
+	-- o diário deste cliente liga o tipo com SetPetTypeFilter (Blizzard_PetCollection, Classic)
+	local setType = PJ.SetPetTypeFilter or PJ.SetPetTypeChecked
+	if PJ.GetNumPetTypes and PJ.IsPetTypeChecked and setType then
+		for i = 1, PJ.GetNumPetTypes() or 0 do types[i] = PJ.IsPetTypeChecked(i); setType(i, true) end
 	end
+	-- a busca do diário filtra também: tira e devolve o texto que estava na caixa
+	local search = _G.PetJournalSearchBox and _G.PetJournalSearchBox.GetText and _G.PetJournalSearchBox:GetText() or ""
+	if search ~= "" and PJ.ClearSearchFilter then PJ.ClearSearchFilter() end
+	reading = true
 	local n = PJ.GetNumPets() or 0
 	local seen = {}
 	for i = 1, n do
@@ -131,7 +138,9 @@ function CL:Pets()
 	end
 	if PJ.SetFilterChecked then for f, v in pairs(saved) do PJ.SetFilterChecked(f, v) end end
 	for i, v in pairs(sources) do PJ.SetPetSourceChecked(i, v) end
-	for i, v in pairs(types) do PJ.SetPetTypeChecked(i, v) end
+	for i, v in pairs(types) do setType(i, v) end
+	if search ~= "" and PJ.SetSearchFilter then PJ.SetSearchFilter(search) end
+	reading = false
 	table.sort(out, function(a, b) return a.name < b.name end)
 	return out
 end
@@ -166,11 +175,14 @@ function CL:Summary()
 	cachePets = cachePets or CL:Pets()
 	local mh, mt = CL.Count(cacheMounts)
 	local ph, pt = CL.Count(cachePets)
+	if mt == 0 then cacheMounts = nil end               -- leitura vazia (diário ainda não carregou): de novo depois
+	if pt == 0 then cachePets = nil end
 	if mt + pt == 0 then return nil end
 	return { title = ns.L.V3_COL_SUM:format(mh, mt, ph, pt), text = ns.L.V3_COL_SUM_SUB,
 		progress = (mh + ph) / math.max(1, mt + pt), link = ns.L.V3_SEE_COLLECT }
 end
--- (não PET_JOURNAL_LIST_UPDATE: mexer nos filtros para ler dispara ele, e cada leitura apagaria o cache)
+-- a lista do diário mudou (carregou depois do login, por exemplo) — menos quando fomos nós, lendo
+ns:On("PET_JOURNAL_LIST_UPDATE", function() if not reading then cachePets = nil end end)
 for _, ev in ipairs({ "NEW_MOUNT_ADDED", "COMPANION_LEARNED", "NEW_PET_ADDED", "COMPANION_UNLEARNED" }) do
 	ns:On(ev, function() cacheMounts, cachePets = nil, nil end)
 end
@@ -226,8 +238,11 @@ end
 PAGE.refresh = function(page, H)
 	local L = ns.L
 	-- lido uma vez e de novo só quando o diário muda (o eventos do jogo limpam o cache)
+	-- leitura vazia (o diário ainda não carregou) não fica em cache
 	if tab == "mounts" then cacheMounts = cacheMounts or CL:Mounts() else cachePets = cachePets or CL:Pets() end
-	local all = tab == "mounts" and cacheMounts or cachePets
+	if cacheMounts and #cacheMounts == 0 then cacheMounts = nil end
+	if cachePets and #cachePets == 0 then cachePets = nil end
+	local all = (tab == "mounts" and cacheMounts or cachePets) or {}
 	local have, total = CL.Count(all)
 	page.subFS:SetText(L.V3_COL_PROGRESS:format(have, total))
 	page.bar:SetProgress(have / math.max(1, total))

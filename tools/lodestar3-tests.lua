@@ -81,6 +81,13 @@ local th = G.BestPerSlot({ { id = 9, slots = { 16 }, score = 50, pair = { 16, 17
 check(th[16] == nil, "a de duas mãos (50) não bate principal + escudo (55)")
 th = G.BestPerSlot({ { id = 9, slots = { 16 }, score = 66, pair = { 16, 17 } } }, { [16] = 30, [17] = 25 })
 check(th[16] and math.abs(th[16].gain - 0.2) < 1e-9, "ganho da de duas mãos sobre as duas peças: (66-55)/55")
+-- duas mãos e escudo não saem juntos no plano
+local mix = G.BestPerSlot({ { id = 20, slots = { 16 }, score = 50, pair = { 16, 17 } }, { id = 21, slots = { 17 }, score = 40 } },
+	{ [16] = 30, [17] = 10 })
+check(mix[16] and mix[16].id == 20 and mix[17] == nil, "a de duas mãos ganha a principal e toma a secundária")
+mix = G.BestPerSlot({ { id = 20, slots = { 16 }, score = 50, pair = { 16, 17 } }, { id = 21, slots = { 17 }, score = 60 } },
+	{ [16] = 30, [17] = 10 })
+check(mix[17] and mix[17].id == 21 and mix[16] == nil, "escudo melhor no plano: a de duas mãos não entra")
 
 check(G.SpecFromPoints({ 5, 31, 15 }) == 2, "spec pela árvore com mais pontos")
 check(G.SpecFromPoints({}) == 1 and G.SpecFromPoints({ 0, 0, 0 }) == 1, "sem pontos: a primeira")

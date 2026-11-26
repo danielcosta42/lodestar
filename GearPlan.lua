@@ -125,18 +125,21 @@ function G.BestPerSlot(candidates, equipped)
 	local sorted = {}
 	for _, c in ipairs(candidates or {}) do sorted[#sorted + 1] = c end
 	table.sort(sorted, function(a, b) return a.score > b.score end)
-	local best, used = {}, {}
+	local best, used, taken = {}, {}, {}
 	for _, c in ipairs(sorted) do
-		if not used[c.id] then
+		-- duas mãos precisa das duas mãos livres no plano; ganhando, a secundária fica tomada por ela
+		local pairFree = not c.pair or not (best[c.pair[2]] or taken[c.pair[2]])
+		if not used[c.id] and pairFree then
 			local target, base
 			for _, s in ipairs(c.slots or {}) do
-				if not best[s] then
+				if not best[s] and not taken[s] then
 					local e = c.pair and G.PairBase(equipped, c.pair) or equipped[s]
 					if e and (not base or e < base) then target, base = s, e end
 				end
 			end
 			if target and c.score > base then
 				used[c.id] = true
+				if c.pair then taken[c.pair[2]] = true end
 				best[target] = { id = c.id, score = c.score, source = c.source, base = base,
 					gain = base > 0 and (c.score - base) / base or 1 }
 			end
@@ -186,6 +189,7 @@ function G:Specs(class) return G.SPECS[class or myClass()] or {} end
 -- a spec do jogo: C_SpecializationInfo (a do retail, que este cliente traz), senão a árvore com mais pontos (as
 -- funções de talento antigas, se existirem). O druida do retail tem 4 (Guardião é o feral de tanque).
 local DRUID4 = { "balance", "feral", "feral", "resto" }
+local CLASS_KEY = "_class"            -- os pesos editados quando a spec não é conhecida
 function G:DetectedSpec(class)
 	class = class or myClass()
 	local list = G.SPECS[class]
@@ -204,8 +208,8 @@ function G:DetectedSpec(class)
 		local pts, any = {}, false
 		for i = 1, math.min(3, GetNumTalentTabs() or 0) do
 			local r = { GetTalentTabInfo(i) }
-			-- a posição do "pontos gastos" mudou entre versões: o primeiro número depois do nome
-			for j = 2, #r do if type(r[j]) == "number" then pts[i] = r[j]; break end end
+			-- pontos gastos: Classic Era (nome, ícone, pontos) = 3º; Wrath e depois (id, nome, desc, ícone, pontos) = 5º
+			pts[i] = tonumber(type(r[1]) == "number" and r[5] or r[3]) or 0
 			if (pts[i] or 0) > 0 then any = true end
 		end
 		if any then return list[G.SpecFromPoints(pts)] end
@@ -230,21 +234,21 @@ end
 function G:Weights(class, spec)
 	class = class or myClass()
 	spec = spec or G:Spec(class)
-	if not spec then return ns.GearAdvisor and ns.GearAdvisor.ClassWeights(class) or {} end
-	local mine = ns.db.gear.weights[class] and ns.db.gear.weights[class][spec]
+	local mine = ns.db.gear.weights[class] and ns.db.gear.weights[class][spec or CLASS_KEY]
+	if not spec then return mine or (ns.GearAdvisor and ns.GearAdvisor.ClassWeights(class)) or {} end
 	return mine or (G.PRESETS[class] and G.PRESETS[class][spec]) or {}
 end
 
+-- spec desconhecida: o que o jogador edita (ou cola do Pawn) fica numa chave da classe, sem fixar spec nenhuma
 function G:SetWeights(w, class, spec)
-	class = class or myClass(); spec = spec or G:Spec(class) or (G.SPECS[class] or {})[1]
-	if not ns.db.gear.spec[class] then ns.db.gear.spec[class] = spec end   -- editar fixa a spec mostrada
+	class = class or myClass(); spec = spec or G:Spec(class) or CLASS_KEY
 	ns.db.gear.weights[class] = ns.db.gear.weights[class] or {}
 	ns.db.gear.weights[class][spec] = w
 	G:Invalidate()
 end
 
 function G:ResetWeights(class, spec)
-	class = class or myClass(); spec = spec or G:Spec(class)
+	class = class or myClass(); spec = spec or G:Spec(class) or CLASS_KEY
 	if ns.db.gear.weights[class] then ns.db.gear.weights[class][spec] = nil end
 	G:Invalidate()
 end
@@ -457,17 +461,25 @@ end
 local function harvestRewards()
 	local qid = GetQuestID and GetQuestID()
 	if not (qid and qid > 0 and ns.db) then return end
+	-- o id pelo GetQuestItemInfo (6º retorno, vem mesmo sem o item no cache); o link de reserva. Junta com o que já
+	-- havia: uma leitura parcial (item ainda sem dado) não apaga uma completa de antes.
+	local old = ns.db.rewards[qid] or {}
 	local r = { choice = {}, reward = {} }
-	for i = 1, (GetNumQuestChoices and GetNumQuestChoices()) or 0 do
-		local link = GetQuestItemLink("choice", i)
-		local id = link and ns.ItemInfoInstant(link)
-		if id then r.choice[#r.choice + 1] = id end
+	local function take(kind, list, n)
+		local seen = {}
+		for _, id in ipairs(old[list] or {}) do seen[id] = true; r[list][#r[list] + 1] = id end
+		for i = 1, n do
+			local id = GetQuestItemInfo and select(6, GetQuestItemInfo(kind, i))
+			if not tonumber(id) then
+				local link = GetQuestItemLink and GetQuestItemLink(kind, i)
+				id = link and ns.ItemInfoInstant(link)
+			end
+			id = tonumber(id)
+			if id and not seen[id] then seen[id] = true; r[list][#r[list] + 1] = id end
+		end
 	end
-	for i = 1, (GetNumQuestRewards and GetNumQuestRewards()) or 0 do
-		local link = GetQuestItemLink("reward", i)
-		local id = link and ns.ItemInfoInstant(link)
-		if id then r.reward[#r.reward + 1] = id end
-	end
+	take("choice", "choice", (GetNumQuestChoices and GetNumQuestChoices()) or 0)
+	take("reward", "reward", (GetNumQuestRewards and GetNumQuestRewards()) or 0)
 	if #r.choice > 0 or #r.reward > 0 then ns.db.rewards[qid] = r; cache = nil end
 end
 G.HarvestRewards = function() pcall(harvestRewards) end
