@@ -5,4 +5,4 @@
 - [x] T3 Diário, masmorra, atalhos, Shift, voo automático
 - [x] T4 Dicas de equipamento, relatório, avisar o grupo, TomTom
 - [x] T5 Configurações, textos, .toc, comandos; suíte verde
-- [ ] T6 Revisão local, PR
+- [x] T6 Revisão local, PR (junto com o Lodestar 3, #90)

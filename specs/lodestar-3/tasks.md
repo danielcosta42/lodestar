@@ -7,4 +7,4 @@
 - [x] T5 Equipamento e recompensas colhidas (GearPlan.lua, GearAdvisor.lua)
 - [x] T6 Colecionáveis e Legado (Collections.lua, Legacy.lua)
 - [x] T7 Textos, configurações, .toc, testes (tools/lodestar3-tests.lua, tools/ui-smoke.lua)
-- [ ] T8 Revisão local, PR
+- [x] T8 Revisão local (duas passadas de revisão independente, zero achados), PR
