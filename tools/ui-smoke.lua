@@ -234,9 +234,20 @@ for _, gf in ipairs(Guides) do
 	if chunk then chunk("Lodestar", ns) end
 end
 -- um guia de verdade da pasta (o primeiro de Westfall que existir), e um de masmorra
+-- (no Windows o cmd.exe não tem `ls` nem `2>/dev/null`: `dir /b` lista só o nome, e o caminho vem da pasta)
+local WIN = package.config:sub(1, 1) == "\\"
 local function loadFirst(pattern)
-	local p = io.popen('ls ' .. ROOT .. '/' .. pattern .. ' 2>/dev/null')
-	local f = p and p:read("*l"); if p then p:close() end
+	local f
+	if WIN then
+		local full = (ROOT .. "/" .. pattern):gsub("/", "\\")
+		local dir = full:match("^(.*)\\[^\\]*$") or "."
+		local p = io.popen('dir /b "' .. full .. '" 2>NUL')
+		local name = p and p:read("*l"); if p then p:close() end
+		f = name and name ~= "" and (dir .. "\\" .. name) or nil
+	else
+		local p = io.popen('ls ' .. ROOT .. '/' .. pattern .. ' 2>/dev/null')
+		f = p and p:read("*l"); if p then p:close() end
+	end
 	if f then local c = loadfile(f); if c then c("Lodestar", ns) end end
 end
 loadFirst("Guides/Leveling/Alliance/Westfall*.lua")
