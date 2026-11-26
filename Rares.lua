@@ -41,7 +41,6 @@ end
 --------------------------------------------------------------------------------
 if not ns.On then return end
 local UI = ns.UI
-local unpackc = UI.unpackc
 
 -- a zona onde o jogador está, na chave dos dados (inglês)
 local function myZone()

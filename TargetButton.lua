@@ -102,8 +102,11 @@ local function ensure()
 	UI.SetFont(button.count, 11, { num = true, hud = true, color = C.active })
 	button.count:SetPoint("BOTTOMRIGHT", -2, 2)
 	-- depois do clique seguro: marca o que virou alvo e, fora de combate, passa ao próximo
+	-- o clique seguro roda numa só das bordas (ActionButtonUseKeyDown): age nessa, senão o "próximo" trocaria a macro
+	-- antes de ela rodar
 	button:SetScript("PostClick", function(_, _, down)
-		if down == false then return end
+		local onDown = not GetCVarBool or GetCVarBool("ActionButtonUseKeyDown")
+		if (down and true or false) ~= (onDown and true or false) then return end
 		local t = targets[index]
 		C_Timer.After(0.05, function() mark(t) end)
 		if #targets > 1 and not InCombatLockdown() then
