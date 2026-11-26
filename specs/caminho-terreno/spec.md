@@ -47,6 +47,10 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
     por terreno.
   - As do addon ficam em `PassagesData.lua`, com as que vierem dos relatórios. A primeira (#104) é a rampa do
     litoral da Revantusk Village até a beira da praia, gravada em jogo.
+- **Volta grande demais não é caminho:** mais de 3× a reta e mais de 1500 jd a mais. É a grade sem a saída de
+  verdade: o platô de The Hinterlands só se liga ao mundo pela rampa, e Aerie Peak → Chillwind descia a rampa e
+  nadava 4 km pela costa. Fica a reta, e quem chama espera 300 jd. A saída real (Hillsbrad) entra como passagem
+  quando for gravada.
   - `/ls report` leva as gravadas em texto curto (`c|zona|x,y;...`).
   - Gravar ou limpar refaz os caminhos da rota: larga a busca em curso, limpa as pernas a pé e redesenha.
   - A gravação para em voo, morte, salto grande num tique (teleporte, pedra de lar), velocidade acima de 18 jd/s

@@ -776,6 +776,7 @@ local revan, aerie = { c = 0, x = -635.3, y = -4720.5 }, { c = 0, x = 283.7, y =
 local ra, ar = TRN.Path(EK, revan, aerie, 150000), TRN.Path(EK, aerie, revan, 150000)
 check(ra and ar and #ra > 4 and #ar > 4, "Revantusk <-> Aerie Peak: caminho pelo terreno nos dois sentidos")
 check(ra and ra.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
+do -- #104 (bloco próprio: o arquivo já passa de 200 locais no topo)
 -- com a rampa gravada em jogo (PassagesData.lua, #104): a busca normal já sai pela rampa, nos dois sentidos
 local EKp = load("Terrain0.lua", {}).terrain
 EKp.passages = load("PassagesData.lua", {}).passagesData
@@ -785,6 +786,16 @@ end
 local rr, rv = TRN.Path(EKp, revan, aerie, 150000), TRN.Path(EKp, aerie, revan, 150000)
 check(rr and rv and not rr.solto and not rv.solto and pelaRampa(rr) and pelaRampa(rv),
 	"Revantusk <-> Aerie Peak com a rampa gravada: busca normal, pela rampa")
+-- a rampa é a única ligação do platô na grade (a saída para Hillsbrad falta): Aerie Peak -> Chillwind não pode
+-- descer a rampa e nadar 4 km pela costa — volta grande demais fica sem caminho (a reta)
+local chillwind, tarren = { c = 0, x = 931.3, y = -1430.1 }, { c = 0, x = -0.1, y = -859.9 }
+local ac, at = TRN.Path(EKp, aerie, chillwind, 150000), TRN.Path(EKp, aerie, tarren, 150000)
+check((ac == nil or not pelaRampa(ac)) and (at == nil or not pelaRampa(at)),
+	"Aerie Peak -> Chillwind / Tarren Mill: nada de descer a rampa e dar a volta pelo mar")
+check(TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 0, y = 5000 }, { x = 100, y = 5000 }, { x = 100, y = 0 } },
+	{ x = 0, y = 0 }, { x = 100, y = 0 }) and not TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 200, y = 300 },
+	{ x = 300, y = 0 } }, { x = 0, y = 0 }, { x = 300, y = 0 }), "volta demais: 3x a reta e 1500 jd a mais")
+end
 -- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
 local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
 local trilha = {}                                  -- andada: um ponto por célula (como a gravação, a cada 3 jd)

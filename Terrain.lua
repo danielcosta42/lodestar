@@ -248,6 +248,17 @@ end
 -- expansões (número) ou quando a função disser (orçamento de tempo), cede a vez — não trava
 -- o quadro.
 local caminho
+-- Volta grande demais (mais de 3× a reta e mais de 1500 jd a mais) não é caminho: é a grade sem a saída de verdade
+-- (o platô de The Hinterlands só se liga ao mundo pela rampa da Revantusk na grade, e Aerie Peak -> Chillwind descia
+-- a rampa e nadava 4 km pela costa de Arathi; #104). Fica a reta, que engana menos, e quem chama espera 300 jd.
+local VOLTA_FATOR, VOLTA_JD = 3, 1500
+local function voltaDemais(pts, de, para)
+	local len = 0
+	for i = 2, #pts do len = len + math.sqrt((pts[i].x - pts[i - 1].x) ^ 2 + (pts[i].y - pts[i - 1].y) ^ 2) end
+	local reta = math.sqrt((para.x - de.x) ^ 2 + (para.y - de.y) ^ 2)
+	return len > VOLTA_FATOR * reta and len - reta > VOLTA_JD
+end
+TR.VoltaDemais = voltaDemais
 -- A segunda busca roda com um terço do limite quando a primeira provou que não há ligação (acabou a fila), e com um
 -- quinto quando a primeira estourou o limite (região grande: a Revantusk cai aqui). A passagem curta, quando existe,
 -- sai em poucas expansões (~20 mil na Revantusk; a busca já poda o passo que estoura o limite de travados), e o nil
@@ -255,8 +266,9 @@ local caminho
 -- O caminho dela vem marcado (`solto`): quem chama não o refaz a cada desvio do jogador.
 function TR.Path(dados, de, para, maxExp, ceder)
 	local pts, motivo = caminho(dados, de, para, maxExp, ceder, false)
-	if pts then return pts end
+	if pts then return not voltaDemais(pts, de, para) and pts or nil end
 	pts = caminho(dados, de, para, math.floor(maxExp / (motivo == "limite" and 5 or 3)), ceder, true)
+	if pts and voltaDemais(pts, de, para) then return nil end
 	if pts then pts.solto = true end
 	return pts
 end

@@ -403,7 +403,7 @@ step("Passages", function()
 	ns.Passages:Command("")
 	T.PlayerWorld = pw
 	assert(#ns.db.passages == 1, "passagem não foi gravada")
-	assert(ns.terrain.passages and #ns.terrain.passages >= 1, "a busca não recebeu a passagem")
+	assert(ns.terrain.passages and #ns.terrain.passages >= #(ns.passagesData or {}) + 1, "a busca não recebeu a passagem")
 	local txt = ns.Report.ReportText(ns.Report.Context(), "x")
 	assert(txt:find("Recorded passages"), "o relatório não leva as passagens")
 	ns.Passages:Command("limpar")
