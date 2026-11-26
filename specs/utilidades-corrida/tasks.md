@@ -6,4 +6,4 @@
 - [x] T4 tools/gen_rares.py, RareData.lua, Rares.lua (aviso e página)
 - [x] T5 Characters.lua, Updates.lua
 - [x] T6 Configurações, textos, .toc, testes
-- [ ] T7 Revisão local, PR
+- [x] T7 Revisão local, PR
