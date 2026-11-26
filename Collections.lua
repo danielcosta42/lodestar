@@ -225,7 +225,7 @@ end
 -- A caixa de brinquedos (Blizzard_ToyBox, família Classic: C_ToyBox, issue #109). Como no diário de mascotes, o que
 -- ela mostra passa pelos filtros do jogador (coletados, não coletados, busca): abre tudo, lê, devolve como estava.
 -- A API não dá o texto de origem do brinquedo: todos em Outras, sem Guiar.
-local waitingToys = false
+local waitingToys, toysWaited = false, false
 function CL:Toys()
 	local TB = C_ToyBox
 	local out = {}
@@ -253,8 +253,10 @@ function CL:Toys()
 	if search ~= "" and TB.SetFilterString then TB.SetFilterString(search) end
 	reading = false
 	if #out == 0 then
+		-- espera a caixa uma vez só (marcada antes da carga, para o evento não se perder): os Set* acima podem
+		-- devolver um TOYS_UPDATED depois, e com a espera de novo a cada leitura vazia isso viraria um laço
+		if not toysWaited then toysWaited, waitingToys = true, true end
 		askJournal()                                 -- a caixa pode só se encher com as Coleções carregadas
-		waitingToys = true
 		return out
 	end
 	waitingToys = false
@@ -405,6 +407,8 @@ PAGE.refresh = function(page, H)
 		local r = page.srcRows[i]
 		if not r then
 			r = UI.NavItem(page.srcCard, "", nil, nil); page.srcRows[i] = r
+			-- o nome vem do texto do jogo e pode ser longo: corta antes da contagem
+			r.fs:SetPoint("RIGHT", r.count, "LEFT", -6, 0); r.fs:SetWordWrap(false)
 		end
 		r:ClearAllPoints(); r:SetPoint("TOPLEFT", page.srcCard, "TOPLEFT", 6, -30 - (i - 1) * 33)
 		r:SetPoint("RIGHT", page.srcCard, "RIGHT", -6, 0)

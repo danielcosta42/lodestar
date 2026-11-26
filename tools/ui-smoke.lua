@@ -183,7 +183,8 @@ G.C_Item = {
 G.C_Container = { GetContainerNumSlots = function() return 0 end, GetContainerItemLink = function() return nil end }
 G.C_MountJournal = {
 	GetMountIDs = function() return { 1, 2 } end,
-	GetMountInfoByID = function(id) return "Montaria " .. id, 100 + id, 132226, false, true, 3, false, false, nil, false, id == 1, id end,
+	-- tipo de origem 0, como neste cliente (issue #109): a origem sai do texto
+	GetMountInfoByID = function(id) return "Montaria " .. id, 100 + id, 132226, false, true, 0, false, false, nil, false, id == 1, id end,
 	GetMountInfoExtraByID = function() return nil, "", "|cFFFFD200Vendedor: |rKatie Hunter|n|cFFFFD200Zona: |rFloresta de Elwynn" end,
 }
 -- caixa de brinquedos com os filtros do jogador: só mostra tudo com coletados, não coletados e busca vazia
