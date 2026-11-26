@@ -96,14 +96,22 @@ local function docked(on)
 	frame.topFill:SetShown(on)
 end
 
+-- coordenada da tela (escala do UIParent): a janela do guia tem escala própria (Configurações), e comparar o
+-- GetTop de um com o GetBottom do outro em escalas diferentes nunca acertava o encaixe (issue #102)
+local function screen(f, v) return v and v * f:GetEffectiveScale() / UIParent:GetEffectiveScale() end
+
 local function applyAnchor()
 	if not frame then return end
 	frame:ClearAllPoints()
+	frame:SetScale((ns.db.viewer and ns.db.viewer.scale) or 1)     -- o tamanho da janela do guia, presa ou solta
 	local p = ns.db.xpHudPos
+	-- posição solta salva antes do #102 (sem o ponto relativo): não dá para restaurar certo; volta a grudar
+	if p and p.detached and not p.rel then p = { detached = false }; ns.db.xpHudPos = p end
 	local vf = ns.Viewer and ns.Viewer.GetFrame and ns.Viewer:GetFrame()
 	if p and p.detached then
 		frame:SetWidth(ns.db.viewer.width or 340)
-		frame:SetPoint(p.point or "TOP", UIParent, p.point or "TOP", p.x or 0, p.y or -120)
+		-- o ponto da tela relativo é o salvo (antes só o da barra: TOPLEFT preso ao BOTTOMLEFT voltava fora do lugar)
+		frame:SetPoint(p.point or "TOP", UIParent, p.rel or p.point or "TOP", p.x or 0, p.y or -120)
 		docked(false)                                               -- painel completo
 	elseif vf then
 		frame:SetPoint("TOPLEFT", vf, "BOTTOMLEFT", 0, 1)            -- rente + largura cheia
@@ -122,6 +130,7 @@ local function build()
 	frame = UI.Panel(UIParent, { name = "LodestarXPHud" })
 	frame:SetSize(ns.db.viewer.width or 340, 62)
 	frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
+	frame:SetClampedToScreen(true)
 	frame:SetScript("OnDragStart", function(self)
 		-- grudado -> solta na posição atual e passa a flutuar
 		if not (ns.db.xpHudPos and ns.db.xpHudPos.detached) then
@@ -138,16 +147,17 @@ local function build()
 		-- soltou perto do rodapé do Viewer? re-gruda (snap-to-dock)
 		local vf = ns.Viewer and ns.Viewer.GetFrame and ns.Viewer:GetFrame()
 		if vf and vf:IsShown() and self:GetTop() and vf:GetBottom() then
-			local gap = math.abs(self:GetTop() - vf:GetBottom())
-			local over = (self:GetRight() or 0) > (vf:GetLeft() or 0) and (self:GetLeft() or 0) < (vf:GetRight() or 1e9)
+			local gap = math.abs(screen(self, self:GetTop()) - screen(vf, vf:GetBottom()))
+			local over = screen(self, self:GetRight() or 0) > screen(vf, vf:GetLeft() or 0)
+				and screen(self, self:GetLeft() or 0) < screen(vf, vf:GetRight() or 1e9)
 			if gap < 44 and over then
 				ns.db.xpHudPos = { detached = false }
 				applyAnchor()
 				return
 			end
 		end
-		local pt, _, _, x, y = self:GetPoint()
-		ns.db.xpHudPos = { detached = true, point = pt, x = x, y = y }
+		local pt, _, rel, x, y = self:GetPoint()
+		ns.db.xpHudPos = { detached = true, point = pt, rel = rel, x = x, y = y }
 	end)
 	frame:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_TOP")
