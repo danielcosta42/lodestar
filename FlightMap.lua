@@ -106,6 +106,12 @@ local function highlight()
 			if TaxiNodeName(i) == want then
 				local btn = _G["TaxiButton" .. i]
 				if btn then place(btn) end
+				-- voo automático (opcional): o voo da rota, alcançável daqui; Shift escolhe à mão
+				if ns.db.autoFlight and not (IsShiftKeyDown and IsShiftKeyDown())
+					and TaxiNodeGetType(i) == "REACHABLE" and TakeTaxiNode then
+					ns:Printf("%s |cfff0c26a%s|r", ns.L.FLYING_TO, want)
+					return TakeTaxiNode(i)
+				end
 				return ns:Printf("%s |cfff0c26a%s|r", ns.L.FLY_TO, want)
 			end
 		end

@@ -11,7 +11,8 @@ ignore:
   # arte-fonte e preview de HUD
   - "Media/*.zip"
   # glifos que a interface não usa (ficam no repositório como fonte)
-  - "lodestar-glyphs/chevron-cima-*.tga"
+  # chevron-cima-64 é a seta de melhoria (GearTips.lua); só o de 128 fica de fora
+  - "lodestar-glyphs/chevron-cima-128.tga"
   - "lodestar-glyphs/chevron-dir-*.tga"
   - "lodestar-glyphs/chevron-esq-*.tga"
   - "lodestar-glyphs/combate-*.tga"

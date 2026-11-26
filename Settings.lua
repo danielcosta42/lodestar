@@ -119,6 +119,13 @@ local function fillAuto(p)
 		function() return ns.db.autoRepair end, function(v) ns.db.autoRepair = v end)
 	switchRow(p, L.SET_SELL, L.SET_SELL_D,
 		function() return ns.db.autoSell end, function(v) ns.db.autoSell = v end)
+	switchRow(p, L.SET_AUTOFLY, L.SET_AUTOFLY_D,
+		function() return ns.db.autoFlight == true end, function(v) ns.db.autoFlight = v end, true)
+	switchRow(p, L.SET_TIMERS, L.SET_TIMERS_D,
+		function() return ns.db.timerAlerts ~= false end, function(v) ns.db.timerAlerts = v end)
+	switchRow(p, L.SET_INSTANCE, L.SET_INSTANCE_D,
+		function() return ns.db.hideInInstance ~= false end,
+		function(v) ns.db.hideInInstance = v; if ns.Instance then ns.Instance:Apply() end end)
 end
 
 local function fillNav(p)
@@ -144,6 +151,9 @@ local function fillNav(p)
 	sliderRow(p, L.SET_MMRANGE, L.SET_MMRANGE_D, 50, 200, 5,
 		function() return (ns.db.minimap.rangeMult or 1) * 100 end,
 		function(v) ns.db.minimap.rangeMult = v / 100 end, "%d%%")
+	switchRow(p, L.SET_TOMTOM, L.SET_TOMTOM_D,
+		function() return ns.db.tomtomShim == true end,
+		function(v) ns.db.tomtomShim = v; if v and ns.TomTomShim then ns.TomTomShim:Install() end end, true)
 end
 
 local function fillHud(p)
@@ -176,6 +186,8 @@ local function fillHud(p)
 		function() return ns.db.mobWarning end, function(v) ns.db.mobWarning = v end)
 	switchRow(p, L.SET_GEAR, L.SET_GEAR_D,
 		function() return ns.db.gearAdvisor end, function(v) ns.db.gearAdvisor = v end)
+	switchRow(p, L.SET_GEARTIPS, L.SET_GEARTIPS_D,
+		function() return ns.db.gearTips ~= false end, function(v) ns.db.gearTips = v end)
 	switchRow(p, L.SET_TOASTS, L.SET_TOASTS_D,
 		function() return ns.db.toastsEnabled end, function(v) ns.db.toastsEnabled = v end)
 end
@@ -186,6 +198,8 @@ local function fillGroup(p)
 		function() return ns.db.eliteBuddy == true end, function(v) ns.db.eliteBuddy = v end, true)
 	switchRow(p, L.SET_SHARE, L.SET_SHARE_D,
 		function() return ns.db.autoShareQuest end, function(v) ns.db.autoShareQuest = v end, true)
+	switchRow(p, L.SET_PARTYTELL, L.SET_PARTYTELL_D,
+		function() return ns.db.partyTell == true end, function(v) ns.db.partyTell = v end, true)
 	switchRow(p, L.SET_SHAREQ, L.SET_SHAREQ_D,
 		function() return ns.db.shareQuests end, function(v) ns.db.shareQuests = v end, true)
 	switchRow(p, L.SET_DANGER, L.SET_DANGER_D,
@@ -219,6 +233,8 @@ local function fillTools(p)
 		L.SET_OPEN, function() if ns.Consumables then ns.Consumables:Toggle() end end)
 	buttonRow(p, L.SET_CARDNOW, L.SET_CARDNOW_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("card") end)
 	buttonRow(p, L.SET_TOUR, L.SET_TOUR_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("intro") end)
+	buttonRow(p, L.SET_TIDY, L.SET_TIDY_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("diario") end)
+	buttonRow(p, L.SET_REPORT, L.SET_REPORT_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("report") end)
 end
 
 local function fillAdvanced(p)

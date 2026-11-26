@@ -18,6 +18,7 @@ tools/*
 !tools/race-tests.lua
 !tools/splits-tests.lua
 !tools/retro-tests.lua
+!tools/revamp-tests.lua
 !tools/questiedb.py
 # O verificador das cópias da lib ChehulNet (vem de danielcosta42/chehulnet pelo sync; o CI roda).
 !tools/chehulnet-lock.sh

@@ -398,8 +398,15 @@ local function droppedGoal(char, goal)
 		and not IsQuestComplete(q) or false
 end
 
+-- quest que o jogador pulou (clique direito > Pular, specs/revamp-polestar): todo objetivo dela sai, até o
+-- aceite, mesmo com ela no diário, até desfazer ou aceitá-la à mão
+local function skippedGoal(char, goal)
+	local q = questOf(goal)
+	return q and char and char.skipped and char.skipped[q] or false
+end
+
 function ns:IsGoalActive(goal)
-	if droppedGoal(self.char, goal) then return false end
+	if droppedGoal(self.char, goal) or skippedGoal(self.char, goal) then return false end
 	return self:EvalCondition(goal.only)
 end
 
@@ -450,18 +457,23 @@ end
 
 -- Step completo = todos os goals ativos e rastreáveis estão completos,
 -- e existe pelo menos um goal rastreável (senão avança manual). Goal de missão
--- descartada conta como feito: o passo que só tinha ela não trava o guia.
+-- descartada ou pulada conta como feito: o passo que só tinha ela não trava o guia.
+-- Passo só de objetivos que o jogo não confirma (fale com, clique, use): anda quando todos eles estão marcados à mão
+-- na janela (marcar um de dois não pula o outro). Com objetivo rastreável, valem só os rastreáveis, como sempre.
 function ns:IsStepComplete(step)
-	local anyTrackable = false
+	local anyTrackable, manual, softPending = false, false, false
 	for _, goal in ipairs(step.goals) do
-		if droppedGoal(self.char, goal) then
+		if droppedGoal(self.char, goal) or skippedGoal(self.char, goal) then
 			anyTrackable = true
 		elseif self:IsGoalActive(goal) and self:IsGoalTrackable(goal) then
 			anyTrackable = true
 			if not self:IsGoalComplete(goal) then return false end
+		elseif goal.verb ~= "note" and goal._gkey and self:IsGoalActive(goal) then
+			if self.char.completedGoals[goal._gkey] then manual = true else softPending = true end
 		end
 	end
-	return anyTrackable
+	if anyTrackable then return true end
+	return manual and not softPending
 end
 
 -- Pula steps cujo `only` não bate para o char atual.
@@ -496,6 +508,18 @@ function ns:AdvanceStep(delta)
 	self.char.steps[guide.key] = idx        -- persiste o passo por-guia (p/ trocar/logar)
 	-- voltar à mão segura o passo: o próximo evento não o pula de novo (até avançar à mão)
 	self.char.hold = delta < 0 and idx or nil
+	if self.Viewer then self.Viewer:Refresh() end
+	if self.Waypoint then self.Waypoint:Update() end
+end
+
+-- Vai a um passo e o segura ali, como o Voltar: o próximo evento não o pula de novo enquanto ele estiver por fazer
+-- ("Voltar por ela" da quest abandonada, o Desfazer de um pulo).
+function ns:GoToStep(idx)
+	local guide = self.currentGuide
+	if not (guide and guide.steps[idx]) then return end
+	self.char.currentStep = idx
+	self.char.steps[guide.key] = idx
+	self.char.hold = idx
 	if self.Viewer then self.Viewer:Refresh() end
 	if self.Waypoint then self.Waypoint:Update() end
 end

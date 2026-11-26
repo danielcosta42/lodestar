@@ -98,6 +98,7 @@ ns.ItemInfoInstant = Item.GetItemInfoInstant or nada
 ns.ItemStats       = Item.GetItemStats or nada
 ns.ItemIcon        = Item.GetItemIconByID or nada
 ns.IsEquippable    = Item.IsEquippableItem or nada
+ns.IsEquipped      = Item.IsEquippedItem or nada
 ns.ItemCount       = Item.GetItemCount or function() return 0 end
 ns.SpellIcon       = Spell.GetSpellTexture or nada
 ns.IsSpellKnown    = Book.IsSpellKnown or IsSpellKnown or nada

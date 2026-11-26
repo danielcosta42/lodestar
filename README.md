@@ -39,15 +39,29 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
   bank, auction house, flight master or stable (nearest by travel time, not straight line). All in the
   **Travel** panel — the compass button in the guide header.
 - **Multiple guides open at once as tabs** — switch, add, or close routes on the fly, with a clean empty state when none is loaded.
+- **Live counts on every goal** — "Kill Boar 3/8", the bag count on collect goals, the time left on timed quests (with an
+  alert at 5 minutes and at 1 minute) and a clear mark on a failed escort or timed quest.
+- **Right-click a quest line** to skip that quest (and the quests that follow from it) with **Undo**, show it in the quest
+  log, or abandon it. Abandon a quest the guide still needs and the window offers **Go back for it** or **Skip it**.
+- **Tidy quest log** — the quests in your log your route no longer uses, each with Abandon, and the finished ones no
+  step ahead hands in.
+- **Steps aside in dungeons, raids and battlegrounds** and comes back when you leave (dungeon guides stay).
+- **Key bindings** for the window, next/previous step, Travel, the quest item, Tidy and Report.
 
 ### Automation (never get stuck)
 - **Auto-accept**, **auto-turn-in**, and optional **auto-reward** (off by default; picks the best reward using a class-aware gear score).
 - Auto-selects the right gossip/quest option and auto-shares quests with your party.
 - **Auto-skips** a step whose NPC no longer offers its quest — imperfect data never stalls you.
+- **Hold Shift** at an NPC, a vendor or a flight master and Lodestar keeps its hands off, once.
+- Optional: **take the route's flight** at the flight master by itself.
 
 ### Leveling companions
 - **XP/hour pace HUD** with ETA-to-level and ahead/behind tracking.
-- **Gear Advisor** — pings you when a bag item is an upgrade.
+- **Gear Advisor** — pings you when a bag item is an upgrade, marks it on the item's tooltip ("Upgrade +12%") and puts a
+  green arrow on the best quest reward.
+- Optional: **tell my party** when one of your quests is ready to turn in.
+- Optional: **TomTom compatibility** — without TomTom installed, `/way` and addons that set TomTom waypoints point
+  Lodestar's arrow.
 - Target markers on tooltips & nameplates; player coordinates on minimap and map.
 - Death counter and a shareable end-of-run **Report Card** (with "ghost racing").
 
@@ -63,6 +77,8 @@ goes in the message, and the addon on the other side drops who sent it. Off, sha
 what it always was: a file you hand over on purpose.
 
 ### For contributors
+- **Report a problem** (the guide's ··· menu or `/ls report`): copyable text with the version, the step, where you stand
+  and your addons — no character, realm or account names — ready for a GitHub issue.
 - **Import / export** guides with share codes; record your own route in-game.
 - Interface in English and Brazilian Portuguese; deDE, esES, esMX, frFR, itIT, koKR, ruRU, zhCN and zhTW
   translate the main labels and fall back to English for the rest. Translations welcome.
@@ -91,6 +107,8 @@ what it always was: a file you hand over on purpose.
 | `/ls travel` | Open the Travel panel |
 | `/ls near <type>` | Route to the nearest service: `trainer`, `prof <name>`, `repair`, `vendor`, `inn`, `bank`, `auction`, `flight`, `stable` |
 | `/ls way <x> <y> [zone]` · `/ls way off` | Set / clear a manual destination |
+| `/ls diario` | Tidy quest log: quests your route no longer uses |
+| `/ls report` | Report a problem: copyable text for a GitHub issue |
 
 ---
 

@@ -60,9 +60,15 @@ end
 -- dailies), não só as listadas. Usa uma SESSÃO por-NPC com janela de tempo: assim
 -- que o passo avança ao aceitar a 1ª quest, a sessão segue pegando as demais no
 -- re-abrir do gossip. Escopo por GUID+tempo evita "vazar" p/ outros NPCs.
--- a automação só age com o guia aberto: fechar a janela (X) é parar o guia
+-- a automação só age com o guia aberto: fechar a janela (X) é parar o guia. Shift apertado ao falar com o NPC
+-- segura tudo uma vez (specs/revamp-polestar, R9).
 local function ativo()
-	return ns.currentGuide ~= nil and ns:UIShown()
+	return ns.currentGuide ~= nil and ns:UIShown() and not (IsShiftKeyDown and IsShiftKeyDown())
+end
+
+-- quest que o jogador pulou: o guloso não a pega (aceitar à mão desfaz o pulo, QuestState.lua)
+local function skipped(qid)
+	return qid and ns.char and ns.char.skipped and ns.char.skipped[qid] or false
 end
 
 local grabNPC, grabUntil
@@ -99,7 +105,7 @@ ns:On("QUEST_DETAIL", function()
 		if greedy or next(wanted) then AcceptQuest() end
 		return
 	end
-	if greedy or wanted[qid] then AcceptQuest() end
+	if (greedy and not skipped(qid)) or wanted[qid] then AcceptQuest() end
 end)
 
 --------------------------------------------------------------------------------
@@ -166,7 +172,7 @@ ns:On("QUEST_GREETING", function()
 			local _
 			trivial, _, repeatable, _, qid = GetAvailableQuestInfo(i)
 		end
-		if (qid and want[qid]) or not (trivial or repeatable) then SelectAvailableQuest(i); return end
+		if (qid and want[qid]) or not (trivial or repeatable or skipped(qid)) then SelectAvailableQuest(i); return end
 	end
 end)
 
@@ -204,7 +210,8 @@ ns:On("GOSSIP_SHOW", function()
 		local want = stepQuestIDs("accept")
 		if GI and GI.GetAvailableQuests then
 			for _, q in ipairs(GI.GetAvailableQuests()) do
-				if q.questID and (want[q.questID] or (greedy and not q.isTrivial and not q.repeatable)) then
+				if q.questID and (want[q.questID] or (greedy and not q.isTrivial and not q.repeatable
+					and not skipped(q.questID))) then
 					pcall(GI.SelectAvailableQuest, q.questID); return
 				end
 			end

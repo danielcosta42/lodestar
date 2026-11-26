@@ -45,7 +45,7 @@ local function displayName(goal)
 	return goal.text or ""
 end
 
-local frame, rowPool, distRows = nil, {}, {}
+local frame, rowPool, distRows, timedRows = nil, {}, {}, {}
 local tabPool = {}
 
 -- Nome curto do guia (última parte da chave "Categoria/Nome").
@@ -246,6 +246,8 @@ local function build()
 			{ L.ACT_RESCAN, function() run("rescan") end },
 			{ L.ACT_EXPORT, function() run("export") end },
 			{ L.ACT_IMPORT, function() run("import") end },
+			{ L.ACT_TIDY, function() run("diario") end },
+			{ L.ACT_REPORT, function() run("report") end },
 			{ L.ACT_RECORD, function() run("record") end },
 			{ L.ACT_SCAN_START, function() run("scan") end },
 			{ L.ACT_SCAN_STOP, function() run("scan stop") end },
@@ -303,6 +305,20 @@ local function build()
 
 	-- (Pré-requisitos não têm mais banner: a cadeia que falta é injetada inline
 	--  como passos nativos.)
+
+	-- Aviso de cima (specs/revamp-polestar): a quest abandonada que o guia ainda usa ("Voltar por ela" / "Pular"),
+	-- ou o último pulo, com Desfazer.
+	frame.notice = UI.Panel(frame.content, { color = { 0.10, 0.12, 0.18, 0.94 }, borderColor = C.accent })
+	local nstripe = UI.Rect(frame.notice, "ARTWORK", C.accent)
+	nstripe:SetPoint("TOPLEFT"); nstripe:SetPoint("BOTTOMLEFT"); nstripe:SetWidth(3)
+	frame.noticeText = frame.notice:CreateFontString(nil, "OVERLAY")
+	UI.SetFont(frame.noticeText, 11.5, { color = C.active })
+	frame.noticeText:SetPoint("TOPLEFT", 10, -8)
+	frame.noticeText:SetPoint("RIGHT", frame.notice, "RIGHT", -8, 0)
+	frame.noticeText:SetJustifyH("LEFT"); frame.noticeText:SetWordWrap(true)
+	frame.noticeA = UI.Button(frame.notice, "", 104, 20)
+	frame.noticeB = UI.Button(frame.notice, "", 78, 20)
+	frame.notice:Hide()
 
 	-- Banner de GRUPO: passo atual tem inimigo elite/chefe -> recomenda grupo/raide
 	-- e oferece "Procurar grupo" (gancho pro PartyLens; fallback: buscador nativo).
@@ -390,11 +406,78 @@ local function getRow(i)
 	row.dist = UI.Chip(row, { 0, 0, 0, 0.35 }, UI.COL.accent)
 	row.dist:SetPoint("TOPRIGHT", 0, -1)
 	row.dist:Hide()
+	-- clique direito numa linha de quest: pular, mostrar no diário, abandonar; clique num objetivo que o jogo não
+	-- confirma sozinho (fale com, clique, use) marca e desmarca à mão
+	row:EnableMouse(true)
+	row:SetScript("OnMouseUp", function(self, button) V:RowClick(self, button) end)
+	row:SetScript("OnEnter", function(self) V:RowEnter(self) end)
+	row:SetScript("OnLeave", function() GameTooltip:Hide() end)
 	rowPool[i] = row
 	return row
 end
 
-local function goalText(goal)
+local function rowQuest(row)
+	local QS = ns.QuestState
+	return row._goal and QS and QS.QuestOf(row._goal)
+end
+
+function V:RowClick(row, button)
+	local goal = row._goal
+	if not goal then return end
+	local L, QS, qid = ns.L, ns.QuestState, rowQuest(row)
+	if button == "RightButton" and qid and QS then
+		local items = { { L.Q_MENU_SKIP, function() QS:SkipQuest(qid) end } }
+		if ns.IsQuestInLog(qid) then
+			items[#items + 1] = { L.Q_MENU_LOG, function() QS.ShowInLog(qid) end }
+			items[#items + 1] = { L.Q_MENU_ABANDON, function() QS.Abandon(qid) end }
+		end
+		UI.Menu(row, items)
+	elseif button == "LeftButton" and goal._gkey and goal.verb ~= "note" and not ns:IsGoalTrackable(goal) then
+		local cg = ns.char.completedGoals
+		cg[goal._gkey] = not cg[goal._gkey] or nil
+		ns:CheckProgress()
+		V:Refresh()
+	end
+end
+
+function V:RowEnter(row)
+	local goal = row._goal
+	if not goal or goal.verb == "note" then return end
+	local L, qid = ns.L, rowQuest(row)
+	local hint = qid and L.Q_ROW_HINT or (not ns:IsGoalTrackable(goal) and L.Q_ROW_MANUAL)
+	if not hint then return end
+	GameTooltip:SetOwner(row, "ANCHOR_LEFT")
+	if qid then GameTooltip:SetText(ns.QuestState.Title(qid), 1, 1, 1) end
+	GameTooltip:AddLine(hint, 0.62, 0.66, 0.72, true)
+	GameTooltip:Show()
+end
+
+local goalText
+
+-- O texto inteiro da linha: o objetivo, a contagem e o tempo do diário (QuestState), as dicas. Devolve também se a
+-- quest tem tempo (a linha entra no ticker de 1 s).
+local function rowText(goal, done)
+	local C = UI.COL
+	local QS = ns.QuestState
+	local suffix, failed, timed = "", false, false
+	if QS and goal.verb ~= "note" then suffix, failed, timed = QS.GoalSuffix(goal, done) end
+	local txt = goalText(goal)
+	if done or failed then txt = "|cff5f6b73" .. txt:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "") .. "|r" end
+	txt = txt .. (suffix or "")
+	local tips = goal.tips
+	if failed then
+		txt = txt .. ("\n|cffff9a8a• %s|r"):format(ns.L.Q_FAILED_TIP)
+	end
+	if tips then
+		local th = ("%02x%02x%02x"):format(C.tip[1]*255, C.tip[2]*255, C.tip[3]*255)
+		for _, tip in ipairs(tips) do
+			txt = txt .. ("\n|cff%s• %s|r"):format(th, ns:LocalizeText(tip))
+		end
+	end
+	return txt, timed
+end
+
+function goalText(goal)
 	if goal.verb == "note" then
 		return ("|cff%s%s|r"):format("aab0bf", ns:LocalizeText(goal.text or ""))
 	end
@@ -485,6 +568,7 @@ function V:Refresh()
 	local guide = ns.currentGuide
 	for _, r in pairs(rowPool) do r:Hide() end
 	wipe(distRows)
+	wipe(timedRows)
 
 	if not guide then
 		V:ShowEmpty()
@@ -503,6 +587,44 @@ function V:Refresh()
 	local w = frame.content:GetWidth()
 	if w <= 0 then w = (ns.db.viewer.width or 340) - 40 end
 
+
+	-- Aviso de cima: quest abandonada que o guia ainda usa, ou o último pulo (Desfazer)
+	local notice = ns.QuestState and ns.QuestState:Notice()
+	if notice then
+		local L, QS = ns.L, ns.QuestState
+		local a, b = frame.noticeA, frame.noticeB
+		if notice.kind == "abandoned" then
+			frame.noticeText:SetText(L.Q_ABANDONED:format(notice.title))
+			a.text:SetText(L.Q_GO_BACK); b.text:SetText(L.Q_MENU_SKIP)
+			a:SetScript("OnClick", function()
+				if notice.back then ns:GoToStep(notice.back) else ns:Print(L.Q_NO_BACK) end
+				ns.char.abandoned[notice.q] = nil
+				V:Refresh()
+			end)
+			b:SetScript("OnClick", function() QS:SkipQuest(notice.q) end)
+			a:Show(); b:Show()
+		else
+			local t = notice.extra > 0 and L.Q_SKIPPED_N:format(notice.title, notice.extra)
+				or L.Q_SKIPPED:format(notice.title)
+			frame.noticeText:SetText(t)
+			a.text:SetText(L.Q_UNDO)
+			a:SetScript("OnClick", function() QS:Undo() end)
+			a:Show(); b:Hide()
+		end
+		frame.notice:ClearAllPoints()
+		frame.notice:SetPoint("TOPLEFT", frame.content, "TOPLEFT", 0, -y)
+		frame.notice:SetPoint("RIGHT", frame.content, "RIGHT", -4, 0)
+		local nh = frame.noticeText:GetStringHeight() + 16
+		a:ClearAllPoints(); b:ClearAllPoints()
+		a:SetPoint("TOPLEFT", frame.notice, "TOPLEFT", 10, -nh)
+		b:SetPoint("LEFT", a, "RIGHT", 6, 0)
+		nh = nh + 28
+		frame.notice:SetHeight(nh)
+		frame.notice:Show()
+		y = y + nh + 8
+	else
+		frame.notice:Hide()
+	end
 
 	-- Banner de GRUPO: o passo atual tem um objetivo elite/chefe ainda não feito?
 	local needRaid, needGroup = false, false
@@ -565,16 +687,11 @@ function V:Refresh()
 					end
 				end
 
-				-- texto + tips
-				local txt = goalText(goal)
-				if done then txt = "|cff5f6b73" .. txt:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "") .. "|r" end
-				if goal.tips then
-					local th = ("%02x%02x%02x"):format(C.tip[1]*255, C.tip[2]*255, C.tip[3]*255)
-					for _, tip in ipairs(goal.tips) do
-						txt = txt .. ("\n|cff%s• %s|r"):format(th, ns:LocalizeText(tip))
-					end
-				end
+				-- texto + contagem/tempo + tips
+				local txt, timed = rowText(goal, done)
 				row.text:SetText(txt)
+				row._goal, row._done = goal, done
+				if timed then timedRows[#timedRows + 1] = row end
 
 				-- chip de distância (alvo do goal)
 				row.dist:Hide()
@@ -622,6 +739,10 @@ function V:Refresh()
 			for _, g in ipairs(s.goals) do
 				if g.verb ~= "note" and ns:IsGoalActive(g) then
 					summary = verbLabel(g.verb) .. " " .. displayName(g)
+					local QS = ns.QuestState
+					if QS and g.verb ~= "accept" and not ns:IsGoalComplete(g) then
+						summary = summary .. (QS.GoalSuffix(g, false) or "")
+					end
 					break
 				end
 			end
@@ -655,6 +776,14 @@ function V:UpdateDistances()
 	end
 end
 
+-- Só as linhas de quest com tempo, a cada segundo (QuestState): o texto muda, a altura não.
+function V:UpdateTimers()
+	if not (frame and frame:IsShown()) or #timedRows == 0 then return end
+	for _, row in ipairs(timedRows) do
+		if row:IsShown() and row._goal then row.text:SetText((rowText(row._goal, row._done))) end
+	end
+end
+
 --------------------------------------------------------------------------------
 function V:ApplyCollapsed()
 	if not frame then return end
@@ -685,13 +814,19 @@ function V:ApplyDisplay()
 end
 
 function V:GetFrame() return frame end
-function V:Show() build(); ns.db.viewer.hidden = false; frame:Show(); V:ApplyDisplay(); V:ApplyCollapsed(); ns:RefreshHUDs() end
+function V:Show()
+	build()
+	-- pedir a janela dentro da masmorra (/ls, atalho, minimapa) a traz de volta (Instance.lua)
+	if ns.Instance then ns.Instance:ShownByPlayer() end
+	ns.db.viewer.hidden = false
+	frame:Show(); V:ApplyDisplay(); V:ApplyCollapsed(); ns:RefreshHUDs()
+end
 function V:Hide() if frame then frame:Hide() end; ns.db.viewer.hidden = true; ns:RefreshHUDs() end
 function V:Toggle() build(); if frame:IsShown() then V:Hide() else V:Show() end end
 
 ns:On("_GUIDE_LOADED", function()
 	build()
-	if not ns.db.viewer.hidden then V:Show() end
+	if not ns.db.viewer.hidden and not ns.instanceHidden then V:Show() end
 end)
 
 -- mudou de zona: atualiza o banner de viagem (ex.: chegou no hub de transporte)

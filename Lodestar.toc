@@ -49,6 +49,7 @@ Parser.lua
 # Gerado (tools/gen_forever.py): o que não existe no Forever.
 ForeverData.lua
 Guide.lua
+QuestState.lua
 Squad.lua
 Buddy.lua
 Gather.lua
@@ -68,6 +69,8 @@ RouteGeom.lua
 StepTracker.lua
 Waypoint.lua
 Viewer.lua
+Instance.lua
+QuestLogTidy.lua
 QuestItem.lua
 Toast.lua
 WorldMapPin.lua
@@ -82,6 +85,7 @@ TargetMarker.lua
 Milestones.lua
 Vendor.lua
 GearAdvisor.lua
+GearTips.lua
 RunTracker.lua
 RaceMilestones.lua
 Race.lua
@@ -99,6 +103,11 @@ Settings.lua
 Share.lua
 Intro.lua
 Recorder.lua
+Report.lua
+PartyTell.lua
+TomTomShim.lua
+# Atalhos de teclado (os nomes; as teclas estão em Bindings.xml, que o cliente lê sozinho).
+Bindings.lua
 # Coletor do cliente do Forever (dado que nenhum banco público tem).
 ForeverScan.lua
 

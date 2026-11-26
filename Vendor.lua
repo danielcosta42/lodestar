@@ -65,6 +65,7 @@ local function autoSell()
 end
 
 ns:On("MERCHANT_SHOW", function()
+	if IsShiftKeyDown and IsShiftKeyDown() then return end   -- Shift: nada sozinho desta vez
 	autoRepair()
 	autoSell()
 end)

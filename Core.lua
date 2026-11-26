@@ -80,8 +80,10 @@ end)
 -- única para TODOS os elementos (seta, XP, talentos, item, trilha, marcadores).
 -- Fechar o guia (X) -> UI limpa; reabrir (minimapa/ /ls) restaura tudo.
 --------------------------------------------------------------------------------
+-- Dentro de masmorra/raide/campo de batalha a UI do guia sai sozinha (Instance.lua, ns.instanceHidden).
 function ns:UIShown()
-	return ns.currentGuide ~= nil and not (ns.db and ns.db.viewer and ns.db.viewer.hidden)
+	return ns.currentGuide ~= nil and not ns.instanceHidden
+		and not (ns.db and ns.db.viewer and ns.db.viewer.hidden)
 end
 
 -- Re-aplica a visibilidade de todos os HUDs de imediato (ao fechar/abrir).
@@ -140,6 +142,13 @@ local DB_DEFAULTS = {
 	dangerWarn = true,    -- mapa de perigo: avisa ao entrar onde muitos morreram (specs/perigo)
 	dangerShare = false,  -- OPT-IN: mapa de perigo, manda as próprias mortes (mapa e célula) pela família
 	compass = { enabled = true, scale = 1, point = "TOP", x = 0, y = -14, locked = true },
+	-- specs/revamp-polestar (issue #89)
+	hideInInstance = true,-- a UI do guia sai em masmorra/raide/campo de batalha/arena e volta ao sair
+	timerAlerts = true,   -- quest com tempo: aviso aos 5 min e a 1 min
+	gearTips = true,      -- melhoria no tooltip do item e seta na escolha de recompensa
+	autoFlight = false,   -- OPT-IN: no mestre de voo, voa para o destino da rota (Shift escolhe à mão)
+	partyTell = false,    -- OPT-IN: "[Quest] pronta para entregar" no chat do grupo
+	tomtomShim = false,   -- OPT-IN: sem o TomTom, /way e TomTom:AddWaypoint apontam a seta do Lodestar
 }
 local CHAR_DEFAULTS = {
 	currentGuide = nil,        -- chave do guia ativo (aba em foco)
@@ -200,6 +209,8 @@ ns.COMMAND_UI = {
 	coords = "Config. Aparência",
 	debug = "Config. Avançado", tdebug = "Config. Avançado",
 	calibrate = "Config. Avançado",
+	diario = "guia: ⋯", tidy = "guia: ⋯", questlog = "guia: ⋯",
+	report = "guia: ⋯", bug = "guia: ⋯",
 }
 
 SLASH_LODESTAR1 = "/lodestar"
@@ -294,6 +305,10 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Recorder then ns.Recorder:Toggle() end
 	elseif cmd == "intro" then
 		if ns.Intro then ns.Intro:Show() end
+	elseif cmd == "diario" or cmd == "tidy" or cmd == "questlog" then
+		if ns.QuestLogTidy then ns.QuestLogTidy:Toggle() end
+	elseif cmd == "report" or cmd == "bug" then
+		if ns.Report then ns.Report:Show() end
 	elseif cmd == "tdebug" then
 		if ns.Trail and ns.Trail.Debug then ns.Trail.Debug() end
 	elseif cmd == "train" then
