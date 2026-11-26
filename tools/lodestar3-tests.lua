@@ -304,6 +304,10 @@ check(#qsteps == 5 and qsteps[1].goals[1].verb == "ding" and qsteps[2].only == "
 	and qsteps[3].goals[1].verb == "accept" and qsteps[3].goals[1].id == 123 and qsteps[4].goals[1].verb == "note"
 	and qsteps[4].goals[1].goto_.zone == "Undercity" and qsteps[5].goals[1].verb == "goto_",
 	"guia de missão de colecionável: nível, facção, aceite com id, emote como nota com ponto, ir até")
+local esteps = PA:ParseGuide(CO.QuestBody({ name = "Slime", steps = {
+	{ act = "emote", target = "Sewer Slime", note = "/dance with it", zone = "Undercity", x = 1, y = 2 } } }))
+check(esteps[1].goals[1].verb == "note" and esteps[1].goals[1].tips and esteps[1].goals[1].tips[1] == "/dance with it",
+	"emote: o segredo (a nota) vira dica quando o alvo é o texto da linha")
 local psteps = PA:ParseGuide(CO.PetsBody({ { id = 5, name = "Ol' Sooty", family = "Bear", lvl = 20, zone = "Loch Modan",
 	pts = { { 40, 40 } } } }))
 check(#psteps == 1 and psteps[1].only == "HUNTER" and psteps[1].goals[1].complete == "collected(pets:5)"

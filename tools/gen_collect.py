@@ -98,6 +98,8 @@ def books_lua(b):
     lines.append("\t\t},")
     lines.append("\t\trewards = {")
     for m in b["meta"].get("milestones", []):
+        if not m.get("books"):
+            continue                       # contagem em disputa nas fontes: sem número, não vira meta
         lines.append("\t\t\t" + fields({"n": m["books"], "quest": m.get("quest_id"),
                                         "text": short(", ".join(m.get("rewards") or []))}) + ",")
     lines.append("\t\t},")
@@ -129,9 +131,23 @@ def quests_lua(q):
         qname = {x.get("quest_id"): x.get("name") for x in (c.get("quests") or []) if x.get("quest_id")}
         for st in steps:
             act = st.get("action")
-            ident = st.get("quest_id") if act in ("accept", "turnin") else (st.get("npc_id") or st.get("object_id"))
+            # o id que o verbo usa: quest (aceitar, entregar), item (coletar, usar, comprar), NPC (falar, matar)
+            if act in ("accept", "turnin"):
+                ident = st.get("quest_id")
+            elif act in ("collect", "use", "buy"):
+                ident = st.get("item_id")
+            elif act in ("talk", "kill"):
+                ident = st.get("npc_id")
+            else:
+                ident = None
             # aceitar/entregar: o alvo é a quest (a janela diz "Entregue <quest>"); o objeto vai na nota
             target = st.get("target")
+            note = st.get("note")
+            # "Farmer Saldean (buy Special Chicken Feed)": o nome fica no alvo (o botão de alvo mira por ele)
+            m = re.match(r"^(.*?)\s*\((.+)\)\s*$", str(target or ""))
+            if m and act in ("talk", "kill"):
+                target, extra = m.group(1), m.group(2)
+                note = extra + (". " + note if note else "")
             if act in ("accept", "turnin") and qname.get(ident):
                 target = qname[ident]
             # sem o que o jogo confirma, vira nota (o passo anda à mão): aceite/entrega sem id, "ir até" sem ponto
@@ -141,7 +157,7 @@ def quests_lua(q):
                 act = "note"
             lines.append("\t\t\t" + fields({
                 "act": act, "target": target, "id": ident, "zone": st.get("zone"),
-                "x": st.get("x"), "y": st.get("y"), "faction": st.get("faction"), "note": short(st.get("note")),
+                "x": st.get("x"), "y": st.get("y"), "faction": st.get("faction"), "note": short(note),
             }) + ",")
         lines.append("\t\t} },")
     lines.append("\t},")

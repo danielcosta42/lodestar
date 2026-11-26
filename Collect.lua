@@ -78,8 +78,9 @@ function C.QuestBody(q)
 		else                                   -- emote e o que não tem verbo: nota com o ponto
 			line = ("  note %s%s"):format(target, at(s))
 		end
+		local noteIsText = not verb and not s.target
 		out[#out + 1] = "step" .. (s.faction and ("\n  only " .. s.faction) or "") .. "\n" .. line
-			.. (s.note and verb and ("\n  |tip " .. clean(s.note)) or "")
+			.. (s.note and not noteIsText and ("\n  |tip " .. clean(s.note)) or "")
 	end
 	return table.concat(out, "\n")
 end
@@ -174,25 +175,27 @@ local function store()
 end
 
 local function hasItem(id) return id and ns.ItemCount and ns.ItemCount(id) > 0 end
-local function hasToy(id) return id and PlayerHasToy and PlayerHasToy(id) end
 
--- o diário do jogo tem o colecionável? (brinquedo, mascote pelo item, montaria pelo item; senão, a bolsa)
+-- o diário do jogo tem o colecionável? true / false, ou nil quando o jogo não diz (sem a API, ou o item ainda
+-- não carregou): aí quem decide é a última quest da corrente
 function C.Owned(kind, item)
-	if kind == "toy" then return hasToy(item) or hasItem(item) end
-	if kind == "mount" and C_MountJournal and C_MountJournal.GetMountFromItem then
+	if hasItem(item) then return true end
+	if kind == "toy" then
+		if PlayerHasToy then return PlayerHasToy(item) and true or false end
+	elseif kind == "mount" and C_MountJournal and C_MountJournal.GetMountFromItem and C_MountJournal.GetMountInfoByID then
 		local ok, id = pcall(C_MountJournal.GetMountFromItem, item)
-		if ok and id and C_MountJournal.GetMountInfoByID then
+		if ok and id then
 			local ok2, isCollected = pcall(function() return select(11, C_MountJournal.GetMountInfoByID(id)) end)
-			if ok2 and isCollected then return true end
+			if ok2 then return isCollected and true or false end
 		end
 	elseif kind == "pet" and C_PetJournal and C_PetJournal.GetPetInfoByItemID and C_PetJournal.GetNumCollectedInfo then
 		local ok, species = pcall(function() return select(13, C_PetJournal.GetPetInfoByItemID(item)) end)
 		if ok and species then
 			local ok2, n = pcall(C_PetJournal.GetNumCollectedInfo, species)
-			if ok2 and tonumber(n) and n > 0 then return true end
+			if ok2 and tonumber(n) then return n > 0 end
 		end
 	end
-	return hasItem(item)
+	return nil
 end
 
 -- já foi? (o que o jogo sabe vale primeiro; o marcado à mão vale sempre)
@@ -204,7 +207,10 @@ function C:IsDone(kind, e)
 	elseif kind == "quests" then
 		-- com o item conhecido, vale o diário (brinquedo, mascote, montaria): a última quest da corrente pode
 		-- vir antes do colecionável (a insígnia do Alcaz junta seis peças depois dela); "item" comum é a bolsa
-		if e.item and e.kind ~= "item" then return C.Owned(e.kind, e.item) and true or false end
+		if e.item and e.kind ~= "item" then
+			local own = C.Owned(e.kind, e.item)
+			if own ~= nil then return own end
+		end
 		if e.item and hasItem(e.item) then return true end
 		local last = e.doneQuest
 		return last and ns.IsQuestDone(last) or false
@@ -377,18 +383,19 @@ end
 
 -- minimapa (perto) e o aviso
 local miniPool, miniActive, overlay = {}, {}, nil
-local function miniRelease() for _, p in ipairs(miniActive) do p:Hide(); miniPool[#miniPool + 1] = p end; wipe(miniActive) end
+local function miniRelease()
+	for k, p in pairs(miniActive) do p:Hide(); miniPool[#miniPool + 1] = p; miniActive[k] = nil end
+end
 local alerted = {}
 local function distFn(zone, x, y) return ns.Waypoint and ns.Waypoint:DistanceTo({ goto_ = { zone = zone, x = x, y = y } }) end
 
 local function miniUpdate()
-	miniRelease()
 	local G, T = ns.RouteGeom, ns.Travel
-	if not (Minimap and G and T and T.World) or (IsInInstance and IsInInstance()) then return end
+	if not (Minimap and G and T and T.World) or (IsInInstance and IsInInstance()) then return miniRelease() end
 	local me = T.PlayerWorld()
-	if not me then return end
+	if not me then return miniRelease() end
 	local list = C:MapPoints()
-	if #list == 0 then return end
+	if #list == 0 then return miniRelease() end
 	-- só o continente onde o jogador está (a distância de cada ponto custa conversão de mapa, a cada segundo)
 	local TP = ns.TravelPlanner
 	local here = TP and TP.PlayerContinent and TP:PlayerContinent()
@@ -398,7 +405,7 @@ local function miniUpdate()
 		if not (here and cont) or cont == here then flat[#flat + 1] = it.e; it.e._kind = it.kind end
 	end
 	local near = C.Near(flat, distFn, C.NEAR, nil, 12)
-	if #near == 0 then return end
+	if #near == 0 then return miniRelease() end
 	if not overlay then
 		overlay = CreateFrame("Frame", "LodestarCollectMinimap", Minimap)
 		overlay:SetAllPoints(Minimap); overlay:SetFrameStrata("HIGH")
@@ -410,16 +417,22 @@ local function miniUpdate()
 	local ydPerPx = range / (Minimap:GetWidth() / 2)
 	local facing = GetPlayerFacing and GetPlayerFacing() or 0
 	local rotate = GetCVar and GetCVar("rotateMinimap") == "1"
+	local seen = {}
 	for _, n in ipairs(near) do
 		local wp = T.World(n.e.zone, n.x, n.y)
 		if wp and wp.c == me.c then
 			local rx, ry = G.ToMinimap(me.x, me.y, wp.x, wp.y, facing, rotate, ydPerPx, radius)
-			local p = table.remove(miniPool) or pinFrame(overlay)
-			p:SetParent(overlay); p:SetSize(14, 14)
-			style(p, { kind = n.e._kind, e = n.e }, n.x, n.y)
+			local key = ("%s:%s:%s:%s"):format(n.e._kind, tostring(n.e.id), n.x, n.y)
+			local p = miniActive[key]
+			if not p then
+				p = table.remove(miniPool) or pinFrame(overlay)
+				p:SetParent(overlay); p:SetSize(14, 14)
+				style(p, { kind = n.e._kind, e = n.e }, n.x, n.y)
+				miniActive[key] = p
+			end
 			p:ClearAllPoints(); p:SetPoint("CENTER", overlay, "CENTER", rx, ry)
 			p:Show()
-			miniActive[#miniActive + 1] = p
+			seen[key] = true
 		end
 		if n.dist <= C.ALERT and not alerted[n.e] and ns.Toast and ns.db.collectPins ~= false then
 			alerted[n.e] = true
@@ -428,6 +441,9 @@ local function miniUpdate()
 				text = ("%s · %s"):format(e.name or "?", ns.L.V3_YARDS:format(n.dist)), color = UI.COL.tip, hold = 8,
 				glyph = GLYPH[kind], onClick = function() C:GoTo(e, x, y) end })
 		end
+	end
+	for k, p in pairs(miniActive) do
+		if not seen[k] then p:Hide(); miniPool[#miniPool + 1] = p; miniActive[k] = nil end
 	end
 end
 
@@ -523,7 +539,7 @@ PAGE.refresh = function(page, H)
 	if tab == "books" then
 		local d = data().books or {}
 		for _, r in ipairs(d.rewards or {}) do
-			if done < r.n then sub = L.COL_NEXT_REWARD:format(r.n, r.text or ""); break end
+			if r.n and done < r.n then sub = L.COL_NEXT_REWARD:format(r.n, r.text or ""); break end
 		end
 	end
 	page.heroSub:SetText(sub)
