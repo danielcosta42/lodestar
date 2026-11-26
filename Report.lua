@@ -57,6 +57,10 @@ function R.ReportText(ctx, what)
 	if ctx.addons and #ctx.addons > 0 then
 		add("Other addons: " .. table.concat(ctx.addons, ", "))
 	end
+	if ctx.passages and #ctx.passages > 0 then
+		add("Recorded passages (/ls passagem):")
+		for _, p in ipairs(ctx.passages) do add("  " .. p) end
+	end
 	add("")
 	add("Issues: " .. R.ISSUES)
 	return table.concat(out, "\n")
@@ -119,6 +123,10 @@ local function context()
 			local name = info(i)
 			if name and name ~= ADDON and loaded(i) then ctx.addons[#ctx.addons + 1] = name end
 		end
+	end
+	ctx.passages = {}
+	if ns.Passages then
+		for _, p in ipairs(ns.db.passages or {}) do ctx.passages[#ctx.passages + 1] = ns.Passages.Encode(p) end
 	end
 	return ctx
 end

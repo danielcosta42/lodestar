@@ -758,9 +758,48 @@ local cam = TRN.Path(parede, A, B, 20000)
 check(cam and #cam >= 2, "há caminho pela brecha da parede")
 check(cam and comprimento(cam) > 2.5 * math.sqrt((A.x - B.x) ^ 2 + (A.y - B.y) ^ 2), "o caminho contorna a parede (bem mais longo que a reta)")
 check(cam and math.abs(cam[#cam].x - B.x) < 0.01 and math.abs(cam[1].x - A.x) < 0.01, "começa no jogador e termina no destino")
--- parede inteira entre duas regiões grandes (não ilhas): sem caminho, volta à reta
+-- parede inteira entre duas regiões grandes (não ilhas): a segunda busca cruza a parede onde ela é mais fina
+-- (issue #99: a rampa estreita que a grade não tem), uma célula só, em vez de a reta cortar tudo
 local fechada = quadranteSint(function(r, c) return c == 48 end, nil, 3)
-check(TRN.Path(fechada, mundo(5, 40), mundo(5, 56), 20000) == nil, "parede inteira: sem caminho (volta a reta)")
+local cruza = TRN.Path(fechada, mundo(5, 40), mundo(5, 56), 20000)
+check(cruza and #cruza >= 2 and comprimento(cruza) < 1.2 * 16 * 16.7, "parede inteira: cruza no ponto mais fino, sem volta")
+-- parede inteira com uma porta estreita lá embaixo: a porta, não a parede (passo travado custa caro)
+local porta = quadranteSint(function(r, c) return c == 48 and r ~= 30 end, nil, 3)
+local pela = TRN.Path(porta, mundo(5, 40), mundo(5, 56), 40000)
+local desceu = false
+for _, q in ipairs(pela or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 25 then desceu = true end end
+check(pela and desceu, "parede com porta: o caminho vai pela porta")
+-- dados reais: a Revantusk Village (The Hinterlands) fica numa região que a grade não liga ao platô; o caminho
+-- até Aerie Peak segue o terreno (antes: nil e a reta pelas montanhas)
+local EK = load("Terrain0.lua", {}).terrain
+local revan, aerie = { c = 0, x = -635.3, y = -4720.5 }, { c = 0, x = 283.7, y = -2002.8 }
+local ra, ar = TRN.Path(EK, revan, aerie, 150000), TRN.Path(EK, aerie, revan, 150000)
+check(ra and ar and #ra > 4 and #ar > 4, "Revantusk <-> Aerie Peak: caminho pelo terreno nos dois sentidos")
+check(ra and ra.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
+-- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
+local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
+local trilha = {}                                  -- andada: um ponto por célula (como a gravação, a cada 3 jd)
+for col = 42, 53 do local m = mundo(60, col); trilha[#trilha + 1] = m.x; trilha[#trilha + 1] = m.y end
+comPassagem.passages = { { c = 0, pts = trilha } }
+local viaRampa = TRN.Path(comPassagem, mundo(5, 30), mundo(5, 70), 40000)
+local passouNaLinha = false
+for _, q in ipairs(viaRampa or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 55 then passouNaLinha = true end end
+check(viaRampa and not viaRampa.solto and passouNaLinha, "passagem gravada: o caminho atravessa por ela (busca normal)")
+-- salto (dois pontos longe: voo, teleporte) não liga nada
+local salto = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
+local sa, sb = mundo(60, 42), mundo(60, 53)
+salto.passages = { { c = 0, pts = { sa.x, sa.y, sb.x, sb.y } } }
+check(TRN.Path(salto, mundo(5, 30), mundo(5, 70), 40000) == nil, "salto gravado (voo, teleporte) não vira caminho")
+-- queda: só desce (de B para A não volta pela passagem)
+local queda = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
+queda.passages = { { c = 0, pts = trilha, f = {} } }
+for seg = 1, #trilha / 2 - 1 do queda.passages[1].f[seg] = true end
+local desce = TRN.Path(queda, mundo(5, 30), mundo(5, 70), 40000)
+local sobe = TRN.Path(queda, mundo(5, 70), mundo(5, 30), 40000)
+check(desce and not desce.solto and (sobe == nil or sobe.solto), "queda gravada: só no sentido em que caiu")
+-- barreira longa (parede de 8 células de espessura): não é passagem curta, fica sem caminho (a reta)
+local grossa = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
+check(TRN.Path(grossa, mundo(5, 30), mundo(5, 70), 40000) == nil, "barreira grossa: a segunda busca não inventa caminho")
 -- lago no meio: contorna se a volta for curta
 local lago = quadranteSint(function() return false end, function(r, c) return c >= 9 and c <= 11 and r >= 3 and r <= 7 end)
 cam = TRN.Path(lago, A, B, 20000)

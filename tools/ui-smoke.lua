@@ -354,6 +354,61 @@ step("Secrets", function()
 	ns.char.manualPick = nil
 	ns:LoadGuide(back, true)
 end)
+-- aceite e entrega automáticos valem para as quests do guia mais adiante, não só do passo (issue #100)
+step("AutoAcceptAhead", function()
+	local step = ns:GetStep()
+	local here = {}
+	for _, g in ipairs(step.goals) do if g.id then here[g.id] = true end end
+	local qid
+	for id in pairs(ns.GuideQuestGoals("accept")) do if not here[id] then qid = id; break end end
+	assert(qid, "nenhuma quest mais adiante no guia")
+	local saved = { _G.GetQuestID, _G.AcceptQuest, _G.IsShiftKeyDown }
+	local accepted
+	_G.GetQuestID, _G.AcceptQuest, _G.IsShiftKeyDown = function() return qid end, function() accepted = qid end,
+		function() return false end
+	ns.db.autoAccept = true
+	ns.fire("QUEST_DETAIL")
+	assert(accepted == qid, "não aceitou a quest que o guia pega mais adiante")
+	accepted = nil
+	_G.GetQuestID = function() return 999999 end
+	ns.fire("QUEST_DETAIL")
+	assert(accepted == nil, "aceitou quest fora do guia")
+	_G.GetQuestID, _G.AcceptQuest, _G.IsShiftKeyDown = saved[1], saved[2], saved[3]
+end)
+-- diário de mascotes vazio (a interface de Coleções do jogo ainda não carregou): pede a carga e mostra os
+-- companheiros que o personagem tem, em vez de "0 de 0" (issue #100)
+step("PetsEmptyJournal", function()
+	local PJ = _G.C_PetJournal
+	local savedPJ, savedN, savedI, savedAddOns = PJ, _G.GetNumCompanions, _G.GetCompanionInfo, _G.C_AddOns
+	local loaded
+	_G.C_PetJournal = { GetNumPets = function() return 0, 0 end, GetPetInfoByIndex = function() end }
+	_G.C_AddOns = { LoadAddOn = function(n) loaded = n end }
+	_G.GetNumCompanions = function(kind) return kind == "CRITTER" and 2 or 0 end
+	_G.GetCompanionInfo = function(_, i) return 100 + i, i == 1 and "Cat" or "Owl", 200 + i, 1 end
+	local pets = ns.Collections:Pets()
+	assert(#pets == 2 and pets[1].name == "Cat" and pets[1].collected, "diário vazio: sem os companheiros")
+	assert(loaded == "Blizzard_Collections", "diário vazio: não pediu a carga das Coleções")
+	_G.C_PetJournal, _G.GetNumCompanions, _G.GetCompanionInfo, _G.C_AddOns = savedPJ, savedN, savedI, savedAddOns
+end)
+-- gravar passagem (issue #99): anda, grava, a busca recebe, o relatório leva
+step("Passages", function()
+	local T, pw = ns.Travel, ns.Travel.PlayerWorld
+	local pos = { c = 0, x = -635, y = -4720 }
+	T.PlayerWorld = function() return { c = pos.c, x = pos.x, y = pos.y } end
+	ns.db.passages = {}
+	ns.Passages:Command("")
+	assert(ns.Passages:Recording(), "não começou a gravar")
+	local upd = ns.eventFrame and ns.eventFrame:GetScript("OnUpdate")
+	for _ = 1, 10 do pos.x = pos.x + 5; if upd then upd(ns.eventFrame, 0.25) end end
+	ns.Passages:Command("")
+	T.PlayerWorld = pw
+	assert(#ns.db.passages == 1, "passagem não foi gravada")
+	assert(ns.terrain.passages and #ns.terrain.passages >= 1, "a busca não recebeu a passagem")
+	local txt = ns.Report.ReportText(ns.Report.Context(), "x")
+	assert(txt:find("Recorded passages"), "o relatório não leva as passagens")
+	ns.Passages:Command("limpar")
+	assert(#ns.db.passages == 0, "limpar não apagou")
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

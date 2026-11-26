@@ -103,10 +103,37 @@ end
 
 -- o diário de mascotes filtra o que mostra: abre tudo, lê, devolve como o jogador deixou
 local reading = false
+-- O diário de mascotes deste cliente só se enche depois que a interface de Coleções do jogo carrega (ela é sob
+-- demanda; issue #100): sem isso a página dizia "0 de 0". Carrega uma vez; o PET_JOURNAL_LIST_UPDATE refaz.
+local journalAsked, waitingJournal = false, false
+local function askJournal()
+	if journalAsked or (InCombatLockdown and InCombatLockdown()) then return end   -- em combate: na próxima
+	journalAsked = true
+	waitingJournal = true                        -- espera a lista desta carga (e só desta: sem laço)
+	local load = (C_AddOns and C_AddOns.LoadAddOn) or LoadAddOn
+	if load then pcall(load, "Blizzard_Collections") end
+end
+
+-- Sem o diário (ou vazio): os mascotes que o personagem tem, pela lista de companheiros de sempre.
+local function companionPets()
+	local out = {}
+	if not (GetNumCompanions and GetCompanionInfo) then return out end
+	for i = 1, GetNumCompanions("CRITTER") or 0 do
+		local creatureID, name, spellID, icon = GetCompanionInfo("CRITTER", i)
+		if name then
+			out[#out + 1] = { id = creatureID or spellID or i, name = name, icon = icon, sourceType = 0,
+				collected = true, source = "" }
+		end
+	end
+	table.sort(out, function(a, b) return a.name < b.name end)
+	return out
+end
+CL.CompanionPets = companionPets
+
 function CL:Pets()
 	local PJ = C_PetJournal
 	local out = {}
-	if not (PJ and PJ.GetNumPets and PJ.GetPetInfoByIndex) then return out end
+	if not (PJ and PJ.GetNumPets and PJ.GetPetInfoByIndex) then return companionPets() end
 	-- cada filtro como o jogador deixou (coletados, origens, tipos), para devolver depois; a busca fica como está
 	local saved, sources, types = {}, {}, {}
 	local F = { LE_PET_JOURNAL_FILTER_COLLECTED or 1, LE_PET_JOURNAL_FILTER_NOT_COLLECTED or 2 }
@@ -141,6 +168,15 @@ function CL:Pets()
 	for i, v in pairs(types) do setType(i, v) end
 	if search ~= "" and PJ.SetSearchFilter then PJ.SetSearchFilter(search) end
 	reading = false
+	if #out == 0 then
+		-- pede a carga (uma vez; ela marca a espera antes, para o evento não se perder); diário que segue vazio
+		-- depois da carga, ou leitura em combate, não fica redesenhando
+		askJournal()
+		local fb = companionPets()
+		fb.fallback = true                           -- reserva: não fica em cache como se fosse o diário
+		return fb
+	end
+	waitingJournal = false
 	table.sort(out, function(a, b) return a.name < b.name end)
 	return out
 end
@@ -172,9 +208,10 @@ end
 local cacheMounts, cachePets
 function CL:Summary()
 	cacheMounts = cacheMounts or CL:Mounts()
-	cachePets = cachePets or CL:Pets()
+	local pets = cachePets or CL:Pets()
+	if not pets.fallback then cachePets = pets end
 	local mh, mt = CL.Count(cacheMounts)
-	local ph, pt = CL.Count(cachePets)
+	local ph, pt = CL.Count(pets)
 	if mt == 0 then cacheMounts = nil end               -- leitura vazia (diário ainda não carregou): de novo depois
 	if pt == 0 then cachePets = nil end
 	if mt + pt == 0 then return nil end
@@ -182,7 +219,16 @@ function CL:Summary()
 		progress = (mh + ph) / math.max(1, mt + pt), link = ns.L.V3_SEE_COLLECT }
 end
 -- a lista do diário mudou (carregou depois do login, por exemplo) — menos quando fomos nós, lendo
-ns:On("PET_JOURNAL_LIST_UPDATE", function() if not reading then cachePets = nil end end)
+ns:On("PET_JOURNAL_LIST_UPDATE", function()
+	if reading then return end
+	cachePets = nil
+	-- a lista chegou com a página aberta esperando por ela: redesenha uma vez (só esperando: a própria leitura mexe
+	-- nos filtros e o evento pode voltar depois, o que viraria um laço)
+	if waitingJournal and ns.Hub and ns.Hub:IsShown() and ns.Hub:Current() == "collections" then
+		waitingJournal = false
+		C_Timer.After(0.5, function() if ns.Hub:IsShown() then ns.Hub:Refresh() end end)
+	end
+end)
 for _, ev in ipairs({ "NEW_MOUNT_ADDED", "COMPANION_LEARNED", "NEW_PET_ADDED", "COMPANION_UNLEARNED" }) do
 	ns:On(ev, function() cacheMounts, cachePets = nil, nil end)
 end
@@ -239,10 +285,15 @@ PAGE.refresh = function(page, H)
 	local L = ns.L
 	-- lido uma vez e de novo só quando o diário muda (o eventos do jogo limpam o cache)
 	-- leitura vazia (o diário ainda não carregou) não fica em cache
-	if tab == "mounts" then cacheMounts = cacheMounts or CL:Mounts() else cachePets = cachePets or CL:Pets() end
+	local petsNow
+	if tab == "mounts" then cacheMounts = cacheMounts or CL:Mounts()
+	else
+		petsNow = cachePets or CL:Pets()
+		if not petsNow.fallback then cachePets = petsNow end   -- a reserva (companheiros) não fica em cache
+	end
 	if cacheMounts and #cacheMounts == 0 then cacheMounts = nil end
 	if cachePets and #cachePets == 0 then cachePets = nil end
-	local all = (tab == "mounts" and cacheMounts or cachePets) or {}
+	local all = (tab == "mounts" and cacheMounts or petsNow) or {}
 	local have, total = CL.Count(all)
 	page.subFS:SetText(L.V3_COL_PROGRESS:format(have, total))
 	page.bar:SetProgress(have / math.max(1, total))

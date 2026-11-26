@@ -40,6 +40,39 @@ function N.StepNPC(goals)
 	end
 end
 
+-- A quest já abre? req = { r = nível mínimo, a = { qualquer um destes feito }, g = { todos estes feitos } }
+-- (QuestLevels.lua, issue #100); sem dado, abre.
+function N.Opens(req, level, isDone)
+	if not req then return true end
+	if req.r and (level or 0) < req.r then return false end
+	for _, id in ipairs(req.g or {}) do
+		if type(id) == "table" then                  -- {a, b}: qualquer uma (a exclusiva conta como a pedida)
+			local any = false
+			for _, x in ipairs(id) do if isDone(x) then any = true; break end end
+			if not any then return false end
+		elseif not isDone(id) then
+			return false
+		end
+	end
+	if req.a and #req.a > 0 then
+		for _, id in ipairs(req.a) do if isDone(id) then return true end end
+		return false
+	end
+	return true
+end
+
+-- O guia passa por perto de `p` antes do passo `i`? points = { { step, x, y, c } } (mundo), raio em jardas. Se
+-- passa, a sugestão não evita volta nenhuma: o guia faz quando chegar lá.
+N.REVISIT = 60
+function N.Revisits(points, i, p, radius)
+	if not p then return false end
+	local r2 = (radius or N.REVISIT) ^ 2
+	for _, pt in ipairs(points or {}) do
+		if pt.step < i and pt.c == p.c and (pt.x - p.x) ^ 2 + (pt.y - p.y) ^ 2 <= r2 then return true end
+	end
+	return false
+end
+
 -- Assinatura do que mostrar (para só redesenhar a janela quando muda; a distância vai no chip, que já se atualiza).
 function N.Signature(list)
 	local parts = {}
@@ -57,8 +90,9 @@ local current, sig = {}, ""
 
 local function questOf(g) return ns.QuestState and ns.QuestState.QuestOf(g) end
 
--- Os candidatos dos passos à frente (o atual já está na janela). Quest para pegar só quando o guia não a segura: a
--- corrente o passo já segura ("only completed(X)", IsStepActive); o nível, nenhum "suba até o nível N" por fazer antes.
+-- Os candidatos dos passos à frente (o atual já está na janela). Quest para pegar só quando ela já abre: nenhum
+-- "suba até o nível N" por fazer antes, o nível mínimo e os pré-requisitos do banco (N.Opens). E nada que o guia vá
+-- fazer de passagem: se algum passo antes do da sugestão volta a este ponto, ele faz lá (N.Revisits).
 function N:Candidates()
 	local g = ns.currentGuide
 	if not (g and ns.Waypoint) then return {} end
@@ -66,6 +100,23 @@ function N:Candidates()
 	local cur = ns.char.currentStep or 1
 	local out, gated = {}, false
 	local function open(goal) return ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal) end
+	local T = ns.Travel
+	local function world(gt) return T and T.World and T.World(gt.zone, gt.x, gt.y) end
+	-- os pontos por onde o guia passa nos próximos passos (para saber se ele volta aqui)
+	local points = {}
+	for i = cur + 1, math.min(#steps, cur + N.AHEAD) do
+		if ns:IsStepActive(steps[i]) then
+			for _, goal in ipairs(steps[i].goals) do
+				local gt = goal.goto_
+				if gt and gt.zone and gt.x and open(goal) then           -- o feito o guia pula: não volta lá
+					local w = world(gt)
+					if w then points[#points + 1] = { step = i, x = w.x, y = w.y, c = w.c } end
+				end
+			end
+		end
+	end
+	local level = UnitLevel("player") or 1
+	local req = ns.questReq or {}
 	for i = cur, math.min(#steps, cur + N.AHEAD) do
 		local st = steps[i]
 		local active = ns:IsStepActive(st)
@@ -78,10 +129,12 @@ function N:Candidates()
 					if goal.verb == "turnin" then
 						if ns.IsQuestInLog(q) and QL.IsComplete and QL.IsComplete(q) then kind = "turnin" end
 					elseif goal.verb == "accept" then
-						if not gated and not ns.IsQuestInLog(q) and not ns.IsQuestDone(q) then kind = "accept" end
+						if not gated and not ns.IsQuestInLog(q) and not ns.IsQuestDone(q)
+							and N.Opens(req[q], level, ns.IsQuestDone) then kind = "accept" end
 					elseif goal.q and ns.IsQuestInLog(q) then
 						kind = "objective"
 					end
+					if kind and N.Revisits(points, i, world(goal.goto_)) then kind = nil end
 					if kind then
 						local d = ns.Waypoint:DistanceTo(goal)
 						if d then out[#out + 1] = { q = q, dist = d, kind = kind, goal = goal, step = i, npc = npc } end

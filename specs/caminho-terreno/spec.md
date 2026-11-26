@@ -27,7 +27,34 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
 ## Em jogo
 
 - `Terrain.lua`: decodifica só os quadrantes por onde a busca passa; A* com heurística octil e
-  limite de expansão (sem caminho: a reta de sempre).
+  limite de expansão.
+- Sem caminho entre duas regiões grandes, uma segunda busca roda (issue #99). É o caso da rampa estreita da
+  Revantusk Village ao platô de The Hinterlands, que a grade de 16,7 jd não tem. Essa busca aceita passo
+  travado e célula sem passagem, a 30× o custo, e termina na célula mais perto quando o destino não tem
+  passagem (mestre de voo no alto da torre). O caminho segue o terreno e cruza a barreira só onde ela é mais
+  fina. Só vale passagem curta: até 5 passos travados seguidos e 10 no total. Penhasco longo, lava, a árvore de
+  Teldrassil ou dez paredes não contam, e aí fica a reta.
+  - Se a primeira busca estourou o limite de expansões, a segunda roda com um quinto do limite. Assim o nil que
+    não tem jeito custa 20% a mais, não o dobro.
+  - O caminho dela vem marcado (`solto`). Quem chama não o refaz a cada desvio do jogador: só depois de 300 jd,
+    como na falha.
+  - A reta fica para fora da grade, para a busca grande demais e para a barreira longa.
+- **Passagens gravadas** (issue #99) cobrem a rampa, ponte, porta ou escada que a grade não tem.
+  - O jogador anda o trecho com `/ls passagem`, ou com o botão em Configurações > Ferramentas, e repete para parar.
+  - O Lodestar grava um ponto a cada 3 jd em coordenada de mundo e guarda em `ns.db.passages` o trecho de pelo
+    menos 10 jd.
+  - A busca liga, célula a célula, o caminho andado (`TR.Links`, também na detecção de ilha) e anda por ele como
+    por terreno.
+  - As do addon ficam em `PassagesData.lua`, com as que vierem dos relatórios.
+  - `/ls report` leva as gravadas em texto curto (`c|zona|x,y;...`).
+  - Gravar ou limpar refaz os caminhos da rota: larga a busca em curso, limpa as pernas a pé e redesenha.
+  - A gravação para em voo, morte, salto grande num tique (teleporte, pedra de lar), velocidade acima de 18 jd/s
+    (barco, zepelim) e quando troca de continente.
+  - O trecho gravado caindo por mais de ~1 s é de mão única (um pulo comum não conta). Trecho de mais de 2 células entre dois pontos não liga nada: é salto.
+  - O relatório não usa "|" (a caixa leria como código de textura ou link).
+- A segunda busca poda, durante a própria busca, o passo que estoura o limite de travados. O orçamento dela é um
+  terço do limite, ou um quinto se a primeira estourou. Nos 552 pares de mestres de voo, o pior caso foi de 2,4 s
+  para 0,5 s.
 - A perna a pé atual ganha `path` (pontos de mundo); o mapa e o minimapa desenham o caminho; a
   seta aponta o ponto do caminho ~25 jd à frente; a distância é a que falta pelo caminho.
 - Refaz o caminho ao trocar de perna ou se o jogador sair dele por mais de 40 jd.
@@ -50,4 +77,5 @@ custo do planejador.
 
 1. Num destino atrás de um morro, o pontilhado e a seta contornam o morro.
 2. Atravessar um lago raso a pé ainda é permitido; o mar não vira caminho se houver volta por terra.
-3. Sem caminho (cidade fechada), volta a reta, sem erro.
+3. Sem caminho na grade (cidade fechada, rampa estreita), o caminho cruza a barreira no ponto mais fino, sem
+   erro; a reta só fora da grade.

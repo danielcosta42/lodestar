@@ -327,10 +327,11 @@ local function ensureArrow()
 	plate:SetSize(240, 48)
 	arrow.plate = plate
 	arrow.dist = plate:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(arrow.dist, 16, { num = true, hud = true, color = C.amber, outline = "" })
+	-- contorno escuro e sombra: o texto solto lê sobre chão claro (pedra, neve, areia)
+	UI.SetFont(arrow.dist, 16, { num = true, hud = true, color = C.accentBright, outline = "OUTLINE" })
 	arrow.dist:SetPoint("TOP", 0, 0)
 	arrow.name = plate:CreateFontString(nil, "OVERLAY")
-	UI.SetFont(arrow.name, 12.5, { bold = true, hud = true, color = C.active })
+	UI.SetFont(arrow.name, 12.5, { bold = true, hud = true, color = C.active, outline = "OUTLINE" })
 	arrow.name:SetPoint("TOP", arrow.dist, "BOTTOM", 0, -3)
 	arrow.name:SetWidth(240)
 	arrow.name:SetJustifyH("CENTER"); arrow.name:SetWordWrap(true)
@@ -483,8 +484,8 @@ local function updateArrow(goal)
 	else
 		local near = dist <= 14                             -- modo local/preciso
 		tint(a, near and C.done or nil)
-		a.dist:SetTextColor(UI.unpackc(near and C.done or C.amber))
-		a.name:SetTextColor(UI.unpackc(C.muted))
+		a.dist:SetTextColor(UI.unpackc(near and C.done or C.accentBright))
+		a.name:SetTextColor(UI.unpackc(C.active))
 		a.name:SetText(("%s: %s"):format(verbWord(goal), ns:LocalizeText(goalName(goal))))
 	end
 end

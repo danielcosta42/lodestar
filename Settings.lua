@@ -273,6 +273,7 @@ local function fillTools(p)
 	buttonRow(p, L.SET_TOUR, L.SET_TOUR_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("intro") end)
 	buttonRow(p, L.SET_TIDY, L.SET_TIDY_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("diario") end)
 	buttonRow(p, L.SET_REPORT, L.SET_REPORT_D, L.SET_OPEN, function() SlashCmdList.LODESTAR("report") end)
+	buttonRow(p, L.SET_PASSAGE, L.SET_PASSAGE_D, L.SET_RUN, function() SlashCmdList.LODESTAR("passagem") end)
 end
 
 local function fillAdvanced(p)

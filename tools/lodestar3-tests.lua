@@ -191,6 +191,19 @@ check(#N.Pick({}, 100, 3) == 0 and #N.Pick({ { q = 1 } }, 100, 3) == 0, "sem dis
 check(N.StepNPC({ { verb = "accept", text = "Westfall Stew" }, { verb = "talk", text = "" }, { verb = "talk", text = "Salma" } })
 	.text == "Salma" and N.StepNPC({ { verb = "accept", text = "X" } }) == nil, "quem dá a quest: o primeiro talk com nome")
 
+-- issue #100: só o que já abre, e nada que o guia faça na volta
+local doneSet = { [7841] = true, [5] = true }
+local function isDone(id) return doneSet[id] end
+check(N.Opens(nil, 1, isDone) and N.Opens({ r = 44, a = { 7841 } }, 48, isDone)
+	and not N.Opens({ r = 44, a = { 7841 } }, 40, isDone) and not N.Opens({ a = { 9 } }, 60, isDone)
+	and N.Opens({ g = { 5, 7841 } }, 60, isDone) and not N.Opens({ g = { 5, 6 } }, 60, isDone)
+	and N.Opens({ g = { 5, { 6, 7841 } } }, 60, isDone) and not N.Opens({ g = { { 6, 9 } } }, 60, isDone),
+	"abre: nível mínimo, um dos pré-requisitos (a) e todos (g)")
+local pts = { { step = 3, x = 0, y = 0, c = 0 }, { step = 9, x = 500, y = 500, c = 0 } }
+check(N.Revisits(pts, 5, { x = 30, y = 40, c = 0 }) and not N.Revisits(pts, 3, { x = 30, y = 40, c = 0 })
+	and not N.Revisits(pts, 5, { x = 30, y = 40, c = 1 }) and not N.Revisits(pts, 5, { x = 200, y = 0, c = 0 })
+	and not N.Revisits(pts, 5, nil), "volta: passo antes do da sugestão, mesmo continente, até 60 jd")
+
 -- ── botão de alvo ────────────────────────────────────────────────────────────
 local TB = loadPure("TargetButton.lua").TargetButton
 local tg = TB.Targets({ { verb = "kill", id = 5, text = "Boar" }, { verb = "talk", id = 6, text = "Gryan" },
@@ -318,4 +331,16 @@ check(#cnear == 2 and cnear[1].e.id == 1 and cnear[2].e.id == 2 and cnear[2].x =
 local pd, pt = CO.Progress({ { id = 1 }, { id = 2 } }, function(e) return e.id == 1 end)
 check(pd == 1 and pt == 2, "progresso")
 
+-- ── issue #99: passagens gravadas ────────────────────────────────────────────
+local PS = loadPure("Passages.lua").Passages
+local trecho = {}
+check(PS.Add(trecho, 0, 0) and not PS.Add(trecho, 1, 1) and PS.Add(trecho, 3, 4) and #trecho == 4,
+	"passagem: só grava depois de andar 3 jd")
+check(math.abs(PS.Length({ 0, 0, 3, 4, 3, 10 }) - 11) < 1e-9, "passagem: comprimento")
+check(PS.Encode({ c = 0, z = "The Hinterlands", pts = { -635.31, -4720.55, -630, -4700 } })
+	== "0 / The Hinterlands / -635.3,-4720.6;-630.0,-4700.0", "passagem: texto do relatório (sem barra vertical)")
+check(PS.Encode({ c = 1, z = "X", pts = { 0, 0, 1, 1, 2, 2 }, f = { [2] = true } }):find("/ queda: 2$"),
+	"passagem: o trecho de queda vai no texto")
+local mg = PS.Merge({ { c = 0 } }, { { c = 1 }, { c = 0 } })
+check(#mg == 3 and mg[2].c == 1, "passagem: as do addon e as gravadas juntas")
 print(("ok: %d checks"):format(checks))
