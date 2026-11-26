@@ -103,10 +103,36 @@ end
 
 -- o diário de mascotes filtra o que mostra: abre tudo, lê, devolve como o jogador deixou
 local reading = false
+-- O diário de mascotes deste cliente só se enche depois que a interface de Coleções do jogo carrega (ela é sob
+-- demanda; issue #100): sem isso a página dizia "0 de 0". Carrega uma vez; o PET_JOURNAL_LIST_UPDATE refaz.
+local journalAsked, waitingJournal = false, false
+local function askJournal()
+	if journalAsked then return end
+	journalAsked = true
+	local load = (C_AddOns and C_AddOns.LoadAddOn) or LoadAddOn
+	if load then pcall(load, "Blizzard_Collections") end
+end
+
+-- Sem o diário (ou vazio): os mascotes que o personagem tem, pela lista de companheiros de sempre.
+local function companionPets()
+	local out = {}
+	if not (GetNumCompanions and GetCompanionInfo) then return out end
+	for i = 1, GetNumCompanions("CRITTER") or 0 do
+		local creatureID, name, spellID, icon = GetCompanionInfo("CRITTER", i)
+		if name then
+			out[#out + 1] = { id = creatureID or spellID or i, name = name, icon = icon, sourceType = 0,
+				collected = true, source = "" }
+		end
+	end
+	table.sort(out, function(a, b) return a.name < b.name end)
+	return out
+end
+CL.CompanionPets = companionPets
+
 function CL:Pets()
 	local PJ = C_PetJournal
 	local out = {}
-	if not (PJ and PJ.GetNumPets and PJ.GetPetInfoByIndex) then return out end
+	if not (PJ and PJ.GetNumPets and PJ.GetPetInfoByIndex) then return companionPets() end
 	-- cada filtro como o jogador deixou (coletados, origens, tipos), para devolver depois; a busca fica como está
 	local saved, sources, types = {}, {}, {}
 	local F = { LE_PET_JOURNAL_FILTER_COLLECTED or 1, LE_PET_JOURNAL_FILTER_NOT_COLLECTED or 2 }
@@ -141,6 +167,12 @@ function CL:Pets()
 	for i, v in pairs(types) do setType(i, v) end
 	if search ~= "" and PJ.SetSearchFilter then PJ.SetSearchFilter(search) end
 	reading = false
+	if #out == 0 then
+		askJournal()                                 -- a lista chega no PET_JOURNAL_LIST_UPDATE
+		waitingJournal = true
+		return companionPets()
+	end
+	waitingJournal = false
 	table.sort(out, function(a, b) return a.name < b.name end)
 	return out
 end
@@ -182,7 +214,16 @@ function CL:Summary()
 		progress = (mh + ph) / math.max(1, mt + pt), link = ns.L.V3_SEE_COLLECT }
 end
 -- a lista do diário mudou (carregou depois do login, por exemplo) — menos quando fomos nós, lendo
-ns:On("PET_JOURNAL_LIST_UPDATE", function() if not reading then cachePets = nil end end)
+ns:On("PET_JOURNAL_LIST_UPDATE", function()
+	if reading then return end
+	cachePets = nil
+	-- a lista chegou com a página aberta esperando por ela: redesenha uma vez (só esperando: a própria leitura mexe
+	-- nos filtros e o evento pode voltar depois, o que viraria um laço)
+	if waitingJournal and ns.Hub and ns.Hub:IsShown() and ns.Hub:Current() == "collections" then
+		waitingJournal = false
+		C_Timer.After(0.5, function() if ns.Hub:IsShown() then ns.Hub:Refresh() end end)
+	end
+end)
 for _, ev in ipairs({ "NEW_MOUNT_ADDED", "COMPANION_LEARNED", "NEW_PET_ADDED", "COMPANION_UNLEARNED" }) do
 	ns:On(ev, function() cacheMounts, cachePets = nil, nil end)
 end

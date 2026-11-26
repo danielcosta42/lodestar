@@ -375,6 +375,21 @@ step("AutoAcceptAhead", function()
 	assert(accepted == nil, "aceitou quest fora do guia")
 	_G.GetQuestID, _G.AcceptQuest, _G.IsShiftKeyDown = saved[1], saved[2], saved[3]
 end)
+-- diário de mascotes vazio (a interface de Coleções do jogo ainda não carregou): pede a carga e mostra os
+-- companheiros que o personagem tem, em vez de "0 de 0" (issue #100)
+step("PetsEmptyJournal", function()
+	local PJ = _G.C_PetJournal
+	local savedPJ, savedN, savedI, savedAddOns = PJ, _G.GetNumCompanions, _G.GetCompanionInfo, _G.C_AddOns
+	local loaded
+	_G.C_PetJournal = { GetNumPets = function() return 0, 0 end, GetPetInfoByIndex = function() end }
+	_G.C_AddOns = { LoadAddOn = function(n) loaded = n end }
+	_G.GetNumCompanions = function(kind) return kind == "CRITTER" and 2 or 0 end
+	_G.GetCompanionInfo = function(_, i) return 100 + i, i == 1 and "Cat" or "Owl", 200 + i, 1 end
+	local pets = ns.Collections:Pets()
+	assert(#pets == 2 and pets[1].name == "Cat" and pets[1].collected, "diário vazio: sem os companheiros")
+	assert(loaded == "Blizzard_Collections", "diário vazio: não pediu a carga das Coleções")
+	_G.C_PetJournal, _G.GetNumCompanions, _G.GetCompanionInfo, _G.C_AddOns = savedPJ, savedN, savedI, savedAddOns
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()
