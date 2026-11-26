@@ -255,8 +255,8 @@ local VOLTA_FATOR, VOLTA_JD = 3, 1500
 local function voltaDemais(pts, de, para)
 	local len = 0
 	for i = 2, #pts do len = len + math.sqrt((pts[i].x - pts[i - 1].x) ^ 2 + (pts[i].y - pts[i - 1].y) ^ 2) end
-	local reta = math.sqrt((para.x - de.x) ^ 2 + (para.y - de.y) ^ 2)
-	return len > VOLTA_FATOR * reta and len - reta > VOLTA_JD
+	local direto = math.sqrt((para.x - de.x) ^ 2 + (para.y - de.y) ^ 2)
+	return len > VOLTA_FATOR * direto and len - direto > VOLTA_JD
 end
 TR.VoltaDemais = voltaDemais
 -- A segunda busca roda com um terço do limite quando a primeira provou que não há ligação (acabou a fila), e com um
