@@ -254,7 +254,7 @@ function T:Replan(force)
 	local cur, n1 = route and route.legs[route.leg], new and new.legs[1]
 	if cur and n1 and cur.k == "walk" and n1.k == "walk" and cur.path ~= nil and cur.b.c == n1.b.c
 		and cur.b.x == n1.b.x and cur.b.y == n1.b.y then
-		n1.path, n1.pathAt = cur.path, cur.pathAt
+		n1.path, n1.pathAt, n1.pathFail = cur.path, cur.pathAt, cur.pathFail   -- a espera de 300 jd vem junto
 	end
 	if force or key ~= routeKey or not route then
 		local was = route
@@ -388,6 +388,16 @@ local function pathTick()
 	local ceder = debugprofilestop and estourou or 3000
 	pathCo = coroutine.create(function() return ns.Terrain.Path(ns.terrain, from, to, 150000, ceder) end)
 end
+-- passagem gravada ou apagada (Passages.lua): larga a busca em curso, limpa os caminhos a pé e redesenha
+function T:ResetPaths()
+	pathCo = nil
+	if not route then return end
+	for _, leg in ipairs(route.legs) do
+		if leg.k == "walk" then leg.path, leg.pathFail, leg.pathAt = nil, nil, nil end
+	end
+	route.pv = (route.pv or 0) + 1
+end
+
 ns:Every(0.05, function()
 	local ok, err = pcall(pathTick)
 	if not ok then ns:Debug("Terrain:", err); pathCo = nil end

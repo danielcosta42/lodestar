@@ -151,12 +151,19 @@ function TR.Links(passagens, cont)
 			local ant
 			for i = 1, #p.pts - 3, 2 do
 				local x0, y0, x1, y1 = p.pts[i], p.pts[i + 1], p.pts[i + 2], p.pts[i + 3]
-				local passos = math.max(1, math.ceil(math.sqrt((x1 - x0) ^ 2 + (y1 - y0) ^ 2) / (CEL / 2)))
-				for k = 0, passos do
-					local r, c = TR.Cell(x0 + (x1 - x0) * k / passos, y0 + (y1 - y0) * k / passos)
-					local cel = r * W + c
-					if ant and ant ~= cel then liga(ant, cel); liga(cel, ant) end
-					ant = cel
+				local len = math.sqrt((x1 - x0) ^ 2 + (y1 - y0) ^ 2)
+				local seg = (i + 1) / 2
+				if len > 2 * CEL then
+					ant = nil                                -- salto (voo, teleporte): não é chão andado
+				else
+					local queda = p.f and p.f[seg]           -- caiu aqui: só desce
+					local passos = math.max(1, math.ceil(len / (CEL / 2)))
+					for k = 0, passos do
+						local r, c = TR.Cell(x0 + (x1 - x0) * k / passos, y0 + (y1 - y0) * k / passos)
+						local cel = r * W + c
+						if ant and ant ~= cel then liga(ant, cel); if not queda then liga(cel, ant) end end
+						ant = cel
+					end
 				end
 			end
 		end
@@ -241,14 +248,15 @@ end
 -- expansões (número) ou quando a função disser (orçamento de tempo), cede a vez — não trava
 -- o quadro.
 local caminho
--- A segunda busca roda com o limite inteiro quando a primeira provou que não há ligação (acabou a fila). Quando a
--- primeira estourou o limite (região grande: a Revantusk cai aqui), roda com um quinto dele: a passagem curta, quando
--- existe, sai em poucas expansões (~20 mil na Revantusk), e o nil que não tem jeito custa 20% a mais, não o dobro.
+-- A segunda busca roda com um terço do limite quando a primeira provou que não há ligação (acabou a fila), e com um
+-- quinto quando a primeira estourou o limite (região grande: a Revantusk cai aqui). A passagem curta, quando existe,
+-- sai em poucas expansões (~20 mil na Revantusk; a busca já poda o passo que estoura o limite de travados), e o nil
+-- que não tem jeito custa 20-33% a mais, não o dobro.
 -- O caminho dela vem marcado (`solto`): quem chama não o refaz a cada desvio do jogador.
 function TR.Path(dados, de, para, maxExp, ceder)
 	local pts, motivo = caminho(dados, de, para, maxExp, ceder, false)
 	if pts then return pts end
-	pts = caminho(dados, de, para, motivo == "limite" and math.floor(maxExp / 5) or maxExp, ceder, true)
+	pts = caminho(dados, de, para, math.floor(maxExp / (motivo == "limite" and 5 or 3)), ceder, true)
 	if pts then pts.solto = true end
 	return pts
 end
@@ -286,6 +294,9 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	end
 	local fila = novaFila()
 	local g, came, fechado = { [start] = 0 }, {}, {}
+	-- solto: passos travados no melhor caminho até cada célula (seguidos e no total); o passo que estoura o limite
+	-- nem entra na fila (a busca não se espalha pela montanha para depois recusar)
+	local travSeg, travTot = solto and { [start] = 0 } or nil, solto and { [start] = 0 } or nil
 	fila.poe(h(sr, sc), start)
 	local exp, achou, estourou = 0, start == goal, false
 	local perto, pertoH, parado = start, h(sr, sc), 0
@@ -325,8 +336,16 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 					if not fechado[nk] then
 						local _, agua = info(grid, nr, nc)
 						local ng = g[k] + (d % 2 == 0 and CEL * SQ2 or CEL) * (agua and NADO or 1) * custo
-						if not g[nk] or ng < g[nk] then
+						local seg, tot
+						if travSeg then
+							local trav = custo > 1
+							seg = trav and travSeg[k] + 1 or 0
+							tot = travTot[k] + (trav and 1 or 0)
+							if seg > TRAVADO_SEGUIDOS or tot > TRAVADO_TOTAL then ng = nil end
+						end
+						if ng and (not g[nk] or ng < g[nk]) then
 							g[nk], came[nk] = ng, k
+							if travSeg then travSeg[nk], travTot[nk] = seg, tot end
 							fila.poe(ng + h(nr, nc), nk)
 						end
 					end
@@ -339,6 +358,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 					local ng = g[k] + CEL * math.sqrt((nr - r) ^ 2 + (nc - c) ^ 2)
 					if not g[nk] or ng < g[nk] then
 						g[nk], came[nk] = ng, k
+						if travSeg then travSeg[nk], travTot[nk] = 0, travTot[k] end
 						fila.poe(ng + h(nr, nc), nk)
 					end
 				end

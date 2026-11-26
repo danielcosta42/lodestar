@@ -12,6 +12,7 @@ ns.Passages = P
 
 P.MIN_STEP = 3          -- jardas entre dois pontos gravados
 P.MIN_LEN = 10          -- jardas: menos que isso não é passagem
+P.MAX_TICK = 15         -- jardas num tique (0,2 s): mais que isso é voo, teleporte, pedra — não é andar
 
 -- Junta mais um ponto ao trecho: só se andou MIN_STEP desde o último. pts = { x1, y1, ... }.
 function P.Add(pts, x, y)
@@ -27,11 +28,16 @@ function P.Length(pts)
 	return s
 end
 
--- Texto curto de uma passagem para o relatório: "c|zona|x,y;x,y;..." (um decimal).
+-- Texto curto de uma passagem para o relatório: "c / zona / x,y;x,y;... [/ queda: 2,5]" (um decimal). Sem "|":
+-- a caixa do relatório leria "|T", "|H" como textura e link.
 function P.Encode(p)
 	local parts = {}
 	for i = 1, #p.pts - 1, 2 do parts[#parts + 1] = ("%.1f,%.1f"):format(p.pts[i], p.pts[i + 1]) end
-	return ("%d|%s|%s"):format(p.c, p.z or "?", table.concat(parts, ";"))
+	local quedas = {}
+	for seg in pairs(p.f or {}) do quedas[#quedas + 1] = seg end
+	table.sort(quedas)
+	return ("%d / %s / %s%s"):format(p.c, p.z or "?", table.concat(parts, ";"),
+		#quedas > 0 and (" / queda: " .. table.concat(quedas, ",")) or "")
 end
 
 -- As do addon mais as gravadas aqui, numa lista só (a busca liga as duas).
@@ -54,11 +60,8 @@ local rec                    -- { c, z, pts } enquanto grava
 function P:Apply()
 	if not ns.terrain then return end
 	ns.terrain.passages = P.Merge(ns.passagesData, ns.db and ns.db.passages)
-	-- os caminhos já calculados da rota refazem com a passagem nova
-	local route = ns.Travel and ns.Travel:Route()
-	for _, leg in ipairs(route and route.legs or {}) do
-		if leg.k == "walk" then leg.path, leg.pathFail, leg.pathAt = nil, nil, nil end
-	end
+	-- os caminhos da rota (e a busca em curso, com as ligações velhas) refazem com a passagem nova
+	if ns.Travel and ns.Travel.ResetPaths then ns.Travel:ResetPaths() end
 end
 ns:On("_READY", function() P:Apply() end)
 
@@ -99,11 +102,20 @@ function P:Command(rest)
 	if rec then P:Stop() else P:Start() end
 end
 
--- grava andando: um ponto a cada MIN_STEP jd; trocar de continente (portal, barco) encerra
+-- grava andando: um ponto a cada MIN_STEP jd. Voo, morte, teleporte ou pedra de lar no meio (salto grande num
+-- tique, ou trocar de continente) não é chão andado: encerra com o que veio antes. Caindo, o trecho é só de descida.
 ns:Every(0.2, function()
 	if not rec then return end
 	local me = ns.Travel and ns.Travel.PlayerWorld()
 	if not me then return end
-	if me.c ~= rec.c then return P:Stop() end
-	P.Add(rec.pts, me.x, me.y)
+	local n = #rec.pts
+	local salto = n >= 2 and ((me.x - rec.pts[n - 1]) ^ 2 + (me.y - rec.pts[n]) ^ 2) > P.MAX_TICK ^ 2
+	if me.c ~= rec.c or salto or (UnitOnTaxi and UnitOnTaxi("player"))
+		or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then
+		return P:Stop()
+	end
+	if P.Add(rec.pts, me.x, me.y) and IsFalling and IsFalling() then
+		rec.f = rec.f or {}
+		rec.f[(#rec.pts - 2) / 2] = true                 -- o trecho que acabou de entrar foi uma queda
+	end
 end)
