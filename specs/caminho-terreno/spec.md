@@ -47,7 +47,8 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
     por terreno.
   - As do addon ficam em `PassagesData.lua`, com as que vierem dos relatórios. A primeira (#104) é a rampa do
     litoral da Revantusk Village até a beira da praia, gravada em jogo.
-- **Volta grande demais por uma passagem não é caminho:** mais de 2× a reta e mais de 1000 jd a mais. É a
+- **Volta grande demais por uma passagem não é caminho:** mais de 2× a reta e mais de 2000 jd a mais (as voltas
+  pelo mar eram 5-13 km a mais; o pé de penhasco pela rampa, ~1 km). É a
   passagem virando a única saída de uma região que na grade não tem a de verdade: o platô de The Hinterlands só
   se liga pela rampa, e Aerie Peak → Chillwind descia a rampa e nadava 4 km pela costa.
   - Caminho só da grade fica como sempre: rotas costeiras longas são reais.

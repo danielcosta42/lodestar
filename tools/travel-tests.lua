@@ -794,12 +794,15 @@ check((ac == nil or not pelaRampa(ac)) and (at == nil or not pelaRampa(at)),
 	"Aerie Peak -> Chillwind / Tarren Mill: nada de descer a rampa e dar a volta pelo mar")
 check(TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 0, y = 5000 }, { x = 100, y = 5000 }, { x = 100, y = 0 } },
 	{ x = 0, y = 0 }, { x = 100, y = 0 }) and not TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 200, y = 300 },
-	{ x = 300, y = 0 } }, { x = 0, y = 0 }, { x = 300, y = 0 }), "volta demais: 2x a reta e 1000 jd a mais")
--- só por passagem: rota costeira longa só da grade (Revantusk -> Light's Hope, ~4x a reta) segue existindo
-local semPassagem = load("Terrain0.lua", {}).terrain
+	{ x = 300, y = 0 } }, { x = 0, y = 0 }, { x = 300, y = 0 }), "volta demais: 2x a reta e 2000 jd a mais")
+-- só por passagem: rota costeira longa só da grade (Revantusk -> Light's Hope, ~4x a reta) segue existindo com a
+-- rampa no mapa, sem a marca de passagem (o limite não a derruba)
 local lightsHope = { c = 0, x = 2271.1, y = -5340.9 }
-local costa = TRN.Path(semPassagem, revan, lightsHope, 150000)
-check(costa == nil or not costa.passagem, "rota só da grade não leva a marca de passagem")
+local costa = TRN.Path(EKp, revan, lightsHope, 150000)
+check(costa and not costa.passagem, "rota costeira só da grade segue existindo, sem a marca de passagem")
+-- pé do penhasco: do alto à praia abaixo dos Overlook Cliffs, ~1,2 km pela rampa (8x a reta de 143 jd), real
+local alto, praia = { c = 0, x = 158, y = -4592 }, { c = 0, x = 184, y = -4732 }
+check(TRN.Path(EKp, alto, praia, 150000) ~= nil, "pé do penhasco: o caminho pela rampa não é cortado")
 end
 -- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
 local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)

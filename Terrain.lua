@@ -248,12 +248,12 @@ end
 -- expansões (número) ou quando a função disser (orçamento de tempo), cede a vez — não trava
 -- o quadro.
 local caminho
--- Volta grande demais POR UMA PASSAGEM (mais de 2× a reta e mais de 1000 jd a mais) não é caminho: é a passagem
+-- Volta grande demais POR UMA PASSAGEM (mais de 2× a reta e mais de 2000 jd a mais) não é caminho: é a passagem
 -- virando a única saída de uma região que na grade não tem a de verdade (o platô de The Hinterlands só se liga ao
 -- mundo pela rampa da Revantusk, e Aerie Peak -> Chillwind descia a rampa e nadava 4 km pela costa; #104). Caminho
 -- só da grade fica como sempre (rotas costeiras longas são reais). Recusado o da busca normal, tenta a segunda; se
 -- nada serve, fica a reta, e quem chama espera 300 jd.
-local VOLTA_FATOR, VOLTA_JD = 2, 1000
+local VOLTA_FATOR, VOLTA_JD = 2, 2000     -- as voltas pelo mar eram 5-13 km a mais; pé de penhasco, ~1 km
 local function voltaDemais(pts, de, para)
 	local len = 0
 	for i = 2, #pts do len = len + math.sqrt((pts[i].x - pts[i - 1].x) ^ 2 + (pts[i].y - pts[i - 1].y) ^ 2) end
