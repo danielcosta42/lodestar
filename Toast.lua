@@ -25,7 +25,8 @@ end
 
 local function makeToast()
 	local C = UI.COL
-	local f = UI.Panel(ensureContainer(), { color = { 0.10, 0.11, 0.13, 0.96 },
+	-- no claro, o cartão branco (a cor do título, de quem chama, lê sobre ele); no escuro, o de sempre
+	local f = UI.Panel(ensureContainer(), { color = UI.dark and { 0.10, 0.11, 0.13, 0.96 } or C.card,
 		accentStripe = true })
 	f:SetSize(280, 48)
 	f:SetFrameStrata("HIGH")

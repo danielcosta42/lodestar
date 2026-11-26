@@ -71,6 +71,7 @@ G.PAWN = {
 	attackpower = "ap", rangedattackpower = "rap", feralattackpower = "ap",
 	spellpower = "sp", spelldamage = "sp", firespelldamage = "sp", frostspelldamage = "sp",
 	shadowspelldamage = "sp", arcanespelldamage = "sp", naturespelldamage = "sp", holyspelldamage = "sp",
+	ap = "ap", rap = "rap", feralap = "ap",
 	healing = "heal", critrating = "crit", crit = "crit", spellcritrating = "crit", spellcrit = "crit",
 	hitrating = "hit", hit = "hit", spellhitrating = "hit", spellhit = "hit", hasterating = "haste", haste = "haste",
 	defenserating = "def", defense = "def", dodgerating = "avoid", dodge = "avoid", parryrating = "avoid",
@@ -81,8 +82,10 @@ G.PAWN = {
 -- ( Pawn: v1: "Nome": Class=Warrior, Strength=2.0, ... ) -> pesos, nome. Ignora o que não conhece; nil se nada.
 function G.ParsePawn(text)
 	if type(text) ~= "string" then return nil end
-	local body = text:match("%(%s*Pawn%s*:%s*v%d+%s*:%s*(.-)%)") or text
+	-- até o ÚLTIMO ")": o nome pode ter parênteses ("Guerreiro (Armas)")
+	local body = text:match("%(%s*Pawn%s*:%s*v%d+%s*:%s*(.*)%)") or text
 	local name = body:match('^"([^"]*)"')
+	if name then body = body:sub(#name + 3) end
 	local w, any = {}, false
 	for k, v in body:gmatch("([%a_]+)%s*=%s*(%-?[%d%.]+)") do
 		local key = G.PAWN[k:lower()]
@@ -102,21 +105,38 @@ function G.Score(stats, weights)
 	return s
 end
 
--- Por espaço, a melhor candidata que bate o equipado. candidates = { { id, slots = { invSlot, ... }, score, source } },
--- equipped = { [invSlot] = nota } (espaço vazio = -1; ocupado e sem dado = nil, que nada bate). Anel e berloque
--- (dois espaços) comparam com o pior dos dois; a mesma peça não vale para os dois.
+-- A nota que uma arma de duas mãos tem de bater: a mão principal mais a secundária (escudo, mão esquerda).
+function G.PairBase(equipped, pair)
+	local total, any = 0, false
+	for _, s in ipairs(pair) do
+		local e = equipped[s]
+		if e == nil then return nil end                 -- sem dado: não dá para comparar
+		if e > 0 and e ~= math.huge then total = total + e end
+		if e ~= -1 then any = true end
+	end
+	return any and total or -1
+end
+
+-- Por espaço, a melhor candidata que bate o equipado. candidates = { { id, slots = { invSlot, ... }, score, source,
+-- pair = { 16, 17 }? } }, equipped = { [invSlot] = nota } (vazio = -1; ocupado e sem dado = nil, que nada bate).
+-- Das melhores para as piores: cada uma vai para o espaço livre de pior nota que ela bate (dois anéis vazios recebem
+-- dois anéis); a mesma peça não vale para dois espaços; duas mãos (`pair`) compara com principal + secundária.
 function G.BestPerSlot(candidates, equipped)
-	local best = {}
-	for _, c in ipairs(candidates or {}) do
-		local slots = c.slots or {}
-		local target, base
-		for _, s in ipairs(slots) do
-			local e = equipped[s]
-			if e and (not base or e < base) then target, base = s, e end
-		end
-		if target and c.score > base then
-			local cur = best[target]
-			if not cur or c.score > cur.score then
+	local sorted = {}
+	for _, c in ipairs(candidates or {}) do sorted[#sorted + 1] = c end
+	table.sort(sorted, function(a, b) return a.score > b.score end)
+	local best, used = {}, {}
+	for _, c in ipairs(sorted) do
+		if not used[c.id] then
+			local target, base
+			for _, s in ipairs(c.slots or {}) do
+				if not best[s] then
+					local e = c.pair and G.PairBase(equipped, c.pair) or equipped[s]
+					if e and (not base or e < base) then target, base = s, e end
+				end
+			end
+			if target and c.score > base then
+				used[c.id] = true
 				best[target] = { id = c.id, score = c.score, source = c.source, base = base,
 					gain = base > 0 and (c.score - base) / base or 1 }
 			end
@@ -163,28 +183,41 @@ local function myClass() return select(2, UnitClass("player")) end
 
 function G:Specs(class) return G.SPECS[class or myClass()] or {} end
 
--- a spec: a escolhida; senão a do jogo (GetSpecialization), senão a árvore com mais pontos
-function G:Spec(class)
+-- a spec do jogo: C_SpecializationInfo (a do retail, que este cliente traz), senão a árvore com mais pontos (as
+-- funções de talento antigas, se existirem). O druida do retail tem 4 (Guardião é o feral de tanque).
+local DRUID4 = { "balance", "feral", "feral", "resto" }
+function G:DetectedSpec(class)
 	class = class or myClass()
 	local list = G.SPECS[class]
 	if not list then return nil end
-	local chosen = ns.db.gear.spec[class]
-	if chosen then return chosen end
-	local idx
-	if GetSpecialization then
-		local ok, s = pcall(GetSpecialization)
-		if ok and tonumber(s) and s >= 1 and s <= #list then idx = s end
+	local SI = C_SpecializationInfo
+	local get = (SI and SI.GetSpecialization) or GetSpecialization
+	if get then
+		local ok, s = pcall(get)
+		s = ok and tonumber(s)
+		if s and s >= 1 then
+			if class == "DRUID" and s <= 4 then return DRUID4[s] end
+			if s <= #list then return list[s] end
+		end
 	end
-	if not idx and GetNumTalentTabs and GetTalentTabInfo then
-		local pts = {}
+	if GetNumTalentTabs and GetTalentTabInfo then
+		local pts, any = {}, false
 		for i = 1, math.min(3, GetNumTalentTabs() or 0) do
 			local r = { GetTalentTabInfo(i) }
-			-- a posição do "pontos gastos" mudou entre versões: o primeiro número >0 depois do nome
-			for j = 2, #r do if type(r[j]) == "number" then pts[i] = r[j]; if j >= 3 then break end end end
+			-- a posição do "pontos gastos" mudou entre versões: o primeiro número depois do nome
+			for j = 2, #r do if type(r[j]) == "number" then pts[i] = r[j]; break end end
+			if (pts[i] or 0) > 0 then any = true end
 		end
-		idx = G.SpecFromPoints(pts)
+		if any then return list[G.SpecFromPoints(pts)] end
 	end
-	return list[idx or 1]
+	return nil
+end
+
+-- a spec: a escolhida; senão a do jogo; nil quando não se sabe (aí vale o peso genérico da classe)
+function G:Spec(class)
+	class = class or myClass()
+	if not G.SPECS[class] then return nil end
+	return ns.db.gear.spec[class] or G:DetectedSpec(class)
 end
 
 function G:SetSpec(spec, class)
@@ -192,15 +225,19 @@ function G:SetSpec(spec, class)
 	G:Invalidate()
 end
 
+-- os pesos: os editados da spec, os de predefinição da spec, ou (spec desconhecida) os genéricos da classe do
+-- GearAdvisor — chutar a primeira árvore daria inteligência a um paladino de retribuição
 function G:Weights(class, spec)
 	class = class or myClass()
 	spec = spec or G:Spec(class)
+	if not spec then return ns.GearAdvisor and ns.GearAdvisor.ClassWeights(class) or {} end
 	local mine = ns.db.gear.weights[class] and ns.db.gear.weights[class][spec]
 	return mine or (G.PRESETS[class] and G.PRESETS[class][spec]) or {}
 end
 
 function G:SetWeights(w, class, spec)
-	class = class or myClass(); spec = spec or G:Spec(class)
+	class = class or myClass(); spec = spec or G:Spec(class) or (G.SPECS[class] or {})[1]
+	if not ns.db.gear.spec[class] then ns.db.gear.spec[class] = spec end   -- editar fixa a spec mostrada
 	ns.db.gear.weights[class] = ns.db.gear.weights[class] or {}
 	ns.db.gear.weights[class][spec] = w
 	G:Invalidate()
@@ -288,7 +325,8 @@ local function addCandidate(list, seen, id, source, level, ahead)
 	if (minLevel or 1) > level + (ahead or 0) then return end
 	if not ns.GearAdvisor.Usable(myClass(), level, classID, subClassID) then return end
 	seen[id] = true
-	list[#list + 1] = { id = id, link = link, name = name, slots = slots, score = G:ScoreLink(link), source = source }
+	list[#list + 1] = { id = id, link = link, name = name, slots = slots, score = G:ScoreLink(link), source = source,
+		pair = equipLoc == "INVTYPE_2HWEAPON" and { 16, 17 } or nil }
 end
 
 function G:Candidates(ahead)
@@ -352,7 +390,8 @@ function G:GainOf(id, ahead)
 	end
 	local eq = G:Plan(ahead or 0).equipped
 	local base
-	for _, s in ipairs(slots) do if eq[s] and (not base or eq[s] < base) then base = eq[s] end end
+	if equipLoc == "INVTYPE_2HWEAPON" then base = G.PairBase(eq, { 16, 17 })
+	else for _, s in ipairs(slots) do if eq[s] and (not base or eq[s] < base) then base = eq[s] end end end
 	if not base then return nil end
 	local sc = G:ScoreLink(link)
 	if sc <= base then return nil end
@@ -383,7 +422,7 @@ function G:Summary()
 end
 
 function G.SpecLabel(spec)
-	return spec and (rawget(ns.L, "SPEC_" .. myClass() .. "_" .. spec) or spec) or "?"
+	return spec and (rawget(ns.L, "SPEC_" .. myClass() .. "_" .. spec) or spec) or ns.L.V3_SPEC_UNKNOWN
 end
 
 function G.SourceText(src)
@@ -413,7 +452,8 @@ for _, ev in ipairs({ "PLAYER_EQUIPMENT_CHANGED", "PLAYER_LEVEL_UP", "BAG_UPDATE
 	ns:On(ev, function() cache = nil end)
 end
 
--- recompensas de quest vistas no jogo: a escolha e o que vem sempre (Equipamento)
+-- recompensas de quest vistas no jogo: a escolha e o que vem sempre (Equipamento). Na hora (sem atraso): a
+-- automação (StepTracker) aceita e entrega no mesmo evento, e chama isto antes de agir.
 local function harvestRewards()
 	local qid = GetQuestID and GetQuestID()
 	if not (qid and qid > 0 and ns.db) then return end
@@ -430,8 +470,9 @@ local function harvestRewards()
 	end
 	if #r.choice > 0 or #r.reward > 0 then ns.db.rewards[qid] = r; cache = nil end
 end
-ns:On("QUEST_DETAIL", function() C_Timer.After(0.2, harvestRewards) end)
-ns:On("QUEST_COMPLETE", function() C_Timer.After(0.2, harvestRewards) end)
+G.HarvestRewards = function() pcall(harvestRewards) end
+ns:On("QUEST_DETAIL", G.HarvestRewards)
+ns:On("QUEST_COMPLETE", G.HarvestRewards)
 
 --------------------------------------------------------------------------------
 -- A página da Central
@@ -484,7 +525,7 @@ PAGE.build = function(page, H)
 		r.name:SetText(L["STAT_" .. k:upper()] or k)
 		r.bar = UI.Bar(r, C.accentBright); r.bar:SetSize(90, 4); r.bar:SetPoint("LEFT", 74, 0)
 		r.val = UI.Text(r, 12, C.active, { num = true, justify = "RIGHT" }); r.val:SetPoint("RIGHT")
-		r.minus = CreateFrame("Button", nil, r); r.minus:SetAllPoints(r.bar); r.minus:RegisterForClicks("AnyUp")
+		r.minus = CreateFrame("Button", nil, r); r.minus:SetAllPoints(r); r.minus:RegisterForClicks("AnyUp")
 		r.minus:SetScript("OnClick", function(_, btn)
 			local w = {}
 			for kk, vv in pairs(G:Weights()) do w[kk] = vv end

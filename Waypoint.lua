@@ -310,7 +310,7 @@ local function ensureArrow()
 	arrow.tex = tex
 
 	-- rótulo (distância + alvo) num painelzinho sob a seta
-	local plate = UI.Panel(arrow, { color = { 0, 0, 0, 0.72 } })
+	local plate = UI.Panel(arrow, { color = { 0, 0, 0, 0.72 }, borderColor = UI.HUD.border })
 	plate:SetPoint("TOP", arrow, "BOTTOM", 0, -3)
 	plate:SetSize(140, 34)
 	arrow.plate = plate

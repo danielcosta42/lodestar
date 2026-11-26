@@ -243,7 +243,7 @@ local function pin(i, canvas)
 		p:SetFrameStrata("HIGH")
 		local g = ns.UI.Glyph(p, "losango", "OVERLAY", 64)
 		g:SetAllPoints()
-		g:SetVertexColor(ns.UI.unpackc(ns.UI.COL.amber))
+		g:SetVertexColor(ns.UI.unpackc((ns.UI.HUD or ns.UI.COL).amber))
 		p:SetAlpha(0.85)
 		pins[i] = p
 	end

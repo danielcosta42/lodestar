@@ -89,7 +89,7 @@ local function ensureButton()
 	glow:SetBlendMode("ADD"); glow:SetAlpha(0)
 	button.glow = glow
 
-	local bg = UI.Panel(button, { color = { 0, 0, 0, 0.85 } })
+	local bg = UI.Panel(button, { color = { 0, 0, 0, 0.85 }, borderColor = UI.HUD.border })
 	bg:SetAllPoints()
 
 	button.icon = button:CreateTexture(nil, "ARTWORK")

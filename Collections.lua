@@ -107,14 +107,18 @@ function CL:Pets()
 	local PJ = C_PetJournal
 	local out = {}
 	if not (PJ and PJ.GetNumPets and PJ.GetPetInfoByIndex) then return out end
-	local saved = {}
+	-- cada filtro como o jogador deixou (coletados, origens, tipos), para devolver depois; a busca fica como está
+	local saved, sources, types = {}, {}, {}
 	local F = { LE_PET_JOURNAL_FILTER_COLLECTED or 1, LE_PET_JOURNAL_FILTER_NOT_COLLECTED or 2 }
 	if PJ.IsFilterChecked and PJ.SetFilterChecked then
 		for _, f in ipairs(F) do saved[f] = PJ.IsFilterChecked(f); PJ.SetFilterChecked(f, true) end
 	end
-	if PJ.SetAllPetSourcesChecked then pcall(PJ.SetAllPetSourcesChecked, true) end
-	if PJ.SetAllPetTypesChecked then pcall(PJ.SetAllPetTypesChecked, true) end
-	if PJ.ClearSearchFilter then pcall(PJ.ClearSearchFilter) end
+	if PJ.GetNumPetSources and PJ.IsPetSourceChecked and PJ.SetPetSourceChecked then
+		for i = 1, PJ.GetNumPetSources() or 0 do sources[i] = PJ.IsPetSourceChecked(i); PJ.SetPetSourceChecked(i, true) end
+	end
+	if PJ.GetNumPetTypes and PJ.IsPetTypeChecked and PJ.SetPetTypeChecked then
+		for i = 1, PJ.GetNumPetTypes() or 0 do types[i] = PJ.IsPetTypeChecked(i); PJ.SetPetTypeChecked(i, true) end
+	end
 	local n = PJ.GetNumPets() or 0
 	local seen = {}
 	for i = 1, n do
@@ -127,6 +131,8 @@ function CL:Pets()
 		end
 	end
 	if PJ.SetFilterChecked then for f, v in pairs(saved) do PJ.SetFilterChecked(f, v) end end
+	for i, v in pairs(sources) do PJ.SetPetSourceChecked(i, v) end
+	for i, v in pairs(types) do PJ.SetPetTypeChecked(i, v) end
 	table.sort(out, function(a, b) return a.name < b.name end)
 	return out
 end
@@ -165,7 +171,8 @@ function CL:Summary()
 	return { title = ns.L.V3_COL_SUM:format(mh, mt, ph, pt), text = ns.L.V3_COL_SUM_SUB,
 		progress = (mh + ph) / math.max(1, mt + pt), link = ns.L.V3_SEE_COLLECT }
 end
-for _, ev in ipairs({ "NEW_MOUNT_ADDED", "COMPANION_LEARNED", "NEW_PET_ADDED", "PET_JOURNAL_LIST_UPDATE" }) do
+-- (não PET_JOURNAL_LIST_UPDATE: mexer nos filtros para ler dispara ele, e cada leitura apagaria o cache)
+for _, ev in ipairs({ "NEW_MOUNT_ADDED", "COMPANION_LEARNED", "NEW_PET_ADDED", "COMPANION_UNLEARNED" }) do
 	ns:On(ev, function() cacheMounts, cachePets = nil, nil end)
 end
 
@@ -219,8 +226,9 @@ end
 
 PAGE.refresh = function(page, H)
 	local C, L = UI.COL, ns.L
-	local all = tab == "mounts" and CL:Mounts() or CL:Pets()
-	if tab == "mounts" then cacheMounts = all else cachePets = all end
+	-- lido uma vez e de novo só quando o diário muda (o eventos do jogo limpam o cache)
+	if tab == "mounts" then cacheMounts = cacheMounts or CL:Mounts() else cachePets = cachePets or CL:Pets() end
+	local all = tab == "mounts" and cacheMounts or cachePets
 	local have, total = CL.Count(all)
 	page.subFS:SetText(L.V3_COL_PROGRESS:format(have, total))
 	page.bar:SetProgress(have / math.max(1, total))

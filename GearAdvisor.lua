@@ -95,6 +95,11 @@ end
 
 GA.Usable = usable
 
+-- os pesos genéricos da classe, na chave do Equipamento (spec desconhecida)
+function GA.ClassWeights(class)
+	return W[class] or {}
+end
+
 -- Os espaços de um INVTYPE, sempre em lista ({ 16 }, { 11, 12 }...); nil se não é de vestir.
 function GA.SlotsFor(equipLoc)
 	local d = equipLoc and SLOTS[equipLoc]

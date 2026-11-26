@@ -96,6 +96,8 @@ end
 -- senão só aceita as quests que o passo pede.
 --------------------------------------------------------------------------------
 ns:On("QUEST_DETAIL", function()
+	-- as recompensas desta quest, para o Equipamento, antes que o aceite feche a janela (GearPlan.lua)
+	if ns.GearPlan and ns.GearPlan.HarvestRewards then ns.GearPlan.HarvestRewards() end
 	if not (ns.db and ns.db.autoAccept and ativo()) then return end
 	local qid = GetQuestID and GetQuestID()
 	local wanted = stepQuestIDs("accept")
@@ -269,6 +271,7 @@ local function bestRewardIndex(n)
 end
 
 ns:On("QUEST_COMPLETE", function()
+	if ns.GearPlan and ns.GearPlan.HarvestRewards then ns.GearPlan.HarvestRewards() end
 	if not (ns.db and ns.db.autoTurnin and ativo()) then return end
 	local qid = GetQuestID and GetQuestID()
 	if not (qid and stepQuestIDs("turnin")[qid]) then return end     -- a do passo, não outra

@@ -250,13 +250,23 @@ local function guideListPage(cat, label, glyph, ord, sep)
 				else r.badge:Hide() end
 				r.bar:SetShown(it.progress ~= nil); if it.progress then r.bar:SetProgress(it.progress) end
 				local key = it.key
-				r.open:SetScript("OnClick", function()
+				-- abrir retoma do passo salvo; "Do início" (clique direito) recomeça, como a Biblioteca fazia
+				local function open(fromStart)
 					ns.char.manualPick = key
-					ns:LoadGuide(key, true)
+					if fromStart then ns.char.steps[key] = nil end
+					ns:LoadGuide(key, not fromStart and ns.char.steps[key] ~= nil)
 					if ns.Viewer then ns.Viewer:Show() end
 					H:Refresh()
+				end
+				r.open:SetScript("OnClick", function() open(false) end)
+				r:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+				r:SetScript("OnClick", function(self, button)
+					if button == "RightButton" then
+						UI.Menu(self, { { L.V3_OPEN, function() open(false) end }, { L.V3_FROM_START, function() open(true) end } })
+					else
+						open(false)
+					end
 				end)
-				r:SetScript("OnClick", function() r.open:Click() end)
 				r:Show()
 				y = y + 54
 			end
@@ -366,9 +376,11 @@ end
 H:RegisterPage("home", HOME)
 H:RegisterPage("leveling", guideListPage("Leveling", ns.L.CAT_Leveling, "seta-rota", 2))
 H:RegisterPage("class", guideListPage("Class", ns.L.CAT_Class, "treinador", 20, true))
-H:RegisterPage("reputation", guideListPage("Reputation", ns.L.CAT_Reputation, "bandeira", 21))
-H:RegisterPage("attunements", guideListPage("Attunements", ns.L.CAT_Attunements, "alvo", 22))
-H:RegisterPage("events", guideListPage("Events", ns.L.CAT_Events, "relogio", 23))
+-- os guias de quest de masmorra (inclusive as do Forever que o DungeonData ainda não tem: Dalaran, Hall of Thanes...)
+H:RegisterPage("dungeonguides", guideListPage("Dungeons", ns.L.V3_DUNGEON_GUIDES, "livro", 21))
+H:RegisterPage("reputation", guideListPage("Reputation", ns.L.CAT_Reputation, "bandeira", 22))
+H:RegisterPage("attunements", guideListPage("Attunements", ns.L.CAT_Attunements, "alvo", 23))
+H:RegisterPage("events", guideListPage("Events", ns.L.CAT_Events, "relogio", 24))
 
 -- a Biblioteca antiga cede o lugar: quem chama ns.GuideMenu abre a Central
 ns:On("_INIT", function()

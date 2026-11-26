@@ -272,7 +272,7 @@ step("SkipQuest + Undo", function()
 end)
 step("Viewer empty", function() local k = ns.currentGuide.key; ns:CloseGuide(k); ns.Viewer:Refresh(); ns:LoadGuide(k, true) end)
 step("TravelPanel", function() ns.TravelPanel:Toggle(); ns.TravelPanel.Refresh(); ns.TravelPanel.MeasureServices() end)
-for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "class", "reputation",
+for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "class", "dungeonguides", "reputation",
 	"attunements", "events" }) do
 	step("Hub:" .. id, function() ns.Hub:Show(id); ns.Hub:Show(id) end)
 end

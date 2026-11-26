@@ -45,6 +45,9 @@ check(w.unknown == nil and w.Unknown == nil, "Pawn: o que não conhece fica de f
 local w2 = G.ParsePawn("Strength=1, Dodge=0.5, Parry=0.5")
 check(w2 and w2.str == 1 and w2.avoid == 1, "sem cabeçalho também lê; esquiva e aparo somam em avoid")
 check(G.ParsePawn("nada aqui") == nil and G.ParsePawn(nil) == nil, "texto sem peso: nil")
+local w3, n3 = G.ParsePawn('( Pawn: v1: "Caçador (Precisão)": Class=Hunter, Agility=2, Rap=0.9, Ap=0.4, FeralAp=0.1 )')
+check(w3 and n3 == "Caçador (Precisão)" and w3.agi == 2 and w3.rap == 0.9 and math.abs(w3.ap - 0.5) < 1e-9,
+	"Pawn: nome com parênteses e as chaves curtas do Pawn (Ap, Rap, FeralAp)")
 
 check(G.Score({ str = 10, sta = 5 }, { str = 2, sta = 0.5 }) == 22.5, "nota = soma status x peso")
 check(G.Score({ str = 10 }, {}) == 0 and G.Score(nil, { str = 1 }) == 0, "sem peso ou sem status: 0")
@@ -63,6 +66,21 @@ check(math.abs(best[16].gain - 0.75) < 1e-9, "ganho relativo: (70-40)/40")
 check(best[12] and best[12].id == 3 and not best[11], "anel compara com o pior dos dois")
 check(best[1] and best[1].id == 4 and best[1].gain == 1, "espaço vazio: qualquer coisa é melhoria")
 check(best[8] == nil, "espaço ocupado e sem dado: nada é melhoria")
+-- dois anéis vazios recebem dois anéis; a mesma peça não vai para os dois
+local rings = G.BestPerSlot({ { id = 7, slots = { 11, 12 }, score = 20 }, { id = 8, slots = { 11, 12 }, score = 15 } },
+	{ [11] = -1, [12] = -1 })
+check(rings[11] and rings[12] and rings[11].id ~= rings[12].id, "dois anéis vazios: um em cada")
+local one = G.BestPerSlot({ { id = 7, slots = { 11, 12 }, score = 20 } }, { [11] = -1, [12] = -1 })
+check((one[11] and 1 or 0) + (one[12] and 1 or 0) == 1, "uma peça só ocupa um espaço")
+-- duas mãos contra principal + escudo
+check(G.PairBase({ [16] = 30, [17] = 25 }, { 16, 17 }) == 55, "duas mãos: soma principal e secundária")
+check(G.PairBase({ [16] = 30, [17] = math.huge }, { 16, 17 }) == 30, "já com duas mãos: só a principal")
+check(G.PairBase({ [16] = -1, [17] = -1 }, { 16, 17 }) == -1 and G.PairBase({ [16] = 30 }, { 16, 17 }) == nil,
+	"mãos vazias: -1; sem dado da secundária: nil")
+local th = G.BestPerSlot({ { id = 9, slots = { 16 }, score = 50, pair = { 16, 17 } } }, { [16] = 30, [17] = 25 })
+check(th[16] == nil, "a de duas mãos (50) não bate principal + escudo (55)")
+th = G.BestPerSlot({ { id = 9, slots = { 16 }, score = 66, pair = { 16, 17 } } }, { [16] = 30, [17] = 25 })
+check(th[16] and math.abs(th[16].gain - 0.2) < 1e-9, "ganho da de duas mãos sobre as duas peças: (66-55)/55")
 
 check(G.SpecFromPoints({ 5, 31, 15 }) == 2, "spec pela árvore com mais pontos")
 check(G.SpecFromPoints({}) == 1 and G.SpecFromPoints({ 0, 0, 0 }) == 1, "sem pontos: a primeira")

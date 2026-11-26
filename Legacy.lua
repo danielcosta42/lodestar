@@ -61,7 +61,6 @@ local UI = ns.UI
 local unpackc = UI.unpackc
 
 local CONST = Constants and Constants.LegacyConsts or {}
-local WARRIOR_CAT = CONST.LEGACY_DEFAULT_CATEGORY_WARRIOR or 15585
 local CLASSES = { "WARRIOR", "PALADIN", "HUNTER", "ROGUE", "PRIEST", "SHAMAN", "MAGE", "WARLOCK", "DRUID" }
 local CLASS_CAT = {}
 for _, c in ipairs(CLASSES) do CLASS_CAT[c] = CONST["LEGACY_DEFAULT_CATEGORY_" .. c] end
@@ -85,8 +84,12 @@ ns:On("PLAYER_LOGIN", function() C_Timer.After(5, saveMe) end)
 ns:On("PLAYER_LEVEL_UP", function() C_Timer.After(1, saveMe) end)
 ns:On("SKILL_LINES_CHANGED", function() C_Timer.After(1, saveMe) end)
 
--- A árvore de categorias do Legado: a raiz é o ancestral de topo da categoria do guerreiro.
-local function rootOf(cat)
+function LG:Available()
+	return GetCategoryList and GetCategoryInfo and GetCategoryNumAchievements and GetAchievementInfo and true or false
+end
+
+-- O ancestral de topo (pai -1) de uma categoria: o grupo, como a janela de Legado do jogo monta a árvore.
+local function topOf(cat)
 	local guard, cur = 0, cat
 	while cur and guard < 10 do
 		local _, parent = GetCategoryInfo(cur)
@@ -96,36 +99,25 @@ local function rootOf(cat)
 	return cur
 end
 
-function LG:Available()
-	return GetCategoryList and GetCategoryInfo and GetCategoryNumAchievements and GetAchievementInfo and true or false
-end
-
 -- { groups = { { id, name, list = { {id, name, completed, progress, cat, class, level}* } }* }, done, total }
+-- Toda categoria de GetCategoryList com desafio entra (é o que Blizzard_LegacyChallenges faz neste cliente).
 function LG:Read()
 	if not LG:Available() then return nil end
-	local root = rootOf(WARRIOR_CAT)
-	if not root then return nil end
 	local catClass = {}
 	for c, id in pairs(CLASS_CAT) do if id then catClass[id] = c end end
 	local groups, byId = {}, {}
 	local done, total = 0, 0
 	for _, cat in ipairs(GetCategoryList() or {}) do
-		-- o grupo: o filho da raiz no caminho até ela
-		local path, cur, guard = {}, cat, 0
-		while cur and cur ~= root and guard < 10 do
-			path[#path + 1] = cur
-			local _, parent = GetCategoryInfo(cur)
-			cur, guard = parent, guard + 1
-		end
-		if cur == root and #path > 0 then
-			local gid = path[#path]
+		local n = (GetCategoryNumAchievements(cat, true)) or 0
+		if n > 0 then
+			local gid = topOf(cat)
 			local g = byId[gid]
 			if not g then
 				g = { id = gid, name = (GetCategoryInfo(gid)), list = {} }
 				byId[gid] = g; groups[#groups + 1] = g
 			end
 			local class = catClass[cat]
-			for i = 1, (GetCategoryNumAchievements(cat, true)) or 0 do
+			for i = 1, n do
 				local id, name, _, completed = GetAchievementInfo(cat, i)
 				if id then
 					local crit = {}

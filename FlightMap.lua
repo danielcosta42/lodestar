@@ -21,7 +21,7 @@ local function ensureMarker()
 	sh:SetPoint("CENTER", 1, -1); sh:SetSize(22, 22)
 	sh:SetRotation(math.pi); sh:SetVertexColor(0, 0, 0, 0.55)
 	local tex = UI.Glyph(marker, "seta-rota", "OVERLAY", 128); tex:SetAllPoints()
-	tex:SetRotation(math.pi); tex:SetVertexColor(UI.unpackc(UI.COL.accent))
+	tex:SetRotation(math.pi); tex:SetVertexColor(UI.unpackc(UI.HUD.accent))
 	marker._t = 0
 	marker:SetScript("OnUpdate", function(self, e)
 		self._t = self._t + e

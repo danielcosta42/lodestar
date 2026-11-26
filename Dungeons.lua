@@ -120,15 +120,36 @@ ns:Every(3, function()
 		if x and x > 0 then lastOutside = { map = map, x = x * 100, y = y * 100, t = GetTime() } end
 	end
 end)
+-- sumonado (pedra de encontro, bruxo): o último ponto é de onde o sumonador estava, não a porta
+local summonedAt
+ns:On("CONFIRM_SUMMON", function() summonedAt = GetTime() end)
+
+-- o ponto cai na zona da entrada (o próprio mapa ou um acima dele, até o continente)?
+local function inZone(map, zone)
+	local want = zone and ns.zoneUiMap and ns.zoneUiMap[zone]
+	if not want then return true end            -- masmorra fora do roteiro: não há com o que comparar
+	local guard = 0
+	while map and map ~= 0 and guard < 4 do
+		if map == want then return true end
+		local info = C_Map.GetMapInfo(map)
+		map, guard = info and info.parentMapID, guard + 1
+	end
+	return false
+end
+
 ns:On("PLAYER_ENTERING_WORLD", function()
 	C_Timer.After(1, function()
 		if not (IsInInstance and IsInInstance() and GetInstanceInfo) then return end
 		local _, kind, _, _, _, _, _, instanceID = GetInstanceInfo()
 		if not (kind == "party" or kind == "raid") or not instanceID then return end
-		-- só um ponto recente conta (um /reload lá dentro não pode gravar a porta de onde se estava ontem)
-		if lastOutside and GetTime() - lastOutside.t < 30 then
-			ns.db.dungeonDoors[instanceID] = { map = lastOutside.map, x = lastOutside.x, y = lastOutside.y }
-		end
+		-- só um ponto recente conta (um /reload lá dentro não pode gravar a porta de onde se estava ontem), e não
+		-- depois de um sumonar
+		if not lastOutside or GetTime() - lastOutside.t >= 30 then return end
+		if summonedAt and GetTime() - summonedAt < 120 then return end
+		local d
+		for _, e in ipairs(ns.dungeonData or {}) do if e.instance == instanceID then d = e end end
+		if d and not inZone(lastOutside.map, d.zone) then return end
+		ns.db.dungeonDoors[instanceID] = { map = lastOutside.map, x = lastOutside.x, y = lastOutside.y }
 	end)
 end)
 
