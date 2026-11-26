@@ -101,7 +101,7 @@ local function build()
 	poster:EnableMouse(true); poster:SetMovable(true); poster:RegisterForDrag("LeftButton")
 	poster:SetScript("OnDragStart", poster.StartMoving); poster:SetScript("OnDragStop", poster.StopMovingOrSizing)
 	if UISpecialFrames then table.insert(UISpecialFrames, "LodestarRetro") end      -- ESC fecha
-	local fio = UI.Rect(poster, "ARTWORK", C.accent); fio:SetPoint("TOPLEFT"); fio:SetPoint("TOPRIGHT"); fio:SetHeight(2)
+	local fio = UI.Rect(poster, "ARTWORK", C.accent); fio:SetPoint("TOPLEFT", 12, 0); fio:SetPoint("TOPRIGHT", -12, 0); fio:SetHeight(2)   -- dentro da curva do canto
 
 	-- quem
 	poster.iconBox = UI.Rect(poster, "ARTWORK", { 1, 1, 1, 0.1 }); poster.iconBox:SetSize(40, 40)
@@ -172,7 +172,7 @@ local function build()
 	logo:SetPoint("RIGHT", footer, "LEFT", -5, 0)
 
 	-- barra de ações (fora do print)
-	poster.bar = UI.Panel(poster, { color = { 0.051, 0.047, 0.035, 1 }, border = false })
+	poster.bar = UI.Panel(poster, { color = { 0.051, 0.047, 0.035, 1 }, border = false, bottom = true })
 	poster.bar:SetPoint("BOTTOMLEFT", 1, 1); poster.bar:SetPoint("BOTTOMRIGHT", -1, 1); poster.bar:SetHeight(BAR_H)
 	poster.close = UI.Button(poster.bar, "", 34, 34); poster.close:SetPoint("RIGHT", -12, 0)
 	local x = UI.Glyph(poster.close, "fechar", "OVERLAY", 64); x:SetSize(14, 14); x:SetPoint("CENTER")

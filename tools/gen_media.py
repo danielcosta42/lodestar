@@ -62,6 +62,44 @@ def shadow(size, r, blur):
     return alpha
 
 
+# A seta (issue #93): ponta em cima, asas embaixo, entalhe no meio; o centro da textura fica perto do centro da
+# figura, para girar (SetRotation) sem balançar.
+ARROW = [(64, 8), (110, 112), (64, 88), (18, 112)]
+
+
+def sd_poly(pts, x, y):
+    """Distância com sinal até o polígono (negativa dentro)."""
+    d = float("inf")
+    inside = False
+    n = len(pts)
+    for i in range(n):
+        ax, ay = pts[i]
+        bx, by = pts[(i + 1) % n]
+        ex, ey = bx - ax, by - ay
+        t = max(0.0, min(1.0, ((x - ax) * ex + (y - ay) * ey) / (ex * ex + ey * ey)))
+        px, py = ax + ex * t, ay + ey * t
+        d = min(d, math.hypot(x - px, y - py))
+        if (ay > y) != (by > y) and x < ax + (y - ay) * ex / ey:
+            inside = not inside
+    return -d if inside else d
+
+
+def arrow(inset=0.0):
+    """A figura cheia; inset > 0 recua a borda (o miolo, por cima do contorno)."""
+    def alpha(x, y):
+        return 0.5 - (sd_poly(ARROW, x, y) + inset)
+    return alpha
+
+
+def arrow_shadow(blur):
+    def alpha(x, y):
+        d = sd_poly(ARROW, x, y)
+        if d <= 0:
+            return 1.0
+        return math.exp(-(d * d) / (2 * (blur / 2.2) ** 2))
+    return alpha
+
+
 def main():
     tga(os.path.join(MEDIA, "round-12.tga"), 64, rounded(64, 12))
     tga(os.path.join(MEDIA, "round-6.tga"), 32, rounded(32, 6))
@@ -69,6 +107,10 @@ def main():
     tga(os.path.join(MEDIA, "round-12-line.tga"), 64, ring(64, 12, 1))
     tga(os.path.join(MEDIA, "round-6-line.tga"), 32, ring(32, 6, 1))
     tga(os.path.join(MEDIA, "shadow.tga"), 128, shadow(128, 12, 20))
+    tga(os.path.join(MEDIA, "pill-line.tga"), 32, ring(32, 16, 1))
+    tga(os.path.join(MEDIA, "nav-arrow.tga"), 128, arrow())
+    tga(os.path.join(MEDIA, "nav-arrow-fill.tga"), 128, arrow(7))
+    tga(os.path.join(MEDIA, "nav-arrow-shadow.tga"), 128, arrow_shadow(9))
     print("ok")
 
 

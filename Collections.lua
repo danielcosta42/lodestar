@@ -226,12 +226,12 @@ local function itemCard(parent)
 	c.icon = c:CreateTexture(nil, "ARTWORK"); c.icon:SetSize(40, 40); c.icon:SetPoint("TOPLEFT", 12, -12)
 	c.name = UI.Text(c, 13.5, C.active, { bold = true, wrap = false })
 	c.name:SetPoint("TOPLEFT", c.icon, "TOPRIGHT", 10, 0); c.name:SetPoint("RIGHT", c, "RIGHT", -12, 0)
-	c.src = UI.Text(c, 11.5, C.dim, { num = true, wrap = true })
-	c.src:SetPoint("TOPLEFT", c.name, "BOTTOMLEFT", 0, -3); c.src:SetPoint("RIGHT", c, "RIGHT", -12, 0)
-	c.src:SetHeight(28); c.src:SetJustifyV("TOP")
-	c.badge = UI.Badge(c, "", "ok"); c.badge:SetPoint("BOTTOMRIGHT", -10, 8)
-	c.go = CreateFrame("Button", nil, c); c.go:SetSize(52, 16); c.go:SetPoint("BOTTOMLEFT", c.icon, "BOTTOMRIGHT", 10, -6)
+	c.src = UI.Text(c, 11.5, C.dim, { num = true, wrap = false })
+	c.src:SetPoint("TOPLEFT", c.name, "BOTTOMLEFT", 0, -4); c.src:SetPoint("TOPRIGHT", c.name, "BOTTOMRIGHT", 0, -4)
+	c.badge = UI.Badge(c, "", "ok"); c.badge:SetPoint("BOTTOMRIGHT", -10, 10)
+	c.go = CreateFrame("Button", nil, c); c.go:SetHeight(18); c.go:SetPoint("BOTTOMLEFT", c.icon, "BOTTOMRIGHT", 10, -8)
 	c.goFS = UI.Text(c.go, 12, C.tip, { bold = true }); c.goFS:SetPoint("LEFT"); c.goFS:SetText(ns.L.V3_GO)
+	c.go:SetWidth(math.ceil(c.goFS:GetStringWidth()) + 6)
 	return c
 end
 

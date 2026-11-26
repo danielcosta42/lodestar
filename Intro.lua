@@ -17,7 +17,7 @@ local function build()
 	frame:EnableMouse(true)
 
 	local accent = UI.Rect(frame, "ARTWORK", C.accent)
-	accent:SetPoint("TOPLEFT"); accent:SetPoint("TOPRIGHT"); accent:SetHeight(2)
+	accent:SetPoint("TOPLEFT", 12, 0); accent:SetPoint("TOPRIGHT", -12, 0); accent:SetHeight(2)   -- dentro da curva do canto
 
 	local star = UI.Glyph(frame, "estrela", "ARTWORK", 128)
 	star:SetSize(30, 30); star:SetPoint("TOP", 0, -18); star:SetVertexColor(UI.unpackc(C.accent))

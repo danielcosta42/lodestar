@@ -256,4 +256,22 @@ check(U.Compare("dev", "2.0.0") == nil and U.Parse("@project-version@") == nil, 
 check(U.FromCaps("v=2.16.0,lvl=17,guide=Westfall,step=3/80,v=1.2") == "2.16.0", "a versão do Lodestar nas caps da rede")
 check(U.FromCaps("v=1.2,mode=x") == nil, "caps de outro addon sem lvl: não confunde")
 
+-- ── issue #93: quest cinza ───────────────────────────────────────────────────
+local QG = loadPure("QuestState.lua").QuestState
+check(QG.IsGrey(43, 47, 3) and not QG.IsGrey(44, 47, 3) and not QG.IsGrey(43, 47, nil) and not QG.IsGrey(nil, 47, 3),
+	"cinza: passou do nível da quest mais que a faixa do cliente; sem dado, não é")
+-- 10 é cinza e só libera 11 (cinza); 20 é cinza mas libera 21 (não é cinza); 30 não é cinza
+local gsteps = {
+	{ goals = { { verb = "accept", id = 10 }, { verb = "accept", id = 20 }, { verb = "accept", id = 30 } } },
+	{ only = "completed(10)", goals = { { verb = "accept", id = 11 } } },
+	{ only = "completed(20)", goals = { { verb = "accept", id = 21 } } },
+	{ goals = { { verb = "turnin", id = 10 }, { verb = "kill", q = { id = 20, obj = 1 } } } },
+}
+local greyIds = { [10] = true, [11] = true, [20] = true }
+local gskip = QG.GreySkip({ gsteps }, function(q) return greyIds[q] end)
+check(gskip[10] and gskip[11] and not gskip[20] and not gskip[21] and not gskip[30],
+	"cinza sai do guia com o que só ela libera; fica a que leva a quest que ainda vale")
+local un, ut = QG.Useful(gsteps, function(q) return not greyIds[q] end)
+check(un == 2 and ut == 5, "o que ainda serve: quests para pegar, sem repetir, as úteis")
+
 print(("ok: %d checks"):format(checks))

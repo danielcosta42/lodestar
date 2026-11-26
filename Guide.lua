@@ -402,7 +402,11 @@ end
 -- aceite, mesmo com ela no diário, até desfazer ou aceitá-la à mão
 local function skippedGoal(char, goal)
 	local q = questOf(goal)
-	return q and char and char.skipped and char.skipped[q] or false
+	if not q then return false end
+	if char and char.skipped and char.skipped[q] then return true end
+	-- quest cinza (QuestState, issue #93): fora do guia enquanto não está no diário nem foi feita
+	local gs = ns.greySkip
+	return (gs and gs[q] and not IsQuestInLog(q) and not IsQuestComplete(q)) and true or false
 end
 
 function ns:IsGoalActive(goal)
@@ -579,8 +583,20 @@ local function findStartGuide()
 	return best
 end
 
+-- Quanto do guia ainda serve no nível lvl (issue #93): das quests que ele manda pegar, as que não estão feitas nem
+-- são cinza. No 47, o Feralas 43-48 é quase todo cinza; perde para um guia que ainda rende.
+local function usefulFrac(g, lvl)
+	local QS = ns.QuestState
+	if not (QS and QS.Useful and QS.IsGreyQuest) or (ns.db and ns.db.skipGrey == false) then return 1 end
+	local steps = {}
+	for _, st in ipairs(ensureParsed(g)) do if ns:IsStepActive(st) then steps[#steps + 1] = st end end
+	local n, total = QS.Useful(steps, function(q) return not IsQuestComplete(q) and not QS.IsGreyQuest(q, lvl) end)
+	if total < 5 then return 1 end
+	return n / total
+end
+
 -- AUTOPILOT: melhor guia de leveling p/ QUALQUER nível — faixa (lo-hi) que contém
--- o nível do player, com desempate pela ZONA atual (via mapa, à prova de locale).
+-- o nível do player, com desempate pela ZONA atual (via mapa, à prova de locale) e pelo que ainda rende.
 function ns:BestGuideForPlayer()
 	local lvl = UnitLevel("player") or 1
 	local pf = UnitFactionGroup("player")
@@ -614,6 +630,8 @@ function ns:BestGuideForPlayer()
 				-- dez quests não pode ganhar de uma 48-52 no nível 50); no empate
 				-- exato, a chave — a ordem do pairs muda a cada carga
 				score = score + math.abs(lvl - (lo + hi) / 2) / 100
+				-- o que sobra de útil (só nos que já disputam: ler o guia todo custa)
+				if score < 4 then score = score + (1 - usefulFrac(g, lvl)) * 4 end
 				if not bestScore or score < bestScore or (score == bestScore and key < best) then
 					bestScore, best = score, key
 				end

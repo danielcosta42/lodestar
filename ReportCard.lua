@@ -185,7 +185,7 @@ local function build()
 	card:SetFrameStrata("DIALOG"); card:SetToplevel(true)     -- o menu ⋯ (FULLSCREEN_DIALOG) fica por cima
 	card:EnableMouse(true); card:SetMovable(true); card:RegisterForDrag("LeftButton")
 	card:SetScript("OnDragStart", card.StartMoving); card:SetScript("OnDragStop", card.StopMovingOrSizing)
-	local fio = UI.Rect(card, "ARTWORK", C.accent); fio:SetPoint("TOPLEFT"); fio:SetPoint("TOPRIGHT"); fio:SetHeight(2)
+	local fio = UI.Rect(card, "ARTWORK", C.accent); fio:SetPoint("TOPLEFT", 12, 0); fio:SetPoint("TOPRIGHT", -12, 0); fio:SetHeight(2)   -- dentro da curva do canto
 
 	-- quem: ícone da classe na caixa com o tom dela, nome, raça e classe
 	card.iconBox = UI.Rect(card, "ARTWORK", { 1, 1, 1, 0.1 }); card.iconBox:SetSize(40, 40)
@@ -225,7 +225,7 @@ local function build()
 	logo:SetPoint("RIGHT", card.footer, "LEFT", -5, 0)
 
 	-- barra de ações (fora do print)
-	card.bar = UI.Panel(card, { color = { 0.051, 0.047, 0.035, 1 }, border = false })
+	card.bar = UI.Panel(card, { color = { 0.051, 0.047, 0.035, 1 }, border = false, bottom = true })
 	card.bar:SetPoint("BOTTOMLEFT", 1, 1); card.bar:SetPoint("BOTTOMRIGHT", -1, 1); card.bar:SetHeight(BAR_H)
 	local sep = UI.Rect(card.bar, "ARTWORK", UI.COL.line); sep:SetPoint("TOPLEFT"); sep:SetPoint("TOPRIGHT"); sep:SetHeight(1)
 	card.close = iconButton(card.bar, "fechar", CLOSE or "Close"); card.close:SetPoint("RIGHT", -12, 0)

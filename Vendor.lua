@@ -1,6 +1,6 @@
 --=============================================================================
--- Vendor — ao abrir o vendedor: repara tudo (fundos da guilda primeiro) e vende
--- o lixo cinza automaticamente. Tudo opcional (ns.db.autoRepair / autoSell).
+-- Vendor — ao abrir o vendedor: repara tudo (com o dinheiro da guilda primeiro, se ns.db.repairGuild) e vende
+-- o lixo cinza automaticamente. Tudo opcional (ns.db.autoRepair / repairGuild / autoSell).
 --=============================================================================
 local ADDON, ns = ...
 
@@ -32,7 +32,7 @@ local function autoRepair()
 	if not cost or cost <= 0 then return end
 
 	local usedGuild = false
-	if CanGuildBankRepair and CanGuildBankRepair() and RepairAllItems then
+	if ns.db.repairGuild ~= false and CanGuildBankRepair and CanGuildBankRepair() and RepairAllItems then
 		local w = GetGuildBankWithdrawMoney and GetGuildBankWithdrawMoney() or 0
 		if w == -1 or w >= cost then RepairAllItems(true); usedGuild = true end
 	end

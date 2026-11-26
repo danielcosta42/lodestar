@@ -58,7 +58,6 @@ end
 --------------------------------------------------------------------------------
 if not ns.On then return end
 local UI = ns.UI
-local unpackc = UI.unpackc
 
 local CONST = Constants and Constants.LegacyConsts or {}
 local CLASSES = { "WARRIOR", "PALADIN", "HUNTER", "ROGUE", "PRIEST", "SHAMAN", "MAGE", "WARLOCK", "DRUID" }
@@ -210,10 +209,10 @@ PAGE.build = function(page, H)
 	page.openFS:SetText(L.V3_LEG_OPEN)
 	page.open:SetScript("OnClick", function() LG:OpenGame() end)
 	-- grupos (esquerda), lista do grupo (meio), mais perto (direita)
-	page.gCard = UI.Card(page, { color = C.card }); page.gCard:SetPoint("TOPLEFT", 0, -106); page.gCard:SetSize(212, 474)
+	page.gCard = UI.Card(page, { color = C.card }); page.gCard:SetPoint("TOPLEFT", 0, -106); page.gCard:SetSize(200, 474)
 	page.gLabel = H.Label(page.gCard, L.V3_LEG_GROUPS); page.gLabel:SetPoint("TOPLEFT", 14, -14)
 	page.gRows = {}
-	local mw = math.floor((cw - 212 - 28) * 0.55)
+	local mw = math.floor((cw - 200 - 28) * 0.52)
 	page.lCard = UI.Card(page, { color = C.card }); page.lCard:SetPoint("TOPLEFT", page.gCard, "TOPRIGHT", 14, 0)
 	page.lCard:SetSize(mw, 474)
 	page.lLabel = H.Label(page.lCard, ""); page.lLabel:SetPoint("TOPLEFT", 14, -14)
@@ -221,24 +220,16 @@ PAGE.build = function(page, H)
 	page.lscroll:SetPoint("TOPLEFT", 12, -34); page.lscroll:SetPoint("BOTTOMRIGHT", -14, 10)
 	page.rows = {}
 	page.cCard = UI.Card(page, { color = C.card }); page.cCard:SetPoint("TOPLEFT", page.lCard, "TOPRIGHT", 14, 0)
-	page.cCard:SetSize(cw - 212 - 28 - mw, 474)
+	page.cCard:SetSize(cw - 200 - 28 - mw, 474)
 	page.cLabel = H.Label(page.cCard, L.V3_LEG_CLOSEST); page.cLabel:SetPoint("TOPLEFT", 14, -14)
+	page.cscroll, page.clist = UI.Scroll(page.cCard)
+	page.cscroll:SetPoint("TOPLEFT", 6, -34); page.cscroll:SetPoint("BOTTOMRIGHT", -12, 10)
 	page.cRows = {}
 	page.none = UI.Text(page, 13, C.dim, { wrap = true }); page.none:SetPoint("TOPLEFT", 0, -120); page.none:SetWidth(cw)
 	page.none:SetText(L.V3_LEG_NONE); page.none:Hide()
 end
 
-local function achRow(parent)
-	local C = UI.COL
-	local r = CreateFrame("Frame", nil, parent); r:SetHeight(34)
-	r.glyph = r:CreateTexture(nil, "OVERLAY"); r.glyph:SetSize(15, 15); r.glyph:SetPoint("TOPLEFT", 0, -3)
-	r.name = UI.Text(r, 12.5, C.active, { wrap = false }); r.name:SetPoint("TOPLEFT", 22, -2); r.name:SetPoint("RIGHT", r, "RIGHT", -40, 0)
-	r.bar = UI.Bar(r, C.epic); r.bar:SetHeight(4); r.bar:SetPoint("TOPLEFT", r.name, "BOTTOMLEFT", 0, -5)
-	r.bar:SetPoint("RIGHT", r, "RIGHT", -40, 0)
-	r.pct = UI.Text(r, 11.5, C.dim, { num = true, justify = "RIGHT" }); r.pct:SetPoint("TOPRIGHT", 0, -2)
-	r:EnableMouse(true)
-	return r
-end
+local function achRow(parent) return UI.ListRow(parent, 46) end
 
 PAGE.refresh = function(page, H)
 	local C, L = UI.COL, ns.L
@@ -278,44 +269,40 @@ PAGE.refresh = function(page, H)
 	for i, a in ipairs(sel and sel.list or {}) do
 		local r = page.rows[i] or achRow(page.list); page.rows[i] = r
 		r:ClearAllPoints(); r:SetPoint("TOPLEFT", page.list, "TOPLEFT", 0, -y); r:SetPoint("RIGHT", page.list, "RIGHT")
-		r.glyph:SetTexture(a.completed and (UI.GLYPH .. "check-64") or (UI.MEDIA .. "ring"))
-		r.glyph:SetVertexColor(unpackc(a.completed and C.done or C.epic))
-		local extra = a.class and best[a.class] and ("  |cff%s%s|r"):format(UI.Hex("dim"), L.V3_LEG_YOURS:format(best[a.class])) or ""
-		r.name:SetText((a.name or "?") .. extra)
-		r.name:SetTextColor(unpackc(a.completed and C.faded or C.active))
-		r.bar:SetShown(not a.completed); r.bar:SetProgress(a.progress or 0)
-		r.pct:SetText(a.completed and "" or ("%d%%"):format(math.floor((a.progress or 0) * 100)))
+		local yours = a.class and best[a.class] and L.V3_LEG_YOURS:format(best[a.class])
 		local id = a.id
-		r:SetScript("OnMouseUp", function() LG:OpenGame(id) end)
+		r:Set({
+			glyph = a.completed and "check" or "estrela", tone = a.completed and "ok" or "epic",
+			title = (a.name or "?") .. (yours and not a.completed and ("  |cff%s%s|r"):format(UI.Hex("dim"), yours) or ""),
+			titleColor = a.completed and C.faded or C.active,
+			progress = not a.completed and (a.progress or 0) or nil, progressColor = C.epic,
+			sub = a.completed and (yours or L.V3_Q_DONE) or nil,
+			value = a.completed and "" or ("%d%%"):format(math.floor((a.progress or 0) * 100)),
+			onClick = function() LG:OpenGame(id) end,
+		})
 		r:Show()
-		y = y + 36
+		y = y + 46
 	end
 	page.list:SetHeight(math.max(1, y)); page.lscroll.Sync()
 	-- mais perto
 	local all = {}
 	for _, g in ipairs(data.groups) do for _, a in ipairs(g.list) do all[#all + 1] = a end end
 	for _, r in ipairs(page.cRows) do r:Hide() end
-	for i, a in ipairs(LG.Closest(all, 6)) do
-		local r = page.cRows[i]
-		if not r then
-			r = CreateFrame("Frame", nil, page.cCard); r:SetHeight(52)
-			r.badge = UI.Badge(r, "+1", "epic"); r.badge:SetPoint("TOPLEFT", 0, -2)
-			r.name = UI.Text(r, 13, C.active, { bold = true, wrap = true }); r.name:SetPoint("TOPLEFT", 34, 0)
-			r.name:SetPoint("RIGHT", r, "RIGHT", -4, 0)
-			r.sub = UI.Text(r, 11.5, C.dim, { num = true, wrap = false }); r.sub:SetPoint("TOPLEFT", r.name, "BOTTOMLEFT", 0, -3)
-			r.go = CreateFrame("Button", nil, r); r.go:SetSize(80, 16); r.go:SetPoint("TOPRIGHT", r.sub, "TOPRIGHT", 0, 0)
-			r.goFS = UI.Text(r.go, 12, C.tip, { bold = true }); r.goFS:SetPoint("LEFT")
-			page.cRows[i] = r
-		end
-		r:ClearAllPoints(); r:SetPoint("TOPLEFT", page.cCard, "TOPLEFT", 14, -34 - (i - 1) * 60)
-		r:SetPoint("RIGHT", page.cCard, "RIGHT", -14, 0)
-		r.name:SetText(a.name or "?")
-		r.sub:SetText(L.V3_LEG_PCT:format(math.floor((a.progress or 0) * 100)))
+	y = 0
+	for i, a in ipairs(LG.Closest(all, 8)) do
+		local r = page.cRows[i] or UI.ListRow(page.clist, 58); page.cRows[i] = r
+		r:ClearAllPoints(); r:SetPoint("TOPLEFT", page.clist, "TOPLEFT", 0, -y); r:SetPoint("RIGHT", page.clist, "RIGHT")
 		local target = LG:Action(a)
-		r.goFS:SetText(target and L.V3_GO or L.V3_LEG_SEE)
-		r.go:SetScript("OnClick", function() if target then H:Show(target) else LG:OpenGame(a.id) end end)
+		r:Set({
+			glyph = "estrela", tone = "epic", title = a.name or "?", wrap = true,
+			sub = L.V3_LEG_PCT:format(math.floor((a.progress or 0) * 100)),
+			action = target and L.V3_GO or L.V3_LEG_SEE,
+			onAction = function() if target then H:Show(target) else LG:OpenGame(a.id) end end,
+		})
 		r:Show()
+		y = y + 58
 	end
+	page.clist:SetHeight(math.max(1, y)); page.cscroll.Sync()
 end
 
 PAGE.count = function() return nil end

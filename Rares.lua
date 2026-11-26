@@ -91,18 +91,7 @@ end)
 --------------------------------------------------------------------------------
 local PAGE = { label = ns.L.RARE_PAGE, glyph = "alvo", order = 7 }
 
-local function row(parent)
-	local C = UI.COL
-	local r = CreateFrame("Button", nil, parent)
-	r:SetHeight(44)
-	r.bg = UI.Card(r, { color = C.card }); r.bg:SetAllPoints(); r.bg:SetFrameLevel(r:GetFrameLevel())
-	r.name = UI.Text(r, 14, C.active, { bold = true, wrap = false }); r.name:SetPoint("TOPLEFT", 14, -7)
-	r.name:SetPoint("RIGHT", r, "RIGHT", -150, 0)
-	r.sub = UI.Text(r, 11.5, C.dim, { num = true, wrap = false }); r.sub:SetPoint("TOPLEFT", r.name, "BOTTOMLEFT", 0, -3)
-	r.dist = UI.Badge(r, "", "epic"); r.dist:SetPoint("RIGHT", -100, 0)
-	r.go = UI.Button(r, ns.L.V3_GO, 80, 28); r.go:SetPoint("RIGHT", -12, 0)
-	return r
-end
+local function row(parent) return UI.ListRow(parent, 50) end
 
 PAGE.build = function(page, H)
 	H.PageTitle(page, ns.L.RARE_PAGE)
@@ -131,10 +120,11 @@ PAGE.refresh = function(page)
 	for i, s in ipairs(sorted) do
 		local r = page.rows[i] or row(page.list); page.rows[i] = r
 		r:ClearAllPoints(); r:SetPoint("TOPLEFT", page.list, "TOPLEFT", 0, -y); r:SetPoint("RIGHT", page.list, "RIGHT", -6, 0)
-		r.name:SetText(s.rare.name)
-		r.sub:SetText(L.RARE_SUB:format(s.rare.lvl, #s.rare.pts))
-		if s.dist then r.dist:Set(L.V3_YARDS:format(s.dist)); r.dist:Show() else r.dist:Hide() end
-		r.go:SetScript("OnClick", function() R:GoTo(s.rare, zone, s.x, s.y) end)
+		r:Set({
+			glyph = "alvo", tone = "epic", title = s.rare.name, sub = L.RARE_SUB:format(s.rare.lvl, #s.rare.pts),
+			value = s.dist and L.V3_YARDS:format(s.dist) or nil, valueColor = UI.COL.epic,
+			action = L.V3_GO, onAction = function() R:GoTo(s.rare, zone, s.x, s.y) end,
+		})
 		r:Show()
 		y = y + 50
 	end
