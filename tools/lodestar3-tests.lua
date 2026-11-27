@@ -239,6 +239,175 @@ check(N.Revisits(pts, 5, { x = 30, y = 40, c = 0 }) and not N.Revisits(pts, 3, {
 	and not N.Revisits(pts, 5, { x = 30, y = 40, c = 1 }) and not N.Revisits(pts, 5, { x = 200, y = 0, c = 0 })
 	and not N.Revisits(pts, 5, nil), "volta: passo antes do da sugestão, mesmo continente, até 60 jd")
 
+-- ── issue #122: nesta área ───────────────────────────────────────────────────
+;(function()
+	local AG = loadPure("AreaGoals.lua").AreaGoals
+	local function ob(type_, text, have, need, finished)
+		return { type = type_, text = text, numFulfilled = have, numRequired = need, finished = finished or false }
+	end
+	-- o objetivo do banco no diário: a mesma quantidade e o mesmo tipo em cada posição, a mesma ordem
+	local e2 = { { kind = "c", id = 2926 }, { kind = "c", id = 2925 } }
+	local id = AG.LogIndex(e2, { ob("monster", "Silvermane Stalker slain: 3/10", 3, 10),
+		ob("monster", "Silvermane Howler slain: 0/10", 0, 10) })
+	check(id[1] == 1 and id[2] == 2, "nesta área: mesma quantidade e tipo, o índice do banco é o do diário")
+	-- o diário com um objetivo a mais (evento) e o objeto antes do mob: pelo nome no texto, e o único do tipo
+	local e3 = { { kind = "c", id = 10 }, { kind = "o", id = 20 }, { kind = "i", id = 30 } }
+	local log3 = { ob("object", "Altar Selado usado: 0/1", 0, 1), ob("event", "Mensagem entregue", 0, 1),
+		ob("monster", "Vilebranch Scalper slain: 4/30", 4, 30), ob("item", "Stalker Flank: 2/8", 2, 8) }
+	local names = { c = { [10] = { "Vilebranch Scalper" } }, i = { [30] = "Stalker Flank" } }
+	local mp = AG.LogIndex(e3, log3, function(k, i) return names[k] and names[k][i] end)
+	check(mp[1] == 3 and mp[3] == 4 and mp[2] == 1,
+		"nesta área: sem a guarda, o mob e o item pelo nome no texto; o objeto, o único do tipo")
+	local semNome = AG.LogIndex(e3, log3)
+	check(semNome[1] == 3 and semNome[2] == 1 and semNome[3] == 4, "sem nome nenhum: o único de cada tipo")
+	local dois = AG.LogIndex({ { kind = "c", id = 1 }, { kind = "c", id = 2 } },
+		{ ob("monster", "Lobo A slain: 0/5", 0, 5), ob("event", "x", 0, 1), ob("monster", "Lobo B slain: 0/5", 0, 5) })
+	check(not dois[1] and not dois[2],
+		"dois mobs sem nome e o diário diferente do banco: nenhum (melhor sem contagem errada)")
+	check(next(AG.LogIndex(e2, nil)) == nil and next(AG.LogIndex(nil, {})) == nil, "sem diário ou sem dado: nada")
+	-- o nome no texto, sem a contagem (na frente ou atrás) e sem o "slain"
+	local slain = { "", " slain" }
+	check(AG.Name("Silvermane Howler slain: 20/30", true, slain) == "Silvermane Howler", "nome: o mob sem o slain")
+	check(AG.Name("20/30 Silvermane Howler slain", true, slain) == "Silvermane Howler", "nome: a contagem na frente")
+	check(AG.Name("Stalker Flank: 2/8", false, slain) == "Stalker Flank", "nome: o item, só sem a contagem")
+	check(AG.Name("Caixa de suprimentos: 2/8", false) == "Caixa de suprimentos", "nome: sem affix")
+	check(AG.Name("Uivador Juba-de-prata morto: 3/10", true, { "", " morto" }) == "Uivador Juba-de-prata",
+		"nome: o affix do cliente (outro idioma)")
+	check(AG.Name("Mate Lobo Cinzento: 1/4", true, { "Mate ", "" }) == "Lobo Cinzento", "nome: o affix na frente")
+	local af1, af2, af3 = AG.SlainAffix("%s slain: %d/%d"), AG.SlainAffix("%d/%d %s slain"), AG.SlainAffix(nil)
+	check(af1[1] == "" and af1[2] == " slain" and af2[2] == " slain" and AG.Name("3/8 Kobold slain", true, af2) == "Kobold"
+		and af3[2] == " slain" and AG.SlainAffix("%1$s morto(s): %2$d/%3$d")[2] == " morto(s)",
+		"o affix do QUEST_MONSTERS_KILLED: nos dois formatos, com posição e sem o global")
+	check(AG.Name("Uivador morto(s): 1/4", true, AG.SlainAffix("%1$s morto(s): %2$d/%3$d")) == "Uivador",
+		"nome: o affix com parênteses")
+	-- de onde é cada quest
+	local steps = { { goals = { { verb = "accept", id = 1 } } }, { goals = { { verb = "kill", q = { id = 2 } } } },
+		{ goals = { { verb = "kill", q = { id = 3 } }, { verb = "turnin", id = 2 } } },
+		{ goals = { { verb = "turnin", id = 3 } } } }
+	local tq = function(g) return (g.verb == "accept" or g.verb == "turnin") and g.id or g.q and g.q.id end
+	local tr = AG.Tiers(steps, 2, tq)
+	check(tr[2].tier == 1 and tr[2].step == 2 and tr[3].tier == 2 and tr[3].step == 3 and not tr[1],
+		"de onde: a do passo atual, a de um passo à frente (o primeiro), e a que só ficou para trás é de fora")
+	-- o goal do guia no diário (o cartão do passo)
+	local spawn = {
+		[2] = { { kind = "c", id = 2926, areas = {} }, { kind = "c", id = 2925, areas = {} } },
+		[5] = { { kind = "i", id = 50, areas = {} } },
+	}
+	local diario = {
+		[2] = { ob("monster", "Silvermane Stalker slain: 3/10", 3, 10),
+			ob("monster", "Silvermane Howler slain: 0/10", 0, 10) },
+		[5] = { ob("item", "Honey: 0/10", 0, 10) },
+	}
+	local ctx = { entryOf = function(q) return spawn[q] end, objsOf = function(q) return diario[q] end,
+		match = function(e, g) for i, o in ipairs(e) do if o.id == g.id then return i end end end }
+	check(AG.GoalKey({ verb = "kill", id = 1, q = { id = 2, obj = 1 } }, ctx) == "2:1", "goal: o índice do |q")
+	check(AG.GoalKey({ verb = "kill", id = 2925, q = { id = 2 } }, ctx) == "2:2", "goal sem índice: pelo id, no diário")
+	check(AG.GoalKey({ verb = "collect", q = { id = 5 } }, ctx) == "5:1", "goal sem índice nem casamento: o único")
+	check(AG.GoalKey({ verb = "accept", id = 2 }, ctx) == nil
+		and AG.GoalKey({ verb = "kill", q = { id = 9 } }, ctx) == nil,
+		"aceite e quest fora do diário: nada")
+	local shown = AG.Shown({ { verb = "kill", id = 2926, q = { id = 2 } }, { verb = "talk", id = 9 },
+		{ verb = "kill", id = 2925, q = { id = 2 }, off = true } }, ctx, function(g) return not g.off end)
+	check(shown["2:1"] and not shown["2:2"], "o cartão: os goals ativos, um objetivo do diário cada")
+
+	-- as linhas: dentro da folga, ainda abertas, fora do cartão, na ordem
+	local function area(z, x, y) return { zone = z, x = x, y = y, n = 5, hull = { x, y } } end
+	local A = { [1] = area("Z", 10, 10), [2] = area("Z", 20, 20), [3] = area("Z", 30, 30), [4] = area("Z", 40, 40),
+		[5] = area("W", 50, 50), [6] = area("Z", 60, 60), [7] = area("Z", 70, 70), [8] = area("Z", 80, 80) }
+	local data = {
+		[7828] = { { kind = "c", id = 2926 }, { kind = "c", id = 2925 } },               -- do passo
+		[7829] = { { kind = "c", id = 2929 } },                                          -- à frente
+		[7839] = { { kind = "o", id = 1 }, { kind = "i", id = 19033 } },                 -- à frente
+		[77] = { { kind = "i", id = 8684 } },                                            -- fora do guia
+		[90] = { { kind = "c", id = 1 } },                                               -- fora do diário
+	}
+	local logs = {
+		[7828] = { ob("monster", "Silvermane Stalker slain: 3/10", 3, 10),
+			ob("monster", "Silvermane Howler slain: 9/10", 9, 10) },
+		[7829] = { ob("monster", "Savage Owlbeast slain: 0/20", 0, 20) },
+		[7839] = { ob("object", "Caixa: 1/1", 1, 1, true), ob("item", "Slagtree's Lost Tools: 2/8", 2, 8) },
+		[77] = { ob("item", "Hinterlands Honey Ripple: 10/10", 10, 10) },
+	}
+	local tiers = { [7828] = { 1, 19 }, [7829] = { 2, 21 }, [7839] = { 2, 20 } }
+	local c2 = { entryOf = function(q) return data[q] end, objsOf = function(q) return logs[q] end,
+		tierOf = function(q) local ti = tiers[q]; if ti then return ti[1], ti[2] end return 3 end, affix = slain,
+		margin = function(z) return z == "W" and 50 or 10 end, shown = { ["7828:1"] = true } }
+	local perto = {
+		{ q = 7829, obj = 1, area = A[1], d = 0 }, { q = 7839, obj = 2, area = A[2], d = 0 },
+		{ q = 7828, obj = 1, area = A[3], d = 0 }, { q = 7828, obj = 2, area = A[4], d = 4 },
+		{ q = 7839, obj = 1, area = A[1], d = 0 }, { q = 77, obj = 1, area = A[1], d = 0 },
+		{ q = 7829, obj = 1, area = A[6], d = 8 }, { q = 90, obj = 1, area = A[1], d = 0 },
+		{ q = 7839, obj = 2, area = A[5], d = 30 }, { q = 7829, obj = 1, area = A[7], d = 12 },
+	}
+	local rows = AG.Collect(perto, c2)
+	local got = {}
+	for _, r in ipairs(rows) do got[#got + 1] = r.q .. ":" .. r.log end
+	check(table.concat(got, ",") == "7828:2,7839:2,7829:1",
+		"as linhas: a do passo primeiro; o feito, a conta cheia, o do cartão e o fora do diário não entram: "
+		.. table.concat(got, ","))
+	check(rows[1].name == "Silvermane Howler" and rows[1].have == 9 and rows[1].need == 10 and rows[1].tier == 1
+		and rows[1].area == A[4], "a do passo: o nome sem o slain, a contagem do diário, a área")
+	check(rows[2].kind == "i" and rows[2].name == "Slagtree's Lost Tools" and rows[3].area == A[1] and rows[3].d == 0,
+		"à frente: a área mais perto de cada objetivo (um por objetivo do diário)")
+	check(AG.Count(rows[2]) == "2/8" and AG.Count({ name = "x" }) == "", "a contagem: feito/pedido; sem pedido, nada")
+	-- a folga: a mais de 10 (a zona Z) fica de fora; na zona W, até 50
+	local folga = AG.Collect({ { q = 7829, obj = 1, area = A[1], d = 11 }, { q = 7839, obj = 2, area = A[5], d = 30 } },
+		c2)
+	check(#folga == 1 and folga[1].q == 7839, "a folga é a da zona da área (a maior zona, a folga maior)")
+	-- dentro do mesmo grupo: a mais perto, depois o passo
+	tiers[7839] = { 2, 25 }
+	local ord = AG.Collect({ { q = 7839, obj = 2, area = A[2], d = 0 }, { q = 7829, obj = 1, area = A[1], d = 0 },
+		{ q = 77, obj = 1, area = A[1], d = 0 } }, c2)
+	check(#ord == 2 and ord[1].q == 7829 and ord[2].q == 7839, "empate de distância: o passo mais perto primeiro")
+	logs[77][1] = ob("item", "Hinterlands Honey Ripple: 3/10", 3, 10)
+	local off = AG.Collect({ { q = 77, obj = 1, area = A[1], d = 0 }, { q = 7829, obj = 1, area = A[1], d = 5 } }, c2)
+	check(#off == 2 and off[1].q == 7829 and off[2].q == 77 and off[2].tier == 3,
+		"a de fora do guia depois das do guia, mesmo mais perto")
+	logs[77][1] = ob("item", "Hinterlands Honey Ripple: 10/10", 10, 10)
+	-- o diário sem texto ainda: o nome do banco/guia
+	logs[7829][1] = ob("monster", "", 0, 20)
+	c2.nameOf = function(k, i) return k == "c" and i == 2929 and { "Savage Owlbeast" } or nil end
+	local sn = AG.Collect({ { q = 7829, obj = 1, area = A[1], d = 0 } }, c2)
+	check(sn[1] and sn[1].name == "Savage Owlbeast", "sem o texto do diário: o nome que se sabe")
+	c2.nameOf = nil
+	check(#AG.Collect({ { q = 7829, obj = 1, area = A[1], d = 0 } }, c2) == 0, "sem nome nenhum: fora")
+	logs[7829][1] = ob("monster", "Savage Owlbeast slain: 0/20", 0, 20)
+	-- a assinatura muda com a contagem e com a ordem
+	local s1 = AG.Signature(rows)
+	logs[7828][2] = ob("monster", "Silvermane Howler slain: 10/10", 10, 10)
+	local rows2 = AG.Collect(perto, c2)
+	check(s1 ~= AG.Signature(rows2) and #rows2 == 2, "a assinatura muda quando a conta muda (e a cheia sai)")
+	check(AG.Signature({}) == "", "assinatura vazia")
+
+	-- de ponta a ponta com o SA.Near (o contorno de verdade, 0 dentro)
+	local sns = loadPure("SpawnMap.lua", { spawnZones = { "Z" }, spawnQuest = {} })
+	local DIG = "0123456789abcdefghijklmnopqrstuvwxyz"
+	local function b36(v)
+		v = math.floor(v + 0.5)
+		local hi = math.floor(v / 36)
+		return DIG:sub(hi + 1, hi + 1) .. DIG:sub(v % 36 + 1, v % 36 + 1)
+	end
+	local function enc(cx, cy, hull)
+		local s = b36(1) .. b36(cx * 10) .. b36(cy * 10) .. b36(5)
+		for _, v in ipairs(hull) do s = s .. b36(v * 10) end
+		return s
+	end
+	sns.spawnQuest[1] = { "c11;" .. enc(45, 30, { 40, 25, 50, 25, 50, 35, 40, 35 }) .. ";"
+		.. enc(80, 80, { 78, 78, 82, 78, 80, 82 }) }
+	sns.spawnQuest[2] = { "i22;" .. enc(52, 30, { 48, 26, 56, 26, 56, 34, 48, 34 }) }
+	local SA = sns.SpawnAreas
+	local function wo(_, x, y) return { c = 0, x = x * 10, y = y * 10 } end
+	local lg = { [1] = { ob("monster", "Lobo slain: 1/5", 1, 5) }, [2] = { ob("item", "Pele: 0/3", 0, 3) } }
+	local c3 = { entryOf = SA.For, objsOf = function(q) return lg[q] end, margin = 10, affix = slain }
+	local function at(x, y) return AG.Collect(SA.Near({ 1, 2 }, { c = 0, x = x * 10, y = y * 10 }, 100, wo), c3) end
+	local both = at(49, 30)
+	check(#both == 2 and both[1].d == 0 and both[2].d == 0, "dentro das duas áreas: as duas linhas")
+	check(#at(45, 30) == 1 and at(45, 30)[1].name == "Lobo", "dentro de uma só: uma linha")
+	check(#at(45, 36) == 1, "a 10 jd da borda (a folga): ainda dentro")
+	check(#at(45, 40) == 0, "a 50 jd: fora")
+	check(at(80, 79)[1].area.x == 80, "a outra área do mesmo objetivo: a linha leva a área de onde ele está")
+end)()
+
 -- ── botão de alvo ────────────────────────────────────────────────────────────
 local TB = loadPure("TargetButton.lua").TargetButton
 local tg = TB.Targets({ { verb = "kill", id = 5, text = "Boar" }, { verb = "talk", id = 6, text = "Gryan" },

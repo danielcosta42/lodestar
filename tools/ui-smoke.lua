@@ -1085,6 +1085,133 @@ step("SpawnAreas", function()
 	T:Replan(true)
 	assert(ok, err)
 end)
+-- nesta área (#122): um diário de mentira com 3 quests e 5 objetivos numa área só (o jogador dentro de todas): os
+-- abertos aparecem, os da quest do passo primeiro, com a contagem; o feito não; o do cartão do passo não repete; o
+-- clique guia à área; fora da área a lista esvazia; desligado, some. O mundo: a zona vira um quadrado de 1000 jd.
+step("AreaGoals", function()
+	local AG, SA, D, T, TP, WP, QL = ns.AreaGoals, ns.SpawnAreas, ns.Destinations, ns.Travel, ns.TravelPlanner,
+		ns.Waypoint, _G.C_QuestLog
+	local DIG = "0123456789abcdefghijklmnopqrstuvwxyz"
+	local function b36(v)
+		v = math.floor(v + 0.5)
+		local hi = math.floor(v / 36)
+		return DIG:sub(hi + 1, hi + 1) .. DIG:sub(v % 36 + 1, v % 36 + 1)
+	end
+	local zi
+	for i, z in ipairs(ns.spawnZones) do if z == "Westfall" then zi = i end end
+	assert(zi, "Westfall fora do SpawnAreas")
+	local function area(cx, cy, hull)
+		local t = b36(zi) .. b36(cx * 10) .. b36(cy * 10) .. b36(6)
+		for _, v in ipairs(hull) do t = t .. b36(v * 10) end
+		return t
+	end
+	local sq = function(x0, y0, x1, y1) return { x0, y0, x1, y0, x1, y1, x0, y1 } end
+	local A, B, C = 990001, 990002, 990003
+	-- A: dois mobs (o 1º também nasce longe); B: o objeto e o item na ordem do banco (o diário tem o item antes);
+	-- C: um mob
+	ns.spawnQuest[A] = { "c9001;" .. area(52, 48, sq(45, 45, 55, 55)) .. ";" .. area(80, 80, sq(78, 78, 82, 82)),
+		"c9002;" .. area(51, 50, sq(48, 46, 58, 56)) }
+	ns.spawnQuest[B] = { "o9003;" .. area(50, 50, sq(44, 44, 56, 56)), "i9004;" .. area(49, 51, sq(46, 47, 54, 57)) }
+	ns.spawnQuest[C] = { "c9005;" .. area(47, 52, { 40, 40, 60, 40, 50, 60 }) }
+	local function ob(t, text, have, need, done)
+		return { type = t, text = text, numFulfilled = have, numRequired = need, finished = done or false }
+	end
+	local log = {
+		[A] = { ob("monster", "Lobo Alfa slain: 2/10", 2, 10), ob("monster", "Lobo Beta slain: 0/6", 0, 6) },
+		[B] = { ob("item", "Caixa de suprimentos: 2/8", 2, 8), ob("object", "Totem: 1/1", 1, 1, true) },
+		[C] = { ob("monster", "Coruja Selvagem slain: 0/20", 0, 20) },
+	}
+	local ids = { A, B, C }
+	local passo = { goals = { { verb = "goto_", text = "Lá", q = { id = A } } } }
+	local sGet, sPW, sW, sRoute, sDist, sIn = ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone
+	local sNum, sInfo, sObj, sIdx = QL.GetNumQuestLogEntries, QL.GetInfo, QL.GetQuestObjectives, QL.GetLogIndexForQuestID
+	local px, py = 500, 500
+	ns.GetStep = function() return passo end
+	T.World = function(_, x, y) return { c = 0, x = (x or 0) * 10, y = (y or 0) * 10 } end
+	T.PlayerWorld = function() return { c = 0, x = px, y = py } end
+	T.Route = function() return nil end
+	WP.DistanceTo = function() return 50, 1, 1 end
+	TP.InZone = function() return true end
+	QL.GetNumQuestLogEntries = function() return #ids end
+	QL.GetInfo = function(i) return ids[i] and { questID = ids[i] } end
+	QL.GetQuestObjectives = function(q) return log[q] or sObj(q) end
+	QL.GetLogIndexForQuestID = function(q) if log[q] then return 1 end return sIdx(q) end
+	D:ClearStops(); D:Clear("manual")
+	ns.db.areaGoals = true
+	local canvas = CreateFrame("Frame"); canvas:SetSize(1000, 667)
+	local ok, err = pcall(function()
+		AG.Scan(true)
+		local rows = AG.List()
+		local got = {}
+		for _, r in ipairs(rows) do got[#got + 1] = r.q .. ":" .. r.log end
+		assert(table.concat(got, ",") == ("%d:1,%d:2,%d:1,%d:1"):format(A, A, B, C),
+			"nesta área: os abertos, os da quest do passo primeiro: " .. table.concat(got, ","))
+		assert(rows[1].name == "Lobo Alfa" and AG.Count(rows[1]) == "2/10" and rows[3].name == "Caixa de suprimentos"
+			and AG.Count(rows[3]) == "2/8" and rows[3].kind == "i", "nome e contagem do diário")
+		local f = ns.Viewer:GetFrame()
+		assert(f.areaLabel:IsShown() and f.areaCard:IsShown() and not f.areaMore:IsShown(), "o bloco não apareceu")
+		for i = 1, 4 do assert(f.areaRows[i]:IsShown(), "linha " .. i .. " não apareceu") end
+		assert(not f.areaRows[5]:IsShown(), "linha a mais")
+		assert(f.areaRows[1].text._text == "Lobo Alfa" and f.areaRows[3].count._text == "2/8",
+			"a linha: " .. tostring(f.areaRows[1].text._text) .. " / " .. tostring(f.areaRows[3].count._text))
+		f.areaRows[3]:GetScript("OnEnter")(f.areaRows[3]); f.areaRows[3]:GetScript("OnLeave")(f.areaRows[3])
+		-- o clique guia à área de onde ele está (o ponto-alvo dela)
+		f.areaRows[3]:Click()
+		local m = D:Get("manual")
+		assert(m and m.zone == "Westfall" and math.abs(m.x - 49) < 0.01 and math.abs(m.y - 51) < 0.01,
+			"o clique não guiou à área: " .. tostring(m and m.x))
+		D:Clear("manual")
+		f.areaRows[1]:Click()
+		m = D:Get("manual")
+		assert(m and math.abs(m.x - 52) < 0.01, "o objetivo com duas áreas: a de onde ele está, não a longe")
+		D:Clear("manual")
+		-- o Enquanto está aqui não repete o objetivo que está aqui
+		assert(AG.Covers({ verb = "kill", id = 9005, q = { id = C } }) and not AG.Covers({ verb = "kill", q = { id = 7 } }),
+			"Covers: o objetivo da lista")
+		-- o mapa: as áreas deles, mais suaves (o passo não tem área)
+		WorldMapFrame.GetMapID = function() return ns.zoneUiMap.Westfall end
+		WorldMapFrame.GetCanvas = function() return canvas end
+		WorldMapFrame:Show()
+		SA.Update()
+		local nF, nL = SA.Drawn()
+		assert(_G.LodestarSpawnMap and _G.LodestarSpawnMap:IsShown() and nF > 0 and nL > 0,
+			("nesta área no mapa: %d faixas, %d linhas"):format(nF, nL))
+		-- o objetivo que o cartão do passo mostra sai da lista
+		passo.goals = { { verb = "kill", id = 9001, text = "Lobo Alfa", q = { id = A, obj = 1 } } }
+		AG.Scan(true)
+		assert(#AG.List() == 3 and AG.List()[1].q == A and AG.List()[1].log == 2, "o do cartão repetiu na lista")
+		-- a contagem muda: a linha segue
+		log[C][1] = ob("monster", "Coruja Selvagem slain: 5/20", 5, 20)
+		ns.fire("QUEST_LOG_UPDATE")
+		AG.Scan()
+		local cnt
+		for _, r in ipairs(AG.List()) do if r.q == C then cnt = AG.Count(r) end end
+		assert(cnt == "5/20", "a contagem não seguiu o diário: " .. tostring(cnt))
+		-- fora da área: a lista esvazia
+		px, py = 950, 950
+		AG.Scan()
+		assert(#AG.List() == 0 and not f.areaCard:IsShown() and not f.areaRows[1]:IsShown(), "fora da área e a lista ficou")
+		px, py = 500, 500
+		AG.Scan()
+		assert(#AG.List() == 3, "de volta à área: a lista voltou")
+		-- desligado, some (a janela e o mapa; o passo de novo sem área própria)
+		passo.goals = { { verb = "goto_", text = "Lá", q = { id = A } } }
+		AG.Scan(true); SA.Update()
+		assert(_G.LodestarSpawnMap:IsShown(), "as áreas de nesta área sumiram do mapa")
+		ns.db.areaGoals = false
+		AG.Refresh()
+		assert(#AG.List() == 0 and not f.areaCard:IsShown(), "desligado e a lista ficou")
+		assert(not _G.LodestarSpawnMap:IsShown(), "desligado e as áreas ficaram no mapa")
+	end)
+	ns.db.areaGoals = true
+	ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone = sGet, sPW, sW, sRoute, sDist, sIn
+	QL.GetNumQuestLogEntries, QL.GetInfo, QL.GetQuestObjectives, QL.GetLogIndexForQuestID = sNum, sInfo, sObj, sIdx
+	ns.spawnQuest[A], ns.spawnQuest[B], ns.spawnQuest[C] = nil, nil, nil
+	WorldMapFrame.GetMapID, WorldMapFrame.GetCanvas = nil, nil
+	D:Clear("manual")
+	AG.Refresh()
+	assert(ok, err)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

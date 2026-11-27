@@ -18,6 +18,8 @@
 --   SA.NearPlayer(quests, radius)        -> o mesmo, do jogador (no jogo)
 --   SA.Hull(xy) / SA.Rounded(xy, pad) / SA.Spans(poly, dy) -> a geometria do desenho
 --
+-- No mapa também vão, mais suaves (azul, por baixo), as áreas dos objetivos de "Nesta área" (AreaGoals.lua, #122).
+--
 -- `worldOf(zona, x, y)` -> { c, x, y } (o Travel.World).
 --=============================================================================
 local _, ns = ...
@@ -29,6 +31,8 @@ local sqrt, atan2, cos, sin, ceil, max, min, pi = math.sqrt, math.atan2, math.co
 
 SA.INSIDE = 1.5            -- unidades do mapa (0-100): o ponto do guia a até isso da borda conta como dentro da área
 SA.CACHE = 64              -- quests decodificadas guardadas (todas, sob o Lua 5.1, passariam de 8 MB)
+SA.PAD = 0.008             -- o desenho incha o contorno isso da largura do mapa aberto (o "Nesta área" do #122 conta
+                           -- dentro da mancha com a mesma fração da largura da zona, em jardas)
 
 --------------------------------------------------------------------------------
 -- os dados
@@ -524,10 +528,12 @@ local function project(a, shown, w, h)
 	return xy
 end
 
-local function drawArea(a, shown, w, h, target)
+-- style: "target" (a da seta: mais forte, por cima), "step" (as do passo) ou "soft" (as de "Nesta área", #122: azul,
+-- mais clara e por baixo das do passo)
+local function drawArea(a, shown, w, h, style)
 	local xy = project(a, shown, w, h)
 	if not xy then return end
-	local pad = max(5, w * 0.008)
+	local pad = max(5, w * SA.PAD)
 	local poly = SA.Rounded(SA.Hull(xy), pad)
 	local x0, y0, x1, y1 = math.huge, math.huge, -math.huge, -math.huge
 	for i = 1, #poly - 1, 2 do
@@ -536,16 +542,20 @@ local function drawArea(a, shown, w, h, target)
 	end
 	if x1 < 0 or y1 < 0 or x0 > w or y0 > h then return end     -- fora do mapa aberto
 	local C = UI.HUD          -- sobre o mapa: a paleta fixa (UI.lua), a mesma do RouteMap e do GuideMap
-	local fill, edge = C.amber, target and C.accentBright or C.amber
+	local target, soft = style == "target", style == "soft"
+	local fill = soft and C.tip or C.amber
+	local edge = target and C.accentBright or fill
 	local s = SA.Spans(poly, max(1.5, (y1 - y0) / 48))
-	-- a da seta numa camada acima das outras (no mesmo nível o jogo não garante a ordem)
-	local up = target and 2 or 0
-	for i = 1, #s - 3, 4 do band(s[i + 2], s[i], s[i + 3], s[i + 1], fill, target and 0.30 or 0.16, up) end
+	-- a da seta numa camada acima das outras, a suave abaixo (no mesmo nível o jogo não garante a ordem)
+	local up = target and 2 or soft and -2 or 0
+	local alpha = target and 0.30 or soft and 0.10 or 0.16
+	for i = 1, #s - 3, 4 do band(s[i + 2], s[i], s[i + 3], s[i + 1], fill, alpha, up) end
 	local n = #poly / 2
 	for i = 1, n do
 		local ax, ay, bx, by = poly[2 * i - 1], poly[2 * i], poly[i % n * 2 + 1], poly[i % n * 2 + 2]
-		seg(ax, ay, bx, by, C.shadow, 0.45, target and 4.5 or 3, 1 + up)          -- sombra: lê sobre areia e neve
-		seg(ax, ay, bx, by, edge, target and 1 or 0.8, target and 2.5 or 1.5, 2 + up)
+		-- sombra: lê sobre areia e neve
+		seg(ax, ay, bx, by, C.shadow, soft and 0.30 or 0.45, target and 4.5 or soft and 2.5 or 3, 1 + up)
+		seg(ax, ay, bx, by, edge, target and 1 or soft and 0.6 or 0.8, target and 2.5 or soft and 1.2 or 1.5, 2 + up)
 	end
 end
 
@@ -558,20 +568,32 @@ local function update()
 	local w, h = canvas:GetSize()
 	if not w or w == 0 then return hideAll() end
 	local objs = stepObjectives()
-	if #objs == 0 then return hideAll() end
+	-- as de "Nesta área" (#122) na zona do mapa aberto, menos as que o passo já desenha
+	local mine, soft = {}, {}
+	for _, c in ipairs(objs) do mine[c.q .. ":" .. c.k] = true end
+	for _, x in ipairs(ns.AreaGoals and ns.AreaGoals.MapAreas and ns.AreaGoals.MapAreas(shown) or {}) do
+		if not mine[x.key] then soft[#soft + 1] = x end
+	end
+	if #objs == 0 and #soft == 0 then return hideAll() end
 	local g = ns.Destinations and ns.Destinations.GuideTarget()
 	local target = g and g.area
 	local parts = { tostring(shown), ("%d"):format(w), ("%d"):format(h), tostring(target) }
 	for _, c in ipairs(objs) do parts[#parts + 1] = c.q .. ":" .. c.k end
+	parts[#parts + 1] = "~"
+	local seen = {}
+	for _, x in ipairs(soft) do
+		if not seen[x.key] then seen[x.key] = true; parts[#parts + 1] = x.key end
+	end
 	local sig = table.concat(parts, "|")
 	if sig == lastSig and overlay and overlay:IsShown() then return end
 	lastSig = sig
 	ensure(canvas)
 	clear()
+	for _, x in ipairs(soft) do drawArea(x.area, shown, w, h, "soft") end
 	for _, c in ipairs(objs) do
-		for _, a in ipairs(c.obj.areas) do if a ~= target then drawArea(a, shown, w, h, false) end end
+		for _, a in ipairs(c.obj.areas) do if a ~= target then drawArea(a, shown, w, h, "step") end end
 	end
-	if target then drawArea(target, shown, w, h, true) end          -- a da seta por cima, mais forte
+	if target then drawArea(target, shown, w, h, "target") end      -- a da seta por cima, mais forte
 end
 SA.Update = update
 -- quantas faixas e linhas estão no mapa (o teste de fumaça)

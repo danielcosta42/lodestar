@@ -4,6 +4,7 @@
 -- distância). Feito agora, o passo lá na frente já chega pronto ou mais curto. Clique guia até lá.
 -- (issue #118) E o que o guia não cita: quest pronta no diário com o ponto de entrega perto (QuestEnders.lua), e os
 -- livros da biblioteca na bolsa quando o jogador está na cidade do bibliotecário — com um aviso uma vez.
+-- (issue #122) O objetivo que "Nesta área" (AreaGoals.lua) já mostra — o jogador está na área dele — não entra aqui.
 --
 -- No topo, o núcleo puro (testado fora do jogo, tools/lodestar3-tests.lua). Abaixo, o jogo.
 --=============================================================================
@@ -181,7 +182,8 @@ function N:Candidates()
 						if not gated and not ns.IsQuestInLog(q) and not ns.IsQuestDone(q)
 							and N.Opens(req[q], level, ns.IsQuestDone) then kind = "accept" end
 					elseif goal.q and ns.IsQuestInLog(q) then
-						kind = "objective"
+						-- o objetivo em cuja área o jogador está já vai em "Nesta área" (#122): não repete aqui
+						kind = not (ns.AreaGoals and ns.AreaGoals.Covers(goal)) and "objective" or nil
 					end
 					if kind and N.Revisits(points, i, world(goal.goto_)) then kind = nil end
 					if kind then

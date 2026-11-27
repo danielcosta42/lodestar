@@ -122,6 +122,8 @@ RareData.lua
 Rares.lua
 Characters.lua
 Nearby.lua
+# Nesta área (issue #122): os objetivos do diário que dá para fazer onde o jogador está.
+AreaGoals.lua
 TargetButton.lua
 PartySync.lua
 Updates.lua

@@ -160,6 +160,7 @@ local DB_DEFAULTS = {
 	rewards = {},         -- recompensas de quest vistas no jogo (Equipamento)
 	-- issue #92
 	nearby = true,        -- Enquanto está aqui: objetivos dos próximos passos quando perto
+	areaGoals = true,     -- Nesta área: objetivos do diário cuja área de nascimento tem o jogador dentro (#122)
 	targetButton = true,  -- botão de alvo do passo
 	markTarget = true,    -- o botão de alvo marca com ícone de raide
 	npcNames = {},        -- nome de cada NPC do guia no idioma do cliente (aprendido ao ver)

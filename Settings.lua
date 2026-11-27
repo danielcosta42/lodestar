@@ -216,6 +216,9 @@ local function fillHud(p)
 	switchRow(p, L.SET_NEARBY, L.SET_NEARBY_D,
 		function() return ns.db.nearby ~= false end,
 		function(v) ns.db.nearby = v; if ns.Nearby then ns.Nearby.Scan() end end)
+	switchRow(p, L.SET_AREAGOALS, L.SET_AREAGOALS_D,
+		function() return ns.db.areaGoals ~= false end,
+		function(v) ns.db.areaGoals = v; if ns.AreaGoals and ns.AreaGoals.Refresh then ns.AreaGoals.Refresh() end end)
 	switchRow(p, L.SET_TARGETBTN, L.SET_TARGETBTN_D,
 		function() return ns.db.targetButton ~= false end,
 		function(v) ns.db.targetButton = v; if ns.TargetButton then ns.TargetButton.Apply() end end)
