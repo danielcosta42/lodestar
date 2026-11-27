@@ -21,6 +21,7 @@ tools/*
 !tools/revamp-tests.lua
 !tools/lodestar3-tests.lua
 !tools/gen_dungeons.py
+!tools/gen_questenders.py
 !tools/gen_media.py
 !tools/gen_rares.py
 !tools/gen_questlevels.py

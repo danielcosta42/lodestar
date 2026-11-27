@@ -651,6 +651,45 @@ step("TransitShare", function()
 	_G._sent, _G.IsInGuild, _G.C_Timer.After = nil, guild, after
 	assert(ok, err)
 end)
+-- o que o guia não cita (#118): quest pronta com a entrega perto e livros na cidade do bibliotecário — na lista do
+-- "Enquanto está aqui" e um aviso só
+step("Nearby off-guide", function()
+	local N, WP, TP, QL = ns.Nearby, ns.Waypoint, ns.TravelPlanner, _G.C_QuestLog
+	local sDist, sIn, sNum, sInfo, sComp = WP.DistanceTo, TP.InZone, QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete
+	local sCount, sShow = ns.ItemCount, ns.Toast.Show
+	local toasts = {}
+	local ok, err = pcall(function()
+		local gq = N.GuideQuests(ns.currentGuide.steps, function(g) return ns.QuestState.QuestOf(g) end)
+		local fora
+		for q in pairs(ns.questEnd) do if not gq[q] then fora = q; break end end
+		local livro = ns.Collect:Lists().books[1]
+		assert(fora and livro, "sem quest fora do guia ou sem livro nos dados")
+		-- só os pontos de fora do guia ficam perto (os do guia têm verbo): o limite de 3 linhas não os esconde
+		WP.DistanceTo = function(_, g) return (g and not g.verb) and 40 or nil end
+		TP.InZone = function() return true end
+		QL.GetNumQuestLogEntries = function() return 1 end
+		QL.GetInfo = function() return { questID = fora } end
+		QL.IsComplete = function(q) return q == fora end
+		ns.ItemCount = function(id) return id == livro.item and 1 or 0 end
+		ns.Toast.Show = function(_, t) toasts[#toasts + 1] = t end
+		N.Scan()
+		local temQ, temL = false, false
+		for _, c in ipairs(N:List()) do
+			if c.offGuide and c.q == fora then temQ = true end
+			if c.kind == "books" and c.n == 1 then temL = true end
+		end
+		assert(temQ, "a quest pronta fora do guia não apareceu")
+		assert(temL, "os livros na cidade do bibliotecário não apareceram")
+		assert(#toasts == 2, "avisos: " .. #toasts)
+		N.Scan()
+		assert(#toasts == 2, "avisou de novo")
+		ns.Viewer:Refresh()
+	end)
+	WP.DistanceTo, TP.InZone, QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete = sDist, sIn, sNum, sInfo, sComp
+	ns.ItemCount, ns.Toast.Show = sCount, sShow
+	ns.Nearby.Scan()
+	assert(ok, err)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

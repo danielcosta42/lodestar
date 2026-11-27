@@ -101,6 +101,15 @@ function C.BooksBody(books, turnin)
 	return table.concat(out, "\n")
 end
 
+-- Os livros a entregar (#118): na bolsa (`has(item)`) e com a quest do livro ainda não entregue (`done(quest)`).
+function C.BooksToHandIn(books, has, done)
+	local out = {}
+	for _, b in ipairs(books or {}) do
+		if b.item and b.quest and has(b.item) and not done(b.quest) then out[#out + 1] = b end
+	end
+	return out
+end
+
 -- O guia dos pets raros de caçador: um passo por pet (o ponto mais perto do anterior), fecha quando marcado.
 function C.PetsBody(pets, L)
 	local pts = {}
@@ -252,6 +261,13 @@ end
 function C:Lists()
 	local d = data()
 	return { quests = mine(d.quests), books = mine(d.books and d.books.list), pets = d.pets or {} }
+end
+
+-- os livros na bolsa para entregar e o bibliotecário da facção (o "Enquanto está aqui" avisa na cidade dele)
+function C:BooksToTurnIn()
+	local list = C.BooksToHandIn(C:Lists().books, hasItem, function(q) return ns.IsQuestDone(q) end)
+	local t = data().books and data().books.turnin
+	return list, t and t[UnitFactionGroup("player")]
 end
 
 function C:KindProgress(kind)
