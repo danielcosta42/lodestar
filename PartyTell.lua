@@ -44,8 +44,15 @@ end
 P.MAX_LINHAS = 3          -- por atualização do diário: o grupo não é inundado
 
 -- As linhas (#131): a estrela ({rt1}, a marca amarela no chat do grupo), "Lodestar - ", o link da quest e o resto
+-- O chat corta em 255 bytes: o que passa sai do resto (o texto do objetivo), sem partir letra de mais de um byte
+P.MAX_BYTES = 255
 function P.Line(link, resto)
-	return ("{rt1} Lodestar - %s %s"):format(link, resto)
+	local cabeca = ("{rt1} Lodestar - %s "):format(link)
+	local cabe = P.MAX_BYTES - #cabeca
+	if #resto > cabe and cabe > 0 then
+		resto = resto:sub(1, cabe):gsub("[\192-\255][\128-\191]*$", "")
+	end
+	return cabeca .. resto
 end
 
 --------------------------------------------------------------------------------

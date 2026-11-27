@@ -46,7 +46,8 @@ do Polestar é copiado.
   Em grupo (não raide, não instância de campo), uma linha no chat do grupo quando uma quest do diário fica pronta para
   entregar e quando um objetivo dela fecha. Formato (#131, `PartyTell.Line`): a estrela (`{rt1}`, a marca amarela),
   "Lodestar - ", o link da quest e o resto — "★ Lodestar - [Quest] pronta para entregar!" e "★ Lodestar - [Quest] 8/8
-  Kobold Vermin slain" (o texto do objetivo como o jogo dá). Se a quest fica pronta junto com o último objetivo, só a
+  Kobold Vermin slain" (o texto do objetivo como o jogo dá; acima de 255 bytes, o texto é cortado no fim sem partir
+  letra). Se a quest fica pronta junto com o último objetivo, só a
   linha de pronta; quest já avisada pronta não volta a falar de objetivo; objetivo sem texto, com os dados do servidor
   chegando, é desconhecido e não conta. Uma vez por quest e por objetivo, no máximo 3 linhas por atualização do diário
   (o que não sai se perde, não se repete); nada no login, no /reload nem para o que já estava feito. O save antigo

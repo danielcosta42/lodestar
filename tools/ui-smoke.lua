@@ -1500,7 +1500,7 @@ step("Party tell", function()
 		assert(#ditas == 1, "o objetivo que voltou falou de novo: " .. table.concat(ditas, " / "))
 		feito[77][2] = true                                         -- o último fecha e a quest fica pronta: só a de pronta
 		ns.PartyTell:Check()
-		assert(#ditas == 2 and ditas[2] == "PARTY|{rt1} Lodestar - [Quest 77] " .. ns.L.PT_READY and not ditas[2]:find("Alvo 77.2", 1, true),
+		assert(#ditas == 2 and ditas[2] == "PARTY|{rt1} Lodestar - [Quest 77] pronta para entregar!" and not ditas[2]:find("Alvo 77.2", 1, true),
 			"pronta: " .. table.concat(ditas, " / "))
 		feito[77] = { false, false }; ns.PartyTell:Check()           -- já avisada pronta, perdeu os itens dos dois
 		feito[77][2] = true; ns.PartyTell:Check()                   -- recuperou um (nunca avisado): não fala
