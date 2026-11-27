@@ -27,7 +27,7 @@ O primeiro teste em jogo da v2.15.0 mostrou:
   destino; a largura segue o texto. Fechar o guia some com a seta: o destino avulso ("Guiar", /way) sai junto; só o
   do corpo fica.
   (#110) Nas pernas sem direção (barco, zepelim, bonde), no lugar da seta: anel âmbar com 8 pontos girando (rastro
-  que some, uma volta em 1,2 s) e o relógio no meio; a bordo, uma volta em 2,4 s e a bandeira. O brilho pulsa. Em
+  que some, uma volta em 1,2 s) e o relógio no meio; a bordo, uma volta em 2,4 s e a bandeira. O brilho pulsa a cada 3 s. Em
   qualquer outra perna a animação some e a seta volta.
 - **R5 Linhas de lista.** UI.ListRow tem:
   - marcador em ladrilho (glifo num quadrado arredondado, no tom do selo);

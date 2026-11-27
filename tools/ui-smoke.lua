@@ -319,6 +319,12 @@ step("Arrow wait", function()
 		assert(not ar.tex._shown, "a agulha continua na perna de barco")
 		local upd = ar.wait:GetScript("OnUpdate")
 		for _ = 1, 30 do upd(ar.wait, 0.05) end
+		-- o tique seguinte não esconde e mostra de novo (o OnHide devolveria o brilho cheio: piscaria)
+		local hides, hide = 0, ar.wait.Hide
+		ar.wait.Hide = function(self) hides = hides + 1; hide(self) end
+		ns.Waypoint:Update()
+		ar.wait.Hide = nil
+		assert(ar.wait._shown and hides == 0, "a espera piscou no tique")
 		route.legs[2].boarded = 1
 		ns.Waypoint:Update()
 		assert(ar.wait._shown and ar.wait.period == 2.4, "a bordo: giro mais lento")
