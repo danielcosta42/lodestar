@@ -162,7 +162,13 @@ local function ignora(sender)
 	if not sender or (ns.IsSecret and ns.IsSecret(sender)) then return true end
 	local s = Ambiguate and Ambiguate(sender, "none") or sender
 	if s == (ns.PlayerName and ns.PlayerName()) or s == (UnitName and UnitName("player")) then return true end
-	return s:find("-", 1, true) ~= nil
+	local reino = s:match("%-([^%-]+)$")
+	if not reino then return false end
+	-- reino conectado ao meu (mesmos servidores do mundo): o horário vale
+	for _, r in ipairs(GetAutoCompleteRealms and GetAutoCompleteRealms() or {}) do
+		if r == reino then return false end
+	end
+	return true
 end
 
 ns:On("CHAT_MSG_ADDON", function(_, prefix, msg, canal, sender)
