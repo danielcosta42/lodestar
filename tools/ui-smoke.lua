@@ -547,6 +547,30 @@ step("Passages", function()
 	ns.Passages:Command("limpar")
 	assert(#ns.db.passages == 0, "limpar não apagou")
 end)
+-- entrou no mundo (#114): a rota velha (com caminho que falhou) é refeita do zero alguns tiques depois, como fechar
+-- e abrir o guia; o relatório leva o estado da rota
+step("Fresh route after entering world", function()
+	local T = ns.Travel
+	local pw, w = T.PlayerWorld, T.World
+	T.PlayerWorld = function() return { c = 0, x = -10500, y = 1050 } end
+	T.World = function() return { c = 0, x = -10560, y = 1010 } end
+	local ok, err = pcall(function()
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		local r1 = T:Route()
+		assert(r1 and r1.legs[1], "sem rota")
+		r1.legs[1].path, r1.legs[1].pathFail, r1.legs[1].pathAt = false, true, { c = 0, x = -10500, y = 1050 }
+		assert(T:Describe():find("fail"), "o relatório não mostra a falha do caminho")
+		ns.fire("PLAYER_ENTERING_WORLD")
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
+		local r2 = T:Route()
+		assert(r2 and r2 ~= r1 and not r2.legs[1].pathFail, "a rota não foi refeita do zero ao entrar no mundo")
+		assert(ns.Report.ReportText(ns.Report.Context(), "x"):find("Route: dest manual"), "relatório sem a rota")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World = pw, w
+	assert(ok, err)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

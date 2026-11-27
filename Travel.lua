@@ -350,7 +350,8 @@ local function pathTick()
 	local cur = route.legs[route.leg]
 	local pos = T.PlayerWorld()
 	local precisa = cur and cur.k == "walk" and pos and pos.c == cur.b.c
-		and not (cur.pathFail and cur.pathAt and dist(pos, cur.pathAt) < 300)
+		and not (cur.pathFail and cur.pathAt and dist(pos, cur.pathAt) < 300
+			and GetTime() - (cur.pathFailT or 0) < 30)      -- parado: tenta de novo a cada 30 s (#114)
 		and not (cur.path and select(4, ns.Terrain.Ahead(cur.path, pos, 0)) <= 40)
 	-- rota nova, perna já passada, ou a atual precisa e a busca em curso é de outra: larga
 	if pathCo and (pathRoute ~= route or pathIdx < route.leg or (precisa and pathLeg ~= cur)) then pathCo = nil end
@@ -366,7 +367,7 @@ local function pathTick()
 				route.pv = (route.pv or 0) + 1
 			else
 				pathLeg.path = pathLeg.path or false     -- falhou: fica o caminho anterior, se havia
-				pathLeg.pathFail = true
+				pathLeg.pathFail, pathLeg.pathFailT = true, GetTime()
 			end
 		end
 		return
@@ -396,6 +397,31 @@ function T:ResetPaths()
 		if leg.k == "walk" then leg.path, leg.pathFail, leg.pathAt = nil, nil, nil end
 	end
 	route.pv = (route.pv or 0) + 1
+end
+
+-- O estado da rota em uma linha, para o relatório (#114): destino, pernas, a atual, o caminho dela e o último erro
+-- do desenho no mapa/minimapa (ns.lastRouteErr).
+function T:Describe()
+	local dest, kind = destination()
+	local parts = { ("dest %s"):format(dest and (kind or "?") or "none") }
+	if route then
+		local cur = route.legs[route.leg]
+		local caminho = cur and cur.k == "walk" and (cur.path and (#cur.path .. " pts") or cur.path == false and "failed"
+			or "pending") or "-"
+		parts[#parts + 1] = ("legs %d · leg %d %s · path %s%s · pv %d"):format(#route.legs, route.leg,
+			cur and cur.k or "?", caminho, cur and cur.pathFail and " (fail)" or "", route.pv or 0)
+	else
+		parts[#parts + 1] = "no route"
+	end
+	if ns.lastRouteErr then parts[#parts + 1] = "draw error: " .. tostring(ns.lastRouteErr):sub(1, 120) end
+	return table.concat(parts, " · ")
+end
+
+-- Do zero, como fechar e abrir o guia: sem a rota, a busca e os caminhos de antes (nada é herdado, nem a falha).
+function T:Fresh()
+	pathCo = nil
+	route, routeKey = nil, nil
+	T:Replan(true)
 end
 
 ns:Every(0.05, function()
@@ -439,8 +465,22 @@ end
 ns:On("ZONE_CHANGED_NEW_AREA", visit)
 ns:On("PLAYER_ENTERING_WORLD", visit)
 
+-- Entrou no mundo (login, /reload, tela de carregamento): a posição e o mapa do jogador só ficam certos uns segundos
+-- depois. A rota e o caminho de antes disso podem ter saído de onde o jogador não estava, ou falhado e ficado
+-- esperando 300 jd (e a rota nova herdava a falha): o caminho não aparecia até fechar e abrir o guia (#114).
+-- Três tiques do relógio de 1 s depois, refaz do zero.
+local REFAZ_TIQUES = 3
+local refazEm
+local function refazDepois() refazEm = REFAZ_TIQUES end
+ns:On("PLAYER_ENTERING_WORLD", refazDepois)
+ns:On("LOADING_SCREEN_DISABLED", refazDepois)
+
 ns:Every(1, function()
 	if not ns.char then return end
+	if refazEm then
+		refazEm = refazEm - 1
+		if refazEm <= 0 then refazEm = nil; T:Fresh() end
+	end
 	local now = GetTime()
 	local pos = T.PlayerWorld()
 	local onTaxi = UnitOnTaxi and UnitOnTaxi("player")
