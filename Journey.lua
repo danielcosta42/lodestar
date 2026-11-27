@@ -80,7 +80,7 @@ function J.Plan(from, to, ctx)
 		for b, f in pairs(dests) do
 			local ib = fmIndex[b]
 			if ia and ib and known[b] then         -- só voa PARA voo conhecido
-				link(ia, ib, f.s + FLIGHT_OVERHEAD, { k = "flight", name = nodes[ib].name, to = b, p = f.p,
+				link(ia, ib, f.s + FLIGHT_OVERHEAD, { k = "flight", name = nodes[ib].name, to = b, from = a, p = f.p,
 					discover = not known[a] and a or nil })
 			end
 		end
@@ -178,5 +178,33 @@ function J.Plan(from, to, ctx)
 		table.insert(legs, 1, leg)
 		v = u
 	end
-	return { s = best[GOAL], legs = legs }
+	local juntas = J.JoinFlights(legs)
+	-- cada junção poupa uma decolagem: o total acompanha a soma das pernas (o tempo restante e a troca de rota usam as duas)
+	return { s = best[GOAL] - (#legs - #juntas) * FLIGHT_OVERHEAD, legs = juntas }
+end
+
+-- Voos seguidos viram um só (#124): no jogo, marcar o destino final faz o grifo passar pelos do meio sem pousar — duas
+-- pernas faziam pousar e marcar de novo, e a seta apontava o pouso do meio. Tempo somado menos uma decolagem, trajeto
+-- emendado, os do meio em `via`. Não junta através de uma parada (#117: `parada` marca o fim de um trecho).
+function J.JoinFlights(legs)
+	local out = {}
+	for _, leg in ipairs(legs or {}) do
+		local ant = out[#out]
+		if ant and ant.k == "flight" and leg.k == "flight" and not ant.parada then
+			local via = {}
+			for _, n in ipairs(ant.via or {}) do via[#via + 1] = n end
+			via[#via + 1] = ant.name
+			local p
+			if ant.p or leg.p then
+				p = {}
+				for _, x in ipairs(ant.p or {}) do p[#p + 1] = x end
+				for _, x in ipairs(leg.p or {}) do p[#p + 1] = x end
+			end
+			out[#out] = { k = "flight", name = leg.name, to = leg.to, from = ant.from, discover = ant.discover,
+				a = ant.a, b = leg.b, s = ant.s + leg.s - FLIGHT_OVERHEAD, p = p, via = via, parada = leg.parada }
+		else
+			out[#out + 1] = leg
+		end
+	end
+	return out
 end

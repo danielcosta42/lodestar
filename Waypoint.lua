@@ -185,6 +185,12 @@ function WP.LegText(route, i, secs, now)
 		end
 	elseif leg.k == "flight" then
 		text = L.LEG_FLY:format(leg.name or "?")
+		-- voo que passa por outros sem pousar (#124): os do meio, pelo nome curto (antes da vírgula)
+		if leg.via and #leg.via > 0 then
+			local curtos = {}
+			for _, n in ipairs(leg.via) do curtos[#curtos + 1] = (tostring(n):match("^([^,]+)") or n) end
+			text = text .. " " .. L.LEG_VIA:format(table.concat(curtos, ", "))
+		end
 	elseif leg.k == "ship" then
 		local ship = L["SHIP_" .. (leg.ship or "boat")]
 		text = leg.name and L.LEG_SHIP_TO:format(ship, leg.name) or L.LEG_SHIP:format(ship)

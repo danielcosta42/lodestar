@@ -127,6 +127,26 @@ check(r.s < 600, "real: a viagem leva menos de 10 min (" .. math.floor(r.s) .. "
 local fl
 for _, l in ipairs(r.legs) do if l.k == "flight" then fl = l end end
 check(fl and fl.to and real.nodes[fl.to].n == fl.name, "a perna de voo leva o id do nó de destino (mapa de voo casa pelo id)")
+-- #124: Undercity -> norte das Hinterlands: os voos seguidos (Tarren Mill, Hammerfall) viram uma perna só, com "via"
+do
+	local _, uc = node("Undercity")
+	local alvo = { c = 0, x = -100, y = -3600 }                  -- perto de Hammerfall, longe de Revantusk
+	local rv = J.Plan(P(uc.c, uc.x + 20, uc.y), alvo, { data = real, fac = "H", known = todos("H"), speed = 7,
+		teleports = {} })
+	local voos, soma = 0, 0
+	for _, l in ipairs(rv and rv.legs or {}) do
+		if l.k == "flight" then voos = voos + 1 end
+		soma = soma + (l.s or 0)
+	end
+	check(rv and voos == 1, "voos seguidos viram um só (" .. (rv and kinds(rv) or "nil") .. ")")
+	check(rv and math.abs(soma - rv.s) < 1, "o total acompanha a soma das pernas depois de juntar")
+	local juntas = J.JoinFlights({ { k = "walk", s = 5 }, { k = "flight", name = "Tarren Mill, Hillsbrad", s = 140, from = 11,
+		to = 13, p = { 1, 2 } }, { k = "flight", name = "Hammerfall, Arathi", s = 120, to = 17, p = { 3, 4 } }, { k = "walk", s = 9 } })
+	check(#juntas == 3 and juntas[2].name == "Hammerfall, Arathi" and juntas[2].via[1] == "Tarren Mill, Hillsbrad"
+		and juntas[2].s == 250 and juntas[2].from == 11 and #juntas[2].p == 4, "junta: destino, via, tempo e trajeto")
+	local comParada = J.JoinFlights({ { k = "flight", name = "A", s = 50, parada = true }, { k = "flight", name = "B", s = 50 } })
+	check(#comParada == 2, "parada no meio não junta (#117)")
+end
 local _, ra = node("Ratchet")
 local _, bb = node("Booty Bay")
 r = J.Plan(P(ra.c, ra.x, ra.y), P(bb.c, bb.x, bb.y),

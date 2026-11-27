@@ -1236,6 +1236,13 @@ step("AreaGoals", function()
 	assert(ok, err)
 end)
 -- salto (#123): portal/teleporte refaz a rota no tique seguinte; no barco (perna de barco atual), não
+-- voo que passa por outros (#124): a linha diz por onde
+step("LegText via", function()
+	local t = ns.Waypoint.LegText({ leg = 1, legs = { { k = "flight", name = "Hammerfall, Arathi", s = 250,
+		via = { "Tarren Mill, Hillsbrad" } } } }, 1)
+	assert(t:find("Hammerfall", 1, true) and t:find("Tarren Mill", 1, true) and not t:find("Hillsbrad", 1, true),
+		"voo sem o via: " .. t)
+end)
 step("Route after teleport", function()
 	local T = ns.Travel
 	local pw, w = T.PlayerWorld, T.World

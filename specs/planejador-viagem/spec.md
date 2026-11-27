@@ -57,6 +57,9 @@ pelo cliente, ícones e tooltips de cais no mapa.
   depois de andar até ele (a rota marca "descubra o voo aqui"). Antes do primeiro mapa de voo aberto,
   assume conhecidos os voos das zonas por onde o personagem já passou com o Lodestar ligado
   (`LodestarCharDB.zones`, gravado ao entrar em cada zona).
+  (#124) Voos seguidos viram uma perna só ("Voe para Hammerfall, Arathi (via Tarren Mill)"): no jogo, marcar o destino
+  final faz o grifo passar pelos do meio sem pousar. Tempo somado menos uma decolagem (o total da rota acompanha),
+  trajeto emendado; não junta através de uma parada (#117).
 - **Todo comando tem acesso pela interface**; o comando digitado vira atalho opcional.
 
 ## Componentes
