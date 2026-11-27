@@ -218,6 +218,12 @@ check(T.SaltoDaPerna({ k = "tram" }, nil, P(369, 0, 0)), "dentro do bonde: não 
 check(T.SaltoDaPerna({ k = "walk" }, { k = "tram" }, P(369, 0, 0)), "entrando no bonde: não refaz")
 check(not T.SaltoDaPerna({ k = "walk" }, { k = "flight" }, P(1, 0, 0)), "a pé, portal: refaz")
 check(not T.SaltoDaPerna(nil, nil, P(1, 0, 0)), "sem rota: refaz")
+check(T.SaltoDaPerna(barco, nil, P(1, 3250, 250)), "no meio de um trecho longo da rota do barco: não refaz")
+check(not T.SaltoDaPerna(barco, nil, P(1, 3250, 600)), "longe do trecho: refaz")
+local bonde = { k = "tram", a = P(0, 0, 0), b = P(0, 100, 0) }
+check(not T.SaltoDaPerna(bonde, nil, P(0, 900, 0)), "saiu do bonde (de volta ao continente dele): refaz")
+check(not T.SaltoDaPerna({ k = "walk" }, bonde, P(0, 900, 0)), "pedra a caminho do bonde: refaz")
+check(T.SaltoDaPerna({ k = "walk" }, bonde, P(369, 0, 0)), "entrou no bonde longe da entrada: não refaz")
 
 local rota = { leg = 1, legs = {
 	{ k = "walk", b = P(0, 700, 0), s = 100 },

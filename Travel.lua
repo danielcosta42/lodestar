@@ -377,24 +377,39 @@ function T:Replan(force)
 	end
 end
 
+-- distância do ponto q ao segmento a-b (no plano)
+local function distSeg(q, ax, ay, bx, by)
+	local dx, dy = bx - ax, by - ay
+	local l2 = dx * dx + dy * dy
+	local t = l2 > 0 and math.max(0, math.min(1, ((q.x - ax) * dx + (q.y - ay) * dy) / l2)) or 0
+	return dist(q, { x = ax + t * dx, y = ay + t * dy })
+end
+
 -- A posição nova está no caminho do barco (a tela de carregamento no meio da travessia, ainda sem o embarque visto):
--- perto da chegada ou de um ponto da rota dele, no mesmo continente
+-- perto da chegada ou da rota dele (os trechos entre pontos seguidos, que chegam a 900 jd), no mesmo continente
 local function noBarco(leg, pos)
 	if leg.b and leg.b.c == pos.c and dist(leg.b, pos) < 300 then return true end
 	local p = leg.p or {}
 	for i = 3, #p, 3 do
-		if p[i] == pos.c and dist({ x = p[i - 2], y = p[i - 1] }, pos) < 300 then return true end
+		if p[i] == pos.c then
+			local j = i + 3
+			local bx, by = p[i - 2], p[i - 1]
+			if p[j] == pos.c then bx, by = p[j - 2], p[j - 1] end
+			if distSeg(pos, p[i - 2], p[i - 1], bx, by) < 300 then return true end
+		end
 	end
 	return false
 end
 
 -- Salto que a própria perna explica: a bordo; barco ainda sem embarque visto e a posição no caminho dele; dentro do
--- bonde (instância própria, outro "continente") ou entrando nele (a perna a pé até o bonde só fecha a 15 jd)
+-- bonde (instância própria, outro "continente") ou entrando nele (a perna a pé até o bonde só fecha a 15 jd). De
+-- volta ao continente do bonde (saiu dele, ou pedra e portal antes de entrar), o salto refaz a rota.
 function T.SaltoDaPerna(c, nx, pos)
 	if not c then return false end
 	if c.boarded then return true end
 	if c.k == "ship" then return noBarco(c, pos) end
-	return c.k == "tram" or (c.k == "walk" and nx ~= nil and nx.k == "tram")
+	if c.k == "tram" then return not (c.a and pos.c == c.a.c) end
+	return c.k == "walk" and nx ~= nil and nx.k == "tram" and not (nx.a and pos.c == nx.a.c)
 end
 
 --------------------------------------------------------------------------------
