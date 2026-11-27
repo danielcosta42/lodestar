@@ -76,7 +76,9 @@ local SKYBORNE = { [95] = true, [96] = true }
 local function isSkyborne() return SKYBORNE[select(3, UnitRace("player"))] or false end
 
 -- Avalia um token único. Retorna true/false.
-local function evalToken(tok)
+-- `sim` (opcional, #134): o estado simulado de um passo à frente — { haveq = {[q]=true}, completed = {[q]=true} } das
+-- quests que os passos de antes dele pegam e entregam; soma ao estado de agora
+local function evalToken(tok, sim)
 	local raw = tok
 	local negate = false
 	if tok:sub(1, 4) == "not " then negate = true; tok = tok:sub(5) end
@@ -89,9 +91,13 @@ local function evalToken(tok)
 		if fn == "completed" then   -- completed(a,b): qualquer uma (preSingle do banco)
 			result = false
 			for id in arg:gmatch("%d+") do
-				if IsQuestComplete(tonumber(id)) then result = true; break end
+				local n = tonumber(id)
+				if IsQuestComplete(n) or (sim and sim.completed[n]) then result = true; break end
 			end
-		elseif fn == "haveq" then result = IsQuestInLog(tonumber(arg))
+		elseif fn == "haveq" then
+			local n = tonumber(arg)
+			if sim then result = (IsQuestInLog(n) or sim.haveq[n] or false) and not sim.completed[n]
+			else result = IsQuestInLog(n) end
 		elseif fn == "collected" then           -- collected(books:12): o colecionável já foi pego (Collect.lua)
 			local kind, id = arg:match("^(%a+):([%w_]+)$")
 			result = kind and ns.Collect and ns.Collect.IsDoneKey and ns.Collect:IsDoneKey(kind, id) or false
@@ -131,7 +137,7 @@ end
 
 -- Uma condição é uma lista de tokens separados por espaço, tudo em AND.
 -- (Tokens com parênteses ou "not X" são tratados como unidade.)
-function ns:EvalCondition(cond)
+function ns:EvalCondition(cond, sim)
 	if not cond or cond == "" then return true end
 	-- Quebra em AND lógico por espaços, juntando "not X" e "level >= N".
 	local tokens, i = {}, 1
@@ -158,7 +164,7 @@ function ns:EvalCondition(cond)
 		end
 	end
 	for _, tok in ipairs(tokens) do
-		if not evalToken(tok) then return false end
+		if not evalToken(tok, sim) then return false end
 	end
 	return true
 end
@@ -412,9 +418,9 @@ local function skippedGoal(char, goal)
 	return (gs and gs[q] and not IsQuestInLog(q) and not IsQuestComplete(q)) and true or false
 end
 
-function ns:IsGoalActive(goal)
+function ns:IsGoalActive(goal, sim)
 	if droppedGoal(self.char, goal) or skippedGoal(self.char, goal) then return false end
-	return self:EvalCondition(goal.only)
+	return self:EvalCondition(goal.only, sim)
 end
 
 ns:On("QUEST_ACCEPTED", function(_, a, b)       -- (id) ou (índice no diário, id)
@@ -484,8 +490,8 @@ function ns:IsStepComplete(step)
 end
 
 -- Pula steps cujo `only` não bate para o char atual.
-function ns:IsStepActive(step)
-	return self:EvalCondition(step.only)
+function ns:IsStepActive(step, sim)
+	return self:EvalCondition(step.only, sim)
 end
 
 function ns:AdvanceStep(delta)

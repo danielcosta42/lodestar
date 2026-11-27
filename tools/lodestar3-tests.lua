@@ -612,29 +612,52 @@ do
 	check(SH.Tradeable(7, 0) and SH.Tradeable(15, 2) and SH.Tradeable(0, 3), "sem vínculo, ao equipar, ao usar: negociável")
 	check(SH.Tradeable(7, 1) == false and SH.Tradeable(15, 4) == false, "preso ao pegar ou de quest: não")
 	check(SH.Tradeable(7, nil) == nil, "sem o vínculo ainda: não se sabe")
-	local trocavel = { [2589] = true, [769] = true, [4589] = false, [11018] = nil }
+	local trocavel = { [2589] = true, [769] = true, [4589] = false, [11018] = nil, [3239] = true, [5469] = true }
 	local steps = {
 		{ goals = { { verb = "collect", id = 2589, count = 10, text = "Linen Cloth", q = { id = 1 } } } },
 		{ goals = { { verb = "collect", id = 2589, count = 10, text = "Linen Cloth", q = { id = 1 } },      -- o mesmo objetivo
 			{ verb = "collect", id = 2589, count = 6, text = "Linen Cloth", q = { id = 2 } } } },         -- outra quest
-		{ goals = { { verb = "collect", id = 769, count = 8, text = "Chunk of Boar Meat", feito = true } } },
-		{ goals = { { verb = "kill", id = 99, count = 5 }, { verb = "collect", id = 4589, count = 10 } } },
-		{ goals = { { verb = "get", id = 11018, count = 3, text = "Un'Goro Soil" } } },
-		{ inativo = true, goals = { { verb = "collect", id = 769, count = 4, text = "Chunk of Boar Meat" } } },
-		{ goals = { { verb = "collect", id = 769, count = 2, text = "Chunk of Boar Meat", pulado = true } } },
+		{ goals = { { verb = "collect", id = 769, count = 8, text = "Chunk of Boar Meat", q = { id = 3 }, feito = true } } },
+		{ goals = { { verb = "kill", id = 99, count = 5 }, { verb = "collect", id = 4589, count = 10, q = { id = 4 } } } },
+		{ goals = { { verb = "get", id = 11018, count = 3, text = "Un'Goro Soil", q = { id = 5 } } } },
+		{ inativo = true, goals = { { verb = "collect", id = 769, count = 4, text = "Chunk of Boar Meat", q = { id = 6 } } } },
+		{ goals = { { verb = "collect", id = 769, count = 2, text = "Chunk of Boar Meat", q = { id = 7 }, pulado = true } } },
+		{ goals = { { verb = "collect", id = 3239, text = "Benedict's Chest" } } },              -- sem |q: id de objeto
 	}
 	local fns = {
 		ativo = function(st) return not st.inativo end, goalAtivo = function(g) return not g.pulado end,
 		feito = function(g) return g.feito end, negociavel = function(id) return trocavel[id] end,
 	}
 	local needs, pend = SH.Needs(steps, 1, fns)
-	check(#needs == 1 and needs[1].id == 2589 and needs[1].precisa == 16,
-		"Linen: o maior pedido por quest, somado entre quests; feito, inativo, pulado e de quest ficam de fora")
+	check(#needs == 1 and needs[1].id == 2589 and needs[1].precisa == 16 and not needs[1].semConta,
+		"Linen: o maior pedido por quest, somado entre quests; feito, inativo, pulado, de quest e sem |q ficam de fora")
 	check(pend[11018] and not pend[2589], "sem dados ainda: pendente (pedir e refazer)")
-	local depois = SH.Needs(steps, 3, fns)
-	check(#depois == 0, "do passo 3 em diante: nada negociável a comprar")
+	check(#SH.Needs(steps, 3, fns) == 0, "do passo 3 em diante: nada negociável a comprar")
+	-- o pedido pelo diário vence o número do guia; sem nenhum, "não se sabe"
+	local semNum = { { goals = { { verb = "collect", id = 5469, text = "Strider Meat", q = { id = 8 } } } } }
+	local n1 = SH.Needs(semNum, 1, { negociavel = function() return true end, precisa = function() return 5 end })
+	check(n1[1].precisa == 5 and not n1[1].semConta, "sem número no guia: o pedido do diário")
+	local n2 = SH.Needs(semNum, 1, { negociavel = function() return true end })
+	check(n2[1].precisa == 0 and n2[1].semConta, "sem número e fora do diário: não se sabe")
+	local f2 = SH.Missing(n2, function() return 3 end)
+	check(#f2 == 1 and f2[1].falta == nil and SH.FaltaTexto(f2[1], "faltam %s") == "faltam ?", "não se sabe: fica, com ?")
+	-- o passo à frente pelo estado simulado: a quest que um passo de antes pega
+	local futuro = {
+		{ goals = { { verb = "accept", id = 9 } } },
+		{ only = "haveq(9)", goals = { { verb = "collect", id = 2589, count = 4, text = "Linen Cloth", q = { id = 9 } } } },
+		{ goals = { { verb = "turnin", id = 9 } } },
+		{ only = "haveq(9)", goals = { { verb = "collect", id = 769, count = 2, text = "Chunk of Boar Meat", q = { id = 9 } } } },
+	}
+	local function ativoSim(st, sim)
+		if st.only == "haveq(9)" then return sim.haveq[9] and not sim.completed[9] end
+		return true
+	end
+	local nf = SH.Needs(futuro, 1, { ativo = ativoSim, negociavel = function() return true end })
+	check(#nf == 1 and nf[1].id == 2589 and nf[1].precisa == 4,
+		"passo à frente: a quest pegada antes conta; depois de entregue, não")
 	local falta = SH.Missing(needs, function(id) return id == 2589 and 4 or 0 end)
 	check(#falta == 1 and falta[1].falta == 12, "tira o que já se tem")
-	check(#SH.Missing(needs, function() return 20 end) == 0, "já tem tudo: nada")
+	check(#SH.Missing(needs, function() return 16 end) == 0, "exatamente o que precisa: nada")
+	check(SH.FaltaTexto({ falta = 6, semConta = true }, "faltam %s") == "faltam 6+", "conta conhecida mais a que não se sabe")
 end
 print(("ok: %d checks"):format(checks))

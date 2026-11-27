@@ -1666,60 +1666,111 @@ step("Flight card", function()
 end)
 -- compras do guia (#134): a lista pelo vínculo e pela bolsa, a linha na janela do guia e o painel na casa de leilões
 step("Guide shopping", function()
-	local SH, CI = ns.Shopping, _G.C_Item
-	local info, inst, count = CI.GetItemInfo, CI.GetItemInfoInstant, CI.GetItemCount
+	local SH = ns.Shopping
+	local info, inst, count, icon, rl = ns.ItemInfo, ns.ItemInfoInstant, ns.ItemCount, ns.ItemIcon, C_Item.RequestLoadItemDataByID
 	local guia, passo, refresh, goto0, atr = ns.currentGuide, ns.char.currentStep, ns.Viewer.Refresh, ns.Services.GoTo, _G.Auctionator
-	local ahf = _G.AuctionHouseFrame
-	local vinc = { [2589] = 0, [769] = 0, [4589] = 1 }                -- Linen e carne sem vínculo; a pena presa ao pegar
-	CI.GetItemInfoInstant = function(id) return id, nil, nil, nil, nil, id == 9 and 12 or 7, 0 end
-	CI.GetItemInfo = function(id)
+	local ahf, modo = _G.AuctionHouseFrame, _G.AuctionHouseFrameDisplayMode
+	-- Linen e carne sem vínculo; a pena presa ao pegar; o 777 ainda fora do cache; 1001-1012 negociáveis (o "+N")
+	local vinc = { [2589] = 0, [769] = 0, [4589] = 1 }
+	for k = 1001, 1012 do vinc[k] = 0 end
+	local naBolsa, pedidos, refreshes = { [2589] = 4 }, {}, 0
+	ns.ItemInfoInstant = function(id) return id, nil, nil, nil, nil, 7, 0 end
+	ns.ItemInfo = function(id)
 		if vinc[id] == nil then return nil end
 		return id == 2589 and "Tecido de Linho" or "Item " .. id, nil, 1, 1, 1, "", "", 20, "", 134400, 1, 7, 0, vinc[id]
 	end
-	CI.GetItemCount = function(id) return id == 2589 and 4 or 0 end
+	ns.ItemCount = function(id) return naBolsa[id] or 0 end
+	ns.ItemIcon = function() return 134400 end
+	C_Item.RequestLoadItemDataByID = function(id) pedidos[id] = true end
 	local idaLeilao
 	ns.Services.GoTo = function(_, kind) idaLeilao = kind end
-	ns.Viewer.Refresh = function() end
+	ns.Viewer.Refresh = function() refreshes = refreshes + 1 end
+	local muitos = {}
+	for k = 1001, 1012 do muitos[#muitos + 1] = { verb = "collect", id = k, count = 1, text = "Zz " .. k, q = { id = 50 } } end
 	ns.currentGuide = { key = "Teste", steps = {
-		{ goals = { { verb = "collect", id = 2589, count = 10, text = "Linen Cloth" } } },
-		{ goals = { { verb = "collect", id = 4589, count = 10, text = "Long Elegant Feather" } } },
-		{ goals = { { verb = "collect", id = 769, count = 3, text = "Chunk of Boar Meat" } } },
+		{ goals = { { verb = "collect", id = 2589, count = 10, text = "Linen Cloth", q = { id = 11 } } } },
+		{ goals = { { verb = "collect", id = 4589, count = 10, text = "Long Elegant Feather", q = { id = 12 } } } },
+		{ goals = { { verb = "collect", id = 769, count = 3, text = "Chunk of Boar Meat", q = { id = 13 } },
+			{ verb = "collect", id = 777, count = 1, text = "Fora do cache", q = { id = 14 } } } },
+		{ goals = muitos },
 	} }
 	ns.char.currentStep = 1
 	local upd = ns.eventFrame:GetScript("OnUpdate")
-	local buscou, iniciou, termos
+	local buscou, iniciou, termos, modoPedido, convertidos
 	local ok, err = pcall(function()
 		SH:Dirty(); upd(ns.eventFrame, 1.01)
 		local l = SH:List()
-		assert(#l == 2 and l[1].id == 769 and l[1].falta == 3 and l[2].id == 2589 and l[2].falta == 6,
-			"lista: " .. #l .. " itens")
+		assert(#l == 14 and l[1].id == 769 and l[1].falta == 3, "lista: " .. #l .. " itens")
+		local linho
+		for _, it in ipairs(l) do if it.id == 2589 then linho = it end end
+		assert(linho and linho.falta == 6, "Linen: tira o que está na bolsa")
+		assert(pedidos[777], "o item fora do cache não foi pedido ao servidor")
+		assert(refreshes > 0, "a lista mudou e a janela do guia não foi redesenhada")
 		SH:GoTo()
 		assert(idaLeilao == "auction", "a linha não levou à casa de leilões")
+		-- a bolsa muda: o evento refaz a lista e a janela acompanha
+		local r0 = refreshes
+		naBolsa[769] = 3; ns.fire("BAG_UPDATE_DELAYED"); upd(ns.eventFrame, 1.01)
+		assert(#SH:List() == 13 and refreshes > r0, "a bolsa mudou e a lista não acompanhou")
+		-- o passo muda (sem avisar): a lista é refeita do passo novo
+		ns.char.currentStep = 4; upd(ns.eventFrame, 1.01)
+		assert(#SH:List() == 12, "o passo mudou e a lista não acompanhou: " .. #SH:List())
+		ns.char.currentStep = 1; upd(ns.eventFrame, 1.01)
+		-- a quest da carne no diário pede 8 (o guia diz 3): vale o diário; entregue, sai da lista
+		local inlog, done, gc = ns.IsQuestInLog, ns.IsQuestDone, ns.QuestState.GoalCounts
+		ns.IsQuestInLog = function(q) return q == 13 end
+		ns.QuestState.GoalCounts = function(g) if g.q and g.q.id == 13 then return 3, 8 end return gc(g) end
+		SH:Dirty(); upd(ns.eventFrame, 1.01)
+		local carne
+		for _, it in ipairs(SH:List()) do if it.id == 769 then carne = it end end
+		ns.IsQuestDone = function(q) return q == 13 or done(q) end
+		SH:Dirty(); upd(ns.eventFrame, 1.01)
+		local carne2
+		for _, it in ipairs(SH:List()) do if it.id == 769 then carne2 = it end end
+		ns.IsQuestInLog, ns.IsQuestDone, ns.QuestState.GoalCounts = inlog, done, gc
+		SH:Dirty(); upd(ns.eventFrame, 1.01)
+		assert(carne and carne.falta == 5, "o pedido do diário não valeu: " .. tostring(carne and carne.falta))
+		assert(not carne2, "a quest entregue seguiu na lista")
 		-- a casa de leilões aberta: o painel, a busca exata pelo nome do cliente e o Auctionator
+		_G.AuctionHouseFrameDisplayMode = { Buy = "buy" }
 		_G.AuctionHouseFrame = CreateFrame("Frame", "AuctionHouseFrame", UIParent)
+		_G.AuctionHouseFrame.SetDisplayMode = function(_, m) modoPedido = m end
 		_G.AuctionHouseFrame.SearchBar = { SearchBox = { SetText = function(_, t) buscou = t end },
 			StartSearch = function() iniciou = true end }
-		_G.Auctionator = { API = { v1 = { CreateShoppingList = function(_, nome, lista) termos = { nome, lista } end } } }
-		SH:ShowPanel()
+		_G.Auctionator = { API = { v1 = {
+			CreateShoppingList = function(_, nome, lista) termos = { nome, lista } end,
+			ConvertToSearchString = function(_, t) convertidos = (convertidos or 0) + 1; return t.searchString .. "|" .. tostring(t.isExact) .. "|" .. tostring(t.quantity) end,
+		} } }
+		SH:ShowPanel(true)
 		local p = _G.LodestarShopping
-		assert(p and p:IsShown() and p.rows[1]:IsShown() and p.rows[2]:IsShown() and not p.rows[3]:IsShown(), "painel")
-		assert(p.rows[2].name:GetText() == "Tecido de Linho" and p.rows[2].count:GetText() == ns.L.SHOP_MISSING:format(6),
-			"linha do painel: " .. tostring(p.rows[2].name:GetText()))
-		p.rows[2].btn:GetScript("OnClick")(p.rows[2].btn)
-		assert(buscou == '"Tecido de Linho"' and iniciou, "busca: " .. tostring(buscou))
+		assert(p and p:IsShown() and p.rows[10]:IsShown() and p.more:IsShown(), "painel com 10 linhas e o +N")
+		local rl2
+		for _, r in ipairs(p.rows) do if r.btn._it and r.btn._it.id == 2589 then rl2 = r end end
+		assert(rl2 and rl2.name:GetText() == "Tecido de Linho" and rl2.count:GetText() == ns.L.SHOP_MISSING:format("6"),
+			"linha do painel do Linen")
+		rl2.btn:GetScript("OnClick")(rl2.btn)
+		assert(buscou == '"Tecido de Linho"' and iniciou and modoPedido == "buy", "busca: " .. tostring(buscou))
 		assert(p.atr:IsShown(), "sem o botão do Auctionator")
 		p.atr:GetScript("OnClick")(p.atr)
-		assert(termos and termos[1] == "Lodestar" and #termos[2] == 2 and termos[2][2] == "Tecido de Linho",
+		assert(termos and termos[1] == "Lodestar" and #termos[2] == #SH:List() and convertidos == #SH:List(),
 			"Auctionator sem a lista")
+		local temLinho
+		for _, t in ipairs(termos[2]) do temLinho = temLinho or t == "Tecido de Linho|true|6" end
+		assert(temLinho, "o termo do Auctionator sem busca exata e quantidade")
 		ns.fire("AUCTION_HOUSE_CLOSED")
 		assert(not p:IsShown(), "o painel ficou com a casa de leilões fechada")
+		-- nada a comprar: o painel não abre
+		for k, _ in pairs(vinc) do naBolsa[k] = 99 end
+		naBolsa[777] = 99; vinc[777] = 0
+		SH:ShowPanel(true)
+		assert(#SH:List() == 0 and not p:IsShown(), "sem nada a comprar e o painel abriu")
 		ns.db.shopping = false; SH:Dirty(); upd(ns.eventFrame, 1.01)
 		assert(#SH:List() == 0, "desligado e a lista ficou")
 	end)
 	ns.db.shopping = true
-	CI.GetItemInfo, CI.GetItemInfoInstant, CI.GetItemCount = info, inst, count
+	ns.ItemInfo, ns.ItemInfoInstant, ns.ItemCount, ns.ItemIcon, C_Item.RequestLoadItemDataByID = info, inst, count, icon, rl
 	ns.currentGuide, ns.char.currentStep, ns.Viewer.Refresh, ns.Services.GoTo, _G.Auctionator = guia, passo, refresh, goto0, atr
-	_G.AuctionHouseFrame = ahf
+	_G.AuctionHouseFrame, _G.AuctionHouseFrameDisplayMode = ahf, modo
 	SH:Dirty(); upd(ns.eventFrame, 1.01)
 	assert(ok, err)
 	-- a linha na janela do guia aparece com itens a comprar

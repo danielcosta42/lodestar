@@ -411,9 +411,13 @@ local function build()
 			if not GameTooltip then return end
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine(L.SHOP_TITLE, 1, 1, 1)
-			for _, it in ipairs(ns.Shopping and ns.Shopping:List() or {}) do
-				GameTooltip:AddDoubleLine(it.nome or tostring(it.id), L.SHOP_MISSING:format(it.falta), 0.9, 0.9, 0.9, 0.7, 0.7, 0.7)
+			local lst = ns.Shopping and ns.Shopping:List() or {}
+			for k = 1, math.min(#lst, 10) do
+				local it = lst[k]
+				GameTooltip:AddDoubleLine((ns.ItemInfo(it.id)) or it.nome or tostring(it.id),
+					ns.Shopping.FaltaTexto(it, L.SHOP_MISSING), 0.9, 0.9, 0.9, 0.7, 0.7, 0.7)
 			end
+			if #lst > 10 then GameTooltip:AddLine(L.NA_MORE:format(#lst - 10), 0.7, 0.7, 0.7) end
 			GameTooltip:AddLine(L.SHOP_TIP, 0.7, 0.7, 0.7, true)
 			GameTooltip:Show()
 		end)
