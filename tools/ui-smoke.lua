@@ -1717,9 +1717,15 @@ step("Guide shopping", function()
 		assert(#SH:List() == 12, "o passo mudou e a lista não acompanhou: " .. #SH:List())
 		ns.char.currentStep = 1; upd(ns.eventFrame, 1.01)
 		-- a quest da carne no diário pede 8 (o guia diz 3): vale o diário; entregue, sai da lista
-		local inlog, done, gc = ns.IsQuestInLog, ns.IsQuestDone, ns.QuestState.GoalCounts
+		local inlog, done, gc = ns.IsQuestInLog, ns.IsQuestDone, ns.QuestState.Objectives
 		ns.IsQuestInLog = function(q) return q == 13 end
-		ns.QuestState.GoalCounts = function(g) if g.q and g.q.id == 13 then return 3, 8 end return gc(g) end
+		ns.QuestState.Objectives = function(q)               -- |q 13 sozinho: a quest inteira (carne 8 e lobos 5)
+			if q == 13 then
+				return { { type = "item", text = "Chunk of Boar Meat: 3/8", numRequired = 8, numFulfilled = 3 },
+					{ type = "monster", text = "Wolf slain: 0/5", numRequired = 5 } }
+			end
+			return gc(q)
+		end
 		SH:Dirty(); upd(ns.eventFrame, 1.01)
 		local carne
 		for _, it in ipairs(SH:List()) do if it.id == 769 then carne = it end end
@@ -1727,7 +1733,7 @@ step("Guide shopping", function()
 		SH:Dirty(); upd(ns.eventFrame, 1.01)
 		local carne2
 		for _, it in ipairs(SH:List()) do if it.id == 769 then carne2 = it end end
-		ns.IsQuestInLog, ns.IsQuestDone, ns.QuestState.GoalCounts = inlog, done, gc
+		ns.IsQuestInLog, ns.IsQuestDone, ns.QuestState.Objectives = inlog, done, gc
 		SH:Dirty(); upd(ns.eventFrame, 1.01)
 		assert(carne and carne.falta == 5, "o pedido do diário não valeu: " .. tostring(carne and carne.falta))
 		assert(not carne2, "a quest entregue seguiu na lista")

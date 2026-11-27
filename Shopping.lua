@@ -89,6 +89,29 @@ function SH.Missing(needs, tem)
 	return out
 end
 
+-- O pedido do diário que é deste goal: com o índice do objetivo (`|q Q/n`), aquele; quest de um objetivo só, ele; senão
+-- (o `|q Q` sozinho é a quest inteira) o único objetivo de item cujo texto tem o nome do item. `nomes`: o nome do item
+-- no cliente e o do guia. -> numRequired | nil
+function SH.NeedFromObjectives(objs, obj, nomes)
+	if type(objs) ~= "table" then return nil end
+	local function n(o) local v = o and tonumber(o.numRequired); return v and v > 0 and v or nil end
+	if obj then return n(objs[obj]) end
+	if #objs == 1 then return n(objs[1]) end
+	local achado
+	for _, o in ipairs(objs) do
+		if o.type == "item" and type(o.text) == "string" then
+			local t = o.text:lower()
+			for _, nome in pairs(nomes or {}) do                     -- pairs: o nome do cliente pode faltar (nil)
+				if type(nome) == "string" and nome ~= "" and t:find(nome:lower(), 1, true) then
+					if achado and achado ~= o then return nil end      -- dois casam: não se sabe qual
+					achado = o
+				end
+			end
+		end
+	end
+	return n(achado)
+end
+
 -- "faltam 6" / "faltam 6+" (há pedido que não se sabe) / "faltam ?"
 function SH.FaltaTexto(it, fmt)
 	if not it.falta then return fmt:format("?") end
@@ -124,11 +147,11 @@ end
 
 local function tem(id) return ns.ItemCount(id, true) or 0 end
 
--- quanto o objetivo pede: o do diário (quest pegada), senão o número do guia
+-- quanto o objetivo pede: o do diário (quest pegada) quando ele é deste goal, senão o número do guia
 local function precisa(g)
 	local QS = ns.QuestState
-	if QS and QS.GoalCounts and g.q and g.q.id and ns.IsQuestInLog and ns.IsQuestInLog(g.q.id) then
-		local _, need = QS.GoalCounts(g)
+	if QS and QS.Objectives and g.q and g.q.id and ns.IsQuestInLog and ns.IsQuestInLog(g.q.id) then
+		local need = SH.NeedFromObjectives(QS.Objectives(g.q.id), g.q.obj, { (ns.ItemInfo(g.id)), g.text })
 		if need then return need end
 	end
 	return g.count

@@ -659,5 +659,14 @@ do
 	check(#falta == 1 and falta[1].falta == 12, "tira o que já se tem")
 	check(#SH.Missing(needs, function() return 16 end) == 0, "exatamente o que precisa: nada")
 	check(SH.FaltaTexto({ falta = 6, semConta = true }, "faltam %s") == "faltam 6+", "conta conhecida mais a que não se sabe")
+	-- o pedido do diário que é deste goal: |q Q sozinho é a quest inteira (Dun Morogh 317: carne 4 e pele 2)
+	local objs = { { type = "item", text = "Chunk of Boar Meat: 0/4", numRequired = 4 },
+		{ type = "item", text = "Thick Bear Fur: 0/2", numRequired = 2 } }
+	check(SH.NeedFromObjectives(objs, nil, { nil, "Chunk of Boar Meat" }) == 4, "|q sozinho: o objetivo com o nome do item")
+	check(SH.NeedFromObjectives(objs, 2, {}) == 2, "|q Q/n: aquele objetivo")
+	check(SH.NeedFromObjectives({ objs[1] }, nil, {}) == 4, "quest de um objetivo: ele")
+	check(SH.NeedFromObjectives(objs, nil, { "Wolf Fang" }) == nil, "nenhum casa: não se sabe (o número do guia)")
+	check(SH.NeedFromObjectives({ { type = "item", text = "Meat A 0/3", numRequired = 3 },
+		{ type = "item", text = "Meat B 0/5", numRequired = 5 } }, nil, { "Meat" }) == nil, "dois casam: não se sabe")
 end
 print(("ok: %d checks"):format(checks))

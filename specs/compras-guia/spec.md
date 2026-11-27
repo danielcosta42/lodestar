@@ -25,8 +25,10 @@ vínculo do item.
     quest entra.
   - **Feito:** só a quest já entregue ou o objetivo marcado à mão. O objetivo pronto e ainda não entregue tem os
     itens na bolsa, e eles contam para o que as outras quests pedem.
-  - **Quanto:** o pedido do diário para quest já pegada (`QuestState.GoalCounts`), senão o número do guia. Sem
-    nenhum, o item fica com a conta desconhecida: "faltam ?", ou "faltam N+" quando parte é conhecida.
+  - **Quanto:** para quest já pegada, o pedido do diário que é deste goal (`Shopping.NeedFromObjectives`). Com o
+    índice (`|q Q/n`), aquele objetivo; quest de um objetivo só, ele. Senão (o `|q Q` sozinho é a quest inteira), o
+    único objetivo de item com o nome do item no texto. Se não for possível, o número do guia. Sem nenhum, o item
+    fica com a conta desconhecida: "faltam ?", ou "faltam N+" quando parte é conhecida.
   - **Por item:** vale o maior pedido de cada quest (o mesmo objetivo aparece em mais de um passo), somado entre
     quests diferentes.
   - **O que já se tem:** desconta a bolsa e o banco (`ns.ItemCount(id, true)`).
