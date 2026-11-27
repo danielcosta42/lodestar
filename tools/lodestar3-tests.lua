@@ -265,6 +265,23 @@ check(N.Revisits(pts, 5, { x = 30, y = 40, c = 0 }) and not N.Revisits(pts, 3, {
 	check(not dois[1] and not dois[2],
 		"dois mobs sem nome e o diário diferente do banco: nenhum (melhor sem contagem errada)")
 	check(next(AG.LogIndex(e2, nil)) == nil and next(AG.LogIndex(nil, {})) == nil, "sem diário ou sem dado: nada")
+	-- um nome dentro do outro (A New Threat, 170): o mais comprido primeiro, e o nome só vale numa linha livre só
+	local rj = { { kind = "c", id = 707 }, { kind = "c", id = 724 } }
+	local rjNames = { [707] = "Rockjaw Trogg", [724] = "Burly Rockjaw Trogg" }
+	local rjLog = { ob("monster", "Burly Rockjaw Trogg slain: 0/6", 0, 6), ob("monster", "Rockjaw Trogg slain: 0/6", 0, 6),
+		ob("event", "Relatório entregue", 0, 1) }
+	local rjm = AG.LogIndex(rj, rjLog, function(_, i) return rjNames[i] end)
+	check(rjm[1] == 2 and rjm[2] == 1, "Rockjaw Trogg e Burly Rockjaw Trogg: cada um na sua linha (o comprido primeiro)")
+	local rjPt = { ob("monster", "Trogg Rocha-mandíbula Robusto morto: 0/6", 0, 6),
+		ob("monster", "Trogg Rocha-mandíbula morto: 0/6", 0, 6), ob("event", "Relatório entregue", 0, 1) }
+	local rjp = AG.LogIndex(rj, rjPt, function(_, i) return i == 707 and { "Trogg Rocha-mandíbula" } or {} end)
+	check(not rjp[1] and not rjp[2], "ptBR com só o nome curto aprendido (cabe nas duas linhas): nenhum, sem chute")
+	local amb = AG.LogIndex({ { kind = "c", id = 1 }, { kind = "c", id = 2 } },
+		{ ob("monster", "Trogg Rocha Robusto morto: 0/6", 0, 6), ob("monster", "Trogg Rocha morto: 0/6", 0, 6),
+			ob("event", "x", 0, 1) },
+		function(_, i) return i == 1 and "Trogg Rocha" or "Robu" end)
+	check(amb[2] == 1 and not amb[1],
+		"o nome ambíguo fica sem par, e o tipo dele não ganha o único que sobrou (seria um chute)")
 	-- o nome no texto, sem a contagem (na frente ou atrás) e sem o "slain"
 	local slain = { "", " slain" }
 	check(AG.Name("Silvermane Howler slain: 20/30", true, slain) == "Silvermane Howler", "nome: o mob sem o slain")
@@ -378,6 +395,21 @@ check(N.Revisits(pts, 5, { x = 30, y = 40, c = 0 }) and not N.Revisits(pts, 3, {
 	local rows2 = AG.Collect(perto, c2)
 	check(s1 ~= AG.Signature(rows2) and #rows2 == 2, "a assinatura muda quando a conta muda (e a cheia sai)")
 	check(AG.Signature({}) == "", "assinatura vazia")
+	local outra = {}
+	for k, v in pairs(rows2[1]) do outra[k] = v end
+	outra.area = { k = 7 }
+	check(AG.Signature({ outra, rows2[2] }) ~= AG.Signature(rows2),
+		"a assinatura muda com a área (a área vizinha do mesmo objetivo troca o alvo do clique)")
+	check(AG.Find(rows2, rows2[2].q, rows2[2].log) == rows2[2] and AG.Find(rows2, 1, 1) == nil
+		and AG.Find(nil, 1, 1) == nil,
+		"a linha de agora do mesmo objetivo do diário")
+	-- o objetivo na área que não se acha no diário é contado
+	local semPar = {}
+	local c4 = { entryOf = function() return { { kind = "c", id = 1 }, { kind = "c", id = 2 } } end,
+		objsOf = function() return { ob("monster", "Lobo A slain: 0/5", 0, 5), ob("event", "x", 0, 1),
+			ob("monster", "Lobo B slain: 0/5", 0, 5) } end, margin = 10, unmapped = semPar }
+	check(#AG.Collect({ { q = 55, obj = 2, area = A[1], d = 0 }, { q = 55, obj = 1, area = A[1], d = 3 } }, c4) == 0
+		and semPar["55:2"] and semPar["55:1"], "sem par no diário: fora da lista, e contado")
 
 	-- de ponta a ponta com o SA.Near (o contorno de verdade, 0 dentro)
 	local sns = loadPure("SpawnMap.lua", { spawnZones = { "Z" }, spawnQuest = {} })

@@ -579,11 +579,13 @@ local function update()
 	local target = g and g.area
 	local parts = { tostring(shown), ("%d"):format(w), ("%d"):format(h), tostring(target) }
 	for _, c in ipairs(objs) do parts[#parts + 1] = c.q .. ":" .. c.k end
-	parts[#parts + 1] = "~"
-	local seen = {}
+	-- as de "Nesta área" em ordem fixa: a lista reordena pela distância, o desenho é o mesmo
+	local keys, seen = {}, {}
 	for _, x in ipairs(soft) do
-		if not seen[x.key] then seen[x.key] = true; parts[#parts + 1] = x.key end
+		if not seen[x.key] then seen[x.key] = true; keys[#keys + 1] = x.key end
 	end
+	table.sort(keys)
+	parts[#parts + 1] = "~" .. table.concat(keys, "|")
 	local sig = table.concat(parts, "|")
 	if sig == lastSig and overlay and overlay:IsShown() then return end
 	lastSig = sig

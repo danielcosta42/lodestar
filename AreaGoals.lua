@@ -1,6 +1,6 @@
 --=============================================================================
 -- AreaGoals — "Nesta área" (issue #122, specs/areas-spawn): os objetivos ainda abertos das quests do diário — do
--- passo atual, dos passos à frente e de fora do guia — que dá para fazer onde o jogador está: ele está dentro da
+-- passo atual, dos passos à frente e o resto do diário — que dá para fazer onde o jogador está: ele está dentro da
 -- área de nascimento desenhada no mapa (SpawnMap, #121: o contorno convexo inchado de SA.PAD da largura da zona).
 -- Na janela do guia, um por linha (o tipo, o nome e a contagem do diário), os das quests do passo atual primeiro,
 -- até MAX linhas e "+N"; o clique guia à área. As áreas deles vão ao mapa, mais suaves que as do passo.
@@ -15,11 +15,12 @@
 --   AG.Tiers(steps, cur, questOf)      -> { [quest] = { tier = 1 (passo atual) | 2 (à frente), step = i } }
 --   AG.Collect(near, ctx)              -> as linhas, na ordem: { q, obj, log, kind, id, name, text, have, need,
 --                                         area, d, tier, step }
---   AG.Signature(rows) / AG.Count(row) -> "2/8"
+--   AG.Signature(rows) / AG.Count(row) -> "2/8" / AG.Find(rows, q, log)
 --
 -- `near` é o SA.Near (os objetivos com área a até um raio, da área mais perto para a mais longe). `ctx` = { entryOf
 -- (SA.For), objsOf (o diário da quest), nameOf(kind, id) -> nomes, tierOf(q) -> tier, step, shown, margin (jardas,
--- ou função da zona), affix = { antes, depois } do "%s slain" do cliente }.
+-- ou função da zona), affix = { antes, depois } do "%s slain" do cliente, unmapped = {} (ganha os "q:objetivo do
+-- banco" na área que não se acharam no diário) }.
 --=============================================================================
 local _, ns = ...
 local AG = {}
@@ -43,8 +44,11 @@ end
 
 -- O objetivo do banco (SpawnAreas, na ordem do QuestieDB: mobs, objetos, itens) no diário. Mesma quantidade e mesmo
 -- tipo em cada posição: a ordem é a mesma (a guarda do #121). Senão, pelo nome do mob, do item ou do objeto no texto
--- do objetivo ("Silvermane Howler slain: 20/30"); por fim, o único do tipo que sobrou de cada lado. O que não se acha
--- fica de fora (sem a contagem certa, melhor não mostrar).
+-- do objetivo ("Silvermane Howler slain: 20/30"): o nome mais comprido primeiro ("Burly Rockjaw Trogg" antes de
+-- "Rockjaw Trogg", que cabe dentro dele), e só vale o nome que está em exatamente uma linha ainda livre do tipo; o
+-- que está em mais de uma (o nome curto aprendido, com o comprido sem nome) fica sem par. Por fim, o único do tipo que
+-- sobrou de cada lado — menos no tipo em que algum nome ficou ambíguo (o par seria um chute). O que não se acha fica
+-- de fora (sem a contagem certa, melhor não mostrar).
 function AG.LogIndex(entry, objs, nameOf)
 	local map = {}
 	if type(entry) ~= "table" or type(objs) ~= "table" or #entry == 0 then return map end
@@ -58,27 +62,43 @@ function AG.LogIndex(entry, objs, nameOf)
 			return map
 		end
 	end
-	local used = {}
+	local used, cands, unsure = {}, {}, {}
+	local texts = {}
+	for j, o in ipairs(objs) do texts[j] = type(o.text) == "string" and o.text:lower() or "" end
 	if nameOf then
 		for k, e in ipairs(entry) do
-			local best, bestLen
 			for _, n in ipairs(names(nameOf(e.kind, e.id))) do
-				local low = n:lower()
-				for j, o in ipairs(objs) do
-					if not used[j] and typeOk(o, e.kind) and type(o.text) == "string"
-						and o.text:lower():find(low, 1, true) and (not bestLen or #low > bestLen) then
-						best, bestLen = j, #low
-					end
-				end
+				if n ~= "" then cands[#cands + 1] = { k = k, name = n:lower() } end
 			end
-			if best then map[k] = best; used[best] = true end
 		end
 	end
+	table.sort(cands, function(a, b)
+		if #a.name ~= #b.name then return #a.name > #b.name end
+		if a.k ~= b.k then return a.k < b.k end
+		return a.name < b.name
+	end)
+	for _, c in ipairs(cands) do
+		if not map[c.k] then
+			local kind, hit, n = entry[c.k].kind, nil, 0
+			for j, o in ipairs(objs) do
+				if not used[j] and typeOk(o, kind) and texts[j]:find(c.name, 1, true) then hit, n = j, n + 1 end
+			end
+			if n == 1 then
+				map[c.k], used[hit] = hit, true
+			elseif n > 1 then
+				unsure[c.k] = true
+			end
+		end
+	end
+	local ambiguous = {}
+	for k in pairs(unsure) do if not map[k] then ambiguous[entry[k].kind] = true end end
 	for _, kind in ipairs({ "c", "o", "i" }) do
-		local ds, ls = {}, {}
-		for k, e in ipairs(entry) do if e.kind == kind and not map[k] then ds[#ds + 1] = k end end
-		for j, o in ipairs(objs) do if not used[j] and o.type == TYPE[kind] then ls[#ls + 1] = j end end
-		if #ds == 1 and #ls == 1 then map[ds[1]] = ls[1]; used[ls[1]] = true end
+		if not ambiguous[kind] then
+			local ds, ls = {}, {}
+			for k, e in ipairs(entry) do if e.kind == kind and not map[k] then ds[#ds + 1] = k end end
+			for j, o in ipairs(objs) do if not used[j] and o.type == TYPE[kind] then ls[#ls + 1] = j end end
+			if #ds == 1 and #ls == 1 then map[ds[1]] = ls[1]; used[ls[1]] = true end
+		end
 	end
 	return map
 end
@@ -139,7 +159,7 @@ function AG.Shown(goals, ctx, active)
 end
 
 -- De onde é cada quest: 1 do passo atual (qualquer goal dele), 2 de um passo à frente (o primeiro); a que nenhum
--- passo daqui em diante cita é de fora do guia (3, sem entrada).
+-- passo daqui em diante cita (fora do guia, ou que ele já deixou para trás) é do resto do diário (3, sem entrada).
 function AG.Tiers(steps, cur, questOf)
 	local out = {}
 	cur = cur or 1
@@ -154,7 +174,7 @@ end
 
 -- As linhas: cada objetivo (quest, objetivo do banco) com uma área a até a folga da zona dela, ainda aberto no
 -- diário (nem concluído nem com a conta cheia), que o cartão do passo não mostra; um por objetivo do diário, com a
--- área mais perto. Na ordem: as quests do passo atual, as dos passos à frente, as de fora do guia; em cada grupo, a
+-- área mais perto. Na ordem: as quests do passo atual, as dos passos à frente, o resto do diário; em cada grupo, a
 -- mais perto (dentro: 0), o passo, a quest, o objetivo.
 function AG.Collect(near, ctx)
 	local rows, seenObj, seenLog, maps, logs = {}, {}, {}, {}, {}
@@ -176,6 +196,7 @@ function AG.Collect(near, ctx)
 			local map = e and maps[q]
 			if e and not map then map = AG.LogIndex(e, objs, ctx.nameOf); maps[q] = map end
 			local li = map and map[n.obj]
+			if e and not li and ctx.unmapped then ctx.unmapped[okey] = true end
 			local o = li and objs[li]
 			local lkey = q .. ":" .. tostring(li)
 			local need, have = o and tonumber(o.numRequired) or 0, o and tonumber(o.numFulfilled) or 0
@@ -209,13 +230,19 @@ function AG.Collect(near, ctx)
 	return rows
 end
 
--- Assinatura do que a janela mostra (só redesenha quando muda): a ordem, a quest, o objetivo, a conta e o grupo.
+-- Assinatura do que a janela mostra (só redesenha quando muda): a ordem, a quest, o objetivo, a conta, o grupo e a
+-- área (andar para a área vizinha do mesmo objetivo troca o alvo do clique).
 function AG.Signature(rows)
 	local parts = {}
 	for _, r in ipairs(rows or {}) do
-		parts[#parts + 1] = ("%s:%s:%s:%s"):format(r.q, r.log, r.have or "", r.tier)
+		parts[#parts + 1] = ("%s:%s:%s:%s:%s"):format(r.q, r.log, r.have or "", r.tier, r.area and r.area.k or "")
 	end
 	return table.concat(parts, ",")
+end
+
+-- A linha de agora do mesmo objetivo do diário (o clique vale para onde o jogador está, não para a lista velha)
+function AG.Find(list, q, log)
+	for _, r in ipairs(list or {}) do if r.q == q and r.log == log then return r end end
 end
 
 -- A contagem à direita da linha: "2/8"; o objetivo de um só (sim/não), nada
@@ -317,7 +344,7 @@ function AG.Margin(zone)
 end
 
 -- De onde é cada quest: do passo atual (os goals dele, a cada conta) ou de um passo à frente (guardado por guia e
--- passo); a que nenhum cita é de fora do guia.
+-- passo); a que nenhum cita é do resto do diário.
 local ahead, aheadKey, inStep = {}, nil, {}
 local function questOf(goal) return ns.QuestState and ns.QuestState.QuestOf(goal) end
 local function readTiers(step)
@@ -359,15 +386,21 @@ local function changed()
 	if ns.Viewer then ns.Viewer:Refresh() end
 end
 
+-- Os objetivos na área que não se acharam no diário (o índice do banco não bate e o nome não decide): os de agora
+-- e os da sessão, para o relatório (/ls report) mostrar o que o cliente de verdade perde.
+local unmappedNow, unmappedSeen, nUnmapped = {}, {}, 0
+
 local dirty, lastPos, lastKey = true, nil, nil
+local function clearRows()
+	unmappedNow = {}
+	if #rows > 0 then rows, sig = {}, ""; changed() end
+	dirty = true
+end
 local function scan(force)
-	if not (enabled() and ns.currentGuide and ns:UIShown() and SA and SA.NearPlayer) then
-		if #rows > 0 then rows, sig = {}, ""; changed() end
-		dirty = true
-		return
-	end
+	if not (enabled() and ns.currentGuide and ns:UIShown() and SA and SA.NearPlayer) then return clearRows() end
 	local T = ns.Travel
 	local pos = T and T.PlayerWorld and T.PlayerWorld()
+	if not pos then return clearRows() end                     -- sem posição (masmorra, tela de carga): nada aqui
 	local key = ns.currentGuide.key .. ":" .. tostring(ns.char.currentStep)
 	-- parado (menos de 2 jd), no mesmo passo e com o diário igual: nada mudou
 	if not (force or dirty) and key == lastKey and pos and lastPos and pos.c == lastPos.c
@@ -377,7 +410,15 @@ local function scan(force)
 	local step = ns:GetStep()
 	readTiers(step)
 	ctx.shown = AG.Shown(step and step.goals, ctx, function(g) return ns:IsGoalActive(g) end)
+	ctx.unmapped = {}
 	rows = AG.Collect(SA.NearPlayer(questsInLog(), AG.RADIUS), ctx)
+	unmappedNow = ctx.unmapped
+	for k in pairs(unmappedNow) do
+		if not unmappedSeen[k] then
+			unmappedSeen[k], nUnmapped = true, nUnmapped + 1
+			ns:Debug("AreaGoals: objetivo sem par no diário", k)
+		end
+	end
 	local s = AG.Signature(rows)
 	if s ~= sig then
 		sig = s
@@ -393,11 +434,13 @@ function AG.Refresh()
 	if ns.SpawnAreas and ns.SpawnAreas.Update then pcall(ns.SpawnAreas.Update) end
 end
 
--- As áreas dos objetivos da lista na zona do mapa aberto (o SpawnMap desenha mais suave): { { area, key }, ... }
+-- As áreas dos objetivos que a janela mostra (as AG.MAX primeiras linhas, não o "+N") na zona do mapa aberto (o
+-- SpawnMap desenha mais suave): { { area, key }, ... }
 function AG.MapAreas(shown)
 	local out = {}
 	if not (enabled() and shown) then return out end
-	for _, r in ipairs(rows) do
+	for i = 1, math.min(#rows, AG.MAX) do
+		local r = rows[i]
 		local e = SA.For(r.q)
 		local o = e and e[r.obj]
 		for _, a in ipairs(o and o.areas or {}) do
@@ -408,11 +451,26 @@ function AG.MapAreas(shown)
 	return out
 end
 
--- O clique: a área mais perto do objetivo (a de onde ele está), no ponto-alvo dela (um nascimento de verdade).
+-- O clique: a área mais perto do objetivo (a de onde ele está agora: refaz a conta se ele andou e pega a linha nova
+-- do mesmo objetivo), no ponto-alvo dela (um nascimento de verdade).
 function AG.GoTo(r)
-	local a = r and r.area
+	if not r then return end
+	pcall(scan)
+	r = AG.Find(rows, r.q, r.log) or r
+	local a = r.area
 	if not (a and ns.Waypoint) then return end
 	ns.Waypoint:SetCustom(a.zone, a.x, a.y, r.name)
+end
+
+-- Para o relatório: as linhas de agora e os objetivos sem par no diário (agora e na sessão)
+function AG.Describe()
+	if not enabled() then return "off" end
+	local now = {}
+	for k in pairs(unmappedNow) do now[#now + 1] = k end
+	table.sort(now)
+	local txt = ("%d lines · unmapped objectives: %d now, %d this session"):format(#rows, #now, nUnmapped)
+	if #now > 0 then txt = txt .. " (" .. table.concat(now, ", ") .. ")" end
+	return txt
 end
 
 ns:On("QUEST_LOG_UPDATE", function() dirty = true end)

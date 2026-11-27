@@ -1107,10 +1107,10 @@ step("AreaGoals", function()
 	end
 	local sq = function(x0, y0, x1, y1) return { x0, y0, x1, y0, x1, y1, x0, y1 } end
 	local A, B, C = 990001, 990002, 990003
-	-- A: dois mobs (o 1º também nasce longe); B: o objeto e o item na ordem do banco (o diário tem o item antes);
-	-- C: um mob
-	ns.spawnQuest[A] = { "c9001;" .. area(52, 48, sq(45, 45, 55, 55)) .. ";" .. area(80, 80, sq(78, 78, 82, 82)),
-		"c9002;" .. area(51, 50, sq(48, 46, 58, 56)) }
+	-- A: dois mobs (o 1º também nasce longe, e numa área vizinha a leste); B: o objeto e o item na ordem do banco (o
+	-- diário tem o item antes); C: um mob
+	ns.spawnQuest[A] = { "c9001;" .. area(52, 48, sq(45, 45, 55, 55)) .. ";" .. area(80, 80, sq(78, 78, 82, 82))
+		.. ";" .. area(58, 50, sq(55.5, 45, 62, 55)), "c9002;" .. area(51, 50, sq(48, 46, 58, 56)) }
 	ns.spawnQuest[B] = { "o9003;" .. area(50, 50, sq(44, 44, 56, 56)), "i9004;" .. area(49, 51, sq(46, 47, 54, 57)) }
 	ns.spawnQuest[C] = { "c9005;" .. area(47, 52, { 40, 40, 60, 40, 50, 60 }) }
 	local function ob(t, text, have, need, done)
@@ -1128,7 +1128,7 @@ step("AreaGoals", function()
 	local px, py = 500, 500
 	ns.GetStep = function() return passo end
 	T.World = function(_, x, y) return { c = 0, x = (x or 0) * 10, y = (y or 0) * 10 } end
-	T.PlayerWorld = function() return { c = 0, x = px, y = py } end
+	T.PlayerWorld = function() return px and { c = 0, x = px, y = py } or nil end
 	T.Route = function() return nil end
 	WP.DistanceTo = function() return 50, 1, 1 end
 	TP.InZone = function() return true end
@@ -1165,6 +1165,21 @@ step("AreaGoals", function()
 		m = D:Get("manual")
 		assert(m and math.abs(m.x - 52) < 0.01, "o objetivo com duas áreas: a de onde ele está, não a longe")
 		D:Clear("manual")
+		-- andou para a área vizinha do mesmo objetivo: o clique na linha (ainda a velha) vai à área nova, e a janela
+		-- segue (a área entra na assinatura)
+		local velha = f.areaRows[1]._row
+		px, py = 590, 500
+		f.areaRows[1]:Click()
+		m = D:Get("manual")
+		assert(m and math.abs(m.x - 58) < 0.01,
+			"a área vizinha do mesmo objetivo: o clique foi à velha " .. tostring(m and m.x))
+		assert(f.areaRows[1]._row ~= velha and f.areaRows[1]._row.area.k == 3, "a janela não seguiu a área nova")
+		D:Clear("manual")
+		px, py = 500, 500
+		AG.Scan()
+		assert(#AG.List() == 4 and AG.List()[1].area.k == 1, "de volta: a área de antes")
+		local rel = ns.Report.ReportText(ns.Report.Context(), "x")
+		assert(rel:find("In this area: 4 lines · unmapped objectives: 0 now", 1, true), "o relatório sem o Nesta área")
 		-- o Enquanto está aqui não repete o objetivo que está aqui
 		assert(AG.Covers({ verb = "kill", id = 9005, q = { id = C } }) and not AG.Covers({ verb = "kill", q = { id = 7 } }),
 			"Covers: o objetivo da lista")
@@ -1194,6 +1209,13 @@ step("AreaGoals", function()
 		px, py = 500, 500
 		AG.Scan()
 		assert(#AG.List() == 3, "de volta à área: a lista voltou")
+		-- sem posição (masmorra, tela de carga): a lista esvazia
+		px = nil
+		AG.Scan()
+		assert(#AG.List() == 0 and not f.areaCard:IsShown(), "sem posição e a lista ficou")
+		px, py = 500, 500
+		AG.Scan()
+		assert(#AG.List() == 3, "com posição de novo: a lista voltou")
 		-- desligado, some (a janela e o mapa; o passo de novo sem área própria)
 		passo.goals = { { verb = "goto_", text = "Lá", q = { id = A } } }
 		AG.Scan(true); SA.Update()

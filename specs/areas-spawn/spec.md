@@ -134,7 +134,7 @@ guia só lista o objetivo do passo. O jogador não sabe que dá para adiantar os
 ### Comportamento
 
 - **N1 O que entra.** Os objetivos ainda abertos das quests do diário — das do passo atual (os outros objetivos da
-  quest, que o cartão não mostra), das dos passos à frente e das de fora do guia — em cuja área de nascimento (R2) o
+  quest, que o cartão não mostra), das dos passos à frente e o resto do diário — em cuja área de nascimento (R2) o
   jogador está: a distância de verdade ao contorno convexo (`SA.Near`, 0 dentro) até a folga da zona da área, **0,8% da
   largura da zona em jardas** (`SA.PAD`, a mesma fração com que o mapa incha o contorno ao desenhar: dentro da mancha
   que se vê no mapa), entre 10 e 100 jd (17-81 jd nas zonas do mundo; ~30 na Hinterlands). Fora: o objetivo concluído
@@ -144,25 +144,35 @@ guia só lista o objetivo do passo. O jogador não sabe que dá para adiantar os
 - **N2 O objetivo do banco no diário.** O índice do `SpawnAreas.lua` (mobs, objetos, itens) só vale como o do diário
   quando o diário tem o mesmo número de objetivos e o mesmo tipo em cada posição (`monster`, `object`, `item`). Senão,
   pelo nome no texto do objetivo ("Silvermane Howler slain: 20/30", "Stalker Flank: 2/8"): o do NPC aprendido ao vê-lo
-  (o do botão de alvo), o do item pelo jogo, e o do guia aberto; por fim, o único objetivo de cada tipo que sobrou dos
-  dois lados. O que não se acha fica de fora (sem a contagem certa, melhor não mostrar).
-- **N3 A ordem.** As quests do passo atual, as dos passos à frente, as de fora do guia; em cada grupo, a mais perto
-  (dentro: 0), o passo, a quest, o objetivo.
+  (o do botão de alvo), o do item pelo jogo, e o do guia aberto. O nome mais comprido primeiro ("Burly Rockjaw Trogg"
+  antes de "Rockjaw Trogg", que cabe dentro dele), e um nome só vale se está em exatamente uma linha ainda livre do
+  tipo; o que está em mais de uma (no ptBR, só o nome curto aprendido, que cabe nas duas linhas) deixa o objetivo sem
+  par. Por fim, o único objetivo de cada tipo que sobrou dos dois lados — menos no tipo em que algum nome ficou
+  ambíguo. O que não se acha fica de fora (sem a contagem certa, melhor não mostrar); o relatório (`/ls report`, "In
+  this area") conta os objetivos sem par, agora e na sessão. Nos guias há 11 pares de nomes em que um cabe no outro
+  (170, 380, 564, 2975, 3823, 4501, 5542, 96137, 99128 nos mobs; 95319, Fel-Slime Crystal, nos itens).
+- **N3 A ordem.** As quests do passo atual, as dos passos à frente, o resto do diário (a que nenhum passo daqui em
+  diante cita: fora do guia, ou que o guia já deixou para trás); em cada grupo, a mais perto (dentro: 0), o passo, a
+  quest, o objetivo.
 - **N4 A janela.** "NESTA ÁREA" logo abaixo do cartão do passo, antes do "Enquanto está aqui": um cartão azul (o tom
   das áreas no mapa) com uma linha por objetivo — o ícone do tipo (mob, item, objeto; ouro na quest do passo, azul nas
   outras), o nome do objetivo como o diário diz, sem a contagem e sem o "slain" (o `QUEST_MONSTERS_KILLED` do cliente
   diz o que sai, nos dois formatos), e a contagem do diário à direita ("Silvermane Howler 20/30"). Até 5 linhas; o resto
   vira "+N" à direita do rótulo. O tooltip diz a quest, o texto do objetivo e de onde ela é (deste passo, do passo N
-  do guia, fora do guia). O clique guia (destino avulso, como o "Enquanto está aqui") ao ponto-alvo da área mais perto
-  do objetivo — a de onde o jogador está.
+  do guia, de nenhum dos próximos passos). O clique guia (destino avulso, como o "Enquanto está aqui") ao ponto-alvo
+  da área mais perto do objetivo — a de onde o jogador está na hora do clique (refaz a conta se ele andou; a área
+  entra na assinatura, então a janela segue quando ele passa para a área vizinha do mesmo objetivo).
 - **N5 Com o "Enquanto está aqui".** Ele segue com as entregas, as quests para pegar e os objetivos dos passos à
   frente perto do `|goto` deles; o objetivo que "Nesta área" já mostra não repete lá.
-- **N6 O mapa.** As áreas dos objetivos da lista, na zona do mapa aberto (só nele: no continente, não), em azul, mais
-  claras e finas, por baixo das do passo (que seguem em âmbar, a da seta por cima). Entram na assinatura do desenho.
+- **N6 O mapa.** As áreas dos objetivos das linhas que a janela mostra, na zona do mapa aberto (só nele: no
+  continente, não), em azul, mais claras e finas, por baixo das do passo (que seguem em âmbar, a da seta por cima).
+  Entram na assinatura do desenho.
 - **N7 Quando.** Uma conta por segundo, só com a janela do guia aberta, fora de masmorra e quando algo mudou: o
   jogador andou 2 jd ou mais, o passo mudou, ou veio um `QUEST_LOG_UPDATE` (a contagem). Só as quests do diário (o
-  cache do `SA.For` guarda 64; o diário tem até 25), com o contorno no mundo guardado em cada área. A janela só
-  redesenha quando a lista muda (quest, objetivo, contagem, grupo, ordem).
+  cache do `SA.For` guarda 64; o diário tem até 25), com o contorno no mundo guardado em cada área. Sem posição do
+  jogador (masmorra, tela de carga), a lista esvazia e a conta para. A janela só redesenha quando a lista muda
+  (quest, objetivo, contagem, grupo, área, ordem); o mapa, quando muda o conjunto (em ordem fixa) das áreas das 5
+  linhas que a janela mostra (o "+N" não vai ao mapa).
 - **N8 A opção.** Configurações → Janela e HUD → "Nesta área", ao lado do "Enquanto está aqui", ligada por padrão.
   Desligada, a janela e o mapa limpam na hora e o "Enquanto está aqui" volta a mostrar todos os objetivos dele.
 
@@ -208,10 +218,11 @@ nada além do cartão, e quando sobra é 1 linha (p90 de 3). Nenhum filtro chega
 o bloco enche onde os acampamentos se misturam (Blasted Lands: 5 itens dos mesmos bichos; Riverglades, Zephras Isle,
 Desolace, Tanaris: 4-6). Abrir para 150 jd só leva o "2-5" de 9% a 14% e põe na lista o que está fora da mancha que o
 mapa mostra (100-150 jd são vários puxões dali). Escolha: **a mancha desenhada** (o bloco e o mapa dizem a mesma coisa:
-"você está dentro desta área") e **5 linhas** com "+N" (passa disso em 0,1-0,5% das posições). Na Hinterlands, passo 19:
-no ponto do guia (68,0, 52,9) entra o Skylord Plume (a área dele cobre o ponto); na área grande dos Silvermane Stalker
-a oeste (59,6, 50,8), o Savage Owlbeast e o Skylord Plume; as caixas do Slagtree e os Vilebranch ficam a 115-150 jd,
-fora das manchas.
+"você está dentro desta área") e **5 linhas** com "+N" (passa disso em 0,1-0,5% das posições). Na Hinterlands, passo 19
+(a folga lá é de ~31 jd): no primeiro `|goto` (68,0, 52,9) entra o Skylord Plume (a área dele cobre o ponto), e o resto
+fica a 92-146 jd; na área grande dos Silvermane Stalker a oeste (59,6, 50,8), o Savage Owlbeast e o Skylord Plume; na
+parte leste dela (71,5, 54,8) as ferramentas do Slagtree ficam a ~64 jd, e no `|goto` dos Howler (44,0, 61,8) o
+Vilebranch Scalper a ~56 jd — fora da mancha nos dois: entram quando o jogador chega mais perto.
 
 ### Limites
 
@@ -229,14 +240,16 @@ fora das manchas.
 
 ### Critérios de aceite
 
-- `tools/lodestar3-tests.lua`: o índice do banco no diário (a guarda; pelo nome no texto; o único do tipo; dois sem
-  nome ficam de fora), o nome sem a contagem nos dois formatos e sem o "slain" (o affix do `QUEST_MONSTERS_KILLED`, com
-  posição e parênteses), de onde é cada quest, o goal do guia no diário (o cartão), as linhas (dentro da folga da zona
-  da área, o feito, a conta cheia, o do cartão e o fora do diário de fora, a área mais perto, a ordem por grupo,
-  distância e passo, o nome sem o texto do diário), a assinatura, e de ponta a ponta com o `SA.Near` (dentro de duas
-  áreas, de uma, a 10 jd da borda, fora).
+- `tools/lodestar3-tests.lua`: o índice do banco no diário (a guarda; pelo nome no texto, o mais comprido primeiro —
+  Rockjaw Trogg e Burly Rockjaw Trogg, no inglês e com só o nome curto no ptBR —; o nome ambíguo sem par e sem o único
+  do tipo; o único do tipo; dois sem nome ficam de fora; o objetivo sem par contado), o nome sem a contagem nos dois
+  formatos e sem o "slain" (o affix do `QUEST_MONSTERS_KILLED`, com posição e parênteses), de onde é cada quest, o goal
+  do guia no diário (o cartão), as linhas (dentro da folga da zona da área, o feito, a conta cheia, o do cartão e o fora
+  do diário de fora, a área mais perto, a ordem por grupo, distância e passo, o nome sem o texto do diário), a
+  assinatura, e de ponta a ponta com o `SA.Near` (dentro de duas áreas, de uma, a 10 jd da borda, fora).
 - `tools/ui-smoke.lua` (nos dois temas): um diário de 3 quests e 5 objetivos numa área (com o item antes do objeto no
   diário, ao contrário do banco): os 4 abertos aparecem, os da quest do passo primeiro, com a contagem; o feito não; o
   clique guia à área onde o jogador está (não à outra do mesmo objetivo); o "Enquanto está aqui" não repete; o mapa
-  desenha as áreas deles; o do cartão do passo sai da lista; a contagem segue o diário; fora da área a lista esvazia e
-  volta ao voltar; desligado, a janela e o mapa limpam.
+  desenha as áreas deles; andar para a área vizinha do mesmo objetivo troca o alvo do clique; o do cartão do passo sai
+  da lista; a contagem segue o diário; fora da área a lista esvazia e volta ao voltar; desligado, a janela e o mapa
+  limpam.
