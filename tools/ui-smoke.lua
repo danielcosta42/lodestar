@@ -1597,6 +1597,9 @@ step("Flight card", function()
 		assert(pediu == 1 and not c.land:IsShown() and c.time:GetText() == ns.L.FLIGHT_LANDING and not c.bar:IsShown(),
 			"pousar antes: " .. tostring(c.time:GetText()))
 		assert(ns.char.voo and ns.char.voo.pousando, "o pedido de pousar não ficou salvo para o /reload")
+		local salvo = ns.char.voo
+		voa(false); ns.char.voo = salvo; voa(true)                 -- /reload depois do pedido: segue pousando
+		assert(c.time:GetText() == ns.L.FLIGHT_LANDING and not c.land:IsShown(), "o pedido de pousar não voltou do /reload")
 		voa(false); voa(true)                                       -- pousou e voou de novo: o botão volta
 		assert(c.land:IsShown(), "o botão não voltou no voo seguinte")
 		voa(false)
