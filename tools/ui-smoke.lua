@@ -26,6 +26,7 @@ Obj.__index = function(t, k)
 end
 function M:CreateTexture() return new("Texture", nil, self) end
 function M:CreateFontString() return new("FontString", nil, self) end
+function M:CreateLine() return new("Line", nil, self) end
 function M:CreateAnimationGroup() return new("AnimationGroup", nil, self) end
 function M:CreateAnimation() return new("Animation", nil, self) end
 function M:SetSize(w, h) self._w, self._h = w or 0, h or 0 end
@@ -975,6 +976,95 @@ step("Nearby off-guide", function()
 	WP.DistanceTo, TP.InZone, QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete = sDist, sIn, sNum, sInfo, sComp
 	ns.ItemCount, ns.Toast.Show = sCount, sShow
 	ns.Nearby.Scan()
+	assert(ok, err)
+end)
+-- áreas de nascimento (#121): o passo com um mob em 3+ áreas da mesma zona desenha as manchas no mapa aberto; a seta
+-- vai à mais perto do jogador, o clique leva à próxima (e dá a volta), o arrasto não; desligado, o mapa limpa e a seta
+-- volta ao ponto do passo. O mundo de mentira: a zona vira um quadrado de 1000 jd.
+step("SpawnAreas", function()
+	local SA, D, T, WP, TP = ns.SpawnAreas, ns.Destinations, ns.Travel, ns.Waypoint, ns.TravelPlanner
+	local ids = {}
+	for q in pairs(ns.spawnQuest) do ids[#ids + 1] = q end
+	table.sort(ids)
+	local qid, obj, zone, mesma
+	for _, q in ipairs(ids) do
+		local o = SA.For(q)[1]
+		local z = o.areas[1] and o.areas[1].zone
+		mesma = {}
+		for _, a in ipairs(o.areas) do if a.zone == z then mesma[#mesma + 1] = a end end
+		if o.kind == "c" and #mesma >= 3 and ns.zoneUiMap[z] then qid, obj, zone = q, o, z; break end
+	end
+	assert(qid, "sem quest com um mob em 3 áreas da mesma zona")
+	-- o jogador em cima da última área da zona: ela é a mais perto
+	local longe = mesma[#mesma]
+	local goal = { verb = "kill", id = obj.id, text = "Mob Teste", q = { id = qid },
+		goto_ = { zone = zone, x = mesma[1].x, y = mesma[1].y } }
+	local passo = { goals = { goal } }
+	local sGet, sPW, sW, sRoute, sDist, sIn = ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone
+	local sGrey, canvas = ns.greySkip, CreateFrame("Frame")
+	canvas:SetSize(1000, 667)
+	ns.GetStep = function() return passo end
+	ns.greySkip = {}
+	T.World = function(_, x, y) return { c = 0, x = (x or 0) * 10, y = (y or 0) * 10 } end
+	T.PlayerWorld = function() return { c = 0, x = longe.x * 10, y = longe.y * 10 } end
+	T.Route = function() return nil end
+	WP.DistanceTo = function() return 50, 1, 1 end
+	TP.InZone = function() return true end
+	WorldMapFrame.GetMapID = function() return ns.zoneUiMap[zone] end
+	WorldMapFrame.GetCanvas = function() return canvas end
+	WorldMapFrame:Show()
+	D:ClearStops(); D:Clear("manual")
+	ns.db.arrow.enabled, ns.db.spawnAreas = true, true
+	local ok, err = pcall(function()
+		local alvo = D.GuideTarget()
+		assert(alvo and alvo.area == longe, "a seta não foi à área mais perto do jogador")
+		assert(alvo.label:find("1/" .. #mesma, 1, true), "o rótulo não diz a área: " .. tostring(alvo.label))
+		SA.Update()
+		local nF, nL = SA.Drawn()
+		assert(_G.LodestarSpawnMap and _G.LodestarSpawnMap:IsShown() and nF > 0 and nL > 0,
+			("manchas no mapa: %d faixas, %d linhas"):format(nF, nL))
+		ns.Waypoint:Update()
+		local ar = _G.LodestarArrow
+		assert(ar and ar:IsShown() and ar.name._text:find("1/" .. #mesma, 1, true),
+			"a seta não diz a área: " .. tostring(ar and ar.name._text))
+		-- arrastar não troca a área
+		ar:GetScript("OnMouseDown")(ar, "LeftButton")
+		ar:GetScript("OnDragStart")(ar)
+		ar:GetScript("OnDragStop")(ar)
+		ar:GetScript("OnMouseUp")(ar, "LeftButton")
+		assert(D.GuideTarget().area == longe, "o arrasto trocou a área")
+		-- clicar leva à próxima, da mais perto para a mais longe, e dá a volta
+		local vistas = { [longe] = true }
+		for i = 2, #mesma do
+			ar:GetScript("OnMouseDown")(ar, "LeftButton")
+			ar:GetScript("OnMouseUp")(ar, "LeftButton")
+			local a = D.GuideTarget().area
+			assert(a and not vistas[a] and a.zone == zone, "o clique " .. (i - 1) .. " não foi a uma área nova da zona")
+			vistas[a] = true
+			assert(ar.name._text:find(i .. "/" .. #mesma, 1, true), "a seta não seguiu: " .. tostring(ar.name._text))
+		end
+		ar:GetScript("OnMouseDown")(ar, "LeftButton")
+		ar:GetScript("OnMouseUp")(ar, "LeftButton")
+		assert(D.GuideTarget().area == longe, "depois da última, a volta à primeira")
+		assert(SA.ArrowHint(), "sem a dica do clique")
+		local perto = SA.NearPlayer({ qid }, 30)
+		assert(perto[1] and perto[1].area == longe and perto[1].d == 0 and perto[1].q == qid and perto[1].obj == 1,
+			"perto do jogador (#122): a área onde ele está")
+		ar:GetScript("OnEnter")(ar); ar:GetScript("OnLeave")(ar)
+		-- o passo concluído não desenha; desligado, o mapa limpa e a seta volta ao ponto do passo
+		ns.db.spawnAreas = false
+		SA.Refresh(); SA.Update()
+		assert(not _G.LodestarSpawnMap:IsShown(), "desligado e a mancha ficou no mapa")
+		local g = D.GuideTarget()
+		assert(g and not g.area and g.x == goal.goto_.x and g.goal == goal, "desligado e a seta não voltou ao passo")
+		assert(not SA.Click(), "desligado, o clique fez algo")
+	end)
+	ns.db.spawnAreas = true
+	ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone = sGet, sPW, sW, sRoute, sDist, sIn
+	ns.greySkip = sGrey
+	WorldMapFrame.GetMapID, WorldMapFrame.GetCanvas = nil, nil
+	SA.Refresh(); SA.Update()
+	T:Replan(true)
 	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)

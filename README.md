@@ -55,6 +55,8 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - On-screen **waypoint arrow**, a **compass strip** at the top of the screen, and the route drawn as
   dots on the **minimap** and the **world map** — flights along their real track, boats and zeppelins
   along their crossing.
+- **Spawn areas** — the world map shades where the step's mobs, drops and objects spawn (like the modern
+  client's quest areas), and the arrow takes you to the nearest one; click the arrow for the next area.
 - **Travel planner** — the fastest trip by travel time, leg by leg: walking, the flight paths you know
   (and new ones you pick up on the way), boats, zeppelins, the Deeprun Tram, your hearthstone and
   class teleports. It replans as you go, and the flight map highlights where to fly.

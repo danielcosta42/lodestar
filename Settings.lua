@@ -163,6 +163,9 @@ local function fillNav(p)
 		function(v) ns.db.compass.scale = v / 100; if ns.Compass then ns.Compass:ApplyDisplay() end end, "%d%%")
 	switchRow(p, L.SET_MAPPINS, L.SET_MAPPINS_D,
 		function() return ns.db.guideMap end, function(v) ns.db.guideMap = v end)
+	switchRow(p, L.SET_SPAWNS, L.SET_SPAWNS_D,
+		function() return ns.db.spawnAreas ~= false end,
+		function(v) ns.db.spawnAreas = v; if ns.SpawnAreas and ns.SpawnAreas.Refresh then ns.SpawnAreas.Refresh() end end)
 	switchRow(p, L.SET_CORPSE, L.SET_CORPSE_D,
 		function() return ns.db.corpseRoute ~= false end,
 		function(v) ns.db.corpseRoute = v; if ns.Destinations.Sync then ns.Destinations.Sync() end end)

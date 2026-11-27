@@ -386,11 +386,28 @@ local function ensureArrow()
 		dbp.x or 0, dbp.y or 150)
 	arrow:SetMovable(true); arrow:EnableMouse(true)
 	arrow:RegisterForDrag("LeftButton")
-	arrow:SetScript("OnDragStart", arrow.StartMoving)
+	-- arrastar move; clicar sem arrastar leva à próxima área de nascimento do objetivo (#121, SpawnMap.lua). O
+	-- arrasto vale até o próximo apertar: o soltar dele, antes ou depois do OnDragStop, não conta como clique.
+	arrow:SetScript("OnMouseDown", function(self) self._dragged = nil end)
+	arrow:SetScript("OnDragStart", function(self) self._dragged = true; self:StartMoving() end)
 	arrow:SetScript("OnDragStop", function(self)
 		self:StopMovingOrSizing()
 		local p, _, _, x, y = self:GetPoint()
 		dbp.point, dbp.x, dbp.y = p, x, y
+	end)
+	arrow:SetScript("OnMouseUp", function(self, button)
+		if button ~= "LeftButton" or self._dragged then return end
+		if ns.SpawnAreas and ns.SpawnAreas.Click then ns.SpawnAreas.Click() end
+	end)
+	arrow:SetScript("OnEnter", function(self)
+		local hint = ns.SpawnAreas and ns.SpawnAreas.ArrowHint and ns.SpawnAreas.ArrowHint()
+		if not (hint and GameTooltip) then return end
+		GameTooltip:SetOwner(self, "ANCHOR_TOP")
+		GameTooltip:AddLine(hint, 1, 1, 1, true)
+		GameTooltip:Show()
+	end)
+	arrow:SetScript("OnLeave", function(self)
+		if GameTooltip and GameTooltip:GetOwner() == self then GameTooltip:Hide() end
 	end)
 
 	-- o brilho atrás (da cor da seta, bem fraco)
@@ -629,7 +646,10 @@ local function updateArrow(goal)
 		tint(a, near and C.done or nil)
 		a.dist:SetTextColor(UI.unpackc(near and C.done or C.accentBright))
 		a.name:SetTextColor(UI.unpackc(C.active))
-		a.name:SetText(("%s: %s"):format(verbWord(goal), ns:LocalizeText(goalName(goal))))
+		local text = ("%s: %s"):format(verbWord(goal), ns:LocalizeText(goalName(goal)))
+		-- na área de nascimento (#121): qual delas, de quantas (o clique leva à próxima)
+		if (goal._areaN or 0) > 1 then text = ("%s · %s"):format(text, ns.L.SPAWN_AREA:format(goal._areaI, goal._areaN)) end
+		a.name:SetText(text)
 	end
 end
 
