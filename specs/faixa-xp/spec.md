@@ -21,7 +21,7 @@ a previsão por quest a completar, para não ficar horas tão altas contando só
   - (XP que falta − XP das quests do diário) ÷ XP/hora de monstro. O tempo de fazer essas quests já corre dentro
     dela, e entregar uma quest já descontada não muda a conta.
   - (XP que falta) ÷ XP/hora total, como se o resto da sessão fosse igual. É a conta certa para a sessão longa, com
-    quests que ainda nem estão no diário.
+    quests que ainda nem estão no diário. Só entra com uma hora de sessão: antes, uma entrega só viraria ritmo.
 
   Se as quests bastam, a faixa diz "sobe com as quests" no lugar do tempo. Sem XP/hora e sem bastar: "--".
 - **Previsão do nível máximo:** a mesma conta com a XP de todos os níveis que faltam.

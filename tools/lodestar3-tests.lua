@@ -601,5 +601,8 @@ do
 	check(math.abs(antes - 1440) < 1 and math.abs(depois - antes) < 1, "entregar quest já descontada não encurta a previsão")
 	-- sessão longa, 60% da XP de entrega e diário vazio: vale a total (a de monstro sozinha seria pessimista)
 	check(H.Eta(10000, 4000, 0, 10000) == 3600, "sessão longa: a XP/hora total")
+	-- começo de sessão (menos de uma hora: sem a total), uma quest só de 8000 no diário: a entrega não encurta
+	local a1, d1 = H.Eta(20000, 10000, 8000, nil), H.Eta(12000, 10000, 0, nil)
+	check(math.abs(a1 - 4320) < 1 and math.abs(d1 - a1) < 1, "sem a total, a entrega de uma quest só não encurta")
 end
 print(("ok: %d checks"):format(checks))
