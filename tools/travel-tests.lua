@@ -317,6 +317,10 @@ check(not T.PrecisaMedir(medido, P(0, 0, 100), P(0, 2000, 0)), "a pé coberto pe
 check(T.PrecisaMedir(medido, P(0, 0, 900), P(0, 2000, 0)), "longe do começo medido, mesmo fim: mede antes de trocar")
 check(not T.PrecisaMedir(medido, P(0, 0, 900), P(0, 3000, 0)), "fim sem desvio medido: a reta vale")
 check(not T.PrecisaMedir({}, P(0, 0, 900), P(0, 2000, 0)), "sem desvios: a reta vale")
+local comVoo = { leg = 2, legs = { { k = "flight", to = 9 }, { k = "walk" }, { k = "flight", to = 7 } } }
+check(T.VoosConhecidos(comVoo, { [7] = true }), "os voos daqui em diante conhecidos (o já feito não conta)")
+check(not T.VoosConhecidos(comVoo, { [9] = true }), "o mapa de voo disse que o voo da rota não existe")
+check(T.VoosConhecidos(nil, {}), "sem rota: nada a desmentir")
 local velha = { legs = { { k = "walk", a = P(0, 0, 0), b = P(0, 5, 5), path = { 1 } },
 	{ k = "flight" }, { k = "walk", a = P(0, 100, 0), b = P(0, 200, 0), path = { "c" }, pathFail = true } } }
 local nova = { legs = { { k = "walk", a = P(0, 1, 1), b = P(0, 5, 5) }, { k = "flight" },

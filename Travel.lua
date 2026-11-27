@@ -393,6 +393,7 @@ function T:Replan(force)
 	local n1, c0 = new and new.legs[1], route and route.legs[route.leg]
 	local medir = route and key == routeKey and n1 and n1.k == "walk" and T.PrecisaMedir(ctx.desvios, from, n1.b)
 		and not (c0 and c0.k == "walk" and c0.b.c == n1.b.c and c0.b.x == n1.b.x and c0.b.y == n1.b.y)
+		and T.VoosConhecidos(route, ctx.known)          -- o mapa de voo disse que o voo dela não existe: troca já
 	local function melhor()
 		return T.ShouldReplace({ s = T.Remaining(route, from, speed, serverNow(), true) + (extra or 0) }, new)
 	end
@@ -502,6 +503,16 @@ function T.PrecisaMedir(lista, from, b)
 		if dv.b.c == b.c and math.abs(dv.b.x - b.x) < 1 and math.abs(dv.b.y - b.y) < 1 then return true end
 	end
 	return false
+end
+
+-- A rota ainda se voa: toda perna de voo daqui em diante vai para um voo conhecido (o mapa de voo aberto corrige os
+-- que o planejador só supunha, pelas zonas por onde o personagem passou)
+function T.VoosConhecidos(route, known)
+	for i = route and route.leg or 1, route and #route.legs or 0 do
+		local l = route.legs[i]
+		if l.k == "flight" and l.to and not (known and known[l.to]) then return false end
+	end
+	return true
 end
 
 -- A perna a pé atual (`cur`, de onde o jogador está, `pos`) com o caminho pelo terreno bem mais longo que a reta: o
