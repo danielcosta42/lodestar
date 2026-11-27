@@ -26,7 +26,13 @@ claro").
   nele não se resolvem e o cliente não as desenha); o fio entre as bolinhas desce do centro delas; na grade, rótulo curto quando o nome não cabe (Profissões, Estábulo).
   O + de adicionar guia fica com o fundo no nível do botão (senão o fundo cobre o glifo). (#113) O cartão da viagem começa abaixo
   do cabeçalho de verdade: o mais baixo entre a linha da zona e a coluna da direita (tempo, chegada, Limpar), não num
-  topo fixo.
+  topo fixo. (#117) Serviço (grade, ações rápidas do guia, /ls near) ou coordenada (campo, /ls way, /way, Shift+clique
+  no mapa e no minimapa) vira **parada** antes do destino em vez de trocá-lo; Shift+clique no serviço ou Shift no Ir
+  vai direto (troca o destino, como antes). Várias paradas, na ordem em que entraram, listadas com × para tirar; a
+  linha do tempo mostra as pernas até cada parada, o marcador dela ("parada N · em 1m20s") e o resto; total e chegada
+  somam o desvio. A parada sai ao chegar (a perna que termina nela) ou ao abrir a janela do serviço perto dela (60 jd;
+  a do próprio NPC sempre), e a seta segue para a próxima dizendo a parada e o depois ("Reparo · depois Silvermane
+  Stalker"). O corpo passa na frente (as paradas esperam); só na sessão; Limpar e fechar o guia tiram junto.
 - **R5 Central.** Substitui a Biblioteca (ns.GuideMenu abre a Central). Menu: Início, Leveling, Masmorras,
   Equipamento, Colecionáveis, Legado, Classe, Reputação, Sintonias, Eventos; Configurações e Relatar no pé.
   - **Início:** continuar (guia, passo, o que fazer agora, nível e XP) e os cartões de masmorra, equipamento, Legado e
@@ -64,5 +70,10 @@ Helper), busca de itens, raros.
 
 - tools/lodestar3-tests.lua: pesos e Pawn, melhor por espaço, spec pela árvore, faixa, masmorra que cabe, quests do
   guia, origem do colecionável, progresso e mais perto do Legado, tema mudado no lugar, sanidade do DungeonData.
-- tools/ui-smoke.lua (light e dark): o addon inteiro carrega, loga e monta e atualiza cada janela e página sem erro.
+- tools/ui-smoke.lua (light e dark): o addon inteiro carrega, loga e monta e atualiza cada janela e página sem erro;
+  paradas (#117): serviço e coordenada viram parada antes do destino, Shift vai direto, × tira, chegar e abrir a
+  janela do serviço concluem, o corpo passa na frente, Limpar tira tudo.
+- tools/travel-tests.lua (#117): fila de paradas (ordem, repetida, tirar, limpar por serviço), cadeia com corpo e
+  sem destino, janela que conclui (tipo e distância, NPC), rota emendada (pernas, marcadores, total, corte sem
+  ligação, pedra uma vez), texto da seta com o depois.
 - Suíte inteira verde; nada do Polestar (GPL-3) copiado; dados do pfQuest (MIT) e do próprio jogo.

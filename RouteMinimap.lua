@@ -111,8 +111,9 @@ local function update()
 		local rx, ry = G.ToMinimap(p.x, p.y, leg.b.x, leg.b.y, facing, rotate, ydPerPx, radius)
 		local nxt = route.legs[route.leg + 1]
 		local c = nxt and nxt.discover and C.amber or (nxt and nxt.k == "ship" and C.tip or col)
+		if leg.parada then c = C.amber end           -- parada do jogador (#117)
 		nRings = nRings + 1
-		put(rings, nRings, "ring", nxt and 13 or 16, c, 1, rx, ry)
+		put(rings, nRings, "ring", (nxt and not leg.parada) and 13 or 16, c, 1, rx, ry)
 	end
 end
 
@@ -122,8 +123,8 @@ ns:Every(0.1, function()
 	if not ok then ns:Debug("RouteMinimap:", err); hideAll() end
 end)
 
--- Shift+clique no minimapa: destino manual ali (cursor -> jardas -> mundo); em cima do
--- atual, limpa.
+-- Shift+clique no minimapa: parada ali (cursor -> jardas -> mundo, #117); em cima do destino
+-- manual ou de uma parada, tira.
 local function shiftClick()
 	local p = ns.Travel.PlayerWorld()
 	local map = C_Map.GetBestMapForUnit("player")
@@ -135,13 +136,15 @@ local function shiftClick()
 	local facing = GetPlayerFacing and GetPlayerFacing() or 0
 	local rotate = GetCVar and GetCVar("rotateMinimap") == "1"
 	local ydPerPx = minimapRange() / (Minimap:GetWidth() / 2)
-	local cur = ns.Destinations:Get("manual")
-	local w = cur and ns.Travel.World(cur.zone, cur.x, cur.y, cur.map)
-	if w and w.c == p.c then
-		local rx, ry = G.ToMinimap(p.x, p.y, w.x, w.y, facing, rotate, ydPerPx, math.huge)
-		if (rx - right) ^ 2 + (ry - up) ^ 2 < 100 then
-			ns.Waypoint:ClickDest(map, 0, 0, true)
-			return true
+	for _, m in ipairs(ns.Waypoint.Marked()) do
+		local d = m.dest
+		local w = ns.Travel.World(d.zone, d.x, d.y, d.map)
+		if w and w.c == p.c then
+			local rx, ry = G.ToMinimap(p.x, p.y, w.x, w.y, facing, rotate, ydPerPx, math.huge)
+			if (rx - right) ^ 2 + (ry - up) ^ 2 < 100 then
+				ns.Waypoint:ClickDest(map, 0, 0, m)
+				return true
+			end
 		end
 	end
 	local wx, wy = G.FromMinimap(p.x, p.y, right, up, facing, rotate, ydPerPx)

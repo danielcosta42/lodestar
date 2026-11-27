@@ -1169,4 +1169,144 @@ check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90, agora), "própria 
 local lk, lev, lt = TS.Latest({ obs = { ["1:arr"] = 10, ["2:dep"] = 30, ["2:arr"] = 20 } })
 check(lk == 2 and lev == "dep" and lt == 30, "a observação mais nova responde a pergunta")
 end)()
+-- ── #117: paradas antes do destino ───────────────────────────────────────────
+-- numa função: o pedaço principal já está no limite de 200 locais do Lua
+;(function()
+	-- a fila: na ordem em que entram, a repetida fica uma só, cada mudança refaz a rota
+	local replans = 0
+	local dns = { Travel = { Replan = function() replans = replans + 1 end } }
+	local DS = load("Destinations.lua", dns).Destinations
+	local passo = { zone = "The Hinterlands", x = 68, y = 52.9, label = "Silvermane Stalker" }
+	DS.GuideTarget = function() return passo end
+	local reparo = { zone = "Elwynn Forest", x = 41, y = 65, label = "Reparo — Bob", short = "Reparo", service = "repair",
+		npc = 1 }
+	local ponto = { map = 1429, x = 30, y = 40, label = "Ponto" }
+	check(DS:AddStop(reparo) and DS:AddStop(ponto) and replans == 2, "parada entra na fila e refaz a rota")
+	check(not DS:AddStop({ zone = "Elwynn Forest", x = 41, y = 65 }) and #DS:Stops() == 2 and replans == 2,
+		"a mesma parada duas vezes: fica uma só, sem refazer")
+	local ch = DS:Chain()
+	check(#ch == 3 and ch[1].dest == reparo and ch[2].dest == ponto and ch[1].kind == "stop" and ch[3].kind == "guide",
+		"a cadeia: as paradas na ordem em que entraram, depois o passo do guia")
+	DS:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "manual" })
+	ch = DS:Chain()
+	check(#ch == 3 and ch[3].kind == "manual", "com destino manual, ele fecha a cadeia (no lugar do guia)")
+	DS:Set("corpse", { map = 1429, x = 10, y = 10, label = "corpo", red = true })
+	ch = DS:Chain()
+	check(#ch == 1 and ch[1].kind == "corpse" and #DS:Stops() == 2, "fantasma: só o corpo; as paradas esperam")
+	DS:Clear("corpse"); DS:Clear("manual")
+	check(#DS:Chain() == 3, "reviveu: as paradas voltam antes do destino")
+	DS.GuideTarget = function() return nil end
+	ch = DS:Chain()
+	check(#ch == 2 and ch[2].dest == ponto, "sem destino: só as paradas, a última faz as vezes de destino")
+	DS.GuideTarget = function() return passo end
+	local antes = replans
+	check(DS:RemoveStop(ponto) and #DS:Stops() == 1 and replans == antes + 1, "tira pela própria parada")
+	check(not DS:RemoveStop(ponto) and not DS:RemoveStop(5) and replans == antes + 1, "tirar o que não está: nada")
+	DS:AddStop(ponto)
+	check(DS:DoneStop(1) and DS:Stops()[1] == ponto, "feita pela posição: a próxima vira a primeira")
+	DS:AddStop(reparo); DS:AddStop({ zone = "Elwynn Forest", x = 43, y = 65, service = "classtrainer" })
+	DS:ClearStops("classtrainer")
+	check(#DS:Stops() == 2 and DS:Stops()[2] == reparo, "/ls train off tira só a parada do treinador")
+	DS:ClearStops()
+	check(#DS:Stops() == 0 and #DS:Chain() == 1, "Limpar: nenhuma parada")
+	antes = replans; DS:ClearStops()
+	check(replans == antes, "limpar a fila vazia não refaz a rota")
+
+	-- a janela do serviço conclui a parada daquele tipo, perto dela; a do próprio NPC sempre
+	local W0 = { c = 0, x = 100, y = 100 }
+	local function wOf() return W0 end
+	local lista = { reparo, { zone = "X", x = 1, y = 1, service = "bank" }, ponto }
+	local junto, longe = P(0, 130, 100), P(0, 300, 100)
+	local m = DS.MatchWindow(lista, DS.WINDOW.MERCHANT_SHOW, nil, junto, wOf)
+	check(#m == 1 and m[1] == reparo, "vendedor aberto perto do reparo: o reparo está feito (o banco e o ponto, não)")
+	check(#DS.MatchWindow(lista, DS.WINDOW.MERCHANT_SHOW, nil, longe, wOf) == 0, "vendedor aberto longe da parada: nada")
+	check(#DS.MatchWindow(lista, DS.WINDOW.MERCHANT_SHOW, nil, P(1, 100, 100), wOf) == 0, "outro continente: nada")
+	check(#DS.MatchWindow(lista, DS.WINDOW.GOSSIP_SHOW, nil, junto, wOf) == 0, "conversa perto: só o próprio NPC conta")
+	m = DS.MatchWindow(lista, DS.WINDOW.GOSSIP_SHOW, 1, longe, wOf)
+	check(#m == 1 and m[1] == reparo, "a janela do próprio NPC da parada conclui (pelo id)")
+	check(DS.WINDOW.TAXIMAP_OPENED.flight and DS.WINDOW.BANKFRAME_OPENED.bank and DS.WINDOW.PET_STABLE_SHOW.stable
+		and DS.WINDOW.AUCTION_HOUSE_SHOW.auction and DS.WINDOW.MERCHANT_SHOW.vendor, "cada janela conclui o seu serviço")
+
+	-- a rota emendada: um trecho do Journey por par, as pernas juntas, a parada marcada no fim do trecho dela
+	local function plan(de, para) return J.Plan(de, para, ctx()) end
+	local function porPonto(alvo) return alvo.w end
+	local cadeia = {
+		{ dest = { w = P(0, 200, 0), short = "Reparo", label = "Reparo — Bob" }, kind = "stop" },
+		{ dest = { w = P(0, 3010, 0), short = "Ponto", label = "Ponto" }, kind = "stop" },
+		{ dest = { w = P(0, 3100, 0), label = "Silvermane Stalker" }, kind = "guide" },
+	}
+	local rr = T.PlanChain(P(0, 10, 0), cadeia, porPonto, plan)
+	check(rr and kinds(rr) == "walk,walk,flight,walk,walk", "paradas: a pé à primeira, voo à segunda, a pé ao passo ("
+		.. (rr and kinds(rr) or "nil") .. ")")
+	check(#rr.stops == 2 and rr.stops[1].leg == 1 and rr.stops[2].leg == 4, "o fim de cada parada na rota")
+	check(rr.legs[1].parada == cadeia[1].dest and rr.legs[4].parada == cadeia[2].dest and not rr.legs[5].parada,
+		"a perna que chega à parada leva a parada")
+	check(rr.dest == cadeia[3].dest and rr.kind == "guide", "o destino da rota é o do fim da cadeia")
+	local soma = 0
+	local trechos = { { P(0, 10, 0), P(0, 200, 0) }, { P(0, 200, 0), P(0, 3010, 0) }, { P(0, 3010, 0), P(0, 3100, 0) } }
+	for _, t in ipairs(trechos) do
+		soma = soma + J.Plan(t[1], t[2], ctx()).s
+	end
+	check(math.abs(rr.s - soma) < 1e-6, "o total soma os trechos (o desvio entra)")
+	rr.leg = 1
+	check(math.abs(T.Remaining(rr, P(0, 10, 0), 7) - soma) < 0.5, "quanto falta conta o desvio inteiro")
+	check(T.AdvanceLeg(rr, P(0, 195, 0), false) == 2, "chegou à parada: segue para o trecho seguinte")
+	rr.leg = 2
+
+	-- trecho sem rota corta a cadeia ali; sem o primeiro, nada
+	local ilha = { { dest = cadeia[1].dest, kind = "stop" }, { dest = { w = P(5, 0, 0) }, kind = "stop" },
+		{ dest = cadeia[3].dest, kind = "guide" } }
+	local rc = T.PlanChain(P(0, 10, 0), ilha, porPonto, plan)
+	check(rc and #rc.legs == 1 and rc.kind == "stop" and rc.dest == cadeia[1].dest,
+		"parada sem ligação: a rota vai até a última alcançada")
+	check(T.PlanChain(P(0, 10, 0), { ilha[2], ilha[3] }, porPonto, plan) == nil, "a primeira sem ligação: sem rota")
+	check(T.PlanChain(P(0, 10, 0), {}, porPonto, plan) == nil, "cadeia vazia: sem rota")
+
+	-- a pedra vale uma vez; cada trecho sai na hora em que o anterior chega (sem o gasto da pedra)
+	local vistos = {}
+	T.PlanChain(P(0, 0, 0), cadeia, porPonto, function(de, para, o)
+		vistos[#vistos + 1] = { at = o.at, hearth = o.hearth }
+		if #vistos == 1 then
+			return { s = 310, legs = { { k = "hearth", s = 10, gasto = 300, a = de, b = para } } }
+		end
+		return { s = 50, legs = { { k = "walk", s = 50, a = de, b = para } } }
+	end)
+	check(#vistos == 3 and not vistos[1].hearth and vistos[2].hearth and vistos[3].hearth,
+		"pedra usada num trecho: os seguintes não contam com ela")
+	check(vistos[1].at == 0 and vistos[2].at == 10 and vistos[3].at == 60,
+		"cada trecho sai depois do anterior, pelo tempo de verdade")
+
+	-- a chave da cadeia: parada nova ou tirada refaz; a mesma, não
+	local k1 = T.ChainKey({ { dest = reparo, kind = "stop" }, { dest = passo, kind = "guide" } })
+	local k2 = T.ChainKey({ { dest = passo, kind = "guide" } })
+	check(k1 ~= k2 and k1 == T.ChainKey({ { dest = reparo, kind = "stop" }, { dest = passo, kind = "guide" } }),
+		"a chave muda com as paradas e é a mesma para a mesma cadeia")
+	check(T.ChainKey({}) == nil, "sem cadeia: sem chave")
+
+	-- a seta: a parada e o que vem depois
+	local Ls = setmetatable({ STOP_THEN = "%s · DEPOIS %s", STOP = "PARADA", LEG_FLY = "VOE %s", DEST = "DESTINO" },
+		{ __index = function(_, k) return k end })
+	local wsn = { L = Ls, On = function() end, Every = function() end, zoneUiMap = {} }
+	local WS = load("Waypoint.lua", wsn).Waypoint
+	check(WS.LegText(rr, 1, 40) == "Reparo · DEPOIS Ponto · 40s", "a pé até a parada: ela e a próxima parada ("
+		.. WS.LegText(rr, 1, 40) .. ")")
+	check(WS.LegText(rr, 4, 5) == "Ponto · DEPOIS Silvermane Stalker · 5s", "a última parada: depois, o destino ("
+		.. WS.LegText(rr, 4, 5) .. ")")
+	check(WS.LegText(rr, 3, 60):find("^VOE"), "a perna do meio do trecho segue com o texto dela")
+	check(WS.LegText(rc, 1, 9) == "Reparo · 9s",
+		"a parada que fecha a rota não tem depois (" .. WS.LegText(rc, 1, 9) .. ")")
+	-- sem rota (outro continente, instância): a seta vai à primeira parada, e diz a seguinte
+	wsn.Travel = { Route = function() return nil end }
+	local fila = { reparo, ponto }
+	local ativo, tipo = passo, "guide"
+	wsn.Destinations = { Active = function() return ativo, tipo end, Stops = function() return fila end }
+	local g1 = WS:PickTarget()
+	check(g1 and g1._stop == reparo and g1.text == "Reparo · DEPOIS Ponto" and g1.goto_.zone == "Elwynn Forest",
+		"sem rota: a primeira parada, com a seguinte (" .. tostring(g1 and g1.text) .. ")")
+	fila = { ponto }
+	check(WS:PickTarget().text == "Ponto · DEPOIS Silvermane Stalker", "a última parada: depois, o destino")
+	ativo, tipo = { map = 1, x = 1, y = 1, label = "corpo" }, "corpse"
+	check(WS:PickTarget()._corpse, "fantasma: o corpo antes da parada")
+end)()
+
 print(("ok: %d checks"):format(checks))

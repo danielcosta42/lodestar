@@ -3,9 +3,10 @@
 -- conhecidos, velocidade a pé, pedra de lar, teleportes), pede a rota ao Journey,
 -- acompanha em que perna o jogador está e decide quando recalcular.
 --
---   ns.Travel:Route()  -> { s, legs, leg = índice da perna atual, dest, kind } | nil
+--   ns.Travel:Route()  -> { s, legs, leg = índice da perna atual, dest, kind, stops } | nil
 --   ns.Travel:Leg()    -> a perna atual | nil
 --   evento interno "_ROUTE_CHANGED" quando a rota ou a perna muda
+--   Com paradas (#117): `stops[j] = { leg, dest }` (a última perna até a parada j, que leva `parada = dest`)
 --=============================================================================
 local ADDON, ns = ...
 local T = {}
@@ -61,6 +62,44 @@ function T.Remaining(route, pos, speed, now, reta)
 		end
 	end
 	return s
+end
+
+-- Rota pelas paradas até o destino (#117): um trecho do Journey por par (jogador -> parada 1 -> ... -> destino),
+-- emendados numa rota só. `chain` = { { dest, kind }, ... } (Destinations:Chain); `worldOf(dest)` -> { c, x, y } | nil;
+-- `plan(a, b, opts)` -> rota do Journey | nil, com opts = { at = s de viagem antes do trecho, hearth = a pedra já
+-- foi usada num trecho anterior }. A última perna até cada parada leva `parada` e entra em `stops`. Trecho sem rota
+-- corta a cadeia ali: a rota vai até a última alcançada (o resto se tenta de novo de lá); sem o primeiro, nil.
+function T.PlanChain(from, chain, worldOf, plan)
+	local legs, stops, s, a, last = {}, {}, 0, from, nil
+	local at, hearth = 0, false               -- `s` soma o plano (com o gasto da pedra); `at`, o tempo de verdade
+	for _, t in ipairs(chain) do
+		local b = worldOf(t.dest)
+		local seg = b and plan(a, b, { at = at, hearth = hearth })
+		if not (seg and #seg.legs > 0) then break end
+		for _, leg in ipairs(seg.legs) do
+			legs[#legs + 1] = leg
+			at = at + (leg.s or 0)
+			if leg.k == "hearth" then hearth = true end
+		end
+		s = s + seg.s
+		if t.kind == "stop" then
+			legs[#legs].parada = t.dest
+			stops[#stops + 1] = { leg = #legs, dest = t.dest }
+		end
+		a, last = b, t
+	end
+	if not last then return nil end
+	return { s = s, legs = legs, stops = stops, dest = last.dest, kind = last.kind }
+end
+
+-- O que identifica a cadeia: mudou (parada nova, tirada, passo novo, corpo), a rota se refaz.
+function T.ChainKey(chain)
+	local parts = {}
+	for i, t in ipairs(chain) do
+		local d = t.dest
+		parts[i] = ("%s:%s:%.1f:%.1f"):format(t.kind or "?", d.zone or d.map or "?", d.x or 0, d.y or 0)
+	end
+	return #parts > 0 and table.concat(parts, "|") or nil
 end
 
 -- Entre as paradas perto de um anunciador ({ sid, k, nome da outra parada, distância },
@@ -259,25 +298,41 @@ local function destination()
 	if ns.Destinations then return ns.Destinations:Active() end
 end
 
-local function keyOf(dest, kind)
-	return dest and ("%s:%s:%.1f:%.1f"):format(kind or "?", dest.zone or dest.map or "?", dest.x or 0, dest.y or 0)
+-- as paradas e o destino, em ordem (#117)
+local function chain()
+	if ns.Destinations and ns.Destinations.Chain then return ns.Destinations:Chain() end
+	local dest, kind = destination()
+	return dest and { { dest = dest, kind = kind } } or {}
 end
 
 local function changed()
 	if ns.fire then ns.fire("_ROUTE_CHANGED", route) end
 end
 
+local function worldOf(d) return T.World(d.zone, d.x, d.y, d.map) end
+
 function T:Replan(force)
-	local dest, kind = destination()
-	local key = keyOf(dest, kind)
-	local from = dest and T.PlayerWorld()
-	local to = dest and T.World(dest.zone, dest.x, dest.y, dest.map)
-	if not (dest and from and to and ns.travel) then
+	local ch = chain()
+	local key = T.ChainKey(ch)
+	local from = ch[1] and T.PlayerWorld()
+	local to = from and worldOf(ch[1].dest)
+	if not (from and to and ns.travel) then
 		if route then route, routeKey = nil, key; changed() end
 		return
 	end
-	local new = ns.Journey.Plan(from, to, self:Context())
-	if new then new.leg, new.dest, new.kind = 1, dest, kind end
+	local ctx = self:Context()
+	-- cada trecho sai mais tarde (o horário do barco conta da hora em que se chega ao cais) e a pedra vale uma vez
+	local new = T.PlanChain(from, ch, worldOf, function(a, b, o)
+		local c = ctx
+		if o.at > 0 or o.hearth then
+			c = {}
+			for k, v in pairs(ctx) do c[k] = v end
+			c.now = ctx.now and ctx.now + o.at
+			if o.hearth then c.hearth = nil end
+		end
+		return ns.Journey.Plan(a, b, c)
+	end)
+	if new then new.leg = 1 end
 	sinceReplan = 0
 	-- a rota nova que segue a pé para o mesmo ponto herda o caminho já calculado
 	local cur, n1 = route and route.legs[route.leg], new and new.legs[1]
@@ -436,6 +491,8 @@ end
 function T:Describe()
 	local dest, kind = destination()
 	local parts = { ("dest %s"):format(dest and (kind or "?") or "none") }
+	local nStops = ns.Destinations and ns.Destinations.Stops and #ns.Destinations:Stops() or 0
+	if nStops > 0 then parts[#parts + 1] = ("stops %d"):format(nStops) end
 	if route then
 		local cur = route.legs[route.leg]
 		local caminho = cur and cur.k == "walk" and (cur.path and (#cur.path .. " pts" .. (cur.pathFail and " (solto)" or ""))
@@ -574,9 +631,8 @@ ns:Every(1, function()
 	ns.char.bind = T.LearnBind(ns.char.bind, GetBindLocation and GetBindLocation(),
 		GetSubZoneText and GetSubZoneText(), pos, vinculou)
 	if pos then vinculou = false end
-	-- destino mudou (passo novo, manual, corpo): rota nova já
-	local dest, kind = destination()
-	if keyOf(dest, kind) ~= routeKey then return T:Replan(true) end
+	-- destino mudou (passo novo, manual, corpo, parada): rota nova já
+	if T.ChainKey(chain()) ~= routeKey then return T:Replan(true) end
 	if route then
 		local i = T.AdvanceLeg(route, pos, onTaxi)
 		if i ~= route.leg then
@@ -592,9 +648,12 @@ ns:Every(1, function()
 					T:Observe(done.sid, done.stop % m + 1, "arr", snow, done.stop, rideS)
 				end
 			end
-			if i > #route.legs then          -- chegou
+			-- chegou a uma parada (#117): ela sai da fila e a rota se refaz dali para a próxima
+			local feita = done and done.parada and ns.Destinations and ns.Destinations:DoneStop(done.parada)
+			if not feita and i > #route.legs then          -- chegou
+				local kind = route.kind
+				route = nil                      -- antes de limpar: a rota nova até o guia fica
 				if kind == "manual" and ns.Destinations then ns.Destinations:Clear("manual") end
-				route = nil
 			end
 			changed()
 		end
