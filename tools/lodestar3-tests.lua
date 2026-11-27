@@ -213,9 +213,11 @@ local function dz(z, x, y) return z == "Tanaris" and math.abs(x - 50) * 10 + mat
 local fora = N.OffGuideTurnins({ 10, 11, 12, 13 }, { [11] = true }, enders, zonas, dz)
 check(#fora == 1 and fora[1].q == 10 and fora[1].dist == 0 and fora[1].offGuide and fora[1].goal.goto_.zone == "Tanaris"
 	and fora[1].goal.goto_.x == 50, "entrega fora do guia: a do guia não entra; sem ponto conhecido ou outro continente, não")
-local gq = N.GuideQuests({ { goals = { { id = 5 }, { id = 6 } } }, { goals = { { id = 7 } } } },
-	function(g) return g.id ~= 6 and g.id or nil end)
-check(gq[5] and gq[7] and not gq[6], "as quests que o guia cita")
+local gt = N.GuideTurnins({ { goals = { { id = 5, verb = "turnin" }, { id = 6, verb = "turnin" } } },
+	{ goals = { { id = 7, verb = "accept" }, { id = 5, verb = "turnin" } } } }, function(g) return g.id ~= 6 and g.id or nil end)
+check(gt[5] == 2 and not gt[6] and not gt[7], "o último passo em que o guia entrega cada quest (a só pegada fica de fora)")
+local ex = N.Excluded({ [5] = 2, [8] = 1 }, 2, { [9] = true })
+check(ex[5] and not ex[8] and ex[9], "fora do guia: a entrega que ficou para trás conta; a que vem e a pulada, não")
 check(#N.Pick({}, 100, 3) == 0 and #N.Pick({ { q = 1 } }, 100, 3) == 0, "sem distância: fora")
 check(N.StepNPC({ { verb = "accept", text = "Westfall Stew" }, { verb = "talk", text = "" }, { verb = "talk", text = "Salma" } })
 	.text == "Salma" and N.StepNPC({ { verb = "accept", text = "X" } }) == nil, "quem dá a quest: o primeiro talk com nome")

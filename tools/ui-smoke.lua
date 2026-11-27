@@ -770,7 +770,8 @@ step("Nearby off-guide", function()
 	local sCount, sShow = ns.ItemCount, ns.Toast.Show
 	local toasts = {}
 	local ok, err = pcall(function()
-		local gq = N.GuideQuests(ns.currentGuide.steps, function(g) return ns.QuestState.QuestOf(g) end)
+		local gq = N.Excluded(N.GuideTurnins(ns.currentGuide.steps, function(g) return ns.QuestState.QuestOf(g) end),
+			ns.char.currentStep, ns.char.skipped)
 		local fora
 		for q in pairs(ns.questEnd) do if not gq[q] then fora = q; break end end
 		local livro = ns.Collect:Lists().books[1]

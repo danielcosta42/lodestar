@@ -28,8 +28,10 @@ def gera():
     nomes, indice = [], {}
 
     def zona(area):
-        nome = (zonas.get(str(area)) or {}).get("name")
-        if not nome:
+        z = zonas.get(str(area)) or {}
+        nome = z.get("name")
+        # zona sem mapa no cliente (bonde, salas de masmorra sem uiMapId): o ponto não teria onde cair
+        if not nome or not z.get("uiMapId"):
             return None
         if nome not in indice:
             indice[nome] = len(nomes) + 1
@@ -48,6 +50,8 @@ def gera():
                     for x, y in lista or []:
                         if z is None or n >= POR_ENTREGADOR or len(pts) >= POR_QUEST:
                             break
+                        if x < 0 or y < 0:
+                            continue          # o "dentro da masmorra, sem coordenada" do QuestieDB (-1, -1)
                         pts.append((z, round(x, 1), round(y, 1)))
                         n += 1
         if pts:
@@ -80,6 +84,7 @@ def demo(nomes, fim):
     assert nomes[z - 1] == "Tanaris" and abs(x - 50.2) < 0.2 and abs(y - 27.5) < 0.2, fim[10]
     assert len(fim) > 5000, len(fim)
     assert all(len(v) % 3 == 0 and len(v) // 3 <= POR_QUEST for v in fim.values())
+    assert all(v[i] >= 0 for v in fim.values() for i in range(1, len(v), 3)), "ponto sem coordenada"
     print("demo ok: %d quests, %d zonas" % (len(fim), len(nomes)))
 
 
