@@ -42,9 +42,12 @@ do Polestar é copiado.
 - **R12 Relatório.** "Relatar um problema" (menu ⋯, Configurações > Ferramentas, `/ls report`): uma janela com texto
   pronto para copiar (versão, cliente, guia, passo e seus objetivos, mapa e coordenada, nível, classe, raça, facção,
   quests do passo no diário, outros addons ligados) e o endereço das issues. Nada sai sozinho.
-- **R13 Avisar o grupo** (opcional, desligado). Em grupo (não raide, não instância de campo), quando uma quest do diário
-  fica pronta para entregar: "Lodestar: [Quest] pronta para entregar" no chat do grupo. Uma vez por quest; nada no
-  login, no /reload nem para o que já estava pronto.
+- **R13 Avisar o grupo** (ligado desde #127; desliga nas Configurações — a linha "Lodestar: …" também divulga o addon).
+  Em grupo (não raide, não instância de campo), quando uma quest do diário fica pronta para entregar: "Lodestar:
+  [Quest] pronta para entregar" no chat do grupo; quando um objetivo dela fecha: "Lodestar: [Quest] · Kobold Vermin
+  slain: 8/8" (o texto do objetivo como o jogo dá; se a quest fica pronta no mesmo momento, só a linha de pronta). Uma
+  vez por quest e por objetivo, no máximo 3 linhas por atualização do diário; nada no login, no /reload nem para o
+  que já estava feito. O save antigo com o padrão desligado gravado passa a ligado uma vez só (`partyTellOn`).
 - **R14 TomTom** (opcional, desligado). Sem o TomTom instalado: `TomTom:AddWaypoint(mapa, x, y, opções)` de outros
   addons e `/way [#mapa|zona] x y [nome]` viram o destino manual do Lodestar; `RemoveWaypoint` limpa. Com o TomTom,
   nada muda. (#117) O `/way` agora põe uma parada antes do destino (o `AddWaypoint` dos outros addons segue trocando o

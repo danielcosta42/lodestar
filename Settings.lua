@@ -245,7 +245,7 @@ local function fillGroup(p)
 	switchRow(p, L.SET_TRANSITSHARE, L.SET_TRANSITSHARE_D,
 		function() return ns.db.transitShare ~= false end, function(v) ns.db.transitShare = v end)
 	switchRow(p, L.SET_PARTYTELL, L.SET_PARTYTELL_D,
-		function() return ns.db.partyTell == true end, function(v) ns.db.partyTell = v end, true)
+		function() return ns.db.partyTell ~= false end, function(v) ns.db.partyTell = v end)
 	switchRow(p, L.SET_SHAREQ, L.SET_SHAREQ_D,
 		function() return ns.db.shareQuests end, function(v) ns.db.shareQuests = v end, true)
 	switchRow(p, L.SET_DANGER, L.SET_DANGER_D,
