@@ -299,6 +299,37 @@ step("SkipQuest + Undo", function()
 end)
 step("Viewer empty", function() local k = ns.currentGuide.key; ns:CloseGuide(k); ns.Viewer:Refresh(); ns:LoadGuide(k, true) end)
 step("TravelPanel", function() ns.TravelPanel:Toggle(); ns.TravelPanel.Refresh(); ns.TravelPanel.MeasureServices() end)
+-- espera do barco (issue #110): na perna de barco, a animação no lugar da seta; na perna a pé, a seta de volta
+step("Arrow wait", function()
+	local T = ns.Travel
+	local savedRoute, savedPW = T.Route, T.PlayerWorld
+	local a, b, c = { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 1, x = 900, y = 0 }
+	local route = { leg = 2, kind = "manual", dest = { label = "Grom'gol" }, legs = {
+		{ k = "walk", a = a, b = b, s = 20 },
+		{ k = "ship", ship = "zeppelin", a = b, b = c, s = 240, name = "Grom'gol" },
+		{ k = "walk", a = c, b = c, s = 10 } } }
+	T.Route = function() return route end
+	T.PlayerWorld = function() return { c = 0, x = 100, y = 0 } end
+	ns.db.arrow.enabled = true
+	local ok, err = pcall(function()
+		ns.Waypoint:Update()
+		local ar = _G.LodestarArrow
+		assert(ar and ar._shown, "seta escondida")
+		assert(ar.wait and ar.wait._shown, "sem a animação de espera na perna de barco")
+		assert(not ar.tex._shown, "a agulha continua na perna de barco")
+		local upd = ar.wait:GetScript("OnUpdate")
+		for _ = 1, 30 do upd(ar.wait, 0.05) end
+		route.legs[2].boarded = 1
+		ns.Waypoint:Update()
+		assert(ar.wait._shown and ar.wait.period == 2.4, "a bordo: giro mais lento")
+		route.leg = 3; route.legs[3].b = { c = 1, x = 950, y = 40 }
+		T.PlayerWorld = function() return { c = 1, x = 900, y = 0 } end
+		ns.Waypoint:Update()
+		assert(not ar.wait._shown, "a animação ficou na perna a pé")
+	end)
+	T.Route, T.PlayerWorld = savedRoute, savedPW
+	assert(ok, err)
+end)
 -- Navegação com rota (issue #108): cada perna aparece, ancorada só pelo topo, e a linha do tempo tem altura
 step("TravelPanel route", function()
 	local T = ns.Travel
