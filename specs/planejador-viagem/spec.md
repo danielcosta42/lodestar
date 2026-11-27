@@ -33,6 +33,15 @@ pelo cliente, ícones e tooltips de cais no mapa.
 - **O que dispara uma rota:** o alvo do passo do guia, um destino manual (Shift+clique no mapa ou
   minimapa, ou coordenada colada), um serviço próximo, e o corpo depois de morrer.
   Prioridade: **corpo > manual > guia**; ao chegar ou cancelar, volta para o de baixo.
+- **Paradas (#117):** serviço e coordenada entram como parada antes do destino (manual ou guia), em
+  vez de trocá-lo; Shift+clique no serviço (ou Shift no Ir da coordenada) troca o destino, como antes.
+  A rota é a emenda de um `Journey.Plan` por trecho (jogador → parada 1 → … → destino), cada trecho
+  saindo na hora em que o anterior chega e com a pedra valendo uma vez; `route.stops[j] = { leg, dest }`
+  marca a última perna de cada parada (que leva `parada`). A chave da rota inclui as paradas: pôr ou
+  tirar uma refaz. Trecho sem ligação corta a rota ali. A parada sai ao chegar (a perna dela termina)
+  ou ao abrir a janela do serviço perto dela (vendedor/reparo/estalagem: MERCHANT_SHOW; treinador:
+  TRAINER_SHOW; banco, leilão, voo, estábulo; a do próprio NPC, pelo id, sempre). O corpo passa na
+  frente de tudo (as paradas esperam). Só na sessão; Limpar tira o manual e as paradas.
 - **Na tela:** a seta atual aponta para o fim da **perna atual**; uma bússola nova no topo mostra a
   próxima parada, o destino final e o próximo passo do guia.
 - **Voos:** só voa *para* voo conhecido; um voo ainda não descoberto vale como ponto de partida
@@ -106,7 +115,10 @@ uma rota nova só substitui a atual se for ≥ 15% ou ≥ 30 s mais rápida.
 - `Services:Nearest(kind, sub)` pega os 5 candidatos mais perto em linha reta, de facção amiga, e
   devolve o de menor `Journey:Plan(...).seconds`.
 - Shift+clique no mapa-múndi (cursor no mapa aberto) e no minimapa (cursor → jardas pelo zoom)
-  define o destino manual; Shift+clique no pino o cancela.
+  define o destino manual; Shift+clique no pino o cancela. (#117) Agora põe uma parada; em cima do
+  destino manual ou de uma parada, tira.
+- (#117) `Destinations` guarda também as paradas (`AddStop`, `RemoveStop`/`DoneStop`, `ClearStops`,
+  `Stops`) e devolve a cadeia (`Chain`: as paradas e o destino ativo; fantasma, só o corpo).
 
 ### 4. Desenho — `RouteMap.lua` e `RouteMinimap.lua`
 
