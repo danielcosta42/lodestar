@@ -603,20 +603,45 @@ step("TransitShare", function()
 		assert(foi, "a observação própria não foi para a guilda")
 		assert(store[ship.id].own == now - 50, "a própria não ficou marcada")
 		store[ship.id] = nil
-		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|2|d|%d"):format(ship.id, now - 30), "GUILD", "Outro-Reino")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|2|d|%d"):format(ship.id, now - 30), "GUILD", "Outro")
 		assert(store[ship.id] and store[ship.id].last == now - 30 and not store[ship.id].own,
 			"a observação da guilda não entrou")
 		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 10), "GUILD", "Teste")
 		assert(store[ship.id].last == now - 30, "o eco da própria mensagem entrou")
-		ns.fire("CHAT_MSG_ADDON", "LSTransit", "o|999999|1|a|5", "GUILD", "Outro-Reino")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 10), "WHISPER", "Outro")
+		assert(store[ship.id].last == now - 30, "sussurro entrou (só guilda e grupo)")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 10), "GUILD", "Alguem-OutroReino")
+		assert(store[ship.id].last == now - 30, "horário de outro reino entrou")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", "o|999999|1|a|5", "GUILD", "Outro")
 		assert(store[999999] == nil, "transporte desconhecido entrou")
+		-- de fora só move a fase: o período aprendido fica
+		store[ship.id].T = 999
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 20), "GUILD", "Outro")
+		assert(store[ship.id].last == now - 20 and store[ship.id].T == 999, "a de fora mexeu no período aprendido")
+		store[ship.id].T = nil
+		-- pergunta sem nada a dizer não trava o canal: a seguinte, com horário, tem resposta (numa mensagem só)
+		local guarda = store[ship.id]
+		for _, sh in ipairs(ns.travel.ships) do store[sh.id] = nil end
 		local antes = #sent
-		ns.fire("CHAT_MSG_ADDON", "LSTransit", "q", "GUILD", "Outro-Reino")
-		local resp = false
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", "q", "GUILD", "Outro")
+		assert(#sent == antes, "respondeu sem ter horário")
+		store[ship.id] = guarda
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", "q", "GUILD", "Outro")
+		local resp = 0
 		for i = antes + 1, #sent do
-			if sent[i][3] == "GUILD" and sent[i][2] == ("o|%d|2|d|%d"):format(ship.id, now - 30) then resp = true end
+			if sent[i][3] == "GUILD" and sent[i][2]:find(("%d|1|a|%d"):format(ship.id, now - 20), 1, true) then
+				resp = resp + 1
+			end
 		end
-		assert(resp, "a pergunta ficou sem resposta")
+		assert(resp == 1, "a pergunta ficou sem resposta (ou foi em várias)")
+		-- ao entrar num grupo, pergunta só ao grupo
+		local ig = _G.IsInGroup
+		_G.IsInGroup = function() return true end
+		antes = #sent
+		ns.TransitShare:Ask(true)
+		_G.IsInGroup = ig
+		for i = antes + 1, #sent do assert(sent[i][3] ~= "GUILD", "a pergunta do grupo acordou a guilda") end
+		assert(#sent > antes, "a pergunta do grupo não saiu")
 		ns.db.transitShare = false
 		antes = #sent
 		ns.Travel:Observe(ship.id, 1, "arr", now - 5)

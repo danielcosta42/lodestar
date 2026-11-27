@@ -1129,11 +1129,22 @@ check(temShari, "Paladino da Horda: Shari Stilwell (Brill) está no banco de tre
 local tsns = load("TransitShare.lua", load("Schedule.lua", {}))
 local TS, SCx = tsns.TransitShare, tsns.Schedule
 local barco = { id = 285, stops = { {}, {} }, s = { 100, 80 }, d = { 60, 60 } }
-check(TS.Encode(285, 2, "dep", 1700000000.7) == "o|285|2|d|1700000000", "observação vira texto curto")
-local sid, k, ev, t = TS.Decode("o|285|2|d|1700000000")
-check(sid == 285 and k == 2 and ev == "dep" and t == 1700000000, "e volta")
+local um = TS.Encode({ { 285, 2, "dep", 1700000000.7 } })
+check(#um == 1 and um[1] == "o|285|2|d|1700000000", "observação vira texto curto")
+local dec = TS.Decode("o|285|2|d|1700000000;292|1|a|1700000100;lixo")
+check(#dec == 2 and dec[1][1] == 285 and dec[1][2] == 2 and dec[1][3] == "dep" and dec[1][4] == 1700000000
+	and dec[2][1] == 292 and dec[2][3] == "arr", "várias numa mensagem; a entrada torta fica de fora")
 check(TS.Decode("q") == "q" and TS.Decode("o|x|1|a|5") == nil and TS.Decode("o|1|1|z|5") == nil
-	and TS.Decode(nil) == nil, "pergunta; lixo não decodifica")
+	and TS.Decode(nil) == nil and TS.Decode("p|1|1|a|5") == nil, "pergunta; lixo não decodifica")
+local onze = {}
+for i = 1, 11 do onze[i] = { 11000 + i, 3, "dep", 1700000000 + i } end
+local msgs = TS.Encode(onze)
+local cabe, total = true, 0
+for _, m in ipairs(msgs) do
+	if #m > 250 then cabe = false end
+	total = total + #TS.Decode(m)
+end
+check(cabe and total == 11 and #msgs <= 2, "as respostas de todos os transportes cabem em uma ou duas mensagens")
 local agora = 100000
 check(TS.Accept(nil, barco, 1, "arr", agora - 60, agora), "sem horário: entra")
 check(not TS.Accept(nil, barco, 3, "arr", agora - 60, agora), "parada que o transporte não tem: fora")
@@ -1141,10 +1152,18 @@ check(not TS.Accept(nil, barco, 1, "arr", agora + 600, agora), "hora futura: for
 check(not TS.Accept(nil, barco, 1, "arr", agora - 13 * 3600, agora), "mais de 12 h: fora")
 local hx = SCx.Learn(nil, barco, 1, "arr", agora - 1000, nil)
 check(not TS.Accept(hx, barco, 1, "arr", agora - 1100, agora), "mais velha que a que o horário já tem: fora")
-hx.own = agora - 1000
--- fase própria: chegada na 1ª às agora-1000 (ciclo de 300; chega na 2ª 160 s depois). 5 s fora concorda; 90 s, não
+hx.own, hx.ownT0 = agora - 1000, hx.t0
+-- fase própria: chegada na 1ª às agora-1000 (ciclo estimado de 300; chega na 2ª 160 s depois). 5 s fora concorda;
+-- 90 s, não — dentro da previsão (até uma volta depois da própria)
 check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 5, agora), "concorda com a fase própria (5 s): entra")
 check(not TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90, agora), "contra a fase própria recente (90 s): fora")
+-- além de uma volta com o período só estimado: o próprio planejador já não confia; a de fora entra
+check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90 + 600, agora), "fora da previsão estimada: a de fora vale")
+-- a comparação é com a fase própria, não com a última aceita: de fora não encadeia 30 s em 30 s
+local h2 = SCx.Learn(hx, barco, 2, "arr", agora - 1000 + 160 + 25, nil)
+h2.own, h2.ownT0 = hx.own, hx.ownT0
+check(not TS.Accept(h2, barco, 2, "arr", agora - 1000 + 160 + 50, agora),
+	"não encadeia sobre a de fora (50 s da própria, 25 s da aceita): fora")
 hx.own = agora - 3 * 3600
 check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90, agora), "própria velha (3 h): a de fora vale")
 local lk, lev, lt = TS.Latest({ obs = { ["1:arr"] = 10, ["2:dep"] = 30, ["2:arr"] = 20 } })

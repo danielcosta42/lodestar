@@ -209,15 +209,21 @@ function T:Observe(sid, k, ev, t, rideFrom, rideS, replan, shared)
 	local ship = shipById(sid)
 	if not (ship and ns.Schedule) then return end
 	local store = transit()
-	local own = store[sid] and store[sid].own
-	local ride = store[sid] and store[sid].ride
+	local old = store[sid]
+	local ride = old and old.ride
 	if rideFrom and rideS and rideS > 5 then
 		ride = ride or {}
 		ride[rideFrom] = rideS
 	end
-	store[sid] = ns.Schedule.Learn(store[sid], ship, k, ev, t, ride)
-	store[sid].own = own                                  -- a última observação própria (manda sobre as de fora)
-	if not shared then store[sid].own = t end
+	local h = ns.Schedule.Learn(old, ship, k, ev, t, ride)
+	store[sid] = h
+	-- a última observação própria e o início de ciclo dela (mandam sobre as de fora: TransitShare.Accept)
+	h.own, h.ownT0 = old and old.own, old and old.ownT0
+	if shared then
+		h.T = old and old.T                                -- de fora só move a fase; o período aprendido fica
+	else
+		h.own, h.ownT0 = t, h.t0
+	end
 	if not shared and ns.TransitShare then ns.TransitShare:Broadcast(sid, k, ev, t) end
 	if replan then T:Replan(true) end
 end
