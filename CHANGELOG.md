@@ -1,22 +1,27 @@
-## [2.19.0](https://github.com/danielcosta42/lodestar/compare/v2.18.0...v2.19.0) (2026-11-26)
+## [2.20.0](https://github.com/danielcosta42/lodestar/compare/v2.19.0...v2.20.0) (2026-11-27)
 
 
 ### Features
 
-* **automacao:** aceite e entrega automáticos valem para as quests do guia mais adiante ([#100](https://github.com/danielcosta42/lodestar/issues/100)) ([3ad8cb5](https://github.com/danielcosta42/lodestar/commit/3ad8cb5eddfd2e5176ae81f2631b7a34fedb0012))
-* **caminho:** gravar passagem — a rampa que a grade não tem vira caminho ([#99](https://github.com/danielcosta42/lodestar/issues/99)) ([e209153](https://github.com/danielcosta42/lodestar/commit/e2091537d5dcc41d9dcef0225cdc34760ba90527))
+* **caminho:** a rampa do litoral da Revantusk Village entra no addon ([#104](https://github.com/danielcosta42/lodestar/issues/104)) ([183971a](https://github.com/danielcosta42/lodestar/commit/183971a943b7b468cbf63430f966250f06aa57b5))
+* **colecionáveis:** origens pelo texto do jogo, Todas uma vez cada, aba de brinquedos ([#109](https://github.com/danielcosta42/lodestar/issues/109)) ([02acc62](https://github.com/danielcosta42/lodestar/commit/02acc6214530c9f32fda9a55f87eafd1f9aec063))
+* **seta:** animação de espera no barco, zepelim e bonde ([#110](https://github.com/danielcosta42/lodestar/issues/110)) ([ebb9005](https://github.com/danielcosta42/lodestar/commit/ebb9005fb79376602718a185060b102bac6880f7))
+* **terreno:** grade v2 do CDN da Blizzard, com chão fino e superfícies de WMO/M2 ([#106](https://github.com/danielcosta42/lodestar/issues/106)) ([acb8544](https://github.com/danielcosta42/lodestar/commit/acb85446dc89f55f79ab290ab0b20adcf77e8dfc))
+* **terreno:** passagens geradas do chão fino, Thorium Point de volta, Ironforge pelo portão, túnel de Timbermaw ([#106](https://github.com/danielcosta42/lodestar/issues/106)) ([9715e5a](https://github.com/danielcosta42/lodestar/commit/9715e5af8dc367563bf8ae992fa5809076329c0a))
 
 
 ### Bug Fixes
 
-* **caminho:** a segunda busca só cruza passagem curta e não dobra o trabalho ([#99](https://github.com/danielcosta42/lodestar/issues/99)) ([8715e09](https://github.com/danielcosta42/lodestar/commit/8715e09587de0fb157e6816d7c3f3ff59fcc3d79))
-* **caminho:** gravação para em barco e zepelim; pulo comum não vira queda ([#99](https://github.com/danielcosta42/lodestar/issues/99)) ([0202eb7](https://github.com/danielcosta42/lodestar/commit/0202eb7e5d02583703b119ee5965ccff50be36de))
-* **caminho:** poda na própria busca, gravação sem salto e queda de mão única ([#99](https://github.com/danielcosta42/lodestar/issues/99)) ([06a8821](https://github.com/danielcosta42/lodestar/commit/06a882190f88b6b138fabdeea0744891d8b35e05))
-* **caminho:** sem caminho na grade, a segunda busca cruza a barreira no ponto mais fino ([#99](https://github.com/danielcosta42/lodestar/issues/99)) ([31ec518](https://github.com/danielcosta42/lodestar/commit/31ec5187505a272f1b8a1c4aae1fe4ff2bb5c7ac))
-* **colecoes:** diário de mascotes vazio carrega as Coleções do jogo e mostra os companheiros ([#101](https://github.com/danielcosta42/lodestar/issues/101)) ([5f63353](https://github.com/danielcosta42/lodestar/commit/5f63353ec8be35303a707e984dea884786f63ee7))
-* **perto,colecoes,automacao:** achados da revisão ([#100](https://github.com/danielcosta42/lodestar/issues/100), [#101](https://github.com/danielcosta42/lodestar/issues/101)) ([95ba06f](https://github.com/danielcosta42/lodestar/commit/95ba06f086690ed81834429860ddb73a9fcbb308))
-* **perto:** só sugere quest que já abre e o que o guia não faz na volta ([#100](https://github.com/danielcosta42/lodestar/issues/100)) ([d27d18f](https://github.com/danielcosta42/lodestar/commit/d27d18f13b210b67640d0012a23a260ba743c407))
-* **seta:** texto da seta com contorno escuro e cores claras ([#102](https://github.com/danielcosta42/lodestar/issues/102)) ([3ed9a15](https://github.com/danielcosta42/lodestar/commit/3ed9a1566667ab0b95c8ea0b94c2d80a348fe028))
-* **xp,colecoes,perto:** achados da segunda revisão ([#101](https://github.com/danielcosta42/lodestar/issues/101), [#102](https://github.com/danielcosta42/lodestar/issues/102), [#100](https://github.com/danielcosta42/lodestar/issues/100)) ([4dbb568](https://github.com/danielcosta42/lodestar/commit/4dbb568f17f004a16ddef309864c66de739a8250))
-* **xp:** barra de XP/h gruda na janela do guia com qualquer escala e volta ao lugar ([#102](https://github.com/danielcosta42/lodestar/issues/102)) ([ac99b26](https://github.com/danielcosta42/lodestar/commit/ac99b26c467a1b17682f93ad8b4479354da3cc6d))
+* **caminho:** limite de volta só para caminho que usa passagem ([#104](https://github.com/danielcosta42/lodestar/issues/104)) ([8e55139](https://github.com/danielcosta42/lodestar/commit/8e551395ab95f2fbbbb828736afb1c3c7469dde0))
+* **caminho:** margem de volta em 2000 jd; testes que provam ([#104](https://github.com/danielcosta42/lodestar/issues/104)) ([f6a490a](https://github.com/danielcosta42/lodestar/commit/f6a490a5e62862a47056852fb64dcb2b1f2dfa0b))
+* **caminho:** volta grande demais não é caminho ([#104](https://github.com/danielcosta42/lodestar/issues/104)) ([c7e690b](https://github.com/danielcosta42/lodestar/commit/c7e690b886d016dce5e5b7388cffec3b1e04964b))
+* **colecionáveis:** espera da caixa de brinquedos uma vez só, nome de origem longo cortado ([#109](https://github.com/danielcosta42/lodestar/issues/109)) ([183947f](https://github.com/danielcosta42/lodestar/commit/183947fe191fcf530eca7dd25a5496b7684f6f40))
+* **navegação:** fio da linha do tempo desce do centro da bolinha ([#108](https://github.com/danielcosta42/lodestar/issues/108)) ([6a0a51a](https://github.com/danielcosta42/lodestar/commit/6a0a51a191d0656e3c1ce1109e39892e332d2eb3))
+* **navegação:** linha do tempo desenha as pernas, rótulos curtos na grade, + de guia visível ([#108](https://github.com/danielcosta42/lodestar/issues/108)) ([840ef8b](https://github.com/danielcosta42/lodestar/commit/840ef8b3d428e6939583296254a478711805025c))
+* **seta:** espera sem piscar a cada tique, brilho pulsa em 3 s ([#110](https://github.com/danielcosta42/lodestar/issues/110)) ([6a8f7e3](https://github.com/danielcosta42/lodestar/commit/6a8f7e34f06b6257a705f2faf34ab9f9e71789bb))
+* **terreno:** chão de fora nunca cede a caverna embaixo, rua nas cidades, testes de minas e cidades ([#106](https://github.com/danielcosta42/lodestar/issues/106)) ([4c5ee2c](https://github.com/danielcosta42/lodestar/commit/4c5ee2cc132560f8035fd8d3532da2be8a9852ed))
+* **terreno:** Ironforge pelo chão da cidade, build fixa e MD5 no CDN, argumentos do gerador, teste do limite de volta ([#106](https://github.com/danielcosta42/lodestar/issues/106)) ([525daba](https://github.com/danielcosta42/lodestar/commit/525daba02285ead38948d689fca33909558a4c55))
+* **terreno:** leitor CASC acha o cliente do Forever com o produto wowf ([#107](https://github.com/danielcosta42/lodestar/issues/107)) ([b307347](https://github.com/danielcosta42/lodestar/commit/b3073471701cc93473ccb85dabd31a410e470c22))
+* **terreno:** ligações do terreno antigo no mesmo nível, cidades nunca piores, Wailing Caverns e Jasperlode, canais de Stormwind e Cleft ([#106](https://github.com/danielcosta42/lodestar/issues/106)) ([5a69bd9](https://github.com/danielcosta42/lodestar/commit/5a69bd9d493e0c9a4507b1fb76948605a8499032))
+* **terreno:** passagem gravada que a grade já liga não marca a rota (Arathi <-> Revantusk) ([#106](https://github.com/danielcosta42/lodestar/issues/106)) ([ce61ef1](https://github.com/danielcosta42/lodestar/commit/ce61ef17daa771e3896cf89ab6cdc69afde4fa10))
 
