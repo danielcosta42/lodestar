@@ -287,7 +287,8 @@ local function step(what, fn)
 end
 
 -- login (o tema vale no ADDON_LOADED)
-_G.LodestarDB = { theme = THEME, debug = true }   -- debug: o erro de ticker e de página vai ao "chat" (falha)
+-- partyTell = false: o padrão antigo gravado num save de antes do #127 (vira ligado uma vez no ADDON_LOADED)
+_G.LodestarDB = { theme = THEME, debug = true, partyTell = false }   -- debug: o erro de ticker e de página vai ao "chat"
 step("ADDON_LOADED", function() ns.fire("ADDON_LOADED", "Lodestar") end)
 step("PLAYER_LOGIN", function() ns.fire("PLAYER_LOGIN") end)
 step("PLAYER_ENTERING_WORLD", function() ns.fire("PLAYER_ENTERING_WORLD") end)
@@ -1465,30 +1466,54 @@ end)
 step("Party tell", function()
 	local QL, ig, scm, cci = _G.C_QuestLog, _G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo
 	local n, get, done, objs = QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete, QL.GetQuestObjectives
-	local estado = { { false, false } }
-	QL.GetNumQuestLogEntries = function() return 1 end
-	QL.GetInfo = function() return { questID = 77 } end
-	QL.IsComplete = function() return estado[1][1] and estado[1][2] end
-	QL.GetQuestObjectives = function()
-		return { { text = "Lobo morto: " .. (estado[1][1] and "8/8" or "3/8"), finished = estado[1][1] },
-			{ text = "Caixa: " .. (estado[1][2] and "1/1" or "0/1"), finished = estado[1][2] } }
+	-- quest 77 com dois objetivos; quest 78 com quatro (para o limite de 3 linhas)
+	local feito = { [77] = { false, false }, [78] = { false, false, false, false, false } }
+	local semTexto = false
+	QL.GetNumQuestLogEntries = function() return 2 end
+	QL.GetInfo = function(i) return { questID = 76 + i } end
+	QL.IsComplete = function(q)
+		for _, f in ipairs(feito[q]) do if not f then return false end end
+		return true
+	end
+	QL.GetQuestObjectives = function(q)
+		local out = {}
+		for j, f in ipairs(feito[q]) do
+			out[j] = { text = (semTexto and q == 78) and "" or ((f and "8/8" or "3/8") .. " Alvo " .. q .. "." .. j), finished = f }
+		end
+		return out
 	end
 	_G.IsInGroup = function() return true end
 	local ditas = {}
 	_G.SendChatMessage = function(msg, canal) ditas[#ditas + 1] = canal .. "|" .. msg end
 	_G.C_ChatInfo = { SendChatMessage = _G.SendChatMessage }
 	local ok, err = pcall(function()
-		assert(ns.db.partyTell ~= false, "avisar o grupo veio desligado")
+		assert(ns.db.partyTell == true, "o save antigo com o padrão desligado não virou ligado")
 		ns.fire("GROUP_JOINED")                                     -- o retrato de quando entrou no grupo
-		estado[1][1] = true                                         -- fechou o primeiro objetivo
+		feito[77][1] = true                                         -- fechou o primeiro objetivo
 		ns.PartyTell:Check()
-		ns.PartyTell:Check()                                        -- o mesmo de novo: não repete
-		assert(#ditas == 1 and ditas[1]:find("^PARTY|Lodestar: ") and ditas[1]:find("Lobo morto: 8/8", 1, true),
+		assert(#ditas == 1 and ditas[1]:find("^PARTY|Lodestar: ") and ditas[1]:find("8/8 Alvo 77.1", 1, true),
 			"objetivo: " .. table.concat(ditas, " / "))
-		estado[1][2] = true                                         -- o último fecha e a quest fica pronta: só a de pronta
+		feito[77][1] = false; ns.PartyTell:Check()                  -- perdeu o item e recuperou: não repete
+		feito[77][1] = true; ns.PartyTell:Check()
+		assert(#ditas == 1, "o objetivo que voltou falou de novo: " .. table.concat(ditas, " / "))
+		feito[77][2] = true                                         -- o último fecha e a quest fica pronta: só a de pronta
 		ns.PartyTell:Check()
-		assert(#ditas == 2 and ditas[2]:find(ns.L.PT_READY, 1, true) and not ditas[2]:find("Caixa", 1, true),
+		assert(#ditas == 2 and ditas[2]:find(ns.L.PT_READY, 1, true) and not ditas[2]:find("Alvo 77.2", 1, true),
 			"pronta: " .. table.concat(ditas, " / "))
+		feito[77] = { false, false }; ns.PartyTell:Check()           -- já avisada pronta, perdeu os itens dos dois
+		feito[77][2] = true; ns.PartyTell:Check()                   -- recuperou um (nunca avisado): não fala
+		feito[77][1] = true; ns.PartyTell:Check()                   -- pronta de novo: não repete
+		assert(#ditas == 2, "objetivo de quest já pronta falou: " .. table.concat(ditas, " / "))
+		semTexto = true; ns.PartyTell:Check()                       -- os dados do servidor somem por um instante
+		semTexto = false; ns.PartyTell:Check()                      -- e voltam: nada acabou de fechar
+		assert(#ditas == 2, "objetivo sem texto virou objetivo fechado: " .. table.concat(ditas, " / "))
+		feito[78] = { true, true, true, true, false }               -- quatro de uma vez: só 3 linhas
+		ns.PartyTell:Check()
+		assert(#ditas == 5, "quatro objetivos de uma vez: " .. #ditas)
+		feito[78] = { false, false, false, false, false }; ns.PartyTell:Check()
+		feito[78] = { true, true, true, true, false }               -- de novo: os 3 avisados não repetem; o 4º sai
+		ns.PartyTell:Check()
+		assert(#ditas == 6 and ditas[6]:find("Alvo 78.4", 1, true), "repetiu ou perdeu: " .. table.concat(ditas, " / "))
 	end)
 	QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete, QL.GetQuestObjectives = n, get, done, objs
 	_G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo = ig, scm, cci

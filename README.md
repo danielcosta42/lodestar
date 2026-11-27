@@ -98,7 +98,8 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - **XP/hour pace HUD** with ETA-to-level and ahead/behind tracking.
 - **Gear Advisor** — pings you when a bag item is an upgrade, marks it on the item's tooltip ("Upgrade +12%") and puts a
   green arrow on the best quest reward.
-- Optional: **tell my party** when one of your quests is ready to turn in.
+- **Tell my party** (on by default, can be turned off): a line in party chat when one of your quest objectives is done
+  and when a quest is ready to turn in.
 - Optional: **TomTom compatibility** — without TomTom installed, `/way` and addons that set TomTom waypoints point
   Lodestar's arrow.
 - Target markers on tooltips & nameplates; player coordinates on minimap and map.

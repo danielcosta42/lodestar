@@ -1,7 +1,7 @@
 --=============================================================================
 -- PartyTell — avisar o grupo (specs/revamp-polestar, R13; ligado, desliga nas Configurações, #127): quando uma quest
 -- do diário fica pronta para entregar, uma linha no chat do grupo, "Lodestar: [Quest] pronta para entregar"; quando
--- um objetivo dela fecha, "Lodestar: [Quest] · Kobold Vermin slain: 8/8". Só em grupo (não raide, não campo de
+-- um objetivo dela fecha, "Lodestar: [Quest] · 8/8 Kobold Vermin slain" (o texto do objetivo como o jogo dá). Só em grupo (não raide, não campo de
 -- batalha); uma vez por quest e por objetivo; nada no login, no /reload nem para o que já estava feito ao entrar no
 -- grupo. No topo, o núcleo puro (Ready, Objectives; testado fora do jogo). Abaixo, o envio.
 --=============================================================================
@@ -67,7 +67,11 @@ local function snapshot()
 			local objs = QL.GetQuestObjectives and QL.GetQuestObjectives(q)
 			if type(objs) == "table" then
 				o[q], txt[q] = {}, {}
-				for j, ob in ipairs(objs) do o[q][j], txt[q][j] = ob.finished and true or false, ob.text end
+				-- objetivo sem texto (os dados do servidor ainda chegando): desconhecido, não "por fazer" — senão o
+				-- retrato seguinte pareceria um objetivo que acabou de fechar
+				for j, ob in ipairs(objs) do
+					if ob.text and ob.text ~= "" then o[q][j], txt[q][j] = ob.finished and true or false, ob.text end
+				end
 			end
 		end
 	end
@@ -97,7 +101,7 @@ local function check()
 	last, lastObj = now, nowObj
 	if not (ns.db and ns.db.partyTell ~= false and inParty()) then return end
 	local linhas = 0
-	-- só conta como avisado o que saiu (chat travado ou canal recusado: tenta na próxima)
+	-- cada linha uma vez (o que não saiu — chat travado, canal recusado, além das 3 — se perde: não se repete)
 	for _, qid in ipairs(ready) do
 		if not sent[qid] and linhas < P.MAX_LINHAS then
 			sent[qid] = pcall(send, ("Lodestar: %s %s"):format(link(qid), ns.L.PT_READY), "PARTY") or nil
@@ -107,7 +111,8 @@ local function check()
 	for _, qo in ipairs(objs) do
 		local q, i = qo[1], qo[2]
 		local k, texto = q .. ":" .. i, txt[q] and txt[q][i]
-		if texto and texto ~= "" and not sentObj[k] and linhas < P.MAX_LINHAS then
+		-- quest já avisada pronta (perdeu e recuperou itens): o objetivo não volta a falar
+		if texto and texto ~= "" and not sentObj[k] and not sent[q] and linhas < P.MAX_LINHAS then
 			sentObj[k] = pcall(send, ("Lodestar: %s · %s"):format(link(q), texto), "PARTY") or nil
 			linhas = linhas + 1
 		end
