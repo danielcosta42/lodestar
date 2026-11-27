@@ -1363,6 +1363,9 @@ step("Terrain detour measure first", function()
 		assert(daqui, "não mediu daqui")
 		T:Replan(false)
 		assert(voa(), "a medida daqui (desvio) não segurou a rota")
+		for _ = 1, 3 do eu.y = eu.y - 100; upd(ns.eventFrame, 1.01) end   -- mais 300 jd: sem medida de novo
+		T:Replan(true)                                             -- forçado com o mesmo destino (mapa de voo aberto)
+		assert(voa(), "o replanejar forçado trocou para a pé sem medir")
 	end)
 	ns.Destinations:Clear("manual")
 	ns.travel, T.PlayerWorld, T.World, T.Context, TR.Path = dados, pw, w0, ctx0, path0

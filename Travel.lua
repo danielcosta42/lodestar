@@ -388,21 +388,25 @@ function T:Replan(force)
 		n1.pathFailT = cur.pathFailT
 	end
 	T.InheritPaths(route, new)
-	if force or key ~= routeKey or not route then
+	-- a rota nova começa a pé, daqui ainda sem medida, até um fim com desvio medido de outro começo (#125): com o
+	-- mesmo destino, mesmo forçado (o mapa de voo aberto, o horário do barco), a atual fica até medir (pathTick)
+	local n1, c0 = new and new.legs[1], route and route.legs[route.leg]
+	local medir = route and key == routeKey and n1 and n1.k == "walk" and T.PrecisaMedir(ctx.desvios, from, n1.b)
+		and not (c0 and c0.k == "walk" and c0.b.c == n1.b.c and c0.b.x == n1.b.x and c0.b.y == n1.b.y)
+	local function melhor()
+		return T.ShouldReplace({ s = T.Remaining(route, from, speed, serverNow(), true) + (extra or 0) }, new)
+	end
+	if medir and (force or melhor()) then
+		if not (sonda or (pathCo and pathLeg and pathLeg.sonda)) then
+			sonda = { k = "walk", a = from, b = n1.b, sonda = true }
+		end
+	elseif force or key ~= routeKey or not route then
 		local was = route
 		route, routeKey = new, key
 		if was or new then changed() end                -- sem rota antes e depois: nada mudou
-	elseif T.ShouldReplace({ s = T.Remaining(route, from, speed, serverNow(), true) + (extra or 0) }, new) then
-		local n1 = new.legs[1]
-		if n1 and n1.k == "walk" and T.PrecisaMedir(ctx.desvios, from, n1.b) then
-			-- a pé daqui ainda sem medida: mede (pathTick) e decide de novo; a rota atual fica até lá
-			if not (sonda or (pathCo and pathLeg and pathLeg.sonda)) then
-				sonda = { k = "walk", a = from, b = n1.b, sonda = true }
-			end
-		else
-			route = new
-			changed()
-		end
+	elseif melhor() then
+		route = new
+		changed()
 	end
 end
 

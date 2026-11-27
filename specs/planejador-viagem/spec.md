@@ -72,7 +72,8 @@ pelo cliente, ícones e tooltips de cais no mapa.
   reta nunca encurta; só fugiria do fator passando por um cais ou voo ao lado): cada nó tem dois estados, chegou a
   pé ou não, e quem chegou a pé só segue de transporte (o "voa até lá e anda" não se perde quando o nó também se
   alcança a pé mais barato). A rota nova que começa a pé até um fim com desvio medido de outro começo
-  (`T.PrecisaMedir`: andando até o mestre de voo, fora do raio da medida) só entra depois de medir o caminho daqui;
+  (`T.PrecisaMedir`: andando até o mestre de voo, fora do raio da medida) só entra depois de medir o caminho daqui (também no replanejar forçado com o mesmo destino: o mapa de voo
+  aberto, o horário do barco);
   a medida fica guardada (pequena ou grande) e a rota é decidida de novo — a rota não alterna. A perna a pé atual com o caminho bem
   mais longo que a reta (`T.DesvioAtual`: o pouso do outro lado do penhasco) entra no replanejar como desvio só dele,
   e a comparação com a rota nova soma os segundos a mais; o caminho dela que termina com desvio grande fica guardado
