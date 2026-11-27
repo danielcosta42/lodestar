@@ -4,7 +4,8 @@
 --   o destino (do guia, manual ou o corpo) com o tempo total e a hora de chegada; Limpar o manual e as paradas
 --   as paradas (#117), na ordem, cada uma com × para tirar
 --   a viagem como linha do tempo: cada perna com ícone, texto e tempo; a atual destacada, as feitas riscadas; um
---   marcador em cada parada
+--   marcador em cada parada. Não cabendo (muitas paradas ou pernas), a lista e a linha do tempo encolhem (TP.Fit): o
+--   trecho atual, "+N a mais no caminho" e o destino, até 4 paradas e "+N a mais" — a janela cabe na tela
 --   os serviços mais perto em TEMPO de viagem (medidos ao abrir, um por vez), profissão abre a lista; o clique
 --   põe uma parada, Shift+clique vai direto
 --   coordenada digitada (Ir põe uma parada, Shift+Ir vai direto)
@@ -17,13 +18,56 @@ local UI = ns.UI
 local unpackc = UI.unpackc
 
 local W, PAD = 400, 14
-local MAX_ROWS = 12                -- linhas na linha do tempo: pernas e marcadores de parada
 local LEG_H, MARK_H, STOP_H = 46, 38, 28
+local MORE_H = 28                  -- o "+N a mais no caminho" da linha do tempo (#117)
+local STOPS_HEAD = 26              -- o rótulo da lista de paradas (18) e o respiro depois dela (8)
+local STOPS_MAX = 4                -- paradas na lista; as outras num "+N a mais" da altura de uma linha
+local MAX_H = 640                  -- a janela não passa disto (ou de 80% da tela, se maior): cabe numa tela de 768
 local frame, legRows, markRows, stopRows, svcButtons, profList, status
 
 -- nome da profissão: a tradução, se houver; o ns.L devolve "[CHAVE]" para o que falta
 function TP.ProfLabel(prof)
 	return rawget(ns.L, "PROF_" .. (prof:upper():gsub("%s+", "_"))) or prof
+end
+
+-- O que cabe em `avail` px (#117): a lista de paradas e a linha do tempo dividem a altura que sobra na janela. `h[k]` =
+-- altura do item k da linha do tempo (perna ou marcador de parada), `isStop[k]` = é marcador, `cur` = o item da perna
+-- atual, `nStops` = paradas na fila. Cabendo tudo, tudo (as pernas feitas também). Senão, nesta ordem e enquanto
+-- couber: a perna atual e o último item (o destino nunca some), com um "+N" no lugar do que fica no meio, e uma parada
+-- na lista (com "+N a mais"); o resto do trecho até a próxima parada; mais paradas na lista (até STOPS_MAX); o resto
+-- da viagem. Sem rota (`h` vazio), o cartão tem `empty` px e a lista fica com o resto.
+-- -> first, upto, rows: os itens first..upto e, se upto < #h, o "+N" (havendo item no meio) e o último; `rows` paradas
+function TP.Fit(h, isStop, cur, nStops, avail, empty)
+	local n = #h
+	local function list(r)
+		if nStops == 0 then return 0 end
+		return STOPS_HEAD + r * STOP_H + (r < nStops and STOP_H or 0)
+	end
+	local maxRows = math.min(nStops, STOPS_MAX)
+	if n == 0 then
+		local rows = nStops
+		if list(rows) > avail - (empty or 0) then
+			rows = math.min(1, nStops)
+			while rows < maxRows and list(rows + 1) <= avail - (empty or 0) do rows = rows + 1 end
+		end
+		return 1, 0, rows
+	end
+	local total = list(nStops)
+	for k = 1, n do total = total + h[k] end
+	if total <= avail then return 1, n, nStops end
+	local first = math.max(1, math.min(cur or 1, n))
+	local function line(u)
+		local t = 0
+		for k = first, u do t = t + h[k] end
+		if u < n then t = t + h[n] + (u < n - 1 and MORE_H or 0) end
+		return t
+	end
+	local function fits(u, r) return line(u) + list(r) <= avail end
+	local upto, rows = first, math.min(1, nStops)
+	while upto < n and not isStop[upto] and fits(upto + 1, rows) do upto = upto + 1 end
+	while rows < maxRows and fits(upto, rows + 1) do rows = rows + 1 end
+	while upto < n and fits(upto + 1, rows) do upto = upto + 1 end
+	return first, upto, rows
 end
 
 -- nome do serviço na grade (3 colunas de 120 px): o curto, se houver; senão o de sempre
@@ -113,6 +157,23 @@ local function markRow(i)
 	return r
 end
 
+-- o "+N a mais no caminho" da linha do tempo (#117): o que não coube entre o trecho atual e o destino, com o tempo
+local function moreRow()
+	if frame.more then return frame.more end
+	local C = UI.COL
+	local r = CreateFrame("Frame", nil, frame.timeline)
+	r:SetHeight(MORE_H - 4)
+	r.dot = UI.Media(r, "dot", "ARTWORK"); r.dot:SetVertexColor(unpackc(C.chip))
+	r.dot:SetSize(10, 10); r.dot:SetPoint("TOPLEFT", 8, -4)            -- centro em x = 13, como as bolinhas grandes
+	r.line = UI.Rect(r, "BACKGROUND", C.line); r.line:SetWidth(2)
+	r.line:SetPoint("TOP", r.dot, "BOTTOM", 0, 0); r.line:SetPoint("BOTTOM", r, "BOTTOMLEFT", 13, -6)
+	r.text = UI.Text(r, 12, C.dim, { wrap = false })
+	r.text:SetPoint("TOPLEFT", r, "TOPLEFT", 38, -2); r.text:SetPoint("TOPRIGHT", r, "TOPRIGHT", -64, -2)
+	r.time = UI.Text(r, 12, C.muted, { num = true, justify = "RIGHT" }); r.time:SetPoint("TOPRIGHT", r, "TOPRIGHT", 0, -2)
+	frame.more = r
+	return r
+end
+
 -- linha da lista de paradas: número, nome, onde, e o × que tira
 local function stopRow(i)
 	if stopRows[i] then return stopRows[i] end
@@ -176,6 +237,8 @@ local function build()
 	frame.stopsLabel = UI.Text(frame, 11, C.dim, { num = true }); frame.stopsLabel:SetText(L.V3_NAV_STOPS)
 	frame.stops = CreateFrame("Frame", nil, frame)
 	frame.stops:SetHeight(1)
+	frame.stopsMore = UI.Text(frame.stops, 11.5, C.dim, { num = true, wrap = false })   -- "+N a mais" (#117)
+	frame.stopsMore:Hide()
 
 	-- linha do tempo
 	frame.timelineCard = UI.Card(frame, { color = C.card })
@@ -223,9 +286,10 @@ local function build()
 	local boxBg = UI.Card(box, { radius = 6, color = C.card }); boxBg:SetAllPoints(); boxBg:SetFrameLevel(box:GetFrameLevel())
 	-- Ir põe uma parada (#117); com Shift, troca o destino
 	local function go()
-		if ns.Waypoint:Way(box:GetText(), shift()) then
+		local ok, said = ns.Waypoint:Way(box:GetText(), shift())
+		if ok then
 			box:SetText(""); box:ClearFocus(); TP.Refresh()
-		else ns:Print(L.TRAVEL_COORD_BAD) end
+		elseif not said then ns:Print(L.TRAVEL_COORD_BAD) end    -- zona que não se conhece: o Way já disse (#117)
 	end
 	box:SetScript("OnEnterPressed", go)
 	box:SetScript("OnEscapePressed", box.ClearFocus)
@@ -290,19 +354,40 @@ function TP.Refresh()
 	if frame.clear:IsShown() then dir = dir + 4 + frame.clear:GetHeight() end
 	local y = math.max(104, math.ceil(math.max(esq, dir)) + 12)
 
-	-- as paradas, na ordem, com o × (#117)
+	-- a linha do tempo: as pernas e, no fim de cada trecho até uma parada, o marcador dela
+	local items, h, isStop, cur = {}, {}, {}, nil
+	for i = 1, route and #route.legs or 0 do
+		items[#items + 1] = { leg = i }
+		if i == route.leg then cur = #items end
+		for j, st in ipairs(route.stops or {}) do
+			if st.leg == i then items[#items + 1] = { stop = st, j = j } end
+		end
+	end
+	for k, it in ipairs(items) do h[k], isStop[k] = it.stop and MARK_H or LEG_H, it.stop ~= nil end
+	-- A lista de paradas e a linha do tempo dividem a altura que sobra (#117): muitas paradas ou pernas encolhem as
+	-- duas (TP.Fit), e a janela não passa de MAX_H (ou de 80% da tela). O resto (serviços, coordenada, dica) é medido
+	-- aqui, antes de montar; 16 é o respiro do cartão da linha do tempo, 30 o cartão vazio ("sem rota").
+	local bottom = 16 + 18 + frame.svc:GetHeight() + (status:IsShown() and status:GetStringHeight() + 6 or 0)
+		+ 10 + 18 + 36 + frame.hint:GetStringHeight() + PAD
+	local screen = UIParent and UIParent:GetHeight() or 0
+	local avail = math.max(MAX_H, math.floor(screen * 0.8)) - y - bottom - 16
+	local first, upto, rows = TP.Fit(h, isStop, cur, #stops, avail, 30)
+
+	-- as paradas, na ordem, com o × (#117); as que não cabem, num "+N a mais"
+	local hidden = #stops - rows
+	local lines = rows + (hidden > 0 and 1 or 0)
 	frame.stopsLabel:SetShown(stops[1] ~= nil); frame.stops:SetShown(stops[1] ~= nil)
 	if stops[1] then
 		frame.stopsLabel:ClearAllPoints(); frame.stopsLabel:SetPoint("TOPLEFT", PAD, -y)
 		frame.stopsLabel:SetText(kind == "corpse" and L.V3_NAV_STOPS_WAIT or L.V3_NAV_STOPS)
 		y = y + 18
 		frame.stops:ClearAllPoints(); frame.stops:SetPoint("TOPLEFT", PAD, -y); frame.stops:SetPoint("TOPRIGHT", -PAD, -y)
-		frame.stops:SetHeight(#stops * STOP_H)
-		y = y + #stops * STOP_H + 8
+		frame.stops:SetHeight(lines * STOP_H)
+		y = y + lines * STOP_H + 8
 	end
 	for j = 1, math.max(#stops, #stopRows) do
 		local r = stopRows[j]
-		local s = stops[j]
+		local s = j <= rows and stops[j]
 		if s then
 			r = stopRow(j)
 			r.stop = s
@@ -318,24 +403,45 @@ function TP.Refresh()
 			r:Hide()
 		end
 	end
-
-	-- a linha do tempo: as pernas e, no fim de cada trecho até uma parada, o marcador dela
-	local items = {}
-	for i = 1, route and #route.legs or 0 do
-		items[#items + 1] = { leg = i }
-		for j, st in ipairs(route.stops or {}) do
-			if st.leg == i then items[#items + 1] = { stop = st, j = j } end
-		end
+	frame.stopsMore:SetShown(hidden > 0)
+	if hidden > 0 then
+		frame.stopsMore:SetText(L.V3_NAV_STOPS_MORE:format(hidden))
+		frame.stopsMore:ClearAllPoints(); frame.stopsMore:SetPoint("TOPLEFT", frame.stops, "TOPLEFT", 28, -rows * STOP_H - 6)
 	end
-	local n = math.min(#items, MAX_ROWS)
+
+	-- o que aparece da linha do tempo: first..upto e, se não chegou ao fim, o "+N" (com o tempo do que ficou de fora)
+	-- e o último item — o destino nunca some
+	local vis, nIt = {}, #items
+	for k = first, upto do vis[#vis + 1] = items[k] end
+	if upto < nIt then
+		if upto < nIt - 1 then
+			local secs = 0
+			for k = upto + 1, nIt - 1 do
+				if items[k].leg then secs = secs + (route.legs[items[k].leg].s or 0) end
+			end
+			vis[#vis + 1] = { more = nIt - 1 - upto, s = secs }
+		end
+		vis[#vis + 1] = items[nIt]
+	end
+	local n = #vis
 	frame.timelineCard:ClearAllPoints()
 	frame.timelineCard:SetPoint("TOPLEFT", PAD, -y); frame.timelineCard:SetPoint("TOPRIGHT", -PAD, -y)
 	frame.noRoute:SetShown(n == 0)
-	local ty, nLeg, nMark = 0, 0, 0
+	local ty, nLeg, nMark, nMore = 0, 0, 0, 0
 	for k = 1, n do
-		local it = items[k]
+		local it = vis[k]
 		local r
-		if it.stop then
+		if it.more then
+			nMore = 1
+			r = moreRow()
+			r.text:SetText(L.V3_NAV_MORE:format(it.more))
+			r.time:SetText(ns.Waypoint.FmtTime(it.s))
+			r.line:SetShown(k < n)
+			r:ClearAllPoints(); r:SetPoint("TOPLEFT", frame.timeline, "TOPLEFT", 0, -ty)
+			r:SetPoint("TOPRIGHT", frame.timeline, "TOPRIGHT", 0, -ty)
+			r:Show()
+			ty = ty + MORE_H
+		elseif it.stop then
 			nMark = nMark + 1
 			r = markRow(nMark)
 			local st = it.stop
@@ -381,6 +487,7 @@ function TP.Refresh()
 	end
 	for k = nLeg + 1, #legRows do legRows[k]:Hide() end
 	for k = nMark + 1, #markRows do markRows[k]:Hide() end
+	if frame.more and nMore == 0 then frame.more:Hide() end
 	frame.timeline:SetHeight(math.max(ty, 1))
 	local cardH = n > 0 and (ty + 16) or 46
 	frame.timelineCard:SetHeight(cardH)

@@ -1,7 +1,8 @@
 --=============================================================================
 -- TomTomShim — compatibilidade com o TomTom (specs/revamp-polestar, R14; opcional, desligado). Sem o TomTom instalado,
--- `TomTom:AddWaypoint(mapa, x, y, opções)` de outros addons e `/way [#mapa|zona] x y [nome]` viram o destino manual do
--- Lodestar (a seta, a rota, a bússola); `RemoveWaypoint` limpa. Com o TomTom, nada muda: ele é quem responde.
+-- `TomTom:AddWaypoint(mapa, x, y, opções)` de outros addons vira o destino manual do Lodestar (a seta, a rota, a
+-- bússola) e `RemoveWaypoint` limpa; `/way [#mapa|zona] x y [nome]` vira uma parada antes do destino (#117), e
+-- `/way off` tira o destino manual e as paradas. Com o TomTom, nada muda: ele é quem responde.
 -- No topo, o núcleo puro (ParseWay, testado fora do jogo). Abaixo, a API mínima.
 --=============================================================================
 local ADDON, ns = ...
@@ -101,8 +102,9 @@ local function slashWay(msg)
 	if not where then return ns:Print(ns.L.WAY_USAGE) end
 	local map = where.map or mapOfZone(where.zone) or (not where.zone and C_Map.GetBestMapForUnit("player"))
 	if not map then return ns:Printf(ns.L.WAY_NOZONE, where.zone or "?") end
-	-- a coordenada digitada vira parada antes do destino (#117); o AddWaypoint dos outros addons segue trocando o destino
-	ns.Waypoint:AddStop(nil, x, y, label or ns.L.WAYPOINT, map)
+	-- a coordenada digitada vira parada antes do destino (#117); o AddWaypoint dos outros addons segue trocando o destino.
+	-- Fora do mapa (o AddStop já disse) ou já na fila: nada a dizer.
+	if not ns.Waypoint:AddStop(nil, x, y, label or ns.L.WAYPOINT, map) then return end
 	local info = C_Map.GetMapInfo(map)
 	ns:Printf("%s: %s %.1f, %.1f", label or ns.L.STOP, info and info.name or "?", x, y)
 end

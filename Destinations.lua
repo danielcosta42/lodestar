@@ -22,8 +22,13 @@ local function same(a, b)
 	return a and b and a.zone == b.zone and a.map == b.map and a.x == b.x and a.y == b.y
 end
 
+-- Em voo ou a bordo (#117), não: a rota segue e o relógio do Travel a refaz ao pousar ou desembarcar (a chave da
+-- cadeia fica velha até lá).
 local function replan()
-	if ns.Travel and ns.Travel.Replan then ns.Travel:Replan(true) end
+	local T = ns.Travel
+	if not (T and T.Replan) then return end
+	if T.Busy and T:Busy() then return end
+	T:Replan(true)
 end
 
 function D:Set(kind, dest)
@@ -100,8 +105,10 @@ function D:Chain()
 	return out
 end
 
--- Que tipo de serviço cada janela do jogo conclui. TRAINER_SHOW se resolve na hora (classe ou profissão); o
--- gossip só conclui a parada do próprio NPC (perto de uma estalagem fala-se com muita gente).
+-- Que tipo de serviço cada janela do jogo conclui. O vendedor só conclui o reparo se conserta (D.MerchantKinds);
+-- TRAINER_SHOW se resolve na hora (D.TRAINER: classe pela distância, profissão só pelo próprio NPC — na Grande Forja
+-- há treinador de quase toda profissão a 60 jd); o gossip só conclui a parada do próprio NPC (perto de uma estalagem
+-- fala-se com muita gente).
 D.WINDOW = {
 	MERCHANT_SHOW = { repair = true, vendor = true, inn = true },
 	BANKFRAME_OPENED = { bank = true },
@@ -112,7 +119,15 @@ D.WINDOW = {
 	HEARTHSTONE_BOUND = { inn = true },
 	GOSSIP_SHOW = {},
 }
+D.TRAINER = { class = { classtrainer = true }, prof = {} }
 D.NEAR = 60                 -- jardas da parada em que abrir a janela do serviço conta
+D.ARRIVE = 15               -- jardas da parada em que passar por ela conta como chegar (a perna a pé do Travel)
+
+local MERCHANT_NOREPAIR = { vendor = true, inn = true }
+-- o que o vendedor aberto conclui: sem conserto (CanMerchantRepair), não o reparo
+function D.MerchantKinds(canRepair)
+	return canRepair and D.WINDOW.MERCHANT_SHOW or MERCHANT_NOREPAIR
+end
 
 -- As paradas que a janela aberta conclui: a do próprio NPC (pelo id), ou a do mesmo tipo de serviço com o
 -- jogador a até `radius` jardas dela. `pos` = jogador no mundo; `worldOf(parada)` -> { c, x, y } | nil.
@@ -125,6 +140,17 @@ function D.MatchWindow(list, kinds, npc, pos, worldOf, radius)
 			hit = w and w.c == pos.c and (w.x - pos.x) ^ 2 + (w.y - pos.y) ^ 2 <= (radius or D.NEAR) ^ 2
 		end
 		if hit then out[#out + 1] = s end
+	end
+	return out
+end
+
+-- As paradas por onde o jogador (`pos`, mundo) está passando: a até `radius` jardas, no mesmo continente (#117).
+function D.Reached(list, pos, worldOf, radius)
+	local out, r = {}, radius or D.ARRIVE
+	if not pos then return out end
+	for _, s in ipairs(list or {}) do
+		local w = worldOf(s)
+		if w and w.c == pos.c and (w.x - pos.x) ^ 2 + (w.y - pos.y) ^ 2 <= r * r then out[#out + 1] = s end
 	end
 	return out
 end
@@ -178,9 +204,9 @@ ns:Every(2, function() if UnitIsGhost and UnitIsGhost("player") then syncCorpse(
 --------------------------------------------------------------------------------
 -- parada concluída pela janela do serviço (#117)
 --------------------------------------------------------------------------------
+-- o NPC da janela: GUID secreto ou de objeto (caixa de correio, livro) não dá id — não casa com parada de NPC
 local function npcId()
-	local guid = UnitGUID and UnitGUID("npc")
-	return guid and tonumber((select(6, strsplit("-", guid))))
+	return ns.NpcID(UnitGUID and UnitGUID("npc"))
 end
 
 local function worldOf(s)
@@ -194,12 +220,20 @@ local function window(kinds)
 	for _, s in ipairs(D.MatchWindow(stops, kinds, npcId(), pos, worldOf)) do D:DoneStop(s) end
 end
 
+local function merchant()
+	return D.MerchantKinds(CanMerchantRepair and CanMerchantRepair())
+end
+
 for event, kinds in pairs(D.WINDOW) do
-	ns:On(event, function() window(kinds) end)
+	if event == "MERCHANT_SHOW" then
+		ns:On(event, function() window(merchant()) end)
+	else
+		ns:On(event, function() window(kinds) end)
+	end
 end
 ns:On("TRAINER_SHOW", function()
 	local prof = IsTradeskillTrainer and IsTradeskillTrainer()
-	window(prof and { proftrainer = true } or { classtrainer = true })
+	window(prof and D.TRAINER.prof or D.TRAINER.class)
 end)
 -- o cliente de agora também avisa pela janela de interação: o tipo pelo nome no Enum (o número muda entre versões)
 local INTERACTION = { Merchant = D.WINDOW.MERCHANT_SHOW, Banker = D.WINDOW.BANKFRAME_OPENED,
@@ -212,6 +246,8 @@ if PIT then
 		if PIT[name] then byType[PIT[name]] = kinds end
 	end
 	ns:On("PLAYER_INTERACTION_MANAGER_FRAME_SHOW", function(_, t)
-		if byType[t] then window(byType[t]) end
+		local kinds = byType[t]
+		if kinds == D.WINDOW.MERCHANT_SHOW then kinds = merchant() end
+		if kinds then window(kinds) end
 	end)
 end

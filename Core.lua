@@ -315,7 +315,9 @@ SlashCmdList.LODESTAR = function(msg)
 		if ns.Waypoint then ns.Waypoint:ClearAll() end             -- o destino manual e as paradas (#117)
 		ns:Print(ns.L.DEST_CLEARED)
 	elseif cmd == "way" then
-		if not (ns.Waypoint and ns.Waypoint:Way(rest)) then ns:Print(ns.L.WAY_USAGE) end
+		local ok, said
+		if ns.Waypoint then ok, said = ns.Waypoint:Way(rest) end
+		if not (ok or said) then ns:Print(ns.L.WAY_USAGE) end         -- zona que não se conhece: o Way já disse
 	elseif cmd == "travel" or cmd == "viagem" then
 		if ns.TravelPanel then ns.TravelPanel:Toggle() end
 	elseif cmd == "export" then

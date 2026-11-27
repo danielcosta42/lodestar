@@ -33,6 +33,15 @@ claro").
   somam o desvio. A parada sai ao chegar (a perna que termina nela) ou ao abrir a janela do serviço perto dela (60 jd;
   a do próprio NPC sempre), e a seta segue para a próxima dizendo a parada e o depois ("Reparo · depois Silvermane
   Stalker"). O corpo passa na frente (as paradas esperam); só na sessão; Limpar e fechar o guia tiram junto.
+  (#117, revisão) A janela cabe na tela: a lista de paradas e a linha do tempo dividem a altura que sobra (no máximo
+  640 px, ou 80% da tela se for maior); não cabendo, saem primeiro as pernas feitas, e ficam a perna atual, o resto do
+  trecho até a próxima parada, um "+N a mais no caminho" (com o tempo) e o destino — que nunca some —, e até 4 paradas
+  na lista com "+N a mais". O vendedor só conclui o reparo se conserta; o treinador de profissão, só o da própria
+  parada (na Grande Forja há um de cada a 60 jd). Passar a 15 jd de qualquer parada a conclui (não só a do trecho
+  atual). Em voo ou a bordo, pôr ou tirar parada não refaz a rota do meio do ar ou do mar: refaz ao pousar ou
+  desembarcar. Coordenada fora do mapa (zona que não se conhece) não vira parada: o chat diz; a zona digitada vale em
+  qualquer caixa e no idioma do cliente. O serviço mais perto mede da última parada da fila (entra depois dela); o
+  repetido não entra nem avisa como se tivesse entrado; o de profissão leva o nome traduzido.
 - **R5 Central.** Substitui a Biblioteca (ns.GuideMenu abre a Central). Menu: Início, Leveling, Masmorras,
   Equipamento, Colecionáveis, Legado, Classe, Reputação, Sintonias, Eventos; Configurações e Relatar no pé.
   - **Início:** continuar (guia, passo, o que fazer agora, nível e XP) e os cartões de masmorra, equipamento, Legado e
@@ -72,8 +81,14 @@ Helper), busca de itens, raros.
   guia, origem do colecionável, progresso e mais perto do Legado, tema mudado no lugar, sanidade do DungeonData.
 - tools/ui-smoke.lua (light e dark): o addon inteiro carrega, loga e monta e atualiza cada janela e página sem erro;
   paradas (#117): serviço e coordenada viram parada antes do destino, Shift vai direto, × tira, chegar e abrir a
-  janela do serviço concluem, o corpo passa na frente, Limpar tira tudo.
+  janela do serviço concluem, o corpo passa na frente, Limpar tira tudo. (#117, revisão) Vendedor que não conserta não
+  conclui o reparo; passar antes pela segunda parada a conclui; em voo a rota não se refaz até pousar; zona que não se
+  conhece não vira parada; a altura da Navegação com muitas paradas e pernas (6 e 7, 9 e 12, 0 e 9...) fica em 640 px,
+  com o destino e os "+N".
 - tools/travel-tests.lua (#117): fila de paradas (ordem, repetida, tirar, limpar por serviço), cadeia com corpo e
   sem destino, janela que conclui (tipo e distância, NPC), rota emendada (pernas, marcadores, total, corte sem
-  ligação, pedra uma vez), texto da seta com o depois.
+  ligação, pedra uma vez), texto da seta com o depois. (#117, revisão) Quanto falta com barco de horário depois de uma
+  parada (sem contar a ida ao cais duas vezes), ponto fora do mapa fica de fora da cadeia, janela que conclui (vendedor
+  sem conserto, treinador de profissão só pelo NPC), parada por onde se passa, em voo/a bordo sem refazer, voo
+  automático só no trecho atual, o mais perto medido da última parada, zona em qualquer caixa, o que cabe na Navegação.
 - Suíte inteira verde; nada do Polestar (GPL-3) copiado; dados do pfQuest (MIT) e do próprio jogo.

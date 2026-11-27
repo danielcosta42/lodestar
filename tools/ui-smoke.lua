@@ -396,8 +396,9 @@ end)
 -- do serviço conclui, Limpar tira tudo. O mundo de mentira: o mapa vira um quadrado de 200 jd em volta do jogador.
 step("TravelPanel stops", function()
 	local T, D, WP = ns.Travel, ns.Destinations, ns.Waypoint
-	local pw, w, shift = T.PlayerWorld, T.World, _G.IsShiftKeyDown
+	local pw, w, shift, repair = T.PlayerWorld, T.World, _G.IsShiftKeyDown, _G.CanMerchantRepair
 	local eu = { c = 0, x = -10500, y = 1050 }
+	UIParent:SetHeight(1080)              -- tela alta: a linha do tempo inteira cabe (a de 768 é o passo seguinte)
 	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
 	T.World = function(_, x, y) return { c = 0, x = -10500 + (x or 0) * 2, y = 1000 + (y or 0) * 2 } end
 	local ok, err = pcall(function()
@@ -412,6 +413,10 @@ step("TravelPanel stops", function()
 		local s1 = D:Stops()[1]
 		assert(#D:Stops() == 1 and s1.service == "repair" and s1.short and s1.npc, "o serviço não virou parada")
 		assert(D:Get("manual").label == "Silvermane Stalker", "a parada trocou o destino")
+		-- o mesmo serviço de novo: nada entra e não se avisa como se tivesse entrado (#117)
+		local foi, msg = ns.Services:GoTo("repair", nil, true)
+		assert(not foi and #D:Stops() == 1 and msg == ns.L.STOP_ALREADY:format(s1.label),
+			"o serviço repetido virou parada (ou avisou que entrou): " .. tostring(msg))
 		local r = T:Route()
 		assert(r and r.kind == "manual" and r.stops and #r.stops == 1, "a rota não passa pela parada")
 		assert(r.stops[1].leg < #r.legs and r.legs[r.stops[1].leg].parada == s1, "a parada não fica antes do destino")
@@ -459,6 +464,10 @@ step("TravelPanel stops", function()
 		eu.x, eu.y = ws.x + 5, ws.y
 		ns.fire("BANKFRAME_OPENED")
 		assert(#D:Stops() == 1, "o banco concluiu a parada do reparo")
+		_G.CanMerchantRepair = function() return false end
+		ns.fire("MERCHANT_SHOW")
+		assert(#D:Stops() == 1, "o vendedor que não conserta concluiu a parada do reparo")
+		_G.CanMerchantRepair = function() return true end
 		ns.fire("MERCHANT_SHOW")
 		assert(#D:Stops() == 0, "abrir o vendedor perto da parada não a concluiu")
 		r = T:Route()
@@ -475,6 +484,37 @@ step("TravelPanel stops", function()
 		assert(#D:Stops() == 0, "chegar à parada não a concluiu")
 		r = T:Route()
 		assert(r and #r.stops == 0 and r.kind == "manual", "depois da parada, a rota não foi ao destino")
+		-- passar antes pela segunda parada também a conclui (#117): ela sai, a primeira fica e a rota volta a ela
+		eu.x, eu.y = -10500, 1050
+		WP:Way("20 20"); WP:Way("35 35")
+		local p1 = D:Stops()[1]
+		local w2 = T.World(nil, 35, 35)
+		eu.x, eu.y = w2.x + 4, w2.y
+		upd(ns.eventFrame, 1.01)
+		assert(#D:Stops() == 1 and D:Stops()[1] == p1, "passar pela segunda parada antes da primeira não a concluiu")
+		r = T:Route()
+		assert(r and #r.stops == 1 and r.stops[1].dest == p1, "a rota não voltou para a primeira parada")
+		-- em voo (ou a bordo), mexer na fila não refaz a rota do meio do ar: ela se refaz ao pousar (#117)
+		_G.UnitOnTaxi = function() return true end
+		local noAr = T:Route()
+		WP:Way("45 50")
+		assert(#D:Stops() == 2 and T:Route() == noAr and #noAr.stops == 1, "em voo, a parada nova refez a rota")
+		upd(ns.eventFrame, 1.01)
+		assert(T:Route() == noAr, "em voo, o relógio refez a rota")
+		_G.UnitOnTaxi = nil
+		upd(ns.eventFrame, 1.01)
+		r = T:Route()
+		assert(r ~= noAr and #r.stops == 2, "pousou e a rota não passou pela parada nova")
+		-- zona que não se conhece: a parada não entra (nem trava a rota) e o chat diz por quê; a caixa não importa
+		local fake, say, said = T.World, _G.print, nil
+		T.World = function(z, ...) if z == "Lugar Nenhum" then return nil end return fake(z, ...) end
+		_G.print = function(...) said = table.concat({ ... }, " "); say(...) end
+		local entrou, disse = WP:Way("45 30 Lugar Nenhum")
+		_G.print, T.World = say, fake
+		assert(not entrou and disse and #D:Stops() == 2 and said and said:find("Lugar Nenhum", 1, true),
+			"a parada fora do mapa entrou (ou o chat não disse): " .. tostring(said))
+		assert(WP.ZoneKey("westfall") == "Westfall", "a zona digitada em minúsculas não achou o mapa")
+		D:ClearStops()
 		-- o corpo passa na frente: as paradas esperam e voltam ao reviver
 		WP:Way("25 25")
 		D:Set("corpse", { map = 1436, x = 10, y = 10, label = "corpo", red = true })
@@ -498,9 +538,90 @@ step("TravelPanel stops", function()
 		assert(#D:Stops() == 0, "fechar o guia deixou a parada")
 		ns.Viewer:Show()
 	end)
-	_G.IsShiftKeyDown = shift
+	_G.IsShiftKeyDown, _G.CanMerchantRepair, _G.UnitOnTaxi = shift, repair, nil
+	UIParent:SetHeight(0)
 	D:ClearStops(); D:Clear("manual"); D:Clear("corpse")
 	T.PlayerWorld, T.World = pw, w
+	assert(ok, err)
+end)
+-- altura da Navegação (#117): muitas paradas e pernas encolhem a lista (até 4 e "+N a mais") e a linha do tempo (o
+-- trecho atual, "+N" e o destino), e a janela cabe numa tela de 768. Antes: 6 paradas e 7 pernas davam 1120 px e o
+-- 13º item (a perna até o destino) sumia calado.
+step("TravelPanel height", function()
+	local T, D = ns.Travel, ns.Destinations
+	local savedRoute, savedPW = T.Route, T.PlayerWorld
+	local fr = _G.LodestarTravel
+	if not fr:IsShown() then ns.TravelPanel:Toggle() end
+	UIParent:SetHeight(768)
+	local route
+	T.Route = function() return route end
+	T.PlayerWorld = function() return { c = 0, x = 0, y = 0 } end
+	-- nStops paradas, uma em cada uma das primeiras pernas a pé; nLegs pernas (a pé e voo alternados depois delas)
+	local function monta(nStops, nLegs, atual)
+		D:ClearStops()
+		local legs, stops, a = {}, {}, { c = 0, x = 0, y = 0 }
+		for i = 1, nLegs do
+			local b = { c = 0, x = i * 100, y = 0 }
+			legs[i] = { k = (i > nStops and (i - nStops) % 2 == 0) and "flight" or "walk", a = a, b = b, s = 30,
+				name = "Voo " .. i }
+			a = b
+		end
+		legs[nLegs].k = "walk"                                  -- a última perna chega a pé ao destino
+		for j = 1, nStops do
+			D:AddStop({ zone = "Westfall", x = j, y = j, label = "Parada " .. j, short = "P" .. j })
+			local sj = D:Stops()[j]
+			legs[j].parada = sj
+			stops[j] = { leg = j, dest = sj }
+		end
+		route = { leg = atual or 1, legs = legs, stops = stops, kind = "manual", dest = { label = "Destino final" } }
+		ns.TravelPanel.Refresh()
+	end
+	-- as linhas mostradas, de cima para baixo (a ordem de criação não é a da tela: o "+N" nasce depois)
+	local function visiveis()
+		local out = {}
+		for _, k in ipairs(fr.timeline._kids or {}) do if k._shown then out[#out + 1] = k end end
+		local function topo(k) local a = k._ptargs.TOPLEFT; return -a[#a] end
+		table.sort(out, function(x, y) return topo(x) < topo(y) end)
+		return out
+	end
+	local ok, err = pcall(function()
+		for _, caso in ipairs({ { 6, 7 }, { 2, 3 }, { 0, 9 }, { 1, 3 }, { 6, 7, 3 }, { 9, 12 } }) do
+			local nS, nL, atual = caso[1], caso[2], caso[3]
+			monta(nS, nL, atual)
+			local nome = ("%d paradas, %d pernas%s"):format(nS, nL, atual and (", na perna " .. atual) or "")
+			assert(fr._h <= 640, nome .. ": a janela passou da tela (" .. fr._h .. " px)")
+			local vis = visiveis()
+			local fim = vis[#vis]
+			assert(fim and fim.text._text == "Destino final", nome .. ": o destino final sumiu da linha do tempo ("
+				.. tostring(fim and fim.text._text) .. ")")
+			local itens = nL + nS - (atual and (atual - 1) + math.min(nS, atual - 1) or 0)
+			if #vis < itens then
+				local mais = false
+				for _, k in ipairs(vis) do
+					if k.text._text and k.text._text:find("^%+%d") then mais = true end
+					assert(table.concat(k._pts or {}, " ") == "TOPLEFT TOPRIGHT", nome .. ": linha mal ancorada")
+				end
+				assert(mais, nome .. ": a linha do tempo encolheu sem o \"+N\"")
+			end
+			local linhas = 0
+			for _, k in ipairs(fr.stops._kids or {}) do if k._shown and k.remove then linhas = linhas + 1 end end
+			assert(linhas <= 4 and (nS == 0 or linhas >= 1), nome .. ": paradas na lista: " .. linhas)
+			if linhas < nS then
+				assert(fr.stopsMore:IsShown() and fr.stopsMore._text == ns.L.V3_NAV_STOPS_MORE:format(nS - linhas),
+					nome .. ": a lista encolheu sem o \"+N a mais\"")
+			else
+				assert(not fr.stopsMore:IsShown(), nome .. ": \"+N a mais\" com todas as paradas na lista")
+			end
+		end
+		-- poucas: tudo aparece, como antes (as feitas também)
+		monta(1, 2)
+		assert(#visiveis() == 3 and not fr.stopsMore:IsShown(), "1 parada e 2 pernas: a linha do tempo encolheu")
+	end)
+	T.Route, T.PlayerWorld = savedRoute, savedPW
+	route = nil
+	D:ClearStops()
+	UIParent:SetHeight(0)
+	ns.TravelPanel.Refresh()
 	assert(ok, err)
 end)
 for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "rares", "characters",

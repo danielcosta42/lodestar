@@ -42,6 +42,15 @@ pelo cliente, ícones e tooltips de cais no mapa.
   ou ao abrir a janela do serviço perto dela (vendedor/reparo/estalagem: MERCHANT_SHOW; treinador:
   TRAINER_SHOW; banco, leilão, voo, estábulo; a do próprio NPC, pelo id, sempre). O corpo passa na
   frente de tudo (as paradas esperam). Só na sessão; Limpar tira o manual e as paradas.
+  (#117, revisão) O vendedor conclui o reparo só se conserta (`CanMerchantRepair`); o treinador de profissão, só pelo
+  id do NPC da parada; o NPC sai de `ns.NpcID` (GUID secreto ou de objeto não casa). Passar a 15 jd de qualquer parada a
+  conclui (o relógio de 1 s, não só a perna que termina nela). Ponto que não cai no mapa fica de fora da cadeia em vez
+  de cortá-la, e `WP:AddStop` nem o aceita (o chat diz). Em voo ou a bordo (`T:Busy`), pôr ou tirar parada não refaz
+  a rota: a chave fica velha e o relógio refaz ao pousar ou desembarcar (sem perder a perna nem a chegada do barco);
+  embarcado há mais que o dobro da travessia e 2 min (pulou do barco), ou morto, já não conta.
+  `Remaining` com `now`: a espera do barco conta de agora, com as pernas de antes dentro dela (somá-las dava 1233 s para
+  um plano de 821 s e a rota igual trocava a cada 10 s). O voo automático só pega o voo do trecho atual (até a primeira
+  parada). O serviço mais perto mede da última parada da fila.
 - **Na tela:** a seta atual aponta para o fim da **perna atual**; uma bússola nova no topo mostra a
   próxima parada, o destino final e o próximo passo do guia.
 - **Voos:** só voa *para* voo conhecido; um voo ainda não descoberto vale como ponto de partida

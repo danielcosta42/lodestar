@@ -47,7 +47,8 @@ do Polestar é copiado.
   login, no /reload nem para o que já estava pronto.
 - **R14 TomTom** (opcional, desligado). Sem o TomTom instalado: `TomTom:AddWaypoint(mapa, x, y, opções)` de outros
   addons e `/way [#mapa|zona] x y [nome]` viram o destino manual do Lodestar; `RemoveWaypoint` limpa. Com o TomTom,
-  nada muda.
+  nada muda. (#117) O `/way` agora põe uma parada antes do destino (o `AddWaypoint` dos outros addons segue trocando o
+  destino manual); `/way off` tira o manual e as paradas.
 
 ## Fora
 

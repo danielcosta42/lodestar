@@ -41,19 +41,37 @@ function WP:ClearCustom()
 end
 
 -- Parada antes do destino (#117): serviço ou coordenada entra no caminho em vez de trocar o destino.
--- `extra` vai junto na parada (short, service, npc).
+-- `extra` vai junto na parada (short, service, npc). Ponto que não cai no mapa (zona que não se conhece) não entra:
+-- diz no chat e devolve false, "place". A repetida também não: false, "dup" (calada).
 function WP:AddStop(zone, x, y, label, map, extra)
 	local s = { zone = zone, map = map, x = tonumber(x), y = tonumber(y), label = label or ns.L.STOP }
+	if not (s.x and s.y and ns.Travel and ns.Travel.World(zone, s.x, s.y, map)) then
+		local info = map and C_Map and C_Map.GetMapInfo(map)
+		if zone then ns:Printf(ns.L.WAY_NOZONE, zone) else ns:Printf(ns.L.STOP_NOPLACE, info and info.name or "?") end
+		return false, "place"
+	end
 	for k, v in pairs(extra or {}) do s[k] = v end
 	local added = ns.Destinations:AddStop(s)
 	self:Update()
 	if ns.Viewer then ns.Viewer:Refresh() end
-	return added
+	return added, not added and "dup" or nil
 end
 
 -- parada numa coordenada: na lista, "Ponto 45.2, 30.1"; na seta, só "Ponto"
 local function pointStop(self, zone, x, y, map)
 	return self:AddStop(zone, x, y, ("%s %.1f, %.1f"):format(ns.L.WAYPOINT, x, y), map, { short = ns.L.WAYPOINT })
+end
+
+-- Zona digitada (em inglês ou no idioma do cliente, em qualquer caixa: "westfall") -> o nome que o mapa conhece;
+-- a que não se acha volta como veio (e a parada recusa).
+function WP.ZoneKey(zone)
+	if not zone or ns.zoneMap[zone] or (ns.zoneUiMap and ns.zoneUiMap[zone]) then return zone end
+	local low = zone:lower()
+	for name in pairs(ns.zoneMap) do if name:lower() == low then return name end end
+	for eng in pairs(ns.zoneUiMap or {}) do
+		if eng:lower() == low or (ns.LocalizedZone and ns.LocalizedZone(eng):lower() == low) then return eng end
+	end
+	return zone
 end
 
 -- Limpar (painel Viagem, /ls way off): o destino manual e as paradas
@@ -63,13 +81,19 @@ function WP:ClearAll()
 end
 
 -- /ls way e o campo do painel Viagem: sem zona, vale o mapa onde o jogador está. Vira parada; `direct`
--- (Shift no Ir) troca o destino, como antes do #117.
+-- (Shift no Ir) troca o destino, como antes do #117. Devolve false se o texto não é coordenada; false, true se a
+-- parada não entrou e o chat já disse por quê (zona que não se conhece); true se entrou (ou já estava na fila).
 function WP:Way(text, direct)
 	local x, y, zone = WP.ParseWay(text)
 	if not x then return false end
+	zone = WP.ZoneKey(zone)
 	local map = not zone and C_Map.GetBestMapForUnit("player") or nil
 	if direct then self:SetCustom(zone, x, y, ns.L.WAYPOINT, map)
-	else pointStop(self, zone, x, y, map) end
+	else
+		local added, why = pointStop(self, zone, x, y, map)
+		if why == "place" then return false, true end
+		if not added then return true end                    -- já estava na fila: nada a dizer
+	end
 	local info = map and C_Map.GetMapInfo(map)
 	ns:Printf("%s: %s %.1f, %.1f", direct and ns.L.WAYPOINT or ns.L.STOP, zone or info and info.name or "?", x, y)
 	return true
@@ -85,10 +109,10 @@ function WP.Marked()
 end
 
 -- Shift+clique (mapa ou minimapa) em (uiMapID, x, y 0-100): em cima do destino manual ou de uma parada (`hit`,
--- de WP.Marked; `true` = o manual), tira; senão, parada nova ali (#117).
+-- de WP.Marked), tira; senão, parada nova ali (#117).
 function WP:ClickDest(map, x, y, hit)
 	if hit then
-		if hit == true or hit.kind == "manual" then
+		if hit.kind == "manual" then
 			self:ClearCustom()
 			return ns:Print(ns.L.DEST_CLEARED)
 		end
@@ -96,7 +120,7 @@ function WP:ClickDest(map, x, y, hit)
 		self:Update()
 		return ns:Print(ns.L.STOP_REMOVED)
 	end
-	pointStop(self, nil, x, y, map)
+	if not pointStop(self, nil, x, y, map) then return end    -- fora do mapa (já disse) ou já na fila
 	local info = C_Map.GetMapInfo(map)
 	ns:Printf("%s: %s %.1f, %.1f", ns.L.STOP, info and info.name or "?", x, y)
 end
