@@ -390,6 +390,117 @@ step("TravelPanel route", function()
 	ns.Waypoint:ClearCustom()
 	ns.TravelPanel.Refresh()
 end)
+-- paradas (#117): o serviço e a coordenada entram antes do destino, Shift vai direto, × tira, chegar ou abrir a janela
+-- do serviço conclui, Limpar tira tudo. O mundo de mentira: o mapa vira um quadrado de 200 jd em volta do jogador.
+step("TravelPanel stops", function()
+	local T, D, WP = ns.Travel, ns.Destinations, ns.Waypoint
+	local pw, w, shift = T.PlayerWorld, T.World, _G.IsShiftKeyDown
+	local eu = { c = 0, x = -10500, y = 1050 }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function(_, x, y) return { c = 0, x = -10500 + (x or 0) * 2, y = 1000 + (y or 0) * 2 } end
+	local ok, err = pcall(function()
+		local fr = _G.LodestarTravel
+		if not fr:IsShown() then ns.TravelPanel:Toggle() end
+		D:Set("manual", { zone = "Westfall", x = 60, y = 60, label = "Silvermane Stalker" })
+		local function svc(kind)
+			for _, b in ipairs(fr.svc._kids or {}) do if b.kind == kind then return b end end
+		end
+		-- clique num serviço: parada, o destino fica
+		svc("repair"):GetScript("OnClick")(svc("repair"))
+		local s1 = D:Stops()[1]
+		assert(#D:Stops() == 1 and s1.service == "repair" and s1.short and s1.npc, "o serviço não virou parada")
+		assert(D:Get("manual").label == "Silvermane Stalker", "a parada trocou o destino")
+		local r = T:Route()
+		assert(r and r.kind == "manual" and r.stops and #r.stops == 1, "a rota não passa pela parada")
+		assert(r.stops[1].leg < #r.legs and r.legs[r.stops[1].leg].parada == s1, "a parada não fica antes do destino")
+		-- coordenada no campo (Ir): segunda parada, depois da primeira
+		fr.box:SetText("30 40")
+		fr.box:GetScript("OnEnterPressed")(fr.box)
+		local s2 = D:Stops()[2]
+		assert(#D:Stops() == 2 and s2.x == 30 and s2.y == 40 and s2.label:find("30.0, 40.0", 1, true),
+			"a coordenada não virou parada")
+		r = T:Route()
+		assert(#r.stops == 2 and r.stops[1].dest == s1 and r.stops[2].dest == s2 and r.stops[2].leg < #r.legs,
+			"a rota não vai parada 1 -> parada 2 -> destino")
+		-- a seta: a parada e o que vem depois
+		local goal = WP:PickTarget()
+		assert(goal and goal.text:find(ns.L.STOP_THEN:format(s1.short, s2.short), 1, true),
+			"a seta não diz a parada e o depois: " .. tostring(goal and goal.text))
+		-- a Navegação: a lista com o ×, o marcador na linha do tempo, o tempo total com o desvio
+		ns.TravelPanel.Refresh()
+		assert(fr.stops:IsShown() and fr.clear:IsShown(), "a lista de paradas (ou o Limpar) não apareceu")
+		local rows, marks = {}, 0
+		for _, k in ipairs(fr.stops._kids or {}) do if k._shown then rows[#rows + 1] = k end end
+		assert(#rows == 2 and rows[1].text._text == s1.label and rows[1].remove, "a lista não mostra as duas paradas")
+		for _, k in ipairs(fr.timeline._kids or {}) do
+			if k._shown and k.text._text == s1.label then marks = marks + 1 end
+			if k._shown then assert(table.concat(k._pts or {}, " ") == "TOPLEFT TOPRIGHT", "linha mal ancorada") end
+		end
+		assert(marks == 1, "o marcador da parada não está na linha do tempo")
+		assert(fr.total._text ~= "" and fr.eta._text ~= "", "sem o tempo total")
+		-- Shift: vai direto (troca o destino, sem parada nova), no serviço e na coordenada
+		_G.IsShiftKeyDown = function() return true end
+		svc("vendor"):GetScript("OnClick")(svc("vendor"))
+		assert(#D:Stops() == 2 and D:Get("manual").service == "vendor", "Shift+clique no serviço não foi direto")
+		fr.box:SetText("70 70")
+		fr.box:GetScript("OnEnterPressed")(fr.box)
+		assert(#D:Stops() == 2 and D:Get("manual").x == 70, "Shift+Ir não foi direto")
+		_G.IsShiftKeyDown = shift
+		-- o × tira a parada
+		rows[2].remove:GetScript("OnClick")(rows[2].remove)
+		assert(#D:Stops() == 1 and D:Stops()[1] == s1 and #T:Route().stops == 1, "o × não tirou a parada")
+		-- a janela do serviço: longe da parada não conta; perto, conclui
+		local ws = T.World(s1.zone, s1.x, s1.y, s1.map)
+		eu.x, eu.y = ws.x + 400, ws.y
+		ns.fire("MERCHANT_SHOW")
+		assert(#D:Stops() == 1, "vendedor aberto longe concluiu a parada")
+		eu.x, eu.y = ws.x + 5, ws.y
+		ns.fire("BANKFRAME_OPENED")
+		assert(#D:Stops() == 1, "o banco concluiu a parada do reparo")
+		ns.fire("MERCHANT_SHOW")
+		assert(#D:Stops() == 0, "abrir o vendedor perto da parada não a concluiu")
+		r = T:Route()
+		assert(r and r.kind == "manual" and #r.stops == 0, "sem a parada, a rota não seguiu para o destino")
+		-- chegar perto conclui (o relógio da rota avança a perna) e a seta segue para o destino
+		eu.x, eu.y = -10500, 1050
+		WP:Way("20 20")
+		local s3 = D:Stops()[1]
+		assert(s3 and T:Route().stops[1].dest == s3, "/ls way não virou parada")
+		local w3 = T.World(nil, 20, 20)
+		eu.x, eu.y = w3.x + 3, w3.y
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		upd(ns.eventFrame, 1.01)
+		assert(#D:Stops() == 0, "chegar à parada não a concluiu")
+		r = T:Route()
+		assert(r and #r.stops == 0 and r.kind == "manual", "depois da parada, a rota não foi ao destino")
+		-- o corpo passa na frente: as paradas esperam e voltam ao reviver
+		WP:Way("25 25")
+		D:Set("corpse", { map = 1436, x = 10, y = 10, label = "corpo", red = true })
+		r = T:Route()
+		assert(r and r.kind == "corpse" and #r.stops == 0 and #D:Stops() == 1, "o corpo não passou na frente da parada")
+		ns.TravelPanel.Refresh()
+		assert(fr.stopsLabel._text == ns.L.V3_NAV_STOPS_WAIT, "a lista não diz que as paradas esperam o corpo")
+		D:Clear("corpse")
+		assert(#T:Route().stops == 1, "reviveu: a parada não voltou")
+		-- Shift+clique no mapa: parada; em cima dela, tira
+		WP:ClickDest(1436, 33, 33)
+		assert(#D:Stops() == 2, "Shift+clique no mapa não pôs parada")
+		WP:ClickDest(1436, 0, 0, { dest = D:Stops()[2], kind = "stop" })
+		assert(#D:Stops() == 1, "Shift+clique em cima da parada não a tirou")
+		-- Limpar: o destino manual e as paradas
+		fr.clear:GetScript("OnClick")(fr.clear)
+		assert(#D:Stops() == 0 and D:Get("manual") == nil, "Limpar não tirou tudo")
+		-- fechar o guia leva as paradas junto (#93)
+		WP:Way("40 40")
+		ns.Viewer:Hide()
+		assert(#D:Stops() == 0, "fechar o guia deixou a parada")
+		ns.Viewer:Show()
+	end)
+	_G.IsShiftKeyDown = shift
+	D:ClearStops(); D:Clear("manual"); D:Clear("corpse")
+	T.PlayerWorld, T.World = pw, w
+	assert(ok, err)
+end)
 for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "rares", "characters",
 	"class", "dungeonguides", "reputation",
 	"attunements", "events" }) do
