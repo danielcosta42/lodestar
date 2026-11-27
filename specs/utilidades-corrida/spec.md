@@ -32,7 +32,12 @@ Depois do Lodestar 3 (#90), o que decide a corrida dos guias é o tempo de level
   para a sua facção (Dungeons:BestNow) e quantas quests dela faltam pegar, com "Ver a masmorra".
 - **R3 Botão de alvo.** Botão seguro (LodestarTarget, atalho em Teclas de atalho) com /targetexact no mob (kill) ou NPC
   (talk) do passo; mais de um, cada clique fora de combate passa ao próximo. Marca o alvo com ícone de raide (8 inimigo,
-  1 NPC) se ele não tem marca e você pode (sozinho, grupo; em raide só líder/assistente). O nome no idioma do cliente é
+  1 NPC) se você pode (sozinho, grupo; em raide só líder/assistente). (#119) A marca vai na própria macro do clique
+  (`/cleartarget`, `/targetexact`, `/tm [@target,exists,nodead] ~<ícone>`): neste cliente o SetRaidTarget é protegido e
+  chamado depois do clique dava ADDON_ACTION_FORBIDDEN. O `~` só marca quem não tem marca (não alterna nem troca a de
+  outro); o `/cleartarget` evita marcar o alvo de antes quando o mob do passo não está por perto. A macro roda ao soltar
+  (mouse e tecla: `useOnKeyDown` falso) e o "próximo" passa depois dela. Ao entrar em combate (antes do bloqueio) a macro
+  só mira (sem limpar o alvo da luta) e volta a marcar ao sair. O nome no idioma do cliente é
   aprendido ao ver a unidade (placa, mouse, alvo) para os NPCs do guia; sem ele, o do guia. Some com o guia fechado e
   sem alvo no passo (e a macro fica vazia: o atalho não mira o alvo velho). Atributos e posição só fora de combate;
   ancorado no UIParent.

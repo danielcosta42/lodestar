@@ -46,6 +46,8 @@ ChehulNetWire.lua
 ZoneData.lua
 QuestLevels.lua
 QuestEnders.lua
+# Gerado (tools/gen_spawnareas.py, issue #121): onde nasce o que cada objetivo de quest pede.
+SpawnAreas.lua
 Trainers.lua
 Parser.lua
 # Gerado (tools/gen_forever.py): o que não existe no Forever.
@@ -82,6 +84,7 @@ Toast.lua
 WorldMapPin.lua
 GuideMap.lua
 RouteMap.lua
+SpawnMap.lua
 FlightMap.lua
 RouteMinimap.lua
 Compass.lua
@@ -119,6 +122,8 @@ RareData.lua
 Rares.lua
 Characters.lua
 Nearby.lua
+# Nesta área (issue #122): os objetivos do diário que dá para fazer onde o jogador está.
+AreaGoals.lua
 TargetButton.lua
 PartySync.lua
 Updates.lua

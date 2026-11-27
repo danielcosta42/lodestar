@@ -14,7 +14,8 @@ local function yn(v) return v and "on" or "off" end
 
 -- ctx: { version, client, locale, guide, step, total, goals = { {verb, text, id, q, done} }, zone, map, x, y, level,
 -- class, race, faction, quests = { {id, title, inLog, done, progress} }, auto = { [nome] = bool }, addons = { nome },
--- route = texto do estado da rota (Travel:Describe), passages = { texto } }
+-- route = texto do estado da rota (Travel:Describe), passages = { texto }, areaGoals = texto do "Nesta área"
+-- (AreaGoals.Describe: as linhas e os objetivos sem par no diário) }
 function R.ReportText(ctx, what)
 	ctx = ctx or {}
 	local out = {}
@@ -60,6 +61,9 @@ function R.ReportText(ctx, what)
 	end
 	if ctx.route then
 		add("Route: " .. ctx.route)
+	end
+	if ctx.areaGoals then
+		add("In this area: " .. ctx.areaGoals)
 	end
 	if ctx.passages and #ctx.passages > 0 then
 		add("Recorded passages (/ls passagem):")
@@ -129,6 +133,7 @@ local function context()
 		end
 	end
 	ctx.route = ns.Travel and ns.Travel.Describe and ns.Travel:Describe() or nil
+	ctx.areaGoals = ns.AreaGoals and ns.AreaGoals.Describe and ns.AreaGoals.Describe() or nil
 	ctx.passages = {}
 	if ns.Passages then
 		for _, p in ipairs(ns.db.passages or {}) do ctx.passages[#ctx.passages + 1] = ns.Passages.Encode(p) end

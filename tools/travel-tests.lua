@@ -1440,4 +1440,234 @@ end)()
 	check(r4 == 4 and select(3, TPh.Fit({}, {}, nil, 9, 400, 30)) == 9, "sem rota: a lista fica com a altura (até 4)")
 end)()
 
+-- ── #121: áreas de nascimento (SpawnMap.lua, o núcleo puro; SpawnAreas.lua, o dado gerado) ─────────────────────
+;(function()
+	local DIG = "0123456789abcdefghijklmnopqrstuvwxyz"
+	local function b36(v)
+		v = math.floor(v + 0.5)
+		local hi = math.floor(v / 36)
+		return DIG:sub(hi + 1, hi + 1) .. DIG:sub(v % 36 + 1, v % 36 + 1)
+	end
+	local function area(z, cx, cy, n, hull)
+		local s = b36(z) .. b36(cx * 10) .. b36(cy * 10) .. b36(n)
+		for _, v in ipairs(hull or {}) do s = s .. b36(v * 10) end
+		return s
+	end
+	local quadrado = { 40, 25, 50, 25, 50, 35, 40, 35 }
+	local sns = { spawnZones = { "Elwynn Forest", "Westfall" }, spawnQuest = {
+		[7] = { "c6;" .. area(1, 45.2, 30.1, 12, quadrado) .. ";" .. area(1, 80, 80, 3) .. ";" .. area(2, 10, 10, 5) },
+		[33] = { "c99", "i750;" .. area(1, 20, 20, 4, { 18, 18, 22, 18, 20, 23 }), a = { [69] = 2 } },
+		[50] = { "o1;" .. area(1, 5, 5, 1) },
+	} }
+	local SA = load("SpawnMap.lua", sns).SpawnAreas
+	local e = SA.For(7)
+	local o = e[1]
+	check(o.kind == "c" and o.id == 6 and #o.areas == 3, "decodifica o tipo, o id e as três áreas")
+	local a1 = o.areas[1]
+	check(a1.zone == "Elwynn Forest" and math.abs(a1.x - 45.2) < 1e-9 and math.abs(a1.y - 30.1) < 1e-9 and a1.n == 12,
+		"a área: zona, ponto-alvo, nascimentos")
+	check(#a1.hull == 8 and a1.hull[3] == 50 and a1.hull[8] == 35, "o contorno volta inteiro")
+	check(#o.areas[2].hull == 2 and o.areas[2].hull[1] == 80, "área de um ponto só: o contorno é o ponto")
+	check(o.areas[3].zone == "Westfall" and a1.q == 7 and a1.obj == 1 and o.areas[3].k == 3,
+		"cada área sabe quest, objetivo e ordem")
+	check(SA.For(7) == e and SA.For(8) == nil and SA.For(nil) == nil, "decodifica uma vez; quest sem dado: nil")
+	local e33 = SA.For(33)
+	check(#e33[1].areas == 0 and e33[2].kind == "i", "objetivo sem área guarda o lugar (o índice do seguinte não muda)")
+	-- o goal do guia acha o objetivo
+	check(SA.Match(e, { verb = "kill", id = 6, q = { id = 7 } }) == 1, "kill pelo id do mob")
+	check(SA.Match(e33, { verb = "collect", id = 750, q = { id = 33 } }) == 2, "collect pelo id do item")
+	check(SA.Match(e33, { verb = "kill", id = 69, q = { id = 33 } }) == 2,
+		"o mob que deixa cair o item (alias do gerador)")
+	check(SA.Match(e33, { verb = "kill", id = 750, q = { id = 33 } }) == nil, "kill não casa com id de item")
+	check(SA.Match(e33, { verb = "kill", id = 5, q = { id = 33, obj = 2 } }) == 2, "sem casar o id, o índice do |q")
+	check(SA.Match(e33, { verb = "kill", id = 5, q = { id = 33 } }) == nil, "id que não casa e sem índice: nada")
+	check(SA.Match(e33, { verb = "collect", q = { id = 33 } }) == 2, "sem id: o único objetivo com área")
+	check(SA.Match(e, { verb = "talk", id = 6, q = { id = 7 } }) == nil, "falar com não tem área")
+	check(SA.Match(SA.For(50), { verb = "click", id = 1, q = { id = 50 } }) == 1, "click pelo id do objeto")
+	check(SA.Match(e, { verb = "collect", q = { id = 7 } }) == nil,
+		"sem id, o único objetivo com área só vale se for do tipo que o verbo pede (collect não casa com mob)")
+	-- dentro e perto do contorno, em qualquer sentido
+	check(SA.PolyDist(quadrado, 45, 30) == 0 and SA.PolyDist({ 40, 35, 50, 35, 50, 25, 40, 25 }, 45, 30) == 0,
+		"dentro do quadrado: 0, nos dois sentidos")
+	check(math.abs(SA.PolyDist(quadrado, 53, 39) - 5) < 1e-9 and math.abs(SA.PolyDist(quadrado, 45, 20) - 5) < 1e-9,
+		"fora: até o canto ou o lado mais perto")
+	check(math.abs(SA.PolyDist({ 0, 0 }, 3, 4) - 5) < 1e-9 and math.abs(SA.PolyDist({ 0, 0, 10, 0 }, 5, 2) - 2) < 1e-9,
+		"um ponto; dois (o segmento)")
+	-- a volta da seta: primeiro o ponto do guia, com a área onde ele cai; depois as outras, da borda mais perto dele
+	local aGrande = { zone = "Elwynn Forest", x = 45.2, y = 30.1, n = 24, hull = quadrado }
+	local rala = { zone = "Elwynn Forest", x = 60, y = 30, n = 2, hull = { 60, 30 } }
+	local longe = { zone = "Elwynn Forest", x = 90, y = 90, n = 7, hull = { 88, 88, 92, 88, 90, 92 } }
+	local sl = SA.Slots({ rala, longe, aGrande }, 48.1, 34.2)
+	check(#sl == 3 and sl[1].guide and sl[1].x == 48.1 and sl[1].y == 34.2 and sl[1].area == aGrande and sl[1].k == 1,
+		"o primeiro alvo é o próprio ponto do guia, com a área onde ele cai (não a rala mais perto do jogador)")
+	check(sl[2].area == longe and sl[2].x == 90 and sl[2].k == 2 and sl[3].area == rala and sl[3].of == 3,
+		"depois as outras: a de 3+ nascimentos (mesmo longe) antes da de 1-2 (mesmo perto)")
+	-- em cada leva, a mais perto da anterior: sem ziguezague em volta do ponto do guia
+	local function linha(lx, n) return { zone = "Elwynn Forest", x = lx, y = 50, n = n, hull = { lx, 50 } } end
+	local m10, p12, m30, p34 = linha(-10 + 50, 5), linha(12 + 50, 5), linha(-30 + 50, 5), linha(34 + 50, 5)
+	local so1, so2 = linha(51, 1), linha(70, 2)
+	local zz = SA.Slots({ p34, so2, m30, p12, so1, m10 }, 50, 60)
+	local ordem = {}
+	for k = 2, #zz do ordem[#ordem + 1] = zz[k].x - 50 end
+	check(table.concat(ordem, ",") == "-10,-30,12,34,20,1",
+		"vizinho mais perto em cada leva (-10, -30, 12, 34), depois as soltas, do 34 (20, 1): " .. table.concat(ordem, ","))
+	local soma = 0
+	for k = 2, #zz do soma = soma + math.abs(zz[k].x - zz[k - 1].x) end
+	check(soma == 10 + 20 + 42 + 22 + 14 + 19, "o caminho da volta: " .. soma)
+	check(zz[2].k == 1 and zz[#zz].k == 6 and zz[#zz].of == 6, "ponto do guia fora de toda área: as áreas de 1 a 6")
+	local dupla = { zone = "Elwynn Forest", x = 46, y = 31, n = 40, hull = { 44, 28, 49, 28, 49, 36, 44, 36 } }
+	check(SA.Slots({ aGrande, dupla }, 46, 30)[1].area == dupla, "o ponto em duas áreas: a de mais nascimentos")
+	check(SA.Slots({ aGrande }, 50.5, 30)[1].area == aGrande, "a até SA.INSIDE da borda conta como dentro")
+	local vizinha = { zone = "Elwynn Forest", x = 55, y = 30, n = 99, hull = { 51, 25, 60, 25, 60, 35, 51, 35 } }
+	check(SA.Slots({ vizinha, aGrande }, 49.8, 30)[1].area == aGrande,
+		"na emenda de duas áreas: a que tem o ponto, não a maior a um passo da borda")
+	local sFora = SA.Slots({ aGrande, longe }, 10, 80)
+	check(#sFora == 3 and sFora[1].guide and not sFora[1].area and not sFora[1].k and sFora[2].area == aGrande
+		and sFora[2].k == 1 and sFora[3].k == 2 and sFora[3].of == 2,
+		"o ponto do guia fora de toda área: ele sozinho, e depois todas")
+	-- a vez: o ponto do guia ao trocar de objetivo; o clique dá a volta; um só não muda
+	local st = {}
+	local s1, i1, n1 = SA.Cycle(st, "g1", sl)
+	check(s1 == sl[1] and i1 == 1 and n1 == 3, "objetivo novo: o ponto do guia")
+	check(SA.Advance(st) and SA.Cycle(st, "g1", sl) == sl[2], "clique: a próxima área")
+	SA.Advance(st)
+	check(SA.Advance(st) and SA.Cycle(st, "g1", sl) == sl[1], "depois da última, volta ao ponto do guia")
+	SA.Advance(st)
+	check(SA.Cycle(st, "g2", sl) == sl[1] and st.i == 1, "outro objetivo (ou passo): volta ao ponto do guia")
+	local st1 = {}
+	SA.Cycle(st1, "g3", SA.Slots({ aGrande }, 45, 30))
+	check(not SA.Advance(st1) and st1.i == 1, "uma área só, com o ponto dentro: o clique não faz nada")
+	check(not SA.Advance({}), "sem volta: nada")
+	-- perto de um ponto (#122): até o contorno de verdade, não um círculo
+	local function wo(zone, px, py)
+		if zone == "Westfall" then return { c = 1, x = px, y = py } end
+		return { c = 0, x = px, y = py }
+	end
+	local pertoA = SA.Near({ 7, 33, 999 }, { c = 0, x = 45, y = 41 }, 8, wo)
+	check(#pertoA == 1 and pertoA[1].area == a1 and pertoA[1].q == 7 and pertoA[1].obj == 1
+		and math.abs(pertoA[1].d - 6) < 1e-9, "perto: só a área a até 8, a 6 do lado de baixo do quadrado")
+	local nCanto = SA.Near({ 7 }, { c = 0, x = 53, y = 39 }, 6, wo)
+	check(#nCanto == 1 and math.abs(nCanto[1].d - 5) < 1e-9, "a distância até o canto (não ao círculo em volta)")
+	check(SA.Near({ 7 }, { c = 0, x = 41, y = 26 }, 0, wo)[1].d == 0, "dentro do contorno: 0")
+	check(#SA.Near({ 7 }, { c = 1, x = 10, y = 10 }, 1, wo) == 1, "outro continente: a área de lá")
+	check(#SA.Near({ 7 }, nil, 100, wo) == 0, "sem posição: nada")
+	-- o cache tem teto: passou de SA.CACHE quests, esquece e começa de novo
+	local muitas = { spawnZones = { "Elwynn Forest" }, spawnQuest = {} }
+	for q = 1, 70 do muitas.spawnQuest[q] = { "c" .. q .. ";" .. area(1, 10, 10, 1) } end
+	local SAc = load("SpawnMap.lua", muitas).SpawnAreas
+	for q = 1, 70 do SAc.For(q) end
+	check(SAc.Cached() <= SAc.CACHE and SAc.For(70).q == 70 and SAc.For(1)[1].id == 1, "o cache não passa do teto")
+	-- a mancha: contorno convexo, inchado redondo, em faixas sem fresta
+	local hq = SA.Hull({ 0, 0, 10, 0, 10, 10, 0, 10, 5, 5, 5, 0, 0, 0 })
+	local area2 = 0
+	for k = 1, #hq, 2 do
+		local ux, uy, vx, vy = hq[k], hq[k + 1], hq[(k + 1) % #hq + 1], hq[(k + 2) % #hq + 1]
+		area2 = area2 + ux * vy - vx * uy
+	end
+	check(#hq == 8 and area2 > 0, "contorno: os 4 cantos (o do meio e o repetido saem), área positiva")
+	check(#SA.Hull({ 3, 3, 3, 3 }) == 2 and #SA.Hull({ 1, 1, 5, 5, 9, 9 }) == 4,
+		"um ponto; pontos em linha viram os dois da ponta")
+	local c = SA.Rounded({ 50, 50 }, 6)
+	local circulo = #c >= 16
+	for k = 1, #c, 2 do circulo = circulo and math.abs(math.sqrt((c[k] - 50) ^ 2 + (c[k + 1] - 50) ^ 2) - 6) < 1e-9 end
+	check(circulo, "um ponto: um círculo do raio da folga")
+	local inch = SA.Rounded(hq, 2)
+	local bx0, bx1, by0, by1 = math.huge, -math.huge, math.huge, -math.huge
+	for k = 1, #inch, 2 do
+		bx0, bx1 = math.min(bx0, inch[k]), math.max(bx1, inch[k])
+		by0, by1 = math.min(by0, inch[k + 1]), math.max(by1, inch[k + 1])
+	end
+	check(math.abs(bx0 + 2) < 1e-9 and math.abs(bx1 - 12) < 1e-9 and math.abs(by0 + 2) < 1e-9
+		and math.abs(by1 - 12) < 1e-9,
+		"o quadrado inchado de 2 em toda volta")
+	local pilula = SA.Rounded(SA.Hull({ 0, 0, 10, 0 }), 3)
+	local py0, py1 = math.huge, -math.huge
+	for k = 2, #pilula, 2 do py0, py1 = math.min(py0, pilula[k]), math.max(py1, pilula[k]) end
+	check(math.abs(py0 + 3) < 1e-9 and math.abs(py1 - 3) < 1e-9, "dois pontos: a pílula, da largura da folga")
+	local sp = SA.Spans(SA.Rounded(hq, 2), 1.5)
+	local emenda, alto = true, 0
+	for k = 1, #sp - 4, 4 do emenda = emenda and sp[k + 1] == sp[k + 4] end
+	for k = 1, #sp, 4 do alto = alto + (sp[k + 1] - sp[k]); check(sp[k + 3] > sp[k + 2], "faixa com largura") end
+	check(#sp >= 4 * 9 and emenda and math.abs(alto - 14) < 1e-9, "faixas emendadas, cobrindo a altura toda")
+	local faixa
+	for k = 1, #sp, 4 do if sp[k] <= 5 and sp[k + 1] >= 5 then faixa = k end end
+	check(faixa and math.abs(sp[faixa + 2] + 2) < 1e-6 and math.abs(sp[faixa + 3] - 12) < 1e-6, "no meio, a largura toda")
+	check(#SA.Spans({ 0, 0, 1, 1 }, 1) == 0, "sem área: nenhuma faixa")
+
+	-- o dado gerado: decodifica, as zonas se acham no mapa, e as quests conhecidas estão lá
+	local rns = load("SpawnAreas.lua", load("ZoneData.lua", {}))
+	local RSA = load("SpawnMap.lua", rns).SpawnAreas
+	local kob = RSA.For(7)[1]
+	check(kob and kob.kind == "c" and kob.id == 6 and kob.areas[1].zone == "Elwynn Forest",
+		"Kobold Camp Cleanup: Kobold Vermin em Elwynn")
+	check(kob.areas[1].x > 44 and kob.areas[1].x < 54 and kob.areas[1].y > 28 and kob.areas[1].y < 42,
+		"no Echo Ridge Mine")
+	check(RSA.Match(RSA.For(1713), { verb = "kill", id = 6239, q = { id = 1713 } }) == 1,
+		"The Summoning: matar o Cyclonian é o objetivo do Whirlwind Heart")
+	local zonas, ruins, total = true, 0, 0
+	for _, z in ipairs(rns.spawnZones) do zonas = zonas and rns.zoneUiMap[z] ~= nil end
+	for q in pairs(rns.spawnQuest) do
+		for _, ob in ipairs(RSA.For(q)) do
+			for _, area3 in ipairs(ob.areas) do
+				total = total + 1
+				if not (area3.zone and #area3.hull >= 2 and #area3.hull <= 20 and #area3.hull % 2 == 0 and area3.x >= 0
+					and area3.x <= 100 and area3.y >= 0 and area3.y <= 100 and area3.n >= 1) then ruins = ruins + 1 end
+			end
+		end
+	end
+	-- os casos da revisão: o ponto do guia é o primeiro alvo e cai na área certa
+	local mil = RSA.For(14)
+	local sl14 = RSA.Slots(mil[RSA.Match(mil, { verb = "kill", id = 122, q = { id = 14, obj = 1 } })].areas, 48.14, 77.25)
+	check(sl14[1].guide and sl14[1].area and sl14[1].area.n >= 20,
+		"The People's Militia: o Highwayman em Moonbrook (48.14,77.25), na área grande, não na rala de 2")
+	local gor = RSA.For(3824)
+	local sl38 = RSA.Slots(gor[RSA.Match(gor, { verb = "collect", id = 11080, q = { id = 3824 } })].areas, 39.33, 55.3)
+	check(sl38[1].area and sl38[1].area.n == 1 and #sl38 == 2,
+		"Gor'tesh: a área do nascimento único do Gor'tesh (onde o guia manda) fica, e o Grubbub é a próxima")
+	check(#RSA.For(1921)[1].areas == 0 and #RSA.For(1921)[2].areas > 0, "Linen Cloth (de baús): sem área")
+	-- Pridewings of Stonetalon (1134): do ponto do guia, os ninhos de 3+ antes dos Young Pridewing soltos
+	local pri = RSA.For(1134)
+	local zs = {}
+	for _, pa in ipairs(pri[1].areas) do if pa.zone == "Stonetalon Mountains" then zs[#zs + 1] = pa end end
+	local sl34 = RSA.Slots(zs, 63.51, 59.21)
+	local denso, solto = true, false
+	for k = 2, #sl34 do
+		if sl34[k].area.n < 3 then solto = true elseif solto then denso = false end
+	end
+	check(#sl34 >= 3 and sl34[2].area.n >= 3 and denso,
+		"Pridewings: depois do ponto do guia, as áreas de 3+ nascimentos antes das de 1-2")
+	check(#RSA.For(8249)[1].areas > 0 and RSA.For(8249)[1].areas[1].zone == "Dustwallow Marsh",
+		"Junkboxes Needed: os Theramore Guard de Dustwallow (o campo de batalha não conta contra)")
+	local lagrima = RSA.For(7642)
+	check(#lagrima[RSA.Match(lagrima, { verb = "collect", id = 8836, q = { id = 7642, obj = 2 } })].areas > 0,
+		"Arthas' Tears (erva de 2 tipos de nó): tem área")
+	local tem1445 = false
+	for _, ob in ipairs(RSA.For(1445) or {}) do tem1445 = tem1445 or #ob.areas > 0 end
+	check(not tem1445, "Fetish of Hakkar (dentro do templo): nenhuma área fora")
+	check(zonas, "toda zona do SpawnAreas.lua tem mapa (ZoneData)")
+	check(total > 5000 and ruins == 0, ("%d áreas, %d com zona, ponto ou contorno fora do lugar"):format(total, ruins))
+
+	-- o destino do guia: a área só troca um goto que existe; objetivo feito pelo diário passa para o seguinte
+	local passo
+	local fns = { GetStep = function() return passo end, UIShown = function() return true end,
+		IsGoalActive = function() return true end, IsGoalComplete = function(_, gl) return gl.feito end }
+	local DS = load("Destinations.lua", fns).Destinations
+	local semGoto = { verb = "kill", id = 1, text = "Lobo", q = { id = 1 } }
+	local comArea = { verb = "kill", id = 3, text = "Murloc", q = { id = 3 }, goto_ = { zone = "Westfall", x = 9, y = 9 } }
+	local comGoto = { verb = "kill", id = 2, text = "Javali", goto_ = { zone = "Westfall", x = 30, y = 40 } }
+	passo = { goals = { semGoto, comArea, comGoto } }
+	check(DS.GuideTarget().goal == comArea, "sem o SpawnAreas: o primeiro com goto, como sempre")
+	local alvo = { zone = "Westfall", x = 1, y = 2, label = "Murloc · área 2/2", area = {}, spawn = true }
+	local feito, pedidos = false, {}
+	fns.SpawnAreas = { Has = function(gl) return gl == semGoto or gl == comArea end, Done = function() return feito end,
+		Target = function(gl) pedidos[#pedidos + 1] = gl; return alvo end }
+	check(DS.GuideTarget() == alvo and pedidos[1] == comArea and #pedidos == 1,
+		"o goal sem goto, mesmo com área, não vira alvo; o com goto vai à vez da seta")
+	feito = true
+	check(DS.GuideTarget().goal == comGoto, "o diário deu o objetivo por feito: o seguinte")
+	feito = false
+	fns.SpawnAreas.Target = function() return nil end
+	check(DS.GuideTarget().goal == comArea and DS.GuideTarget().x == 9, "sem volta de áreas: o goto do passo")
+end)()
+
 print(("ok: %d checks"):format(checks))

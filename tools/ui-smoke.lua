@@ -26,6 +26,7 @@ Obj.__index = function(t, k)
 end
 function M:CreateTexture() return new("Texture", nil, self) end
 function M:CreateFontString() return new("FontString", nil, self) end
+function M:CreateLine() return new("Line", nil, self) end
 function M:CreateAnimationGroup() return new("AnimationGroup", nil, self) end
 function M:CreateAnimation() return new("Animation", nil, self) end
 function M:SetSize(w, h) self._w, self._h = w or 0, h or 0 end
@@ -77,7 +78,8 @@ function M:SetTexture(t) self._tex = t end
 function M:GetCursorPosition() return 0 end
 function M:Click() local f = self._scripts.OnClick; if f then f(self, "LeftButton") end end
 function M:GetObjectType() return self._kind end
-function M:GetAttribute() return nil end
+function M:SetAttribute(k, v) self._attr = self._attr or {}; self._attr[k] = v end
+function M:GetAttribute(k) return self._attr and self._attr[k] end
 function M:IsObjectType() return false end
 function M:GetChildren() return end
 function M:GetRegions() return end
@@ -706,6 +708,37 @@ step("TargetButton", function()
 	assert(not (_G.LodestarTarget and _G.LodestarTarget:IsShown()), "botão de alvo com o guia fechado")
 	ns.Viewer:Show()
 end)
+-- a marca vai na macro do clique (#119: o SetRaidTarget é protegido): limpa o alvo, mira e marca com o ~ (só sem
+-- marca); a macro roda ao soltar, e o PostClick da borda de apertar não mexe nela; em combate só mira; desligada, só mira
+step("TargetButton mark", function()
+	local sGet, sSet = ns.GetStep, _G.SetRaidTarget
+	local chamou = false
+	_G.SetRaidTarget = function() chamou = true end
+	local passo = { goals = { { verb = "kill", id = 7777, text = "Javali Teste" } } }
+	ns.GetStep = function() return passo end
+	local ok, err = pcall(function()
+		ns.TargetButton.Apply()
+		local b = _G.LodestarTarget
+		local marca = "/cleartarget\n/targetexact Javali Teste\n/tm [@target,exists,nodead] ~8"
+		assert(b:GetAttribute("macrotext") == marca, "macro sem a marca: " .. tostring(b:GetAttribute("macrotext")))
+		assert(b:GetAttribute("useOnKeyDown") == false, "a macro não roda na borda de soltar")
+		b:GetScript("PostClick")(b, "LeftButton", true)      -- apertar: antes da macro, não mexe
+		assert(b:GetAttribute("macrotext") == marca, "o PostClick de apertar tirou a marca antes da macro")
+		b:GetScript("PostClick")(b, "LeftButton", false)
+		assert(b:GetAttribute("macrotext") == marca, "um alvo só: a macro muda depois do clique")
+		assert(not chamou, "chamou o SetRaidTarget (protegido) fora da macro")
+		ns.fire("PLAYER_REGEN_DISABLED")
+		assert(b:GetAttribute("macrotext") == "/targetexact Javali Teste", "em combate a macro ainda limpa/marca")
+		ns.TargetButton.Apply()
+		ns.db.markTarget = false
+		ns.TargetButton.Apply()
+		assert(b:GetAttribute("macrotext") == "/targetexact Javali Teste", "marca desligada e a macro marca")
+		ns.db.markTarget = nil
+	end)
+	ns.GetStep, _G.SetRaidTarget = sGet, sSet
+	ns.TargetButton.Apply()
+	assert(ok, err)
+end)
 -- em grupo: a contagem de quem também usa o Lodestar sob a quest do passo
 step("PartySync", function()
 	local q
@@ -943,6 +976,262 @@ step("Nearby off-guide", function()
 	WP.DistanceTo, TP.InZone, QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete = sDist, sIn, sNum, sInfo, sComp
 	ns.ItemCount, ns.Toast.Show = sCount, sShow
 	ns.Nearby.Scan()
+	assert(ok, err)
+end)
+-- áreas de nascimento (#121): o passo com um mob em 3+ áreas da mesma zona desenha as manchas no mapa aberto; a seta
+-- fica no ponto do guia (onde quer que o jogador esteja), o clique leva às outras áreas (e dá a volta, com o tooltip
+-- seguindo), o arrasto não; goal sem `goto` não vira alvo; desligado, o mapa limpa. O mundo de mentira: a zona vira
+-- um quadrado de 1000 jd.
+step("SpawnAreas", function()
+	local SA, D, T, WP, TP = ns.SpawnAreas, ns.Destinations, ns.Travel, ns.Waypoint, ns.TravelPlanner
+	local ids = {}
+	for q in pairs(ns.spawnQuest) do ids[#ids + 1] = q end
+	table.sort(ids)
+	local qid, obj, zone, mesma
+	for _, q in ipairs(ids) do
+		local o = SA.For(q)[1]
+		local z = o.areas[1] and o.areas[1].zone
+		mesma = {}
+		for _, a in ipairs(o.areas) do if a.zone == z then mesma[#mesma + 1] = a end end
+		if o.kind == "c" and #mesma >= 3 and ns.zoneUiMap[z] then qid, obj, zone = q, o, z; break end
+	end
+	assert(qid, "sem quest com um mob em 3 áreas da mesma zona")
+	-- o guia manda à área maior; o jogador está em cima da última (a mais perto dele): a seta fica no guia
+	local alvoGuia, longe = mesma[1], mesma[#mesma]
+	local goal = { verb = "kill", id = obj.id, text = "Mob Teste", q = { id = qid },
+		goto_ = { zone = zone, x = alvoGuia.x, y = alvoGuia.y } }
+	local passo = { goals = { goal } }
+	local sGet, sPW, sW, sRoute, sDist, sIn = ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone
+	local sGrey, sOwner, sAdd, canvas = ns.greySkip, GameTooltip.GetOwner, GameTooltip.AddLine, CreateFrame("Frame")
+	canvas:SetSize(1000, 667)
+	ns.GetStep = function() return passo end
+	ns.greySkip = {}
+	T.World = function(_, x, y) return { c = 0, x = (x or 0) * 10, y = (y or 0) * 10 } end
+	T.PlayerWorld = function() return { c = 0, x = longe.x * 10, y = longe.y * 10 } end
+	T.Route = function() return nil end
+	WP.DistanceTo = function() return 50, 1, 1 end
+	TP.InZone = function() return true end
+	WorldMapFrame.GetMapID = function() return ns.zoneUiMap[zone] end
+	WorldMapFrame.GetCanvas = function() return canvas end
+	WorldMapFrame:Show()
+	D:ClearStops(); D:Clear("manual")
+	ns.db.arrow.enabled, ns.db.spawnAreas = true, true
+	local ok, err = pcall(function()
+		local alvo = D.GuideTarget()
+		assert(alvo and alvo.x == goal.goto_.x and alvo.y == goal.goto_.y and alvo.goal.goto_ == goal.goto_,
+			"a seta saiu do ponto do guia")
+		assert(alvo.area == alvoGuia, "o ponto do guia não ficou com a área dele")
+		local n = #mesma                       -- as da zona do passo
+		assert(alvo.label:find("1/" .. n, 1, true), "o rótulo não diz a área: " .. tostring(alvo.label))
+		SA.Update()
+		local nF, nL = SA.Drawn()
+		assert(_G.LodestarSpawnMap and _G.LodestarSpawnMap:IsShown() and nF > 0 and nL > 0,
+			("manchas no mapa: %d faixas, %d linhas"):format(nF, nL))
+		ns.Waypoint:Update()
+		local ar = _G.LodestarArrow
+		assert(ar and ar:IsShown() and ar.name._text:find("1/" .. n, 1, true),
+			"a seta não diz a área: " .. tostring(ar and ar.name._text))
+		-- arrastar não troca a área
+		ar:GetScript("OnMouseDown")(ar, "LeftButton")
+		ar:GetScript("OnDragStart")(ar)
+		ar:GetScript("OnDragStop")(ar)
+		ar:GetScript("OnMouseUp")(ar, "LeftButton")
+		assert(D.GuideTarget().area == alvoGuia, "o arrasto trocou a área")
+		-- clicar leva às outras áreas da zona, e dá a volta; o tooltip aberto segue
+		local dica
+		GameTooltip.GetOwner = function() return ar end
+		GameTooltip.AddLine = function(_, t) dica = t end
+		local vistas = { [alvoGuia] = true }
+		for i = 2, n do
+			ar:GetScript("OnMouseDown")(ar, "LeftButton")
+			ar:GetScript("OnMouseUp")(ar, "LeftButton")
+			local a = D.GuideTarget().area
+			assert(a and not vistas[a] and a.zone == zone, "o clique " .. (i - 1) .. " não foi a uma área nova da zona")
+			assert(D.GuideTarget().x == a.x, "a seta não foi ao ponto da área")
+			vistas[a] = true
+			assert(ar.name._text:find(i .. "/" .. n, 1, true), "a seta não seguiu: " .. tostring(ar.name._text))
+			assert(dica and dica:find(i .. " de " .. n, 1, true), "o tooltip ficou na área de antes: " .. tostring(dica))
+		end
+		ar:GetScript("OnMouseDown")(ar, "LeftButton")
+		ar:GetScript("OnMouseUp")(ar, "LeftButton")
+		assert(D.GuideTarget().x == goal.goto_.x and D.GuideTarget().area == alvoGuia,
+			"depois da última, a volta ao ponto do guia")
+		GameTooltip.GetOwner, GameTooltip.AddLine = sOwner, sAdd
+		assert(SA.ArrowHint(), "sem a dica do clique")
+		ar:GetScript("OnEnter")(ar); ar:GetScript("OnLeave")(ar)
+		local perto = SA.NearPlayer({ qid }, 30)
+		assert(perto[1] and perto[1].area == longe and perto[1].d == 0 and perto[1].q == qid and perto[1].obj == 1,
+			"perto do jogador (#122): a área onde ele está")
+		-- o goal sem goto, mesmo com área, não vira alvo; o mapa ainda desenha as áreas dele
+		local semGoto = { verb = "kill", id = obj.id, text = "Mob Teste", q = { id = qid } }
+		passo.goals = { semGoto }
+		assert(D.GuideTarget() == nil, "o goal sem goto ganhou um alvo")
+		SA.Update()
+		assert(_G.LodestarSpawnMap:IsShown() and SA.Drawn() > 0, "o goal sem goto não desenhou as áreas")
+		passo.goals = { goal }
+		-- desligado, o mapa limpa e a seta fica no ponto do passo (sem a volta)
+		ns.db.spawnAreas = false
+		SA.Refresh(); SA.Update()
+		assert(not _G.LodestarSpawnMap:IsShown(), "desligado e a mancha ficou no mapa")
+		local g = D.GuideTarget()
+		assert(g and not g.spawn and g.x == goal.goto_.x and g.goal == goal, "desligado e a seta não voltou ao passo")
+		assert(not SA.Click(), "desligado, o clique fez algo")
+	end)
+	ns.db.spawnAreas = true
+	ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone = sGet, sPW, sW, sRoute, sDist, sIn
+	ns.greySkip, GameTooltip.GetOwner, GameTooltip.AddLine = sGrey, sOwner, sAdd
+	WorldMapFrame.GetMapID, WorldMapFrame.GetCanvas = nil, nil
+	SA.Refresh(); SA.Update()
+	T:Replan(true)
+	assert(ok, err)
+end)
+-- nesta área (#122): um diário de mentira com 3 quests e 5 objetivos numa área só (o jogador dentro de todas): os
+-- abertos aparecem, os da quest do passo primeiro, com a contagem; o feito não; o do cartão do passo não repete; o
+-- clique guia à área; fora da área a lista esvazia; desligado, some. O mundo: a zona vira um quadrado de 1000 jd.
+step("AreaGoals", function()
+	local AG, SA, D, T, TP, WP, QL = ns.AreaGoals, ns.SpawnAreas, ns.Destinations, ns.Travel, ns.TravelPlanner,
+		ns.Waypoint, _G.C_QuestLog
+	local DIG = "0123456789abcdefghijklmnopqrstuvwxyz"
+	local function b36(v)
+		v = math.floor(v + 0.5)
+		local hi = math.floor(v / 36)
+		return DIG:sub(hi + 1, hi + 1) .. DIG:sub(v % 36 + 1, v % 36 + 1)
+	end
+	local zi
+	for i, z in ipairs(ns.spawnZones) do if z == "Westfall" then zi = i end end
+	assert(zi, "Westfall fora do SpawnAreas")
+	local function area(cx, cy, hull)
+		local t = b36(zi) .. b36(cx * 10) .. b36(cy * 10) .. b36(6)
+		for _, v in ipairs(hull) do t = t .. b36(v * 10) end
+		return t
+	end
+	local sq = function(x0, y0, x1, y1) return { x0, y0, x1, y0, x1, y1, x0, y1 } end
+	local A, B, C = 990001, 990002, 990003
+	-- A: dois mobs (o 1º também nasce longe, e numa área vizinha a leste); B: o objeto e o item na ordem do banco (o
+	-- diário tem o item antes); C: um mob
+	ns.spawnQuest[A] = { "c9001;" .. area(52, 48, sq(45, 45, 55, 55)) .. ";" .. area(80, 80, sq(78, 78, 82, 82))
+		.. ";" .. area(58, 50, sq(55.5, 45, 62, 55)), "c9002;" .. area(51, 50, sq(48, 46, 58, 56)) }
+	ns.spawnQuest[B] = { "o9003;" .. area(50, 50, sq(44, 44, 56, 56)), "i9004;" .. area(49, 51, sq(46, 47, 54, 57)) }
+	ns.spawnQuest[C] = { "c9005;" .. area(47, 52, { 40, 40, 60, 40, 50, 60 }) }
+	local function ob(t, text, have, need, done)
+		return { type = t, text = text, numFulfilled = have, numRequired = need, finished = done or false }
+	end
+	local log = {
+		[A] = { ob("monster", "Lobo Alfa slain: 2/10", 2, 10), ob("monster", "Lobo Beta slain: 0/6", 0, 6) },
+		[B] = { ob("item", "Caixa de suprimentos: 2/8", 2, 8), ob("object", "Totem: 1/1", 1, 1, true) },
+		[C] = { ob("monster", "Coruja Selvagem slain: 0/20", 0, 20) },
+	}
+	local ids = { A, B, C }
+	local passo = { goals = { { verb = "goto_", text = "Lá", q = { id = A } } } }
+	local sGet, sPW, sW, sRoute, sDist, sIn = ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone
+	local sNum, sInfo, sObj, sIdx = QL.GetNumQuestLogEntries, QL.GetInfo, QL.GetQuestObjectives, QL.GetLogIndexForQuestID
+	local px, py = 500, 500
+	ns.GetStep = function() return passo end
+	T.World = function(_, x, y) return { c = 0, x = (x or 0) * 10, y = (y or 0) * 10 } end
+	T.PlayerWorld = function() return px and { c = 0, x = px, y = py } or nil end
+	T.Route = function() return nil end
+	WP.DistanceTo = function() return 50, 1, 1 end
+	TP.InZone = function() return true end
+	QL.GetNumQuestLogEntries = function() return #ids end
+	QL.GetInfo = function(i) return ids[i] and { questID = ids[i] } end
+	QL.GetQuestObjectives = function(q) return log[q] or sObj(q) end
+	QL.GetLogIndexForQuestID = function(q) if log[q] then return 1 end return sIdx(q) end
+	D:ClearStops(); D:Clear("manual")
+	ns.db.areaGoals = true
+	local canvas = CreateFrame("Frame"); canvas:SetSize(1000, 667)
+	local ok, err = pcall(function()
+		AG.Scan(true)
+		local rows = AG.List()
+		local got = {}
+		for _, r in ipairs(rows) do got[#got + 1] = r.q .. ":" .. r.log end
+		assert(table.concat(got, ",") == ("%d:1,%d:2,%d:1,%d:1"):format(A, A, B, C),
+			"nesta área: os abertos, os da quest do passo primeiro: " .. table.concat(got, ","))
+		assert(rows[1].name == "Lobo Alfa" and AG.Count(rows[1]) == "2/10" and rows[3].name == "Caixa de suprimentos"
+			and AG.Count(rows[3]) == "2/8" and rows[3].kind == "i", "nome e contagem do diário")
+		local f = ns.Viewer:GetFrame()
+		assert(f.areaLabel:IsShown() and f.areaCard:IsShown() and not f.areaMore:IsShown(), "o bloco não apareceu")
+		for i = 1, 4 do assert(f.areaRows[i]:IsShown(), "linha " .. i .. " não apareceu") end
+		assert(not f.areaRows[5]:IsShown(), "linha a mais")
+		assert(f.areaRows[1].text._text == "Lobo Alfa" and f.areaRows[3].count._text == "2/8",
+			"a linha: " .. tostring(f.areaRows[1].text._text) .. " / " .. tostring(f.areaRows[3].count._text))
+		f.areaRows[3]:GetScript("OnEnter")(f.areaRows[3]); f.areaRows[3]:GetScript("OnLeave")(f.areaRows[3])
+		-- o clique guia à área de onde ele está (o ponto-alvo dela)
+		f.areaRows[3]:Click()
+		local m = D:Get("manual")
+		assert(m and m.zone == "Westfall" and math.abs(m.x - 49) < 0.01 and math.abs(m.y - 51) < 0.01,
+			"o clique não guiou à área: " .. tostring(m and m.x))
+		D:Clear("manual")
+		f.areaRows[1]:Click()
+		m = D:Get("manual")
+		assert(m and math.abs(m.x - 52) < 0.01, "o objetivo com duas áreas: a de onde ele está, não a longe")
+		D:Clear("manual")
+		-- andou para a área vizinha do mesmo objetivo: o clique na linha (ainda a velha) vai à área nova, e a janela
+		-- segue (a área entra na assinatura)
+		local velha = f.areaRows[1]._row
+		px, py = 590, 500
+		f.areaRows[1]:Click()
+		m = D:Get("manual")
+		assert(m and math.abs(m.x - 58) < 0.01,
+			"a área vizinha do mesmo objetivo: o clique foi à velha " .. tostring(m and m.x))
+		assert(f.areaRows[1]._row ~= velha and f.areaRows[1]._row.area.k == 3, "a janela não seguiu a área nova")
+		D:Clear("manual")
+		px, py = 500, 500
+		AG.Scan()
+		assert(#AG.List() == 4 and AG.List()[1].area.k == 1, "de volta: a área de antes")
+		local rel = ns.Report.ReportText(ns.Report.Context(), "x")
+		assert(rel:find("In this area: 4 lines · unmapped objectives: 0 now", 1, true), "o relatório sem o Nesta área")
+		-- o Enquanto está aqui não repete o objetivo que está aqui
+		assert(AG.Covers({ verb = "kill", id = 9005, q = { id = C } }) and not AG.Covers({ verb = "kill", q = { id = 7 } }),
+			"Covers: o objetivo da lista")
+		-- o mapa: as áreas deles, mais suaves (o passo não tem área)
+		WorldMapFrame.GetMapID = function() return ns.zoneUiMap.Westfall end
+		WorldMapFrame.GetCanvas = function() return canvas end
+		WorldMapFrame:Show()
+		SA.Update()
+		local nF, nL = SA.Drawn()
+		assert(_G.LodestarSpawnMap and _G.LodestarSpawnMap:IsShown() and nF > 0 and nL > 0,
+			("nesta área no mapa: %d faixas, %d linhas"):format(nF, nL))
+		-- o objetivo que o cartão do passo mostra sai da lista
+		passo.goals = { { verb = "kill", id = 9001, text = "Lobo Alfa", q = { id = A, obj = 1 } } }
+		AG.Scan(true)
+		assert(#AG.List() == 3 and AG.List()[1].q == A and AG.List()[1].log == 2, "o do cartão repetiu na lista")
+		-- a contagem muda: a linha segue
+		log[C][1] = ob("monster", "Coruja Selvagem slain: 5/20", 5, 20)
+		ns.fire("QUEST_LOG_UPDATE")
+		AG.Scan()
+		local cnt
+		for _, r in ipairs(AG.List()) do if r.q == C then cnt = AG.Count(r) end end
+		assert(cnt == "5/20", "a contagem não seguiu o diário: " .. tostring(cnt))
+		-- fora da área: a lista esvazia
+		px, py = 950, 950
+		AG.Scan()
+		assert(#AG.List() == 0 and not f.areaCard:IsShown() and not f.areaRows[1]:IsShown(), "fora da área e a lista ficou")
+		px, py = 500, 500
+		AG.Scan()
+		assert(#AG.List() == 3, "de volta à área: a lista voltou")
+		-- sem posição (masmorra, tela de carga): a lista esvazia
+		px = nil
+		AG.Scan()
+		assert(#AG.List() == 0 and not f.areaCard:IsShown(), "sem posição e a lista ficou")
+		px, py = 500, 500
+		AG.Scan()
+		assert(#AG.List() == 3, "com posição de novo: a lista voltou")
+		-- desligado, some (a janela e o mapa; o passo de novo sem área própria)
+		passo.goals = { { verb = "goto_", text = "Lá", q = { id = A } } }
+		AG.Scan(true); SA.Update()
+		assert(_G.LodestarSpawnMap:IsShown(), "as áreas de nesta área sumiram do mapa")
+		ns.db.areaGoals = false
+		AG.Refresh()
+		assert(#AG.List() == 0 and not f.areaCard:IsShown(), "desligado e a lista ficou")
+		assert(not _G.LodestarSpawnMap:IsShown(), "desligado e as áreas ficaram no mapa")
+	end)
+	ns.db.areaGoals = true
+	ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone = sGet, sPW, sW, sRoute, sDist, sIn
+	QL.GetNumQuestLogEntries, QL.GetInfo, QL.GetQuestObjectives, QL.GetLogIndexForQuestID = sNum, sInfo, sObj, sIdx
+	ns.spawnQuest[A], ns.spawnQuest[B], ns.spawnQuest[C] = nil, nil, nil
+	WorldMapFrame.GetMapID, WorldMapFrame.GetCanvas = nil, nil
+	D:Clear("manual")
+	AG.Refresh()
 	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)

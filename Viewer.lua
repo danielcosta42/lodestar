@@ -5,6 +5,7 @@
 --   abas em pílula · progresso (passo e porcentagem)
 --   avisos (quest abandonada / pulo com Desfazer, grupo para elite, a perna de viagem clicável)
 --   o passo como cartão: quem e onde, a distância, os objetivos com contagem, barra e tempo
+--   Nesta área (AreaGoals.lua, #122) · Enquanto está aqui (Nearby.lua)
 --   ações rápidas (treinador, reparo, estalagem, diário) · A seguir · Voltar / Pular passo
 --
 -- Sem guia aberto: estado vazio com o convite para a Central. O que cada linha faz ao clique (pular a quest, marcar à
@@ -396,6 +397,47 @@ local function build()
 	frame.nextLabel = UI.Text(frame.body, 11, C.dim, { num = true })
 	frame.nextLabel:SetText(L.NEXT)
 
+	-- Nesta área (AreaGoals.lua, #122): os objetivos das quests do diário que dá para fazer onde você está, um por
+	-- linha num cartão só (azul, como as áreas deles no mapa), com o "+N" do que não coube à direita do rótulo
+	frame.areaLabel = UI.Text(frame.body, 11, C.dim, { num = true })
+	frame.areaLabel:SetText(L.NA_TITLE)
+	frame.areaMore = UI.Text(frame.body, 11, C.dim, { num = true, justify = "RIGHT" })
+	frame.areaCard = UI.Card(frame.body, { radius = 6, color = C.tipSoft, lineColor = UI.dark and C.tip or C.tipSoft })
+	frame.areaRows = {}
+	local ICON = { c = "combate", i = "losango", o = "buscar" }
+	for i = 1, ns.AreaGoals and ns.AreaGoals.MAX or 5 do
+		local r = CreateFrame("Button", nil, frame.areaCard)
+		r:SetHeight(22)
+		r.hl = UI.Slice(r, "round-6", "BACKGROUND", C.hover); r.hl:SetAllPoints(); r.hl:Hide()
+		r.icon = r:CreateTexture(nil, "OVERLAY"); r.icon:SetSize(13, 13); r.icon:SetPoint("LEFT", 8, 0)
+		r.text = UI.Text(r, 12.5, C.active, { wrap = false })
+		r.text:SetPoint("LEFT", r.icon, "RIGHT", 7, 0); r.text:SetPoint("RIGHT", r, "RIGHT", -52, 0)
+		r.count = UI.Text(r, 12, C.muted, { num = true, justify = "RIGHT" }); r.count:SetPoint("RIGHT", -8, 0)
+		function r:Set(row)
+			self._row = row
+			self.icon:SetTexture(UI.GLYPH .. (ICON[row.kind] or "alvo") .. "-64")
+			-- as quests do passo atual em ouro (o passo), as outras em azul (as áreas no mapa)
+			self.icon:SetVertexColor(unpackc(row.tier == 1 and C.accentBright or C.tip))
+			self.text:SetText(row.name)
+			self.count:SetText(ns.AreaGoals.Count(row))
+		end
+		r:SetScript("OnClick", function(self) if self._row and ns.AreaGoals then ns.AreaGoals.GoTo(self._row) end end)
+		r:SetScript("OnEnter", function(self)
+			self.hl:Show()
+			local row = self._row
+			if not row then return end
+			GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+			GameTooltip:SetText(ns.QuestState and ns.QuestState.Title(row.q) or tostring(row.q), 1, 1, 1)
+			if row.text and row.text ~= "" then GameTooltip:AddLine(row.text, 0.86, 0.88, 0.92, true) end
+			local tip = row.tier == 1 and L.NA_TIP_STEP or row.tier == 2 and L.NA_TIP_AHEAD:format(row.step or 0)
+				or L.NA_TIP_OFF
+			GameTooltip:AddLine(tip, 0.62, 0.66, 0.72, true)
+			GameTooltip:Show()
+		end)
+		r:SetScript("OnLeave", function(self) self.hl:Hide(); GameTooltip:Hide() end)
+		frame.areaRows[i] = r
+	end
+
 	-- Enquanto está aqui (Nearby.lua): o que dos passos à frente dá para fazer perto de você
 	frame.nearLabel = UI.Text(frame.body, 11, C.dim, { num = true })
 	frame.nearLabel:SetText(L.NB_TITLE)
@@ -751,6 +793,33 @@ function V:Refresh()
 	end
 	card:SetHeight(math.max(40, cy + 4))
 	by = by + card:GetHeight() + 10
+
+	-- nesta área (#122): os do passo atual primeiro; o que não coube vira "+N" no rótulo
+	local here = ns.AreaGoals and ns.AreaGoals.List() or {}
+	local hn = math.min(#here, #frame.areaRows)
+	frame.areaLabel:SetShown(hn > 0); frame.areaMore:SetShown(#here > hn); frame.areaCard:SetShown(hn > 0)
+	if hn > 0 then
+		frame.areaLabel:ClearAllPoints(); frame.areaLabel:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+		frame.areaMore:ClearAllPoints(); frame.areaMore:SetPoint("TOPRIGHT", frame.body, "TOPRIGHT", 0, -by)
+		frame.areaMore:SetText(L.NA_MORE:format(#here - hn))
+		by = by + 16
+		local ac = frame.areaCard
+		ac:ClearAllPoints(); ac:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by); ac:SetWidth(inner)
+		ac:SetHeight(hn * 22 + 8)
+		by = by + hn * 22 + 8 + 10
+	end
+	for ri, r in ipairs(frame.areaRows) do
+		if ri <= hn then
+			r:Set(here[ri])
+			r:ClearAllPoints()
+			r:SetPoint("TOPLEFT", frame.areaCard, "TOPLEFT", 2, -(4 + (ri - 1) * 22))
+			r:SetPoint("RIGHT", frame.areaCard, "RIGHT", -2, 0)
+			r:Show()
+		else
+			r._row = nil
+			r:Hide()
+		end
+	end
 
 	-- enquanto está aqui
 	local near = ns.Nearby and ns.Nearby:List() or {}

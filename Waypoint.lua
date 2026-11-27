@@ -386,11 +386,35 @@ local function ensureArrow()
 		dbp.x or 0, dbp.y or 150)
 	arrow:SetMovable(true); arrow:EnableMouse(true)
 	arrow:RegisterForDrag("LeftButton")
-	arrow:SetScript("OnDragStart", arrow.StartMoving)
+	-- arrastar move; clicar sem arrastar leva à próxima área de nascimento do objetivo (#121, SpawnMap.lua). O
+	-- arrasto vale até o próximo apertar: o soltar dele, antes ou depois do OnDragStop, não conta como clique.
+	arrow:SetScript("OnMouseDown", function(self) self._dragged = nil end)
+	arrow:SetScript("OnDragStart", function(self) self._dragged = true; self:StartMoving() end)
 	arrow:SetScript("OnDragStop", function(self)
 		self:StopMovingOrSizing()
 		local p, _, _, x, y = self:GetPoint()
 		dbp.point, dbp.x, dbp.y = p, x, y
+	end)
+	local function tip(self)
+		if not GameTooltip then return end
+		local hint = ns.SpawnAreas and ns.SpawnAreas.ArrowHint and ns.SpawnAreas.ArrowHint()
+		if not hint then
+			if GameTooltip:GetOwner() == self then GameTooltip:Hide() end
+			return
+		end
+		GameTooltip:SetOwner(self, "ANCHOR_TOP")
+		GameTooltip:AddLine(hint, 1, 1, 1, true)
+		GameTooltip:Show()
+	end
+	arrow:SetScript("OnMouseUp", function(self, button)
+		if button ~= "LeftButton" or self._dragged then return end
+		if not (ns.SpawnAreas and ns.SpawnAreas.Click and ns.SpawnAreas.Click()) then return end
+		-- o tooltip aberto segue a área nova ("área 2 de 5"), não fica na de antes
+		if GameTooltip and GameTooltip:GetOwner() == self then tip(self) end
+	end)
+	arrow:SetScript("OnEnter", tip)
+	arrow:SetScript("OnLeave", function(self)
+		if GameTooltip and GameTooltip:GetOwner() == self then GameTooltip:Hide() end
 	end)
 
 	-- o brilho atrás (da cor da seta, bem fraco)
@@ -629,7 +653,10 @@ local function updateArrow(goal)
 		tint(a, near and C.done or nil)
 		a.dist:SetTextColor(UI.unpackc(near and C.done or C.accentBright))
 		a.name:SetTextColor(UI.unpackc(C.active))
-		a.name:SetText(("%s: %s"):format(verbWord(goal), ns:LocalizeText(goalName(goal))))
+		local text = ("%s: %s"):format(verbWord(goal), ns:LocalizeText(goalName(goal)))
+		-- na área de nascimento (#121): qual delas, de quantas (o clique leva à próxima)
+		if goal._spawn then text = ("%s · %s"):format(text, goal._spawn) end
+		a.name:SetText(text)
 	end
 end
 

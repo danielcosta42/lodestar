@@ -130,6 +130,7 @@ local DB_DEFAULTS = {
 	ghost = {},           -- run de referência por classe (Ghost Racing)
 	coords = true,        -- coordenadas do player no minimapa/mapa
 	guideMap = true,      -- marca os pontos dos próximos passos no mapa-múndi
+	spawnAreas = true,    -- áreas de nascimento do passo no mapa-múndi; o clique na seta vai à próxima (#121)
 	mobWarning = true,    -- avisa ao mirar mob muito acima do nível
 	eliteBuddy = false,   -- OPT-IN: parceiro de quest elite, avisa e é avisado na mesma quest de grupo (specs/parceiro)
 	autoShareQuest = false,-- OPT-IN: compartilha a quest no grupo ao aceitar (evita spam)
@@ -159,6 +160,7 @@ local DB_DEFAULTS = {
 	rewards = {},         -- recompensas de quest vistas no jogo (Equipamento)
 	-- issue #92
 	nearby = true,        -- Enquanto está aqui: objetivos dos próximos passos quando perto
+	areaGoals = true,     -- Nesta área: objetivos do diário cuja área de nascimento tem o jogador dentro (#122)
 	targetButton = true,  -- botão de alvo do passo
 	markTarget = true,    -- o botão de alvo marca com ícone de raide
 	npcNames = {},        -- nome de cada NPC do guia no idioma do cliente (aprendido ao ver)

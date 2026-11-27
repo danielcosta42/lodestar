@@ -163,6 +163,9 @@ local function fillNav(p)
 		function(v) ns.db.compass.scale = v / 100; if ns.Compass then ns.Compass:ApplyDisplay() end end, "%d%%")
 	switchRow(p, L.SET_MAPPINS, L.SET_MAPPINS_D,
 		function() return ns.db.guideMap end, function(v) ns.db.guideMap = v end)
+	switchRow(p, L.SET_SPAWNS, L.SET_SPAWNS_D,
+		function() return ns.db.spawnAreas ~= false end,
+		function(v) ns.db.spawnAreas = v; if ns.SpawnAreas and ns.SpawnAreas.Refresh then ns.SpawnAreas.Refresh() end end)
 	switchRow(p, L.SET_CORPSE, L.SET_CORPSE_D,
 		function() return ns.db.corpseRoute ~= false end,
 		function(v) ns.db.corpseRoute = v; if ns.Destinations.Sync then ns.Destinations.Sync() end end)
@@ -213,6 +216,9 @@ local function fillHud(p)
 	switchRow(p, L.SET_NEARBY, L.SET_NEARBY_D,
 		function() return ns.db.nearby ~= false end,
 		function(v) ns.db.nearby = v; if ns.Nearby then ns.Nearby.Scan() end end)
+	switchRow(p, L.SET_AREAGOALS, L.SET_AREAGOALS_D,
+		function() return ns.db.areaGoals ~= false end,
+		function(v) ns.db.areaGoals = v; if ns.AreaGoals and ns.AreaGoals.Refresh then ns.AreaGoals.Refresh() end end)
 	switchRow(p, L.SET_TARGETBTN, L.SET_TARGETBTN_D,
 		function() return ns.db.targetButton ~= false end,
 		function(v) ns.db.targetButton = v; if ns.TargetButton then ns.TargetButton.Apply() end end)

@@ -43,6 +43,9 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
   guide is still worth doing.
 - **While you're here**: goals of the next steps you're close to (objectives of quests in your log, ready turn-ins,
   quests to pick up ahead), so the step ahead is shorter when you get there. On a grind step, the dungeon that fits you.
+- **In this area**: every open objective of the quests in your log whose spawn area you're standing in — this step's
+  quests first, then the steps ahead, then the rest of your log — one compact line each with the log count
+  ("Savage Owlbeast 0/20"); their areas show softer on the world map, and a click guides you there.
 - **Target button** (with a key binding): targets the step's mob or NPC and marks it with a raid icon.
 - **Party sync**: with party members who run Lodestar, their counts under the goals you share, who lacks a quest, and
   Share.
@@ -55,6 +58,8 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - On-screen **waypoint arrow**, a **compass strip** at the top of the screen, and the route drawn as
   dots on the **minimap** and the **world map** — flights along their real track, boats and zeppelins
   along their crossing.
+- **Spawn areas** — the world map shades where the step's mobs, drops and objects spawn (like the modern
+  client's quest areas). The arrow starts at the guide's spot; click it to go to the next area, nearest first.
 - **Travel planner** — the fastest trip by travel time, leg by leg: walking, the flight paths you know
   (and new ones you pick up on the way), boats, zeppelins, the Deeprun Tram, your hearthstone and
   class teleports. It replans as you go, and the flight map highlights where to fly.
