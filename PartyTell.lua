@@ -1,7 +1,7 @@
 --=============================================================================
 -- PartyTell — avisar o grupo (specs/revamp-polestar, R13; ligado, desliga nas Configurações, #127): quando uma quest
--- do diário fica pronta para entregar, uma linha no chat do grupo, "Lodestar: [Quest] pronta para entregar"; quando
--- um objetivo dela fecha, "Lodestar: [Quest] · 8/8 Kobold Vermin slain" (o texto do objetivo como o jogo
+-- do diário fica pronta para entregar, uma linha no chat do grupo, "{estrela} Lodestar - [Quest] pronta para entregar!";
+-- quando um objetivo dela fecha, "{estrela} Lodestar - [Quest] 8/8 Kobold Vermin slain" (o texto do objetivo como o jogo
 -- dá). Só em grupo (não raide, não campo de
 -- batalha); uma vez por quest e por objetivo; nada no login, no /reload nem para o que já estava feito ao entrar no
 -- grupo. No topo, o núcleo puro (Ready, Objectives; testado fora do jogo). Abaixo, o envio.
@@ -42,6 +42,11 @@ function P.Objectives(before, now, ready)
 end
 
 P.MAX_LINHAS = 3          -- por atualização do diário: o grupo não é inundado
+
+-- As linhas (#131): a estrela ({rt1}, a marca amarela no chat do grupo), "Lodestar - ", o link da quest e o resto
+function P.Line(link, resto)
+	return ("{rt1} Lodestar - %s %s"):format(link, resto)
+end
 
 --------------------------------------------------------------------------------
 -- No jogo
@@ -105,7 +110,7 @@ local function check()
 	-- cada linha uma vez (o que não saiu — chat travado, canal recusado, além das 3 — se perde: não se repete)
 	for _, qid in ipairs(ready) do
 		if not sent[qid] and linhas < P.MAX_LINHAS then
-			sent[qid] = pcall(send, ("Lodestar: %s %s"):format(link(qid), ns.L.PT_READY), "PARTY") or nil
+			sent[qid] = pcall(send, P.Line(link(qid), ns.L.PT_READY), "PARTY") or nil
 			linhas = linhas + 1
 		end
 	end
@@ -114,7 +119,7 @@ local function check()
 		local k, texto = q .. ":" .. i, txt[q] and txt[q][i]
 		-- quest já avisada pronta (perdeu e recuperou itens): o objetivo não volta a falar
 		if texto and texto ~= "" and not sentObj[k] and not sent[q] and linhas < P.MAX_LINHAS then
-			sentObj[k] = pcall(send, ("Lodestar: %s · %s"):format(link(q), texto), "PARTY") or nil
+			sentObj[k] = pcall(send, P.Line(link(q), texto), "PARTY") or nil
 			linhas = linhas + 1
 		end
 	end

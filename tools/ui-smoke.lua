@@ -1493,14 +1493,14 @@ step("Party tell", function()
 		ns.fire("GROUP_JOINED")                                     -- o retrato de quando entrou no grupo
 		feito[77][1] = true                                         -- fechou o primeiro objetivo
 		ns.PartyTell:Check()
-		assert(#ditas == 1 and ditas[1]:find("^PARTY|Lodestar: ") and ditas[1]:find("8/8 Alvo 77.1", 1, true),
+		assert(#ditas == 1 and ditas[1]:find("^PARTY|{rt1} Lodestar %- %[Quest 77%] 8/8 Alvo 77%.1$"),
 			"objetivo: " .. table.concat(ditas, " / "))
 		feito[77][1] = false; ns.PartyTell:Check()                  -- perdeu o item e recuperou: não repete
 		feito[77][1] = true; ns.PartyTell:Check()
 		assert(#ditas == 1, "o objetivo que voltou falou de novo: " .. table.concat(ditas, " / "))
 		feito[77][2] = true                                         -- o último fecha e a quest fica pronta: só a de pronta
 		ns.PartyTell:Check()
-		assert(#ditas == 2 and ditas[2]:find(ns.L.PT_READY, 1, true) and not ditas[2]:find("Alvo 77.2", 1, true),
+		assert(#ditas == 2 and ditas[2] == "PARTY|{rt1} Lodestar - [Quest 77] " .. ns.L.PT_READY and not ditas[2]:find("Alvo 77.2", 1, true),
 			"pronta: " .. table.concat(ditas, " / "))
 		feito[77] = { false, false }; ns.PartyTell:Check()           -- já avisada pronta, perdeu os itens dos dois
 		feito[77][2] = true; ns.PartyTell:Check()                   -- recuperou um (nunca avisado): não fala
