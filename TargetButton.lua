@@ -30,11 +30,13 @@ function T.Targets(goals, isActive, isComplete, names)
 end
 
 -- A macro do alvo: quebra de linha fora (o nome vem do jogo ou do guia; uma quebra viraria outro comando). Com
--- `icon`, marca o que virou alvo (vivo) com o ícone de raide; o /tm alterna, quem chama tira na repetição.
+-- `icon` (fora de combate), limpa o alvo antes — sem o mob por perto, o /targetexact deixaria o alvo de antes e a
+-- marca cairia nele — e marca o que virou alvo com o `~` do /tm: só se ele não tem marca nenhuma (não alterna nem
+-- troca a de outro).
 function T.Macro(name, icon)
-	local m = "/targetexact " .. tostring(name or ""):gsub("[\r\n]", " ")
-	if icon then m = m .. "\n/tm [@target,exists,nodead] " .. tonumber(icon) end
-	return m
+	local nome = tostring(name or ""):gsub("[\r\n]", " ")
+	if not icon then return "/targetexact " .. nome end
+	return "/cleartarget\n/targetexact " .. nome .. "\n/tm [@target,exists,nodead] ~" .. tonumber(icon)
 end
 
 -- O ícone de raide: 8 caveira (inimigo), 1 estrela (NPC).
@@ -48,8 +50,6 @@ local UI = ns.UI
 
 local button, index, targets, pendingApply = nil, 1, {}, false
 local dirty = true
--- o que o último clique marcou: { id, guid } — enquanto for o alvo, a macro fica sem o /tm (ele alternaria)
-local marcado
 
 local function names() ns.db.npcNames = ns.db.npcNames or {}; return ns.db.npcNames end
 
@@ -85,13 +85,6 @@ local function canMark()
 	end
 	return true
 end
-local function alvoGUID()
-	local g = UnitGUID and UnitGUID("target")
-	if g and not ns.IsSecret(g) then return g end
-end
-local function jaMarcado(t)
-	return marcado and marcado.id == t.id and (marcado.guid == nil or marcado.guid == alvoGUID())
-end
 
 local function ensure()
 	if button then return button end
@@ -101,6 +94,9 @@ local function ensure()
 	button:SetFrameStrata("MEDIUM")
 	button:RegisterForClicks("AnyUp", "AnyDown")
 	button:SetAttribute("type", "macro")
+	-- a macro roda na borda de soltar, de mouse e de tecla (o clique de mouse já é assim; a tecla seguia o
+	-- ActionButtonUseKeyDown): o PostClick age depois dela, nunca antes
+	button:SetAttribute("useOnKeyDown", false)
 	local bg = UI.Panel(button, { color = { 0, 0, 0, 0.85 }, borderColor = UI.HUD.border })
 	bg:SetAllPoints()
 	button.icon = UI.Glyph(button, "alvo", "ARTWORK", 64)
@@ -108,26 +104,13 @@ local function ensure()
 	button.count = button:CreateFontString(nil, "OVERLAY")
 	UI.SetFont(button.count, 11, { num = true, hud = true, color = C.active })
 	button.count:SetPoint("BOTTOMRIGHT", -2, 2)
-	-- depois do clique seguro: marca o que virou alvo e, fora de combate, passa ao próximo
-	-- o clique seguro roda numa só das bordas (ActionButtonUseKeyDown): age nessa, senão o "próximo" trocaria a macro
-	-- antes de ela rodar
-	button:SetScript("PostClick", function(self, _, down)
-		local onDown = not GetCVarBool or GetCVarBool("ActionButtonUseKeyDown")
-		if (down and true or false) ~= (onDown and true or false) then return end
-		local t = targets[index]
-		-- a macro marcou (o /tm): guarda quem, para o próximo clique não tirar a marca
-		if self._marca and t then
-			local m = { id = t.id }
-			marcado = m
-			C_Timer.After(0.05, function()
-				local g = alvoGUID()
-				if g and ns.NpcID(g) == t.id then m.guid = g elseif marcado == m then marcado = nil end
-				dirty = true
-			end)
+	-- depois do clique seguro (borda de soltar, a mesma da macro): fora de combate, passa ao próximo
+	button:SetScript("PostClick", function(_, _, down)
+		if down or InCombatLockdown() then return end
+		if #targets > 1 then
+			index = index % #targets + 1
+			T.Apply()
 		end
-		if InCombatLockdown() then return end
-		if #targets > 1 then index = index % #targets + 1 end
-		T.Apply()
 	end)
 	button:SetScript("OnEnter", function(self)
 		local t = targets[index]
@@ -171,7 +154,7 @@ function T.Apply()
 	local b = ensure()
 	if index > #targets then index = 1 end
 	local t = targets[index]
-	local icone = ns.db.markTarget ~= false and canMark() and not jaMarcado(t) and T.Icon(t.enemy) or nil
+	local icone = ns.db.markTarget ~= false and canMark() and T.Icon(t.enemy) or nil
 	b:SetAttribute("macrotext", T.Macro(t.name, icone))
 	b._marca = icone
 	b.icon:SetVertexColor(UI.unpackc(t.enemy and UI.HUD.danger or UI.HUD.tip))
@@ -180,11 +163,11 @@ function T.Apply()
 	b:Show()
 end
 
-for _, ev in ipairs({ "QUEST_LOG_UPDATE", "_GUIDE_LOADED", "PLAYER_REGEN_ENABLED", "UNIT_QUEST_LOG_CHANGED",
-	"PLAYER_TARGET_CHANGED" }) do
+for _, ev in ipairs({ "QUEST_LOG_UPDATE", "_GUIDE_LOADED", "PLAYER_REGEN_ENABLED", "UNIT_QUEST_LOG_CHANGED" }) do
 	ns:On(ev, function() dirty = true end)
 end
--- entrando em combate (antes do bloqueio): a macro só mira — o /tm repetido no combate tiraria a marca
+-- entrando em combate (antes do bloqueio): a macro só mira — sem o /cleartarget, que largaria o alvo da luta quando o
+-- mob do passo não está por perto
 ns:On("PLAYER_REGEN_DISABLED", function()
 	if button and button._marca and not InCombatLockdown() then
 		local t = targets[index]

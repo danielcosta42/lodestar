@@ -707,8 +707,8 @@ step("TargetButton", function()
 	assert(not (_G.LodestarTarget and _G.LodestarTarget:IsShown()), "botão de alvo com o guia fechado")
 	ns.Viewer:Show()
 end)
--- a marca vai na macro do clique (#119: o SetRaidTarget é protegido): marca uma vez; o segundo clique só mira; em
--- combate só mira; desligada, só mira
+-- a marca vai na macro do clique (#119: o SetRaidTarget é protegido): limpa o alvo, mira e marca com o ~ (só sem
+-- marca); a macro roda ao soltar, e o PostClick da borda de apertar não mexe nela; em combate só mira; desligada, só mira
 step("TargetButton mark", function()
 	local sGet, sSet = ns.GetStep, _G.SetRaidTarget
 	local chamou = false
@@ -718,12 +718,17 @@ step("TargetButton mark", function()
 	local ok, err = pcall(function()
 		ns.TargetButton.Apply()
 		local b = _G.LodestarTarget
-		local mac = b:GetAttribute("macrotext")
-		assert(mac == "/targetexact Javali Teste\n/tm [@target,exists,nodead] 8", "macro sem a marca: " .. tostring(mac))
-		b:GetScript("PostClick")(b, "LeftButton", false)     -- a borda que roda (ActionButtonUseKeyDown desligado aqui)
-		assert(b:GetAttribute("macrotext") == "/targetexact Javali Teste", "o segundo clique tiraria a marca")
+		local marca = "/cleartarget\n/targetexact Javali Teste\n/tm [@target,exists,nodead] ~8"
+		assert(b:GetAttribute("macrotext") == marca, "macro sem a marca: " .. tostring(b:GetAttribute("macrotext")))
+		assert(b:GetAttribute("useOnKeyDown") == false, "a macro não roda na borda de soltar")
+		b:GetScript("PostClick")(b, "LeftButton", true)      -- apertar: antes da macro, não mexe
+		assert(b:GetAttribute("macrotext") == marca, "o PostClick de apertar tirou a marca antes da macro")
+		b:GetScript("PostClick")(b, "LeftButton", false)
+		assert(b:GetAttribute("macrotext") == marca, "um alvo só: a macro muda depois do clique")
 		assert(not chamou, "chamou o SetRaidTarget (protegido) fora da macro")
-		ns.fire("PLAYER_TARGET_CHANGED")
+		ns.fire("PLAYER_REGEN_DISABLED")
+		assert(b:GetAttribute("macrotext") == "/targetexact Javali Teste", "em combate a macro ainda limpa/marca")
+		ns.TargetButton.Apply()
 		ns.db.markTarget = false
 		ns.TargetButton.Apply()
 		assert(b:GetAttribute("macrotext") == "/targetexact Javali Teste", "marca desligada e a macro marca")

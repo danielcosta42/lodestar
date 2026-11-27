@@ -249,9 +249,9 @@ check(#tg == 2 and tg[1].id == 5 and tg[1].enemy and tg[2].name == "Gryan Mantof
 check(TB.Macro("Mother Fang") == "/targetexact Mother Fang" and TB.Macro("a\n/run x") == "/targetexact a /run x",
 	"macro: quebra de linha não vira outro comando")
 check(TB.Icon(true) == 8 and TB.Icon(false) == 1, "caveira no inimigo, estrela no NPC")
-check(TB.Macro("Mother Fang", 8) == "/targetexact Mother Fang\n/tm [@target,exists,nodead] 8"
-	and TB.Macro("a\nb", 1) == "/targetexact a b\n/tm [@target,exists,nodead] 1",
-	"macro com a marca: o /tm no alvo vivo (o SetRaidTarget é protegido; #119)")
+check(TB.Macro("Mother Fang", 8) == "/cleartarget\n/targetexact Mother Fang\n/tm [@target,exists,nodead] ~8"
+	and TB.Macro("a\nb", 1) == "/cleartarget\n/targetexact a b\n/tm [@target,exists,nodead] ~1",
+	"macro com a marca: limpa o alvo antes, e o ~ só marca sem marca (o SetRaidTarget é protegido; #119)")
 
 -- ── grupo sincronizado ───────────────────────────────────────────────────────
 local PS = loadPure("PartySync.lua").PartySync
