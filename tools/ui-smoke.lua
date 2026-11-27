@@ -1420,30 +1420,44 @@ step("Route after teleport", function()
 end)
 -- faixa de XP (#126): a XP das quests do diário entra na previsão
 step("XP bar quests", function()
-	local QL, rx, db, shown = _G.C_QuestLog, _G.GetQuestLogRewardXP, ns.db.xpHud, ns.UIShown
+	local QL, rx, db, shown, gt, ux = _G.C_QuestLog, _G.GetQuestLogRewardXP, ns.db.xpHud, ns.UIShown, _G.GetTime, _G.UnitXP
 	local n, get, done = QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete
+	local add = GameTooltip.AddLine
 	QL.GetNumQuestLogEntries = function() return 3 end
 	QL.GetInfo = function(i) return i == 1 and { isHeader = true } or { questID = 100 + i } end
 	QL.IsComplete = function(id) return id == 102 end
 	ns.db.xpHud = true
 	ns.UIShown = function() return true end
+	local dicas = {}
+	GameTooltip.AddLine = function(_, t) dicas[#dicas + 1] = t end
 	local ok, err = pcall(function()
+		local f
 		_G.GetQuestLogRewardXP = function() return 2000 end            -- 4000 de XP no diário; faltam 3800
 		ns.XPHud:Update()
-		local f = ns.XPHud:GetFrame()
+		f = ns.XPHud:GetFrame()
 		assert(f and f:IsShown(), "faixa escondida")
 		assert(f.l2:GetText():find(ns.L.ETA_QUESTS, 1, true), "as quests bastam e a faixa não disse: " .. f.l2:GetText())
 		f:GetScript("OnEnter")(f)
-		_G.GetQuestLogRewardXP = function() return 1000 end            -- 2000: não bastam
-		ns.XPHud:Update()
-		assert(not f.l2:GetText():find(ns.L.ETA_QUESTS, 1, true), "não bastam e a faixa disse que sobe")
+		assert(dicas[1] and dicas[1]:find("4k", 1, true) and dicas[1]:find("2k", 1, true), "dica sem a XP das quests: "
+			.. tostring(dicas[1]))
+		-- meia hora de sessão com 1000 de monstro (2000/h); quests de 1000: faltam 2800, 2000 no diário -> 800 a 2000/h
+		_G.GetQuestLogRewardXP = function() return 1000 end
+		_G.GetTime = function() return gt() + 1800 end
+		_G.UnitXP = function() return 2200 end
+		ns.fire("PLAYER_XP_UPDATE")
+		assert(f.l2:GetText():find("24m", 1, true), "previsão sem descontar as quests: " .. f.l2:GetText())
+		-- entrega a pronta (1000, já descontada): a previsão não encurta
+		ns.fire("QUEST_TURNED_IN", 102, 1000, 0)
+		_G.UnitXP = function() return 3200 end
+		ns.fire("PLAYER_XP_UPDATE")
+		assert(f.l2:GetText():find("24m", 1, true), "a entrega já descontada contou de novo: " .. f.l2:GetText())
 		_G.GetQuestLogRewardXP = nil                                    -- sem a função: como antes
 		ns.XPHud:Update()
 		assert(not f.l2:GetText():find(ns.L.ETA_QUESTS, 1, true), "sem a função e a faixa disse que sobe")
-		f:GetScript("OnEnter")(f)
 	end)
 	QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete = n, get, done
-	_G.GetQuestLogRewardXP, ns.db.xpHud, ns.UIShown = rx, db, shown
+	_G.GetQuestLogRewardXP, ns.db.xpHud, ns.UIShown, _G.GetTime, _G.UnitXP = rx, db, shown, gt, ux
+	GameTooltip.AddLine = add
 	if ns.XPHud:GetFrame() then ns.XPHud:Update() end
 	assert(ok, err)
 end)
