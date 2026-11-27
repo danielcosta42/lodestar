@@ -37,6 +37,33 @@ if Mesh and Mesh.PeerStore then
 	end)
 end
 
+-- Farol de fogueira (ChehulNet v16, chehulnet#13): quem acende um kit de fogueira avisa a rede, e o Warmth dos
+-- outros põe a fogueira no mapa. Desligado até o jogador dizer sim; a pergunta vem uma vez, na primeira fogueira
+-- acesa (nunca no login), e a resposta fica em LodestarDB.camps.consent (opção em Configurações > Grupo). Com o
+-- Warmth instalado, a lib não pergunta nem anuncia: o Warmth anuncia.
+local function CampStore()
+	_G.LodestarDB = _G.LodestarDB or {}
+	_G.LodestarDB.camps = _G.LodestarDB.camps or {}
+	return _G.LodestarDB.camps
+end
+ns.CampStore = CampStore
+if CN.EnableCamps then
+	CN:EnableCamps({
+		store = CampStore,
+		ask = function(answer)
+			local L = ns.L
+			StaticPopupDialogs["LODESTAR_CAMPS"] = StaticPopupDialogs["LODESTAR_CAMPS"] or {
+				button1 = YES, button2 = NO, timeout = 0, whileDead = true, hideOnEscape = true, preferredIndex = 3,
+			}
+			local d = StaticPopupDialogs["LODESTAR_CAMPS"]
+			d.text = L.CAMPS_ASK
+			d.OnAccept = function() answer(true) end
+			d.OnCancel = function(_, _, reason) if reason == "clicked" then answer(false) end end
+			StaticPopup_Show("LODESTAR_CAMPS")
+		end,
+	})
+end
+
 -- Tag "ls" + caps de progresso. Registrar já basta: liga o guard de announce, agenda
 -- o 1º HELLO e faz o "ls" aparecer no `addons` de todo peer e no painel. caps NUNCA
 -- pode conter '|' (separador de campo do HELLO); usamos só ',', '=', '/', ':'.

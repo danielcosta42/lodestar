@@ -238,6 +238,10 @@ local function fillGroup(p)
 		function() return ns.db.partySync ~= false end, function(v) ns.db.partySync = v end)
 	switchRow(p, L.SET_PARTYTELL, L.SET_PARTYTELL_D,
 		function() return ns.db.partyTell == true end, function(v) ns.db.partyTell = v end, true)
+	if ns.CampStore then -- o farol de fogueira (ChehulNetWire.lua)
+		switchRow(p, L.SET_CAMPS, L.SET_CAMPS_D,
+			function() return ns.CampStore().consent == true end, function(v) ns.CampStore().consent = v end, true)
+	end
 	switchRow(p, L.SET_SHAREQ, L.SET_SHAREQ_D,
 		function() return ns.db.shareQuests end, function(v) ns.db.shareQuests = v end, true)
 	switchRow(p, L.SET_DANGER, L.SET_DANGER_D,
