@@ -182,7 +182,8 @@ ns:Every(0.25, function()
 			WorldMapFrame:AddCanvasClickHandler(onCanvasClick)
 		end
 		local ok, err = pcall(update)
-		if not ok then ns:Debug("RouteMap:", err); ns.lastRouteErr = err; hideAll() end
+		ns.routeErr = ns.routeErr or {}; ns.routeErr.map = not ok and err or nil   -- o relatório (#114)
+		if not ok then ns:Debug("RouteMap:", err); hideAll() end
 	elseif overlay and overlay:IsShown() then
 		hideAll()
 	end

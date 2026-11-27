@@ -118,7 +118,8 @@ end
 
 ns:Every(0.1, function()
 	local ok, err = pcall(update)
-	if not ok then ns:Debug("RouteMinimap:", err); ns.lastRouteErr = err; hideAll() end
+	ns.routeErr = ns.routeErr or {}; ns.routeErr.minimap = not ok and err or nil   -- o relatório (#114)
+	if not ok then ns:Debug("RouteMinimap:", err); hideAll() end
 end)
 
 -- Shift+clique no minimapa: destino manual ali (cursor -> jardas -> mundo); em cima do

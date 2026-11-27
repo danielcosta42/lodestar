@@ -37,11 +37,13 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
   - Se a primeira busca estourou o limite de expansões, a segunda roda com um quinto do limite. Assim o nil que
     não tem jeito custa 20% a mais, não o dobro.
   - O caminho dela vem marcado (`solto`). Quem chama não o refaz a cada desvio do jogador: só depois de 300 jd,
-    como na falha. (#114) Parado, a falha tenta de novo a cada 30 s.
-  - (#114) Ao entrar no mundo (login, /reload, tela de carregamento) a rota é refeita do zero três segundos depois
-    (`Travel:Fresh`, como fechar e abrir o guia): a posição do jogador só fica certa um pouco depois, e a rota de antes
-    podia ter saído de outro lugar ou herdado uma falha. O relatório leva o estado da rota (`Travel:Describe`: destino,
-    pernas, caminho, falha e o último erro do desenho no mapa).
+    como na falha. (#114) Sem caminho nenhum (a falha, não o `solto`), tendo andado 40 jd do ponto da busca, tenta de
+    novo a cada 30 s; parado, não (a mesma busca dá o mesmo nil). A rota nova herda a hora da falha junto.
+  - (#114) No login e no /reload a rota é refeita do zero três segundos depois (`Travel:Fresh`, como fechar e abrir o
+    guia): a posição do jogador só fica certa um pouco depois, e a rota de antes podia ter saído de outro lugar ou
+    herdado uma falha. Tela de carregamento comum (masmorra, pedra, barco entre continentes) não refaz; a bordo, no
+    barco ou em voo, também não. O relatório leva o estado da rota (`Travel:Describe`: destino, pernas, caminho e o
+    último erro do desenho no mapa e no minimapa, limpo quando o desenho volta a dar certo).
   - A reta fica para fora da grade, para a busca grande demais e para a barreira longa.
 - **Passagens gravadas** (issue #99) cobrem a rampa, ponte, porta ou escada que a grade não tem.
   - O jogador anda o trecho com `/ls passagem`, ou com o botão em Configurações > Ferramentas, e repete para parar.

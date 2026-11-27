@@ -562,11 +562,22 @@ step("Fresh route after entering world", function()
 		assert(r1 and r1.legs[1], "sem rota")
 		r1.legs[1].path, r1.legs[1].pathFail, r1.legs[1].pathAt = false, true, { c = 0, x = -10500, y = 1050 }
 		assert(T:Describe():find("fail"), "o relatório não mostra a falha do caminho")
-		ns.fire("PLAYER_ENTERING_WORLD")
 		local upd = ns.eventFrame:GetScript("OnUpdate")
+		-- tela de carregamento comum (masmorra, pedra, barco entre continentes): não refaz
+		ns.fire("PLAYER_ENTERING_WORLD", false, false); ns.fire("LOADING_SCREEN_DISABLED")
+		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
+		assert(T:Route() == r1, "refez a rota numa tela de carregamento comum")
+		-- login: refaz do zero
+		ns.fire("PLAYER_ENTERING_WORLD", true, false)
 		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
 		local r2 = T:Route()
 		assert(r2 and r2 ~= r1 and not r2.legs[1].pathFail, "a rota não foi refeita do zero ao entrar no mundo")
+		-- /reload a bordo: a perna de barco fica
+		r2.legs[1].k, r2.legs[1].boarded = "ship", 1
+		ns.fire("PLAYER_ENTERING_WORLD", false, true)
+		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
+		assert(T:Route() == r2, "refez a rota a bordo")
+		r2.legs[1].k, r2.legs[1].boarded = "walk", nil
 		assert(ns.Report.ReportText(ns.Report.Context(), "x"):find("Route: dest manual"), "relatório sem a rota")
 	end)
 	ns.Destinations:Clear("manual")

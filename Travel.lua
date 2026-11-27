@@ -278,6 +278,7 @@ function T:Replan(force)
 	if cur and n1 and cur.k == "walk" and n1.k == "walk" and cur.path ~= nil and cur.b.c == n1.b.c
 		and cur.b.x == n1.b.x and cur.b.y == n1.b.y then
 		n1.path, n1.pathAt, n1.pathFail = cur.path, cur.pathAt, cur.pathFail   -- a espera de 300 jd vem junto
+		n1.pathFailT = cur.pathFailT
 	end
 	if force or key ~= routeKey or not route then
 		local was = route
@@ -374,7 +375,9 @@ local function pathTick()
 	local pos = T.PlayerWorld()
 	local precisa = cur and cur.k == "walk" and pos and pos.c == cur.b.c
 		and not (cur.pathFail and cur.pathAt and dist(pos, cur.pathAt) < 300
-			and GetTime() - (cur.pathFailT or 0) < 30)      -- parado: tenta de novo a cada 30 s (#114)
+			-- espera até 300 jd; sem caminho nenhum (falha, não o `solto`) e tendo andado 40 jd, tenta de novo a cada
+			-- 30 s (#114) — parado, a mesma busca dá o mesmo nil
+			and (cur.path ~= false or dist(pos, cur.pathAt) < 40 or GetTime() - (cur.pathFailT or 0) < 30))
 		and not (cur.path and select(4, ns.Terrain.Ahead(cur.path, pos, 0)) <= 40)
 	-- rota nova, perna já passada, ou a atual precisa e a busca em curso é de outra: larga
 	if pathCo and (pathRoute ~= route or pathIdx < route.leg or (precisa and pathLeg ~= cur)) then pathCo = nil end
@@ -423,20 +426,23 @@ function T:ResetPaths()
 end
 
 -- O estado da rota em uma linha, para o relatório (#114): destino, pernas, a atual, o caminho dela e o último erro
--- do desenho no mapa/minimapa (ns.lastRouteErr).
+-- do desenho no mapa/minimapa (ns.routeErr, limpo quando o desenho volta a dar certo).
 function T:Describe()
 	local dest, kind = destination()
 	local parts = { ("dest %s"):format(dest and (kind or "?") or "none") }
 	if route then
 		local cur = route.legs[route.leg]
-		local caminho = cur and cur.k == "walk" and (cur.path and (#cur.path .. " pts") or cur.path == false and "failed"
-			or "pending") or "-"
-		parts[#parts + 1] = ("legs %d · leg %d %s · path %s%s · pv %d"):format(#route.legs, route.leg,
-			cur and cur.k or "?", caminho, cur and cur.pathFail and " (fail)" or "", route.pv or 0)
+		local caminho = cur and cur.k == "walk" and (cur.path and (#cur.path .. " pts" .. (cur.pathFail and " (solto)" or ""))
+			or cur.path == false and "failed" or "pending") or "-"
+		parts[#parts + 1] = ("legs %d · leg %d %s · path %s · pv %d"):format(#route.legs, route.leg,
+			cur and cur.k or "?", caminho, route.pv or 0)
 	else
 		parts[#parts + 1] = "no route"
 	end
-	if ns.lastRouteErr then parts[#parts + 1] = "draw error: " .. tostring(ns.lastRouteErr):sub(1, 120) end
+	for _, quem in ipairs({ "map", "minimap" }) do
+		local e = ns.routeErr and ns.routeErr[quem]
+		if e then parts[#parts + 1] = ("%s error: %s"):format(quem, tostring(e):sub(1, 120)) end
+	end
 	return table.concat(parts, " · ")
 end
 
@@ -494,15 +500,22 @@ ns:On("PLAYER_ENTERING_WORLD", visit)
 -- Três tiques do relógio de 1 s depois, refaz do zero.
 local REFAZ_TIQUES = 3
 local refazEm
-local function refazDepois() refazEm = REFAZ_TIQUES end
-ns:On("PLAYER_ENTERING_WORLD", refazDepois)
-ns:On("LOADING_SCREEN_DISABLED", refazDepois)
+-- Só no login e no /reload: a tela de carregamento no meio de um barco entre continentes (ou depois de masmorra,
+-- pedra, teleporte) não pode jogar fora a perna de barco a bordo nem a rota que acabou de sair certa. O fim da tela
+-- só adia a que já está marcada.
+ns:On("PLAYER_ENTERING_WORLD", function(_, login, reload) if login or reload then refazEm = REFAZ_TIQUES end end)
+ns:On("LOADING_SCREEN_DISABLED", function() if refazEm then refazEm = REFAZ_TIQUES end end)
 
 ns:Every(1, function()
 	if not ns.char then return end
 	if refazEm then
 		refazEm = refazEm - 1
-		if refazEm <= 0 then refazEm = nil; T:Fresh() end
+		if refazEm <= 0 then
+			refazEm = nil
+			local c = route and route.legs[route.leg]
+			-- a bordo, no barco ou em voo: a rota segue (sem refazer do meio do mar)
+			if not ((UnitOnTaxi and UnitOnTaxi("player")) or (c and (c.k == "ship" or c.boarded))) then T:Fresh() end
+		end
 	end
 	local now = GetTime()
 	local pos = T.PlayerWorld()
