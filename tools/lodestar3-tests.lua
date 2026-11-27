@@ -605,4 +605,36 @@ do
 	local a1, d1 = H.Eta(20000, 10000, 8000, nil), H.Eta(12000, 10000, 0, nil)
 	check(math.abs(a1 - 4320) < 1 and math.abs(d1 - a1) < 1, "sem a total, a entrega de uma quest só não encurta")
 end
+-- compras do guia na casa de leilões (#134)
+do
+	local SH = loadPure("Shopping.lua").Shopping
+	check(SH.Tradeable(12, 0) == false, "classe de quest: nunca")
+	check(SH.Tradeable(7, 0) and SH.Tradeable(15, 2) and SH.Tradeable(0, 3), "sem vínculo, ao equipar, ao usar: negociável")
+	check(SH.Tradeable(7, 1) == false and SH.Tradeable(15, 4) == false, "preso ao pegar ou de quest: não")
+	check(SH.Tradeable(7, nil) == nil, "sem o vínculo ainda: não se sabe")
+	local trocavel = { [2589] = true, [769] = true, [4589] = false, [11018] = nil }
+	local steps = {
+		{ goals = { { verb = "collect", id = 2589, count = 10, text = "Linen Cloth", q = { id = 1 } } } },
+		{ goals = { { verb = "collect", id = 2589, count = 10, text = "Linen Cloth", q = { id = 1 } },      -- o mesmo objetivo
+			{ verb = "collect", id = 2589, count = 6, text = "Linen Cloth", q = { id = 2 } } } },         -- outra quest
+		{ goals = { { verb = "collect", id = 769, count = 8, text = "Chunk of Boar Meat", feito = true } } },
+		{ goals = { { verb = "kill", id = 99, count = 5 }, { verb = "collect", id = 4589, count = 10 } } },
+		{ goals = { { verb = "get", id = 11018, count = 3, text = "Un'Goro Soil" } } },
+		{ inativo = true, goals = { { verb = "collect", id = 769, count = 4, text = "Chunk of Boar Meat" } } },
+		{ goals = { { verb = "collect", id = 769, count = 2, text = "Chunk of Boar Meat", pulado = true } } },
+	}
+	local fns = {
+		ativo = function(st) return not st.inativo end, goalAtivo = function(g) return not g.pulado end,
+		feito = function(g) return g.feito end, negociavel = function(id) return trocavel[id] end,
+	}
+	local needs, pend = SH.Needs(steps, 1, fns)
+	check(#needs == 1 and needs[1].id == 2589 and needs[1].precisa == 16,
+		"Linen: o maior pedido por quest, somado entre quests; feito, inativo, pulado e de quest ficam de fora")
+	check(pend[11018] and not pend[2589], "sem dados ainda: pendente (pedir e refazer)")
+	local depois = SH.Needs(steps, 3, fns)
+	check(#depois == 0, "do passo 3 em diante: nada negociável a comprar")
+	local falta = SH.Missing(needs, function(id) return id == 2589 and 4 or 0 end)
+	check(#falta == 1 and falta[1].falta == 12, "tira o que já se tem")
+	check(#SH.Missing(needs, function() return 20 end) == 0, "já tem tudo: nada")
+end
 print(("ok: %d checks"):format(checks))

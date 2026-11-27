@@ -150,6 +150,7 @@ local DB_DEFAULTS = {
 	timerAlerts = true,   -- quest com tempo: aviso aos 5 min e a 1 min
 	gearTips = true,      -- melhoria no tooltip do item e seta na escolha de recompensa
 	autoFlight = false,   -- OPT-IN: no mestre de voo, voa para o destino da rota (Shift escolhe à mão)
+	shopping = true,      -- as compras do guia na casa de leilões (#134)
 	flightCard = true,    -- o cartão de voo do Lodestar em voo (#129)
 	partyTell = true,     -- "[Quest] pronta para entregar" e cada objetivo no chat do grupo (#127: ligado; desliga se quiser)
 	tomtomShim = false,   -- OPT-IN: sem o TomTom, /way e TomTom:AddWaypoint apontam a seta do Lodestar

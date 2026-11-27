@@ -99,6 +99,9 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
 - **XP/hour pace HUD** with ETA-to-level and ahead/behind tracking.
 - **Gear Advisor** — pings you when a bag item is an upgrade, marks it on the item's tooltip ("Upgrade +12%") and puts a
   green arrow on the best quest reward.
+- **Guide shopping** — the items the rest of the guide asks for that can be bought at the auction house (cloth, meat,
+  herbs, the Stranglethorn pages…): a line in the guide window takes you to the nearest auction house, and a panel
+  there searches each one (and builds an Auctionator shopping list if you have it).
 - **Tell my party** (on by default, can be turned off): a line in party chat when one of your quest objectives is done
   and when a quest is ready to turn in.
 - Optional: **TomTom compatibility** — without TomTom installed, `/way` and addons that set TomTom waypoints point

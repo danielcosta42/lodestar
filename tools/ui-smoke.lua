@@ -1664,6 +1664,78 @@ step("Flight card", function()
 	ns.db.flightCard, ns.char.voo, _G.OneForAllFlightTimer, _G.hooksecurefunc = true, nil, nil, hsf
 	assert(ok, err)
 end)
+-- compras do guia (#134): a lista pelo vínculo e pela bolsa, a linha na janela do guia e o painel na casa de leilões
+step("Guide shopping", function()
+	local SH, CI = ns.Shopping, _G.C_Item
+	local info, inst, count = CI.GetItemInfo, CI.GetItemInfoInstant, CI.GetItemCount
+	local guia, passo, refresh, goto0, atr = ns.currentGuide, ns.char.currentStep, ns.Viewer.Refresh, ns.Services.GoTo, _G.Auctionator
+	local ahf = _G.AuctionHouseFrame
+	local vinc = { [2589] = 0, [769] = 0, [4589] = 1 }                -- Linen e carne sem vínculo; a pena presa ao pegar
+	CI.GetItemInfoInstant = function(id) return id, nil, nil, nil, nil, id == 9 and 12 or 7, 0 end
+	CI.GetItemInfo = function(id)
+		if vinc[id] == nil then return nil end
+		return id == 2589 and "Tecido de Linho" or "Item " .. id, nil, 1, 1, 1, "", "", 20, "", 134400, 1, 7, 0, vinc[id]
+	end
+	CI.GetItemCount = function(id) return id == 2589 and 4 or 0 end
+	local idaLeilao
+	ns.Services.GoTo = function(_, kind) idaLeilao = kind end
+	ns.Viewer.Refresh = function() end
+	ns.currentGuide = { key = "Teste", steps = {
+		{ goals = { { verb = "collect", id = 2589, count = 10, text = "Linen Cloth" } } },
+		{ goals = { { verb = "collect", id = 4589, count = 10, text = "Long Elegant Feather" } } },
+		{ goals = { { verb = "collect", id = 769, count = 3, text = "Chunk of Boar Meat" } } },
+	} }
+	ns.char.currentStep = 1
+	local upd = ns.eventFrame:GetScript("OnUpdate")
+	local buscou, iniciou, termos
+	local ok, err = pcall(function()
+		SH:Dirty(); upd(ns.eventFrame, 1.01)
+		local l = SH:List()
+		assert(#l == 2 and l[1].id == 769 and l[1].falta == 3 and l[2].id == 2589 and l[2].falta == 6,
+			"lista: " .. #l .. " itens")
+		SH:GoTo()
+		assert(idaLeilao == "auction", "a linha não levou à casa de leilões")
+		-- a casa de leilões aberta: o painel, a busca exata pelo nome do cliente e o Auctionator
+		_G.AuctionHouseFrame = CreateFrame("Frame", "AuctionHouseFrame", UIParent)
+		_G.AuctionHouseFrame.SearchBar = { SearchBox = { SetText = function(_, t) buscou = t end },
+			StartSearch = function() iniciou = true end }
+		_G.Auctionator = { API = { v1 = { CreateShoppingList = function(_, nome, lista) termos = { nome, lista } end } } }
+		SH:ShowPanel()
+		local p = _G.LodestarShopping
+		assert(p and p:IsShown() and p.rows[1]:IsShown() and p.rows[2]:IsShown() and not p.rows[3]:IsShown(), "painel")
+		assert(p.rows[2].name:GetText() == "Tecido de Linho" and p.rows[2].count:GetText() == ns.L.SHOP_MISSING:format(6),
+			"linha do painel: " .. tostring(p.rows[2].name:GetText()))
+		p.rows[2].btn:GetScript("OnClick")(p.rows[2].btn)
+		assert(buscou == '"Tecido de Linho"' and iniciou, "busca: " .. tostring(buscou))
+		assert(p.atr:IsShown(), "sem o botão do Auctionator")
+		p.atr:GetScript("OnClick")(p.atr)
+		assert(termos and termos[1] == "Lodestar" and #termos[2] == 2 and termos[2][2] == "Tecido de Linho",
+			"Auctionator sem a lista")
+		ns.fire("AUCTION_HOUSE_CLOSED")
+		assert(not p:IsShown(), "o painel ficou com a casa de leilões fechada")
+		ns.db.shopping = false; SH:Dirty(); upd(ns.eventFrame, 1.01)
+		assert(#SH:List() == 0, "desligado e a lista ficou")
+	end)
+	ns.db.shopping = true
+	CI.GetItemInfo, CI.GetItemInfoInstant, CI.GetItemCount = info, inst, count
+	ns.currentGuide, ns.char.currentStep, ns.Viewer.Refresh, ns.Services.GoTo, _G.Auctionator = guia, passo, refresh, goto0, atr
+	_G.AuctionHouseFrame = ahf
+	SH:Dirty(); upd(ns.eventFrame, 1.01)
+	assert(ok, err)
+	-- a linha na janela do guia aparece com itens a comprar
+	local list0 = SH.List
+	SH.List = function() return { { id = 2589, nome = "Linen Cloth", falta = 6 } } end
+	local ok2, err2 = pcall(function()
+		ns.Viewer:Refresh()
+		local vf = ns.Viewer:GetFrame()
+		assert(vf.shop:IsShown() and vf.shop.text:GetText() == ns.L.SHOP_LINE:format(1), "linha das compras no guia")
+		vf.shop:GetScript("OnEnter")(vf.shop); vf.shop:GetScript("OnLeave")(vf.shop)
+	end)
+	SH.List = list0
+	ns.Viewer:Refresh()
+	assert(not ns.Viewer:GetFrame().shop:IsShown() or #SH:List() > 0, "a linha ficou sem itens")
+	assert(ok2, err2)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

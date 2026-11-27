@@ -394,6 +394,35 @@ local function build()
 		frame.quickBtns[i] = b
 	end
 
+	-- compras do guia na casa de leilões (Shopping.lua, #134): uma linha quando há o que comprar; leva à mais perto
+	frame.shop = CreateFrame("Button", nil, frame.body)
+	frame.shop:SetHeight(30)
+	do
+		local bg = UI.Card(frame.shop, { radius = 6, color = C.card }); bg:SetAllPoints()
+		bg:SetFrameLevel(frame.shop:GetFrameLevel())
+		local g = UI.Glyph(frame.shop, "moeda", "OVERLAY", 64); g:SetSize(14, 14); g:SetPoint("LEFT", 10, 0)
+		g:SetVertexColor(unpackc(C.accent))
+		local t = UI.Text(frame.shop, 11.5, C.muted, { num = true, wrap = false })
+		t:SetPoint("LEFT", g, "RIGHT", 8, 0); t:SetPoint("RIGHT", -10, 0)
+		frame.shop.text = t
+		frame.shop:SetScript("OnClick", function() if ns.Shopping then ns.Shopping:GoTo() end end)
+		frame.shop:SetScript("OnEnter", function(self)
+			bg:SetLine(C.borderHi); t:SetTextColor(unpackc(C.active))
+			if not GameTooltip then return end
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine(L.SHOP_TITLE, 1, 1, 1)
+			for _, it in ipairs(ns.Shopping and ns.Shopping:List() or {}) do
+				GameTooltip:AddDoubleLine(it.nome or tostring(it.id), L.SHOP_MISSING:format(it.falta), 0.9, 0.9, 0.9, 0.7, 0.7, 0.7)
+			end
+			GameTooltip:AddLine(L.SHOP_TIP, 0.7, 0.7, 0.7, true)
+			GameTooltip:Show()
+		end)
+		frame.shop:SetScript("OnLeave", function()
+			bg:SetLine(C.border); t:SetTextColor(unpackc(C.muted))
+			if GameTooltip then GameTooltip:Hide() end
+		end)
+	end
+
 	frame.nextLabel = UI.Text(frame.body, 11, C.dim, { num = true })
 	frame.nextLabel:SetText(L.NEXT)
 
@@ -855,6 +884,16 @@ function V:Refresh()
 		b:ClearAllPoints(); b:SetSize(qw, 46); b:SetPoint("LEFT", frame.quick, "LEFT", (qi - 1) * (qw + 6), 0)
 	end
 	by = by + 46 + 12
+
+	-- compras do guia na casa de leilões
+	local compras = ns.Shopping and ns.Shopping:List() or {}
+	frame.shop:SetShown(#compras > 0)
+	if #compras > 0 then
+		frame.shop:ClearAllPoints(); frame.shop:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+		frame.shop:SetWidth(inner)
+		frame.shop.text:SetText(L.SHOP_LINE:format(#compras))
+		by = by + 30 + 10
+	end
 
 	-- a seguir
 	local shown = 0
