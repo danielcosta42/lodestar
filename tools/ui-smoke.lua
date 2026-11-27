@@ -1525,7 +1525,7 @@ end)
 step("Flight card", function()
 	local taxi, tnn, gat, early, gt, gst = _G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes,
 		_G.TaxiRequestEarlyLanding, _G.GetTime, _G.GetServerTime
-	local rota0 = ns.Travel.Route
+	local rota0, hsf = ns.Travel.Route, _G.hooksecurefunc
 	local ucId, hfId, tmId
 	for id, v in pairs(ns.travel.nodes) do
 		if v.n:find("^Undercity") then ucId = id elseif v.n:find("^Hammerfall") then hfId = id
@@ -1566,6 +1566,12 @@ step("Flight card", function()
 			function q:GetChildren() return unpack(self.kids) end
 			return q
 		end
+		-- um hooksecurefunc que funciona (o da fumaça é noop): (tabela, método, fn) chama o original e depois fn
+		_G.hooksecurefunc = function(t, k, fn)
+			if type(t) ~= "table" or type(t[k]) ~= "function" then return end
+			local orig = t[k]
+			t[k] = function(...) local r = orig(...); fn(...); return r end
+		end
 		local ofa, filho, filho2, protegido = falso(0.9, true), falso(1, true), falso(1, true), falso(1, true)
 		function protegido:IsProtected() return true end
 		ofa.kids = { filho, filho2, protegido }
@@ -1575,6 +1581,8 @@ step("Flight card", function()
 		assert(ofa.a == 0 and ofa.m == false and filho.m == false and filho2.m == false,
 			"o timer do OneForAll (ou um filho) ficou à mostra ou com mouse")
 		assert(protegido.m == true, "mexeu no mouse de um filho protegido")
+		ofa:SetAlpha(1)                                             -- o OneForAll esmaece de volta: o gancho zera
+		assert(ofa.a == 0, "o SetAlpha do OneForAll em voo não voltou a zero")
 		ofa.a = 1; ofa.m = true; FC:Update()
 		assert(ofa.a == 0 and ofa.m == false, "o OneForAll mostrou de novo e o cartão não reaplicou")
 		local trocado = falso(0.8, true)                            -- o OneForAll recriou o frame no meio do voo
@@ -1594,6 +1602,8 @@ step("Flight card", function()
 			"pousou e o timer do OneForAll (o velho ou o novo) não voltou como estava")
 		ofa.a = 0.5; trocado.a = 0.5; FC:Update()                   -- depois de devolver, o Lodestar não mexe mais
 		assert(ofa.a == 0.5 and trocado.a == 0.5, "o Lodestar seguiu mexendo no timer do OneForAll depois de pousar")
+		ofa:SetAlpha(0.7)
+		assert(ofa.a == 0.7, "o gancho seguiu zerando o SetAlpha do OneForAll depois de pousar")
 		_G.OneForAllFlightTimer = ofa; ofa.a = 0.9
 		comSlot = true; FC:Marcou(2)                                -- o slot 2 é Tarren Mill, mesmo com o nome do 3
 		voa(true)
@@ -1651,7 +1661,7 @@ step("Flight card", function()
 	end)
 	_G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes, _G.TaxiRequestEarlyLanding = taxi, tnn, gat, early
 	_G.GetTime, _G.GetServerTime, ns.Travel.Route = gt, gst, rota0
-	ns.db.flightCard, ns.char.voo, _G.OneForAllFlightTimer = true, nil, nil
+	ns.db.flightCard, ns.char.voo, _G.OneForAllFlightTimer, _G.hooksecurefunc = true, nil, nil, hsf
 	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)
