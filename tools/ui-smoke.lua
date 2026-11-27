@@ -49,8 +49,11 @@ function M:SetScript(k, f) self._scripts[k] = f end
 function M:HookScript(k, f) self._scripts[k] = f end
 function M:GetScript(k) return self._scripts[k] end
 function M:GetPoint() return "CENTER", nil, "CENTER", 0, 0 end
-function M:SetPoint(p) self._pts = self._pts or {}; self._pts[#self._pts + 1] = p end
-function M:ClearAllPoints() self._pts = {} end
+function M:SetPoint(p, ...)
+	self._pts = self._pts or {}; self._pts[#self._pts + 1] = p
+	self._ptargs = self._ptargs or {}; self._ptargs[p] = { ... }
+end
+function M:ClearAllPoints() self._pts, self._ptargs = {}, {} end
 function M:GetParent() return self._parent end
 function M:GetName() return self._name end
 function M:GetFrameLevel() return 1 end
@@ -362,6 +365,24 @@ step("TravelPanel route", function()
 		end
 	end
 	assert(shown == 3, "pernas na linha do tempo: " .. shown)
+	-- o cartão começa abaixo do cabeçalho (#113): da linha da zona e da coluna da direita, com e sem o Limpar
+	local fr = _G.LodestarTravel
+	local function topo()
+		local a = fr.timelineCard._ptargs.TOPLEFT
+		return -a[#a]
+	end
+	local function fundo()
+		local esq = 74 + fr.dest:GetStringHeight() + 3 + fr.destSub:GetStringHeight()
+		local dir = 62 + fr.total:GetStringHeight() + 2 + fr.eta:GetStringHeight()
+		if fr.clear:IsShown() then dir = dir + 4 + fr.clear:GetHeight() end
+		return math.max(esq, dir)
+	end
+	ns.TravelPanel.Refresh()
+	assert(topo() >= fundo() + 8, ("cartão em cima do cabeçalho: %d < %d"):format(topo(), fundo() + 8))
+	ns.Waypoint:SetCustom("The Hinterlands", 68, 52.9, "Silvermane Stalker")
+	ns.TravelPanel.Refresh()
+	assert(fr.clear:IsShown() and topo() >= fundo() + 8, "com o Limpar, o cartão em cima do cabeçalho")
+	ns.Waypoint:ClearCustom()
 	ns.TravelPanel.Refresh()
 end)
 for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "rares", "characters",

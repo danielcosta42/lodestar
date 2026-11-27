@@ -24,7 +24,9 @@ claro").
   a atual destacada, as feitas apagadas); os serviços em grade com o tempo de viagem medido ao abrir (um por quadro);
   profissão abre a lista; coordenada. (#108) O quadro da linha do tempo tem altura (sem ela, as pernas ancoradas
   nele não se resolvem e o cliente não as desenha); o fio entre as bolinhas desce do centro delas; na grade, rótulo curto quando o nome não cabe (Profissões, Estábulo).
-  O + de adicionar guia fica com o fundo no nível do botão (senão o fundo cobre o glifo).
+  O + de adicionar guia fica com o fundo no nível do botão (senão o fundo cobre o glifo). (#113) O cartão da viagem começa abaixo
+  do cabeçalho de verdade: o mais baixo entre a linha da zona e a coluna da direita (tempo, chegada, Limpar), não num
+  topo fixo.
 - **R5 Central.** Substitui a Biblioteca (ns.GuideMenu abre a Central). Menu: Início, Leveling, Masmorras,
   Equipamento, Colecionáveis, Legado, Classe, Reputação, Sintonias, Eventos; Configurações e Relatar no pé.
   - **Início:** continuar (guia, passo, o que fazer agora, nível e XP) e os cartões de masmorra, equipamento, Legado e

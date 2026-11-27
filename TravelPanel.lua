@@ -103,9 +103,10 @@ local function build()
 	-- destino
 	frame.kind = UI.Text(frame, 11, C.dim, { num = true }); frame.kind:SetPoint("TOPLEFT", PAD, -58)
 	frame.dest = UI.Text(frame, 17, C.active, { bold = true, wrap = false })
-	frame.dest:SetPoint("TOPLEFT", PAD, -74); frame.dest:SetPoint("RIGHT", frame, "RIGHT", -120, 0)
+	frame.dest:SetPoint("TOPLEFT", PAD, -74); frame.dest:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -120, -74)
 	frame.destSub = UI.Text(frame, 12, C.dim, { num = true, wrap = false })
-	frame.destSub:SetPoint("TOPLEFT", frame.dest, "BOTTOMLEFT", 0, -3); frame.destSub:SetPoint("RIGHT", frame, "RIGHT", -120, 0)
+	frame.destSub:SetPoint("TOPLEFT", frame.dest, "BOTTOMLEFT", 0, -3)
+	frame.destSub:SetPoint("TOPRIGHT", frame.dest, "BOTTOMRIGHT", 0, -3)
 	frame.total = UI.Text(frame, 24, C.active, { num = true, justify = "RIGHT" }); frame.total:SetPoint("TOPRIGHT", -PAD, -62)
 	frame.eta = UI.Text(frame, 11.5, C.dim, { num = true, justify = "RIGHT" })
 	frame.eta:SetPoint("TOPRIGHT", frame.total, "BOTTOMRIGHT", 0, -2)
@@ -216,7 +217,12 @@ function TP.Refresh()
 	frame.total:SetText(remaining and ns.Waypoint.FmtTime(remaining) or "")
 	frame.eta:SetText(remaining and L.V3_NAV_ARRIVES:format(date("%H:%M", time() + remaining)) or "")
 
-	local y = 104
+	-- o cartão começa abaixo do cabeçalho de verdade (#113): o mais baixo entre a linha da zona e a coluna da direita
+	-- (tempo, chegada, Limpar) — a altura da fonte muda com o cliente e a escala; antes era um topo fixo de 104
+	local esq = 74 + frame.dest:GetStringHeight() + 3 + frame.destSub:GetStringHeight()
+	local dir = 62 + frame.total:GetStringHeight() + 2 + frame.eta:GetStringHeight()
+	if frame.clear:IsShown() then dir = dir + 4 + frame.clear:GetHeight() end
+	local y = math.max(104, math.ceil(math.max(esq, dir)) + 12)
 	local n = route and math.min(#route.legs, MAX_LEGS) or 0
 	frame.timelineCard:ClearAllPoints()
 	frame.timelineCard:SetPoint("TOPLEFT", PAD, -y); frame.timelineCard:SetPoint("TOPRIGHT", -PAD, -y)
