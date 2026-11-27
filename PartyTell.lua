@@ -49,7 +49,11 @@ if not ns.On then return end
 
 local last, lastObj, sent, sentObj = nil, nil, {}, {}
 -- o envio do chat mudou de lugar entre versões do cliente (o mesmo de Race.lua e ReportCard.lua)
-local send = (C_ChatInfo and C_ChatInfo.SendChatMessage) or SendChatMessage
+local function send(msg, canal)
+	local f = (C_ChatInfo and C_ChatInfo.SendChatMessage) or SendChatMessage
+	if not f then error("sem envio de chat") end
+	return f(msg, canal)
+end
 
 -- retrato do diário: { [quest] = pronta }, { [quest] = { [i] = feito } }, { [quest] = { [i] = texto } }
 local function snapshot()
@@ -91,7 +95,7 @@ local function check()
 	local ready = P.Ready(last, now)
 	local objs = P.Objectives(lastObj, nowObj, ready)
 	last, lastObj = now, nowObj
-	if not (ns.db and ns.db.partyTell ~= false and inParty() and send) then return end
+	if not (ns.db and ns.db.partyTell ~= false and inParty()) then return end
 	local linhas = 0
 	-- só conta como avisado o que saiu (chat travado ou canal recusado: tenta na próxima)
 	for _, qid in ipairs(ready) do
@@ -109,6 +113,9 @@ local function check()
 		end
 	end
 end
+
+-- a conta de agora (a fumaça chama direto: o QUEST_LOG_UPDATE espera 0,6 s)
+function P:Check() return pcall(check) end
 
 local pending
 ns:On("QUEST_LOG_UPDATE", function()

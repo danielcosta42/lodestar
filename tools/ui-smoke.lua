@@ -1461,6 +1461,39 @@ step("XP bar quests", function()
 	if ns.XPHud:GetFrame() then ns.XPHud:Update() end
 	assert(ok, err)
 end)
+-- avisar o grupo (#127): ligado por padrão; objetivo que fecha e quest que fica pronta, uma linha cada, uma vez
+step("Party tell", function()
+	local QL, ig, scm, cci = _G.C_QuestLog, _G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo
+	local n, get, done, objs = QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete, QL.GetQuestObjectives
+	local estado = { { false, false } }
+	QL.GetNumQuestLogEntries = function() return 1 end
+	QL.GetInfo = function() return { questID = 77 } end
+	QL.IsComplete = function() return estado[1][1] and estado[1][2] end
+	QL.GetQuestObjectives = function()
+		return { { text = "Lobo morto: " .. (estado[1][1] and "8/8" or "3/8"), finished = estado[1][1] },
+			{ text = "Caixa: " .. (estado[1][2] and "1/1" or "0/1"), finished = estado[1][2] } }
+	end
+	_G.IsInGroup = function() return true end
+	local ditas = {}
+	_G.SendChatMessage = function(msg, canal) ditas[#ditas + 1] = canal .. "|" .. msg end
+	_G.C_ChatInfo = { SendChatMessage = _G.SendChatMessage }
+	local ok, err = pcall(function()
+		assert(ns.db.partyTell ~= false, "avisar o grupo veio desligado")
+		ns.fire("GROUP_JOINED")                                     -- o retrato de quando entrou no grupo
+		estado[1][1] = true                                         -- fechou o primeiro objetivo
+		ns.PartyTell:Check()
+		ns.PartyTell:Check()                                        -- o mesmo de novo: não repete
+		assert(#ditas == 1 and ditas[1]:find("^PARTY|Lodestar: ") and ditas[1]:find("Lobo morto: 8/8", 1, true),
+			"objetivo: " .. table.concat(ditas, " / "))
+		estado[1][2] = true                                         -- o último fecha e a quest fica pronta: só a de pronta
+		ns.PartyTell:Check()
+		assert(#ditas == 2 and ditas[2]:find(ns.L.PT_READY, 1, true) and not ditas[2]:find("Caixa", 1, true),
+			"pronta: " .. table.concat(ditas, " / "))
+	end)
+	QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete, QL.GetQuestObjectives = n, get, done, objs
+	_G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo = ig, scm, cci
+	assert(ok, err)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()
