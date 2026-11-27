@@ -166,6 +166,13 @@ do
 	local rw = J.Plan(P(0, 0, 0), P(0, 1500, 0), { data = d2, fac = "A", known = {}, speed = 7, teleports = {},
 		desvios = { { a = P(0, 0, 0), b = P(0, 1500, 0), f = 3 } } })
 	check(rw and math.abs(rw.s - 4500 / 7) < 1, "não foge do desvio pelo nó ao lado (" .. (rw and math.floor(rw.s) or "nil") .. " s)")
+	local function dePerto(y)
+		local r = J.Plan(P(0, 0, y), P(0, 2000, 0), { data = d2, fac = "A", known = {}, speed = 7, teleports = {},
+			desvios = { { a = P(0, 0, 0), b = P(0, 2000, 0), f = 3 } } })
+		return r and r.s * 7 / math.sqrt(2000 ^ 2 + y ^ 2)
+	end
+	check(math.abs(dePerto(280) - 3) < 0.01, "o raio cresce com a perna medida (15% de 2000 jd)")
+	check(math.abs(dePerto(320) - 1) < 0.01, "longe do começo medido: a reta")
 	-- sem voo direto: um voo só, pela rota do jogo (Thalanaar -> Nijel's Point passa por Feathermoon)
 	local _, th = node("Thalanaar")
 	local _, nj = node("Nijel's Point")

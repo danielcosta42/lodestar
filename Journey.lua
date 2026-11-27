@@ -134,14 +134,14 @@ function J.Plan(from, to, ctx)
 	end
 
 	-- a pé: a reta, ou f vezes ela onde o caminho pelo terreno já mostrou o desvio (penhasco, serra: #125). Vale para
-	-- quem sai até DESVIO_RAIO do começo medido (o pouso do grifo fica uns jd ao lado do mestre de voo; o cais ao lado
-	-- dele) rumo ao mesmo fim
+	-- quem sai perto do começo medido rumo ao mesmo fim: até DESVIO_RAIO (o pouso do grifo fica uns jd ao lado do
+	-- mestre de voo; o cais ao lado dele) ou 15% da reta medida, o que for maior
 	local desvios = ctx.desvios or {}
 	local function aPe(pa, pb)
 		local d = dist(pa, pb)
 		for _, dv in ipairs(desvios) do
 			if dv.a.c == pa.c and math.abs(dv.b.x - pb.x) < 1 and math.abs(dv.b.y - pb.y) < 1
-				and dist(dv.a, pa) <= DESVIO_RAIO then return d * dv.f end
+				and dist(dv.a, pa) <= math.max(DESVIO_RAIO, 0.15 * dist(dv.a, dv.b)) then return d * dv.f end
 		end
 		return d
 	end

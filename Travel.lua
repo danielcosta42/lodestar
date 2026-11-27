@@ -599,9 +599,14 @@ local function pathTick()
 				if pathDeA and T.Desvio(L, D, speed) and T.AddDesvio(desvios, pathLeg.a, pathLeg.b, L / D) then
 					pathLeg.s = (pathLeg.s or 0) * L / D
 					if not T:Busy() then T:Replan(false) end
-				elseif not pathDeA and pathLeg.pathAt and not T:Busy()
-					and T.Desvio(T.PathLength(res), dist(pathLeg.pathAt, pathLeg.b), speed) then
-					T:Replan(false)                        -- a perna atual: o replanejar já mede o desvio dela
+				elseif not pathDeA and pathLeg.pathAt then
+					-- a perna atual: o desvio fica guardado de onde o caminho saiu (senão a rota nova, já sem esta
+					-- perna, voltava à reta no replanejar seguinte e as duas se alternavam) e a rota é refeita
+					local D0, L0 = dist(pathLeg.pathAt, pathLeg.b), T.PathLength(res)
+					if T.Desvio(L0, D0, speed) then
+						T.AddDesvio(desvios, pathLeg.pathAt, pathLeg.b, L0 / D0)
+						if not T:Busy() then T:Replan(false) end
+					end
 				end
 			else
 				pathLeg.path = pathLeg.path or false     -- falhou: fica o caminho anterior, se havia

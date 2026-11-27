@@ -1290,6 +1290,33 @@ step("Terrain detour", function()
 	T:ResetPaths()
 	assert(ok, err)
 end)
+-- desvio na perna atual (#125): fica guardado de onde o caminho saiu (a rota nova não volta à reta e alterna)
+step("Terrain detour current leg", function()
+	local T, TR = ns.Travel, ns.Terrain
+	local pw, w0, path0 = T.PlayerWorld, T.World, TR.Path
+	local eu = { c = 0, x = -10500, y = 1050 }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = 0, x = -10500 - 600, y = 1050 } end             -- 600 jd ao sul, a pé
+	TR.Path = function(_, de, para) return { de, { c = de.c, x = de.x, y = de.y + 3000 }, para } end
+	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		T:ResetPaths()
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		T:Fresh()
+		local r1 = T:Route()
+		assert(r1 and r1.legs[1].k == "walk", "sem rota a pé")
+		for _ = 1, 10 do upd(ns.eventFrame, 0.06) end
+		local achou
+		for _, dv in ipairs(T:Context().desvios) do
+			if math.abs(dv.a.x - eu.x) < 1 and math.abs(dv.a.y - eu.y) < 1 and dv.f > 5 then achou = true end
+		end
+		assert(achou, "o desvio da perna atual não ficou guardado")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World, TR.Path = pw, w0, path0
+	T:ResetPaths()
+	assert(ok, err)
+end)
 -- salto (#123): portal/teleporte refaz a rota no tique seguinte; no barco (perna de barco atual), não
 step("Route after teleport", function()
 	local T = ns.Travel

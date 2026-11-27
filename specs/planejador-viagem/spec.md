@@ -67,11 +67,12 @@ pelo cliente, ícones e tooltips de cais no mapa.
   pelo terreno (o mesmo do desenho); se ele sai ≥ 1,25× a reta e 30 s ou mais a pé, o fator volta ao planejador para
   aquele par (começo, fim; `ctx.desvios`, os 16 mais novos), o custo da perna é corrigido e a rota é refeita se outra
   for melhor (o mestre de voo do outro lado do penhasco: Hammerfall para as Hinterlands dá lugar a Tarren Mill). Em
-  voo ou a bordo, a troca fica para o replanejar de depois do pouso. O fator vale para quem sai até 150 jd do começo
-  medido (o pouso do grifo fica uns jd ao lado do mestre de voo). A pé emendado em a pé não entra no Dijkstra (pela
+  voo ou a bordo, a troca fica para o replanejar de depois do pouso. O fator vale para quem sai até 150 jd (ou 15% da reta medida, o que
+  for maior) do começo medido (o pouso do grifo fica uns jd ao lado do mestre de voo). A pé emendado em a pé não entra no Dijkstra (pela
   reta nunca encurta; só fugiria do fator passando por um cais ou voo ao lado). A perna a pé atual com o caminho bem
   mais longo que a reta (`T.DesvioAtual`: o pouso do outro lado do penhasco) entra no replanejar como desvio só dele,
-  e a comparação com a rota nova soma os segundos a mais. As pernas a pé iguais da rota nova herdam o caminho já
+  e a comparação com a rota nova soma os segundos a mais; o caminho dela que termina com desvio grande fica guardado
+  de onde saiu (a rota nova não volta à reta no replanejar seguinte). As pernas a pé iguais da rota nova herdam o caminho já
   calculado. Gravar ou apagar uma passagem limpa os fatores.
   Voos separados (pousar e marcar de novo): quem marcou o último direto pousa no fim dele e a perna avança até lá.
 - **Todo comando tem acesso pela interface**; o comando digitado vira atalho opcional.
