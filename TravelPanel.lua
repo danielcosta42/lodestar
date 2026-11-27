@@ -43,7 +43,8 @@ function TP.Fit(h, isStop, cur, nStops, avail, empty)
 		if nStops == 0 then return 0 end
 		return STOPS_HEAD + r * STOP_H + (r < nStops and STOP_H or 0)
 	end
-	local maxRows = math.min(nStops, STOPS_MAX)
+	-- uma a mais que o limite: mostra ela (o "+1 a mais" teria a altura da linha que esconde)
+	local maxRows = nStops == STOPS_MAX + 1 and nStops or math.min(nStops, STOPS_MAX)
 	if n == 0 then
 		local rows = nStops
 		if list(rows) > avail - (empty or 0) then
@@ -301,7 +302,7 @@ local function build()
 	frame.box = box
 	frame.hint = UI.Text(frame, 11, C.dim, { wrap = true }); frame.hint:SetText(L.TRAVEL_HINT)
 
-	frame:SetScript("OnShow", function() TP.MeasureServices(); TP.Refresh() end)
+	frame:SetScript("OnShow", function() frame._sigStops = nil; TP.MeasureServices(); TP.Refresh() end)
 	frame:Hide()
 	return frame
 end
