@@ -127,6 +127,98 @@ check(r.s < 600, "real: a viagem leva menos de 10 min (" .. math.floor(r.s) .. "
 local fl
 for _, l in ipairs(r.legs) do if l.k == "flight" then fl = l end end
 check(fl and fl.to and real.nodes[fl.to].n == fl.name, "a perna de voo leva o id do nó de destino (mapa de voo casa pelo id)")
+-- #124: voos seguidos viram um só quando marcar o último é o que o jogo voa. Undercity -> Hammerfall tem voo direto
+-- (279 s), mais lento que pousar em Tarren Mill e marcar de novo (260 s): ficam dois
+do
+	local _, uc = node("Undercity")
+	local alvo = { c = 0, x = 499, y = -3477 }                   -- Hinterlands 49.4,37.7 (OOX-09/HL)
+	local known = todos("H")
+	known[node("Revantusk")] = nil
+	local function plano(desvios)
+		return J.Plan(P(uc.c, uc.x + 20, uc.y), alvo, { data = real, fac = "H", known = known, speed = 7.6,
+			teleports = {}, desvios = desvios })
+	end
+	local rv = plano()
+	local voos, soma = {}, 0
+	for _, l in ipairs(rv and rv.legs or {}) do
+		if l.k == "flight" then voos[#voos + 1] = l end
+		soma = soma + (l.s or 0)
+	end
+	check(#voos == 2 and voos[1].name:find("^Tarren Mill") and not voos[2].via,
+		"o direto Undercity -> Hammerfall é mais lento: pousa em Tarren Mill (" .. (rv and kinds(rv) or "nil") .. ")")
+	check(rv and math.abs(soma - rv.s) < 1, "o total acompanha a soma das pernas")
+	-- #125: de Hammerfall não se entra nas Hinterlands (4155 jd pelo terreno contra 1415 de reta): com o desvio medido,
+	-- a rota fica em Tarren Mill e segue a pé
+	local hf = real.nodes[node("Hammerfall")]
+	local rd = plano({ { a = { c = hf.c, x = hf.x, y = hf.y }, b = alvo, f = 4155 / 1415 } })
+	local ult
+	for _, l in ipairs(rd and rd.legs or {}) do if l.k == "flight" then ult = l end end
+	check(ult and ult.name:find("^Tarren Mill") and rd.legs[#rd.legs].k == "walk",
+		"desvio do terreno: Tarren Mill e a pé (" .. (rd and kinds(rd) or "nil") .. ")")
+	-- pousou em Hammerfall (o pouso fica uns 9 jd ao lado do mestre de voo) com o desvio já medido: não segue a pé
+	local tudoH = todos("H")
+	local rp = J.Plan(P(0, -914.2, -3488.2), alvo, { data = real, fac = "H", known = tudoH, speed = 7.6, teleports = {},
+		desvios = { { a = { c = hf.c, x = hf.x, y = hf.y }, b = alvo, f = 4155 / 1415 } } })
+	check(rp and kinds(rp):find("flight"), "do pouso ao lado do mestre de voo, o desvio vale (" .. (rp and kinds(rp) or "nil") .. ")")
+	-- a pé emendado em a pé não foge do desvio passando por um nó ao lado (fora do raio)
+	local d2 = { nodes = { [1] = { n = "A", c = 0, x = 0, y = 0, f = "A" }, [9] = { n = "Lado", c = 0, x = 0, y = 200, f = "A" } },
+		flights = {}, ships = {} }
+	local rw = J.Plan(P(0, 0, 0), P(0, 1500, 0), { data = d2, fac = "A", known = {}, speed = 7, teleports = {},
+		desvios = { { a = P(0, 0, 0), b = P(0, 1500, 0), f = 3 } } })
+	check(rw and math.abs(rw.s - 4500 / 7) < 1, "não foge do desvio pelo nó ao lado (" .. (rw and math.floor(rw.s) or "nil") .. " s)")
+	local function dePerto(y)
+		local r = J.Plan(P(0, 0, y), P(0, 2000, 0), { data = d2, fac = "A", known = {}, speed = 7, teleports = {},
+			desvios = { { a = P(0, 0, 0), b = P(0, 2000, 0), f = 3 } } })
+		return r and r.s * 7 / math.sqrt(2000 ^ 2 + y ^ 2)
+	end
+	check(math.abs(dePerto(280) - 3) < 0.01, "o raio cresce com a perna medida (15% de 2000 jd)")
+	check(math.abs(dePerto(320) - 1) < 0.01, "longe do começo medido: a reta")
+	local dvl = { { a = P(0, 0, 0), b = P(0, 2000, 0), f = 3 } }
+	-- o nó do pouso também se alcança a pé mais barato: o "voa até lá e anda" não se perde (dois estados por nó)
+	local d3 = { nodes = { [1] = { n = "Perto", c = 0, x = 0, y = 50, f = "A" }, [2] = { n = "Lá", c = 0, x = 600, y = 50, f = "A" } },
+		flights = { [1] = { [2] = { s = 80, p = { 0, 50, 600, 50 } } } }, ships = {} }
+	local rf = J.Plan(P(0, 0, 0), P(0, 600, 0), { data = d3, fac = "A", known = { [1] = true, [2] = true }, speed = 7,
+		teleports = {}, desvios = { { a = P(0, 0, 0), b = P(0, 600, 0), f = 5 } } })
+	check(rf and kinds(rf) == "walk,flight,walk", "desvio a pé: voa e anda, mesmo com o pouso perto a pé (" .. (rf and kinds(rf) or "nil") .. ")")
+	check(J.DesvioDe(dvl, P(0, 0, 250), P(0, 2000, 0)) == 3 and not J.DesvioDe(dvl, P(0, 0, 400), P(0, 2000, 0))
+		and not J.DesvioDe(dvl, P(0, 0, 0), P(0, 2100, 0)), "o desvio que vale: mesmo fim, começo perto")
+	-- sem voo direto: um voo só, pela rota do jogo (Thalanaar -> Nijel's Point passa por Feathermoon)
+	local _, th = node("Thalanaar")
+	local _, nj = node("Nijel's Point")
+	local rn = J.Plan(P(th.c, th.x + 20, th.y), P(nj.c, nj.x + 20, nj.y), { data = real, fac = "A", known = todos("A"),
+		speed = 7, teleports = {} })
+	local vj
+	for _, l in ipairs(rn and rn.legs or {}) do if l.k == "flight" then vj = vj and false or l end end
+	check(vj and vj.via and vj.via[1]:find("^Feathermoon") and vj.p and #vj.p > 4,
+		"sem direto: um voo, com o do meio e o trajeto (" .. (rn and kinds(rn) or "nil") .. ")")
+
+	-- unidade: a rota do jogo e a junção
+	local fl = { [1] = { [2] = { s = 100, p = { 1, 2 } } }, [2] = { [3] = { s = 100, p = { 3, 4 } } } }
+	local nos = { [1] = { n = "Um" }, [2] = { n = "Dois, Zona" }, [3] = { n = "Tres" }, [4] = { n = "Quatro" } }
+	local tudo = { [1] = true, [2] = true, [3] = true, [4] = true }
+	local function pernas()
+		return { { k = "walk", s = 5 }, { k = "flight", name = "Dois, Zona", s = 110, from = 1, to = 2, p = { 1, 2 } },
+			{ k = "flight", name = "Tres", s = 110, from = 2, to = 3, p = { 3, 4 } }, { k = "walk", s = 9 } }
+	end
+	local j1 = J.JoinFlights(pernas(), fl, tudo, nos)
+	check(#j1 == 3 and j1[2].name == "Tres" and j1[2].via[1] == "Dois, Zona" and j1[2].s == 210 and j1[2].from == 1
+		and #j1[2].p == 4, "sem direto: junta com via, tempo do jogo e trajeto")
+	fl[1][3] = { s = 150, p = { 9, 9 } }
+	local j2 = J.JoinFlights(pernas(), fl, tudo, nos)
+	check(#j2 == 3 and j2[2].s == 160 and not j2[2].via and j2[2].p[1] == 9, "direto mais rápido: um voo, o direto")
+	fl[1][3] = { s = 250, p = { 9, 9 } }
+	check(#J.JoinFlights(pernas(), fl, tudo, nos) == 4, "direto bem mais lento: pousa e marca de novo")
+	fl[1][3] = nil
+	fl[1][4] = { s = 50, p = { 5, 5 } }
+	fl[4] = { [3] = { s = 60, p = { 6, 6 } } }
+	local j3 = J.JoinFlights(pernas(), fl, tudo, nos)
+	check(#j3 == 3 and j3[2].via[1] == "Quatro" and j3[2].s == 120, "o jogo voa a rota mais curta, não a do planejador")
+	local semQuatro = { [1] = true, [2] = true, [3] = true }
+	check(J.JoinFlights(pernas(), fl, semQuatro, nos)[2].via[1] == "Dois, Zona", "o do meio desconhecido não entra")
+	local pa = pernas()
+	pa[2].parada = true
+	check(#J.JoinFlights(pa, fl, tudo, nos) == 4, "parada no meio não junta (#117)")
+end
 local _, ra = node("Ratchet")
 local _, bb = node("Booty Bay")
 r = J.Plan(P(ra.c, ra.x, ra.y), P(bb.c, bb.x, bb.y),
@@ -187,12 +279,70 @@ check(T.ShouldReplace({ s = 300 }, { s = 265 }), "30 s mais rápida troca")
 check(not T.ShouldReplace({ s = 300 }, { s = 280 }), "7% e 20 s: não troca (histerese)")
 check(not T.ShouldReplace({ s = 300 }, { s = 300 }), "empate não troca")
 
+;(function()
+-- o salto (#123) que a perna explica: a bordo, no caminho do barco, no bonde ou entrando nele
+local barco = { k = "ship", b = P(1, 5000, 0), p = { 0, 0, 0, 2500, 0, 1, 4000, 0, 1 } }
+check(T.SaltoDaPerna({ k = "ship", boarded = 1 }, nil, P(1, 0, 0)), "a bordo: o salto é da travessia")
+check(T.SaltoDaPerna(barco, nil, P(1, 2600, 0)), "sem embarque visto, no caminho do barco: não refaz")
+check(T.SaltoDaPerna(barco, nil, P(1, 4900, 0)), "sem embarque visto, perto da chegada: não refaz")
+check(not T.SaltoDaPerna(barco, nil, P(1, 9000, 0)), "esperando no cais e teleportou longe: refaz")
+check(not T.SaltoDaPerna(barco, nil, P(0, 2500, 0)), "mesmo x, outro continente: refaz")
+check(T.SaltoDaPerna({ k = "tram" }, nil, P(369, 0, 0)), "dentro do bonde: não refaz")
+check(T.SaltoDaPerna({ k = "walk" }, { k = "tram" }, P(369, 0, 0)), "entrando no bonde: não refaz")
+check(not T.SaltoDaPerna({ k = "walk" }, { k = "flight" }, P(1, 0, 0)), "a pé, portal: refaz")
+check(not T.SaltoDaPerna(nil, nil, P(1, 0, 0)), "sem rota: refaz")
+check(T.SaltoDaPerna(barco, nil, P(1, 3250, 250)), "no meio de um trecho longo da rota do barco: não refaz")
+check(not T.SaltoDaPerna(barco, nil, P(1, 3250, 600)), "longe do trecho: refaz")
+local zepelim = { k = "ship", b = P(0, 20000, 0), p = { 0, 0, 0, 14000, 0, 0, 14500, 0, 0 } }
+check(not T.SaltoDaPerna(zepelim, nil, P(0, 7000, 100)), "o teleporte do transporte (14 mil jd) não é trecho: refaz")
+check(T.SaltoDaPerna(zepelim, nil, P(0, 14250, 100)), "o trecho depois do teleporte vale")
+local bonde = { k = "tram", a = P(0, 0, 0), b = P(0, 100, 0) }
+check(not T.SaltoDaPerna(bonde, nil, P(0, 900, 0)), "saiu do bonde (de volta ao continente dele): refaz")
+check(not T.SaltoDaPerna({ k = "walk" }, bonde, P(0, 900, 0)), "pedra a caminho do bonde: refaz")
+check(T.SaltoDaPerna({ k = "walk" }, bonde, P(369, 0, 0)), "entrou no bonde longe da entrada: não refaz")
+
+-- o desvio do terreno (#125): só o grande volta ao planejador, uma vez por par
+check(T.PathLength({ P(0, 0, 0), P(0, 30, 40), P(0, 30, 50) }) == 60, "comprimento do caminho")
+check(T.Desvio(4155, 1415, 7.6), "Hammerfall -> Hinterlands: desvio")
+check(not T.Desvio(2996, 2664, 7.6), "Tarren Mill -> Hinterlands: 12% a mais, não")
+check(not T.Desvio(200, 100, 7), "curto (100 jd a mais, 14 s): não")
+check(not T.Desvio(10, 0, 7), "reta zero: não")
+local dvs = {}
+check(T.AddDesvio(dvs, P(0, 1, 1), P(0, 9, 9), 2) and #dvs == 1, "registra o desvio")
+check(not T.AddDesvio(dvs, P(0, 1.5, 1), P(0, 9, 9.5), 3) and #dvs == 1, "o mesmo par não registra de novo")
+for i = 1, T.MAX_DESVIOS + 2 do T.AddDesvio(dvs, P(0, i * 10, 0), P(0, 0, 0), 2) end
+check(#dvs == T.MAX_DESVIOS and dvs[1].a.x ~= 1, "guarda só os mais novos")
+local medido = { { a = P(0, 0, 0), b = P(0, 2000, 0), f = 3 } }
+check(not T.PrecisaMedir(medido, P(0, 0, 100), P(0, 2000, 0)), "a pé coberto pelo desvio medido: decide já")
+check(T.PrecisaMedir(medido, P(0, 0, 900), P(0, 2000, 0)), "longe do começo medido, mesmo fim: mede antes de trocar")
+check(not T.PrecisaMedir(medido, P(0, 0, 900), P(0, 3000, 0)), "fim sem desvio medido: a reta vale")
+check(not T.PrecisaMedir({}, P(0, 0, 900), P(0, 2000, 0)), "sem desvios: a reta vale")
+local comVoo = { leg = 2, legs = { { k = "flight", to = 9 }, { k = "walk" }, { k = "flight", to = 7 } } }
+check(T.VoosConhecidos(comVoo, { [7] = true }), "os voos daqui em diante conhecidos (o já feito não conta)")
+check(not T.VoosConhecidos(comVoo, { [9] = true }), "o mapa de voo disse que o voo da rota não existe")
+check(T.VoosConhecidos(nil, {}), "sem rota: nada a desmentir")
+local velha = { legs = { { k = "walk", a = P(0, 0, 0), b = P(0, 5, 5), path = { 1 } },
+	{ k = "flight" }, { k = "walk", a = P(0, 100, 0), b = P(0, 200, 0), path = { "c" }, pathFail = true } } }
+local nova = { legs = { { k = "walk", a = P(0, 1, 1), b = P(0, 5, 5) }, { k = "flight" },
+	{ k = "walk", a = P(0, 100, 0), b = P(0, 200, 0) }, { k = "walk", a = P(0, 200, 0), b = P(0, 300, 0) } } }
+T.InheritPaths(velha, nova)
+check(nova.legs[3].path[1] == "c" and nova.legs[3].pathFail and nova.legs[4].path == nil and nova.legs[1].path == nil,
+	"a perna a pé igual herda o caminho; a primeira (do jogador) e a nova, não")
+end)()
+
 local rota = { leg = 1, legs = {
 	{ k = "walk", b = P(0, 700, 0), s = 100 },
 	{ k = "flight", b = P(0, 3000, 0), s = 60 },
 	{ k = "walk", b = P(0, 3010, 0), s = 2 },
 } }
 check(T.AdvanceLeg(rota, P(0, 690, 0), false) == 2, "chegou ao fim da perna a pé: próxima")
+do
+	local voos = { leg = 2, legs = { { k = "walk", b = P(0, 0, 0) }, { k = "flight", b = P(0, 1000, 0) },
+		{ k = "flight", b = P(0, 3000, 0) }, { k = "walk", b = P(0, 3200, 0) } } }
+	check(T.AdvanceLeg(voos, P(0, 3010, 0), false) == 4, "marcou o último voo direto: pousou no fim dele (#124)")
+	check(T.AdvanceLeg(voos, P(0, 1010, 0), false) == 3, "pousou no do meio: o voo seguinte")
+	check(T.AdvanceLeg(voos, P(0, 3010, 0), true) == 2, "em voo, não avança")
+end
 check(T.AdvanceLeg(rota, P(0, 300, 0), false) == 1, "no meio da perna a pé: continua nela")
 rota.leg = 2
 check(T.AdvanceLeg(rota, P(0, 2990, 0), true) == 2, "em voo, mesmo perto do pouso: continua no voo")
@@ -711,6 +861,17 @@ check(select(1, T.PickAnnounced(cands, "Zepelim chegou!")) == 285, "sem o nome n
 
 -- ── #23: caminho a pé pelo terreno ───────────────────────────────────────────
 local TRN = load("Terrain.lua", {}).Terrain
+;(function()
+	-- a perna a pé atual bem mais longa pelo terreno (#125): o replanejar vê o desvio e o tempo de verdade
+	local cur = { k = "walk", b = P(0, 100, 0), path = { P(0, 0, 0), P(0, 0, 500), P(0, 100, 500), P(0, 100, 0) } }
+	local dv, extra = T.DesvioAtual(cur, P(0, 0, 0), 7, TRN.Ahead)
+	check(dv and math.abs(dv.f - 11) < 0.01 and math.abs(extra - 1000 / 7) < 0.01 and dv.b == cur.b,
+		"a perna atual: desvio do ponto do jogador e os segundos a mais")
+	check(not T.DesvioAtual(cur, P(0, 500, -300), 7, TRN.Ahead), "longe do caminho: não vale")
+	check(not T.DesvioAtual({ k = "walk", b = P(0, 100, 0), path = { P(0, 0, 0), P(0, 100, 0) } }, P(0, 0, 0), 7, TRN.Ahead),
+		"caminho reto: sem desvio")
+	check(not T.DesvioAtual({ k = "flight", b = P(0, 1, 0) }, P(0, 0, 0), 7, TRN.Ahead), "perna que não é a pé: nada")
+end)()
 local DIRS8 = { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } }
 -- quadrante 0 sintético: `bloq(r, c)` diz o que é parede, `agua(r, c)` o que é lago
 -- `tq` quadrantes por lado (1 se omitido)

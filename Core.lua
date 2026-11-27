@@ -150,7 +150,7 @@ local DB_DEFAULTS = {
 	timerAlerts = true,   -- quest com tempo: aviso aos 5 min e a 1 min
 	gearTips = true,      -- melhoria no tooltip do item e seta na escolha de recompensa
 	autoFlight = false,   -- OPT-IN: no mestre de voo, voa para o destino da rota (Shift escolhe à mão)
-	partyTell = false,    -- OPT-IN: "[Quest] pronta para entregar" no chat do grupo
+	partyTell = true,     -- "[Quest] pronta para entregar" e cada objetivo no chat do grupo (#127: ligado; desliga se quiser)
 	tomtomShim = false,   -- OPT-IN: sem o TomTom, /way e TomTom:AddWaypoint apontam a seta do Lodestar
 	-- specs/lodestar-3 (issue #90)
 	theme = "light",      -- "light" (padrão) | "dark"; trocar vale depois do /reload
@@ -200,6 +200,9 @@ ns:On("ADDON_LOADED", function(_, name)
 	if ns.UI and ns.UI.ApplyTheme then ns.UI.ApplyTheme(ns.db.theme) end
 	-- o raceChat nasceu ligado e o padrão ficou gravado em todo save: vira opt-in uma vez só
 	if not ns.db.raceChatOptIn then ns.db.raceChat, ns.db.raceChatOptIn = false, true end
+	-- o partyTell nasceu desligado e o padrão ficou gravado em todo save: vira ligado uma vez só (#127); desligar depois
+	-- fica
+	if not ns.db.partyTellOn then ns.db.partyTell, ns.db.partyTellOn = true, true end
 	fire("_INIT")               -- módulos que dependem da config inicializam aqui
 end)
 

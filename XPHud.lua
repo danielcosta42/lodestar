@@ -9,9 +9,45 @@ local H = {}
 ns.XPHud = H
 
 --------------------------------------------------------------------------------
+-- Núcleo puro (testado fora do jogo)
+--------------------------------------------------------------------------------
+-- XP das quests do diário (#126): `quests` = { { xp, pronta }, ... } -> total, prontas
+function H.QuestXP(quests)
+	local total, prontas = 0, 0
+	for _, q in ipairs(quests or {}) do
+		local xp = tonumber(q[1]) or 0
+		if xp > 0 then
+			total = total + xp
+			if q[2] then prontas = prontas + xp end
+		end
+	end
+	return total, prontas
+end
+
+-- Segundos até juntar `falta` de XP, com `quests` de XP já no diário (#126). Duas contas, fica a menor:
+--   * as quests do diário descontam do que falta e o resto vem à XP/hora de monstro (`mob`: sem as entregas, que senão
+--     contariam duas vezes) — o tempo de fazê-las já corre dentro dela;
+--   * tudo à XP/hora total da sessão (`total`), monstro e entregas, como se o resto da sessão fosse igual.
+-- A primeira acerta o começo (nada entregue ainda: a total é só de monstro); a segunda, a sessão longa (as quests que
+-- ainda nem estão no diário) — quem chama só passa a total com uma hora de sessão, para uma entrega só não virar
+-- ritmo. Entregar uma quest já descontada não muda a primeira. -> s, 0 quando as quests bastam, nil sem como prever
+function H.Eta(falta, mob, quests, total)
+	falta = falta or 0
+	local resto = falta - (quests or 0)
+	if resto <= 0 then return 0 end
+	local a = mob and mob > 0 and resto / mob * 3600 or nil
+	local b = total and total > 0 and falta / total * 3600 or nil
+	if a and b then return math.min(a, b) end
+	return a or b
+end
+
+if not ns.On then return end
+
+--------------------------------------------------------------------------------
 -- Sessão de XP (para XP/hora)
 --------------------------------------------------------------------------------
 local sessXP, sessStart, prevXP, prevMax, prevLvl = 0, nil, nil, nil, nil
+local sessQuestXP, entregues = 0, {}       -- a XP das entregas na sessão e as quests entregues (#126)
 
 local function onXP()
 	local xp, max, lvl = UnitXP("player"), UnitXPMax("player"), UnitLevel("player")
@@ -27,12 +63,15 @@ local function onXP()
 	prevXP, prevMax, prevLvl = xp, max, lvl
 end
 
+-- XP/hora da sessão: a total e a de monstro (sem as entregas de quest), e as horas de sessão
 local function xpPerHour()
-	if not sessStart then return 0 end
+	if not sessStart then return 0, 0, 0 end
 	local hrs = (GetTime() - sessStart) / 3600
-	if hrs <= 0 then return 0 end
-	return sessXP / hrs
+	if hrs <= 0 then return 0, 0, 0 end
+	return sessXP / hrs, math.max(0, sessXP - sessQuestXP) / hrs, hrs
 end
+-- a XP/hora total só entra na previsão com uma hora de sessão: antes, uma entrega só viraria ritmo
+local TOTAL_HRS = 1
 
 --------------------------------------------------------------------------------
 -- formatação
@@ -58,13 +97,33 @@ local XP_TO_NEXT = {
 	82800,87100,91600,96300,101000,105800,110700,115700,120900,126100,131500,137000,
 	142500,148200,154000,159900,165800,172000,                                  -- 1..59
 }
--- tempo estimado até o nível máximo do cliente: resto do nível atual + os próximos.
+-- tempo estimado até o nível máximo do cliente: resto do nível atual + os próximos, menos as quests do diário.
 local MAXLVL = ns.Client.maxLevel
-local function etaToMax(xph, lvl, curXP, curMax)
-	if not xph or xph <= 0 or lvl >= MAXLVL then return nil end
+local function etaToMax(mob, total, lvl, curXP, curMax, qxp)
+	if lvl >= MAXLVL then return nil end
 	local remain = (curMax or 0) - (curXP or 0)
 	for L = lvl + 1, MAXLVL - 1 do remain = remain + (XP_TO_NEXT[L] or 0) end
-	return remain / xph * 3600
+	return H.Eta(remain, mob, qxp, total)
+end
+
+-- as quests do diário com a XP de cada uma (a função que a interface do Forever usa: fora da documentação, pode sumir).
+-- Sem a que falhou, a escondida, a que o jogador pulou no guia e a que acabou de entregar (a XP dela já chegou e ela
+-- ainda pode estar no diário por um instante).
+local QL = C_QuestLog or {}
+local function questsDoDiario()
+	local out = {}
+	if not (type(GetQuestLogRewardXP) == "function" and QL.GetNumQuestLogEntries and QL.GetInfo) then return out end
+	local skipped = ns.char and ns.char.skipped or {}
+	for i = 1, QL.GetNumQuestLogEntries() or 0 do
+		local info = QL.GetInfo(i)
+		local id = info and not info.isHeader and not info.isHidden and info.questID
+		if id and id > 0 and not skipped[id] and not entregues[id] and not (QL.IsFailed and QL.IsFailed(id)) then
+			local ok, xp = pcall(GetQuestLogRewardXP, id)
+			local pronta = (QL.ReadyForTurnIn and QL.ReadyForTurnIn(id)) or (QL.IsComplete and QL.IsComplete(id))
+			if ok and type(xp) == "number" and xp > 0 then out[#out + 1] = { xp, pronta and true or false } end
+		end
+	end
+	return out
 end
 
 -- diferença de ritmo vs faixa do guia: >0 = adiantado, <0 = atrasado (em níveis)
@@ -165,7 +224,11 @@ local function build()
 	end)
 	frame:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_TOP")
-		GameTooltip:AddLine(ns.L.XP_HUD_DRAG, 1, 1, 1, true)
+		local q, pr = H.QuestXP(questsDoDiario())
+		if q > 0 then
+			GameTooltip:AddLine(ns.L.XP_HUD_QUESTS:format(fmtNum(q), fmtNum(pr)), 1, 1, 1, true)
+		end
+		GameTooltip:AddLine(ns.L.XP_HUD_DRAG, 0.7, 0.7, 0.7, true)
 		GameTooltip:Show()
 	end)
 	frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
@@ -214,11 +277,13 @@ function H:Update()
 	frame.l1:SetText(("%s %d  |cff" .. UI.Hex("dim") .. "%d%%|r%s"):format(ns.L.LEVEL_SHORT, lvl, pct, restTag))
 	frame.bar:SetProgress(xp / max)
 
-	local xph = xpPerHour()
-	local eta = xph > 0 and ((max - xp) / xph * 3600) or nil
-	local etaMax = etaToMax(xph, lvl, xp, max)
-	local l2 = ("%s/h  ·  %s"):format(fmtNum(xph), ns.L.ETA_LEVEL:format(fmtTime(eta)))
-	if etaMax and lvl < MAXLVL - 1 then l2 = l2 .. ("  ·  %d: %s"):format(MAXLVL, fmtTime(etaMax)) end
+	local xph, mob, hrs = xpPerHour()
+	local qxp = H.QuestXP(questsDoDiario())                   -- a XP das quests do diário desconta do que falta (#126)
+	local total = hrs >= TOTAL_HRS and xph or nil
+	local eta = H.Eta(max - xp, mob, qxp, total)
+	local etaMax = etaToMax(mob, total, lvl, xp, max, qxp)
+	local l2 = ("%s/h  ·  %s"):format(fmtNum(xph), eta == 0 and ns.L.ETA_QUESTS or ns.L.ETA_LEVEL:format(fmtTime(eta)))
+	if etaMax and etaMax > 0 and lvl < MAXLVL - 1 then l2 = l2 .. ("  ·  %d: %s"):format(MAXLVL, fmtTime(etaMax)) end
 	frame.l2:SetText(l2)
 
 	local d = pace()
@@ -254,6 +319,15 @@ ns:On("PLAYER_ENTERING_WORLD", function()
 	sessStart = sessStart or GetTime()
 end)
 ns:On("PLAYER_XP_UPDATE", function() onXP(); if ns.XPHud then ns.XPHud:Update() end end)
+-- a XP da entrega (o jogo manda: quest, XP, dinheiro) fica fora da XP/hora de monstro
+ns:On("QUEST_TURNED_IN", function(_, qid, xpReward)
+	sessQuestXP = sessQuestXP + (tonumber(xpReward) or 0)
+	if qid then entregues[qid] = true end
+end)
+ns:On("QUEST_ACCEPTED", function(_, a1, a2)                 -- a repetível pega de novo volta a contar
+	local qid = a2 or a1
+	if qid then entregues[qid] = nil end
+end)
 ns:On("PLAYER_LEVEL_UP", function() if ns.XPHud then ns.XPHud:Update() end end)
 ns:On("_GUIDE_LOADED", function() if ns.XPHud then ns.XPHud:Update() end end)
 ns:Every(2, function() if ns.XPHud then ns.XPHud:Update() end end)   -- atualiza ETA/relógio

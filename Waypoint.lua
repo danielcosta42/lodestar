@@ -166,6 +166,14 @@ end
 
 -- `now` (hora do servidor): com horário de barco/zepelim, diz quando ele sai, chega ou se
 -- é hora de embarcar.
+-- voo que passa por outros sem pousar (#124): "passando por X, Y", os do meio pelo nome curto (antes da vírgula) | nil
+function WP.ViaText(leg)
+	if not (leg and leg.k == "flight" and leg.via and #leg.via > 0) then return nil end
+	local curtos = {}
+	for _, n in ipairs(leg.via) do curtos[#curtos + 1] = (tostring(n):match("^([^,]+)") or n) end
+	return ns.L.LEG_VIA:format(table.concat(curtos, ", "))
+end
+
 function WP.LegText(route, i, secs, now)
 	local L = ns.L
 	local leg, nxt = route.legs[i], route.legs[i + 1]
@@ -185,6 +193,8 @@ function WP.LegText(route, i, secs, now)
 		end
 	elseif leg.k == "flight" then
 		text = L.LEG_FLY:format(leg.name or "?")
+		local via = WP.ViaText(leg)
+		if via then text = text .. " · " .. via end
 	elseif leg.k == "ship" then
 		local ship = L["SHIP_" .. (leg.ship or "boat")]
 		text = leg.name and L.LEG_SHIP_TO:format(ship, leg.name) or L.LEG_SHIP:format(ship)

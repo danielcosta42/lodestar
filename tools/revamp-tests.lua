@@ -151,6 +151,19 @@ local P = loadPure("PartyTell.lua").PartyTell
 local ready = P.Ready({ [1] = false, [2] = false, [3] = true }, { [1] = true, [2] = false, [3] = true, [4] = true })
 check(#ready == 1 and ready[1] == 1, "só a que passou de por fazer a pronta (aceita pronta e a que já estava não)")
 check(#P.Ready(nil, { [1] = true }) == 0, "primeiro retrato (login, /reload): nada")
+-- cada objetivo concluído (#127): uma vez, e não junto com a linha de pronta
+local antesO = { [1] = { false, false }, [2] = { false }, [3] = { true } }
+local agoraO = { [1] = { true, false }, [2] = { true }, [3] = { true }, [4] = { true } }
+local objs = P.Objectives(antesO, agoraO, { 2 })
+check(#objs == 1 and objs[1][1] == 1 and objs[1][2] == 1,
+	"só o objetivo que fechou agora (o da quest que ficou pronta junto, o já feito e a quest nova ficam fora)")
+check(#P.Objectives(nil, agoraO, {}) == 0, "primeiro retrato (login, /reload): nada")
+local varios = P.Objectives({ [5] = { false, false }, [1] = { false } }, { [5] = { true, true }, [1] = { true } }, {})
+check(#varios == 3 and varios[1][1] == 1 and varios[2][1] == 5 and varios[3][2] == 2, "em ordem de quest e objetivo")
+check(P.MAX_LINHAS == 3, "no máximo 3 linhas por atualização do diário")
+local quatro = P.Objectives({ [9] = { false, false, false, false } }, { [9] = { true, true, true, true } }, {})
+check(#quatro == 4, "os quatro que fecharam juntos saem da conta (o envio corta em 3)")
+check(#P.Objectives({ [9] = { [1] = nil } }, { [9] = { true } }, {}) == 0, "objetivo desconhecido antes (sem texto) não conta")
 
 -- ── /way ─────────────────────────────────────────────────────────────────────
 local TT = loadPure("TomTomShim.lua").TomTomShim

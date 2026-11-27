@@ -9,6 +9,7 @@
 --          hearth = { c, x, y, wait = s, spell = Retorno Astral | nil } | nil,
 --          teleports = { { c, x, y, cast, label, spell } },
 --          now = hora do servidor, sched = { [id do transporte] = horário aprendido (Schedule) } }
+--          desvios = { { a, b, f } }: a pé de a a b custa f vezes a reta (o caminho pelo terreno, #125) }
 --   route: { s = total, legs = { { k, a, b, s, name, p, discover, ship } } } ou nil
 --   Perna de barco/zepelim: sid, stop (parada de saída), dock (s atracado), ride (travessia)
 --   e, com horário, dep = hora da saída que a rota pega.
@@ -18,6 +19,7 @@ local J = {}
 ns.Journey = J
 
 local FLIGHT_OVERHEAD = 10     -- falar com o mestre de voo e decolar
+local DESVIO_RAIO = 150        -- jd: o desvio a pé medido vale para quem sai até aqui do começo dele (#125)
 local HEARTH_CAST = 10
 -- pedra e teleporte gastam recarga ou reagente: só valem se pouparem isto (s) a mais
 local GASTO = 300
@@ -80,7 +82,7 @@ function J.Plan(from, to, ctx)
 		for b, f in pairs(dests) do
 			local ib = fmIndex[b]
 			if ia and ib and known[b] then         -- só voa PARA voo conhecido
-				link(ia, ib, f.s + FLIGHT_OVERHEAD, { k = "flight", name = nodes[ib].name, to = b, p = f.p,
+				link(ia, ib, f.s + FLIGHT_OVERHEAD, { k = "flight", name = nodes[ib].name, to = b, from = a, p = f.p,
 					discover = not known[a] and a or nil })
 			end
 		end
@@ -131,27 +133,45 @@ function J.Plan(from, to, ctx)
 		link(START, h, (t.cast or 10) + GASTO, { k = "teleport", name = t.label, spell = t.spell, gasto = GASTO })
 	end
 
-	-- Dijkstra O(n²): ~120 nós, a pé entre todo par do mesmo continente
+	-- a pé: a reta, ou f vezes ela onde o caminho pelo terreno já mostrou o desvio (penhasco, serra: #125). Vale para
+	-- quem sai perto do começo medido rumo ao mesmo fim: até DESVIO_RAIO (o pouso do grifo fica uns jd ao lado do
+	-- mestre de voo; o cais ao lado dele) ou 15% da reta medida, o que for maior
+	local desvios = ctx.desvios or {}
+	local function aPe(pa, pb)
+		return dist(pa, pb) * (J.DesvioDe(desvios, pa, pb) or 1)
+	end
+
+	-- Dijkstra O(n²): ~120 nós, a pé entre todo par do mesmo continente. Cada nó tem dois estados: chegou a pé
+	-- (n + i) ou não (i). A pé emendado em a pé nunca encurta pela reta (a direta é menor ou igual): só serviria para
+	-- fugir de um desvio medido (#125) passando por um cais ou voo ao lado — e o caminho pelo terreno já é o melhor a
+	-- pé. Quem chegou a pé só segue de transporte; o estado separado não perde o "voa até lá e anda" quando o nó também
+	-- se alcança a pé mais barato.
 	local n = #nodes
 	local best, prev, via, done = {}, {}, {}, {}
-	local gastou = {}                         -- [nó] = o `gasto` embutido em best: tempo que não passa
-	for i = 1, n do best[i] = math.huge end
+	local gastou = {}                         -- [estado] = o `gasto` embutido em best: tempo que não passa
+	for i = 1, 2 * n do best[i] = math.huge end
 	best[START] = 0
-	for _ = 1, n do
+	local fim
+	for _ = 1, 2 * n do
 		local u, bu = nil, math.huge
-		for i = 1, n do
+		for i = 1, 2 * n do
 			if not done[i] and best[i] < bu then u, bu = i, best[i] end
 		end
-		if not u or u == GOAL then break end
+		if not u then break end
+		local ui = u > n and u - n or u
+		if ui == GOAL then fim = u; break end
 		done[u] = true
-		local pu = nodes[u].pt
-		for v = 1, n do
-			if not done[v] and v ~= START and nodes[v].pt.c == pu.c then
-				local s = bu + dist(pu, nodes[v].pt) / speed
-				if s < best[v] then best[v], prev[v], via[v], gastou[v] = s, u, { k = "walk" }, gastou[u] end
+		local pu = nodes[ui].pt
+		if u <= n then
+			for v = 1, n do
+				local w = n + v
+				if not done[w] and v ~= START and nodes[v].pt.c == pu.c then
+					local s = bu + aPe(pu, nodes[v].pt) / speed
+					if s < best[w] then best[w], prev[w], via[w], gastou[w] = s, u, { k = "walk" }, gastou[u] end
+				end
 			end
 		end
-		for _, e in ipairs(special[u] or {}) do
+		for _, e in ipairs(special[ui] or {}) do
 			local es, leg = e.s, e.leg
 			if e.fn then
 				local dep
@@ -166,17 +186,84 @@ function J.Plan(from, to, ctx)
 			end
 		end
 	end
-	if best[GOAL] == math.huge then return nil end
+	if not fim then return nil end
 
-	local legs, v = {}, GOAL
+	local legs, v = {}, fim
 	while v ~= START do
 		local u = prev[v]
+		local vi, ui = v > n and v - n or v, u > n and u - n or u
 		local leg = {}
 		for k, val in pairs(via[v]) do leg[k] = val end
-		leg.a, leg.b, leg.s = nodes[u].pt, nodes[v].pt, best[v] - best[u] - (leg.gasto or 0)
-		if leg.k == "walk" and nodes[v].kind == "fm" then leg.name = nodes[v].name end
+		leg.a, leg.b, leg.s = nodes[ui].pt, nodes[vi].pt, best[v] - best[u] - (leg.gasto or 0)
+		if leg.k == "walk" and nodes[vi].kind == "fm" then leg.name = nodes[vi].name end
 		table.insert(legs, 1, leg)
 		v = u
 	end
-	return { s = best[GOAL], legs = legs }
+	local juntas = J.JoinFlights(legs, data.flights, known, data.nodes)
+	-- o total acompanha a soma das pernas (o tempo restante e a troca de rota usam as duas)
+	local antes, depois = 0, 0
+	for _, l in ipairs(legs) do antes = antes + l.s end
+	for _, l in ipairs(juntas) do depois = depois + l.s end
+	return { s = best[fim] - antes + depois, legs = juntas }
 end
+
+-- O desvio medido que vale a pé de pa a pb (#125): o primeiro com o mesmo fim e o começo perto do medido -> f | nil
+function J.DesvioDe(desvios, pa, pb)
+	for _, dv in ipairs(desvios or {}) do
+		if dv.a.c == pa.c and math.abs(dv.b.x - pb.x) < 1 and math.abs(dv.b.y - pb.y) < 1
+			and dist(dv.a, pa) <= math.max(DESVIO_RAIO, 0.15 * dist(dv.a, dv.b)) then return dv.f end
+	end
+end
+
+-- A rota que o jogo voa ao marcar `z` saindo de `a` (#124): o voo direto, se existe, qualquer que seja a distância;
+-- senão o mais curto pelos voos conhecidos (pela duração de cada trecho, sem pousar). -> { nós depois de a }, s | nil
+function J.GameRoute(flights, known, a, z)
+	local direto = flights and flights[a] and flights[a][z]
+	if direto then return { z }, direto.s end
+	local best, prev, done = { [a] = 0 }, {}, {}
+	while true do
+		local u, bu
+		for nd, sv in pairs(best) do
+			if not done[nd] and (not bu or sv < bu) then u, bu = nd, sv end
+		end
+		if not u then return nil end
+		if u == z then break end
+		done[u] = true
+		for v, f in pairs(flights and flights[u] or {}) do
+			if known[v] and not done[v] and (not best[v] or bu + f.s < best[v]) then best[v], prev[v] = bu + f.s, u end
+		end
+	end
+	local rota, v = {}, z
+	while v ~= a do table.insert(rota, 1, v); v = prev[v] end
+	return rota, best[z]
+end
+
+-- Voos seguidos viram um só (#124) quando marcar o último é o que vale: o jogo voa a rota dele (J.GameRoute) sem
+-- pousar. Se ela é mais lenta que pousar no do meio e marcar de novo (o direto longo de Undercity a Hammerfall, contra
+-- passar por Tarren Mill), as pernas ficam separadas. Tempo, trajeto e os do meio (`via`) são os da rota do jogo. Não
+-- junta através de uma parada (#117: `parada` marca o fim de um trecho).
+local TOLERA_JUNTA = 10          -- s: um voo só, até isto mais lento que pousar e marcar de novo
+function J.JoinFlights(legs, flights, known, nodes)
+	local out = {}
+	for _, leg in ipairs(legs or {}) do
+		local ant = out[#out]
+		local junta
+		if ant and ant.k == "flight" and leg.k == "flight" and not ant.parada and flights then
+			local rota, s = J.GameRoute(flights, known or {}, ant.from, leg.to)
+			if rota and s + FLIGHT_OVERHEAD <= ant.s + leg.s + TOLERA_JUNTA then
+				local p, via, de = {}, {}, ant.from
+				for i, nd in ipairs(rota) do
+					for _, x in ipairs(flights[de][nd].p or {}) do p[#p + 1] = x end
+					if i < #rota then via[#via + 1] = nodes and nodes[nd] and nodes[nd].n or tostring(nd) end
+					de = nd
+				end
+				junta = { k = "flight", name = leg.name, to = leg.to, from = ant.from, discover = ant.discover,
+					a = ant.a, b = leg.b, s = s + FLIGHT_OVERHEAD, p = #p > 0 and p or nil,
+					via = #via > 0 and via or nil, parada = leg.parada }
+			end
+		end
+		if junta then out[#out] = junta else out[#out + 1] = leg end
+	end
+	return out
+end
+

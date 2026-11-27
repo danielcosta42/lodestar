@@ -287,7 +287,8 @@ local function step(what, fn)
 end
 
 -- login (o tema vale no ADDON_LOADED)
-_G.LodestarDB = { theme = THEME, debug = true }   -- debug: o erro de ticker e de página vai ao "chat" (falha)
+-- partyTell = false: o padrão antigo gravado num save de antes do #127 (vira ligado uma vez no ADDON_LOADED)
+_G.LodestarDB = { theme = THEME, debug = true, partyTell = false }   -- debug: o erro de ticker e de página vai ao "chat"
 step("ADDON_LOADED", function() ns.fire("ADDON_LOADED", "Lodestar") end)
 step("PLAYER_LOGIN", function() ns.fire("PLAYER_LOGIN") end)
 step("PLAYER_ENTERING_WORLD", function() ns.fire("PLAYER_ENTERING_WORLD") end)
@@ -844,12 +845,13 @@ step("Fresh route after entering world", function()
 	T.PlayerWorld = function() return { c = 0, x = -10500, y = 1050 } end
 	T.World = function() return { c = 0, x = -10560, y = 1010 } end
 	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
 		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		upd(ns.eventFrame, 1.01)                           -- o jogador já está aqui (sem salto no tique seguinte, #123)
 		local r1 = T:Route()
 		assert(r1 and r1.legs[1], "sem rota")
 		r1.legs[1].path, r1.legs[1].pathFail, r1.legs[1].pathAt = false, true, { c = 0, x = -10500, y = 1050 }
 		assert(T:Describe():find("fail"), "o relatório não mostra a falha do caminho")
-		local upd = ns.eventFrame:GetScript("OnUpdate")
 		-- tela de carregamento comum (masmorra, pedra, barco entre continentes): não refaz
 		ns.fire("PLAYER_ENTERING_WORLD", false, false); ns.fire("LOADING_SCREEN_DISABLED")
 		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
@@ -1232,6 +1234,291 @@ step("AreaGoals", function()
 	WorldMapFrame.GetMapID, WorldMapFrame.GetCanvas = nil, nil
 	D:Clear("manual")
 	AG.Refresh()
+	assert(ok, err)
+end)
+-- voo que passa por outros (#124): a linha diz por onde, depois do " · " (a linha de baixo na Navegação)
+step("LegText via", function()
+	local t = ns.Waypoint.LegText({ leg = 1, legs = { { k = "flight", name = "Hammerfall, Arathi", s = 250,
+		via = { "Tarren Mill, Hillsbrad" } } } }, 1)
+	local head, tail = t:match("^(.-) · (.+)$")
+	assert(head and head:find("Hammerfall", 1, true) and tail:find("Tarren Mill", 1, true)
+		and not tail:find("Hillsbrad", 1, true), "voo sem o via: " .. t)
+	-- a linha de baixo da Navegação: só os do meio (o tempo já está à direita)
+	local v = ns.Waypoint.ViaText({ k = "flight", via = { "Tarren Mill, Hillsbrad" } })
+	assert(v and v:find("Tarren Mill", 1, true) and not v:find(":%d"), "via: " .. tostring(v))
+	assert(ns.Waypoint.ViaText({ k = "flight" }) == nil and ns.Waypoint.ViaText({ k = "walk", via = { "X" } }) == nil,
+		"via sem os do meio")
+end)
+-- desvio do terreno (#125): a perna a pé que ainda não começou, bem mais longa pelo terreno, corrige a rota
+step("Terrain detour", function()
+	local T, TR = ns.Travel, ns.Terrain
+	local pw, w0, ctx0, path0 = T.PlayerWorld, T.World, T.Context, TR.Path
+	local sw, sh
+	for _, v in pairs(ns.travel.nodes) do
+		if v.n:find("^Stormwind") then sw = v elseif v.n:find("^Sentinel Hill") then sh = v end
+	end
+	local eu = { c = sw.c, x = sw.x + 15, y = sw.y }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = sh.c, x = sh.x - 400, y = sh.y } end          -- 400 jd ao sul de Sentinel Hill
+	T.Context = function(self)
+		local c = ctx0(self)
+		c.known = {}
+		for id, v in pairs(ns.travel.nodes) do if v.f:find("A", 1, true) then c.known[id] = true end end
+		return c
+	end
+	local desvio = 0
+	TR.Path = function(_, de, para)
+		if math.abs(de.x - eu.x) < 1 and math.abs(de.y - eu.y) < 1 then return { de, para } end
+		desvio = desvio + 1                                -- do mestre de voo: dá a volta (3000 jd para o lado)
+		return { de, { c = de.c, x = de.x + 3000, y = de.y }, para }
+	end
+	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 62, y = 60, label = "X" })
+		T:Fresh()
+		local r1 = T:Route()
+		local ks = {}
+		for _, l in ipairs(r1 and r1.legs or {}) do ks[#ks + 1] = l.k end
+		assert(r1 and #r1.legs >= 3 and r1.legs[#r1.legs].k == "walk", "sem voo e a pé no fim: " .. table.concat(ks, ","))
+		local fim, s1 = r1.legs[#r1.legs], r1.legs[#r1.legs].s
+		for _ = 1, 10 do upd(ns.eventFrame, 0.06) end
+		assert(desvio >= 1, "o caminho da perna seguinte não foi calculado")
+		assert(#T:Context().desvios >= 1, "o desvio não voltou ao planejador")
+		assert(T:Route() ~= r1 or fim.s > s1 * 2, "a rota não viu o desvio")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World, T.Context, TR.Path = pw, w0, ctx0, path0
+	T:ResetPaths()
+	assert(ok, err)
+end)
+-- desvio na perna atual (#125): fica guardado de onde o caminho saiu (a rota nova não volta à reta e alterna)
+step("Terrain detour current leg", function()
+	local T, TR = ns.Travel, ns.Terrain
+	local pw, w0, path0 = T.PlayerWorld, T.World, TR.Path
+	local eu = { c = 0, x = -10500, y = 1050 }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = 0, x = -10500 - 600, y = 1050 } end             -- 600 jd ao sul, a pé
+	TR.Path = function(_, de, para) return { de, { c = de.c, x = de.x, y = de.y + 3000 }, para } end
+	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		T:ResetPaths()
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		T:Fresh()
+		local r1 = T:Route()
+		assert(r1 and r1.legs[1].k == "walk", "sem rota a pé")
+		for _ = 1, 10 do upd(ns.eventFrame, 0.06) end
+		local achou
+		for _, dv in ipairs(T:Context().desvios) do
+			if math.abs(dv.a.x - eu.x) < 1 and math.abs(dv.a.y - eu.y) < 1 and dv.f > 5 then achou = true end
+		end
+		assert(achou, "o desvio da perna atual não ficou guardado")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World, TR.Path = pw, w0, path0
+	T:ResetPaths()
+	assert(ok, err)
+end)
+-- andando até o mestre de voo (#125): a rota a pé que a reta acha melhor, sem medida daqui e com desvio medido para o
+-- mesmo fim, só entra depois de medir — a rota não alterna
+step("Terrain detour measure first", function()
+	local T, TR = ns.Travel, ns.Terrain
+	local pw, w0, ctx0, path0, dados = T.PlayerWorld, T.World, T.Context, TR.Path, ns.travel
+	local eu = { c = 0, x = 0, y = 0 }
+	local alvo = { c = 0, x = 600, y = 0 }
+	ns.travel = { nodes = { [1] = { n = "Perto", c = 0, x = 0, y = 50, f = "A" }, [2] = { n = "Lá", c = 0, x = 600, y = 50, f = "A" } },
+		flights = { [1] = { [2] = { s = 80, p = { 0, 50, 600, 50 } } } }, ships = {} }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = alvo.c, x = alvo.x, y = alvo.y } end
+	T.Context = function(self)
+		local c = ctx0(self)
+		c.known, c.hearth, c.teleports, c.speed = { [1] = true, [2] = true }, nil, {}, 7
+		return c
+	end
+	local medidas = {}
+	TR.Path = function(_, de, para)
+		medidas[#medidas + 1] = de
+		-- daqui até o alvo, a pé dá a volta (bem mais longo); do lado de lá (o voo pousa ali) e até o voo, reto
+		if de.x > 300 or para.x < 300 then return { de, para } end
+		return { de, { c = de.c, x = de.x, y = de.y + 1500 }, para }
+	end
+	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		T:ResetPaths()
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		T:Fresh()
+		assert(T:Route() and T:Route().legs[1].k == "walk" and #T:Route().legs == 1, "começa a pé (a reta)")
+		for _ = 1, 10 do upd(ns.eventFrame, 0.06) end                -- mede a perna atual: desvio, voa
+		local function voa()
+			for _, l in ipairs(T:Route() and T:Route().legs or {}) do if l.k == "flight" then return true end end
+			return false
+		end
+		assert(voa(), "o desvio medido não trocou para o voo")
+		for _ = 1, 4 do eu.y = eu.y - 100; upd(ns.eventFrame, 1.01) end   -- andou 400 jd: fora do raio da medida
+		assert(voa(), "andar trocou a rota")
+		local n0 = #medidas
+		T:Replan(false)                                            -- a reta daqui acha a pé melhor (103 s contra 161)
+		assert(voa(), "trocou para a pé sem medir daqui")
+		for _ = 1, 10 do upd(ns.eventFrame, 0.06) end
+		local daqui = false
+		for i = n0 + 1, #medidas do daqui = daqui or (math.abs(medidas[i].y + 400) < 1 and medidas[i].x == 0) end
+		assert(daqui, "não mediu daqui")
+		T:Replan(false)
+		assert(voa(), "a medida daqui (desvio) não segurou a rota")
+		for _ = 1, 3 do eu.y = eu.y - 100; upd(ns.eventFrame, 1.01) end   -- mais 300 jd: sem medida de novo
+		T:Replan(true)                                             -- forçado com o mesmo destino (mapa de voo aberto)
+		assert(voa(), "o replanejar forçado trocou para a pé sem medir")
+	end)
+	ns.Destinations:Clear("manual")
+	ns.travel, T.PlayerWorld, T.World, T.Context, TR.Path = dados, pw, w0, ctx0, path0
+	T:ResetPaths()
+	assert(ok, err)
+end)
+-- salto (#123): portal/teleporte refaz a rota no tique seguinte; no barco (perna de barco atual), não
+step("Route after teleport", function()
+	local T = ns.Travel
+	local pw, w = T.PlayerWorld, T.World
+	local eu = { c = 0, x = -10500, y = 1050 }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = 0, x = -10560, y = 1010 } end
+	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		upd(ns.eventFrame, 1.01)
+		local r1 = T:Route()
+		assert(r1, "sem rota")
+		eu.x = eu.x + 600                                  -- portal: 600 jd num tique
+		upd(ns.eventFrame, 1.01)
+		local r2 = T:Route()
+		assert(r2 and r2 ~= r1, "o salto não refez a rota")
+		local l1 = r2.legs[1]
+		local k0, b0 = l1.k, l1.boarded
+		l1.k, l1.boarded = "ship", GetServerTime()         -- a bordo: a tela de carregamento salta, mas não refaz
+		eu.c, eu.x = 1, 2000
+		upd(ns.eventFrame, 1.01)
+		assert(T:Route() == r2, "refez a rota no meio do barco")
+		l1.k, l1.boarded = "tram", nil                     -- dentro do bonde (instância própria): não refaz
+		eu.c = 369
+		upd(ns.eventFrame, 1.01)
+		assert(T:Route() == r2, "refez a rota dentro do bonde")
+		l1.k, l1.boarded = k0, b0
+		eu.c = 1
+		upd(ns.eventFrame, 1.01)                           -- de volta: salto que a perna a pé não explica
+		local r3 = T:Route()
+		assert(r3 and r3 ~= r2, "saiu do bonde sem refazer")
+		upd(ns.eventFrame, 1.01)                           -- parado: sem salto, sem refazer
+		assert(T:Route() == r3, "refez sem salto")
+		local semPos = T.PlayerWorld
+		T.PlayerWorld = function() return nil end          -- um tique sem posição (tela de carregamento)
+		upd(ns.eventFrame, 1.01)
+		T.PlayerWorld = semPos
+		eu.c, eu.x = 0, -10500
+		upd(ns.eventFrame, 1.01)
+		assert(T:Route() ~= r3, "o tique sem posição desligou o salto")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World = pw, w
+	assert(ok, err)
+end)
+-- faixa de XP (#126): a XP das quests do diário entra na previsão
+step("XP bar quests", function()
+	local QL, rx, db, shown, gt, ux = _G.C_QuestLog, _G.GetQuestLogRewardXP, ns.db.xpHud, ns.UIShown, _G.GetTime, _G.UnitXP
+	local n, get, done = QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete
+	local add = GameTooltip.AddLine
+	QL.GetNumQuestLogEntries = function() return 3 end
+	QL.GetInfo = function(i) return i == 1 and { isHeader = true } or { questID = 100 + i } end
+	QL.IsComplete = function(id) return id == 102 end
+	ns.db.xpHud = true
+	ns.UIShown = function() return true end
+	local dicas = {}
+	GameTooltip.AddLine = function(_, t) dicas[#dicas + 1] = t end
+	local ok, err = pcall(function()
+		local f
+		_G.GetQuestLogRewardXP = function() return 2000 end            -- 4000 de XP no diário; faltam 3800
+		ns.XPHud:Update()
+		f = ns.XPHud:GetFrame()
+		assert(f and f:IsShown(), "faixa escondida")
+		assert(f.l2:GetText():find(ns.L.ETA_QUESTS, 1, true), "as quests bastam e a faixa não disse: " .. f.l2:GetText())
+		f:GetScript("OnEnter")(f)
+		assert(dicas[1] and dicas[1]:find("4k", 1, true) and dicas[1]:find("2k", 1, true), "dica sem a XP das quests: "
+			.. tostring(dicas[1]))
+		-- meia hora de sessão com 1000 de monstro (2000/h); quests de 1000: faltam 2800, 2000 no diário -> 800 a 2000/h
+		_G.GetQuestLogRewardXP = function() return 1000 end
+		_G.GetTime = function() return gt() + 1800 end
+		_G.UnitXP = function() return 2200 end
+		ns.fire("PLAYER_XP_UPDATE")
+		assert(f.l2:GetText():find("24m", 1, true), "previsão sem descontar as quests: " .. f.l2:GetText())
+		-- entrega a pronta (1000, já descontada): a previsão não encurta
+		ns.fire("QUEST_TURNED_IN", 102, 1000, 0)
+		_G.UnitXP = function() return 3200 end
+		ns.fire("PLAYER_XP_UPDATE")
+		assert(f.l2:GetText():find("24m", 1, true), "a entrega já descontada contou de novo: " .. f.l2:GetText())
+		_G.GetQuestLogRewardXP = nil                                    -- sem a função: como antes
+		ns.XPHud:Update()
+		assert(not f.l2:GetText():find(ns.L.ETA_QUESTS, 1, true), "sem a função e a faixa disse que sobe")
+	end)
+	QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete = n, get, done
+	_G.GetQuestLogRewardXP, ns.db.xpHud, ns.UIShown, _G.GetTime, _G.UnitXP = rx, db, shown, gt, ux
+	GameTooltip.AddLine = add
+	if ns.XPHud:GetFrame() then ns.XPHud:Update() end
+	assert(ok, err)
+end)
+-- avisar o grupo (#127): ligado por padrão; objetivo que fecha e quest que fica pronta, uma linha cada, uma vez
+step("Party tell", function()
+	local QL, ig, scm, cci = _G.C_QuestLog, _G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo
+	local n, get, done, objs = QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete, QL.GetQuestObjectives
+	-- quest 77 com dois objetivos; quest 78 com quatro (para o limite de 3 linhas)
+	local feito = { [77] = { false, false }, [78] = { false, false, false, false, true } }   -- o 5º de 78 já feito
+	local semTexto = false
+	QL.GetNumQuestLogEntries = function() return 2 end
+	QL.GetInfo = function(i) return { questID = 76 + i } end
+	QL.IsComplete = function(q)
+		for _, f in ipairs(feito[q]) do if not f then return false end end
+		return true
+	end
+	QL.GetQuestObjectives = function(q)
+		local out = {}
+		for j, f in ipairs(feito[q]) do
+			-- sem os dados do servidor: linha vazia e "por fazer" (o objetivo já feito não pode parecer recém-fechado)
+			local vazio = semTexto and q == 78
+			out[j] = { text = vazio and "" or ((f and "8/8" or "3/8") .. " Alvo " .. q .. "." .. j), finished = f and not vazio }
+		end
+		return out
+	end
+	_G.IsInGroup = function() return true end
+	local ditas = {}
+	_G.SendChatMessage = function(msg, canal) ditas[#ditas + 1] = canal .. "|" .. msg end
+	_G.C_ChatInfo = { SendChatMessage = _G.SendChatMessage }
+	local ok, err = pcall(function()
+		assert(ns.db.partyTell == true, "o save antigo com o padrão desligado não virou ligado")
+		ns.fire("GROUP_JOINED")                                     -- o retrato de quando entrou no grupo
+		feito[77][1] = true                                         -- fechou o primeiro objetivo
+		ns.PartyTell:Check()
+		assert(#ditas == 1 and ditas[1]:find("^PARTY|Lodestar: ") and ditas[1]:find("8/8 Alvo 77.1", 1, true),
+			"objetivo: " .. table.concat(ditas, " / "))
+		feito[77][1] = false; ns.PartyTell:Check()                  -- perdeu o item e recuperou: não repete
+		feito[77][1] = true; ns.PartyTell:Check()
+		assert(#ditas == 1, "o objetivo que voltou falou de novo: " .. table.concat(ditas, " / "))
+		feito[77][2] = true                                         -- o último fecha e a quest fica pronta: só a de pronta
+		ns.PartyTell:Check()
+		assert(#ditas == 2 and ditas[2]:find(ns.L.PT_READY, 1, true) and not ditas[2]:find("Alvo 77.2", 1, true),
+			"pronta: " .. table.concat(ditas, " / "))
+		feito[77] = { false, false }; ns.PartyTell:Check()           -- já avisada pronta, perdeu os itens dos dois
+		feito[77][2] = true; ns.PartyTell:Check()                   -- recuperou um (nunca avisado): não fala
+		feito[77][1] = true; ns.PartyTell:Check()                   -- pronta de novo: não repete
+		assert(#ditas == 2, "objetivo de quest já pronta falou: " .. table.concat(ditas, " / "))
+		semTexto = true; ns.PartyTell:Check()                       -- os dados do servidor somem por um instante
+		semTexto = false; ns.PartyTell:Check()                      -- e voltam: nada acabou de fechar
+		assert(#ditas == 2, "objetivo sem texto virou objetivo fechado: " .. table.concat(ditas, " / "))
+		feito[78] = { true, true, true, true, false }               -- quatro de uma vez: só 3 linhas
+		ns.PartyTell:Check()
+		assert(#ditas == 5, "quatro objetivos de uma vez: " .. #ditas)
+		feito[78] = { false, false, false, false, false }; ns.PartyTell:Check()
+		feito[78] = { true, true, true, true, false }               -- de novo: os 3 avisados não repetem; o 4º sai
+		ns.PartyTell:Check()
+		assert(#ditas == 6 and ditas[6]:find("Alvo 78.4", 1, true), "repetiu ou perdeu: " .. table.concat(ditas, " / "))
+	end)
+	QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete, QL.GetQuestObjectives = n, get, done, objs
+	_G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo = ig, scm, cci
 	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)

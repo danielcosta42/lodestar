@@ -585,4 +585,24 @@ check(PS.Encode({ c = 1, z = "X", pts = { 0, 0, 1, 1, 2, 2 }, f = { [2] = true }
 	"passagem: o trecho de queda vai no texto")
 local mg = PS.Merge({ { c = 0 } }, { { c = 1 }, { c = 0 } })
 check(#mg == 3 and mg[2].c == 1, "passagem: as do addon e as gravadas juntas")
+-- faixa de XP (#126): a XP das quests do diário desconta do que falta
+do
+	local H = loadPure("XPHud.lua", { UI = {} }).XPHud
+	local q, pr = H.QuestXP({ { 1000, true }, { 2500, false }, { 0, true }, { "x", false } })
+	check(q == 3500 and pr == 1000, "XP das quests: total e prontas")
+	check(H.QuestXP({}) == 0 and H.QuestXP(nil) == 0, "sem quests: zero")
+	check(H.Eta(10000, 5000, 0, 5000) == 7200, "sem quests: falta ÷ XP/hora")
+	check(H.Eta(10000, 5000, 4000, 5000) == 4320, "começo da sessão (só monstro): desconta as quests antes de dividir")
+	check(H.Eta(10000, 5000, 12000, 5000) == 0 and H.Eta(10000, 0, 10000, 0) == 0, "as quests bastam: zero, mesmo sem XP/hora")
+	check(H.Eta(10000, 0, 2000, 0) == nil and H.Eta(10000, nil, 0) == nil, "sem XP/hora e sem bastar: sem previsão")
+	-- 30 min, 5000 de monstro; faltam 20000; duas quests de 8000 no diário. Entregar uma (já descontada) não muda nada
+	local antes = H.Eta(20000, 10000, 16000, 10000)
+	local depois = H.Eta(12000, 10000, 8000, 26000)
+	check(math.abs(antes - 1440) < 1 and math.abs(depois - antes) < 1, "entregar quest já descontada não encurta a previsão")
+	-- sessão longa, 60% da XP de entrega e diário vazio: vale a total (a de monstro sozinha seria pessimista)
+	check(H.Eta(10000, 4000, 0, 10000) == 3600, "sessão longa: a XP/hora total")
+	-- começo de sessão (menos de uma hora: sem a total), uma quest só de 8000 no diário: a entrega não encurta
+	local a1, d1 = H.Eta(20000, 10000, 8000, nil), H.Eta(12000, 10000, 0, nil)
+	check(math.abs(a1 - 4320) < 1 and math.abs(d1 - a1) < 1, "sem a total, a entrega de uma quest só não encurta")
+end
 print(("ok: %d checks"):format(checks))
