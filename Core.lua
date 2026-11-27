@@ -162,6 +162,7 @@ local DB_DEFAULTS = {
 	targetButton = true,  -- botão de alvo do passo
 	markTarget = true,    -- o botão de alvo marca com ícone de raide
 	npcNames = {},        -- nome de cada NPC do guia no idioma do cliente (aprendido ao ver)
+	transitShare = true,  -- horário de barco e zepelim com a guilda e o grupo (mensagem escondida; #116)
 	partySync = true,     -- contagem dos membros do grupo que usam o Lodestar (só o grupo, mensagem escondida)
 	rareAlerts = true,    -- aviso de raro perto
 	collectPins = true,   -- livros e pets raros que faltam no mapa e no minimapa, com aviso perto (issue #94)
@@ -311,10 +312,12 @@ SlashCmdList.LODESTAR = function(msg)
 	elseif cmd == "card" then
 		if ns.ReportCard then ns.ReportCard:Show(UnitLevel("player") or 1) end
 	elseif cmd == "way" and (rest == "off" or rest == "clear") then
-		if ns.Waypoint then ns.Waypoint:ClearCustom() end
+		if ns.Waypoint then ns.Waypoint:ClearAll() end             -- o destino manual e as paradas (#117)
 		ns:Print(ns.L.DEST_CLEARED)
 	elseif cmd == "way" then
-		if not (ns.Waypoint and ns.Waypoint:Way(rest)) then ns:Print(ns.L.WAY_USAGE) end
+		local ok, said
+		if ns.Waypoint then ok, said = ns.Waypoint:Way(rest) end
+		if not (ok or said) then ns:Print(ns.L.WAY_USAGE) end         -- zona que não se conhece: o Way já disse
 	elseif cmd == "travel" or cmd == "viagem" then
 		if ns.TravelPanel then ns.TravelPanel:Toggle() end
 	elseif cmd == "export" then
@@ -336,6 +339,7 @@ SlashCmdList.LODESTAR = function(msg)
 	elseif cmd == "train" then
 		if rest == "off" then
 			if ns.Waypoint then ns.Waypoint:ClearCustom() end
+			if ns.Destinations then ns.Destinations:ClearStops("classtrainer") end   -- a parada do treinador (#117)
 			ns:Print(ns.L.TRAIN_CANCEL)
 		elseif ns.Services then
 			ns.Services:GoTo("classtrainer")

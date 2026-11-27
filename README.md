@@ -68,6 +68,10 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
   map or minimap, a typed coordinate, or the **nearest** class/profession trainer, repair, vendor, inn,
   bank, auction house, flight master or stable (nearest by travel time, not straight line). All in the
   **Travel** panel — the compass button in the guide header.
+- **Stops on the way** — a service or a coordinate is added as a stop before your destination instead of
+  replacing it: the route goes stop by stop, then on to the guide step, with the detour in the total time.
+  Each stop is listed with an × to remove it, and it is done when you get there or open that service's
+  window; **Shift+click** a service (or Shift+Go) to go straight there instead.
 - **Multiple guides open at once as tabs** — switch, add, or close routes on the fly, with a clean empty state when none is loaded.
 - **Live counts on every goal** — "Kill Boar 3/8", the bag count on collect goals, the time left on timed quests (with an
   alert at 5 minutes and at 1 minute) and a clear mark on a failed escort or timed quest.
@@ -135,8 +139,8 @@ what it always was: a file you hand over on purpose.
 | `/ls export` · `/ls import` | Share or load a custom guide |
 | `/ls scan` | Ask the server about the quests only this client knows |
 | `/ls travel` | Open the Travel panel |
-| `/ls near <type>` | Route to the nearest service: `trainer`, `prof <name>`, `repair`, `vendor`, `inn`, `bank`, `auction`, `flight`, `stable` |
-| `/ls way <x> <y> [zone]` · `/ls way off` | Set / clear a manual destination |
+| `/ls near <type>` | Add the nearest service as a stop: `trainer`, `prof <name>`, `repair`, `vendor`, `inn`, `bank`, `auction`, `flight`, `stable` |
+| `/ls way <x> <y> [zone]` · `/ls way off` | Add a stop / clear the stops and the manual destination |
 | `/ls diario` | Tidy quest log: quests your route no longer uses |
 | `/ls report` | Report a problem: copyable text for a GitHub issue |
 

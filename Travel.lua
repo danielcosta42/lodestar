@@ -3,9 +3,10 @@
 -- conhecidos, velocidade a pé, pedra de lar, teleportes), pede a rota ao Journey,
 -- acompanha em que perna o jogador está e decide quando recalcular.
 --
---   ns.Travel:Route()  -> { s, legs, leg = índice da perna atual, dest, kind } | nil
+--   ns.Travel:Route()  -> { s, legs, leg = índice da perna atual, dest, kind, stops } | nil
 --   ns.Travel:Leg()    -> a perna atual | nil
 --   evento interno "_ROUTE_CHANGED" quando a rota ou a perna muda
+--   Com paradas (#117): `stops[j] = { leg, dest }` (a última perna até a parada j, que leva `parada = dest`)
 --=============================================================================
 local ADDON, ns = ...
 local T = {}
@@ -46,21 +47,76 @@ end
 -- `now` (hora do servidor): perna de barco com horário conta até a saída mais a travessia
 -- (já a bordo, o que falta dela); sem `now`, o custo com que a rota foi planejada. `reta`: a
 -- pé em linha reta mesmo com caminho e com o `gasto` da pedra — para comparar com uma rota
--- nova, que é custada assim.
+-- nova, que é custada assim. A espera do barco conta de agora: as pernas de antes já correm dentro
+-- dela (somar as duas contava o caminho até o cais duas vezes e a rota igual trocava a cada 10 s, #117);
+-- `g` é o gasto da pedra já somado, que não é tempo que passa.
 function T.Remaining(route, pos, speed, now, reta)
-	local s = 0
+	local s, g = 0, 0
 	for i = route.leg, #route.legs do
 		local leg = route.legs[i]
 		if i == route.leg and leg.k == "walk" and pos and pos.c == leg.b.c then
 			local falta = not reta and leg.path and ns.Terrain and select(3, ns.Terrain.Ahead(leg.path, pos, 0))
 			s = s + (falta or dist(pos, leg.b)) / (speed or 7)
 		elseif leg.k == "ship" and leg.dep and now then
-			s = s + math.max(0, leg.dep - now) + math.max(0, (leg.ride or 0) - math.max(0, now - leg.dep))
+			s = math.max(s - g, leg.dep - now) + g + math.max(0, (leg.ride or 0) - math.max(0, now - leg.dep))
 		else
 			s = s + leg.s + (reta and leg.gasto or 0)
+			if reta then g = g + (leg.gasto or 0) end
 		end
 	end
 	return s
+end
+
+-- Rota pelas paradas até o destino (#117): um trecho do Journey por par (jogador -> parada 1 -> ... -> destino),
+-- emendados numa rota só. `chain` = { { dest, kind }, ... } (Destinations:Chain); `worldOf(dest)` -> { c, x, y } | nil;
+-- `plan(a, b, opts)` -> rota do Journey | nil, com opts = { at = s de viagem antes do trecho, hearth = a pedra já
+-- foi usada num trecho anterior }. A última perna até cada parada leva `parada` e entra em `stops`. Trecho sem rota
+-- corta a cadeia ali: a rota vai até a última alcançada (o resto se tenta de novo de lá); sem o primeiro, nil. Ponto
+-- que não cai no mapa (`worldOf` nil: zona que não se conhece) fica de fora, sem cortar o resto (#117).
+function T.PlanChain(from, chain, worldOf, plan)
+	local legs, stops, s, a, last = {}, {}, 0, from, nil
+	local at, hearth = 0, false               -- `s` soma o plano (com o gasto da pedra); `at`, o tempo de verdade
+	for _, t in ipairs(chain) do
+		local b = worldOf(t.dest)
+		if b then
+			local seg = plan(a, b, { at = at, hearth = hearth })
+			if not (seg and #seg.legs > 0) then break end
+			for _, leg in ipairs(seg.legs) do
+				legs[#legs + 1] = leg
+				at = at + (leg.s or 0)
+				if leg.k == "hearth" then hearth = true end
+			end
+			s = s + seg.s
+			if t.kind == "stop" then
+				legs[#legs].parada = t.dest
+				stops[#stops + 1] = { leg = #legs, dest = t.dest }
+			end
+			a, last = b, t
+		end
+	end
+	if not last then return nil end
+	return { s = s, legs = legs, stops = stops, dest = last.dest, kind = last.kind }
+end
+
+-- Em voo ou a bordo do barco (#117): refazer a rota agora sairia do meio do ar ou do mar e perderia a perna (e a
+-- chegada do barco, que se observa no desembarque). Mudou a fila nesse meio: a chave fica velha e o relógio refaz
+-- a rota depois de pousar ou desembarcar. `now` (hora do servidor): embarcado há mais que o dobro da travessia e
+-- dois minutos (pulou do barco, o desembarque não se viu) já não conta — a rota não fica presa.
+function T.Riding(route, onTaxi, now)
+	if onTaxi then return true end
+	local cur = route and route.legs[route.leg]
+	if not (cur and cur.k == "ship" and cur.boarded) then return false end
+	return not (now and now - cur.boarded > 2 * (cur.ride or 0) + 120)
+end
+
+-- O que identifica a cadeia: mudou (parada nova, tirada, passo novo, corpo), a rota se refaz.
+function T.ChainKey(chain)
+	local parts = {}
+	for i, t in ipairs(chain) do
+		local d = t.dest
+		parts[i] = ("%s:%s:%.1f:%.1f"):format(t.kind or "?", d.zone or d.map or "?", d.x or 0, d.y or 0)
+	end
+	return #parts > 0 and table.concat(parts, "|") or nil
 end
 
 -- Entre as paradas perto de um anunciador ({ sid, k, nome da outra parada, distância },
@@ -204,18 +260,33 @@ local function shipById(sid)
 	for _, s in ipairs(ns.travel and ns.travel.ships or {}) do if s.id == sid then return s end end
 end
 
-function T:Observe(sid, k, ev, t, rideFrom, rideS, replan)
+-- `shared`: veio da guilda ou do grupo (TransitShare) — não volta a sair nem conta como observação própria
+function T:Observe(sid, k, ev, t, rideFrom, rideS, replan, shared)
 	local ship = shipById(sid)
 	if not (ship and ns.Schedule) then return end
 	local store = transit()
-	local ride = store[sid] and store[sid].ride
+	local old = store[sid]
+	local ride = old and old.ride
 	if rideFrom and rideS and rideS > 5 then
 		ride = ride or {}
 		ride[rideFrom] = rideS
 	end
-	store[sid] = ns.Schedule.Learn(store[sid], ship, k, ev, t, ride)
+	local h = ns.Schedule.Learn(old, ship, k, ev, t, ride)
+	store[sid] = h
+	-- a última observação própria e o início de ciclo dela (mandam sobre as de fora: TransitShare.Accept)
+	h.own, h.ownT0 = old and old.own, old and old.ownT0
+	if shared then
+		h.T = old and old.T                                -- de fora só move a fase; o período aprendido fica
+	else
+		h.own, h.ownT0 = t, h.t0
+	end
+	if not shared and ns.TransitShare then ns.TransitShare:Broadcast(sid, k, ev, t) end
 	if replan then T:Replan(true) end
 end
+
+-- o horário aprendido deste reino (TransitShare responde com ele)
+function T:Transit() return transit() end
+
 
 --------------------------------------------------------------------------------
 -- a rota atual
@@ -225,36 +296,76 @@ local route, routeKey, sinceReplan = nil, nil, 0
 function T:Route() return route end
 function T:Leg() return route and route.legs[route.leg] end
 function T:Speed() return speed end
+-- em voo ou a bordo agora (T.Riding); morto ou fantasma, não (a rota até o corpo vem já)
+function T:Busy()
+	if UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then return false end
+	return self.Riding(route, UnitOnTaxi and UnitOnTaxi("player"), serverNow())
+end
+
+-- Observação da guilda ou do grupo (#116): entra se TransitShare.Accept deixar; a rota que usa esse transporte é
+-- refeita, a não ser a bordo ou em voo.
+function T:ObserveShared(sid, k, ev, t)
+	local ship = shipById(sid)
+	local TS = ns.TransitShare
+	if not (ship and TS and TS.Accept(transit()[sid], ship, k, ev, t, serverNow())) then return false end
+	local usa = false
+	for _, l in ipairs(route and route.legs or {}) do if l.sid == sid then usa = true end end
+	local cur = route and route.legs[route.leg]
+	local livre = not (cur and cur.boarded) and not (UnitOnTaxi and UnitOnTaxi("player"))
+	T:Observe(sid, k, ev, t, nil, nil, usa and livre, true)
+	return true
+end
 
 local function destination()
 	if ns.Destinations then return ns.Destinations:Active() end
 end
 
-local function keyOf(dest, kind)
-	return dest and ("%s:%s:%.1f:%.1f"):format(kind or "?", dest.zone or dest.map or "?", dest.x or 0, dest.y or 0)
+-- as paradas e o destino, em ordem (#117)
+local function chain()
+	if ns.Destinations and ns.Destinations.Chain then return ns.Destinations:Chain() end
+	local dest, kind = destination()
+	return dest and { { dest = dest, kind = kind } } or {}
 end
 
 local function changed()
 	if ns.fire then ns.fire("_ROUTE_CHANGED", route) end
 end
 
+local function worldOf(d) return T.World(d.zone, d.x, d.y, d.map) end
+
 function T:Replan(force)
-	local dest, kind = destination()
-	local key = keyOf(dest, kind)
-	local from = dest and T.PlayerWorld()
-	local to = dest and T.World(dest.zone, dest.x, dest.y, dest.map)
-	if not (dest and from and to and ns.travel) then
+	local ch = chain()
+	local key = T.ChainKey(ch)
+	local from = ch[1] and T.PlayerWorld()
+	local to                                       -- algum ponto da cadeia no mapa (o que não cai fica de fora, #117)
+	for _, t in ipairs(from and ch or {}) do
+		to = worldOf(t.dest)
+		if to then break end
+	end
+	if not (from and to and ns.travel) then
 		if route then route, routeKey = nil, key; changed() end
 		return
 	end
-	local new = ns.Journey.Plan(from, to, self:Context())
-	if new then new.leg, new.dest, new.kind = 1, dest, kind end
+	local ctx = self:Context()
+	-- cada trecho sai mais tarde (o horário do barco conta da hora em que se chega ao cais) e a pedra vale uma vez
+	local new = T.PlanChain(from, ch, worldOf, function(a, b, o)
+		local c = ctx
+		if o.at > 0 or o.hearth then
+			c = {}
+			for k, v in pairs(ctx) do c[k] = v end
+			c.now = ctx.now and ctx.now + o.at
+			if o.hearth then c.hearth = nil end
+		end
+		return ns.Journey.Plan(a, b, c)
+	end)
+	if new then new.leg = 1 end
 	sinceReplan = 0
 	-- a rota nova que segue a pé para o mesmo ponto herda o caminho já calculado
 	local cur, n1 = route and route.legs[route.leg], new and new.legs[1]
 	if cur and n1 and cur.k == "walk" and n1.k == "walk" and cur.path ~= nil and cur.b.c == n1.b.c
 		and cur.b.x == n1.b.x and cur.b.y == n1.b.y then
 		n1.path, n1.pathAt, n1.pathFail = cur.path, cur.pathAt, cur.pathFail   -- a espera de 300 jd vem junto
+		n1.pathFailT = cur.pathFailT
 	end
 	if force or key ~= routeKey or not route then
 		local was = route
@@ -322,7 +433,7 @@ local function announcerStops(npc)
 end
 local function onAnnounce(_, text, ...)
 	local guid = select(11, ...)
-	local npc = guid and tonumber((select(6, strsplit("-", guid))))
+	local npc = ns.NpcID(guid)                  -- o GUID do chat pode chegar secreto: fatiar estouraria
 	local sid, k = T.PickAnnounced(npc and announcerStops(npc), text)
 	if not sid then return end
 	-- refaz a rota só se ela usa esse transporte e o jogador não está a bordo nem voando
@@ -350,7 +461,10 @@ local function pathTick()
 	local cur = route.legs[route.leg]
 	local pos = T.PlayerWorld()
 	local precisa = cur and cur.k == "walk" and pos and pos.c == cur.b.c
-		and not (cur.pathFail and cur.pathAt and dist(pos, cur.pathAt) < 300)
+		and not (cur.pathFail and cur.pathAt and dist(pos, cur.pathAt) < 300
+			-- espera até 300 jd; sem caminho nenhum (falha, não o `solto`) e tendo andado 40 jd, tenta de novo a cada
+			-- 30 s (#114) — parado, a mesma busca dá o mesmo nil
+			and (cur.path ~= false or dist(pos, cur.pathAt) < 40 or GetTime() - (cur.pathFailT or 0) < 30))
 		and not (cur.path and select(4, ns.Terrain.Ahead(cur.path, pos, 0)) <= 40)
 	-- rota nova, perna já passada, ou a atual precisa e a busca em curso é de outra: larga
 	if pathCo and (pathRoute ~= route or pathIdx < route.leg or (precisa and pathLeg ~= cur)) then pathCo = nil end
@@ -366,7 +480,7 @@ local function pathTick()
 				route.pv = (route.pv or 0) + 1
 			else
 				pathLeg.path = pathLeg.path or false     -- falhou: fica o caminho anterior, se havia
-				pathLeg.pathFail = true
+				pathLeg.pathFail, pathLeg.pathFailT = true, GetTime()
 			end
 		end
 		return
@@ -396,6 +510,36 @@ function T:ResetPaths()
 		if leg.k == "walk" then leg.path, leg.pathFail, leg.pathAt = nil, nil, nil end
 	end
 	route.pv = (route.pv or 0) + 1
+end
+
+-- O estado da rota em uma linha, para o relatório (#114): destino, pernas, a atual, o caminho dela e o último erro
+-- do desenho no mapa/minimapa (ns.routeErr, limpo quando o desenho volta a dar certo).
+function T:Describe()
+	local dest, kind = destination()
+	local parts = { ("dest %s"):format(dest and (kind or "?") or "none") }
+	local nStops = ns.Destinations and ns.Destinations.Stops and #ns.Destinations:Stops() or 0
+	if nStops > 0 then parts[#parts + 1] = ("stops %d"):format(nStops) end
+	if route then
+		local cur = route.legs[route.leg]
+		local caminho = cur and cur.k == "walk" and (cur.path and (#cur.path .. " pts" .. (cur.pathFail and " (solto)" or ""))
+			or cur.path == false and "failed" or "pending") or "-"
+		parts[#parts + 1] = ("legs %d · leg %d %s · path %s · pv %d"):format(#route.legs, route.leg,
+			cur and cur.k or "?", caminho, route.pv or 0)
+	else
+		parts[#parts + 1] = "no route"
+	end
+	for _, quem in ipairs({ "map", "minimap" }) do
+		local e = ns.routeErr and ns.routeErr[quem]
+		if e then parts[#parts + 1] = ("%s error: %s"):format(quem, tostring(e):sub(1, 120)) end
+	end
+	return table.concat(parts, " · ")
+end
+
+-- Do zero, como fechar e abrir o guia: sem a rota, a busca e os caminhos de antes (nada é herdado, nem a falha).
+function T:Fresh()
+	pathCo = nil
+	route, routeKey = nil, nil
+	T:Replan(true)
 end
 
 ns:Every(0.05, function()
@@ -439,8 +583,29 @@ end
 ns:On("ZONE_CHANGED_NEW_AREA", visit)
 ns:On("PLAYER_ENTERING_WORLD", visit)
 
+-- Entrou no mundo (login, /reload, tela de carregamento): a posição e o mapa do jogador só ficam certos uns segundos
+-- depois. A rota e o caminho de antes disso podem ter saído de onde o jogador não estava, ou falhado e ficado
+-- esperando 300 jd (e a rota nova herdava a falha): o caminho não aparecia até fechar e abrir o guia (#114).
+-- Três tiques do relógio de 1 s depois, refaz do zero.
+local REFAZ_TIQUES = 3
+local refazEm
+-- Só no login e no /reload: a tela de carregamento no meio de um barco entre continentes (ou depois de masmorra,
+-- pedra, teleporte) não pode jogar fora a perna de barco a bordo nem a rota que acabou de sair certa. O fim da tela
+-- só adia a que já está marcada.
+ns:On("PLAYER_ENTERING_WORLD", function(_, login, reload) if login or reload then refazEm = REFAZ_TIQUES end end)
+ns:On("LOADING_SCREEN_DISABLED", function() if refazEm then refazEm = REFAZ_TIQUES end end)
+
 ns:Every(1, function()
 	if not ns.char then return end
+	if refazEm then
+		refazEm = refazEm - 1
+		if refazEm <= 0 then
+			refazEm = nil
+			local c = route and route.legs[route.leg]
+			-- a bordo, no barco ou em voo: a rota segue (sem refazer do meio do mar)
+			if not ((UnitOnTaxi and UnitOnTaxi("player")) or (c and (c.k == "ship" or c.boarded))) then T:Fresh() end
+		end
+	end
 	local now = GetTime()
 	local pos = T.PlayerWorld()
 	local onTaxi = UnitOnTaxi and UnitOnTaxi("player")
@@ -492,9 +657,9 @@ ns:Every(1, function()
 	ns.char.bind = T.LearnBind(ns.char.bind, GetBindLocation and GetBindLocation(),
 		GetSubZoneText and GetSubZoneText(), pos, vinculou)
 	if pos then vinculou = false end
-	-- destino mudou (passo novo, manual, corpo): rota nova já
-	local dest, kind = destination()
-	if keyOf(dest, kind) ~= routeKey then return T:Replan(true) end
+	-- destino mudou (passo novo, manual, corpo, parada): rota nova já — em voo ou a bordo, depois de pousar ou
+	-- desembarcar (T:Busy)
+	if T.ChainKey(chain()) ~= routeKey and not T:Busy() then return T:Replan(true) end
 	if route then
 		local i = T.AdvanceLeg(route, pos, onTaxi)
 		if i ~= route.leg then
@@ -510,14 +675,23 @@ ns:Every(1, function()
 					T:Observe(done.sid, done.stop % m + 1, "arr", snow, done.stop, rideS)
 				end
 			end
-			if i > #route.legs then          -- chegou
+			-- chegou a uma parada (#117): ela sai da fila e a rota se refaz dali para a próxima
+			local feita = done and done.parada and ns.Destinations and ns.Destinations:DoneStop(done.parada)
+			if not feita and i > #route.legs then          -- chegou
+				local kind = route.kind
+				route = nil                      -- antes de limpar: a rota nova até o guia fica
 				if kind == "manual" and ns.Destinations then ns.Destinations:Clear("manual") end
-				route = nil
 			end
 			changed()
 		end
 	end
+	-- passou por uma parada, qualquer uma — não só a do fim da perna atual (chegou antes à segunda): ela sai da fila
+	-- (#117). Em voo não conta (sobrevoar não é chegar); fantasma, as paradas esperam o corpo. Depois de avançar a
+	-- perna: a perna seguinte, já calculada da parada, é herdada pela rota nova.
+	local D = ns.Destinations
+	if pos and not onTaxi and D and D.Reached and not (UnitIsGhost and UnitIsGhost("player")) then
+		for _, s in ipairs(D.Reached(D:Stops(), pos, worldOf)) do D:DoneStop(s) end
+	end
 	sinceReplan = sinceReplan + 1
-	local aboard = route and route.legs[route.leg] and route.legs[route.leg].boarded
-	if sinceReplan >= REPLAN_EVERY and not onTaxi and not aboard then T:Replan(false) end
+	if sinceReplan >= REPLAN_EVERY and not T:Busy() then T:Replan(false) end      -- em voo ou a bordo, não
 end)

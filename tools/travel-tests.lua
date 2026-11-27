@@ -1125,4 +1125,319 @@ local temShari
 for _, t in ipairs(pal) do if t.n == "Shari Stilwell" and t.zone == "Tirisfal Glades" then temShari = true end end
 check(temShari, "Paladino da Horda: Shari Stilwell (Brill) está no banco de treinadores")
 
+;(function() -- #116: horário dividido com a guilda e o grupo (função própria: o topo do arquivo passa de 200 locais)
+local tsns = load("TransitShare.lua", load("Schedule.lua", {}))
+local TS, SCx = tsns.TransitShare, tsns.Schedule
+local barco = { id = 285, stops = { {}, {} }, s = { 100, 80 }, d = { 60, 60 } }
+local um = TS.Encode({ { 285, 2, "dep", 1700000000.7 } })
+check(#um == 1 and um[1] == "o|285|2|d|1700000000", "observação vira texto curto")
+local dec = TS.Decode("o|285|2|d|1700000000;292|1|a|1700000100;lixo")
+check(#dec == 2 and dec[1][1] == 285 and dec[1][2] == 2 and dec[1][3] == "dep" and dec[1][4] == 1700000000
+	and dec[2][1] == 292 and dec[2][3] == "arr", "várias numa mensagem; a entrada torta fica de fora")
+check(TS.Decode("q") == "q" and TS.Decode("o|x|1|a|5") == nil and TS.Decode("o|1|1|z|5") == nil
+	and TS.Decode(nil) == nil and TS.Decode("p|1|1|a|5") == nil, "pergunta; lixo não decodifica")
+local onze = {}
+for i = 1, 11 do onze[i] = { 11000 + i, 3, "dep", 1700000000 + i } end
+local msgs = TS.Encode(onze)
+local cabe, total = true, 0
+for _, m in ipairs(msgs) do
+	if #m > 250 then cabe = false end
+	total = total + #TS.Decode(m)
+end
+check(cabe and total == 11 and #msgs <= 2, "as respostas de todos os transportes cabem em uma ou duas mensagens")
+local agora = 100000
+check(TS.Accept(nil, barco, 1, "arr", agora - 60, agora), "sem horário: entra")
+check(not TS.Accept(nil, barco, 3, "arr", agora - 60, agora), "parada que o transporte não tem: fora")
+check(not TS.Accept(nil, barco, 1, "arr", agora + 600, agora), "hora futura: fora")
+check(not TS.Accept(nil, barco, 1, "arr", agora - 13 * 3600, agora), "mais de 12 h: fora")
+local hx = SCx.Learn(nil, barco, 1, "arr", agora - 1000, nil)
+check(not TS.Accept(hx, barco, 1, "arr", agora - 1100, agora), "mais velha que a que o horário já tem: fora")
+hx.own, hx.ownT0 = agora - 1000, hx.t0
+-- fase própria: chegada na 1ª às agora-1000 (ciclo estimado de 300; chega na 2ª 160 s depois). 5 s fora concorda;
+-- 90 s, não — dentro da previsão (até uma volta depois da própria)
+check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 5, agora), "concorda com a fase própria (5 s): entra")
+check(not TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90, agora), "contra a fase própria recente (90 s): fora")
+-- além de uma volta com o período só estimado: o próprio planejador já não confia; a de fora entra
+check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90 + 600, agora), "fora da previsão estimada: a de fora vale")
+-- a comparação é com a fase própria, não com a última aceita: de fora não encadeia 30 s em 30 s
+local h2 = SCx.Learn(hx, barco, 2, "arr", agora - 1000 + 160 + 25, nil)
+h2.own, h2.ownT0 = hx.own, hx.ownT0
+check(not TS.Accept(h2, barco, 2, "arr", agora - 1000 + 160 + 50, agora),
+	"não encadeia sobre a de fora (50 s da própria, 25 s da aceita): fora")
+hx.own = agora - 3 * 3600
+check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90, agora), "própria velha (3 h): a de fora vale")
+local lk, lev, lt = TS.Latest({ obs = { ["1:arr"] = 10, ["2:dep"] = 30, ["2:arr"] = 20 } })
+check(lk == 2 and lev == "dep" and lt == 30, "a observação mais nova responde a pergunta")
+end)()
+-- ── #117: paradas antes do destino ───────────────────────────────────────────
+-- numa função: o pedaço principal já está no limite de 200 locais do Lua
+;(function()
+	-- a fila: na ordem em que entram, a repetida fica uma só, cada mudança refaz a rota
+	local replans = 0
+	local dns = { Travel = { Replan = function() replans = replans + 1 end } }
+	local DS = load("Destinations.lua", dns).Destinations
+	local passo = { zone = "The Hinterlands", x = 68, y = 52.9, label = "Silvermane Stalker" }
+	DS.GuideTarget = function() return passo end
+	local reparo = { zone = "Elwynn Forest", x = 41, y = 65, label = "Reparo — Bob", short = "Reparo", service = "repair",
+		npc = 1 }
+	local ponto = { map = 1429, x = 30, y = 40, label = "Ponto" }
+	check(DS:AddStop(reparo) and DS:AddStop(ponto) and replans == 2, "parada entra na fila e refaz a rota")
+	check(not DS:AddStop({ zone = "Elwynn Forest", x = 41, y = 65 }) and #DS:Stops() == 2 and replans == 2,
+		"a mesma parada duas vezes: fica uma só, sem refazer")
+	local ch = DS:Chain()
+	check(#ch == 3 and ch[1].dest == reparo and ch[2].dest == ponto and ch[1].kind == "stop" and ch[3].kind == "guide",
+		"a cadeia: as paradas na ordem em que entraram, depois o passo do guia")
+	DS:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "manual" })
+	ch = DS:Chain()
+	check(#ch == 3 and ch[3].kind == "manual", "com destino manual, ele fecha a cadeia (no lugar do guia)")
+	DS:Set("corpse", { map = 1429, x = 10, y = 10, label = "corpo", red = true })
+	ch = DS:Chain()
+	check(#ch == 1 and ch[1].kind == "corpse" and #DS:Stops() == 2, "fantasma: só o corpo; as paradas esperam")
+	DS:Clear("corpse"); DS:Clear("manual")
+	check(#DS:Chain() == 3, "reviveu: as paradas voltam antes do destino")
+	DS.GuideTarget = function() return nil end
+	ch = DS:Chain()
+	check(#ch == 2 and ch[2].dest == ponto, "sem destino: só as paradas, a última faz as vezes de destino")
+	DS.GuideTarget = function() return passo end
+	local antes = replans
+	check(DS:RemoveStop(ponto) and #DS:Stops() == 1 and replans == antes + 1, "tira pela própria parada")
+	check(not DS:RemoveStop(ponto) and not DS:RemoveStop(5) and replans == antes + 1, "tirar o que não está: nada")
+	DS:AddStop(ponto)
+	check(DS:DoneStop(1) and DS:Stops()[1] == ponto, "feita pela posição: a próxima vira a primeira")
+	DS:AddStop(reparo); DS:AddStop({ zone = "Elwynn Forest", x = 43, y = 65, service = "classtrainer" })
+	DS:ClearStops("classtrainer")
+	check(#DS:Stops() == 2 and DS:Stops()[2] == reparo, "/ls train off tira só a parada do treinador")
+	DS:ClearStops()
+	check(#DS:Stops() == 0 and #DS:Chain() == 1, "Limpar: nenhuma parada")
+	antes = replans; DS:ClearStops()
+	check(replans == antes, "limpar a fila vazia não refaz a rota")
+
+	-- a janela do serviço conclui a parada daquele tipo, perto dela; a do próprio NPC sempre
+	local W0 = { c = 0, x = 100, y = 100 }
+	local function wOf() return W0 end
+	local lista = { reparo, { zone = "X", x = 1, y = 1, service = "bank" }, ponto }
+	local junto, longe = P(0, 130, 100), P(0, 300, 100)
+	local m = DS.MatchWindow(lista, DS.WINDOW.MERCHANT_SHOW, nil, junto, wOf)
+	check(#m == 1 and m[1] == reparo, "vendedor aberto perto do reparo: o reparo está feito (o banco e o ponto, não)")
+	check(#DS.MatchWindow(lista, DS.WINDOW.MERCHANT_SHOW, nil, longe, wOf) == 0, "vendedor aberto longe da parada: nada")
+	check(#DS.MatchWindow(lista, DS.WINDOW.MERCHANT_SHOW, nil, P(1, 100, 100), wOf) == 0, "outro continente: nada")
+	check(#DS.MatchWindow(lista, DS.WINDOW.GOSSIP_SHOW, nil, junto, wOf) == 0, "conversa perto: só o próprio NPC conta")
+	m = DS.MatchWindow(lista, DS.WINDOW.GOSSIP_SHOW, 1, longe, wOf)
+	check(#m == 1 and m[1] == reparo, "a janela do próprio NPC da parada conclui (pelo id)")
+	check(DS.WINDOW.TAXIMAP_OPENED.flight and DS.WINDOW.BANKFRAME_OPENED.bank and DS.WINDOW.PET_STABLE_SHOW.stable
+		and DS.WINDOW.AUCTION_HOUSE_SHOW.auction and DS.WINDOW.MERCHANT_SHOW.vendor, "cada janela conclui o seu serviço")
+
+	-- a rota emendada: um trecho do Journey por par, as pernas juntas, a parada marcada no fim do trecho dela
+	local function plan(de, para) return J.Plan(de, para, ctx()) end
+	local function porPonto(alvo) return alvo.w end
+	local cadeia = {
+		{ dest = { w = P(0, 200, 0), short = "Reparo", label = "Reparo — Bob" }, kind = "stop" },
+		{ dest = { w = P(0, 3010, 0), short = "Ponto", label = "Ponto" }, kind = "stop" },
+		{ dest = { w = P(0, 3100, 0), label = "Silvermane Stalker" }, kind = "guide" },
+	}
+	local rr = T.PlanChain(P(0, 10, 0), cadeia, porPonto, plan)
+	check(rr and kinds(rr) == "walk,walk,flight,walk,walk", "paradas: a pé à primeira, voo à segunda, a pé ao passo ("
+		.. (rr and kinds(rr) or "nil") .. ")")
+	check(#rr.stops == 2 and rr.stops[1].leg == 1 and rr.stops[2].leg == 4, "o fim de cada parada na rota")
+	check(rr.legs[1].parada == cadeia[1].dest and rr.legs[4].parada == cadeia[2].dest and not rr.legs[5].parada,
+		"a perna que chega à parada leva a parada")
+	check(rr.dest == cadeia[3].dest and rr.kind == "guide", "o destino da rota é o do fim da cadeia")
+	local soma = 0
+	local trechos = { { P(0, 10, 0), P(0, 200, 0) }, { P(0, 200, 0), P(0, 3010, 0) }, { P(0, 3010, 0), P(0, 3100, 0) } }
+	for _, t in ipairs(trechos) do
+		soma = soma + J.Plan(t[1], t[2], ctx()).s
+	end
+	check(math.abs(rr.s - soma) < 1e-6, "o total soma os trechos (o desvio entra)")
+	rr.leg = 1
+	check(math.abs(T.Remaining(rr, P(0, 10, 0), 7) - soma) < 0.5, "quanto falta conta o desvio inteiro")
+	check(T.AdvanceLeg(rr, P(0, 195, 0), false) == 2, "chegou à parada: segue para o trecho seguinte")
+	rr.leg = 2
+
+	-- trecho sem rota corta a cadeia ali; sem o primeiro, nada
+	local ilha = { { dest = cadeia[1].dest, kind = "stop" }, { dest = { w = P(5, 0, 0) }, kind = "stop" },
+		{ dest = cadeia[3].dest, kind = "guide" } }
+	local rc = T.PlanChain(P(0, 10, 0), ilha, porPonto, plan)
+	check(rc and #rc.legs == 1 and rc.kind == "stop" and rc.dest == cadeia[1].dest,
+		"parada sem ligação: a rota vai até a última alcançada")
+	check(T.PlanChain(P(0, 10, 0), { ilha[2], ilha[3] }, porPonto, plan) == nil, "a primeira sem ligação: sem rota")
+	check(T.PlanChain(P(0, 10, 0), {}, porPonto, plan) == nil, "cadeia vazia: sem rota")
+
+	-- a pedra vale uma vez; cada trecho sai na hora em que o anterior chega (sem o gasto da pedra)
+	local vistos = {}
+	T.PlanChain(P(0, 0, 0), cadeia, porPonto, function(de, para, o)
+		vistos[#vistos + 1] = { at = o.at, hearth = o.hearth }
+		if #vistos == 1 then
+			return { s = 310, legs = { { k = "hearth", s = 10, gasto = 300, a = de, b = para } } }
+		end
+		return { s = 50, legs = { { k = "walk", s = 50, a = de, b = para } } }
+	end)
+	check(#vistos == 3 and not vistos[1].hearth and vistos[2].hearth and vistos[3].hearth,
+		"pedra usada num trecho: os seguintes não contam com ela")
+	check(vistos[1].at == 0 and vistos[2].at == 10 and vistos[3].at == 60,
+		"cada trecho sai depois do anterior, pelo tempo de verdade")
+
+	-- a chave da cadeia: parada nova ou tirada refaz; a mesma, não
+	local k1 = T.ChainKey({ { dest = reparo, kind = "stop" }, { dest = passo, kind = "guide" } })
+	local k2 = T.ChainKey({ { dest = passo, kind = "guide" } })
+	check(k1 ~= k2 and k1 == T.ChainKey({ { dest = reparo, kind = "stop" }, { dest = passo, kind = "guide" } }),
+		"a chave muda com as paradas e é a mesma para a mesma cadeia")
+	check(T.ChainKey({}) == nil, "sem cadeia: sem chave")
+
+	-- a seta: a parada e o que vem depois
+	local Ls = setmetatable({ STOP_THEN = "%s · DEPOIS %s", STOP = "PARADA", LEG_FLY = "VOE %s", DEST = "DESTINO" },
+		{ __index = function(_, k) return k end })
+	local wsn = { L = Ls, On = function() end, Every = function() end, zoneUiMap = {} }
+	local WS = load("Waypoint.lua", wsn).Waypoint
+	check(WS.LegText(rr, 1, 40) == "Reparo · DEPOIS Ponto · 40s", "a pé até a parada: ela e a próxima parada ("
+		.. WS.LegText(rr, 1, 40) .. ")")
+	check(WS.LegText(rr, 4, 5) == "Ponto · DEPOIS Silvermane Stalker · 5s", "a última parada: depois, o destino ("
+		.. WS.LegText(rr, 4, 5) .. ")")
+	check(WS.LegText(rr, 3, 60):find("^VOE"), "a perna do meio do trecho segue com o texto dela")
+	check(WS.LegText(rc, 1, 9) == "Reparo · 9s",
+		"a parada que fecha a rota não tem depois (" .. WS.LegText(rc, 1, 9) .. ")")
+	-- sem rota (outro continente, instância): a seta vai à primeira parada, e diz a seguinte
+	wsn.Travel = { Route = function() return nil end }
+	local fila = { reparo, ponto }
+	local ativo, tipo = passo, "guide"
+	wsn.Destinations = { Active = function() return ativo, tipo end, Stops = function() return fila end }
+	local g1 = WS:PickTarget()
+	check(g1 and g1._stop == reparo and g1.text == "Reparo · DEPOIS Ponto" and g1.goto_.zone == "Elwynn Forest",
+		"sem rota: a primeira parada, com a seguinte (" .. tostring(g1 and g1.text) .. ")")
+	fila = { ponto }
+	check(WS:PickTarget().text == "Ponto · DEPOIS Silvermane Stalker", "a última parada: depois, o destino")
+	ativo, tipo = { map = 1, x = 1, y = 1, label = "corpo" }, "corpse"
+	check(WS:PickTarget()._corpse, "fantasma: o corpo antes da parada")
+
+	-- revisão do #117 ----------------------------------------------------------
+	-- quanto falta com barco de horário (`now`): a espera conta de agora, sem somar de novo as pernas até o cais. Antes
+	-- a rota igual (a pé 200 s -> a pé 211 s -> barco) dava 1233 s contra 821 do plano e trocava a cada 10 s.
+	local agora = 100000
+	local cb = ctx({ now = agora, sched = { [7] = { t0 = agora, last = agora, T = 600 } } })
+	local function planH(de, para, o)
+		local c = {}
+		for k, v in pairs(cb) do c[k] = v end
+		c.now = cb.now + (o and o.at or 0)
+		return J.Plan(de, para, c)
+	end
+	local deCasa, cais = P(0, 0, -10), P(1, 0, 10)
+	local so = planH(deCasa, cais)
+	so.leg = 1
+	check(so and kinds(so) == "walk,ship,walk" and so.legs[2].dep,
+		"barco com horário (" .. (so and kinds(so) or "nil") .. ")")
+	check(math.abs(T.Remaining(so, deCasa, 7, agora) - so.s) < 0.5,
+		("trecho só: quanto falta = o plano (%.0f / %.0f)"):format(T.Remaining(so, deCasa, 7, agora), so.s))
+	local comParada = T.PlanChain(deCasa,
+		{ { dest = { w = P(0, 1400, -10) }, kind = "stop" }, { dest = { w = cais }, kind = "manual" } }, porPonto, planH)
+	comParada.leg = 1
+	check(kinds(comParada) == "walk,walk,ship,walk", "parada e depois o barco (" .. kinds(comParada) .. ")")
+	local faltaCais = T.Remaining(comParada, deCasa, 7, agora, true)
+	check(math.abs(faltaCais - comParada.s) < 0.5, ("parada antes do barco: quanto falta = o plano, sem contar a ida ao"
+		.. " cais duas vezes (%.0f / %.0f)"):format(faltaCais, comParada.s))
+	check(not T.ShouldReplace({ s = faltaCais }, comParada), "a mesma rota não troca a cada recálculo")
+	-- andou 100 s: a espera do barco não encolhe com isso (o barco sai na mesma hora)
+	check(math.abs(T.Remaining(comParada, P(0, 700, -10), 7, agora + 100) - (comParada.s - 100)) < 0.5,
+		"andando até a parada, quanto falta desce com o relógio")
+	-- com a pedra antes: o gasto dela entra na comparação, mas não come a espera
+	local pedraBarco = { leg = 1, legs = { { k = "hearth", s = 10, gasto = 300, a = deCasa, b = P(0, 0, -500) },
+		{ k = "ship", s = 300, dep = agora + 100, ride = 200, a = P(0, 0, -500), b = cais } } }
+	check(T.Remaining(pedraBarco, deCasa, 7, agora) == 300 and T.Remaining(pedraBarco, deCasa, 7, agora, true) == 600,
+		"pedra e barco: 100 s até sair + 200 de travessia (+ o gasto da pedra só na comparação)")
+
+	-- ponto que não cai no mapa fica de fora da cadeia, não a corta (antes: nenhuma rota)
+	local foraMapa = { dest = { w = false, label = "westfall" }, kind = "stop" }
+	local semFora = T.PlanChain(P(0, 10, 0), { foraMapa, cadeia[1], cadeia[3] }, porPonto, plan)
+	check(semFora and semFora.kind == "guide" and #semFora.stops == 1 and semFora.stops[1].dest == cadeia[1].dest,
+		"a primeira parada fora do mapa: a rota vai pelas outras até o destino")
+	check(T.PlanChain(P(0, 10, 0), { cadeia[1], foraMapa, cadeia[3] }, porPonto, plan).kind == "guide",
+		"parada do meio fora do mapa: a rota segue até o destino")
+	check(T.PlanChain(P(0, 10, 0), { foraMapa }, porPonto, plan) == nil, "só ela, fora do mapa: sem rota")
+
+	-- a janela que conclui: o vendedor que não conserta não conclui o reparo; o treinador de profissão só pelo NPC
+	local prof = { zone = "Ironforge", x = 1, y = 1, service = "proftrainer", npc = 5511 }
+	local vend = { zone = "Ironforge", x = 1, y = 2, service = "vendor" }
+	local fila2 = { reparo, prof, vend }
+	m = DS.MatchWindow(fila2, DS.MerchantKinds(false), nil, junto, wOf)
+	check(#m == 1 and m[1] == vend, "vendedor que não conserta: conclui o vendedor, não o reparo")
+	m = DS.MatchWindow(fila2, DS.MerchantKinds(true), nil, junto, wOf)
+	check(#m == 2 and m[1] == reparo, "vendedor que conserta: conclui o reparo")
+	check(#DS.MatchWindow(fila2, DS.TRAINER.prof, 9999, junto, wOf) == 0,
+		"outro treinador de profissão a 60 jd (Grande Forja): a parada fica")
+	m = DS.MatchWindow(fila2, DS.TRAINER.prof, 5511, longe, wOf)
+	check(#m == 1 and m[1] == prof, "o próprio treinador da parada conclui, de qualquer distância")
+	local classe = { { zone = "X", x = 1, y = 1, service = "classtrainer" } }
+	check(#DS.MatchWindow(classe, DS.TRAINER.class, nil, junto, wOf) == 1, "treinador de classe perto: conclui")
+
+	-- passar perto de uma parada (qualquer uma da fila) conta como chegar
+	local passou = DS.Reached({ reparo, ponto }, P(0, 110, 100),
+		function(s) return s == ponto and P(0, 100, 100) or P(0, 900, 0) end)
+	check(#passou == 1 and passou[1] == ponto, "a 10 jd da segunda parada: ela, não a primeira")
+	check(#DS.Reached({ ponto }, P(0, 120, 100), wOf) == 0, "a 20 jd: ainda não")
+	check(#DS.Reached({ ponto }, P(1, 100, 100), wOf) == 0 and #DS.Reached({ ponto }, nil, wOf) == 0,
+		"outro continente, ou sem posição: não")
+
+	-- em voo ou a bordo, mexer na fila não refaz a rota (o relógio do Travel refaz depois)
+	local voo = { leg = 2, legs = { { k = "walk" }, { k = "flight" } } }
+	local bordo = { leg = 1, legs = { { k = "ship", boarded = 10 } } }
+	check(T.Riding(voo, true) and T.Riding(bordo, false) and not T.Riding(voo, false) and not T.Riding(nil, false)
+		and not T.Riding({ leg = 1, legs = { { k = "ship" } } }, false), "em voo ou a bordo do barco: a rota segue")
+	bordo.legs[1].ride = 200
+	check(T.Riding(bordo, false, 10 + 500) and not T.Riding(bordo, false, 10 + 600),
+		"embarcado há mais que o dobro da travessia (pulou do barco): a rota já não fica presa")
+	local rodando = true
+	dns.Travel = { Replan = function() replans = replans + 1 end, Busy = function() return rodando end }
+	antes = replans
+	DS:AddStop(ponto)
+	check(#DS:Stops() == 1 and replans == antes, "a bordo: a parada entra e a rota não se refaz do meio do mar")
+	rodando = false
+	DS:RemoveStop(ponto)
+	check(replans == antes + 1, "em terra: tirar a parada refaz a rota")
+
+	-- o voo automático só pega o voo do trecho atual: o depois da parada é do trecho seguinte
+	local FMs = load("FlightMap.lua", {}).FlightMap
+	local aPe = { leg = 1, legs = { { k = "walk", parada = reparo }, { k = "flight", to = 2 }, { k = "walk" } } }
+	local l, antesDoVoo = FMs.FlightLeg(aPe)
+	check(l == nil and antesDoVoo, "parada antes do voo: nenhum voo agora")
+	aPe.leg = 2
+	check(FMs.FlightLeg(aPe) == aPe.legs[2], "passada a parada: o voo do trecho")
+	local vooAntes = { leg = 1, legs = { { k = "walk" }, { k = "flight", to = 3 }, { k = "walk", parada = reparo } } }
+	check(FMs.FlightLeg(vooAntes).to == 3, "voo antes da parada: o do trecho")
+	check(FMs.FlightLeg(nil) == nil, "sem rota: nada")
+
+	-- o mais perto mede da última parada da fila (o serviço entra depois dela)
+	local SVo = load("Services.lua", { L = Ls }).Services
+	local eu0 = P(0, 0, 0)
+	local function wo(sx) return sx.w end
+	check(SVo.Origin({}, eu0, wo) == eu0, "sem paradas: do jogador")
+	check(SVo.Origin({ { w = P(0, 5, 5) }, { w = P(1, 9, 9) } }, eu0, wo).c == 1, "com paradas: da última")
+	check(SVo.Origin({ { w = P(0, 5, 5) }, { w = false } }, eu0, wo).x == 5, "a última fora do mapa: a de antes")
+	local Lprof = setmetatable({ PROF_MINING = "Mineração" }, { __index = function(_, k) return "[" .. k .. "]" end })
+	local SVp = load("Services.lua", { L = Lprof }).Services
+	check(SVp.ProfLabel("Mining") == "Mineração" and SVp.ProfLabel("Cooking") == "Cooking",
+		"a parada do treinador de profissão leva o nome traduzido")
+
+	-- zona digitada em qualquer caixa acha a do mapa
+	local WZ = load("Waypoint.lua", { L = Ls, On = function() end, Every = function() end, zoneUiMap = { Westfall = 1436 },
+		zoneMap = { ["Cerro Oeste"] = 1436 }, LocalizedZone = function(z) return z end }).Waypoint
+	check(WZ.ZoneKey("westfall") == "Westfall" and WZ.ZoneKey("cerro oeste") == "Cerro Oeste"
+		and WZ.ZoneKey("Westfall") == "Westfall", "zona em minúsculas acha o mapa")
+	check(WZ.ZoneKey("Lugar Nenhum") == "Lugar Nenhum" and WZ.ZoneKey(nil) == nil, "zona que não existe volta como veio")
+
+	-- a altura da Navegação: muitas paradas e pernas encolhem a lista e a linha do tempo, e o destino fica
+	local TPh = load("TravelPanel.lua", { L = Ls, On = function() end, Every = function() end, UI = {} }).TravelPanel
+	local f1, u1, r1 = TPh.Fit({ 46, 38, 46 }, { false, true, false }, 1, 1, 500)
+	check(f1 == 1 and u1 == 3 and r1 == 1, "cabe tudo: tudo")
+	local hs, st = {}, {}
+	for k = 1, 13 do hs[k], st[k] = k % 2 == 0 and 38 or 46, k % 2 == 0 end      -- 6 paradas, 7 pernas
+	local f2, u2, r2 = TPh.Fit(hs, st, 1, 6, 220)
+	check(f2 == 1 and u2 == 1 and r2 == 1, ("apertado: a perna atual, \"+N\", o destino e uma parada na lista"
+		.. " (%d..%d, %d)"):format(f2, u2, r2))
+	local _, u3, r3 = TPh.Fit(hs, st, 1, 6, 240)
+	check(u3 == 2 and r3 == 1, "com mais 20 px: o marcador da próxima parada antes de mais linhas na lista")
+	_, u2, r2 = TPh.Fit(hs, st, 1, 6, 380)
+	check(u2 == 3 and r2 == 4, ("folga: até 4 paradas na lista, depois o resto da viagem (%d, %d)"):format(u2, r2))
+	check(TPh.Fit(hs, st, 5, 6, 220) == 5, "as pernas feitas saem primeiro")
+	local _, _, r4 = TPh.Fit({}, {}, nil, 9, 200, 30)
+	check(r4 == 4 and select(3, TPh.Fit({}, {}, nil, 9, 400, 30)) == 9, "sem rota: a lista fica com a altura (até 4)")
+end)()
+
 print(("ok: %d checks"):format(checks))

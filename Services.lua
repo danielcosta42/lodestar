@@ -2,7 +2,7 @@
 -- Services — o serviço mais próximo em TEMPO de viagem (não em linha reta): treinador
 -- da classe ou de profissão, reparo, vendedor, estalagem, banco, leilão, voo, estábulo.
 --
---   ns.Services:GoTo(kind, sub)   -- traça a rota (destino manual) até o melhor
+--   ns.Services:GoTo(kind, sub, quiet, direct)   -- o melhor vira parada antes do destino (#117); direct: o destino
 --   kind: "classtrainer" | "proftrainer" (sub = profissão) | os de ns.travel.services
 --=============================================================================
 local ADDON, ns = ...
@@ -78,6 +78,22 @@ function S.Remember(store, class, fac, e)
 	store[class][fac][e.id] = e
 end
 
+-- De onde medir o mais perto (#117): o serviço entra depois das paradas da fila (e o destino manual também vem depois
+-- delas), então mede-se da última que cai no mapa; sem parada, do jogador. `worldOf(parada)` -> { c, x, y } | nil.
+function S.Origin(stops, player, worldOf)
+	for i = #(stops or {}), 1, -1 do
+		local w = worldOf(stops[i])
+		if w then return w end
+	end
+	return player
+end
+
+-- Nome da profissão no idioma do cliente (a chave do Trainers.lua é em inglês: "First Aid" -> PROF_FIRST_AID); o ns.L
+-- devolve "[CHAVE]" para o que falta, então a que não tem tradução sai com o nome.
+function S.ProfLabel(prof)
+	return rawget(ns.L, "PROF_" .. (prof:upper():gsub("%s+", "_"))) or prof
+end
+
 -- Os do banco mais os vistos que o banco não tem. Os vistos vão em cópia: o que a busca
 -- calcula neles (a coordenada de mundo) não vai parar no SavedVariables.
 function S.WithSeen(static, seen)
@@ -113,6 +129,8 @@ function S:Nearest(kind, sub)
 	local T = ns.Travel
 	local from = T and T.PlayerWorld()
 	if not from then return nil end
+	local D = ns.Destinations
+	from = S.Origin(D and D:Stops(), from, function(d) return T.World(d.zone, d.x, d.y, d.map) end)
 	local entries = list(kind, sub) or {}
 	for _, e in ipairs(entries) do
 		if e.w == nil then e.w = T.World(e.zone, e.x, e.y, e.map) or false end
@@ -131,8 +149,9 @@ function S:Nearest(kind, sub)
 end
 
 -- `quiet`: quem chamou mostra a falha (o painel Viagem); senão ela vai ao chat.
+-- O serviço entra como parada antes do destino (#117); `direct` (Shift+clique) troca o destino, como antes.
 -- Devolve true, ou false e a mensagem.
-function S:GoTo(kind, sub, quiet)
+function S:GoTo(kind, sub, quiet, direct)
 	local best = self:Nearest(kind, sub)
 	if not best then
 		local msg = ns.L.SERVICE_NONE
@@ -142,13 +161,21 @@ function S:GoTo(kind, sub, quiet)
 		if not quiet then ns:Print(msg) end
 		return false, msg
 	end
-	local title = sub or ns.L["SERVICE_" .. kind:upper()] or kind
+	local title = sub and S.ProfLabel(sub) or ns.L["SERVICE_" .. kind:upper()] or kind
 	local where = best.zone or (best.map and C_Map.GetMapInfo(best.map) or {}).name or "?"
-	ns.Destinations:Set("manual", { zone = best.zone, map = best.map, x = best.x, y = best.y,
-		label = ("%s — %s"):format(title, best.n), service = kind })
+	local dest = { zone = best.zone, map = best.map, x = best.x, y = best.y,
+		label = ("%s — %s"):format(title, best.n), short = title, service = kind, npc = best.id }
+	if direct then
+		ns.Destinations:Set("manual", dest)
+	elseif not ns.Destinations:AddStop(dest) then
+		-- já é parada (o mesmo ponto): nada entrou, nada a avisar como se tivesse entrado
+		local msg = ns.L.STOP_ALREADY:format(dest.label)
+		if not quiet then ns:Print(msg) end
+		return false, msg
+	end
 	if ns.Waypoint then ns.Waypoint:Update() end
 	if ns.Toast then
-		ns.Toast:Show({ title = title,
+		ns.Toast:Show({ title = direct and title or ns.L.STOP_ADDED:format(title),
 			text = ("%s — %s"):format(best.n, where), color = ns.UI.COL.tip, hold = 5 })
 	end
 	return true
@@ -160,8 +187,7 @@ end
 if not ns.On then return end
 ns:On("TRAINER_SHOW", function()
 	if IsTradeskillTrainer and IsTradeskillTrainer() then return end          -- profissão
-	local guid = UnitGUID("npc")
-	local id = guid and tonumber((select(6, strsplit("-", guid))))
+	local id = ns.NpcID(UnitGUID("npc"))                        -- GUID secreto: sem id, sem fatiar
 	local map = C_Map.GetBestMapForUnit("player")
 	local pos = map and C_Map.GetPlayerMapPosition(map, "player")
 	if not (id and pos and ns.db) then return end

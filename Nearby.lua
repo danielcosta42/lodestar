@@ -2,6 +2,8 @@
 -- Nearby — "Enquanto está aqui" (issue #92): o que dos próximos passos dá para fazer onde você está — objetivo cuja
 -- quest já está no diário, entrega de quest pronta, quest para pegar mais à frente — quando está perto (até 3, com a
 -- distância). Feito agora, o passo lá na frente já chega pronto ou mais curto. Clique guia até lá.
+-- (issue #118) E o que o guia não cita: quest pronta no diário com o ponto de entrega perto (QuestEnders.lua), e os
+-- livros da biblioteca na bolsa quando o jogador está na cidade do bibliotecário — com um aviso uma vez.
 --
 -- No topo, o núcleo puro (testado fora do jogo, tools/lodestar3-tests.lua). Abaixo, o jogo.
 --=============================================================================
@@ -18,7 +20,7 @@ N.MAX = 3
 function N.Pick(cands, radius, limit)
 	local byQuest = {}
 	for _, c in ipairs(cands or {}) do
-		if c.dist and c.dist <= (radius or N.RADIUS) then
+		if c.dist and c.dist <= (c.radius or radius or N.RADIUS) then
 			local cur = byQuest[c.q or c]
 			if not cur or c.dist < cur.dist then byQuest[c.q or c] = c end
 		end
@@ -26,8 +28,11 @@ function N.Pick(cands, radius, limit)
 	local out = {}
 	for _, c in pairs(byQuest) do out[#out + 1] = c end
 	table.sort(out, function(a, b)
+		if (a.top or false) ~= (b.top or false) then return a.top or false end   -- os livros na cidade: sempre na lista
 		if a.dist ~= b.dist then return a.dist < b.dist end
-		return (a.q or 0) < (b.q or 0)
+		local qa, qb = a.q or 0, b.q or 0                -- id de quest ou "books" (#118): tipos diferentes não se comparam
+		if type(qa) ~= type(qb) then return type(qa) < type(qb) end
+		return qa < qb
 	end)
 	for i = #out, (limit or N.MAX) + 1, -1 do out[i] = nil end
 	return out
@@ -76,8 +81,52 @@ end
 -- Assinatura do que mostrar (para só redesenhar a janela quando muda; a distância vai no chip, que já se atualiza).
 function N.Signature(list)
 	local parts = {}
-	for _, c in ipairs(list or {}) do parts[#parts + 1] = (c.kind or "") .. ":" .. tostring(c.q) end
+	for _, c in ipairs(list or {}) do
+		parts[#parts + 1] = (c.kind or "") .. ":" .. tostring(c.q) .. (c.n and ("#" .. c.n) or "")
+	end
 	return table.concat(parts, ",")
+end
+
+-- As entregas fora do guia (#118): de cada quest pronta (`ready`, ids) que o guia não cita (`noGuia[q]`), o ponto
+-- de entrega mais perto (`enders[q]` = { zona, x, y, ... } com a zona em `zones`; `dist(zona, x, y)` -> jd ou nil).
+function N.OffGuideTurnins(ready, noGuia, enders, zones, dist)
+	local out = {}
+	for _, q in ipairs(ready or {}) do
+		local e = not (noGuia and noGuia[q]) and enders and enders[q]
+		local best
+		for i = 1, e and #e - 2 or 0, 3 do
+			local z = zones and zones[e[i]]
+			local d = z and dist(z, e[i + 1], e[i + 2])
+			if d and (not best or d < best.dist) then
+				best = { q = q, dist = d, kind = "turnin", offGuide = true,
+					goal = { goto_ = { zone = z, x = e[i + 1], y = e[i + 2] } } }
+			end
+		end
+		if best then out[#out + 1] = best end
+	end
+	return out
+end
+
+-- O último passo em que o guia entrega cada quest: [q] = índice. A quest que o guia ainda vai entregar (passo >= o
+-- atual) ele mesmo leva; a que ele só pega, ou cuja entrega ficou para trás, conta como fora do guia.
+function N.GuideTurnins(steps, questOf)
+	local out = {}
+	for i, st in ipairs(steps or {}) do
+		for _, goal in ipairs(st.goals or {}) do
+			local q = goal.verb == "turnin" and questOf(goal)
+			if q and (not out[q] or i > out[q]) then out[q] = i end
+		end
+	end
+	return out
+end
+
+-- O que não entra como entrega fora do guia: a que o guia ainda vai entregar (do passo `cur` em diante) e a que o
+-- jogador pulou de propósito.
+function N.Excluded(turnins, cur, skipped)
+	local out = {}
+	for q, i in pairs(turnins or {}) do if i >= (cur or 1) then out[q] = true end end
+	for q in pairs(skipped or {}) do out[q] = true end
+	return out
 end
 
 --------------------------------------------------------------------------------
@@ -148,6 +197,56 @@ function N:Candidates()
 			end
 		end
 	end
+	for _, c in ipairs(N:Extras()) do out[#out + 1] = c end
+	return out
+end
+
+-- quests prontas no diário (ids)
+local function prontas()
+	local out = {}
+	if not (QL.GetNumQuestLogEntries and QL.GetInfo and QL.IsComplete) then return out end
+	for i = 1, QL.GetNumQuestLogEntries() or 0 do
+		local info = QL.GetInfo(i)
+		if info and info.questID and not info.isHeader and QL.IsComplete(info.questID) then out[#out + 1] = info.questID end
+	end
+	return out
+end
+
+-- as entregas do guia aberto, guardadas por guia (o guia não muda enquanto aberto), e o que fica de fora agora
+local guiaCache, guiaDe = nil, nil
+local function doGuia()
+	local g = ns.currentGuide
+	if guiaDe ~= g then guiaDe, guiaCache = g, N.GuideTurnins(g and g.steps, questOf) end
+	return N.Excluded(guiaCache, g and ns.char.currentStep or 1, ns.char and ns.char.skipped)
+end
+
+-- o jogador está na cidade do bibliotecário com livro para entregar (o aviso dos livros zera ao sair dela)
+local naCidade = false
+
+-- O que o guia não cita (#118): entrega pronta perto e os livros da biblioteca na cidade do bibliotecário.
+function N:Extras()
+	local out = {}
+	local WP = ns.Waypoint
+	local function dist(z, x, y) return WP:DistanceTo({ goto_ = { zone = z, x = x, y = y } }) end
+	for _, c in ipairs(N.OffGuideTurnins(prontas(), doGuia(), ns.questEnd, ns.questEndZones, dist)) do
+		out[#out + 1] = c
+	end
+	-- livros: só na cidade do bibliotecário da facção (olha a cidade antes da bolsa); com o guia dos livros aberto, o
+	-- último passo dele já é essa entrega
+	naCidade = false
+	local C, TP = ns.Collect, ns.TravelPlanner
+	local t = C and ns.collectData and ns.collectData.books and ns.collectData.books.turnin
+	local quem = t and t[UnitFactionGroup("player")]
+	if quem and quem.zone and TP and TP.InZone and TP:InZone(quem.zone) and C.BooksToTurnIn
+		and not (ns.currentGuide and C.GUIDE_BOOKS and ns.char.currentGuide == C.GUIDE_BOOKS) then
+		local livros = C:BooksToTurnIn()
+		local d = #livros > 0 and dist(quem.zone, quem.x, quem.y)
+		if d then
+			naCidade = true
+			out[#out + 1] = { q = "books", dist = d, radius = math.huge, kind = "books", n = #livros, npc = quem.name,
+				top = true, goal = { goto_ = { zone = quem.zone, x = quem.x, y = quem.y } } }
+		end
+	end
 	return out
 end
 
@@ -156,10 +255,13 @@ function N:List() return current end
 local function scan()
 	if not (ns.currentGuide and ns:UIShown() and ns.db.nearby ~= false) then
 		if #current > 0 then current, sig = {}, ""; if ns.Viewer then ns.Viewer:Refresh() end end
+		-- sem a janela do guia, o aviso das entregas fora do guia e dos livros segue (#118); a lista, não
+		if ns.db.nearby ~= false and ns.Waypoint then N.Announce(N.Pick(N:Extras(), N.RADIUS, N.MAX)) end
 		return
 	end
 	local list = N.Pick(N:Candidates(), N.RADIUS, N.MAX)
 	current = list
+	N.Announce(list)
 	local s = N.Signature(list)
 	if s ~= sig then
 		sig = s
@@ -167,6 +269,24 @@ local function scan()
 	end
 end
 N.Scan = scan
+
+-- O aviso (#118): a entrega fora do guia, uma vez por quest na sessão; os livros, uma vez por visita à cidade (sai
+-- da lista quando o jogador sai de lá, e avisa de novo na volta).
+local avisou = {}
+function N.Announce(list)
+	for _, c in ipairs(list or {}) do
+		local key = c.kind == "books" and "books" or c.offGuide and ("q" .. tostring(c.q))
+		if key and not avisou[key] then
+			avisou[key] = true
+			if ns.Toast then
+				local L = ns.L
+				ns.Toast:Show({ title = c.kind == "books" and L.NB_TOAST_BOOKS or L.NB_TOAST_TURNIN, text = N.Label(c),
+					color = ns.UI.COL.done, hold = 5 })
+			end
+		end
+	end
+	if not naCidade then avisou.books = nil end
+end
 
 function N:GoTo(c)
 	local gt = c.goal.goto_
@@ -182,6 +302,7 @@ function N.Label(c)
 		local npc = c.npc and ((ns.db.npcNames or {})[c.npc.id] or c.npc.text)
 		return npc and L.NB_ACCEPT:format(title, npc) or L.NB_ACCEPT1:format(title)
 	end
+	if c.kind == "books" then return L.NB_BOOKS:format(c.n, c.npc or "?") end
 	local title = ns.QuestState and ns.QuestState.Title(c.q) or tostring(c.q)
 	if c.kind == "turnin" then return L.NB_TURNIN:format(title) end
 	local verb = L["VERB_" .. (c.goal.verb == "goto_" and "goto" or c.goal.verb)] or c.goal.verb

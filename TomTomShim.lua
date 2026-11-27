@@ -1,7 +1,8 @@
 --=============================================================================
 -- TomTomShim — compatibilidade com o TomTom (specs/revamp-polestar, R14; opcional, desligado). Sem o TomTom instalado,
--- `TomTom:AddWaypoint(mapa, x, y, opções)` de outros addons e `/way [#mapa|zona] x y [nome]` viram o destino manual do
--- Lodestar (a seta, a rota, a bússola); `RemoveWaypoint` limpa. Com o TomTom, nada muda: ele é quem responde.
+-- `TomTom:AddWaypoint(mapa, x, y, opções)` de outros addons vira o destino manual do Lodestar (a seta, a rota, a
+-- bússola) e `RemoveWaypoint` limpa; `/way [#mapa|zona] x y [nome]` vira uma parada antes do destino (#117), e
+-- `/way off` tira o destino manual e as paradas. Com o TomTom, nada muda: ele é quem responde.
 -- No topo, o núcleo puro (ParseWay, testado fora do jogo). Abaixo, a API mínima.
 --=============================================================================
 local ADDON, ns = ...
@@ -94,16 +95,18 @@ function shim:GetDistanceToWaypoint() return nil end
 local function slashWay(msg)
 	msg = (msg or ""):gsub("^%s+", ""):gsub("%s+$", "")
 	if msg == "" or msg == "off" or msg == "reset" or msg == "clear" then
-		if ns.Waypoint then ns.Waypoint:ClearCustom() end
+		if ns.Waypoint then ns.Waypoint:ClearAll() end             -- o destino manual e as paradas (#117)
 		return ns:Print(ns.L.DEST_CLEARED)
 	end
 	local where, x, y, label = TT.ParseWay(msg)
 	if not where then return ns:Print(ns.L.WAY_USAGE) end
 	local map = where.map or mapOfZone(where.zone) or (not where.zone and C_Map.GetBestMapForUnit("player"))
 	if not map then return ns:Printf(ns.L.WAY_NOZONE, where.zone or "?") end
-	ns.Waypoint:SetCustom(nil, x, y, label or ns.L.WAYPOINT, map)
+	-- a coordenada digitada vira parada antes do destino (#117); o AddWaypoint dos outros addons segue trocando o destino.
+	-- Fora do mapa (o AddStop já disse) ou já na fila: nada a dizer.
+	if not ns.Waypoint:AddStop(nil, x, y, label or ns.L.WAYPOINT, map) then return end
 	local info = C_Map.GetMapInfo(map)
-	ns:Printf("%s: %s %.1f, %.1f", label or ns.L.WAYPOINT, info and info.name or "?", x, y)
+	ns:Printf("%s: %s %.1f, %.1f", label or ns.L.STOP, info and info.name or "?", x, y)
 end
 
 function TT:Install()

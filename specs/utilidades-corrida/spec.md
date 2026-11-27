@@ -14,6 +14,15 @@ Depois do Lodestar 3 (#90), o que decide a corrida dos guias é o tempo de level
   sugestão volta a até 60 jd do ponto, ele faz lá. O texto diz a quest e quem a dá, no idioma do cliente quando o
   jogo sabe. Na janela do guia, depois do
   passo; clique guia até lá. A janela só redesenha quando a lista muda.
+  (#118) E o que o guia não leva: quest pronta no diário que o guia aberto não vai entregar daqui para frente (só
+  pega, a entrega ficou para trás, ou não cita; a pulada de propósito não entra), com o ponto de entrega
+  (QuestEnders.lua, gerado por tools/gen_questenders.py do banco do Forever: NPC/objeto de entrega e os primeiros
+  pontos dele, sem o "-1,-1" de dentro da masmorra nem zona sem mapa) a até 220 jd — "Entregue <quest>", aviso
+  (toast) uma vez por quest na sessão. Livros da biblioteca na bolsa (quest do livro aberta) com o jogador na cidade do
+  bibliotecário da facção (Owen Thadd em Undercity; Garion Wendell em Stormwind) — "Entregue N livros a
+  <bibliotecário>", sempre na lista (antes das outras linhas), vale na cidade toda e avisa uma vez por visita (zera ao
+  sair da cidade); com o guia dos livros aberto, não repete. O aviso sai mesmo com a janela do guia fechada; a lista,
+  só com ela.
 - **R1b Automação além do passo (issue #100).** O aceite automático pega a quest que o guia aceita em qualquer passo
   daqui em diante, não só no atual. A entrega automática entrega a quest pronta que o guia entrega em qualquer passo,
   inclusive um que ficou para trás. Isso vale no gossip, na janela de saudação (com entrega) e na de detalhe. Fica de

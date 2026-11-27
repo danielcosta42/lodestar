@@ -5,6 +5,20 @@
 --=============================================================================
 local ADDON, ns = ...
 local UI = ns.UI
+local FM = {}
+ns.FlightMap = FM
+
+-- A perna de voo do trecho atual da rota: da perna atual até a primeira parada (#117). O voo depois dela é do trecho
+-- seguinte — tomá-lo agora (voo automático) pularia a parada: nil, true (a parada vem antes de qualquer voo).
+function FM.FlightLeg(route)
+	for i = route and route.leg or 1, route and #route.legs or 0 do
+		local leg = route.legs[i]
+		if leg.k == "flight" then return leg end
+		if leg.parada then return nil, true end
+	end
+end
+
+if not ns.On then return end
 
 local marker
 
@@ -77,21 +91,15 @@ local function destinationZones()
 	return zones
 end
 
--- O nó de destino da perna de voo da rota, no idioma do cliente: o mapa de voo aberto
+-- O nó de destino da perna de voo do trecho atual, no idioma do cliente: o mapa de voo aberto
 -- lista os nós com o id (o mesmo do TravelData), e o nome dali casa com TaxiNodeName.
 local function routeFlightName()
-	local route = ns.Travel and ns.Travel:Route()
-	if not (route and C_TaxiMap and C_TaxiMap.GetAllTaxiNodes) then return nil end
-	for i = route.leg, #route.legs do
-		local leg = route.legs[i]
-		if leg.k == "flight" then
-			local mapID = (GetTaxiMapID and GetTaxiMapID()) or C_Map.GetBestMapForUnit("player")
-			local ok, list = pcall(C_TaxiMap.GetAllTaxiNodes, mapID)
-			for _, info in ipairs(ok and type(list) == "table" and list or {}) do
-				if info.nodeID == leg.to then return info.name end
-			end
-			return nil
-		end
+	local leg, parada = FM.FlightLeg(ns.Travel and ns.Travel:Route())
+	if not (leg and C_TaxiMap and C_TaxiMap.GetAllTaxiNodes) then return nil, parada end
+	local mapID = (GetTaxiMapID and GetTaxiMapID()) or C_Map.GetBestMapForUnit("player")
+	local ok, list = pcall(C_TaxiMap.GetAllTaxiNodes, mapID)
+	for _, info in ipairs(ok and type(list) == "table" and list or {}) do
+		if info.nodeID == leg.to then return info.name end
 	end
 end
 
@@ -100,7 +108,8 @@ local function highlight()
 	clearMarker()
 	local dbg = ns.db and ns.db.debug
 	if not (NumTaxiNodes and TaxiNodeName and TaxiNodeGetType) then return end
-	local want = routeFlightName()
+	local want, parada = routeFlightName()
+	if parada then return end              -- a parada vem antes: nenhum voo (nem a zona do guia) por enquanto
 	if want then
 		for i = 1, NumTaxiNodes() or 0 do
 			if TaxiNodeName(i) == want then

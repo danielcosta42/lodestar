@@ -201,6 +201,27 @@ local near = N.Pick({ { q = 1, dist = 50, kind = "objective" }, { q = 1, dist = 
 check(#near == 3 and near[1].q == 4 and near[2].q == 1 and near[2].dist == 30 and near[3].q == 3,
 	"enquanto está aqui: no raio, uma por quest (a mais perto), do mais perto, até 3")
 check(N.Signature(near) == "objective:4,turnin:1,accept:3", "assinatura do que mostrar")
+-- #118: entrega fora do guia e livros na cidade do bibliotecário
+local far = N.Pick({ { q = 9, dist = 900, kind = "books", radius = math.huge }, { q = 8, dist = 900, kind = "turnin" } },
+	220, 3)
+check(#far == 1 and far[1].kind == "books", "os livros valem na cidade toda (raio próprio); o resto, no raio")
+local mix = N.Pick({ { q = "books", dist = 40, kind = "books", radius = math.huge }, { q = 7, dist = 40, kind = "turnin" } }, 220, 3)
+check(#mix == 2, "empate de distância entre livro e quest não quebra a ordem")
+local topo = N.Pick({ { q = 1, dist = 10, kind = "turnin" }, { q = 2, dist = 20, kind = "turnin" },
+	{ q = 3, dist = 30, kind = "turnin" }, { q = "books", dist = 900, kind = "books", radius = math.huge, top = true } }, 220, 3)
+check(#topo == 3 and topo[1].kind == "books" and topo[2].q == 1 and topo[3].q == 2,
+	"os livros na cidade ficam na lista e na frente, mesmo com três linhas mais perto")
+local zonas = { "Tanaris", "Durotar" }
+local enders = { [10] = { 1, 50, 27, 2, 10, 10 }, [11] = { 1, 60, 60 }, [12] = { 2, 1, 1 } }
+local function dz(z, x, y) return z == "Tanaris" and math.abs(x - 50) * 10 + math.abs(y - 27) * 10 or nil end
+local fora = N.OffGuideTurnins({ 10, 11, 12, 13 }, { [11] = true }, enders, zonas, dz)
+check(#fora == 1 and fora[1].q == 10 and fora[1].dist == 0 and fora[1].offGuide and fora[1].goal.goto_.zone == "Tanaris"
+	and fora[1].goal.goto_.x == 50, "entrega fora do guia: a do guia não entra; sem ponto conhecido ou outro continente, não")
+local gt = N.GuideTurnins({ { goals = { { id = 5, verb = "turnin" }, { id = 6, verb = "turnin" } } },
+	{ goals = { { id = 7, verb = "accept" }, { id = 5, verb = "turnin" } } } }, function(g) return g.id ~= 6 and g.id or nil end)
+check(gt[5] == 2 and not gt[6] and not gt[7], "o último passo em que o guia entrega cada quest (a só pegada fica de fora)")
+local ex = N.Excluded({ [5] = 2, [8] = 1 }, 2, { [9] = true })
+check(ex[5] and not ex[8] and ex[9], "fora do guia: a entrega que ficou para trás conta; a que vem e a pulada, não")
 check(#N.Pick({}, 100, 3) == 0 and #N.Pick({ { q = 1 } }, 100, 3) == 0, "sem distância: fora")
 check(N.StepNPC({ { verb = "accept", text = "Westfall Stew" }, { verb = "talk", text = "" }, { verb = "talk", text = "Salma" } })
 	.text == "Salma" and N.StepNPC({ { verb = "accept", text = "X" } }) == nil, "quem dá a quest: o primeiro talk com nome")
@@ -310,6 +331,9 @@ check(un == 2 and ut == 5, "o que ainda serve: quests para pegar, sem repetir, a
 
 -- ── issue #94: colecionáveis ─────────────────────────────────────────────────
 local CO = loadPure("Collect.lua").Collect
+local paraEntregar = CO.BooksToHandIn({ { item = 1, quest = 101 }, { item = 2, quest = 102 }, { item = 3, quest = 103 },
+	{ item = 4 } }, function(i) return i ~= 2 end, function(q) return q == 103 end)
+check(#paraEntregar == 1 and paraEntregar[1].item == 1, "livros a entregar: na bolsa e a quest ainda aberta")
 local PA = loadPure("Parser.lua")
 local route = CO.Route({ { id = 1, zone = "A", x = 10, y = 10 }, { id = 2, zone = "B", x = 5, y = 5 },
 	{ id = 3, zone = "A", x = 90, y = 90 }, { id = 4, zone = "A", x = 12, y = 11 } })

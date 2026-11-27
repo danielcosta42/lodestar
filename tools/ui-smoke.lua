@@ -43,14 +43,22 @@ function M:SetText(t) self._text = t end
 function M:SetFormattedText(f, ...) self._text = f:format(...) end
 function M:GetText() return self._text or "" end
 function M:GetStringWidth() return #(self._text or "") * 6 end
-function M:GetStringHeight() return 14 end
+-- a altura do texto segue a fonte e quebra em linhas como no jogo (~68 letras por linha na largura dos painéis)
+function M:SetFont(_, size) self._fs = size end
+function M:GetStringHeight()
+	local n = #(self._text or "")
+	return (self._fs or 14) * (n > 70 and math.ceil(n / 68) or 1)
+end
 function M:GetFont() return "font", 12, "" end
 function M:SetScript(k, f) self._scripts[k] = f end
 function M:HookScript(k, f) self._scripts[k] = f end
 function M:GetScript(k) return self._scripts[k] end
 function M:GetPoint() return "CENTER", nil, "CENTER", 0, 0 end
-function M:SetPoint(p) self._pts = self._pts or {}; self._pts[#self._pts + 1] = p end
-function M:ClearAllPoints() self._pts = {} end
+function M:SetPoint(p, ...)
+	self._pts = self._pts or {}; self._pts[#self._pts + 1] = p
+	self._ptargs = self._ptargs or {}; self._ptargs[p] = { ... }
+end
+function M:ClearAllPoints() self._pts, self._ptargs = {}, {} end
 function M:GetParent() return self._parent end
 function M:GetName() return self._name end
 function M:GetFrameLevel() return 1 end
@@ -211,7 +219,9 @@ G.C_SkillInfo = { GetNumSkillLines = function() return 0 end }
 G.C_Spell = { GetSpellInfo = function() return nil end, GetSpellCooldown = function() return nil end }
 G.C_SpellBook = { IsSpellKnown = function() return false end }
 G.C_CurrencyInfo = { GetCoinTextureString = function(c) return tostring(c) end }
-G.C_ChatInfo = { RegisterAddonMessagePrefix = noop, SendAddonMessage = noop }
+-- o que sai em mensagem de addon fica em _G._sent quando um passo quer conferir
+G.C_ChatInfo = { RegisterAddonMessagePrefix = noop,
+	SendAddonMessage = function(p, m, c) if G._sent then G._sent[#G._sent + 1] = { p, m, c } end end }
 G.C_GossipInfo = {}
 G.C_NamePlate = { GetNamePlates = function() return {} end, GetNamePlateForUnit = function() return nil end }
 G.C_TaxiMap = { GetAllTaxiNodes = function() return {} end }
@@ -362,7 +372,279 @@ step("TravelPanel route", function()
 		end
 	end
 	assert(shown == 3, "pernas na linha do tempo: " .. shown)
+	-- o cartão começa abaixo do cabeçalho (#113): da linha da zona e da coluna da direita, com e sem o Limpar
+	local fr = _G.LodestarTravel
+	local function topo()
+		local a = fr.timelineCard._ptargs.TOPLEFT
+		return -a[#a]
+	end
+	-- o fundo do cabeçalho pelos pontos que o build() pôs (não pelas contas do Refresh): mover um rótulo sem ajustar o
+	-- Refresh tem de falhar aqui
+	local function off(f, pt) local a = f._ptargs[pt]; return -a[#a] end
+	local function fundo()
+		local esq = off(fr.dest, "TOPLEFT") + fr.dest:GetStringHeight() + off(fr.destSub, "TOPLEFT")
+			+ fr.destSub:GetStringHeight()
+		local dir = off(fr.total, "TOPRIGHT") + fr.total:GetStringHeight() + off(fr.eta, "TOPRIGHT")
+			+ fr.eta:GetStringHeight()
+		if fr.clear:IsShown() then dir = dir + off(fr.clear, "TOPRIGHT") + fr.clear:GetHeight() end
+		return math.max(esq, dir)
+	end
 	ns.TravelPanel.Refresh()
+	assert(topo() >= fundo() + 8, ("cartão em cima do cabeçalho: %d < %d"):format(topo(), fundo() + 8))
+	ns.Waypoint:SetCustom("The Hinterlands", 68, 52.9, "Silvermane Stalker")
+	ns.TravelPanel.Refresh()
+	assert(fr.clear:IsShown() and topo() >= fundo() + 8, "com o Limpar, o cartão em cima do cabeçalho")
+	ns.Waypoint:ClearCustom()
+	ns.TravelPanel.Refresh()
+end)
+-- paradas (#117): o serviço e a coordenada entram antes do destino, Shift vai direto, × tira, chegar ou abrir a janela
+-- do serviço conclui, Limpar tira tudo. O mundo de mentira: o mapa vira um quadrado de 200 jd em volta do jogador.
+step("TravelPanel stops", function()
+	local T, D, WP = ns.Travel, ns.Destinations, ns.Waypoint
+	local pw, w, shift, repair = T.PlayerWorld, T.World, _G.IsShiftKeyDown, _G.CanMerchantRepair
+	local eu = { c = 0, x = -10500, y = 1050 }
+	UIParent:SetHeight(1080)              -- tela alta: a linha do tempo inteira cabe (a de 768 é o passo seguinte)
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function(_, x, y) return { c = 0, x = -10500 + (x or 0) * 2, y = 1000 + (y or 0) * 2 } end
+	local ok, err = pcall(function()
+		local fr = _G.LodestarTravel
+		if not fr:IsShown() then ns.TravelPanel:Toggle() end
+		D:Set("manual", { zone = "Westfall", x = 60, y = 60, label = "Silvermane Stalker" })
+		local function svc(kind)
+			for _, b in ipairs(fr.svc._kids or {}) do if b.kind == kind then return b end end
+		end
+		-- clique num serviço: parada, o destino fica
+		svc("repair"):GetScript("OnClick")(svc("repair"))
+		local s1 = D:Stops()[1]
+		assert(#D:Stops() == 1 and s1.service == "repair" and s1.short and s1.npc, "o serviço não virou parada")
+		assert(D:Get("manual").label == "Silvermane Stalker", "a parada trocou o destino")
+		-- o mesmo serviço de novo: nada entra e não se avisa como se tivesse entrado (#117)
+		local foi, msg = ns.Services:GoTo("repair", nil, true)
+		assert(not foi and #D:Stops() == 1 and msg == ns.L.STOP_ALREADY:format(s1.label),
+			"o serviço repetido virou parada (ou avisou que entrou): " .. tostring(msg))
+		local r = T:Route()
+		assert(r and r.kind == "manual" and r.stops and #r.stops == 1, "a rota não passa pela parada")
+		assert(r.stops[1].leg < #r.legs and r.legs[r.stops[1].leg].parada == s1, "a parada não fica antes do destino")
+		-- coordenada no campo (Ir): segunda parada, depois da primeira
+		fr.box:SetText("30 40")
+		fr.box:GetScript("OnEnterPressed")(fr.box)
+		local s2 = D:Stops()[2]
+		assert(#D:Stops() == 2 and s2.x == 30 and s2.y == 40 and s2.label:find("30.0, 40.0", 1, true),
+			"a coordenada não virou parada")
+		r = T:Route()
+		assert(#r.stops == 2 and r.stops[1].dest == s1 and r.stops[2].dest == s2 and r.stops[2].leg < #r.legs,
+			"a rota não vai parada 1 -> parada 2 -> destino")
+		-- a seta: a parada e o que vem depois
+		local goal = WP:PickTarget()
+		assert(goal and goal.text:find(ns.L.STOP_THEN:format(s1.short, s2.short), 1, true),
+			"a seta não diz a parada e o depois: " .. tostring(goal and goal.text))
+		-- a Navegação: a lista com o ×, o marcador na linha do tempo, o tempo total com o desvio
+		ns.TravelPanel.Refresh()
+		assert(fr.stops:IsShown() and fr.clear:IsShown(), "a lista de paradas (ou o Limpar) não apareceu")
+		local rows, marks = {}, 0
+		for _, k in ipairs(fr.stops._kids or {}) do if k._shown then rows[#rows + 1] = k end end
+		assert(#rows == 2 and rows[1].text._text == s1.label and rows[1].remove, "a lista não mostra as duas paradas")
+		for _, k in ipairs(fr.timeline._kids or {}) do
+			if k._shown and k.text._text == s1.label then marks = marks + 1 end
+			if k._shown then assert(table.concat(k._pts or {}, " ") == "TOPLEFT TOPRIGHT", "linha mal ancorada") end
+		end
+		assert(marks == 1, "o marcador da parada não está na linha do tempo")
+		assert(fr.total._text ~= "" and fr.eta._text ~= "", "sem o tempo total")
+		-- Shift: vai direto (troca o destino, sem parada nova), no serviço e na coordenada
+		_G.IsShiftKeyDown = function() return true end
+		svc("vendor"):GetScript("OnClick")(svc("vendor"))
+		assert(#D:Stops() == 2 and D:Get("manual").service == "vendor", "Shift+clique no serviço não foi direto")
+		fr.box:SetText("70 70")
+		fr.box:GetScript("OnEnterPressed")(fr.box)
+		assert(#D:Stops() == 2 and D:Get("manual").x == 70, "Shift+Ir não foi direto")
+		_G.IsShiftKeyDown = shift
+		-- o × tira a parada
+		rows[2].remove:GetScript("OnClick")(rows[2].remove)
+		assert(#D:Stops() == 1 and D:Stops()[1] == s1 and #T:Route().stops == 1, "o × não tirou a parada")
+		-- a janela do serviço: longe da parada não conta; perto, conclui
+		local ws = T.World(s1.zone, s1.x, s1.y, s1.map)
+		eu.x, eu.y = ws.x + 400, ws.y
+		ns.fire("MERCHANT_SHOW")
+		assert(#D:Stops() == 1, "vendedor aberto longe concluiu a parada")
+		eu.x, eu.y = ws.x + 5, ws.y
+		ns.fire("BANKFRAME_OPENED")
+		assert(#D:Stops() == 1, "o banco concluiu a parada do reparo")
+		_G.CanMerchantRepair = function() return false end
+		ns.fire("MERCHANT_SHOW")
+		assert(#D:Stops() == 1, "o vendedor que não conserta concluiu a parada do reparo")
+		_G.CanMerchantRepair = function() return true end
+		ns.fire("MERCHANT_SHOW")
+		assert(#D:Stops() == 0, "abrir o vendedor perto da parada não a concluiu")
+		r = T:Route()
+		assert(r and r.kind == "manual" and #r.stops == 0, "sem a parada, a rota não seguiu para o destino")
+		-- chegar perto conclui (o relógio da rota avança a perna) e a seta segue para o destino
+		eu.x, eu.y = -10500, 1050
+		WP:Way("20 20")
+		local s3 = D:Stops()[1]
+		assert(s3 and T:Route().stops[1].dest == s3, "/ls way não virou parada")
+		local w3 = T.World(nil, 20, 20)
+		eu.x, eu.y = w3.x + 3, w3.y
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		upd(ns.eventFrame, 1.01)
+		assert(#D:Stops() == 0, "chegar à parada não a concluiu")
+		r = T:Route()
+		assert(r and #r.stops == 0 and r.kind == "manual", "depois da parada, a rota não foi ao destino")
+		-- chegar à parada: a rota nova herda o caminho já calculado do trecho seguinte (não refaz a busca do zero)
+		do
+			eu.x, eu.y = -10500, 1050
+			WP:Way("20 20")
+			local rt = T:Route()
+			local marca = { 1, 2, 3 }
+			rt.legs[2].path, rt.legs[2].pathFail, rt.legs[2].pathAt = false, true, marca
+			local w1 = T.World(nil, 20, 20)
+			eu.x, eu.y = w1.x + 3, w1.y
+			upd(ns.eventFrame, 1.01)
+			local nr = T:Route()
+			assert(#D:Stops() == 0 and nr and nr.legs[1].pathAt == marca, "depois da parada, o caminho seguinte foi perdido")
+			D:ClearStops()
+		end
+		-- passar antes pela segunda parada também a conclui (#117): ela sai, a primeira fica e a rota volta a ela
+		eu.x, eu.y = -10500, 1050
+		WP:Way("20 20"); WP:Way("35 35")
+		local p1 = D:Stops()[1]
+		local w2 = T.World(nil, 35, 35)
+		eu.x, eu.y = w2.x + 4, w2.y
+		upd(ns.eventFrame, 1.01)
+		assert(#D:Stops() == 1 and D:Stops()[1] == p1, "passar pela segunda parada antes da primeira não a concluiu")
+		r = T:Route()
+		assert(r and #r.stops == 1 and r.stops[1].dest == p1, "a rota não voltou para a primeira parada")
+		-- em voo (ou a bordo), mexer na fila não refaz a rota do meio do ar: ela se refaz ao pousar (#117)
+		_G.UnitOnTaxi = function() return true end
+		local noAr = T:Route()
+		WP:Way("45 50")
+		assert(#D:Stops() == 2 and T:Route() == noAr and #noAr.stops == 1, "em voo, a parada nova refez a rota")
+		upd(ns.eventFrame, 1.01)
+		assert(T:Route() == noAr, "em voo, o relógio refez a rota")
+		_G.UnitOnTaxi = nil
+		upd(ns.eventFrame, 1.01)
+		r = T:Route()
+		assert(r ~= noAr and #r.stops == 2, "pousou e a rota não passou pela parada nova")
+		-- zona que não se conhece: a parada não entra (nem trava a rota) e o chat diz por quê; a caixa não importa
+		local fake, say, said = T.World, _G.print, nil
+		T.World = function(z, ...) if z == "Lugar Nenhum" then return nil end return fake(z, ...) end
+		_G.print = function(...) said = table.concat({ ... }, " "); say(...) end
+		local entrou, disse = WP:Way("45 30 Lugar Nenhum")
+		_G.print, T.World = say, fake
+		assert(not entrou and disse and #D:Stops() == 2 and said and said:find("Lugar Nenhum", 1, true),
+			"a parada fora do mapa entrou (ou o chat não disse): " .. tostring(said))
+		assert(WP.ZoneKey("westfall") == "Westfall", "a zona digitada em minúsculas não achou o mapa")
+		D:ClearStops()
+		-- o corpo passa na frente: as paradas esperam e voltam ao reviver
+		WP:Way("25 25")
+		D:Set("corpse", { map = 1436, x = 10, y = 10, label = "corpo", red = true })
+		r = T:Route()
+		assert(r and r.kind == "corpse" and #r.stops == 0 and #D:Stops() == 1, "o corpo não passou na frente da parada")
+		ns.TravelPanel.Refresh()
+		assert(fr.stopsLabel._text == ns.L.V3_NAV_STOPS_WAIT, "a lista não diz que as paradas esperam o corpo")
+		D:Clear("corpse")
+		assert(#T:Route().stops == 1, "reviveu: a parada não voltou")
+		-- Shift+clique no mapa: parada; em cima dela, tira
+		WP:ClickDest(1436, 33, 33)
+		assert(#D:Stops() == 2, "Shift+clique no mapa não pôs parada")
+		WP:ClickDest(1436, 0, 0, { dest = D:Stops()[2], kind = "stop" })
+		assert(#D:Stops() == 1, "Shift+clique em cima da parada não a tirou")
+		-- Limpar: o destino manual e as paradas
+		fr.clear:GetScript("OnClick")(fr.clear)
+		assert(#D:Stops() == 0 and D:Get("manual") == nil, "Limpar não tirou tudo")
+		-- fechar o guia leva as paradas junto (#93)
+		WP:Way("40 40")
+		ns.Viewer:Hide()
+		assert(#D:Stops() == 0, "fechar o guia deixou a parada")
+		ns.Viewer:Show()
+	end)
+	_G.IsShiftKeyDown, _G.CanMerchantRepair, _G.UnitOnTaxi = shift, repair, nil
+	UIParent:SetHeight(0)
+	D:ClearStops(); D:Clear("manual"); D:Clear("corpse")
+	T.PlayerWorld, T.World = pw, w
+	assert(ok, err)
+end)
+-- altura da Navegação (#117): muitas paradas e pernas encolhem a lista (até 4 e "+N a mais") e a linha do tempo (o
+-- trecho atual, "+N" e o destino), e a janela cabe numa tela de 768. Antes: 6 paradas e 7 pernas davam 1120 px e o
+-- 13º item (a perna até o destino) sumia calado.
+step("TravelPanel height", function()
+	local T, D = ns.Travel, ns.Destinations
+	local savedRoute, savedPW = T.Route, T.PlayerWorld
+	local fr = _G.LodestarTravel
+	if not fr:IsShown() then ns.TravelPanel:Toggle() end
+	UIParent:SetHeight(768)
+	local route
+	T.Route = function() return route end
+	T.PlayerWorld = function() return { c = 0, x = 0, y = 0 } end
+	-- nStops paradas, uma em cada uma das primeiras pernas a pé; nLegs pernas (a pé e voo alternados depois delas)
+	local function monta(nStops, nLegs, atual)
+		D:ClearStops()
+		local legs, stops, a = {}, {}, { c = 0, x = 0, y = 0 }
+		for i = 1, nLegs do
+			local b = { c = 0, x = i * 100, y = 0 }
+			legs[i] = { k = (i > nStops and (i - nStops) % 2 == 0) and "flight" or "walk", a = a, b = b, s = 30,
+				name = "Voo " .. i }
+			a = b
+		end
+		legs[nLegs].k = "walk"                                  -- a última perna chega a pé ao destino
+		for j = 1, nStops do
+			D:AddStop({ zone = "Westfall", x = j, y = j, label = "Parada " .. j, short = "P" .. j })
+			local sj = D:Stops()[j]
+			legs[j].parada = sj
+			stops[j] = { leg = j, dest = sj }
+		end
+		route = { leg = atual or 1, legs = legs, stops = stops, kind = "manual", dest = { label = "Destino final" } }
+		ns.TravelPanel.Refresh()
+	end
+	-- as linhas mostradas, de cima para baixo (a ordem de criação não é a da tela: o "+N" nasce depois)
+	local function visiveis()
+		local out = {}
+		for _, k in ipairs(fr.timeline._kids or {}) do if k._shown then out[#out + 1] = k end end
+		local function topo(k) local a = k._ptargs.TOPLEFT; return -a[#a] end
+		table.sort(out, function(x, y) return topo(x) < topo(y) end)
+		return out
+	end
+	local ok, err = pcall(function()
+		for _, caso in ipairs({ { 6, 7 }, { 2, 3 }, { 0, 9 }, { 1, 3 }, { 1, 5 }, { 2, 6 }, { 6, 7, 3 }, { 9, 12 } }) do
+			local nS, nL, atual = caso[1], caso[2], caso[3]
+			monta(nS, nL, atual)
+			local nome = ("%d paradas, %d pernas%s"):format(nS, nL, atual and (", na perna " .. atual) or "")
+			assert(fr._h <= 768 - 64, nome .. ": a janela passou da tela (" .. fr._h .. " px)")
+			local vis = visiveis()
+			local fim = vis[#vis]
+			assert(fim and fim.text._text == "Destino final", nome .. ": o destino final sumiu da linha do tempo ("
+				.. tostring(fim and fim.text._text) .. ")")
+			local itens = nL + nS - (atual and (atual - 1) + math.min(nS, atual - 1) or 0)
+			if #vis < itens then
+				local mais = false
+				for _, k in ipairs(vis) do
+					if k.text._text and k.text._text:find("^%+%d") then mais = true end
+					assert(table.concat(k._pts or {}, " ") == "TOPLEFT TOPRIGHT", nome .. ": linha mal ancorada")
+				end
+				assert(mais, nome .. ": a linha do tempo encolheu sem o \"+N\"")
+				for _, k in ipairs(vis) do
+					assert(not (k.text._text or ""):find("^%+1 "), nome .. ": \"+1\" no lugar de um item só")
+				end
+			end
+			local linhas = 0
+			for _, k in ipairs(fr.stops._kids or {}) do if k._shown and k.remove then linhas = linhas + 1 end end
+			assert(linhas <= 4 and (nS == 0 or linhas >= 1), nome .. ": paradas na lista: " .. linhas)
+			if linhas < nS then
+				assert(fr.stopsMore:IsShown() and fr.stopsMore._text == ns.L.V3_NAV_STOPS_MORE:format(nS - linhas),
+					nome .. ": a lista encolheu sem o \"+N a mais\"")
+			else
+				assert(not fr.stopsMore:IsShown(), nome .. ": \"+N a mais\" com todas as paradas na lista")
+			end
+		end
+		-- poucas: tudo aparece, como antes (as feitas também)
+		monta(1, 2)
+		assert(#visiveis() == 3 and not fr.stopsMore:IsShown(), "1 parada e 2 pernas: a linha do tempo encolheu")
+	end)
+	T.Route, T.PlayerWorld = savedRoute, savedPW
+	route = nil
+	D:ClearStops()
+	UIParent:SetHeight(0)
+	ns.TravelPanel.Refresh()
+	assert(ok, err)
 end)
 for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "rares", "characters",
 	"class", "dungeonguides", "reputation",
@@ -520,6 +802,148 @@ step("Passages", function()
 	assert(txt:find("Recorded passages"), "o relatório não leva as passagens")
 	ns.Passages:Command("limpar")
 	assert(#ns.db.passages == 0, "limpar não apagou")
+end)
+-- entrou no mundo (#114): a rota velha (com caminho que falhou) é refeita do zero alguns tiques depois, como fechar
+-- e abrir o guia; o relatório leva o estado da rota
+step("Fresh route after entering world", function()
+	local T = ns.Travel
+	local pw, w = T.PlayerWorld, T.World
+	T.PlayerWorld = function() return { c = 0, x = -10500, y = 1050 } end
+	T.World = function() return { c = 0, x = -10560, y = 1010 } end
+	local ok, err = pcall(function()
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		local r1 = T:Route()
+		assert(r1 and r1.legs[1], "sem rota")
+		r1.legs[1].path, r1.legs[1].pathFail, r1.legs[1].pathAt = false, true, { c = 0, x = -10500, y = 1050 }
+		assert(T:Describe():find("fail"), "o relatório não mostra a falha do caminho")
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		-- tela de carregamento comum (masmorra, pedra, barco entre continentes): não refaz
+		ns.fire("PLAYER_ENTERING_WORLD", false, false); ns.fire("LOADING_SCREEN_DISABLED")
+		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
+		assert(T:Route() == r1, "refez a rota numa tela de carregamento comum")
+		-- login: refaz do zero
+		ns.fire("PLAYER_ENTERING_WORLD", true, false)
+		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
+		local r2 = T:Route()
+		assert(r2 and r2 ~= r1 and not r2.legs[1].pathFail, "a rota não foi refeita do zero ao entrar no mundo")
+		-- /reload a bordo: a perna de barco fica
+		r2.legs[1].k, r2.legs[1].boarded = "ship", 1
+		ns.fire("PLAYER_ENTERING_WORLD", false, true)
+		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
+		assert(T:Route() == r2, "refez a rota a bordo")
+		r2.legs[1].k, r2.legs[1].boarded = "walk", nil
+		assert(ns.Report.ReportText(ns.Report.Context(), "x"):find("Route: dest manual"), "relatório sem a rota")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World = pw, w
+	assert(ok, err)
+end)
+-- horário dividido com a guilda e o grupo (#116): a observação própria sai; a de outro entra; o eco e o lixo não;
+-- a pergunta tem resposta
+step("TransitShare", function()
+	local sent, guild, after = {}, _G.IsInGuild, _G.C_Timer.After
+	_G._sent, _G.IsInGuild = sent, function() return true end
+	_G.C_Timer.After = function(_, f) f() end
+	local ok, err = pcall(function()
+		local ship = ns.travel.ships[1]
+		local now = GetServerTime()
+		local store = ns.Travel:Transit()
+		store[ship.id] = nil
+		ns.Travel:Observe(ship.id, 1, "arr", now - 50)
+		local foi = false
+		for _, m in ipairs(sent) do
+			if m[1] == "LSTransit" and m[3] == "GUILD" and m[2]:find("^o|" .. ship.id .. "|1|a|") then foi = true end
+		end
+		assert(foi, "a observação própria não foi para a guilda")
+		assert(store[ship.id].own == now - 50, "a própria não ficou marcada")
+		store[ship.id] = nil
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|2|d|%d"):format(ship.id, now - 30), "GUILD", "Outro")
+		assert(store[ship.id] and store[ship.id].last == now - 30 and not store[ship.id].own,
+			"a observação da guilda não entrou")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 10), "GUILD", "Teste")
+		assert(store[ship.id].last == now - 30, "o eco da própria mensagem entrou")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 10), "WHISPER", "Outro")
+		assert(store[ship.id].last == now - 30, "sussurro entrou (só guilda e grupo)")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 10), "GUILD", "Alguem-OutroReino")
+		assert(store[ship.id].last == now - 30, "horário de outro reino entrou")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", "o|999999|1|a|5", "GUILD", "Outro")
+		assert(store[999999] == nil, "transporte desconhecido entrou")
+		-- de fora só move a fase: o período aprendido fica
+		store[ship.id].T = 999
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 20), "GUILD", "Outro")
+		assert(store[ship.id].last == now - 20 and store[ship.id].T == 999, "a de fora mexeu no período aprendido")
+		store[ship.id].T = nil
+		-- pergunta sem nada a dizer não trava o canal: a seguinte, com horário, tem resposta (numa mensagem só)
+		local guarda = store[ship.id]
+		for _, sh in ipairs(ns.travel.ships) do store[sh.id] = nil end
+		local antes = #sent
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", "q", "GUILD", "Outro")
+		assert(#sent == antes, "respondeu sem ter horário")
+		store[ship.id] = guarda
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", "q", "GUILD", "Outro")
+		local resp = 0
+		for i = antes + 1, #sent do
+			if sent[i][3] == "GUILD" and sent[i][2]:find(("%d|1|a|%d"):format(ship.id, now - 20), 1, true) then
+				resp = resp + 1
+			end
+		end
+		assert(resp == 1, "a pergunta ficou sem resposta (ou foi em várias)")
+		-- ao entrar num grupo, pergunta só ao grupo
+		local ig = _G.IsInGroup
+		_G.IsInGroup = function() return true end
+		antes = #sent
+		ns.TransitShare:Ask(true)
+		_G.IsInGroup = ig
+		for i = antes + 1, #sent do assert(sent[i][3] ~= "GUILD", "a pergunta do grupo acordou a guilda") end
+		assert(#sent > antes, "a pergunta do grupo não saiu")
+		ns.db.transitShare = false
+		antes = #sent
+		ns.Travel:Observe(ship.id, 1, "arr", now - 5)
+		assert(#sent == antes, "desligado e ainda manda")
+		ns.db.transitShare = nil
+	end)
+	_G._sent, _G.IsInGuild, _G.C_Timer.After = nil, guild, after
+	assert(ok, err)
+end)
+-- o que o guia não cita (#118): quest pronta com a entrega perto e livros na cidade do bibliotecário — na lista do
+-- "Enquanto está aqui" e um aviso só
+step("Nearby off-guide", function()
+	local N, WP, TP, QL = ns.Nearby, ns.Waypoint, ns.TravelPlanner, _G.C_QuestLog
+	local sDist, sIn, sNum, sInfo, sComp = WP.DistanceTo, TP.InZone, QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete
+	local sCount, sShow = ns.ItemCount, ns.Toast.Show
+	local toasts = {}
+	local ok, err = pcall(function()
+		local gq = N.Excluded(N.GuideTurnins(ns.currentGuide.steps, function(g) return ns.QuestState.QuestOf(g) end),
+			ns.char.currentStep, ns.char.skipped)
+		local fora
+		for q in pairs(ns.questEnd) do if not gq[q] then fora = q; break end end
+		local livro = ns.Collect:Lists().books[1]
+		assert(fora and livro, "sem quest fora do guia ou sem livro nos dados")
+		-- só os pontos de fora do guia ficam perto (os do guia têm verbo): o limite de 3 linhas não os esconde
+		WP.DistanceTo = function(_, g) return (g and not g.verb) and 40 or nil end
+		TP.InZone = function() return true end
+		QL.GetNumQuestLogEntries = function() return 1 end
+		QL.GetInfo = function() return { questID = fora } end
+		QL.IsComplete = function(q) return q == fora end
+		ns.ItemCount = function(id) return id == livro.item and 1 or 0 end
+		ns.Toast.Show = function(_, t) toasts[#toasts + 1] = t end
+		N.Scan()
+		local temQ, temL = false, false
+		for _, c in ipairs(N:List()) do
+			if c.offGuide and c.q == fora then temQ = true end
+			if c.kind == "books" and c.n == 1 then temL = true end
+		end
+		assert(temQ, "a quest pronta fora do guia não apareceu")
+		assert(temL, "os livros na cidade do bibliotecário não apareceram")
+		assert(#toasts == 2, "avisos: " .. #toasts)
+		N.Scan()
+		assert(#toasts == 2, "avisou de novo")
+		ns.Viewer:Refresh()
+	end)
+	WP.DistanceTo, TP.InZone, QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete = sDist, sIn, sNum, sInfo, sComp
+	ns.ItemCount, ns.Toast.Show = sCount, sShow
+	ns.Nearby.Scan()
+	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
