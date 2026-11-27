@@ -20,7 +20,9 @@ terreno). Amostras vizinhas se ligam se o desnível cabe na rampa; o terreno só
 rampa em qualquer direção. Dentro de cada célula as superfícies ligadas formam componentes e a célula fica
 com um (o jogo tem um nó por célula — sem andares): o maior em terra firme, ou o que é passagem estreita
 (essencial na vizinhança), acertado pela grade projetada e por corredores (escolhe). Liga ao vizinho se os
-componentes escolhidos se tocam por uma ligação fina; em diagonal, se se alcançam pela quina.
+componentes escolhidos se tocam por uma ligação fina; em diagonal, se se alcançam pela quina. Por fim, a grade
+leva também as ligações da v1 (calculada na mesma rodada) onde o chão escolhido está no nível do terreno (NIVEL) e
+o terreno fino cruza a borda das duas células (une_v1): a v2 nunca fica pior que a v1 no mesmo chão.
 
     python gen_terrain.py                  # gera os dois arquivos (v2, cliente local ou CDN)
     python gen_terrain.py --cdn            # lê do CDN mesmo com cliente instalado
@@ -850,6 +852,7 @@ ROTAS = [
     (0, "Thorium Point: Aliança <-> Horda", -6552.6, -1168.3, -6554.9, -1100.1),
     (1, "Timbermaw Hold: Felwood <-> Moonglade", 6815.0, -2092.0, 7380.0, -2195.0),
     (1, "Thousand Needles: ponte de corda sobre o cânion", -4900.0, -1878.0, -5010.3, -1892.0),
+    (1, "Wailing Caverns: entrada", -929.0, -2095.0, -800.0, -2000.0),
 ]
 MARGEM_ROTA = 120                  # jd em volta das pontas onde o caminho fino pode passar
 
@@ -979,6 +982,8 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
                 interiores[k][a_ % NQ, b_ % NQ] = True
     vazio = (np.zeros(0, np.int32), np.zeros(0, np.int32), np.zeros(0, np.float32))
     bordas, ccel, tam, nado, obj, zsoma, arestas, diagonais = {}, [], [], [], [], [], [], []
+    degrau = {}
+    firme = np.zeros((LADO, LADO), np.float32)          # fração de cada célula com terreno de pé (para une_v1)
     cxs, cys = [], []
     base = 0
     for (lin, col), fdid in sorted(q.items()):
@@ -986,6 +991,11 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
         if not adt:
             continue
         zt, bur, ag, rm = fino(*le_adt(adt, ruins))
+        funda_ = ag - zt > FUNDO
+        gx_, gy_ = np.gradient(zt, F)                   # o mesmo terreno de pé que camadas(): sem buraco, sem líquido
+        de_pe = ~bur & ~rm & ((np.hypot(gx_, gy_) <= RAMPA) | funda_)      # nocivo, encosta na rampa (ou nado)
+        degrau[(lin, col)] = degraus(np.where(de_pe, np.where(funda_, ag, zt), np.nan))
+        firme[lin * 32:(lin + 1) * 32, col * 32:(col + 1) * 32] = de_pe.reshape(32, FINO, 32, FINO).mean(axis=(1, 3))
         r = quadrante_v2(lin, col, zt, bur, ag, rm, *hits.get(lin * 64 + col, vazio),
                          interior=interiores.get(lin * 64 + col))
         cg = np.where(r["comp"] >= 0, r["comp"] + base, -1)
@@ -1037,12 +1047,118 @@ def continente_v2(c, cid, wdt, modelos_tambem=True, log=print, depura=None):
                 est["rotas"] = est.get("rotas", 0) + 1
     tem = escolhido >= 0
     est.update(componentes=len(ccel), celulas_com_modelo=int((obj[escolhido[tem]] > 0).sum()))
+    k_ = np.where(tem, escolhido, 0)
+    altura = np.where(tem, zsoma[k_] / np.maximum(tam[k_], 1), np.nan).reshape(LADO, LADO).astype(np.float32)
+    sob_morro = np.zeros((LADO, LADO), bool)            # células na pegada das INTERIORES (Ironforge)
+    for k, m in interiores.items():
+        lin, col = divmod(k, 64)
+        sob_morro[lin * 32:(lin + 1) * 32, col * 32:(col + 1) * 32] |= m.reshape(32, FINO, 32, FINO).any(axis=(1, 3))
+    altura = (altura, sob_morro | (firme < FIRME), degraus_continente(degrau))
     if depura is not None:                               # grades para olhar (scripts de depuração)
         k = np.where(tem, escolhido, 0)
         depura.update(modelo=(obj[k] > 0) & tem, altura=np.where(tem, zsoma[k] / np.maximum(tam[k], 1), np.nan),
                       ncomp=np.bincount(ccel, minlength=LADO * LADO), ccel=ccel, tam=tam, nado=nado, obj=obj,
                       zsoma=zsoma, cx=cxs, cy=cys, arestas=arestas, diagonais=diagonais, escolhido=escolhido)
-    return L, W, P, q, est, pas
+    return L, W, P, q, est, pas, altura
+
+
+# A v2 nunca fica pior que a v1 (#106): a grade final é a v2 mais as ligações da v1 (terreno, célula a célula). A v2
+# tirava ligação da v1 de dois jeitos: a regra fina (encosta na rampa em qualquer direção) recusa por pouco a célula que
+# a v1 aceitava, e a escolha de um componente por célula fica com outro chão — o alto da muralha de Stormwind (16-32 jd
+# acima da rua), o piso de modelo 20-40 jd abaixo do terreno em Swamp of Sorrows —, cortando a rua que a v1 tinha. A
+# segunda volta; a primeira só em célula de terreno firme (FIRME), porque ali a v2 é que está certa (o barranco em
+# diagonal). Não entra a ligação da v1 onde o chão escolhido pela v2 está a mais de NIVEL do terreno da v1: aí é
+# outro andar que leva a outro lugar — as pontes de corda de Thunder Bluff, ~80 jd acima do chão entre os morros (com
+# a ligação da v1, o chão de Mulgore subia direto para a ponte: Thunder Bluff caía de 2,6 para 1,5x a reta, falso) e as
+# pontes sobre cânion fundo. Nem na pegada das INTERIORES (Ironforge: o terreno ali é o alto do morro; com ele, o
+# caminho de dentro da cidade saía por cima das montanhas, 4,7 km). Célula sem ligação na v2 não tem andar: vale a v1.
+# Custo: na célula de dois andares a menos de NIVEL (muralha, plataforma, ponte baixa), o caminho pode trocar de andar
+# nela (descer da muralha, subir na ponte saindo do rio) — a v1 já fazia isso em toda célula.
+NIVEL = 45.0                       # jd entre o chão escolhido da v2 e o centro do terreno da v1 para valer a ligação da v1
+# ...e só em célula de terreno inteiro de pé: a v1 mede o desnível ao longo das linhas e colunas de vértices, e o barranco
+# em diagonal passava (a borda do Cleft of Shadow, ~54°, liga o Valley of Strength ao fundo do Cleft numa célula só).
+FIRME = 0.9                        # fração das amostras da célula com terreno de pé (encosta na rampa em qualquer direção)
+
+
+def degraus(chao):
+    """Bordas de célula que o terreno fino atravessa: (leste, sul, sudeste, sudoeste) por célula do quadrante (32 × 32;
+    a última coluna/linha fica para degraus_continente) e as bordas do quadrante (para o vizinho). `chao`: o terreno de
+    pé (nan onde não: buraco, nocivo, encosta além da rampa em alguma direção). Atravessa se ao menos um par de amostras
+    vizinhas dos dois lados (reto ou em diagonal) é de pé e tem desnível na RAMPA. A v1 só comparava os centros e o
+    desnível ao longo das linhas e colunas de vértices: o barranco em diagonal (a borda do Cleft of Shadow de Orgrimmar,
+    22 jd abaixo do Valley of Strength, ~54°) e o penhasco exatamente na borda de duas células planas passavam."""
+    l1, l2 = RAMPA * F, RAMPA * F * math.sqrt(2)
+
+    def corta(a, b):                                    # a, b (n, m): amostras de um lado e do outro, linha a linha
+        with np.errstate(invalid="ignore"):
+            ok = np.abs(a - b) <= l1
+            ok[1:] |= np.abs(a[1:] - b[:-1]) <= l2
+            ok[:-1] |= np.abs(a[:-1] - b[1:]) <= l2
+        return ok
+    leste = np.zeros((32, 32), bool)
+    sul = np.zeros((32, 32), bool)
+    leste[:, :31] = corta(chao[:, FINO - 1:-1:FINO], chao[:, FINO::FINO]).reshape(32, FINO, 31).any(1)
+    sul[:31, :] = corta(chao[FINO - 1:-1:FINO, :].T, chao[FINO::FINO, :].T).reshape(32, FINO, 31).any(1).T
+    with np.errstate(invalid="ignore"):
+        se = np.zeros((32, 32), bool)
+        se[:31, :31] = np.abs(chao[FINO - 1:-1:FINO, FINO - 1:-1:FINO] - chao[FINO::FINO, FINO::FINO]) <= l2
+        so = np.zeros((32, 32), bool)
+        so[:31, 1:] = np.abs(chao[FINO - 1:-1:FINO, FINO::FINO] - chao[FINO::FINO, FINO - 1:-1:FINO]) <= l2
+    return leste, sul, se, so, chao[:, 0].copy(), chao[:, -1].copy(), chao[0, :].copy(), chao[-1, :].copy(), corta
+
+
+def degraus_continente(degrau):
+    """As bordas de degraus() no continente inteiro (LADO × LADO): leste, sul, sudeste, sudoeste; nas bordas de quadrante,
+    pelas amostras dos dois quadrantes (diagonal na quina de quadrante: só pelas retas, em une_v1)."""
+    E, S, SE, SO = (np.zeros((LADO, LADO), bool) for _ in range(4))
+    for (lin, col), (le, su, se, so, c0, c1, r0, r1, corta) in degrau.items():
+        a, b = slice(lin * 32, lin * 32 + 32), slice(col * 32, col * 32 + 32)
+        E[a, b], S[a, b], SE[a, b], SO[a, b] = le, su, se, so
+        if (lin, col + 1) in degrau:                    # borda leste do quadrante
+            E[a, col * 32 + 31] = corta(c1[:, None], degrau[(lin, col + 1)][4][:, None]).reshape(32, FINO).any(1)
+        if (lin + 1, col) in degrau:                    # borda sul
+            S[lin * 32 + 31, b] = corta(r1[:, None], degrau[(lin + 1, col)][6][:, None]).reshape(32, FINO).any(1)
+    return E, S, SE, SO
+
+
+def une_v1(L2, W2, altura, H1, L1, W1, sob_morro=None, degrau=None):
+    """Ligações da v2 ∪ as da v1 no mesmo nível (NIVEL); água da v2 onde a v2 liga, senão a da v1. Na pegada das
+    INTERIORES e na célula sem terreno firme (`sob_morro`), nada da v1: lá o terreno é o alto do morro ou um barranco.
+    `degrau` (degraus_continente): a borda que a v1 cruza tem terreno fino de pé que a cruze. Diagonal que fica sem
+    nenhuma das retas do meio passável sai (cortaria a quina)."""
+    P2 = L2 != 0
+    with np.errstate(invalid="ignore"):
+        ok = ~P2 | (np.abs(altura - H1) <= NIVEL)
+    if sob_morro is not None:
+        ok &= ~sob_morro
+    L = L2.copy()
+    if degrau is not None:                              # a borda que a v1 cruza tem de ter terreno fino que a cruze
+        E, S, SE, SO = degrau
+        rola = lambda m, dr, dc: np.roll(np.roll(m, dr, 0), dc, 1)
+        reto = {(0, 1): E, (1, 0): S, (0, -1): rola(E, 0, 1), (-1, 0): rola(S, 1, 0)}
+        diag = {(1, 1): SE, (1, -1): SO, (-1, -1): rola(SE, 1, 1), (-1, 1): rola(SO, 1, -1)}
+    for d, (dr, dc) in enumerate(DIRS):
+        okn = np.roll(np.roll(ok, -dr, 0), -dc, 1)
+        m = (((L1 >> d) & 1) != 0) & ok & okn
+        if degrau is not None:
+            if dr and dc:                               # pela quina, ou pelas duas retas de uma das células do meio
+                via1 = reto[(dr, 0)] & rola(reto[(0, dc)], -dr, 0)
+                via2 = reto[(0, dc)] & rola(reto[(dr, 0)], 0, -dc)
+                m &= diag[(dr, dc)] | via1 | via2
+            else:
+                m &= reto[(dr, dc)]
+        L |= m.astype(np.uint8) << d
+    P = L != 0
+    for d, (dr, dc) in enumerate(DIRS):
+        if dr and dc:
+            mau = ((L >> d) & 1 != 0) & ~(np.roll(P, -dr, 0) | np.roll(P, -dc, 1))
+            if mau.any():
+                L[mau] &= np.uint8(~(1 << d) & 0xFF)
+                volta = np.roll(np.roll(mau, dr, 0), dc, 1)
+                L[volta] &= np.uint8(~(1 << DIRS.index((-dr, -dc))) & 0xFF)
+    P = L != 0
+    W = np.where(P2, W2, W1) & P
+    return L, W, P
 
 
 def rle(bs):
@@ -1102,7 +1218,12 @@ def gera(c, cid, wdt, escrever=True, v1=False, modelos_tambem=True):
         L = ligacoes(H, P, W)
         est, modo, pas = {}, "v1, só terreno", []
     else:
-        L, W, P, q, est, pas = continente_v2(c, cid, wdt, modelos_tambem)
+        L, W, P, q, est, pas, altura = continente_v2(c, cid, wdt, modelos_tambem)
+        H1, P1, W1, _ = continente(c, cid, wdt)
+        L1 = ligacoes(H1, P1, W1)
+        n2 = int(np.unpackbits(L).sum())
+        L, W, P = une_v1(L, W, altura[0], H1, L1, W1, altura[1], altura[2])
+        est["ligacoes_v1"] = int(np.unpackbits(L).sum()) - n2
         modo = "v2, terreno + modelos" if modelos_tambem else "v2, só terreno"
     cab = "-- AUTO-GERADO (gen_terrain.py, %s) do terreno do cliente %s (%s)." % (
         modo, c.versao, getattr(c, "origem", "CASC local"))

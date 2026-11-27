@@ -91,7 +91,8 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
   componentes não escolhidos que encostam em escolhidos longe (ou sem ligação) na grade — a ponte sobre o cânion de
   uma célula, o rio sob a ponte, a escada para a plataforma —, pelos centroides dos componentes; (2) rotas nomeadas
   (`ROTAS` no gerador), pelo caminho mais curto no chão fino — Ironforge do mestre de voo ao portão (os andares da
-  cidade se alternam célula a célula), Timbermaw Hold. As geradas são chão como o terreno: não marcam `passagem` e o
+  cidade se alternam célula a célula), Timbermaw Hold, Thorium Point, a ponte de corda de Thousand Needles e a
+  entrada de Wailing Caverns (os andares da boca da caverna). As geradas são chão como o terreno: não marcam `passagem` e o
   limite de volta (2× e 2000 jd) segue só para as gravadas (Terrain.lua, `TR.Links` devolve também as gravadas).
 - **Cidade debaixo do morro:** só na pegada das cidades feitas dentro do morro e entradas pelo próprio chão
   (`INTERIORES`, por FileDataID do WMO: Ironforge), o piso mais de 50 jd abaixo do terreno substitui o terreno de cima.
@@ -102,30 +103,59 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
 - **Rua, não telhado:** onde a célula tem chão de modelo de verdade (um componente com 16+ amostras de modelo), a
   escolha inicial fica com o componente que alcança mais células vizinhas (a rua, não o telhado nem o fundo do canal);
   célula de terreno (com árvores e pedras) fica com o maior em terra firme.
+- **Nunca pior que a v1 no mesmo chão** (`une_v1` no gerador; a v1 sai da mesma rodada): a grade final é a v2 mais as
+  ligações da v1 onde (1) o chão escolhido pela v2 nas duas células está a até 45 jd (`NIVEL`) do centro do terreno da
+  v1, (2) a célula tem ≥ 90% de terreno de pé (`FIRME`: encosta na rampa em qualquer direção) e (3) o terreno fino
+  cruza a borda das duas células (`degraus`). Volta o que a escolha de um componente por célula cortava: o alto da
+  muralha de Stormwind (16-32 jd acima da rua) no lugar da rua, o piso de modelo 20-40 jd abaixo do terreno em Swamp of
+  Sorrows. Não entra: o outro andar (as pontes de corda de Thunder Bluff, ~80 jd acima do chão entre os morros — com a
+  v1 ali, o chão de Mulgore "subia" para a ponte e Thunder Bluff caía falsamente de 2,6 para 1,5× a reta), a pegada de
+  Ironforge (o terreno lá é o alto do morro: o caminho de dentro saía por cima, 4,7 km), o barranco em diagonal que a
+  v1 aceitava (ela media o desnível só ao longo das linhas e colunas de vértices). Água: a da v2 onde a v2 liga.
+  Custo: na célula de dois chãos a menos de 45 jd (muralha, plataforma de Booty Bay, ponte baixa) o caminho pode trocar
+  de chão nela — a v1 já fazia isso em toda célula.
+- **Elevadores** (Undercity ↔ Ruins of Lordaeron, Thunder Bluff ↔ Mulgore; também The Great Lift e Freewind Post): são
+  transportes e não entram. Nos dados do cliente 71139 (tabelas do wago.tools, a mesma build), `GameObjects` só tem as
+  placas ("Elevator to Mulgore", "The Great Lift"); `TransportAnimation` tem o percurso de cada transporte (relativo ao
+  ponto de nascimento: 96,5 jd em 20649-20657, 129,5 em 11898/11899, 61 em 4170-4173, 71 em 47296/47297), mas o ponto
+  de nascimento é do servidor; os modelos (`undeadelevator.m2`, `elevatorcar.m2`, `kodoelevatormachine.m2`) não estão
+  postos em nenhum ADT nem conjunto de doodads de WMO perto das cidades; procurar o poço pelo desnível no chão fino não
+  achou um par alto/baixo que bata com o percurso. Sem coordenada confiável, fica fora.
 - **Resultado** (552 pares de mestres de voo a até 3,5 km, com as passagens geradas, sem as gravadas): sem caminho
-  247 (v1) → 11; segunda busca (solto) 71 → 2; normal 234 → 539; tempo do A* 46 s → 20 s. Pontes (163, do tabuleiro
-  de cada modelo): até 1,25× a reta 95 → 153, nadando 63 → 20. Lugares com teste: Revantusk ↔ Aerie Peak pela rampa,
-  Ironforge do mestre de voo ao portão (busca normal), Thandol Span, a ponte de corda de Thousand Needles, Timbermaw
-  Hold (Felwood → Moonglade, busca normal), Thorium Point Aliança ↔ Horda. Arquivos: 1,06 → 1,20 MB e 1,32 → 1,61 MB
-  (escape decimal mais curto na string Lua; os bytes são os mesmos) + 67 KB de passagens geradas (362, ~4 mil pontos).
+  247 (v1) → 11; segunda busca (solto) 71 → 2; normal 234 → 539; tempo do A* 46 s → 19 s (pior par 0,4 s). Pares
+  normais na v1 que ficam mais de 1,2× a v1: 5, todos explicados — Auberdine → Bloodvenom Post (4,3×), Zoram'gar →
+  Bloodvenom Post (2,3×) e Farholde Keep → Morgan's Vigil (1,23×): o caminho da v1 salta em reta de uma ilha (17-18
+  passos sem ligação: atravessa o morro), o da v2 é o de chão; Southshore ↔ Menethil (1,23×): a v2 anda mais e nada 57
+  células a menos (nadar custa 2,5×). 800 pares aleatórios de 150-800 jd com caminho normal na v1: mais de 1,2× a v1
+  6,3% (50), mais de 1,5× 4,1% (33); 48 dos 50 com o salto de ilha da v1, 2 nadando menos. Cidades (30 pares fixos,
+  razão média sobre a reta, v1 → v2): Stormwind 1,07 → 1,03, Orgrimmar 2,00 → 1,75, Booty Bay 2,25 → 2,08, Ironforge
+  1,42 → 1,42, Undercity 1,65 → 1,42, Thunder Bluff 3,71 → 2,60, Darnassus 1,22 → 1,15, Gadgetzan 1,19 → 1,02, Ratchet
+  1,18 → 1,05 (o teste exige a média ≤ a v1 + 1%). Desde a v2 anterior: Stormwind → Goldshire 1199 → 825 jd (v1 905),
+  Swamp of Sorrows leste 1226 → 421 (v1 419), Shadowprey ↔ Feathermoon 4486 → 2832 (v1 2689), The Sepulcher →
+  Undercity 2478 → 2390 (v1 2717); Thorium Point ↔ Thelsamar 3,7 km (a v1 não tinha caminho); Hillsbrad 813 (v1 856);
+  Tirisfal perto de Undercity 1125 (v1 1236); Felwood 575 e Wetlands 714 (v1 434 e 491, ambos com salto de ilha da v1).
+  Lugares com teste: Revantusk ↔ Aerie Peak pela rampa, Ironforge do mestre de voo ao portão (busca normal, 607 jd),
+  Thandol Span, a ponte de corda de Thousand Needles, Timbermaw Hold (Felwood → Moonglade, busca normal), Thorium Point
+  Aliança ↔ Horda; minas e cavernas: Fargodeep, Echo Ridge, Jasperlode (do fundo do WMO para fora, pela boca), Deadmines,
+  Wailing Caverns (rota fina nomeada: 381 → 177 jd; volta ao limite de 2×); Stormwind do Trade District ao porto (pela
+  rampa do cais, 764 jd: 1,12×); Orgrimmar do Valley of Strength ao Cleft of Shadow. Arquivos: 1,16 MB e 1,56 MB + 68 KB
+  de passagens geradas (342).
 - **Limites:** não há trava de volta grande para caminho só da grade (a regra de 2× e 2000 jd vale para passagem);
-  um erro de escolha numa célula vira volta longa sem aviso. Pares piores que 1,2× o melhor de (v1, v2 sem passagens geradas), a investigar: Auberdine → Bloodvenom Post
-  (4,3×) e Zoram'gar → Bloodvenom Post (2,3×), Shadowprey ↔ Feathermoon (1,65×), Thorium Point ↔ Thelsamar (1,25-1,37×),
-  The Sepulcher → Undercity (1,34×) e seis pares a 1,22-1,23×. Desde acb8544, ainda piores (sem explicação fechada): Swamp of Sorrows leste (400 → 1226 jd), Tirisfal perto de
-  Undercity (713 → 1260; a v1 dava 1236), Felwood (604 → 2272), Stormwind → Goldshire (828 → 1380), Hillsbrad (789 → 943);
-  entrada de Wailing Caverns 380 jd contra 182 no chão fino. Cidades (pares aleatórios fixos, razão média sobre a reta,
-  v1 → v2): Stormwind 1,07 → 1,21, Booty Bay 2,25 → 2,38 (piores); Orgrimmar 2,00 → 1,91, Undercity 1,65 → 1,48,
-  Thunder Bluff 3,71 → 2,62, Gadgetzan 1,19 → 1,10, Ratchet 1,18 → 1,15 (melhores); Ironforge e Darnassus iguais.
-  Undercity por dentro ↔ Brill não entra: só se chega
-  pelos elevadores (transporte, não modelo do ADT). Minas e cavernas comuns (Fargodeep, Wailing Caverns, Deadmines) e
-  os canais de Stormwind / o Cleft of Shadow de Orgrimmar ainda sem teste com nome. Sem andares — onde dois caminhos se cruzam numa célula só (ponte sobre cânion de uma célula, rio sob
-  ponte estreita), um perde; caverna de vários andares sob morro andável (Timbermaw Hold → Moonglade) fica para a
-  segunda busca; cidades por dentro (Ironforge, Undercity) e elevadores/transportes não entram (o elevador não é
-  modelo do ADT); líquido de WMO (canais de Stormwind) não é água; parede não bloqueia (só se acrescenta chão).
+  um erro de escolha numa célula vira volta longa sem aviso. Sem andares — onde dois caminhos se cruzam numa célula só
+  (ponte sobre cânion de uma célula, rio sob ponte estreita), um perde. A célula do barranco que fica com a pedra de
+  cima liga o alto ao fundo: Valley of Strength → Cleft of Shadow sai por 209 jd pela borda, contra 284 no chão fino
+  pela rampa da ponta leste. Passagem (gerada ou gravada) entra numa célula cuja grade é outro chão e o caminho pode
+  seguir pela grade dali (o alto do morro sobre o túnel): a busca não sabe em que chão está (um nó por célula;
+  separar exigiria nós próprios para o miolo das passagens). Caverna de vários andares sob morro andável (Timbermaw
+  Hold → Moonglade) fica para a rota fina; mina debaixo de morro andável (Jasperlode) fica com o chão de fora na
+  célula: o caminho sai pela boca, mas pode passar por cima do morro. Cidades por dentro: Ironforge entra (INTERIORES),
+  Undercity não (só pelos elevadores); líquido de WMO (canais de Stormwind) não é água; parede não bloqueia (só se
+  acrescenta chão).
 
 ## Fora
 
-Andares (mais de um nó por célula), elevadores, líquido de WMO; caminho no custo do planejador.
+Andares (mais de um nó por célula), elevadores (sem posição nos dados do cliente), líquido de WMO; caminho no custo do
+planejador.
 
 ## Testes
 

@@ -869,9 +869,23 @@ local lugares = {
 	-- minas e entradas de caverna: de dentro (a origem do WMO) até fora, ~100 jd (no chão fino: 1,0-1,3x a reta)
 	{ "Fargodeep Mine (Elwynn): de dentro para fora", { 0, -9834, 194 }, { 0, -9760, 120 }, 2.0 },
 	{ "Echo Ridge Mine (Northshire): de dentro para fora", { 0, -8646, -132 }, { 0, -8560, -180 }, 2.0 },
-	-- (no chão fino são 182 jd; a grade, com os andares da entrada, dá ~380: falta a rota fina desta — spec)
-	{ "Wailing Caverns (Barrens): da entrada para fora", { 1, -929, -2095 }, { 1, -800, -2000 }, 2.5 },
+	-- (a grade, com os andares da entrada, dava ~380 jd; a rota fina nomeada no gerador dá os ~182 do chão fino)
+	{ "Wailing Caverns (Barrens): da entrada para fora", { 1, -929, -2095 }, { 1, -800, -2000 }, 2.0, true },
 	{ "Deadmines (Moonbrook): da entrada para fora", { 0, -11099, 1528 }, { 0, -11030, 1450 }, 2.0 },
+	-- Jasperlode Mine: do fundo (o piso mais baixo do WMO md_spidermine) até fora, pela boca da mina (a origem do WMO);
+	-- no chão fino, 210 jd (1,05x)
+	{ "Jasperlode Mine (Elwynn): do fundo para fora, pela boca", { 0, -9043, -611 }, { 0, -9243, -611 }, 1.6, true,
+		{ -9175, -9135, -625, -565 } },
+	-- Stormwind: do Trade District (casa de leilões) ao porto, pelas ruas sobre os canais e a rampa que desce ao cais (no
+	-- chão fino, 780 jd: 1,15x)
+	{ "Stormwind: Trade District -> porto, pela rampa do cais", { 0, -8824, 665 }, { 0, -8640, 1320 }, 1.35, true,
+		{ -8610, -8570, 1060, 1180 } },
+	-- Orgrimmar: do Valley of Strength ao Cleft of Shadow, 22 jd abaixo. No chão fino, 284 jd (1,39x) pela rampa da ponta
+	-- leste (1670-1720, -4290..-4265); a grade desce pela borda do Cleft logo a oeste (209 jd): a célula do barranco
+	-- fica com a pedra de cima, que liga o alto e o fundo (um nó por célula — spec). A caixa é a borda leste do Cleft,
+	-- por onde passam os dois.
+	{ "Orgrimmar: Valley of Strength -> Cleft of Shadow (borda leste)", { 1, 1637, -4438 }, { 1, 1771, -4284 }, 1.6, true,
+		{ 1690, 1730, -4345, -4255 } },
 }
 for _, l in ipairs(lugares) do
 	local a = { c = l[2][1], x = l[2][2], y = l[2][3] }
@@ -932,7 +946,10 @@ for _, cd in ipairs(CIDADES) do
 			if comprimento(p) > 1.5 * l1 then pior = pior + 1 end
 		end
 	end
-	check(n > 20 and r2 / n <= cd[7] and pior <= cd[8], ("cidade %s: razão média %.2f (v1 %.2f, até %.2f), %d pares > 1,5x a v1 (até %d)")
+	-- não pior que a v1 na média (a grade leva as ligações da v1 no mesmo chão — gen_terrain.une_v1; Ironforge por
+	-- dentro não leva nenhuma e fica empatada: 1% de folga)
+	check(n > 20 and r2 / n <= math.min(cd[7], 1.01 * r1 / n) and pior <= cd[8],
+		("cidade %s: razão média %.3f (v1 %.3f; até %.2f e até a v1 + 1%%), %d pares > 1,5x a v1 (até %d)")
 		:format(nome, r2 / math.max(n, 1), r1 / math.max(n, 1), cd[7], pior, cd[8]))
 end
 end
