@@ -9,6 +9,7 @@
 --          hearth = { c, x, y, wait = s, spell = Retorno Astral | nil } | nil,
 --          teleports = { { c, x, y, cast, label, spell } },
 --          now = hora do servidor, sched = { [id do transporte] = horário aprendido (Schedule) } }
+--          desvios = { { a, b, f } }: a pé de a a b custa f vezes a reta (o caminho pelo terreno, #125) }
 --   route: { s = total, legs = { { k, a, b, s, name, p, discover, ship } } } ou nil
 --   Perna de barco/zepelim: sid, stop (parada de saída), dock (s atracado), ride (travessia)
 --   e, com horário, dep = hora da saída que a rota pega.
@@ -131,6 +132,17 @@ function J.Plan(from, to, ctx)
 		link(START, h, (t.cast or 10) + GASTO, { k = "teleport", name = t.label, spell = t.spell, gasto = GASTO })
 	end
 
+	-- a pé: a reta, ou f vezes ela onde o caminho pelo terreno já mostrou o desvio (penhasco, serra: #125)
+	local desvios = ctx.desvios or {}
+	local function aPe(pa, pb)
+		local d = dist(pa, pb)
+		for _, dv in ipairs(desvios) do
+			if dv.a.c == pa.c and math.abs(dv.a.x - pa.x) < 1 and math.abs(dv.a.y - pa.y) < 1
+				and math.abs(dv.b.x - pb.x) < 1 and math.abs(dv.b.y - pb.y) < 1 then return d * dv.f end
+		end
+		return d
+	end
+
 	-- Dijkstra O(n²): ~120 nós, a pé entre todo par do mesmo continente
 	local n = #nodes
 	local best, prev, via, done = {}, {}, {}, {}
@@ -147,7 +159,7 @@ function J.Plan(from, to, ctx)
 		local pu = nodes[u].pt
 		for v = 1, n do
 			if not done[v] and v ~= START and nodes[v].pt.c == pu.c then
-				local s = bu + dist(pu, nodes[v].pt) / speed
+				local s = bu + aPe(pu, nodes[v].pt) / speed
 				if s < best[v] then best[v], prev[v], via[v], gastou[v] = s, u, { k = "walk" }, gastou[u] end
 			end
 		end
@@ -178,33 +190,63 @@ function J.Plan(from, to, ctx)
 		table.insert(legs, 1, leg)
 		v = u
 	end
-	local juntas = J.JoinFlights(legs)
-	-- cada junção poupa uma decolagem: o total acompanha a soma das pernas (o tempo restante e a troca de rota usam as duas)
-	return { s = best[GOAL] - (#legs - #juntas) * FLIGHT_OVERHEAD, legs = juntas }
+	local juntas = J.JoinFlights(legs, data.flights, known, data.nodes)
+	-- o total acompanha a soma das pernas (o tempo restante e a troca de rota usam as duas)
+	local antes, depois = 0, 0
+	for _, l in ipairs(legs) do antes = antes + l.s end
+	for _, l in ipairs(juntas) do depois = depois + l.s end
+	return { s = best[GOAL] - antes + depois, legs = juntas }
 end
 
--- Voos seguidos viram um só (#124): no jogo, marcar o destino final faz o grifo passar pelos do meio sem pousar — duas
--- pernas faziam pousar e marcar de novo, e a seta apontava o pouso do meio. Tempo somado menos uma decolagem, trajeto
--- emendado, os do meio em `via`. Não junta através de uma parada (#117: `parada` marca o fim de um trecho).
-function J.JoinFlights(legs)
+-- A rota que o jogo voa ao marcar `z` saindo de `a` (#124): o voo direto, se existe, qualquer que seja a distância;
+-- senão o mais curto pelos voos conhecidos (pela duração de cada trecho, sem pousar). -> { nós depois de a }, s | nil
+function J.GameRoute(flights, known, a, z)
+	local direto = flights and flights[a] and flights[a][z]
+	if direto then return { z }, direto.s end
+	local best, prev, done = { [a] = 0 }, {}, {}
+	while true do
+		local u, bu
+		for nd, sv in pairs(best) do
+			if not done[nd] and (not bu or sv < bu) then u, bu = nd, sv end
+		end
+		if not u then return nil end
+		if u == z then break end
+		done[u] = true
+		for v, f in pairs(flights and flights[u] or {}) do
+			if known[v] and not done[v] and (not best[v] or bu + f.s < best[v]) then best[v], prev[v] = bu + f.s, u end
+		end
+	end
+	local rota, v = {}, z
+	while v ~= a do table.insert(rota, 1, v); v = prev[v] end
+	return rota, best[z]
+end
+
+-- Voos seguidos viram um só (#124) quando marcar o último é o que vale: o jogo voa a rota dele (J.GameRoute) sem
+-- pousar. Se ela é mais lenta que pousar no do meio e marcar de novo (o direto longo de Undercity a Hammerfall, contra
+-- passar por Tarren Mill), as pernas ficam separadas. Tempo, trajeto e os do meio (`via`) são os da rota do jogo. Não
+-- junta através de uma parada (#117: `parada` marca o fim de um trecho).
+local TOLERA_JUNTA = 10          -- s: um voo só, até isto mais lento que pousar e marcar de novo
+function J.JoinFlights(legs, flights, known, nodes)
 	local out = {}
 	for _, leg in ipairs(legs or {}) do
 		local ant = out[#out]
-		if ant and ant.k == "flight" and leg.k == "flight" and not ant.parada then
-			local via = {}
-			for _, n in ipairs(ant.via or {}) do via[#via + 1] = n end
-			via[#via + 1] = ant.name
-			local p
-			if ant.p or leg.p then
-				p = {}
-				for _, x in ipairs(ant.p or {}) do p[#p + 1] = x end
-				for _, x in ipairs(leg.p or {}) do p[#p + 1] = x end
+		local junta
+		if ant and ant.k == "flight" and leg.k == "flight" and not ant.parada and flights then
+			local rota, s = J.GameRoute(flights, known or {}, ant.from, leg.to)
+			if rota and s + FLIGHT_OVERHEAD <= ant.s + leg.s + TOLERA_JUNTA then
+				local p, via, de = {}, {}, ant.from
+				for i, nd in ipairs(rota) do
+					for _, x in ipairs(flights[de][nd].p or {}) do p[#p + 1] = x end
+					if i < #rota then via[#via + 1] = nodes and nodes[nd] and nodes[nd].n or tostring(nd) end
+					de = nd
+				end
+				junta = { k = "flight", name = leg.name, to = leg.to, from = ant.from, discover = ant.discover,
+					a = ant.a, b = leg.b, s = s + FLIGHT_OVERHEAD, p = #p > 0 and p or nil,
+					via = #via > 0 and via or nil, parada = leg.parada }
 			end
-			out[#out] = { k = "flight", name = leg.name, to = leg.to, from = ant.from, discover = ant.discover,
-				a = ant.a, b = leg.b, s = ant.s + leg.s - FLIGHT_OVERHEAD, p = p, via = via, parada = leg.parada }
-		else
-			out[#out + 1] = leg
 		end
+		if junta then out[#out] = junta else out[#out + 1] = leg end
 	end
 	return out
 end
+

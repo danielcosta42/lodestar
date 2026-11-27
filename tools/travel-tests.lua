@@ -127,25 +127,70 @@ check(r.s < 600, "real: a viagem leva menos de 10 min (" .. math.floor(r.s) .. "
 local fl
 for _, l in ipairs(r.legs) do if l.k == "flight" then fl = l end end
 check(fl and fl.to and real.nodes[fl.to].n == fl.name, "a perna de voo leva o id do nó de destino (mapa de voo casa pelo id)")
--- #124: Undercity -> norte das Hinterlands: os voos seguidos (Tarren Mill, Hammerfall) viram uma perna só, com "via"
+-- #124: voos seguidos viram um só quando marcar o último é o que o jogo voa. Undercity -> Hammerfall tem voo direto
+-- (279 s), mais lento que pousar em Tarren Mill e marcar de novo (260 s): ficam dois
 do
 	local _, uc = node("Undercity")
-	local alvo = { c = 0, x = -100, y = -3600 }                  -- perto de Hammerfall, longe de Revantusk
-	local rv = J.Plan(P(uc.c, uc.x + 20, uc.y), alvo, { data = real, fac = "H", known = todos("H"), speed = 7,
-		teleports = {} })
-	local voos, soma = 0, 0
+	local alvo = { c = 0, x = 499, y = -3477 }                   -- Hinterlands 49.4,37.7 (OOX-09/HL)
+	local known = todos("H")
+	known[node("Revantusk")] = nil
+	local function plano(desvios)
+		return J.Plan(P(uc.c, uc.x + 20, uc.y), alvo, { data = real, fac = "H", known = known, speed = 7.6,
+			teleports = {}, desvios = desvios })
+	end
+	local rv = plano()
+	local voos, soma = {}, 0
 	for _, l in ipairs(rv and rv.legs or {}) do
-		if l.k == "flight" then voos = voos + 1 end
+		if l.k == "flight" then voos[#voos + 1] = l end
 		soma = soma + (l.s or 0)
 	end
-	check(rv and voos == 1, "voos seguidos viram um só (" .. (rv and kinds(rv) or "nil") .. ")")
-	check(rv and math.abs(soma - rv.s) < 1, "o total acompanha a soma das pernas depois de juntar")
-	local juntas = J.JoinFlights({ { k = "walk", s = 5 }, { k = "flight", name = "Tarren Mill, Hillsbrad", s = 140, from = 11,
-		to = 13, p = { 1, 2 } }, { k = "flight", name = "Hammerfall, Arathi", s = 120, to = 17, p = { 3, 4 } }, { k = "walk", s = 9 } })
-	check(#juntas == 3 and juntas[2].name == "Hammerfall, Arathi" and juntas[2].via[1] == "Tarren Mill, Hillsbrad"
-		and juntas[2].s == 250 and juntas[2].from == 11 and #juntas[2].p == 4, "junta: destino, via, tempo e trajeto")
-	local comParada = J.JoinFlights({ { k = "flight", name = "A", s = 50, parada = true }, { k = "flight", name = "B", s = 50 } })
-	check(#comParada == 2, "parada no meio não junta (#117)")
+	check(#voos == 2 and voos[1].name:find("^Tarren Mill") and not voos[2].via,
+		"o direto Undercity -> Hammerfall é mais lento: pousa em Tarren Mill (" .. (rv and kinds(rv) or "nil") .. ")")
+	check(rv and math.abs(soma - rv.s) < 1, "o total acompanha a soma das pernas")
+	-- #125: de Hammerfall não se entra nas Hinterlands (4155 jd pelo terreno contra 1415 de reta): com o desvio medido,
+	-- a rota fica em Tarren Mill e segue a pé
+	local hf = real.nodes[node("Hammerfall")]
+	local rd = plano({ { a = { c = hf.c, x = hf.x, y = hf.y }, b = alvo, f = 4155 / 1415 } })
+	local ult
+	for _, l in ipairs(rd and rd.legs or {}) do if l.k == "flight" then ult = l end end
+	check(ult and ult.name:find("^Tarren Mill") and rd.legs[#rd.legs].k == "walk",
+		"desvio do terreno: Tarren Mill e a pé (" .. (rd and kinds(rd) or "nil") .. ")")
+	-- sem voo direto: um voo só, pela rota do jogo (Thalanaar -> Nijel's Point passa por Feathermoon)
+	local _, th = node("Thalanaar")
+	local _, nj = node("Nijel's Point")
+	local rn = J.Plan(P(th.c, th.x + 20, th.y), P(nj.c, nj.x + 20, nj.y), { data = real, fac = "A", known = todos("A"),
+		speed = 7, teleports = {} })
+	local vj
+	for _, l in ipairs(rn and rn.legs or {}) do if l.k == "flight" then vj = vj and false or l end end
+	check(vj and vj.via and vj.via[1]:find("^Feathermoon") and vj.p and #vj.p > 4,
+		"sem direto: um voo, com o do meio e o trajeto (" .. (rn and kinds(rn) or "nil") .. ")")
+
+	-- unidade: a rota do jogo e a junção
+	local fl = { [1] = { [2] = { s = 100, p = { 1, 2 } } }, [2] = { [3] = { s = 100, p = { 3, 4 } } } }
+	local nos = { [1] = { n = "Um" }, [2] = { n = "Dois, Zona" }, [3] = { n = "Tres" }, [4] = { n = "Quatro" } }
+	local tudo = { [1] = true, [2] = true, [3] = true, [4] = true }
+	local function pernas()
+		return { { k = "walk", s = 5 }, { k = "flight", name = "Dois, Zona", s = 110, from = 1, to = 2, p = { 1, 2 } },
+			{ k = "flight", name = "Tres", s = 110, from = 2, to = 3, p = { 3, 4 } }, { k = "walk", s = 9 } }
+	end
+	local j1 = J.JoinFlights(pernas(), fl, tudo, nos)
+	check(#j1 == 3 and j1[2].name == "Tres" and j1[2].via[1] == "Dois, Zona" and j1[2].s == 210 and j1[2].from == 1
+		and #j1[2].p == 4, "sem direto: junta com via, tempo do jogo e trajeto")
+	fl[1][3] = { s = 150, p = { 9, 9 } }
+	local j2 = J.JoinFlights(pernas(), fl, tudo, nos)
+	check(#j2 == 3 and j2[2].s == 160 and not j2[2].via and j2[2].p[1] == 9, "direto mais rápido: um voo, o direto")
+	fl[1][3] = { s = 250, p = { 9, 9 } }
+	check(#J.JoinFlights(pernas(), fl, tudo, nos) == 4, "direto bem mais lento: pousa e marca de novo")
+	fl[1][3] = nil
+	fl[1][4] = { s = 50, p = { 5, 5 } }
+	fl[4] = { [3] = { s = 60, p = { 6, 6 } } }
+	local j3 = J.JoinFlights(pernas(), fl, tudo, nos)
+	check(#j3 == 3 and j3[2].via[1] == "Quatro" and j3[2].s == 120, "o jogo voa a rota mais curta, não a do planejador")
+	local semQuatro = { [1] = true, [2] = true, [3] = true }
+	check(J.JoinFlights(pernas(), fl, semQuatro, nos)[2].via[1] == "Dois, Zona", "o do meio desconhecido não entra")
+	local pa = pernas()
+	pa[2].parada = true
+	check(#J.JoinFlights(pa, fl, tudo, nos) == 4, "parada no meio não junta (#117)")
 end
 local _, ra = node("Ratchet")
 local _, bb = node("Booty Bay")
@@ -207,6 +252,7 @@ check(T.ShouldReplace({ s = 300 }, { s = 265 }), "30 s mais rápida troca")
 check(not T.ShouldReplace({ s = 300 }, { s = 280 }), "7% e 20 s: não troca (histerese)")
 check(not T.ShouldReplace({ s = 300 }, { s = 300 }), "empate não troca")
 
+;(function()
 -- o salto (#123) que a perna explica: a bordo, no caminho do barco, no bonde ou entrando nele
 local barco = { k = "ship", b = P(1, 5000, 0), p = { 0, 0, 0, 2500, 0, 1, 4000, 0, 1 } }
 check(T.SaltoDaPerna({ k = "ship", boarded = 1 }, nil, P(1, 0, 0)), "a bordo: o salto é da travessia")
@@ -227,6 +273,26 @@ local bonde = { k = "tram", a = P(0, 0, 0), b = P(0, 100, 0) }
 check(not T.SaltoDaPerna(bonde, nil, P(0, 900, 0)), "saiu do bonde (de volta ao continente dele): refaz")
 check(not T.SaltoDaPerna({ k = "walk" }, bonde, P(0, 900, 0)), "pedra a caminho do bonde: refaz")
 check(T.SaltoDaPerna({ k = "walk" }, bonde, P(369, 0, 0)), "entrou no bonde longe da entrada: não refaz")
+
+-- o desvio do terreno (#125): só o grande volta ao planejador, uma vez por par
+check(T.PathLength({ P(0, 0, 0), P(0, 30, 40), P(0, 30, 50) }) == 60, "comprimento do caminho")
+check(T.Desvio(4155, 1415, 7.6), "Hammerfall -> Hinterlands: desvio")
+check(not T.Desvio(2996, 2664, 7.6), "Tarren Mill -> Hinterlands: 12% a mais, não")
+check(not T.Desvio(200, 100, 7), "curto (100 jd a mais, 14 s): não")
+check(not T.Desvio(10, 0, 7), "reta zero: não")
+local dvs = {}
+check(T.AddDesvio(dvs, P(0, 1, 1), P(0, 9, 9), 2) and #dvs == 1, "registra o desvio")
+check(not T.AddDesvio(dvs, P(0, 1.5, 1), P(0, 9, 9.5), 3) and #dvs == 1, "o mesmo par não registra de novo")
+for i = 1, T.MAX_DESVIOS + 2 do T.AddDesvio(dvs, P(0, i * 10, 0), P(0, 0, 0), 2) end
+check(#dvs == T.MAX_DESVIOS and dvs[1].a.x ~= 1, "guarda só os mais novos")
+local velha = { legs = { { k = "walk", a = P(0, 0, 0), b = P(0, 5, 5), path = { 1 } },
+	{ k = "flight" }, { k = "walk", a = P(0, 100, 0), b = P(0, 200, 0), path = { "c" }, pathFail = true } } }
+local nova = { legs = { { k = "walk", a = P(0, 1, 1), b = P(0, 5, 5) }, { k = "flight" },
+	{ k = "walk", a = P(0, 100, 0), b = P(0, 200, 0) }, { k = "walk", a = P(0, 200, 0), b = P(0, 300, 0) } } }
+T.InheritPaths(velha, nova)
+check(nova.legs[3].path[1] == "c" and nova.legs[3].pathFail and nova.legs[4].path == nil and nova.legs[1].path == nil,
+	"a perna a pé igual herda o caminho; a primeira (do jogador) e a nova, não")
+end)()
 
 local rota = { leg = 1, legs = {
 	{ k = "walk", b = P(0, 700, 0), s = 100 },

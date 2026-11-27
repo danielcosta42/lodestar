@@ -1235,14 +1235,57 @@ step("AreaGoals", function()
 	AG.Refresh()
 	assert(ok, err)
 end)
--- salto (#123): portal/teleporte refaz a rota no tique seguinte; no barco (perna de barco atual), não
--- voo que passa por outros (#124): a linha diz por onde
+-- voo que passa por outros (#124): a linha diz por onde, depois do " · " (a linha de baixo na Navegação)
 step("LegText via", function()
 	local t = ns.Waypoint.LegText({ leg = 1, legs = { { k = "flight", name = "Hammerfall, Arathi", s = 250,
 		via = { "Tarren Mill, Hillsbrad" } } } }, 1)
-	assert(t:find("Hammerfall", 1, true) and t:find("Tarren Mill", 1, true) and not t:find("Hillsbrad", 1, true),
-		"voo sem o via: " .. t)
+	local head, tail = t:match("^(.-) · (.+)$")
+	assert(head and head:find("Hammerfall", 1, true) and tail:find("Tarren Mill", 1, true)
+		and not tail:find("Hillsbrad", 1, true), "voo sem o via: " .. t)
 end)
+-- desvio do terreno (#125): a perna a pé que ainda não começou, bem mais longa pelo terreno, corrige a rota
+step("Terrain detour", function()
+	local T, TR = ns.Travel, ns.Terrain
+	local pw, w0, ctx0, path0 = T.PlayerWorld, T.World, T.Context, TR.Path
+	local sw, sh
+	for _, v in pairs(ns.travel.nodes) do
+		if v.n:find("^Stormwind") then sw = v elseif v.n:find("^Sentinel Hill") then sh = v end
+	end
+	local eu = { c = sw.c, x = sw.x + 15, y = sw.y }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = sh.c, x = sh.x - 400, y = sh.y } end          -- 400 jd ao sul de Sentinel Hill
+	T.Context = function(self)
+		local c = ctx0(self)
+		c.known = {}
+		for id, v in pairs(ns.travel.nodes) do if v.f:find("A", 1, true) then c.known[id] = true end end
+		return c
+	end
+	local desvio = 0
+	TR.Path = function(_, de, para)
+		if math.abs(de.x - eu.x) < 1 and math.abs(de.y - eu.y) < 1 then return { de, para } end
+		desvio = desvio + 1                                -- do mestre de voo: dá a volta (3000 jd para o lado)
+		return { de, { c = de.c, x = de.x + 3000, y = de.y }, para }
+	end
+	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 62, y = 60, label = "X" })
+		T:Fresh()
+		local r1 = T:Route()
+		local ks = {}
+		for _, l in ipairs(r1 and r1.legs or {}) do ks[#ks + 1] = l.k end
+		assert(r1 and #r1.legs >= 3 and r1.legs[#r1.legs].k == "walk", "sem voo e a pé no fim: " .. table.concat(ks, ","))
+		local fim, s1 = r1.legs[#r1.legs], r1.legs[#r1.legs].s
+		for _ = 1, 10 do upd(ns.eventFrame, 0.06) end
+		assert(desvio >= 1, "o caminho da perna seguinte não foi calculado")
+		assert(#T:Context().desvios >= 1, "o desvio não voltou ao planejador")
+		assert(T:Route() ~= r1 or fim.s > s1 * 2, "a rota não viu o desvio")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World, T.Context, TR.Path = pw, w0, ctx0, path0
+	T:ResetPaths()
+	assert(ok, err)
+end)
+-- salto (#123): portal/teleporte refaz a rota no tique seguinte; no barco (perna de barco atual), não
 step("Route after teleport", function()
 	local T = ns.Travel
 	local pw, w = T.PlayerWorld, T.World

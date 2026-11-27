@@ -156,6 +156,7 @@ end
 
 local speed = 7
 local lastPos, lastT
+local desvios = {}                     -- pernas a pé que o terreno mostrou mais longas que a reta (#125)
 
 local function faction()
 	return UnitFactionGroup("player") == "Horde" and "H" or "A"
@@ -250,7 +251,7 @@ function T:Context()
 	local ghost = UnitIsGhost and UnitIsGhost("player")      -- fantasma só anda: sem pedra, teleporte ou voo
 	return { data = ns.travel, fac = fac, known = ghost and {} or knownTaxi(fac), speed = speed,
 		hearth = not ghost and hearth() or nil, teleports = not ghost and teleports() or nil,
-		now = serverNow(), sched = transit() }
+		now = serverNow(), sched = transit(), desvios = desvios }
 end
 
 -- Uma observação do transporte `sid` (parada k, "arr" | "dep", hora do servidor t); com a
@@ -367,6 +368,7 @@ function T:Replan(force)
 		n1.path, n1.pathAt, n1.pathFail = cur.path, cur.pathAt, cur.pathFail   -- a espera de 300 jd vem junto
 		n1.pathFailT = cur.pathFailT
 	end
+	T.InheritPaths(route, new)
 	if force or key ~= routeKey or not route then
 		local was = route
 		route, routeKey = new, key
@@ -414,6 +416,50 @@ function T.SaltoDaPerna(c, nx, pos)
 	if c.k == "ship" then return noBarco(c, pos) end
 	if c.k == "tram" then return not (c.a and pos.c == c.a.c) end
 	return c.k == "walk" and nx ~= nil and nx.k == "tram" and not (nx.a and pos.c == nx.a.c)
+end
+
+-- O caminho pelo terreno de uma perna a pé que ainda não começou (#125): comprimento L contra a reta D, na velocidade
+-- v. Desvio grande (L ≥ 1,25 D e 30 s ou mais a pé) volta ao planejador como fator dessa perna: a rota escolhida pela
+-- reta (o mestre de voo do outro lado do penhasco) dá lugar à melhor pelo terreno.
+function T.Desvio(L, D, v)
+	return D > 0 and L >= 1.25 * D and (L - D) / (v or 7) >= 30
+end
+
+function T.PathLength(path)
+	local L = 0
+	for i = 2, #(path or {}) do L = L + dist(path[i - 1], path[i]) end
+	return L
+end
+
+-- Registra o fator f da perna a pé de a a b; false se esse par já tinha (não replaneja de novo pelo mesmo). Guarda
+-- os 16 mais novos.
+T.MAX_DESVIOS = 16
+function T.AddDesvio(lista, a, b, f)
+	for _, dv in ipairs(lista) do
+		if dv.a.c == a.c and math.abs(dv.a.x - a.x) < 1 and math.abs(dv.a.y - a.y) < 1
+			and math.abs(dv.b.x - b.x) < 1 and math.abs(dv.b.y - b.y) < 1 then return false end
+	end
+	if #lista >= T.MAX_DESVIOS then table.remove(lista, 1) end
+	lista[#lista + 1] = { a = { c = a.c, x = a.x, y = a.y }, b = { c = b.c, x = b.x, y = b.y }, f = f }
+	return true
+end
+
+-- As pernas a pé da rota nova iguais (mesmo começo e fim) a uma da antiga herdam o caminho já calculado: refazer a
+-- rota não recalcula o terreno de tudo
+function T.InheritPaths(old, new)
+	if not (old and new) then return end
+	for i = 2, #new.legs do
+		local n = new.legs[i]
+		if n.k == "walk" and n.path == nil then
+			for _, o in ipairs(old.legs) do
+				if o.k == "walk" and o.path and o.a.c == n.a.c and o.a.x == n.a.x and o.a.y == n.a.y
+					and o.b.x == n.b.x and o.b.y == n.b.y then
+					n.path, n.pathAt, n.pathFail, n.pathFailT = o.path, o.pathAt, o.pathFail, o.pathFailT
+					break
+				end
+			end
+		end
+	end
 end
 
 --------------------------------------------------------------------------------
@@ -490,7 +536,7 @@ ns:On("CHAT_MSG_MONSTER_SAY", onAnnounce)
 -- jd adiante — a busca que falha é a mais cara. Com a atual em dia, as próximas pernas a pé
 -- ganham o delas, da parada de início, uma de cada vez. `route.pv` conta os caminhos novos
 -- (o desenho refaz).
-local pathCo, pathLeg, pathRoute, pathIdx, quadro
+local pathCo, pathLeg, pathRoute, pathIdx, pathDeA, quadro
 local ORCAMENTO = 3                                   -- ms por quadro
 local function estourou()
 	return debugprofilestop and quadro and debugprofilestop() - quadro > ORCAMENTO
@@ -517,6 +563,14 @@ local function pathTick()
 				-- o da segunda busca (cruza uma passagem que a grade não tem): não refaz a cada desvio, como na falha
 				pathLeg.path, pathLeg.pathFail = res, res.solto or nil
 				route.pv = (route.pv or 0) + 1
+				-- perna que ainda não começou: o terreno bem mais longo que a reta corrige o custo dela e refaz (#125).
+				-- Em voo ou a bordo, a troca fica para o replanejar de depois do pouso (que já vê o custo novo).
+				local D = pathDeA and dist(pathLeg.a, pathLeg.b) or 0
+				local L = pathDeA and T.PathLength(res) or 0
+				if pathDeA and T.Desvio(L, D, speed) and T.AddDesvio(desvios, pathLeg.a, pathLeg.b, L / D) then
+					pathLeg.s = (pathLeg.s or 0) * L / D
+					if not T:Busy() then T:Replan(false) end
+				end
 			else
 				pathLeg.path = pathLeg.path or false     -- falhou: fica o caminho anterior, se havia
 				pathLeg.pathFail, pathLeg.pathFailT = true, GetTime()
@@ -534,7 +588,7 @@ local function pathTick()
 		end
 	end
 	if not leg then return end
-	pathLeg, pathRoute, pathIdx = leg, route, idx
+	pathLeg, pathRoute, pathIdx, pathDeA = leg, route, idx, not precisa
 	leg.pathAt = from
 	local to = leg.b
 	-- sem debugprofilestop (fora do jogo), cede a cada 3000 expansões
@@ -544,6 +598,7 @@ end
 -- passagem gravada ou apagada (Passages.lua): larga a busca em curso, limpa os caminhos a pé e redesenha
 function T:ResetPaths()
 	pathCo = nil
+	desvios = {}                                   -- o terreno mudou: os desvios medidos também
 	if not route then return end
 	for _, leg in ipairs(route.legs) do
 		if leg.k == "walk" then leg.path, leg.pathFail, leg.pathAt = nil, nil, nil end

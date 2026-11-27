@@ -57,9 +57,18 @@ pelo cliente, ícones e tooltips de cais no mapa.
   depois de andar até ele (a rota marca "descubra o voo aqui"). Antes do primeiro mapa de voo aberto,
   assume conhecidos os voos das zonas por onde o personagem já passou com o Lodestar ligado
   (`LodestarCharDB.zones`, gravado ao entrar em cada zona).
-  (#124) Voos seguidos viram uma perna só ("Voe para Hammerfall, Arathi (via Tarren Mill)"): no jogo, marcar o destino
-  final faz o grifo passar pelos do meio sem pousar. Tempo somado menos uma decolagem (o total da rota acompanha),
-  trajeto emendado; não junta através de uma parada (#117).
+  (#124) Voos seguidos viram uma perna só quando marcar o último é o que o jogo voa. A rota do jogo (`J.GameRoute`):
+  o voo direto, se existe, qualquer que seja a distância; senão a mais curta pelos voos conhecidos, sem pousar. A
+  perna junta leva o tempo, o trajeto e os do meio dessa rota ("Voe para X · passando por Y"; na Navegação, os do
+  meio na linha de baixo). Se ela é mais de 10 s mais lenta que pousar e marcar de novo (o direto longo de Undercity
+  a Hammerfall, contra passar por Tarren Mill), as pernas ficam separadas. O total da rota acompanha a soma das
+  pernas; não junta através de uma parada (#117).
+- **A pé pelo terreno (#125):** o planejador mede a pé pela reta. A perna a pé que ainda não começou ganha o caminho
+  pelo terreno (o mesmo do desenho); se ele sai ≥ 1,25× a reta e 30 s ou mais a pé, o fator volta ao planejador para
+  aquele par (começo, fim; `ctx.desvios`, os 16 mais novos), o custo da perna é corrigido e a rota é refeita se outra
+  for melhor (o mestre de voo do outro lado do penhasco: Hammerfall para as Hinterlands dá lugar a Tarren Mill). Em
+  voo ou a bordo, a troca fica para o replanejar de depois do pouso. As pernas a pé iguais da rota nova herdam o
+  caminho já calculado. Gravar ou apagar uma passagem limpa os fatores.
 - **Todo comando tem acesso pela interface**; o comando digitado vira atalho opcional.
 
 ## Componentes
