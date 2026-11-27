@@ -9,6 +9,34 @@ local H = {}
 ns.XPHud = H
 
 --------------------------------------------------------------------------------
+-- Núcleo puro (testado fora do jogo)
+--------------------------------------------------------------------------------
+-- XP das quests do diário (#126): `quests` = { { xp, pronta }, ... } -> total, prontas
+function H.QuestXP(quests)
+	local total, prontas = 0, 0
+	for _, q in ipairs(quests or {}) do
+		local xp = tonumber(q[1]) or 0
+		if xp > 0 then
+			total = total + xp
+			if q[2] then prontas = prontas + xp end
+		end
+	end
+	return total, prontas
+end
+
+-- Segundos até juntar `falta` de XP à `xph` por hora, com `quests` de XP já no diário (#126): elas descontam do que
+-- falta (o tempo de fazê-las já corre dentro da XP/hora, que é de monstro enquanto nada foi entregue). -> s, ou 0
+-- quando as quests bastam, ou nil sem como prever
+function H.Eta(falta, xph, quests)
+	local resto = (falta or 0) - (quests or 0)
+	if resto <= 0 then return 0 end
+	if not xph or xph <= 0 then return nil end
+	return resto / xph * 3600
+end
+
+if not ns.On then return end
+
+--------------------------------------------------------------------------------
 -- Sessão de XP (para XP/hora)
 --------------------------------------------------------------------------------
 local sessXP, sessStart, prevXP, prevMax, prevLvl = 0, nil, nil, nil, nil
@@ -58,13 +86,30 @@ local XP_TO_NEXT = {
 	82800,87100,91600,96300,101000,105800,110700,115700,120900,126100,131500,137000,
 	142500,148200,154000,159900,165800,172000,                                  -- 1..59
 }
--- tempo estimado até o nível máximo do cliente: resto do nível atual + os próximos.
+-- tempo estimado até o nível máximo do cliente: resto do nível atual + os próximos, menos as quests do diário.
 local MAXLVL = ns.Client.maxLevel
-local function etaToMax(xph, lvl, curXP, curMax)
-	if not xph or xph <= 0 or lvl >= MAXLVL then return nil end
+local function etaToMax(xph, lvl, curXP, curMax, qxp)
+	if lvl >= MAXLVL then return nil end
 	local remain = (curMax or 0) - (curXP or 0)
 	for L = lvl + 1, MAXLVL - 1 do remain = remain + (XP_TO_NEXT[L] or 0) end
-	return remain / xph * 3600
+	return H.Eta(remain, xph, qxp)
+end
+
+-- as quests do diário com a XP de cada uma (a função que a interface do Forever usa: fora da documentação, pode sumir)
+local QL = C_QuestLog or {}
+local function questsDoDiario()
+	local out = {}
+	if not (type(GetQuestLogRewardXP) == "function" and QL.GetNumQuestLogEntries and QL.GetInfo) then return out end
+	for i = 1, QL.GetNumQuestLogEntries() or 0 do
+		local info = QL.GetInfo(i)
+		local id = info and not info.isHeader and info.questID
+		if id and id > 0 then
+			local ok, xp = pcall(GetQuestLogRewardXP, id)
+			local pronta = (QL.ReadyForTurnIn and QL.ReadyForTurnIn(id)) or (QL.IsComplete and QL.IsComplete(id))
+			if ok and type(xp) == "number" and xp > 0 then out[#out + 1] = { xp, pronta and true or false } end
+		end
+	end
+	return out
 end
 
 -- diferença de ritmo vs faixa do guia: >0 = adiantado, <0 = atrasado (em níveis)
@@ -165,7 +210,11 @@ local function build()
 	end)
 	frame:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_TOP")
-		GameTooltip:AddLine(ns.L.XP_HUD_DRAG, 1, 1, 1, true)
+		local q, pr = H.QuestXP(questsDoDiario())
+		if q > 0 then
+			GameTooltip:AddLine(ns.L.XP_HUD_QUESTS:format(fmtNum(q), fmtNum(pr)), 1, 1, 1, true)
+		end
+		GameTooltip:AddLine(ns.L.XP_HUD_DRAG, 0.7, 0.7, 0.7, true)
 		GameTooltip:Show()
 	end)
 	frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
@@ -215,10 +264,11 @@ function H:Update()
 	frame.bar:SetProgress(xp / max)
 
 	local xph = xpPerHour()
-	local eta = xph > 0 and ((max - xp) / xph * 3600) or nil
-	local etaMax = etaToMax(xph, lvl, xp, max)
-	local l2 = ("%s/h  ·  %s"):format(fmtNum(xph), ns.L.ETA_LEVEL:format(fmtTime(eta)))
-	if etaMax and lvl < MAXLVL - 1 then l2 = l2 .. ("  ·  %d: %s"):format(MAXLVL, fmtTime(etaMax)) end
+	local qxp = H.QuestXP(questsDoDiario())                   -- a XP das quests do diário desconta do que falta (#126)
+	local eta = H.Eta(max - xp, xph, qxp)
+	local etaMax = etaToMax(xph, lvl, xp, max, qxp)
+	local l2 = ("%s/h  ·  %s"):format(fmtNum(xph), eta == 0 and ns.L.ETA_QUESTS or ns.L.ETA_LEVEL:format(fmtTime(eta)))
+	if etaMax and etaMax > 0 and lvl < MAXLVL - 1 then l2 = l2 .. ("  ·  %d: %s"):format(MAXLVL, fmtTime(etaMax)) end
 	frame.l2:SetText(l2)
 
 	local d = pace()

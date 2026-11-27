@@ -585,4 +585,15 @@ check(PS.Encode({ c = 1, z = "X", pts = { 0, 0, 1, 1, 2, 2 }, f = { [2] = true }
 	"passagem: o trecho de queda vai no texto")
 local mg = PS.Merge({ { c = 0 } }, { { c = 1 }, { c = 0 } })
 check(#mg == 3 and mg[2].c == 1, "passagem: as do addon e as gravadas juntas")
+-- faixa de XP (#126): a XP das quests do diário desconta do que falta
+do
+	local H = loadPure("XPHud.lua", { UI = {} }).XPHud
+	local q, pr = H.QuestXP({ { 1000, true }, { 2500, false }, { 0, true }, { "x", false } })
+	check(q == 3500 and pr == 1000, "XP das quests: total e prontas")
+	check(H.QuestXP({}) == 0 and H.QuestXP(nil) == 0, "sem quests: zero")
+	check(H.Eta(10000, 5000, 0) == 7200, "sem quests: falta ÷ XP/hora")
+	check(H.Eta(10000, 5000, 4000) == 4320, "com quests: desconta antes de dividir")
+	check(H.Eta(10000, 5000, 12000) == 0 and H.Eta(10000, 0, 10000) == 0, "as quests bastam: zero, mesmo sem XP/hora")
+	check(H.Eta(10000, 0, 2000) == nil and H.Eta(10000, nil, 0) == nil, "sem XP/hora e sem bastar: sem previsão")
+end
 print(("ok: %d checks"):format(checks))
