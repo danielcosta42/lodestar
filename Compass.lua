@@ -156,9 +156,9 @@ local function update()
 	local last = route.legs[#route.legs]
 	local nxt = route.legs[route.leg + 1]
 	local red = route.dest and route.dest.red
-	-- os ícones do jogo já vêm coloridos: só tinge o que precisa dizer algo (corpo, voo novo)
+	-- os ícones do jogo já vêm coloridos: só tinge o que precisa dizer algo (corpo, voo novo, parada do jogador: #117)
 	local stopTint = markers.stop._atlas and WHITE or C.tip
-	if nxt and nxt.discover then stopTint = C.amber end
+	if (nxt and nxt.discover) or (leg and leg.parada) then stopTint = C.amber end
 	place(markers.stop, p, leg and leg ~= last and leg.b or nil, facing, stopTint, 1)
 	place(markers.dest, p, last and last.b, facing, red and RED or (markers.dest._atlas and WHITE or C.accent), 1)
 	-- o próximo passo do guia, quando a rota vai a outro lugar (manual, corpo, serviço)

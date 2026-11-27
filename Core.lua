@@ -311,7 +311,7 @@ SlashCmdList.LODESTAR = function(msg)
 	elseif cmd == "card" then
 		if ns.ReportCard then ns.ReportCard:Show(UnitLevel("player") or 1) end
 	elseif cmd == "way" and (rest == "off" or rest == "clear") then
-		if ns.Waypoint then ns.Waypoint:ClearCustom() end
+		if ns.Waypoint then ns.Waypoint:ClearAll() end             -- o destino manual e as paradas (#117)
 		ns:Print(ns.L.DEST_CLEARED)
 	elseif cmd == "way" then
 		if not (ns.Waypoint and ns.Waypoint:Way(rest)) then ns:Print(ns.L.WAY_USAGE) end
@@ -336,6 +336,7 @@ SlashCmdList.LODESTAR = function(msg)
 	elseif cmd == "train" then
 		if rest == "off" then
 			if ns.Waypoint then ns.Waypoint:ClearCustom() end
+			if ns.Destinations then ns.Destinations:ClearStops("classtrainer") end   -- a parada do treinador (#117)
 			ns:Print(ns.L.TRAIN_CANCEL)
 		elseif ns.Services then
 			ns.Services:GoTo("classtrainer")

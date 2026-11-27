@@ -40,33 +40,71 @@ function WP:ClearCustom()
 	self:Update()
 end
 
--- /ls way e o campo do painel Viagem: sem zona, vale o mapa onde o jogador está
-function WP:Way(text)
+-- Parada antes do destino (#117): serviço ou coordenada entra no caminho em vez de trocar o destino.
+-- `extra` vai junto na parada (short, service, npc).
+function WP:AddStop(zone, x, y, label, map, extra)
+	local s = { zone = zone, map = map, x = tonumber(x), y = tonumber(y), label = label or ns.L.STOP }
+	for k, v in pairs(extra or {}) do s[k] = v end
+	local added = ns.Destinations:AddStop(s)
+	self:Update()
+	if ns.Viewer then ns.Viewer:Refresh() end
+	return added
+end
+
+-- parada numa coordenada: na lista, "Ponto 45.2, 30.1"; na seta, só "Ponto"
+local function pointStop(self, zone, x, y, map)
+	return self:AddStop(zone, x, y, ("%s %.1f, %.1f"):format(ns.L.WAYPOINT, x, y), map, { short = ns.L.WAYPOINT })
+end
+
+-- Limpar (painel Viagem, /ls way off): o destino manual e as paradas
+function WP:ClearAll()
+	ns.Destinations:ClearStops()
+	self:ClearCustom()
+end
+
+-- /ls way e o campo do painel Viagem: sem zona, vale o mapa onde o jogador está. Vira parada; `direct`
+-- (Shift no Ir) troca o destino, como antes do #117.
+function WP:Way(text, direct)
 	local x, y, zone = WP.ParseWay(text)
 	if not x then return false end
 	local map = not zone and C_Map.GetBestMapForUnit("player") or nil
-	self:SetCustom(zone, x, y, ns.L.WAYPOINT, map)
+	if direct then self:SetCustom(zone, x, y, ns.L.WAYPOINT, map)
+	else pointStop(self, zone, x, y, map) end
 	local info = map and C_Map.GetMapInfo(map)
-	ns:Printf("%s: %s %.1f, %.1f", ns.L.WAYPOINT, zone or info and info.name or "?", x, y)
+	ns:Printf("%s: %s %.1f, %.1f", direct and ns.L.WAYPOINT or ns.L.STOP, zone or info and info.name or "?", x, y)
 	return true
 end
 
--- Shift+clique (mapa ou minimapa) em (uiMapID, x, y 0-100): em cima do destino manual
--- atual (`near`), limpa; senão, novo destino ali.
-function WP:ClickDest(map, x, y, near)
-	if near then
-		self:ClearCustom()
-		return ns:Print(ns.L.DEST_CLEARED)
-	end
-	self:SetCustom(nil, x, y, ns.L.WAYPOINT, map)
-	local info = C_Map.GetMapInfo(map)
-	ns:Printf("%s: %s %.1f, %.1f", ns.L.WAYPOINT, info and info.name or "?", x, y)
+-- O destino manual e as paradas, para o Shift+clique saber se caiu em cima de um: { { dest, kind }, ... }
+function WP.Marked()
+	local D, out = ns.Destinations, {}
+	local m = D:Get("manual")
+	if m then out[1] = { dest = m, kind = "manual" } end
+	for _, s in ipairs(D:Stops()) do out[#out + 1] = { dest = s, kind = "stop" } end
+	return out
 end
 
--- há destino que não é o guia (manual ou corpo): a seta aparece mesmo com o guia fechado
+-- Shift+clique (mapa ou minimapa) em (uiMapID, x, y 0-100): em cima do destino manual ou de uma parada (`hit`,
+-- de WP.Marked; `true` = o manual), tira; senão, parada nova ali (#117).
+function WP:ClickDest(map, x, y, hit)
+	if hit then
+		if hit == true or hit.kind == "manual" then
+			self:ClearCustom()
+			return ns:Print(ns.L.DEST_CLEARED)
+		end
+		ns.Destinations:RemoveStop(hit.dest)
+		self:Update()
+		return ns:Print(ns.L.STOP_REMOVED)
+	end
+	pointStop(self, nil, x, y, map)
+	local info = C_Map.GetMapInfo(map)
+	ns:Printf("%s: %s %.1f, %.1f", ns.L.STOP, info and info.name or "?", x, y)
+end
+
+-- há destino que não é o guia (manual, parada ou corpo): a seta aparece mesmo com o guia fechado
 local function explicitDest()
 	local D = ns.Destinations
-	return D and (D:Get("corpse") or D:Get("manual")) and true or false
+	return D and (D:Get("corpse") or D:Get("manual") or (D.Stops and D:Stops()[1])) and true or false
 end
 
 --------------------------------------------------------------------------------
@@ -87,6 +125,21 @@ function WP.ParseWay(text)
 	return x, y, zone ~= "" and zone or nil
 end
 
+-- A parada em que a perna `i` termina e o que vem depois dela (#117): "Reparo · depois Silvermane Stalker". O
+-- depois é a próxima parada da rota, senão o destino; a parada que fecha a rota não tem depois.
+function WP.StopText(route, i)
+	local L = ns.L
+	local p = route.legs[i].parada
+	local name = p.short or p.label or L.STOP
+	local after
+	for k = i + 1, #route.legs do
+		local q = route.legs[k].parada
+		if q then after = q.short or q.label; break end
+	end
+	if not after and i < #route.legs then after = route.dest and route.dest.label end
+	return after and L.STOP_THEN:format(name, after) or name
+end
+
 -- `now` (hora do servidor): com horário de barco/zepelim, diz quando ele sai, chega ou se
 -- é hora de embarcar.
 function WP.LegText(route, i, secs, now)
@@ -94,7 +147,9 @@ function WP.LegText(route, i, secs, now)
 	local leg, nxt = route.legs[i], route.legs[i + 1]
 	local text
 	if leg.k == "walk" then
-		if nxt and nxt.k == "flight" then
+		if leg.parada then                -- termina numa parada: ela, não o transporte do trecho seguinte
+			text = WP.StopText(route, i)
+		elseif nxt and nxt.k == "flight" then
 			text = (nxt.discover and L.LEG_TO_NEW_FLIGHT or L.LEG_TO_FLIGHT):format(leg.name or "?")
 		elseif nxt and nxt.k == "ship" then
 			local ship = L["SHIP_" .. (nxt.ship or "boat")]
@@ -162,8 +217,18 @@ function WP:PickTarget()
 		legGoal.goto_ = nil
 		return legGoal
 	end
+	local D = ns.Destinations
 	local dest, kind
-	if ns.Destinations then dest, kind = ns.Destinations:Active() end   -- `and` cortaria o kind
+	if D then dest, kind = D:Active() end   -- `and` cortaria o kind
+	-- a primeira parada vem antes do destino (#117); fantasma, o corpo antes de tudo
+	local stop = kind ~= "corpse" and D and D.Stops and D:Stops()[1]
+	if stop then
+		local after = D:Stops()[2]
+		after = after and (after.short or after.label) or dest and dest.label
+		local name = stop.short or stop.label or ns.L.STOP
+		return { verb = "goto_", text = after and ns.L.STOP_THEN:format(name, after) or name, _stop = stop,
+			goto_ = { zone = stop.zone, map = stop.map, x = stop.x, y = stop.y, radius = 6 } }
+	end
 	if not dest then return nil end
 	if kind == "guide" then return dest.goal end
 	return { verb = "goto_", text = dest.label, _custom = kind == "manual", _corpse = kind == "corpse",
@@ -569,6 +634,9 @@ ns:Every(0.1, function()
 		if goal.verb == "goto_" and dist <= radius then
 			if goal._custom then
 				WP:ClearCustom()          -- chegou ao destino avulso: volta ao guia
+			elseif goal._stop then
+				ns.Destinations:DoneStop(goal._stop)     -- chegou à parada (sem rota): a seta segue para a próxima
+				WP:Update()
 			elseif not goal._reached then
 				goal._reached = true
 				ns:CheckProgress()

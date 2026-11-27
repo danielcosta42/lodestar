@@ -370,10 +370,14 @@ local function build()
 	frame.quick = CreateFrame("Frame", nil, frame.body)
 	frame.quick:SetHeight(46)
 	frame.quickBtns = {}
+	-- o serviço entra como parada antes do passo (#117); Shift+clique vai direto
+	local function svc(kind)
+		return function() if ns.Services then ns.Services:GoTo(kind, nil, nil, IsShiftKeyDown and IsShiftKeyDown()) end end
+	end
 	local QUICK = {
-		{ "treinador", L.V3_Q_TRAIN, function() if ns.Services then ns.Services:GoTo("classtrainer") end end },
-		{ "martelo", L.V3_Q_REPAIR, function() if ns.Services then ns.Services:GoTo("repair") end end },
-		{ "estrela", L.V3_Q_INN, function() if ns.Services then ns.Services:GoTo("inn") end end },
+		{ "treinador", L.V3_Q_TRAIN, svc("classtrainer") },
+		{ "martelo", L.V3_Q_REPAIR, svc("repair") },
+		{ "estrela", L.V3_Q_INN, svc("inn") },
 		{ "livro", L.ACT_TIDY, function() SlashCmdList.LODESTAR("diario") end },
 	}
 	for i, q in ipairs(QUICK) do
@@ -879,8 +883,9 @@ end
 function V:Hide()
 	if frame then frame:Hide() end
 	ns.db.viewer.hidden = true
-	-- fechar o guia some com a seta (issue #93): o destino avulso ("Guiar", /way) sai junto; o do corpo fica
+	-- fechar o guia some com a seta (issue #93): o destino avulso ("Guiar", /way) e as paradas saem junto; o do corpo fica
 	if ns.Destinations and ns.Destinations:Get("manual") then ns.Destinations:Clear("manual") end
+	if ns.Destinations and ns.Destinations.ClearStops then ns.Destinations:ClearStops() end
 	ns:RefreshHUDs()
 end
 function V:Toggle() build(); if frame:IsShown() then V:Hide() else V:Show() end end

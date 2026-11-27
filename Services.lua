@@ -2,7 +2,7 @@
 -- Services — o serviço mais próximo em TEMPO de viagem (não em linha reta): treinador
 -- da classe ou de profissão, reparo, vendedor, estalagem, banco, leilão, voo, estábulo.
 --
---   ns.Services:GoTo(kind, sub)   -- traça a rota (destino manual) até o melhor
+--   ns.Services:GoTo(kind, sub, quiet, direct)   -- o melhor vira parada antes do destino (#117); direct: o destino
 --   kind: "classtrainer" | "proftrainer" (sub = profissão) | os de ns.travel.services
 --=============================================================================
 local ADDON, ns = ...
@@ -131,8 +131,9 @@ function S:Nearest(kind, sub)
 end
 
 -- `quiet`: quem chamou mostra a falha (o painel Viagem); senão ela vai ao chat.
+-- O serviço entra como parada antes do destino (#117); `direct` (Shift+clique) troca o destino, como antes.
 -- Devolve true, ou false e a mensagem.
-function S:GoTo(kind, sub, quiet)
+function S:GoTo(kind, sub, quiet, direct)
 	local best = self:Nearest(kind, sub)
 	if not best then
 		local msg = ns.L.SERVICE_NONE
@@ -144,11 +145,16 @@ function S:GoTo(kind, sub, quiet)
 	end
 	local title = sub or ns.L["SERVICE_" .. kind:upper()] or kind
 	local where = best.zone or (best.map and C_Map.GetMapInfo(best.map) or {}).name or "?"
-	ns.Destinations:Set("manual", { zone = best.zone, map = best.map, x = best.x, y = best.y,
-		label = ("%s — %s"):format(title, best.n), service = kind })
+	local dest = { zone = best.zone, map = best.map, x = best.x, y = best.y,
+		label = ("%s — %s"):format(title, best.n), short = title, service = kind, npc = best.id }
+	if direct then
+		ns.Destinations:Set("manual", dest)
+	else
+		ns.Destinations:AddStop(dest)
+	end
 	if ns.Waypoint then ns.Waypoint:Update() end
 	if ns.Toast then
-		ns.Toast:Show({ title = title,
+		ns.Toast:Show({ title = direct and title or ns.L.STOP_ADDED:format(title),
 			text = ("%s — %s"):format(best.n, where), color = ns.UI.COL.tip, hold = 5 })
 	end
 	return true

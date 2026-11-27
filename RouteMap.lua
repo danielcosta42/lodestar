@@ -147,7 +147,9 @@ local function update()
 		local alpha = i == route.leg and 1 or 0.5
 		drawLine(RM.LegPoints(leg, i == route.leg and from or nil), shown, w, h, col, alpha)
 		local nxt = route.legs[i + 1]
-		if nxt then                          -- parada: mestre de voo, cais, bonde
+		if leg.parada and nxt then           -- parada do jogador (#117): anel maior, âmbar
+			stop(leg.b, shown, w, h, C.amber, 18)
+		elseif nxt then                      -- parada: mestre de voo, cais, bonde
 			local c = nxt.discover and C.amber or (nxt.k == "ship" and C.tip or col)
 			stop(leg.b, shown, w, h, c, 14)
 		end
@@ -157,7 +159,7 @@ end
 
 RM.Update = update
 
--- Shift+clique no mapa: destino manual ali; em cima do atual, limpa
+-- Shift+clique no mapa: parada ali (#117); em cima do destino manual ou de uma parada, tira
 local function onCanvasClick(map, button)
 	if button ~= "LeftButton" or not (IsShiftKeyDown and IsShiftKeyDown()) then return false end
 	local ok, done = pcall(function()
@@ -165,9 +167,13 @@ local function onCanvasClick(map, button)
 		local cx, cy = map:GetNormalizedCursorPosition()
 		-- mapa-múndi/cósmico não tem chão: deixa o clique seguir
 		if not (shown and cx and ns.Travel.World(nil, cx * 100, cy * 100, shown)) then return false end
-		local cur = ns.Destinations:Get("manual")
-		local mx, my = WP:WorldMapPos(cur and ns.Travel.World(cur.zone, cur.x, cur.y, cur.map), shown)
-		WP:ClickDest(shown, cx * 100, cy * 100, mx and math.abs(mx - cx) < 0.015 and math.abs(my - cy) < 0.015)
+		local hit
+		for _, m in ipairs(WP.Marked()) do
+			local d = m.dest
+			local mx, my = WP:WorldMapPos(ns.Travel.World(d.zone, d.x, d.y, d.map), shown)
+			if mx and math.abs(mx - cx) < 0.015 and math.abs(my - cy) < 0.015 then hit = m; break end
+		end
+		WP:ClickDest(shown, cx * 100, cy * 100, hit)
 		return true
 	end)
 	if not ok then ns:Debug("RouteMap click:", done) end

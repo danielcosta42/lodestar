@@ -1,10 +1,13 @@
 --=============================================================================
 -- TravelPanel — a Navegação (Lodestar 3, specs/lodestar-3; bússola no cabeçalho do guia, /ls travel).
 --
---   o destino (do guia, manual ou o corpo) com o tempo total e a hora de chegada; Limpar o manual
---   a viagem como linha do tempo: cada perna com ícone, texto e tempo; a atual destacada, as feitas riscadas
---   os serviços mais perto em TEMPO de viagem (medidos ao abrir, um por vez), profissão abre a lista
---   coordenada digitada
+--   o destino (do guia, manual ou o corpo) com o tempo total e a hora de chegada; Limpar o manual e as paradas
+--   as paradas (#117), na ordem, cada uma com × para tirar
+--   a viagem como linha do tempo: cada perna com ícone, texto e tempo; a atual destacada, as feitas riscadas; um
+--   marcador em cada parada
+--   os serviços mais perto em TEMPO de viagem (medidos ao abrir, um por vez), profissão abre a lista; o clique
+--   põe uma parada, Shift+clique vai direto
+--   coordenada digitada (Ir põe uma parada, Shift+Ir vai direto)
 --=============================================================================
 local ADDON, ns = ...
 if not ns.On then return end
@@ -14,8 +17,9 @@ local UI = ns.UI
 local unpackc = UI.unpackc
 
 local W, PAD = 400, 14
-local MAX_LEGS = 8
-local frame, legRows, svcButtons, profList, status
+local MAX_ROWS = 12                -- linhas na linha do tempo: pernas e marcadores de parada
+local LEG_H, MARK_H, STOP_H = 46, 38, 28
+local frame, legRows, markRows, stopRows, svcButtons, profList, status
 
 -- nome da profissão: a tradução, se houver; o ns.L devolve "[CHAVE]" para o que falta
 function TP.ProfLabel(prof)
@@ -33,9 +37,14 @@ local function say(msg)
 	status:SetText(msg or ""); status:Show()
 	C_Timer.After(6, function() if status:GetText() == msg then status:Hide() end end)
 end
+-- Shift no clique (serviço, Ir) vai direto: troca o destino, como antes do #117
+local function shift() return IsShiftKeyDown and IsShiftKeyDown() or false end
+
+-- o clique põe uma parada antes do destino (#117); Shift+clique troca o destino, como antes
 local function goService(kind, sub)
-	local ok, msg = ns.Services:GoTo(kind, sub, true)
+	local ok, msg = ns.Services:GoTo(kind, sub, true, shift())
 	if not ok then say(msg) end
+	TP.Refresh()
 end
 
 local function toggleProfList(anchor)
@@ -84,10 +93,59 @@ local function legRow(i)
 	return r
 end
 
+-- marcador de parada na linha do tempo (#117): bolinha cheia com o alvo, o nome e "parada N · em 1m20s"
+local function markRow(i)
+	if markRows[i] then return markRows[i] end
+	local C = UI.COL
+	local r = CreateFrame("Frame", nil, frame.timeline)
+	r:SetHeight(MARK_H - 4)
+	r.dot = UI.Media(r, "dot", "ARTWORK"); r.dot:SetVertexColor(unpackc(C.amber))
+	r.dot:SetSize(26, 26); r.dot:SetPoint("TOPLEFT", 0, -2)
+	r.icon = UI.Glyph(r, "alvo", "OVERLAY", 64); r.icon:SetSize(13, 13); r.icon:SetPoint("CENTER", r.dot, "CENTER")
+	r.icon:SetVertexColor(unpackc(C.onInk))
+	r.line = UI.Rect(r, "BACKGROUND", C.line); r.line:SetWidth(2)
+	r.line:SetPoint("TOP", r.dot, "BOTTOM", 0, 0); r.line:SetPoint("BOTTOM", r, "BOTTOMLEFT", 13, -6)
+	r.text = UI.Text(r, 13, C.amber, { bold = true, wrap = false })
+	r.text:SetPoint("TOPLEFT", r, "TOPLEFT", 38, -3); r.text:SetPoint("TOPRIGHT", r, "TOPRIGHT", 0, -3)
+	r.sub = UI.Text(r, 11.5, C.dim, { num = true, wrap = false })
+	r.sub:SetPoint("TOPLEFT", r.text, "BOTTOMLEFT", 0, -2); r.sub:SetPoint("TOPRIGHT", r.text, "BOTTOMRIGHT", 0, -2)
+	markRows[i] = r
+	return r
+end
+
+-- linha da lista de paradas: número, nome, onde, e o × que tira
+local function stopRow(i)
+	if stopRows[i] then return stopRows[i] end
+	local C = UI.COL
+	local r = CreateFrame("Frame", nil, frame.stops)
+	r:SetHeight(STOP_H - 4)
+	r.dot = UI.Media(r, "dot", "ARTWORK"); r.dot:SetVertexColor(unpackc(C.amberSoft))
+	r.dot:SetSize(20, 20); r.dot:SetPoint("LEFT", 0, 0)
+	r.num = UI.Text(r, 11, C.amber, { num = true, bold = true, justify = "CENTER" })
+	r.num:SetPoint("CENTER", r.dot, "CENTER", 0, 0)
+	r.remove = UI.IconButton(r, "fechar", 20, ns.L.V3_NAV_STOP_REMOVE, function()
+		local s = r.stop
+		if s then ns.Destinations:RemoveStop(s); ns.Waypoint:Update(); TP.Refresh() end
+	end)
+	r.remove:SetPoint("RIGHT", 0, 0)
+	r.text = UI.Text(r, 12.5, C.active, { bold = true, wrap = false })
+	r.text:SetPoint("LEFT", r.dot, "RIGHT", 8, 0); r.text:SetPoint("RIGHT", r.remove, "LEFT", -96, 0)
+	r.where = UI.Text(r, 11, C.dim, { num = true, wrap = false, justify = "RIGHT" })
+	r.where:SetPoint("LEFT", r.text, "RIGHT", 6, 0); r.where:SetPoint("RIGHT", r.remove, "LEFT", -6, 0)
+	stopRows[i] = r
+	return r
+end
+
+-- onde fica um destino: a zona (no idioma do cliente) ou o nome do mapa
+local function whereOf(dest)
+	return dest.zone and ns.LocalizedZone(dest.zone)
+		or dest.map and C_Map.GetMapInfo(dest.map) and C_Map.GetMapInfo(dest.map).name
+end
+
 local function build()
 	if frame then return frame end
 	local C, L = UI.COL, ns.L
-	legRows, svcButtons = {}, {}
+	legRows, markRows, stopRows, svcButtons = {}, {}, {}, {}
 	frame = UI.Window("LodestarTravel", W, 520, { strata = "HIGH" })
 	frame:ClearAllPoints(); frame:SetPoint("CENTER", 240, 40)
 
@@ -112,7 +170,12 @@ local function build()
 	frame.eta:SetPoint("TOPRIGHT", frame.total, "BOTTOMRIGHT", 0, -2)
 	frame.clear = UI.Button(frame, L.TRAVEL_CLEAR, 70, 22)
 	frame.clear:SetPoint("TOPRIGHT", frame.eta, "BOTTOMRIGHT", 0, -4)
-	frame.clear:SetScript("OnClick", function() ns.Waypoint:ClearCustom() end)
+	frame.clear:SetScript("OnClick", function() ns.Waypoint:ClearAll(); TP.Refresh() end)
+
+	-- paradas (#117)
+	frame.stopsLabel = UI.Text(frame, 11, C.dim, { num = true }); frame.stopsLabel:SetText(L.V3_NAV_STOPS)
+	frame.stops = CreateFrame("Frame", nil, frame)
+	frame.stops:SetHeight(1)
 
 	-- linha do tempo
 	frame.timelineCard = UI.Card(frame, { color = C.card })
@@ -158,8 +221,10 @@ local function build()
 	box:SetFontObject(ChatFontNormal); box:SetAutoFocus(false); box:SetTextInsets(10, 10, 0, 0)
 	if box.SetTextColor then box:SetTextColor(unpackc(C.active)) end
 	local boxBg = UI.Card(box, { radius = 6, color = C.card }); boxBg:SetAllPoints(); boxBg:SetFrameLevel(box:GetFrameLevel())
+	-- Ir põe uma parada (#117); com Shift, troca o destino
 	local function go()
-		if ns.Waypoint:Way(box:GetText()) then box:SetText(""); box:ClearFocus()
+		if ns.Waypoint:Way(box:GetText(), shift()) then
+			box:SetText(""); box:ClearFocus(); TP.Refresh()
 		else ns:Print(L.TRAVEL_COORD_BAD) end
 	end
 	box:SetScript("OnEnterPressed", go)
@@ -202,13 +267,14 @@ function TP.Refresh()
 	if not (frame and frame:IsShown()) then return end
 	local C, L, D, T = UI.COL, ns.L, ns.Destinations, ns.Travel
 	local dest, kind = D:Active()
+	local stops = D:Stops()
+	if not dest and stops[1] then dest, kind = stops[#stops], "stop" end   -- só paradas: a última é o fim
 	frame.kind:SetText(kind and L["TRAVEL_KIND_" .. kind:upper()]:upper() or L.TRAVEL_DEST:upper())
 	frame.kind:SetTextColor(unpackc(kind == "corpse" and C.danger or C.dim))
 	frame.dest:SetText(dest and (dest.label or L.DEST) or L.TRAVEL_NODEST)
-	local where = dest and (dest.zone and ns.LocalizedZone(dest.zone)
-		or dest.map and C_Map.GetMapInfo(dest.map) and C_Map.GetMapInfo(dest.map).name)
+	local where = dest and whereOf(dest)
 	frame.destSub:SetText(dest and ("%s · %.1f %.1f"):format(where or "?", dest.x or 0, dest.y or 0) or "")
-	frame.clear:SetShown(D:Get("manual") ~= nil)
+	frame.clear:SetShown(D:Get("manual") ~= nil or stops[1] ~= nil)
 
 	local route = T:Route()
 	local now = GetServerTime and GetServerTime()
@@ -223,15 +289,70 @@ function TP.Refresh()
 	local dir = 62 + frame.total:GetStringHeight() + 2 + frame.eta:GetStringHeight()
 	if frame.clear:IsShown() then dir = dir + 4 + frame.clear:GetHeight() end
 	local y = math.max(104, math.ceil(math.max(esq, dir)) + 12)
-	local n = route and math.min(#route.legs, MAX_LEGS) or 0
+
+	-- as paradas, na ordem, com o × (#117)
+	frame.stopsLabel:SetShown(stops[1] ~= nil); frame.stops:SetShown(stops[1] ~= nil)
+	if stops[1] then
+		frame.stopsLabel:ClearAllPoints(); frame.stopsLabel:SetPoint("TOPLEFT", PAD, -y)
+		frame.stopsLabel:SetText(kind == "corpse" and L.V3_NAV_STOPS_WAIT or L.V3_NAV_STOPS)
+		y = y + 18
+		frame.stops:ClearAllPoints(); frame.stops:SetPoint("TOPLEFT", PAD, -y); frame.stops:SetPoint("TOPRIGHT", -PAD, -y)
+		frame.stops:SetHeight(#stops * STOP_H)
+		y = y + #stops * STOP_H + 8
+	end
+	for j = 1, math.max(#stops, #stopRows) do
+		local r = stopRows[j]
+		local s = stops[j]
+		if s then
+			r = stopRow(j)
+			r.stop = s
+			r.num:SetText(j)
+			r.text:SetText(s.label or L.STOP)
+			r.where:SetText(whereOf(s) or "")
+			r:ClearAllPoints()
+			r:SetPoint("TOPLEFT", frame.stops, "TOPLEFT", 0, -(j - 1) * STOP_H)
+			r:SetPoint("TOPRIGHT", frame.stops, "TOPRIGHT", 0, -(j - 1) * STOP_H)
+			r:Show()
+		elseif r then
+			r.stop = nil
+			r:Hide()
+		end
+	end
+
+	-- a linha do tempo: as pernas e, no fim de cada trecho até uma parada, o marcador dela
+	local items = {}
+	for i = 1, route and #route.legs or 0 do
+		items[#items + 1] = { leg = i }
+		for j, st in ipairs(route.stops or {}) do
+			if st.leg == i then items[#items + 1] = { stop = st, j = j } end
+		end
+	end
+	local n = math.min(#items, MAX_ROWS)
 	frame.timelineCard:ClearAllPoints()
 	frame.timelineCard:SetPoint("TOPLEFT", PAD, -y); frame.timelineCard:SetPoint("TOPRIGHT", -PAD, -y)
 	frame.noRoute:SetShown(n == 0)
-	local ty = 0
-	for i = 1, MAX_LEGS do
-		local r = legRows[i]
-		if i <= n then
-			r = legRow(i)
+	local ty, nLeg, nMark = 0, 0, 0
+	for k = 1, n do
+		local it = items[k]
+		local r
+		if it.stop then
+			nMark = nMark + 1
+			r = markRow(nMark)
+			local st = it.stop
+			-- quanto falta até a parada: o resto da rota cortado no fim do trecho dela
+			local ate = p and T.Remaining({ leg = route.leg, legs = { unpack(route.legs, 1, st.leg) } }, p, T:Speed(), now)
+			r.text:SetText(st.dest.label or L.STOP)
+			r.sub:SetText(L.V3_NAV_STOP_N:format(it.j) .. (ate and (" · " .. L.V3_NAV_STOP_IN:format(
+				ns.Waypoint.FmtTime(ate))) or ""))
+			r.line:SetShown(k < n)
+			r:ClearAllPoints(); r:SetPoint("TOPLEFT", frame.timeline, "TOPLEFT", 0, -ty)
+			r:SetPoint("TOPRIGHT", frame.timeline, "TOPRIGHT", 0, -ty)
+			r:Show()
+			ty = ty + MARK_H
+		else
+			nLeg = nLeg + 1
+			local i = it.leg
+			r = legRow(nLeg)
 			local leg = route.legs[i]
 			local current, done = i == route.leg, i < route.leg
 			local txt = ns.Waypoint.LegText(route, i, nil, now)
@@ -251,15 +372,15 @@ function TP.Refresh()
 				r.icon:SetTexture(UI.GLYPH .. (done and "check" or LEG_GLYPH[leg.k] or "seta-rota") .. "-64")
 				r.icon:SetVertexColor(unpackc(done and C.done or current and C.onInk or C.muted))
 			end
-			r.line:SetShown(i < n)
+			r.line:SetShown(k < n)
 			r:ClearAllPoints(); r:SetPoint("TOPLEFT", frame.timeline, "TOPLEFT", 0, -ty)
 			r:SetPoint("TOPRIGHT", frame.timeline, "TOPRIGHT", 0, -ty)
 			r:Show()
-			ty = ty + 46
-		elseif r then
-			r:Hide()
+			ty = ty + LEG_H
 		end
 	end
+	for k = nLeg + 1, #legRows do legRows[k]:Hide() end
+	for k = nMark + 1, #markRows do markRows[k]:Hide() end
 	frame.timeline:SetHeight(math.max(ty, 1))
 	local cardH = n > 0 and (ty + 16) or 46
 	frame.timelineCard:SetHeight(cardH)
