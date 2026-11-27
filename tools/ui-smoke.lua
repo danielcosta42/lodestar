@@ -77,7 +77,8 @@ function M:SetTexture(t) self._tex = t end
 function M:GetCursorPosition() return 0 end
 function M:Click() local f = self._scripts.OnClick; if f then f(self, "LeftButton") end end
 function M:GetObjectType() return self._kind end
-function M:GetAttribute() return nil end
+function M:SetAttribute(k, v) self._attr = self._attr or {}; self._attr[k] = v end
+function M:GetAttribute(k) return self._attr and self._attr[k] end
 function M:IsObjectType() return false end
 function M:GetChildren() return end
 function M:GetRegions() return end
@@ -705,6 +706,32 @@ step("TargetButton", function()
 	ns.Viewer:Hide(); ns.TargetButton.Apply()
 	assert(not (_G.LodestarTarget and _G.LodestarTarget:IsShown()), "botão de alvo com o guia fechado")
 	ns.Viewer:Show()
+end)
+-- a marca vai na macro do clique (#119: o SetRaidTarget é protegido): marca uma vez; o segundo clique só mira; em
+-- combate só mira; desligada, só mira
+step("TargetButton mark", function()
+	local sGet, sSet = ns.GetStep, _G.SetRaidTarget
+	local chamou = false
+	_G.SetRaidTarget = function() chamou = true end
+	local passo = { goals = { { verb = "kill", id = 7777, text = "Javali Teste" } } }
+	ns.GetStep = function() return passo end
+	local ok, err = pcall(function()
+		ns.TargetButton.Apply()
+		local b = _G.LodestarTarget
+		local mac = b:GetAttribute("macrotext")
+		assert(mac == "/targetexact Javali Teste\n/tm [@target,exists,nodead] 8", "macro sem a marca: " .. tostring(mac))
+		b:GetScript("PostClick")(b, "LeftButton", false)     -- a borda que roda (ActionButtonUseKeyDown desligado aqui)
+		assert(b:GetAttribute("macrotext") == "/targetexact Javali Teste", "o segundo clique tiraria a marca")
+		assert(not chamou, "chamou o SetRaidTarget (protegido) fora da macro")
+		ns.fire("PLAYER_TARGET_CHANGED")
+		ns.db.markTarget = false
+		ns.TargetButton.Apply()
+		assert(b:GetAttribute("macrotext") == "/targetexact Javali Teste", "marca desligada e a macro marca")
+		ns.db.markTarget = nil
+	end)
+	ns.GetStep, _G.SetRaidTarget = sGet, sSet
+	ns.TargetButton.Apply()
+	assert(ok, err)
 end)
 -- em grupo: a contagem de quem também usa o Lodestar sob a quest do passo
 step("PartySync", function()
