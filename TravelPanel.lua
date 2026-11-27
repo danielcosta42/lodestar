@@ -120,7 +120,7 @@ local function build()
 	frame.timeline:SetPoint("TOPLEFT", 14, -12); frame.timeline:SetPoint("TOPRIGHT", -14, -12)
 	frame.timeline:SetHeight(1)
 	frame.noRoute = UI.Text(frame.timelineCard, 12.5, C.dim, { wrap = true })
-	frame.noRoute:SetPoint("TOPLEFT", 14, -14); frame.noRoute:SetPoint("RIGHT", -14, 0); frame.noRoute:SetText(L.TRAVEL_NOROUTE)
+	frame.noRoute:SetPoint("TOPLEFT", 14, -14); frame.noRoute:SetPoint("TOPRIGHT", -14, -14); frame.noRoute:SetText(L.TRAVEL_NOROUTE)
 
 	-- serviços
 	frame.svcLabel = UI.Text(frame, 11, C.dim, { num = true }); frame.svcLabel:SetText(L.V3_NAV_NEAREST)
@@ -270,7 +270,7 @@ function TP.Refresh()
 	frame.svc:ClearAllPoints(); frame.svc:SetPoint("TOPLEFT", PAD, -y)
 	y = y + frame.svc:GetHeight()
 	if status:IsShown() then
-		status:ClearAllPoints(); status:SetPoint("TOPLEFT", PAD, -y); status:SetPoint("RIGHT", -PAD, 0)
+		status:ClearAllPoints(); status:SetPoint("TOPLEFT", PAD, -y); status:SetPoint("TOPRIGHT", -PAD, -y)
 		y = y + status:GetStringHeight() + 6
 	end
 	y = y + 10
@@ -278,7 +278,7 @@ function TP.Refresh()
 	y = y + 18
 	frame.box:ClearAllPoints(); frame.box:SetPoint("TOPLEFT", PAD, -y)
 	y = y + 36
-	frame.hint:ClearAllPoints(); frame.hint:SetPoint("TOPLEFT", PAD, -y); frame.hint:SetPoint("RIGHT", -PAD, 0)
+	frame.hint:ClearAllPoints(); frame.hint:SetPoint("TOPLEFT", PAD, -y); frame.hint:SetPoint("TOPRIGHT", -PAD, -y)
 	y = y + frame.hint:GetStringHeight() + PAD
 	frame:SetHeight(y)
 end

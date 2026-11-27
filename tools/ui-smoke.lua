@@ -371,10 +371,15 @@ step("TravelPanel route", function()
 		local a = fr.timelineCard._ptargs.TOPLEFT
 		return -a[#a]
 	end
+	-- o fundo do cabeçalho pelos pontos que o build() pôs (não pelas contas do Refresh): mover um rótulo sem ajustar o
+	-- Refresh tem de falhar aqui
+	local function off(f, pt) local a = f._ptargs[pt]; return -a[#a] end
 	local function fundo()
-		local esq = 74 + fr.dest:GetStringHeight() + 3 + fr.destSub:GetStringHeight()
-		local dir = 62 + fr.total:GetStringHeight() + 2 + fr.eta:GetStringHeight()
-		if fr.clear:IsShown() then dir = dir + 4 + fr.clear:GetHeight() end
+		local esq = off(fr.dest, "TOPLEFT") + fr.dest:GetStringHeight() + off(fr.destSub, "TOPLEFT")
+			+ fr.destSub:GetStringHeight()
+		local dir = off(fr.total, "TOPRIGHT") + fr.total:GetStringHeight() + off(fr.eta, "TOPRIGHT")
+			+ fr.eta:GetStringHeight()
+		if fr.clear:IsShown() then dir = dir + off(fr.clear, "TOPRIGHT") + fr.clear:GetHeight() end
 		return math.max(esq, dir)
 	end
 	ns.TravelPanel.Refresh()
