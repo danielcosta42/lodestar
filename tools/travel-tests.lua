@@ -220,6 +220,9 @@ check(not T.SaltoDaPerna({ k = "walk" }, { k = "flight" }, P(1, 0, 0)), "a pé, 
 check(not T.SaltoDaPerna(nil, nil, P(1, 0, 0)), "sem rota: refaz")
 check(T.SaltoDaPerna(barco, nil, P(1, 3250, 250)), "no meio de um trecho longo da rota do barco: não refaz")
 check(not T.SaltoDaPerna(barco, nil, P(1, 3250, 600)), "longe do trecho: refaz")
+local zepelim = { k = "ship", b = P(0, 20000, 0), p = { 0, 0, 0, 14000, 0, 0, 14500, 0, 0 } }
+check(not T.SaltoDaPerna(zepelim, nil, P(0, 7000, 100)), "o teleporte do transporte (14 mil jd) não é trecho: refaz")
+check(T.SaltoDaPerna(zepelim, nil, P(0, 14250, 100)), "o trecho depois do teleporte vale")
 local bonde = { k = "tram", a = P(0, 0, 0), b = P(0, 100, 0) }
 check(not T.SaltoDaPerna(bonde, nil, P(0, 900, 0)), "saiu do bonde (de volta ao continente dele): refaz")
 check(not T.SaltoDaPerna({ k = "walk" }, bonde, P(0, 900, 0)), "pedra a caminho do bonde: refaz")

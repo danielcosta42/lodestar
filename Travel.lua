@@ -386,7 +386,9 @@ local function distSeg(q, ax, ay, bx, by)
 end
 
 -- A posição nova está no caminho do barco (a tela de carregamento no meio da travessia, ainda sem o embarque visto):
--- perto da chegada ou da rota dele (os trechos entre pontos seguidos, que chegam a 900 jd), no mesmo continente
+-- perto da chegada ou da rota dele (os trechos entre pontos seguidos, que chegam a 900 jd), no mesmo continente. Dois
+-- pontos a mais de TRECHO_MAX não são trecho: é o teleporte do próprio transporte (o zepelim de Grom'gol a Undercity)
+local TRECHO_MAX = 1500
 local function noBarco(leg, pos)
 	if leg.b and leg.b.c == pos.c and dist(leg.b, pos) < 300 then return true end
 	local p = leg.p or {}
@@ -394,7 +396,9 @@ local function noBarco(leg, pos)
 		if p[i] == pos.c then
 			local j = i + 3
 			local bx, by = p[i - 2], p[i - 1]
-			if p[j] == pos.c then bx, by = p[j - 2], p[j - 1] end
+			if p[j] == pos.c and dist({ x = bx, y = by }, { x = p[j - 2], y = p[j - 1] }) <= TRECHO_MAX then
+				bx, by = p[j - 2], p[j - 1]
+			end
 			if distSeg(pos, p[i - 2], p[i - 1], bx, by) < 300 then return true end
 		end
 	end
