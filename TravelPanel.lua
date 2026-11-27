@@ -476,7 +476,7 @@ function TP.Refresh()
 			local head, tail = txt:match("^(.-) · (.+)$")
 			r.text:SetText(head or txt)
 			r.text:SetTextColor(unpackc(done and C.faded or C.active))
-			r.sub:SetText(done and L.V3_NAV_DONE or (current and L.V3_NAV_NOW or "") .. (tail and (leg.k == "ship" or leg.k == "flight") and tail or ""))
+			r.sub:SetText(done and L.V3_NAV_DONE or (current and L.V3_NAV_NOW or "") .. (tail and leg.k == "ship" and tail or ns.Waypoint.ViaText(leg) or ""))
 			r.time:SetText(ns.Waypoint.FmtTime(leg.s or 0))
 			r.time:SetTextColor(unpackc(current and C.tip or C.muted))
 			local tint = done and C.doneSoft or current and C.tip or C.chip

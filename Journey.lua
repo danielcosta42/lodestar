@@ -19,6 +19,7 @@ local J = {}
 ns.Journey = J
 
 local FLIGHT_OVERHEAD = 10     -- falar com o mestre de voo e decolar
+local DESVIO_RAIO = 150        -- jd: o desvio a pé medido vale para quem sai até aqui do começo dele (#125)
 local HEARTH_CAST = 10
 -- pedra e teleporte gastam recarga ou reagente: só valem se pouparem isto (s) a mais
 local GASTO = 300
@@ -132,13 +133,15 @@ function J.Plan(from, to, ctx)
 		link(START, h, (t.cast or 10) + GASTO, { k = "teleport", name = t.label, spell = t.spell, gasto = GASTO })
 	end
 
-	-- a pé: a reta, ou f vezes ela onde o caminho pelo terreno já mostrou o desvio (penhasco, serra: #125)
+	-- a pé: a reta, ou f vezes ela onde o caminho pelo terreno já mostrou o desvio (penhasco, serra: #125). Vale para
+	-- quem sai até DESVIO_RAIO do começo medido (o pouso do grifo fica uns jd ao lado do mestre de voo; o cais ao lado
+	-- dele) rumo ao mesmo fim
 	local desvios = ctx.desvios or {}
 	local function aPe(pa, pb)
 		local d = dist(pa, pb)
 		for _, dv in ipairs(desvios) do
-			if dv.a.c == pa.c and math.abs(dv.a.x - pa.x) < 1 and math.abs(dv.a.y - pa.y) < 1
-				and math.abs(dv.b.x - pb.x) < 1 and math.abs(dv.b.y - pb.y) < 1 then return d * dv.f end
+			if dv.a.c == pa.c and math.abs(dv.b.x - pb.x) < 1 and math.abs(dv.b.y - pb.y) < 1
+				and dist(dv.a, pa) <= DESVIO_RAIO then return d * dv.f end
 		end
 		return d
 	end
@@ -157,7 +160,10 @@ function J.Plan(from, to, ctx)
 		if not u or u == GOAL then break end
 		done[u] = true
 		local pu = nodes[u].pt
-		for v = 1, n do
+		-- a pé emendado em a pé nunca encurta pela reta (a direta é menor ou igual): só serviria para fugir de um
+		-- desvio medido (#125) passando por um cais ou voo ao lado — e o caminho pelo terreno já é o melhor a pé
+		local aPeDeNovo = via[u] and via[u].k == "walk"
+		for v = 1, aPeDeNovo and 0 or n do
 			if not done[v] and v ~= START and nodes[v].pt.c == pu.c then
 				local s = bu + aPe(pu, nodes[v].pt) / speed
 				if s < best[v] then best[v], prev[v], via[v], gastou[v] = s, u, { k = "walk" }, gastou[u] end

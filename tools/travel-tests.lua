@@ -155,6 +155,17 @@ do
 	for _, l in ipairs(rd and rd.legs or {}) do if l.k == "flight" then ult = l end end
 	check(ult and ult.name:find("^Tarren Mill") and rd.legs[#rd.legs].k == "walk",
 		"desvio do terreno: Tarren Mill e a pé (" .. (rd and kinds(rd) or "nil") .. ")")
+	-- pousou em Hammerfall (o pouso fica uns 9 jd ao lado do mestre de voo) com o desvio já medido: não segue a pé
+	local tudoH = todos("H")
+	local rp = J.Plan(P(0, -914.2, -3488.2), alvo, { data = real, fac = "H", known = tudoH, speed = 7.6, teleports = {},
+		desvios = { { a = { c = hf.c, x = hf.x, y = hf.y }, b = alvo, f = 4155 / 1415 } } })
+	check(rp and kinds(rp):find("flight"), "do pouso ao lado do mestre de voo, o desvio vale (" .. (rp and kinds(rp) or "nil") .. ")")
+	-- a pé emendado em a pé não foge do desvio passando por um nó ao lado (fora do raio)
+	local d2 = { nodes = { [1] = { n = "A", c = 0, x = 0, y = 0, f = "A" }, [9] = { n = "Lado", c = 0, x = 0, y = 200, f = "A" } },
+		flights = {}, ships = {} }
+	local rw = J.Plan(P(0, 0, 0), P(0, 1500, 0), { data = d2, fac = "A", known = {}, speed = 7, teleports = {},
+		desvios = { { a = P(0, 0, 0), b = P(0, 1500, 0), f = 3 } } })
+	check(rw and math.abs(rw.s - 4500 / 7) < 1, "não foge do desvio pelo nó ao lado (" .. (rw and math.floor(rw.s) or "nil") .. " s)")
 	-- sem voo direto: um voo só, pela rota do jogo (Thalanaar -> Nijel's Point passa por Feathermoon)
 	local _, th = node("Thalanaar")
 	local _, nj = node("Nijel's Point")
@@ -300,6 +311,13 @@ local rota = { leg = 1, legs = {
 	{ k = "walk", b = P(0, 3010, 0), s = 2 },
 } }
 check(T.AdvanceLeg(rota, P(0, 690, 0), false) == 2, "chegou ao fim da perna a pé: próxima")
+do
+	local voos = { leg = 2, legs = { { k = "walk", b = P(0, 0, 0) }, { k = "flight", b = P(0, 1000, 0) },
+		{ k = "flight", b = P(0, 3000, 0) }, { k = "walk", b = P(0, 3200, 0) } } }
+	check(T.AdvanceLeg(voos, P(0, 3010, 0), false) == 4, "marcou o último voo direto: pousou no fim dele (#124)")
+	check(T.AdvanceLeg(voos, P(0, 1010, 0), false) == 3, "pousou no do meio: o voo seguinte")
+	check(T.AdvanceLeg(voos, P(0, 3010, 0), true) == 2, "em voo, não avança")
+end
 check(T.AdvanceLeg(rota, P(0, 300, 0), false) == 1, "no meio da perna a pé: continua nela")
 rota.leg = 2
 check(T.AdvanceLeg(rota, P(0, 2990, 0), true) == 2, "em voo, mesmo perto do pouso: continua no voo")
@@ -818,6 +836,17 @@ check(select(1, T.PickAnnounced(cands, "Zepelim chegou!")) == 285, "sem o nome n
 
 -- ── #23: caminho a pé pelo terreno ───────────────────────────────────────────
 local TRN = load("Terrain.lua", {}).Terrain
+;(function()
+	-- a perna a pé atual bem mais longa pelo terreno (#125): o replanejar vê o desvio e o tempo de verdade
+	local cur = { k = "walk", b = P(0, 100, 0), path = { P(0, 0, 0), P(0, 0, 500), P(0, 100, 500), P(0, 100, 0) } }
+	local dv, extra = T.DesvioAtual(cur, P(0, 0, 0), 7, TRN.Ahead)
+	check(dv and math.abs(dv.f - 11) < 0.01 and math.abs(extra - 1000 / 7) < 0.01 and dv.b == cur.b,
+		"a perna atual: desvio do ponto do jogador e os segundos a mais")
+	check(not T.DesvioAtual(cur, P(0, 500, -300), 7, TRN.Ahead), "longe do caminho: não vale")
+	check(not T.DesvioAtual({ k = "walk", b = P(0, 100, 0), path = { P(0, 0, 0), P(0, 100, 0) } }, P(0, 0, 0), 7, TRN.Ahead),
+		"caminho reto: sem desvio")
+	check(not T.DesvioAtual({ k = "flight", b = P(0, 1, 0) }, P(0, 0, 0), 7, TRN.Ahead), "perna que não é a pé: nada")
+end)()
 local DIRS8 = { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } }
 -- quadrante 0 sintético: `bloq(r, c)` diz o que é parede, `agua(r, c)` o que é lago
 -- `tq` quadrantes por lado (1 se omitido)

@@ -38,6 +38,16 @@ function T.AdvanceLeg(route, pos, onTaxi)
 	local leg = route.legs[i]
 	if not (leg and pos) then return i end
 	if leg.k == "flight" and onTaxi then return i end
+	-- voos seguidos (pousar e marcar de novo, #124): quem marcou o último direto pousa no fim dele
+	if leg.k == "flight" then
+		local j = i
+		while route.legs[j] and route.legs[j].k == "flight" do
+			local bj = route.legs[j].b
+			if pos.c == bj.c and dist(pos, bj) <= (ARRIVE.flight or 60) then return j + 1 end
+			j = j + 1
+		end
+		return i
+	end
 	local b = leg.b
 	if pos.c == b.c and dist(pos, b) <= (ARRIVE[leg.k] or 60) then return i + 1 end
 	return i
@@ -348,6 +358,13 @@ function T:Replan(force)
 		return
 	end
 	local ctx = self:Context()
+	-- a perna a pé atual bem mais longa pelo terreno (#125): a rota nova e a comparação veem o desvio
+	local agora, extra = T.DesvioAtual(route and route.legs[route.leg], from, speed, ns.Terrain and ns.Terrain.Ahead)
+	if agora then
+		local lista = { agora }
+		for _, dv in ipairs(ctx.desvios or {}) do lista[#lista + 1] = dv end
+		ctx.desvios = lista
+	end
 	-- cada trecho sai mais tarde (o horário do barco conta da hora em que se chega ao cais) e a pedra vale uma vez
 	local new = T.PlanChain(from, ch, worldOf, function(a, b, o)
 		local c = ctx
@@ -373,7 +390,7 @@ function T:Replan(force)
 		local was = route
 		route, routeKey = new, key
 		if was or new then changed() end                -- sem rota antes e depois: nada mudou
-	elseif T.ShouldReplace({ s = T.Remaining(route, from, speed, serverNow(), true) }, new) then
+	elseif T.ShouldReplace({ s = T.Remaining(route, from, speed, serverNow(), true) + (extra or 0) }, new) then
 		route = new
 		changed()
 	end
@@ -460,6 +477,18 @@ function T.InheritPaths(old, new)
 			end
 		end
 	end
+end
+
+-- A perna a pé atual (`cur`, de onde o jogador está, `pos`) com o caminho pelo terreno bem mais longo que a reta: o
+-- pouso do outro lado do penhasco, ou quem já está ao pé dele (#125). -> o desvio só deste replanejar ({ a, b, f }) e
+-- os segundos a mais que a perna leva de verdade (a comparação com a rota nova é pela reta) | nil. `ahead` é o
+-- Terrain.Ahead; caminho a mais de 60 jd de onde o jogador está já não vale.
+function T.DesvioAtual(cur, pos, v, ahead)
+	if not (cur and cur.k == "walk" and cur.path and pos and ahead and pos.c == cur.b.c) then return nil end
+	local _, _, falta, longe = ahead(cur.path, pos, 0)
+	local D = dist(pos, cur.b)
+	if not (falta and longe and longe <= 60 and T.Desvio(falta, D, v)) then return nil end
+	return { a = { c = pos.c, x = pos.x, y = pos.y }, b = cur.b, f = falta / D }, (falta - D) / (v or 7)
 end
 
 --------------------------------------------------------------------------------
@@ -570,6 +599,9 @@ local function pathTick()
 				if pathDeA and T.Desvio(L, D, speed) and T.AddDesvio(desvios, pathLeg.a, pathLeg.b, L / D) then
 					pathLeg.s = (pathLeg.s or 0) * L / D
 					if not T:Busy() then T:Replan(false) end
+				elseif not pathDeA and pathLeg.pathAt and not T:Busy()
+					and T.Desvio(T.PathLength(res), dist(pathLeg.pathAt, pathLeg.b), speed) then
+					T:Replan(false)                        -- a perna atual: o replanejar já mede o desvio dela
 				end
 			else
 				pathLeg.path = pathLeg.path or false     -- falhou: fica o caminho anterior, se havia

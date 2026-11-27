@@ -1242,6 +1242,11 @@ step("LegText via", function()
 	local head, tail = t:match("^(.-) · (.+)$")
 	assert(head and head:find("Hammerfall", 1, true) and tail:find("Tarren Mill", 1, true)
 		and not tail:find("Hillsbrad", 1, true), "voo sem o via: " .. t)
+	-- a linha de baixo da Navegação: só os do meio (o tempo já está à direita)
+	local v = ns.Waypoint.ViaText({ k = "flight", via = { "Tarren Mill, Hillsbrad" } })
+	assert(v and v:find("Tarren Mill", 1, true) and not v:find(":%d"), "via: " .. tostring(v))
+	assert(ns.Waypoint.ViaText({ k = "flight" }) == nil and ns.Waypoint.ViaText({ k = "walk", via = { "X" } }) == nil,
+		"via sem os do meio")
 end)
 -- desvio do terreno (#125): a perna a pé que ainda não começou, bem mais longa pelo terreno, corrige a rota
 step("Terrain detour", function()
