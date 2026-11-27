@@ -94,6 +94,8 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
   cidade se alternam célula a célula), Timbermaw Hold, Thorium Point, a ponte de corda de Thousand Needles e a
   entrada de Wailing Caverns (os andares da boca da caverna). As geradas são chão como o terreno: não marcam `passagem` e o
   limite de volta (2× e 2000 jd) segue só para as gravadas (Terrain.lua, `TR.Links` devolve também as gravadas).
+  Passo por passagem gravada que a grade já liga não marca a rota como "por passagem" (a rampa da Revantusk está na
+  grade v2): sem isso o limite derrubava a rota real Arathi ↔ Revantusk (~5,8 km) e a segunda busca cruzava o penhasco.
 - **Cidade debaixo do morro:** só na pegada das cidades feitas dentro do morro e entradas pelo próprio chão
   (`INTERIORES`, por FileDataID do WMO: Ironforge), o piso mais de 50 jd abaixo do terreno substitui o terreno de cima.
   Em todo o resto o chão de fora nunca cede a um piso por baixo: uma regra geral (qualquer piso fundo) tirava o chão

@@ -792,6 +792,17 @@ end
 local rr, rv = TRN.Path(EKp, revan, aerie, 150000), TRN.Path(EKp, aerie, revan, 150000)
 check(rr and rv and not rr.solto and not rv.solto and pelaRampa(rr) and pelaRampa(rv),
 	"Revantusk <-> Aerie Peak com a rampa gravada: busca normal, pela rampa")
+-- como no jogo (passagens geradas + gravadas): a rampa gravada que a grade v2 já liga não marca a rota como "por
+-- passagem" — senão o limite de volta derrubava a rota real Arathi <-> Revantusk (~5,8 km) e a segunda busca cruzava o
+-- penhasco (revisão do #106)
+local EKg = load("Terrain0.lua", {}).terrain
+EKg.passages = {}
+for _, p in ipairs(load("TerrainPassages.lua", {}).passagesTerrain or {}) do EKg.passages[#EKg.passages + 1] = p end
+for _, p in ipairs(EKp.passages) do EKg.passages[#EKg.passages + 1] = p end
+local hammerfall = { c = 0, x = -916.3, y = -3496.9 }
+local hr, rh = TRN.Path(EKg, hammerfall, revan, 150000), TRN.Path(EKg, revan, hammerfall, 150000)
+check(hr and rh and not hr.solto and not rh.solto and comprimento(hr) > 4000 and comprimento(rh) > 4000,
+	"Hammerfall <-> Revantusk no jogo: a rota real da grade, sem cruzar o penhasco")
 -- Aerie Peak -> Chillwind não pode descer a rampa e nadar 4 km pela costa (volta grande demais por passagem fica sem
 -- caminho). Na grade v1 a rampa era a única ligação do platô; na v2 (#106) a saída para Hillsbrad existe na grade e o
 -- caminho vai por ela — nunca pela rampa e o mar

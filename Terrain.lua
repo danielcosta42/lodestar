@@ -403,7 +403,13 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 		local n = #cel + 1
 		cel[n] = inv[i]
 		molh[n] = molh[n - 1] + (select(2, info(grid, floor(inv[i] / W), inv[i] % W)) and 1 or 0)
-		if n > 1 and not usouPassagem and gravadas[cel[n - 1] * WW + cel[n]] then usouPassagem = true end
+		-- passo por passagem gravada que a grade já liga (a rampa da Revantusk, desde a grade v2) não conta: senão o
+		-- limite de volta derruba a rota real da grade e a segunda busca cruza o penhasco (revisão do #106)
+		if n > 1 and not usouPassagem and gravadas[cel[n - 1] * WW + cel[n]] then
+			local a, b = cel[n - 1], cel[n]
+			local d = PASSO[(floor(b / W) - floor(a / W) + 1) * 3 + (b % W - a % W) + 2]
+			if not (d and info(grid, floor(a / W), a % W) % 2 ^ d >= 2 ^ (d - 1)) then usouPassagem = true end
+		end
 	end
 	-- a segunda busca: quanto da barreira ela cruzou (seguidos e no total); passou do curto, não é caminho
 	if solto then
