@@ -204,18 +204,27 @@ local function shipById(sid)
 	for _, s in ipairs(ns.travel and ns.travel.ships or {}) do if s.id == sid then return s end end
 end
 
-function T:Observe(sid, k, ev, t, rideFrom, rideS, replan)
+-- `shared`: veio da guilda ou do grupo (TransitShare) — não volta a sair nem conta como observação própria
+function T:Observe(sid, k, ev, t, rideFrom, rideS, replan, shared)
 	local ship = shipById(sid)
 	if not (ship and ns.Schedule) then return end
 	local store = transit()
+	local own = store[sid] and store[sid].own
 	local ride = store[sid] and store[sid].ride
 	if rideFrom and rideS and rideS > 5 then
 		ride = ride or {}
 		ride[rideFrom] = rideS
 	end
 	store[sid] = ns.Schedule.Learn(store[sid], ship, k, ev, t, ride)
+	store[sid].own = own                                  -- a última observação própria (manda sobre as de fora)
+	if not shared then store[sid].own = t end
+	if not shared and ns.TransitShare then ns.TransitShare:Broadcast(sid, k, ev, t) end
 	if replan then T:Replan(true) end
 end
+
+-- o horário aprendido deste reino (TransitShare responde com ele)
+function T:Transit() return transit() end
+
 
 --------------------------------------------------------------------------------
 -- a rota atual
@@ -225,6 +234,20 @@ local route, routeKey, sinceReplan = nil, nil, 0
 function T:Route() return route end
 function T:Leg() return route and route.legs[route.leg] end
 function T:Speed() return speed end
+
+-- Observação da guilda ou do grupo (#116): entra se TransitShare.Accept deixar; a rota que usa esse transporte é
+-- refeita, a não ser a bordo ou em voo.
+function T:ObserveShared(sid, k, ev, t)
+	local ship = shipById(sid)
+	local TS = ns.TransitShare
+	if not (ship and TS and TS.Accept(transit()[sid], ship, k, ev, t, serverNow())) then return false end
+	local usa = false
+	for _, l in ipairs(route and route.legs or {}) do if l.sid == sid then usa = true end end
+	local cur = route and route.legs[route.leg]
+	local livre = not (cur and cur.boarded) and not (UnitOnTaxi and UnitOnTaxi("player"))
+	T:Observe(sid, k, ev, t, nil, nil, usa and livre, true)
+	return true
+end
 
 local function destination()
 	if ns.Destinations then return ns.Destinations:Active() end

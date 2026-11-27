@@ -64,6 +64,7 @@ Schedule.lua
 Journey.lua
 TravelPlanner.lua
 Travel.lua
+TransitShare.lua
 PassagesData.lua
 TerrainPassages.lua
 Passages.lua

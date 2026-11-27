@@ -34,6 +34,20 @@ período sai deles: `n = round((último − primeiro) / T)`, `T = (último − p
   longe) recomeça a lista a partir dela.
 - Observação com mais de 12 h é descartada. Horário que vence no meio do plano vale como quem não tem horário: a perna sai pela espera estimada (#61).
 
+## Compartilhar com a guilda e o grupo (#116)
+
+- Cada observação própria (grito, embarque, desembarque) sai em mensagem de addon escondida (`LSTransit`) para a
+  guilda e o grupo (grupo, raide ou instância): `o|<id do transporte>|<parada>|<a|d>|<hora do servidor>`. Nada
+  pessoal. Sem canal de reino (decisão do jogador).
+- Quem recebe junta ao horário (`Travel:ObserveShared`) se `TransitShare.Accept` deixar: transporte e parada
+  conhecidos, hora não futura (folga de 60 s) nem com mais de 12 h, mais nova que a última que o horário tem, e — com
+  observação própria de até 2 h — fase a até 30 s da própria. A rota que usa o transporte é refeita (não a bordo nem
+  em voo). Observação de fora não volta a sair e não conta como própria (`own`).
+- Pergunta (`q`) 15 s depois de entrar e 3 s depois de entrar num grupo (no máximo uma a cada 30 s). Quem tem
+  horário responde depois de 1–6 s aleatórios, com a observação mais nova de cada transporte, menos a que outro já
+  respondeu igual ou mais nova nesse meio tempo; uma resposta por canal a cada 60 s.
+- Configurações → Grupo: "Horário de barco e zepelim" (ligado por padrão).
+
 ## Uso
 
 - **Planejador:** com fase conhecida, a espera no cais é até a próxima saída na hora em que você

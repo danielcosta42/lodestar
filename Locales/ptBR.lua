@@ -749,6 +749,8 @@ L.COL_PET_NEAR = "Um pet raro nasce aqui"
 L.COL_TAME = "Dome %s (%s, nível %s)"
 L.SET_PARTYSYNC = "Grupo sincronizado"
 L.SET_PARTYSYNC_D = "Com membros do grupo que usam o Lodestar: a contagem deles sob o objetivo compartilhado, quem não tem a quest, e Compartilhar. Só ids de quest e contagens, em mensagem escondida ao seu grupo."
+L.SET_TRANSITSHARE = "Horário de barco e zepelim"
+L.SET_TRANSITSHARE_D = "Divide os horários que você aprende (o grito do mestre do cais, as suas viagens) com a guilda e o grupo, e recebe os deles. Só o transporte, a parada e a hora do servidor, em mensagens escondidas do addon."
 
 -- Passagens (issue #99)
 L.PASS_START = "Gravando passagem: ande pela rampa, ponte ou porta que a rota não acha e digite /ls passagem de novo."

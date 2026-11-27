@@ -1125,4 +1125,29 @@ local temShari
 for _, t in ipairs(pal) do if t.n == "Shari Stilwell" and t.zone == "Tirisfal Glades" then temShari = true end end
 check(temShari, "Paladino da Horda: Shari Stilwell (Brill) está no banco de treinadores")
 
+;(function() -- #116: horário dividido com a guilda e o grupo (função própria: o topo do arquivo passa de 200 locais)
+local tsns = load("TransitShare.lua", load("Schedule.lua", {}))
+local TS, SCx = tsns.TransitShare, tsns.Schedule
+local barco = { id = 285, stops = { {}, {} }, s = { 100, 80 }, d = { 60, 60 } }
+check(TS.Encode(285, 2, "dep", 1700000000.7) == "o|285|2|d|1700000000", "observação vira texto curto")
+local sid, k, ev, t = TS.Decode("o|285|2|d|1700000000")
+check(sid == 285 and k == 2 and ev == "dep" and t == 1700000000, "e volta")
+check(TS.Decode("q") == "q" and TS.Decode("o|x|1|a|5") == nil and TS.Decode("o|1|1|z|5") == nil
+	and TS.Decode(nil) == nil, "pergunta; lixo não decodifica")
+local agora = 100000
+check(TS.Accept(nil, barco, 1, "arr", agora - 60, agora), "sem horário: entra")
+check(not TS.Accept(nil, barco, 3, "arr", agora - 60, agora), "parada que o transporte não tem: fora")
+check(not TS.Accept(nil, barco, 1, "arr", agora + 600, agora), "hora futura: fora")
+check(not TS.Accept(nil, barco, 1, "arr", agora - 13 * 3600, agora), "mais de 12 h: fora")
+local hx = SCx.Learn(nil, barco, 1, "arr", agora - 1000, nil)
+check(not TS.Accept(hx, barco, 1, "arr", agora - 1100, agora), "mais velha que a que o horário já tem: fora")
+hx.own = agora - 1000
+-- fase própria: chegada na 1ª às agora-1000 (ciclo de 300; chega na 2ª 160 s depois). 5 s fora concorda; 90 s, não
+check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 5, agora), "concorda com a fase própria (5 s): entra")
+check(not TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90, agora), "contra a fase própria recente (90 s): fora")
+hx.own = agora - 3 * 3600
+check(TS.Accept(hx, barco, 2, "arr", agora - 1000 + 160 + 90, agora), "própria velha (3 h): a de fora vale")
+local lk, lev, lt = TS.Latest({ obs = { ["1:arr"] = 10, ["2:dep"] = 30, ["2:arr"] = 20 } })
+check(lk == 2 and lev == "dep" and lt == 30, "a observação mais nova responde a pergunta")
+end)()
 print(("ok: %d checks"):format(checks))

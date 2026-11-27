@@ -162,6 +162,7 @@ local DB_DEFAULTS = {
 	targetButton = true,  -- botão de alvo do passo
 	markTarget = true,    -- o botão de alvo marca com ícone de raide
 	npcNames = {},        -- nome de cada NPC do guia no idioma do cliente (aprendido ao ver)
+	transitShare = true,  -- horário de barco e zepelim com a guilda e o grupo (mensagem escondida; #116)
 	partySync = true,     -- contagem dos membros do grupo que usam o Lodestar (só o grupo, mensagem escondida)
 	rareAlerts = true,    -- aviso de raro perto
 	collectPins = true,   -- livros e pets raros que faltam no mapa e no minimapa, com aviso perto (issue #94)

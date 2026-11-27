@@ -214,7 +214,9 @@ G.C_SkillInfo = { GetNumSkillLines = function() return 0 end }
 G.C_Spell = { GetSpellInfo = function() return nil end, GetSpellCooldown = function() return nil end }
 G.C_SpellBook = { IsSpellKnown = function() return false end }
 G.C_CurrencyInfo = { GetCoinTextureString = function(c) return tostring(c) end }
-G.C_ChatInfo = { RegisterAddonMessagePrefix = noop, SendAddonMessage = noop }
+-- o que sai em mensagem de addon fica em _G._sent quando um passo quer conferir
+G.C_ChatInfo = { RegisterAddonMessagePrefix = noop,
+	SendAddonMessage = function(p, m, c) if G._sent then G._sent[#G._sent + 1] = { p, m, c } end end }
 G.C_GossipInfo = {}
 G.C_NamePlate = { GetNamePlates = function() return {} end, GetNamePlateForUnit = function() return nil end }
 G.C_TaxiMap = { GetAllTaxiNodes = function() return {} end }
@@ -569,6 +571,48 @@ step("Fresh route after entering world", function()
 	end)
 	ns.Destinations:Clear("manual")
 	T.PlayerWorld, T.World = pw, w
+	assert(ok, err)
+end)
+-- horário dividido com a guilda e o grupo (#116): a observação própria sai; a de outro entra; o eco e o lixo não;
+-- a pergunta tem resposta
+step("TransitShare", function()
+	local sent, guild, after = {}, _G.IsInGuild, _G.C_Timer.After
+	_G._sent, _G.IsInGuild = sent, function() return true end
+	_G.C_Timer.After = function(_, f) f() end
+	local ok, err = pcall(function()
+		local ship = ns.travel.ships[1]
+		local now = GetServerTime()
+		local store = ns.Travel:Transit()
+		store[ship.id] = nil
+		ns.Travel:Observe(ship.id, 1, "arr", now - 50)
+		local foi = false
+		for _, m in ipairs(sent) do
+			if m[1] == "LSTransit" and m[3] == "GUILD" and m[2]:find("^o|" .. ship.id .. "|1|a|") then foi = true end
+		end
+		assert(foi, "a observação própria não foi para a guilda")
+		assert(store[ship.id].own == now - 50, "a própria não ficou marcada")
+		store[ship.id] = nil
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|2|d|%d"):format(ship.id, now - 30), "GUILD", "Outro-Reino")
+		assert(store[ship.id] and store[ship.id].last == now - 30 and not store[ship.id].own,
+			"a observação da guilda não entrou")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", ("o|%d|1|a|%d"):format(ship.id, now - 10), "GUILD", "Teste")
+		assert(store[ship.id].last == now - 30, "o eco da própria mensagem entrou")
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", "o|999999|1|a|5", "GUILD", "Outro-Reino")
+		assert(store[999999] == nil, "transporte desconhecido entrou")
+		local antes = #sent
+		ns.fire("CHAT_MSG_ADDON", "LSTransit", "q", "GUILD", "Outro-Reino")
+		local resp = false
+		for i = antes + 1, #sent do
+			if sent[i][3] == "GUILD" and sent[i][2] == ("o|%d|2|d|%d"):format(ship.id, now - 30) then resp = true end
+		end
+		assert(resp, "a pergunta ficou sem resposta")
+		ns.db.transitShare = false
+		antes = #sent
+		ns.Travel:Observe(ship.id, 1, "arr", now - 5)
+		assert(#sent == antes, "desligado e ainda manda")
+		ns.db.transitShare = nil
+	end)
+	_G._sent, _G.IsInGuild, _G.C_Timer.After = nil, guild, after
 	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)

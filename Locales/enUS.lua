@@ -765,6 +765,8 @@ L.COL_PET_NEAR = "A rare pet spawns here"
 L.COL_TAME = "Tame %s (%s, level %s)"
 L.SET_PARTYSYNC = "Party sync"
 L.SET_PARTYSYNC_D = "With party members who run Lodestar: their count under shared goals, who lacks a quest, and Share. Only quest IDs and counts, in hidden addon messages to your party."
+L.SET_TRANSITSHARE = "Ship and zeppelin times"
+L.SET_TRANSITSHARE_D = "Share the departure times you learn (the dockmaster's call, your own trips) with your guild and party, and get theirs. Only the transport, the stop and the server time, in hidden addon messages."
 
 -- Passagens (issue #99)
 L.PASS_START = "Recording a passage: walk the ramp, bridge or door the route misses, then type /ls passagem again."
