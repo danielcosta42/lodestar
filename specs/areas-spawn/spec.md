@@ -14,23 +14,30 @@ como ir ao próximo lugar onde aquilo nasce.
   só as dos guias: o #122 usa as do diário), cada objetivo na ordem do QuestieDB — mobs (`objCreatures`), objetos
   (`objObjects`), itens (`objItems`), a mesma do diário — com os pontos de nascimento por zona: do mob, do objeto, ou
   de quem deixa cair o item (NPCs e objetos, e as partes do item que se monta). Sem área, porque o mapa não ajuda: o
-  item que cai de mais de 40 mobs ou que se compra (e não é item de quest); o objeto que dá item de ofício (classe 7:
-  Linen Cloth de 10 baús, Gold Bar, Star Ruby, as ervas e os veios) e o item que sai de mais de 6 tipos de objeto —
-  sobra o mob que deixa cair, se houver. Fora do mapa: o "-1,-1" de dentro da masmorra, zona sem mapa, masmorra, campo
-  de batalha, continente. O objetivo de masmorra (mais fontes só lá dentro que no mapa, e mais nascimentos lá dentro)
-  fica sem área nenhuma: o resto de fora é dado perdido (Fetish of Hakkar: 1 no pântano, o resto no templo).
+  item que cai de mais de 40 mobs; o drop do item que se compra (e não é item de quest) — a erva e o veio de onde ele
+  se colhe ficam (Liferoot, Kingsblood, Earthroot); os objetos do item que sai de mais de 6 tipos de objeto (baús
+  espalhados: Linen Cloth de 10, Silk Cloth de 36, Gold Bar de 15, Star Ruby de 34, Jade de 32) — sobra o mob que deixa
+  cair, se houver. A erva e o veio de 1-2 tipos de nó (Arthas' Tears, Dark Iron Ore, Firebloom, Purple Lotus) ficam.
+  Fora do mapa: o "-1,-1" de dentro da masmorra, zona sem mapa, masmorra, campo de batalha, continente. O objetivo de
+  masmorra (mais fontes só em masmorra que no mapa, e mais nascimentos lá dentro — só masmorra e o "-1,-1" contam, não
+  o campo de batalha) fica sem área nenhuma: o resto de fora é dado perdido (Fetish of Hakkar: 1 no pântano, o resto no
+  templo). Não quando o guia manda a uma zona do mapa onde ele nasce (Junkboxes Needed: os 32 Theramore Guard de
+  Dustwallow ficam, mesmo com 82 trogg do Alterac Valley).
 - **R2 As áreas.** Por zona, ligação simples a 6 unidades do mapa (0-100); área mais larga que 22 se parte ao meio
   pelo eixo mais comprido, até caber. Sai o nascimento perdido:
-  - a zona com menos de 10% dos nascimentos da zona que mais tem — as de masmorra contam —, menos a zona de um
-    `|goto` do guia para a quest (Elemental Air: os Dust Devils de Westfall, poucos perto dos de Barrens);
+  - a zona com menos de 10% dos nascimentos da zona que mais tem — as de masmorra contam, as de campo de batalha não —,
+    menos a zona de um `|goto` do guia para a quest (Elemental Air: os Dust Devils de Westfall, poucos perto dos de
+    Barrens);
   - a área com menos de 8% dos pontos da maior área da zona, **para cada mob ou objeto que nasce nela** (com 1-2 na
     maior, tudo fica): o mob nomeado de um ponto só (Gor'tesh) não some perto dos 3 do outro mob que deixa cair o
     mesmo item, e a área que tem todos os nascimentos de uma fonte passa na frente no teto.
 
-  Até 12 áreas por zona e 30 por objetivo, da com mais pontos para a com menos. Cada área leva o ponto de nascimento
+  Até 12 áreas por zona e 30 por objetivo; no teto, as da zona de um `|goto` do guia passam na frente (o Liferoot nasce
+  em 14 zonas: as de Alterac ficam), depois as que têm todos os nascimentos de uma fonte, depois da com mais pontos para
+  a com menos. Cada área leva o ponto de nascimento
   mais perto do meio (o alvo do clique: lugar onde o mob nasce de verdade, nunca o meio de um lago), o número de pontos
   e o contorno convexo simplificado a até 10 cantos (Visvalingam, por dentro). Coordenada com uma casa, em números de 2
-  letras de base 36: ~287 KB para 2.162 quests, 3.241 objetivos e 7.719 áreas (só as quests dos guias: ~217 KB). O mob
+  letras de base 36: ~308 KB para 2.187 quests, 3.277 objetivos e 8.432 áreas (só as quests dos guias: ~225 KB). O mob
   que o guia manda matar (`kill X##npc |q quest`) sem ser objetivo, mas que deixa cair o item de um, aponta o objetivo
   do item (`a = { [npc] = objetivo }`). Objetivo sem área guarda o lugar (o índice dos seguintes não muda).
 - **R3 O objetivo do goal.** Pelo id do goal, do tipo que o verbo pede (kill → mob; collect → item ou objeto; click →
@@ -51,8 +58,10 @@ como ir ao próximo lugar onde aquilo nasce.
   1. primeiro, **o próprio ponto do guia** — o alvo de sempre, o mesmo do pino do mapa (GuideMap) e da distância na
      janela —, com a área onde ele cai destacada (dentro dela, com 0.25 de folga pelo arredondamento, da mais funda;
      senão a até 1.5 da borda, a de mais nascimentos). Ponto fora de toda área: ele sozinho, sem destaque;
-  2. depois, a cada clique na seta (sem arrastar), as outras áreas da zona, da borda mais perto do ponto do guia para a
-     mais longe, no ponto-alvo de cada uma (rota, caminho, bússola, pino e seta seguem);
+  2. depois, a cada clique na seta (sem arrastar), as outras áreas da zona, no ponto-alvo de cada uma (rota, caminho,
+     bússola, pino e seta seguem), em duas levas: as de 3+ nascimentos (o acampamento) antes das de 1-2 (o mob solto);
+     em cada leva, a de borda mais perto da anterior (vizinho mais perto, a partir do ponto do guia), sem ziguezaguear
+     de um lado para o outro do ponto;
   3. depois da última, volta ao ponto do guia.
 
   Ao mudar o objetivo (passo novo, objetivo concluído), volta ao ponto do guia. A posição do jogador não entra na
@@ -70,12 +79,16 @@ como ir ao próximo lugar onde aquilo nasce.
 
 ## Medição (simulação dos 201 guias, o jogador no `|goto` do passo anterior)
 
-| | antes (ab837ba) | depois |
+| | ab837ba | agora |
 | --- | --- | --- |
-| passos com a volta das áreas | 2.713 (23 sem `|goto`) | 2.659 (nenhum sem `|goto`) |
+| passos com a volta das áreas | 2.713 (23 sem `|goto`) | 2.680 (nenhum sem `|goto`) |
 | primeiro alvo fora do ponto do guia | 2.641 | 0 |
-| 1ª área ≠ a área do `|goto` (com 2+ áreas) | 354 (198 de leveling) | 8 (o `|goto` fora de toda área: sem destaque) |
+| 1ª área ≠ a área do `|goto` (com 2+ áreas) | 354 (198 de leveling) | 10 (o `|goto` fora de toda área: sem destaque) |
 | … com menos de 1/3 dos nascimentos da área do guia | 58 (44 de leveling) | 0 |
+
+A ordem da volta (as voltas de 3+ alvos dos guias), de 2529b7a para agora, com o mesmo dado: 368 voltas; com mob solto
+antes do acampamento, 48 → 0; o caminho somado de alvo em alvo, 38.002 → 32.062 unidades do mapa (Elemental Air em
+Westfall, 11 alvos: 305 → 164).
 
 ## Limites
 
@@ -98,13 +111,14 @@ como ir ao próximo lugar onde aquilo nasce.
   ao contorno, filtro por fonte e teto), quests conhecidas (Kobold Camp Cleanup 7 no Echo Ridge Mine; Wolves Across
   the Border 33 em Elwynn e Dun Morogh; The Summoning 1713 no Cyclonian, com o alias; Insane Druids 1012 na ordem; The
   People's Militia 14 com o `|goto` de Moonbrook dentro da área de 20+; Gor'tesh 3824 com a área de um ponto só;
-  Gathering Materials 1921 com o Linen Cloth sem área; The Temple of Atal'Hakkar 1445 sem área fora) e que o texto do
-  arquivo volta igual.
+  Gathering Materials 1921 com o Linen Cloth sem área; The Temple of Atal'Hakkar 1445 sem área fora; Arthas' Tears
+  7642 e Dark Iron Ore 6642 com área; Liferoot 1712 com as de Alterac no teto; Junkboxes Needed 8249 com os Theramore
+  Guard no `|goto`) e que o texto do arquivo volta igual.
 - `tools/travel-tests.lua` cobre o núcleo puro (decodificar, casar o goal — o tipo também no "único objetivo" —, a
-  distância ao contorno, a volta a partir do ponto do guia, a emenda de duas áreas, o ponto fora de toda área, a vez e
-  o clique, perto pelo contorno, o teto do cache, contorno, pílula, círculo, faixas emendadas), a sanidade do
-  SpawnAreas.lua gerado (com os casos de 14, 3824, 1921 e 1445) e o Destinations.GuideTarget (a área só troca um
-  `|goto`).
+  distância ao contorno, a volta a partir do ponto do guia, as duas levas e o vizinho mais perto (sem ziguezague), a
+  emenda de duas áreas, o ponto fora de toda área, a vez e o clique, perto pelo contorno, o teto do cache, contorno,
+  pílula, círculo, faixas emendadas), a sanidade do SpawnAreas.lua gerado (com os casos de 14, 3824, 1921, 1445, 1134,
+  8249 e 7642) e o Destinations.GuideTarget (a área só troca um `|goto`).
 - `tools/ui-smoke.lua` (nos dois temas): o passo com um mob em 3+ áreas desenha no mapa; a seta fica no ponto do guia
   com o jogador em outra área; o clique passa por todas, com o tooltip seguindo, e volta ao ponto do guia; o arrasto
   não troca; o goal sem `|goto` não vira alvo mas desenha; desligado, o mapa limpa e a seta volta ao passo.

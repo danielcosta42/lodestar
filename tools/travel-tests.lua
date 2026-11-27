@@ -1500,8 +1500,21 @@ end)()
 	local sl = SA.Slots({ rala, longe, aGrande }, 48.1, 34.2)
 	check(#sl == 3 and sl[1].guide and sl[1].x == 48.1 and sl[1].y == 34.2 and sl[1].area == aGrande and sl[1].k == 1,
 		"o primeiro alvo é o próprio ponto do guia, com a área onde ele cai (não a rala mais perto do jogador)")
-	check(sl[2].area == rala and sl[2].x == 60 and sl[2].k == 2 and sl[3].area == longe and sl[3].of == 3,
-		"depois as outras, da borda mais perto do ponto do guia")
+	check(sl[2].area == longe and sl[2].x == 90 and sl[2].k == 2 and sl[3].area == rala and sl[3].of == 3,
+		"depois as outras: a de 3+ nascimentos (mesmo longe) antes da de 1-2 (mesmo perto)")
+	-- em cada leva, a mais perto da anterior: sem ziguezague em volta do ponto do guia
+	local function linha(lx, n) return { zone = "Elwynn Forest", x = lx, y = 50, n = n, hull = { lx, 50 } } end
+	local m10, p12, m30, p34 = linha(-10 + 50, 5), linha(12 + 50, 5), linha(-30 + 50, 5), linha(34 + 50, 5)
+	local so1, so2 = linha(51, 1), linha(70, 2)
+	local zz = SA.Slots({ p34, so2, m30, p12, so1, m10 }, 50, 60)
+	local ordem = {}
+	for k = 2, #zz do ordem[#ordem + 1] = zz[k].x - 50 end
+	check(table.concat(ordem, ",") == "-10,-30,12,34,20,1",
+		"vizinho mais perto em cada leva (-10, -30, 12, 34), depois as soltas, do 34 (20, 1): " .. table.concat(ordem, ","))
+	local soma = 0
+	for k = 2, #zz do soma = soma + math.abs(zz[k].x - zz[k - 1].x) end
+	check(soma == 10 + 20 + 42 + 22 + 14 + 19, "o caminho da volta: " .. soma)
+	check(zz[2].k == 1 and zz[#zz].k == 6 and zz[#zz].of == 6, "ponto do guia fora de toda área: as áreas de 1 a 6")
 	local dupla = { zone = "Elwynn Forest", x = 46, y = 31, n = 40, hull = { 44, 28, 49, 28, 49, 36, 44, 36 } }
 	check(SA.Slots({ aGrande, dupla }, 46, 30)[1].area == dupla, "o ponto em duas áreas: a de mais nascimentos")
 	check(SA.Slots({ aGrande }, 50.5, 30)[1].area == aGrande, "a até SA.INSIDE da borda conta como dentro")
@@ -1612,6 +1625,22 @@ end)()
 	check(sl38[1].area and sl38[1].area.n == 1 and #sl38 == 2,
 		"Gor'tesh: a área do nascimento único do Gor'tesh (onde o guia manda) fica, e o Grubbub é a próxima")
 	check(#RSA.For(1921)[1].areas == 0 and #RSA.For(1921)[2].areas > 0, "Linen Cloth (de baús): sem área")
+	-- Pridewings of Stonetalon (1134): do ponto do guia, os ninhos de 3+ antes dos Young Pridewing soltos
+	local pri = RSA.For(1134)
+	local zs = {}
+	for _, pa in ipairs(pri[1].areas) do if pa.zone == "Stonetalon Mountains" then zs[#zs + 1] = pa end end
+	local sl34 = RSA.Slots(zs, 63.51, 59.21)
+	local denso, solto = true, false
+	for k = 2, #sl34 do
+		if sl34[k].area.n < 3 then solto = true elseif solto then denso = false end
+	end
+	check(#sl34 >= 3 and sl34[2].area.n >= 3 and denso,
+		"Pridewings: depois do ponto do guia, as áreas de 3+ nascimentos antes das de 1-2")
+	check(#RSA.For(8249)[1].areas > 0 and RSA.For(8249)[1].areas[1].zone == "Dustwallow Marsh",
+		"Junkboxes Needed: os Theramore Guard de Dustwallow (o campo de batalha não conta contra)")
+	local lagrima = RSA.For(7642)
+	check(#lagrima[RSA.Match(lagrima, { verb = "collect", id = 8836, q = { id = 7642, obj = 2 } })].areas > 0,
+		"Arthas' Tears (erva de 2 tipos de nó): tem área")
 	local tem1445 = false
 	for _, ob in ipairs(RSA.For(1445) or {}) do tem1445 = tem1445 or #ob.areas > 0 end
 	check(not tem1445, "Fetish of Hakkar (dentro do templo): nenhuma área fora")

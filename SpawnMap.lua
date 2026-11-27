@@ -10,7 +10,8 @@
 --   SA.For(q)                            -> { [objetivo] = decodificado, alias = { [npc] = objetivo } } | nil
 --   SA.Match(entry, goal)                -> o objetivo (índice) que o goal do guia pede, ou nil
 --   SA.PolyDist(poly, x, y)              -> do ponto ao contorno convexo (0 dentro), nas unidades dele
---   SA.Slots(areas, gx, gy)              -> a volta da seta: o ponto do guia (com a área dele) e as outras áreas
+--   SA.Slots(areas, gx, gy)              -> a volta da seta: o ponto do guia (com a área dele) e as outras áreas,
+--                                           o acampamento antes do mob solto, cada uma perto da anterior
 --   SA.Cycle(st, key, slots)             -> o da vez (o primeiro quando `key` muda), o índice, quantos
 --   SA.Advance(st)                       -> passa para o próximo (dá a volta); false com um só
 --   SA.Near(quests, pos, radius, wOf)    -> { { q, obj, area, d }, ... } a até `radius` jardas de `pos` (issue #122)
@@ -123,34 +124,49 @@ end
 
 -- A volta da seta num objetivo com áreas na zona do passo: primeiro o próprio ponto do guia (gx, gy) — o alvo de
 -- sempre, o mesmo do pino do mapa e da distância na janela —, com a área onde ele cai (dentro dela, da mais funda;
--- senão a até SA.INSIDE da borda, a de mais nascimentos); depois as outras áreas, da borda mais perto do ponto do guia
--- para a mais longe. Ponto do guia fora de toda área: ele sozinho, e depois todas. Cada um: { x, y, area, k (a área é
--- a k-ésima de `of`), guide = o ponto do guia }.
+-- senão a até SA.INSIDE da borda, a de mais nascimentos). Depois as outras, em duas levas: as de SA.DENSE nascimentos
+-- ou mais (o acampamento) antes das de 1-2 (o mob solto); em cada leva, a mais perto da anterior (vizinho mais perto,
+-- a partir do ponto do guia: a volta não ziguezagueia de um lado para o outro do ponto). Ponto do guia fora de toda
+-- área: ele sozinho, e depois todas. Cada um: { x, y, area, k (a área é a k-ésima de `of`), guide = o ponto do guia }.
+SA.DENSE = 3
 function SA.Slots(areas, gx, gy)
-	local list = {}
-	for i, a in ipairs(areas) do
-		list[i] = { a = a, d = SA.PolyDist(a.hull, gx, gy), c = (a.x - gx) ^ 2 + (a.y - gy) ^ 2 }
-	end
-	table.sort(list, function(p, q)
-		local pin, qin = p.d <= SA.INSIDE, q.d <= SA.INSIDE
-		if pin ~= qin then return pin end
-		if pin then
-			-- dentro de verdade (o contorno vem com uma casa: 0.25 de folga), da mais funda, antes de perto da borda: na
+	local first, fd
+	for _, a in ipairs(areas) do
+		local d = SA.PolyDist(a.hull, gx, gy)
+		if d <= SA.INSIDE then
+			-- dentro de verdade (o contorno vem com uma casa: 0.25 de folga), da mais funda, antes de perto da borda; na
 			-- emenda de duas áreas, a que tem o ponto
-			local p0, q0 = p.d <= 0.25, q.d <= 0.25
-			if p0 ~= q0 then return p0 end
-			if p0 and p.d ~= q.d then return p.d < q.d end
-			if p.a.n ~= q.a.n then return p.a.n > q.a.n end
+			local better = not first
+			if first then
+				local a0, f0 = d <= 0.25, fd <= 0.25
+				if a0 ~= f0 then better = a0
+				elseif a0 and d ~= fd then better = d < fd
+				elseif a.n ~= first.n then better = a.n > first.n
+				else better = d < fd end
+			end
+			if better then first, fd = a, d end
 		end
-		if p.d ~= q.d then return p.d < q.d end
-		return p.c < q.c
-	end)
-	local out, of = {}, #list
-	local first = list[1] and list[1].d <= SA.INSIDE and list[1].a or nil
-	out[1] = { x = gx, y = gy, area = first, k = first and 1 or nil, of = of, guide = true }
-	for i = first and 2 or 1, #list do
-		local a = list[i].a
-		out[#out + 1] = { x = a.x, y = a.y, area = a, k = i, of = of }
+	end
+	local dense, sparse = {}, {}
+	for _, a in ipairs(areas) do
+		if a ~= first then
+			local tier = a.n >= SA.DENSE and dense or sparse
+			tier[#tier + 1] = a
+		end
+	end
+	local out = { { x = gx, y = gy, area = first, k = first and 1 or nil, of = #areas, guide = true } }
+	local px, py = gx, gy
+	for _, tier in ipairs({ dense, sparse }) do
+		while #tier > 0 do
+			local best, bd, bc
+			for j, a in ipairs(tier) do
+				local d, c = SA.PolyDist(a.hull, px, py), (a.x - px) ^ 2 + (a.y - py) ^ 2
+				if not best or d < bd or (d == bd and c < bc) then best, bd, bc = j, d, c end
+			end
+			local a = table.remove(tier, best)
+			out[#out + 1] = { x = a.x, y = a.y, area = a, k = first and #out + 1 or #out, of = #areas }
+			px, py = a.x, a.y
+		end
 	end
 	return out
 end

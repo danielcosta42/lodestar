@@ -243,25 +243,27 @@ def gera(so_guias=False):
             nomes.append(nome)
         return indice[nome]
 
-    def fora(area):
-        """zona onde o guia não anda (masmorra, campo de batalha, continente, sem mapa): True"""
-        z = zonas.get(str(area)) or {}
-        nome = z.get("name")
-        return not nome or not z.get("uiMapId") or " - " in nome or nome in FORA
+    def masmorra(area):
+        """zona de masmorra (ou raide): o que nasce lá dentro conta contra o resto de fora"""
+        return " - Dungeon" in ((zonas.get(str(area)) or {}).get("name") or "")
 
     def fontes(item):
         """NPCs e objetos que deixam cair o item (e os das partes, se ele se monta delas)."""
         e = itens.get(str(item)) or {}
-        if len(e.get("npc") or []) > DROPA or (e.get("vendor") and e.get("class") != 12):
-            return [], []      # cai de qualquer um, ou se compra: o mapa não ajuda
+        if len(e.get("npc") or []) > DROPA:
+            return [], []      # cai de qualquer um: o mapa não ajuda
         n, o = list(e.get("npc") or []), list(e.get("obj") or [])
+        if e.get("vendor") and e.get("class") != 12:
+            # se compra: o drop não ajuda; a erva e o veio de onde ele se colhe, sim (Liferoot, Kingsblood, Earthroot)
+            n = []
         for p in e.get("partes") or []:
             pe = itens.get(str(p)) or {}
             n += pe.get("npc") or []
             o += pe.get("obj") or []
-        # baú, erva e veio (o objeto que dá item de ofício: Linen Cloth de 10 baús, Gold Bar, Star Ruby, Liferoot) e o
-        # item que sai de muitos tipos de objeto: o objeto não ajuda; sobra o mob, se houver
-        if e.get("class") == 7 or len(o) > OBJETOS:
+        # o item que sai de muitos tipos de objeto (baús espalhados: Linen Cloth de 10, Silk Cloth de 36, Gold Bar de
+        # 15, Star Ruby de 34): o objeto não ajuda; sobra o mob, se houver. A erva e o veio de 1-2 tipos (Arthas' Tears,
+        # Dark Iron Ore, Liferoot) ficam: é lá que se colhe.
+        if len(o) > OBJETOS:
             o = []
         return n, o
 
@@ -274,7 +276,7 @@ def gera(so_guias=False):
             n, o = fontes(i)
             lista_f = [(npcs, x) for x in n] + [(objs, x) for x in o]
         porzona = {}                # zona (índice) -> {ponto: {fontes}}
-        conta = {}                  # nome da zona (as de fora também) -> nascimentos, o -1,-1 de masmorra incluído
+        conta = {}                  # nome da zona (no mapa ou de masmorra) -> nascimentos
         todos = {}                  # fonte -> {(zona, ponto)}: todos os nascimentos dela no mapa
         so_fora, no_mapa, n_fora, n_mapa = set(), set(), 0, 0
         for k, (tabela, sid) in enumerate(lista_f):
@@ -282,22 +284,29 @@ def gera(so_guias=False):
             for area, pts in ((tabela.get(str(sid)) or {}).get("spawns") or {}).items():
                 nome = (zonas.get(str(area)) or {}).get("name") or str(area)
                 for x, y in pts or []:
-                    conta[nome] = conta.get(nome, 0) + 1
-                    if fora(area) or x < 0 or y < 0:     # masmorra, ou o "-1,-1" de dentro dela
+                    if masmorra(area) or x < 0 or y < 0:  # masmorra, ou o "-1,-1" de dentro dela
+                        chave = nome if masmorra(area) else nome + " (dentro)"
+                        conta[chave] = conta.get(chave, 0) + 1
                         n_fora += 1
                         so_fora.add(fonte)
                         continue
                     z = zona(area)
+                    if z is None:
+                        continue          # campo de batalha, continente, zona sem mapa: nem conta
+                    conta[nome] = conta.get(nome, 0) + 1
                     p = (round(x, 1), round(y, 1))
                     porzona.setdefault(z, {}).setdefault(p, set()).add(fonte)
                     todos.setdefault(fonte, set()).add((z, p))
                     n_mapa += 1
                     no_mapa.add(fonte)
         # o objetivo de masmorra (mais fontes só lá dentro que no mapa, e mais nascimentos lá): o que sobra fora é
-        # resto perdido (Fetish of Hakkar: 1 no pântano, 17 no templo)
-        if len(so_fora - no_mapa) > len(no_mapa) and n_fora >= n_mapa:
+        # resto perdido (Fetish of Hakkar: 1 no pântano, o resto no templo). Não quando o guia manda a uma zona do mapa
+        # onde ele nasce: o guia sabe.
+        guia_no_mapa = any(nomes[z - 1] in onde.get(qid, ()) for z in porzona)
+        if len(so_fora - no_mapa) > len(no_mapa) and n_fora >= n_mapa and not guia_no_mapa:
             return []
-        # zona com poucos nascimentos perto da que tem mais — as de masmorra contam — sai: é dado perdido. A zona de
+        # zona com poucos nascimentos perto da que tem mais — as de masmorra contam, as de campo de batalha não — sai: é
+        # dado perdido. A zona de
         # um `|goto` do guia para a quest fica (Elemental Air: os Dust Devils de Westfall, poucos perto de Barrens).
         maior = max(conta.values(), default=0)
         lista = []
@@ -319,8 +328,10 @@ def gera(so_guias=False):
                 return any(todos[f] <= dentro for p in a[4] for f in pts[p])
 
             lista += [(z, a[:4], inteira(a)) for a in filtra(areas(sorted(pts), todos), conta_, inteira)]
-        # no teto, a área inteira de uma fonte passa na frente; depois, da maior área para a menor
-        lista = sorted(lista, key=lambda t: (not t[2], -t[1][2]))[:TOTAL]
+        # no teto, as da zona de um `|goto` do guia passam na frente (a erva que nasce no mundo todo: Liferoot em 14
+        # zonas), depois a área inteira de uma fonte; depois, da maior área para a menor
+        guia = onde.get(qid, ())
+        lista = sorted(lista, key=lambda t: (nomes[t[0] - 1] not in guia, not t[2], -t[1][2]))[:TOTAL]
         return [(z, a) for z, a, _ in sorted(lista, key=lambda t: -t[1][2])]
 
     fim = {}
@@ -457,7 +468,7 @@ def demo(nomes, fim):
     assert len(filtra(so)) == 1, "uma fonte: a rala sai"
     assert len(filtra(so, lambda a: {"comum": 30} if a[2] == 30 else {"nomeado": 1})) == 2, "a rala de outra fonte fica"
     assert len(filtra(so, lambda a: {"comum": a[2]})) == 1, "a rala da mesma fonte sai"
-    assert filtra(so, lambda a: {a[2]: a[2]}, lambda a: a[2] == 1, teto=1)[0][2] == 1, "no teto, a inteira passa na frente"
+    assert filtra(so, lambda a: {a[2]: a[2]}, lambda a: a[2] == 1, teto=1)[0][2] == 1, "no teto, a inteira na frente"
 
     def area_de(q, k=0):
         return fim[q][0][k]
@@ -490,10 +501,24 @@ def demo(nomes, fim):
     # (3): a área do Gor'tesh fica, mesmo menor que a rala
     t, i, lista = area_de(3824)
     assert any(abs(a[0] - 39.3) < 0.2 and abs(a[1] - 55.3) < 0.2 and a[2] == 1 for _, a in lista), lista
-    # Gathering Materials (1921): Linen Cloth sai de baús (item de ofício): sem área; o Charged Rift Gem, das caixas
+    # Gathering Materials (1921): Linen Cloth sai de 10 tipos de baú: sem área; o Charged Rift Gem, das caixas
     assert not area_de(1921, 0)[2] and area_de(1921, 1)[2], fim[1921]
     # The Temple of Atal'Hakkar (1445): o Fetish of Hakkar cai dentro do templo; o 1 de fora (pântano) não vira área
     assert 1445 not in fim or not any(l for _, _, l in fim[1445][0]), fim.get(1445)
+    # erva e veio de 1-2 tipos de nó têm área: Arthas' Tears (7642, 2º objetivo) em Western Plaguelands, Dark Iron Ore
+    # (6642) em Burning Steppes; o Liferoot (1712), que nasce em 14 zonas e se compra, guarda as de Alterac (a zona do
+    # guia) no teto
+    t, i, lista = area_de(7642, 1)
+    assert i == 8836 and any(nomes[z - 1] == "Western Plaguelands" for z, _ in lista), fim[7642]
+    t, i, lista = area_de(6642)
+    assert i == 11370 and any(nomes[z - 1] == "Burning Steppes" for z, _ in lista), fim[6642]
+    t, i, lista = area_de(1712)
+    assert i == 3357 and len(lista) <= TOTAL and any(nomes[z - 1] == "Alterac Mountains" for z, _ in lista)
+    # Junkboxes Needed (8249): os 32 Theramore Guard de Dustwallow (o |goto do guia) ficam, e os trogg do Alterac
+    # Valley (campo de batalha) não votam como masmorra
+    t, i, lista = area_de(8249)
+    assert any(nomes[z - 1] == "Dustwallow Marsh" and distancia(a[3], 66.82, 50.1) <= 1.5 and a[2] >= 20
+               for z, a in lista), fim.get(8249)
     # Insane Druids (1012): três mobs, um objetivo cada, na ordem
     assert [i for _, i, _ in fim[1012][0]] == [3940, 3941, 3942]
     assert all(len(h) <= CANTOS for v in fim.values() for _, _, l in v[0] for _, (_, _, _, h) in l)
