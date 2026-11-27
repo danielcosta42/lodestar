@@ -1523,46 +1523,77 @@ step("Party tell", function()
 end)
 -- cartão de voo (#129): o voo marcado no mapa de voo, em voo com destino, zona, tempo e barra; pousou, some
 step("Flight card", function()
-	local taxi, tnn, gat, early, gt = _G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes, _G.TaxiRequestEarlyLanding, _G.GetTime
-	local ucId, hfId
+	local taxi, tnn, gat, early, gt, gst = _G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes,
+		_G.TaxiRequestEarlyLanding, _G.GetTime, _G.GetServerTime
+	local rota0 = ns.Travel.Route
+	local ucId, hfId, tmId
 	for id, v in pairs(ns.travel.nodes) do
-		if v.n:find("^Undercity") then ucId = id elseif v.n:find("^Hammerfall") then hfId = id end
+		if v.n:find("^Undercity") then ucId = id elseif v.n:find("^Hammerfall") then hfId = id
+		elseif v.n:find("^Tarren Mill") and v.f:find("H", 1, true) then tmId = id end
 	end
-	local voando, pediu, agora = false, 0, gt()
+	local voando, pediu, t = false, 0, 5000
+	local rota
 	_G.UnitOnTaxi = function() return voando end
 	_G.TaxiNodeName = function() return "Hammerfall, Arathi" end
+	-- sem slotIndex (casa pelo nome) e um nó de isca depois do destino
 	C_TaxiMap.GetAllTaxiNodes = function()
-		return { { nodeID = ucId, name = "Undercity, Tirisfal", state = 0 }, { nodeID = hfId, name = "Hammerfall, Arathi", state = 1 } }
+		return { { nodeID = ucId, name = "Undercity, Tirisfal", state = 0 }, { nodeID = hfId, name = "Hammerfall, Arathi", state = 1 },
+			{ nodeID = tmId, name = "Tarren Mill, Hillsbrad", state = 1 } }
 	end
 	_G.TaxiRequestEarlyLanding = function() pediu = pediu + 1 end
-	_G.GetTime = function() return agora end
+	_G.GetTime = function() return t end
+	_G.GetServerTime = function() return t end
+	ns.Travel.Route = function() return rota end
+	local function voa(v) voando = v; ns.FlightCard:Update() end
 	local ok, err = pcall(function()
-		ns.FlightCard:Marcou(2)
-		voando = true
-		ns.FlightCard:Update()
+		local FC = ns.FlightCard
+		ns.char.voo = nil
+		FC:Marcou(2)                                                -- marcou Hammerfall (direto de Undercity)
+		voa(true)
 		local c = _G.LodestarFlightCard
 		assert(c and c:IsShown(), "o cartão não abriu em voo")
 		assert(c.title:GetText() == "Hammerfall" and c.sub:GetText() == "Arathi", "destino: " .. tostring(c.title:GetText()))
 		local s = ns.travel.flights[ucId][hfId].s
-		assert(c.time:GetText() == ns.FlightCard.Fmt(s), "tempo: " .. tostring(c.time:GetText()) .. " (esperado " .. s .. " s)")
-		agora = agora + 60
-		ns.FlightCard:Update()
-		assert(c.time:GetText() == ns.FlightCard.Fmt(s - 60), "o tempo não andou: " .. tostring(c.time:GetText()))
-		assert(c.land:IsShown(), "sem o botão de pousar")
-		c.land:GetScript("OnClick")(c.land)
-		assert(pediu == 1 and not c.land:IsShown(), "pousar não pediu ou o botão ficou")
-		ns.db.flightCard = false; ns.FlightCard:Update()
-		assert(not c:IsShown(), "desligado e o cartão ficou")
-		ns.db.flightCard = true; ns.FlightCard:Update()
-		voando = false; ns.FlightCard:Update()
-		assert(not c:IsShown(), "pousou e o cartão ficou")
-		voando = true; ns.FlightCard:Update()                      -- voo sem marcar nem rota: conta para cima
-		assert(c:IsShown() and c.title:GetText() == ns.L.IN_FLIGHT and c.time:GetText():find("^%+"), "sem dados: "
+		assert(c.time:GetText() == "~" .. FC.Fmt(s), "tempo do direto: " .. tostring(c.time:GetText()) .. " (" .. s .. " s)")
+		assert(not c.land:IsShown(), "direto não tem onde pousar antes e o botão apareceu")
+		t = t + 60; FC:Update()
+		assert(c.time:GetText() == "~" .. FC.Fmt(s - 60), "o tempo não andou: " .. tostring(c.time:GetText()))
+		voa(false)
+		assert(not c:IsShown() and ns.char.voo == nil, "pousou e o cartão (ou o voo salvo) ficou")
+		-- /reload em voo: o voo salvo (decolou há 50 s) volta, sem marcar nem rota
+		ns.char.voo = { nome = "Tarren Mill, Hillsbrad", s = 200, t0 = t - 50 }
+		voa(true)
+		assert(c.title:GetText() == "Tarren Mill" and c.time:GetText() == "~2:30", "voo salvo: " .. tostring(c.title:GetText())
+			.. " " .. tostring(c.time:GetText()))
+		voa(false)
+		-- marcado há mais de 2 min não vale: a perna de voo da rota (dois trechos, 299 s com a decolagem)
+		FC:Marcou(2)
+		t = t + 121
+		rota = { leg = 1, legs = { { k = "flight", name = "Revantusk Village, The Hinterlands", s = 299,
+			via = { "Tarren Mill, Hillsbrad" } } } }
+		voa(true)
+		assert(c.title:GetText() == "Revantusk Village" and c.time:GetText() == "~4:49", "perna da rota: "
 			.. tostring(c.title:GetText()) .. " " .. tostring(c.time:GetText()))
-		voando = false; ns.FlightCard:Update()
+		assert(c.land:IsShown(), "com mestre de voo no meio e sem o botão de pousar")
+		c.land:GetScript("OnClick")(c.land)
+		assert(pediu == 1 and not c.land:IsShown() and c.time:GetText() == ns.L.FLIGHT_LANDING and not c.bar:IsShown(),
+			"pousar antes: " .. tostring(c.time:GetText()))
+		voa(false); voa(true)                                       -- pousou e voou de novo: o botão volta
+		assert(c.land:IsShown(), "o botão não voltou no voo seguinte")
+		_G.TaxiRequestEarlyLanding = nil; FC:Update()
+		assert(not c.land:IsShown(), "sem a função no cliente e o botão apareceu")
+		ns.db.flightCard = false; FC:Update()
+		assert(not c:IsShown(), "desligado e o cartão ficou")
+		ns.db.flightCard = true
+		voa(false); rota = nil; ns.char.voo = nil
+		voa(true)                                                   -- sem marcar, sem salvo, sem rota: conta para cima
+		assert(c:IsShown() and c.title:GetText() == ns.L.IN_FLIGHT and c.time:GetText() == "+0:00", "sem dados: "
+			.. tostring(c.title:GetText()) .. " " .. tostring(c.time:GetText()))
+		voa(false)
 	end)
-	_G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes, _G.TaxiRequestEarlyLanding, _G.GetTime = taxi, tnn, gat, early, gt
-	ns.db.flightCard = true
+	_G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes, _G.TaxiRequestEarlyLanding = taxi, tnn, gat, early
+	_G.GetTime, _G.GetServerTime, ns.Travel.Route = gt, gst, rota0
+	ns.db.flightCard, ns.char.voo = true, nil
 	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)

@@ -20,6 +20,15 @@ end
 
 if not ns.On then return end
 
+-- Os nós do mapa de voo aberto (C_TaxiMap: nodeID, name, state, slotIndex...), ou {} — o mesmo pedido que o Travel
+-- (voos conhecidos), o destaque daqui e o cartão de voo fazem
+function FM.MapNodes()
+	if not (C_TaxiMap and C_TaxiMap.GetAllTaxiNodes) then return {} end
+	local mapID = (GetTaxiMapID and GetTaxiMapID()) or (C_Map and C_Map.GetBestMapForUnit("player"))
+	local ok, list = pcall(C_TaxiMap.GetAllTaxiNodes, mapID)
+	return ok and type(list) == "table" and list or {}
+end
+
 local marker
 
 --------------------------------------------------------------------------------
@@ -95,10 +104,8 @@ end
 -- lista os nós com o id (o mesmo do TravelData), e o nome dali casa com TaxiNodeName.
 local function routeFlightName()
 	local leg, parada = FM.FlightLeg(ns.Travel and ns.Travel:Route())
-	if not (leg and C_TaxiMap and C_TaxiMap.GetAllTaxiNodes) then return nil, parada end
-	local mapID = (GetTaxiMapID and GetTaxiMapID()) or C_Map.GetBestMapForUnit("player")
-	local ok, list = pcall(C_TaxiMap.GetAllTaxiNodes, mapID)
-	for _, info in ipairs(ok and type(list) == "table" and list or {}) do
+	if not leg then return nil, parada end
+	for _, info in ipairs(FM.MapNodes()) do
 		if info.nodeID == leg.to then return info.name end
 	end
 end

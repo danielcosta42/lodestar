@@ -525,6 +525,7 @@ L.SET_GEARTIPS_D    = "Uma linha verde no tooltip do item que é melhor que o eq
 L.SET_PARTYTELL     = "Avisar o grupo"
 L.SET_PARTYTELL_D   = "Em grupo, uma linha no chat do grupo quando um objetivo de quest seu fecha e quando uma quest fica pronta (\"Lodestar: [Quest] pronta para entregar\"). Uma vez por objetivo e por quest."
 L.FLIGHT_LAND       = "Pousar no próximo mestre de voo do caminho"
+L.FLIGHT_LANDING    = "pousando…"
 L.SET_FLIGHTCARD    = "Cartão de voo"
 L.SET_FLIGHTCARD_D  = "Em voo, um cartão do Lodestar com o destino, o tempo que falta, a barra de progresso e o botão de pousar."
 L.SET_TIDY          = "Arrumar o diário"

@@ -1845,9 +1845,16 @@ end)()
 	check(FC.Progress(nil, 100, 160) == nil and FC.Progress(0, 100, 160) == nil, "sem duração: conta para cima")
 	check(FC.Fmt(284) == "4:44" and FC.Fmt(3723) == "1:02:03" and FC.Fmt(-5) == "0:00", "o tempo como no jogo")
 	local fl = { [1] = { [2] = { s = 100 } }, [2] = { [3] = { s = 120 } } }
-	check(FC.Duration(fl, { [2] = true, [3] = true }, 1, 3) == 220, "duração pela rota do jogo (sem direto)")
+	local d1, t1 = FC.Duration(fl, { [2] = true, [3] = true }, 1, 3)
+	check(d1 == 220 and t1 == 2, "duração pela rota do jogo (sem direto): dois trechos")
 	fl[1][3] = { s = 279 }
-	check(FC.Duration(fl, { [2] = true, [3] = true }, 1, 3) == 279, "com direto: o direto, como o jogo voa")
+	local d2, t2 = FC.Duration(fl, { [2] = true, [3] = true }, 1, 3)
+	check(d2 == 279 and t2 == 1, "com direto: o direto, como o jogo voa, um trecho")
+	check(FC.Split("灰谷，石爪") == "灰谷", "a vírgula larga do zh/ko também separa")
+	check(FC.Valid({ t0 = 1000, s = 300 }, 1200) and not FC.Valid({ t0 = 1000, s = 300 }, 1400),
+		"voo salvo vale até a duração mais 1 min")
+	check(FC.Valid({ t0 = 1000 }, 2500) and not FC.Valid({ t0 = 1000 }, 3000) and not FC.Valid(nil, 1000),
+		"sem duração: 30 min")
 	check(FC.Duration(fl, {}, nil, 3) == nil, "sem o nó de saída: sem duração")
 	local ucId, hfId = node("Undercity"), node("Hammerfall")
 	check(FC.Duration(real.flights, todos("H"), ucId, hfId) == real.flights[ucId][hfId].s,

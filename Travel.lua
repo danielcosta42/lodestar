@@ -538,10 +538,9 @@ ns:On("HEARTHSTONE_BOUND", function() vinculou = true end)
 -- voos conhecidos: o mapa de voo é a fonte (C_TaxiMap dá o id do nó e se você o conhece)
 ns:On("TAXIMAP_OPENED", function()
 	local char = ns.char
-	if not (char and C_TaxiMap and C_TaxiMap.GetAllTaxiNodes) then return end
-	local mapID = (GetTaxiMapID and GetTaxiMapID()) or (C_Map and C_Map.GetBestMapForUnit("player"))
-	local ok, list = pcall(C_TaxiMap.GetAllTaxiNodes, mapID)
-	if not (ok and type(list) == "table" and #list > 0) then return end
+	if not (char and ns.FlightMap and ns.FlightMap.MapNodes) then return end
+	local list = ns.FlightMap.MapNodes()
+	if #list == 0 then return end
 	char.taxi = char.taxi or {}
 	if type(char.taxiSynced) ~= "table" then char.taxiSynced = {} end
 	local unreachable = Enum and Enum.FlightPathState and Enum.FlightPathState.Unreachable or 2
