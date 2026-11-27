@@ -377,6 +377,26 @@ function T:Replan(force)
 	end
 end
 
+-- A posição nova está no caminho do barco (a tela de carregamento no meio da travessia, ainda sem o embarque visto):
+-- perto da chegada ou de um ponto da rota dele, no mesmo continente
+local function noBarco(leg, pos)
+	if leg.b and leg.b.c == pos.c and dist(leg.b, pos) < 300 then return true end
+	local p = leg.p or {}
+	for i = 3, #p, 3 do
+		if p[i] == pos.c and dist({ x = p[i - 2], y = p[i - 1] }, pos) < 300 then return true end
+	end
+	return false
+end
+
+-- Salto que a própria perna explica: a bordo; barco ainda sem embarque visto e a posição no caminho dele; dentro do
+-- bonde (instância própria, outro "continente") ou entrando nele (a perna a pé até o bonde só fecha a 15 jd)
+function T.SaltoDaPerna(c, nx, pos)
+	if not c then return false end
+	if c.boarded then return true end
+	if c.k == "ship" then return noBarco(c, pos) end
+	return c.k == "tram" or (c.k == "walk" and nx ~= nil and nx.k == "tram")
+end
+
 --------------------------------------------------------------------------------
 -- eventos e ticker (só no jogo)
 --------------------------------------------------------------------------------
@@ -589,6 +609,7 @@ ns:On("PLAYER_ENTERING_WORLD", visit)
 -- Três tiques do relógio de 1 s depois, refaz do zero.
 local REFAZ_TIQUES = 3
 local SALTO_JD = 250                -- jd num tique de 1 s: ninguém corre nem monta tão rápido (o voo fica de fora)
+local posSalto                      -- a última posição conhecida (um tique sem posição não desliga o salto)
 local refazEm
 -- Só no login e no /reload: a tela de carregamento no meio de um barco entre continentes (ou depois de masmorra,
 -- pedra, teleporte) não pode jogar fora a perna de barco a bordo nem a rota que acabou de sair certa. O fim da tela
@@ -655,13 +676,15 @@ ns:Every(1, function()
 		speed = T.NextSpeed(speed, v, leg and leg.k)
 	end
 	-- salto (portal, pedra, teleporte, soltar o espírito): de continente ou mais de SALTO_JD num tique — a rota de onde
-	-- o jogador estava não vale mais; refaz do zero na hora (#123). Em voo ou numa perna de barco (a bordo ou a
-	-- caminho dela: a tela de carregamento no meio da travessia também salta), não.
-	local saltou = pos and lastPos and not onTaxi and (pos.c ~= lastPos.c or dist(pos, lastPos) > SALTO_JD)
+	-- o jogador estava não vale mais; refaz do zero na hora (#123). Em voo ou quando a perna explica o salto (barco,
+	-- bonde: T.SaltoDaPerna), não.
+	local saltou = pos and posSalto and not onTaxi and (pos.c ~= posSalto.c or dist(pos, posSalto) > SALTO_JD)
 	lastPos, lastT = pos, now
+	if pos then posSalto = pos end
 	if saltou then
 		local c = route and route.legs[route.leg]
-		if not (c and (c.k == "ship" or c.boarded)) then T:Fresh(); return end
+		local nx = route and route.legs[route.leg + 1]
+		if not T.SaltoDaPerna(c, nx, pos) then T:Fresh(); return end
 	end
 	ns.char.bind = T.LearnBind(ns.char.bind, GetBindLocation and GetBindLocation(),
 		GetSubZoneText and GetSubZoneText(), pos, vinculou)

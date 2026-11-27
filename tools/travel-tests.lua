@@ -207,6 +207,18 @@ check(T.ShouldReplace({ s = 300 }, { s = 265 }), "30 s mais rápida troca")
 check(not T.ShouldReplace({ s = 300 }, { s = 280 }), "7% e 20 s: não troca (histerese)")
 check(not T.ShouldReplace({ s = 300 }, { s = 300 }), "empate não troca")
 
+-- o salto (#123) que a perna explica: a bordo, no caminho do barco, no bonde ou entrando nele
+local barco = { k = "ship", b = P(1, 5000, 0), p = { 0, 0, 0, 2500, 0, 1, 4000, 0, 1 } }
+check(T.SaltoDaPerna({ k = "ship", boarded = 1 }, nil, P(1, 0, 0)), "a bordo: o salto é da travessia")
+check(T.SaltoDaPerna(barco, nil, P(1, 2600, 0)), "sem embarque visto, no caminho do barco: não refaz")
+check(T.SaltoDaPerna(barco, nil, P(1, 4900, 0)), "sem embarque visto, perto da chegada: não refaz")
+check(not T.SaltoDaPerna(barco, nil, P(1, 9000, 0)), "esperando no cais e teleportou longe: refaz")
+check(not T.SaltoDaPerna(barco, nil, P(0, 2500, 0)), "mesmo x, outro continente: refaz")
+check(T.SaltoDaPerna({ k = "tram" }, nil, P(369, 0, 0)), "dentro do bonde: não refaz")
+check(T.SaltoDaPerna({ k = "walk" }, { k = "tram" }, P(369, 0, 0)), "entrando no bonde: não refaz")
+check(not T.SaltoDaPerna({ k = "walk" }, { k = "flight" }, P(1, 0, 0)), "a pé, portal: refaz")
+check(not T.SaltoDaPerna(nil, nil, P(1, 0, 0)), "sem rota: refaz")
+
 local rota = { leg = 1, legs = {
 	{ k = "walk", b = P(0, 700, 0), s = 100 },
 	{ k = "flight", b = P(0, 3000, 0), s = 60 },

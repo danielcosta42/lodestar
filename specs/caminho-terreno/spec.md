@@ -43,7 +43,10 @@ buracos (onde entram prédios/cavernas) e a água (MH2O). Nada do Shortest Path 
     guia): a posição do jogador só fica certa um pouco depois, e a rota de antes podia ter saído de outro lugar ou
     herdado uma falha. Tela de carregamento comum (masmorra, pedra, barco entre continentes) não refaz; a bordo, no
     barco ou em voo, também não. (#123) Salto de posição — outro continente ou mais de 250 jd num tique (portal, pedra,
-    teleporte, soltar o espírito) — refaz do zero no tique seguinte, fora de voo e fora de perna de barco. O relatório leva o estado da rota (`Travel:Describe`: destino, pernas, caminho e o
+    teleporte, soltar o espírito) — refaz do zero no tique seguinte, menos em voo e quando a perna explica o salto: a
+    bordo; barco sem embarque visto com a posição a até 300 jd da chegada ou da rota dele; dentro do bonde (instância
+    própria) ou na perna a pé que leva a ele. Compara com a última posição conhecida (um tique sem posição não desliga
+    o salto). O relatório leva o estado da rota (`Travel:Describe`: destino, pernas, caminho e o
     último erro do desenho no mapa e no minimapa, limpo quando o desenho volta a dar certo).
   - A reta fica para fora da grade, para a busca grande demais e para a barreira longa.
 - **Passagens gravadas** (issue #99) cobrem a rampa, ponte, porta ou escada que a grade não tem.

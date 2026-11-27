@@ -1259,13 +1259,30 @@ step("Route after teleport", function()
 		upd(ns.eventFrame, 1.01)
 		local r2 = T:Route()
 		assert(r2 and r2 ~= r1, "o salto não refez a rota")
-		r2.legs[1].k = "ship"                              -- no barco: a tela de carregamento salta, mas não refaz
+		local l1 = r2.legs[1]
+		local k0, b0 = l1.k, l1.boarded
+		l1.k, l1.boarded = "ship", GetServerTime()         -- a bordo: a tela de carregamento salta, mas não refaz
 		eu.c, eu.x = 1, 2000
 		upd(ns.eventFrame, 1.01)
 		assert(T:Route() == r2, "refez a rota no meio do barco")
-		r2.legs[1].k = "walk"
+		l1.k, l1.boarded = "tram", nil                     -- dentro do bonde (instância própria): não refaz
+		eu.c = 369
+		upd(ns.eventFrame, 1.01)
+		assert(T:Route() == r2, "refez a rota dentro do bonde")
+		l1.k, l1.boarded = k0, b0
+		eu.c = 1
+		upd(ns.eventFrame, 1.01)                           -- de volta: salto que a perna a pé não explica
+		local r3 = T:Route()
+		assert(r3 and r3 ~= r2, "saiu do bonde sem refazer")
 		upd(ns.eventFrame, 1.01)                           -- parado: sem salto, sem refazer
-		assert(T:Route() == r2, "refez sem salto")
+		assert(T:Route() == r3, "refez sem salto")
+		local semPos = T.PlayerWorld
+		T.PlayerWorld = function() return nil end          -- um tique sem posição (tela de carregamento)
+		upd(ns.eventFrame, 1.01)
+		T.PlayerWorld = semPos
+		eu.c, eu.x = 0, -10500
+		upd(ns.eventFrame, 1.01)
+		assert(T:Route() ~= r3, "o tique sem posição desligou o salto")
 	end)
 	ns.Destinations:Clear("manual")
 	T.PlayerWorld, T.World = pw, w
