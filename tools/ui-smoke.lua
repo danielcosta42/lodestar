@@ -1555,8 +1555,25 @@ step("Flight card", function()
 	local ok, err = pcall(function()
 		local FC = ns.FlightCard
 		ns.char.voo = nil
+		-- o timer de voo do OneForAll (#133): some com o cartão à mostra e volta como estava
+		local function falso(alfa, mouse)
+			local q = { a = alfa, m = mouse, kids = {} }
+			function q:SetAlpha(v) self.a = v end
+			function q:GetAlpha() return self.a end
+			function q:EnableMouse(v) self.m = v end
+			function q:IsMouseEnabled() return self.m end
+			function q:IsProtected() return false end
+			function q:GetChildren() return unpack(self.kids) end
+			return q
+		end
+		local ofa, filho = falso(0.9, true), falso(1, true)
+		ofa.kids = { filho }
+		_G.OneForAllFlightTimer = ofa
 		FC:Marcou(2)                                                -- marcou Hammerfall (direto de Undercity)
 		voa(true)
+		assert(ofa.a == 0 and ofa.m == false and filho.m == false, "o timer do OneForAll ficou à mostra")
+		ofa.a = 1; FC:Update()
+		assert(ofa.a == 0, "o OneForAll mostrou de novo e o cartão não reaplicou")
 		local c = _G.LodestarFlightCard
 		assert(c and c:IsShown(), "o cartão não abriu em voo")
 		assert(c.title:GetText() == "Hammerfall" and c.sub:GetText() == "Arathi", "destino: " .. tostring(c.title:GetText()))
@@ -1567,6 +1584,7 @@ step("Flight card", function()
 		assert(c.time:GetText() == "~" .. FC.Fmt(s - 60), "o tempo não andou: " .. tostring(c.time:GetText()))
 		voa(false)
 		assert(not c:IsShown() and ns.char.voo == nil, "pousou e o cartão (ou o voo salvo) ficou")
+		assert(ofa.a == 0.9 and ofa.m == true and filho.m == true, "pousou e o timer do OneForAll não voltou como estava")
 		comSlot = true; FC:Marcou(2)                                -- o slot 2 é Tarren Mill, mesmo com o nome do 3
 		voa(true)
 		assert(c.title:GetText() == "Tarren Mill", "o slot clicado não mandou: " .. tostring(c.title:GetText()))
@@ -1613,6 +1631,7 @@ step("Flight card", function()
 		assert(not c.land:IsShown(), "sem a função no cliente e o botão apareceu")
 		ns.db.flightCard = false; FC:Update()
 		assert(not c:IsShown(), "desligado e o cartão ficou")
+		assert(ofa.a == 0.9 and ofa.m == true, "cartão desligado e o timer do OneForAll ficou escondido")
 		ns.db.flightCard = true
 		voa(false); rota = nil; ns.char.voo = nil
 		voa(true)                                                   -- sem marcar, sem salvo, sem rota: conta para cima
@@ -1622,7 +1641,7 @@ step("Flight card", function()
 	end)
 	_G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes, _G.TaxiRequestEarlyLanding = taxi, tnn, gat, early
 	_G.GetTime, _G.GetServerTime, ns.Travel.Route = gt, gst, rota0
-	ns.db.flightCard, ns.char.voo = true, nil
+	ns.db.flightCard, ns.char.voo, _G.OneForAllFlightTimer = true, nil, nil
 	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)
