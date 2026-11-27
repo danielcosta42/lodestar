@@ -550,7 +550,7 @@ do
 	local nomes = {}                                 -- "x" e `x = true` no código
 	for w in codigo:gmatch('"([%w_ ]+)"') do nomes[w] = true end
 	for w in codigo:gmatch("([%w_]+)%s*=%s*true") do nomes[w] = true end
-	local DIN = { "SERVICE_", "SHIP_", "TRAVEL_KIND_", "VERB_", "CAT_", "PROF_", "COMPASS_", "CONS_", "CONT_", "RACE_MS_" }
+	local DIN = { "SERVICE_", "V3_NAV_SVC_", "SHIP_", "TRAVEL_KIND_", "VERB_", "CAT_", "PROF_", "COMPASS_", "CONS_", "CONT_", "RACE_MS_" }
 	local function usada(k)
 		if codigo:find(k, 1, true) then return true end
 		local suf = k:match("^NOTE_(.+)$") or k:match("^TIP_(.+)$")
@@ -763,31 +763,219 @@ check(cam and math.abs(cam[#cam].x - B.x) < 0.01 and math.abs(cam[1].x - A.x) < 
 local fechada = quadranteSint(function(r, c) return c == 48 end, nil, 3)
 local cruza = TRN.Path(fechada, mundo(5, 40), mundo(5, 56), 20000)
 check(cruza and #cruza >= 2 and comprimento(cruza) < 1.2 * 16 * 16.7, "parede inteira: cruza no ponto mais fino, sem volta")
+check(cruza and cruza.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
 -- parede inteira com uma porta estreita lá embaixo: a porta, não a parede (passo travado custa caro)
 local porta = quadranteSint(function(r, c) return c == 48 and r ~= 30 end, nil, 3)
 local pela = TRN.Path(porta, mundo(5, 40), mundo(5, 56), 40000)
 local desceu = false
 for _, q in ipairs(pela or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 25 then desceu = true end end
 check(pela and desceu, "parede com porta: o caminho vai pela porta")
--- dados reais: a Revantusk Village (The Hinterlands) fica numa região que a grade não liga ao platô; o caminho
--- até Aerie Peak segue o terreno (antes: nil e a reta pelas montanhas)
+-- dados reais: a Revantusk Village (The Hinterlands) e o platô de Aerie Peak. Na grade v1 (16,7 jd por célula, só
+-- terreno) a rampa do litoral não cabia e só a segunda busca (solto) achava caminho; na v2 (chão fino de 2,08 jd,
+-- #106) a rampa é chão ligado: busca normal, sem passagem gravada, subindo pela rampa de verdade
 local EK = load("Terrain0.lua", {}).terrain
 local revan, aerie = { c = 0, x = -635.3, y = -4720.5 }, { c = 0, x = 283.7, y = -2002.8 }
 local ra, ar = TRN.Path(EK, revan, aerie, 150000), TRN.Path(EK, aerie, revan, 150000)
 check(ra and ar and #ra > 4 and #ar > 4, "Revantusk <-> Aerie Peak: caminho pelo terreno nos dois sentidos")
-check(ra and ra.solto, "o caminho da segunda busca vem marcado (quem chama não o refaz a cada desvio)")
+local function naRampa(p)
+	for _, q in ipairs(p or {}) do if q.x > -235 and q.x < -150 and q.y > -4460 and q.y < -4330 then return true end end
+end
+check(ra and ar and not ra.solto and not ar.solto and naRampa(ra) and naRampa(ar),
+	"Revantusk <-> Aerie Peak sem passagem gravada: busca normal, pela rampa (grade v2)")
+do -- #104 (bloco próprio: o arquivo já passa de 200 locais no topo)
+-- com a rampa gravada em jogo (PassagesData.lua, #104): a busca normal já sai pela rampa, nos dois sentidos
+local EKp = load("Terrain0.lua", {}).terrain
+EKp.passages = load("PassagesData.lua", {}).passagesData
+local function pelaRampa(p)
+	for _, q in ipairs(p or {}) do if q.x > -235 and q.x < -150 and q.y > -4460 and q.y < -4330 then return true end end
+end
+local rr, rv = TRN.Path(EKp, revan, aerie, 150000), TRN.Path(EKp, aerie, revan, 150000)
+check(rr and rv and not rr.solto and not rv.solto and pelaRampa(rr) and pelaRampa(rv),
+	"Revantusk <-> Aerie Peak com a rampa gravada: busca normal, pela rampa")
+-- como no jogo (passagens geradas + gravadas): a rampa gravada que a grade v2 já liga não marca a rota como "por
+-- passagem" — senão o limite de volta derrubava a rota real Arathi <-> Revantusk (~5,8 km) e a segunda busca cruzava o
+-- penhasco (revisão do #106)
+local EKg = load("Terrain0.lua", {}).terrain
+EKg.passages = {}
+for _, p in ipairs(load("TerrainPassages.lua", {}).passagesTerrain or {}) do EKg.passages[#EKg.passages + 1] = p end
+for _, p in ipairs(EKp.passages) do EKg.passages[#EKg.passages + 1] = p end
+local hammerfall = { c = 0, x = -916.3, y = -3496.9 }
+local hr, rh = TRN.Path(EKg, hammerfall, revan, 150000), TRN.Path(EKg, revan, hammerfall, 150000)
+check(hr and rh and not hr.solto and not rh.solto and comprimento(hr) > 4000 and comprimento(rh) > 4000,
+	"Hammerfall <-> Revantusk no jogo: a rota real da grade, sem cruzar o penhasco")
+-- Aerie Peak -> Chillwind não pode descer a rampa e nadar 4 km pela costa (volta grande demais por passagem fica sem
+-- caminho). Na grade v1 a rampa era a única ligação do platô; na v2 (#106) a saída para Hillsbrad existe na grade e o
+-- caminho vai por ela — nunca pela rampa e o mar
+local chillwind, tarren = { c = 0, x = 931.3, y = -1430.1 }, { c = 0, x = -0.1, y = -859.9 }
+local ac, at = TRN.Path(EKp, aerie, chillwind, 150000), TRN.Path(EKp, aerie, tarren, 150000)
+check((ac == nil or not pelaRampa(ac)) and (at == nil or not pelaRampa(at)),
+	"Aerie Peak -> Chillwind / Tarren Mill: nada de descer a rampa e dar a volta pelo mar")
+check(TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 0, y = 5000 }, { x = 100, y = 5000 }, { x = 100, y = 0 } },
+	{ x = 0, y = 0 }, { x = 100, y = 0 }) and not TRN.VoltaDemais({ { x = 0, y = 0 }, { x = 200, y = 300 },
+	{ x = 300, y = 0 } }, { x = 0, y = 0 }, { x = 300, y = 0 }), "volta demais: 2x a reta e 2000 jd a mais")
+-- só por passagem: rota longa só da grade (Revantusk -> Light's Hope) segue existindo, sem a marca de passagem (o
+-- limite não a derruba). Na grade v2 (#106) ela sobe pela rampa de verdade — que a passagem gravada cobre —, então
+-- o "só da grade" se confere sem as passagens; com elas, o caminho também existe
+local lightsHope = { c = 0, x = 2271.1, y = -5340.9 }
+local costa = TRN.Path(EK, revan, lightsHope, 150000)
+check(costa and not costa.passagem, "rota longa só da grade segue existindo, sem a marca de passagem")
+check(TRN.Path(EKp, revan, lightsHope, 150000) ~= nil, "com a rampa gravada, a rota longa também existe")
+-- Ironforge (#106): a cidade fica debaixo do morro. A v2 fica com o piso de dentro onde há piso de modelo bem abaixo
+-- do terreno (não o alto do morro): do mestre de voo, sai-se pelo portão — não por cima das montanhas via Loch Modan
+local ifFM, portao = { c = 0, x = -4821.8, y = -1155.4 }, { c = 0, x = -5160, y = -870 }
+local ifp = TRN.Path(EK, ifFM, portao, 150000)
+check(ifp and comprimento(ifp) < 1000, "Ironforge: do mestre de voo ao lado de fora do portão, menos de 1 km ("
+	.. (ifp and math.floor(comprimento(ifp)) or "nil") .. " jd)")
+local kharanos = { c = 0, x = -5590, y = -500 }
+local ifk = TRN.Path(EK, ifFM, kharanos, 150000)
+local retaK = math.sqrt((ifFM.x - kharanos.x) ^ 2 + (ifFM.y - kharanos.y) ^ 2)
+check(ifk and comprimento(ifk) < 1.6 * retaK, "Ironforge -> Kharanos pelo portão, sem a volta pelas montanhas ("
+	.. (ifk and math.floor(comprimento(ifk)) or "nil") .. " jd; reta " .. math.floor(retaK) .. ")")
+-- pé do penhasco: do alto à praia abaixo dos Overlook Cliffs, ~1,2 km pela rampa (8x a reta de 143 jd), real
+local alto, praia = { c = 0, x = 158, y = -4592 }, { c = 0, x = 184, y = -4732 }
+check(TRN.Path(EKp, alto, praia, 150000) ~= nil, "pé do penhasco: o caminho pela rampa não é cortado")
+end
+do -- o limite de volta vale só para caminho por passagem: volta longa só da grade (> 2x a reta e > 2000 jd a mais),
+-- com uma passagem gravada longe dali, segue existindo, pela busca normal e sem a marca de passagem
+local volta = quadranteSint(function(r, c) return c == 48 and r < 86 end, nil, 3)
+local outra = {}
+for col = 10, 20 do local m = mundo(40, col); outra[#outra + 1] = m.x; outra[#outra + 1] = m.y end
+volta.passages = { { c = 0, pts = outra } }
+local va, vb = mundo(5, 43), mundo(5, 53)
+local vp = TRN.Path(volta, va, vb, 40000)
+local vreta = math.sqrt((va.x - vb.x) ^ 2 + (va.y - vb.y) ^ 2)
+check(vp and comprimento(vp) > 2 * vreta and comprimento(vp) - vreta > 2000, "a volta da grade é longa de verdade ("
+	.. (vp and math.floor(comprimento(vp)) or "nil") .. " jd)")
+check(vp and not vp.passagem and not vp.solto, "volta longa só da grade: existe, sem passagem e sem a segunda busca")
+end
+do -- #106: lugares com nome, como em jogo (os dois continentes, as passagens geradas do chão fino e as gravadas)
+local G2 = load("Terrain0.lua", {})
+load("Terrain1.lua", G2)
+local Dj = G2.terrain
+Dj.passages = {}
+for _, p in ipairs(load("TerrainPassages.lua", {}).passagesTerrain or {}) do Dj.passages[#Dj.passages + 1] = p end
+for _, p in ipairs(load("PassagesData.lua", {}).passagesData or {}) do Dj.passages[#Dj.passages + 1] = p end
+local function passaPor(p, x0, x1, y0, y1)
+	for i = 2, #(p or {}) do                              -- cada trecho, a cada 2 jd
+		local a, b = p[i - 1], p[i]
+		local L = math.sqrt((b.x - a.x) ^ 2 + (b.y - a.y) ^ 2)
+		for t = 0, L, 2 do
+			local x, y = a.x + (b.x - a.x) * t / math.max(L, 1e-9), a.y + (b.y - a.y) * t / math.max(L, 1e-9)
+			if x >= x0 and x <= x1 and y >= y0 and y <= y1 then return true end
+		end
+	end
+	return false
+end
+-- nome, de, para, razão máxima sobre a reta, busca normal exigida, caixa {x0, x1, y0, y1} por onde tem de passar
+local lugares = {
+	{ "Ironforge: mestre de voo -> fora do portão (cidade por dentro)", { 0, -4821.8, -1155.4 }, { 0, -5160, -870 }, 2.0, true },
+	{ "Thorium Point: mestre da Aliança -> da Horda (plataformas)", { 0, -6552.6, -1168.3 }, { 0, -6554.9, -1100.1 }, 3.0 },
+	{ "Thandol Span: Wetlands -> Arathi pelo tabuleiro", { 0, -2490, -2470 }, { 0, -2252, -2465 }, 1.4, true,
+		{ -2440, -2300, -2510, -2440 } },
+	{ "Thousand Needles: ponte de corda sobre o cânion", { 1, -4900, -1878 }, { 1, -5010.3, -1892 }, 1.6 },
+	{ "Timbermaw Hold: túnel de Felwood a Moonglade", { 1, 6815, -2092 }, { 1, 7380, -2195 }, 1.6, true,
+		{ 7000, 7250, -2260, -2060 } },
+	{ "Revantusk Village -> Aerie Peak pela rampa", { 0, -635.3, -4720.5 }, { 0, 283.7, -2002.8 }, 1.3, true,
+		{ -235, -150, -4460, -4330 } },
+	-- minas e entradas de caverna: de dentro (a origem do WMO) até fora, ~100 jd (no chão fino: 1,0-1,3x a reta)
+	{ "Fargodeep Mine (Elwynn): de dentro para fora", { 0, -9834, 194 }, { 0, -9760, 120 }, 2.0 },
+	{ "Echo Ridge Mine (Northshire): de dentro para fora", { 0, -8646, -132 }, { 0, -8560, -180 }, 2.0 },
+	-- (a grade, com os andares da entrada, dava ~380 jd; a rota fina nomeada no gerador dá os ~182 do chão fino)
+	{ "Wailing Caverns (Barrens): da entrada para fora", { 1, -929, -2095 }, { 1, -800, -2000 }, 2.0, true },
+	{ "Deadmines (Moonbrook): da entrada para fora", { 0, -11099, 1528 }, { 0, -11030, 1450 }, 2.0 },
+	-- Jasperlode Mine: do fundo (o piso mais baixo do WMO md_spidermine) até fora, pela boca da mina (a origem do WMO);
+	-- no chão fino, 210 jd (1,05x)
+	{ "Jasperlode Mine (Elwynn): do fundo para fora, pela boca", { 0, -9043, -611 }, { 0, -9243, -611 }, 1.6, true,
+		{ -9175, -9135, -625, -565 } },
+	-- Stormwind: do Trade District (casa de leilões) ao porto, pelas ruas sobre os canais e a rampa que desce ao cais (no
+	-- chão fino, 780 jd: 1,15x)
+	{ "Stormwind: Trade District -> porto, pela rampa do cais", { 0, -8824, 665 }, { 0, -8640, 1320 }, 1.35, true,
+		{ -8610, -8570, 1060, 1180 } },
+	-- Orgrimmar: do Valley of Strength ao Cleft of Shadow, 22 jd abaixo. No chão fino, 284 jd (1,39x) pela rampa da ponta
+	-- leste (1670-1720, -4290..-4265); a grade desce pela borda do Cleft logo a oeste (209 jd): a célula do barranco
+	-- fica com a pedra de cima, que liga o alto e o fundo (um nó por célula — spec). A caixa é a borda leste do Cleft,
+	-- por onde passam os dois.
+	{ "Orgrimmar: Valley of Strength -> Cleft of Shadow (borda leste)", { 1, 1637, -4438 }, { 1, 1771, -4284 }, 1.6, true,
+		{ 1690, 1730, -4345, -4255 } },
+}
+for _, l in ipairs(lugares) do
+	local a = { c = l[2][1], x = l[2][2], y = l[2][3] }
+	local b = { c = l[3][1], x = l[3][2], y = l[3][3] }
+	local p = TRN.Path(Dj, a, b, 150000)
+	local reta = math.sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2)
+	local len = p and comprimento(p) or 0
+	local caixa = l[6]
+	check(p and len <= l[4] * reta and (not l[5] or not p.solto) and (not caixa or passaPor(p, caixa[1], caixa[2], caixa[3], caixa[4])),
+		("%s: %s jd (reta %d, até %.1fx)%s"):format(l[1], p and math.floor(len) or "nil", math.floor(reta), l[4],
+			p and p.solto and " [segunda busca]" or ""))
+end
+end
+do -- #106: dentro das cidades, pares aleatórios fixos contra a grade v1 (comprimentos medidos na v1 do 1.60.1.71139,
+-- só terreno). A v2 escolhe, onde a célula tem chão de modelo, o componente que alcança mais vizinhos (a rua, não o
+-- telhado nem o fundo do canal). Guarda: razão média sobre a reta e pares mais de 1,5x a v1, por cidade (limites do
+-- que a v2 mede hoje, com folga; Booty Bay e Orgrimmar têm andares que um nó por célula não separa — spec).
+local G3 = load("Terrain0.lua", {})
+load("Terrain1.lua", G3)
+local Dc = G3.terrain
+Dc.passages = load("TerrainPassages.lua", {}).passagesTerrain
+local V1 = {
+	["Stormwind"] = { 449, 287, 318, 110, 338, 317, 482, 260, 177, 191, 414, 485, 206, 184, 617, 568, 77, 273, 312, 178, 316, 446, 201, 406, 307, 289, 408, 52, 221, 151 },
+	["Orgrimmar"] = { 1143, 293, 483, 252, 335, 265, 735, 544, 393, 1794, 151, 330, 933, 237, 1005, 66, 336, 1003, 1086, 305, 986, 546, 254, 563, 1073, 185, 375, 268, 1064, 755 },
+	["Booty Bay"] = { 150, 273, 1233, 155, 244, 1163, 94, 869, 313, 158, 84, 155, 572, 263, 167, 172, 82, 105, 268, 530, 77, 302, 56, 293, 348, 271, 80, 1654, 164, 1128 },
+	["Ironforge"] = { 261, 159, 381, 297, 309, 372, 158, 398, 284, 496, 397, 316, 284, 90, 516, 388, 239, 260, 310, 280, 412, 239, 431, 279, 77, 62, 103, 322, 124, 372 },
+	["Undercity"] = { 105, 127, 142, 215, 92, 130, 289, 49, 194, 441, 442, 125, 359, 51, 48, 128, 221, 115, 467, 221, 274, 328, 450, 401, 363, 215, 131, 144, 385, 447 },
+	["Thunder Bluff"] = { 1219, 154, 644, 1986, 1185, 328, 1767, 1053, 1884, 297, 1383, 1761, 273, 79, 135, 175, 1924, 83, 44, 154, 368, 1173, 205, 2035, 400, 788, 1087, 484, 1157, 1050 },
+	["Darnassus"] = { 355, 201, 222, 906, 245, 459, 435, 531, 746, 242, 608, 515, 80, 626, 593, 204, 979, 288, 478, 351, 680, 530, 283, 249, 403, 368, 528, 105, 489, 496 },
+	["Gadgetzan"] = { 210, 262, 158, 190, 128, 159, 22, 160, 42, 87, 86, 110, 114, 288, 213, 96, 244, 54, 122, 125, 108, 108, 112, 80, 259, 218, 44, 260, 84, 52 },
+	["Ratchet"] = { 225, 154, 149, 262, 282, 192, 53, 61, 148, 264, 79, 137, 145, 47, 255, 280, 255, 197, 192, 164, 225, 125, 159, 69, 233, 293, 297, 60, 225, 290 },
+}
+local CIDADES = { -- nome, c, x0, x1, y0, y1, razão média máxima (v2), pares > 1,5x v1 no máximo
+	{ "Stormwind", 0, -8950, -8450, 350, 1000, 1.26, 2 },
+	{ "Orgrimmar", 1, 1350, 2050, -4750, -4100, 1.96, 7 },
+	{ "Booty Bay", 0, -14550, -14250, 300, 600, 2.43, 12 },
+	{ "Ironforge", 0, -5000, -4600, -1250, -800, 1.47, 4 },
+	{ "Undercity", 0, 1500, 1800, 100, 420, 1.53, 5 },
+	{ "Thunder Bluff", 1, -1400, -950, -150, 250, 2.67, 6 },
+	{ "Darnassus", 1, 9650, 10200, 1900, 2600, 1.27, 2 },
+	{ "Gadgetzan", 1, -7200, -6950, -3900, -3650, 1.15, 2 },
+	{ "Ratchet", 1, -1050, -800, -3900, -3600, 1.20, 4 },
+}
+local semente = 12345
+local function rnd() semente = (semente * 1103515245 + 12345) % 2147483648; return semente / 2147483648 end
+for _, cd in ipairs(CIDADES) do
+	local nome, c, x0, x1, y0, y1 = cd[1], cd[2], cd[3], cd[4], cd[5], cd[6]
+	local n, r1, r2, pior = 0, 0, 0, 0
+	for k = 1, 30 do
+		local a = { c = c, x = x0 + (x1 - x0) * rnd(), y = y0 + (y1 - y0) * rnd() }
+		local b = { c = c, x = x0 + (x1 - x0) * rnd(), y = y0 + (y1 - y0) * rnd() }
+		local d = math.sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2)
+		local l1 = V1[nome][k]
+		local p = l1 > 0 and d > 30 and TRN.Path(Dc, a, b, 40000)
+		if p then
+			n = n + 1
+			r1, r2 = r1 + l1 / d, r2 + comprimento(p) / d
+			if comprimento(p) > 1.5 * l1 then pior = pior + 1 end
+		end
+	end
+	-- não pior que a v1 na média (a grade leva as ligações da v1 no mesmo chão — gen_terrain.une_v1; Ironforge por
+	-- dentro não leva nenhuma e fica empatada: 1% de folga)
+	check(n > 20 and r2 / n <= math.min(cd[7], 1.01 * r1 / n) and pior <= cd[8],
+		("cidade %s: razão média %.3f (v1 %.3f; até %.2f e até a v1 + 1%%), %d pares > 1,5x a v1 (até %d)")
+		:format(nome, r2 / math.max(n, 1), r1 / math.max(n, 1), cd[7], pior, cd[8]))
+end
+end
 -- passagem gravada (a rampa que a grade não tem): a primeira busca já atravessa por ela, sem a segunda
 local comPassagem = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
 local trilha = {}                                  -- andada: um ponto por célula (como a gravação, a cada 3 jd)
-for col = 42, 53 do local m = mundo(60, col); trilha[#trilha + 1] = m.x; trilha[#trilha + 1] = m.y end
+for col = 42, 53 do local m = mundo(12, col); trilha[#trilha + 1] = m.x; trilha[#trilha + 1] = m.y end
 comPassagem.passages = { { c = 0, pts = trilha } }
 local viaRampa = TRN.Path(comPassagem, mundo(5, 30), mundo(5, 70), 40000)
 local passouNaLinha = false
-for _, q in ipairs(viaRampa or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 55 then passouNaLinha = true end end
+for _, q in ipairs(viaRampa or {}) do if select(1, TRN.Cell(q.x, q.y)) >= 10 then passouNaLinha = true end end
 check(viaRampa and not viaRampa.solto and passouNaLinha, "passagem gravada: o caminho atravessa por ela (busca normal)")
 -- salto (dois pontos longe: voo, teleporte) não liga nada
 local salto = quadranteSint(function(r, c) return c >= 44 and c <= 51 end, nil, 3)
-local sa, sb = mundo(60, 42), mundo(60, 53)
+local sa, sb = mundo(12, 42), mundo(12, 53)
 salto.passages = { { c = 0, pts = { sa.x, sa.y, sb.x, sb.y } } }
 check(TRN.Path(salto, mundo(5, 30), mundo(5, 70), 40000) == nil, "salto gravado (voo, teleporte) não vira caminho")
 -- queda: só desce (de B para A não volta pela passagem)

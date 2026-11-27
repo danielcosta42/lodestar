@@ -129,6 +129,20 @@ local h, t = CL.Count(items)
 check(h == 1 and t == 3, "contagem da coleção")
 check(#CL.Filter(items, 1) == 2 and #CL.Filter(items, 1, true) == 1 and #CL.Filter(items, 0, true) == 2,
 	"filtro por origem e só o que falta")
+-- issue #109: o tipo do jogo vem 0 neste cliente; a origem sai do rótulo do texto, e "Todas" conta cada item uma vez
+check(CL.SourceKey({ sourceType = 0, source = src }, {}) == "Vendedor", "origem pelo rótulo do texto")
+check(CL.SourceKey({ sourceType = 3, source = src }, { [3] = "Vendor" }) == "Vendor", "o tipo do jogo, quando vem")
+check(CL.SourceKey({ sourceType = 0, source = "" }, {}) == "" and CL.SourceKey({ sourceType = 0 }, nil) == "",
+	"sem texto: Outras")
+local col = { { key = "Saque", collected = false }, { key = "Vendedor", collected = false },
+	{ key = "Saque", collected = true }, { key = "", collected = false }, { key = "Saque", collected = false } }
+local bk, tot = CL.Buckets(col)
+check(tot == 5 and #bk == 3 and bk[1][1] == "Saque" and bk[1][2] == 3 and bk[3][1] == "",
+	"origens: maior primeiro, Outras no fim")
+local bk2, tot2 = CL.Buckets(col, true)
+check(tot2 == 4 and bk2[1][2] == 2, "origens só do que falta")
+check(#CL.Filter(col, "Saque") == 3 and #CL.Filter(col, "Saque", true) == 2 and #CL.Filter(col, nil) == 5
+	and #CL.Filter(col, "") == 1, "filtro pela chave de origem")
 
 -- ── Legado ───────────────────────────────────────────────────────────────────
 local LG = loadPure("Legacy.lua").Legacy

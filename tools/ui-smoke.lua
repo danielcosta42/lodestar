@@ -15,6 +15,7 @@ local function new(kind, name, parent)
 	local o = setmetatable({ _kind = kind, _shown = true, _w = 0, _h = 0, _scripts = {}, _parent = parent, _name = name },
 		Obj)
 	if name then _G[name] = o end
+	if parent and type(parent) == "table" then parent._kids = parent._kids or {}; parent._kids[#parent._kids + 1] = o end
 	return o
 end
 local M = {}
@@ -48,6 +49,8 @@ function M:SetScript(k, f) self._scripts[k] = f end
 function M:HookScript(k, f) self._scripts[k] = f end
 function M:GetScript(k) return self._scripts[k] end
 function M:GetPoint() return "CENTER", nil, "CENTER", 0, 0 end
+function M:SetPoint(p) self._pts = self._pts or {}; self._pts[#self._pts + 1] = p end
+function M:ClearAllPoints() self._pts = {} end
 function M:GetParent() return self._parent end
 function M:GetName() return self._name end
 function M:GetFrameLevel() return 1 end
@@ -180,9 +183,22 @@ G.C_Item = {
 G.C_Container = { GetContainerNumSlots = function() return 0 end, GetContainerItemLink = function() return nil end }
 G.C_MountJournal = {
 	GetMountIDs = function() return { 1, 2 } end,
-	GetMountInfoByID = function(id) return "Montaria " .. id, 100 + id, 132226, false, true, 3, false, false, nil, false, id == 1, id end,
+	-- tipo de origem 0, como neste cliente (issue #109): a origem sai do texto
+	GetMountInfoByID = function(id) return "Montaria " .. id, 100 + id, 132226, false, true, 0, false, false, nil, false, id == 1, id end,
 	GetMountInfoExtraByID = function() return nil, "", "|cFFFFD200Vendedor: |rKatie Hunter|n|cFFFFD200Zona: |rFloresta de Elwynn" end,
 }
+-- caixa de brinquedos com os filtros do jogador: só mostra tudo com coletados, não coletados e busca vazia
+local toyState = { coll = false, unc = true, filter = "x" }
+G.C_ToyBox = {
+	GetCollectedShown = function() return toyState.coll end, GetUncollectedShown = function() return toyState.unc end,
+	SetCollectedShown = function(v) toyState.coll = v end, SetUncollectedShown = function(v) toyState.unc = v end,
+	SetFilterString = function(v) toyState.filter = v end, ForceToyRefilter = noop,
+	GetNumFilteredToys = function() return (toyState.coll and toyState.unc and toyState.filter == "") and 2 or 0 end,
+	GetToyFromIndex = function(i) return 900 + i end,
+	GetToyInfo = function(id) return id, "Brinquedo " .. id, 134400, false, false end,
+}
+G.ToyBox = { searchString = "x" }
+G.PlayerHasToy = function(id) return id == 901 end
 G.C_PetJournal = {
 	GetNumPets = function() return 1 end,
 	GetPetInfoByIndex = function() return "pet1", 7, false, nil, 1, false, false, "Galinha", 132834, 1, 0, "|cFFFFD200Missão: |rUma Galinha", "" end,
@@ -234,9 +250,20 @@ for _, gf in ipairs(Guides) do
 	if chunk then chunk("Lodestar", ns) end
 end
 -- um guia de verdade da pasta (o primeiro de Westfall que existir), e um de masmorra
+-- (no Windows o cmd.exe não tem `ls` nem `2>/dev/null`: `dir /b` lista só o nome, e o caminho vem da pasta)
+local WIN = package.config:sub(1, 1) == "\\"
 local function loadFirst(pattern)
-	local p = io.popen('ls ' .. ROOT .. '/' .. pattern .. ' 2>/dev/null')
-	local f = p and p:read("*l"); if p then p:close() end
+	local f
+	if WIN then
+		local full = (ROOT .. "/" .. pattern):gsub("/", "\\")
+		local dir = full:match("^(.*)\\[^\\]*$") or "."
+		local p = io.popen('dir /b "' .. full .. '" 2>NUL')
+		local name = p and p:read("*l"); if p then p:close() end
+		f = name and name ~= "" and (dir .. "\\" .. name) or nil
+	else
+		local p = io.popen('ls ' .. ROOT .. '/' .. pattern .. ' 2>/dev/null')
+		f = p and p:read("*l"); if p then p:close() end
+	end
 	if f then local c = loadfile(f); if c then c("Lodestar", ns) end end
 end
 loadFirst("Guides/Leveling/Alliance/Westfall*.lua")
@@ -272,6 +299,71 @@ step("SkipQuest + Undo", function()
 end)
 step("Viewer empty", function() local k = ns.currentGuide.key; ns:CloseGuide(k); ns.Viewer:Refresh(); ns:LoadGuide(k, true) end)
 step("TravelPanel", function() ns.TravelPanel:Toggle(); ns.TravelPanel.Refresh(); ns.TravelPanel.MeasureServices() end)
+-- espera do barco (issue #110): na perna de barco, a animação no lugar da seta; na perna a pé, a seta de volta
+step("Arrow wait", function()
+	local T = ns.Travel
+	local savedRoute, savedPW = T.Route, T.PlayerWorld
+	local a, b, c = { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 1, x = 900, y = 0 }
+	local route = { leg = 2, kind = "manual", dest = { label = "Grom'gol" }, legs = {
+		{ k = "walk", a = a, b = b, s = 20 },
+		{ k = "ship", ship = "zeppelin", a = b, b = c, s = 240, name = "Grom'gol" },
+		{ k = "walk", a = c, b = c, s = 10 } } }
+	T.Route = function() return route end
+	T.PlayerWorld = function() return { c = 0, x = 100, y = 0 } end
+	ns.db.arrow.enabled = true
+	local ok, err = pcall(function()
+		ns.Waypoint:Update()
+		local ar = _G.LodestarArrow
+		assert(ar and ar._shown, "seta escondida")
+		assert(ar.wait and ar.wait._shown, "sem a animação de espera na perna de barco")
+		assert(not ar.tex._shown, "a agulha continua na perna de barco")
+		local upd = ar.wait:GetScript("OnUpdate")
+		for _ = 1, 30 do upd(ar.wait, 0.05) end
+		-- o tique seguinte não esconde e mostra de novo (o OnHide devolveria o brilho cheio: piscaria)
+		local hides, hide = 0, ar.wait.Hide
+		ar.wait.Hide = function(self) hides = hides + 1; hide(self) end
+		ns.Waypoint:Update()
+		ar.wait.Hide = nil
+		assert(ar.wait._shown and hides == 0, "a espera piscou no tique")
+		route.legs[2].boarded = 1
+		ns.Waypoint:Update()
+		assert(ar.wait._shown and ar.wait.period == 2.4, "a bordo: giro mais lento")
+		route.leg = 3; route.legs[3].b = { c = 1, x = 950, y = 40 }
+		T.PlayerWorld = function() return { c = 1, x = 900, y = 0 } end
+		ns.Waypoint:Update()
+		assert(not ar.wait._shown, "a animação ficou na perna a pé")
+	end)
+	T.Route, T.PlayerWorld = savedRoute, savedPW
+	assert(ok, err)
+end)
+-- Navegação com rota (issue #108): cada perna aparece, ancorada só pelo topo, e a linha do tempo tem altura
+step("TravelPanel route", function()
+	local T = ns.Travel
+	local savedRoute, savedPW = T.Route, T.PlayerWorld
+	local a, b, c = { c = 0, x = 0, y = 0 }, { c = 0, x = 100, y = 0 }, { c = 0, x = 900, y = 0 }
+	local route = { leg = 2, kind = "guide", dest = { label = "Silvermane Stalker" }, legs = {
+		{ k = "walk", a = a, b = b, s = 20, name = "Revantusk Village" },
+		{ k = "flight", a = b, b = c, s = 120, name = "Aerie Peak" },
+		{ k = "walk", a = c, b = c, s = 10 } } }
+	T.Route = function() return route end
+	T.PlayerWorld = function() return { c = 0, x = 100, y = 0 } end
+	local ok, err = pcall(ns.TravelPanel.Refresh)
+	T.Route, T.PlayerWorld = savedRoute, savedPW
+	assert(ok, err)
+	local tl = _G.LodestarTravel.timeline
+	assert(tl._h >= 3 * 46, "linha do tempo sem altura: " .. tl._h)
+	local shown = 0
+	for _, r in ipairs(tl._kids or {}) do
+		if r._shown then
+			shown = shown + 1
+			local pts = table.concat(r._pts or {}, " ")
+			assert(pts == "TOPLEFT TOPRIGHT", "perna " .. shown .. " ancorada por " .. pts)
+			assert(r.text._text and r.text._text ~= "", "perna " .. shown .. " sem texto")
+		end
+	end
+	assert(shown == 3, "pernas na linha do tempo: " .. shown)
+	ns.TravelPanel.Refresh()
+end)
 for _, id in ipairs({ "home", "leveling", "dungeons", "gear", "collections", "legacy", "rares", "characters",
 	"class", "dungeonguides", "reputation",
 	"attunements", "events" }) do
@@ -280,6 +372,26 @@ end
 step("GuideMenu = Hub", function() assert(ns.GuideMenu == ns.Hub, "ns.GuideMenu aponta a Central") end)
 step("Dungeons:GoToDoor", function() ns.Dungeons:GoToDoor(ns.dungeonData[3]) end)
 step("Collections:GuideTo", function() ns.Collections:GuideTo(ns.Collections:Mounts()[2]) end)
+-- issue #109: origens pelo texto (o tipo do jogo não vem), "Todas" uma vez cada, e a aba de brinquedos
+step("Collections:sources+toys", function()
+	ns.Hub:Show("collections")
+	local pg = ns.Collections.Page.page
+	local function rows()
+		local out = {}
+		for _, r in ipairs(pg.srcRows) do
+			if r._shown then out[#out + 1] = r.fs._text .. "=" .. (r.count.text._text or "") end
+		end
+		return table.concat(out, " ")
+	end
+	pg.tabs.buttons[1]:GetScript("OnClick")()
+	assert(rows() == ns.L.V3_ALL .. "=1 Vendedor=1", "origens das montarias: " .. rows())
+	pg.tabs.buttons[3]:GetScript("OnClick")()
+	assert(rows() == ns.L.V3_ALL .. "=1", "brinquedos: " .. rows())
+	local toys = ns.Collections:Toys()
+	assert(#toys == 2 and toys[1].collected and not toys[2].collected, "brinquedos lidos")
+	assert(toyState.coll == false and toyState.unc == true and toyState.filter == "x", "filtros da caixa não voltaram")
+	pg.tabs.buttons[1]:GetScript("OnClick")()
+end)
 step("Tidy", function() ns.QuestLogTidy:Toggle() end)
 -- os passos à frente perto de você: o harness não tem mundo, então a distância é fixa e as linhas têm de aparecer
 step("Nearby", function()
@@ -403,7 +515,7 @@ step("Passages", function()
 	ns.Passages:Command("")
 	T.PlayerWorld = pw
 	assert(#ns.db.passages == 1, "passagem não foi gravada")
-	assert(ns.terrain.passages and #ns.terrain.passages >= 1, "a busca não recebeu a passagem")
+	assert(ns.terrain.passages and #ns.terrain.passages >= #(ns.passagesData or {}) + 1, "a busca não recebeu a passagem")
 	local txt = ns.Report.ReportText(ns.Report.Context(), "x")
 	assert(txt:find("Recorded passages"), "o relatório não leva as passagens")
 	ns.Passages:Command("limpar")

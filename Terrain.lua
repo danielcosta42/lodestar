@@ -131,22 +131,29 @@ local LONGE, VERTICES = 40, 10           -- até onde o fio tenta alcançar: cé
 
 -- Passagens (issue #99): trechos que o jogador andou e a grade não tem — a rampa do litoral da Revantusk, ponte,
 -- porta, escada. Cada uma liga, célula a célula, o caminho andado; a busca anda por elas como por terreno.
--- passagens = { { c = continente, pts = { x1, y1, x2, y2, ... } } } (mundo). Cache por tabela de passagens.
+-- passagens = { { c = continente, pts = { x1, y1, x2, y2, ... }, g = gerada? } } (mundo). Cache por tabela de passagens.
+-- As geradas (TerrainPassages.lua, g = true: chão fino que a grade de um nó por célula perde — #106) são chão como o
+-- terreno; só as gravadas marcam o caminho (`passagem`) para o limite de volta. Devolve as ligações e o conjunto das
+-- gravadas (chave a * W * W + b).
 local linksCache = setmetatable({}, { __mode = "k" })
 local NADA = {}
+local WW = W * W
 function TR.Links(passagens, cont)
-	if not passagens then return NADA end
+	if not passagens then return NADA, NADA end
 	local porCont = linksCache[passagens]
 	if not porCont then porCont = {}; linksCache[passagens] = porCont end
-	if porCont[cont] then return porCont[cont] end
-	local links = {}
+	if porCont[cont] then return porCont[cont][1], porCont[cont][2] end
+	local links, gravadas = {}, {}
+	local gerada
 	local function liga(a, b)
 		if a == b then return end
+		if not gerada then gravadas[a * WW + b] = true end
 		links[a] = links[a] or {}
 		for _, x in ipairs(links[a]) do if x == b then return end end
 		table.insert(links[a], b)
 	end
 	for _, p in ipairs(passagens) do
+		gerada = p.g
 		if p.c == cont and p.pts and #p.pts >= 4 then
 			local ant
 			for i = 1, #p.pts - 3, 2 do
@@ -168,8 +175,8 @@ function TR.Links(passagens, cont)
 			end
 		end
 	end
-	porCont[cont] = links
-	return links
+	porCont[cont] = { links, gravadas }
+	return links, gravadas
 end
 
 -- Ilha: região fechada pequena da grade — vila, morro de prédio, cais —, que no jogo se liga
@@ -248,16 +255,31 @@ end
 -- expansões (número) ou quando a função disser (orçamento de tempo), cede a vez — não trava
 -- o quadro.
 local caminho
+-- Volta grande demais POR UMA PASSAGEM (mais de 2× a reta e mais de 2000 jd a mais) não é caminho: é a passagem
+-- virando a única saída de uma região que na grade não tem a de verdade (o platô de The Hinterlands só se liga ao
+-- mundo pela rampa da Revantusk, e Aerie Peak -> Chillwind descia a rampa e nadava 4 km pela costa; #104). Caminho
+-- só da grade fica como sempre (rotas costeiras longas são reais). Recusado o da busca normal, tenta a segunda; se
+-- nada serve, fica a reta, e quem chama espera 300 jd.
+local VOLTA_FATOR, VOLTA_JD = 2, 2000     -- as voltas pelo mar eram 5-13 km a mais; pé de penhasco, ~1 km
+local function voltaDemais(pts, de, para)
+	local len = 0
+	for i = 2, #pts do len = len + math.sqrt((pts[i].x - pts[i - 1].x) ^ 2 + (pts[i].y - pts[i - 1].y) ^ 2) end
+	local direto = math.sqrt((para.x - de.x) ^ 2 + (para.y - de.y) ^ 2)
+	return len > VOLTA_FATOR * direto and len - direto > VOLTA_JD
+end
+TR.VoltaDemais = voltaDemais
 -- A segunda busca roda com um terço do limite quando a primeira provou que não há ligação (acabou a fila), e com um
 -- quinto quando a primeira estourou o limite (região grande: a Revantusk cai aqui). A passagem curta, quando existe,
 -- sai em poucas expansões (~20 mil na Revantusk; a busca já poda o passo que estoura o limite de travados), e o nil
 -- que não tem jeito custa uma fração a mais, não o dobro (a expansão solta custa mais que a estrita).
 -- O caminho dela vem marcado (`solto`): quem chama não o refaz a cada desvio do jogador.
+local function recusa(pts, de, para) return pts and pts.passagem and voltaDemais(pts, de, para) end
 function TR.Path(dados, de, para, maxExp, ceder)
 	local pts, motivo = caminho(dados, de, para, maxExp, ceder, false)
-	if pts then return pts end
+	if pts and not recusa(pts, de, para) then return pts end
 	pts = caminho(dados, de, para, math.floor(maxExp / (motivo == "limite" and 5 or 3)), ceder, true)
-	if pts then pts.solto = true end
+	if not pts or recusa(pts, de, para) then return nil end
+	pts.solto = true
 	return pts
 end
 
@@ -266,7 +288,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	if not (de and para and de.c == para.c and dados) then return nil end
 	local grid = dados[de.c]
 	if not grid then return nil end
-	local links = TR.Links(dados.passages, de.c)
+	local links, gravadas = TR.Links(dados.passages, de.c)
 	local sr0, sc0 = TR.Cell(de.x, de.y)
 	local gr0, gc0 = TR.Cell(para.x, para.y)
 	local sr, sc = ajusta(grid, sr0, sc0)
@@ -376,10 +398,18 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 		k = came[k]
 	end
 	local cel, molh = {}, { [0] = 0 }             -- do início ao fim; água acumulada
+	local usouPassagem = false
 	for i = #inv, 1, -1 do
 		local n = #cel + 1
 		cel[n] = inv[i]
 		molh[n] = molh[n - 1] + (select(2, info(grid, floor(inv[i] / W), inv[i] % W)) and 1 or 0)
+		-- passo por passagem gravada que a grade já liga (a rampa da Revantusk, desde a grade v2) não conta: senão o
+		-- limite de volta derruba a rota real da grade e a segunda busca cruza o penhasco (revisão do #106)
+		if n > 1 and not usouPassagem and gravadas[cel[n - 1] * WW + cel[n]] then
+			local a, b = cel[n - 1], cel[n]
+			local d = PASSO[(floor(b / W) - floor(a / W) + 1) * 3 + (b % W - a % W) + 2]
+			if not (d and info(grid, floor(a / W), a % W) % 2 ^ d >= 2 ^ (d - 1)) then usouPassagem = true end
+		end
 	end
 	-- a segunda busca: quanto da barreira ela cruzou (seguidos e no total); passou do curto, não é caminho
 	if solto then
@@ -432,6 +462,7 @@ caminho = function(dados, de, para, maxExp, ceder, solto)
 	r, c = TR.Cell(para.x, para.y)
 	if #cel > 1 and (r ~= fr or c ~= fc) then pts[#pts + 1] = TR.CellCenter(de.c, fr, fc) end
 	pts[#pts + 1] = { c = para.c, x = para.x, y = para.y }
+	pts.passagem = usouPassagem or nil
 	return pts
 end
 

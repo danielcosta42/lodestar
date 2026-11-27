@@ -22,7 +22,9 @@ claro").
   Pular passo. Tudo do #89 segue (clique direito, marcar à mão, tempo, falha).
 - **R4 Navegação.** O destino com o tempo total e a hora de chegada; a viagem em linha do tempo (perna, ícone, tempo;
   a atual destacada, as feitas apagadas); os serviços em grade com o tempo de viagem medido ao abrir (um por quadro);
-  profissão abre a lista; coordenada.
+  profissão abre a lista; coordenada. (#108) O quadro da linha do tempo tem altura (sem ela, as pernas ancoradas
+  nele não se resolvem e o cliente não as desenha); o fio entre as bolinhas desce do centro delas; na grade, rótulo curto quando o nome não cabe (Profissões, Estábulo).
+  O + de adicionar guia fica com o fundo no nível do botão (senão o fundo cobre o glifo).
 - **R5 Central.** Substitui a Biblioteca (ns.GuideMenu abre a Central). Menu: Início, Leveling, Masmorras,
   Equipamento, Colecionáveis, Legado, Classe, Reputação, Sintonias, Eventos; Configurações e Relatar no pé.
   - **Início:** continuar (guia, passo, o que fazer agora, nível e XP) e os cartões de masmorra, equipamento, Legado e
@@ -41,7 +43,11 @@ claro").
   ns.db.rewards, para o Equipamento.
 - **R9 Colecionáveis.** Montarias e mascotes do diário do jogo, com a origem como o jogo escreve; filtro por origem,
   "só o que falta", progresso; Guiar ao vendedor (quando o Lodestar o conhece) ou à zona da origem. O filtro do
-  diário de mascotes volta a como o jogador deixou.
+  diário de mascotes volta a como o jogador deixou. (#109) A origem agrupa pelo nome do tipo do jogo quando ele vem
+  e, senão, pelo rótulo da primeira linha do texto de origem ("Vendedor", "Saque"); sem texto, Outras. "Todas" conta
+  cada item uma vez. Aba Brinquedos (C_ToyBox, família Classic): lê com coletados, não coletados e busca abertos e
+  devolve os filtros da caixa como estavam; a API não dá a origem do brinquedo (sem Guiar). Guiar só com texto de
+  origem.
 - **R10 Legado.** Os desafios do Legado (conquistas sob a raiz das LEGACY_DEFAULT_CATEGORY_*): pontos da conta,
   grupos com feito/total, a lista do grupo com o progresso (critérios; nos de classe, o seu personagem mais alto da
   classe), o mais perto com o caminho (Leveling, Masmorras) e abrir o Legado do jogo. Os personagens da conta

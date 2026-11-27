@@ -157,6 +157,7 @@ function WP:PickTarget()
 			secs = (falta or math.sqrt(dx * dx + dy * dy)) / T:Speed()
 		end
 		legGoal.verb, legGoal._leg, legGoal.world, legGoal.legKind = "goto_", true, leg.b, leg.k
+		legGoal.boarded = leg.boarded and true or nil
 		legGoal.text, legGoal.icon = WP.LegText(route, route.leg, secs, GetServerTime and GetServerTime()), legIcon(leg)
 		legGoal.goto_ = nil
 		return legGoal
@@ -344,9 +345,60 @@ end
 
 -- a seta (as três camadas juntas)
 -- o brilho fica com o ícone (barco, pedra de lar) quando a seta some, como nos passos de viagem
-local function needle(a, on)
+-- `espera`: a perna parada vai mostrar a espera (showWait) — não esconde e mostra de novo a cada tique (piscaria)
+local function needle(a, on, espera)
 	a.tex:SetShown(on); a.edge:SetShown(on); a.shadow:SetShown(on)
 	a.glow:SetShown(on or a.icon:IsShown())
+	if a.wait and not espera then a.wait:Hide() end
+end
+
+-- Espera de barco, zepelim e bonde (issue #110): no lugar da seta, um anel com pontos girando (rastro que some) e o
+-- relógio no meio; a bordo, mais devagar e com a bandeira. O brilho pulsa. Só textura e um OnUpdate, que para
+-- junto quando o quadro some.
+local WAIT_N, WAIT_R = 8, 20
+local function ensureWait(a)
+	if a.wait then return a.wait end
+	local C = UI.HUD
+	local w = CreateFrame("Frame", nil, a)
+	w:SetAllPoints()
+	w.ring = UI.Media(w, "ring", "BORDER"); w.ring:SetSize(50, 50); w.ring:SetPoint("CENTER")
+	w.ring:SetVertexColor(C.amber[1], C.amber[2], C.amber[3], 0.22)
+	w.dots = {}
+	for i = 1, WAIT_N do
+		local d = UI.Media(w, "dot", "ARTWORK"); d:SetSize(7, 7)
+		local ang = (i - 1) / WAIT_N * 2 * math.pi       -- no sentido do relógio, a partir do topo
+		d:SetPoint("CENTER", w, "CENTER", math.sin(ang) * WAIT_R, math.cos(ang) * WAIT_R)
+		d:SetVertexColor(UI.unpackc(C.amber))
+		w.dots[i] = d
+	end
+	w.glyph = UI.Glyph(w, "relogio", "OVERLAY", 64); w.glyph:SetSize(18, 18); w.glyph:SetPoint("CENTER")
+	w.glyph:SetVertexColor(UI.unpackc(C.active))
+	w.t, w.g, w.period = 0, 0, 1.2
+	local function pulso(self) return 0.75 + 0.25 * math.sin(self.g * 2 * math.pi) end
+	w.Pulso = pulso
+	w:SetScript("OnUpdate", function(self, el)
+		self.t = (self.t + el / self.period) % 1
+		self.g = (self.g + el / 3) % 1                       -- o brilho pulsa devagar (3 s), no seu próprio passo
+		local head = self.t * WAIT_N
+		for i, d in ipairs(self.dots) do
+			local atras = (head - (i - 1)) % WAIT_N           -- o quanto este ponto ficou para trás da cabeça
+			d:SetAlpha(math.max(0.15, 1 - atras / WAIT_N * 1.5))
+		end
+		a.glow:SetAlpha(pulso(self))
+	end)
+	w:SetScript("OnHide", function() a.glow:SetAlpha(1) end)
+	w:Hide()
+	a.wait = w
+	return w
+end
+local function showWait(a, boarded)
+	local w = ensureWait(a)
+	w.period = boarded and 2.4 or 1.2
+	w.glyph:SetTexture(UI.GLYPH .. (boarded and "bandeira" or "relogio") .. "-64")
+	local c = UI.HUD.amber
+	a.glow:SetVertexColor(c[1], c[2], c[3], 0.28); a.glow:Show()
+	a.glow:SetAlpha(w:Pulso())
+	w:Show()
 end
 local function turn(a, rel) a.tex:SetRotation(rel); a.edge:SetRotation(rel); a.shadow:SetRotation(rel) end
 local function tint(a, c)
@@ -424,7 +476,9 @@ local function legArrow(a, goal)
 	local dist, dx, dy
 	if not STILL[goal.legKind] then dist, dx, dy = WP:DistanceTo(goal) end
 	if not dist then
-		needle(a, false)
+		local espera = STILL[goal.legKind] and not goal.icon
+		needle(a, false, espera)
+		if espera then showWait(a, goal.boarded) end
 		a.dist:SetText("")
 		a.name:SetTextColor(UI.unpackc(C.amber))
 		a.name:SetText(goal.text or "")

@@ -65,6 +65,7 @@ Journey.lua
 TravelPlanner.lua
 Travel.lua
 PassagesData.lua
+TerrainPassages.lua
 Passages.lua
 Destinations.lua
 Services.lua
