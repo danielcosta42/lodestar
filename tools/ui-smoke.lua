@@ -1521,6 +1521,110 @@ step("Party tell", function()
 	_G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo = ig, scm, cci
 	assert(ok, err)
 end)
+-- cartão de voo (#129): o voo marcado no mapa de voo, em voo com destino, zona, tempo e barra; pousou, some
+step("Flight card", function()
+	local taxi, tnn, gat, early, gt, gst = _G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes,
+		_G.TaxiRequestEarlyLanding, _G.GetTime, _G.GetServerTime
+	local rota0 = ns.Travel.Route
+	local ucId, hfId, tmId
+	for id, v in pairs(ns.travel.nodes) do
+		if v.n:find("^Undercity") then ucId = id elseif v.n:find("^Hammerfall") then hfId = id
+		elseif v.n:find("^Tarren Mill") and v.f:find("H", 1, true) then tmId = id end
+	end
+	local voando, pediu, t = false, 0, 5000
+	local rota
+	_G.UnitOnTaxi = function() return voando end
+	_G.TaxiNodeName = function() return "Hammerfall, Arathi" end
+	-- sem slotIndex (casa pelo nome) e um nó de isca depois do destino; `comSlot`: o slot clicado manda, com outro nome
+	local comSlot, vazio = false, false
+	C_TaxiMap.GetAllTaxiNodes = function()
+		if vazio then return {} end
+		if comSlot then
+			return { { nodeID = ucId, name = "Undercity, Tirisfal", state = 0, slotIndex = 1 },
+				{ nodeID = hfId, name = "Hammerfall, Arathi", state = 1, slotIndex = 3 },
+				{ nodeID = tmId, name = "Tarren Mill, Hillsbrad", state = 1, slotIndex = 2 } }
+		end
+		return { { nodeID = ucId, name = "Undercity, Tirisfal", state = 0 }, { nodeID = hfId, name = "Hammerfall, Arathi", state = 1 },
+			{ nodeID = tmId, name = "Tarren Mill, Hillsbrad", state = 1 } }
+	end
+	_G.TaxiRequestEarlyLanding = function() pediu = pediu + 1 end
+	_G.GetTime = function() return t end
+	_G.GetServerTime = function() return t end
+	ns.Travel.Route = function() return rota end
+	local function voa(v) voando = v; ns.FlightCard:Update() end
+	local ok, err = pcall(function()
+		local FC = ns.FlightCard
+		ns.char.voo = nil
+		FC:Marcou(2)                                                -- marcou Hammerfall (direto de Undercity)
+		voa(true)
+		local c = _G.LodestarFlightCard
+		assert(c and c:IsShown(), "o cartão não abriu em voo")
+		assert(c.title:GetText() == "Hammerfall" and c.sub:GetText() == "Arathi", "destino: " .. tostring(c.title:GetText()))
+		local s = ns.travel.flights[ucId][hfId].s
+		assert(c.time:GetText() == "~" .. FC.Fmt(s), "tempo do direto: " .. tostring(c.time:GetText()) .. " (" .. s .. " s)")
+		assert(not c.land:IsShown(), "direto não tem onde pousar antes e o botão apareceu")
+		t = t + 60; FC:Update()
+		assert(c.time:GetText() == "~" .. FC.Fmt(s - 60), "o tempo não andou: " .. tostring(c.time:GetText()))
+		voa(false)
+		assert(not c:IsShown() and ns.char.voo == nil, "pousou e o cartão (ou o voo salvo) ficou")
+		comSlot = true; FC:Marcou(2)                                -- o slot 2 é Tarren Mill, mesmo com o nome do 3
+		voa(true)
+		assert(c.title:GetText() == "Tarren Mill", "o slot clicado não mandou: " .. tostring(c.title:GetText()))
+		voa(false); comSlot = false
+		vazio = true; FC:Marcou(2); vazio = false                   -- o mapa já fechou: nada marcado
+		voa(true)
+		assert(c.title:GetText() == ns.L.IN_FLIGHT, "marcou sem o nó: " .. tostring(c.title:GetText()))
+		voa(false)
+		ns.char.voo = { nome = "Velho", s = 600, t0 = t }           -- salvo de um pouso com o addon fora
+		FC:Update()
+		assert(ns.char.voo == nil, "o voo salvo ficou fora de voo")
+		-- /reload em voo: o voo salvo (decolou há 50 s) volta, sem marcar nem rota
+		ns.char.voo = { nome = "Tarren Mill, Hillsbrad", s = 200, t0 = t - 50 }
+		voa(true)
+		assert(c.title:GetText() == "Tarren Mill" and c.time:GetText() == "~2:30", "voo salvo: " .. tostring(c.title:GetText())
+			.. " " .. tostring(c.time:GetText()))
+		voa(false)
+		-- marcado há mais de 2 min não vale: a perna de voo da rota (dois trechos, 299 s com a decolagem)
+		FC:Marcou(2)
+		t = t + 121
+		rota = { leg = 1, legs = { { k = "flight", name = "Revantusk Village, The Hinterlands", s = 299,
+			via = { "Tarren Mill, Hillsbrad" } } } }
+		voa(true)
+		assert(c.title:GetText() == "Revantusk Village" and c.time:GetText() == "~4:49", "perna da rota: "
+			.. tostring(c.title:GetText()) .. " " .. tostring(c.time:GetText()))
+		assert(c.land:IsShown(), "com mestre de voo no meio e sem o botão de pousar")
+		c.land:GetScript("OnClick")(c.land)
+		assert(pediu == 1 and not c.land:IsShown() and c.time:GetText() == ns.L.FLIGHT_LANDING and not c.bar:IsShown(),
+			"pousar antes: " .. tostring(c.time:GetText()))
+		assert(ns.char.voo and ns.char.voo.pousando, "o pedido de pousar não ficou salvo para o /reload")
+		local salvo = ns.char.voo
+		voa(false); ns.char.voo = salvo; voa(true)                 -- /reload depois do pedido: segue pousando
+		assert(c.time:GetText() == ns.L.FLIGHT_LANDING and not c.land:IsShown(), "o pedido de pousar não voltou do /reload")
+		voa(false); voa(true)                                       -- pousou e voou de novo: o botão volta
+		assert(c.land:IsShown(), "o botão não voltou no voo seguinte")
+		voa(false)
+		rota = { leg = 1, legs = { { k = "flight", name = "Hammerfall, Arathi", s = 289 } } }   -- perna direta, sem via
+		voa(true)
+		assert(c.time:GetText() == "~4:39" and not c.land:IsShown(), "perna direta da rota: " .. tostring(c.time:GetText()))
+		rota = { leg = 1, legs = { { k = "flight", name = "Revantusk Village, The Hinterlands", s = 299,
+			via = { "Tarren Mill, Hillsbrad" } } } }
+		voa(false); voa(true)
+		_G.TaxiRequestEarlyLanding = nil; FC:Update()
+		assert(not c.land:IsShown(), "sem a função no cliente e o botão apareceu")
+		ns.db.flightCard = false; FC:Update()
+		assert(not c:IsShown(), "desligado e o cartão ficou")
+		ns.db.flightCard = true
+		voa(false); rota = nil; ns.char.voo = nil
+		voa(true)                                                   -- sem marcar, sem salvo, sem rota: conta para cima
+		assert(c:IsShown() and c.title:GetText() == ns.L.IN_FLIGHT and c.time:GetText() == "+0:00", "sem dados: "
+			.. tostring(c.title:GetText()) .. " " .. tostring(c.time:GetText()))
+		voa(false)
+	end)
+	_G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes, _G.TaxiRequestEarlyLanding = taxi, tnn, gat, early
+	_G.GetTime, _G.GetServerTime, ns.Travel.Route = gt, gst, rota0
+	ns.db.flightCard, ns.char.voo = true, nil
+	assert(ok, err)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()
