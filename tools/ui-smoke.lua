@@ -844,12 +844,13 @@ step("Fresh route after entering world", function()
 	T.PlayerWorld = function() return { c = 0, x = -10500, y = 1050 } end
 	T.World = function() return { c = 0, x = -10560, y = 1010 } end
 	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
 		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		upd(ns.eventFrame, 1.01)                           -- o jogador já está aqui (sem salto no tique seguinte, #123)
 		local r1 = T:Route()
 		assert(r1 and r1.legs[1], "sem rota")
 		r1.legs[1].path, r1.legs[1].pathFail, r1.legs[1].pathAt = false, true, { c = 0, x = -10500, y = 1050 }
 		assert(T:Describe():find("fail"), "o relatório não mostra a falha do caminho")
-		local upd = ns.eventFrame:GetScript("OnUpdate")
 		-- tela de carregamento comum (masmorra, pedra, barco entre continentes): não refaz
 		ns.fire("PLAYER_ENTERING_WORLD", false, false); ns.fire("LOADING_SCREEN_DISABLED")
 		for _ = 1, 4 do upd(ns.eventFrame, 1.01) end
@@ -1232,6 +1233,35 @@ step("AreaGoals", function()
 	WorldMapFrame.GetMapID, WorldMapFrame.GetCanvas = nil, nil
 	D:Clear("manual")
 	AG.Refresh()
+	assert(ok, err)
+end)
+-- salto (#123): portal/teleporte refaz a rota no tique seguinte; no barco (perna de barco atual), não
+step("Route after teleport", function()
+	local T = ns.Travel
+	local pw, w = T.PlayerWorld, T.World
+	local eu = { c = 0, x = -10500, y = 1050 }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = 0, x = -10560, y = 1010 } end
+	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		upd(ns.eventFrame, 1.01)
+		local r1 = T:Route()
+		assert(r1, "sem rota")
+		eu.x = eu.x + 600                                  -- portal: 600 jd num tique
+		upd(ns.eventFrame, 1.01)
+		local r2 = T:Route()
+		assert(r2 and r2 ~= r1, "o salto não refez a rota")
+		r2.legs[1].k = "ship"                              -- no barco: a tela de carregamento salta, mas não refaz
+		eu.c, eu.x = 1, 2000
+		upd(ns.eventFrame, 1.01)
+		assert(T:Route() == r2, "refez a rota no meio do barco")
+		r2.legs[1].k = "walk"
+		upd(ns.eventFrame, 1.01)                           -- parado: sem salto, sem refazer
+		assert(T:Route() == r2, "refez sem salto")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World = pw, w
 	assert(ok, err)
 end)
 step("Report", function() ns.Report:Show() end)

@@ -588,6 +588,7 @@ ns:On("PLAYER_ENTERING_WORLD", visit)
 -- esperando 300 jd (e a rota nova herdava a falha): o caminho não aparecia até fechar e abrir o guia (#114).
 -- Três tiques do relógio de 1 s depois, refaz do zero.
 local REFAZ_TIQUES = 3
+local SALTO_JD = 250                -- jd num tique de 1 s: ninguém corre nem monta tão rápido (o voo fica de fora)
 local refazEm
 -- Só no login e no /reload: a tela de carregamento no meio de um barco entre continentes (ou depois de masmorra,
 -- pedra, teleporte) não pode jogar fora a perna de barco a bordo nem a rota que acabou de sair certa. O fim da tela
@@ -653,7 +654,15 @@ ns:Every(1, function()
 		local leg = route and route.legs[route.leg]
 		speed = T.NextSpeed(speed, v, leg and leg.k)
 	end
+	-- salto (portal, pedra, teleporte, soltar o espírito): de continente ou mais de SALTO_JD num tique — a rota de onde
+	-- o jogador estava não vale mais; refaz do zero na hora (#123). Em voo ou numa perna de barco (a bordo ou a
+	-- caminho dela: a tela de carregamento no meio da travessia também salta), não.
+	local saltou = pos and lastPos and not onTaxi and (pos.c ~= lastPos.c or dist(pos, lastPos) > SALTO_JD)
 	lastPos, lastT = pos, now
+	if saltou then
+		local c = route and route.legs[route.leg]
+		if not (c and (c.k == "ship" or c.boarded)) then T:Fresh(); return end
+	end
 	ns.char.bind = T.LearnBind(ns.char.bind, GetBindLocation and GetBindLocation(),
 		GetSubZoneText and GetSubZoneText(), pos, vinculou)
 	if pos then vinculou = false end
