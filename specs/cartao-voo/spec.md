@@ -20,9 +20,10 @@ Forever com a pele do ElvUI.
   - uma barra de progresso fina;
   - o botão de pousar no próximo voo do caminho (`TaxiRequestEarlyLanding`). Só aparece se o cliente tiver a função
     e houver mestre de voo no meio: o voo direto não tem onde pousar antes. Depois do pedido, o tempo vira
-    "pousando…" e a barra some.
-- **Quando aparece:** em voo (`UnitOnTaxi`, conferido a cada 0,25 s), com a janela do guia à mostra, como os outros
-  painéis. Some ao pousar ou com a opção desligada.
+    "pousando…" e a barra some; o pedido fica no voo salvo e sobrevive ao /reload.
+- **Quando aparece:** em voo (`UnitOnTaxi`, conferido a cada 0,25 s), com ou sem guia aberto (a viagem também anda
+  com destino manual). Some ao pousar ou com a opção desligada. Fora de voo, o voo salvo é apagado (também o de um
+  pouso com o addon fora: desconexão, tela de carregamento).
 - **Destino e duração**, nesta ordem:
   1. O voo marcado no mapa de voo nos últimos 2 min (gancho em `TakeTaxiNode`, à mão ou pelo voo automático). O nó
      clicado vem pelo `slotIndex` do `C_TaxiMap.GetAllTaxiNodes`, senão pelo nome; o nó atual também vem dali. Sem
@@ -30,7 +31,8 @@ Forever com a pele do ElvUI.
      (`Journey.GameRoute`: o direto se existe, senão a mais curta pelos voos conhecidos).
   2. O voo salvo (`ns.char.voo`, com a decolagem na hora do servidor): volta depois de um /reload em voo, enquanto
      `FlightCard.Valid` (até a duração mais 1 min; sem duração, 30 min).
-  3. A perna de voo atual da rota (o tempo dela menos os 10 s de decolagem; trechos = os do meio + 1).
+  3. A perna de voo atual da rota (o tempo dela menos os 10 s de decolagem; trechos = os do meio + 1, e perna sem
+     `via` é direta).
   4. Sem nenhum deles: "Em voo" e o tempo contando para cima ("+1:23"), sem barra.
 - **Arrastável**, com a posição salva (`flightCardPos`). Configurações → Navegação: "Cartão de voo" (ligado).
 - **O popup de fora:** o Lodestar ainda não o esconde, porque falta o nome do frame (`/fstack` em voo). Até lá, o

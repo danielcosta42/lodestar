@@ -61,7 +61,8 @@ local marcado                  -- { nome, s, trechos, t } do voo marcado no mapa
 local emVoo = false
 local JANELA = 120             -- s: o voo marcado vale para a decolagem que vem até aqui depois
 
-local function on() return ns.db and ns.db.flightCard ~= false and ns:UIShown() end
+-- independente do guia aberto: a viagem também anda com destino manual e com o guia fechado
+local function on() return ns.db and ns.db.flightCard ~= false end
 local function agora() return GetServerTime and GetServerTime() or math.floor(GetTime()) end
 
 -- o nó (id do TravelData) e o nome do slot `i` do mapa de voo aberto, e o nó de onde se sai
@@ -95,6 +96,7 @@ end
 local function pousar()
 	if TaxiRequestEarlyLanding then pcall(TaxiRequestEarlyLanding) end
 	if voo then voo.pousando = true end
+	if ns.char and ns.char.voo then ns.char.voo.pousando = true end      -- o pedido sobrevive ao /reload
 	FC:Update()
 end
 
@@ -147,24 +149,29 @@ local function comecou()
 	if marcado and GetTime() - marcado.t < JANELA then
 		voo = { nome = marcado.nome, s = marcado.s, trechos = marcado.trechos, t0 = now }
 	elseif FC.Valid(salvo, now) then
-		voo = { nome = salvo.nome, s = salvo.s, trechos = salvo.trechos, t0 = salvo.t0 }
+		voo = { nome = salvo.nome, s = salvo.s, trechos = salvo.trechos, t0 = salvo.t0, pousando = salvo.pousando }
 	else
 		local r = ns.Travel and ns.Travel:Route()
 		local leg = r and r.legs[r.leg]
 		if leg and leg.k == "flight" then
-			voo = { nome = leg.name, s = leg.s and math.max(0, leg.s - 10), trechos = leg.via and #leg.via + 1, t0 = now }
+			-- perna sem `via` é voo direto (a junção só põe `via` com mais de um trecho)
+			voo = { nome = leg.name, s = leg.s and math.max(0, leg.s - 10), trechos = leg.via and #leg.via + 1 or 1,
+				t0 = now }
 		else
 			voo = { t0 = now }
 		end
 	end
 	marcado = nil
-	if ns.char then ns.char.voo = { nome = voo.nome, s = voo.s, trechos = voo.trechos, t0 = voo.t0 } end
+	if ns.char then
+		ns.char.voo = { nome = voo.nome, s = voo.s, trechos = voo.trechos, t0 = voo.t0, pousando = voo.pousando }
+	end
 end
 
 function FC:Update()
 	local taxi = UnitOnTaxi and UnitOnTaxi("player")
 	if taxi and not emVoo then comecou() end
-	if not taxi and emVoo then voo = nil; if ns.char then ns.char.voo = nil end end
+	-- fora de voo: sem voo e sem o salvo (também o de um pouso com o addon fora: desconexão, tela de carregamento)
+	if not taxi then voo = nil; if ns.char then ns.char.voo = nil end end
 	emVoo = taxi and true or false
 	if not (taxi and voo and on()) then if card then card:Hide() end return end
 	local c = build()
