@@ -43,7 +43,12 @@ function M:SetText(t) self._text = t end
 function M:SetFormattedText(f, ...) self._text = f:format(...) end
 function M:GetText() return self._text or "" end
 function M:GetStringWidth() return #(self._text or "") * 6 end
-function M:GetStringHeight() return 14 end
+-- a altura do texto segue a fonte e quebra em linhas como no jogo (~68 letras por linha na largura dos painéis)
+function M:SetFont(_, size) self._fs = size end
+function M:GetStringHeight()
+	local n = #(self._text or "")
+	return (self._fs or 14) * (n > 70 and math.ceil(n / 68) or 1)
+end
 function M:GetFont() return "font", 12, "" end
 function M:SetScript(k, f) self._scripts[k] = f end
 function M:HookScript(k, f) self._scripts[k] = f end
@@ -484,6 +489,20 @@ step("TravelPanel stops", function()
 		assert(#D:Stops() == 0, "chegar à parada não a concluiu")
 		r = T:Route()
 		assert(r and #r.stops == 0 and r.kind == "manual", "depois da parada, a rota não foi ao destino")
+		-- chegar à parada: a rota nova herda o caminho já calculado do trecho seguinte (não refaz a busca do zero)
+		do
+			eu.x, eu.y = -10500, 1050
+			WP:Way("20 20")
+			local rt = T:Route()
+			local marca = { 1, 2, 3 }
+			rt.legs[2].path, rt.legs[2].pathFail, rt.legs[2].pathAt = false, true, marca
+			local w1 = T.World(nil, 20, 20)
+			eu.x, eu.y = w1.x + 3, w1.y
+			upd(ns.eventFrame, 1.01)
+			local nr = T:Route()
+			assert(#D:Stops() == 0 and nr and nr.legs[1].pathAt == marca, "depois da parada, o caminho seguinte foi perdido")
+			D:ClearStops()
+		end
 		-- passar antes pela segunda parada também a conclui (#117): ela sai, a primeira fica e a rota volta a ela
 		eu.x, eu.y = -10500, 1050
 		WP:Way("20 20"); WP:Way("35 35")
@@ -585,11 +604,11 @@ step("TravelPanel height", function()
 		return out
 	end
 	local ok, err = pcall(function()
-		for _, caso in ipairs({ { 6, 7 }, { 2, 3 }, { 0, 9 }, { 1, 3 }, { 6, 7, 3 }, { 9, 12 } }) do
+		for _, caso in ipairs({ { 6, 7 }, { 2, 3 }, { 0, 9 }, { 1, 3 }, { 1, 5 }, { 2, 6 }, { 6, 7, 3 }, { 9, 12 } }) do
 			local nS, nL, atual = caso[1], caso[2], caso[3]
 			monta(nS, nL, atual)
 			local nome = ("%d paradas, %d pernas%s"):format(nS, nL, atual and (", na perna " .. atual) or "")
-			assert(fr._h <= 640, nome .. ": a janela passou da tela (" .. fr._h .. " px)")
+			assert(fr._h <= 768 - 64, nome .. ": a janela passou da tela (" .. fr._h .. " px)")
 			local vis = visiveis()
 			local fim = vis[#vis]
 			assert(fim and fim.text._text == "Destino final", nome .. ": o destino final sumiu da linha do tempo ("
@@ -602,6 +621,9 @@ step("TravelPanel height", function()
 					assert(table.concat(k._pts or {}, " ") == "TOPLEFT TOPRIGHT", nome .. ": linha mal ancorada")
 				end
 				assert(mais, nome .. ": a linha do tempo encolheu sem o \"+N\"")
+				for _, k in ipairs(vis) do
+					assert(not (k.text._text or ""):find("^%+1 "), nome .. ": \"+1\" no lugar de um item só")
+				end
 			end
 			local linhas = 0
 			for _, k in ipairs(fr.stops._kids or {}) do if k._shown and k.remove then linhas = linhas + 1 end end

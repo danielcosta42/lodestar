@@ -659,10 +659,6 @@ ns:Every(1, function()
 	if pos then vinculou = false end
 	-- passou por uma parada, qualquer uma — não só a do fim da perna atual (chegou antes à segunda): ela sai da fila
 	-- (#117). Em voo não conta (sobrevoar não é chegar); fantasma, as paradas esperam o corpo.
-	local D = ns.Destinations
-	if pos and not onTaxi and D and D.Reached and not (UnitIsGhost and UnitIsGhost("player")) then
-		for _, s in ipairs(D.Reached(D:Stops(), pos, worldOf)) do D:DoneStop(s) end
-	end
 	-- destino mudou (passo novo, manual, corpo, parada): rota nova já — em voo ou a bordo, depois de pousar ou
 	-- desembarcar (T:Busy)
 	if T.ChainKey(chain()) ~= routeKey and not T:Busy() then return T:Replan(true) end
@@ -690,6 +686,11 @@ ns:Every(1, function()
 			end
 			changed()
 		end
+	end
+	-- (depois de avançar a perna: a perna seguinte, já calculada da parada, é herdada pela rota nova)
+	local D = ns.Destinations
+	if pos and not onTaxi and D and D.Reached and not (UnitIsGhost and UnitIsGhost("player")) then
+		for _, s in ipairs(D.Reached(D:Stops(), pos, worldOf)) do D:DoneStop(s) end
 	end
 	sinceReplan = sinceReplan + 1
 	if sinceReplan >= REPLAN_EVERY and not T:Busy() then T:Replan(false) end      -- em voo ou a bordo, não

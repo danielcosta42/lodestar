@@ -34,9 +34,10 @@ claro").
   a do próprio NPC sempre), e a seta segue para a próxima dizendo a parada e o depois ("Reparo · depois Silvermane
   Stalker"). O corpo passa na frente (as paradas esperam); só na sessão; Limpar e fechar o guia tiram junto.
   (#117, revisão) A janela cabe na tela: a lista de paradas e a linha do tempo dividem a altura que sobra (no máximo
-  640 px, ou 80% da tela se for maior); não cabendo, saem primeiro as pernas feitas, e ficam a perna atual, o resto do
-  trecho até a próxima parada, um "+N a mais no caminho" (com o tempo) e o destino — que nunca some —, e até 4 paradas
-  na lista com "+N a mais". O vendedor só conclui o reparo se conserta; o treinador de profissão, só o da própria
+  a altura da tela menos 64 px, nunca menos de 640); não cabendo, saem primeiro as pernas feitas, e ficam a perna
+  atual, o resto do trecho até a próxima parada, um "+N a mais no caminho" (com o tempo; com um só escondido, ele
+  aparece no lugar do "+1") e o destino — que nunca some —, e até 4 paradas na lista com "+N a mais". A grade de
+  serviços mede de novo quando a fila de paradas muda (mede da última parada). O vendedor só conclui o reparo se conserta; o treinador de profissão, só o da própria
   parada (na Grande Forja há um de cada a 60 jd). Passar a 15 jd de qualquer parada a conclui (não só a do trecho
   atual). Em voo ou a bordo, pôr ou tirar parada não refaz a rota do meio do ar ou do mar: refaz ao pousar ou
   desembarcar. Coordenada fora do mapa (zona que não se conhece) não vira parada: o chat diz; a zona digitada vale em
@@ -83,8 +84,9 @@ Helper), busca de itens, raros.
   paradas (#117): serviço e coordenada viram parada antes do destino, Shift vai direto, × tira, chegar e abrir a
   janela do serviço concluem, o corpo passa na frente, Limpar tira tudo. (#117, revisão) Vendedor que não conserta não
   conclui o reparo; passar antes pela segunda parada a conclui; em voo a rota não se refaz até pousar; zona que não se
-  conhece não vira parada; a altura da Navegação com muitas paradas e pernas (6 e 7, 9 e 12, 0 e 9...) fica em 640 px,
-  com o destino e os "+N".
+  conhece não vira parada; a altura da Navegação com muitas paradas e pernas (6 e 7, 9 e 12, 0 e 9...) cabe numa tela de
+  768 px (altura do texto seguindo a fonte e as linhas), com o destino e os "+N", sem "+1"; chegar à parada mantém o
+  caminho já calculado do trecho seguinte.
 - tools/travel-tests.lua (#117): fila de paradas (ordem, repetida, tirar, limpar por serviço), cadeia com corpo e
   sem destino, janela que conclui (tipo e distância, NPC), rota emendada (pernas, marcadores, total, corte sem
   ligação, pedra uma vez), texto da seta com o depois. (#117, revisão) Quanto falta com barco de horário depois de uma

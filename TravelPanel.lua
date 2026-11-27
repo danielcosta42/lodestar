@@ -67,6 +67,8 @@ function TP.Fit(h, isStop, cur, nStops, avail, empty)
 	while upto < n and not isStop[upto] and fits(upto + 1, rows) do upto = upto + 1 end
 	while rows < maxRows and fits(upto, rows + 1) do rows = rows + 1 end
 	while upto < n and fits(upto + 1, rows) do upto = upto + 1 end
+	-- um só escondido: mostra ele (a linha "+1" economizaria uns 10 px e esconderia o que diz)
+	if upto == n - 2 then upto = n - 1 end
 	return first, upto, rows
 end
 
@@ -332,6 +334,13 @@ function TP.Refresh()
 	local C, L, D, T = UI.COL, ns.L, ns.Destinations, ns.Travel
 	local dest, kind = D:Active()
 	local stops = D:Stops()
+	-- a grade de serviços mede da última parada (#117): a fila mudou, mede de novo
+	local ultima = stops[#stops]
+	local sigStops = #stops .. (ultima and (":" .. tostring(ultima.zone) .. tostring(ultima.x) .. tostring(ultima.y)) or "")
+	if sigStops ~= frame._sigStops then
+		if frame._sigStops then TP.MeasureServices() end
+		frame._sigStops = sigStops
+	end
 	if not dest and stops[1] then dest, kind = stops[#stops], "stop" end   -- só paradas: a última é o fim
 	frame.kind:SetText(kind and L["TRAVEL_KIND_" .. kind:upper()]:upper() or L.TRAVEL_DEST:upper())
 	frame.kind:SetTextColor(unpackc(kind == "corpse" and C.danger or C.dim))
@@ -370,7 +379,8 @@ function TP.Refresh()
 	local bottom = 16 + 18 + frame.svc:GetHeight() + (status:IsShown() and status:GetStringHeight() + 6 or 0)
 		+ 10 + 18 + 36 + frame.hint:GetStringHeight() + PAD
 	local screen = UIParent and UIParent:GetHeight() or 0
-	local avail = math.max(MAX_H, math.floor(screen * 0.8)) - y - bottom - 16
+	-- a tela inteira menos uma folga: com a fonte de verdade (a dica quebra em ~4 linhas) 640 fixo já não cabia
+	local avail = math.max(MAX_H, math.floor(screen - 64)) - y - bottom - 16
 	local first, upto, rows = TP.Fit(h, isStop, cur, #stops, avail, 30)
 
 	-- as paradas, na ordem, com o × (#117); as que não cabem, num "+N a mais"
