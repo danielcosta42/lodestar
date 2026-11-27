@@ -1,7 +1,8 @@
 --=============================================================================
 -- PartyTell — avisar o grupo (specs/revamp-polestar, R13; ligado, desliga nas Configurações, #127): quando uma quest
 -- do diário fica pronta para entregar, uma linha no chat do grupo, "Lodestar: [Quest] pronta para entregar"; quando
--- um objetivo dela fecha, "Lodestar: [Quest] · 8/8 Kobold Vermin slain" (o texto do objetivo como o jogo dá). Só em grupo (não raide, não campo de
+-- um objetivo dela fecha, "Lodestar: [Quest] · 8/8 Kobold Vermin slain" (o texto do objetivo como o jogo
+-- dá). Só em grupo (não raide, não campo de
 -- batalha); uma vez por quest e por objetivo; nada no login, no /reload nem para o que já estava feito ao entrar no
 -- grupo. No topo, o núcleo puro (Ready, Objectives; testado fora do jogo). Abaixo, o envio.
 --=============================================================================

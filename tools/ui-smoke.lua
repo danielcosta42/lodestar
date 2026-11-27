@@ -1467,7 +1467,7 @@ step("Party tell", function()
 	local QL, ig, scm, cci = _G.C_QuestLog, _G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo
 	local n, get, done, objs = QL.GetNumQuestLogEntries, QL.GetInfo, QL.IsComplete, QL.GetQuestObjectives
 	-- quest 77 com dois objetivos; quest 78 com quatro (para o limite de 3 linhas)
-	local feito = { [77] = { false, false }, [78] = { false, false, false, false, false } }
+	local feito = { [77] = { false, false }, [78] = { false, false, false, false, true } }   -- o 5º de 78 já feito
 	local semTexto = false
 	QL.GetNumQuestLogEntries = function() return 2 end
 	QL.GetInfo = function(i) return { questID = 76 + i } end
@@ -1478,7 +1478,9 @@ step("Party tell", function()
 	QL.GetQuestObjectives = function(q)
 		local out = {}
 		for j, f in ipairs(feito[q]) do
-			out[j] = { text = (semTexto and q == 78) and "" or ((f and "8/8" or "3/8") .. " Alvo " .. q .. "." .. j), finished = f }
+			-- sem os dados do servidor: linha vazia e "por fazer" (o objetivo já feito não pode parecer recém-fechado)
+			local vazio = semTexto and q == 78
+			out[j] = { text = vazio and "" or ((f and "8/8" or "3/8") .. " Alvo " .. q .. "." .. j), finished = f and not vazio }
 		end
 		return out
 	end
