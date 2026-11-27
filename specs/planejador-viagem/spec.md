@@ -69,7 +69,11 @@ pelo cliente, ícones e tooltips de cais no mapa.
   for melhor (o mestre de voo do outro lado do penhasco: Hammerfall para as Hinterlands dá lugar a Tarren Mill). Em
   voo ou a bordo, a troca fica para o replanejar de depois do pouso. O fator vale para quem sai até 150 jd (ou 15% da reta medida, o que
   for maior) do começo medido (o pouso do grifo fica uns jd ao lado do mestre de voo). A pé emendado em a pé não entra no Dijkstra (pela
-  reta nunca encurta; só fugiria do fator passando por um cais ou voo ao lado). A perna a pé atual com o caminho bem
+  reta nunca encurta; só fugiria do fator passando por um cais ou voo ao lado): cada nó tem dois estados, chegou a
+  pé ou não, e quem chegou a pé só segue de transporte (o "voa até lá e anda" não se perde quando o nó também se
+  alcança a pé mais barato). A rota nova que começa a pé até um fim com desvio medido de outro começo
+  (`T.PrecisaMedir`: andando até o mestre de voo, fora do raio da medida) só entra depois de medir o caminho daqui;
+  a medida fica guardada (pequena ou grande) e a rota é decidida de novo — a rota não alterna. A perna a pé atual com o caminho bem
   mais longo que a reta (`T.DesvioAtual`: o pouso do outro lado do penhasco) entra no replanejar como desvio só dele,
   e a comparação com a rota nova soma os segundos a mais; o caminho dela que termina com desvio grande fica guardado
   de onde saiu (a rota nova não volta à reta no replanejar seguinte). As pernas a pé iguais da rota nova herdam o caminho já

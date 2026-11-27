@@ -1317,6 +1317,58 @@ step("Terrain detour current leg", function()
 	T:ResetPaths()
 	assert(ok, err)
 end)
+-- andando até o mestre de voo (#125): a rota a pé que a reta acha melhor, sem medida daqui e com desvio medido para o
+-- mesmo fim, só entra depois de medir — a rota não alterna
+step("Terrain detour measure first", function()
+	local T, TR = ns.Travel, ns.Terrain
+	local pw, w0, ctx0, path0, dados = T.PlayerWorld, T.World, T.Context, TR.Path, ns.travel
+	local eu = { c = 0, x = 0, y = 0 }
+	local alvo = { c = 0, x = 600, y = 0 }
+	ns.travel = { nodes = { [1] = { n = "Perto", c = 0, x = 0, y = 50, f = "A" }, [2] = { n = "Lá", c = 0, x = 600, y = 50, f = "A" } },
+		flights = { [1] = { [2] = { s = 80, p = { 0, 50, 600, 50 } } } }, ships = {} }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = alvo.c, x = alvo.x, y = alvo.y } end
+	T.Context = function(self)
+		local c = ctx0(self)
+		c.known, c.hearth, c.teleports, c.speed = { [1] = true, [2] = true }, nil, {}, 7
+		return c
+	end
+	local medidas = {}
+	TR.Path = function(_, de, para)
+		medidas[#medidas + 1] = de
+		-- daqui até o alvo, a pé dá a volta (bem mais longo); do lado de lá (o voo pousa ali) e até o voo, reto
+		if de.x > 300 or para.x < 300 then return { de, para } end
+		return { de, { c = de.c, x = de.x, y = de.y + 1500 }, para }
+	end
+	local ok, err = pcall(function()
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		T:ResetPaths()
+		ns.Destinations:Set("manual", { zone = "Westfall", x = 50, y = 50, label = "X" })
+		T:Fresh()
+		assert(T:Route() and T:Route().legs[1].k == "walk" and #T:Route().legs == 1, "começa a pé (a reta)")
+		for _ = 1, 10 do upd(ns.eventFrame, 0.06) end                -- mede a perna atual: desvio, voa
+		local function voa()
+			for _, l in ipairs(T:Route() and T:Route().legs or {}) do if l.k == "flight" then return true end end
+			return false
+		end
+		assert(voa(), "o desvio medido não trocou para o voo")
+		for _ = 1, 4 do eu.y = eu.y - 100; upd(ns.eventFrame, 1.01) end   -- andou 400 jd: fora do raio da medida
+		assert(voa(), "andar trocou a rota")
+		local n0 = #medidas
+		T:Replan(false)                                            -- a reta daqui acha a pé melhor (103 s contra 161)
+		assert(voa(), "trocou para a pé sem medir daqui")
+		for _ = 1, 10 do upd(ns.eventFrame, 0.06) end
+		local daqui = false
+		for i = n0 + 1, #medidas do daqui = daqui or (math.abs(medidas[i].y + 400) < 1 and medidas[i].x == 0) end
+		assert(daqui, "não mediu daqui")
+		T:Replan(false)
+		assert(voa(), "a medida daqui (desvio) não segurou a rota")
+	end)
+	ns.Destinations:Clear("manual")
+	ns.travel, T.PlayerWorld, T.World, T.Context, TR.Path = dados, pw, w0, ctx0, path0
+	T:ResetPaths()
+	assert(ok, err)
+end)
 -- salto (#123): portal/teleporte refaz a rota no tique seguinte; no barco (perna de barco atual), não
 step("Route after teleport", function()
 	local T = ns.Travel

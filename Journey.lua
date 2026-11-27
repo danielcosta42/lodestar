@@ -138,38 +138,40 @@ function J.Plan(from, to, ctx)
 	-- mestre de voo; o cais ao lado dele) ou 15% da reta medida, o que for maior
 	local desvios = ctx.desvios or {}
 	local function aPe(pa, pb)
-		local d = dist(pa, pb)
-		for _, dv in ipairs(desvios) do
-			if dv.a.c == pa.c and math.abs(dv.b.x - pb.x) < 1 and math.abs(dv.b.y - pb.y) < 1
-				and dist(dv.a, pa) <= math.max(DESVIO_RAIO, 0.15 * dist(dv.a, dv.b)) then return d * dv.f end
-		end
-		return d
+		return dist(pa, pb) * (J.DesvioDe(desvios, pa, pb) or 1)
 	end
 
-	-- Dijkstra O(n²): ~120 nós, a pé entre todo par do mesmo continente
+	-- Dijkstra O(n²): ~120 nós, a pé entre todo par do mesmo continente. Cada nó tem dois estados: chegou a pé
+	-- (n + i) ou não (i). A pé emendado em a pé nunca encurta pela reta (a direta é menor ou igual): só serviria para
+	-- fugir de um desvio medido (#125) passando por um cais ou voo ao lado — e o caminho pelo terreno já é o melhor a
+	-- pé. Quem chegou a pé só segue de transporte; o estado separado não perde o "voa até lá e anda" quando o nó também
+	-- se alcança a pé mais barato.
 	local n = #nodes
 	local best, prev, via, done = {}, {}, {}, {}
-	local gastou = {}                         -- [nó] = o `gasto` embutido em best: tempo que não passa
-	for i = 1, n do best[i] = math.huge end
+	local gastou = {}                         -- [estado] = o `gasto` embutido em best: tempo que não passa
+	for i = 1, 2 * n do best[i] = math.huge end
 	best[START] = 0
-	for _ = 1, n do
+	local fim
+	for _ = 1, 2 * n do
 		local u, bu = nil, math.huge
-		for i = 1, n do
+		for i = 1, 2 * n do
 			if not done[i] and best[i] < bu then u, bu = i, best[i] end
 		end
-		if not u or u == GOAL then break end
+		if not u then break end
+		local ui = u > n and u - n or u
+		if ui == GOAL then fim = u; break end
 		done[u] = true
-		local pu = nodes[u].pt
-		-- a pé emendado em a pé nunca encurta pela reta (a direta é menor ou igual): só serviria para fugir de um
-		-- desvio medido (#125) passando por um cais ou voo ao lado — e o caminho pelo terreno já é o melhor a pé
-		local aPeDeNovo = via[u] and via[u].k == "walk"
-		for v = 1, aPeDeNovo and 0 or n do
-			if not done[v] and v ~= START and nodes[v].pt.c == pu.c then
-				local s = bu + aPe(pu, nodes[v].pt) / speed
-				if s < best[v] then best[v], prev[v], via[v], gastou[v] = s, u, { k = "walk" }, gastou[u] end
+		local pu = nodes[ui].pt
+		if u <= n then
+			for v = 1, n do
+				local w = n + v
+				if not done[w] and v ~= START and nodes[v].pt.c == pu.c then
+					local s = bu + aPe(pu, nodes[v].pt) / speed
+					if s < best[w] then best[w], prev[w], via[w], gastou[w] = s, u, { k = "walk" }, gastou[u] end
+				end
 			end
 		end
-		for _, e in ipairs(special[u] or {}) do
+		for _, e in ipairs(special[ui] or {}) do
 			local es, leg = e.s, e.leg
 			if e.fn then
 				local dep
@@ -184,15 +186,16 @@ function J.Plan(from, to, ctx)
 			end
 		end
 	end
-	if best[GOAL] == math.huge then return nil end
+	if not fim then return nil end
 
-	local legs, v = {}, GOAL
+	local legs, v = {}, fim
 	while v ~= START do
 		local u = prev[v]
+		local vi, ui = v > n and v - n or v, u > n and u - n or u
 		local leg = {}
 		for k, val in pairs(via[v]) do leg[k] = val end
-		leg.a, leg.b, leg.s = nodes[u].pt, nodes[v].pt, best[v] - best[u] - (leg.gasto or 0)
-		if leg.k == "walk" and nodes[v].kind == "fm" then leg.name = nodes[v].name end
+		leg.a, leg.b, leg.s = nodes[ui].pt, nodes[vi].pt, best[v] - best[u] - (leg.gasto or 0)
+		if leg.k == "walk" and nodes[vi].kind == "fm" then leg.name = nodes[vi].name end
 		table.insert(legs, 1, leg)
 		v = u
 	end
@@ -201,7 +204,15 @@ function J.Plan(from, to, ctx)
 	local antes, depois = 0, 0
 	for _, l in ipairs(legs) do antes = antes + l.s end
 	for _, l in ipairs(juntas) do depois = depois + l.s end
-	return { s = best[GOAL] - antes + depois, legs = juntas }
+	return { s = best[fim] - antes + depois, legs = juntas }
+end
+
+-- O desvio medido que vale a pé de pa a pb (#125): o primeiro com o mesmo fim e o começo perto do medido -> f | nil
+function J.DesvioDe(desvios, pa, pb)
+	for _, dv in ipairs(desvios or {}) do
+		if dv.a.c == pa.c and math.abs(dv.b.x - pb.x) < 1 and math.abs(dv.b.y - pb.y) < 1
+			and dist(dv.a, pa) <= math.max(DESVIO_RAIO, 0.15 * dist(dv.a, dv.b)) then return dv.f end
+	end
 end
 
 -- A rota que o jogo voa ao marcar `z` saindo de `a` (#124): o voo direto, se existe, qualquer que seja a distância;

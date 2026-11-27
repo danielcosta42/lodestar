@@ -173,6 +173,15 @@ do
 	end
 	check(math.abs(dePerto(280) - 3) < 0.01, "o raio cresce com a perna medida (15% de 2000 jd)")
 	check(math.abs(dePerto(320) - 1) < 0.01, "longe do começo medido: a reta")
+	local dvl = { { a = P(0, 0, 0), b = P(0, 2000, 0), f = 3 } }
+	-- o nó do pouso também se alcança a pé mais barato: o "voa até lá e anda" não se perde (dois estados por nó)
+	local d3 = { nodes = { [1] = { n = "Perto", c = 0, x = 0, y = 50, f = "A" }, [2] = { n = "Lá", c = 0, x = 600, y = 50, f = "A" } },
+		flights = { [1] = { [2] = { s = 80, p = { 0, 50, 600, 50 } } } }, ships = {} }
+	local rf = J.Plan(P(0, 0, 0), P(0, 600, 0), { data = d3, fac = "A", known = { [1] = true, [2] = true }, speed = 7,
+		teleports = {}, desvios = { { a = P(0, 0, 0), b = P(0, 600, 0), f = 5 } } })
+	check(rf and kinds(rf) == "walk,flight,walk", "desvio a pé: voa e anda, mesmo com o pouso perto a pé (" .. (rf and kinds(rf) or "nil") .. ")")
+	check(J.DesvioDe(dvl, P(0, 0, 250), P(0, 2000, 0)) == 3 and not J.DesvioDe(dvl, P(0, 0, 400), P(0, 2000, 0))
+		and not J.DesvioDe(dvl, P(0, 0, 0), P(0, 2100, 0)), "o desvio que vale: mesmo fim, começo perto")
 	-- sem voo direto: um voo só, pela rota do jogo (Thalanaar -> Nijel's Point passa por Feathermoon)
 	local _, th = node("Thalanaar")
 	local _, nj = node("Nijel's Point")
@@ -303,6 +312,11 @@ check(T.AddDesvio(dvs, P(0, 1, 1), P(0, 9, 9), 2) and #dvs == 1, "registra o des
 check(not T.AddDesvio(dvs, P(0, 1.5, 1), P(0, 9, 9.5), 3) and #dvs == 1, "o mesmo par não registra de novo")
 for i = 1, T.MAX_DESVIOS + 2 do T.AddDesvio(dvs, P(0, i * 10, 0), P(0, 0, 0), 2) end
 check(#dvs == T.MAX_DESVIOS and dvs[1].a.x ~= 1, "guarda só os mais novos")
+local medido = { { a = P(0, 0, 0), b = P(0, 2000, 0), f = 3 } }
+check(not T.PrecisaMedir(medido, P(0, 0, 100), P(0, 2000, 0)), "a pé coberto pelo desvio medido: decide já")
+check(T.PrecisaMedir(medido, P(0, 0, 900), P(0, 2000, 0)), "longe do começo medido, mesmo fim: mede antes de trocar")
+check(not T.PrecisaMedir(medido, P(0, 0, 900), P(0, 3000, 0)), "fim sem desvio medido: a reta vale")
+check(not T.PrecisaMedir({}, P(0, 0, 900), P(0, 2000, 0)), "sem desvios: a reta vale")
 local velha = { legs = { { k = "walk", a = P(0, 0, 0), b = P(0, 5, 5), path = { 1 } },
 	{ k = "flight" }, { k = "walk", a = P(0, 100, 0), b = P(0, 200, 0), path = { "c" }, pathFail = true } } }
 local nova = { legs = { { k = "walk", a = P(0, 1, 1), b = P(0, 5, 5) }, { k = "flight" },

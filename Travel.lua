@@ -167,6 +167,8 @@ end
 local speed = 7
 local lastPos, lastT
 local desvios = {}                     -- pernas a pé que o terreno mostrou mais longas que a reta (#125)
+local sonda                            -- a pé a medir antes de trocar de rota (#125): { a, b, sonda = true }
+local pathCo, pathLeg, pathRoute, pathIdx, pathDeA, quadro   -- a busca do caminho pelo terreno (pathTick)
 
 local function faction()
 	return UnitFactionGroup("player") == "Horde" and "H" or "A"
@@ -391,8 +393,16 @@ function T:Replan(force)
 		route, routeKey = new, key
 		if was or new then changed() end                -- sem rota antes e depois: nada mudou
 	elseif T.ShouldReplace({ s = T.Remaining(route, from, speed, serverNow(), true) + (extra or 0) }, new) then
-		route = new
-		changed()
+		local n1 = new.legs[1]
+		if n1 and n1.k == "walk" and T.PrecisaMedir(ctx.desvios, from, n1.b) then
+			-- a pé daqui ainda sem medida: mede (pathTick) e decide de novo; a rota atual fica até lá
+			if not (sonda or (pathCo and pathLeg and pathLeg.sonda)) then
+				sonda = { k = "walk", a = from, b = n1.b, sonda = true }
+			end
+		else
+			route = new
+			changed()
+		end
 	end
 end
 
@@ -449,8 +459,8 @@ function T.PathLength(path)
 end
 
 -- Registra o fator f da perna a pé de a a b; false se esse par já tinha (não replaneja de novo pelo mesmo). Guarda
--- os 16 mais novos.
-T.MAX_DESVIOS = 16
+-- os 32 mais novos.
+T.MAX_DESVIOS = 32
 function T.AddDesvio(lista, a, b, f)
 	for _, dv in ipairs(lista) do
 		if dv.a.c == a.c and math.abs(dv.a.x - a.x) < 1 and math.abs(dv.a.y - a.y) < 1
@@ -477,6 +487,17 @@ function T.InheritPaths(old, new)
 			end
 		end
 	end
+end
+
+-- A pé de `from` até `b` sem medida daqui, mas com desvio medido de outro começo para o mesmo fim (#125): a reta não
+-- é de confiar. A rota nova que começa assim só entra depois de medir (senão, andando até o mestre de voo, a rota
+-- voltava à reta a cada ~200 jd e alternava).
+function T.PrecisaMedir(lista, from, b)
+	if not (from and b) or ns.Journey.DesvioDe(lista, from, b) then return false end
+	for _, dv in ipairs(lista or {}) do
+		if dv.b.c == b.c and math.abs(dv.b.x - b.x) < 1 and math.abs(dv.b.y - b.y) < 1 then return true end
+	end
+	return false
 end
 
 -- A perna a pé atual (`cur`, de onde o jogador está, `pos`) com o caminho pelo terreno bem mais longo que a reta: o
@@ -565,7 +586,6 @@ ns:On("CHAT_MSG_MONSTER_SAY", onAnnounce)
 -- jd adiante — a busca que falha é a mais cara. Com a atual em dia, as próximas pernas a pé
 -- ganham o delas, da parada de início, uma de cada vez. `route.pv` conta os caminhos novos
 -- (o desenho refaz).
-local pathCo, pathLeg, pathRoute, pathIdx, pathDeA, quadro
 local ORCAMENTO = 3                                   -- ms por quadro
 local function estourou()
 	return debugprofilestop and quadro and debugprofilestop() - quadro > ORCAMENTO
@@ -588,6 +608,15 @@ local function pathTick()
 		if not ok or coroutine.status(pathCo) == "dead" then
 			if not ok then ns:Debug("Terrain:", res) end
 			pathCo = nil
+			if pathLeg.sonda then
+				-- a medida da rota a pé que esperava (#125): fica guardada, pequena ou grande (sem caminho, a reta), e
+				-- a rota é decidida de novo
+				local D = dist(pathLeg.a, pathLeg.b)
+				local f = (ok and res and D > 0) and math.max(1, T.PathLength(res) / D) or 1
+				T.AddDesvio(desvios, pathLeg.a, pathLeg.b, f)
+				if not T:Busy() then T:Replan(false) end
+				return
+			end
 			if ok and res then
 				-- o da segunda busca (cruza uma passagem que a grade não tem): não refaz a cada desvio, como na falha
 				pathLeg.path, pathLeg.pathFail = res, res.solto or nil
@@ -618,6 +647,10 @@ local function pathTick()
 	local leg, idx, from = nil, nil, nil
 	if precisa then
 		leg, idx, from = cur, route.leg, { c = pos.c, x = pos.x, y = pos.y }
+	elseif sonda then
+		leg, idx, from = sonda, route.leg, sonda.a
+		sonda = nil
+		if leg.a.c ~= leg.b.c then return end
 	else
 		for i = route.leg + 1, #route.legs do
 			local l = route.legs[i]
@@ -635,7 +668,7 @@ end
 -- passagem gravada ou apagada (Passages.lua): larga a busca em curso, limpa os caminhos a pé e redesenha
 function T:ResetPaths()
 	pathCo = nil
-	desvios = {}                                   -- o terreno mudou: os desvios medidos também
+	desvios, sonda = {}, nil                       -- o terreno mudou: os desvios medidos também
 	if not route then return end
 	for _, leg in ipairs(route.legs) do
 		if leg.k == "walk" then leg.path, leg.pathFail, leg.pathAt = nil, nil, nil end
