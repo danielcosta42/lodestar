@@ -207,6 +207,10 @@ local far = N.Pick({ { q = 9, dist = 900, kind = "books", radius = math.huge }, 
 check(#far == 1 and far[1].kind == "books", "os livros valem na cidade toda (raio próprio); o resto, no raio")
 local mix = N.Pick({ { q = "books", dist = 40, kind = "books", radius = math.huge }, { q = 7, dist = 40, kind = "turnin" } }, 220, 3)
 check(#mix == 2, "empate de distância entre livro e quest não quebra a ordem")
+local topo = N.Pick({ { q = 1, dist = 10, kind = "turnin" }, { q = 2, dist = 20, kind = "turnin" },
+	{ q = 3, dist = 30, kind = "turnin" }, { q = "books", dist = 900, kind = "books", radius = math.huge, top = true } }, 220, 3)
+check(#topo == 3 and topo[1].kind == "books" and topo[2].q == 1 and topo[3].q == 2,
+	"os livros na cidade ficam na lista e na frente, mesmo com três linhas mais perto")
 local zonas = { "Tanaris", "Durotar" }
 local enders = { [10] = { 1, 50, 27, 2, 10, 10 }, [11] = { 1, 60, 60 }, [12] = { 2, 1, 1 } }
 local function dz(z, x, y) return z == "Tanaris" and math.abs(x - 50) * 10 + math.abs(y - 27) * 10 or nil end
