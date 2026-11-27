@@ -62,7 +62,8 @@ See [docs/forever.md](docs/forever.md) for the measurements and what is still op
   client's quest areas). The arrow starts at the guide's spot; click it to go to the next area, nearest first.
 - **Travel planner** — the fastest trip by travel time, leg by leg: walking, the flight paths you know
   (and new ones you pick up on the way), boats, zeppelins, the Deeprun Tram, your hearthstone and
-  class teleports. It replans as you go, and the flight map highlights where to fly.
+  class teleports. It replans as you go, and the flight map highlights where to fly. In flight, a **flight card**
+  shows the destination, the time left and a button to land at the next flight master on the way.
 - **Walks follow the terrain** — the walking part of a route goes around mountains, cliffs and
   lakes instead of a straight line (from the game client's own terrain; enclosed cities still
   fall back to a straight line).

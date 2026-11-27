@@ -1831,4 +1831,27 @@ end)()
 	check(DS.GuideTarget().goal == comArea and DS.GuideTarget().x == 9, "sem volta de áreas: o goto do passo")
 end)()
 
+;(function()
+	-- o cartão de voo (#129): nome em duas linhas, tempo, progresso e a duração pela rota do jogo
+	local FC = load("FlightCard.lua", { Journey = J }).FlightCard
+	local a, b = FC.Split("Hammerfall, Arathi")
+	check(a == "Hammerfall" and b == "Arathi", "nome do voo em duas linhas")
+	a, b = FC.Split("Moonglade")
+	check(a == "Moonglade" and b == nil and FC.Split(nil) == nil and FC.Split("") == nil, "sem vírgula, sem nome")
+	local falta, frac = FC.Progress(300, 100, 160)
+	check(falta == 240 and math.abs(frac - 0.2) < 1e-9, "falta e progresso")
+	falta, frac = FC.Progress(300, 100, 900)
+	check(falta == 0 and frac == 1, "passou do tempo: zero e cheio")
+	check(FC.Progress(nil, 100, 160) == nil and FC.Progress(0, 100, 160) == nil, "sem duração: conta para cima")
+	check(FC.Fmt(284) == "4:44" and FC.Fmt(3723) == "1:02:03" and FC.Fmt(-5) == "0:00", "o tempo como no jogo")
+	local fl = { [1] = { [2] = { s = 100 } }, [2] = { [3] = { s = 120 } } }
+	check(FC.Duration(fl, { [2] = true, [3] = true }, 1, 3) == 220, "duração pela rota do jogo (sem direto)")
+	fl[1][3] = { s = 279 }
+	check(FC.Duration(fl, { [2] = true, [3] = true }, 1, 3) == 279, "com direto: o direto, como o jogo voa")
+	check(FC.Duration(fl, {}, nil, 3) == nil, "sem o nó de saída: sem duração")
+	local ucId, hfId = node("Undercity"), node("Hammerfall")
+	check(FC.Duration(real.flights, todos("H"), ucId, hfId) == real.flights[ucId][hfId].s,
+		"Undercity -> Hammerfall: o direto dos dados (" .. tostring(FC.Duration(real.flights, todos("H"), ucId, hfId)) .. ")")
+end)()
+
 print(("ok: %d checks"):format(checks))

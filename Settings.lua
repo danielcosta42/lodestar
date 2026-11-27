@@ -153,6 +153,9 @@ local function fillNav(p)
 		function(v) ns.db.arrow.enabled = v; if ns.Waypoint then ns.Waypoint:Update() end end)
 	switchRow(p, L.SET_TRAIL, L.SET_TRAIL_D,
 		function() return ns.db.trail end, function(v) ns.db.trail = v end)
+	switchRow(p, L.SET_FLIGHTCARD, L.SET_FLIGHTCARD_D,
+		function() return ns.db.flightCard ~= false end,
+		function(v) ns.db.flightCard = v; if ns.FlightCard then ns.FlightCard:Update() end end)
 	switchRow(p, L.SET_COMPASS, L.SET_COMPASS_D,
 		function() return ns.db.compass.enabled end, function(v) ns.db.compass.enabled = v end)
 	switchRow(p, L.SET_COMPASS_LOCK, L.SET_COMPASS_LOCK_D,

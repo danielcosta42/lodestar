@@ -1521,6 +1521,50 @@ step("Party tell", function()
 	_G.IsInGroup, _G.SendChatMessage, _G.C_ChatInfo = ig, scm, cci
 	assert(ok, err)
 end)
+-- cartão de voo (#129): o voo marcado no mapa de voo, em voo com destino, zona, tempo e barra; pousou, some
+step("Flight card", function()
+	local taxi, tnn, gat, early, gt = _G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes, _G.TaxiRequestEarlyLanding, _G.GetTime
+	local ucId, hfId
+	for id, v in pairs(ns.travel.nodes) do
+		if v.n:find("^Undercity") then ucId = id elseif v.n:find("^Hammerfall") then hfId = id end
+	end
+	local voando, pediu, agora = false, 0, gt()
+	_G.UnitOnTaxi = function() return voando end
+	_G.TaxiNodeName = function() return "Hammerfall, Arathi" end
+	C_TaxiMap.GetAllTaxiNodes = function()
+		return { { nodeID = ucId, name = "Undercity, Tirisfal", state = 0 }, { nodeID = hfId, name = "Hammerfall, Arathi", state = 1 } }
+	end
+	_G.TaxiRequestEarlyLanding = function() pediu = pediu + 1 end
+	_G.GetTime = function() return agora end
+	local ok, err = pcall(function()
+		ns.FlightCard:Marcou(2)
+		voando = true
+		ns.FlightCard:Update()
+		local c = _G.LodestarFlightCard
+		assert(c and c:IsShown(), "o cartão não abriu em voo")
+		assert(c.title:GetText() == "Hammerfall" and c.sub:GetText() == "Arathi", "destino: " .. tostring(c.title:GetText()))
+		local s = ns.travel.flights[ucId][hfId].s
+		assert(c.time:GetText() == ns.FlightCard.Fmt(s), "tempo: " .. tostring(c.time:GetText()) .. " (esperado " .. s .. " s)")
+		agora = agora + 60
+		ns.FlightCard:Update()
+		assert(c.time:GetText() == ns.FlightCard.Fmt(s - 60), "o tempo não andou: " .. tostring(c.time:GetText()))
+		assert(c.land:IsShown(), "sem o botão de pousar")
+		c.land:GetScript("OnClick")(c.land)
+		assert(pediu == 1 and not c.land:IsShown(), "pousar não pediu ou o botão ficou")
+		ns.db.flightCard = false; ns.FlightCard:Update()
+		assert(not c:IsShown(), "desligado e o cartão ficou")
+		ns.db.flightCard = true; ns.FlightCard:Update()
+		voando = false; ns.FlightCard:Update()
+		assert(not c:IsShown(), "pousou e o cartão ficou")
+		voando = true; ns.FlightCard:Update()                      -- voo sem marcar nem rota: conta para cima
+		assert(c:IsShown() and c.title:GetText() == ns.L.IN_FLIGHT and c.time:GetText():find("^%+"), "sem dados: "
+			.. tostring(c.title:GetText()) .. " " .. tostring(c.time:GetText()))
+		voando = false; ns.FlightCard:Update()
+	end)
+	_G.UnitOnTaxi, _G.TaxiNodeName, C_TaxiMap.GetAllTaxiNodes, _G.TaxiRequestEarlyLanding, _G.GetTime = taxi, tnn, gat, early, gt
+	ns.db.flightCard = true
+	assert(ok, err)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()
