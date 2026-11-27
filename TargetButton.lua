@@ -163,7 +163,9 @@ function T.Apply()
 	b:Show()
 end
 
-for _, ev in ipairs({ "QUEST_LOG_UPDATE", "_GUIDE_LOADED", "PLAYER_REGEN_ENABLED", "UNIT_QUEST_LOG_CHANGED" }) do
+-- GROUP_ROSTER_UPDATE: entrar numa raide ou mudar de papel muda quem pode marcar
+for _, ev in ipairs({ "QUEST_LOG_UPDATE", "_GUIDE_LOADED", "PLAYER_REGEN_ENABLED", "UNIT_QUEST_LOG_CHANGED",
+	"GROUP_ROSTER_UPDATE" }) do
 	ns:On(ev, function() dirty = true end)
 end
 -- entrando em combate (antes do bloqueio): a macro só mira — sem o /cleartarget, que largaria o alvo da luta quando o
