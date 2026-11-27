@@ -979,8 +979,9 @@ step("Nearby off-guide", function()
 	assert(ok, err)
 end)
 -- áreas de nascimento (#121): o passo com um mob em 3+ áreas da mesma zona desenha as manchas no mapa aberto; a seta
--- vai à mais perto do jogador, o clique leva à próxima (e dá a volta), o arrasto não; desligado, o mapa limpa e a seta
--- volta ao ponto do passo. O mundo de mentira: a zona vira um quadrado de 1000 jd.
+-- fica no ponto do guia (onde quer que o jogador esteja), o clique leva às outras áreas (e dá a volta, com o tooltip
+-- seguindo), o arrasto não; goal sem `goto` não vira alvo; desligado, o mapa limpa. O mundo de mentira: a zona vira
+-- um quadrado de 1000 jd.
 step("SpawnAreas", function()
 	local SA, D, T, WP, TP = ns.SpawnAreas, ns.Destinations, ns.Travel, ns.Waypoint, ns.TravelPlanner
 	local ids = {}
@@ -995,13 +996,13 @@ step("SpawnAreas", function()
 		if o.kind == "c" and #mesma >= 3 and ns.zoneUiMap[z] then qid, obj, zone = q, o, z; break end
 	end
 	assert(qid, "sem quest com um mob em 3 áreas da mesma zona")
-	-- o jogador em cima da última área da zona: ela é a mais perto
-	local longe = mesma[#mesma]
+	-- o guia manda à área maior; o jogador está em cima da última (a mais perto dele): a seta fica no guia
+	local alvoGuia, longe = mesma[1], mesma[#mesma]
 	local goal = { verb = "kill", id = obj.id, text = "Mob Teste", q = { id = qid },
-		goto_ = { zone = zone, x = mesma[1].x, y = mesma[1].y } }
+		goto_ = { zone = zone, x = alvoGuia.x, y = alvoGuia.y } }
 	local passo = { goals = { goal } }
 	local sGet, sPW, sW, sRoute, sDist, sIn = ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone
-	local sGrey, canvas = ns.greySkip, CreateFrame("Frame")
+	local sGrey, sOwner, sAdd, canvas = ns.greySkip, GameTooltip.GetOwner, GameTooltip.AddLine, CreateFrame("Frame")
 	canvas:SetSize(1000, 667)
 	ns.GetStep = function() return passo end
 	ns.greySkip = {}
@@ -1017,51 +1018,68 @@ step("SpawnAreas", function()
 	ns.db.arrow.enabled, ns.db.spawnAreas = true, true
 	local ok, err = pcall(function()
 		local alvo = D.GuideTarget()
-		assert(alvo and alvo.area == longe, "a seta não foi à área mais perto do jogador")
-		assert(alvo.label:find("1/" .. #mesma, 1, true), "o rótulo não diz a área: " .. tostring(alvo.label))
+		assert(alvo and alvo.x == goal.goto_.x and alvo.y == goal.goto_.y and alvo.goal.goto_ == goal.goto_,
+			"a seta saiu do ponto do guia")
+		assert(alvo.area == alvoGuia, "o ponto do guia não ficou com a área dele")
+		local n = #mesma                       -- as da zona do passo
+		assert(alvo.label:find("1/" .. n, 1, true), "o rótulo não diz a área: " .. tostring(alvo.label))
 		SA.Update()
 		local nF, nL = SA.Drawn()
 		assert(_G.LodestarSpawnMap and _G.LodestarSpawnMap:IsShown() and nF > 0 and nL > 0,
 			("manchas no mapa: %d faixas, %d linhas"):format(nF, nL))
 		ns.Waypoint:Update()
 		local ar = _G.LodestarArrow
-		assert(ar and ar:IsShown() and ar.name._text:find("1/" .. #mesma, 1, true),
+		assert(ar and ar:IsShown() and ar.name._text:find("1/" .. n, 1, true),
 			"a seta não diz a área: " .. tostring(ar and ar.name._text))
 		-- arrastar não troca a área
 		ar:GetScript("OnMouseDown")(ar, "LeftButton")
 		ar:GetScript("OnDragStart")(ar)
 		ar:GetScript("OnDragStop")(ar)
 		ar:GetScript("OnMouseUp")(ar, "LeftButton")
-		assert(D.GuideTarget().area == longe, "o arrasto trocou a área")
-		-- clicar leva à próxima, da mais perto para a mais longe, e dá a volta
-		local vistas = { [longe] = true }
-		for i = 2, #mesma do
+		assert(D.GuideTarget().area == alvoGuia, "o arrasto trocou a área")
+		-- clicar leva às outras áreas da zona, e dá a volta; o tooltip aberto segue
+		local dica
+		GameTooltip.GetOwner = function() return ar end
+		GameTooltip.AddLine = function(_, t) dica = t end
+		local vistas = { [alvoGuia] = true }
+		for i = 2, n do
 			ar:GetScript("OnMouseDown")(ar, "LeftButton")
 			ar:GetScript("OnMouseUp")(ar, "LeftButton")
 			local a = D.GuideTarget().area
 			assert(a and not vistas[a] and a.zone == zone, "o clique " .. (i - 1) .. " não foi a uma área nova da zona")
+			assert(D.GuideTarget().x == a.x, "a seta não foi ao ponto da área")
 			vistas[a] = true
-			assert(ar.name._text:find(i .. "/" .. #mesma, 1, true), "a seta não seguiu: " .. tostring(ar.name._text))
+			assert(ar.name._text:find(i .. "/" .. n, 1, true), "a seta não seguiu: " .. tostring(ar.name._text))
+			assert(dica and dica:find(i .. " de " .. n, 1, true), "o tooltip ficou na área de antes: " .. tostring(dica))
 		end
 		ar:GetScript("OnMouseDown")(ar, "LeftButton")
 		ar:GetScript("OnMouseUp")(ar, "LeftButton")
-		assert(D.GuideTarget().area == longe, "depois da última, a volta à primeira")
+		assert(D.GuideTarget().x == goal.goto_.x and D.GuideTarget().area == alvoGuia,
+			"depois da última, a volta ao ponto do guia")
+		GameTooltip.GetOwner, GameTooltip.AddLine = sOwner, sAdd
 		assert(SA.ArrowHint(), "sem a dica do clique")
+		ar:GetScript("OnEnter")(ar); ar:GetScript("OnLeave")(ar)
 		local perto = SA.NearPlayer({ qid }, 30)
 		assert(perto[1] and perto[1].area == longe and perto[1].d == 0 and perto[1].q == qid and perto[1].obj == 1,
 			"perto do jogador (#122): a área onde ele está")
-		ar:GetScript("OnEnter")(ar); ar:GetScript("OnLeave")(ar)
-		-- o passo concluído não desenha; desligado, o mapa limpa e a seta volta ao ponto do passo
+		-- o goal sem goto, mesmo com área, não vira alvo; o mapa ainda desenha as áreas dele
+		local semGoto = { verb = "kill", id = obj.id, text = "Mob Teste", q = { id = qid } }
+		passo.goals = { semGoto }
+		assert(D.GuideTarget() == nil, "o goal sem goto ganhou um alvo")
+		SA.Update()
+		assert(_G.LodestarSpawnMap:IsShown() and SA.Drawn() > 0, "o goal sem goto não desenhou as áreas")
+		passo.goals = { goal }
+		-- desligado, o mapa limpa e a seta fica no ponto do passo (sem a volta)
 		ns.db.spawnAreas = false
 		SA.Refresh(); SA.Update()
 		assert(not _G.LodestarSpawnMap:IsShown(), "desligado e a mancha ficou no mapa")
 		local g = D.GuideTarget()
-		assert(g and not g.area and g.x == goal.goto_.x and g.goal == goal, "desligado e a seta não voltou ao passo")
+		assert(g and not g.spawn and g.x == goal.goto_.x and g.goal == goal, "desligado e a seta não voltou ao passo")
 		assert(not SA.Click(), "desligado, o clique fez algo")
 	end)
 	ns.db.spawnAreas = true
 	ns.GetStep, T.PlayerWorld, T.World, T.Route, WP.DistanceTo, TP.InZone = sGet, sPW, sW, sRoute, sDist, sIn
-	ns.greySkip = sGrey
+	ns.greySkip, GameTooltip.GetOwner, GameTooltip.AddLine = sGrey, sOwner, sAdd
 	WorldMapFrame.GetMapID, WorldMapFrame.GetCanvas = nil, nil
 	SA.Refresh(); SA.Update()
 	T:Replan(true)

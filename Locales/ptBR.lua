@@ -578,6 +578,7 @@ L.STOP_THEN = "%s · depois %s"
 -- áreas de nascimento (#121): a da seta, de quantas; a dica do clique
 L.SPAWN_AREA = "área %d/%d"
 L.SPAWN_ARROW_TIP = "Área de nascimento %d de %d — clique para a próxima (arraste para mover)"
+L.SPAWN_ARROW_TIP0 = "O ponto do guia — clique para as %d áreas de nascimento (arraste para mover)"
 L.STOP_ADDED = "Parada: %s"
 L.STOP_REMOVED = "parada removida."
 L.STOP_ALREADY = "já é parada: %s"

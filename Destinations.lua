@@ -156,20 +156,21 @@ function D.Reached(list, pos, worldOf, radius)
 end
 
 -- O alvo do passo atual do guia: o primeiro objetivo ativo, não feito, com coordenada. Objetivo com área de
--- nascimento (#121, SpawnMap.lua): a área da vez — a mais perto, ou a que o clique na seta escolheu —, mesmo sem
--- `goto`; o que o diário já deu por feito passa para o próximo.
+-- nascimento (#121, SpawnMap.lua): o mesmo ponto do guia, até o clique na seta levar à próxima área (a área só troca
+-- um `goto` que existe; o goal sem `goto` continua sem alvo); o que o diário já deu por feito passa para o próximo.
 function D.GuideTarget()
 	local step = ns.GetStep and ns:GetStep()
 	if not (step and ns.UIShown and ns:UIShown()) then return nil end
 	local SA = ns.SpawnAreas
 	for _, goal in ipairs(step.goals) do
 		local g = goal.goto_
-		local spawn = SA and SA.Has and SA.Has(goal)
-		if (spawn or (g and g.zone)) and ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal)
-			and not (spawn and SA.Done(goal)) then
-			local area = spawn and SA.Target(goal)
-			if area then return area end
-			if g and g.zone then return { zone = g.zone, x = g.x, y = g.y, label = goal.text, goal = goal } end
+		if g and g.zone and ns:IsGoalActive(goal) and not ns:IsGoalComplete(goal) then
+			local spawn = SA and SA.Has and SA.Has(goal)
+			if not (spawn and SA.Done(goal)) then
+				local area = spawn and SA.Target(goal)
+				if area then return area end
+				return { zone = g.zone, x = g.x, y = g.y, label = goal.text, goal = goal }
+			end
 		end
 	end
 end

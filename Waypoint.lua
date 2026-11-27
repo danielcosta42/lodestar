@@ -395,17 +395,24 @@ local function ensureArrow()
 		local p, _, _, x, y = self:GetPoint()
 		dbp.point, dbp.x, dbp.y = p, x, y
 	end)
-	arrow:SetScript("OnMouseUp", function(self, button)
-		if button ~= "LeftButton" or self._dragged then return end
-		if ns.SpawnAreas and ns.SpawnAreas.Click then ns.SpawnAreas.Click() end
-	end)
-	arrow:SetScript("OnEnter", function(self)
+	local function tip(self)
+		if not GameTooltip then return end
 		local hint = ns.SpawnAreas and ns.SpawnAreas.ArrowHint and ns.SpawnAreas.ArrowHint()
-		if not (hint and GameTooltip) then return end
+		if not hint then
+			if GameTooltip:GetOwner() == self then GameTooltip:Hide() end
+			return
+		end
 		GameTooltip:SetOwner(self, "ANCHOR_TOP")
 		GameTooltip:AddLine(hint, 1, 1, 1, true)
 		GameTooltip:Show()
+	end
+	arrow:SetScript("OnMouseUp", function(self, button)
+		if button ~= "LeftButton" or self._dragged then return end
+		if not (ns.SpawnAreas and ns.SpawnAreas.Click and ns.SpawnAreas.Click()) then return end
+		-- o tooltip aberto segue a área nova ("área 2 de 5"), não fica na de antes
+		if GameTooltip and GameTooltip:GetOwner() == self then tip(self) end
 	end)
+	arrow:SetScript("OnEnter", tip)
 	arrow:SetScript("OnLeave", function(self)
 		if GameTooltip and GameTooltip:GetOwner() == self then GameTooltip:Hide() end
 	end)
@@ -648,7 +655,7 @@ local function updateArrow(goal)
 		a.name:SetTextColor(UI.unpackc(C.active))
 		local text = ("%s: %s"):format(verbWord(goal), ns:LocalizeText(goalName(goal)))
 		-- na área de nascimento (#121): qual delas, de quantas (o clique leva à próxima)
-		if (goal._areaN or 0) > 1 then text = ("%s · %s"):format(text, ns.L.SPAWN_AREA:format(goal._areaI, goal._areaN)) end
+		if goal._spawn then text = ("%s · %s"):format(text, goal._spawn) end
 		a.name:SetText(text)
 	end
 end

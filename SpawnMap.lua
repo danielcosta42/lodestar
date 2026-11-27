@@ -1,22 +1,23 @@
 --=============================================================================
 -- SpawnMap — onde nasce o que o passo pede (issue #121, specs/areas-spawn): as áreas do SpawnAreas.lua (gerado por
 -- tools/gen_spawnareas.py, do QuestieDB) no mapa-múndi como manchas — miolo translúcido e contorno, como o cliente
--- de hoje —, e a seta indo de uma área para a próxima a cada clique, da mais perto para a mais longe.
+-- de hoje —, e a seta que, a cada clique, passa do ponto do guia para a próxima área, da mais perto dele para a mais
+-- longe.
 --
 -- No topo, o núcleo puro (testado fora do jogo, tools/travel-tests.lua); abaixo, o que roda no jogo.
 --
 --   SA.Decode(s, zonas)                  -> { kind, id, areas = { { zone, x, y, n, hull = { x1, y1, ... } }, ... } }
 --   SA.For(q)                            -> { [objetivo] = decodificado, alias = { [npc] = objetivo } } | nil
 --   SA.Match(entry, goal)                -> o objetivo (índice) que o goal do guia pede, ou nil
---   SA.Order(areas, ref, worldOf)        -> as áreas da mais perto de `ref` (mundo) para a mais longe
---   SA.Cycle(st, key, areas, ref, wOf)   -> a área da vez (a mais perto quando `key` muda), o índice, quantas
---   SA.Advance(st)                       -> passa para a próxima (dá a volta); false com uma só
+--   SA.PolyDist(poly, x, y)              -> do ponto ao contorno convexo (0 dentro), nas unidades dele
+--   SA.Slots(areas, gx, gy)              -> a volta da seta: o ponto do guia (com a área dele) e as outras áreas
+--   SA.Cycle(st, key, slots)             -> o da vez (o primeiro quando `key` muda), o índice, quantos
+--   SA.Advance(st)                       -> passa para o próximo (dá a volta); false com um só
 --   SA.Near(quests, pos, radius, wOf)    -> { { q, obj, area, d }, ... } a até `radius` jardas de `pos` (issue #122)
 --   SA.NearPlayer(quests, radius)        -> o mesmo, do jogador (no jogo)
 --   SA.Hull(xy) / SA.Rounded(xy, pad) / SA.Spans(poly, dy) -> a geometria do desenho
 --
--- `worldOf(zona, x, y)` -> { c, x, y } (o Travel.World); `ref` é um ponto de mundo, ou uma função que o devolve (só
--- é chamada quando a ordem precisa ser feita).
+-- `worldOf(zona, x, y)` -> { c, x, y } (o Travel.World).
 --=============================================================================
 local _, ns = ...
 local SA = {}
@@ -24,6 +25,9 @@ ns.SpawnAreas = SA
 
 local sqrt, atan2, cos, sin, ceil, max, min, pi = math.sqrt, math.atan2, math.cos, math.sin, math.ceil, math.max,
 	math.min, math.pi
+
+SA.INSIDE = 1.5            -- unidades do mapa (0-100): o ponto do guia a até isso da borda conta como dentro da área
+SA.CACHE = 64              -- quests decodificadas guardadas (todas, sob o Lua 5.1, passariam de 8 MB)
 
 --------------------------------------------------------------------------------
 -- os dados
@@ -48,29 +52,32 @@ function SA.Decode(s, zones)
 	return out
 end
 
--- decodificado uma vez por quest (pela tabela crua: trocar o ns.spawnQuest num teste não pega o velho)
-local decoded = setmetatable({}, { __mode = "k" })
+-- Decodificado sob demanda, por quest, e guardado (pela tabela crua: trocar o ns.spawnQuest num teste não pega o
+-- velho) até SA.CACHE quests; passou disso, esquece tudo e começa de novo (quem está usando uma área segura a dele).
+local decoded, nDecoded = {}, 0
 function SA.For(q)
 	local raw = q and ns.spawnQuest and ns.spawnQuest[q]
 	if not raw then return nil end
 	local c = decoded[raw]
 	if c then return c end
+	if nDecoded >= SA.CACHE then decoded, nDecoded = {}, 0 end
 	c = { alias = raw.a, q = q }
 	for i, s in ipairs(raw) do
 		local o = SA.Decode(s)
 		for k, a in ipairs(o.areas) do a.q, a.obj, a.k = q, i, k end
 		c[i] = o
 	end
-	decoded[raw] = c
+	decoded[raw], nDecoded = c, nDecoded + 1
 	return c
 end
+function SA.Cached() return nDecoded end
 
 -- Que tipo de objetivo cada verbo do guia pede (o id do goal é o do mob, do item ou do objeto).
 local KIND = { kill = { c = true }, collect = { i = true, o = true }, get = { i = true }, click = { o = true } }
 SA.KIND = KIND
 
 -- O objetivo do goal: pelo id (do tipo que o verbo pede); o mob do guia que deixa cair o item de um objetivo (alias,
--- do gerador); o índice do `|q quest/obj`; sem id nem índice, o único objetivo com área.
+-- do gerador); o índice do `|q quest/obj`; sem id nem índice, o único objetivo com área do tipo que o verbo pede.
 function SA.Match(entry, goal)
 	local ok = entry and goal and KIND[goal.verb]
 	if not ok then return nil end
@@ -84,7 +91,7 @@ function SA.Match(entry, goal)
 	if goal.id then return nil end
 	local only
 	for i, o in ipairs(entry) do
-		if #o.areas > 0 then
+		if #o.areas > 0 and ok[o.kind] then
 			if only then return nil end
 			only = i
 		end
@@ -93,71 +100,94 @@ function SA.Match(entry, goal)
 end
 
 --------------------------------------------------------------------------------
--- a ordem e a vez
+-- dentro, perto, a ordem e a vez
 --------------------------------------------------------------------------------
--- Da mais perto de `ref` para a mais longe; a que não cai no mapa ou fica em outro continente vai para o fim, na
--- ordem em que veio (a do gerador: da área com mais nascimentos para a com menos). Sem `ref`, a ordem que veio.
-function SA.Order(areas, ref, worldOf)
-	local near, far = {}, {}
-	for i, a in ipairs(areas) do
-		local w = ref and worldOf(a.zone, a.x, a.y)
-		if w and w.c == ref.c then
-			near[#near + 1] = { a = a, d = (w.x - ref.x) ^ 2 + (w.y - ref.y) ^ 2, i = i }
-		else
-			far[#far + 1] = a
-		end
+-- Do ponto ao contorno convexo {x1, y1, ...} (em qualquer sentido): 0 dentro; fora, até o lado mais perto. Um ponto
+-- só, a distância a ele; dois, ao segmento.
+function SA.PolyDist(p, x, y)
+	local n = #p / 2
+	if n == 1 then return sqrt((p[1] - x) ^ 2 + (p[2] - y) ^ 2) end
+	local pos, neg, best = false, false, math.huge
+	for i = 1, n do
+		local ax, ay, bx, by = p[2 * i - 1], p[2 * i], p[i % n * 2 + 1], p[i % n * 2 + 2]
+		local dx, dy = bx - ax, by - ay
+		local cr = dx * (y - ay) - dy * (x - ax)
+		if cr > 1e-9 then pos = true elseif cr < -1e-9 then neg = true end
+		local len = dx * dx + dy * dy
+		local t = len > 0 and max(0, min(1, ((x - ax) * dx + (y - ay) * dy) / len)) or 0
+		best = min(best, sqrt((ax + t * dx - x) ^ 2 + (ay + t * dy - y) ^ 2))
 	end
-	table.sort(near, function(p, q)
+	if n >= 3 and not (pos and neg) then return 0 end
+	return best
+end
+
+-- A volta da seta num objetivo com áreas na zona do passo: primeiro o próprio ponto do guia (gx, gy) — o alvo de
+-- sempre, o mesmo do pino do mapa e da distância na janela —, com a área onde ele cai (dentro dela, da mais funda;
+-- senão a até SA.INSIDE da borda, a de mais nascimentos); depois as outras áreas, da borda mais perto do ponto do guia
+-- para a mais longe. Ponto do guia fora de toda área: ele sozinho, e depois todas. Cada um: { x, y, area, k (a área é
+-- a k-ésima de `of`), guide = o ponto do guia }.
+function SA.Slots(areas, gx, gy)
+	local list = {}
+	for i, a in ipairs(areas) do
+		list[i] = { a = a, d = SA.PolyDist(a.hull, gx, gy), c = (a.x - gx) ^ 2 + (a.y - gy) ^ 2 }
+	end
+	table.sort(list, function(p, q)
+		local pin, qin = p.d <= SA.INSIDE, q.d <= SA.INSIDE
+		if pin ~= qin then return pin end
+		if pin then
+			-- dentro de verdade (o contorno vem com uma casa: 0.25 de folga), da mais funda, antes de perto da borda: na
+			-- emenda de duas áreas, a que tem o ponto
+			local p0, q0 = p.d <= 0.25, q.d <= 0.25
+			if p0 ~= q0 then return p0 end
+			if p0 and p.d ~= q.d then return p.d < q.d end
+			if p.a.n ~= q.a.n then return p.a.n > q.a.n end
+		end
 		if p.d ~= q.d then return p.d < q.d end
-		return p.i < q.i
+		return p.c < q.c
 	end)
-	local out = {}
-	for _, e in ipairs(near) do out[#out + 1] = e.a end
-	for _, a in ipairs(far) do out[#out + 1] = a end
+	local out, of = {}, #list
+	local first = list[1] and list[1].d <= SA.INSIDE and list[1].a or nil
+	out[1] = { x = gx, y = gy, area = first, k = first and 1 or nil, of = of, guide = true }
+	for i = first and 2 or 1, #list do
+		local a = list[i].a
+		out[#out + 1] = { x = a.x, y = a.y, area = a, k = i, of = of }
+	end
 	return out
 end
 
--- A área da vez. `key` novo (outro objetivo, outro passo) ou outra lista: refaz a ordem pela posição de agora e volta
--- à mais perto. Sem posição ainda (tela de carregamento), a ordem que veio — e refaz quando a posição chegar, se o
--- jogador ainda não clicou.
-function SA.Cycle(st, key, areas, ref, worldOf)
-	local function where() if type(ref) == "function" then return ref() end return ref end
-	if st.key ~= key or st.src ~= areas then
-		local r = where()
-		st.key, st.src, st.i, st.clicked = key, areas, 1, false
-		st.list, st.ordered = SA.Order(areas, r, worldOf), r ~= nil
-	elseif not st.ordered and not st.clicked then
-		local r = where()
-		if r then st.list, st.ordered = SA.Order(areas, r, worldOf), true end
-	end
+-- O da vez. `key` novo (outro objetivo, outro passo) ou outra volta: o primeiro (o ponto do guia).
+function SA.Cycle(st, key, slots)
+	if st.key ~= key or st.list ~= slots then st.key, st.list, st.i = key, slots, 1 end
 	return st.list[st.i], st.i, #st.list
 end
 
 function SA.Advance(st)
 	local n = st.list and #st.list or 0
 	if n < 2 then return false end
-	st.i, st.clicked = st.i % n + 1, true
+	st.i = st.i % n + 1
 	return true
 end
 
--- O ponto de mundo da área e o raio dela em jardas (do ponto-alvo ao canto mais longe), guardados na própria área
--- (o que não caiu no mapa não fica guardado: tenta de novo na próxima).
+-- O ponto de mundo da área e o contorno dela no mundo (no continente do ponto), guardados na própria área (o que não
+-- caiu no mapa não fica guardado: tenta de novo na próxima).
 function SA.AreaWorld(a, worldOf)
 	if a._wf ~= worldOf then
 		local w = worldOf(a.zone, a.x, a.y)
 		if not w then return nil end
-		local r = 0
+		local poly = {}
 		for i = 1, #a.hull - 1, 2 do
 			local p = worldOf(a.zone, a.hull[i], a.hull[i + 1])
-			if p and p.c == w.c then r = max(r, sqrt((p.x - w.x) ^ 2 + (p.y - w.y) ^ 2)) end
+			if not (p and p.c == w.c) then return nil end
+			poly[#poly + 1] = p.x; poly[#poly + 1] = p.y
 		end
-		a._wf, a._w, a._wr = worldOf, w, r
+		a._wf, a._w, a._wp = worldOf, w, poly
 	end
-	return a._w, a._wr
+	return a._w, a._wp
 end
 
 -- Os objetivos das quests `quests` (lista de ids) com alguma área a até `radius` jardas de `pos` (mundo), da mais
--- perto para a mais longe: { q, obj (índice), area, d (jardas até a borda; 0 dentro) }. Para o issue #122.
+-- perto para a mais longe: { q, obj (índice), area, d (jardas até o contorno da área; 0 dentro dele) }. Para o issue
+-- #122 ("dentro da área desenhada": d == 0; o desenho incha o contorno uns poucos pixels).
 function SA.Near(quests, pos, radius, worldOf)
 	local out = {}
 	if not pos then return out end
@@ -165,9 +195,9 @@ function SA.Near(quests, pos, radius, worldOf)
 		local e = SA.For(q)
 		for i, o in ipairs(e or {}) do
 			for _, a in ipairs(o.areas) do
-				local w, r = SA.AreaWorld(a, worldOf)
+				local w, poly = SA.AreaWorld(a, worldOf)
 				if w and w.c == pos.c then
-					local d = max(0, sqrt((w.x - pos.x) ^ 2 + (w.y - pos.y) ^ 2) - r)
+					local d = SA.PolyDist(poly, pos.x, pos.y)
 					if d <= radius then out[#out + 1] = { q = q, obj = i, area = a, d = d } end
 				end
 			end
@@ -276,8 +306,9 @@ function SA.NearPlayer(quests, radius)
 	return SA.Near(quests, T and T.PlayerWorld(), radius, worldOf)
 end
 
--- O objetivo de cada goal do guia: a quest, o índice, as áreas — e as da seta, que fica na zona do passo (as de outra
--- zona só valem para o goal sem zona). Uma vez por goal.
+-- O objetivo de cada goal do guia: a quest, o índice, as áreas (o mapa desenha todas) — e a volta da seta, só para o
+-- goal com `|goto` numa zona que tem área: a seta troca o ponto do guia por outra área, nunca inventa um alvo para o
+-- goal que não tinha. Uma vez por goal.
 local goalInfo = setmetatable({}, { __mode = "k" })
 local function infoOf(goal)
 	local c = goalInfo[goal]
@@ -287,11 +318,13 @@ local function infoOf(goal)
 	local k = entry and SA.Match(entry, goal)
 	local o = k and entry[k]
 	if not (o and #o.areas > 0) then goalInfo[goal] = false; return nil end
-	local list, z = {}, goal.goto_ and goal.goto_.zone
-	for _, a in ipairs(o.areas) do
-		if a.zone and (not z or a.zone == z) then list[#list + 1] = a end
+	c = { q = q, k = k, obj = o, entry = entry }
+	local g = goal.goto_
+	if g and g.zone and g.x and g.y and g.x >= 0 and g.y >= 0 then
+		local list = {}
+		for _, a in ipairs(o.areas) do if a.zone == g.zone then list[#list + 1] = a end end
+		if #list > 0 then c.slots = SA.Slots(list, g.x, g.y) end
 	end
-	c = { q = q, k = k, obj = o, entry = entry, list = list }
 	goalInfo[goal] = c
 	return c
 end
@@ -307,7 +340,7 @@ local function objDone(c)
 	return (o and o.finished and (not o.type or o.type == TYPE[c.obj.kind])) and true or false
 end
 
--- tem área (e o mapa e a seta vão usá-la)?
+-- tem área (e o mapa vai desenhá-la)?
 function SA.Has(goal)
 	return enabled() and goal and infoOf(goal) ~= nil or false
 end
@@ -324,50 +357,40 @@ function SA.Done(goal)
 	return c and doneBy(goal, c) or false
 end
 
--- de onde medir a "mais perto": o jogador, se está no continente das áreas; senão o ponto do passo
 local state = {}
-local cur                               -- { goal, list } da chamada em curso (sem fechamento novo a cada tique)
-local function refNow()
-	local T, list = ns.Travel, cur.list
-	local p = T and T.PlayerWorld()
-	local w = list[1] and worldOf(list[1].zone, list[1].x, list[1].y)
-	if p and w and p.c == w.c then return p end
-	local g = cur.goal.goto_
-	return g and g.zone and worldOf(g.zone, g.x, g.y) or p
-end
 
--- O destino do guia na área da vez (o Destinations.GuideTarget chama): { zone, x, y, label, goal, area } — `goal`
--- faz as vezes do objetivo (verbo, nome, quest) com o `goto_` no ponto da área. nil: sem área (vale o `goto_`).
+-- O destino do guia na vez da seta (o Destinations.GuideTarget chama): { zone, x, y, label, goal, area, spawn } —
+-- `goal` faz as vezes do objetivo (verbo, nome, quest) com o `goto_` no ponto da vez. O primeiro é o próprio ponto do
+-- guia (o alvo de sempre); `area` é a área dele, se ele cai numa. nil: sem volta (vale o `goto_`, como antes).
 function SA.Target(goal)
 	if not enabled() then return nil end
 	local c = infoOf(goal)
-	if not (c and #c.list > 0) then return nil end
-	cur = cur or {}
-	cur.goal, cur.list = goal, c.list
-	local a, i, n = SA.Cycle(state, goal, c.list, refNow, worldOf)
-	if not a then return nil end
-	if state.dest and state.destA == a and state.destGoal == goal then return state.dest end
-	local label = goal.text or ""
-	if n > 1 then label = ("%s · %s"):format(label, ns.L.SPAWN_AREA:format(i, n)) end
-	local proxy = setmetatable({ goto_ = { zone = a.zone, x = a.x, y = a.y }, _area = a, _areaI = i, _areaN = n,
-		_goal = goal }, { __index = goal })
-	state.dest = { zone = a.zone, x = a.x, y = a.y, label = label, goal = proxy, area = a }
-	state.destA, state.destGoal = a, goal
+	if not (c and c.slots) then return nil end
+	local slot, _, n = SA.Cycle(state, goal, c.slots)
+	if not slot then return nil end
+	if state.dest and state.destS == slot then return state.dest end
+	local g = goal.goto_
+	local tag = slot.k and n > 1 and ns.L.SPAWN_AREA:format(slot.k, slot.of) or nil
+	local label = tag and ("%s · %s"):format(goal.text or "", tag) or goal.text
+	local to = slot.guide and g or { zone = g.zone, x = slot.x, y = slot.y }
+	local proxy = setmetatable({ goto_ = to, _spawn = tag, _area = slot.area, _goal = goal }, { __index = goal })
+	state.dest = { zone = g.zone, x = to.x, y = to.y, label = label, goal = proxy, area = slot.area, spawn = true }
+	state.destS = slot
 	return state.dest
 end
 
--- o destino do guia agora é uma área (e há outra para onde ir)?
+-- o destino do guia agora está na volta das áreas (e há outro para onde ir)?
 local function cycling()
 	local D = ns.Destinations
 	if not (enabled() and D) then return false end
 	local dest, kind = D:Active()
-	if kind ~= "guide" or not (dest and dest.area) then return false end
+	if kind ~= "guide" or not (dest and dest.spawn) then return false end
 	if D.Stops and D:Stops()[1] then return false end      -- a seta está na parada (#117), não no passo
 	return state.list and #state.list > 1
 end
 
 local lastSig
--- Clique na seta: a próxima área (a rota, o caminho, a bússola e a seta seguem). Com uma área só, nada.
+-- Clique na seta: o próximo da volta (a rota, o caminho, a bússola e a seta seguem). Com um só, nada.
 function SA.Click()
 	if not cycling() then return false end
 	SA.Advance(state)
@@ -382,10 +405,12 @@ end
 -- a dica da seta (o tooltip): só quando o clique faz algo
 function SA.ArrowHint()
 	if not cycling() then return nil end
-	return ns.L.SPAWN_ARROW_TIP:format(state.i, #state.list)
+	local slot = state.list[state.i]
+	if slot.k then return ns.L.SPAWN_ARROW_TIP:format(slot.k, slot.of) end
+	return ns.L.SPAWN_ARROW_TIP0:format(slot.of)
 end
 
--- Configurações: ligar/desligar vale na hora (a rota volta ao ponto do passo ou vai à área)
+-- Configurações: ligar/desligar vale na hora (a seta volta ao ponto do passo)
 function SA.Refresh()
 	state.key, state.dest, lastSig = nil, nil, nil
 	local T = ns.Travel
@@ -416,9 +441,14 @@ local fills, lines = {}, {}
 local nFill, nLine = 0, 0
 
 local function ensure(canvas)
-	if not overlay then overlay = CreateFrame("Frame", "LodestarSpawnMap", canvas) end
+	-- como o overlay da rota (RouteMap: a mesma camada, feita do mesmo jeito, e um nível acima deste): a rota fica
+	-- por cima da mancha, e os pinos do guia (GuideMap, TOOLTIP) também. Sem o nível explícito, a ordem com a rota
+	-- era a do acaso (os dois no nível do mapa + 1).
+	if not overlay then
+		overlay = CreateFrame("Frame", "LodestarSpawnMap", canvas)
+		overlay:SetFrameStrata("HIGH")
+	end
 	overlay:SetParent(canvas); overlay:SetAllPoints(canvas)
-	-- logo acima do mapa: a rota (RouteMap, HIGH) e os pinos ficam por cima da mancha
 	if canvas.GetFrameLevel then overlay:SetFrameLevel((canvas:GetFrameLevel() or 1) + 1) end
 	overlay:Show()
 	return overlay

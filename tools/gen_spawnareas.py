@@ -6,8 +6,9 @@ Fonte: o banco do Forever que o import_forever.py montou (tools/build/forever/qu
 items.json e zones.json, do QuestieDB). Por objetivo e por zona, os pontos de nascimento viram áreas por ligação
 simples (dois pontos a até LIGA unidades do mapa ficam juntos); área mais larga que LARGA se parte ao meio pelo eixo
 mais comprido, até caber. Sai o que é nascimento perdido: a zona com menos que ZONA dos pontos da que mais tem, e a
-área com menos que RALA dos pontos da maior da zona dela (por zona: a seta fica na zona do passo). Cada área leva o
-ponto de nascimento mais perto do meio (o alvo da seta: um lugar onde o mob nasce de verdade, nunca o meio de um lago)
+área com menos que RALA dos pontos da maior da zona dela, para cada mob ou objeto que nasce nela (por zona: a seta fica
+na zona do passo; por fonte: o mob nomeado de um ponto só fica perto dos 30 do outro). Cada área leva o ponto de
+nascimento mais perto do meio (o alvo da seta: um lugar onde o mob nasce de verdade, nunca o meio de um lago)
 e o contorno convexo simplificado a até CANTOS pontos. Coordenadas da zona (0-100), de 0.1 em 0.1.
 
 Entram todas as quests com objetivo no banco (não só as que os guias citam): o issue #122 lista os objetivos de
@@ -47,6 +48,7 @@ AREAS = 12            # áreas por objetivo em cada zona, no máximo (as maiores
 ZONA = 0.10           # zona com menos que isso dos nascimentos da zona que mais tem sai (do objetivo)
 TOTAL = 30            # áreas por objetivo, no máximo
 DROPA = 40            # item que cai de mais mobs que isso cai de qualquer um: sem área
+OBJETOS = 6           # item que sai de mais tipos de objeto que isso (baús espalhados): os objetos não entram
 # zonas onde o guia não anda: masmorra, campo de batalha, mapa de continente
 FORA = ("Alterac Valley", "Warsong Gulch", "Arathi Basin", "Deeprun Tram")
 
@@ -144,8 +146,26 @@ def simplifica(h, n=CANTOS):
     return h
 
 
-def areas(pts):
-    """Pontos de uma zona -> [(cx, cy, n, contorno)], da área com mais pontos para a com menos."""
+def distancia(h, x, y):
+    """Do ponto ao contorno convexo `h` (0 dentro), nas unidades do mapa (a mesma conta do SA.PolyDist do Lua)."""
+    if len(h) == 1:
+        return math.hypot(h[0][0] - x, h[0][1] - y)
+    pos = neg = False
+    melhor = float("inf")
+    for k in range(len(h)):
+        (ax, ay), (bx, by) = h[k], h[(k + 1) % len(h)]
+        cr = (bx - ax) * (y - ay) - (by - ay) * (x - ax)
+        pos, neg = pos or cr > 1e-9, neg or cr < -1e-9
+        dx, dy = bx - ax, by - ay
+        L = dx * dx + dy * dy
+        t = max(0.0, min(1.0, ((x - ax) * dx + (y - ay) * dy) / L)) if L else 0.0
+        melhor = min(melhor, math.hypot(ax + t * dx - x, ay + t * dy - y))
+    return 0.0 if len(h) >= 3 and not (pos and neg) else melhor
+
+
+def areas(pts, todos=None):
+    """Pontos de uma zona -> [(cx, cy, n, contorno)], da área com mais pontos para a com menos; com `todos`, a área
+    leva também os pontos dela (o filtro sabe se ela tem todos os nascimentos de uma fonte)."""
     out = []
     for g in liga(pts):
         for sub in parte([pts[i] for i in g]):
@@ -153,40 +173,63 @@ def areas(pts):
             my = sum(p[1] for p in sub) / len(sub)
             alvo = min(sub, key=lambda p: (p[0] - mx) ** 2 + (p[1] - my) ** 2)
             h = simplifica(casco(sub))
-            out.append((alvo[0], alvo[1], len(sub), h))
+            out.append((alvo[0], alvo[1], len(sub), h) + ((frozenset(sub),) if todos is not None else ()))
     out.sort(key=lambda a: -a[2])
     return out
 
 
-def filtra(lista):
-    """As áreas de uma zona: sai a rala perto da maior dela; no máximo AREAS. Por zona, não pelo objetivo inteiro: a
-    seta fica na zona do passo, e o drop que cai muito numa zona e pouco em outra ainda tem área nesta."""
+def minimo(maior):
+    """Os nascimentos que uma área precisa ter, perto da maior (`maior`): 1-2 na maior, tudo fica."""
+    return 1 if maior <= 2 else max(2, math.ceil(RALA * maior))
+
+
+def filtra(lista, conta=None, inteira=lambda a: False, teto=AREAS):
+    """As áreas de uma zona: sai a rala perto da maior dela; no máximo `teto`. Por zona, não pelo objetivo inteiro: a
+    seta fica na zona do passo, e o drop que cai muito numa zona e pouco em outra ainda tem área nesta. E por fonte
+    (`conta(a)` -> {fonte: nascimentos dela na área}): a área fica se é rala para nenhuma das fontes dela — o mob
+    nomeado de um ponto só não some perto dos 30 do outro mob que deixa cair o mesmo item. A que tem todos os
+    nascimentos de uma fonte (`inteira`) passa na frente no teto."""
     if not lista:
         return lista
-    maior = max(a[2] for a in lista)
-    minimo = 1 if maior <= 2 else max(2, math.ceil(RALA * maior))
-    return sorted((a for a in lista if a[2] >= minimo), key=lambda a: -a[2])[:AREAS]
+    if conta is None:
+        m = minimo(max(a[2] for a in lista))
+        boa = [a for a in lista if a[2] >= m]
+    else:
+        maior = {}
+        for a in lista:
+            for f, n in conta(a).items():
+                maior[f] = max(maior.get(f, 0), n)
+        boa = [a for a in lista if any(n >= minimo(maior[f]) for f, n in conta(a).items())]
+    fica = sorted(boa, key=lambda a: (not inteira(a), -a[2]))
+    return sorted(fica[:teto], key=lambda a: -a[2])
 
 
 # ── do banco às áreas ────────────────────────────────────────────────────────
 def guias():
-    """As quests dos guias e os `kill X##npc |q quest` (npc, quest) de cada um."""
+    """As quests dos guias, os `kill X##npc |q quest` (npc, quest) de cada um e as zonas dos `|goto` de cada quest
+    (`|q quest ... |goto Zona x,y`: a zona do passo fica mesmo com poucos nascimentos)."""
     sys.path.insert(0, HERE)
     from gen_questlevels import guide_ids
-    mata = set()
+    mata, onde = set(), {}
     for base, _, files in os.walk(os.path.join(ROOT, "Guides")):
         for f in files:
             if f.endswith(".lua"):
                 with open(os.path.join(base, f), encoding="utf-8") as h:
-                    for m in re.finditer(r"^\s*kill\s+[^#\n|]*##(\d+)[^\n]*?\|q (\d+)", h.read(), re.M):
-                        mata.add((int(m.group(1)), int(m.group(2))))
-    return guide_ids(), mata
+                    texto = h.read()
+                for m in re.finditer(r"^\s*kill\s+[^#\n|]*##(\d+)[^\n]*?\|q (\d+)", texto, re.M):
+                    mata.add((int(m.group(1)), int(m.group(2))))
+                for linha in texto.split("\n"):
+                    q = re.search(r"\|q (\d+)", linha)
+                    z = re.search(r"\|goto ([^|]*?)\s+[\d.]+\s*,\s*[\d.]+", linha)
+                    if q and z:
+                        onde.setdefault(int(q.group(1)), set()).add(z.group(1).strip())
+    return guide_ids(), mata, onde
 
 
 def gera(so_guias=False):
     quests, npcs, objs, itens, zonas = (carrega(n) for n in
                                         ("quests.json", "npcs.json", "objects.json", "items.json", "zones.json"))
-    ids_guia, mata = guias()
+    ids_guia, mata, onde = guias()
     nomes, indice = [], {}
 
     def zona(area):
@@ -200,16 +243,11 @@ def gera(so_guias=False):
             nomes.append(nome)
         return indice[nome]
 
-    def pontos(tabela, ids, porzona):
-        for i in ids:
-            for area, lista in ((tabela.get(str(i)) or {}).get("spawns") or {}).items():
-                z = zona(area)
-                if z is None:
-                    continue
-                for x, y in lista or []:
-                    if x < 0 or y < 0:
-                        continue          # o "dentro da masmorra, sem coordenada" do QuestieDB (-1, -1)
-                    porzona.setdefault(z, set()).add((round(x, 1), round(y, 1)))
+    def fora(area):
+        """zona onde o guia não anda (masmorra, campo de batalha, continente, sem mapa): True"""
+        z = zonas.get(str(area)) or {}
+        nome = z.get("name")
+        return not nome or not z.get("uiMapId") or " - " in nome or nome in FORA
 
     def fontes(item):
         """NPCs e objetos que deixam cair o item (e os das partes, se ele se monta delas)."""
@@ -221,26 +259,69 @@ def gera(so_guias=False):
             pe = itens.get(str(p)) or {}
             n += pe.get("npc") or []
             o += pe.get("obj") or []
+        # baú, erva e veio (o objeto que dá item de ofício: Linen Cloth de 10 baús, Gold Bar, Star Ruby, Liferoot) e o
+        # item que sai de muitos tipos de objeto: o objeto não ajuda; sobra o mob, se houver
+        if e.get("class") == 7 or len(o) > OBJETOS:
+            o = []
         return n, o
 
-    def objetivo(tipo, i):
-        porzona = {}
+    def objetivo(qid, tipo, i):
         if tipo == "c":
-            pontos(npcs, [i], porzona)
+            lista_f = [(npcs, i)]
         elif tipo == "o":
-            pontos(objs, [i], porzona)
+            lista_f = [(objs, i)]
         else:
             n, o = fontes(i)
-            pontos(npcs, n, porzona)
-            pontos(objs, o, porzona)
-        # zona com poucos nascimentos perto da que tem mais (menos que ZONA deles) sai: é dado perdido
-        maior = max((len(p) for p in porzona.values()), default=0)
+            lista_f = [(npcs, x) for x in n] + [(objs, x) for x in o]
+        porzona = {}                # zona (índice) -> {ponto: {fontes}}
+        conta = {}                  # nome da zona (as de fora também) -> nascimentos, o -1,-1 de masmorra incluído
+        todos = {}                  # fonte -> {(zona, ponto)}: todos os nascimentos dela no mapa
+        so_fora, no_mapa, n_fora, n_mapa = set(), set(), 0, 0
+        for k, (tabela, sid) in enumerate(lista_f):
+            fonte = (id(tabela), sid)
+            for area, pts in ((tabela.get(str(sid)) or {}).get("spawns") or {}).items():
+                nome = (zonas.get(str(area)) or {}).get("name") or str(area)
+                for x, y in pts or []:
+                    conta[nome] = conta.get(nome, 0) + 1
+                    if fora(area) or x < 0 or y < 0:     # masmorra, ou o "-1,-1" de dentro dela
+                        n_fora += 1
+                        so_fora.add(fonte)
+                        continue
+                    z = zona(area)
+                    p = (round(x, 1), round(y, 1))
+                    porzona.setdefault(z, {}).setdefault(p, set()).add(fonte)
+                    todos.setdefault(fonte, set()).add((z, p))
+                    n_mapa += 1
+                    no_mapa.add(fonte)
+        # o objetivo de masmorra (mais fontes só lá dentro que no mapa, e mais nascimentos lá): o que sobra fora é
+        # resto perdido (Fetish of Hakkar: 1 no pântano, 17 no templo)
+        if len(so_fora - no_mapa) > len(no_mapa) and n_fora >= n_mapa:
+            return []
+        # zona com poucos nascimentos perto da que tem mais — as de masmorra contam — sai: é dado perdido. A zona de
+        # um `|goto` do guia para a quest fica (Elemental Air: os Dust Devils de Westfall, poucos perto de Barrens).
+        maior = max(conta.values(), default=0)
         lista = []
         for z in sorted(porzona):
-            if len(porzona[z]) >= ZONA * maior:
-                lista += [(z, a) for a in filtra(areas(sorted(porzona[z])))]
-        # da maior área para a menor (a ordem que o Lua usa sem a posição do jogador)
-        return sorted(lista, key=lambda t: -t[1][2])[:TOTAL]
+            nome = nomes[z - 1]
+            if conta.get(nome, 0) < ZONA * maior and nome not in onde.get(qid, ()):
+                continue
+            pts = porzona[z]
+
+            def conta_(a, pts=pts):
+                out = {}
+                for p in a[4]:
+                    for f in pts[p]:
+                        out[f] = out.get(f, 0) + 1
+                return out
+
+            def inteira(a, z=z, pts=pts):
+                dentro = {(z, p) for p in a[4]}
+                return any(todos[f] <= dentro for p in a[4] for f in pts[p])
+
+            lista += [(z, a[:4], inteira(a)) for a in filtra(areas(sorted(pts), todos), conta_, inteira)]
+        # no teto, a área inteira de uma fonte passa na frente; depois, da maior área para a menor
+        lista = sorted(lista, key=lambda t: (not t[2], -t[1][2]))[:TOTAL]
+        return [(z, a) for z, a, _ in sorted(lista, key=lambda t: -t[1][2])]
 
     fim = {}
     for qid, q in quests.items():
@@ -251,7 +332,7 @@ def gera(so_guias=False):
                      + [("i", i) for i in q.get("objItems") or []])
         if not objetivos:
             continue
-        lista = [(t, i, objetivo(t, i)) for t, i in objetivos]
+        lista = [(t, i, objetivo(qid, t, i)) for t, i in objetivos]
         if not any(a for _, _, a in lista):
             continue
         # o mob do guia que não é objetivo mas deixa cair o item de um
@@ -368,6 +449,15 @@ def demo(nomes, fim):
     assert sorted(h) == [(0, 0), (0, 10), (10, 0), (10, 10)], h
     circ = [(50 + 10 * math.cos(a / 20 * 2 * math.pi), 50 + 10 * math.sin(a / 20 * 2 * math.pi)) for a in range(20)]
     assert len(simplifica(casco(circ))) == CANTOS
+    quad = [(0, 0), (10, 0), (10, 10), (0, 10)]
+    assert distancia(quad, 5, 5) == 0 and abs(distancia(quad, 13, 14) - 5) < 1e-9 and distancia([(1, 1)], 4, 5) == 5
+    assert distancia(list(reversed(quad)), 5, 5) == 0, "o sentido do contorno não importa"
+    # a área que tem todos os nascimentos de uma fonte não sai, mesmo rala
+    so = [(1, 1, 30, [(1, 1)]), (50, 50, 1, [(50, 50)])]
+    assert len(filtra(so)) == 1, "uma fonte: a rala sai"
+    assert len(filtra(so, lambda a: {"comum": 30} if a[2] == 30 else {"nomeado": 1})) == 2, "a rala de outra fonte fica"
+    assert len(filtra(so, lambda a: {"comum": a[2]})) == 1, "a rala da mesma fonte sai"
+    assert filtra(so, lambda a: {a[2]: a[2]}, lambda a: a[2] == 1, teto=1)[0][2] == 1, "no teto, a inteira passa na frente"
 
     def area_de(q, k=0):
         return fim[q][0][k]
@@ -392,6 +482,18 @@ def demo(nomes, fim):
     # Cyclonian (1712): três itens na ordem do banco — Liferoot (3357) é o 1, Bloodscalp Tusk (3901) o 2
     if 1712 in fim:
         assert [i for _, i, _ in fim[1712][0]][:2] == [3357, 3901], fim[1712][0]
+    # The People's Militia (14): o Defias Highwayman do guia (Moonbrook, 48.14,77.25) cai dentro da área grande dele
+    t, i, lista = area_de(14)
+    perto = min(lista, key=lambda za: distancia(za[1][3], 48.14, 77.25))
+    assert t == "c" and i == 122 and distancia(perto[1][3], 48.14, 77.25) == 0 and perto[1][2] >= 20, lista
+    # Gor'tesh the Brute Lord (3824): a cabeça cai do Gor'tesh (um nascimento só, onde o guia manda) e do Grubbub
+    # (3): a área do Gor'tesh fica, mesmo menor que a rala
+    t, i, lista = area_de(3824)
+    assert any(abs(a[0] - 39.3) < 0.2 and abs(a[1] - 55.3) < 0.2 and a[2] == 1 for _, a in lista), lista
+    # Gathering Materials (1921): Linen Cloth sai de baús (item de ofício): sem área; o Charged Rift Gem, das caixas
+    assert not area_de(1921, 0)[2] and area_de(1921, 1)[2], fim[1921]
+    # The Temple of Atal'Hakkar (1445): o Fetish of Hakkar cai dentro do templo; o 1 de fora (pântano) não vira área
+    assert 1445 not in fim or not any(l for _, _, l in fim[1445][0]), fim.get(1445)
     # Insane Druids (1012): três mobs, um objetivo cada, na ordem
     assert [i for _, i, _ in fim[1012][0]] == [3940, 3941, 3942]
     assert all(len(h) <= CANTOS for v in fim.values() for _, _, l in v[0] for _, (_, _, _, h) in l)

@@ -53,7 +53,10 @@ local function ensure(canvas)
 		overlay = CreateFrame("Frame", "LodestarRouteMap", canvas)
 		overlay:SetFrameStrata("HIGH")
 	end
-	overlay:SetParent(canvas); overlay:SetAllPoints(canvas); overlay:Show()
+	overlay:SetParent(canvas); overlay:SetAllPoints(canvas)
+	-- um nível acima das áreas de nascimento (SpawnMap, na mesma camada): a rota por cima da mancha
+	if canvas.GetFrameLevel then overlay:SetFrameLevel((canvas:GetFrameLevel() or 1) + 2) end
+	overlay:Show()
 	return overlay
 end
 
