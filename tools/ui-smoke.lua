@@ -1566,14 +1566,20 @@ step("Flight card", function()
 			function q:GetChildren() return unpack(self.kids) end
 			return q
 		end
-		local ofa, filho = falso(0.9, true), falso(1, true)
-		ofa.kids = { filho }
+		local ofa, filho, filho2, protegido = falso(0.9, true), falso(1, true), falso(1, true), falso(1, true)
+		function protegido:IsProtected() return true end
+		ofa.kids = { filho, filho2, protegido }
 		_G.OneForAllFlightTimer = ofa
 		FC:Marcou(2)                                                -- marcou Hammerfall (direto de Undercity)
 		voa(true)
-		assert(ofa.a == 0 and ofa.m == false and filho.m == false, "o timer do OneForAll ficou à mostra")
-		ofa.a = 1; FC:Update()
-		assert(ofa.a == 0, "o OneForAll mostrou de novo e o cartão não reaplicou")
+		assert(ofa.a == 0 and ofa.m == false and filho.m == false and filho2.m == false,
+			"o timer do OneForAll (ou um filho) ficou à mostra ou com mouse")
+		assert(protegido.m == true, "mexeu no mouse de um filho protegido")
+		ofa.a = 1; ofa.m = true; FC:Update()
+		assert(ofa.a == 0 and ofa.m == false, "o OneForAll mostrou de novo e o cartão não reaplicou")
+		local trocado = falso(0.8, true)                            -- o OneForAll recriou o frame no meio do voo
+		_G.OneForAllFlightTimer = trocado; FC:Update()
+		assert(trocado.a == 0, "o frame novo do OneForAll ficou à mostra")
 		local c = _G.LodestarFlightCard
 		assert(c and c:IsShown(), "o cartão não abriu em voo")
 		assert(c.title:GetText() == "Hammerfall" and c.sub:GetText() == "Arathi", "destino: " .. tostring(c.title:GetText()))
@@ -1584,7 +1590,11 @@ step("Flight card", function()
 		assert(c.time:GetText() == "~" .. FC.Fmt(s - 60), "o tempo não andou: " .. tostring(c.time:GetText()))
 		voa(false)
 		assert(not c:IsShown() and ns.char.voo == nil, "pousou e o cartão (ou o voo salvo) ficou")
-		assert(ofa.a == 0.9 and ofa.m == true and filho.m == true, "pousou e o timer do OneForAll não voltou como estava")
+		assert(ofa.a == 0.9 and ofa.m == true and filho.m == true and filho2.m == true and trocado.a == 0.8,
+			"pousou e o timer do OneForAll (o velho ou o novo) não voltou como estava")
+		ofa.a = 0.5; trocado.a = 0.5; FC:Update()                   -- depois de devolver, o Lodestar não mexe mais
+		assert(ofa.a == 0.5 and trocado.a == 0.5, "o Lodestar seguiu mexendo no timer do OneForAll depois de pousar")
+		_G.OneForAllFlightTimer = ofa; ofa.a = 0.9
 		comSlot = true; FC:Marcou(2)                                -- o slot 2 é Tarren Mill, mesmo com o nome do 3
 		voa(true)
 		assert(c.title:GetText() == "Tarren Mill", "o slot clicado não mandou: " .. tostring(c.title:GetText()))

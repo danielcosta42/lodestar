@@ -98,29 +98,42 @@ if hooksecurefunc and TakeTaxiNode then
 end
 
 -- esconde (sim) ou devolve (não) os timers de fora: alfa e mouse de antes guardados, do frame e dos filhos diretos
+-- não protegidos. A devolução vale para todo frame escondido, mesmo o que o addon de fora já trocou por outro.
 local escondidos = {}          -- [frame] = { alfa, { [frame] = mouse antes } }
+local enganchados = {}         -- [frame] = true: o SetAlpha do addon de fora volta a zero enquanto escondido
 local function outros(sim)
+	if not sim then
+		for f, e in pairs(escondidos) do
+			escondidos[f] = nil
+			f:SetAlpha(e[1])
+			for q, m in pairs(e[2]) do q:EnableMouse(m) end
+		end
+		return
+	end
 	for _, nome in ipairs(FC.OUTROS) do
 		local f = _G[nome]
 		if type(f) == "table" and f ~= card and f.SetAlpha then
 			local e = escondidos[f]
-			if sim then
-				if not e then
-					e = { f.GetAlpha and f:GetAlpha() or 1, {} }
-					escondidos[f] = e
-					for _, q in ipairs({ f, f.GetChildren and f:GetChildren() }) do
-						if q.EnableMouse and q.IsMouseEnabled and not (q.IsProtected and q:IsProtected()) then
-							e[2][q] = q:IsMouseEnabled()
-						end
+			if not e then
+				e = { f.GetAlpha and f:GetAlpha() or 1, {} }
+				escondidos[f] = e
+				local lista = { f }
+				if f.GetChildren then for _, q in ipairs({ f:GetChildren() }) do lista[#lista + 1] = q end end
+				for _, q in ipairs(lista) do
+					if q.EnableMouse and q.IsMouseEnabled and not (q.IsProtected and q:IsProtected()) then
+						e[2][q] = q:IsMouseEnabled()
 					end
 				end
-				f:SetAlpha(0)                        -- reaplicado a cada tique: o addon de fora pode mudar
-				for q in pairs(e[2]) do q:EnableMouse(false) end
-			elseif e then
-				f:SetAlpha(e[1])
-				for q, m in pairs(e[2]) do q:EnableMouse(m) end
-				escondidos[f] = nil
+				-- o addon de fora que mexe no alfa (esmaecer, animar) não volta a mostrar no meio do voo
+				if hooksecurefunc and not enganchados[f] then
+					enganchados[f] = true
+					pcall(hooksecurefunc, f, "SetAlpha", function(self, a)
+						if escondidos[self] and a and a > 0 then self:SetAlpha(0) end
+					end)
+				end
 			end
+			f:SetAlpha(0)                            -- reaplicado a cada tique: o addon de fora pode mudar
+			for q in pairs(e[2]) do q:EnableMouse(false) end
 		end
 	end
 end

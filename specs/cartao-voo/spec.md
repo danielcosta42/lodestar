@@ -38,7 +38,9 @@ Forever com a pele do ElvUI.
 - **O popup de fora (#133):** o `/fstack` mostrou que é o **`OneForAllFlightTimer`**, do addon OneForAll, e não do
   ElvUI. Com o cartão à mostra, os frames de `FlightCard.OUTROS` (por ora só esse) ficam invisíveis: alfa 0 e sem
   mouse, no frame e nos filhos diretos não protegidos. Isso é reaplicado a cada tique, porque o addon de fora pode
-  mudar. Ao pousar ou com o cartão desligado, voltam com o alfa e o mouse de antes. Sem o addon, nada muda.
+  mudar, e o `SetAlpha` do frame ganha um gancho que o devolve a zero enquanto escondido (o addon que esmaece não
+  pisca). Ao pousar ou com o cartão desligado, todo frame escondido volta com o alfa e o mouse de antes, mesmo o que o
+  addon de fora já trocou por outro; depois disso o Lodestar não mexe mais nele. Sem o addon, nada muda.
 
 ## Critérios de aceite
 
