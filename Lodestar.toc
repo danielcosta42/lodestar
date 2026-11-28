@@ -87,6 +87,7 @@ RouteMap.lua
 SpawnMap.lua
 FlightMap.lua
 FlightCard.lua
+Shopping.lua
 RouteMinimap.lua
 Compass.lua
 TravelPanel.lua

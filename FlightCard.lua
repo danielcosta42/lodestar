@@ -42,6 +42,10 @@ function FC.Duration(flights, known, de, para)
 	return s, rota and #rota
 end
 
+-- Os timers de voo de outros addons que o cartão substitui (#133): invisíveis e sem mouse enquanto o cartão está à
+-- mostra; voltam como estavam ao pousar ou com o cartão desligado. O do OneForAll ("Drag to move").
+FC.OUTROS = { "OneForAllFlightTimer" }
+
 -- O voo salvo (`ns.char.voo`: nome, s, t0 na hora do servidor) ainda vale depois de um /reload em voo: decolou há
 -- menos que a duração mais 1 min; sem duração, há menos de 30 min
 function FC.Valid(v, now)
@@ -91,6 +95,47 @@ function FC:Marcou(i)
 end
 if hooksecurefunc and TakeTaxiNode then
 	hooksecurefunc("TakeTaxiNode", function(i) FC:Marcou(i) end)
+end
+
+-- esconde (sim) ou devolve (não) os timers de fora: alfa e mouse de antes guardados, do frame e dos filhos diretos
+-- não protegidos. A devolução vale para todo frame escondido, mesmo o que o addon de fora já trocou por outro.
+local escondidos = {}          -- [frame] = { alfa, { [frame] = mouse antes } }
+local enganchados = {}         -- [frame] = true: o SetAlpha do addon de fora volta a zero enquanto escondido
+local function outros(sim)
+	if not sim then
+		for f, e in pairs(escondidos) do
+			escondidos[f] = nil
+			f:SetAlpha(e[1])
+			for q, m in pairs(e[2]) do q:EnableMouse(m) end
+		end
+		return
+	end
+	for _, nome in ipairs(FC.OUTROS) do
+		local f = _G[nome]
+		if type(f) == "table" and f ~= card and f.SetAlpha then
+			local e = escondidos[f]
+			if not e then
+				e = { f.GetAlpha and f:GetAlpha() or 1, {} }
+				escondidos[f] = e
+				local lista = { f }
+				if f.GetChildren then for _, q in ipairs({ f:GetChildren() }) do lista[#lista + 1] = q end end
+				for _, q in ipairs(lista) do
+					if q.EnableMouse and q.IsMouseEnabled and not (q.IsProtected and q:IsProtected()) then
+						e[2][q] = q:IsMouseEnabled()
+					end
+				end
+				-- o addon de fora que mexe no alfa (esmaecer, animar) não volta a mostrar no meio do voo
+				if hooksecurefunc and not enganchados[f] then
+					enganchados[f] = true
+					pcall(hooksecurefunc, f, "SetAlpha", function(self, a)
+						if escondidos[self] and a and a > 0 then self:SetAlpha(0) end
+					end)
+				end
+			end
+			f:SetAlpha(0)                            -- reaplicado a cada tique: o addon de fora pode mudar
+			for q in pairs(e[2]) do q:EnableMouse(false) end
+		end
+	end
 end
 
 local function pousar()
@@ -173,7 +218,11 @@ function FC:Update()
 	-- fora de voo: sem voo e sem o salvo (também o de um pouso com o addon fora: desconexão, tela de carregamento)
 	if not taxi then voo = nil; if ns.char then ns.char.voo = nil end end
 	emVoo = taxi and true or false
-	if not (taxi and voo and on()) then if card then card:Hide() end return end
+	if not (taxi and voo and on()) then
+		if card then card:Hide() end
+		pcall(outros, false)
+		return
+	end
 	local c = build()
 	local a, b = FC.Split(voo.nome)
 	c.title:SetText(a or ns.L.IN_FLIGHT)
@@ -194,6 +243,7 @@ function FC:Update()
 	c.time:ClearAllPoints()
 	if podePousar then c.time:SetPoint("RIGHT", c.land, "LEFT", -8, 0) else c.time:SetPoint("RIGHT", -14, 2) end
 	c:Show()
+	pcall(outros, true)
 end
 
 -- o estado do voo a cada 0,25 s (não há evento de pousar confiável em todo cliente)

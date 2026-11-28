@@ -35,8 +35,12 @@ Forever com a pele do ElvUI.
      `via` é direta).
   4. Sem nenhum deles: "Em voo" e o tempo contando para cima ("+1:23"), sem barra.
 - **Arrastável**, com a posição salva (`flightCardPos`). Configurações → Navegação: "Cartão de voo" (ligado).
-- **O popup de fora:** o Lodestar ainda não o esconde, porque falta o nome do frame (`/fstack` em voo). Até lá, o
-  jogador desliga o popup nas opções de onde ele vem.
+- **O popup de fora (#133):** o `/fstack` mostrou que é o **`OneForAllFlightTimer`**, do addon OneForAll, e não do
+  ElvUI. Com o cartão à mostra, os frames de `FlightCard.OUTROS` (por ora só esse) ficam invisíveis: alfa 0 e sem
+  mouse, no frame e nos filhos diretos não protegidos. Isso é reaplicado a cada tique, porque o addon de fora pode
+  mudar, e o `SetAlpha` do frame ganha um gancho que o devolve a zero enquanto escondido (o addon que esmaece não
+  pisca). Ao pousar ou com o cartão desligado, todo frame escondido volta com o alfa e o mouse de antes, mesmo o que o
+  addon de fora já trocou por outro; depois disso o Lodestar não mexe mais nele. Sem o addon, nada muda.
 
 ## Critérios de aceite
 
@@ -46,4 +50,5 @@ Forever com a pele do ElvUI.
 - Testes: núcleo em `tools/travel-tests.lua` (nome, tempo, progresso, duração e trechos, voo salvo, dados reais) e
   fumaça "Flight card" em `tools/ui-smoke.lua`: o direto sem botão; o tempo andando; o pouso limpando o voo salvo;
   o /reload em voo; a janela de 2 min; a perna da rota com o botão; pousar antes; o botão de volta no voo seguinte;
-  sem a função; desligado; sem dados. Cada caso falha se a regra dele for tirada.
+  sem a função; desligado; sem dados; o timer do OneForAll some, é reaplicado e volta como estava ao pousar e com o
+  cartão desligado. Cada caso falha se a regra dele for tirada.

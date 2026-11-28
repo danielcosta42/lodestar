@@ -161,6 +161,10 @@ check(#P.Objectives(nil, agoraO, {}) == 0, "primeiro retrato (login, /reload): n
 local varios = P.Objectives({ [5] = { false, false }, [1] = { false } }, { [5] = { true, true }, [1] = { true } }, {})
 check(#varios == 3 and varios[1][1] == 1 and varios[2][1] == 5 and varios[3][2] == 2, "em ordem de quest e objetivo")
 check(P.MAX_LINHAS == 3, "no máximo 3 linhas por atualização do diário")
+check(P.Line("[Q]", "pronta para entregar!") == "{rt1} Lodestar - [Q] pronta para entregar!", "a linha: estrela, Lodestar - , quest (#131)")
+local longa = P.Line(("[" .. ("Ж"):rep(60) .. "]"), ("Ж"):rep(120))     -- russo: 2 bytes por letra
+check(#longa <= 255 and longa:find("^{rt1} Lodestar %- %[") and not longa:find("[\192-\255]$")
+	and longa:sub(-2) == "Ж", "linha longa: até 255 bytes, cortada no resto sem partir letra")
 local quatro = P.Objectives({ [9] = { false, false, false, false } }, { [9] = { true, true, true, true } }, {})
 check(#quatro == 4, "os quatro que fecharam juntos saem da conta (o envio corta em 3)")
 check(#P.Objectives({ [9] = { [1] = nil } }, { [9] = { true } }, {}) == 0, "objetivo desconhecido antes (sem texto) não conta")
