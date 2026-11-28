@@ -39,35 +39,14 @@ function CV.Points(e)
 	return out
 end
 
-local function dist(a, b) return math.sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2) end
-
--- Distância de `pos` ao caminho (segmentos) e o índice do segmento mais perto
-function CV.DistTo(pts, pos)
-	local best, bi = math.huge, 1
-	for i = 1, #pts - 1 do
-		local a, b = pts[i], pts[i + 1]
-		local vx, vy = b.x - a.x, b.y - a.y
-		local l2 = vx * vx + vy * vy
-		local t = l2 > 0 and math.max(0, math.min(1, ((pos.x - a.x) * vx + (pos.y - a.y) * vy) / l2)) or 0
-		local d = dist(pos, { x = a.x + vx * t, y = a.y + vy * t })
-		if d < best then best, bi = d, i end
-	end
-	if #pts == 1 then best = dist(pos, pts[1]) end
-	return best, bi
-end
-
 -- O que resta do caminho a partir de `pos` (já dentro): `pos` e os pontos depois do segmento mais perto
+-- (Terrain.Ahead dá o índice do próximo ponto)
 function CV.Rest(pts, pos)
-	local _, bi = CV.DistTo(pts, pos)
 	local out = { { c = pos.c, x = pos.x, y = pos.y } }
-	for i = bi + 1, #pts do out[#out + 1] = pts[i] end
+	local prox = #pts
+	if ns.Terrain and #pts >= 2 then prox = select(5, ns.Terrain.Ahead(pts, pos, 0)) end
+	for i = prox, #pts do out[#out + 1] = pts[i] end
 	return out
-end
-
-function CV.Length(pts)
-	local L = 0
-	for i = 2, #pts do L = L + dist(pts[i - 1], pts[i]) end
-	return L
 end
 
 --------------------------------------------------------------------------------
@@ -83,35 +62,50 @@ local function escolhas()
 	return ns.char.caves
 end
 
+-- A distância de `pos` ao caminho da caverna (Terrain.Ahead)
+local function aoCaminho(e, pos)
+	if not (e and pos and pos.c == e.c and ns.Terrain) then return math.huge end
+	return select(4, ns.Terrain.Ahead(CV.Points(e), pos, 0))
+end
+
 -- O jogador está dentro desta caverna: lugar fechado (IsIndoors) e perto do caminho dela
 function CV:Inside(e, pos)
 	if not (e and pos and IsIndoors and IsIndoors()) then return false end
-	if pos.c ~= e.c then return false end
-	return (CV.DistTo(CV.Points(e), pos)) <= DENTRO_JD
+	return aoCaminho(e, pos) <= DENTRO_JD
 end
 
--- Para o Travel: a caverna do destino, se ativa -> { nome, entrada, pts, dentro } | nil
-function CV:Route(dest, pos)
+-- Para o Travel: a caverna do destino, se ativa -> { nome, entrada, pts, dentro } | nil. `primeiro`: o trecho que sai
+-- do jogador — só nele "já dentro" vale (o IsIndoors é do jogador, não da parada de antes)
+function CV:Route(dest, pos, primeiro)
 	local e = CV.Of(dest, ns.caves)
 	if not e then return nil end
 	local key = CV.Key(dest.zone, dest.x, dest.y)
-	local dentro = CV:Inside(e, pos)
+	local dentro = primeiro and CV:Inside(e, pos) or false
 	if not CV.Active(e, escolhas()[key], dentro) then return nil end
 	local w = ns.caves.w and ns.caves.w[e.w]
 	local pts = CV.Points(e)
 	return { nome = w and w.n ~= "" and w.n or nil, entrada = pts[1], pts = pts, dentro = dentro, s = e.s }
 end
 
--- Para a janela do guia: a caverna do destino do guia de agora, ativa ou não -> { nome, s, ativa, key } | nil
+-- Para a janela do guia: a caverna do destino do guia, quando é ele que a rota segue (não o manual nem o corpo),
+-- ativa ou não -> { nome, s, ativa, dentro, key, e } | nil
 function CV:Current()
-	local dest = ns.Destinations and ns.Destinations.GuideTarget and ns.Destinations.GuideTarget()
+	local D = ns.Destinations
+	local dest, kind
+	if D and D.Active then dest, kind = D:Active() end
+	if kind ~= "guide" then return nil end
 	local e = CV.Of(dest, ns.caves)
 	if not e then return nil end
 	local key = CV.Key(dest.zone, dest.x, dest.y)
 	local pos = ns.Travel and ns.Travel.PlayerWorld and ns.Travel.PlayerWorld()
 	local w = ns.caves.w and ns.caves.w[e.w]
-	return { nome = w and w.n ~= "" and w.n or nil, s = e.s, key = key,
-		ativa = CV.Active(e, escolhas()[key], CV:Inside(e, pos)) }
+	local dentro = CV:Inside(e, pos)
+	return { nome = w and w.n ~= "" and w.n or nil, s = e.s, key = key, e = e, dentro = dentro,
+		ativa = CV.Active(e, escolhas()[key], dentro) }
+end
+
+local function refaz()
+	if ns.Travel and not ns.Travel:Busy() then ns.Travel:Replan(true) end      -- em voo ou a bordo, não
 end
 
 -- O jogador troca: pela entrada <-> por cima (e a rota se refaz)
@@ -119,19 +113,34 @@ function CV:Toggle()
 	local cur = CV:Current()
 	if not cur then return end
 	escolhas()[cur.key] = not cur.ativa
-	if ns.Travel then ns.Travel:Replan(true) end
+	refaz()
 	if ns.Viewer then ns.Viewer:Refresh() end
 end
 
--- entrou ou saiu da caverna do destino (por qualquer entrada): a rota se refaz de onde o jogador está
+-- Entrou ou saiu da caverna do destino (por qualquer entrada), ou a troca de caverna/por cima: a rota se refaz de onde
+-- o jogador está. Na perna da caverna, fora dela, longe da entrada e do caminho (saiu, ou nunca entrou): também.
 local estado
-ns:Every(2, function()
+local FORA_JD = 40
+function CV:Watch()
 	local cur = CV:Current()
-	local agora = cur and (cur.key .. ":" .. tostring(cur.ativa)) or nil
-	if agora ~= estado then
-		local antes = estado
-		estado = agora
-		if antes ~= nil and agora ~= nil and ns.Travel then ns.Travel:Replan(true) end
+	local agora = cur and (cur.key .. ":" .. tostring(cur.ativa) .. ":" .. tostring(cur.ativa and cur.dentro)) or nil
+	local mudou = agora ~= estado
+	local antes = estado
+	estado = agora
+	if mudou then
+		if antes ~= nil and agora ~= nil then refaz() end
 		if ns.Viewer then ns.Viewer:Refresh() end
+		return
 	end
-end)
+	local r = cur and cur.ativa and not cur.dentro and ns.Travel and ns.Travel:Route()
+	local leg = r and r.legs[r.leg]
+	if leg and leg.cave then
+		local pos = ns.Travel.PlayerWorld()
+		local pts = CV.Points(cur.e)
+		if pos and pos.c == cur.e.c and math.sqrt((pos.x - pts[1].x) ^ 2 + (pos.y - pts[1].y) ^ 2) > FORA_JD
+			and aoCaminho(cur.e, pos) > FORA_JD then
+			refaz()
+		end
+	end
+end
+ns:Every(2, function() CV:Watch() end)

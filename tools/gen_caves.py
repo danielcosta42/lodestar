@@ -14,7 +14,10 @@ Do terreno e dos modelos do próprio cliente (gen_terrain, modelos; CASC local o
      do alvo só por dentro: a boca mais perto — de preferência uma que um portal interior<->exterior do WMO (MOPT/MOPR)
      confirma a até PORTAL_PERTO jd — e o caminho, simplificado (Douglas-Peucker, TOL jd);
   4. classifica: s=1 (caverna) se o texto do passo (notas, objetivos, título e objetivo da quest) cita o nome da área do
-     WMO (WMOAreaTable; sem nome próprio, a AreaTable); s=0 (ambíguo: o NPC pode estar em cima — o jogo decide pelo
+     WMO (WMOAreaTable; sem nome próprio, a AreaTable) de um jeito que põe o alvo dentro: o nome já é de caverna (Mine,
+     Den, Pit...) ou a frase tem pista de interior (inside, within, deep, beneath, cave...), e nada de "atop/top of/on
+     top/above/outside" colado no nome ("atop Jintha'alor"); citação sem pista só vale num ponto sem chão de fora de pé a
+     até RAIO jd (J.D. Collie, na parede de Marshal's Refuge). s=0 (ambíguo: o NPC pode estar em cima — o jogo decide pelo
      GetSubZoneText, que dentro da caverna dá o nome) nos outros, mesmo sem chão de fora de pé perto do ponto (a encosta
      íngreme também não tem: Raptor Ridge, Rustmaul Dig Site). Depois, o ambíguo a até PROMOVE jd (3D, entre os alvos)
      de um s=1 citado na mesma caverna (componente) vira s=1: Lathoric the Black e Obsidion, ao lado do Dying
@@ -35,6 +38,7 @@ Formato (o Caves.lua lê exatamente isto): ns.caves = { w = { [chave] = { n = no
 p = { ["Zona|x|y"] = { w, s, c, e = {x, y}, p = {x1, y1, ...}, l = jd, z = jd } } } — mundo na convenção do addon
 (x norte, y oeste), polilinha da entrada até o alvo. Chave do WMO: o uniqueId da colocação.
 """
+import ast
 import collections
 import heapq
 import json
@@ -78,6 +82,8 @@ RX_GOTO = re.compile(r"\|goto ([^|,\d-][^|,]*?)\s+(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\
 SLAG_PIT = ("Searing Gorge|40.77|35.89", (-6767.7, -1426.0), "The Slag Pit")     # o caso do #135 (--demo)
 LATHORIC = "Searing Gorge|41.32|25.53"     # no Slag Pit, ao lado do Dying Archaeologist: s=1 por vizinhança (--demo)
 ENCOSTA = "Wetlands|67.84|30.74"           # raptores de Raptor Ridge, encosta íngreme sem chão de pé: não é s=1 (--demo)
+TOPO_DE = "The Hinterlands|57.66|81.51"    # "can be found atop Jintha'alor": cita, mas em cima — não é s=1 (--demo)
+JD_COLLIE = "Un'Goro Crater|41.92|2.70"    # J.D. Collie, na caverna de Marshal's Refuge: s=1 (--demo)
 
 
 # ── entrada: guias, zonas, nomes ─────────────────────────────────────────────────────────────────────────────────────
@@ -89,8 +95,17 @@ def guias(zona=None):
         quests = json.load(fh)
 
     def da_quest(q):
+        """Título e objetivo da quest, um item por linha (o objText vem como a lista do Questie, em texto)."""
         e = quests.get(str(q)) or {}
-        return "%s %s" % (e.get("name") or "", e.get("objText") or "")
+        obj = e.get("objText") or ""
+        if isinstance(obj, str) and obj.startswith("["):
+            try:
+                obj = ast.literal_eval(obj)
+            except (ValueError, SyntaxError):
+                pass
+        if isinstance(obj, (list, tuple)):
+            obj = "\n".join(str(o) for o in obj if o)
+        return "%s\n%s" % (e.get("name") or "", obj)
     pontos, primeira = {}, {}
     for sub in ("Leveling", "Dungeons"):
         for raiz, _, arqs in sorted(os.walk(os.path.join(GUIAS, sub))):
@@ -111,7 +126,7 @@ def guias(zona=None):
                                 qids.update(int(i) for i in re.findall(r"##(\d+)", l))
                             qids.update(int(i) for i in re.findall(r"\|q (\d+)", l))
                             partes.append(re.sub(r"\|goto [^|]*", " ", l))
-                        txt = " ".join(partes + [da_quest(q) for q in sorted(qids)]).lower()
+                        txt = "\n".join(partes + [da_quest(q) for q in sorted(qids)]).lower()
                         for l in linhas:
                             for m in RX_GOTO.finditer(l):
                                 k = (m.group(1).strip(), float(m.group(2)), float(m.group(3)))
@@ -119,7 +134,7 @@ def guias(zona=None):
                                     continue
                                 pontos.setdefault(k, set()).add(txt)
                                 primeira.setdefault(k, "%s/%s: %s" % (sub, a, l))
-    return {k: " ".join(sorted(v)) for k, v in pontos.items()}, primeira
+    return {k: "\n".join(sorted(v)) for k, v in pontos.items()}, primeira
 
 
 def uimaps():
@@ -587,12 +602,42 @@ def caixa_de(coloc, pts):
 
 
 # ── 4. classificação e saída ─────────────────────────────────────────────────────────────────────────────────────────
+# Citar o nome não basta: "atop Jintha'alor", "Travel to Sunnyglade" citam e o alvo está em cima. A citação vale se o nome
+# já é de caverna, ou se a frase dela tem pista de interior; nunca com "atop/top of/on top/above/outside" colado nela.
+PALAVRA_CAVERNA = re.compile(r"\b(mines?|dens?|lairs?|pits?|hollows?|caves?|caverns?|burrows?|tunnels?|grottos?|depths|"
+                             r"deeps?|crypts?|catacombs?|barrows?|warrens?|hole|undercroft|tombs?|sepulcher|halls?|"
+                             r"mounds?|holds?)\b")
+# "within" sozinho fica de fora: "within Sunnyglade" é a vila (Riverglades); o "deep within" do Slag Pit passa pelo "deep"
+PISTA_DENTRO = re.compile(r"\b(inside|deep|deeper|deepest|depths|beneath|under|underneath|underground|below|"
+                          r"caves?|caverns?|mines?|tunnels?|lairs?|dens?|burrows?)\b")
+PISTA_FORA = re.compile(r"\b(atop|top of|on top|above|outside)\b")
+FIM_FRASE = re.compile(r"[.!?](?=\s|$)")
+
+
 def cita(texto, nome, zonas_nomes):
-    """O texto do passo cita o nome da área do WMO? (sem 'The', palavra inteira; nome de zona não vale)."""
+    """Como o texto do passo cita o nome da área do WMO (sem 'The', palavra inteira; nome de zona não vale): "forte" se
+    alguma citação vale (o nome é de caverna — PALAVRA_CAVERNA — ou a frase dela tem PISTA_DENTRO), "simples" se só
+    há citação sem pista, None se nenhuma (ou todas com PISTA_FORA a até 5 palavras antes / 3 depois)."""
     if not nome or nome in zonas_nomes:
-        return False
+        return None
     n = re.sub(r"^the ", "", nome.lower())
-    return len(n) >= 4 and re.search(r"(?<![\w'])" + re.escape(n) + r"(?![\w'])", texto) is not None
+    if len(n) < 4:
+        return None
+    de_caverna = PALAVRA_CAVERNA.search(n) is not None
+    melhor = None
+    for linha in texto.split("\n"):
+        for m in re.finditer(r"(?<![\w'])" + re.escape(n) + r"(?![\w'])", linha):
+            ini = max([f.end() for f in FIM_FRASE.finditer(linha, 0, m.start())] + [0])
+            f = FIM_FRASE.search(linha, m.end())
+            fim = f.end() if f else len(linha)
+            antes, depois = linha[ini:m.start()].split()[-5:], linha[m.end():fim].split()[:3]
+            if PISTA_FORA.search(" ".join(antes + ["|"] + depois)):
+                continue
+            frase = linha[ini:m.start()] + " " + linha[m.end():fim]       # a frase sem o próprio nome
+            if de_caverna or PISTA_DENTRO.search(frase):
+                return "forte"
+            melhor = "simples"
+    return melhor
 
 
 def lua_str(s):
@@ -677,7 +722,9 @@ def gera(c, zona=None, log=print):
             if r["porta"]:
                 fora["prédio com porta"] += 1
                 continue
-            citou = cita(pontos[(p[0], p[1], p[2])], cand[p][2] or nome, zonas_nomes)
+            c_ = cita(pontos[(p[0], p[1], p[2])], cand[p][2] or nome, zonas_nomes)
+            # citação forte; ou simples num ponto sem chão de fora de pé perto (J.D. Collie na parede de Marshal's Refuge)
+            citou = c_ == "forte" or (c_ == "simples" and not r["chao_fora"])
             s = 1 if citou else 0
             da_regiao.append((chave, r))
             p_out[chave] = {"w": uid, "s": s, "c": mapa, "e": r["boca"][:2], "l": int(round(r["l"])),
@@ -742,6 +789,11 @@ def demo(res):
     assert math.hypot(e["p"][-1][0] - alvo[0], e["p"][-1][1] - alvo[1]) <= RAIO + 2, "a polilinha termina no alvo"
     lat = res["p"].get(LATHORIC)
     assert lat and lat["s"] == 1, "Lathoric the Black (%s) devia ser s=1 (vizinho do Dying Archaeologist): %r" % (LATHORIC, lat)
+    for k in (TOPO_DE, ):
+        t_ = res["p"].get(k)
+        assert not t_ or t_["s"] != 1, "%s (\"atop Jintha'alor\") não devia ser s=1: %r" % (k, t_)
+    jd = res["p"].get(JD_COLLIE)
+    assert not jd or jd["s"] == 1, "J.D. Collie (%s, caverna de Marshal's Refuge) devia ser s=1: %r" % (JD_COLLIE, jd)
     enc = res["p"].get(ENCOSTA)
     assert not enc or enc["s"] != 1, "%s (encosta de Raptor Ridge) não devia ser s=1: %r" % (ENCOSTA, enc)
     print("ok: %s s=1 (vizinhança); %s %s" % (LATHORIC, ENCOSTA, "s=%d" % enc["s"] if enc else "fora do Caves.lua"))
@@ -752,7 +804,8 @@ def demo(res):
 def argumentos(args=None):
     import argparse
     ap = argparse.ArgumentParser(description="Gera Caves.lua (alvo de guia numa caverna: entrada e caminho).")
-    ap.add_argument("--demo", action="store_true", help="só confere (Slag Pit, Lathoric, encosta de Raptor Ridge); não escreve")
+    ap.add_argument("--demo", action="store_true", help="só confere os casos conhecidos (Slag Pit, Lathoric, Jintha'Alor, "
+                    "J.D. Collie, Raptor Ridge); não escreve")
     ap.add_argument("--zona", help="só os pontos desta zona (como no guia); não escreve, salvo com --out")
     ap.add_argument("--cdn", action="store_true", help="lê do CDN público mesmo com cliente instalado")
     ap.add_argument("--out", metavar="ARQ", help="escreve em ARQ em vez de ../Caves.lua")

@@ -22,13 +22,21 @@ mesmas peças do `gen_terrain.py`. O ponto vira coordenada de mundo pela UiMapAs
    do WMO, ou mais de 3 jd abaixo do terreno.
 4. **Entrada:** onde o pedaço de caverna ligado ao alvo encontra o chão de fora. Vale a de caminho mais curto até o
    alvo, de preferência a até 25 jd de um portal interior↔exterior do WMO. O caminho é simplificado a 4 jd.
-5. **Certo ou talvez:** só a geometria não decide (o Kalaran Windblade fica em cima da mesma caverna).
-   - **Certo** (`s = 1`): o texto do passo (notas, goals, nome e objetivo da quest) cita o nome da caverna (o
-     WMOAreaTable, como "The Slag Pit"). Também fica certo o ponto a até ~20 jd, em 3D, de um alvo certo na mesma
-     caverna (Lathoric, Obsidion).
-   - **Talvez** (`s = 0`): o resto.
+5. **Certo ou talvez:** só a geometria não decide (o Kalaran Windblade fica em cima da mesma caverna), e citar o nome
+   também não basta ("atop Jintha'alor", "Travel to Sunnyglade" citam e o alvo está em cima).
+   - **Certo** (`s = 1`): o texto do passo (cada linha do guia, o nome e cada objetivo da quest) cita o nome da
+     caverna (WMOAreaTable, palavra inteira, sem "The", nunca nome de zona) e a citação vale. Ela vale quando:
+     - o nome já é de caverna (Mine, Den, Lair, Pit, Hollow, Cave, Burrow, Tunnel, Grotto, Depths, Deep, Crypt,
+       Catacomb, Barrow, Warren, Hole, Undercroft, Tomb, Sepulcher, Hall, Mound, Hold); ou
+     - a frase tem uma pista de interior (inside, deep, depths, beneath, under, underneath, underground, below, cave,
+       cavern, mine, tunnel, lair, den, burrow; "in", "at" e "within" sozinhos não contam); ou
+     - não há chão de fora a até 8 jd.
+
+     Nunca vale com "atop", "top of", "on top", "above" ou "outside" colado à citação. Também fica certo o ponto a até
+     25 jd, em 3D, de um alvo certo por citação na mesma caverna (Lathoric, Obsidion).
+   - **Talvez** (`s = 0`): o resto. Por exemplo, Uldaman de fora, Dun Garok e Skulk Rock: o texto não diz que é dentro.
    - **De fora:** o prédio com porta (o caminho de cima até o alvo é pouco mais que a reta), a caverna sem entrada no
-     grafo, o WMO da lista de interiores.
+     grafo, o WMO da lista de interiores, as capitais e as coordenadas de mapa de continente.
 6. **Saída:** `ns.caves = { w = { [wmo] = { n, c } }, p = { ["Zona|x|y"] = { w, s, c, e = {x, y}, p = {x1, y1, ...}, l, z } } }`.
    - `e`: a entrada.
    - `p`: o caminho da entrada ao alvo.
@@ -45,11 +53,16 @@ junto a um portal entre esses grupos.
   entrada" ou já estiver lá dentro. "Lá dentro" é `IsIndoors()` e a até 40 jd do caminho da caverna, sem depender do
   idioma. A escolha fica salva por ponto (`LodestarCharDB.caves`).
 - **Na rota (`Travel.PlanChain`):** com a caverna ativa, o trecho vai até a entrada e a última perna segue o caminho
-  de dentro. É uma perna a pé com o caminho pronto (`cave` = o nome); o terreno nunca a recalcula, e o desvio do
-  terreno (#125) não a mede. Já lá dentro, só o resto do caminho, de onde o jogador está. Entrar ou sair da caverna
-  refaz a rota.
+  de dentro. É uma perna a pé com o caminho pronto (`cave` = o nome).
+  - O caminho de dentro nunca é recalculado, apagado (gravar passagem) nem herdado por uma perna de fora.
+  - O desvio do terreno (#125) e o "medir antes de trocar" não valem para ela.
+  - Ela chega pelo que falta do caminho, não pela reta: a caverna de dois andares volta por baixo do alvo.
+  - Já lá dentro, só o resto do caminho, de onde o jogador está; isso vale só no trecho que sai do jogador.
+- **O vigia (a cada 2 s):** entrar ou sair da caverna refaz a rota, e a troca de caverna/por cima também. Na perna da
+  caverna, fora dela e a mais de 40 jd da entrada e do caminho, também. Em voo ou a bordo, não refaz.
 - **Texto da perna até a entrada:** "Entrada de The Slag Pit".
-- **Janela do guia:** com o alvo do passo numa caverna, uma linha logo acima das ações rápidas. O clique troca entre
+- **Janela do guia:** com o alvo do passo numa caverna (e o guia como destino da rota, não um manual ou o corpo), uma
+  linha logo acima das ações rápidas. O clique troca entre
   a caverna e o "por cima", e a rota se refaz.
   - "Alvo dentro de X: a rota entra pela caverna" (certo, ativa);
   - "Indo pela entrada de X" (talvez, escolhido);
@@ -60,7 +73,7 @@ junto a um portal entre esses grupos.
 
 - O Slag Pit (Maltorius) com a entrada e o caminho descobertos e conferidos.
 - A rota para esse passo leva à entrada e desce pela caverna; "por cima" tira a caverna; dentro, só o resto.
-- Os outros alvos de guia em caverna saem do mesmo gerador, com o relatório de quantos e quais.
+- Os outros alvos de guia em caverna saem do mesmo gerador, com o relatório de quantos e quais (71 certos, 247 talvez).
 - Testes:
   - `tools/travel-tests.lua`: o núcleo, os dados do Slag Pit e a cadeia com a caverna;
   - `tools/ui-smoke.lua`, passo "Cave route": a rota, o texto, a linha, a troca, o "dentro" e o caminho que o terreno

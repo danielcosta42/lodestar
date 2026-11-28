@@ -1796,14 +1796,15 @@ end)
 -- cavernas (#135): o Maltorius no Slag Pit — a rota vai à entrada e desce pela caverna; "por cima" tira a caverna
 step("Cave route", function()
 	local T, CV = ns.Travel, ns.Cavernas
-	local pw, w0, gt0, indoors = T.PlayerWorld, T.World, ns.Destinations.GuideTarget, _G.IsIndoors
+	local pw, w0, act0, indoors = T.PlayerWorld, T.World, ns.Destinations.Active, _G.IsIndoors
 	local alvo = { c = 0, x = -6634.4, y = -1232.3 }
 	local eu = { c = 0, x = -6640, y = -1250 }                          -- em cima, a uns 20 jd do ponto
 	local dest = { zone = "Searing Gorge", x = 40.77, y = 35.89, label = "Overseer Maltorius" }
+	local fechado = false
 	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
 	T.World = function() return { c = alvo.c, x = alvo.x, y = alvo.y } end
-	ns.Destinations.GuideTarget = function() return dest end
-	_G.IsIndoors = function() return false end
+	_G.IsIndoors = function() return fechado end
+	local upd = ns.eventFrame:GetScript("OnUpdate")
 	local ok, err = pcall(function()
 		ns.char.caves = {}
 		ns.Destinations:Set("manual", dest)
@@ -1814,9 +1815,13 @@ step("Cave route", function()
 		assert(pen and math.abs(pen.b.x + 6767.7) < 10 and math.abs(pen.b.y + 1426.0) < 10, "a rota não vai à entrada")
 		local txt = ns.Waypoint.LegText(r, #r.legs - 1)
 		assert(txt:find("Slag Pit", 1, true), "o texto da perna até a entrada: " .. txt)
-		-- a janela do guia: a linha da caverna, e o clique troca para "por cima"
+		-- com destino manual, a linha da janela do guia não fala da caverna (é do guia)
 		ns.Viewer:Refresh()
 		local vf = ns.Viewer:GetFrame()
+		assert(not vf.cave:IsShown(), "a linha da caverna apareceu com destino manual")
+		-- o guia é o destino: a linha, e o clique troca para "por cima"
+		ns.Destinations.Active = function() return dest, "guide" end
+		ns.Viewer:Refresh()
 		assert(vf.cave:IsShown() and vf.cave.text:GetText() == ns.L.CAVE_IN:format("The Slag Pit"), "linha da caverna")
 		vf.cave:GetScript("OnEnter")(vf.cave); vf.cave:GetScript("OnLeave")(vf.cave)
 		vf.cave:GetScript("OnClick")(vf.cave)
@@ -1825,20 +1830,49 @@ step("Cave route", function()
 		assert(vf.cave.text:GetText() == ns.L.CAVE_TOP:format("The Slag Pit"), "a linha não mostrou 'por cima'")
 		vf.cave:GetScript("OnClick")(vf.cave)
 		assert(T:Route().legs[#T:Route().legs].cave, "pela entrada de novo e a caverna não voltou")
-		-- já dentro (lugar fechado, perto do caminho): só o resto, de onde está
-		eu = { c = 0, x = -6660, y = -1320 }
-		_G.IsIndoors = function() return true end
-		T:Fresh()
+		CV:Watch()                                                     -- o vigia guarda o estado de agora
+		-- entrou (lugar fechado, a 30 jd do caminho): o vigia refaz e fica só o resto, de onde está
+		eu = { c = 0, x = -6660, y = -1290 }
+		fechado = true
+		CV:Watch()
 		local r3 = T:Route()
-		assert(#r3.legs == 1 and r3.legs[1].cave and r3.legs[1].path[1].x == -6660, "dentro: a rota não seguiu o resto")
-		-- a perna da caverna não é recalculada pelo terreno
-		local upd = ns.eventFrame:GetScript("OnUpdate")
-		local path0 = r3.legs[1].path
+		assert(#r3.legs == 1 and r3.legs[1].cave and r3.legs[1].path[1].x == -6660, "entrou e a rota não seguiu o resto")
+		-- a 30 jd do caminho, em lugar fechado, é "dentro"; a 55 jd, não
+		local e = CV.Of(dest, ns.caves)
+		assert(CV:Inside(e, { c = 0, x = -6606.5, y = -1280.2 }) == true, "a 30 jd do caminho não contou como dentro")
+		assert(CV:Inside(e, { c = 0, x = -6590, y = -1310 }) == false, "a 55 jd do caminho contou como dentro")
+		local seg2 = CV:Route(dest, { c = 0, x = -6660, y = -1290 }, false)
+		assert(seg2 and not seg2.dentro, "trecho depois de uma parada usou o \"dentro\" do jogador")
+		-- em voo ou a bordo, a troca não refaz a rota (sairia do meio do ar)
+		local busy0, rantes = T.Busy, T:Route()
+		T.Busy = function() return true end
+		CV:Toggle()
+		assert(T:Route() == rantes, "em voo e a troca refez a rota")
+		T.Busy = busy0
+		CV:Toggle()
+		CV:Watch()
+		-- o terreno não recalcula a perna da caverna, nem com o jogador a mais de 40 jd dela, nem ao gravar passagem
+		assert(T:Route().legs[1].cave, "depois das trocas, a rota não voltou à caverna")
+		local path0 = T:Route().legs[1].path
+		eu = { c = 0, x = -6560, y = -1300 }
 		for _ = 1, 5 do upd(ns.eventFrame, 0.06) end
 		assert(T:Route().legs[1].path == path0, "o terreno recalculou o caminho da caverna")
+		T:ResetPaths()
+		assert(T:Route().legs[1].path == path0, "gravar passagem apagou o caminho da caverna")
+		-- "por cima" na perna da caverna: a perna a pé nova não herda o caminho de dentro
+		CV:Toggle()
+		local rt = T:Route()
+		assert(rt and not rt.legs[1].cave and rt.legs[1].path ~= path0, "a perna por cima herdou o caminho da caverna")
+		CV:Toggle()
+		CV:Watch()
+		-- saiu (lugar aberto, longe da entrada e do caminho): o vigia refaz e volta a ir até a entrada
+		fechado = false
+		CV:Watch(); CV:Watch()
+		local r4 = T:Route()
+		assert(#r4.legs >= 2 and r4.legs[#r4.legs].cave and not r4.legs[1].cave, "saiu e a rota seguiu pela caverna de longe")
 	end)
 	ns.Destinations:Clear("manual")
-	T.PlayerWorld, T.World, ns.Destinations.GuideTarget, _G.IsIndoors = pw, w0, gt0, indoors
+	T.PlayerWorld, T.World, ns.Destinations.Active, _G.IsIndoors = pw, w0, act0, indoors
 	ns.char.caves = {}
 	T:ResetPaths()
 	ns.Viewer:Refresh()
