@@ -1861,4 +1861,61 @@ end)()
 		"Undercity -> Hammerfall: o direto dos dados (" .. tostring(FC.Duration(real.flights, todos("H"), ucId, hfId)) .. ")")
 end)()
 
+;(function()
+	-- cavernas (#135): o ponto do guia dentro de uma caverna, a entrada e o caminho de dentro
+	local CVns = load("Caves.lua", load("Cavernas.lua", { Terrain = TRN }))
+	local CV, caves = CVns.Cavernas, CVns.caves
+	check(CV.Key("Searing Gorge", 40.77, 35.89) == "Searing Gorge|40.77|35.89" and CV.Key(nil, 1, 2) == nil, "a chave do ponto")
+	local slag = CV.Of({ zone = "Searing Gorge", x = 40.77, y = 35.89 }, caves)
+	check(slag and slag.s == 1 and caves.w[slag.w].n == "The Slag Pit", "Maltorius: dentro do Slag Pit, certo")
+	local pts = CV.Points(slag)
+	check(#pts >= 2 and math.abs(pts[1].x + 6767.7) < 10 and math.abs(pts[1].y + 1426.0) < 10,
+		"a entrada do Slag Pit (49.4, 44.9) é o começo do caminho")
+	local TT0 = load("Travel.lua", { Journey = J }).Travel
+	local L = TT0.PathLength(pts)
+	check(L > 200 and L < 300, "o caminho de dentro: uns 250 jd (" .. math.floor(L) .. ")")
+	check(CV.Active({ s = 1 }, nil, false) and not CV.Active({ s = 1 }, false, false), "certo: ativa, a não ser por cima")
+	check(not CV.Active({ s = 0 }, nil, false) and CV.Active({ s = 0 }, true, false) and CV.Active({ s = 0 }, nil, true),
+		"talvez: só pela escolha do jogador ou já lá dentro")
+	check(not CV.Active(nil, true, true), "sem caverna: nada")
+	local reta = { P(0, 0, 0), P(0, 100, 0), P(0, 100, 100) }
+	local resto = CV.Rest(reta, P(0, 95, 40))
+	check(#resto == 2 and resto[1].y == 40 and resto[2].y == 100, "já dentro: o resto do caminho")
+	-- a cadeia com o destino na caverna: o trecho vai até a entrada e a última perna segue o caminho
+	local TC = load("Travel.lua", { Journey = J, Cavernas = CV, Terrain = TRN }).Travel
+	-- a perna da caverna chega pelo que falta do caminho: a de dois andares volta por baixo do alvo
+	local volta = { P(0, 0, 0), P(0, 0, 100), P(0, 10, 100), P(0, 10, 5) }        -- o alvo a 11 jd da entrada, em reta
+	local rc = { leg = 1, legs = { { k = "walk", cave = "Talon Den", path = volta, b = P(0, 10, 5) } } }
+	check(TC.AdvanceLeg(rc, P(0, 2, 2), false) == 1, "na entrada, a 9 jd do alvo em reta: a caverna ainda não acabou")
+	check(TC.AdvanceLeg(rc, P(0, 10, 12), false) == 2, "no fim do caminho: chegou")
+	local pedidos = {}
+	local function plano(a, b) pedidos[#pedidos + 1] = b; return { s = 50, legs = { { k = "walk", a = a, b = b, s = 50 } } } end
+	local cadeia = { { dest = { zone = "Searing Gorge", x = 40.77, y = 35.89 }, kind = "manual" } }
+	local alvo = P(0, -6634.4, -1232.3)
+	local primeiros = {}
+	local function cv(dest, a, primeiro)
+		primeiros[#primeiros + 1] = primeiro
+		return { nome = "The Slag Pit", entrada = pts[1], pts = pts }
+	end
+	local r = TC.PlanChain(P(0, -6700, -1240), cadeia, function() return alvo end, plano, cv, 7)
+	local ult = r.legs[#r.legs]
+	check(pedidos[1] == pts[1] and #r.legs == 2 and ult.cave == "The Slag Pit" and ult.path == pts and ult.b.x == alvo.x,
+		"a rota vai até a entrada e desce pela caverna")
+	check(math.abs(r.s - (50 + L / 7)) < 0.01, "o tempo de dentro entra no total")
+	primeiros = {}
+	TC.PlanChain(P(0, 0, 0), { { dest = { zone = "X", x = 1, y = 1 }, kind = "stop" }, cadeia[1] }, function() return alvo end,
+		plano, cv, 7)
+	check(primeiros[1] == true and primeiros[2] == false, "\"já dentro\" só no primeiro trecho (o do jogador)")
+	local dentro = TC.PlanChain(P(0, -6660, -1320), cadeia, function() return alvo end, plano,
+		function() return { nome = "The Slag Pit", entrada = pts[1], pts = pts, dentro = true } end, 7)
+	check(#dentro.legs == 1 and dentro.legs[1].cave and dentro.legs[1].path[1].x == -6660, "já dentro: só o resto, de onde está")
+	check(TC.PlanChain(P(0, 0, 0), cadeia, function() return alvo end, plano, function() return nil end, 7).legs[1].cave == nil,
+		"sem caverna ativa: a rota de sempre")
+	-- o desvio do terreno (#125) não mexe na perna da caverna
+	local longo = { P(0, 0, 0), P(0, 0, 500), P(0, 100, 500), P(0, 100, 0) }
+	check(TC.DesvioAtual({ k = "walk", path = longo, b = P(0, 100, 0) }, P(0, 0, 0), 7, TRN.Ahead) ~= nil
+		and TC.DesvioAtual({ k = "walk", cave = "X", path = longo, b = P(0, 100, 0) }, P(0, 0, 0), 7, TRN.Ahead) == nil,
+		"a perna da caverna não vira desvio (a mesma perna sem caverna viraria)")
+end)()
+
 print(("ok: %d checks"):format(checks))

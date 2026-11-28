@@ -181,6 +181,8 @@ function WP.LegText(route, i, secs, now)
 	if leg.k == "walk" then
 		if leg.parada then                -- termina numa parada: ela, não o transporte do trecho seguinte
 			text = WP.StopText(route, i)
+		elseif nxt and nxt.cave then      -- o alvo está numa caverna (#135): primeiro a entrada
+			text = L.LEG_TO_CAVE:format(type(nxt.cave) == "string" and nxt.cave or L.CAVE_GENERIC)
 		elseif nxt and nxt.k == "flight" then
 			text = (nxt.discover and L.LEG_TO_NEW_FLIGHT or L.LEG_TO_FLIGHT):format(leg.name or "?")
 		elseif nxt and nxt.k == "ship" then

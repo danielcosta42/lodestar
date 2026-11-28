@@ -49,6 +49,12 @@ function T.AdvanceLeg(route, pos, onTaxi)
 		return i
 	end
 	local b = leg.b
+	-- perna da caverna (#135): chega pelo que falta do caminho, não pela reta — a caverna de dois andares volta por
+	-- baixo do alvo, e a reta fecharia a perna logo na entrada
+	if leg.cave and leg.path and ns.Terrain and pos.c == b.c then
+		local _, _, falta, fora = ns.Terrain.Ahead(leg.path, pos, 0)
+		return (falta + fora <= (ARRIVE.walk or 15)) and i + 1 or i
+	end
 	if pos.c == b.c and dist(pos, b) <= (ARRIVE[leg.k] or 60) then return i + 1 end
 	return i
 end
@@ -83,13 +89,30 @@ end
 -- foi usada num trecho anterior }. A última perna até cada parada leva `parada` e entra em `stops`. Trecho sem rota
 -- corta a cadeia ali: a rota vai até a última alcançada (o resto se tenta de novo de lá); sem o primeiro, nil. Ponto
 -- que não cai no mapa (`worldOf` nil: zona que não se conhece) fica de fora, sem cortar o resto (#117).
-function T.PlanChain(from, chain, worldOf, plan)
+-- `cave(dest, a)` (opcional, #135): o destino dentro de uma caverna -> { nome, entrada, pts, dentro } | nil. O trecho vai
+-- até a entrada e a última perna segue o caminho de dentro (`cave` = o nome; o caminho já vem pronto); já lá dentro,
+-- só o resto do caminho.
+function T.PlanChain(from, chain, worldOf, plan, cave, speed)
 	local legs, stops, s, a, last = {}, {}, 0, from, nil
 	local at, hearth = 0, false               -- `s` soma o plano (com o gasto da pedra); `at`, o tempo de verdade
-	for _, t in ipairs(chain) do
+	for n, t in ipairs(chain) do
 		local b = worldOf(t.dest)
+		local cv = b and cave and cave(t.dest, a, n == 1)          -- "já dentro" só vale do jogador: o primeiro trecho
 		if b then
-			local seg = plan(a, b, { at = at, hearth = hearth })
+			local seg
+			if cv and cv.dentro and ns.Cavernas then
+				seg = { s = 0, legs = {} }
+				cv.pts = ns.Cavernas.Rest(cv.pts, a)
+			else
+				seg = plan(a, cv and cv.entrada or b, { at = at, hearth = hearth })
+			end
+			if cv and seg then
+				local fim = { c = b.c, x = b.x, y = b.y }
+				local L = T.PathLength(cv.pts)
+				local sc = L / (speed or 7)
+				seg.legs[#seg.legs + 1] = { k = "walk", a = cv.pts[1], b = fim, s = sc, path = cv.pts, cave = cv.nome or true }
+				seg.s = seg.s + sc
+			end
 			if not (seg and #seg.legs > 0) then break end
 			for _, leg in ipairs(seg.legs) do
 				legs[#legs + 1] = leg
@@ -377,12 +400,15 @@ function T:Replan(force)
 			if o.hearth then c.hearth = nil end
 		end
 		return ns.Journey.Plan(a, b, c)
-	end)
+	end, function(dest, a, primeiro)
+		return ns.Cavernas and ns.Cavernas.Route and ns.Cavernas:Route(dest, a, primeiro)
+	end, speed)
 	if new then new.leg = 1 end
 	sinceReplan = 0
 	-- a rota nova que segue a pé para o mesmo ponto herda o caminho já calculado
 	local cur, n1 = route and route.legs[route.leg], new and new.legs[1]
-	if cur and n1 and cur.k == "walk" and n1.k == "walk" and cur.path ~= nil and cur.b.c == n1.b.c
+	if cur and n1 and cur.k == "walk" and n1.k == "walk" and not cur.cave and not n1.cave and cur.path ~= nil
+		and cur.b.c == n1.b.c
 		and cur.b.x == n1.b.x and cur.b.y == n1.b.y then
 		n1.path, n1.pathAt, n1.pathFail = cur.path, cur.pathAt, cur.pathFail   -- a espera de 300 jd vem junto
 		n1.pathFailT = cur.pathFailT
@@ -391,7 +417,7 @@ function T:Replan(force)
 	-- a rota nova começa a pé, daqui ainda sem medida, até um fim com desvio medido de outro começo (#125): com o
 	-- mesmo destino, mesmo forçado (o mapa de voo aberto, o horário do barco), a atual fica até medir (pathTick)
 	local n1, c0 = new and new.legs[1], route and route.legs[route.leg]
-	local medir = route and key == routeKey and n1 and n1.k == "walk" and T.PrecisaMedir(ctx.desvios, from, n1.b)
+	local medir = route and key == routeKey and n1 and n1.k == "walk" and not n1.cave and T.PrecisaMedir(ctx.desvios, from, n1.b)
 		and not (c0 and c0.k == "walk" and c0.b.c == n1.b.c and c0.b.x == n1.b.x and c0.b.y == n1.b.y)
 		and T.VoosConhecidos(route, ctx.known)          -- o mapa de voo disse que o voo dela não existe: troca já
 	local function melhor()
@@ -520,7 +546,7 @@ end
 -- os segundos a mais que a perna leva de verdade (a comparação com a rota nova é pela reta) | nil. `ahead` é o
 -- Terrain.Ahead; caminho a mais de 60 jd de onde o jogador está já não vale.
 function T.DesvioAtual(cur, pos, v, ahead)
-	if not (cur and cur.k == "walk" and cur.path and pos and ahead and pos.c == cur.b.c) then return nil end
+	if not (cur and cur.k == "walk" and not cur.cave and cur.path and pos and ahead and pos.c == cur.b.c) then return nil end
 	local _, _, falta, longe = ahead(cur.path, pos, 0)
 	local D = dist(pos, cur.b)
 	if not (falta and longe and longe <= 60 and T.Desvio(falta, D, v)) then return nil end
@@ -608,7 +634,7 @@ local function pathTick()
 	if not (ns.Terrain and ns.terrain and route) then pathCo = nil; return end
 	local cur = route.legs[route.leg]
 	local pos = T.PlayerWorld()
-	local precisa = cur and cur.k == "walk" and pos and pos.c == cur.b.c
+	local precisa = cur and cur.k == "walk" and not cur.cave and pos and pos.c == cur.b.c
 		and not (cur.pathFail and cur.pathAt and dist(pos, cur.pathAt) < 300
 			-- espera até 300 jd; sem caminho nenhum (falha, não o `solto`) e tendo andado 40 jd, tenta de novo a cada
 			-- 30 s (#114) — parado, a mesma busca dá o mesmo nil
@@ -668,7 +694,7 @@ local function pathTick()
 	else
 		for i = route.leg + 1, #route.legs do
 			local l = route.legs[i]
-			if l.k == "walk" and l.path == nil and l.a.c == l.b.c then leg, idx, from = l, i, l.a; break end
+			if l.k == "walk" and not l.cave and l.path == nil and l.a.c == l.b.c then leg, idx, from = l, i, l.a; break end
 		end
 	end
 	if not leg then return end
@@ -685,7 +711,7 @@ function T:ResetPaths()
 	desvios, sonda = {}, nil                       -- o terreno mudou: os desvios medidos também
 	if not route then return end
 	for _, leg in ipairs(route.legs) do
-		if leg.k == "walk" then leg.path, leg.pathFail, leg.pathAt = nil, nil, nil end
+		if leg.k == "walk" and not leg.cave then leg.path, leg.pathFail, leg.pathAt = nil, nil, nil end   -- a da caverna vem pronta
 	end
 	route.pv = (route.pv or 0) + 1
 end

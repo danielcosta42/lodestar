@@ -1793,6 +1793,105 @@ step("Guide shopping", function()
 	assert(not ns.Viewer:GetFrame().shop:IsShown() or #SH:List() > 0, "a linha ficou sem itens")
 	assert(ok2, err2)
 end)
+-- cavernas (#135): o Maltorius no Slag Pit — a rota vai à entrada e desce pela caverna; "por cima" tira a caverna
+step("Cave route", function()
+	local T, CV = ns.Travel, ns.Cavernas
+	local pw, w0, act0, indoors = T.PlayerWorld, T.World, ns.Destinations.Active, _G.IsIndoors
+	local alvo = { c = 0, x = -6634.4, y = -1232.3 }
+	local eu = { c = 0, x = -6640, y = -1250 }                          -- em cima, a uns 20 jd do ponto
+	local dest = { zone = "Searing Gorge", x = 40.77, y = 35.89, label = "Overseer Maltorius" }
+	local fechado = false
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = alvo.c, x = alvo.x, y = alvo.y } end
+	_G.IsIndoors = function() return fechado end
+	local upd = ns.eventFrame:GetScript("OnUpdate")
+	local ok, err = pcall(function()
+		ns.char.caves = {}
+		ns.Destinations:Set("manual", dest)
+		T:Fresh()
+		local r = T:Route()
+		local ult, pen = r and r.legs[#r.legs], r and r.legs[#r.legs - 1]
+		assert(ult and ult.cave == "The Slag Pit" and ult.path and #ult.path >= 2, "a última perna não é a caverna")
+		assert(pen and math.abs(pen.b.x + 6767.7) < 10 and math.abs(pen.b.y + 1426.0) < 10, "a rota não vai à entrada")
+		local txt = ns.Waypoint.LegText(r, #r.legs - 1)
+		assert(txt:find("Slag Pit", 1, true), "o texto da perna até a entrada: " .. txt)
+		-- com destino manual, a linha da janela do guia não fala da caverna (é do guia)
+		ns.Viewer:Refresh()
+		local vf = ns.Viewer:GetFrame()
+		assert(not vf.cave:IsShown(), "a linha da caverna apareceu com destino manual")
+		-- o guia é o destino: a linha, e o clique troca para "por cima"
+		ns.Destinations.Active = function() return dest, "guide" end
+		ns.Viewer:Refresh()
+		assert(vf.cave:IsShown() and vf.cave.text:GetText() == ns.L.CAVE_IN:format("The Slag Pit"), "linha da caverna")
+		vf.cave:GetScript("OnEnter")(vf.cave); vf.cave:GetScript("OnLeave")(vf.cave)
+		vf.cave:GetScript("OnClick")(vf.cave)
+		local r2 = T:Route()
+		assert(r2 and not r2.legs[#r2.legs].cave, "por cima e a rota seguiu pela caverna")
+		assert(vf.cave.text:GetText() == ns.L.CAVE_TOP:format("The Slag Pit"), "a linha não mostrou 'por cima'")
+		vf.cave:GetScript("OnClick")(vf.cave)
+		assert(T:Route().legs[#T:Route().legs].cave, "pela entrada de novo e a caverna não voltou")
+		CV:Watch()                                                     -- o vigia guarda o estado de agora
+		-- entrou (lugar fechado, a 30 jd do caminho): o vigia refaz e fica só o resto, de onde está
+		eu = { c = 0, x = -6660, y = -1290 }
+		fechado = true
+		CV:Watch()
+		local r3 = T:Route()
+		assert(#r3.legs == 1 and r3.legs[1].cave and r3.legs[1].path[1].x == -6660, "entrou e a rota não seguiu o resto")
+		-- quem entrou fica dentro numa câmara grande (55 jd do caminho), até sair para lugar aberto
+		local e = CV.Of(dest, ns.caves)
+		assert(CV:Inside(e, { c = 0, x = -6590, y = -1310 }) == true, "na câmara a 55 jd do caminho deixou de estar dentro")
+		fechado = false; CV:Inside(e, { c = 0, x = -6590, y = -1310 }); fechado = true      -- saiu e voltou fechado
+		-- para entrar: a 30 jd do caminho, em lugar fechado, é "dentro"; a 55 jd, não
+		assert(CV:Inside(e, { c = 0, x = -6590, y = -1310 }) == false, "a 55 jd do caminho entrou sem passar perto")
+		assert(CV:Inside(e, { c = 0, x = -6606.5, y = -1280.2 }) == true, "a 30 jd do caminho não contou como dentro")
+		assert(CV:Inside(e, { c = 0, x = -6590, y = -1310 }) == true, "depois de entrar, a câmara a 55 jd não contou")
+		eu = { c = 0, x = -6660, y = -1290 }; CV:Inside(e, eu)
+		local seg2 = CV:Route(dest, { c = 0, x = -6660, y = -1290 }, false)
+		assert(seg2 and not seg2.dentro, "trecho depois de uma parada usou o \"dentro\" do jogador")
+		-- em voo ou a bordo, a troca não refaz a rota (sairia do meio do ar)
+		local busy0, rantes = T.Busy, T:Route()
+		T.Busy = function() return true end
+		CV:Toggle()
+		assert(T:Route() == rantes, "em voo e a troca refez a rota")
+		T.Busy = busy0
+		CV:Toggle()
+		CV:Watch()
+		-- o terreno não recalcula a perna da caverna, nem com o jogador a mais de 40 jd dela, nem ao gravar passagem
+		assert(T:Route().legs[1].cave, "depois das trocas, a rota não voltou à caverna")
+		local path0 = T:Route().legs[1].path
+		eu = { c = 0, x = -6560, y = -1300 }
+		for _ = 1, 5 do upd(ns.eventFrame, 0.06) end
+		assert(T:Route().legs[1].path == path0, "o terreno recalculou o caminho da caverna")
+		T:ResetPaths()
+		assert(T:Route().legs[1].path == path0, "gravar passagem apagou o caminho da caverna")
+		-- "por cima" na perna da caverna: a perna a pé nova não herda o caminho de dentro
+		CV:Toggle()
+		local rt = T:Route()
+		assert(rt and not rt.legs[1].cave and rt.legs[1].path ~= path0, "a perna por cima herdou o caminho da caverna")
+		CV:Toggle()
+		CV:Watch()
+		-- dentro, o alvo do guia muda para fora de caverna; sai; volta o alvo da caverna estando num prédio perto:
+		-- a lembrança de "dentro" não fica velha
+		local destFora = { zone = "Searing Gorge", x = 10, y = 10, label = "Fora" }
+		ns.Destinations.Active = function() return destFora, "guide" end
+		fechado = false; CV:Watch()
+		fechado = true; eu = { c = 0, x = -6520, y = -1250 }               -- num prédio a ~110 jd do caminho
+		ns.Destinations.Active = function() return dest, "guide" end
+		assert(CV:Inside(e, { c = 0, x = -6520, y = -1250 }) == false, "a lembrança de dentro ficou velha")
+		eu = { c = 0, x = -6560, y = -1300 }; fechado = true; CV:Inside(e, { c = 0, x = -6660, y = -1290 })
+		-- saiu (lugar aberto, longe da entrada e do caminho): o vigia refaz e volta a ir até a entrada
+		fechado = false
+		CV:Watch(); CV:Watch()
+		local r4 = T:Route()
+		assert(#r4.legs >= 2 and r4.legs[#r4.legs].cave and not r4.legs[1].cave, "saiu e a rota seguiu pela caverna de longe")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World, ns.Destinations.Active, _G.IsIndoors = pw, w0, act0, indoors
+	ns.char.caves = {}
+	T:ResetPaths()
+	ns.Viewer:Refresh()
+	assert(ok, err)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()
