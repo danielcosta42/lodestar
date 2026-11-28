@@ -68,10 +68,16 @@ local function aoCaminho(e, pos)
 	return select(4, ns.Terrain.Ahead(CV.Points(e), pos, 0))
 end
 
--- O jogador está dentro desta caverna: lugar fechado (IsIndoors) e perto do caminho dela
+-- O jogador está dentro desta caverna: lugar fechado (IsIndoors) e perto do caminho dela para entrar; quem entrou
+-- fica dentro até sair para lugar aberto — numa câmara grande ele se afasta do caminho (até 300 jd: a pedra de lar
+-- para uma estalagem não conta)
+local DENTRO_MAX = 300
+local dentroDe
 function CV:Inside(e, pos)
-	if not (e and pos and IsIndoors and IsIndoors()) then return false end
-	return aoCaminho(e, pos) <= DENTRO_JD
+	if not (e and pos and IsIndoors and IsIndoors()) then dentroDe = nil; return false end
+	local d = aoCaminho(e, pos)
+	if d <= DENTRO_JD then dentroDe = e; return true end
+	return dentroDe == e and d <= DENTRO_MAX
 end
 
 -- Para o Travel: a caverna do destino, se ativa -> { nome, entrada, pts, dentro } | nil. `primeiro`: o trecho que sai
@@ -132,7 +138,7 @@ function CV:Watch()
 		if ns.Viewer then ns.Viewer:Refresh() end
 		return
 	end
-	local r = cur and cur.ativa and not cur.dentro and ns.Travel and ns.Travel:Route()
+	local r = cur and cur.ativa and not cur.dentro and not (IsIndoors and IsIndoors()) and ns.Travel and ns.Travel:Route()
 	local leg = r and r.legs[r.leg]
 	if leg and leg.cave then
 		local pos = ns.Travel.PlayerWorld()

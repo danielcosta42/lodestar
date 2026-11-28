@@ -1837,10 +1837,15 @@ step("Cave route", function()
 		CV:Watch()
 		local r3 = T:Route()
 		assert(#r3.legs == 1 and r3.legs[1].cave and r3.legs[1].path[1].x == -6660, "entrou e a rota não seguiu o resto")
-		-- a 30 jd do caminho, em lugar fechado, é "dentro"; a 55 jd, não
+		-- quem entrou fica dentro numa câmara grande (55 jd do caminho), até sair para lugar aberto
 		local e = CV.Of(dest, ns.caves)
+		assert(CV:Inside(e, { c = 0, x = -6590, y = -1310 }) == true, "na câmara a 55 jd do caminho deixou de estar dentro")
+		fechado = false; CV:Inside(e, { c = 0, x = -6590, y = -1310 }); fechado = true      -- saiu e voltou fechado
+		-- para entrar: a 30 jd do caminho, em lugar fechado, é "dentro"; a 55 jd, não
+		assert(CV:Inside(e, { c = 0, x = -6590, y = -1310 }) == false, "a 55 jd do caminho entrou sem passar perto")
 		assert(CV:Inside(e, { c = 0, x = -6606.5, y = -1280.2 }) == true, "a 30 jd do caminho não contou como dentro")
-		assert(CV:Inside(e, { c = 0, x = -6590, y = -1310 }) == false, "a 55 jd do caminho contou como dentro")
+		assert(CV:Inside(e, { c = 0, x = -6590, y = -1310 }) == true, "depois de entrar, a câmara a 55 jd não contou")
+		eu = { c = 0, x = -6660, y = -1290 }; CV:Inside(e, eu)
 		local seg2 = CV:Route(dest, { c = 0, x = -6660, y = -1290 }, false)
 		assert(seg2 and not seg2.dentro, "trecho depois de uma parada usou o \"dentro\" do jogador")
 		-- em voo ou a bordo, a troca não refaz a rota (sairia do meio do ar)

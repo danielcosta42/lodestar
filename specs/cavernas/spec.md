@@ -50,8 +50,9 @@ junto a um portal entre esses grupos.
 ## No jogo (`Cavernas.lua`)
 
 - **Caverna ativa:** certa, a não ser que o jogador escolha "por cima"; talvez, só se o jogador escolher "pela
-  entrada" ou já estiver lá dentro. "Lá dentro" é `IsIndoors()` e a até 40 jd do caminho da caverna, sem depender do
-  idioma. A escolha fica salva por ponto (`LodestarCharDB.caves`).
+  entrada" ou já estiver lá dentro. "Lá dentro" não depende do idioma: para entrar, `IsIndoors()` e a até 40 jd do
+  caminho da caverna; quem entrou fica dentro até sair para lugar aberto, mesmo longe do caminho numa câmara grande
+  (até 300 jd: a pedra de lar para uma estalagem não conta). A escolha fica salva por ponto (`LodestarCharDB.caves`).
 - **Na rota (`Travel.PlanChain`):** com a caverna ativa, o trecho vai até a entrada e a última perna segue o caminho
   de dentro. É uma perna a pé com o caminho pronto (`cave` = o nome).
   - O caminho de dentro nunca é recalculado, apagado (gravar passagem) nem herdado por uma perna de fora.
@@ -59,7 +60,7 @@ junto a um portal entre esses grupos.
   - Ela chega pelo que falta do caminho, não pela reta: a caverna de dois andares volta por baixo do alvo.
   - Já lá dentro, só o resto do caminho, de onde o jogador está; isso vale só no trecho que sai do jogador.
 - **O vigia (a cada 2 s):** entrar ou sair da caverna refaz a rota, e a troca de caverna/por cima também. Na perna da
-  caverna, fora dela e a mais de 40 jd da entrada e do caminho, também. Em voo ou a bordo, não refaz.
+  caverna, em lugar aberto e a mais de 40 jd da entrada e do caminho, também. Em voo ou a bordo, não refaz.
 - **Texto da perna até a entrada:** "Entrada de The Slag Pit".
 - **Janela do guia:** com o alvo do passo numa caverna (e o guia como destino da rota, não um manual ou o corpo), uma
   linha logo acima das ações rápidas. O clique troca entre
