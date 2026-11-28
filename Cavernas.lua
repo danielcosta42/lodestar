@@ -128,6 +128,7 @@ end
 local estado
 local FORA_JD = 40
 function CV:Watch()
+	if not (IsIndoors and IsIndoors()) then dentroDe = nil end     -- saiu para lugar aberto: seja qual for o alvo
 	local cur = CV:Current()
 	local agora = cur and (cur.key .. ":" .. tostring(cur.ativa) .. ":" .. tostring(cur.ativa and cur.dentro)) or nil
 	local mudou = agora ~= estado

@@ -1870,6 +1870,15 @@ step("Cave route", function()
 		assert(rt and not rt.legs[1].cave and rt.legs[1].path ~= path0, "a perna por cima herdou o caminho da caverna")
 		CV:Toggle()
 		CV:Watch()
+		-- dentro, o alvo do guia muda para fora de caverna; sai; volta o alvo da caverna estando num prédio perto:
+		-- a lembrança de "dentro" não fica velha
+		local destFora = { zone = "Searing Gorge", x = 10, y = 10, label = "Fora" }
+		ns.Destinations.Active = function() return destFora, "guide" end
+		fechado = false; CV:Watch()
+		fechado = true; eu = { c = 0, x = -6520, y = -1250 }               -- num prédio a ~110 jd do caminho
+		ns.Destinations.Active = function() return dest, "guide" end
+		assert(CV:Inside(e, { c = 0, x = -6520, y = -1250 }) == false, "a lembrança de dentro ficou velha")
+		eu = { c = 0, x = -6560, y = -1300 }; fechado = true; CV:Inside(e, { c = 0, x = -6660, y = -1290 })
 		-- saiu (lugar aberto, longe da entrada e do caminho): o vigia refaz e volta a ir até a entrada
 		fechado = false
 		CV:Watch(); CV:Watch()
