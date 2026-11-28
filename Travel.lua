@@ -83,13 +83,30 @@ end
 -- foi usada num trecho anterior }. A última perna até cada parada leva `parada` e entra em `stops`. Trecho sem rota
 -- corta a cadeia ali: a rota vai até a última alcançada (o resto se tenta de novo de lá); sem o primeiro, nil. Ponto
 -- que não cai no mapa (`worldOf` nil: zona que não se conhece) fica de fora, sem cortar o resto (#117).
-function T.PlanChain(from, chain, worldOf, plan)
+-- `cave(dest, a)` (opcional, #135): o destino dentro de uma caverna -> { nome, entrada, pts, dentro } | nil. O trecho vai
+-- até a entrada e a última perna segue o caminho de dentro (`cave` = o nome; o caminho já vem pronto); já lá dentro,
+-- só o resto do caminho.
+function T.PlanChain(from, chain, worldOf, plan, cave, speed)
 	local legs, stops, s, a, last = {}, {}, 0, from, nil
 	local at, hearth = 0, false               -- `s` soma o plano (com o gasto da pedra); `at`, o tempo de verdade
 	for _, t in ipairs(chain) do
 		local b = worldOf(t.dest)
+		local cv = b and cave and cave(t.dest, a)
 		if b then
-			local seg = plan(a, b, { at = at, hearth = hearth })
+			local seg
+			if cv and cv.dentro and ns.Cavernas then
+				seg = { s = 0, legs = {} }
+				cv.pts = ns.Cavernas.Rest(cv.pts, a)
+			else
+				seg = plan(a, cv and cv.entrada or b, { at = at, hearth = hearth })
+			end
+			if cv and seg then
+				local fim = { c = b.c, x = b.x, y = b.y }
+				local L = ns.Cavernas and ns.Cavernas.Length(cv.pts) or 0
+				local sc = L / (speed or 7)
+				seg.legs[#seg.legs + 1] = { k = "walk", a = cv.pts[1], b = fim, s = sc, path = cv.pts, cave = cv.nome or true }
+				seg.s = seg.s + sc
+			end
 			if not (seg and #seg.legs > 0) then break end
 			for _, leg in ipairs(seg.legs) do
 				legs[#legs + 1] = leg
@@ -377,7 +394,7 @@ function T:Replan(force)
 			if o.hearth then c.hearth = nil end
 		end
 		return ns.Journey.Plan(a, b, c)
-	end)
+	end, function(dest, a) return ns.Cavernas and ns.Cavernas.Route and ns.Cavernas:Route(dest, a) end, speed)
 	if new then new.leg = 1 end
 	sinceReplan = 0
 	-- a rota nova que segue a pé para o mesmo ponto herda o caminho já calculado
@@ -520,7 +537,7 @@ end
 -- os segundos a mais que a perna leva de verdade (a comparação com a rota nova é pela reta) | nil. `ahead` é o
 -- Terrain.Ahead; caminho a mais de 60 jd de onde o jogador está já não vale.
 function T.DesvioAtual(cur, pos, v, ahead)
-	if not (cur and cur.k == "walk" and cur.path and pos and ahead and pos.c == cur.b.c) then return nil end
+	if not (cur and cur.k == "walk" and not cur.cave and cur.path and pos and ahead and pos.c == cur.b.c) then return nil end
 	local _, _, falta, longe = ahead(cur.path, pos, 0)
 	local D = dist(pos, cur.b)
 	if not (falta and longe and longe <= 60 and T.Desvio(falta, D, v)) then return nil end
@@ -608,7 +625,7 @@ local function pathTick()
 	if not (ns.Terrain and ns.terrain and route) then pathCo = nil; return end
 	local cur = route.legs[route.leg]
 	local pos = T.PlayerWorld()
-	local precisa = cur and cur.k == "walk" and pos and pos.c == cur.b.c
+	local precisa = cur and cur.k == "walk" and not cur.cave and pos and pos.c == cur.b.c
 		and not (cur.pathFail and cur.pathAt and dist(pos, cur.pathAt) < 300
 			-- espera até 300 jd; sem caminho nenhum (falha, não o `solto`) e tendo andado 40 jd, tenta de novo a cada
 			-- 30 s (#114) — parado, a mesma busca dá o mesmo nil

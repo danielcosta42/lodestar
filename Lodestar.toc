@@ -88,6 +88,8 @@ SpawnMap.lua
 FlightMap.lua
 FlightCard.lua
 Shopping.lua
+Caves.lua
+Cavernas.lua
 RouteMinimap.lua
 Compass.lua
 TravelPanel.lua

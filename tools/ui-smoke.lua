@@ -1793,6 +1793,57 @@ step("Guide shopping", function()
 	assert(not ns.Viewer:GetFrame().shop:IsShown() or #SH:List() > 0, "a linha ficou sem itens")
 	assert(ok2, err2)
 end)
+-- cavernas (#135): o Maltorius no Slag Pit — a rota vai à entrada e desce pela caverna; "por cima" tira a caverna
+step("Cave route", function()
+	local T, CV = ns.Travel, ns.Cavernas
+	local pw, w0, gt0, indoors = T.PlayerWorld, T.World, ns.Destinations.GuideTarget, _G.IsIndoors
+	local alvo = { c = 0, x = -6634.4, y = -1232.3 }
+	local eu = { c = 0, x = -6640, y = -1250 }                          -- em cima, a uns 20 jd do ponto
+	local dest = { zone = "Searing Gorge", x = 40.77, y = 35.89, label = "Overseer Maltorius" }
+	T.PlayerWorld = function() return { c = eu.c, x = eu.x, y = eu.y } end
+	T.World = function() return { c = alvo.c, x = alvo.x, y = alvo.y } end
+	ns.Destinations.GuideTarget = function() return dest end
+	_G.IsIndoors = function() return false end
+	local ok, err = pcall(function()
+		ns.char.caves = {}
+		ns.Destinations:Set("manual", dest)
+		T:Fresh()
+		local r = T:Route()
+		local ult, pen = r and r.legs[#r.legs], r and r.legs[#r.legs - 1]
+		assert(ult and ult.cave == "The Slag Pit" and ult.path and #ult.path >= 2, "a última perna não é a caverna")
+		assert(pen and math.abs(pen.b.x + 6767.7) < 10 and math.abs(pen.b.y + 1426.0) < 10, "a rota não vai à entrada")
+		local txt = ns.Waypoint.LegText(r, #r.legs - 1)
+		assert(txt:find("Slag Pit", 1, true), "o texto da perna até a entrada: " .. txt)
+		-- a janela do guia: a linha da caverna, e o clique troca para "por cima"
+		ns.Viewer:Refresh()
+		local vf = ns.Viewer:GetFrame()
+		assert(vf.cave:IsShown() and vf.cave.text:GetText() == ns.L.CAVE_IN:format("The Slag Pit"), "linha da caverna")
+		vf.cave:GetScript("OnEnter")(vf.cave); vf.cave:GetScript("OnLeave")(vf.cave)
+		vf.cave:GetScript("OnClick")(vf.cave)
+		local r2 = T:Route()
+		assert(r2 and not r2.legs[#r2.legs].cave, "por cima e a rota seguiu pela caverna")
+		assert(vf.cave.text:GetText() == ns.L.CAVE_TOP:format("The Slag Pit"), "a linha não mostrou 'por cima'")
+		vf.cave:GetScript("OnClick")(vf.cave)
+		assert(T:Route().legs[#T:Route().legs].cave, "pela entrada de novo e a caverna não voltou")
+		-- já dentro (lugar fechado, perto do caminho): só o resto, de onde está
+		eu = { c = 0, x = -6660, y = -1320 }
+		_G.IsIndoors = function() return true end
+		T:Fresh()
+		local r3 = T:Route()
+		assert(#r3.legs == 1 and r3.legs[1].cave and r3.legs[1].path[1].x == -6660, "dentro: a rota não seguiu o resto")
+		-- a perna da caverna não é recalculada pelo terreno
+		local upd = ns.eventFrame:GetScript("OnUpdate")
+		local path0 = r3.legs[1].path
+		for _ = 1, 5 do upd(ns.eventFrame, 0.06) end
+		assert(T:Route().legs[1].path == path0, "o terreno recalculou o caminho da caverna")
+	end)
+	ns.Destinations:Clear("manual")
+	T.PlayerWorld, T.World, ns.Destinations.GuideTarget, _G.IsIndoors = pw, w0, gt0, indoors
+	ns.char.caves = {}
+	T:ResetPaths()
+	ns.Viewer:Refresh()
+	assert(ok, err)
+end)
 step("Report", function() ns.Report:Show() end)
 -- as Configurações moram na Central (issue #93): abrem lá, passam por todas as seções, e o tema recarrega
 step("Settings", function()

@@ -394,6 +394,28 @@ local function build()
 		frame.quickBtns[i] = b
 	end
 
+	-- o alvo numa caverna (Cavernas.lua, #135): a linha diz se a rota entra pela caverna; o clique troca (por cima)
+	frame.cave = CreateFrame("Button", nil, frame.body)
+	frame.cave:SetHeight(30)
+	do
+		local bg = UI.Card(frame.cave, { radius = 6, color = C.tipSoft, lineColor = UI.dark and C.tip or C.tipSoft })
+		bg:SetAllPoints(); bg:SetFrameLevel(frame.cave:GetFrameLevel())
+		local g = UI.Glyph(frame.cave, "chevron-baixo", "OVERLAY", 64); g:SetSize(14, 14); g:SetPoint("LEFT", 10, 0)
+		g:SetVertexColor(unpackc(C.tip))
+		local t = UI.Text(frame.cave, 11.5, C.active, { num = true, wrap = false })
+		t:SetPoint("LEFT", g, "RIGHT", 8, 0); t:SetPoint("RIGHT", -10, 0)
+		frame.cave.text = t
+		frame.cave:SetScript("OnClick", function() if ns.Cavernas then ns.Cavernas:Toggle() end end)
+		frame.cave:SetScript("OnEnter", function(self)
+			local cur = ns.Cavernas and ns.Cavernas:Current()
+			if not (cur and GameTooltip) then return end
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine(cur.ativa and L.CAVE_TIP_TOP or L.CAVE_TIP_IN, 1, 1, 1, true)
+			GameTooltip:Show()
+		end)
+		frame.cave:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+	end
+
 	-- compras do guia na casa de leilões (Shopping.lua, #134): uma linha quando há o que comprar; leva à mais perto
 	frame.shop = CreateFrame("Button", nil, frame.body)
 	frame.shop:SetHeight(30)
@@ -878,6 +900,20 @@ function V:Refresh()
 		end
 	end
 	if #near > 0 then by = by + 6 end
+
+	-- o alvo numa caverna
+	local cav = ns.Cavernas and ns.Cavernas:Current()
+	frame.cave:SetShown(cav ~= nil)
+	if cav then
+		local nome = cav.nome or L.CAVE_GENERIC
+		local txt
+		if cav.ativa then txt = (cav.s == 1 and L.CAVE_IN or L.CAVE_GOING):format(nome)
+		else txt = (cav.s == 1 and L.CAVE_TOP or L.CAVE_MAYBE):format(nome) end
+		frame.cave:ClearAllPoints(); frame.cave:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
+		frame.cave:SetWidth(inner)
+		frame.cave.text:SetText(txt)
+		by = by + 30 + 10
+	end
 
 	-- ações rápidas
 	frame.quick:ClearAllPoints(); frame.quick:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, -by)
